@@ -35,6 +35,8 @@ Patch0:         0001-Session-reuse-Only-consider-online-sessions.patch
 Patch1:         0001-FreeBSD-Link-to-libutil.patch
 Patch2:         0001-FreeBSD-Split-implementation-of-VT-switching.patch
 Patch3:         0002-Only-allocate-VTs-for-seat0.patch
+# Committed directly
+Patch4:         0001-Don-t-disable-authentication-in-test-mode.patch
 # Not merged yet: https://github.com/sddm/sddm/pull/997
 Patch50:        0001-Remove-suffix-for-Wayland-session.patch
 # Not merged yet: https://github.com/sddm/sddm/pull/1017
@@ -51,6 +53,7 @@ Patch56:        0003-Move-VT-setup-to-sddm-helper.patch
 # Use openSUSE pam config
 Patch100:       proper_pam.diff
 Patch101:       0001-Write-the-daemon-s-PID-to-a-file-on-startup.patch
+Patch102:       0001-Set-XAUTHLOCALHOSTNAME-in-sessions.patch
 Patch103:       0001-Read-the-DISPLAYMANAGER_AUTOLOGIN-value-from-sysconf.patch
 # sddm has some rudimentary support for plymouth handling, which only works with plymouth-quit.service
 # (the servce is not enabled on openSUSE). For users of sddm.service, we need to issue plymouth quit command by hand in this case
@@ -167,7 +170,7 @@ fi
   install -Dm 0644 %{SOURCE2} %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/00-general.conf
   install -Dm 0644 %{SOURCE3} %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/10-theme.conf
   install -Dm 0644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/sddm.conf
-  
+
   %if ! %{defined _distconfdir}
   sed -e 's-/usr/etc-%{_sysconfdir}-g' -i %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/00-general.conf
   %endif
@@ -219,7 +222,7 @@ fi
 
 %postun
 # Don't restart on upgrades (boo#1161826)
-%service_del_postun -n sddm.service
+%service_del_postun_without_restart sddm.service
 [ -f %{_prefix}/lib/X11/displaymanagers/sddm ] || %{_sbindir}/update-alternatives \
   --remove default-displaymanager %{_prefix}/lib/X11/displaymanagers/sddm
 

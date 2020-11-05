@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov  3 14:15:55 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Replace  '%service_del_postun -n' with '%service_del_postun_without_restart'
+
+  '-n' is deprecated and will be removed in the future.
+
+-------------------------------------------------------------------
+Tue Nov  3 11:03:07 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Patches to fix X not having access control on startup
+  (boo#1177201, CVE-2020-28049):
+ * Add 0001-Don-t-disable-authentication-in-test-mode.patch
+ * Modify 0001-Redesign-Xauth-handling.patch
+
+-------------------------------------------------------------------
+Sat Oct 24 12:16:43 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to set XAUTHLOCALHOSTNAME again (boo#1177835):
+  * 0001-Set-XAUTHLOCALHOSTNAME-in-sessions.patch
+
+-------------------------------------------------------------------
 Sat Oct  3 11:09:12 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Change paths from /etc to /usr/etc for UsrEtc Move (boo#1177195)

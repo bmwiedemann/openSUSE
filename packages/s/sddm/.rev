@@ -618,4 +618,13 @@ https://github.com/sddm/sddm/commit/1bc813d08b8130e458a6550ec47fb2bfbe6de080 (fo
     <comment></comment>
     <requestid>840326</requestid>
   </revision>
+  <revision rev="52" vrev="5">
+    <srcmd5>c32aad50fc9667d52604f8983d33781a</srcmd5>
+    <version>0.18.1</version>
+    <time>1604609662</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace  '%service_del_postun -n' with '%service_del_postun_without_restart'
+  '-n' is deprecated and will be removed in the future. (forwarded request 845741 from fbui)</comment>
+    <requestid>845755</requestid>
+  </revision>
 </revisionlist>
