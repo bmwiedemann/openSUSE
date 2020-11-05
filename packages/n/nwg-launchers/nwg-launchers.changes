@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov  5 07:29:03 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.1:
+  * bug breaking compilation with libstdc++ fixed #118
+  * [nwgbar] added support for mnemonics #120
+  * [nwggrid] added -d argument to force custom .desktop files
+    path(s) #122
+  * [nwggrid] support for running apps in the terminal emulator
+    (Terminal=true) added; see README for details on detection
+    changing the terminal #127
+  * [nwggrid] sorting names longer than 25 characters fixed #128
+
+-------------------------------------------------------------------
 Wed Sep 23 07:31:57 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.4.0:

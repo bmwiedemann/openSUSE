@@ -44,4 +44,20 @@
   the first launch.</comment>
     <requestid>836228</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2bf701c451153a1a86cec874dbb73db2</srcmd5>
+    <version>0.4.1</version>
+    <time>1604609699</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.1:
+  * bug breaking compilation with libstdc++ fixed #118
+  * [nwgbar] added support for mnemonics #120
+  * [nwggrid] added -d argument to force custom .desktop files
+    path(s) #122
+  * [nwggrid] support for running apps in the terminal emulator
+    (Terminal=true) added; see README for details on detection
+    changing the terminal #127
+  * [nwggrid] sorting names longer than 25 characters fixed #128</comment>
+    <requestid>846134</requestid>
+  </revision>
 </revisionlist>
