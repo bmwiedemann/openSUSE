@@ -13,6 +13,7 @@
   <profiles>
     <profile name="docker" description="Docker-compatible image"/>
     <profile name="lxc" description="LXC-compatible image"/>
+    <profile name="networkd" description="Image with systemd-networkd, suitable for use in systemd-machined"/>
   </profiles>
   <preferences profiles="docker">
     <type image="docker">
@@ -47,9 +48,22 @@
     <rpm-check-signatures>false</rpm-check-signatures>
     <rpm-excludedocs>true</rpm-excludedocs>
   </preferences>
+  <preferences profiles="networkd">
+    <type image="tbz"/>
+    <version>1.0.0</version>
+    <packagemanager>zypper</packagemanager>
+    <rpm-check-signatures>false</rpm-check-signatures>
+    <rpm-excludedocs>true</rpm-excludedocs>
+  </preferences>
   <repository>
     <source path="obsrepositories:/"/>
   </repository>
+  <packages type="image" profiles="networkd">
+    <package name="systemd"/>
+    <package name="systemd-network"/>
+    <package name="systemd-sysvinit"/>
+    <package name="iproute2"/>
+  </packages>
   <packages type="image" profiles="lxc">
     <package name="systemd"/>
     <package name="systemd-sysvinit"/>

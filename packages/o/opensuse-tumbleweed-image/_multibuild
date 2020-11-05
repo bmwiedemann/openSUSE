@@ -1,4 +1,5 @@
 <multibuild>
   <flavor>docker</flavor>
   <flavor>lxc</flavor>
+  <flavor>networkd</flavor>
 </multibuild>

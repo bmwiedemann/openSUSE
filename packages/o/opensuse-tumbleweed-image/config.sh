@@ -36,4 +36,12 @@ rm -f /usr/share/locale/**/*.mo
 # Remove zypp uuid (bsc#1098535)
 rm -f /var/lib/zypp/AnonymousUniqueId
 
+if [[ "$kiwi_profiles" == *"networkd"* ]]; then
+	systemctl enable systemd-networkd
+	systemctl enable systemd-resolved
+	# FIXME: kiwi deletes /etc/resolv.conf so we have to use tmpfiles here.
+	# Should come via some preset package anyways I guess.
+	echo "L /etc/resolv.conf - - - - /run/systemd/resolve/stub-resolv.conf" > /etc/tmpfiles.d/stub-resolv.conf
+fi
+
 exit 0

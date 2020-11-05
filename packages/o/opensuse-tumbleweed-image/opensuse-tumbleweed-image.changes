@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 23 16:20:11 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- add systemd flavor that uses networkd and resolved. Useful and quick
+  booting for use in machined
+
+-------------------------------------------------------------------
 Mon Jul 13 12:43:03 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - include iproute2 in lxc build
