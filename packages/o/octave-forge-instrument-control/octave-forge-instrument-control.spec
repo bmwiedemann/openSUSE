@@ -18,7 +18,7 @@
 
 %define octpkg  instrument-control
 Name:           octave-forge-%{octpkg}
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        Instrument Control for Octave
 License:        GPL-3.0-or-later
