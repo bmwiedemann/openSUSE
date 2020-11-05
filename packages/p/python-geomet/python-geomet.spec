@@ -58,7 +58,9 @@ rm %{buildroot}%{_prefix}/LICENSE
 %check
 export PATH=$PATH:%{buildroot}%{_bindir}
 export PYTHONDONTWRITEBYTECODE=1
+cp geomet/tests/test_cli.py geomet/tests/test_cli.py.orig
 %{python_expand \
+cp geomet/tests/test_cli.py.orig geomet/tests/test_cli.py 
 sed -i 's:geomet:geomet-%{$python_version}:' geomet/tests/test_cli.py
 export PYTHONPATH=:%{buildroot}%{$python_sitelib}
 $python -m pytest

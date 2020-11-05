@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov  4 16:23:36 UTC 2020 - Johannes Grassler <johannes.grassler@suse.com>
+
+- Fix executable name substitution for Python 3 tests
+
+-------------------------------------------------------------------
 Tue May 26 06:34:21 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
