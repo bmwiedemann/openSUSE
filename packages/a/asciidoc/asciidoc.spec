@@ -17,7 +17,7 @@
 
 
 Name:           asciidoc
-Version:        9.0.2
+Version:        9.0.4
 Release:        0
 Summary:        Text-Based Document Generation
 License:        GPL-2.0-or-later
@@ -47,7 +47,7 @@ Summary:        Examples and Documents for asciidoc
 This package contains examples and documents of asciidoc.
 
 %prep
-%autosetup -n %{name}-py3-%{version} -p1
+%autosetup -p1 -n %{name}-py3-%{version}
 
 # do not use env
 find ./ -name \*.py -exec sed -i -e 's:%{_bindir}/env\ :%{_bindir}/:g' {} \;

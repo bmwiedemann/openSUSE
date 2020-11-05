@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov  3 08:09:36 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 9.0.4
+  * Fix listing out installed plugins (e.g. --filter list)
+
+-------------------------------------------------------------------
+Wed Oct 21 06:31:32 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 9.0.3
+  * Fix extra newline characters inserted into generated source
+  * Validate line endings as part of test suite
+
+-------------------------------------------------------------------
 Mon Aug  3 05:46:34 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 9.0.2:
