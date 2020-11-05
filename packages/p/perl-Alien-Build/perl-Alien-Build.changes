@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov  3 03:07:10 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.37
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.37      2020-11-02 09:09:13 -0700
+    - Tests that rely on its behavior unset ALIEN_BUILD_PKG_CONFIG (gh#239)
+  2.36_01   2020-10-31 03:33:21 -0600
+    - Fixed a bug where Probe and PkgConfig plugins could provide compiler / linker flags
+      when the PkgConfig probe fails, but another probe succeed. (gh#238)
+  2.35_01   2020-10-28 02:06:21 -0600
+    - Added install properties: system_probe_class and system_probe_instance_id (gh#237)
+    - Added hook properties: probe_class and probe_instance_id (gh#237)
+  2.34_01   2020-10-27 04:23:24 -0600
+    - Added instance_id property to Alien::Build::Plugin class (gh#235)
+    - Added plugin_instance_prop method to Alien::Build class (gh#235)
+
+-------------------------------------------------------------------
 Tue Sep 22 03:07:01 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.33

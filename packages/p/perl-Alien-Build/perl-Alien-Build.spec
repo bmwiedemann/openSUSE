@@ -17,7 +17,7 @@
 
 
 Name:           perl-Alien-Build
-Version:        2.33
+Version:        2.37
 Release:        0
 %define cpan_name Alien-Build
 Summary:        Build external dependencies for use in CPAN
@@ -30,6 +30,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Capture::Tiny) >= 0.17
+BuildRequires:  perl(Digest::SHA)
 BuildRequires:  perl(ExtUtils::CBuilder)
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
 BuildRequires:  perl(ExtUtils::ParseXS) >= 3.30
@@ -43,6 +44,7 @@ BuildRequires:  perl(Test2::API) >= 1.302096
 BuildRequires:  perl(Test2::V0) >= 0.000060
 BuildRequires:  perl(Text::ParseWords) >= 3.26
 Requires:       perl(Capture::Tiny) >= 0.17
+Requires:       perl(Digest::SHA)
 Requires:       perl(ExtUtils::CBuilder)
 Requires:       perl(ExtUtils::MakeMaker) >= 6.64
 Requires:       perl(ExtUtils::ParseXS) >= 3.30
