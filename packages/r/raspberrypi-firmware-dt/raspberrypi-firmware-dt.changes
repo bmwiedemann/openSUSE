@@ -1,3 +1,11 @@
+Thu Oct 29 16:35:31 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Update to 2dc96ad40979 (2020-10-26):
+ * Introduce firmware-clocks
+ * Introduce firmware-reset
+ * Add reset controller in xHCI node
+- Get rid of vl805-firmware-loader-overlay.dts, not needed anymore
+
 -------------------------------------------------------------------
 Tue Jul 21 11:37:26 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 

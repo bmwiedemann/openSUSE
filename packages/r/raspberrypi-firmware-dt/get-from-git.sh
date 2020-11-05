@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LINUX_BRANCH=rpi-5.6.y
+LINUX_BRANCH=rpi-5.10.y
 
 # this is a huge hunk of stuff, so reuse the local repo if possible
 if [ -d linux/.git ]; then
