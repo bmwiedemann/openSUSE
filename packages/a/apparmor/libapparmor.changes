@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 25 11:15:54 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 3.0.0
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.0
+    for the detailed upstream changelog
+- add changes-since-3.0.0.diff with upstream fixes since the 3.0.0
+  release up to 3e18c0785abc03ee42a022a67a27a085516a7921
+- drop 2.13-only patch libapparmor-so-number.diff
+
+-------------------------------------------------------------------
 Sat Oct 17 15:45:32 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
 
 - update to AppArmor 2.13.5

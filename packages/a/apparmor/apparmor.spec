@@ -24,9 +24,9 @@
 %bcond_without pam
 %bcond_without apache
 %bcond_without perl
-%bcond_with python
 %bcond_without python3
 %bcond_without ruby
+%bcond_without precompiled_cache
 
 %define CATALINA_HOME /usr/share/tomcat6
 #define APPARMOR_DOC_DIR /usr/share/doc/packages/apparmor-docs/
@@ -35,7 +35,7 @@
 %define apache_module_path %(/usr/sbin/apxs2 -q LIBEXECDIR)
 
 Name:           apparmor
-Version:        2.13.5
+Version:        3.0.0
 Release:        0
 Summary:        AppArmor userlevel parser utility
 License:        GPL-2.0-or-later
@@ -65,11 +65,14 @@ Patch4:         apparmor-lessopen-profile.patch
 # workaround for boo#1119937 / lp#1784499 - allow network access for reading files on NFS (proper solution needs kernel fix)
 Patch5:         apparmor-lessopen-nfs-workaround.diff
 
-# update abstractions/base and nameservice for /usr/etc (submitted upstream 2020-01-25 https://gitlab.com/apparmor/apparmor/merge_requests/447, only merged to master, not 2.13.x)
-Patch10:        ./usr-etc-abstractions-base-nameservice.diff
+# changes since 3.0.0 release up to 3e18c0785abc03ee42a022a67a27a085516a7921
+Patch6:         changes-since-3.0.0.diff
 
-# fix libapparmor so version (submitted upstream 2020-10-17 https://gitlab.com/apparmor/apparmor/-/merge_requests/658)
-Patch11:        libapparmor-so-number.diff
+# fix hotkey conflict for utils (de, id and sv), and fix the test (accepted upstream 2020-11-01 https://gitlab.com/apparmor/apparmor/-/merge_requests/675)
+Patch10:        utils-fix-hotkey-conflict.diff
+
+# fix invalid Pux (should be PUx) in inactive profile - breaks creating a new profile with aa-autodep, aa-logprof and aa-genprof (accepted upstream 2020-11-01 https://gitlab.com/apparmor/apparmor/-/merge_requests/676)
+Patch11:        extra-profiles-fix-Pux.diff
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -86,19 +89,14 @@ BuildRequires:  perl(Locale::gettext)
 
 BuildRequires:  swig
 
-%if %{with python}
-BuildRequires:  python-devel
-BuildRequires:  swig
-%endif
-
 %if %{with python3}
 BuildRequires:  python3-devel
-BuildRequires:  swig
+BuildRequires:  python3-notify2
+BuildRequires:  python3-psutil
 %endif
 
 %if %{with ruby}
 BuildRequires:  ruby-devel
-BuildRequires:  swig
 %endif
 
 %if %{with apache}
@@ -186,25 +184,6 @@ applications interfacing with AppArmor.
 
 %endif
 
-%if %{with python}
-
-%package -n python-apparmor
-Summary:        Python 2 interface for libapparmor functions
-License:        GPL-2.0-only AND LGPL-2.1-or-later
-Group:          Development/Libraries/Python
-BuildRequires:  python
-Requires:       libapparmor1 = %{version}
-Requires:       python = %{python_version}
-Requires:       python(abi) = %{python_version}
-Provides:       python-libapparmor = %{version}
-Obsoletes:      python-libapparmor < 2.5
-
-%description -n python-apparmor
-This package provides the python interface to AppArmor. It is used for python
-applications interfacing with AppArmor.
-
-%endif
-
 %if %{with python3}
 
 %package -n python3-apparmor
@@ -282,20 +261,12 @@ Summary:        AppArmor User-Level Utilities Useful for Creating AppArmor Profi
 License:        GPL-2.0-only AND LGPL-2.1-or-later
 Group:          Productivity/Security
 Requires:       libapparmor1 = %{version}
-# some of the tools are still perl-based (aa-decode and aa-notify)
-Requires:       perl = %{perl_version}
-Requires:       perl-apparmor = %{version}
-%if %{with python3}
 Requires:       python3-apparmor = %{version}
 Requires:       python3-base
-%else
-Requires:       python-apparmor = %{version}
-Requires:       python-base
-%endif
+Requires:       python3-notify2
+Requires:       python3-psutil
 # aa-unconfined needs ss
 Recommends:     iproute2
-# aa-notify -p needs notify-send (only "Suggests", see boo#1067477)
-Suggests:       libnotify-tools
 BuildArch:      noarch
 
 %description utils
@@ -354,26 +325,22 @@ SubDomain.
 
 %prep
 %setup -q
+
+# very loose profile that doesn't even match the apache2 binary path in openSUSE. Move it away instead of confusing people (boo#872984)
+mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/profiles/extras/
+
 %patch1
 %patch2
 %patch3 -p1
 %patch4
 %patch5
-
-%if 0%{?suse_version} > 1500
-# /usr/etc/ changes in abstractions, apply only to Tumbleweed, but not to Leap 15.x
+%patch6 -p1
 %patch10 -p1
-%endif
-
 %patch11 -p1
 
 %build
 %define _lto_cflags %{nil}
 export SUSE_ASNEEDED=0
-
-%if %{with python3}
-export PYTHON=/usr/bin/python3
-%endif
 
 # libapparmor:
 (
@@ -382,7 +349,7 @@ export PYTHON=/usr/bin/python3
 %if %{with perl}
   --with-perl \
 %endif
-%if %{with python}%{with python3}
+%if %{with python3}
   --with-python \
 %else
   --without-python \
@@ -424,33 +391,27 @@ make -C profiles
 
 # pre-build profile cache
 # note that -L only works with an absolute path, therefore prefix it with $(pwd)
-parser/apparmor_parser --write-cache -QT  -L $(pwd)/profiles/cache -I profiles/apparmor.d/ profiles/apparmor.d/
-
-%check
-%if %{with python3}
-export PYTHON=/usr/bin/python3
-export PYTHON_VERSIONS=python3
+%if %{with precompiled_cache}
+parser/apparmor_parser --config-file $(pwd)/parser/parser.conf --write-cache -QT  -L $(pwd)/profiles/cache -I profiles/apparmor.d/ profiles/apparmor.d/
 %endif
 
+%check
 make check -C libraries/libapparmor
 make check -C parser
 make check -C binutils
 
-# profiles make check fails for the utils (libapparmor PYTHONPATH issues), therefore only do parser-based checks
+# profiles make check fails for the utils (they expect /sbin/apparmor_parser to exist), therefore only do parser-based check
 make -C profiles check-parser
 
 # test for a few files that should exist in the cache
+%if %{with precompiled_cache}
 test -f profiles/cache/*/bin.ping
 test -f profiles/cache/*/.features
-
-make check -C utils
-
-%install
-
-%if %{with python3}
-export PYTHON=/usr/bin/python3
 %endif
 
+make check -C utils PYFLAKES=/usr/bin/pyflakes-%{py3_ver}
+
+%install
 # libapparmor: swig bindings only, libapparmor is packaged via libapparmor.spec
 %makeinstall -C libraries/libapparmor/swig
 
@@ -465,11 +426,13 @@ mkdir -p %{buildroot}%{_localstatedir}/log/apparmor
 
 %makeinstall -C profiles
 
+%if %{with precompiled_cache}
 install -d -m 755 %{buildroot}/usr/share/apparmor/cache
-echo "*** WARNING: precompiling cache is known to fail under 'osc build' - use 'osc build --vm-type kvm' instead ***"
+echo -e "\n\n    *** WARNING: precompiling cache is known to fail under 'osc build' - use 'osc build --vm-type kvm' instead or skip building the precompiled cache with 'osc build --without precompiled_cache' ***\n\n"
 cp -a profiles/cache/* %{buildroot}/usr/share/apparmor/cache
 test -f %{buildroot}/usr/share/apparmor/cache/*/.features
 test -f %{buildroot}/usr/share/apparmor/cache/*/bin.ping
+%endif
 
 %makeinstall -C parser
 # default cache dir (up to 2.12) is /etc/apparmor.d/cache - not the best location.
@@ -523,12 +486,6 @@ done
 # remove *.la files
 rm -fv %{buildroot}%{_libdir}/libapparmor.la
 
-echo -------------------------------------------------------------------
-#find -ls
-echo -------------------------------------------------------------------
-#find %{buildroot} -ls
-echo -------------------------------------------------------------------
-
 %files docs
 %defattr(-,root,root)
 %doc parser/*.[1-9].html
@@ -546,6 +503,10 @@ echo -------------------------------------------------------------------
 /sbin/apparmor_parser
 %{_bindir}/aa-enabled
 %{_bindir}/aa-exec
+%{_bindir}/aa-features-abi
+%{_sbindir}/aa-status
+%{_sbindir}/apparmor_status
+%{_sbindir}/status
 %{_sbindir}/aa-teardown
 %{_sbindir}/exec
 %dir %attr(-, root, root) %{_sysconfdir}/apparmor
@@ -554,7 +515,6 @@ echo -------------------------------------------------------------------
 %{_sysconfdir}/apparmor.d/cache.d
 /sbin/rcapparmor
 %{_unitdir}/apparmor.service
-%config(noreplace) %{_sysconfdir}/apparmor/subdomain.conf
 %config(noreplace) %{_sysconfdir}/apparmor/parser.conf
 %{_localstatedir}/lib/apparmor
 %{_localstatedir}/cache/apparmor
@@ -563,18 +523,18 @@ echo -------------------------------------------------------------------
 %{apparmor_bin_prefix}/apparmor.systemd
 %doc %{_mandir}/man1/aa-enabled.1.gz
 %doc %{_mandir}/man1/aa-exec.1.gz
+%doc %{_mandir}/man1/aa-features-abi.1.gz
 %doc %{_mandir}/man1/exec.1.gz
 %doc %{_mandir}/man5/apparmor.d.5.gz
 %doc %{_mandir}/man5/apparmor.vim.5.gz
-%doc %{_mandir}/man5/subdomain.conf.5.gz
 %doc %{_mandir}/man7/apparmor.7.gz
+%doc %{_mandir}/man7/apparmor_xattrs.7.gz
+%doc %{_mandir}/man8/aa-status.8.gz
 %doc %{_mandir}/man8/aa-teardown.8.gz
 %doc %{_mandir}/man8/apparmor_parser.8.gz
+%doc %{_mandir}/man8/apparmor_status.8.gz
 
 %pre parser
-if [ -f %{_sysconfdir}/init.d/subdomain ] ; then
-  chkconfig --del subdomain
-fi
 %service_add_pre apparmor.service
 
 %files parser-lang -f apparmor-parser.lang -f aa-binutils.lang
@@ -583,6 +543,10 @@ fi
 %files abstractions
 %defattr(644,root,root,755)
 %dir %{_sysconfdir}/apparmor.d/
+%dir %{_sysconfdir}/apparmor.d/abi
+%config(noreplace) %{_sysconfdir}/apparmor.d/abi/3.0
+%config(noreplace) %{_sysconfdir}/apparmor.d/abi/kernel-5.4-outoftree-network
+%config(noreplace) %{_sysconfdir}/apparmor.d/abi/kernel-5.4-vanilla
 %dir %{_sysconfdir}/apparmor.d/abstractions
 %config(noreplace) %{_sysconfdir}/apparmor.d/abstractions/*
 %dir %{_sysconfdir}/apparmor.d/disable
@@ -599,9 +563,12 @@ fi
 %config(noreplace) %{_sysconfdir}/apparmor.d/usr.*
 %config(noreplace) %{_sysconfdir}/apparmor.d/lsb_release
 %config(noreplace) %{_sysconfdir}/apparmor.d/nvidia_modprobe
+%config(noreplace) %{_sysconfdir}/apparmor.d/php-fpm
 %config(noreplace) %{_sysconfdir}/apparmor.d/local/*
 %dir /usr/share/apparmor/
+%if %{with precompiled_cache}
 /usr/share/apparmor/cache/
+%endif
 /usr/share/apparmor/extra-profiles/
 
 %files utils
@@ -623,9 +590,7 @@ fi
 %{_sbindir}/aa-mergeprof
 %{_sbindir}/aa-notify
 %{_sbindir}/aa-remove-unknown
-%{_sbindir}/aa-status
 %{_sbindir}/aa-unconfined
-%{_sbindir}/apparmor_status
 %{_sbindir}/audit
 %{_sbindir}/autodep
 %{_sbindir}/complain
@@ -635,7 +600,6 @@ fi
 %{_sbindir}/genprof
 %{_sbindir}/logprof
 %{_sbindir}/notify
-%{_sbindir}/status
 %{_sbindir}/unconfined
 %{_bindir}/aa-easyprof
 %dir %{_datadir}/apparmor
@@ -656,10 +620,7 @@ fi
 %doc %{_mandir}/man8/aa-mergeprof.8.gz
 %doc %{_mandir}/man8/aa-notify.8.gz
 %doc %{_mandir}/man8/aa-remove-unknown.8.gz
-%doc %{_mandir}/man8/aa-status.8.gz
 %doc %{_mandir}/man8/aa-unconfined.8.gz
-
-%doc %{_mandir}/man8/apparmor_status.8.gz
 %doc %{_mandir}/man8/audit.8.gz
 %doc %{_mandir}/man8/autodep.8.gz
 %doc %{_mandir}/man8/complain.8.gz
@@ -679,19 +640,6 @@ fi
 %defattr(-,root,root)
 %{perl_vendorarch}/auto/LibAppArmor/
 %{perl_vendorarch}/LibAppArmor.pm
-%endif
-
-%if %{with python}
-
-%files -n python-apparmor
-%defattr(-,root,root)
-%{python_sitearch}/LibAppArmor-%{version}-py%{python_version}.egg-info
-%dir %{python_sitearch}/LibAppArmor
-%{python_sitearch}/LibAppArmor/_LibAppArmor.so
-%{python_sitearch}/LibAppArmor/__init__.py
-%{python_sitearch}/LibAppArmor/__init__.pyc
-%{python_sitelib}/apparmor/
-%{python_sitelib}/apparmor-%{version}-py%{python_version}.egg-info
 %endif
 
 %if %{with python3}

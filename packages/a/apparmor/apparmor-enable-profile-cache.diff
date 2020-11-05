@@ -9,8 +9,7 @@ See also bnc#689458
 
 
 Also set the cache location to /var/cache/apparmor/ (writeable) and
-/usr/share/apparmor/cache/ (packaged precompiled cache), and adjust
-the mount requirements in apparmor.service accordingly.
+/usr/share/apparmor/cache/ (packaged precompiled cache).
 
 See boo#1069906 and boo#1074429
 
@@ -33,14 +32,4 @@ Index: parser/parser.conf
  
  ## Show cache hits
  #show-cache
---- parser/apparmor.service_ORIG	2018-04-19 22:58:12.631443321 +0200
-+++ parser/apparmor.service	2018-04-19 22:58:47.903343044 +0200
-@@ -4,7 +4,7 @@ DefaultDependencies=no
- Before=sysinit.target
- After=systemd-journald-audit.socket
- # profile cache
--After=var.mount var-lib.mount
-+After=var.mount var-cache.mount usr.mount usr-share.mount
- ConditionSecurity=apparmor
- 
- [Service]
+

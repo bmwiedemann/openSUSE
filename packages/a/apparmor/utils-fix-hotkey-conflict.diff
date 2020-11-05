@@ -1,0 +1,124 @@
+From 07bd11390ea16df17db7f7e6bd2c9678345d3ac5 Mon Sep 17 00:00:00 2001
+From: Christian Boltz <apparmor@cboltz.de>
+Date: Sat, 31 Oct 2020 20:21:29 +0100
+Subject: [PATCH 1/2] Check hotkey conflicts case-insensitive
+
+This is needed to catch conflicts between uppercase and lowercase
+hotkeys of the same letter, as seen with `(B)enannt` and `A(b)lehnen` in
+the german utils translations.
+---
+ utils/test/test-translations.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/utils/test/test-translations.py b/utils/test/test-translations.py
+index 4ca50c3d2..e1b91623d 100644
+--- a/utils/test/test-translations.py
++++ b/utils/test/test-translations.py
+@@ -61,7 +61,7 @@ class TestHotkeyConflicts(AATest):
+             keys = dict()
+             for key in params:
+                 text = t.gettext(CMDS[key])
+-                hotkey = get_translated_hotkey(text)
++                hotkey = get_translated_hotkey(text).lower()
+ 
+                 if keys.get(hotkey):
+                     raise Exception("Hotkey conflict: '%s' and '%s' in language %s" % (keys[hotkey], text, language))
+-- 
+GitLab
+
+
+From 7cf54f2cd83938cd3b51d588864eb8cc890d63f6 Mon Sep 17 00:00:00 2001
+From: Christian Boltz <apparmor@cboltz.de>
+Date: Sat, 31 Oct 2020 20:27:28 +0100
+Subject: [PATCH 2/2] Fix hotkey conflict in utils de.po, id.po and sv.po
+
+---
+ utils/po/de.po | 8 ++++----
+ utils/po/id.po | 8 ++++----
+ utils/po/sv.po | 2 +-
+ 3 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/utils/po/de.po b/utils/po/de.po
+index 161b3fcd4..ecafc5dad 100644
+--- a/utils/po/de.po
++++ b/utils/po/de.po
+@@ -1079,11 +1079,11 @@ msgstr "(C)hild sauber ausführen"
+ 
+ #: ../apparmor/ui.py:239
+ msgid "(N)amed"
+-msgstr "(B)enannt"
++msgstr "Be(n)annt"
+ 
+ #: ../apparmor/ui.py:240
+ msgid "(N)amed Clean Exec"
+-msgstr "(B)enannte sauber ausführen"
++msgstr "Be(n)annte sauber ausführen"
+ 
+ #: ../apparmor/ui.py:241
+ msgid "(U)nconfined"
+@@ -1111,11 +1111,11 @@ msgstr "(C)hild vererbt saubere Ausführung"
+ 
+ #: ../apparmor/ui.py:247
+ msgid "(N)amed Inherit"
+-msgstr "(B)enannte Vererbung"
++msgstr "Be(n)annte Vererbung"
+ 
+ #: ../apparmor/ui.py:248
+ msgid "(N)amed Inherit Clean Exec"
+-msgstr "(B)enannte Vererbung sauber ausführen"
++msgstr "Be(n)annte Vererbung sauber ausführen"
+ 
+ #: ../apparmor/ui.py:249
+ msgid "(X) ix On"
+diff --git a/utils/po/id.po b/utils/po/id.po
+index e35a315a5..c88a1895d 100644
+--- a/utils/po/id.po
++++ b/utils/po/id.po
+@@ -1147,11 +1147,11 @@ msgstr "(B)aru"
+ 
+ #: ../apparmor/ui.py:254
+ msgid "(G)lob"
+-msgstr "(G)umpal"
++msgstr "G(u)mpal"
+ 
+ #: ../apparmor/ui.py:255
+ msgid "Glob with (E)xtension"
+-msgstr "Gumpal dengan (E)kstensi"
++msgstr "Gumpal dengan E(k)stensi"
+ 
+ #: ../apparmor/ui.py:256
+ msgid "(A)dd Requested Hat"
+@@ -1159,7 +1159,7 @@ msgstr "(T)ambahkan Topi yang Diminta"
+ 
+ #: ../apparmor/ui.py:257
+ msgid "(U)se Default Hat"
+-msgstr "(G)unakan Topi Default"
++msgstr "Gunakan Topi (D)efault"
+ 
+ #: ../apparmor/ui.py:258
+ msgid "(S)can system log for AppArmor events"
+@@ -1175,7 +1175,7 @@ msgstr "(L)ihat Profil"
+ 
+ #: ../apparmor/ui.py:261
+ msgid "(U)se Profile"
+-msgstr "(G)unakan Profil"
++msgstr "Gunakan (P)rofil"
+ 
+ #: ../apparmor/ui.py:262
+ msgid "(C)reate New Profile"
+diff --git a/utils/po/sv.po b/utils/po/sv.po
+index 702c71166..e128ffda5 100644
+--- a/utils/po/sv.po
++++ b/utils/po/sv.po
+@@ -1004,7 +1004,7 @@ msgstr ""
+ 
+ #: ../apparmor/ui.py:223
+ msgid "(A)llow"
+-msgstr "(T)illåt"
++msgstr "Ti(l)låt"
+ 
+ #: ../apparmor/ui.py:224
+ msgid "(M)ore"
+-- 
+GitLab
+

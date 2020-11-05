@@ -1,0 +1,26 @@
+From d08d1a00a350964abae39337402ab1f2caf271b9 Mon Sep 17 00:00:00 2001
+From: Christian Boltz <apparmor@cboltz.de>
+Date: Sat, 31 Oct 2020 20:52:30 +0100
+Subject: [PATCH] Fix invalid Pux (should be PUx) permissions in
+ dhclient-script
+
+---
+ profiles/apparmor/profiles/extras/sbin.dhclient-script | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/profiles/apparmor/profiles/extras/sbin.dhclient-script b/profiles/apparmor/profiles/extras/sbin.dhclient-script
+index 7b3113525..d972b6093 100644
+--- a/profiles/apparmor/profiles/extras/sbin.dhclient-script
++++ b/profiles/apparmor/profiles/extras/sbin.dhclient-script
+@@ -25,7 +25,7 @@ profile dhclient-script /{usr/,}sbin/dhclient-script {
+   /etc/dhcp/{**,} r,
+   /{usr/,}sbin/dhclient-script r,
+   /{usr/,}sbin/ip rix,
+-  /{usr/,}sbin/resolvconf rPux,
++  /{usr/,}sbin/resolvconf rPUx,
+ 
+   include if exists <local/sbin.dhclient-script>
+ }
+-- 
+GitLab
+

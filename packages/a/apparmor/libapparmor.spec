@@ -2,7 +2,7 @@
 # spec file for package libapparmor
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2011-2019 Christian Boltz
+# Copyright (c) 2011-2020 Christian Boltz
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           libapparmor
-Version:        2.13.5
+Version:        3.0.0
 Release:        0
 Summary:        Utility library for AppArmor
 License:        LGPL-2.1-or-later
@@ -31,9 +31,7 @@ BuildRequires:  dejagnu
 BuildRequires:  flex
 BuildRequires:  pkg-config
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
-# fix libapparmor so version (submitted upstream 2020-10-17 https://gitlab.com/apparmor/apparmor/-/merge_requests/658
-Patch1:         libapparmor-so-number.diff
+Patch1:         changes-since-3.0.0.diff
 
 %description
 This package provides the libapparmor library, which contains the

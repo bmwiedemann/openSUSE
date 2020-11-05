@@ -1,0 +1,2113 @@
+Changes since v3.0.0 up to 3e18c0785abc03ee42a022a67a27a085516a7921
+
+
+
+
+commit 3e18c0785abc03ee42a022a67a27a085516a7921
+Author: John Johansen <john@jjmx.net>
+Date:   Sun Oct 25 11:32:06 2020 +0000
+
+    Merge profiles/apparmor.d/abstractions/X: make x11 socket writable again
+    
+    Unfortunately in apparmor sockets need `rw` access. Currently x11 can only work if abstract socket is available and used instead so those restrictions won't trigger.
+    
+    partially reverts https://gitlab.com/apparmor/apparmor/-/commit/c7b836821660b561fee29ce360949aebcb7b4298
+    
+    MR: https://gitlab.com/apparmor/apparmor/-/merge_requests/664
+    Acked-by: John Johansen <john.johansen@canonical.com>
+    (cherry picked from commit 0cb35fda84a6ace742d9da3a7630a0dcc6ffae9d)
+    Signed-off-by: John Johansen <john.johansen@canonical.com>
+
+commit 15595eb51d0949b7f57e59b7dca73d1b0a26a6e0
+Author: John Johansen <john@jjmx.net>
+Date:   Sun Oct 25 11:24:58 2020 +0000
+
+    Merge Add Fontmatrix to abstractions/fonts
+    
+    [Fontmatrix](https://github.com/fontmatrix/fontmatrix) [adds \~/.Fontmatrix/Activated to fonts.conf](https://github.com/fontmatrix/fontmatrix/blob/75552e2/src/typotek.cpp#L1081-L1088). This causes programs which use [Fontconfig](https://gitlab.freedesktop.org/fontconfig/fontconfig) (directly or indirectly through libraries such as [Pango](https://pango.gnome.org/)) to include that directory in their font search path, which causes errors such as:
+    
+    ```
+    audit: type=1400 audit(1602678958.525:53): apparmor="DENIED" operation="open" profile="fr.emersion.Mako" name="/home/username/.Fontmatrix/Activated/.uuid" pid=48553 comm="mako" requested_mask="r" denied_mask="r" fsuid=1000 ouid=1000
+    audit: type=1400 audit(1602678958.525:54): apparmor="DENIED" operation="open" profile="fr.emersion.Mako" name="/home/username/.Fontmatrix/Activated/" pid=48553 comm="mako" requested_mask="r" denied_mask="r" fsuid=1000 ouid=1000
+    ```
+    
+    if the program does not explicitly include this directory in its AppArmor profile. As with other common font locations, add `~/.Fontmatrix/Activated` to the fonts abstraction for read-only access.
+    
+    MR: https://gitlab.com/apparmor/apparmor/-/merge_requests/657
+    Acked-by: John Johansen <john.johansen@canonical.com>
+    (cherry picked from commit 24855edd11f14fe80fe8744ef61b3a4297fdf5ce)
+
+commit ad30555a96488989f4b623fb9499c530bdda6de3
+Author: Francois Marier <francois@debian.org>
+Date:   Sun Oct 25 09:37:01 2020 +0000
+
+    Adjust to support brave in ubuntu abstractions
+    
+    Bug-Ubuntu: https://launchpad.net/bugs/1889699
+    MR: https://gitlab.com/apparmor/apparmor/-/merge_requests/667
+    (cherry picked from commit 9b30f9306dcc87bcfc0d5de51af6357e98f8b099)
+    Signed-off-by: John Johansen <john.johansen@canonical.com>
+
+commit b0e12a5788744149ee4a108064d5c92e0e77f2b5
+Author: Jamie Strandboge <jamie@canonical.com>
+Date:   Sun Oct 25 09:37:01 2020 +0000
+
+    Adjust ubuntu-integration to use abstractions/exo-open
+    
+    Bug-Ubuntu: https://launchpad.net/bugs/1891338
+    MR: https://gitlab.com/apparmor/apparmor/-/merge_requests/666
+    (cherry picked from commit 9ff0bbb69e47f8f3cddc56a2134558a79ac062d5)
+    Signed-off-by: John Johansen <john.johansen@canonical.com>
+
+commit 1ba978b65c6d544af1b67126e348398218210488
+Author: Christian Boltz <gitlab2@cboltz.de>
+Date:   Sun Oct 25 10:16:26 2020 +0000
+
+    Merge branch 'adjust-for-new-ICEauthority-path-in-run' into 'master'
+    
+    Adjust for new ICEauthority path in /run
+    
+    Bug-Ubuntu: https://launchpad.net/bugs/1881357
+    
+    See merge request apparmor/apparmor!668
+    
+    
+    Acked-by: Christian Boltz <apparmor@cboltz.de> for 3.0 and master
+    
+    (cherry picked from commit dbb1b900b818d270086e2da3e780cdc83e2c7a1c)
+    
+    1abe1017 Adjust for new ICEauthority path in /run
+
+commit 3c2ddc2ede2d0b479cb4f3f27fa108789a3ca9f2
+Author: Mikhail Morfikov <mmorfikov@gmail.com>
+Date:   Sun Oct 11 05:08:32 2020 -0700
+
+    abstractions: mesa - tightens cache location and add fallback
+    
+    This tightens the cache location in @{HOME}/.cache and also adds
+    the tmp fallback location.
+    
+    Currently there are the following entries in the mesa abstraction:
+    
+    Fixes: https://gitlab.com/apparmor/apparmor/-/issues/91
+    Signed-off-by: John Johansen <john.johansen@canonical.com>
+    (cherry picked from commit 5aa6db68e0fb8a7db5a4e5872a0a1e14cfbbfdfe)
+
+commit 805cb2c796bb66e7ab5043554edd4c27da774e51
+Author: glitsj16 <apparmor.issue124@gitlab.com>
+Date:   Sun Oct 11 04:46:48 2020 -0700
+
+    profiles: nscd:  service fails with apparmor 3.0.0-2 on Arch Linux
+    
+    After a recent upgrade of apparmor on Arch Linux the nscd systemd service fails to start. Arch Linux has /var/db/nscd and that path is missing from the profile AFAICT.
+    
+    MR: https://gitlab.com/apparmor/apparmor/-/merge_requests/651
+    Fixes: https://gitlab.com/apparmor/apparmor/-/issues/124
+    Signed-off-by: John Johansen <john.johansen@canonical.com>
+    (cherry picked from commit 821f9fe42d4e83b6b73972a97953686d005858e9)
+
+commit 8cb1f8f4f656f30ecd30246ef436ebd85b03450e
+Author: John Johansen <john.johansen@canonical.com>
+Date:   Wed Oct 21 03:16:46 2020 -0700
+
+    utils: fix make -C profiles check-logprof fails
+    
+    On arch
+      make -C profiles check-logprof
+    
+    fails with
+      *** Checking profiles from ./apparmor.d against logprof
+    
+      ERROR: Can't find AppArmor profiles in /etc/apparmor.d
+      make: *** [Makefile:113: check-logprof] Error 1
+      make: Leaving directory '/build/apparmor/src/apparmor-2.13.3/profiles'
+    
+    because /etc/apparmor.d/ is not available in the build environment
+    and aa-logprofs --dir argument, is not being passed to init_aa()
+    but used to update profiles_dir after the fact.
+    
+    Fix this by passing profiledir as an argument to init_aa()
+    
+    Fixes: https://gitlab.com/apparmor/apparmor/-/issues/36
+    MR: https://gitlab.com/apparmor/apparmor/-/merge_requests/663
+    Signed-off-by: John Johansen <john.johansen@canonical.com>
+    Acked-by: Christian Boltz <apparmor@cboltz.de>
+    (cherry picked from commit 15dc06248c62ccceec00f70296a6c17f7c5096a1)
+
+commit ff72ea9a56918da19f4a53acda26d14c7e598b56
+Author: John Johansen <john.johansen@canonical.com>
+Date:   Mon Oct 19 19:14:59 2020 -0700
+
+    aa-notify: Stop aa-notify from exit after 100s of polling
+    
+    When run with the -p flag, aa-notify works fine for 100 seconds and then it exits.
+    I suspect that the issue arises from the following check on line 259 in utils/aa-notify
+    if debug_logger.debug_level <= 10 and int(time.time()) - start_time > 100:
+        debug_logger.debug('Debug mode detected: aborting notification emitter after 100 seconds.')
+        sys.exit(0)
+    together with line 301 in utils/apparmor/common.py which initializes debug_logger.debug_level to logging.DEBUG which has the numerical value 10.
+    A simple solution might be to just remove the check as I'm not quit sure why one would want aa-notify to exit when run in debug mode in the first place.
+    Alternatively, one could check against debug_logger.debugging (initialized to False) or change the initialization of debug_logger.debug_level to something else, but I don't know how that would affect other consumers of utils/apparmor/common.py.
+    
+    For now just add dbugger_logger.debugging as an additional check as the
+    reason for timing out after 100s during debugging are unclear.
+    
+    Suggested-by: vicvbcun
+    Fixes: https://gitlab.com/apparmor/apparmor/-/issues/126
+    MR: https://gitlab.com/apparmor/apparmor/-/merge_requests/660
+    Signed-off-by: John Johansen <john.johansen@canonical.com>
+    Acked-by: Otto Kekäläinen <otto@kekalainen.net>
+    (cherry picked from commit 8ea7630b6dc6b46e00341835e92c4f6ead05e984)
+
+commit eab43b53589c9fbe40c7f1a9957b7696e1b89e11
+Author: John Johansen <john.johansen@canonical.com>
+Date:   Tue Oct 20 21:38:02 2020 -0700
+
+    utils: split linting with PYFLAKES into a separate target.
+    
+    This a step towards addressing the linting of the utils causing
+    problems in a build vs dev environment. See
+      https://gitlab.com/apparmor/apparmor/-/issues/121
+    
+    Split off linting with PYFLAKES into its own target as a step towards
+    making the running of the lint checks as a configuration option.
+    
+    https://gitlab.com/apparmor/apparmor/-/merge_requests/662
+    Signed-off-by: John Johansen <john.johansen@canonical.com>
+    Acked-by: Christian Boltz <apparmor@cboltz.de>
+    (cherry picked from commit 43eb54d13caf2c46178328e451a971698f3f35a7)
+
+commit bf75381287e36b0a1f567ed39cc65c7db75db154
+Author: John Johansen <john@jjmx.net>
+Date:   Mon Oct 19 22:22:23 2020 +0000
+
+    Merge Revert "Merge dnsmasq: Permit access to /proc/self/fd/"
+    
+    This reverts merge request !628. My reason for this proposal is that commit 88c142c6 already provided this change, something I must have missed when I opened the initial merge request. This resulted in duplicate entries in the profile, something that is also potentially confusing to users or other contributors.
+    
+    MR: https://gitlab.com/apparmor/apparmor/-/merge_requests/659
+    Acked-by: John Johansen <john.johansen@canonical.com>
+    
+    
+    (cherry picked from commit 38c611ed314f739f62279c00b07c249046209488)
+    
+    e0b20a4d Revert "Merge dnsmasq: Permit access to /proc/self/fd/"
+
+commit 80efc15e18a6bb0d0abd2821cb03bf6be51cc517
+Author: Christian Boltz <apparmor@cboltz.de>
+Date:   Wed Oct 14 14:01:55 2020 +0200
+
+    Add CAP_CHECKPOINT_RESTORE to severity.db
+    
+    MR: https://gitlab.com/apparmor/apparmor/-/merge_requests/656
+    Signed-off-by: John Johansen <john.johansen@canonical.com>
+    (cherry picked from commit 2c2dbdc3a3012ce06371edc1e9be6f58711d8565)
+
+commit 49db93a79d164cbd49d05c5d8ef51a56ed87d4d5
+Author: John Johansen <john.johansen@canonical.com>
+Date:   Wed Oct 14 04:08:04 2020 -0700
+
+    translations: update generated pot files
+    
+    Signed-off-by: John Johansen <john.johansen@canonical.com>
+
+commit 935003883e02a8a2af79ccc483ad4f9e9d2e50c7
+Author: John Johansen <john.johansen@canonical.com>
+Date:   Tue Oct 13 19:19:10 2020 -0700
+
+    parser: Add support for CAP_CHECKPOINT_RESTORE
+    
+    Linux 5.9 added CAP_CHECKPOINT_RESTORE add it to the set of supported
+    capabilities.
+    
+    MR: https://gitlab.com/apparmor/apparmor/-/merge_requests/654
+    Signed-off-by: John Johansen <john.johansen@canonical.com>
+    Acked-by: Seth Arnold <seth.arnold@canonical.com>
+    (cherry picked from commit 644a473971df4e18555e97fa36bafd89459c4717)
+    Signed-off-by: John Johansen <john.johansen@canonical.com>
+
+commit 5ee729331ac5e9d765db0e4a621d5366a074bb29
+Author: John Johansen <john.johansen@canonical.com>
+Date:   Tue Oct 13 04:34:24 2020 -0700
+
+    regression tests: fix aa_policy_cache to use correct config file
+    
+    The aa_policy_cache test is using the system parser.conf file even
+    when the tests are set to use source. This can lead to failures
+    if the system parser.conf contain options not understood by
+    the source parser.
+    
+    MR: https://gitlab.com/apparmor/apparmor/-/merge_requests/653
+    Signed-off-by: John Johansen <john.johansen@canonical.com>
+    (cherry picked from commit 1033e19171941a4655565d4bbe9b69c552a2353b)
+
+commit d89478794e4b315b066bb3d0504d9d08003b384d
+Author: John Johansen <john.johansen@canonical.com>
+Date:   Tue Oct 13 03:48:31 2020 -0700
+
+    regression test: Fix regression tests when using in tree parser
+    
+    When using the in tree parser we should not be using the system
+    parser.conf file, as if the system apparmor is newer than the
+    tree being tested the parser.conf file could contain options not
+    understood by the in tree apparmor_parser.
+    
+    Use --config-file to specify the default in tree parser.conf
+    
+    MR: https://gitlab.com/apparmor/apparmor/-/merge_requests/653
+    Signed-off-by: John Johansen <john.johansen@canonical.com>
+    (cherry picked from commit 5ac368bce7a710c61e7d94bf1e23b03d2ace824e)
+
+commit 738c7c60ba5d61707013fe4cf2faee2f75f4b9ec
+Author: John Johansen <john.johansen@canonical.com>
+Date:   Fri Oct 9 14:08:27 2020 -0700
+
+    parser: Fix warning message when complain mode is forced
+    
+    when a profile is being forced to complain a variation of the
+    following message is displayed
+    
+      Warning from /etc/apparmor.d/usr.sbin.sssd (/etc/apparmor.d/usr.sbin.sssd line 54): Warning failed to create cache: usr.sbin.sssd
+    
+    This is incorrect in that the parser doesn't even try to create the
+    cache, it just can't cache force complain profiles.
+    
+    Output a warning message for this case that is correct.
+    
+    Fixes: https://bugs.launchpad.net/ubuntu/+source/apparmor/+bug/1899218
+    MR: https://gitlab.com/apparmor/apparmor/-/merge_requests/649
+    Signed-off-by: John Johansen <john.johansen@canonical.com>
+    Acked-by: Steve Beattie <steve.beattie@canonical.com>
+    Acked-by: Christian Boltz <apparmor@cboltz.de>
+    (cherry picked from commit 21060e802aa997fc7a1788fd9443f7e7be5ca1ed)
+
+commit e142376368142963b60ab6dc3b8974552a347419
+Author: John Johansen <john.johansen@canonical.com>
+Date:   Fri Oct 9 12:59:22 2020 -0700
+
+    parser: fix parser.conf commenting on pinning an abi
+    
+    The comments describing the example rules to pin the abi are wrong.
+    The comments of the two example rules are swapped resulting in confusion.
+    
+    While we are at it. Add a reference to the wiki doc on abi, and
+    how to disable abi warnings without pinning.
+    
+    MR: https://gitlab.com/apparmor/apparmor/-/merge_requests/648
+    Signed-off-by: John Johansen <john.johansen@canonical.com>
+    Acked-by: Seth Arnold <seth.arnold@canonical.com>
+    (cherry picked from commit ec19ff9f72c0585065599bf1d10a28f45254cf00)
+
+commit 8f39da550199fee18a821112246af5fd0d91ae06
+Author: Armin Kuster <akuster@mvista.com>
+Date:   Wed Oct 7 20:50:38 2020 -0700
+
+    parser/Makefile: dont force host cpp to detect reallocarray
+    
+    In cross build environments, using the hosts cpp gives incorrect
+    detection of reallocarray. Change cpp to a variable.
+    
+    fixes:
+    parser_misc.c: In function 'int capable_add_cap(const char*, int, unsigned int, capability_flags)':
+    | parser_misc.c:297:37: error: 'reallocarray' was not declared in this scope
+    |   297 |   tmp = (struct capability_table *) reallocarray(cap_table, sizeof(struct capability_table), cap_table_size+1);
+    
+    MR: https://gitlab.com/apparmor/apparmor/-/merge_requests/647
+    Signed-off-by: Armin Kuster <akuster808@gmail.com>
+    (cherry picked from commit 0dbcbee70097ecde66708064ec1dedfa64e581e8)
+    Signed-off-by: John Johansen <john.johansen@canonical.com>
+
+commit 2f774431cb0ffa0d540c780004ce658dba8012f5
+Author: Armin Kuster <akuster808@gmail.com>
+Date:   Wed Oct 7 08:27:11 2020 -0700
+
+    aa_status: Fix build issue with musl
+    
+    add limits.h
+    
+    aa_status.c:269:22: error: 'PATH_MAX' undeclared (first use in this function); did you mean 'AF_MAX'?
+    |   269 |    real_exe = calloc(PATH_MAX + 1, sizeof(char));
+    
+    MR: https://gitlab.com/apparmor/apparmor/-/merge_requests/647
+    Signed-off-by: Armin Kuster <akuster808@gmail.com>
+    (cherry picked from commit a2a0d14b9c5046b76124c828a53b0e9cbc1bc5c8)
+    Signed-off-by: John Johansen <john.johansen@canonical.com>
+
+commit b64bf7771a0b68ad4e404f34861c54b3feba961e
+Author: Armin Kuster <akuster808@gmail.com>
+Date:   Fri Oct 2 19:43:44 2020 -0700
+
+    apparmor: fix manpage order
+    
+    It trys to create a symlink before the man pages are installed.
+    
+     ln -sf aa-status.8 /(path}/apparmor/3.0-r0/image/usr/share/man/man8/apparmor_status.8
+     | ln: failed to create symbolic link '{path}/apparmor/3.0-r0/image/usr/share/man/man8/apparmor_status.8': No such file or directory
+    
+    ...
+    
+    install -d /{path}/apparmor/3.0-r0/image/usr/share/man/man8 ; install -m 644 aa-status.8 /{path}/apparmor/3.0-r0/image/usr/share/man/man8;
+    
+    MR: https://gitlab.com/apparmor/apparmor/-/merge_requests/646
+    Signed-off-by: Armin Kuster <akuster808@gmail.com>
+    (cherry picked from commit 37b902849932eda888c095a65783604d540cb44f)
+    Signed-off-by: John Johansen <john.johansen@canonical.com>
+
+commit 848664b47b41b74098b28c427e0abbf75b86ca85
+Author: Anton Nesterov <anton@nesterov.cc>
+Date:   Tue Oct 6 19:51:07 2020 +0000
+
+    Fix dhclient and dhclient-script profiles to work on debian buster
+    
+    MR: https://gitlab.com/apparmor/apparmor/-/merge_requests/645
+    (cherry picked from commit 9b70ef4fb74af9b5cfbce8d34de925f7540399ad)
+    Signed-off-by: John Johansen <john.johansen@canonical.com>
+
+commit 526c902ba2bade777c164f4ec6dbbce3f81b64da
+Author: David Runge <dave@sleepmap.de>
+Date:   Fri Oct 2 23:58:53 2020 +0200
+
+    Skip test if it can not access /var/log/wtmp
+    
+    utils/test/test-aa-notify.py:
+    Change `AANotifyTest.test_entries_since_login()` to be decorated by a
+    `skipUnless()` checking for existence of **/var/log/wtmp** (similar to
+    `AANotifyTest.test_entries_since_login_verbose()`).
+    The test otherwise fails trying to access /var/log/wtmp in environments
+    where the file is not available.
+    
+    Fixes https://gitlab.com/apparmor/apparmor/-/issues/120
+    MR: https://gitlab.com/apparmor/apparmor/-/merge_requests/641
+    (cherry picked from commit e0200b1b1681c2a9210f4b50788efacf671e5c8f)
+    Signed-off-by: John Johansen <john.johansen@canonical.com>
+
+commit b73b8ed432e24effabb41356a5974af4ae20145c
+Author: Patrick Steinhardt <ps@pks.im>
+Date:   Sat Oct 3 20:37:55 2020 +0200
+
+    libapparmor: add missing include for `socklen_t`
+    
+    While `include/sys/apparmor.h` makes use of `socklen_t`, it doesn't
+    include the `<sys/socket.h>` header to make its declaration available.
+    While this works on systems using glibc via transitive includes, it
+    breaks compilation on musl libc.
+    
+    Fix the issue by including the header.
+    
+    MR: https://gitlab.com/apparmor/apparmor/-/merge_requests/642
+    Signed-off-by: Patrick Steinhardt <ps@pks.im>
+    (cherry picked from commit 47263a3a74d7973e7a54b17db6aa903701468ffd)
+    Signed-off-by: John Johansen <john.johansen@canonical.com>
+
+commit 59589308eb577bee7316436b64d9ac2268e19c48
+Author: Patrick Steinhardt <ps@pks.im>
+Date:   Sat Oct 3 21:04:57 2020 +0200
+
+    libapparmor: add _aa_asprintf to private symbols
+    
+    While `_aa_asprintf` is supposed to be of private visibility, it's used
+    by apparmor_parser and thus required to be visible when linking. This
+    commit thus adds it to the list of private symbols to make it available
+    for linking in apparmor_parser.
+    
+    MR: https://gitlab.com/apparmor/apparmor/-/merge_requests/643
+    Signed-off-by: Patrick Steinhardt <ps@pks.im>
+    (cherry picked from commit 9a8fee6bf1c79c261374d928b838b5eb9244ee9b)
+    Signed-off-by: John Johansen <john.johansen@canonical.com>
+
+commit 2ef17fa97237a78e9a41357497a94bd9c7fcaa2d
+Author: Patrick Steinhardt <ps@pks.im>
+Date:   Sat Oct 3 20:58:45 2020 +0200
+
+    libapparmor: add `aa_features_new_from_file` to public symbols
+    
+    With AppArmor release 3.0, a new function `aa_features_new_from_file`
+    was added, but not added to the list of public symbols. As a result,
+    it's not possible to make use of this function when linking against
+    libapparmor.so.
+    
+    Fix the issue by adding it to the symbol map.
+    
+    MR: https://gitlab.com/apparmor/apparmor/-/merge_requests/643
+    Signed-off-by: Patrick Steinhardt <ps@pks.im>
+    (cherry picked from commit c9255a03436e6a91bd4e410601da8d43a341ffc2)
+    Signed-off-by: John Johansen <john.johansen@canonical.com>
+
+
+
+
+
+diff --git a/binutils/Makefile b/binutils/Makefile
+index 99e54875..3f1d0011 100644
+--- a/binutils/Makefile
++++ b/binutils/Makefile
+@@ -156,12 +156,12 @@ install-arch: arch
+ 	install -m 755 -d ${SBINDIR}
+ 	ln -sf aa-status ${SBINDIR}/apparmor_status
+ 	install -m 755 ${SBINTOOLS} ${SBINDIR}
+-	ln -sf aa-status.8 ${DESTDIR}/${MANDIR}/man8/apparmor_status.8
+ 
+ .PHONY: install-indep
+ install-indep: indep
+ 	$(MAKE) -C po install NAME=${NAME} DESTDIR=${DESTDIR}
+ 	$(MAKE) install_manpages DESTDIR=${DESTDIR}
++	ln -sf aa-status.8 ${DESTDIR}/${MANDIR}/man8/apparmor_status.8
+ 
+ ifndef VERBOSE
+ .SILENT: clean
+diff --git a/binutils/aa_status.c b/binutils/aa_status.c
+index 78b03409..41f1954e 100644
+--- a/binutils/aa_status.c
++++ b/binutils/aa_status.c
+@@ -10,6 +10,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <limits.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/wait.h>
+diff --git a/binutils/po/aa-enabled.pot b/binutils/po/aa_enabled.pot
+similarity index 63%
+rename from binutils/po/aa-enabled.pot
+rename to binutils/po/aa_enabled.pot
+index bb2b69e7..e9850bf4 100644
+--- a/binutils/po/aa-enabled.pot
++++ b/binutils/po/aa_enabled.pot
+@@ -1,13 +1,14 @@
+-# Copyright (C) 2015 Canonical Ltd
+-# This file is distributed under the same license as the AppArmor package.
+-# John Johansen <john.johansen@canonical.com>, 2015.
++# SOME DESCRIPTIVE TITLE.
++# Copyright (C) YEAR Canonical Ltd
++# This file is distributed under the same license as the PACKAGE package.
++# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+ #
+ #, fuzzy
+ msgid ""
+ msgstr ""
+ "Project-Id-Version: PACKAGE VERSION\n"
+ "Report-Msgid-Bugs-To: apparmor@lists.ubuntu.com\n"
+-"POT-Creation-Date: 2015-11-28 10:23-0800\n"
++"POT-Creation-Date: 2020-10-14 03:58-0700\n"
+ "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+ "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+ "Language-Team: LANGUAGE <LL@li.org>\n"
+@@ -16,51 +17,57 @@ msgstr ""
+ "Content-Type: text/plain; charset=CHARSET\n"
+ "Content-Transfer-Encoding: 8bit\n"
+ 
+-#: ../aa_enabled.c:26
++#: ../aa_enabled.c:21
+ #, c-format
+ msgid ""
+ "%s: [options]\n"
+ "  options:\n"
++"  -x | --exclusive    Shared interfaces must be availabe\n"
+ "  -q | --quiet        Don't print out any messages\n"
+ "  -h | --help         Print help\n"
+ msgstr ""
+ 
+-#: ../aa_enabled.c:45
++#: ../aa_enabled.c:37
+ #, c-format
+-msgid "unknown or incompatible options\n"
++msgid "No - not available on this system.\n"
+ msgstr ""
+ 
+-#: ../aa_enabled.c:55
++#: ../aa_enabled.c:41
+ #, c-format
+-msgid "unknown option '%s'\n"
++msgid "No - disabled at boot.\n"
+ msgstr ""
+ 
+-#: ../aa_enabled.c:64
++#: ../aa_enabled.c:45
+ #, c-format
+-msgid "Yes\n"
++msgid "Maybe - policy interface not available.\n"
+ msgstr ""
+ 
+-#: ../aa_enabled.c:71
++#: ../aa_enabled.c:50
+ #, c-format
+-msgid "No - not available on this system.\n"
++msgid "Maybe - insufficient permissions to determine availability.\n"
+ msgstr ""
+ 
+-#: ../aa_enabled.c:74
++#: ../aa_enabled.c:54
+ #, c-format
+-msgid "No - disabled at boot.\n"
++msgid "Partially - public shared interfaces are not available.\n"
+ msgstr ""
+ 
+-#: ../aa_enabled.c:77
++#: ../aa_enabled.c:58
+ #, c-format
+-msgid "Maybe - policy interface not available.\n"
++msgid "Error - %s\n"
+ msgstr ""
+ 
+-#: ../aa_enabled.c:81
++#: ../aa_enabled.c:73
+ #, c-format
+-msgid "Maybe - insufficient permissions to determine availability.\n"
++msgid "unknown or incompatible options\n"
+ msgstr ""
+ 
+-#: ../aa_enabled.c:84
++#: ../aa_enabled.c:87
+ #, c-format
+-msgid "Error - '%s'\n"
++msgid "unknown option '%s'\n"
++msgstr ""
++
++#: ../aa_enabled.c:98
++#, c-format
++msgid "Yes\n"
+ msgstr ""
+diff --git a/binutils/po/aa_exec.pot b/binutils/po/aa_exec.pot
+new file mode 100644
+index 00000000..bfaa2ffe
+--- /dev/null
++++ b/binutils/po/aa_exec.pot
+@@ -0,0 +1,55 @@
++# SOME DESCRIPTIVE TITLE.
++# Copyright (C) YEAR Canonical Ltd
++# This file is distributed under the same license as the PACKAGE package.
++# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
++#
++#, fuzzy
++msgid ""
++msgstr ""
++"Project-Id-Version: PACKAGE VERSION\n"
++"Report-Msgid-Bugs-To: apparmor@lists.ubuntu.com\n"
++"POT-Creation-Date: 2020-10-14 03:58-0700\n"
++"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
++"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
++"Language-Team: LANGUAGE <LL@li.org>\n"
++"Language: \n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=CHARSET\n"
++"Content-Transfer-Encoding: 8bit\n"
++
++#: ../aa_exec.c:50
++#, c-format
++msgid ""
++"USAGE: %s [OPTIONS] <prog> <args>\n"
++"\n"
++"Confine <prog> with the specified PROFILE.\n"
++"\n"
++"OPTIONS:\n"
++"  -p PROFILE, --profile=PROFILE\t\tPROFILE to confine <prog> with\n"
++"  -n NAMESPACE, --namespace=NAMESPACE\tNAMESPACE to confine <prog> in\n"
++"  -d, --debug\t\t\t\tshow messages with debugging information\n"
++"  -i, --immediate\t\t\tchange profile immediately instead of at exec\n"
++"  -v, --verbose\t\t\t\tshow messages with stats\n"
++"  -h, --help\t\t\t\tdisplay this help\n"
++"\n"
++msgstr ""
++
++#: ../aa_exec.c:65
++#, c-format
++msgid "[%ld] aa-exec: ERROR: "
++msgstr ""
++
++#: ../aa_exec.c:76
++#, c-format
++msgid "[%ld] aa-exec: DEBUG: "
++msgstr ""
++
++#: ../aa_exec.c:89
++#, c-format
++msgid "[%ld] "
++msgstr ""
++
++#: ../aa_exec.c:107
++#, c-format
++msgid "[%ld] exec"
++msgstr ""
+diff --git a/binutils/po/aa_features_abi.pot b/binutils/po/aa_features_abi.pot
+new file mode 100644
+index 00000000..12a68610
+--- /dev/null
++++ b/binutils/po/aa_features_abi.pot
+@@ -0,0 +1,51 @@
++# SOME DESCRIPTIVE TITLE.
++# Copyright (C) YEAR Canonical Ltd
++# This file is distributed under the same license as the PACKAGE package.
++# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
++#
++#, fuzzy
++msgid ""
++msgstr ""
++"Project-Id-Version: PACKAGE VERSION\n"
++"Report-Msgid-Bugs-To: apparmor@lists.ubuntu.com\n"
++"POT-Creation-Date: 2020-10-14 03:58-0700\n"
++"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
++"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
++"Language-Team: LANGUAGE <LL@li.org>\n"
++"Language: \n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=CHARSET\n"
++"Content-Transfer-Encoding: 8bit\n"
++
++#: ../aa_features_abi.c:53
++#, c-format
++msgid ""
++"USAGE: %s [OPTIONS] <SOURCE> [OUTPUT OPTIONS]\n"
++"\n"
++"Output AppArmor feature abi from SOURCE to OUTPUT\n"
++"OPTIONS:\n"
++"  -d, --debug      show messages with debugging information\n"
++"  -v, --verbose    show messages with stats\n"
++"  -h, --help       display this help\n"
++"SOURCE:\n"
++"  -f F, --file=F   load features abi from file F\n"
++"  -x, --extract    extract features abi from the kernel\n"
++"OUTPUT OPTIONS:\n"
++"  --stdout         default, write features to stdout\n"
++"  -w F, --write=F  write features abi to the file F instead of stdout\n"
++"\n"
++msgstr ""
++
++#: ../aa_features_abi.c:73
++#, c-format
++msgid "%s: ERROR: "
++msgstr ""
++
++#: ../aa_features_abi.c:85
++#, c-format
++msgid "%s: DEBUG: "
++msgstr ""
++
++#: ../aa_features_abi.c:98
++msgid "\n"
++msgstr ""
+diff --git a/libraries/libapparmor/include/sys/apparmor.h b/libraries/libapparmor/include/sys/apparmor.h
+index 32892d06..d70eff94 100644
+--- a/libraries/libapparmor/include/sys/apparmor.h
++++ b/libraries/libapparmor/include/sys/apparmor.h
+@@ -21,6 +21,7 @@
+ #include <stdbool.h>
+ #include <stdint.h>
+ #include <unistd.h>
++#include <sys/socket.h>
+ #include <sys/types.h>
+ 
+ #ifdef __cplusplus
+diff --git a/libraries/libapparmor/src/libapparmor.map b/libraries/libapparmor/src/libapparmor.map
+index bbff51f5..41e541ac 100644
+--- a/libraries/libapparmor/src/libapparmor.map
++++ b/libraries/libapparmor/src/libapparmor.map
+@@ -117,6 +117,7 @@ APPARMOR_2.13.1 {
+ 
+ APPARMOR_3.0 {
+   global:
++	aa_features_new_from_file;
+ 	aa_features_write_to_fd;
+ 	aa_features_value;
+   local:
+@@ -126,6 +127,7 @@ APPARMOR_3.0 {
+ PRIVATE {
+ 	global:
+ 		_aa_is_blacklisted;
++		_aa_asprintf;
+ 		_aa_autofree;
+ 		_aa_autoclose;
+ 		_aa_autofclose;
+diff --git a/parser/Makefile b/parser/Makefile
+index acef3d77..8250ac45 100644
+--- a/parser/Makefile
++++ b/parser/Makefile
+@@ -54,7 +54,7 @@ endif
+ CPPFLAGS += -D_GNU_SOURCE
+ 
+ STDLIB_INCLUDE:="\#include <stdlib.h>"
+-HAVE_REALLOCARRAY:=$(shell echo $(STDLIB_INCLUDE) | cpp ${CPPFLAGS} | grep -q reallocarray && echo true)
++HAVE_REALLOCARRAY:=$(shell echo $(STDLIB_INCLUDE) | ${CPP} ${CPPFLAGS} | grep -q reallocarray && echo true)
+ 
+ WARNINGS = -Wall
+ CXX_WARNINGS = ${WARNINGS} ${EXTRA_WARNINGS}
+diff --git a/parser/base_cap_names.h b/parser/base_cap_names.h
+index 6886ed99..9f922c22 100644
+--- a/parser/base_cap_names.h
++++ b/parser/base_cap_names.h
+@@ -8,6 +8,8 @@
+ 
+ {"bpf", CAP_BPF, CAP_SYS_ADMIN, CAPFLAG_BASE_FEATURE},
+ 
++{"checkpoint_restore", CAP_CHECKPOINT_RESTORE, CAP_SYS_ADMIN, CAPFLAG_BASE_FEATURE},
++
+ {"chown", CAP_CHOWN, NO_BACKMAP_CAP, CAPFLAG_BASE_FEATURE},
+ 
+ {"dac_override", CAP_DAC_OVERRIDE, NO_BACKMAP_CAP, CAPFLAG_BASE_FEATURE},
+diff --git a/parser/capability.h b/parser/capability.h
+index 7d1b7a29..23edf7c6 100644
+--- a/parser/capability.h
++++ b/parser/capability.h
+@@ -29,6 +29,10 @@
+ #define CAP_BPF 39
+ #endif
+ 
++#ifndef CAP_CHECKPOINT_RESTORE
++#define CAP_CHECKPOINT_RESTORE 40
++#endif
++
+ typedef enum capability_flags {
+ 	CAPFLAGS_CLEAR = 0,
+ 	CAPFLAG_BASE_FEATURE = 1,
+diff --git a/parser/parser.conf b/parser/parser.conf
+index 3ef00d45..1d1c0da2 100644
+--- a/parser/parser.conf
++++ b/parser/parser.conf
+@@ -65,10 +65,15 @@
+ ### policy to be used in AppArmor 3.x without the warning
+ ###    Warning from stdin (stdin line 1): apparmor_parser: File 'example'
+ ###    missing feature abi, falling back to default policy feature abi.
++### For more info please see
++### https://gitlab.com/apparmor/apparmor/-/wikis/AppArmorpolicyfeaturesabi
++
++### Turn off abi rule warnings without pinning the abi
++#warn=no-abi
+ 
+ ### Only a single feature ABI rule should be used at a time.
+ ## Pin older policy to the 5.4 kernel abi
+-#policy-features=/etc/apparmor.d/abi/kernel-5.4-outoftree-network
++#policy-features=/etc/apparmor.d/abi/kernel-5.4-vanilla
+ 
+ ## Pin older policy to the 5.4 kernel abi + out of tree network and af_unix
+-#policy-features=/etc/apparmor.d/abi/kernel-5.4-vanilla
++#policy-features=/etc/apparmor.d/abi/kernel-5.4-outoftree-network
+diff --git a/parser/parser_main.c b/parser/parser_main.c
+index 42bb7791..a0f593ac 100644
+--- a/parser/parser_main.c
++++ b/parser/parser_main.c
+@@ -1159,9 +1159,11 @@ int process_profile(int option, aa_kernel_interface *kernel_interface,
+ 	/* cache file generated by load_policy */
+ 	retval = load_policy(option, kernel_interface, cachetmp);
+ 	if (retval == 0 && write_cache) {
+-		if (cachetmp == -1) {
++		if (force_complain) {
++			pwarn(WARN_CACHE, "Caching disabled for: '%s' due to force complain\n", basename);
++		} else if (cachetmp == -1) {
+ 			unlink(cachetmpname);
+-			pwarn(WARN_CACHE, "Warning failed to create cache: %s\n",
++			pwarn(WARN_CACHE, "Failed to create cache: %s\n",
+ 			       basename);
+ 		} else {
+ 			install_cache(cachetmpname, writecachename);
+diff --git a/parser/po/apparmor-parser.pot b/parser/po/apparmor-parser.pot
+index 8e22fffa..df194e31 100644
+--- a/parser/po/apparmor-parser.pot
++++ b/parser/po/apparmor-parser.pot
+@@ -1,5 +1,5 @@
+ # SOME DESCRIPTIVE TITLE.
+-# Copyright (C) YEAR NOVELL, Inc.
++# Copyright (C) YEAR Canonical Ltd
+ # This file is distributed under the same license as the PACKAGE package.
+ # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+ #
+@@ -8,7 +8,7 @@ msgid ""
+ msgstr ""
+ "Project-Id-Version: PACKAGE VERSION\n"
+ "Report-Msgid-Bugs-To: apparmor@lists.ubuntu.com\n"
+-"POT-Creation-Date: 2014-09-13 00:11-0700\n"
++"POT-Creation-Date: 2020-10-14 04:04-0700\n"
+ "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+ "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+ "Language-Team: LANGUAGE <LL@li.org>\n"
+@@ -17,95 +17,106 @@ msgstr ""
+ "Content-Type: text/plain; charset=CHARSET\n"
+ "Content-Transfer-Encoding: 8bit\n"
+ 
+-#: ../parser_include.c:113 ../parser_include.c:111
++#: ../parser_include.c:113 ../parser_include.c:111 ../parser_include.c:96
+ msgid "Error: Out of memory.\n"
+ msgstr ""
+ 
+-#: ../parser_include.c:123 ../parser_include.c:121
++#: ../parser_include.c:123 ../parser_include.c:121 ../parser_include.c:106
+ #, c-format
+ msgid "Error: basedir %s is not a directory, skipping.\n"
+ msgstr ""
+ 
+-#: ../parser_include.c:137
++#: ../parser_include.c:137 ../parser_include.c:122
+ #, c-format
+ msgid "Error: Could not add directory %s to search path.\n"
+ msgstr ""
+ 
+-#: ../parser_include.c:147 ../parser_include.c:151
++#: ../parser_include.c:147 ../parser_include.c:151 ../parser_include.c:136
+ msgid "Error: Could not allocate memory.\n"
+ msgstr ""
+ 
+ #: ../parser_interface.c:69 ../parser_interface.c:72 ../parser_interface.c:49
++#: ../parser_interface.c:52
+ msgid "Bad write position\n"
+ msgstr ""
+ 
+ #: ../parser_interface.c:72 ../parser_interface.c:75 ../parser_interface.c:52
++#: ../parser_interface.c:55
+ msgid "Permission denied\n"
+ msgstr ""
+ 
+ #: ../parser_interface.c:75 ../parser_interface.c:78 ../parser_interface.c:55
++#: ../parser_interface.c:58
+ msgid "Out of memory\n"
+ msgstr ""
+ 
+ #: ../parser_interface.c:78 ../parser_interface.c:81 ../parser_interface.c:58
++#: ../parser_interface.c:61
+ msgid "Couldn't copy profile: Bad memory address\n"
+ msgstr ""
+ 
+ #: ../parser_interface.c:81 ../parser_interface.c:84 ../parser_interface.c:61
++#: ../parser_interface.c:64
+ msgid "Profile doesn't conform to protocol\n"
+ msgstr ""
+ 
+ #: ../parser_interface.c:84 ../parser_interface.c:87 ../parser_interface.c:64
++#: ../parser_interface.c:67
+ msgid "Profile does not match signature\n"
+ msgstr ""
+ 
+ #: ../parser_interface.c:87 ../parser_interface.c:90 ../parser_interface.c:67
++#: ../parser_interface.c:70
+ msgid "Profile version not supported by Apparmor module\n"
+ msgstr ""
+ 
+ #: ../parser_interface.c:90 ../parser_interface.c:93 ../parser_interface.c:70
++#: ../parser_interface.c:73
+ msgid "Profile already exists\n"
+ msgstr ""
+ 
+ #: ../parser_interface.c:93 ../parser_interface.c:96 ../parser_interface.c:73
++#: ../parser_interface.c:76
+ msgid "Profile doesn't exist\n"
+ msgstr ""
+ 
+ #: ../parser_interface.c:96 ../parser_interface.c:99 ../parser_interface.c:76
++#: ../parser_interface.c:79
+ msgid "Permission denied; attempted to load a profile while confined?\n"
+ msgstr ""
+ 
+ #: ../parser_interface.c:99 ../parser_interface.c:102 ../parser_interface.c:79
++#: ../parser_interface.c:82
+ #, c-format
+ msgid "Unknown error (%d): %s\n"
+ msgstr ""
+ 
+-#: ../parser_interface.c:116 ../parser_interface.c:119
+-#: ../parser_interface.c:96
++#: ../parser_interface.c:116 ../parser_interface.c:119 ../parser_interface.c:96
++#: ../parser_interface.c:100
+ #, c-format
+ msgid "%s: Unable to add \"%s\".  "
+ msgstr ""
+ 
+ #: ../parser_interface.c:121 ../parser_interface.c:124
+-#: ../parser_interface.c:101
++#: ../parser_interface.c:101 ../parser_interface.c:105
+ #, c-format
+ msgid "%s: Unable to replace \"%s\".  "
+ msgstr ""
+ 
+ #: ../parser_interface.c:126 ../parser_interface.c:129
+-#: ../parser_interface.c:106
++#: ../parser_interface.c:106 ../parser_interface.c:110
+ #, c-format
+ msgid "%s: Unable to remove \"%s\".  "
+ msgstr ""
+ 
+ #: ../parser_interface.c:131 ../parser_interface.c:134
+-#: ../parser_interface.c:111
++#: ../parser_interface.c:111 ../parser_interface.c:115
+ #, c-format
+ msgid "%s: Unable to write to stdout\n"
+ msgstr ""
+ 
+ #: ../parser_interface.c:135 ../parser_interface.c:138
+-#: ../parser_interface.c:115
++#: ../parser_interface.c:115 ../parser_interface.c:119
+ #, c-format
+ msgid "%s: Unable to write to output file\n"
+ msgstr ""
+@@ -113,24 +124,25 @@ msgstr ""
+ #: ../parser_interface.c:138 ../parser_interface.c:162
+ #: ../parser_interface.c:141 ../parser_interface.c:165
+ #: ../parser_interface.c:118 ../parser_interface.c:142
++#: ../parser_interface.c:123 ../parser_interface.c:147
+ #, c-format
+ msgid "%s: ASSERT: Invalid option: %d\n"
+ msgstr ""
+ 
+ #: ../parser_interface.c:147 ../parser_interface.c:150
+-#: ../parser_interface.c:127
++#: ../parser_interface.c:127 ../parser_interface.c:132
+ #, c-format
+ msgid "Addition succeeded for \"%s\".\n"
+ msgstr ""
+ 
+ #: ../parser_interface.c:151 ../parser_interface.c:154
+-#: ../parser_interface.c:131
++#: ../parser_interface.c:131 ../parser_interface.c:136
+ #, c-format
+ msgid "Replacement succeeded for \"%s\".\n"
+ msgstr ""
+ 
+ #: ../parser_interface.c:155 ../parser_interface.c:158
+-#: ../parser_interface.c:135
++#: ../parser_interface.c:135 ../parser_interface.c:140
+ #, c-format
+ msgid "Removal succeeded for \"%s\".\n"
+ msgstr ""
+@@ -141,7 +153,7 @@ msgid "PANIC bad increment buffer %p pos %p ext %p size %d res %p\n"
+ msgstr ""
+ 
+ #: ../parser_interface.c:656 ../parser_interface.c:658
+-#: ../parser_interface.c:446
++#: ../parser_interface.c:446 ../parser_interface.c:476
+ #, c-format
+ msgid "profile %s network rules not enforced\n"
+ msgstr ""
+@@ -186,7 +198,7 @@ msgid "%s: Unable to write entire profile entry\n"
+ msgstr ""
+ 
+ #: ../parser_interface.c:839 ../parser_interface.c:831
+-#: ../parser_interface.c:593
++#: ../parser_interface.c:593 ../parser_interface.c:579
+ #, c-format
+ msgid "%s: Unable to write entire profile entry to cache\n"
+ msgstr ""
+@@ -196,7 +208,7 @@ msgstr ""
+ msgid "Could not open '%s'"
+ msgstr ""
+ 
+-#: parser_lex.l:104 parser_lex.l:167 parser_lex.l:173
++#: parser_lex.l:104 parser_lex.l:167 parser_lex.l:173 parser_lex.l:174
+ #, c-format
+ msgid "fstat failed for '%s'"
+ msgstr ""
+@@ -222,7 +234,7 @@ msgstr ""
+ msgid "Found unexpected character: '%s'"
+ msgstr ""
+ 
+-#: parser_lex.l:386 parser_lex.l:418 parser_lex.l:428
++#: parser_lex.l:386 parser_lex.l:418 parser_lex.l:428 parser_lex.l:474
+ msgid "Variable declarations do not accept trailing commas"
+ msgstr ""
+ 
+@@ -242,6 +254,7 @@ msgid "%s: Could not allocate memory for subdomainbase mount point\n"
+ msgstr ""
+ 
+ #: ../parser_main.c:577 ../parser_main.c:616 ../parser_main.c:479
++#: ../parser_main.c:1444
+ #, c-format
+ msgid ""
+ "Warning: unable to find a suitable fs in %s, is it mounted?\n"
+@@ -249,6 +262,7 @@ msgid ""
+ msgstr ""
+ 
+ #: ../parser_main.c:597 ../parser_main.c:635 ../parser_main.c:498
++#: ../parser_main.c:822
+ #, c-format
+ msgid ""
+ "%s: Sorry. You need root privileges to run this program.\n"
+@@ -256,6 +270,7 @@ msgid ""
+ msgstr ""
+ 
+ #: ../parser_main.c:604 ../parser_main.c:642 ../parser_main.c:505
++#: ../parser_main.c:828
+ #, c-format
+ msgid ""
+ "%s: Warning! You've set this program setuid root.\n"
+@@ -264,7 +279,7 @@ msgid ""
+ msgstr ""
+ 
+ #: ../parser_main.c:704 ../parser_main.c:813 ../parser_main.c:836
+-#: ../parser_main.c:946 ../parser_main.c:860
++#: ../parser_main.c:946 ../parser_main.c:860 ../parser_main.c:1038
+ #, c-format
+ msgid "Error: Could not read profile %s: %s.\n"
+ msgstr ""
+@@ -286,26 +301,36 @@ msgstr ""
+ #: parser_yacc.y:1166 parser_yacc.y:1170 parser_yacc.y:1180 parser_yacc.y:1190
+ #: parser_yacc.y:1298 parser_yacc.y:1376 parser_yacc.y:1479 parser_yacc.y:1490
+ #: parser_yacc.y:1565 parser_yacc.y:1583 parser_yacc.y:1590 parser_yacc.y:1639
+-#: ../network.c:314 ../af_unix.cc:203
++#: ../network.c:314 ../af_unix.cc:203 ../parser_misc.c:215 ../parser_misc.c:939
++#: parser_yacc.y:343 parser_yacc.y:367 parser_yacc.y:533 parser_yacc.y:543
++#: parser_yacc.y:660 parser_yacc.y:741 parser_yacc.y:750 parser_yacc.y:1171
++#: parser_yacc.y:1219 parser_yacc.y:1255 parser_yacc.y:1264 parser_yacc.y:1268
++#: parser_yacc.y:1278 parser_yacc.y:1288 parser_yacc.y:1382 parser_yacc.y:1460
++#: parser_yacc.y:1592 parser_yacc.y:1597 parser_yacc.y:1674 parser_yacc.y:1692
++#: parser_yacc.y:1699 parser_yacc.y:1748 ../network.c:315 ../af_unix.cc:194
+ msgid "Memory allocation error."
+ msgstr ""
+ 
+ #: ../parser_main.c:740 ../parser_main.c:872 ../parser_main.c:757
++#: ../parser_main.c:975
+ #, c-format
+ msgid "Cached load succeeded for \"%s\".\n"
+ msgstr ""
+ 
+ #: ../parser_main.c:744 ../parser_main.c:876 ../parser_main.c:761
++#: ../parser_main.c:979
+ #, c-format
+ msgid "Cached reload succeeded for \"%s\".\n"
+ msgstr ""
+ 
+ #: ../parser_main.c:910 ../parser_main.c:1058 ../parser_main.c:967
++#: ../parser_main.c:1132
+ #, c-format
+ msgid "%s: Errors found in file. Aborting.\n"
+ msgstr ""
+ 
+ #: ../parser_misc.c:426 ../parser_misc.c:597 ../parser_misc.c:339
++#: ../parser_misc.c:532
+ msgid ""
+ "Uppercase qualifiers \"RWLIMX\" are deprecated, please convert to lowercase\n"
+ "See the apparmor.d(5) manpage for details.\n"
+@@ -313,14 +338,17 @@ msgstr ""
+ 
+ #: ../parser_misc.c:467 ../parser_misc.c:474 ../parser_misc.c:638
+ #: ../parser_misc.c:645 ../parser_misc.c:380 ../parser_misc.c:387
++#: ../parser_misc.c:573 ../parser_misc.c:580
+ msgid "Conflict 'a' and 'w' perms are mutually exclusive."
+ msgstr ""
+ 
+ #: ../parser_misc.c:491 ../parser_misc.c:662 ../parser_misc.c:404
++#: ../parser_misc.c:597
+ msgid "Exec qualifier 'i' invalid, conflicting qualifier already specified"
+ msgstr ""
+ 
+ #: ../parser_misc.c:502 ../parser_misc.c:673 ../parser_misc.c:415
++#: ../parser_misc.c:608
+ #, c-format
+ msgid ""
+ "Unconfined exec qualifier (%c%c) allows some dangerous environment variables "
+@@ -329,22 +357,26 @@ msgstr ""
+ 
+ #: ../parser_misc.c:510 ../parser_misc.c:551 ../parser_misc.c:681
+ #: ../parser_misc.c:722 ../parser_misc.c:423 ../parser_misc.c:464
++#: ../parser_misc.c:616 ../parser_misc.c:657
+ #, c-format
+ msgid "Exec qualifier '%c' invalid, conflicting qualifier already specified"
+ msgstr ""
+ 
+ #: ../parser_misc.c:537 ../parser_misc.c:545 ../parser_misc.c:708
+ #: ../parser_misc.c:716 ../parser_misc.c:450 ../parser_misc.c:458
++#: ../parser_misc.c:643 ../parser_misc.c:651
+ #, c-format
+ msgid "Exec qualifier '%c%c' invalid, conflicting qualifier already specified"
+ msgstr ""
+ 
+ #: ../parser_misc.c:593 ../parser_misc.c:764 ../parser_misc.c:506
++#: ../parser_misc.c:699
+ #, c-format
+ msgid "Internal: unexpected mode character '%c' in input"
+ msgstr ""
+ 
+ #: ../parser_misc.c:615 ../parser_misc.c:786 ../parser_misc.c:528
++#: ../parser_misc.c:721
+ #, c-format
+ msgid "Internal error generated invalid perm 0x%llx\n"
+ msgstr ""
+@@ -356,10 +388,12 @@ msgid "AppArmor parser error: %s\n"
+ msgstr ""
+ 
+ #: ../parser_merge.c:92 ../parser_merge.c:91 ../parser_merge.c:83
++#: ../parser_merge.c:71
+ msgid "Couldn't merge entries. Out of Memory\n"
+ msgstr ""
+ 
+ #: ../parser_merge.c:111 ../parser_merge.c:113 ../parser_merge.c:105
++#: ../parser_merge.c:93
+ #, c-format
+ msgid "profile %s: has merged rule %s with conflicting x modifiers\n"
+ msgstr ""
+@@ -368,114 +402,117 @@ msgstr ""
+ msgid "Profile attachment must begin with a '/'."
+ msgstr ""
+ 
+-#: parser_yacc.y:260 parser_yacc.y:302 parser_yacc.y:348
++#: parser_yacc.y:260 parser_yacc.y:302 parser_yacc.y:348 parser_yacc.y:407
+ msgid ""
+ "Profile names must begin with a '/', namespace or keyword 'profile' or 'hat'."
+ msgstr ""
+ 
+-#: parser_yacc.y:296 parser_yacc.y:338 parser_yacc.y:384
++#: parser_yacc.y:296 parser_yacc.y:338 parser_yacc.y:384 parser_yacc.y:449
+ #, c-format
+ msgid "Failed to create alias %s -> %s\n"
+ msgstr ""
+ 
+-#: parser_yacc.y:417 parser_yacc.y:460 parser_yacc.y:506
++#: parser_yacc.y:417 parser_yacc.y:460 parser_yacc.y:506 parser_yacc.y:581
+ msgid "Profile flag chroot_relative conflicts with namespace_relative"
+ msgstr ""
+ 
+-#: parser_yacc.y:421 parser_yacc.y:464 parser_yacc.y:510
++#: parser_yacc.y:421 parser_yacc.y:464 parser_yacc.y:510 parser_yacc.y:585
+ msgid "Profile flag mediate_deleted conflicts with delegate_deleted"
+ msgstr ""
+ 
+-#: parser_yacc.y:424 parser_yacc.y:467 parser_yacc.y:513
++#: parser_yacc.y:424 parser_yacc.y:467 parser_yacc.y:513 parser_yacc.y:588
+ msgid "Profile flag attach_disconnected conflicts with no_attach_disconnected"
+ msgstr ""
+ 
+-#: parser_yacc.y:427 parser_yacc.y:470 parser_yacc.y:516
++#: parser_yacc.y:427 parser_yacc.y:470 parser_yacc.y:516 parser_yacc.y:591
+ msgid "Profile flag chroot_attach conflicts with chroot_no_attach"
+ msgstr ""
+ 
+-#: parser_yacc.y:441 parser_yacc.y:484 parser_yacc.y:530
++#: parser_yacc.y:441 parser_yacc.y:484 parser_yacc.y:530 parser_yacc.y:607
+ msgid "Profile flag 'debug' is no longer valid."
+ msgstr ""
+ 
+-#: parser_yacc.y:463 parser_yacc.y:506 parser_yacc.y:552
++#: parser_yacc.y:463 parser_yacc.y:506 parser_yacc.y:552 parser_yacc.y:629
+ #, c-format
+ msgid "Invalid profile flag: %s."
+ msgstr ""
+ 
+ #: parser_yacc.y:498 parser_yacc.y:520 parser_yacc.y:548 parser_yacc.y:594
++#: parser_yacc.y:673
+ msgid "Assert: `rule' returned NULL."
+ msgstr ""
+ 
+ #: parser_yacc.y:501 parser_yacc.y:546 parser_yacc.y:552 parser_yacc.y:584
+-#: parser_yacc.y:598 parser_yacc.y:630
++#: parser_yacc.y:598 parser_yacc.y:630 parser_yacc.y:677 parser_yacc.y:709
+ msgid ""
+ "Invalid mode, in deny rules 'x' must not be preceded by exec qualifier 'i', "
+ "'p', or 'u'"
+ msgstr ""
+ 
+-#: parser_yacc.y:524 parser_yacc.y:556 parser_yacc.y:602
++#: parser_yacc.y:524 parser_yacc.y:556 parser_yacc.y:602 parser_yacc.y:681
+ msgid ""
+ "Invalid mode, 'x' must be preceded by exec qualifier 'i', 'p', 'c', or 'u'"
+ msgstr ""
+ 
+-#: parser_yacc.y:549 parser_yacc.y:587 parser_yacc.y:633
++#: parser_yacc.y:549 parser_yacc.y:587 parser_yacc.y:633 parser_yacc.y:712
+ msgid "Invalid mode, 'x' must be preceded by exec qualifier 'i', 'p', or 'u'"
+ msgstr ""
+ 
+ #: parser_yacc.y:574 parser_yacc.y:612 parser_yacc.y:614 parser_yacc.y:660
++#: parser_yacc.y:739
+ msgid "Assert: `network_rule' return invalid protocol."
+ msgstr ""
+ 
+-#: parser_yacc.y:649 parser_yacc.y:696 parser_yacc.y:786
++#: parser_yacc.y:649 parser_yacc.y:696 parser_yacc.y:786 parser_yacc.y:867
+ msgid "Assert: `change_profile' returned NULL."
+ msgstr ""
+ 
+-#: parser_yacc.y:680 parser_yacc.y:720 parser_yacc.y:810
++#: parser_yacc.y:680 parser_yacc.y:720 parser_yacc.y:810 parser_yacc.y:905
+ msgid "Assert: 'hat rule' returned NULL."
+ msgstr ""
+ 
+-#: parser_yacc.y:689 parser_yacc.y:729 parser_yacc.y:819
++#: parser_yacc.y:689 parser_yacc.y:729 parser_yacc.y:819 parser_yacc.y:914
+ msgid "Assert: 'local_profile rule' returned NULL."
+ msgstr ""
+ 
+-#: parser_yacc.y:824 parser_yacc.y:885 parser_yacc.y:992
++#: parser_yacc.y:824 parser_yacc.y:885 parser_yacc.y:992 parser_yacc.y:1077
+ #, c-format
+ msgid "Unset boolean variable %s used in if-expression"
+ msgstr ""
+ 
+-#: parser_yacc.y:882 parser_yacc.y:986 parser_yacc.y:1092
++#: parser_yacc.y:882 parser_yacc.y:986 parser_yacc.y:1092 parser_yacc.y:1181
+ msgid "unsafe rule missing exec permissions"
+ msgstr ""
+ 
+-#: parser_yacc.y:901 parser_yacc.y:954 parser_yacc.y:1060
++#: parser_yacc.y:901 parser_yacc.y:954 parser_yacc.y:1060 parser_yacc.y:1148
+ msgid "subset can only be used with link rules."
+ msgstr ""
+ 
+-#: parser_yacc.y:903 parser_yacc.y:956 parser_yacc.y:1062
++#: parser_yacc.y:903 parser_yacc.y:956 parser_yacc.y:1062 parser_yacc.y:1150
+ msgid "link and exec perms conflict on a file rule using ->"
+ msgstr ""
+ 
+-#: parser_yacc.y:905 parser_yacc.y:958 parser_yacc.y:1064
++#: parser_yacc.y:905 parser_yacc.y:958 parser_yacc.y:1064 parser_yacc.y:1152
+ msgid "link perms are not allowed on a named profile transition.\n"
+ msgstr ""
+ 
+-#: parser_yacc.y:921 parser_yacc.y:1003 parser_yacc.y:1109
++#: parser_yacc.y:921 parser_yacc.y:1003 parser_yacc.y:1109 parser_yacc.y:1198
+ #, c-format
+ msgid "missing an end of line character? (entry: %s)"
+ msgstr ""
+ 
+ #: parser_yacc.y:975 parser_yacc.y:985 parser_yacc.y:1057 parser_yacc.y:1067
+-#: parser_yacc.y:1145 parser_yacc.y:1155
++#: parser_yacc.y:1145 parser_yacc.y:1155 parser_yacc.y:1234 parser_yacc.y:1244
+ msgid "Invalid network entry."
+ msgstr ""
+ 
+ #: parser_yacc.y:1039 parser_yacc.y:1048 parser_yacc.y:1254 parser_yacc.y:1510
++#: parser_yacc.y:1617
+ #, c-format
+ msgid "Invalid capability %s."
+ msgstr ""
+ 
+-#: parser_yacc.y:1066 parser_yacc.y:1269 parser_yacc.y:1525
++#: parser_yacc.y:1066 parser_yacc.y:1269 parser_yacc.y:1525 parser_yacc.y:1637
+ #, c-format
+ msgid "AppArmor parser error for %s%s%s at line %d: %s\n"
+ msgstr ""
+@@ -491,17 +528,20 @@ msgid "%s: Illegal open {, nesting groupings not allowed\n"
+ msgstr ""
+ 
+ #: ../parser_regex.c:265 ../parser_regex.c:274 ../parser_regex.c:278
++#: ../parser_regex.c:306
+ #, c-format
+ msgid "%s: Regex grouping error: Invalid number of items between {}\n"
+ msgstr ""
+ 
+ #: ../parser_regex.c:271 ../parser_regex.c:280 ../parser_regex.c:284
++#: ../parser_regex.c:312
+ #, c-format
+ msgid ""
+ "%s: Regex grouping error: Invalid close }, no matching open { detected\n"
+ msgstr ""
+ 
+ #: ../parser_regex.c:337 ../parser_regex.c:343 ../parser_regex.c:361
++#: ../parser_regex.c:403
+ #, c-format
+ msgid ""
+ "%s: Regex grouping error: Unclosed grouping or character class, expecting "
+@@ -514,16 +554,19 @@ msgid "%s: Internal buffer overflow detected, %d characters exceeded\n"
+ msgstr ""
+ 
+ #: ../parser_regex.c:355 ../parser_regex.c:361 ../parser_regex.c:377
++#: ../parser_regex.c:419
+ #, c-format
+ msgid "%s: Unable to parse input line '%s'\n"
+ msgstr ""
+ 
+ #: ../parser_regex.c:397 ../parser_regex.c:405 ../parser_regex.c:421
++#: ../parser_regex.c:487
+ #, c-format
+ msgid "%s: Invalid profile name '%s' - bad regular expression\n"
+ msgstr ""
+ 
+ #: ../parser_policy.c:202 ../parser_policy.c:402 ../parser_policy.c:375
++#: ../parser_policy.c:383
+ #, c-format
+ msgid "ERROR merging rules for profile %s, failed to load\n"
+ msgstr ""
+@@ -537,16 +580,19 @@ msgid ""
+ msgstr ""
+ 
+ #: ../parser_policy.c:279 ../parser_policy.c:359 ../parser_policy.c:332
++#: ../parser_policy.c:340
+ #, c-format
+ msgid "ERROR processing regexs for profile %s, failed to load\n"
+ msgstr ""
+ 
+ #: ../parser_policy.c:306 ../parser_policy.c:389 ../parser_policy.c:362
++#: ../parser_policy.c:370
+ #, c-format
+ msgid "ERROR expanding variables for profile %s, failed to load\n"
+ msgstr ""
+ 
+ #: ../parser_policy.c:390 ../parser_policy.c:382 ../parser_policy.c:355
++#: ../parser_policy.c:363
+ #, c-format
+ msgid "ERROR adding hat access rule for profile %s\n"
+ msgstr ""
+@@ -576,7 +622,7 @@ msgstr ""
+ msgid "%s: Errors found in combining rules postprocessing. Aborting.\n"
+ msgstr ""
+ 
+-#: parser_lex.l:180 parser_lex.l:186
++#: parser_lex.l:180 parser_lex.l:186 parser_lex.l:187
+ #, c-format
+ msgid "Could not process include directory '%s' in '%s'"
+ msgstr ""
+@@ -586,7 +632,8 @@ msgid "Feature buffer full."
+ msgstr ""
+ 
+ #: ../parser_main.c:1115 ../parser_main.c:1132 ../parser_main.c:1024
+-#: ../parser_main.c:1041
++#: ../parser_main.c:1041 ../parser_main.c:1332 ../parser_main.c:1354
++#: ../parser_misc.c:280 ../parser_misc.c:299 ../parser_misc.c:308
+ msgid "Out of memory"
+ msgstr ""
+ 
+@@ -615,11 +662,11 @@ msgstr ""
+ msgid "Internal error generated invalid DBus perm 0x%x\n"
+ msgstr ""
+ 
+-#: parser_yacc.y:575 parser_yacc.y:621
++#: parser_yacc.y:575 parser_yacc.y:621 parser_yacc.y:700
+ msgid "deny prefix not allowed"
+ msgstr ""
+ 
+-#: parser_yacc.y:612 parser_yacc.y:658
++#: parser_yacc.y:612 parser_yacc.y:658 parser_yacc.y:737
+ msgid "owner prefix not allowed"
+ msgstr ""
+ 
+@@ -635,41 +682,41 @@ msgstr ""
+ msgid "owner prefix not allow on capability rules"
+ msgstr ""
+ 
+-#: parser_yacc.y:1357 parser_yacc.y:1613
++#: parser_yacc.y:1357 parser_yacc.y:1613 parser_yacc.y:1722
+ #, c-format
+ msgid "invalid mount conditional %s%s"
+ msgstr ""
+ 
+-#: parser_yacc.y:1374 parser_yacc.y:1628
++#: parser_yacc.y:1374 parser_yacc.y:1628 parser_yacc.y:1737
+ msgid "bad mount rule"
+ msgstr ""
+ 
+-#: parser_yacc.y:1381 parser_yacc.y:1635
++#: parser_yacc.y:1381 parser_yacc.y:1635 parser_yacc.y:1744
+ msgid "mount point conditions not currently supported"
+ msgstr ""
+ 
+-#: parser_yacc.y:1398 parser_yacc.y:1650
++#: parser_yacc.y:1398 parser_yacc.y:1650 parser_yacc.y:1759
+ #, c-format
+ msgid "invalid pivotroot conditional '%s'"
+ msgstr ""
+ 
+-#: ../parser_regex.c:241 ../parser_regex.c:236
++#: ../parser_regex.c:241 ../parser_regex.c:236 ../parser_regex.c:264
+ #, c-format
+ msgid ""
+ "%s: Regex grouping error: Invalid close ], no matching open [ detected\n"
+ msgstr ""
+ 
+-#: ../parser_regex.c:257 ../parser_regex.c:256
++#: ../parser_regex.c:257 ../parser_regex.c:256 ../parser_regex.c:284
+ #, c-format
+ msgid "%s: Regex grouping error: Exceeded maximum nesting of {}\n"
+ msgstr ""
+ 
+-#: ../parser_policy.c:366 ../parser_policy.c:339
++#: ../parser_policy.c:366 ../parser_policy.c:339 ../parser_policy.c:347
+ #, c-format
+ msgid "ERROR processing policydb rules for profile %s, failed to load\n"
+ msgstr ""
+ 
+-#: ../parser_policy.c:396 ../parser_policy.c:369
++#: ../parser_policy.c:396 ../parser_policy.c:369 ../parser_policy.c:377
+ #, c-format
+ msgid "ERROR replacing aliases for profile %s, failed to load\n"
+ msgstr ""
+@@ -689,51 +736,244 @@ msgstr ""
+ msgid "Error: Could not read cache file '%s', skipping...\n"
+ msgstr ""
+ 
+-#: ../parser_misc.c:575
++#: ../parser_misc.c:575 ../parser_misc.c:768
+ #, c-format
+ msgid "Internal: unexpected %s mode character '%c' in input"
+ msgstr ""
+ 
+-#: ../parser_misc.c:599
++#: ../parser_misc.c:599 ../parser_misc.c:792
+ #, c-format
+ msgid "Internal error generated invalid %s perm 0x%x\n"
+ msgstr ""
+ 
+-#: parser_yacc.y:703
++#: parser_yacc.y:703 parser_yacc.y:784
+ msgid "owner prefix not allowed on mount rules"
+ msgstr ""
+ 
+-#: parser_yacc.y:720
++#: parser_yacc.y:720 parser_yacc.y:801
+ msgid "owner prefix not allowed on dbus rules"
+ msgstr ""
+ 
+-#: parser_yacc.y:736
++#: parser_yacc.y:736 parser_yacc.y:817
+ msgid "owner prefix not allowed on signal rules"
+ msgstr ""
+ 
+-#: parser_yacc.y:752
++#: parser_yacc.y:752 parser_yacc.y:833
+ msgid "owner prefix not allowed on ptrace rules"
+ msgstr ""
+ 
+-#: parser_yacc.y:768
++#: parser_yacc.y:768 parser_yacc.y:849 parser_yacc.y:869
+ msgid "owner prefix not allowed on unix rules"
+ msgstr ""
+ 
+-#: parser_yacc.y:794
++#: parser_yacc.y:794 parser_yacc.y:885
+ msgid "owner prefix not allowed on capability rules"
+ msgstr ""
+ 
+-#: parser_yacc.y:1293
++#: parser_yacc.y:1293 parser_yacc.y:1377
+ #, c-format
+ msgid "dbus rule: invalid conditional group %s=()"
+ msgstr ""
+ 
+-#: parser_yacc.y:1371
++#: parser_yacc.y:1371 parser_yacc.y:1455
+ #, c-format
+ msgid "unix rule: invalid conditional group %s=()"
+ msgstr ""
+ 
+-#: ../parser_regex.c:368
++#: ../parser_regex.c:368 ../parser_regex.c:410
+ #, c-format
+ msgid "%s: Regex error: trailing '\\' escape character\n"
+ msgstr ""
++
++#: ../parser_common.c:112
++#, c-format
++msgid "%s from %s (%s%sline %d): %s"
++msgstr ""
++
++#: ../parser_common.c:113
++msgid "Warning converted to Error"
++msgstr ""
++
++#: ../parser_common.c:113
++msgid "Warning"
++msgstr ""
++
++#: ../parser_interface.c:524
++#, c-format
++msgid "Unable to open stdout - %s\n"
++msgstr ""
++
++#: ../parser_interface.c:533
++#, c-format
++msgid "Unable to open output file - %s\n"
++msgstr ""
++
++#: parser_lex.l:326
++msgid "Failed to process filename\n"
++msgstr ""
++
++#: parser_lex.l:720
++#, c-format
++msgid "Lexer found unexpected character: '%s' (0x%x) in state: %s"
++msgstr ""
++
++#: ../parser_main.c:915
++#, c-format
++msgid "Unable to print the cache directory: %m\n"
++msgstr ""
++
++#: ../parser_main.c:951
++#, c-format
++msgid "Error: Could not load profile %s: %s\n"
++msgstr ""
++
++#: ../parser_main.c:961
++#, c-format
++msgid "Error: Could not replace profile %s: %s\n"
++msgstr ""
++
++#: ../parser_main.c:966
++#, c-format
++msgid "Error: Invalid load option specified: %d\n"
++msgstr ""
++
++#: ../parser_main.c:1077
++#, c-format
++msgid "Could not get cachename for '%s'\n"
++msgstr ""
++
++#: ../parser_main.c:1434
++msgid "Kernel features abi not found"
++msgstr ""
++
++#: ../parser_main.c:1438
++msgid "Failed to add kernel capabilities to known capabilities set"
++msgstr ""
++
++#: ../parser_main.c:1465
++#, c-format
++msgid "Failed to clear cache files (%s): %s\n"
++msgstr ""
++
++#: ../parser_main.c:1474
++msgid ""
++"The --create-cache-dir option is deprecated. Please use --write-cache.\n"
++msgstr ""
++
++#: ../parser_main.c:1479
++#, c-format
++msgid "Failed setting up policy cache (%s): %s\n"
++msgstr ""
++
++#: ../parser_misc.c:904
++#, c-format
++msgid "Namespace not terminated: %s\n"
++msgstr ""
++
++#: ../parser_misc.c:906
++#, c-format
++msgid "Empty namespace: %s\n"
++msgstr ""
++
++#: ../parser_misc.c:908
++#, c-format
++msgid "Empty named transition profile name: %s\n"
++msgstr ""
++
++#: ../parser_misc.c:910
++#, c-format
++msgid "Unknown error while parsing label: %s\n"
++msgstr ""
++
++#: parser_yacc.y:306
++msgid "Failed to setup default policy feature abi"
++msgstr ""
++
++#: parser_yacc.y:308
++#, c-format
++msgid ""
++"%s: File '%s' missing feature abi, falling back to default policy feature "
++"abi\n"
++msgstr ""
++
++#: parser_yacc.y:313
++msgid "Failed to add policy capabilities to known capabilities set"
++msgstr ""
++
++#: parser_yacc.y:350
++msgid "Profile names must begin with a '/' or a namespace"
++msgstr ""
++
++#: parser_yacc.y:372
++msgid "Profile attachment must begin with a '/' or variable."
++msgstr ""
++
++#: parser_yacc.y:375
++#, c-format
++msgid "profile id: invalid conditional group %s=()"
++msgstr ""
++
++#: parser_yacc.y:404
++msgid ""
++"The use of file paths as profile names is deprecated. See man apparmor.d for "
++"more information\n"
++msgstr ""
++
++#: parser_yacc.y:573
++#, c-format
++msgid "Profile flag '%s' conflicts with '%s'"
++msgstr ""
++
++#: parser_yacc.y:954
++msgid "RLIMIT 'cpu' no units specified using default units of seconds\n"
++msgstr ""
++
++#: parser_yacc.y:966
++msgid ""
++"RLIMIT 'rttime' no units specified using default units of microseconds\n"
++msgstr ""
++
++#: parser_yacc.y:1582
++msgid "Exec condition is required when unsafe or safe keywords are present"
++msgstr ""
++
++#: parser_yacc.y:1584
++msgid "Exec condition must begin with '/'."
++msgstr ""
++
++#: parser_yacc.y:1643
++#, c-format
++msgid "AppArmor parser error at line %d: %s\n"
++msgstr ""
++
++#: parser_yacc.y:1790
++#, c-format
++msgid "Could not open '%s': %m"
++msgstr ""
++
++#: parser_yacc.y:1795
++#, c-format
++msgid "fstat failed for '%s': %m"
++msgstr ""
++
++#: parser_yacc.y:1809
++#, c-format
++msgid "failed to find features abi '%s': %m"
++msgstr ""
++
++#: parser_yacc.y:1813
++#, c-format
++msgid ""
++"%s: %s features abi '%s' differs from policy declared feature abi, using the "
++"features abi declared in policy\n"
++msgstr ""
++
++#: ../parser_regex.c:98 ../parser_regex.c:238
++#, c-format
++msgid "%s: Invalid glob type %d\n"
++msgstr ""
++
++#: ../parser_regex.c:693
++#, c-format
++msgid "The current kernel does not support stacking of named transitions: %s\n"
++msgstr ""
+diff --git a/profiles/apparmor.d/abstractions/X b/profiles/apparmor.d/abstractions/X
+index 59b79a15..6cce2e1f 100644
+--- a/profiles/apparmor.d/abstractions/X
++++ b/profiles/apparmor.d/abstractions/X
+@@ -17,6 +17,7 @@
+ 
+   # .ICEauthority files required for X authentication, per user
+   owner @{HOME}/.ICEauthority r,
++  owner @{run}/user/*/ICEauthority r,
+ 
+   # .Xauthority files required for X connections, per user
+   owner @{HOME}/.Xauthority r,
+@@ -29,7 +30,7 @@
+   owner @{run}/user/*/xauth_* r,
+ 
+   # the unix socket to use to connect to the display
+-  /tmp/.X11-unix/* r,
++  /tmp/.X11-unix/* rw,
+   unix (connect, receive, send)
+        type=stream
+        peer=(addr="@/tmp/.X11-unix/X[0-9]*"),
+diff --git a/profiles/apparmor.d/abstractions/fonts b/profiles/apparmor.d/abstractions/fonts
+index 402703d7..46324dbb 100644
+--- a/profiles/apparmor.d/abstractions/fonts
++++ b/profiles/apparmor.d/abstractions/fonts
+@@ -52,6 +52,8 @@
+   owner @{HOME}/.fonts.conf.d/**        r,
+   owner @{HOME}/.config/fontconfig/     r,
+   owner @{HOME}/.config/fontconfig/**   r,
++  owner @{HOME}/.Fontmatrix/Activated/  r,
++  owner @{HOME}/.Fontmatrix/Activated/** r,
+ 
+   /usr/local/share/fonts/               r,
+   /usr/local/share/fonts/**             r,
+diff --git a/profiles/apparmor.d/abstractions/mesa b/profiles/apparmor.d/abstractions/mesa
+index 01609ff9..11cb40d0 100644
+--- a/profiles/apparmor.d/abstractions/mesa
++++ b/profiles/apparmor.d/abstractions/mesa
+@@ -12,11 +12,18 @@
+ 
+   # User files
+   owner @{HOME}/.cache/ w, # if user clears all caches
+-  owner @{HOME}/.cache/mesa_shader_cache/ w,
++  owner @{HOME}/.cache/mesa_shader_cache/ rw,
+   owner @{HOME}/.cache/mesa_shader_cache/index rw,
+-  owner @{HOME}/.cache/mesa_shader_cache/??/ w,
+-  owner @{HOME}/.cache/mesa_shader_cache/??/* rwk,
++  owner @{HOME}/.cache/mesa_shader_cache/[a-f0-9][a-f0-9]/ rw,
++  owner @{HOME}/.cache/mesa_shader_cache/[a-f0-9][a-f0-9]/[0-9a-f]* rw,
++  owner @{HOME}/.cache/mesa_shader_cache/[a-f0-9][a-f0-9]/[0-9a-f]*.tmp rwk,
+ 
++  # Fallback location when @{HOME}/.cache is not available
++  owner /tmp/Temp-[a-f0-9]*/mesa_shader_cache/ rw,
++  owner /tmp/Temp-[a-f0-9]*/mesa_shader_cache/index rw,
++  owner /tmp/Temp-[a-f0-9]*/mesa_shader_cache/[a-f0-9][a-f0-9]/ rw,
++  owner /tmp/Temp-[a-f0-9]*/mesa_shader_cache/[a-f0-9][a-f0-9]/[0-9a-f]* rw,
++  owner /tmp/Temp-[a-f0-9]*/mesa_shader_cache/[a-f0-9][a-f0-9]/[0-9a-f]*.tmp rwk,
+ 
+   # Include additions to the abstraction
+   include if exists <abstractions/mesa.d>
+diff --git a/profiles/apparmor.d/abstractions/ubuntu-browsers b/profiles/apparmor.d/abstractions/ubuntu-browsers
+index a0548f4b..c2c710a1 100644
+--- a/profiles/apparmor.d/abstractions/ubuntu-browsers
++++ b/profiles/apparmor.d/abstractions/ubuntu-browsers
+@@ -38,3 +38,4 @@
+   /usr/lib/icecat-*/icecat Cx -> sanitized_helper,
+   /usr/bin/opera Cx -> sanitized_helper,
+   /opt/google/chrome{,-beta,-unstable}/google-chrome{,-beta,-unstable} Cx -> sanitized_helper,
++  /opt/brave.com/brave{,-beta,-dev,-nightly}/brave-browser{,-beta,-dev,-nightly} Cx -> sanitized_helper,
+diff --git a/profiles/apparmor.d/abstractions/ubuntu-browsers.d/ubuntu-integration b/profiles/apparmor.d/abstractions/ubuntu-browsers.d/ubuntu-integration
+index d8fcdf1f..cdbd47cd 100644
+--- a/profiles/apparmor.d/abstractions/ubuntu-browsers.d/ubuntu-integration
++++ b/profiles/apparmor.d/abstractions/ubuntu-browsers.d/ubuntu-integration
+@@ -28,10 +28,7 @@
+   /usr/lib/mozilla/kmozillahelper Cxr -> sanitized_helper,
+ 
+   # Exo-aware applications
+-  /usr/bin/exo-open ixr,
+-  /usr/lib/@{multiarch}/xfce4/exo-1/exo-helper-1 ixr,
+-  /etc/xdg/xdg-xubuntu/xfce4/helpers.rc r,
+-  /etc/xdg/xfce4/helpers.rc r,
++  include <abstractions/exo-open>
+ 
+   # unity webapps integration. Could go in its own abstraction
+   owner /run/user/*/dconf/user rw,
+diff --git a/profiles/apparmor.d/abstractions/ubuntu-helpers b/profiles/apparmor.d/abstractions/ubuntu-helpers
+index 101cd599..4b9ea96b 100644
+--- a/profiles/apparmor.d/abstractions/ubuntu-helpers
++++ b/profiles/apparmor.d/abstractions/ubuntu-helpers
+@@ -74,6 +74,12 @@ profile sanitized_helper {
+   /opt/google/chrome{,-beta,-unstable}/chrome Pixr,
+   /opt/google/chrome{,-beta,-unstable}/{,**/}lib*.so{,.*} m,
+ 
++  # The same is needed for Brave
++  /opt/brave.com/brave{,-beta,-dev,-nightly}/chrome-sandbox PUxr,
++  /opt/brave.com/brave{,-beta,-dev,-nightly}/brave-browser{,-beta,-dev,-nightly} Pixr,
++  /opt/brave.com/brave{,-beta,-dev,-nightly}/brave Pixr,
++  /opt/brave.com/brave{,-beta,-dev,-nightly}/{,**/}lib*.so{,.*} m,
++
+   # Full access
+   / r,
+   /** rwkl,
+diff --git a/profiles/apparmor.d/usr.sbin.dnsmasq b/profiles/apparmor.d/usr.sbin.dnsmasq
+index d911b60d..7ae9a148 100644
+--- a/profiles/apparmor.d/usr.sbin.dnsmasq
++++ b/profiles/apparmor.d/usr.sbin.dnsmasq
+@@ -70,8 +70,6 @@ profile dnsmasq /usr/{bin,sbin}/dnsmasq flags=(attach_disconnected) {
+   # access to iface mtu needed for Router Advertisement messages in IPv6
+   # Neighbor Discovery protocol (RFC 2461)
+   @{PROC}/sys/net/ipv6/conf/*/mtu r,
+-  # closing superfluous file descriptors scans /proc/self/fd/ to find open ones
+-  @{PROC}/@{pid}/fd/ r,
+ 
+   # for the read-only TFTP server
+   @{TFTP_DIR}/ r,
+diff --git a/profiles/apparmor.d/usr.sbin.nscd b/profiles/apparmor.d/usr.sbin.nscd
+index 339d4ad8..7cb40d8f 100644
+--- a/profiles/apparmor.d/usr.sbin.nscd
++++ b/profiles/apparmor.d/usr.sbin.nscd
+@@ -30,7 +30,7 @@ profile nscd /usr/{bin,sbin}/nscd {
+   @{run}/nscd/ rw,
+   @{run}/nscd/db* rwl,
+   @{run}/nscd/socket wl,
+-  /{var/cache,var/lib,var/run,run}/nscd/{passwd,group,services,hosts,netgroup} rw,
++  /{var/cache,var/db,var/lib,var/run,run}/nscd/{passwd,group,services,hosts,netgroup} rw,
+   @{run}/{nscd/,}nscd.pid rwl,
+   /var/lib/libvirt/dnsmasq/ r,
+   /var/lib/libvirt/dnsmasq/*.status r,
+diff --git a/profiles/apparmor/profiles/extras/sbin.dhclient b/profiles/apparmor/profiles/extras/sbin.dhclient
+index 7043d465..7b15dca3 100644
+--- a/profiles/apparmor/profiles/extras/sbin.dhclient
++++ b/profiles/apparmor/profiles/extras/sbin.dhclient
+@@ -58,14 +58,14 @@ profile dhclient /{usr/,}sbin/dhclient {
+   /usr/lib/{NetworkManager/,}nm-dhcp-helper rix,
+   /var/lib/dhclient/dhclient{6,}.leases*	rw,
+   /var/lib/dhcp/dhclient*.leases   rw,
+-  /var/lib/dhcp6/dhclient.leases    rw,
++  /var/lib/dhcp{6,}/dhclient.leases    rw,
+   /var/lib/NetworkManager/dhclient{6,}-*.conf r,
+   /var/lib/NetworkManager/dhclient{6,}-*.lease rw,
+   /var/log/lastlog            r,
+   /var/log/messages           r,
+   /var/log/wtmp               r,
+   /{,var/}run/dhclient{6,}.pid    rw,
+-  /{,var/}run/dhclient{6,}-*.pid  rw,
++  /{,var/}run/dhclient{6,}{-,.}*.pid  rw,
+   /var/spool                  r,
+   /var/spool/mail             r,
+ 
+diff --git a/profiles/apparmor/profiles/extras/sbin.dhclient-script b/profiles/apparmor/profiles/extras/sbin.dhclient-script
+index 637ab8ff..7b311352 100644
+--- a/profiles/apparmor/profiles/extras/sbin.dhclient-script
++++ b/profiles/apparmor/profiles/extras/sbin.dhclient-script
+@@ -12,13 +12,20 @@ profile dhclient-script /{usr/,}sbin/dhclient-script {
+   include <abstractions/bash>
+   include <abstractions/consoles>
+ 
++  /{usr/,}bin/dash rix,
+   /{usr/,}bin/bash rix,
+   /{usr/,}bin/grep rix,
+   /{usr/,}bin/sleep rix,
+   /{usr/,}bin/touch rix,
++  /{usr/,}bin/run-parts rix,
++  /{usr/,}bin/logger rix,
+   /dev/.sysconfig/network/** r,
+   /etc/netconfig.d/* mrix,
+   /etc/sysconfig/network/** r,
++  /etc/dhcp/{**,} r,
+   /{usr/,}sbin/dhclient-script r,
+   /{usr/,}sbin/ip rix,
++  /{usr/,}sbin/resolvconf rPux,
++
++  include if exists <local/sbin.dhclient-script>
+ }
+diff --git a/tests/regression/apparmor/aa_policy_cache.sh b/tests/regression/apparmor/aa_policy_cache.sh
+index 8a787a8a..6fe97e47 100755
+--- a/tests/regression/apparmor/aa_policy_cache.sh
++++ b/tests/regression/apparmor/aa_policy_cache.sh
+@@ -56,7 +56,7 @@ create_cache_files()
+ 	do
+ 		cachefile="${cachedir}/${policy}"
+ 
+-		echo "profile $policy { /f r, }" | ${subdomain} -qS > "$cachefile"
++		echo "profile $policy { /f r, }" | ${subdomain} "${parser_config}" -qS > "$cachefile"
+ 	done
+ }
+ 
+diff --git a/tests/regression/apparmor/uservars.inc.source b/tests/regression/apparmor/uservars.inc.source
+index 198df439..5ec1aa6f 100644
+--- a/tests/regression/apparmor/uservars.inc.source
++++ b/tests/regression/apparmor/uservars.inc.source
+@@ -3,7 +3,8 @@ subdomain=${PWD}/../../../parser/apparmor_parser
+ #subdomain=/sbin/apparmor_parser
+ 
+ # 2. additional arguments to the apparmor parser
+-parser_args="-q -K"
++parser_config="--config-file=${PWD}/../../../parser/parser.conf"
++parser_args="${parser_config} -q -K"
+ 
+ # 3. directory to be used for temp files
+ # Need to be able to access this directory by the root and nobody users.
+diff --git a/tests/regression/apparmor/uservars.inc.system b/tests/regression/apparmor/uservars.inc.system
+index c448a6b7..6c41ac44 100644
+--- a/tests/regression/apparmor/uservars.inc.system
++++ b/tests/regression/apparmor/uservars.inc.system
+@@ -3,7 +3,9 @@
+ subdomain=/sbin/apparmor_parser
+ 
+ # 2. additional arguments to the apparmor parser
+-parser_args="-q -K"
++parser_config=""
++parser_args="${parser_config} -q -K"
++
+ 
+ # 3. directory to be used for temp files
+ # Need to be able to access this directory by the root and nobody users.
+diff --git a/utils/Makefile b/utils/Makefile
+index d31ed380..1f08f259 100644
+--- a/utils/Makefile
++++ b/utils/Makefile
+@@ -87,12 +87,17 @@ check_severity_db: /usr/include/linux/capability.h severity.db
+ 	test "$$RC" -eq 0
+ 
+ # check_pod_files is defined in common/Make.rules
+-.PHONY: check
+-.SILENT: check
+-check: check_severity_db check_pod_files
++.PHONY: check_lint
++.SILENT: check_lint
++check_lint:
+ 	for i in ${PYTOOLS} apparmor test/*.py; do \
+ 		echo Checking $$i; \
+ 		$(PYFLAKES) $$i || exit 1; \
+ 	done
++
++# check_pod_files is defined in common/Make.rules
++.PHONY: check
++.SILENT: check
++check: check_severity_db check_pod_files check_lint
+ 	$(MAKE) -C test check
+ 	$(MAKE) -C vim check
+diff --git a/utils/aa-genprof b/utils/aa-genprof
+index 1ba58d07..bf5c5ee6 100755
+--- a/utils/aa-genprof
++++ b/utils/aa-genprof
+@@ -72,20 +72,14 @@ if args.json:
+     aaui.set_json_mode()
+ 
+ profiling = args.program
+-profiledir = args.dir
+ 
+-apparmor.init_aa()
++apparmor.init_aa(profiledir=args.dir)
+ apparmor.set_logfile(args.file)
+ 
+ aa_mountpoint = apparmor.check_for_apparmor()
+ if not aa_mountpoint:
+     raise apparmor.AppArmorException(_('It seems AppArmor was not started. Please enable AppArmor and try again.'))
+ 
+-if profiledir:
+-    apparmor.profile_dir = apparmor.get_full_path(profiledir)
+-    if not os.path.isdir(apparmor.profile_dir):
+-        raise apparmor.AppArmorException(_("%s is not a directory.") %profiledir)
+-
+ program = None
+ #if os.path.exists(apparmor.which(profiling.strip())):
+ if os.path.exists(profiling):
+diff --git a/utils/aa-logprof b/utils/aa-logprof
+index ac7e7836..b56d4e64 100755
+--- a/utils/aa-logprof
++++ b/utils/aa-logprof
+@@ -13,7 +13,6 @@
+ #
+ # ----------------------------------------------------------------------
+ import argparse
+-import os
+ 
+ import apparmor.aa as apparmor
+ import apparmor.ui as aaui
+@@ -36,21 +35,16 @@ args = parser.parse_args()
+ if args.json:
+     aaui.set_json_mode()
+ 
+-profiledir = args.dir
+ logmark = args.mark or ''
+ 
+-apparmor.init_aa()
++apparmor.init_aa(profiledir=args.dir)
++
+ apparmor.set_logfile(args.file)
+ 
+ aa_mountpoint = apparmor.check_for_apparmor()
+ if not aa_mountpoint:
+     raise apparmor.AppArmorException(_('It seems AppArmor was not started. Please enable AppArmor and try again.'))
+ 
+-if profiledir:
+-    apparmor.profile_dir = apparmor.get_full_path(profiledir)
+-    if not os.path.isdir(apparmor.profile_dir):
+-        raise apparmor.AppArmorException("%s is not a directory."%profiledir)
+-
+ apparmor.loadincludes()
+ 
+ apparmor.read_profiles(True)
+diff --git a/utils/aa-mergeprof b/utils/aa-mergeprof
+index 2e744758..4b67719e 100755
+--- a/utils/aa-mergeprof
++++ b/utils/aa-mergeprof
+@@ -14,7 +14,6 @@
+ #
+ # ----------------------------------------------------------------------
+ import argparse
+-import os
+ 
+ import apparmor.aa
+ 
+@@ -22,7 +21,6 @@ import apparmor.severity
+ import apparmor.cleanprofile as cleanprofile
+ import apparmor.ui as aaui
+ 
+-from apparmor.common import AppArmorException
+ 
+ 
+ # setup exception handling
+@@ -41,16 +39,10 @@ args = parser.parse_args()
+ 
+ args.other = None
+ 
+-apparmor.aa.init_aa()
++apparmor.aa.init_aa(profiledir=args.dir)
+ 
+ profiles = args.files
+ 
+-profiledir = args.dir
+-if profiledir:
+-    apparmor.aa.profile_dir = apparmor.aa.get_full_path(profiledir)
+-    if not os.path.isdir(apparmor.aa.profile_dir):
+-        raise AppArmorException(_("%s is not a directory.") %profiledir)
+-
+ def find_profiles_from_files(files):
+     profile_to_filename = dict()
+     for file_name in files:
+diff --git a/utils/aa-notify b/utils/aa-notify
+index 7bb8997c..b98a5d43 100755
+--- a/utils/aa-notify
++++ b/utils/aa-notify
+@@ -256,7 +256,7 @@ def follow_apparmor_events(logfile, wait=0):
+                     continue
+                 yield event
+ 
+-            if debug_logger.debug_level <= 10 and int(time.time()) - start_time > 100:
++            if debug_logger.debugging and debug_logger.debug_level <= 10 and int(time.time()) - start_time > 100:
+                 debug_logger.debug('Debug mode detected: aborting notification emitter after 100 seconds.')
+                 sys.exit(0)
+ 
+@@ -407,7 +407,8 @@ def main():
+         debug_logger.activateStderr()
+         debug_logger.debug('Logging level: {}'.format(debug_logger.debug_level))
+         debug_logger.debug('Running as uid: {0[0]}, euid: {0[1]}, suid: {0[2]}'.format(os.getresuid()))
+-
++        if args.poll:
++            debug_logger.debug('Running with --debug and --poll. Will exit in 100s')
+     # Sanity checks
+     user_ids = os.getresuid()
+     groups_ids = os.getresgid()
+diff --git a/utils/apparmor/aa.py b/utils/apparmor/aa.py
+index 4cb2155f..b6bb0968 100644
+--- a/utils/apparmor/aa.py
++++ b/utils/apparmor/aa.py
+@@ -2511,7 +2511,7 @@ def logger_path():
+ 
+ ######Initialisations######
+ 
+-def init_aa(confdir="/etc/apparmor"):
++def init_aa(confdir="/etc/apparmor", profiledir=None):
+     global CONFDIR
+     global conf
+     global cfg
+@@ -2534,7 +2534,10 @@ def init_aa(confdir="/etc/apparmor"):
+     if cfg['settings'].get('default_owner_prompt', False):
+         cfg['settings']['default_owner_prompt'] = ''
+ 
+-    profile_dir = conf.find_first_dir(cfg['settings'].get('profiledir')) or '/etc/apparmor.d'
++    if profiledir:
++        profile_dir = profiledir
++    else:
++        profile_dir = conf.find_first_dir(cfg['settings'].get('profiledir')) or '/etc/apparmor.d'
+     profile_dir = os.path.abspath(profile_dir)
+     if not os.path.isdir(profile_dir):
+         raise AppArmorException('Can\'t find AppArmor profiles in %s' % (profile_dir))
+diff --git a/utils/apparmor/tools.py b/utils/apparmor/tools.py
+index f1f05195..fd3ef32b 100644
+--- a/utils/apparmor/tools.py
++++ b/utils/apparmor/tools.py
+@@ -25,10 +25,9 @@ _ = init_translation()
+ 
+ class aa_tools:
+     def __init__(self, tool_name, args):
+-        apparmor.init_aa()
++        apparmor.init_aa(profiledir=args.dir)
+ 
+         self.name = tool_name
+-        self.profiledir = args.dir
+         self.profiling = args.program
+         self.check_profile_dir()
+         self.silent = None
+@@ -43,11 +42,6 @@ class aa_tools:
+             self.silent = args.silent
+ 
+     def check_profile_dir(self):
+-        if self.profiledir:
+-            apparmor.profile_dir = apparmor.get_full_path(self.profiledir)
+-            if not os.path.isdir(apparmor.profile_dir):
+-                raise apparmor.AppArmorException("%s is not a directory." % self.profiledir)
+-
+         if not user_perm(apparmor.profile_dir):
+             raise apparmor.AppArmorException("Cannot write to profile directory: %s" % (apparmor.profile_dir))
+ 
+diff --git a/utils/severity.db b/utils/severity.db
+index 3e07d44e..85b1d5de 100644
+--- a/utils/severity.db
++++ b/utils/severity.db
+@@ -30,6 +30,7 @@
+        CAP_SETUID 9
+        CAP_FOWNER 9
+        CAP_BPF 9
++       CAP_CHECKPOINT_RESTORE 9
+ # Denial of service, bypass audit controls, information leak
+        CAP_SYS_TIME 8
+        CAP_NET_ADMIN 8
+diff --git a/utils/test/test-aa-notify.py b/utils/test/test-aa-notify.py
+index 40dacd96..2484c7f9 100644
+--- a/utils/test/test-aa-notify.py
++++ b/utils/test/test-aa-notify.py
+@@ -189,6 +189,7 @@ optional arguments:
+         result = 'Got output "%s", expected "%s"\n' % (output, expected_output_has)
+         self.assertIn(expected_output_has, output, result + output)
+ 
++    @unittest.skipUnless(os.path.isfile('/var/log/wtmp'), 'Requires wtmp on system')
+     def test_entries_since_login(self):
+         '''Test showing log entries since last login'''
+ 

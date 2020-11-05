@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Sat Oct 31 19:05:14 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
+
+- add utils-fix-hotkey-conflict.diff to fix a hotkey conflict in
+  de, id and sv translations (and fix the test) (MR 675)
+- add extra-profiles-fix-Pux.diff to fix an inactive profile -
+  prevents a crash in aa-logprof and aa-genprof when creating a new
+  profile (MR 676)
+
+-------------------------------------------------------------------
+Sun Oct 25 11:32:16 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 3.0.0
+  - introduce feature abi declaration in profiles to enable use of
+    new rule types (for openSUSE: dbus and unix rules)
+  - support xattr attachment conditionals
+  - experimental support for kill and unconfined profile modes
+  - rewritten aa-status (in C), including support for new profile modes
+  - rewritten aa-notify (in python), finally dropping the perl
+    requirement at runtime
+  - new tool aa-features-abi for extracting feature abis from the kernel
+  - update profiles to have profile names and to use 3.0 feature abi
+  - introduce @{etc_ro} and @{etc_rw} profile variables
+  - new profile for php-fpm
+  - several updates to profiles and abstractions (including boo#1166007)
+  - fully support 'include if exists' in the aa-* tools
+  - rewrite handling of alias, include, link and variable rules in
+    the aa-* tools
+  - rewrite and simplify log handling in the aa-logprof and aa-genprof
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.0
+    for the detailed upstream changelog
+- patches:
+  - add changes-since-3.0.0.diff with upstream fixes since the 3.0.0
+    release up to 3e18c0785abc03ee42a022a67a27a085516a7921
+  - drop upstreamed usr-etc-abstractions-base-nameservice.diff
+  - drop 2.13-only libapparmor-so-number.diff
+  - refresh apparmor-enable-profile-cache.diff - partially upstreamed
+  - update apparmor-samba-include-permissions-for-shares.diff and
+    apparmor-lessopen-profile.patch - switch to "include if exists"
+  - apparmor-lessopen-profile.patch: add abi rule to lessopen profile
+  - refresh apparmor-lessopen-nfs-workaround.diff
+- move away very loose apache profile that doesn't even match the
+  apache2 binary path in openSUSE to avoid confusion (boo#872984)
+- move rewritten aa-status from utils to parser subpackage
+- add aa-features-abi to parser subpackage
+- replace perl and libnotify-tools requires with requiring
+  python3-notify2 and python3-psutil (needed by the rewritten
+  aa-notify)
+- drop ancient cleanup for /etc/init.d/subdomain from parser %pre
+- drop (never enabled) conditionals to build with python2 and to
+  build the python-apparmor subpackage (upstream dropped python2
+  support)
+- drop setting PYTHON and PYTHON_VERSIONS env variable, no longer needed
+- set PYFLAKES path for utils check
+- add precompiled_cache build conditional to allow faster local
+  builds without using kvm
+- remove duplicated BuildRequires: swig
+
+-------------------------------------------------------------------
 Sat Oct 17 15:46:01 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
 
 - update to AppArmor 2.13.5
