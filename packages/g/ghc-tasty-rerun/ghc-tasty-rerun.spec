@@ -18,13 +18,12 @@
 
 %global pkg_name tasty-rerun
 Name:           ghc-%{pkg_name}
-Version:        1.1.17
+Version:        1.1.18
 Release:        0
 Summary:        Rerun only tests which failed in a previous test run
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-mtl-devel
@@ -37,10 +36,10 @@ BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-transformers-devel
 
 %description
-This ingredient for <https://hackage.haskell.org/package/tasty tasty> testing
-framework allows to filter a test tree depending on an outcome of the previous
-run. This may be useful in many scenarios, especially when a test suite grows
-large.
+This ingredient for the <https://hackage.haskell.org/package/tasty tasty>
+testing framework allows filtering a test tree depending on the outcome of the
+previous run. This may be useful in many scenarios, especially when a test
+suite grows large.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -54,7 +53,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
