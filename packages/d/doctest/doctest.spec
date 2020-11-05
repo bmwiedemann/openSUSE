@@ -17,7 +17,7 @@
 
 
 Name:           doctest
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        Single-header testing framework
 License:        MIT

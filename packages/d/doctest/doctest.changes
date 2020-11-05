@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  4 18:51:51 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.1
+  * Support for unit tests with Open MPI as a new extension header.
+  * Added default printers for enums.
+
+-------------------------------------------------------------------
 Thu Sep 24 15:00:37 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Enable arm builds. The package builds fine on aarch64 systems.
