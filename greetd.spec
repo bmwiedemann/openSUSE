@@ -35,6 +35,7 @@ Requires(post): diffutils
 Requires(pre):  %{_bindir}/getent
 Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
+Requires(pre):  group(video)
 Requires:       pam
 
 %description
@@ -68,7 +69,7 @@ install -d %{buildroot}/run/greetd
 %service_add_pre %{name}.service
 getent group greeter >/dev/null || %{_sbindir}/groupadd -r greeter
 getent passwd greeter >/dev/null || %{_sbindir}/useradd -r -g greeter -G video -s /bin/false \
-	-c "%{name} daemon" -d %{_localstatedir}/lib/greeter greeter
+	-c "%{name} daemon" -d %{_localstatedir}/lib/greetd greeter
 %{_sbindir}/usermod -g greeter -G video -s /bin/false greeter 2> /dev/null
 
 %post

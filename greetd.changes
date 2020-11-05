@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  5 16:47:30 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- add missed group requirement (issue could be seen during installation)
+- correct home directory for the greeter user
+
+-------------------------------------------------------------------
 Tue Sep 15 10:03:45 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
 
 - fix /etc/greetd dir permissions
