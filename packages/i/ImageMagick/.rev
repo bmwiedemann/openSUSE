@@ -2802,4 +2802,17 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * check for linux-compatible sendfile().</comment>
     <requestid>841408</requestid>
   </revision>
+  <revision rev="217" vrev="1">
+    <srcmd5>d87bba1b4aa64ef88088c0497a573fc8</srcmd5>
+    <version>7.0.10.35</version>
+    <time>1604609634</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.10.35
+  * Prefer ffmpeg over avconv.
+  * Support median image statistic and median property.
+  * Add -extend option to {display,animate,import}.
+- modified patches
+  % ImageMagick-configuration-SUSE.patch (refreshed)</comment>
+    <requestid>845671</requestid>
+  </revision>
 </revisionlist>
