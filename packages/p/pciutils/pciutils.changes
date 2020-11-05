@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Thu Oct 29 08:24:59 UTC 2020 - pgajdos@suse.com
 
-- Add decode support for RCECs 
+- Add decode support for RCECs [jsc#SLE-13735]
 - added patches
   https://github.com/pciutils/pciutils/commit/e12bd01eea67ca8cf539263124843ba281eb6ecc
   + pciutils-add-decode-support-for-RCECs.patch
