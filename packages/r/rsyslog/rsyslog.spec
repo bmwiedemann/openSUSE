@@ -27,22 +27,9 @@ License:        (GPL-3.0-or-later AND Apache-2.0)
 Group:          System/Daemons
 Version:        8.2010.0
 Release:        0
-%if 0%{?suse_version} >= 1210
-%bcond_without  systemd
-%bcond_without  udpspoof
-%bcond_without  dbi
-%bcond_without  pkgconfig
-%else
-%bcond_with     systemd
 %bcond_with     udpspoof
 %bcond_with     dbi
 %bcond_with     pkgconfig
-%endif
-%if 0%{?suse_version} >= 1230
-%bcond_with     systemv
-%else
-%bcond_without  systemv
-%endif
 %if 0%{?suse_version} > 1230
 %bcond_without  journal
 %else
@@ -86,26 +73,15 @@ Release:        0
 URL:            http://www.rsyslog.com/
 # Upstream library deprecated and we want to support migration
 Obsoletes:      %{name}-module-guardtime <= 8.38.0
-%if %{with systemd}
 Provides:       syslog
 Provides:       sysvinit(syslog)
 Conflicts:      otherproviders(syslog)
 Requires(pre):  %fillup_prereq
-%if %{with systemv}
-Requires(pre):  %insserv_prereq
-Requires(pre):  syslog-service < 2.0
-Requires(pre):  /etc/init.d/syslog
-%else
 Requires(pre):  syslog-service >= 2.0
-%endif
 %{?systemd_ordering}
 BuildRequires:  pkgconfig(systemd) >= 209
 %if %{with journal}
 BuildRequires:  pkgconfig(libsystemd) >= 234
-%endif
-%else
-Requires(pre):  %insserv_prereq %fillup_prereq /etc/init.d/syslog
-BuildRequires:  klogd
 %endif
 # for patch1
 BuildRequires:  autoconf
@@ -218,10 +194,6 @@ BuildRequires:  pkgconfig(tcl)
 %else
 BuildRequires:  tcl-devel
 %endif
-%endif
-%if %{with systemd}
-%{?systemd_ordering}
-BuildRequires:  pkgconfig(systemd)
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        http://www.rsyslog.com/files/download/%{name}/%{name}-%{version}.tar.gz
@@ -585,14 +557,12 @@ This module provides an output module for TCL.
 %prep
 %setup -q -a 14
 #
-%if %{with systemd}
 for file in rsyslog-service-prepare; do
 	sed \
 	-e 's;RUN_DIR;%{rsyslog_rundir};g' \
 	-e 's;ADDITIONAL_SOCKETS;%{rsyslog_sockets_cfg};g' \
 	"%{_sourcedir}/${file}.in" > "${file}"
 done
-%endif
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -W -Wall -I../grammar -I../../grammar"
@@ -694,7 +664,7 @@ autoreconf -fiv
 	--enable-imdiag		\
 	--enable-diagtools	\
 %endif
-%if %{with systemd} && %{with journal}
+%if %{with journal}
 	--enable-imjournal	\
 	--enable-omjournal	\
 %endif
@@ -791,14 +761,8 @@ fi
 # it is simply broken (bnc#890228)
 rm -f $RPM_BUILD_ROOT%{_sbindir}/zpipe
 #
-%if %{with systemd} && ! %{with systemv}
 install -m755 rsyslog-service-prepare %{buildroot}%{_sbindir}/
 ln -svf service %buildroot/%{_sbindir}/rc%{name}
-%else
-if test -e %{buildroot}%{_unitdir}/rsyslog.service ; then
-	rm -f %{buildroot}%{_unitdir}/rsyslog.service
-fi
-%endif
 #
 install -d -m0755 %{buildroot}%{_sysconfdir}/rsyslog.d
 install -d -m0755 %{buildroot}%{_localstatedir}/run/rsyslog
@@ -839,12 +803,10 @@ install -m644 plugins/ommysql/createDB.sql \
 install -m644 plugins/ompgsql/createDB.sql \
 	%{buildroot}%{rsyslogdocdir}/pgsql-createDB.sql
 %endif
-%if %{with systemd}
 install -d -m0755 %{buildroot}%{_unitdir}
 install -m644 %{SOURCE3} %{buildroot}%{_unitdir}/
 install -d -m0755 %{buildroot}%{_sysconfdir}/systemd/journald.conf.d
 install -m644 %{SOURCE16} %{buildroot}%{_sysconfdir}/systemd/journald.conf.d/rsyslog.conf
-%endif
 # create ghosts
 install -d -m0755 %{buildroot}%{rsyslog_rundir}
 touch %{buildroot}%{rsyslog_sockets_cfg}
@@ -870,12 +832,8 @@ if [ -n "%{buildroot}" ] && [ "%{buildroot}" != "/" ] ; then
 	rm -rf "%{buildroot}"
 fi
 
-%if %{with systemd} && ! %{with systemv}
-
 %pre
 %{service_add_pre rsyslog.service}
-
-%endif
 
 %post
 #
@@ -887,23 +845,10 @@ fi
 #
 %{remove_and_set -n syslog SYSLOG_DAEMON SYSLOG_REQUIRES_NETWORK}
 %{remove_and_set -n syslog RSYSLOGD_COMPAT_VERSION RSYSLOGD_NATIVE_VERSION}
-%if %{with systemv}
-%{fillup_and_insserv -ny syslog syslog}
-%endif
 #
 # add RSYSLOGD_* variables
 #
 %{fillup_only -ns syslog rsyslog}
-%if %{with systemv}
-#
-# switch SYSLOG_DAEMON to outself
-#
-if test -f etc/sysconfig/syslog ; then
-	sed -i \
-		-e 's/^SYSLOG_DAEMON=.*/SYSLOG_DAEMON="rsyslogd"/g' \
-		etc/sysconfig/syslog
-fi
-%endif
 #
 # Do not use multiple facilities with the same priority pattern.
 # It causes start failure since rsyslog-6.4.x (bnc#780607).
@@ -939,7 +884,6 @@ fi # first install
 #
 # Enable the rsyslogservice to be started by systemd
 #
-%if %{with systemd} && ! %{with systemv}
 # This macro enables based on a systemctl preset config file only
 %{service_add_post rsyslog.service}
 # But we want to enable a syslog-daemon regardless of the preset;
@@ -947,51 +891,23 @@ fi # first install
 # We do not check the obsolete SYSLOG_DAEMON variable as we want
 # to switch when installing it and there is a provider conflict.
 /usr/bin/systemctl -f enable rsyslog.service >/dev/null 2>&1 || :
-%endif
 
 %preun
 #
 # stop the rsyslogd daemon when it is running
 #
-%if %{with systemd} && ! %{with systemv}
 %{service_del_preun syslog.socket}
 %{service_del_preun rsyslog.service}
-%else
-if test -x /etc/init.d/syslog ; then
-	%{stop_on_removal syslog}
-fi
-#
-# reset SYSLOG_DAEMON variable on removal
-#
-if test "$1" = "0" -a -f etc/sysconfig/syslog ; then
-	sed -i \
-		-e 's/^SYSLOG_DAEMON=.*/SYSLOG_DAEMON=""/g' \
-		etc/sysconfig/syslog
-fi
-%endif
 
 %postun
 #
 # update linker caches
 #
 /sbin/ldconfig
-%if %{with systemd} && ! %{with systemv}
 #
 # cleanup init scripts
 #
 %{service_del_postun rsyslog.service}
-%else
-#
-# stop the rsyslogd daemon when it is running
-#
-if test -x /etc/init.d/syslog ; then
-	%{restart_on_update syslog}
-fi
-#
-# cleanup init scripts
-#
-%{insserv_cleanup}
-%endif
 
 %files
 %defattr(-,root,root)
@@ -1050,7 +966,7 @@ fi
 %if %{with rfc3195}
 %{rsyslog_module_dir_nodeps}/im3195.so
 %endif
-%if %{with systemd} && %{with journal}
+%if %{with journal}
 %{rsyslog_module_dir_nodeps}/imjournal.so
 %{rsyslog_module_dir_nodeps}/omjournal.so
 %dir %{_sysconfdir}/systemd/journald.conf.d/
@@ -1068,11 +984,9 @@ fi
 %{_fillupdir}/sysconfig.syslog-rsyslog
 %attr(0755,root,root) %dir %ghost %{rsyslog_rundir}
 %attr(0644,root,root) %ghost %{rsyslog_sockets_cfg}
-%if %{with systemd} && ! %{with systemv}
 %{_sbindir}/rsyslog-service-prepare
 %{_unitdir}/rsyslog.service
 %{_sbindir}/rc%{name}
-%endif
 %{APPARMOR_PROFILE_PATH_DIR_COMMANDS}
 %config %{APPARMOR_PROFILE_PATH}/usr.sbin.rsyslogd
 
