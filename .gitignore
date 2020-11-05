@@ -1,4 +1,7 @@
 .[a-z]*
+!.files
+!.meta
+!.rev
 
 RPMS*
 binaries
