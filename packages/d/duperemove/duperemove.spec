@@ -1,7 +1,7 @@
 #
 # spec file for package duperemove
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define samename btrfs-extent-same
 Name:           duperemove
-Version:        0.11.1
+Version:        0.11.2
 Release:        0
 Summary:        Software to find duplicate extents in files and remove them
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/Filesystems
-Url:            https://github.com/markfasheh/duperemove
+URL:            https://github.com/markfasheh/duperemove
 Source:         https://github.com/markfasheh/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config

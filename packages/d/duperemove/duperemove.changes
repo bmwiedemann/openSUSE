@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov  5 07:38:15 UTC 2020 - Nikolay Borisov <nborisov@suse.com>
+
+- Update to v0.11.2
+  - Improved detection of hyperthreading
+  - Multiple minor fixes and cleanups
+  - Updated xxhash algorithm to latest release
+  - Fixed extent collision handling
+  - Fix overflow scanning in extents
+
+-------------------------------------------------------------------
 Sun Jun 14 08:05:24 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix building with gcc10
