@@ -1,7 +1,7 @@
 #
 # spec file for package z
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2009 - 2014 Pascal Bleser pascal.bleser@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,17 +13,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           z
-Version:        2.7.1
+Version:        2.7.3
 Release:        0
 Summary:        Frontend for compressing and uncompressing
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Archiving/Compression
-URL:            http://www.cs.indiana.edu/~kinzler/z/
+URL:            https://www.cs.indiana.edu/~kinzler/z/
 Source:         http://www.cs.indiana.edu/~kinzler/z/z-%{version}.tgz
 BuildArch:      noarch
 
@@ -32,7 +32,7 @@ Z is a frontend for the compress/uncompress, gzip, bzip2, tar, and zip/unzip
 utilities to compress and uncompress files and directories.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 
@@ -46,7 +46,8 @@ make \
 	 install.man
 
 %files
-%doc README COPYING
+%license COPYING
+%doc README
 %{_bindir}/z
 %{_mandir}/man1/z.1%{?ext_man}
 
