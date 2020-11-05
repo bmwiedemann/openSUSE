@@ -419,4 +419,20 @@ Should be handled together with sr#769061</comment>
   dropped. This change reintroduces it.</comment>
     <requestid>822938</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>59e2b8b299678d6d9373cb410a300039</srcmd5>
+    <version>0.3.15</version>
+    <time>1604609741</time>
+    <user>dimstar_suse</user>
+    <comment>- update to new upstream version 0.3.15:
+  - Corrected mutliple security issues that existed if the tcsd is started by
+    root instead of the tss user. CVE-2020-24332, CVE-2020-24330, CVE-2020-24331
+  - Replaced use of _no_optimize with asm memory barrier
+  - Fixed multiple potential instances of use after free memory handling
+  - Removed unused global variables which caused build issue on some distros
+- drop gcc-10.patch: now contained in upstream tarball
+- drop bsc1164472.patch: now contained in upstream tarball
+- adjusted %setup macro invocation which seemed to be wrong</comment>
+    <requestid>846199</requestid>
+  </revision>
 </revisionlist>

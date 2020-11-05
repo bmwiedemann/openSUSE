@@ -18,7 +18,7 @@
 
 %define tpmstatedir %{_localstatedir}/lib/tpm
 Name:           trousers
-Version:        0.3.14
+Version:        0.3.15
 Release:        0
 Summary:        TSS (TCG Software Stack) access daemon for a TPM chip
 License:        BSD-3-Clause
@@ -29,8 +29,6 @@ Source1:        tcsd.service
 Source2:        baselibs.conf
 Source3:        91-trousers.rules
 Patch0:         fix-lto.patch
-Patch1:         bsc1164472.patch
-Patch2:         gcc-10.patch
 BuildRequires:  gtk2-devel
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
@@ -81,10 +79,8 @@ The package needs the /dev/tpm device file to be present on your
 system. It is a character device file major 10 minor 224, 0600 tss:tss.
 
 %prep
-%setup -q -c %{name}-%{version}
+%setup -q -n %{name}-%{version}
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
     CC=gcc
