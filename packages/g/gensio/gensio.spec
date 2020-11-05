@@ -25,7 +25,7 @@
 %bcond_with    openipmi
 %endif
 Name:           gensio
-Version:        2.1.7
+Version:        2.2.0
 Release:        0
 Summary:        Library to abstract stream and packet I/O
 # examples/* is licenced under Apache-2.0
@@ -43,6 +43,7 @@ BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  swig
+BuildRequires:  pkgconfig(avahi-client)
 %if %{with openipmi}
 BuildRequires:  pkgconfig(OpenIPMI)
 %endif
@@ -120,10 +121,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING COPYING.LIB
 %doc AUTHORS ChangeLog NEWS README.rst
 %{_bindir}/gensiot
+%{_bindir}/gmdns
 %{_bindir}/gtlssh
 %{_bindir}/gtlssh-keygen
 %{_bindir}/gtlssync
 %{_mandir}/man1/gensiot.1%{?ext_man}
+%{_mandir}/man1/gmdns.1%{?ext_man}
 %{_mandir}/man1/gtlssh-keygen.1%{?ext_man}
 %{_mandir}/man1/gtlssh.1%{?ext_man}
 %{_mandir}/man1/gtlssync.1%{?ext_man}
