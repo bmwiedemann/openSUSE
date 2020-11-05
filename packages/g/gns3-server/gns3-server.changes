@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Nov  5 09:01:37 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.16
+  * Release Web UI version 2.2.16
+  * Fix wrong defaults for images_path, configs_path,
+    appliances_path.
+  * Use EnvironmentFile for Systemd service.
+  * Fix SSL support for controller and local compute.
+  * Prevent WIC to be added/removed while Dynamips router is
+    running.
+  * Fix bug with application id allocation for IOU nodes.
+  * Allow commas in image paths and VM name for Qemu VMs.
+  * Option to allocate or not the vCPUs and RAM settings for the
+    GNS3 VM.
+- Update to version 2.2.15
+  * Fix symbol retrieval issue.
+  * Fixes update() missing 2 required positional arguments:
+    'name' and 'value'.
+  * Fix Hyper-V based GNS3 VM WMI issue.
+  * Release Web-Ui version 2020.4.0-beta.1
+
+-------------------------------------------------------------------
 Mon Sep 21 15:21:12 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Use %{?systemd_ordering} instead of %{?systemd_requires}
