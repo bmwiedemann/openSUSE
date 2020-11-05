@@ -189,7 +189,7 @@ sed -i 's/DISPLAYMANAGER=.*//g' /etc/sysconfig/displaymanager
 
 %postun
 # Do not restart DM on update (bnc#886641)
-%service_del_postun -n display-manager.service
+%service_del_postun_without_restart display-manager.service
 [ -f /usr/lib/X11/displaymanagers/console ] || %{_sbindir}/update-alternatives \
   --remove default-displaymanager /usr/lib/X11/displaymanagers/console
 [ -f /usr/lib/X11/displaymanagers/xdm ] || %{_sbindir}/update-alternatives \

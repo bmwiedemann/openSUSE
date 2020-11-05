@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov  3 14:38:22 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Replace  '%service_del_postun -n' with '%service_del_postun_without_restart'
+
+  '-n' is deprecated and will be removed in the future.
+
+-------------------------------------------------------------------
 Mon Oct 12 16:14:57 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - no longer package symlinks for Xsession, Xsetupm Xstartup and
