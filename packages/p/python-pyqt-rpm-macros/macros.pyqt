@@ -1,0 +1,66 @@
+%sip4_only() %{?use_sip4:%{**}}
+
+%sip5_only() %{?!use_sip4:%{**}}
+
+%pyqt5_sipdir %{?use_sip4:%_datadir/sip/PyQt5-%python_bin_suffix}%{?!use_sip4:%python_sitearch/PyQt5/bindings}
+
+%pyqt_build(c:m:s:v) \
+export CXXFLAGS="%{optflags}" \
+export CFLAGS="%{optflags}" \
+%{python_expand # \
+%if 0%{?use_sip4} \
+    mkdir build \
+    pushd build \
+    [ -d ../config-tests ] && ln -s ../config-tests . \
+    [ -d ../sip ] && ln -s ../sip . \
+    $python ../configure.py \\\
+        %{-v:--verbose}%{!-v:-w} \\\
+        --sip=%{_bindir}/sip-%{$python_bin_suffix} \\\
+        --qmake=%{_bindir}/qmake-qt5 \\\
+        %{-c*} \\\
+        QMAKE_CFLAGS+="${CFLAGS} ${CPPFLAGS}" \\\
+        QMAKE_CXXFLAGS+="${CXXFLAGS} ${CPPFLAGS}" \
+    popd \
+%else \
+    sip-build-%{$python_bin_suffix} \\\
+        --verbose  \\\
+        --api-dir %{_libqt5_datadir}/qsci/api/python_%{$python_bin_suffix}/ \\\
+        --debug \\\
+        --no-make \\\
+        --qmake=%{_libqt5_qmake} \\\
+        --qmake-setting "QMAKE_CFLAGS += ${CFLAGS} ${CPPFLAGS}" \\\
+        --qmake-setting "QMAKE_CXXFLAGS += ${CXXFLAGS} ${CPPFLAGS}" \\\
+        %{-s*} \
+%endif \
+pushd build \
+make %{?_smp_mflags} %{-m*} \
+popd \
+} \
+%{nil}
+
+%pyqt_install \
+%{python_expand pushd build \
+%make_install INSTALL_ROOT=%{buildroot} \
+popd \
+%if 0%{?use_sip4} \
+[ -d %{buildroot}%{_libqt5_datadir}/qsci/api/python ] \\\
+  && mv -T %{buildroot}%{_libqt5_datadir}/qsci/api/python \\\
+           %{buildroot}%{_libqt5_datadir}/qsci/api/python_%{$python_bin_suffix} \
+[ -d %{buildroot}/%{_datadir}/sip/PyQt5 ] \\\
+  && mv -T %{buildroot}/%{_datadir}/sip/PyQt5 %{buildroot}/%{_datadir}/sip/PyQt5-%{$python_bin_suffix} \
+%endif \
+find %{buildroot}%{_libqt5_plugindir} -name '*pyqt5*.so' \\\
+  | while read f; do mv ${f} ${f/pyqt5/py%{$python_bin_suffix}qt5}; done \
+} \
+%{nil}
+
+%pyqt_install_examples() \
+%{python_expand # install example files \
+exdir=%{buildroot}%{_docdir}/%{$python_prefix}-%{1} \
+mkdir -p $exdir \
+cp -r examples $exdir/ \
+# Fix wrong-script-interpreter \
+find $exdir -name "*.py" -exec sed -i "1 s|^#!%{_bindir}/env python.*$|#!%{_bindir}/$python|" {} \\; \
+%fdupes $exdir \
+} \
+%{nil}
