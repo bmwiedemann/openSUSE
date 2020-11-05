@@ -28,7 +28,6 @@ KillMode=mixed
 TimeoutStartSec=1min
 TimeoutStopSec=3min
 WorkingDirectory=/var/spool/amavis/tmp
-StandardOutput=syslog
 SyslogFacility=mail
 SyslogIdentifier=amavis
 ProtectSystem=full
