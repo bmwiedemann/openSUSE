@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  4 19:17:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.5
+  * Upstream does not provide a changelog
+- Make grpc support optional and don't enable it by default
+
+-------------------------------------------------------------------
 Fri Oct  2 12:38:25 UTC 2020 - Marius Tomaschewski <mt@suse.com>
 
 - add build condition disabling mininet build require by default,

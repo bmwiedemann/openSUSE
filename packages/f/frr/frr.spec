@@ -2,7 +2,7 @@
 # spec file for package frr
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2019-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,6 +20,7 @@
 %bcond_with     cumulus
 %bcond_with     datacenter
 %bcond_with     mininet
+%bcond_with     grpc
 
 %define skip_python2 1
 
@@ -31,7 +32,7 @@
 %define frr_daemondir %{_prefix}/lib/frr
 
 Name:           frr
-Version:        7.4
+Version:        7.5
 Release:        0
 Summary:        FRRouting Routing daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -60,7 +61,9 @@ BuildRequires:  protobuf-c
 BuildRequires:  python-rpm-macros
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
+%if %{with grpc}
 BuildRequires:  pkgconfig(grpc)
+%endif
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libcares)
@@ -103,12 +106,14 @@ Group:          System/Libraries
 %description -n libfrr_pb0
 This library contains protobuf memory management for FRRouting..
 
+%if %{with grpc}
 %package -n libfrrgrpc_pb0
 Summary:        FRRouting grpc protobuf library
 Group:          System/Libraries
 
 %description -n libfrrgrpc_pb0
 This library contains grpc protobuf definitions for FRRouting.
+%endif
 
 %package -n libfrrospfapiclient0
 Summary:        API for FRRouting's OSPFv2 implementation
@@ -161,7 +166,9 @@ Requires:       libfrr0 = %{version}
 Requires:       libfrr_pb0 = %{version}
 Requires:       libfrrcares0 = %{version}
 Requires:       libfrrfpm_pb0 = %{version}
+%if %{with grpc}
 Requires:       libfrrgrpc_pb0 = %{version}
+%endif
 Requires:       libfrrospfapiclient0 = %{version}
 Requires:       libfrrsnmp0 = %{version}
 Requires:       libfrrzmq0 = %{version}
@@ -235,7 +242,9 @@ autoreconf -fiv
     --enable-shell-access \
     --with-crypto=openssl \
     --enable-config-rollbacks \
+%if %{with grpc}
     --enable-grpc \
+%endif
     --enable-systemd
 
 make %{?_smp_mflags} MAKEINFO="makeinfo --no-split"
@@ -309,8 +318,10 @@ getent passwd %{frr_user} >/dev/null || useradd -r -g %{frr_group} -G %{frrvty_g
 
 %post   -n libfrr_pb0 -p /sbin/ldconfig
 %postun -n libfrr_pb0 -p /sbin/ldconfig
+%if %{with grpc}
 %post   -n libfrrgrpc_pb0 -p /sbin/ldconfig
 %postun -n libfrrgrpc_pb0 -p /sbin/ldconfig
+%endif
 %post   -n libfrrfpm_pb0 -p /sbin/ldconfig
 %postun -n libfrrfpm_pb0 -p /sbin/ldconfig
 
@@ -387,7 +398,9 @@ getent passwd %{frr_user} >/dev/null || useradd -r -g %{frr_group} -G %{frrvty_g
 %{_libdir}/frr/modules/zebra_fpm.so
 %{_libdir}/frr/modules/zebra_irdp.so
 %{_libdir}/frr/modules/bgpd_rpki.so
+%if %{with grpc}
 %{_libdir}/frr/modules/grpc.so
+%endif
 %{_libdir}/frr/modules/dplane_fpm_nl.so
 %{_libdir}/frr/modules/bgpd_bmp.so
 %{_prefix}/lib/frr/generate_support_bundle.py
@@ -398,8 +411,10 @@ getent passwd %{frr_user} >/dev/null || useradd -r -g %{frr_group} -G %{frrvty_g
 %files -n libfrrfpm_pb0
 %{_libdir}/libfrrfpm_pb.so.0*
 
+%if %{with grpc}
 %files -n libfrrgrpc_pb0
 %{_libdir}/libfrrgrpc_pb.so.0*
+%endif
 
 %files -n libfrrospfapiclient0
 %{_libdir}/libfrrospfapiclient.so.0*
