@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Thu Nov  5 11:44:18 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.1955, fixes the following problems
+  * Vim9: command modifiers do not work.
+  * Variable completion does not work in command line window.
+  * Default option values are changed when using :badd for an existing buffer.
+  * Buffer test fails with normal features.
+  * Still using default option values after using ":badd +1".
+  * The wininfo list may contain stale entries.
+  * Warning for signed/unsigned.
+  * Complete_info().selected may be wrong.
+  * Lua is initialized even when not used.
+  * Number of status line items is limited to 80.
+  * Reading past the end of the command line.
+  * Tiny build fails.
+  * With Python 3.9 some tests fail.
+  * GTK GUI: rounding for the cell height is too strict.
+  * Vim9: cannot put line break in expression for '=' register.
+  * Vim9: error for wrong number of arguments is not useful.
+  * Vim9: function call is aborted even when "silent!" is used.
+  * No test for improved Man command.
+  * Vim9: E1100 mentions :let.
+  * Assert_fails() setting emsg_silent changes normal execution.
+  * Listlbr test fails when run after another test.
+  * Fuzzy matching does not recognize path separators.
+  * Win32: scrolling doesn't work properly when part of window is off-screen.
+  * Vim9: "filter" command modifier doesn't work.
+  * Vim9: crash when indexing dict with NULL key.
+  * List/dict test fails.
+  * Cannot use a space in 'spellfile'. (Filipe Brandenburger)
+  * Vim9: get unknown error with an error in a timer function.
+  * Vim9: "silent!" not effective when list index is wrong.
+  * MS-Windows: problem loading Perl 5.32.
+  * Wrong input if removing shift results in special key code.
+  * Vim9: arguments of extend() not checked at compile time.
+  * Compiler warnings when building with Athena GUI.
+  * Cannot sort using locale ordering.
+  * Vim9: command modifiers in :def function not tested.
+  * Sort test fails on Mac.
+  * Session sets the local 'scrolloff' value to the global value.
+  * Vim9: test for confirm modifier fails in some situations.
+  * Wiping out a terminal buffer makes some tests fail.
+  * Invalid memory access in Ex mode with global command.
+  * Vim9: browse modifier test fails on Mac.
+  * Ex mode test fails on MS-Windows with GUI.
+  * Insufficient test coverage for the Netbeans interface.
+  * Vim9: wrong error message when colon is missing.
+  * Netbeans test is flaky.
+  * Crash when passing NULL function to reduce().
+  * sort() with NULL string not tested.
+  * Crash when using "zj" without folds. (Sean Dewar)
+  * GUI: crash when handling message while closing a window. (Srinath
+  Avadhanula)
+  * Vim9: using extend() on null dict is silently ignored.
+  * Vim9: crash when compiling function fails when getting type.
+  * Test for list and dict fails.
+  * Vim9: crash when using a NULL dict key.
+  * Vim9: extra "unknown" error after other error.
+  * Vim9: not all command modifiers are tested.
+  * Vim9: not all command modifiers are tested.
+
+-------------------------------------------------------------------
+Mon Nov  2 22:25:51 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
+
+- apparmor.vim: update from AppArmor 3.0
+  - add capability checkpoint_restore
+
+-------------------------------------------------------------------
 Sun Oct 25 11:44:15 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.1900, fixes the following problems

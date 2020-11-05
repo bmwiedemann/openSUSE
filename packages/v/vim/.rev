@@ -4819,4 +4819,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Vim9: add() does not check type of argument.</comment>
     <requestid>843885</requestid>
   </revision>
+  <revision rev="273" vrev="1">
+    <srcmd5>00d1df71d8f88bb1957aca4885a42f04</srcmd5>
+    <version>8.2.1955</version>
+    <time>1604609683</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.2.1955, fixes the following problems
+  * Vim9: command modifiers do not work.
+  * Variable completion does not work in command line window.
+  * Default option values are changed when using :badd for an existing buffer.
+  * Buffer test fails with normal features.
+  * Still using default option values after using &quot;:badd +1&quot;.
+  * The wininfo list may contain stale entries.
+  * Warning for signed/unsigned.
+  * Complete_info().selected may be wrong.
+  * Lua is initialized even when not used.
+  * Number of status line items is limited to 80.
+  * Reading past the end of the command line.
+  * Tiny build fails.
+  * With Python 3.9 some tests fail.
+  * GTK GUI: rounding for the cell height is too strict.
+  * Vim9: cannot put line break in expression for '=' register.
+  * Vim9: error for wrong number of arguments is not useful.
+  * Vim9: function call is aborted even when &quot;silent!&quot; is used.
+  * No test for improved Man command.
+  * Vim9: E1100 mentions :let.
+  * Assert_fails() setting emsg_silent changes normal execution.
+  * Listlbr test fails when run after another test.
+  * Fuzzy matching does not recognize path separators.
+  * Win32: scrolling doesn't work properly when part of window is off-screen.
+  * Vim9: &quot;filter&quot; command modifier doesn't work.
+  * Vim9: crash when indexing dict with NULL key.
+  * List/dict test fails.
+  * Cannot use a space in 'spellfile'. (Filipe Brandenburger)
+  * Vim9: get unknown error with an error in a timer function.
+  * Vim9: &quot;silent!&quot; not effective when list index is wrong.</comment>
+    <requestid>846211</requestid>
+  </revision>
 </revisionlist>
