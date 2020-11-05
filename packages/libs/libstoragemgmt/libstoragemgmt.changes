@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov  3 07:41:35 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.6:
+ * Hpsa bug fixes #419, #420
+ * Change lsmcli output for missing lsmd (daemon)
+   https://bugzilla.redhat.com/show_bug.cgi?id=1872753
+
+-------------------------------------------------------------------
 Tue Sep 15 02:41:46 UTC 2020 - nick wang <nwang@suse.com>
 
 - bsc#1176448, Add clibs requirement to python-libstoragemgmt.

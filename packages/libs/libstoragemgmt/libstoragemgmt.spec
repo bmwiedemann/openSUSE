@@ -25,7 +25,7 @@
 %define python3 0
 %endif
 Name:           libstoragemgmt
-Version:        1.8.5
+Version:        1.8.6
 Release:        0
 Summary:        Storage array management library
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
