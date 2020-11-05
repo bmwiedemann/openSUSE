@@ -24,9 +24,9 @@
 
 %define libname %{name}1
 Name:           librdkafka
-Version:        1.5.0
+Version:        1.5.2
 Release:        0
-Summary:        A library for changing configuration files
+Summary:        The Apache Kafka C/C++ library
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/edenhill/librdkafka

@@ -114,4 +114,12 @@
    `allow.auto.create.topics=true` may be used to re-enable the old deprecated</comment>
     <requestid>830730</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>86d76c943dabf596e3ca0f443dfd4d1b</srcmd5>
+    <version>1.5.2</version>
+    <time>1604609592</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845629</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 26 08:08:55 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.5.2:
+  * Security fixes: There was an incorrect call to zlib's inflateGetHeader()
+  with unitialized memory pointers that could lead to the GZIP header of a
+  fetched message batch to be copied to arbitrary memory. 
+  * The default value for the producer configuration property retries has
+  been increased from 2 to infinity
+  * The default value for the producer configuration property
+  request.timeout.ms has been increased from 5 to 30 seconds
+  * lots of bugfixes, see https://raw.githubusercontent.com/edenhill/librdkafka/v1.5.2/CHANGELOG.md
+
+-------------------------------------------------------------------
 Fri Aug 21 12:36:30 UTC 2020 - Chris Coutinho <chrisbcoutinho@gmail.com>
 
 - Update library v1.3.0 -> 1.5.0
