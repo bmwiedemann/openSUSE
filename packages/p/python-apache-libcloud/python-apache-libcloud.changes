@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov  3 13:31:18 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix bcond macros on SPEC file to properly manage Python 2 and Python 3 builds.
+
+-------------------------------------------------------------------
 Fri Oct 30 12:47:57 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Skip conflictive 'ParamikoSSHClientTests.test_key_file_non_pem_format_error' test

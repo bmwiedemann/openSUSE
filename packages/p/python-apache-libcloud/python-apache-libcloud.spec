@@ -20,7 +20,7 @@
 %define skip_python2 1
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%bcond_with	python2
 Name:           python-apache-libcloud
 Version:        3.2.0
 Release:        0
