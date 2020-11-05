@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov  3 10:08:15 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update summary and description
+- remove old py.test2 and py.test3 entry points
+  * backport of sr#844820 for pytest6
+  * gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Mon Aug  3 21:04:38 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - nose is actually not required: the test suite happily skips over tests
