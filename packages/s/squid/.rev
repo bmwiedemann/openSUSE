@@ -902,4 +902,18 @@ from the squid 3.x changelog</comment>
   (bsc#1171569).</comment>
     <requestid>840300</requestid>
   </revision>
+  <revision rev="88" vrev="4">
+    <srcmd5>de34c019ee87664cf0a4b8a46671c4e6</srcmd5>
+    <version>4.13</version>
+    <time>1604609780</time>
+    <user>dimstar_suse</user>
+    <comment>- re-add older SLES12 requirements so we can use one devel project
+  for all codestreams
+
+- fix previous change to reinstante permissions macros, because the wrong path
+  has been used (bsc#1171569).
+- use libexecdir instead of libdir to conform to recent changes in Factory
+  (bsc#1171164).</comment>
+    <requestid>846311</requestid>
+  </revision>
 </revisionlist>

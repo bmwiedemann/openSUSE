@@ -16,11 +16,11 @@
 #
 
 
-%define         squidlibdir %{_libdir}/squid
+%define         squidlibexecdir %{_libexecdir}/squid
 %define         squidconfdir %{_sysconfdir}/squid
 
-%if 0%{?suse_version} >= 1550
-%define         squidhelperdir %{squidlibdir}
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
+%define         squidhelperdir %{squidlibexecdir}
 %else
 %define         squidhelperdir %{_sbindir}
 %endif
@@ -63,8 +63,13 @@ BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  samba-winbind
 BuildRequires:  sharutils
+%if 0%{?suse_version} >= 1500
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
+%sysusers_requires
+%else
+Requires(pre):  shadow
+%endif
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(gssrpc)
 BuildRequires:  pkgconfig(kdb)
@@ -80,7 +85,6 @@ Provides:       http_proxy
 Provides:       %{name}3 = %{version}
 Obsoletes:      %{name}3 < %{version}
 %{?systemd_ordering}
-%sysusers_requires
 %if 0%{?suse_version} >= 1330
 BuildRequires:  libnsl-devel
 %endif
@@ -151,8 +155,10 @@ export LDFLAGS="-Wl,--as-needed -Wl,--no-undefined -Wl,-z,relro,-z,now -pie"
 	--disable-arch-native \
 	--enable-security-cert-generators \
 	--enable-security-cert-validators
-%make_build SAMBAPREFIX=%{_prefix}
+make %{?_smp_mflags} -O SAMBAPREFIX=%{_prefix}
+%if 0%{?suse_version} >= 1500
 %sysusers_generate_pre %{SOURCE12} squid
+%endif
 
 %install
 install -d -m 750 %{buildroot}%{_localstatedir}/{cache,log}/%{name}
@@ -171,10 +177,14 @@ install -Dpm 644 %{SOURCE7} \
 install -d -m 755 doc/scripts
 install scripts/*.pl doc/scripts
 cat > doc/scripts/cachemgr.readme <<-EOT
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
+	cachemgr.cgi will now be found in %{squidhelperdir}
+%else
 	cachemgr.cgi will now be found in %{_libdir}/%{name}
+%endif
 EOT
 
-%if 0%{?suse_version} <= 1500
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150300
 install -dpm 755 %{buildroot}/%{_libdir}/%{name}
 mv %{buildroot}%{_sbindir}/cachemgr.cgi %{buildroot}/%{_libdir}/%{name}
 %endif
@@ -197,9 +207,9 @@ ln -sf %{_datadir}/%{name}/errors/en %{buildroot}%{squidconfdir}/errors
 
 # systemd
 install -D -m 644 %{SOURCE11} %{buildroot}%{_unitdir}/%{name}.service
-install -D -m 755 %{SOURCE15} %{buildroot}%{squidlibdir}/cache_dir.sed
-install -D -m 755 %{SOURCE16} %{buildroot}%{squidlibdir}/initialize_cache_if_needed.sh
-sed -i -e 's!%%{_libdir}!%{_libdir}!' %{buildroot}%{_unitdir}/%{name}.service
+install -D -m 755 %{SOURCE15} %{buildroot}%{squidlibexecdir}/cache_dir.sed
+install -D -m 755 %{SOURCE16} %{buildroot}%{squidlibexecdir}/initialize_cache_if_needed.sh
+sed -i -e 's!%%{_libexecdir}!%{_libexecdir}!' %{buildroot}%{_unitdir}/%{name}.service
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 # needed for smp support (bsc#1112695, bsc#1112066)
@@ -217,9 +227,30 @@ install -m 644 %{SOURCE12} %{buildroot}%{_sysusersdir}/
 
 %check
 # Fails in chroot environment
-%make_build check
+make check
 
+%if 0%{?suse_version} >= 1500
 %pre -f squid.pre
+%else
+%pre
+# we need this group for /usr/sbin/pinger
+getent group %{name} >/dev/null || %{_sbindir}/groupadd -g 31 -r %{name}
+# we need this group for squid (ntlmauth)
+# read access to /var/lib/samba/winbindd_privileged
+getent group winbind >/dev/null || %{_sbindir}/groupadd -r winbind
+getent passwd squid >/dev/null || \
+  %{_sbindir}/useradd -c "WWW-proxy squid" -d %{_localstatedir}/cache/%{name} \
+    -G winbind -g %{name} -o -u 31 -r -s /bin/false \
+    %{name}
+# if default group is not squid, change it
+if [ "$(%{_bindir}/id -ng %{name} 2>/dev/null)" != "%{name}" ]; then
+  %{_sbindir}/usermod -g %{name} %{name}
+fi
+# if squid is not member of winbind, add him
+if [ $(%{_bindir}/id -nG %{name} 2>/dev/null | grep -q winbind; echo $?) -ne 0 ]; then
+  %{_sbindir}/usermod -G winbind %{name}
+fi
+%endif
 %service_add_pre %{name}.service
 
 # update mode?
@@ -231,9 +262,10 @@ if [ "$1" -gt "1" ]; then
 fi
 
 %post
-%set_permissions %{_sbindir}/pinger
+%set_permissions %{squidhelperdir}/pinger
 %set_permissions %{_localstatedir}/cache/squid/
 %set_permissions %{_localstatedir}/log/squid/
+%set_permissions %{squidhelperdir}/basic_pam_auth
 %tmpfiles_create %{_tmpfilesdir}/squid.conf
 %service_add_post squid.service
 
@@ -241,14 +273,16 @@ fi
 %service_del_preun squid.service
 
 %verifyscript
-%verify_permissions -e %{_sbindir}/pinger
+%verify_permissions -e %{squidhelperdir}/pinger
 %verify_permissions -e %{_localstatedir}/cache/squid/
 %verify_permissions -e %{_localstatedir}/log/squid/
+%verify_permissions -e %{squidhelperdir}/basic_pam_auth
 
 %postun
 %service_del_postun squid.service
 
 %files
+%ghost %dir %{_rundir}/%{name}
 %license COPYING
 %doc ChangeLog CONTRIBUTORS CREDITS
 %doc QUICKSTART README RELEASENOTES.html SPONSORS*
@@ -257,12 +291,13 @@ fi
 %doc doc/debug-sections.txt src/%{name}.conf.default
 %{_mandir}/man?/*
 %{_unitdir}/%{name}.service
-%{squidlibdir}/initialize_cache_if_needed.sh
-%{squidlibdir}/cache_dir.sed
+%{squidlibexecdir}/initialize_cache_if_needed.sh
+%{squidlibexecdir}/cache_dir.sed
 %verify(not user group mode) %attr(750,%{name},root) %dir %{_localstatedir}/cache/%{name}/
 %verify(not user group mode) %attr(750,%{name},root) %dir %{_localstatedir}/log/%{name}/
 %dir %{squidconfdir}
 %dir %{_tmpfilesdir}
+%dir %{_libexecdir}/%{name}
 %{_tmpfilesdir}/squid.conf
 %{_sysusersdir}/squid-user.conf
 %config(noreplace) %{squidconfdir}/cachemgr.conf
@@ -279,7 +314,6 @@ fi
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/snmp
 %dir %{_datadir}/snmp/mibs
-%dir %{_libdir}/%{name}
 %{_datadir}/%{name}/errors
 %{_datadir}/%{name}/icons
 %{_datadir}/%{name}/mime.conf
@@ -331,7 +365,12 @@ fi
 %{squidhelperdir}/ext_time_quota_acl
 %{_sbindir}/squid
 %{_sbindir}/rcsquid
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
+%dir %{squidhelperdir}
+%{squidhelperdir}/cachemgr.cgi
+%else
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/cachemgr.cgi
+%endif
 
 %changelog

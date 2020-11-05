@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov  2 10:34:59 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- re-add older SLES12 requirements so we can use one devel project
+  for all codestreams
+
+-------------------------------------------------------------------
+Fri Oct 30 11:52:08 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- fix previous change to reinstante permissions macros, because the wrong path
+  has been used (bsc#1171569).
+- use libexecdir instead of libdir to conform to recent changes in Factory
+  (bsc#1171164).
+
+-------------------------------------------------------------------
 Thu Oct  8 11:01:44 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - Reinstate permissions macros for pinger binary, because the permissions

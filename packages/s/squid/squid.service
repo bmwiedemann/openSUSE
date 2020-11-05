@@ -5,7 +5,7 @@ After=network.target named.service nss-lookup.service
 
 [Service]
 Type=forking
-ExecStartPre=%{_libdir}/squid/initialize_cache_if_needed.sh
+ExecStartPre=%{_libexecdir}/squid/initialize_cache_if_needed.sh
 ExecStart=/usr/sbin/squid -FC
 ExecReload=/usr/bin/kill -HUP $MAINPID
 LimitNOFILE=4096
