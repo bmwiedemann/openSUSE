@@ -533,4 +533,12 @@ It does not make sense to double the whole HISTORY of upstream source in .change
   - remove skip-flaky-i586.patch (obsolete)</comment>
     <requestid>835008</requestid>
   </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>14d6823ed4659c2ab5844b8de4781373</srcmd5>
+    <version>5.7.2</version>
+    <time>1604609639</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix shebang replacement for multiple python flavors (forwarded request 845689 from bnavigator)</comment>
+    <requestid>845690</requestid>
+  </revision>
 </revisionlist>

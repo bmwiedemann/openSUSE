@@ -71,7 +71,7 @@ sed -i "1s/#!.*//" psutil/{__init__.py,_compat.py,_psbsd.py,_pslinux.py,_psosx.p
 
 %{python_expand mkdir -p %{buildroot}%{_docdir}/%{$python_prefix}-psutil
 cp -r scripts %{buildroot}%{_docdir}/%{$python_prefix}-psutil/
-find %{buildroot}%{_docdir}/%{$python_prefix}-psutil/scripts/ -type f -name "*.py" -exec sed -i "s|#!%{_bindir}/env python|#!%__$python|" {} \;
+find %{buildroot}%{_docdir}/%{$python_prefix}-psutil/scripts/ -type f -name "*.py" -exec sed -i "s|#!%{_bindir}/env python.*|#!%{__$python}|" {} \;
 %fdupes %{buildroot}%{_docdir}/%{$python_prefix}-psutil/
 %fdupes %{buildroot}%{$python_sitearch}
 }
