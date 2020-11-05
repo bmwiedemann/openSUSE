@@ -90,4 +90,13 @@
   * Add I-Nex to the users list</comment>
     <requestid>826264</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a33a799d73ff01df9046f65e6307b435</srcmd5>
+    <version>0.5.0+git.20201019</version>
+    <time>1604609725</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.0+git.20201019:
+  * Fixes issue #148: CMake build script not in 0.5.0 tarball release</comment>
+    <requestid>846147</requestid>
+  </revision>
 </revisionlist>

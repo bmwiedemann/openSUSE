@@ -18,7 +18,7 @@
 
 %define so_ver  15
 Name:           libcpuid
-Version:        0.5.0+git.20200528
+Version:        0.5.0+git.20201019
 Release:        0
 Summary:        Library providing x86 CPU identification
 License:        BSD-2-Clause

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  5 08:47:16 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.5.0+git.20201019:
+  * Fixes issue #148: CMake build script not in 0.5.0 tarball release
+
+-------------------------------------------------------------------
 Thu Aug 13 11:17:44 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.5.0+git.20200528:
