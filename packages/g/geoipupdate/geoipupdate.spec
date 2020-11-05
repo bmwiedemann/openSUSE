@@ -18,7 +18,7 @@
 
 # Common info
 Name:           geoipupdate
-Version:        4.3.0
+Version:        4.5.0
 Release:        0
 Summary:        GeoIP update client code
 License:        Apache-2.0 OR MIT
@@ -33,7 +33,7 @@ Source5:        README.SUSE
 Patch0:         disable-pandoc.patch
 %if 0%{?suse_version} >= 1500
 # Build-time parameters
-BuildRequires:  go >= 1.10
+BuildRequires:  go >= 1.11
 # Manpage
 BuildRequires:  perl%{?suse_version:-base}
 %endif
