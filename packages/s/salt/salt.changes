@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Nov  6 09:19:22 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Set passphrase for salt-ssh keys to empty string (bsc#1178485)
+
+- Added:
+  * set-passphrase-for-salt-ssh-keys-to-empty-string-293.patch
+
+-------------------------------------------------------------------
+Wed Nov  4 10:54:32 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Properly validate eauth credentials and tokens on SSH calls made by Salt API
+  (bsc#1178319) (bsc#1178362) (bsc#1178361)
+  (CVE-2020-25592) (CVE-2020-17490) (CVE-2020-16846)
+
+- Added:
+  * fix-cve-2020-25592-and-add-tests-bsc-1178319.patch
+
+-------------------------------------------------------------------
+Tue Oct 27 15:23:12 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix novendorchange handling in zypperpkg module
+
+- Added:
+  * fix-novendorchange-option-284.patch
+
+-------------------------------------------------------------------
+Tue Oct 20 11:43:49 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix disk.blkid to avoid unexpected keyword argument '__pub_user' (bsc#1177867)
+
+- Added:
+  * path-replace-functools.wraps-with-six.wraps-bsc-1177.patch
+
+-------------------------------------------------------------------
 Wed Oct 14 10:49:33 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Ensure virt.update stop_on_reboot is updated with its default value

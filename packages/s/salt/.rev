@@ -1582,4 +1582,28 @@ let build start it or we will get libvirt errors.
   * zypperpkg-ignore-retcode-104-for-search-bsc-1176697-.patch</comment>
     <requestid>841799</requestid>
   </revision>
+  <revision rev="111" vrev="7">
+    <srcmd5>3148a7682183c3e75b10709b94b98627</srcmd5>
+    <version>3000.3</version>
+    <time>1604702604</time>
+    <user>dimstar_suse</user>
+    <comment>- Set passphrase for salt-ssh keys to empty string (bsc#1178485)
+- Added:
+  * set-passphrase-for-salt-ssh-keys-to-empty-string-293.patch
+
+- Properly validate eauth credentials and tokens on SSH calls made by Salt API
+  (bsc#1178319) (bsc#1178362) (bsc#1178361)
+  (CVE-2020-25592) (CVE-2020-17490) (CVE-2020-16846)
+- Added:
+  * fix-cve-2020-25592-and-add-tests-bsc-1178319.patch
+
+- Fix novendorchange handling in zypperpkg module
+- Added:
+  * fix-novendorchange-option-284.patch
+
+- Fix disk.blkid to avoid unexpected keyword argument '__pub_user' (bsc#1177867)
+- Added:
+  * path-replace-functools.wraps-with-six.wraps-bsc-1177.patch</comment>
+    <requestid>846425</requestid>
+  </revision>
 </revisionlist>
