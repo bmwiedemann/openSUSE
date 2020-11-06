@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DBI
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,10 +23,13 @@ Release:        0
 Summary:        Database independent interface for Perl
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/T/TI/TIMB/%{cpan_name}-%{version}.tar.gz
 Source1:        perl-DBI.rpmlintrc
 Source2:        cpanspec.yml
+# MANUAL BEGIN
+Patch0:         perl-DBI-CVE-2014-10402.patch
+# MANUAL END
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -52,6 +55,7 @@ and perlboot.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
+%patch0 -p1
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build

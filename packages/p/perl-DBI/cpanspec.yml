@@ -3,9 +3,8 @@
 #no_testing: broken upstream
 sources:
  - perl-DBI.rpmlintrc
-#patches:
-#  foo.patch: -p1
-#  bar.patch:
+patches:
+  perl-DBI-CVE-2014-10402.patch: -p1
 #preamble: |-
 # BuildRequires:  gcc-c++
 #post_prep: |-

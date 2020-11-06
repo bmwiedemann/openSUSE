@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov  3 16:29:26 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Security fix [bsc#1176492, CVE-2014-10401, CVE-2014-10402]
+  * DBD::File drivers can open files from folders other than those
+    specifically passed via the f_dir attribute in the data source
+    name (DSN).
+- Add perl-DBI-CVE-2014-10402.patch
+
+-------------------------------------------------------------------
 Sat Feb  1 03:11:35 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.643
