@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  3 07:53:35 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- Don't use BuildRequires based on shell script output. OBS can't
+  evaluate that.
+
+-------------------------------------------------------------------
 Thu Oct 29 07:52:21 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.150.0

@@ -32,8 +32,8 @@ Summary:        SELinux policies for container runtimes
 License:        GPL-2.0-only
 URL:            https://github.com/containers/container-selinux
 Source0:        %{name}-%{version}.tar.gz
-BuildRequires:  selinux-policy >= %{selinux_policyver}
-BuildRequires:  selinux-policy-devel >= %{selinux_policyver}
+BuildRequires:  selinux-policy
+BuildRequires:  selinux-policy-devel
 Requires:       selinux-policy >= %(rpm -q selinux-policy --qf '%%{version}-%%{release}')
 Requires(post): policycoreutils
 Requires(post): /usr/bin/sed
