@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Nov 06 13:32:59 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1604650398.c9956d642:
+  * Revert "No empty IOLoop timer for 5 second wait" to fix current test failures
+  * Speed up 25-cache.t
+  * clone script: Allow cloning child jobs as well
+  * docker: Improve complete README document
+  * docs: Simplify the curl based bootstrap instruction
+  * Retry on rsync error code 10
+  * Fix kvm-mknod.sh shellcheck
+  * Add an easy way to run a pool of workers
+  * FullStackUtils: More generous wait on developer console
+  * Increase the performance returning the assets for the UI
+  * Extend web UI docker setup to use nginx/docker-compose
+  * Fix 16-activity-view.t to work locally and on Circle CI
+  * activity view: Request events ordered by event ID
+
+-------------------------------------------------------------------
 Tue Nov 03 23:05:07 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1604426047.91baf7934:
