@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Nov  4 17:34:46 UTC 2020 - aloisio@gmx.com
+
+- Update to version 7.1.2
+  * Fixed floating point formatting with large precision
+
+-------------------------------------------------------------------
+Mon Nov  2 15:27:46 UTC 2020 - aloisio@gmx.com
+
+- Update to version 7.1.1
+  * Fixed ABI compatibility with 7.0.x
+  * Added the FMT_ARM_ABI_COMPATIBILITY macro to work around
+    ABI incompatibility between GCC and Clang on ARM
+  * Worked around a SFINAE bug in GCC 8
+  * Fixed linkage errors when building with GCC's LTO
+  * Fixed a compilation error when building without
+    __builtin_clz or equivalent
+  * Fixed a sign conversion warning
+- Dropped fmt-7.1.0-LTO.patch (merged upstream)
+
+-------------------------------------------------------------------
 Mon Oct 26 14:54:41 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 7.1.0
