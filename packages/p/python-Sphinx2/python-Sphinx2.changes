@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov  3 20:56:32 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix lang files collection for multiple flavors
+  * gh#openSUSE/python-rpm-macros#74
+  * see also sr#845821 for Sphinx 3
+
+-------------------------------------------------------------------
 Thu May  7 13:15:27 UTC 2020 - Jan Zerebecki <jzerebecki@suse.com>
 
 - In preparation to update to version > 3, rename a copy to python-Sphinx2 to
