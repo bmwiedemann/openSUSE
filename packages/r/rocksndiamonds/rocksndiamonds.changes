@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Nov  5 22:26:05 UTC 2020 - Markus Beth <markus.beth@web.de>
+
+- Update to 4.2.0.3
+  * fixed some problems with wrap-around levels in Emerald Mine engine
+  * added full compatibility for wrap-around levels in Emerald Mine engine
+  * fixed single-step mode for wrap-around levels in Emerald Mine engine
+  * fixed playing tapes recorded with old Emerald Mine game engine
+  * added command “autofix” to fix tapes recorded with old EM game engine
+  * fixed key shortcut to start/end game (which was broken since 4.2.0.0)
+  * fixed some other key shortcuts that require entering upper case letters
+  * added menu command “:undo-tape” to undo/restore last recorded tape
+  * fixed potential crash bug that may occur when loading custom artwork
+  * fixed single-step mode when using custom elements with mouse click events
+  * added creating undo/redo snapshots when using mouse click events
+  * fixed problems with virtual buttons and showing envelopes on Android
+  * improved startup speed by optimizing parsing of parameter values
+  * improved handling output of warnings, errors and debug messages
+  * fixed showing source date on version page of info screen menu
+  * added showing commit hash on version page of info screen menu
+  * fixed broken tapes (for various reasons) recorded with old EM engine
+  * fixed support for initially moving spring in EM game engine
+  * added support for initially moving spring to R’n’D game engine
+  * fixed potential crash bug when reading from artwork info cache
+  * fixed wrong eater content when loading native EM levels
+  * added support for variable number of eater arrays for EM engine
+  * fixed vsync mode when not using OpenGL renderer (like “Metal” on Mac)
+  * added option for setting hint for render driver to setup config file
+  * added displaying render driver on info screen page
+  * fixed loading dynamic libraries shipped with the Linux package
+  * fixed level editor key shortcuts (broken by regression)
+  * fixed support for wrap-around levels in EM engine for old tapes
+  Visit https://www.artsoft.org/rocksndiamonds/ for the complete
+  changelog.
+
+-------------------------------------------------------------------
 Mon Mar 30 09:44:51 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 4.1.4.1

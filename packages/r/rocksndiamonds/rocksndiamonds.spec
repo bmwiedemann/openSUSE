@@ -17,7 +17,7 @@
 
 
 Name:           rocksndiamonds
-Version:        4.1.4.1
+Version:        4.2.0.3
 Release:        0
 Summary:        Colorful Boulderdash'n'Emerald Mine'n'Sokoban'n'Stuff
 License:        GPL-2.0-or-later
@@ -58,8 +58,6 @@ you know what Rocks'n'Diamonds is about.
 # Remove not needed files
 find levels -name '*.orig' -delete
 rm -f %{name}
-
-sed -i 's|-lsmpeg||' src/Makefile
 
 %build
 %make_build \
