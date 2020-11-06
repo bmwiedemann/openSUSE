@@ -19,10 +19,10 @@
 %define so_major 1
 %define shlib %{name}-%{so_major}-0
 %define typelib typelib-1_0-Handy-%{so_major}_0
-#define with_glade 1
+%define with_glade 1
 
 Name:           libhandy
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        A GTK+ library to develop UI for mobile devices
 License:        LGPL-2.1-or-later
