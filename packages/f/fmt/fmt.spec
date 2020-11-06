@@ -18,15 +18,13 @@
 
 %define sover   7
 Name:           fmt
-Version:        7.1.0
+Version:        7.1.2
 Release:        0
 Summary:        A formatting library for C++
 License:        MIT
 URL:            http://fmtlib.net/
 Source0:        https://github.com/fmtlib/fmt/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM fmt-7.1.0-LTO.patch
-Patch0:         fmt-7.1.0-LTO.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig

@@ -298,4 +298,24 @@
     <comment></comment>
     <requestid>844382</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>749e27bf8c8aa8c657c7f59d56c7bfbf</srcmd5>
+    <version>7.1.2</version>
+    <time>1604702653</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 7.1.2
+  * Fixed floating point formatting with large precision
+- Update to version 7.1.1
+  * Fixed ABI compatibility with 7.0.x
+  * Added the FMT_ARM_ABI_COMPATIBILITY macro to work around
+    ABI incompatibility between GCC and Clang on ARM
+  * Worked around a SFINAE bug in GCC 8
+  * Fixed linkage errors when building with GCC's LTO
+  * Fixed a compilation error when building without
+    __builtin_clz or equivalent
+  * Fixed a sign conversion warning
+- Dropped fmt-7.1.0-LTO.patch (merged upstream)
+</comment>
+    <requestid>846063</requestid>
+  </revision>
 </revisionlist>
