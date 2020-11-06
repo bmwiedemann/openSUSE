@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Nov  2 15:03:13 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 3.1.3
+ * Fixed a regression in Django 3.1.2 that caused the incorrect height of the admin
+   changelist search bar
+ * Fixed a regression in Django 3.1.2 that caused the incorrect width of the
+   admin changelist search bar on a filtered page
+ * Fixed displaying Unicode characters in forms.JSONField and read-only
+   models.JSONField values in the admin
+ * Fixed a regression in Django 3.1 that caused a crash of ArrayAgg and StringAgg
+   with ordering on key transforms for JSONField
+ * Fixed a regression in Django 3.1 that caused a crash of __in lookup when using
+   key transforms for JSONField in the lookup value
+ * Fixed a regression in Django 3.1 that caused a crash of ExpressionWrapper with
+   key transforms for JSONField
+ * Fixed a regression in Django 3.1 that caused a migrations crash on PostgreSQL
+   when adding an ExclusionConstraint with key transforms for JSONField in expressions
+ * Fixed a regression in Django 3.1 where ProtectedError.protected_objects
+   and RestrictedError.restricted_objects attributes returned iterators instead
+   of set of objects
+ * Fixed a regression in Django 3.1.2 that caused incorrect form input layout
+   on small screens in the admin change form view
+ * Fixed a regression in Django 3.1 that invalidated pre-Django 3.1 password reset tokens
+ * Added support for asgiref 3.3
+ * Fixed a regression in Django 3.1 that caused incorrect textarea layout
+   on medium-sized screens in the admin change form view with the sidebar open
+ * Fixed a regression in Django 3.0.7 that didn’t use Subquery() aliases
+   in the GROUP BY clause
+ * Fixed a bug in Django 3.1 where FileField instances with a callable storage were
+   not correctly deconstructed
+ * Fixed a regression in Django 3.1 where the QuerySet.ordered attribute returned
+   incorrectly True for GROUP BY queries (e.g. .annotate().values()) on models with
+   Meta.ordering. A model’s Meta.ordering doesn’t affect such queries
+ * Fixed a regression in Django 3.1 where a queryset would crash if it contained
+   an aggregation and a Q object annotation
+ * Fixed a bug in Django 3.1 where a test database was not synced during creation
+   when using the MIGRATE test database setting
+ * Fixed a django.contrib.admin.EmptyFieldListFilter crash when using on a GenericRelation
+ * Fixed a regression in Django 3.1.1 where the admin changelist filter sidebar
+   would not scroll for a long list of available filters
+
+-------------------------------------------------------------------
 Wed Sep  9 14:14:08 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 3.1.1

@@ -762,4 +762,41 @@
     <comment></comment>
     <requestid>833249</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>24227f98ae08b481b34aa367b6b32312</srcmd5>
+    <version>3.1.3</version>
+    <time>1604702631</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.3
+ * Fixed a regression in Django 3.1.2 that caused the incorrect height of the admin
+   changelist search bar
+ * Fixed a regression in Django 3.1.2 that caused the incorrect width of the
+   admin changelist search bar on a filtered page
+ * Fixed displaying Unicode characters in forms.JSONField and read-only
+   models.JSONField values in the admin
+ * Fixed a regression in Django 3.1 that caused a crash of ArrayAgg and StringAgg
+   with ordering on key transforms for JSONField
+ * Fixed a regression in Django 3.1 that caused a crash of __in lookup when using
+   key transforms for JSONField in the lookup value
+ * Fixed a regression in Django 3.1 that caused a crash of ExpressionWrapper with
+   key transforms for JSONField
+ * Fixed a regression in Django 3.1 that caused a migrations crash on PostgreSQL
+   when adding an ExclusionConstraint with key transforms for JSONField in expressions
+ * Fixed a regression in Django 3.1 where ProtectedError.protected_objects
+   and RestrictedError.restricted_objects attributes returned iterators instead
+   of set of objects
+ * Fixed a regression in Django 3.1.2 that caused incorrect form input layout
+   on small screens in the admin change form view
+ * Fixed a regression in Django 3.1 that invalidated pre-Django 3.1 password reset tokens
+ * Added support for asgiref 3.3
+ * Fixed a regression in Django 3.1 that caused incorrect textarea layout
+   on medium-sized screens in the admin change form view with the sidebar open
+ * Fixed a regression in Django 3.0.7 that didn’t use Subquery() aliases
+   in the GROUP BY clause
+ * Fixed a bug in Django 3.1 where FileField instances with a callable storage were
+   not correctly deconstructed
+ * Fixed a regression in Django 3.1 where the QuerySet.ordered attribute returned
+   incorrectly True for GROUP BY queries (e.g. .annotate().values()) on models with</comment>
+    <requestid>845465</requestid>
+  </revision>
 </revisionlist>
