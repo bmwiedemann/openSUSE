@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-sugar
-Version:        0.9.3
+Version:        0.9.4
 Release:        0
 Summary:        Pretty printer for pytest progress
 License:        BSD-3-Clause
@@ -48,9 +48,7 @@ pytest-sugar is a plugin for py.test that shows failures and errors instantly an
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_item_count_after_pytest_collection_modifyitems -  https://github.com/Frozenball/pytest-sugar/issues/180
-# test_doctest - same as above
-%pytest -k 'not test_item_count_after_pytest_collection_modifyitems and not test_doctest'
+%pytest
 
 %files %{python_files}
 %license LICENSE

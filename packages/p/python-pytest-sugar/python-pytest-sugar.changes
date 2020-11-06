@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov  5 14:51:01 UTC 2020 - Marketa Machova <mmachova@suse.com>
+
+- update to 0.9.4
+  * Fix pytest-sugar 0.9.3 incompatible with pytest 5.4 (thanks @nicoddemus)
+  * Fix Tests fail with pytest 3.5.0 DOCTESTS (^)
+  * Fix Tests fail with pytest 5.x (^)
+
+-------------------------------------------------------------------
 Mon Apr 27 09:30:57 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.9.3:
