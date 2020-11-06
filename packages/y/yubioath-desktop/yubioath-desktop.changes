@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  4 15:44:32 UTC 2020 - Duncan Mac-Vicar <dmacvicar@suse.de>
+
+- Add missing requires:
+  libqt5-qtgraphicaleffects and libqt5-qtquickcontrols2
+
+-------------------------------------------------------------------
 Mon Jun  8 14:16:25 UTC 2020 - Torsten Gruner <t.gruner@katodev.de>
 
 - Remove fix build for Leap 15 and SLE 15

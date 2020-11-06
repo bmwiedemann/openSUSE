@@ -34,6 +34,8 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(python3)
+Requires:       libqt5-qtgraphicaleffects
+Requires:       libqt5-qtquickcontrols2
 Requires:       pyotherside
 Requires:       yubikey-manager
 
