@@ -500,4 +500,14 @@
     <comment></comment>
     <requestid>845553</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>fcfceb6e7a7274824bde7205f25fb8f0</srcmd5>
+    <version>2.4.7</version>
+    <time>1604702704</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.7
+  * Fix playback display in albums of music files.
+  * Several crash fixes. (forwarded request 846325 from tux93)</comment>
+    <requestid>846362</requestid>
+  </revision>
 </revisionlist>
