@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov  3 10:12:38 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Security fix: [bsc#1168934, CVE-2013-7488]
+  * Fix infinite loop via unexpected input
+- Add perl-Convert-ASN1-CVE-2013-7488.patch
+
+-------------------------------------------------------------------
 Fri Jan 10 10:14:41 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Update spec file
