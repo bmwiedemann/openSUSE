@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Fri Oct 30 22:30:53 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.1.4:
+  * Fixed regressions
+    + Fixed regression in read_csv() raising a ValueError when names
+      was of type dict_keys (GH36928)
+    + Fixed regression in read_csv() with more than 1M rows and
+      specifying a index_col argument (GH37094)
+    + Fixed regression where attempting to mutate a DateOffset object
+      would no longer raise an AttributeError (GH36940)
+    + Fixed regression where DataFrame.agg() would fail with TypeError
+      when passed positional arguments to be passed on to the
+      aggregation function (GH36948).
+    + Fixed regression in RollingGroupby with sort=False not being
+      respected (GH36889)
+    + Fixed regression in Series.astype() converting None to "nan"
+      when casting to string (GH36904)
+    + Fixed regression in Series.rank() method failing for read-only
+      data (GH37290)
+    + Fixed regression in RollingGroupby causing a segmentation fault
+      with Index of dtype object (GH36727)
+    + Fixed regression in DataFrame.resample(...).apply(...)() raised
+      AttributeError when input was a DataFrame and only a Series was
+      evaluated (GH36951)
+    + Fixed regression in DataFrame.groupby(..).std() with nullable
+      integer dtype (GH37415)
+    + Fixed regression in PeriodDtype comparing both equal and unequal
+      to its string representation (GH37265)
+    + Fixed regression where slicing DatetimeIndex raised
+      AssertionError on irregular time series with pd.NaT or on
+      unsorted indices (GH36953 and GH35509)
+    + Fixed regression in certain offsets (pd.offsets.Day() and below)
+      no longer being hashable (GH37267)
+    + Fixed regression in StataReader which required chunksize to be
+      manually set when using an iterator to read a dataset (GH37280)
+    + Fixed regression in setitem with DataFrame.iloc() which raised
+      error when trying to set a value while filtering with a boolean
+      list (GH36741)
+    + Fixed regression in setitem with a Series getting aligned before
+      setting the values (GH37427)
+    + Fixed regression in MultiIndex.is_monotonic_increasing returning
+      wrong results with NaN in at least one of the levels (GH37220)
+    + Fixed regression in inplace arithmetic operation on a Series not
+      updating the parent DataFrame (GH36373)
+  * Bug fixes
+    + Bug causing groupby(...).sum() and similar to not preserve
+      metadata (GH29442)
+    + Bug in Series.isin() and DataFrame.isin() raising a ValueError
+      when the target was read-only (GH37174)
+    + Bug in GroupBy.fillna() that introduced a performance regression
+      after 1.0.5 (GH36757)
+    + Bug in DataFrame.info() was raising a KeyError when the
+      DataFrame has integer column names (GH37245)
+    + Bug in DataFrameGroupby.apply() would drop a CategoricalIndex
+      when grouped on (GH35792)
+
+-------------------------------------------------------------------
 Mon Oct  5 20:11:59 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:
