@@ -1,0 +1,75 @@
+References: 
+When a particular firmware is selected, read the json file for a description.
+Add a tooltip of the json description when the mouse move overs the selected firmware.
+
+--- virt-manager-3.1.0/virtManager/details/details.py.orig	2020-10-30 13:56:26.748245557 -0600
++++ virt-manager-3.1.0/virtManager/details/details.py	2020-10-30 13:56:48.952246534 -0600
+@@ -5,6 +5,9 @@
+ # See the COPYING file in the top-level directory.
+ 
+ import re
++import os
++import json
++import textwrap
+ 
+ from gi.repository import Gtk
+ 
+@@ -424,7 +427,7 @@ class vmmDetails(vmmGObjectUI):
+             "on_overview_name_changed": _e(EDIT_NAME),
+             "on_overview_title_changed": _e(EDIT_TITLE),
+             "on_machine_type_changed": _e(EDIT_MACHTYPE),
+-            "on_overview_firmware_changed": _e(EDIT_FIRMWARE),
++            "on_overview_firmware_changed": self._uefi_combobox_changed_cb,
+             "on_overview_chipset_changed": _e(EDIT_MACHTYPE),
+ 
+             "on_details_inspection_refresh_clicked": self._inspection_refresh_clicked_cb,
+@@ -1125,6 +1128,49 @@ class vmmDetails(vmmGObjectUI):
+         self.storage_browser.set_browse_reason(reason)
+         self.storage_browser.show(self.topwin)
+ 
++    def _uefi_combobox_changed_cb(self, src):
++        def get_firmware_description(firmware_file):
++            json_description = ""
++            firmware_json_path = "/usr/share/qemu/firmware"
++            if os.path.isdir(firmware_json_path):
++                json_files = [f for f in os.listdir(firmware_json_path) if os.path.isfile(os.path.join(firmware_json_path, f))]
++                for jf in json_files:
++                    full_path = firmware_json_path + '/' + jf
++                    if not full_path.endswith(".json"):
++                        continue
++                    try:
++                        if os.stat(full_path).st_size > 65536:
++                            continue
++                    except OSError:
++                        continue
++                    with open(full_path, 'r') as json_file:
++                        data = json_file.read()
++                    try:
++                        json_obj = json.loads(data)
++                    except Exception as e:
++                        continue
++                    if 'mapping' in json_obj and 'executable' in json_obj['mapping']:
++                        json_exec = str(json_obj['mapping']['executable']['filename'])
++                        if json_exec == firmware_file:
++                            json_description = str(json_obj['description'])
++                            wrapper = textwrap.TextWrapper(width=60)
++                            json_list = wrapper.wrap(text=json_description)
++                            json_description = "\n".join(json_list)
++                            break
++            return json_description
++
++        combo = self.widget("overview-firmware")
++        tree_iter = combo.get_active_iter()
++        if tree_iter is not None:
++            model = combo.get_model()
++            tooltip_text = ""
++            firmware = model[tree_iter][0]
++            if firmware != 'BIOS':
++                firmware_file = firmware.split()[-1]
++                tooltip_text = get_firmware_description(firmware_file)
++            combo.set_tooltip_text(tooltip_text)
++        self._enable_apply(EDIT_FIRMWARE)
++
+     def _inspection_refresh_clicked_cb(self, src):
+         from ..lib.inspection import vmmInspection
+         inspection = vmmInspection.get_instance()

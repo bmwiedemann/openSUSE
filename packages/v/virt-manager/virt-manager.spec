@@ -42,6 +42,7 @@ Patch75:        virtinst-change-location-for-grub_xen.patch
 Patch76:        virtinst-set-qemu-emulator.patch
 # Features or Enhancements
 Patch103:       virtman-load-stored-uris.patch
+Patch104:       virtman-add-tooltip-to-firmware.patch
 Patch120:       virtinst-default-xen-to-qcow2-format.patch
 Patch121:       virtinst-detect-oes-distros.patch
 Patch122:       virtinst-modify-gui-defaults.patch
@@ -166,6 +167,7 @@ machine).
 %patch76 -p1
 # Enhancements
 %patch103 -p1
+%patch104 -p1
 %patch120 -p1
 %patch121 -p1
 %patch122 -p1

@@ -1686,4 +1686,12 @@
     <comment>Fix for bsc#1177620. Let libvirt decide which nic to default to for HVM guests</comment>
     <requestid>844628</requestid>
   </revision>
+  <revision rev="214" vrev="4">
+    <srcmd5>69c4b65ba96280233db8eb5e0f125bbf</srcmd5>
+    <version>3.1.0</version>
+    <time>1604702741</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>846538</requestid>
+  </revision>
 </revisionlist>
