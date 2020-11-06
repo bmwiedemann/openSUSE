@@ -297,7 +297,6 @@ unsorted:
   - aalib 
   - aalib-devel 
   - aalib-devel-32bit: [x86_64] 
-  - abcde 
   - abcm2ps 
   - abi-compliance-checker 
   - abi-dumper 
@@ -1762,7 +1761,6 @@ unsorted:
   - ccrypt-lang 
   - ccze 
   - ccze-devel 
-  - cd-discid 
   - cd-paranoia 
   - cdda2wav: [i586] 
   - cddlib-devel 
@@ -3265,7 +3263,6 @@ unsorted:
   - extreme-tuxracer 
   - extreme-tuxracer-data 
   - extundelete 
-  - eyeD3 
   - ez-ipupdate 
   - ezmorph 
   - ezmorph-javadoc 
@@ -7414,6 +7411,7 @@ unsorted:
   - junitperf-javadoc 
   - jupyter 
   - jupyter-bqplot 
+  - jupyter-cadabra2-kernel 
   - jupyter-calysto 
   - jupyter-doc 
   - jupyter-hide-code 
@@ -8324,7 +8322,6 @@ unsorted:
   - lalpulsar-devel: [x86_64] 
   - lalsimulation-data: [x86_64] 
   - lalsimulation-devel: [x86_64] 
-  - lame: [i586] 
   - lame-doc 
   - lame-mp3rtp 
   - lammps 
@@ -10263,7 +10260,6 @@ unsorted:
   - libdirac_encoder0 
   - libdirac_encoder0-32bit: [x86_64] 
   - libdiscid-devel 
-  - libdiscid0 
   - libdiscid0-32bit: [x86_64] 
   - libdiscord-rpc 
   - libdjvulibre-devel 
@@ -10641,7 +10637,6 @@ unsorted:
   - libfrr_pb0 
   - libfrrcares0 
   - libfrrfpm_pb0 
-  - libfrrgrpc_pb0 
   - libfrrospfapiclient0 
   - libfrrsnmp0 
   - libfrrzmq0 
@@ -12264,6 +12259,7 @@ unsorted:
   - libnotcurses2 
   - libnotify-devel 
   - libnotify-devel-32bit: [x86_64] 
+  - libnotify-tools: [i586] 
   - libnotify4-32bit: [x86_64] 
   - libnotmuch5 
   - libnova-0_15-0 
@@ -12390,6 +12386,14 @@ unsorted:
   - libopencsg1 
   - libopencv3_4 
   - libopencv4_5 
+  - libopencv_face4_5 
+  - libopencv_highgui4_5 
+  - libopencv_imgcodecs4_5 
+  - libopencv_objdetect4_5 
+  - libopencv_superres4_5 
+  - libopencv_videoio4_5 
+  - libopencv_videostab4_5 
+  - libopencv_ximgproc4_5 
   - libopendkim11 
   - libopenhpi4 
   - libopenjp2-7-32bit: [x86_64] 
@@ -17768,6 +17772,7 @@ unsorted:
   - opencv3 
   - opencv3-devel 
   - opencv3-doc 
+  - opencv4-cascades-data 
   - opendchub 
   - opendkim 
   - opendkim-devel 
@@ -18773,6 +18778,7 @@ unsorted:
   - perl-Context-Preserve 
   - perl-Contextual-Return 
   - perl-Convert-BER 
+  - perl-Convert-UUlib 
   - perl-Cookie-Baker 
   - perl-Crypt-Blowfish 
   - perl-Crypt-CBC 
@@ -19227,7 +19233,6 @@ unsorted:
   - perl-Mojo-RabbitMQ-Client: [x86_64] 
   - perl-Mojo-Redis 
   - perl-Mojo-SQLite 
-  - perl-Mojolicious 
   - perl-Mojolicious-Plugin-AssetPack 
   - perl-Mojolicious-Plugin-CHI 
   - perl-Mojolicious-Plugin-NYTProf 
@@ -19307,7 +19312,6 @@ unsorted:
   - perl-MouseX-Types 
   - perl-MouseX-Types-Path-Class 
   - perl-Mozilla-LDAP 
-  - perl-MusicBrainz-DiscID 
   - perl-NKF 
   - perl-Nagios-Plugin 
   - perl-Net-AMQP: [x86_64] 
@@ -19741,7 +19745,6 @@ unsorted:
   - perl-Web-MREST 
   - perl-Web-MREST-CLI 
   - perl-Web-Machine 
-  - perl-WebService-MusicBrainz 
   - perl-Win-Hivex 
   - perl-Wx 
   - perl-X11-Protocol-Other 
@@ -19788,6 +19791,7 @@ unsorted:
   - perl-YAML-Syck 
   - perl-YAML-Tiny 
   - perl-aliased 
+  - perl-apparmor 
   - perl-asa 
   - perl-autobox 
   - perl-autovivification 
@@ -20339,6 +20343,7 @@ unsorted:
   - postgresql10-docs 
   - postgresql10-pg_cron 
   - postgresql10-pgagent 
+  - postgresql10-pgaudit 
   - postgresql10-pgsql-ogr-fdw 
   - postgresql10-plperl 
   - postgresql10-plpython 
@@ -20356,6 +20361,8 @@ unsorted:
   - postgresql11-pg_cron 
   - postgresql11-pg_cron-llvmjit 
   - postgresql11-pgagent 
+  - postgresql11-pgaudit 
+  - postgresql11-pgaudit-llvmjit 
   - postgresql11-pgsql-ogr-fdw 
   - postgresql11-pgsql-ogr-fdw-llvmjit 
   - postgresql11-plperl 
@@ -20375,6 +20382,8 @@ unsorted:
   - postgresql12-pg_cron 
   - postgresql12-pg_cron-llvmjit 
   - postgresql12-pgagent 
+  - postgresql12-pgaudit 
+  - postgresql12-pgaudit-llvmjit 
   - postgresql12-pgsql-ogr-fdw 
   - postgresql12-pgsql-ogr-fdw-llvmjit 
   - postgresql12-plperl 
@@ -20391,6 +20400,8 @@ unsorted:
   - postgresql13-docs: [i586] 
   - postgresql13-pg_cron 
   - postgresql13-pg_cron-llvmjit 
+  - postgresql13-pgaudit 
+  - postgresql13-pgaudit-llvmjit 
   - postgresql13-plperl 
   - postgresql13-plpython 
   - postgresql13-pltcl 
@@ -20402,6 +20413,7 @@ unsorted:
   - postgresql95-docs 
   - postgresql95-pg_cron 
   - postgresql95-pgagent 
+  - postgresql95-pgaudit 
   - postgresql95-pgsql-ogr-fdw 
   - postgresql95-plperl 
   - postgresql95-plpython 
@@ -20416,6 +20428,7 @@ unsorted:
   - postgresql96-docs 
   - postgresql96-pg_cron 
   - postgresql96-pgagent 
+  - postgresql96-pgaudit 
   - postgresql96-pgsql-ogr-fdw 
   - postgresql96-plperl 
   - postgresql96-plpython 
@@ -20859,6 +20872,7 @@ unsorted:
   - python-pymisp-doc 
   - python-pymod2pkg-doc 
   - python-pyotherside 
+  - python-pyqt-rpm-macros 
   - python-pyqtgraph-doc 
   - python-pyramid-debugtoolbar-doc 
   - python-pyserial-doc 
@@ -20895,6 +20909,7 @@ unsorted:
   - python-tables-doc 
   - python-tk 
   - python-tooz-doc 
+  - python-tqdm-bash-completion 
   - python-translationstring-doc 
   - python-typeshed 
   - python-xcaplib-bash-completion 
@@ -22725,7 +22740,6 @@ unsorted:
   - python3-notcurses 
   - python3-notebook 
   - python3-notebook-lang 
-  - python3-notify2 
   - python3-notmuch 
   - python3-novaclient 
   - python3-nox 
@@ -24508,7 +24522,6 @@ unsorted:
   - rsvndump-lang 
   - rsyslog-diag-tools 
   - rsyslog-doc 
-  - rsyslog-module-dbi 
   - rsyslog-module-elasticsearch 
   - rsyslog-module-gcrypt 
   - rsyslog-module-gssapi 
@@ -24523,7 +24536,6 @@ unsorted:
   - rsyslog-module-pgsql 
   - rsyslog-module-relp 
   - rsyslog-module-snmp 
-  - rsyslog-module-udpspoof 
   - rt-tests 
   - rtags 
   - rtaudio-devel 

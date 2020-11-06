@@ -1218,7 +1218,6 @@
       <repopackage name="patterns-microos-selinux" arch="x86_64"/>
       <repopackage name="patterns-microos-sssd_ldap" arch="x86_64"/>
       <repopackage name="perl" arch="x86_64"/>
-      <repopackage name="perl-apparmor" arch="x86_64"/>
       <repopackage name="perl-base"/>
       <repopackage name="perl-Bootloader"/>
       <repopackage name="perl-Encode-Locale" arch="x86_64"/>
@@ -1306,6 +1305,7 @@
       <repopackage name="python3-configobj" arch="x86_64"/>
       <repopackage name="python3-createrepo_c" arch="x86_64"/>
       <repopackage name="python3-cryptography" arch="x86_64"/>
+      <repopackage name="python3-dbus-python" arch="x86_64"/>
       <repopackage name="python3-decorator" arch="x86_64"/>
       <repopackage name="python3-ecdsa" arch="x86_64"/>
       <repopackage name="python3-gobject" arch="x86_64"/>
@@ -1319,10 +1319,12 @@
       <repopackage name="python3-ldb" arch="x86_64"/>
       <repopackage name="python3-MarkupSafe" arch="x86_64"/>
       <repopackage name="python3-networkx" arch="x86_64"/>
+      <repopackage name="python3-notify2" arch="x86_64"/>
       <repopackage name="python3-oauthlib" arch="x86_64"/>
       <repopackage name="python3-ordered-set" arch="x86_64"/>
       <repopackage name="python3-packaging" arch="x86_64"/>
       <repopackage name="python3-policycoreutils" arch="x86_64"/>
+      <repopackage name="python3-psutil" arch="x86_64"/>
       <repopackage name="python3-py" arch="x86_64"/>
       <repopackage name="python3-pyasn1" arch="x86_64"/>
       <repopackage name="python3-pycparser" arch="x86_64"/>

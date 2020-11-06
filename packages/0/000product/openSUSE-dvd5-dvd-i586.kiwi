@@ -54,6 +54,7 @@
       <repopackage name="a2ps"/>
       <repopackage name="aaa_base"/>
       <repopackage name="aaa_base-extras"/>
+      <repopackage name="abcde"/>
       <repopackage name="accerciser"/>
       <repopackage name="accerciser-lang"/>
       <repopackage name="acl"/>
@@ -189,6 +190,7 @@
       <repopackage name="canberra-gtk-play"/>
       <repopackage name="cantarell-fonts"/>
       <repopackage name="capi4hylafax"/>
+      <repopackage name="cd-discid"/>
       <repopackage name="cdparanoia"/>
       <repopackage name="cellwriter"/>
       <repopackage name="cervisia"/>
@@ -334,6 +336,7 @@
       <repopackage name="exiftool"/>
       <repopackage name="expat"/>
       <repopackage name="expect"/>
+      <repopackage name="eyeD3"/>
       <repopackage name="f2fs-tools"/>
       <repopackage name="farstream-data"/>
       <repopackage name="fbiterm"/>
@@ -928,6 +931,7 @@
       <repopackage name="kwikdisk"/>
       <repopackage name="kwordquiz"/>
       <repopackage name="kwordquiz-lang"/>
+      <repopackage name="lame"/>
       <repopackage name="lensfun-data"/>
       <repopackage name="less"/>
       <repopackage name="lftp"/>
@@ -1088,6 +1092,7 @@
       <repopackage name="libdevmapper1_03"/>
       <repopackage name="libdhash1"/>
       <repopackage name="libdialog15"/>
+      <repopackage name="libdiscid0"/>
       <repopackage name="libdjvulibre21"/>
       <repopackage name="libdlm"/>
       <repopackage name="libdlm3"/>
@@ -1603,7 +1608,6 @@
       <repopackage name="libnm0"/>
       <repopackage name="libnma-lang"/>
       <repopackage name="libnma0"/>
-      <repopackage name="libnotify-tools"/>
       <repopackage name="libnotify4"/>
       <repopackage name="libnpth0"/>
       <repopackage name="libns1604"/>
@@ -2528,7 +2532,6 @@
       <repopackage name="pentaho-libxml"/>
       <repopackage name="pentaho-reporting-flow-engine"/>
       <repopackage name="perl"/>
-      <repopackage name="perl-apparmor"/>
       <repopackage name="perl-Archive-Zip"/>
       <repopackage name="perl-Authen-SASL"/>
       <repopackage name="perl-base"/>
@@ -2542,7 +2545,6 @@
       <repopackage name="perl-Convert-ASN1"/>
       <repopackage name="perl-Convert-BinHex"/>
       <repopackage name="perl-Convert-TNEF"/>
-      <repopackage name="perl-Convert-UUlib"/>
       <repopackage name="perl-Cpanel-JSON-XS"/>
       <repopackage name="perl-Crypt-DES"/>
       <repopackage name="perl-Crypt-OpenSSL-Bignum"/>
@@ -2596,6 +2598,8 @@
       <repopackage name="perl-Mail-SPF"/>
       <repopackage name="perl-MailTools"/>
       <repopackage name="perl-MIME-tools"/>
+      <repopackage name="perl-Mojolicious"/>
+      <repopackage name="perl-MusicBrainz-DiscID"/>
       <repopackage name="perl-Net-CIDR-Lite"/>
       <repopackage name="perl-Net-DBus"/>
       <repopackage name="perl-Net-DNS"/>
@@ -2620,6 +2624,7 @@
       <repopackage name="perl-Types-Serialiser"/>
       <repopackage name="perl-Unix-Syslog"/>
       <repopackage name="perl-URI"/>
+      <repopackage name="perl-WebService-MusicBrainz"/>
       <repopackage name="perl-WWW-RobotRules"/>
       <repopackage name="perl-X11-Protocol"/>
       <repopackage name="perl-X500-DN"/>
@@ -2814,6 +2819,7 @@
       <repopackage name="python3-netaddr"/>
       <repopackage name="python3-netifaces"/>
       <repopackage name="python3-nftables"/>
+      <repopackage name="python3-notify2"/>
       <repopackage name="python3-numpy"/>
       <repopackage name="python3-olefile"/>
       <repopackage name="python3-ordered-set"/>
