@@ -1342,9 +1342,6 @@ unsorted:
   - bnd-maven-plugin 
   - bnd-maven-plugin-javadoc 
   - bodr 
-  - bogofilter-doc 
-  - bogofilter-kyotocabinet 
-  - bogofilter-sqlite3 
   - boinc-client 
   - boinc-client-lang 
   - boinc-manager 
@@ -3223,6 +3220,7 @@ unsorted:
   - evolution-devel 
   - evolution-ews: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - evolution-ews-lang: [i586] 
+  - evolution-plugin-bogofilter 
   - evtest 
   - exa: [x86_64] 
   - exaile 
