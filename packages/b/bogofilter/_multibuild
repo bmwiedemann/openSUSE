@@ -1,0 +1,6 @@
+<multibuild>
+  <package>db</package>
+  <package>kyotocabinet</package>
+  <package>sqlite3</package>
+</multibuild>
+

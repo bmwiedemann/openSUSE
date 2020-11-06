@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  4 14:13:48 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Convert to _multibuild: with RPM 4.16, we can no longer use
+  make_install in the build phase, as %install will always empty
+  DESTDIR.
+
+-------------------------------------------------------------------
 Thu Oct 17 14:49:34 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Remove obsolete Groups tag (fate#326485)
