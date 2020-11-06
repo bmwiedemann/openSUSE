@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  5 13:51:00 UTC 2020 - Marketa Machova <mmachova@suse.com>
+
+- Update to 1.13.2
+  * code improvements, bugfixes and cleanup
+
+-------------------------------------------------------------------
 Mon Mar  2 09:30:14 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip tests that fail with pytest 5.x series

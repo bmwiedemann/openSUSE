@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-twisted
-Version:        1.12
+Version:        1.13.2
 Release:        0
 Summary:        Pytest Plugin for Twisted
 License:        BSD-2-Clause

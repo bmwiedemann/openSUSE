@@ -15,4 +15,12 @@
     <comment>- Skip tests that fail with pytest 5.x series</comment>
     <requestid>780870</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bef92e0253daf42d87ad6cdd41a3ad38</srcmd5>
+    <version>1.13.2</version>
+    <time>1604702696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846350</requestid>
+  </revision>
 </revisionlist>
