@@ -1736,4 +1736,12 @@ WANTED for 13.1 - BLUEZ5 FIX (forwarded request 203010 from Zaitor)</comment>
   + Fix autoactivating virtual devices after a failure. (forwarded request 841879 from iznogood)</comment>
     <requestid>841896</requestid>
   </revision>
+  <revision rev="217" vrev="2">
+    <srcmd5>acafeaf01b3e229d27888fd928c52afb</srcmd5>
+    <version>1.26.4</version>
+    <time>1604702615</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845373</requestid>
+  </revision>
 </revisionlist>
