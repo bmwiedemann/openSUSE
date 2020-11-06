@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov  1 12:31:34 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8.6
+  * iptables-nft had pointlessly added "bitwise" expressions to
+    each IP address match, needlessly slowing down run-time
+    performance (by 50% in worst cases).
+  * iptables-nft-restore: Support basechain policy value of "-"
+    (indicating to not change the chain's policy).
+  * nft-translte: Fix translation of ICMP type "any" match.
+
+-------------------------------------------------------------------
 Wed Jun  3 13:21:57 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.8.5

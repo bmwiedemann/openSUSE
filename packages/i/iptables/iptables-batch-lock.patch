@@ -10,10 +10,10 @@ Date: 2017-06-26T10:53:24+0000
  iptables/xshared.c        |    8 +++++++-
  2 files changed, 28 insertions(+), 1 deletion(-)
 
-Index: iptables-1.6.2/iptables/iptables-batch.c
+Index: iptables-1.8.6/iptables/iptables-batch.c
 ===================================================================
---- iptables-1.6.2.orig/iptables/iptables-batch.c
-+++ iptables-1.6.2/iptables/iptables-batch.c
+--- iptables-1.8.6.orig/iptables/iptables-batch.c
++++ iptables-1.8.6/iptables/iptables-batch.c
 @@ -403,6 +403,27 @@ main(int argc, char *argv[])
  	tables[3].name = "raw";
  	tables[3].handle = NULL;
@@ -42,16 +42,17 @@ Index: iptables-1.6.2/iptables/iptables-batch.c
  
  	while((r = getline(&iline, &llen, fp)) != -1)
  	{
-Index: iptables-1.6.2/iptables/xshared.c
+Index: iptables-1.8.6/iptables/xshared.c
 ===================================================================
---- iptables-1.6.2.orig/iptables/xshared.c
-+++ iptables-1.6.2/iptables/xshared.c
-@@ -248,9 +248,13 @@ void xs_init_match(struct xtables_match
+--- iptables-1.8.6.orig/iptables/xshared.c
++++ iptables-1.8.6/iptables/xshared.c
+@@ -248,10 +248,14 @@ void xs_init_match(struct xtables_match
  
  static int xtables_lock(int wait, struct timeval *wait_interval)
  {
 +	static bool already_locked = false;
  	struct timeval time_left, wait_time;
+ 	const char *lock_file;
  	int fd, i = 0;
  
 +	if (already_locked)
@@ -60,7 +61,7 @@ Index: iptables-1.6.2/iptables/xshared.c
  	time_left.tv_sec = wait;
  	time_left.tv_usec = 0;
  
-@@ -262,8 +266,10 @@ static int xtables_lock(int wait, struct
+@@ -267,8 +271,10 @@ static int xtables_lock(int wait, struct
  	}
  
  	if (wait == -1) {
@@ -70,5 +71,5 @@ Index: iptables-1.6.2/iptables/xshared.c
  			return fd;
 +		}
  
- 		fprintf(stderr, "Can't lock %s: %s\n", XT_LOCK_NAME,
+ 		fprintf(stderr, "Can't lock %s: %s\n", lock_file,
  			strerror(errno));

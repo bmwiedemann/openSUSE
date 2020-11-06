@@ -17,7 +17,7 @@
 
 
 Name:           iptables
-Version:        1.8.5
+Version:        1.8.6
 Release:        0
 Summary:        IP packet filter administration utilities
 License:        GPL-2.0-only AND Artistic-2.0

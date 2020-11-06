@@ -601,4 +601,12 @@ GPL version does not have ^or later^ due to inclusion of numerous GPL 2 ^only^ f
     <comment>- Update to release 1.8.5</comment>
     <requestid>811552</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>be69ae8634b08b8d0c0b51355724358d</srcmd5>
+    <version>1.8.6</version>
+    <time>1604702609</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.8.6</comment>
+    <requestid>845267</requestid>
+  </revision>
 </revisionlist>
