@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Thu Nov  5 19:53:23 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Use suse_update_desktop_file to fix build on Leap
+
+-------------------------------------------------------------------
+Thu Nov  5 15:36:36 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.0 (actually a preview for 5.21)
+
+-------------------------------------------------------------------
+Mon Oct 26 21:37:03 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Initial package
