@@ -20,7 +20,7 @@
 %define soname  libortp
 %define sover   15
 Name:           ortp
-Version:        4.4.0
+Version:        4.4.6
 Release:        0
 Summary:        Real-time Transport Protocol Stack
 License:        GPL-2.0-or-later
@@ -75,7 +75,8 @@ make %{?_smp_mflags}
 %cmake_install
 
 mkdir -p %{buildroot}%{_docdir}/%{name}/
-mv -T %{buildroot}%{_datadir}/doc/%{name}-%{version}/ \
+# keeping 4.4.0 here because upstream didn't update it...
+mv -T %{buildroot}%{_datadir}/doc/%{name}-4.4.0/ \
   %{buildroot}%{_docdir}/%{name}/
 
 mv %{buildroot}%{_datadir}/doc/%{name}-./LICENSE.txt %{buildroot}%{_docdir}/%{name}/
