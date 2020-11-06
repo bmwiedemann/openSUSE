@@ -1448,4 +1448,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>841287</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>dbe9e8f06855c4921a28e60b7e9e8277</srcmd5>
+    <version>9.21.23</version>
+    <time>1604702655</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.21.22 → 9.21.23
+
+- Move usrmerge package out of the bootstrap section
+  Currently bootstrap phase on APT package manager makes use of the
+  debootstrap tool. However debootstrap is limited to execute  the
+  bootstrap using a single repository. This is causes several limitations
+  in OBS builds, such as the impossibility of using update repositories or
+  the inclusion of any package that is not part of the standard OBS
+  repository.
+  Usrmerge package is part of the universe repository in OBS which is not
+  te one used by debootstrap, so it can't be installed on bootstrap phase.
+
+- Bump version: 9.21.21 → 9.21.22
+
+- Fixed package manager api inconsistency
+  The method post_process_install_requests_bootstrap in the
+  zypper package manager was missing an argument
+
+- Bump version: 9.21.20 → 9.21.21
+
+- Fixed regexp for grub rootdev substitution
+  The regular expression to match the grub root device
+  used a lazy glob match &quot;.*?&quot;. This however matches a
+  too long part depending on the rest of the content.
+  This commit fixes the expression to be strict on
+  the allowed characters and makes sure the anchor
+  characters are not part of the matching character
+  class. This Fixes #1607
+
+- Fix quick start guide build command</comment>
+    <requestid>846180</requestid>
+  </revision>
 </revisionlist>

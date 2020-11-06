@@ -1,4 +1,333 @@
 -------------------------------------------------------------------
+Thu Nov 05 09:27:08 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.21.22 → 9.21.23
+
+-------------------------------------------------------------------
+Wed Nov 04 22:23:32 CET 2020 - David Cassany <dcassany@suse.com>
+
+- Move usrmerge package out of the bootstrap section
+
+  Currently bootstrap phase on APT package manager makes use of the
+  debootstrap tool. However debootstrap is limited to execute  the
+  bootstrap using a single repository. This is causes several limitations
+  in OBS builds, such as the impossibility of using update repositories or
+  the inclusion of any package that is not part of the standard OBS
+  repository.
+
+  Usrmerge package is part of the universe repository in OBS which is not
+  te one used by debootstrap, so it can't be installed on bootstrap phase.
+
+-------------------------------------------------------------------
+Wed Nov 04 16:39:43 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.21.21 → 9.21.22
+
+-------------------------------------------------------------------
+Wed Nov 04 16:38:19 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed package manager api inconsistency
+
+  The method post_process_install_requests_bootstrap in the
+  zypper package manager was missing an argument
+
+-------------------------------------------------------------------
+Wed Nov 04 16:21:25 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.21.20 → 9.21.21
+
+-------------------------------------------------------------------
+Wed Nov 04 15:09:43 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed regexp for grub rootdev substitution
+
+  The regular expression to match the grub root device
+  used a lazy glob match ".*?". This however matches a
+  too long part depending on the rest of the content.
+  This commit fixes the expression to be strict on
+  the allowed characters and makes sure the anchor
+  characters are not part of the matching character
+  class. This Fixes #1607
+
+-------------------------------------------------------------------
+Wed Nov 04 13:58:32 CET 2020 - Quang Tran <quang.tran@suse.com>
+
+- Fix quick start guide build command
+
+  The kiwi-descriptions were reorganized in profiles (See OSInside/kiwi-descriptions@788b919ea2500b9d495622c8140e618938634306).
+  However the build command in the quick start guide was not updated appropriately and therefore the build fails.
+
+  This commit will update the build command.
+
+-------------------------------------------------------------------
+Tue Nov 03 18:04:22 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed install of bash completion
+
+  The kiwi completion was installed as kiwi-ng.sh below
+  /usr/share/bash-completion/completions. This is wrong
+  because the completion does not pick up files with
+  a suffix like .sh. This commit changes the completion
+  file to be installed as kiwi-ng without the suffix
+  and Fixes #1603
+
+-------------------------------------------------------------------
+Tue Nov 03 15:48:36 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Update integration tests console setup
+
+  Update all integration tests to use a serial tty console setup
+  and also to use a serial bootloader setup. This Fixes #1518
+
+-------------------------------------------------------------------
+Mon Nov 02 18:01:56 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Refactor VolumeManager
+
+  This commit refactors VolumeManager to turn it into a proper
+  factory class and to also include type hints to facilitate it's
+  use from an API POV. Related to #1498
+
+-------------------------------------------------------------------
+Mon Nov 02 16:57:46 CET 2020 - David Cassany <dcassany@suse.com>
+
+- Do not exclude filesystem folders in OCI images
+
+  This commit does not exclude filesystem folders during the rsync call
+  in OCI images. It has been noted that including an empty /dev folder does
+  not hurt and it can eventually help to work around some limitations of
+  container related tools such as buildah.
+
+  Fixes bsc#1176129
+
+-------------------------------------------------------------------
+Mon Nov 02 16:43:51 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Refactor RootImport
+
+  This commit refactors RootImport to turn it into a proper
+  factory class and to also include type hints to facilitate it's
+  use from an API POV. Related to #1498
+
+-------------------------------------------------------------------
+Mon Nov 02 15:44:29 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Set displayname in simple disk test
+
+  Use the simple disk integration test to test the setup
+  of the displayname attribute. It is expected that this
+  image has the configured displayname set in the grub
+  menu. The verification of this setting should be done
+  in a functional test at openQA which we are currently
+  working on
+
+-------------------------------------------------------------------
+Mon Nov 02 12:24:16 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Refactor DiskFormat
+
+  This commit refactors DiskFormat to turn it into a proper
+  factory class and to also include type hints to facilitate it's
+  use from an API POV. Related to #1498
+
+-------------------------------------------------------------------
+Mon Nov 02 10:43:26 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Refactor SolverRepository
+
+  This commit refactors SolverRepository to turn it into a proper
+  factory class and to also include type hints to facilitate it's
+  use from an API POV. Related to #1498
+
+-------------------------------------------------------------------
+Mon Nov 02 10:06:22 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Set GRUB_DISTRIBUTOR if requested via displayname
+
+  If the image description explicitly specifies a displayname
+  it is expected that the bootloader shows this in the menu.
+  Therefore in case displayname is set GRUB_DISTRIBUTOR will
+  be set if grub2 is in use. This partially reverts #1420
+  and Fixes #1575
+
+-------------------------------------------------------------------
+Wed Oct 28 12:44:11 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.21.19 → 9.21.20
+
+-------------------------------------------------------------------
+Thu Oct 22 10:47:25 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Deleted yast from test-image-qcow-openstack
+
+  yast is not part of the testing queue in kiwi integration tests
+
+-------------------------------------------------------------------
+Wed Oct 21 15:06:50 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Obsolete config functions baseMount/baseCleanMount
+
+  The above methods are obsolete since kiwi handles these
+  mount/umount processes as part of the core builder code.
+  This Fixes #1536
+
+-------------------------------------------------------------------
+Wed Oct 21 14:51:46 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.21.18 → 9.21.19
+
+-------------------------------------------------------------------
+Tue Oct 20 20:51:05 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Allow custom root volume name setup
+
+  In addition to the custom size of the root volume it's now
+  also possible to setup the name of the root volume as follows:
+
+  <volume name="@root=rootlv"/>
+
+  If no name for the root volume is specified the default
+  name: LVRoot applies as before. This Fixes #1530
+
+-------------------------------------------------------------------
+Tue Oct 20 12:10:15 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Rename image build tests
+
+  To use the image builds in openQA they have to have a unique
+  name such that it cannot happen that a cached version of an
+  image in openQA is used. The current names matched openQA
+  cached images e.g openSUSE-Tumbleweed and in addition different
+  image build tests used the same name. This commit uses the
+  name of the image as it is organized in its directory structure
+  prepending "kiwi-" to be unique in openQA when it fetches
+  the image. This is realted to Issue #1555
+
+-------------------------------------------------------------------
+Mon Oct 19 13:52:41 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Better integrate debootstrap in KIWI process
+
+  This commit integrates debootstrap process in KIWI in a more transparent
+  way. This refactor makes debootstrap to operate directly over the image
+  target root tree. This way KIWI can show and parse debootstrap stdout
+  and also avoids having to copy the created root tree from one temporary
+  folder to the actual target root tree path.
+
+  Related to #1587
+
+-------------------------------------------------------------------
+Mon Oct 19 07:41:01 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Include boostrap packages list into deboostrap call
+
+  This commit includes the packages listed in boostrap section to the
+  debootstrap call instead chrooting into the new root tree and call
+  apt.
+
+  Fixes #1587
+
+-------------------------------------------------------------------
+Fri Oct 16 15:29:36 CEST 2020 - Quang Tran <quang.tran@suse.com>
+
+- Update outdated OBS User Guide Links
+
+-------------------------------------------------------------------
+Thu Oct 15 09:46:51 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed device_array structure in get_selected_disk
+
+  In reference to Issue #880 a bug was introduced that broke
+  the contents of the device_array which causes issues on
+  installations with two or more attached disks. The change
+  in the mentioned PR reduced the tuple for each disk
+  from 3 elements to 2 elements. Therefore the loop that
+  iterates over the disk tuples via modulo 3 was broken.
+  This commit fixes the modulo operation to correctly
+  parse the disk_list. Fixes #1588
+
+-------------------------------------------------------------------
+Tue Oct 13 16:25:36 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Add support for s390 CDL DASD disks
+
+  On s390 and in CDL mode (4k DASD) the call of grub2-install
+  does not work because grub2-install is not able to identify
+  a 4k fdasd partitioned loop device as a grub supported device
+  and fails. As grub2-install is only used to invoke
+  grub2-zipl-setup and has no other job to do we can
+  circumvent this problem by directly calling grub2-zipl-setup
+  instead. Also delete LDL mode support, IBM no longer supports
+  this
+
+-------------------------------------------------------------------
+Tue Oct 13 09:24:07 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed strncopy in dcounter helper
+
+  The max size of the copy operation was always set to zero
+  because the strlen of an empty buffer is zero. Bad mistake
+  from my side :( This Fixes #1579
+
+-------------------------------------------------------------------
+Mon Oct 12 20:14:34 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.21.17 → 9.21.18
+
+-------------------------------------------------------------------
+Sun Oct 11 23:12:41 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Fix profile docs
+
+  This commit fixes the profiles documentation. The example KIWI-NG
+  command was using wrong flags order. This commit fixes the `--profile`
+  flag order in documentation.
+
+-------------------------------------------------------------------
+Thu Oct 08 15:42:58 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Enhance scope of _fix_grub_root_device_reference
+
+  In addition to the wrong root=/dev/mapper/loop... reference
+  fixing, written by grub2-mkconfig when used in obs there is
+  also the case that grub2-mkconfig writes root=PARTUUID which
+  is also unwanted and needs fixing. To solve this properly
+  and also with respect to more unexpected grub2-mkconfig
+  data, the code changes to use a regular expression for the
+  root= replacement. The expression matches all root= cases which
+  we want to fixup:
+
+  1. If the local used root device appears in the grub config file.
+  2. If a linux by-id setting is used in the grub config file.
+
+  The replacement happens for overlayroot disk images where we
+  know grub2-mkconfig cannot handle the layout as well as if kiwi
+  runs in obs where we know grub2-mkconfig fails due to the absence
+  of udev.
+
+-------------------------------------------------------------------
+Wed Oct 07 16:44:15 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Add support for rd.root.overlay.readonly
+
+  Allow to use an overlayroot system with read-only feature.
+  If kernelcmdline="rd.root.overlay.readonly" is set in combination
+  with overlayroot="true" the overlayfs uses a tmpfs to store
+  new data temporary as long as the system runs. On reboot the
+  newly written data is lost and the system is back to its
+  factory state.
+
+-------------------------------------------------------------------
+Mon Oct 05 15:54:00 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Use custom tmpfs for managing overlays
+
+  Provide a method to manage the base mount point for overlay and
+  iso mount points and set the base directory to it because /run
+  has a RAM space limitation which is unfortunate to handle live
+  systems. This Fixes #1558
+
+-------------------------------------------------------------------
 Mon Oct 05 15:06:20 CEST 2020 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.21.16 → 9.21.17

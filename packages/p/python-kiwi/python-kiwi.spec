@@ -43,7 +43,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.21.17
+Version:        9.21.23
 Provides:       kiwi-schema = 7.2
 Release:        0
 Url:            https://github.com/OSInside/kiwi
@@ -345,6 +345,7 @@ Summary:        KIWI - Dracut module for vmx(+overlay) image type
 # to set up the build environment...
 BuildRequires:  dracut
 %endif
+Requires:       dracut-kiwi-lib = %{version}-%{release}
 Requires:       util-linux
 Requires:       dracut
 License:        GPL-3.0-or-later
@@ -433,7 +434,7 @@ fi
 %{_bindir}/kiwi-ng-3*
 %{_bindir}/kiwicompat-3*
 %{python3_sitelib}/kiwi*
-%{_usr}/share/bash-completion/completions/kiwi-ng.sh
+%{_usr}/share/bash-completion/completions/kiwi-ng
 %{_defaultdocdir}/python-kiwi/LICENSE
 %{_defaultdocdir}/python-kiwi/README
 
