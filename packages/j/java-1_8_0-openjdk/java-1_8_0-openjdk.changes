@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Nov  4 11:32:33 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Enable Shenandoah garbage collector on supported architectures
+
+-------------------------------------------------------------------
+Mon Nov  2 16:04:46 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * s390.patch
+    + Fix build on s390 31bit
+
+-------------------------------------------------------------------
+Mon Nov  2 14:29:43 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * JDK-8250861.patch
+    + Fix regression "8250861: Crash in MinINode::Ideal(PhaseGVN*,
+      bool)" introduced in October 2020 CPU
+
+-------------------------------------------------------------------
 Wed Oct 28 09:47:16 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version jdk8u272 (icedtea 3.17.0) (July 2020 CPU,

@@ -594,4 +594,12 @@
     <comment>Oracle July and October 2020 CPU</comment>
     <requestid>844535</requestid>
   </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>23d240c46e20e2746d22c9778beb955c</srcmd5>
+    <version>1.8.0.272</version>
+    <time>1604702646</time>
+    <user>dimstar_suse</user>
+    <comment>Add Shenandoah</comment>
+    <requestid>845986</requestid>
+  </revision>
 </revisionlist>

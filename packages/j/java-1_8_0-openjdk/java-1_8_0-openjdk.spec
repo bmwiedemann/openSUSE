@@ -146,6 +146,7 @@
 %else
 %global with_systemtap 0
 %endif
+%global with_shenandoah 1
 %if %{with_systemtap}
 # Where to install systemtap tapset (links)
 # We would like these to be in a package specific subdir,
@@ -175,7 +176,8 @@ Source6:        http://icedtea.wildebeest.org/download/drops/icedtea8/%{icedtea_
 Source7:        http://icedtea.wildebeest.org/download/drops/icedtea8/%{icedtea_version}/langtools.tar.xz
 Source8:        http://icedtea.wildebeest.org/download/drops/icedtea8/%{icedtea_version}/hotspot.tar.xz
 Source9:        http://icedtea.wildebeest.org/download/drops/icedtea8/%{icedtea_version}/aarch32.tar.xz
-Source10:       http://icedtea.wildebeest.org/download/drops/icedtea8/%{icedtea_version}/nashorn.tar.xz
+Source10:       http://icedtea.wildebeest.org/download/drops/icedtea8/%{icedtea_version}/shenandoah.tar.xz
+Source11:       http://icedtea.wildebeest.org/download/drops/icedtea8/%{icedtea_version}/nashorn.tar.xz
 # RPM/distribution specific patches
 # RHBZ 1015432
 Patch2:         1015432.patch
@@ -190,6 +192,10 @@ Patch14:        zero-javadoc-verbose.patch
 #
 # Patch for PPC
 Patch103:       ppc-zero-hotspot.patch
+# Patch for S390
+Patch104:       s390.patch
+#
+Patch200:       JDK-8250861.patch
 
 Patch1001:      java-1_8_0-openjdk-suse-desktop-files.patch
 Patch1002:      icedtea-3.8.0-s390.patch
@@ -507,9 +513,14 @@ sh autogen.sh
 %ifarch %{arm}
         --with-hotspot-src-zip=%{SOURCE9} \
 %else
+%if %{with zero} || %{without shenandoah}
         --with-hotspot-src-zip=%{SOURCE8} \
+%else
+        --with-hotspot-src-zip=%{SOURCE10} \
+        --with-hotspot-build=shenandoah \
 %endif
-        --with-nashorn-src-zip=%{SOURCE10}
+%endif
+        --with-nashorn-src-zip=%{SOURCE11}
 
 make patch %{?_smp_mflags}
 
@@ -525,6 +536,12 @@ patch -p0 -i %{PATCH14}
 # PPC fixes
 patch -p0 -i %{PATCH103}
 %endif
+
+%ifarch s390
+patch -p0 -i %{PATCH104}
+%endif
+
+patch -p0 -i %{PATCH200}
 
 patch -p0 -i %{PATCH2001}
 patch -p0 -i %{PATCH2002}
