@@ -26,7 +26,7 @@
 %endif
 %bcond_without python2
 Name:           python-arrow%{?psuffix}
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 Summary:        Better dates and times for Python
 License:        Apache-2.0

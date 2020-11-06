@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Oct 30 22:27:20 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.17.0:
+  * [WARN] Arrow will drop support for Python 2.7 and 3.5 in the
+    upcoming 1.0.0 release. This is the last major release to support
+    Python 2.7 and Python 3.5.
+  * [NEW] Arrow now properly handles imaginary datetimes during DST
+    shifts.
+  * [NEW] Added humanize week granularity translation for Tagalog.
+  * [CHANGE] Calls to the timestamp property now emit a
+    DeprecationWarning. In a future release, timestamp will be changed
+    to a method to align with Python’s datetime module. If you would
+    like to continue using the property, please change your code to
+    use the int_timestamp or float_timestamp properties instead.
+  * [CHANGE] Expanded and improved Catalan locale.
+  * [FIX] Fixed a bug that caused Arrow.range() to incorrectly cut off
+    ranges in certain scenarios when using month, quarter, or year
+    endings.
+  * [FIX] Fixed a bug that caused day of week token parsing to be case
+    sensitive.
+  * [INTERNAL] A number of functions were reordered in arrow.py for
+    better organization and grouping of related methods. This change
+    will have no impact on usage.
+  * [INTERNAL] A minimum tox version is now enforced for compatibility
+    reasons. Contributors must use tox >3.18.0 going forward.
+
+-------------------------------------------------------------------
 Sat Sep 19 15:29:03 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.16.0:
