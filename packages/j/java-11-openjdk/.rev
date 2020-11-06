@@ -311,4 +311,12 @@
     <comment>July 2020 CPU</comment>
     <requestid>821262</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>4bd338b805aeea1e03c410b9c32bc1b0</srcmd5>
+    <version>11.0.9.0</version>
+    <time>1604702643</time>
+    <user>dimstar_suse</user>
+    <comment>Add Shenandoah</comment>
+    <requestid>845985</requestid>
+  </revision>
 </revisionlist>

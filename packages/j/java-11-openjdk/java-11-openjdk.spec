@@ -32,13 +32,13 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       8
+%global updatever       9
 %global patchver        0
-%global datever         2020-07-14
-%global buildver        10
+%global datever         2020-10-20
+%global buildver        11
 %global hg_project      jdk-updates
 %global hg_repository   jdk11u
-%global hg_revision     0b0d55cb09b2
+%global hg_revision     4397fa4529b2
 %global icedtea_sound_version 1.0.1
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2
@@ -209,7 +209,7 @@ Patch16:        missing-return.patch
 Patch20:        loadAssistiveTechnologies.patch
 #
 Patch30:        JDK-8208602.patch
-Patch32:        gcc-fno-common-fix.patch
+Patch31:        JDK-8250861.patch
 #
 # OpenJDK specific patches
 #
@@ -505,7 +505,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch20 -p1
 
 %patch30 -p1
-%patch32 -p1
+%patch31 -p1
 
 # s390 build fixes
 
@@ -623,7 +623,7 @@ bash ../configure \
     --with-boot-jdk-jvmargs="-Xms256M -Xmx768M" \
 %endif
 %ifarch x86_64
-    --with-jvm-features=zgc \
+    --with-jvm-features=zgc,shenandoahgc \
 %endif
     --with-extra-cxxflags="$EXTRA_CPP_FLAGS" \
     --with-extra-cflags="$EXTRA_CFLAGS" \
