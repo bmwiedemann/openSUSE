@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 Name:           python-geoip2
-Version:        4.0.2
+Version:        4.1.0
 Release:        0
 Summary:        MaxMind GeoIP2 Python API
 License:        Apache-2.0
