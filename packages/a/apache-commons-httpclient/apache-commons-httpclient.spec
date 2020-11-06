@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-httpclient
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,10 @@ Patch2:         %{name}-encoding.patch
 #PATCH-FIX-UPSTREAM: bnc#803332
 #https://issues.apache.org/jira/secure/attachment/12560251/CVE-2012-5783-2.patch
 Patch3:         %{short_name}-CVE-2012-5783-2.patch
+#PATCH-FIX-UPSTREAM bsc#1178171 CVE-2014-3577 MITM security vulnerability
+Patch4:         apache-commons-httpclient-CVE-2014-3577.patch
+#PATCH-FIX-UPSTREAM bsc#945190 CVE-2015-5262 Missing HTTPS connection timeout
+Patch5:         apache-commons-httpclient-CVE-2015-5262.patch
 BuildRequires:  ant
 BuildRequires:  ant-junit
 BuildRequires:  commons-codec
@@ -108,6 +112,8 @@ popd
 
 %patch2
 %patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 # Use javax classes, not com.sun ones
 # assume no filename contains spaces
