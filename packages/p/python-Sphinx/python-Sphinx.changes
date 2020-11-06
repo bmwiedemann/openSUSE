@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov  4 11:10:14 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix the lang collection macro override.
+  * gh#openSUSE/python-rpm-macros#66
+  * gh#openSUSE/python-rpm-macros#74
+
+-------------------------------------------------------------------
+Tue Nov  3 19:56:15 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix lang files collection for multiple flavors
+  * gh#openSUSE/python-rpm-macros#5
+  * gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Mon Sep 28 13:45:37 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add sphinx-pygments-compat.patch (fix tests with newer pygments) 

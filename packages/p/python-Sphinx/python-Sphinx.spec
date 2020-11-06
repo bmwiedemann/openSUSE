@@ -251,7 +251,16 @@ mv build/sphinx/{html,man} build.doc/
 %python_expand mkdir -p %{buildroot}%{$python_sitelib}/sphinxcontrib
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%find_lang sphinx
+# gh#openSUSE/python-rpm-macros#74
+%{!?python_find_lang: %define python_find_lang() \
+%find_lang %{**} \
+langfile=%{?2}%{!?2:%1.lang} \
+%{python_expand # \
+grep -v 'python.*site-packages' ${langfile} > %{$python_prefix}-${langfile} \
+grep -F %{$python_sitelib} ${langfile} >> %{$python_prefix}-${langfile} \
+} \
+}
+%python_find_lang sphinx
 
 %else
 mkdir -p %{buildroot}%{_docdir}/python-Sphinx/
@@ -282,7 +291,7 @@ export LC_ALL="C.utf8"
 %endif
 
 %if ! %{with test}
-%files %{python_files} -f sphinx.lang
+%files %{python_files} -f %{python_prefix}-sphinx.lang
 %license LICENSE
 %doc AUTHORS CHANGES README.rst
 %python_alternative %{_bindir}/sphinx-apidoc

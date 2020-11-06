@@ -696,4 +696,12 @@
     <comment>- add sphinx-pygments-compat.patch (fix tests with newer pygments)</comment>
     <requestid>838296</requestid>
   </revision>
+  <revision rev="69" vrev="3">
+    <srcmd5>00a483ee73baaa22ba5f354d05910e18</srcmd5>
+    <version>3.2.1</version>
+    <time>1604702601</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846078</requestid>
+  </revision>
 </revisionlist>
