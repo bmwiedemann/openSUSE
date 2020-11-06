@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov  4 16:18:54 UTC 2020 - Malte Kraus <malte.kraus@suse.com>
+
+- allow pam_faillock.so PAM module (bsc#1171562)
+
+-------------------------------------------------------------------
+Fri Oct 30 13:17:31 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- whitelist malcontent PAM module (bsc#1177974)
+
+-------------------------------------------------------------------
 Mon Oct 19 08:29:26 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Add user "fluidsynth" for FluidSynth General Midi daemon.
