@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov  5 11:03:51 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.0.5:
+  * Support allocating PTS devices from within the container
+  * Harden more path/mount handling logics
+  * Rework LSM logic to limit initializer use
+  * for full list of changes see
+  https://discuss.linuxcontainers.org/t/lxc-4-0-5-lts-has-been-released/9269
+- remove 0001-templates-lxc-download.in-fix-wrong-if-condition-use.patch,
+  0002-templates-lxc-download.in-make-shellcheck-happy.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Jul  8 18:37:19 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
 
 - add patches from upstream:
