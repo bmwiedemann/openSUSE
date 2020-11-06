@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 30 15:46:50 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.11.3:
+  * Changes
+  * Updated Italian translation (thanks to Albano Battistella).
+  * Bug Fixes
+  * Fixed application crash issues due to using custom themes.
+  * Added missing theme colors in custom theme pane.
+  * Fixed issues with application crash when editing a root node.
+  * Fixed issue with filepath parser highlighting normal text
+    that contains slash characters.
+
+-------------------------------------------------------------------
 Sun Oct 11 07:30:59 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.11.1:
