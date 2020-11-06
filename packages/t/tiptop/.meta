@@ -1,0 +1,6 @@
+<package name="tiptop" project="openSUSE:Factory">
+  <title>Performance monitoring tool using hardware counters</title>
+  <description>Tiptop is a performance monitoring tool for Linux. It provides a dynamic real-time view of the tasks running in the system. Tiptop is very similar to the top utility, but most of the information displayed comes from hardware counters.</description>
+  <devel project="server:monitoring" package="tiptop"/>
+  <url>http://tiptop.gforge.inria.fr/</url>
+</package>
