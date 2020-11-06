@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct 31 10:41:19 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix build for SLE 12 PackageHub
+
+-------------------------------------------------------------------
+Fri Oct 30 13:20:43 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 3.1c
+  * Fix a stack overflow on colon-separated CSI parsing.
+    boo#1178263 CVE-2020-27347
+
+-------------------------------------------------------------------
 Tue May  5 08:44:13 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - tmux 3.1b:

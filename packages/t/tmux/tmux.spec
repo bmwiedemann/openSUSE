@@ -17,7 +17,7 @@
 
 
 Name:           tmux
-Version:        3.1b
+Version:        3.1c
 Release:        0
 Summary:        Terminal multiplexer
 License:        ISC AND BSD-3-Clause AND BSD-2-Clause
@@ -57,7 +57,11 @@ to (display and accept keyboard input from) multiple clients.
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 %configure
+%if 0%{?suse_version} >= 1320
 %make_build
+%else
+make %{?_smp_mflags}
+%endif
 
 %install
 %make_install
@@ -75,6 +79,10 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{name}.conf || true
 %files
 %license COPYING
 %doc CHANGES
+%if 0%{?suse_version} < 1320
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%endif
 %{_datadir}/bash-completion/completions/tmux
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
