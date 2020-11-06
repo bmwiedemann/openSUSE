@@ -144,8 +144,6 @@
     <package name="blog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="bluez" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="bluez-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="bogofilter-common" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="bogofilter-db" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="boost-license1_74_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="bovo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="bovo-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -313,7 +311,6 @@
     <package name="evolution-data-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="evolution-data-server-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="evolution-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="evolution-plugin-bogofilter" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="evolution-plugin-pst-import" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="evolution-plugin-rss" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="evolution-plugin-rss-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
