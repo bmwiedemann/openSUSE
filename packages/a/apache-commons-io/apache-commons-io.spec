@@ -20,7 +20,7 @@
 %define short_name      commons-%{base_name}
 %bcond_with tests
 Name:           apache-%{short_name}
-Version:        2.7
+Version:        2.8.0
 Release:        0
 Summary:        Utilities to assist with developing IO functionality
 License:        Apache-2.0
