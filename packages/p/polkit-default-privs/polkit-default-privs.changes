@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 03 10:14:02 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 1550+20201103.994a5ed:
+  * udisks2: rename of manage-led action to match upstream changes (bsc#1178321)
+
+-------------------------------------------------------------------
+Mon Nov 02 08:34:41 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 1550+20201030.d1b5d8b:
+  * whitelisting of GNOME malcontent parental controls (bsc#1177974)
+  * restrictive profile: fix conflicting duplicate action org.kde.powerdevil.backlighthelper.setbrightness
+  * restrictive profile: fix conflicting duplicate action org.freedesktop.color-manager.delete-profile
+  * profiles: fix conflicting duplicate action org.kde.powerdevil.backlighthelper.brightness
+  * profiles: remove duplicate actions with same authentication settings
+  * tools: new script to cleanly remove duplicate actions
+
+-------------------------------------------------------------------
 Mon Oct 19 12:51:57 UTC 2020 - matthias.gerstner@suse.com
 
 - Update to version 1550+20201012.1df5a0d:

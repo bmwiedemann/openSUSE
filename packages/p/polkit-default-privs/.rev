@@ -1694,4 +1694,21 @@ for 12.3</comment>
   * whitelist new plasma5-disks smartmon helper (bsc#1176742)</comment>
     <requestid>842553</requestid>
   </revision>
+  <revision rev="190" vrev="1">
+    <srcmd5>e0e6893de3f6d9c5070d154c163cd9b8</srcmd5>
+    <version>1550+20201103.994a5ed</version>
+    <time>1604702641</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1550+20201103.994a5ed:
+  * udisks2: rename of manage-led action to match upstream changes (bsc#1178321)
+
+- Update to version 1550+20201030.d1b5d8b:
+  * whitelisting of GNOME malcontent parental controls (bsc#1177974)
+  * restrictive profile: fix conflicting duplicate action org.kde.powerdevil.backlighthelper.setbrightness
+  * restrictive profile: fix conflicting duplicate action org.freedesktop.color-manager.delete-profile
+  * profiles: fix conflicting duplicate action org.kde.powerdevil.backlighthelper.brightness
+  * profiles: remove duplicate actions with same authentication settings
+  * tools: new script to cleanly remove duplicate actions</comment>
+    <requestid>845677</requestid>
+  </revision>
 </revisionlist>
