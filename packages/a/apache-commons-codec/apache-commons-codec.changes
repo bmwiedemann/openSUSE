@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct 27 07:51:13 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.15
+  * Fix: MurmurHash3: Ensure hash128 maintains the sign extension bug.
+  * Update: Base32/Base64/BCodec: Added strict decoding property to
+    control handling of trailing bits. Default lenient mode discards
+    them without error. Strict mode raise an exception.
+  * Update: Base32/Base64 Input/OutputStream: Added strict decoding
+    property to control handling of trailing bits. Default lenient
+    mode discards them without error. Strict mode raise an exception.
+  * Update: Update tests from JUnit 4.12 to 4.13.
+  * Add: Base16Codec and Base16Input/OutputStream.
+  * Add: Hex encode/decode with existing arrays.
+  * Update: Update actions/checkout from v1 to v2.3.2.
+  * Update: Update actions/setup-java from v1.4.0 to v1.4.1.
+- Remove timeout.patch
+
+-------------------------------------------------------------------
 Tue Jun  2 08:57:59 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Update to version 1.14

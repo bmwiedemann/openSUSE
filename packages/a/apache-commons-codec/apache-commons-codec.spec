@@ -21,19 +21,18 @@
 %define short_name commons-%{base_name}
 %bcond_with tests
 Name:           apache-commons-codec
-Version:        1.14
+Version:        1.15
 Release:        0
 Summary:        Apache Commons Codec Package
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            http://commons.apache.org/codec/
 Source0:        http://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
+Source2:        http://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz.asc
 Source1:        %{name}-build.xml
 # Data in DoubleMetaphoneTest.java originally has an inadmissible license.
 # The author gives MIT in e-mail communication.
 Source100:      aspell-mail.txt
-# PATCH-FIX-OPENSUSE Avoid spurious timeout in BeiderMorse tests
-Patch0:         timeout.patch
 BuildRequires:  ant
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -72,7 +71,6 @@ Javadoc for %{name}.
 %setup -q -n %{short_name}-%{version}-src
 cp %{SOURCE1} build.xml
 cp %{SOURCE100} aspell-mail.txt
-%patch0 -p1
 
 #fixes eof encoding
 dos2unix RELEASE-NOTES*.txt LICENSE.txt NOTICE.txt
