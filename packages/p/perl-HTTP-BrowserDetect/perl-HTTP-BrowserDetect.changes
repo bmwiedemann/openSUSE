@@ -1,0 +1,432 @@
+-------------------------------------------------------------------
+Thu Jul 30 03:10:35 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.31
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  3.31      2020-07-29 14:29:55Z
+      - Replace last use of "vars" with "our" (GH#182) (James Raspass)
+
+-------------------------------------------------------------------
+Tue Jul 21 03:10:23 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.30
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  3.30      2020-07-20 15:45:22Z
+      - Fix MS Edge browser_beta capturing (GH#181) (moti)
+
+-------------------------------------------------------------------
+Wed Jul 15 03:09:00 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.29
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  3.29      2020-07-14 15:36:33Z
+      - Fix MS Edge detections (GH#180) (moti)
+
+-------------------------------------------------------------------
+Sat Jul 11 03:07:53 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.28
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  3.28      2020-07-10 14:59:08Z
+      - Fix typo for 'wv' (GH#178) (Jon Jensen
+
+-------------------------------------------------------------------
+Thu Apr 16 03:08:24 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 3.27
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  3.27      2020-04-15 16:18:20Z
+      - Improve detection for MS Edge (GH#177) (Zak B. Elep)
+
+-------------------------------------------------------------------
+Tue Mar 17 03:11:52 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 3.26
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  3.26      2020-03-16 21:54:21Z
+      - Fix Microsoft Edge detection (GH#176) (Mahdi Zarei)
+
+-------------------------------------------------------------------
+Thu Nov 21 09:58:49 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 3.25
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  3.25      2019-11-20 14:11:51Z
+      - Remove a near duplicate regex (GH#171) (Gregory Oschwald)
+
+-------------------------------------------------------------------
+Fri Nov  1 10:31:12 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 3.24
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  3.24      2019-10-31 17:48:35Z
+      - Bump JSON::PP to 4.04. Fixes #169 (GH#170) (Olaf Alders)
+      - Remove links to AnnoCPAN (GH#168) (Petr)
+      - Fixed pod error as reported by CPANTS. (GH#166) (Mohammad S Anwar)
+      - Fix bad syntax in SYNOPSIS (reported by John Blumel) (GH#163) (Olaf Alders)
+
+-------------------------------------------------------------------
+Fri Apr  5 05:09:08 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.23
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  3.23      2019-04-04 19:26:18Z
+      - Add BingPreview to bot checker (GH#162) (James Waters)
+
+-------------------------------------------------------------------
+Wed Mar 13 16:07:24 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.22
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  3.22      2019-03-07 15:11:01Z
+      - Add a u2f() method (GH#161) (Patrick Cronin and Olaf Alders)
+      - Don't warn on fake UA strings. (GH#160) (Olaf Alders)
+
+-------------------------------------------------------------------
+Tue Feb  5 06:10:47 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.21
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  3.21      2019-02-05 01:50:40Z
+      - Faster edge test (GH#158) (Marco Fontani)
+
+-------------------------------------------------------------------
+Thu Dec  6 15:44:23 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.20
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  3.20      2018-12-04 18:37:08Z
+      - Fix minor version warning (GH#152) (Olaf Alders)
+      - Fix a typo in the POD. (GH#149) (gregor herrmann)
+
+-------------------------------------------------------------------
+Thu Nov  8 06:25:31 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.19
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  3.19      2018-10-11 16:04:00Z
+      - Detect ltx71 bot (GH#147) (Olaf Alders)
+      - test for "ltx71" robot (GH#113) (Alexandr Ciornii)
+      - Stop clobbering useragent tests (GH#146) (Olaf Alders)
+      - Removed +x bit from package and test script. (GH#145) (Mohammad S Anwar)
+      - Fixed minor typo in the pod. (GH#144) (Mohammad S Anwar)
+  
+  3.18      2018-10-10 15:01:41Z
+      - Define exceptions for ROBOT_FRAGMENTS (fix for #136) (GH#140) (Renee)
+      - Add another test for SeznamBot. UA string was provided in #131. (GH#142) (Renee)
+      - Fix (GH#119): add researchscan.comsys.rwth-aachen.de as a robot (GH#141) (Renee)
+  
+  3.17      2018-10-03 02:02:53Z
+      - Fix of 'wv' is not language + the new webview property (GH#139) (Perlover)
+      - Patch for tests (GH#138) (Perlover)
+
+-------------------------------------------------------------------
+Fri Dec 15 06:28:11 UTC 2017 - coolo@suse.com
+
+- updated to 3.16
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  3.16      2017-12-14 17:38:34Z
+      - Fixes detection for bots added in 3.15
+      - Adds all_robot_ids() method
+
+-------------------------------------------------------------------
+Thu Dec 14 06:25:18 UTC 2017 - coolo@suse.com
+
+- updated to 3.15
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  3.15      2017-12-13 03:25:42Z
+      - Adds browserdetect.org to documentation
+      - Adds more bots to robot detection
+      - Adds robot_id(), which is currently in beta
+
+-------------------------------------------------------------------
+Sat May 28 09:57:34 UTC 2016 - coolo@suse.com
+
+- updated to 3.14
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  3.14 2016-05-25 11:44:10 America/Toronto
+      - Slightly refactor the detection of several browsers that
+        identify as Mozilla initially (andrewmoise)
+      - Start detecting UCBrowser much more accurately (device, version,
+        and detect some cases which were misidentified as something else
+        previously) (andrewmoise)
+      - Detect more possibilities for Kindle Fire in Android model
+        ("Kindle Fire in addition to "KF.*") (andrewmoise)
+      - Detect more possibilities for Kindle Fire, and try to set tests
+        appropriate to whatever the device is configured to be
+        (andrewmoise)
+
+-------------------------------------------------------------------
+Mon May 23 11:56:57 UTC 2016 - coolo@suse.com
+
+- updated to 3.13
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  3.13 2016-05-09 11:10:44 America/Toronto
+      - Start detecting Brew OS (andrewmoise)
+      - Fix detecting Netfront as Netscape in some cases (andrewmoise)
+      - Start recognizing Teleca as an alias for Obigo (andrewmoise)
+      - Start detecting versions of Teleca / Obigo (andrewmoise)
+      - Note in documentation that 'wap' doesn't mean WAP only
+        (andrewmoise)
+      - Start detecting Polaris mobile browser (andrewmoise)
+  
+  3.12 2016-05-05 08:59:46 America/Toronto
+      - Start detecting a few robots we weren't detecting before
+        ('verify' or 'analyze' in the name, or +https: beginning
+        the URL) (andrewmoise)
+      - Stop including the version in robot_string() in some
+        cases (andrewmoise)
+      - Start returning undef instead of 0 for robot() if there's
+        no robot (andrewmoise)
+      - Fix _version() documentation for robot, os, and version not
+        to make formatting garbage in the output, and to be
+        consistent (andrewmoise)
+
+-------------------------------------------------------------------
+Thu May  5 09:23:34 UTC 2016 - coolo@suse.com
+
+- updated to 3.11
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  3.11 2016-05-04 20:32:47 America/Toronto
+      - Add a test for Kindle Fire (andrewmoise)
+
+-------------------------------------------------------------------
+Mon Apr  4 09:48:07 UTC 2016 - coolo@suse.com
+
+- updated to 3.10
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  3.10 2016-03-29 22:15:35 America/Toronto
+      - Big change: Add robot version detection, distinct from browser
+        version (first cut) (andrewmoise)
+      - Add browsers: Pubsub (Safari RSS reader), ADM (Android Download
+        Manager), ImageSearcherPro (iOS app) (andrewmoise)
+      - Add robots: Google favicon, malware/shellcode, phplib,
+        Verisign IPS agent, Nutch, thumbtack-thunderdome (andrewmoise)
+      - Distinguish Bingbot from MSNbot (andrewmoise)
+      - Only detect wget based on the beginning of the user-agent
+        (andrewmoise)
+      - Misc fixes to test support scripts (andrewmoise)
+      - Add Kindle Fire (andrewmoise)
+      - Detect curl by matching /^curl/ as well as /libcurl/
+        (andrewmoise)
+      - Remove webcrawler robot test (it triggers on too many distinct
+        robots which all include "webcrawler") (andrewmoise)
+
+-------------------------------------------------------------------
+Tue Mar  8 10:22:26 UTC 2016 - coolo@suse.com
+
+- updated to 3.00
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  3.00 2016-02-29 22:57:45 America/Toronto
+      - Make "mobile" false when "tablet" is true.  This is a breaking change and
+        has triggered a major version bump. (andrewmoise)
+
+-------------------------------------------------------------------
+Sun Feb  7 10:04:47 UTC 2016 - coolo@suse.com
+
+- updated to 2.08
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  2.08 2016-01-29 21:56:29 America/Toronto
+      - Brave browser detection added (Nicolas Doye)
+
+-------------------------------------------------------------------
+Fri Nov 20 09:38:12 UTC 2015 - coolo@suse.com
+
+- updated to 2.07
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  2.07 2015-11-18 23:52:07 America/Toronto
+      - Strip off anything Google Translate adds to UserAgent before parsing
+        (Marco Fontani)
+
+-------------------------------------------------------------------
+Mon Nov 16 09:56:25 UTC 2015 - coolo@suse.com
+
+- updated to 2.06
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  2.06 2015-11-15 10:59:30 America/Toronto
+      - Detect more Edge versions (Marco Fontani)
+
+-------------------------------------------------------------------
+Sat Aug  1 08:38:14 UTC 2015 - coolo@suse.com
+
+- updated to 2.05
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  2.05 2015-07-29 12:36:01 America/Toronto
+      - Add Microsoft Windowns 10/Windows Phone 10 Edge Browser (Atsushi Kato)
+
+-------------------------------------------------------------------
+Sat Jun 27 08:37:39 UTC 2015 - coolo@suse.com
+
+- updated to 2.04
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  2.04 2015-06-24 23:26:28 America/Toronto
+      - Fix test failures on Perl 5.8
+
+-------------------------------------------------------------------
+Sun Jun 21 08:27:48 UTC 2015 - coolo@suse.com
+
+- updated to 2.03
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  2.03 2015-06-19 09:59:45 America/Toronto
+      - Add win8_1 method (Daniel Stadie)
+
+-------------------------------------------------------------------
+Thu Jun 18 17:48:13 UTC 2015 - coolo@suse.com
+
+- updated to 2.02
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  2.02 2015-06-17 18:18:17 America/Toronto
+      - Default to using an empty string if an undef UA is provided (ben hengst)
+
+-------------------------------------------------------------------
+Sat Apr 25 07:17:03 UTC 2015 - coolo@suse.com
+
+- updated to 2.01
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  2.01 2015-04-24 23:05:13 America/Toronto
+      - Handle "CriOS" entries correctly (andrewmoise)
+      - Only detect java when no browser is detected, and make UCBrowser a
+        detected browser (andrewmoise)
+      - Detect "tablet" on Kindle Fire (and Chrome on Android tablets in general)
+        (andrewmoise)
+      - Distinguish Android tablets in device_string (andrewmoise)
+      - Handle CriOS, rubylib, golib, and Dalvik (andrewmoise)
+      - Detect "Mobilesafari/" as Mobile Safari (andrewmoise)
+      - Detect "Windows 2000" as Win2k (andrewmoise)
+      - Only detect NCR Unix on word boundary (andrewmoise)
+      - Try tighter detection of robot names based on fragments (andrewmoise)
+      - Fix java detection to be more strict (andrewmoise)
+      - Fix up Android tablet detection (andrewmoise)
+      - Add proper detection for old Windows versions in Opera (andrewmoise)
+      - Add apache http client detection (andrewmoise)
+      - Fix detection of SCO Unix to trigger fewer false positives (andrewmoise)
+      - Correct detection of (most) robots based on "+http://blah" (andrewmoise)
+
+-------------------------------------------------------------------
+Tue Apr 14 19:51:07 UTC 2015 - coolo@suse.com
+
+- updated to 2.00
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  2.00 2015-03-30 21:46:25 America/Toronto
+      - Standardize interface:
+          browser         ()
+          device     X    _string()
+          engine          _version(), _major(), _minor(), _beta()
+          os
+          robot
+        (andrewmoise)
+      - Add Galeon, Seamonkey, and Epiphany as specifically detected
+        browsers (andrewmoise)
+      - Some internal changes that make things simpler and faster
+        (andrewmoise)
+      - Remove the $check argument (e.g. $ua->beta('.45') to check
+        whether the beta version is ".45") (andrewmoise)
+      - Update and reorganize documentation (andrewmoise)
+      - Breaking Change: remove deprecated user_agent($arg) usage.
+        This is the reason for the major version bump.
+  
+  1.78 2015-03-17 22:43:27 America/Toronto
+      - Reorganize documentation (andrewmoise)
+      - Make java a robot with the other libs and tools (andrewmoise)
+      - Add a "lib" test to detect libs and tools (andrewmoise)
+      - Add AppleCoreMedia (andrewmoise)
+      - Make Blackberry stop setting Safari tests (andrewmoise)
+      - Make Android stop setting Linux tests (andrewmoise)
+      - Implement much more engine detection and engine version
+        detection (andrewmoise)
+
+-------------------------------------------------------------------
+Mon Mar  9 07:55:25 UTC 2015 - joschibrauchle@gmx.de
+
+- update to version 1.77
+- changes since version 1.55:
+    * Switch to using strings for version numbers (andrewmoise)
+    * Adds BrowseX and Silk detection (andrewmoise)
+    * Makes detection of Obigo more consistent (andrewmoise)
+    * Encourage use of public_* and engine_* over version(), major() and
+      minor().
+    * Speed optimizations (andrewmoise)
+    * Fix warnings on "Safari/12x.x (andrewmoise)
+    * Adds detection for Chrome OS (Douglas Christopher Wilson)
+    * Adds detection for Majestic-12 bot (Douglas Christopher Wilson)
+    * Adds minimum Perl version
+    * dzil tweaks to make CPANTS happier
+    * Remove File::Slurp from tests in favour of Path::Tiny
+    * Fixes warnings on "frakenagent" (Douglas Christopher Wilson)
+    * Add new UA tests & avoid false positive Sun match on Samsung (Jon Jensen)
+    * Adds detection for BlackBerry 10 devices (Douglas Christopher Wilson)
+    * Adds Yandex & Ahrefs bots (Perlover)
+    * Adds detection for tablet Firefox OS (Douglas Christopher Wilson)
+    * Adds detection for IE Compatibility View (Douglas Christopher Wilson)
+    * Adds os_version for FireFox in OS X (Hao Wu)
+    * Adds detection for Opera 15+ (Douglas Christopher Wilson)
+    * Adds detection for Internet Explorer 11 (Douglas Christopher Wilson)
+    * Adds detection for Windows 8.1 (Douglas Christopher Wilson)
+    * Returns explicit undef more consistently (David Ihnen)
+    * Reverts a commit that was causing a test to fail when a warning about
+      File::Slurp was detected
+    * Fixes bug where "Linux" rather than "Android" was returned as os_string
+      for Android devices.
+    * Revert 1.57's behaviour of returning a robot name in browser_string.
+    * Fix bug where OS X identied as just Mac in os_string.
+    * Add linkchecker, YandexImages and archive.org_bot bots.
+    * Add undocumented os_version() for OS X, winPhone, Android, iOS, Firefox
+      OS.
+    * Break up parsing into smaller chunks.
+    * Return better names for Googlebot News, Images and Video.
+    * Fix bug where Yahoo! Slurp reported as Firefox.
+    * Make internals a little less quirky.
+    * Stop returning explicit undef for browser_string and os_string.  (Why
+      would you ever call these in list context?)
+    * Return name of robot for browser_string when browser is, in fact, a bot.
+      Previous behaviour was to return undef or something just really wrong.
+    * Adds experimental and undocumented robot_name method.
+
+-------------------------------------------------------------------
+Wed Jul 24 18:22:18 UTC 2013 - lnt-sysadmin@lists.lrz.de
+
+- update to version 1.55 (bugfix release)
+    * Adds detection of BlackBerry Playbook
+
+-------------------------------------------------------------------
+Wed Jul 17 12:54:27 UTC 2013 - lnt-sysadmin@lists.lrz.de
+
+- update to version 1.52
+    * Adds detection of iOS, Windows Phone, Windows 8, IE 8/9
+    * New BuildRequires: Test-Most, Test-NoWarnings, Test-FailWarnings
+
+-------------------------------------------------------------------
+Sun May  1 10:36:01 UTC 2011 - coolo@opensuse.org
+
+- initial package 1.22
+    * created by cpanspec 1.78.04
+
