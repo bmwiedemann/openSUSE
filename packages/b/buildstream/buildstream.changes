@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  6 08:26:26 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.1:
+  + Fix failure handling with CAS.
+
+-------------------------------------------------------------------
 Fri Sep 25 16:32:09 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 1.6.0:
