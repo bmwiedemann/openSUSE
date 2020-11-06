@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Nov 06 12:45:17 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.8.0+git.20201106.e7821e8:
+  * Remove superfluous print.
+  * Fix killing of timed out processes.
+  * Save test when it reaches a timeout.
+  * Move timeout to WARN.
+  * Fix timeout default.
+  * Support timestamps for a duration >24 hours.
+
+-------------------------------------------------------------------
+Fri Nov  6 12:44:39 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use llvm11.
+
+-------------------------------------------------------------------
 Thu Oct 29 14:45:05 UTC 2020 - mliska@suse.cz
 
 - Update to version 1.8.0+git.20201029.d32ab1b:
