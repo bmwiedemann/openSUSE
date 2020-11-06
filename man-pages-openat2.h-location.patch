@@ -1,7 +1,7 @@
-Index: man-pages-5.08/man2/openat2.2
+Index: man-pages-5.09/man2/openat2.2
 ===================================================================
---- man-pages-5.08.orig/man2/openat2.2	2020-08-13 10:03:54.000000000 +0200
-+++ man-pages-5.08/man2/openat2.2	2020-08-13 14:44:24.008387550 +0200
+--- man-pages-5.09.orig/man2/openat2.2	2020-11-01 21:08:55.000000000 +0100
++++ man-pages-5.09/man2/openat2.2	2020-11-02 08:49:28.818444974 +0100
 @@ -29,7 +29,7 @@ openat2 \- open and possibly create a fi
  .B #include <sys/types.h>
  .B #include <sys/stat.h>
@@ -9,5 +9,5 @@ Index: man-pages-5.08/man2/openat2.2
 -.B #include <openat2.h>
 +.B #include <linux/openat2.h>
  .PP
- .BI "int openat2(int " dirfd ", const char *" pathname ,
- .BI "            struct open_how *" how ", size_t " size ");"
+ .BI "long openat2(int " dirfd ", const char *" pathname ,
+ .BI "            struct open_how *" how ", size_t " size );
