@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Nov  2 09:07:50 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 8u2732 build 10 with OpenJ9 0.23.0 virtual
+  machine
+  * including Oracle July 2020 CPU changes (bsc#1174157) and
+    October 2020 CPU changes (bsc#1177943)
+    + fixes CVE-2020-14556, CVE-2020-14577, CVE-2020-14578,
+      CVE-2020-14579, CVE-2020-14581, CVE-2020-14583,
+      CVE-2020-14593, CVE-2020-14621, CVE-2020-14779,
+      CVE-2020-14781, CVE-2020-14782, CVE-2020-14792,
+      CVE-2020-14796, CVE-2020-14797, CVE-2020-14798 and
+      CVE-2020-14803
+- Removed patch:
+  * gcc10.patch
+    + not needed any more in this version
+- Modified patches:
+  * java-atk-wrapper-security.patch
+  * openj9-no-werror.patch
+  * system-lcms.patch
+    + rediff to changed context
+- Added patch:
+  * omr-no-return-in-nonvoid-function.patch
+    + fix build error on some systems
+
+-------------------------------------------------------------------
 Fri Jun 26 09:12:17 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Added patches:
@@ -24,7 +49,7 @@ Fri Apr 24 06:26:21 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 Wed Apr 15 09:07:59 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - The pack200 and unpack200 alternatives should be slaves of java
-  and not of javac, since they are part of JRE.
+  and not of javac, since they are part of JRE (bsc#1171352).
 
 -------------------------------------------------------------------
 Mon Jan 27 11:50:27 UTC 2020 - Fridrich Strba <fstrba@suse.com>

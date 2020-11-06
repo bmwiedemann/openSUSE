@@ -26,23 +26,23 @@
  endif
 --- omr/omrmakefiles/rules.linux.mk	2020-04-14 14:43:05.000000000 +0200
 +++ omr/omrmakefiles/rules.linux.mk	2020-06-26 08:19:16.264774446 +0200
-@@ -348,15 +348,15 @@
+@@ -345,15 +345,15 @@
  ifeq ($(OMR_WARNINGS_AS_ERRORS),1)
-     ifeq (ppc,$(OMR_HOST_ARCH))
-         ifeq (gcc,$(OMR_TOOLCHAIN))
--            GLOBAL_CFLAGS += -Wreturn-type -Werror
--            GLOBAL_CXXFLAGS += -Wreturn-type -Werror
-+            GLOBAL_CFLAGS += -Wreturn-type
-+            GLOBAL_CXXFLAGS += -Wreturn-type
-         else
-             GLOBAL_CFLAGS += -qhalt=w
-             GLOBAL_CXXFLAGS += -qhalt=w
-         endif
+   ifeq (ppc,$(OMR_HOST_ARCH))
+     ifeq (gcc,$(OMR_TOOLCHAIN))
+-      GLOBAL_CFLAGS += -Wreturn-type -Werror
+-      GLOBAL_CXXFLAGS += -Wreturn-type -Werror
++      GLOBAL_CFLAGS += -Wreturn-type
++      GLOBAL_CXXFLAGS += -Wreturn-type
      else
--        GLOBAL_CFLAGS+=-Wimplicit -Wreturn-type -Werror
--        GLOBAL_CXXFLAGS+=-Wreturn-type -Werror
-+        GLOBAL_CFLAGS+=-Wimplicit -Wreturn-type
-+        GLOBAL_CXXFLAGS+=-Wreturn-type
+       GLOBAL_CFLAGS += -qhalt=w
+       GLOBAL_CXXFLAGS += -qhalt=w
      endif
+   else
+-    GLOBAL_CFLAGS+=-Wimplicit -Wreturn-type -Werror
+-    GLOBAL_CXXFLAGS+=-Wreturn-type -Werror
++    GLOBAL_CFLAGS+=-Wimplicit -Wreturn-type
++    GLOBAL_CXXFLAGS+=-Wreturn-type
+   endif
  endif
  

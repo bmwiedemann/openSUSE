@@ -31,4 +31,12 @@
     <comment>Fix factory build on relevant architectures</comment>
     <requestid>817216</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>294be2ee8ee75da4d6150e42b11e0b25</srcmd5>
+    <version>1.8.0.272</version>
+    <time>1604702658</time>
+    <user>dimstar_suse</user>
+    <comment>Oracle July and Octobre 2020 CPU</comment>
+    <requestid>845444</requestid>
+  </revision>
 </revisionlist>

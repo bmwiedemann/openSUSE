@@ -1,0 +1,11 @@
+--- omr/compiler/z/env/OMRCPU.cpp
++++ omr/compiler/z/env/OMRCPU.cpp
+@@ -586,6 +586,8 @@ OMR::Z::CPU::setSupportsMiscellaneousInstructionExtensions2Facility(bool value)
+       {
+       _flags.reset(S390SupportsMIE2);
+       }
++
++   return value;
+    }
+ 
+ bool

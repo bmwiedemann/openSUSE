@@ -25,18 +25,18 @@
 %global abs2rel perl -e %{script}
 %global syslibdir       %{_libdir}
 # Standard JPackage naming and versioning defines.
-%global updatever       252
-%global buildver        b09
+%global updatever       272
+%global buildver        b10
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk8/archive
-%global root_revision   cfa47e66cd5f48491f6e235e0bf41cf753a2cacd
-%global root_branch     openj9-0.20.0
+%global root_revision   41f03341d596924e866595d8c94ab3bff33066a4
+%global root_branch     openj9-0.23.0
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    d4365f371ce896bead71bc601cbdb53cc35ab47b
-%global omr_branch      v0.20.0-release
+%global omr_revision    582366ae54510a48f7815921091db00357c4338a
+%global omr_branch      v0.23.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 05fa2d3611f757a1ca7bd45d7312f99dd60403cc
-%global openj9_branch   v0.20.0-release
-%global openj9_tag      openj9-0.20.0
+%global openj9_revision 0394ef7545243942a4b27227a22174c1be67ed60
+%global openj9_branch   v0.23.0-release
+%global openj9_tag      openj9-0.23.0
 %global icedtea_sound_version 1.0.1
 %global freemarker_version 2.3.29
 # priority must be 6 digits in total
@@ -127,7 +127,7 @@ Patch203:       system-lcms.patch
 Patch205:       link-with-as-needed.patch
 
 Patch210:       openj9-no-werror.patch
-Patch211:       gcc10.patch
+Patch211:       omr-no-return-in-nonvoid-function.patch
 
 Patch300:       alternative-path-to-tzdb_dat.patch
 
@@ -369,7 +369,7 @@ rm -rvf jdk/src/share/native/sun/java2d/cmm/lcms/lcms2*
 %patch205 -p1
 
 %patch210
-%patch211 -p1
+%patch211
 
 %patch1 -p1
 %patch2 -p1

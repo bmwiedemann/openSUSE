@@ -50,7 +50,7 @@
 --- jdk8/jdk/make/lib/Awt2dLibraries.gmk	2014-09-26 08:49:00.981751504 +0200
 +++ jdk8/jdk/make/lib/Awt2dLibraries.gmk	2014-09-26 08:50:22.897853978 +0200
 @@ -669,8 +669,8 @@
- ##########################################################################################
+ endif
  
  # TODO: Update awt lib path when awt is converted
 -$(eval $(call SetupNativeCompilation,BUILD_LIBLCMS, \
