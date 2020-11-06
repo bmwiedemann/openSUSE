@@ -1112,4 +1112,13 @@
   * Added XF86Eject button action.</comment>
     <requestid>846007</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>22aad9df2cc9f9b0bd21b1fc8b116b33</srcmd5>
+    <version>0.16.1</version>
+    <time>1604702689</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.1:
+  * Fixed compilation with Qt 5.12 and Qt 5.13.</comment>
+    <requestid>846400</requestid>
+  </revision>
 </revisionlist>

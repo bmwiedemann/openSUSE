@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  6 07:48:53 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.1:
+  * Fixed compilation with Qt 5.12 and Qt 5.13.
+
+-------------------------------------------------------------------
 Wed Nov  4 13:46:35 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.16.0:

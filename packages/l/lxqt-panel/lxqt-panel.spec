@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-panel
-Version:        0.16.0
+Version:        0.16.1
 Release:        0
 Summary:        Desktop Panel for LXQt
 License:        GPL-2.0-or-later
