@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  4 16:40:36 UTC 2020 - Liang Yan <lyan@suse.com>
+
+- Add virtio-fs support for s390x (jsc#SLE-13822) 
+  libvhost-user-handle-endianness-as-manda.patch
+  virtio-add-vhost-user-fs-ccw-device.patch
+
+-------------------------------------------------------------------
 Wed Oct 14 13:05:43 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Note: As part of the "Close the Leap Gap" effort, it's been
