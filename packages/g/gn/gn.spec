@@ -25,6 +25,7 @@ URL:            https://gn.googlesource.com/
 Source:         https://dev.gentoo.org/~floppym/dist/%{name}-%{version}.tar.xz
 Patch0:         gn-flags.patch
 Patch1:         gn-always-python3.patch
+Patch2:         riscv.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
 BuildRequires:  python3-base
@@ -39,6 +40,7 @@ GN is a meta-build system that generates build files for Ninja.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 export CC=gcc

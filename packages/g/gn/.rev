@@ -85,4 +85,13 @@
     <comment></comment>
     <requestid>840875</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>384669c1af1a07b7f2188c914a28b697</srcmd5>
+    <version>0.1807</version>
+    <time>1604702606</time>
+    <user>dimstar_suse</user>
+    <comment>- Add riscv.patch to add support for RISCV
+</comment>
+    <requestid>845208</requestid>
+  </revision>
 </revisionlist>
