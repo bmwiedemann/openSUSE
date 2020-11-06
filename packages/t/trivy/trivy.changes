@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 30 14:52:37 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- add 0001-Add-suse-sles-15.2-to-the-EOL-list-as-well.patch 
+
+-------------------------------------------------------------------
 Wed Oct 28 12:47:30 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - revert _service and build changes in last update to use

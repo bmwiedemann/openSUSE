@@ -27,6 +27,7 @@ Group:          System/Management
 URL:            https://github.com/aquasecurity/trivy
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+Patch1:         0001-Add-suse-sles-15.2-to-the-EOL-list-as-well.patch
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.15
 Requires:       ca-certificates
