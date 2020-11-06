@@ -17,7 +17,7 @@
 
 
 Name:           ser2net
-Version:        4.2.3
+Version:        4.3.0
 Release:        0
 Summary:        Serial port to network proxy
 License:        GPL-2.0-or-later
@@ -30,7 +30,7 @@ BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  pkgconfig(libgensio)
+BuildRequires:  pkgconfig(libgensio) >= 2.2.0
 BuildRequires:  pkgconfig(yaml-0.1)
 %{?systemd_requires}
 

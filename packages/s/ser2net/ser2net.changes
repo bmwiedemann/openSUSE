@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 29 19:37:25 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.3.0
+  * Add mDNS support in ser2net for advertising.
+  * Some minor bug fixes.
+
+-------------------------------------------------------------------
 Tue Oct  6 20:56:07 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.2.3
