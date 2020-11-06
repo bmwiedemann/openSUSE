@@ -4,7 +4,7 @@
 
 --- a/config/BuildSystem/config/setCompilers.py
 +++ b/config/BuildSystem/config/setCompilers.py
-@@ -1443,9 +1443,9 @@ class Configure(config.base.Configure):
+@@ -1662,9 +1662,9 @@
        self.pushLanguage(language)
        # test '-R' before '-rpath' as sun compilers [c,fortran] don't give proper errors with wrong options.
        if not Configure.isDarwin(self.log):

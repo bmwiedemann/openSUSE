@@ -19,8 +19,8 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname petsc
-%define vers 3.12.2
-%define _vers 3_12_2
+%define vers 3.14.1
+%define _vers 3_14_1
 %define so_ver 3
 %define openblas_vers 0.3.6
 

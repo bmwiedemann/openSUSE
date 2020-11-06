@@ -9,15 +9,15 @@ so check for the name here in all lower case too.
 
 --- a/config/BuildSystem/config/package.py
 +++ b/config/BuildSystem/config/package.py
-@@ -153,7 +153,10 @@ class Package(config.base.Configure):
+@@ -180,7 +180,10 @@
+       self.name           = 'DEBUGGING'
      self.PACKAGE          = self.name.upper()
      self.package          = self.name.lower()
-     self.downloadname     = self.name
--    self.pkgname          = self.name
+-    self.pkgname          = self.package
 +    if self.name == 'PaStiX':
-+      self.pkgname = self.name.lower()
++        self.pkgname = self.name.lower()
 +    else:
-+      self.pkgname          = self.name
++        self.pkgname          = self.package
+     self.downloadname     = self.name
      self.downloaddirnames = [self.downloadname];
      return
- 
