@@ -1,4 +1,150 @@
 -------------------------------------------------------------------
+Fri Oct 30 10:38:59 UTC 2020 - Vicente Zepeda Mas <vzepedamas@suse.com>
+
+- Update to version 3.4.0:
+  * bump version to v3.4.0
+  * this rewrites a whole bunch of old repo URLs to the new repo URL (#8902)
+  * warn and block old repo URLs (#8903)
+  * improved user-facing error messages to explain the underlying problem (#8731)
+  * Linking to a more complete list of meeting details.
+  * add authentication to CircleCI jobs
+  * helm create: make generated YAML indentation more consistent
+  * Makefile: check and use GOBIN environment variable first
+  * TestCheckPerms: utilize pipe to read stderr
+  * Bump github.com/DATA-DOG/go-sqlmock from 1.4.1 to 1.5.0
+  * Bump github.com/sirupsen/logrus from 1.6.0 to 1.7.0
+  * feat(install): add requested version to error
+  * Bump github.com/gofrs/flock from 0.7.1 to 0.8.0
+  * Bump github.com/lib/pq from 1.7.0 to 1.8.0
+  * Fix wrong function's name in comment
+  * ref(cmd): prevent klogs flags from polluting the help text
+  * Adding support for k8s 1.19
+  * remove redudant time func
+  * fix example time format
+  * rename to time format flag
+  * refactor time formatting
+  * fix ls command example
+  * add time-format flag to list command
+  * Adding annotation to index.yaml file
+  * Fixing import package issue
+  * Update go version to 1.14 in go.mod
+  * use warning function
+  * Adding size labels pointer
+  * Fixing issue with idempotent repo add
+  * support passing signing passphrase from file or stdin (#8394)
+  * size/S and larger requiring 2 LGTMs
+  * Update docs links in release notes script
+  * fix: allow serverInfo field on index files
+  * fix(cmd/helm): add build tags for architecture
+  * switched to stricter YAML parsing on plugin metadata files
+  * Merge pull request from GHSA-m54r-vrmv-hw33
+  * Merge pull request from GHSA-jm56-5h66-w453
+  * Merge pull request from GHSA-9vp5-m38w-j776
+  * go fmt
+  * improve the HTTP detection for tar archives
+  * replace --no-update with --force-update and invert default. BREAKING.
+  * handle case where dependency name collisions break dependency resolution
+  * fixed bug that caused helm create to not overwrite modified files
+  * refactor the release name validation to be consistent across Helm
+  * fix: if not .Values.autoscaling.enabled indent
+  * validate the name passed in during helm create
+  * fix: check mode bits on kubeconfig file
+  * fix incorrect wildcard expand
+  * fix(comp): Disable file comp for output formats
+  * Makefile: Fix LDFLAGS overriding
+  * Add support to install helm
+  * Fixing typo in engine comments
+  * Use T.cleanup() to cleanup cmdtest_temp file
+  * Use RemoveAll to remove a non-empty directory
+  * mark NewTempServer as Deprecated
+  * Use T.Cleanup() to cleanup temp dir helm-repotest
+  * Support impersonation via flags similar to kubectl --as="user"
+  * Document all env vars for CLI help
+  * Use T.cleanup() to cleanup helm-action-test
+  * Add GPG signature verification to install script (#7944)
+  * fix: with .Values.podAnnotations indent template
+  * Revert PR 8562
+  * feat(comp): Add support for fish completion
+  * feat: status command display description
+  * Remove duplicate variable definition
+  * Fixed a variable name collision caused by two PR merges (#8681)
+  * Fix/8467 linter failing (#8496)
+  * fix name length check on lint (#8543)
+  * Fix spelling in completion.go
+  * cleanup tempfiles for load_test
+  * add checkFileCompletion for env HELM_BIN
+  * feat(env): add support of accepting a specific variable for helm env
+  * Fixing failing CI for windows
+  * pkg/*: Small linting fixes
+  * Correct checksum file links
+  * Fixing linting of templates on Windows
+  * use URL escape codes
+  * add v4 to list of exempt labels
+  * optimise if condition in service ready logic
+  * feat(comp): Disable file completion when not valid
+  * Bump Kubernetes to v0.18.8 + Bump jsonpatch
+  * release/mock: Ensure conversion from int to string yields a string
+  * Update Common Lables template in starter chart
+  * chore(deps): add dependabot.yml
+  * Fix Quick Start Guide Link in README.md
+  * add helm v4 todo comments for FindChartInAuthAndTLSRepoURL.
+  * polish the error handler
+  * Move selector filtering after latest release version filtering
+  * Added testing for list action with selector
+  * Added notice about supported backends
+  * Fix linting issues
+  * Added selector filtering
+  * Pass labels from secret/configmap to release object
+  * Added selector option to list command
+  * fix test that modifies the wrong cache data
+  * bufix: fix validateNumColons docs
+  * Fix typo
+  * darwin-386 and windows-386 are not supported now
+  * Fix issue with install and upgrade running all hooks
+  * introduce stale issue bot
+  * Close gzip reader when done.
+  * fix watch error due to elb/proxy timeout
+  * Avoid hardcoded container port in default notes
+  * add unit tests for FindChartInAuthAndTLSRepoURL.
+  * Restoring Build behavior
+  * Adding helm v4 todo
+  * Make unmanaged repositories version resolvable
+  * Locking file URIs to a version in lockfile
+  * Enhance readability by extracting bitwise operation
+  * fix(sdk): Polish the downloader/manager package error return (#8491)
+  * fix insecure-skip-tls-verify flag does't work on helm install, Keep FindChartInRepoURL and FindChartInAuthRepoURL functions signatures intact.
+  * fix: Allow building in a path containing spaces
+  * Alter whitespace in "Update Complete" output
+  * fix(create): update the hook name of test-connection pod
+  * polish the help text of flag
+  * Reinstating comment that is still accurate
+  * Rollback command support for max history
+  * fix(helm): Update test during pending install
+  * Correct make target in Makefile
+  * fix(helm): Added test for concurrent upgrades
+  * fix(helm): Avoid corrupting storage via a lock
+  * Fixing version and spelling errors
+  * Clarify comments to match practice
+  * fix the code style error
+  * feature(show): support jsonpath output for `helm show value`
+  * fix(kube): use logger instead of fmt.Printf
+  * fix windows build failure caused by #8431
+  * address PR comment, adding whitespace for formatting
+  * feat(helm): prompt for password with helm repo add
+  * Lint dependencies (#7970)
+  * Environment variable for setting the max history for an environment
+  * chore(OWNERS): move michelleN to emeritus
+  * bump version to v3.3
+  * fix conflict
+  * add test case
+  * fix another extreme case
+  * add test case
+  * fix #6116
+  * Make helm ls return only current releases if providing state filter
+  * Report what cause finding chart to fail
+  * Simplify chart installable check
+
+-------------------------------------------------------------------
 Mon Sep 28 19:49:33 UTC 2020 - dmueller@suse.com
 
 - Update to version 3.3.4:
