@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 30 13:44:20 UTC 2020 - psimons@suse.com
+
+- Update megaparsec to version 9.0.1.
+  ## Megaparsec 9.0.1
+
+  * Added [Safe
+    Haskell](https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/safe_haskell.html)
+    support.
+
+-------------------------------------------------------------------
 Sat Sep 12 16:31:35 UTC 2020 - psimons@suse.com
 
 - Update megaparsec to version 9.0.0.
