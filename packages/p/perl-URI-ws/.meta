@@ -1,0 +1,5 @@
+<package name="perl-URI-ws" project="openSUSE:Factory">
+  <title>perl-URI-ws - WebSocket support for URI package</title>
+  <description>After this module is installed, the URI package provides the same set of methods for WebSocket URIs as it does for HTTP ones. For secure WebSockets, see the URI::wss manpage.</description>
+  <devel project="devel:languages:perl" package="perl-URI-ws"/>
+</package>
