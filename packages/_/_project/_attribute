@@ -109,6 +109,8 @@
   boo#1177904: '20201022'
   boo#1178050: '20201030'
   boo#1178096: '20201104'
+  boo#1178451: '20201104'
+  boo#1178453: '20201104'
   bsc#1158994: '20200323'
   bsc#1159185: '20200103'
   bsc#1170555: '20200427'
@@ -223,6 +225,7 @@
   poo#73603: '20201022'
   poo#73624: '20201104'
   poo#75247: '20201103'
+  poo#75313: '20201104'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -456,6 +459,9 @@ products:
   - opensuse-tumbleweed-image:lxc:
     - i586
     - x86_64
+  - opensuse-tumbleweed-image:networkd:
+    - i586
+    - x86_64
   - openSUSE-Tumbleweed-Yomi:livecd:
     - x86_64
   - openSUSE-Tumbleweed-Yomi:pxeboot:
@@ -484,10 +490,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20201104'
-published: '20201030'
-publishing: '20201030'
-testing: '20201104'
+    <value>failed: ''
+published: '20201104'
+publishing: '20201104'
+testing: '20201105'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
