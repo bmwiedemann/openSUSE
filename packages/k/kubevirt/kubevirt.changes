@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov  6 19:40:12 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- spec: Generate the registry path for kubevirt-operator.yaml at
+  build time. Prjconf macro 'registry_path' can be used to
+  override registry path to the KubeVirt container images
+- spec: Add kubevirt-psp-caasp.yaml, a PSP based on CaaSP
+  privileged PSP, to the manifests subpackage
+- spec: Don't add component name to DOCKER_PREFIX passed to
+  build-manifests.sh
+
+-------------------------------------------------------------------
 Sat Oct 31 17:34:55 UTC 2020 - Jan Zerebecki <jzerebecki@suse.com>
 
 - Add package with built YAML manifests used to install kubevirt

@@ -24,6 +24,7 @@ License:        Apache-2.0
 Group:          System/Packages
 URL:            https://github.com/kubevirt/kubevirt
 Source0:        %{name}-%{version}.tar.gz
+Source1:        kubevirt-psp-caasp.yaml
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
@@ -98,6 +99,41 @@ kubernetes installation with kubectl apply.
 %autosetup -p1
 
 %build
+# Hackery to determine which registry path to use in kubevirt-operator.yaml
+# when building the manifests
+#
+# The 'registry_path' macro can be used to define an explicit path in the
+# project config, e.g.
+#
+# Macros:
+# %registry_path registry.opensuse.org/Virtualization/container
+# :Macros
+#
+# 'registry_path' can also be defined when building locally, e.g.
+#
+# osc build --define='registry_path registry.opensuse.org/foo/bar/baz' ...
+#
+# If 'registry_path' is not specified, the standard publish location for SLE and
+# openSUSE-based containers is used.
+#
+# TODO:
+# 1. Determine "standard publish location" for SLE and openSUSE variants
+# 2. Support Leap when 1 is done
+#
+%if "%{?registry_path}" == ""
+distro='%{?sle_version}:%{is_opensuse}'
+case "${distro}" in
+    150200:0)
+	reg_path='registry.suse.de/suse/containers/sle-server/15/containers/suse/sles/15.2' ;;
+    150300:0)
+	reg_path='registry.suse.de/suse/containers/sle-server/15/containers/suse/sles/15.3' ;;
+    *)
+	reg_path='registry.opensuse.org/virtualization/container/opensuse/tumbleweed' ;;
+esac
+%else
+reg_path='%{registry_path}'
+%endif
+
 mkdir -p go/src/kubevirt.io go/pkg
 ln -s ../../../ go/src/kubevirt.io/kubevirt
 export GOPATH=${PWD}/go
@@ -120,7 +156,8 @@ KUBEVIRT_GIT_TREE_STATE="clean" \
 	cmd/virt-operator \
 	tools/csv-generator \
 	%{nil}
-env DOCKER_PREFIX=registry.opensuse.org/opensuse/tumbleweed/virt-operator DOCKER_TAG=%{version} ./hack/build-manifests.sh --skipj2
+
+env DOCKER_PREFIX=$reg_path DOCKER_TAG=%{version} ./hack/build-manifests.sh --skipj2
 
 %install
 mkdir -p %{buildroot}%{_bindir}
@@ -137,6 +174,11 @@ install -p -m 0755 _out/cmd/csv-generator/csv-generator %{buildroot}%{_bindir}/
 
 mkdir -p %{buildroot}%{_datadir}/kube-virt
 cp -r _out/manifests %{buildroot}%{_datadir}/kube-virt/
+# TODO:
+# Create a proper Pod Security Policy (PSP) for KubeVirt. For now, add one
+# that uses the CaaSP privileged PSP. It can be used with CaaSP-based
+# Kubernetes clusters.
+install -m 644 %{S:1} %{buildroot}/%{_datadir}/kube-virt/manifests/release/
 
 %files virtctl
 %license LICENSE

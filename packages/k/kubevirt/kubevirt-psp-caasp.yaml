@@ -1,0 +1,91 @@
+#
+# A KubeVirt PSP for CaaSP-based Kubernetes clusters that makes use of the
+# CaaSP privileged PSP.
+#
+# After the KubeVirt operator has sucessfully deployed the KubeVirt service,
+# this PSP can be deployed to the cluster, giving virt-operator and
+# virt-handler access to cluster operations necessary for virtual machine
+# management.
+#
+# kubectl apply -f /usr/share/kube-virt/manifests/release/kubevirt-psp-caasp.yaml
+#
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: kubevirt-controller-caasp
+rules:
+- apiGroups:
+  - policy
+  resources:
+  - podsecuritypolicies
+  verbs:
+  - use
+  resourceNames:
+  - suse.caasp.psp.privileged
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: kubevirt-handler-caasp
+rules:
+- apiGroups:
+  - policy
+  resources:
+  - podsecuritypolicies
+  verbs:
+  - use
+  resourceNames:
+  - suse.caasp.psp.privileged
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: kubevirt-controller-caasp
+roleRef:
+  kind: ClusterRole
+  name: kubevirt-controller-caasp
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+- kind: ServiceAccount
+  name: kubevirt-controller
+  namespace: kubevirt
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: kubevirt-handler-caasp
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: kubevirt-handler-caasp
+subjects:
+- kind: ServiceAccount
+  name: kubevirt-handler
+  namespace: kubevirt
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: kubevirt-controller-caasp
+roleRef:
+  kind: Role
+  name: kubevirt-controller-caasp
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+- kind: ServiceAccount
+  name: kubevirt-controller
+  namespace: kubevirt
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: kubevirt-handler-caasp
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: kubevirt-handler-caasp
+subjects:
+- kind: ServiceAccount
+  name: kubevirt-handler
+  namespace: kubevirt
+
