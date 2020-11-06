@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 Name:           python-semver
-Version:        2.10.2
+Version:        2.13.0
 Release:        0
 Summary:        Python helper for Semantic Versioning
 License:        BSD-3-Clause

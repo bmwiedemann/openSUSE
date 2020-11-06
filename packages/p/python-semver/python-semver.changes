@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Oct 30 11:22:16 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.13.0:
+ - Features:
+  - :pr:`287`: Document how to create subclass from ``VersionInfo``
+ - Bug Fixes:
+  - :pr:`283`: Ensure equal versions have equal hashes.
+    Version equality means for semver, that ``major``,
+    ``minor``, ``patch``, and ``prerelease`` parts are
+    equal in both versions you compare. The ``build`` part
+    is ignored.
+- update to version 2.12.0:
+ - Bug Fixes:
+  - :gh:`291` (:pr:`292`): Disallow negative numbers of
+    major, minor, and patch for ``semver.VersionInfo``
+- update to version 2.11.0:
+ - Bug Fixes:
+  - :gh:`276` (:pr:`277`): VersionInfo.parse should be a class method
+     Also add authors and update changelog in :gh:`286`
+  - :gh:`274` (:pr:`275`): Py2 vs. Py3 incompatibility TypeError
+
+-------------------------------------------------------------------
 Sun Jul 12 16:04:41 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 2.10.2:
