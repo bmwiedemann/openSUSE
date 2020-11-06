@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov  4 03:12:23 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.102
+   see /usr/share/doc/packages/perl-Params-Util/Changes
+
+  1.102	2020-11-02
+  	- fix RT#133623 - Can't install in pureperl mode. Thanks to Nigel
+  	  Gregoire (@nfg) for reporting and proposal for proper fix.
+  	- update ppport.h from Devel::PPPort 3.62
+
+-------------------------------------------------------------------
 Fri Oct 23 19:26:18 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - updated to 1.101

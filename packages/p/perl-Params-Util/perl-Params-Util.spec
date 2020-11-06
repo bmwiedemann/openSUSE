@@ -17,7 +17,7 @@
 
 
 Name:           perl-Params-Util
-Version:        1.101
+Version:        1.102
 Release:        0
 %define cpan_name Params-Util
 Summary:        Simple, compact and correct param-checking functions
