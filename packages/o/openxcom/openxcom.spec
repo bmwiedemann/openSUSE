@@ -17,28 +17,24 @@
 
 
 Name:           openxcom
-Version:        1.0.0.1592170963.8ae998af3
+Version:        1.0.0.1604610320.4639493f0
 Release:        0
 Summary:        An open source reimplementation of the original X-Com game
 License:        GPL-3.0-only
 URL:            https://openxcom.org/
 Source:         OpenXcom-%{version}.tar.xz
-BuildRequires:  Mesa-devel
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  docbook2X
+BuildRequires:  cmake
 BuildRequires:  dos2unix
-BuildRequires:  doxygen
-BuildRequires:  fdupes
-BuildRequires:  gcc
 BuildRequires:  gcc-c++
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  xmlto
 BuildRequires:  pkgconfig(SDL_gfx)
 BuildRequires:  pkgconfig(SDL_image)
 BuildRequires:  pkgconfig(SDL_mixer)
+BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(sdl)
 BuildRequires:  pkgconfig(yaml-cpp) >= 0.5
+Obsoletes:      %{name}-doc
 
 %description
 OpenXcom is an open-source clone of the original UFO: Enemy Unknown
@@ -51,52 +47,23 @@ new codebase written from scratch.
 User is required to have original gamedata (possible to obtain from e.g. Steam)
 installed to ~/.local/share/openxcom/data/
 
-%package doc
-Summary:        Documentation files for %{name}
-Requires:       %{name} = %{version}
-
-%description doc
-Documentation files for %{name} game.
-
 %prep
 %setup -q -n OpenXcom-%{version}
-
-chmod -x LICENSE.txt
-sed -i \
-	-e 's:HTML_TIMESTAMP         = YES:HTML_TIMESTAMP         = NO:g' \
-	docs/Doxyfile.in
 dos2unix *.txt
 
 %build
-autoreconf -fvi
-%configure \
-	--disable-werror \
-	--disable-silent-rules \
-	--with-docs --docdir="%{_docdir}/%{name}"
-%make_build
+%cmake
+%cmake_build
 
 %install
-%make_install
-pushd %{buildroot}%{_datadir}/pixmaps/
-ln -s openxcom_wide.svg openxcom.svg
-popd
-%fdupes %{buildroot}%{_datadir}
+%cmake_install
 
 %files
 %license LICENSE.txt
 %doc README.md CHANGELOG.txt
 %{_datadir}/applications/openxcom.desktop
-%{_mandir}/man6/openxcom.6%{?ext_man}
-%{_datadir}/pixmaps/*
+%{_datadir}/icons/hicolor/*/apps/openxcom.*
 %{_datadir}/%{name}/
-%{_docdir}/%{name}/*.txt
 %{_bindir}/%{name}
-%dir %{_docdir}/%{name}
-%exclude %{_docdir}/%{name}/html/
-
-%files doc
-%dir %{_docdir}/%{name}
-%dir %{_docdir}/%{name}/html
-%{_docdir}/%{name}/html/*
 
 %changelog

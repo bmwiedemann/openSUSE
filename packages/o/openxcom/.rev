@@ -83,4 +83,38 @@
 - Switch to github service as there was no release since 2014</comment>
     <requestid>817078</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8d3046ac27fe170d18d6e3a1165c33ed</srcmd5>
+    <version>1.0.0.1604610320.4639493f0</version>
+    <time>1604702720</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to cmake build system as upstream deprecates the
+  autotools one
+
+- Update to version 1.0.0.1604610320.4639493f0:
+  * Stop the charade
+  * Stop using in-tree builds and use the ENABLE_WARNING setting instead of rolling our own custom flags.
+  * Move CI to ubuntu 20.04 and use the yaml-cpp package
+  * silence OpenGL deprecation warnings on MacOS 10.14+
+  * Final fix to 25y bug with throw
+  * Make shuffle deterministic
+  * Add missing Croatian characters
+  * Prevent AI frozen in place
+  * Fix build with clang 10.0.1 on FreeBSD
+  * Hack throw bug
+  * Mission zone fix
+  * Prevent psionic capture of uncapturable units
+  * Unified production monetary cost check
+  * Fix research lookup costs
+  * Set artifact site counters when loading OG saves
+  * fix small bug with melee reaction
+  * fix up some HWP damage values
+  * fix zombie armour values
+  * fix warnings about missing override keyword
+  * fix string conversion warnings
+  * treat third-party include files as system includes
+  * Allow player access to the built-in melee attack for Lobstermen
+  * Fixed average monthly rating calculation in StatisticsState</comment>
+    <requestid>846462</requestid>
+  </revision>
 </revisionlist>
