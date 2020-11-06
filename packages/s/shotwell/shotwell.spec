@@ -17,7 +17,7 @@
 
 
 Name:           shotwell
-Version:        0.30.10
+Version:        0.30.11
 Release:        0
 Summary:        Photo Manager for GNOME
 License:        LGPL-2.1-or-later
@@ -56,7 +56,7 @@ BuildRequires:  pkgconfig(libgphoto2) >= 2.4.2
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.26.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.32
 BuildRequires:  pkgconfig(sqlite3) >= 3.5.9
-BuildRequires:  pkgconfig(webkit2gtk-4.0)
+BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.26
 
 %description
 Shotwell is a digital photo organizer designed for the GNOME desktop
