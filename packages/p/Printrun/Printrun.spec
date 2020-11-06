@@ -1,7 +1,7 @@
 #
 # spec file for package Printrun
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 %define         skip_python2 1
 
 Name:           Printrun
-Version:        2.0.0~rc5.1522069560.e0ee40a
+Version:        2.0.0~rc7.1599393390.c451359
 Release:        0
 Summary:        RepRap printer interface and tools
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Convertors
-Url:            https://github.com/kliment/Printrun
+URL:            http://www.pronterface.com/
 Source0:        Printrun-%{version}.tar.xz
 
 # Desktop files
@@ -62,9 +62,9 @@ they form a pretty powerful softwarecombo. This package installs whole Printrun.
 %package        common
 Summary:        Common files for Printrun
 Group:          Productivity/Graphics/Convertors
-Requires:       %{python_module numpy}
-Requires:       %{python_module pyglet}
-Requires:       %{python_module pyserial}
+Requires:       python3-numpy
+Requires:       python3-pyglet
+Requires:       python3-pyserial
 
 %description    common
 Printrun is a set of G-code sending applications for RepRap.
@@ -161,12 +161,6 @@ desktop-file-install --dir=%{buildroot}%{_datadir}/applications %{SOURCE1}
 desktop-file-install --dir=%{buildroot}%{_datadir}/applications %{SOURCE2}
 desktop-file-install --dir=%{buildroot}%{_datadir}/applications %{SOURCE3}
 %endif
-
-# locales
-mkdir -p %{buildroot}%{_datadir}/locale
-cp -ar %{buildroot}%{_datadir}/pronterface/locale/* %{buildroot}%{_datadir}/locale
-rm -rf %{buildroot}%{_datadir}/pronterface/locale
-ln -s -f %{_datadir}/locale/ %{buildroot}%{_datadir}/pronterface/ # the app expects the locale folder in here
 
 %{find_lang} pronterface
 %{find_lang} plater

@@ -2,8 +2,8 @@
   <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/kliment/Printrun.git</param>
     <param name="scm">git</param>
-    <param name="revision">printrun-2.0.0rc5</param>
-    <param name="versionprefix">2.0.0~rc5</param>
+    <param name="revision">printrun-2.0.0rc7</param>
+    <param name="versionprefix">2.0.0~rc7</param>
   </service>
   <service mode="disabled" name="set_version" />
 
