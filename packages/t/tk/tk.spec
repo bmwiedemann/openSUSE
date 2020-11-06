@@ -1,7 +1,7 @@
 #
 # spec file for package tk
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -122,7 +122,7 @@ ln -sf wish%TK_MINOR %buildroot%_prefix/bin/wish
 ln -sf wish%TK_MINOR.n.gz %buildroot%_mandir/mann/wish.n.gz
 install -m 0755 %{S:3} %buildroot%_bindir/tkcon
 
-%if %_lib == lib64
+%if "%_lib" == "lib64"
 
 %post
 test -L /usr/lib/tk%TK_MINOR && rm -f /usr/lib/tk%TK_MINOR

@@ -461,4 +461,12 @@
 - tk-8.5.12-fix-xft.patch is not needed anymore.</comment>
     <requestid>753330</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>ddd748afaa800a921297e7bf49cec1f0</srcmd5>
+    <version>8.6.10</version>
+    <time>1604702622</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845381</requestid>
+  </revision>
 </revisionlist>
