@@ -114,6 +114,7 @@ install -D -m 644 scripts/opensm.logrotate %{buildroot}%{_sysconfdir}/logrotate.
 # get rid of the included init script because we use a systemd unit file instead
 rm -rf %{buildroot}%_sysconfdir/init.d/
 install -Dm 644 %{SOURCE3} %{buildroot}%_unitdir/%{name}.service
+sed -i -e 's$@LIBEXEC@$%{_libexecdir}$g' %{buildroot}%_unitdir/%{name}.service
 install -D %{SOURCE2}  %{buildroot}%{_libexecdir}/opensm-launch
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rc%{name}
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov  4 11:43:55 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Support any value for %{_libexecdir} (bsc#1178326)
+
+-------------------------------------------------------------------
 Fri Mar 20 11:30:37 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to version 3.3.23

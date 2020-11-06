@@ -7,7 +7,7 @@ After=rdma-hw.target
 
 [Service]
 Type=forking
-ExecStart=/usr/lib/opensm-launch
+ExecStart=@LIBEXEC@/opensm-launch
 
 [Install]
 WantedBy=network.target
