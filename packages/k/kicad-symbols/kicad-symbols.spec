@@ -20,7 +20,7 @@
 %define compatversion 5.0.0
 
 Name:           kicad-symbols
-Version:        5.1.7
+Version:        5.1.8
 Release:        0
 Summary:        Schematic symbol library for KiCad
 # License is CC-BY-SA-4.0 but there is an exception
@@ -28,7 +28,7 @@ Summary:        Schematic symbol library for KiCad
 License:        CC-BY-SA-4.0
 Group:          Productivity/Scientific/Electronics
 URL:            https://kicad-pcb.org
-Source:         https://github.com/KiCad/kicad-symbols/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://gitlab.com/kicad/libraries/kicad-symbols/-/archive/%{version}/kicad-symbols-%{version}.tar.bz2#/%{name}-%{version}.tar.bz2
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildArch:      noarch
