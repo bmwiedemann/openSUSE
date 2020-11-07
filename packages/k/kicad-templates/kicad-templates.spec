@@ -20,7 +20,7 @@
 %define compatversion 5.0.0
 
 Name:           kicad-templates
-Version:        5.1.7
+Version:        5.1.8
 Release:        0
 Summary:        Project templates for KiCad
 # License is CC-BY-SA-4.0 but there is an exception
@@ -28,7 +28,7 @@ Summary:        Project templates for KiCad
 License:        CC-BY-SA-4.0
 Group:          Productivity/Scientific/Electronics
 URL:            https://kicad-pcb.org
-Source:         https://github.com/KiCad/kicad-templates/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://gitlab.com/kicad/libraries/kicad-templates/-/archive/%{version}/kicad-templates-%{version}.tar.bz2#/%{name}-%{version}.tar.bz2
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildArch:      noarch
