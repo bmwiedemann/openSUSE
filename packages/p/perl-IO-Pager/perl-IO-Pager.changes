@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Nov  5 03:11:02 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.10
+   see /usr/share/doc/packages/perl-IO-Pager/CHANGES
+
+  2.10    Nov
+  	::Perl Alter tp local script installation for parallel make. RT#133651
+  	::Perl Add basic Windows support. RT#133663
+  	::Perl Add TOPT environment variable to tp.
+  	::Perl Enable scrollbar in interactive test 16.
+
+-------------------------------------------------------------------
+Wed Nov  4 03:07:16 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.01
+   see /usr/share/doc/packages/perl-IO-Pager/CHANGES
+
+  2.01	Nov 02 2020
+  	::Perl Fixed bug that left terminal in unclean state if exit at EOF
+  	was enabled.
+  	::Perl Fixed jump to end of file shortcut to show last line on bottom
+  	of screen instead of top to provide more context.
+  	::Perl Made scrollbar interactive using xterm control sequences.
+  	::Perl Added scroll wheel support using xterm control sequences.
+
+-------------------------------------------------------------------
 Tue Nov  3 11:53:28 UTC 2020 - Tina Müller <tina.mueller@suse.com>
 
 - Don't do parallel build
