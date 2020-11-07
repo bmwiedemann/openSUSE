@@ -19,13 +19,12 @@
 %global pkg_name snap-server
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.1.1.2
+Version:        1.1.2.0
 Release:        0
 Summary:        A web server for the Snap Framework
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-attoparsec-devel
 BuildRequires:  ghc-blaze-builder-devel
@@ -45,6 +44,7 @@ BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-snap-core-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-time-devel
+BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unix-compat-devel
 BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-vector-devel
@@ -63,7 +63,6 @@ BuildRequires:  ghc-test-framework-devel
 BuildRequires:  ghc-test-framework-hunit-devel
 BuildRequires:  ghc-test-framework-quickcheck2-devel
 BuildRequires:  ghc-threads-devel
-BuildRequires:  ghc-transformers-devel
 %endif
 
 %description
@@ -88,7 +87,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
