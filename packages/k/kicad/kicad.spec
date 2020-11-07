@@ -26,7 +26,7 @@
 # symbol libraries from version 5.0.0
 %define compatversion 5.0.0
 Name:           kicad
-Version:        5.1.7
+Version:        5.1.8
 Release:        0
 Summary:        EDA software suite for the creation of schematics and PCB
 License:        GPL-3.0-or-later AND AGPL-3.0-or-later
@@ -52,9 +52,9 @@ BuildRequires:  swig >= 3
 BuildRequires:  update-desktop-files
 
 %if %{with python3}
+BuildRequires:  python3-wxPython
 BuildRequires:  wxGTK3-devel >= 3
 BuildRequires:  pkgconfig(python3)
-BuildRequires:  python3-wxPython
 Recommends:     python3-wxPython
 %else
 # Use direct version to avoid problems with wx 3.2
