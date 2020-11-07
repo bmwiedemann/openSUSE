@@ -3729,4 +3729,17 @@
 - update staging to 5.20 release</comment>
     <requestid>843751</requestid>
   </revision>
+  <revision rev="321" vrev="1">
+    <srcmd5>c5c7039e091a26549de3bd1f548af40b</srcmd5>
+    <version>5.21</version>
+    <time>1604779313</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 5.21 development release
+  - GDI32 library converted to PE.
+  - More fixes for windowless RichEdit.
+  - A number of timezone updates.
+  - Various bug fixes.
+- update staging to 5.21 release</comment>
+    <requestid>846592</requestid>
+  </revision>
 </revisionlist>

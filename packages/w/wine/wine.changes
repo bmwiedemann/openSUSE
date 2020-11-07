@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov  7 07:30:23 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 5.21 development release
+  - GDI32 library converted to PE.
+  - More fixes for windowless RichEdit.
+  - A number of timezone updates.
+  - Various bug fixes.
+- update staging to 5.21 release
+
+-------------------------------------------------------------------
 Sat Oct 24 06:34:23 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 5.20 development release
