@@ -48,4 +48,12 @@
   * logzero.syslog(..) (PR 83)</comment>
     <requestid>691800</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3ca5a5b8bb1189048eb3fff5406a55fb</srcmd5>
+    <version>1.6.2</version>
+    <time>1604779310</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>846546</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-logzero
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-logzero
-Version:        1.5.0
+Version:        1.6.2
 Release:        0
 Summary:        A logging module for Python
 License:        MIT
@@ -33,7 +33,12 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
+BuildRequires:  python3-Sphinx
 %python_subpackages
+
+%package -n python-logzero-doc
+Summary:        Documentation files for %name
+Group:          Development/Languages/Python
 
 %description
 * Logs to console and/or file.
@@ -41,11 +46,18 @@ BuildRequires:  %{python_module pytest}
 * Robust against str/bytes encoding problems, works with all kinds of character encodings and special characters.
 * Heavily inspired by the Tornado web framework.
 
+%description -n python-logzero-doc
+Documentation files for %name.
+
 %prep
 %setup -q -n logzero-%{version}
 
 %build
 %python_build
+pushd docs
+make html
+rm _build/html/.buildinfo
+popd
 
 %install
 %python_install
@@ -56,8 +68,11 @@ export LANG=en_US.UTF8
 %python_exec setup.py test
 
 %files %{python_files}
-%doc AUTHORS.rst README.rst HISTORY.rst
+%doc README.md HISTORY.md
 %%license LICENSE
 %{python_sitelib}/*
+
+%files -n python-logzero-doc
+%doc docs/_build/html
 
 %changelog

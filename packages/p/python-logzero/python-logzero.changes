@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 30 21:38:58 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 1.6.2:
+ - no changelog available
+- update to version 1.6.0:
+ - JSON logging support ([PR 344][])
+ - Ability to easily change colors ([\#82][])
+ - Allow creating a root logger ([\#342][])
+ - Bugfix: file logging with lower loglevel than stream ([PR 338][])
+ - Running tests with Python up to 3.9
+ - Dependency updates
+
+-------------------------------------------------------------------
 Fri Apr  5 12:06:37 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.5.0:
