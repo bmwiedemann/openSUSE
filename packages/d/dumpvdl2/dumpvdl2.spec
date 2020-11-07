@@ -18,7 +18,7 @@
 
 
 Name:           dumpvdl2
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        A VDL Mode 2 message decoder and protocol analyzer
 License:        GPL-3.0-only
@@ -30,7 +30,7 @@ BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SoapySDR)
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(libacars-2) >= 2.0.0
+BuildRequires:  pkgconfig(libacars-2) >= 2.1.0
 BuildRequires:  pkgconfig(libprotobuf-c) >= 1.3.0
 BuildRequires:  pkgconfig(librtlsdr)
 BuildRequires:  pkgconfig(libzmq) >= 3.2.0
