@@ -1856,4 +1856,45 @@ bsc#1157755)
 - Includes fixes for these CVEs:</comment>
     <requestid>788599</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>179bd718880eea69f9d627116a2a59b4</srcmd5>
+    <version>2.35</version>
+    <time>1604779238</time>
+    <user>dimstar_suse</user>
+    <comment>Sorry, the maintenance checker scripts detected a lost reference
+from the SLE changelog, this only updates the .changes file to
+contain it.
+
+- Update binutils-2.35-branch.diff.gz to commit 23f268a0:
+  * Add xBPF target
+  * Fix various problems with DWARF 5 support in gas
+- Toolchain module update for SLE15 [jsc#ECO-2373]
+- Includes changes that were SLE-only in binutils-add-z15-name.diff
+  for [bsc#1160590, jsc#SLE-7903 aka jsc#SLE-7464]
+
+- Add binutils-2.35-branch.diff.gz: it includes fix for
+  nm -B for objects compiled with -flto and -fcommon.
+
+- Add binutils-revert-nm-symversion.diff to be compatible with old
+  output of nm relied on in scripts.
+- Add binutils-fix-abierrormsg.diff to work around an eager (new)
+  error message occuring without inputs and as-needed (affects
+  nvme-cli build).
+
+- Update to binutils 2.35:
+  * The asseembler can now produce DWARF-5 format line number tables.
+  * Readelf now has a &quot;lint&quot; mode to enable extra checks of the files it is processing.
+  * Readelf will now display &quot;[...]&quot; when it has to truncate a symbol name.  
+    The old behaviour - of displaying as many characters as possible, up to
+    the 80 column limit - can be restored by the use of the --silent-truncation
+    option.
+  * The linker can now produce a dependency file listing the inputs that it
+    has processed, much like the -M -MP option supported by the compiler.
+- Regenerate add-ulp-section.diff with -p1 due to a fuzzing issue.
+- Remove binutils-2.34-branch.diff.gz.
+- Regenerate binutils-build-as-needed.diff due to a fuzzing issue.
+- Regenerate binutils-fix-invalid-op-errata.diff as one hunk was upstreamed.
+- Remove upstreamed patch binutils-pr25593.diff.</comment>
+    <requestid>834649</requestid>
+  </revision>
 </revisionlist>

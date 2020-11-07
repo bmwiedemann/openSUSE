@@ -79,10 +79,10 @@ Date:   Tue Feb 13 07:34:22 2018 -0800
     	* testsuite/ld-x86-64/x86-64.exp: Run PR ld/22791 tests.
 
 diff --git a/bfd/elf64-x86-64.c b/bfd/elf64-x86-64.c
-index 79e68ff476..cee387da7d 100644
+index 311fb28a..5f1f0ce5 100644
 --- a/bfd/elf64-x86-64.c
 +++ b/bfd/elf64-x86-64.c
-@@ -1798,6 +1798,24 @@ rewrite_modrm_rex:
+@@ -1834,6 +1834,24 @@ elf_x86_64_convert_load_reloc (bfd *abfd,
    return TRUE;
  }
  
@@ -107,7 +107,7 @@ index 79e68ff476..cee387da7d 100644
  /* Look through the relocs for a section during the first phase, and
     calculate needed space in the global offset table, procedure
     linkage table, and dynamic reloc sections.  */
-@@ -3089,28 +3107,30 @@ use_plt:
+@@ -3143,28 +3161,30 @@ elf_x86_64_relocate_section (bfd *output_bfd,
  			&& (eh == NULL
  			    || !UNDEFINED_WEAK_RESOLVED_TO_ZERO (info,
  								 eh)))
@@ -145,7 +145,7 @@ index 79e68ff476..cee387da7d 100644
  		}
  	      else if (no_copyreloc_p || bfd_link_dll (info))
  		{
-@@ -3119,9 +3139,10 @@ use_plt:
+@@ -3173,9 +3193,10 @@ elf_x86_64_relocate_section (bfd *output_bfd,
  		     relocations against default and protected
  		     symbols since address of protected function
  		     and location of protected data may not be in
@@ -159,10 +159,10 @@ index 79e68ff476..cee387da7d 100644
  
  	      if (fail)
 diff --git a/gas/config/tc-i386.c b/gas/config/tc-i386.c
-index 8728725b82..527ae0b701 100644
+index ed514cf9..2fad4505 100644
 --- a/gas/config/tc-i386.c
 +++ b/gas/config/tc-i386.c
-@@ -7954,52 +7954,12 @@ output_branch (void)
+@@ -8472,52 +8472,12 @@ output_branch (void)
    frag_var (rs_machine_dependent, 5, i.reloc[0], subtype, sym, off, p);
  }
  
@@ -215,7 +215,7 @@ index 8728725b82..527ae0b701 100644
  
    if (i.tm.opcode_modifier.jump == JUMP_BYTE)
      {
-@@ -8067,17 +8027,8 @@ output_jump (void)
+@@ -8585,17 +8545,8 @@ output_jump (void)
        abort ();
      }
  
@@ -234,7 +234,7 @@ index 8728725b82..527ae0b701 100644
  
    /* All jumps handled here are signed, but don't use a signed limit
       check for 32 and 16 bit jumps as we want to allow wrap around at
-@@ -11263,10 +11214,6 @@ md_estimate_size_before_relax (fragS *fragP, segT segment)
+@@ -11889,10 +11840,6 @@ md_estimate_size_before_relax (fragS *fragP, segT segment)
  	reloc_type = (enum bfd_reloc_code_real) fragP->fr_var;
        else if (size == 2)
  	reloc_type = BFD_RELOC_16_PCREL;
@@ -246,7 +246,7 @@ index 8728725b82..527ae0b701 100644
  	reloc_type = BFD_RELOC_32_PCREL;
  
 diff --git a/gas/testsuite/gas/i386/ilp32/reloc64.d b/gas/testsuite/gas/i386/ilp32/reloc64.d
-index 78ca3fd9e3..a961679754 100644
+index 78ca3fd9..a9616797 100644
 --- a/gas/testsuite/gas/i386/ilp32/reloc64.d
 +++ b/gas/testsuite/gas/i386/ilp32/reloc64.d
 @@ -17,7 +17,7 @@ Disassembly of section \.text:
@@ -259,7 +259,7 @@ index 78ca3fd9e3..a961679754 100644
  .*[ 	]+R_X86_64_GOT32[ 	]+xtrn
  .*[ 	]+R_X86_64_GOT32[ 	]+xtrn
 diff --git a/gas/testsuite/gas/i386/ilp32/x86-64-branch.d b/gas/testsuite/gas/i386/ilp32/x86-64-branch.d
-index 45ab6178b9..915dbf3f1c 100644
+index 5bfa2a46..46b0f809 100644
 --- a/gas/testsuite/gas/i386/ilp32/x86-64-branch.d
 +++ b/gas/testsuite/gas/i386/ilp32/x86-64-branch.d
 @@ -20,9 +20,9 @@ Disassembly of section .text:
@@ -272,11 +272,11 @@ index 45ab6178b9..915dbf3f1c 100644
 +[ 	]*[a-f0-9]+:	66 e8 00 00 00 00    	data16 callq 0x2a	26: R_X86_64_PC32	foo-0x4
 +[ 	]*[a-f0-9]+:	66 e9 00 00 00 00    	data16 jmpq 0x30	2c: R_X86_64_PC32	foo-0x4
 +[ 	]*[a-f0-9]+:	66 0f 82 00 00 00 00 	data16 jb 0x37	33: R_X86_64_PC32	foo-0x4
+ [ 	]*[a-f0-9]+:	66 c3                	data16 retq *
+ [ 	]*[a-f0-9]+:	66 c2 08 00          	data16 retq \$0x8
  [ 	]*[a-f0-9]+:	ff d0                	callq  \*%rax
- [ 	]*[a-f0-9]+:	ff d0                	callq  \*%rax
- [ 	]*[a-f0-9]+:	66 ff d0             	data16 callq \*%rax
 diff --git a/gas/testsuite/gas/i386/reloc64.d b/gas/testsuite/gas/i386/reloc64.d
-index 540a9b77d3..ea16c68de4 100644
+index 540a9b77..ea16c68d 100644
 --- a/gas/testsuite/gas/i386/reloc64.d
 +++ b/gas/testsuite/gas/i386/reloc64.d
 @@ -20,7 +20,7 @@ Disassembly of section \.text:
@@ -289,7 +289,7 @@ index 540a9b77d3..ea16c68de4 100644
  .*[ 	]+R_X86_64_GOT64[ 	]+xtrn
  .*[ 	]+R_X86_64_GOT32[ 	]+xtrn
 diff --git a/gas/testsuite/gas/i386/x86-64-jump.d b/gas/testsuite/gas/i386/x86-64-jump.d
-index 1a1521d278..b898d7d5eb 100644
+index 1a1521d2..b898d7d5 100644
 --- a/gas/testsuite/gas/i386/x86-64-jump.d
 +++ b/gas/testsuite/gas/i386/x86-64-jump.d
 @@ -9,7 +9,7 @@ Disassembly of section .text:
@@ -311,7 +311,7 @@ index 1a1521d278..b898d7d5eb 100644
  [ 	]*[a-f0-9]+:	ff d7                	callq  \*%rdi
  [ 	]*[a-f0-9]+:	ff 17                	callq  \*\(%rdi\)
 diff --git a/gas/testsuite/gas/i386/x86-64-mpx-branch-1.d b/gas/testsuite/gas/i386/x86-64-mpx-branch-1.d
-index 03e9675217..9d2ec05b7e 100644
+index 03e96752..9d2ec05b 100644
 --- a/gas/testsuite/gas/i386/x86-64-mpx-branch-1.d
 +++ b/gas/testsuite/gas/i386/x86-64-mpx-branch-1.d
 @@ -23,9 +23,9 @@ Disassembly of section .text:
@@ -328,7 +328,7 @@ index 03e9675217..9d2ec05b7e 100644
  [ 	]*[a-f0-9]+:	f2 0f 82 00 00 00 00 	bnd jb 54 <foo2\+0x20>	50: R_X86_64_PLT32	foo-0x4
  [ 	]*[a-f0-9]+:	f2 e8 00 00 00 00    	bnd callq 5a <foo2\+0x26>	56: R_X86_64_PLT32	foo-0x4
 diff --git a/gas/testsuite/gas/i386/x86-64-nop-3.d b/gas/testsuite/gas/i386/x86-64-nop-3.d
-index 8514c4d077..617033a8ac 100644
+index 8514c4d0..617033a8 100644
 --- a/gas/testsuite/gas/i386/x86-64-nop-3.d
 +++ b/gas/testsuite/gas/i386/x86-64-nop-3.d
 @@ -18,5 +18,5 @@ Disassembly of section .text:
@@ -339,7 +339,7 @@ index 8514c4d077..617033a8ac 100644
 + +[a-f0-9]+:	e9 00 00 00 00       	jmpq   5 <_start\+0x5>	1: R_X86_64_PC32	foo-0x4
  #pass
 diff --git a/gas/testsuite/gas/i386/x86-64-nop-4.d b/gas/testsuite/gas/i386/x86-64-nop-4.d
-index 7b696624cf..8610fc4303 100644
+index 7b696624..8610fc43 100644
 --- a/gas/testsuite/gas/i386/x86-64-nop-4.d
 +++ b/gas/testsuite/gas/i386/x86-64-nop-4.d
 @@ -21,5 +21,5 @@ Disassembly of section .altinstr_replacement:
@@ -350,7 +350,7 @@ index 7b696624cf..8610fc4303 100644
 + +[a-f0-9]+:	e9 00 00 00 00       	jmpq   b <_start\+0xb>	7: R_X86_64_PC32	foo-0x4
  #pass
 diff --git a/gas/testsuite/gas/i386/x86-64-nop-5.d b/gas/testsuite/gas/i386/x86-64-nop-5.d
-index b0b7854f8a..333263bd93 100644
+index b0b7854f..333263bd 100644
 --- a/gas/testsuite/gas/i386/x86-64-nop-5.d
 +++ b/gas/testsuite/gas/i386/x86-64-nop-5.d
 @@ -24,5 +24,5 @@ Disassembly of section .altinstr_replacement:
@@ -361,7 +361,7 @@ index b0b7854f8a..333263bd93 100644
 + +[a-f0-9]+:	e9 00 00 00 00       	jmpq   d <_start\+0xd>	9: R_X86_64_PC32	foo-0x4
  #pass
 diff --git a/gas/testsuite/gas/i386/x86-64-relax-2.d b/gas/testsuite/gas/i386/x86-64-relax-2.d
-index 8f432dff52..6c7651886f 100644
+index 8f432dff..6c765188 100644
 --- a/gas/testsuite/gas/i386/x86-64-relax-2.d
 +++ b/gas/testsuite/gas/i386/x86-64-relax-2.d
 @@ -11,12 +11,12 @@ Disassembly of section .text:
@@ -383,7 +383,7 @@ index 8f432dff52..6c7651886f 100644
  0+22 <hidden_def>:
  [ 	]*[a-f0-9]+:	c3                   	retq   
 diff --git a/gas/testsuite/gas/i386/x86-64-relax-3.d b/gas/testsuite/gas/i386/x86-64-relax-3.d
-index bb60508145..f1ffdb89f6 100644
+index bb605081..f1ffdb89 100644
 --- a/gas/testsuite/gas/i386/x86-64-relax-3.d
 +++ b/gas/testsuite/gas/i386/x86-64-relax-3.d
 @@ -12,10 +12,10 @@ Disassembly of section .text:
@@ -402,7 +402,7 @@ index bb60508145..f1ffdb89f6 100644
  0+1f <hidden_def>:
  [ 	]*[a-f0-9]+:	c3                   	retq   
 diff --git a/ld/testsuite/ld-x86-64/mpx1c.rd b/ld/testsuite/ld-x86-64/mpx1c.rd
-index d66524c883..d3b292cbdc 100644
+index d66524c8..d3b292cb 100644
 --- a/ld/testsuite/ld-x86-64/mpx1c.rd
 +++ b/ld/testsuite/ld-x86-64/mpx1c.rd
 @@ -1,3 +1,3 @@
@@ -412,7 +412,7 @@ index d66524c883..d3b292cbdc 100644
  #...
 diff --git a/ld/testsuite/ld-x86-64/pr22791-1.err b/ld/testsuite/ld-x86-64/pr22791-1.err
 deleted file mode 100644
-index 8c5565992e..0000000000
+index 8c556599..00000000
 --- a/ld/testsuite/ld-x86-64/pr22791-1.err
 +++ /dev/null
 @@ -1,2 +0,0 @@
@@ -420,7 +420,7 @@ index 8c5565992e..0000000000
 -#...
 diff --git a/ld/testsuite/ld-x86-64/pr22791-1a.c b/ld/testsuite/ld-x86-64/pr22791-1a.c
 deleted file mode 100644
-index cd0130cacd..0000000000
+index cd0130ca..00000000
 --- a/ld/testsuite/ld-x86-64/pr22791-1a.c
 +++ /dev/null
 @@ -1,4 +0,0 @@
@@ -430,7 +430,7 @@ index cd0130cacd..0000000000
 -}
 diff --git a/ld/testsuite/ld-x86-64/pr22791-1b.s b/ld/testsuite/ld-x86-64/pr22791-1b.s
 deleted file mode 100644
-index 9751db49aa..0000000000
+index 9751db49..00000000
 --- a/ld/testsuite/ld-x86-64/pr22791-1b.s
 +++ /dev/null
 @@ -1,6 +0,0 @@
@@ -442,7 +442,7 @@ index 9751db49aa..0000000000
 -	.size	main, .-main
 diff --git a/ld/testsuite/ld-x86-64/pr22791-2.rd b/ld/testsuite/ld-x86-64/pr22791-2.rd
 deleted file mode 100644
-index 70deb30d84..0000000000
+index 70deb30d..00000000
 --- a/ld/testsuite/ld-x86-64/pr22791-2.rd
 +++ /dev/null
 @@ -1,6 +0,0 @@
@@ -454,7 +454,7 @@ index 70deb30d84..0000000000
 -#...
 diff --git a/ld/testsuite/ld-x86-64/pr22791-2a.s b/ld/testsuite/ld-x86-64/pr22791-2a.s
 deleted file mode 100644
-index 0a855024d7..0000000000
+index 0a855024..00000000
 --- a/ld/testsuite/ld-x86-64/pr22791-2a.s
 +++ /dev/null
 @@ -1,8 +0,0 @@
@@ -468,7 +468,7 @@ index 0a855024d7..0000000000
 -	.section	.note.GNU-stack,"",@progbits
 diff --git a/ld/testsuite/ld-x86-64/pr22791-2b.c b/ld/testsuite/ld-x86-64/pr22791-2b.c
 deleted file mode 100644
-index 79ef27c085..0000000000
+index 79ef27c0..00000000
 --- a/ld/testsuite/ld-x86-64/pr22791-2b.c
 +++ /dev/null
 @@ -1,7 +0,0 @@
@@ -481,7 +481,7 @@ index 79ef27c085..0000000000
 -}
 diff --git a/ld/testsuite/ld-x86-64/pr22791-2c.s b/ld/testsuite/ld-x86-64/pr22791-2c.s
 deleted file mode 100644
-index 1460d1b828..0000000000
+index 1460d1b8..00000000
 --- a/ld/testsuite/ld-x86-64/pr22791-2c.s
 +++ /dev/null
 @@ -1,12 +0,0 @@
@@ -498,7 +498,7 @@ index 1460d1b828..0000000000
 -	.size	main, .-main
 -	.section	.note.GNU-stack,"",@progbits
 diff --git a/ld/testsuite/ld-x86-64/pr22842b.S b/ld/testsuite/ld-x86-64/pr22842b.S
-index f0659cd901..b9dd81345b 100644
+index f0659cd9..b9dd8134 100644
 --- a/ld/testsuite/ld-x86-64/pr22842b.S
 +++ b/ld/testsuite/ld-x86-64/pr22842b.S
 @@ -7,7 +7,7 @@ main:
@@ -511,10 +511,10 @@ index f0659cd901..b9dd81345b 100644
  	popq	%rcx
  	retq
 diff --git a/ld/testsuite/ld-x86-64/x86-64.exp b/ld/testsuite/ld-x86-64/x86-64.exp
-index 88f75e0e43..c632fe932c 100644
+index d836f334..b8a7de1f 100644
 --- a/ld/testsuite/ld-x86-64/x86-64.exp
 +++ b/ld/testsuite/ld-x86-64/x86-64.exp
-@@ -1244,44 +1244,6 @@ if { [isnative] && [check_compiler_available] } {
+@@ -1214,44 +1214,6 @@ if { [isnative] && [check_compiler_available] } {
  	     {readelf -lW pr22393-3b.rd}} \
  	    "pr22393-3-static" \
  	] \
@@ -528,7 +528,7 @@ index 88f75e0e43..c632fe932c 100644
 -	] \
 -	[list \
 -	    "Build pr22791-1" \
--	    "-pie -Wl,--no-as-needed tmpdir/pr22791-1.so" \
+-	    "-pie -Wl,--no-as-needed,-z,notext tmpdir/pr22791-1.so" \
 -	    "$NOPIE_CFLAGS -Wa,-mx86-used-note=yes" \
 -	    { pr22791-1b.s } \
 -	    {{error_output "pr22791-1.err"}} \
@@ -559,7 +559,7 @@ index 88f75e0e43..c632fe932c 100644
  	[list \
  	    "Build pr22842.so" \
  	    "-shared" \
-@@ -1624,15 +1586,6 @@ if { [isnative] && [check_compiler_available] } {
+@@ -1700,15 +1662,6 @@ if { [isnative] && [check_compiler_available] } {
  	    "pr22393-3-static" \
  	    "pass.out" \
  	] \
@@ -575,5 +575,3 @@ index 88f75e0e43..c632fe932c 100644
  	[list \
  	    "Run pr22842" \
  	    "-pie -Wl,--no-as-needed tmpdir/pr22842.so" \
--- 
-2.25.0

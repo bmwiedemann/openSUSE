@@ -1,7 +1,7 @@
 #
 # spec file for package cross-s390x-binutils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -36,7 +36,7 @@ BuildRequires:  zlib-devel-static
 %else
 BuildRequires:  zlib-devel
 %endif
-Version:        2.34
+Version:        2.35
 Release:        0
 #
 # RUN_TESTS
@@ -68,7 +68,7 @@ Release:        0
 #
 #
 #
-URL:            http://www.gnu.org/software/binutils/
+Url:            http://www.gnu.org/software/binutils/
 PreReq:         %{install_info_prereq}
 # bug437293
 %ifarch ppc64
@@ -84,7 +84,7 @@ Source5:        binutils.keyring
 Source1:        pre_checkin.sh
 Source2:        README.First-for.SUSE.packagers
 Source3:        baselibs.conf
-Patch1:         binutils-2.34-branch.diff.gz
+Patch1:         binutils-2.35-branch.diff.gz
 Patch3:         binutils-skip-rpaths.patch
 Patch4:         s390-biarch.diff
 Patch5:         x86-64-biarch.patch
@@ -99,7 +99,8 @@ Patch34:        aarch64-common-pagesize.patch
 Patch36:        binutils-pr22868.diff
 Patch37:        binutils-revert-plt32-in-branches.diff
 Patch38:        binutils-fix-invalid-op-errata.diff
-Patch40:        binutils-pr25593.diff
+Patch39:        binutils-revert-nm-symversion.diff
+Patch40:        binutils-fix-abierrormsg.diff
 Patch100:       add-ulp-section.diff
 Patch90:        cross-avr-nesc-as.patch
 Patch92:        cross-avr-omit_section_dynsym.patch
@@ -191,8 +192,9 @@ echo "make check will return with %{make_check_handling} in case of testsuite fa
 %patch37 -p1
 %endif
 %patch38
+%patch39 -p1
 %patch40 -p1
-%patch100
+%patch100 -p1
 %if "%{TARGET}" == "avr"
 cp gas/config/tc-avr.h gas/config/tc-avr-nesc.h
 %patch90

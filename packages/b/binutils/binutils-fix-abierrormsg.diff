@@ -1,0 +1,44 @@
+This fixes an error message given too eagerly on ppc64le,
+when no input files are used and as-needed is in effect.  E.g.:
+
+% ld-new --as-needed -o /dev/null -lc
+
+gives an error message about input and output ABI versions being
+incompatible.  This is because the ABI setting of "unknown" (0)
+to "from-input" is done in ppc64_elf_before_check_relocs, which
+isn't called for as-needed libraries (via check_directives callback).
+merge_private_bfd_data is called for as-needed and not-as-needed inputs
+(via notice_as_needed), so copy that code there.
+
+This construct is used in some packages to check for availability
+of libraries (e.g. in nvme-cli to check for -luuid).  Redircting error
+output makes this siletently fail.
+
+Index: binutils-2.35/bfd/elf64-ppc.c
+===================================================================
+--- binutils-2.35.orig/bfd/elf64-ppc.c	2020-07-24 11:12:19.000000000 +0200
++++ binutils-2.35/bfd/elf64-ppc.c	2020-08-10 17:25:00.205219071 +0200
+@@ -5301,12 +5301,17 @@ ppc64_elf_merge_private_bfd_data (bfd *i
+     }
+   else if (iflags != oflags && iflags != 0)
+     {
+-      _bfd_error_handler
+-	/* xgettext:c-format */
+-	(_("%pB: ABI version %ld is not compatible with ABI version %ld output"),
+-	 ibfd, iflags, oflags);
+-      bfd_set_error (bfd_error_bad_value);
+-      return FALSE;
++      if (abiversion (info->output_bfd) == 0)
++	set_abiversion (info->output_bfd, abiversion (ibfd));
++      else
++	{
++	  _bfd_error_handler
++	      /* xgettext:c-format */
++	      (_("%pB: ABI version %ld is not compatible with ABI version %ld output"),
++	       ibfd, iflags, oflags);
++	  bfd_set_error (bfd_error_bad_value);
++	  return FALSE;
++	}
+     }
+ 
+   if (!_bfd_elf_ppc_merge_fp_attributes (ibfd, info))
