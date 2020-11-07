@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 26 12:14:50 UTC 2020 - lnussel@suse.de
+
+- Update to version 0.g64:
+  * Define a global %_firmwaredir
+  * macros.obs: remove unused macros
+
+-------------------------------------------------------------------
 Mon Aug 31 08:06:43 UTC 2020 - lnussel@suse.de
 
 - Update to version 0.g60:
