@@ -158,6 +158,8 @@
       <repopackage name="blog"/>
       <repopackage name="bluez"/>
       <repopackage name="bluez-firmware"/>
+      <repopackage name="bogofilter-common"/>
+      <repopackage name="bogofilter-db"/>
       <repopackage name="boost-license1_74_0"/>
       <repopackage name="bovo"/>
       <repopackage name="bovo-lang"/>
@@ -325,6 +327,7 @@
       <repopackage name="evolution-data-server"/>
       <repopackage name="evolution-data-server-lang"/>
       <repopackage name="evolution-lang"/>
+      <repopackage name="evolution-plugin-bogofilter"/>
       <repopackage name="evolution-plugin-pst-import"/>
       <repopackage name="evolution-plugin-rss"/>
       <repopackage name="evolution-plugin-rss-lang"/>

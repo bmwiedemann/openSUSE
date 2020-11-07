@@ -1342,6 +1342,9 @@ unsorted:
   - bnd-maven-plugin 
   - bnd-maven-plugin-javadoc 
   - bodr 
+  - bogofilter-doc 
+  - bogofilter-kyotocabinet 
+  - bogofilter-sqlite3 
   - boinc-client 
   - boinc-client-lang 
   - boinc-manager 
@@ -3220,7 +3223,6 @@ unsorted:
   - evolution-devel 
   - evolution-ews: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - evolution-ews-lang: [i586] 
-  - evolution-plugin-bogofilter 
   - evtest 
   - exa: [x86_64] 
   - exaile 
@@ -5320,6 +5322,7 @@ unsorted:
   - glade-catalog-gtkhtml 
   - glade-catalog-gtksourceview 
   - glade-catalog-gtksourceview4 
+  - glade-catalog-libhandy 
   - glade-catalog-libhandy0 
   - glade-catalog-libpeas 
   - glade-catalog-v3270 
@@ -12660,11 +12663,11 @@ unsorted:
   - libpetsc3-openmpi1 
   - libpetsc3-openmpi2 
   - libpetsc3-openmpi3 
-  - libpetsc_3_12_2-gnu-mpich-hpc 
-  - libpetsc_3_12_2-gnu-mvapich2-hpc 
-  - libpetsc_3_12_2-gnu-openmpi1-hpc 
-  - libpetsc_3_12_2-gnu-openmpi2-hpc 
-  - libpetsc_3_12_2-gnu-openmpi3-hpc 
+  - libpetsc_3_14_1-gnu-mpich-hpc 
+  - libpetsc_3_14_1-gnu-mvapich2-hpc 
+  - libpetsc_3_14_1-gnu-openmpi1-hpc 
+  - libpetsc_3_14_1-gnu-openmpi2-hpc 
+  - libpetsc_3_14_1-gnu-openmpi3-hpc 
   - libpff-devel 
   - libpff-tools 
   - libpff1 
@@ -17987,7 +17990,6 @@ unsorted:
   - openwsman-server 
   - openwsman-server-plugin-ruby 
   - openxcom 
-  - openxcom-doc 
   - opera-uget-integrator 
   - opi 
   - oping 
@@ -19054,6 +19056,7 @@ unsorted:
   - perl-HTML-TokeParser-Simple 
   - perl-HTML-Tree 
   - perl-HTTP-Body 
+  - perl-HTTP-BrowserDetect 
   - perl-HTTP-DAV 
   - perl-HTTP-Entity-Parser 
   - perl-HTTP-Headers-ActionPack 
@@ -19201,6 +19204,7 @@ unsorted:
   - perl-Modern-Perl 
   - perl-Module-Build 
   - perl-Module-Build-Deprecated 
+  - perl-Module-Build-Prereqs-FromCPANfile 
   - perl-Module-Build-Tiny 
   - perl-Module-Build-WithXSpp 
   - perl-Module-Build-XSUtil 
@@ -19571,6 +19575,7 @@ unsorted:
   - perl-Term-ReadPassword 
   - perl-Term-Table 
   - perl-Term-UI 
+  - perl-Test-API 
   - perl-Test-Assert 
   - perl-Test-Base 
   - perl-Test-CChecker 
@@ -19723,6 +19728,7 @@ unsorted:
   - perl-URI-Nested 
   - perl-URI-Template 
   - perl-URI-db 
+  - perl-URI-ws 
   - perl-Unicode-Collate 
   - perl-Unicode-EastAsianWidth 
   - perl-Unicode-LineBreak 
@@ -19851,16 +19857,16 @@ unsorted:
   - petsc-openmpi1-devel 
   - petsc-openmpi2-devel 
   - petsc-openmpi3-devel 
-  - petsc_3_12_2-gnu-mpich-hpc-devel 
-  - petsc_3_12_2-gnu-mpich-hpc-saws 
-  - petsc_3_12_2-gnu-mvapich2-hpc-devel 
-  - petsc_3_12_2-gnu-mvapich2-hpc-saws 
-  - petsc_3_12_2-gnu-openmpi1-hpc-devel 
-  - petsc_3_12_2-gnu-openmpi1-hpc-saws 
-  - petsc_3_12_2-gnu-openmpi2-hpc-devel 
-  - petsc_3_12_2-gnu-openmpi2-hpc-saws 
-  - petsc_3_12_2-gnu-openmpi3-hpc-devel 
-  - petsc_3_12_2-gnu-openmpi3-hpc-saws 
+  - petsc_3_14_1-gnu-mpich-hpc-devel 
+  - petsc_3_14_1-gnu-mpich-hpc-saws 
+  - petsc_3_14_1-gnu-mvapich2-hpc-devel 
+  - petsc_3_14_1-gnu-mvapich2-hpc-saws 
+  - petsc_3_14_1-gnu-openmpi1-hpc-devel 
+  - petsc_3_14_1-gnu-openmpi1-hpc-saws 
+  - petsc_3_14_1-gnu-openmpi2-hpc-devel 
+  - petsc_3_14_1-gnu-openmpi2-hpc-saws 
+  - petsc_3_14_1-gnu-openmpi3-hpc-devel 
+  - petsc_3_14_1-gnu-openmpi3-hpc-saws 
   - pfsglview 
   - pfstools-devel 
   - pfstools-exr 
@@ -20096,6 +20102,8 @@ unsorted:
   - plasma5-sdk-lang 
   - plasma5-session: [i586] 
   - plasma5-session-wayland: [i586] 
+  - plasma5-systemmonitor 
+  - plasma5-systemmonitor-lang 
   - plasma5-theme-openSUSE: [i586] 
   - plasma5-thunderbolt: [i586] 
   - plasma5-thunderbolt-lang: [i586] 
@@ -34370,6 +34378,7 @@ unsorted:
   - tinyxml2-devel 
   - tiobench 
   - tipcutils 
+  - tiptop 
   - tix 
   - tj 
   - tk-32bit: [x86_64] 

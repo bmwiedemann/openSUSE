@@ -230,6 +230,8 @@
       <repopackage name="bluez-qt-imports" arch="x86_64"/>
       <repopackage name="bluez-qt-udev" arch="x86_64"/>
       <repopackage name="bluez-tools" arch="x86_64"/>
+      <repopackage name="bogofilter-common"/>
+      <repopackage name="bogofilter-db"/>
       <repopackage name="bolt" arch="x86_64"/>
       <repopackage name="boost-license1_74_0"/>
       <repopackage name="bovo"/>
@@ -486,6 +488,7 @@
       <repopackage name="evolution-ews" arch="x86_64"/>
       <repopackage name="evolution-ews-lang" arch="x86_64"/>
       <repopackage name="evolution-lang"/>
+      <repopackage name="evolution-plugin-bogofilter"/>
       <repopackage name="evolution-plugin-pst-import"/>
       <repopackage name="evolution-plugin-rss"/>
       <repopackage name="evolution-plugin-rss-lang"/>
