@@ -129,4 +129,12 @@
     <comment></comment>
     <requestid>806257</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>f7439d70d061c89c948daafbd877f392</srcmd5>
+    <version>3.6.9</version>
+    <time>1604779376</time>
+    <user>dimstar_suse</user>
+    <comment>remove __pycache__ from plugins (boo#1178453)</comment>
+    <requestid>846845</requestid>
+  </revision>
 </revisionlist>

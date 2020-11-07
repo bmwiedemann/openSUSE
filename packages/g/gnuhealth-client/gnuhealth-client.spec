@@ -81,6 +81,9 @@ mv gnuhealth_plugin_camera* camera
 mv gnuhealth_plugin_crypto* crypto  
 mv gnuhealth_plugin_frl* frl  
 
+# Remove pycache
+rm -rf */__pycache__
+
 %build
 :
 

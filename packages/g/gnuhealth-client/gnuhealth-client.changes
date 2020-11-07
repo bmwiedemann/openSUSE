@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov  7 16:56:47 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- remove __pycache__ from plugins (boo#1178453)
+
+-------------------------------------------------------------------
 Sun May 17 16:20:07 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - version 3.6.9
