@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 31 12:02:30 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.4
+  * MIDS-format MIDI support
+  * libADL/libOPN update
+
+-------------------------------------------------------------------
 Tue Sep 15 17:48:48 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Demote Recommends to Suggests. Add suggests for Fluidsynth

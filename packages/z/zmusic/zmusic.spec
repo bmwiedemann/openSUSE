@@ -17,7 +17,7 @@
 
 
 Name:           zmusic
-Version:        1.1.2
+Version:        1.1.4
 Release:        0
 Summary:        ZDoom component library for music handling
 License:        GPL-3.0-only
@@ -83,7 +83,7 @@ export CXXFLAGS="%optflags -msse -msse2"
 	-DINSTALL_DOCS_PATH="%_defaultdocdir/%name" \
 	-DDYN_FLUIDSYNTH=OFF \
 	-DDYN_SNDFILE=OFF -DDYN_MPG123=OFF
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
