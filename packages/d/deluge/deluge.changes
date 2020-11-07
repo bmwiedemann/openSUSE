@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov  7 14:27:45 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Fix Deluge not starting by changing dependency from 
+  python3-xdg to python3-pyxdg.
+
+-------------------------------------------------------------------
 Fri Sep 18 12:50:21 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Use legacy libtorrent-rasterbar on Tumbleweed

@@ -56,11 +56,11 @@ Requires:       python3-libtorrent-rasterbar-1 >= 1.1.1
 Requires:       python3-libtorrent-rasterbar >= 1.1.1
 %endif
 Requires:       python3-pyOpenSSL
+Requires:       python3-pyxdg
 Requires:       python3-rencode
 Requires:       python3-setproctitle
 Requires:       python3-setuptools
 Requires:       python3-six
-Requires:       python3-xdg
 Requires:       python3-zope.interface
 Requires:       xdg-utils
 Recommends:     %{name}-lang
