@@ -1,0 +1,6 @@
+<package name="perl-AnyEvent-Connector" project="openSUSE:Factory">
+  <title>perl-AnyEvent-Connector - tcp_connect with transparent proxy handling</title>
+  <description>AnyEvent::Connector object has tcp_connect method compatible with that from AnyEvent::Socket, and it handles proxy settings transparently.</description>
+  <devel project="devel:languages:perl" package="perl-AnyEvent-Connector"/>
+  <url>https://metacpan.org/release/AnyEvent-Connector</url>
+</package>
