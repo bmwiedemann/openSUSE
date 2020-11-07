@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov  4 03:08:31 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.15
+   see /usr/share/doc/packages/perl-IO-Tty/ChangeLog
+
+  2020-10-03 Todd Rinaldo <toddr@cpan.org> 1.15
+      * Skip winsize test on Solaris and QNX NTO
+      * Make function tests more robust
+      * Work around a header name collission on util.h. This is breaking on recent OSX
+
+-------------------------------------------------------------------
 Mon Jan 20 03:10:17 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.14
