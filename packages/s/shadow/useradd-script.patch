@@ -1,8 +1,12 @@
-Index: etc/login.defs
-===================================================================
---- etc/login.defs.orig
-+++ etc/login.defs
-@@ -212,6 +212,13 @@ CHFN_RESTRICT		rwh
+---
+ etc/login.defs |    7 +++++++
+ lib/getdef.c   |    1 +
+ src/useradd.c  |   41 ++++++++++++++++++++++++++++++++++++++++-
+ 3 files changed, 48 insertions(+), 1 deletion(-)
+
+--- etc/login.defs
++++ etc/login.defs	2020-10-30 12:54:38.117849829 +0000
+@@ -242,6 +242,13 @@ CHFN_RESTRICT		rwh
  DEFAULT_HOME	yes
  
  #
@@ -16,11 +20,9 @@ Index: etc/login.defs
  # If defined, this command is run when removing a user.
  # It should remove any at/cron/print jobs etc. owned by
  # the user to be removed (passed as the first argument).
-Index: lib/getdef.c
-===================================================================
---- lib/getdef.c.orig
-+++ lib/getdef.c
-@@ -126,6 +126,7 @@ static struct itemdef def_table[] = {
+--- lib/getdef.c
++++ lib/getdef.c	2020-10-30 12:54:38.117849829 +0000
+@@ -134,6 +134,7 @@ static struct itemdef def_table[] = {
  	{"UID_MAX", NULL},
  	{"UID_MIN", NULL},
  	{"UMASK", NULL},
@@ -28,11 +30,9 @@ Index: lib/getdef.c
  	{"USERDEL_CMD", NULL},
  	{"USERDEL_PRECMD", NULL},
  	{"USERDEL_POSTCMD", NULL},
-Index: src/useradd.c
-===================================================================
---- src/useradd.c.orig
-+++ src/useradd.c
-@@ -2216,6 +2216,30 @@ static void create_mail (void)
+--- src/useradd.c
++++ src/useradd.c	2020-10-30 13:08:17.378336989 +0000
+@@ -2238,6 +2238,44 @@ static void create_mail (void)
  }
  
  /*
@@ -42,20 +42,34 @@ Index: src/useradd.c
 + *      account.
 + */
 +
-+static void call_script (const char *user)
++static void call_script (const char *user, const uid_t uid, const gid_t gid, const char *home)
 +{
 +        const char *cmd;
-+        const char *argv[3];
++        const char *argv[6];
++        char *strgid, *struid;
 +        int status;
 +
 +        cmd = getdef_str ("USERADD_CMD");
 +        if (NULL == cmd) {
 +                return;
 +        }
++        if (asprintf(&struid, "%lu", (long unsigned)uid) < 0) {
++                (void) fprintf (stderr, _("%s: out of memory\n"), Prog);
++                exit(1);
++        }
++        if (asprintf(&strgid, "%lu", (long unsigned)gid) < 0) {
++                (void) fprintf (stderr, _("%s: out of memory\n"), Prog);
++                exit(1);
++        }
 +        argv[0] = cmd;
 +        argv[1] = user;
-+        argv[2] = (char *)0;
++        argv[2] = struid;
++        argv[3] = strgid;
++        argv[4] = home;
++        argv[5] = (char *)0;
 +        (void) run_command (cmd, argv, NULL, &status);
++        free(strgid);
++        free(struid);
 +}
 +
 +
@@ -63,11 +77,11 @@ Index: src/useradd.c
   * main - useradd command
   */
  int main (int argc, char **argv)
-@@ -2492,6 +2516,7 @@ int main (int argc, char **argv)
+@@ -2514,6 +2552,7 @@ int main (int argc, char **argv)
  	nscd_flush_cache ("group");
  	sssd_flush_cache (SSSD_DB_PASSWD | SSSD_DB_GROUP);
  
-+	call_script (user_name);
++	call_script (user_name, user_id, user_gid, user_home);
 +
  	return E_SUCCESS;
  }

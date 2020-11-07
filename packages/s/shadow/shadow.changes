@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  2 15:54:02 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Change again useradd.local script to let it work even for system
+  accounts and work together with SELinux (bsc#1178296)
+- Change patch useradd-script.patch to support the four arguments
+  used by the useradd.local script (bsc#1178296)
+
+-------------------------------------------------------------------
 Fri Oct  9 13:12:11 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add support for /usr/etc/skel to useradd.local script (boo#1173321) 

@@ -21,44 +21,43 @@ if [ $# -lt 1 -o $# -gt 4 ]; then
   exit 1
 fi
 
-# definition of "root" $HOME for users
-. /etc/default/useradd
-
 USER=$1
-GID=$(id -g $USER)
-HOMEDIR=$HOME/$USER
 
-if [ $# -lt 4 ]; then
-  HOMEDIR=$HOME/$USER
-else
+if [ $# -eq 4 ]; then
+  GID=$3
   HOMEDIR=$4
+else
+  GID=$(id -g $USER)
+  HOMEDIR=$(grep -E "^${USER}:" /etc/passwd| cut -d: -f6,6)
 fi
 
 # Update NIS database
 # make -C /var/yp
+
+# Main useradd tool creates this if specified on command line
+[ -d $HOMEDIR ] || exit 0
+
+#
+# Copy also skeleton files from /usr/etc/skel (boo#1173321)
+#
+USRSKELDIR=/usr/etc/skel
+if [ -d $USRSKELDIR ] ; then
+  for file in $(ls -A $USRSKELDIR); do
+    # Only copy if not exist yet, i.e. does *not* exist in /etc/skel, which is still
+    # being preferred ...
+    test -e $HOMEDIR/$file && continue
+    cp -a $USRSKELDIR/$file $HOMEDIR
+    chown -R $USER.$GID $HOMEDIR/$file
+  done
+fi
 
 # If SELinux is enabled, we have to run restorecon to assign
 # appropriate fcontexts to the respective $HOME and files under it
 if [ -x /usr/sbin/selinuxenabled ] && /usr/sbin/selinuxenabled ; then
   test -x /sbin/restorecon || exit 2
 
-  if [ -d $HOMEDIR ]; then
-      /sbin/restorecon -R $HOMEDIR
-  fi
+  /sbin/restorecon -R $HOMEDIR
 fi
-
-#
-# Copy also skeleton files from /usr/etc/skel (boo#1173321)
-#
-
-USRSKELDIR=/usr/etc/skel
-for file in $(ls -A $USRSKELDIR); do
-  # Only copy if not exist yet, i.e. does *not* exist in /etc/skel, which is still
-  # being preferred ...
-  test -e $HOMEDIR/$file && continue
-  cp -a $USRSKELDIR/$file $HOMEDIR
-  chown -R $USER.$GID $HOMEDIR/$file
-done
 
 # All done.
 exit 0
