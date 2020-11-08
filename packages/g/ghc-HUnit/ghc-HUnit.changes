@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov  1 03:00:39 UTC 2020 - psimons@suse.com
+
+- Update HUnit to version 1.6.1.0.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Fri Sep  4 10:49:26 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.

@@ -19,7 +19,7 @@
 %global pkg_name HUnit
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.6.0.0
+Version:        1.6.1.0
 Release:        0
 Summary:        A unit testing framework for Haskell
 License:        BSD-3-Clause
