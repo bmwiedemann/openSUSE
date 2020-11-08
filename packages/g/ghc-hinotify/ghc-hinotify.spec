@@ -19,7 +19,7 @@
 %global pkg_name hinotify
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.4
+Version:        0.4.1
 Release:        0
 Summary:        Haskell binding to inotify
 License:        BSD-3-Clause
