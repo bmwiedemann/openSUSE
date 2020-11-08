@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Nov  7 20:52:53 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.8.16
+  * Add missing parameter to ThunarBrowserPokeDeviceFunc function
+  * Fix error for custom date format in details view
+    (gxo#xfce/thunar#389)
+  * Fix unavailable rubber banding in detailed view
+    (gxo#xfce/thunar#326)
+  * Ghost file ocasionally remains when dropping file into directory
+  * (gxo#xfce/thunar#312)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Aug 27 12:06:53 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
