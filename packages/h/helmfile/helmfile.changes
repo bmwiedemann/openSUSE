@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Nov  9 15:39:12 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.132.3: Fix redundant helm-dep-build and prepare hook regression
+  (#1566)
+  * bdbaa00 (HEAD, tag: v0.132.3, master) Fix redundant helm-dep-build
+    and prepare hook regression (#1566)
+
+- v0.132.2: Fix `helmfile --selector x=y template` with `needs`
+  (#1564)
+  * 87e86dc (HEAD, tag: v0.132.2, origin/master, origin/HEAD, master)
+    Fix helmfile --selector x=y template with needs (#1564)
+  * 995b201 mention Arch Linux support (#1549)
+
+-------------------------------------------------------------------
 Tue Oct 27 17:35:00 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.132.1: Disable dependency update while running helm-x/chartify
