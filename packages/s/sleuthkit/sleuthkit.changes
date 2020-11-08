@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Nov  8 00:16:24 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- Update to 4.10.0:
+  * C/C++:
+    - Removed PostgreSQL code (that was used only by Java code)
+    - Added Java callback support so that database inserts are done in Java.
+  * Java:
+    - Added methods and callbacks as required to allow database population to happen in Java instead of C/C++.
+    - Added support to allow Autopsy streaming ingest where files are added in batches.
+    - Added TaggingManager class and concept of a TagSet to support ProjectVic categories.
+    - Fixed changes to normalization and validation of emails and phone numbers.
+    - Added a CASE/UCO JAR file that creates JSON-LD based on TSK objects.
+
+-------------------------------------------------------------------
 Wed May 27 10:21:02 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.9.0:

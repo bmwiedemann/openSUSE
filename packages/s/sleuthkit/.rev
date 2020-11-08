@@ -205,4 +205,12 @@ There are a couple known attacker inducible crashes identified in 4.4.2.  Upstre
     <comment></comment>
     <requestid>809775</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>98cceab2aa9b78d2f0c65eea4b1bd347</srcmd5>
+    <version>4.10.0</version>
+    <time>1604865564</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846889</requestid>
+  </revision>
 </revisionlist>

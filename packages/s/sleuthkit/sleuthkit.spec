@@ -19,7 +19,7 @@
 %define sosuffix 19
 
 Name:           sleuthkit
-Version:        4.9.0
+Version:        4.10.0
 Release:        0
 Summary:        Tools for file system and volume forensic analysis
 License:        CPL-1.0 AND IPL-1.0 AND GPL-2.0-or-later
