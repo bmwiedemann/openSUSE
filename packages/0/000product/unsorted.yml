@@ -9975,7 +9975,7 @@ unsorted:
   - libcircle2 
   - libcircllhist-devel 
   - libcircllhist0_0_1 
-  - libcivetweb1_11_0 
+  - libcivetweb1_13_0 
   - libcjose-devel 
   - libcjose0 
   - libcjs0 
@@ -18628,8 +18628,11 @@ unsorted:
   - perl-Any-Moose 
   - perl-Any-URI-Escape 
   - perl-AnyEvent 
+  - perl-AnyEvent-Connector 
   - perl-AnyEvent-HTTP 
   - perl-AnyEvent-I3 
+  - perl-AnyEvent-WebSocket-Client 
+  - perl-AnyEvent-WebSocket-Server 
   - perl-Apache-AuthCookie 
   - perl-Apache-DBI 
   - perl-Apache-Filter 
@@ -18822,6 +18825,7 @@ unsorted:
   - perl-DNS-LDNS 
   - perl-Daemon-Generic 
   - perl-Dancer2 
+  - perl-Dancer2-Plugin-Auth-Extensible 
   - perl-Data-Clone 
   - perl-Data-Compare 
   - perl-Data-Dump 
@@ -19417,6 +19421,7 @@ unsorted:
   - perl-PerlMagick 
   - perl-PerlX-Maybe 
   - perl-Plack 
+  - perl-Plack-App-WebSocket 
   - perl-Plack-Middleware-FixMissingBodyInRedirect 
   - perl-Plack-Middleware-LogErrors 
   - perl-Plack-Middleware-RemoveRedundantBody 
@@ -19487,10 +19492,12 @@ unsorted:
   - perl-Sereal 
   - perl-Sereal-Decoder 
   - perl-Sereal-Encoder 
+  - perl-Session-Token 
   - perl-Set-Crontab 
   - perl-Set-IntSpan 
   - perl-Set-Object 
   - perl-Set-Scalar 
+  - perl-Set-Tiny 
   - perl-Smart-Comments 
   - perl-Snowball-Norwegian 
   - perl-Snowball-Swedish 
@@ -19617,10 +19624,12 @@ unsorted:
   - perl-Test-Mock-Guard 
   - perl-Test-Mock-LWP 
   - perl-Test-Mock-Time 
+  - perl-Test-MockDateTime 
   - perl-Test-MockModule 
   - perl-Test-MockObject 
   - perl-Test-MockRandom 
   - perl-Test-MockTime 
+  - perl-Test-Modern 
   - perl-Test-Mojo-Pg 
   - perl-Test-More-UTF8 
   - perl-Test-Most 
@@ -20816,6 +20825,7 @@ unsorted:
   - python-libcomps-doc 
   - python-lmiwbem 
   - python-logutils-doc 
+  - python-logzero-doc 
   - python-lxml-doc 
   - python-magnumclient-doc 
   - python-manilaclient-doc 
