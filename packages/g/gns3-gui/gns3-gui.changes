@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov  5 09:08:09 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.16
+  * Fix packets capture stops after some time.
+  * Option to allocate or not the vCPUs and RAM settings for the
+    GNS3 VM.
+- Update to version 2.2.15
+  * Fix custom symbol not sent to remote controller when
+    installing appliance.
+
+-------------------------------------------------------------------
 Fri Sep 18 21:45:05 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.14

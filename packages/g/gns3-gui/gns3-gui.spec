@@ -21,7 +21,7 @@
 %global py3_ver %(if [ -f "python3" ]; then python3 -c "import sys; sys.stdout.write(sys.version[:3])"; else echo 0; fi;)
 %endif
 Name:           gns3-gui
-Version:        2.2.14
+Version:        2.2.16
 Release:        0
 Summary:        GNS3 graphical interface for the GNS3 server
 License:        GPL-3.0-or-later
