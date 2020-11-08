@@ -19,13 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pytest-trio
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        Pytest plugin for trio
 License:        MIT OR Apache-2.0
 URL:            https://github.com/python-trio/pytest-trio
 Source:         https://github.com/python-trio/pytest-trio/archive/v%{version}.tar.gz
-Patch0:         pytest6.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -52,7 +51,6 @@ a friendly library for concurrency and async I/O in Python.
 
 %prep
 %setup -q -n pytest-trio-%{version}
-%patch0 -p1
 
 rm pytest.ini
 rm pytest_trio/_tests/test_hypothesis_interaction.py

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov  5 14:05:47 UTC 2020 - Marketa Machova <mmachova@suse.com>
+
+- Update to 0.7.0
+  * Support added for alternative Trio run functions via the trio_run 
+    configuration variable and @pytest.mark.trio(run=...).  Presently 
+    supports Trio and QTrio.
+  * Python 3.5 support removed.
+  * pytest 6 support added
+- Drop merged pytest6.patch
+
+-------------------------------------------------------------------
 Sun Oct 11 16:51:05 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Add missing runtime dependency on contextvars
