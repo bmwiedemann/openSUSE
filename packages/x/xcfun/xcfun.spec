@@ -19,7 +19,7 @@
 %define major 2
 %define libname lib%{name}%{major}
 Name:           xcfun
-Version:        %{major}.0.2
+Version:        %{major}.1.0
 Release:        0
 Summary:        Exchange-correlation functionals with arbitrary-order derivatives
 License:        MPL-2.0
