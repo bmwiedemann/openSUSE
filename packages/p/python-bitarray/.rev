@@ -86,4 +86,12 @@
   * fix `sys.getsizeof(bitarray)` by adding `.__sizeof__()`, see issue #100</comment>
     <requestid>838633</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>110e3a69fc2df606a7741c4ff9a7af90</srcmd5>
+    <version>1.6.1</version>
+    <time>1604865550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846885</requestid>
+  </revision>
 </revisionlist>

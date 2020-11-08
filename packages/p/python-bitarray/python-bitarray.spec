@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-bitarray
-Version:        1.5.3
+Version:        1.6.1
 Release:        0
 Summary:        Efficient Arrays of Booleans
 License:        Python-2.0
@@ -56,6 +56,7 @@ export CFLAGS="%{optflags}"
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+rm examples/growth/.gitignore
 
 %check
 # tests don't run from within the source directory

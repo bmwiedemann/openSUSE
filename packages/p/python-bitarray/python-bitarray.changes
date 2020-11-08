@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Nov  6 10:48:49 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 1.6.1
+  * use PyType_Ready for all types: bitarray, bitarrayiterator,
+    decodeiterator, decodetree, searchiterator.
+- Update to 1.6.0
+  * add `decodetree` object, for speeding up consecutive calls
+    to `.decode()` and `.iterdecode()`, in particular when dealing
+    with large prefix codes.
+  * add optional parameter to `.tolist()` which changes the items
+    in the returned list to integers (0 or 1), as opposed to
+    Booleans.
+  * remove deprecated `bitdiff()`, which has been deprecated since
+    version 1.2.0, use `bitarray.util.count_xor()` instead
+  * drop Python 2.6 support.
+  * update license file.
+
+-------------------------------------------------------------------
 Wed Sep 30 04:35:36 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.5.3:
