@@ -51,4 +51,12 @@
   * Drop support for python 2.7</comment>
     <requestid>787374</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>120f253eaa3e107c0ac9d4ccb85dbfd2</srcmd5>
+    <version>9.1.1</version>
+    <time>1604865553</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846883</requestid>
+  </revision>
 </revisionlist>

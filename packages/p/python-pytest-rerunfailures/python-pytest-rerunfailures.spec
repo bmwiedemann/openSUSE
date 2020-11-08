@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pytest-rerunfailures
-Version:        9.0
+Version:        9.1.1
 Release:        0
 Summary:        A pytest plugin to re-run tests
 License:        MPL-2.0
@@ -42,8 +42,6 @@ tests to eliminate intermittent failures.
 
 %prep
 %setup -q -n pytest-rerunfailures-%{version}
-# do not depend on mock https://github.com/pytest-dev/pytest-rerunfailures/pull/107
-sed -i -e 's:import mock:from unittest import mock:g' test_pytest_rerunfailures.py
 
 %build
 %python_build
@@ -53,12 +51,13 @@ sed -i -e 's:import mock:from unittest import mock:g' test_pytest_rerunfailures.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export PYTHONDONTWRITEBYTECODE=1
 %pytest
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_rerunfailures.py*
+%pycache_only %{python_sitelib}/__pycache__/pytest_rerunfailures*
+%{python_sitelib}/pytest_rerunfailures-%{version}*-info
 
 %changelog

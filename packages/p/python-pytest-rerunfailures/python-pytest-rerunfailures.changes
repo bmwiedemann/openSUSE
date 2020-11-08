@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Nov  7 18:33:40 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 9.1.1
+  Compatibility fix.
+  * Ignore --result-log command line option when used together with
+    pytest >= 6.1.0, as it was removed there. This is a quick fix, 
+    use an older version of pytest, if you want to keep this
+    feature for now. (Thanks to @ntessore for the PR)
+  * Support up to pytest 6.1.0.
+- Changelog for 9.1
+  Features
+  * Add a new flag --only-rerun to allow for users to rerun only 
+    certain errors.
+  Other changes
+  * Drop dependency on mock.
+  * Add support for pre-commit and add a linting tox target. (#117)
+    (PR from @gnikonorov) 
+
+-------------------------------------------------------------------
 Mon Mar 23 09:00:46 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 9.0:
