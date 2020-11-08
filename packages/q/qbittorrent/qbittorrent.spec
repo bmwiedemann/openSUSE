@@ -18,14 +18,14 @@
 
 
 Name:           qbittorrent
-Version:        4.3.0
+Version:        4.3.0.1
 Release:        0
 Summary:        A BitTorrent client in Qt
 License:        GPL-2.0-or-later
 URL:            https://qbittorrent.org
 Source:         https://downloads.sf.net/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://downloads.sf.net/%{name}/%{name}-%{version}.tar.xz.asc
-Source2:        %{name}.keyring
+Source2:        https://raw.githubusercontent.com/qbittorrent/qBittorrent/release-%{version}/5B7CC9A2.asc#/%{name}.keyring
 # PATCH-FIX-UPSTREAM qbittorrent-libtorrent_pthread.patch
 Patch1:         qbittorrent-libtorrent_pthread.patch
 BuildRequires:  cmake >= 3.9
@@ -42,15 +42,15 @@ BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(zlib)
+# For search engines.
+Recommends:     python3
 %if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(libtorrent-rasterbar-1) >= 1.1.13
 %else
 BuildRequires:  pkgconfig(libtorrent-rasterbar) >= 1.1.13
 %endif
-BuildRequires:  pkgconfig(systemd)
-BuildRequires:  pkgconfig(zlib)
-# For search engines.
-Recommends:     python3
 
 %description
 qBittorrent is a bittorrent client programmed in C++ and Qt that
