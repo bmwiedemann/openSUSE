@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-responsemock
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Simplified requests calls mocking for pytest
 License:        BSD-3-Clause

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  6 09:33:36 UTC 2020 - Marketa Machova <mmachova@suse.com>
+
+- Update to 1.0.1
+  * Handle setting 'Content-Type' header correctly.
+
+-------------------------------------------------------------------
 Mon Aug 10 11:24:35 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not depend on pytest-runner
