@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Sat Oct 31 11:25:34 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- The library needs to require the daemon package as it is not
+  usable without it. e.g. gnome-control-center -> applications wont
+  list any informations.
+
+-------------------------------------------------------------------
+Sat Sep  5 20:58:24 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Initial package, version 0.9.0.
