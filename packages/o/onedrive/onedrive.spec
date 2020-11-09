@@ -2,7 +2,7 @@
 # spec file for package onedrive
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2018 LISA GmbH, Bingen, Germany.
+# Copyright (c) 2018-2020 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %endif
 
 Name:           onedrive
-Version:        2.4.5
+Version:        2.4.7
 Release:        0
 Summary:        Client for One Drive Service for Linux
 License:        GPL-3.0-only

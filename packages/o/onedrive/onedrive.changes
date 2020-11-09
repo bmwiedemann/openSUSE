@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Nov 09 07:33:01 UTC 2020 - hpj@urpla.net
+
+- Update to version 2.4.7:
+  * Release files for 2.4.7 (#1133)
+  * Correctly set config directory permissions at first start (#1132)
+  * Check if localModifiedTime >= item.mtime: avoid re-upload (#1131)
+  * Merge contents of SQLite WAL file into main database file on sync completion (#1128)
+  * Fix uploading data to shared business folders when using --upload-only (#1127)
+  * Check the given local path in reverse order for a skip_dir match on --resync (#1125)
+  * Check for the presence of .nosync when processing DB entries (#1124)
+  * Update Docker.md
+  * Update --list-shared-folders to only show folders (#1114)
+  * Cleanup dryrun shm and wal files if they exist (#1121)
+  * Configure specific File and Folder Permissions (#1108)
+  * Added env variable to enable download-only mode in Docker (#1113)
+  * Fix Business Shared Folder handling to process only Business Shared Folders (#1104)
+  * Update bug_report.md
+  * Update bug_report.md
+  * Fix logging output for modification comparison source (#1103)
+  * Add environment variable to allow easy HTTPS debug in docker (#1098)
+  * Adding support for authentication w/ single tenant custom applications (#1094)
+  * Update bug_report.md
+  * Update INSTALL.md
+  * Update debugging output for /delta changes available queries (#1089)
+  * Allow config to specify a tenant id for non-multi-tenant applications (#1085)
+  * Mention fish-completions-dir build option (#1084)
+  * Release 2.4.7 Dev Prep (#1088)
+
+- Update to version 2.4.6:
+  * Release files for 2.4.6 (#1083)
+  * Update USAGE.md
+  * Handle deletion events for directories when inotify events are missing (#1082)
+  * Fix typos and normalize product names (#1079)
+  * Update bug_report.md
+  * Fix uninitialised value error as reported by valgrind (#1075)
+  * Handle deletion events when inotify events are missing (#1073)
+  * Add notification to advise users when the client needs to be reauthenticated (#1046)
+  * Update INSTALL.md
+  * Update INSTALL.md
+  * Update INSTALL.md
+  * Implement Feature: Multiple skip_dir & skip_file configuration rules (#1068)
+  * Update USAGE.md
+  * Implement Feature: Support negative patterns in sync_list for fine grained exclusions (#1065)
+  * Support wildcard within sync_list entries (#1063)
+  * Implement Feature: Create shareable link (#1061)
+  * Update INSTALL.md
+  * Update USAGE.md
+  * Update INSTALL.md
+  * Handle removing child items on OneDrive when parent item responds with access denied (Issue #1041) (#1045)
+  * Update USAGE.md
+  * Remove 'Icon' check as no longer valid (#1038)
+  * Update INSTALL.md
+  * Update --single-directory path handling when path does not exist locally (#1031)
+  * Flag when remaining free space is being restricted (#1029)
+  * Update README.md
+  * Release 2.4.6 Dev Prep (#1030)
+
+-------------------------------------------------------------------
 Sun Sep 27 10:08:36 UTC 2020 - Enno Gotthold <egotthold@suse.com>
 
 - Changed from obs_scm to tar_scm to unstuck legaldb
