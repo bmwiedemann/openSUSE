@@ -37,14 +37,14 @@ BuildRequires:  shared-mime-info
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(python3)
 # Check list of dependencies:
+BuildRequires:  python3-pyxdg
 BuildRequires:  python3-qt5-devel
-BuildRequires:  python3-xdg
 Requires:       python3-httplib2
 Requires:       python3-openshot
+Requires:       python3-pyxdg
 Requires:       python3-pyzmq
 Requires:       python3-qt5
 Requires:       python3-requests
-Requires:       python3-xdg
 Requires:       python(abi) = %{py3_ver}
 Provides:       openshot = %{version}
 Obsoletes:      openshot < %{version}
