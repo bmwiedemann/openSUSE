@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Nov  5 22:45:37 UTC 2020 - Matthew Trescott <matthewtrescott@gmail.com>
+
+- Update to 3.14.0:
+  * Support traditional calculator memory (MR/MC/MS/M+/M-)
+  * Add Rutherford (Rd), millirem (mrem), mrem/s, and erg/g units
+  * Add yr and annus names for year unit, röntgen name for
+    roentgen (R) unit, and rem for roentgen equivalent man
+  * Add matrix rank (rk) and reduced row echelon form (rref)
+    functions
+  * Support for different character encodings in code() function
+  * Keep angle units in calculations involving both length and
+    (plane) angle units (fixes lumen calculations)
+  * Improve plot speed for functions defined using expression
+  * Always perform conversion to optimal (SI) unit when the
+    expression is a number multiplied by a unit and input equals
+    output
+  * Improvements and fixes for qalc on Windows
+  * Compiled definitions without GIO and with support for
+    out-of-tree builds
+  * Fix availability of many currencies before manual exchange
+    rates update (global exchange rates file was not installed)
+  * Minor bug fixes and feature improvements
+
+-------------------------------------------------------------------
 Fri Aug 21 14:17:43 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.12.1:
