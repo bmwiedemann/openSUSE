@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Nov  3 14:57:22 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 7930.patch: pkgconfig: Make external deps of static library
+  public.
+
+-------------------------------------------------------------------
+Fri Oct 30 09:20:33 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.56.0:
+  + meson test can now filter tests by subproject
+  + Native (build machine) compilers not always required by
+    project().
+  + New extra_files key in target introspection.
+  + meson.build_root() and meson.source_root() are deprecated.
+  + dep.as_link_whole().
+  + Added NVidia HPC SDK compilers.
+  + CMake subproject cross compilation support.
+  + Machine file keys are stored case sensitive.
+  + Consistency between declare_dependency() and
+    pkgconfig.generate() variables.
+  + Qt5 compile_translations now supports qresource preprocessing.
+  + Controlling subproject dependencies with
+    dependency(allow_fallback: ...).
+  + Improvements for the builtin curses dependency.
+  + HDF5 dependency improvements.
+  + Dependencies listed in test and benchmark introspection.
+  + Deprecate Dependency.get_pkgconfig_variable and
+    Dependency.get_configtool_variable.
+- Rebase meson-test-installed-bin.patch.
+
+-------------------------------------------------------------------
 Fri Sep 11 17:26:46 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.55.3:
