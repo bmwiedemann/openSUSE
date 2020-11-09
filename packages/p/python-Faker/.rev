@@ -215,4 +215,41 @@
     <comment></comment>
     <requestid>830016</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>26b89dffde9c58ab8540f85d4e1319ca</srcmd5>
+    <version>4.14.2</version>
+    <time>1604926585</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.14.2:
+  * Fix generation of names ending with spaces. Thanks @edomora97.
+  * Add relative frequencies for japanese last names. Thanks @TianyiShi2001.
+  * Add Swiss bank provider locales. Thanks @mondeja.
+  * Split first names into male and female on pt_PT provider. Thanks @gplgps.
+  * Geo provider added for tr_TR locale. Thanks @iamnotagentleman.
+  * Add sk_SK Job provider. Thanks @pipozzz.
+  * Add date_time provider for pt_PT. Thanks @gplgps.
+  * Add .unique() for unique values. Thanks @coiax.
+  * Add automotive provider for tr_TR. Thanks @molcay.
+  * Add province list and add 2 new district to ne_NP. Thanks @iamsauravsharma.
+  * Add Currency provider for sv_SE. Thanks @frangiz.
+  * Add pt_PT credit card provider. Thanks @rubenandre.
+  * Added Company Provider for tr_TR locale. Thanks @iamnotagentleman.
+  * Add job providers for tr_TR. Thanks @molcay.
+  * Implement color provider for sk_SK locale. Thanks @pipozzz.
+  * Fix hu_HU color provider inheritance. Thanks @n1ngu.
+  * Bigger zipcode ranges for VA, TX and MD in en_US. Thanks @Antetokounpo.
+  * Add new style pt_PT automotive plates. Thanks @gplgps.
+  * Remove duplicate jobs from the pt_PT provider (#1282). Thanks @gplgps.
+  * Use &quot;Belarus&quot; instead of &quot;Vitryssland&quot; for sv_SE. Thanks @Majsvaffla.
+  * Added bank provider for tr_TR locale. Thanks @iamnotagentleman.
+  * Improve VAT generation for IT provider. Thanks @LordGordonQ.
+  * Use non-zero number for first digit of Swedish postal codes. Thanks @Majsvaffla.
+  * Add es_ES autonomous communities (Spanish regions). Thanks @mondeja.
+  * Add JSON and Fixed Width argument group and parser support. Thanks @johnbrandborg.
+  * Update zh_CN ssn provider to support gender. Thanks @mapoor.
+  * Fix typo in de_DE job provider. Thanks @datadominik.
+  * or_IN Odia person's name added. Thanks @soumendrak.
+  * Remove datetime_safe shim subclass in favor of native Python datetime.datetime. Thanks @samcrang.</comment>
+    <requestid>846365</requestid>
+  </revision>
 </revisionlist>
