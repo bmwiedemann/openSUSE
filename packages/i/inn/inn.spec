@@ -137,6 +137,8 @@ mkdir -p %{buildroot}/var/spool
 mkdir -p %{buildroot}%{_mandir}
 #
 make DESTDIR=%{buildroot} OWNER= ROWNER= install
+# rename list manpage as it conflicts with the man-pages package
+mv %{buildroot}%{_mandir}/man3/list.3 %{buildroot}%{_mandir}/man3/list-inn.3
 for i in %{buildroot}%{_mandir}/*/* ; do
   if test -L "$i" ; then
     il=$(readlink "$i")

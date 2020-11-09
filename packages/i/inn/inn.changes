@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  9 14:14:04 CET 2020 - mls@suse.de
+
+- rename the list.3 manpage to list-inn.3 as it conflicts with the
+  list.3 manpage from the man-pages 5.09 package [bnc#1178534]
+
+-------------------------------------------------------------------
 Sun Jun 14 16:11:47 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
 
 - update to inn-2.6.3
