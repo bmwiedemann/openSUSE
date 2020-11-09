@@ -125,4 +125,38 @@
     <comment></comment>
     <requestid>787819</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5c2ff2975c86498541caa06ab7ba8d03</srcmd5>
+    <version>3.3.3</version>
+    <time>1604932954</time>
+    <user>dimstar_suse</user>
+    <comment>- update to remind 3.3.3
+- CHANGES TO REMIND
+* VERSION 3.3 Patch 3 - 2020-11-09
+- BUG FIX: Fix startup crash in TkRemind if &quot;Show Today's Reminders on
+  Startup&quot; is enabled (which, unfortunately, is the default.)  Bug reported
+  by Martin Ziemer.
+
+- update to remind 3.3.2
+- CHANGES TO REMIND
+* VERSION 3.3 Patch 2 - 2020-11-08
+- MINOR NEW FEATURE: Add MAYBE-UNCOMPUTABLE keyword; see the man page
+  and discussion at
+  https://dianne.skoll.ca/pipermail/remind-fans/2020/003745.html
+- CHANGE: TkRemind always invokes Remind with the &quot;-itkremind=1&quot; option,
+  even when printing.  NOTE INCOMPATIBILITY: This is a behavior change!
+  When you print from TkRemind, we also invoke Remind with &quot;-itkprint=1&quot;
+  so you can detect that PostScript is being generated.
+- CHANGE: The maxmimum length of a variable name has been increased from
+  16 characters to 64 characters.  Modern computers have plenty of memory.
+- BUG FIXES: Minor documentation updates, typo fixes, clarifications, etc.
+- BUG FIX: Fix calendar-drawing alignment errors when displaying UTF-8
+  strings with zero-width combining characters and strings with tabs.
+- BUG FIX: TkRemind would mess up placement of the WEEK special if invoked
+  with the &quot;-m&quot; option.  This has been fixed.
+- BUG FIX: TkRemind would sometimes fail with an error message when editing
+  a reminder; this is because it was interpreting months 08 and 09 as
+  illegal octal numbers.  This has been fixed.</comment>
+    <requestid>847292</requestid>
+  </revision>
 </revisionlist>
