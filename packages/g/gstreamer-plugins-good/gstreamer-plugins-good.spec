@@ -29,7 +29,7 @@
 %define ENABLE_EXPERIMENTAL 1
 
 Name:           gstreamer-plugins-good
-Version:        1.18.0
+Version:        1.18.1
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -108,7 +108,7 @@ Requires:       gstreamer >= %{gstreamer_req_version}
 Requires:       gstreamer-plugins-base >= %{gstreamer_req_version}
 Recommends:     %{name}-gtk
 Enhances:       gstreamer
-Conflicts:      gstreamer-plugins-ugly < 1.18.0
+Conflicts:      gstreamer-plugins-ugly < 1.18.1
 # Generic name, never used in SuSE: I wish it had been used I would have used it then I wouldn't have to keep copy pasting and actually type it.
 Provides:       gst-plugins-good = %{version}
 %if 0%{?ENABLE_AALIB}

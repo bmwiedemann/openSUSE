@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Oct 27 16:38:53 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 1.18.1:
+  + Highlighted bugfixes in 1.18.1
+    - important security fixes
+    - bug fixes and memory leak fixes
+    - various stability and reliability improvements
+  + gst-plugins-good changes:
+    - v4l2object: Only offer inactive pools and if needed
+    - vpx: Fix the check to unfixed/unknown framerate to set
+      bitrate
+    - qmlglsink: fix crash when created/destroyed in quick
+      succession
+    - rtputils: Count metas with an empty tag list for
+      copying/keeping
+    - rtpbin: Remove the rtpjitterbuffer with the stream
+    - rtph26*depay: drop FU's without a corresponding start bit
+    - imagefreeze: Response caps query from srcpad
+    - rtpmp4gdepay: Allow lower-case "aac-hbr" instead of correct
+      "AAC-hbr"
+    - rtspsrc: Fix push-backchannel-buffer parameter mismatch
+    - jpegdec: check buffer size before dereferencing
+    - flvmux: Move stream skipping to
+      GstAggregatorPadClass.skip_buffer
+    - v4l2object: plug memory leak
+    - splitmuxsink: fix sink pad release while PLAYING
+
+-------------------------------------------------------------------
 Fri Sep 11 09:15:22 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 1.18.0:
