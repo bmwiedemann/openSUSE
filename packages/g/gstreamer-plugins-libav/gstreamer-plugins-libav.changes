@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 28 10:30:41 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 1.18.1:
+  + Highlighted bugfixes in 1.18.1
+    - important security fixes
+    - bug fixes and memory leak fixes
+    - various stability and reliability improvements
+  + gst-libav changes:
+    - avaudenc/avvidenc: Reopen encoding session if it's required
+    - avauddec/audenc/videnc: Don't return GST_FLOW_EOS when draining
+    - avauddec/avviddec: Avoid dropping non-OK flow return
+    - avcodecmap: Enable 24 bit WMA Lossless decoding
+
+-------------------------------------------------------------------
 Fri Sep 18 08:13:58 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 1.18.0:
