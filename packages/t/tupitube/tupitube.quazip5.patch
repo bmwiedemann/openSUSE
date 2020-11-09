@@ -1,44 +1,45 @@
-diff --git a/configure.tests/quazip/main.cpp b/configure.tests/quazip/main.cpp
-index dacfcd1..3e06e40 100755
---- a/configure.tests/quazip/main.cpp
-+++ b/configure.tests/quazip/main.cpp
+diff -Nur tupitube.desk/configure.tests/quazip/main.cpp new/configure.tests/quazip/main.cpp
+--- tupitube.desk/configure.tests/quazip/main.cpp	2020-08-15 03:55:13.000000000 +0200
++++ new/configure.tests/quazip/main.cpp	2020-11-08 08:21:32.051836695 +0100
 @@ -33,8 +33,8 @@
   *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
   ***************************************************************************/
  
 -#include "quazip/quazip.h"
 -#include "quazip/quazipfile.h"
-+#include "quazip5/quazip.h"
-+#include "quazip5/quazipfile.h"
++#include "QuaZip-Qt5-1.1/quazip/quazip.h"
++#include "QuaZip-Qt5-1.1/quazip/quazipfile.h"
  #include <QFile>
  
  int main()
-diff --git a/qonf/test.rb b/qonf/test.rb
-index a73280f..4f4b59f 100755
---- a/qonf/test.rb
-+++ b/qonf/test.rb
-@@ -103,7 +103,7 @@ class Test
+diff -Nur tupitube.desk/qonf/test.rb new/qonf/test.rb
+--- tupitube.desk/qonf/test.rb	2020-08-15 03:55:13.000000000 +0200
++++ new/qonf/test.rb	2020-11-08 08:21:42.415752963 +0100
+@@ -103,7 +103,7 @@
                           qmakeLine = "'LIBS += #{extraLib}'"
                           qmakeLine += " 'INCLUDEPATH += #{extraInclude}'"
                        else
 -                         extraLib = "-lquazip-qt5"
-+                         extraLib = "-lquazip5"
++                         extraLib = "-lquazip1-qt5"
                           qmakeLine = "'LIBS += #{extraLib}'"
                        end
                     else
-@@ -176,7 +176,7 @@ class Test
+@@ -165,10 +165,10 @@
          if conf.hasArgument?("with-quazip")
             config.addLib("-lquazip")
          else
 -           config.addLib("-lquazip-qt5")
-+           config.addLib("-lquazip5")
++           config.addLib("-lquazip1-qt5")
          end
  
-         # config.addLib("-lquazip-qt5")
-diff --git a/src/libtupi/tuppackagehandler.cpp b/src/libtupi/tuppackagehandler.cpp
-index 8885859..971e90d 100755
---- a/src/libtupi/tuppackagehandler.cpp
-+++ b/src/libtupi/tuppackagehandler.cpp
+-        # config.addLib("-lquazip-qt5")
++        # config.addLib("-lquazip1-qt5")
+         
+         parser.defines.each { |define|
+             config.addDefine(define)
+diff -Nur tupitube.desk/src/libtupi/tuppackagehandler.cpp new/src/libtupi/tuppackagehandler.cpp
+--- tupitube.desk/src/libtupi/tuppackagehandler.cpp	2020-08-15 03:55:40.000000000 +0200
++++ new/src/libtupi/tuppackagehandler.cpp	2020-11-08 08:21:32.051836695 +0100
 @@ -34,9 +34,9 @@
   ***************************************************************************/
  
@@ -46,9 +47,9 @@ index 8885859..971e90d 100755
 -#include "quazip/quazip.h"
 -#include "quazip/quazipfile.h"
 -#include "quazip/JlCompress.h"
-+#include "quazip5/quazip.h"
-+#include "quazip5/quazipfile.h"
-+#include "quazip5/JlCompress.h"
++#include "QuaZip-Qt5-1.1/quazip/quazip.h"
++#include "QuaZip-Qt5-1.1/quazip/quazipfile.h"
++#include "QuaZip-Qt5-1.1/quazip/JlCompress.h"
  
  TupPackageHandler::TupPackageHandler()
  {

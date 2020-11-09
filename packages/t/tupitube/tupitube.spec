@@ -22,7 +22,7 @@
 %define	_tupilib  %{_libdir}/%{name}
 %define	_tupidata %{_datadir}/%{name}
 Name:           tupitube
-Version:        0.2.15
+Version:        0.2.16
 Release:        0
 Summary:        2D vectorial/animation tool
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -92,6 +92,9 @@ This package contains plugins for %{name}.
 
 %prep
 %autosetup -p1 -n tupitube.desk
+
+# Fix `require': cannot load such file -- os (LoadError)
+sed -i '/require .os/d' qonf/configure.rb
 
 # Fix 'E: spurious-executable-perm'
 chmod -x COPYING README* launcher/tupitube.xml
