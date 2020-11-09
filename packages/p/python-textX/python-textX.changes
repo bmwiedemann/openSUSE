@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sun Nov  1 17:56:21 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- remove fix_tests_setupcfg.patch, included upstream
+- update to version 2.3.0:
+ - Added:
+    - `textx generate`. Documented passing in arbitrary parameters which can be
+      used in the generator function. Also, implemented passing of model
+      parameters defined in the meta-model (`model_param_defs` and
+      `_tx_model_params`) ([#299])
+    - `get_location` function for producing `line/col/filename` from any textX
+      object. ([#294])
+    - `builtin_models` of type `ModelRepository` to meta-model constructor. Used
+      to supply pre-loaded models for `ImportURI` based scoping providers as a
+      fallback to search into. ([#284])
+    - Initial implementation of TEP-001 ([#111]) allowing to specify scope
+      provider behavior within the grammar itself. [#274] and [#287] introduce
+      the RREL (reference resolving expression language) to define how
+      references are resolved. Details see `rrel.md`.
+    - Parameter `should_follow` of callable type to `get_children` and
+      `get_children_of_type` model API calls to decide if the element should be
+      traversed. ([#281])
+ - Fixed:
+    - Fixed bug with Falsy user classes in `get_children` ([#288])
+    - Fixed bug with unhashable objects during dot export ([#283])
+    - Fixed bug where (Ext)RelativeName scope providers accepted any referenced
+      object that contained the lookup name in its name. Thanks ipa-mdl@GitHub
+      ([#267])
+    - Fixed bug in `flow_dsl` test project causing static files not being included
+      in package build/installation. Thanks sebix@GitHub ([#272]).
+    - Fixed bug, where user classes not used in the grammar caused exceptions
+      ([#270]): now, when passing a list of user classes, you need to use them in
+      your grammar. You can alternatively also pass a callable (see metamodel.md;
+      [#273]). Also, using base classes for rules from imported grammars in 
+      conjunction with user classes is not allowed and results in an exception.
+    - Fixed bug in `export.py` concerning html escaping in the dot export of a
+      textx meta-model ([#276]).
+ - Changed:
+    - `_tx_model_param_definitions` deprecated in favor of `model_param_defs` ([#298]).
+    - `click` is now an optional dependency, only when CLI is needed ([#292])
+    - Make warning about not overwriting generated file more visible
+      ([01341ec3](https://github.com/textX/textX/commit/01341ec381bfb4c8c27bcec5d2998a34d207f430))
+    - Truncate long strings during dot export for better diagram readability ([#282]).
+    - Changed `unhashable type` exception when a list is used for `name` attributes by
+      raising a more informative exception and extending docs to document the issue
+      and a proper way to solve it ([#40], [#266]).
+
+-------------------------------------------------------------------
 Thu Aug  6 13:16:43 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 2.2.0:

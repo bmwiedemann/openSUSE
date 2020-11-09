@@ -18,15 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-textX
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Meta-language for DSL implementation inspired by Xtext
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://textx.github.io/textX/stable/
-Source:         https://github.com/igordejanovic/textX/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix_tests_setupcfg.path -- based on https://github.com/textX/textX/pull/272.patch without changelog
-Patch0:         fix_tests_setupcfg.patch
+Source:         https://github.com/igordejanovic/textX/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -42,6 +40,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Arpeggio}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module click >= 7.0}
+BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module memory_profiler}
 BuildRequires:  %{python_module pytest}
 # /SECTION
@@ -65,7 +64,6 @@ ambiguities, unlimited lookahead, interpreter style of work.
 sed -i '0,/#!\/usr\/bin\/env/ d' examples/hello_world/hello.py
 # do not hardcode deps
 sed -i -e 's:click==:click>=:g' setup.py
-%patch0 -p1
 
 %build
 %python_build
