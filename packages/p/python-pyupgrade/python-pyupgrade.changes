@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov  1 18:32:44 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to 2.7.3:
+ - fix off-by-one in encode() call fixer
+ - upgrade mypy to get typeshed fix 
+
+-------------------------------------------------------------------
 Mon Aug  3 13:30:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 2.7.2

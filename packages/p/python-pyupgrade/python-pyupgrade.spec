@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyupgrade
-Version:        2.7.2
+Version:        2.7.3
 Release:        0
 Summary:        A tool to automatically upgrade syntax for newer versions
 License:        MIT
