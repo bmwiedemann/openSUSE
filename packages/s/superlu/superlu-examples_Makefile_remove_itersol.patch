@@ -1,6 +1,7 @@
---- EXAMPLE/Makefile	2019-02-08 09:57:41.220000000 +0100
-+++ EXAMPLE/Makefile.patched	2019-02-08 10:23:18.464000000 +0100
-@@ -40,8 +40,6 @@
+diff -Nrua a/EXAMPLE/Makefile b/EXAMPLE/Makefile
+--- a/EXAMPLE/Makefile
++++ b/EXAMPLE/Makefile
+@@ -39,8 +39,6 @@
  SLINXEXM1 	= slinsolx1.o
  SLINXEXM2	= slinsolx2.o
  SLINXEXM3	= slinsolx3.o
@@ -9,7 +10,7 @@
  
  DLINEXM		= dlinsol.o
  DLINEXM1	= dlinsol1.o
-@@ -50,8 +48,6 @@
+@@ -49,8 +47,6 @@
  DLINXEXM2 	= dlinsolx2.o
  DLINXEXM3 	= dlinsolx3.o
  SUPERLUEXM 	= superlu.o sp_ienv.o
@@ -18,7 +19,7 @@
  
  CLINEXM 	= clinsol.o
  CLINEXM1 	= clinsol1.o
-@@ -59,8 +55,6 @@
+@@ -58,8 +54,6 @@
  CLINXEXM1 	= clinsolx1.o
  CLINXEXM2 	= clinsolx2.o
  CLINXEXM3 	= clinsolx3.o
@@ -27,7 +28,7 @@
  
  ZLINEXM 	= zlinsol.o
  ZLINEXM1 	= zlinsol1.o
-@@ -68,20 +62,17 @@
+@@ -67,20 +61,17 @@
  ZLINXEXM1 	= zlinsolx1.o
  ZLINXEXM2 	= zlinsolx2.o
  ZLINXEXM3 	= zlinsolx3.o
@@ -54,7 +55,7 @@
  
  slinsol: $(SLINEXM) $(SUPERLULIB)
  	$(LOADER) $(LOADOPTS) $(SLINEXM) $(LIBS) -lm -o $@
-@@ -101,11 +92,6 @@
+@@ -100,11 +91,6 @@
  slinsolx3: $(SLINXEXM3) $(SUPERLULIB)
  	$(LOADER) $(LOADOPTS) $(SLINXEXM3) $(LIBS) -lm -o $@
  
@@ -66,7 +67,7 @@
  
  dlinsol: $(DLINEXM) $(SUPERLULIB)
  	$(LOADER) $(LOADOPTS) $(DLINEXM) $(LIBS) -lm -o $@
-@@ -128,12 +114,6 @@
+@@ -127,12 +113,6 @@
  superlu: $(SUPERLUEXM) $(SUPERLULIB)
  	$(LOADER) $(LOADOPTS) $(SUPERLUEXM) $(LIBS) -lm -o $@
  
@@ -79,7 +80,7 @@
  clinsol: $(CLINEXM) $(SUPERLULIB)
  	$(LOADER) $(LOADOPTS) $(CLINEXM) $(LIBS) -lm -o $@
  
-@@ -152,12 +132,6 @@
+@@ -151,12 +131,6 @@
  clinsolx3: $(CLINXEXM3) $(SUPERLULIB)
  	$(LOADER) $(LOADOPTS) $(CLINXEXM3) $(LIBS) -lm -o $@
  
@@ -92,7 +93,7 @@
  zlinsol: $(ZLINEXM) $(SUPERLULIB)
  	$(LOADER) $(LOADOPTS) $(ZLINEXM) $(LIBS) -lm -o $@
  
-@@ -176,11 +150,6 @@
+@@ -175,11 +149,6 @@
  zlinsolx3: $(ZLINXEXM3) $(SUPERLULIB)
  	$(LOADER) $(LOADOPTS) $(ZLINXEXM3) $(LIBS) -lm -o $@
  
@@ -103,13 +104,10 @@
 -	$(LOADER) $(LOADOPTS) $(ZITSOL1) $(LIBS) -lm -o $@
  
  .c.o:
- 	$(CC) $(CFLAGS) $(CDEFS) -I$(HEADER) -c $< $(VERBOSE)
-@@ -190,7 +159,7 @@
+ 	$(CC) $(CFLAGS) $(CDEFS) $(INCLUDEDIR) -c $< $(VERBOSE)
+@@ -189,7 +158,7 @@
  
  clean:	
  	rm -f *.o *linsol *linsol1 *linsolx *linsolx1 *linsolx2 *linsolx3 \
 -	    superlu *itersol *itersol1
 +	    superlu
- 
- 
- 

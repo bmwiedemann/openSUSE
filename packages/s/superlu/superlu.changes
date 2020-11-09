@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 26 14:11:13 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- New version 5.2.2 (boo#1178112)
+  - bugfixes, documentation and examples update.
+- Update URL and Source0 and Source1, use get_tarball.sh to remove
+  non distributable files.
+- Install superlu_ug.pdf provided by the tarball.
+- Remove patch, merged upstream
+  * superlu-4.3-include.patch
+  * superlu-4.3-dont-opt-away.diff
+  * superlu-5.2-make.patch
+- Refresh patch:
+  * superlu-examples_Makefile_remove_itersol.patch
+  * superlu-make.linux.patch
+
+-------------------------------------------------------------------
 Fri Sep 11 06:13:46 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Add build support for gcc10 to HPC build (bsc#1174439). 

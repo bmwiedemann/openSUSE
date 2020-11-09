@@ -232,4 +232,12 @@ Readded changes dropped by accident:
     <comment>- Add build support for gcc10 to HPC build (bsc#1174439). (forwarded request 833681 from eeich)</comment>
     <requestid>833709</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>39c000413fdcb0c56cc93b2b7e4dbc58</srcmd5>
+    <version>5.2.2</version>
+    <time>1604926577</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846305</requestid>
+  </revision>
 </revisionlist>

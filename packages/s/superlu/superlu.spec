@@ -20,9 +20,7 @@
 
 # Base package name
 %define pname superlu
-%define ver 5.2.1
-
-%define _ver %(echo %{ver} | tr . _)
+%define ver 5.2.2
 
 %if "%flavor" == ""
 ExclusiveArch:  do_not_build
@@ -77,7 +75,6 @@ ExclusiveArch:  do_not_build
 %define libname lib%{name}%{?_sover}
 %else
 %{hpc_init -c %compiler_family %{?c_f_ver:-v %{c_f_ver}} %{?ext:-e %{ext}}}
-%define package_name %{hpc_package_name %_ver}
 %define p_prefix %hpc_prefix
 %define p_includedir %hpc_includedir
 %define p_libdir %hpc_libdir
@@ -90,15 +87,11 @@ License:        BSD-3-Clause
 Group:          Productivity/Scientific/Math
 Version:        %{ver}
 Release:        0
-Source:         http://crd-legacy.lbl.gov/%7Exiaoye/SuperLU/%{pname}_%{version}.tar.gz
-Source1:        superlu_ug.pdf
+URL:            https://portal.nersc.gov/project/sparse/superlu/
+Source0:        superlu-5.2.2.tar.gz
+# Tarball above is generated with the script below
+Source1:        get-tarball.sh
 Source2:        README.SUSE
-# PATCH-FEATURE-OPENSUSE superlu-5.2-make.patch : add compiler and build flags in make.inc
-Patch0:         superlu-5.2-make.patch
-# PATCH-FIX-UPSTREAM superlu-4.3-include.patch : avoid implicit declaration warnings
-Patch1:         superlu-4.3-include.patch
-# PATCH-FIX-UPSTREAM superlu-4.3-dont-opt-away.diff
-Patch2:         superlu-4.3-dont-opt-away.diff
 # PATCH-FIX-OPENSUSE superlu-5.2-remove-mc64ad.patch [bnc#796236]
 # The Harwell Subroutine Library (HSL) routine mc64ad.c have been removed
 # from the original sources for legal reasons. This patch disables the inclusion of
@@ -106,7 +99,6 @@ Patch2:         superlu-4.3-dont-opt-away.diff
 Patch3:         superlu-5.2-remove-mc64ad.patch
 Patch4:         superlu-examples_Makefile_remove_itersol.patch
 Patch5:         superlu-make.linux.patch
-URL:            http://crd.lbl.gov/~xiaoye/SuperLU/
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  fdupes
 BuildRequires:  tcsh
@@ -180,14 +172,11 @@ decomposition of sparse matrices.
 %endif
 
 %prep
-%setup -q -n SuperLU_%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%setup -q -n superlu-%{version}
 %patch3 -p1
-%patch4 -p0
-%patch5 -p0
-cp %SOURCE1 %SOURCE2 ./
+%patch4 -p1
+%patch5 -p1
+cp %SOURCE2 ./
 # Create baselibs.conf dynamically (non-HPC build only).
 %if %{without hpc}
 cat > %{_sourcedir}/baselibs.conf  <<EOF
@@ -290,9 +279,13 @@ EOF
 %{?with_hpc:%{hpc_pkgconfig_file}}
 %{p_includedir}/%{!?with_hpc:*}
 %{p_libdir}/*.so
+%dir %{p_libdir}/cmake/
+%dir %{p_libdir}/cmake/superlu/
+%{p_libdir}/cmake/superlu/*.cmake
+%{p_libdir}/pkgconfig/superlu.pc
 
 %files doc
-%doc DOC/html superlu_ug.pdf
+%doc DOC/html DOC/ug.pdf
 
 %files examples
 %doc examples

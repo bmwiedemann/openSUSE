@@ -1,5 +1,6 @@
---- MAKE_INC/make.linux	2016-05-22 17:58:44.000000000 +0200
-+++ MAKE_INC/make.linux.patched	2019-02-08 10:35:38.740265921 +0100
+diff -Nrua a/MAKE_INC/make.linux b/MAKE_INC/make.linux
+--- a/MAKE_INC/make.linux
++++ b/MAKE_INC/make.linux
 @@ -21,8 +21,8 @@
  #
  #  The name of the libraries to be created/linked to
