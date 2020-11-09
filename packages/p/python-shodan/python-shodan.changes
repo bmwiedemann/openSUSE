@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov  1 19:33:22 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 1.24.0:
+ * use default config dir `~/.config/shodan`, but support existing installations
+ * Fix bug that caused extra newlines when converting `.json.gz` data file to CSV on Windows
+ * Fix linting error
+
+-------------------------------------------------------------------
 Sat Sep 12 04:51:36 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 1.23.1:
