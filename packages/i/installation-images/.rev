@@ -971,4 +971,12 @@ Currently, causes unresolvable builds in Leap 15.0 stagings. (forwarded request 
     <comment>submitted by snwint via jenkins</comment>
     <requestid>844912</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>4f244d946e2fc52662b167096248adaa</srcmd5>
+    <version>16.27</version>
+    <time>1604932940</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>847091</requestid>
+  </revision>
 </revisionlist>
