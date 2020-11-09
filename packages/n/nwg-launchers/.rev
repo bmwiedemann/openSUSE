@@ -60,4 +60,13 @@
   * [nwggrid] sorting names longer than 25 characters fixed #128</comment>
     <requestid>846134</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>972d9bab00f5ed7cdbf9b1d0b8ba1009</srcmd5>
+    <version>0.4.2</version>
+    <time>1604926661</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.2:
+  * [nwggrid] forgotten field initialization added #132</comment>
+    <requestid>847057</requestid>
+  </revision>
 </revisionlist>
