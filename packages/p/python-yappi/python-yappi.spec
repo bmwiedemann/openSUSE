@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-yappi
-Version:        1.2.5
+Version:        1.3.0
 Release:        0
 Summary:        Yet Another Python Profiler
 License:        MIT
@@ -27,6 +27,7 @@ URL:            https://github.com/sumerc/yappi
 Source:         https://files.pythonhosted.org/packages/source/y/yappi/yappi-%{version}.tar.gz
 BuildRequires:  %{python_module contextvars}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module gevent >= 20.6.2}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
