@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  6 08:31:58 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Drop source package, was only used by grpc which was switched
+  over to use the shared library
+
+-------------------------------------------------------------------
 Tue Oct 27 09:16:46 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Build shared libraries of abseil for use by grpc

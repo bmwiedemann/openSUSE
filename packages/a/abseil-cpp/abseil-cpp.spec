@@ -16,7 +16,6 @@
 #
 
 
-%define src_install_dir %{_prefix}/src/%{name}
 Name:           abseil-cpp
 Version:        20200225.2
 Release:        0
@@ -24,7 +23,6 @@ Summary:        C++11 libraries which augment the C++ stdlib
 License:        Apache-2.0
 URL:            https://abseil.io/
 Source0:        https://github.com/abseil/abseil-cpp/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        %{name}-rpmlintrc
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -43,41 +41,28 @@ Abseil is a collection of C++11 libraries which augment the C++
 standard library.
 This package contains headers and build system files for it.
 
-%package source
-Summary:        Source code of Abseil
-
-%description source
-Source code of Abseil, a collection of C++11 libraries
-which augment the C++ standard library. It also provides
-features incorporated into C++14 and C++17 standards.
-
 %prep
 %autosetup -p1
 
 %build
 # let rpm/OBS have some versioning to work with when it comes to upgrades and rebuilds
-cat >"%_builddir/abslx.sym" <<-EOF
-	ABSL_%version { global: *; };
+cat >"%{_builddir}/abslx.sym" <<-EOF
+	ABSL_%{version} { global: *; };
 EOF
-%define build_ldflags -Wl,--version-script=%_builddir/abslx.sym
+%define build_ldflags -Wl,--version-script=%{_builddir}/abslx.sym
 %cmake -DBUILD_SHARED_LIBS:BOOL=ON
 
 %install
 %cmake_install
-mkdir -p %{buildroot}%{src_install_dir}
-cp -r * %{buildroot}%{src_install_dir}
 %fdupes %{buildroot}/%{_prefix}
 
 %files
+%license LICENSE
+%doc README.md
 %{_libdir}/libabsl_*.so
 
 %files devel
 %{_includedir}/absl/
 %{_libdir}/cmake/
-
-%files source
-%license LICENSE
-%doc README.md
-%{src_install_dir}
 
 %changelog
