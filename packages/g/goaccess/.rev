@@ -331,4 +331,41 @@
   * Changed back how the hits and visitors percentage is calculated to be more</comment>
     <requestid>806766</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4887976131d04aa225f8c2cbbb9a263b</srcmd5>
+    <version>1.4.1</version>
+    <time>1604926703</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.1:
+  * Added addtional browsers and bots to the main list.
+  * Added 'Android 11' to the list of OSs.
+  * Added 'macOS 11.0 Big Sur' to the list of OSs.
+  * Added 'average' to each panel overall metrics.
+  * Added '.dmg', '.xz', and '.zst' to the static list.
+  * Added extra check to ensure restoring from disk verifies the content of the
+  * against previous runs.
+  * Added Russian translation (i18n).
+  * Added Ukrainian translation (i18n).
+  * Added support for HTTP status code '308'.
+  * Added the ability for 'get_home ()' to return NULL on error, instead of
+  * the process. Great if using through systemd.
+  * Added the ability to read lowercase predefined log formats. For instance,
+  * log-format=COMBINED' or '--log-format=combined'.
+  * Changed how FIFOs are created and avoid using predictable filenames under
+    tmp'.
+  * Changed '--ignore-referer' to use whole referrer instead of referring site.
+  * Ensure Cache Status can be parsed without sensitivity to case.
+  * Ensure restored data enforces '--keep-last' if used by truncating accordingly
+  * Fixed a few memory leaks when restoring from disk.
+  * Fixed blank time distribution panel when using timestamps.
+  * Fixed build issue due to lack of 'mmap' on 'Win'/'Cygwin'/'MinGW'.
+  * Fixed crash in mouse enabled mode.
+  * Fixed double free on data restore.
+  * Fixed inability to keep processing a log when using '--keep-last'.
+  * Fixed inability to properly parse truncated logs.
+  * Fixed inability to properly count certain requests when restoring from disk
+  * Fixed issue where it would not parse subsequent requests coming from stdin (tail).
+  * Fixed issue where log truncation could prevent accurate number counting.</comment>
+    <requestid>847065</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 
 
 Name:           goaccess
-Version:        1.4
+Version:        1.4.1
 Release:        0
 Summary:        Apache Web Log Analyzer
 License:        GPL-2.0-or-later
