@@ -132,11 +132,14 @@ sed -i '/^Icon=/ s/$/-qt/' qt/transmission-qt.desktop
 cd qt
 %qmake5 DEFINES+=TRANSLATIONS_DIR=\\\\\\\"/usr/share/transmission/translations\\\\\\\"
 lrelease-qt5 translations/*.ts
-mkdir -p %{buildroot}/%{_datadir}/%{name}/translations
-mv translations/*qm %{buildroot}/%{_datadir}/%{name}/translations
 
 %install
 %make_install
+(
+cd qt
+mkdir -p %{buildroot}/%{_datadir}/%{name}/translations
+mv translations/*qm %{buildroot}/%{_datadir}/%{name}/translations
+)
 make -C qt INSTALL_ROOT=%{buildroot}/usr install
 mkdir -p %{buildroot}%{_unitdir}
 install -m0644 daemon/transmission-daemon.service  %{buildroot}%{_unitdir}/
