@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov  7 03:17:51 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.22
+   see /usr/share/doc/packages/perl-Mojo-Pg/Changes
+
+  4.22  2020-11-06
+    - Added from_dir method to Mojo::Pg::Migrations. (kiwiroy)
+    - Improved Mojo::Pg::Database to handle connection errors more gracefully.
+
+-------------------------------------------------------------------
 Mon Oct 26 03:08:41 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.21
