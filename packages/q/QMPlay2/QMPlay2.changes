@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov  6 11:30:41 UTC 2020 - Simon Vogl <simon.vogl@gmx.net>
+
+- Added 0003-fix-youtube-search.patch to fix QMPlay2's YouTube search not working
+
+-------------------------------------------------------------------
+Mon Aug 17 21:15:29 UTC 2020 - Simon Vogl <simon.vogl@gmx.net>
+
+- No longer Require python-xml as it isn't necessary
+- Require python3 as it's required to run youtube-dl
+- Added 0002-fix-broken-python-detection.patch to fix QMPlay2 always perferring python2 over python3 for executing youtube-dl which could cause youtube-dl to crash
+
+-------------------------------------------------------------------
 Wed Aug  5 16:56:21 UTC 2020 - Simon Vogl <simon.vogl@gmx.net>
 
 - Require python-xml as the YouTube play function crashes when python-xml is not installed

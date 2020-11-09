@@ -28,6 +28,10 @@ URL:            https://github.com/zaps166/QMPlay2
 Source:         https://github.com/zaps166/QMPlay2/releases/download/%{version}/QMPlay2-src-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-fix-build-error-lp151.patch
+# PATCH-FIX-OPENSUSE
+Patch2:         0002-fix-broken-python-detection.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0003-fix-youtube-search.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
@@ -64,8 +68,7 @@ Requires(postun): hicolor-icon-theme
 Requires(postun): shared-mime-info
 Requires(postun): update-desktop-files
 Recommends:     youtube-dl
-# Required for youtube-dl to work with QMPlay2
-Requires:       python-xml
+Requires:       python > 3.0.0
 
 %description
 QMPlay2 is a video player, it can play and stream all formats supported by

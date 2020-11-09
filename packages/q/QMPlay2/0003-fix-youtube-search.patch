@@ -1,0 +1,188 @@
+From 193530399a8b5167180ec5d86f8d3dc2e398729f Fri  6 11 11:30:41 2020
+From: Simon Vogl <simon.vogl@gmx.net>
+Date: Fri,  6 Nov 2020 11:30:41 UTC
+Subject: [PATCH] Fix youtube search of QMPlay2
+
+This patch is required to fix QMPlay2's YouTube search.
+
+--- a/src/modules/Extensions/YouTube.cpp
++++ b/src/modules/Extensions/YouTube.cpp
+@@ -760,90 +760,96 @@ void YouTube::setSearchResults(const QByteArray &data)
+ {
+     const auto json = getYtInitialData(data);
+ 
+-    const auto contents = json.object()
++    const auto sectionListRendererContents = json.object()
+         ["contents"].toObject()
+         ["twoColumnSearchResultsRenderer"].toObject()
+         ["primaryContents"].toObject()
+         ["sectionListRenderer"].toObject()
+-        ["contents"].toArray().at(0).toObject()
+-        ["itemSectionRenderer"].toObject()
+         ["contents"].toArray()
+     ;
+ 
+-    for (auto &&obj : contents)
++    for (auto &&obj : sectionListRendererContents)
+     {
+-        const auto videoRenderer = obj.toObject()["videoRenderer"].toObject();
+-        const auto playlistRenderer = obj.toObject()["playlistRenderer"].toObject();
+-
+-        const bool isVideo = !videoRenderer.isEmpty() && playlistRenderer.isEmpty();
+-
+-        QString title, contentId, length, user, publishedTime, viewCount, thumbnail, url;
++        const auto contents = obj.toObject()
++            ["itemSectionRenderer"].toObject()
++            ["contents"].toArray()
++        ;
+ 
+-        if (isVideo)
++        for (auto &&obj : contents)
+         {
+-            title = videoRenderer["title"].toObject()["runs"].toArray().at(0).toObject()["text"].toString();
+-            contentId = videoRenderer["videoId"].toString();
+-            if (title.isEmpty() || contentId.isEmpty())
+-                continue;
+-
+-            length = videoRenderer["lengthText"].toObject()["simpleText"].toString();
+-            user = videoRenderer["ownerText"].toObject()["runs"].toArray().at(0).toObject()["text"].toString();
+-            publishedTime = videoRenderer["publishedTimeText"].toObject()["simpleText"].toString();
+-            viewCount = videoRenderer["shortViewCountText"].toObject()["simpleText"].toString();
+-            thumbnail = videoRenderer["thumbnail"].toObject()["thumbnails"].toArray().at(0).toObject()["url"].toString();
++            const auto videoRenderer = obj.toObject()["videoRenderer"].toObject();
++            const auto playlistRenderer = obj.toObject()["playlistRenderer"].toObject();
+ 
+-            url = YOUTUBE_URL "/watch?v=" + contentId;
+-        }
+-        else
+-        {
+-            title = playlistRenderer["title"].toObject()["simpleText"].toString();
+-            contentId = playlistRenderer["playlistId"].toString();
+-            if (title.isEmpty() || contentId.isEmpty())
+-                continue;
++            const bool isVideo = !videoRenderer.isEmpty() && playlistRenderer.isEmpty();
+ 
+-            user = playlistRenderer["longBylineText"].toObject()["runs"].toArray().at(0).toObject()["text"].toString();
+-            thumbnail = playlistRenderer
+-                ["thumbnailRenderer"].toObject()
+-                ["playlistVideoThumbnailRenderer"].toObject()
+-                ["thumbnail"].toObject()
+-                ["thumbnails"].toArray().at(0).toObject()
+-                ["url"].toString()
+-            ;
++            QString title, contentId, length, user, publishedTime, viewCount, thumbnail, url;
+ 
+-            url = YOUTUBE_URL "/playlist?list=" + contentId;
+-        }
++            if (isVideo)
++            {
++                title = videoRenderer["title"].toObject()["runs"].toArray().at(0).toObject()["text"].toString();
++                contentId = videoRenderer["videoId"].toString();
++                if (title.isEmpty() || contentId.isEmpty())
++                    continue;
++
++                length = videoRenderer["lengthText"].toObject()["simpleText"].toString();
++                user = videoRenderer["ownerText"].toObject()["runs"].toArray().at(0).toObject()["text"].toString();
++                publishedTime = videoRenderer["publishedTimeText"].toObject()["simpleText"].toString();
++                viewCount = videoRenderer["shortViewCountText"].toObject()["simpleText"].toString();
++                thumbnail = videoRenderer["thumbnail"].toObject()["thumbnails"].toArray().at(0).toObject()["url"].toString();
++
++                url = YOUTUBE_URL "/watch?v=" + contentId;
++            }
++            else
++            {
++                title = playlistRenderer["title"].toObject()["simpleText"].toString();
++                contentId = playlistRenderer["playlistId"].toString();
++                if (title.isEmpty() || contentId.isEmpty())
++                    continue;
++
++                user = playlistRenderer["longBylineText"].toObject()["runs"].toArray().at(0).toObject()["text"].toString();
++                thumbnail = playlistRenderer
++                    ["thumbnailRenderer"].toObject()
++                    ["playlistVideoThumbnailRenderer"].toObject()
++                    ["thumbnail"].toObject()
++                    ["thumbnails"].toArray().at(0).toObject()
++                    ["url"].toString()
++                ;
++
++                url = YOUTUBE_URL "/playlist?list=" + contentId;
++            }
+ 
+-        auto tWI = new QTreeWidgetItem(resultsW);
++            auto tWI = new QTreeWidgetItem(resultsW);
+ 
+-        tWI->setText(0, title);
+-        tWI->setText(1, isVideo ? length : tr("Playlist"));
+-        tWI->setText(2, user);
++            tWI->setText(0, title);
++            tWI->setText(1, isVideo ? length : tr("Playlist"));
++            tWI->setText(2, user);
+ 
+-        QString tooltip;
+-        tooltip += QString("%1: %2\n").arg(resultsW->headerItem()->text(0), tWI->text(0));
+-        tooltip += QString("%1: %2\n").arg(isVideo ? resultsW->headerItem()->text(1) : tr("Playlist"), isVideo ? tWI->text(1) : tr("yes"));
+-        tooltip += QString("%1: %2\n").arg(resultsW->headerItem()->text(2), tWI->text(2));
+-        tooltip += QString("%1: %2\n").arg(tr("Published time"), publishedTime);
+-        tooltip += QString("%1: %2").arg(tr("View count"), viewCount);
+-        tWI->setToolTip(0, tooltip);
++            QString tooltip;
++            tooltip += QString("%1: %2\n").arg(resultsW->headerItem()->text(0), tWI->text(0));
++            tooltip += QString("%1: %2\n").arg(isVideo ? resultsW->headerItem()->text(1) : tr("Playlist"), isVideo ? tWI->text(1) : tr("yes"));
++            tooltip += QString("%1: %2\n").arg(resultsW->headerItem()->text(2), tWI->text(2));
++            tooltip += QString("%1: %2\n").arg(tr("Published time"), publishedTime);
++            tooltip += QString("%1: %2").arg(tr("View count"), viewCount);
++            tWI->setToolTip(0, tooltip);
+ 
+-        tWI->setData(0, Qt::UserRole, url);
+-        tWI->setData(1, Qt::UserRole, !isVideo);
++            tWI->setData(0, Qt::UserRole, url);
++            tWI->setData(1, Qt::UserRole, !isVideo);
+ 
+-        if (!isVideo)
+-        {
+-            tWI->setDisabled(true);
++            if (!isVideo)
++            {
++                tWI->setDisabled(true);
+ 
+-            auto linkReply = net.start(url);
+-            linkReply->setProperty("tWI", QVariant::fromValue((void *)tWI));
+-            linkReplies += linkReply;
+-        }
++                auto linkReply = net.start(url);
++                linkReply->setProperty("tWI", QVariant::fromValue((void *)tWI));
++                linkReplies += linkReply;
++            }
+ 
+-        if (!thumbnail.isEmpty())
+-        {
+-            auto imageReply = net.start(thumbnail);
+-            imageReply->setProperty("tWI", QVariant::fromValue((void *)tWI));
+-            imageReplies += imageReply;
++            if (!thumbnail.isEmpty())
++            {
++                auto imageReply = net.start(thumbnail);
++                imageReply->setProperty("tWI", QVariant::fromValue((void *)tWI));
++                imageReplies += imageReply;
++            }
+         }
+     }
+ 
+@@ -1048,7 +1054,7 @@ void YouTube::preparePlaylist(const QByteArray &data, QTreeWidgetItem *tWI)
+     {
+         const auto playlistRenderer = obj.toObject()["playlistVideoRenderer"].toObject();
+ 
+-        const auto title = playlistRenderer["title"].toObject()["simpleText"].toString();
++        const auto title = playlistRenderer["title"].toObject()["runs"].toArray().at(0).toObject()["text"].toString();
+         const auto videoId = playlistRenderer["videoId"].toString();
+         if (title.isEmpty() || videoId.isEmpty())
+             continue;
+@@ -1080,7 +1086,7 @@ QJsonDocument YouTube::getYtInitialData(const QByteArray &data)
+     if (idx2 < 0)
+         return QJsonDocument();
+ 
+-    auto jsonData = data.mid(idx, idx2 - idx);
++    auto jsonData = data.mid(idx, idx2 - idx).trimmed();
+     if (jsonData.endsWith(';'))
+         jsonData.chop(1);
+ 
