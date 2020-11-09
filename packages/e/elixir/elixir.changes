@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov 04 11:09:00 UTC 2020 - Sven Marquardt <dev@mail.smarquardt.space>
+
+- Elixir 1.11.2
+ * Bug fixes
+   Elixir
+   [Code] Do not crash when getting docs for missing `erts` appdir
+   [Kernel] Raise meaningful error if `:erlang.is_record` is used in guards
+   [Kernel] Prune tracers when fetching `__ENV__` inside functions
+
+   Mix
+   [mix] Fix regression where aliases could not call themselves recursively
+   [mix compile] Do not discard tracers that are set programatically
+
+-------------------------------------------------------------------
 Mon Oct 19 11:09:00 UTC 2020 - Sven Marquardt <dev@mail.smarquardt.space>
 
 - Elixir 1.11.1
@@ -22,7 +36,7 @@ Mon Oct 19 11:09:00 UTC 2020 - Sven Marquardt <dev@mail.smarquardt.space>
 -------------------------------------------------------------------
 Mon Oct 19 11:03:32 UTC 2020 - Sven Marquardt <dev@mail.smarquardt.space>
 
--Elixir 1.11.0
+- Elixir 1.11.0
 
  * Enhancements
    EEx
@@ -558,7 +572,7 @@ Mon Dec 10 11:17:25 UTC 2018 - matwey.kornilov@gmail.com
 
 - Use %license for LICENSE
 
------------------------  --------------------------------------------
+-------------------------------------------------------------------
 Thu Nov 08 22:01:20 UTC 2018 - g.santomaggio@gmail.com
 
 - Elixir 1.7.4
@@ -603,6 +617,7 @@ Thu Nov 08 22:01:20 UTC 2018 - g.santomaggio@gmail.com
   everyone to migrate to Erlang/OTP 20+.
   Full release notes: https://github.com/elixir-lang/elixir/releases/tag/v1.7.0
 
+-------------------------------------------------------------------
 Sun Jul  1 08:02:34 UTC 2018 - develop7@develop7.info
 
 - Elixir 1.6.6
