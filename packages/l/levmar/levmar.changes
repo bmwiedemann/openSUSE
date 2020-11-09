@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Fri Oct 30 14:46:35 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Notify the build our blas does not require any f2c library,
+  drop any f2c dependencies.
+
+-------------------------------------------------------------------
+Mon Sep  9 13:56:40 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add the missing f2c build requirement for leap >= 15.2 & factory.
+
+-------------------------------------------------------------------
+Thu Jun  7 11:28:37 UTC 2018 - dliw@posteo.net
+
+- Fix build on Factory, Tumbleweed and Leap 15.0.
+- Clean up spec file.
+
+-------------------------------------------------------------------
+Tue Mar 25 18:56:22 UTC 2014 - tchvatal@suse.com
+
+- Clean up to match SUSE spec guidelines.
+- This package is needed by meshlab.
+- Version bump to 2.6 which uses cmake build system
+
+-------------------------------------------------------------------
+Thu Jan 28 00:00:00 UTC 2010 - eric@brouhaha.com
+
+- preserve timestamp of README in prep
+
+-------------------------------------------------------------------
+Sun Jan 24 00:00:00 UTC 2010 - eric@brouhaha.com
+
+- don't need f2c
+- spec cleanup based on review comments from Jussi Lehtola
+
+-------------------------------------------------------------------
+Sat Jan 23 00:00:00 UTC 2010 - eric@brouhaha.com
+
+- spec cleanup based on review comments from Jussi Lehtola
+
+-------------------------------------------------------------------
+Fri Jan 22 00:00:00 UTC 2010 - eric@brouhaha.com
+
+- initial version
+
