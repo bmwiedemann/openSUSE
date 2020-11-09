@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  9 06:38:44 UTC 2020 - Enno Gotthold <egotthold@suse.com>
+
+- Update to 0.27
+  *  Unfortunately, the last release (0.26) had a severe bug. Which
+     allowed Amstrad CPC enthusiasts to play the old games, but
+     nobody else. This bug has been fixed now.  
+
+-------------------------------------------------------------------
 Thu Aug  6 10:39:30 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Put up a more sensible description.
