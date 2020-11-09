@@ -24,7 +24,7 @@
 %define bootstrap 0
 %define mini %nil
 %define min_kernel_version 4.5
-%define suse_version +suse.27.gd7b5ac76dc
+%define suse_version +suse.32.gfdce77ce20
 
 %bcond_with     gnuefi
 %if 0%{?bootstrap}
@@ -655,14 +655,6 @@ rm -f %{buildroot}%{_sysusersdir}/basic.conf
 # in this directory... oh well.
 rm -f %{buildroot}/etc/init.d/README
 
-# journal-upload is built if libcurl is installed which can happen
-# when importd is enabled (whereas journal_remote is not).
-%if ! %{with journal_remote}
-rm -f %{buildroot}%{_sysconfdir}/systemd/journal-upload.conf
-rm -f %{buildroot}%{_prefix}/lib/systemd/systemd-journal-upload
-rm -f %{buildroot}%{_unitdir}/systemd-journal-upload.*
-%endif
-
 # Create the /var/log/journal directory to change the volatile journal
 # to a persistent one
 mkdir -p %{buildroot}%{_localstatedir}/log/journal/
@@ -1185,18 +1177,16 @@ fi
 %endif
 
 %dir %{_sysconfdir}/modules-load.d
-%{_prefix}/lib/modules-load.d
+%{_modulesloaddir}
 
-%{_sysusersdir}/
+%dir %{_sysusersdir}
+%{_sysusersdir}/systemd.conf
+
 %dir %{_sysconfdir}/tmpfiles.d
 %{_tmpfilesdir}/
 %exclude %{_tmpfilesdir}/systemd-nspawn.conf
 
-%if %{with journal_remote}
-%exclude %{_sysusersdir}/systemd-remote.conf
-%endif
-
-%{_prefix}/lib/environment.d/
+%{_environmentdir}/
 
 %dir %{_binfmtdir}
 %dir %{_sysconfdir}/binfmt.d
@@ -1239,8 +1229,8 @@ fi
 %{_datadir}/dbus-1/system.d/org.freedesktop.timesync1.conf
 
 # FIXME: why do we have to own this dir ?
-%dir %{_prefix}/lib/modprobe.d
-%{_prefix}/lib/modprobe.d/systemd.conf
+%dir %{_modprobedir}
+%{_modprobedir}/systemd.conf
 
 # Some files created at runtime.
 %ghost %config(noreplace) %{_sysconfdir}/X11/xorg.conf.d/00-keyboard.conf
@@ -1297,6 +1287,10 @@ fi
 %endif
 %if %{with importd}
 %exclude %{_mandir}/man*/systemd-importd*
+%endif
+%if %{with journal_remote}
+%exclude %{_mandir}/man5/journal-remote.conf*
+%exclude %{_mandir}/man5/journal-upload.conf*
 %endif
 %if %{with portabled}
 %exclude %{_mandir}/man*/portablectl*
@@ -1549,6 +1543,8 @@ fi
 %{_prefix}/lib/systemd/systemd-journal-remote
 %{_prefix}/lib/systemd/systemd-journal-upload
 %{_sysusersdir}/systemd-remote.conf
+%{_mandir}/man5/journal-remote.conf*
+%{_mandir}/man5/journal-upload.conf*
 %{_mandir}/man8/systemd-journal-gatewayd.*
 %{_mandir}/man8/systemd-journal-remote.*
 %{_mandir}/man8/systemd-journal-upload.*

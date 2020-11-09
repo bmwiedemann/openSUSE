@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Fri Nov  6 08:34:18 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Import commit fdce77ce2067f9dd90d816bad28b51efed0b6dc1
+
+  05fff5bd02 generator: use kmsg in system-level generators, journal otherwise
+  ecc07954de log: normalize log target condition check
+  d32ceea42b log: update comment
+  2ebad02b60 basic/virt: Detect PowerVM hypervisor (bsc#1176800)
+
+-------------------------------------------------------------------
+Mon Nov  2 15:17:20 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Simplify systemd-sysv-convert
+
+  - the previous code incorrectly assumed that the sysv init scripts
+    were uninstalled before %post get executed. It therefore save the
+    enablement state in %pre and restore it in %post. Now all is done
+    in %post (making --save option useless) and there's no more need
+    to remember the enablement state.
+
+  - "--save" option is a NOP but is still kept for backward
+    compatibility.
+
+  - the previous simplifcation made /var/lib/systemd/migrated no more
+    used.
+
+  - we do not search for units in /lib/systemd anymore, this shouldn't
+    be needed anymore these days especially since this path was only
+    used when systemd was introduced in openSUSE and it was never used
+    in SLE (checked SLE12-GA).
+
+  - the option --show has been dropped. It's never been used even
+    internally.
+
+  - the DB is populated only once even if the script was enabled at
+    multiple runlevels. The runlevel info was never used. A dummy
+    value is still added to keep the same format just in case.
+
+-------------------------------------------------------------------
+Wed Oct 21 09:52:38 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- No more need to clean the journal-upload stuff with --without=journal_remote
+
+  Since -Dremote build option has been introduced with meson, this
+  workaround is no more needed.
+
+-------------------------------------------------------------------
+Mon Oct 19 19:53:48 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Move journal-{remote,upload}.conf.5.gz man pages into systemd-journal_remote sub package
+
+-------------------------------------------------------------------
+Mon Oct 19 18:50:38 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Explicitly list files in /usr/lib/sysusers.d shipped by the main package
+
+  Currently only one config file is shipped in this directory and we
+  want to check any new files that may be added in the future.
+
+-------------------------------------------------------------------
+Mon Oct 19 17:29:38 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Use %{_modulesloaddir}, %{_environmentdir} and %{_modprobedir} wherever appropriate
+
+-------------------------------------------------------------------
 Tue Oct 13 09:29:40 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Do not include %{release} in a few places where we explicitly mention package versions
@@ -8,7 +73,7 @@ Tue Oct 13 09:29:40 UTC 2020 - Franck Bui <fbui@suse.com>
 -------------------------------------------------------------------
 Tue Oct 13 08:50:13 UTC 2020 - Franck Bui <fbui@suse.com>
 
-- Rely on systemd-default-settings for overriding system default settings
+- Rely on systemd-default-settings for overriding system default settings (bsc#1172517)
 
   The new branding packages now ships the drop-ins to customize
   systemd either for an openSUSE or a SLE ditro.
@@ -496,6 +561,7 @@ Thu Dec  5 14:00:03 UTC 2019 - Franck Bui <fbui@suse.com>
    - upstream commit 27c3112dcbd1b5f171c36c32550d9c6331375b0b (bsc#1155574)
    - upstream commit 21b40f16622f171a9969dc334d74fb5eb2f575c2 (bsc#1159814)
    - upstream commit 9b88bb5023dfa3cea406c14fdaa3d8e3e320907a (jsc#SLE-7689)
+   - upstream commit bc9ecd484f1ebfe0de8b567c90f6cd867fbd5894 (bsc#1141597)
 
   Legacy and obsolete symlinks have been finally dropped.
 
@@ -744,6 +810,7 @@ Tue Sep  3 15:10:10 UTC 2019 - Franck Bui <fbui@suse.com>
     - upstream commit 83cb24ac20baf19f7834931dcf6e03486b4c9c30 (bsc#1156213)
     - upstream commit a2dcb1d78737d3daa301ee63fbdd02837acb71a8 (bsc#1158485)
     - upstream commit 08185cff19efcb1d7d9fb7b546e7f516ab6dae91 (bsc#1165011)
+    - upstream commit 59c55e73eaee345e1ee67c23eace8895ed499693 (bsc#1177510)
 
   Drop 0001-Revert-insserv.conf-generator.patch as it's been dropped
   from branch SUSE/v243 while we were rebasing.
