@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Oct 27 16:41:29 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 1.18.1:
+  + Highlighted bugfixes in 1.18.1
+    - important security fixes
+    - bug fixes and memory leak fixes
+    - various stability and reliability improvements
+  + gst-plugins-bad changes:
+    - codecparsers: h264parser: guard against ref_pic_markings
+      overflow
+    - v4l2codecs: Various fixes
+    - h265parse: Don't enable passthrough by default
+    - srt: Fix "Fix timestamping"
+    - srt: Fixes for 1.4.2
+    - dtlsconnection: Ignore OpenSSL system call errors
+    - h265parse: set interlace-mode=interleaved on interlaced
+      content
+    - Replace GPL v2 with LGPL v2 in COPYING file
+    - srt: Consume the error from gst_srt_object_write
+    - srt: Check socket state before retrieving payload size
+    - x265enc: fix deadlock on reconfig
+    - webrtc: Require gstreamer-sdp in the pkg-config file
+    - srtsrc: Fix timestamping
+    - mfvideosrc: Use only the first video stream per device
+    - srtobject: typecast SRTO_LINGER to linger
+    - decklink: Correctly order the different dependent mode tables
+    - wasapisrc: Make sure that wasapisrc produces data in loopback
+      mode
+    - wpesrc: fix some caps leaks using the non-GL output
+    - smoothstreaming: clear live adapter on seek
+    - vtdec/vulkan: use Shared storage mode for IOSurface textures
+    - wpe: Move webview load waiting to WPEView
+    - wpe: Use proper callback for TLS errors signal handling
+    - kmssink: Do not source using padded width/height
+    - avtp: avtpaafdepay: fix crash when building caps
+    - opencv: set opencv_dep when option is disabled to fix the
+      build
+    - line21encoder: miscellaneous enhancements
+    - Hls youtube issues with urisourcebin/queue2
+    - rtmp2: Replace stats queue with stats lock
+    - rtmp2sink: support EOS event for graceful connection shutdown
+    - mpegtsmux: Make handling of sinkpads thread-safe
+    - hlssink2: Actually release splitmuxsink's pads
+    - mpegtsmux: Don't create streams with reserved PID
+
+-------------------------------------------------------------------
 Fri Oct 23 09:24:48 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add libgstcodecs and libgstvulkan to baselibs.conf

@@ -28,7 +28,7 @@
 %bcond_with faad
 
 Name:           gstreamer-plugins-bad
-Version:        1.18.0
+Version:        1.18.1
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -954,7 +954,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %endif
 
 %files -n gstreamer-transcoder
-%license COPYING.LIB
+%license COPYING
 %{_bindir}/gst-transcoder-%{gst_branch}
 %{_libdir}/gstreamer-%{gst_branch}/libgsttranscode.so
 %{_datadir}/gstreamer-%{gst_branch}/encoding-profiles/
