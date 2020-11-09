@@ -20,13 +20,13 @@
 %bcond_with    faad
 %bcond_without mpd_iso9660
 Name:           mpd
-Version:        0.22.2
+Version:        0.22.3
 Release:        0
 Summary:        Music Player Daemon
 License:        GPL-2.0-or-later
-URL:            https://www.musicpd.org
-Source0:        https://www.musicpd.org/download/%{name}/%{mver}/%{name}-%{version}.tar.xz
-Source1:        https://www.musicpd.org/download/%{name}/%{mver}/%{name}-%{version}.tar.xz.sig
+URL:            https://musicpd.org
+Source0:        https://musicpd.org/download/%{name}/%{mver}/%{name}-%{version}.tar.xz
+Source1:        https://musicpd.org/download/%{name}/%{mver}/%{name}-%{version}.tar.xz.sig
 Source2:        README.%{name}
 Source3:        %{name}-user.conf
 Source4:        %{name}.firewalld
