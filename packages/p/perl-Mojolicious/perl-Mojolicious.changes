@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov  7 03:19:45 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 8.64
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  8.64  2020-11-01
+    - Replaced prettify.js with highlight.js. (zakame)
+    - Fixed a bug in Mojo::DOM where the tree root would be checked for all pseudo-classes.
+    - Fixed a redefined subroutine warning in eval command. (elmar)
+
+-------------------------------------------------------------------
 Wed Oct 14 03:14:41 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 8.63
