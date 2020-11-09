@@ -147,7 +147,7 @@ suck less.
 %endif
 
 %package gstreamer-plugin
-Summary:        GStreamer plugin for the PackageKit installation management software
+Summary:        Install GStreamer codecs using PackageKit
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 Requires(post): update-alternatives
@@ -156,14 +156,11 @@ Recommends:     %{name} = %{version}
 Supplements:    (%{name} and gstreamer-plugins-base)
 
 %description gstreamer-plugin
-PackageKit is a system designed to make installing and updating
-software on your computer easier.  The primary design goal is to unify
-all the software graphical tools used in different distributions, and
-use some of the latest technology like PolicyKit to make the process
-suck less.
+The PackageKit GStreamer plugin allows any Gstreamer application to install
+codecs from configured repositories using PackageKit.
 
 %package gtk3-module
-Summary:        GTK3 backend for the PackageKit installation management software
+Summary:        Install fonts automatically using PackageKit
 License:        GPL-2.0-or-later
 Group:          System/Libraries
 Recommends:     %{name} = %{version}
@@ -171,11 +168,8 @@ Supplements:    (%{name} and gtk3)
 %glib2_gsettings_schema_requires
 
 %description gtk3-module
-PackageKit is a system designed to make installing and updating
-software on your computer easier.  The primary design goal is to unify
-all the software graphical tools used in different distributions, and
-use some of the latest technology like PolicyKit to make the process
-suck less.
+The PackageKit GTK3+ module allows any Pango application to install
+fonts from configured repositories using PackageKit.
 
 %package devel
 Summary:        Header files for development with PackageKit
