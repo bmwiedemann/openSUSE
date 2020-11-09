@@ -305,4 +305,12 @@
     nuspell backend. (forwarded request 832584 from badshah400)</comment>
     <requestid>832685</requestid>
   </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>cd1ca73c2de01a5d356135088177c185</srcmd5>
+    <version>2.2.8</version>
+    <time>1604926622</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846472</requestid>
+  </revision>
 </revisionlist>

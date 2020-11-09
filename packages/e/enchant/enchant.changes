@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  5 17:11:26 UTC 2020 - Timo Jyrinki <tjyrinki@suse.com>
+
+- Backport from upstream git a Voikko backend fix (bsc#1178489)
+  + Add Fix_back-ends_that_want_a_NUL-terminated_string.patch
+
+-------------------------------------------------------------------
 Tue Aug 18 05:57:28 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Enable nuspell backend where it is available (openSUSE >= 1550):

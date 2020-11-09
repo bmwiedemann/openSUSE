@@ -1,0 +1,81 @@
+From 7e729f1fda553ad3e2dceb0d362f07e161a9615e Mon Sep 17 00:00:00 2001
+From: Reuben Thomas <rrt@sc3d.org>
+Date: Thu, 15 Oct 2020 15:16:32 +0100
+Subject: [PATCH] Fix back-ends that want a NUL-terminated string (fix #259)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Voikko and Zemberek’s APIs assume a NUL-terminated string. Enchant does not
+guarantee to provide one, so copy and NUL-terminate the provided string in
+the check methods.
+---
+ providers/enchant_voikko.c     | 12 ++++++++----
+ providers/enchant_zemberek.cpp | 14 ++++++++++----
+ 2 files changed, 18 insertions(+), 8 deletions(-)
+
+diff --git a/providers/enchant_voikko.c b/providers/enchant_voikko.c
+index 4b82395..8c5cfa8 100644
+--- a/providers/enchant_voikko.c
++++ b/providers/enchant_voikko.c
+@@ -48,9 +48,11 @@
+  */
+ 
+ static int
+-voikko_dict_check (EnchantDict * me, const char *const word, size_t len _GL_UNUSED_PARAMETER)
++voikko_dict_check (EnchantDict * me, const char *const word, size_t len)
+ {
+-	int result = voikkoSpellCstr((struct VoikkoHandle *)me->user_data, word);
++	char *word_nul = strndup(word, len);
++	int result = voikkoSpellCstr((struct VoikkoHandle *)me->user_data, word_nul);
++	free(word_nul);
+ 	if (result == VOIKKO_SPELL_FAILED)
+ 		return 1;
+ 	else if (result == VOIKKO_SPELL_OK)
+@@ -61,9 +63,11 @@ voikko_dict_check (EnchantDict * me, const char *const word, size_t len _GL_UNUS
+ 
+ static char **
+ voikko_dict_suggest (EnchantDict * me, const char *const word,
+-		     size_t len _GL_UNUSED_PARAMETER, size_t * out_n_suggs)
++		     size_t len, size_t * out_n_suggs)
+ {
+-	char **voikko_sugg_arr = voikkoSuggestCstr((struct VoikkoHandle *)me->user_data, word);
++	char *word_nul = strndup(word, len);
++	char **voikko_sugg_arr = voikkoSuggestCstr((struct VoikkoHandle *)me->user_data, word_nul);
++	free(word_nul);
+ 	if (voikko_sugg_arr == NULL)
+ 		return NULL;
+ 	for (*out_n_suggs = 0; voikko_sugg_arr[*out_n_suggs] != NULL; (*out_n_suggs)++);
+diff --git a/providers/enchant_zemberek.cpp b/providers/enchant_zemberek.cpp
+index 83a895a..49ddfd7 100644
+--- a/providers/enchant_zemberek.cpp
++++ b/providers/enchant_zemberek.cpp
+@@ -142,18 +142,24 @@ extern "C" {
+ EnchantProvider *init_enchant_provider(void);
+ 
+ static int
+-zemberek_dict_check (EnchantDict * me, const char *const word, size_t len _GL_UNUSED_PARAMETER)
++zemberek_dict_check (EnchantDict * me, const char *const word, size_t len)
+ {
+     Zemberek *checker = (Zemberek *) me->user_data;
+-    return checker->checkWord(word);
++    char *word_nul = g_strndup(word, len);
++    int result = checker->checkWord(word_nul);
++    free(word_nul);
++    return result;
+ }
+ 
+ static char**
+ zemberek_dict_suggest (EnchantDict * me, const char *const word,
+-                       size_t len _GL_UNUSED_PARAMETER, size_t * out_n_suggs)
++                       size_t len, size_t * out_n_suggs)
+ {
+     Zemberek *checker = (Zemberek *) me->user_data;
+-    return checker->suggestWord (word, out_n_suggs);
++    char *word_nul = g_strndup(word, len);
++    char **result = checker->suggestWord(word_nul, out_n_suggs);
++    free(word_nul);
++    return result;
+ }
+ 
+ static void

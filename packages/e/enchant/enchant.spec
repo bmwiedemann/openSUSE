@@ -29,6 +29,8 @@ License:        LGPL-2.1-or-later
 URL:            https://abiword.github.io/enchant/
 Source:         https://github.com/AbiWord/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM Fix_back-ends_that_want_a_NUL-terminated_string.patch bsc#1178489 -- fix voikko backend in eg gspell
+Patch0:         Fix_back-ends_that_want_a_NUL-terminated_string.patch
 BuildRequires:  aspell-devel
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  gcc-c++
@@ -127,6 +129,7 @@ to develop applications that require these.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure \
