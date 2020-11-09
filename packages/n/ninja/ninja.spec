@@ -40,7 +40,10 @@ building them, quickly.
 
 %build
 export CFLAGS="%{optflags}"
-export CXXFLAGS="%{optflags}"
+%if "%__isa_bits" == "32"
+CFLAGS="$CFLAGS -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
+%endif
+export CXXFLAGS="$CFLAGS"
 python3 ./configure.py --bootstrap --verbose
 
 %install

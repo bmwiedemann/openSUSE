@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov  4 16:33:12 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- LFS fix for 32bit arch builds (gh#ninja-build/ninja#829)
+
+-------------------------------------------------------------------
 Mon Aug 24 20:25:43 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.10.1:
