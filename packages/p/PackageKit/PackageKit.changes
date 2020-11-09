@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  4 02:43:07 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Update summary and description of gstreamer-plugin and
+  gtk3-module subpackages in spec file (bsc#1104313).
+
+-------------------------------------------------------------------
 Fri Oct 30 03:12:47 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add PackageKit-bsc1169739.patch: main: notify the service manager
