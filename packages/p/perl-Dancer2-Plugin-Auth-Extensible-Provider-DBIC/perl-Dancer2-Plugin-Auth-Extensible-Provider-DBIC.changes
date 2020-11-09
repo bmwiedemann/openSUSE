@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Wed Nov  4 11:05:40 UTC 2020 - Frank Schreiner <FSchreiner@suse.com>
+
+initial package 0.624
+ * created by cpanspec 1.78.09
+ * Added cpanspec.yml
+   * BuildRequires for Test::MockDateTime 
+   * BuildRequires for HTTP::Cookies
+   * BuildRequires for DBD::SQLite
