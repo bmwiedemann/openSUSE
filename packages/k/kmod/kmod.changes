@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  6 11:41:50 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add usr-lib-modprobe.patch [boo#1092648]
+
+-------------------------------------------------------------------
 Tue Jul  7 13:05:53 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop old RPM constructs from the build recipe.

@@ -35,6 +35,7 @@ Patch3:         0009-libkmod-Implement-filtering-of-unsupported-modules-o.patch
 Patch4:         0010-modprobe-Implement-allow-unsupported-modules.patch
 Patch5:         0011-Do-not-filter-unsupported-modules-when-running-a-van.patch
 Patch6:         0012-modprobe-print-unsupported-status.patch
+Patch7:         usr-lib-modprobe.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  kernel-default-devel

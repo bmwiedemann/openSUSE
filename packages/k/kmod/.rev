@@ -519,4 +519,12 @@
     <comment>- Drop kmod-compat (boo#1173353):</comment>
     <requestid>819240</requestid>
   </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>155b9d58785c3198020700c9e38bf60d</srcmd5>
+    <version>27</version>
+    <time>1604926614</time>
+    <user>dimstar_suse</user>
+    <comment>- Add usr-lib-modprobe.patch [boo#1092648]</comment>
+    <requestid>846461</requestid>
+  </revision>
 </revisionlist>

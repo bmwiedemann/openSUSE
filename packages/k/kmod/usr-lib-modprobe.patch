@@ -1,0 +1,19 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2020-11-06 12:38:10.597281938 +0100
+References: https://bugzilla.suse.com/show_bug.cgi?id=1092648
+---
+ libkmod/libkmod.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+Index: kmod-27/libkmod/libkmod.c
+===================================================================
+--- kmod-27.orig/libkmod/libkmod.c
++++ kmod-27/libkmod/libkmod.c
+@@ -64,6 +64,7 @@ static struct _index_files {
+ static const char *default_config_paths[] = {
+ 	SYSCONFDIR "/modprobe.d",
+ 	"/run/modprobe.d",
++	"/usr/lib/modprobe.d",
+ 	"/lib/modprobe.d",
+ 	NULL
+ };
