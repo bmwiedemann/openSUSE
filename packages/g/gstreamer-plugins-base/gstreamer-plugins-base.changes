@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Oct 27 15:55:35 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 1.18.1:
+  + Highlighted bugfixes in 1.18.1
+    - important security fixes
+    - bug fixes and memory leak fixes
+    - various stability and reliability improvements
+  + gst-plugins-base changes:
+    - theoradec: Set telemetry options only if they are nonzero
+    - glslstage: delete shader on finalize of stage
+    - urisourcebin: Fix crash caused by use after free
+    - decodebin3: Store stream-start event on output pad before
+      exposing it
+    - Add some missing nullable annotations
+    - typefind/xdgmime: Validate mimetypes to be valid
+      GstStructure names before using them
+    - uridecodebin3: Forward upstream events to decodebin3 directly
+    - video-converter: Add fast paths from v210 to I420/YV12, Y42B,
+      UYVY and YUY2
+    - videoaggregator: Limit accepted caps by template caps
+    - gstrtpbuffer: fix header extension length validation
+    - decodebin3: only force streams-selected seqnum after a
+      select-streams
+    - videodecoder: don't copy interlace-mode from reference state
+    - enable abi checks
+    - multihandlesink: Don't pass NULL caps to gst_caps_is_equal
+    - audio: video: Fix in/outbuf confusion of transform_meta
+    - meson: Always wrap "prefix" option with join_paths() to make
+      Windows happy
+    - videoaggregator: ensure peek_next_sample() uses the correct
+      caps
+    - meson: Actually build gstgl without implicit include dirs
+    - videoaggregator: Don't require any pads to be configured for
+      negotiating source pad caps
+    - gst-libs: gl: Fix documentation typo and clarify
+      gl_memory_texsubimage
+    - audioaggregator: Reset offset if the output rate is
+      renegotiated
+    - video-anc: Implement transform functions for AFD/Bar metas
+    - appsrc: Wake up the create() function on caps changes
+    - rtpbasepayload: do not forget delayed segment when forwarding
+      gaps
+
+-------------------------------------------------------------------
+Tue Oct 13 10:13:02 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from gl#gstreamer/gst-plugins-base#221 to support two
+  new CEA 608 caption formats:
+  * MR-221-video-anc-add-two-new-CEA-608-caption-formats.patch
+
+-------------------------------------------------------------------
 Wed Sep  2 12:21:48 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 1.18.0:

@@ -1,0 +1,111 @@
+https://gitlab.freedesktop.org/gstreamer/gst-plugins-base/-/merge_requests/221
+
+diff --git a/gst-libs/gst/video/video-anc.c b/gst-libs/gst/video/video-anc.c
+index 102240ba003586ce9d29e5c2951f20751068c36a..3d6054477a61564bbc0a7b6f51374de200c71b6d 100644
+--- a/gst-libs/gst/video/video-anc.c
++++ b/gst-libs/gst/video/video-anc.c
+@@ -1028,6 +1028,8 @@ gst_buffer_add_video_caption_meta (GstBuffer * buffer,
+   switch (caption_type) {
+     case GST_VIDEO_CAPTION_TYPE_CEA608_RAW:
+     case GST_VIDEO_CAPTION_TYPE_CEA608_S334_1A:
++    case GST_VIDEO_CAPTION_TYPE_CEA608_SCTE_20:
++    case GST_VIDEO_CAPTION_TYPE_CEA608_ADDITIONAL_CEA_608:
+     case GST_VIDEO_CAPTION_TYPE_CEA708_RAW:
+     case GST_VIDEO_CAPTION_TYPE_CEA708_CDP:
+       break;
+@@ -1077,6 +1079,10 @@ gst_video_caption_type_from_caps (const GstCaps * caps)
+       return GST_VIDEO_CAPTION_TYPE_CEA608_RAW;
+     } else if (g_strcmp0 (format, "s334-1a") == 0) {
+       return GST_VIDEO_CAPTION_TYPE_CEA608_S334_1A;
++    } else if (g_strcmp0 (format, "scte-20") == 0) {
++      return GST_VIDEO_CAPTION_TYPE_CEA608_SCTE_20;
++    } else if (g_strcmp0 (format, "additional-cea-608") == 0) {
++      return GST_VIDEO_CAPTION_TYPE_CEA608_ADDITIONAL_CEA_608;
+     }
+   } else if (gst_structure_has_name (s, "closedcaption/x-cea-708")) {
+     if (g_strcmp0 (format, "cc_data") == 0) {
+@@ -1114,6 +1120,14 @@ gst_video_caption_type_to_caps (GstVideoCaptionType type)
+       caption_caps = gst_caps_new_simple ("closedcaption/x-cea-608",
+           "format", G_TYPE_STRING, "s334-1a", NULL);
+       break;
++    case GST_VIDEO_CAPTION_TYPE_CEA608_SCTE_20:
++      caption_caps = gst_caps_new_simple ("closedcaption/x-cea-608",
++          "format", G_TYPE_STRING, "scte-20", NULL);
++      break;
++    case GST_VIDEO_CAPTION_TYPE_CEA608_ADDITIONAL_CEA_608:
++      caption_caps = gst_caps_new_simple ("closedcaption/x-cea-608",
++          "format", G_TYPE_STRING, "additional-cea-608", NULL);
++      break;
+     case GST_VIDEO_CAPTION_TYPE_CEA708_RAW:
+       caption_caps = gst_caps_new_simple ("closedcaption/x-cea-708",
+           "format", G_TYPE_STRING, "cc_data", NULL);
+diff --git a/gst-libs/gst/video/video-anc.h b/gst-libs/gst/video/video-anc.h
+index bb5883c5207e88314467ead1209f76f64c8c4dc0..f3a1d69b9a6300acda45fa2c30371043e7f1d0cd 100644
+--- a/gst-libs/gst/video/video-anc.h
++++ b/gst-libs/gst/video/video-anc.h
+@@ -357,7 +357,53 @@ GstVideoBarMeta *gst_buffer_add_video_bar_meta (GstBuffer * buffer, guint8 field
+  *      offset relative to the base-line of the original image format (line 9
+  *      for 525-line field 1, line 272 for 525-line field 2, line 5 for
+  *      625-line field 1 and line 318 for 625-line field 2).
+- * @GST_VIDEO_CAPTION_TYPE_CEA708_RAW: CEA-708 as cc_data byte triplets. They
++ * @GST_VIDEO_CAPTION_TYPE_CEA608_SCTE_20: CEA 608 closed caption data as defined in
++ *      ANSI/SCTE 20
++ *      https://www.scte.org/documents/pdf/standards/SCTE%2020%202012.pdf
++ *      Section 5.5
++ *      This format is used for the carriage of CEA 608 closed caption data
++ *      originating in Vertical Blanking Interval (VBI) service, and transported
++ *      in MPEG-2 compliant bitstreams.
++ *      The first byte must equal 1000 0001 to indicate valid data.
++ *      The next five bits specify the number of CEA 608 closed caption triplets,
++ *      followed by the sequence of triplets, laid out as follows for each triplet:
++ *      cc priority : 2 bits
++ *      field number: 2 bits
++ *      line offset:  5 bits
++ *      cc data 1:    8 bits
++ *      cc data 2:    8 bits
++ *      Notes:
++ *      cc_priority is a number between 0 and 3 indicating the priority of constructs
++ *      in picture reconstruction where different levels of hardware capability exist
++ *      field number specifies the number of the field, in display order, from  which
++ *      the VBI data originated, specified as follows:
++ *      00 Forbidden
++ *      01 1st display field
++ *      10 2nd display field
++ *      11 3rd display field (the repeated field in film mode).
++ *      line offset is a five-bit integer giving the offset in lines from which
++ *      the VBI data originated, relative to the base VBI frame line
++ *      (line 10 of NTSC field 1, line 273 of NTSC field 2, line 6 of PAL field 1,
++ *      and line 319 of PAL field 2).
++ * @GST_VIDEO_CAPTION_TYPE_CEA608_ADDITIONAL_CEA_608: CEA-608 byte triplets as defined
++ *      in ANSI/SCTE 21
++ *      6.4 Additional CEA-608 Data
++ *      https://www.scte.org/documents/pdf/Standards/ANSI_SCTE%2021%202012.pdf.
++ *      This format, also known as telecine, is used for the carriage of CEA 608
++ *      closed caption data originating in Vertical Blanking Interval (VBI) service,
++ *      and transported over cable digital transport streams.
++ *      The second and third byte of the byte triplet
++ *      is the raw CEA608 data, the first byte is a bitfield: The top/7th bit must
++ *      equal 1 to indicate a valid triplet. Bits 6-2 represent the
++ *      line offset relative to the base-line of the original image format (line 9
++ *      for 525-line field 1, line 272 for 525-line field 2, line 5 for
++ *      625-line field 1 and line 318 for 625-line field 2).
++ *      Bits 1-0 represent the field number, as follows:
++ *      00 Forbidden
++ *      01 1st display field
++ *      10 2nd display field
++ *      11 3rd display field (the repeated field in film mode).
++  * @GST_VIDEO_CAPTION_TYPE_CEA708_RAW: CEA-708 as cc_data byte triplets. They
+  *      can also contain 608-in-708 and the first byte of each triplet has to
+  *      be inspected for detecting the type.
+  * @GST_VIDEO_CAPTION_TYPE_CEA708_CDP: CEA-708 (and optionally CEA-608) in
+@@ -373,7 +419,9 @@ typedef enum {
+   GST_VIDEO_CAPTION_TYPE_CEA608_RAW		= 1,
+   GST_VIDEO_CAPTION_TYPE_CEA608_S334_1A		= 2,
+   GST_VIDEO_CAPTION_TYPE_CEA708_RAW		= 3,
+-  GST_VIDEO_CAPTION_TYPE_CEA708_CDP		= 4
++  GST_VIDEO_CAPTION_TYPE_CEA708_CDP		= 4,
++  GST_VIDEO_CAPTION_TYPE_CEA608_SCTE_20 = 5,
++  GST_VIDEO_CAPTION_TYPE_CEA608_ADDITIONAL_CEA_608 = 6
+ } GstVideoCaptionType;
+ 
+ GST_VIDEO_API

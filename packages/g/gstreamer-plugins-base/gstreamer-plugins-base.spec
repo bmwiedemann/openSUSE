@@ -20,7 +20,7 @@
 %define gst_branch 1.0
 %define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
 Name:           gstreamer-plugins-base
-Version:        1.18.0
+Version:        1.18.1
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -32,6 +32,7 @@ Source2:        baselibs.conf
 # PATCH-FIX-OPENSUSE gstreamer-plugins-base-gl-deps.patch dimstar@opensuse.org -- Local workaround for https://gitlab.freedesktop.org/gstreamer/gst-plugins-base/issues/735
 Patch3:         gstreamer-plugins-base-gl-deps.patch
 Patch4:         add_wayland_dep_to_tests.patch
+Patch5:         MR-221-video-anc-add-two-new-CEA-608-caption-formats.patch
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  cdparanoia-devel
 BuildRequires:  fdupes
@@ -94,7 +95,7 @@ BuildRequires:  pkgconfig(graphene-1.0)
 %endif
 Requires:       gstreamer >= %{gstreamer_req_version}
 Supplements:    gstreamer
-Conflicts:      gstreamer-plugins-bad < 1.18.0
+Conflicts:      gstreamer-plugins-bad < 1.18.1
 # Generic name, never used in SuSE:
 Provides:       gst-plugins-base = %{version}
 Obsoletes:      libgstbadvideo-1_0-0
