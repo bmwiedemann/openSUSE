@@ -1,0 +1,6 @@
+<package name="perl-Dancer2-Plugin-WebSocket" project="openSUSE:Factory">
+  <title>perl-Dancer2-Plugin-WebSocket - Add a websocket interface to your Dancers app</title>
+  <description>'Dancer2::Plugin::WebSocket' provides an interface to Plack::App::WebSocket and allows to interact with the webSocket connections within the Dancer app. Plack::App::WebSocket, and thus this plugin, requires a plack server that supports the psgi _streaming_, _nonblocking_ and _io_. Twiggy is the most popular server fitting the bill.</description>
+  <devel project="devel:languages:perl" package="perl-Dancer2-Plugin-WebSocket"/>
+  <url>https://metacpan.org/release/Dancer2-Plugin-WebSocket</url>
+</package>
