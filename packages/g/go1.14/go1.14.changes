@@ -1,8 +1,22 @@
 -------------------------------------------------------------------
+Fri Nov  6 14:50:07 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.14.11 (released 2020-11-05) includes fixes to the runtime,
+  and the net/http and time packages.
+  Refs boo#1164903 go1.14 release tracking
+  * go#42155 time: Location interprets wrong timezone (DST) with slim zoneinfo
+  * go#42112 x/net/http2: the first write error on a connection will cause all subsequent write requests to fail blindly
+  * go#41991 runtime: macOS-only segfault on 1.14+ with "split stack overflow"
+  * go#41913 net/http: request.Clone doesn't deep copy TransferEncoding
+  * go#41703 runtime: macOS syscall.Exec can get SIGILL due to preemption signal
+  * go#41386 x/net/http2: connection-level flow control not returned if stream errors, causes server hang
+
+-------------------------------------------------------------------
 Thu Oct 15 02:42:36 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.14.10 (released 2020-10-14) includes fixes to the compiler,
   runtime, and the plugin and testing packages.
+  Refs boo#1164903 go1.14 release tracking
   * go#41815 database/sql: TestTxCannotCommitAfterRollback failures on windows-amd64-2008 builder
   * go#41796 runtime: memory corruption from stack-allocated defer on 32-bit
   * go#41619 memory corruption on linux/386 with float32 arithmetic, GO386=387, buildmode pie/c-archive

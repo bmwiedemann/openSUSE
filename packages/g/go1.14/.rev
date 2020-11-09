@@ -172,4 +172,20 @@ preparation for submit to SUSE. Remove %defattr(-,root,root,-) in %files</commen
   * go#40642 runtime: race between stack shrinking and channel send/recv leads to bad sudog values (forwarded request 841835 from jfkw)</comment>
     <requestid>841837</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f8ec97ff879d98345ace50a44e82b7ef</srcmd5>
+    <version>1.14.11</version>
+    <time>1604926636</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.14.11 (released 2020-11-05) includes fixes to the runtime,
+  and the net/http and time packages.
+  Refs boo#1164903 go1.14 release tracking
+  * go#42155 time: Location interprets wrong timezone (DST) with slim zoneinfo
+  * go#42112 x/net/http2: the first write error on a connection will cause all subsequent write requests to fail blindly
+  * go#41991 runtime: macOS-only segfault on 1.14+ with &quot;split stack overflow&quot;
+  * go#41913 net/http: request.Clone doesn't deep copy TransferEncoding
+  * go#41703 runtime: macOS syscall.Exec can get SIGILL due to preemption signal
+  * go#41386 x/net/http2: connection-level flow control not returned if stream errors, causes server hang (forwarded request 846530 from jfkw)</comment>
+    <requestid>846532</requestid>
+  </revision>
 </revisionlist>
