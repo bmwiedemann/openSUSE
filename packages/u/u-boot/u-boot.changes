@@ -13,6 +13,7 @@ Mon Oct 12 09:55:35 UTC 2020 - Matwey Kornilov <matwey.kornilov@gmail.com>
 Thu Oct  8 10:04:51 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to v2020.10
+  Fixes CVE-2020-8432 (bsc#1162198) and CVE-2020-10648 (bsc#1167209).
 
 -------------------------------------------------------------------
 Tue Oct  6 13:05:30 UTC 2020 - Andreas Schwab <schwab@suse.de>
