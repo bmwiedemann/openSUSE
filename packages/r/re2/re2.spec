@@ -16,17 +16,17 @@
 #
 
 
-%global longver 2020-10-01
+%global longver 2020-11-01
 %global shortver %(echo %{longver}|sed 's|-||g')
-%define libname libre2-8
+%define libname libre2-9
 Name:           re2
 Version:        %{shortver}
 Release:        0
 Summary:        C++ fast alternative to backtracking RE engines
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-URL:            https://github.com/google/re2/
-Source0:        https://github.com/google/re2/archive/%{longver}.tar.gz#/%{name}-%{longver}.tar.gz
+URL:            https://github.com/google/re2
+Source0:        %{url}/archive/%{longver}/%{name}-%{longver}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig

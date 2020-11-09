@@ -295,4 +295,14 @@
     <comment></comment>
     <requestid>840948</requestid>
   </revision>
+  <revision rev="35" vrev="36">
+    <srcmd5>0b74c1a083c0e8794fe1c9f5b24b58c4</srcmd5>
+    <version>MACRO</version>
+    <time>1604926578</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2020-11-01:
+  * Refactoring and fixes
+</comment>
+    <requestid>846344</requestid>
+  </revision>
 </revisionlist>
