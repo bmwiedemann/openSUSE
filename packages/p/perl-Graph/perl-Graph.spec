@@ -17,7 +17,7 @@
 
 
 Name:           perl-Graph
-Version:        0.9707
+Version:        0.9708
 Release:        0
 %define cpan_name Graph
 Summary:        Graph data structures and algorithms
@@ -31,6 +31,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Heap) >= 0.80
+BuildRequires:  perl(Test::More) >= 0.82
 Requires:       perl(Heap) >= 0.80
 %{perl_requires}
 
