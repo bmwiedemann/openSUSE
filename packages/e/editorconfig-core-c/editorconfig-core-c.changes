@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov  7 09:54:20 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- editorconfig-core-c 0.12.4:
+  * fix various stability issues caused by memory handling
+- drop upstream patch now included:
+  * 0001-fix-prevent-buffer-overflow-74.patch
+
+-------------------------------------------------------------------
 Fri Aug 28 05:48:06 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix crash when parsing certain files (boo#1175824):

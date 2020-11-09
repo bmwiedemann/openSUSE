@@ -1,7 +1,7 @@
 #
 # spec file for package editorconfig-core-c
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,17 @@
 
 
 Name:           editorconfig-core-c
-Version:        0.12.3
+Version:        0.12.4
 Release:        0
 Summary:        EditorConfig core library written in C
 License:        BSD-2-Clause AND BSD-3-Clause
 Group:          Development/Libraries/C and C++
-URL:            http://editorconfig.org/
+URL:            https://editorconfig.org/
 Source:         https://github.com/editorconfig/editorconfig-core-c/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 Patch0:         editorconfig-core-c-0.12.1-install_paths.patch
 Patch1:         editorconfig-core-c-0.12.1-no_timestamp.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-fix-prevent-buffer-overflow-74.patch
-BuildRequires:  cmake >= 2.8.12
+BuildRequires:  cmake >= 3.5.1
 BuildRequires:  doxygen
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libpcre2-8)
@@ -90,7 +88,7 @@ This package contains files for developing and building with %{name}
 %cmake \
 	-DLIB_SUFFIX=%{_lib} \
 	-DINSTALL_HTML_DOC=ON
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
