@@ -1,7 +1,7 @@
 #
 # spec file for package udisks2
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define libudisks lib%{name}-%{somajor}
 %define libblockdev_version 2.19
 Name:           udisks2
-Version:        2.8.4
+Version:        2.9.1
 Release:        0
 Summary:        Disk Manager
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -61,6 +61,7 @@ BuildRequires:  pkgconfig(polkit-agent-1) >= 0.102
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.102
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
+BuildRequires:  pkgconfig(uuid)
 Requires:       %{libudisks} = %{version}
 # For LUKS devices
 Requires:       cryptsetup
@@ -236,42 +237,28 @@ ln -sf %{_sbindir}/service %{buildroot}/%{_sbindir}/rc%{name}
 
 %pre -n %{name}
 %service_add_pre udisks2.service
-%service_add_pre clean-mount-point@.service
 
 %post -n %{name}
 %{?udev_rules_update:%udev_rules_update}
 %service_add_post udisks2.service
-%service_add_post clean-mount-point@.service
 
 %preun -n %{name}
 %service_del_preun udisks2.service
-SERVICES=$(systemctl show --property=Names clean-mount-point@*.service | sed -e 's/Names=//' -e '/^$/d')
-if [ -n "$SERVICES" ]; then
-    for service in $SERVICES; do
-        %service_del_preun $service
-    done
-fi
 
 %postun -n %{name}
 %service_del_postun udisks2.service
-SERVICES=$(systemctl show --property=Names clean-mount-point@*.service | sed -e 's/Names=//' -e '/^$/d')
-if [ -n "$SERVICES" ]; then
-    for service in $SERVICES; do
-        %service_del_postun $service
-    done
-fi
 
 %pre -n %{libudisks}_zram
-%service_add_pre zram-setup@.service
+%service_add_pre udisks2-zram-setup@.service
 
 %post -n %{libudisks}_zram
-%service_add_post zram-setup@.service
+%service_add_post udisks2-zram-setup@.service
 
 %preun -n %{libudisks}_zram
-%service_del_preun zram-setup@.service
+%service_del_preun udisks2-zram-setup@.service
 
 %postun -n %{libudisks}_zram
-%service_del_postun zram-setup@.service
+%service_del_postun udisks2-zram-setup@.service
 
 %files
 %doc AUTHORS NEWS
@@ -280,9 +267,9 @@ fi
 %{_prefix}/lib/tmpfiles.d/udisks2.conf
 %{_datadir}/bash-completion/completions/udisksctl
 %{_unitdir}/udisks2.service
-%{_unitdir}/clean-mount-point@.service
 %dir %{_udevrulesdir}
 %{_udevrulesdir}/80-udisks2.rules
+%{_udevrulesdir}/90-udisks2-zram.rules
 %{_sbindir}/rc%{name}
 %{_sbindir}/umount.udisks2
 %dir %{_libexecdir}/udisks2
@@ -313,6 +300,12 @@ fi
 %dir %{_includedir}/udisks2/udisks
 %{_includedir}/udisks2/udisks/*.h
 %{_libdir}/pkgconfig/udisks2.pc
+%{_libdir}/pkgconfig/udisks2-bcache.pc
+%{_libdir}/pkgconfig/udisks2-btrfs.pc
+%{_libdir}/pkgconfig/udisks2-lsm.pc
+%{_libdir}/pkgconfig/udisks2-lvm2.pc
+%{_libdir}/pkgconfig/udisks2-vdo.pc
+%{_libdir}/pkgconfig/udisks2-zram.pc
 %{_datadir}/gir-1.0/UDisks-2.0.gir
 
 %files -n %{libudisks}_bcache
@@ -351,7 +344,7 @@ fi
 %dir %{_libdir}/udisks2/modules
 %{_libdir}/udisks2/modules/libudisks2_zram.so
 %{_datadir}/polkit-1/actions/org.freedesktop.UDisks2.zram.policy
-%{_unitdir}/zram-setup@.service
+%{_unitdir}/udisks2-zram-setup@.service
 
 %files lang -f udisks2.lang
 

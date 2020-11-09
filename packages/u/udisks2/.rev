@@ -329,4 +329,59 @@ Security fix: Bug 865854, CVE-2014-0004. (forwarded request 225422 from pwieczor
     <comment></comment>
     <requestid>749274</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>a72ccda451a80efdf9acca76ae56e129</srcmd5>
+    <version>2.9.1</version>
+    <time>1604926574</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.9.1:
+  + This is mostly a bugfix release, notable changes include:
+    - active modules are now tracked in a daemon state file and 
+      are automatically reloaded on next startup in case of 
+      previous unclean daemon shutdown
+    - further improvements in object property updates while 
+      handling method calls
+    - zram module fixes:
+      + compatibility improvements with existing zram generators 
+        and toolkits
+      + the zram-setup@.service systemd unit has been renamed to 
+        udisks2-zram-setup@.service
+      + related udev rules have been separated into 
+        90-udisks2-zram.rules
+      + the zram.conf.d path is now configurable and defaults to 
+        /usr/lib/zram.conf.d
+- Update to version 2.9.0:
+  + This 2.9.0 release brings many changes to the daemon core, 
+    internal modularity and the libudisks2 library. 
+    No public API has been removed, there is a couple of 
+    deprecations however.
+  + There's a major change in how and when D-Bus object properties 
+    are updated. As a general rule when a method call returns 
+    affected objects should now have their properties updated by 
+    that moment. This is an ongoing task and while majority of the 
+    daemon API has been covered, there are pending issues in some 
+    of the modules.
+  + Configurable mount options is a new big feature for this 
+    release, allowing sysadmins to re-define default mount options 
+    for each filesystem type. Extensive documentation is available 
+    at http://storaged.org/doc/udisks2-api/latest/mount_options.html
+  + Internal module API has been reworked, modules should now be 
+    enabled separately via the new EnableModule() call that also 
+    reports initialization failures. 
+    The old org.freedesktop.UDisks2.Manager.EnableModules() call 
+    has been deprecated.
+  + Additional feature highlights:
+    - building the daemon can now be disabled via configure switch, 
+      only libudisks2 will be built
+    - removed the systemd mount cleanup service, mount state is now 
+      tracked separately for persistent and non-persistent mount 
+      points and cleanup of lingering persistent mount points is 
+      performed on daemon startup (e.g. on system boot)
+    - new LVM-VDO integration, deprecated the standalone VDO module
+    - added support for (un)locking BitLocker devices
+    - libudisks2 now includes generated GDBus code for compiled-in 
+      modules, separate pkg-config files are provided as well
+</comment>
+    <requestid>846944</requestid>
+  </revision>
 </revisionlist>
