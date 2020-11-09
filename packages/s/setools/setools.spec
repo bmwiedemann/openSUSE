@@ -17,6 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# As soon as python38 is introduced as flavor, we need this:
+%{?!python3_primary_provider:%define python3_primary_provider %{lua: \
+l,c = posix.readlink("/usr/bin/python3") \
+flavor = l:gsub("%.", ""):sub(0,-1) \
+print(rpm.expand("%{?" .. flavor .. "_prefix}%{!?" .. flavor .. "_prefix:python3}")) \
+}}
 
 # doesn't work for python 2
 %define skip_python2 1
@@ -29,13 +35,13 @@ Summary:        Policy analysis tools for SELinux
 License:        GPL-2.0-only
 Group:          System/Management
 Source:         https://github.com/SELinuxProject/setools/releases/download/%{version}/setools-%{version}.tar.bz2
-BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  libselinux-devel
 BuildRequires:  libsepol-devel
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-Cython
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 Requires:       setools-console = %{version}-%{release}
 Requires:       setools-gui = %{version}-%{release}
 
@@ -64,16 +70,20 @@ This package includes the following console tools:
   seinfoflow      Information flow analysis tool
   sediff          Semantic policy difference tool
 
-%package -n python3-setools
+%package -n %{python3_primary_provider}-setools
 Summary:        Python bindings for SELinux policy analysis
 License:        LGPL-2.0-only
 Group:          Development/Languages/Python
 Requires:       python
 Requires:       python3-networkx
-Obsoletes:      python-setools < %{version}
+Obsoletes:      python-setools < %{version}-%{release}
 Provides:       python-setools = %{version}-%{release}
+%if "%{python3_primary_provider}" != "python3"
+Obsoletes:      python3-setools < %{version}-%{release}
+Provides:       python3-setools = %{version}-%{release}
+%endif
 
-%description -n python3-setools
+%description -n %{python3_primary_provider}-setools
 SETools is a collection of graphical tools, command-line tools, and
 libraries designed to facilitate SELinux policy analysis.
 
@@ -97,17 +107,16 @@ This package includes the following graphical tools:
 %setup -q -n %{name}
 
 %build
-%python_build
+%{expand:%%%{python3_primary_provider}_build}
 
 %install
-%python_install
-%fdupes -s %{buildroot}%{python3_sitearch}
+%{expand:%%%{python3_primary_provider}_install}
+%fdupes -s %{buildroot}%{expand:%%%{python3_primary_provider}_sitearch}
 
-%files -n python3-setools
+%files -n %{python3_primary_provider}-setools
 %defattr(-,root,root,-)
-%dir %{python3_sitearch}/setools/
-%{python3_sitearch}/setools/*
-%{python3_sitearch}/setools*egg-info*
+%{expand:%%%{python3_primary_provider}_sitearch}/setools
+%{expand:%%%{python3_primary_provider}_sitearch}/setools-%{version}*-info
 
 %files console
 %defattr(-,root,root,-)
@@ -130,7 +139,7 @@ This package includes the following graphical tools:
 
 %files gui
 %defattr(-,root,root,-)
-%{python3_sitearch}/setoolsgui*
+%{expand:%%%{python3_primary_provider}_sitearch}/setoolsgui
 %{_bindir}/apol
 %{_mandir}/man1/apol.1.gz
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  3 17:56:44 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Stay on a single python3 flavor even if there are more than one
+  gh#openSUSE/python-rpm-macros#73 
+
+-------------------------------------------------------------------
 Wed Oct 21 07:29:51 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Cleanup BuildRequires
