@@ -7,4 +7,12 @@
     <comment>That is a new package required by upgraded package psutils</comment>
     <requestid>835992</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>42de0216c6001c985b38c20898f34a00</srcmd5>
+    <version>2.3</version>
+    <time>1604926631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846490</requestid>
+  </revision>
 </revisionlist>

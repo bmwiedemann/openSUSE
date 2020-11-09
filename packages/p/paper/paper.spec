@@ -1,5 +1,5 @@
 #
-# spec file for package *
+# spec file for package paper
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -17,16 +17,16 @@
 
 
 Name:           paper
-Version:        2.2
+Version:        2.3
 Release:        0
 Summary:        Enables users to indicate their preferred paper size
 License:        GPL-3.0-or-later
 URL:            https://github.com/rrthomas/paper
 Source:         https://github.com/rrthomas/paper/releases/download/v%{version}/paper-%{version}.tar.gz
-BuildRequires:  automake
-BuildRequires:  perl
 BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  help2man
+BuildRequires:  perl
 
 %description
 This package enables users to indicate their preferred paper
@@ -55,6 +55,5 @@ can also be used directly (see paperspecs(5)).
 %{_libexecdir}/localepaper
 %{_mandir}/man1/paper.1.gz
 %{_mandir}/man5/paperspecs.5.gz
-
 
 %changelog
