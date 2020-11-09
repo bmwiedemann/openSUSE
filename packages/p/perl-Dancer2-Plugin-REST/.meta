@@ -1,0 +1,5 @@
+<package name="perl-Dancer2-Plugin-REST" project="openSUSE:Factory">
+  <title>perl-Dancer2-Plugin-REST - Plugin for writing RESTful apps with Dancer2</title>
+  <description>This plugin helps you write a RESTful webservice with Dancer2.</description>
+  <devel project="devel:languages:perl" package="perl-Dancer2-Plugin-REST"/>
+</package>
