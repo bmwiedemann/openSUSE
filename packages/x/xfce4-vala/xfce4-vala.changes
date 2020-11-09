@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov  8 20:27:08 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Add bindings to libxfce4ui-2
+- Add bcond to build package using git master source 
+
+-------------------------------------------------------------------
 Fri Jun  2 20:42:27 UTC 2017 - dimstar@opensuse.org
 
 - Simplify situation around vala versions:
