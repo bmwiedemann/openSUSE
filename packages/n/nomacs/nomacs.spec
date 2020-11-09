@@ -24,6 +24,7 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://nomacs.org/
 Source:         https://github.com/nomacs/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         quazip1_cmake_remove_after_new_version.diff
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -56,6 +57,7 @@ differences (e.g. schemes of architects to show the progress).
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 pushd ImageLounge/

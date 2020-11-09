@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 29 19:29:54 UTC 2020 - Petr Vanek <petr@yarpen.cz>
+
+- QuaZip1 migration
+   * patch quazip1_cmake_remove_after_new_version.diff also
+     sent to the upstream
+
+-------------------------------------------------------------------
 Fri Aug  7 00:29:08 UTC 2020 - Namor Barcode <z1trus@gmx.com> - 3.16.224
 
 - Update to version 3.16.224
