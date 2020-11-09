@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov  5 15:53:37 UTC 2020 - Marketa Machova <mmachova@suse.com>
+
+- Update to 2.2.1
+  * #38: Retry to lock resource if zc.lockfile.LockError is raised. 
+    Fix needed for pytest-xdist. (StabbarN)
+  * #42: Retry on zc.lockfile.LockError in file_lock, use existing 
+    timeout kwarg (mshriver)
+
+-------------------------------------------------------------------
 Mon Jun 29 12:05:26 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 2.1.0
