@@ -25,7 +25,7 @@
 %endif
 %bcond_with sqlite3
 Name:           mariadb-connector-c
-Version:        3.1.9
+Version:        3.1.11
 Release:        0
 Summary:        MariaDB connector in C
 License:        LGPL-2.1-or-later
@@ -117,6 +117,10 @@ This package holds the development files.
 %patch4 -p1
 
 %build
+# plugin types seems to require no aliasing assumptions
+%define _lto_cflags %{nil}
+export CFLAGS="%{optflags} -fno-strict-aliasing"
+
 %cmake \
   %if %{with sqlite3}
   -DWITH_SQLITE:BOOL=ON \
@@ -139,9 +143,11 @@ rm %{buildroot}%{_libdir}/libmariadbclient.a
 rm %{buildroot}%{_libdir}/libmysqlclient.a
 rm %{buildroot}%{_libdir}/libmysqlclient_r.a
 
-# add a compatibility symlink
+# add a compatibility symlinks
 ln -s mariadb_config %{buildroot}%{_bindir}/mysql_config
 ln -s mariadb_version.h %{buildroot}%{_includedir}/mysql/mysql_version.h
+
+ln -s %{_includedir}/mysql %{buildroot}%{_includedir}/mariadb
 
 # install some extra required header file
 install -Dpm 0644 build/include/ma_config.h \
@@ -176,6 +182,7 @@ install -Dpm 0644 build/include/ma_config.h \
 %{_bindir}/mysql_config
 %dir %{_includedir}/mysql
 %{_includedir}/mysql/*
+%{_includedir}/mariadb
 %{_libdir}/pkgconfig/libmariadb.pc
 %{_libdir}/libmariadb.so
 %{_libdir}/libmysqlclient.so

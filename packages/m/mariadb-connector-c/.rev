@@ -220,4 +220,34 @@
     <comment></comment>
     <requestid>818996</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>547e4726881776fa5884127173952bb0</srcmd5>
+    <version>3.1.11</version>
+    <time>1604926633</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.1.11:
+  * CONC-513: MSAN use-of-uninitialized-value in strstr()
+  * CONC-512: truncation check for float values fails on i386 due
+  * to Intel FPU optimization bug in gcc
+  * CONC-510: Fix crash when loading plugins in mysql_server_init()
+  * CONC-508: Added support for passwords &gt; 255 characters
+  * CONC-507: Fixed race condition in ma_net_init
+  * CONC-501: Added support for TLS v1.3 cipher suites
+  * MDEV-21612: Removed unused command COM_MULTI
+- changes in release 3.1.10:
+  * CONC-500: Fixed error when loading intermediate chained certificates
+  * MDEV-18818: Fixed wrong zlib in mariadb_config when building
+    inside server package
+  * CONC-498: MYSQL_UNIX_ADDR and MYSQL_PORT are now defined
+  * Added new build option WIITH_ICONV=ON/OFF. When set to OFF (default)
+    API function mariadb_convert_string will always return -1 and
+    sets errorcode to ENOTSUP.
+  * mariadb_config now tries to determine the path of execution or
+    uses MARIADB_CONFIG environment variable before falling back and
+    using CMAKE_INSTALL_PREFIX for location of libraries and include files
+  * added --variables option for mariadb_config.
+    Supported values are pkgincludedir, pkglibdir and pkgplugindir.
+- absolute_path_fix.patch, private_library.patch: refreshed</comment>
+    <requestid>846503</requestid>
+  </revision>
 </revisionlist>
