@@ -135,7 +135,7 @@
 %endif
 
 Name:           go1.15
-Version:        1.15.3
+Version:        1.15.4
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
