@@ -16,7 +16,7 @@
 #
 
 
-%define soversion 27
+%define soversion 28
 %define sourcename gdal
 # Uppercase GDAL is the canonical name for this package in Python
 %define pypi_package_name GDAL
@@ -25,7 +25,7 @@
 %bcond_with fgdb_support
 %bcond_without python2
 Name:           gdal
-Version:        3.1.4
+Version:        3.2.0
 Release:        0
 Summary:        GDAL/OGR - a translator library for raster and vector geospatial data formats
 License:        MIT AND BSD-3-Clause AND SUSE-Public-Domain
@@ -99,6 +99,7 @@ BuildRequires:  ERDAS-ECW_JPEG_2000_SDK-devel
 BuildRequires:  libecwj2-devel
 %endif
 %endif
+Requires:       python3-GDAL = %{version}
 
 %description
 GDAL is a translator library for raster geospatial data formats that
@@ -179,9 +180,8 @@ done
 find . -type f -name "style_ogr_brush.png" -exec chmod 0644 {} \;
 find . -type f -name "style_ogr_sym.png" -exec chmod 0644 {} \;
 
-# Fix wrong /usr/bin/env phyton
-#Create the move to python3
-find . -iname "*.py" -exec sed -i 's,^#!%{_bindir}/env python$,#!%{_bindir}/python3,' {} \;
+# Remove shebang in scripts located in non executable dir
+find swig/python/osgeo/utils -iname '*.py' -ls -exec sed -i '/^#!\/usr\/bin\/env python3/d' {} \;
 # Fix wrong /usr/bin/env python3
 find . -iname "*.py" -exec sed -i "s,^#!%{_bindir}/env python3,#!%{_bindir}/python3," {} \;
 
@@ -322,84 +322,47 @@ sed -i 's,\(#define PACKAGE_.*\),/* \1 */,' %{buildroot}%{_includedir}/gdal/cpl_
 %files
 %license LICENSE.TXT
 %doc NEWS PROVENANCE.TXT
-%{_bindir}/epsg_tr.py
-%{_bindir}/esri2wkt.py
-%{_bindir}/gcps2vec.py
-%{_bindir}/gcps2wld.py
-%{_bindir}/gdal2tiles.py
-%{_bindir}/gdal2xyz.py
-%{_bindir}/gdal_auth.py
-%{_bindir}/gdal_calc.py
 %{_bindir}/gdal_contour
-%{_bindir}/gdal_edit.py
-%{_bindir}/gdal_fillnodata.py
+%{_bindir}/gdal_create
 %{_bindir}/gdal_grid
-%{_bindir}/gdal_merge.py
-%{_bindir}/gdal_polygonize.py
-%{_bindir}/gdal_proximity.py
-%{_bindir}/gdal_pansharpen.py
 %{_bindir}/gdal_rasterize
-%{_bindir}/gdal_retile.py
-%{_bindir}/gdal_sieve.py
 %{_bindir}/gdal_translate
 %{_bindir}/gdal_viewshed
 %{_bindir}/gdaladdo
 %{_bindir}/gdalbuildvrt
-%{_bindir}/gdalchksum.py
-%{_bindir}/gdalcompare.py
 %{_bindir}/gdaldem
 %{_bindir}/gdalenhance
-%{_bindir}/gdalident.py
-%{_bindir}/gdalimport.py
 %{_bindir}/gdalinfo
 %{_bindir}/gdallocationinfo
 %{_bindir}/gdalmanage
 %{_bindir}/gdalmdiminfo
 %{_bindir}/gdalmdimtranslate
-%{_bindir}/gdalmove.py
-%{_bindir}/gdalserver
 %{_bindir}/gdalsrsinfo
 %{_bindir}/gdaltindex
 %{_bindir}/gdaltransform
 %{_bindir}/gdalwarp
 %{_bindir}/gnmanalyse
 %{_bindir}/gnmmanage
-%{_bindir}/mkgraticule.py
 %{_bindir}/nearblack
 %{_bindir}/ogr2ogr
 %{_bindir}/ogrinfo
 %{_bindir}/ogrlineref
-%{_bindir}/ogrmerge.py
 %{_bindir}/ogrtindex
-%{_bindir}/pct2rgb.py
-%{_bindir}/rgb2pct.py
 %{_bindir}/testepsg
 %{_datadir}/gdal
-%{_mandir}/man1/gdal2tiles.1%{?ext_man}
-%{_mandir}/man1/gdal_calc.1%{?ext_man}
 %{_mandir}/man1/gdal_contour.1%{?ext_man}
-%{_mandir}/man1/gdal_edit.1%{?ext_man}
-%{_mandir}/man1/gdal_fillnodata.1%{?ext_man}
-%{_mandir}/man1/gdal_grid.1%{?ext_man}
-%{_mandir}/man1/gdal_merge.1%{?ext_man}
-%{_mandir}/man1/gdal_pansharpen.1%{?ext_man}
-%{_mandir}/man1/gdal_polygonize.1%{?ext_man}
-%{_mandir}/man1/gdal_proximity.1%{?ext_man}
+%{_mandir}/man1/gdal_create.1%{?ext_man}
 %{_mandir}/man1/gdal_rasterize.1%{?ext_man}
-%{_mandir}/man1/gdal_retile.1%{?ext_man}
-%{_mandir}/man1/gdal_sieve.1%{?ext_man}
 %{_mandir}/man1/gdal_translate.1%{?ext_man}
 %{_mandir}/man1/gdal_viewshed.1%{?ext_man}
 %{_mandir}/man1/gdaladdo.1%{?ext_man}
 %{_mandir}/man1/gdalbuildvrt.1%{?ext_man}
-%{_mandir}/man1/gdalcompare.1%{?ext_man}
 %{_mandir}/man1/gdaldem.1%{?ext_man}
 %{_mandir}/man1/gdalinfo.1%{?ext_man}
 %{_mandir}/man1/gdallocationinfo.1%{?ext_man}
 %{_mandir}/man1/gdalmanage.1%{?ext_man}
 %{_mandir}/man1/gdalmdiminfo.1%{?ext_man}
 %{_mandir}/man1/gdalmdimtranslate.1%{?ext_man}
-%{_mandir}/man1/gdalmove.1%{?ext_man}
 %{_mandir}/man1/gdalsrsinfo.1%{?ext_man}
 %{_mandir}/man1/gdaltindex.1%{?ext_man}
 %{_mandir}/man1/gdaltransform.1%{?ext_man}
@@ -410,8 +373,47 @@ sed -i 's,\(#define PACKAGE_.*\),/* \1 */,' %{buildroot}%{_includedir}/gdal/cpl_
 %{_mandir}/man1/ogr2ogr.1%{?ext_man}
 %{_mandir}/man1/ogrinfo.1%{?ext_man}
 %{_mandir}/man1/ogrlineref.1%{?ext_man}
-%{_mandir}/man1/ogrmerge.1%{?ext_man}
 %{_mandir}/man1/ogrtindex.1%{?ext_man}
+# 20201104 We keep all binaries in gdal and requires python3-GDAL
+%{_bindir}/epsg_tr.py
+%{_bindir}/esri2wkt.py
+%{_bindir}/gcps2vec.py
+%{_bindir}/gcps2wld.py
+%{_bindir}/gdal2tiles.py
+%{_bindir}/gdal2xyz.py
+%{_bindir}/gdal_auth.py
+%{_bindir}/gdal_calc.py
+%{_bindir}/gdal_edit.py
+%{_bindir}/gdal_fillnodata.py
+%{_bindir}/gdal_merge.py
+%{_bindir}/gdal_pansharpen.py
+%{_bindir}/gdal_polygonize.py
+%{_bindir}/gdal_proximity.py
+%{_bindir}/gdal_retile.py
+%{_bindir}/gdal_sieve.py
+%{_bindir}/gdalchksum.py
+%{_bindir}/gdalcompare.py
+%{_bindir}/gdalident.py
+%{_bindir}/gdalimport.py
+%{_bindir}/gdalmove.py
+%{_bindir}/mkgraticule.py
+%{_bindir}/ogrmerge.py
+%{_bindir}/pct2rgb.py
+%{_bindir}/rgb2pct.py
+%{_mandir}/man1/gdal2tiles.1%{?ext_man}
+%{_mandir}/man1/gdal_calc.1%{?ext_man}
+%{_mandir}/man1/gdal_edit.1%{?ext_man}
+%{_mandir}/man1/gdal_fillnodata.1%{?ext_man}
+%{_mandir}/man1/gdal_grid.1%{?ext_man}
+%{_mandir}/man1/gdal_merge.1%{?ext_man}
+%{_mandir}/man1/gdal_pansharpen.1%{?ext_man}
+%{_mandir}/man1/gdal_polygonize.1%{?ext_man}
+%{_mandir}/man1/gdal_proximity.1%{?ext_man}
+%{_mandir}/man1/gdal_retile.1%{?ext_man}
+%{_mandir}/man1/gdal_sieve.1%{?ext_man}
+%{_mandir}/man1/gdalcompare.1%{?ext_man}
+%{_mandir}/man1/gdalmove.1%{?ext_man}
+%{_mandir}/man1/ogrmerge.1%{?ext_man}
 %{_mandir}/man1/pct2rgb.1%{?ext_man}
 %{_mandir}/man1/rgb2pct.1%{?ext_man}
 
