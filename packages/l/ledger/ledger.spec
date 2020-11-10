@@ -52,13 +52,13 @@ data there are few alternatives.
 
 %install
 %cmake_install
-install -m 644 -D contrib/ledger-completion.bash %{buildroot}%{_datadir}/bash-completion/completions/ledger.sh
+install -m 644 -D contrib/ledger-completion.bash %{buildroot}%{_datadir}/bash-completion/completions/ledger
 
 %files
 %license LICENSE.md
 %doc README.md
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_bindir}/ledger
-%{_datadir}/bash-completion/completions/ledger.sh
+%{_datadir}/bash-completion/completions/ledger
 
 %changelog
