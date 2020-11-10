@@ -94,4 +94,18 @@
   * Migrate header variable into rest client</comment>
     <requestid>833586</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f9c09669decf9031dc1dc4e914d76cff</srcmd5>
+    <version>2.0.1</version>
+    <time>1605012390</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.1:
+  * fix the double in bitbucket module to repo_list method
+  * fix the parameter to export search results as csv
+  * add more docs
+  * Cleanup rest-client
+  * Review methods
+  * Bugfixes</comment>
+    <requestid>847377</requestid>
+  </revision>
 </revisionlist>

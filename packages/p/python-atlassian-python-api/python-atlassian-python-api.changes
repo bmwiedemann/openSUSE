@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 10 04:22:12 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.0.1:
+  * fix the double in bitbucket module to repo_list method
+  * fix the parameter to export search results as csv
+  * add more docs
+  * Cleanup rest-client
+  * Review methods
+  * Bugfixes 
+
+-------------------------------------------------------------------
 Fri Sep 11 02:34:29 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.17.3:
