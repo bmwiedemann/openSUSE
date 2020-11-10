@@ -1,0 +1,12 @@
+<package name="libsharp" project="openSUSE:Factory">
+  <title>Library for fast spherical harmonic transforms</title>
+  <description>libsharp is a code library for spherical harmonic transforms (SHTs) with
+features including MPI support for distributed memory systems and SHTs of
+fields with arbitrary spin, supporting new developments in CPU instruction sets
+like the Advanced Vector Extensions (AVX) or fused multiply-accumulate (FMA)
+instructions.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="libsharp"/>
+  <url>https://github.com/Libsharp/libsharp</url>
+</package>
