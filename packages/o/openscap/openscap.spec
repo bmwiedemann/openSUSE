@@ -39,6 +39,7 @@ Source4:        scap-yast2sec-oval.xml
 Source5:        oscap-scan.service
 Source6:        oscap-scan.sh
 Patch0:         openscap-new-suse.patch
+Patch1:         openscap-leap-cpe-15.12.patch
 URL:            https://www.open-scap.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  asciidoc
@@ -57,6 +58,7 @@ BuildRequires:  libgcrypt-devel
 BuildRequires:  libxml2-devel
 # Use package name cause of "have choice for perl(XML::Parser): brp-check-suse perl-XML-Parser"
 BuildRequires:  cmake
+BuildRequires:  dbus-1-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libblkid-devel
 BuildRequires:  libcap-devel
@@ -172,6 +174,7 @@ This package contains the Script Checking Engine Library (SCE) for OpenSCAP.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %if 0%{?with_bindings}
