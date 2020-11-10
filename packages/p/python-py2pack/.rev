@@ -495,4 +495,23 @@
   * Shorten overlong line</comment>
     <requestid>844232</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>08bea641d12d779fc871a2a223af01e1</srcmd5>
+    <version>0.8.6</version>
+    <time>1605017334</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.6:
+  * Fix test/exampes/py2pack-opensuse.dsc
+  * enhance test\_template with augmented opensuse and update examples to 0.8.5
+  * cleanup script basename filter
+  * update test reference
+  * Fix flake8 errors
+  * remove python2 from travis and tox
+  * change test suite block
+  * Replace python3\_only scripts with python\_alternatives
+  * migrate metadate fetch to JSON API
+  * remove python2 shims
+  * update copyright header</comment>
+    <requestid>847493</requestid>
+  </revision>
 </revisionlist>

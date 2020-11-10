@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 10 13:04:27 UTC 2020 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 0.8.6:
+  * Fix test/exampes/py2pack-opensuse.dsc
+  * enhance test\_template with augmented opensuse and update examples to 0.8.5
+  * cleanup script basename filter
+  * update test reference
+  * Fix flake8 errors
+  * remove python2 from travis and tox
+  * change test suite block
+  * Replace python3\_only scripts with python\_alternatives
+  * migrate metadate fetch to JSON API
+  * remove python2 shims
+  * update copyright header
+
+-------------------------------------------------------------------
 Tue Oct 27 09:06:41 UTC 2020 - Thomas Bechtold <tbechtold@suse.com>
 
 - update to 0.8.5:

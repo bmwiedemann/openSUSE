@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-py2pack
-Version:        0.8.5
+Version:        0.8.6
 Release:        0
 Summary:        Script for generating distribution packages from Python packages on PyPI
 License:        Apache-2.0
