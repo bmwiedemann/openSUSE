@@ -5243,4 +5243,20 @@
     <comment>1</comment>
     <requestid>385146</requestid>
   </revision>
+  <revision rev="765" vrev="1">
+    <srcmd5>7bdd78bba1a2e449f1b2b5ba1c7c591e</srcmd5>
+    <version>20201026_100149</version>
+    <time>1605012414</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed URL for source0 as this causes issues with our bots
+
+- Update to version 20201026_100149
+
+- supply a new python3 script, that fetches (in local builds) and
+  generates ethercodes.dat 
+- update to version 20180926_160344
+
+- merge oui data base from 2015-06-19</comment>
+    <requestid>847429</requestid>
+  </revision>
 </revisionlist>

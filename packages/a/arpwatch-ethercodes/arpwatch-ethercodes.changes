@@ -1,7 +1,29 @@
 -------------------------------------------------------------------
+Tue Nov 10 08:42:20 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
+
+- Removed URL for source0 as this causes issues with our bots
+
+-------------------------------------------------------------------
+Mon Oct 26 10:14:43 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 20201026_100149
+
+-------------------------------------------------------------------
+Wed Sep 26 09:51:54 UTC 2018 - Hans-Peter Jansen <hpj@urpla.net>
+
+- supply a new python3 script, that fetches (in local builds) and
+  generates ethercodes.dat 
+- update to version 20180926_160344
+
+-------------------------------------------------------------------
 Sun Mar 27 22:12:59 UTC 2016 - mpluskal@suse.com
 
 - Update to 2016-03-28
+
+-------------------------------------------------------------------
+Fri Jun 19 12:54:32 UTC 2015 - lmuelle@suse.com
+
+- merge oui data base from 2015-06-19
 
 -------------------------------------------------------------------
 Wed Jul  2 12:51:38 UTC 2014 - coolo@suse.com
