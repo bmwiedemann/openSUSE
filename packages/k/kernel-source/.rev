@@ -5242,4 +5242,11 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.9.6 &amp; 5.9.5 &amp; 5.9.4 &amp; 5.9.3 &amp; 5.9.2 &amp; tty CVE &amp; kvm fixes</comment>
     <requestid>846366</requestid>
   </revision>
+  <revision rev="560" vrev="2">
+    <srcmd5>c10e953096dc51c4b0af25f2ae2d2883</srcmd5>
+    <version>5.9.1</version>
+    <time>1605039483</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1178634</comment>
+  </revision>
 </revisionlist>
