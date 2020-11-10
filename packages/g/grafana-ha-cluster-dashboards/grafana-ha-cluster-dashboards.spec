@@ -20,13 +20,14 @@ Name:           grafana-ha-cluster-dashboards
 # Version will be processed via set_version source service
 Version:        1.0.3+git.1600360477.8b8f9ce
 Release:        0
-Summary:        Grafana Dashboards displaying metrics about a Pacemaker/Corosync High Availability Cluster.
+Summary:        Grafana Dashboards for Pacemaker/Corosync HA Cluster
 License:        Apache-2.0
 Group:          System/Monitoring
 URL:            https://github.com/ClusterLabs/ha_cluster_exporter
 Source:         %{name}-%{version}.tar.gz
 BuildArch:      noarch
 Requires(pre):  shadow
+Requires:       grafana-sleha-cluster-provider
 Recommends:     grafana
 
 # TECHNICAL NOTE:
@@ -56,11 +57,24 @@ install -Dm644 dashboards/provider-sleha.yaml %{buildroot}%{_sysconfdir}/grafana
 %defattr(-,root,root)
 %doc dashboards/README.md
 %license LICENSE
+%attr(0644,grafana,grafana) %config %{_localstatedir}/lib/grafana/dashboards/sleha/*
+%attr(0755,root,root) %dir %{_sysconfdir}/grafana
+
+%package -n grafana-sleha-cluster-provider
+
+Summary:        Grafana Dashboards Provider for Pacemaker/Corosync HA Cluster
+Group:          System/Monitoring
+Recommends:     grafana
+BuildArch:      noarch
+
+%description -n grafana-sleha-cluster-provider
+Grafana Dashboards Provider configuring location of dashboards provisioning for
+Pacemaker/Corosync High Availability Cluster.
+
+%files -n grafana-sleha-cluster-provider
 %attr(0755,grafana,grafana) %dir %{_localstatedir}/lib/grafana
 %attr(0755,grafana,grafana) %dir %{_localstatedir}/lib/grafana/dashboards
 %attr(0755,grafana,grafana) %dir %{_localstatedir}/lib/grafana/dashboards/sleha
-%attr(0644,grafana,grafana) %config %{_localstatedir}/lib/grafana/dashboards/sleha/*
-%attr(0755,root,root) %dir %{_sysconfdir}/grafana
 %attr(0755,root,root) %dir %{_sysconfdir}/grafana/provisioning
 %attr(0755,root,root) %dir %{_sysconfdir}/grafana/provisioning/dashboards
 %attr(0644,root,root) %config %{_sysconfdir}/grafana/provisioning/dashboards/provider-sleha.yaml
