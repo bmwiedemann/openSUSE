@@ -280,6 +280,7 @@ Wed Apr 15 06:23:16 UTC 2020 - glin@suse.com
   * ccgx: Create devices when in HID and I2C modes
   * Add a new ChromeOS CI target to build without GPG and PKCS7
   * Use Jcat files in firmware archives and for metadata
+    - Removed fu-keyring-gpg which caused CVE-2020-10759
   * csr: Allow truncated HID reads
   * vli: Only consider the high nibble when building the sub-version
   * csr: Parse the firmware as a DFU file
