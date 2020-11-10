@@ -446,4 +446,38 @@
 </comment>
     <requestid>841986</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ba1b4e5743d763294691b2aed65ce5cc</srcmd5>
+    <version>3.25.0</version>
+    <time>1605012385</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.25.0:
+  - On drag and drop, accept text/html and remove %0D at end of
+    text/uri-list URLs. Closes #587
+  - New site: fastnovel.net, thanks Rikkitp
+  - Update translations.
+  - Don't error out on non-editable custom columns ValueError.
+  - Add Yes/No to all to most question_dialog boxes.
+  - fiction.live: fixed crash with stories with achievements (introduced
+    in last set of commits) - Thanks, HazelSh
+  - Fixes for drag-n-drop features.
+  - Allow better editing of story URLs in edit box.
+  - Change seriesHTML to not be filled without series.
+  - Fix for Xenforo2 change (SB/SV)
+  - Update adapter_ficbooknet for site changes.
+  - Fix for latest storiesonline login change, thanks mrEd
+  - Add checks for 'from saved column' when not config'ed and
+    update-epub when default format isn't epub.
+  - Don't disable Update Mode with By Action menus.
+  - Do 'not an anthology' dialog outside busy_cursor
+  - Fixes for Fiction.live URLs re: #559 and #573 -- Thanks, HazelSh!
+  - Adds 'Actions by Update Mode' menu
+  - Include icons for 'Actions by Update Mode' menu
+  - Fix for email immediate download when not using English.
+  - &quot;Hide&quot;(setVisible(False)) rather than disable unused menu items.
+  - Disable rather than &quot;hide&quot;(not create) unused menu items, reorg into
+    sub menus.
+</comment>
+    <requestid>847350</requestid>
+  </revision>
 </revisionlist>
