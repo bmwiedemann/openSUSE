@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Nov 10 09:01:19 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.9.0+git.20201110.a000f9e:
+  * Improve printing of multiple reduced test-cases.
+  * Remove -n auto from pytest config.
+  * Start reduction for multiple files by the biggest.
+  * Fix reduction for multiple files when --commands is used.
+
+-------------------------------------------------------------------
+Tue Nov 10 07:17:30 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.8.0+git.20201110.8cdd0e5:
+  * Bump to v1.9.0.
+  * Use -n auto for pytest.
+  * Clean up Cmake warnings.
+  * Disable builds with older LLVM releases.
+  * Add setup.cfg file for pytest.
+  * Update build configurations.
+
+-------------------------------------------------------------------
 Fri Nov 06 12:45:17 UTC 2020 - mliska@suse.cz
 
 - Update to version 1.8.0+git.20201106.e7821e8:

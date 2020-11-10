@@ -342,4 +342,24 @@
 - Use llvm11.</comment>
     <requestid>846460</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4049a9a0d88ed9fbe7ea47fd2eeb0f8a</srcmd5>
+    <version>1.9.0+git.20201110.a000f9e</version>
+    <time>1605012401</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.0+git.20201110.a000f9e:
+  * Improve printing of multiple reduced test-cases.
+  * Remove -n auto from pytest config.
+  * Start reduction for multiple files by the biggest.
+  * Fix reduction for multiple files when --commands is used.
+
+- Update to version 1.8.0+git.20201110.8cdd0e5:
+  * Bump to v1.9.0.
+  * Use -n auto for pytest.
+  * Clean up Cmake warnings.
+  * Disable builds with older LLVM releases.
+  * Add setup.cfg file for pytest.
+  * Update build configurations.</comment>
+    <requestid>847448</requestid>
+  </revision>
 </revisionlist>
