@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov  5 22:46:33 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-11-apps-update
+- Changes since 20.08.2:
+  * Be a bit less strict when applying the year from the context date
+  * Guard against SNCF tickets having 1st/2nd leg barcode on 3rd leg page
+  * Fix second leg class extraction from SNCF ticket barcodes
+  * Extract English SNCF tickets
+  * Avoid NaN comparisons
+  * Require C++17
+
+-------------------------------------------------------------------
 Fri Oct  9 05:44:04 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.08.2
