@@ -13,7 +13,9 @@ Mon Oct 12 09:55:35 UTC 2020 - Matwey Kornilov <matwey.kornilov@gmail.com>
 Thu Oct  8 10:04:51 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to v2020.10
-  Fixes CVE-2020-8432 (bsc#1162198) and CVE-2020-10648 (bsc#1167209).
+  * Fixes bsc#1175902, bsc#1166971, bsc#1160464, CVE-2020-8432 (bsc#1162198)
+    and CVE-2020-10648 (bsc#1167209)
+  * Implements jsc#SLE-12150
 
 -------------------------------------------------------------------
 Tue Oct  6 13:05:30 UTC 2020 - Andreas Schwab <schwab@suse.de>
@@ -78,6 +80,7 @@ Sun Aug  9 19:41:12 UTC 2020 - Matwey Kornilov <matwey.kornilov@gmail.com>
 Wed Jul 15 11:29:18 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 * Update to v2020.07
+  * Fixes bsc#1172283
   Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2020.07
 * Patches dropped:
   0011-net-bcmgenet-Don-t-set-ID_MODE_DIS-.patch
@@ -195,6 +198,7 @@ Tue Apr 14 10:29:42 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
   * SPI fixes
   * USB fixes
   * Filesystem fixes
+  * Fixes bsc#1174029
 Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2020.04
 * Patches dropped:
   0010-ARM-tegra-Add-NVIDIA-Jetson-Nano-De.patch
