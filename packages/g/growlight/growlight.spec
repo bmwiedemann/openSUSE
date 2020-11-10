@@ -18,7 +18,7 @@
 
 
 Name:           growlight
-Version:        1.2.17
+Version:        1.2.18
 Release:        0
 Summary:        Disk manipulation and system setup tool
 License:        GPL-3.0-or-later

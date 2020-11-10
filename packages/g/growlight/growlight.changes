@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov  1 10:44:30 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.18
+  * use recursive_lock_init() for musl.
+  * add recursive_lock_init() for glibc+musl.
+  * convert growlight.png to growlight.jpeg, save ~130K
+
+-------------------------------------------------------------------
 Sun Oct 25 18:32:48 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2.17
