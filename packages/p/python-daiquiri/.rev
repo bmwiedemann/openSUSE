@@ -67,4 +67,14 @@
     <comment></comment>
     <requestid>790827</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2a549d1d833cfabcec2655a9aac2fced</srcmd5>
+    <version>3.0.0</version>
+    <time>1605012394</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.0:
+  * Remove python 2 support
+  * Add python 3.9 support</comment>
+    <requestid>847413</requestid>
+  </revision>
 </revisionlist>
