@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov 10 02:24:02 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to 0.10.2
+  - Switch to the 2.0 API of met.no (1.9 was deprecated)
+  - weather-icon: fix use-after-free in get_user_icons_dir
+  - Fix GTimeVal deprecation
+  - Update copyright/bugzilla URLs
+  - Add basic GitLab pipeline
+  - bxo#16717: Move from exo-csource to xdt-csource
+  - Fix unprintable character in summary subtitle (bug #16394)
+  - Improve contrast in weather report, similar to GTK2 + Adwaita 
+    (bxo#15806)
+  - Enable keyboard scrolling in Details panel (bxo#15912)
+  - Support solarnoon and solarmidnight (bxo#15771)
+  - Fix day/night calculation (bxo#16091)
+  - Translation Updates
+- Removed obsolete patch 
+  xfce4-weather-plugin-fix-no-return-in-nonvoid-function.patch
+-------------------------------------------------------------------
 Sun Feb 23 15:59:37 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Update to 0.10.1

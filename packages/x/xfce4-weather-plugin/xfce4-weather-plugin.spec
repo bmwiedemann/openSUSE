@@ -20,15 +20,13 @@
 %define panel_version 4.12.0
 %define plugin weather
 Name:           xfce4-weather-plugin
-Version:        0.10.1
+Version:        0.10.2
 Release:        0
 Summary:        Weather Condition Monitoring Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/panel-plugins/xfce4-weather-plugin
 Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/0.10/%{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM xfce4-panel-plugin-weather-fix-no-return-in-nonvoid-function.patch gber@opensuse.org -- Return bogus value in case of an unhandled switch case
-Patch0:         xfce4-weather-plugin-fix-no-return-in-nonvoid-function.patch
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
@@ -71,7 +69,7 @@ BuildArch:      noarch
 Provides translations for the "%{name}" package.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %if %{with git}
