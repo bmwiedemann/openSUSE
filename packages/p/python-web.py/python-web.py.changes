@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov  9 21:01:36 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- version update to 0.62:
+  * Fixed: application.load() assumes ctx.path will be a latin1 string #687
+  * Fixed: can not reset session data to same value as initialized. #683
+  * Fixed: can not set session expire time. #655
+  * Fixed: not export session store `MemoryStore`.
+
+-------------------------------------------------------------------
 Sun Aug  9 09:37:14 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - version update to 0.61:
