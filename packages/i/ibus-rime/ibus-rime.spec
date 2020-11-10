@@ -37,6 +37,7 @@ BuildRequires:  libkyotocabinet-devel
 BuildRequires:  libnotify-devel
 BuildRequires:  librime-devel >= 1.0
 BuildRequires:  opencc-devel
+Requires:       brise
 Requires:       rime
 
 %description
@@ -46,10 +47,10 @@ Rime Input Method Engine for Linux/IBus
 %setup -q
 
 %build
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 
 %files
 %defattr(-,root,root)
