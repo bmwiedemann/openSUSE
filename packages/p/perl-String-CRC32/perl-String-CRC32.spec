@@ -1,7 +1,7 @@
 #
 # spec file for package perl-String-CRC32
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           perl-String-CRC32
-Version:        1.8
+Version:        2
 Release:        0
 %define cpan_name String-CRC32
 Summary:        Perl interface for cyclic redundancy check generation
 License:        SUSE-Public-Domain
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/L/LE/LEEJO/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

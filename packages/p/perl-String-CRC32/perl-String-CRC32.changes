@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 10 03:11:21 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2
+   see /usr/share/doc/packages/perl-String-CRC32/Changes
+
+  2.000     2020-11-09
+          - Switch to XSLoader rather than DynaLoader (GH #5, thanks to atoomic)
+
+-------------------------------------------------------------------
 Mon Nov  4 11:28:31 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 1.8
