@@ -17,33 +17,33 @@
 
 
 %define asiodns_sover 1
-%define asiolink_sover 9
+%define asiolink_sover 19
 %define cc_sover 8
 %define cfgclient_sover 10
 %define cryptolink_sover 5
 %define database_sover 6
-%define dhcppp_sover 19
-%define dhcp_ddns_sover 3
-%define dhcpsrv_sover 27
+%define dhcppp_sover 30
+%define dhcp_ddns_sover 14
+%define dhcpsrv_sover 39
 %define dnspp_sover 5
-%define eval_sover 12
+%define eval_sover 22
 %define exceptions_sover 0
-%define hooks_sover 15
-%define http_sover 7
+%define hooks_sover 27
+%define http_sover 20
 %define log_sover 6
-%define mysql_sover 6
-%define pgsql_sover 4
-%define process_sover 11
-%define stats_sover 6
+%define mysql_sover 17
+%define pgsql_sover 15
+%define process_sover 22
+%define stats_sover 16
 %define util_io_sover 0
-%define util_sover 16
+%define util_sover 28
 %if 0%{?suse_version} >= 1500
 %bcond_without regen_files
 %else
 %bcond_with    regen_files
 %endif
 Name:           kea
-Version:        1.8.0
+Version:        1.9.1
 Release:        0
 Summary:        Dynamic Host Configuration Protocol daemon
 License:        MPL-2.0
@@ -61,7 +61,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libmysqlclient-devel
 BuildRequires:  libtool >= 2
 BuildRequires:  log4cplus-devel
-BuildRequires:  pkgconfig >= 0.23
+BuildRequires:  pkg-config >= 0.23
 BuildRequires:  postgresql-server-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3

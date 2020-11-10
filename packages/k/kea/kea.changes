@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 10 08:04:38 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.9.1
+  * New parameters: ddns-use-conflict-resolution,
+    ip-reservations-unique, ddns-update-on-renew,
+    cache-threshold, cache-max-age.
+  * Support for new IPv6-only-preferred option for DHCPv4.
+  * Added support of basic HTTP authentication in HTTP library,
+    control agent.
+
+-------------------------------------------------------------------
 Sat Sep  5 22:02:39 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.8.0
