@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-kafka-python
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        Pure Python client for Apache Kafka
 License:        Apache-2.0

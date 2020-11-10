@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 10 08:03:56 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.0.2:
+  * KIP-54: Implement sticky partition assignment strategy (aynroot / PR #2057)
+  * Fix consumer deadlock when heartbeat thread request timeout (huangcuiyang / PR #2064)
+  * Python 3.8 support (Photonios / PR #2088)
+
+-------------------------------------------------------------------
 Thu Apr 16 08:22:52 UTC 2020 - pgajdos@suse.com
 
 - version update to 2.0.1

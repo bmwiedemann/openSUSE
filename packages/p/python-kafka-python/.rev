@@ -61,4 +61,15 @@
     <comment></comment>
     <requestid>794519</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>267625e196f2a8f544c44a72ff1e9bc7</srcmd5>
+    <version>2.0.2</version>
+    <time>1605012399</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.2:
+  * KIP-54: Implement sticky partition assignment strategy (aynroot / PR #2057)
+  * Fix consumer deadlock when heartbeat thread request timeout (huangcuiyang / PR #2064)
+  * Python 3.8 support (Photonios / PR #2088)</comment>
+    <requestid>847416</requestid>
+  </revision>
 </revisionlist>
