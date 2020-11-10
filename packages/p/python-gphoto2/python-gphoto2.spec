@@ -17,7 +17,7 @@
 
 
 Name:           python-gphoto2
-Version:        2.2.3
+Version:        2.2.4
 Release:        0
 Summary:        Python interface to libgphoto2
 License:        GPL-3.0-or-later

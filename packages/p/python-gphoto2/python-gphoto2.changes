@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 10 07:17:16 UTC 2020 - aloisio@gmx.com
+
+- Update to version 2.2.4
+  * Built with SWIG version 4.0.2 to provide Python 3.8
+    compatibility.
+
+-------------------------------------------------------------------
 Mon Oct 12 16:47:56 UTC 2020 - aloisio@gmx.com
 
 - Update to version 2.2.3
