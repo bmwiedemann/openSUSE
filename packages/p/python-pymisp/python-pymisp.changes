@@ -1,38 +1,259 @@
 -------------------------------------------------------------------
+Mon Nov  2 19:30:59 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.4.134:
+ - Changes
+   - Bump version. [Raphaël Vinot]
+   - Bump misp-objects. [Raphaël Vinot]
+   - Keep connection alive between requests. [Jakub Onderka]
+   - Bump deps. [Raphaël Vinot]
+   - Format docstrings in mispevent.py. [Lott, Christopher (cl778h)]
+     Add ":param " prefix to parameters to improve ReadTheDocs output.
+     Fix some minor typos in docstrings.
+   - Bump deps. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Bump changelog. [Raphaël Vinot]
+ - Fix
+   - Remove duplicate check if debug logging is enabled. [Jakub Onderka]
+   - Do now fail on requests returning plain text. [Raphaël Vinot]
+     Fix #639
+ - Other
+   - Revert "Update .travis.yml" [Raphaël Vinot]
+     lief isn't compatible with python 3.9
+     This reverts commit e10843fa33c9a08b7da4ef24cbce457be53a7459.
+   - Update .travis.yml. [Raphaël Vinot]
+     Add python 3.9
+   - Drop `encoding=` in Python 3.9. [Friedrich Lindenberg]
+
+-------------------------------------------------------------------
+Sun Nov  1 18:06:38 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.4.133:
+ - New
+   - [attribute type] telfhash added. [Alexandre Dulaunoy]
+   - [add_gitlab_user] new gitlab user fetch script to MISP object.
+     [Alexandre Dulaunoy]
+     usage: add_gitlab_user.py [-h] -e EVENT [-f] -u USERNAME [-l LINK]
+     Fetch GitLab user details and add it in object in MISP
+     optional arguments:
+       -h, --help            show this help message and exit
+       -e EVENT, --event EVENT
+                             Event ID to update
+       -f, --force-template-update
+       -u USERNAME, --username USERNAME
+                             GitLab username to add
+       -l LINK, --link LINK  Url to access the GitLab instance, Default is
+                             www.gitlab.com.
+   - [example] add_github_user example - WiP. [Alexandre Dulaunoy]
+     usage: add_github_user.py [-h] -e EVENT [-f] -u USERNAME
+     Fetch GitHub user details and add it in object in MISP
+     optional arguments:
+       -h, --help            show this help message and exit
+       -e EVENT, --event EVENT
+                             Event ID to update
+       -f, --force-template-update
+       -u USERNAME, --username USERNAME
+                             GitHub username to add
+   - Method to get the new version of the templates. [Raphaël Vinot]
+   - Delete tags via update_attribute, search by sharing group. [Tom King]
+ - Changes
+   - Bump version. [Raphaël Vinot]
+   - Bump test cases. [Raphaël Vinot]
+   - [type] updated. [Alexandre Dulaunoy]
+   - Bump file obj version in tests. [Raphaël Vinot]
+   - [data] misp-objects updated. [Alexandre Dulaunoy]
+   - Bump build system to poetry 1.1. [Raphaël Vinot]
+   - [type] new type added. [Alexandre Dulaunoy]
+   - [add_github_user] add ssh keys of the user in the MISP object.
+     [Alexandre Dulaunoy]
+   - [add_github_user] more fields added from the GitHub API. [Alexandre
+     Dulaunoy]
+   - Bump deps, objects. [Raphaël Vinot]
+   - Add test for delete=True in get_event. [Raphaël Vinot]
+   - [add_github_user] add following to the MISP object. [Alexandre
+     Dulaunoy]
+   - Bump dependencies. [Raphaël Vinot]
+   - Pass a list to add_attributes. [Raphaël Vinot]
+   - Use MISPObject instead of GenericObjectGenerator. [Raphaël Vinot]
+   - [doc] add a reference to the license. [Alexandre Dulaunoy]
+   - Add docstrings and extend conf.py for RTD. [Lott, Christopher
+     (cl778h)]
+     Add minimal docstrings to public methods so ReadTheDocs will display them.
+     Add autodoc mock import for lief so RTD can generate HTML for tools.
+     This fixes issue #626
+   - Remove PyMISPExpanded from the docs. [Raphaël Vinot]
+   - Add comments to ELF, PE, and MachO object generators. [Raphaël Vinot]
+   - Improve error message, add comments, rename whitelist->allowedlist.
+     [Raphaël Vinot]
+   - Remove SG search for search() func as this doesn't support SG
+     searching, but the index does. [Tom King]
+ - Fix
+   - Test on macosx. [Raphaël Vinot]
+     Fix #630
+   - Do not modify default_attributes_parameters in MISPObject. [Raphaël
+     Vinot]
+   - Wrong call to pymisp.search_index. [Raphaël Vinot]
+   - Few outdated calls in the tutorial. [Raphaël Vinot]
+   - Make flake8 happy. [Raphaël Vinot]
+   - Merge SG params to allow search. [Tom King]
+ - Other
+   - Fix PyMISP repo URL. [garanews]
+     MISP/PyMISP vs  CIRCL/PyMISP
+   - Fix typo. [garanews]
+     fix typo
+   - Attempt to decode utf-8-sig encoded emails. [seamus tuohy]
+     eml files downloaded from Windows Online security on some Windows 11
+     systems are automatically encoded in UTF with a byte order mark (BOM)
+     at the front of the file. This will cause the email parser to fail.
+     This is a somewhat isolated problem. It only will affects a small
+     subset of Windows users who download and re-upload eml files. But,
+     this small subset of users is the target user-base for the MISP
+     email module: low expertiese users who wish to quickly share
+     high-value indicators on an ad-hoc basis.
+     While this fix could be tacked onto the MISP email module instead of
+     here, I beleive that this fix is more appropriate in the PyMISP object
+     code. As the "email" object parser this object should be built to
+     parse all manner of emails that it may encounter. This includes common
+     malformations such as this one and, even horrors such as, the .msg
+     format. This commit adds a generically named "attempt_decoding"
+     function which can be expanded to address all manner of sins that
+     are encountered in the future.
+- update to version 2.4.131:
+ - New
+   - [test] Validate tag removal. [Raphaël Vinot]
+   - [describeTypes] sha3 added. [Alexandre Dulaunoy]
+ - Changes
+   - Bump changelog. [Raphaël Vinot]
+   - Bump version. [Raphaël Vinot]
+   - Bump objects. [Raphaël Vinot]
+   - [describeTypes] updated. [Alexandre Dulaunoy]
+   - [describeTypes] updated. [Alexandre Dulaunoy]
+   - Bump objects. [Raphaël Vinot]
+   - Bump dependencies. [Raphaël Vinot]
+   - Bump file template version. [Raphaël Vinot]
+   - Bump objects. [Raphaël Vinot]
+   - Rename blacklist -> blocklist. [Raphaël Vinot]
+   - Bump dependencies. [Raphaël Vinot]
+- update to version 2.4.130:
+ - New
+   - Blacklist methods. [Raphaël Vinot]
+   - Add list of missing calls. [Raphaël Vinot]
+   - Add test_obj_references_export. [louis]
+   - Add MISPObject.standalone property. [louis]
+     Setting MISPObject.standalone updates MISPObject._standalone and
+     add/removes "ObjectReference" from AbstractMISP.__not_jsonable using
+     update_not_jsonable/_remove_from_not_jsonable.
+   - Add AbstractMISP._remove_from_not_jsonable. [louis]
+ - Changes
+   - Bump changelog. [Raphaël Vinot]
+   - Bump version. [Raphaël Vinot]
+   - Bump dependencies. [Raphaël Vinot]
+   - Bump objects. [Raphaël Vinot]
+   - Bump types. [Raphaël Vinot]
+   - [testlive_comprehensive] Updated generic tagging method to match
+     changes in MISP. [mokaddem]
+   - Cleanup blocklist methods. [Raphaël Vinot]
+   - Remove outdated example. [Raphaël Vinot]
+     Fix #611
+   - New test_get_non_exists_event. [Jakub Onderka]
+   - Bump dependencies. [Raphaël Vinot]
+   - Enable more tests. [Raphaël Vinot]
+   - Make get_object return a not standalone object. [louis]
+   - Remove standalone default value from MISPObject children c'tor.
+     [louis]
+     MISPObject.__init__ sets standalone=True by default, so there is no
+     need to do it in its child classes.
+   - Make MISPObject standalone by default. [louis]
+     standalone defaults to True in MISPObject.__init__, and is set to False
+     when the object is added to an event.
+   - Add MISPObject._standalone type. [louis]
+ - Fix
+   - Bump file template version. [Raphaël Vinot]
+   - Test_get_non_exists_event. [Jakub Onderka]
+   - IP removed from the public DNS list. [Raphaël Vinot]
+   - Example using deprecated calls. [Raphaël Vinot]
+     fix #602
+   - Add STIX XML output for the search. [Raphaël Vinot]
+     Use stix-xml as return_format.
+     Fix #600 https://github.com/MISP/MISP/issues/5618
+   - Dummy event example. [Raphaël Vinot]
+     Fix #598
+ - Other
+   - Exclude section correlation .rsrc and zero-filled. [deku]
+   - Linting/Add missing whitespace. [Paal Braathen]
+   - Remove explicit loglevel checking. [Paal Braathen]
+   - Remove explicit traceback printing. [Paal Braathen]
+   - Master branch has been renamed to main. [Arcuri Davide]
+   - Update README.md. [Raphaël Vinot]
+     fix: #599
+
+-------------------------------------------------------------------
 Sat Jul  4 12:20:23 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
-- update to version 5.0.2:
- - Ensured black profile was complete, adding missing line_length definition.
-- update to version 5.0.1:
- - Fixed a runtime error in a vendored dependency (toml).
-- update to version 5.0.0:
- - Breaking changes:
-  - isort now requires Python 3.6+ to run but continues to support formatting on ALL versions of python including Python 2 code.
-  - isort deprecates official support for Python 3.4, removing modules only in this release from known_standard_library:
-  -     user
-  - Config files are no longer composed on-top of each-other. Instead the first config file found is used.
-  -     Since there is no longer composition negative form settings (such as --dont-skip) are no longer required and have been removed.
-  - Two-letter shortened setting names (like ac for atomic) now require two dashes to avoid ambiguity: --ac.
-  - For consistency with other tools -v now is shorthand for verbose and -V is shorthand for version. See Issue: #1067.
-  - length_sort_{section_name} config usage has been deprecated. Instead length_sort_sections list can be used to specify a list of sections that need to be length sorted.
-  - safety_excludes and unsafe have been deprecated
-  - Config now includes as default full set of safety directories defined by safety excludes.
-  - --recursive option has been removed. Directories passed in are now automatically sorted recursive.
-  - --apply option has been removed as it is the default behaviour.
-  - isort now does nothing, beyond giving instructions and exiting status code 0, when ran with no arguments.
-  -     a new --interactive flag has been added to enable the old style behaviour.
-  - isort now works on contiguous sections of imports, instead of one whole file at a time.
-  - isort now formats all nested "as" imports in the "from" form. import x.y as a becomes from x import y as a.
-  - keep_direct_and_as_imports option now defaults to True.
-  - appdirs is no longer supported. Unless manually specified, config should be project config only.
-  - toml is now installed as a vendorized module, meaning pyproject.toml based config is always supported.
-  - Completely new Python API, old version is removed and no longer accessible.
-  - New module placement logic and module fully replaces old finders. Old approach is still available via --old-finders.
- - Internal:
-  - isort now utilizes mypy and typing to filter out typing related issues before deployment.
-  - isort now utilizes black internally to ensure more consistent formatting.
-  - profile support for common project types (black, django, google, etc)
-  - Much much more. There is some difficulty in fully capturing the extent of changes in this release - just because of how all encompassing the release is. See: Github Issues for more.
+- update to version 2.4.128:
+ - Changes
+   - Bump changelog. [Raphaël Vinot]
+   - Bump version. [Raphaël Vinot]
+   - Add a few test cases. [Raphaël Vinot]
+   - Bump objects. [Raphaël Vinot]
+- update to version 2.4.127.1:
+ - New
+   - Optionally include deleted attributes/objects in feed. [Raphaël Vinot]
+ - Changes
+   - Bump changelog. [Raphaël Vinot]
+   - Bump version. [Raphaël Vinot]
+   - Bump misp-objects. [Raphaël Vinot]
+   - Add test case for get event deleted. [Raphaël Vinot]
+   - Add test case for search deleted. [Raphaël Vinot]
+   - Update comments for search. [Raphaël Vinot]
+ - Fix
+   - Keep deleted key in MISPObject and MISPObjectAttribute. [Raphaël
+     Vinot]
+- update to version 2.4.127:
+ - New
+   - Add helper and test case for GitVulnFinderObject. [Raphaël Vinot]
+   - Add git-commit-id type. [Raphaël Vinot]
+   - Add deleted in field export. [Raphaël Vinot]
+     Fix #586
+   - Timeout for connection/request, fixes #584. [Christophe Vandeplas]
+ - Changes
+   - Bump Changelog. [Raphaël Vinot]
+   - Rename master -> main. [Raphaël Vinot]
+   - Bump changelog. [Raphaël Vinot]
+   - Bump version. [Raphaël Vinot]
+   - Bump misp-objects. [Raphaël Vinot]
+   - Bump dependencies. [Raphaël Vinot]
+   - Rename branches master -> main. [Raphaël Vinot]
+   - Remove extra parameter in change_user_password. [Raphaël Vinot]
+ - Fix
+   - Do not fail if the attribute value is not a string. [Raphaël Vinot]
+   - Properly strip value in MISPObject.add_attribute, take 2. [Raphaël
+     Vinot]
+     Fix #546
+   - Properly strip value in MISPObject.add_attribute. [Raphaël Vinot]
+     Fix #546
+   - Deleted is not always required in the feed export. [Raphaël Vinot]
+   - Make mypy happy. [Raphaël Vinot]
+   - Fixes bug in timeout change. [Christophe Vandeplas]
+   - Fixes bug in timeout change. [Christophe Vandeplas]
+   - Fixes bug in timeout change. [Christophe Vandeplas]
+   - Fixes bug in timeout change. [Christophe Vandeplas]
+   - Fixes bug in timeout change. [Christophe Vandeplas]
+     hail to Rafiot
+   - Fixes bug in timeout change. [Christophe Vandeplas]
+   - Fixes bug in timeout change. [Christophe Vandeplas]
+ - Other
+   - Previously file object was reporting the libmagic description of a
+     file instead of the mimetype. According to [MISP
+     DataModels](https://www.misp-project.org/datamodels/#types) ``` mime-
+     type: A media type (also MIME type and content type) is a two-part
+     identifier for file formats and format contents transmitted on the
+     Internet ``` more precisely defined in
+     [RFC2045](https://tools.ietf.org/html/rfc2045) and others. [Troy Ross]
+     The description returned by libmagic is more useful than the generic mime-type,
+     but I did not find a place to put the description in the current data model.
+   - Fix end of line encoding of examples/cytomic_orion.py. [Sebastian
+     Wagner]
 
 -------------------------------------------------------------------
 Thu May 21 13:45:02 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
