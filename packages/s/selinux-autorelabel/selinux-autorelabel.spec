@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           selinux-autorelabel
 Version:        3.1
 Release:        0

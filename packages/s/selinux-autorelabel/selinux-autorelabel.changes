@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 10 11:05:33 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Set PATH in selinux-autorelabel, some systemd versions strip too
+  much
+
+-------------------------------------------------------------------
 Thu Oct 22 14:50:45 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Initial version based on policycoreutils from Fedora 33
