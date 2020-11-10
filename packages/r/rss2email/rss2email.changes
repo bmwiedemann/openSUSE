@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov  8 13:22:23 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix failure with Feedparser 6 [boo#1178085]
+  adding rss2email-3.12.2-feedparser-6.patch from upstream
+- clean up spec file to current python Macros, run tests
+
+-------------------------------------------------------------------
 Thu Sep  3 02:19:30 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 3.12.2:
