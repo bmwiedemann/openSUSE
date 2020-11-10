@@ -309,7 +309,6 @@ unsorted:
   - abootimg 
   - abseil-cpp 
   - abseil-cpp-devel 
-  - abseil-cpp-source 
   - abxtest 
   - acars-examples 
   - acars2-examples 
@@ -8552,6 +8551,7 @@ unsorted:
   - leveldb 
   - leveldb-devel 
   - leveldb-devel-static 
+  - levmar-devel 
   - lha 
   - lhasa: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - lhasa-devel 
@@ -10745,7 +10745,7 @@ unsorted:
   - libgda-ui-5_0-plugins: [i586] 
   - libgda-ui-5_0-tools 
   - libgda-xslt-5_0-4 
-  - libgdal27 
+  - libgdal28 
   - libgdamm-5_0-13 
   - libgdamm-devel 
   - libgdata-devel 
@@ -10820,6 +10820,8 @@ unsorted:
   - libglfw-devel 
   - libglfw2 
   - libglfw3 
+  - libglib-testing-0-0 
+  - libglib-testing-devel 
   - libglibmm-2_4-1-32bit: [x86_64] 
   - libglibmm-2_66-1 
   - libglibmm-2_66-1-32bit: [x86_64] 
@@ -11722,6 +11724,7 @@ unsorted:
   - liblept5 
   - liblept5-32bit: [x86_64] 
   - libleveldb1 
+  - liblevmar2 
   - liblhasa0: [i586] 
   - liblightdm-qt5-3-0 
   - liblightgrep-devel 
@@ -11851,6 +11854,8 @@ unsorted:
   - libmagic1-32bit: [x86_64] 
   - libmaia-devel 
   - libmaia1 
+  - libmalcontent-0-0 
+  - libmalcontent-ui-0-0 
   - libmanette-devel 
   - libmapi1 
   - libmapidb-devel 
@@ -13171,7 +13176,7 @@ unsorted:
   - librdmacm-utils 
   - librdmacm1-32bit: [x86_64] 
   - libre0suse0 
-  - libre2-8-32bit: [x86_64] 
+  - libre2-9-32bit: [x86_64] 
   - libreadline-java 
   - libreadline-java-32bit: [x86_64] 
   - libreadline-java-javadoc 
@@ -13826,10 +13831,10 @@ unsorted:
   - libsundials_nvec5-openmpi1 
   - libsundials_nvec5-openmpi2 
   - libsundials_nvec5-openmpi3 
+  - libsuperlu 
   - libsuperlu-gnu-hpc 
   - libsuperlu5 
   - libsuperlu5-32bit: [x86_64] 
-  - libsuperlu_5_2_1-gnu-hpc 
   - libsvm-devel 
   - libsvm-java 
   - libsvm2 
@@ -15378,6 +15383,9 @@ unsorted:
   - makewhat 
   - mako 
   - malaga-suomi 
+  - malcontent 
+  - malcontent-devel 
+  - malcontent-lang 
   - mame: [x86_64] 
   - mame-data 
   - mame-mess: [x86_64] 
@@ -18252,6 +18260,7 @@ unsorted:
   - papi_6_0_0-hpc 
   - papi_6_0_0-hpc-devel 
   - papi_6_0_0-hpc-devel-static 
+  - papirus-folders 
   - papirus-icon-theme 
   - paprefs: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - paprefs-lang: [i586] 
@@ -18808,6 +18817,7 @@ unsorted:
   - perl-DBD-Pg 
   - perl-DBD-XBase 
   - perl-DBD-mysql 
+  - perl-DBICx-Sugar 
   - perl-DBICx-TestDatabase 
   - perl-DBIx-Class 
   - perl-DBIx-Class-DeploymentHandler 
@@ -18829,6 +18839,10 @@ unsorted:
   - perl-Daemon-Generic 
   - perl-Dancer2 
   - perl-Dancer2-Plugin-Auth-Extensible 
+  - perl-Dancer2-Plugin-Auth-Extensible-Provider-DBIC 
+  - perl-Dancer2-Plugin-DBIC 
+  - perl-Dancer2-Plugin-REST 
+  - perl-Dancer2-Plugin-WebSocket 
   - perl-Data-Clone 
   - perl-Data-Compare 
   - perl-Data-Dump 
@@ -24499,6 +24513,7 @@ unsorted:
   - rox-filer 
   - rpcgen 
   - rpcsvc-proto-devel 
+  - rpi-eeprom-config 
   - rpm-32bit: [x86_64] 
   - rpm-build 
   - rpm-build-perl 
@@ -26236,9 +26251,6 @@ unsorted:
   - superlu-gnu-hpc-devel 
   - superlu-gnu-hpc-doc 
   - superlu-gnu-hpc-examples 
-  - superlu_5_2_1-gnu-hpc-devel 
-  - superlu_5_2_1-gnu-hpc-doc 
-  - superlu_5_2_1-gnu-hpc-examples 
   - supertux2 
   - supertuxkart 
   - supertuxkart-data 
@@ -34823,6 +34835,8 @@ unsorted:
   - typelib-1_0-LightDM-1 
   - typelib-1_0-LunarCalendar-3_0 
   - typelib-1_0-LunarDate-3_0 
+  - typelib-1_0-Malcontent-0 
+  - typelib-1_0-MalcontentUi-0 
   - typelib-1_0-Manette-0_2-0 
   - typelib-1_0-MateDesktop-2_0 
   - typelib-1_0-MateMenu-2_0 

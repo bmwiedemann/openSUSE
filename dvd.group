@@ -1842,7 +1842,7 @@
     <package name="librdf0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="librdkafka1" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
     <package name="librdmacm1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
-    <package name="libre2-8" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libre2-9" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libreadline8" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libref_array1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libreiserfscore0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
