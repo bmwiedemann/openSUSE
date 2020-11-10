@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 02 16:58:56 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20201103.e77961f0:
+  * pkglistgen gocd: rename Pkglistgen.openSUSE_Leap to avoid the dup'ed key
+
+-------------------------------------------------------------------
+Mon Nov 02 14:09:54 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20201102.21e0b914:
+  * Leap 15.3: Jump project discontinued but Leap 15.3 started
+
+-------------------------------------------------------------------
+Fri Oct 30 04:34:12 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20201030.620b9480:
+  * Merge common code of SP1 and SP2
+  * Add back setup for 15SP1 quarterly updates
+
+-------------------------------------------------------------------
 Thu Oct 22 10:32:30 UTC 2020 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20201022.3934deb8:
