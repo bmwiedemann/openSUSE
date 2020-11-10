@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-re-assert
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Show Python regex match assertion failures
 License:        MIT
@@ -26,7 +27,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/asottile/re-assert
 Source:         https://files.pythonhosted.org/packages/source/r/re_assert/re_assert-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/asottile/re-assert/master/tests/re_assert_test.py
-Source2:        https://raw.githubusercontent.com/asottile/re-assert/master/LICENSE
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -43,7 +43,7 @@ Show where your regex match assertion failed.
 
 %prep
 %setup -q -n re_assert-%{version}
-cp %{SOURCE1} %{SOURCE2} .
+cp %{SOURCE1} .
 
 %build
 %python_build
@@ -56,6 +56,7 @@ cp %{SOURCE1} %{SOURCE2} .
 %pytest
 
 %files %{python_files}
+%doc README.md
 %license LICENSE
 %{python_sitelib}/*
 

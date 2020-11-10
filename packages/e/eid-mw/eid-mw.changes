@@ -1,0 +1,86 @@
+-------------------------------------------------------------------
+Mon Sep 21 15:16:03 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- updated to 5.0.8
+  eID Viewer
+  - Now supports applet 1.8 eID cards
+
+- updated to 5.0.6
+  Pkcs11
+  - Now supports applet 1.8 eID cards
+  - SDK now supports applet 1.8 eID cards
+  Minidriver
+  - Now supports applet 1.8 eID cards
+
+-------------------------------------------------------------------
+Mon Dec  8 07:55:24 CET 2014 - pth@suse.de
+
+- Add a group tag for the libs package.
+
+-------------------------------------------------------------------
+Thu Dec  4 08:48:54 CET 2014 - pth@suse.de
+
+- Initial openSUSE package based on the spec from Google source
+  and Pascal Bleser's work including eid-mw-add_missing_includes.patch..
+
+-------------------------------------------------------------------
+Thu Aug 14 00:00:00 CET 2014 - wouter.verhelst@fedict.be
+
+- Split up somewhat further so that openSUSE-style multiarch works, too.
+
+-------------------------------------------------------------------
+Thu Jul 31 00:00:00 CET 2014 - wouter.verhelst@fedict.be
+
+- Split package up into several subpackages so as to make multiarch work
+  without much issues.
+
+-------------------------------------------------------------------
+Tue Oct 15 00:00:00 CET 2013 - frank@apsu.be
+
+- Upgrade to 4.0.6
+
+-------------------------------------------------------------------
+Thu May 03 00:00:00 CET 2012 - frank@apsu.be
+
+- Upgrade to 4.0.4
+
+-------------------------------------------------------------------
+Wed Mar 14 00:00:00 CET 2012 - frank@apsu.be
+
+- Upgrade to 4.0.2
+
+-------------------------------------------------------------------
+Fri Mar 18 00:00:00 CET 2011 - frank@apsu.be
+
+- Made Revision number variable to allow continuous builds.
+
+-------------------------------------------------------------------
+Thu Mar 17 00:00:00 CET 2011 - dag@wieers.com
+
+- Split eid-mw and eid-viewer packages.
+
+-------------------------------------------------------------------
+Thu Feb 24 00:00:00 CET 2011 - dag@wieers.com
+
+- Added post-install script and desktop file.
+
+-------------------------------------------------------------------
+Thu Feb 24 00:00:00 CET 2011 - dag@wieers.com
+
+- Included pre-built JAR files.
+
+-------------------------------------------------------------------
+Wed Feb 23 00:00:00 CET 2011 - dag@wieers.com
+
+- Added patched eid-applet core.
+
+-------------------------------------------------------------------
+Sun Feb 13 00:00:00 CET 2011 - dag@wieers.com
+
+- Included eid-viewer build using maven.
+
+-------------------------------------------------------------------
+Mon Feb 07 00:00:00 CET 2011 - dag@wieers.com
+
+- Initial package.
+

@@ -1,8 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov 02 17:03:42 UTC 2020 - mwilck@suse.com
+
+- Update to version 15.3.5:
+  * Skip coldplug for memory devices on ppc64le, using generator
+
+-------------------------------------------------------------------
 Tue Aug 25 15:43:20 UTC 2020 - mwilck@suse.com
 
 - Update to version 15.3.4:
   * spec: rework dependencies
+
+-------------------------------------------------------------------
+Mon Aug 03 21:05:03 UTC 2020 - mwilck@suse.com
+
+- Update to version 15.3.4:
+  * rework dependencies to reduce system size for small OS
 
 -------------------------------------------------------------------
 Fri Jun  5 15:28:50 UTC 2020 - Martin Wilck <mwilck@suse.com>

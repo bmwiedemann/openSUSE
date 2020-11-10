@@ -1,0 +1,15 @@
+[Unit]
+Description=Parsec Service
+Documentation=https://parallaxsecond.github.io/parsec-book/parsec_service/install_parsec_linux.html
+
+[Service]
+Type=notify
+KillMode=process
+Restart=on-failure
+WorkingDirectory=/var/lib/parsec
+ExecStart=/usr/libexec/parsec -c /etc/parsec/config.toml
+User=parsec
+Group=parsec
+
+[Install]
+WantedBy=default.target

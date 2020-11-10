@@ -7,4 +7,12 @@
     <comment>re-assert, dependency of python-aiohttp</comment>
     <requestid>844836</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>944412ef8e59644f4a02b87f8a2a896d</srcmd5>
+    <version>1.1.0</version>
+    <time>1605011934</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>846231</requestid>
+  </revision>
 </revisionlist>

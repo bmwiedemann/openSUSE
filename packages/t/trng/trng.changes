@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Fri Oct 30 13:36:53 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Wrap descriptions, trim marketing wording.
+
+-------------------------------------------------------------------
+Fri Oct 23 11:57:26 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.
+- Disable building on aarch64 because tests fail
+  [gh#rabauke/trng4#21].

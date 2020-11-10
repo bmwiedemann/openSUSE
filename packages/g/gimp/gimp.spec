@@ -18,6 +18,13 @@
 
 %global abiver 4
 %global apiver 2.0
+
+%if 0%{?suse_version} >= 1550
+%bcond_without libheif
+%else
+%bcond_with    libheif
+%endif
+
 %if 0%{?sle_version}
 %bcond_with python_plugin
 %else
@@ -35,6 +42,8 @@ Source1:        macros.gimp
 # openSUSE palette file
 Source2:        openSUSE.gpl
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM git diff GIMP_2_10_22..gimp-2-10 -- plug-ins/common/file-heif.c > libheif-avif-only.patch mrueckert@suse.de -- only offer the fileformats that our current libheif actually supports 
+Patch:          libheif-avif-only.patch
 
 BuildRequires:  aalib-devel
 BuildRequires:  alsa-devel >= 1.0.0
@@ -55,11 +64,6 @@ BuildRequires:  ghostscript-devel
 BuildRequires:  ghostscript-library
 BuildRequires:  glib-networking
 BuildRequires:  intltool >= 0.40.1
-BuildRequires:  iso-codes-devel
-BuildRequires:  libbz2-devel
-BuildRequires:  libjpeg-devel
-BuildRequires:  libmng-devel
-BuildRequires:  librsvg-devel >= 2.40.6
 BuildRequires:  libtiff-devel
 BuildRequires:  libwmf-devel >= 0.2.8
 BuildRequires:  libxslt-tools
@@ -71,6 +75,7 @@ BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(atk) >= 2.2.0
 BuildRequires:  pkgconfig(babl) >= 0.1.78
+BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(cairo) >= 1.12.2
 BuildRequires:  pkgconfig(cairo-pdf) >= 1.12.2
 BuildRequires:  pkgconfig(dbus-glib-1) >= 0.70
@@ -78,21 +83,32 @@ BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.30.8
 BuildRequires:  pkgconfig(gegl-0.4) >= 0.4.24
 BuildRequires:  pkgconfig(gexiv2) >= 0.10.6
 BuildRequires:  pkgconfig(glib-2.0) >= 2.54.2
-BuildRequires:  pkgconfig(gtk+-2.0) >= 2.24.10
+BuildRequires:  pkgconfig(gtk+-2.0) >= 2.24.32
 BuildRequires:  pkgconfig(gudev-1.0) >= 167
+BuildRequires:  pkgconfig(harfbuzz) >= 0.9.19
+BuildRequires:  pkgconfig(iso-codes)
+BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.6
 BuildRequires:  pkgconfig(lcms2) >= 2.8
 BuildRequires:  pkgconfig(libexif) >= 0.6.15
-# TODO: BuildRequires:  pkgconfig(libheif) >= 1.1.0
+%if %{with libheif}
+BuildRequires:  pkgconfig(libheif) >= 1.3.2
+%endif
+BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(liblzma) >= 5.0.0
+BuildRequires:  pkgconfig(libmng)
 BuildRequires:  pkgconfig(libmypaint) >= 1.3.0
 BuildRequires:  pkgconfig(libopenjp2) >= 2.1.0
 BuildRequires:  pkgconfig(libpng) >= 1.6.25
+BuildRequires:  pkgconfig(librsvg-2.0) >= 2.40.6
+BuildRequires:  pkgconfig(libunwind)
 BuildRequires:  pkgconfig(libwebp) >= 0.6.0
+BuildRequires:  pkgconfig(xmu)
 BuildRequires:  pkgconfig(mypaint-brushes-1.0)
 BuildRequires:  pkgconfig(OpenEXR) >= 1.6.1
 BuildRequires:  pkgconfig(pango) >= 1.29.4
 BuildRequires:  pkgconfig(poppler-data) >= 0.4.7
 BuildRequires:  pkgconfig(poppler-glib) >= 0.44.0
+BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xpm)
@@ -203,6 +219,7 @@ applications that want to make use of the GIMP libraries.
 
 %prep
 %setup -q
+%patch -p1
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8

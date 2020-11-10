@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  5 07:56:36 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update the json descriptors to address all x86_64 firmware files
+  (jsc#SLE-15915)
+- Remove the executable bit from brotli source code files
+
+-------------------------------------------------------------------
 Fri Oct 30 02:15:13 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add _constraints to request at least 6GB disk (bsc#1178244)

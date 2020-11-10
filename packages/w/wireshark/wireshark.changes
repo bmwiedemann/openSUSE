@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct 30 20:40:13 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Wireshark 3.4.0:
+  * Save RTP stream to .au supports any codec with 8000 Hz rate
+    supported by Wireshark (shown in RTP player). If save of audio
+    is not possible (unsupported codec or rate), silence of same
+    length is saved and warning is shown.
+  * Asynchronous DNS resolution is always enabled
+  * Protobuf fields can be dissected as Wireshark (header) fields
+    that allows user input the full names of Protobuf fields or
+    messages in Filter toolbar for searching.
+  * Dissectors based on Protobuf can register themselves to a new
+    'protobuf_field' dissector table, which is keyed with the full
+    names of fields, for further parsing fields of BYTES or STRING
+    type.
+  * UI improvements
+  * sshdump can now be copied to multiple instances. Each instance
+    will show up a different interface and will have its own
+  * decode, play, and save opus payloads
+- features not enabled in the openSUSE package:
+  * decode, play, and save iLBC payloads
+
+-------------------------------------------------------------------
 Fri Oct 30 08:06:41 UTC 2020 - Robert Frohl <rfrohl@suse.com>
 
 - wireshark 3.2.8:

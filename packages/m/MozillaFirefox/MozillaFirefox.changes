@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov  9 10:15:52 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 82.0.3
+  MSFA 2020-49
+  * CVE-2020-26950 (bmo#1675905)
+    Write side effects in MCallGetProperty opcode not accounted for
+
+-------------------------------------------------------------------
+Mon Nov  2 09:00:13 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 82.0.2
+  * few bugfixes for introduced regressions
+
+-------------------------------------------------------------------
 Thu Oct 15 20:44:47 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 82.0

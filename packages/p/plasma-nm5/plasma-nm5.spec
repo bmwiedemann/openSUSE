@@ -30,6 +30,8 @@ Source:         https://download.kde.org/stable/plasma/%{version}/plasma-nm-%{ve
 Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-nm-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Add-support-for-the-OpenVPN-parameter-compress.patch
 BuildRequires:  NetworkManager-devel >= 0.9.8.4
 BuildRequires:  extra-cmake-modules >= 1.3.0
 BuildRequires:  fdupes

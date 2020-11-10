@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  4 21:10:58 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to support the compress parameter in .ovpn files (boo#1178258):
+  * 0001-Add-support-for-the-OpenVPN-parameter-compress.patch
+
+-------------------------------------------------------------------
 Tue Oct 27 20:43:53 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.2

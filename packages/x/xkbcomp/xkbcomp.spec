@@ -17,7 +17,7 @@
 
 
 Name:           xkbcomp
-Version:        1.4.3
+Version:        1.4.4
 Release:        0
 Summary:        Utility to compile XKB keyboard description
 License:        MIT

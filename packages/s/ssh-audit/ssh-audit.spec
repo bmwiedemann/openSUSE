@@ -17,7 +17,7 @@
 
 
 Name:           ssh-audit
-Version:        2.2.0
+Version:        2.3.1
 Release:        0
 Summary:        SSH server auditing
 License:        MIT
@@ -26,7 +26,10 @@ URL:            https://github.com/jtesta/ssh-audit
 Source:         https://github.com/jtesta/ssh-audit/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/jtesta/ssh-audit/releases/download/v%{version}/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
+BuildRequires:  fdupes
 BuildRequires:  python3-pytest
+BuildRequires:  python3-rpm-macros
+BuildRequires:  python3-setuptools
 Requires:       python >= 3
 BuildArch:      noarch
 
@@ -42,25 +45,27 @@ Features:
  * output security information (related issues, assigned CVE list, etc);
  * analyze SSH version compatibility based on algorithm information;
  * historical information from OpenSSH, Dropbear SSH and libssh;
- * no dependencies, compatible with Python 2.6+, Python 3.x and PyPy;
 
 %prep
 %setup -q
-sed -i "s|#!/usr/bin/env python3|#!%{_bindir}/python3|g" ssh-audit.py
+sed -i -e '/^#!\//, 1d' src/ssh_audit/ssh_audit.py
 
 %build
-#
+%python3_build
 
 %install
-install -Dm0755 ssh-audit.py %{buildroot}%{_bindir}/ssh-audit
+%python3_install
+%fdupes %{buildroot}%{python3_sitelib}
+install -D -p -m0644 ssh-audit.1 %{buildroot}%{_mandir}/man1/ssh-audit.1
 
 %check
-# Skip tests that need a network environment
-python3 -m pytest -vv -k 'not (TestResolve or test_socket or test_add_constraint_with_platform or TestSSH2)'
+%pytest
 
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/ssh-audit
+%{_mandir}/man1/ssh-audit.1%{?ext_man}
+%{python3_sitelib}/ssh_audit*
 
 %changelog

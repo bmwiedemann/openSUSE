@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 23 08:22:27 UTC 2020 - Daniel Wagner <daniel.wagner@suse.com>
+
+- update to 1.13
+  * support for zoned command set
+  * Identify I/O Command Set data structure command added
+  * Added new namespace list command on list-ns, 4056 modification added
+  * Added temperature information getting and text formatting
+  * Implemented additional statistics to display
+  * nvme: add support for non shared namespaces
+
+-------------------------------------------------------------------
 Sun Aug 16 00:14:42 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.12

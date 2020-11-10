@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov  5 22:47:55 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-11-apps-update
+- Changes since 20.08.2:
+  * Do not disable flick if cursor has been wrapped (kde#420556)
+  * Fix wrong memory access that may cause crash
+  * Fix middle click on sidebar tab bar unloads the document. (kde#426613)
+  * Support more than latin1 chars on --find command line option (kde#427596)
+  * Fix fast scrolling with Shift+Scroll (kde#420889)
+  * Fix cursor not updated after clicking internal link (kde#421437)
+  * Fix scrolling with scrollbar when the slider is not clicked (kde#421159)
+  * Complete TextSelectorEngine if nothing selected (kde#446658)
+
+-------------------------------------------------------------------
 Fri Oct  9 05:45:25 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.08.2

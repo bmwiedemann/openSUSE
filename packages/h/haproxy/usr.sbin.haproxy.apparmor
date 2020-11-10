@@ -12,14 +12,15 @@ profile haproxy /usr/sbin/haproxy {
   capability kill,
   capability sys_resource,
   capability sys_chroot,
+  capability net_admin,
 
   # those are needed for the stats socket creation
   capability chown,
   capability fowner,
   capability fsetid,
 
-  network inet  tcp,
-  network inet6 tcp,
+  network inet,
+  network inet6,
 
   /etc/haproxy/* r, 
 

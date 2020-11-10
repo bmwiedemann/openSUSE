@@ -1035,4 +1035,12 @@ before the switch to 4.8 and the KR47 repo. (forwarded request 91020 from christ
     <comment>KDE release 20.08.2</comment>
     <requestid>840734</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>27319517de5660452490c340c20fa4cc</srcmd5>
+    <version>20.08.3</version>
+    <time>1605011888</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 20.08.3 (forwarded request 846547 from luca_b)</comment>
+    <requestid>846796</requestid>
+  </revision>
 </revisionlist>

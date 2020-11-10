@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  5 10:58:11 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Security fix: [bsc#1178466, CVE-2020-8037]
+  * PPP decapsulator: Allocate the right buffer size
+- Add tcpdump-CVE-2020-8037.patch
+
+-------------------------------------------------------------------
 Fri Dec 13 17:21:34 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - ignore make check failure for PowerPC as tracked upstream
@@ -12,7 +19,7 @@ Tue Oct 15 07:53:47 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 -------------------------------------------------------------------
 Wed Oct  2 14:01:31 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
-- Update to 4.9.3
+- Update to 4.9.3 [bsc#1153098]
   * Fix buffer overflow/overread vulnerabilities:
     - CVE-2017-16808 (AoE)
     - CVE-2018-14468 (FrameRelay)

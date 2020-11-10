@@ -1,0 +1,8 @@
+<package name="swtpm" project="openSUSE:Factory">
+  <title>Software TPM Emulator</title>
+  <description>The SWTPM package provides TPM emulators with different front-end interfaces
+to libtpms. TPM emulators provide socket interfaces (TCP/IP) and the Linux
+CUSE interface for the creation of multiple native /dev/vtpm* devices.
+Those can be the targets of multiple QEMU cuse-tpm instances.</description>
+  <devel project="security" package="swtpm"/>
+</package>

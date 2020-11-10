@@ -25,7 +25,6 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/akornatskyy/wheezy.template
 Source:         https://files.pythonhosted.org/packages/source/w/wheezy.template/wheezy.template-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -48,12 +47,22 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/wheezy.template
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative wheezy.template
+
+%postun
+%python_uninstall_alternative wheezy.template
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python3_only %{_bindir}/wheezy.template
-%{python_sitelib}/*
+%python_alternative %{_bindir}/wheezy.template
+%dir %{python_sitelib}/wheezy
+%{python_sitelib}/wheezy/template
+%{python_sitelib}/wheezy.template-%{version}*.pth
+%{python_sitelib}/wheezy.template-%{version}*-info
 
 %changelog

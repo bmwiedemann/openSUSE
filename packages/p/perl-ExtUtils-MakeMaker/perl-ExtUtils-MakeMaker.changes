@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov  5 03:07:24 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 7.52
+   see /usr/share/doc/packages/perl-ExtUtils-MakeMaker/Changes
+
+  7.52    Wed  4 Nov 19:49:43 GMT 2020
+      No changes since v7.51_01
+  7.51_01 Wed  4 Nov 00:01:41 GMT 2020
+      Test fixes:
+      - prevent MM_Win32::init_tools() warning in core
+
+-------------------------------------------------------------------
 Thu Oct 22 03:12:34 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 7.50

@@ -17,7 +17,7 @@
 
 
 Name:           sshuttle
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 Summary:        VPN over an SSH tunnel
 License:        LGPL-2.1-only

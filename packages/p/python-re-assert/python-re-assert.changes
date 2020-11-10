@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 29 12:43:29 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Disable building on Python 2
+- Use LICENSE from PyPI sdist
+- Update to v1.1.0
+
+-------------------------------------------------------------------
 Thu Oct 29 00:58:23 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Add test suite and LICENSE from upstream

@@ -136,4 +136,13 @@ being a development machine:
 - Fix bashisms in scripts (forwarded request 665261 from jengelh)</comment>
     <requestid>665667</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7d95cb789050a1f3cf6944c75eeac0cd</srcmd5>
+    <version>2017a</version>
+    <time>1605011937</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 2017a
+  * see man-pages-posix-2017-a.Announce for details</comment>
+    <requestid>846255</requestid>
+  </revision>
 </revisionlist>

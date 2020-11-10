@@ -1,7 +1,7 @@
 #
 # spec file for package man-pages-posix
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,27 @@
 #
 
 
+%define year 2017
 Name:           man-pages-posix
-Version:        2013a
+Version:        2017a
 Release:        0
 Summary:        POSIX Manual Pages
 License:        SUSE-IEEE
 Group:          Documentation/Man
-Url:            https://www.kernel.org/doc/man-pages/
-Source:         https://www.kernel.org/pub/linux/docs/man-pages/%name/%name-2013-a.tar.xz
-BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://www.kernel.org/doc/man-pages/
+Source:         https://www.kernel.org/pub/linux/docs/man-pages/%{name}/%{name}-%{year}-a.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  xz
 Supplements:    man-pages
+BuildArch:      noarch
 
 %description
 A large collection of man pages (reference material) from
 
-	IEEE Std 1003.1, 2013 Edition, Standard for Information 
-	Technology--Portable Operating System Interface (POSIX), 
-	The Open Group Base Specifications Issue 7, 
-	Copyright (C) 2013 by the Institute of Electrical and 
-	Electronics Engineers, Inc and The Open Group.
+This release contains a copy of the POSIX 1003.1-2017 man pages.
+The directories man0p, man1p, man3p contain descriptions of the
+headers, the utilities, and the functions documented in that standard.
+For the copyright notice, see the file POSIX-COPYRIGHT.
 
 The man pages are organized into the following sections:
 * 0p: POSIX headers
@@ -45,17 +44,16 @@ The man pages are organized into the following sections:
 * 3p: POSIX functions
 
 %prep
-%setup -qn %name-2013-a
-#find -name "*.orig" -print -delete
+%setup -q -n %{name}-%{year}
 
 %build
 
 %install
 for i in man?p ; do
-  mkdir -p "%buildroot/%_mandir/$i"
-  cp -p "$i"/* "%buildroot/%_mandir/$i/"
+  mkdir -p "%{buildroot}/%{_mandir}/$i"
+  cp -p "$i"/* "%{buildroot}/%{_mandir}/$i/"
 done
-cd "%buildroot/%_mandir"
+cd "%{buildroot}/%{_mandir}"
 RETVAL=0
 ARE_MISSING=""
 for i in */* ; do
@@ -75,15 +73,13 @@ echo ""
 if [ "$RETVAL" -ne 0 ] ; then
   exit "$RETVAL"
 fi
-%fdupes -s %buildroot/%_prefix
+%fdupes -s %{buildroot}/%{_prefix}
 
 %files
-%defattr(-,root,root)
-%dir %_mandir/man?p
-%doc %_mandir/man*/*.gz
+%dir %{_mandir}/man?p
+%{_mandir}/man*/*.gz
 %doc README
 %doc POSIX-COPYRIGHT
 %doc man-pages-*.Announce
-%doc man-pages-*.lsm
 
 %changelog

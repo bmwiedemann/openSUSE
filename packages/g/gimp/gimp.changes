@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 27 00:27:00 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- updates to buildrequires
+  - synced required versions with configure.ac
+  - convert more buildrequires to pkgconfig() versions
+- enable libheif on Tumbleweed, since we have the version in TW
+  with avif support, but not actual HEIF support unless libheif
+  from packman is used.
+- added libheif-avif-only.patch:
+  libheif based exporter will only offer the formats supported by
+  the installed libheif (via runtime check)
+
+-------------------------------------------------------------------
 Sun Oct 18 14:04:36 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Change macro defined to test whether to build python plugin from

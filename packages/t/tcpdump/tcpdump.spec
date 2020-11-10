@@ -1,7 +1,7 @@
 #
 # spec file for package tcpdump
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Source2:        https://www.tcpdump.org/release/%{name}-%{version}.tar.gz.sig
 Source3:        https://www.tcpdump.org/tcpdump-workers.asc#/%{name}.keyring
 # PATCH-FIX-OPENSUSE tcpdump-CVE-2018-19519.patch - Initialize buf in print-hncp.c:print_prefix
 Patch0:         tcpdump-CVE-2018-19519.patch
+# PATCH-FIX-UPSTREAM bsc#1178466 CVE-2020-8037 PPP decapsulator: Allocate the right buffer size
+Patch1:         tcpdump-CVE-2020-8037.patch
 BuildRequires:  libpcap-devel >= %{min_libpcap_version}
 BuildRequires:  libsmi-devel
 BuildRequires:  openssl-devel
@@ -40,7 +42,7 @@ ethernet. It can be used to debug specific network problems.
 
 %prep
 %setup -q
-%patch0 -p1
+%autopatch -p1
 
 %build
 # guessing TSO needed in print-ip.c

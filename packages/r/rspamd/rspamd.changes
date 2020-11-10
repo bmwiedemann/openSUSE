@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Oct  9 17:51:10 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- fix apparmor profile
+  - allow reading the webapp dir to make the builtin webserver work
+  - modernize the profile to use a short profile name
+  - remove php abstraction, replaced with rule to read the icu data
+    files
+  - remove all file rules that are covered by the base and
+    nameservice abstraction
+  - allow include (with "if exists) for local/rspamd and
+    local/usr.bin.rspamd (for backrwards compat)
+
+-------------------------------------------------------------------
+Mon Oct  5 10:42:14 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add usr.bin.rspamd apparmor profile
+
+-------------------------------------------------------------------
+Thu Oct  1 09:39:29 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- update to 2.6
+  * https://rspamd.com/announce/2020/09/30/rspamd-2.6.html
+  * Rework neural network plugin
+  * Rework bitcoin detection library
+  * Fix IDNA bugs
+  * Send more fuzzy module telemetry data to rspamd servers
+  * Drop upstream rspamd-gcc10-buildfix.patch
+  * Drop rspamd-moonjit.patch
+
+-------------------------------------------------------------------
 Wed Aug 12 03:34:28 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add rspamd-gcc10-buildfix.patch for Factory

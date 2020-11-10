@@ -968,4 +968,12 @@
     <comment>KDE release 20.08.2</comment>
     <requestid>840600</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>d64e9b1c852c44affd4ffa0808b5e91f</srcmd5>
+    <version>20.08.3</version>
+    <time>1605012103</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 20.08.3 (forwarded request 846547 from luca_b)</comment>
+    <requestid>846662</requestid>
+  </revision>
 </revisionlist>

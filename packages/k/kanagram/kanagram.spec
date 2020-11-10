@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kanagram
-Version:        20.08.2
+Version:        20.08.3
 Release:        0
 Summary:        Anagram Game
 License:        GPL-2.0-or-later
@@ -42,7 +42,6 @@ BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5Sonnet)
 BuildRequires:  cmake(LibKEduVocDocument)
 BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5OpenGL)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5TextToSpeech)

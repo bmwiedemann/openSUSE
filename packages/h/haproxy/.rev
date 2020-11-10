@@ -990,4 +990,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>845120</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>789a52f497864b7facedab4c20fa7fb9</srcmd5>
+    <version>2.3.0+git4.689d98154</version>
+    <time>1605011950</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0+git4.689d98154:
+- apparmor:
+  - do not limit to tcp sockets. haproxy can do udp as well.
+  - we need net_admin capability for non local bind and setting
+    &quot;source&quot; for server entries.</comment>
+    <requestid>846512</requestid>
+  </revision>
 </revisionlist>

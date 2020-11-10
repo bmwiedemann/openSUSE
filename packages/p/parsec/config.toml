@@ -1,0 +1,24 @@
+# See a more complete example in /usr/shar/doc/parsec/config.toml
+[core_settings]
+
+[listener]
+listener_type = "DomainSocket"
+timeout = 200 # in milliseconds
+
+[authenticator]
+auth_type = "UnixPeerCredentials"
+
+[[key_manager]]
+name = "on-disk-manager"
+manager_type = "OnDisk"
+
+[[provider]]
+# provider_type: `MbedCrypto`, `Pkcs11`, `Tpm`
+provider_type = "MbedCrypto"
+key_info_manager = "on-disk-manager"
+
+[[provider]]
+provider_type = "Tpm"
+key_info_manager = "on-disk-manager"
+tcti = "device:/dev/tpmrm0"
+owner_hierarchy_auth = ""

@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Fri Nov 06 16:14:26 UTC 2020 - mrueckert@suse.de
+
+- Update to version 2.3.0+git4.689d98154:
+  * BUG/MEDIUM: ssl/crt-list: correctly insert crt-list line if crt already loaded
+
+-------------------------------------------------------------------
+Fri Nov 06 13:10:28 UTC 2020 - mrueckert@suse.de
+
+- Update to version 2.3.0+git3.7a50763d1:
+  * DOC: config: Fix a typo on ssl_c_chain_der
+  * MINOR: http-htx: Add understandable errors for the errorfiles parsing
+  * BUG/MINOR: ssl: don't report 1024 bits DH param load error when it's higher
+
+-------------------------------------------------------------------
+Thu Nov  5 18:56:00 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- apparmor: do not limit to tcp sockets. haproxy can do udp as
+  well.
+
+-------------------------------------------------------------------
+Thu Nov 05 16:43:01 UTC 2020 - mrueckert@suse.de
+
+- Update to version 2.3.0+git0.1c0a722a8:
+  https://www.haproxy.com/blog/announcing-haproxy-2-3/
+
+  for all the details see
+  /usr/share/doc/packages/haproxy/CHANGELOG
+
+-------------------------------------------------------------------
+Thu Nov 05 14:49:02 UTC 2020 - mrueckert@suse.de
+
+- Update to version 2.2.5+git0.34b2b1066:
+  * [RELEASE] Released version 2.2.5
+  * BUG/MEDIUM: server: make it possible to kill last idle connections
+  * CLEANUP: mux-h2: Remove the h1 parser state from the h2 stream
+  * BUG/MEDIUM: stick-table: limit the time spent purging old entries
+  * BUG/MINOR: filters: Skip disabled proxies during startup only
+  * BUG/MEDIUM: mux-pt: Release the tasklet during an HTTP upgrade
+  * MINOR: server: Copy configuration file and line for server templates
+  * BUG/MINOR: server: Set server without addr but with dns in RMAINT on startup
+  * BUG/MINOR: checks: Report a socket error before any connection attempt
+  * BUG/MINOR: proxy/server: Skip per-proxy/server post-check for disabled proxies
+  * BUG/MEDIUM: filters: Don't try to init filters for disabled proxies
+  * BUG/MINOR: cache: Inverted variables in http_calc_maxage function
+  * BUG/MINOR: cache: Manage multiple values in cache-control header value
+  * MINOR: ist: Add a case insensitive istmatch function
+  * BUG/MINOR: lua: initialize sample before using it
+  * BUG/MINOR: server: fix down_time report for stats
+  * BUG/MINOR: server: fix srv downtime calcul on starting
+  * BUG/MINOR: log: fix risk of null deref on error path
+  * BUG/MINOR: log: fix memory leak on logsrv parse error
+  * BUG/MINOR: extcheck: add missing checks on extchk_setenv()
+  * BUG/MEDIUM: ssl: OCSP must work with BoringSSL
+  * Revert "MINOR: ssl: 'ssl-load-extra-del-ext' removes the certificate extension"
+  * BUG/MAJOR: mux-h2: Don't try to send data if we know it is no longer possible
+  * BUG/MINOR: http-ana: Don't send payload for internal responses to HEAD requests
+  * BUG/MEDIUM: server: support changing the slowstart value from state-file
+  * BUG/MINOR: queue: properly report redistributed connections
+  * MINOR: ssl: 'ssl-load-extra-del-ext' removes the certificate extension
+  * BUILD: ssl: make BoringSSL use its own version numbers
+  * BUG/MINOR: disable dynamic OCSP load with BoringSSL
+  * BUG/MINOR: peers: Possible unexpected peer seesion reset after collisions.
+  * DOC: fix typo in MAX_SESS_STKCTR
+  * BUG/MEDIUM: lb: Always lock the server when calling server_{take,drop}_conn
+  * BUG/MEDIUM: mux-h1: Get the session from the H1S when capturing bad messages
+  * BUG/MEDIUM: spoe: Unset variable instead of set it if no data provided
+  * BUG/MEDIUM: task: bound the number of tasks picked from the wait queue at once
+  * BUG/MINOR: connection: fix loop iter on connection takeover
+  * MINOR: fd: report an error message when failing initial allocations
+  * BUG/MINOR: mux-h2: do not stop outgoing connections on stopping
+  * BUG/MINOR: init: only keep rlim_fd_cur if max is unlimited
+  * BUILD: connection: fix build on clang after the VAR_ARRAY cleanup
+  * CLEANUP: tree-wide: use VAR_ARRAY instead of [0] in various definitions
+  * BUG/MINOR: http-htx: Expect no body for 204/304 internal HTTP responses
+  * BUG/MINOR: http: Fix content-length of the default 500 error
+  * DOC: Fix typos in configuration.txt
+  * BUG/MEDIUM: mux-h2: Don't handle pending read0 too early on streams
+  * BUG/MEDIUM: mux-fcgi: Don't handle pending read0 too early on streams
+  * DOC: Add missing stats fields in the management doc
+  * DOC: fix a confusing typo on a regsub example
+  * BUG/MINOR: mux-h1: Always set the session on frontend h1 stream
+  * BUG/MINOR: mux-h1: Be sure to only set CO_RFL_READ_ONCE for the first read
+  * BUG/MINOR: peers: Inconsistency when dumping peer status codes.
+  * MINOR: hlua: Display debug messages on stderr only in debug mode
+  * BUG/MINOR: stats: fix validity of the json schema
+  * MINOR: counters: fix a typo in comment
+  * MINOR: ssl: Add warning if a crt-list might be truncated
+  * BUG/MEDIUM: queue: make pendconn_cond_unlink() really thread-safe
+  * BUG/MINOR: tcpcheck: Set socks4 and send-proxy flags before the connect call
+  * DOC: tcp-rules: Refresh details about L7 matching for tcp-request content rules
+  * BUG/MINOR: Fix several leaks of 'log_tag' in init().
+  * MINOR: ssl: Add error if a crt-list might be truncated
+  * BUILD: makefile: Fix building with closefrom() support enabled
+  * BUILD: ssl_crtlist: work around another bogus gcc-9.3 warning
+
+-------------------------------------------------------------------
+Mon Nov  2 13:15:38 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- apparmor profile:
+  - we need net_admin capability for non local bind and setting
+    "source" for server entries.
+
+-------------------------------------------------------------------
 Sat Oct 24 01:18:29 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - apparmor profile fixes:

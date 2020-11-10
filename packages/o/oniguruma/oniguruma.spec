@@ -17,11 +17,11 @@
 
 
 %define lib_name libonig5
-%define pkg_version 6.9.5_rev1
-%define pkg_short_version 6.9.5
+%define pkg_version 6.9.6
+%define pkg_short_version 6.9.6
 
 Name:           oniguruma
-Version:        6.9.5.1
+Version:        6.9.6
 Release:        0
 Summary:        Regex Library Supporting Different Character Encodings
 License:        BSD-2-Clause

@@ -186,9 +186,13 @@ tar -xf %{SOURCE7}
 # add brotli
 pushd BaseTools/Source/C/BrotliCompress/brotli
 tar -xf %{SOURCE8} --strip 1
+#  remove the executable bit from files
+find . -type f -exec chmod 0644 {} \;
 popd
 pushd MdeModulePkg/Library/BrotliCustomDecompressLib/brotli
 tar -xf %{SOURCE8} --strip 1
+#  remove the executable bit from files
+find . -type f -exec chmod 0644 {} \;
 popd
 
 # add oniguruma

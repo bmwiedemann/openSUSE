@@ -2,6 +2,7 @@
 # spec file for package rspamd
 #
 # Copyright (c) 2016 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,11 +32,6 @@
   %if (0%{?suse_version} >= 1315)
     %bcond_without luajit
   %endif
-
-  # Tumbleweed and Leap 15.2 uses moonjit:
-  %if (0%{?suse_version} > 1500) || (0%{?sle_version} >= 150200 && 0%{?is_opensuse})
-    %bcond_without moonjit
-  %endif
 %endif
 
 %if 0%{?suse_version} >= 1500 && ! 0%{?sle_version}
@@ -55,24 +51,26 @@
 
 %global _wwwdir /srv/www/webapps
 
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
+%global force_gcc_version 9
+%endif
+
 Name:           rspamd
-Version:        2.5
+Version:        2.6
 Release:        0
 License:        Apache-2.0
 Summary:        Spam filtering system
 Url:            https://rspamd.com/
 Group:          Productivity/Networking/Email/Utilities
 Source0:        https://github.com/rspamd/rspamd/archive/%{version}/%{name}-%{version}.tar.gz
+Source1:        usr.bin.rspamd
 Patch0:         rspamd-conf.patch
 Patch1:         rspamd-after-redis-target.patch
-Patch2:         rspamd-moonjit.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         rspamd-gcc10-buildfix.patch
 BuildRequires:  cmake
 BuildRequires:  curl-devel
 BuildRequires:  db-devel
 BuildRequires:  file-devel
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  gd-devel
 %if %{with hyperscan}
 BuildRequires:  hyperscan-devel
@@ -122,6 +120,8 @@ Requires:  rspamd-client = %{version}
 %else
 Conflicts: rspamd-client
 %endif
+BuildRequires:  apparmor-abstractions
+Requires:       apparmor-abstractions
 
 %description
 Rspamd is a spam filtering system that allows evaluation of messages
@@ -157,12 +157,12 @@ This package holds the client tools (rspamc and rspamadm)
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%if %{with moonjit}
-%patch2 -p1
-%endif
-%patch3 -p1
 
 %build
+%if 0%{?force_gcc_version}
+export CC="gcc-%{?force_gcc_version}"
+export CXX="g++-%{?force_gcc_version}"
+%endif
 %cmake                                      \
 %if 0%{suse_version} == 1315
   -DCMAKE_USER_MAKE_RULES_OVERRIDE=""       \
@@ -258,6 +258,9 @@ cat > %{buildroot}%{_sysconfdir}/%{name}/local.d/worker-proxy.inc << EOF
 EOF
 
 install -d -m 0755 %{buildroot}%{_sysconfdir}/%{name}/override.d
+mkdir -p %{buildroot}%{_sysconfdir}/apparmor.d/local/
+install -D -m644 %{SOURCE1} %{buildroot}%{_sysconfdir}/apparmor.d/usr.bin.rspamd
+echo "# Site-specific additions and overrides for 'usr.bin.rspamd'" > %{buildroot}%{_sysconfdir}/apparmor.d/local/usr.bin.rspamd
 
 %pre
 %{_sbindir}/groupadd -r %{rspamd_group} 2>/dev/null || :
@@ -307,6 +310,9 @@ install -d -m 0755 %{buildroot}%{_sysconfdir}/%{name}/override.d
 %{_libdir}/rspamd/librspamd-ev.so
 %{_libdir}/rspamd/librspamd-kann.so
 %{_libdir}/rspamd/librspamd-replxx.so
+
+%config %{_sysconfdir}/apparmor.d/usr.bin.rspamd
+%config(noreplace) %{_sysconfdir}/apparmor.d/local/usr.bin.rspamd
 
 %dir %{_sysconfdir}/rspamd/
 %config %{_sysconfdir}/rspamd/actions.conf
@@ -498,6 +504,7 @@ install -d -m 0755 %{buildroot}%{_sysconfdir}/%{name}/override.d
 %{_datadir}/rspamd/lualib/lua_ffi/common.lua
 %{_datadir}/rspamd/lualib/lua_ffi/dkim.lua
 %{_datadir}/rspamd/lualib/lua_ffi/init.lua
+%{_datadir}/rspamd/lualib/lua_ffi/linalg.lua
 %{_datadir}/rspamd/lualib/lua_ffi/spf.lua
 
 %dir %{_datadir}/rspamd/lualib/lua_magic
@@ -526,6 +533,7 @@ install -d -m 0755 %{buildroot}%{_sysconfdir}/%{name}/override.d
 %{_datadir}/rspamd/lualib/lua_scanners/virustotal.lua
 
 %dir %{_datadir}/rspamd/lualib/lua_selectors
+%{_datadir}/rspamd/lualib/lua_selectors/common.lua
 %{_datadir}/rspamd/lualib/lua_selectors/extractors.lua
 %{_datadir}/rspamd/lualib/lua_selectors/init.lua
 %{_datadir}/rspamd/lualib/lua_selectors/maps.lua
@@ -550,6 +558,7 @@ install -d -m 0755 %{buildroot}%{_sysconfdir}/%{name}/override.d
 
 %dir %{_datadir}/rspamd/rules
 %{_datadir}/rspamd/rules/bitcoin.lua
+%{_datadir}/rspamd/rules/bounce.lua
 %{_datadir}/rspamd/rules/content.lua
 %{_datadir}/rspamd/rules/forwarding.lua
 %{_datadir}/rspamd/rules/headers_checks.lua
@@ -565,6 +574,7 @@ install -d -m 0755 %{buildroot}%{_sysconfdir}/%{name}/override.d
 %{_datadir}/rspamd/rules/regexp/headers.lua
 %{_datadir}/rspamd/rules/regexp/misc.lua
 %{_datadir}/rspamd/rules/regexp/upstream_spam_filters.lua
+%{_datadir}/rspamd/rules/controller
 
 %{_mandir}/man8/rspamd.8*
 
@@ -585,12 +595,7 @@ install -d -m 0755 %{buildroot}%{_sysconfdir}/%{name}/override.d
 %{_wwwdir}/%{name}/mstile-150x150.png
 %{_wwwdir}/%{name}/safari-pinned-tab.svg
 
-%dir %{_wwwdir}/%{name}/css
-%{_wwwdir}/%{name}/css/bootstrap.min.css
-%{_wwwdir}/%{name}/css/d3evolution.css
-%{_wwwdir}/%{name}/css/footable.bootstrap.min.css
-%{_wwwdir}/%{name}/css/nprogress.css
-%{_wwwdir}/%{name}/css/rspamd.css
+%{_wwwdir}/%{name}/css
 
 %dir %{_wwwdir}/%{name}/fonts
 %{_wwwdir}/%{name}/fonts/glyphicons-halflings-regular.ttf
@@ -610,21 +615,12 @@ install -d -m 0755 %{buildroot}%{_sysconfdir}/%{name}/override.d
 %{_wwwdir}/%{name}/js/app/graph.js
 %{_wwwdir}/%{name}/js/app/history.js
 %{_wwwdir}/%{name}/js/app/rspamd.js
+%{_wwwdir}/%{name}/js/app/selectors.js
 %{_wwwdir}/%{name}/js/app/stats.js
 %{_wwwdir}/%{name}/js/app/symbols.js
 %{_wwwdir}/%{name}/js/app/upload.js
 
-%dir %{_wwwdir}/%{name}/js/lib
-%{_wwwdir}/%{name}/js/lib/bootstrap.min.js
-%{_wwwdir}/%{name}/js/lib/d3.min.js
-%{_wwwdir}/%{name}/js/lib/d3evolution.min.js
-%{_wwwdir}/%{name}/js/lib/d3pie.min.js
-%{_wwwdir}/%{name}/js/lib/footable.min.js
-%{_wwwdir}/%{name}/js/lib/jquery-3.4.1.min.js
-%{_wwwdir}/%{name}/js/lib/jquery.stickytabs.min.js
-%{_wwwdir}/%{name}/js/lib/nprogress.min.js
-%{_wwwdir}/%{name}/js/lib/require.min.js
-%{_wwwdir}/%{name}/js/lib/visibility.min.js
+%{_wwwdir}/%{name}/js/lib
 
 %if 0%{?with split_out_client}
 %files client

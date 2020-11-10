@@ -136,4 +136,24 @@
   TlsKeyPwd =</comment>
     <requestid>833852</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>126e3fbc9f727793c43e1305a4ad7707</srcmd5>
+    <version>3.1.10</version>
+    <time>1605012007</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream version 3.1.10
+  * ODBC-288 - Connector misses &quot;interactive client&quot; option. Added
+    INTERACTIVE connection string option to tell server, that
+    the client application is interactive, and interactive_timeout
+    has to be used.
+  * ODBC-202 - Add charsets recoding function to C/ODBC. Iconv-based
+    conversion function has been moved and adapted from MariaDB Connector/C.
+  * ODBC-289 - Fixes a crash fetching from statement after closing and re-executing
+- remove upstreamed patches: fix_macros.patch,
+  implicit_decleration.patch, wrong_types.patch
+- iconv.patch: compilation fixes
+
+- Fix Driver in sample_odbc.ini</comment>
+    <requestid>846299</requestid>
+  </revision>
 </revisionlist>

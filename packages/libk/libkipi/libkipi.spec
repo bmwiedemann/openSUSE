@@ -16,22 +16,21 @@
 #
 
 
-%define _so 32_0_0
+%define sover_maj 32
 %define libname libKF5Kipi
-%define kf5_version 5.60.0
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkipi
-Version:        20.08.2
+Version:        20.08.3
 Release:        0
 Summary:        KDE Image Plugin Interface
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-#PATCH-FIX-OPENSUSE dont-install-pics.diff - Don't install icons since those are included in libkipi11 in SLE12
-Patch0:         dont-install-pics.diff
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules >= 1.1.0
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5I18n)
@@ -40,27 +39,19 @@ BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)
-Requires:       %{libname}%{_so} = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 This package provides a generic KDE Image Plug-in Interface used by
 some KDE image applications. Plug-ins for this interface are in the
 kipi-plugins package.
 
-%package -n %{libname}%{_so}
+%package -n %{libname}%{sover_maj}_0_0
 Summary:        KDE Image Plug-In Interface
 Group:          System/Libraries
 Requires:       libkipi-data >= %{version}
-%if !0%{?is_opensuse} && 0%{?sle_version} < 150000
-#kipi icons are provided by libkipi11
-Requires:       libkipi11
-%endif
+Recommends:     kipi-plugins
 
-%description -n %{libname}%{_so}
+%description -n %{libname}%{sover_maj}_0_0
 This package provides a generic KDE image plug-in interface used by
 some KDE image applications. Plug-ins for this interface are in the
 kipi-plugins package.
@@ -76,7 +67,7 @@ This package contains data files needed by the KDE image plug-in library.
 %package devel
 Summary:        KDE Image Plugin Interface
 Group:          Development/Libraries/KDE
-Requires:       %{libname}%{_so} = %{version}
+Requires:       %{libname}%{sover_maj}_0_0 = %{version}
 Requires:       cmake(KF5Config)
 Requires:       cmake(KF5I18n)
 Requires:       cmake(KF5Service)
@@ -93,10 +84,7 @@ some KDE image applications. Plug-ins for this interface are in the
 kipi-plugins package.
 
 %prep
-%setup -q
-%if !0%{?is_opensuse} && 0%{?sle_version} < 150000
-%patch0 -p1
-%endif
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -105,16 +93,15 @@ kipi-plugins package.
 %install
   %kf5_makeinstall -C build
 
-%post -n %{libname}%{_so} -p /sbin/ldconfig
-%postun -n %{libname}%{_so} -p /sbin/ldconfig
+%post -n %{libname}%{sover_maj}_0_0 -p /sbin/ldconfig
+%postun -n %{libname}%{sover_maj}_0_0 -p /sbin/ldconfig
 
-%files -n %{libname}%{_so}
-%{_kf5_libdir}/%{libname}.so.*
+%files -n %{libname}%{sover_maj}_0_0
+%{_kf5_libdir}/%{libname}.so.5.2.0
+%{_kf5_libdir}/%{libname}.so.%{sover_maj}.0.0
 
 %files data
-%if 0%{?is_opensuse} || !0%{?sle_version} < 150000
 %{_kf5_iconsdir}/hicolor/*/apps/kipi.png
-%endif
 %{_kf5_servicetypesdir}/kipiplugin.desktop
 
 %files devel

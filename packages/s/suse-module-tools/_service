@@ -5,7 +5,7 @@
     <param name="changesgenerate">enable</param>
     <param name="filename">suse-module-tools</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
-    <param name="versionrewrite-pattern">\+0$</param>
+    <param name="versionrewrite-pattern">\+[01]$</param>
     <param name="versionrewrite-replacement"></param>
     <param name="revision">master</param>
     <param name="exclude">*.rpmlintrc</param>

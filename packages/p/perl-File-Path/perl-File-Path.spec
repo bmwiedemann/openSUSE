@@ -17,10 +17,10 @@
 
 
 Name:           perl-File-Path
-Version:        2.170000
+Version:        2.180000
 Release:        0
-%define cpan_version 2.17
-Provides:       perl(File::Path) = 2.170000
+%define cpan_version 2.18
+Provides:       perl(File::Path) = 2.180000
 #Upstream:  James Keenan and Richard Elberger 1995-2020. All rights reserved.
 %define cpan_name File-Path
 Summary:        Create or remove directory trees

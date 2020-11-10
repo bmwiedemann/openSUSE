@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Nov  7 16:03:48 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Recommend kipi-plugins
+
+-------------------------------------------------------------------
+Fri Nov  6 19:23:59 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Drop obsolete parts for SLE, including dont-install-pics.diff
+- Mention soversion and libversion explicitly, also in %files
+- Drop unused Requires
+- Drop unused macros
+
+-------------------------------------------------------------------
+Thu Nov  5 22:47:43 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-11-apps-update
+- No code change since 20.08.2
+
+-------------------------------------------------------------------
 Fri Oct  9 05:45:13 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.08.2

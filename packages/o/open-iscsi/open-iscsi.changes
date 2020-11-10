@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov  4 18:58:29 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Updated to latest upstream, including async login ability:
+ * TODO: Update to todo list.
+ * Implement login "no_wait" for iscsiadm NODE mode
+ * iscsiadm buffer overflow regression when discovering many targets at once
+ * iscsid: Check Invalid Session id for stop connection
+ * Add ability to attempt target logins asynchronously
+
+-------------------------------------------------------------------
+Tue Nov  3 14:34:25 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- %service_del_postun_without_restart is now available on SLE
+
+  More accurately it's been introduced in SLE12-SP2+ and SLE15+
+
++-------------------------------------------------------------------
 Sat Jul 25 01:05:13 UTC 2020 - Lee Duncan <lduncan@suse.com>
 
 - Upgrade to upstream vresion 2.1.2 as 2.1.2-suse (for

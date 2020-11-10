@@ -1,0 +1,174 @@
+-------------------------------------------------------------------
+Tue Oct 13 14:57:25 UTC 2020 - Kai Liu <kai.liu@suse.com>
+
+- Update Requires and BuildRequires for changes since 0.4.0.
+
+- Remove patch files that are no longer needed:
+  * swtpm-adjust-seccomp-path.patch
+  * swtpm-setup-tcsd-path.patch
+  * swtpm-tpm-tools-path.patch
+
+- Update to version 0.5.0
+  * swtpm:
+    - Write files atomically using a temp file and then renaming
+  * swtpm_setup:
+    - Removed remaining 'c' wrapper program
+    - Do not truncate logfile when testing write-access (regression)
+    - Remove TPM state file in case error occurred
+  * swtpm-localca:
+    - Rewrite in python
+    - Allow passing pkcs11 PIN using signingkey_password
+    - Allow passing environment variables needed for pkcs11 modules using
+      swtpm-localca.conf and format 'env:VARNAME=VALUE'.
+  * build-sys:
+    - Add python-install and python-uninstall targets
+    - Add configure option to disable installation of Python module
+    - Use -Wl,-z,relro and -Wl,-z,now only when linking (clang)
+    - Use AC_LINK_IFELSE to check whether support for hardening flags
+
+- Changes from version 0.4.1
+  * swtpm_setup:
+    - Do not hardcode '/etc' but use SYSCONFDIR
+    - Fix support for -h and -? options
+    - Add missing .config path when using ${HOME}
+  * swtpm-localca:
+    - Apply password for signing key when creating platform cert
+    - Properly apply passwords for localca signing key
+
+- Changes from version 0.4.0
+  * swtpm:
+    - Invoke print capabilities after choosing TPM version
+    - Add some recent syscalls to seccomp blacklist
+  * swtpm_cert:
+    - Support --ecc-curveid option to pass curve id
+  * swtpm_setup & related scripts:
+    - Rewrite swtpm_setup.sh in python with TPM 1.2 not requiring tcsd
+      and TPM tools anymore; new dependencies:
+      - python3: pip, cryptography, setuptools
+      dropped dependencies for swtpm_setup:
+      - tcsd, expect, tpm-tools (some still needed for pkcs11 tests)
+    - Added support for RSA 3072 keys (for libtpms-0.8.0) and moved to
+      ECC NIST P384 curve; default RSA key size is still 2048
+    - Added support for --rsa-keysize option
+    - Extend script to create a CA using a TPM 2 for signing
+  * tests:
+    - Use the IBM TSS2 v1.5.0's test suite
+    - Add test case for loading of an NVRAM completely full with keys
+    - Have softhsm_setup use temporary directory for softhsm config & state
+    - various other improvements
+  * man pages:
+    - Improvements
+  * build-sys:
+    - clang: properly test for linker flag 'now' and 'relro'
+    - Gentoo: explicitly link libswtpm_libtpms with -lcrypto
+    - Ownership of /var/lib/swtpm-localca is now tss:root and
+      mode flags 0750.
+
+-------------------------------------------------------------------
+Thu Aug 13 01:37:06 UTC 2020 - Kai Liu <kai.liu@suse.com>
+
+- Update to version 0.3.4:
+  * swtpm:
+    - Fix compilation for cygwin
+  * swtpm_setup & swtpm-localca:
+    - Get rid of bash's eval when invoking external tools to avoid abuse.
+      Only use eval for 'resolving' variables.
+  * tests:
+    - Various fixes of minor issues
+
+-------------------------------------------------------------------
+Thu Jul 30 14:14:22 UTC 2020 - Kai Liu <kai.liu@suse.com>
+
+- Update to version 0.3.3:
+  * swtpm_setup:
+    - openSUSE: Support tcsd configuration where tss user != tss group,
+                such as root/tss; Fedora & Ubuntu for example use tss/tss
+  * build-sys:
+    - Check whether tss user and group are available
+
+- Add tss user & group build flags per upstream instruction. This
+  together with v0.3.3 fixed the bug with TPM 1.2 emulation.
+  Related upstream bug:
+    https://github.com/stefanberger/swtpm/issues/284
+
+-------------------------------------------------------------------
+Sat Jul 11 08:31:54 UTC 2020 - Kai Liu <kai.liu@suse.com>
+
+- Update to 0.3.2:
+  + swtpm:
+    + Remove unnecessary #include <seccomp.h> (fixes SuSE build)
+    + Make coverity happy by handling default case in case
+      statement
+  + swtpm_setup:
+    + bugfix: Create ECC storage primary key in owner hierarchy
+    + bugfix: remove tpm2_stirrandom and tpm2_changeeps
+  + tests:
+    + Adjusted pcrUpdateCounter in tests to succeed with PCR TCB
+      group fixes in libtpms TPM 2 code
+
+-------------------------------------------------------------------
+Wed Apr 22 03:25:36 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.3.1
+  + swtpm: Fix vtpm proxy case without startup flags
+  + swtpm: Only call memcpy if tocopy != 0 (coverity)
+  + man: Document new startup options and capabilities
+    advertisement
+  + swtpm: Enable sending startup commands before processing
+    commands
+  + swtpm_cert: Accept serial numbers that use up to 64bits
+  + swtpm_cert: Use getopt_long_only to parse options
+  + swtpm_cert: Add support for --print-capabilities option
+  + swtpm_cert: Allow passing signing key and parent key via new
+    option
+  + swtpm_setup: Enable spaces in paths and other variables
+  + swtpm_ioctl: Calculate strlen(input) only once
+  + swtpm_ioctl: Block SIGPIPE so we can get EPIPE on write()
+  + swtpm_bios: Block SIGPIPE so we can get EPIPE on write()
+  + swtpm: Only accept() new client ctrl connection if we have none
+  + swtpm_setup: Do not fail on future PCR banks' hashes
+  + swtpm_setup: Use 1st part of SWTPM_EXE/SWTPM_IOCTL to determine
+    executable
+  + swtpm_setup: Keep reserved range of file descriptors for
+    swtpm_setup.sh
+  + swtpm_setup: Log about encryption and fix c&p error in err msg
+  + swtpm: Add --print-capabilities to help screen of
+    'swtpm chardev'
+  + swtpm_ioctl: Fix uninitialized variable 'pgi'
+  + swtpm_cert: Use gnutls_x509_crt_get_subject_key_id API call for
+    subj keyId
+  + swtpm_cert: Fix OIDs for TPM 2 platforms data
+  + swtpm: Fix typo in error report: HMAC instead of hash
+  + swtpm: Use writev_full rather than writev; fixes --vtpm-proxy
+    EIO error
+- Refresh swtpm-setup-tcsd-path.patch
+
+-------------------------------------------------------------------
+Fri Jan  3 01:52:45 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Amend swtpm-adjust-seccomp-path.patch to add the missing seccomp
+  paths
+- Adjust the conditional check of net-tools-deprecated for SLE15
+  and SLE15-SP1
+
+-------------------------------------------------------------------
+Thu Sep  5 08:00:27 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.2.0
+  +Linux: swtpm now runs with a seccomp profile (blacklist) if
+           compiled with libseccomp support
+  + Added subpport for passing key and passphrase via file
+    descriptor
+  + TPM 2 commands can now be prefixed by 'the TCG header' and
+    responses will have a 4-byte prefix and 4-byte suffix.
+  + Added --print-capabilities command line option
+  + Proper handling on EINTR on read, poll, and write
+- Patches to adjust the pathes
+  + swtpm-tpm-tools-path.patch
+  + swtpm-setup-tcsd-path.patch
+  + swtpm-adjust-seccomp-path.patch
+
+-------------------------------------------------------------------
+Tue May 15 08:37:16 UTC 2018 - glin@suse.com
+
+- Initial import: 0.1.0-dev2

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Nov  5 12:17:02 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- New upstream version 3.1.10
+  * ODBC-288 - Connector misses "interactive client" option. Added
+    INTERACTIVE connection string option to tell server, that
+    the client application is interactive, and interactive_timeout
+    has to be used.
+  * ODBC-202 - Add charsets recoding function to C/ODBC. Iconv-based
+    conversion function has been moved and adapted from MariaDB Connector/C.
+  * ODBC-289 - Fixes a crash fetching from statement after closing and re-executing
+
+- remove upstreamed patches: fix_macros.patch,
+  implicit_decleration.patch, wrong_types.patch
+- iconv.patch: compilation fixes
+
+-------------------------------------------------------------------
+Thu Nov  5 11:19:12 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Fix Driver in sample_odbc.ini
+
+-------------------------------------------------------------------
 Fri Sep 11 17:35:40 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 ** LOCATION CHANGE ** - the ODBC driver location has been changed to

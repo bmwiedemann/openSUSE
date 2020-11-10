@@ -412,4 +412,12 @@
   * fabrics: ignore hostnqn file if its empty</comment>
     <requestid>826916</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>d138e8929bf2fb61689ebb225d00a79b</srcmd5>
+    <version>1.13</version>
+    <time>1605011916</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846170</requestid>
+  </revision>
 </revisionlist>

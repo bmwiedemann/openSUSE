@@ -18,16 +18,16 @@
 
 # define libraries
 %define libcodecs libwscodecs2
-%define libtap libwiretap10
-%define libutil libwsutil11
-%define libwire libwireshark13
+%define libtap libwiretap11
+%define libutil libwsutil12
+%define libwire libwireshark14
 %if 0%{?suse_version} >= 1500
 %bcond_without lz4
 %else
 %bcond_with lz4
 %endif
 Name:           wireshark
-Version:        3.2.8
+Version:        3.4.0
 Release:        0
 Summary:        A Network Traffic Analyser
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -45,9 +45,11 @@ BuildRequires:  libbrotli-devel
 # keep until libbrotli-devel bug is fixed
 BuildRequires:  libbrotlidec1
 BuildRequires:  libcap-devel
-BuildRequires:  libcares-devel
-BuildRequires:  libgcrypt-devel >= 1.8.0
+BuildRequires:  libcares-devel >= 1.5.0
+BuildRequires:  libgcrypt-devel >= 1.4.2
+BuildRequires:  libgnutls-devel >= 3.2
 BuildRequires:  libpcap-devel
+BuildRequires:  libqt5-linguist-devel
 BuildRequires:  libsmi-devel
 BuildRequires:  libtool
 BuildRequires:  net-snmp-devel
@@ -60,15 +62,26 @@ BuildRequires:  spandsp-devel
 BuildRequires:  tcpd-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(Qt5Core) >= 5.3.0
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Multimedia)
+BuildRequires:  pkgconfig(Qt5PrintSupport)
+BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(libbcg729)
 BuildRequires:  pkgconfig(libmaxminddb)
 BuildRequires:  pkgconfig(libnghttp2)
 BuildRequires:  pkgconfig(libssh) >= 0.6.0
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
-Requires(pre):  permissions
-Requires(pre):  shadow
+BuildRequires:  pkgconfig(minizip)
+BuildRequires:  pkgconfig(opus)
+BuildRequires:  pkgconfig(sbc)
+BuildRequires:  pkgconfig(speexdsp)
 # keep until libbrotli-devel bug is fixed
 Requires:       libbrotlidec1
+Requires(pre):  permissions
+Requires(pre):  shadow
 Recommends:     wireshark-ui = %{version}
 Provides:       ethereal = %{version}
 Obsoletes:      %{libcodecs} < %{version}
@@ -79,17 +92,9 @@ BuildRequires:  pkgconfig(liblz4)
 # in openSUSE Leap 42.3, lz4 was incorrectly packaged
 BuildConflicts: pkgconfig(liblz4) = 124
 %endif
-BuildRequires:  libgnutls-devel >= 3.2
 %if 0%{?suse_version} > 1310
 BuildRequires:  pkgconfig(libnl-3.0)
 %endif
-BuildRequires:  libqt5-linguist-devel
-BuildRequires:  pkgconfig(Qt5Core) >= 5.2.0
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Multimedia)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Widgets)
 %if 0%{?suse_version} > 1320
 BuildRequires:  lua51-devel
 %else
@@ -169,16 +174,16 @@ sed -i 's/^Icon=wireshark.png$/Icon=wireshark/' wireshark*.desktop
 %cmake -DCMAKE_INSTALL_LIBDIR='%{_lib}/'
 %if 0%{?is_opensuse}
 %cmake_build
-%else 
+%else
 # if the cmake_build makro does not exit we build it by hand...
-/usr/bin/make \
-    %if "/usr/bin/make" == "/usr/bin/make" 
+%{_bindir}/make \
+    %if "%{_bindir}/make" == "%{_bindir}/make"
         -O VERBOSE=1 \
-    %else 
+    %else
         -v \
-    %endif 
+    %endif
     -j8
-%endif 
+%endif
 
 %install
 %cmake_install

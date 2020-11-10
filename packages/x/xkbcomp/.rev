@@ -145,4 +145,16 @@
   * Error out if we have no default path</comment>
     <requestid>777957</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4c4ffbba3a31811a9c0816721553c659</srcmd5>
+    <version>1.4.4</version>
+    <time>1605011923</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.4
+  * Fix spelling/wording issues
+  * Fix lockdevbtn to be XkbSA_LockDeviceBtn action
+  * For -R and after chdir, add the current directory to the path
+  * Don't pretend unresolved symbols are an error</comment>
+    <requestid>846191</requestid>
+  </revision>
 </revisionlist>

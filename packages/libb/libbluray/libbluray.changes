@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov  5 08:18:26 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.1:
+  + Add initial support for .fmts files.
+  + Improve missing/broken playlist handling.
+  + Improve UHD metadata support.
+  + Improve BD-J compability.
+  + Improve error resilience and stability.
+  + Fix long delay in "Evangelion, You are (not) alone" menu.
+  + Fix JVM bootstrap issues with some Java 9 versions.
+  + Fix sign extended bytes when reading single bytes in BDJ.
+  + Fix creating organization and disc specific BD-J BUDA
+    directories.
+  + Use external libudfread when available.
+  + Rename list_titles to bd_list_titles and add it to installed
+    programs.
+
+-------------------------------------------------------------------
 Mon Apr 27 17:35:07 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.2.0

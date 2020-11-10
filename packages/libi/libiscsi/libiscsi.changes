@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov  5 10:50:08 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.19.0+git.20201023:
+  * test-tool: add COMPARE AND WRITE MiscompareSense test
+  * lib: parse Information fixed sense field
+  * lib: parse Information sense descriptor type
+  * lib: check length for sense key specific sense data descriptors
+  * lib: drop generic sense data descriptor VALID check
+  * test-tool: add version descriptor checks for more SBC-3 versions
+  * test-tool: Fix CmdSN tests
+  * test-tool/test_async_lu_reset_simple: Move an assert statement
+  * Remove an unused function from the iSER code
+  * test-tool: add LogoutDuringIOAsync test case
+  * test-tool: rename async write dispatch/complete counters
+  * pdu: fix use after free during cancellation
+
+-------------------------------------------------------------------
 Thu Aug 13 11:36:17 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.19.0+git.20200812:

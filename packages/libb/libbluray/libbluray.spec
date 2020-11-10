@@ -19,7 +19,7 @@
 
 %define         sover 2
 Name:           libbluray
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Library to access Blu-Ray disk
 License:        LGPL-2.1-or-later
@@ -113,6 +113,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files tools
 %{_bindir}/bd_info
+%{_bindir}/bd_list_titles
+%{_bindir}/bd_splice
 
 %files -n libbluray%{sover}
 %license COPYING
