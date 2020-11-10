@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  9 23:52:10 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- spec: Add rpmlintrc to filter statically-linked-binary warning
+  for container-disk binary. The binary must be statically linked
+  since it runs in a scratch container.
+
+-------------------------------------------------------------------
 Fri Nov  6 19:40:12 UTC 2020 - James Fehlig <jfehlig@suse.com>
 
 - spec: Generate the registry path for kubevirt-operator.yaml at

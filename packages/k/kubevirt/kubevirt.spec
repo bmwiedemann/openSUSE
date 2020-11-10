@@ -25,6 +25,7 @@ Group:          System/Packages
 URL:            https://github.com/kubevirt/kubevirt
 Source0:        %{name}-%{version}.tar.gz
 Source1:        kubevirt-psp-caasp.yaml
+Source100:      %{name}-rpmlintrc
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
