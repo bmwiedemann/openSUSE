@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-agate-dbf
-Version:        0.2.1
+Version:        0.2.2
 Release:        0
 Summary:        Read support for dbf files for agate
 License:        MIT

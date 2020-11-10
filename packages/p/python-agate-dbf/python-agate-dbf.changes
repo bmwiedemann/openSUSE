@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 10 12:49:23 UTC 2020 - Marketa Machova <mmachova@suse.com>
+
+- Update to 0.2.2
+  * No longer lowercase column names.
+
+-------------------------------------------------------------------
 Thu Apr 16 17:51:24 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Switch from using nosetest runner to pytest
@@ -23,3 +29,4 @@ Wed May  9 19:03:10 UTC 2018 - toddrme2178@gmail.com
 Fri Oct 20 16:12:24 UTC 2017 - toddrme2178@gmail.com
 
 - initial version
+

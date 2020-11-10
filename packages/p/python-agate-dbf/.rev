@@ -23,4 +23,12 @@
     <comment>- Switch from using nosetest runner to pytest</comment>
     <requestid>794646</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4b030cb8cb54b980484e84709a4e2a05</srcmd5>
+    <version>0.2.2</version>
+    <time>1605017336</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847491</requestid>
+  </revision>
 </revisionlist>
