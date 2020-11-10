@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 10 03:07:00 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.35
+   see /usr/share/doc/packages/perl-Class-C3/Changes
+
+  0.35 - 2020-11-09
+      - update bundled ExtUtils::HasCompiler to 0.022
+      - support PUREPERL_ONLY environment variable during installation
+      - fix no-XS test to not require newer Test::More that declared prereq
+      - drop optional Devel::Hide prereq
+
+-------------------------------------------------------------------
 Fri Apr 20 05:06:19 UTC 2018 - coolo@suse.com
 
 - updated to 0.34
