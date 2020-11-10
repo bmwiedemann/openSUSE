@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov  5 22:46:01 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-11-apps-update
+- Changes since 20.08.2:
+  * Set window icons for GUI executables
+  * [sms] Restore compatibility with current Android release (kde#427266)
+  * Work around SMS not being sent from cli
+  * Update kdeconnect-cli send-sms interface. (kde#425731)
+  * Fix missing kcm dependency for runcommand module
+
+-------------------------------------------------------------------
 Fri Oct  9 05:43:32 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.08.2
