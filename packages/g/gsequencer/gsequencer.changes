@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov  9 22:32:55 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.6.14 fixed AgsPlayback cleanup. 
+
+-------------------------------------------------------------------
+Mon Nov  9 17:07:27 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.6.13 fixed double free as accessing fx recalls
+  of Ags*DssiBridge and Ags*Lv2Bridge.
+- new functional tests and a new parallel integration tests make
+  target.
+
+-------------------------------------------------------------------
+Thu Nov  5 18:47:34 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.6.7 fixed more pthread remains, caused a SIGSEGV
+  while opening SF2 or SFZ files.
+
+-------------------------------------------------------------------
 Tue Nov  3 13:49:16 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.6.6.
