@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov  5 22:46:41 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-11-apps-update
+- Changes since 20.08.2:
+  * Add missing remove text
+  * Fix Bug 427889 - Missing text when removing charset encodings (kde#427889)
+  * Fix Bug 427697 - KMail did not apply data from mailto information. (kde#427697)
+  * Fix encoding problem with `kmail  --msg $PWD/file.txt`
+
+-------------------------------------------------------------------
 Fri Oct  9 05:44:11 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.08.2
@@ -6,7 +19,6 @@ Fri Oct  9 05:44:11 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
   * For more details please see:
   * https://kde.org/announcements/releases/2020-10-apps-update
 - Changes since 20.08.1:
-  * Fix encoding problem with `kmail  --msg $PWD/file.txt`
   * It was a error to call setAutoDelete(false). It will create a mem leak
   * Fix Bug 426596 - Application: "akonadi_archivemail_agent" crashed after
     closing "Configure automatic archving..."-Dialog (kde#426596)
