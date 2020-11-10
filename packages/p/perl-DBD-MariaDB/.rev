@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>783472</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9b786e496dd4f737406c51e44d2801fa</srcmd5>
+    <version>1.21</version>
+    <time>1605012358</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build
+</comment>
+    <requestid>847306</requestid>
+  </revision>
 </revisionlist>

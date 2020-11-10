@@ -10,8 +10,8 @@ description: |-
 #summary: override summary from CPAN
 #no_testing: broken upstream
 sources:
- Source2:        test-setup.sh
- Source3:        test-clean.sh
+ - test-setup.sh
+ - test-clean.sh
 preamble: |-
  BuildRequires:  libmariadb-devel
  BuildRequires:  mariadb
@@ -50,12 +50,14 @@ preamble: |-
 # sed on %{name}.files
 #license: SUSE-NonFree
 #skip_noarch: 1
-#custom_build: |-
-#./Build build flags=%{?_smp_mflags} --myflag
+custom_build: |-
+ # fails to detect the paths since perl 5.32
+ perl Makefile.PL verbose INSTALLDIRS=vendor OPTIMIZE="%{optflags}" --libs="-L%{_libdir} -lmariadb" --cflags="-I%{_includedir}/mysql"
+ make %{?_smp_mflags}
 custom_test: |-
  # Setup environment and start database
- . %{SOURCE2}
+ . %{SOURCE1}
  HARNESS_OPTIONS=j4 make %{?_smp_mflags} test
  # Stop database
- . %{SOURCE3}
+ . %{SOURCE2}
 #ignore_requires: Bizarre::Module

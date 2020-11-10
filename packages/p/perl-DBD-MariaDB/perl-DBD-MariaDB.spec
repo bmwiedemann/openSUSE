@@ -16,19 +16,29 @@
 #
 
 
-%define cpan_name DBD-MariaDB
 Name:           perl-DBD-MariaDB
 Version:        1.21
 Release:        0
+%define cpan_name DBD-MariaDB
 Summary:        MariaDB and MySQL driver for the Perl5 Database Interface (DBI)
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PA/PALI/%{cpan_name}-%{version}.tar.gz
-Source1:        cpanspec.yml
+Source1:        test-setup.sh
+Source2:        test-clean.sh
+Source3:        cpanspec.yml
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  perl
+BuildRequires:  perl-macros
+BuildRequires:  perl(DBI) >= 1.608
+BuildRequires:  perl(DBI::Const::GetInfoType)
+BuildRequires:  perl(Devel::CheckLib) >= 1.12
+BuildRequires:  perl(Test::Deep)
+BuildRequires:  perl(Test::More) >= 0.90
+Requires:       perl(DBI) >= 1.608
+%{perl_requires}
 # MANUAL BEGIN
-Source2:        test-setup.sh
-Source3:        test-clean.sh
 BuildRequires:  libmariadb-devel
 BuildRequires:  mariadb
 BuildRequires:  zlib-devel
@@ -58,15 +68,6 @@ Requires:       perl(DynaLoader)
 Requires:       perl(strict)
 Requires:       perl(warnings)
 # MANUAL END
-BuildRequires:  perl
-BuildRequires:  perl-macros
-BuildRequires:  perl(DBI) >= 1.608
-BuildRequires:  perl(DBI::Const::GetInfoType)
-BuildRequires:  perl(Devel::CheckLib) >= 1.12
-BuildRequires:  perl(Test::Deep)
-BuildRequires:  perl(Test::More) >= 0.90
-Requires:       perl(DBI) >= 1.608
-%{perl_requires}
 
 %description
 *DBD::MariaDB* is the Perl5 Database Interface driver for MariaDB and MySQL
@@ -80,17 +81,16 @@ are missing, mainly because no-one ever requested them.
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+# fails to detect the paths since perl 5.32
+perl Makefile.PL verbose INSTALLDIRS=vendor OPTIMIZE="%{optflags}" --libs="-L%{_libdir} -lmariadb" --cflags="-I%{_includedir}/mysql"
 make %{?_smp_mflags}
 
 %check
-# MANUAL BEGIN
 # Setup environment and start database
-. %{SOURCE2}
+. %{SOURCE1}
 HARNESS_OPTIONS=j4 make %{?_smp_mflags} test
 # Stop database
-. %{SOURCE3}
-# MANUAL END
+. %{SOURCE2}
 
 %install
 %perl_make_install
@@ -98,7 +98,8 @@ HARNESS_OPTIONS=j4 make %{?_smp_mflags} test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%license LICENSE
+%defattr(-,root,root,755)
 %doc Changes Changes.historic
+%license LICENSE
 
 %changelog
