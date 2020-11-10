@@ -16,17 +16,17 @@
 #
 
 
-%define libver  3_7_2
+%define libver  3_8_0
 Name:           rssguard
-Version:        3.7.2
+Version:        3.8.0
 Release:        0
 Summary:        RSS/ATOM/RDF feed reader
 License:        GPL-3.0-only AND AGPL-3.0-or-later
 URL:            https://github.com/martinrotter/rssguard
 Source0:        https://github.com/martinrotter/rssguard/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.changes
-# PATCH-FIX-OPENSUSE rssguard-3.6.3-add_library_version.patch aloisio@gmx.com -- add version to shared library
-Patch2:         rssguard-3.6.3-add_library_version.patch
+# PATCH-FIX-OPENSUSE rssguard-3.8.0-add_library_version.patch aloisio@gmx.com -- add version to shared library
+Patch2:         rssguard-3.8.0-add_library_version.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
