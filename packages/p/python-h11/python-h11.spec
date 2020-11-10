@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-h11
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        A pure-Python, bring-your-own-I/O implementation of HTTP/11
 License:        MIT

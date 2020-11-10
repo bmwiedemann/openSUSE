@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 10 08:02:09 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.11.0:
+  * h11 now stores and makes available the raw header name as
+  received. In addition h11 will write out header names with the same
+  casing as passed to it. This allows compatibility with systems that
+  expect titlecased header names. See `#31
+  * Multiple content length headers are now merged into a single header
+  if all the values are equal, if any are unequal a LocalProtocol
+  error is raised (as before). See `#92
+
+-------------------------------------------------------------------
 Thu Aug 13 12:35:59 UTC 2020 - aloisio@gmx.com
 
 - Update to version 0.10.0

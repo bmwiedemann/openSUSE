@@ -50,4 +50,19 @@
     <comment></comment>
     <requestid>826282</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9a08df84c80aec46000d91d52a4d78d2</srcmd5>
+    <version>0.11.0</version>
+    <time>1605012396</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.0:
+  * h11 now stores and makes available the raw header name as
+  received. In addition h11 will write out header names with the same
+  casing as passed to it. This allows compatibility with systems that
+  expect titlecased header names. See `#31
+  * Multiple content length headers are now merged into a single header
+  if all the values are equal, if any are unequal a LocalProtocol
+  error is raised (as before). See `#92</comment>
+    <requestid>847415</requestid>
+  </revision>
 </revisionlist>
