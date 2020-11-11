@@ -25,6 +25,8 @@ Group:          System/Monitoring
 URL:            https://01.org/powertop/
 Source0:        https://github.com/fenrus75/powertop/archive/v2.13.tar.gz
 Source1:        powertop.service
+# jsc#SLE-13395: Add powertop support
+Patch0:         powertop-add-rocket-lake-support.patch
 # they repeatedly forget to upload a release tarball and only have the one from
 # GitHub which doesnt contain configure thus adding:
 # autoconf, autoconf-archive, automake, libtool
@@ -52,6 +54,7 @@ doing in terms of power savings.
 
 %prep
 %setup -q -n powertop-%{version}
+%patch0 -p1
 
 # Delete objects files left in tarball
 find . -name '*.o' -delete

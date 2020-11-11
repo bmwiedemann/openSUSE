@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 11 08:25:09 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- jsc#SLE-13395: Add Rocket Lake support
+  * Add powertop-add-rocket-lake-support.patch
+
+-------------------------------------------------------------------
 Thu Oct 29 08:36:16 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Add workaround for `error: too many loops` which happens with
