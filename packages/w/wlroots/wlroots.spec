@@ -16,7 +16,7 @@
 #
 
 
-%define libname libwlroots6
+%define libname libwlroots7
 %bcond_without  libcap
 %bcond_without  systemd
 %bcond_with     elogind
@@ -24,7 +24,7 @@
 %bcond_without  xwayland
 %bcond_without  xcb_errors
 Name:           wlroots
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        Modular Wayland compositor library
 License:        MIT
@@ -43,6 +43,7 @@ BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.95
 BuildRequires:  pkgconfig(libinput) >= 1.9.0
 BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libseat)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(wayland-client)

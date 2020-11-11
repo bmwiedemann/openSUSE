@@ -214,4 +214,25 @@
   wlroots</comment>
     <requestid>821251</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e961ac355e7b02480bd9f53e5e8bd02a</srcmd5>
+    <version>0.12.0</version>
+    <time>1605124005</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  breaking changes:
+  * render/gles2: remove gles2_procs global (#2351)
+    The wlr_gles2_texture_from_* family of functions are no longer
+    public API.
+  * Remove xdg-shell-unstable-v6 support (#2391)
+    wlr_xdg_shell_v6 has been dropped and is superseded by wlr_xdg_shell.
+  * output: fix blurred hw cursors with fractional scaling (#2107)
+    For backends: wlr_output_impl.set_cursor now takes a float scale
+    instead of an int32_t.
+  * Introduce wlr_output_event_commit (#2315)
+    The wlr_output.events.commit event now has a data argument of
+    type struct wlr_output_event_commit * instead of struct wlr_output *.
+  * For details see: https://github.com/swaywm/wlroots/releases/tag/0.12.0</comment>
+    <requestid>847692</requestid>
+  </revision>
 </revisionlist>
