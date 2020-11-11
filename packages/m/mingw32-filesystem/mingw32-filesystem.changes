@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov  5 10:38:47 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to 20201105
+- Add macro _mingw32_create_macro_links
+- Add macro _mingw32_gdb and command line wrapper /usr/bin/mingw32-gdb
+- In mingw32-scripts support rpm macro processing according to
+  https://rpm.org/user_doc/macros.htm
+
+-------------------------------------------------------------------
 Sat Oct 17 14:32:20 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update to 20201017

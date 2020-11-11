@@ -1,7 +1,7 @@
 #
 # spec file for package mingw32-filesystem
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define debug_package %{nil}
 %define _rpmlibdir    %{_prefix}/lib/rpm
 Name:           mingw32-filesystem
-Version:        20201017
+Version:        20201105
 Release:        0
 Summary:        MinGW base filesystem and environment
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/Other
-Url:            http://hg.et.redhat.com/misc/fedora-mingw--devel/
+URL:            http://hg.et.redhat.com/misc/fedora-mingw--devel/
 Source0:        COPYING
 Source1:        macros.mingw32
 Source2:        mingw32.sh
@@ -82,9 +82,11 @@ mkdir -p %{buildroot}%{_prefix}/lib
 mkdir -p %{buildroot}%{_libexecdir}
 install -m 755 %{SOURCE6} %{buildroot}%{_libexecdir}/mingw32-scripts
 
+# this is already provided by _mingw32_create_macro_links
+# but including macros.mingw32 results into an unknown failure
 mkdir -p %{buildroot}%{_bindir}
 pushd %{buildroot}%{_bindir}
-for i in mingw32-configure mingw32-make mingw32-cmake ; do
+for i in mingw32-configure mingw32-make mingw32-cmake mingw32-gdb; do
   ln -s %{_libexecdir}/mingw32-scripts $i
 done
 popd

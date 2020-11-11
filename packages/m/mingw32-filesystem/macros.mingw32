@@ -84,6 +84,23 @@ package or when debugging this package.\
 %defattr(-,root,root)\
 %{nil}
 
+#
+# create shell wrapper for associated rpm macro
+#
+# The shell wrapper makes a macro defined in a mingw32 macro file
+# (e.g. /etc/rpm/macros.mingw32) accessible to a shell for example
+# the rpm macro '%_mingw32_gdb' is available on a shell as executable file
+# 'mingw32-gdb'
+#
+%_mingw32_create_macro_links() \
+  mkdir -p %{buildroot}%{_bindir}; \
+  pushd %{buildroot}%{_bindir}; \
+  for i in %*; do \
+    ln -s %{_libexecdir}/mingw32-scripts $i; \
+  done; \
+  popd \
+  %{nil}
+
 %_mingw32_env HOST_CC=gcc; export HOST_CC; \
   PKG_CONFIG_PATH="%{_mingw32_libdir}/pkgconfig:%{_mingw32_datadir}/pkgconfig"; export PKG_CONFIG_PATH; \
   CLASSPATH="$CLASSPATH:${MINGW32_CLASSPATH:-%_mingw32_classpath}"; export CLASSPATH; \
@@ -185,3 +202,7 @@ package or when debugging this package.\
 
 # deprecated, use _mingw32_make_install (unix variant is named %make_install)
 %_mingw32_makeinstall %_mingw32_make_install
+
+# requires installed packages wine and mingw32-gdb
+%_mingw32_gdb %{_mingw32_env} ; \
+  wineconsole %{_mingw32_bindir}/gdb.exe
