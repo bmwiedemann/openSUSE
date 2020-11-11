@@ -19,7 +19,7 @@
 %global pkg_name hsemail
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        Parsec parsers for the Internet Message format (e-mail)
 License:        BSD-3-Clause
