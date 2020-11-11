@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Nov 11 12:00:26 UTC 2020 - Maximilian Trummer <opensuse@trummer.xyz>
+
+- update to 3.0
+- New features
+  * api: add optional list of colors in infos "nick_color" and "nick_color_name" (issue #1565)
+  * api: add argument "bytes" in function string_dyn_concat
+  * api: add function string_color_code_size (issue #1547)
+  * exec: add option "-oerr" to send stderr to buffer (now disabled by default) (issue #1566)
+  * fset: add option fset.look.auto_refresh (issue #1553)
+  * irc: add pointer to irc_nick in focus of bar item "buffer_nicklist" (issue #1535, issue #1538)
+  * irc: allow to send text on buffers with commands /allchan, /allpv and /allserv
+  * irc: evaluate command executed by commands /allchan, /allpv and /allserv (issue #1536)
+  * script: add option script.scripts.download_enabled (issue #1548)
+  * trigger: add variable "tg_argc" in data set by command trigger (issue #1576)
+  * trigger: add variable "tg_trigger_name" in data set by all triggers (issue #1567, issue #1568)
+- Bug fixes
+  * core: set "notify_level" to 3 if there is a highlight in the line (issue #1529)
+  * core: do not add line with highlight and tag "notify_none" to hotlist (issue #1529)
+  * irc: remove SASL timeout message displayed by error
+    after successful SASL authentication (issue #1515)
+  * irc: send all channels in a single JOIN command when reconnecting to the server (issue #1551)
+  * script: do not automatically download list of scripts on startup
+    if the file is too old (issue #1548)
+  * spell: properly skip WeeChat and IRC color codes when checking words in input (issue #1547)
+  * trigger: fix recursive calls to triggers using regex (issue #1546)
+  * trigger: add ${tg_tags} !!- ,notify_none, in conditions of default trigger "beep" (issue #1529)
+- Tests
+  * core: add tests on GUI line functions
+- Build
+  * core: disable debug by default in autotools build
+  * tests: fix compilation with CppUTest ≥ 4.0
+
+-------------------------------------------------------------------
 Mon Jul 20 00:31:35 UTC 2020 - Maximilian Trummer <opensuse@trummer.xyz>
 
 - new .desktop file from weechat sources
