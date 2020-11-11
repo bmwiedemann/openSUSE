@@ -17,14 +17,14 @@
 
 
 Name:           python3-pynest2d
-Version:        4.8~beta
+%define sversion        4.8
+Version:        4.8.0
 Release:        0
-%define sversion        4.8-beta
 Summary:        CPython bindings for libnest2d
 License:        LGPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/Ultimaker/%name
-Source:         https://github.com/Ultimaker/pynest2d/archive/cura-%{sversion}.tar.gz#/pynest2d-%{version}.tar.gz
+Source:         https://github.com/Ultimaker/pynest2d/archive/%{sversion}.tar.gz#/pynest2d-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE -- add PyQt5 namespace
 Patch0:         pynest2d-PyQt5.sip.patch
 # PATCH-FIX-UPSTREAM -- https://github.com/Ultimaker/pynest2d/pull/3
@@ -38,7 +38,7 @@ BuildRequires:  python3-sip-devel
 Binding allowing libnest2d to be called from Python using Numpy.
 
 %prep
-%autosetup -n pynest2d-cura-%{sversion} -p1
+%autosetup -n pynest2d-%{sversion} -p1
 
 %build
 %cmake
