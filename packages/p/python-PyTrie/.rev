@@ -25,4 +25,18 @@
   directly from collections.</comment>
     <requestid>753288</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>17bbf1fe3ea89e40ee32b0708600e58c</srcmd5>
+    <version>0.4.0</version>
+    <time>1605124024</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  * Drop Python 2.7 support
+- LICENSE now included in the tarball, drop the separate Source. 
+- Drop fix-sorting-py2.patch, Python 2 not supported
+- Drop no-import-from-collections.patch, included upstream
+- No longer BuildRequire python-devel, and switch to the macro for
+  testsuite</comment>
+    <requestid>847639</requestid>
+  </revision>
 </revisionlist>

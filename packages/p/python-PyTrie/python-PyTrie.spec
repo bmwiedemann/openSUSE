@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyTrie
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,19 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-PyTrie
-Version:        0.3.1
+Version:        0.4.0
 Release:        0
 Summary:        A pure Python implementation of the trie data structure
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/gsakkis/pytrie/
 Source:         https://files.pythonhosted.org/packages/source/P/PyTrie/PyTrie-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/gsakkis/pytrie/master/LICENSE
-Patch0:         fix-sorting-py2.patch
-# PATCH-FIX-UPSTREAM no-import-from-collections.patch gh#gsakkis/pytrie#5 mcepl@suse.com
-# Don't import directly from collections.
-Patch1:         no-import-from-collections.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sortedcontainers}
+BuildRequires:  %{python_module testsuite}
 BuildRequires:  fdupes
-# needs tests, on py2 they are in devel
-BuildRequires:  python-devel
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-testsuite
 Requires:       python-sortedcontainers
 Provides:       python-pytrie
 Obsoletes:      python-pytrie
@@ -44,7 +37,7 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-pytrie is a pure Python (2 and 3) implementation of the trie data structure.
+pytrie is a pure Python 3 implementation of the trie data structure.
 
 A trie is an ordered tree data structure that is used to store a mapping
 where the keys are sequences, usually strings over an alphabet. In addition to
@@ -53,7 +46,6 @@ prefix, and vice versa, finding the items whose keys are prefixes of a given key
 
 %prep
 %setup -q -n PyTrie-%{version}
-cp %{SOURCE1} .
 %autopatch -p1
 
 %build
