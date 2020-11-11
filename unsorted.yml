@@ -3021,6 +3021,12 @@ unsorted:
   - efont-serif-fonts 
   - eiciel 
   - eiciel-lang 
+  - eid-mw 
+  - eid-mw-devel 
+  - eid-mw-firefox 
+  - eid-mw-libs 
+  - eid-mw-libs-32bit: [x86_64] 
+  - eid-viewer 
   - eigen3-devel 
   - eigen3-doc 
   - eiskaltdcpp-qt 
@@ -5918,6 +5924,7 @@ unsorted:
   - grafana-sap-hana-dashboards 
   - grafana-sap-netweaver-dashboards 
   - grafana-sap-providers 
+  - grafana-sleha-cluster-provider 
   - grafana-status-panel 
   - grafx2 
   - grail 
@@ -6234,7 +6241,6 @@ unsorted:
   - gtkspell-devel 
   - gtkspell-doc 
   - gtkspell3-devel 
-  - gtkspell3-lang: [i586] 
   - gtkwave 
   - gtkwave-doc 
   - gtkwave-examples 
@@ -6818,12 +6824,8 @@ unsorted:
   - ini4j 
   - ini4j-javadoc 
   - injeqt-devel 
-  - inkscape: [i586] 
-  - inkscape-extensions-extra: [i586] 
   - inkscape-extensions-fig 
-  - inkscape-extensions-gimp: [i586] 
   - inkscape-extensions-scribus 
-  - inkscape-lang: [i586] 
   - inn-devel 
   - innoextract 
   - innotop 
@@ -9569,7 +9571,6 @@ unsorted:
   - libbasicobjects-devel-32bit: [x86_64] 
   - libbasicobjects0-32bit: [x86_64] 
   - libbcc0 
-  - libbcg729-0 
   - libbcg729-0-32bit: [x86_64] 
   - libbcmatroska2-0 
   - libbcmatroska2-0-32bit: [x86_64] 
@@ -11043,7 +11044,6 @@ unsorted:
   - libgtkpod1 
   - libgtksourceview-2_0-0 
   - libgtksourceviewmm-4_0-0 
-  - libgtkspell3-3-0: [i586] 
   - libgtop 
   - libgtop-2_0-11-32bit: [x86_64] 
   - libgtop-devel 
@@ -11286,7 +11286,6 @@ unsorted:
   - libhdhomerun-devel 
   - libhdhomerun2 
   - libheif-devel 
-  - libheif1 
   - libheimdal 
   - libheimdal-devel 
   - libhfst53 
@@ -11554,26 +11553,26 @@ unsorted:
   - libkdumpfile-devel 
   - libkdumpfile8 
   - libkea-asiodns1 
-  - libkea-asiolink9 
+  - libkea-asiolink19 
   - libkea-cc8 
   - libkea-cfgclient10 
   - libkea-cryptolink5 
   - libkea-database6 
-  - libkea-dhcp++19 
-  - libkea-dhcp_ddns3 
-  - libkea-dhcpsrv27 
+  - libkea-dhcp++30 
+  - libkea-dhcp_ddns14 
+  - libkea-dhcpsrv39 
   - libkea-dns++5 
-  - libkea-eval12 
+  - libkea-eval22 
   - libkea-exceptions0 
-  - libkea-hooks15 
-  - libkea-http7 
+  - libkea-hooks27 
+  - libkea-http20 
   - libkea-log6 
-  - libkea-mysql6 
-  - libkea-pgsql4 
-  - libkea-process11 
-  - libkea-stats6 
+  - libkea-mysql17 
+  - libkea-pgsql15 
+  - libkea-process22 
+  - libkea-stats16 
   - libkea-util-io0 
-  - libkea-util16 
+  - libkea-util28 
   - libkea1_4 
   - libkeccak-devel 
   - libkeccak1 
@@ -12797,7 +12796,6 @@ unsorted:
   - libportaudiocpp0 
   - libportmidi0 
   - libpostproc55_7-32bit: [x86_64] 
-  - libpotrace0: [i586] 
   - libpowerman0 
   - libppl14 
   - libppl_c4 
@@ -13414,7 +13412,7 @@ unsorted:
   - librrd8 
   - librsb-devel 
   - librsb0 
-  - librssguard-3_7_2 
+  - librssguard-3_8_0 
   - librssguard-devel 
   - librsvg-2-2-32bit: [x86_64] 
   - librsvg-devel 
@@ -13568,6 +13566,8 @@ unsorted:
   - libshaderc_shared1 
   - libshadowdive0_0_0-suse 
   - libshadowsocks-libev2 
+  - libsharp-devel 
+  - libsharp0 
   - libshibsp-lite8 
   - libshibsp8 
   - libshine-devel 
@@ -14024,6 +14024,7 @@ unsorted:
   - libtrilinos_12_14_1-gnu-openmpi2-hpc: [x86_64] 
   - libtrilinos_12_14_1-gnu-openmpi3-hpc: [x86_64] 
   - libtrilinos_12_14_1-gnu-openmpi4-hpc: [x86_64] 
+  - libtrng4-22 
   - libts0-32bit: [x86_64] 
   - libtsan0-gcc7: [x86_64] 
   - libtsan0-gcc9: [x86_64] 
@@ -18318,6 +18319,8 @@ unsorted:
   - parpack-openmpi2-devel-32bit: [x86_64] 
   - parpack-openmpi3-devel 
   - parpack-openmpi3-devel-32bit: [x86_64] 
+  - parsec 
+  - parsec-tool 
   - partclone 
   - partclone-lang 
   - parted-devel 
@@ -21755,7 +21758,6 @@ unsorted:
   - python3-css-html-js-minify 
   - python3-css-parser 
   - python3-csscompressor 
-  - python3-cssselect: [i586] 
   - python3-cssselect2 
   - python3-cssutils 
   - python3-cstruct 
@@ -22597,7 +22599,6 @@ unsorted:
   - python3-lttngust 
   - python3-lupa 
   - python3-lws 
-  - python3-lxml: [i586] 
   - python3-lxml-devel 
   - python3-lz4 
   - python3-lzmaffi 
@@ -23570,7 +23571,6 @@ unsorted:
   - python3-scipy: [i586] 
   - python3-scipy-gnu-hpc: [x86_64] 
   - python3-scipy_1_5_2-gnu-hpc: [x86_64] 
-  - python3-scour: [i586] 
   - python3-scp 
   - python3-screeninfo 
   - python3-screenplain 
@@ -26315,6 +26315,8 @@ unsorted:
   - swtcalendar 
   - swtchart 
   - swtchart-javadoc 
+  - swtpm 
+  - swtpm-devel 
   - sxhkd 
   - sxiv 
   - symmetrica-devel 
@@ -34567,6 +34569,7 @@ unsorted:
   - trinity 
   - tripwire 
   - trivy 
+  - trng-devel 
   - trojita 
   - trousers 
   - trousers-devel 
