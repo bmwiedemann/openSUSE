@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov  3 10:09:47 UTC 2020 - psimons@suse.com
+
+- Update foldl to version 1.4.10.
+  1.4.10
+
+  * Fix space leaks in `scan` / `scanM`
+
+-------------------------------------------------------------------
 Tue Oct  6 08:56:37 UTC 2020 - psimons@suse.com
 
 - Update foldl to version 1.4.9 revision 1.
