@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 10 18:19:18 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 4.8.0
+  Release notes:
+  * https://github.com/Ultimaker/Cura/releases/tag/4.8
+- Use system RapidJSON and polyclipping when available
+
+-------------------------------------------------------------------
 Tue Sep 15 21:26:14 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 4.7.1

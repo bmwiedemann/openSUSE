@@ -17,13 +17,14 @@
 
 
 Name:           cura-engine
-Version:        4.7.1
+%define sversion 4.8
+Version:        4.8.0
 Release:        0
 Summary:        3D printer control software
 License:        AGPL-3.0-only
 Group:          Hardware/Printing
 URL:            https://github.com/Ultimaker/CuraEngine
-Source0:        CuraEngine-%{version}.tar.xz
+Source0:        https://github.com/Ultimaker/CuraEngine/archive/%{sversion}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        CuraEngine.1
 # X-OPENSUSE-PATCH fix-build.patch follow openSUSE policies
 Patch1:         fix-build.patch
@@ -31,8 +32,12 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gmock
 BuildRequires:  gtest
-BuildRequires:  libArcus-devel
+BuildRequires:  libArcus-devel >= %{version}
 BuildRequires:  stb-devel
+%if 0%{suse_version} >= 1550
+BuildRequires:  cmake(RapidJSON)
+BuildRequires:  pkgconfig(polyclipping)
+%endif
 # No 32bit support anymore
 ExcludeArch:    %ix86 %arm s390
 
@@ -42,7 +47,7 @@ instruction for Ultimaker and other GCode-based 3D printers.
 It is part of the larger project called "Cura".
 
 %prep
-%setup -q -n CuraEngine-%version
+%setup -q -n CuraEngine-%sversion
 %patch1 -p1
 # the test is hardcoding the version number
 sed -i -e 's,"master","%{version}",' tests/GCodeExportTest.cpp
@@ -52,12 +57,14 @@ sed -i -e 's,"master","%{version}",' tests/GCodeExportTest.cpp
 %cmake -DCURA_ENGINE_VERSION=%version \
        -DCMAKE_POSITION_INDEPENDENT_CODE="true" \
        -DBUILD_SHARED_LIBS="false" \
+%if 0%{suse_version} >= 1550
+       -DUSE_SYSTEM_LIBS=ON \
+%endif
        -DBUILD_TESTS=ON
-%make_jobs
+%cmake_build
 
 %install
-cd build
-%make_install
+%cmake_install
 
 install -Dm0644 %{SOURCE1} %{buildroot}%{_mandir}/man1/CuraEngine.1
 
