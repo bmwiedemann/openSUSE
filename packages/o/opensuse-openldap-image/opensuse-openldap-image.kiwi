@@ -61,5 +61,6 @@
     <package name="-busybox-findutils"/>
     <package name="-busybox-man"/>
     <archive name="entrypoint.tar.gz"/>
+    <archive name="common-scripts.tar.gz"/>
   </packages>
 </image>

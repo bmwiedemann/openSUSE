@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov  4 17:52:32 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add common scripts tar archive now containing ssl-helper
+
+-------------------------------------------------------------------
 Mon Oct 26 12:42:00 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Check for errors when importing ldif files

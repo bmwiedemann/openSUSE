@@ -90,7 +90,7 @@ You can set your custom certificate at run time, by mounting a volume with the
 certificates into the container and adjusting the following environment variables:
 
 ```sh
-podman run --hostname ldap.example.org -v /srv/openldap/certs:/etc/openldap/certs:Z \
+podman run -v /srv/openldap/certs:/etc/openldap/certs:Z \
        -e LDAP_TLS_CRT=/etc/openldap/certs/ldap.crt \
        -e LDAP_TLS_KEY=/etc/openldap/certs/ldap.key \
        -e LDAP_TLS_CA_CRT=/etc/openldap/certs/ca.crt \

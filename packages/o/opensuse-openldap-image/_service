@@ -14,10 +14,14 @@
         <param name="subdir">openldap</param>
         <param name="filename">entrypoint</param>
         <param name="include">entrypoint.sh</param>
-        <param name="include">ssl-helper</param>
         <param name="include">slapd.init.ldif</param>
         <param name="include">ldif</param>
         <param name="include">tls</param>
+    </service>
+    <service name="tar" mode="disabled">
+        <param name="subdir">common</param>
+        <param name="filename">common-scripts</param>
+        <param name="include">ssl-helper</param>
     </service>
     <service name="recompress" mode="disabled">
         <param name="file">*.tar</param>
