@@ -17,21 +17,23 @@
 
 
 Name:           cura
-Version:        4.7.1
+%define sversion        4.8
+Version:        4.8.0
 Release:        0
 Summary:        3D printer control software
 License:        LGPL-3.0-only
 Group:          Hardware/Printing
 URL:            https://github.com/Ultimaker/Cura
-Source0:        Cura-%{version}.tar.xz
+Source:         https://github.com/Ultimaker/Cura/archive/%{sversion}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE disable-code-style-check.patch code style is no distro business
 Patch1:         disable-code-style-check.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libArcus3 >= %{version}
-BuildRequires:  python3-Savitar >= 4.6.0
+BuildRequires:  python3-Savitar >= %{version}
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy
+BuildRequires:  python3-pynest2d
 BuildRequires:  python3-pytest
 BuildRequires:  python3-qt5
 BuildRequires:  python3-requests
@@ -49,7 +51,8 @@ Requires:       python3-numpy
 Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols
 Requires:       libqt5-qtquickcontrols2
-Requires:       python3-Savitar
+Requires:       python3-Savitar >= %{version}
+Requires:       python3-pynest2d
 Requires:       python3-pyserial
 Requires:       python3-qt5 >= 5.10
 Requires:       python3-requests
@@ -74,7 +77,7 @@ positioning, can slice the model to G-Code with editable configuration
 settings, and send this G-Code to the 3D printer for printing.
 
 %prep
-%setup -q -n Cura-%version
+%setup -q -n Cura-%sversion
 %patch1 -p1
 sed -i -e '1 s/env python3/python3/' cura_app.py
 
@@ -83,21 +86,17 @@ export CFLAGS="%{optflags}"
 sed -i 's/PythonInterp 3.5.0/PythonInterp 3.4.0/' CMakeLists.txt cmake/CuraTests.cmake
 # Hack, remove LIB_SUFFIX for 64bit, which is correct as cura is pure python (i.e. noarch)
 %cmake -DLIB_SUFFIX="" \
-       -DCMAKE_BUILD_TYPE=Release \
        -DCURA_BUILDTYPE=RPM \
        -DCURA_CLOUD_API_ROOT:STRING=https://api.ultimaker.com \
        -DCURA_CLOUD_API_VERSION:STRING=1 \
        -DCURA_CLOUD_ACCOUNT_API_ROOT:STRING=https://account.ultimaker.com \
        -DCURA_VERSION=%version \
        -DCURA_DEBUGMODE=OFF \
-       -DCURA_SDK_VERSION="6.0.0"
-#       -DURANIUM_SCRIPTS_DIR=
-make %{?_smp_mflags}
+       %{nil}
+%cmake_build
 
 %install
-pushd build
-%make_install
-popd
+%cmake_install
 
 for x in 128 64 48 32; do
     install -m 755 -d %{buildroot}%{_datadir}/icons/hicolor/${x}x${x}
@@ -121,7 +120,6 @@ cd build
 make CTEST_OUTPUT_ON_FAILURE=TRUE test
 
 %files -f %{name}.lang
-%defattr (-,root,root,-)
 %license LICENSE
 %doc README.md
 %{python3_sitelib}/cura
