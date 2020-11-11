@@ -1,5 +1,19 @@
 -------------------------------------------------------------------
-Sun Nov  9 15:39:12 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
+Tue Nov 10 15:32:53 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.134.0: Bump dependencies (#1573)
+  * 709913b (HEAD, tag: v0.134.0, origin/master, origin/HEAD, master)
+    Bump dependencies (#1573)
+  * 88884b6 feat: helmfile template --skip-cleanup (#1570)
+  * 5a15b65 feat: Add helmfile apply --skip-cleanup (#1571)
+  * 3899680 feat: Add helmfile test --logs (#1569)
+
+- v0.133.0: feat: Add `helmfile template --include-crds` (#1568)
+  * 6b86408 (HEAD, tag: v0.133.0, origin/master, origin/HEAD, master)
+    feat: Add helmfile template --include-crds (#1568)
+
+-------------------------------------------------------------------
+Sun Nov  8 15:39:12 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.132.3: Fix redundant helm-dep-build and prepare hook regression
   (#1566)
