@@ -41,7 +41,7 @@ breakdowns, and LAN station packet and byte counts.
 %autosetup -n %name-%version -p1
 
 %build
-%make_build CFLAGS="%optflags -D_GNU_SOURCE"
+%{?make_build}%{!?make_build:make %{?_smp_mflags}} CFLAGS="%optflags -D_GNU_SOURCE"
 
 %install
 %make_install prefix="%_prefix" V=1
