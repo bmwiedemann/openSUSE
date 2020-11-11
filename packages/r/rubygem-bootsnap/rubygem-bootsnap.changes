@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 10 21:00:10 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.5.1
+
+  * Workaround a Ruby bug in InstructionSequence.compile_file. (#332)
+
+-------------------------------------------------------------------
 Sun Nov  1 14:46:59 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.4.9
