@@ -23,13 +23,13 @@
 %define oiio_major_minor_ver %(rpm -q --queryformat='%%{version}' OpenImageIO-devel | cut -d . -f 1-2)
 
 Name:           OpenShadingLanguage
-Version:        1.11.6.0
+Version:        1.11.9.0
 Release:        0
 Summary:        A language for programmable shading
 License:        BSD-3-Clause
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/imageworks/OpenShadingLanguage
-Source0:        https://github.com/imageworks/OpenShadingLanguage/archive/Release-%{version}-dev.tar.gz#/%{name}-Release-%{version}.tar.gz
+Source0:        https://github.com/imageworks/OpenShadingLanguage/archive/Release-%{version}.tar.gz#/%{name}-Release-%{version}.tar.gz
 Source1:        https://creativecommons.org/licenses/by/3.0/legalcode.txt#/CC-BY-3.0.txt
 BuildRequires:  OpenEXR-devel
 BuildRequires:  bison
@@ -41,7 +41,8 @@ BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  pkg-config
-BuildRequires:  python3-base
+BuildRequires:  python3-devel
+BuildRequires:  python3-pybind11-devel
 BuildRequires:  cmake(OpenImageIO) >= 2.0
 BuildRequires:  cmake(pugixml)
 Requires:       %{name}-common-headers = %{version}
@@ -189,11 +190,12 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q -n %{name}-Release-%{version}-dev
+%setup -q -n %{name}-Release-%{version}
 find . -iname CMakeLists.txt -exec sed "-i" "-e s/COMMAND python/COMMAND python3/" "{}" \;
 
 %build
 %cmake \
+      -DCMAKE_SKIP_RPATH:BOOL=TRUE \
       -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
       -DOSL_SHADER_INSTALL_DIR:PATH=%{_datadir}/%{name}/shaders/ \
       -DOSL_BUILD_MATERIALX:BOOL=ON \
@@ -208,9 +210,11 @@ cp -v %{SOURCE1} .
 mkdir %{buildroot}%{_libdir}/OpenImageIO-%{oiio_major_minor_ver}
 mv %{buildroot}%{_libdir}/osl.imageio.so %{buildroot}%{_libdir}/OpenImageIO-%{oiio_major_minor_ver}/
 
-find %{buildroot} -name LICENSE -print -delete
-find %{buildroot} -name README.md -print -delete
-find %{buildroot} -name CHANGES.md -print -delete
+find %{buildroot} -name LICENSE.md -print -delete
+# add top level markdowns to the doc package
+cp -p *.md %{buildroot}%{_docdir}/%{name}/
+# TODO: package python module
+find %{buildroot}%{python3_sitearch} -name oslquery.so -print -delete
 
 %post -n liboslcomp%{sufx} -p /sbin/ldconfig
 %postun -n liboslcomp%{sufx} -p /sbin/ldconfig
@@ -228,7 +232,7 @@ find %{buildroot} -name CHANGES.md -print -delete
 %postun -n libtestshade%{sufx} -p /sbin/ldconfig
 
 %files
-%license LICENSE
+%license LICENSE.md
 %{_bindir}/*
 
 %files doc
@@ -248,31 +252,31 @@ find %{buildroot} -name CHANGES.md -print -delete
 %{_datadir}/%{name}/shaders/*.h
 
 %files -n liboslcomp%{sufx}
-%license LICENSE
+%license LICENSE.md
 %{_libdir}/liboslcomp.so.%{sover}*
 
 %files -n liboslexec%{sufx}
-%license LICENSE
+%license LICENSE.md
 %{_libdir}/liboslexec.so.%{sover}*
 
 %files -n liboslnoise%{sufx}
-%license LICENSE
+%license LICENSE.md
 %{_libdir}/liboslnoise.so.%{sover}*
 
 %files -n liboslquery%{sufx}
-%license LICENSE
+%license LICENSE.md
 %{_libdir}/liboslquery.so.%{sover}*
 
 %files -n libtestshade%{sufx}
-%license LICENSE
+%license LICENSE.md
 %{_libdir}/libtestshade.so.%{sover}*
 
 %files -n OpenImageIO-plugin-osl
-%license LICENSE
+%license LICENSE.md
 %{_libdir}/OpenImageIO-%{oiio_major_minor_ver}/osl.imageio.so
 
 %files devel
-%license LICENSE
+%license LICENSE.md
 %{_includedir}/*
 %{_libdir}/lib*.so
 %{_libdir}/cmake/

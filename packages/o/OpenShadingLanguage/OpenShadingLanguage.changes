@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Nov  7 11:35:53 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to v1.11.9.0, see included CHANGES.md or
+  https://github.com/imageworks/OpenShadingLanguage/blob/Release-1.11.9.0/CHANGES.md
+- Add new build dependency python3-pybind11
+- Remove stray python3 oslquery module
+- Add loplevel markdown documents to doc package
+
+-------------------------------------------------------------------
+Tue Jul 28 20:19:30 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- disable RPATH handling - fixes 15.1 build
+
+-------------------------------------------------------------------
 Sun Jul  5 17:41:36 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to v1.11.6.0, see included CHANGES.md or
