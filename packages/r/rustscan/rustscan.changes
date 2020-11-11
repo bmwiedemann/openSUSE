@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov  6 16:55:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.1
+  Features
+  * Scripting Engine Implementation.
+  * Improved init_scripts error handling.
+  * Add tries to scan_socket.
+  * Make address an optional instead of a positional argument.
+  Maintenance
+  * Add tests for rustscan scripting engine.
+  * Add clippy linting and fix existing warnings.
+  Bugs
+  * Changed the dns resolving to use std::net::ToSocketAddrs.
+  * Fix Rlimit breaking change.
+  * Update documentation to include greppable.
+
+-------------------------------------------------------------------
 Tue Sep 29 07:10:09 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to versino 1.10.0
