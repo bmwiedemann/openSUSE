@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov  3 10:08:50 UTC 2020 - psimons@suse.com
+
+- Update postgresql-libpq to version 0.9.4.3.
+  0.9.4.3
+  -------
+
+  - Support `bytestring-0.11`
+  - Allow `Win32-2.10.0.0`
+  - Make `PQconsumeInput` FFI call `safe`
+
+-------------------------------------------------------------------
 Mon Aug 31 09:34:30 UTC 2020 - psimons@suse.com
 
 - Update postgresql-libpq to version 0.9.4.2 revision 2.
