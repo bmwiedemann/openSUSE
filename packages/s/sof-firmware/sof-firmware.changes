@@ -11,6 +11,11 @@ Tue Nov  3 09:39:35 CET 2020 - tiwai@suse.de
     platforms
 
 -------------------------------------------------------------------
+Mon Oct 19 13:05:33 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- use %_firmwaredir
+
+-------------------------------------------------------------------
 Mon Sep  7 17:24:46 CEST 2020 - tiwai@suse.de
 
 - Update to version 1.5.1 (bsc#1176200):

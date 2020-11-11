@@ -73,10 +73,10 @@ mv lib/firmware/intel/sof-tplg-v%{repo_version} lib/firmware/intel/sof-tplg
 %build
 
 %install
-mkdir -p %{buildroot}/lib/firmware/intel/
-cp -a lib/firmware/intel/* %{buildroot}/lib/firmware/intel/
+mkdir -p %{buildroot}%{_firmwaredir}/intel/
+cp -a lib/firmware/intel/* %{buildroot}%{_firmwaredir}/intel/
 # create symlinks
-(cd %{buildroot}/lib/firmware/intel/sof
+(cd %{buildroot}%{_firmwaredir}/intel/sof
 for i in v%{repo_version}/intel-signed/*.ri v%{repo_version}/*.ri; do
     f=${i%%-v%{repo_version}.ri}
     f=${f##*/}
@@ -100,6 +100,6 @@ done
 %files
 %license LICENCE.*
 %doc README.*
-/lib/firmware/*
+%{_firmwaredir}/*
 
 %changelog
