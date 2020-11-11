@@ -491,4 +491,12 @@
   + Updated translations. (forwarded request 830035 from iznogood)</comment>
     <requestid>831450</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>3f7b0043c298cf31f7e5744cfdf7ff48</srcmd5>
+    <version>3.38.1</version>
+    <time>1605123955</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.38</comment>
+    <requestid>847277</requestid>
+  </revision>
 </revisionlist>

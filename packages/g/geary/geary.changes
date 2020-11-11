@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Mon Oct  5 16:11:35 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.1:
+  + Numerous bug fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 17 12:16:06 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.0.1:
+  + sql: Remember to install new SQL migration files.
+
+-------------------------------------------------------------------
+Mon Sep 14 12:23:41 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.0:
+  + Clean up email in database older than the storage preference.
+  + New Preferences window pane for managing plugins.
+  + New Email Templates plugin.
+  + New Mail Merge plugin.
+  + New Sent Sound plugin.
+  + New Unity Messaging Menu plugin.
+  + Reduced number of spurious problem report info bars.
+  + Improved ordering of folders in the folder list.
+  + Spam folder renamed to Junk.
+  + Composer formatting toolbar initially hidden for new installs.
+  + Desktop mail notifications now show contact photos.
+  + Improved server compatibility.
+  + Numerous bug fixes and user interface improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  7 07:26:33 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.92:
+  + Fix for crash in conversation find.
+  + Fix GOA-related app freeze at startup.
+  + Fix for infinite "recoverable error" loop.
+  + Fix for database locking errors.
+  + Fixes for handling cancelled IMAP commands.
+  + Various bug fixes and user interface improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep  5 11:54:00 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.91:
+  + Removed libhandy subproject due to translation infrastructure
+    issue.
+  + Various bug fixes and user interface improvements.
+  + various user interface translation updates.
+- Changes from version 3.37.90:
+  + Drop messages in the database older than the storage
+    preference.
+  + Added a mail merge plugin.
+  + Sent sound plugin improvements.
+  + Follow system font preference in the conversation list.
+  + Hide composer formatting toolbar by default.
+  + Improved default preferences window size.
+  + Improved server compatibility.
+  + Code cleanup, build and bug fixes.
+  + Broke out generic unit test code into a stand-alone subproject.
+  + Use a distinct icon for nightly builds.
+- Changes from version 3.37.1:
+  + Add support for email and folder plugins.
+  + Add preferences for loading optional plugins.
+  + Add new Sent Sound and Email Template optional plugins.
+  + Convert Unity Messaging Menu plugin to be optional.
+  + Convert more non-core code to internal plugins.
+  + Reduce and limit the number of problem reports displayed.
+  + Fix ordering of folders in the folder list.
+  + Rename Spam folder to Junk.
+  + Use info bars for emptying Trash and Junk folders.
+  + Allow enabling/disabling logging domains from the Inspector.
+  + Improvements to IMAP stack reliability.
+  + Prefer IMAP SPECIAL USE extenion over XLIST.
+  + Numerous client and engine bug fixes and code clean up.
+  + Updated translations.
+- Add pkgconfig(cairo), pkgconfig(gsound) and
+  pkgconfig(libpeas-gtk-1.0) BuildRequires: new dependenies.
+- Replace pkgconfig(libhandy-0.0) BuildRequires with
+  pkgconfig(libhandy-1): follow upstream changes.
+
+-------------------------------------------------------------------
 Thu Aug 27 08:50:41 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.3.1:
