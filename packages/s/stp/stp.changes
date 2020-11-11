@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Nov 04 08:57:04 UTC 2020 - jslaby@suse.cz
+
+- Update to version 2.3.3+20201027:
+  * Ensuring that we do not create double frames when creating a new frame; closes #385
+  * Fix build for minisat, using stp/minisat
+  * First look for installed MiniSat, then the built one
+  * Fixing warnings by GitHub static code analysis
+  * Allow finding minisat through CONFIG first
+  * Create codeql-analysis.yml
+  * Ensuring documentation consistency with the use of semicolon vs. period
+  * Correcting double backticks in README
+  * Updating README to update build steps and document how to run CMake without installing STP's dependencies system-wide
+  * Importing the latest 'GetGitRevisionDescription' CMake modules from rpavlik/cmake-modules
+  * Ensuring that all CMake targets are correct to support no-op builds
+  * Updating code to use C++11 autos for readability
+  * and much more
+- switch to obs_scm
+
+-------------------------------------------------------------------
+Wed Nov  4 07:14:40 UTC 2020 - Jiri Slaby <jslaby@suse.cz>
+
+- fix build on 12sp5 -- define Python_ADDITIONAL_VERSIONS to 3
+
+-------------------------------------------------------------------
 Thu Jan 30 09:45:21 UTC 2020 - jslaby@suse.com
 
 - Update to version 2.3.3+20200113:

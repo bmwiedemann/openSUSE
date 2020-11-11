@@ -1,14 +1,17 @@
 <services>
-  <service mode="disabled" name="tar_scm">
+  <service mode="disabled" name="obs_scm">
     <param name="url">git://github.com/stp/stp.git</param>
     <param name="scm">git</param>
     <param name="filename">stp</param>
     <param name="changesgenerate">enable</param>
     <param name="versionformat">@PARENT_TAG@+%cd</param>
-  </service>
-  <service mode="disabled" name="recompress">
-    <param name="file">*.tar</param>
-    <param name="compression">xz</param>
+    <param name="match-tag">[0-9]*</param>
   </service>
   <service mode="disabled" name="set_version"/>
+
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">stp-*.tar</param>
+    <param name="compression">xz</param>
+  </service>
 </services>

@@ -18,7 +18,7 @@
 
 %define sover 2_3
 Name:           stp
-Version:        2.3.3+20200113
+Version:        2.3.3+20201027
 Release:        0
 Summary:        Constraint Solver
 License:        MIT
@@ -85,6 +85,7 @@ Python bindings for stp library.
 %build
 %define __builder ninja
 %cmake \
+	-DPython_ADDITIONAL_VERSIONS=3 \
 	-DALSO_BUILD_STATIC_LIB:BOOL="off" \
 	-DSTP_TIMESTAMPS:BOOL="off"
 %cmake_build
