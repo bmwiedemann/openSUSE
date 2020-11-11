@@ -17,7 +17,7 @@
 
 
 Name:           cura-fdm-materials
-Version:        4.7.1
+Version:        4.8.0
 Release:        0
 Summary:        FDM material database
 License:        CC0-1.0
