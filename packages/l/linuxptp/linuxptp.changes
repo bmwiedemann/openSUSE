@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Tue Nov 10 21:35:12 UTC 2020 - jbohac@suse.com
+
+- Update to version 3.1:
+  * ts2phc: nmea: Drop time of day readings older than five seconds.
+  * ts2phc: nmea: Update the leap seconds table on demand.
+  * ts2phc: nmea: Add a configuration option for the current leap seconds file.
+  * ts2phc: nmea: Add error messages for leap second lookup failures.
+  * ts2phc: nmea: Correct UTC to TAI conversion.
+  * posix_clock_open: derive PHC index from device name if possible
+  * phc_ctl: display all capability information
+  * ts2phc: Ignore pulses with invalid time stamps.
+  * ts2phc: Fix memory leak.
+  * ts2phc: Use proper close method on the error path.
+  * port: Support slave event monitoring of delay timing data.
+  * monitor: Add support for slave delay timing data TLV.
+  * pmc: Show slave receive timing data TLVs attached to signaling messages.
+  * port: Support slave event monitoring of Sync timing data.
+  * clock: Create a slave event monitor.
+  * Introduce a module for slave event monitoring.
+  * Reject path trace TLVs with excessive elements.
+  * Let the free running port state reflect the synchronization uncertain flag.
+  * pmc: Support getting and setting the local synchronization uncertain flag.
+  * Implement the synchronization uncertain flag.
+  * Add support for write phase mode.
+  * Decouple servo state from automotive profile.
+  * ts2phc: Support using a GPS radio as the master clock.
+  * Introduce a leap second table.
+  * ts2phc: Support using a PHC as the master clock.
+  * Introduce the ts2phc program.
+  * pmc: Allow multiple local subscribers.
+  * pmc: Subscribe to port state push notification events when requested.
+  * clock: reset master/local rr when best clock id changes
+  * unicast: Enable sharing master tables between ports.
+  * Accept external PHC devices from the command line.
+  * phc2sys: Fix frequency estimation when synchronizing a PHC to the system clock.
+  * Correct the signature of the legacy system offset measurement method.
+  * ptp4l: Add configuration option for socket priority
+  * sk: Recognize HWTSTAMP_FILTER_SOME
+  * Improve G.8275.[12] example configs.
+  * rtnl: add team activebackup support
+  * Ignore signaling messages on target port mismatch.
+  * Avoid fault when receiving zero length packets
+  * phc2sys: Fix crash when trying to synchronize unadjustable clock.
+  * Added support for opening POSIX clock devices
+  * Allow ignoring source port identity in end to end mode.
+  * port: correction of port name used port_open
+  * Add example configuration for Automotive Profile.
+  * Add ignore_source_id config option.
+  * Add inhibit_announce config option.
+  * Add BMCA config option.
+  * port: Add configurable option to set asCapable.
+  * timemaster: Allow ptp4l-specific sections in [ptp4l.conf].
+  * unicast: Process timeouts equal to current time.
+  * snmp4lptp: added snmp4lptp.8
+  * Add possibility to set clockIdentity
+  * Introduce the maxStepsRemoved attribute
+  * config: Add hardware time stamp filter setting mode
+  * snmp4lptp: Added function for data collection from ptp4l program.
+  * snmp4lptp: Added communication to ptp4l via the UDS port.
+  * snmp4lptp: Add snmp sub agent for linuxptp
+- re-introduce the _service file
+
+-------------------------------------------------------------------
 Wed Jul 24 12:04:35 UTC 2019 - matthias.gerstner@suse.com
 
 - removal of SuSEfirewall2 service, since SuSEfirewall2 has been replaced by
@@ -28,6 +91,18 @@ Mon Nov 26 12:43:06 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
   * Peer to peer one-step
   * Support for bonded interfaces
 - No longer use _service
+
+-------------------------------------------------------------------
+Tue Apr  3 12:27:38 UTC 2018 - jbohac@suse.com
+
+Update to version 1.9+git1.gd14f11f:
+  * Expand and rationalize time stamping options.
+  * Introduce peer to peer one step.
+  * pmc: add long options and configuration file
+  * port: Implement the NetSync Monitor protocol.
+  * Introduce an option to ignore the transport specific field.
+  * clock: add option to specify initial path delay.
+  * sk: turn warnings about unexpected RX filter into debug messages.
 
 -------------------------------------------------------------------
 Thu Feb  8 12:08:37 UTC 2018 - jbohac@suse.com

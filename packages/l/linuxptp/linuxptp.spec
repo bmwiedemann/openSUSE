@@ -1,7 +1,7 @@
 #
 # spec file for package linuxptp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,13 +21,13 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           linuxptp
-Version:        2.0
+Version:        3.1
 Release:        0
 Summary:        Precision Time Protocol v2 daemon
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            http://linuxptp.sourceforge.net/
-Source0:        http://sourceforge.net/projects/linuxptp/files/v%{version}/linuxptp-%{version}.tgz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        ptp4l.service
 Source2:        sysconfig.ptp4l
 Source4:        linuxptp-howto.txt
@@ -94,12 +94,15 @@ install -Dpm 644 %{SOURCE6} %{buildroot}%{_fillupdir}/sysconfig.phc2sys
 %{_sbindir}/ptp4l
 %{_sbindir}/nsm
 %{_sbindir}/timemaster
+%{_sbindir}/ts2phc
 %{_mandir}/man8/hwstamp_ctl.8%{?ext_man}
+%{_mandir}/man8/nsm.8%{?ext_man}
 %{_mandir}/man8/phc2sys.8%{?ext_man}
 %{_mandir}/man8/phc_ctl.8%{?ext_man}
 %{_mandir}/man8/pmc.8%{?ext_man}
 %{_mandir}/man8/ptp4l.8%{?ext_man}
 %{_mandir}/man8/timemaster.8%{?ext_man}
+%{_mandir}/man8/ts2phc.8%{?ext_man}
 %{_fillupdir}/sysconfig.ptp4l
 %{_fillupdir}/sysconfig.phc2sys
 
