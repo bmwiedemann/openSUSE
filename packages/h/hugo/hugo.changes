@@ -1,0 +1,1027 @@
+-------------------------------------------------------------------
+Wed Nov 11 03:45:47 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Improve packaging:
+  * BuildRequires: go >= 1.14 per upstream testing with two most recent go versions
+  * Edit package description
+  * Remove unneeded ExcludeArch: s390 and s390x
+
+-------------------------------------------------------------------
+Mon Nov  9 10:46:51 UTC 2020 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Update to version 0.78.1:
+  * Disable NPM test on Travis on Windows
+  * travis: Install nodejs on Windows
+  * js: Remove external source map option
+  * js: Misc fixes
+
+-------------------------------------------------------------------
+Mon Nov  9 09:11:12 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.78.0:
+  * Squashed 'docs/' changes from d1157b687..57c1d1a67
+  * js: Add avoidTDZ option
+  * Make js.Build fully support modules
+  * js.Build: Generate tsconfig files
+
+-------------------------------------------------------------------
+Mon Nov  9 09:10:51 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.77.0:
+  * modules: Allow absolute paths for project imports
+  * docs: Regen docs helper
+  * Squashed 'docs/' changes from 9abd3043a..d1157b687
+  * Add module.replacements
+  * Fix setting HUGO_MODULE_PROXY etc. via env vars
+  * tpl: Fix reflection bug in merge
+  * deploy: Do not call CDN service invalidation when executing a dry run deployment
+  * create: Pass editor arguments from newContentEditor correctly
+  * deps: Bump github.com/spf13/cobra from 0.0.7 to 1.1.1
+  * build: Allow optional "nodeploy" tag to exclude deploy command from bin
+  * Allow cascade _target to work with non toml fm
+  * Allow getJSON errors to be ignored
+  * build(deps): bump github.com/evanw/esbuild from 0.7.15 to 0.7.18
+  * tpl: Refactor time.AsTime location implementation
+  * tpl: Update Hugo time to support optional [LOCATION] parameter
+  * Revert "Add benchmark for building docs site"
+  * highlight: Avoid making unnecessary allocation
+  * Add benchmark for building docs site
+  * embedded: Always show page number when 5 pages or less
+  * output: Improve layout path construction
+  * build(deps): bump github.com/frankban/quicktest from 1.11.0 to 1.11.1
+  * build(deps): bump github.com/evanw/esbuild from 0.7.14 to 0.7.15
+  * Render aliases even if render=link
+  * build(deps): bump github.com/spf13/afero from 1.4.0 to 1.4.1
+  * build(deps): bump github.com/evanw/esbuild from 0.7.9 to 0.7.14
+  * docker: Update to Go 1.15 and Alpine 3.12
+  * output: Test all lookup permutations in TestLayout
+  * output: Reformat TestLayout table
+
+-------------------------------------------------------------------
+Mon Nov  9 09:10:32 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.76.5:
+  * Render aliases even if render=link
+
+-------------------------------------------------------------------
+Mon Nov  9 09:10:14 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.76.4:
+  * snap: Install postcss v8 explicitly as it is now a peer dependency
+  * lang/i18n: Fix for language code case issue with pt-br etc.
+  * Add merge helper
+
+-------------------------------------------------------------------
+Mon Nov  9 09:09:51 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.76.3:
+  * langs/i18n: Add workaround for known language, but missing plural rule error
+  * langs/i18n: Fix for bare TOML keys
+
+-------------------------------------------------------------------
+Mon Nov  9 09:09:33 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.76.2:
+  * Revert "deps: Update to  github.com/tdewolff/minify v2.9.4"
+
+-------------------------------------------------------------------
+Mon Nov  9 09:02:20 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.76.1:
+  * langs/i18n: Fix i18n .Count regression
+  * Fix typo in 0.76.0 release note
+
+-------------------------------------------------------------------
+Mon Nov  9 08:59:58 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.76.0:
+  * docs: Regen docshelper
+  * Squashed 'docs/' changes from 4895c29c5..9abd3043a
+  * pagemeta: Make BuildConfig.Render an enum
+  * Allow cascade to be a slice with a _target discriminator
+  * Add force flag to server redirects config
+  * build(deps): bump github.com/evanw/esbuild from 0.7.8 to 0.7.9
+  * tpl: Add Do Not Track (dnt) option to Vimeo shortcode
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.9.5 to 2.9.7
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.34.34 to 1.35.0
+  * build(deps): bump github.com/getkin/kin-openapi from 0.22.0 to 0.22.1
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.34.33 to 1.34.34
+  * build(deps): bump github.com/evanw/esbuild from 0.7.7 to 0.7.8
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.34.27 to 1.34.33
+  * build(deps): bump github.com/evanw/esbuild from 0.7.4 to 0.7.7
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.9.4 to 2.9.5
+  * langs/i18n: Upgrade to go-i18n v2
+  * publisher: Fix writeStats with quote inside quotes
+  * build(deps): bump github.com/evanw/esbuild from 0.7.2 to 0.7.4
+  * Fix CLI example for PostCSS 8
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.34.26 to 1.34.27
+  * build(deps): bump github.com/alecthomas/chroma from 0.8.0 to 0.8.1
+  * build(deps): bump github.com/evanw/esbuild from 0.7.1 to 0.7.2
+  * Make sure CSS is rebuilt when postcss.config.js or tailwind.config.js changes
+  * Fix typo in redirect error message
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.34.22 to 1.34.26
+  * deps: Update to  github.com/tdewolff/minify v2.9.4
+  * snap: Bump bundled Node.js from v12.18.3 to v12.18.4
+  * markup/asciidocext: Add preserveTOC option
+  * build(deps): bump github.com/frankban/quicktest from 1.10.2 to 1.11.0
+  * build(deps): bump github.com/evanw/esbuild from 0.6.32 to 0.7.1
+  * build(deps): bump github.com/rogpeppe/go-internal from 1.5.1 to 1.6.2
+  * build(deps): bump github.com/jdkato/prose from 1.1.1 to 1.2.0
+  * build(deps): bump github.com/spf13/afero from 1.2.2 to 1.4.0
+
+-------------------------------------------------------------------
+Mon Nov  9 07:59:04 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.75.1:
+  * resources/image: Fix nilpointer for images with no Exif
+  * modules/npm: Preserve the original package.json if it exists
+  * tpl: Fix grammar in the new 'requires non-zero' error message
+
+-------------------------------------------------------------------
+Mon Nov  9 07:56:35 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.75.0:
+  * Set PWD in environment when running the Node apps
+  * typo: already -> already
+  * Squashed 'docs/' changes from d3eb97a33..4895c29c5
+  * docs: Regen docs helper
+  * docs: Regenerate CLI docs
+  * Add "hugo mod npm pack"
+  * Print layout name if it was specified when showing missing layout file error
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.34.21 to 1.34.22
+  * markup/highlight: Add support to linkable line anchors on Chroma
+  * snap: Bump bundled Node.js from v8.12.0 to v12.18.3
+  * Revert "snap: Change confinement from strict to classic"
+  * build(deps): bump github.com/getkin/kin-openapi from 0.14.0 to 0.22.0
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.34.20 to 1.34.21
+  * build(deps): bump github.com/spf13/viper from 1.6.1 to 1.7.1
+  * deps: Run "go mod tidy"
+  * deps: Update to Goldmark v1.2.1
+  * markup/asciidocext: Fix AsciiDoc TOC with code
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.27.1 to 1.34.20
+  * build(deps): bump github.com/mitchellh/mapstructure from 1.1.2 to 1.3.3
+  * snap: Change confinement from strict to classic
+  * build(deps): bump github.com/spf13/cobra from 0.0.5 to 0.0.7
+  * build(deps): bump github.com/sanity-io/litter from 1.2.0 to 1.3.0
+  * modules: Add noVendor to module config
+  * modules: Add ignoreImports to module imports config
+  * modules: Make ignoreVendor a glob pattern
+  * build(deps): bump github.com/gorilla/websocket from 1.4.1 to 1.4.2
+  * build(deps): bump github.com/fsnotify/fsnotify from 1.4.7 to 1.4.9
+  * build(deps): bump github.com/kyokomi/emoji
+  * build(deps): bump github.com/markbates/inflect from 1.0.0 to 1.0.4
+  * build(deps): bump github.com/frankban/quicktest from 1.7.2 to 1.10.2
+  * Encode & in livereload injected code
+  * build(deps): bump github.com/niklasfasching/go-org from 1.3.1 to 1.3.2
+  * build(deps): bump github.com/bep/golibsass from 0.6.0 to 0.7.0
+  * build(deps): bump golang.org/x/text from 0.3.2 to 0.3.3
+  * build(deps): bump github.com/evanw/esbuild from 0.6.5 to 0.6.32
+  * build(deps): bump github.com/nicksnyder/go-i18n from 1.10.0 to 1.10.1
+  * Revert "Update dependabot.yml"
+  * markup/asciidocext: Fix broken test
+  * docs: Update replaceRE func
+  * docs: Update replace func
+  * docs: Update merge function
+  * Update dependabot.yml
+  * Create dependabot.yml
+  * Remove Pygments from requirements.txt
+  * docs: Regen CLI docs
+  * docs: Regen docs helper
+  * markup/asciidocext: Revert trace=true
+  * Squashed 'docs/' changes from 7297c1172..d3eb97a33
+  * Update to Go 1.15.1 and 1.14.8
+  * Fix some change detection issues on server reloads
+  * markup/asciidoc: Add support for .TableOfContents
+  * markup/goldmark: Add a test case
+  * js.Build: Add SourceMap flag with inline option
+  * tpl: Add limit support to replaceRE
+  * tpl: Extend merge to accept multiple parameters
+  * tpl: Add limit option to replace template function
+  * commands: Remove logic that hides 'Building Sites' message after build completes
+  * Fixed misspelled words
+  * Improve stderr logging for PostCSS and simlilar
+  * Fail on  partials with return when given none or a zero argument
+  * Update to Go 1.15
+  * Revert "Update stale.yml"
+  * Update stale.yml
+  * Squashed 'docs/' changes from a26d0e610..7297c1172
+  * Remove trailing whitespace and tabs from RSS templates
+  * Fix a typo in CONTRIBUTING.md
+  * Revert "Fix ellipsis display logic in pagination template"
+  * Respect mediatypes for deploy
+  * Fix ellipsis display logic in pagination template
+  * mage: Add uninstall target
+  * deps: Update Chroma to 0.8.0
+  * deps: Update go-org to v1.3.1
+
+-------------------------------------------------------------------
+Mon Nov  9 07:55:45 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.74.3:
+  * publisher: Collect transition attributes as classes
+  * Fix Asciidoctor args
+  * Fix date format in internal schema template
+  * resources/js: Add option for setting bundle format
+  * resources/js: Simplify options handling
+  * make sure documentation intro text only appears once
+  * resources/js: Add es5 build target
+  * Squashed 'docs/' changes from c3b4f8410..a26d0e610
+  * deps: esbuild v0.6.5
+
+-------------------------------------------------------------------
+Mon Nov  9 07:51:26 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.74.2:
+  * Add .Defines to js.Build options
+
+-------------------------------------------------------------------
+Mon Nov  9 07:21:36 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.74.1:
+  * Fix baseof block regression
+
+-------------------------------------------------------------------
+Mon Nov  9 07:08:39 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.74.0:
+  * Squashed 'docs/' changes from cfd74b57d..c3b4f8410
+  * docs: Regenerate docs helper
+  * Add proper Media Type handling in js.Build
+  * Add js.Build asset bundling
+  * Squashed 'docs/' changes from ac2c4a487..cfd74b57d
+  * Add openapi3.Unmarshal
+  * Remove trailing hyphen from auto heading ID
+  * deploy: Ensure that non-trivial default flag values are passed through.
+  * Fix server reload when non-HTML shortcode changes
+  * tpl/strings: Add strings.Count
+  * Update formats.md doc for new allowed extensions.
+  * tpl: Add debug.Dump
+  * Update config.go to add two Asciidoctor extensions
+  * Add support for inline partials
+  * Add support for native Org dates in frontmatter
+  * deps: Update go-org to v1.3.0
+  * deps: Update go-org to v1.2.0
+  * Update bug_report.md
+  * hugolib: Add missing zero check on file
+  * cache: Remove some unused code
+  * commands: Add an option to print memory usage at intervals
+  * Rework external asciidoctor integration
+  * Enable the embedded template test when race detector is off
+  * Updated installation instruction about Sass/SCSS support
+
+-------------------------------------------------------------------
+Mon Nov  9 07:07:19 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.73.0:
+  * Create robots.txt in the domain root directory
+  * Make GroupByParamDate work with string params
+  * Add GroupByLastmod
+  * Rename taxonomy kinds from taxonomy to term, taxonomyTerm to taxonomy
+  * Fix aliases with path in baseURL
+  * Squashed 'docs/' changes from 9be494de3..ac2c4a487
+  * Fix server data race/nil pointer in withMaps
+  * Fix order of GetTerms
+  * Add genDocsHelper mage target
+  * Fix aliases with uglyURLs
+  * Fix crash for closing shortcode with no .Inner set
+  * Fix aliases with relativeURLs
+  * Regenerate templates
+  * Beautify HTML generated by pagination template
+  * Add a nested data dir test
+  * hugofs: Use os.PathError  in RootMappingFs.doLstat
+  * commands: Fix URL rewrites vs fast render server mode
+  * tpl/crypto: Add hmac
+  * Remove credit (#7347)
+  * Allow hook template per section/type
+  * tpl: Fix bad rounding in NumFmt
+
+-------------------------------------------------------------------
+Mon Nov  9 07:04:32 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.72.0:
+  * Squashed 'docs/' changes from 6c2195936..9be494de3
+  * common/maps: Add Scratch.Values
+  * deps: Update Goldmark to improve Typographer
+  * Add redirect support to the server
+  * Fix typo in install instructions
+  * publisher: Fix tag collector for nested table elements
+  * snap: Fix build error: my previous commits did not fix it
+  * Add some more date test cases
+  * Fix RenderString vs render hooks
+  * Prevent WARNINGs in RenderString
+  * Fix IsAncestor/IsDescendant for taxonomies
+  * Fix GetPage on section/bundle name overlaps
+  * Fix Go template script escaping
+  * Add a test helper
+
+-------------------------------------------------------------------
+Mon May 18 16:50:06 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.71.0:
+  * Fix Babel on Windows
+  * commands: Use WARN log level also for the early initialization
+  * Squashed 'docs/' changes from ec0abe052..6c2195936
+  * Update to Go 1.14.3 and Go 1.13.11
+  * Improve error message when no Babel installed
+  * Add test for headings render hook
+  * Add render template hooks for headings
+  * Add math.Pow
+  * deploy: Do not suppress .well-known/ directory
+  * snap: Quote "@babel/cli" to solve build error
+  * snap: Remove custom x-nodejs plugin
+  * Upgrade chroma to 0.7.3 to fix invalid css
+  * Use .Lastmod for og:updated_time
+
+-------------------------------------------------------------------
+Wed May 06 16:35:50 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.70.0:
+  * Squashed 'docs/' changes from 19f44e150..ec0abe052
+  * deps: Update minify to v2.6.2
+  * Add support for sort by boolean
+  * deps: Update to Libsass 3.6.4
+  * Rename transpileJS to babel
+  * resources: Add JavaScript transpiling solution
+  * Disable a test locally
+  * Fix some missing JS class collector cases
+  * Add diagnostic hints to init timeout message
+
+-------------------------------------------------------------------
+Wed May 06 16:34:31 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.69.2:
+  * Fix IsAncestor and IsDescendant when the same page is passed
+  * deps: Update goldmark-highlighting
+  * Fix IsAncestor and IsDescendant under subsection
+
+-------------------------------------------------------------------
+Wed May 06 16:32:50 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.69.1:
+  * hugolib/filesystems: Fix typo in test suite
+  * Fix class collector when running with --minify
+  * related: Fix toLower
+  * Fix broken test
+  * tpl/tmplimpl/template: Change defer RLock to RUnlock
+  * hugolib: Add Unlock before panic
+  * docs: Fix typo in Hugo's Security Model
+  * deps: Update go-org to v1.1.0
+  * commands: Modify gen chromastyles to output all CSS classes
+  * deps: Update to goldmark v1.1.28
+  * Fix query parameter handling in server fast render mode
+
+-------------------------------------------------------------------
+Wed May 06 16:31:52 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.69.0:
+  * docs: Regen docs helper
+  * Squashed 'docs/' changes from 20d77860b..19f44e150
+  * Collect HTML elements during the build to use in PurgeCSS etc.
+  * deps: Update to latest emoji package
+  * Update hosting-on-aws-amplify.md
+  * Add basic "post resource publish support"
+  * tpl: Extend Jsonify to support options map
+  * tpl: Extend Jsonify to support optional indent parameter
+  * Typo correction
+  * commands: Use semver for min_version per recommendations
+  * modules: Fix hugo mod vendor for regular file mounts
+  * Revert "Revert "common/herrors: Fix typos in comments""
+  * Revert "common/herrors: Fix typos in comments"
+  * deps: Updateto gitmap v1.1.2
+  * common/herrors: Fix typos in comments
+  * Squashed 'docs/' changes from 2a0ea423d..20d77860b
+  * helpers: Fix TrimShortHTML
+  * Fix IsDescendant/IsAncestor for overlapping section names
+  * fix typo in getting started
+
+-------------------------------------------------------------------
+Wed May 06 16:29:20 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.68.3:
+  * Fix _build.list.local logic
+
+-------------------------------------------------------------------
+Wed May 06 16:28:07 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.68.2:
+  * Fix cache reset for a page's collections on server live reload
+
+-------------------------------------------------------------------
+Wed May 06 16:22:00 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.68.1:
+  * Revert "resources: Add data context to the key in ExecuteAsTemplate"
+
+-------------------------------------------------------------------
+Wed May 06 16:05:45 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.68.0:
+  * Fix Go build version
+  * Some minify configuration adjustments
+  * Add minify config
+  * Allow headless bundles to list pages via $page.Pages and $page.RegularPages
+  * Update to Go 1.14.1 and 1.13.9
+  * Fix GetTerms nil pointer
+  * Squashed 'docs/' changes from 988f7d5c2..2a0ea423d
+  * Pass directory name to filters in LstatIfPossible in the same way as Readdir
+  * Update to goldmark 1.1.25.
+  * resources: Fix scss vs css import regexp
+  * Add workaround for regular CSS imports in SCSS
+  * Add .RegularPagesRecursive
+
+-------------------------------------------------------------------
+Tue Mar 17 17:19:42 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.67.1:
+  * metrics: Fix --templateMetricsHints
+  * resources: Add data context to the key in ExecuteAsTemplate
+  * Improve Tailwind/PostCSS error messages
+  * deps: Update Blackfriday
+  * resources: Try to fix a Go 1.15 go vet error
+  * Add languageDirection to language configuration
+
+-------------------------------------------------------------------
+Tue Mar 10 21:39:11 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.67.0:
+  * docs: Doument the server config
+  * Squashed 'docs/' changes from 341ecabb2..988f7d5c2
+  * Fix ambigous error on site.GetPage
+  * Fix handling of HTML files without front matter
+  * Support unComparable args of uniq/complement/in
+  * tpl: Fix error with unicode in file paths
+  * Add HTTP header support for the dev server
+  * deploy: Add include and exclude support for remote
+
+-------------------------------------------------------------------
+Tue Mar 03 17:36:32 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.66.0:
+  * Skip some tests on CircleCI
+  * {{ in }} should work with html.Template type
+  * docs: Regen CLI docs
+  * commands: Add --all flag to hugo mod clean
+  * Add build.UseResourceCacheWhen
+  * Update dependency list in README.md
+  * Fix ref/relref short lookup for pages in sub-folder
+  * tpl: Change error message on missing resource
+  * resources: Add full filename to image when processing fails
+  * hugolib: Fix error handling in page collector
+  * Update dependency list in README
+  * Fix ref/relRef regression for relative refs from bundles
+  * identity: Fix potential infinite recursion in server change detection
+  * Fix rebuild logic when editing template using a base template
+  * resources: Add basic @import support to resources.PostCSS
+  * deploy: Implement include/exclude filters for deploy
+  * Update to Go 1.14 and 1.13.8
+  * Add hugo.IsProduction function
+  * tpl: Add math.Sqrt
+
+-------------------------------------------------------------------
+Thu Feb 27 22:00:38 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging remove explicitly set ldflags and binary output name.
+  Resulting binary is the same size (60M) even after changes.
+  Go default build options and upstream hugo build configuration
+  produce acceptable results. Regular stripping is not supported
+  by upstream Go, necessitating NO_BRP_STRIP_DEBUG=true.
+  * remove ldflags -s Omit the symbol table and debug information
+  * remove ldflags -w Omit the DWARF symbol table
+  * remove ldflags -X main.gitCommit=$COMMIT -X main.version=$VERSION
+  * retain buildmode=pie depart from default as security step
+  * retain mod=vendor go1.14+ will detect vendor/ and auto-enable
+
+-------------------------------------------------------------------
+Thu Feb 27 19:13:26 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging remove unnecessary export CGO_ENABLED=0
+
+-------------------------------------------------------------------
+Thu Feb 27 19:09:03 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.65.3:
+  * Fix panic when home page is drafted
+  * Fix goldmark toc rendering
+  * Fix crashes for 404 in IsAncestor etc.
+
+-------------------------------------------------------------------
+Thu Feb 27 19:07:13 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.65.2:
+  * Apply missing go fmt
+  * Fix panic on no output formats
+  * Fix panic in 404.Parent
+
+-------------------------------------------------------------------
+Thu Feb 27 19:05:47 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.65.1:
+  * hugolib: Fix 2 Paginator.Pages taxonomy regressions
+  * hugolib: Fix deletion of orphaned sections
+
+-------------------------------------------------------------------
+Thu Feb 27 19:03:25 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.65.0:
+  * docs: Regenerate CLI docs
+  * Fix lazy publishing with publishResources=false
+  * modules: Improve "hugo mod clean"
+  * commands: Add "hugo mod verify"
+  * Add Page.GetTerms
+  * Squashed 'docs/' changes from 16753a78d..341ecabb2
+  * Add a list terms benchmark
+  * Handle disabled RSS even if it's defined in outputs
+  * Fix goMinorVersion on non-final Go releases
+  * Use the tree for taxonomy.Pages()
+  * Add some cagegories to the site collections benchmarks
+  * tpl: Adjust the RSS taxonomy logic
+  * tpl: Fix RSS template for the terms listing
+  * Fix taxonomy
+  * Fix RenderString for pages without content
+  * modules: Do not try to get local themes in "hugo mod get"
+  * deps: Update goldmark-highlighting
+  * commands: Support "hugo mod get -u ./..."
+  * Introduce a tree map for all content
+  * Another benchmark rename
+  * Rename the Edit benchmarks
+  * markup/highlight: Fix chroma highlight
+  * Refactor a benchmark to make it runnable as test
+  * Add benchmark for content edits
+  * Add "go mod verify" to build scripts
+  * Add git to Dockerfile
+  * deps: Update go.sum
+  * commands: Rename doWithCommandeer to cfgInit/cfgSetAndInit
+  * deps: Update golibsass
+  * Shuffle test files before insertion
+  * Update to LibSass v3.6.3
+
+-------------------------------------------------------------------
+Thu Feb 27 19:00:12 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.64.1:
+  * hugofs: Fix mount with hole regression
+  * Fix bundle resource ordering regression
+  * Squashed 'docs/' changes from bd0e15bb6..16753a78d
+  * CONTRIBUTING: Fix note about CGO
+  * Update Go version requirement
+
+-------------------------------------------------------------------
+Thu Feb 27 18:58:14 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.64.0:
+  * Fix module mount in sub folder
+  * Mention a "no CGO rule"
+  * commands: Fix config environment handling
+  * Update to Go 1.13.7 and Go 1.12.16
+  * transform/livereloadinject: Add defer to livereload script tag
+  * transform/livereloadinject: Don't use document.write to inject livereload
+  * hubolig: Add a render hook whitespace test
+  * Do not render alias paginator pages for non-HTML outputs
+  * Fix base template handling with preceding comments
+  * modules: Fix "hugo mod get -u" with no arguments
+  * transform/livereloadinject: Inject livereload script right after head if possible
+  * deps: Update goldmark to v1.1.22
+
+-------------------------------------------------------------------
+Thu Feb 27 18:55:34 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.63.2:
+  * hubolib: Revert to .Type = "page" when empty
+  * And now finally fix the 404 templates
+  * Fix 404 with base template regression
+
+-------------------------------------------------------------------
+Thu Feb 27 18:52:03 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.63.1:
+  * deps: Make the build flags shared between sites
+  * Fix baseof with regular define regression
+  * Revert to minify v2.6.1
+
+-------------------------------------------------------------------
+Thu Feb 27 18:50:22 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.63.0:
+  * docs, output: Add base template lookup variant to docs.json
+  * docs: Regen docs helper
+  * Fix 0.62.1 server rebuild slowdown regression
+  * tpl/compare: Fix eq when > 2 args
+  * Allow multiple arguments in ne/ge/gt/le/lt functions Treat op arg1 arg2 arg3 ... as (arg1 op arg2) && (arg1 op arg3) and so on for ne/ge/gt/le/lt.
+  * hugolib: Disable a test assertion on ARM
+  * tpl/tplimpl: Rework template management to get rid of concurrency issues
+  * deps: Update go-org
+  * examples: Fix blog not building
+  * Add support for newline characters in raw string shortcode
+  * deps: Update github.com/alecthomas/chroma
+  * deps: Update minify to v2.7.2
+  * deps: Update Goldmark to v1.1.21
+  * Allow raw string literals in shortcode params
+  * deps: Update github.com/gohugoio/testmodBuilder
+  * hugolib: Some more benchmark adjustments
+  * hugolib: Adjust site benchmarks
+  * deps: Update direct dependencies
+  * minifiers: Update to new CSS config
+  * deps: Update to Minify v2.7.0
+  * Revert "Add support for freebsd/arm64"
+  * Add support for freebsd/arm64
+  * tpl: Put Go's internal template funcs in Hugo's map
+  * Update releasenotes_writer.go
+  * hugolib: Add a benchmark with lots of templates
+
+-------------------------------------------------------------------
+Thu Feb 27 18:46:54 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.62.2:
+  * hugolib: Fix relative .Page.GetPage from bundle
+  * markup/goldmark: Adjust auto ID space handling
+  * docs: Document the new autoHeadingIDType setting
+  * docs: Regenerate docshelper
+  * markup/goldmark: Add an optional Blackfriday auto ID strategy
+  * markup/goldmark: Make the autoID type config a string
+  * Squashed 'docs/' changes from 54f0e8776..bd0e15bb6
+  * markup/goldmark: Simplify code
+  * markup/goldmark: Make auto IDs GitHub compatible
+
+-------------------------------------------------------------------
+Thu Feb 27 18:39:57 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.62.1:
+  * Support files in content mounts
+  * Update alpine base image in Dockerfile to 3.11
+  * hugolib: Fix inline shortcode regression
+
+-------------------------------------------------------------------
+Thu Feb 27 18:34:17 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.62.0:
+  * Squashed 'docs/' changes from af4b7ac5b..54f0e8776
+  * deps: Update Goldmark to v1.1.18
+  * deps: Update go-org
+  * docs: More on hooks
+  * tpl: Do not return any value in errorf
+  * tpl: Add a warnf template func
+  * hugolib: Improve error and reload handling  of hook templates in server mode
+  * deps: Update to Goldmark v1.1.17
+  * docs: Regen docshelper
+  * tpl/collections: Some more params merge adjustments
+  * Preserve HTML Text for image render hooks
+  * Fix abs path handling in module mounts
+  * Fix incorrect MIME type from image/jpg to image/jpeg
+  * deps: Update Goldmark
+  * Preserve HTML Text for link render hooks
+  * tpl/collections: Fix merge vs Params
+  * tpl: Get rid of the custom template truth logic
+  * docs: Footnote
+  * Add render template hooks for links and images
+  * Squashed 'docs/' changes from 51c4f3184..af4b7ac5b
+  * Enhance accessibility to issues
+  * hugolib: Fix test
+  * deps: Re-introduce the correct version of Goldmark
+  * tpl: Add some comments
+  * Rework template handling for function and map lookups
+  * Create lightweight forks of text/template and html/template
+  * markup/tableofcontents: Add config option for ordered list
+
+-------------------------------------------------------------------
+Thu Feb 27 18:29:13 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.61.0:
+  * deps: Update Goldmark
+  * Deprecate Ace and Amber
+  * markup: Add typographic chars from goldmark to toc
+  * tpl/partials: Allow any key type in partialCached
+  * markup: Reimplement pygmentsCodefencesGuessSyntax
+  * deps: Update Goldmark
+
+-------------------------------------------------------------------
+Thu Feb 27 18:20:16 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.60.1:
+  * deps: Update minify
+  * Fix headless regression
+  * deps: Update Goldmark
+  * hugolib: Fix timeout number parsing for YAML/JSON config
+
+-------------------------------------------------------------------
+Tue Dec  3 08:39:07 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Fix URL
+
+-------------------------------------------------------------------
+Wed Nov 27 20:59:36 UTC 2019 - jkowalczyk@suse.com
+
+- Update to version 0.60.0:
+  * modules: Add some more output if modules download takes time
+  * Add some internal template image tests
+  * tpl/tplimpl: Featured and Site.Params image support for Schema
+  * hugolib: Disable test assertion on Windows
+  * deps: Update Goldmark
+  * tpl/tplimpl: Add support for featured and global image to OpenGraph template
+  * hugolib: Fix cascade in server mode
+  * hugolib: Fix .Sections vs siblings
+  * Fix language handling in ExecuteAsTemplate
+  * hugolib: Adjust .Site.Permalinks deprecation level
+  * hugolib: Remove .Site.Ref/RelRef
+  * Deprecate mmark
+  * hugolib: Fix recently broken timeout config
+  * commands: Use HUGO_ENV if set
+  * resources/images: Make the image cache more robust
+  * Update to Go 1.13.4 and Go 1.12.13
+  * mage: Restore -v behaviour
+  * hugolib: Increase default timeout value to 30s
+  * hubolig: Fix potential data race
+  * mage: Fix mage check on darwin and add debugging output
+  * commands: Fix jekyll metadata import on individual posts
+  * Improve grammar in README.md
+  * markup/highlight: Replace the temp for with a dependency
+  * deps: Update Chroma
+  * deps: Update Goldmark
+  * markup/tableofcontents: GoDoc etc.
+  * Minor cleanups
+  * Add Goldmark as the new default markdown handler
+  * Fix Params case handling in the index, sort and where func
+  * Fix GetPage Params case issue
+  * common/para: Add parallel task executor helper
+  * Add some more output if loading modules takes time
+  * Update homepage.md
+  * hugolib: Add a benchmark
+  * modules: Do not check for remote modules if main project is vendored
+  * hugolib: Fix emoji handling inside shortcodes
+  * tpl/collections: Allow dict to create nested structures
+  * commands: Add hint when dir not empty
+  * tpl/collections: Add collections.Reverse
+  * tpl/collections: Make index work with slice as the last arg
+  * Squashed 'docs/' changes from 723da4a37..51c4f3184
+  * hubolib: Headless bundles should not be listed in .Pages
+  * Support Go time format strings in permalinks
+  * travis: Increase timeout to 30000 for mage -v check
+  * Prepare for Goldmark
+  * deps: Update quicktest
+  * hugolib: Fix ref/relref anhcor handling
+  * deps: Update to Chroma v0.6.9 for Java lexer fix
+  * tpl/collections: Add some index map test cases
+  * helpers: Use pointer receiver for ContentSpec
+  * travis: Allow arm64 to fail
+  * minifiers: Add a JSON roundtrip test
+  * Update .travis.yml for arm64 support, etc.
+  * mage: Skip Test386 on non-AMD64 architectures
+  * Update past go-cmp's checkptr fix
+
+-------------------------------------------------------------------
+Thu Oct 31 22:51:18 UTC 2019 - jkowalczyk@suse.com
+
+- Update to version 0.59.1:
+  * hugofs: Fix crash in multilingual content fs
+  * Dockerfile: Switch to mage builds, various optimizations
+  * resources/images: Add exception for new test image
+  * Adjust benchmark templates
+  * deps: Update to Chroma v0.6.8 to fix a crash
+  * deps: Update quicktest
+  * Do not attempt to build if there is no config file
+
+-------------------------------------------------------------------
+Mon Oct 21 18:16:02 UTC 2019 - jkowalczyk@suse.com
+
+- Update to version 0.59.0:
+  * docs: Replace /docs
+  * cache/filecache: Recover from file corruption
+  * resources/images: Allow to set background fill colour
+  * media: Add common video media types
+  * examples: Replace .RSSLink
+  * resources/page: Use binary search in Pages.Prev/Next if possible
+  * Make Pages.Prev/Next work like the other Prev/Next methods
+  * tpl: Add optional "title" attribute to iframe in Vimeo shortcode
+  * tpl: Modify error messages of after, first, and last
+  * tpl: Last now accepts 0 as limit
+  * Update feature_request.md
+  * common: Fix elements are doubling when append a not assignable type
+  * tpl: After now accepts 0 as index
+  * helpers: Fix data race in global logger init
+  * tpl: Make getJSON/getCVS accept non-string args
+  * Update to Go 1.12.10 and 1.13.1
+  * Simplify test output to simplify diffing
+  * hugofs: Add FileMeta.String
+  * deps: Update minify to v2.5.2
+  * resources: Fix image test error on s390x, ppc64* and arm64
+  * Add BaseFs to RenderingContext
+  * deps: Update go-org
+  * media: Use + to create the Type string
+  * deps: Upgrade to latest version of emoji dependency
+  * readme: Update Architectures
+  * deploy: Add ability to invalidate Google Cloud CDN
+  * resources: Ensure same dirinfos sort order in TestImageOperationsGolden
+  * Update bug_report.md
+  * Support typed bool, int and float in shortcode params
+  * deps: Update Chroma
+  * github: Add issue templates and action
+  * resources: Support output image format in image operations
+  * tpl: Add `rel="noopener"` for external links
+  * tpl: Remove unneeded space
+
+-------------------------------------------------------------------
+Thu Sep 19 19:33:04 UTC 2019 - jkowalczyk@suse.com
+- Update to version 0.58.3:
+  * Add some more resource transform tests
+  * Fix cache key transformed resources
+  * deploy: Do not compile in Azure on Solaris
+
+-------------------------------------------------------------------
+Fri Sep 13 16:24:36 UTC 2019 - jkowalczyk@suse.com
+
+- Update to version 0.58.2:
+  * Fix cache keys for bundled resoures in transform.Unmarshal
+  * filecache: Ignore "does not exist" errors in prune
+
+-------------------------------------------------------------------
+Mon Sep 09 03:50:51 UTC 2019 - jkowalczyk@suse.com
+
+- Update to version 0.58.1:
+  * Avoid writing the same processed image to /public twice
+  * hugolib: Fix broken bundle live reload logic
+  * deps: Update github.com/bep/gitmap
+  * Fix concat with fingerprint regression
+  * tpl: Remove eq argument limitation
+
+-------------------------------------------------------------------
+Wed Sep 04 21:25:15 UTC 2019 - jkowalczyk@suse.com
+
+- Update to version 0.58.0:
+  * Allow slices in the image Filter funcs, not just varargs
+  * hugolib: Adjust Go version specific test
+  * hugolib: Remove the old and slow site benchmarks
+  * Cache processed images by their source path
+  * Remove test artifact
+  * Make the "is this a Hugo Module" logic more lenient
+  * hugolib: Add a Sass includePaths test
+  * Make home.Pages work like any other section
+  * Add some fingerprint tests
+  * resources: Cache Exif data to disk
+  * Remove metaDataFormat setting
+  * resources: Make the Exif benchmark filenames distinct
+  * resources: Add Exif benchmark
+  * resources: Remove unused map type
+  * Add image.Exif
+  * deps: Update go-org (fix descriptive lists)
+  * tpl: Migrate last shortcodes (YouTube and Vimeo) to HTTPS embeds
+  * Add a set of image filters
+  * Image resource refactor
+  * deps: Update go-org (fix footnotes in headlines)
+  * Discrepancy typo fix
+  * source: Remove debug check left during development
+  * hugolib: Change to output non-panic error message if missing shortcode template
+
+-------------------------------------------------------------------
+Mon Sep  2 15:49:12 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging remove _service go_modules param archive that is now
+  autodetected as of obs-service-go_modules-0.3.0
+
+-------------------------------------------------------------------
+Fri Aug 23 03:32:42 UTC 2019 - jkowalczyk@suse.com
+
+- Update to version 0.57.2:
+  * tpl: Use RegularPages for RSS template
+  * hugolib: Don't use the global warning logger
+  * tpl: Avoid "home page warning" in RSS template
+  * hugolib: Allow index.md inside bundles
+  * Adjust the default paginator for sections
+  * Revert the 0.57 home.Pages change
+  * hugolib: Add a site benchmark
+
+-------------------------------------------------------------------
+Fri Aug 23 01:28:08 UTC 2019 - jkowalczyk@suse.com
+
+- Update to version 0.57.1:
+  * hugolib: Fix draft etc. handling of _index.md pages
+  * Fix mainSections logic
+  * Fix live reload mount logic with sub paths
+  * modules: Disable "auto tidy" for now
+  * hugolib: Recover and log panics in content init
+  * hugolib: Add some outputs tests
+  * hugolib: Fix taxonomies vs expired
+  * commands: Make sure the hugo field is always initialized before it's used
+
+-------------------------------------------------------------------
+Thu Aug 22 23:58:39 UTC 2019 - jkowalczyk@suse.com
+
+- Update to version 0.57.0:
+  * hugolib: Remove temporary warning
+  * Add FileInfo to resources created with resources.Match etc.
+  * Improve the server assets cache invalidation logic
+  * modules: Do not fail build on errors in theme.toml
+  * Add resources.Match and resources.GetMatch
+  * commands: Fix faulty -h logic in hugo mod get
+  * tests: Convert from testify to quicktest
+  * Avoid unnecessary conversions
+  * Fixed ineffectual assignments
+  * Simplify code
+  * Implement cascading front matter
+  * Fixed tautological error conditions
+  * Use the SVG logo in README.md
+  * Fix static sync issue with virtual mounts
+  * Add a branch bundle test case
+  * Simplify page tree logic
+  * hugolib: Add some more site benchmarks
+  * transform/urlreplacers: Cache the next position of `urlreplacer.prefix`
+  * postcss: Fix no-map vs noMap discrepancy
+  * hugolib: Fix output format handling of mix cased page kinds
+  * hugolib: Fix broken test
+  * tpl: Regenerate templates
+  * tpl: Always load GitHub Gists over HTTPS
+  * Fix assorted typos
+  * examples: Fix multilingual example compatibility with latest version
+  * Packaging: _service add tar_scm , set_version, recompress
+  * Packaging: tar_scm param revision selects git tag, version names tar
+
+-------------------------------------------------------------------
+Sat Aug 10 02:00:42 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Improve hugo-0.56.3 RPM packaging
+  * Remove GOPATH export and source copying obsolete with go1.11+
+  * Remove application name from summary per rpmlint
+
+-------------------------------------------------------------------
+Fri Aug  9 20:58:40 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Improve hugo-0.56.3 RPM packaging
+  * Fix LICENSE file handling for older SLE versions
+  * Add supplemental package hugo-bash-completion
+  * Update git commit associated with hugo-0.56.3
+
+-------------------------------------------------------------------
+Wed Jul 31 19:33:22 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- hugo-0.56.3 (released 2019-07-31) is a bug-fix release with a
+  couple of important fixes and minor improvements in the new Hugo
+  Modules feature.
+  * gohugoio#6136 hugolib: Fix bundle header clone logic
+  * gohugoio#6144 commands: Add "hugo config mounts" command
+  * gohugoio#6144 commands: Cleanup the hugo config command
+  * gohugoio#6146 Allow overlap in module mounts
+  * gohugoio#6143 Fix self-mounts on the main project
+  * Move the mount duplicate filter to the modules package
+  * Regenerate CLI docs
+
+-------------------------------------------------------------------
+Wed Jul 31 19:11:36 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- hugo-0.56.2 (released 2019-07-30) is a bug-fix release with a
+  couple of important fixes.
+  * gohugoio#6136 Add some more content language test assertions
+  * gohugoio#6139 commands: Fix config reloading in Vim and similar
+  * gohugoio#6131 Fix Jekyll import
+  * gohugoio#6137 Fix image format detection for upper case extensions, e.g. JPG
+  * gohugoio#6134 Fix i18n project vs theme order
+  * gohugoio#6128 Add proper error message when receiving nil in Resource transformation
+  * deps: Update go-org to v0.1.2
+
+-------------------------------------------------------------------
+Wed Jul 31 18:37:31 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- hugo-0.56.1 (released 2019-07-28) is a bug-fix release with a
+  couple of important fixes.
+  * gohugoio#6121 common/maps: Do not return error on params dot access on incompatible types
+  * gohugoio#6120 resources: Fix image Width/Height regression
+  * gohugoio#6114 modules: Set GO111MODULE=on
+
+-------------------------------------------------------------------
+Fri Jul 26 17:25:49 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging update to add _service demonstrating use of OBS Source
+  Service obs-service-go_modules. Regenerated vendor.tar.gz.
+
+-------------------------------------------------------------------
+Thu Jul 25 18:10:27 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- hugo-0.56.0 (released 2019-07-25) is a feature release introducing
+  Hugo Deploy and Hugo Modules and various fixes.
+  * Hugo Deploy brings built-in deployment support for GCS, S3, or
+    Azure using the Hugo CLI.
+  * Hugo Modules are the core building blocks in Hugo, using go
+    modules. A module can be your main project or a smaller module
+    providing one or more of the 7 component types defined in Hugo:
+    static, content, layouts, data, assets, i18n, and archetypes.
+    You can combine modules in any combination you like, and mount
+    directories from non-Hugo projects, forming a virtual union file
+    system.
+
+-------------------------------------------------------------------
+Fri Jul 12 17:24:31 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- hugo-0.55.6 (released 2019-05-18) is a bug fix release that fixes
+  paginator crashes when running the hugo server by protecting the
+  Build method with a lock when running in server mode.
+  * Other improvements present in hugo-0.55 feature release
+  * Vendors dependencies via vendor.tar.gz
+
+-------------------------------------------------------------------
+Mon Mar 11 10:45:15 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Remove git build dependency, not required when building with
+  vendored dependencies.
+
+-------------------------------------------------------------------
+Mon Mar  7 09:02:51 UTC 2019 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- hugo-0.54.0 (released 2019-02-01) initial OBS packaging
+  * Vendors dependencies via vendor.tar.gz

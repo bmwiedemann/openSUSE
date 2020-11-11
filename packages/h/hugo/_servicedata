@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">git://github.com/gohugoio/hugo.git</param>
+              <param name="changesrevision">347f2de67d8c46428ba2366a041d68bea108244e</param></service></servicedata>

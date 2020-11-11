@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>661fd76f551f8c07201ba8a43239c7f1</srcmd5>
+    <version>0.78.1</version>
+    <time>1605124021</time>
+    <user>dimstar_suse</user>
+    <comment>New package hugo static site generator in Go. Will be used by kubic project for devel:kubic:containers and related websites.</comment>
+    <requestid>847684</requestid>
+  </revision>
+</revisionlist>
