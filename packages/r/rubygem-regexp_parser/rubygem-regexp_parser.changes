@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 10 21:43:06 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.8.2
+
+  ### Fixed
+
+  - fix `FrozenError` in `Expression::Base#repetitions` on Ruby 3.0
+    * thanks to [Thomas Walpole](https://github.com/twalpole)
+  - removed "unknown future version" warning on Ruby 3.0
+
+-------------------------------------------------------------------
 Fri Sep 25 14:47:43 UTC 2020 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.8.0

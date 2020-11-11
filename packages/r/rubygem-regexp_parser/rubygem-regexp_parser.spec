@@ -24,12 +24,12 @@
 #
 
 Name:           rubygem-regexp_parser
-Version:        1.8.0
+Version:        1.8.2
 Release:        0
 %define mod_name regexp_parser
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 1.9.1}
+BuildRequires:  %{ruby >= 2.0.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
