@@ -2,9 +2,9 @@ diff --git a/cmake/CuraTests.cmake b/cmake/CuraTests.cmake
 index c0762e2b9..29c34c0b6 100644
 --- a/cmake/CuraTests.cmake
 +++ b/cmake/CuraTests.cmake
-@@ -67,13 +67,6 @@ foreach(_plugin ${_plugins})
-     endif()
- endforeach()
+@@ -50,13 +50,6 @@ foreach(_plugin ${_plugins})
+ endfunction()
+ 
  
 -#Add code style test.
 -add_test(
@@ -13,6 +13,6 @@ index c0762e2b9..29c34c0b6 100644
 -    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 -)
 -
- #Add test for whether the shortcut alt-keys are unique in every translation.
+ #Add test for import statements which are not compatible with all builds
  add_test(
-     NAME "shortcut-keys"
+     NAME "invalid-imports"

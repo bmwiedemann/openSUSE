@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 10 18:26:14 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 4.8.0
+  Release notes:
+  * https://github.com/Ultimaker/Cura/releases/tag/4.8
+- Rebase disable-code-style-check.patch
+
+-------------------------------------------------------------------
 Tue Sep 15 21:59:56 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 4.7.1
