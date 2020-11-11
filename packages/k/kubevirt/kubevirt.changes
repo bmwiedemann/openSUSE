@@ -1,4 +1,201 @@
 -------------------------------------------------------------------
+Tue Nov 10 15:54:58 UTC 2020 - jfehlig@suse.com
+
+- Update to version 0.35.0:
+  * sriov lane: skip flaky tests until their issue is resolved
+  * add an independent claclulation of required vcpus for mem overhead calculation
+  * adjust memory overhead calculating by adding a static 10Mi
+  * move guest cpu topology modification to vmi mutator webhook
+  * Ensure that we restore the cdi-insecure-registry configmap in tests
+  * Add test_ids_cnv_2.5
+  * dual stack, expose, tests: remove batchv1.Job duplicated code
+  * test, waitvmi: Add context mechanism to WaitUntilVMIReadAsync
+  * dual stack, expose, tests: skip on non dual stack clusters
+  * dual stack, expose, tests: port VM service tests
+  * tests, multus-tests, SRIOV: configure IP based on MAC or name
+  * Catch goroutine panic with GinkgoRecover in tests
+  * tests, multus_tests: make helpers return an error
+  * dual stack, expose, tests: port VMIRS cluster IP service test
+  * dual stack, expose, tests: port UDP services test
+  * dual stack, tests: ping first on helloWorld{UDP|HTTP} jobs
+  * dual stack, expose, tests: port the VMI service test cases
+  * Bump kubevirtci
+  * make generate and make deps-updateand update test import
+  * Bump CDI to 1.25.0
+  * Reduce the cluster size a little
+  * dual stack, expose, tests: get the IP addr from a DNS name
+  * bump kubevirtci: get latest sriov provider
+  * Infra test made invalid assumptions about cluster composition
+  * Fix panic when endpoints were empty.
+  * dual-stack, virtctl: expose ipv6 services
+  * Remove 'string' from json tag to preserve type information in our API
+  * automation: cancel CDI insecure registries cehck on sriov lane
+  * Emit an event if we detect terminating pods
+  * tests, pausing_test: change long process test
+  * test, infra_test, Adapt tests to support dual stack
+  * tests: remove `IsRunningOnKindInfraIPv6`
+  * fix wrong logic in SetDriverCacheMode log message
+  * Revise functional test to verify 440 read only image
+  * Build container disks with 440 mode and 107:107 ownership
+  * Add e2e test for replacing terminating pods immediately
+  * Bump kubevirtci
+  * test: Remove all the usages of `IsRunningOnKindInfraIPv6`
+  * Disable service links on virt-launcher Pod
+  * tests, infra-test, Remove unneeded vmi creation
+  * infra_test, Refactor tests to use a DescribeTable
+  * infra_test, Add validation of errors
+  * Fix flaky timezone test
+  * Let VMIRS react to terminating pods of VMIs
+  * Let the VMI indicate when Pods are terminating
+  * functests, macvtap, migration: successful macvtap VMI migration
+  * functests, migration: move some asserter subset to common helpers
+  * functests, macvtap, multus: use libvmi Cirros VMI factory
+  * functests, macvtap, multus: schedule the VMs in the same node
+  * tests: update the `StartVmOnNode` method to return the started VMI
+  * examples, macvtap, multus: add example for macvtap VMI
+  * macvtap, admitter: macvtap requires multus network
+  * functests, macvtap, multus: add connectivity test between VMs
+  * macvtap: feature gate macvtap feature
+  * functests, multus: refactor `configInterface` to allow sudo
+  * functests, macvtap, multus: add test with a custom MAC address
+  * tests: remove all net-attach-defs on test cleanup
+  * automation, macvtap: restrict macvtap func tests to multus lanes
+  * unit tests, macvtap, multus: introduce macvtap
+  * macvtap, multus: add macvtap BindingMechanism
+  * improving PCI configuration tests
+  * Template the cdi namespace
+  * add dev registry as insecure registry to cdi
+  * Update testing infra to cdi 1.23.7 in order to bring in registry import fixes
+  * Datavolume container registry import test
+  * CONTRIBUTING: point developers to kubevirt-dev slack
+  * rebase
+  * Remove incorrect listtype
+  * fix 1.19 lane
+  * Propagate error from patchValidation
+  * rebase
+  * reduce scope to vm/vmi
+  * Remove +listType=map from tolerations This marker also requires //+listMapKey which can't be resonable set at this moment. (All fields are optional and missing default)
+  * update builder
+  * review
+  * Add missing markers
+  * Test verifying kubectl explain works
+  * Adding test verifying crds are structural
+  * Use controller-gen to generate validations for crds
+  * test if crds for operator are correct
+  * adding tools for generating correct validation
+  * cleaning generated desc. and nullable fields in status
+  * adding patching of crds for operator
+  * adding markers for controller-gen
+  * tests, restore tests: check on successful commands
+  * Fix gosec issue: week random generator
+  * Bump kubevirtci
+  * It is not always bad for VolumeSnapshot to have an error
+  * Fix artifacts in gosec target
+  * tests, infra-test, Refactor node selection
+  * Do not change vnc socket's permission to 0444
+  * tests, infra-test, Fix node updates
+  * tests, infra-test, Add missing break when selecting a node
+  * tests, pausing test: increase time for long process
+  * tests, login: expect fedora full prompt
+  * tests, migration, stress-test: remove doubled `\n`
+  * tests, re-factoring: use safe expect-bathcer and prompt Expression
+  * tests, infra-test, Add missing check on AfterEach
+  * tests, infra_test, Add missing assign when removing taints
+  * Don't parallelize cluster-sync dependencies
+  * hack: Print cluster-* script name when complete
+  * Point to kubevirtci for new providers.
+  * Update documentation to refer to scripts having moved to cluster-up/
+  * Update docs that refer to kubevirt-config ConfigMap to use kubevirt CR
+  * tests: Add missing asserts to the vmi-configuration tests
+  * Adapt conformance tests to support migration.
+  * automation: remove ipv6 lane
+  * Set read only for our demo container disks and verify their mode does not change at runtime
+  * Attempt to use whatever permissions a container disk has applied to it without mutating the file
+  * rebase + fix compile error due to another PR
+  * set the label for downwardAPI test in the test itself
+  * Move AddDownwardAPIVolumeWithLabel to be public, add downwardAPI disk to the migration test
+  * add downwardAPI volume in the test instead of in the helper
+  * delete commented out line
+  * Adding function tests (for make functest)
+  * remove rule violation
+  * support  DownwardAPI volum source
+  * Fix typos and formatting
+  * tests/utils: remove 'IsIPv6Cluster' function
+  * tests, iscsi: remove iSCSI PVC tests IPv6 cluster skips
+  * VM status to report whether volumes support snapshots.
+  * tests, network: Relocate VMI/POD IP validation w/ Guest Agent
+  * Fix pull-kubevirt-apidocs
+  * tests: Render pods in the test namespace
+  * tests, iscsi: change 'CreateISCSITargetPOD' to return pod
+  * Lift the e2e test parallel run restriction for fedora guests
+  * Give the CI nodes two more GB of memory
+  * Adjust bump script to use tagged kubevirtci releases
+  * tests, console: Rename functions to fit the new package
+  * tests, ping: Move ping under libnet package
+  * tests, expecter: Create a console helper package
+  * Bump kubevirtci
+  * Mirror new dependencies
+  * update builder image
+  * tests, networkpolicy: Wait for VMIs readiness in parallel
+  * Exclude .git and _ci-configs at bazel's goimports
+  * multi-queue: cap the maximum number of queues
+  * Add 2.x QEMU Guest Agents to the list of supported versions
+  * Update to fedora 31 as base image.
+  * Add test_id for post-copy migration with Guest Agent Test
+  * dual stack, services, tests: enclose test setup in a `By` clause
+  * dual stack, services, tests: really check connectivity exists
+  * dual-stack, tests: skip IPv6 test on non-dual stack clusters
+  * dual stack, services, tests: unify the `Job` cleanup solution
+  * dual stack, services: provide more explicit info on test execution
+  * tests: test the masquerade bridge has the correct mtu
+  * virt-handler/launcher: Set the pod iface mtu on the bridge
+  * restore backwards compatiblity with api group/version on DataVolumeTemplates spec
+  * Add short readme
+  * multi-queue, tests: assuret we can request a VM with a single vCPU
+  * api: update the API description of the NetworkInterfaceMultiqueue flag
+  * tap-device, multi-queue: enforce single-queue tap
+  * Delete kubevirt service accounts from default privileged SCC
+  * Added helper function to return all kubevirt service account users
+  * Removing redundant tests related to SCC users modification
+  * Added unit tests for SCC users modification upon upgrade.
+  * Remove kubevirt service accounts from default privileged SCC
+  * tests, nfs: avoid failures in afterEach of a skipped test
+  * test, nfs: Change CreateNFSTargetPOD to return a Pod
+  * tests, dualstack: don't stop nfs tests cleanup in case of an error
+  * tests, dualstack: use IPFamily instead of boolean to mark tests
+  * tests, dualstack: introduce SkipWhenNotDualStackCluster
+  * tests, dual stack: Adapt tests using NFSTargetPOD to support dual stack
+  * docs: Fix the ginkgo flags usage example
+  * Properly exit if kubevirt does not get ready on cluster-sync
+  * Rework logic so it is easier to understand what is happening
+  * fix restore controller memory corruption
+  * Allow PVC as volume source with a DV populating the PVC. Before this was not allowed because we could not be sure that the PVC was fully populated. This commit checks the DV to ensure the PVC is fully populated.
+  * Save a nice cluster-overview to the artifacts
+  * Disable goveralls debug output
+  * Take time in cert tests after CA generation
+  * Use coverage merge tool for goveralls
+  * Introduce a tool to merge coverage reports
+  * Enable atomic count, race detection and fix races
+  * Move coverage reports over to bazel
+  * Use a proper cc_library for libvirt dependencies
+  * Auto-generate Help message from /metrics endpoint to docs/metrics.md
+  * tests, libnet: Relocate validation to libnet
+  * tests, libnet: Move cloud-init net and dns to libnet
+  * Fix flaky rename test
+  * Run Travis CI only on selected branches, remove sudo flag
+  * tests, infra-test, Solve CI flakiness due to update conflict
+  * Fix flaky unpause tests
+  * Refactor .json files to go file
+  * Mark networking conformance tests
+  * Fail only when new issue comes up
+  * Fix high severity&confidence issues
+  * Add gosec to project
+  * Fix display of virtctl help text for other usages
+  * tests, libvmi: Introduce CloudInit NoCloud Network Data
+  * functest for PR #4132
+  * Fix coexistance of scsi and sata drives
+
+-------------------------------------------------------------------
 Mon Nov  9 23:52:10 UTC 2020 - James Fehlig <jfehlig@suse.com>
 
 - spec: Add rpmlintrc to filter statically-linked-binary warning
