@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 11 15:23:42 UTC 2020 - Marketa Machova <mmachova@suse.com>
+
+- Update to 1.1.0
+  * Add support for Dash.jl Julia component generation.
+
+-------------------------------------------------------------------
 Sat Apr 18 20:54:40 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:

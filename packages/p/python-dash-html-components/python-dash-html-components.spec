@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-dash-html-components%{psuffix}
-Version:        1.0.3
+Version:        1.1.0
 Release:        0
 Summary:        Vanilla HTML components for Dash
 License:        MIT
