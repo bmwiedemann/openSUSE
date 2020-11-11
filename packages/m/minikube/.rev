@@ -220,4 +220,21 @@
     <comment></comment>
     <requestid>837801</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>01f5e0e4064057d5402aadfbb0df4bb5</srcmd5>
+    <version>1.14.2</version>
+    <time>1605123970</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.14.2:
+  * fix &quot;profile list&quot; timing out when cluster stopped. 
+  * new --wait flag component &quot;kubelet&quot;
+  * docker: When creating networks, use MTU of built-in bridge network
+  * multinode: ensure worker node join control plane on restart
+  * Fix &quot;--native-ssh&quot; flag for &quot;minikube ssh&quot;
+  * Fix parallels driver initialization 
+  * Delete context when stopped
+  * New flag &quot;--ports&quot; to expose ports for docker &amp; podman drivers
+  * Ingress addon: fix the controller name</comment>
+    <requestid>847499</requestid>
+  </revision>
 </revisionlist>
