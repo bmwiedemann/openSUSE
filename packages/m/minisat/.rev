@@ -33,4 +33,12 @@
 - remove Makefile_lib_rule.patch (not needed -- cmake)</comment>
     <requestid>745123</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1e1394377db594491237797bb8438f74</srcmd5>
+    <version>2.2.1+20200902</version>
+    <time>1605124085</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>847751</requestid>
+  </revision>
 </revisionlist>
