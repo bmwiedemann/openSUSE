@@ -425,4 +425,53 @@ https://github.com/git-cola/git-cola/issues/991
     <comment>Update to 3.7</comment>
     <requestid>808525</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>928e47b04dba408dac35c4a1a9247d99</srcmd5>
+    <version>3.8</version>
+    <time>1605124039</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.8
+- Usability, bells and whistles
+* The submodules widget can now be used to add submodules.
+  Submodules are now updated recursively.
+  https://github.com/git-cola/git-cola/issues/534
+* The image diff viewer can now be toggled between text and image modes.
+  This is helpful when, for example, diffing .svg files where it can be useful
+  to see diffs in both an image and text representation.
+  https://github.com/git-cola/git-cola/issues/859
+  https://github.com/git-cola/git-cola/pull/1035
+* The default `ssh-askpass` username + password dialog included with Git Cola
+  can now toggle between showing and masking the password input field.
+  https://github.com/git-cola/git-cola/pull/1069
+- Translations
+* Updated Polish translation.
+  https://github.com/git-cola/git-cola/pull/1076
+* Updated Hungarian translation.
+  https://github.com/git-cola/git-cola/pull/1067
+- Packaging
+* The `share/appdata` AppStream data was renamed to `share/metainfo`
+  in accordance with `AppStream standard changes from 2016
+  https://github.com/ximion/appstream/blob/master/NEWS#L1363
+  https://github.com/git-cola/git-cola/pull/1079
+* The &quot;cola&quot; modules are now installed into the Python &quot;site-packages&quot;
+  directory by default.  This allows distributions to package &quot;git-cola&quot; for
+  multiple versions of Python.  See the PACKAGING NOTES section in the README
+  for details about suppressing the installation of the private
+  &quot;share/git-cola/lib/cola&quot; modules when building cola.
+  https://github.com/git-cola/git-cola/issues/181
+* Git Cola's rebase / sequence editor, formerly known as &quot;git-xbase&quot; and
+  installed as &quot;share/git-cola/bin/git-xbase&quot;, has been renamed to
+  &quot;git-cola-sequence-editor&quot; and is now installed into the default
+  &quot;bin/git-cola-sequence-editor&quot; executable location to enable external
+  reuse of this general-purpose tool.
+* A workaround used by the pynsist installer preamble script was obsoleted by
+  https://github.com/takluyver/pynsist/pull/149
+  and has now been removed.
+  https://github.com/git-cola/git-cola/pull/1073
+- Fixes
+* `git dag` now uses integer widths when initializing its brushes.
+  https://github.com/git-cola/git-cola/pull/1080
+</comment>
+    <requestid>847628</requestid>
+  </revision>
 </revisionlist>
