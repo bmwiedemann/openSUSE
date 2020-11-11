@@ -13,6 +13,7 @@
         <param name="subdir">postfix</param>
         <param name="filename">entrypoint</param>
         <param name="include">entrypoint.sh</param>
+        <param name="include">ldap</param>
     </service>
     <service name="recompress" mode="disabled">
         <param name="file">*.tar</param>

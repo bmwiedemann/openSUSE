@@ -27,6 +27,8 @@
 	</expose>
         <volumes>
           <volume name="/var/spool/postfix"/>
+          <volume name="/var/spool/vmail"/>
+          <volume name="/etc/pki"/>
         </volumes>
         <labels>
           <suse_label_helper:add_prefix prefix="org.opensuse.postfix">
@@ -51,13 +53,13 @@
   <packages type="bootstrap">
     <package name="bash"/>
     <package name="postfix"/>
+    <package name="postfix-ldap"/>
     <package name="mandoc"/>
     <package name="netcfg"/>
     <package name="cyrus-sasl"/>
     <package name="cyrus-sasl-plain"/>
     <package name="ca-certificates"/>
     <package name="ca-certificates-mozilla"/>
-    <package name="-busybox-adduser"/>
     <package name="-busybox-findutils"/>
     <package name="-busybox-man"/>
     <package name="-busybox-sendmail"/>
