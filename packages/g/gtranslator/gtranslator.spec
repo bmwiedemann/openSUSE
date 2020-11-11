@@ -17,15 +17,16 @@
 
 
 Name:           gtranslator
-Version:        3.36.0
+Version:        3.38.0
 Release:        0
 Summary:        A gettext po file editor for the GNOME desktop
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Gtranslator
-Source0:        https://download.gnome.org/sources/gtranslator/3.36/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gtranslator/3.38/%{name}-%{version}.tar.xz
 Source99:       gtranslator-rpmlintrc
-
+#PATCH-FIX-UPSTREAM gtranslator-remove-statusbar.patch glgo#GNOME/gtranslator!70 malcolmlewis@opensuse.org -- Remove leftovers of statusbar.
+Patch0:         gtranslator-remove-statusbar.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
 BuildRequires:  intltool
