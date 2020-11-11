@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov  2 03:03:02 UTC 2020 - psimons@suse.com
+
+- Update integer-logarithms to version 1.0.3.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/integer-logarithms-1.0.3.1/src/changelog.md
+
+-------------------------------------------------------------------
 Mon Aug 31 09:34:30 UTC 2020 - psimons@suse.com
 
 - Update integer-logarithms to version 1.0.3 revision 2.
