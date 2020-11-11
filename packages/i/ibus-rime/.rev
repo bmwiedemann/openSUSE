@@ -140,4 +140,12 @@
     <comment></comment>
     <requestid>847437</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>cbdd9f110af2f8c54a3639038fdf3a94</srcmd5>
+    <version>1.4.1~git20200712.33b2755</version>
+    <time>1605124029</time>
+    <user>dimstar_suse</user>
+    <comment>Mention the bug ID (forwarded request 847503 from hillwood)</comment>
+    <requestid>847504</requestid>
+  </revision>
 </revisionlist>
