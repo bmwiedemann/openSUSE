@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov  9 09:43:02 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Rework xt_geo_ip fixes by using dynamic patching with find
+  which is less burden and confusing than manual patches series.
+- Add dynamic patching for *.service with removing like upstream
+  the obsolete StandardOutput=syslog until new release
+
+-------------------------------------------------------------------
+Sun Nov  8 19:25:23 UTC 2020 - Togan Muftuoglu <toganm@opensuse.org>
+
+- Correct the xt_geo_ip locations
+- Correct output to journal
+
+-------------------------------------------------------------------
 Sat Sep 26 08:23:10 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to version 5.2.8 (Upgrade your configuration)

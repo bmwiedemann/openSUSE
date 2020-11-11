@@ -2142,4 +2142,18 @@ Will serve as maintenance sr for Leap + Factory submission (forwarded request 36
   + Use macro for sbindir (forwarded request 837900 from bruno_friedmann)</comment>
     <requestid>838004</requestid>
   </revision>
+  <revision rev="121" vrev="2">
+    <srcmd5>97f2ce2d5be1dd0a844f5146ece16e0e</srcmd5>
+    <version>5.2.8</version>
+    <time>1605124102</time>
+    <user>dimstar_suse</user>
+    <comment>- Rework xt_geo_ip fixes by using dynamic patching with find
+  which is less burden and confusing than manual patches series.
+- Add dynamic patching for *.service with removing like upstream
+  the obsolete StandardOutput=syslog until new release
+
+- Correct the xt_geo_ip locations
+- Correct output to journal</comment>
+    <requestid>847792</requestid>
+  </revision>
 </revisionlist>

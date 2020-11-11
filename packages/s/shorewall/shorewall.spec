@@ -175,7 +175,10 @@ This package contains the core libraries for Shorewall.
 
 %prep
 %setup -q -c -a1 -a2 -a3 -a4 -a5 -a6
-# Patch for fillup
+#PATCH-FIX-OPENSUSE geo_ip has no LE
+#We keep it with this dynamic form to avoid maintaining manual patch
+find . \( -name shorewall*.conf -or -name shorewall*.conf.annotated \) -exec sed -i "s,GEOIPDIR=/usr/share/xt_geoip/LE,GEOIPDIR=/usr/share/xt_geoip,g" {} \;
+#PATCH-FIX-OPENSUSUSE for fillup
 pushd %{name}-init-%{version}
 %patch1 -p1
 popd
@@ -204,6 +207,9 @@ cp %{SOURCE8} %{name}-%{version}/.
 # so we dynamically patch last /sbin calls in lib.cli-std
 # and make shorewall remote working without hacks
 sed -i 's#/sbin/shorewall#%{_sbindir}/shorewall#g' %{name}-%{version}/lib.cli-std
+
+# On 20201108 Upstream decide to remove StandardOutput=syslog from service on future version
+find . -iname "*.service" -exec sed -i '/StandardOutput=syslog/d' {} \;
 
 %build
 
