@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 10 18:06:37 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.8.0
+  * no code changes, just some build system churn.
+- Fix build error with Python 3.8, add
+  0001-Fix-build-with-Python-3.8-and-no-undefined-linker-flags.patch
+
+-------------------------------------------------------------------
 Tue Sep 15 21:08:49 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 4.7.1

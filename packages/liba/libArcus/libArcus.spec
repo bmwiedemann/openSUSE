@@ -18,15 +18,18 @@
 
 %define sover 3
 Name:           libArcus
-Version:        4.7.1
+%define sversion        4.8
+Version:        4.8.0
 Release:        0
 Summary:        3D printer control software
 License:        LGPL-3.0-only
 Group:          Development/Libraries/C and C++
-URL:            http://github.com/Ultimaker/%name
-Source:         https://github.com/Ultimaker/libArcus/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/Ultimaker/%name
+Source:         https://github.com/Ultimaker/libArcus/archive/%{sversion}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE - use Qt5 sip import name, taken from Fedora
 Patch0:         libArcus-3.5.1-PyQt5.sip.patch
+# PATCH-FIX-UPSTREAM - https://github.com/Ultimaker/libArcus/pull/113
+Patch1:         0001-Fix-build-with-Python-3.8-and-no-undefined-linker-flags.patch
 BuildRequires:  cmake >= 3.6
 BuildRequires:  gcc-c++
 BuildRequires:  protobuf-devel >= 3.0.0
@@ -54,8 +57,9 @@ The %{name}-devel package includes the header files, libraries and development
 tools necessary for compiling and linking programs which use %{name}.
 
 %prep
-%setup
+%setup -n %{name}-%{sversion}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %cmake
