@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  5 16:12:48 UTC 2020 - Joachim Gleissner <jgleissner@suse.com>
+
+- Update to version 1.5:
+  + Add support for GCE (bsc#1159460, bsc#1178486)
+  + Improve default gateway determination
+
+-------------------------------------------------------------------
 Tue Feb  4 17:31:29 UTC 2020 - Joachim Gleissner <jgleissner@suse.com>
 
 - Update to version 1.4:
