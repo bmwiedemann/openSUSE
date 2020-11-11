@@ -26,6 +26,7 @@ Summary:        A Family of IBM 3270 Terminal Emulators
 License:        MIT
 Group:          System/X11/Terminals
 URL:            http://x3270.bgp.nu
+#Git-Clone:     https://github.com/pmattes/x3270
 Source0:        http://download.sourceforge.net/%{name}/%{_fullname}-src.tgz
 Source1:        http://download.sourceforge.net/%{name}/x026-%{_x026ver}.tgz
 Source2:        x3270.desktop
@@ -35,6 +36,7 @@ Patch102:       x026-offset.diff
 Patch105:       x3270-missing-include.patch
 Patch106:       x3270-missing-file.patch
 Patch108:       mkversion.patch
+Patch109:       reproducible.patch
 BuildRequires:  bdftopcf
 BuildRequires:  fdupes
 BuildRequires:  fontpackages-devel
@@ -108,6 +110,7 @@ x026 is a fun toy which emulates an x026 puncher.
 for d in x3270 c3270 s3270 tcl3270 pr3287 ; do
 (cd $d
 %patch108 -p2
+%patch109 -p2
 )
 done
 
