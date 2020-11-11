@@ -17,26 +17,26 @@
 
 
 %define _group games
-%define _user  mednafen
-%define _home  %{_localstatedir}/lib/%{_user}
+%define _user mednafen
+%define _home %{_localstatedir}/lib/%{_user}
 Name:           %{_user}-server
 Version:        0.5.2
 Release:        0
 Summary:        Mednafen network play server
 License:        GPL-2.0-only
-Group:          System/Emulators/Other
 URL:            https://mednafen.github.io
 Source0:        https://mednafen.github.io/releases/files/%{name}-%{version}.tar.xz
 Source1:        %{_user}.service
 Source2:        %{_user}.firewalld
 BuildRequires:  gcc-c++
+Requires(pre):  group(games)
 Requires(pre):  shadow
 
 %description
 Network play server for mednafen
 
 %prep
-%setup -q -n %{name}
+%autosetup -p1 -n %{name}
 
 %build
 %configure
@@ -46,12 +46,11 @@ Network play server for mednafen
 %make_install
 mkdir -p %{buildroot}%{_sbindir}
 ln -fs %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{_user}
-install -Dm644 %{SOURCE1} %{buildroot}%{_unitdir}/%{_user}.service
-install -Dm664 standard.conf %{buildroot}%{_home}/%{name}.conf
-install -Dm644 %{SOURCE2} %{buildroot}%{_prefix}/lib/firewalld/services/%{_user}.xml
+install -Dpm0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{_user}.service
+install -Dpm0664 standard.conf %{buildroot}%{_home}/%{name}.conf
+install -Dpm0644 %{SOURCE2} %{buildroot}%{_prefix}/lib/firewalld/services/%{_user}.xml
 
 %pre
-getent group %{_group} >/dev/null 2>/dev/null || %{_sbindir}/groupadd -r %{_group}
 getent passwd %{_user} >/dev/null 2>/dev/null || %{_sbindir}/useradd -rc 'User for for multiple video game console emulator server' -s /bin/false -d %{_home} -g %{_group} %{_user}
 %service_add_pre %{_user}.service
 

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 11 09:00:04 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Refresh spec-file via spec-cleaner and manual optimizations.
+  * Add Requires(pre):group(games).
+  * Remove Group tag.
+
+-------------------------------------------------------------------
 Wed Aug 19 09:15:27 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
