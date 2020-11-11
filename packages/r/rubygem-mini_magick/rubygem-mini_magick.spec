@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-mini_magick
-Version:        4.10.1
+Version:        4.11.0
 Release:        0
 %define mod_name mini_magick
 %define mod_full_name %{mod_name}-%{version}
