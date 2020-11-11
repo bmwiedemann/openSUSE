@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov 04 09:03:48 UTC 2020 - jslaby@suse.cz
+
+- Update to version 2.2.1+20200902:
+  * Fixing exported definitions
+  * Adding uninstall capability
+  * Revert "CMakeLists: support different lib dirs"
+  * Removing second STATICCOMPILE
+  * CMakeLists: support different lib dirs
+  * Updating to fix build
+  * Export minisat project for other cmake builds
+  * Fixing static vs. dynamic compile
+  * Quell some clang warnings
+- switch to obs_scm
+- drop 0001-CMakeLists-make-static-lib-optional.patch (in upstream)
+
+-------------------------------------------------------------------
 Mon Nov 04 08:39:23 UTC 2019 - jslaby@suse.com
 
 - Update to version 2.2.1+20180702:

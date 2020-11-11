@@ -1,7 +1,7 @@
 #
 # spec file for package minisat
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           minisat
-Url:            http://minisat.se/MiniSat.html
-Version:        2.2.1+20180702
+URL:            http://minisat.se/MiniSat.html
+Version:        2.2.1+20200902
 Release:        0
 Summary:        SAT solver
 License:        MIT
 Group:          Development/Tools/Other
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         0001-CMakeLists-support-different-lib-dirs.patch
-Patch1:         0001-CMakeLists-make-static-lib-optional.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -68,7 +67,7 @@ Headers and libraries for the minisat package.
 
 %build
 %define __builder ninja
-%cmake -DSTATIC_BINARIES=OFF
+%cmake -DMINISAT_INSTALL_CMAKE_DIR=%{_libdir}/cmake/%{name}
 %make_jobs
 
 %install
@@ -78,18 +77,17 @@ Headers and libraries for the minisat package.
 %postun -n libminisat2 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc LICENSE README
+%doc README
+%license LICENSE
 %{_bindir}/%{name}
 %{_bindir}/%{name}_core
 
 %files -n libminisat2
-%defattr(-,root,root)
 %{_libdir}/lib%{name}.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/%{name}/
+%{_libdir}/cmake/%{name}
 %{_libdir}/lib%{name}.so
 
 %changelog
