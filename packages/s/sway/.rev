@@ -405,4 +405,13 @@ changes since last time:
     command, and can be used with WayVNC</comment>
     <requestid>821250</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>e86bd1b7506843ede2d305548d9aa5c3</srcmd5>
+    <version>1.5.1</version>
+    <time>1605123998</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.1:
+  * This is a bugfix release which adds support for wlroots 0.12.0.</comment>
+    <requestid>847691</requestid>
+  </revision>
 </revisionlist>
