@@ -84,6 +84,23 @@ package or when debugging this package.\
 %defattr(-,root,root)\
 %{nil}
 
+#
+# create shell wrapper for associated rpm macro
+#
+# The shell wrapper makes a macro defined in a mingw64 macro file
+# (e.g. /etc/rpm/macros.mingw64) accessible to a shell for example
+# the rpm macro '%_mingw64_gdb' is available on a shell as executable file
+# 'mingw64-gdb'
+#
+%_mingw64_create_macro_links() \
+  mkdir -p %{buildroot}%{_bindir}; \
+  pushd %{buildroot}%{_bindir}; \
+  for i in %*; do \
+    ln -s %{_libexecdir}/mingw64-scripts $i; \
+  done; \
+  popd \
+  %{nil}
+
 %_mingw64_env HOST_CC=gcc; export HOST_CC; \
   PKG_CONFIG_PATH="%{_mingw64_libdir}/pkgconfig:%{_mingw64_datadir}/pkgconfig"; export PKG_CONFIG_PATH; \
   CLASSPATH="$CLASSPATH:${MINGW64_CLASSPATH:-%_mingw64_classpath}"; export CLASSPATH; \
@@ -184,3 +201,7 @@ package or when debugging this package.\
 
 # deprecated, use _mingw64_make_install (unix variant is named %make_install)
 %_mingw64_makeinstall %_mingw64_make_install
+
+# requires installed packaged wine and mingw64-gdb
+%_mingw64_gdb %{_mingw64_env} ; \
+  wineconsole %{_mingw64_bindir}/gdb.exe
