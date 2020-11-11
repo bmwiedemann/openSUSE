@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 11 08:54:29 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.2.8
+
+  * Added support for handling "slim" format zoneinfo files that are produced by
+    default by zic version 2020b and later. The POSIX-style TZ string is now used
+    calculate DST transition times after the final defined transition in the file.
+    The 64-bit section is now always used regardless of whether Time has support
+    for 64-bit times. #120.
+  * Rubinius is no longer supported.
+
+-------------------------------------------------------------------
 Mon Apr 27 11:42:20 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.2.7
