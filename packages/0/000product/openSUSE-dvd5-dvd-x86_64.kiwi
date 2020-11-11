@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20201109" schemaversion="4.1">
+<image name="OBS__openSUSE___20201110" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20201109</productvar>
+      <productvar name="VERSION">20201110</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20201109,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20201110,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20201109/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20201110/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -905,7 +905,7 @@
       <repopackage name="gtksourceview-lang"/>
       <repopackage name="gtksourceview4-lang"/>
       <repopackage name="gtkspell-lang"/>
-      <repopackage name="gtkspell3-lang" arch="x86_64"/>
+      <repopackage name="gtkspell3-lang"/>
       <repopackage name="gucharmap" arch="x86_64"/>
       <repopackage name="gucharmap-lang" arch="x86_64"/>
       <repopackage name="guestfs-data" arch="x86_64"/>
@@ -1003,10 +1003,10 @@
       <repopackage name="info"/>
       <repopackage name="info-std"/>
       <repopackage name="initviocons"/>
-      <repopackage name="inkscape" arch="x86_64"/>
-      <repopackage name="inkscape-extensions-extra" arch="x86_64"/>
-      <repopackage name="inkscape-extensions-gimp" arch="x86_64"/>
-      <repopackage name="inkscape-lang" arch="x86_64"/>
+      <repopackage name="inkscape"/>
+      <repopackage name="inkscape-extensions-extra"/>
+      <repopackage name="inkscape-extensions-gimp"/>
+      <repopackage name="inkscape-lang"/>
       <repopackage name="inn"/>
       <repopackage name="inotify-tools"/>
       <repopackage name="insserv-compat"/>
@@ -1493,6 +1493,7 @@
       <repopackage name="libbase"/>
       <repopackage name="libbasicobjects0"/>
       <repopackage name="libBasicUsageEnvironment1"/>
+      <repopackage name="libbcg729-0"/>
       <repopackage name="libbd_btrfs2" arch="x86_64"/>
       <repopackage name="libbd_crypto2" arch="x86_64"/>
       <repopackage name="libbd_fs2" arch="x86_64"/>
@@ -1953,7 +1954,7 @@
       <repopackage name="libgtksourceview-4-0"/>
       <repopackage name="libgtksourceviewmm-3_0-0"/>
       <repopackage name="libgtkspell0"/>
-      <repopackage name="libgtkspell3-3-0" arch="x86_64"/>
+      <repopackage name="libgtkspell3-3-0"/>
       <repopackage name="libgtop-2_0-11"/>
       <repopackage name="libgtop-lang"/>
       <repopackage name="libgts-0_7-5"/>
@@ -1980,6 +1981,7 @@
       <repopackage name="libharfbuzz0"/>
       <repopackage name="libharfbuzz0-32bit" arch="x86_64"/>
       <repopackage name="libhavege2"/>
+      <repopackage name="libheif1"/>
       <repopackage name="libhivex0" arch="x86_64"/>
       <repopackage name="libhogweed6"/>
       <repopackage name="libhogweed6-32bit" arch="x86_64"/>
@@ -2536,7 +2538,7 @@
       <repopackage name="libportal0" arch="x86_64"/>
       <repopackage name="libportaudio2"/>
       <repopackage name="libpostproc55_7"/>
-      <repopackage name="libpotrace0" arch="x86_64"/>
+      <repopackage name="libpotrace0"/>
       <repopackage name="libpq5"/>
       <repopackage name="libpresage1"/>
       <repopackage name="libprocps8"/>
@@ -3013,8 +3015,8 @@
       <repopackage name="libwebpmux3"/>
       <repopackage name="libwebrtc_audio_processing1"/>
       <repopackage name="libwinpr2"/>
-      <repopackage name="libwireshark13"/>
-      <repopackage name="libwiretap10"/>
+      <repopackage name="libwireshark14"/>
+      <repopackage name="libwiretap11"/>
       <repopackage name="libwmf-0_2-7"/>
       <repopackage name="libwmf-tools"/>
       <repopackage name="libwnck-3-0"/>
@@ -3027,7 +3029,7 @@
       <repopackage name="libwpg-0_3-3"/>
       <repopackage name="libwps-0_4-4"/>
       <repopackage name="libwrap0"/>
-      <repopackage name="libwsutil11"/>
+      <repopackage name="libwsutil12"/>
       <repopackage name="libwx_baseu-suse-nostl4_0_0" arch="x86_64"/>
       <repopackage name="libwx_baseu_net-suse-nostl4_0_0" arch="x86_64"/>
       <repopackage name="libwx_baseu_xml-suse-nostl4_0_0" arch="x86_64"/>
@@ -3971,7 +3973,7 @@
       <repopackage name="python3-contextvars"/>
       <repopackage name="python3-createrepo_c" arch="x86_64"/>
       <repopackage name="python3-cryptography"/>
-      <repopackage name="python3-cssselect" arch="x86_64"/>
+      <repopackage name="python3-cssselect"/>
       <repopackage name="python3-cupshelpers"/>
       <repopackage name="python3-Cycler"/>
       <repopackage name="python3-dbus-python"/>
@@ -4024,7 +4026,7 @@
       <repopackage name="python3-libxml2"/>
       <repopackage name="python3-linux-procfs" arch="x86_64"/>
       <repopackage name="python3-louis" arch="x86_64"/>
-      <repopackage name="python3-lxml" arch="x86_64"/>
+      <repopackage name="python3-lxml"/>
       <repopackage name="python3-M2Crypto"/>
       <repopackage name="python3-mailman"/>
       <repopackage name="python3-Mako"/>
@@ -4096,7 +4098,7 @@
       <repopackage name="python3-rpm"/>
       <repopackage name="python3-salt"/>
       <repopackage name="python3-scipy" arch="x86_64"/>
-      <repopackage name="python3-scour" arch="x86_64"/>
+      <repopackage name="python3-scour"/>
       <repopackage name="python3-scrypt"/>
       <repopackage name="python3-selinux" arch="x86_64"/>
       <repopackage name="python3-semanage" arch="x86_64"/>
