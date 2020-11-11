@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Sep 28 09:22:00 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.0:
+  + Fix occasional crash when closing.
+  + Note rename optimisation.
+  + Fix autolinking when renaming note with no links to it.
+  + Fix logic inversion for unfiled notes.
+  + Fix invalid Mallard markup in manual.
+  + Allow selecting local sync folder directly in drop down.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep  5 14:34:35 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.0:
+  + New Features:
+    - Use $XDG_CURRENT_DESKTOP for client side decoration.
+    - Minor synchronization performance improvements.
+  + Fixes:
+    - Fix crash in case of exception when creating manifest during
+      synchronization.
+    - Fix synchronization lock file expiration.
+    - Make tests cleanup created temp files.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Sep  2 02:36:36 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add gnote-enabling-addin-for-opened-notes.patch: noteaddin: Fix

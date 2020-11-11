@@ -16,10 +16,10 @@
 #
 
 
-%define base_version 3.36
+%define base_version 3.38
 
 Name:           gnote
-Version:        3.36.2
+Version:        3.38.0
 Release:        0
 Summary:        A Port of Tomboy to C++
 License:        GPL-3.0-or-later
