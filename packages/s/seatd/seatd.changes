@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Wed Nov 11 08:46:35 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Change _service file to use correct version number and not
+  git hash
+
+-------------------------------------------------------------------
+Mon Nov  9 09:41:22 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix doubleshipping of documentation. Better summaries.
+
+-------------------------------------------------------------------
+Mon Nov  9 09:07:00 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Initial package of seatsd/libseat 0.4.0 for openSUSE
