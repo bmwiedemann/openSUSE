@@ -60,6 +60,9 @@ and DBD::File for details on the base class DBD::File.
 %prep
 %setup -q -n %{cpan_name}-%{version}
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+# MANUAL BEGIN
+sed -i s/example/examples/ t/11_dsnlist.t
+# MANUAL END
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
