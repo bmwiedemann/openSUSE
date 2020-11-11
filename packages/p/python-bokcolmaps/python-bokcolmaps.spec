@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-bokcolmaps
-Version:        1.4.0
+Version:        2.0.1
 Release:        0
 Summary:        Colourmap plots based on the Bokeh visualisation library
 License:        MIT

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 10 14:41:50 UTC 2020 - Marketa Machova <mmachova@suse.com>
+
+- Update to 2.0.1
+  * Correction to ColourMap rectangle positions for specified x and y ranges
+  * Removed cached redundant modules in dist
+
+-------------------------------------------------------------------
 Wed Jul  8 10:17:21 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.4.0
