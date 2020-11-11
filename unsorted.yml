@@ -1990,6 +1990,7 @@ unsorted:
   - cloud-init-vmware-guestinfo 
   - cloud-netconfig-azure 
   - cloud-netconfig-ec2 
+  - cloud-netconfig-gce 
   - clpeak 
   - clthreads-devel 
   - clucene-core-devel 
@@ -6590,6 +6591,8 @@ unsorted:
   - httrack-devel 
   - hub 
   - hugin 
+  - hugo 
+  - hugo-bash-completion 
   - humanity-icon-theme 
   - hunspell-devel 
   - hunspell-devel-32bit: [x86_64] 
@@ -13531,6 +13534,7 @@ unsorted:
   - libseafile0 
   - libsearpc-devel 
   - libsearpc1 
+  - libseat1 
   - libseccomp-devel 
   - libseccomp-tools 
   - libseccomp2-32bit: [x86_64] 
@@ -14377,7 +14381,7 @@ unsorted:
   - libwiiuse0 
   - libwim15 
   - libwkhtmltox0 
-  - libwlroots6 
+  - libwlroots7 
   - libwmf-0_2-7-32bit: [x86_64] 
   - libwmf-devel 
   - libwmf-gnome 
@@ -20239,6 +20243,7 @@ unsorted:
   - plymouth-theme-breeze 
   - plymouth-theme-breeze-plugin-breeze 
   - plymouth-theme-fade-in 
+  - plymouth-theme-opensuse-beat 
   - plymouth-theme-script 
   - plymouth-theme-solar 
   - plymouth-theme-spinfinity 
@@ -25670,6 +25675,8 @@ unsorted:
   - seahorse-nautilus-lang: [i586] 
   - seahorse-sharing: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - seahorse-sharing-lang: [i586] 
+  - seatd 
+  - seatd-devel 
   - seccheck 
   - secret-tool 
   - sedutil: [x86_64] 
