@@ -19,7 +19,7 @@
 %global pkg_name time-compat
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.9.3
+Version:        1.9.4
 Release:        0
 Summary:        Compatibility package for time
 License:        BSD-3-Clause

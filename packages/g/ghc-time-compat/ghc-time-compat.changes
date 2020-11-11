@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov  2 03:03:08 UTC 2020 - psimons@suse.com
+
+- Update time-compat to version 1.9.4.
+  # 1.9.4
+
+  - Support `time-1.11`
+    - `Data.Time.Calendar.Month`
+    - `Data.Time.Calendar.Quarter`
+    - Pattern synonyms
+    - `parseTimeMultipleM` is not backported
+    - `Month` is missing `ParseTime` instance
+    - Compat extras:
+      - Add `Ix`, `Enum`, `NFData` instances to `Month`, `Quarter`, `QuarterOfYear`,
+        `CalendarDiffTime` and `DayOfWeek`.
+
+-------------------------------------------------------------------
 Tue Aug 18 10:46:17 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.
