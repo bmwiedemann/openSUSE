@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov  9 10:35:03 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop pkgconfig(systemd) BuildRequires: there is no reason to pull
+  in systemd into the build.
+- Use %tmpfiles_create instead of calling systemd-tmpfiles
+  directly.
+- Replace systemd_requires with systemd_ordering: tmux is very well
+  capable to run without systemd (and by using tmpfiles_create, the
+  post script can also cope with the absence of if).
+
+-------------------------------------------------------------------
 Sat Oct 31 10:41:19 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix build for SLE 12 PackageHub

@@ -30,8 +30,7 @@ Patch0:         tmux-socket-path.patch
 BuildRequires:  pkgconfig
 BuildRequires:  utempter-devel
 BuildRequires:  pkgconfig(libevent) >= 2.0
-BuildRequires:  pkgconfig(systemd)
-%{?systemd_requires}
+%{?systemd_ordering}
 %if 0%{?suse_version} >= 1320
 BuildRequires:  pkgconfig(ncurses)
 %else
@@ -74,7 +73,7 @@ install -d -m 0755 %{buildroot}%{_tmpfilesdir}
 echo "d /run/tmux 1777 root root -" > %{buildroot}%{_tmpfilesdir}/tmux.conf
 
 %post
-systemd-tmpfiles --create %{_tmpfilesdir}/%{name}.conf || true
+%tmpfiles_create %{_tmpfilesdir}/%{name}.conf
 
 %files
 %license COPYING
