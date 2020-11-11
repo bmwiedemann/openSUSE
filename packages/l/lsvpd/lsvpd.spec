@@ -17,16 +17,17 @@
 
 
 Name:           lsvpd
-Version:        1.7.10
+Version:        1.7.11
 Release:        0
 Summary:        VPD Hardware Inventory Utilities for Linux
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-URL:            http://sourceforge.net/projects/linux-diag/
-Source0:        http://sourceforge.net/projects/linux-diag/files/lsvpd-new/%{version}/%{name}-%{version}.tar.gz
-Patch0:         bsc1163284-Add_version_and_debug_options_to_man_page.patch
+URL:            https://github.com/power-ras/lsvpd
+Source0:        https://github.com/power-ras/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  librtas-devel
+BuildRequires:  libtool
 BuildRequires:  libvpd2-devel
 BuildRequires:  sg3_utils-devel
 BuildRequires:  zlib-devel
@@ -47,11 +48,11 @@ levels.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 export CFLAGS="%{optflags} -UPCI_IDS -DPCI_IDS='\"%{_datadir}/pci.ids\"' -UUSB_IDS -DUSB_IDS='\"%{_datadir}/usb.ids\"'"
 export CXXFLAGS="%{optflags} -UPCI_IDS -DPCI_IDS='\"%{_datadir}/pci.ids\"' -UUSB_IDS -DUSB_IDS='\"%{_datadir}/usb.ids\"'"
+sh bootstrap.sh
 %configure
 make %{?_smp_mflags}
 chmod 644 README* COPYING NEWS
@@ -82,7 +83,8 @@ exit 0
 
 %files
 %defattr(-,root,root)
-%doc README COPYING NEWS
+%license COPYING
+%doc README NEWS
 %dir %{_sysconfdir}/lsvpd
 %attr (644,root,root) %config %{_sysconfdir}/lsvpd/*
 /sbin/*

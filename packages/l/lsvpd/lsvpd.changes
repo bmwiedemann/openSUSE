@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov  5 11:14:16 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to upstream version 1.7.11 (jsc#SLE-12938).
+    * lsvpd: Dont byteswap the CD field in Description
+    * nvme: Update config file with f1h Logpage version 0002
+    * lsvpd: Add version and debug options to man page
+  - Drop upstreamed patch bsc1163284-Add_version_and_debug_options_to_man_page.patch
+  - Update project URL
+
+-------------------------------------------------------------------
 Wed May  6 08:31:23 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
 
 - Added "Recommends: hwdata" to prevent "usb.ids file not found"
