@@ -12,7 +12,6 @@ preamble: |-
  BuildRequires:  libjpeg-devel
  BuildRequires:  libpng-devel
  BuildRequires:  libtiff-devel
- BuildRequires:  libvpx-devel
  BuildRequires:  xorg-x11-devel
  Requires: gd
 #post_prep: |-

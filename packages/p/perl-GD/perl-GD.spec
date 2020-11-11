@@ -49,7 +49,6 @@ BuildRequires:  gd-devel >= 2.0.28
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
-BuildRequires:  libvpx-devel
 BuildRequires:  xorg-x11-devel
 Requires:       gd
 # MANUAL END

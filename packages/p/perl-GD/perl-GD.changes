@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 10 15:20:36 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Remove not needed build requirement libvpx-devel [bsc#1173279]
+
+-------------------------------------------------------------------
 Fri Sep 25 03:07:35 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.73
