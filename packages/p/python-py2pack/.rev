@@ -514,4 +514,12 @@
   * update copyright header</comment>
     <requestid>847493</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>65ef5e0e4468e2997c5880d3ae3b3cfa</srcmd5>
+    <version>0.8.6</version>
+    <time>1605124031</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.6 (bsc#1178103):</comment>
+    <requestid>847793</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Tue Nov 10 13:04:27 UTC 2020 - Thomas Bechtold <tbechtold@suse.com>
 
-- update to 0.8.6:
+- update to 0.8.6 (bsc#1178103):
   * Fix test/exampes/py2pack-opensuse.dsc
   * enhance test\_template with augmented opensuse and update examples to 0.8.5
   * cleanup script basename filter
