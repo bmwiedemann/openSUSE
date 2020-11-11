@@ -165,4 +165,12 @@ Fix build on i586.</comment>
     <comment></comment>
     <requestid>800844</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>98d0bfb877536d9e58e798b155de85d3</srcmd5>
+    <version>1.26.1</version>
+    <time>1605124072</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847743</requestid>
+  </revision>
 </revisionlist>

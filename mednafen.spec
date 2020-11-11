@@ -17,7 +17,7 @@
 
 
 Name:           mednafen
-Version:        1.24.3
+Version:        1.26.1
 Release:        0
 Summary:        Multiple video game console emulator
 License:        GPL-2.0-only
@@ -61,7 +61,7 @@ This package contains optional documentation provided in addition to this packag
 %lang_package
 
 %prep
-%setup -q -n %{name}
+%autosetup -p1 -n %{name}
 
 %build
 %configure
