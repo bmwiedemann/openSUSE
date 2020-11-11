@@ -280,7 +280,7 @@ Wed Apr 15 06:23:16 UTC 2020 - glin@suse.com
   * ccgx: Create devices when in HID and I2C modes
   * Add a new ChromeOS CI target to build without GPG and PKCS7
   * Use Jcat files in firmware archives and for metadata
-    - Removed fu-keyring-gpg which caused CVE-2020-10759
+    - Removed fu-keyring-gpg which caused CVE-2020-10759 (boo#1172643)
   * csr: Allow truncated HID reads
   * vli: Only consider the high nibble when building the sub-version
   * csr: Parse the firmware as a DFU file
@@ -1730,7 +1730,7 @@ Wed Jul 25 09:23:22 UTC 2018 - tchvatal@suse.com
 -------------------------------------------------------------------
 Thu Jul 12 09:19:58 UTC 2018 - oliver@getspam.de
 
-- Update to version 1.1.0:
+- Update to version 1.1.0: (FATE#326702)
   + New Features:
     - Add a initial Redfish support
     - Add a tool to mimic the original fwupdate CLI interface
