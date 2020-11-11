@@ -1415,4 +1415,19 @@ sr#761596 needed for this.</comment>
     <comment></comment>
     <requestid>822844</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>cf7e7524ace9ea2a34fa293f7557c7ce</srcmd5>
+    <version>0.171.0</version>
+    <time>1605123987</time>
+    <user>dimstar_suse</user>
+    <comment>- 0.171.1
+  * maintainer search: lookup via package name by default and binary as fallback 
+  * fix crash on console resize when downloading files during build 
+  * add proper repourls to osc reporuls 
+  * new command osc releaserequest: This command is used to transfer sources and  
+    binaries without rebuilding them. 
+    It requires defined release targets set to trigger=&quot;manual&quot;. 
+  * some improvements on output of help and error messages</comment>
+    <requestid>847545</requestid>
+  </revision>
 </revisionlist>

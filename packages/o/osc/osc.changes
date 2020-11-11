@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 10 13:42:55 UTC 2020 - Marco Strigl <marco.strigl@suse.com>
+
+- 0.171.1
+  * maintainer search: lookup via package name by default and binary as fallback 
+  * fix crash on console resize when downloading files during build 
+  * add proper repourls to osc reporuls 
+  * new command osc releaserequest: This command is used to transfer sources and  
+    binaries without rebuilding them. 
+    It requires defined release targets set to trigger="manual". 
+  * some improvements on output of help and error messages 
+
+-------------------------------------------------------------------
 Thu Jul  9 08:06:35 UTC 2020 - Marco Strigl <marco.strigl@suse.com>
 
 - 0.170.0
