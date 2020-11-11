@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 19 13:00:22 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- use %_firmwaredir
+
+-------------------------------------------------------------------
 Mon Feb  3 15:49:47 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

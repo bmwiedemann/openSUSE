@@ -43,6 +43,7 @@ install -d %{buildroot}%{_prefix}/lib/systemd/system/
 install -p -m 644 %{SOURCE0} %{buildroot}%{_prefix}/lib/systemd/system/
 install -d %{buildroot}%{_sbindir}/
 install -p -m 755 %{SOURCE1} %{buildroot}%{_sbindir}/
+sed -i -e 's,/lib/firmware,%{_firmwaredir},' %{buildroot}%{_sbindir}/install_bcm43xx_firmware_wrapper
 
 %post
 if lspci -nn|grep -q -i broadcom ; then
