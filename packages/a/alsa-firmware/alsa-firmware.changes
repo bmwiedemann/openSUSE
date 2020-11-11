@@ -7,6 +7,11 @@ Wed Oct 21 13:04:20 CEST 2020 - tiwai@suse.de
     https://alsa-project.org/wiki/Changes_v1.2.3.2_v1.2.4
 
 -------------------------------------------------------------------
+Mon Oct 19 12:49:11 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- use %_firmwaredir
+
+-------------------------------------------------------------------
 Tue Jan 14 14:46:03 CET 2020 - tiwai@suse.de
 
 - Comment out superfluous buildreq automake

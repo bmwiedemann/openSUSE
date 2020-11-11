@@ -82,36 +82,36 @@ Various firmware data files for ALSA drivers.
 %configure \
     --enable-loader \
     --enable-hotplug \
-    --with-hotplug-dir=/lib/firmware
+    --with-hotplug-dir=%{_firmwaredir}
 make %{?_smp_mflags}
 
 %install
 make DESTDIR="%{buildroot}" install
 # remove duplicated entries that are already in kernel-firmware package
-rm -f %{buildroot}/lib/firmware/ctefx.bin
-rm -f %{buildroot}/lib/firmware/ctspeq.bin
+rm -f %{buildroot}%{_firmwaredir}/ctefx.bin
+rm -f %{buildroot}%{_firmwaredir}/ctspeq.bin
 # remove unnecessary loader firmwares
 for d in vxloader mixartloader pcxhrloader; do
   rm -rf %{buildroot}%{_datadir}/alsa/firmware/$d
 done
 # some files are included in the new "kernel-firmware" package
 for d in ess korg sb16 yamaha; do
-  rm -rf %{buildroot}/lib/firmware/$d
+  rm -rf %{buildroot}%{_firmwaredir}/$d
 done
 # change identical files to symlinks for hdsploader
 pushd %{buildroot}%{_datadir}/alsa/firmware/hdsploader
 for i in *.bin; do
-  hotplug=%{buildroot}/lib/firmware/$i
+  hotplug=%{buildroot}%{_firmwaredir}/$i
   if [ -f $hotplug ]; then
     if cmp -s -b $hotplug $i; then
       rm $i
-      ln -s /lib/firmware/$i
+      ln -s %{_firmwaredir}/$i
     fi
   fi
 done
 popd
 # FIXME: remove non-existing msnd firmware symlinks
-rm -rf %{buildroot}/lib/firmware/turtlebeach
+rm -rf %{buildroot}%{_firmwaredir}/turtlebeach
 # install documents
 mkdir -p %{buildroot}%{_docdir}/%{name}
 mkdir -p %{buildroot}%{_licensedir}/%{name}
@@ -143,7 +143,7 @@ install -D -c -m 0644 %{SOURCE1} %{buildroot}%{_udevdir}/rules.d/52-usx2yaudio.r
 %defattr(-, root, root)
 %doc %{_docdir}/%{name}
 %license %{_licensedir}/%{name}
-/lib/firmware/*
+%{_firmwaredir}/*
 %{_datadir}/alsa
 %{_udevdir}
 
