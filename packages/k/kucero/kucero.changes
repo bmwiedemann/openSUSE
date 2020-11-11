@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 10 01:51:50 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
+
+- Bump verison v1.4.0
+  * Removes kubectl command binary dependency.
+
+-------------------------------------------------------------------
 Tue Oct 13 08:16:35 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Combine redundant %setup calls.
