@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Nov 10 09:38:03 MST 2020 - carnold@suse.com
+
+- bsc#1178591 - VUL-0: xen: Intel RAPL sidechannel attack aka
+  PLATYPUS attack aka XSA-351
+  xsa351-1.patch
+  xsa351-2.patch
+  xsa351-3.patch
+
+-------------------------------------------------------------------
+Mon Nov  2 11:11:11 UTC 2020 - ohering@suse.de
+
+- bsc#1177950 - adjust help for --max_iters, default is 5
+  libxl.set-migration-constraints-from-cmdline.patch
+
+-------------------------------------------------------------------
+Fri Oct 30 11:11:11 UTC 2020 - ohering@suse.de
+
+- jsc#SLE-16899 - improve performance of live migration
+  remove allocations and memcpy from hotpaths on sending and
+  receiving side to get more throughput on 10Gbs+ connections
+  libxc-sr-3cccdae45242dab27198b8e150be0c85acd5d3c9.patch
+  libxc-sr-add-xc_is_known_page_type.patch
+  libxc-sr-arrays.patch
+  libxc-sr-batch_pfns.patch
+  libxc-sr-page_type_has_stream_data.patch
+  libxc-sr-readv_exact.patch
+  libxc-sr-restore-handle_buffered_page_data.patch
+  libxc-sr-restore-handle_incoming_page_data.patch
+  libxc-sr-restore-map_errs.patch
+  libxc-sr-restore-mfns.patch
+  libxc-sr-restore-pfns.patch
+  libxc-sr-restore-populate_pfns-mfns.patch
+  libxc-sr-restore-populate_pfns-pfns.patch
+  libxc-sr-restore-read_record.patch
+  libxc-sr-restore-types.patch
+  libxc-sr-save-errors.patch
+  libxc-sr-save-guest_data.patch
+  libxc-sr-save-iov.patch
+  libxc-sr-save-local_pages.patch
+  libxc-sr-save-mfns.patch
+  libxc-sr-save-rec_pfns.patch
+  libxc-sr-save-show_transfer_rate.patch
+  libxc-sr-save-types.patch
+  libxc-sr-use-xc_is_known_page_type.patch
+  adjust libxc.sr.superpage.patch
+  adjust libxc.migrate_tracking.patch
+
+-------------------------------------------------------------------
 Wed Oct 21 09:34:32 MDT 2020 - carnold@suse.com
 
 - Upstream bug fixes (bsc#1027519)

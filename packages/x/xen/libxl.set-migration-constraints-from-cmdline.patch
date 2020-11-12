@@ -12,7 +12,7 @@ a long time, which can confuse the guest if the time jump is too far.
 The new options allow to override the built-in default values, which are
 not changed by this patch.
 
---max_iters <number>  Number of iterations before final suspend (default: 30)
+--max_iters <number>  Number of iterations before final suspend (default: 5)
 
 --max_factor <factor> Max amount of memory to transfer before final suspend (default: 3*RAM)
 
@@ -99,7 +99,7 @@ Index: xen-4.14.0-testing/docs/man/xl.1.pod.in
  
 +=item B<--max_iters> I<number>
 +
-+Number of iterations before final suspend (default: 30)
++Number of iterations before final suspend (default: 5)
 +
 +=item B<--max_factor> I<factor>
 +
@@ -176,7 +176,7 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_save.c
 ===================================================================
 --- xen-4.14.0-testing.orig/tools/libxc/xc_sr_save.c
 +++ xen-4.14.0-testing/tools/libxc/xc_sr_save.c
-@@ -533,6 +533,11 @@ static int send_memory_live(struct xc_sr
+@@ -537,6 +537,11 @@ static int send_memory_live(struct xc_sr
          policy_decision = precopy_policy(*policy_stats, data);
          x++;
  
@@ -188,7 +188,7 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_save.c
          if ( stats.dirty_count > 0 && policy_decision != XGS_POLICY_ABORT )
          {
              rc = update_progress_string(ctx, &progress_str);
-@@ -553,6 +558,11 @@ static int send_memory_live(struct xc_sr
+@@ -557,6 +562,11 @@ static int send_memory_live(struct xc_sr
  
          policy_decision = precopy_policy(*policy_stats, data);
  
@@ -200,7 +200,7 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_save.c
          if ( policy_decision != XGS_POLICY_CONTINUE_PRECOPY )
              break;
  
-@@ -984,9 +994,71 @@ static int save(struct xc_sr_context *ct
+@@ -992,9 +1002,71 @@ static int save(struct xc_sr_context *ct
      return rc;
  };
  
@@ -275,7 +275,7 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_save.c
  {
      struct xc_sr_context ctx = {
          .xch = xch,
-@@ -1000,6 +1072,19 @@ int xc_domain_save(xc_interface *xch, in
+@@ -1008,6 +1080,19 @@ int xc_domain_save(xc_interface *xch, in
      ctx.save.debug = !!(flags & XCFLAGS_DEBUG);
      ctx.save.recv_fd = recv_fd;
  
@@ -478,7 +478,7 @@ Index: xen-4.14.0-testing/tools/xl/xl_cmdtable.c
 +      "-D                      Preserve the domain id"
 +      "\n"
 +      "SUSE Linux specific options:\n"
-+      "--max_iters <number>    Number of iterations before final suspend (default: 30)\n"
++      "--max_iters <number>    Number of iterations before final suspend (default: 5)\n"
 +      "--max_factor <factor>   Max amount of memory to transfer before final suspend (default: 3*RAM).\n"
 +      "--min_remaining <pages> Number of remaining dirty pages before final suspend (default: 50).\n"
 +      "--abort_if_busy         Abort migration instead of doing final suspend, if number\n"

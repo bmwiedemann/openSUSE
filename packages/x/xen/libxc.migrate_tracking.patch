@@ -69,7 +69,7 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_common.c
 ===================================================================
 --- xen-4.14.0-testing.orig/tools/libxc/xc_sr_common.c
 +++ xen-4.14.0-testing/tools/libxc/xc_sr_common.c
-@@ -197,6 +197,65 @@ bool _xc_sr_bitmap_resize(struct xc_sr_b
+@@ -204,6 +204,65 @@ bool _xc_sr_bitmap_resize(struct xc_sr_b
      return true;
  }
  
@@ -139,7 +139,7 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_common.h
 ===================================================================
 --- xen-4.14.0-testing.orig/tools/libxc/xc_sr_common.h
 +++ xen-4.14.0-testing/tools/libxc/xc_sr_common.h
-@@ -238,6 +238,7 @@ struct xc_sr_context
+@@ -268,6 +268,7 @@ struct xc_sr_context
      xc_stream_type_t stream_type;
  
      xc_dominfo_t dominfo;
@@ -147,7 +147,7 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_common.h
  
      union /* Common save or restore data. */
      {
-@@ -483,6 +484,8 @@ static inline int pfn_set_populated(stru
+@@ -526,6 +527,8 @@ static inline int pfn_set_populated(stru
      return 0;
  }
  
@@ -160,15 +160,15 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_restore.c
 ===================================================================
 --- xen-4.14.0-testing.orig/tools/libxc/xc_sr_restore.c
 +++ xen-4.14.0-testing/tools/libxc/xc_sr_restore.c
-@@ -670,6 +670,7 @@ static int restore(struct xc_sr_context
-     struct xc_sr_record rec;
+@@ -875,6 +875,7 @@ static int restore(struct xc_sr_context
+     struct xc_sr_rhdr rhdr;
      int rc, saved_rc = 0, saved_errno = 0;
  
 +    SUSEINFO("domid %u: %s %s start", ctx->domid, ctx->uuid, __func__);
      IPRINTF("Restoring domain");
  
      rc = setup(ctx);
-@@ -745,6 +746,7 @@ static int restore(struct xc_sr_context
+@@ -950,6 +951,7 @@ static int restore(struct xc_sr_context
      PERROR("Restore failed");
  
   done:
@@ -176,7 +176,7 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_restore.c
      cleanup(ctx);
  
      if ( saved_rc )
-@@ -814,6 +816,7 @@ int xc_domain_restore(xc_interface *xch,
+@@ -1019,6 +1021,7 @@ int xc_domain_restore(xc_interface *xch,
              io_fd, dom, ctx.dominfo.hvm, stream_type);
  
      ctx.domid = dom;
@@ -188,7 +188,16 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_save.c
 ===================================================================
 --- xen-4.14.0-testing.orig/tools/libxc/xc_sr_save.c
 +++ xen-4.14.0-testing/tools/libxc/xc_sr_save.c
-@@ -863,6 +863,7 @@ static int save(struct xc_sr_context *ct
+@@ -354,7 +354,7 @@ static void show_transfer_rate(struct xc
+     MiB_sec /= 1024U*1024U;
+ 
+     errno = 0;
+-    ERROR("%s: %zu bytes + %zu pages in %ld.%09ld sec, %zu MiB/sec", __func__,
++    SUSEINFO("domid %u: %zu bytes + %zu pages in %ld.%09ld sec, %zu MiB/sec", ctx->domid,
+           ctx->save.overhead_sent, ctx->save.pages_sent, diff.tv_sec, diff.tv_nsec, MiB_sec);
+ }
+ 
+@@ -871,6 +871,7 @@ static int save(struct xc_sr_context *ct
      xc_interface *xch = ctx->xch;
      int rc, saved_rc = 0, saved_errno = 0;
  
@@ -196,7 +205,7 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_save.c
      IPRINTF("Saving domain %d, type %s",
              ctx->domid, dhdr_type_to_str(guest_type));
  
-@@ -983,6 +984,7 @@ static int save(struct xc_sr_context *ct
+@@ -991,6 +992,7 @@ static int save(struct xc_sr_context *ct
      PERROR("Save failed");
  
   done:
@@ -204,7 +213,7 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_save.c
      cleanup(ctx);
  
      if ( saved_rc )
-@@ -1038,6 +1040,10 @@ static int suse_precopy_policy(struct pr
+@@ -1046,6 +1048,10 @@ static int suse_precopy_policy(struct pr
          goto out;
      }
      /* Keep going */
@@ -215,7 +224,7 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_save.c
      return XGS_POLICY_CONTINUE_PRECOPY;
  
  out:
-@@ -1051,6 +1057,8 @@ out:
+@@ -1059,6 +1065,8 @@ out:
          return XGS_POLICY_ABORT;
      }
  suspend:
@@ -224,7 +233,7 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_save.c
      return XGS_POLICY_STOP_AND_COPY;
  }
  
-@@ -1120,6 +1128,7 @@ int xc_domain_save_suse(xc_interface *xc
+@@ -1128,6 +1136,7 @@ int xc_domain_save_suse(xc_interface *xc
              io_fd, dom, flags, ctx.dominfo.hvm);
  
      ctx.domid = dom;

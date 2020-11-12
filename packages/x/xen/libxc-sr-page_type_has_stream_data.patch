@@ -1,0 +1,142 @@
+From: Olaf Hering <olaf@aepfle.de>
+Date: Wed, 28 Oct 2020 15:18:37 +0100
+Subject: libxc sr page_type_has_stream_data
+
+tools: unify type checking for data pfns in migration stream
+
+Introduce a helper which decides if a given pfn type has data
+for the migration stream.
+
+No change in behavior intended.
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+---
+ tools/libxc/xc_sr_common.h  | 17 +++++++++++++++++
+ tools/libxc/xc_sr_restore.c | 34 +++++-----------------------------
+ tools/libxc/xc_sr_save.c    | 14 ++------------
+ 3 files changed, 24 insertions(+), 41 deletions(-)
+
+--- xen-4.14.0-testing.orig/tools/libxc/xc_sr_common.h
++++ xen-4.14.0-testing/tools/libxc/xc_sr_common.h
+@@ -456,6 +456,23 @@ int populate_pfns(struct xc_sr_context *
+ /* Handle a STATIC_DATA_END record. */
+ int handle_static_data_end(struct xc_sr_context *ctx);
+ 
++static inline bool page_type_has_stream_data(uint32_t type)
++{
++    bool ret;
++
++    switch (type)
++    {
++    case XEN_DOMCTL_PFINFO_XTAB:
++    case XEN_DOMCTL_PFINFO_XALLOC:
++    case XEN_DOMCTL_PFINFO_BROKEN:
++        ret = false;
++        break;
++    default:
++        ret = true;
++        break;
++    }
++    return ret;
++}
+ #endif
+ /*
+  * Local variables:
+--- xen-4.14.0-testing.orig/tools/libxc/xc_sr_restore.c
++++ xen-4.14.0-testing/tools/libxc/xc_sr_restore.c
+@@ -152,9 +152,8 @@ int populate_pfns(struct xc_sr_context *
+ 
+     for ( i = 0; i < count; ++i )
+     {
+-        if ( (!types || (types &&
+-                         (types[i] != XEN_DOMCTL_PFINFO_XTAB &&
+-                          types[i] != XEN_DOMCTL_PFINFO_BROKEN))) &&
++        if ( (!types ||
++              (types && page_type_has_stream_data(types[i]) == true)) &&
+              !pfn_is_populated(ctx, original_pfns[i]) )
+         {
+             rc = pfn_set_populated(ctx, original_pfns[i]);
+@@ -233,25 +232,8 @@ static int process_page_data(struct xc_s
+     {
+         ctx->restore.ops.set_page_type(ctx, pfns[i], types[i]);
+ 
+-        switch ( types[i] )
+-        {
+-        case XEN_DOMCTL_PFINFO_NOTAB:
+-
+-        case XEN_DOMCTL_PFINFO_L1TAB:
+-        case XEN_DOMCTL_PFINFO_L1TAB | XEN_DOMCTL_PFINFO_LPINTAB:
+-
+-        case XEN_DOMCTL_PFINFO_L2TAB:
+-        case XEN_DOMCTL_PFINFO_L2TAB | XEN_DOMCTL_PFINFO_LPINTAB:
+-
+-        case XEN_DOMCTL_PFINFO_L3TAB:
+-        case XEN_DOMCTL_PFINFO_L3TAB | XEN_DOMCTL_PFINFO_LPINTAB:
+-
+-        case XEN_DOMCTL_PFINFO_L4TAB:
+-        case XEN_DOMCTL_PFINFO_L4TAB | XEN_DOMCTL_PFINFO_LPINTAB:
+-
++        if ( page_type_has_stream_data(types[i]) == true )
+             mfns[nr_pages++] = ctx->restore.ops.pfn_to_gfn(ctx, pfns[i]);
+-            break;
+-        }
+     }
+ 
+     /* Nothing to do? */
+@@ -271,14 +253,8 @@ static int process_page_data(struct xc_s
+ 
+     for ( i = 0, j = 0; i < count; ++i )
+     {
+-        switch ( types[i] )
+-        {
+-        case XEN_DOMCTL_PFINFO_XTAB:
+-        case XEN_DOMCTL_PFINFO_BROKEN:
+-        case XEN_DOMCTL_PFINFO_XALLOC:
+-            /* No page data to deal with. */
++        if ( page_type_has_stream_data(types[i]) == false )
+             continue;
+-        }
+ 
+         if ( map_errs[j] )
+         {
+@@ -413,7 +389,7 @@ static int handle_page_data(struct xc_sr
+             goto err;
+         }
+ 
+-        if ( type < XEN_DOMCTL_PFINFO_BROKEN )
++        if ( page_type_has_stream_data(type) == true )
+             /* NOTAB and all L1 through L4 tables (including pinned) should
+              * have a page worth of data in the record. */
+             pages_of_data++;
+--- xen-4.14.0-testing.orig/tools/libxc/xc_sr_save.c
++++ xen-4.14.0-testing/tools/libxc/xc_sr_save.c
+@@ -153,13 +153,8 @@ static int write_batch(struct xc_sr_cont
+             goto err;
+         }
+ 
+-        switch ( types[i] )
+-        {
+-        case XEN_DOMCTL_PFINFO_BROKEN:
+-        case XEN_DOMCTL_PFINFO_XALLOC:
+-        case XEN_DOMCTL_PFINFO_XTAB:
++        if ( page_type_has_stream_data(types[i]) == false )
+             continue;
+-        }
+ 
+         mfns[nr_pages++] = mfns[i];
+     }
+@@ -177,13 +172,8 @@ static int write_batch(struct xc_sr_cont
+ 
+         for ( i = 0, p = 0; i < nr_pfns; ++i )
+         {
+-            switch ( types[i] )
+-            {
+-            case XEN_DOMCTL_PFINFO_BROKEN:
+-            case XEN_DOMCTL_PFINFO_XALLOC:
+-            case XEN_DOMCTL_PFINFO_XTAB:
++            if ( page_type_has_stream_data(types[i]) == false )
+                 continue;
+-            }
+ 
+             if ( errors[p] )
+             {

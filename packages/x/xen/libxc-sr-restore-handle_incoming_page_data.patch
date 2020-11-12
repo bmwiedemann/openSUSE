@@ -1,0 +1,175 @@
+From: Olaf Hering <olaf@aepfle.de>
+Date: Thu, 29 Oct 2020 16:13:10 +0100
+Subject: libxc sr restore handle_incoming_page_data
+
+tools/guest: restore: write data directly into guest
+
+Read incoming migration stream directly into the guest memory.
+This avoids the memory allocation and copying, and the resulting
+performance penalty.
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+---
+ tools/libxc/xc_sr_common.h  |   1 +
+ tools/libxc/xc_sr_restore.c | 132 ++++++++++++++++++++++++++++++++++--
+ 2 files changed, 129 insertions(+), 4 deletions(-)
+
+--- xen-4.14.0-testing.orig/tools/libxc/xc_sr_common.h
++++ xen-4.14.0-testing/tools/libxc/xc_sr_common.h
+@@ -232,6 +232,7 @@ struct xc_sr_restore_arrays {
+     xen_pfn_t mfns[MAX_BATCH_SIZE];
+     int map_errs[MAX_BATCH_SIZE];
+     void *guest_data[MAX_BATCH_SIZE];
++    struct iovec iov[MAX_BATCH_SIZE];
+ 
+     /* populate_pfns */
+     xen_pfn_t pp_mfns[MAX_BATCH_SIZE];
+--- xen-4.14.0-testing.orig/tools/libxc/xc_sr_restore.c
++++ xen-4.14.0-testing/tools/libxc/xc_sr_restore.c
+@@ -393,6 +393,122 @@ err:
+ }
+ 
+ /*
++ * Handle PAGE_DATA record from the stream.
++ * Given a list of pfns, their types, and a block of page data from the
++ * stream, populate and record their types, map the relevant subset and copy
++ * the data into the guest.
++ */
++static int handle_incoming_page_data(struct xc_sr_context *ctx,
++                                     struct xc_sr_rhdr *rhdr)
++{
++    xc_interface *xch = ctx->xch;
++    struct xc_sr_restore_arrays *m = ctx->restore.m;
++    struct xc_sr_rec_page_data_header *pages = &m->pages;
++    uint64_t *pfn_nums = m->pages.pfn;
++    uint32_t i;
++    int rc, iov_idx;
++
++    rc = handle_static_data_end_v2(ctx);
++    if ( rc )
++        goto err;
++
++    /* First read and verify the header */
++    rc = read_exact(ctx->fd, pages, sizeof(*pages));
++    if ( rc )
++    {
++        PERROR("Could not read rec_pfn header");
++        goto err;
++    }
++
++    if ( verify_rec_page_hdr(ctx, rhdr->length, pages) == false )
++    {
++        rc = -1;
++        goto err;
++    }
++
++    /* Then read and verify the incoming pfn numbers */
++    rc = read_exact(ctx->fd, pfn_nums, sizeof(*pfn_nums) * pages->count);
++    if ( rc )
++    {
++        PERROR("Could not read rec_pfn data");
++        goto err;
++    }
++
++    if ( verify_rec_page_pfns(ctx, rhdr->length, pages) == false )
++    {
++        rc = -1;
++        goto err;
++    }
++
++    /* Finally read and verify the incoming pfn data */
++    rc = map_guest_pages(ctx, pages);
++    if ( rc )
++        goto err;
++
++    /* Prepare read buffers, either guest or throw away memory */
++    for ( i = 0, iov_idx = 0; i < pages->count; i++ )
++    {
++        if ( !m->guest_data[i] )
++            continue;
++
++        m->iov[iov_idx].iov_len = PAGE_SIZE;
++        if ( ctx->restore.verify )
++            m->iov[iov_idx].iov_base = ctx->restore.verify_buf + i * PAGE_SIZE;
++        else
++            m->iov[iov_idx].iov_base = m->guest_data[i];
++        iov_idx++;
++    }
++
++    if ( !iov_idx )
++        goto done;
++
++    rc = readv_exact(ctx->fd, m->iov, iov_idx);
++    if ( rc )
++    {
++        PERROR("read of %d pages failed", iov_idx);
++        goto err;
++    }
++
++    /* Post-processing of pfn data */
++    for ( i = 0, iov_idx = 0; i < pages->count; i++ )
++    {
++        if ( !m->guest_data[i] )
++            continue;
++
++        rc = ctx->restore.ops.localise_page(ctx, m->types[i], m->iov[iov_idx].iov_base);
++        if ( rc )
++        {
++            ERROR("Failed to localise pfn %#"PRIpfn" (type %#"PRIx32")",
++                  m->pfns[i], m->types[i] >> XEN_DOMCTL_PFINFO_LTAB_SHIFT);
++            goto err;
++
++        }
++
++        if ( ctx->restore.verify )
++        {
++            if ( memcmp(m->guest_data[i], m->iov[iov_idx].iov_base, PAGE_SIZE) )
++            {
++                ERROR("verify pfn %#"PRIpfn" failed (type %#"PRIx32")",
++                      m->pfns[i], m->types[i] >> XEN_DOMCTL_PFINFO_LTAB_SHIFT);
++            }
++        }
++
++        iov_idx++;
++    }
++
++done:
++    rc = 0;
++
++err:
++    if ( ctx->restore.guest_mapping )
++    {
++        xenforeignmemory_unmap(xch->fmem, ctx->restore.guest_mapping, ctx->restore.nr_mapped_pages);
++        ctx->restore.guest_mapping = NULL;
++    }
++    return rc;
++}
++
++/*
+  * Handle PAGE_DATA record from an existing buffer
+  * Given a list of pfns, their types, and a block of page data from the
+  * stream, populate and record their types, map the relevant subset and copy
+@@ -773,11 +889,19 @@ static int process_incoming_record_heade
+     struct xc_sr_record rec;
+     int rc;
+ 
+-    rc = read_record_data(ctx, ctx->fd, rhdr, &rec);
+-    if ( rc )
+-        return rc;
++    switch ( rhdr->type )
++    {
++    case REC_TYPE_PAGE_DATA:
++        rc = handle_incoming_page_data(ctx, rhdr);
++        break;
++    default:
++        rc = read_record_data(ctx, ctx->fd, rhdr, &rec);
++        if ( rc == 0 )
++            rc = process_buffered_record(ctx, &rec);;
++        break;
++    }
+ 
+-    return process_buffered_record(ctx, &rec);
++    return rc;
+ }
+ 
+ 

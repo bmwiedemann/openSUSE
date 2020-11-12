@@ -1,0 +1,271 @@
+From: Olaf Hering <olaf@aepfle.de>
+Date: Mon, 26 Oct 2020 12:19:17 +0100
+Subject: libxc sr restore read_record
+
+tools/guest: restore: split record processing
+
+handle_page_data must be able to read directly into mapped guest memory.
+This will avoid unneccesary memcpy calls for data which can be consumed verbatim.
+
+Rearrange the code to allow decisions based on the incoming record.
+
+This change is preparation for future changes in handle_page_data,
+no change in behavior is intended.
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+---
+ tools/libxc/xc_sr_common.c  | 33 +++++++++++++++----------
+ tools/libxc/xc_sr_common.h  |  4 ++-
+ tools/libxc/xc_sr_restore.c | 49 +++++++++++++++++++++++++------------
+ tools/libxc/xc_sr_save.c    |  7 +++++-
+ 4 files changed, 63 insertions(+), 30 deletions(-)
+
+--- xen-4.14.0-testing.orig/tools/libxc/xc_sr_common.c
++++ xen-4.14.0-testing/tools/libxc/xc_sr_common.c
+@@ -91,26 +91,33 @@ int write_split_record(struct xc_sr_cont
+     return -1;
+ }
+ 
+-int read_record(struct xc_sr_context *ctx, int fd, struct xc_sr_record *rec)
++int read_record_header(struct xc_sr_context *ctx, int fd, struct xc_sr_rhdr *rhdr)
+ {
+     xc_interface *xch = ctx->xch;
+-    struct xc_sr_rhdr rhdr;
+-    size_t datasz;
+ 
+-    if ( read_exact(fd, &rhdr, sizeof(rhdr)) )
++    if ( read_exact(fd, rhdr, sizeof(*rhdr)) )
+     {
+         PERROR("Failed to read Record Header from stream");
+         return -1;
+     }
+ 
+-    if ( rhdr.length > REC_LENGTH_MAX )
++    if ( rhdr->length > REC_LENGTH_MAX )
+     {
+-        ERROR("Record (0x%08x, %s) length %#x exceeds max (%#x)", rhdr.type,
+-              rec_type_to_str(rhdr.type), rhdr.length, REC_LENGTH_MAX);
++        ERROR("Record (0x%08x, %s) length %#x exceeds max (%#x)", rhdr->type,
++              rec_type_to_str(rhdr->type), rhdr->length, REC_LENGTH_MAX);
+         return -1;
+     }
+ 
+-    datasz = ROUNDUP(rhdr.length, REC_ALIGN_ORDER);
++    return 0;
++}
++
++int read_record_data(struct xc_sr_context *ctx, int fd, struct xc_sr_rhdr *rhdr,
++                     struct xc_sr_record *rec)
++{
++    xc_interface *xch = ctx->xch;
++    size_t datasz;
++
++    datasz = ROUNDUP(rhdr->length, REC_ALIGN_ORDER);
+ 
+     if ( datasz )
+     {
+@@ -119,7 +126,7 @@ int read_record(struct xc_sr_context *ct
+         if ( !rec->data )
+         {
+             ERROR("Unable to allocate %zu bytes for record data (0x%08x, %s)",
+-                  datasz, rhdr.type, rec_type_to_str(rhdr.type));
++                  datasz, rhdr->type, rec_type_to_str(rhdr->type));
+             return -1;
+         }
+ 
+@@ -128,18 +135,18 @@ int read_record(struct xc_sr_context *ct
+             free(rec->data);
+             rec->data = NULL;
+             PERROR("Failed to read %zu bytes of data for record (0x%08x, %s)",
+-                   datasz, rhdr.type, rec_type_to_str(rhdr.type));
++                   datasz, rhdr->type, rec_type_to_str(rhdr->type));
+             return -1;
+         }
+     }
+     else
+         rec->data = NULL;
+ 
+-    rec->type   = rhdr.type;
+-    rec->length = rhdr.length;
++    rec->type   = rhdr->type;
++    rec->length = rhdr->length;
+ 
+     return 0;
+-};
++}
+ 
+ static void __attribute__((unused)) build_assertions(void)
+ {
+--- xen-4.14.0-testing.orig/tools/libxc/xc_sr_common.h
++++ xen-4.14.0-testing/tools/libxc/xc_sr_common.h
+@@ -476,7 +476,9 @@ static inline int write_record(struct xc
+  *
+  * On failure, the contents of the record structure are undefined.
+  */
+-int read_record(struct xc_sr_context *ctx, int fd, struct xc_sr_record *rec);
++int read_record_header(struct xc_sr_context *ctx, int fd, struct xc_sr_rhdr *rhdr);
++int read_record_data(struct xc_sr_context *ctx, int fd, struct xc_sr_rhdr *rhdr,
++                     struct xc_sr_record *rec);
+ 
+ /*
+  * This would ideally be private in restore.c, but is needed by
+--- xen-4.14.0-testing.orig/tools/libxc/xc_sr_restore.c
++++ xen-4.14.0-testing/tools/libxc/xc_sr_restore.c
+@@ -471,7 +471,7 @@ static int send_checkpoint_dirty_pfn_lis
+     return rc;
+ }
+ 
+-static int process_record(struct xc_sr_context *ctx, struct xc_sr_record *rec);
++static int process_buffered_record(struct xc_sr_context *ctx, struct xc_sr_record *rec);
+ static int handle_checkpoint(struct xc_sr_context *ctx)
+ {
+     xc_interface *xch = ctx->xch;
+@@ -510,7 +510,7 @@ static int handle_checkpoint(struct xc_s
+ 
+         for ( i = 0; i < ctx->restore.buffered_rec_num; i++ )
+         {
+-            rc = process_record(ctx, &ctx->restore.buffered_records[i]);
++            rc = process_buffered_record(ctx, &ctx->restore.buffered_records[i]);
+             if ( rc )
+                 goto err;
+         }
+@@ -571,10 +571,11 @@ static int handle_checkpoint(struct xc_s
+     return rc;
+ }
+ 
+-static int buffer_record(struct xc_sr_context *ctx, struct xc_sr_record *rec)
++static int buffer_record(struct xc_sr_context *ctx, struct xc_sr_rhdr *rhdr)
+ {
+     xc_interface *xch = ctx->xch;
+     unsigned int new_alloc_num;
++    struct xc_sr_record rec;
+     struct xc_sr_record *p;
+ 
+     if ( ctx->restore.buffered_rec_num >= ctx->restore.allocated_rec_num )
+@@ -592,8 +593,13 @@ static int buffer_record(struct xc_sr_co
+         ctx->restore.allocated_rec_num = new_alloc_num;
+     }
+ 
++    if ( read_record_data(ctx, ctx->fd, rhdr, &rec) )
++    {
++        return -1;
++    }
++
+     memcpy(&ctx->restore.buffered_records[ctx->restore.buffered_rec_num++],
+-           rec, sizeof(*rec));
++           &rec, sizeof(rec));
+ 
+     return 0;
+ }
+@@ -624,7 +630,7 @@ int handle_static_data_end(struct xc_sr_
+     return rc;
+ }
+ 
+-static int process_record(struct xc_sr_context *ctx, struct xc_sr_record *rec)
++static int process_buffered_record(struct xc_sr_context *ctx, struct xc_sr_record *rec)
+ {
+     xc_interface *xch = ctx->xch;
+     int rc = 0;
+@@ -662,6 +668,19 @@ static int process_record(struct xc_sr_c
+     return rc;
+ }
+ 
++static int process_incoming_record_header(struct xc_sr_context *ctx, struct xc_sr_rhdr *rhdr)
++{
++    struct xc_sr_record rec;
++    int rc;
++
++    rc = read_record_data(ctx, ctx->fd, rhdr, &rec);
++    if ( rc )
++        return rc;
++
++    return process_buffered_record(ctx, &rec);
++}
++
++
+ static int setup(struct xc_sr_context *ctx)
+ {
+     xc_interface *xch = ctx->xch;
+@@ -745,7 +764,7 @@ static void cleanup(struct xc_sr_context
+ static int restore(struct xc_sr_context *ctx)
+ {
+     xc_interface *xch = ctx->xch;
+-    struct xc_sr_record rec;
++    struct xc_sr_rhdr rhdr;
+     int rc, saved_rc = 0, saved_errno = 0;
+ 
+     IPRINTF("Restoring domain");
+@@ -756,7 +775,7 @@ static int restore(struct xc_sr_context
+ 
+     do
+     {
+-        rc = read_record(ctx, ctx->fd, &rec);
++        rc = read_record_header(ctx, ctx->fd, &rhdr);
+         if ( rc )
+         {
+             if ( ctx->restore.buffer_all_records )
+@@ -766,25 +785,25 @@ static int restore(struct xc_sr_context
+         }
+ 
+         if ( ctx->restore.buffer_all_records &&
+-             rec.type != REC_TYPE_END &&
+-             rec.type != REC_TYPE_CHECKPOINT )
++             rhdr.type != REC_TYPE_END &&
++             rhdr.type != REC_TYPE_CHECKPOINT )
+         {
+-            rc = buffer_record(ctx, &rec);
++            rc = buffer_record(ctx, &rhdr);
+             if ( rc )
+                 goto err;
+         }
+         else
+         {
+-            rc = process_record(ctx, &rec);
++            rc = process_incoming_record_header(ctx, &rhdr);
+             if ( rc == RECORD_NOT_PROCESSED )
+             {
+-                if ( rec.type & REC_TYPE_OPTIONAL )
++                if ( rhdr.type & REC_TYPE_OPTIONAL )
+                     DPRINTF("Ignoring optional record %#x (%s)",
+-                            rec.type, rec_type_to_str(rec.type));
++                            rhdr.type, rec_type_to_str(rhdr.type));
+                 else
+                 {
+                     ERROR("Mandatory record %#x (%s) not handled",
+-                          rec.type, rec_type_to_str(rec.type));
++                          rhdr.type, rec_type_to_str(rhdr.type));
+                     rc = -1;
+                     goto err;
+                 }
+@@ -795,7 +814,7 @@ static int restore(struct xc_sr_context
+                 goto err;
+         }
+ 
+-    } while ( rec.type != REC_TYPE_END );
++    } while ( rhdr.type != REC_TYPE_END );
+ 
+  remus_failover:
+     if ( ctx->stream_type == XC_STREAM_COLO )
+--- xen-4.14.0-testing.orig/tools/libxc/xc_sr_save.c
++++ xen-4.14.0-testing/tools/libxc/xc_sr_save.c
+@@ -590,6 +590,7 @@ static int send_memory_live(struct xc_sr
+ static int colo_merge_secondary_dirty_bitmap(struct xc_sr_context *ctx)
+ {
+     xc_interface *xch = ctx->xch;
++    struct xc_sr_rhdr rhdr;
+     struct xc_sr_record rec;
+     uint64_t *pfns = NULL;
+     uint64_t pfn;
+@@ -598,7 +599,11 @@ static int colo_merge_secondary_dirty_bi
+     DECLARE_HYPERCALL_BUFFER_SHADOW(unsigned long, dirty_bitmap,
+                                     &ctx->save.dirty_bitmap_hbuf);
+ 
+-    rc = read_record(ctx, ctx->save.recv_fd, &rec);
++    rc = read_record_header(ctx, ctx->save.recv_fd, &rhdr);
++    if ( rc )
++        goto err;
++
++    rc = read_record_data(ctx, ctx->save.recv_fd, &rhdr, &rec);
+     if ( rc )
+         goto err;
+ 

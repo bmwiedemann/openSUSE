@@ -1,0 +1,62 @@
+From: Olaf Hering <olaf@aepfle.de>
+Date: Fri, 23 Oct 2020 11:20:36 +0200
+Subject: libxc sr save mfns
+
+tools/guest: save: move mfns array
+
+Remove allocation from hotpath, move mfns array into preallocated space.
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+---
+ tools/libxc/xc_sr_common.h | 2 ++
+ tools/libxc/xc_sr_save.c   | 7 ++-----
+ 2 files changed, 4 insertions(+), 5 deletions(-)
+
+--- xen-4.14.0-testing.orig/tools/libxc/xc_sr_common.h
++++ xen-4.14.0-testing/tools/libxc/xc_sr_common.h
+@@ -214,6 +214,8 @@ static inline int update_blob(struct xc_
+ 
+ struct xc_sr_save_arrays {
+     xen_pfn_t batch_pfns[MAX_BATCH_SIZE];
++    /* write_batch: Mfns of the batch pfns. */
++    xen_pfn_t mfns[MAX_BATCH_SIZE];
+ };
+ 
+ struct xc_sr_restore_arrays {
+--- xen-4.14.0-testing.orig/tools/libxc/xc_sr_save.c
++++ xen-4.14.0-testing/tools/libxc/xc_sr_save.c
+@@ -88,7 +88,7 @@ static int write_checkpoint_record(struc
+ static int write_batch(struct xc_sr_context *ctx)
+ {
+     xc_interface *xch = ctx->xch;
+-    xen_pfn_t *mfns = NULL, *types = NULL;
++    xen_pfn_t *mfns = ctx->save.m->mfns, *types = NULL;
+     void *guest_mapping = NULL;
+     void **guest_data = NULL;
+     void **local_pages = NULL;
+@@ -105,8 +105,6 @@ static int write_batch(struct xc_sr_cont
+ 
+     assert(nr_pfns != 0);
+ 
+-    /* Mfns of the batch pfns. */
+-    mfns = malloc(nr_pfns * sizeof(*mfns));
+     /* Types of the batch pfns. */
+     types = malloc(nr_pfns * sizeof(*types));
+     /* Errors from attempting to map the gfns. */
+@@ -118,7 +116,7 @@ static int write_batch(struct xc_sr_cont
+     /* iovec[] for writev(). */
+     iov = malloc((nr_pfns + 4) * sizeof(*iov));
+ 
+-    if ( !mfns || !types || !errors || !guest_data || !local_pages || !iov )
++    if ( !types || !errors || !guest_data || !local_pages || !iov )
+     {
+         ERROR("Unable to allocate arrays for a batch of %u pages",
+               nr_pfns);
+@@ -277,7 +275,6 @@ static int write_batch(struct xc_sr_cont
+     free(guest_data);
+     free(errors);
+     free(types);
+-    free(mfns);
+ 
+     return rc;
+ }

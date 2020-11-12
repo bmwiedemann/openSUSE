@@ -125,7 +125,7 @@ BuildRequires:  makeinfo
 BuildRequires:  pesign-obs-integration
 %endif
 
-Version:        4.14.0_10
+Version:        4.14.0_12
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -207,6 +207,34 @@ Patch28603:     xsa286-3.patch
 Patch28604:     xsa286-4.patch
 Patch28605:     xsa286-5.patch
 Patch28606:     xsa286-6.patch
+Patch35101:     xsa351-1.patch
+Patch35102:     xsa351-2.patch
+Patch35103:     xsa351-3.patch
+#
+Patch300:       libxc-sr-3cccdae45242dab27198b8e150be0c85acd5d3c9.patch
+Patch301:       libxc-sr-readv_exact.patch
+Patch302:       libxc-sr-add-xc_is_known_page_type.patch
+Patch303:       libxc-sr-use-xc_is_known_page_type.patch
+Patch304:       libxc-sr-page_type_has_stream_data.patch
+Patch305:       libxc-sr-save-show_transfer_rate.patch
+Patch306:       libxc-sr-arrays.patch
+Patch307:       libxc-sr-batch_pfns.patch
+Patch308:       libxc-sr-save-mfns.patch
+Patch309:       libxc-sr-save-types.patch
+Patch310:       libxc-sr-save-errors.patch
+Patch311:       libxc-sr-save-iov.patch
+Patch312:       libxc-sr-save-rec_pfns.patch
+Patch313:       libxc-sr-save-guest_data.patch
+Patch314:       libxc-sr-save-local_pages.patch
+Patch315:       libxc-sr-restore-pfns.patch
+Patch316:       libxc-sr-restore-types.patch
+Patch317:       libxc-sr-restore-mfns.patch
+Patch318:       libxc-sr-restore-map_errs.patch
+Patch319:       libxc-sr-restore-populate_pfns-mfns.patch
+Patch320:       libxc-sr-restore-populate_pfns-pfns.patch
+Patch321:       libxc-sr-restore-read_record.patch
+Patch322:       libxc-sr-restore-handle_buffered_page_data.patch
+Patch323:       libxc-sr-restore-handle_incoming_page_data.patch
 # Our platform specific patches
 Patch400:       xen-destdir.patch
 Patch401:       vif-bridge-no-iptables.patch
@@ -478,6 +506,34 @@ Authors:
 %patch28604 -p1
 %patch28605 -p1
 %patch28606 -p1
+%patch35101 -p1
+%patch35102 -p1
+%patch35103 -p1
+#
+%patch300 -p1
+%patch301 -p1
+%patch302 -p1
+%patch303 -p1
+%patch304 -p1
+%patch305 -p1
+%patch306 -p1
+%patch307 -p1
+%patch308 -p1
+%patch309 -p1
+%patch310 -p1
+%patch311 -p1
+%patch312 -p1
+%patch313 -p1
+%patch314 -p1
+%patch315 -p1
+%patch316 -p1
+%patch317 -p1
+%patch318 -p1
+%patch319 -p1
+%patch320 -p1
+%patch321 -p1
+%patch322 -p1
+%patch323 -p1
 # Our platform specific patches
 %patch400 -p1
 %patch401 -p1

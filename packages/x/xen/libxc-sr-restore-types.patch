@@ -1,0 +1,59 @@
+From: Olaf Hering <olaf@aepfle.de>
+Date: Fri, 23 Oct 2020 14:39:31 +0200
+Subject: libxc sr restore types
+
+tools/guest: restore: move types array
+
+Remove allocation from hotpath, move types array into preallocated space.
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+---
+ tools/libxc/xc_sr_common.h  |  1 +
+ tools/libxc/xc_sr_restore.c | 12 +-----------
+ 2 files changed, 2 insertions(+), 11 deletions(-)
+
+--- xen-4.14.0-testing.orig/tools/libxc/xc_sr_common.h
++++ xen-4.14.0-testing/tools/libxc/xc_sr_common.h
+@@ -227,6 +227,7 @@ struct xc_sr_save_arrays {
+ struct xc_sr_restore_arrays {
+     /* handle_page_data */
+     xen_pfn_t pfns[MAX_BATCH_SIZE];
++    uint32_t types[MAX_BATCH_SIZE];
+ };
+ 
+ struct xc_sr_context
+--- xen-4.14.0-testing.orig/tools/libxc/xc_sr_restore.c
++++ xen-4.14.0-testing/tools/libxc/xc_sr_restore.c
+@@ -316,7 +316,7 @@ static int handle_page_data(struct xc_sr
+     int rc = -1;
+ 
+     xen_pfn_t *pfns = ctx->restore.m->pfns, pfn;
+-    uint32_t *types = NULL, type;
++    uint32_t *types = ctx->restore.m->types, type;
+ 
+     /*
+      * v2 compatibility only exists for x86 streams.  This is a bit of a
+@@ -363,14 +363,6 @@ static int handle_page_data(struct xc_sr
+         goto err;
+     }
+ 
+-    types = malloc(pages->count * sizeof(*types));
+-    if ( !types )
+-    {
+-        ERROR("Unable to allocate enough memory for %u pfns",
+-              pages->count);
+-        goto err;
+-    }
+-
+     for ( i = 0; i < pages->count; ++i )
+     {
+         pfn = pages->pfn[i] & PAGE_DATA_PFN_MASK;
+@@ -410,8 +402,6 @@ static int handle_page_data(struct xc_sr
+     rc = process_page_data(ctx, pages->count, pfns, types,
+                            &pages->pfn[pages->count]);
+  err:
+-    free(types);
+-
+     return rc;
+ }
+ 

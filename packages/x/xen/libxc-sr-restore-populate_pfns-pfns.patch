@@ -1,0 +1,55 @@
+From: Olaf Hering <olaf@aepfle.de>
+Date: Fri, 23 Oct 2020 14:58:53 +0200
+Subject: libxc sr restore populate_pfns pfns
+
+tools/guest: restore: move pfns array in populate_pfns
+
+Remove allocation from hotpath, move populate_pfns' pfns array into preallocated space.
+Use some prefix to avoid conflict with an array used in handle_page_data.
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+---
+ tools/libxc/xc_sr_common.h  |  1 +
+ tools/libxc/xc_sr_restore.c | 11 +----------
+ 2 files changed, 2 insertions(+), 10 deletions(-)
+
+--- xen-4.14.0-testing.orig/tools/libxc/xc_sr_common.h
++++ xen-4.14.0-testing/tools/libxc/xc_sr_common.h
+@@ -233,6 +233,7 @@ struct xc_sr_restore_arrays {
+     int map_errs[MAX_BATCH_SIZE];
+     /* populate_pfns */
+     xen_pfn_t pp_mfns[MAX_BATCH_SIZE];
++    xen_pfn_t pp_pfns[MAX_BATCH_SIZE];
+ };
+ 
+ struct xc_sr_context
+--- xen-4.14.0-testing.orig/tools/libxc/xc_sr_restore.c
++++ xen-4.14.0-testing/tools/libxc/xc_sr_restore.c
+@@ -139,17 +139,10 @@ int populate_pfns(struct xc_sr_context *
+ {
+     xc_interface *xch = ctx->xch;
+     xen_pfn_t *mfns = ctx->restore.m->pp_mfns,
+-        *pfns = malloc(count * sizeof(*pfns));
++        *pfns = ctx->restore.m->pp_pfns;
+     unsigned int i, nr_pfns = 0;
+     int rc = -1;
+ 
+-    if ( !pfns )
+-    {
+-        ERROR("Failed to allocate %zu bytes for populating the physmap",
+-              2 * count * sizeof(*mfns));
+-        goto err;
+-    }
+-
+     for ( i = 0; i < count; ++i )
+     {
+         if ( (!types ||
+@@ -190,8 +183,6 @@ int populate_pfns(struct xc_sr_context *
+     rc = 0;
+ 
+  err:
+-    free(pfns);
+-
+     return rc;
+ }
+ 

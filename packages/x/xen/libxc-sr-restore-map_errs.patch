@@ -1,0 +1,58 @@
+From: Olaf Hering <olaf@aepfle.de>
+Date: Fri, 23 Oct 2020 14:44:09 +0200
+Subject: libxc sr restore map_errs
+
+tools/guest: restore: move map_errs array
+
+Remove allocation from hotpath, move map_errs array into preallocated space.
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+---
+ tools/libxc/xc_sr_common.h  |  1 +
+ tools/libxc/xc_sr_restore.c | 12 +-----------
+ 2 files changed, 2 insertions(+), 11 deletions(-)
+
+--- xen-4.14.0-testing.orig/tools/libxc/xc_sr_common.h
++++ xen-4.14.0-testing/tools/libxc/xc_sr_common.h
+@@ -230,6 +230,7 @@ struct xc_sr_restore_arrays {
+     uint32_t types[MAX_BATCH_SIZE];
+     /* process_page_data */
+     xen_pfn_t mfns[MAX_BATCH_SIZE];
++    int map_errs[MAX_BATCH_SIZE];
+ };
+ 
+ struct xc_sr_context
+--- xen-4.14.0-testing.orig/tools/libxc/xc_sr_restore.c
++++ xen-4.14.0-testing/tools/libxc/xc_sr_restore.c
+@@ -206,21 +206,13 @@ static int process_page_data(struct xc_s
+ {
+     xc_interface *xch = ctx->xch;
+     xen_pfn_t *mfns = ctx->restore.m->mfns;
+-    int *map_errs = malloc(count * sizeof(*map_errs));
++    int *map_errs = ctx->restore.m->map_errs;
+     int rc;
+     void *mapping = NULL, *guest_page = NULL;
+     unsigned int i, /* i indexes the pfns from the record. */
+         j,          /* j indexes the subset of pfns we decide to map. */
+         nr_pages = 0;
+ 
+-    if ( !map_errs )
+-    {
+-        rc = -1;
+-        ERROR("Failed to allocate %zu bytes to process page data",
+-              count * (sizeof(*mfns) + sizeof(*map_errs)));
+-        goto err;
+-    }
+-
+     rc = populate_pfns(ctx, count, pfns, types);
+     if ( rc )
+     {
+@@ -298,8 +290,6 @@ static int process_page_data(struct xc_s
+     if ( mapping )
+         xenforeignmemory_unmap(xch->fmem, mapping, nr_pages);
+ 
+-    free(map_errs);
+-
+     return rc;
+ }
+ 
