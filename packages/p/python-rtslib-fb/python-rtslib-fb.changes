@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Nov  7 18:05:32 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Fixed issue in SPEC file w/r/t package split with common.
+  Now, packages python3-rtslib-fb and python-rtslib-fb-common
+  are built, and the former depends on the latter. The common
+  package has the non-python parts (documentation, etc),
+  and the python3-* part the python parts.
+
+-------------------------------------------------------------------
+Fri Oct 23 18:20:23 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Split package into "common" part, python-rtslib-fb-common, which
+  is python-verserion-agnostic, and either python2-rtslib-comon-fb
+  or python3-rtslib-fb. This maens common files, like man pages,
+  don't have to be duplicated.
+
+-------------------------------------------------------------------
 Fri Oct 16 18:47:04 UTC 2020 - lduncan@suse.com
 
 - Update to version v2.1.74:
