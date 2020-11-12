@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Nov 08 23:56:48 UTC 2020 - wbrown@suse.de
+
+- Update to version 1.4.4.8~git0.bf454ad07:
+  * Bump version to 1.4.4.8
+  * Issue 4415 - unable to query schema if there are extra parenthesis
+  * Issue 4176 - CL trimming causes high CPU
+  * Bump version to 1.4.4.7
+  * Issue 2526 - revert backend validation check
+  * Issue 4262 - more perl removal cleanup
+  * Issue 2526 - retrocl backend created out of order
+  * Bump version to 1.4.4.6
+  * Issue 4262 - Remove legacy tools subpackage (final cleanup)
+- Add missing dependency on gawk
+
+-------------------------------------------------------------------
 Tue Oct 27 01:48:44 UTC 2020 - wbrown@suse.de
 
 - Update to version 1.4.4.6~git0.71baa8cb2:

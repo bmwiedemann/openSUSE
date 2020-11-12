@@ -51,7 +51,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        1.4.4.6~git0.71baa8cb2
+Version:        1.4.4.8~git0.bf454ad07
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -75,6 +75,7 @@ BuildRequires:  cracklib-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  db-devel >= 4.5
 BuildRequires:  doxygen
+BuildRequires:  gawk
 BuildRequires:  gcc-c++
 BuildRequires:  gdb
 BuildRequires:  krb5-devel
