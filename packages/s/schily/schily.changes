@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Nov  7 10:50:14 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Move ctags to update-alternatives scheme.
+
+-------------------------------------------------------------------
+Thu Nov  5 00:13:45 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.11.04
+  * Bourne Shell: If a background job did finish during an
+    implicit wait for a foreground job, the exit code for the
+    background job was lost, which was fixed.
+  * star: ACLs and Linux xattrs did not work if the path name to a
+    file was longer than PATH_MAX, which was fixed.
+
+-------------------------------------------------------------------
 Fri Oct  9 22:54:57 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.10.09

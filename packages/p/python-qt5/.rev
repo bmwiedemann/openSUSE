@@ -515,4 +515,13 @@ Thu May 29 20:49:46 UTC 2014 - hrvoje.senjan@gmail.com
 - Update to Version 5.15.1</comment>
     <requestid>840092</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>1e58cafd8fabfaba0f1c8938eb139fee</srcmd5>
+    <version>5.15.1</version>
+    <time>1605216947</time>
+    <user>dimstar_suse</user>
+    <comment>SIP5 now
+</comment>
+    <requestid>846237</requestid>
+  </revision>
 </revisionlist>

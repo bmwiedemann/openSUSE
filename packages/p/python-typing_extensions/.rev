@@ -85,4 +85,12 @@
   * Fix tests for Python 3.9</comment>
     <requestid>841925</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>45b164a9ea3f20279dd85a2451e0f64b</srcmd5>
+    <version>3.7.4.3</version>
+    <time>1605216775</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>847634</requestid>
+  </revision>
 </revisionlist>

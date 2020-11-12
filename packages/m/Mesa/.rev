@@ -4308,4 +4308,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   * fixes colors in kaffeine on Radeon (r600 VAAPI driver)</comment>
     <requestid>841954</requestid>
   </revision>
+  <revision rev="394" vrev="266">
+    <srcmd5>362654135581b1b9c0c3b0613de1b70a</srcmd5>
+    <version>unknown</version>
+    <time>1605216976</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20.2.2
+  * second bugfix release for the 20.2 branch</comment>
+    <requestid>846855</requestid>
+  </revision>
 </revisionlist>

@@ -133,7 +133,7 @@ which use Xapian.
 %if %{without sphinx}
 %patch0 -p1
 %endif
-%if %{with php} && %{phpver} == php7
+%if %{with php} && "%{phpver}" == "php7"
 %patch1 -p1
 %endif
 

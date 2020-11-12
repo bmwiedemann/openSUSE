@@ -352,4 +352,13 @@
     <comment>- Update to release 2020.10.09</comment>
     <requestid>840751</requestid>
   </revision>
+  <revision rev="37" vrev="37">
+    <srcmd5>6358bc5a262360e76110a1829ef52259</srcmd5>
+    <version>unknown</version>
+    <time>1605216992</time>
+    <user>dimstar_suse</user>
+    <comment>- Move ctags to update-alternatives scheme.
+- Update to release 2020.11.04</comment>
+    <requestid>846878</requestid>
+  </revision>
 </revisionlist>

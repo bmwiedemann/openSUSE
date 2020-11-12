@@ -1,6 +1,3 @@
 <multibuild>
-  <package>python2</package>
-  <package>python3</package>
-  <package>python2_quick3d</package>
-  <package>python3_quick3d</package>
+  <flavor>quick3d</flavor>
 </multibuild>

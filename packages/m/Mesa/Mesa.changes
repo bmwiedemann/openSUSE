@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov  7 18:10:48 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 20.2.2
+  * second bugfix release for the 20.2 branch
+
+-------------------------------------------------------------------
 Thu Oct 15 09:59:46 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - reenabled U_fix-mpeg1_2-decode-mesa-20.2.patch due to regression
@@ -8,7 +14,7 @@ Thu Oct 15 09:59:46 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 Wed Oct 14 20:26:56 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 20.2.1
-  * first bugfix release for the 20.1 branch
+  * first bugfix release for the 20.2 branch
 - supersedes U_fix-mpeg1_2-decode.patch
 - disabled U_fix-mpeg1_2-decode-mesa-20.2.patch; likely no longer
   needed (boo#1173185)

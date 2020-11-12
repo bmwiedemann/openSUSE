@@ -627,4 +627,12 @@ https://github.com/sddm/sddm/commit/1bc813d08b8130e458a6550ec47fb2bfbe6de080 (fo
   '-n' is deprecated and will be removed in the future. (forwarded request 845741 from fbui)</comment>
     <requestid>845755</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>4097f2ebcf39af6545d81c9ce27c9880</srcmd5>
+    <version>0.19.0</version>
+    <time>1605216985</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846861</requestid>
+  </revision>
 </revisionlist>

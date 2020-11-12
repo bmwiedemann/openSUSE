@@ -37,7 +37,7 @@ BuildRequires:  python-typing >= 3.7.4
 BuildRequires:  python3-typing >= 3.7.4
 %endif
 %if 0%{?suse_version} > 1320
-BuildRequires:  python3-testsuite
+BuildRequires:  %{python_module testsuite}
 %endif
 %if %{python3_version_nodots} < 35
 Requires:       python-typing >= 3.7.4

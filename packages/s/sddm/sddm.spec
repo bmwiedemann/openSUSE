@@ -17,7 +17,7 @@
 
 
 Name:           sddm
-Version:        0.18.1
+Version:        0.19.0
 Release:        0
 Summary:        QML-based display manager
 License:        GPL-2.0-or-later
@@ -29,26 +29,11 @@ Source2:        00-general.conf
 Source3:        10-theme.conf
 Source4:        sddm-tmpfiles.conf
 # Patch0-100: PATCH-FIX-UPSTREAM
-# Merged: https://github.com/sddm/sddm/pull/1062
-Patch0:         0001-Session-reuse-Only-consider-online-sessions.patch
-# Needed by some of the later patches
-Patch1:         0001-FreeBSD-Link-to-libutil.patch
-Patch2:         0001-FreeBSD-Split-implementation-of-VT-switching.patch
-Patch3:         0002-Only-allocate-VTs-for-seat0.patch
-# Committed directly
-Patch4:         0001-Don-t-disable-authentication-in-test-mode.patch
+Patch0:         0001-Use-PAM-s-username.patch
 # Not merged yet: https://github.com/sddm/sddm/pull/997
 Patch50:        0001-Remove-suffix-for-Wayland-session.patch
-# Not merged yet: https://github.com/sddm/sddm/pull/1017
-Patch51:        0006-Don-t-fill-UserModel-if-theme-does-not-require-it.patch
-# Open issue: https://github.com/sddm/sddm/issues/1059
-Patch52:        0001-Revert-Adds-sourcing-of-etc-profile-to-fish.patch
-# Not merged yet: https://github.com/sddm/sddm/pull/1117
-Patch53:        0001-Destroy-the-QLocalServer-in-Auth-on-shutdown.patch
 # Not merged yet: https://github.com/sddm/sddm/pull/1230
 Patch55:        0001-Redesign-Xauth-handling.patch
-# Not merged yet: https://github.com/sddm/sddm/pull/1273
-Patch56:        0003-Move-VT-setup-to-sddm-helper.patch
 # Patch100-?: PATCH-FIX-OPENSUSE
 # Use openSUSE pam config
 Patch100:       proper_pam.diff
@@ -61,7 +46,6 @@ Patch104:       sddm-service-handle-plymouth.patch
 # Use tty7 by default in the systemd service unit
 Patch105:       0001-Systemd-service-unit-Use-tty7-by-default.patch
 Patch107:       0003-Leave-duplicate-symlinks-out-of-the-SessionModel.patch
-Patch108:       0001-Support-both-X11-XDisplay-Wayland-and-WaylandDisplay.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules >= 1.4.0
 BuildRequires:  fdupes
@@ -89,11 +73,7 @@ Requires:       xdm
 # Merged the -lang package back into the main package
 Provides:       %{name}-lang = %{version}
 Obsoletes:      %{name}-lang < %{version}
-%if 0%{?sle_version} < 150000 && !0%{?is_opensuse}
-BuildRequires:  python-docutils
-%else
 BuildRequires:  python3-docutils
-%endif
 
 %description
 SDDM is a display manager for X11. It uses technologies like QtQuick,
@@ -222,7 +202,11 @@ fi
 
 %postun
 # Don't restart on upgrades (boo#1161826)
+%if 0%{?suse_version} > 1500
 %service_del_postun_without_restart sddm.service
+%else
+%service_del_postun -n sddm.service
+%endif
 [ -f %{_prefix}/lib/X11/displaymanagers/sddm ] || %{_sbindir}/update-alternatives \
   --remove default-displaymanager %{_prefix}/lib/X11/displaymanagers/sddm
 

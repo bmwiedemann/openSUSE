@@ -18,7 +18,7 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define __ksyms_path ^/lib/firmware
+%define __ksyms_path ^%{_firmwaredir}
 %define version_unconverted 20201023
 
 Name:           kernel-firmware
@@ -5685,11 +5685,11 @@ cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .
 # nothing to do
 
 %install
-mkdir -p %{buildroot}/lib/firmware
+mkdir -p %{buildroot}%{_firmwaredir}
 %if "%flavor" != "compressed"
-sh ./copy-firmware.sh %{buildroot}/lib/firmware
+sh ./copy-firmware.sh %{buildroot}%{_firmwaredir}
 %else
-sh %{_sourcedir}/install-split.sh -v %{_sourcedir}/topics.list %{buildroot} < WHENCE
+sh %{_sourcedir}/install-split.sh -v %{_sourcedir}/topics.list %{buildroot} %{_firmwaredir} < WHENCE
 sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
 %endif
 %fdupes -s %{buildroot}
@@ -5900,14 +5900,14 @@ sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
 %files
 %doc WHENCE README
 %license GPL-2 GPL-3 LICEN[CS]E.*
-/lib/firmware
-%exclude /lib/firmware/amd-ucode
-%exclude /lib/firmware/amd-ucode/*
+%{_firmwaredir}
+%exclude %{_firmwaredir}/amd-ucode
+%exclude %{_firmwaredir}/amd-ucode/*
 
 %files -n ucode-amd
 %license LICENSE.amd-ucode
-%dir /lib/firmware
-/lib/firmware/amd-ucode
+%dir %{_firmwaredir}
+%{_firmwaredir}/amd-ucode
 %endif
 
 %if "%flavor" == "compressed"

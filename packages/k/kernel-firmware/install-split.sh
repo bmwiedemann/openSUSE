@@ -15,7 +15,7 @@ fi
 
 topics="$1"
 DESTDIR="$2"
-fwdir=/lib/firmware
+fwdir=${3:-/lib/firmware}
 dest=$DESTDIR/$fwdir
 
 do_compress=1
@@ -85,7 +85,7 @@ while read l; do
 	    $verbose "Switching to topic $topic"
 	    if [ -n "$topic" ]; then
 		if [ ! -s files-$topic ]; then
-		    echo "%dir /lib/firmware" > files-$topic
+		    echo "%dir $fwdir" > files-$topic
 		fi
 	    fi
 	    ;;

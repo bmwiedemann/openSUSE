@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Sun Aug 30 17:28:02 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 1.5.0
+  * Added the 'android-abis' project option and corresponding
+    '--android-abi' command line option to sip-build, sip-install
+    and sip-wheel.
+  * Added 'PYQTBUILD_VERSION' and 'PYQTBUILD_VERSION_STR' to the
+    'pyqtbuild' module API.
+  * Added support for bundling QtTextToSpeech.
+
+-------------------------------------------------------------------
+Sat Aug 29 19:35:57 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Specify noarch
+- Provide python-PyQt-builder in case packagers search for the
+  official Qt/PyPI name 
+- It actually needs the python-sip-devel package
+
+-------------------------------------------------------------------
+Sat Aug 29 09:07:38 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Initial specfile version 1.4.0 

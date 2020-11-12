@@ -15,6 +15,11 @@ Thu Oct 29 08:07:03 UTC 2020 - tiwai@suse.com
 - Add _constraints to fix the build error (bsc#1178242)
 
 -------------------------------------------------------------------
+Mon Oct 19 12:57:37 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- use %_firmwaredir
+
+-------------------------------------------------------------------
 Mon Oct 12 10:09:10 CEST 2020 - tiwai@suse.de
 
 - Use fdupes -s (bsc#1177428);

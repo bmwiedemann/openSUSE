@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 12 08:44:47 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to 86.0.4240.198 bsc#1178703
+  - CVE-2020-16013: Inappropriate implementation in V8
+  - CVE-2020-16017: Use after free in site isolation
+
+-------------------------------------------------------------------
+Wed Nov 11 14:21:25 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to 86.0.4240.193 bsc#1178630
+  - CVE-2020-16016: Inappropriate implementation in base.
+
+-------------------------------------------------------------------
 Tue Nov  3 09:37:03 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Update to 86.0.4240.183 bsc#1178375

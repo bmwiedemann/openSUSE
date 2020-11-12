@@ -33,7 +33,7 @@ ExclusiveArch:  do_not_build
 %bcond_with test
 %endif
 Name:           python-hypothesis%{psuffix}
-Version:        5.24.2
+Version:        5.41.2
 Release:        0
 Summary:        A library for property based testing
 License:        MPL-2.0
@@ -51,6 +51,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs >= 19.2.0
 Requires:       python-sortedcontainers >= 2.1.0
+Requires(post): update-alternatives
+Requires(preun): update-alternatives
 Recommends:     python-Django >= 2.2
 Recommends:     python-dpcontracts >= 0.4
 Recommends:     python-lark-parser >= 0.6.5
@@ -108,6 +110,14 @@ sed -i 's/assert (arr == 0.0)/assert np.asarray(arr == 0.0)/' tests/numpy/test_g
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
+%python_clone -a %{buildroot}%{_bindir}/hypothesis
+
+%post
+%python_install_alternative hypothesis
+
+%postun
+%python_uninstall_alternative hypothesis
+
 %check
 %if %{with test}
 # theses tests try to write into global python_sitelib
@@ -121,6 +131,7 @@ skiptests+=" or test_can_learn_to_normalize_the_unnormalized"
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
+%python_alternative %{_bindir}/hypothesis
 %{python_sitelib}/hypothesis
 %{python_sitelib}/hypothesis-%{version}-py*.egg-info
 %endif

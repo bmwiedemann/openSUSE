@@ -1,4 +1,4 @@
-From 5ae235adea72a68796c9c25f2a7a8194dd3d7509 Mon Sep 17 00:00:00 2001
+From 259ec546a821f40536dc4aa2ff510a1e197b6e0d Mon Sep 17 00:00:00 2001
 From: Fabian Vogt <fabian@ritter-vogt.de>
 Date: Sat, 24 Oct 2020 13:57:05 +0200
 Subject: [PATCH] Set XAUTHLOCALHOSTNAME in sessions
@@ -15,7 +15,7 @@ it's likely that it equals the hostname set by the session manager later
  1 file changed, 2 insertions(+)
 
 diff --git a/src/helper/Backend.cpp b/src/helper/Backend.cpp
-index 1e80693..3feb49e 100644
+index a053310..5e6941e 100644
 --- a/src/helper/Backend.cpp
 +++ b/src/helper/Backend.cpp
 @@ -27,6 +27,7 @@
@@ -26,14 +26,14 @@ index 1e80693..3feb49e 100644
  
  #include <pwd.h>
  
-@@ -63,6 +64,7 @@ namespace SDDM {
+@@ -68,6 +69,7 @@ namespace SDDM {
              env.insert(QStringLiteral("SHELL"), QString::fromLocal8Bit(pw->pw_shell));
              env.insert(QStringLiteral("USER"), QString::fromLocal8Bit(pw->pw_name));
              env.insert(QStringLiteral("LOGNAME"), QString::fromLocal8Bit(pw->pw_name));
 +            env.insert(QStringLiteral("XAUTHLOCALHOSTNAME"), QHostInfo::localHostName());
-             // TODO: I'm fairly sure this shouldn't be done for PAM sessions, investigate!
-             m_app->session()->setProcessEnvironment(env);
-         }
+ #if defined(Q_OS_FREEBSD)
+         /* get additional environment variables via setclassenvironment();
+             this needs to be done here instead of in UserSession::setupChildProcess
 -- 
 2.25.1
 

@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Sun Aug 30 18:04:41 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 12.8.1
+  * minor bugfix release 
+
+-------------------------------------------------------------------
+Fri Aug 28 19:54:17 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Initial specfile for version 12.8.0 
+  Quote from https://www.riverbankcomputing.com/static/Docs/PyQt5/installation.html#building-the-sip-module
+  It is not necessary to install the PyQt5.sip module before
+  building PyQt5 but it must be installed before PyQt5 can be used.

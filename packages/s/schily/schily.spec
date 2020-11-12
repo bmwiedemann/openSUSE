@@ -17,14 +17,14 @@
 
 
 # grep -Pir 'define\s+VERSION|strvers'
-%global box_version	2020.10.09
+%global box_version	2020.11.04
 %global cdr_version	3.02~a10
 %global sccs_version	5.09
 %global smake_version	1.3
 %global star_version	1.6.1
 %global libfind_version 1.8
-%global ved_version     1.7
-%define rver	2020-10-09
+%global ved_version     1.8
+%define rver	2020-11-04
 
 Name:           schily
 Version:        %box_version
@@ -99,6 +99,22 @@ Conflicts:      cdrkit-cdrtools-compat
 cdrecord is a program to record (slang: "burn") data or audio Compact Discs
 on an Orange Book CD recorder, to write DVD media on a DVD recorder or to
 write BluRay media on a BluRay recorder.
+
+%package ctags
+Summary:        A program to generate tag files for ex/vi
+License:        CDDL-1.0 AND GPL-2.0-only AND GPL-2.0-or-later AND BSD-2-Clause AND BSD-3-Clause AND HPND AND ISC
+Group:          Development/Tools/Building
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+
+%description ctags
+Ctags makes a tags file for ex(1) from the specified C, Pascal,
+Fortran, YACC, lex, and lisp sources. A tags file gives the locations
+of specified objects in a group of files. Each line of the tags file
+contains the object name, the file in which it is defined, and a
+search pattern for the object definition, separated by whitespace.
+Using the tags file, ex(1) can quickly locate these object
+definitions.
 
 %package -n libcdrdeflt1_0
 Summary:        Library to parse the cdrecord config file
@@ -522,11 +538,14 @@ rm -fv "$b/%_bindir/suntar"
 rm -fv "$b/%_mandir/man1/star_sym.1"
 rm -fv "$b/%_mandir/man1/suntar.1"
 
+# ctags
+mv -v "$b/%_bindir/ctags" "$b/%_bindir/ctags-schily"
+cp -v ctags/vctags.1 "$b/%_mandir/man1/"
+
 # mt/rmt
 rm -fv "$b/%_bindir/mt" # handled up u-a
 ln -sv smt.1 "$b/%_mandir/man1/mt.1"
 ln -sv srmt.1 "$b/%_mandir/man1/rmt.1"
-ls -l "$b/%_mandir"/man*/*mt*
 
 # get rid of things that upset rpmlint
 find "$b/usr/share/doc" -type f -name "*big*" -print -delete
@@ -653,6 +672,16 @@ true
 %set_permissions %_bindir/cdda2wav
 true
 
+%post ctags
+"%_sbindir/update-alternatives" \
+	--install "%_bindir/ctags" ctags "%_bindir/ctags-schily" 20
+"%_sbindir/update-alternatives" --auto ctags
+
+%postun ctags
+if test "$1" = 0; then
+	"%_sbindir/update-alternatives" --remove ctags "%_bindir/ctags-schily"
+fi
+
 %post -n readcd
 %set_permissions %_bindir/readcd
 true
@@ -661,6 +690,7 @@ true
 "%_sbindir/update-alternatives" \
 	--install "%_bindir/mt" mt "%_bindir/smt" 10 \
 	--slave "%_mandir/man1/mt.1%ext_man" "mt.1%ext_man" "%_mandir/man1/smt.1%ext_man"
+"%_sbindir/update-alternatives" --auto mt
 
 %postun mt
 if test "$1" = 0; then
@@ -671,6 +701,7 @@ fi
 "%_sbindir/update-alternatives" \
 	--install "%_bindir/rmt" rmt "%_bindir/srmt" 10 \
 	--slave "%_mandir/man8/rmt.1%ext_man" "rmt.1%ext_man" "%_mandir/man8/srmt.1%ext_man"
+"%_sbindir/update-alternatives" --auto rmt
 
 %postun rmt
 if test "$1" = 0; then
@@ -759,6 +790,12 @@ fi
 %config %_sysconfdir/default/cdrecord
 %verify(not mode caps) %attr(0755,root,root) %_bindir/cdrecord
 %_mandir/man1/cdrecord.1*
+
+%files ctags
+%license CDDL.Schily.txt
+%_bindir/ctags-schily
+%_bindir/vctags
+%_mandir/man1/vctags.1*
 
 %files -n libcdrdeflt1_0
 %license CDDL.Schily.txt

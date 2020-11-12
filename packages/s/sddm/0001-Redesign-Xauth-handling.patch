@@ -1,4 +1,4 @@
-From 862f8cc0fff51b95f00778ea52b3c66342bc6241 Mon Sep 17 00:00:00 2001
+From fbdf20d59d1c63cd2b8fd78efb3125478a2ea07c Mon Sep 17 00:00:00 2001
 From: Fabian Vogt <fabian@ritter-vogt.de>
 Date: Wed, 21 Aug 2019 16:32:03 +0200
 Subject: [PATCH] Redesign Xauth handling
@@ -24,7 +24,7 @@ so configure the process to inherit the environment instead and use qputenv.
  src/common/XauthUtils.cpp        | 82 ++++++++++++++++++++++++++++++++
  src/common/XauthUtils.h          | 16 +++++++
  src/daemon/CMakeLists.txt        |  3 ++
- src/daemon/XorgDisplayServer.cpp | 58 ++++++++--------------
+ src/daemon/XorgDisplayServer.cpp | 45 ++----------------
  src/daemon/XorgDisplayServer.h   |  4 +-
  src/helper/Backend.cpp           |  7 ---
  src/helper/CMakeLists.txt        |  8 +++-
@@ -32,12 +32,12 @@ so configure the process to inherit the environment instead and use qputenv.
  src/helper/HelperApp.h           |  4 +-
  src/helper/UserSession.cpp       | 53 +++++++++++----------
  src/helper/UserSession.h         |  9 ++++
- 16 files changed, 179 insertions(+), 94 deletions(-)
+ 16 files changed, 165 insertions(+), 95 deletions(-)
  create mode 100644 src/common/XauthUtils.cpp
  create mode 100644 src/common/XauthUtils.h
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index b2b074d..4518b93 100644
+index e52e0e9..fc3f2ce 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -88,6 +88,9 @@ add_feature_info("PAM" PAM_FOUND "PAM support")
@@ -51,10 +51,10 @@ index b2b074d..4518b93 100644
  find_package(XCB REQUIRED)
  
 diff --git a/data/man/sddm.conf.rst.in b/data/man/sddm.conf.rst.in
-index b14de73..cfd7e65 100644
+index bee0768..e91280a 100644
 --- a/data/man/sddm.conf.rst.in
 +++ b/data/man/sddm.conf.rst.in
-@@ -106,10 +106,6 @@ OPTIONS
+@@ -110,10 +110,6 @@ OPTIONS
  	Path of the Xephyr.
  	Default value is "/usr/bin/Xephyr".
  
@@ -65,7 +65,7 @@ index b14de73..cfd7e65 100644
  `SessionDir=`
  	Path of the directory containing session files.
  	Default value is "/usr/share/xsessions".
-@@ -124,10 +120,6 @@ OPTIONS
+@@ -128,10 +124,6 @@ OPTIONS
          Path to the user session log file, relative to the home directory.
          Default value is ".local/share/sddm/xorg-session.log".
  
@@ -77,7 +77,7 @@ index b14de73..cfd7e65 100644
  	Path of script to execute when starting the display server.
  	Default value is "@DATA_INSTALL_DIR@/scripts/Xsetup".
 diff --git a/src/auth/Auth.cpp b/src/auth/Auth.cpp
-index 9978912..72383ac 100644
+index caca314..c2228ae 100644
 --- a/src/auth/Auth.cpp
 +++ b/src/auth/Auth.cpp
 @@ -64,7 +64,7 @@ namespace SDDM {
@@ -98,7 +98,7 @@ index 9978912..72383ac 100644
          return d->cookie;
      }
  
-@@ -294,7 +294,7 @@ namespace SDDM {
+@@ -298,7 +298,7 @@ namespace SDDM {
          d->environment.insert(key, value);
      }
  
@@ -108,7 +108,7 @@ index 9978912..72383ac 100644
              d->cookie = cookie;
              Q_EMIT cookieChanged();
 diff --git a/src/auth/Auth.h b/src/auth/Auth.h
-index 9c26b95..292449c 100644
+index 87f5f44..38d63fc 100644
 --- a/src/auth/Auth.h
 +++ b/src/auth/Auth.h
 @@ -54,7 +54,7 @@ namespace SDDM {
@@ -129,7 +129,7 @@ index 9c26b95..292449c 100644
          const QString &user() const;
          const QString &session() const;
          AuthRequest *request();
-@@ -145,7 +145,7 @@ namespace SDDM {
+@@ -149,7 +149,7 @@ namespace SDDM {
           * Set the display server cookie, to be inserted into the user's $XAUTHORITY
           * @param cookie cookie data
           */
@@ -139,10 +139,10 @@ index 9c26b95..292449c 100644
      public Q_SLOTS:
          /**
 diff --git a/src/common/Configuration.h b/src/common/Configuration.h
-index 9cb1007..7f99f68 100644
+index cf44a62..a7e0585 100644
 --- a/src/common/Configuration.h
 +++ b/src/common/Configuration.h
-@@ -62,11 +62,9 @@ namespace SDDM {
+@@ -63,11 +63,9 @@ namespace SDDM {
              Entry(ServerPath,          QString,     _S("/usr/bin/X"),                           _S("Path to X server binary"));
              Entry(ServerArguments,     QString,     _S("-nolisten tcp"),                        _S("Arguments passed to the X server invocation"));
              Entry(XephyrPath,          QString,     _S("/usr/bin/Xephyr"),                      _S("Path to Xephyr binary"));
@@ -265,7 +265,7 @@ index 0000000..112d003
 +
 +#endif // SDDM_XAUTHUTILS_H
 diff --git a/src/daemon/CMakeLists.txt b/src/daemon/CMakeLists.txt
-index 5c4e5f1..a175176 100644
+index 86d014b..9145607 100644
 --- a/src/daemon/CMakeLists.txt
 +++ b/src/daemon/CMakeLists.txt
 @@ -2,6 +2,7 @@ include_directories(
@@ -293,7 +293,7 @@ index 5c4e5f1..a175176 100644
  if(PAM_FOUND)
      target_link_libraries(sddm ${PAM_LIBRARIES})
 diff --git a/src/daemon/XorgDisplayServer.cpp b/src/daemon/XorgDisplayServer.cpp
-index 80b2227..b0ee6b3 100644
+index 5f93a1b..148ebcc 100644
 --- a/src/daemon/XorgDisplayServer.cpp
 +++ b/src/daemon/XorgDisplayServer.cpp
 @@ -25,6 +25,7 @@
@@ -304,7 +304,7 @@ index 80b2227..b0ee6b3 100644
  
  #include <QDebug>
  #include <QFile>
-@@ -54,17 +55,7 @@ namespace SDDM {
+@@ -55,17 +56,7 @@ namespace SDDM {
          m_authPath = QStringLiteral("%1/%2").arg(authDir).arg(QUuid::createUuid().toString());
  
          // generate cookie
@@ -323,7 +323,7 @@ index 80b2227..b0ee6b3 100644
      }
  
      XorgDisplayServer::~XorgDisplayServer() {
-@@ -83,35 +74,10 @@ namespace SDDM {
+@@ -84,35 +75,10 @@ namespace SDDM {
          return QStringLiteral("x11");
      }
  
@@ -332,7 +332,7 @@ index 80b2227..b0ee6b3 100644
          return m_cookie;
      }
  
--    void XorgDisplayServer::addCookie(const QString &file) {
+-    bool XorgDisplayServer::addCookie(const QString &file) {
 -        // log message
 -        qDebug() << "Adding cookie to" << file;
 -
@@ -348,52 +348,39 @@ index 80b2227..b0ee6b3 100644
 -
 -        // check file
 -        if (!fp)
--            return;
+-            return false;
 -        fprintf(fp, "remove %s\n", qPrintable(m_display));
 -        fprintf(fp, "add %s . %s\n", qPrintable(m_display), qPrintable(m_cookie));
 -        fprintf(fp, "exit\n");
 -
 -        // close pipe
--        pclose(fp);
+-        return pclose(fp) == 0;
 -    }
 -
      bool XorgDisplayServer::start() {
          // check flag
          if (m_started)
-@@ -126,6 +92,14 @@ namespace SDDM {
-         // log message
-         qDebug() << "Display server starting...";
- 
-+        // generate auth file
-+        // For the X server's copy, the display number doesn't matter.
-+        // An empty file would result in no access control!
+@@ -130,8 +96,7 @@ namespace SDDM {
+         // generate auth file.
+         // For the X server's copy, the display number doesn't matter.
+         // An empty file would result in no access control!
+-        m_display = QStringLiteral(":0");
+-        if(!addCookie(m_authPath)) {
 +        if(!Xauth::writeCookieToFile(m_authPath, QStringLiteral(":0"), m_cookie)) {
-+            qCritical() << "Failed to write xauth file";
-+            return false;
-+        }
-+
-         if (daemonApp->testing()) {
-             QStringList args;
-             args << m_display << QStringLiteral("-auth") << m_authPath << QStringLiteral("-br") << QStringLiteral("-noreset") << QStringLiteral("-screen") << QStringLiteral("800x600");
-@@ -210,8 +184,14 @@ namespace SDDM {
-             emit started();
+             qCritical() << "Failed to write xauth file";
+             return false;
          }
- 
--        // generate auth file
--        addCookie(m_authPath);
-+        // The file is also used by the greeter, which does care about the
-+        // display number. Write the proper entry, if different.
-+        if(m_display != QStringLiteral(":0")) {
+@@ -229,7 +194,7 @@ namespace SDDM {
+         // The file is also used by the greeter, which does care about the
+         // display number. Write the proper entry, if it's different.
+         if(m_display != QStringLiteral(":0")) {
+-            if(!addCookie(m_authPath)) {
 +            if(!Xauth::writeCookieToFile(m_authPath, m_display, m_cookie)) {
-+                qCritical() << "Failed to write xauth file";
-+                return false;
-+            }
-+        }
-         changeOwner(m_authPath);
- 
-         // set flag
+                 qCritical() << "Failed to write xauth file";
+                 return false;
+             }
 diff --git a/src/daemon/XorgDisplayServer.h b/src/daemon/XorgDisplayServer.h
-index d2bdf6d..418e098 100644
+index e97a0b5..05e0a4c 100644
 --- a/src/daemon/XorgDisplayServer.h
 +++ b/src/daemon/XorgDisplayServer.h
 @@ -38,7 +38,7 @@ namespace SDDM {
@@ -403,7 +390,7 @@ index d2bdf6d..418e098 100644
 -        const QString &cookie() const;
 +        const QByteArray &cookie() const;
  
-         void addCookie(const QString &file);
+         bool addCookie(const QString &file);
  
 @@ -50,7 +50,7 @@ namespace SDDM {
  
@@ -415,10 +402,10 @@ index d2bdf6d..418e098 100644
          QProcess *process { nullptr };
  
 diff --git a/src/helper/Backend.cpp b/src/helper/Backend.cpp
-index d6bb4d0..1e80693 100644
+index a324b39..a053310 100644
 --- a/src/helper/Backend.cpp
 +++ b/src/helper/Backend.cpp
-@@ -63,13 +63,6 @@ namespace SDDM {
+@@ -68,13 +68,6 @@ namespace SDDM {
              env.insert(QStringLiteral("SHELL"), QString::fromLocal8Bit(pw->pw_shell));
              env.insert(QStringLiteral("USER"), QString::fromLocal8Bit(pw->pw_name));
              env.insert(QStringLiteral("LOGNAME"), QString::fromLocal8Bit(pw->pw_name));
@@ -429,11 +416,11 @@ index d6bb4d0..1e80693 100644
 -                        .arg(mainConfig.X11.UserAuthFile.get());
 -                env.insert(QStringLiteral("XAUTHORITY"), value);
 -            }
-             // TODO: I'm fairly sure this shouldn't be done for PAM sessions, investigate!
-             m_app->session()->setProcessEnvironment(env);
-         }
+ #if defined(Q_OS_FREEBSD)
+         /* get additional environment variables via setclassenvironment();
+             this needs to be done here instead of in UserSession::setupChildProcess
 diff --git a/src/helper/CMakeLists.txt b/src/helper/CMakeLists.txt
-index 9fe9278..3dce2ab 100644
+index 8914ea7..81b939b 100644
 --- a/src/helper/CMakeLists.txt
 +++ b/src/helper/CMakeLists.txt
 @@ -3,6 +3,7 @@ include(CheckLibraryExists)
@@ -452,7 +439,7 @@ index 9fe9278..3dce2ab 100644
      Backend.cpp
      HelperApp.cpp
      UserSession.cpp
-@@ -33,7 +35,11 @@ else()
+@@ -41,7 +43,11 @@ else()
  endif()
  
  add_executable(sddm-helper ${HELPER_SOURCES})
@@ -466,10 +453,10 @@ index 9fe9278..3dce2ab 100644
      # On FreeBSD (possibly other BSDs as well), we want to use
      # setusercontext() to set up the login configuration from login.conf
 diff --git a/src/helper/HelperApp.cpp b/src/helper/HelperApp.cpp
-index e328052..13ccdfa 100644
+index 672359a..4ad9cbd 100644
 --- a/src/helper/HelperApp.cpp
 +++ b/src/helper/HelperApp.cpp
-@@ -229,7 +229,7 @@ namespace SDDM {
+@@ -237,7 +237,7 @@ namespace SDDM {
          str >> m >> env >> m_cookie;
          if (m != AUTHENTICATED) {
              env = QProcessEnvironment();
@@ -478,7 +465,7 @@ index e328052..13ccdfa 100644
              qCritical() << "Received a wrong opcode instead of AUTHENTICATED:" << m;
          }
          return env;
-@@ -255,7 +255,7 @@ namespace SDDM {
+@@ -263,7 +263,7 @@ namespace SDDM {
          return m_user;
      }
  
@@ -510,18 +497,18 @@ index 3742df1..d417494 100644
          /*!
           \brief Write utmp/wtmp/btmp records when a user logs in
 diff --git a/src/helper/UserSession.cpp b/src/helper/UserSession.cpp
-index b3aec35..5e9ac6a 100644
+index c9a8a20..e55e69e 100644
 --- a/src/helper/UserSession.cpp
 +++ b/src/helper/UserSession.cpp
-@@ -22,6 +22,7 @@
- #include "Configuration.h"
+@@ -23,6 +23,7 @@
  #include "UserSession.h"
  #include "HelperApp.h"
+ #include "VirtualTerminal.h"
 +#include "XauthUtils.h"
  
  #include <sys/types.h>
  #include <sys/ioctl.h>
-@@ -34,6 +35,8 @@
+@@ -35,6 +36,8 @@
  #include <fcntl.h>
  #include <sched.h>
  
@@ -530,7 +517,7 @@ index b3aec35..5e9ac6a 100644
  namespace SDDM {
      UserSession::UserSession(HelperApp *parent)
              : QProcess(parent) {
-@@ -256,38 +259,38 @@ namespace SDDM {
+@@ -260,38 +263,38 @@ namespace SDDM {
              qWarning() << "Could not redirect stdout";
          }
  
