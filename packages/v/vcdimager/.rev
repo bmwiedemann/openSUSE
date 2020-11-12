@@ -274,4 +274,12 @@
 - Remove unused cdparanoia from BuildRequires</comment>
     <requestid>619808</requestid>
   </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>c51d46468f84fd81756383fe2daeffed</srcmd5>
+    <version>2.0.1</version>
+    <time>1605216836</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847808</requestid>
+  </revision>
 </revisionlist>
