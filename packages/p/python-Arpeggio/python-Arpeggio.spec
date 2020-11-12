@@ -18,14 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Arpeggio
-Version:        1.9.2
+Version:        1.10.1
 Release:        0
 Summary:        Packrat parser interpreter
 License:        MIT
 URL:            https://github.com/textX/Arpeggio/
-Source:         https://github.com/textX/Arpeggio/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module pytest}
+Source:         https://github.com/textX/Arpeggio/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -40,22 +41,21 @@ Arpeggio) see textX
 
 %prep
 %setup -q -n Arpeggio-%{version}
-sed -i -e '/pytest-runner/d' setup.py
+# remove shebang
+sed -i '1d' arpeggio/tests/regressions/issue_16/test_issue_16.py
 
 %build
 %python_build
 
 %install
 %python_install
-# do not install examples in generic folder, not needed really
-%python_expand rm -r %{buildroot}%{$python_sitelib}/examples
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest arpeggio/tests
 
 %files %{python_files}
-%doc README.rst CHANGELOG.md AUTHORS.md
+%doc README.md CHANGELOG.md AUTHORS.md
 %license LICENSE
 %{python_sitelib}/*
 

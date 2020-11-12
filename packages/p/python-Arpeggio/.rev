@@ -93,4 +93,12 @@
     <comment>- Do not restrict pytest 5 as we work with it</comment>
     <requestid>800579</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fe3a27d5ccb88835dbb8436a8f757ecc</srcmd5>
+    <version>1.10.1</version>
+    <time>1605217021</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>846972</requestid>
+  </revision>
 </revisionlist>

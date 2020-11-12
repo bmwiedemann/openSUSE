@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Nov  1 19:43:14 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 1.10.1:
+ - Fix packaging, exclude examples from wheel.
+
+-------------------------------------------------------------------
+Sun Nov  1 16:56:10 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 1.10.0:
+ - Fix reporting duplicate rule names in `NoMatch` exception ([a1f14bede])
+ - Raise `AttributeError` when accessing unexisting rule name on parse tree node.
+    ([#82])
+ - Added `tree_str` method to parse tree nodes for nice string representation of
+    parse trees. ([#76])
+ - Added parse tree node suppression support and overriding of special Python
+    rule syntax. (#76)
+ - UnorderedGroup matching made deterministic ([#73])
+
+-------------------------------------------------------------------
 Wed May  6 07:06:42 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not restrict pytest 5 as we work with it
