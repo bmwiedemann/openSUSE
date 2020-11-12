@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 11 03:06:58 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.11
+   see /usr/share/doc/packages/perl-Algorithm-C3/Changes
+
+  0.11 - 2020-11-10
+      - set metadata for static dependency list and install
+      - move repository to github
+      - minor test cleanups
+      - fix Makefile.PL to work for authors in perl 5.26+
+
+-------------------------------------------------------------------
 Mon Sep 15 12:52:31 UTC 2014 - coolo@suse.com
 
 - updated to 0.10

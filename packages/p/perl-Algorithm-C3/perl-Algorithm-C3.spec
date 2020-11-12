@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Algorithm-C3
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Algorithm-C3
-Version:        0.10
+Version:        0.11
 Release:        0
 %define cpan_name Algorithm-C3
-Summary:        A module for merging hierarchies using the C3 algorithm
-License:        Artistic-1.0 or GPL-1.0+
+Summary:        Module for merging hierarchies using the C3 algorithm
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Algorithm-C3/
-Source:         http://www.cpan.org/authors/id/H/HA/HAARG/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/H/HA/HAARG/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
@@ -39,19 +40,18 @@ and metamodels, but it could also be used for things like dependency
 resolution as well since it tends to do such a nice job of preserving local
 precedence orderings.
 
-Below is a brief explanation of C3 taken from the the Class::C3 manpage
-module. For more detailed information, see the the SEE ALSO manpage section
-and the links there.
+Below is a brief explanation of C3 taken from the Class::C3 module. For
+more detailed information, see the SEE ALSO section and the links there.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -61,5 +61,6 @@ and the links there.
 %files -f %{name}.files
 %defattr(-,root,root,755)
 %doc Changes README
+%license LICENSE
 
 %changelog
