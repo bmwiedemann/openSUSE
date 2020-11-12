@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov  7 15:34:22 UTC 2020 - psimons@suse.com
+
+- Update persistent-sqlite to version 2.11.0.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/persistent-sqlite-2.11.0.0/src/ChangeLog.md
+
+-------------------------------------------------------------------
 Wed Aug 19 07:11:25 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints with 6GB min disk space for ppc64/ppc64le

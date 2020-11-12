@@ -15,4 +15,12 @@
     <comment>version update</comment>
     <requestid>829381</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bc3639d61d4925a8e0c9b787527c9640</srcmd5>
+    <version>2.11.0.0</version>
+    <time>1605217503</time>
+    <user>dimstar_suse</user>
+    <comment>Automated update of haskell pckages</comment>
+    <requestid>847877</requestid>
+  </revision>
 </revisionlist>

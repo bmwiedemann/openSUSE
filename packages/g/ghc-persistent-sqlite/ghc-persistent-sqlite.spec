@@ -19,7 +19,7 @@
 %global pkg_name persistent-sqlite
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.10.6.2
+Version:        2.11.0.0
 Release:        0
 Summary:        Backend for the persistent library using sqlite3
 License:        MIT
