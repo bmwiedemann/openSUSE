@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 10 12:21:28 UTC 2020 - maiku.fabian@gmail.com
+
+- Update to 2.10.1
+- Use IBus.InputHints.{UPPERCASE_CHARS,UPPERCASE_WORDS,LOWERCASE}
+- Add utility to manually test input purpose and input
+- Improve handling of input purpose and input hints
+- Add compatibility enum classes InputPurpose and InputHints
+- Add type hints
+- Change default for emoji_unicode_min to 0.0
+  (fixes emoji omitted from browsing in emoji-picker)
+
+-------------------------------------------------------------------
 Mon Oct 19 10:16:16 UTC 2020 - maiku.fabian@gmail.com
 
 - Update to 2.10.0
