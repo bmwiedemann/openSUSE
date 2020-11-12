@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Nov 12 00:00:06 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1605128979.b3fd45d8c:
+  * Docker: Fix kvm-mknod script in worker container
+  * docs: Fix documentation for "PARALLEL_CANCEL_WHOLE_CLUSTER"
+  * Dependency cron 2020-11-10
+  * docker: Ask to not squash base image layers to fix circleCI download
+  * cache service: Exclude currently downloaded asset from the cleanup
+  * Cover much longer web UI unavailabilities in the cache service client
+  * Remove infinite timeout the downloader test
+  * Cleanup list concatenation in OpenQA::Worker::Job
+  * Simplify OpenQA::Worker::Job::_stop_step_4_upload with turned around if-condition
+  * Slightly simplify OpenQA::Worker::Job::_format_reason with ternary op
+  * Dependency cron 2020-11-09
+  * Revert "worker: Use WORKER_HOSTNAME instead of real hostname"
+  * t: Bump 01-compile-check-all.t timeout based on local execution runtime
+  * Reduce execution time of t/25-downloader.t
+
+-------------------------------------------------------------------
 Fri Nov 06 13:32:59 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1604650398.c9956d642:
