@@ -19,13 +19,12 @@
 %global pkg_name persistent-template
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.8.2.3
+Version:        2.9.1.0
 Release:        0
 Summary:        Type-safe, non-relational, multi-backend persistence
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-bytestring-devel
@@ -63,7 +62,6 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
