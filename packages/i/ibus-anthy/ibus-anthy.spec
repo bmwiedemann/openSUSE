@@ -28,6 +28,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(ibus-1.0) >= 1.4.99
 BuildRequires:  pkgconfig(python3)
+Requires:       anthy
 Version:        1.5.10
 Release:        0
 Summary:        The Anthy engine for IBus input platform
