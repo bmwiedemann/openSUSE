@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Nov  7 15:34:56 UTC 2020 - psimons@suse.com
+
+- Update citeproc to version 0.1.1.1.
+  ## 0.1.1.1
+
+    * Pay attention to citationNoteNumber in computing position.
+      In calculating whether an item is alone in its citation,
+      we need to take into account citationNoteNumber, since
+      two citations may occur in the same note and they should
+      not be ranked "alone." See jgm/pandoc#6813,
+      citation-style-language/documentation#121
+
+  ## 0.1.1
+
+    * Ensure that uncited references are sorted last
+      when it comes to assigning citation numbers (#22).
+    * Remove "capitalize initial term" feature.  This is required by
+      the test suite but not the spec.  It makes more sense for us to do
+      this capitalization in the calling program, e.g. pandoc.  For some
+      citations in note styles may already be in notes and thus not
+      trigger separate footnotes.  If initial terms had been capitalized,
+      we'd need to uncapitalize, and that is hard to do reliably.
+    * Treat empty `FancyVal` as an empty value.
+    * Derive Functor, Traversable, Foldable for Result [API change].
+
+-------------------------------------------------------------------
 Fri Oct 23 19:25:24 UTC 2020 - psimons@suse.com
 
 - Update citeproc to version 0.1.0.3.
