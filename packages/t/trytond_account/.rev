@@ -238,4 +238,12 @@
     <comment>version update</comment>
     <requestid>842981</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>bc32fa1676d30982085e8a14039ca78a</srcmd5>
+    <version>5.0.16</version>
+    <time>1605217549</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix release</comment>
+    <requestid>847929</requestid>
+  </revision>
 </revisionlist>
