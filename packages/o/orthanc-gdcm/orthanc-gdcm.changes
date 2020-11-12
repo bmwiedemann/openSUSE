@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 17 12:38:10 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.1
+  * Fix transcoding of DICOM files encoded using an implicit transfer syntax
+  * Support of dynamic linking against the system-wide Orthanc framework 
+    library
+  * Upgrade to GDCM 3.0.7 for static builds
+
+-------------------------------------------------------------------
 Tue May 26 16:48:34 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.0 of the plugin
