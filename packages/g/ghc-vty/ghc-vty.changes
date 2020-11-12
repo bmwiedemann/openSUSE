@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov  9 12:35:51 UTC 2020 - psimons@suse.com
+
+- Update vty to version 5.32.
+  5.32
+  ----
+
+  New features:
+   * Meta-PageUp and Meta-PageDown are now supported (#193)
+   * Added `supportsItalics` and `supportsStrikethrough` functions to
+     check for feature support in terminfo
+
+  Bug fixes:
+   * Detect utf-8 mode in `LANG` regardless of case (thanks Emeka
+     Nkurumeh)
+
+-------------------------------------------------------------------
 Tue Oct  6 08:55:52 UTC 2020 - psimons@suse.com
 
 - Update vty to version 5.31.
