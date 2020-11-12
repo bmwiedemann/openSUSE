@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Oct 31 15:26:41 UTC 2020 - Adam Majer <amajer@suse.com>
+
+- Use python3 in node-gyp shebang lines
+
+-------------------------------------------------------------------
 Thu Oct 29 10:12:54 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Update to LTS version 14.15.0: (jsc#SLE-15774)

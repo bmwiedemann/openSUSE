@@ -210,7 +210,7 @@ BuildRequires:  xz
 BuildRequires:  zlib-devel
 
 # Python dependencies
-%if %node_version_number > 12
+%if %node_version_number > 6
 BuildRequires:  netcfg
 BuildRequires:  python3
 %else
@@ -341,11 +341,19 @@ Provides:       npm(npm) = 6.14.8
 Requires:       group(nobody)
 Requires:       user(nobody)
 %endif
-Recommends:     python2
+%endif
+
+# Python dependencies
+%if %node_version_number >= 8
 Recommends:     python3
+%else
+%if 0%{?suse_version} >= 1500
+Recommends:     python2
 %else
 Recommends:     python
 %endif
+%endif
+
 Provides:       bundled(node-JSONStream) = 1.3.5
 Provides:       bundled(node-abbrev) = 1.1.1
 Provides:       bundled(node-agent-base) = 4.2.1
@@ -799,8 +807,7 @@ find -name \*~ -print0 -delete
 find \( -name \*.js.orig -or -name \*.md.orig \) -delete
 
 %build
-# normalize shebang
-find -name \*.py -perm -1 -type f -exec sed -i '1 s,^#!\s\?/usr/bin/env python$,#!/usr/bin/python,' {} +
+find -name \*.py -perm -1 -type f -exec sed -i -e '1 s,^#!\s\?/usr/bin/env python\d*$,#!/usr/bin/python3,' -e '1 s,^#!\s\?/usr/bin/python$,#!/usr/bin/python3,' {} +
 find deps/npm -type f -exec sed -i '1 s,^#!\s\?/usr/bin/env node$,#!/usr/bin/node%{node_version_number},' {} +
 find deps/npm -type f -exec sed -i '1 s,^#!\s\?/usr/bin/env \(bash\|sh\)\?$,#!/bin/bash,' {} +
 

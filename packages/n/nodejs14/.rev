@@ -144,4 +144,12 @@ fixed unit tests</comment>
 - Bump mininum ICU version to 65</comment>
     <requestid>844832</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>79937992fc7078bdeedccca9469e55f7</srcmd5>
+    <version>14.15.0</version>
+    <time>1605217044</time>
+    <user>dimstar_suse</user>
+    <comment>- Use python3 in node-gyp shebang lines</comment>
+    <requestid>847086</requestid>
+  </revision>
 </revisionlist>
