@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Nov  7 15:34:17 UTC 2020 - psimons@suse.com
+
+- Update persistent to version 2.11.0.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/persistent-2.11.0.1/src/ChangeLog.md
+
+-------------------------------------------------------------------
+Tue Nov  3 10:09:25 UTC 2020 - psimons@suse.com
+
+- Update persistent to version 2.10.5.3.
+  ## 2.10.5.3
+
+  * Backported the fix from [#1135](https://github.com/yesodweb/persistent/pull/1135) to the 2.10 branch.
+    This should fix reading `PersistUTCTime` values.
+
+-------------------------------------------------------------------
 Tue Aug 18 10:45:42 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.
