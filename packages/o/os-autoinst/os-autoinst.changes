@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 11 23:59:04 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1604927825.7fa9c1d2:
+  * Add note to QEMU_DISABLE_SNAPSHOTS to be used with vmdk disks
+
+-------------------------------------------------------------------
 Wed Nov 04 21:26:17 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1604525166.912dfbdc:
