@@ -129,4 +129,12 @@ New packages, see: http://lists.opensuse.org/opensuse-factory/2013-07/msg00135.h
     <comment></comment>
     <requestid>774364</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5956e33de114fe26ba4462ed024fe7e7</srcmd5>
+    <version>0.7</version>
+    <time>1605216881</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847904</requestid>
+  </revision>
 </revisionlist>

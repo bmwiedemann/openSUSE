@@ -26,14 +26,13 @@
 %bcond_with    test
 %endif
 Name:           python-pybeam%{?psuffix}
-Version:        0.6
+Version:        0.7
 Release:        0
 Summary:        Python module to parse Erlang BEAM files
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/matwey/pybeam
 Source:         https://files.pythonhosted.org/packages/source/p/pybeam/pybeam-%{version}.tar.gz
-Patch0:         make_sphinx_optional.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -64,7 +63,6 @@ chunks in pretty python format.
 
 %prep
 %setup -q -n pybeam-%{version}
-%patch0 -p1
 
 %build
 %if %{without test}
