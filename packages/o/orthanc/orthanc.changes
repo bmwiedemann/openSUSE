@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Oct 16 10:46:46 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.8.0
+* Serving the content of Orthanc as a WebDAV network share
+* New config options: "WebDavEnabled", "WebDavDeleteAllowed" and "WebDavUploadAllowed"
+
+-------------------------------------------------------------------
+Fri Sep 18 14:50:14 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.7.4
+* New configuration options to enable HTTP peers identification through certificates:
+  "SslVerifyPeers" and "SslTrustedClientCertificates"
+* New configuration option "SyncStorageArea" to immediately commit the files onto the disk
+  (through fsync()), so as to avoid discrepencies between DB and filesystem in case of hard
+  shutdown of the machine running Orthanc. This slows down adding new files into Orthanc.
+* Underscores are now allowed in peers/modalities symbolic names
+* Fix compatibility with C-MOVE SCU requests issued by Ambra
+* Fix transcoding in C-MOVE SCP, in the case where "SynchronousCMove" is "true"
+* When checking DICOM allowed methods, if there are multiple modalities with the same AET, 
+  differentiate them from the calling IP
+* Enable the access to raw frames in Philips ELSCINT1 proprietary compression
+* Support empty key passwords when using HTTP client certificates
+* Fix handling of "ModalitiesInStudy" (0008,0061) in C-FIND and "/tools/find"
+
+-------------------------------------------------------------------
+Tue Aug 25 09:02:07 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.7.3
+
+* API version upgraded to 8
+* "/peers/{id}/store": New option "Compress" to compress DICOM data using gzip
+* "OrthancPeerStore" jobs now report the transmitted size in their public content
+*  New config option "Worklist.LimitAnswers" for the sample modality worklist plugin
+* Add missing tag "Retrieve AE Title (0008,0054)" in C-FIND SCP responses
+* Fix DICOM SCP filters if some query tag has > 256 characters (list of UIDs matching)
+* "/series/.../ordered-slices" supports spaces in Image Position/Orientation Patient tags
+* Fix possible crash in HttpClient if sending multipart body (can occur in STOW-RS)
+* Support receiving multipart messages larger than 2GB in the embedded HTTP server 
+
+-------------------------------------------------------------------
+Sun Aug  2 15:19:18 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.7.2 
+  * C-FIND SCP now returns private tags (cf. option "DefaultPrivateCreator")
+  * Packaging of the Orthanc framework as a shared library
+  * New change types in the SDK: JobSubmitted, JobSuccess, JobFailure
+  * Issue #182: Better reporting of errors in plugins reading chunked HTTP body
+  * Fix issue #183 (C-ECHO always fails in Orthanc Explorer, regression from 1.6.1 to 1.7.0)
+
+-------------------------------------------------------------------
 Wed May 27 14:24:06 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.7.1

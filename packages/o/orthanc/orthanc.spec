@@ -18,7 +18,7 @@
 
 
 Name:           orthanc
-Version:        1.7.1
+Version:        1.8.0
 Release:        0
 Summary:        RESTful DICOM server for healthcare and medical research
 License:        GPL-3.0-or-later
@@ -30,7 +30,6 @@ Source2:        orthanc-readme.SUSE
 Source3:        serve-folders.json
 Source4:        worklists.json
 Source5:        index.html
-Source6:        VersionsTests.cpp
 Source7:        orthanc-rpmlintrc
 Source8:        Configuration.json
 # Sources for plugin - need a defined version, so taking them from orthanc-server
@@ -51,6 +50,7 @@ BuildRequires:  help2man
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_date_time-devel >= 1.66
 BuildRequires:  libboost_filesystem-devel >= 1.66
+BuildRequires:  libboost_iostreams-devel >= 1.66
 BuildRequires:  libboost_locale-devel >= 1.66
 BuildRequires:  libboost_regex-devel >= 1.66
 BuildRequires:  libboost_system-devel >= 1.66
@@ -121,21 +121,22 @@ This package includes the source files for Orthanc. Use it in conjunction with t
 
 cp %{S:1} %{S:2} .	
 
-cp %{S:6} UnitTestsSources/.
+##cp %{S:6} UnitTestsSources/.
 
 #slight change in standard configuration for OrthancStorage
-cp %{S:8} Resources/.
+cp %{S:8} OrthancServer/Resources/.
 
 #OrthanPlugins may ask for additional files to be loaded
 #Putting them into this folder prevents download of sources from the web
-mkdir -p Plugins/Samples/ConnectivityChecks/ThirdPartyDownloads
-cp %{S:10} %{S:11} %{S:12} %{S:13} Plugins/Samples/ConnectivityChecks/ThirdPartyDownloads/.
+mkdir -p OrthancServer/Plugins/Samples/ConnectivityChecks/ThirdPartyDownloads
+cp %{S:10} %{S:11} %{S:12} %{S:13} OrthancServer/Plugins/Samples/ConnectivityChecks/ThirdPartyDownloads/.
 
 %build
-%cmake	.. \
+%cmake	../OrthancServer \
     -DSTANDALONE_BUILD:BOOL=ON \
     -DSTATIC_BUILD:BOOL=OFF \
     -DENABLE_CIVETWEB=ON \
+    -DORTHANC_UNIT_TESTS_LINK_FRAMEWORK=OFF \
     -DUSE_SYSTEM_MONGOOSE=OFF \
     -DSYSTEM_MONGOOSE_USE_CALLBACKS=OFF \
     -DUNIT_TESTS_WITH_HTTP_CONNEXIONS=OFF \
@@ -151,7 +152,7 @@ help2man ./Orthanc -N -n "Lightweight, RESTful DICOM server for healthcare and m
 %ifarch != ix86
 build/UnitTests 
 %else
-build/UnitTests --gtest_filter=-ImageProcessing.Convolution 
+build/UnitTests --gtest_filter=-ImageProcessing.Convolution --gtest_filter=-Version.CivetwebCompression
 %endif
 
 %install
@@ -217,8 +218,8 @@ ln -s ../../../..%{_libdir}/%{name}/libConnectivityChecks.so.%{version} \
 
 # Prepare documentation: "index.html", Doxygen of plugin SDK, and sample codes
 cp -r %{S:5} %{buildroot}%{_docdir}/%{name}/
-cp -r Resources/Samples/ %{buildroot}%{_docdir}/%{name}/Samples
-cp -r Plugins/Samples/ %{buildroot}%{_docdir}/%{name}/OrthancPluginSamples
+cp -r OrthancServer/Resources/Samples/ %{buildroot}%{_docdir}/%{name}/Samples
+cp -r OrthancServer/Plugins/Samples/ %{buildroot}%{_docdir}/%{name}/OrthancPluginSamples
 
 %pre 
 getent group orthanc >/dev/null || groupadd -r orthanc
