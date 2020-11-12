@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 10 12:17:44 UTC 2020 - olaf@aepfle.de
+
+- Remove kexec-tools-xen-balloon-up.patch (bsc#1176606)
+  This patch was introduced to address bug#694863, it enabled kexec
+  for HVM at that time. Meanwhile Xen 4.7 introduced "soft-reset"
+  for HVM domUs. This host feature removed the requirement to
+  un-ballon the domU prior kexec.
+  With Xen 4.13 cpuid faulting became the default, which affected the
+  approach used in this patch to detect the domU type. As a result
+  invoking kexec in dom0 failed.
+
+-------------------------------------------------------------------
 Fri Jun  5 09:36:21 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Make kexec-bootloader work without 'which' package (boo#1172501)

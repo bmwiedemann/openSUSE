@@ -27,7 +27,6 @@ Source1:        kexec-bootloader
 Source2:        kexec-bootloader.8
 Source3:        kexec-load.service
 Source4:        %{name}-rpmlintrc
-Patch2:         %{name}-xen-balloon-up.patch
 Patch3:         %{name}-disable-test.patch
 Patch4:         %{name}-vmcoreinfo-in-xen.patch
 Patch5:         %{name}-add-variant-helper-functions.patch
@@ -63,7 +62,6 @@ the loaded kernel after it panics.
 
 %prep
 %setup -q
-%patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
