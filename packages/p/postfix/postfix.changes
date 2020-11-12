@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Nov  8 20:59:23 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Update to 3.5.8
+  * The Postfix SMTP client inserted <CR><LF> into message headers longer
+    than $line_length_limit (default: 2048), causing all subsequent header
+    content to become message body content.
+  * The postscreen daemon did not save a copy of the
+    postscreen_dnsbl_reply_map lookup result. This has no effect when the
+    recommended texthash: look table is used, but it could result in stale
+    data with other lookup tables.
+  * After deleting a recipient with a Milter, the Postfix recipient
+    duplicate filter was not updated; the filter suppressed requests
+    to add the recipient back.
+  * Memory leak: the static: maps did not free their casefolding buffer.
+  * With "smtpd_tls_wrappermode = yes", the smtps service was waiting for a
+    TLS handshake, after processing an XCLIENT command.
+  * The smtp_sasl_mechanism_filter implementation ignored table lookup
+    errors, treating them as 'not found'.
+  * The code that looks for Delivered-To: headers ignored headers longer
+    than $line_length_limit (default: 2048).
+
+-------------------------------------------------------------------
 Mon Aug 31 13:38:04 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Update to 3.5.7
