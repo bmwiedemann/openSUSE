@@ -21,7 +21,7 @@
 # Please see OBS home:mirabile/mksh for a package for other distributions.
 
 Name:           mksh
-Version:        59b
+Version:        59c
 Release:        0
 Summary:        MirBSD Korn Shell
 License:        MirOS AND ISC

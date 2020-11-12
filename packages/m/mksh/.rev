@@ -419,4 +419,12 @@ The next upstream release (R58 most likely) will add -fno-lto to CFLAGS and LDFL
     <comment></comment>
     <requestid>828388</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1fa774fd8af6b3361f2576561e9ac298</srcmd5>
+    <version>59c</version>
+    <time>1605217718</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848112</requestid>
+  </revision>
 </revisionlist>
