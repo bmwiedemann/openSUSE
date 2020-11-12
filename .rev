@@ -617,4 +617,13 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
 * SELinux: Exclude security.selinux attribute from rsyncing (again)</comment>
     <requestid>844985</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>de9bc551f6956e712559aa410bd35bf1</srcmd5>
+    <version>2.28.3</version>
+    <time>1605217040</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.38.3
+  - SELinux: Make synchronisation work for both pre-SELinux snapshots and later snapshots; SELinux support should be ready for most tasks now.</comment>
+    <requestid>847069</requestid>
+  </revision>
 </revisionlist>
