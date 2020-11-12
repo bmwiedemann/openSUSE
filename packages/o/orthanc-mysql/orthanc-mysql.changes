@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 22 08:13:50 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- switch build system to orthanc-framework (static)
+
+-------------------------------------------------------------------
 Sat Jan 25 17:59:04 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - OrthancMySQL V2.0 - initial build on OBS 

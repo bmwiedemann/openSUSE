@@ -1,7 +1,7 @@
 #
 # spec file for package orthanc-mysql
 #
-# Copyright (c) 2020 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,8 +13,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           orthanc-mysql
 Summary:        Database plugin for Orthanc
@@ -22,13 +23,13 @@ License:        AGPL-3.0-or-later
 Group:          Productivity/Databases/Tools
 Version:        2.0
 Release:        0
-Url:            https://orthanc-server.com
+URL:            https://orthanc-server.com
 Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-mysql/OrthancMySQL-%{version}.tar.gz
 Source1:        orthanc-mysql-readme.SUSE
 Source2:        mysql.json
-BuildRequires:  gcc-c++
 BuildRequires:  cmake
 BuildRequires:  e2fsprogs-devel
+BuildRequires:  gcc-c++
 BuildRequires:  googletest-devel
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_date_time-devel >= 1.66
@@ -38,18 +39,18 @@ BuildRequires:  libboost_regex-devel >= 1.66
 BuildRequires:  libboost_system-devel >= 1.66
 BuildRequires:  libboost_thread-devel >= 1.66
 BuildRequires:  libcurl-devel
-BuildRequires:  openssl-devel
-BuildRequires:  orthanc-devel
-BuildRequires:  orthanc-source
 BuildRequires:  libmysqld-devel
+BuildRequires:  openssl-devel
+BuildRequires:  orthanc-framework-devel
+BuildRequires:  orthanc-framework-source
 BuildRequires:  unzip
 BuildRequires:  uuid-devel
 BuildRequires:  zlib-devel
 
-Requires:       orthanc
 Requires:       mariadb
+Requires:       orthanc
 
-BuildRoot:      OrthancMySQL-%{version}-build
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 MySQL/mariadb Database plugin for Orthanc, replaces SQLite database
@@ -67,7 +68,7 @@ MySQL/mariadb Database plugin for Orthanc, replaces SQLite database
        -DORTHANC_FRAMEWORK_ROOT=/usr/src/orthanc/ \
        -DBoost_NO_BOOST_CMAKE=ON \
        -DLIB_INSTALL_DIR=%{_libdir}/share/orthanc/plugins/
-                      
+
 %cmake_build %{?_smp_mflags}
 
 %install
@@ -85,7 +86,7 @@ mv %{buildroot}%{_prefix}/share/orthanc/plugins/*.so* %{buildroot}%{_libdir}/sha
 #Link from lib64 to orthanc plugin-directory, where it is expected
 ln -s ../../../..%{_libdir}/share/orthanc/plugins/libOrthancMySQLIndex.so.%{version} \
       %{buildroot}%{_prefix}/share/orthanc/plugins/libOrthancMySQLIndex.so
-      
+
 ln -s ../../../..%{_libdir}/share/orthanc/plugins/libOrthancMySQLStorage.so.%{version} \
       %{buildroot}%{_prefix}/share/orthanc/plugins/libOrthancMySQLStorage.so
 
