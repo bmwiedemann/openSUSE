@@ -20,7 +20,7 @@
 %define libname libxfconf-0-3
 
 Name:           xfconf
-Version:        4.14.3
+Version:        4.14.4
 Release:        0
 Summary:        Simple Configuration Storage for Xfce
 License:        GPL-2.0-or-later

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  9 09:21:40 UTC 2020 - Ali Abdallah <ali.abdallah@suse.com>
+
+- Update to version 4.14.4
+  * fix use after free bug in xfconf-cache (gxo#xfce/xfconf#16)
+
+-------------------------------------------------------------------
 Wed May  6 15:15:17 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 4.14.3
