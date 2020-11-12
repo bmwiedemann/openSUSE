@@ -33,6 +33,7 @@ BuildRequires:  e2fsprogs-devel
 BuildRequires:  gcc-c++
 BuildRequires:  googletest-devel
 BuildRequires:  jsoncpp-devel
+BuildRequires:  libboost_atomic-devel >= 1.66
 BuildRequires:  libboost_date_time-devel >= 1.66
 BuildRequires:  libboost_filesystem-devel >= 1.66
 BuildRequires:  libboost_locale-devel >= 1.66
@@ -40,8 +41,8 @@ BuildRequires:  libboost_regex-devel >= 1.66
 BuildRequires:  libboost_system-devel >= 1.66
 BuildRequires:  libboost_thread-devel >= 1.66
 BuildRequires:  openssl-devel
-BuildRequires:  orthanc-devel
-BuildRequires:  orthanc-source
+BuildRequires:  orthanc-framework-devel
+BuildRequires:  orthanc-framework-source
 BuildRequires:  postgresql-devel
 #Tumbleweed and Leap >= 15.2
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200

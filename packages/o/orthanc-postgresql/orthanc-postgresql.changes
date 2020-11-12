@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 22 08:35:21 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- switch to orthanc-framework (static version)
+  psql114.patch extended for psql 12/13 versions
+
+-------------------------------------------------------------------
 Sun Mar 15 02:26:01 UTC 2020 - Max Lin <mlin@suse.com>
 
 - For Leap version >= 15.2, postgresql-server-devel need to be used
