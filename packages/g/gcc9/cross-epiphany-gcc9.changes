@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 12 11:30:09 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Fix 32bit libgnat.so link.  [bsc#1178675]
+
+-------------------------------------------------------------------
 Thu Sep  3 06:42:37 UTC 2020 - Richard Biener <rguenther@suse.com>
 
 - Update to releases/gcc-9 head (9790fa53b48f3a48e0f7a7ad), git1684.

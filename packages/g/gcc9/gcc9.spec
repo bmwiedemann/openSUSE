@@ -2333,7 +2333,7 @@ chmod a+x %{buildroot}/%{_libdir}/libgna*-*.so
 %if %{biarch}
 mv %{buildroot}/%{versmainlibdirbi}/adalib/lib*-*.so %{buildroot}/%{mainlibdirbi}/
 ln -sf %{mainlibdirbi}/libgnarl%{binsuffix}.so %{buildroot}/%{versmainlibdirbi}/adalib/libgnarl.so
-ln -sf %{mainlibdirbi}/libgnat%{binsuffix}.so %{buildroot}/%{versmainlibdirbi}/adalib/libgnarl.so
+ln -sf %{mainlibdirbi}/libgnat%{binsuffix}.so %{buildroot}/%{versmainlibdirbi}/adalib/libgnat.so
 chmod a+x %{buildroot}/%{mainlibdirbi}/libgna*-*.so
 %endif
 %endif

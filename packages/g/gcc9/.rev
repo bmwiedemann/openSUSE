@@ -232,4 +232,12 @@ release expected in about a week.
   * Includes fix for performance regression on powerpc [bsc#1176097]</comment>
     <requestid>831653</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>fd85874814cce7616003e5d45f03d74d</srcmd5>
+    <version>9.3.1+git1684</version>
+    <time>1605217698</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix 32bit libgnat.so link.  [bsc#1178675]</comment>
+    <requestid>848104</requestid>
+  </revision>
 </revisionlist>
