@@ -485,4 +485,12 @@
     <comment>version update</comment>
     <requestid>844312</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>b8237e734ce55aef017b5dd83d11df14</srcmd5>
+    <version>2.11.1.1</version>
+    <time>1605217539</time>
+    <user>dimstar_suse</user>
+    <comment>Automated update of haskell pckages</comment>
+    <requestid>847884</requestid>
+  </revision>
 </revisionlist>
