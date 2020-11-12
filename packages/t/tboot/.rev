@@ -542,4 +542,15 @@
     - tboot-grub2-fix-xen-submenu-name.patch: refreshed</comment>
     <requestid>838277</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>5aa4f2f0c8b5080bd5841aee55655d7c</srcmd5>
+    <version>20200429_1.9.12</version>
+    <time>1605217711</time>
+    <user>dimstar_suse</user>
+    <comment>- add tboot-grub2-refuse-secure-boot.patch: don't generate tboot menu entries
+  in grub when the system is running with UEFI Secure Boot (bsc#1175114). This
+  prevents hard to understand error messages when trying to boot tboot in this
+  context.</comment>
+    <requestid>848115</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 12 12:19:51 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- add tboot-grub2-refuse-secure-boot.patch: don't generate tboot menu entries
+  in grub when the system is running with UEFI Secure Boot (bsc#1175114). This
+  prevents hard to understand error messages when trying to boot tboot in this
+  context.
+
+-------------------------------------------------------------------
 Mon Sep 28 12:14:22 UTC 2020 - matthias.gerstner@suse.com
 
 - update to new upstream release 1.9.12:

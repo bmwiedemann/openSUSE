@@ -28,6 +28,7 @@ Source0:        http://downloads.sourceforge.net/project/tboot/tboot/tboot-%{ver
 Patch3:         tboot-grub2-fix-menu-in-xen-host-server.patch
 Patch4:         tboot-grub2-fix-xen-submenu-name.patch
 Patch7:         tboot-distributor.patch
+Patch8:         tboot-grub2-refuse-secure-boot.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64
 BuildRequires:  openssl-devel
@@ -54,6 +55,7 @@ verified launch of an OS kernel/VMM.
 %patch3 -p1
 %patch4 -p1
 %patch7 -p1
+%patch8 -p1
 
 %build
 # Tumbleweed now uses -flto=3 by default which gives us trouble with the
