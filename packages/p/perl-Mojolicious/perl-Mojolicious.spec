@@ -17,7 +17,7 @@
 
 
 Name:           perl-Mojolicious
-Version:        8.64
+Version:        8.65
 Release:        0
 %define cpan_name Mojolicious
 Summary:        Real-time web framework

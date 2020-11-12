@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 12 03:10:26 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 8.65
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  8.65  2020-11-10
+    - Added generate dockerfile command. (tianon)
+    - Improved cookbook with container deployment recipe.
+    - Improved security of secure_compare function in Mojo::Util. (robrwo)
+    - Fixed all generated code to consistently use a *::Sandbox class, instead of *::SandBox.
+
+-------------------------------------------------------------------
 Sat Nov  7 03:19:45 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 8.64
