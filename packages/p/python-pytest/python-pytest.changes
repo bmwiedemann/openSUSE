@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 10 17:41:51 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix boo#1178547: include transition for pytest py.test
+  alternative master switch 
+
+-------------------------------------------------------------------
 Thu Oct 29 09:12:41 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 6.1.2 
