@@ -17,7 +17,7 @@
 
 
 Name:           minitube
-Version:        3.5.1
+Version:        3.6.5
 Release:        0
 Summary:        Native YouTube Client
 License:        GPL-3.0-or-later
@@ -34,7 +34,7 @@ BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-qtdeclarative-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Core) >= 5.10
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Script)
@@ -88,8 +88,8 @@ popd
 %dir %{_datadir}/icons/hicolor/*/
 %dir %{_datadir}/icons/hicolor/*/apps/
 %{_datadir}/icons/hicolor/*/apps/%{name}*
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/%{name}.appdata.xml
+%dir %{_datadir}/metainfo/
+%{_datadir}/metainfo/org.tordini.flavio.minitube.metainfo.xml
 %{_mandir}/man?/%{name}.?%{?ext_man}
 
 %files lang
