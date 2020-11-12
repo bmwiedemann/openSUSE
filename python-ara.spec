@@ -27,7 +27,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ara
-Version:        1.5.1
+Version:        1.5.3
 Release:        0
 Summary:        ARA Records Ansible
 License:        GPL-3.0-or-later

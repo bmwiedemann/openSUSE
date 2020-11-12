@@ -115,4 +115,19 @@
     &quot;ara-manage migrate&quot;.</comment>
     <requestid>838632</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>10dbce834fb321268c87c1cea567ce45</srcmd5>
+    <version>1.5.3</version>
+    <time>1605217560</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.3:
+  * Significant performance improvement by running non-blocking API calls in threads
+  * Handler tasks are now also recorded in addition to regular tasks
+  * API
+    + Add support for searching handler tasks (ex: /api/v1/tasks?handler=true)
+  * UI
+    + Hosts in the playbook report are now sorted alphabetically by hostname
+    + Added a column to display the number of tasks in the playbook summary</comment>
+    <requestid>847969</requestid>
+  </revision>
 </revisionlist>
