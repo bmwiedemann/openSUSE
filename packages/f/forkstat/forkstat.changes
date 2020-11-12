@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov  7 18:17:09 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.02.16
+  * forkstat: handle weird comm field in /proc/$PID/stat
+  * conditionally build in helper functions
+
+-------------------------------------------------------------------
 Mon Aug 17 12:41:40 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.02.15:
