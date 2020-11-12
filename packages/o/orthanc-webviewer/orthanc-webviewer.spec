@@ -43,9 +43,9 @@ BuildRequires:  libboost_regex-devel >= 1.66
 BuildRequires:  libboost_system-devel >= 1.66
 BuildRequires:  libboost_thread-devel >= 1.66
 BuildRequires:  libuuid-devel
-BuildRequires:  orthanc-devel
+BuildRequires:  orthanc-framework-devel
+BuildRequires:  orthanc-framework-source
 BuildRequires:  orthanc-gdcm
-BuildRequires:  orthanc-source
 BuildRequires:  sqlite3-devel
 BuildRequires:  unzip
 
