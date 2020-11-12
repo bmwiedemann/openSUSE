@@ -42,6 +42,9 @@ BuildRequires:  libxslt-devel
 BuildRequires:  libyaml-devel
 BuildRequires:  llvm-devel
 BuildRequires:  python-rpm-macros
+# The hotdoc cli files were provided as separate package between Aug and Nov 2020
+Obsoletes:      hotdoc < %{version}-%{release}
+Provides:       hotdoc = %{version}-%{release}
 # The c extension needs libclang.so and llvm-config
 Requires:       clang-devel
 Requires:       llvm-devel
@@ -68,20 +71,6 @@ such as parsing C and extracting symbols with clang, parsing
 gobject-introspection (gir) files, highlighting the syntax of code snippets
 with prism, etc.
 
-%package -n hotdoc
-Summary:        A documentation tool micro-framework
-Group:          Development/Tools/Doc Generators
-Requires:       python3-hotdoc
-
-%description -n hotdoc
-Hotdoc is a documentation framework. It provides an interface for extensions
-to plug upon, along with some base objects (formatters, ...)
-
-Hotdoc is distributed with a set of extensions that perform various tasks,
-such as parsing C and extracting symbols with clang, parsing
-gobject-introspection (gir) files, highlighting the syntax of code snippets
-with prism, etc.
-
 %prep
 %setup -q -n hotdoc-%{version}
 %patch0 -p1
@@ -96,16 +85,22 @@ sed -i -e '1s,#! /usr/bin/env sh,#!/usr/bin/sh,' ./hotdoc/extensions/gi/transiti
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/hotdoc
+%python_clone -a %{buildroot}%{_bindir}/hotdoc_dep_printer
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+
+%post
+%python_install_alternative hotdoc hotdoc_dep_printer
+
+%postun
+%python_uninstall_alternative hotdoc
 
 %files %{python_files}
 %license COPYING
-%{python_sitearch}/hotdoc*
-
-%files -n hotdoc
-%license COPYING
 %doc README.md
-%python3_only %{_bindir}/hotdoc
-%python3_only %{_bindir}/hotdoc_dep_printer
+%{python_sitearch}/hotdoc
+%{python_sitearch}/hotdoc-%{version}*-info
+%python_alternative %{_bindir}/hotdoc
+%python_alternative %{_bindir}/hotdoc_dep_printer
 
 %changelog
