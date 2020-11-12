@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 22 08:02:43 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.3
+* Support transcoding in WADO-RS RetrieveStudy, RetrieveSeries and RetrieveInstance
+* Support of dynamic linking against the system-wide Orthanc framework library
+* Support rendering of images whose pixel format is uint8_t
+* Fix ".../rendered" on MONOCHROME1 images
+* Fix default windowing in rendered frames using WADO-URI and WADO-RS
+* More verbose logs to debug chunked transfers
+
+-------------------------------------------------------------------
 Wed May 27 14:35:56 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.2
