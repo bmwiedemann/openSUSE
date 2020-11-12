@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-xdg
-Version:        4.0.1
+Version:        5.0.0
 Release:        0
 Summary:        Variables defined by the XDG Base Directory Specification
 License:        ISC
-Group:          Development/Languages/Python
 URL:            https://github.com/srstevenson/xdg
 Source:         https://files.pythonhosted.org/packages/source/x/xdg/xdg-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/srstevenson/xdg/master/test/test_xdg.py
