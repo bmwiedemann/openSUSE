@@ -107,6 +107,19 @@ newer Pytest versions
 
 %if ! %{with test}
 %post
+# py.test was the master until Oct 2020. boo#1178547
+alternatives=$(update-alternatives --quiet --list py.test 2> /dev/null) && (
+  update-alternatives --remove-all py.test
+  # reinstall group with new master for all existing flavors except ourself
+  for a in $alternatives; do
+    if [ $a != %{_bindir}/py.test-%{python_bin_suffix} ]; then
+      bin_suffix=${a##*-}
+      prio=${bin_suffix/./}
+      update-alternatives --quiet --install %{_bindir}/pytest pytest ${a/py.test/pytest} $prio \
+         --slave %{_bindir}/py.test py.test $a
+    fi
+  done
+) ||:
 %python_install_alternative pytest py.test
 
 %postun
