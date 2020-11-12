@@ -1,10 +1,76 @@
 -------------------------------------------------------------------
+Thu Nov  5 09:40:25 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- dropped patches: disable-rpaths.diff disable-strip.diff not
+  applicable to SIP5 codebase 
+
+-------------------------------------------------------------------
 Sun Oct 25 21:22:24 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix for multiple python3 flavors gh#openSUSE/python-rpm-macros#64
 - clean up alternatives: use %python_clone -a 
 - only make install in siplib for PyQt4.sip and PyQt5.sip libraries
 
+-------------------------------------------------------------------
+Mon Aug 31 00:26:30 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 5.4.0
+  * The latest version of the module ABI is v12.8.1.
+  * Python v3.9 is supported.
+  * Added support for building the sip module for PyPy.
+  * Added the 'distinfo' project option to allow the creation of a .dist-info
+    directory to be disabled.  sip-install has a corresponding '--no-distinfo'
+    command line option.
+  * Added 'SIP_VERSION' and 'SIP_VERSION_STR' to the 'sipbuild' module API.
+  * Bug fixes.
+- Legacy sip4 is now in python-sip4 package
+ 
+-------------------------------------------------------------------
+Fri Aug 28 19:55:11 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 5.3.0
+  * The latest version of the module ABI is v12.8.0.
+  * Added the 'get_metadata_overrides()' and 'get_sip_distinfo_command_line()'
+    methods to the 'Project' class, and the '--metadata' command line option to
+    sip-distinfo.  Together they allow a project.py script to override any
+    PEP 566 metadata values specified in the pyproject.toml file.
+  * Added the 'gui-scripts' project option to specify a list of GUI entry
+    points to create.  sip-distinfo has a corresponding '--gui-script' command
+    line option.
+  * Added the 'minimum-macos-version' project option to specify the minimum
+    version of macOS supported by the project.
+- Changelogs of intermediate releases:
+  v5.2.0 released 10th April 2020
+  * Added the 'manylinux' project option to disable the support for 'manylinux'
+    part of the platform tag to be used in the name of a wheel.  sip-wheel has
+    a corresponding '--no-manylinux' command line option.
+  * Added the 'wheels-include' project option to specify additional files and
+    directories to be included in a wheel.
+  v5.1.2 released 3rd April 2020
+  * The latest version of the module ABI is v12.7.2.
+  * The examples are now included in the sdist.
+  * Bug fixes.
+  v5.1.1 released 31st January 2020
+  * Bug fixes.
+  v5.1.0 released 6th January 2020
+  * Added the 'minimum-glibc-version' project option to specify the minimum
+    GLIBC version required by the project.  This is used to determine the
+    correct platform tag to use for Linux wheels.
+  * Added the 'build-tag' project option to specify the build tag to be used in
+    the name of a wheel.  sip-wheel has a corresponding '--build-tag' command
+    line option.
+  * The values of list options in pyproject.toml files can now contain
+    environment markers as defined in PEP 508.
+  * Added Project.project_path() to the API.
+  released v5.0.1 19th December 2019
+  * Bug fixes.
+  releasesd v5.0.0 4th October 2019
+  * The release of SIP v5.
+- The new major release uses Python setuptools
+  * Allows to simplify the specfile tremendously
+  * The abi macros and python-sip(api) are now provided by python-qt5-sip
+  * Remove -common and -devel package. 
+  
 -------------------------------------------------------------------
 Thu Aug 27 19:26:56 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 

@@ -907,4 +907,12 @@ I need to make a separate request for the py2 version.
     <comment></comment>
     <requestid>844384</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>75eb2ea975136077b3489f5e515fdf9e</srcmd5>
+    <version>5.4.0</version>
+    <time>1605216968</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.3.0</comment>
+    <requestid>846240</requestid>
+  </revision>
 </revisionlist>
