@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Nov  7 15:34:52 UTC 2020 - psimons@suse.com
+
+- Update commonmark to version 0.1.1.2.
+  ## 0.1.1.2
+
+  * Fix bug in fix to #65 (#66).
+
+  ## 0.1.1.1
+
+  * Fixed corner case with link suffix parsing, which could result
+    in dropped tokens in certain cases (#65).
+
+-------------------------------------------------------------------
+Mon Nov  2 03:03:04 UTC 2020 - psimons@suse.com
+
+- Update commonmark to version 0.1.1.
+  ## 0.1.1
+
+  * Export `reverseSubforests` from `Commonmark.Blocks` [API change] (#64).
+
+-------------------------------------------------------------------
 Tue Aug 18 10:44:21 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.
