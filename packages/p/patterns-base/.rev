@@ -547,4 +547,12 @@
 - Stop trying to install grub2-branding on ppc64/ppc64le [boo#1171146]</comment>
     <requestid>842796</requestid>
   </revision>
+  <revision rev="63" vrev="9">
+    <srcmd5>cdddf25781fae8e4c92f5c65aea392df</srcmd5>
+    <version>20200505</version>
+    <time>1605216779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847744</requestid>
+  </revision>
 </revisionlist>

@@ -204,7 +204,7 @@ Recommends:     libgnomesu
 Recommends:     openssh-askpass-gnome
 
 %description basic_desktop
-This pattern installs a rather basic desktop (icewm) 
+This pattern installs a rather basic desktop (icewm)
 
 %files basic_desktop
 %dir %{_docdir}/patterns
@@ -615,6 +615,37 @@ This pattern holds files required for booting the system
 
 ################################################################################
 
+%if 0%{?is_opensuse}
+%package selinux
+%pattern_basetechnologies
+Summary:        SELinux
+Group:          Metapackages
+Provides:       pattern() = selinux
+Provides:       pattern-icon() = pattern-selinux
+Provides:       pattern-order() = 1110
+Provides:       pattern-visible()
+Requires:       pattern() = minimal_base
+
+Recommends:     checkpolicy
+Recommends:     container-selinux
+Requires:       policycoreutils
+Recommends:     restorecond
+Requires:       selinux-policy
+Recommends:     selinux-policy-targeted
+Requires:       selinux-autorelabel
+Requires:       selinux-tools
+
+%description selinux
+Security-Enhanced Linux (SELinux) provides a mechanism for supporting access control security policies, including mandatory access controls (MAC).
+Its architecture strives to separate enforcement of security decisions from the security policy, and streamlines the amount of software involved with security policy enforcement.
+
+%files selinux
+%dir %{_docdir}/patterns
+%{_docdir}/patterns/selinux.txt
+%endif
+
+################################################################################
+
 %package sw_management
 %pattern_basetechnologies
 Summary:        Software Management
@@ -963,7 +994,7 @@ mkdir -p %{buildroot}%{_docdir}/patterns
 for i in apparmor base enhanced_base minimal_base \
      sw_management x11 x11_enhanced; do
 %else
-for i in apparmor base enhanced_base  minimal_base sw_management x11 x11_enhanced; do
+for i in apparmor base enhanced_base minimal_base sw_management x11 x11_enhanced; do
 %endif
     echo "This file marks the pattern $i to be installed." \
     >"%{buildroot}%{_docdir}/patterns/$i.txt"
@@ -974,7 +1005,7 @@ done
 # These packages don't generate a 32bit pattern
 for i in \
 %if 0%{?is_opensuse}
-basesystem bootloader basic_desktop console documentation transactional_base update_test \
+basesystem bootloader basic_desktop console documentation selinux transactional_base update_test \
 %else
 %ifnarch s390 s390x
 32bit \
