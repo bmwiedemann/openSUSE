@@ -19,7 +19,7 @@
 %global pkg_name commonmark-extensions
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.0.1
+Version:        0.2.0.4
 Release:        0
 Summary:        Pure Haskell commonmark parser
 License:        BSD-3-Clause

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Nov  7 15:35:27 UTC 2020 - psimons@suse.com
+
+- Update commonmark-extensions to version 0.2.0.4.
+  ## 0.2.0.4
+
+  - Add a test for autolinks (#66).
+  - Require commonmark 0.1.1.2 (otherwise autolinks don't work
+    properly).
+
+  ## 0.2.0.3
+
+  - Add some new test examples to the autolinks extension spec (#65).
+  - Allow interior `~` characters in autolinks (#65).
+
+-------------------------------------------------------------------
+Tue Nov  3 10:09:06 UTC 2020 - psimons@suse.com
+
+- Update commonmark-extensions to version 0.2.0.2.
+  ## 0.2.0.2
+
+  - Remove unnecessary Typeable constraint on `TaskList` and
+    `gfmExtensions` (#58).
+
+  - Fix bug in `footnote` extension:  multiple blocks in
+    a block container (e.g. block quote or list) inside
+    a footnote were being rendered in reverse order (#63,
+    Harald Gliebe).
+
+-------------------------------------------------------------------
 Tue Aug 18 10:44:22 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.
