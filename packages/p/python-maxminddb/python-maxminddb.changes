@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov  1 18:30:49 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.0.3:
+  - The 2.0.0 release unintentionally required Python to be compiled with
+    ``mmap`` support for the module to work. ``mmap`` is now optional
+    again. Reported by john-heasman-cg. GitHub #76.
+
+-------------------------------------------------------------------
 Sun Aug 16 14:12:17 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Replace nose with pytest
