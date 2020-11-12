@@ -7,7 +7,7 @@ Fri Jun 29 15:35:14 UTC 2018 - olaf@aepfle.de
 -------------------------------------------------------------------
 Mon Jun 11 13:16:06 UTC 2018 - tchvatal@suse.com
 
-- Update to 2.0.1:
+- Update to 2.0.1 (bsc#1108134, bsc#1094761):
   * Upstream tagged tarball with the libcido fixes bellow so use
     the release tarball instead of cvs snapshot
 - Completely drop vcdimager-texinfo-5.0.patch as it was fixed
