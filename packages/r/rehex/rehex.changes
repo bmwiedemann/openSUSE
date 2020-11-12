@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Wed Nov 11 15:04:28 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+ Version 0.3.0 (2020-11-10)
+  * Use byte grouping setting from main window in diff window.
+  * Use Capstone disassembler rather than LLVM.
+  * Support disassembling 16-bit x86 machine code.
+  * Don't update tools which aren't visible.
+  * Unhardcode linux launcher icon file type.
+  * Fix an uncommon use-after-free crash when closing tabs in
+    diff window.
+   * Support for disassembling 6800/68000 and MOS6502 instruction
+     sets (requires recent Capstone version).
+  * Close document when tab is clicked with middle mouse button.
+  * Don't create .rehex-meta files when there is nothing to save.
+  * Implement Strings tool to find and list ASCII strings in the
+    file.
+  * Add option to calculate automatic bytes per line in whole
+    byte groups.
+  * Add "Fill range" tool for overwriting ranges of bytes with a
+    pattern.
+  * Preserve column alignment after comments.
+  * Mark a document dirty if highlighting is changed.
+  * Add data type annotations.
+  * Show ranges marked as integers in their decoded form in the
+    hex view.
+  * Performance improvements for documents with large numbers of
+    comments.
+  version 0.2.0:
+  * Allow copying comments from a document and pasting them
+    elsewhere in the same document or into another one.
+  * Fixed bounds check when clicking on nested comments in a
+    document.
+  * Added context menu when right clicking on a comment in a
+    document.
+  * Optionally highlight byte sequences which match the current
+    selection. ("Highlight data matching selection" or
+    "PatternMatchHighlight").
+  * Allow copying cursor offset from document context menu.
+  * Correctly display offsets over 4GiB in the status bar.
+  * Display offsets as XXXX:XXXX rather than XXXXXXXX:XXXXXXXX
+    when the file size is under 4GiB.
+  * Add per-document option for dec/hex offset display.
+  * When first byte after a comment is deleted, show that the
+    comment was deleted rather than leaving phantom comment on
+    screen until regions are repopulated.
+   * Add side-by-side comparison of chunks of data from files.
+     Select data and choose "Compare..." from context menu to
+     open diff window.
+  * Clean up search threads when a tab is closed while a search
+    is running.
+  * Display bytes which have been modified since the file was
+    saved in red.
+
+-------------------------------------------------------------------
+Fri Mar 13 12:58:03 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Initial package (v0.1.0)
