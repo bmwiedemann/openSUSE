@@ -51,8 +51,8 @@ BuildRequires:  tcpd-devel
 # Check was missing - end
 BuildRequires:  openjpeg2-devel
 BuildRequires:  openssl-devel
-BuildRequires:  orthanc-devel
-BuildRequires:  orthanc-source
+BuildRequires:  orthanc-framework-devel
+BuildRequires:  orthanc-framework-source
 BuildRequires:  unzip
 
 Requires:       orthanc
