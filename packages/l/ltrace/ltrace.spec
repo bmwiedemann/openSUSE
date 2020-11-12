@@ -73,6 +73,8 @@ child processes may fail or some things may not work as expected.
 export CFLAGS="%{optflags} -Wall -Wno-unused-local-typedefs"
 %configure --disable-shared
 make %{?_smp_mflags}
+
+%check
 %if 1
 if make check
 then
@@ -99,7 +101,6 @@ echo no make check > testsuite/%{_target_cpu}-testrun.sum
 rm -rf %{buildroot}/usr/share/doc/ltrace
 
 %files
-%defattr(-,root,root)
 %doc README
 %license COPYING
 %{_bindir}/ltrace

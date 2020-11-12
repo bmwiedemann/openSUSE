@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 11 13:40:08 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix rpmlint warning make-check-outside-check-section
+  by moving check code to %check section.
+
+-------------------------------------------------------------------
 Thu Feb 13 11:30:05 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Package latest available sources
