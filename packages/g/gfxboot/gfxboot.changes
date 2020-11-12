@@ -1,8 +1,19 @@
+-------------------------------------------------------------------
+Thu Nov  5 14:22:43 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move 'make installsrc' to %install phase, where it belongs to
+  (fixes build with RPM 4.16).
+
 --------------------------------------------------------------------
 Thu Oct 22 10:30:46 UTC 2020 - opensuse-packaging@opensuse.org
 
 - Translated using Weblate (Hindi) (bsc#1149754)
 - 4.5.73
+
+-------------------------------------------------------------------
+Tue Oct 13 09:17:15 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace old specfile constructs.
 
 --------------------------------------------------------------------
 Tue Aug 25 15:38:07 UTC 2020 - opensuse-packaging@opensuse.org

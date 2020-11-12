@@ -1,7 +1,7 @@
 #
 # spec file for package gfxboot
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           gfxboot
 Version:        4.5.73
 Release:        0
 Summary:        Graphical Boot Logo for GRUB, LILO and SYSLINUX
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Boot
-Url:            http://en.opensuse.org/SDB:Gfxboot
+URL:            http://en.opensuse.org/SDB:Gfxboot
 Source:         %{name}-%{version}.tar.xz
 Source1:        KDE.tar.xz
 Source2:        SLED.tar.xz
@@ -47,7 +47,6 @@ Requires:       mtools
 Requires:       perl-HTML-Parser
 Requires:       syslinux
 Recommends:     %{name}-theme >= 4
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %ix86 x86_64
 %perl_requires
 
@@ -116,24 +115,18 @@ Conflicts:      otherproviders(%{name}-branding)
 KDE theme for gfxboot (bootloader graphics).
 
 %prep
-%setup
-%setup -T -D -a 1
-%setup -T -D -a 2
-%setup -T -D -a 3
-%setup -T -D -a 4
-%setup -T -D -a 5
-%setup -T -D -a 6
+%setup -q -a1 -a2 -a3 -a4 -a5 -a6
 
 %build
 # fix build
 export SUSE_ASNEEDED=0
-make DESTDIR=%{buildroot} installsrc
 make X11LIBS=%{_prefix}/X11R6/%{_lib}
 make doc
 make themes
 
 %install
 %make_install
+make DESTDIR=%{buildroot} installsrc
 rm -rf %{buildroot}/etc/bootsplash/themes/openSUSE/
 gzip -9c doc/%{name}.8 >%{name}.8.gz
 install -d -m 755 %{buildroot}%{_mandir}/man8
@@ -154,15 +147,14 @@ touch %{buildroot}/boot/message
 %{name} --update-theme KDE
 
 %files
-%defattr(-,root,root)
 %{_sbindir}/%{name}
 %{_mandir}/man8/%{name}.8.gz
 %dir %{_sysconfdir}/bootsplash
 %dir %{_sysconfdir}/bootsplash/themes
-%doc README.md COPYING
+%doc README.md
+%license COPYING
 
 %files devel
-%defattr(-,root,root)
 %{_sbindir}/%{name}-compile
 %{_sbindir}/%{name}-font
 %{_sbindir}/gfxtest
@@ -171,22 +163,18 @@ touch %{buildroot}/boot/message
 %{_datadir}/%{name}
 
 %files branding-upstream
-%defattr(-,root,root)
 %{_sysconfdir}/bootsplash/themes/upstream
 %ghost /boot/message
 
 %files branding-SLES
-%defattr(-,root,root)
 %{_sysconfdir}/bootsplash/themes/SLES
 %ghost /boot/message
 
 %files branding-SLED
-%defattr(-,root,root)
 %{_sysconfdir}/bootsplash/themes/SLED
 %ghost /boot/message
 
 %files branding-KDE
-%defattr(-,root,root)
 %{_sysconfdir}/bootsplash/themes/KDE
 %ghost /boot/message
 
