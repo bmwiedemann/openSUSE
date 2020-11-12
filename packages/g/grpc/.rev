@@ -216,4 +216,12 @@
 put together with abseil-cpp</comment>
     <requestid>844726</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>b02ea3c542640b85dba10fe0997e6d2b</srcmd5>
+    <version>1.33.2</version>
+    <time>1605216851</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing ldconfig for libupb13.</comment>
+    <requestid>847811</requestid>
+  </revision>
 </revisionlist>

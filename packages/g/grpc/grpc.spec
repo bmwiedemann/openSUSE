@@ -179,6 +179,8 @@ cp -r * "%buildroot/%src_install_dir"
 %postun -n libgrpc++%lverp -p /sbin/ldconfig
 %post   -n libgrpc_plugin_support%lverplugin -p /sbin/ldconfig
 %postun -n libgrpc_plugin_support%lverplugin -p /sbin/ldconfig
+%post   -n libupb%lver -p /sbin/ldconfig
+%postun -n libupb%lver -p /sbin/ldconfig
 
 %files -n libgrpc%lver
 %_libdir/libaddress_sorting.so.%{lver}*
