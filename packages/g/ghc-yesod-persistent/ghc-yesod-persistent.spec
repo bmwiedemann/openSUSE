@@ -19,7 +19,7 @@
 %global pkg_name yesod-persistent
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.6.0.4
+Version:        1.6.0.5
 Release:        0
 Summary:        Some helpers for using Persistent from Yesod
 License:        MIT

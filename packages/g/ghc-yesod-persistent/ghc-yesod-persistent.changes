@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov  7 15:35:56 UTC 2020 - psimons@suse.com
+
+- Update yesod-persistent to version 1.6.0.5.
+  ## 1.6.0.5
+
+  * Add support for Persistent 2.11 [#1701](https://github.com/yesodweb/yesod/pull/1701)
+
+-------------------------------------------------------------------
 Wed Aug 19 06:48:42 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints with min 6GB disk space for ppc64/ppc64le
