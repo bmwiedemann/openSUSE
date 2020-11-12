@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 12 13:55:48 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Updated chessx-use_system_quazip.patch to search also
+  for quazip1-qt5, fixes (boo#1178681)
+
+-------------------------------------------------------------------
 Sat May  9 10:51:39 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.5.4

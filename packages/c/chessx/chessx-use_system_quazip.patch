@@ -59,7 +59,7 @@ Index: chessx-1.5.4/chessx.pro
      src/database/arenabook.cpp \
      src/gui/gamelistsortmodel.cpp \
      src/gui/listwidgetex.cpp
-@@ -412,8 +383,9 @@ INCLUDEPATH += src/database
+@@ -412,8 +383,25 @@ INCLUDEPATH += src/database
  INCLUDEPATH += src/guess
  INCLUDEPATH += src/gui
  INCLUDEPATH += src/dialogs
@@ -67,7 +67,23 @@ Index: chessx-1.5.4/chessx.pro
 -INCLUDEPATH += $$[QT_INSTALL_PREFIX]/src/3rdparty/zlib
 +
 +CONFIG += link_pkgconfig
-+PKGCONFIG += quazip
++packagesExist(quazip1-qt5) {
++  HAVE_QUAZIP = yes
++  PKGCONFIG += quazip1-qt5
++  message("Using quazip1-qt5")
++}
++packagesExist(quazip) {
++  !defined(HAVE_QUAZIP, var) {
++    HAVE_QUAZIP = yes
++    PKGCONFIG += quazip
++    DEFINES += USE_QUAZIP5
++    message("Using quazip")
++  }
++}
++
++!defined(HAVE_QUAZIP, var) {
++  error("Need at least one of quazip1-qt5 or quazip")
++}
  
  win32 {
      # DEFINES += ZLIB_WINAPI
@@ -75,14 +91,19 @@ Index: chessx-1.5.4/src/gui/mainwindow.cpp
 ===================================================================
 --- chessx-1.5.4.orig/src/gui/mainwindow.cpp
 +++ chessx-1.5.4/src/gui/mainwindow.cpp
-@@ -43,8 +43,8 @@
+@@ -43,8 +43,13 @@
  #include "output.h"
  #include "pgndatabase.h"
  #include "playerlistwidget.h"
 -#include "quazip.h"
 -#include "quazipfile.h"
++#ifndef USE_QUAZIP5
++#include <quazip/quazip.h>
++#include <quazip/quazipfile.h>
++#else
 +#include <quazip5/quazip.h>
 +#include <quazip5/quazipfile.h>
++#endif
  #include "savedialog.h"
  #include "settings.h"
  #include "style.h"

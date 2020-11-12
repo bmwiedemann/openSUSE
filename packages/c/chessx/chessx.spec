@@ -41,7 +41,10 @@ BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5TextToSpeech)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
-%if (0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200)
+%if 0%{?suse_version} > 1500
+BuildRequires:  pkgconfig(quazip1-qt5)
+%endif
+%if 0%{?sle_version} == 150200
 BuildRequires:  pkgconfig(quazip)
 %endif
 BuildRequires:  pkgconfig(zlib)
