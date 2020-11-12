@@ -35,8 +35,6 @@ URL:            http://eigen.tuxfamily.org/
 Source0:        https://gitlab.com/libeigen/eigen/-/archive/%{version}/%{srcname}-%{version}.tar.bz2
 Patch0:         0001-Disable-Altivec-for-ppc64le.patch
 Patch1:         0001-Do-stack-allignment-on-ppc.patch
-# PATCH-FIX-OPENSUSE eigen_pkgconfig.patch asterios.dramis@gmail.com -- Fix pkg-config file includedir
-Patch2:         eigen_pkgconfig.patch
 # PATCH-FIX-OPENSUSE 01_install_FindEigen3.patch asterios.dramis@gmail.com -- Install FindEigen3.cmake
 Patch3:         01_install_FindEigen3.patch
 # PATCH-FIX-OPENSUSE eigen3-3.3.1-fixcmake.patch -- Fix double {prefix} as we use INCLUDE_INSTALL_DIR with {_includedir}
@@ -98,14 +96,7 @@ for Linear Algebra
 %endif
 
 %prep
-%setup -q -n %{srcname}-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
+%autosetup -p1 -n %{srcname}-%{version}
 
 # Fix rpmlint warning "wrong-file-end-of-line-encoding"
 sed -i 's/\r$//' COPYING.MINPACK
