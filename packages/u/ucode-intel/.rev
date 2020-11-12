@@ -655,4 +655,41 @@
     as both cause stability issues.  (bsc#1172856)</comment>
     <requestid>815412</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>74a199193a71e63467568f1fdbe39325</srcmd5>
+    <version>20201110</version>
+    <time>1605216787</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated Intel CPU Microcode to 20201110 official release.
+ - CVE-2020-8695: Fixed Intel RAPL sidechannel attack (SGX) (bsc#1170446)
+ - CVE-2020-8698: Fixed Fast Store Forward Predictor INTEL-SA-00381 (bsc#1173594)
+ - CVE-2020-8696: Vector Register Sampling Active INTEL-SA-00381 (bsc#1173592)
+- Releasenotes:
+  - Security updates for [INTEL-SA-00381](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00381.html).
+  - Security updates for [INTEL-SA-00389](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00389.html).
+  - Update for functional issues. Refer to [Second Generation Intel® Xeon® Processor Scalable Family Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/338848) for details.
+  - Update for functional issues. Refer to [Intel® Xeon® Processor Scalable Family Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/613537) for details.
+  - Update for functional issues. Refer to [Intel® Xeon® Processor E5 v3 Product Family Specification Update](https://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-v3-spec-update.html?wapkw=processor+spec+update+e5) for details.
+  - Update for functional issues. Refer to [10th Gen Intel® Core™ Processor Families Specification Update](https://www.intel.com/content/www/us/en/products/docs/processors/core/10th-gen-core-families-specification-update.html) for details.
+  - Update for functional issues. Refer to [8th and 9th Gen Intel® Core™ Processor Family Spec Update](https://www.intel.com/content/www/us/en/products/docs/processors/core/8th-gen-core-spec-update.html) for details.
+  - Update for functional issues. Refer to [7th Gen and 8th Gen (U Quad-Core) Intel® Processor Families Specification Update](https://www.intel.com/content/www/us/en/processors/core/7th-gen-core-family-spec-update.html) for details.
+  - Update for functional issues. Refer to [6th Gen Intel® Processor Family Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/332689) for details.
+  - Update for functional issues. Refer to [Intel® Xeon® E3-1200 v6 Processor Family Specification Update](https://www.intel.com/content/www/us/en/processors/xeon/xeon-e3-1200v6-spec-update.html) for details.
+  - Update for functional issues. Refer to [Intel® Xeon® E-2100 and E-2200 Processor Family Specification Update](https://www.intel.com/content/www/us/en/products/docs/processors/xeon/xeon-e-2100-specification-update.html) for details.
+  ### New Platforms
+  | Processor      | Stepping | F-M-S/PI    | Old Ver  | New Ver  | Products
+  |:---------------|:---------|:------------|:---------|:---------|:---------
+  | CPX-SP         | A1       | 06-55-0b/bf |          | 0700001e | Xeon Scalable Gen3
+  | LKF            | B2/B3    | 06-8a-01/10 |          | 00000028 | Core w/Hybrid Technology
+  | TGL            | B1       | 06-8c-01/80 |          | 00000068 | Core Gen11 Mobile
+  | CML-H          | R1       | 06-a5-02/20 |          | 000000e0 | Core Gen10 Mobile
+  | CML-S62        | G1       | 06-a5-03/22 |          | 000000e0 | Core Gen10
+  | CML-S102       | Q0       | 06-a5-05/22 |          | 000000e0 | Core Gen10 
+  | CML-U62 V2     | K0       | 06-a6-01/80 |          | 000000e0 | Core Gen10 Mobile
+  ### Updated Platforms
+  | Processor      | Stepping | F-M-S/PI    | Old Ver  | New Ver  | Products
+  |:---------------|:---------|:------------|:---------|:---------|:---------
+  | HSX-E/EP       | Cx/M1    | 06-3f-02/6f | 00000043 | 00000044 | Core Gen4 X series; Xeon E5 v3</comment>
+    <requestid>847755</requestid>
+  </revision>
 </revisionlist>
