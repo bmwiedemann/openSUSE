@@ -2,7 +2,7 @@
 # spec file for package eventstat
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2017-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           eventstat
-Version:        0.04.09
+Version:        0.04.10
 Release:        0
 Summary:        Kernel event states monitoring tool
 License:        GPL-2.0-or-later
