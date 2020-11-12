@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 10 09:00:08 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.9
+  - Use absolute path for selinuxenabled in systemd generator
+
+-------------------------------------------------------------------
+Mon Nov  9 06:28:17 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.8
+  - Don't propagate umounts into the real root
+  - Use content of .autorelabel only if it exists
+
+-------------------------------------------------------------------
 Wed Oct 28 10:43:48 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.7
