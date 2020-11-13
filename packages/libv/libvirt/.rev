@@ -3698,4 +3698,18 @@ StandardGroups in rpmlint package.
     <comment></comment>
     <requestid>845769</requestid>
   </revision>
+  <revision rev="316" vrev="2">
+    <srcmd5>9fbc125fa32938cf2eb36aa4a2a2d51d</srcmd5>
+    <version>6.9.0</version>
+    <time>1605290156</time>
+    <user>dimstar_suse</user>
+    <comment>- spec: Add 'Requires: bash-completion' to the
+  libvirt-bash-completion subpackage
+  bsc#1178498
+
+- Add libvirtd dependency to virt-guest-shutdown.target
+  f035f53b-virt-guest-shutdown.patch
+  boo#1175914, bsc#1177902</comment>
+    <requestid>847927</requestid>
+  </revision>
 </revisionlist>

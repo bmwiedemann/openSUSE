@@ -291,6 +291,7 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
+Patch0:         f035f53b-virt-guest-shutdown.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -776,6 +777,7 @@ The client side utilities to control the libvirt daemon.
 Summary:        Bash completion script
 Group:          System/Shells
 BuildArch:      noarch
+Requires:       bash-completion >= 2.0
 
 %description bash-completion
 Bash completion script stub.
@@ -821,6 +823,7 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 
 %prep
 %setup -q
+%patch0 -p1
 %patch100 -p1
 %patch101 -p1
 %patch150 -p1
