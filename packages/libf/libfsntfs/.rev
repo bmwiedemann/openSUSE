@@ -64,4 +64,16 @@
 </comment>
     <requestid>799058</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fce9eaf0018518e659e8a285739a5e17</srcmd5>
+    <version>0~20201027</version>
+    <time>1605290385</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v0~20201027
+        * worked format support
+        * worked on Python bindings
+        * changes to handle resident data
+</comment>
+    <requestid>848242</requestid>
+  </revision>
 </revisionlist>

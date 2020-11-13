@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 13 03:00:50 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20201027
+        * worked format support
+        * worked on Python bindings
+        * changes to handle resident data
+
+-------------------------------------------------------------------
 Thu Apr 30 01:36:04 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - remove python2 submodule 

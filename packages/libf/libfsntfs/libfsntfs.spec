@@ -17,7 +17,7 @@
 
 
 %define lname	libfsntfs1
-%define timestamp 	20200223
+%define timestamp   20201027
 Name:           libfsntfs
 Version:        0~%{timestamp}
 Release:        0
@@ -115,7 +115,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n %{lname}
 %defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog
+%doc AUTHORS ChangeLog
+%license COPYING 
 %{_libdir}/libfsntfs.so.*
 
 %files tools
