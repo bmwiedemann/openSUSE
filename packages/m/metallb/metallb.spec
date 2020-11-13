@@ -17,7 +17,7 @@
 
 
 Name:           metallb
-Version:        0.9.2
+Version:        0.9.5
 Release:        0
 Summary:        Load Balancer for bare metal Kubernetes clusters
 License:        Apache-2.0

@@ -78,4 +78,13 @@
   - Support older devices that might not support RFC4893.</comment>
     <requestid>787087</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8d2e2a79560892920ef77a68bddbf44b</srcmd5>
+    <version>0.9.5</version>
+    <time>1605289968</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.5
+  - Bug fix releases</comment>
+    <requestid>847300</requestid>
+  </revision>
 </revisionlist>
