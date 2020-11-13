@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 13 02:37:45 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20201018
+        * Worked on VHDX support and tests
+        * Changes to retrieve the number of bytes per sector
+
+-------------------------------------------------------------------
 Thu Apr 30 02:06:50 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - remove python2 submodule 
