@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov  9 21:12:05 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.3
+  * Add `NCBLIT_3x2` aka the SEXBLITTER, making use of Unicode
+    13's sextant glyphs. `notcurses_lex_blitter()` now recognizes
+    `sexblitter`.
+  * Blitting functions no longer count transparent cells towards
+    the total returned number of cells written, but since these
+    are not directly callable by the user, this ought not lead to
+    any user-visible changes.
+  * Added (k)eller demo to `notcurses-demo`.
+  * `ncreader` now supports Alt+'b' to move one word back, Alt+'f'
+    to move one word forward, Ctrl+'A' to move to the beginning
+    of the line, Ctrl+'E' to move to the end of the line, Ctrl+'U'
+    to clear the line before the cursor, and Ctrl+'W' to clear the
+    word before the cursor (when `NCREADER_OPTION_NOCMDKEYS` has
+    not been specified).
+
+-------------------------------------------------------------------
 Sun Oct 25 14:50:56 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.2
