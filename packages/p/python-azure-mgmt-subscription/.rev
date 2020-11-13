@@ -45,4 +45,15 @@
 - Update Requires from setup.py (forwarded request 830771 from glaubitz)</comment>
     <requestid>830908</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>00042b3bb36990df5d9cf7590afdb917</srcmd5>
+    <version>0.7.0</version>
+    <time>1605290351</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.7.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 848170 from glaubitz)</comment>
+    <requestid>848204</requestid>
+  </revision>
 </revisionlist>
