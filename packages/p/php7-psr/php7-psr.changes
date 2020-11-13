@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 13 10:00:14 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 1.0.1
+  * Test failures on PHP 8 in psr-http-client and psr-http-message due to
+    changes in inheritance
+  * Compile failures with clang
+  * Compatibility with API changes to PHP 8 in psr-log
+  * Report proper default value in reflection for LoggerInterface - PHP 8 only
+
+-------------------------------------------------------------------
 Sun Aug 30 16:54:45 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - Initial release 1.0.0

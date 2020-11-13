@@ -20,7 +20,7 @@
 %define _php            php7
 
 Name:           %{_php}-psr
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        PSR Extension Module
 License:        BSD-2-Clause
