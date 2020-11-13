@@ -1,4 +1,172 @@
 --------------------------------------------------------------------
+Thu Nov 12 16:14:56 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#784
+- use define for /proc directory
+- 4.3.71
+
+--------------------------------------------------------------------
+Thu Nov 12 02:31:30 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Portuguese (Brazil)) (bsc#1149754)
+- 4.3.70
+
+--------------------------------------------------------------------
+Thu Nov 12 02:31:29 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Indonesian) (bsc#1149754)
+
+--------------------------------------------------------------------
+Thu Nov 12 02:29:09 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Indonesian) (bsc#1149754)
+- 4.3.69
+
+--------------------------------------------------------------------
+Wed Nov 11 18:23:18 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#783
+- fixed loading qgroup limits from XML file
+- coding style
+- 4.3.68
+
+--------------------------------------------------------------------
+Wed Nov 11 17:01:32 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#782
+- added GitHub Action to compile library and run unit tests
+- 4.3.67
+
+--------------------------------------------------------------------
+Tue Nov 10 16:47:22 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Slovak) (bsc#1149754)
+- 4.3.66
+
+--------------------------------------------------------------------
+Tue Nov 10 14:23:59 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Czech) (bsc#1149754)
+
+--------------------------------------------------------------------
+Tue Nov 10 14:23:58 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Catalan) (bsc#1149754)
+
+--------------------------------------------------------------------
+Tue Nov 10 11:16:10 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Japanese) (bsc#1149754)
+- 4.3.65
+
+--------------------------------------------------------------------
+Tue Nov 10 11:16:09 UTC 2020 - freek@opensuse.org
+
+- Translated using Weblate (Dutch) (bsc#1149754)
+
+--------------------------------------------------------------------
+Tue Nov 10 11:01:42 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#781
+- updated pot and po files
+- 4.3.64
+
+--------------------------------------------------------------------
+Tue Nov 10 09:28:27 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#780
+- handle btrfs quota and qgroups in compound actions
+- added unit tests
+- added integration tests
+- use in-class member initialization
+- coding style
+- 4.3.63
+
+--------------------------------------------------------------------
+Thu Nov 5 20:32:36 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Finnish) (bsc#1149754)
+- 4.3.62
+
+--------------------------------------------------------------------
+Thu Nov 5 14:27:44 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Finnish) (bsc#1149754)
+- 4.3.61
+
+--------------------------------------------------------------------
+Thu Nov 5 09:38:46 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#779
+- added convenience function
+- fixed variable name
+- coding style
+- 4.3.60
+
+--------------------------------------------------------------------
+Wed Nov 4 13:12:06 UTC 2020 - freek@opensuse.org
+
+- Translated using Weblate (Dutch) (bsc#1149754)
+- 4.3.59
+
+--------------------------------------------------------------------
+Wed Nov 4 11:04:46 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Catalan) (bsc#1149754)
+
+--------------------------------------------------------------------
+Tue Nov 3 22:18:57 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Japanese) (bsc#1149754)
+- 4.3.58
+
+--------------------------------------------------------------------
+Tue Nov 3 16:42:05 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Slovak) (bsc#1149754)
+- 4.3.57
+
+--------------------------------------------------------------------
+Tue Nov 3 15:22:36 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Czech) (bsc#1149754)
+
+--------------------------------------------------------------------
+Tue Nov 3 12:45:21 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#778
+- updated pot and po files
+- 4.3.56
+
+--------------------------------------------------------------------
+Tue Nov 3 11:17:08 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#777
+- restore qgroups when enabling quota
+- added actions to create and remove qgroups
+- added unit tests
+- added integration tests
+- extended documentation
+- support btrfs qgroups (jsc#SLE16696)
+- 4.3.55
+
+--------------------------------------------------------------------
+Fri Oct 30 14:25:39 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#776
+- probe btrfs quota and qgroups
+- allow actions for holders next to devices
+- added actions to set quota and qgroup limits
+- added actions to assign and unassign qgroups
+- 4.3.54
+
+--------------------------------------------------------------------
+Thu Oct 29 06:30:59 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Italian) (bsc#1149754)
+- 4.3.53
+
+--------------------------------------------------------------------
 Fri Oct 23 12:00:28 UTC 2020 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#775

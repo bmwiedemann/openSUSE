@@ -782,4 +782,12 @@
     <user>dimstar_suse</user>
     <comment>Revert - https://openqa.opensuse.org/tests/1460184#step/start_install/4</comment>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>e785651e905dcad79c995a24dac7a0d6</srcmd5>
+    <version>4.3.71</version>
+    <time>1605290244</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>848182</requestid>
+  </revision>
 </revisionlist>
