@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-dulwich
-Version:        0.20.6
+Version:        0.20.11
 Release:        0
 Summary:        Pure-Python Git Library
 License:        GPL-2.0-or-later OR Apache-2.0
@@ -47,7 +47,7 @@ Recommends:     python-fastimport
 Recommends:     python-gpg
 Recommends:     python-gevent
 Recommends:     python-geventhttpclient
-Obsoletes:      %{oldpython}-dulwich-doc
+Obsoletes:      %{oldpython}-dulwich-doc < 0.20.5
 %python_subpackages
 
 %description

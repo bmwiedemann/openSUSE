@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 10 07:49:41 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.20.11:
+ * Fix wheels build on Linux. (Ruslan Kuprieiev)
+ * Enable wheels build for Python 3.9 on Linux. (Jelmer Vernooĳ)
+ * Check core.repositoryformatversion. (Jelmer Vernooĳ, #803)
+ * Fix ACK/NACK handling in archive command handling in dulwich.client.
+
+-------------------------------------------------------------------
 Wed Sep 16 11:03:45 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.20.6:
