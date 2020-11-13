@@ -71,6 +71,7 @@ for management and discovery.
 
 # packages to build containerized control plane
 
+%if 0%{?sle_version} == 0 || 0%{?is_opensuse}
 %package apiserver
 Summary:        Kubernetes apiserver for container image
 Group:          System/Management
@@ -153,6 +154,7 @@ Requires:       (kubernetes%{baseversion}-kubelet or kubernetes%{baseversionminu
 %description kubeadm
 Manage a cluster of Linux containers as a single system to accelerate Dev and simplify Ops.
 kubeadm bootstrapping tool
+%endif
 
 %package client
 Summary:        Kubernetes client tools
@@ -161,6 +163,8 @@ Provides:       kubernetes-client-provider = %{version}
 Requires:       kubernetes-client-common >= %{version} 
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Conflicts:      kubernetes-client < %{baseversion}
+Obsoletes:      kubernetes-%{baseversion}-client < %{version}
 
 %description client
 Kubernetes client tools like kubectl.
@@ -197,7 +201,11 @@ export GOLDFLAGS='-linkmode=external'
 %endif
 
 #TEST
+%if 0%{?sle_version} == 0 || 0%{?is_opensuse}
 make WHAT="cmd/kube-apiserver cmd/kube-controller-manager cmd/kube-scheduler cmd/kube-proxy cmd/kubelet cmd/kubectl cmd/kubeadm" GOFLAGS="-buildmode=pie"
+%else
+make WHAT="cmd/kubectl" GOFLAGS="-buildmode=pie"
+%endif
 
 # The majority of the documentation has already been moved into
 # http://kubernetes.io/docs/admin, and most of the files stored in the `docs`
@@ -206,9 +214,11 @@ make WHAT="cmd/kube-apiserver cmd/kube-controller-manager cmd/kube-scheduler cmd
 # let's do that and run `genmanpages.sh`.
 ./hack/generate-docs.sh || true
 pushd docs
+%if 0%{?sle_version} == 0 || 0%{?is_opensuse}
 pushd admin
 cp kube-apiserver.md kube-controller-manager.md kube-proxy.md kube-scheduler.md kubelet.md ..
 popd
+%endif
 cp %{SOURCE2} genmanpages.sh
 bash genmanpages.sh
 popd
@@ -223,6 +233,7 @@ output_path="_output/local/bin/linux/%{go_arch}"
 
 install -m 755 -d %{buildroot}%{_bindir}
 
+%if 0%{?sle_version} == 0 || 0%{?is_opensuse}
 echo "+++ INSTALLING kubeadm"
 install -p -m 755 -t %{buildroot}%{_bindir} ${output_path}/kubeadm
 
@@ -232,17 +243,21 @@ for bin in "${binaries[@]}"; do
   install -p -m 755 -t %{buildroot}%{_bindir} ${output_path}/${bin}
 done
 
-for bin in kubelet kubectl; do
-  echo "+++ INSTALLING ${bin} with %{baseversion} suffix"
-  install -p -m 755 ${output_path}/${bin} %{buildroot}%{_bindir}/${bin}%{baseversion}
-done
+echo "+++ INSTALLING kubelet with %{baseversion} suffix"
+install -p -m 755 ${output_path}/kubelet %{buildroot}%{_bindir}/kubelet%{baseversion}
+%endif
 
+echo "+++ INSTALLING kubectl with %{baseversion} suffix"
+install -p -m 755 ${output_path}/kubectl %{buildroot}%{_bindir}/kubectl%{baseversion}
+
+%if 0%{?sle_version} == 0 || 0%{?is_opensuse}
 echo "+++ INSTALLING kubelet multi-version loader"
 install -p -m 755 %{SOURCE3} %{buildroot}%{_bindir}/kubelet
 
 # create sysconfig.kubelet-kubernetes in fullupdir
 sed -i -e 's|BASE_VERSION|%{baseversion}|g' %{SOURCE22}
 install -D -m 0644 %{SOURCE22} %{buildroot}%{_fillupdir}/sysconfig.kubelet-kubernetes%{baseversion}
+%endif
 
 # install the bash completion
 install -d -m 0755 %{buildroot}%{_datadir}/bash-completion/completions/
@@ -257,6 +272,7 @@ find .    -name '.gitignore' -type f -delete
 find hack -name '*.sh.orig' -type f -delete
 find hack -name '.golint_*' -type f -delete
 
+%if 0%{?sle_version} == 0 || 0%{?is_opensuse}
 # systemd service
 install -d -m 0755 %{buildroot}%{_unitdir}
 install -m 0644 -t %{buildroot}%{_unitdir}/ %{SOURCE10}
@@ -268,7 +284,13 @@ ln -sf service "%{buildroot}%{_sbindir}/rckubelet"
 # install manpages
 install -d %{buildroot}%{_mandir}/man1
 install -p -m 644 docs/man/man1/* %{buildroot}%{_mandir}/man1
+%else
+# install kubectl manpages
+install -d %{buildroot}%{_mandir}/man1
+install -p -m 644 docs/man/man1/kubectl* %{buildroot}%{_mandir}/man1
+%endif
 
+%if 0%{?sle_version} == 0 || 0%{?is_opensuse}
 # create config folder
 install -d -m 0755 %{buildroot}%{_sysconfdir}/%{name}
 
@@ -295,6 +317,7 @@ install -m 0644 -t %{buildroot}%{_sysctldir} %{SOURCE24}
 install -d -m 0755 %{buildroot}%{_unitdir}/kubelet.service.d
 sed -i -e 's|PATH_TO_FLEXVOLUME|%{volume_plugin_dir}|g' %{SOURCE25}
 install -m 0644 -t %{buildroot}%{_unitdir}/kubelet.service.d/ %{SOURCE25}
+%endif
 
 # alternatives
 ln -s -f %{_sysconfdir}/alternatives/kubectl %{buildroot}%{_bindir}/kubectl
@@ -311,6 +334,7 @@ if [ ! -f %{_bindir}/kubectl%{baseversion} ] ; then
   update-alternatives --remove kubectl %{_bindir}/kubectl%{baseversion}
 fi
 
+%if 0%{?sle_version} == 0 || 0%{?is_opensuse}
 %pre kubelet-common
 %service_add_pre kubelet.service
 
@@ -389,6 +413,7 @@ fi
 %license LICENSE
 %{_bindir}/kubeadm
 %{_mandir}/man1/kubeadm*
+%endif
 
 %files client
 %doc README.md CONTRIBUTING.md

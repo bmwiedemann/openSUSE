@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 10 08:56:41 UTC 2020 - David Cassany <dcassany@suse.com>
+
+- Build only kubernetes client subpackages on SLE
+
+-------------------------------------------------------------------
 Thu Oct 15 19:32:42 UTC 2020 - rbrown@suse.com
 
 - Update to version 1.18.10:
