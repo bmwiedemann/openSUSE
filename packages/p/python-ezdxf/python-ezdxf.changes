@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 12 12:22:33 UTC 2020 - Marketa Machova <mmachova@suse.com>
+
+- Update to 0.14.2
+  * Recover Module added to provide a more stable and reliable DXF loading function.
+  * Support for the start- and end width attributes of LWPOLYLINE and 2D POLYLINE 
+    vertices to draw banded 2D lines.
+  * Many bugfixes and smaller improvements
+
+-------------------------------------------------------------------
 Thu Aug 27 16:44:50 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Remove python-pytest-runner dependency.

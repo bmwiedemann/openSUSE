@@ -20,7 +20,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ezdxf
-Version:        0.13.1
+Version:        0.14.2
 Release:        0
 Summary:        Python package for manipulating DXF drawings
 License:        MIT
