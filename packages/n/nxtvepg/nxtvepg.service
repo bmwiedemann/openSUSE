@@ -1,0 +1,11 @@
+[unit]
+Type=forking
+Description=Nextview EPG Decoder and Browser
+After=syslog.target remote-fs.target
+ConditionPathExists=/etc/nxtvepgrc
+
+[Service]
+ExecStart=/usr/bin/nxtvepg -daemon -rcfile /etc/nxtvepgrc
+
+[Install]
+WantedBy=multi-user.target

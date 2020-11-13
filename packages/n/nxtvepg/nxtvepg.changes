@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 12 11:15:47 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Properly use the systemd rpm macros with nxtvepg.service.
+
+  Also drop the initscript since it's no more used since the
+  introduction of nxtvepg.service.
+
+-------------------------------------------------------------------
+Mon Feb 18 15:38:51 UTC 2019 - josef.moellers@suse.com
+
+- Added support for systemd
+  [bsc#1116025, nxtvepg.service]
+
+-------------------------------------------------------------------
 Mon Mar 19 18:17:44 UTC 2018 - crrodriguez@opensuse.org
 
 - Change xorg-x11-devel --> pkgconfig(x11, xmu)

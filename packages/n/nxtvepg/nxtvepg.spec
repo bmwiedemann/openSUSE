@@ -1,7 +1,7 @@
 #
 # spec file for package nxtvepg
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,16 +22,16 @@ Release:        0
 Summary:        Nextview EPG Decoder and Browser
 License:        GPL-2.0-or-later
 Group:          Hardware/TV
-Url:            http://nxtvepg.sourceforge.net/
+URL:            http://nxtvepg.sourceforge.net/
 Source0:        http://prdownloads.sourceforge.net/nxtvepg/%{name}-%{version}.tar.gz
-Source1:        rc.nxtvepg
+Source2:        nxtvepg.service
 Patch1:         nxtvepg-Makefile.patch
 Patch2:         nxtvepg-no-hardcoded-tcl-dir.patch
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  tcl-devel
 BuildRequires:  tk-devel
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xmu)
-Requires(pre):  %insserv_prereq
 
 %description
 In this software package, find a decoder for Nextview--an electronic TV
@@ -70,22 +70,24 @@ make	ROOT=%{buildroot}		\
 # remove the daemon-only binary - /usr/bin/nxtvepg is capable of running as
 # daemon too, so packaging nxtvepgd would mean duplication for most use cases
 rm %{buildroot}%{_bindir}/nxtvepgd %{buildroot}%{_mandir}/man1/nxtvepgd.1*
-# init script
-mkdir -p %{buildroot}%{_initddir} %{buildroot}%{_prefix}/sbin
-install -m 755 %{SOURCE1} %{buildroot}%{_initddir}/nxtvepg
-ln -s ../..%{_initddir}/nxtvepg %{buildroot}%{_sbindir}/rcnxtvepg
+# systemd service file
+install -D -m 644 %{SOURCE2} %{buildroot}%{_unitdir}/nxtvepg.service
+
+%pre
+%service_add_pre nxtvepg.service
+
+%post
+%service_add_post nxtvepg.service
 
 %preun
-%stop_on_removal nxtvepg
+%service_del_preun nxtvepg.service
 
 %postun
-%restart_on_update nxtvepg
-%insserv_cleanup
+%service_del_postun nxtvepg.service
 
 %files
 %defattr(-,root,root)
-%config %{_initddir}/nxtvepg
-%{_sbindir}/rcnxtvepg
+%{_unitdir}/nxtvepg.service
 %{_bindir}/nxtvepg
 %{_datadir}/nxtvepg
 %{_mandir}/man1/nxtvepg.1*
