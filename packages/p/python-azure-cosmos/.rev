@@ -20,4 +20,15 @@
 - Update Requires from setup.py (forwarded request 830745 from glaubitz)</comment>
     <requestid>830862</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d497fd6b39dd1d8eda160d177d0a78f8</srcmd5>
+    <version>4.2.0</version>
+    <time>1605290312</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 848160 from glaubitz)</comment>
+    <requestid>848194</requestid>
+  </revision>
 </revisionlist>
