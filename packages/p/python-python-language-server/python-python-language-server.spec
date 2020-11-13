@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-python-language-server
-Version:        0.35.1
+Version:        0.36.1
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
@@ -42,7 +42,7 @@ BuildRequires:  %{python_module versioneer}
 BuildRequires:  %{python_module yapf}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-jedi >= 0.17
+Requires:       python-jedi >= 0.17.2
 Requires:       python-pluggy
 Requires:       python-python-jsonrpc-server >= 0.4.0
 Requires:       python-setuptools
@@ -58,7 +58,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module future >= 0.14.0}
-BuildRequires:  %{python_module jedi >= 0.17}
+BuildRequires:  %{python_module jedi >= 0.17.2}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module pytest}

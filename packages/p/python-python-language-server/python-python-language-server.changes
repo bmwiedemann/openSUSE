@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov 12 14:23:55 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 0.36.1
+  * Add code in front of the diagnostic message for flake8.
+  * Pass document path to jedi_names when a file is not placed in a
+    module. 
+- Changelog for 0.36.0
+  * Allow passing explicit environment variables to Jedi
+    environment
+  * Add document path to Jedi's sys_path
+  * Resolve flake8_executable allowing ~/${HOME} paths
+  * Pass server settings to new workspaces
+  * Synchronize document text updates
+  * Correct method and attribute detection on document/symbols call
+  * Specify relevant document path when retrieving some plugin
+    settings
+
+-------------------------------------------------------------------
 Tue Sep 22 19:17:06 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 0.35.1
