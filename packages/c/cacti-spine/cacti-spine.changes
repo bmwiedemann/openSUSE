@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 11 18:02:18 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti-spine 1.2.15:
+  * Special characters may not always be ignored properly
+
+-------------------------------------------------------------------
 Mon Aug  3 21:27:49 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti-spine 1.2.14:
