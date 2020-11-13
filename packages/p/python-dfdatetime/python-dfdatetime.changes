@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 13 02:20:18 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20200824
+        * Extended time elements with copy from datetime object 
+        * Extended time elements with copy from RFC 822 and 1123 methods
+        * Added date and time values factory class for serialization
+
+-------------------------------------------------------------------
 Sun Apr  5 20:27:31 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to v0~20200121

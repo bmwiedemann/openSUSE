@@ -17,7 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define timestamp 20200121
+%define timestamp 20200824
 %define skip_python2 1
 %define modname dfdatetime
 Name:           python-dfdatetime
