@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 24 22:10:26 UTC 2020 - Thomas Williams <bif.bam@gmail.com>
+
+- vlc-srto_tsbpddelay.patch
+ * Fix building with recent srt where SRTO_TSBPDDELAY is no longer defined
+
+-------------------------------------------------------------------
 Mon Sep 28 09:10:26 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Package arm neon plugins
