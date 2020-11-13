@@ -45,7 +45,16 @@ Index: fedora-policy/policy/modules/kernel/corecommands.fc
  
  /usr/libexec/git-core/git-shell	--	gen_context(system_u:object_r:shell_exec_t,s0)
  /usr/libexec/cockpit-agent      --  gen_context(system_u:object_r:shell_exec_t,s0)
-@@ -391,6 +411,7 @@ ifdef(`distro_debian',`
+@@ -324,6 +344,8 @@ ifdef(`distro_gentoo',`
+ 
+ /usr/lib/xfce4(/.*)?	gen_context(system_u:object_r:bin_t,s0)
+ 
++/usr/lib/build/.*	--	gen_context(system_u:object_r:bin_t,s0)
++
+ /usr/Brother(/.*)?              gen_context(system_u:object_r:bin_t,s0)
+ /usr/Printer(/.*)?              gen_context(system_u:object_r:bin_t,s0)
+ /usr/Brother/(.*/)?inf/brprintconf.* gen_context(system_u:object_r:bin_t,s0)
+@@ -391,6 +413,7 @@ ifdef(`distro_debian',`
  /usr/lib/gdm3/.*		--	gen_context(system_u:object_r:bin_t,s0)
  /usr/lib/udisks/.*		--	gen_context(system_u:object_r:bin_t,s0)
  ')

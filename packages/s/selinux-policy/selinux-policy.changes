@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 10 08:52:35 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
+
+- Updated fix_corecommand.patch to set correct types for the OBS
+  build tools
+
+-------------------------------------------------------------------
 Thu Oct 29 08:47:51 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - wicked.fc: add libexec directories
