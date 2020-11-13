@@ -20,7 +20,7 @@
 %define packagename geomdl
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-geomdl
-Version:        5.2.10
+Version:        5.3.0
 Release:        0
 Summary:        Object-oriented B-Spline and NURBS evaluation library
 License:        MIT

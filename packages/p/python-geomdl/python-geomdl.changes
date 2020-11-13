@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 12 12:46:49 UTC 2020 - Marketa Machova <mmachova@suse.com>
+
+- Update to 5.3.0
+  * Deprecated some methods that produce incorrect results
+  * Fixed sample_size computation
+  * Minor fixes and documnetation updates
+
+-------------------------------------------------------------------
 Thu Aug 27 16:55:19 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Add license and documentation file. 
