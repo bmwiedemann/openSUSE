@@ -1,7 +1,7 @@
 #
 # spec file for package python-gsw
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-gsw
-Version:        3.3.1
+Version:        3.4.0
 Release:        0
 Summary:        Gibbs Seawater Oceanographic Package of TEOS-10
 # Note: Python code is MIT licensed
@@ -73,8 +73,8 @@ py.test-%{$python_bin_suffix} -v
 }
 
 %files %{python_files}
-%doc README.rst
-%license LICENSE src/c_gsw/LICENSE
+%doc README.md
+%license LICENSE.txt src/c_gsw/LICENSE.txt
 %{python_sitearch}/*
 
 %changelog
