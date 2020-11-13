@@ -1,4 +1,142 @@
 -------------------------------------------------------------------
+Wed Nov  4 16:11:48 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- dropped 9cdde97863825e4fdce449920d39b25414b2b0b3.patch merged upsteam
+- dropped 61ce73273b3290083c01e6a2fadfb3db0889b9ba.patch merged upstream
+- bump version to 20201029 (stable)
+- General changes:
+  - Significant refactoring of the core LAMMPS code to increase
+    code reuse, simplify new additions, improve thread safety, and
+    benefit from C++11 features. In particular the following
+    changes were incorporated:
+    - Refactoring of the AtomVec classes to simplify adding new
+      atom styles to the code. Also adding support for writing
+      complete data files for atom styles ellipsoid, line, tri,
+      and body, which had been previously missing.
+    - Implementation of string tokenizer and potential file reader
+      classes to improve parsing of text files and avoid the
+      strtok() function. This has lead to substantial reduction in
+      the lines of code used for those cases.
+    - Transferring of utility function from class members to
+      standalone functions in the utils namespace. Several new
+additions of such convenience functions
+    - Using const std::string & instead char * or const char * as
+      function argument in many places to simplify string
+      processing and replacing C style string functions with their
+      equivalent or expanded functionality of std::string member
+      functions
+    - Incorporation of fmtlib to replace and simplify many cases
+      of output formatting. This avoids many complications with
+      printf() style functions since no special treatment is
+      required for processing bigint or tagint arguments. Since
+      fmtlib has been accepted as a C++20 feature, this is also
+      future proofing the code base.
+    - Avoiding use of temporary local buffers for output
+      formatting and thus lowering the risk of buffer overflows.
+      This was enabled by the previous two changed.
+    - Replacing NULL with nullptr where applicable for better
+      detection of incorrect use.
+  - Major reorganization and significant expansion of the manual:
+    - The manual is now split into two parts: a User Guide and a
+      Programmer Guide
+    - Most of the content related to using the library interfaces,
+      the Python module (and Python in general) have been moved to
+      the Programmer Guide
+    - The content of the external Developer Guide PDF has been
+      incorporated into the Programmer Guide section and expanded
+    - The documentation of the C-library interface and Python
+      module has been expanded and the documentation of the
+      individual APIs are now imported from the source code by
+      means of using doxygen (for C/C++) and docstrings (for
+      Python).
+    - Redundancies have been reduced, cross-links added, and links
+      to external websites checked, updated or removed.
+  - Addition of a unit test facility which is integrated into
+    building LAMMPS with CMake and using the ctest tool that comes
+    with CMake. Tests for a variety of features and styles are
+    included with a code coverage close to 40%. The added tests
+    have exposed a significant number of previously unknown bugs
+    and inconsistencies (e.g. between plain pair styles and
+    suffixed versions or between Pair::compute() and
+    Pair::single()) in the code base, which have been fixed.
+  - Significant refactoring of the LAMMPS C-library interface and
+    Python module: several new functions were added, especially
+    for introspection, ad-hoc numerical constants were replaced by
+    symbolic constants defined in enumerators and synchronized
+    betwee C and Python, where possible and needed. Most
+     modifications were
+    done in a backward compatible way.
+  - Add support for a "UNITS:" metadata tag to potential and
+    tabulation files and code to error out if the value does not
+    match with the current setting. For some potentials, mainly
+    manybody potentials, support for on-the-fly conversion between
+    "metal" and "real" units was added, so that a file with
+    parameters for "metal" units can be used in a simulation with
+    "real" units, if the pair style supports it.
+  - Ordering of #include "" statements has been revised and the
+    lists updated where possible after analyzing with the IWYU
+    tool.
+  - Significant refactoring of CMake scripts enabled by moving the
+    minimum required CMake version from 2.8.x to 3.10.x. CMake
+    build support is more reliable, portable to different host
+    operating systems and efficient.
+  - Conventional build system now always builds the LAMMPS library
+    and the executable, so the available modes are reduced from 4
+    to 2: mode=static and mode=shared. The CMake build behaves
+    equivalently.
+  - Use pre-processor macros (requiring C++11) to provide
+    compatibility with OpenMP 4.x and later semantics
+  - Many small fixes and improvements.
+  - Removal of outdated or obsolete makefiles. Removal of obsolete
+    files and folder in the bench folder.
+- Updates and new commands or styles or packages:
+  - New MLIAP package providing a generalized framework for
+    machine-learning potentials. This currently includes an
+    implementation of the SNAP potential
+  - New USER-MESONT package for mesoscale modeling of nanotubes.
+  - New command reset_mol_ids
+  - New fix widom for modeling Widom insertions
+  - New fix pafi to perform langevin or brownian dynamics time
+    integration constrained to a potential hyperplane. Intended to
+    be coupled to the PAFI C++ code.
+  - Bugfixes, improved documentation, and new functionality for
+    fix bond/react in particular RMSD based constraints.
+  - New fix accelerate/cos and compute viscosity/cos in USER-MISC
+    as yet another method to compute viscosity.
+  - New fix momentum/chunk to remove per chunk momentum
+  - New bond style special to provide a mechanism to implement
+    special bond exclusions beyond 1-4.
+  - Ports of more functionality to the KOKKOS package and several
+    performance optimizations. Support for AMD GPUs via HIP.
+    Update of the bundled Kokkos library to version 3.2.
+  - Support for triclinic cells when using "tiled" communication
+    style.
+  - New pair style for charge-dipole damping with Tang-Toennies
+    function in the USER-DRUDE package
+  - Updates, bugfixes and adjustments to LAMMPS requiring C++11 in
+    the USER-COLVARS package (now at version 2020-09-17).
+  - Support for building triclinic neighbor lists on the GPU in
+    the GPU package. Bugfixes and performance improvements for GPU
+    styles.
+  - Updates to writing binary dump files and binary2atom tool to
+    become consistent with current text mode custom dumps
+  - Updates to the user supported examples/COUPLE/fortran and
+    examples/COUPLE/fortran2 wrappers to become compatible with
+    updates to the C-library interface. Also work on a new,
+    "object oriented" Fortran interface has started.
+  - New LAMMPS shell command as alternative to the regular LAMMPS
+    executable for improved interactive use.
+  - Interface file for use with SWIG to create bindings to the
+    LAMMPS library interface for a wide variety of (mostly
+    scripted) programming languages (like Java, JavaScript, Lua,
+    Perl, Ruby, Tcl and more).
+  - Improved support for cross-compiling binaries for Windows on
+    Linux. This enables building a liblammps.dll file and loading
+    the LAMMPS Python module also on Windows.
+  - Improved CMake support for building with "ninja" instead of
+    "make".
+
+-------------------------------------------------------------------
 Sun Sep 20 14:56:09 UTC 2020 - Christoph Junghans <junghans@votca.org>
 
 - dropped disable_noopt.patch, merged upstream

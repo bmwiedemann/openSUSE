@@ -33,19 +33,15 @@
 %endif
 
 Name:           lammps
-Version:        20200918
+Version:        20201029
 Release:        0
-%define         uversion patch_18Sep2020
+%define         uversion patch_29Oct2020
 Summary:        Molecular Dynamics Simulator
 License:        GPL-2.0-only AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Chemistry
 URL:            https://lammps.sandia.gov
 Source0:        https://github.com/lammps/lammps/archive/%{uversion}.tar.gz#/%{name}-%{uversion}.tar.gz
 Source1:        https://github.com/google/googletest/archive/release-1.10.0.tar.gz
-# PATCH-FIX-UPSTREAM 9cdde97863825e4fdce449920d39b25414b2b0b3.patch from https://github.com/lammps/lammps/pull/2381 fix a failing test
-Patch0:         9cdde97863825e4fdce449920d39b25414b2b0b3.patch
-# PATCH-FIX-UPSTREAM 61ce73273b3290083c01e6a2fadfb3db0889b9ba.patch from https://github.com/lammps/lammps/pull/2381 fix another failing test
-Patch1:         61ce73273b3290083c01e6a2fadfb3db0889b9ba.patch
 BuildRequires:  %{mpiver}
 BuildRequires:  %{mpiver}-devel
 BuildRequires:  cmake
@@ -55,6 +51,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  gsl-devel
 BuildRequires:  kim-api-devel >= 2.1
+BuildRequires:  readline-devel
 # for testing
 BuildRequires:  kim-api-examples 
 BuildRequires:  libjpeg-devel
@@ -167,8 +164,6 @@ This subpackage contains LAMMPS's potential files
 
 %prep
 %setup -a 1 -q -n %{name}-%{uversion}
-%patch0 -p1
-%patch1 -p1
 
 %build
 source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
@@ -178,6 +173,7 @@ source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
   -C ../cmake/presets/nolib.cmake \
   -DCMAKE_TUNE_FLAGS='%{?tune_flags}' \
   -DBUILD_TOOLS=ON \
+  -DBUILD_LAMMPS_SHELL=$(pkg-config readline && echo ON) \
   -DBUILD_OMP=ON \
   %{?with_kokkos:-DPKG_KOKKOS=ON -DEXTERNAL_KOKKOS=ON} \
   -DBUILD_MPI=ON \
@@ -198,6 +194,7 @@ source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
 
 %install
 %cmake_install
+rm -rf %{buildroot}%{_datadir}/{applications,icons}/
 
 %check
 export LD_LIBRARY_PATH='%{buildroot}%{_libdir}:%{_libdir}/mpi/gcc/%{mpiver}/%{_lib}'
@@ -215,7 +212,7 @@ export LD_LIBRARY_PATH='%{buildroot}%{_libdir}:%{_libdir}/mpi/gcc/%{mpiver}/%{_l
 %files
 %doc README
 %license LICENSE
-%{_bindir}/lmp
+%{_bindir}/l{mp,ammps}*
 %{_mandir}/man1/lmp.1.*
 %{_bindir}/msi2lmp
 %{_mandir}/man1/msi2lmp.1.*
