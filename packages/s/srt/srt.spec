@@ -1,7 +1,7 @@
 #
 # spec file for package srt
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover 1
 
 Name:           srt
-Version:        1.3.4
+Version:        1.4.2
 Release:        0
 Summary:        Secure Reliable Transport (SRT)
 License:        MPL-2.0
@@ -27,8 +27,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.srtalliance.org
 Source0:        https://github.com/Haivision/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-Patch0:         CVE-2019-15784.patch
-
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

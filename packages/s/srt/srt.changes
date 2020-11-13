@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Wed Oct  7 09:01:37 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.4.2
+  New Features and Enhancements
+    * Added support for C++11. Reworked timing and
+      synchronization objects. Three sources of timing are now
+      available (selected via a build option):
+      + POSIX gettimeofday() - default build mode (affected by
+        discontinuous jumps in the system time);
+      + POSIX CLOCK_MONOTONIC. CMake build option:
+        -DENABLE_MONOTONIC_CLOCK=ON. See --enable-monotonic-clock
+        in BuildOptions.md;
+      + C++11 std::chrono::steady_clock, std::thread,
+        std::mutex, etc. CMake build option:
+        -DENABLE_STDCXX_SYNC=ON. See --enable-stdcxx-sync in
+        BuildOptions.md.
+    * Added SRT Source Time API support. It allows setting a
+      source timestamp on a packet that corresponds to a packet
+      creation/reception time. See the Time Access section of
+      the API docs.
+    * Added an improved retransmission algorithm which reduces
+      the retransmission overhead on a link. Set option
+      SRTO_RETRANSMITALGO=1.
+    * Added SRTO_BINDTODEVICE option to bind a socket to a
+      specified NIC. SRTO_BINDTODEVICE option reflects the
+      system option SO_BINDTODEVICE for an SRT socket.
+    * Customizable rejection reason code. SRT library now lets
+      the application provide a code with rejection reason (in a
+      listener callback) if connection request has been rejected
+      by the application. See Rejection Codes in the Access
+      Control guide.
+    * Added new rejection reason: on timeout. See
+      SRT_REJ_TIMEOUT in API-functions.md.
+    * Extended SRT statistics with pktSentUniqueTotal,
+      pktRecvUniqueTotal. Statistics documentation now has a
+      summary table for better navigation.
+    * Added srt_getversion() API function.
+    * Moved socket options documentation to a separate file
+      APISocketOptions.md. It now has a summary table for better
+      navigation.
+    * Socket options SRTO_INPUTBW and SRTO_OHEADBW are now
+      readable.
+    * The logging functionality has been improved by means of
+      defining new and more fine-grained Functional Areas (FA)
+      to which log messages are assigned. This is done to prevent
+      too many debug log messages from the library influencing
+      performance with the debug logging turned on.
+    Fixed Issues
+    * Fixed bug: finding the listener's muxer only by port
+      number was wrong.
+    * Fixed wrong reject reason on async connect.
+    * Fixed CSndLossList::insert with negative offset.
+    * Fixed default binding for IPv6-target rendezvous.
+    * Fixed HS TSBPD flags check.
+    * Improved CRcvLossList protection from concurrent access.
+    * Fixed error reporting on connect/accept.
+    * Correctly handle IPv4 connections on IPv6 listener.
+    * Fixed Moving Average for receiver and sender buffers.
+    * Protecting RCV buffer access.
+    * Fixed local storage depleted issue #486.
+    * Fixed restrictions on pre-bind only options.
+    * Avoid reporting packets rebuilt by FEC as lost.
+    * Improved inserting a serial element into sender's loss
+      list.
+    * Fixed handling of stale loss report.
+    * Fixed closing the crypto control.
+    * Added CSync class as a high-level CV wrapper.
+    * Renamed legacy UDT_EPOLL_* symbols.
+    * Eliminated ref_t. Some more convention fixes.
+    * Crypto: Reset the passphrase in memory on close for
+      security reasons.
+    Deprecated or Renamed
+    * Removed deprecated socket options: SRTO_TWOWAYDATA,
+      SRTO_TSBPDMAXLAG, SRTO_CC, SRTO_MAXMSG, SRTO_MSGTTL,
+      SRTO_SNDPBKEYLEN, SRTO_RCVPBKEYLEN.
+    * Removed deprecated option names: SRTO_SMOOTHER (use
+      SRTO_CONGESTION), SRTO_STRICTENC (use
+      SRTO_ENFORCEDENCRYPTION).
+    version 1.4.1:
+    Improvements
+    * Improved periodic NAK report timing
+    * Use monotonic clock in CTimer::sleepto()
+    * Initial reorder tolerance set to maximum value
+      (SRTO_LOSSMAXTTL)
+    * Added pktReorderTolerance to stats
+    * Use busy wait only to refine below 1 ms
+    * Added SRTO_LOSSMAXTTL to srt_getopt()
+    * Update SND loss list on lite ACK
+    Fixes
+    * Fixed catching exception from
+      CUDTUnited::connect_complete()
+    * Fixed missing vertical FEC/CTL packet
+    * Fixed bandwidth measurement on non-monotonic or
+      retransmitted packets
+    * Fixed srt_getopt(...): optlen is not set in some cases.
+    * Fixed EPoll update_usock
+    * Fixed checkTimers interval (100ms -> 10 ms)
+    * Fixed SRT Stats backward compatibility (CBytePerfMon
+      fields order)
+    * Fixed FEC crash when a large number of dropped packets
+      occur
+    * Fixed FEC crash (access item out of range)
+    * Fixed FileCC crash. Prevented 0 pktsInFlight to be used in
+      the calculation for loss percentage
+    version 1.4.0:
+    New Features and Enhancements
+    * Updates to epoll API. Added edge-triggered epoll wait.
+    * srt-live-transmit default chunk size set to 1456
+    * Added forward error correction (FEC) packet filter
+    * Added Packet filter API
+    * File congestion control improvements
+    Fixed Issues
+    * Free addrinfo if bind fails (potential memory leak)
+    * Fixed SRTO_LOSSMAXTTL option on accepted socket
+    * Fixed blocking srt_connect call (state update)
+    * Fixed potential sender's sockets list overflow
+    * Use MONOTONIC clock in Garbage Collector thread
+- Drop CVE-2019-15784.patch (fixed upstream)
+
+-------------------------------------------------------------------
 Fri Dec 13 15:23:23 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop pkgconfig(zlib) BuildRequires: this is only needed on
