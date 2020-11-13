@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-desktop
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %bcond_with betatest
 
 Name:           patterns-desktop
-Version:        20170319
+Version:        20201106
 Release:        0
 Summary:        Patterns for Installation (desktop patterns)
 License:        MIT
 Group:          Metapackages
-Url:            https://github.com/openSUSE/patterns
+URL:            https://github.com/openSUSE/patterns
 Source0:        %{name}-rpmlintrc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  patterns-rpm-macros
@@ -137,38 +137,37 @@ Handling of digital photos and graphics.
 
 ################################################################################
 
-%package laptop
+%package mobile
 %pattern_basetechnologies
-Summary:        Laptop
+Summary:        Mobile
 Group:          Metapackages
 Provides:       patterns-openSUSE-laptop = %{version}
+Provides:       patterns-openSUSE-mobile = %{version}
 Provides:       pattern() = laptop
+Provides:       pattern() = mobile
 Provides:       pattern-icon() = pattern-laptop
 Provides:       pattern-order() = 1200
 Provides:       pattern-visible()
 Requires:       pattern() = base
 Obsoletes:      patterns-openSUSE-laptop < %{version}
+Obsoletes:      patterns-openSUSE-mobile < %{version}
 
-Recommends:     pcmciautils
 Recommends:     wpa_supplicant
 # bnc#480879
 Recommends:     crda
-Recommends:     wireless-regdb
 Recommends:     iw
 # https://www.reddit.com/r/openSUSE/comments/3rzzrx/notebook_powersaving_in_leap_421/
 Recommends:     tlp
 Suggests:       irda
 Suggests:       smbios-utils-python
 Suggests:       powertop
-# fate#303035
-Suggests:       laptop-mode-tools
 
-%description laptop
+%description mobile
 Tools designed specifically for laptop computers.
 
-%files laptop
+%files mobile
 %dir /usr/share/doc/packages/patterns
-/usr/share/doc/packages/patterns/laptop.txt
+/usr/share/doc/packages/patterns/mobile.txt
 
 ################################################################################
 
@@ -280,7 +279,7 @@ Authoring tools and editors for creating technical documentation.
 
 %install
 mkdir -p "%{buildroot}/usr/share/doc/packages/patterns"
-for i in books imaging laptop multimedia \
+for i in books imaging mobile multimedia \
     technical_writing; do
 	echo "This file marks the pattern $i to be installed." \
 		>"%{buildroot}/usr/share/doc/packages/patterns/$i.txt"
