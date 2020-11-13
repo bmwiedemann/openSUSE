@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-keyvault-administration
-Version:        4.0.0b1
+Version:        4.0.0b2
 Release:        0
 Summary:        Microsoft Azure Key Vault Administration Client Library for Python
 License:        MIT
