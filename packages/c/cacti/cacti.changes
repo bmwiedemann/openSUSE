@@ -1,11 +1,72 @@
 -------------------------------------------------------------------
+Wed Nov 11 18:07:46 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti 1.2.15, fixing the following bugs:
+  * When editing Maximum OIDs Per Get Request, blank value can cause errors
+  * Boost may run more often than it should
+  * Recache Event Loop can cause Interface Graphs to show gaps
+  * When searching Graph Tree's, non matching devices remain visible
+  * Page validation errors may occur when opening real time graphs
+  * External Links do not always open if they are still open from previous usage
+  * Cultural changes to various word usage
+  * Replicate deleted device status instead of poller sync
+  * Description field allows more characters entered than is stored
+  * When installing or upgrading, LDAP functions may not always be included properly
+  * Unable to remove discovered device
+  * When installing or upgrading, PHP recommendations may not always return a valid value
+  * Graph Templates has duplicate SQL delete statement
+  * When syncing to remote poller, missing function errors may occur
+  * When removing devices from remote pollers, devices may reappear without details
+  * When removing devices, array errors may sometimes be recorded
+  * Variable injection does not always work as expected
+  * Editing Data Queries with multiple data templates can give errors about Suggested values
+  * Progress bar does not provide enough visual information during long page loads
+  * Some themes do not allow for a way to see which user is currently signed in
+  * When viewing tables, allow users to force all columns to be visible
+  * Column sizing is being lost between pages refreshes
+  * When viewing input methods table, no ID is shown to help identify which method is being viewed
+  * Filters do not always respect using keyboard to initiate searching
+  * When exporting a data query, an invalid column name error can sometimes be shown
+  * When checking if a view is allowed, having no session can result in errors
+  * When removing devices via the CLI, undefined variable errors may be seen
+  * Real Time Graphs may cause invalid index errors
+  * On newer versions of MySQL/MariaDB, 'system' keyword can cause issues
+  * Plugin setup can generate errors when reading options via system function
+  * Plugin version numbers can be unexpectedly truncated
+  * When PHP Session is set to autostart, an error can be reported as Cacti attempts to start it
+  * When removing multiple items, selection process does not always work
+  * When exporting colors, the indicator is not always removed upon completion
+  * Unable to pass tree and leaf ID to 'graph_button' hook
+  * When performing maintenance, various errors may sometimes be seen
+  * When Guest User setting is active, current user is not always properly set
+  * When installing Cacti, minor errors in text can be seen
+  * Numbers are not always formatted properly when there are no decimal places
+  * When viewing Real Time Graphs, an undefined index error may be recorded
+  * Minor memory leaks and refresh issues when zooming on graphs
+  * Real Time Graphs may sometimes fail due to folder permissions
+  * Navigation can sometimes occur unexpectedly due to background timers
+  * Trees management screen not reporting correct number of trees
+  * Tree sequences can sometimes skip numbers during resorting
+  * Guest user selection should not allow setting the currently logged in user
+  * Links in Table Headers do not show clearly when in modern theme
+  * Under some cases tree logic leads to undefined index errors
+  * Cacti Data Debug can show errors if the Data Source is damaged or has been removed
+  * When importing a data query, an invalid column name error can sometimes be shown
+  * When using shift functions on graphs, negative values are not allowed
+  * Correct issue when file is unreadable reporting no file was specified
+  * Orphaned Plugins have no option to be removed
+  * Update MySQL recommendations for Character Set and Colation
+  * Correct sorting of IP addresses to be numeric not alpha by JamesTilt
+  * Saving a device should not always repopulate the poller cache
+
+-------------------------------------------------------------------
 Mon Aug  3 21:29:48 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti 1.2.14:
   * Poller keeps using old IP address for a device
   * poller bug fixes and various display fixes
   * Fix XSS vulnerability due to improper escaping of error message
-    during template import preview (boo#1174850)
+    during template import preview (boo#1174850, CVE-2020-25706)
 
 -------------------------------------------------------------------
 Tue Jul 14 09:14:56 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>

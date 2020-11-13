@@ -21,15 +21,13 @@
 %else
 %define cacti_dir %{apache_datadir}/cacti
 %endif
-
 %if 0%{?suse_version} >= 01230
 %bcond_without systemd
 %else
 %bcond_with systemd
 %endif
-
 Name:           cacti
-Version:        1.2.14
+Version:        1.2.15
 Release:        0
 Summary:        Web Front-End to Monitor System Data via RRDtool
 License:        GPL-2.0-or-later
@@ -73,6 +71,8 @@ BuildRequires:  httpd-devel
 %endif
 %if 0%{?suse_version}
 BuildRequires:  fdupes
+Requires:       mod_php_any >= 7.0
+Requires:       php-sockets >= 7.0
 %if %{with systemd}
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
@@ -80,8 +80,6 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:  cron
 Requires:       cron
 %endif
-Requires:       mod_php_any >= 7.0
-Requires:       php-sockets >= 7.0
 %endif
 %if 0%{?fedora_version}
 Requires:       php-mysqlnd >= 7.0
@@ -125,8 +123,8 @@ find . -type f -name .gitattributes -delete
 find . -type f -name .htaccess -delete
 
 # fix env interpreter lines
-sed -i 's|/usr/bin/env perl|%{_bindir}/perl|g' scripts/*.pl
-sed -i 's|/usr/bin/env php|%{_bindir}/php|g' include/vendor/cldr-to-gettext-plural-rules/bin/export-plural-rules
+sed -i 's|%{_bindir}/env perl|%{_bindir}/perl|g' scripts/*.pl
+sed -i 's|%{_bindir}/env php|%{_bindir}/php|g' include/vendor/cldr-to-gettext-plural-rules/bin/export-plural-rules
 
 %build
 #nothing to build
