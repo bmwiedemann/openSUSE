@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov 12 10:08:49 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Use shared Yast::Kernel.propose_hibernation? method when
+  proposing kernel parameters (jsc#SLE-12280)
+- 4.3.15
+
+-------------------------------------------------------------------
+Thu Nov  5 21:48:43 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Improve wording in summary to see where boot code is written
+  (jsc#SLE-16033)
+- allow to specify extended or logical partition when boot from
+  partition (bsc#1165042)
+- 4.3.14
+
+-------------------------------------------------------------------
 Thu Oct 22 12:53:21 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - "write proper value for NVRAM for UEFI (bsc#1157550)"
