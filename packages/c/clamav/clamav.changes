@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov 12 11:02:09 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not hard-depend on systemd: use systemd_ordering instead of
+  systemd_requires.
+
+-------------------------------------------------------------------
+Tue Nov 10 16:44:57 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Sync Factory to SLE-15 to implement jsc#ECO-3010 and bsc#1118459.
+- bsc#1119353, clamav-fips.patch: Fix freshclam crash in FIPS mode.
+- Keep OBS from installing an existing clamav instance to scan the
+  sources, because this makes "make check" use the old library
+  instead of the just built one. This is only a workaround until
+  we found a way to keep libtool from adding libdir to rpath and
+  LD_LIBRARY_PATH of the binaries in the testsuite.
+
+-------------------------------------------------------------------
 Mon Sep 14 17:39:16 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 0.103.0
@@ -112,11 +129,11 @@ Thu Dec 19 15:31:58 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 Wed Nov 20 19:01:10 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 0.102.1
-  * CVE-2019-15961: A Denial-of-Service (DoS) vulnerability may
-    occur when scanning a specially crafted email file as a result
-    of excessively long scan times. The issue is resolved by
-    implementing several maximums in parsing MIME messages and by
-    optimizing use of memory allocation.
+  * CVE-2019-15961, bsc#1157763: A Denial-of-Service (DoS)
+    vulnerability may occur when scanning a specially crafted email
+    file as a result of excessively long scan times. The issue is
+    resolved by implementing several maximums in parsing MIME
+    messages and by optimizing use of memory allocation.
   * Build system fixes to build clamav-milter, to correctly link
     with libxml2 when detected, and to correctly detect fanotify
     for on-access scanning feature support.

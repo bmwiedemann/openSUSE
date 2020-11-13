@@ -1085,4 +1085,17 @@
     <comment></comment>
     <requestid>835433</requestid>
   </revision>
+  <revision rev="110" vrev="2">
+    <srcmd5>2263a56f61a04714c59a5a1082200b70</srcmd5>
+    <version>0.103.0</version>
+    <time>1605290407</time>
+    <user>dimstar_suse</user>
+    <comment>Add missing bug references.
+
+- Do not hard-depend on systemd: use systemd_ordering instead of
+  systemd_requires.
+- Sync Factory to SLE-15 to implement jsc#ECO-3010 and bsc#1118459.
+- bsc#1119353, clamav-fips.patch: Fix freshclam crash in FIPS mode.</comment>
+    <requestid>848312</requestid>
+  </revision>
 </revisionlist>

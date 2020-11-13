@@ -37,6 +37,7 @@ Patch1:         clamav-conf.patch
 Patch4:         clamav-disable-timestamps.patch
 Patch5:         clamav-obsolete-config.patch
 Patch6:         clamav-disable-yara.patch
+Patch12:        clamav-fips.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bc
@@ -58,6 +59,13 @@ BuildRequires:  systemd-rpm-macros
 #BuildRequires:  valgrind
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(libsystemd)
+#
+# Workaround to keep "make check" from using an existing libclamav
+# instead of the just built one. This should rather be fixed
+# by keeping libtool from adding libdir to rpath and LD_LIBRARY_PATH
+# of the test binaries.
+#
+#!BuildIgnore:    clamav
 Requires(pre):  %_bindir/awk
 Requires(pre):  %_sbindir/groupadd
 Requires(pre):  %_sbindir/useradd
@@ -67,7 +75,7 @@ Requires(pre):  /bin/tar
 Obsoletes:      clamav-db < 0.88.3
 Provides:       clamav-nodb = %version
 Obsoletes:      clamav-nodb <= 0.98.4
-%systemd_requires
+%systemd_ordering
 %if %{without clammspack}
 BuildRequires:  libmspack-devel
 %endif
@@ -125,6 +133,7 @@ that want to make use of libclamav.
 %patch4
 %patch5
 %patch6
+%patch12
 
 %build
 CFLAGS="-fstack-protector"
