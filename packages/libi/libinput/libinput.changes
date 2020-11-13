@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  3 10:15:49 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.16.3
+  * evdev: reduce the "your system is slow" warning to 5 per hour
+
+-------------------------------------------------------------------
 Wed Oct 14 17:26:11 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Split libinput-debug-gui from the library package build,

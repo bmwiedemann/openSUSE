@@ -818,4 +818,12 @@ Peter Hutterer (3):
   tools package.</comment>
     <requestid>841813</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>c6183d2bdd041c960adbb19154c2fdd1</srcmd5>
+    <version>1.16.3</version>
+    <time>1605290107</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>847454</requestid>
+  </revision>
 </revisionlist>
