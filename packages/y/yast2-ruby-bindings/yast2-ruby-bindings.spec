@@ -17,7 +17,7 @@
 
 
 Name:           yast2-ruby-bindings
-Version:        4.3.4
+Version:        4.3.9
 Release:        0
 URL:            https://github.com/yast/yast-ruby-bindings
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -28,7 +28,7 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  yast2-core-devel
 BuildRequires:  yast2-devtools >= 3.1.10
-%if 0%{suse_version} == 1310
+%if 0%{?suse_version} == 1310
 BuildRequires:  rubygem-fast_gettext < 3.0
 BuildRequires:  rubygem-rspec
 Requires:       rubygem-fast_gettext < 3.0
@@ -40,15 +40,15 @@ Requires:       rubygem(%{rb_default_ruby_abi}:fast_gettext) < 3.0
 BuildRequires:  ruby-devel
 Requires:       yast2-core >= 3.2.2
 BuildRequires:  yast2-core-devel >= 3.2.2
-# MenuBar widget
-Requires:       yast2-ycp-ui-bindings       >= 4.3.1
-BuildRequires:  yast2-ycp-ui-bindings-devel >= 4.3.1
+# MenuBar-shortcuts-test.rb
+Requires:       yast2-ycp-ui-bindings       >= 4.3.6
+BuildRequires:  yast2-ycp-ui-bindings-devel >= 4.3.6
 # The test suite includes a regression test (std_streams_spec.rb) for a
 # libyui-ncurses bug fixed in 2.47.3
 BuildRequires:  libyui-ncurses >= 2.47.3
-# The mentioned test requires to check if tmux is there, because tmux is
-# needed to execute the test in headless systems
-BuildRequires:  which
+# The mentioned test requires tmux in order to be executed in headless systems
+# Also many other libyui tests to come
+BuildRequires:  tmux
 
 # only a soft dependency, the Ruby debugger is optional
 Suggests:       rubygem(%{rb_default_ruby_abi}:byebug)
@@ -89,6 +89,9 @@ make install DESTDIR=$RPM_BUILD_ROOT
 cd -
 
 %check
+# Build workers are set up without systemd so the default /run/tmux dir
+# will not be present (unless clamav pulls systemd in, on SLE)
+export TMUX_TMPDIR=/tmp
 cd build
 make test ARGS=-V
 cd -

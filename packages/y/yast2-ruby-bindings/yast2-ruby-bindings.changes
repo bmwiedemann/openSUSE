@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Nov 12 10:20:58 UTC 2020 - Martin Vidner <mvidner@suse.com>
+
+- Build fix for "error creating /run/tmux/399" (bsc#1178394)
+- 4.3.9
+
+-------------------------------------------------------------------
+Tue Nov  3 17:39:19 UTC 2020 - Martin Vidner <mvidner@suse.com>
+
+- Test: menu items remain disabled after hotkeys are recomputed
+  (bsc#1178394)
+- 4.3.8
+
+-------------------------------------------------------------------
+Thu Oct 29 17:26:31 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Added unit tests for NCMultiSelectionBox (bsc#1177985)
+- 4.3.7
+
+-------------------------------------------------------------------
+Thu Oct 29 11:30:49 UTC 2020 - Stefan Schubert <schubi@suse.com>
+
+- Reporting augeas parsing errors and displaying them in rich-text
+  format (bsc#1174198).
+- 4.3.6
+
+-------------------------------------------------------------------
+Tue Oct 13 14:42:52 UTC 2020 - Martin Vidner <mvidner@suse.com>
+
+- Add automatic TUI (ncurses) tests using tmux (bsc#1165388).
+- 4.3.5
+
+-------------------------------------------------------------------
 Thu Sep 24 19:46:00 UTC 2020 - besser82@fedoraproject.org
 
 - Fixes for gensalt handling with libxcrypt (bsc#1176924)
