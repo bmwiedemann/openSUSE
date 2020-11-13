@@ -24,8 +24,14 @@
 %define have_qt3danimation 1
 %endif
 
+%if 0%{suse_version} < 1550
+%define use_sip4 1
+%endif
+
+%define oldpython python
+%define mname qt3d-qt5
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-qt3d-qt5
+Name:           python-%{mname}
 Version:        5.15.1
 Release:        0
 Summary:        Python bindings for the Qt5 3D framework
@@ -35,7 +41,8 @@ URL:            https://www.riverbankcomputing.com/software/pyqtchart/intro
 Source:         https://files.pythonhosted.org/packages/source/P/PyQt3D/PyQt3D-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module qt5-devel}
-BuildRequires:  %{python_module sip-devel >= 4.19.4}
+BuildRequires:  fdupes
+BuildRequires:  python-pyqt-rpm-macros
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(Qt53DAnimation)
 BuildRequires:  pkgconfig(Qt53DCore)
@@ -43,103 +50,90 @@ BuildRequires:  pkgconfig(Qt53DExtras)
 BuildRequires:  pkgconfig(Qt53DInput)
 BuildRequires:  pkgconfig(Qt53DLogic)
 BuildRequires:  pkgconfig(Qt53DRender)
-Requires:       python-qt5
+%if 0%{?use_sip4}
+BuildRequires:  %{python_module sip4-devel >= 4.19.4}
 Requires:       python-sip(api) = %{python_sip_api_ver}
+%else
+BuildRequires:  %{python_module pyqt-builder}
+BuildRequires:  %{python_module sip-devel >= 5.3}
+%requires_eq    python-qt5-sip
+%endif
+%requires_ge    python-qt5
 
 %python_subpackages
 
 %description
 PyQt3D is a set of Python bindings for the Qt 3D framework.
 
-%package     -n %{name}-api
+%package api
 Summary:        Eric API files for %{name}
 Group:          Development/Tools/IDE
-Provides:       %{python_module qt3d-qt5-api = %{version}}
-Supplements:    packageand(eric:%{python2_prefix}-qt3d-qt5)
-Supplements:    packageand(eric:python3-qt3d-qt5)
-BuildArch:      noarch
+Supplements:    packageand(eric:python-%{mname})
 
-%description -n %{name}-api
+%description api
 This package provides Qt5 3D framework API files for the Eric IDE.
 
-%package     -n %{name}-sip
+%package sip
 Summary:        Sip files for %{name}
 Group:          Development/Libraries/Python
-Provides:       %{python_module qt3d-qt5-sip = %{version}}
-Supplements:    packageand(%{python2_prefix}-sip:%{python2_prefix}-qt3d-qt5)
-Supplements:    packageand(python3-sip:python3-qt3d-qt5)
-BuildArch:      noarch
+Supplements:    packageand(python-sip:python-%{mname}) 
+Provides:       %{oldpython}-%{mname}-sip = %{version}-%{release}
+Obsoletes:      %{oldpython}-%{mname}-sip < %{version}-%{release}
+Requires:       python-qt5-devel
 
-%description -n %{name}-sip
-This package contains sip files used to generate
-bindings to the Qt5 3D framework.
+%description sip
+This package provides the SIP files used to generate the Python bindings for
+%{name}
 
-%package     -n %{name}-examples
+%package doc
 Summary:        Examples for %{name}
 Group:          Documentation/Other
-Provides:       %{python_module qt3d-qt5-examples = %{version}}
+Provides:       %{python_module %{mname}-examples = %{version}-%{release}}
 BuildArch:      noarch
 
-%description -n %{name}-examples
+%description doc
 This package provides %{name} examples.
 
 %prep
 %setup -q -n PyQt3D-%{version}
-%{python_expand mkdir build_%{$python_bin_suffix}
-cp *.py build_%{$python_bin_suffix}
-cp -r sip build_%{$python_bin_suffix}
-}
 
 %build
-%{python_expand pushd build_%{$python_bin_suffix}
-$python configure.py \
-    -w \
-    --no-dist-info \
-    --no-stubs \
-    --qmake=%{_bindir}/qmake-qt5
-
-make %{?_smp_mflags}
-popd
-}
+%pyqt_build
 
 %install
-%{python_expand pushd build_%{$python_bin_suffix}
-%make_install INSTALL_ROOT=%{buildroot}
-popd
-}
-mkdir -p %{buildroot}%{_docdir}/%{name}
-find examples -type f -executable -exec sed -i '1s=^#!%{_bindir}/\(python\|env python\)3\?=#!%{_bindir}/python3=' {} +
-cp -r examples %{buildroot}%{_docdir}/%{name}
+%pyqt_install
+%pyqt_install_examples %mname
 
 %files %{python_files}
 %license LICENSE
 %doc NEWS README
 %dir %{python_sitearch}/PyQt5/
-%{?have_qt3danimation:%{python_sitearch}/PyQt5/Qt3DAnimation.so}
-%{python_sitearch}/PyQt5/Qt3DCore.so
-%{python_sitearch}/PyQt5/Qt3DExtras.so
-%{python_sitearch}/PyQt5/Qt3DInput.so
-%{python_sitearch}/PyQt5/Qt3DLogic.so
-%{python_sitearch}/PyQt5/Qt3DRender.so
-%exclude %{_docdir}/%{name}/examples/
+%{?have_qt3danimation:%{python_sitearch}/PyQt5/Qt3DAnimation.*}
+%{python_sitearch}/PyQt5/Qt3DCore.*
+%{python_sitearch}/PyQt5/Qt3DExtras.*
+%{python_sitearch}/PyQt5/Qt3DInput.*
+%{python_sitearch}/PyQt5/Qt3DLogic.*
+%{python_sitearch}/PyQt5/Qt3DRender.*
+%{python_sitearch}/PyQt3D-%{version}.dist-info/
 
-%files -n %{name}-api
+%files %{python_files api}
 %license LICENSE
-%dir %{_datadir}/qt5/qsci/api/python/
-%{_datadir}/qt5/qsci/api/python/PyQt3D.api
+%dir %{_datadir}/qt5/qsci/api/python_%{python_bin_suffix}/
+%{_datadir}/qt5/qsci/api/python_%{python_bin_suffix}/PyQt3D.api
 
-%files -n %{name}-sip
+%files %{python_files sip}
 %license LICENSE
-%{?have_qt3danimation:%{_datadir}/sip/PyQt5/Qt3DAnimation/}
-%{_datadir}/sip/PyQt5/Qt3DCore/
-%{_datadir}/sip/PyQt5/Qt3DExtras/
-%{_datadir}/sip/PyQt5/Qt3DInput/
-%{_datadir}/sip/PyQt5/Qt3DLogic/
-%{_datadir}/sip/PyQt5/Qt3DRender/
+%{?have_qt3danimation:%{pyqt5_sipdir}/Qt3DAnimation/}
+%{pyqt5_sipdir}/Qt3DCore/
+%{pyqt5_sipdir}/Qt3DExtras/
+%{pyqt5_sipdir}/Qt3DInput/
+%{pyqt5_sipdir}/Qt3DLogic/
+%{pyqt5_sipdir}/Qt3DRender/
 
-%files -n %{name}-examples
+%files %{python_files doc}
 %license LICENSE
-%dir %{_docdir}/%{name}/
-%{_docdir}/%{name}/examples/
+%{_docdir}/%{python_prefix}-%{mname}
+%exclude %{_docdir}/%{python_prefix}-%{mname}/NEWS
+%exclude %{_docdir}/%{python_prefix}-%{mname}/README
 
 %changelog

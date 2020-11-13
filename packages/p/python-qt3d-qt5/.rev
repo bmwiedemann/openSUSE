@@ -58,4 +58,15 @@
 This is for backports derived from Factory. No effect on Tumbleweed.</comment>
     <requestid>839653</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>828f6bb0ec7fd1372812ad77c7a475d4</srcmd5>
+    <version>5.15.1</version>
+    <time>1605290263</time>
+    <user>dimstar_suse</user>
+    <comment>- Use sip5 where available 
+
+(fix changelog entry)
+</comment>
+    <requestid>846248</requestid>
+  </revision>
 </revisionlist>
