@@ -214,4 +214,17 @@
   + python-azure-mgmt-streamanalytics (forwarded request 841256 from glaubitz)</comment>
     <requestid>841297</requestid>
   </revision>
+  <revision rev="19" vrev="16">
+    <srcmd5>ad21025a0a24275b998ea06a95906730</srcmd5>
+    <version>4.0.0</version>
+    <time>1605290336</time>
+    <user>dimstar_suse</user>
+    <comment>- Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-cognitiveservices &amp;gt;= 6.3.0
+  + python-azure-mgmt-core &amp;gt;= 1.2.2
+  + python-azure-mgmt-keyvault &amp;gt;= 8.0.0
+  + python-azure-mgmt-sql &amp;gt;= 0.24.0
+  + python-azure-mgmt-subscription &amp;gt;= 0.7.0 (forwarded request 848165 from glaubitz)</comment>
+    <requestid>848199</requestid>
+  </revision>
 </revisionlist>

@@ -65,7 +65,7 @@ Requires:       python-azure-mgmt-botservice >= 0.1.0
 Requires:       python-azure-mgmt-cdn < 6.0.0
 Requires:       python-azure-mgmt-cdn >= 5.1.0
 Requires:       python-azure-mgmt-cognitiveservices < 7.0.0
-Requires:       python-azure-mgmt-cognitiveservices >= 6.2.0
+Requires:       python-azure-mgmt-cognitiveservices >= 6.3.0
 Requires:       python-azure-mgmt-commerce < 2.0.0
 Requires:       python-azure-mgmt-commerce >= 1.0.1
 Requires:       python-azure-mgmt-communication < 2.0.0
@@ -81,7 +81,7 @@ Requires:       python-azure-mgmt-containerregistry >= 3.0.0
 Requires:       python-azure-mgmt-containerservice < 10.0.0
 Requires:       python-azure-mgmt-containerservice >= 9.4.0
 Requires:       python-azure-mgmt-core < 2.0.0
-Requires:       python-azure-mgmt-core >= 1.0.0
+Requires:       python-azure-mgmt-core >= 1.2.2
 Requires:       python-azure-mgmt-cosmosdb < 2.0.0
 Requires:       python-azure-mgmt-cosmosdb >= 1.0.0
 Requires:       python-azure-mgmt-costmanagement < 1.0.0
@@ -132,8 +132,8 @@ Requires:       python-azure-mgmt-iothub < 1.0.0
 Requires:       python-azure-mgmt-iothub >= 0.10.0
 Requires:       python-azure-mgmt-iothubprovisioningservices < 1.0.0
 Requires:       python-azure-mgmt-iothubprovisioningservices >= 0.2.0
-Requires:       python-azure-mgmt-keyvault < 8.0.0
-Requires:       python-azure-mgmt-keyvault >= 7.0.0
+Requires:       python-azure-mgmt-keyvault < 9.0.0
+Requires:       python-azure-mgmt-keyvault >= 8.0.0
 Requires:       python-azure-mgmt-kubernetesconfiguration < 1.0.0
 Requires:       python-azure-mgmt-kubernetesconfiguration >= 0.2.0
 Requires:       python-azure-mgmt-kusto < 1.0.0
@@ -219,7 +219,7 @@ Requires:       python-azure-mgmt-servicefabric >= 0.5.0
 Requires:       python-azure-mgmt-signalr < 1.0.0
 Requires:       python-azure-mgmt-signalr >= 0.4.0
 Requires:       python-azure-mgmt-sql < 1.0.0
-Requires:       python-azure-mgmt-sql >= 0.21.0
+Requires:       python-azure-mgmt-sql >= 0.24.0
 Requires:       python-azure-mgmt-sqlvirtualmachine < 1.0.0
 Requires:       python-azure-mgmt-sqlvirtualmachine >= 0.5.0
 Requires:       python-azure-mgmt-storage < 17.0.0
@@ -233,7 +233,7 @@ Requires:       python-azure-mgmt-storagesync >= 0.2.0
 Requires:       python-azure-mgmt-streamanalytics < 2.0.0
 Requires:       python-azure-mgmt-streamanalytics >= 1.0.0rc1
 Requires:       python-azure-mgmt-subscription < 1.0.0
-Requires:       python-azure-mgmt-subscription >= 0.6.0
+Requires:       python-azure-mgmt-subscription >= 0.7.0
 Requires:       python-azure-mgmt-synapse < 1.0.0
 Requires:       python-azure-mgmt-synapse >= 0.4.0
 Requires:       python-azure-mgmt-trafficmanager < 1.0.0
