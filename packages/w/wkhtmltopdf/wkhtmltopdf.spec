@@ -20,13 +20,13 @@
 %define libname lib%{wk_name}%{sover}
 %define wk_name wkhtmltox
 Name:           wkhtmltopdf
-Version:        0.12.5
+Version:        0.12.6
 Release:        0
 Summary:        Convert HTML into PDF and various image formats
 License:        LGPL-3.0-only
 Group:          Productivity/Publishing/PDF
-URL:            https://github.com/wkhtmltopdf/wkhtmltopdf/archive/%{version}.tar.gz
-Source:         %{name}-%{version}.tar.gz
+URL:            https://wkhtmltopdf.org/
+Source:         https://github.com/wkhtmltopdf/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Svg)
@@ -66,15 +66,14 @@ This package contains the headers for the wkhtmltopdf library.
 %prep
 %setup -q
 
+sed -e 's|BASE/lib|BASE/%{_lib}|' -i src/lib/lib.pro
+
 %build
 %qmake5
 %make_jobs
 
 %install
-%make_install INSTALL_ROOT=%{buildroot}/%{_prefix}
-%if %{__isa_bits} ==64
-mv %{buildroot}%{_libexecdir} %{buildroot}%{_libdir}
-%endif
+%make_install INSTALL_ROOT=%{buildroot}%{_prefix}
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig

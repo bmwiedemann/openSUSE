@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 13 08:46:45 UTC 2020 - munix9@googlemail.com
+
+- Update to version 0.12.6
+
+  * #2124: [qt] avoid "QFont::setPixelSize: Pixel size <= 0" (qt#42)
+  * #3953: fix TOC and other special pages not present in output PDF (#3962)
+  * #3242: [qt] fix regression from #2353 in setLineDash for Canvas (qt#35)
+  * #4536: BREAKING CHANGE: block local filesystem access by default
+  * #4612: allow --encoding to work for non-patched builds
+  * [qt] add support for ppc64le, thanks to @notorca (qt#40)
+  * [qt] add support for 64-bit ARM, thanks to @soleson (qt#45, qt#46)
+
+- Fixed build on tumbleweed (%_libexecdir)
+
+-------------------------------------------------------------------
 Thu Apr 30 10:11:38 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - update to version 0.12.5 (boo#1170923)
