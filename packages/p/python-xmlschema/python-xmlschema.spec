@@ -19,17 +19,18 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-xmlschema
-Version:        1.2.5
+Version:        1.3.1
 Release:        0
 Summary:        An XML Schema validator and decoder
 License:        MIT
-URL:            https://github.com/brunato/xmlschema
+URL:            https://github.com/sissaschool/xmlschema
 Source:         https://files.pythonhosted.org/packages/source/x/xmlschema/xmlschema-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM skip_network_tests.patch gh#sissaschool/xmlschema#206 mcepl@suse.com
-# Just skip test_export_remote__issue_187 test when not connected to the network.
-Patch0:         skip_network_tests.patch
+# PATCH-FIX-UPSTREAM remove_shebang.patch gh#sissaschool/xmlschema#210 mcepl@suse.com
+# Remove superfluous shebang
+Patch0:         remove_shebang.patch
 BuildRequires:  %{python_module elementpath >= 1.4.0}
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -68,10 +69,8 @@ for p in json2xml validate xml2json; do
 done
 
 %check
-# test_element_tree_import_script is (easily workaroundable) https://github.com/sissaschool/xmlschema/issues/167
-# tests_factory setup is broken
 export LANG="en_US.UTF8"
-%pytest -k "not (test_element_tree_import_script or tests_factory)" tests
+%pytest tests/
 
 %post
 %python_install_alternative xmlschema-json2xml
