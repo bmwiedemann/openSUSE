@@ -27,7 +27,7 @@
 #
 ######################################################################
 Name:           skelcd-control-openSUSE
-Version:        20201007
+Version:        20201110
 Release:        0
 Summary:        The openSUSE Installation Control file
 License:        MIT
@@ -124,6 +124,8 @@ make %{?_smp_mflags} -C control check
 mkdir -p $RPM_BUILD_ROOT%{?skelcdpath}/CD1
 install -m 644 control/${CONTROL_FILE} $RPM_BUILD_ROOT%{?skelcdpath}/CD1/control.xml
 
+%if 0%{?sle_version} <= 150200
+# With Leap 15.3 and later, all supported archs are in the same repo. TW remains separated.
 %ifarch aarch64 %arm ppc ppc64 ppc64le s390x
     ports_arch="%{_arch}"
     %ifarch ppc ppc64 ppc64le
@@ -148,11 +150,12 @@ install -m 644 control/${CONTROL_FILE} $RPM_BUILD_ROOT%{?skelcdpath}/CD1/control
     sed -i -e "s,http://download.opensuse.org/update/tumbleweed/,http://download.opensuse.org/ports/$ports_arch/update/tumbleweed/," %{buildroot}%{?skelcdpath}/CD1/control.xml
     # Update external link
     sed -i -e "s,https://download.opensuse.org/YaST/Repos/openSUSE_Factory_Servers.xml,https://download.opensuse.org/YaST/Repos/openSUSE_$ports_arch\_Factory_Servers.xml," %{buildroot}%{?skelcdpath}/CD1/control.xml
-    sed -i -e "s,https://download.opensuse.org/YaST/Repos/openSUSE_Leap_,https://download.opensuse.org/YaST/Repos/openSUSE_$ports_arch\Leap_," %{buildroot}%{?skelcdpath}/CD1/control.xml
+    sed -i -e "s,https://download.opensuse.org/YaST/Repos/openSUSE_Leap_,https://download.opensuse.org/YaST/Repos/openSUSE_$ports_arch\_Leap_," %{buildroot}%{?skelcdpath}/CD1/control.xml
     #we parse out non existing non-oss repo for ports
     xsltproc -o %{buildroot}%{?skelcdpath}/CD1/control_ports.xml control/nonoss.xsl %{buildroot}%{?skelcdpath}/CD1/control.xml
     mv %{buildroot}%{?skelcdpath}/CD1/control{_ports,}.xml
     xmllint --noout --relaxng %{_datadir}/YaST2/control/control.rng %{buildroot}%{?skelcdpath}/CD1/control.xml
+%endif
 %endif
 
 %files

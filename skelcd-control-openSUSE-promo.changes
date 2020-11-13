@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Nov  10 04:59:22 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- Server Role should install the new yast2_server pattern
+  (boo#1159875)
+- 20201110
+
+-------------------------------------------------------------------
+Mon Nov  9 12:21:02 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Write linuxrc hostname and proxy configuration also during an
+  autoinstallation (bsc#1177768)
+- 20201109
+
+-------------------------------------------------------------------
+Fri Nov  6 09:04:28 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Do not update repo paths for Leap 15.3 and later as all supported
+  archs are built in the same project and published in the same
+  online directory
+- 20201106
+
+-------------------------------------------------------------------
+Wed Nov  4 15:16:59 UTC 2020 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Adjust the roles to the new YaST Patterns (boo#1159875)
+- 20201105
+
+-------------------------------------------------------------------
+Mon Nov  2 09:20:50 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix update external link for non-x86 on Leap (bsc#1120938)
+- 20201102
+
+-------------------------------------------------------------------
 Wed Oct  7 15:59:00 CEST 2020 - schubi@suse.de
 
 - Upgrade openSUSE->Jump. Allow vendor change without asking
