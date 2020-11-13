@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DateTime
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           perl-DateTime
-Version:        1.52
+Version:        1.53
 Release:        0
 %define cpan_name DateTime
 Summary:        Date and time object for Perl
 License:        Artistic-2.0
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -32,7 +32,7 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(CPAN::Meta::Check) >= 0.011
 BuildRequires:  perl(CPAN::Meta::Requirements)
 BuildRequires:  perl(DateTime::Locale) >= 1.060000
-BuildRequires:  perl(DateTime::TimeZone) >= 2.02
+BuildRequires:  perl(DateTime::TimeZone) >= 2.44
 BuildRequires:  perl(Dist::CheckConflicts) >= 0.02
 BuildRequires:  perl(Params::ValidationCompiler) >= 0.26
 BuildRequires:  perl(Specio) >= 0.18
@@ -48,7 +48,7 @@ BuildRequires:  perl(Try::Tiny)
 BuildRequires:  perl(namespace::autoclean) >= 0.19
 BuildRequires:  perl(parent)
 Requires:       perl(DateTime::Locale) >= 1.060000
-Requires:       perl(DateTime::TimeZone) >= 2.02
+Requires:       perl(DateTime::TimeZone) >= 2.44
 Requires:       perl(Dist::CheckConflicts) >= 0.02
 Requires:       perl(Params::ValidationCompiler) >= 0.26
 Requires:       perl(Specio) >= 0.18

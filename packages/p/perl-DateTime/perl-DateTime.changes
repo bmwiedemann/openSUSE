@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 10 03:08:28 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.53
+   see /usr/share/doc/packages/perl-DateTime/Changes
+
+  1.53   2020-11-08
+
+  - Added a $dt->rfc3339 method. Based on discussion in GH #109 by worthmine.
+
+-------------------------------------------------------------------
 Sun Mar  1 03:10:57 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.52
