@@ -1,4 +1,707 @@
 -------------------------------------------------------------------
+Fri Nov 13 09:07:12 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Add minizip.patch to revert back to minizip 1.x which is also
+  the in-tree version anyway.
+
+-------------------------------------------------------------------
+Thu Nov 12 07:11:49 UTC 2020 - idonmez@suse.com
+
+- Update to version 5.0+git.20201111T112241.9e3e325add:
+  * Android: Add null check for InputOverlay
+  * Common/MsgHandler: Add fmt-capable variants of the alert macros
+  * Android: Remove unnecessary ANativeWindow_release call
+  * Android: Fix alert messages when EmulationActivity is being destroyed
+  * Android: Fix rotating EmulationActivity after boot fails
+  * Android: Only show emulation menu toast if boot succeeds
+  * Android: Finish EmulationActivity from C++
+  * UICommon: Migrate logging over to fmt
+  * ShaderGenCommon: Rename WriteFmt() to Write()
+  * CPUDetect: Indicate slow PDEP/PEXT only for Zen1/+/2 (Family 23)
+  * Android: Don't name unused JNIEnv/jobject/jclass parameters
+  * Android: Fix jobject/jclass warnings
+  * Android: Remove unnecessary WrongConstant warning suppression
+  * Android: Call saveSettings in EmulationActivity.onStop
+  * Android: Make scrollbar for in-game menu always visible
+  * Fix dereferencing nullptr BootParameters
+  * Android: Rename path variable in ConvertFragment
+  * Android: Suppress warnings in EmulationActivity
+  * Common/LinearDiskCache: Replace std::fstream with File::IOFile
+  * Virtual Notch settings and UI for octagonal stick
+  * JitArm64: Implement HLE function hooking
+  * Resolve VkDeviceMemory/nullptr type mismatch to fix build on FreeBSD i386
+  * Top: Set port when connecting a socket to find the default interface
+  * Android: Remove some touchscreen checks from EmulationActivity
+  * Android: Don't reset savestate time on load
+  * Android/InputOverlayPointer: Don't assume surface covers whole screen
+  * Simplify Arm64GPRCache::Flush
+  * Translation resources sync with Transifex
+  * Android: Update IR sensitivity default values
+  * Common: Fix logger related crash when HTTP response is empty
+  * DolphinQt: Update register view font when Debug Font changes
+  * Android: showMotionControlsOptions cleanup
+  * Source/Core/Common/Config/Config.cpp: add missing <mutex> include
+  * Android: Remove unused imports
+  * UberShaderPixel: Migrate over to fmt
+  * Externals: Update fmt to 7.1.0
+  * Android: Fix initTouchPointer
+  * dolphinqt msbuild: do not moc TASSlider.h
+  * FileUtil: Fix format string
+  * DolphinQt: Add a warning to the MEM1/MEM2 override setting description.
+  * CMake: Change "USE_VULKAN" to "HAS_VULKAN"
+  * CMake: Set HAS_OPENGL for every system other than arm64
+  * IOS/USB: Fix -Winvalid-offset warnings
+  * VideoCommon: update vcproj file to set HAS_OPENGL
+  * VideoCommon: remove HAS_OPENGL from VideoBackendBase
+  * VideoCommon: update vcproj file to set HAS_VULKAN
+  * VideoCommon: rename USE_VULKAN to HAS_VULKAN in VideoBackendBase
+  * PixelShaderGen: Migrate over to fmt
+  * VideoCommon/FrameDump: Remove code for older versions of avcodec.
+  * Common: Migrate logging to fmt
+  * CMake: Add option to enable/disable Vulkan video backend
+  * InputCommon: Migrate logging over to fmt
+  * DolphinQt: Move QT_LAYOUT_DIRECTION string to qt-strings.pot
+  * VideoCommon: FrameDump fixes/cleanups.
+  * Explain how to fix "Serial and/or version data is missing"
+  * Android: Show how long ago each savestate was created
+  * VideoCommon: Simplify VideoBackendBase::GetDefaultBackendName
+  * VideoCommon: Get rid of the global g_available_video_backends
+  * DriverDetails: Remove bug for broken GPU Texture Decoding
+  * Re-enable GPU Texture Decoding under MoltenVK
+  * WiimoteReal: Only duplicate data reports when speaker data is enabled.
+  * add some file to pch
+  * cmake: Silence warnings.
+  * Socket: Abort pending operations on shutdown
+
+-------------------------------------------------------------------
+Fri Oct 23 17:01:16 UTC 2020 - seil0@mosad.xyz
+
+- Update to version 5.0+git.20201022T220753.64f7a4448b:
+  * DiscIO: Migrate logging over to fmt
+  * DolphinQt: Don't call UICommon::InhibitScreenSaver if already in desired state.
+  * Common/Matrix: Allow TVec classes to be used in constexpr contexts
+  * Require zstd >= 1.4.0
+  * Android: Attach CPU thread to JVM early
+  * Fix volume of emulated wii mote speakers not being native
+  * Android: Don't show game ID after game title
+  * Android: Get game metadata from core
+  * Core: Always call Host_TitleChanged on boot
+  * Core: Set bWii before calling Host_TitleChanged
+  * AudioCommon: Migrate logging over to fmt
+  * Common/Log: Add basic fmt-capable functions to the interface.
+  * Common: Move OSThreads into core
+  * ARDecrypt: Resolve seedtable at compile-time
+  * ExpressionParser: Add missing <functional> include
+  * Android: Add AndroidOverlayButtons INI section
+  * Android: Add "Default Values" button for overlay seekbars
+  * Android: Convert SharedPreferences to INI Settings (simple cases)
+  * UberShaderVertex: Migrate over to fmt
+  * DataReader: Make use of if constexpr where applicable
+  * UberShaderCommon: Migrate over to fmt
+  * Translation resources sync with Transifex
+  * DiscIO: Make WiiEncryptionCache moveable
+  * GeometryShaderGen: Migrate over to fmt
+  * FramebufferShaderGen: Migrate over to fmt
+  * WiimoteEmu: Tweak IMUCursor total yaw setting tool-tip.
+  * WiimoteEmu: Expose IR camera FOV to adjust IMU pointing sensitivity.
+  * WiimoteEmu: Use quaternions for orientation.
+  * InputCommon/WiimoteEmu: Replace stateful rotational matrices with quaternions.
+  * Common/Matrix: Add Quaternion class.
+  * VolumeVerifier: Make "no valid data in partition" hide some other errors
+  * Android: Remove unnecessary JNI function declarations
+  * VertexShaderGen: Fix unescaped { in D3D shader.
+  * Android: Refetch game metadata after returning from settings
+  * Android: Allow disabling cover downloading
+  * Android: Allow reading global settings without a Settings object
+  * Linux/XInput2: Fix keys being stuck pressed on focus loss.
+  * Reorder xgettext arguments
+  * Fix predefined Qt strings not getting translated
+  * CMake: Fix build errors exposed by making common dependent on fmt
+  * Add helper function for fmt::format(GetStringT(...
+  * DiscIO: Make use of fmt where applicable
+  * Qt/QtUtils: Fix accidental recursion in ParallelProgressDialog
+  * Clean up screen saver inhibition and apply setting change immediately.
+  * DolphinQt: Expose "DisableScreenSaver" setting in the UI.
+  * Config: Make "DisableScreenSaver" default to true.
+  * Android: Show alert messages as toasts outside of emulation
+  * Android: ConfirmRunnable to RunRunnable with optional confirmation
+  * DolphinQt: Reset TAS input slider to default on right-click
+  * Source/Core/DiscIO/WIACompression.cpp: add missing <limits> include
+  * Readme: Add Buildbot header link
+  * Android: Fix setting read during play with local game layer active
+  * AudioStretcher: Keep default parameters.
+  * Android: Remove finish from ConfirmRunnableViewHolder
+  * android: add SENSOR_REVERSE_LANDSCAPE as an option
+  * DiscIO: Decrease RAM usage during zstd compression
+  * Show NKitness in file format string
+  * Remove AsciiArt shader
+  * Use Instant in StartupHandler.
+  * Enable support for Java 8 API desugaring.
+  * Replace geckocodes.org with mirror codes.rc24.xyz
+  * Add Metal Gear Solid: The Twin Snakes to NKit warning message
+  * Core: Load custom textures after inputs has been loaded and avoid sending force texture reload during startup for dynamic textures.  This ensures that custom texture loading only happens once and users don't see any weird flashes on startup
+  * InputCommon: Introducing the "Dynamic Input Texture".  Configuration links an emulated input action to an image based on what host key is defined for that emulated input.  Specific regions are called out in configuration that mark where to replace an input button with a host key image.
+  * VideoCommon: Make a reusable free function for getting top level directories that have a matching gameid text file underneath
+  * Jit64: fselx - Skip MOVAPS + MOVSD (SSE4.1)
+  * Jit64: fselx - Skip MOVSD (AVX)
+  * Externals: Update MoltenVK to v1.1
+  * Socket: Set SO_NOSIGPIPE on macOS
+  * Vulkan: Use VK_LAYER_KHRONOS_validation for validation
+  * Android: Correct SliderSetting minimum value behavior on API < 26
+  * Translation resources sync with Transifex
+  * DolphinQt/Debugger: Fix DBAT and IBAT registers in RegisterWidget
+  * Fix controller defaults being empty on fresh run
+  * ControllerEmu: Increase "IMUPointer" "Total Yaw" default value to match that of regular "Point" settings. Removed "Total Yaw" from included Wii remote input profile to take on the default value.
+  * ControllerEmu: Increase Total Yaw/Pitch default values to compensate for new FOV and to reach screen edges in the Wii Menu.
+  * ControllerInterface/Wiimote: Add "IR Distance" input providing a calculated distance from sensor bar in meters.
+  * WiimoteEmu: Increase Camera FOV constants to 42 by 31.5 degrees.
+  * MathUtil: Add Population (vs Sample) versions of Variance and StandardDeviation to RunningVariance.
+  * Update DPSJ8P.ini
+  * Core/NetPlay: Fix Wii Remote syncing.
+  * Android: seekbar.setMin requires API level 26
+  * Core: Unbreak default keyboard mappings.
+  * Android: Fix convertCompressionLevelZstdValues
+  * Update DPSJ8P.ini
+  * Create DPSJ8P.ini
+  * Create DPOJ8P.ini and add modem bypass code
+  * Create DPOJ8P.ini
+  * ExpressionParser: Improve hotkey suppression logic. Allow activation with simultaneous press of modifier and final input.
+  * ExpressionParser: Replace ScopeGuard with custom deleter unique_ptr.
+  * InputCommon: Improve input detection to produce buton combinations.
+  * InputCommon: Make hotkeys and input detection aware of Ctrl -> L_Ctrl / R_Ctrl hierarchy.
+  * InputCommon: Clean up modifier ignoring logic.
+  * Core: Clean up default hotkey expressions.
+  * ControllerInterface: Add platform consistent names for modifier keys.
+  * ExpressionParser: Allow duplicate and superset modifier hotkeys to function.
+  * InputCommon: Support detecting combinations of inputs. (Hotkeys)
+  * ExpressionParser: Suppress inputs when hotkey modifiers are pressed.
+  * ExpressionParser: Add Hotkey syntax.
+  * Android: Add "Ignore for this session" to Warning AlertMessages
+  * Android: Use DialogFragment for AlertMessage
+  * FramebufferManager: Fix EFB readbacks with MSAA on
+  * Properly fix News Channel loading screen
+  * Android: Use storage access framework for importing WADs
+  * DolphinQt: Use 1-based disc numbering in InfoWidget
+  * VolumeVerifier: Call CheckDiscSize from Finish
+  * VolumeVerifier: Make high severity "too small" hide low severity "too small"
+  * DolphinQt: Stop using qtmain
+  * DolphinQt: Handle non-ASCII characters in Windows cmd arguments
+  * IP/Top: Log IOCTL_SO_GETHOSTID properly
+  * IP/Top: Add SO_LINGER optname
+  * Update state version.
+  * Core/BTEmu: Change a member variable to a local variable.
+  * Translation resources sync with Transifex
+  * ControllerEmu: Improve and simplify UpdateCalibrationData.
+  * Add built-in profile for Wii Remote with MotionPlus IR
+  * Qt/MappingWindow: Add support for built-in profiles
+  * GameSettings: Fix Monster Hunter Tri bloom patches
+  * GameSettings: Enable FPRF for Interactive Multi-Game Demo Disk: November 2003
+  * GameSettings: Set Texture Cache Accuracy to "Safe" for Rockman EXE Transmission
+  * GameSettings: Set Texture Cache Accuracy to "Medium" for Far Cry Vengeance
+  * GameSettings: Disable MSAA for Pokemon Snap
+  * GameSettings: Disable MSAA for Pikmin (Wii)
+  * GameSettings: Disable "Immediately Present XFB" for Judge Dredd: Dredd vs. Death
+  * GameSettings: Add 2D rendering patches for MVP Baseball 2004 and MVP Baseball 2005
+  * GameSettings: Enable MMU for Watchever Channel
+  * GameSettings: Disable "Skip EFB Access from CPU" for Resident Evil Code: Veronica X (PAL)
+  * GameSettings: Set Texture Cache Accuracy to "Safe" for 10 Minute Solution
+  * GameSettings: Disable "Defer EFB Copes to RAM" and "Immediately Present XFB" for Super Paper Mario
+  * GameSettings: Disable "Store EFB Copies to Texture Only" for EA Sports Active 2
+  * GameSettings: Disable "Defer EFB Copes to RAM" for Star Wars - Rogue Squadron III - Rebel Strike
+  * GameSettings: Set Texture Cache Accuracy to "Medium" for Driver: San Francisco
+  * GameSettings: Set Texture Cache Accuracy to "Safe" for Tiger Woods PGA Tour 07
+  * Add INI note for Wii Fit and Wii Fit Plus
+  * GameSettings: Set Texture Cache Accuracy to "Medium" for UFC Personal Trainer: The Ultimate Fitness System
+  * GameSettings: Disable "Store EFB Copies to Texture Only" for Our House: Party!
+  * GameSettings: Force 1x IR for Mario Tennis and Super Smash Bros.
+  * GameSettings: Disable "Immediately Present XFB" for Brunswick Zone: Cosmic Bowling
+  * GameSettings: Disable "Force Texture Filtering" for Spider-Man: Web of Shadows
+  * GameSettings: Set Texture Cache Accuracy to "Safe" for all MSX VC titles
+  * GameSettings: Disable "Store EFB Copies to Texture Only" for News Channel
+  * GameSettings: Fix GameID comment for Super Mario Bros. (Brawl VC)
+  * require msvc 19.27.29111 and Windows SDK 10.0.19041
+  * Only automatically override SYSCONF settings when it has an effect
+  * Android: Add workaround for conversion progress in dark mode
+  * Android: Only allow conversion when appropriate
+  * Android: Refactor GamePropertiesDialog.onCreateDialog
+  * Android: Pass GameFile to GamePropertiesDialog::newInstance
+  * Android: Let the user select where to save disc images
+  * Android: Add content provider support to File::Delete
+  * Android: Add content provider support to File::IOFile
+  * Android: Add a progress dialog for disc image conversion
+  * Android: Add disc image conversion
+  * DiscIO: Use std::function for compression callback
+  * Android: Move OSD out of the way when menu is open
+  * Android: Add Wii SYSCONF settings to GUI
+  * Config: Add SYSCONF to IsSettingSaveable
+  * Android: Don't assume SliderSetting minimum is 0
+  * Android: Display default path when no path is set
+  * Android: Fix race condition when exiting emulation
+  * Android: Allow editing settings during emulation
+  * Android: Show overridden game settings in bold
+  * Android: Hook up game settings to the new config system
+  * Android: Hook up global settings to the new config system
+  * Core: Run Wiimote::Initialize before HW::Init to avoid crash
+  * Qt: Use better method of getting default monospace font
+  * Qt/AdvancedPane: Force UTC time for custom RTC entry
+  * Android: Fix touch pointer not working after activity recreation
+  * Android: Improve WRITE_EXTERNAL_STORAGE denial
+  * Android: Check for granted permission when returning to MainActivity
+  * DolphinQt: fix other widgets that use lambdas (capturing this) without setting the receiver
+  * DolphinQt: properly remove slot connection for ConfigChange when object is destructed
+  * Android: Centralize default values for settings
+  * Android: Centralize setting definitions
+  * Android: Wait for initialization before launching EmulationActivity
+  * Adding AmdPowerXpressRequestHighPerformance
+  * Settings: Fix incorrect config key for enabled analytics.
+  * ControllerInterface: Combine evdev devices with the same physical location in addition to unique ID
+  * Android: Always show Exit Emulation at bottom of menu
+  * Android: Remove redundant pause/unpause code
+  * Android: Exit emulation by long pressing Back
+  * Android: Change "Exit" to "Exit Emulation"
+  * Android: Adjust margins for game title in menu
+  * Android: Hide Refresh Wii Remotes menu entry for GameCube games
+  * Android: Port over settings from the old menu
+  * Android: Use narrow layout for savestate slot picker in portrait
+  * Android: Ensure menu is always wide enough
+  * Android: Close the menu when tapping outside of it
+  * Android: Don't hide the menu when pressing Exit
+  * Android: Remove inappropriate leanback checks
+  * Android: Use Back to open the emulation menu on all devices
+  * Android: Remove calling create immediately before show
+  * Android: Remove unnecessary getString calls
+  * Android: Optimize imports
+  * Android: Update code-style-java for androidx files
+  * VideoBackends: Disable GPU Texture Decoding under MoltenVK
+  * AudioCommon: Get initial sample rates from AudioInterface
+  * Android: Make FilePicker act like a normal setting
+  * Android: Create separate InvertedCheckBoxSetting and PercentSliderSetting classes
+  * Android: Replace Java INI parser with C++ INI parser
+  * Android: Expose a proper interface for C++ IniFile class
+  * Make default graphics backend not show up as empty
+  * Android: Optional AfterDirectoryInitializationRunner failure message
+  * Ignore PI_RESET_CODE resetting DI in Wii mode
+  * Android: Remove unused files
+  * Android: Minor cleanup 2
+  * DiscIO: Expand WIA/RVZ header size heuristic comments
+  * Android: Minor cleanup
+  * Android: res cleanup
+  * windows: keep an extra reference to BluetoothApis.dll
+  * MemoryWatcher: Do not follow invalid pointers
+  * DiscIO: Add parameters to BlobReader::SupportsReadWiiDecrypted
+  * AudioInterface: Use 32029/48043 Hz in more places
+  * HLE: Improve naming
+  * msbuild: add experimental:deterministic for safety
+  * msbuild: explicitly disable incremental linking Previously the default was used, which would enable incremental linking for debug builds.
+  * msvc: enable /Zc:preprocessor and make build compile cleanly
+  * ogl: init ProgramShaderCache::s_ubo_align to 1. silences a warning that it may cause div-by-zero.
+  * msbuild: use x64-hosted toolchain
+  * msbuild: always enable /Gy and /Gw
+  * msbuild: properly enable /Brepro
+  * msbuild: fix a typo
+  * msbuild: re-enable C4996 and C4351 C4996 enables warnings about deprecated items C4351 was phased out (thus a no-op) years ago
+  * msbuild: enable /Zc:externConstexpr,lambda note about preprocessor
+  * Add support for FreeBSD/arm64
+  * HLE: Rename GetFunctionIndex functions
+  * HLE: Make naming closer to the current coding style
+  * HLE: Remove unused OSBreakPoints
+  * HLE: Remove unused function
+  * Android: Better GCAdapter scanning thread management
+  * GCAdapter_Android: Minor cleanup
+  * Qt/GCMemcardCreateNewDialog: Use zero values for formatting instead of accessing g_SRAM.
+  * GameSettings: Add patches for Pokémon Colosseum and Pokémon XD to circumvent the check that the save being overwritten matches the last known save.
+  * GCMemcardDirectory: Avoid undefined behavior in ClearBlock().
+  * GCMemcard: Avoid undefined behavior in the static Format().
+  * GCMemcardDirectory: Clarify data writing in FlushToFile().
+  * Jit64: Keep track of free code regions and reuse space when possible.
+  * Externals: Add rangeset.
+  * x64Emitter: Check end of allocated space when emitting code.
+  * Common/Assert: no longer needs special impl for msvc
+  * DolphinQt: resolve Qt5.15 deprecations
+  * replace is_pod with is_standard_layout && is_trivially_copyable
+  * msbuild: silence warnings about deprecated codecvt items
+  * remove extraneous WIN32_LEAN_AND_MEAN definition
+  * apply `if constexpr` in a couple places
+  * fix possible dangling shared_ptr ptr in ios
+  * wiimotereal: add some error handling. replace malloc with make_unique
+  * use constexpr for some compile-time expressions
+  * initialize some variables which need to be
+  * windows: fix some incorrect string lengths
+  * GekkoDisassembler: fix rld*
+  * FileUtil: handle some error conditions
+  * don't use std::move on const variables
+  * handle to GetFileVersionInfoW must be zero
+  * name some threads
+  * windows: additionally set thread name via SetThreadDescription
+  * windows: fix build if pch were to be disabled
+  * msbuild: allow _WIN32_WINNT to be naturally defined by headers
+  * msbuild: prettify include paths
+  * msbuild: use the moc dispatcher from Qt's vstools The new method supports build parallelism and cleaner integration into msbuild dependency flows.
+  * msbuild: fixup linking of discord-rpc
+  * msbuild: re-enable standalone vcxproj processing
+  * DolphinQt: sort the files in vcxproj
+  * windows: disable C4200 directly in libusb.h
+  * msbuild: refactor stuff out of project files (for externals)
+  * msbuild: refactor stuff out of project files (for dolphin)
+  * msbuild: enable D3DCommon to use pch
+  * prettify some constructs in vcxproj files
+  * DiscIO: Adjust WIA/RVZ header size heuristic
+  * Update Windows build to use Qt 5.15.0.
+  * Android: Prevent getSetting ClassCastExceptions in ItemViews
+  * VolumeVerifier: Adjust problem descriptions for new netplay check
+  * Translation resources sync with Transifex
+  * Android: Take RTL layout into account for menu animations
+  * IOS/USB: Move scan thread logic into a separate class
+  * UnitTests: expliticly list files to be compiled. Fixes VS warning / bad behavior.
+  * Fix comparison to invalidated vector iterator. GetFstEntryForPath may modify the children vector, so do it before taking an iterator to the vector.
+  * UnitTests: quiet warnings
+  * msvc: temporary workaround for C4789 false positive
+  * BTEmu: Fix home menu inquiry assigning multiple wii remotes to wrong slots.
+  * Update state version.
+  * BTEmu/Wiimote: Cleanups/Fixes.
+  * Removed RunOnObject() usage to prevent deadlock on exiting the NetPlay Session Browser dialog.
+  * vs/msbuild: fix the build generating log files in source dirs
+  * Bluetooth/WiimoteDevice: Remove some silly comments.
+  * BTEmu: Remove a wrong INFO_LOG.
+  * Restoring NetPlay Session Browser dialog's settings before connecting widgets, to prevent multiple refresh requests on change.
+  * FrameDump: Don't ignore the time base numerator
+  * Fix builds with system LZMA when using versions of CMake before 3.14
+  * Android: Fix defaults for WiimoteContinuousScanning/EnableSpeaker
+  * Android: Rewrite GetRenderSurfaceScale in Java
+  * DiscIO: make use of std::nullopt
+  * Fix various -Wshadow warnings
+  * IOS/USB: deduplicate scan thread stopping
+  * ISO/USB: fix potential race condition
+  * Jit64: Implement low DCBZ hack
+  * VolumeVerifier: Split TMD error from ticket error for WADs
+  * JitArm64: Avoid double rounding in fctiwzx
+  * Remove wait_for_completion parameter from Renderer::SaveScreenshot
+  * Android: Fix SettingsActivity back stack behavior after stop+start
+  * Android: Persist Settings using ViewModel
+  * Android: Remove some static variables from SettingsAdapter
+  * Android: Properly restore state of SettingsActivityPresenter
+  * DSPJitRegCache: Simplify WriteReg
+  * DSPJitMultiplier: addpaxz - AND constant directly
+  * DSPJit: Replace/optimize LEAs
+  * DolphinQt: Ignore "-psn" command line option on macOS
+  * Port some settings to the new config system
+  * MainWindow: Attach quit emulation sheet to RenderWidget on macOS
+  * LogManager: Add missing include
+  * Allow translations and custom names in GameFile::GetNetPlayName
+  * Make netplay's "same game" check more robust
+  * Translation resources sync with Transifex
+  * Qt/IOWindow: Add a handful of math functions to the function dropdown.
+  * InputCommon: Add a handful of math functions to the expression parser.
+  * Jit64AsmCommon: Use AVX in ConvertDoubleToSingle
+  * OnScreenDisplay: fix names rgba -> argb
+  * DolphinQt: Don't capture local pointer by reference
+  * CMake: Add -D_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING
+  * Bump state version
+  * Mark several DVDInterface functions as static
+  * Remove DVDInterface::Reset
+  * Remove DriveState::DiscChangeDetected hack
+  * Fix DVDLowReset spinup flag being read incorrectly
+  * Implement PI_RESET_CODE resetting DI
+  * Only reset drive chip state (not DI registers) when changing discs
+  * Only update DIMAR and DILENGTH if transfer completed without error
+  * Split drive state and drive error into 2 fields, and fix some inaccuracies
+  * DolphinQt: Show a warning when launching an NKit disc image
+  * Android: Add Pause / Unpause Emulation Toggle
+  * Android: Remove touchscreen check for rumble
+  * Jit64: fselx - Optimize SSE4.1 packed
+  * Jit64: fselx - Optimize AVX packed
+  * DiscIO: Fix conversion warning
+  * For windows cmake builds, build curl with schannel/winssl capability
+  * Jit64: fselx - Add AVX path
+  * Android: Set preferMinimalPostProcessing="true"
+  * VideoCommon: Don't round the refresh rate
+  * WiimoteEmu: Don't check extension button press for wii remote reconnection. A real remote doesn't. We won't either.
+  * DSPLLE: Use Memory functions isntead of directly using Memory::physical_base
+  * Use size_t in some DSP code code
+  * INI updates
+  * WiimoteEmu: Mark several getters as const
+  * Android: Add Log Configuration to UI
+  * LightingShaderGen: Transition over to fmt
+  * Android: Clear game profiles and GameSettings
+  * VertexShaderGen: Transition over to using fmt
+  * DolphinQt: fix -Wunused-variable warning
+  * DolphinQt: fix -Wsign-compare warning
+  * DolphinQt: fix -Wunused-but-set-variable warning
+  * DiscIO: fix -Wreorder warning
+  * IOS: work around incorrect -Wunused-but-set-variable warning
+  * EXI: fix -Wunused-variable warning
+  * EXI: fix -Wreorder warning
+  * Android: Settings and Emulation activities skip (Tv)MainActivity library rescan
+  * GameSettings: SafeTextureCacheColorSamples for SEU and SEV
+  * DolphinQt / VideoCommon: Add additional texture dumping options.  Specifically, this enables users to choose whether to dump mip maps, base level textures, or both.
+  * Fix disc image conversion button not being clear #3
+  * Android: Some simple Clang-Tidy suggestions
+  * Config: Simplify IsSettingSaveable
+  * Android: Remove hacks for Wii Remote extension and video backend settings
+  * DolphinQt: Show WAD as "WAD" instead of "" in file format column
+  * HW/GCPadEmu: Adjust gate radius values to more closely match the real hardware.
+  * Use range loop (if possible)
+  * Translation resources sync with Transifex
+  * DolphinQt / InputCommon - add DSU string validator to avoid crashes, limited backwards compatibility support
+  * DolphinQt / InputCommon: Support multiple DSU servers
+  * DolphinQt: Add i18n comment for "Surround"
+  * DolphinQt: Replace unusual Qt::InitialSortOrderRole usage with a custom role.
+  * DolphinQt: Fix default sort direction of game list.
+  * NetPlay: Limit nickname length
+  * QtUtils: Add UTF8CodePointCountValidator
+  * Android: Don't access /dev/ashmem on newer Android versions
+  * Add Android check for strerror_r variant
+  * Fix Windows CMake builds with shared zlib
+  * GCMemcard: Change behavior of TitlePresent() to more closely resemble how saves are actually identified.
+  * Common/Timer: Fix integer underflow in Timer::GetDoubleTime for dates before ~2008.
+  * Android: Use system cache directory as cache directory
+  * Android: Increase targetSdkVersion to 29
+  * WiimoteEmu: Allow writes of the i2c bus to play speaker data.
+  * ControllerInterface/Wiimote: Provide fallback values for extensions with bad calibration data.
+  * Add Break On Hit and Log On Hit for instruction breakpoints
+  * RVZ: Fix split seed reads
+  * InputCommon/GCAdapter: Unbreak Mayflash GCAdapters by allowing libusb_control_transfer call to fail.
+  * DolphinQt: Attempt to fix ParallelProgressDialog constantly reopening
+  * DolphinQt: Replace QTBUG-10561 workaround with better workaround
+  * Android: Fix saving Horizonal Wii Remote overlay A/B/1/2 positions
+  * Android: Use correct encoding when converting strings
+  * Common: Never convert from UCS-2 in WStringToUTF8
+  * Common: Rename UTF16ToUTF8
+  * Reword "Please avoid forcing Dolphin to use MSAA by the driver" message
+  * InputCommon/GCAdapter: Fix offbrand "GCAdapters" with a libusb_control_transfer call.
+  * Android: Convert some files to LF
+  * DVDInterface: Increase the latency for read commands
+  * DolphinQt: Mark Zstandard as recommended for RVZ
+  * DiscIO: Use Volume::IsDatelDisc in VolumeVerifier
+  * DolphinQt: Fix scrubbing not being disabled for Datel discs
+  * RedumpVerifier: Treat Datel game IDs as empty
+  * DiscIO: Add Volume::IsDatelDisc
+  * Revert "Return nothing from VolumeWii::GetGameTDBID if Datel"
+  * Android: Update "Speed Limit" for "Unlimited" value
+  * DolphinQt: Expose SYSCONF sound setting
+  * VertexShaderManager: Avoid accessing freelook control type configuration each call which caused a performance hit, move check to RenderBase where it is checked when config changes
+  * DolphinQt: Allow customizing TAS input turbo interval
+  * Fixes the timer returning 1 when it should return 0. The case mentioned by the comment does not exist anymore. Also added a IsRunning function as it was impossible to know whether it had been started or not (I will use it in later PRs but it should be there anyway)
+  * JitArm64_Paired: Fix ps_msub when d == b
+  * JitArm64: no intermediate rounding for paired FMA
+  * JitArm64: annotate intentional fallthrough
+  * Translation resources sync with Transifex
+  * Support the new MSVC preprocessor
+  * VideoCommon: Show profiler output again
+  * JitArm64: Don't assume fastmem arena is available
+  * Analytics: Remove deprecated usage of Gestalt to get macOS version
+  * WiimoteCommon: Tweak battery level math.
+  * Android: Don't use square stick calibration
+  * Android: Enfore correct stick gate in overlay
+  * Android: Fix button ID typo
+  * FreeLookCamera: Fix savestate branch inconsistency.
+  * Add XLink Kai UDP BBA
+  * Core: update save state version
+  * DolphinQt: change freelook fov by the step size
+  * VideoCommon: change freelook camera fov step size and expose it
+  * DolphinQt: use hotkeys for field of view to modify freelook camera
+  * HotkeyManager: Add hotkeys for freelook field-of-view x and y
+  * VideoCommon: Use freelook field of view to change the perspective of the camera
+  * DolphinQt: Fix a -Wshadow warning in ConvertDialog
+  * DiscIO: Deduplicate some VolumeGC/VolumeWii code
+  * DolphinQt: Fix a -Wswitch warning in ConvertDialog
+  * Replace Windows CMake lambda constexpr capture workaround
+  * DolphinQt: Add columns with file format details
+  * Android: Wrap game details dialog in ScrollView
+  * GCMemcard: Rename unknown field to m_dtv_status
+  * Make SO_POLL complete asynchronously
+  * Include SRAM in savestates
+  * Translation resources sync with Transifex
+  * DolphinQt: Show version number for WIA/RVZ introduction
+  * Show file format details in game properties
+  * RVZ: Bump version number to 1.0
+  * Core: Call Movie::FrameUpdate per field, not per line
+  * Socket: Fix ENOTCONN error code
+  * PatchEngine: Attempt to fix crash in IsStackSane
+  * PowerPC: partially implement thermal related SPRs
+  * VideoCommon: Clean freelook camera dirty state when getting the new view
+  * Android: Make last platform tab selection an INI setting
+  * RVZ: Extend GroupEntry
+  * RVZ: Make m_rvz a template parameter
+  * WIA/RVZ: Move (de)compression to a different file
+  * RVZ: Add documentation
+  * DolphinQt: Set block size to 128 KiB by default
+  * RVZ: Detect junk data in the same block as a file
+  * RVZ: Store pseudorandom junk data efficiently
+  * WIA/RVZ: Skip some memory allocations when reusing chunks
+  * RVZ: Don't store redundant exceptions when chunk size is < 2 MiB
+  * RVZ: Support chunk sizes between 32 KiB and 2 MiB
+  * RVZ: Remove PURGE support
+  * RVZ: Add Zstandard as a compression method
+  * Add new file format RVZ based on WIA
+  * WIA: Implement multithreaded compression
+  * WIA: Write all headers at the start of the file
+  * WIA: Reuse groups when writing
+  * WIA: Store all-zero data efficiently
+  * WIA: Implement compression
+  * WIA: Write hash exceptions
+  * WIA: Decrypt Wii data when writing
+  * WIA: Add early support for WIA writing
+  * WIA: Make use of the exception lists
+  * WIA: Properly check for overlapping data
+  * WIA: Implement re-encryption of Wii partition data
+  * WIA: Check the internal WIA hashes
+  * WIA: Fix the handling of chunk sizes larger than 2 MiB
+  * WIA: Add documentation
+  * WIA: Implement caching and partial decompression
+  * WIA: Implement bzip2, LZMA, and LZMA2 decompression
+  * WIA: Correctly handle data with size not divisible by chunk size
+  * WIA: Treat groups with size 0 as containing only zeroes
+  * WIA: Implement PURGE decompression
+  * WIA: Implement ReadWiiDecrypted
+  * WIA: Add reading raw data
+  * Add an early version of WIABlobReader
+  * DolphinQt: Disable convert dialog dropdowns when they have one option
+  * DolphinQt: Allow converting to same format
+  * Revert "DolphinQt: Disable converting from TGC"
+  * Revert "DolphinQt: Actually disable converting from TGC"
+  * DiscIO: Rework the implementation of TGC reading
+  * EXI: When loading a savestate with a mismatching GCI folder memory card, reinizialize it with the header from the savestate to let a game still recognize it as the same card.
+  * EXI: Store data for regenerating a GCI folder memory card header in EXI_Channel and pass it down to the memory card device.
+  * GCMemcard: Split off HeaderData from Header to have a compact block of data for consistent initialization.
+  * GCMemcard: Assert struct requirements in header.
+  * GCMemcard: Remove dependency on g_SRAM and force the caller to provide the relevant values instead.
+  * Translation resources sync with Transifex
+  * Externals/zstd: fix CMake project name
+  * CMake: support using system-wide zstd library
+  * GCMemcard: Move from global namespace into a Memcard namespace.
+  * GCMemcard: Split out MemoryCardBase into its own header, which is the base class for the raw and folder memory cards and has little to do with the actual memory card data structures.
+  * Android: Separate GameCube overlay refresh logic
+  * Android: Disallow multiple launcher activities
+  * DolphinQt: Actually disable converting from TGC
+  * DolphinQt: Make conversion error messages actually show up
+  * DolphinQt: Don't show success message when converting missing file
+  * DolphinQt: Fix crash on right-clicking multiple games
+  * Android: Android INI section
+  * INI changes
+  * Replace some acronyms
+  * Specify the system minizip's include directory
+  * DolReader: if data segment goes off end of file, treat it as zero-fill (bss)
+  * DolphinQt: Use QFontMetrics::boundingRect instead of QFontMetrics::width
+  * Android: Add option to disallow SD card writes
+  * DSPSpy: sync Makefile with current devkitPro template
+  * DSPSpy: save and restore $sr properly
+  * DSPSpy: show register names instead of numbers
+  * Rename existing BBA to BBA (TAP) to prepare for new BBA
+  * docs/DSP: fix typos in 'S and 'SN and improve readability
+  * DSPSymbols: fix off-by-one error
+  * Show an OSD message when running a disc image with a large block size
+  * Fix build
+  * Qt/GameListModel: Use absolutePath for file path column
+  * Android: Display disc number instead of company if mulipart disc
+  * Android: Refresh game library when resuming (Tv)MainActivity
+  * DolphinQt: Enable RTL layout
+  * DolphinQt: Support gettext contexts (Qt disambiguations)
+  * Externals: Update msgfmt.exe to 0.20.2
+  * DolphinQt: Add fastmem option to debugger UI
+  * Replace usage of std::result_of with std::invoke_result
+  * Android: Conditionally respond to modified settings
+  * Translation resources sync with Transifex
+  * DSP/Interpreter: fix comments not matching opcode table
+  * DSP/Interpreter: simplify switch
+  * DSP/Interpreter: remove redundant masking
+  * DSPSpy: fix register editing using GC pad on Wii
+  * Android: Add recursive game paths to UI
+  * Externals: Fix build failures with the newer glslang.
+  * Externals: Update glslang.
+  * Add option to disallow SD card writes
+  * VideoCommon/ShaderGenCommon: Make template functions regular functions
+  * VideoCommon/ShaderGenCommon: Convert helper functions over to fmt
+  * DSP/Interpreter: simplify opcode table by masking
+  * Misc cleanup
+  * CheckNAND: Delete RFL_DB.dat if empty
+  * Core: Use window instead of surface for ControllerInterface updates
+  * FramebufferManager: Copy to color format for depth readbacks on GLES
+  * FramebufferManager: Fix invalid readback of EFB D24S8 depth
+  * Common / Core: Update StringUtil to allow specifying the base, default to 0.  Fix ActionReplay code to use this instead of prepending '0x' in front
+  * IOS/KD: Implement IOCTL_NWC24_REQUEST_SHUTDOWN
+  * Migrate video backend setting to the new config system
+  * Translation resources sync with Transifex
+  * DolphinQt: Fix freelook description typos
+  * Android TV: Add Open File and Install WAD
+  * DolphinQt: Fix the panic alert deadlock, Pause on Focus Loss edition
+  * Externals/licenses: add bzip2 link and update googletest
+  * DolphinQt: Remove another usage of QFontMetrics::width
+  * Config: Migrate SSL options to Onion config
+  * DSPTool: fix build
+  * docs/DSP: fix AX register numbers
+  * docs/DSP: add wrapping registers
+  * docs/DSP: fix typos
+  * Add bzip2, liblzma, zstd to Externals/licenses.md
+  * Externals: Add zstd
+  * NetworkWidget: Add Blocking column
+  * Core/UICommon: Fix EnableScreenSaver preprocessor directive
+  * cmake: add an option to control dependencies vendoring
+  * GCAdapter: add libusb error logging on reads/writes
+  * Apply fixes to all platforms
+  * Android: Consistent TODO formatting
+  * WiiRoot: Fix empty files being created when source is missing
+  * docs/DSP: fix $prod references
+  * Core: Add support for specifying a command line option to boot the game into a save-state
+  * DiscIO: Implement multithreaded compression
+  * Update ControllerInterface.cpp
+  * Jit: fix warning -Winvalid-offsetof
+  * DolphinQt: Expose freelook camera control to UI
+  * VideoCommon: remove VertexShaderManager functions instead preferring the direct freelook camera methods
+  * Core: Add freelook camera control type setting
+  * VideoCommon: Add Free Look camera with separate modes
+  * Boot: Add ConsoleType enum class
+  * Debugger: Add a Thread widget
+  * Remove redundant "Emulation" from "DSP HLE Emulation"
+  * DolphinQt: Saving and restoring NetPlay Session Browser dialog's settings.
+  * MathUtil: Fix Rectangle::GetWidth/Height for unsigned types
+  * Fix Windows CMake build errors
+  * Add /dev/dolphin interface to allow game to read the REAL product code
+  * Translation resources sync with Transifex
+  * Remove redundant Config prefix from ConfigInfo/ConfigLocation
+  * DolphinQt: Store name of user style, not path
+  * IOS/KD: Cleanup sockets on IOCTL_NWC24_CLEANUP_SOCKET
+  * DolphinQt: Reword memory override description
+  * Don't assume fixed width for "Emulated memory size mismatch!" message
+  * DolphinQt: Add some i18n comments for recently added strings
+  * Translation resources sync with Transifex
+  * WiimoteEmu: Cleanup warnings of -Wparentheses
+  * Externals: Fix OpenAL include directory.
+  * Fix windows build system.
+  * Externals: Fix ed25519 include path.
+  * Externals: Update minizip search path.
+  * Externals: Fix include path for picojson and discord
+  * Externals: Alter the soundtouch include directory.
+  * XFMemory: SETPOSMTXINFO should be SETPOSTMTXINFO
+  * Require minizip 2.0.0 or newer
+  * GCMemcardManager: Add GUI to create new memory card.
+  * VolumeVerifier: Treat IOS9 as always present
+  * Configurable MEM1 and MEM2 sizes at runtime via Dolphin.ini
+  * DolphinQt: Disable converting from TGC
+  * Core: Call CreateFullPath before using Backup directory
+  * Jit64/Jit64_Tables: Construct tables at compile-time
+  * DolphinQt: Use qOverload where applicable
+  * Fix Hotkey Controller Profile display with boxes for each Wiimote
+  * Cleanup warnings of -Wswitch
+  * Android: Add DSP Emulation Engine
+  * Android: Fix MenuTag typo
+  * DolphinQt: Add info about formats in convert dialog
+  * DolphinQt: Make block size configurable in convert dialog
+  * DolphinQt: Make scrubbing configurable in convert dialog
+  * DiscIO: Move scrubbing code out of ConvertToGCZ
+  * DiscIO: Add GameCube disc scrubbing support
+  * DiscIO: Fix edge case where blocks could get scrubbed accidentally
+  * DolphinQt: Turn the compress/decompress action into a dialog
+  * Move DiscIO::ConvertToPlain to FileBlob.cpp
+  * DiscIO: Allow converting from formats other than ISO and GCZ
+  * Remove warnings of -Wsign-compare
+  * SettingsHandler: Don't output null bytes
+  * Remove warning of -Wstringop-truncation
+  * HW: cleanup warnings of -Wtype-limits
+  * Improve "Generate Symbols From > RSO Modules"
+  * AddressSpace: Fix constness
+
+-------------------------------------------------------------------
 Tue Apr 28 06:06:29 UTC 2020 - idonmez@suse.com
 
 - Update to version 5.0+git.20200427T203812.7a77abb815:

@@ -237,4 +237,41 @@
   * Qt/Debugger: Refresh windows on savestate load.</comment>
     <requestid>798519</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>72a5e999d512c5b4d2db39653e06c154</srcmd5>
+    <version>5.0+git.20201111T112241.9e3e325add</version>
+    <time>1605290297</time>
+    <user>dimstar_suse</user>
+    <comment>- Add minizip.patch to revert back to minizip 1.x which is also
+  the in-tree version anyway.
+
+- Update to version 5.0+git.20201111T112241.9e3e325add:
+  * Android: Add null check for InputOverlay
+  * Common/MsgHandler: Add fmt-capable variants of the alert macros
+  * Android: Remove unnecessary ANativeWindow_release call
+  * Android: Fix alert messages when EmulationActivity is being destroyed
+  * Android: Fix rotating EmulationActivity after boot fails
+  * Android: Only show emulation menu toast if boot succeeds
+  * Android: Finish EmulationActivity from C++
+  * UICommon: Migrate logging over to fmt
+  * ShaderGenCommon: Rename WriteFmt() to Write()
+  * CPUDetect: Indicate slow PDEP/PEXT only for Zen1/+/2 (Family 23)
+  * Android: Don't name unused JNIEnv/jobject/jclass parameters
+  * Android: Fix jobject/jclass warnings
+  * Android: Remove unnecessary WrongConstant warning suppression
+  * Android: Call saveSettings in EmulationActivity.onStop
+  * Android: Make scrollbar for in-game menu always visible
+  * Fix dereferencing nullptr BootParameters
+  * Android: Rename path variable in ConvertFragment
+  * Android: Suppress warnings in EmulationActivity
+  * Common/LinearDiskCache: Replace std::fstream with File::IOFile
+  * Virtual Notch settings and UI for octagonal stick
+  * JitArm64: Implement HLE function hooking
+  * Resolve VkDeviceMemory/nullptr type mismatch to fix build on FreeBSD i386
+  * Top: Set port when connecting a socket to find the default interface
+  * Android: Remove some touchscreen checks from EmulationActivity
+  * Android: Don't reset savestate time on load
+  * Android/InputOverlayPointer: Don't assume surface covers whole screen</comment>
+    <requestid>848307</requestid>
+  </revision>
 </revisionlist>

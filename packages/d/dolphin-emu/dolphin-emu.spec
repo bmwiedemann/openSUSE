@@ -18,17 +18,18 @@
 
 # revision needs to be the full output of 'git rev-parse HEAD'
 # (netplay version check relies on it)
-%define _revision 7a77abb815d218668bcb18b28b81ffc6788006cb
-%define _revision_description 5.0-11932
+%define _revision 9e3e325add765cb2c0143df6fd5b324c0538559e
+%define _revision_description 5.0-13001
 
 Name:           dolphin-emu
-Version:        5.0+git.20200427T203812.7a77abb815
+Version:        5.0+git.20201111T112241.9e3e325add
 Release:        0
 Summary:        Dolphin, a GameCube and Wii Emulator
 License:        GPL-2.0-or-later
 Group:          System/Emulators/Other
 URL:            https://dolphin-emu.org/
 Source:         %{name}-%{version}.tar.xz
+Patch1:         minizip.patch
 BuildRequires:  alsa-devel
 BuildRequires:  bluez-devel
 BuildRequires:  cmake
@@ -45,6 +46,7 @@ BuildRequires:  libevdev-devel
 BuildRequires:  libhidapi-devel
 BuildRequires:  libminiupnpc-devel
 BuildRequires:  libpng-devel
+BuildRequires:  libzstd-devel
 BuildRequires:  lzo-devel
 BuildRequires:  mbedtls-devel
 BuildRequires:  minizip-devel
@@ -86,7 +88,7 @@ Most games run perfectly or with minor bugs.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export CCFLAGS='%{optflags} -Wno-return-type'
