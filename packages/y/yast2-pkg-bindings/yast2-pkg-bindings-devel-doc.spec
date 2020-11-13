@@ -17,7 +17,7 @@
 
 
 Name:           yast2-pkg-bindings-devel-doc
-Version:        4.3.3
+Version:        4.3.4
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        yast2-pkg-bindings-%{version}.tar.bz2

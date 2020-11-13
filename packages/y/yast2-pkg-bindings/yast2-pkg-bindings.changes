@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov  3 08:53:18 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Add a hint to the "locked" error message
+  (gh#yast/yast-yast2#1102)
+- 4.3.4
+
+-------------------------------------------------------------------
 Mon Oct  5 08:27:39 UTC 2020 - schubi@suse.de
 
 - Added new call Pkg::SetAdditionalVendors (jsc#SLE-15184).
