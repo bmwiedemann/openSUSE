@@ -68,4 +68,16 @@
   upgrades from the previous 7.0.0b2 version (forwarded request 836303 from glaubitz)</comment>
     <requestid>836339</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>aeea112035b6603c46d9c4dfdbd71642</srcmd5>
+    <version>8.0.0</version>
+    <time>1605290347</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 8.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override (forwarded request 848168 from glaubitz)</comment>
+    <requestid>848202</requestid>
+  </revision>
 </revisionlist>
