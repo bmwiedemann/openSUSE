@@ -118,4 +118,15 @@
     <comment>Fix minor typo in changes file (forwarded request 839510 from dimstar)</comment>
     <requestid>839520</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>87b85c2d71e18e6224e7e9d6a93c3cd2</srcmd5>
+    <version>1.4.5</version>
+    <time>1605290401</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.4.5
+  * Write beta version to the pretty name of os-release file.
+  * drop it from VERSION_ID since space violate the format spec.
+    jsc#SLE-170001</comment>
+    <requestid>848316</requestid>
+  </revision>
 </revisionlist>

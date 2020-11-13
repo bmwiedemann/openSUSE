@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 12 07:27:13 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- 1.4.5
+  * Write beta version to the pretty name of os-release file.
+  * drop it from VERSION_ID since space violate the format spec.
+    jsc#SLE-170001
+
+-------------------------------------------------------------------
 Wed Sep 30 10:13:49 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - 1.4.4
