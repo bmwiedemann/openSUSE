@@ -17,7 +17,7 @@
 
 
 Name:           android-udev-rules
-Version:        20200613
+Version:        20201003
 Release:        0
 Summary:        Android udev rules list aimed to be the most comprehensive on the net
 License:        GPL-3.0-or-later
@@ -27,8 +27,8 @@ Source0:        https://github.com/M0Rf30/%{name}/archive/%{version}/%{name}-%{v
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 Recommends:     android-tools
-Provides:       android-tools-udev = %{version}-%{release}
-Obsoletes:      android-tools-udev < %{version}-%{release}
+Provides:       android-tools-udev = %{version}
+Obsoletes:      android-tools-udev < %{version}
 BuildArch:      noarch
 %{sysusers_requires}
 

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Oct  4 05:20:12 UTC 2020 - munix9@googlemail.com
+
+- Update to version 20201003
+  added:
+  * Parrot vendor
+  * Tablet Idea XDS-1078
+  * Castles vendor
+  * Point Mobile vendor
+  * Redmi 8 Pro
+  * Yandex Phone
+  * Nvidia SHIELD tablet new Id
+
+  fixed:
+  * Nvidia TV Shield on fastboot
+
+  cleanup:
+  * General adherence to udev rule model
+  * Reducing tests on device detection and entries processing
+
+-------------------------------------------------------------------
 Thu Jul 30 05:31:23 UTC 2020 - munix9@googlemail.com
 
 - Update to version 20200613
