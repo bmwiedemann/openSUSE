@@ -17,7 +17,7 @@
 
 
 Name:           yast2-storage-ng
-Version:        4.3.16
+Version:        4.3.20
 Release:        0
 Summary:        YaST2 - Storage Configuration
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -29,8 +29,8 @@ Source:         %{name}-%{version}.tar.bz2
 # UF_PMEM and UF_NVME
 BuildRequires:  libstorage-ng-ruby >= 4.3.30
 BuildRequires:  update-desktop-files
-# AutoYaST ElementPath class
-BuildRequires:  yast2 >= 4.3.20
+# CWM::TableItem
+BuildRequires:  yast2 >= 4.3.38
 BuildRequires:  yast2-devtools >= 4.2.2
 # for AbortException and handle direct abort
 BuildRequires:  yast2-ruby-bindings >= 4.0.6
@@ -50,15 +50,15 @@ BuildRequires:  rubygem(%{rb_default_ruby_abi}:parallel_tests)
 Requires:       findutils
 # UF_PMEM and UF_NVME
 Requires:       libstorage-ng-ruby >= 4.3.30
-# AutoYaST issue handling
-Requires:       yast2 >= 4.3.20
+# CWM::TableItem
+Requires:       yast2 >= 4.3.38
 
 # Y2Packager::Repository
 Requires:       yast2-packager >= 3.3.7
 # for AbortException and handle direct abort
 Requires:       yast2-ruby-bindings >= 4.0.6
-# for sortKey
-Requires:       yast2-ycp-ui-bindings >= 4.2.7
+# OpenItems for (nested) tables
+Requires:       yast2-ycp-ui-bindings >= 4.3.4
 # communicate with udisks
 Requires:       rubygem(%{rb_default_ruby_abi}:ruby-dbus)
 Requires(post): %fillup_prereq
