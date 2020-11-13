@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 11 21:39:56 CET 2020 - tumic@cbox.cz
+
+- Update to version 7.36
+  * IMG format fixes/improvements (mostly labels related).
+  * Added workaround for broken IMG maps produced by mkgmap.
+  * Added workaround for broken FIT files produced by gpsbabel.
+
+-------------------------------------------------------------------
 Tue Oct 27 21:32:16 CET 2020 - tumic@cbox.cz
 
 - Update to version 7.35

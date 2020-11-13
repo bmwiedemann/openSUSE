@@ -1,3 +1,11 @@
+gpxsee (7.36) stable; urgency=low
+
+  * IMG format fixes/improvements (mostly labels related).
+  * Added workaround for broken IMG maps produced by mkgmap.
+  * Added workaround for broken FIT files produced by gpsbabel.
+
+ -- Martin Tuma <tumic@cbox.cz>  Wed, 11 Nov 2020 21:47:28 +0100
+
 gpxsee (7.35) stable; urgency=low
 
   * IMG format compatability, performance and layout improvements.
