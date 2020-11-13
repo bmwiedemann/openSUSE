@@ -1,0 +1,93 @@
+-------------------------------------------------------------------
+Mon Nov  2 10:49:34 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Replace BuildRequires: libframe-devel by framel-devel: the
+  former is superseded by the latter.
+- Specfile cleanups using spec-cleaner.
+
+-------------------------------------------------------------------
+Mon Aug 31 06:10:58 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.26.1:
+  * No release notes.
+
+-------------------------------------------------------------------
+Tue Jul  7 02:34:22 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.26.0:
+  * No release notes.
+- Minor refresh of lalapps-fix-uninitialised-var.patch with
+  upstream file naming and other changes.
+- Disable 32-bit builds: no longer supported upstream.
+- Fix an env based hashbang.
+
+-------------------------------------------------------------------
+Wed Jul  1 01:21:52 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Pass "-Wno-enum-conversion" to CFLAGS to workaround build errors
+  because XLAL_ERROR implictly converts to different function
+  return types.
+
+-------------------------------------------------------------------
+Wed May 27 22:34:40 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix package description.
+
+-------------------------------------------------------------------
+Mon Feb  3 01:32:43 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.25.1
+  * MakeSFTs.c: fix incorrect XLAL error checks
+- Changes from version 6.25.0:
+  * O3b release
+- Update version numbers in BuildRequires and Requires in keeping
+  with upstream.
+
+-------------------------------------------------------------------
+Mon Jan 20 22:45:54 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable python2 builds to prepare for removal of py2 support;
+  switch Requires to python3 modules.
+
+-------------------------------------------------------------------
+Tue Oct  1 14:13:06 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Build packages for both python2 and python3.
+
+-------------------------------------------------------------------
+Mon Jul 22 15:46:41 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add lalapps-fix-uninitialised-var.patch: Fix usage of
+  uninitialised variables.
+
+-------------------------------------------------------------------
+Mon Jul 22 14:40:08 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.24.0:
+  * O3 release.
+- Drop patches incorporated upstream:
+  * lalapps-gcc8-format-overflow-errors.patch
+  * lalapps-truncation-errors-with-gcc82.patch
+  * lalapps-drop-abandoned-code.patch.
+
+-------------------------------------------------------------------
+Fri Feb  8 13:32:21 UTC 2019 - badshah400@gmail.com
+
+- Switch builds to python2.
+- Switch installable package name to use python{2,3}- naming
+  scheme.
+
+-------------------------------------------------------------------
+Fri Feb  8 13:01:54 UTC 2019 - badshah400@gmail.com
+
+- Explicitly use python3- for Requires.
+
+-------------------------------------------------------------------
+Thu Feb  7 14:59:25 UTC 2019 - badshah400@gmail.com
+
+- Update Requires for %{name}.
+
+-------------------------------------------------------------------
+Thu Feb  7 14:07:00 UTC 2019 - badshah400@gmail.com
+
+- Initial package

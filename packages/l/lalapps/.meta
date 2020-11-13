@@ -1,0 +1,8 @@
+<package name="lalapps" project="openSUSE:Factory">
+  <title>LSC Algorithm Library Applications</title>
+  <description>The LSC Algorithm Inference Library for gravitational wave data analysis.
+
+</description>
+  <devel project="science" package="lalapps"/>
+  <url>https://wiki.ligo.org/Computing/DASWG/LALSuite</url>
+</package>
