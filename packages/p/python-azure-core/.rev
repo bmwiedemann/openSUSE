@@ -53,4 +53,15 @@
     CHANGELOG.md file provided with this package (forwarded request 839785 from glaubitz)</comment>
     <requestid>839847</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8f02b4ff5a17230665f093bc3f69f248</srcmd5>
+    <version>1.9.0</version>
+    <time>1605290309</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.9.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 848159 from glaubitz)</comment>
+    <requestid>848192</requestid>
+  </revision>
 </revisionlist>
