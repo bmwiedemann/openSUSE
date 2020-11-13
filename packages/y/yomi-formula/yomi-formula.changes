@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 10 10:04:08 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1604593202.a2c22bf:
+  * storage: hide mountpoint if no filesystem
+  * software: migrate repos as certs
+  * software: add verify parameter
+  * _grains: efi grains are in Salt now
+  * software: transfer current repository
+  * software: add repository options
+  * lvm: fix indentation
+  * partitioned: fix parted call and tests
+
+-------------------------------------------------------------------
 Tue Oct 06 15:55:24 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 0.0.1+git.1601999695.6141130:
