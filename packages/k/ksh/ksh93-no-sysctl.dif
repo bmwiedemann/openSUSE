@@ -1,0 +1,13 @@
+--- ./src/lib/libcmd/uname.c.orig	2020-11-13 13:08:48.136513672 +0000
++++ ./src/lib/libcmd/uname.c	2020-11-13 13:09:03.356469649 +0000
+@@ -90,10 +90,6 @@ __STDPP__directive pragma pp:hide getdom
+ # include <sys/utsname.h>
+ #endif
+ 
+-#ifdef __linux__
+-# include <sys/sysctl.h>
+-#endif
+-
+ #if defined(__STDPP__directive) && defined(__STDPP__hide)
+ __STDPP__directive pragma pp:nohide getdomainname gethostid gethostname sethostname
+ #else

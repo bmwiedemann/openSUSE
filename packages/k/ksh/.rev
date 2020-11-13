@@ -1067,4 +1067,12 @@
     <comment>-&gt;</comment>
     <requestid>730729</requestid>
   </revision>
+  <revision rev="110" vrev="3">
+    <srcmd5>890e0be291cdaec861ce279fd5d36bdf</srcmd5>
+    <version>93vu</version>
+    <time>1605290424</time>
+    <user>dimstar_suse</user>
+    <comment>remove sys/sysctl.h include as it no longer exists in linux</comment>
+    <requestid>848359</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 13 14:10:43 CET 2020 - mls@suse.de
+
+- remove sys/sysctl.h include as it no longer exists in linux
+  new patch: ksh93-no-sysctl.dif
+
+-------------------------------------------------------------------
 Fri Sep  6 17:25:26 CEST 2019 - mls@suse.de
 
 - fix build by removing -Werror=return-type and using
