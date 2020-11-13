@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 11 11:09:04 UTC 2020 - Stefan Schubert <schubi@suse.de>
+
+- Importing public SSH key in administrator screen: Disable
+  browser button if no block device is available (bsc#1178509).
+- 4.3.9
+
+-------------------------------------------------------------------
 Mon Sep  7 11:03:04 CEST 2020 - schubi@suse.de
 
 - Using ":" in the autoyast(...) supplements (bsc#1146494).
