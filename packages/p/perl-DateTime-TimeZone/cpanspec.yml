@@ -18,3 +18,5 @@
 #skip_noarch: 1
 #custom_build: -
 #./Build build flags=%{?_smp_mflags} --myflag
+skip_doc: |-
+ #dist.ini# azure-pipelines.yml
