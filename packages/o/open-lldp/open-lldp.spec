@@ -21,7 +21,7 @@ Name:           open-lldp
 Summary:        Link Layer Discovery Protocol (LLDP) Agent
 License:        GPL-2.0-only
 Group:          System/Daemons
-Version:        1.0.1+69.e8f522565f5a
+Version:        1.1+15.ef8495548d04
 Release:        0
 BuildRequires:  bison
 BuildRequires:  flex
@@ -32,7 +32,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 URL:            https://github.com/intel/openlldp
 Source:         %{name}-v%{version}.tar.xz
-Patch0:         disable-werror.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       dcbd = %{version}
 Obsoletes:      dcbd < %{version}
@@ -70,7 +69,6 @@ with Data Center Bridging (DCB) for Intel(R) Network Connections
 
 %prep
 %setup -n %{name}-v%{version}
-%patch0 -p1
 
 %build
 %global optflags %{optflags} -fcommon
