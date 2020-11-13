@@ -248,4 +248,12 @@
 - Remove menu-cache-1.0.2-until-fd52af6.patch: upstreamed</comment>
     <requestid>538633</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>726d5d5d73ddc948f24264cbb1038769</srcmd5>
+    <version>1.1.0</version>
+    <time>1605290428</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848364</requestid>
+  </revision>
 </revisionlist>

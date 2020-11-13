@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 13 08:26:15 UTC 2020 - munix9@googlemail.com
+
+- Added upstream-libmenu-cache_Fix-memory-leaks.patch
+  * libmenu-cache: Fix memory leaks
+- Added menu-cache-1.1.0-0001-Support-gcc10-compilation.patch
+  * gcc10 now defaults to -fno-common, and with gcc10 menu-cache
+    compilation fails with "multiple definition of ..."
+
+-------------------------------------------------------------------
 Fri Nov  3 09:45:02 UTC 2017 - mvetter@suse.com
 
 - Update to 1.1.0:

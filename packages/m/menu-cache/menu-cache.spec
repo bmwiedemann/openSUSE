@@ -1,7 +1,7 @@
 #
 # spec file for package menu-cache
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,10 +20,14 @@ Name:           menu-cache
 Version:        1.1.0
 Release:        0
 Summary:        A tool speed up menus
-License:        GPL-2.0+ and LGPL-2.1+
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/LXDE
-Url:            http://www.lxde.org
+URL:            https://www.lxde.org
 Source0:        https://github.com/lxde/%{name}/archive/%{version}.tar.gz
+# https://github.com/lxde/menu-cache/commit/583c1901719f2ef2aa3aa0034bd370983a7ed523
+Patch0:         upstream-libmenu-cache_Fix-memory-leaks.patch
+# https://github.com/archlinux/svntogit-community/blob/packages/menu-cache/trunk/menu-cache-1.1.0-0001-Support-gcc10-compilation.patch
+Patch1:         https://raw.githubusercontent.com/archlinux/svntogit-community/packages/menu-cache/trunk/menu-cache-1.1.0-0001-Support-gcc10-compilation.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc
@@ -32,7 +36,6 @@ BuildRequires:  intltool
 BuildRequires:  libtool
 #BuildRequires:  m4
 BuildRequires:  pkgconfig(libfm-extra)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Libmenu-cache is a library creating and utilizing caches to speed up
@@ -58,7 +61,7 @@ Group:          System/Libraries
 %{name} libraries for development
 
 %prep
-%setup -q
+%autosetup -p1
 sh autogen.sh
 
 %build
@@ -77,18 +80,16 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n libmenu-cache3 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc README AUTHORS COPYING NEWS
+%license COPYING
+%doc README AUTHORS NEWS
 %{_libexecdir}/%{name}
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/%{name}
 %{_libdir}/libmenu-cache.so
 %{_libdir}/pkgconfig/libmenu-cache.pc
 
 %files -n libmenu-cache3
-%defattr(-,root,root)
 %{_libdir}/libmenu-cache.so.3
 %{_libdir}/libmenu-cache.so.3.2.0
 
