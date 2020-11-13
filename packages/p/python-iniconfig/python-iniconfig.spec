@@ -1,5 +1,5 @@
 #
-# spec file for package python-iniconfig
+# spec file for package python
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-iniconfig%{psuffix}
-Version:        1.0.1
+Version:        1.1.1
 Release:        0
 Summary:        iniconfig: brain-dead simple config-ini parsing
 License:        MIT

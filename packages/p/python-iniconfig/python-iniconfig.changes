@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 10 08:00:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * fix version determination (thanks @florimondmanca)
+  * typing stubs (thanks @bluetech)
+
+-------------------------------------------------------------------
 Mon Aug 24 13:03:36 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Initial packaging (v1.0.1)
