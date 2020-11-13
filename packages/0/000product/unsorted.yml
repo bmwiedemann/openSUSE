@@ -7013,7 +7013,6 @@ unsorted:
   - isapnp-devel: [i586] 
   - isatapd 
   - iscsi-formula 
-  - iscsiuio: [i586] 
   - isight-firmware-tools 
   - isl-devel 
   - isl-devel-32bit: [x86_64] 
@@ -7302,10 +7301,8 @@ unsorted:
   - jetbrains-annotations-javadoc 
   - jettison 
   - jettison-javadoc 
-  - jetty-alpn 
   - jetty-alpn-api 
   - jetty-alpn-api-javadoc 
-  - jetty-alpn-javadoc 
   - jetty-annotations 
   - jetty-artifact-remote-resources 
   - jetty-build-support 
@@ -8407,8 +8404,12 @@ unsorted:
   - laf-plugin 
   - laf-plugin-javadoc 
   - lal-devel: [x86_64] 
+  - lalapps: [x86_64] 
   - lalburst-devel: [x86_64] 
   - lalframe-devel: [x86_64] 
+  - lalinference-data: [x86_64] 
+  - lalinference-devel: [x86_64] 
+  - lalinspiral-devel: [x86_64] 
   - lalmetaio-devel 
   - lalpulsar-data: [x86_64] 
   - lalpulsar-devel: [x86_64] 
@@ -9837,7 +9838,6 @@ unsorted:
   - libboost_random1_74_0-32bit: [x86_64] 
   - libboost_random1_74_0-devel 
   - libboost_regex-devel 
-  - libboost_regex1_74_0 
   - libboost_regex1_74_0-32bit: [x86_64] 
   - libboost_regex1_74_0-devel 
   - libboost_serialization-devel 
@@ -11750,6 +11750,8 @@ unsorted:
   - liblal20: [x86_64] 
   - liblalburst6: [x86_64] 
   - liblalframe11: [x86_64] 
+  - liblalinference21: [x86_64] 
+  - liblalinspiral15: [x86_64] 
   - liblalmetaio8 
   - liblalpulsar21: [x86_64] 
   - liblalsimulation23: [x86_64] 
@@ -17681,6 +17683,8 @@ unsorted:
   - octave-lal: [x86_64] 
   - octave-lalburst: [x86_64] 
   - octave-lalframe: [x86_64] 
+  - octave-lalinference: [x86_64] 
+  - octave-lalinspiral: [x86_64] 
   - octave-lalmetaio 
   - octave-lalpulsar: [x86_64] 
   - octave-lalsimulation: [x86_64] 
@@ -18443,6 +18447,7 @@ unsorted:
   - patterns-base-x11_enhanced-32bit 
   - patterns-ceph-containers-ceph_base: [x86_64] 
   - patterns-desktop-books: [i586] 
+  - patterns-desktop-mobile: [i586] 
   - patterns-desktop-technical_writing 
   - patterns-devel-C-C++-devel_C_C++ 
   - patterns-devel-base-devel_basis 
@@ -18520,7 +18525,6 @@ unsorted:
   - patterns-xfce-xfce_laptop: [i586] 
   - patterns-xfce-xfce_office: [i586] 
   - patterns-yast-devel_yast 
-  - patterns-yast-yast2_server 
   - pavucontrol: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
   - pavucontrol-lang: [i586] 
   - pavucontrol-qt 
@@ -20594,6 +20598,8 @@ unsorted:
   - powermock-testng 
   - powerstat 
   - powerstat-bash-completion 
+  - powertop: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - powertop-lang: [i586] 
   - poxml-lang 
   - ppl 
   - ppl-devel 
@@ -21007,18 +21013,6 @@ unsorted:
   - python-pyserial-doc 
   - python-pysnmp-doc 
   - python-python-rtmidi-doc 
-  - python-qscintilla-qt5-sip 
-  - python-qt3d-qt5-api 
-  - python-qt3d-qt5-examples 
-  - python-qt3d-qt5-sip 
-  - python-qtcharts-qt5-api 
-  - python-qtcharts-qt5-examples 
-  - python-qtcharts-qt5-sip 
-  - python-qtdatavis3d-qt5-api 
-  - python-qtdatavis3d-qt5-examples 
-  - python-qtdatavis3d-qt5-sip 
-  - python-qtwebengine-qt5-api 
-  - python-qtwebengine-qt5-sip 
   - python-rcssmin-docs 
   - python-rdflib-doc 
   - python-renderspec-doc 
@@ -22559,8 +22553,11 @@ unsorted:
   - python3-labelImg 
   - python3-labels 
   - python3-lal: [x86_64] 
+  - python3-lalapps: [x86_64] 
   - python3-lalburst: [x86_64] 
   - python3-lalframe: [x86_64] 
+  - python3-lalinference: [x86_64] 
+  - python3-lalinspiral: [x86_64] 
   - python3-lalmetaio 
   - python3-lalpulsar: [x86_64] 
   - python3-lalsimulation: [x86_64] 
@@ -23529,16 +23526,28 @@ unsorted:
   - python3-qgrid 
   - python3-qrcode 
   - python3-qscintilla-qt5 
+  - python3-qscintilla-qt5-sip 
   - python3-qsymm 
   - python3-qt3d-qt5 
+  - python3-qt3d-qt5-api 
+  - python3-qt3d-qt5-doc 
+  - python3-qt3d-qt5-sip 
   - python3-qt5-devel 
   - python3-qt5-doc 
   - python3-qt5-quick3d 
   - python3-qt5-quick3d-devel 
   - python3-qtcharts-qt5 
+  - python3-qtcharts-qt5-api 
+  - python3-qtcharts-qt5-doc 
+  - python3-qtcharts-qt5-sip 
   - python3-qtconsole 
   - python3-qtdatavis3d-qt5 
+  - python3-qtdatavis3d-qt5-api 
+  - python3-qtdatavis3d-qt5-doc 
+  - python3-qtdatavis3d-qt5-sip 
   - python3-qtwebengine-qt5 
+  - python3-qtwebengine-qt5-api 
+  - python3-qtwebengine-qt5-sip 
   - python3-quantities 
   - python3-quantum-blackbird 
   - python3-queuelib 
@@ -34517,6 +34526,8 @@ unsorted:
   - tkirc 
   - tktable 
   - tkxcd 
+  - tlp: [i586] 
+  - tlp-rdw: [i586] 
   - tls 
   - tlswrap 
   - tmate 
@@ -36226,8 +36237,6 @@ unsorted:
   - yast2-adsi 
   - yast2-aduc 
   - yast2-audit-laf 
-  - yast2-auth-client 
-  - yast2-auth-server 
   - yast2-boot-server 
   - yast2-buildtools 
   - yast2-caasp 
@@ -36236,7 +36245,7 @@ unsorted:
   - yast2-devtools 
   - yast2-dns-manager 
   - yast2-docker: [x86_64] 
-  - yast2-drbd 
+  - yast2-drbd: [i586] # suggested by dvd:suggested:patterns-yast-yast2_server 
   - yast2-fcoe-client 
   - yast2-firstboot-wsl 
   - yast2-geo-cluster 
@@ -36244,11 +36253,8 @@ unsorted:
   - yast2-installation-control 
   - yast2-instserver: [i586] 
   - yast2-iplb 
-  - yast2-iscsi-client 
   - yast2-iscsi-lio-server 
   - yast2-isns: [i586] 
-  - yast2-mail 
-  - yast2-multipath 
   - yast2-nis-server: [i586] 
   - yast2-online-update-configuration 
   - yast2-online-update-frontend 
@@ -36260,8 +36266,6 @@ unsorted:
   - yast2-samba-provision 
   - yast2-slide-show 
   - yast2-slp-server: [i586] 
-  - yast2-squid 
-  - yast2-sudo 
   - yast2-support 
   - yast2-testsuite 
   - yast2-theme-oxygen 
@@ -36292,10 +36296,8 @@ unsorted:
   - yast2-trans-tg 
   - yast2-trans-th: [i586] 
   - yast2-trans-tk 
-  - yast2-tune 
   - yast2-update-FACTORY 
   - yast2-usbauth 
-  - yast2-vpn 
   - yast2-ycp-ui-bindings-devel 
   - yate 
   - yate-bts 

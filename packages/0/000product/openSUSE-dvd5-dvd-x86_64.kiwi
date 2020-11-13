@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20201112" schemaversion="4.1">
+<image name="OBS__openSUSE___20201113" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20201112</productvar>
+      <productvar name="VERSION">20201113</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20201112,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20201113,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20201112/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20201113/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1031,6 +1031,7 @@
       <repopackage name="irqbalance"/>
       <repopackage name="irqbalance-ui"/>
       <repopackage name="irssi"/>
+      <repopackage name="iscsiuio"/>
       <repopackage name="iso-codes"/>
       <repopackage name="iso-codes-lang"/>
       <repopackage name="iso_ent"/>
@@ -1517,6 +1518,7 @@
       <repopackage name="libboost_locale1_74_0"/>
       <repopackage name="libboost_program_options1_74_0" arch="x86_64"/>
       <repopackage name="libboost_python-py3-1_74_0"/>
+      <repopackage name="libboost_regex1_74_0"/>
       <repopackage name="libboost_thread1_74_0"/>
       <repopackage name="libbrasero-burn3-1" arch="x86_64"/>
       <repopackage name="libbrasero-media3-1" arch="x86_64"/>
@@ -3592,7 +3594,7 @@
       <repopackage name="patterns-base-x11_enhanced"/>
       <repopackage name="patterns-desktop-books" arch="x86_64"/>
       <repopackage name="patterns-desktop-imaging"/>
-      <repopackage name="patterns-desktop-laptop"/>
+      <repopackage name="patterns-desktop-mobile" arch="x86_64"/>
       <repopackage name="patterns-desktop-multimedia"/>
       <repopackage name="patterns-fonts-fonts"/>
       <repopackage name="patterns-fonts-fonts_opt"/>
@@ -3645,6 +3647,7 @@
       <repopackage name="patterns-yast-yast2_basis"/>
       <repopackage name="patterns-yast-yast2_desktop"/>
       <repopackage name="patterns-yast-yast2_install_wf"/>
+      <repopackage name="patterns-yast-yast2_server"/>
       <repopackage name="pavucontrol" arch="x86_64"/>
       <repopackage name="pavucontrol-lang" arch="x86_64"/>
       <repopackage name="pcfclock-kmp-default"/>
@@ -3895,8 +3898,8 @@
       <repopackage name="pothana2000-fonts"/>
       <repopackage name="powerdevil5" arch="x86_64"/>
       <repopackage name="powerdevil5-lang" arch="x86_64"/>
-      <repopackage name="powertop"/>
-      <repopackage name="powertop-lang"/>
+      <repopackage name="powertop" arch="x86_64"/>
+      <repopackage name="powertop-lang" arch="x86_64"/>
       <repopackage name="ppp"/>
       <repopackage name="pptp"/>
       <repopackage name="pptpd"/>
@@ -4941,8 +4944,8 @@
       <repopackage name="timezone"/>
       <repopackage name="timezone-java"/>
       <repopackage name="tk"/>
-      <repopackage name="tlp"/>
-      <repopackage name="tlp-rdw"/>
+      <repopackage name="tlp" arch="x86_64"/>
+      <repopackage name="tlp-rdw" arch="x86_64"/>
       <repopackage name="tmux"/>
       <repopackage name="tnftp"/>
       <repopackage name="totem"/>
@@ -5402,6 +5405,8 @@
       <repopackage name="yast2-add-on"/>
       <repopackage name="yast2-alternatives"/>
       <repopackage name="yast2-apparmor"/>
+      <repopackage name="yast2-auth-client"/>
+      <repopackage name="yast2-auth-server"/>
       <repopackage name="yast2-bootloader"/>
       <repopackage name="yast2-configuration-management"/>
       <repopackage name="yast2-control-center"/>
@@ -5411,6 +5416,7 @@
       <repopackage name="yast2-country-data"/>
       <repopackage name="yast2-dhcp-server"/>
       <repopackage name="yast2-dns-server"/>
+      <repopackage name="yast2-drbd" arch="x86_64"/>
       <repopackage name="yast2-firewall"/>
       <repopackage name="yast2-firstboot"/>
       <repopackage name="yast2-fonts"/>
@@ -5419,12 +5425,15 @@
       <repopackage name="yast2-http-server"/>
       <repopackage name="yast2-installation"/>
       <repopackage name="yast2-instserver" arch="x86_64"/>
+      <repopackage name="yast2-iscsi-client"/>
       <repopackage name="yast2-isns" arch="x86_64"/>
       <repopackage name="yast2-journal"/>
       <repopackage name="yast2-kdump"/>
       <repopackage name="yast2-ldap"/>
       <repopackage name="yast2-logs"/>
+      <repopackage name="yast2-mail"/>
       <repopackage name="yast2-metapackage-handler"/>
+      <repopackage name="yast2-multipath"/>
       <repopackage name="yast2-network"/>
       <repopackage name="yast2-nfs-client"/>
       <repopackage name="yast2-nfs-common"/>
@@ -5452,7 +5461,9 @@
       <repopackage name="yast2-slp-server" arch="x86_64"/>
       <repopackage name="yast2-snapper"/>
       <repopackage name="yast2-sound"/>
+      <repopackage name="yast2-squid"/>
       <repopackage name="yast2-storage-ng"/>
+      <repopackage name="yast2-sudo"/>
       <repopackage name="yast2-sysconfig"/>
       <repopackage name="yast2-tftp-server"/>
       <repopackage name="yast2-theme"/>
@@ -5515,9 +5526,11 @@
       <repopackage name="yast2-trans-zh_TW"/>
       <repopackage name="yast2-trans-zu"/>
       <repopackage name="yast2-transfer"/>
+      <repopackage name="yast2-tune"/>
       <repopackage name="yast2-update"/>
       <repopackage name="yast2-users"/>
       <repopackage name="yast2-vm"/>
+      <repopackage name="yast2-vpn"/>
       <repopackage name="yast2-x11"/>
       <repopackage name="yast2-xml"/>
       <repopackage name="yast2-ycp-ui-bindings"/>
