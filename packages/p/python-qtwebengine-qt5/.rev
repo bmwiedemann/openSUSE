@@ -65,4 +65,13 @@ Required for python-AnyQt</comment>
 </comment>
     <requestid>834345</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>421786ab8f8a026572325f9f685998ee</srcmd5>
+    <version>5.15.1</version>
+    <time>1605290256</time>
+    <user>dimstar_suse</user>
+    <comment>- Use sip5 where available
+</comment>
+    <requestid>846245</requestid>
+  </revision>
 </revisionlist>
