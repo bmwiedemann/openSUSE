@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  9 18:05:38 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.3.8:
+  * a few hundred changes, see included CHANGELOG.md for details
+
+-------------------------------------------------------------------
 Thu Jun  4 12:37:58 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not restrict pytest4 as it works quite fine with pytest5

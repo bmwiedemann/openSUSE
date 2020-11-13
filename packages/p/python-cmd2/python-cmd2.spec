@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-cmd2
-Version:        0.8.9
+Version:        1.3.8
 Release:        0
 Summary:        Extra features for standard library's cmd module
 License:        MIT
@@ -95,7 +95,7 @@ rm -v tests/test_transcript.py tests/test_parsing.py tests/test_cmd2.py
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGELOG.md CODEOWNERS README.md
+%doc CHANGELOG.md README.md
 %{python3_sitelib}/*
 
 %changelog

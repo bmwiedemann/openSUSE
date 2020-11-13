@@ -421,4 +421,13 @@
     <comment>- Do not restrict pytest4 as it works quite fine with pytest5</comment>
     <requestid>811458</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>fe9d5a1e329d3df6f944090dc6c6147e</srcmd5>
+    <version>1.3.8</version>
+    <time>1605289999</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.8:
+  * a few hundred changes, see included CHANGELOG.md for details</comment>
+    <requestid>847331</requestid>
+  </revision>
 </revisionlist>
