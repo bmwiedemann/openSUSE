@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-uamqp
-Version:        1.2.11
+Version:        1.2.12
 Release:        0
 Summary:        AMQP 10 Client Library for Python
 License:        MIT

@@ -65,4 +65,15 @@
     HISTORY.rst file provided with this package (forwarded request 839806 from glaubitz)</comment>
     <requestid>839869</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0f907594248200a075b1f42647dc8a30</srcmd5>
+    <version>1.2.12</version>
+    <time>1605290370</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.2.12
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package (forwarded request 848172 from glaubitz)</comment>
+    <requestid>848212</requestid>
+  </revision>
 </revisionlist>
