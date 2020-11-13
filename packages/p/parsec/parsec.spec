@@ -17,7 +17,7 @@
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 # Features available: mbed-crypto-provider, pkcs11-provider, tpm-provider, all-providers
-%define features "mbed-crypto-provider,tpm-provider"
+%define features "all-providers"
 %{?systemd_ordering}
 Name:           parsec
 Version:        0.6.0
@@ -32,14 +32,11 @@ Source3:        parsec.service
 Source4:        config.toml
 Source5:        parsec.conf
 Source6:        system-user-parsec.conf
-# Borrowed from Fedora - https://src.fedoraproject.org/rpms/parsec/blob/master/f/pkcs11-libloading-issue.patch
-Patch1:         pkcs11-libloading-issue.patch
 BuildRequires:  cargo
 BuildRequires:  clang-devel
 BuildRequires:  cmake
 BuildRequires:  llvm-devel
 BuildRequires:  protobuf-devel
-BuildRequires:  pkcs11-helper-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(tss2-esys) >= 2.3.3
 BuildRequires:  python3
@@ -57,11 +54,10 @@ enabling cloud-native delivery flows within the data center and at the edge.
 
 %prep
 %setup -qa1
-%patch1 -p1
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
 sed -i -e 's#default = \[\]##' Cargo.toml
-echo 'default = ["tpm-provider", "mbed-crypto-provider"]' >> Cargo.toml
+echo 'default = ["all-providers"]' >> Cargo.toml
 
 %build
 export PROTOC=%{_bindir}/protoc

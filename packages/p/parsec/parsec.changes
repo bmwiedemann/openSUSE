@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 13 14:19:05 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable 'all-providers' which adds 'pkcs11-provider' compared to 
+  previous config
+- Drop unneeded patch:
+  * pkcs11-libloading-issue.patch
+
+-------------------------------------------------------------------
 Fri Oct 23 15:10:32 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 0.6.0
