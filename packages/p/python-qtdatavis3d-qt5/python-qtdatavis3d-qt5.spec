@@ -16,8 +16,14 @@
 #
 
 
+%if 0%{suse_version} < 1550
+%define use_sip4 1
+%endif
+
+%define oldpython python
+%define mname qtdatavis3d-qt5
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-qtdatavis3d-qt5
+Name:           python-%{mname}
 Version:        5.15.1
 Release:        0
 Summary:        Python bindings for the Qt5 Data Visualization library
@@ -27,11 +33,19 @@ URL:            https://www.riverbankcomputing.com/software/pyqtdatavisualizatio
 Source:         https://files.pythonhosted.org/packages/source/P/PyQtDataVisualization/PyQtDataVisualization-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module qt5-devel}
-BuildRequires:  %{python_module sip-devel >= 4.19.1}
+BuildRequires:  fdupes
+BuildRequires:  python-pyqt-rpm-macros
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(Qt5DataVisualization)
-Requires:       python-qt5
+%if 0%{?use_sip4}
+BuildRequires:  %{python_module sip4-devel >= 4.19.1}
 Requires:       python-sip(api) = %{python_sip_api_ver}
+%else
+BuildRequires:  %{python_module pyqt-builder}
+BuildRequires:  %{python_module sip-devel >= 5.3}
+%requires_eq    python-qt5-sip
+%endif
+Requires:       python-qt5
 
 %python_subpackages
 
@@ -39,85 +53,66 @@ Requires:       python-sip(api) = %{python_sip_api_ver}
 PyQtDataVisualization is a set of Python bindings for the Qt5 Data
 Visualization library.
 
-%package     -n %{name}-api
+%package        api
 Summary:        Eric API files for %{name}
-Group:          Development/Libraries/Python
-Provides:       %{python_module qtdatavis3d-qt5-api = %{version}}
-Supplements:    packageand(eric:%{python2_prefix}-qtdatavis3d-qt5)
-Supplements:    packageand(eric:python3-qtdatavis3d-qt5)
-BuildArch:      noarch
+Group:          Development/Libraries/C and C++
+Supplements:    packageand(eric:python-%{mname})
 
-%description -n %{name}-api
+%description    api
 This package provides Qt5 Data Visualization library API files for the
 Eric IDE.
 
-%package     -n %{name}-sip
+%package sip
 Summary:        Sip files for %{name}
-Group:          Development/Tools/IDE
-Provides:       %{python_module qtdatavis3d-qt5-sip = %{version}}
-Supplements:    packageand(%{python2_prefix}-sip:%{python2_prefix}-qtdatavis3d-qt5)
-Supplements:    packageand(python3-sip:python3-qtdatavis3d-qt5)
-BuildArch:      noarch
+Group:          Development/Libraries/Python
+Supplements:    packageand(python-sip:python-%{mname}) 
+Provides:       %{oldpython}-%{mname}-sip = %{version}-%{release}
+Obsoletes:      %{oldpython}-%{mname}-sip < %{version}-%{release}
+Requires:       python-qt5-devel
 
-%description -n %{name}-sip
-This package contains sip files used to generate
-bindings to the Qt5 Data Visualization library.
+%description sip
+This package provides the SIP files used to generate the Python bindings for
+%{name}
 
-%package     -n %{name}-examples
+%package doc
 Summary:        Examples for %{name}
 Group:          Documentation/Other
-Provides:       %{python_module qtdatavis3d-qt5-examples = %{version}}
+Provides:       %{python_module %{mname}-examples = %{version}-%{release}}
 BuildArch:      noarch
 
-%description -n %{name}-examples
+%description doc
 This package provides %{name} examples.
 
 %prep
 %setup -q -n PyQtDataVisualization-%{version}
-%{python_expand mkdir build_%{$python_bin_suffix}
-cp *.py build_%{$python_bin_suffix}
-cp -r sip build_%{$python_bin_suffix}
-}
 
 %build
-%{python_expand pushd build_%{$python_bin_suffix}
-$python configure.py \
-    --no-dist-info \
-    --no-stubs \
-    --qmake=%{_bindir}/qmake-qt5
-
-make %{?_smp_mflags}
-popd
-}
+%pyqt_build
 
 %install
-%{python_expand pushd build_%{$python_bin_suffix}
-%make_install INSTALL_ROOT=%{buildroot}
-popd
-}
-mkdir -p %{buildroot}%{_docdir}/%{name}
-find examples -type f -executable -exec sed -i '1s=^#!%{_bindir}/\(python\|env python\)3\?=#!%{_bindir}/python3=' {} +
-cp -r examples %{buildroot}%{_docdir}/%{name}
+%pyqt_install
+%pyqt_install_examples %mname
 
 %files %{python_files}
 %license LICENSE
 %doc NEWS README
 %dir %{python_sitearch}/PyQt5/
-%{python_sitearch}/PyQt5/QtDataVisualization.so
-%exclude %{_docdir}/%{name}/examples/
+%{python_sitearch}/PyQt5/QtDataVisualization.*
+%{python_sitearch}/PyQtDataVisualization-%{version}.dist-info/
 
-%files -n %{name}-api
+%files %{python_files api}
 %license LICENSE
-%dir %{_datadir}/qt5/qsci/api/python/
-%{_datadir}/qt5/qsci/api/python/PyQtDataVisualization.api
+%dir %{_datadir}/qt5/qsci/api/python_%{python_bin_suffix}/
+%{_datadir}/qt5/qsci/api/python_%{python_bin_suffix}/PyQtDataVisualization.api
 
-%files -n %{name}-sip
+%files %{python_files sip}
 %license LICENSE
-%{_datadir}/sip/PyQt5/QtDataVisualization/
+%{pyqt5_sipdir}/QtDataVisualization/
 
-%files -n %{name}-examples
+%files %{python_files doc}
 %license LICENSE
-%dir %{_docdir}/%{name}/
-%{_docdir}/%{name}/examples
+%{_docdir}/%{python_prefix}-%{mname}
+%exclude %{_docdir}/%{python_prefix}-%{mname}/NEWS
+%exclude %{_docdir}/%{python_prefix}-%{mname}/README
 
 %changelog

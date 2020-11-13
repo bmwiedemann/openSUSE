@@ -49,4 +49,13 @@
 - remove the superfluous Tumbleweed python2 skip hack</comment>
     <requestid>834347</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e54f906a6bb2ad14f305587114adab90</srcmd5>
+    <version>5.15.1</version>
+    <time>1605290254</time>
+    <user>dimstar_suse</user>
+    <comment>- use sip5 where available 
+</comment>
+    <requestid>846244</requestid>
+  </revision>
 </revisionlist>
