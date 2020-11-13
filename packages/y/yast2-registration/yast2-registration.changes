@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 27 15:50:31 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix the latest change to work in firstboot when system is
+  registered (bsc#1178128)
+- 4.3.13
+
+-------------------------------------------------------------------
 Mon Oct 19 13:21:42 CEST 2020 - schubi@suse.de
 
 - AY Addon: Taking the latest version if no version has been
@@ -25,7 +32,7 @@ Thu Oct  1 14:15:55 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
 
 - Fixed upgrade using the Full medium with the "media_upgrade=1"
   boot option (bsc#1176563)
-- 4.3.9 
+- 4.3.9
 
 -------------------------------------------------------------------
 Mon Aug 24 11:31:58 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
