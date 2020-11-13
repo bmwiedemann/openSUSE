@@ -17,7 +17,7 @@
 
 
 Name:           wofi
-Version:        v1.2.2
+Version:        v1.2.3
 Release:        0
 Summary:        Launcher for wlroots compositors
 License:        GPL-3.0-only

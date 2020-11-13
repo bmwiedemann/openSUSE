@@ -19,4 +19,14 @@ Wofi is a launcher/menu program for wlroots based wayland compositors such as sw
     <comment></comment>
     <requestid>831070</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3e562cca1fd81871148bec0217481b56</srcmd5>
+    <version>v1.2.3</version>
+    <time>1605290414</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.3:
+  * Fixed wofi with new wlroots not allowing 0 width/height with
+    unanchored surfaces</comment>
+    <requestid>848340</requestid>
+  </revision>
 </revisionlist>

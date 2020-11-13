@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 13 12:34:00 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.2.3:
+  * Fixed wofi with new wlroots not allowing 0 width/height with
+    unanchored surfaces
+
+-------------------------------------------------------------------
 Tue Sep  1 11:44:46 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
 
 - Update to v1.2.2
