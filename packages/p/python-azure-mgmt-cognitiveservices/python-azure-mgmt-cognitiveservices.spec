@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-cognitiveservices
-Version:        6.2.0
+Version:        6.3.0
 Release:        0
 Summary:        Microsoft Azure Cognitive Services Management Client Library
 License:        MIT

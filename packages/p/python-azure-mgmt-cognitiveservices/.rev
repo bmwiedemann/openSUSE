@@ -53,4 +53,15 @@
 - Update Requires from setup.py (forwarded request 821896 from glaubitz)</comment>
     <requestid>821952</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>20ee9555997ee91678825a6d09a8cefa</srcmd5>
+    <version>6.3.0</version>
+    <time>1605290341</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 6.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 848166 from glaubitz)</comment>
+    <requestid>848200</requestid>
+  </revision>
 </revisionlist>
