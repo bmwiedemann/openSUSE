@@ -46,6 +46,7 @@ BuildRequires:  opensp
 Requires:       %{name}-lang = %{version}
 Requires:       perl-SGMLS
 Requires:       perl-YAML-Tiny
+Requires:       perl(Pod::Parser)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %{perl_requires}
