@@ -66,4 +66,15 @@
     README.rst file provided with this package (forwarded request 831071 from glaubitz)</comment>
     <requestid>831095</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0b85906296a9f2ed5399840b601dd6eb</srcmd5>
+    <version>0.5.2</version>
+    <time>1605290353</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.5.2
+  + For detailed information about changes see the
+    README.rst file provided with this package (forwarded request 848171 from glaubitz)</comment>
+    <requestid>848205</requestid>
+  </revision>
 </revisionlist>
