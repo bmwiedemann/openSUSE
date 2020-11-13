@@ -135,6 +135,7 @@ Patch0:         cgi_parse_qs_is_deprecated.diff
 Patch1:         refactored_auth_module.diff
 Patch2:         load_module_apache_suse_fix.diff
 Patch3:         fix-for-old-str.join-usage.diff
+Patch4:         remove-redundant-json-suffix.diff
 
 BuildRequires:  git-core
 BuildRequires:  %{system_release_pkg}
@@ -271,6 +272,7 @@ Unit test files from the Cobbler project
 %patch2 -p1
 %endif
 %patch3 -p1
+%patch4 -p1
 
 %if 0%{?suse_version}
 # Set tftpboot location correctly for SUSE distributions

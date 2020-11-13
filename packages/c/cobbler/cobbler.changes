@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 13 15:57:26 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
+
+- Remove redundant '.json' suffix
+- Added:
+  * remove-redundant-json-suffix.diff
+
+-------------------------------------------------------------------
 Tue Nov  3 10:57:09 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
 
 - Fixes usage of str.join()
