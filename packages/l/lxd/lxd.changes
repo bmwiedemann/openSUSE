@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 13 06:15:10 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 4.8. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-4-8-has-been-released/9458
+  boo#1178759
+
+  + vTPM support
+  + VirtioFS support for virtual machines
+  + Full CGroup2 support
+  + rebase mode for zfs.clone_copy
+  + --reuse option in lxc snapshot and lxc storage volume snapshot
+  * restarted lifecycle event
+  * Improved logging of user requests
+
+-------------------------------------------------------------------
 Sat Oct 17 09:03:58 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 4.7. The full upstream changelog is available from:
