@@ -16,15 +16,30 @@
 #
 
 
-%define sonum   15
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "python"
+%define build_python 1
+%define python_description This package contains the Python extension for QScintilla.
+
+%if 0%{suse_version} < 1550
+%define use_sip4 1
+%endif
+
+%define oldpython python
+%define pprefix python-
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%else
 %define debug_package_requires libqscintilla2_qt5-%{sonum} = %{version}-%{release}
-Name:           qscintilla-qt5
+%endif
+%define mname   qscintilla-qt5
+%define sonum   15
+Name:           %{?pprefix}%{mname}
 Version:        2.11.5
 Release:        0
 Summary:        C++ Editor Class Library
 License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
-URL:            https://www.riverbankcomputing.co.uk/software/qscintilla/intro
+URL:            https://www.riverbankcomputing.com/software/qscintilla
 Source:         https://www.riverbankcomputing.com/static/Downloads/QScintilla/%{version}/QScintilla-%{version}.tar.gz
 #PATCH-FIX-OPENSUSE: Adapt to the openSUSE Qt5 build
 Patch0:         qscintilla-qt5.diff
@@ -33,12 +48,30 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Designer)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Widgets)
+%if 0%{?build_python}
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module qt5-devel}
+BuildRequires:  libqscintilla_qt5-devel = %{version}
+BuildRequires:  python-pyqt-rpm-macros
+BuildRequires:  python-rpm-macros
+%if 0%{?use_sip4}
+BuildRequires:  %{python_module sip4-devel >= 4.19.8}
+Requires:       python-sip(api) = %{python_sip_api_ver}
+%else
+BuildRequires:  %{python_module pyqt-builder}
+BuildRequires:  %{python_module sip-devel >= 5.3}
+%requires_eq    python-qt5-sip
+%endif
+%requires_ge    python-qt5
+%python_subpackages
+%endif
 
 %description
 QScintilla is a Qt port of Neil Hodgson's Scintilla C++ editor class.
 
 This is a Qt port from the original Scintilla class
 (http://www.scintilla.org/).
+%{?python_description}
 
 %package -n qscintilla2_qt5
 Summary:        C++ Editor Class Library
@@ -82,11 +115,26 @@ This is a Qt port from the original Scintilla class
 
 This package contains the development files for %{name}.
 
+%if 0%{?build_python}
+%package sip
+Summary:        Sip files for %{name}
+Group:          Development/Libraries/Python
+Supplements:    packageand(python-sip:python-%{mname}) 
+Provides:       %{oldpython}-%{mname}-sip = %{version}-%{release}
+Obsoletes:      %{oldpython}-%{mname}-sip < %{version}-%{release}
+Requires:       python-qt5-devel
+
+%description sip
+This package provides the SIP files used to generate the Python bindings for
+%{name}
+%endif
+
 %prep
 %setup -q -n QScintilla-%{version}
 %patch0 -p1
 
 %build
+%if ! 0%{?build_python}
 pushd Qt4Qt5
 qmake-qt5 CONFIG+=c++11
 make %{?_smp_mflags}
@@ -95,14 +143,27 @@ pushd designer-Qt4Qt5
 qmake-qt5 CONFIG+=c++11
 make %{?_smp_mflags}
 popd
+%else
+%sip4_only pushd Python
+%pyqt_build -c --pyqt=PyQt5
+%sip4_only popd
+%endif
 
 %install
+%if ! 0%{?build_python}
 pushd Qt4Qt5
 make INSTALL_ROOT=%{buildroot} install
 popd
 pushd designer-Qt4Qt5
 make INSTALL_ROOT=%{buildroot} install
 popd
+%else
+%sip4_only pushd Python
+%pyqt_install
+%sip4_only popd
+%endif
+
+%if ! 0%{?build_python}
 
 %post -n libqscintilla2_qt5-%{sonum} -p /sbin/ldconfig
 %postun -n libqscintilla2_qt5-%{sonum} -p /sbin/ldconfig
@@ -123,5 +184,21 @@ popd
 %{_includedir}/qt5/Qsci/
 %{_libdir}/libqscintilla2_qt5.so
 %{_libdir}/qt5/mkspecs/features/qscintilla2.prf
+
+%else
+
+%files %{python_files}
+%license LICENSE
+%doc NEWS
+%dir %{python_sitearch}/PyQt5/
+%{python_sitearch}/PyQt5/Qsci.*
+%{python_sitearch}/QScintilla-%{version}.dist-info/
+%{_libqt5_datadir}/qsci/api/python_%{python_bin_suffix}/
+
+%files %{python_files sip}
+%license LICENSE
+%{pyqt5_sipdir}/Qsci
+
+%endif
 
 %changelog

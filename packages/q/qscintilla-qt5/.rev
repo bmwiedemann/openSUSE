@@ -106,4 +106,19 @@
    hack python_module</comment>
     <requestid>830619</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>86a63e7cc990744d473d9c231e2a8e1a</srcmd5>
+    <version>2.11.5</version>
+    <time>1605290268</time>
+    <user>dimstar_suse</user>
+    <comment>- Dropped patch: python-config.diff -- not needed even for the SIP4
+  builds
+- Use sip5 for python package where available 
+- remove the separate python-qscintilla-qt5 specfile and make
+  multibuild instead
+
+
+Delete the linked python-qscintilla-qt5 (A delete request is automatically decline)</comment>
+    <requestid>846254</requestid>
+  </revision>
 </revisionlist>

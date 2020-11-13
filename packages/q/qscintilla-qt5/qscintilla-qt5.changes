@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov  5 14:00:18 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Dropped patch: python-config.diff -- not needed even for the SIP4
+  builds
+
+-------------------------------------------------------------------
+Wed Sep  9 12:11:32 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Use sip5 for python package where available 
+- remove the separate python-qscintilla-qt5 specfile and make
+  multibuild instead
+
+-------------------------------------------------------------------
 Mon Aug 31 01:17:44 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 2.11.5
