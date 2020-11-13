@@ -127,4 +127,41 @@
     <comment></comment>
     <requestid>844158</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>958efbc1a8eac912b1461c82b80336b5</srcmd5>
+    <version>4.1.0</version>
+    <time>1605290358</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.0
+  * Added JWT (JSON Web Tokens) support under Phalcon\Security\JWT.
+    Offers support for:
+    + Token
+    + Parser
+    + Builder
+    + Validator
+    + Signers (None, HMAC)
+    + Base64 encode/decodeUrl helper class [#13856]
+  * Added additional HTML helpers under Phalcon\Html\Helper: Anchor, Base,
+    Body, Button, Close, Element, Form, Img, Input\Color, Input\Date,
+    Input\DateTime, Input\DateTimeLocal, Input\Email, Input\File,
+    Input\Hidden, Input\Image, Input\Input, Input\Month, Input\Numeric,
+    Input\Password, Input\Range, Input\Select, Input\Search, Input\Submit,
+    Input\Tel, Input\Text, Input\Textarea, Input\Time, Input\Url, Input\Week,
+    Label, Link, Meta, Ol, Script, Style, Title, Ul [#14696]
+  * Added Phalcon\Http\Request::getPreferredIsoLocaleVariant() to return the
+    base language if this is a specific one (en vs en-US) [#3135]
+  * Added preload for Volt, which will send a HTTP/2 preload header [#13128]
+  * Added Phalcon\Helper\Arr::blackList() to exclude elements of an array by
+    the keys obtained from the elements of a blacklist [#14801]
+  * Added Phalcon\Debug::renderHtml() to get a HTML representation of the
+    exception [#14794]
+  * Added Phalcon\Mvc\Router\Annotations-&gt;setActionPreformatCallback($callback)
+    to set a callback which pre-formats actions to custom pattern [#14819]
+  * Added new PDO wrapper for the Data Mapper implementation, with decorated
+    instance, locator and profiler
+    + Phalcon\DataMapper\Pdo\Connection
+    + Phalcon\DataMapper\Pdo\Connection\Decorated
+    + Phalcon\DataMapper\Pdo\Profiler\Profiler</comment>
+    <requestid>848206</requestid>
+  </revision>
 </revisionlist>

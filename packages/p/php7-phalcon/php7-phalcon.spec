@@ -22,7 +22,7 @@
 %define _architecture   %([[ %{_arch} == "i586" ]] && echo "32bits" || echo "64bits")
 
 Name:           %{_php}-phalcon
-Version:        4.0.6
+Version:        4.1.0
 Release:        0
 Summary:        PHP7 Extension Module
 License:        BSD-3-Clause
