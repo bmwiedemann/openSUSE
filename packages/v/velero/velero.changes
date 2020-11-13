@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 10 02:49:25 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
+
+- Update to version v1.5.2
+  - Fix BSL controller to avoid invoking init() on all BSLs regardless of ValidationFrequency (#2992, @betta1)
+  - cli: allow creating multiple instances of Velero across two different namespaces (#2886, @alaypatel07)
+  - Restore CRD Resource name to fix CRD wait functionality. (#2949, @sseago)
+  - Ensure that bound PVCs and PVs remain bound on restore. (#3007, @nrb). This fixes CVE-2020-3996.
+
+-------------------------------------------------------------------
 Wed Oct 14 10:12:25 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Avoid double %setup calls.
