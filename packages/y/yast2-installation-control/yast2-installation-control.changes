@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 11 15:16:15 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Add option to control file to specify if propose hibernation
+  (jsc#SLE-12280)
+- 4.3.7
+
+-------------------------------------------------------------------
 Wed Oct  7 17:11:29 CEST 2020 - schubi@suse.de
 
 - Upgrade openSUSE->Jump. Allow vendor change without asking
