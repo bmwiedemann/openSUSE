@@ -4214,6 +4214,8 @@ unsorted:
   - ghc-IfElse-devel 
   - ghc-JuicyPixels 
   - ghc-JuicyPixels-devel 
+  - ghc-MonadRandom 
+  - ghc-MonadRandom-devel 
   - ghc-Only 
   - ghc-Only-devel 
   - ghc-QuickCheck 
@@ -4232,10 +4234,16 @@ unsorted:
   - ghc-ShellCheck-devel 
   - ghc-StateVar 
   - ghc-StateVar-devel 
+  - ghc-Unique 
+  - ghc-Unique-devel 
   - ghc-X11 
   - ghc-X11-devel 
   - ghc-X11-xft 
   - ghc-X11-xft-devel 
+  - ghc-abstract-deque 
+  - ghc-abstract-deque-devel 
+  - ghc-abstract-par 
+  - ghc-abstract-par-devel 
   - ghc-adjunctions 
   - ghc-adjunctions-devel 
   - ghc-aeson 
@@ -4256,6 +4264,8 @@ unsorted:
   - ghc-ansi-terminal-devel 
   - ghc-ansi-wl-pprint 
   - ghc-ansi-wl-pprint-devel 
+  - ghc-ap-normalize 
+  - ghc-ap-normalize-devel 
   - ghc-appar 
   - ghc-appar-devel 
   - ghc-array 
@@ -4274,6 +4284,8 @@ unsorted:
   - ghc-async-devel 
   - ghc-async-timer 
   - ghc-async-timer-devel 
+  - ghc-atomic-primops 
+  - ghc-atomic-primops-devel 
   - ghc-atomic-write 
   - ghc-atomic-write-devel 
   - ghc-attoparsec 
@@ -4298,20 +4310,32 @@ unsorted:
   - ghc-base-prelude-devel 
   - ghc-base16-bytestring 
   - ghc-base16-bytestring-devel 
+  - ghc-base58-bytestring 
+  - ghc-base58-bytestring-devel 
+  - ghc-base64 
   - ghc-base64-bytestring 
   - ghc-base64-bytestring-devel 
+  - ghc-base64-bytestring-type 
+  - ghc-base64-bytestring-type-devel 
+  - ghc-base64-devel 
   - ghc-basement 
   - ghc-basement-devel 
+  - ghc-bech32 
+  - ghc-bech32-devel 
   - ghc-bencode 
   - ghc-bencode-devel 
   - ghc-bifunctors 
   - ghc-bifunctors-devel 
+  - ghc-bimap 
+  - ghc-bimap-devel 
   - ghc-binary 
   - ghc-binary-devel 
   - ghc-bindings-uname 
   - ghc-bindings-uname-devel 
   - ghc-bitarray 
   - ghc-bitarray-devel 
+  - ghc-bitmap 
+  - ghc-bitmap-devel 
   - ghc-blaze-builder 
   - ghc-blaze-builder-devel 
   - ghc-blaze-html 
@@ -4385,6 +4409,8 @@ unsorted:
   - ghc-comonad 
   - ghc-comonad-devel 
   - ghc-compiler 
+  - ghc-concurrency 
+  - ghc-concurrency-devel 
   - ghc-concurrent-output 
   - ghc-concurrent-output-devel 
   - ghc-conduit 
@@ -4455,6 +4481,8 @@ unsorted:
   - ghc-dec-devel 
   - ghc-deepseq 
   - ghc-deepseq-devel 
+  - ghc-dense-linear-algebra 
+  - ghc-dense-linear-algebra-devel 
   - ghc-dhall 
   - ghc-dhall-devel 
   - ghc-dhall-json 
@@ -4473,6 +4501,8 @@ unsorted:
   - ghc-distributive-devel 
   - ghc-dlist 
   - ghc-dlist-devel 
+  - ghc-dns 
+  - ghc-dns-devel 
   - ghc-doclayout 
   - ghc-doclayout-devel 
   - ghc-doctemplates 
@@ -4491,6 +4521,12 @@ unsorted:
   - ghc-edit-distance-devel 
   - ghc-either 
   - ghc-either-devel 
+  - ghc-ekg 
+  - ghc-ekg-core 
+  - ghc-ekg-core-devel 
+  - ghc-ekg-devel 
+  - ghc-ekg-json 
+  - ghc-ekg-json-devel 
   - ghc-email-validate 
   - ghc-email-validate-devel 
   - ghc-emojis 
@@ -4545,6 +4581,8 @@ unsorted:
   - ghc-free-devel 
   - ghc-fsnotify 
   - ghc-fsnotify-devel 
+  - ghc-generic-data 
+  - ghc-generic-data-devel 
   - ghc-generic-deriving 
   - ghc-generic-deriving-devel 
   - ghc-generic-lens 
@@ -4556,6 +4594,8 @@ unsorted:
   - ghc-ghc-boot-devel 
   - ghc-ghc-boot-th 
   - ghc-ghc-boot-th-devel 
+  - ghc-ghc-byteorder 
+  - ghc-ghc-byteorder-devel 
   - ghc-ghc-compact 
   - ghc-ghc-compact-devel 
   - ghc-ghc-devel 
@@ -4575,6 +4615,10 @@ unsorted:
   - ghc-githash-devel 
   - ghc-gitrev 
   - ghc-gitrev-devel 
+  - ghc-gray-code 
+  - ghc-gray-code-devel 
+  - ghc-groups 
+  - ghc-groups-devel 
   - ghc-hackage-security 
   - ghc-hackage-security-devel 
   - ghc-haddock-library 
@@ -4591,6 +4635,8 @@ unsorted:
   - ghc-haskell-lexer-devel 
   - ghc-heaps 
   - ghc-heaps-devel 
+  - ghc-hedgehog 
+  - ghc-hedgehog-devel 
   - ghc-hi-file-parser 
   - ghc-hi-file-parser-devel 
   - ghc-hinotify 
@@ -4740,6 +4786,8 @@ unsorted:
   - ghc-megaparsec-devel 
   - ghc-memory 
   - ghc-memory-devel 
+  - ghc-mersenne-random-pure64 
+  - ghc-mersenne-random-pure64-devel 
   - ghc-microlens 
   - ghc-microlens-devel 
   - ghc-microlens-ghc 
@@ -4762,8 +4810,14 @@ unsorted:
   - ghc-monad-logger-devel 
   - ghc-monad-loops 
   - ghc-monad-loops-devel 
+  - ghc-monad-par 
+  - ghc-monad-par-devel 
+  - ghc-monad-par-extras 
+  - ghc-monad-par-extras-devel 
   - ghc-mono-traversable 
   - ghc-mono-traversable-devel 
+  - ghc-moo 
+  - ghc-moo-devel 
   - ghc-mountpoints 
   - ghc-mountpoints-devel 
   - ghc-mtl 
@@ -4810,6 +4864,8 @@ unsorted:
   - ghc-optional-args-devel 
   - ghc-optparse-applicative 
   - ghc-optparse-applicative-devel 
+  - ghc-optparse-generic 
+  - ghc-optparse-generic-devel 
   - ghc-optparse-simple 
   - ghc-optparse-simple-devel 
   - ghc-pandoc 
@@ -4828,6 +4884,8 @@ unsorted:
   - ghc-parser-combinators-devel 
   - ghc-parsers 
   - ghc-parsers-devel 
+  - ghc-partial-order 
+  - ghc-partial-order-devel 
   - ghc-path 
   - ghc-path-devel 
   - ghc-path-io 
@@ -4880,10 +4938,14 @@ unsorted:
   - ghc-quiet-devel 
   - ghc-random 
   - ghc-random-devel 
+  - ghc-random-shuffle 
+  - ghc-random-shuffle-devel 
   - ghc-readable 
   - ghc-readable-devel 
   - ghc-recursion-schemes 
   - ghc-recursion-schemes-devel 
+  - ghc-reducers 
+  - ghc-reducers-devel 
   - ghc-refact 
   - ghc-refact-devel 
   - ghc-reflection 
@@ -4950,6 +5012,8 @@ unsorted:
   - ghc-shakespeare-devel 
   - ghc-shelly 
   - ghc-shelly-devel 
+  - ghc-show-combinators 
+  - ghc-show-combinators-devel 
   - ghc-silently 
   - ghc-silently-devel 
   - ghc-simple-sendfile 
@@ -4970,18 +5034,30 @@ unsorted:
   - ghc-snap-server-devel 
   - ghc-socks 
   - ghc-socks-devel 
+  - ghc-sop-core 
+  - ghc-sop-core-devel 
   - ghc-split 
   - ghc-split-devel 
   - ghc-splitmix 
   - ghc-splitmix-devel 
+  - ghc-statistics 
+  - ghc-statistics-devel 
+  - ghc-statistics-linreg 
+  - ghc-statistics-linreg-devel 
   - ghc-stm 
   - ghc-stm-chans 
   - ghc-stm-chans-devel 
   - ghc-stm-devel 
   - ghc-store-core 
   - ghc-store-core-devel 
+  - ghc-streaming 
+  - ghc-streaming-binary 
+  - ghc-streaming-binary-devel 
+  - ghc-streaming-bytestring 
+  - ghc-streaming-bytestring-devel 
   - ghc-streaming-commons 
   - ghc-streaming-commons-devel 
+  - ghc-streaming-devel 
   - ghc-strict 
   - ghc-strict-concurrency 
   - ghc-strict-concurrency-devel 
@@ -4994,6 +5070,8 @@ unsorted:
   - ghc-system-fileio-devel 
   - ghc-system-filepath 
   - ghc-system-filepath-devel 
+  - ghc-systemd 
+  - ghc-systemd-devel 
   - ghc-tabular 
   - ghc-tabular-devel 
   - ghc-tagged 
@@ -5012,6 +5090,8 @@ unsorted:
   - ghc-tasty-quickcheck-devel 
   - ghc-tasty-rerun 
   - ghc-tasty-rerun-devel 
+  - ghc-tdigest 
+  - ghc-tdigest-devel 
   - ghc-template-haskell 
   - ghc-template-haskell-devel 
   - ghc-temporary 
@@ -5092,12 +5172,18 @@ unsorted:
   - ghc-transformers-compat 
   - ghc-transformers-compat-devel 
   - ghc-transformers-devel 
+  - ghc-transformers-except 
+  - ghc-transformers-except-devel 
+  - ghc-tree-diff 
+  - ghc-tree-diff-devel 
   - ghc-turtle 
   - ghc-turtle-devel 
   - ghc-type-equality 
   - ghc-type-equality-devel 
   - ghc-typed-process 
   - ghc-typed-process-devel 
+  - ghc-typerep-map 
+  - ghc-typerep-map-devel 
   - ghc-uglymemo 
   - ghc-uglymemo-devel 
   - ghc-unbounded-delays 
@@ -5168,6 +5254,8 @@ unsorted:
   - ghc-weeder-devel 
   - ghc-wizards 
   - ghc-wizards-devel 
+  - ghc-wl-pprint-annotated 
+  - ghc-wl-pprint-annotated-devel 
   - ghc-word-wrap 
   - ghc-word-wrap-devel 
   - ghc-word8 
@@ -6541,7 +6629,6 @@ unsorted:
   - hostap-utils 
   - hostapd 
   - hostinfo 
-  - hotdoc 
   - hotspot 
   - hourglass 
   - hourglass-lang 
@@ -9179,7 +9266,7 @@ unsorted:
   - libSampleICC1 
   - libSavitar-devel 
   - libSavitar0 
-  - libSimGearCore-2020_3_1 
+  - libSimGearCore-2020_3_2 
   - libSoQt20 
   - libSoapyOsmoSDR0 
   - libSoundTouch1-32bit: [x86_64] 
@@ -18349,6 +18436,7 @@ unsorted:
   - patterns-base-bootloader: [i586] 
   - patterns-base-enhanced_base-32bit 
   - patterns-base-minimal_base-32bit 
+  - patterns-base-selinux 
   - patterns-base-sw_management-32bit 
   - patterns-base-update_test 
   - patterns-base-x11-32bit 
@@ -20923,8 +21011,6 @@ unsorted:
   - python-qt3d-qt5-api 
   - python-qt3d-qt5-examples 
   - python-qt3d-qt5-sip 
-  - python-qt5-common-devel 
-  - python-qt5-doc 
   - python-qtcharts-qt5-api 
   - python-qtcharts-qt5-examples 
   - python-qtcharts-qt5-sip 
@@ -20936,6 +21022,7 @@ unsorted:
   - python-rcssmin-docs 
   - python-rdflib-doc 
   - python-renderspec-doc 
+  - python-rtslib-fb-common 
   - python-saharaclient-doc 
   - python-senlinclient-doc 
   - python-shodan-doc 
@@ -23208,6 +23295,7 @@ unsorted:
   - python3-pyprompter 
   - python3-pypsexec 
   - python3-pypuppetdb 
+  - python3-pyqt-builder 
   - python3-pyqtgraph 
   - python3-pyquery 
   - python3-pyquil 
@@ -23444,7 +23532,9 @@ unsorted:
   - python3-qsymm 
   - python3-qt3d-qt5 
   - python3-qt5-devel 
+  - python3-qt5-doc 
   - python3-qt5-quick3d 
+  - python3-qt5-quick3d-devel 
   - python3-qtcharts-qt5 
   - python3-qtconsole 
   - python3-qtdatavis3d-qt5 
@@ -24401,6 +24491,7 @@ unsorted:
   - reflectasm 
   - reflectasm-javadoc 
   - regexp 
+  - rehex 
   - reiser4progs 
   - reiser4progs-devel 
   - relaxngDatatype 
@@ -25587,6 +25678,7 @@ unsorted:
   - scheme48-doc 
   - scheme48-prescheme 
   - scheme48-vm 
+  - schily-ctags 
   - schily-mt 
   - schily-rmt 
   - schismtracker 
