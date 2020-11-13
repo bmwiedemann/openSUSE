@@ -1,7 +1,7 @@
 #
 # spec file for package python-kerberos
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(krb5)
+# https://github.com/02strich/pykerberos/issues/17
+Conflicts:      python-pykerberos
 %python_subpackages
 
 %description

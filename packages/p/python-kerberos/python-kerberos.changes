@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 13 13:08:59 UTC 2020 - Johannes Grassler <johannes.grassler@suse.com>
+
+- Add Conflicts: with python-pykerberos for mutual Conflicts: relation
+
+-------------------------------------------------------------------
 Thu Nov 14 14:38:03 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not pull in the mini package but rely on pkgconfig sorting
