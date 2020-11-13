@@ -179,4 +179,14 @@ Brick Show diff</comment>
     <comment>- Add a missing build requirement. (forwarded request 729972 from cgiboudeaux)</comment>
     <requestid>731085</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>70d9caebc1be7b8ddc91e4f412b836c5</srcmd5>
+    <version>0.5.3</version>
+    <time>1605290361</time>
+    <user>dimstar_suse</user>
+    <comment>- fix with libpinyin 2.4.93
+  * add fcitx-libpinyin-0.5.3-libpinyin-2.4.92.patch
+</comment>
+    <requestid>848288</requestid>
+  </revision>
 </revisionlist>

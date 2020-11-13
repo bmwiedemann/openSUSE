@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx-libpinyin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,16 @@ Release:        0
 Summary:        Libpinyin Wrapper for Fcitx
 License:        GPL-2.0-or-later
 Group:          System/I18n/Chinese
-Url:            https://github.com/fcitx/fcitx-libpinyin
+URL:            https://github.com/fcitx/fcitx-libpinyin
 Source:         http://download.fcitx-im.org/fcitx-libpinyin/%{name}-%{version}_dict.tar.xz
+Source1:        https://master.dl.sourceforge.net/project/libpinyin/models/model19.text.tar.gz
 #PATCH-FIX-UPSTREAM downgrade qt5 requirement to 5.4 since qtwebengine is available
 # starting from that release
 Patch0:         dictmanager-qt5.4.patch
 #PATCH-FIX-UPSTREAM linking against fcitx
 Patch1:         fcitx-libpinyin-linking.patch
+#PATCH-FIX-UPSTREAM libpinyin 2.4.92 used new table format
+Patch2:         %{name}-%{version}-libpinyin-2.4.92.patch
 BuildRequires:  cmake
 BuildRequires:  fcitx-devel
 BuildRequires:  fcitx-qt5-devel
@@ -55,9 +58,11 @@ Fcitx-libpinyin is a Frontend of the Intelligent Pinyin IME Backend.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+cp -r %{S:1} data
 
 %build
-%cmake
+%cmake -DDATABASE_FORMAT="KyotoCabinet"
 make %{?_smp_mflags}
 
 %install

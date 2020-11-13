@@ -1,0 +1,123 @@
+Index: fcitx-libpinyin-0.5.3/CMakeLists.txt
+===================================================================
+--- fcitx-libpinyin-0.5.3.orig/CMakeLists.txt
++++ fcitx-libpinyin-0.5.3/CMakeLists.txt
+@@ -26,6 +26,8 @@ if(NOT DEFINED LIB_INSTALL_DIR)
+   set(LIB_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/lib)
+ endif()
+ 
++add_definitions("-DDATABASE_FORMAT=KyotoCabinet")
++
+ if (LIBPINYIN_GEN_UNIGRAM AND LIBPINYIN_GEN_BINARY_FILES AND LIBPINYIN_IMPORT_INTERPOLATION)
+     set(LIBPINYIN_TOOLS_FOUND 1)
+ else()
+Index: fcitx-libpinyin-0.5.3/data/CMakeLists.txt
+===================================================================
+--- fcitx-libpinyin-0.5.3.orig/data/CMakeLists.txt
++++ fcitx-libpinyin-0.5.3/data/CMakeLists.txt
+@@ -7,9 +7,15 @@ endforeach()
+ 
+ if (LIBPINYIN_TOOLS_FOUND)
+ 
++if(${PC_LIBPINYIN_VERSION} VERSION_GREATER "2.4.91")
++set(_LIBPINYIN_TABLE art culture economy gb_char gbk_char geology
++	                   history life merged nature opengram
++		                 people science society sport technology)
++else()
+ set(_LIBPINYIN_TABLE art gb_char history nature scitech
+                      culture gbk_char life society economy geology merged
+                      sport)
++endif()
+ 
+ foreach(f ${_LIBPINYIN_TABLE})
+     set(_LIBPINYIN_TABLE_FILES ${_LIBPINYIN_TABLE_FILES} "${f}.table")
+@@ -17,19 +23,42 @@ foreach(f ${_LIBPINYIN_TABLE})
+     set(_LIBPINYIN_GEN_BIN_FILES ${_LIBPINYIN_GEN_BIN_FILES} "${CMAKE_CURRENT_BINARY_DIR}/${f}.bin")
+ endforeach()
+ 
+-set(ZHUYIN_DATA_FILE_NAME model.text.20161206.tar.gz)
+-set(ZHUYIN_URL "http://download.fcitx-im.org/data/${ZHUYIN_DATA_FILE_NAME}")
++if(${PC_LIBPINYIN_VERSION} VERSION_GREATER "2.4.91")
++    set(ZHUYIN_DATA_FILE_NAME model19.text.tar.gz)
++    set(ZHUYIN_URL "http://downloads.sourceforge.net/libpinyin/models/${ZHUYIN_DATA_FILE_NAME}")
++else()
++    set(ZHUYIN_DATA_FILE_NAME model.text.20161206.tar.gz)
++    set(ZHUYIN_URL "http://download.fcitx-im.org/data/${ZHUYIN_DATA_FILE_NAME}")
++endif()
++
+ set(ZHUYIN_ORGDATA ${_LIBPINYIN_TABLE_FILES} interpolation2.text)
+ set(ZHUYIN_DATA bigram.db ${_LIBPINYIN_BIN_FILES}  phrase_index.bin
+                 pinyin_index.bin addon_phrase_index.bin addon_pinyin_index.bin)
+ 
+-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/table.conf ${CMAKE_CURRENT_BINARY_DIR}/table.conf COPYONLY)
++if(${PC_LIBPINYIN_VERSION} VERSION_GREATER "2.4.91")
++    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/table.conf.in ${CMAKE_CURRENT_BINARY_DIR}/table.conf)
++else()
++    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/table.conf ${CMAKE_CURRENT_BINARY_DIR}/table.conf COPYONLY)
++endif()
+ 
+-fcitx_download(zhuyin_data_tar "${ZHUYIN_URL}" "${ZHUYIN_DATA_FILE_NAME}"
+-  MD5SUM f657ea2e9091e35021037ef4ce796e1d)
++fcitx_download(zhuyin_data_tar "${ZHUYIN_URL}" "${ZHUYIN_DATA_FILE_NAME}")
++#  MD5SUM f657ea2e9091e35021037ef4ce796e1d)
+ fcitx_extract(zhuyin-data-extract "${ZHUYIN_DATA_FILE_NAME}"
+   DEPENDS zhuyin_data_tar OUTPUT ${ZHUYIN_ORGDATA})
+ 
++if(${PC_LIBPINYIN_VERSION} VERSION_GREATER "2.4.91")
++add_custom_command(OUTPUT ${ZHUYIN_DATA}
++  DEPENDS ${ZHUYIN_ORGDATA} zhuyin-data-extract
++  COMMAND "${CMAKE_COMMAND}" -E remove ${ZHUYIN_DATA}
++  COMMAND "/usr/bin/tar" -xf "../../data/model19.text.tar.gz"
++  COMMAND "/usr/bin/ls" -l
++  COMMAND "${LIBPINYIN_GEN_BINARY_FILES}"
++  --table-dir "${CMAKE_CURRENT_BINARY_DIR}"
++  COMMAND "/usr/bin/ls" -l
++  COMMAND "${LIBPINYIN_IMPORT_INTERPOLATION}"
++  < "${CMAKE_CURRENT_BINARY_DIR}/interpolation2.text"
++  COMMAND "${LIBPINYIN_GEN_UNIGRAM}")
++else()
+ add_custom_command(OUTPUT ${ZHUYIN_DATA}
+   DEPENDS ${ZHUYIN_ORGDATA} zhuyin-data-extract
+   COMMAND "${CMAKE_COMMAND}" -E remove ${ZHUYIN_DATA}
+@@ -38,6 +67,7 @@ add_custom_command(OUTPUT ${ZHUYIN_DATA}
+   COMMAND "${LIBPINYIN_IMPORT_INTERPOLATION}"
+   < "${CMAKE_CURRENT_BINARY_DIR}/interpolation2.text"
+   COMMAND "${LIBPINYIN_GEN_UNIGRAM}")
++endif()
+ 
+ add_custom_target(zhuyin_data ALL DEPENDS ${ZHUYIN_DATA})
+ 
+Index: fcitx-libpinyin-0.5.3/data/table.conf.in
+===================================================================
+--- /dev/null
++++ fcitx-libpinyin-0.5.3/data/table.conf.in
+@@ -0,0 +1,29 @@
++binary format version:6
++model data version:14
++lambda parameter:0.312699
++
++source table format:pinyin
++database format:@DATABASE_FORMAT@
++
++default RESERVED NULL NULL NULL NOT_USED
++default GB_DICTIONARY gb_char.table gb_char.bin gb_char.dbin SYSTEM_FILE
++default GBK_DICTIONARY gbk_char.table gbk_char.bin gbk_char.dbin SYSTEM_FILE
++default OPENGRAM_DICTIONARY opengram.table opengram.bin opengram.dbin SYSTEM_FILE
++default MERGED_DICTIONARY merged.table merged.bin merged.dbin SYSTEM_FILE
++default ADDON_DICTIONARY NULL NULL addon.bin USER_FILE
++default NETWORK_DICTIONARY NULL NULL network.bin USER_FILE
++default USER_DICTIONARY NULL NULL user.bin USER_FILE
++
++addon 4 art.table art.bin NULL DICTIONARY
++addon 5 culture.table culture.bin NULL DICTIONARY
++addon 6 economy.table economy.bin NULL DICTIONARY
++addon 7 geology.table geology.bin NULL DICTIONARY
++addon 8 history.table history.bin NULL DICTIONARY
++
++addon 9 life.table life.bin NULL DICTIONARY
++addon 10 nature.table nature.bin NULL DICTIONARY
++addon 11 people.table people.bin NULL DICTIONARY
++addon 12 science.table science.bin NULL DICTIONARY
++addon 13 society.table society.bin NULL DICTIONARY
++addon 14 sport.table sport.bin NULL DICTIONARY
++addon 15 technology.table technology.bin NULL DICTIONARY
