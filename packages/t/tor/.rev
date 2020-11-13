@@ -773,4 +773,12 @@ nicer version with try-reload-or-restart</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>836122</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>6d95c3f673f82568d90c6be13936c72f</srcmd5>
+    <version>0.4.4.6</version>
+    <time>1605290398</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848313</requestid>
+  </revision>
 </revisionlist>

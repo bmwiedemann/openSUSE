@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 12 17:02:48 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- tor 0.4.4.6
+  * Check channels+circuits on relays more thoroughly
+    (TROVE-2020-005, boo#1178741)
+
+-------------------------------------------------------------------
 Tue Sep 15 14:51:40 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - tor 0.4.4.5
