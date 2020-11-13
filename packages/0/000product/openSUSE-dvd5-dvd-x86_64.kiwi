@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20201111" schemaversion="4.1">
+<image name="OBS__openSUSE___20201112" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20201111</productvar>
+      <productvar name="VERSION">20201112</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20201111,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20201112,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20201111/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20201112/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -3938,7 +3938,6 @@
       <repopackage name="python-gtk"/>
       <repopackage name="python-rpm-generators"/>
       <repopackage name="python-rpm-macros"/>
-      <repopackage name="python-sip-common"/>
       <repopackage name="python2-pycairo"/>
       <repopackage name="python3-aiosmtpd"/>
       <repopackage name="python3-alembic"/>
@@ -4091,6 +4090,7 @@
       <repopackage name="python3-PyYAML"/>
       <repopackage name="python3-pyzmq"/>
       <repopackage name="python3-qt5"/>
+      <repopackage name="python3-qt5-sip"/>
       <repopackage name="python3-redis"/>
       <repopackage name="python3-reportlab"/>
       <repopackage name="python3-requests"/>
@@ -4107,7 +4107,6 @@
       <repopackage name="python3-setproctitle" arch="x86_64"/>
       <repopackage name="python3-setuptools"/>
       <repopackage name="python3-simplejson"/>
-      <repopackage name="python3-sip"/>
       <repopackage name="python3-six"/>
       <repopackage name="python3-slip"/>
       <repopackage name="python3-slip-dbus"/>
