@@ -3794,4 +3794,12 @@
     <comment>submit new version 4.3.38</comment>
     <requestid>842825</requestid>
   </revision>
+  <revision rev="498" vrev="1">
+    <srcmd5>1d8d2a7b6939f7e790a14b8d643e5267</srcmd5>
+    <version>4.3.41</version>
+    <time>1605290236</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.3.41</comment>
+    <requestid>848079</requestid>
+  </revision>
 </revisionlist>
