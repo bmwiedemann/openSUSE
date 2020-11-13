@@ -1,0 +1,87 @@
+-------------------------------------------------------------------
+Tue Aug 11 13:41:25 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.0.3:
+  * No release notes.
+- Update required version of lalsimulation to 2.2.0.
+
+-------------------------------------------------------------------
+Tue Jul  7 02:10:56 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.0.1:
+  * No release notes.
+- Bump so number in shlib package name.
+- Re-enable octave bindings: fixed upstream.
+- Drop libtool from BuildRequires and do not run autoreconf
+  before configure: these have not been needed since
+  lalinference-build-octave44-with-swig3.patch was dropped.
+
+-------------------------------------------------------------------
+Wed Jul  1 23:29:04 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable octave support as compilation error with current swig.
+
+-------------------------------------------------------------------
+Fri May 29 18:05:48 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add lalinference-printf-data-type-consistency.patch: Cast data
+  passed to printf from size_t to long to make it consistent with
+  the format "%li"; this fixes build failures on i586 (patch
+  applicable on any arch).
+
+-------------------------------------------------------------------
+Wed Apr 22 18:13:19 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.11.7:
+  * O3b point release
+- Drop lalinference-build-octave44-with-swig3.patch: incorporated
+  upstream.
+- BuildRequires: python-xml only for openSUSE <= 15.2 since
+  python2 is disabled for newer openSUSE.
+- Package binaries for python3 only.
+
+-------------------------------------------------------------------
+Mon Feb  3 00:58:40 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.11.4:
+  * O3b release.
+- Rebase lalinference-build-octave44-with-swig3.patch for update.
+
+-------------------------------------------------------------------
+Tue Oct  1 12:28:03 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Build packages for both python2 and python3.
+- Move binaries to the python2 subpackage.
+- Split out a separate -data pkg used by all the lalinference
+  binaries.
+
+-------------------------------------------------------------------
+Mon Jul 22 14:43:08 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.11.2:
+  * O3 release.
+- Update shared lib package names in keeping with upstream so
+  versioning.
+- Rebase lalinference-build-octave44-with-swig3.patch to conform
+  to upstream's reworking for swig and octave version tests.
+
+-------------------------------------------------------------------
+Fri Feb  8 13:32:28 UTC 2019 - badshah400@gmail.com
+
+- Switch builds to python2; add python-xml to BuildRequires.
+
+-------------------------------------------------------------------
+Thu Feb  7 14:54:34 UTC 2019 - badshah400@gmail.com
+
+- Update Requires for octave-%{name}.
+
+-------------------------------------------------------------------
+Sun Jan 27 19:11:46 UTC 2019 - badshah400@gmail.com
+
+- Add lalinference-build-octave44-with-swig3.patch: allow building
+  octave bindings with swig 3.0.x rather than requiring swig 4.x.
+
+-------------------------------------------------------------------
+Sun Jan 27 18:00:12 UTC 2019 - badshah400@gmail.com
+
+- Initial package
