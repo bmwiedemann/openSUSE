@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Nov 13 12:14:27 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.6.0
+  + New Feature: ```ConfidentialClientApplication``` accepts private
+    key encrypted by a passphrase. (#232, #270)
+  + Enhancement: Provides different exception and messages while
+    encountering transient error during tenant discovery (#263, #269)
+- from version 1.5.1
+  + Bugfix: We now cache tokens by specified environment, not by OIDC Discovery.
+    This won't matter most of the time, but it can be needed when your tenant is
+    in transitional state while migrating to a different cloud. (#247)
+  + Bugfix: We now make sure one app's sign-out operation would be successful even
+    when another app is acquiring token from cache at the same time. (#258, #262)
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Sep  8 19:53:50 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.5.0

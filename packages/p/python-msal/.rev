@@ -28,4 +28,12 @@
   + Fixes in test cases (#239, #211) (forwarded request 833099 from glaubitz)</comment>
     <requestid>833121</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9a0044f70b434a80837a49673cfbd6b2</srcmd5>
+    <version>1.6.0</version>
+    <time>1605290354</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848336</requestid>
+  </revision>
 </revisionlist>

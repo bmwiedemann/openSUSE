@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-msal
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        Microsoft Authentication Library (MSAL) for Python
 License:        MIT
@@ -30,6 +30,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyJWT >= 1.0.0
+Requires:       python-cryptography >= 0.6
 Requires:       python-requests >= 2.0.0
 BuildArch:      noarch
 # SECTION test requirements
