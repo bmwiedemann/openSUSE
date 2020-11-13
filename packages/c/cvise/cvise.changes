@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 13 08:11:48 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.9.0+git.20201113.53eb76b:
+  * Report also number of lines.
+  * Use proper shebang.
+
+-------------------------------------------------------------------
 Tue Nov 10 09:01:19 UTC 2020 - mliska@suse.cz
 
 - Update to version 1.9.0+git.20201110.a000f9e:
