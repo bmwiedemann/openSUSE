@@ -96,6 +96,7 @@ dvd:
   - patterns-xfce-xfce_office: [suggested]
   - patterns-yast-yast2_basis: [suggested]
   - patterns-yast-yast2_install_wf: [suggested]
+  - patterns-yast-yast2_server: [suggested]
   - arabic-fonts
   - arphic-uming-fonts
   - cracklib-dict-full

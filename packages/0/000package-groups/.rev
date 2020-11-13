@@ -1004,4 +1004,12 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <user>dimstar_suse</user>
     <comment>mozjs78 is i686</comment>
   </revision>
+  <revision rev="139" vrev="137">
+    <srcmd5>374b7cb3e69f06c9c0d1108f419a2954</srcmd5>
+    <version>unknown</version>
+    <time>1605290203</time>
+    <user>dimstar_suse</user>
+    <comment>Add the new pattern yast2_server to the DVD</comment>
+    <requestid>847066</requestid>
+  </revision>
 </revisionlist>
