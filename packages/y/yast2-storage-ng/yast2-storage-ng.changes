@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Nov 11 14:44:26 UTC 2020 - Martin Vidner <mvidner@suse.com>
+
+- Untranslated error message in 'Edit Btrfs subvolumes'/
+  'Add subvolume' (bsc#1130822)
+- Detect missing textdomain during unit testing.
+- 4.3.20
+
+-------------------------------------------------------------------
+Thu Nov  5 10:26:55 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Disable "Device" menu items for NFS shares
+  (related to jsc#PM-73, jsc#SLE-7742, jsc#SLE-15283)
+- 4.3.19
+
+-------------------------------------------------------------------
+Wed Nov  4 09:21:55 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Proposal: adjusted the size and format of the EFI partition
+  (bsc#1177358, bsc#1170625, bsc#1119318).
+- 4.3.18
+
+-------------------------------------------------------------------
+Fri Oct 30 11:58:50 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Partitioner: revamped user interface (related to jsc#PM-73,
+  jsc#SLE-7742, jsc#SLE-15283).
+- 4.3.17
+
+-------------------------------------------------------------------
 Tue Oct 20 15:36:03 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Added $LIBSTORAGE_IGNORE_PROBE_ERRORS environment variable
