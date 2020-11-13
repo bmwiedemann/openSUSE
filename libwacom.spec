@@ -21,7 +21,7 @@
 %bcond_with meson
 %endif
 Name:           libwacom
-Version:        1.5
+Version:        1.6
 Release:        0
 Summary:        Library to identify wacom tablets
 License:        MIT

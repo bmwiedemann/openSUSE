@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  9 18:20:09 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.6:
+  * add XP Pen G640
+  * add XP Pen G430
+  * build fixes
+
+-------------------------------------------------------------------
 Mon Oct  5 08:38:39 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use official %%meson_test macro for the %check section.
