@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>829650</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8a4930a4fbc59a5d96b776cf4fc109bd</srcmd5>
+    <version>1.2.2</version>
+    <time>1605290344</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.2.2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 848167 from glaubitz)</comment>
+    <requestid>848201</requestid>
+  </revision>
 </revisionlist>
