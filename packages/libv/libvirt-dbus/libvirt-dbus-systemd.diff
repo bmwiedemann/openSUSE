@@ -21,11 +21,10 @@ Signed-off-by: Katerina Koukiou <kkoukiou@redhat.com>
  create mode 100644 data/system/libvirt-dbus.service.in
  create mode 100644 data/system/org.libvirt-systemd.service.in
 
-diff --git a/data/session/libvirt-dbus.service.in b/data/session/libvirt-dbus.service.in
-new file mode 100644
-index 0000000..5d377ff
+Index: libvirt-dbus-1.4.0/data/session/libvirt-dbus.service.in
+===================================================================
 --- /dev/null
-+++ b/data/session/libvirt-dbus.service.in
++++ libvirt-dbus-1.4.0/data/session/libvirt-dbus.service.in
 @@ -0,0 +1,9 @@
 +[Unit]
 +Description=Libvirt DBus Service
@@ -36,10 +35,10 @@ index 0000000..5d377ff
 +
 +[Install]
 +Alias=org.libvirt.service
-diff --git a/data/session/meson.build b/data/session/meson.build
-index 240fcef..b3663a3 100644
---- a/data/session/meson.build
-+++ b/data/session/meson.build
+Index: libvirt-dbus-1.4.0/data/session/meson.build
+===================================================================
+--- libvirt-dbus-1.4.0.orig/data/session/meson.build
++++ libvirt-dbus-1.4.0/data/session/meson.build
 @@ -1,6 +1,18 @@
 +if init_script == 'systemd'
 +    configure_file(
@@ -60,21 +59,19 @@ index 240fcef..b3663a3 100644
      output: 'org.libvirt.service',
      install_dir: dbus_services_dir,
  )
-diff --git a/data/session/org.libvirt-systemd.service.in b/data/session/org.libvirt-systemd.service.in
-new file mode 100644
-index 0000000..12b3f00
+Index: libvirt-dbus-1.4.0/data/session/org.libvirt-systemd.service.in
+===================================================================
 --- /dev/null
-+++ b/data/session/org.libvirt-systemd.service.in
++++ libvirt-dbus-1.4.0/data/session/org.libvirt-systemd.service.in
 @@ -0,0 +1,4 @@
 +[D-BUS Service]
 +Name=org.libvirt
 +Exec=/bin/false
 +SystemdService=libvirt-dbus.service
-diff --git a/data/system/libvirt-dbus.service.in b/data/system/libvirt-dbus.service.in
-new file mode 100644
-index 0000000..9654571
+Index: libvirt-dbus-1.4.0/data/system/libvirt-dbus.service.in
+===================================================================
 --- /dev/null
-+++ b/data/system/libvirt-dbus.service.in
++++ libvirt-dbus-1.4.0/data/system/libvirt-dbus.service.in
 @@ -0,0 +1,12 @@
 +[Unit]
 +Description=Libvirt DBus Service
@@ -88,10 +85,10 @@ index 0000000..9654571
 +
 +[Install]
 +Alias=org.libvirt.service
-diff --git a/data/system/meson.build b/data/system/meson.build
-index 74f1949..a75cabb 100644
---- a/data/system/meson.build
-+++ b/data/system/meson.build
+Index: libvirt-dbus-1.4.0/data/system/meson.build
+===================================================================
+--- libvirt-dbus-1.4.0.orig/data/system/meson.build
++++ libvirt-dbus-1.4.0/data/system/meson.build
 @@ -1,6 +1,18 @@
 +if init_script == 'systemd'
 +    configure_file(
@@ -112,22 +109,21 @@ index 74f1949..a75cabb 100644
      output: 'org.libvirt.service',
      install_dir: dbus_system_services_dir,
  )
-diff --git a/data/system/org.libvirt-systemd.service.in b/data/system/org.libvirt-systemd.service.in
-new file mode 100644
-index 0000000..ba260b2
+Index: libvirt-dbus-1.4.0/data/system/org.libvirt-systemd.service.in
+===================================================================
 --- /dev/null
-+++ b/data/system/org.libvirt-systemd.service.in
++++ libvirt-dbus-1.4.0/data/system/org.libvirt-systemd.service.in
 @@ -0,0 +1,5 @@
 +[D-BUS Service]
 +Name=org.libvirt
 +Exec=/bin/false
 +User=@SYSTEM_USER@
 +SystemdService=libvirt-dbus.service
-diff --git a/libvirt-dbus.spec.in b/libvirt-dbus.spec.in
-index 4e6ff85..a35e0f9 100644
---- a/libvirt-dbus.spec.in
-+++ b/libvirt-dbus.spec.in
-@@ -40,7 +40,8 @@ This package provides D-Bus API for libvirt
+Index: libvirt-dbus-1.4.0/libvirt-dbus.spec.in
+===================================================================
+--- libvirt-dbus-1.4.0.orig/libvirt-dbus.spec.in
++++ libvirt-dbus-1.4.0/libvirt-dbus.spec.in
+@@ -40,7 +40,8 @@ This package provides D-Bus API for libv
  %autosetup
  
  %build
@@ -146,10 +142,10 @@ index 4e6ff85..a35e0f9 100644
  %{_datadir}/dbus-1/services/org.libvirt.service
  %{_datadir}/dbus-1/system-services/org.libvirt.service
  %{_datadir}/dbus-1/system.d/org.libvirt.conf
-diff --git a/meson.build b/meson.build
-index e765ed6..939b716 100644
---- a/meson.build
-+++ b/meson.build
+Index: libvirt-dbus-1.4.0/meson.build
+===================================================================
+--- libvirt-dbus-1.4.0.orig/meson.build
++++ libvirt-dbus-1.4.0/meson.build
 @@ -12,6 +12,20 @@ project(
  prefix = get_option('prefix')
  datadir = prefix / get_option('datadir')
@@ -171,15 +167,12 @@ index e765ed6..939b716 100644
  
  opt_dirs = [
      'dbus_interfaces',
-diff --git a/meson_options.txt b/meson_options.txt
-index 36e8065..41d348f 100644
---- a/meson_options.txt
-+++ b/meson_options.txt
-@@ -4,3 +4,4 @@ option('dbus_system_policies', type: 'string', value: 'dbus-1/system.d', descrip
+Index: libvirt-dbus-1.4.0/meson_options.txt
+===================================================================
+--- libvirt-dbus-1.4.0.orig/meson_options.txt
++++ libvirt-dbus-1.4.0/meson_options.txt
+@@ -4,3 +4,4 @@ option('dbus_system_policies', type: 'st
  option('dbus_interfaces', type: 'string', value: 'dbus-1/interfaces', description: 'D-Bus interfaces directory')
  option('polkit_rules', type: 'string', value: 'polkit-1/rules.d', description: 'polkit rules directory')
  option('system_user', type: 'string', value: 'libvirtdbus', description: 'username to run system instance as')
 +option('init_script', type: 'combo', choices: ['systemd', 'other', 'check'], value: 'check', description: 'Style of init script to install')
--- 
-2.26.2
-
