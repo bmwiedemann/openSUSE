@@ -21,14 +21,14 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           firewalld
-Version:        0.9.1
+Version:        0.9.0
 Release:        0
 Summary:        A firewall daemon with D-Bus interface providing a dynamic firewall
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
 Url:            http://www.firewalld.org
-Source0:        https://github.com/firewalld/firewalld/releases/download/v%{version}/firewalld-%{version}.tar.gz
-Source1:        docker-zone.xml
+Source:         https://github.com/firewalld/firewalld/releases/download/v%{version}/firewalld-%{version}.tar.gz
+Patch0:         0001-firewall-backend-Switch-default-backend-to-iptables.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -150,10 +150,6 @@ desktop-file-install --delete-original \
 rm %{buildroot}%{_sysconfdir}/sysconfig/firewalld
 
 ln -sf %{_sbindir}/service %{buildroot}/%{_sbindir}/rcfirewalld
-
-# add firewalld zone (rhbz#1817022)
-install -dp %{buildroot}%{_prefix}/lib/firewalld/zones
-install -p -m 644 %{SOURCE1} %{buildroot}%{_prefix}/lib/firewalld/zones/docker.xml
 
 %fdupes %{buildroot}%{python3_sitelib}
 

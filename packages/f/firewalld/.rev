@@ -1019,4 +1019,11 @@ This is a bug fix only release.
     * fix(policy): zone interface/source changes should affect all using zone (forwarded request 847325 from mrostecki)</comment>
     <requestid>847328</requestid>
   </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>ea919b377ed0678ed5e2b224e29021e0</srcmd5>
+    <version>0.9.0</version>
+    <time>1605374572</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1178801</comment>
+  </revision>
 </revisionlist>

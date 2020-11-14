@@ -1,20 +1,4 @@
 -------------------------------------------------------------------
-Mon Nov  9 09:15:55 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
-
-- Remove the patch which enforces usage of iptables instead of
-  nftables:
-  * 0001-firewall-backend-Switch-default-backend-to-iptables.patch
-- Add firewalld zone for the docker0 interface. This is the
-  workaround for lack of nftables support in docker. Without that
-  additional zone, containers have no Internet connectivity.
-  (rhbz#1817022)
-- Update to 0.9.1:
-  * Bugfixes:
-    * docs(firewall-cmd): clarify lockdown whitelist command paths
-    * fix(dbus): getActivePolicies shouldn't return a policy if a zone is not active
-    * fix(policy): zone interface/source changes should affect all using zone
-
--------------------------------------------------------------------
 Fri Sep 11 18:05:42 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Make use of %service_del_postun_without_restart

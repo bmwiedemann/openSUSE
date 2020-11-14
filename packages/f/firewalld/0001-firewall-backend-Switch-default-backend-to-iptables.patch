@@ -1,0 +1,45 @@
+Index: firewalld-0.8.3/config/firewalld.conf
+===================================================================
+--- firewalld-0.8.3.orig/config/firewalld.conf
++++ firewalld-0.8.3/config/firewalld.conf
+@@ -43,9 +43,9 @@ LogDenied=off
+ # FirewallBackend
+ # Selects the firewall backend implementation.
+ # Choices are:
+-#	- nftables (default)
+-#	- iptables (iptables, ip6tables, ebtables and ipset)
+-FirewallBackend=nftables
++#	- nftables
++#	- iptables (iptables, ip6tables, ebtables and ipset) (default)
++FirewallBackend=iptables
+ 
+ # FlushAllOnReload
+ # Flush all runtime rules on a reload. In previous releases some runtime
+Index: firewalld-0.8.3/doc/xml/firewalld.conf.xml
+===================================================================
+--- firewalld-0.8.3.orig/doc/xml/firewalld.conf.xml
++++ firewalld-0.8.3/doc/xml/firewalld.conf.xml
+@@ -149,8 +149,8 @@
+             <listitem>
+                 <para>
+                 Selects the firewall backend implementation. Possible values
+-                are; <replaceable>nftables</replaceable> (default), or
+-                <replaceable>iptables</replaceable>. This applies to all
++                are; <replaceable>nftables</replaceable>, or
++                <replaceable>iptables</replaceable> (default). This applies to all
+                 firewalld primitives. The only exception is direct and
+                 passthrough rules which always use the traditional iptables,
+                 ip6tables, and ebtables backends.
+Index: firewalld-0.8.3/src/firewall/config/__init__.py.in
+===================================================================
+--- firewalld-0.8.3.orig/src/firewall/config/__init__.py.in
++++ firewalld-0.8.3/src/firewall/config/__init__.py.in
+@@ -127,7 +127,7 @@ FALLBACK_IPV6_RPFILTER = True
+ FALLBACK_INDIVIDUAL_CALLS = False
+ FALLBACK_LOG_DENIED = "off"
+ FALLBACK_AUTOMATIC_HELPERS = "no"
+-FALLBACK_FIREWALL_BACKEND = "nftables"
++FALLBACK_FIREWALL_BACKEND = "iptables"
+ FALLBACK_FLUSH_ALL_ON_RELOAD = True
+ FALLBACK_RFC3964_IPV4 = True
+ FALLBACK_ALLOW_ZONE_DRIFTING = False
