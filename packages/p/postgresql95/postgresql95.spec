@@ -16,7 +16,7 @@
 #
 
 
-%define pgversion 9.5.23
+%define pgversion 9.5.24
 %define pgmajor 9.5
 %define pgsuffix 95
 %define buildlibs 0
@@ -621,20 +621,23 @@ genlists main \
 	vacuumdb \
 	reindexdb \
 	pg_basebackup \
-%if %pgsuffix < 90
-	pg_receivewal \
-%else
+	pg_isready \
+	pg_recvlogical \
+%if %pgsuffix >= 90
 	createlang \
 	droplang \
 	pg_receivexlog \
-%endif
-	pg_isready \
-	pg_recvlogical \
+%else
+	pg_receivewal \
 %if %pgsuffix == 11
 	pg_verify_checksums \
 %endif
-%if %pgsuffix == 12
-	pg_checksums
+%if %pgsuffix >= 12
+	pg_checksums \
+%endif
+%if %pgsuffix >= 13
+	pg_verifybackup
+%endif
 %endif
 
 %find_lang plpgsql-$VLANG main.files
@@ -873,6 +876,7 @@ fi
 
 %if %{with llvm}
 %files llvmjit
+%defattr(-,root,root)
 %pglibdir/llvm*
 %pglibdir/bitcode/*
 %endif

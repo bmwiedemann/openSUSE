@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Nov 11 12:16:49 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Upgrade to version 9.5.24:
+  * CVE-2020-25695, bsc#1178666: Block DECLARE CURSOR ... WITH HOLD
+    and firing of deferred triggers within index expressions and
+    materialized view queries.
+  * CVE-2020-25694, bsc#1178667:
+    a) Fix usage of complex connection-string parameters in pg_dump,
+    pg_restore, clusterdb, reindexdb, and vacuumdb.
+    b) When psql's \connect command re-uses connection parameters,
+    ensure that all non-overridden parameters from a previous
+    connection string are re-used.
+  * CVE-2020-25696, bsc#1178668: Prevent psql's \gset command from
+    modifying specially-treated variables.
+  * Fix recently-added timetz test case so it works when the USA
+    is not observing daylight savings time.
+    (obsoletes postgresql-timetz.patch)
+  * https://www.postgresql.org/about/news/2111/
+  * https://www.postgresql.org/docs/9.5/release-9-5-24.html
+
+-------------------------------------------------------------------
 Thu Aug 13 14:36:17 UTC 2020 - Reinhard Max <max@suse.com>
 
 - update to 9.5.23:
