@@ -19,6 +19,7 @@
 # can't use linebreaks here!
 %define openqa_services openqa-webui.service openqa-gru.service openqa-websockets.service openqa-scheduler.service openqa-enqueue-audit-event-cleanup.service openqa-enqueue-audit-event-cleanup.timer openqa-enqueue-asset-cleanup.service openqa-enqueue-asset-cleanup.timer openqa-enqueue-result-cleanup.service openqa-enqueue-result-cleanup.timer openqa-enqueue-bug-cleanup.service openqa-enqueue-bug-cleanup.timer
 %define openqa_worker_services openqa-worker.target openqa-slirpvde.service openqa-vde_switch.service openqa-worker-cacheservice.service openqa-worker-cacheservice-minion.service
+%define openqa_auto_upgrade_services openqa-auto-upgrade.service openqa-auto-upgrade.timer
 %if %{undefined tmpfiles_create}
 %define tmpfiles_create() \
 %{_bindir}/systemd-tmpfiles --create %{?*} || : \
@@ -56,7 +57,7 @@
 # The following line is generated from dependencies.yaml
 %define client_requires curl git-core jq perl(Getopt::Long::Descriptive) perl(IO::Socket::SSL) >= 2.009 perl(IPC::Run) perl(JSON::Validator) perl(LWP::Protocol::https) perl(LWP::UserAgent) perl(Test::More) perl(YAML::PP) >= 0.020 perl(YAML::XS)
 # The following line is generated from dependencies.yaml
-%define worker_requires openQA-client optipng os-autoinst < 5 perl(Minion::Backend::SQLite) >= 5.0.1 perl(Mojo::IOLoop::ReadWriteProcess) >= 0.26 perl(Mojo::SQLite)
+%define worker_requires openQA-client optipng os-autoinst < 5 perl(Minion::Backend::SQLite) >= 5.0.1 perl(Mojo::IOLoop::ReadWriteProcess) >= 0.26 perl(Mojo::SQLite) sqlite3 >= 3.24.0
 # The following line is generated from dependencies.yaml
 %define build_requires %assetpack_requires rubygem(sass)
 
@@ -76,7 +77,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        4.6.1605128979.b3fd45d8c
+Version:        4.6.1605294814.ed6415c5a
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -87,8 +88,10 @@ Source0:        %{name}-%{version}.tar.xz
 # use update-cache to update it
 Source1:        cache.txz
 Source101:      update-cache.sh
-BuildRequires:  %{build_requires}
 BuildRequires:  fdupes
+# for install-opensuse in Makefile
+BuildRequires:  %{build_requires}
+BuildRequires:  openSUSE-release
 Requires:       %{main_requires}
 Requires:       openQA-client = %{version}
 Requires:       openQA-common = %{version}
@@ -237,6 +240,16 @@ Group:          Development/Tools/Other
 Documentation material covering installation, configuration, basic test writing, etc.
 Covering both openQA and also os-autoinst test engine.
 
+%package auto-upgrade
+Summary:        Automatically upgrade and reboot the system when required
+Group:          Development/Tools/Other
+Requires:       curl
+Requires:       rebootmgr
+
+%description auto-upgrade
+Use this package to install and enable a systemd service for nightly upgrading
+and rebooting the system if devel:openQA packages are stable.
+
 %prep
 %setup -q -a1
 sed -e 's,/bin/env python,/bin/python,' -i script/openqa-label-all
@@ -352,6 +365,9 @@ fi
 
 %service_add_pre %{openqa_worker_services}
 
+%pre auto-upgrade
+%service_add_pre %{openqa_auto_upgrade_services}
+
 %post
 %tmpfiles_create %{_tmpfilesdir}/openqa-webui.conf
 # install empty log file
@@ -382,11 +398,17 @@ fi
 %tmpfiles_create %{_tmpfilesdir}/openqa.conf
 %service_add_post %{openqa_worker_services}
 
+%post auto-upgrade
+%service_add_post %{openqa_auto_upgrade_services}
+
 %preun
 %service_del_preun %{openqa_services}
 
 %preun worker
 %service_del_preun %{openqa_worker_services}
+
+%preun auto-upgrade
+%service_del_preun %{openqa_auto_upgrade_services}
 
 %postun
 %service_del_postun %{openqa_services}
@@ -394,6 +416,9 @@ fi
 
 %postun worker
 %service_del_postun %{openqa_worker_services}
+
+%postun auto-upgrade
+%service_del_postun %{openqa_auto_upgrade_services}
 
 %post local-db
 %service_add_post openqa-setup-db.service
@@ -495,7 +520,6 @@ fi
 %dir %{_localstatedir}/lib/openqa/share/factory/hdd
 %dir %{_localstatedir}/lib/openqa/share/factory/repo
 %dir %{_localstatedir}/lib/openqa/share/factory/other
-%ghost %{_localstatedir}/lib/openqa/db/db.sqlite
 %ghost %{_localstatedir}/log/openqa
 
 %files devel
@@ -601,5 +625,10 @@ fi
 %files bootstrap
 %{_datadir}/openqa/script/openqa-bootstrap
 %{_datadir}/openqa/script/openqa-bootstrap-container
+
+%files auto-upgrade
+%dir %{_unitdir}
+%{_unitdir}/openqa-auto-upgrade.*
+%{_datadir}/openqa/script/openqa-auto-upgrade
 
 %changelog

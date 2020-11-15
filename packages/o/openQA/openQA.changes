@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Nov 14 08:16:31 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1605294814.ed6415c5a:
+  * Show parent group name and id when getting job details
+  * coverage: unconditional finished_handled timeout
+  * Make message about clone error unique
+  * Dependency cron 2020-11-13
+  * t: Bump timeout of 44-scripts.t after we test more scripts
+  * Only install openSUSE specific files on openSUSE
+  * docs: Add documentation for auto-upgrade systemd timer
+  * docs: Order authentication sections in summary same as in text
+  * docs: Fix level of authentication subsections
+  * Add systemd timer for automatic system upgrades and reboots
+  * Makefile: Simplify systemd service setup
+  * Consider finalize jobs successful if the openQA job does not exist
+  * cache service: Avoid purging assets which are currently being downloaded
+  * docker: Simplify 'gzip ... | grep' to 'zgrep'
+  * Adapt codecov target to current coverage of 95%
+  * Delete old left-over db.sqlite file
+  * .gitignore: Delete obsolete full-stack.d entry
+
+-------------------------------------------------------------------
 Thu Nov 12 00:00:06 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1605128979.b3fd45d8c:
