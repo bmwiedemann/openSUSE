@@ -1,7 +1,7 @@
 #
 # spec file for package libpcap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        A Library for Network Sniffers
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            https://www.tcpdump.org/
+URL:            https://www.tcpdump.org/
 Source:         https://www.tcpdump.org/release/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
 Source3:        https://www.tcpdump.org/tcpdump-workers.asc#/%{name}.keyring
