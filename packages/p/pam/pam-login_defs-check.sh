@@ -9,10 +9,10 @@ set -o errexit
 
 echo -n "Checking login.defs variables in pam... " >&2
 grep -rh LOGIN_DEFS . |
-	sed -n 's/^.*search_key *("\([A-Z0-9_]*\)", *LOGIN_DEFS).*$/\1/p' |
+	sed -n 's/^.*search_key *([A-Za-z_]*, *[A-Z_]*LOGIN_DEFS, *"\([A-Z0-9_]*\)").*$/\1/p' |
 	LC_ALL=C sort -u >pam-login_defs-vars.lst
 
-if test $(sha1sum pam-login_defs-vars.lst | sed 's/ .*$//') != da39a3ee5e6b4b0d3255bfef95601890afd80709 ; then
+if test $(sha1sum pam-login_defs-vars.lst | sed 's/ .*$//') != 3c6e0020c31609690b69ef391654df930b74151d ; then
 
 	echo "does not match!" >&2
 	echo "Checksum is: $(sha1sum pam-login_defs-vars.lst | sed 's/ .*$//')" >&2

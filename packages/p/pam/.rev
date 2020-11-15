@@ -848,4 +848,28 @@
     <user>dimstar_suse</user>
     <comment>Revert: https://bugzilla.opensuse.org/show_bug.cgi?id=1177858</comment>
   </revision>
+  <revision rev="105" vrev="4">
+    <srcmd5>c0fd8075f7707219a1b2bebdefbf6afa</srcmd5>
+    <version>1.4.0</version>
+    <time>1605449824</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable pam_faillock [bnc#1171562]
+
+- /usr/bin/xauth chokes on the old user's $HOME being on an NFS
+  file system. Run /usr/bin/xauth using the old user's uid/gid
+  Patch courtesy of Dr. Werner Fink.
+  [bsc#1174593, pam-xauth_ownership.patch]
+
+- pam-login_defs-check.sh: Fix the regexp to get a real variable
+  list (boo#1164274).
+
+- Revert the previous change [SR#815713].
+  The group is not necessary for PAM functionality but used only
+  during testing. The test system should therefore create this group.
+  [bsc#1171016, pam.spec]
+
+- Add requirement for group &quot;wheel&quot; to spec file.
+  [bsc#1171016, pam.spec]</comment>
+    <requestid>847481</requestid>
+  </revision>
 </revisionlist>
