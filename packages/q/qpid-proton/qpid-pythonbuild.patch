@@ -1,0 +1,26 @@
+Index: qpid-proton-0.31.0/python/CMakeLists.txt
+===================================================================
+--- qpid-proton-0.31.0.orig/python/CMakeLists.txt
++++ qpid-proton-0.31.0/python/CMakeLists.txt
+@@ -115,8 +115,9 @@ macro (py_compile directory files artifa
+   endforeach (src_file)
+ endmacro(py_compile)
+ 
+-py_compile(${CMAKE_CURRENT_BINARY_DIR} ${pysrc-generated} CPROTON_ARTIFACTS)
+-py_compile(${CMAKE_CURRENT_SOURCE_DIR} "${pysrc}" PROTON_ARTIFACTS)
++#Let setuptools do the compiling
++#py_compile(${CMAKE_CURRENT_BINARY_DIR} ${pysrc-generated} CPROTON_ARTIFACTS)
++#py_compile(${CMAKE_CURRENT_SOURCE_DIR} "${pysrc}" PROTON_ARTIFACTS)
+ 
+ # Sphinx documentation
+ check_python_module("sphinx" SPHINX_MODULE_FOUND)
+@@ -206,7 +207,8 @@ endforeach()
+ 
+ # Make python source and binary packages if we have prerequisistes
+ check_python_module("setuptools" SETUPTOOLS_MODULE_FOUND)
+-check_python_module("wheel" WHEEL_MODULE_FOUND)
++#check_python_module("wheel" WHEEL_MODULE_FOUND)
++set(WHEEL_MODULE_FOUND FALSE)
+ if (SETUPTOOLS_MODULE_FOUND)
+   add_custom_target(py_pkg_src ALL
+                      WORKING_DIRECTORY dist

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov  6 11:28:17 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Add qpid-proton-rpmlintrc to filter devel file warning in test
+- qpid-pythonbuild.patch do not compile during cmake phase with
+  wrong interpreter. Expanded python setup.py install will do it
+  for the correct flavors. Avoids packaging python2 cache files
+  into python3 flavors
+- Prepare python singlespec mutltiflavor feature for upcoming 
+  multiple python3 flavors -- gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Thu Jun  4 09:34:36 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim bias/conjecture from description. Fixup RPM groups.

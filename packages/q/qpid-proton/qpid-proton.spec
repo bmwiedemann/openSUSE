@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define oldpython python
 %global         qpid_proton_soversion 10
 %global         qpid_proton_cpp_soversion 12
 %global         qpid_proton_proactor_soversion 1
@@ -32,7 +33,11 @@ License:        Apache-2.0
 Group:          Productivity/Networking/Other
 URL:            https://qpid.apache.org/proton/
 Source0:        http://www.apache.org/dist/qpid/proton/%{version}/%{name}-%{version}.tar.gz
+# devel files in test package
+Source99:       qpid-proton-rpmlintrc
 Patch0:         qpid-proton-openssl-3.0.0.patch
+# PATCH-FIX-OPENSUSE qpid-oythonbuild.patch -- disable compiling with wrong interpreter
+Patch1:         qpid-pythonbuild.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module xml}
@@ -45,6 +50,13 @@ BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  swig >= 2.0.9
+%if 0%{?python38_version_nodots}
+# if python multiflavor is in place yet, use it to generate subpackages
+%define python_subpackage_only 1
+%python_subpackages
+%else
+%define python_files() -n %python_prefix-%{**}
+%endif
 
 %description
 Proton is a messaging library. It can be used in brokers, client
@@ -112,14 +124,13 @@ Proton is a messaging library.
 
 This subpackage contains the documentation.
 
-%if 0%{?have_python2}
+# TODO: Remove the python2 shim as soon as the rpm-macros support python_subpackage_only.
+%if 0%{?have_python2} && ! 0%{?python_subpackage_only}
 %package -n python2-python-qpid-proton
 Summary:        Python language bindings for the Qpid Proton messaging framework
 Group:          Development/Libraries/Python
 Requires:       libqpid-proton%{qpid_proton_soversion} = %{version}-%{release}
 Requires:       python = %{python2_version}
-# NOTE: the name on pypi for the package is python-qpid-proton so the name
-# for the RPM package should be python-python-qpid-proton (python-$pypi_name)
 Provides:       python-qpid-proton = %{version}
 Obsoletes:      python-qpid-proton < %{version}
 # as long as python2 is the default, provide also the non-versioned python pkg
@@ -131,17 +142,22 @@ libraries, routers, bridges and proxies. Proton is based on the AMQP
 1.0 messaging standard.
 %endif
 
-%package -n python3-python-qpid-proton
+%package -n %{python_flavor}-python-qpid-proton
 Summary:        Python language bindings for the Qpid Proton messaging framework
 Group:          Development/Libraries/Python
 Requires:       libqpid-proton%{qpid_proton_soversion} = %{version}-%{release}
-Requires:       python = %{python3_version}
+Requires:       python = %{python_version}
 # NOTE: the name on pypi for the package is python-qpid-proton so the name
-# for the RPM package should be python-python-qpid-proton (python-$pypi_name)
+# for the RPM package should be <flavor>-python-qpid-proton (pythonXY-$pypi_name)
+%if "%{python_flavor}" == "python2"
+Provides:       %{oldpython}-qpid-proton = %{version}
+Obsoletes:      %{oldpython}-qpid-proton < %{version}
+%else
 Provides:       python3-qpid-proton = %{version}
 Obsoletes:      python3-qpid-proton < %{version}
+%endif
 
-%description -n python3-python-qpid-proton
+%description -n %{python_flavor}-python-qpid-proton
 Proton is a messaging library. It can be used in brokers, client
 libraries, routers, bridges and proxies. Proton is based on the AMQP
 1.0 messaging standard.
@@ -159,16 +175,20 @@ libraries, routers, bridges and proxies. Proton is based on the AMQP
     -DCHECK_SYSINSTALL_PYTHON=0
 
 %make_build all docs
-# build for python2 and python3
-(cd python/dist; %python_build)
+# build from the created sdist for all enabled python flavors
+pushd python/dist
+# Note: never python_expand in the root source tree. It removes the build/ directory
+%python_build
+popd
 
 %install
 %cmake_install
 
-(cd build/python/dist; %python_install)
-rm -rf %{buildroot}%{python3_sitearch}/__pycache__
+pushd build/python/dist
+%python_install
+%python_expand chmod +x %{buildroot}%{$python_sitearch}/*_cproton*.so
+popd
 
-chmod +x %{buildroot}%{python_sitearch}/*_cproton.so
 find %{buildroot}%{_datadir}/proton/examples/ -type f | xargs chmod -x
 
 mkdir -p %{buildroot}%{_docdir}/%{name}
@@ -225,18 +245,20 @@ mv %{buildroot}%{_datadir}/proton/docs/* %{buildroot}%{_docdir}/%{name}/
 %{_docdir}/%{name}/api-c
 %{_docdir}/%{name}/api-cpp
 
-%if 0%{?have_python2}
+# only for non-multiple-flavor. TODO: Remove as soon as python_subpackage_only is supported
+%if 0%{?have_python2} && ! 0%{?python_subpackage_only}
 %files -n python2-python-qpid-proton
-%{python2_sitearch}/*_cproton.so
+%{python2_sitearch}/*_cproton*.so
 %{python2_sitearch}/cproton.*
 %{python2_sitearch}/proton
-%{python2_sitearch}/python_qpid_proton-%{version}-py*.egg-info
+%{python2_sitearch}/python_qpid_proton-%{version}*-info
 %endif
 
-%files -n python3-python-qpid-proton
-%{python3_sitearch}/*_cproton*.so
-%{python3_sitearch}/cproton.*
-%{python3_sitearch}/proton
-%{python3_sitearch}/python_qpid_proton-%{version}-py*.egg-info
+%files %{python_files python-qpid-proton}
+%{python_sitearch}/*_cproton*.so
+%{python_sitearch}/cproton.py*
+%pycache_only %{python_sitearch}/__pycache__/cproton*
+%{python_sitearch}/proton
+%{python_sitearch}/python_qpid_proton-%{version}*-info
 
 %changelog
