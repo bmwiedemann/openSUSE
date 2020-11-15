@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov 13 15:17:44 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 15.0.15:
+  * Only create directories that do not yet exist
+  * filelelist can try to access source_dir independently
+
+-------------------------------------------------------------------
+Wed Nov 11 17:59:12 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 15.0.14:
+  * Ensure to touch $RPM_BUILD_ROOT only in the various install phases
+  * Add support for riscv64
+
+-------------------------------------------------------------------
 Fri May 29 19:13:55 UTC 2020 - jkowalczyk@suse.com
 
 - Update to version 15.0.13:

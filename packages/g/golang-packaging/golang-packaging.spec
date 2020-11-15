@@ -17,7 +17,7 @@
 
 
 Name:           golang-packaging
-Version:        15.0.13
+Version:        15.0.15
 Release:        0
 Summary:        A toolchain to help packaging golang
 License:        GPL-3.0-only
