@@ -104,4 +104,40 @@
   * [go1.15] build: Use go-runner:buster-v2.0.1 (built using go1.15.1)</comment>
     <requestid>841982</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>30fcab1ecc84a63a8b6811f2a7798cf2</srcmd5>
+    <version>1.19.4</version>
+    <time>1605450216</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.19.4:
+  * Do not skip externalLB update if some nodes are not found.
+  * Honor disabled LocalStorageCapacityIsolation in scheduling
+  * Disable watchcache for events
+  * Fix seccomp PSP docker/default annotation handling
+  * Re-add the event recorder in the release test
+  * Don't clear the cached resourcelock when errors occurs on updates
+  * Add failing test showing release is not working properly
+  * Add lease release tests in leader election
+  * Generate complete leader election record to resolve leader election issues with LeaseLocks
+  * Fix a bug that Pods with topologySpreadConstraints get scheduled to nodes without required labels
+  * If we set SelectPolicy MinPolicySelect on scaleUp behavior or scaleDown behavior,Horizontal Pod Autoscaler doesn`t automatically scale the number of pods correctly
+  * fix: add missing patch flag for kubeadm init phase control-plane
+  * Update the PIP when it is not in the Succeeded provisioning state during the LB update.
+  * Do not assume storageclass is still in-tree after csi migration
+  * Fix `kubectl describe ingress` format
+  * Fixes high CPU usage in kubectl drain
+  * Ignore deleted pods.
+  * Automated cherry pick of #94781: Don't attempt to detach an FC device if we don't know its name
+  * add a local tlsTransportCache to available_controller
+  * don't cache transports for incomparable configs
+  * Fix fcpath
+  * Update CHANGELOG/CHANGELOG-1.19.md for v1.19.3
+  * fix upgrade test
+  * fix azure disk data loss issue on Windows
+  * fix azure disk attach failure for disk size bigger than 4TB
+  * cloud node controller: handle empty providerID from getProviderID
+  * Updating kube-proxy to trim space from loadBalancerSourceRanges
+  * Don't create a new sandbox for pod with RestartPolicyOnFailure if all containers succeeded</comment>
+    <requestid>848395</requestid>
+  </revision>
 </revisionlist>
