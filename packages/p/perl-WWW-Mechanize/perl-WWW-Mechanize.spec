@@ -17,7 +17,7 @@
 
 
 Name:           perl-WWW-Mechanize
-Version:        2.02
+Version:        2.03
 Release:        0
 %define cpan_name WWW-Mechanize
 Summary:        Handy web browsing in a Perl object
