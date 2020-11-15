@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov 11 11:08:07 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.3
+- Changes since 5.20.2:
+  * Fix missing "Switch User" button on lockscreen with systemd 246 (kde#427777)
+  * [applets/devicenotifier] Fix regression with expand (kde#428379)
+  * Fix edge case for tilde and ENV command
+  * [lookandfeel] Fix switching to a different user session
+  * [libkworkspace] Fix if getCurrentSeat needs to fallback to old approach (kde#423526)
+  * Fix SystemEntries not updating correctly (kde#427779)
+  * [applets/icon] Handle non-Applications URLs again (kde#427797)
+  * [System Tray] Fall back to tool tip title if no title is set
+
+-------------------------------------------------------------------
 Tue Oct 27 22:23:24 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.2
