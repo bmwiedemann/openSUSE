@@ -162,8 +162,10 @@ BuildRequires:  pkgconfig(libtirpc)
 # Here we just run sphinx and we can use generic one, we don't need
 # the flavor variant
 BuildRequires:  python3-Sphinx < 3.0
+%if 0%{?suse_version} > 1500
 BuildRequires:  python3-python-docs-theme
 BuildRequires:  python3-sphinxcontrib-qthelp >= 1.0.2
+%endif
 %endif
 %if %{with general}
 # required for idle3 (.desktop and .appdata.xml files)

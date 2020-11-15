@@ -99,4 +99,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>842480</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>18aa4a8fb8ab7305af0236f55971c332</srcmd5>
+    <version>3.9.0</version>
+    <time>1605450366</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't require packages which break build on SLE-15 although we really
+  don't need them (python3-python-docs-theme and
+  python3-sphinxcontrib-qthelp).
+</comment>
+    <requestid>848385</requestid>
+  </revision>
 </revisionlist>
