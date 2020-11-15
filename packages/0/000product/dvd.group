@@ -4390,6 +4390,7 @@
     <package name="kdevplatform-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="kdialog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kdialog-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kernel-default-base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="kernel-docs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="kf5-kcm-fcitx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kf5-kcm-fcitx-icons" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
