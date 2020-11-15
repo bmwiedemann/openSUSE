@@ -19,7 +19,7 @@
 %define sover   0
 %define sover_ctl 4
 Name:           lttng-ust
-Version:        2.11.0
+Version:        2.12.0
 Release:        0
 Summary:        Linux Trace Toolkit Userspace Tracer library
 License:        GPL-2.0-only
@@ -28,8 +28,6 @@ URL:            https://lttng.org/
 Source:         https://lttng.org/files/lttng-ust/lttng-ust-%{version}.tar.bz2
 Source1:        https://lttng.org/files/lttng-ust/lttng-ust-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
-# PATCH-FIX-UPSTREAM lttng-ust-2.11.0-fix-no-common.patch boo#1160400 mjeanson@gmail.com -- Fix build with -fno-common (commit 21a934df).
-Patch0:         %{name}-2.11.0-fix-no-common.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libnuma-devel
 BuildRequires:  liburcu-devel

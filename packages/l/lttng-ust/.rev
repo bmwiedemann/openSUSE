@@ -61,4 +61,12 @@
     <comment>- Update to version 2.11.0.</comment>
     <requestid>780207</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>411cbebad2b472129a4f6ed9dbb2816a</srcmd5>
+    <version>2.12.0</version>
+    <time>1605450063</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>847359</requestid>
+  </revision>
 </revisionlist>
