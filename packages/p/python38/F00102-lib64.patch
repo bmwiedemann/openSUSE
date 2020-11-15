@@ -130,7 +130,7 @@ Co-authored-by: Iryna Shcherbina <shcherbina.iryna@gmail.com>
          'data': '{userbase}',
 --- a/Lib/test/test_site.py
 +++ b/Lib/test/test_site.py
-@@ -266,8 +266,8 @@ class HelperFunctionsTests(unittest.Test
+@@ -267,8 +267,8 @@ class HelperFunctionsTests(unittest.Test
          dirs = site.getsitepackages()
          if os.sep == '/':
              # OS X, Linux, FreeBSD, etc
@@ -183,7 +183,7 @@ Co-authored-by: Iryna Shcherbina <shcherbina.iryna@gmail.com>
      }
 --- a/configure
 +++ b/configure
-@@ -15188,9 +15188,9 @@ fi
+@@ -15214,9 +15214,9 @@ fi
  
  
  if test x$PLATFORM_TRIPLET = x; then
@@ -197,7 +197,7 @@ Co-authored-by: Iryna Shcherbina <shcherbina.iryna@gmail.com>
  
 --- a/configure.ac
 +++ b/configure.ac
-@@ -4674,9 +4674,9 @@ fi
+@@ -4689,9 +4689,9 @@ fi
  dnl define LIBPL after ABIFLAGS and LDVERSION is defined.
  AC_SUBST(PY_ENABLE_SHARED)
  if test x$PLATFORM_TRIPLET = x; then

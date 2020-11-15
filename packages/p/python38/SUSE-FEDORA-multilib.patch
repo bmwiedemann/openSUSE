@@ -1,6 +1,6 @@
 --- a/configure.ac
 +++ b/configure.ac
-@@ -4671,12 +4671,26 @@ else
+@@ -4686,12 +4686,26 @@ else
    LIBPYTHON=''
  fi
  
@@ -267,7 +267,7 @@
              addsitedir(sitedir, known_paths)
 --- a/Lib/test/test_site.py
 +++ b/Lib/test/test_site.py
-@@ -266,8 +266,11 @@ class HelperFunctionsTests(unittest.Test
+@@ -267,8 +267,11 @@ class HelperFunctionsTests(unittest.Test
          dirs = site.getsitepackages()
          if os.sep == '/':
              # OS X, Linux, FreeBSD, etc
@@ -314,7 +314,7 @@
          # just making sure _main() runs and returns things in the stdout
 --- a/configure
 +++ b/configure
-@@ -15188,9 +15188,9 @@ fi
+@@ -15214,9 +15214,9 @@ fi
  
  
  if test x$PLATFORM_TRIPLET = x; then
@@ -361,7 +361,7 @@
  import tempfile
  import textwrap
  
-@@ -1070,12 +1071,13 @@ class InitConfigTests(EmbeddingTestsMixi
+@@ -1072,12 +1073,13 @@ class InitConfigTests(EmbeddingTestsMixi
              return config['config']['module_search_paths']
          else:
              ver = sys.version_info
@@ -377,7 +377,7 @@
                               f'python{ver.major}.{ver.minor}', 'lib-dynload'),
              ]
  
-@@ -1180,13 +1182,15 @@ class InitConfigTests(EmbeddingTestsMixi
+@@ -1188,13 +1190,15 @@ class InitConfigTests(EmbeddingTestsMixi
      def test_init_pyvenv_cfg(self):
          # Test path configuration with pyvenv.cfg configuration file
  

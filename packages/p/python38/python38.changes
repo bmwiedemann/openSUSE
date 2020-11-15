@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov  9 10:51:30 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.6, which contains various bug fixes including security
+  fix of included pip and setuptools (bpo#41490, bsc#1176262,
+  CVE-2019-20916). Full list of changes is available at
+  https://docs.python.org/release/3.8.6/whatsnew/changelog.html#python-3-8-6
+- Revert previous patch, and readd bpo-31046_ensurepip_honours_prefix.patch.
+
+-------------------------------------------------------------------
+Fri Oct 30 17:49:32 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Replace ensurepip with simple script instructing to install
+  packaged pip (bsc#1176262).
+- Remove bpo-31046_ensurepip_honours_prefix.patch, which is not
+  necessary anymore.
+
+-------------------------------------------------------------------
 Fri Oct  9 16:05:50 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.16: error: bare words are no longer

@@ -70,7 +70,7 @@ subsequent commits.
  class EncodingTest(unittest.TestCase):
      """Issue 6716: compileall should escape source code when printing errors
      to stdout."""
-@@ -579,6 +594,21 @@ class CommandLineTestsBase:
+@@ -620,6 +635,21 @@ class CommandLineTestsBase:
  
  
  class CommmandLineTestsWithSourceEpoch(CommandLineTestsBase,
@@ -124,8 +124,8 @@ subsequent commits.
  
 --- a/Lib/test/test_py_compile.py
 +++ b/Lib/test/test_py_compile.py
-@@ -216,5 +216,19 @@ class PyCompileTestsWithoutSourceEpoch(P
-     pass
+@@ -272,5 +272,19 @@ class PyCompileCLITestCase(unittest.Test
+         self.assertIn(b'No such file or directory', stderr)
  
  
 +class PyCompileTestsWithSourceEpoch(PyCompileTestsBase,

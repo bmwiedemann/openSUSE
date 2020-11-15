@@ -1,6 +1,6 @@
 --- a/Lib/test/test_subprocess.py
 +++ b/Lib/test/test_subprocess.py
-@@ -1124,7 +1124,8 @@ class ProcessTestCase(BaseTestCase):
+@@ -1125,7 +1125,8 @@ class ProcessTestCase(BaseTestCase):
          self.assertIn("0.0001", str(c.exception))  # For coverage of __str__.
          # Some heavily loaded buildbots (sparc Debian 3.x) require this much
          # time to start.
