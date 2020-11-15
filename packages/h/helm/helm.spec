@@ -16,20 +16,21 @@
 #
 
 
-%define git_commit ac925eb7279f4a6955df663a0128044a8a6b7593
+%define goipath helm.sh/helm/v3
+%define git_commit c4e74854886b2efe3321e185578e6db9be0a6e29
+%define git_dirty clean
+
 Name:           helm
-Version:        3.4.0
+Version:        3.4.1
 Release:        0
 Summary:        The Kubernetes Package Manager
 License:        Apache-2.0
 Group:          Development/Languages/Other
-URL:            https://github.com/kubernetes/helm
-Source:         %{name}-%{version}.tar.gz
+URL:            https://github.com/helm/helm
+Source0:        https://github.com/helm/helm/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  xz
 BuildRequires:  golang(API) >= 1.14
-%{go_nostrip}
 %{go_provides}
 
 %description
@@ -59,15 +60,15 @@ Zsh command line completion support for %{name}.
 %setup -qa1
 
 %build
-go build -mod=vendor -buildmode=pie ./cmd/helm
+%goprep %{goipath}
+%gobuild -mod vendor -buildmode pie -ldflags "-X %{goipath}/internal/version.version=%{version} -X %{goipath}/internal/version.gitCommit=%{git_commit} -X %{goipath}/internal/version.gitTreeState=%{git_dirty}" cmd/helm
 
 %install
-mkdir -p %{buildroot}%{_bindir}
-install -m755 helm %{buildroot}/%{_bindir}/helm
+%goinstall
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions
-./helm completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
+%{buildroot}/%{_bindir}/helm completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
 mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d
-./helm completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
+%{buildroot}/%{_bindir}/helm completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
 
 %files
 %doc README.md

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Nov 12 01:31:56 UTC 2020 - jenting.hsiao@suse.com
+
+- Update to version 3.4.1:
+  * add unittes for 'helm dep build' with --skip-refresh flag.
+  * Add --skip-refresh option in helm dep build
+  * Added tests for PR 8948
+  * [#7696] Avoid crash in chart loader on unexpected file sequence
+  * [#7696] Avoid crash in chart loader on unexpected file sequence
+  * Updating to k8s 1.19.3 based packages
+  * lint: lint all documents in a multi-doc yaml file
+  * List either incubator or stable.
+  * Clarifies action needed to list new stable repo
+  * added test for https://github.com/helm/helm/pull/8913 related to https://github.com/helm/helm/issues/8621
+  * do not check YAML if nothing was parsed
+  * helm search supports semver pre version numbers starting with 0
+  * Fix that the invalid version number of the helm package command will escape
+  * Update err message to use the regex pattern directly
+  * Fix the lint error message for valid names
+  * Updating descriptions
+  * Adjusted import
+  * Reuse kube-client
+  * Fixes Error: could not find protocol handler for
+  * Add test case for LoadFiles
+  * Bugfix: panic when chart contains requirements.lock
+
+-------------------------------------------------------------------
 Fri Oct 30 10:38:59 UTC 2020 - Vicente Zepeda Mas <vzepedamas@suse.com>
 
 - Update to version 3.4.0:
