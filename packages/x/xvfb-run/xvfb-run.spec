@@ -29,6 +29,8 @@ Source1:        https://manpages.debian.org/testing/xvfb/xvfb-run.1.en.gz#/xvfb-
 Patch0:         xvfb-run-mktemp.patch
 Requires:       coreutils
 Requires:       util-linux
+Requires:       which
+Requires:       xauth
 Requires:       xorg-x11-server
 Requires:       xorg-x11-xauth
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
