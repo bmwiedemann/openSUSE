@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Nov 13 13:03:57 UTC 2020 - rbrown@suse.com
+
+- Update to version 1.17.14:
+  * Correctly parse X-Stream-Protocol-Version header
+  * Disable watchcache for new events API for consistency with the old API
+  * test: add unit-test for TranslateCSIPVToInTree.
+  * fix azure file migration panic
+  * Add lease release tests in leader election
+  * Generate complete leader election record to resolve leader election issues with LeaseLocks
+  * Update the PIP when it is not in the Succeeded provisioning state during the LB update.
+  * Fixes high CPU usage in kubectl drain
+  * Do not assume storageclass is still in-tree after csi migration
+  * Automated cherry pick of #94781: Don't attempt to detach an FC device if we don't know its name
+  * don't cache transports for incomparable configs
+  * Update CHANGELOG/CHANGELOG-1.17.md for v1.17.13
+  * fix azure disk data loss issue on Windows
+  * fix azure disk attach failure for disk size bigger than 4TB
+  * e2e pods: add missing pod and node name in the formatted log line
+  * test: Detect flakes caused by container teardown races on CRI
+  * test: Properly detect container runtime flake in e2e test
+  * Updating kube-proxy to trim space from loadBalancerSourceRanges
+
+-------------------------------------------------------------------
 Fri Oct 16 20:25:05 UTC 2020 - dsauer@suse.com
 
 - Update to version 1.17.13:
