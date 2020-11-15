@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov 13 17:45:02 UTC 2020 - Dario Faggioli <dfaggioli@suse.com>
+
+- Implement jsc#SLE-13784
+  * Add patches:
+    * rework-command-line-sequence.patch
+    * switch-to-argparse.patch
+    * add-command-line-switch-s-to-update.patch
+    * add-command-line-switch-c-to-csv.patch
+    * add-command-line-switch-z-skip-zero-records.patch
+    * add-command-line-switch-L-to-log-file.patch
+    * add-sample-systemd-unit.patch
+  * patching is conditional, depending on kernel version 
+
+-------------------------------------------------------------------
 Wed Mar 11 19:12:26 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Remove legacy compatability patching, since that usage no longer

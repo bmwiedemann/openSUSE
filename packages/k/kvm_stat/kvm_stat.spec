@@ -37,6 +37,14 @@ Conflicts:      qemu-kvm < 2.6.90
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 Patch00:        tools-kvm_stat-explicitly-reference-python3.patch
+# Patches 01 to 07 are for jsc#SLE-13784
+Patch01:        rework-command-line-sequence.patch
+Patch02:        switch-to-argparse.patch
+Patch03:        add-command-line-switch-s-to-update.patch
+Patch04:        add-command-line-switch-c-to-csv.patch
+Patch05:        add-command-line-switch-z-skip-zero-records.patch
+Patch06:        add-command-line-switch-L-to-log-file.patch
+Patch07:        add-sample-systemd-unit.patch
 
 %define XXX This package provides a userspace tool "kvm_stat", which displays KVM vm exit \
 information as a means of monitoring vm behavior. The data is taken from the\
@@ -51,6 +59,19 @@ simple text.
 (tar -C /usr/src/linux -c COPYING tools scripts) | tar -x
 
 %patch00 -p1
+# Patches present upstream, since 5.7
+%if "%{version}" < "5.7.0"
+%patch01 -p1
+%patch02 -p1
+%patch03 -p1
+%patch04 -p1
+%endif
+%if "%{version}" < "5.8.0"
+# Patches present upstream, since 5.8
+%patch05 -p1
+%patch06 -p1
+%patch07 -p1
+%endif
 
 %build
 make -C tools/kvm/kvm_stat %{?_smp_mflags}
