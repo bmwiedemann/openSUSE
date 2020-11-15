@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Nov 11 14:00:23 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 1.5.6
+  * User Interface:
+    + One of the most important changes compared to earlier
+      versions is the introduction of a context-sensitive Content
+      Palette. If set to visible, it will adjust to the kind of
+      item (text frame, image frame, table, group) you have
+      selected.
+    + Ctrl/Cmd+Click enables selecting items below guides.
+    + A new PDF-based output preview is now available.
+    + Support for dark UI themes has been improved.
+    + Icon set can now be changed without needing to restart
+      application
+    + It's now possible to "cycle" through the items in a group by
+      pressing Alt+Ctrl/Cmd+Click
+  * Import/Export:
+    + Support for PDF 1.6 export, including embedded OpenType
+      fonts.
+    + A Markdown import filter has been added.
+    + Improvements to the IDML, PDF, XTG, SVG and KRA importers.
+  * Text and Typography:
+    + Launching Scribus via the Command Line on any OS will now
+      reveal more font-related problems; based on fontconfig 3.14.
+  * Colors:
+    + Default black and white colors can now alternatively be
+      defined in RGB and LAB.
+  * Printing:
+    + With the exception of the Windows platform, Scribus can now
+      use a PDF-based and newly written printing engine. PostScript
+      is still available, but will be removed over time.
+  * Scripter:
+    + On platforms other than macOS, Scribus now uses Python 3 by
+      default. As a consequence, existing scripts will likely need
+      to be modified so that they run in Scribus 1.5.6.
+    + Many new commands have been added to the Scripter; others
+      have been renamed to be more intuitive. For more information,
+      please have a look at the Scripter documentation, which has
+      also been updated to reflect the changes.
+- Drop patches merged upstream:
+  * port-scripter-to-Python-3.patch
+  * Work-around-poppler-0.82-signature-changes.patch
+  * Use-same-mechanism-as-with-previous-poppler-versions.patch
+  * Fix-failure-to-build-against-poppler-0.83.0.patch
+  * Fix-failure-to-build-with-poppler-0.84.0.patch
+  * Fails-to-build-with-python-3.8.patch
+  * 0001-PDF-import-plugin-support-poppler-0.86.x.patch
+  * 0001-Fix-build-with-Qt-5.15.patch
+- Add _constraints with a minimum disk size of 5GB, to avoid build
+  failures due to insufficient disk space
+- Remove -DWANT_RELEASEWITHDEBUG=1 cmake option again, it causes 
+  loading the plugins to fail due to unresolved symbols, and
+  possibly a crash on start
+
+-------------------------------------------------------------------
 Thu Sep 17 17:36:18 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Depend on hicolor-icon-theme for directory structure

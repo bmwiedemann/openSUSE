@@ -18,33 +18,17 @@
 
 
 Name:           scribus
-Version:        1.5.5
+Version:        1.5.6
 Release:        0
 Summary:        Page Layout and Desktop Publishing (DTP)
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/Other
 URL:            https://www.scribus.net/
-# https://sourceforge.net/projects/scribus/files/scribus-devel/1.5.5/
+# https://sourceforge.net/projects/scribus/files/scribus-devel/1.5.6/
 Source:         %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Make-sure-information-displayed-on-the-about-window-.patch
-# PATCH-FEATURE-UPSTREAM
-Patch1:         port-scripter-to-Python-3.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         Work-around-poppler-0.82-signature-changes.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         Use-same-mechanism-as-with-previous-poppler-versions.patch
-# PATCH-FIX-UPSTREAM
-Patch4:         Fix-failure-to-build-against-poppler-0.83.0.patch
-# PATCH-FIX-UPSTREAM
-Patch5:         Fix-failure-to-build-with-poppler-0.84.0.patch
-# PATCH-FIX-UPSTREAM
-Patch6:         Fails-to-build-with-python-3.8.patch
-# PATCH-FIX-UPSTREAM
-Patch7:         0001-PDF-import-plugin-support-poppler-0.86.x.patch
-# PATCH-FIX-UPSTREAM
-Patch8:         0001-Fix-build-with-Qt-5.15.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.12.0
 BuildRequires:  cups-devel
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -65,14 +49,14 @@ BuildRequires:  libzmf-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(Qt5Core) >= 5.7.0
-BuildRequires:  cmake(Qt5Gui) >= 5.7.0
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.7.0
-BuildRequires:  cmake(Qt5Network) >= 5.7.0
-BuildRequires:  cmake(Qt5OpenGL) >= 5.7.0
-BuildRequires:  cmake(Qt5PrintSupport) >= 5.7.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.7.0
-BuildRequires:  cmake(Qt5Xml) >= 5.7.0
+BuildRequires:  cmake(Qt5Core) >= 5.11.0
+BuildRequires:  cmake(Qt5Gui) >= 5.11.0
+BuildRequires:  cmake(Qt5LinguistTools) >= 5.11.0
+BuildRequires:  cmake(Qt5Network) >= 5.11.0
+BuildRequires:  cmake(Qt5OpenGL) >= 5.11.0
+BuildRequires:  cmake(Qt5PrintSupport) >= 5.11.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
+BuildRequires:  cmake(Qt5Xml) >= 5.11.0
 BuildRequires:  pkgconfig(GraphicsMagick)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(fontconfig)
@@ -127,7 +111,6 @@ mkdir build
 pushd build
 cmake .. \
   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
-  -DWANT_RELEASEWITHDEBUG=1 \
   -DWANT_DISTROBUILD=1 \
   -DWANT_HUNSPELL=1 \
   -DWANT_GRAPHICSMAGICK=1 \
@@ -159,6 +142,7 @@ rm -f %{buildroot}%{_datadir}/doc/scribus/{ChangeLog,README}
 %dir %{_datadir}/doc/scribus/
 %lang(de) %{_datadir}/doc/scribus/de/
 %lang(it) %{_datadir}/doc/scribus/it/
+%lang(ru) %{_datadir}/doc/scribus/ru/
 %{_datadir}/doc/scribus/en/
 
 %files
