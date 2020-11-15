@@ -263,6 +263,12 @@ Patch306:       glibc-fix-double-loopback.diff
 Patch1000:      syslog-locking.patch
 # PATCH-FIX-UPSTREAM x86-64: Fix FMA4 detection in ifunc (BZ #26534)
 Patch1001:      ifunc-fma4.patch
+# PATCH-FIX-UPSTREAM intl: Handle translation output codesets with suffixes (BZ #26383)
+Patch1002:      intl-codeset-suffixes.patch
+# PATCH-FIX-UPSTREAM string: Fix strerrorname_np return value (BZ #26555)
+Patch1003:      strerrorname-np.patch
+# PATCH-FIX-UPSTREAM sysvipc: Fix SEM_STAT_ANY kernel argument pass (BZ #26637, BZ #26639, BZ #26636)
+Patch1004:      sysvipc.patch
 
 ### 
 # Patches awaiting upstream approval
@@ -477,6 +483,9 @@ makedb: A program to create a database for nss
 
 %patch1000 -p1
 %patch1001 -p1
+%patch1002 -p1
+%patch1003 -p1
+%patch1004 -p1
 
 %patch2000 -p1
 %patch2001 -p1

@@ -2349,4 +2349,17 @@ for more fun options (forwarded request 147495 from coolo)</comment>
   and shadow stack in the dynamic loader.  [jsc#PM-2110] [bsc#1175154] (forwarded request 844127 from rguenther)</comment>
     <requestid>844528</requestid>
   </revision>
+  <revision rev="242" vrev="3">
+    <srcmd5>5b311dc6fcb6ad69985279eea2ea32d7</srcmd5>
+    <version>2.32</version>
+    <time>1605449827</time>
+    <user>dimstar_suse</user>
+    <comment>- intl-codeset-suffixes.patch: intl: Handle translation output codesets
+  with suffixes (BZ #26383)
+- strerrorname-np.patch: string: Fix strerrorname_np return value (BZ
+  #26555)
+- sysvipc.patch: sysvipc: Fix SEM_STAT_ANY kernel argument pass (BZ
+  #26637, BZ #26639, BZ #26636) (forwarded request 847890 from Andreas_Schwab)</comment>
+    <requestid>847891</requestid>
+  </revision>
 </revisionlist>

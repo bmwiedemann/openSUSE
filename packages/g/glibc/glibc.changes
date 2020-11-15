@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 10 15:36:40 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- intl-codeset-suffixes.patch: intl: Handle translation output codesets
+  with suffixes (BZ #26383)
+- strerrorname-np.patch: string: Fix strerrorname_np return value (BZ
+  #26555)
+- sysvipc.patch: sysvipc: Fix SEM_STAT_ANY kernel argument pass (BZ
+  #26637, BZ #26639, BZ #26636)
+
+-------------------------------------------------------------------
 Mon Oct 26 07:07:38 UTC 2020 - Richard Biener <rguenther@suse.com>
 
 - Use --enable-cet on x86_64 to instrument glibc for indirect branch
