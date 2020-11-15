@@ -21,15 +21,13 @@
 %define _kf5_appstreamdir %{_kf5_sharedir}/appdata
 %endif
 Name:           labplot-kf5
-Version:        2.8.0
+Version:        2.8.1
 Release:        0
 Summary:        KDE Framework 5 data analysis and visualization application
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Other
 URL:            https://labplot.kde.org/
 Source:         https://download.kde.org/stable/labplot/%{version}/labplot-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM fix_labplot_assumption_cantor_version.patch andythe_great@pm.me -- Fix Labplot 2.8.0 wrong assumption that Cantor 20.08.1 has a new interface.
-Patch0:         fix_labplot_assumption_cantor_version.patch
 BuildRequires:  bison
 BuildRequires:  cantor-devel
 BuildRequires:  extra-cmake-modules
@@ -89,7 +87,6 @@ This version is based on KDE Frameworks 5
 
 %prep
 %setup -q -n labplot-%{version}
-%patch0 -p1
 
 %build
 %cmake_kf5 -d build
@@ -104,22 +101,18 @@ This version is based on KDE Frameworks 5
 
 %kf5_post_install
 
-%post
-%desktop_database_post
-%icon_theme_cache_post
-%mime_database_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%mime_database_postun
-
 %files
 %license COPYING
 %doc AUTHORS ChangeLog README.md
 %{_kf5_bindir}/labplot2
 %{_kf5_appsdir}/labplot2/
 %{_kf5_applicationsdir}/org.kde.labplot2.desktop
+%dir %{_kf5_iconsdir}/hicolor/44x44/
+%dir %{_kf5_iconsdir}/hicolor/44x44/apps/
+%dir %{_kf5_iconsdir}/hicolor/150x150/
+%dir %{_kf5_iconsdir}/hicolor/150x150/apps/
+%dir %{_kf5_iconsdir}/hicolor/310x310/
+%dir %{_kf5_iconsdir}/hicolor/310x310/apps/
 %dir %{_kf5_iconsdir}/hicolor/512x512/
 %dir %{_kf5_iconsdir}/hicolor/512x512/apps/
 %{_kf5_iconsdir}/hicolor/scalable/apps/labplot-*

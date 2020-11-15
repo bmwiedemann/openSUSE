@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Nov 13 06:44:28 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to version 2.8.1
+- New features:
+  * [worksheet] allow to change the background color for axis
+    labels (default: transparent)
+  * [worksheet] allow to copy the plot cursor cordinates
+  * [spreadsheet] better auto-detection of datetime format for
+    values pasted in the spreadsheet
+  * [live data] allow to add the timestamp column for all network
+    live sources (TCP/UDP), not only for MQTT
+  * [live data] better error handling and user notifications
+
+- Bug fixes:
+  * Fix compiling with Cantor 20.08.X and X>0
+  * Fix drawing lines between points of datetime data
+  * Fix drawing axis tick label in color when in HTML mode
+  * Fix size of dock widgets when changing between them
+  * Remove sub-window shadow remnants when closing the project
+    (kde#389920)
+  * Fix changing font of text label for newer Qt versions
+    (kde#428029)
+  * Fix full screen not restored (also fixes full screen on macOS)
+    (kde#428813)
+  * Don't crash when doing drag&drop between different main windows
+    (kde#428698) 
+  * Fix missing settings dialog on macOS
+  * Parser improvements (found in "Generate Function Values"):
+    + Fix Crash using variable name of pre-defined functions as
+      function ("sin()")
+    + Allow variable names containing function names ("sina")
+    + Correctly remove variables when changing name
+    + Use application number locale
+    + insert predefined functions with correct number of arguments
+
+- Drop fix_labplot_assumption_cantor_version.patch, merged upstream
+- Drop obsolete %post/%postun scriptlets, the used macros are
+  no-ops since Leap 15.0
+
+-------------------------------------------------------------------
 Sat Oct 10 17:42:29 UTC 2020 - wbauer@tmo.at
 
 - Update fix_labplot_assumption_cantor_version.patch to fix build
