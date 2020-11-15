@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 11 11:08:03 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.3
+- Changes since 5.20.2:
+  * Autodelete smapsRunnable (kde#428048)
+- Drop patches, now upstream:
+  * 0001-Autodelete-smapsRunnable.patch
+
+-------------------------------------------------------------------
 Thu Oct 29 15:03:03 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix memory leak (kde#428048):
