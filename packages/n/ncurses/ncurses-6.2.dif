@@ -31,7 +31,7 @@
  #include <stdio.h>
  
  #if defined(__cplusplus)
-@@ -5506,12 +5506,15 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5519,12 +5519,15 @@ cat >>$cf_edit_man <<CF_EOF
  		echo '? missing rename for '\$cf_source
  		cf_target="\$cf_source"
  	fi
@@ -49,7 +49,7 @@
  	sed	-f $cf_man_alias \\
  CF_EOF
  
-@@ -5521,7 +5524,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5534,7 +5537,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -58,7 +58,7 @@
  CF_EOF
  fi
  
-@@ -5561,7 +5564,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5574,7 +5577,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_so_strip \$TMP
  	fi
  	fi
@@ -67,7 +67,7 @@
  CF_EOF
  fi
  
-@@ -5570,23 +5573,23 @@ case "$MANPAGE_FORMAT" in
+@@ -5583,23 +5586,23 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test \$form = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -97,7 +97,7 @@
  				for cf_alias in \$aliases
  				do
  					if test \$section = 1 ; then
-@@ -5595,7 +5598,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5608,7 +5611,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f \$cf_alias\${suffix} ; then
@@ -106,7 +106,7 @@
  							then
  								continue
  							fi
-@@ -5605,18 +5608,18 @@ CF_EOF
+@@ -5618,18 +5621,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -128,7 +128,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_compress" ; then
-@@ -5636,9 +5639,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5649,9 +5652,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test \$verb = removing ; then
@@ -141,7 +141,7 @@
  		)
  		test -d \$cf_subdir\${section} &&
  		test -n "\$aliases" && (
-@@ -5658,6 +5661,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5671,6 +5674,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -151,7 +151,7 @@
  done
 --- configure
 +++ configure	2020-08-31 12:06:53.686411216 +0000
-@@ -5636,7 +5636,7 @@ echo $ECHO_N "checking for an rpath opti
+@@ -5683,7 +5683,7 @@ echo $ECHO_N "checking for an rpath opti
  		fi
  		;;
  	(linux*|gnu*|k*bsd*-gnu|freebsd*)
@@ -160,7 +160,7 @@
  		;;
  	(openbsd[2-9].*|mirbsd*)
  		LD_RPATH_OPT="-Wl,-rpath,"
-@@ -14401,12 +14401,15 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14448,12 +14448,15 @@ cat >>$cf_edit_man <<CF_EOF
  		echo '? missing rename for '\$cf_source
  		cf_target="\$cf_source"
  	fi
@@ -178,7 +178,7 @@
  	sed	-f $cf_man_alias \\
  CF_EOF
  
-@@ -14416,7 +14419,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14463,7 +14466,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -187,7 +187,7 @@
  CF_EOF
  fi
  
-@@ -14456,7 +14459,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14503,7 +14506,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_so_strip \$TMP
  	fi
  	fi
@@ -196,7 +196,7 @@
  CF_EOF
  fi
  
-@@ -14465,23 +14468,23 @@ case "$MANPAGE_FORMAT" in
+@@ -14512,23 +14515,23 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test \$form = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -226,7 +226,7 @@
  				for cf_alias in \$aliases
  				do
  					if test \$section = 1 ; then
-@@ -14490,7 +14493,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14537,7 +14540,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f \$cf_alias\${suffix} ; then
@@ -235,7 +235,7 @@
  							then
  								continue
  							fi
-@@ -14500,18 +14503,18 @@ CF_EOF
+@@ -14547,18 +14550,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -257,7 +257,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_compress" ; then
-@@ -14531,9 +14534,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14578,9 +14581,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test \$verb = removing ; then
@@ -270,7 +270,7 @@
  		)
  		test -d \$cf_subdir\${section} &&
  		test -n "\$aliases" && (
-@@ -14553,6 +14556,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14600,6 +14603,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
