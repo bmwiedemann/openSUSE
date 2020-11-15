@@ -188,4 +188,21 @@ preparation for submit to SUSE. Remove %defattr(-,root,root,-) in %files</commen
   * go#41386 x/net/http2: connection-level flow control not returned if stream errors, causes server hang (forwarded request 846530 from jfkw)</comment>
     <requestid>846532</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a43e4ae4c76d9ba4d61fd1c361b2dc01</srcmd5>
+    <version>1.14.12</version>
+    <time>1605450108</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.14.12 (released 2020-11-12) includes security fixes to the
+  cmd/go and math/big packages.
+  CVE-2020-28362 CVE-2020-28367 CVE-2020-28366
+  Refs boo#1164903 go1.14 release tracking
+  * boo#1178750 CVE-2020-28362
+  * go#42553 math/big: panic during recursive division of very large numbers
+  * boo#1178752 CVE-2020-28367
+  * go#42560 cmd/go: arbitrary code can be injected into cgo generated files
+  * boo#1178753 CVE-2020-28366
+  * go#42557 cmd/go: improper validation of cgo flags can lead to remote code execution at build time (forwarded request 848226 from jfkw)</comment>
+    <requestid>848228</requestid>
+  </revision>
 </revisionlist>
