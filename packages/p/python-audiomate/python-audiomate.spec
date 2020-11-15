@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-audiomate
-Version:        5.2.0
+Version:        6.0.0
 Release:        0
 Summary:        A library for working with audio datasets
 License:        MIT
@@ -41,22 +41,6 @@ Requires:       python-requests >= 2.23.0
 Requires:       python-scipy >= 1.4.1
 Requires:       python-sox >= 1.3.7
 BuildArch:      noarch
-# SECTION test requirements
-BuildRequires:  %{python_module PGet >= 0.5.0}
-BuildRequires:  %{python_module audioread >= 2.1.8}
-BuildRequires:  %{python_module h5py >= 2.10.0}
-BuildRequires:  %{python_module intervaltree >= 3.0.2}
-BuildRequires:  %{python_module librosa >= 0.7.2}
-BuildRequires:  %{python_module networkx >= 2.4}
-BuildRequires:  %{python_module numba >= 0.49.1}
-BuildRequires:  %{python_module numpy >= 1.18.1}
-BuildRequires:  %{python_module pytest >= 3.3.0}
-BuildRequires:  %{python_module pytest-runner}
-BuildRequires:  %{python_module requests >= 2.23.0}
-BuildRequires:  %{python_module requests-mock >= 1.4.0}
-BuildRequires:  %{python_module scipy >= 1.4.1}
-BuildRequires:  %{python_module sox >= 1.3.7}
-# /SECTION
 %python_subpackages
 
 %description
@@ -65,6 +49,7 @@ audio datasets.
 
 %prep
 %setup -q -n audiomate-%{version}
+sed -i "s/'pytest-runner'//" setup.py
 
 %build
 %python_build
