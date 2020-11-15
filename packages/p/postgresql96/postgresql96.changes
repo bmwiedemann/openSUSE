@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Nov 11 12:14:11 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Upgrade to version 9.6.20:
+  * CVE-2020-25695, bsc#1178666: Block DECLARE CURSOR ... WITH HOLD
+    and firing of deferred triggers within index expressions and
+    materialized view queries.
+  * CVE-2020-25694, bsc#1178667:
+    a) Fix usage of complex connection-string parameters in pg_dump,
+    pg_restore, clusterdb, reindexdb, and vacuumdb.
+    b) When psql's \connect command re-uses connection parameters,
+    ensure that all non-overridden parameters from a previous
+    connection string are re-used.
+  * CVE-2020-25696, bsc#1178668: Prevent psql's \gset command from
+    modifying specially-treated variables.
+  * https://www.postgresql.org/about/news/2111/
+  * https://www.postgresql.org/docs/9.6/release-9-6-20.html
+
+-------------------------------------------------------------------
 Thu Aug 13 11:14:43 UTC 2020 - Reinhard Max <max@suse.com>
 
 - update to 9.6.19:
