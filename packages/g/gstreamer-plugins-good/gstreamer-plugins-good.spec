@@ -183,11 +183,7 @@ export PYTHON=%{_bindir}/python3
 	-Daalib=disabled \
 %endif
 	-Ddoc=disabled \
-%ifarch aarch64
-        -Drpicamsrc=enabled \
-%else
         -Drpicamsrc=disabled \
-%endif
 	-Dv4l2-probe=true \
 	%{nil}
 %meson_build
