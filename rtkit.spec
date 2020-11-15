@@ -1,7 +1,7 @@
 #
 # spec file for package rtkit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Summary:        Realtime Policy and Watchdog Daemon
 # the client BSD-3-Clause
 License:        GPL-3.0-or-later AND BSD-3-Clause
 Group:          System/Base
-Url:            http://git.0pointer.de/?p=rtkit.git
+URL:            http://git.0pointer.de/?p=rtkit.git
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  automake
 BuildRequires:  libcap-devel
@@ -72,7 +72,7 @@ install -D -m 0644 org.freedesktop.RealtimeKit1.xml %{buildroot}/%{_datadir}/dbu
 %pre
 groupadd -r rtkit >/dev/null 2>&1 || :
 %{_bindir}/id rtkit >/dev/null 2>&1 || \
-        useradd -r -g rtkit -c 'RealtimeKit' -s /bin/false -d /proc rtkit
+        useradd -r -g rtkit -c 'RealtimeKit' -s /bin/false -d /var/lib/empty rtkit
 
 %service_add_pre rtkit-daemon.service
 
@@ -85,7 +85,8 @@ dbus-send --system --type=method_call --dest=org.freedesktop.DBus / org.freedesk
 
 %files
 %defattr(0644,root,root,0755)
-%doc README GPL LICENSE rtkit.c rtkit.h
+%license GPL LICENSE
+%doc README rtkit.c rtkit.h
 %attr(0755,root,root) %{_sbindir}/rtkitctl
 %dir %{_libexecdir}/rtkit
 %attr(0755,root,root) %{_libexecdir}/rtkit/rtkit-daemon

@@ -228,4 +228,14 @@
   to prepare for -Werror of these warnings in openSUSE:Factory. (forwarded request 713257 from marxin)</comment>
     <requestid>713263</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>f3ae985a65c32daa92cb7ffae38aed12</srcmd5>
+    <version>0.11+git.20161005</version>
+    <time>1605450268</time>
+    <user>dimstar_suse</user>
+    <comment>- Use /var/lib/empty instead of /proc as home for the rtkit user
+- Use %license
+- Commit _servicedata to avoid updating on every commit (forwarded request 848099 from favogt)</comment>
+    <requestid>848106</requestid>
+  </revision>
 </revisionlist>
