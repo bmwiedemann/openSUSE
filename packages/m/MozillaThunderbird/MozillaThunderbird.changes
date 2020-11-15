@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Nov 11 09:04:51 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 78.4.3
+  https://www.thunderbird.net/en-US/thunderbird/78.4.3/releasenotes/
+- added mozilla-rust-1.47.patch to fix build with rust 1.47
+
+-------------------------------------------------------------------
+Mon Nov  9 21:43:37 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 78.4.2
+  MFSA 2020-49
+  * CVE-2020-26950 (bmo#1675905)
+    Write side effects in MCallGetProperty opcode not accounted for
+
+-------------------------------------------------------------------
+Thu Nov  5 08:52:51 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 78.4.1
+  * Bugfixes and minor features
+    https://www.thunderbird.net/en-US/thunderbird/78.4.1/releasenotes/
+
+-------------------------------------------------------------------
 Tue Oct 20 11:54:05 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 78.4.0

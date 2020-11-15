@@ -3353,4 +3353,27 @@ But as always there are semi-relevant changes from the Gecko 60.4 baseline. Many
     Memory safety bugs fixed in Firefox 82 and Firefox ESR 78.4</comment>
     <requestid>843275</requestid>
   </revision>
+  <revision rev="242" vrev="1">
+    <srcmd5>1ab7ca7ce84842fb40478cd8ff57247e</srcmd5>
+    <version>78.4.3</version>
+    <time>1605450072</time>
+    <user>dimstar_suse</user>
+    <comment>Please give this a try with rust 1.47. The patch is taken from the Fedora repo to fix the build.
+I cannot test locally unfortunately.
+(Please note that TB 78.4.3 is currently not fully released upstream but in the pipeline as RC but it most likely means that the source check service fails.)
+
+- Mozilla Thunderbird 78.4.3
+  https://www.thunderbird.net/en-US/thunderbird/78.4.3/releasenotes/
+- added mozilla-rust-1.47.patch to fix build with rust 1.47
+
+- Mozilla Thunderbird 78.4.2
+  MFSA 2020-49
+  * CVE-2020-26950 (bmo#1675905)
+    Write side effects in MCallGetProperty opcode not accounted for
+
+- Mozilla Thunderbird 78.4.1
+  * Bugfixes and minor features
+    https://www.thunderbird.net/en-US/thunderbird/78.4.1/releasenotes/</comment>
+    <requestid>847757</requestid>
+  </revision>
 </revisionlist>
