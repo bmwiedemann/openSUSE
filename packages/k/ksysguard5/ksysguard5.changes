@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 11 11:08:02 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.3
+- Changes since 5.20.2:
+  * Stop the daemon if we have no client (kde#427204)
+  * Do not load multiple versions of the same plugin
+  * Only look for libnl
+
+-------------------------------------------------------------------
 Tue Oct 27 22:23:21 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.2
