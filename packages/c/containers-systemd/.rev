@@ -162,4 +162,16 @@
   * Fix typo</comment>
     <requestid>844345</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f6130a73106a7914ceeda431f37d01a2</srcmd5>
+    <version>0.0+git20201113.5e435e8</version>
+    <time>1605450143</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20201113.5e435e8:
+  * Make more options configureable
+  * Make list of ports to export configureable
+  * Only restart containers when the process fails abnormally
+  * Add LDAP_BIND_DN, make password files configureable</comment>
+    <requestid>848355</requestid>
+  </revision>
 </revisionlist>
