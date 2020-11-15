@@ -912,4 +912,12 @@
     <comment></comment>
     <requestid>844679</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>fe8cbdf656cbea2ccde5ee4c6594eccd</srcmd5>
+    <version>5.20.3</version>
+    <time>1605450044</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.20.3</comment>
+    <requestid>848070</requestid>
+  </revision>
 </revisionlist>
