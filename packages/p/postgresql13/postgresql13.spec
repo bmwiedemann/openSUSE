@@ -16,7 +16,7 @@
 #
 
 
-%define pgversion 13.0
+%define pgversion 13.1
 %define pgmajor 13
 %define pgsuffix %pgmajor
 %define buildlibs 1
@@ -141,7 +141,6 @@ Patch4:         postgresql-plperl-keep-rpath.patch
 Patch6:         postgresql-testsuite-int8.sql.patch
 Patch8:         postgresql-testsuite-keep-results-file.patch
 Patch9:         postgresql-var-run-socket.patch
-Patch10:        postgresql-timetz.patch
 URL:            https://www.postgresql.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       postgresql = %version-%release
@@ -449,7 +448,6 @@ touch -r configure tmp
 %patch6
 %patch8 -p1
 %patch9
-%patch10
 touch -r tmp configure
 rm tmp
 find src/test/ -name '*.orig' -delete
@@ -623,15 +621,14 @@ genlists main \
 	vacuumdb \
 	reindexdb \
 	pg_basebackup \
-%if %pgsuffix < 90
-	pg_receivewal \
-%else
+	pg_isready \
+	pg_recvlogical \
+%if %pgsuffix >= 90
 	createlang \
 	droplang \
 	pg_receivexlog \
-%endif
-	pg_isready \
-	pg_recvlogical \
+%else
+	pg_receivewal \
 %if %pgsuffix == 11
 	pg_verify_checksums \
 %endif
@@ -640,6 +637,7 @@ genlists main \
 %endif
 %if %pgsuffix >= 13
 	pg_verifybackup
+%endif
 %endif
 
 %find_lang plpgsql-$VLANG main.files

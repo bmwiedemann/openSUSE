@@ -16,4 +16,28 @@
   https://postgr.es/m/16689-57701daa23b377bf@postgresql.org</comment>
     <requestid>845768</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1188c06ed623e77455723285ddf5e1cb</srcmd5>
+    <version>13.1</version>
+    <time>1605450320</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 13.1:
+  * CVE-2020-25695, bsc#1178666: Block DECLARE CURSOR ... WITH HOLD
+    and firing of deferred triggers within index expressions and
+    materialized view queries.
+  * CVE-2020-25694, bsc#1178667:
+    a) Fix usage of complex connection-string parameters in pg_dump,
+    pg_restore, clusterdb, reindexdb, and vacuumdb.
+    b) When psql's \connect command re-uses connection parameters,
+    ensure that all non-overridden parameters from a previous
+    connection string are re-used.
+  * CVE-2020-25696, bsc#1178668: Prevent psql's \gset command from
+    modifying specially-treated variables.
+  * Fix recently-added timetz test case so it works when the USA
+    is not observing daylight savings time.
+    (obsoletes postgresql-timetz.patch)
+  * https://www.postgresql.org/about/news/2111/
+  * https://www.postgresql.org/docs/13/release-13-1.html</comment>
+    <requestid>848147</requestid>
+  </revision>
 </revisionlist>
