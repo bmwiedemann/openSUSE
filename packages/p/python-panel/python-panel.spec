@@ -16,9 +16,11 @@
 #
 
 
+# Dependencies (e.g. bokeh) no longer support python2
+%define skip_python2 1
 %define modname panel
 Name:           python-panel
-Version:        0.9.5
+Version:        0.10.1
 Release:        0
 Summary:        A high level app and dashboarding solution for Python
 License:        BSD-3-Clause
@@ -83,7 +85,7 @@ mkdir -p %{buildroot}%{_docdir}/%{modname}
 
 %check
 # DISABLE TESTS REQUIRING NETWORK ACCESS
-%pytest -k 'not (test_loading_a_image_from_url or test_image_alt_text or test_image_link_url or test_vtk_pane_from_url)'
+%pytest -k 'not (test_loading_a_image_from_url or test_image_alt_text or test_image_link_url or test_vtk_pane_from_url or test_vtkjs_pane)'
 
 %files %{python_files}
 %license LICENSE.txt
