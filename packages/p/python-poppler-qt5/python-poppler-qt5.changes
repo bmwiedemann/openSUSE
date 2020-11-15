@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct 10 13:39:00 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Use SIP5
+  * poppler-qt5-pr33-sip5.patch
+    gh#frescobaldi/python-poppler-qt5#33
+  * poppler-qt5-pr41-sip5.patch
+    gh#frescobaldi/python-poppler-qt5#41
+- SIP5 creates files for SIP bindings and Qscintilla API
+  * new devel package
+
+-------------------------------------------------------------------
+Thu Sep 10 17:23:36 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix obsoletes to work with python singlespec
+- Enforce sip4 gh#frescobaldi/python-poppler-qt5#38 
+
+-------------------------------------------------------------------
 Fri Jan  3 11:08:29 UTC 2020 - Cor Blom <cornelis@solcon.nl>
 
 - Add Obsoletes: python-poppler-qt5 to prevent file conflict in 
