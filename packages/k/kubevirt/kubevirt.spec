@@ -26,6 +26,8 @@ URL:            https://github.com/kubevirt/kubevirt
 Source0:        %{name}-%{version}.tar.gz
 Source1:        kubevirt-psp-caasp.yaml
 Source100:      %{name}-rpmlintrc
+Patch0:         fix-goflags-overwrite.patch
+Patch1:         dont-build-virtctl-darwin.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
