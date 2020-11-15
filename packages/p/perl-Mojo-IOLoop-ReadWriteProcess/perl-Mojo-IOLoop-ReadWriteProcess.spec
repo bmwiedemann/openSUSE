@@ -16,6 +16,8 @@
 #
 
 
+# Do not change this file manually, use cpanspec.yml instead
+
 Name:           perl-Mojo-IOLoop-ReadWriteProcess
 Version:        0.28
 Release:        0
@@ -50,6 +52,9 @@ perl Build.PL installdirs=vendor
 ./Build build flags=%{?_smp_mflags}
 
 %check
+echo "ignoring unstable tests"
+echo "https://github.com/mudler/Mojo-IOLoop-ReadWriteProcess/issues/14"
+rm t/{07_autodetect,12_mocked_container,04_queues,05_serialize}.t
 ./Build test
 
 %install
