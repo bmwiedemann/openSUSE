@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Nov 12 06:41:20 UTC 2020 - Wang Jun <jgwang@suse.com>
+
+- Updated to version 8.2.1975, fixes the following problems
+  * Vim9: cannot specify argument types for lambda.
+  * Diff and cursorcolumn highlighting don't mix.
+  * Build failure with timers.
+  * Crash when terminal buffer name is made empty. (Dhiraj Mishra)
+  * Update runtime files
+  * Warning for uninitialized variable.
+  * Various comments can be improved.
+  * Correct list of patches.
+  * Netbeans may access freed memory.
+  * Crash when using a popup window with "latin1" encoding.
+  * Not all ConTeXt files are recognized.
+  * Vim9: tests fail without the channel feature.
+  * Popup becomes current window after closing a terminal window.
+  * The session file does not restore the alternate file.
+  * Vim9: has() assumes a feature does not change dynamically.
+  * Vim9: map() may change the list or dict item type.
+  * It is easy to make mistakes when cleaning up swap files after the system crashed.
+  * Memory leak when map() fails.
+  * Crash when recreating nested fold.
+  * Finding a patch number can be a bit slow.
+  * Vim9: test for has('gui_running') fails with VIMDLL.
+  * Win32: memory leak when encoding conversion fails.
+
+-------------------------------------------------------------------
 Thu Nov  5 11:44:18 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.1955, fixes the following problems
