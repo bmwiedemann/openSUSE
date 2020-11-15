@@ -6591,6 +6591,7 @@ unsorted:
   - hexchat-plugins-perl 
   - hexchat-plugins-python3 
   - hexd 
+  - hexedit 
   - hexter 
   - hfst 
   - hfst-devel 
@@ -7301,8 +7302,6 @@ unsorted:
   - jetbrains-annotations-javadoc 
   - jettison 
   - jettison-javadoc 
-  - jetty-alpn-api 
-  - jetty-alpn-api-javadoc 
   - jetty-annotations 
   - jetty-artifact-remote-resources 
   - jetty-build-support 
@@ -17773,6 +17772,7 @@ unsorted:
   - openEMS-devel 
   - openEMS-matlab 
   - openQA: [x86_64] 
+  - openQA-auto-upgrade: [x86_64] 
   - openQA-bootstrap: [x86_64] 
   - openQA-client: [x86_64] 
   - openQA-common: [x86_64] 
@@ -21021,6 +21021,8 @@ unsorted:
   - python-senlinclient-doc 
   - python-shodan-doc 
   - python-sip-doc 
+  - python-sip4-common 
+  - python-sip4-doc 
   - python-six-doc 
   - python-solv 
   - python-sqlalchemy-migrate-doc 
@@ -23095,6 +23097,7 @@ unsorted:
   - python3-pony 
   - python3-pook 
   - python3-poppler-qt5 
+  - python3-poppler-qt5-devel 
   - python3-port-for 
   - python3-portalocker 
   - python3-portend 
@@ -23726,6 +23729,8 @@ unsorted:
   - python3-simplekml 
   - python3-siosocks 
   - python3-sip-devel 
+  - python3-sip4 
+  - python3-sip4-devel 
   - python3-siphashc 
   - python3-sklearn-pandas 
   - python3-skyfield 
