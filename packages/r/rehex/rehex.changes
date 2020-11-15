@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 13 22:41:17 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.1 (2020-11-13)
+  * Correctly display signed 16-bit values in "Decode values" panel.
+  * Fix status bar offset going out of sync.
+  * Move cursor when a row in the "Comments" panel is double clicked.
+  * Focus document after updating position/selection via "Comments"
+    panel.
+
+-------------------------------------------------------------------
 Wed Nov 11 15:04:28 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
  Version 0.3.0 (2020-11-10)
