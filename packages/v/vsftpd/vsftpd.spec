@@ -85,6 +85,8 @@ Patch30:        vsftpd-3.0.3-address_space_limit.patch
 Patch31:        vsftpd-enable-syscalls-needed-by-sle15.patch
 Patch32:        vsftpd-support-dsa-only-setups.patch
 Patch33:        vsftpd-avoid-bogus-ssl-write.patch
+Patch34:        0001-Introduce-TLSv1.1-and-TLSv1.2-options.patch
+Patch35:        0001-When-handling-FEAT-command-check-ssl_tlsv1_1-and-ssl.patch
 BuildRequires:  libcap-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  pam-devel
@@ -150,6 +152,8 @@ tests.
 %patch31 -p1
 %patch32 -p1
 %patch33 -p1
+%patch34 -p1
+%patch35 -p1
 
 %build
 %define seccomp_opts -D_GNU_SOURCE -DUSE_SECCOMP

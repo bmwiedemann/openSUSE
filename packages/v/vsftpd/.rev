@@ -818,4 +818,12 @@ confusing &quot;failed to try-restart&quot; error message. [bsc#1093179, bsc#101
     <comment></comment>
     <requestid>827923</requestid>
   </revision>
+  <revision rev="73" vrev="22">
+    <srcmd5>fbf01ac751fbe8a0ed23756151852439</srcmd5>
+    <version>3.0.3</version>
+    <time>1605450141</time>
+    <user>dimstar_suse</user>
+    <comment>implement SLE-4182</comment>
+    <requestid>848321</requestid>
+  </revision>
 </revisionlist>
