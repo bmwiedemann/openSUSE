@@ -33,12 +33,21 @@ BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libmnl)
 
+Patch1:         netlink-fix-use-after-free-in-netlink_run_handler.patch
+Patch2:         netlink-fix-leaked-instances-of-struct-nl_socket.patch
+Patch3:         netlink-do-not-send-messages-and-process-replies-in-.patch
+Patch4:         ethtool-Improve-compatibility-between-netlink-and-io.patch
+
 %description
 Ethtool is a small utility for examining and tuning ethernet-based
 network interfaces.  See the man page for more details.
 
 %prep
 %setup -q
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
 
 %build
 export CFLAGS="%optflags -Wall -Wextra -Wstrict-prototypes -Wformat-security -Wpointer-arith"

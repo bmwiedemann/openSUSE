@@ -1,0 +1,59 @@
+From: Michal Kubecek <mkubecek@suse.cz>
+Date: Mon, 9 Nov 2020 13:30:57 +0100
+Subject: netlink: fix leaked instances of struct nl_socket
+Patch-mainline: v5.10
+Git-commit: d85f57499d75da5c98b73652488f3f62c6f6d8ea
+References: bsc#1178633
+
+Valgrind detected memory leaks caused by missing cleanup of netlink
+context's ethnl_socket, ethnl2_socket and rtnl_socket. Also, contrary to
+its description, nlsock_done() does not free struct nl_socket itself.
+Fix nlsock_done() to free the structure and use it to dispose of sockets
+pointed to by struct nl_context members.
+
+Fixes: 50efb3cdd2bb ("netlink: netlink socket wrapper and helpers")
+Fixes: 87307c30724d ("netlink: initialize ethtool netlink socket")
+Fixes: 7f3585b22a4b ("netlink: add handler for permaddr (-P)")
+Signed-off-by: Michal Kubecek <mkubecek@suse.cz>
+
+---
+ netlink/netlink.c | 11 ++++++++---
+ netlink/nlsock.c  |  3 +++
+ 2 files changed, 11 insertions(+), 3 deletions(-)
+
+--- a/netlink/netlink.c
++++ b/netlink/netlink.c
+@@ -280,11 +280,16 @@ out_free:
+ 
+ static void netlink_done(struct cmd_context *ctx)
+ {
+-	if (!ctx->nlctx)
++	struct nl_context *nlctx = ctx->nlctx;
++
++	if (!nlctx)
+ 		return;
+ 
+-	free(ctx->nlctx->ops_flags);
+-	free(ctx->nlctx);
++	nlsock_done(nlctx->ethnl_socket);
++	nlsock_done(nlctx->ethnl2_socket);
++	nlsock_done(nlctx->rtnl_socket);
++	free(nlctx->ops_flags);
++	free(nlctx);
+ 	ctx->nlctx = NULL;
+ 	cleanup_all_strings();
+ }
+--- a/netlink/nlsock.c
++++ b/netlink/nlsock.c
+@@ -395,8 +395,11 @@ out_msgbuff:
+  */
+ void nlsock_done(struct nl_socket *nlsk)
+ {
++	if (!nlsk)
++		return;
+ 	if (nlsk->sk)
+ 		mnl_socket_close(nlsk->sk);
+ 	msgbuff_done(&nlsk->msgbuff);
+ 	memset(nlsk, '\0', sizeof(*nlsk));
++	free(nlsk);
+ }

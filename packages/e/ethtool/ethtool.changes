@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 11 16:57:07 UTC 2020 - Michal Kubecek <mkubecek@suse.cz>
+
+- backport post-5.9 fixes
+  * netlink-fix-use-after-free-in-netlink_run_handler.patch
+  * netlink-fix-leaked-instances-of-struct-nl_socket.patch
+  * netlink-do-not-send-messages-and-process-replies-in-.patch
+  * ethtool-Improve-compatibility-between-netlink-and-io.patch
+
+-------------------------------------------------------------------
 Thu Oct 15 18:50:12 UTC 2020 - Michal Kubecek <mkubecek@suse.cz>
 
 - update to new upstream release 5.9
