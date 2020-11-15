@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov  7 16:20:03 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fix build with RPM 4.16: few were missed fix these
+
+-------------------------------------------------------------------
 Mon Oct 12 15:37:39 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.16: error: bare words are no longer

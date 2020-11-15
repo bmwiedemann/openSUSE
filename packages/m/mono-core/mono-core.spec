@@ -593,7 +593,7 @@ cert-sync /etc/ssl/ca-bundle.pem
 Summary:        A Library for embedding Mono in your Application
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
-%if %{sgen}
+%if "%sgen" == "yes"
 Requires:       libmonosgen-2_0-1
 %else
 Requires:       libmonoboehm-2_0-1
@@ -621,7 +621,7 @@ Summary:        Development files for libmono
 License:        LGPL-2.1-only
 Group:          Development/Languages/Mono
 Requires:       libmono-2_0-1 = %{version}
-%if %{sgen}
+%if "%sgen" == "yes"
 Requires:       libmonosgen-2_0-devel
 %else
 Requires:       libmonoboehm-2_0-devel
