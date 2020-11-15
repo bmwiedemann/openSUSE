@@ -19,7 +19,7 @@
 %define skip_python2 1
 %define modname qsymm
 Name:           python-qsymm
-Version:        1.2.7
+Version:        1.3.0
 Release:        0
 Summary:        Symmetry finder and symmetric Hamiltonian generator
 License:        BSD-2-Clause
