@@ -34,4 +34,12 @@
 - update for Boost 1.74.0</comment>
     <requestid>829939</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>08a3bbff42bb9b3d48acf995cc88a853</srcmd5>
+    <version>1.74.0</version>
+    <time>1605450175</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848377</requestid>
+  </revision>
 </revisionlist>

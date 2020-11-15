@@ -245,6 +245,16 @@ serialization interface
 
 This package installs the default Boost version of the library.
 
+%package     -n libboost_nowide-devel
+Summary:        Development library for Boost.Nowide
+Group:          Development/Libraries/C and C++
+Requires:       libboost_nowide%{boost_version}-devel
+
+%description -n libboost_nowide-devel
+This package contains the Boost.Nowide development library.
+
+This package installs the default Boost version of the library.
+
 %package     -n python3-boost_parallel_mpi
 Summary:        Python 3.x bindings for Boost.Parallel.MPI library
 Group:          Development/Languages/Python

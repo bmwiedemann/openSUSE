@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 10 11:15:03 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Add devel subpackage for Boost.Nowide
+
+-------------------------------------------------------------------
 Thu Aug 27 09:20:07 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - remove python2 variants, no longer available
