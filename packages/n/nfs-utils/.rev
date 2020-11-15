@@ -1490,4 +1490,15 @@
 - Use %autosetup -p1 (forwarded request 844899 from pevik)</comment>
     <requestid>844948</requestid>
   </revision>
+  <revision rev="159" vrev="20">
+    <srcmd5>74f24dd9682b5f5b710a7861472b455b</srcmd5>
+    <version>unknown</version>
+    <time>1605450255</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing ldconfig calls for libnfsidmap1.
+[that is, unless there are already concrete plans to employ file triggers instead]
+
+- Throw out some remaining old rpm constructs. (forwarded request 847812 from jengelh)</comment>
+    <requestid>847956</requestid>
+  </revision>
 </revisionlist>

@@ -60,7 +60,6 @@ BuildRequires:  pkgconfig(libtirpc)
 BuildRequires:  pkgconfig(mount)
 BuildRequires:  pkgconfig(sqlite3)
 Suggests:       python-base
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_ordering}
 
 %description
@@ -243,11 +242,14 @@ fi
 %postun -n nfs-kernel-server
 %service_del_postun nfs-mountd.service nfs-server.service nfsdcld.service
 
+%post   -n libnfsidmap1 -p /sbin/ldconfig
+%postun -n libnfsidmap1 -p /sbin/ldconfig
+
 %verifyscript -n nfs-kernel-server
 %verify_permissions -e /var/lib/nfs/rmtab
 
 %files -n nfs-client
-%defattr(-,root,root)
+%license COPYING
 %config %{_sysconfdir}/idmapd.conf
 %config %{_sysconfdir}/nfsmount.conf
 %config %{_sysconfdir}/nfs.conf
@@ -330,7 +332,6 @@ fi
 %ghost %{_localstatedir}/lib/nfs/state
 
 %files -n nfs-kernel-server
-%defattr(-,root,root)
 %{_unitdir}/nfs-mountd.service
 %{_unitdir}/nfs-mountd.service.d
 %{_unitdir}/nfs-server.service

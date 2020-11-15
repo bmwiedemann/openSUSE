@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 11 13:31:48 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add missing ldconfig calls for libnfsidmap1.
+- Throw out some remaining old rpm constructs.
+
+-------------------------------------------------------------------
 Thu Oct 29 15:21:57 UTC 2020 - Petr Vorel <pvorel@suse.cz>
 
 - Update to version 2.5.2
