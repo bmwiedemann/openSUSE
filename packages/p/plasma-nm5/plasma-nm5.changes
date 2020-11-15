@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 11 11:08:07 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.3
+- Changes since 5.20.2:
+  * Do not show absurdedly high speeds on first update
+
+-------------------------------------------------------------------
 Wed Nov  4 21:10:58 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to support the compress parameter in .ovpn files (boo#1178258):
