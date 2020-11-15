@@ -1,7 +1,7 @@
 #
 # spec file for package midori
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define major   0
 Name:           midori
-Version:        v9.0
+Version:        9.0
 Release:        0
 Summary:        Lightweight Web Browser
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            http://midori-browser.org/
-Source:         %{name}-%{version}.tar.gz
+Source:         https://github.com//midori-browser/core/releases/download/v%{version}/%{name}-v%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
@@ -89,7 +89,7 @@ This package provides the GObject Introspection bindings for Midori.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -n %{name}-v%{version}
 
 %build
 %cmake -DCMAKE_INSTALL_PREFIX=/usr ..
