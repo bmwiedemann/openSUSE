@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Nov 13 13:03:55 UTC 2020 - rbrown@suse.com
+
+- Update to version 1.18.12:
+  * Do not skip externalLB update if some nodes are not found.
+  * Honor disabled LocalStorageCapacityIsolation in scheduling
+  * Correctly parse X-Stream-Protocol-Version header
+  * Disable watchcache for new events API for consistency with the old API
+  * test: add unit-test for TranslateCSIPVToInTree.
+  * fix azure file migration panic
+  * Re-add the event recorder in the release test
+  * Don't clear the cached resourcelock when errors occurs on updates
+  * Add failing test showing release is not working properly
+  * fix upgrade test
+  * Add lease release tests in leader election
+  * Generate complete leader election record to resolve leader election issues with LeaseLocks
+  * Fix a bug that Pods with topologySpreadConstraints get scheduled to nodes without required labels
+  * If we set SelectPolicy MinPolicySelect on scaleUp behavior or scaleDown behavior,Horizontal Pod Autoscaler doesn`t automatically scale the number of pods correctly
+  * Update the PIP when it is not in the Succeeded provisioning state during the LB update.
+  * Do not assume storageclass is still in-tree after csi migration
+  * Fixes high CPU usage in kubectl drain
+  * Ignore deleted pods.
+  * Automated cherry pick of #94781: Don't attempt to detach an FC device if we don't know its name
+  * don't cache transports for incomparable configs
+  * Update CHANGELOG/CHANGELOG-1.18.md for v1.18.10
+  * fix azure disk data loss issue on Windows
+  * fix azure disk attach failure for disk size bigger than 4TB
+  * e2e pods: add missing pod and node name in the formatted log line
+  * Updating kube-proxy to trim space from loadBalancerSourceRanges
+
+-------------------------------------------------------------------
 Tue Nov 10 08:56:41 UTC 2020 - David Cassany <dcassany@suse.com>
 
 - Build only kubernetes client subpackages on SLE

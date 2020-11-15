@@ -22,7 +22,7 @@
 %define baseversionminus1 1.17
 
 Name:           kubernetes%{baseversion}
-Version:        1.18.10
+Version:        1.18.12
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
