@@ -102,4 +102,21 @@
   * go#40974 cmd/link: sectionForAddress(0xA9D67F) address not in any section file (forwarded request 846529 from jfkw)</comment>
     <requestid>846533</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>36b47fb431a18a567e48df1b24128d69</srcmd5>
+    <version>1.15.5</version>
+    <time>1605450098</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.15.5 (released 2020-11-12) includes security fixes to the
+  cmd/go and math/big packages.
+  CVE-2020-28362 CVE-2020-28367 CVE-2020-28366
+  Refs boo#1175132 go1.15 release tracking
+  * boo#1178750 CVE-2020-28362
+  * go#42554 math/big: panic during recursive division of very large numbers
+  * boo#1178752 CVE-2020-28367
+  * go#42562 cmd/go: arbitrary code can be injected into cgo generated files
+  * boo#1178753 CVE-2020-28366
+  * go#42558 cmd/go: improper validation of cgo flags can lead to remote code execution at build time (forwarded request 848224 from jfkw)</comment>
+    <requestid>848227</requestid>
+  </revision>
 </revisionlist>
