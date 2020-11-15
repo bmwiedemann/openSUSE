@@ -17,13 +17,13 @@
 
 
 Name:           kustomize
-Version:        3.8.5
+Version:        3.8.7
 Release:        0
 Summary:        Customization of kubernetes YAML configurations
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/kubernetes-sigs/kustomize
-Source:         %{name}-%{name}-v%{version}.tar.gz
+Source:         https://github.com/kubernetes-sigs/kustomize/archive/kustomize/v%{version}.tar.gz#/%{name}-%{name}-v%{version}.tar.gz
 Source1:        vendor.tar.xz
 BuildRequires:  golang(API) = 1.13
 ExcludeArch:    s390

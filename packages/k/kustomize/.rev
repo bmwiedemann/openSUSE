@@ -68,4 +68,18 @@
     <comment></comment>
     <requestid>841143</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f9fc7972d4ff24855421396ae80364a4</srcmd5>
+    <version>3.8.7</version>
+    <time>1605450122</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.8.7
+  - Pin to api_v0.6.5
+- Refresh vendor.tar.xz
+
+- Update to version 3.8.6
+  - Pin to api 0.6.4
+- Refresh vendor.tar.xz</comment>
+    <requestid>848296</requestid>
+  </revision>
 </revisionlist>

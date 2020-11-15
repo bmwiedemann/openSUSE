@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 12 00:01:31 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
+
+- Update to version 3.8.7
+  - Pin to api_v0.6.5
+- Refresh vendor.tar.xz
+
+-------------------------------------------------------------------
+Tue Nov 10 01:55:55 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
+
+- Update to version 3.8.6
+  - Pin to api 0.6.4
+- Refresh vendor.tar.xz
+
+-------------------------------------------------------------------
 Thu Oct  8 09:26:15 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
 
 - Update to version 3.8.5
