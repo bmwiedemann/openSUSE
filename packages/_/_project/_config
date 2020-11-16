@@ -428,7 +428,7 @@ Prefer: libftdi-devel
 Prefer: tensorflow
 
 # have choice for python3-sip: python3-sip-devel python3-sip4
-Prefer: -python3-sip4
+Prefer: -python3-sip4 -python3-sip4-devel
 
 # There is python[23]-prompt_toolkit and also python3-prompt_toolkit1 for compat. Use the unversioned one by default
 Prefer: python3-prompt_toolkit
