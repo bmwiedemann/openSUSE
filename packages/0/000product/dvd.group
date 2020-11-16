@@ -126,7 +126,6 @@
     <package name="bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="bash-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="bash-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="bbswitch-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="bc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="bcm20702a1-firmware" supportstatus="unsupported"/> <!-- reason: dvd:bcm20702a1-firmware -->
     <package name="bcm43xx-firmware" supportstatus="unsupported"/> <!-- reason: dvd:bcm43xx-firmware -->
@@ -2038,7 +2037,6 @@
     <package name="libv4l" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libv4l1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libv4l2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libv4l2rds0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libv4lconvert0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libva-drm2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libva-glx2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2484,7 +2482,6 @@
     <package name="patterns-yast-yast2_desktop" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="patterns-yast-yast2_install_wf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_install_wf -->
     <package name="patterns-yast-yast2_server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
-    <package name="pcfclock-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pciutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pcmciautils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="pentaho-libxml" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3666,12 +3663,7 @@
     <package name="util-linux-systemd" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="util-macros-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="v4l-conf" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="v4l-utils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="v4l-utils-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="v4l2loopback-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="v4l2loopback-utils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="vacation" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="vhba-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="vim" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="vim-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="vim-data-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3962,7 +3954,9 @@
 <group name="dvd.i586">
   <conditional name="only_i586"/>
   <packagelist relationship="recommends">
+    <package name="bbswitch-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="elinks" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
+    <package name="libv4l2rds0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="nodejs10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="nodejs10-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="npm10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3980,6 +3974,7 @@
     <!-- patterns-xfce-xfce_basis uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
     <!-- patterns-xfce-xfce_laptop uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
     <!-- patterns-xfce-xfce_office uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
+    <package name="pcfclock-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <!-- pcsc-acr38 uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
     <!-- pcsc-asedriveiiie-usb uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
     <!-- pcsc-asekey uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
@@ -3987,6 +3982,11 @@
     <!-- pcsc-gempc uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
     <!-- pcsc-towitoko uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
     <!-- rng-tools uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
+    <package name="v4l-utils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="v4l-utils-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="v4l2loopback-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="v4l2loopback-utils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="vhba-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
   </packagelist>
 </group>
 <group name="dvd.x86_64">
@@ -4390,7 +4390,6 @@
     <package name="kdevplatform-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="kdialog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kdialog-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="kernel-default-base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="kernel-docs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="kf5-kcm-fcitx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kf5-kcm-fcitx-icons" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->

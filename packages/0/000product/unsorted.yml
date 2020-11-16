@@ -1194,6 +1194,7 @@ unsorted:
   - bb 
   - bbe 
   - bbswitch 
+  - bbswitch-kmp-default: [x86_64] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - bbswitch-kmp-pae: [i586] 
   - bcache-tools: [i586] 
   - bcal: [x86_64] 
@@ -13923,10 +13924,10 @@ unsorted:
   - libsundials_nvec5-openmpi1 
   - libsundials_nvec5-openmpi2 
   - libsundials_nvec5-openmpi3 
-  - libsuperlu 
   - libsuperlu-gnu-hpc 
   - libsuperlu5 
   - libsuperlu5-32bit: [x86_64] 
+  - libsuperlu_5_2_2-gnu-hpc 
   - libsvm-devel 
   - libsvm-java 
   - libsvm2 
@@ -14270,6 +14271,7 @@ unsorted:
   - libv4l-devel-32bit: [x86_64] 
   - libv4l1-0-32bit: [x86_64] 
   - libv4l2-0-32bit: [x86_64] 
+  - libv4l2rds0: [x86_64] 
   - libv4l2rds0-32bit: [x86_64] 
   - libv4lconvert0-32bit: [x86_64] 
   - libva-devel 
@@ -18541,6 +18543,7 @@ unsorted:
   - pcb-doc 
   - pcc 
   - pcfclock 
+  - pcfclock-kmp-default: [x86_64] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - pcfclock-kmp-pae: [i586] 
   - pciutils-devel 
   - pciutils-devel-32bit: [x86_64] 
@@ -20955,8 +20958,6 @@ unsorted:
   - python-mox3-doc 
   - python-mpi4py-common-devel 
   - python-mpi4py-doc 
-  - python-muranoclient 
-  - python-muranoclient-doc 
   - python-nautilus-common-devel 
   - python-nautilus-common-files 
   - python-ncclient-doc 
@@ -21047,7 +21048,6 @@ unsorted:
   - python2-keyrings.alt 
   - python2-libfwsi 
   - python2-libguestfs: [x86_64] 
-  - python2-moviepy 
   - python2-opencensus-ext-threading 
   - python2-pip 
   - python2-pycairo-common-devel 
@@ -22772,7 +22772,6 @@ unsorted:
   - python3-moreorless 
   - python3-moretools 
   - python3-moto 
-  - python3-moviepy 
   - python3-mox3 
   - python3-mpi4py 
   - python3-mpi4py-devel 
@@ -26364,6 +26363,9 @@ unsorted:
   - superlu-gnu-hpc-devel 
   - superlu-gnu-hpc-doc 
   - superlu-gnu-hpc-examples 
+  - superlu_5_2_2-gnu-hpc-devel 
+  - superlu_5_2_2-gnu-hpc-doc 
+  - superlu_5_2_2-gnu-hpc-examples 
   - supertux2 
   - supertuxkart 
   - supertuxkart-data 
@@ -35220,8 +35222,12 @@ unsorted:
   - uwsgi-xslt 
   - v2ray-core 
   - v4l-tools 
+  - v4l-utils: [x86_64] 
   - v4l-utils-devel-tools 
+  - v4l-utils-lang: [x86_64] 
+  - v4l2loopback-kmp-default: [x86_64] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - v4l2loopback-kmp-pae: [i586] 
+  - v4l2loopback-utils: [x86_64] 
   - vacuum-im 
   - vacuum-im-devel 
   - vacuum-im-lang 
@@ -35314,6 +35320,7 @@ unsorted:
   - vfontas 
   - vgrabbj 
   - vgrep 
+  - vhba-kmp-default: [x86_64] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - vhba-kmp-pae: [i586] 
   - vhostmd 
   - vidcutter 
