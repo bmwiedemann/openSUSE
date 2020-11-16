@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.9
-%define patchversion 5.9.1
+%define patchversion 5.9.8
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -68,9 +68,9 @@ Name:           kernel-debug
 Summary:        A Debug Version of the Kernel
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.9.1
+Version:        5.9.8
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g435e92d
+Release:        <RELEASE>.gea93937
 %else
 Release:        0
 %endif
@@ -179,10 +179,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-435e92d56d394d19f6e8d6bfa2fcfe909943e076
-Provides:       kernel-srchash-435e92d56d394d19f6e8d6bfa2fcfe909943e076
+Provides:       kernel-%build_flavor-base-srchash-ea9393740a2e1ec61d5f3ca2bdad4e3389c7f77e
+Provides:       kernel-srchash-ea9393740a2e1ec61d5f3ca2bdad4e3389c7f77e
 # END COMMON DEPS
-Provides:       %name-srchash-435e92d56d394d19f6e8d6bfa2fcfe909943e076
+Provides:       %name-srchash-ea9393740a2e1ec61d5f3ca2bdad4e3389c7f77e
 %ifarch ppc64
 Provides:       kernel-kdump = 2.6.28
 Obsoletes:      kernel-kdump <= 2.6.28
@@ -1270,7 +1270,7 @@ fi
 
 %preun -n cluster-md-kmp-%build_flavor
 nvr=cluster-md-kmp-%build_flavor-%version-%release
-rpm -ql "$nvr" | grep '\.ko$' > "/var/run/rpm-$nvr-modules"
+rpm -ql "$nvr" | grep '\.ko\(\.xz\)\?$' > "/var/run/rpm-$nvr-modules"
 
 %postun -n cluster-md-kmp-%build_flavor
 wm2=/usr/lib/module-init-tools/weak-modules2
@@ -1311,7 +1311,7 @@ fi
 
 %preun -n dlm-kmp-%build_flavor
 nvr=dlm-kmp-%build_flavor-%version-%release
-rpm -ql "$nvr" | grep '\.ko$' > "/var/run/rpm-$nvr-modules"
+rpm -ql "$nvr" | grep '\.ko\(\.xz\)\?$' > "/var/run/rpm-$nvr-modules"
 
 %postun -n dlm-kmp-%build_flavor
 wm2=/usr/lib/module-init-tools/weak-modules2
@@ -1352,7 +1352,7 @@ fi
 
 %preun -n gfs2-kmp-%build_flavor
 nvr=gfs2-kmp-%build_flavor-%version-%release
-rpm -ql "$nvr" | grep '\.ko$' > "/var/run/rpm-$nvr-modules"
+rpm -ql "$nvr" | grep '\.ko\(\.xz\)\?$' > "/var/run/rpm-$nvr-modules"
 
 %postun -n gfs2-kmp-%build_flavor
 wm2=/usr/lib/module-init-tools/weak-modules2
@@ -1408,7 +1408,7 @@ fi
 
 %preun -n kselftests-kmp-%build_flavor
 nvr=kselftests-kmp-%build_flavor-%version-%release
-rpm -ql "$nvr" | grep '\.ko$' > "/var/run/rpm-$nvr-modules"
+rpm -ql "$nvr" | grep '\.ko\(\.xz\)\?$' > "/var/run/rpm-$nvr-modules"
 
 %postun -n kselftests-kmp-%build_flavor
 wm2=/usr/lib/module-init-tools/weak-modules2
@@ -1450,7 +1450,7 @@ fi
 
 %preun -n ocfs2-kmp-%build_flavor
 nvr=ocfs2-kmp-%build_flavor-%version-%release
-rpm -ql "$nvr" | grep '\.ko$' > "/var/run/rpm-$nvr-modules"
+rpm -ql "$nvr" | grep '\.ko\(\.xz\)\?$' > "/var/run/rpm-$nvr-modules"
 
 %postun -n ocfs2-kmp-%build_flavor
 wm2=/usr/lib/module-init-tools/weak-modules2
@@ -1491,7 +1491,7 @@ fi
 
 %preun -n reiserfs-kmp-%build_flavor
 nvr=reiserfs-kmp-%build_flavor-%version-%release
-rpm -ql "$nvr" | grep '\.ko$' > "/var/run/rpm-$nvr-modules"
+rpm -ql "$nvr" | grep '\.ko\(\.xz\)\?$' > "/var/run/rpm-$nvr-modules"
 
 %postun -n reiserfs-kmp-%build_flavor
 wm2=/usr/lib/module-init-tools/weak-modules2

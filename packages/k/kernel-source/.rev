@@ -5264,4 +5264,11 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1178822</comment>
   </revision>
+  <revision rev="563" vrev="2">
+    <srcmd5>dd6c4937f10cc5268fb33045c20e8b63</srcmd5>
+    <version>5.9.8</version>
+    <time>1605521141</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1178822 was an OBS bug; back up</comment>
+  </revision>
 </revisionlist>
