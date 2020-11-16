@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 16 14:41:49 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Fix package name, re-add lines removed by mistake. 
+  This fix duplicate binary names. (boo#1178840)
+
+-------------------------------------------------------------------
 Mon Oct 26 14:11:13 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - New version 5.2.2 (boo#1178112)

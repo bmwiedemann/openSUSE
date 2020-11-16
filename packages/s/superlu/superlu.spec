@@ -21,6 +21,7 @@
 # Base package name
 %define pname superlu
 %define ver 5.2.2
+%define _ver %(echo %{ver} | tr . _)
 
 %if "%flavor" == ""
 ExclusiveArch:  do_not_build
@@ -75,6 +76,7 @@ ExclusiveArch:  do_not_build
 %define libname lib%{name}%{?_sover}
 %else
 %{hpc_init -c %compiler_family %{?c_f_ver:-v %{c_f_ver}} %{?ext:-e %{ext}}}
+%define package_name %{hpc_package_name %_ver}
 %define p_prefix %hpc_prefix
 %define p_includedir %hpc_includedir
 %define p_libdir %hpc_libdir
