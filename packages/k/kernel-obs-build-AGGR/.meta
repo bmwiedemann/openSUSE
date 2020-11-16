@@ -1,5 +1,9 @@
 <package name="kernel-obs-build-AGGR" project="openSUSE:Factory">
   <title>The Linux Kernel Sources</title>
   <description>Linux kernel sources with many fixes and improvements.</description>
+  <build>
+    <disable repository="images"/>
+    <disable/>
+  </build>
   <bcntsynctag>kernel-source</bcntsynctag>
 </package>
