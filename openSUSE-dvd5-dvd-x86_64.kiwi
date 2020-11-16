@@ -203,7 +203,6 @@
       <repopackage name="bash-completion"/>
       <repopackage name="bash-doc"/>
       <repopackage name="bash-lang"/>
-      <repopackage name="bbswitch-kmp-default"/>
       <repopackage name="bc"/>
       <repopackage name="bcm20702a1-firmware"/>
       <repopackage name="bcm43xx-firmware"/>
@@ -1173,7 +1172,6 @@
       <repopackage name="kdoctools-lang"/>
       <repopackage name="kdump"/>
       <repopackage name="kernel-default"/>
-      <repopackage name="kernel-default-base" arch="x86_64"/>
       <repopackage name="kernel-docs" arch="x86_64"/>
       <repopackage name="kernel-firmware-all"/>
       <repopackage name="kernel-firmware-amdgpu"/>
@@ -2937,7 +2935,6 @@
       <repopackage name="libv4l"/>
       <repopackage name="libv4l1-0"/>
       <repopackage name="libv4l2-0"/>
-      <repopackage name="libv4l2rds0"/>
       <repopackage name="libv4lconvert0"/>
       <repopackage name="libva-drm2"/>
       <repopackage name="libva-glx2"/>
@@ -3651,7 +3648,6 @@
       <repopackage name="patterns-yast-yast2_server"/>
       <repopackage name="pavucontrol" arch="x86_64"/>
       <repopackage name="pavucontrol-lang" arch="x86_64"/>
-      <repopackage name="pcfclock-kmp-default"/>
       <repopackage name="pciutils"/>
       <repopackage name="pcmciautils"/>
       <repopackage name="pcsc-acr38" arch="x86_64"/>
@@ -5112,14 +5108,9 @@
       <repopackage name="util-linux-systemd"/>
       <repopackage name="util-macros-devel"/>
       <repopackage name="v4l-conf"/>
-      <repopackage name="v4l-utils"/>
-      <repopackage name="v4l-utils-lang"/>
-      <repopackage name="v4l2loopback-kmp-default"/>
-      <repopackage name="v4l2loopback-utils"/>
       <repopackage name="vacation"/>
       <repopackage name="vala" arch="x86_64"/>
       <repopackage name="vcdimager" arch="x86_64"/>
-      <repopackage name="vhba-kmp-default"/>
       <repopackage name="vim"/>
       <repopackage name="vim-data"/>
       <repopackage name="vim-data-common"/>

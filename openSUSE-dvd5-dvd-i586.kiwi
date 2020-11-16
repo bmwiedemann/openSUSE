@@ -140,7 +140,7 @@
       <repopackage name="bash-completion"/>
       <repopackage name="bash-doc"/>
       <repopackage name="bash-lang"/>
-      <repopackage name="bbswitch-kmp-default"/>
+      <repopackage name="bbswitch-kmp-default" arch="i586,i686"/>
       <repopackage name="bc"/>
       <repopackage name="bcm20702a1-firmware"/>
       <repopackage name="bcm43xx-firmware"/>
@@ -2011,7 +2011,7 @@
       <repopackage name="libv4l"/>
       <repopackage name="libv4l1-0"/>
       <repopackage name="libv4l2-0"/>
-      <repopackage name="libv4l2rds0"/>
+      <repopackage name="libv4l2rds0" arch="i586,i686"/>
       <repopackage name="libv4lconvert0"/>
       <repopackage name="libva-drm2"/>
       <repopackage name="libva-glx2"/>
@@ -2537,7 +2537,7 @@
       <repopackage name="patterns-yast-yast2_desktop"/>
       <repopackage name="patterns-yast-yast2_install_wf"/>
       <repopackage name="patterns-yast-yast2_server"/>
-      <repopackage name="pcfclock-kmp-default"/>
+      <repopackage name="pcfclock-kmp-default" arch="i586,i686"/>
       <repopackage name="pciutils"/>
       <repopackage name="pcmciautils"/>
       <repopackage name="pentaho-libxml"/>
@@ -3719,12 +3719,12 @@
       <repopackage name="util-linux-systemd"/>
       <repopackage name="util-macros-devel"/>
       <repopackage name="v4l-conf"/>
-      <repopackage name="v4l-utils"/>
-      <repopackage name="v4l-utils-lang"/>
-      <repopackage name="v4l2loopback-kmp-default"/>
-      <repopackage name="v4l2loopback-utils"/>
+      <repopackage name="v4l-utils" arch="i586,i686"/>
+      <repopackage name="v4l-utils-lang" arch="i586,i686"/>
+      <repopackage name="v4l2loopback-kmp-default" arch="i586,i686"/>
+      <repopackage name="v4l2loopback-utils" arch="i586,i686"/>
       <repopackage name="vacation"/>
-      <repopackage name="vhba-kmp-default"/>
+      <repopackage name="vhba-kmp-default" arch="i586,i686"/>
       <repopackage name="vim"/>
       <repopackage name="vim-data"/>
       <repopackage name="vim-data-common"/>
