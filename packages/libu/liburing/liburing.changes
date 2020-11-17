@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 30 21:42:16 UTC 2020 - Milan Savić <milsav92@outlook.com>
+
+!!IMPORTANT!!
+Version 0.7 BREAKS ABI COMPATIBILITY WITHOUT CHANGING THE SONAME!!!
+https://github.com/axboe/liburing/issues/228
+SONAME is bumped to 2 in commit 25bbcbef3e0a8bfba8044be55d08d5116c51dccd
+im master branch.
+!!!IMPORTANT!!!
+
+- Update to version 0.6
+  - removed barrier.h-add-generic-smp_mb-implementation.patch since
+    it was merged in commit ba97eaf8f9ef2030d581be10df9d875dbfadc91d
+- License changed to match upstream
+
+-------------------------------------------------------------------
 Thu Dec 12 09:20:32 UTC 2019 - Johannes Thumshirn <jthumshirn@suse.com>
 
 - Fix builds on ppc64le and s390x (bsc#1159055)

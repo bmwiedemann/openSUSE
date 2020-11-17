@@ -1,7 +1,7 @@
 #
 # spec file for package liburing
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,16 @@
 Name:           liburing
 %define so_ver  1
 %define lname   %{name}%{so_ver}
-Version:        0.2
+Version:        0.6
 Release:        0
 Summary:        Linux-native io_uring I/O access library
-License:        LGPL-2.1-or-later
+License:        (GPL-2.0-only AND LGPL-2.1-or-later) OR MIT
 Group:          Development/Libraries/C and C++
 URL:            https://git.kernel.dk/cgit/liburing
 Source:         https://git.kernel.dk/cgit/liburing/snapshot/%{name}-%{version}.tar.gz
 Requires:       kernel-default >= 5.1
-Patch0:         barrier.h-add-generic-smp_mb-implementation.patch
+BuildRequires:  gcc
+BuildRequires:  pkg-config
 
 %description
 Provides native async IO for the Linux kernel, in a fast and efficient
@@ -53,19 +54,26 @@ for the Linux-native io_uring.
 
 %prep
 %setup -n %name-%version
-%patch0 -p1
 
 %build
-./configure --prefix=%{_prefix} --libdir=/%{_libdir} --mandir=%{_mandir} --includedir=%{_includedir}
+./configure --prefix=%{_prefix} \
+            --includedir=%{_includedir} \
+            --libdir=/%{_libdir} \
+            --libdevdir=/%{_libdir} \
+            --mandir=%{_mandir} \
+            --datadir=%{_datadir}
 make %{?_smp_mflags}
 
 %install
 %make_install
 rm %{buildroot}%{_libdir}/%{name}.a
 
+%post -n %{lname} -p /sbin/ldconfig
+%postun -n %{lname} -p /sbin/ldconfig
+
 %files -n %{lname}
 %{_libdir}/liburing.so.*
-%license COPYING
+%license COPYING COPYING.GPL LICENSE
 
 %files devel
 %{_includedir}/liburing/
