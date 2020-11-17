@@ -99,4 +99,41 @@
    World of Warcraft.</comment>
     <requestid>821824</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fb9435d071605be4bcac51fc39cc4f8a</srcmd5>
+    <version>0.5.8</version>
+    <time>1605644698</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.8:
+  * 3rd party services are now available from the main window
+  * The &quot;Import games&quot; window has been removed. The concept of
+    importing games from other services into Lutris has been removed.
+  * Syncing games from other services on start has been removed.
+  * Integration with the lutris website such as login and showing your
+    library has been delegated to the 'lutris' service in the sidebar.
+  * The lutris service gives the option of searching your library or the whole
+    lutris.net library.
+  * Games from 3rd party services no longer depend on an install script to be
+    present on the website. Lutris will automatically install games with an
+    auto-generated script. Scripts from the website take precedence if available.
+  * Steam games are directly loaded from the Steam API and it is no longer needed
+    to sync your Steam library on the lutris website to see all your Steam games.
+  * Game banners and icons are downloaded from the services themselves. This
+    allows for customized media size in the UI based on what's available from the
+    service.
+  * Added option to hide the text under the icons
+  * The installer game cache configuration has been moved to the installer
+    window.
+  * Installers now offer the choice between downloaded files, custom user
+    provided files or cached files (when available).
+  * Bonus content for GOG games such as manuals or soundtracks can now be
+    downloaded as part of the install process. Selected content are downloaded
+    in a 'extras' folder in the game folder. Those files will likely be in
+    compressed format.
+  * The right side bar has been moved to the bottom of the window to optimize
+    space and to declutter the overall design. Game actions are now shown in a
+    popover menu displayed next to the play button. Runner actions, if available
+    (for example, wine), will show up in a popover menu next to the runner icon.</comment>
+    <requestid>848802</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %global appid net.lutris.Lutris
 Name:           lutris
-Version:        0.5.7.1
+Version:        0.5.8
 Release:        0
 Summary:        Manager for game installation and execution
 License:        GPL-3.0-or-later
@@ -33,7 +33,11 @@ BuildRequires:  python3-gobject
 BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 Requires:       cabextract
+#
+Requires:       curl
 Requires:       fluid-soundfont-gm
+Requires:       p7zip
+Requires:       psmisc
 Requires:       python3-Pillow
 Requires:       python3-PyYAML
 # controller support
@@ -41,10 +45,6 @@ Requires:       python3-evdev
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-requests
-#
-Requires:       curl
-Requires:       p7zip
-Requires:       psmisc
 Requires:       xrandr
 Recommends:     winetricks
 BuildArch:      noarch
@@ -57,7 +57,7 @@ or emulated console games and browser games.
 
 %prep
 %setup -q -n %{name}
-sed -i "s|!/usr/bin/env python3|!/usr/bin/python3|" share/lutris/bin/lutris-wrapper
+sed -i "s|!%{_bindir}/env python3|!%{_bindir}/python3|" share/lutris/bin/lutris-wrapper
 
 %build
 %py3_build
@@ -81,7 +81,7 @@ sed -i "s|!/usr/bin/env python3|!/usr/bin/python3|" share/lutris/bin/lutris-wrap
 %doc README.rst CONTRIBUTING.md AUTHORS
 %license LICENSE
 %{_bindir}/%{name}
-%{_mandir}/%{name}.1
+%{_mandir}/man1/%{name}.1%{?ext_man}
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{appid}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
