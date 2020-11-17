@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 14 22:09:41 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Let CMake files in {llvm,clang}X-devel refer to the versioned
+  binaries that come with the package instead of the symlink
+  managed by update-alternatives. (boo#1178513)
+
+-------------------------------------------------------------------
 Mon Oct 19 21:57:00 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Don't build clang-tools, libc++ and python3-clang anymore,

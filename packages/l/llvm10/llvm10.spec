@@ -981,6 +981,13 @@ for p in "${manfiles[@]}" ; do
     ln -s -f %{_sysconfdir}/alternatives/$p.1%{ext_man} %{buildroot}%{_mandir}/man1/$p.1%{ext_man}
 done
 
+# Also rewrite the CMake files referring to the binaries.
+sed -i "$(
+    for p in "${binfiles[@]}"; do
+        echo "s|\"\${_IMPORT_PREFIX}/bin/$p\"|\"\${_IMPORT_PREFIX}/bin/$p-%{_relver}\"|g"
+    done
+)" %{buildroot}%{_libdir}/cmake/{llvm/LLVMExports,clang/ClangTargets}-relwithdebinfo.cmake
+
 # rpm macro for version checking
 mkdir -p %{buildroot}%{_rpmconfigdir}/macros.d/
 cat > %{buildroot}%{_rpmconfigdir}/macros.d/macros.llvm <<EOF
