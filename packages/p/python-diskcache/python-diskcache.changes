@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 17 05:43:53 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.1.0:
+  * Support transactions in FanoutCache (probably a bad idea)
+  * Prevent cache shard attribute access when unsafe
+
+-------------------------------------------------------------------
 Thu Sep 17 11:24:06 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 5.0.3:

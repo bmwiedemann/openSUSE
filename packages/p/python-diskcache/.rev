@@ -55,4 +55,14 @@
   * add documentation about cache volume caveats</comment>
     <requestid>835168</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bca9771441f9b03dee96d396a7c75c72</srcmd5>
+    <version>5.1.0</version>
+    <time>1605644788</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.0:
+  * Support transactions in FanoutCache (probably a bad idea)
+  * Prevent cache shard attribute access when unsafe</comment>
+    <requestid>849007</requestid>
+  </revision>
 </revisionlist>

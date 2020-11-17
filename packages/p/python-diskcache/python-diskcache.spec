@@ -19,11 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-diskcache
-Version:        5.0.3
+Version:        5.1.0
 Release:        0
 Summary:        Disk and file backed cache
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            http://www.grantjenks.com/docs/diskcache/
 Source:         https://github.com/grantjenks/python-diskcache/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module Django}
