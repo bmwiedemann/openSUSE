@@ -47,7 +47,6 @@ Source11:       unix2_chkpwd.8
 Source12:       pam-login_defs-check.sh
 Patch2:         pam-limit-nproc.patch
 Patch4:         pam-hostnames-in-access_conf.patch
-Patch5:         pam-xauth_ownership.patch
 BuildRequires:  audit-devel
 BuildRequires:  bison
 BuildRequires:  cracklib-devel
@@ -140,7 +139,6 @@ removed with one of the next releases.
 cp -a %{SOURCE12} .
 %patch2 -p1
 %patch4 -p1
-%patch5 -p1
 
 %build
 bash ./pam-login_defs-check.sh
@@ -212,6 +210,8 @@ for i in pam_*/README; do
 	cp -fpv "$i" "$DOC/modules/README.${i%/*}"
 done
 popd
+# XXX Remove until whitelisted
+rm %{buildroot}/%{_lib}/security/pam_faillock.so
 # Install unix2_chkpwd
 install -m 755 %{_builddir}/unix2_chkpwd %{buildroot}/sbin/
 install -m 644 %{_sourcedir}/unix2_chkpwd.8 %{buildroot}/%{_mandir}/man8/
@@ -338,7 +338,7 @@ done
 /%{_lib}/security/pam_env.so
 /%{_lib}/security/pam_exec.so
 /%{_lib}/security/pam_faildelay.so
-/%{_lib}/security/pam_faillock.so
+#/%{_lib}/security/pam_faillock.so
 /%{_lib}/security/pam_filter.so
 %dir /%{_lib}/security/pam_filter
 /%{_lib}/security//pam_filter/upperLOWER

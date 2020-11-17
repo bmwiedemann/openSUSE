@@ -872,4 +872,11 @@
   [bsc#1171016, pam.spec]</comment>
     <requestid>847481</requestid>
   </revision>
+  <revision rev="106" vrev="5">
+    <srcmd5>bbab3ebdb9e522d8383065a97ad36dbc</srcmd5>
+    <version>1.4.0</version>
+    <time>1605611388</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1177858</comment>
+  </revision>
 </revisionlist>
