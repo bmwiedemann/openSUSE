@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 13 16:45:00 UTC 2019 - Tranter Madi <trmdi@yandex.com>
+
+- Add fix_the_shift_key_bug_in_chromium.patch
+  * Backport the fix for: https://github.com/fcitx/fcitx-unikey/issues/24
+
+-------------------------------------------------------------------
 Tue Aug 27 15:08:10 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Remove the Qt4 requirement for openSUSE Leap 15.2 and Tumbleweed

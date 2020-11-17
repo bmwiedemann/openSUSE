@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx-unikey
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://gitlab.com/fcitx/fcitx-unikey
 Source:         https://download.fcitx-im.org/fcitx-unikey/%{name}-%{version}.tar.xz
 #PATCH-FIX-UPSTREAM lower qt5 version
 Patch0:         qt5-version.patch
+#BACKPORT
+Patch1:         fix_the_shift_key_bug_in_chromium.patch
 BuildRequires:  cmake
 BuildRequires:  fcitx-devel >= 4.2.3
 BuildRequires:  fcitx-qt5-devel
@@ -45,6 +47,7 @@ fcitx-unikey provides support for Vietnamese unikey IM.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %cmake
