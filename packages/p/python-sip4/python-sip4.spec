@@ -58,6 +58,9 @@ Obsoletes:      python-%{mname} < %{version}-%{release}
 Provides:       %{oldpython}-%{mname} = %{version}-%{release}
 Obsoletes:      %{oldpython}-%{mname} < %{version}-%{release}
 %endif
+%if %{with pyqt_modules}
+Conflicts:      python-qt5-sip
+%endif
 %python_subpackages
 
 %description
@@ -275,6 +278,6 @@ mkdir -p %{buildroot}%{_datadir}/sip
 %files -n python-%{pname}-common
 %license LICENSE*
 %{_rpmconfigdir}/macros.d/macros.python_all-sip4
-%{_datadir}/sip/
+%dir %{_datadir}/sip/
 
 %changelog

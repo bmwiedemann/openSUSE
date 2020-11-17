@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 15 23:56:01 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Conflict with python-qt5-sip in distros where we still provide
+  the PyQt5.sip library
+
+-------------------------------------------------------------------
 Sun Oct 25 22:44:01 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - only make install in siplib for PyQt4.sip and PyQt5.sip libraries

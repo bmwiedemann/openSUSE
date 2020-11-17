@@ -7,4 +7,12 @@
     <comment>Legacy version of SIP for packages requiring the old build approach</comment>
     <requestid>846182</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>de67dd61601a5a366ca322fb07e19a38</srcmd5>
+    <version>4.19.24</version>
+    <time>1605644749</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848897</requestid>
+  </revision>
 </revisionlist>
