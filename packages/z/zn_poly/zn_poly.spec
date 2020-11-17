@@ -47,6 +47,7 @@ is any modulus that fits into an unsigned long.
 Summary:        Development files for the zn_poly library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
+Requires:       %lname = %version
 
 %description devel
 zn_poly is a C library for polynomial arithmetic in Z/nZ[x], where n
