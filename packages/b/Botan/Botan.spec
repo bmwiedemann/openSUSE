@@ -16,15 +16,15 @@
 #
 
 
-%define version_suffix 2-16
+%define version_suffix 2-17
 %define short_version 2
 Name:           Botan
-Version:        2.16.0
+Version:        2.17.2
 Release:        0
 Summary:        A C++ Crypto Library
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
-URL:            http://botan.randombit.net
+URL:            https://botan.randombit.net
 Source0:        http://botan.randombit.net/releases/Botan-%{version}.tar.xz
 Source1:        http://botan.randombit.net/releases/Botan-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
@@ -100,7 +100,7 @@ python3 ./configure.py \
   --with-bzip2 \
   --with-zlib \
   --with-openssl \
-%ifarch %ix86
+%ifarch %{ix86}
   --cpu=x86_32
 %else
 %ifarch %{arm}
@@ -110,7 +110,7 @@ python3 ./configure.py \
 %endif
 %endif
 
-make %{?_smp_mflags} WARN_FLAGS="%{optflags}"
+%make_build WARN_FLAGS="%{optflags}"
 
 %install
 sed -i 's/env python/env python3/' src/scripts/install.py
