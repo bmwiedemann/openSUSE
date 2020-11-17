@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Nov 15 11:26:05 UTC 2020 - mliska@suse.cz
+
+- Update to version 2.0.0+git.20201115.492d2d7:
+  * Add Leap 15 and fix shebang.
+
+-------------------------------------------------------------------
+Sun Nov 15 09:51:03 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.9.0+git.20201115.cfdc482:
+  * Bump to v2.0.0.
+  * Remove E122 exception.
+  * Add exceptions for remaining flake8 errors.
+  * Fix E128 errors.
+  * Fix E302 flake8 errors.
+  * Start using ' for quoting.
+
+-------------------------------------------------------------------
+Sun Nov 15 07:14:55 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.9.0+git.20201115.0600c14:
+  * Fix importlib mechanism again.
+  * Fix Fedora docker files.
+
+-------------------------------------------------------------------
+Sun Nov 15 06:56:30 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.9.0+git.20201115.838ba74:
+  * Finish flake8 clean up.
+  * Clean up relative imports and * imports.
+  * Fix first part of flake8 issues.
+
+-------------------------------------------------------------------
 Fri Nov 13 08:11:48 UTC 2020 - mliska@suse.cz
 
 - Update to version 1.9.0+git.20201113.53eb76b:

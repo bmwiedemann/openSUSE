@@ -372,4 +372,30 @@
   * Use proper shebang.</comment>
     <requestid>848294</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b61a65156deb893bbfc856babc3c6be9</srcmd5>
+    <version>2.0.0+git.20201115.492d2d7</version>
+    <time>1605644635</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.0+git.20201115.492d2d7:
+  * Add Leap 15 and fix shebang.
+
+- Update to version 1.9.0+git.20201115.cfdc482:
+  * Bump to v2.0.0.
+  * Remove E122 exception.
+  * Add exceptions for remaining flake8 errors.
+  * Fix E128 errors.
+  * Fix E302 flake8 errors.
+  * Start using ' for quoting.
+
+- Update to version 1.9.0+git.20201115.0600c14:
+  * Fix importlib mechanism again.
+  * Fix Fedora docker files.
+
+- Update to version 1.9.0+git.20201115.838ba74:
+  * Finish flake8 clean up.
+  * Clean up relative imports and * imports.
+  * Fix first part of flake8 issues.</comment>
+    <requestid>848702</requestid>
+  </revision>
 </revisionlist>
