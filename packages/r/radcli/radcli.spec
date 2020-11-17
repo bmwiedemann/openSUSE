@@ -2,7 +2,7 @@
 # spec file for package radcli
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2019-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,18 @@
 #
 
 
-%define sover 4
+%define sover 5
 Name:           radcli
-Version:        1.2.12
+Version:        1.3.0
 Release:        0
 Summary:        A RADIUS client library
 License:        MIT AND BSD-2-Clause
 Group:          Development/Languages/C and C++
 URL:            http://radcli.github.io/radcli/
-Source:         https://github.com/radcli/radcli/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/radcli/radcli/archive/%{version}.tar.gz#/%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(nettle)
@@ -71,6 +74,8 @@ This package contains the compatibility headers and libraries for freeradius-cli
 %setup -q
 
 %build
+touch config.rpath
+autoreconf -fiv
 %configure \
     --disable-static \
     --disable-rpath \
@@ -91,7 +96,7 @@ make check %{?_smp_mflags}
 
 %files
 %license COPYRIGHT
-%doc AUTHORS NEWS README.rst
+%doc AUTHORS NEWS README.md
 %dir %{_sysconfdir}/radcli
 %config(noreplace) %{_sysconfdir}/radcli/radiusclient-tls.conf
 %config(noreplace) %{_sysconfdir}/radcli/radiusclient.conf
