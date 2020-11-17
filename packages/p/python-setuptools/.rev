@@ -738,4 +738,18 @@
      to invoking _install_setup_requires, broken since v42.0.0.</comment>
     <requestid>826260</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>86441b3891d1b00aa4b3eeb7ce611d4a</srcmd5>
+    <version>44.1.1</version>
+    <time>1605644486</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid duplicite wheel name in the generated package, and we actually
+  don't need a subpackage at all.
+- Make wheel a separate build run to avoid the setuptools/wheel build
+  cycle.
+- Add wheel subpackage with the generated wheel for this package
+  (bsc#1176262, CVE-2019-20916).
+</comment>
+    <requestid>848902</requestid>
+  </revision>
 </revisionlist>

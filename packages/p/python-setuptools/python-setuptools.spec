@@ -22,9 +22,16 @@
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
+%bcond_with wheel
+%else
+%if "%{flavor}" == "wheel"
+%define psuffix -wheel
+%bcond_without wheel
 %else
 %define psuffix %{nil}
 %bcond_with test
+%bcond_with wheel
+%endif
 %endif
 %bcond_without python2
 Name:           python-setuptools%{psuffix}
@@ -80,6 +87,9 @@ Recommends:     ca-certificates-mozilla
 Provides:       %{oldpython}-distribute = %{version}
 Obsoletes:      %{oldpython}-distribute < %{version}
 %endif
+%if %{with wheel}
+BuildRequires:  %{python_module wheel}
+%endif
 %python_subpackages
 
 %description
@@ -121,13 +131,22 @@ find ./ -type f -name \*.py -exec sed -i  \
   {} \;
 
 %build
+%if ! %{with wheel}
 %python_build
+%else
+%python_exec setup.py bdist_wheel --universal
+%endif
 
 %install
-%if !%{with test}
+%if !%{with test} && !%{with wheel}
 %python_install
 %prepare_alternative easy_install
+
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
+
+%if %{with wheel}
+%python_expand install -D -m 0644 -t %{buildroot}%{$python_sitelib}/../wheels dist/*.whl
 %endif
 
 %check
@@ -140,14 +159,16 @@ export PYTHONPATH=$(pwd)
 %pytest -k 'not (test_clean_env_install or test_pip_upgrade_from_source or test_test_command_install_requirements or test_no_missing_dependencies)'
 %endif
 
-%if !%{with test}
+%if !%{with test} && !%{with wheel}
 %post
 %python_install_alternative easy_install
 
 %postun
 %python_uninstall_alternative easy_install
+%endif
 
 %files %{python_files}
+%if !%{with test} && !%{with wheel}
 %license LICENSE
 %doc CHANGES.rst README.rst
 %python_alternative %{_bindir}/easy_install
@@ -157,6 +178,11 @@ export PYTHONPATH=$(pwd)
 %pycache_only %{python_sitelib}/__pycache__/easy_install.*
 %dir %{python_sitelib}/pkg_resources
 %{python_sitelib}/pkg_resources/*
+%endif
+
+%if %{with wheel}
+%dir %{python_sitelib}/../wheels
+%{python_sitelib}/../wheels/*
 %endif
 
 %changelog

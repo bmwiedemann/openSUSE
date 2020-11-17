@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Nov 16 14:02:34 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Avoid duplicite wheel name in the generated package, and we actually
+  don't need a subpackage at all.
+
+-------------------------------------------------------------------
+Thu Nov 12 16:09:08 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Make wheel a separate build run to avoid the setuptools/wheel build
+  cycle.
+
+-------------------------------------------------------------------
+Tue Nov 10 09:21:02 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add wheel subpackage with the generated wheel for this package
+  (bsc#1176262, CVE-2019-20916).
+
+-------------------------------------------------------------------
 Thu Aug 13 11:03:41 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 44.1.0
