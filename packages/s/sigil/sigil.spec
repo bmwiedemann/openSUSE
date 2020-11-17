@@ -18,7 +18,7 @@
 
 %define sigil_doc_version 2019.09.03
 Name:           sigil
-Version:        1.3.0
+Version:        1.4.1
 Release:        0
 Summary:        WYSIWYG Ebook Editor
 License:        GPL-3.0-only
@@ -158,11 +158,11 @@ cmake -G "Unix Makefiles" \
 mkdir -p %{buildroot}%{_datadir}/applications
 
 # install icons for the .desktop file
-install -m644 -D src/Resource_Files/icon/app_icon_16.png %{buildroot}%{_datadir}/icons/hicolor/16x16/apps/sigil.png
-install -m644 -D src/Resource_Files/icon/app_icon_32.png %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/sigil.png
-install -m644 -D src/Resource_Files/icon/app_icon_48.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/sigil.png
-install -m644 -D src/Resource_Files/icon/app_icon_128.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/sigil.png
-install -m644 -D src/Resource_Files/icon/app_icon_256.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/sigil.png
+install -m644 -D src/Resource_Files/icon/app_icons_orig/app_icon_16.png %{buildroot}%{_datadir}/icons/hicolor/16x16/apps/sigil.png
+install -m644 -D src/Resource_Files/icon/app_icons_orig/app_icon_32.png %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/sigil.png
+install -m644 -D src/Resource_Files/icon/app_icons_orig/app_icon_48.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/sigil.png
+install -m644 -D src/Resource_Files/icon/app_icons_orig/app_icon_128.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/sigil.png
+install -m644 -D src/Resource_Files/icon/app_icons_orig/app_icon_256.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/sigil.png
 install -m644 %{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %suse_update_desktop_file %{name}
@@ -200,6 +200,8 @@ popd
 %{_datadir}/%{name}/python3lib
 %{_datadir}/%{name}/polyfills
 %{_datadir}/%{name}/plugin_launchers
+%dir %{_datadir}/%{name}/iconthemes
+%{_datadir}/%{name}/iconthemes/*.rcc
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/*
 
