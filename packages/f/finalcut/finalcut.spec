@@ -1,7 +1,7 @@
 #
 # spec file for package finalcut
 #
-# Copyright (c) 2019 by Markus Gans
+# Copyright (c) 2020 by Markus Gans
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,17 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 %define sover   0
 Name:           finalcut
-Version:        0.6.0
+Version:        0.7.1
 Release:        0
 Summary:        Console widget library
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/gansm/finalcut/
 Source:         https://github.com/gansm/finalcut/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         0001-arm-glibc-2.30.patch
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -59,9 +57,9 @@ Requires:       libfinal%{sover} = %{version}
 Requires:       ncurses-devel
 Requires:       sed
 Requires:       vim
-Provides:       finalcut-devel = %{version}
-Obsoletes:      finalcut-devel < %{version}
-Recommends:     %{name}-examples = %{version}
+Provides:       libfinal-devel = %{version}
+Obsoletes:      libfinal-devel < %{version}
+Recommends:     libfinal-examples = %{version}
 
 %description -n libfinal-devel
 FINAL CUT is a class library and widget toolkit with full mouse
@@ -75,8 +73,8 @@ radio buttons, input lines, list boxes, status bars and so on.
 %package -n libfinal-examples
 Summary:        Example files for the FINAL CUT library
 Group:          Development/Languages/C and C++
-Provides:       finalcut-examples = %{version}
-Obsoletes:      finalcut-examples < %{version}
+Provides:       libfinal-examples = %{version}
+Obsoletes:      libfinal-examples < %{version}
 
 %description -n libfinal-examples
 FINAL CUT is a class library and widget toolkit with full mouse
@@ -101,7 +99,7 @@ common controls like dialog windows, push buttons, check boxes,
 radio buttons, input lines, list boxes, status bars and so on.
 
 %package bitmap-fonts
-Summary:        Bitmap fonts for finalcut
+Summary:        X11 bitmap font for FINAL CUT
 Group:          System/X11/Fonts
 Requires(pre):  fontconfig
 # install the fonts only if we have X11 fonts anyways
@@ -109,12 +107,10 @@ Supplements:    packageand(libfinal%{sover}:xorg-x11-fonts-core)
 BuildArch:      noarch
 
 %description bitmap-fonts
-This package include a special font uses by the FINAL CUT text
-widget toolkit
+Special X11 bitmap font used by FINAL CUT to display graphic objects.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 autoreconf -vif
@@ -126,18 +122,25 @@ export CPPFLAGS="$CPPFLAGS -Wno-error=unused-parameter"
 make %{?_smp_mflags} V=1
 
 %install
+%if 0%{?fedora} || 0%{?rhel} || 0%{?rhl} || 0%{?fc#} || 0%{?el#}
+%global _miscfontsdir %{_datadir}/fonts
+%endif
 make install libdir=%{buildroot}%{_libdir}/ \
-	     includedir=%{buildroot}%{_includedir} \
-	     bindir=%{buildroot}%{_bindir} \
-	     docdir=%{buildroot}%{_docdir}/%{name}/ \
-	     fontdir=%{buildroot}%{_miscfontsdir}/%{name}/
+             includedir=%{buildroot}%{_includedir} \
+             bindir=%{buildroot}%{_bindir} \
+             docdir=%{buildroot}%{_docdir}/%{name}/ \
+             fontdir=%{buildroot}%{_miscfontsdir}/%{name}/
 mkdir -p %{buildroot}%{_miscfontsdir}/%{name}/
 mkdir -p %{buildroot}%{_docdir}/%{name}
 mkdir -p %{buildroot}%{_libdir}/%{name}/examples
+mkdir -p %{buildroot}/etc/fonts/conf.d
+mkdir -p %{buildroot}/usr/share/fontconfig/conf.avail
 cp -p examples/.libs/* %{buildroot}%{_libdir}/%{name}/examples
 cp -p examples/*.cpp %{buildroot}%{_libdir}/%{name}/examples
 cp -p examples/Makefile.clang %{buildroot}%{_libdir}/%{name}/examples
 cp -p examples/Makefile.gcc %{buildroot}%{_libdir}/%{name}/examples
+cp -p fonts/40-finalcut-newfont.conf %{buildroot}/usr/share/fontconfig/conf.avail
+ln -s /usr/share/fontconfig/conf.avail/40-finalcut-newfont.conf %{buildroot}/etc/fonts/conf.d/40-finalcut-newfont.conf
 rm -f %{buildroot}%{_libdir}/libfinal.la
 rm %{buildroot}%{_docdir}/%{name}/ChangeLog %{buildroot}%{_docdir}/%{name}/COPYING.LESSER
 # Add config for X font path
@@ -147,7 +150,6 @@ Section "Files"
     FontPath "%{_miscfontsdir}/finalcut:unscaled"
 EndSection
 EOF
-#
 # make sure we own all generated files
 for i in .fonts-config-timestamp encodings.dir fonts.dir fonts.scale; do
     > %{buildroot}%{_miscfontsdir}/finalcut/$i
@@ -186,8 +188,12 @@ done
 %ghost %{_miscfontsdir}/finalcut/fonts.scale
 %ghost %{_miscfontsdir}/finalcut/encodings.dir
 %ghost %{_miscfontsdir}/finalcut/.fonts-config-timestamp
+%dir /etc/fonts/conf.d/
+%dir /usr/share/fontconfig/conf.avail
 %dir %{_datadir}/X11
 %dir %{_datadir}/X11/xorg.conf.d
 %{_datadir}/X11/xorg.conf.d/80-finalcut-bitmap-fonts.conf
+/etc/fonts/conf.d/40-finalcut-newfont.conf
+/usr/share/fontconfig/conf.avail/40-finalcut-newfont.conf
 
 %changelog

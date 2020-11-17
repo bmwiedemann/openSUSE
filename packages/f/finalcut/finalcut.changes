@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Nov 14 20:13:57 UTC 2020 - Markus Gans <guru.mail@muenster.de>
+
+- Release (version 0.7.1)
+
+-------------------------------------------------------------------
+Sat Nov 07 11:24:39 UTC 2020 - Markus Gans <guru.mail@muenster.de>
+
+- Release (version 0.7.0)
+
+-------------------------------------------------------------------
+Wed Oct 21 11:42:02 UTC 2020 - Markus Gans <guru.mail@muenster.de>
+
+- Release (version 0.6.1 pre-release 0.7.0)
+- deleted patch
+  - 0001-arm-glibc-2.30.patch (upstreamed)
+
+-------------------------------------------------------------------
 Mon Jan 20 14:10:38 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - libfinal-devel needs to require ncurses-devel and gpm-devel as some header

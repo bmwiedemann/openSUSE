@@ -73,4 +73,17 @@
     <comment></comment>
     <requestid>766076</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ac2148612997cb24a810e04c389be289</srcmd5>
+    <version>0.7.1</version>
+    <time>1605644517</time>
+    <user>dimstar_suse</user>
+    <comment>- Release (version 0.7.1)
+- Release (version 0.7.0)
+- Release (version 0.6.1 pre-release 0.7.0)
+- deleted patch
+  - 0001-arm-glibc-2.30.patch (upstreamed)
+</comment>
+    <requestid>848624</requestid>
+  </revision>
 </revisionlist>
