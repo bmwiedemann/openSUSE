@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Nov  9 08:33:41 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.31.2
+
+  What's new in notmuch 0.31.2
+  =========================
+
+  Build
+  -----
+
+  Catch one more occurence of "version" in the build system, which
+  caused the file to be regenerated in the release tarball.
+
+
+  What's new in notmuch 0.31.1
+  =========================
+
+  Library
+  -------
+
+  Fix a memory initialization bug in notmuch_database_get_config_list.
+
+  Build
+  -----
+
+  Rename file 'version' to 'version.txt'. The old file name conflicted
+  with a C++ header for some compilers.
+
+  Replace use of coreutils `realpath` in configure.
+
+-------------------------------------------------------------------
 Mon Sep  7 07:33:47 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 0.31

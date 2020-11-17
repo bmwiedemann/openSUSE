@@ -18,7 +18,7 @@
 
 %define libversion 5
 Name:           notmuch
-Version:        0.31
+Version:        0.31.2
 Release:        0
 Summary:        The mail indexer
 License:        GPL-3.0-or-later
@@ -55,6 +55,7 @@ BuildRequires:  pkgconfig(talloc)
 %if %{with tests}
 BuildRequires:  dtach
 BuildRequires:  gdb
+BuildRequires:  gnu_parallel
 BuildRequires:  libgcrypt-cavs
 BuildRequires:  man
 BuildRequires:  valgrind-devel
