@@ -1,5 +1,0 @@
-<package name="openssl-cbs" project="openSUSE:Factory">
-  <title>openssl-cbs</title>
-  <description>A library which provides Crypto ByteString (CBS) functionality for OpenSSL</description>
-  <devel project="devel:kubic" package="openssl-cbs"/>
-</package>
