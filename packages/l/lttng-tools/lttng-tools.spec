@@ -16,11 +16,11 @@
 #
 
 
-%define _version 2.11.0
+%define _version 2.12.0
 %define soname_ctl liblttng-ctl
 %define sover_ctl 0
 Name:           lttng-tools
-Version:        2.11.2
+Version:        2.12.2
 Release:        0
 Summary:        Linux Trace Toolkit Next Generation userspace tools
 License:        GPL-2.0-only AND LGPL-2.1-only
@@ -84,7 +84,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %doc %{_docdir}/%{name}/
-%license gpl-2.0.txt lgpl-2.1.txt
+%license LICENSE
 %{_bindir}/lttng
 %{_bindir}/lttng-crash
 %{_bindir}/lttng-relayd
@@ -99,7 +99,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/xml/lttng/session.xsd
 
 %files -n %{soname_ctl}%{sover_ctl}
-%license gpl-2.0.txt lgpl-2.1.txt
+%license LICENSE
 %{_libdir}/%{soname_ctl}.so.%{sover_ctl}*
 
 %files -n %{name}-devel
