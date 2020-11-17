@@ -237,4 +237,36 @@
   * Ingress addon: fix the controller name</comment>
     <requestid>847499</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1411fef16ae3c33cfc125dc61d7518cc</srcmd5>
+    <version>1.15.1</version>
+    <time>1605644775</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.15.1:
+  Features:
+  * Add Support for driver name alias
+  * Add support for latest kubernetes version v1.20.0-beta.1
+  * Implement schedule stop for unix
+  * New flag --watch flag for minikube status with optional interval duration
+  * New flag --namespace for activating non default kubeconfig context
+  * Add JSON output to stop, pause and unpause
+  * Add support for podman v2 to podman-env command
+  * Support ImageRepository for addons
+  Bug fixes:
+  * less verbose language selector
+  * implement &quot;--log_file&quot; and &quot;--log_dir&quot; for klog
+  * GCP Auth Addon: support special location for cloud shell
+  * Enable TCP Path MTU Discovery when an ICMP black hole is detected
+  * Remove hard-coded list of valid cgroupfs mountpoints to bind mount
+  * Improve parsing of start flag apiserver-names
+  * kvm: recover from minikube-net network left over failures
+  * fix help flag 'pflag: help requested' error
+  * Update &quot;parallels&quot; driver library and make this driver built into minikube
+  Minor Improvements:
+  * Upgrade crio to 1.18.4
+  * Update ingress-nginx image to v0.40.2
+  * Improving log message when profile not found
+  * Upgrade buildroot and kernel minor version (forwarded request 848988 from mrostecki)</comment>
+    <requestid>848989</requestid>
+  </revision>
 </revisionlist>

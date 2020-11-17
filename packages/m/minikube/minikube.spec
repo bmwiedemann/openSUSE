@@ -17,13 +17,13 @@
 
 
 Name:           minikube
-Version:        1.14.2
+Version:        1.15.1
 Release:        0
 Summary:        Tool to run Kubernetes locally
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/kubernetes/minikube
-Source:         https://github.com/kubernetes/minikube/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/kubernetes/minikube/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        minikube-rpmlintrc
 BuildRequires:  git-core

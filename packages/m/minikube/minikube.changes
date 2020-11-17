@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Nov 17 00:46:29 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
+
+- Update to 1.15.1:
+  Features:
+  * Add Support for driver name alias
+  * Add support for latest kubernetes version v1.20.0-beta.1
+  * Implement schedule stop for unix
+  * New flag --watch flag for minikube status with optional interval duration
+  * New flag --namespace for activating non default kubeconfig context
+  * Add JSON output to stop, pause and unpause
+  * Add support for podman v2 to podman-env command
+  * Support ImageRepository for addons
+  Bug fixes:
+  * less verbose language selector
+  * implement "--log_file" and "--log_dir" for klog
+  * GCP Auth Addon: support special location for cloud shell
+  * Enable TCP Path MTU Discovery when an ICMP black hole is detected
+  * Remove hard-coded list of valid cgroupfs mountpoints to bind mount
+  * Improve parsing of start flag apiserver-names
+  * kvm: recover from minikube-net network left over failures
+  * fix help flag 'pflag: help requested' error
+  * Update "parallels" driver library and make this driver built into minikube
+  Minor Improvements:
+  * Upgrade crio to 1.18.4
+  * Update ingress-nginx image to v0.40.2
+  * Improving log message when profile not found
+  * Upgrade buildroot and kernel minor version
+
+-------------------------------------------------------------------
 Tue Nov 10 13:37:17 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.14.2:
