@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 16 15:59:10 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1605530625.31c8f336:
+  * README: Prefer user-centric documentation over developer-centric instructions
+  * t: Cover all test output in t/13-osutils.t with Test::Output
+  * driver: Remove confusing log about 'remove_tree'
+  * driver: No need for explicit exit in process sub
+  * Use Test::Most instead of Test::More for convenience
+  * Remove references to Test::More::Color not adding benefit
+  * t: Mark all .t files as executables consistently
+  * README: Fix asciidoc syntax problem introduced in 2f3a1e5b
+
+-------------------------------------------------------------------
 Sat Nov 14 07:59:05 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1605202386.73d96736:
