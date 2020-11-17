@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 12 13:31:32 UTC 2020 - Marketa Machova <mmachova@suse.com>
+
+- update to 3.1.3
+  * few fixes and improvements, see commits on GitHub
+
+-------------------------------------------------------------------
 Tue May 26 06:34:23 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

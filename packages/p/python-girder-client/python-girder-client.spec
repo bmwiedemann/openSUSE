@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-girder-client
-Version:        3.0.8
+Version:        3.1.3
 Release:        0
 Summary:        Python Girder client
 License:        Apache-2.0
@@ -36,13 +36,6 @@ Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
-# SECTION test requirements
-BuildRequires:  %{python_module click >= 6.7}
-BuildRequires:  %{python_module diskcache}
-BuildRequires:  %{python_module requests >= 2.4.2}
-BuildRequires:  %{python_module requests-toolbelt}
-BuildRequires:  %{python_module six}
-# /SECTION
 %python_subpackages
 
 %description
