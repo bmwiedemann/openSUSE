@@ -17,7 +17,7 @@
 
 
 Name:           perl-JSON-MaybeXS
-Version:        1.004002
+Version:        1.004003
 Release:        0
 %define cpan_name JSON-MaybeXS
 Summary:        Use L<Cpanel::JSON::XS> with a fallback to L<JSON::XS> and L<JSON::PP>
