@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 11 14:35:13 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.8
+  * capture: add support for IPv6 SDP connection address
+  * capture: fixed a crash while parsing INVITES without R-URI
+  * capture: fixed a crash while parsing malformed Req/Resp lines
+  * call flow: improved IPv6 RTP columns address display
+  * core: code cleanup removing unused variables
+  * core: fixed multiple snprintf memory overflows
+  * core: avoid crash when linking against ncurses without tinfo
+
+-------------------------------------------------------------------
 Sat May 23 08:03:33 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.4.7
