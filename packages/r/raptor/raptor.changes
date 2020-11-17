@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 10 08:59:36 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- add 0001-Calcualte-max-nspace-declarations-correctly-for-XML-.patch.1,
+ ubsan.patch (bsc#1178593, CVE-2017-18926)
+
+-------------------------------------------------------------------
 Sun Apr 26 19:52:44 UTC 2015 - mpluskal@suse.com
 
 - Add gpg signature

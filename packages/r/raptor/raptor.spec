@@ -1,7 +1,7 @@
 #
 # spec file for package raptor
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,19 +20,20 @@ Name:           raptor
 Version:        2.0.15
 Release:        0
 Summary:        RDF Parser Toolkit
-License:        LGPL-2.1+ or GPL-2.0+ or Apache-2.0
+License:        LGPL-2.1-or-later OR GPL-2.0-or-later OR Apache-2.0
 Group:          System/Libraries
-Url:            http://librdf.org/raptor/
+URL:            http://librdf.org/raptor/
 Source0:        http://download.librdf.org/source/%{name}2-%{version}.tar.gz
 Source1:        http://download.librdf.org/source/raptor2-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
+Patch1:         https://raw.githubusercontent.com/LibreOffice/core/master/external/redland/raptor/0001-Calcualte-max-nspace-declarations-correctly-for-XML-.patch.1
+Patch2:         https://raw.githubusercontent.com/LibreOffice/core/master/external/redland/raptor/ubsan.patch
 BuildRequires:  bison
 BuildRequires:  curl-devel
 BuildRequires:  libicu-devel
 BuildRequires:  libxslt-devel
-BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig
 %if !0%{?sles_version}
 BuildRequires:  pkgconfig(libxml-2.0)
 %else
@@ -66,6 +67,8 @@ raptor library.
 
 %prep
 %setup -q -n %{name}2-%{version}
+%patch1 -p1
+%patch2
 
 %build
 %configure \
@@ -74,10 +77,10 @@ raptor library.
 	--with-pic \
 	--with-icu-config=%{_bindir}/icu-config \
 	--with-html-dir=%{_docdir}
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 mv %{buildroot}%{_docdir}/raptor2 %{buildroot}%{_docdir}/raptor-devel
 #causes some ugly  dependency bloat..
 rm -f %{buildroot}%{_libdir}/libraptor2.la
@@ -88,24 +91,21 @@ make check
 unset MALLOC_CHECK_
 
 %post -n libraptor2-0 -p /sbin/ldconfig
-
 %postun -n libraptor2-0 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS COPYING COPYING.LIB ChangeLog LICENSE.txt NEWS README
+%license COPYING COPYING.LIB LICENSE.txt
+%doc AUTHORS ChangeLog NEWS README
 %{_bindir}/rapper
 %{_mandir}/man?/*
 
 %files -n libraptor-devel
-%defattr(-,root,root)
 %doc %{_docdir}/raptor-devel
 %{_libdir}/lib*.so
 %{_includedir}/*
 %{_libdir}/pkgconfig/*.pc
 
 %files -n libraptor2-0
-%defattr(-,root,root)
 %{_libdir}/libraptor2.so.0*
 
 %changelog

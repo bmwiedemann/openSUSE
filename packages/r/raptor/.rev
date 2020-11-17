@@ -286,4 +286,13 @@ Updating to those licenses stated in the LICENSE.txt file (even though the LGPL-
     <comment>1</comment>
     <requestid>304149</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>14f2540cd7804b9a1fa5608b64192fa1</srcmd5>
+    <version>2.0.15</version>
+    <time>1605644469</time>
+    <user>dimstar_suse</user>
+    <comment>- add 0001-Calcualte-max-nspace-declarations-correctly-for-XML-.patch.1,
+ ubsan.patch (bsc#1178593, CVE-2017-18926)</comment>
+    <requestid>848405</requestid>
+  </revision>
 </revisionlist>
