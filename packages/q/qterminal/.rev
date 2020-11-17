@@ -168,4 +168,14 @@
   * Put drop-down QTerminal on screen with cursor.</comment>
     <requestid>846014</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c7ff907b3924bfba0bded65eb4091e82</srcmd5>
+    <version>0.16.1</version>
+    <time>1605644624</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.1:
+  * Fixed a regression in the layout of Terminal settings dialog.
+  * Fixed translation of shortcuts (in Terminal settings dialog).</comment>
+    <requestid>848668</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 15 07:42:39 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.1:
+  * Fixed a regression in the layout of Terminal settings dialog.
+  * Fixed translation of shortcuts (in Terminal settings dialog).
+
+-------------------------------------------------------------------
 Wed Nov  4 13:56:30 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.16.0:
