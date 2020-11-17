@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Nov 17 00:00:50 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.11.1
+  * Fixed decode of Unicode string streams.
+  * Fixed UCS-2 to UTF-8 conversion for the chars 128-255.
+  * Moved PSPACE entities from BLOCKS to ENTITIES
+  * Fixed \r\n quoting in DXF texts
+  * Generalize and fix DXF text splitup into 255 chunks and
+    quoting, add basic shift-jis quoting support for Katagana and
+    Hiragana letters (Japanese \M+1xxxx => Unicode \U+XXXX)
+  * Added indxf dwg_has_subclass check to avoid buffer overflows
+    when writing to wrong subclasses.
+  * Improved SAB 2 to SAT 1 conversion: Split overlarge blocks
+    into block_size of max 4096. Add "^ " quoting rule.
+  * Fixed decode of empty classes section, esp. for r13c3 and
+    r14.
+  * Keep IDBUFFER for old DXFs (r13-r14)
+  * Fixed SummaryInfo types from T to TU16, relevant for DXF
+    headers too.
+  * Add missing UTF-8 conversion in geojson for TEXT, MTEXT,
+    GEOPOSITIONMARKER.
+
+-------------------------------------------------------------------
 Wed Aug 12 20:59:49 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.11:

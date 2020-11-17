@@ -18,15 +18,15 @@
 
 %define lname	libredwg0
 Name:           libredwg
-Version:        0.11
+Version:        0.11.1
 Release:        0
 Summary:        A library to handle DWG files
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.gnu.org/software/libredwg/
 #Git-Clone:	https://github.com/LibreDWG/libredwg/
-Source:         https://ftp.gnu.org/pub/gnu/libredwg/%name-%version.tar.xz
-Source2:        https://ftp.gnu.org/pub/gnu/libredwg/%name-%version.tar.xz.sig
+Source:         https://ftp.gnu.org/pub/gnu/libredwg/%name-%version.tar.gz
+Source2:        https://ftp.gnu.org/pub/gnu/libredwg/%name-%version.tar.gz.sig
 Source3:        http://savannah.gnu.org/people/viewgpg.php?user_id=101103#/%name.keyring
 Source4:        %name-rpmlintrc
 BuildRequires:  pkg-config
