@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 15 17:22:38 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Change sip requirement to the PyQt5.sip package instead of
+  deprecated python-sip
+
+-------------------------------------------------------------------
 Thu Oct 15 21:57:47 UTC 2020 - Mia Herkt <mia@0x0.st>
 
 - Update to version 1.14.0

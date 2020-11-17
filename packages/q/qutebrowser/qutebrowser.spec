@@ -37,7 +37,11 @@ BuildRequires:  python3-attrs
 BuildRequires:  python3-devel >= 3.6
 BuildRequires:  python3-pyPEG2
 BuildRequires:  python3-qt5 >= 5.2
+%if 0%{suse_version} >= 1550
+BuildRequires:  python3-qt5-sip
+%else
 BuildRequires:  python3-sip
+%endif
 Requires:       libqt5-sql-sqlite
 Requires:       python3-Jinja2
 Requires:       python3-MarkupSafe
@@ -50,7 +54,11 @@ Requires:       python3-qt5 >= 5.2
 %if 0%{?suse_version} > 1500
 Requires:       python3-qtwebengine-qt5
 %endif
+%if 0%{suse_version} >= 1550
+Requires:       python3-qt5-sip
+%else
 Requires:       python3-sip
+%endif
 Recommends:     python3-cssutils
 BuildArch:      noarch
 %if 0%{?suse_version} <= 1320
