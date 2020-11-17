@@ -1,7 +1,7 @@
 #
 # spec file for package hxtools
 #
-# Copyright (c) 2019 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           hxtools
-Version:        20200712
+Version:        20201116
 Release:        0
 Summary:        Collection of day-to-day tools (binaries)
 License:        GPL-2.0+ and WTFPL
@@ -165,11 +165,11 @@ sfd (and then TrueType/OpenType/WOFF/etc. via FontForge). The vector
 export is able to smoothen the jagged edges of bitmap fonts.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

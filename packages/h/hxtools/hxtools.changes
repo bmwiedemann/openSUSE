@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 16 00:09:21 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20201116
+  * pegrep: cure uninitialized variable warnings
+  * gpsh: change tmp location to /var/tmp
+    (avoid saving potentially large files to tmpfs)
+  * sysinfo: fix null deref when /etc/os-release is absent
+
+-------------------------------------------------------------------
 Sun Jul 12 09:55:18 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20200712
