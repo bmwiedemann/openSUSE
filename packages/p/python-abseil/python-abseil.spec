@@ -30,6 +30,8 @@ BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six
+Provides:       python-absl-py = %{version}
+Obsoletes:      python-absl-py < %{version}
 BuildArch:      noarch
 %ifpython2
 Requires:       python-enum34
