@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Nov 16 02:06:18 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to 0.19.2:
+  * A new Query terminal kitten to easily query the running kitty
+    via escape codes to detect its version, and the values of
+    configuration options that enable or disable terminal features.
+  * Options to control mouse pointer shape, default_pointer_shape,
+    and pointer_shape_when_dragging
+  * Font independent rendering for braille characters, which
+    ensures they are properly aligned at all font sizes.
+  * Fix a regression in 0.19.0 that caused borders not to be drawn
+    when setting window_margin_width and keeping
+    draw_minimal_borders on
+  * Fix a regression in 0.19.0 that broke rendering of one-eight
+    bar unicode characters at very small font sizes
+  * Wayland: Fix a crash under GNOME when using multiple OS windows
+  * Fix selections created by dragging upwards not being
+    auto-cleared when screen contents change
+  * Allow adding MIME definitions to kitty by placing a mime.types
+    file in the kitty config directory
+  * Dont ignore --title when using a session file that defines
+    no windows
+  * Fix the send_text action not working in URL handlers
+  * Fix last character of URL not being detected if it is the only
+    character on a new line
+  * Don't restrict the ICH,DCH,REP control codes to only the
+    current scroll region
+- use generic name in rpm files section
+
+-------------------------------------------------------------------
 Tue Oct  6 08:49:21 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.19.1:

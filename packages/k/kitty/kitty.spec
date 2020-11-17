@@ -17,7 +17,7 @@
 
 
 Name:           kitty
-Version:        0.19.1
+Version:        0.19.2
 Release:        0
 Summary:        A GPU-based terminal emulator
 License:        GPL-3.0-only
@@ -82,16 +82,16 @@ python3 setup.py --verbose linux-package --prefix %{buildroot}%{_prefix}
 %files
 %license LICENSE
 %doc CHANGELOG.rst README.asciidoc
-%{_bindir}/kitty
-%{_prefix}/lib/kitty
-%{_datadir}/applications/kitty.desktop
+%{_bindir}/%{name}
+%{_prefix}/lib/%{name}
+%{_datadir}/applications/%{name}.desktop
 %dir %{_datadir}/icons/hicolor/
 %dir %{_datadir}/icons/hicolor/256x256/
 %{_datadir}/icons/hicolor/256x256/apps/
-%{_datadir}/terminfo/x/xterm-kitty
+%{_datadir}/terminfo/x/xterm-%{name}
 %if 0%{?sle_version} > 150100 || 0%{?suse_version} >= 1550
-%{_mandir}/man1/kitty.1%{?ext_man}
-%{_datadir}/doc/kitty
+%{_mandir}/man1/%{name}.1%{?ext_man}
+%{_datadir}/doc/%{name}
 %endif
 
 %changelog
