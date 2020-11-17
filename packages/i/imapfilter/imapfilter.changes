@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Nov 14 23:49:42 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.7.3:
+  * Bug fix; incorrect free of compiled pattern.
+  * Unexpected network errors and IMAP BYE are now logged.
+
+- changes from version 2.7.2:
+  * Makefile is back to being Lua version agnostic.
+
+- changes from version 2.7.1:
+  * Makefile now builds with Lua 5.4 and PCRE2.
+
+- changes from version 2.7 :
+  * Lua 5.4 compatibility (the codebase can still be compiled with
+    versions 5.3, 5.2 and 5.1).
+  * PCRE2 compatibility (version 10.00 and later)
+  * New error code is returned if certificate verify fails.
+  * Bug fix; add missing truststore option from brief usage message.
+
+-------------------------------------------------------------------
 Sun Dec 29 22:16:03 UTC 2019 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.6.16:

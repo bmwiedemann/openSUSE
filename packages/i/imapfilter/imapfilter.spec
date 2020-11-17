@@ -1,7 +1,7 @@
 #
 # spec file for package imapfilter
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           imapfilter
-Version:        2.6.16
+Version:        2.7.3
 Release:        0
 Summary:        A mail filtering utility
 License:        MIT
@@ -26,7 +26,7 @@ URL:            https://github.com/lefcha/imapfilter
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  lua-devel >= 5.1
 BuildRequires:  openssl-devel
-BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 
 %description
