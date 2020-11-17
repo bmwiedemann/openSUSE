@@ -172,4 +172,15 @@
 - Override upstream version in Requires for python-azure-mgmt-resource (forwarded request 841504 from glaubitz)</comment>
     <requestid>841540</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>caebe20031275d8879aa64ff6c2d6ad8</srcmd5>
+    <version>2.14.2</version>
+    <time>1605644744</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.14.2
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package (forwarded request 848871 from glaubitz)</comment>
+    <requestid>848899</requestid>
+  </revision>
 </revisionlist>
