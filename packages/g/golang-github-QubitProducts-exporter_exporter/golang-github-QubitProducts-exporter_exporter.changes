@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 16 11:13:19 UTC 2020 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Fix build for RedHat 7
+
+-------------------------------------------------------------------
 Thu Oct 29 09:43:31 UTC 2020 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Require Go >= 1.14 also for CentOS

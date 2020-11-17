@@ -17,9 +17,7 @@
 
 
 # build ids are not currently generated on RHEL/CentOS
-%if 0%{?rhel}
-%global debug_package %{nil}
-%endif
+%undefine _missing_build_ids_terminate_build
 
 %global provider        github
 %global provider_tld    com
