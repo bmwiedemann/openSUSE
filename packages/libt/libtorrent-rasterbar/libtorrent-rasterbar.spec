@@ -17,20 +17,19 @@
 
 
 %define _name   libtorrent
-%define _ver    2.0
 %define libver  2_0
 %define sover   2.0
 %define _legacy 1
 %bcond_with     examples
 %bcond_with     tests
 Name:           libtorrent-rasterbar
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        A C++ implementation of the BitTorrent protocol
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://libtorrent.org/
-Source:         https://github.com/arvidn/%{_name}/releases/download/%{_ver}/%{name}-%{version}.tar.gz
+Source:         https://github.com/arvidn/%{_name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.12.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -116,6 +115,7 @@ Documentation for the libtorrent-rasterbar package.
    -Dbuild_examples=ON \
 %endif
    -Dpython-bindings=ON \
+   -Dpython-egg-info=ON \
    -Dboost-python-module-name=python
 %cmake_build
 
