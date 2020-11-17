@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 14 13:07:02 UTC 2020 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Update patch for log-in hints to final upstream version
+  - removes 0001-Give-some-guidance-through-motd-prompt.patch
+  - adds 0001-Give-users-better-hints-after-logging-in.patch
+
+-------------------------------------------------------------------
 Mon Nov  2 14:00:13 UTC 2020 - Daniel Molkentin <daniel.molkentin@suse.com>
 
 - Update to upstream version 0.6.1-2 (jsc#SLE-12273)

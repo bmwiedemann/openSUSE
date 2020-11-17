@@ -17,4 +17,12 @@
   Adds 0001-Give-users-better-hints-after-logging-in.patch</comment>
     <requestid>845447</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8ac1dc11aeed920f7d1d022a9e881283</srcmd5>
+    <version>0.6.1</version>
+    <time>1605644595</time>
+    <user>dimstar_suse</user>
+    <comment>Fix packaging motd ... (forwarded request 848816 from gladiac)</comment>
+    <requestid>848817</requestid>
+  </revision>
 </revisionlist>

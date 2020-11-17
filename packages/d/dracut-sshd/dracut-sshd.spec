@@ -25,7 +25,7 @@ License:        GPL-3.0-or-later
 Group:          System/Boot
 URL:            https://github.com/gsauthof/dracut-sshd
 Source:         https://github.com/gsauthof/dracut-sshd/archive/%{version}%{pkg_rel}/%{name}-%{version}%{pkg_rel}.tar.gz
-Patch1:         0001-Give-users-better-hints-after-logging-in.patch
+Patch1:         0001-Give-some-guidance-through-motd-prompt.patch
 BuildRequires:  dracut
 Requires:       dracut
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -50,6 +50,7 @@ cp -r 46sshd %{buildroot}%{_prefix}/lib/dracut/modules.d/
 %files
 %dir %{_prefix}/lib/dracut/modules.d/46sshd
 %{_prefix}/lib/dracut/modules.d/46sshd/module-setup.sh
+%{_prefix}/lib/dracut/modules.d/46sshd/motd
 %{_prefix}/lib/dracut/modules.d/46sshd/profile
 %{_prefix}/lib/dracut/modules.d/46sshd/sshd.service
 %config(noreplace) 	
