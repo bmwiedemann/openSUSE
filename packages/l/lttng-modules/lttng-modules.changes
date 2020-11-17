@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov  3 00:02:36 UTC 2020 - Tony Jones <tonyj@suse.com>
+
+- Update to version 2.12.3 (jsc#SLE-16189)
+  Changelog: https://git.lttng.org/?p=lttng-modules.git;a=blob_plain;f=ChangeLog;hb=v2.12.3
+  Delete patch: lttng-modules-fix-leap-15.1.patch
+
+-------------------------------------------------------------------
 Wed Feb 26 14:29:32 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 2.11.2:

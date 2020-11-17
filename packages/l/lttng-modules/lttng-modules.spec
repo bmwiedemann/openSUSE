@@ -17,7 +17,7 @@
 
 
 Name:           lttng-modules
-Version:        2.11.2
+Version:        2.12.3
 Release:        0
 Summary:        Licensing information for package lttng-modules
 License:        GPL-2.0-only AND LGPL-2.1-only AND MIT
@@ -29,7 +29,7 @@ Source2:        %{name}.keyring
 Source3:        %{name}-preamble
 Source4:        Module.supported
 # PATCH-FIX-OPENSUSE lttng-modules-fix-leap-15.1.patch -- Fix building on openSUSE Leap 15.1.
-Patch0:         lttng-modules-fix-leap-15.1.patch
+#Patch0:         lttng-modules-fix-leap-15.1.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 ExclusiveArch:  %ix86 x86_64 aarch64 ppc64 ppc64le
 
