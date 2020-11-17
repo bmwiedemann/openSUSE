@@ -223,6 +223,10 @@ cp -r meson.egg-info %{buildroot}%{python3_sitelib}/meson-%{version}-py%{python3
 
 %if %{with test}
 %check
+%ifarch aarch64
+# Test not supported on aarch64 yet
+rm -r "test cases/common/122 llvm ir and assembly"
+%endif
 export LANG=C.UTF-8
 export MESON_EXE=%{_bindir}/meson
 python3 run_tests.py --failfast

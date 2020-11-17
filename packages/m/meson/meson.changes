@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 17 13:25:10 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Remove "test cases/common/122 llvm ir and assembly" for aarch64
+  as this test is not supported on aarch64 linux yet (boo1178772).
+
+-------------------------------------------------------------------
 Tue Nov  3 14:57:22 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 7930.patch: pkgconfig: Make external deps of static library

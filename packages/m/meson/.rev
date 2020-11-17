@@ -556,4 +556,14 @@
     <comment></comment>
     <requestid>845992</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>46b6619cb2883f7f1d679c01b99f04a3</srcmd5>
+    <version>0.56.0</version>
+    <time>1605644700</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove &quot;test cases/common/122 llvm ir and assembly&quot; for aarch64
+  as this test is not supported on aarch64 linux yet (boo1178772).
+</comment>
+    <requestid>849102</requestid>
+  </revision>
 </revisionlist>
