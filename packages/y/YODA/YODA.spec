@@ -16,10 +16,10 @@
 #
 
 
-%define so_name lib%{name}-1_8_3
+%define so_name lib%{name}-1_8_4
 
 Name:           YODA
-Version:        1.8.3
+Version:        1.8.4
 Release:        0
 Summary:        A small set of data analysis classes for MC event generator validation analyses
 License:        GPL-2.0-only
@@ -27,11 +27,13 @@ Group:          Development/Libraries/C and C++
 URL:            http://yoda.hepforge.org/
 Source:         http://www.hepforge.org/archive/yoda/%{name}-%{version}.tar.bz2
 Patch1:         sover.diff
+BuildRequires:  bash-completion
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python3-Cython
 BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 # SECTION For running python tests in make check
 BuildRequires:  python3-matplotlib
 BuildRequires:  python3-numpy
@@ -127,6 +129,8 @@ make %{?_smp_mflags}
 %install
 %make_install
 
+mkdir -p %{buildroot}%{_datadir}/bash-completion/completions
+mv %{buildroot}%{_prefix}/etc/bash_completion.d/* %{buildroot}%{_datadir}/bash-completion/completions/
 find %{buildroot}%{_libdir}/ -name "*.la" -delete
 
 %check
@@ -154,6 +158,7 @@ make %{?_smp_mflags} check
 %{python3_sitearch}/yoda/
 %{python3_sitearch}/yoda1/
 %{python3_sitearch}/yoda*.egg-info
+%{_datadir}/bash-completion/completions/*
 %{_bindir}/aida2flat
 %{_bindir}/aida2yoda
 %{_bindir}/flat2yoda
