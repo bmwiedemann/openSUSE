@@ -1,0 +1,11 @@
+--- Fragments-1.4-orig/src/fragments-torrent.vala	2020-11-13 20:06:51.933840697 +0100
++++ Fragments-1.4/src/fragments-torrent.vala	2019-03-24 20:04:59.000000000 +0100
+@@ -101,7 +101,7 @@
+ 		primary_text = Utils.generate_primary_text(this);
+ 		seeders_text = _("%i (%i active)").printf(seeders, seeders_active);
+ 
+-		char[40] buf = new char[40];
++		char[] buf = new char[40];
+ 		download_speed = Transmission.String.Units.speed_KBps (buf, torrent.stat_cached.pieceDownloadSpeed_KBps); notify_property("download-speed");
+ 		upload_speed = Transmission.String.Units.speed_KBps (buf, torrent.stat_cached.pieceUploadSpeed_KBps); notify_property("upload-speed");
+

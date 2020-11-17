@@ -1,7 +1,7 @@
 #
 # spec file for package Fragments
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-3.0-only
 Group:          Productivity/Networking/Other
 URL:            https://gitlab.gnome.org/World/Fragments
 Source:         %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM Fragments-fix-vala-syntax-error.patch
+Patch1:         Fragments-fix-vala-syntax-error.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -60,7 +62,6 @@ GNOME HIG and includes well thought-out features.
 %meson_install
 %find_lang fragments %{?no_lang_C}
 %suse_update_desktop_file -r de.haeckerfelix.Fragments Network FileTransfer P2P GTK
-
 
 %files
 %license COPYING

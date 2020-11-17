@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 13 19:01:41 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add Fragments-fix-vala-syntax-error.patch: Fix vala syntax error
+  during build.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:04:02 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
