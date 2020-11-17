@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Nov 15 11:46:57 UTC 2020 - munix9@googlemail.com
+
+- Update to version 1.0.1
+  * Fixed compilation with libtar
+  * Fixed jack transport tempo drift when using non-integer bpm values
+  * Disabled "development mode" warning
+  * Fix crash on saving ladspa settings
+  * Added manual + tutorial files to Windows and OS X Installers
+
+- Update to version 1.0.0
+  * QT5 support
+  * MIDI feedback
+  * OSC support (incl. feedback)
+  * Playback track
+  * Menu redesign
+  * Note probability property
+  * Velocity automation
+  * Full screen mode
+  * New default kit: GMRockKit
+
+- Add fix-obsolete-appdata.patch
+- Add fix-version-soversion.patch (replaces hydrogen-0.9.6-lib64.patch)
+- Remove hydrogen-no-current-time.patch (__DATE__ and __TIME__
+  are considered by SOURCE_DATE_EPOCH and the compiler)
+- Remove hydrogen-fix-qt5.15.patch (fixed upstream)
+- Remove hydrogen-gcc47.patch (obsolete)
+- Remove hydrogen-0.9.6-lib64.patch (obsolete)
+- h2cli.1 is now created during %install
+- Clean up spec file
+
+-------------------------------------------------------------------
 Wed Jun 03 09:32:49 UTC 2020 - davejplater@gmail.com
 
 - Update to version 0.99+git20200527 and fix factory build against
