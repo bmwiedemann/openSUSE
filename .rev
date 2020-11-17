@@ -451,4 +451,12 @@
   * Fix update available notifications repeating (#3006)</comment>
     <requestid>839727</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b411955c4f239393c920d16067337f78</srcmd5>
+    <version>0.19.2</version>
+    <time>1605644657</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848800</requestid>
+  </revision>
 </revisionlist>
