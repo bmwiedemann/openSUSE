@@ -1,0 +1,28 @@
+diff --git a/src/gyp/common.gypi b/src/gyp/common.gypi
+index 4e78489..9a159d8 100644
+--- a/src/gyp/common.gypi
++++ b/src/gyp/common.gypi
+@@ -105,7 +105,6 @@
+     ],
+     # Libraries for GNU/Linux environment.
+     'linux_ldflags': [
+-      '-lc++',
+       '-pthread',
+     ],
+ 
+@@ -213,7 +212,6 @@
+           ['compiler_target=="clang" or compiler_target=="gcc"', {
+             'cflags_cc': [
+               '-std=c++17',
+-              '-stdlib=libc++',
+             ],
+           }],
+         ],
+@@ -233,7 +231,6 @@
+           ['compiler_host=="clang" or compiler_host=="gcc"', {
+             'cflags_cc': [
+               '-std=c++17',
+-              '-stdlib=libc++',
+             ],
+           }],
+         ],
