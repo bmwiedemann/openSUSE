@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 17 15:16:47 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add support for LMTP
+
+-------------------------------------------------------------------
 Wed Nov  4 14:53:10 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Only use username in vmail path

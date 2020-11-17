@@ -21,6 +21,7 @@ In all examples, `podman` can be replaced directly with `docker`.
 - `INET_PROTOCOLS`	The network interface protocols used for connections. Valid values are "all", "ipv4", "ipv6" or "ipv4,ipv6". The default value is "ipv4".
 - `MASQUERADE_DOMAINS`	Comma separated list of domains that must have their subdomain structure stripped off.
 - `MYDESTINATION`	List of domains for which mails are delivered locally instead of forwarding to another machine.
+- `LMTP=host`           Host on which the lmtp service is running. This will disable the usage of the vmail user account.
 - `VIRTUAL_MBOX=[0|1]`	Create virtual mail boxes in /var/spool/vmail owned by user vmail.
 - `VMAIL_UID=5000`	User ID and group ID of the vmail user for virtual domains and mailboxes.
 - `VIRTUAL_DOMAINS=`	Whitespace seperated list of virtual domains, will be written to `/etc/postfix/vhosts`.

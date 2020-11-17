@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>847699</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>3f220786c877d7e916e412cca54d262f</srcmd5>
+    <version>1.0.0</version>
+    <time>1605644864</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for LMTP (forwarded request 849119 from kukuk)</comment>
+    <requestid>849120</requestid>
+  </revision>
 </revisionlist>
