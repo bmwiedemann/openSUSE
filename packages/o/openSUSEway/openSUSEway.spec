@@ -66,9 +66,8 @@ Requires:       xdg-utils
 %description
 This meta package aggregates openSUSEway desktop enviroment packages.
 
-%bcond_with betatest
-%pattern_graphicalenvironments
 %package -n     patterns-openSUSEway
+%pattern_graphicalenvironments
 Summary:        The openSUSEway desktop environment pattern
 Group:          Metapackages
 Provides:       pattern() = openSUSEway
