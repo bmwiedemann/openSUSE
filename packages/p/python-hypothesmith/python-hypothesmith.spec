@@ -20,7 +20,7 @@
 %define skip_python2 1
 # no release tags in repository, but we need LICENSE and tests not
 # packaged in PyPI source https://github.com/Zac-HD/hypothesmith/issues/5
-%define commithash 6124cd71317add93500e0cb04c98cf5606adedea
+%define commithash 40947c2e590f06ea5f3b88c6e75d8a98e9443c63
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -30,7 +30,7 @@
 %bcond_with test
 %endif
 Name:           python-hypothesmith%{psuffix}
-Version:        0.1.4
+Version:        0.1.6
 Release:        0
 Summary:        Hypothesis strategies for generating Python programs, something like CSmith
 License:        MPL-2.0

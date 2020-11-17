@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 14 05:23:01 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v0.1.6
+  * Improved error messages from internal compiler errors again
+  * Bumped Hypothesis requirement to version 5.39 or later
+- from v0.1.5
+  * Emit additional debug info when Python fails to compile a string
+
+-------------------------------------------------------------------
 Wed Aug 19 15:46:37 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 0.1.4
