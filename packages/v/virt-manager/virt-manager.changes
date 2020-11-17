@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Nov 16 09:57:34 MST 2020 - carnold@suse.com
+
+- jsc#SLE-16582, Upgrade virt-manager >= 3.x
+  * Slim down filesystem device editor UI
+  * Fix TOCTTOU virt-install bugs (Martin Pitt)
+  * Several other bug fixes
+  virt-manager-3.2.0.tar.bz2
+- Drop patches contained in new tarball
+  1a1e4580-cloner-Explicitly-reject-network-disks-we-dont-know-how-to-clone.patch
+  2773bc35-storagepool-cleanup-volumes-on-pool-cleanup.patch
+  b1328202-devices-disk-Skip-check_path_search-for-path.patch
+  virtman-append-usr-sbin-to-search-path.patch
+
+-------------------------------------------------------------------
+Wed Nov 11 09:06:35 MST 2020 - carnold@suse.com
+
+- Upstream bug fixes (bsc#1027942)
+  1a1e4580-cloner-Explicitly-reject-network-disks-we-dont-know-how-to-clone.patch
+  2773bc35-storagepool-cleanup-volumes-on-pool-cleanup.patch
+  b1328202-devices-disk-Skip-check_path_search-for-path.patch
+
+-------------------------------------------------------------------
 Fri Oct 30 14:03:50 MDT 2020 - carnold@suse.com
 
 - jsc#SLE-12902 virt-manager: Display information about nvram file

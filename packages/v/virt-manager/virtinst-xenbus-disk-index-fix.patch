@@ -6,11 +6,11 @@ types (ide vs xen) it added xvda with hda.  These disks were then
 passed to qemu where it error'ed out with the disks having the same
 index (in this case both are 0).
 
-Index: virt-manager-3.0.0/virtinst/devices/disk.py
+Index: virt-manager-3.2.0/virtinst/devices/disk.py
 ===================================================================
---- virt-manager-3.0.0.orig/virtinst/devices/disk.py
-+++ virt-manager-3.0.0/virtinst/devices/disk.py
-@@ -850,6 +850,17 @@ class DeviceDisk(Device):
+--- virt-manager-3.2.0.orig/virtinst/devices/disk.py
++++ virt-manager-3.2.0/virtinst/devices/disk.py
+@@ -896,6 +896,17 @@ class DeviceDisk(Device):
          :returns: generated target
          """
          prefix, maxnode = self.get_target_prefix()
@@ -28,7 +28,7 @@ Index: virt-manager-3.0.0/virtinst/devices/disk.py
          skip_targets = [t for t in skip_targets if t and t.startswith(prefix)]
          skip_targets.sort()
  
-@@ -857,7 +868,12 @@ class DeviceDisk(Device):
+@@ -903,7 +914,12 @@ class DeviceDisk(Device):
              first_found = None
  
              for i in range(maxnode):
