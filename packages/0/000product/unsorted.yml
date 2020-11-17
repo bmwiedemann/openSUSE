@@ -1194,7 +1194,6 @@ unsorted:
   - bb 
   - bbe 
   - bbswitch 
-  - bbswitch-kmp-default: [x86_64] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - bbswitch-kmp-pae: [i586] 
   - bcache-tools: [i586] 
   - bcal: [x86_64] 
