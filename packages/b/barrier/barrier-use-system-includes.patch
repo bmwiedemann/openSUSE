@@ -1,0 +1,21 @@
+diff -Naur a/src/test/CMakeLists.txt b/src/test/CMakeLists.txt
+--- a/src/test/CMakeLists.txt	2020-07-14 12:37:45.000000000 -0500
++++ b/src/test/CMakeLists.txt	2020-11-13 15:18:03.598163859 -0600
+@@ -15,13 +15,11 @@
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ include_directories(
+-    ../../ext/gtest
+-    ../../ext/gtest/include
+-    ../../ext/gmock
+-    ../../ext/gmock/include)
++    /usr/include/gtest
++    /usr/include/gmock)
+     
+-add_library(gtest STATIC ../../ext/gtest/src/gtest-all.cc)
+-add_library(gmock STATIC ../../ext/gmock/src/gmock-all.cc)
++add_library(gtest STATIC /usr/include/gtest/src/gtest-all.cc)
++add_library(gmock STATIC /usr/include/gmock/src/gmock-all.cc)
+ 
+ if (UNIX)
+     # ignore warnings in gtest and gmock

@@ -18,17 +18,21 @@
 
 
 Name:           barrier
-Version:        2.3.2
+Version:        2.3.3
 Release:        0
 Summary:        Mouse, keyboard and clipboard sharing utility
 License:        GPL-2.0-or-later
 URL:            https://github.com/debauchee/barrier
-Source0:        https://github.com/debauchee/barrier/archive/v%{version}.tar.gz
+Source0:        https://github.com/debauchee/barrier/archive/v%{version}/%{name}-%{version}.tar.gz
 Source2:        barriers.socket
 Source3:        barriers.service
+#PATCH-FIX-OPENSUSE barrier-use-system-includes.patch malcolmlewis@opensuse.org -- Use the system gtest and gmock files for testing.
+Patch0:         barrier-use-system-includes.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
+BuildRequires:  gmock
+BuildRequires:  gtest
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Network)
@@ -42,8 +46,8 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xtst)
-#Provides:       synergy = %{version}
-#Obsoletes:      synergy < %{version}
+#Provides:       synergy = %%{version}
+#Obsoletes:      synergy < %%{version}
 %{?systemd_ordering}
 
 %description
@@ -61,7 +65,7 @@ if screen locking is enabled, only one screen requires a password to
 unlock them all.
 
 %prep
-%setup -q -n barrier-%{version}
+%autosetup -p1
 # not enough categories in the desktop file
 sed -i -e 's:Utility;:Utility;DesktopUtility;:g' res/barrier.desktop
 
@@ -103,6 +107,7 @@ install -D -m0644 res/barrier.png "%{buildroot}%{_datadir}/pixmaps/barrier.png"
 %service_del_preun barriers.service barriers.socket
 
 %files
+%doc ChangeLog debian/changelog
 %config(noreplace) %{_sysconfdir}/barrier.conf
 %{_bindir}/barrier
 %{_bindir}/barrierc
