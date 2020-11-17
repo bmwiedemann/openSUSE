@@ -27,7 +27,7 @@ Konsole code was rewritten entirely with using Qt only, and all \
 code dealing with user interface parts and session management was \
 removed.
 Name:           qtermwidget-qt5
-Version:        0.16.0
+Version:        0.16.1
 Release:        0
 Summary:        %{pack_summ}
 License:        GPL-2.0-or-later

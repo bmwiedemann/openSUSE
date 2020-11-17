@@ -164,4 +164,13 @@
   * Handle keyboard commands properly.</comment>
     <requestid>846013</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>07e2a86a3400385d9a824a04eed3f1f6</srcmd5>
+    <version>0.16.1</version>
+    <time>1605644620</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.1:
+  * Bumped version to 0.16.1, for a point release of qterminal.</comment>
+    <requestid>848667</requestid>
+  </revision>
 </revisionlist>
