@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 15 09:53:18 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Drop unused py3_ver macro
+- Explicitely require python-rpm-macros
+
+-------------------------------------------------------------------
 Fri Nov 13 13:16:33 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - remove deprecated python-sip requirement. PyQt5.sip provided by
