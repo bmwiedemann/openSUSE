@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 13 09:42:44 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
+
+- Add a Requires for net-tools-deprecated, as legacy binary binaries
+  are still used by some of the custom lynis tests we ship. Later on
+  I'll port them to use current binaries and remove this again
+
+-------------------------------------------------------------------
 Mon Oct  5 13:50:24 UTC 2020 - Robert Frohl <rfrohl@suse.com>
 
 - Update to 3.0.1

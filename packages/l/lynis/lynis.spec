@@ -55,6 +55,7 @@ Requires:       bash
 Requires:       cron
 Requires:       findutils
 Requires:       logrotate
+Requires:       net-tools-deprecated
 Requires:       netcfg
 Requires:       wget
 # FIXME: use proper Requires(pre/post/preun/...)
