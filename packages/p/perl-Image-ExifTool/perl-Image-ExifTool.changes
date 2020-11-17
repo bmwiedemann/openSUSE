@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Nov 16 06:43:22 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 12.10
+  * Added -validate test for proper TIFF magic number in
+    JPEG EXIF header
+  * Added support for Nikon Z7 LensData version 0801
+  * Added a new XMP-GPano tag
+  * Decode ColorData for the Canon EOS 1DXmkIII
+  * Decode more tags for the Sony ILCE-7SM3
+  * Automatically apply QuickTimeUTC option for CR3 files
+  * Improved decoding of XAttrMDLabel from MacOS files
+  * Ignore time zones when writing date/time values and
+    using the -d option
+  * Enhanced -echo3 and -echo4 options to allow exit status
+    to be returned
+  * Changed -execute so the -q option no longer suppresses
+    the "{ready}" message when a synchronization number is used
+  * Added ability to copy CanonMakerNotes from CR3 images
+    to other file types
+  * Added read support for ON1 presets file (.ONP)
+  * Added two new CanonModelID values
+  * Added trailing "/" when writing QuickTime:GPSCoordinates
+  * Added a number of new XMP-crs tags
+  * Added a new Sony LensType (thanks Jos Roost)
+  * Added a new Nikon Z lens (thanks LibRaw)
+  * Added a new Canon LensType
+  * Decode ColorData for Canon EOS R5/R6
+  * Decode a couple of new HEIF tags
+  * Decode FirmwareVersion for Canon M50
+  * Improved decoding of Sony CreativeStyle tags
+  * Improved parsing of Radiance files to recognize comments
+  * Renamed GIF AspectRatio tag to PixelAspectRatio
+  * Patched EndDir() feature so subdirectories are always
+    processed when -r is used (previously, EndDir() would
+    end processing of a directory completely)
+  * Avoid loading GoPro module unnecessarily when reading MP4 videos
+    from some other cameras
+  * Fixed problem with an incorrect naming of CodecID tags in some
+    MKV videos
+  * Fixed verbose output to avoid "adding" messages for
+    existing flattened XMP tags
+  * Added a new Sony LensType
+  * Recognize Mac OS X xattr files
+  * Extract ThumbnailImage from MP4 videos of more dashcam models
+  * Improved decoding of a number of Sony tags
+  * Fixed problem where the special -if EndDir() function didn't
+    work properly for directories after the one in which
+    it was initially called
+  * Patched to read DLL files which don't have a .rsrc section
+  * Patched to support new IGC date format when geotagging
+  * Patched to read DLL files with an invalid size in the header 
+  * Added support for GoPro .360 videos
+  * Added some new Canon RF and Nikkor Z lenses
+  * Added some new Sony LensType and CreativeStyle values
+    and decode some ILCE-7C tags
+  * Added a number of new Olympus SceneMode values
+  * Added a new Nikon LensID
+  * Decode more timed metadata from Insta360 videos
+  * Decode timed GPS from videos of more Garmin dashcam models
+  * Decode a new GoPro video tag
+  * Reformat time-only EventTime values when writing and prevent
+    arbitrary strings from being written
+  * Patched to accept backslashes in SourceFile entries for -csv option
+
+-------------------------------------------------------------------
 Wed Sep 16 13:15:45 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 12.06
