@@ -16,11 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-
 Name:           calibre
-Version:        4.23.0
+Version:        5.5.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -33,7 +30,7 @@ Source3:        %{name}.desktop
 Source100:      %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE: disabling unrar test
 Patch1:         %{name}-python_test.patch
-#
+# PATCH-FIX-OPENSUSE: install locale files the openSUSE way
 Patch2:         %{name}-setup.install.py.diff
 # PATCH-FIX-OPENSUSE: disabling Autoupdate Searcher
 Patch3:         %{name}-no-update.diff
@@ -56,9 +53,9 @@ BuildRequires:  update-desktop-files
 BuildRequires:  chmlib-devel >= 0.40
 BuildRequires:  dbus-1-python3 >= 1.2.0
 BuildRequires:  hyphen-devel >= 2.8.8
-BuildRequires:  libQt5Core-private-headers-devel >= 5.14.1
-BuildRequires:  libQt5Gui-private-headers-devel >= 5.14.1
-BuildRequires:  libQt5PlatformSupport-private-headers-devel >= 5.14.1
+BuildRequires:  libQt5Core-private-headers-devel >= 5.15.1
+BuildRequires:  libQt5Gui-private-headers-devel >= 5.15.1
+BuildRequires:  libQt5PlatformSupport-private-headers-devel >= 5.15.1
 BuildRequires:  liberation-fonts
 BuildRequires:  libicu-devel >= 4.4.0
 BuildRequires:  libmtp-devel >= 1.1.5
@@ -70,11 +67,12 @@ BuildRequires:  optipng >= 0.7.5
 BuildRequires:  podofo >= 0.8.2
 BuildRequires:  poppler-tools >= 0.20.2
 BuildRequires:  xdg-utils >= 1.0.2
-BuildRequires:  pkgconfig(Qt5Core) >= 5.14.1
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.14.1
-BuildRequires:  pkgconfig(Qt5Network) >= 5.14.1
-BuildRequires:  pkgconfig(Qt5WebEngineWidgets) >= 5.14.1
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.14.1
+BuildRequires:  pkgconfig(Qt5Core) >= 5.15.1
+BuildRequires:  pkgconfig(Qt5Gui) >= 5.15.1
+BuildRequires:  pkgconfig(Qt5Network) >= 5.15.1
+BuildRequires:  pkgconfig(Qt5WebEngineWidgets) >= 5.15.1
+BuildRequires:  pkgconfig(Qt5Widgets) >= 5.15.1
+BuildRequires:  pkgconfig(espeak-ng)
 BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sqlite3)
@@ -84,55 +82,60 @@ BuildRequires:  pkgconfig(ImageMagick) >= 6.5.9
 #
 BuildRequires:  libjpeg-turbo
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-qt5-devel >= 5.13.1
 BuildRequires:  pkgconfig(libjpeg)
 # upstream use python-Pillow 6.0.0
-BuildRequires:  %{python_module Pillow >= 5.0.0}
+BuildRequires:  python3-Pillow >= 5.0.0
 # upstream use python-Pygments 2.3.1
-BuildRequires:  %{python_module Pygments >= 2.2.0}
+BuildRequires:  python3-Pygments >= 2.2.0
 # upstream use python-apsw 3.30.1-r1
-BuildRequires:  %{python_module apsw >= 3.9.2}
+BuildRequires:  python3-apsw >= 3.9.2
 # upstream use python-beautifulsoup4 4.7.1
-BuildRequires:  %{python_module beautifulsoup4 >= 4.6.0}
-BuildRequires:  %{python_module chardet >= 3.0.4}
-BuildRequires:  %{python_module css-parser >= 1.0.4}
+BuildRequires:  python3-beautifulsoup4 >= 4.6.0
+BuildRequires:  python3-chardet >= 3.0.4
+# upstream use python-css-parser 1.0.5
+BuildRequires:  python3-css-parser >= 1.0.4
 # upstream use python-dateutil 2.8.0
-BuildRequires:  %{python_module dateutil >= 2.7.3}
+BuildRequires:  python3-dateutil >= 2.7.3
 # upstream use python-dnspython 0.16.0
-BuildRequires:  %{python_module dnspython >= 1.15.0}
-BuildRequires:  %{python_module dukpy-kovidgoyal >= 0.3}
+BuildRequires:  python3-dnspython >= 1.15.0
+BuildRequires:  python3-dukpy-kovidgoyal >= 0.3
 # upstream use python-html5-paser 0.4.9
-BuildRequires:  %{python_module html5-parser >= 0.4.6}
-BuildRequires:  %{python_module html5lib >= 1.0.1}
+BuildRequires:  python3-html5-parser >= 0.4.6
+BuildRequires:  python3-html5lib >= 1.0.1
 # upstream use python-lxml 4.3.3
-BuildRequires:  %{python_module lxml >= 4.0.0}
+BuildRequires:  python3-lxml >= 4.0.0
 # upstream use python-mechanize 0.4.3
-BuildRequires:  %{python_module mechanize >= 0.3.5}
+BuildRequires:  python3-mechanize >= 0.3.5
 # upstream use python-msgpack 0.6.1
-BuildRequires:  %{python_module msgpack >= 0.5.6}
+BuildRequires:  python3-msgpack >= 0.5.6
 # upstream use python-netifaces 0.10.9
-BuildRequires:  %{python_module netifaces >= 0.10.6}
-BuildRequires:  %{python_module odfpy}
+BuildRequires:  python3-netifaces >= 0.10.6
+BuildRequires:  python3-odfpy
 # upstream use python-psutil 5.6.2
-BuildRequires:  %{python_module psutil >= 5.4.8}
+BuildRequires:  python3-psutil >= 5.4.8
 # upstream use python-ifaddr 0.1.6
-BuildRequires:  %{python_module ifaddr >= 0.1.4}
+BuildRequires:  python3-ifaddr >= 0.1.4
 # upstream use python-regex 2019.04.14
-BuildRequires:  %{python_module Markdown >= 3.1}
-BuildRequires:  %{python_module feedparser >= 5.2.1}
-BuildRequires:  %{python_module html2text >= 2018.1.9}
-BuildRequires:  %{python_module pycrypto >= 2.6.1}
-BuildRequires:  %{python_module regex >= 2017.07.28}
-BuildRequires:  %{python_module setuptools >= 23.1.0}
-BuildRequires:  %{python_module sip-devel >= 4.12}
+BuildRequires:  python3-Markdown >= 3.1
+BuildRequires:  python3-feedparser >= 5.2.1
+BuildRequires:  python3-html2text >= 2018.1.9
+BuildRequires:  python3-pychm
+BuildRequires:  python3-pycrypto >= 2.6.1
+BuildRequires:  python3-pyparsing
+BuildRequires:  python3-pyqt-builder
+BuildRequires:  python3-qt5-devel >= 5.13.1
+BuildRequires:  python3-regex >= 2017.07.28
+BuildRequires:  python3-setuptools >= 23.1.0
+BuildRequires:  python3-sip-devel >= 5.3
+BuildRequires:  python3-toml
 # Need at buildtime too, to produce the bash completion
-BuildRequires:  %{python_module qtwebengine-qt5 >= 5.13.1}
-BuildRequires:  %{python_module six >= 1.10.0}
-BuildRequires:  %{python_module soupsieve >= 1.9.1}
+BuildRequires:  python3-qtwebengine-qt5 >= 5.15.1
+BuildRequires:  python3-six >= 1.10.0
+BuildRequires:  python3-soupsieve >= 1.9.1
 #BuildRequires:  python-unrardll >= 0.1.3
-BuildRequires:  %{python_module webencodings >= 0.5.1}
+BuildRequires:  python3-webencodings >= 0.5.1
 # upstream use python-zeroconf 0.21.3
-BuildRequires:  %{python_module zeroconf >= 0.19.1}
+BuildRequires:  python3-zeroconf >= 0.19.1
 #
 Requires:       chmlib >= 0.40
 Requires:       dbus-1-python3 >= 1.2.0
@@ -164,12 +167,13 @@ Requires:       python3-msgpack >= 0.5.6
 Requires:       python3-netifaces >= 0.10.7
 Requires:       python3-odfpy
 Requires:       python3-psutil >= 5.4.8
+Requires:       python3-pychm
 Requires:       python3-pycrypto >= 2.6.1
-Requires:       python3-qt5 >= 5.13.1
-Requires:       python3-qtwebengine-qt5 >= 5.13.1
+Requires:       python3-qt5 >= 5.15.1
+Requires:       python3-qt5-sip
+Requires:       python3-qtwebengine-qt5 >= 5.15.1
 Requires:       python3-regex >= 2017.07.28
 Requires:       python3-setuptools >= 23.1.0
-Requires:       python3-sip >= 4.12.1
 Requires:       python3-six >= 1.10.0
 Requires:       python3-soupsieve >= 1.9.1
 #Requires:       python3-unrardll >= 0.1.3
@@ -247,8 +251,6 @@ done
 
 %suse_update_desktop_file -i -n calibre Office Viewer
 
-%fdupes %{buildroot}/%{_prefix}
-
 # rpmlint: wrong-script-interpreter /usr/bin/env python3
 find %{buildroot}%{_bindir} -type f  | xargs sed -i -e 's:#!/usr/bin/env python3:#!/usr/bin/python3:g'
 find %{buildroot}%{_libdir}/calibre -type f  | xargs sed -i -e 's:#!/usr/bin/env python3:#!/usr/bin/python3:g'
@@ -267,11 +269,13 @@ done
 # appdata file references calibre-gui.desktop, and .appdata.xml file should necessarily have matching name with .desktop file in order for the app to show up in Software Centres
 mv %{buildroot}%{_datadir}/applications/calibre.desktop %{buildroot}%{_datadir}/applications/calibre-gui.desktop
 
-# Remove all appdata.xml files but the main one, we do not install the corresponding .desktop files
-rm %{buildroot}%{_datadir}/metainfo/calibre-ebook-{edit,viewer}.appdata.xml
+# Remove all metainfo.xml files but the main one, we do not install the corresponding .desktop files
+rm %{buildroot}%{_datadir}/metainfo/calibre-ebook-{edit,viewer}.metainfo.xml
 # Remove unneeded desktop files
 rm %{buildroot}%{_datadir}/applications/calibre-ebook-{edit,viewer}.desktop
 rm %{buildroot}%{_datadir}/applications/calibre-lrfviewer.desktop
+
+%fdupes %{buildroot}%{_prefix}
 
 # bsc#1022710, bsc#1104597: fix upgrade
 # liberation had become a symlink in Leap and RPM does not like to overwrite a directory with a symlink (or vice versa).
@@ -292,6 +296,7 @@ end
 %check
 CALIBRE_PY3_PORT=1 SKIP_QT_BUILD_TEST=1 python3 setup.py test
 
+%if 0%{?suse_version} <= 1320
 %post
 %desktop_database_post
 %icon_theme_cache_post
@@ -299,6 +304,7 @@ CALIBRE_PY3_PORT=1 SKIP_QT_BUILD_TEST=1 python3 setup.py test
 %postun
 %desktop_database_postun
 %icon_theme_cache_postun
+%endif
 
 %files
 # -f %%{name}.lang  -f iso639.lang
@@ -313,10 +319,10 @@ CALIBRE_PY3_PORT=1 SKIP_QT_BUILD_TEST=1 python3 setup.py test
 %{_datadir}/%{name}/
 %{_libdir}/%{name}/
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/%{name}-gui.appdata.xml
+%{_datadir}/metainfo/%{name}-gui.metainfo.xml
 %{_datadir}/bash-completion/completions/%{name}*
 %{_datadir}/bash-completion/completions/*ebook*
 %{_datadir}/bash-completion/completions/lrf*
-%{python_sitelib}/init_calibre.py
+%{python3_sitelib}/init_calibre.py
 
 %changelog
