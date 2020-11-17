@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 15 07:36:41 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.1:
+  * Fix a regression in setting the acceleration speed of
+    mouse/touchpad.
+
+-------------------------------------------------------------------
 Wed Nov  4 13:37:30 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.16.0:

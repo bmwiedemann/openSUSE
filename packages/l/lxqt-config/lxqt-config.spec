@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-config
-Version:        0.16.0
+Version:        0.16.1
 Release:        0
 Summary:        LXQt Control Center
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -44,7 +44,7 @@ BuildRequires:  pkgconfig(Qt5Xdg) >= 1.3.0
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(lxqt) >= %{version}
+BuildRequires:  pkgconfig(lxqt) >= 0.16.0
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-randr)
