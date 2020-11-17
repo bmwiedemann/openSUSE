@@ -20,7 +20,7 @@ Name:           canutils
 Summary:        Utilities for Controller Area Networks from the Linux-CAN project
 License:        GPL-2.0-only AND BSD-3-Clause
 Group:          Hardware/Other
-Version:        2020.02.04.g192
+Version:        2020.11.0
 Release:        0
 URL:            https://github.com/linux-can/can-utils
 
@@ -40,20 +40,15 @@ of CAN drivers and a networking stack contributed by Volkswagen
 Research to the Linux kernel.
 
 This package contains some userspace utilities for the Linux
-SocketCAN subsystem: asc2log, bcmserver, canbusload,
-can-calc-bit-timing, candump, canfdtest, cangen, cangw, canlogserver,
-canplayer, cansend, cansniffer, isotpdump, isotprecv, isotpperf,
-isotpsend, isotpserver, isotpsniffer, isotptun, log2asc, log2long,
-slcan_attach, slcand and slcanpty.
+SocketCAN subsystem.
 
 %prep
 %autosetup -n can-utils-%version -p1
 
 %build
 ./autogen.sh
-# Avoid overlap with other canutils
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
