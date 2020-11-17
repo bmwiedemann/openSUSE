@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Nov 17 10:24:37 UTC 2020 - idonmez@suse.com
+
+- Update to version 0.32.0+git.20201116T202958.24d6961833:
+  * command: mouse: generate MOUSE_{ENTER,LEAVE} if required
+  * docs/input.rst: document the mouse-pos property
+  * command: mouse-pos property: add field "hover"
+  * lua/js: mp.get_mouse_pos: use the mouse-pos property
+  * command: new property: mouse-pos
+  * command: add internal INPUT_PROCESSED event
+  * path: do not use old_home for win32 exe dir
+  * js: report scripts CPU/memory usage statistics
+  * ci: fix mingw build by adding harfbuzz
+  * command: make subtitle time properties observable
+  * manpage: properties fixes
+  * manpage: document the property-change event
+  * manpage: document video-frame-info sub-properties
+  * manpage: remove redundant "Return(s) "
+  * manpage: document demuxer-cache-state better
+  * manpage: be consistent with booleans
+  * vo_sixel: Add fallback terminal width and height
+  * vo_sixel: Add checks to prevent null pointer dereferencing.
+  * ao_alsa: handle -EPIPE XRUNs from snd_pcm_status
+  * ao_alsa: always initialize state if passed
+  * wayland: fix buffer overrun in get_mods
+  * wayland: check for modifier keys on pointer events
+  * Revert "wayland: conditionally commit surface on resize"
+  * DOCS: correct interface-changes.rst
+  * mac: make focus property observable
+  * video/out/vo_sixel.c: Implement sixel as a output device
+  * manpage: document av1 addition to --hwdec-codecs default setting
+  * vd_lavc: add AV1 to the default allowed hwdec codec list
+  * player: fix external cover file prioritization
+  * input.conf: add default keybindings for sub-scale
+  * console: let type set the cursor position
+  * ytdl_hook: if ytdl not found in config dirs, use ytdl_path as is
+  * ytdl_hook: support alternative youtube-dl path
+  * player: reorder list of external cover files for optimal results
+  * build: disable wayland if linux/input-event-codes.h isn’t available
+  * wayland: use more specific input codes header
+  * demux_lavf: initialize ReplayGain data
+  * command: add delete-watch-later-config
+  * vo_gpu: improve gamut warning bounds checks
+  * wayland: don't use presentation time if ust is 0
+
+-------------------------------------------------------------------
 Mon Oct 19 12:43:07 UTC 2020 - idonmez@suse.com
 
 - Update to version 0.32.0+git.20201016T174805.cbbdb3fae4:
