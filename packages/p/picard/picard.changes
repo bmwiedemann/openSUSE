@@ -1,22 +1,52 @@
 -------------------------------------------------------------------
+Mon Nov 16 07:35:31 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.5.2:
+  * Bugfixes:
+    - PICARD-1991 - Case-only changes to file names are not applied
+      on case insensitive file systems on Linux
+    - PICARD-1992 - Case-only changes to file names are not applied
+      on FAT32 and exFAT file systems on Windows 10
+    - PICARD-2001 - Directory drag & drop from file browser to
+      cluster area broken
+    - PICARD-2004 - Metadata changes loaded asynchronously by
+      plugins are reset if file gets matched to track
+    - PICARD-2005 - Modified fields are sometimes not correctly
+      marked as changed when multiple files are selected
+    - PICARD-2006 - "Local files" cover provider does not detect
+      cover files for files already present at release loading time
+    - PICARD-2012 - Loaded files not shown in UI if release
+      MBID is a redirect
+    - PICARD-2014 - Config upgrade from Picard < 1.3.0 to
+      version 2.4 or later fails
+  * Improvements:
+    - PICARD-1828 - Allow assigning cover art to multiple selected
+      files
+    - PICARD-1999 - Provide binary distributions for Windows and
+      macOS on PyPI
+    - PICARD-2007 - Disable analyze / audio fingerprinting for MIDI
+      files
+
+-------------------------------------------------------------------
 Thu Oct 29 07:47:43 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.5.1:
-  Bugfixes:
-  * PICARD-1987 - Special variables %_multiartist%, %_pregap%,
-    %_datatrack% and %_totalalbumtracks% missing after files
-    got matched to a track
-  * PICARD-1988 - Aborts if directory scan finds a directory which
-    cannot be read
-  * PICARD-1989 - Auto-sizing does not work right on first column
-  * PICARD-1990 - Case-only changes to file names are not applied
-    on Windows if running with Python >= 3.8
-  Improvements:
-  * PICARD-1985 - Support chorus master recording relationships
-    as "performer:chorus master" instead of second conductor
-  * PICARD-1995 - Add command line parameter --no-player to
-    disable media player
-  * PICARD-1997 - Reduce performance impact of fingerprinting column
+  * Bugfixes:
+    - PICARD-1987 - Special variables %_multiartist%, %_pregap%,
+      %_datatrack% and %_totalalbumtracks% missing after files
+      got matched to a track
+    - PICARD-1988 - Aborts if directory scan finds a directory
+      which cannot be read
+    - PICARD-1989 - Auto-sizing does not work right on first column
+    - PICARD-1990 - Case-only changes to file names are not applied
+     on Windows if running with Python >= 3.8
+  * Improvements:
+    - PICARD-1985 - Support chorus master recording relationships
+      as "performer:chorus master" instead of second conductor
+    - PICARD-1995 - Add command line parameter --no-player to
+      disable media player
+    - PICARD-1997 - Reduce performance impact of fingerprinting
+      column
 
 -------------------------------------------------------------------
 Tue Oct 27 06:29:29 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
