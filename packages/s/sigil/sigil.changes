@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Nov 22 09:51:53 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.4.2
+  * Bug Fixes:
+    - critical bug fix for incorrectly xml encoding of opf metadata
+      attributes that use entities
+    - fix bug in "Add Existing" files when file names would require
+      percent encoding
+    - fix bug in multiple language spellchecking dialog word lookup
+      when no language attributes used
+    - update de, nl, sv, ko, ru translations that missed 
+      the Sigil 1.4.0 initial release
+    - critical bug fix for over xml encoding html used inside
+      metadata in the opf
+    - revert ctrl-f to it long standing Find and Replace behaviour
+
+-------------------------------------------------------------------
 Mon Nov 16 19:32:44 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.4.1
