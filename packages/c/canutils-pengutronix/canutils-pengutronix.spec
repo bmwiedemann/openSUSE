@@ -1,7 +1,7 @@
 #
-# spec file for package canutils
+# spec file for package canutils-pengutronix
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           canutils-pengutronix
 Summary:        Utilities for Controller Area Networks from the Pengutronix project
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Hardware/Other
-Version:        4.0.6
+Version:        4.0.6.g26
 Release:        0
-Url:            http://pengutronix.de/software/socket-can/download/
+URL:            http://pengutronix.de/software/socket-can/download/
 
 #Git-Clone:	git://git.pengutronix.de/git/tools/canutils
-Source:         http://pengutronix.de/software/socket-can/download/canutils/v4.0/canutils-%version.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+#Source:        http://pengutronix.de/software/socket-can/download/canutils/v4.0/canutils-%version.tar.bz2
+Source:         canutils-%version.tar.xz
+BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libsocketcan) >= 0.0.8
@@ -44,11 +45,12 @@ This package contains some userspace utilities for the Linux
 SocketCAN subsystem: canconfig candump canecho cansend cansequence.
 
 %prep
-%setup -qn canutils-%version
+%autosetup -n canutils-%version -p1
 
 %build
+autoreconf -fiv
 %configure --disable-static --program-prefix="pgt-"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -56,7 +58,6 @@ make %{?_smp_mflags}
 rm -Rf "%buildroot/%_libdir/pkgconfig"
 
 %files
-%defattr(-,root,root)
 %_bindir/*
 %_sbindir/*
 %_mandir/man8/*.8*

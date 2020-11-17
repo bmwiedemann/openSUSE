@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 17 10:54:33 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 4.0.6.g26 (2041b569a)
+  * cansend: add handling of ENOBUFS when sending
+
+-------------------------------------------------------------------
 Thu Aug 16 08:24:44 UTC 2018 - jengelh@inai.de
 
 - Rename canutils -> canutils-pengutronix.
