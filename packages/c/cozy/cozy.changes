@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Nov 14 19:11:36 UTC 2020 - Julian Geywitz <suse@geigi.de>
+
+Update to 0.7.5
+  * Increase maximum playback speed to 3.5x
+  * Fix: audio files with uppercase extensions where not detected (thanks to leuc)
+  * Fix: when using drag and drop some files where not copied and imported correctly
+  * Fix: removing a book from the library was sometimes not possible
+  * Fix: sometimes Cozy's database ran into a locking issue, which could lead to unexpected behaviour of Cozy
+  * As always, updated translations thanks to all of the translators!
+
+-------------------------------------------------------------------
+Sat Nov 14 12:08:47 UTC 2020 - Julian Geywitz <suse@geigi.de>
+
+Update to 0.7.3
+  * Increase maximum playback speed to 3.5x
+  * Fix: audio files with uppercase extensions where not detected (thanks to leuc)
+  * Fix: removing a book from the library was sometimes not possible
+  * Fix: sometimes Cozy's database ran into a locking issue, which could lead to unexpected behaviour of Cozy
+  * As always, updated translations thanks to all of the translators!
+
+-------------------------------------------------------------------
 Mon Sep 28 16:37:25 UTC 2020 - Julian Geywitz <suse@geigi.de>
 
 Update to 0.7.2
