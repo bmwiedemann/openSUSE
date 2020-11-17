@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-intervals
-Version:        0.8.1
+Version:        0.9.0
 Release:        0
 Summary:        Python tools for handling intervals
 License:        BSD-3-Clause

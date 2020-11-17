@@ -31,4 +31,12 @@
     <comment>- Do not restrict pytest5 as newer updates made it work</comment>
     <requestid>800593</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8471df328f6bfb7b9eae8962a22e8308</srcmd5>
+    <version>0.9.0</version>
+    <time>1605644792</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848976</requestid>
+  </revision>
 </revisionlist>
