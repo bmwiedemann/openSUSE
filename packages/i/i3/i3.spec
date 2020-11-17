@@ -17,25 +17,22 @@
 
 
 Name:           i3
-Version:        4.18.3
+Version:        4.19
 Release:        0
 Summary:        Tiling window manager
 License:        BSD-3-Clause
 Group:          System/GUI/Other
 URL:            https://i3wm.org/
-Source0:        https://i3wm.org/downloads/%{name}-%{version}.tar.bz2
+Source0:        https://i3wm.org/downloads/%{name}-%{version}.tar.xz
 Source1:        %{name}.png
 Source2:        %{name}.keyring
-Source3:        https://i3wm.org/downloads/%{name}-%{version}.tar.bz2.asc
+Source3:        https://i3wm.org/downloads/%{name}-%{version}.tar.xz.asc
 Patch1:         i3-desktop_file_valid.patch
 BuildRequires:  asciidoc
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc
 BuildRequires:  libyajl-devel
-BuildRequires:  make
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xmlto
@@ -88,16 +85,11 @@ Development headers for the i3 window manager.
 sed -i 's,^#!/usr/bin/env ,#!/usr/bin/,' i3-dmenu-desktop i3-migrate-config-to-v4 i3-save-tree
 
 %build
-autoreconf -fi
-# Fix Leap 42.x build
-%if 0%{?suse_version} == 1315
-export YAJL_LIBS="-lyajl" YAJL_CFLAGS="-I/usr/include/yajl"
-%endif
-%configure
-make %{?_smp_mflags} V=1  -C  *-linux-gnu*
+%meson
+%meson_build
 
 %install
-%make_install -C *-linux-gnu*
+%meson_install
 %suse_update_desktop_file %{buildroot}%{_datadir}/applications/%{name}.desktop
 install -D -m 0644 %{SOURCE1} %{buildroot}/%{_datadir}/pixmaps/%{name}.png
 
@@ -126,6 +118,8 @@ install -D -m 0644 %{SOURCE1} %{buildroot}/%{_datadir}/pixmaps/%{name}.png
 %{_datadir}/xsessions/i3-with-shmlog.desktop
 %{_datadir}/applications/i3.desktop
 %{_datadir}/pixmaps/i3.png
+%{_datadir}/doc/i3/refcard_style.css
+%{_datadir}/doc/i3/*.png
 
 %files devel
 %dir %{_includedir}/i3/
