@@ -368,4 +368,24 @@
   * Fixed issue where log truncation could prevent accurate number counting.</comment>
     <requestid>847065</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>840bc48619597a29c39d830547c485c2</srcmd5>
+    <version>1.4.2</version>
+    <time>1605644713</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.2:
+  * Added the ability to show 'Encryption Settings' such as ' TLSv1.2' and
+    Cipher Suites on its own panel.
+  * Added the ability to show 'MIME Types' such as ' application/javascript' on
+    its own panel.
+  * Changed Debian build to use mmdb instead of libgeoip (legacy).
+  * Ensure the HTML report defaults to widescreen if viewport is larger than
+    '2560'.
+  * Fixed inability to properly process multiple logs in real-time.
+  * Fixed issue where named PIPEs were not properly seed upon generating
+    filename.
+  * Fixed issue where served time metrics were not shown when data was piped.
+  * Removed unnecessary padding from SVG charts. Improves readability on mobile.</comment>
+    <requestid>848804</requestid>
+  </revision>
 </revisionlist>
