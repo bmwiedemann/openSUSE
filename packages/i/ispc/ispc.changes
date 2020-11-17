@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Nov  6 17:18:06 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+Note, we don't do any GPU builds yet, because
+ - API is not stable
+ - additional dependencies (that are not available, yet)
+
+- Update to version v1.14.1:
+  A minor ISPC update with a bug fix for AVX512 detection problem on macOS
+  (for more details see issue #1854) and update of GPU version to use Level0 v1.0.
+  CPU binaries are based on patched LLVM 10.0.1.
+
+- Update to version v1.14.0:
+  An ISPC release with several improvements for CPU and initial support of Intel
+  graphics hardware architectures. The binaries in this release include CPU versions
+  for Windows, Linux, and macOS, as previous releases, plus a GPU-enabled Linux binary,
+  which supports both CPU and GPU. CPU binaries are based on patched LLVM 10.0.1.
+
+  CPU changes include:
+  + new avx2-i8x32, avx2-i16x16, avx512skx-i8x64, avx512skx-i16x32 targets.
+    "generic" targets were removed.
+  + several stability fixes, including bugs discovered during fuzzing ISPC by YARPGen.
+  + integer division performance improvements.
+  + support for __vectorcall calling convention on Windows x64 (enabled by
+    '--vectorcall')
+
+-------------------------------------------------------------------
 Wed Jul  8 14:23:04 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - fix build with 15.2
