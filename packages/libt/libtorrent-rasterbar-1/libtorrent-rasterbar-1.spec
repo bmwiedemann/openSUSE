@@ -23,13 +23,13 @@
 %bcond_with     examples
 %bcond_with     tests
 Name:           %{_oname}-%{_legacy}
-Version:        1.2.10
+Version:        1.2.11
 Release:        0
 Summary:        A C++ implementation of the BitTorrent protocol
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://libtorrent.org/
-Source:         https://github.com/arvidn/%{_name}/releases/download/%{_name}-%{version}/%{_oname}-%{version}.tar.gz
+Source:         https://github.com/arvidn/%{_name}/releases/download/v%{version}/%{_oname}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE libtorrent-rasterbar-fix_library_version.patch
 Patch1:         libtorrent-rasterbar-fix_library_version.patch
 # for directory ownership
@@ -118,7 +118,8 @@ export CXXFLAGS="-std=c++14"
 %if %{with examples}
    -Dbuild_examples=ON \
 %endif
-   -Dpython-bindings=ON
+   -Dpython-bindings=ON \
+   -Dpython-egg-info=ON
 %cmake_build
 
 %install
