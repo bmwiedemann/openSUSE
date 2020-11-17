@@ -1,0 +1,104 @@
+From 10ad0ad242a10b18355c7a40477f0e0256eb781a Mon Sep 17 00:00:00 2001
+From: Tony Jones <tonyj@suse.de>
+Date: Thu, 8 Aug 2019 17:19:51 +0100
+Subject: [PATCH] Install 64bit libs into /usr/lib64
+
+---
+ Makefile                        |  5 +++++
+ kernel-shark/CMakeLists.txt     | 14 +++++++++++---
+ kernel-shark/src/CMakeLists.txt | 14 +++++++++++---
+ 3 files changed, 27 insertions(+), 6 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 3afd982..c93a503 100644
+--- a/Makefile
++++ b/Makefile
+@@ -50,6 +50,11 @@ html_install_SQ = '$(subst ','\'',$(html_install))'
+ img_install = $(prefix)/share/kernelshark/html/images
+ img_install_SQ = '$(subst ','\'',$(img_install))'
+ libdir ?= $(prefix)/lib
++ifeq ($(prefix),/usr)
++  ifeq ($(shell getconf LONG_BIT),64)
++    libdir = ${prefix}/lib64
++  endif
++endif
+ libdir_SQ = '$(subst ','\'',$(libdir))'
+ includedir = $(prefix)/include/trace-cmd
+ includedir_SQ = '$(subst ','\'',$(includedir))'
+diff --git a/kernel-shark/CMakeLists.txt b/kernel-shark/CMakeLists.txt
+index 035ef5b..2a440cc 100644
+--- a/kernel-shark/CMakeLists.txt
++++ b/kernel-shark/CMakeLists.txt
+@@ -34,7 +34,15 @@ if (Qt5Widgets_FOUND)
+ 
+ endif (Qt5Widgets_FOUND)
+ 
+-set(LIBRARY_OUTPUT_PATH    "${KS_DIR}/lib")
++if (CMAKE_SIZEOF_VOID_P EQUAL 8)
++    set(LIBSUFFIX 64)
++else()
++    set(LIBSUFFIX "")
++endif()
++set(INSTALL_LIB_DIR lib${LIBSUFFIX} CACHE PATH "Directory for libraries")
++mark_as_advanced(INSTALL_LIB_DIR)
++
++set(LIBRARY_OUTPUT_PATH    "${KS_DIR}/${INSTALL_LIB_DIR}")
+ set(EXECUTABLE_OUTPUT_PATH "${KS_DIR}/bin")
+ 
+ set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -Wall -pthread -fPIC")
+@@ -54,14 +62,14 @@ if (NOT CMAKE_CXX_FLAGS_PACKAGE)
+     set(CMAKE_CXX_FLAGS_PACKAGE "-O3")
+ endif (NOT CMAKE_CXX_FLAGS_PACKAGE)
+ 
+-set(KS_PLUGIN_INSTALL_PREFIX ${_INSTALL_PREFIX}/lib/${KS_APP_NAME}/plugins/)
++set(KS_PLUGIN_INSTALL_PREFIX ${_INSTALL_PREFIX}/${INSTALL_LIB_DIR}/${KS_APP_NAME}/plugins/)
+ 
+ set(KS_ICON        KS_icon_shark.svg)
+ set(KS_ICON_FIN    KS_icon_fin.svg)
+ set(KS_LOGO        KS_logo_symbol.svg)
+ set(KS_LOGO_LABEL  KS_logo_horizontal.svg)
+ 
+-set(CMAKE_INSTALL_RPATH "${_INSTALL_PREFIX}/lib/${KS_APP_NAME}/")
++set(CMAKE_INSTALL_RPATH "${_INSTALL_PREFIX}/lib${LIBSUFFIX}/${KS_APP_NAME}/")
+ 
+ if (CMAKE_BUILD_TYPE MATCHES Package)
+ 
+diff --git a/kernel-shark/src/CMakeLists.txt b/kernel-shark/src/CMakeLists.txt
+index 21494cc..3e62b45 100644
+--- a/kernel-shark/src/CMakeLists.txt
++++ b/kernel-shark/src/CMakeLists.txt
+@@ -14,7 +14,15 @@ target_link_libraries(kshark ${CMAKE_DL_LIBS}
+ 
+ set_target_properties(kshark  PROPERTIES SUFFIX	".so.${KS_VERSION_STRING}")
+ 
+-install(TARGETS kshark LIBRARY DESTINATION ${_INSTALL_PREFIX}/lib/${KS_APP_NAME})
++if (CMAKE_SIZEOF_VOID_P EQUAL 8)
++    set(LIBSUFFIX 64)
++else()
++    set(LIBSUFFIX "")
++endif()
++set(INSTALL_LIB_DIR lib${LIBSUFFIX} CACHE PATH "Directory for libraries")
++mark_as_advanced(INSTALL_LIB_DIR)
++
++install(TARGETS kshark LIBRARY DESTINATION ${_INSTALL_PREFIX}/${INSTALL_LIB_DIR})
+ 
+ if (OPENGL_FOUND AND GLUT_FOUND)
+ 
+@@ -28,7 +36,7 @@ if (OPENGL_FOUND AND GLUT_FOUND)
+ 
+     set_target_properties(kshark-plot PROPERTIES  SUFFIX ".so.${KS_VERSION_STRING}")
+ 
+-    install(TARGETS kshark-plot LIBRARY DESTINATION ${_INSTALL_PREFIX}/lib/${KS_APP_NAME})
++    install(TARGETS kshark-plot LIBRARY DESTINATION ${_INSTALL_PREFIX}/${INSTALL_LIB_DIR})
+ 
+ endif (OPENGL_FOUND AND GLUT_FOUND)
+ 
+@@ -83,7 +91,7 @@ if (Qt5Widgets_FOUND AND Qt5Network_FOUND)
+ 
+     install(TARGETS ${KS_APP_NAME} kshark-record kshark-gui
+             RUNTIME DESTINATION ${_INSTALL_PREFIX}/bin/
+-            LIBRARY DESTINATION ${_INSTALL_PREFIX}/lib/${KS_APP_NAME}/)
++            LIBRARY DESTINATION ${_INSTALL_PREFIX}/${INSTALL_LIB_DIR}/)
+ 
+     install(FILES "${KS_DIR}/${KS_APP_NAME}.desktop"
+             DESTINATION ${_INSTALL_PREFIX}/share/applications/)

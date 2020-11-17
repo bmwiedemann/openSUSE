@@ -1,0 +1,126 @@
+From de7941659add7c407766b7b9bd5726c78e652583 Mon Sep 17 00:00:00 2001
+From: "Tzvetomir Stoyanov (VMware)" <tz.stoyanov@gmail.com>
+Date: Mon, 10 Feb 2020 10:50:10 +0200
+Subject: [PATCH] trace-cmd: Fix "multiple definition" compiler errors
+
+When compiling with gcc and option "-fno-common", there are
+errors because of multiple global variables with the same names.
+The "-fno-common" gcc option is turned on by default on gcc 10, so
+trace-cmd build fails on this compiler.
+
+Proposed solution: set the variables to be static, as their scope is
+only the current C file.
+
+Link: http://lore.kernel.org/linux-trace-devel/20200210085010.7974-1-tz.stoyanov@gmail.com
+
+Reported-by: Ziqian SUN (Zamir) <sztsian@gmail.com>
+Bugzilla: https://bugzilla.kernel.org/show_bug.cgi?id=206467
+Signed-off-by: Tzvetomir Stoyanov (VMware) <tz.stoyanov@gmail.com>
+Signed-off-by: Steven Rostedt (VMware) <rostedt@goodmis.org>
+
+diff --git a/tracecmd/trace-hist.c b/tracecmd/trace-hist.c
+index c45182679b8f..fdfd4a1976d0 100644
+--- a/tracecmd/trace-hist.c
++++ b/tracecmd/trace-hist.c
+@@ -27,26 +27,26 @@ static int kernel_stack_type;
+ 
+ static int long_size;
+ 
+-struct tep_format_field *common_type_field;
+-struct tep_format_field *common_pid_field;
+-struct tep_format_field *sched_wakeup_comm_field;
+-struct tep_format_field *sched_wakeup_new_comm_field;
+-struct tep_format_field *sched_wakeup_pid_field;
+-struct tep_format_field *sched_wakeup_new_pid_field;
+-struct tep_format_field *sched_switch_prev_field;
+-struct tep_format_field *sched_switch_next_field;
+-struct tep_format_field *sched_switch_prev_pid_field;
+-struct tep_format_field *sched_switch_next_pid_field;
+-struct tep_format_field *function_ip_field;
+-struct tep_format_field *function_parent_ip_field;
+-struct tep_format_field *function_graph_entry_func_field;
+-struct tep_format_field *function_graph_entry_depth_field;
+-struct tep_format_field *function_graph_exit_func_field;
+-struct tep_format_field *function_graph_exit_depth_field;
+-struct tep_format_field *function_graph_exit_calltime_field;
+-struct tep_format_field *function_graph_exit_rettime_field;
+-struct tep_format_field *function_graph_exit_overrun_field;
+-struct tep_format_field *kernel_stack_caller_field;
++static struct tep_format_field *common_type_field;
++static struct tep_format_field *common_pid_field;
++static struct tep_format_field *sched_wakeup_comm_field;
++static struct tep_format_field *sched_wakeup_new_comm_field;
++static struct tep_format_field *sched_wakeup_pid_field;
++static struct tep_format_field *sched_wakeup_new_pid_field;
++static struct tep_format_field *sched_switch_prev_field;
++static struct tep_format_field *sched_switch_next_field;
++static struct tep_format_field *sched_switch_prev_pid_field;
++static struct tep_format_field *sched_switch_next_pid_field;
++static struct tep_format_field *function_ip_field;
++static struct tep_format_field *function_parent_ip_field;
++static struct tep_format_field *function_graph_entry_func_field;
++static struct tep_format_field *function_graph_entry_depth_field;
++static struct tep_format_field *function_graph_exit_func_field;
++static struct tep_format_field *function_graph_exit_depth_field;
++static struct tep_format_field *function_graph_exit_calltime_field;
++static struct tep_format_field *function_graph_exit_rettime_field;
++static struct tep_format_field *function_graph_exit_overrun_field;
++static struct tep_format_field *kernel_stack_caller_field;
+ 
+ static int compact;
+ 
+diff --git a/tracecmd/trace-mem.c b/tracecmd/trace-mem.c
+index 37046fd8310b..5caeeb6cf86d 100644
+--- a/tracecmd/trace-mem.c
++++ b/tracecmd/trace-mem.c
+@@ -30,31 +30,31 @@ static int kmem_cache_alloc_type;
+ static int kmem_cache_alloc_node_type;
+ static int kmem_cache_free_type;
+ 
+-struct tep_format_field *common_type_field;
++static struct tep_format_field *common_type_field;
+ 
+-struct tep_format_field *kmalloc_callsite_field;
+-struct tep_format_field *kmalloc_bytes_req_field;
+-struct tep_format_field *kmalloc_bytes_alloc_field;
+-struct tep_format_field *kmalloc_ptr_field;
++static struct tep_format_field *kmalloc_callsite_field;
++static struct tep_format_field *kmalloc_bytes_req_field;
++static struct tep_format_field *kmalloc_bytes_alloc_field;
++static struct tep_format_field *kmalloc_ptr_field;
+ 
+-struct tep_format_field *kmalloc_node_callsite_field;
+-struct tep_format_field *kmalloc_node_bytes_req_field;
+-struct tep_format_field *kmalloc_node_bytes_alloc_field;
+-struct tep_format_field *kmalloc_node_ptr_field;
++static struct tep_format_field *kmalloc_node_callsite_field;
++static struct tep_format_field *kmalloc_node_bytes_req_field;
++static struct tep_format_field *kmalloc_node_bytes_alloc_field;
++static struct tep_format_field *kmalloc_node_ptr_field;
+ 
+-struct tep_format_field *kfree_ptr_field;
++static struct tep_format_field *kfree_ptr_field;
+ 
+-struct tep_format_field *kmem_cache_callsite_field;
+-struct tep_format_field *kmem_cache_bytes_req_field;
+-struct tep_format_field *kmem_cache_bytes_alloc_field;
+-struct tep_format_field *kmem_cache_ptr_field;
++static struct tep_format_field *kmem_cache_callsite_field;
++static struct tep_format_field *kmem_cache_bytes_req_field;
++static struct tep_format_field *kmem_cache_bytes_alloc_field;
++static struct tep_format_field *kmem_cache_ptr_field;
+ 
+-struct tep_format_field *kmem_cache_node_callsite_field;
+-struct tep_format_field *kmem_cache_node_bytes_req_field;
+-struct tep_format_field *kmem_cache_node_bytes_alloc_field;
+-struct tep_format_field *kmem_cache_node_ptr_field;
++static struct tep_format_field *kmem_cache_node_callsite_field;
++static struct tep_format_field *kmem_cache_node_bytes_req_field;
++static struct tep_format_field *kmem_cache_node_bytes_alloc_field;
++static struct tep_format_field *kmem_cache_node_ptr_field;
+ 
+-struct tep_format_field *kmem_cache_free_ptr_field;
++static struct tep_format_field *kmem_cache_free_ptr_field;
+ 
+ static void *zalloc(size_t size)
+ {

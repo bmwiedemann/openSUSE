@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Sat Nov 14 03:02:27 UTC 2020 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to version 1.2
+
+-------------------------------------------------------------------
+Sat Nov 14 02:45:57 UTC 2020 - Dario Faggioli <dfaggioli@suse.com>
+
+- Filter version so that we have, e.g., "1.0" rather than "v1.0"
+
+-------------------------------------------------------------------
+Tue Oct  6 21:14:08 UTC 2020 - Dario Faggioli <dfaggioli@suse.com>
+
+- Switch obs_scm and set_version services to "disabled"
+  * To enable the build on platform where set_version is not available
+  * Disabled services are now run manually and the resulting files
+    (kernelshark-v1.0.obscpio and kernelshark.obsinfo) are added to
+    the repository
+  * Running set_version has also fixed "Version:" in the spec file
+
+-------------------------------------------------------------------
+Tue Sep 29 09:32:56 UTC 2020 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fix the build on (Tumbleweed) i586
+  * In makefile-lib64.patch, using FIND_LIBRARY_USE_LIB64_PATHS
+    results in CMake still putting the libraries in lib64
+  * Switch to checking CMAKE_SIZEOF_VOID_P instead, works (and
+    is similar to what we do in trace-cmd's Makefile, where we
+    check LONG_BIT == 64)
+
+-------------------------------------------------------------------
+Thu Sep 24 20:05:21 UTC 2020 - Dario Faggioli <dfaggioli@suse.com>
+
+- Add a 0001-trace-cmd-fix-multiple-definition-compiler-errors.patch
+  * Backport  of a fix for letting trace-cmd compile with gcc 10
+- Add kernelshark-make-fontheight.patch
+  * Backport of a fix for letting kernelshark compile with gcc 10
+- Parallel build does not work for the `gui` target (build of kernelshark
+  starts when trace-cmd hasn't finished building yet). Call the `trace-cmd`
+  target before, explicitly, as a workaround
+
+-------------------------------------------------------------------
+Fri Aug 23 15:13:30 UTC 2019 - Mel Gorman <mgorman@suse.de>
+
+- Replace source tarball with _service file
+
+-------------------------------------------------------------------
+Tue Aug 20 13:38:03 UTC 2019 - Mel Gorman <mgorman@suse.com>
+
+- Avoid use of deprecated rpm macros
+- Do not spawn unnecessary subshell for ldconfig
+- Clean spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Aug  8 21:50:38 UTC 2019 - Mel Gorman <mgorman@suse.com>
+
+- Initial version 1.0.0
+
+- Added makefile-bash.patch
+  - Installs bash completion to correct location
+  - Subsequently deletes file from package as it is supplied by trace-cmd
+
+- Added makefile-lib64.patch
+  - Installs libraries to lib64 on 64-bit builds
+
+- Added kernelshark-rpmlintrc
+  - Suggestion to enable PIC fails to build plugins

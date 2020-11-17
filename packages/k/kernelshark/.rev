@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ddfcb707c5c4ff123124f572e43350a4</srcmd5>
+    <version>1.2</version>
+    <time>1605644692</time>
+    <user>dimstar_suse</user>
+    <comment>Kernelshark is a powerful GUI to ftrace. It can be very handy when doing tracing/development.
+
+I believe it used to be in Factory and was &quot;kicked out&quot; as it was not building properly any longer. Now it is fixed.</comment>
+    <requestid>848733</requestid>
+  </revision>
+</revisionlist>

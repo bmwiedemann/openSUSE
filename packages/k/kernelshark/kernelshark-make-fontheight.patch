@@ -1,0 +1,40 @@
+commit ee0185bd86e2dcb8aabd8ea0f5522a27d6486d4b
+Author: Steven Rostedt (VMware) <rostedt@goodmis.org>
+Date:   Sun May 10 11:17:20 2020 -0400
+
+kernelshark: Make fontHeight() and stringWidth() static
+
+Gcc 10 is much more picky about globals being defined in multiple objects
+even if they are the same function. The functions fontHeight() and
+stringWidth() are defined in a header file which places them in multiple
+objects. They need to be static otherwise gcc 10 will not be able to build.
+
+Link: https://lore.kernel.org/linux-trace-devel/CADVatmN=Z0ASVXUBTyAu6F_TWoWiKiKsgm404rOx7Oh-a6LiQg@mail.gmail.com/
+Link: http://lore.kernel.org/linux-trace-devel/20200510111720.2e041431@oasis.local.home
+
+Reported-by: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+Reviewed-by: Yordan Karadzhov (VMware) <y.karadz@gmail.com>
+Signed-off-by: Steven Rostedt (VMware) <rostedt@goodmis.org>
+
+diff --git a/kernel-shark/src/KsUtils.hpp b/kernel-shark/src/KsUtils.hpp
+index db1bf5e..cc5bc44 100644
+--- a/kernel-shark/src/KsUtils.hpp
++++ b/kernel-shark/src/KsUtils.hpp
+@@ -32,7 +32,7 @@
+ 
+ //! @cond Doxygen_Suppress
+ 
+-auto fontHeight = []()
++static auto fontHeight = []()
+ {
+ 	QFont font;
+ 	QFontMetrics fm(font);
+@@ -40,7 +40,7 @@ auto fontHeight = []()
+ 	return fm.height();
+ };
+ 
+-auto stringWidth = [](QString s)
++static auto stringWidth = [](QString s)
+ {
+ 	QFont font;
+ 	QFontMetrics fm(font);
