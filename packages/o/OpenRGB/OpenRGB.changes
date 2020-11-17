@@ -1,0 +1,122 @@
+-------------------------------------------------------------------
+Fri Nov  6 20:47:37 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.4
+  New Features:
+  * Graphical LED view allows you to see the current settings and
+    select multiple LEDs to apply colors quickly.
+  * Device detection happens in the background and a progress bar
+    shows detection progress, allows you to cancel detection.
+  * Keyboard and mouse LED names have been standardized, allowing
+    better integration with Aurora (use dev branch).
+  * New I2C tool for reading multi-byte SMBus registers (as ASRock
+    uses).
+  Device Controller Changes:
+  * New controller for Corsair Hydro Series coolers (only Pro
+    variants H100i Pro and H115i Pro for now).
+  * New controller for Tecknet M008 Mouse.
+  * New controller for HyperX Pulsefire Surge Mouse.
+  * Improvements to ASRock Polychrome controller
+    + Polychrome V2 individual LED control.
+    + Polychrome V1 individual zone control.
+    + More reliable detection and communication for Polychrome.
+      devices.
+  * RGB Fusion 2 SMBus controller enabled for select motherboards
+  * More MSI GPUs added
+  * RGB Fusion 2 USB detection fixed
+  * Keymaps added to many keyboard controllers
+  Known Issues:
+  * RGB Fusion 2 SMBus controller may incorrectly be detected when
+    an MSI GPU is present (due to address 0x68).
+  * Redragon M711 wave effect doesn't work.
+  * Corsair mice do not have specific LED labels.
+  * Some Razer keyboards are missing key maps.
+  * Corsair Vengeance RGB Pro takes 2 "Set All Device" clicks to
+    properly set.
+  * Asus Addressable number of channels may be incorrect.
+  * MSI Mystic Light controller still disabled due to bricking
+    risk, bricking situation being investigated. OpenRGB 0.4 will
+    not brick your MSI board as this code is disabled.
+  * MSI-RGB boards still may experience inverted colors
+- Rebase patch:
+  * OpenRGB-use_system_libs.patch
+- Drop patch:
+  * OpenRGB-no_return_in_nonvoid.patch (not longer needed)
+
+-------------------------------------------------------------------
+Wed Jul 22 11:14:41 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.3
+  * GUI now includes an SDK client. This allows one UI to
+    control multiple PCs as long as they are running the SDK
+    server.
+  * Default SDK server port changed to 6742 (this is "ORGB" on a
+    phone keypad)
+  * CLI now includes --server and --client options for starting
+    an SDK server or client
+  * OpenRGB will now automatically attempt to connect to a local
+    server. If it exists, the hardware detection will be
+    skipped. This allows use in a client/daemon model.
+  * Many new drivers and driver improvements. See the supported
+    devices list on the wiki.
+  * MSI Mystic Light controller has been disabled. It was
+    causing bricked RGB on certain boards.
+  Known Issues:
+  * Redragon M711 wave effect doesn't work
+  * Corsair mice show up as mousemat
+  * Razer keyboards do not have named keys
+  * Corsair Vengeance RGB Pro takes 2 "Set All Device" clicks to
+    properly set
+  * Asus Addressable number of channels may be incorrect
+  version 0.2:
+  * Color Wheel color picker
+  * NZXT Kraken driver
+  * MSI Mystic Light driver
+  * Asus ROG Aura Core driver
+  * Asus Addressable driver
+  * Cooler Master MP750 driver
+  * OpenRGB SDK server
+  Known Issues:
+  * Redragon M711 wave effect doesn't work
+  * Corsair mice show up as mousemat
+  * Razer keyboards do not have named keys
+  * Corsair Vengeance RGB Pro takes 2 "Set All Device" clicks to
+    properly set
+  * Asus Addressable number of channels may be incorrect
+  * MSI Mystic Light driver may have issues with certain
+    motherboards
+
+-------------------------------------------------------------------
+Fri Mar 27 05:39:22 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.1.0:
+  * Bring in nct6775 SMBus driver improvements from updated patch to Windows
+  * Update OpenRazer-win32 DLLs to openrazer commit bd864c8
+  * Fix wrong index being used in profile lookup that would cause segfaults if there are more controllers detected than in profile
+  * Add timeouts to i2c-nct6775 driver and fix kernel segfault caused by byte access with no data
+  * Fix segfault in CLI
+  * Fix arguments not parsing in CLI, add mode specific color support to CLI
+  * Add some comments to the CLI code and clean up some warnings
+  * Move help and version functions to the same place as the other arguments
+  * Fix current device ID in CLI
+  * Add profile saving to command line
+
+-------------------------------------------------------------------
+Fri Mar 27 05:32:38 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.1.0:
+  * Bring in nct6775 SMBus driver improvements from updated patch to Windows
+  * Update OpenRazer-win32 DLLs to openrazer commit bd864c8
+  * Fix wrong index being used in profile lookup that would cause segfaults if there are more controllers detected than in profile
+  * Add timeouts to i2c-nct6775 driver and fix kernel segfault caused by byte access with no data
+  * Fix segfault in CLI
+  * Fix arguments not parsing in CLI, add mode specific color support to CLI
+  * Add some comments to the CLI code and clean up some warnings
+  * Move help and version functions to the same place as the other arguments
+  * Fix current device ID in CLI
+  * Add profile saving to command line
+
+-------------------------------------------------------------------
+Fri Mar 27 05:31:53 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Initial package 

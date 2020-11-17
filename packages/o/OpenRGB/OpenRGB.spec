@@ -1,0 +1,71 @@
+#
+# spec file for package OpenRGB
+#
+# Copyright (c) 2020 SUSE LLC
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+Name:           OpenRGB
+Version:        0.4
+Release:        0
+Summary:        Open source RGB lighting control
+License:        GPL-2.0-only
+URL:            https://gitlab.com/CalcProgrammer1/OpenRGB
+Source0:        https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_%{version}/OpenRGB-release_%{version}.tar.gz
+# PATCH-FEATURE-OPENSUSE OpenRGB-use_system_libs.patch
+Patch1:         OpenRGB-use_system_libs.patch
+# PATCH-FIX-UPSTREAM 0001-Fix-build-on-powerpc-and-related.patch
+Patch2:         0001-Fix-build-on-powerpc-and-related.patch
+BuildRequires:  gcc-c++
+BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(gusb)
+BuildRequires:  pkgconfig(hidapi-hidraw)
+BuildRequires:  pkgconfig(libe131)
+
+%description
+The purpose of this tool is to control RGB lights on different peripherals.
+Accessing the SMBus is a potentially dangerous operation, so exercise caution.
+
+%prep
+%autosetup -p1 -n %{name}-release_%{version}
+
+%build
+%qmake5
+%make_build
+
+%install
+install -Dpm0755 OpenRGB %{buildroot}/%{_bindir}/%{name}
+install -Dpm0644 qt/OpenRGB.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
+install -Dpm0644 60-openrgb.rules %{buildroot}%{_udevrulesdir}/60-openrgb.rules
+%suse_update_desktop_file -c %{name} %{name} 'Configure RGB LEDs' %{name} %{name} Settings HardwareSettings
+
+# see if creating .conf to load speficic kernel modules is necessary
+
+%post
+%udev_rules_update
+
+%postun
+%udev_rules_update
+
+%files
+%license LICENSE
+%doc README.md
+%{_bindir}/%{name}
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/pixmaps/%{name}.png
+%{_udevrulesdir}/60-openrgb.rules
+
+%changelog

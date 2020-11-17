@@ -1,0 +1,56 @@
+From be395d1f0e88435b7a1ba38d0f959a8faf60de31 Mon Sep 17 00:00:00 2001
+From: q66 <daniel@octaforge.org>
+Date: Fri, 24 Jul 2020 02:02:30 +0200
+Subject: [PATCH] Fix build on powerpc and related
+
+Use asm/ioctls.h instead of the asm-generic version as the ioctl
+numbers may not always match between platforms, and some ioctls
+may not even exist on some platforms
+
+Also, some more types need to be undefined for inclusion of the
+asm/termios.h at least on powerpc and related, should not hurt
+elsewhere either so leave it without a guard
+
+Finally, termios2 does not exist on ppc since the fields that are
+used from termios2 here are included in actual struct termios
+---
+ serial_port/serial_port.h | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/serial_port/serial_port.h b/serial_port/serial_port.h
+index 4986ea5..2e3cb9d 100644
+--- a/serial_port/serial_port.h
++++ b/serial_port/serial_port.h
+@@ -23,17 +23,26 @@
+ #include <termios.h>
+ #include <sys/ioctl.h>
+ 
+-//winsize, termio, and termios structs are redefined in
+-//asm/termios.h, to prevent compiler errors from multply
++//these types are redefined in asm/termios.h
++//to prevent compiler errors from multply
+ //defining them, use a #define to rename them -
+ //essentially to undef them before they are redefined
+ #define winsize undefine_winsize
+ #define termio undefine_termio
+ #define termios undefine_termios
++#define sgttyb undefine_sgttyb
++#define tchars undefine_tchars
++#define ltchars undefine_ltchars
+ 
+ #include <asm/termios.h>
+-#include <asm-generic/ioctls.h>
++#include <asm/ioctls.h>
+ 
++//ppc has c_ispeed/c_ospeed in termios and termios2 doesn't exist
++#if defined(__powerpc__)
++#define termios2 termios
++#define TCGETS2 TCGETS
++#define TCSETS2 TCSETS
++#endif
+ 
+ #endif
+ 
+-- 
+2.27.0
+
