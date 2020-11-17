@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Nov 15 03:16:58 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.8.17:
+  + Fixup ignore\_regexps for optional text.
+  + Fix issue #26 - duplicity does not clean up par2 files.
+  + Fix issue #25 - Multibackend not deleting files.
+  + Adjust setup.py for changelog changes.
+  + Make exclude-if-present more robust.
+  + Drop default umask of 0077.
+  + Fix some unadorned strings.
+  + Fix issue #23.
+  + Rclonebackend now logs at the same logging level as duplicity.
+  + Allow sign-build to fail on walk away.  Need passwordless
+    option.
+  + Fix --rename typo.
+  + Escape single quotes in machine-readable log messages.
+  + Add a pylint disable-import-error flag.
+  + Change urllib2 to urllib.request in parse\_digest\_challenge().
+  + Fix bug #1893481 Error when logging improperly encoded
+    filenames.
+
+-------------------------------------------------------------------
 Wed Sep 30 00:25:50 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 0.8.16:
