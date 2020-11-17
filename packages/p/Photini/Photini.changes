@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 16 10:36:11 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Require the PyQt5.sip package instead of deprecated toplevel sip
+
+-------------------------------------------------------------------
 Sun Nov  8 10:43:37 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2020.11.0

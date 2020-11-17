@@ -39,9 +39,9 @@ Requires:       python3-gobject
 Requires:       python3-gpxpy
 Requires:       python3-keyring
 Requires:       python3-qt5
+Requires:       python3-qt5-sip
 Requires:       python3-requests >= 2.4.0
 Requires:       python3-requests-oauthlib
-Requires:       python3-sip
 Requires:       python3-six >= 1.5
 Requires:       typelib(GExiv2)
 BuildArch:      noarch
