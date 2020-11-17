@@ -1,7 +1,7 @@
 #
 # spec file for package redfish-finder
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Requires:       NetworkManager
 Requires:       dmidecode
 Requires:       python3
 BuildArch:      noarch
+ExclusiveArch:  %ix86 ia64 x86_64 %arm aarch64
 
 %description
 Scans Smbios information for type 42 management controller information, and uses
@@ -39,7 +40,6 @@ canonically accessible via the hostname redfish-localhost
 %prep
 %setup -q
 %patch0 -p1
-
 
 %build
 #noop here

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 17 12:04:46 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Do not build for s390x and ppc64le
+
+-------------------------------------------------------------------
 Tue Jan  7 11:37:34 UTC 2020 - Christian Vögl <cvoegl@suse.de>
 
 - Removed Readme.md and COPYING.
