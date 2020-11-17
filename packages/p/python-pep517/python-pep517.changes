@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Nov 13 10:18:51 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Add Recommends pip & python-wheel >= 0.25
+- Add build dependencies to activate test_meta on Python 3
+- Disable pip --ignore-installed mode in runtime package
+- Add doc/*.rst to %doc
+- Update to v0.9.1
+  * Silence flake8 objections about import in __init__.py
+- from 0.9
+  * Deprecated the higher level API which handles creating an
+    environment and installing build dependencies.
+    This was not very complete, and https://github.com/pypa/build
+    is designed for this use case
+  * New python_executable parameter for Pep517HookCaller to run
+    hooks with a different Python interpreter
+  * Fix for locating the script to run in the subprocess in some
+    scenarios
+  * Fix example in README to get ``build-backend`` correctly
+  * Various minor improvements to testing
+
+-------------------------------------------------------------------
 Wed Oct  7 03:45:17 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v0.8.2
