@@ -17,19 +17,18 @@
 
 
 Name:           i3-gaps
-Version:        4.18.3
+Version:        4.19
 Release:        0
 Summary:        Tiling window manager
 License:        BSD-3-Clause
 Group:          System/GUI/Other
 URL:            https://github.com/Airblader/i3
-Source0:        https://github.com/Airblader/i3/releases/download/%{version}/i3-%{version}.tar.bz2#/%{name}-%{version}.tar.bz2
+Source0:        https://github.com/Airblader/i3/releases/download/%{version}/i3-%{version}.tar.xz#/%{name}-%{version}.tar.xz
 BuildRequires:  asciidoc
-BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc
 BuildRequires:  libyajl-devel
-BuildRequires:  make
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xmlto
@@ -78,16 +77,11 @@ Development headers for the %{name} window manager
 sed -i 's,^#!/usr/bin/env ,#!/usr/bin/,' i3-dmenu-desktop i3-migrate-config-to-v4 i3-save-tree
 
 %build
-# Fix Leap 42.x build
-%if 0%{?suse_version} == 1315 && 0%{?is_opensuse}
-export YAJL_LIBS="-lyajl" YAJL_CFLAGS="-I/usr/include/yajl"
-%endif
-%configure
-sed -i 's/(TEST_LOGS:/(TEST_LOGS):/' Makefile
-%make_build -C *-suse-linux-gnu*
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 %suse_update_desktop_file %{buildroot}%{_datadir}/applications/i3.desktop
 
 %files
@@ -114,6 +108,8 @@ sed -i 's/(TEST_LOGS:/(TEST_LOGS):/' Makefile
 %{_datadir}/xsessions/i3.desktop
 %{_datadir}/xsessions/i3-with-shmlog.desktop
 %{_datadir}/applications/i3.desktop
+%{_datadir}/doc/i3/refcard_style.css
+%{_datadir}/doc/i3/*.png
 
 %files devel
 %dir %{_includedir}/i3/
