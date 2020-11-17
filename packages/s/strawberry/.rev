@@ -678,4 +678,35 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>843705</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>8ef163349963ec91ae8ee0d3bcf75c13</srcmd5>
+    <version>0.8.4</version>
+    <time>1605644646</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.4:
+ * Bugfixes:
+ + Fix preventing session logout when window is maxmimized.
+ + Fix empty space in organize window when copying songs/playlists to devices.
+ + Fix crash when opening about dialog in a wayland session.
+ + Fix stretched fancy/side tabbar style issue with adwaita style (Fedora/Gnome).
+ + Fix centering star icon on playlist tabbar.
+ + Fix network proxy settings for streaming.
+ + Fix copy URL to clipboard to handle non-ASCII characters.
+ + Fix HiDPI scaling for glow animation and drag over playlist.
+ + Fix smart playlist search by filename.
+ + Fix single letter collection nodes showing before dividers.
+ * Enhancements:
+ + Add support for native global shortcuts on KDE.
+ + Add track progress in system tray icon as an option.
+ + Only strip problematic characters in suggested filename when saving a playlist to file.
+ + Change star/unstar playlist to doubleclick instead of singleclick.
+ + Don't edit playlist name on doubleclick in playlists view.
+ + Make context view top label text selectable.
+ + Add setting to change Qt style.
+ + Clear ID3v3 tags that are empty, and clear ID3v1 tags when setting ID3v3 tags.
+ + Remove remaining uses of QTextCodec.
+ + Remove Core5Compat dependency.
+</comment>
+    <requestid>848634</requestid>
+  </revision>
 </revisionlist>
