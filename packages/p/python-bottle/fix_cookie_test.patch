@@ -1,0 +1,11 @@
+--- bottle-0.12.19.orig/test/test_environ.py
++++ bottle-0.12.19/test/test_environ.py
+@@ -624,7 +624,7 @@ class TestResponse(unittest.TestCase):
+         response.delete_cookie('name')
+         cookies = [value for name, value in response.headerlist
+                    if name.title() == 'Set-Cookie']
+-        self.assertTrue('name=;' in cookies[0])
++        self.assertTrue('Max-Age=-1' in cookies[0])
+ 
+     def test_set_header(self):
+         response = BaseResponse()

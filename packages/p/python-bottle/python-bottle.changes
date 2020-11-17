@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 13 17:49:59 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 0.12.19: bugfix release
+  * Do not split query strings on `;` anymore.
+  * Fix the Allow: header value in 405 "Method not allowed." 
+    response.
+- add fix_cookie_test.patch: imported from upstream master branch
+- update the documentation pdf
+- remove the separate LICENSE file: now packaged in release
+- drop removing the executable bit from egg-info files: fixed
+- run the tests during build
+
+-------------------------------------------------------------------
 Tue Apr 14 11:52:22 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Don't use %python3_only command, but properly use alternatives.

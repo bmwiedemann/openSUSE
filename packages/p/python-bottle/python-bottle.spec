@@ -18,14 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-bottle
-Version:        0.12.18
+Version:        0.12.19
 Release:        0
 Summary:        WSGI framework for small web applications
 License:        MIT
 URL:            https://bottlepy.org/
 Source:         https://files.pythonhosted.org/packages/source/b/bottle/bottle-%{version}.tar.gz
 Source1:        http://bottlepy.org/docs/0.12/bottle-docs.pdf
-Source2:        https://raw.githubusercontent.com/bottlepy/bottle/release-0.12/LICENSE
+# partial import of upstream commit 8342490
+Patch0:         fix_cookie_test.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -55,10 +56,9 @@ This subpackage contains the PDF documentation for %{name}.
 
 %prep
 %setup -q -n bottle-%{version}
-cp %{SOURCE1} %{SOURCE2} .
+%autopatch -p1
 
-# remove executable bit, those are not scripts
-chmod -x bottle.egg-info/*
+cp %{SOURCE1} .
 
 %build
 %python_build
@@ -66,6 +66,9 @@ chmod -x bottle.egg-info/*
 %install
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/bottle.py
+
+%check
+%python_exec test/testall.py
 
 %post
 %python_install_alternative bottle.py
