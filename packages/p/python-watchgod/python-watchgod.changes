@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov 15 09:32:02 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Add build dependency pytest-timeout
+
+-------------------------------------------------------------------
 Thu Aug 20 07:41:08 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite

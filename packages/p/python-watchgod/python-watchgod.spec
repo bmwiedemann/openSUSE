@@ -29,6 +29,7 @@ Source:         https://github.com/samuelcolvin/watchgod/archive/v%{version}.tar
 BuildRequires:  %{python_module pytest-aiohttp >= 0.3.0}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-toolbox}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
