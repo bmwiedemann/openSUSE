@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 14 13:15:51 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.4
+  * Fix deprecated 'collections' dependancy
+  * Power support(ppc64le) with continuous integration
+
+-------------------------------------------------------------------
 Sun Jan 26 12:27:09 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.8.3

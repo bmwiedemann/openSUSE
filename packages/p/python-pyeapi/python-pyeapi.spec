@@ -1,8 +1,8 @@
 #
 # spec file for package python-pyeapi
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2017-2019, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2017-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyeapi
-Version:        0.8.3
+Version:        0.8.4
 Release:        0
 Summary:        Python Client for eAPI
 License:        BSD-3-Clause
