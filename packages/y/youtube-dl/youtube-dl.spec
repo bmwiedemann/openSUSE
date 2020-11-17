@@ -17,7 +17,7 @@
 
 
 Name:           youtube-dl
-Version:        2020.11.01.1
+Version:        2020.11.17
 Release:        0
 Summary:        A tool for downloading from video sites for offline watching
 License:        SUSE-Public-Domain AND CC-BY-SA-3.0
@@ -75,7 +75,7 @@ ZSH command line completion support for %name.
 
 %build
 rm -f youtube-dl
-PYTHON="%_bindir/python3" make %{?_smp_mflags}
+PYTHON="%_bindir/python3" %make_build
 
 %install
 install -D -m 755 youtube-dl %buildroot/%_bindir/%name

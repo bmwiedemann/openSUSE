@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 16 21:55:38 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.11.17
+  * Fix extraction for RaiPlay, vlive, usanetwork, nbc, cnbc,
+    bandcamp
+  * Add support for pm-wissen.com
+
+-------------------------------------------------------------------
 Mon Nov  2 12:59:41 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.11.01.1

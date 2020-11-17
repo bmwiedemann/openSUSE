@@ -1305,4 +1305,12 @@
     <comment>- Update to release 2020.11.01.1</comment>
     <requestid>845526</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>1b5c248e8d58ce1c9050a3c2ccbef9c7</srcmd5>
+    <version>2020.11.17</version>
+    <time>1605644803</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2020.11.17</comment>
+    <requestid>848980</requestid>
+  </revision>
 </revisionlist>
