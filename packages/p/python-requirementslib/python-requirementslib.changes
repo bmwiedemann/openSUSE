@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov 13 04:19:40 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Set minimum versions pip-shims >= 0.5.2 & vistir >= 0.3.1
+- Add pyinstaller-setup.py to enable one of the skipped tests
+- Add test dependency git-core
+- Update to v1.5.16
+  * Expand env vars in the URL of requirements
+  * Replace the deprecated arguments of ``attrs`` with recommended ones
+- from v1.5.15
+  * Fix a bug that file URLs will be incorrectly unquoted during parsing
+- from v1.5.14
+  * Fix the PEP 517 requires in default pyproject.toml and clean temp files
+  * Fix an unparse error that the dictionary keys are unhashable
+  * Fix a bug that dist-info inside ``venv`` directory will be mistaken
+    as the editable package's metadata
+
+-------------------------------------------------------------------
 Sat Oct 17 08:31:16 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Set minimum version attrs>=19.2.0

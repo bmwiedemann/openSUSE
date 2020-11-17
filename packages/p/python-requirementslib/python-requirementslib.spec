@@ -19,13 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-requirementslib
-Version:        1.5.13
+Version:        1.5.16
 Release:        0
 Summary:        A tool for converting between pip-style and pipfile requirements
 License:        MIT
 URL:            https://github.com/sarugaku/requirementslib
 Source:         https://github.com/sarugaku/requirementslib/archive/%{version}.tar.gz#/requirementslib-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/mahmoud/boltons/master/LICENSE#/LICENSE.boltons
+Source2:        https://raw.githubusercontent.com/pyinstaller/pyinstaller/develop/setup.py#/pyinstaller-setup.py
 Patch0:         use-boltons.patch
 BuildRequires:  %{python_module parver}
 BuildRequires:  %{python_module setuptools >= 40.8}
@@ -44,13 +45,13 @@ Requires:       python-first
 Requires:       python-orderedmultidict
 Requires:       python-packaging >= 19.0
 Requires:       python-pep517 >= 0.5.0
-Requires:       python-pip-shims >= 0.3.2
+Requires:       python-pip-shims >= 0.5.2
 Requires:       python-plette
 Requires:       python-requests
 Requires:       python-setuptools >= 40.8
 Requires:       python-six >= 1.11.0
 Requires:       python-tomlkit >= 0.5.3
-Requires:       python-vistir >= 0.3.0
+Requires:       python-vistir >= 0.3.1
 BuildArch:      noarch
 %ifpython2
 Requires:       python-backports.tempfile
@@ -70,7 +71,7 @@ BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module orderedmultidict}
 BuildRequires:  %{python_module packaging >= 0.19.0}
 BuildRequires:  %{python_module pep517 >= 0.5.0}
-BuildRequires:  %{python_module pip-shims}
+BuildRequires:  %{python_module pip-shims >= 0.5.2}
 BuildRequires:  %{python_module plette}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
@@ -78,12 +79,13 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module six >= 1.11.0}
 BuildRequires:  %{python_module tomlkit >= 0.5.3}
 BuildRequires:  %{python_module twine}
-BuildRequires:  %{python_module vistir >= 0.3.0}
+BuildRequires:  %{python_module vistir >= 0.3.1}
 %if %{with python2}
 BuildRequires:  python-backports.tempfile
 BuildRequires:  python-scandir
 BuildRequires:  python-typing
 %endif
+BuildRequires:  git-core
 # /SECTION
 %python_subpackages
 
@@ -98,8 +100,13 @@ for converting between these formats in Pipenv.
 %patch0 -p1
 cp %{SOURCE1} .
 
+# Avoid failure during build
 sed -i '/invoke/d' setup.cfg
-rm -r tasks
+
+# It is unclear whether this modified assertion is sufficient.
+# https://github.com/sarugaku/requirementslib/issues/279
+cp %{SOURCE2} tests/artifacts/git/pyinstaller/setup.py
+sed -i 's/assert "altgraph" in result\["install_requires"\]/assert "setuptools >= 39.2.0" in result["setup_requires"]/' tests/unit/test_setup_info.py
 
 %build
 export LANG=en_US.UTF-8
@@ -116,14 +123,19 @@ export LANG=en_US.UTF-8
 # many tests need internet https://github.com/sarugaku/requirementslib/issues/145
 # most tests are marked properly
 skip_tests="needs_internet"
-# unmarked but need internet
+
+# depends on access to https://github.com/benjaminp/six.git
 skip_tests+=" or test_get_local_ref"
+
+# depends on access to https://github.com/jazzband/tablib/archive/v0.12.1.zip
 skip_tests+=" or test_get_requirements"
-skip_tests+=" or (test_convert_from_pipfile and requirement10)"
-# unknown reason
+
+# Rapptz is marker for https://github.com/Rapptz/discord.py
+skip_tests+=" or (test_convert_from_pipfile and Rapptz)"
+
+# https://github.com/sarugaku/requirementslib/issues/280
 skip_tests+=" or test_parse_function_call_as_name"
-# no packaged test artifact
-skip_tests+=" or test_ast_parser_handles_exceptions"
+
 # https://github.com/sarugaku/requirementslib/issues/270
 skip_tests+=" or test_no_duplicate_egg_info"
 # increase test deadline for slow obs executions architectures (e.g. on s390x)
