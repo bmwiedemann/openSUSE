@@ -87,4 +87,12 @@
     <comment>- Update to snapshot 2020.04.02.g192 (4573e852f9)</comment>
     <requestid>844829</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8b876c667e54a7610784e47d7f05585d</srcmd5>
+    <version>2020.11.0</version>
+    <time>1605644831</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2020.11.0</comment>
+    <requestid>849059</requestid>
+  </revision>
 </revisionlist>
