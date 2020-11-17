@@ -1,0 +1,110 @@
+%ngx_prefix     %{_prefix}
+%ngx_sbin_path  %{_sbindir}/nginx
+%ngx_module_dir %{_libdir}/nginx/modules
+%ngx_conf_dir   %{_sysconfdir}/nginx
+%ngx_conf_path  %{ngx_conf_dir}/nginx.conf
+%ngx_log_dir    %{_localstatedir}/log/nginx
+%ngx_error_log  %{ngx_log_dir}/error.log
+%ngx_access_log %{ngx_log_dir}/access.log
+%ngx_home       %{_localstatedir}/lib/nginx
+%ngx_tmp_http   %{ngx_home}/tmp/
+%ngx_tmp_proxy  %{ngx_home}/proxy/
+%ngx_tmp_fcgi   %{ngx_home}/fastcgi/
+%ngx_tmp_scgi   %{ngx_home}/scgi/
+%ngx_tmp_uwsgi  %{ngx_home}/uwsgi/
+%ngx_user_group nginx
+%ngx_doc_dir    %{_docdir}/%{name}
+
+%ngx_conditionals \
+%if 0%{?suse_version} != 1315 || 0%{?is_opensuse} \
+%bcond_without ngx_libatomic \
+%else \
+%bcond_with    ngx_libatomic \
+%endif \
+%if 0%{?suse_version} > 1220 \
+%bcond_without ngx_http2 \
+%bcond_without ngx_pcre_jit \
+%bcond_without systemd \
+%else \
+%bcond_with    ngx_http2 \
+%bcond_with    ngx_pcre_jit \
+%bcond_with    systemd \
+%endif \
+%bcond_with    ngx_cpp_test \
+%bcond_with    ngx_google_perftools \
+%{nil}
+
+%ngx_configure                                                                    \
+./configure                                       \\\
+  --prefix=%{ngx_prefix}/                         \\\
+  --sbin-path=%{ngx_sbin_path}                    \\\
+  --modules-path=%{ngx_module_dir}                \\\
+  --conf-path=%{ngx_conf_path}                    \\\
+  --error-log-path=%{ngx_error_log}               \\\
+  --http-log-path=%{ngx_access_log}               \\\
+  --pid-path=%{ngx_pid_path}                      \\\
+  --lock-path=%{ngx_lock_path}                    \\\
+  --http-client-body-temp-path=%{ngx_tmp_http}    \\\
+  --http-proxy-temp-path=%{ngx_tmp_proxy}         \\\
+  --http-fastcgi-temp-path=%{ngx_tmp_fcgi}        \\\
+  --http-uwsgi-temp-path=%{ngx_tmp_uwsgi}         \\\
+  --http-scgi-temp-path=%{ngx_tmp_scgi}           \\\
+  --user=nginx --group=nginx                      \\\
+  --without-select_module                         \\\
+  --without-poll_module                           \\\
+  --with-threads                                  \\\
+  --with-file-aio                                 \\\
+  --with-ipv6                                     \\\
+  --with-http_ssl_module                          \\\
+  %if %{with ngx_http2}                             \
+  --with-http_v2_module                           \\\
+  %endif                                            \
+  --with-http_realip_module                       \\\
+  --with-http_addition_module                     \\\
+  --with-http_xslt_module=dynamic                 \\\
+  --with-http_image_filter_module=dynamic         \\\
+  --with-http_sub_module                          \\\
+  --with-http_dav_module                          \\\
+  --with-http_flv_module                          \\\
+  --with-http_mp4_module                          \\\
+  --with-http_gunzip_module                       \\\
+  --with-http_gzip_static_module                  \\\
+  --with-http_auth_request_module                 \\\
+  --with-http_random_index_module                 \\\
+  --with-http_secure_link_module                  \\\
+  --with-http_degradation_module                  \\\
+  --with-http_slice_module                        \\\
+  --with-http_stub_status_module                  \\\
+  --with-http_perl_module=dynamic                 \\\
+  --with-perl=%{_bindir}/perl                     \\\
+  --with-mail=dynamic                             \\\
+  --with-mail_ssl_module                          \\\
+  --with-stream=dynamic                           \\\
+  --with-stream_ssl_module                        \\\
+  --with-stream_realip_module                     \\\
+  --with-stream_ssl_preread_module                \\\
+  --with-pcre                                     \\\
+  %if %{with ngx_pcre_jit}                          \
+  --with-pcre-jit                                 \\\
+  %endif                                            \
+  %if %{with ngx_libatomic}                         \
+  --with-libatomic                                \\\
+  %endif                                            \
+  %if %{with ngx_google_perftools}                  \
+  --with-google_perftools_module                  \\\
+  %endif                                            \
+  %if %{with ngx_cpp_test}                          \
+  --with-cpp_test_module                          \\\
+  %endif                                            \
+  %if 0%{?suse_version} > 1220                      \
+  --with-cc-opt="%{optflags} -fPIC -D_GNU_SOURCE" \\\
+  --with-ld-opt="-Wl,-z,relro,-z,now -pie"        \\\
+  %else                                             \
+  --with-cc-opt="%{optflags}"                     \\\
+  %endif                                            \
+  --with-compat
+
+
+%ngx_requires \
+%requires_eq nginx \
+%{nil}
