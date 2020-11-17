@@ -485,4 +485,18 @@
   * snap: Enabled support for Zstandard (#2850)</comment>
     <requestid>824591</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5479ef31a08271309fee6674f45183ae</srcmd5>
+    <version>1.4.3</version>
+    <time>1605644812</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.3:
+  * Improved error message when adding external tileset
+  * Tile Collision Editor: Fixed invisible tile for isometric
+    oriented tileset (#2892)
+  * Fixed Object Alignment not getting set when reloading a tileset
+  * Ignore attempts to replace a tileset with itself
+  * qmake: Support linking to system Zstd on all UNIX-like systems</comment>
+    <requestid>849037</requestid>
+  </revision>
 </revisionlist>

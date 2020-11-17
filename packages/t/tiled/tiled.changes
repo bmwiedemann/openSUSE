@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 17 08:18:48 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4.3:
+  * Improved error message when adding external tileset
+  * Tile Collision Editor: Fixed invisible tile for isometric
+    oriented tileset (#2892)
+  * Fixed Object Alignment not getting set when reloading a tileset
+  * Ignore attempts to replace a tileset with itself
+  * qmake: Support linking to system Zstd on all UNIX-like systems
+
+-------------------------------------------------------------------
 Thu Aug  6 05:48:53 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.4.2:
