@@ -43,7 +43,6 @@ Requires:       python3-jsonschema >= 2.4.0
 Requires:       python3-psutil >= 2.2.1
 Requires:       python3-qt5
 Requires:       python3-sentry-sdk >= 0.14.4
-Requires:       python3-sip
 
 BuildArch:      noarch
 # SECTION test requirements

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 13 13:16:33 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- remove deprecated python-sip requirement. PyQt5.sip provided by
+  python3-qt5-sip which is required by python3-qt5 is the
+  recommended extension.
+
+-------------------------------------------------------------------
 Thu Nov  5 09:08:09 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.16
