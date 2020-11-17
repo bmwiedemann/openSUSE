@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 16 12:44:13 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.14.2
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Remove bogus dependencies from BuildRequires
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Nov  2 15:15:15 UTC 2020 - olaf@aepfle.de
 
 - Remove trailing .sh suffix from bash-completion to make sure

@@ -206,4 +206,17 @@
     <comment></comment>
     <requestid>845519</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b63be798e59ec2c40cd7d7e11ad978c1</srcmd5>
+    <version>2.14.2</version>
+    <time>1605644746</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.14.2
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Remove bogus dependencies from BuildRequires
+- Update Requires from setup.py (forwarded request 848872 from glaubitz)</comment>
+    <requestid>848900</requestid>
+  </revision>
 </revisionlist>
