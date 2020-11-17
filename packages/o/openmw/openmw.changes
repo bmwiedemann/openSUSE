@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 16 02:29:59 UTC 2020 - malcolmlewis@opensuse.org
+
+- Add openmw-add-missing-include.patch: Add missing algorithm
+  include for later boost releases, (gh#OpenMW/openmw!2817).
+- Add missing build requires on boost regex.
+
+-------------------------------------------------------------------
 Tue Aug 25 16:37:39 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.46.0:

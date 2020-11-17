@@ -26,6 +26,8 @@ Group:          Amusements/Games/RPG
 URL:            https://www.openmw.org
 Source:         https://github.com/OpenMW/openmw/archive/%{name}-%{version}.tar.gz
 Source2:        %{name}.rpmlintrc
+#PATCH-FIX-UPSTREAM openmw-add-missing-include.patch gh#OpenMW/openmw!2817 malcolmlewis@opensuse.org -- Add missing algorithm include for later boost releases.
+Patch0:         openmw-add-missing-include.patch
 BuildRequires:  MyGUI-devel >= 3.2.1
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -34,6 +36,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_program_options-devel
+BuildRequires:  libboost_regex-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  pkgconfig
 BuildRequires:  tinyxml-devel
@@ -87,6 +90,7 @@ The OpenCS is not based on the editing tool which came with the original Morrowi
 
 %prep
 %setup -q -n openmw-openmw-%{version}
+%patch0 -p2
 cp 'files/mygui/DejaVu Font License.txt' ./DejaVuFontLicense.txt
 
 ## fix __DATE__ and __TIME__
