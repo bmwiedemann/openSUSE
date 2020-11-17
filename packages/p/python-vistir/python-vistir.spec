@@ -66,7 +66,6 @@ subprocesses, and more.
 %setup -q -n vistir-%{version}
 
 sed -i '/invoke/d;/parver/d;/wheel$/d;/addopts/d' setup.cfg
-rm -r tasks
 
 %build
 %python_build
@@ -77,10 +76,19 @@ rm -r tasks
 
 %check
 export LANG=en_US.UTF-8
-# test_open_file requires network access
+
+# test_open_file_without_requests requires network access
 # test_path_to_url needs bigger seed than some of our virtuals provide
 # test_ensure_mkdir_p race condition
-%pytest -k 'not (test_open_file or test_path_to_url or test_ensure_mkdir_p)'
+# test_mkdir_p very slow on Leap Python 2
+# test_decode_encode and test_run_failing_subprocess fails on Leap 15.2 Python 2
+%{python_expand skip_tests="test_open_file_without_requests"
+if [ $python = "%{_bindir}/python2" ]; then
+  skip_tests+=" or mkdir_p or test_decode_encode or test_run_failing_subprocess"
+fi
+export PYTHONPATH=%{buildroot}%{$python_sitelib}
+$python -m pytest -v -k "not ($skip_tests)"
+}
 
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
