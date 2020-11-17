@@ -1,12 +1,19 @@
 #!/bin/sh
 
-version=2.23.2815.102
-commit=afb03ddf
+commit=42426e181cd4691eb840290f60890b0f21e7b23e
+# See: mozc/src/data/version/mozc_version_template.bzl
+# REVISION is always 102 for Linux
+version=2.25.4150.102
 
 set -e
 
-# git clone --depth=1 https://github.com/google/mozc.git
+if [ ! -e mozc ]; then
+    git clone --depth=1 https://github.com/google/mozc.git
+fi
+
 cd mozc
+git checkout $commit
+
 git archive --prefix=mozc-$version/ $commit | tar xC ../
 cd ..
 rm -r mozc-$version/src/third_party/*

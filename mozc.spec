@@ -28,14 +28,13 @@
 %define ibus_mozc_path %{_libdir}/ibus-mozc/ibus-engine-mozc
 %define ibus_mozc_icon_path %{_datadir}/ibus-mozc/product_icon.png
 %define document_dir %{_docdir}/ibus-mozc
-%define zinnia_model_path %{_datadir}/zinnia/model/tomoe/handwriting-ja.model
 %define use_libprotobuf 1
 
 Name:           mozc
-Version:        2.23.2815.102
+Version:        2.25.4150.102
 Release:        0
 Summary:        Mozc - Japanese Input Method for Chromium OS, Mac and Linux
-License:        BSD-3-Clause AND SUSE-Public-Domain
+License:        BSD-3-Clause AND SUSE-Public-Domain AND Apache-2.0
 Group:          System/I18n/Japanese
 ExcludeArch:    ppc ppc64 s390 s390x
 URL:            https://github.com/google/mozc
@@ -61,6 +60,10 @@ Source5:        japanese_usage_dictionary-r10.tar.xz
 # Using protobuf >= 3.6 requires to update Mozc source
 # https://github.com/protocolbuffers/protobuf/archive/v3.5.2.tar.gz
 Source6:        protobuf-v3.5.2.tar.gz
+# abseil cpp
+# License: Apache-2.0
+# https://github.com/abseil/abseil-cpp/archive/lts_2020_02_25.zip
+Source7:        abseil-cpp-lts_2020_02_25.zip
 #
 # jigyosyo.zip and ken_all.zip are zip-code--address data provided by
 # Japan Post Co., Ltd.
@@ -72,6 +75,8 @@ Source11:       ken_all.zip
 # add fcitx as mozc module
 # License: BSD-3-Clause
 Patch:          fcitx-mozc-2.23.2815.102.1.patch
+# PATCH-FIX-UPSTREAM ftake@geeko.jp -- update fcitx-mozc for newer mozc
+Patch22:        fcitx-fix-for-a1dcadab.patch
 Source21:       fcitx-mozc-icons.tar.gz
 %endif
 # A script for making a source tar.xz archive
@@ -88,26 +93,8 @@ Patch6:         ibus-qt5-hide_preedit_text-workaround.patch
 
 # PATCH-FIX-OPENSUSE mozc-build-gcc.patch bsc#990844 qzhao@suse.com -- Portng mozc-build-gcc.patch to force mozc build with gcc.
 Patch7:         mozc-build-gcc.patch
-
-# PATCH-FIX-UPSTREAM i@marguerite.su
-# fix python import error
-Patch8:         mozc-gen_zip_code_seed_py.patch
-# PATCH-FIX-UPSTREAM ftake@geeko.jp
-# fix build error with gcc 8.1
-Patch9:         gcc-8.1-ZeroQueryDict-iterator.patch
-# PATCH-FIX-UPSTREAM ftake@geeko.jp
-Patch10:        add-Japanese-new-era-reiwa-to-dict.patch
-# PATCH-FIX-UPSTREAM ftake@geeko.jp
-Patch11:        add-Japanese-new-era-reiwa-to-date_rewriter.patch
-# PATCH-FIX-UPSTREAM ftake@geeko.jp
-Patch12:        add-Japanese-new-era-reiwa-ligature-to-dict.patch
-# PATCH-FIX-UPSTREAM ftake@geeko.jp -- fix compile error caused by newer protobuf (from Gentoo)
-# https://github.com/google/mozc/issues/460
-Patch13:        mozc-2.23.2815.102-protobuf_generated_classes_no_inheritance.patch
-# PATCH-FIX-UPSTREAM ftake@geeko.jp -- Use Python 3 to build Mozc
-Patch14:        build-scripts-migration-to-python3.patch
-# PATCH-FIX-UPSTREAM ftake@geeko.jp -- fix a bug of the Python3 patch
-Patch15:        fix-zip-code-conversion-output.patch
+# PATCH-FIX-OPENSUSE build-with-libstdc++.patch ftake@geeko.jp -- force to use libstdc++ instead of libc++
+Patch8:         build-with-libstdc++.patch
 
 BuildRequires:  ninja >= 1.4
 %if %{use_libprotobuf}
@@ -166,17 +153,14 @@ The Mozc backend for Fcitx provides a Japanese input method.
 %package gui-tools
 Summary:        GUI tools for mozc
 Group:          System/I18n/Japanese
-BuildRequires:  zinnia-devel
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Widgets)
 Requires:       mozc = %{version}
-Requires:       zinnia
-Requires:       zinnia-tomoe
 
 %description gui-tools
 This package provides config, word-register, dictioaly,
-character-palette, handwriting tools.
+character-palette tools.
 
 %prep
 %setup -q
@@ -184,6 +168,7 @@ character-palette, handwriting tools.
 # extract fcitx-mozc
 %if %{with_fcitx}
 %patch -p1
+%patch22 -p1
 %endif
 
 %patch1 -p1
@@ -202,6 +187,9 @@ tar xvf %{SOURCE5}
 mkdir protobuf
 tar xvf %{SOURCE6} -C protobuf --strip-components 1
 %endif
+# abseil
+unzip %{SOURCE7}
+mv abseil-cpp-lts_2020_02_25 abseil-cpp
 cd ../..
 
 cd src
@@ -211,33 +199,18 @@ cd ..
 
 %patch8 -p1
 
-%patch9 -p1
-
-# patches to support new Japanese era, Reiwa
-%patch10 -p1
-%patch11 -p1
-cd src
-%patch12 -p1
-cd ..
-
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-
-# Use python as python3
-mkdir %{_builddir}/bin
-ln -s /usr/bin/python3 %{_builddir}/bin/python
-export PATH=%{_builddir}/bin:$PATH
-
 # fix installation path
 sed -e 's|@libdir@|%{_libdir}|g' %{SOURCE4} > ibus-setup-mozc-jp.desktop
 
 # prepare zip code dictionary
+unzip -d src/data/dictionary_oss %{SOURCE10}
+unzip -d src/data/dictionary_oss %{SOURCE11}
+
 cd src/data/dictionary_oss
-unzip %{SOURCE10}
-unzip %{SOURCE11}
-python ../../dictionary/gen_zip_code_seed.py --zip_code=KEN_ALL.CSV --jigyosyo=JIGYOSYO.CSV >> dictionary09.txt
-cd ../..
+PYTHONPATH="${PYTHONPATH}:../../" \
+    python3 ../../dictionary/gen_zip_code_seed.py \
+    --zip_code=KEN_ALL.CSV --jigyosyo=JIGYOSYO.CSV >> dictionary09.txt
+cd ../../../
 
 %build
 %define target Release
@@ -249,11 +222,11 @@ export QTDIR=%{_libdir}/qt5
 flags=${RPM_OPT_FLAGS/-Wall/}
 
 # disable Fcitx5 for now
-export GYP_DEFINES='ibus_mozc_path=%{ibus_mozc_path} ibus_mozc_icon_path=%{ibus_mozc_icon_path} use_libprotobuf=%{use_libprotobuf} use_libzinnia=1 document_dir=%{document_dir} zinnia_model_file=%{zinnia_model_path} release_extra_cflags="'$flags'" use_fcitx5=0'
+export GYP_DEFINES='ibus_mozc_path=%{ibus_mozc_path} ibus_mozc_icon_path=%{ibus_mozc_icon_path} use_libprotobuf=%{use_libprotobuf} document_dir=%{document_dir} release_extra_cflags="'$flags'" use_fcitx5=0'
 
 cd src
-python build_mozc.py gyp --server_dir=%{_libdir}/mozc
-python build_mozc.py build -c %{target} \
+python3 build_mozc.py gyp --server_dir=%{_libdir}/mozc
+python3 build_mozc.py build -c %{target} \
 	unix/ibus/ibus.gyp:ibus_mozc \
 %if %{with_fcitx}
 	unix/fcitx/fcitx.gyp:fcitx-mozc \

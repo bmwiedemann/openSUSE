@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Nov  5 14:14:36 UTC 2020 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Upstream update to 2.25.4150
+  * Remove hand writing feature by using Zinnia
+  * Update dictionaries
+  * Python 3 Support
+  * No changelog is available
+- Add abseil-cpp
+- Remove mozc-gen_zip_code_seed_py.patch
+  * Fix spec file so that the tool works without this patch
+- Remove patches merged by upstream
+  * gcc-8.1-ZeroQueryDict-iterator.patch
+  * add-Japanese-new-era-reiwa-to-dict.patch
+  * add-Japanese-new-era-reiwa-to-date_rewriter.patch
+  * add-Japanese-new-era-reiwa-ligature-to-dict.patch
+  * mozc-2.23.2815.102-protobuf_generated_classes_no_inheritance.patch
+  * build-scripts-migration-to-python3.patch
+  * fix-zip-code-conversion-output.patch
+- Add build-with-libstdc++.patch
+  * Force to use libstdc++ instead of libc++
+- Add fcitx-fix-for-a1dcadab.patch
+  * Fix fcitx-mozc patch for the latest mozc
+- Refresh mozc-ninja-verbose-build.patch
+- Update make_archive.sh
+
+-------------------------------------------------------------------
 Thu Sep 10 14:23:44 UTC 2020 - Fuminobu Takeyama <ftake@geeko.jp>
 
 - Build scripts migration to Python 3

@@ -1,13 +1,13 @@
-Index: b/src/build_mozc.py
-===================================================================
+diff --git a/src/build_mozc.py b/src/build_mozc.py
+index 873b6ff..e8d8e88 100644
 --- a/src/build_mozc.py
 +++ b/src/build_mozc.py
-@@ -846,7 +846,7 @@ def BuildWithNinja(options, targets):
-   ninja = GetNinjaPath()
+@@ -579,7 +579,7 @@ def BuildWithNinja(options, targets):
  
-   ninja_targets = [GetNinjaTargetName(target) for target in targets]
--  RunOrDie([ninja, '-C', build_arg] + ninja_targets)
-+  RunOrDie([ninja, '-C', build_arg, '-v'] + ninja_targets)
+   for target in targets:
+     (_, target_name) = target.split(':')
+-    RunOrDie([ninja, '-C', build_arg, target_name])
++    RunOrDie([ninja, '-C', build_arg, '-v', target_name])
  
  
  def BuildOnWindows(targets):
