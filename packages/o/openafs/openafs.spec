@@ -57,7 +57,7 @@
 
 # used for %setup only
 # leave upstream tar-balls untouched for integrity checks.
-%define upstream_version git-179a418ea5063785a23e4faf35134f063a6f3e1c
+%define upstream_version git-62beb979b4e43c361db54fbf3084f876fd2c11da
 
 Name:           openafs
 
