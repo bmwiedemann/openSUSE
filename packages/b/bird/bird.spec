@@ -31,6 +31,7 @@ Source:         ftp://bird.network.cz/pub/bird/bird-%{version}.tar.gz
 Source1:        bird.service
 Source3:        bird.tmpfiles.d
 Patch0:         gcc10.patch
+Patch1:         fix_test_for_bigendian_arch.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  ncurses-devel
@@ -66,6 +67,7 @@ This package holds the HTML documentation.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 export CFLAGS="${RPM_OPT_FLAGS} -fpic -DPIC -fno-strict-aliasing -Wno-parentheses -Wno-pointer-sign"
