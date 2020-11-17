@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 10 15:38:26 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Switch to python-qt5-sip, although it is not really needed
+  gh#frescobaldi/frescobaldi#1332 
+
+-------------------------------------------------------------------
 Tue Apr 14 09:30:21 UTC 2020 - Cor Blom <cornelis@solcon.nl>
 
 - Add appstream-glib-devel to BuildRequires to make it build on

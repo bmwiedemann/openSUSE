@@ -36,8 +36,8 @@ BuildRequires:  update-desktop-files
 Requires:       lilypond
 Requires:       python3-poppler-qt5
 Requires:       python3-qt5
+Requires:       python3-qt5-sip
 Requires:       python3-qtwebengine-qt5
-Requires:       python3-sip
 Recommends:     libportmidi0
 Recommends:     python3-pycups
 BuildArch:      noarch
