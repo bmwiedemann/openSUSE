@@ -18,7 +18,7 @@
 
 %bcond_without gui
 Name:           highlight
-Version:        3.58
+Version:        3.59
 Release:        0
 Summary:        Universal Source Code to Formatted Text Converter
 License:        GPL-3.0-or-later
@@ -29,8 +29,8 @@ Source1:        http://www.andre-simon.de/zip/%{name}-%{version}.tar.bz2.asc
 Source99:       highlight.keyring
 # PATCH-FIX-OPENSUSE highlight-3.45-fix-doc-dir.patch
 Patch0:         highlight-3.45-fix-doc-dir.patch
-# PATCH-FIX-OPENSUSE highlight-3.58-use_optflags.patch
-Patch1:         highlight-3.58-use_optflags.patch
+# PATCH-FIX-OPENSUSE highlight-3.59-use_optflags.patch
+Patch1:         highlight-3.59-use_optflags.patch
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_headers-devel
@@ -48,6 +48,7 @@ It is easily possible to create new language definitions and colour themes.
 %package gui
 Summary:        Graphical Interface for %{name}
 Group:          Development/Tools/Other
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  update-desktop-files
 Requires:       %{name} = %{version}
@@ -100,7 +101,7 @@ rm %{buildroot}%{_docdir}/%{name}/INSTALL
 %dir %{_datadir}/%{name}/gui_files
 %dir %{_datadir}/%{name}/gui_files/ext
 %{_datadir}/%{name}/gui_files/ext/fileopenfilter.conf
-%{_datadir}/pixmaps/%{name}.xpm
+%{_datadir}/icons/hicolor/256x256/apps/%{name}.png
 
 %files gui-lang -f %{name}.lang
 %dir %{_datadir}/%{name}/gui_files/l10n

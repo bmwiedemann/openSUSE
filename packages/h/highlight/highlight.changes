@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Nov 14 14:48:10 UTC 2020 - antoine.belvire@opensuse.org
+
+- Update to version 3.59:
+  * HTML output: Added `white-space: pre-wrap` to pre tag CSS.
+  * Updated mark_lines.lua plug-in accept a line range as input
+    parameter and output xterm256 terminal sequences.
+  * Improved Ruby code folding of the outhtml_codefold plug-in.
+  * Updated astyle lib to rev 672.
+  * Added support for reStructured Text (gl#saalen/highlight#170).
+  * Added support for Rego (openpolicyagent.org).
+  * Added `outhtml_copy_clipboard.lua` plugin.
+  * CLI: Adapted default xterm256/truecolor theme to terminal
+    background colour.
+  * CLI: Adapted ANSI line numbers to terminal background colour
+    (gl#saalen/highlight#172).
+  * CLI: Fixed segfault if the user home directory cannot be
+    determined (gl#saalen/highlight#171).
+  * GUI: Initial font set to Monospace.
+  * GUI: Replaced highlight.xpm by highlight.png icon.
+- Rebase optflags patch:
+  * Remove highlight-3.58-use_optflags.patch.
+  * Add highlight-3.59-use_optflags.patch.
+- Add hicolor-icon-themes as build requirement: Required since move
+  of highlight-gui icon.
+
+-------------------------------------------------------------------
 Wed Sep  9 21:28:54 UTC 2020 - antoine.belvire@opensuse.org
 
 - Update to version 3.58:
