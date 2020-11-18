@@ -172,6 +172,7 @@ unsorted:
   - OpenMoji-Black 
   - OpenMoji-Color 
   - OpenPrintingPPDs: [i586] 
+  - OpenRGB 
   - OpenSceneGraph 
   - OpenSceneGraph-examples 
   - OpenSceneGraph-plugins 
@@ -7820,6 +7821,7 @@ unsorted:
   - kernel-syms 
   - kernel-vanilla 
   - kernel-vanilla-devel 
+  - kernelshark 
   - ketchup 
   - kexi 
   - kexi-lang 
@@ -8162,7 +8164,6 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
-  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -9388,7 +9389,7 @@ unsorted:
   - libXxf86vm-devel 
   - libXxf86vm-devel-32bit: [x86_64] 
   - libXxf86vm1-32bit: [x86_64] 
-  - libYODA-1_8_3 
+  - libYODA-1_8_4 
   - libZXing1-32bit: [x86_64] 
   - liba52-0-32bit: [x86_64] 
   - liba52-devel 
@@ -9870,8 +9871,8 @@ unsorted:
   - libboost_wave1_74_0-32bit: [x86_64] 
   - libboost_wave1_74_0-devel 
   - libboringssl1 
-  - libbotan-2-16 
-  - libbotan-2-16-32bit: [x86_64] 
+  - libbotan-2-17 
+  - libbotan-2-17-32bit: [x86_64] 
   - libbotan-devel 
   - libbotan-devel-32bit: [x86_64] 
   - libbpf-devel 
@@ -10436,6 +10437,8 @@ unsorted:
   - libe-book-devel 
   - libe-book-devel-doc 
   - libe-book-tools 
+  - libe131-1 
+  - libe131-devel 
   - libeXosip2 
   - libeXosip2-12 
   - libeXosip2-devel 
@@ -12535,7 +12538,6 @@ unsorted:
   - libopenssl1_0_0-hmac-32bit: [x86_64] 
   - libopenssl1_0_0-steam 
   - libopenssl1_0_0-steam-32bit: [x86_64] 
-  - libopenssl_cbs_lib0: [x86_64] 
   - libopentracing-cpp1 
   - libopenvas_wincmd-devel 
   - libopenvas_wincmd1 
@@ -13226,7 +13228,7 @@ unsorted:
   - libqxtglobalshortcut0 
   - librabbitmq-devel 
   - librabbitmq4 
-  - libradcli4 
+  - libradcli5 
   - librados-devel: [x86_64] # devel package of dvd:librbd1 
   - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
   - libraft0 
@@ -14864,6 +14866,7 @@ unsorted:
   - libzfp0: [x86_64] 
   - libzhuyin13-32bit: [x86_64] 
   - libzimg2-32bit: [x86_64] 
+  - libzinnia0 
   - libzio-devel 
   - libzio1-32bit: [x86_64] 
   - libzip-devel 
@@ -15158,7 +15161,6 @@ unsorted:
   - ltrace 
   - ltrace-32bit: [x86_64] 
   - lttng-modules 
-  - lttng-modules-kmp-default 
   - lttng-modules-kmp-pae: [i586] 
   - lttng-tools 
   - lttng-tools-devel 
@@ -17029,6 +17031,7 @@ unsorted:
   - nftlb 
   - nghttp2 
   - nginx 
+  - nginx-macros 
   - nginx-source 
   - ngrep 
   - ngspice 
@@ -17773,7 +17776,7 @@ unsorted:
   - openEMS-devel 
   - openEMS-matlab 
   - openQA: [x86_64] 
-  - openQA-auto-upgrade: [x86_64] 
+  - openQA-auto-update: [x86_64] 
   - openQA-bootstrap: [x86_64] 
   - openQA-client: [x86_64] 
   - openQA-common: [x86_64] 
@@ -17824,14 +17827,11 @@ unsorted:
   - openSUSE-release-usb-x11 
   - openSUSE-xfce-icon-theme: [i586] 
   - openSUSEway 
-  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
-  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
-  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -18054,7 +18054,6 @@ unsorted:
   - openssl-1_0_0-cavs 
   - openssl-1_0_0-doc 
   - openssl-1_1-doc 
-  - openssl-cbs-devel: [x86_64] 
   - openssl-engine-libp11 
   - openssl-ibmpkcs11 
   - openssl_tpm2_engine 
@@ -23700,7 +23699,9 @@ unsorted:
   - python3-setproctitle: [i586] 
   - python3-setupmeta 
   - python3-setuptools-git 
+  - python3-setuptools-test 
   - python3-setuptools-version-command 
+  - python3-setuptools-wheel 
   - python3-setuptools_scm 
   - python3-setuptools_scm_git_archive 
   - python3-sfs 
@@ -36395,7 +36396,9 @@ unsorted:
   - zim-lang 
   - zimg-devel 
   - zinc 
+  - zinnia 
   - zinnia-devel 
+  - zinnia-tomoe 
   - zipkin-api-source 
   - zipkin-cpp-opentracing-devel 
   - zipkin-cpp-opentracing-devel-static 
