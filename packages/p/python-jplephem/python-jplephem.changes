@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 16 14:06:39 UTC 2020 - Marketa Machova <mmachova@suse.com>
+
+- update to 2.15
+  * Add "Type N" to each ephemeris segment description
+  * Remove a couple of unused imports
+
+-------------------------------------------------------------------
 Thu Jul  9 11:44:52 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 2.14
