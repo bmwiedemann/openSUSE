@@ -20,7 +20,7 @@
 %define gdk_pixbuf_binary_version 2.10.0
 
 Name:           gdk-pixbuf
-Version:        2.40.0
+Version:        2.42.0
 Release:        0
 Summary:        An image loading library
 License:        LGPL-2.1-or-later
@@ -37,9 +37,6 @@ Source2:        README.SUSE
 Source3:        gdk-pixbuf-rpmlintrc
 Source99:       baselibs.conf
 
-# PATCH-FIX-UPSTREAM gdk-pixbuf-boo1174307-io-gif-overflow.patch boo#1174307 glgo#GNOME/gdk-pixbuf#132 zcjia@suse.com -- Avoid overflows by checking the memset length argument
-Patch0:         gdk-pixbuf-boo1174307-io-gif-overflow.patch
-
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gtk-doc
 BuildRequires:  libjpeg-devel
@@ -52,7 +49,6 @@ BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(glib-2.0) >= 2.56.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(x11)
 
 %description
 gdk-pixbuf is an image loading library that can be extended by loadable
@@ -138,7 +134,6 @@ This package contains the development files for gdk-pixbuf.
 %setup -c -T -q
 unzip -P gecko %{SOURCE0}
 translation-update-upstream
-%patch0 -p1
 %if "%{_lib}" == "lib64"
 cp -a %{SOURCE2} .
 %endif
@@ -149,10 +144,10 @@ cp -a %{SOURCE2} .
 	-Dtiff=true \
 	-Djpeg=true \
 	-Djasper=false \
-	-Dx11=true \
+	-Dx11=false \
 	-Dbuiltin_loaders=none \
-	-Ddocs=true \
-	-Dgir=true \
+	-Dgtk_doc=true \
+	-Dintrospection=enabled \
 	-Dman=true \
 	-Drelocatable=false \
 	-Dnative_windows_loaders=false \
@@ -226,7 +221,6 @@ fi
 %doc README.SUSE
 %endif
 %{_libdir}/libgdk_pixbuf-2.0.so.0*
-%{_libdir}/libgdk_pixbuf_xlib-2.0.so.0*
 %dir %{_libdir}/gdk-pixbuf-2.0
 %dir %{_libdir}/gdk-pixbuf-2.0/%{gdk_pixbuf_binary_version}
 %dir %{_libdir}/gdk-pixbuf-2.0/%{gdk_pixbuf_binary_version}/loaders
@@ -253,7 +247,7 @@ fi
 %{_bindir}/gdk-pixbuf-pixdata
 %{_mandir}/man1/gdk-pixbuf-csource.1*
 %{_includedir}/gdk-pixbuf-2.0
-%{_libdir}/pkgconfig/*.pc
+%{_libdir}/pkgconfig/gdk-pixbuf-2.0.pc
 %{_libdir}/*.so
 %{_datadir}/gir-1.0/GdkPixbuf-2.0.gir
 %{_datadir}/gir-1.0/GdkPixdata-2.0.gir

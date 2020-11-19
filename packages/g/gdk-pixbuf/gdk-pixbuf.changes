@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Nov  9 15:52:50 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Udpate to version 2.42.0:
+  + Remove the libjasper JPEG2000 loader.
+  + Split the gdk-pixbuf-xlib library to a separate repository.
+  + Fix cppcheck 'shifting signed 32-bit value warning',
+  + Fix memory leaks in pixops error paths,
+  + Improve internal consistency of loaders,
+  + Skip bytes during JPEG incremental load.
+  + Check for overflows.
+  + Let the test suite cope with missing loaders.
+  + Check for mmap failure.
+  + Fix UB in the XPM loader.
+  + Speed up alpha scaling pixop.
+  + Add the `gtk_doc` configuration option, and deprecate `docs`.
+  + Add the `introspection` configuration option, and remove `gir`.
+  + Handle truncated PNMs more gracefully.
+  + Clean up GIF loader code.
+  + Fix colormap handling in GIF.
+- Drop gdk-pixbuf-boo1174307-io-gif-overflow.patch: fixed upstream.
+- Replace meson parameters, following upstream changes:
+  + -Ddocs=true => -Dgtk_doc=true.
+  + -Dgir=true => -Dintrospection=enabled.
+
+-------------------------------------------------------------------
 Mon Jul 27 06:56:15 UTC 2020 - Jia Zhaocong <zcjia@suse.com>
 
 - Add gdk-pixbuf-boo1174307-io-gif-overflow.patch: Avoid overflows
@@ -26,6 +51,13 @@ Mon Feb 24 01:29:03 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
 Thu Jan 30 12:17:20 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
+Wed Nov 27 17:36:17 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(x11) BuildRequires and pass -Dx11=false to meson.
+  No longer build x11 support, that is now split out in it's own
+  compat package.
 
 -------------------------------------------------------------------
 Tue Oct  8 11:52:24 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
