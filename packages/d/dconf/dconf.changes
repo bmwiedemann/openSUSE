@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 14 12:39:47 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 0.38.0:
+  + build: Install bash-completion relative to datadir.
+  + client: add `dconf compile` to shell autocomplete.
+
+-------------------------------------------------------------------
 Tue Mar 10 19:46:25 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 0.36.0:
