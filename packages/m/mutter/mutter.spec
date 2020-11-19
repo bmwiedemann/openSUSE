@@ -19,17 +19,17 @@
 # don't enable sysprof support by default
 %bcond_with profiler
 
-%define api_major 6
+%define api_major 7
 %define api_minor 0
 %define libmutter libmutter-%{api_major}-%{api_minor}
 Name:           mutter
-Version:        3.36.7
+Version:        3.38.1
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
-Source:         %{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/mutter/3.38/%{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE mutter-Lower-HIDPI_LIMIT-to-144.patch fate#326682, bsc#1125467 qkzhu@suse.com -- Lower HIDPI_LIMIT to 144
 Patch3:         mutter-Lower-HIDPI_LIMIT-to-144.patch
@@ -54,8 +54,8 @@ BuildRequires:  xorg-x11-server-wayland
 BuildRequires:  zenity
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
 BuildRequires:  pkgconfig(egl)
-BuildRequires:  pkgconfig(fribidi)
-BuildRequires:  pkgconfig(gbm) >= 17.1
+BuildRequires:  pkgconfig(fribidi) >= 1.0.0
+BuildRequires:  pkgconfig(gbm) >= 17.3
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.61.1
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.61.1
@@ -63,24 +63,25 @@ BuildRequires:  pkgconfig(gnome-desktop-3.0)
 BuildRequires:  pkgconfig(gnome-settings-daemon)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.5
 BuildRequires:  pkgconfig(graphene-gobject-1.0)
-BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.33.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.19.7
+BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.37.2
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.19.8
 BuildRequires:  pkgconfig(gudev-1.0) >= 232
-BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libcanberra-gtk3)
+BuildRequires:  pkgconfig(json-glib-1.0) >= 0.12.0
+BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.26
 BuildRequires:  pkgconfig(libdrm) >= 2.4.83
 BuildRequires:  pkgconfig(libinput)
 BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.0
-BuildRequires:  pkgconfig(libstartup-notification-1.0)
+BuildRequires:  pkgconfig(libstartup-notification-1.0) >= 0.7
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev) >= 136
-BuildRequires:  pkgconfig(libwacom)
+BuildRequires:  pkgconfig(libwacom) >= 0.13
 BuildRequires:  pkgconfig(pango) >= 1.2.0
 BuildRequires:  pkgconfig(sm)
 %if %{with profiler}
-BuildRequires:  pkgconfig(sysprof-3)
-BuildRequires:  pkgconfig(sysprof-capture-3) >= 3.35.2
+BuildRequires:  pkgconfig(sysprof-4)
+BuildRequires:  pkgconfig(sysprof-capture-4) >= 3.37.3
 %endif
+BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(upower-glib) >= 0.99.0
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.18
 BuildRequires:  pkgconfig(wayland-server) >= 1.13.0
@@ -88,12 +89,12 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xau)
 BuildRequires:  pkgconfig(xcb-randr)
-BuildRequires:  pkgconfig(xcomposite) >= 0.2
+BuildRequires:  pkgconfig(xcomposite) >= 0.4
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xext)
-BuildRequires:  pkgconfig(xfixes)
-BuildRequires:  pkgconfig(xi)
+BuildRequires:  pkgconfig(xfixes) >= 3
+BuildRequires:  pkgconfig(xi) >= 1.7.4
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xkbcommon) >= 0.4.3
 BuildRequires:  pkgconfig(xkbcommon-x11)
@@ -199,11 +200,11 @@ translation-update-upstream po mutter
 %{_bindir}/mutter
 %{_libexecdir}/mutter-restart-helper
 %{_datadir}/applications/mutter.desktop
+%{_udevrulesdir}/61-mutter.rules
 
 # These so files are not split out since they are private to mutter
 %{_libdir}/mutter-%{api_major}/libmutter-clutter-%{api_major}.so.*
 %{_libdir}/mutter-%{api_major}/libmutter-cogl-pango-%{api_major}.so.*
-%{_libdir}/mutter-%{api_major}/libmutter-cogl-path-%{api_major}.so.*
 %{_libdir}/mutter-%{api_major}/libmutter-cogl-%{api_major}.so.*
 %{_libdir}/mutter-%{api_major}/plugins/libdefault.so
 
@@ -243,7 +244,6 @@ translation-update-upstream po mutter
 %{_libdir}/mutter-%{api_major}/CoglPango-%{api_major}.gir
 %{_libdir}/mutter-%{api_major}/libmutter-clutter-%{api_major}.so
 %{_libdir}/mutter-%{api_major}/libmutter-cogl-pango-%{api_major}.so
-%{_libdir}/mutter-%{api_major}/libmutter-cogl-path-%{api_major}.so
 %{_libdir}/mutter-%{api_major}/libmutter-cogl-%{api_major}.so
 %{_libdir}/libmutter-%{api_major}.so
 %{_libdir}/pkgconfig/libmutter-%{api_major}.pc
@@ -251,7 +251,6 @@ translation-update-upstream po mutter
 %{_libdir}/pkgconfig/mutter-clutter-x11-%{api_major}.pc
 %{_libdir}/pkgconfig/mutter-cogl-%{api_major}.pc
 %{_libdir}/pkgconfig/mutter-cogl-pango-%{api_major}.pc
-%{_libdir}/pkgconfig/mutter-cogl-path-%{api_major}.pc
 
 %files lang -f %{name}.lang
 
