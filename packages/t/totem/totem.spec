@@ -18,16 +18,13 @@
 
 %define build_zeitgeist_plugin 0
 Name:           totem
-Version:        3.34.1
+Version:        3.38.0
 Release:        0
 Summary:        Movie Player for the GNOME Desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            https://wiki.gnome.org/Apps/Videos
-Source0:        https://download.gnome.org/sources/totem/3.34/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM totem-Fix-bracket-keys-and-backspace.patch -- variable-rate: Fix bracket keys and backspace not working
-Patch1:         totem-Fix-bracket-keys-and-backspace.patch
-
+Source0:        https://download.gnome.org/sources/totem/3.38/%{name}-%{version}.tar.xz
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -36,7 +33,7 @@ BuildRequires:  gstreamer-plugins-good >= 0.11.93
 BuildRequires:  gstreamer-utils >= 0.11.93
 BuildRequires:  gtk-doc
 BuildRequires:  intltool
-BuildRequires:  meson
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-pylint
 BuildRequires:  translation-update-upstream
@@ -47,7 +44,7 @@ BuildRequires:  pkgconfig(cairo) >= 1.14.0
 BuildRequires:  pkgconfig(clutter-1.0) >= 1.17.3
 BuildRequires:  pkgconfig(clutter-gst-3.0) >= 2.99.2
 BuildRequires:  pkgconfig(clutter-gtk-1.0) >= 1.8.1
-BuildRequires:  pkgconfig(glib-2.0) >= 2.35.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.56.0
 BuildRequires:  pkgconfig(gnome-desktop-3.0)
 BuildRequires:  pkgconfig(grilo-0.3) >= 0.3.0
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
@@ -55,14 +52,14 @@ BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.6.0
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0)
 BuildRequires:  pkgconfig(gstreamer-tag-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.19.4
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libepc-ui-1.0) > 0.4.0
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.1.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.0
 BuildRequires:  pkgconfig(pygobject-3.0) >= 2.90.3
 BuildRequires:  pkgconfig(shared-mime-info)
-BuildRequires:  pkgconfig(totem-plparser) >= 3.25.90
+BuildRequires:  pkgconfig(totem-plparser) >= 3.26.5
 BuildRequires:  pkgconfig(x11)
 # We want a useful set of plugins
 Requires:       gstreamer-plugins-base
