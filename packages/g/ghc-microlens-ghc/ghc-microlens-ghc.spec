@@ -18,7 +18,7 @@
 
 %global pkg_name microlens-ghc
 Name:           ghc-%{pkg_name}
-Version:        0.4.12
+Version:        0.4.13
 Release:        0
 Summary:        Microlens + array, bytestring, containers, transformers
 License:        BSD-3-Clause
