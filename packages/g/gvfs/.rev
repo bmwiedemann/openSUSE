@@ -1283,4 +1283,12 @@ Also wanted for 13.1</comment>
   just happened to coincide to be the same. (forwarded request 799286 from dimstar)</comment>
     <requestid>799478</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>425b0ffe9836083a846f777711993eb9</srcmd5>
+    <version>1.46.1</version>
+    <time>1605783401</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.38</comment>
+    <requestid>847240</requestid>
+  </revision>
 </revisionlist>
