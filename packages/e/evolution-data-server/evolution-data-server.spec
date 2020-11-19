@@ -22,7 +22,7 @@
 # When updating the sonums, do not forget to also update baselibs.conf
 %define so_camel 62
 %define so_ebackend 10
-%define so_edataserver 24
+%define so_edataserver 25
 %define so_edataserverui 2
 %define so_ebook 20
 %define so_ebook_contacts 3
@@ -32,13 +32,13 @@
 %bcond_without introspection
 
 Name:           evolution-data-server
-Version:        3.36.5
+Version:        3.38.1
 Release:        0
 Summary:        Evolution Data Server
 License:        LGPL-2.0-only
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Apps/Evolution
-Source0:        https://download.gnome.org/sources/evolution-data-server/3.36/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/evolution-data-server/3.38/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  cmake
