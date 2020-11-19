@@ -15,11 +15,18 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define rb_build_ruby_abis     %{rb_default_ruby_abi}
 %define rb_build_versions      %{rb_default_ruby}
 
+%if 0%{?suse_version} >= 1550 || (0%{?suse_version} >= 1500 && 0%{?is_opensuse})
+%bcond_without build_docs
+%else
+%bcond_with    build_docs
+%endif
+
 Name:           git-lfs
-Version:        2.10.0
+Version:        2.12.1
 Release:        0
 Summary:        Git extension for versioning large files
 License:        MIT
@@ -27,8 +34,9 @@ Group:          Development/Tools/Version Control
 URL:            https://git-lfs.github.com/
 Source0:        %{name}-v%{version}.tar.gz
 Source1:        README.packaging
+Source2:        vendor.tar.xz
 Patch0:         Makefile_path.patch
-%if 0%{?suse_version} >= 1550 || (0%{?suse_version} >= 1500 && 0%{?is_opensuse})
+%if %{with build_docs}
 BuildRequires:  %{rubygem ronn}
 %endif
 BuildRequires:  curl
@@ -41,7 +49,6 @@ Requires:       git-core >= 1.8.2
 Requires(post): git-core >= 1.8.2
 Requires(preun): git-core >= 1.8.2
 %{go_nostrip}
-%{go_provides}
 
 %description
 Git Large File Storage (LFS) replaces large files such as audio samples,
@@ -49,23 +56,21 @@ videos, datasets, and graphics with text pointers inside Git, while
 storing the file contents on a remote server.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -a 2
 
 %build
-%{goprep} github.com/git-lfs/git-lfs
-%{gobuild}
-%if 0%{?suse_version} >= 1550 || (0%{?suse_version} >= 1500 && 0%{?is_opensuse})
+go build -mod=vendor --buildmode=pie .
+%if %{with build_docs}
 %make_build man
 %endif
 
 %install
-%{goinstall}
-%{gosrc}
-%if 0%{?suse_version} >= 1550 || (0%{?suse_version} >= 1500 && 0%{?is_opensuse})
+install -D -m 755 git-lfs %{buildroot}%{_bindir}/git-lfs
+%if %{with build_docs}
 mkdir -p -m 755 %{buildroot}%{_mandir}/man1
 mkdir -p -m 755 %{buildroot}%{_mandir}/man5
-install -D -m 644 man/*.1 %{buildroot}%{_mandir}/man1
-install -D -m 644 man/*.5 %{buildroot}%{_mandir}/man5
+install  -m 644 man/*.1 %{buildroot}%{_mandir}/man1
+install  -m 644 man/*.5 %{buildroot}%{_mandir}/man5
 %endif
 
 %fdupes -s %{buildroot}
@@ -76,7 +81,7 @@ install -D -m 644 man/*.5 %{buildroot}%{_mandir}/man5
 git lfs install --system
 
 %preun
-git lfs uninstall
+git lfs uninstall --system
 
 %check
 export GIT_LFS_TEST_DIR=$(mktemp -d)
@@ -85,15 +90,15 @@ export GIT_LFS_TEST_DIR=$(mktemp -d)
 # skip it.
 export SKIPAPITESTCOMPILE=1
 
-%{gotest} github.com/git-lfs/git-lfs
+%{gotest} -mod=vendor
 
 rm -rf ${GIT_LFS_TEST_DIR}
 
-%files -f file.lst
+%files
 %{_bindir}/git-lfs
 %license LICENSE.md
-%doc README.md
-%if 0%{?suse_version} >= 1550 || (0%{?suse_version} >= 1500 && 0%{?is_opensuse})
+%doc CHANGELOG.md CODE-OF-CONDUCT.md CONTRIBUTING.md  INSTALLING.md README.md
+%if %{with build_docs} 
 %{_mandir}/man*/*
 %endif
 
