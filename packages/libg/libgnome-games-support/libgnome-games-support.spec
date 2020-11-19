@@ -19,13 +19,13 @@
 %define sover 3
 
 Name:           libgnome-games-support
-Version:        1.6.1
+Version:        1.7.1
 Release:        0
 Summary:        Internal support library for GNOME games
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://git.gnome.org/browse/libgnome-games-support/
-Source0:        https://download.gnome.org/sources/libgnome-games-support/1.6/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libgnome-games-support/1.7/%{name}-%{version}.tar.xz
 
 BuildRequires:  intltool >= 0.50.2
 BuildRequires:  meson
