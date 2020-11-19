@@ -1636,4 +1636,12 @@ https://gitlab.gnome.org/GNOME/gnome-control-center/commit/3e82d5386033e8fbf3f5b
     <comment>New stable release (forwarded request 818627 from iznogood)</comment>
     <requestid>819931</requestid>
   </revision>
+  <revision rev="193" vrev="1">
+    <srcmd5>1e8d23f2997861bcf2180fb10e0ad856</srcmd5>
+    <version>3.38.1</version>
+    <time>1605783320</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.38</comment>
+    <requestid>847206</requestid>
+  </revision>
 </revisionlist>
