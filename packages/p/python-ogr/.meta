@@ -1,0 +1,5 @@
+<package name="python-ogr" project="openSUSE:Factory">
+  <title>python-ogr</title>
+  <description>One API for multiple git forges</description>
+  <devel project="devel:languages:python" package="python-ogr"/>
+</package>
