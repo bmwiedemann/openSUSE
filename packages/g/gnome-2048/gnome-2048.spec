@@ -17,13 +17,13 @@
 
 
 Name:           gnome-2048
-Version:        3.36.4
+Version:        3.38.0
 Release:        0
 Summary:        Sliding block puzzle game
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://wiki.gnome.org/Apps/2048
-Source0:        https://download.gnome.org/sources/gnome-2048/3.36/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-2048/3.38/%{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib-devel
 BuildRequires:  itstool
@@ -34,8 +34,8 @@ BuildRequires:  vala >= 0.24.0
 BuildRequires:  pkgconfig(clutter-1.0) >= 1.12.0
 BuildRequires:  pkgconfig(clutter-gtk-1.0) >= 1.6.0
 BuildRequires:  pkgconfig(gee-0.8) >= 0.14.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12.0
-BuildRequires:  pkgconfig(libgnome-games-support-1) >= 0.90
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
+BuildRequires:  pkgconfig(libgnome-games-support-1) >= 1.7.1
 
 %description
 2048 is a single-player sliding block puzzle game, in which the
