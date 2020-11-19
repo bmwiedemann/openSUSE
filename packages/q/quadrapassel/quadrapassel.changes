@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  6 07:21:53 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.1:
+  + Updated game description to provide a better description.
+  + Fix for incorrect preview shape when difficult blocks is
+    selected.
+  + Set application avatar in Gitlab.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Aug 13 21:58:33 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.05:
