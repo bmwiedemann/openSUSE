@@ -1,0 +1,105 @@
+-------------------------------------------------------------------
+Tue May 14 05:15:51 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.41
+   see /usr/share/doc/packages/perl-MooseX-App/Changes
+
+  1.41 2019-05-13
+      - Switch to Dist::Zilla
+  
+  1.40 2019-05-13
+      - Disable 11_process.t on NetBSD since fork is failing (forking is only done
+        during testing and not by the actual module)
+      - Sort keys operations to get a predictable order of keys (implemented by Jose Luis Martinez)
+      - Simplify dependencies: No need for Path::Class. File::Spec and File::Basename that are
+        loaded via Module::Pluggable::Object are sufficient
+  
+  1.39 2017-09-24
+      - APP_DEVELOPER environment for extended module checks
+      - Improved command checks: Die on single letter flags without Bool type constraints
+
+-------------------------------------------------------------------
+Mon Sep 25 05:45:30 UTC 2017 - coolo@suse.com
+
+- updated to 1.39
+   see /usr/share/doc/packages/perl-MooseX-App/Changes
+
+-------------------------------------------------------------------
+Thu May 25 08:37:19 UTC 2017 - coolo@suse.com
+
+- updated to 1.38
+   see /usr/share/doc/packages/perl-MooseX-App/Changes
+
+  1.38 2017-06-20
+      - Cleanups (get rid of smartmatch, inentation, documentation, tests)
+      - Also handle =head[2-4] tags when processing pod (#47)
+      - Subcommands (based on work by Yanick Champoux)
+
+-------------------------------------------------------------------
+Wed Feb 22 06:56:27 UTC 2017 - coolo@suse.com
+
+- updated to 1.3701
+   see /usr/share/doc/packages/perl-MooseX-App/Changes
+
+-------------------------------------------------------------------
+Mon Nov 14 06:49:52 UTC 2016 - coolo@suse.com
+
+- updated to 1.37
+   see /usr/share/doc/packages/perl-MooseX-App/Changes
+
+  1.37 2016-11-13
+      - Refactor the way values are parsed from @ARGV
+      - Rework boolean negation
+      - Add developer checks
+
+-------------------------------------------------------------------
+Wed Oct 12 05:47:52 UTC 2016 - coolo@suse.com
+
+- updated to 1.36
+   see /usr/share/doc/packages/perl-MooseX-App/Changes
+
+  1.36 2016-10-11
+      - Documentation
+      - Set correct encoding on STDERR
+      - Fix order of options (fixed by J.R. Mash)
+      - Replace dashes in variable names with underscores in bash completion (implemented by Tina Müller)
+      - Do not autocomplete autocomplete itself (implemented by Lisa Hare)
+      - Create correct documentation for options with cmd_split
+      - Rename hints key to clarify purpose
+      - Add ability to negate boolean options (implemented by Marc Logghe)
+      - Spelling fixes github#39 (fixed by Gregor Herrmann)
+      - Retain original order of elements from @ARGV
+
+-------------------------------------------------------------------
+Mon Apr  4 10:01:58 UTC 2016 - coolo@suse.com
+
+- updated to 1.35
+   see /usr/share/doc/packages/perl-MooseX-App/Changes
+
+  1.35 2016-04-02
+      - Apply Spelling fixes RT112234 (fixed by Gregor Herrmann)
+      - Documentation
+      - Allow to pass ARGV directly to constructor
+      - use namespace::autoclean (reported by Mohammad S Anwar)
+      - Dist housekeeping
+
+-------------------------------------------------------------------
+Tue Mar  8 10:34:50 UTC 2016 - coolo@suse.com
+
+- updated to 1.34
+   see /usr/share/doc/packages/perl-MooseX-App/Changes
+
+  1.34 2016-02-21
+      - Do not accept invalid character in Term plugin
+      - Fix RT112156: Command class lacking attribute metarole (reported by Marc Logghe)
+      - Apply Spelling fixes RT105717 (fixed by Gregor Herrmann)
+      - Add permute option to specify multiple values with one attribute key
+      - Fix imports (fixed by Alexander Stoddard)
+      - Documentation
+
+-------------------------------------------------------------------
+Sun Apr 19 18:08:35 UTC 2015 - coolo@suse.com
+
+- initial package $version
+ * created by $NAME $VERSION
+
