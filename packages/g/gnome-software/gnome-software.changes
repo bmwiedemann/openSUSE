@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Oct 20 13:40:22 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Enable parental control integration (deps are now packaged):
+  + Add pkgconfig(malcontent-0) BuildRequires.
+  + Replace -Dmalcontent=false meson parameter with
+    -Dmalcontent=true.
+
+-------------------------------------------------------------------
+Fri Sep 11 17:36:49 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.0:
+  + Updated translations.
+- Bump define _version to 3_38_0 (soversion) following upstream
+  changes.
+
+-------------------------------------------------------------------
+Fri Sep  4 16:18:52 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.92:
+  + Add sysprof support for profiling jobs.
+  + Add webflow and basic auth support to flatpak plugin.
+  + Coalesce refresh operations where possible.
+  + Correctly mark layered rpm-ostree local packages as removable.
+  + Fix flatpak bundle installation.
+  + Handle invalid snap auth data.
+  + Improve flatpak progress reporting for transactions.
+  + Improve the heuristic for detecting old-style AppStream
+    override files.
+  + Many performance improvements in many areas of the code.
+  + Only delete the firmware archive if we downloaded it to the
+    cache.
+  + Show a pulsing progress bar if progress is unknown.
+  + Support loading appstream files from custom install prefix.
+  + Use the runtime fwupd version for the user agent.
+  + Updated translations.
+- Drop gnome-software-add-missing-headers.patch: fixed upstream.
+- Add pkgconfig(sysprof-4) and pkgconfig(sysprof-capture-4)
+  BuildRequires: new dependency.
+- Add gnome-software-no-static-lib.patch: do not install a static
+  library.
+- Split out library package libgnomesoftware-3_37_92.
+
+-------------------------------------------------------------------
 Wed Aug  5 06:28:46 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
 
 - Update gnome-software-add-missing-headers.patch: add more devel
