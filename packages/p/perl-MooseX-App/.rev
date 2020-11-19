@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bbb65574633466320e3dfa04c13b0e1f</srcmd5>
+    <version>1.41</version>
+    <time>1605800776</time>
+    <user>dimstar_suse</user>
+    <comment>initial version required by kanku
+
+removed description from cpanspec.yml</comment>
+    <requestid>849063</requestid>
+  </revision>
+</revisionlist>
