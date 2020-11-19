@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Oct  5 15:47:12 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.1:
+  + Trust Prompt: Can fail to extract host from a collection account.
+  + Improve URL scanner (detect angle brackets).
+  + Forward as iCalendar: Embed event's local attachments.
+  + Password Credentials Prompt: Escape text for use in markup.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 11 12:34:21 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  4 14:29:30 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.92:
+  + Miscellaneous: GObjectIntrospection.cmake: Depend rather on gir
+    target, than on gir file.
+  + Bug Fixes:
+    - [IMAPx] Ignore truncated COPYUID server response.
+    - Avoid race condition when refreshing collection backend.
+    - ESoupSession: Ensure request URI is properly encoded.
+    - CardDAV contacts without UID are not shown.
+    - libecal: Specify forward-declared types for gir.
+    - Calendar: Add SExp function to filter with DTSTART.
+    - Let 'Wrap quoted text in replies' influence paragraph style.
+    - Calendar: Correct RRULE's UNTIL value saving.
+- Changes from version 3.37.90:
+  + SMTP: Doesn't send fully qualified host name with EHLO.
+  + Fix: Search folders can show non-matches after filter change.
+  + Show recurrence information with user-specified date format.
+- Changes from version 3.37.3:
+  + WebDAV: Inefficient processing of returned XML data.
+  + Updated translations.
+- Bump so_edataserver to 25, following upstream (also in
+  baselibs.conf).
+
+-------------------------------------------------------------------
 Sun Aug  9 10:14:05 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.5:
