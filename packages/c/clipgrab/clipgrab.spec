@@ -1,7 +1,7 @@
 #
 # spec file for package clipgrab
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2008-2013 detlef@links2linux.de
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           clipgrab
-Version:        3.8.2
+Version:        3.9.2
 Release:        0
 Summary:        Video downloader
 License:        GPL-3.0-or-later
