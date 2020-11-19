@@ -1,0 +1,5 @@
+<package name="python-python-fedora" project="openSUSE:Factory">
+  <title></title>
+  <description>Python modules for interacting with Fedora Services</description>
+  <devel project="devel:languages:python" package="python-python-fedora"/>
+</package>
