@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Fri Oct  9 09:17:52 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 1.66.1:
+  + Throws on Unsupported caller allocates.
+  + arg: Fix MIN/MAX safe big integer limits.
+  + Fix leak when virtual function is unimplemented.
+  + Cannot compile GJS 1.66.0 on macOS with llvm/clang 10.0.1.
+  + console: fix typo in command-line option.
+  + Prevent passing null pointers when not nullable.
+  + Passing fundamentals to functions no longer works.
+
+-------------------------------------------------------------------
+Mon Sep 14 10:08:15 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 1.66.0:
+  + No change from 1.65.92.
+
+-------------------------------------------------------------------
+Sat Sep  5 22:55:04 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.65.92:
+  + Enum and flags test failing in s390x.
+  + Bring back Visual Studio build support for GJS master.
+  + gjs_dbus_implementation_emit_signal: don't try to unref NULL.
+  + doc: add third party applications.
+  + boxed: Initialize all the private BoxedInstance members.
+  + object: Fix GjsCallBackTrampoline's leaks.
+  + Various maintenance.
+  + Crash using shell's looking glass.
+
+-------------------------------------------------------------------
+Sat Sep  5 12:28:38 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 1.65.91:
+  + Crash in gjs_dbus_implementation_flush().
+  + eslint: Bump ecmaScript version.
+  + Documentation: add documentation for ENV variables.
+  + Argument cache causes test failure in armhf.
+  + Argument cache causes test regressions in s390x.
+  + ByteArray.toString use-after-free.
+  + Crash accessing `vfunc_` methods of `Clutter.Actor`s.
+- Changes from version 1.65.90:
+  + GJS now has an optional, Linux-only, dependency on
+    libsysprof-capture-4 instead of libsysprof-capture-3 for the
+    profiler functionality.
+  + New API: gjs_coverage_enable() allows the collection of code
+    coverage metrics.
+  + New JavaScript features! This version of GJS is based on
+    SpiderMonkey 78, an upgrade from the previous ESR (Extended
+    Support Release) of SpiderMonkey 68.
+- Changes from version 1.65.4:
+  + arg.cpp: Add required messages for static_assert.
+  + Let's enable class fields!.
+  + function: Only get function name if we actually warn.
+  + Split print into native library.
+- Replace pkgconfig(mozjs-68) BuildRequires with
+  pkgconfig(mozjs-78): Follow upstreams port to Spidermonkey 78.
+- Replace pkgconfig(sysprof-3|sysprof-capture-3) to their
+  respective -4 variant.
+- Drop python Requires: we no longer need python2 to build.
+
+-------------------------------------------------------------------
 Mon Jul  6 19:54:50 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.64.4:
