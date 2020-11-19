@@ -191,4 +191,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>835832</requestid>
   </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>ca18c03ebac749397359b048292512b3</srcmd5>
+    <version>0.6.5</version>
+    <time>1605800790</time>
+    <user>dimstar_suse</user>
+    <comment>- dehydrated-apache2: Check for mod_compat (bsc#1178927)</comment>
+    <requestid>849382</requestid>
+  </revision>
 </revisionlist>
