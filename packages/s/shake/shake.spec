@@ -19,7 +19,7 @@
 %global pkg_name shake
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.19.1
+Version:        0.19.2
 Release:        0
 Summary:        Build system library, like Make, but more accurate dependencies
 License:        BSD-3-Clause
@@ -31,7 +31,6 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-extra-devel
-BuildRequires:  ghc-file-embed-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-filepattern-devel
 BuildRequires:  ghc-hashable-devel
@@ -43,7 +42,6 @@ BuildRequires:  ghc-primitive-devel
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unix-devel
