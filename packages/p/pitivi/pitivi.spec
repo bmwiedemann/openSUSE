@@ -17,16 +17,14 @@
 
 
 Name:           pitivi
-Version:        0.999
+Version:        2020.09.2
 Release:        0
 Summary:        Video editing software
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            http://www.pitivi.org/
-Source0:        https://download.gnome.org/sources/pitivi/0.999/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/pitivi/2020.09/%{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM pitivi-Support-python-3.8.patch dimstar@opensuse.org -- Support python 3.8
-Patch0:         pitivi-Support-python-3.8.patch
 BuildRequires:  fdupes
 BuildRequires:  gnome-doc-utils-devel >= 0.18.0
 BuildRequires:  gobject-introspection >= 1.31.1
@@ -39,19 +37,20 @@ BuildRequires:  python3-gobject
 BuildRequires:  python3-nose
 BuildRequires:  shared-mime-info
 BuildRequires:  translation-update-upstream
-BuildRequires:  pkgconfig(gst-transcoder-1.0) >= 1.8.1
 BuildRequires:  pkgconfig(gst-validate-1.0) >= 1.12.2
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.14.1
+BuildRequires:  pkgconfig(gstreamer-transcoder-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0) >= 1.10.2
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
 Requires:       gstreamer-transcoder >= 1.8.2
 Requires:       python3-cairo
 Requires:       python3-gobject
-Requires:       python3-gst
+Requires:       python3-gst >= 1.17.90
 Requires:       python3-matplotlib-gtk3
 Requires:       python3-numpy
 # We need a minimal version of the GES-1.0 package, so we have to specify it manually
-Requires:       typelib-1_0-GES-1_0 >= 1.4.0
+Requires:       typelib-1_0-GES-1_0 >= 1.17.90
+Requires:       typelib-1_0-Gst-1_0 >= 1.17.90
 # Pitivi can use the Frei0r plugins, and since this enables lots of effects, we
 # really want that by default if possible
 Recommends:     frei0r-plugins
@@ -104,12 +103,9 @@ fi
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/pitivi
 %{_libdir}/pitivi/
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/org.pitivi.Pitivi.appdata.xml
 %{_datadir}/applications/org.pitivi.Pitivi.desktop
-%dir %{_datadir}/icons/hicolor/512x512
-%dir %{_datadir}/icons/hicolor/512x512/apps
 %{_datadir}/icons/hicolor/*/*/*.*
+%{_datadir}/metainfo/org.pitivi.Pitivi.appdata.xml
 %{_datadir}/mime/packages/org.pitivi.Pitivi-mime.xml
 %{_datadir}/pitivi/
 
