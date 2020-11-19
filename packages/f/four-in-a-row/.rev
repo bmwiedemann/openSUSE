@@ -301,4 +301,12 @@
     <comment>New stable rel (forwarded request 840053 from iznogood)</comment>
     <requestid>840244</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>7fe280e167b14d6088758502c86539a1</srcmd5>
+    <version>3.38.1</version>
+    <time>1605800657</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.38</comment>
+    <requestid>847186</requestid>
+  </revision>
 </revisionlist>
