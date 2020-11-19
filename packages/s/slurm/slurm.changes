@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 18 08:40:59 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Updated to 20.02.6, addresses two security fixes:
+  * PMIx - fix potential buffer overflows from use of unpackmem().
+    CVE-2020-27745 (bsc#1178890)
+  * X11 forwarding - fix potential leak of the magic cookie when sent as an
+     argument to the xauth command. CVE-2020-27746 (bsc#1178891)
+- And many other bugfixes, full log and details available at:
+  * https://lists.schedmd.com/pipermail/slurm-announce/2020/000045.html
+
+-------------------------------------------------------------------
 Thu Oct 29 12:35:18 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Updated to 20.02.5, changes:
