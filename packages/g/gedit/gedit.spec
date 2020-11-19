@@ -18,13 +18,13 @@
 
 %bcond_without  python_bindings
 Name:           gedit
-Version:        3.36.2
+Version:        3.38.0
 Release:        0
 Summary:        UTF-8 text editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Gedit
-Source0:        https://download.gnome.org/sources/gedit/3.36/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gedit/3.38/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE gedit-desktop.patch -- Adds more MIME types.
 Patch0:         gedit-desktop.patch
 # PATCH-FIX-OPENSUSE gedit-plugins-python-env.patch bjorn.lie@gmail.com -- Fix python env
@@ -35,7 +35,7 @@ BuildRequires:  gobject-introspection-devel >= 0.9.3
 BuildRequires:  gtk-doc
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  iso-codes-devel
-BuildRequires:  meson >= 0.49
+BuildRequires:  meson >= 0.53
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base >= 3.2.3
 BuildRequires:  translation-update-upstream
@@ -50,7 +50,7 @@ BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.2
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.14.1
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.14.1
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.0.0
-BuildRequires:  pkgconfig(tepl-4) >= 4.4
+BuildRequires:  pkgconfig(tepl-5) >= 5.0
 BuildRequires:  pkgconfig(vapigen) >= 0.25.1
 BuildRequires:  pkgconfig(x11)
 Requires:       python3-cairo
@@ -143,7 +143,7 @@ translation-update-upstream po %{name}
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.time.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.time.gschema.xml
 %dir %{_libdir}/gedit/
-%{_libdir}/gedit/libgedit-3.36.so
+%{_libdir}/gedit/libgedit-3.38.so
 %{_libdir}/gedit/girepository-1.0/
 %dir %{_libdir}/gedit/plugins/
 # Explicitly list plugins so we know when we miss one
@@ -178,7 +178,7 @@ translation-update-upstream po %{name}
 %endif
 
 %files devel
-%doc AUTHORS CONTRIBUTING.md
+%doc CONTRIBUTING.md
 %doc %{_datadir}/gtk-doc/html/gedit/
 %{_datadir}/gedit/gir-1.0/
 %{_includedir}/*
