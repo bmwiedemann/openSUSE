@@ -17,9 +17,9 @@
 #
 
 
-%global version_current 1.46.0
-%global version_previous 1.45.2
-%global version_bootstrap 1.45.2
+%global version_current 1.47.0
+%global version_previous 1.46.0
+%global version_bootstrap 1.46.0
 
 # some sub-packages are versioned independently
 %global rustfmt_version 1.4.21
@@ -428,8 +428,8 @@ find vendor -name .cargo-checksum.json \
   -exec sed -i.uncheck -e 's/"files":{[^}]*}/"files":{ }/' '{}' '+'
 
 # Fix rpmlint error "This script uses 'env' as an interpreter"
-sed -i '1s|#!%{_bindir}/env python|#!%{_bindir}/python3|' src/libcore/unicode/printable.py
-chmod +x src/libcore/unicode/printable.py
+sed -i '1s|#!%{_bindir}/env python|#!%{_bindir}/python3|' library/core/src/unicode/printable.py
+chmod +x library/core/src/unicode/printable.py
 
 %build
 %define _lto_cflags %{nil}
@@ -579,6 +579,7 @@ rm -rf %{buildroot}/home
 %{rustlibdir}%{_sysconfdir}/gdb_load_rust_pretty_printers.py
 %{rustlibdir}%{_sysconfdir}/gdb_lookup.py
 %{rustlibdir}%{_sysconfdir}/gdb_providers.py
+%{rustlibdir}%{_sysconfdir}/lldb_commands
 %{rustlibdir}%{_sysconfdir}/lldb_lookup.py
 %{rustlibdir}%{_sysconfdir}/lldb_providers.py
 %{rustlibdir}%{_sysconfdir}/rust_types.py
