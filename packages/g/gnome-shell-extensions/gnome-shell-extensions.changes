@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct 13 03:07:02 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update file sle-classic.desktop according to the upstream commit
+  9a78c7e4.
+
+-------------------------------------------------------------------
+Thu Oct  8 03:38:01 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct  8 03:38:00 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Oct  7 19:05:36 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.7:
@@ -11,6 +29,36 @@ Thu Sep 10 02:08:23 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
   (jsc#SLE-11720 bsc#1176304).
   + Remove sle-classic-lock-screen-background.patch
   + Remove SLE-theme.tar.gz
+
+-------------------------------------------------------------------
+Mon Sep  7 07:38:24 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep  5 15:12:18 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.91:
+  + Updated translations.
+- Changes from version 3.37.90:
+  + Misc. bug fixes and cleanups.
+- Changes from version 3.37.3:
+  + window-list, native-window-placement: Adjust to shell changes.
+- Changes from version 3.37.2:
+  + window-list, auto-move: Modernize preference dialogs.
+  + Adjust to gnome-shell changes.
+- Changes from version 3.37.1:
+  + drive-menu: Emphasize eject buttons.
+  + user-theme: Add preference dialog>
+  + window-list: Fix inconsistent state in preference dialog.
+  + workspace-indicator: Overhaul preference dialog.
+  + user-theme: Support session mode styles.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Drop gnome-classic-s390-not-require-g-s-d_wacom.patch and
+  gnome-shell-extensions-remove-gsd-XSettings.patch: no longer
+  applicable.
 
 -------------------------------------------------------------------
 Thu Aug 13 21:48:09 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>

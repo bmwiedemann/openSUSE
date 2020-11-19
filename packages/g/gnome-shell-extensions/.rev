@@ -896,4 +896,12 @@
   + Update sass submodule. (forwarded request 840128 from iznogood)</comment>
     <requestid>840252</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>07d03465c63c620195497ab2d4d660a7</srcmd5>
+    <version>3.38.1</version>
+    <time>1605783364</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.38</comment>
+    <requestid>847225</requestid>
+  </revision>
 </revisionlist>
