@@ -18,7 +18,7 @@
 
 
 Name:           package-update-indicator
-Version:        6
+Version:        7
 Release:        0
 Summary:        Package update status notification applet
 License:        MIT
