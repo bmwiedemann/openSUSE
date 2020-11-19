@@ -269,4 +269,12 @@
     <comment>units 2.20 (forwarded request 838965 from AndreasStieger)</comment>
     <requestid>838975</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>58d18b8f606e462a26eec54e354b1e3b</srcmd5>
+    <version>2.21</version>
+    <time>1605800883</time>
+    <user>dimstar_suse</user>
+    <comment>units 2.21 (forwarded request 848840 from AndreasStieger)</comment>
+    <requestid>849444</requestid>
+  </revision>
 </revisionlist>
