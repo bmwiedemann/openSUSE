@@ -18,13 +18,13 @@
 
 
 Name:           gnome-clocks
-Version:        3.36.2
+Version:        3.38.0
 Release:        0
 Summary:        Clock application designed for GNOME 3
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://live.gnome.org/Design/Apps/Clock
-Source0:        https://download.gnome.org/sources/gnome-clocks/3.36/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-clocks/3.38/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
@@ -42,7 +42,7 @@ BuildRequires:  pkgconfig(gsound) >= 0.98
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 BuildRequires:  pkgconfig(gweather-3.0) >= 3.32.0
 BuildRequires:  pkgconfig(libgeoclue-2.0) >= 2.4
-BuildRequires:  pkgconfig(libhandy-0.0) >= 0.0.10
+BuildRequires:  pkgconfig(libhandy-1) >= 1.0.0
 
 %description
 A nice simple app to show the time, date, and alarms.
@@ -74,7 +74,7 @@ translation-update-upstream
 
 %files
 %license LICENSE.md
-%doc README.md NEWS.md
+%doc README.md NEWS
 %doc %{_datadir}/help/C/gnome-clocks/
 %{_bindir}/%{name}
 %{_datadir}/metainfo/org.gnome.clocks.metainfo.xml
