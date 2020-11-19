@@ -16,32 +16,33 @@
 #
 
 
-%define soname libgladeui-2-12
+%define soname libgladeui-2-13
 
 Name:           glade
-Version:        3.36.0
+Version:        3.38.1
 Release:        0
 Summary:        User Interface Builder for GTK+ 3
 License:        GPL-2.0-or-later
 Group:          Development/Tools/GUI Builders
 URL:            https://glade.gnome.org/
-Source0:        https://download.gnome.org/sources/glade/3.36/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/glade/3.38/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
 BuildRequires:  intltool
+BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(glib-2.0) >= 2.53.2
+BuildRequires:  pkgconfig(glib-2.0) >= 2.64.0
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gmodule-export-2.0)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.10.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.0
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.8.0
-BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.12.0
+BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.28.0
 
 %description
 Glade is a RAD tool to develop user interfaces for the Gtk+ 3 toolkit
@@ -87,16 +88,13 @@ applications that want to make use of libgladeui.
 %autosetup -p1
 
 %build
-%configure \
-	--disable-static \
-	--enable-gtk-doc \
-	--enable-man-pages \
-	PYTHON=python3
-%make_build
+%meson \
+    -Dgtk_doc=true \
+    -Dgjs=disabled
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
 
@@ -113,6 +111,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/metainfo/org.gnome.Glade.appdata.xml
 %{_datadir}/applications/org.gnome.Glade.desktop
 %{_datadir}/glade/
+%{_datadir}/gettext/its/glade-catalog.its
+%{_datadir}/gettext/its/glade-catalog.loc
+
 %{_datadir}/icons/hicolor/*/apps/*.*
 %{_libdir}/glade/modules/libgladegtk.so
 %{_libdir}/glade/modules/libgladepython.so
@@ -137,7 +138,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/girepository-1.0/Gladeui-2.0.typelib
 
 %files -n libgladeui-2-devel
-%doc AUTHORS ChangeLog TODO
+%doc AUTHORS TODO
 %dir %{_datadir}/gtk-doc
 %dir %{_datadir}/gtk-doc/html
 %doc %{_datadir}/gtk-doc/html/gladeui-2

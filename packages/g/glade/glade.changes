@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Oct  5 16:10:02 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.1:
+  + Fix issue #471: "XML not updated after adding element".
+  + Fix issue #480: "version field not always updated in XML".
+  + Fix issue #474: "GtkLabel: setup text attribute issues".
+  + Fix issue #479: "Glade 3.36.0 segfaults when opening a file".
+  + Fix issue pasting widget with ctrl+v in GtkGrid.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 14 13:11:08 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.0:
+  + Load template files as new GTypes and add them to "User
+    templates" widget group automatically without the need of a
+    catalog.
+  + Added JavaScript widget support.
+  + Use version data from gir to improve deprecation/target tests.
+  + Implement survey using new backend at surveys.gnome.org.
+  + Keep survey state in config file.
+  + Associate with application/x-gtk-builder.
+  + Project properties dialog improvements.
+  + Improve toolkit target version selection in project properties
+    dialog.
+  + Improve treemodel char data type handling.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  4 16:37:36 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.0:
+  + Build: Remove autotools.
+  + Plugins: Added GJS plugin for JavaScript objects support.
+  + Issue #433: Implement survey using new backend at
+    surveys.gnome.org.
+  + Ignore locale when saving numeric values.
+  + Associate application/x-gtk-builder with glade's .desktop file.
+  + Plugins: Added GJS plugin for JavaScript objects support.
+  + gtk: Add GtkScrolledWindow propagate-natural-width property.
+  + GladeScrolledWindowEditor: Squeeze width/height properties in
+    two columns.
+  + Webkit2gtk plugin: add missing displayable values and sandbox
+    web view.
+  + dtd: Make init-function an element, not an attribute.
+- Port to meson build system:
+  + Add meson BuildRequires.
+  + Replace configure/make/make_install with
+    meson/meson_build/meson_install.
+
+-------------------------------------------------------------------
 Thu May  7 21:39:50 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.0:
