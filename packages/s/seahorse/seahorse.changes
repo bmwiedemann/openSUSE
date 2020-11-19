@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Nov  8 11:58:56 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.38.0.1:
+  + Fix detection of libhandy-1.
+- Drop seahorse-fix-libhandy.patch, fixed upstream.
+
+-------------------------------------------------------------------
+Sat Nov  7 19:39:00 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.38.0:
+  + Bump to libhandy1.
+  + Updated translations.
+- Replace pkgconfig(libhandy-0.0) for pkgconfig(libhandy-1)
+  BuildRequires following upstreams changes.
+- Add seahorse-fix-libhandy.patch, fix detection of new libhandy.
+
+-------------------------------------------------------------------
+Fri Sep  4 14:59:32 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.2:
+  + help: Several updates to the help pages.
+  + gkr: Allow copying password secret with right click.
+  + pgp: Don't show 'Indicate trust' before importing.
+  + ssh: Fix "allow remote access".
+- Changes from version 3.37.1:
+  + Better keyboard navigation.
+  + pgp: Set input-purpose on relevant entries.
+  + Don't use wrongful mnemonic for Import.
+  + Several fixes to the help pages.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Jun 20 18:08:21 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.2:
