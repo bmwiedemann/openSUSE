@@ -1409,4 +1409,12 @@ But the biggest problem is Libreoffice - There I suspect we just have to wait fo
   (bsc#1171485). (forwarded request 804188 from xiaoguang_wang)</comment>
     <requestid>805780</requestid>
   </revision>
+  <revision rev="192" vrev="1">
+    <srcmd5>6e238213dfde66e2b47720c152345207</srcmd5>
+    <version>3.38.0</version>
+    <time>1605783350</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.38</comment>
+    <requestid>847222</requestid>
+  </revision>
 </revisionlist>
