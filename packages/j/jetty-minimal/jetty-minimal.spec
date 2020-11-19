@@ -18,9 +18,9 @@
 
 
 %global base_name jetty
-%global addver  .v20200227
+%global addver  .v20200611
 Name:           %{base_name}-minimal
-Version:        9.4.27
+Version:        9.4.30
 Release:        0
 Summary:        Java Webserver and Servlet Container
 License:        Apache-2.0 OR EPL-1.0
