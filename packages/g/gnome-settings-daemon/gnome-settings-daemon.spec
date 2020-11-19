@@ -28,13 +28,13 @@
 %endif
 
 Name:           gnome-settings-daemon
-Version:        3.36.1
+Version:        3.38.1
 Release:        0
 Summary:        Settings daemon for the GNOME desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-settings-daemon
-Source0:        https://download.gnome.org/sources/gnome-settings-daemon/3.36/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-settings-daemon/3.38/%{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE gnome-settings-daemon-initial-keyboard.patch bsc#979051 boo#1009515 federico@suse.com -- Deal with the default keyboard being set from xkb instead of GNOME
 Patch1:         gnome-settings-daemon-initial-keyboard.patch
@@ -55,7 +55,7 @@ BuildRequires:  cups-devel
 BuildRequires:  fdupes
 BuildRequires:  gnome-patch-translation
 BuildRequires:  gtk-doc
-BuildRequires:  meson
+BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
 # For directory ownership; it's fine to BuildRequire it since it's also a Requires
 BuildRequires:  polkit
@@ -188,67 +188,66 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.deskt
 
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-a11y-settings
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.A11ySettings.desktop
-%{_userunitdir}/gsd-a11y-settings.service
-%{_userunitdir}/gsd-a11y-settings.target
+%{_userunitdir}/org.gnome.SettingsDaemon.A11ySettings.service
+%{_userunitdir}/org.gnome.SettingsDaemon.A11ySettings.target
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-color
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Color.desktop
-%{_userunitdir}/gsd-color.service
-%{_userunitdir}/gsd-color.target
+%{_userunitdir}/org.gnome.SettingsDaemon.Color.service
+%{_userunitdir}/org.gnome.SettingsDaemon.Color.target
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-datetime
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Datetime.desktop
-%{_userunitdir}/gsd-datetime.service
-%{_userunitdir}/gsd-datetime.target
-%{_libexecdir}/gnome-settings-daemon-3.0/gsd-dummy
+%{_userunitdir}/org.gnome.SettingsDaemon.Datetime.service
+%{_userunitdir}/org.gnome.SettingsDaemon.Datetime.target
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-housekeeping
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Housekeeping.desktop
-%{_userunitdir}/gsd-housekeeping.service
-%{_userunitdir}/gsd-housekeeping.target
+%{_userunitdir}/org.gnome.SettingsDaemon.Housekeeping.service
+%{_userunitdir}/org.gnome.SettingsDaemon.Housekeeping.target
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-keyboard
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Keyboard.desktop
-%{_userunitdir}/gsd-keyboard.service
-%{_userunitdir}/gsd-keyboard.target
+%{_userunitdir}/org.gnome.SettingsDaemon.Keyboard.service
+%{_userunitdir}/org.gnome.SettingsDaemon.Keyboard.target
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-media-keys
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.MediaKeys.desktop
-%{_userunitdir}/gsd-media-keys.service
-%{_userunitdir}/gsd-media-keys.target
+%{_userunitdir}/org.gnome.SettingsDaemon.MediaKeys.service
+%{_userunitdir}/org.gnome.SettingsDaemon.MediaKeys.target
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-power
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Power.desktop
-%{_userunitdir}/gsd-power.service
-%{_userunitdir}/gsd-power.target
+%{_userunitdir}/org.gnome.SettingsDaemon.Power.service
+%{_userunitdir}/org.gnome.SettingsDaemon.Power.target
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-print-notifications
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.PrintNotifications.desktop
-%{_userunitdir}/gsd-print-notifications.service
-%{_userunitdir}/gsd-print-notifications.target
+%{_userunitdir}/org.gnome.SettingsDaemon.PrintNotifications.service
+%{_userunitdir}/org.gnome.SettingsDaemon.PrintNotifications.target
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-rfkill
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Rfkill.desktop
-%{_userunitdir}/gsd-rfkill.service
-%{_userunitdir}/gsd-rfkill.target
+%{_userunitdir}/org.gnome.SettingsDaemon.Rfkill.service
+%{_userunitdir}/org.gnome.SettingsDaemon.Rfkill.target
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-screensaver-proxy
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.ScreensaverProxy.desktop
-%{_userunitdir}/gsd-screensaver-proxy.service
-%{_userunitdir}/gsd-screensaver-proxy.target
+%{_userunitdir}/org.gnome.SettingsDaemon.ScreensaverProxy.service
+%{_userunitdir}/org.gnome.SettingsDaemon.ScreensaverProxy.target
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-sharing
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Sharing.desktop
-%{_userunitdir}/gsd-sharing.service
-%{_userunitdir}/gsd-sharing.target
+%{_userunitdir}/org.gnome.SettingsDaemon.Sharing.service
+%{_userunitdir}/org.gnome.SettingsDaemon.Sharing.target
 %if %{with smartcard}
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-smartcard
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Smartcard.desktop
-%{_userunitdir}/gsd-smartcard.service
-%{_userunitdir}/gsd-smartcard.target
+%{_userunitdir}/org.gnome.SettingsDaemon.Smartcard.service
+%{_userunitdir}/org.gnome.SettingsDaemon.Smartcard.target
 %endif
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-sound
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Sound.desktop
-%{_userunitdir}/gsd-sound.service
-%{_userunitdir}/gsd-sound.target
+%{_userunitdir}/org.gnome.SettingsDaemon.Sound.service
+%{_userunitdir}/org.gnome.SettingsDaemon.Sound.target
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-wwan
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wwan.desktop
-%{_userunitdir}/gsd-wwan.service
-%{_userunitdir}/gsd-wwan.target
+%{_userunitdir}/org.gnome.SettingsDaemon.Wwan.service
+%{_userunitdir}/org.gnome.SettingsDaemon.Wwan.target
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-xsettings
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.XSettings.desktop
-%{_userunitdir}/gsd-xsettings.service
-%{_userunitdir}/gsd-xsettings.target
+%{_userunitdir}/org.gnome.SettingsDaemon.XSettings.service
+%{_userunitdir}/org.gnome.SettingsDaemon.XSettings.target
 %{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.peripherals.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.settings-daemon.peripherals.wacom.gschema.xml
@@ -267,24 +266,24 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.deskt
 %{_datadir}/GConf/gsettings/gnome-settings-daemon.convert
 %if %{with wacom}
 %{_datadir}/polkit-1/actions/org.gnome.settings-daemon.plugins.wacom.policy
-%{_libexecdir}/gnome-settings-daemon-3.0/gsd-wacom-led-helper
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-wacom-oled-helper
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-wacom
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.desktop
-%{_userunitdir}/gsd-wacom.service
-%{_userunitdir}/gsd-wacom.target
+%{_userunitdir}/org.gnome.SettingsDaemon.Wacom.service
+%{_userunitdir}/org.gnome.SettingsDaemon.Wacom.target
 %endif
 %if %{with wayland}
 %dir %{_sysconfdir}/xdg/Xwayland-session.d
 %{_sysconfdir}/xdg/Xwayland-session.d/00-xrdb
 %endif
 %{_udevrulesdir}/61-gnome-settings-daemon-rfkill.rules
-%{_userunitdir}/gnome-session-initialized.target.wants/
 %dir %{_userunitdir}/gnome-session-x11-services.target.wants/
-%{_userunitdir}/gnome-session-x11-services.target.wants/gsd-xsettings.target
+%{_userunitdir}/gnome-session-x11-services.target.wants/org.gnome.SettingsDaemon.XSettings.service
+%dir %{_userunitdir}/gnome-session-x11-services-ready.target.wants/
+%{_userunitdir}/gnome-session-x11-services-ready.target.wants/org.gnome.SettingsDaemon.XSettings.service
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.UsbProtection.desktop
-%{_userunitdir}/gsd-usb-protection.service
-%{_userunitdir}/gsd-usb-protection.target
+%{_userunitdir}/org.gnome.SettingsDaemon.UsbProtection.service
+%{_userunitdir}/org.gnome.SettingsDaemon.UsbProtection.target
 %{_libexecdir}/gnome-settings-daemon-3.0/gsd-usb-protection
 
 %files devel
