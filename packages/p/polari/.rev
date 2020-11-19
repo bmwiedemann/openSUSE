@@ -354,4 +354,12 @@
   we can assume them to be tested by the CI already. (forwarded request 828158 from dimstar)</comment>
     <requestid>828236</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>68a8967b7545f25f048e1ba782603e26</srcmd5>
+    <version>3.38.0</version>
+    <time>1605783428</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.38</comment>
+    <requestid>847257</requestid>
+  </revision>
 </revisionlist>
