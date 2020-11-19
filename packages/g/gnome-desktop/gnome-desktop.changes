@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Oct  8 03:38:01 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.1:
+  + Use GLib fixed-width types.
+  + gnome_bg_slide_show_get_current_slide: add NULL check.
+  + Updated translations.
+- Drop gnome-desktop-invalid-size-crash.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Oct  8 03:38:00 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct  8 03:37:52 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct  8 03:37:52 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.91:
+  + Allow /etc/alternatives in bubblewrap sandbox.
+  + Fix bubblewrap sandbox on s390x.
+- Changes from version 3.37.90:
+  + systemd: Default to garbage collect failed scopes.
+  + systemd: Change naming scheme to conform to systemd convention.
+- Changes from version 3.37.3:
+  + Don't run locale tests at build time.
+- Changes from version 3.37.2:
+  + languages: Fix encoding issue when translating locale
+    modifiers.
+  + thumbnails: keep the orignal file name.
+- Changes from version 3.37.1:
+  + rr: add color transform functions.
+  + remove unused direct x11 dependency.
+  + Updated translations.
+- Drop pkgconfig(x11) BuildRequires: no longer needed.
+
+-------------------------------------------------------------------
 Wed Oct  7 12:34:36 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.7:
