@@ -18,13 +18,12 @@
 
 %global pkg_name uniplate
 Name:           ghc-%{pkg_name}
-Version:        1.6.12
+Version:        1.6.13
 Release:        0
 Summary:        Help writing simple, concise and fast generic operations
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-hashable-devel
@@ -35,8 +34,7 @@ BuildRequires:  ghc-unordered-containers-devel
 %description
 Uniplate is library for writing simple and concise generic operations.
 Uniplate has similar goals to the original Scrap Your Boilerplate work, but is
-substantially simpler and faster. The Uniplate manual is available at
-<http://community.haskell.org/~ndm/darcs/uniplate/uniplate.htm>.
+substantially simpler and faster.
 
 To get started with Uniplate you should import one of the three following
 modules:
@@ -76,7 +74,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
@@ -94,5 +91,6 @@ cp -p %{SOURCE1} %{pkg_name}.cabal
 %license LICENSE
 
 %files devel -f %{name}-devel.files
+%doc CHANGES.txt README.md
 
 %changelog
