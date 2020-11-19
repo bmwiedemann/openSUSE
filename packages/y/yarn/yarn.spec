@@ -1,7 +1,7 @@
 #
 # spec file for package yarn
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           yarn
-Version:        1.22.5
+Version:        1.22.10
 Release:        0
 Summary:        📦🐈 Fast, reliable, and secure dependency management
 License:        BSD-2-Clause
 Group:          Development/Languages/NodeJS
-Url:            https://github.com/yarnpkg/yarn/releases
+URL:            https://github.com/yarnpkg/yarn/releases
 Source:         https://github.com/yarnpkg/yarn/releases/download/v%{version}/yarn-v%{version}.tar.gz
 Source1:        https://github.com/yarnpkg/yarn/releases/download/v%{version}/yarn-v%{version}.tar.gz.asc
 BuildArch:      noarch
 Requires:       nodejs >= 4.0
+
 %description
 Fast: Yarn caches every package it has downloaded, so it never needs to
 download the same package again. It also does almost everything concurrently to
@@ -62,4 +63,3 @@ ln -s %{_datadir}/yarn/bin/yarnpkg %{buildroot}%{_bindir}/yarnpkg
 %{_bindir}/yarnpkg
 
 %changelog
-
