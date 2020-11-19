@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Sep 22 02:38:00 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 2.38.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 22 02:37:52 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 2.37.92:
+  + Fix a possible memory leak if an event name cannot be parsed.
+  + _atspi_dbus_set_interfaces: fix memory leak when called with an
+    invalid DBus signature.
+  + Fix a crash if an event listener is removed during an event
+    callback.
+
+-------------------------------------------------------------------
+Tue Sep 22 02:37:50 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 2.37.90:
+  + Add a mode-changed signal to allow a screen reader to indicate
+    that its mode has changed.
+  + Fix use after free when a device listener is destroyed.
+  + Meson: de-duplicate deps of 'Requires' in pkgconfig file.
+  + FIx use after free when an event listener is destroyed.
+  + Make at-spi-dbus-bus.desktop validate.
+  + atspi_accessible_set_cache_mask: relax assert that was
+    generating a warning and causing the function to fail in some
+    cases.
+  + Fixes for synthesizing keys.
+  + Fix Qt annotations in DBus xml files.
+  + Memory test: replace gedit with a light-weight test
+    application.
+  + dbtest: print to stdout instead of stderr.
+  + Tests: make test a bit verbose.
+  + Constants: fix typos in two _COUNT constants.
+
+-------------------------------------------------------------------
 Sat Sep 12 20:36:30 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 2.36.1:
