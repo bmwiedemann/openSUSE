@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Nov  7 21:35:36 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.76.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.76.0
+- Changes since 5.75.0:
+  * Add support for sshfs to the fstab backend
+  * If include is define in .h remove it if it's defined in .cpp too (scripted)
+  * CMake: Use pkg_search_module when looking for plist
+  * Fix imobiledevice backend: Check API version for DEVICE_PAIRED
+  * Fix imobiledevice backend build
+  * Add Solid backend using libimobiledevice for finding iOS devices
+  * Use QHash for mapping where order is not needed
+
+-------------------------------------------------------------------
 Mon Oct  5 08:33:46 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.75.0
