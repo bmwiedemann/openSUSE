@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Nov  7 21:34:56 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.76.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.76.0
+- Changes since 5.75.0:
+  * fix KDescendantProxyModel smoketest
+  * KRearrangeColumnsProxyModel: fix crash with no source model
+  * KRearrangeColumnsProxyModel: only column 0 has children
+  * If include is define in .h remove it if it's defined in .cpp too (scripted)
+  * Fix autotest
+  * just proxy sourceModel's headerData
+
+-------------------------------------------------------------------
 Mon Oct  5 08:33:20 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.75.0
