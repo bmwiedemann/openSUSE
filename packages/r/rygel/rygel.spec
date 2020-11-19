@@ -17,18 +17,18 @@
 
 
 Name:           rygel
-Version:        0.38.4
+Version:        0.40.0
 Release:        0
 Summary:        UPnP/DLNA home media server for GNOME
 License:        LGPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            http://live.gnome.org/Rygel
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/rygel/0.40/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel >= 1.33.4
 BuildRequires:  libunistring-devel
-BuildRequires:  meson
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  suse-xsl-stylesheets
 BuildRequires:  translation-update-upstream
@@ -38,9 +38,10 @@ BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gee-0.8) >= 0.8.0
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.56.0
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gssdp-1.2) >= 1.1
+BuildRequires:  pkgconfig(gst-editing-services-1.0)
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.0
 BuildRequires:  pkgconfig(gstreamer-app-1.0) >= 1.0
 BuildRequires:  pkgconfig(gstreamer-audio-1.0) >= 1.0
@@ -57,7 +58,7 @@ BuildRequires:  pkgconfig(libsoup-2.4) >= 2.44.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7
 BuildRequires:  pkgconfig(sqlite3) >= 3.5
 BuildRequires:  pkgconfig(systemd)
-BuildRequires:  pkgconfig(tracker-sparql-2.0)
+BuildRequires:  pkgconfig(tracker-sparql-3.0)
 Requires:       gstreamer-plugins-base
 Recommends:     gstreamer-plugins-bad
 Recommends:     gstreamer-plugins-good
@@ -225,8 +226,9 @@ translation-update-upstream
 	-Dsystemd-user-units-dir=auto \
 	-Dexamples=false \
 	-Dtests=false \
-	-Dgstreamer=true \
-	-Dgtk=true \
+	-Dgstreamer=enabled \
+	-Dgtk=enabled \
+	-Dplugins=external,gst-launch,lms,media-export,mpris,playbin,ruih,tracker3 \
 	%{nil}
 %meson_build
 
@@ -359,8 +361,8 @@ translation-update-upstream
 %{_libdir}/rygel-2.6/plugins/playbin.plugin
 
 %files plugin-tracker
-%{_libdir}/rygel-2.6/plugins/librygel-tracker.so
-%{_libdir}/rygel-2.6/plugins/tracker.plugin
+%{_libdir}/rygel-2.6/plugins/librygel-tracker3.so
+%{_libdir}/rygel-2.6/plugins/tracker3.plugin
 
 %files lang -f %{name}.lang
 
