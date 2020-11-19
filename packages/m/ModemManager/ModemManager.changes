@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Mon Nov  2 08:50:31 UTC 2020 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 1.14.6:
+  + Modem interface:
+    - Added support for AT-based and/or QMI-based 5G devices
+    - Deprecated the MM_MODEM_CAPABILITY_LTE_ADVANCED capability
+  + Bearer interface:
+    - Added additional 'attempts', 'failed-attempts', 'total-rx-bytes',
+      'total-tx-bytes' and 'total-duration' values in the 'Stats' property
+      exposed by the Bearer objects.
+  + Daemon:
+    - Switched to 'STRICT' filter mode by default.
+    - Added a new implicit whitelist rules applicable in 'STRICT' filter mode.
+    - Updated the probing logic to make sure we don't attempt a re-probe when
+    the device is gone.
+    - Updated daemon logging.
+  + AT:
+    - Moved the charset definition logic to the initialization phase instead
+      of the enabling phase.
+    - Updated manual registration operation
+  + QMI:
+    - Devices using the LOC service for GNSS will now also setup the list of
+      required NMEA traces before starting the engine.
+    - Update carrier code if registration changes from one roaming operator
+      to another.
+    - Explicitly disable autoconnect during modem enabling phase, because it
+      interferes with our connection management logic.
+    - Fallback to raw-ip if WDA Get Data Format requests arguments, as in most
+      new 5G devices.
+    - Updated to always use the asynchronous close() operation.
+    - Handle disconnection indications during connection attempts.
+  + MBIM:
+    - Update carrier code if registration changes from one roaming operator to
+      another.
+    - Implement reset in Intel-based and Qualcomm-based devices.
+    - Avoid LTE attach config/status if unsupported.
+    - Updated to make sure all allocated QMI CIDs are released during shutdown.
+  + SIM interface:
+    - Don't allow sending PIN/PUK if not required.
+  + 3GPP interface:
+    - Fixed manual re-registration to the same operator.
+  + CDMA interface:
+    - Don't allow multiple concurrent activation attempts.
+    - Disallow empty carrier code in automatic activation.
+  + Bearer interface:
+    - Updated to avoid connection checks or stats updates while disconnecting.
+  + libmm-glib:
+    - New 'mm_location_gps_nmea_get_traces()' method to retrieve a NULL
+      terminated array of strings with all cached NMEA traces.
+    - Deprecated the 'mm_location_gps_nmea_build_full()' method.
+  + mmcli:
+    - Added a new 'any' lookup keyword for the --modem and --sim options, useful
+      when the system is only expected to have one single device.
+  + Plugins:
+    - broadmobi: new plugin, right now just with port type hints for the BM818.
+    - foxconn: new plugin to support the T77W968 (both with and without eSIM).
+    - dell,dw5821e: added support for the DW5821e with eSIM variant.
+    - huawei: don't delay reporting network initiated disconnects.
+    - huawei: try to read port type hints from interface descriptions.
+    - huawei: avoid using the QCDM port during a voice call.
+    - cinterion: skip sim ready check for modules that don't support it.
+    - cinterion: implemented radio/band handling for LTE modems.
+    - cinterion: added Signal interface support bsaed on AT^SMONI.
+    - cinterion: added support for MBIM based devices like the PLS62-W.
+    - quectel: updated to detect SIM hot swap via +QUSIM URCs.
+    - fibocom: added support for QMI based devices like the FM150.
+    - ublox: ignore error when disconnecting last LTE bearer.
+    - ublox: implement support to enable and detect +UUDTMF URCs.
+    - ublox: added blacklist rules for GPS modules in the plugin itself.
+    - sierra: implement manual and automatic CDMA activation.
+    - novatel: implement manual and automatic CDMA activation.
+  + Build improvements
+  + Update dependencies (mbim: >= 1.24.0, qmi: >= 1.26.0)
+- Add BuildRequires libxslt-tools (xsltproc required)
+- Update config file path: mm-dell-dw5821e-carrier-mapping.conf
+  => mm-foxconn-t77w968-carrier-mapping.conf (see d7d2b910 ("foxconn: new
+  plugin to support the T77W968"))
+
+-------------------------------------------------------------------
 Sat May  9 13:16:14 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.12.10:
