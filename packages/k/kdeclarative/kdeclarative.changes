@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Nov  7 21:34:32 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.76.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.76.0
+- Changes since 5.75.0:
+  * [abstractkcm] Set explicit padding
+  * [abstractkcm] Don't remove padding on mobile
+  * [simplekcm] Remove custom padding handling
+  * [kcmcontrols] Remove duplicated code
+  * Add source to KDeclarativeMouseEvent
+  * If include is define in .h remove it if it's defined in .cpp too (scripted)
+  * reparent overlaysheets to the root
+  * Make GridViewKCM and ScrollVieKCM inherit from AbstractKCM
+  * Use consistent margins
+  * Add getter method for subPages
+
+-------------------------------------------------------------------
 Mon Oct  5 08:33:04 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.75.0
