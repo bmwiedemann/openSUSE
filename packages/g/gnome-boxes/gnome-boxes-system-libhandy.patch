@@ -1,0 +1,57 @@
+From d43264bae43cd8d0e45d62df7e863b85441fa584 Mon Sep 17 00:00:00 2001
+From: Felipe Borges <felipeborges@gnome.org>
+Date: Tue, 22 Sep 2020 15:28:41 +0200
+Subject: [PATCH] subprojects: Turn libhandy into a submodule for non-Flatpak
+ builds
+
+Fixes #597
+---
+ src/meson.build           | 14 +++++++++++++-
+ 4 files changed, 22 insertions(+), 1 deletion(-)
+
+Index: gnome-boxes-3.38.1/src/meson.build
+===================================================================
+--- gnome-boxes-3.38.1.orig/src/meson.build
++++ gnome-boxes-3.38.1/src/meson.build
+@@ -147,6 +147,7 @@ dependencies = [
+   dependency ('tracker-sparql-3.0'),
+   dependency ('vte-2.91', version: '>= 0.40.2'),
+   dependency ('webkit2gtk-4.0', version: '>= 2.26.0'),
++  dependency ('libhandy-0.0', version: '>= 0.0.11'),
+   cc.find_library('m', required : false),
+   valac.find_library ('gio-2.0-workaround', dirs: vapi_dir),
+   valac.find_library ('linux'),
+@@ -154,7 +155,6 @@ dependencies = [
+   valac.find_library ('spice-client-gtk-3.0'),
+ ]
+ 
+-
+ if get_option('rdp')
+   vala_sources += ['rdp-display.vala']
+ 
+@@ -165,7 +165,6 @@ if get_option('flatpak')
+   vala_args += '--define=FLATPAK'
+ 
+   dependencies += dependency ('govf-0.1')
+-  dependencies += dependency ('libhandy-0.0', version: '>= 0.0.11')
+ 
+   if get_option('rdp')
+     dependencies += dependency ('gtk-frdp-0.1')
+@@ -175,17 +174,6 @@ else
+     dependency ('gudev-1.0', version: '>= 165'),
+   ]
+ 
+-  libhandy = subproject(
+-    'libhandy',
+-    default_options: [
+-      'package_subdir=' + meson.project_name(),
+-      'examples=false',
+-      'glade_catalog=disabled',
+-      'tests=false',
+-    ]
+-  )
+-  dependencies += libhandy.get_variable('libhandy_vapi')
+-
+   if get_option('rdp')
+     gtk_frdp = subproject(
+       'gtk-frdp',

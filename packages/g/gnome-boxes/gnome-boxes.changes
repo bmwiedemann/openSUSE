@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Thu Oct  8 11:34:12 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.1:
+  + Adjust for GNOME OS VM 3.38.
+  + Allow libhandy to be built as a subproject.
+  + Port to Tracker 3.
+  + Updated translations.
+- Replace pkgconfig(tracker-sparql-2.0) BuildRequires with
+  pkgconfig(tracker-sparql-3.0): follow upstream port to Tracker 3.
+- Use git/master variant for porting to libhandy 1:
+  + gnome-boxes-system-libhandy.patch: Revert back to using system
+    libhandy (revert commit d43264)
+  + gnome-boxes-libhandy-as-submodule.patch: switch to git/master
+    variant of using libhandy as submodule, only in case it was not
+    found as system library (not applicable in our case, as we use
+    the system library, but having the meson diff in sync with
+    upstream simplifies for future patches if needed)
+  + gnome-boxes-libhandy-1.patch: Port to libhandy 1.
+- Replace pkgconfig(libhandy-0.0) BuildRequires with
+  pkgconfig(libhandy-1): Switch to libhandy 1, which above patches
+  allow us to do.
+
+-------------------------------------------------------------------
+Fri Sep 11 17:38:15 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  9 11:12:36 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.91:
+  + Only show Snapshots tab when it is supported (not supported for
+    EFI guests).
+  + Add URL for GNOME Nightly OS ISO image.
+  + Various fixes on the image detection for the GNOME Nightly OS
+    images.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  4 16:15:49 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.90:
+  + Only downscale SPICE displays to avoid blurred upscaled
+    displays.
+  + Fix actions popover placement.
+  + Account for offset of outer widgets while passing events to
+    display.
+  + Prevent displays from overlapping each other.
+  + Let users pick the OS from a list if the OS is unknown.
+  + Special case the GNOME OS images.
+  + Add editor for libvirt VM configuration.
+- Changes from version 3.37.1:
+  + Force "wget" as user-agent in SoupSession.
+  + Various visual polishings of the Welcome Tutorial dialog.
+  + Allow "spice:///" addresses in remote connection assistant.
+  + Offer newest releases of OSes in recommended downloads list.
+  + Grab focus for password fields in AuthNotification.
+  + Include rolling releases as Downloadable OSes.
+  + Don't crash for outdated osinfo db.
+  + Updated translations.
+- Add pkgconfig(gtksourceview-4) and pkgconfig(libhandy-0.0)
+  BuildRequires: new dependencies..
+- Rebase gnome-boxes-opensuse.patch.
+
+-------------------------------------------------------------------
 Sat Aug  8 10:22:41 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.6:

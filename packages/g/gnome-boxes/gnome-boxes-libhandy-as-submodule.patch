@@ -1,0 +1,48 @@
+From 644e77796393e8b0fd2241e9ff43fb7cb37a8572 Mon Sep 17 00:00:00 2001
+From: Felipe Borges <felipeborges@gnome.org>
+Date: Tue, 22 Sep 2020 15:28:41 +0200
+Subject: [PATCH] subprojects: Turn libhandy into a submodule when not found
+
+Fixes #597
+---
+ src/meson.build           | 17 ++++++++++++++++-
+
+diff --git a/src/meson.build b/src/meson.build
+index 0e053a15..19e55e20 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -146,7 +146,6 @@ dependencies = [
+   dependency ('tracker-sparql-3.0'),
+   dependency ('vte-2.91', version: '>= 0.40.2'),
+   dependency ('webkit2gtk-4.0', version: '>= 2.26.0'),
+-  dependency ('libhandy-0.0', version: '>= 0.0.11'),
+   cc.find_library('m', required : false),
+   valac.find_library ('gio-2.0-workaround', dirs: vapi_dir),
+   valac.find_library ('linux'),
+@@ -154,6 +153,22 @@ dependencies = [
+   valac.find_library ('spice-client-gtk-3.0'),
+ ]
+ 
++libhandy = dependency ('libhandy-0.0', version: '>= 0.0.11', required: false)
++if not libhandy.found()
++  libhandy = subproject(
++    'libhandy',
++    default_options: [
++      'package_subdir=' + meson.project_name(),
++      'examples=false',
++      'glade_catalog=disabled',
++      'tests=false',
++    ]
++  )
++  dependencies += libhandy.get_variable('libhandy_vapi')
++else
++  dependencies += libhandy
++endif
++
+ if get_option('rdp')
+   vala_sources += ['rdp-display.vala']
+ 
+-- 
+GitLab
+
+
