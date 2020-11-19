@@ -2,7 +2,7 @@
 # spec file for package mcjoin
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2018-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           mcjoin
-Version:        2.6
+Version:        2.7
 Release:        0
 Summary:        IPv4 tool for verifying multicast connectivity
 License:        ISC
@@ -48,11 +48,11 @@ autoreconf -fiv
 
 %install
 %make_install
-rm -rf %{buildroot}/%{_datadir}/doc
+rm -R %{buildroot}/%{_datadir}/doc
 
 %files
 %license LICENSE
-%doc AUTHORS ChangeLog.md README.md
+%doc doc/AUTHORS ChangeLog.md README.md
 %{_bindir}/mcjoin
 %{_mandir}/man1/mcjoin.1%{?ext_man}
 
