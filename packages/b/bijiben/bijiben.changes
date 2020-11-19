@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Sep 22 12:31:10 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.38.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 10 09:12:13 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  7 12:16:40 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Switch to Tracker 3: replace pkgconfig(tracker-sparql-2.0)
+  BuildRequires with pkgconfig(tracker-sparql-3.0).
+
+-------------------------------------------------------------------
+Fri Sep  4 15:02:14 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.91:
+  + Changed default note color to GNOME Blue.
+  + Improved help pages.
+  + Improved code quality.
+- Changes from version 3.37.90:
+  + Changed paste behavior in note view to "text-only" mode.
+  + Enabled WebKit sandboxing.
+  + Fixed issue in main view paging that was preventing to load
+    more than 48 notes.
+  + Implemented main view UI redesign.
+  + Ported to Tracker 3.
+- Changes from version 3.37.1:
+  + Added "Create New Note" shortcut to Desktop Actions.
+  + Added the last missing shortcuts (F10, CTRL+W, CTRL+Q).
+  + Fixed memory leak when parsing Own/NextCloud folder.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Aug 15 19:50:29 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.3:
