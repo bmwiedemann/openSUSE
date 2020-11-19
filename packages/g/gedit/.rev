@@ -1013,4 +1013,12 @@
     <comment></comment>
     <requestid>827852</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>6f3eb51a0ff456a5e94cff471b84b9bc</srcmd5>
+    <version>3.38.0</version>
+    <time>1605783295</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.38</comment>
+    <requestid>847190</requestid>
+  </revision>
 </revisionlist>
