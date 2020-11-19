@@ -1,0 +1,5 @@
+<package name="python-rpmfluff" project="openSUSE:Factory">
+  <title></title>
+  <description>Lightweight way of building RPMs, and sabotaging them</description>
+  <devel project="devel:languages:python" package="python-rpmfluff"/>
+</package>
