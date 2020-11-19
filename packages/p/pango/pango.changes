@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov  9 15:35:49 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.48.0:
+  + docs: Clarify use of PangoAnalysis in shaping.
+  + fontconfig: Make pango_font_family_get_face more reliable.
+  + introspection: Fix use of PangoFcSubstituteFunc.
+  + introspection: Skip fontconfig types.
+  + build: Use yielding meson feature for introspection.
+- Changes from version 1.47.0:
+  + Add pango_language_get_preferred.
+  + Add pango_fc_font_get_languages.
+  + Sort faces of a family by slant and weight.
+- Replace -Dintrospection=true meson parameter with
+  -Dintrospection=enabled, following upstream changes.
+
+-------------------------------------------------------------------
 Sat Sep 19 16:21:16 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.46.2:
