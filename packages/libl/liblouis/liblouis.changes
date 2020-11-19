@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 20 19:04:33 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- Update to version 3.15.0:
+  + Long list of changes, see included NEWS file.
+- Change sover to 20, following upstreams ABI bump.
+
+-------------------------------------------------------------------
 Tue Nov 19 16:01:51 UTC 2019 - Michael Gorse <mgorse@suse.com>
 
-- Update to version 3.11.0: 
+- Update to version 3.11.0:
   + A tremendous amount of work by Dave Mielke and Bert Frees
     has gone into this release. They have improved liblouis for use
     on note taker devices, for backwards translation and a number
@@ -197,7 +204,7 @@ Mon Jul 30 10:26:59 UTC 2018 - jengelh@inai.de
 -------------------------------------------------------------------
 Tue Jun 12 12:25:05 UTC 2018 - kbabioch@suse.com
 
-- Word wrapped changes file 
+- Word wrapped changes file
 
 -------------------------------------------------------------------
 Tue Jun 12 07:05:35 UTC 2018 - kbabioch@suse.com
@@ -294,7 +301,7 @@ Mon Oct  2 14:54:04 UTC 2017 - jmatejek@suse.com
 -------------------------------------------------------------------
 Wed Sep  6 15:34:40 UTC 2017 - mgorse@suse.com
 
-- Update to version 3.3.0: 
+- Update to version 3.3.0:
   + New features
     - A new tool ~lou_maketable~ enables the creation of tables
       based on a corpus of known good Braille translations. This
@@ -527,7 +534,7 @@ Wed Oct 21 18:49:50 UTC 2015 - zaitor@opensuse.org
 -------------------------------------------------------------------
 Thu Mar 27 03:50:59 UTC 2014 - mgorse@suse.com
 
--Update to version 2.5.4: 
+-Update to version 2.5.4:
   + New features
     - Added function lou_registerTableResolver for plugging in a
       table resolver callback from your host language.
@@ -569,7 +576,7 @@ Sat Jun 22 09:44:44 UTC 2013 - zaitor@opensuse.org
       . New hyphenation dictionary for Esperanto.
       . New Esperanto grade 1 table, using the x system for
         accented letters.
-    - runHarness.py: 
+    - runHarness.py:
       . Accept filename globs on the commandline to run specific
         harness files. In tests/harness, one can do make <filename>
         or make runall Removed from make check because these checks
