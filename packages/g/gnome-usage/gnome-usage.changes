@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Sep  5 23:12:01 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version v3.37.1:
+  + Add icons to the pages.
+  + app-item: Add application ID based on .desktop file name.
+  + app-item: Add application lookup based on cgroup information.
+  + app-item: Add newline at end of file.
+  + application: Don't access the header bar directly.
+  + application: Load icon resources.
+  + cpu-sub-view: Don't hardcode the width.
+  + cpu-sub-view: Don't horizontally center.
+  + header-bar: Make it a HdyHeaderBar.
+  + header-bar: Replace the GtkStackSwitcher by a
+    HdyViewSwitcherTitle.
+  + header-bar: Wrap the search button in a revealer.
+  + icons: Add the speedometer-symbolic icon.
+  + memory-sub-view: Don't horizontally center.
+  + performance-view: Make the search bar adaptive.
+  + performance-view: Replace the GtkPaned by a HdyLeaflet.
+  + performance-view: Set a minimum width to the content box.
+  + performance-view: Use a HdyColumn.
+  + process-row: Don't hardcode the width.
+  + process: Add function to read cgroup information.
+  + storage-view: Replace the GtkPaned by a HdyLeaflet.
+  + window: Add a HdyViewSwitcherBar.
+  + window: Add action_on_search().
+  + window: Drop get_header_bar().
+  + window: Inline the header into the window.
+  + window: Reduce the hardcoded minimum size.
+  + window: Specialize Hdy.ApplicationWindow.
+  + window: Use a GtkBuilder template.
+- Add pkgconfig(libhandy-1) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:12:25 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
