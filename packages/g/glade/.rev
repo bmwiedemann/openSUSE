@@ -335,4 +335,12 @@
     <comment> (forwarded request 801784 from iznogood)</comment>
     <requestid>802676</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>55b741b17b658e5c2242bf40525e7c92</srcmd5>
+    <version>3.38.1</version>
+    <time>1605783301</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.38</comment>
+    <requestid>847194</requestid>
+  </revision>
 </revisionlist>
