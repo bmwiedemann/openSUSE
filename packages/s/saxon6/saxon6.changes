@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 19 06:37:45 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Add the maven metadata in order to be usable in maven build
+
+-------------------------------------------------------------------
+Wed Nov 18 04:25:55 UTC 2020 - Anton Shvetz <tz@sectorb.msk.ru>
+
+- Remove "fop" subpackage because it provides an empty JAR.
+  Source files do not contain any FOP support.
+
+-------------------------------------------------------------------
 Mon Sep 18 17:51:41 UTC 2017 - fstrba@suse.com
 
 - Specify java source and target 1.6 to fix build with jdk9

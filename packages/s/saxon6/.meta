@@ -9,7 +9,7 @@
    powerful extensions. This version of Saxon also includes many of
    the new features defined in the XSLT 1.1 working draft, but for
    conformance and portability reasons these are not available if
-   the stylesheet header specifies version=&quot;1.0&quot;.
+   the stylesheet header specifies version="1.0".
 
 * A Java library, which supports a similar processing model to XSL,
    but allows full programming capability, which you need if you
