@@ -27,18 +27,22 @@
 # NOTE: build_glib2 also controls build of gobject, gtk2, gtk3 and pygobject code.
 %define         build_glib2 0
 %define         build_mono 0
+%define         build_qt5 0
 %define avahi_client_sover 3
 %define avahi_common_sover 3
 %define avahi_core_sover 7
+%define avahi_libevent_sover 1
+%define avahi_libhowl_sover 0
 %define avahi_ui_sover 0
 %define avahi_glib_sover 1
 %define avahi_gobject_sover 0
 %define avahi_gtk3_sover 0
+%define avahi_qt5_sover 1
 %if %{build_glib2}
 %define debug_package_requires libavahi-ui%{avahi_ui_sover} = %{version}-%{release}
 %endif
 Name:           avahi
-Version:        0.7
+Version:        0.8
 Release:        0
 Summary:        D-Bus Service for Zeroconf and Bonjour
 License:        LGPL-2.1-or-later
@@ -57,6 +61,8 @@ Source8:        %{_name}_spec-prepare.sh
 Source9:        avahi-autoipd.README.SUSE
 Source10:       avahi-autoipd.if-up
 Source11:       avahi-autoipd.if-down
+# File missing from 0.8 tarball
+Source12:       https://raw.githubusercontent.com/lathiat/avahi/master/service-type-database/build-db
 Source100:      attributes
 Source101:      update_spec.pl
 Source102:      baselibs.conf
@@ -68,14 +74,8 @@ Patch1:         avahi-desktop.patch
 Patch4:         avahi-daemon-check-dns-suse.patch
 # PATCH-FIX-UPSTREAM avahi-0.6.32-suppress-resolv-conf-warning.patch bsc#982317 mgorse@suse.com -- only warn on missing resolv.conf if it is being used.
 Patch19:        avahi-0.6.32-suppress-resolv-conf-warning.patch
- # PATCH-FIX-UPSTREAM avahi-0.7-dbm.patch bsc#1076402 mgorse@suse.com -- use the agnostic dbm interface, needed for python 3.
-Patch20:        avahi-0.7-dbm.patch
-# PATCH-FIX-UPSTREAM avahi-0.7-encode-strings-as-utf8.patch boo#1110668 mgorse@suse.com -- encode strings as UTF-8.
-Patch21:        avahi-0.7-encode-strings-as-utf8.patch
-# PATCh-FIX-UPSTREAM avahi-0.7-python3-bookmarks.patch boo#1110668 mgorse@suse.com -- make bookmarks python 3 compatible.
-Patch22:        avahi-0.7-python3-bookmarks.patch
-# PATCH-FIX-UPSTREAM CVE-2018-1000845.patch boo#1110281 mgorse@suse.com -- drop legacy unicast queries from address not on local link (CVE-2018-1000845).
-Patch23:        CVE-2018-1000845.patch
+# PATCH-FIX-UPSTREAM add-IT_PROG_INTLTOOL.patch alarrosa@suse.com -- add IT_PROG_INTLTOOL so intltool works
+Patch20:        add-IT_PROG_INTLTOOL.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel
@@ -91,7 +91,7 @@ BuildRequires:  python3-dbus-python
 BuildRequires:  python3-devel
 BuildRequires:  translation-update-upstream
 # FIXME: on upgrade, ensure to verify if -DGTK_DISABLE_DEPRECATED=1 can remain in avahi=ui/Makefile.am (GtkStock deprecated with GTK+ 3.9.10).
-%if !%{build_glib2} && !%{build_mono}
+%if !%{build_glib2} && !%{build_mono} && !%{build_qt5}
 # Create split spec files only when building per partes:
 #%(sh %{_sourcedir}/%{_name}_spec-prepare.sh %{_sourcedir} %{name})
 %endif
@@ -102,6 +102,7 @@ BuildRequires:  strip-nondeterminism
 BuildRequires:  dbus-1-devel
 BuildRequires:  doxygen
 BuildRequires:  graphviz
+BuildRequires:  libevent-devel >= 2.1.5
 BuildRequires:  python3-dbm
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(systemd)
@@ -121,20 +122,26 @@ Obsoletes:      mDNSResponder < 107.5
 %if %{build_glib2}
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk3-devel
-BuildRequires:  libavahi-devel
+BuildRequires:  libavahi-devel = %{version}
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(pygobject-3.0)
 %endif
 %if %{build_mono}
 BuildRequires:  gtk-sharp2
-BuildRequires:  libavahi-glib-devel
+BuildRequires:  libavahi-glib-devel = %{version}
 BuildRequires:  mono-devel
 BuildRequires:  monodoc-core
 # Please copy this line to avahi-mono definition below for build all-in-once:
 Requires:       gtk-sharp2
-Requires:       libavahi-client3 >= %{version}
-Requires:       libavahi-common3 >= %{version}
-Requires:       libavahi-glib1 >= %{version}
+Requires:       libavahi-client%{avahi_client_sover} >= %{version}
+Requires:       libavahi-common%{avahi_common_sover} >= %{version}
+Requires:       libavahi-glib%{avahi_glib_sover} >= %{version}
+%endif
+%if %{build_qt5}
+BuildRequires:  dbus-1-devel
+BuildRequires:  libavahi-devel = %{version}
+BuildRequires:  pkgconfig(Qt5Core)
+Requires:       libavahi-client%{avahi_client_sover} >= %{version}
 %endif
 
 %description
@@ -150,27 +157,35 @@ It passes all tests in the Apple Bonjour conformance test suite. In
 addition, it supports some nifty things, like correct mDNS reflection
 across LAN segments.
 
-%package -n libavahi-client3
+%package -n libavahi-client%{avahi_client_sover}
 Summary:        D-Bus Service for Zeroconf and Bonjour
 Group:          System/Libraries
 
-%description -n libavahi-client3
+%description -n libavahi-client%{avahi_client_sover}
 Avahi is an implementation of the DNS Service Discovery and Multicast
 DNS specifications for Zeroconf Computing.
 
-%package -n libavahi-common3
+%package -n libavahi-common%{avahi_common_sover}
 Summary:        D-Bus Service for Zeroconf and Bonjour
 Group:          System/Libraries
 
-%description -n libavahi-common3
+%description -n libavahi-common%{avahi_common_sover}
 Avahi is an implementation of the DNS Service Discovery and Multicast
 DNS specifications for Zeroconf Computing.
 
-%package -n libavahi-core7
+%package -n libavahi-core%{avahi_core_sover}
 Summary:        D-Bus Service for Zeroconf and Bonjour
 Group:          System/Libraries
 
-%description -n libavahi-core7
+%description -n libavahi-core%{avahi_core_sover}
+Avahi is an implementation of the DNS Service Discovery and Multicast
+DNS specifications for Zeroconf Computing.
+
+%package -n libavahi-libevent%{avahi_libevent_sover}
+Summary:        D-Bus Service for Zeroconf and Bonjour
+Group:          System/Libraries
+
+%description -n libavahi-libevent%{avahi_libevent_sover}
 Avahi is an implementation of the DNS Service Discovery and Multicast
 DNS specifications for Zeroconf Computing.
 
@@ -198,14 +213,14 @@ Apple mDNSResponder compatibility layer for Avahi.
 Avahi is an implementation of the DNS Service Discovery and Multicast DNS
 specifications for Zeroconf Computing.
 
-%package -n libhowl0
+%package -n libhowl%{avahi_libhowl_sover}
 Summary:        Howl Compatibility Package for the Zeroconf/Bonjour D-Bus service
 # Old name used for <= 10.3:
 Group:          System/Libraries
 Provides:       avahi-compat-howl = %{version}
 Obsoletes:      avahi-compat-howl < %{version}
 
-%description -n libhowl0
+%description -n libhowl%{avahi_libhowl_sover}
 Howl compatibility layer for Avahi.
 
 Avahi is an implementation of the DNS Service Discovery and Multicast DNS
@@ -262,9 +277,9 @@ Group:          Development/Libraries/C and C++
 Requires:       %{_name} = %{version}
 Requires:       dbus-1-devel
 Requires:       glibc-devel
-Requires:       libavahi-client3 = %{version}
-Requires:       libavahi-common3 = %{version}
-Requires:       libavahi-core7 = %{version}
+Requires:       libavahi-client%{avahi_client_sover} = %{version}
+Requires:       libavahi-common%{avahi_common_sover} = %{version}
+Requires:       libavahi-core%{avahi_core_sover} = %{version}
 # Last appeared in OpenSUSE 10.3:
 Provides:       avahi-devel = %{version}
 Obsoletes:      avahi-devel < %{version}
@@ -291,7 +306,7 @@ specifications for Zeroconf Computing.
 Summary:        Howl Compatibility Package for the Zeroconf/Bonjour D-Bus service
 Group:          Development/Libraries/C and C++
 Requires:       libavahi-devel = %{version}
-Requires:       libhowl0 = %{version}
+Requires:       libhowl%{avahi_libhowl_sover} = %{version}
 
 %description compat-howl-devel
 Howl compatibility layer for Avahi.
@@ -307,24 +322,24 @@ Group:          System/Libraries
 Avahi is an implementation of the DNS Service Discovery and Multicast
 DNS specifications for Zeroconf Computing.
 
-%package -n libavahi-glib1
+%package -n libavahi-glib%{avahi_glib_sover}
 Summary:        Glib Bindings for avahi, the D-Bus Service for Zeroconf and Bonjour
 # Old name used for <= 10.3:
 Group:          System/Libraries
 Provides:       avahi-glib = %{version}
 Obsoletes:      avahi-glib < %{version}
 
-%description -n libavahi-glib1
+%description -n libavahi-glib%{avahi_glib_sover}
 GLib support for Avahi.
 
 Avahi is an implementation of the DNS Service Discovery and Multicast DNS
 specifications for Zeroconf Computing.
 
-%package -n libavahi-gobject0
+%package -n libavahi-gobject%{avahi_gobject_sover}
 Summary:        D-Bus Service for Zeroconf and Bonjour
 Group:          System/Libraries
 
-%description -n libavahi-gobject0
+%description -n libavahi-gobject%{avahi_gobject_sover}
 Avahi is an implementation of the DNS Service Discovery and Multicast
 DNS specifications for Zeroconf Computing.
 
@@ -375,7 +390,7 @@ DNS specifications for Zeroconf Computing.
 Summary:        Header files for Avahi's Glib bindings
 Group:          Development/Libraries/C and C++
 Requires:       libavahi-devel = %{version}
-Requires:       libavahi-glib1 = %{version}
+Requires:       libavahi-glib%{avahi_glib_sover} = %{version}
 Requires:       libavahi-ui-gtk3-%{avahi_gtk3_sover} = %{version}
 Requires:       typelib-1_0-Avahi-0_6 = %{version}
 # Last appeared in OpenSUSE 10.3:
@@ -393,7 +408,7 @@ Group:          System/Daemons
 Requires:       glib2-devel
 Requires:       libavahi-devel = %{version}
 Requires:       libavahi-glib-devel
-Requires:       libavahi-gobject0 = %{version}
+Requires:       libavahi-gobject%{avahi_gobject_sover} = %{version}
 
 %description -n libavahi-gobject-devel
 Avahi is an implementation of the DNS Service Discovery and Multicast
@@ -405,9 +420,9 @@ DNS specifications for Zeroconf Computing.
 Summary:        Mono Bindings for avahi, the D-Bus Service for Zeroconf and Bonjour
 Group:          Development/Languages/Mono
 Requires:       gtk-sharp2
-Requires:       libavahi-client3 >= %{version}
-Requires:       libavahi-common3 >= %{version}
-Requires:       libavahi-glib1 >= %{version}
+Requires:       libavahi-client%{avahi_client_sover} >= %{version}
+Requires:       libavahi-common%{avahi_common_sover} >= %{version}
+Requires:       libavahi-glib%{avahi_glib_sover} >= %{version}
 
 %description -n avahi-mono
 This package provides Mono bindings for avahi. Avahi is an
@@ -418,6 +433,30 @@ specifications for Zeroconf Computing.
 %lang_package
 %endif
 
+%if %{build_qt5}
+%package -n libavahi-qt5-%{avahi_qt5_sover}
+Summary:        Qt5 Bindings for avahi, the D-Bus Service for Zeroconf and Bonjour
+Group:          System/Libraries
+
+%description -n libavahi-qt5-%{avahi_qt5_sover}
+Qt5 support for Avahi.
+
+Avahi is an implementation of the DNS Service Discovery and Multicast DNS
+specifications for Zeroconf Computing.
+
+%package -n libavahi-qt5-devel
+Summary:        Header files for Avahi's Qt5 bindings
+Group:          Development/Libraries/C and C++
+Requires:       libavahi-devel = %{version}
+Requires:       libavahi-qt5-%{avahi_qt5_sover} = %{version}
+
+%description -n libavahi-qt5-devel
+Development files for the Qt5 support for Avahi.
+
+Avahi is an implementation of the DNS Service Discovery and Multicast DNS
+specifications for Zeroconf Computing.
+%endif
+
 %prep
 %setup -q -n %{_name}-%{version}
 cp -a %{SOURCE1} %{SOURCE7} .
@@ -426,15 +465,14 @@ sed "s:@docdir@:%{_docdir}:g" <%{SOURCE6} >sysconfig.avahi-autoipd
 cp -a %{SOURCE9} avahi-autoipd/README.SUSE
 sed "s:@sbindir@:%{_sbindir}:g" <%{SOURCE10} >avahi-autoipd/avahi-autoipd.if-up
 sed "s:@sbindir@:%{_sbindir}:g" <%{SOURCE11} >avahi-autoipd/avahi-autoipd.if-down
+sed -ie "s/libevent-[0-9\.]*/libevent/" avahi-libevent.pc.in
+cp -a %{SOURCE12} service-type-database/build-db
 translation-update-upstream
 %patch0
 %patch1 -p1
 %patch4
 %patch19 -p1
 %patch20 -p1
-%patch21 -p1
-%patch22 -p1
-%patch23 -p1
 
 %if !%{build_core}
 # Replace all .la references from local .la files to installed versions
@@ -467,9 +505,11 @@ export PYTHON=%{_bindir}/python3
 %if %{build_core}
 	--enable-compat-libdns_sd\
 	--enable-compat-howl\
+	--enable-libevent\
 %else
 	--disable-compat-libdns_sd\
 	--disable-compat-howl\
+	--disable-libevent\
 %endif
 %if %{build_glib2}
 	--enable-glib\
@@ -493,6 +533,11 @@ export PYTHON=%{_bindir}/python3
 	--disable-gtk\
 %else
 	--disable-mono\
+%endif
+%if %{build_qt5}
+	--enable-qt5\
+%else
+	--disable-qt5\
 %endif
 	--with-avahi-priv-access-group=avahi\
 	--with-autoipd-user=avahi-autoipd\
@@ -524,6 +569,9 @@ cd -
 cd avahi-sharp
 %make_install
 cd ../avahi-ui-sharp
+%endif
+%if %{build_qt5} && !%{build_core}
+cd avahi-qt
 %endif
 %make_install
 # do not install sysv init scripts
@@ -647,22 +695,28 @@ getent passwd avahi-autoipd >/dev/null || \
 # Change ownership of /var/lib/avahi-autoipd after upgrade from openSUSE <= 12.3 and SLE <= 11.
 find %{_localstatedir}/lib/avahi-autoipd -user avahi -exec chown avahi-autoipd:avahi-autoipd {} +
 
-%post -n libavahi-client3 -p /sbin/ldconfig
-%postun -n libavahi-client3 -p /sbin/ldconfig
-%post -n libavahi-common3 -p /sbin/ldconfig
-%postun -n libavahi-common3 -p /sbin/ldconfig
-%post -n libavahi-core7 -p /sbin/ldconfig
-%postun -n libavahi-core7 -p /sbin/ldconfig
+%post -n libavahi-client%{avahi_client_sover} -p /sbin/ldconfig
+%postun -n libavahi-client%{avahi_client_sover} -p /sbin/ldconfig
+%post -n libavahi-common%{avahi_common_sover} -p /sbin/ldconfig
+%postun -n libavahi-common%{avahi_common_sover} -p /sbin/ldconfig
+%post -n libavahi-core%{avahi_core_sover} -p /sbin/ldconfig
+%postun -n libavahi-core%{avahi_core_sover} -p /sbin/ldconfig
+%post -n libavahi-libevent%{avahi_libevent_sover} -p /sbin/ldconfig
+%postun -n libavahi-libevent%{avahi_libevent_sover} -p /sbin/ldconfig
 %post -n libdns_sd -p /sbin/ldconfig
 %postun -n libdns_sd -p /sbin/ldconfig
-%post -n libhowl0 -p /sbin/ldconfig
-%postun -n libhowl0 -p /sbin/ldconfig
+%post -n libhowl%{avahi_libhowl_sover} -p /sbin/ldconfig
+%postun -n libhowl%{avahi_libhowl_sover} -p /sbin/ldconfig
 %post -n libavahi-ui-gtk3-%{avahi_gtk3_sover} -p /sbin/ldconfig
 %postun -n libavahi-ui-gtk3-%{avahi_gtk3_sover} -p /sbin/ldconfig
-%post -n libavahi-gobject0 -p /sbin/ldconfig
-%postun -n libavahi-gobject0 -p /sbin/ldconfig
-%post -n libavahi-glib1 -p /sbin/ldconfig
-%postun -n libavahi-glib1 -p /sbin/ldconfig
+%post -n libavahi-gobject%{avahi_gobject_sover} -p /sbin/ldconfig
+%postun -n libavahi-gobject%{avahi_gobject_sover} -p /sbin/ldconfig
+%post -n libavahi-glib%{avahi_glib_sover} -p /sbin/ldconfig
+%postun -n libavahi-glib%{avahi_glib_sover} -p /sbin/ldconfig
+%if %{build_qt5}
+%post -n libavahi-qt5-%{avahi_qt5_sover} -p /sbin/ldconfig
+%postun -n libavahi-qt5-%{avahi_qt5_sover} -p /sbin/ldconfig
+%endif
 
 %post -n python3-avahi-gtk
 %desktop_database_post
@@ -715,21 +769,24 @@ find %{_localstatedir}/lib/avahi-autoipd -user avahi -exec chown avahi-autoipd:a
 
 %files lang -f %{name}.lang
 
-%files -n libavahi-client3
+%files -n libavahi-client%{avahi_client_sover}
 %{_libdir}/libavahi-client*.so.*
 
-%files -n libavahi-common3
+%files -n libavahi-common%{avahi_common_sover}
 %{_libdir}/libavahi-common*.so.*
 
-%files -n libavahi-core7
+%files -n libavahi-core%{avahi_core_sover}
 %{_libdir}/libavahi-core*.so.*
+
+%files -n libavahi-libevent%{avahi_libevent_sover}
+%{_libdir}/libavahi-libevent*.so.*
 
 %files -n libdns_sd
 # libdns_sd.so must be in non-devel package to provide mDNSResponder-lib compatibility:
 %{_libdir}/libdns_sd.so
 %{_libdir}/libdns_sd.so.*
 
-%files -n libhowl0
+%files -n libhowl%{avahi_libhowl_sover}
 %{_libdir}/libhowl.so.*
 
 %files -n python3-avahi
@@ -769,6 +826,7 @@ find %{_localstatedir}/lib/avahi-autoipd -user avahi -exec chown avahi-autoipd:a
 %{_includedir}/avahi-client
 %{_includedir}/avahi-common
 %{_includedir}/avahi-core
+%{_includedir}/avahi-libevent
 # avahi devel files
 %{_libdir}/libavahi-client.*a
 %{_libdir}/libavahi-client*.so
@@ -778,8 +836,11 @@ find %{_localstatedir}/lib/avahi-autoipd -user avahi -exec chown avahi-autoipd:a
 # do not remove unless you fix the resulting problems
 # reference is in libavahi-client.la
 %{_libdir}/libavahi-common*.*a
+%{_libdir}/libavahi-libevent.*a
+%{_libdir}/libavahi-libevent*.so
 %{_libdir}/pkgconfig/avahi-client.pc
 %{_libdir}/pkgconfig/avahi-core.pc
+%{_libdir}/pkgconfig/avahi-libevent.pc
 
 %files compat-mDNSResponder-devel
 %{_includedir}/avahi-compat-libdns_sd
@@ -799,10 +860,10 @@ find %{_localstatedir}/lib/avahi-autoipd -user avahi -exec chown avahi-autoipd:a
 %files -n libavahi-ui-gtk3-%{avahi_gtk3_sover}
 %{_libdir}/libavahi-ui-gtk3.so.%{avahi_gtk3_sover}*
 
-%files -n libavahi-glib1
+%files -n libavahi-glib%{avahi_glib_sover}
 %{_libdir}/libavahi-glib*.so.*
 
-%files -n libavahi-gobject0
+%files -n libavahi-gobject%{avahi_gobject_sover}
 %{_libdir}/libavahi-gobject*.so.*
 
 %files -n typelib-1_0-Avahi-0_6
@@ -812,7 +873,6 @@ find %{_localstatedir}/lib/avahi-autoipd -user avahi -exec chown avahi-autoipd:a
 %files -n python3-avahi-gtk
 %{_bindir}/avahi-discover
 %{_datadir}/applications/avahi-discover.desktop
-%{python3_sitelib}/avahi_discover
 
 %files -n avahi-utils-gtk
 %{_bindir}/bshell
@@ -852,6 +912,17 @@ find %{_localstatedir}/lib/avahi-autoipd -user avahi -exec chown avahi-autoipd:a
 %{_prefix}/lib/monodoc/sources/*.*
 %{_prefix}/lib/mono/avahi-sharp
 %{_prefix}/lib/mono/gac/avahi-sharp
+%endif
+
+%if %{build_qt5}
+%files -n libavahi-qt5-%{avahi_qt5_sover}
+%{_libdir}/libavahi-qt5.so.*
+
+%files -n libavahi-qt5-devel
+%{_includedir}/avahi-qt5
+%{_libdir}/libavahi-qt5.*a
+%{_libdir}/libavahi-qt5.so
+%{_libdir}/pkgconfig/avahi-qt5.pc
 %endif
 
 %changelog

@@ -1,5 +1,5 @@
 #
-# spec file for package avahi-glib2
+# spec file for package avahi-qt5
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -23,9 +23,9 @@
 # If you set build_core to 0, you cannot set more than one other option to 1.
 %define         build_core 0
 # NOTE: build_glib2 also controls build of gobject, gtk2, gtk3 and pygobject code.
-%define         build_glib2 1
+%define         build_glib2 0
 %define         build_mono 0
-%define         build_qt5 0
+%define         build_qt5 1
 %define avahi_client_sover 3
 %define avahi_common_sover 3
 %define avahi_core_sover 7
@@ -39,7 +39,7 @@
 %if %{build_glib2}
 %define debug_package_requires libavahi-ui%{avahi_ui_sover} = %{version}-%{release}
 %endif
-Name:           avahi-glib2
+Name:           avahi-qt5
 Version:        0.8
 Release:        0
 Summary:        D-Bus Service for Zeroconf and Bonjour
