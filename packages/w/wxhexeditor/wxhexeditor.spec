@@ -37,6 +37,8 @@ Patch1:         wxhexeditor-remove-debug.patch
 Patch2:         wxhexeditor-fixdesktopfile.patch
 # PATCH-FIX-UPSTREAM - https://github.com/EUA/wxHexEditor/issues/90
 Patch3:         wxhexeditor-fix-arm.patch
+# PATCH-FEATURE-UPSTREAM - https://github.com/EUA/wxHexEditor/pull/173
+Patch4:         wxhexeditor-appdata.patch
 %if %{with gcc6}
 %if 0%{?sle_version} >= 120200
 #!BuildIgnore:  libgcc_s1
@@ -73,6 +75,7 @@ rm -rf mhash
 %patch1 -p0
 %patch2
 %patch3 -p1
+%patch4 -p1
 chmod -x docs/*
 cp -v udis86/LICENSE LICENSE-udis86
 cp -v docs/GPL.txt .
@@ -95,6 +98,7 @@ make %{?_smp_mflags} V=1 \
 %install
 %make_install PREFIX=%{_prefix}
 %find_lang %{_name} %{?no_lang_C}
+install resources/wxhexeditor.xml -Dm0644 %{buildroot}%{_datadir}/metainfo/wxhexeditor.xml
 
 %post
 %desktop_database_post
@@ -109,6 +113,7 @@ make %{?_smp_mflags} V=1 \
 %{_bindir}/%{_name}
 %{_datadir}/applications/%{_name}.desktop
 %{_datadir}/pixmaps/%{_name}.png
+%{_datadir}/metainfo/wxhexeditor.xml
 
 %files lang -f %{_name}.lang
 %defattr(-,root,root)
