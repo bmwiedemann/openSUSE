@@ -1,7 +1,7 @@
 #
 # spec file for package beansbinding
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,9 +22,8 @@ Release:        0
 Summary:        Beans Binding (JSR 295) reference implementation
 License:        LGPL-2.0-or-later
 Group:          Development/Libraries/Java
-Url:            https://beansbinding.dev.java.net/
+URL:            https://beansbinding.dev.java.net/
 Source0:        https://beansbinding.dev.java.net/files/documents/6779/73673/beansbinding-%{version}-src.tar.bz2
-Patch0:         beansbinding-1.2.1-sourcetarget.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
@@ -50,7 +49,6 @@ such as NetBeans. This project provides the reference implementation.
 
 %prep
 %setup -q -c
-%patch0 -p1
 # remove all binary libs
 find . -type f \( -iname "*.jar" -o -iname "*.zip" \) -print0 | xargs -t -0 rm -f
 
