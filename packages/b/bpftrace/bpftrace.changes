@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 14 23:44:23 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to bpftrace 0.11.4.
+    * Alpine build bug fix release
+	* bcc 0.17 support release
+- Remove upstreamed patches:
+  - detect-7-arg-bpf_attach_uprobe.patch
+
+-------------------------------------------------------------------
 Mon Nov  9 01:17:21 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - added detect-7-arg-bpf_attach_uprobe.patch:
