@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov  7 22:58:34 UTC 2020 - psimons@suse.com
+
+- Update uniplate to version 1.6.13.
+  Upstream added a new change log file in this release. With no
+  previous version to compare against, the automatic updater cannot
+  reliable determine the relevante entries for this release.
+
+-------------------------------------------------------------------
 Mon Aug 31 09:34:32 UTC 2020 - psimons@suse.com
 
 - Update uniplate to version 1.6.12 revision 1.
