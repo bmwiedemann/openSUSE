@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon Oct  5 15:55:32 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.1:
+  + Flatpak: Switch to 3.38 SDK and build its own libcanberra.
+  + EWebKitEditor: Prevent NULL dereference on call to
+    WebKitWebView methods.
+  + Flatpak: Change git URL for libcanberra.
+  + ECalendarItem: Settings loaded only when being shown.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 11 12:34:59 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.0:
+  + ECompEditorMemo: Invalid cast of a widget object.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  4 15:15:07 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.92:
+  + Miscellaneous:
+    - Let the New Collection Account window resize based on its
+      content.
+    - EWebView: Write console messages to stdout when WebKit
+      developer mode is enabled.
+    - help: Clarify what to do if PST import is not available.
+  + Bugs fixed:
+    - Let 'Wrap quoted text in replies' influence paragraph style.
+    - Composer: Restore X-Evolution headers when send fails.
+    - Cannot rename other than selected mail folder.
+    - Bcc field reset when composing as "Edit as New Message".
+    - Include description in the tooltip of the events.
+    - Focus body in message window when caret mode is enabled.
+    - Better figure out intended recipient with Reply to Sender.
+    - WebDAV browser: Refresh list of server sources on dialog
+      close.
+    - Mail: Misleading message when searching in multiple folders.
+    - Calendar: Correct RRULE's UNTIL value saving.
+    - Mail preview can cause WebKit do 100% endless loop.
+    - Enhance debug prints of PKCS12 file import.
+    - Hide 'Copy content for offline use' when not used.
+    - The "No label" filter shows emails with labels.
+    - Attached event invitation not properly displayed.
+    - Shift+number key cannot be typed in the search field.
+    - help: Add missing double quote in a string.
+  + Updated translations.
+
+
+-------------------------------------------------------------------
 Sun Aug  9 10:17:09 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.5:
