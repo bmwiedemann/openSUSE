@@ -1590,4 +1590,12 @@ Fri Dec  18 23:51:08 UTC 2015 - damjanovic.ivo@gmail.com
     <comment>New stable release (forwarded request 819063 from iznogood)</comment>
     <requestid>819951</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>1b50bd66049726598040470635d555b4</srcmd5>
+    <version>1.66.1</version>
+    <time>1605783298</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.38</comment>
+    <requestid>847193</requestid>
+  </revision>
 </revisionlist>
