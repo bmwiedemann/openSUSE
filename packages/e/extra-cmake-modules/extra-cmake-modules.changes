@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Nov  7 21:34:09 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.76.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.76.0
+- Changes since 5.75.0:
+  * Make androiddeployqt find libraries and QML plugins without installation
+  * find-modules/FindReuseTool.cmake - Fix finding reuse tool
+  * improve default formatting options
+  * Include option to use LLVM for users with Qt < 5.14
+  * add missing minimum version for RENAME parameter
+  * Enable documentation generation for FindGradle
+  * Document when FindGradle has been added
+  * Add FindGradle from KNotification
+
+-------------------------------------------------------------------
 Mon Oct  5 08:32:49 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.75.0
