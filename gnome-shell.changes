@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Thu Oct  8 03:38:01 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.1:
+  + Add screen recordings to recent items.
+  + Tweak peek-password feature.
+  + Fix workspace glitches in overview.
+  + Improve DND behavior in app picker.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Enable gtk-doc building again.
+
+-------------------------------------------------------------------
+Thu Oct  8 03:38:00 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.0:
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct  8 03:37:52 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.92:
+  + Fix screen recorder shortcut.
+  + Support cycle-group cycling only over windows in the workspac3.
+  + Misc bugfixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Oct  8 03:37:51 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Rebase gnome-shell-private-connection.patch.
+
+-------------------------------------------------------------------
+Thu Oct  8 03:37:51 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.91:
+  + Fix potential stack overflow in libcroco.
+  + Fix page removal in app picker.
+  + Fix "old style" VPN authentication.
+  + Fix X11 session login.
+  + Fix week number alignment when using font-scaling.
+  + Fix lock screen on systems without GLSL shader support.
+- Changes from version 3.37.90:
+  + Fix extension updates when many extensions are installed.
+  + Fix missing icons in on-screen keyboard.
+  + Fix delay when showing calendar events.
+  + Allow rearranging items in app picker.
+  + Fix top bar navigation when NumLock is active.
+  + Delay login animation until wallpaper has loaded.
+  + Reset auth prompt on login screen on VT switch before fade in.
+  + Move screencasting into a separate service.
+  + Replace loaded terms with more descriptive one.
+  + Add "Boot Options" support to restart dialog.
+  + Move "Restart" into a separate menu item/dialog.
+  + Default to not installing updates on low battery.
+- Changes from version 3.37.3:
+  + Refactor and clean up window picker.
+  + Move calendar events out of notifications list.
+  + Refine app folder dialogs.
+  + Hide switch-user button on lock screen if unsupported.
+  + Refactor and clean up app picker pagination.
+  + Add API to retrieve specified mimetypes from clipboards.
+  + Support prepending workspace with horizontal layouts.
+  + Update microphone icon on input volume changes.
+  + Cache labels on GPU.
+  + Fix regressions in redesigned modal dialogs.
+  + Use GIcon for all application icons.
+  + Support pre-authenticated logins in vmware environments.
+  + Better support sandboxed apps with multiple .desktop files.
+  + Fix on-screen keyboard size in portrait orientation.
+- Changes from version 3.37.2:
+  + Add support for "PrefersNonDefaultGPU" desktop key.
+  + Only start systemd units when running under systemd.
+  + Fix "ghost" media controls.
+  + Fix zombie sockets from extensions downloader.
+  + Update world clocks offsets when timezone changes.
+  + Support scrolling anywhere in slider menu items.
+  + Fix "Do Not Disturb" setting getting reset on startup.
+  + Only allow updates for extensions that aren't cached.
+  + Fix matching notifications by PID.
+  + Indicate extension errors in Extensions app.
+  + Add clipboard API for querying supported mimetypes.
+  + Add preview to color picker.
+  + Improve world clocks styling.
+  + Remove Frequent view from app picker.
+  + Fix pad OSD glitches.
+  + Expose actor tree in looking glass.
+- Changes from version 3.37.1:
+  + Improve bluetooth submenu title.
+  + Add openPrefs() convenience method for extensions.
+  + Bring back support for empty StIcons.
+  + Wake up screen when unlocking programmatically.
+  + Improve extensions tool error reporting.
+  + Improve handling of scale-factor changes.
+  + Tone down weekend days with events in calendar.
+  + Fix showing bluetooth submenu when devices were set up.
+  + Add support for parental controls filtering.
+  + Provide alternative extension templates.
+  + Improve weather section's empty state.
+  + Fix translations of folder names>
+  + Fix delay on lock screen after entering wrong password.
+  + Inhibit remote access when disabled by session mode.
+  + Improve calendar-server performance.
+  + Add gnome-shell-extension-prefs wrapper for compatibility.
+  + Fix stuck lock screen after unlock.
+  + Updated translations.
+- Drop gnome-shell-Get-resource-scale-by-get_resource_scale.patch:
+  fixed upstream.
+- Do not apply gnome-shell-private-connection.patch: needs rebase.
+- Disable gtk-doc building: failure to build in this beta.
+
+-------------------------------------------------------------------
 Wed Oct  7 19:02:07 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.7:
@@ -11,7 +123,7 @@ Wed Oct  7 19:02:07 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 -------------------------------------------------------------------
 Sun Sep 13 12:33:45 UTC 2020 - QK ZHU <qkzhu@suse.com>
 
-- Update gnome-shell-fate324570-Make-GDM-background-image-configurable.patch: 
+- Update gnome-shell-fate324570-Make-GDM-background-image-configurable.patch:
   Bring noise-texture.png back which will be used as the default
   value of org.gnome.desktop.background.lockdialog picture-uri
   (boo#1176418).
@@ -47,7 +159,7 @@ Wed Aug 12 21:11:10 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
   + Reset auth prompt on login screen on VT switch before fade in.
   + Fix stuck grab when destroying open popup menu.
   + Misc. bug fixes and cleanups.
-  + Updated translations. 
+  + Updated translations.
 
 -------------------------------------------------------------------
 Fri Aug  7 05:43:21 UTC 2020 - QK ZHU <qkzhu@suse.com>
