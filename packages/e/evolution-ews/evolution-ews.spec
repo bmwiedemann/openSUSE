@@ -20,13 +20,13 @@
 %define _version %(echo %{version} | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+')
 
 Name:           evolution-ews
-Version:        3.36.5
+Version:        3.38.1
 Release:        0
 Summary:        Exchange Connector for Evolution, compatible with Exchange 2007 and later
 License:        LGPL-2.1-only
 Group:          Productivity/Networking/Email/Clients
 URL:            https://wiki.gnome.org/Apps/Evolution
-Source0:        https://download.gnome.org/sources/evolution-ews/3.36/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/evolution-ews/3.38/%{name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
@@ -84,11 +84,18 @@ translation-update-upstream
 %license COPYING
 %doc README
 %{_libdir}/evolution-data-server/addressbook-backends/libebookbackendews.so
+%{_libdir}/evolution-data-server/addressbook-backends/libebookbackendmicrosoft365.so
 %{_libdir}/evolution-data-server/calendar-backends/libecalbackendews.so
+%{_libdir}/evolution-data-server/calendar-backends/libecalbackendmicrosoft365.so
 %{_libdir}/evolution-data-server/camel-providers/libcamelews.so
 %{_libdir}/evolution-data-server/camel-providers/libcamelews.urls
+%{_libdir}/evolution-data-server/camel-providers/libcamelmicrosoft365.so
+%{_libdir}/evolution-data-server/camel-providers/libcamelmicrosoft365.urls
 %{_libdir}/evolution-data-server/registry-modules/module-ews-backend.so
+%{_libdir}/evolution-data-server/registry-modules/module-microsoft365-backend.so
+%{_libdir}/evolution-ews/libevolution-microsoft365.so
 %{_libdir}/evolution/modules/module-ews-configuration.so
+%{_libdir}/evolution/modules/module-microsoft365-configuration.so
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/libcamelews-priv.so
 %{_libdir}/%{name}/libevolution-ews.so
