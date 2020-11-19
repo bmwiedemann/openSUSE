@@ -25,6 +25,7 @@ License:        MIT
 Group:          Hardware/Other
 URL:            https://github.com/intel-iot-devkit/mraa
 Source:         https://github.com/intel-iot-devkit/mraa/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         mraa-i686.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gtest
@@ -140,7 +141,7 @@ across the supported platforms.
 This package contains examples for %{name}.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %cmake \
