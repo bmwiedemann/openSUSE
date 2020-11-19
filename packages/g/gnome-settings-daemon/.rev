@@ -1312,4 +1312,12 @@ work. (forwarded request 640069 from iznogood)</comment>
     <comment>- fix build on s390x (wacom=false but wayland=true) (forwarded request 835311 from oertel)</comment>
     <requestid>836039</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>9cffc28c77322d66f9984a9059795969</srcmd5>
+    <version>3.38.1</version>
+    <time>1605783354</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.38</comment>
+    <requestid>847223</requestid>
+  </revision>
 </revisionlist>
