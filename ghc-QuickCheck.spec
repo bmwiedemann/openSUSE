@@ -19,7 +19,7 @@
 %global pkg_name QuickCheck
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.14.1
+Version:        2.14.2
 Release:        0
 Summary:        Automatic testing of Haskell programs
 License:        BSD-3-Clause
