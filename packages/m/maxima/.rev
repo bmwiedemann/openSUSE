@@ -369,4 +369,12 @@
   will be needed for pkgs depending on maxima.</comment>
     <requestid>844445</requestid>
   </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>7f000261952267c0610c2784f4d76694</srcmd5>
+    <version>5.44.0</version>
+    <time>1605783650</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849298</requestid>
+  </revision>
 </revisionlist>
