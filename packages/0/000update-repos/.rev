@@ -8408,4 +8408,46 @@ Switch to repomd for 42.1, its susetags are bugged</comment>
     <time>1605643610</time>
     <user>staging-bot</user>
   </revision>
+  <revision rev="1400" vrev="1400">
+    <srcmd5>314a15c059178a1a88cce62637c58f68</srcmd5>
+    <version>unknown</version>
+    <time>1605730754</time>
+    <user>staging-bot</user>
+  </revision>
+  <revision rev="1401" vrev="1401">
+    <srcmd5>1c6ca4dbd19691a01d6cab7f6ef831fb</srcmd5>
+    <version>unknown</version>
+    <time>1605816341</time>
+    <user>staging-bot</user>
+  </revision>
+  <revision rev="1402" vrev="1402">
+    <srcmd5>0232a9610602819108189ffd20e12109</srcmd5>
+    <version>unknown</version>
+    <time>1605816342</time>
+    <user>staging-bot</user>
+  </revision>
+  <revision rev="1403" vrev="1403">
+    <srcmd5>48c5253f36eb074e2915524fba4e409d</srcmd5>
+    <version>unknown</version>
+    <time>1605816354</time>
+    <user>staging-bot</user>
+  </revision>
+  <revision rev="1404" vrev="1404">
+    <srcmd5>74ed50e1dfa96523a1290cfa9bc7a3da</srcmd5>
+    <version>unknown</version>
+    <time>1605988878</time>
+    <user>staging-bot</user>
+  </revision>
+  <revision rev="1405" vrev="1405">
+    <srcmd5>00e1506515b043b1761b3fd64cb04c16</srcmd5>
+    <version>unknown</version>
+    <time>1605988882</time>
+    <user>staging-bot</user>
+  </revision>
+  <revision rev="1406" vrev="1406">
+    <srcmd5>2853a2f31c7cf7054eb3816cd64da6ae</srcmd5>
+    <version>unknown</version>
+    <time>1605988894</time>
+    <user>staging-bot</user>
+  </revision>
 </revisionlist>
