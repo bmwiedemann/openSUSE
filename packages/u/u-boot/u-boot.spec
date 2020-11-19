@@ -74,9 +74,11 @@
 %define rockchip_spl 1
 %define rkimages $()
 %endif
-%if "%target" == "puma-rk3399" || "%target" == "rock960-rk3399"
+%if "%target" == "pinebook-pro-rk3399" || "%target" == "puma-rk3399" || "%target" == "rock960-rk3399"
 %define is_rk3399 1
 %define is_armv8 1
+%define rockchip_idb 1
+%define binext .itb
 %endif
 %if "%target" == "bananapim64" || "%target" == "nanopia64" || "%target" == "pine64plus" || "%target" == "pinebook"
 %define is_a64 1
@@ -226,6 +228,7 @@ Patch0010:      0010-configs-am335x_evm-disable-BTRFS.patch
 Patch0011:      0011-sunxi-dts-OrangePi-Zero-Add-SPI-ali.patch
 Patch0012:      0012-sunxi-dts-OrangePi-Zero-Enable-SPI-.patch
 Patch0013:      0013-sunxi-Enable-SPI-support-on-Orange-.patch
+Patch0014:      0014-Disable-CONFIG_CMD_BTRFS-in-xilinx_.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison
@@ -385,7 +388,7 @@ export OPENSBI=%{_datadir}/opensbi/opensbi-sifive-fu540.bin
 %if "%{name}" == "u-boot-rock64-rk3328"
 cp %{_datadir}/arm-trusted-firmware-rk3328/bl31.elf .
 %endif
-%if "%{name}" == "u-boot-evb-rk3399" || "%{name}" == "u-boot-firefly-rk3399" || "%{name}" == "u-boot-rock-pi-4-rk3399"
+%if "%{name}" == "u-boot-evb-rk3399" || "%{name}" == "u-boot-firefly-rk3399" || "%{name}" == "u-boot-rock-pi-4-rk3399" || "%{name}" == "u-boot-pinebook-pro-rk3399"
 cp %{_datadir}/arm-trusted-firmware-rk3399/bl31.elf .
 %endif
 %endif
@@ -450,6 +453,13 @@ done
 
 %install
 %if %tools_only
+install -D -m 0755 tools/mkenvimage %{buildroot}%{_bindir}/mkenvimage
+install -D -m 0755 tools/gen_ethaddr_crc %{buildroot}%{_bindir}/gen_ethaddr_crc
+install -D -m 0755 tools/dumpimage %{buildroot}%{_bindir}/dumpimage
+install -D -m 0755 tools/fit_info %{buildroot}%{_bindir}/fit_info
+install -D -m 0755 tools/fit_check_sign %{buildroot}%{_bindir}/fit_check_sign
+install -D -m 0755 tools/fdtgrep %{buildroot}%{_bindir}/fdtgrep
+install -D -m 0755 tools/ifwitool %{buildroot}%{_bindir}/ifwitool
 install -D -m 0755 tools/mkimage %{buildroot}%{_bindir}/mkimage
 install -D -m 0644 doc/mkimage.1 %{buildroot}%{_mandir}/man1/mkimage.1
 
@@ -563,6 +573,13 @@ fi
 %license Licenses/gpl-2.0.txt
 
 %if %tools_only
+%{_bindir}/mkenvimage
+%{_bindir}/gen_ethaddr_crc
+%{_bindir}/dumpimage
+%{_bindir}/fit_info
+%{_bindir}/fit_check_sign
+%{_bindir}/fdtgrep
+%{_bindir}/ifwitool
 %{_bindir}/mkimage
 %{_mandir}/man1/mkimage.1.gz
 %else
