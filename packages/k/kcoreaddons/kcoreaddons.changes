@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Nov  7 21:34:27 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.76.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.76.0
+- Changes since 5.75.0:
+  * KJob: add setProgressUnit(), to choose how percent is calculated
+  * Fix potential memory leak in KAboutData::registerPluginData
+  * If include is define in .h remove it if it's defined in .cpp too (scripted)
+  * Split suggestName(); the split method doesn't check if file exists
+  * KAboutData: deprecate pluginData() & registerPluginData()
+  * Avoid copying objects
+  * Fix compiler warning when some KDirWatch backends aren't available
+  * Don't quit the event loop in KJobTest::slotResult()
+  * Use functor-based singleShot() overload in TestJob::start()
+
+-------------------------------------------------------------------
 Mon Oct  5 08:33:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.75.0
