@@ -1,0 +1,100 @@
+IPv4LL in SUSE Linux
+====================
+
+IPv4LL provides support of peer to peer address assignment from a
+special link local IP range.
+
+SUSE Linux contains three implementations of IPv4LL autoip protocol:
+
+
+avahi-autoipd from avahi-autoipd package from avahi project
+===========================================================
+
+This is a daemon, that runs and assign IPv4LL address, either as a
+fallback or at any time, depending on System/Zeroconf
+AVAHI_AUTOIPD_FORCE_BIND sysconfig key (disabled by default).
+
+The daemon runs permanently for each device, monitors the network
+status, and assigns IPv4LL address when requested.
+
+See http://avahi.org/wiki/AvahiAutoipd#ModesofOperation for more.
+
+
+Activate avahi-autoipd implementation
+-------------------------------------
+
+- Install avahi-autoip package and check that System/Zeroconf
+  AVAHI_AUTOIPD_FORCE_BIND sysconfig key is "yes" (the default).
+
+- Set the address settings in the YaST network configuration either to
+  None (to have IPv4LL address only) or DHCP (if you want DHCP together
+  with IPv4LL).
+
+- Note that NetworkManager uses avahi-autoipd by default.
+
+
+For AVAHI_AUTOIPD_FORCE_BIND=false:
+-----------------------------------
+
+In this mode the daemon assigns IPv4LL address only of DHCP fails.
+
+Advantage:
+- All programs work with this setup.
+
+Disadvantage:
+- When DHCP assigns address, all existing IPv4LL connections are lost.
+
+
+For AVAHI_AUTOIPD_FORCE_BIND=true:
+----------------------------------
+
+In this mode the deamon forces binding address from IPv4LL address, even if
+standard IPv4 address exists.
+
+Advantage:
+- You can depend on IPv4LL address always assigned.
+
+Disadvantage:
+- Some programs don't work well with labeled IP addresses or interface
+  aliases.
+
+
+
+autoip from sysconfig package
+=============================
+
+autoip is not bound to sysconfig scripts and it is not called during
+as sysconfig is using an own implementation. To enable you have to
+set AVAHI_AUTOIPD_ENABLE=yes in /etc/sysconfig/avahi. Note, that it
+starts unconditionally then and breaks bridges,vlan,bond, ...
+
+If DHCP adrress is assigned, autoip ends immediately. Only if no DHCP
+address is assigned, it stays running as a daemon and provides IPv4LL
+address.
+
+
+Activate autoip implementation
+------------------------------
+
+- Do not install avahi-autoipd package or set System/Zeroconf
+  AVAHI_AUTOIPD_FORCE_BIND sysconfig key to "no".
+
+- Set Zeroconf the address settings in the YaST network configuration.
+
+
+
+IPv4LL assigned by dhcpcd
+=========================
+
+If dhcpcd fails to obtain a lease, it will probe for a valid IPv4LL
+address. Once obtained it will probe every 10 seconds for a DHCP server.
+
+
+Activate dhcpcd implementation
+------------------------------
+
+This implementation is not supported in SUSE yet. Enabling this
+implementation would require several manual changes in the
+/sbin/ifup-dhcp script (removal of -L argument, and skipping of calls to
+${SCRIPTNAME}-autoip in /sbin/ifup (e. g. by not setting Zeroconf in the
+YaST network configuration).

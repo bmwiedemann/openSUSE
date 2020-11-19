@@ -1,0 +1,30 @@
+From ef06fccecda4c821a013320ef4914469950a95c8 Mon Sep 17 00:00:00 2001
+From: Mike Gorse <mgorse@suse.com>
+Date: Sat, 9 Jul 2016 17:12:16 -0500
+Subject: [PATCH] Only warn on missing resolv.conf if the options that use it
+ are enabled
+
+---
+ avahi-daemon/main.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/avahi-daemon/main.c b/avahi-daemon/main.c
+index 10cb41e..a6e90da 100644
+--- a/avahi-daemon/main.c
++++ b/avahi-daemon/main.c
+@@ -172,7 +172,11 @@ static int load_resolv_conf(void) {
+ #endif
+ 
+     if (!f) {
+-        avahi_log_warn("Failed to open "RESOLV_CONF": %s", strerror(errno));
++        if ((config.publish_dns_servers && config.publish_dns_servers[0]) ||
++             config.publish_resolv_conf ||
++             config.server_config.publish_domain) {
++            avahi_log_warn("Failed to open "RESOLV_CONF": %s", strerror(errno));
++        }
+         goto finish;
+     }
+ 
+-- 
+2.6.6
+

@@ -1,0 +1,80 @@
+Index: avahi-sharp.pc.in
+===================================================================
+--- avahi-sharp.pc.in.orig
++++ avahi-sharp.pc.in
+@@ -1,6 +1,6 @@
+ prefix=@prefix@
+ exec_prefix=@prefix@
+-libdir=@libdir@
++libdir=@prefix@/lib
+ 
+ Name: avahi-sharp
+ Description: Mono bindings for the Avahi mDNS/DNS-SD stack
+Index: avahi-sharp/Makefile.am
+===================================================================
+--- avahi-sharp/Makefile.am.orig
++++ avahi-sharp/Makefile.am
+@@ -73,10 +73,10 @@ monodoc_DATA = avahi-sharp-docs.zip avah
+ endif
+ 
+ install-data-hook: $(ASSEMBLY)
+-	$(AM_V_GEN)MONO_SHARED_DIR=. $(GACUTIL) /i $(ASSEMBLY) /package avahi-sharp /gacdir $(libdir) /root $(DESTDIR)$(libdir)
++	$(AM_V_GEN)MONO_SHARED_DIR=. $(GACUTIL) /i $(ASSEMBLY) /package avahi-sharp /gacdir $(prefix)/lib /root $(DESTDIR)$(prefix)/lib
+ 
+ uninstall-hook: $(ASSEMBLY)
+-	$(AM_V_GEN)MONO_SHARED_DIR=. $(GACUTIL) /u avahi-sharp /package avahi-sharp /gacdir $(libdir) /root $(DESTDIR)$(libdir)
++	$(AM_V_GEN)MONO_SHARED_DIR=. $(GACUTIL) /u avahi-sharp /package avahi-sharp /gacdir $(prefix)/lib /root $(DESTDIR)$(prefix)/lib
+ 
+ endif
+ endif
+Index: avahi-sharp/Makefile.in
+===================================================================
+--- avahi-sharp/Makefile.in.orig
++++ avahi-sharp/Makefile.in
+@@ -611,10 +611,10 @@ $(ASSEMBLY).config: $(ASSEMBLY).config.i
+ @HAVE_DBUS_TRUE@@HAVE_MONODOC_TRUE@@HAVE_MONO_TRUE@	$(AM_V_GEN)$(MDASSEMBLER) --out avahi-sharp-docs --ecma $(srcdir)/en
+ 
+ @HAVE_DBUS_TRUE@@HAVE_MONO_TRUE@install-data-hook: $(ASSEMBLY)
+-@HAVE_DBUS_TRUE@@HAVE_MONO_TRUE@	$(AM_V_GEN)MONO_SHARED_DIR=. $(GACUTIL) /i $(ASSEMBLY) /package avahi-sharp /gacdir $(libdir) /root $(DESTDIR)$(libdir)
++@HAVE_DBUS_TRUE@@HAVE_MONO_TRUE@	$(AM_V_GEN)MONO_SHARED_DIR=. $(GACUTIL) /i $(ASSEMBLY) /package avahi-sharp /gacdir $(prefix)/lib /root $(DESTDIR)$(prefix)/lib
+ 
+ @HAVE_DBUS_TRUE@@HAVE_MONO_TRUE@uninstall-hook: $(ASSEMBLY)
+-@HAVE_DBUS_TRUE@@HAVE_MONO_TRUE@	$(AM_V_GEN)MONO_SHARED_DIR=. $(GACUTIL) /u avahi-sharp /package avahi-sharp /gacdir $(libdir) /root $(DESTDIR)$(libdir)
++@HAVE_DBUS_TRUE@@HAVE_MONO_TRUE@	$(AM_V_GEN)MONO_SHARED_DIR=. $(GACUTIL) /u avahi-sharp /package avahi-sharp /gacdir $(prefix)/lib /root $(DESTDIR)$(prefix)/lib
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+Index: avahi-ui-sharp/Makefile.am
+===================================================================
+--- avahi-ui-sharp/Makefile.am.orig
++++ avahi-ui-sharp/Makefile.am
+@@ -60,10 +60,10 @@ monodoc_DATA = avahi-ui-sharp-docs.zip a
+ endif
+ 
+ install-data-hook: $(ASSEMBLY)
+-	$(GACUTIL) /i $(ASSEMBLY) /package avahi-ui-sharp /gacdir $(libdir) /root $(DESTDIR)$(libdir)
++	$(GACUTIL) /i $(ASSEMBLY) /package avahi-ui-sharp /gacdir $(prefix)/lib /root $(DESTDIR)$(prefix)/lib
+ 
+ uninstall-hook: $(ASSEMBLY)
+-	$(GACUTIL) /u avahi-ui-sharp /package avahi-ui-sharp /gacdir $(libdir) /root $(DESTDIR)$(libdir)
++	$(GACUTIL) /u avahi-ui-sharp /package avahi-ui-sharp /gacdir $(prefix)/lib /root $(DESTDIR)$(prefix)/lib
+ 
+ endif
+ endif
+Index: avahi-ui-sharp/Makefile.in
+===================================================================
+--- avahi-ui-sharp/Makefile.in.orig
++++ avahi-ui-sharp/Makefile.in
+@@ -600,10 +600,10 @@ bssh.exe: $(srcdir)/bssh.cs $(ASSEMBLY)
+ @HAVE_DBUS_TRUE@@HAVE_GTK_TRUE@@HAVE_MONODOC_TRUE@@HAVE_MONO_TRUE@	$(AM_V_GEN)$(MDASSEMBLER) --out avahi-ui-sharp-docs --ecma $(srcdir)/en
+ 
+ @HAVE_DBUS_TRUE@@HAVE_GTK_TRUE@@HAVE_MONO_TRUE@install-data-hook: $(ASSEMBLY)
+-@HAVE_DBUS_TRUE@@HAVE_GTK_TRUE@@HAVE_MONO_TRUE@	$(GACUTIL) /i $(ASSEMBLY) /package avahi-ui-sharp /gacdir $(libdir) /root $(DESTDIR)$(libdir)
++@HAVE_DBUS_TRUE@@HAVE_GTK_TRUE@@HAVE_MONO_TRUE@	$(GACUTIL) /i $(ASSEMBLY) /package avahi-ui-sharp /gacdir $(prefix)/lib /root $(DESTDIR)$(prefix)/lib
+ 
+ @HAVE_DBUS_TRUE@@HAVE_GTK_TRUE@@HAVE_MONO_TRUE@uninstall-hook: $(ASSEMBLY)
+-@HAVE_DBUS_TRUE@@HAVE_GTK_TRUE@@HAVE_MONO_TRUE@	$(GACUTIL) /u avahi-ui-sharp /package avahi-ui-sharp /gacdir $(libdir) /root $(DESTDIR)$(libdir)
++@HAVE_DBUS_TRUE@@HAVE_GTK_TRUE@@HAVE_MONO_TRUE@	$(GACUTIL) /u avahi-ui-sharp /package avahi-ui-sharp /gacdir $(prefix)/lib /root $(DESTDIR)$(prefix)/lib
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
