@@ -28,6 +28,7 @@ Group:          Productivity/Archiving/Backup
 URL:            https://bup.github.io/
 Source0:        https://github.com/bup/bup/archive/%{version}/%{name}-%{version}.tar.gz
 Patch1:         %{name}-python.patch
+Patch2:         bup-i586.patch
 BuildRequires:  git-core >= 1.5.3.1
 BuildRequires:  pandoc
 BuildRequires:  perl-Time-HiRes
@@ -53,8 +54,7 @@ providing fast incremental saves and global deduplication
 (among and within files, including virtual machine images).
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 # rpmlint: fix incorrect-fsf-address
 find . -type f | xargs sed -i -e 's:59 Temple Place\, Suite 330\, Boston\, MA  02111-1307  USA:51 Franklin Street\, Fifth Floor\, Boston\, MA 02110-1301 USA:g'
 # fix binpath
@@ -70,7 +70,7 @@ find -type f -name ".gitignore" -exec rm {} \;
 # FIXME: you should use the %%configure macro
 # With macro %%configure package will not build.
 ./configure
-%make_build PYTHON=python
+%make_build PYTHON=python3
 
 %install
 %if 0%{!?make_install:1}

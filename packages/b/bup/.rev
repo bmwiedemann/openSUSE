@@ -7,4 +7,12 @@
     <comment>kup-backup requires this package to achieve full version control backup.</comment>
     <requestid>839435</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e686a0caf9a1a78cf7f7f2fe11ddf515</srcmd5>
+    <version>0.31</version>
+    <time>1605783637</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849287</requestid>
+  </revision>
 </revisionlist>
