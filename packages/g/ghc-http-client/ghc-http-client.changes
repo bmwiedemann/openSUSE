@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 17 15:27:10 UTC 2020 - psimons@suse.com
+
+- Update http-client to version 0.7.3.
+  ## 0.7.3
+
+  * Added `withSocket` to `Network.HTTP.Client.Connection`.
+
+-------------------------------------------------------------------
 Mon Aug 24 02:00:37 UTC 2020 - psimons@suse.com
 
 - Update http-client to version 0.7.2.1.
