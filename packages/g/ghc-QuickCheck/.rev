@@ -207,4 +207,12 @@
     <comment>version update</comment>
     <requestid>829155</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b1422817ee390d7c607d58f42a099e87</srcmd5>
+    <version>2.14.2</version>
+    <time>1605783500</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>849153</requestid>
+  </revision>
 </revisionlist>
