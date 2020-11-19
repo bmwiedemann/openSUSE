@@ -17,13 +17,13 @@
 
 
 Name:           lightsoff
-Version:        3.36.0
+Version:        3.38.0
 Release:        0
 Summary:        Lights Out Game for GNOME
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Other
 URL:            https://wiki.gnome.org/Apps/Lightsoff
-Source0:        https://download.gnome.org/sources/lightsoff/3.36/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/lightsoff/3.38/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gettext >= 0.19.8
@@ -37,7 +37,7 @@ BuildRequires:  pkgconfig(clutter-gtk-1.0) >= 1.4.0
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gmodule-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.13.4
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.32.0
 Obsoletes:      %{name}-doc <= 3.28.0
 
