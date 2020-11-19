@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 14 13:11:32 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 1.28.0:
+  + Do not build tests when introspection is disabled/missing
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Mar  7 17:59:20 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 1.26.0:
