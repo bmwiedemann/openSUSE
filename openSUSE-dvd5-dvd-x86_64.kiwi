@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20201117" schemaversion="4.1">
+<image name="OBS__openSUSE___20201121" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20201117</productvar>
+      <productvar name="VERSION">20201121</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20201117,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20201121,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20201117/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20201121/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -654,7 +654,7 @@
       <repopackage name="gitg"/>
       <repopackage name="gitg-lang"/>
       <repopackage name="gitk"/>
-      <repopackage name="gjs"/>
+      <repopackage name="gjs" arch="x86_64"/>
       <repopackage name="glabels" arch="x86_64"/>
       <repopackage name="glabels-lang" arch="x86_64"/>
       <repopackage name="glade"/>
@@ -1694,7 +1694,7 @@
       <repopackage name="libeconf0-32bit" arch="x86_64"/>
       <repopackage name="libedata-book-1_2-26"/>
       <repopackage name="libedata-cal-2_0-1"/>
-      <repopackage name="libedataserver-1_2-24"/>
+      <repopackage name="libedataserver-1_2-25"/>
       <repopackage name="libedataserverui-1_2-2"/>
       <repopackage name="libedc_ecc1_0" arch="x86_64"/>
       <repopackage name="libedc_ecc_dec1_0" arch="x86_64"/>
@@ -1815,6 +1815,7 @@
       <repopackage name="libgdbm_compat4"/>
       <repopackage name="libgdk_pixbuf-2_0-0"/>
       <repopackage name="libgdk_pixbuf-2_0-0-32bit" arch="x86_64"/>
+      <repopackage name="libgdk_pixbuf_xlib-2_0-0"/>
       <repopackage name="libgdl-3-5"/>
       <repopackage name="libgdlmm-3_0-2"/>
       <repopackage name="libgdm1" arch="x86_64"/>
@@ -1839,9 +1840,9 @@
       <repopackage name="libgit2-glib-1_0-0"/>
       <repopackage name="libgitg-1_0-0"/>
       <repopackage name="libgitg-ext-1_0-0"/>
-      <repopackage name="libgjs0"/>
+      <repopackage name="libgjs0" arch="x86_64"/>
       <repopackage name="libglade-2_0-0"/>
-      <repopackage name="libgladeui-2-12"/>
+      <repopackage name="libgladeui-2-13"/>
       <repopackage name="libgle3"/>
       <repopackage name="libglib-2_0-0"/>
       <repopackage name="libglib-2_0-0-32bit" arch="x86_64"/>
@@ -1869,6 +1870,7 @@
       <repopackage name="libgnome-menu-3-0" arch="x86_64"/>
       <repopackage name="libgnomekbd-lang" arch="x86_64"/>
       <repopackage name="libgnomekbd8" arch="x86_64"/>
+      <repopackage name="libgnomesoftware-3_38_0" arch="x86_64"/>
       <repopackage name="libgnomesu"/>
       <repopackage name="libgnomesu-lang"/>
       <repopackage name="libgnomesu0"/>
@@ -1976,7 +1978,9 @@
       <repopackage name="libgxps2"/>
       <repopackage name="libHalf-2_5-25"/>
       <repopackage name="libhandle1"/>
-      <repopackage name="libhandy-0_0-0"/>
+      <repopackage name="libhandy-0_0-0" arch="x86_64"/>
+      <repopackage name="libhandy-1-0"/>
+      <repopackage name="libhandy-lang"/>
       <repopackage name="libhangul1" arch="x86_64"/>
       <repopackage name="libharfbuzz-gobject0"/>
       <repopackage name="libharfbuzz-icu0"/>
@@ -2304,7 +2308,7 @@
       <repopackage name="liblogging0"/>
       <repopackage name="liblognorm5"/>
       <repopackage name="liblouis-data" arch="x86_64"/>
-      <repopackage name="liblouis19" arch="x86_64"/>
+      <repopackage name="liblouis20" arch="x86_64"/>
       <repopackage name="liblpsolve55-0"/>
       <repopackage name="liblqr-1-0"/>
       <repopackage name="liblrdf2"/>
@@ -2332,6 +2336,8 @@
       <repopackage name="libMagickCore-7_Q16HDRI7"/>
       <repopackage name="libMagickWand-7_Q16HDRI7"/>
       <repopackage name="libmailutils5"/>
+      <repopackage name="libmalcontent-0-0" arch="x86_64"/>
+      <repopackage name="libmalcontent-ui-0-0" arch="x86_64"/>
       <repopackage name="libmanette-0_2-0"/>
       <repopackage name="libmariadb3"/>
       <repopackage name="libmariadbd19" arch="x86_64"/>
@@ -2352,7 +2358,7 @@
       <repopackage name="libmilter1_0"/>
       <repopackage name="libminiupnpc17"/>
       <repopackage name="libminizip1"/>
-      <repopackage name="libmission-control-plugins0"/>
+      <repopackage name="libmission-control-plugins0" arch="x86_64"/>
       <repopackage name="libmjpegutils-2_0-0"/>
       <repopackage name="libmlx4-1"/>
       <repopackage name="libmlx5-1"/>
@@ -2365,7 +2371,6 @@
       <repopackage name="libmodulemd2"/>
       <repopackage name="libmount1"/>
       <repopackage name="libmount1-32bit" arch="x86_64"/>
-      <repopackage name="libmozjs-68"/>
       <repopackage name="libmozjs-78-0" arch="x86_64"/>
       <repopackage name="libmp3lame0"/>
       <repopackage name="libmpath0"/>
@@ -2384,7 +2389,7 @@
       <repopackage name="libmtp9"/>
       <repopackage name="libmusicbrainz4" arch="x86_64"/>
       <repopackage name="libmusicbrainz5-1"/>
-      <repopackage name="libmutter-6-0" arch="x86_64"/>
+      <repopackage name="libmutter-7-0" arch="x86_64"/>
       <repopackage name="libmwaw-0_3-3"/>
       <repopackage name="libmxml1"/>
       <repopackage name="libmygpo-qt5-1" arch="x86_64"/>
@@ -2537,7 +2542,7 @@
       <repopackage name="libpoppler103"/>
       <repopackage name="libpopt0"/>
       <repopackage name="libpopt0-32bit" arch="x86_64"/>
-      <repopackage name="libportal0" arch="x86_64"/>
+      <repopackage name="libportal0"/>
       <repopackage name="libportaudio2"/>
       <repopackage name="libpostproc55_7"/>
       <repopackage name="libpotrace0"/>
@@ -2863,10 +2868,10 @@
       <repopackage name="libtdb1"/>
       <repopackage name="libtdb1-32bit" arch="x86_64"/>
       <repopackage name="libteamdctl0"/>
-      <repopackage name="libtelepathy-glib0"/>
-      <repopackage name="libtelepathy-logger3"/>
+      <repopackage name="libtelepathy-glib0" arch="x86_64"/>
+      <repopackage name="libtelepathy-logger3" arch="x86_64"/>
       <repopackage name="libtemplate_glib-1_0-0" arch="x86_64"/>
-      <repopackage name="libtepl-4-0"/>
+      <repopackage name="libtepl-5-0"/>
       <repopackage name="libtevent-util0"/>
       <repopackage name="libtevent-util0-32bit" arch="x86_64"/>
       <repopackage name="libtevent0"/>
@@ -2906,7 +2911,6 @@
       <repopackage name="libturbojpeg0"/>
       <repopackage name="libtwolame0"/>
       <repopackage name="libubsan1"/>
-      <repopackage name="libuchardet0"/>
       <repopackage name="libudev-devel"/>
       <repopackage name="libudev1"/>
       <repopackage name="libudev1-32bit" arch="x86_64"/>
@@ -2921,6 +2925,7 @@
       <repopackage name="libupnp17"/>
       <repopackage name="libupower-glib3"/>
       <repopackage name="liburcu6"/>
+      <repopackage name="liburing1"/>
       <repopackage name="libUsageEnvironment3"/>
       <repopackage name="libusb-0_1-4"/>
       <repopackage name="libusb-1_0-0"/>
@@ -2936,13 +2941,14 @@
       <repopackage name="libv4l"/>
       <repopackage name="libv4l1-0"/>
       <repopackage name="libv4l2-0"/>
+      <repopackage name="libv4l2rds0"/>
       <repopackage name="libv4lconvert0"/>
       <repopackage name="libva-drm2"/>
       <repopackage name="libva-glx2"/>
       <repopackage name="libva-wayland2"/>
       <repopackage name="libva-x11-2"/>
       <repopackage name="libva2"/>
-      <repopackage name="libvala-0_48-0" arch="x86_64"/>
+      <repopackage name="libvala-0_50-0" arch="x86_64"/>
       <repopackage name="libvamp-hostsdk3" arch="x86_64"/>
       <repopackage name="libvcdinfo0" arch="x86_64"/>
       <repopackage name="libvdeplug3"/>
@@ -3246,6 +3252,8 @@
       <repopackage name="make"/>
       <repopackage name="make-lang"/>
       <repopackage name="makedumpfile"/>
+      <repopackage name="malcontent" arch="x86_64"/>
+      <repopackage name="malcontent-lang" arch="x86_64"/>
       <repopackage name="man"/>
       <repopackage name="man-pages"/>
       <repopackage name="man-pages-de"/>
@@ -3652,6 +3660,7 @@
       <repopackage name="patterns-yast-yast2_server"/>
       <repopackage name="pavucontrol" arch="x86_64"/>
       <repopackage name="pavucontrol-lang" arch="x86_64"/>
+      <repopackage name="pcfclock-kmp-default"/>
       <repopackage name="pciutils"/>
       <repopackage name="pcmciautils"/>
       <repopackage name="pcsc-acr38" arch="x86_64"/>
@@ -3873,8 +3882,8 @@
       <repopackage name="plymouth-theme-spinner"/>
       <repopackage name="pmdk" arch="x86_64"/>
       <repopackage name="pngquant" arch="x86_64"/>
-      <repopackage name="polari"/>
-      <repopackage name="polari-lang"/>
+      <repopackage name="polari" arch="x86_64"/>
+      <repopackage name="polari-lang" arch="x86_64"/>
       <repopackage name="policycoreutils" arch="x86_64"/>
       <repopackage name="policycoreutils-lang" arch="x86_64"/>
       <repopackage name="polkit" arch="x86_64"/>
@@ -4857,6 +4866,7 @@
       <repopackage name="syslog-service"/>
       <repopackage name="sysprof" arch="x86_64"/>
       <repopackage name="sysprof-lang" arch="x86_64"/>
+      <repopackage name="sysprof-ui" arch="x86_64"/>
       <repopackage name="system-config-printer" arch="x86_64"/>
       <repopackage name="system-config-printer-applet" arch="x86_64"/>
       <repopackage name="system-config-printer-common" arch="x86_64"/>
@@ -4910,12 +4920,12 @@
       <repopackage name="tcsh"/>
       <repopackage name="tcsh-lang"/>
       <repopackage name="technisat-usb2-firmware"/>
-      <repopackage name="telepathy-idle"/>
-      <repopackage name="telepathy-logger"/>
-      <repopackage name="telepathy-mission-control"/>
-      <repopackage name="telepathy-mission-control-plugin-goa"/>
+      <repopackage name="telepathy-idle" arch="x86_64"/>
+      <repopackage name="telepathy-logger" arch="x86_64"/>
+      <repopackage name="telepathy-mission-control" arch="x86_64"/>
+      <repopackage name="telepathy-mission-control-plugin-goa" arch="x86_64"/>
       <repopackage name="template-glib-lang" arch="x86_64"/>
-      <repopackage name="tepl-4-lang"/>
+      <repopackage name="tepl-5-lang"/>
       <repopackage name="terminfo"/>
       <repopackage name="terminfo-base"/>
       <repopackage name="terminfo-iterm"/>
@@ -5019,7 +5029,7 @@
       <repopackage name="typelib-1_0-GeocodeGlib-1_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-GES-1_0"/>
       <repopackage name="typelib-1_0-GFBGraph-0_2" arch="x86_64"/>
-      <repopackage name="typelib-1_0-GjsPrivate-1_0"/>
+      <repopackage name="typelib-1_0-GjsPrivate-1_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-GMenu-3_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-GnomeBluetooth-1_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-GnomeDesktop-3_0" arch="x86_64"/>
@@ -5028,7 +5038,7 @@
       <repopackage name="typelib-1_0-Graphene-1_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-Grl-0_3"/>
       <repopackage name="typelib-1_0-GSound-1_0"/>
-      <repopackage name="typelib-1_0-Gspell-1"/>
+      <repopackage name="typelib-1_0-Gspell-1" arch="x86_64"/>
       <repopackage name="typelib-1_0-Gst-1_0"/>
       <repopackage name="typelib-1_0-GstAudio-1_0"/>
       <repopackage name="typelib-1_0-GstPbutils-1_0"/>
@@ -5044,13 +5054,14 @@
       <repopackage name="typelib-1_0-Handy-0_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-HarfBuzz-0_0"/>
       <repopackage name="typelib-1_0-IBus-1_0"/>
-      <repopackage name="typelib-1_0-JavaScriptCore-4_0"/>
+      <repopackage name="typelib-1_0-JavaScriptCore-4_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-Json-1_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-Jsonrpc-1_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-libdazzle-1_0"/>
       <repopackage name="typelib-1_0-Libosinfo-1_0"/>
       <repopackage name="typelib-1_0-LibvirtGLib-1_0"/>
       <repopackage name="typelib-1_0-libxfce4util-1_0" arch="x86_64"/>
+      <repopackage name="typelib-1_0-Malcontent-0" arch="x86_64"/>
       <repopackage name="typelib-1_0-MediaArt-2_0"/>
       <repopackage name="typelib-1_0-NM-1_0"/>
       <repopackage name="typelib-1_0-NMA-1_0" arch="x86_64"/>
@@ -5059,14 +5070,14 @@
       <repopackage name="typelib-1_0-Pango-1_0"/>
       <repopackage name="typelib-1_0-Peas-1_0"/>
       <repopackage name="typelib-1_0-PeasGtk-1_0"/>
-      <repopackage name="typelib-1_0-Polari-1_0"/>
+      <repopackage name="typelib-1_0-Polari-1_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-Polkit-1_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-Rest-0_7" arch="x86_64"/>
       <repopackage name="typelib-1_0-Rsvg-2_0"/>
-      <repopackage name="typelib-1_0-Secret-1"/>
+      <repopackage name="typelib-1_0-Secret-1" arch="x86_64"/>
       <repopackage name="typelib-1_0-Soup-2_4"/>
-      <repopackage name="typelib-1_0-TelepathyGlib-0_12"/>
-      <repopackage name="typelib-1_0-TelepathyLogger-0_2"/>
+      <repopackage name="typelib-1_0-TelepathyGlib-0_12" arch="x86_64"/>
+      <repopackage name="typelib-1_0-TelepathyLogger-0_2" arch="x86_64"/>
       <repopackage name="typelib-1_0-Template-1_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-TotemPlParser-1_0"/>
       <repopackage name="typelib-1_0-Tracker-2_0" arch="x86_64"/>
@@ -5074,7 +5085,7 @@
       <repopackage name="typelib-1_0-TrackerControl-2_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-UpowerGlib-1_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-Vte-2.91" arch="x86_64"/>
-      <repopackage name="typelib-1_0-WebKit2-4_0"/>
+      <repopackage name="typelib-1_0-WebKit2-4_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-Wnck-3_0"/>
       <repopackage name="typelib-1_0-XApp-1_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-Zpj-0_0" arch="x86_64"/>
@@ -5112,9 +5123,14 @@
       <repopackage name="util-linux-systemd"/>
       <repopackage name="util-macros-devel"/>
       <repopackage name="v4l-conf"/>
+      <repopackage name="v4l-utils"/>
+      <repopackage name="v4l-utils-lang"/>
+      <repopackage name="v4l2loopback-kmp-default"/>
+      <repopackage name="v4l2loopback-utils"/>
       <repopackage name="vacation"/>
       <repopackage name="vala" arch="x86_64"/>
       <repopackage name="vcdimager" arch="x86_64"/>
+      <repopackage name="vhba-kmp-default"/>
       <repopackage name="vim"/>
       <repopackage name="vim-data"/>
       <repopackage name="vim-data-common"/>
