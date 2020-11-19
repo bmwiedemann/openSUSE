@@ -1,7 +1,7 @@
-Index: gdm-3.36.2/daemon/gdm-display.c
+Index: gdm-3.37.90/daemon/gdm-display.c
 ===================================================================
---- gdm-3.36.2.orig/daemon/gdm-display.c
-+++ gdm-3.36.2/daemon/gdm-display.c
+--- gdm-3.37.90.orig/daemon/gdm-display.c
++++ gdm-3.37.90/daemon/gdm-display.c
 @@ -1523,12 +1523,12 @@ can_create_environment (const char *sess
          return session_exists;
  }
@@ -27,10 +27,10 @@ Index: gdm-3.36.2/daemon/gdm-display.c
                  return FALSE;
          }
  
-Index: gdm-3.36.2/daemon/gdm-manager.c
+Index: gdm-3.37.90/daemon/gdm-manager.c
 ===================================================================
---- gdm-3.36.2.orig/daemon/gdm-manager.c
-+++ gdm-3.36.2/daemon/gdm-manager.c
+--- gdm-3.37.90.orig/daemon/gdm-manager.c
++++ gdm-3.37.90/daemon/gdm-manager.c
 @@ -62,7 +62,7 @@
  #define GDM_MANAGER_DISPLAYS_PATH GDM_DBUS_PATH "/Displays"
  
@@ -45,11 +45,11 @@ Index: gdm-3.36.2/daemon/gdm-manager.c
          GdmDisplay *display;
          const char *session_id;
 +        int fd = -1;
- #if defined(ENABLE_WAYLAND_SUPPORT) && defined(ENABLE_USER_DISPLAY_SERVER)
-         g_autofree char *display_session_type = NULL;
- #endif
-@@ -1813,6 +1814,15 @@ on_start_user_session (StartUserSessionO
- #endif
+ 
+         g_debug ("GdmManager: start or jump to session");
+ 
+@@ -1807,6 +1808,15 @@ on_start_user_session (StartUserSessionO
+                       "doing-initial-setup", &doing_initial_setup,
                        NULL);
  
 +        fd = open(BLOCK_INITIAL_SETUP, O_RDONLY|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC, 0644);
@@ -64,19 +64,14 @@ Index: gdm-3.36.2/daemon/gdm-manager.c
          if (doing_initial_setup)
                  chown_initial_setup_home_dir ();
  
-@@ -1833,8 +1843,6 @@ on_start_user_session (StartUserSessionO
+@@ -1827,20 +1837,9 @@ on_start_user_session (StartUserSessionO
  
                  g_object_ref (display);
                  if (doing_initial_setup) {
 -                        g_autoptr(GError) error = NULL;
--
- #if defined(ENABLE_WAYLAND_SUPPORT) && defined(ENABLE_USER_DISPLAY_SERVER)
-                         if (g_strcmp0 (display_session_type, "wayland") == 0) {
-                                 g_debug ("GdmManager: closing down initial setup display in background");
-@@ -1847,16 +1855,6 @@ on_start_user_session (StartUserSessionO
-                                 gdm_display_unmanage (display);
-                                 gdm_display_finish (display);
-                         }
+ 
+                         g_debug ("GdmManager: closing down initial setup display in background");
+                         g_object_set (G_OBJECT (display), "status", GDM_DISPLAY_WAITING_TO_FINISH, NULL);
 -
 -                        if (!g_file_set_contents (ALREADY_RAN_INITIAL_SETUP_ON_THIS_BOOT,
 -                                                  "1",
@@ -90,3 +85,15 @@ Index: gdm-3.36.2/daemon/gdm-manager.c
                  } else {
                          g_debug ("GdmManager: session has its display server, reusing our server for another login screen");
                  }
+Index: gdm-3.37.90/daemon/meson.build
+===================================================================
+--- gdm-3.37.90.orig/daemon/meson.build
++++ gdm-3.37.90/daemon/meson.build
+@@ -199,6 +199,7 @@ endif
+ 
+ gdm_daemon = executable('gdm',
+   [ gdm_daemon_sources, gdm_daemon_gen_sources ],
++  c_args: '-DLOCALSTATEDIR="'+get_option('localstatedir')+'"',
+   dependencies: gdm_daemon_deps,
+   include_directories: config_h_dir,
+   install: true,

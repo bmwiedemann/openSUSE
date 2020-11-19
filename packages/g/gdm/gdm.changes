@@ -1,8 +1,33 @@
 -------------------------------------------------------------------
+Wed Nov  4 10:05:13 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.38.2:
+  + Fix localization bug to prevented translated messages from
+    showing up.
+  + Deal more appropriately with broken accountsservice.
+
+-------------------------------------------------------------------
 Tue Oct 20 20:10:53 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update gdm-suse-xsession.patch: Handle the fact that xdm moved
   its files from /etc to /usr/etc (boo#1177918).
+
+-------------------------------------------------------------------
+Thu Oct 15 13:13:20 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.1:
+  + Fix bug leading to users /etc/gdm/custom.conf getting
+    overwritten on nvidia systems.
+  + Fix typo in comment.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct 13 00:31:42 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Using Xorg.wrap to start X server to solve X server working as root
+  in bsc#1075805 (bsc#1175867).
+  + Delete gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch
+  + Update X11-displaymanager-gdm
 
 -------------------------------------------------------------------
 Wed Sep 16 09:17:43 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
@@ -10,6 +35,52 @@ Wed Sep 16 09:17:43 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 - gdm-UsrEtc.patch
   * needed changes for xdm/xinit/xmodmap move to /usr/etc/X11
     (boo#1173049, boo#1173052, boo#1173053)
+
+-------------------------------------------------------------------
+Mon Sep 14 12:30:36 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.0:
+  + Crasher fix.
+  + Systemd unit file improvements.
+  + Updated translations.
+- Drop gdm-Xsession-inputname.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sun Sep  6 15:14:36 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Rebase
+  gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch.
+
+-------------------------------------------------------------------
+Sat Sep  5 10:48:29 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.90:
+  + Updates to systemd integration.
+  + Support killling X on login even when wayland support is
+    disabled.
+- Changes from version 3.37.3:
+  + PAM file updates for archlinux.
+  + User switching fix.
+  + Don't keep login screen running in background on Xorg.
+- Changes from version 3.37.1:
+  + Switch from autogoo t.o meson
+  + Fixes for when GDM isn't started on its configured initial VT.
+  + Don't hardcode path to plymouth.
+  + keyutils has a .pc file so use it.
+  + Enable wayland on cirrus.
+  + Chrome remote desktop fix.
+  + Always use separate session bus for greeter sessions.
+  + Updated translations.
+- Add pkgconfig(audit) BuildRequires: new dependency.
+- Rebase patches: gdm-disable-wayland-on-mgag200-chipsets.patch,
+  gdm-initial-setup-hardening.patch and
+  gdm-sysconfig-settings.patch.
+- Add gdm-Xsession-inputname.patch:Fix Xsession input file name.
+- Port to meson build system:
+  + Add meson BuildRequires.
+  + Drop autogen.sh source file.
+  + Replace configure/make/make_install macros with
+    meson/meson_build/meson_install.
 
 -------------------------------------------------------------------
 Tue Jul 14 05:10:44 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
