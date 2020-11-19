@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Nov 12 22:01:00 UTC 2020 - Thomas Renninger <trenn@suse.de>
+
+- Update turbostat to latest version 20.09.30 including:
+  * jsc#SLE-13412, jsc#SLE-13174 (rocket lake support)
+  * jsc#SLE-13448 (Alder Lake support)
+  * jsc#SLE-13348, jsc#SLE-13171 (Sapphire Rapid support)
+  * Support AMD Fam 19h
+- Touched patches:
+  Deleted mainline integrated patches:
+D    Correction-to-manpage-of-cpupower.patch
+D    cpupower-Revert-library-ABI-changes-from-commit-ae2917093fb60bdc1ed3e.patch
+  Patches refreshed:
+M    rapl_monitor.patch
+M    turbostat_makefile_fix_asm_header.patch
+
+-------------------------------------------------------------------
+Thu Oct 15 18:20:53 UTC 2020 - Thomas Renninger <trenn@suse.de>
+
+- Update intel-speed-select to version 1.6 (jsc#SLE-13334)
+
+-------------------------------------------------------------------
 Wed Jun 17 12:17:02 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add -fcommon to allow building against GCC10 

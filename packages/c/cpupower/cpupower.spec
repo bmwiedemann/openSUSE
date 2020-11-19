@@ -20,14 +20,14 @@
 # Use this as version when things are in mainline kernel
 %define version %(rpm -q --qf '%{VERSION}' kernel-source)
 
-%define tsversion      20.03.20
+%define tsversion      20.09.30
 %define pbversion      17.05.11
-%define ssversion      1.3
+%define ssversion      1.6
 
 Name:           cpupower
 # Use this as version when things are in mainline kernel
 %define version %(rpm -q --qf '%VERSION' kernel-source)
-Version:        5.5
+Version:        5.10
 Release:        0
 Summary:        Tools to determine and set CPU Power related Settings
 License:        GPL-2.0-only
@@ -42,8 +42,6 @@ Source5:        Makefile.intel-speed-select
 Patch1:         cpupower_rapl.patch
 Patch2:         rapl_monitor.patch
 Patch3:         cpupower_exclude_kernel_Makefile.patch
-Patch4:         cpupower-Revert-library-ABI-changes-from-commit-ae2917093fb60bdc1ed3e.patch
-Patch5:         Correction-to-manpage-of-cpupower.patch
 Patch6:         amd_do_not_show_amount_of_boost_states_if_zero.patch
 
 #turbostat patches
@@ -99,8 +97,6 @@ powersave module.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
-%patch5 -p1
 %patch6 -p1
 
 cd ../turbostat-%{tsversion}
