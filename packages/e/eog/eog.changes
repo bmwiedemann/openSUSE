@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Sep 14 12:38:40 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep  5 22:57:37 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.37.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  4 14:51:48 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.90:
+  + build: Make libportal dependency optional.
+  + help: change file to File.
+  + eog-window: Use view-restore symbolic icon.
+  + Make pressing Ctrl+Q close all windows.
+  + Use Wallpaper Portal for "Set as Wallpaper" when possible.
+  + Should inhibit screensaver only in slideshow mode.
+- Changes from version 3.37.2:
+  + Made strings consistent in format-change.page.
+  + Make EoG usable on phones.
+  + Use Portals and GtkAppChooserDialog for the "Open With"
+    choices.
+  + String with zooming in and out might be incorrect.
+- Changes from version 3.37.1:
+  + Change "Back space" to "Backspace".
+  + Change "Slide show" to "Slideshow".
+  + "Use the keyboard keys" could explain which ones.
+  + Updated translations.
+- Add pkgconfig(libportal) BuildRequires: new (optional)
+  dependency.
+
+-------------------------------------------------------------------
 Sat Jul  4 21:07:02 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.3:
