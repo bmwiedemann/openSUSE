@@ -17,15 +17,13 @@
 
 
 Name:           bpftrace
-Version:        0.11.2
+Version:        0.11.4
 Release:        0
 Summary:        High-level tracing language for Linux eBPF
 License:        Apache-2.0
 Group:          Development/Tools/Debuggers
 URL:            https://github.com/iovisor/bpftrace
 Source:         https://github.com/iovisor/bpftrace/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# OPENSUSE-FIX-UPSTREAM: Backport of <https://github.com/iovisor/bpftrace/pull/1589>.
-Patch1:         detect-7-arg-bpf_attach_uprobe.patch
 BuildRequires:  binutils
 BuildRequires:  binutils-devel
 BuildRequires:  bison
@@ -62,7 +60,6 @@ easily modified to allow for different types of debugging.
 
 %prep
 %setup -q
-%patch1 -p1
 
 # Correct the #!-line to avoid rpmlint warnings.
 find tools -name '*.bt' -type f \
