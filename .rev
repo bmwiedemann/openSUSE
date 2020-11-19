@@ -640,4 +640,12 @@
 - Raise dependency glib-2.0 version. (forwarded request 822927 from zcjia)</comment>
     <requestid>822966</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>861108213af8602da205fbd67766dfb4</srcmd5>
+    <version>2.42.0</version>
+    <time>1605783468</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.42.0 (forwarded request 847339 from dimstar)</comment>
+    <requestid>847419</requestid>
+  </revision>
 </revisionlist>
