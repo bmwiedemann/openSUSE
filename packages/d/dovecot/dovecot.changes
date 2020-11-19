@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 13 14:11:59 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Check first if they exist before creating user and group accounts
+
+-------------------------------------------------------------------
+Thu Nov  5 14:33:43 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use macro for systemd-tmpfiles call
+- Pre-Require shadow if we use it in %pre
+
+-------------------------------------------------------------------
 Wed Jul 15 14:29:02 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove unused systemd requires/defines.
