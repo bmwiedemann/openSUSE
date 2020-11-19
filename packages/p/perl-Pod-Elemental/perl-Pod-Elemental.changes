@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Sun Jan 26 03:09:18 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.103005
+   see /usr/share/doc/packages/perl-Pod-Elemental/Changes
+
+  0.103005  2020-01-25 15:53:25-05:00 America/New_York
+          - fix a typo in documentation (thanks, BooK!)
+
+-------------------------------------------------------------------
+Tue Apr 14 20:00:43 UTC 2015 - coolo@suse.com
+
+- updated to 0.103004
+   see /usr/share/doc/packages/perl-Pod-Elemental/Changes
+
+  0.103004  2014-12-26 22:31:16-05:00 America/New_York
+          - fix a regression in 0.103003, in which Nonpod paragraphs were not
+            converted into Pod5::Nonpod paragraphs by the Pod5 transformer
+  
+  0.103003  2014-12-23 21:11:26-05:00 America/New_York
+          - remove use of Moose::Autobox
+  
+  0.103002  2014-10-27 21:12:54-04:00 America/New_York
+          - make classes immutable to improve runtime speed
+  
+  0.103001  2014-05-20 20:45:43-04:00 America/New_York
+          - load Class::Load, which older Moose does not automatically load
+  
+  0.103000  2014-01-12 09:03:06-05:00 America/New_York
+            Pod::Elemental::Document only adds leading =pod or trailing =cut if
+            they are not already present
+  
+  0.102364  2013-11-28 07:27:08 America/New_York
+            stop using deprecated Class::MOP::load_class
+  
+  0.102363  2013-10-09 17:15:13 America/New_York
+            update bugtracker and repo metadata
+  
+  0.102362  2012-05-04 22:42:29 America/New_York
+            do not fail to nestify elements at the end of a sequence just because
+            they couldn't get any new children; it can break things down the
+            line; q.v., [rt.cpan.org #69189]
+  
+  0.102361  2011-08-05 10:32:02 America/New_York
+            the Pod5 transformer no longer loses vertical whitespace after Data
+            paragraphs
+
+-------------------------------------------------------------------
+Tue Apr 14 20:00:41 UTC 2015 - coolo@suse.com
+
+- updated to 0.102361
+   see /usr/share/doc/packages/perl-Pod-Elemental/Changes
+
+  0.102361  2011-08-05 10:32:02 America/New_York
+            the Pod5 transformer no longer loses vertical whitespace after Data
+            paragraphs
+
+-------------------------------------------------------------------
+Fri Jan 21 20:25:07 UTC 2011 - coolo@novell.com
+
+- initial package 0.102360
+  * created by cpanspec 1.78.03
+
