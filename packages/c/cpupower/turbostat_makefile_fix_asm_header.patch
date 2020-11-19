@@ -1,8 +1,10 @@
-Index: turbostat-19.08.31/Makefile
-===================================================================
---- turbostat-19.08.31.orig/Makefile	2019-10-29 15:23:56.962276473 +0100
-+++ turbostat-19.08.31/Makefile	2019-10-29 16:12:52.926434670 +0100
-@@ -9,9 +9,9 @@ ifeq ("$(origin O)", "command line")
+---
+ Makefile |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+--- a/Makefile
++++ b/Makefile
+@@ -9,9 +9,9 @@
  endif
  
  turbostat : turbostat.c
@@ -12,6 +14,6 @@ Index: turbostat-19.08.31/Makefile
 +override CFLAGS +=	-O2 -Wall -I ./include
 +override CFLAGS +=	-DMSRHEADER='"msr-index.h"'
 +override CFLAGS +=	-DINTEL_FAMILY_HEADER='"intel-family.h"'
+ override CFLAGS +=	-D_FILE_OFFSET_BITS=64
  override CFLAGS +=	-D_FORTIFY_SOURCE=2
  
- %: %.c
