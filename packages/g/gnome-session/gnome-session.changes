@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Sep 14 12:19:28 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.0:
+  + Updated translations.
+- Drop gnome-session-remove-gsd-XSettings.patch
+  gnome-session-s390-not-require-g-s-d_wacom.patch: no longer
+  applicable.
+
+-------------------------------------------------------------------
+Fri Sep  4 12:26:39 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.0:
+  + util: Unset GNOME_SETUP_DISPLAY at login time.
+  + main: clear environment on shutdown.
+  + gnome-session: avoid setting LC_ unless LANG and region
+    disagree.
+  + data: Add drop-in to configure launched applications.
+  + autostart-app: Place launched applications into a systemd
+    scope.
+  + doc: Add description of important systemd units to man page.
+  + fail-whale-dialog: Make dialog visible in all monitors.
+  + gnome-session-inhibit: Add --list command.
+  + gnome-session-ctl: Add systemd service failure checker.
+  + data: Major changes in systemd configuration.
+  + Updated translations.
+- Add pkgconfig(systemd) BuildRequires: new explicitly verified
+  dependency.
+- Drop gnome-session-error-numbers-wrong.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Tue May 12 07:18:56 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Update gnome-classic-s390-not-require-g-s-d_wacom.patch: Solve
