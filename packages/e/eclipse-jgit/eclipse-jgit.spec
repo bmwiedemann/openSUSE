@@ -17,7 +17,7 @@
 
 
 %global gittag 5.8.0.202006091008-r
-%define __requires_exclude osgi*
+%define __provides_exclude osgi*
 Name:           eclipse-jgit
 Version:        5.8.0
 Release:        0
