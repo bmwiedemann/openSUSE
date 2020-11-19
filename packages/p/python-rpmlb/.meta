@@ -1,0 +1,5 @@
+<package name="python-rpmlb" project="openSUSE:Factory">
+  <title></title>
+  <description>RPM List Builder</description>
+  <devel project="devel:languages:python" package="python-rpmlb"/>
+</package>
