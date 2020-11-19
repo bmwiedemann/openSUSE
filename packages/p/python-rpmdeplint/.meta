@@ -1,0 +1,5 @@
+<package name="python-rpmdeplint" project="openSUSE:Factory">
+  <title></title>
+  <description>Tool to find errors in RPM packages in the context of their dependency graph</description>
+  <devel project="devel:languages:python" package="python-rpmdeplint"/>
+</package>
