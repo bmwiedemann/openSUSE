@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Sep 11 12:37:22 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.0:
+  + No changes.
+
+-------------------------------------------------------------------
+Fri Sep  4 15:48:36 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.1:
+  + Remove some unused screenshots.
+  + Fix indentation, buffer reset, autocompletion in IPython
+    console.
+  + Highlight region-changed events from screen reader.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Aug  9 10:20:56 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.3:

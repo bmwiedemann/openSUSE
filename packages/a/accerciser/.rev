@@ -553,4 +553,12 @@ No LGPL-2.1+ licenses found in package (forwarded request 105656 from babelworx)
     <comment>New stable release (forwarded request 825148 from iznogood)</comment>
     <requestid>825307</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>2a6d0e67cd467799b16838dd79318301</srcmd5>
+    <version>3.38.0</version>
+    <time>1605800643</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.38</comment>
+    <requestid>847165</requestid>
+  </revision>
 </revisionlist>
