@@ -18,24 +18,26 @@
 
 
 Name:           gnome-sound-recorder
-Version:        3.34.0
+Version:        3.38.0
 Release:        0
 Summary:        Sound Recorder
 License:        BSD-3-Clause AND LGPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://wiki.gnome.org/Design/Apps/SoundRecorder
-Source0:        https://download.gnome.org/sources/gnome-sound-recorder/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-sound-recorder/3.38/%{name}-%{version}.tar.xz
 Source99:       gnome-sound-recorder-rpmlintrc
 
 BuildRequires:  appstream-glib
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(gjs-1.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.46
+BuildRequires:  pkgconfig(gio-2.0) >= 2.43.4
+BuildRequires:  pkgconfig(gjs-1.0) >= 1.54.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.39.3
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.31.6
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12
+BuildRequires:  pkgconfig(gstreamer-player-1.0) >= 1.12
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.13.2
+BuildRequires:  pkgconfig(libhandy-1) >= 0.80.0
 Requires:       gjs
 Requires:       gstreamer-plugins-bad
 Requires:       gstreamer-plugins-base
@@ -59,7 +61,7 @@ A simple, modern sound recorder.
 %install
 %meson_install
 %suse_update_desktop_file -G "Sound Recorder" -r org.gnome.SoundRecorder GNOME AudioVideo Recorder
-%find_lang %{name}
+%find_lang org.gnome.SoundRecorder
 
 %files
 %license COPYING
@@ -72,8 +74,8 @@ A simple, modern sound recorder.
 %{_datadir}/applications/org.gnome.SoundRecorder.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.SoundRecorder.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.SoundRecorder*
-%{_datadir}/metainfo/org.gnome.SoundRecorder.appdata.xml
+%{_datadir}/metainfo/org.gnome.SoundRecorder.metainfo.xml
 
-%files lang -f %{name}.lang
+%files lang -f org.gnome.SoundRecorder.lang
 
 %changelog
