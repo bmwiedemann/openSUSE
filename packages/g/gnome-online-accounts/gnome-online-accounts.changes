@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 10 14:29:11 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.38.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  4 12:53:09 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.90:
+  + Bugs fixed:
+    - daemon: Remove the --no-sigint flag and always handle SIGINT.
+    - webview: Enable web process sandbox.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Mar 11 00:22:08 UTC 2020 - mgorse@suse.com
 
 - Update to version 3.36.0:
