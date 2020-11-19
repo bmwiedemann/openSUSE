@@ -17,14 +17,14 @@
 
 
 %define sonum   5
-%define _tar_path 5.75
+%define _tar_path 5.76
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kconfig
-Version:        5.75.0
+Version:        5.76.0
 Release:        0
 Summary:        Advanced configuration system
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -110,6 +110,7 @@ Requires:       extra-cmake-modules
 Requires:       kconf_update5 = %{version}
 Requires:       libKF5ConfigCore%{sonum} = %{version}
 Requires:       libKF5ConfigGui%{sonum} = %{version}
+Requires:       cmake(Qt5DBus) >= 5.12.0
 Requires:       cmake(Qt5Xml) >= 5.12.0
 
 %description devel
