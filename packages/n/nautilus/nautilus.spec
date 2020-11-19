@@ -17,14 +17,14 @@
 
 
 Name:           nautilus
-Version:        3.36.3
+Version:        3.38.1
 Release:        0
 Summary:        File Manager for the GNOME Desktop
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/File utilities
 URL:            https://wiki.gnome.org/Apps/Nautilus
 
-Source0:        https://download.gnome.org/sources/nautilus/3.36/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/nautilus/3.38/%{name}-%{version}.tar.xz
 # fate#308344 bgo#602147
 Source1:        mount-archive.desktop
 Source2:        set_trusted.desktop
@@ -37,7 +37,7 @@ BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
-BuildRequires:  meson
+BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
 # We need the %%mime_database_* macros
 BuildRequires:  shared-mime-info
@@ -47,7 +47,7 @@ BuildRequires:  pkgconfig(gail-3.0)
 BuildRequires:  pkgconfig(gexiv2) >= 0.10.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.55.1
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.55.1
-BuildRequires:  pkgconfig(glib-2.0) >= 2.55.1
+BuildRequires:  pkgconfig(glib-2.0) >= 2.62.0
 BuildRequires:  pkgconfig(gmodule-no-export-2.0) >= 2.55.1
 BuildRequires:  pkgconfig(gnome-autoar-0) >= 0.2.1
 BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.0.0
@@ -58,9 +58,8 @@ BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.8
 BuildRequires:  pkgconfig(pango) >= 1.44.4
-BuildRequires:  pkgconfig(tracker-sparql-2.0)
-BuildRequires:  pkgconfig(x11)
-Requires:       (tracker-miner-files with tracker-miner-files < 2.99)
+BuildRequires:  pkgconfig(tracker-sparql-3.0)
+Requires:       tracker-miner-files >= 2.99
 Recommends:     gvfs
 
 %description
@@ -150,10 +149,14 @@ install -m0755 %{SOURCE3} %{buildroot}%{_bindir}/set_trusted.sh
 %{_bindir}/nautilus-autorun-software
 %{_datadir}/applications/*.desktop
 %{_datadir}/dbus-1/services/org.freedesktop.FileManager1.service
+%{_datadir}/dbus-1/services/org.gnome.Nautilus.Tracker3.Miner.Extract.service
+%{_datadir}/dbus-1/services/org.gnome.Nautilus.Tracker3.Miner.Files.service
 %{_datadir}/dbus-1/services/org.gnome.Nautilus.service
 %{_datadir}/glib-2.0/schemas/org.gnome.nautilus.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Nautilus*
 %{_datadir}/metainfo/org.gnome.Nautilus.appdata.xml
+%{_datadir}/%{name}/
+%{_datadir}/tracker3/domain-ontologies/org.gnome.Nautilus.domain.rule
 %{_mandir}/man1/nautilus*.1%{ext_man}
 %if 0%{?sle_version}
 %{_sysconfdir}/skel/.config/autostart
