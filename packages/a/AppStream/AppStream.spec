@@ -30,6 +30,8 @@ Source1:        http://www.freedesktop.org/software/appstream/releases/%{name}-%
 Source2:        %{name}.keyring
 # PATCH-FIX-UPSTREAM
 Patch1:         properly-escape-markup.patch
+# https://github.com/ximion/appstream/pull/287
+Patch2:         0001-Set-FD_CLOEXEC-on-the-LMDB-FD-manually.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       fix-build-gcc7.patch
 BuildRequires:  docbook-xsl-stylesheets
