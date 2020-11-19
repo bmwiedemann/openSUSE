@@ -1,7 +1,7 @@
 #
 # spec file for package cheese
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %define lib_gtk_major 25
 
 Name:           cheese
-Version:        3.34.0
+Version:        3.38.0
 Release:        0
 Summary:        Webcam Booth for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://wiki.gnome.org/Apps/Cheese
-Source0:        https://download.gnome.org/sources/cheese/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/cheese/3.38/%{name}-%{version}.tar.xz
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
