@@ -16,10 +16,6 @@
 #
 
 
-%if %{undefined suse_version}
-# get python versions
-%global py3_ver %(if [ -f "python3" ]; then python3 -c "import sys; sys.stdout.write(sys.version[:3])"; else echo 0; fi;)
-%endif
 Name:           gns3-gui
 Version:        2.2.16
 Release:        0
@@ -32,6 +28,7 @@ Patch0:         %{name}_fix_desktop_file.patch
 Patch1:         gns3-gui-fix-requirements.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 %if 0%{?suse_version} > 1500
