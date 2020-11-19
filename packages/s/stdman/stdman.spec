@@ -1,7 +1,7 @@
 #
 # spec file for package stdman
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           stdman
-Version:        2018.03.11
+Version:        2019.08.27
 Release:        0
 Summary:        C++ stdlib man pages
 License:        MIT
 Group:          Documentation/Man
 URL:            https://github.com/jeaye/stdman
-Source0:        https://github.com/jeaye/stdman/archive/2018.03.11.tar.gz
+Source0:        https://github.com/jeaye/stdman/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 Requires:       man
 
 %description
-stdman is a tool that parses archived HTML files from cppreference and generates groff-formatted manual pages for Unix-based systems. The goal is to provide excellent formatting for easy readability.
+stdman is a tool that parses archived HTML files from cppreference and
+generates groff-formatted manual pages for Unix-based systems. The goal is to
+provide excellent formatting for easy readability.
 
 This package provides the full cppreference documentation in the man format.
 
