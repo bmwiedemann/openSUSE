@@ -17,13 +17,13 @@
 
 
 Name:           orca
-Version:        3.36.6
+Version:        3.38.0
 Release:        0
 Summary:        Screen reader for GNOME
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Orca
-Source0:        https://download.gnome.org/sources/orca/3.36/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/orca/3.38/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection

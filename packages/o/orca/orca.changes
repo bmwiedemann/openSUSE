@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Sep 11 17:35:29 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.0:
+  + Web:
+    - Don't present aria-placeholder value when it's identical to
+      aria-label.
+    - Fall back on object attributes for absent text attributes.
+  + General:
+    - Add some sanity checks to prevent crashing due to GStreamer
+      failure.
+    - Announce read-only state for checkboxes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  4 18:10:15 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.90:
+  + Announce when rows, columns get reordered due to aria-sort
+    changing.
+  + Fix bug causing some web content to not be presented in flat
+    review.
+  + Fall back on "placeholder" when "placeholder-text" is not used
+    by browsers.
+  + Fix bug causing presentation of stale content when navigating
+    by word.
+  + Skip over clickable images during line nav if the author has
+    set alt to "".
+  + Fix bug causing events from Google Docs to be ignored when a
+    dialog appears but lacks focus.
+  + Emit mode-changed notifications to inform other tools
+    (magnifiers, highlighting tools) what mode Orca is in when
+    presenting content.
+  + Miscellaneous tweaks to GUI labels and documentation.
+  + Attempt to reconnect to speech-dispatcher when setting
+    capitalization style fails due to SSIPCommunicationError.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Aug 31 14:43:06 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.6:
