@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Nov  7 21:35:31 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.76.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.76.0
+- Too many changes since 5.75.0, only listing bugfixes:
+  * Always show ExpandableListitem buttons, not just on hover (kde#428624)
+  * Lock the header colours of Breeze Dark and Breeze Light (kde#427864)
+  * [ExpandableListItem] Make colored text 100% opaque (kde#427171)
+  * ComboBox3.contentItem must be a QQuickTextInput to fix autocomplete (kde#424076)
+  * Toggle plasmoids when shortcut is activated (kde#400278)
+- Drop upstream patches:
+  * 0001-BusyIndicator-Do-not-rotate-when-invisible.patch
+  * 0001-Fix-BusyIndicator-rotating-even-when-invisible-again.patch
+
+-------------------------------------------------------------------
 Sat Oct 17 11:50:09 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to avoid 100% CPU usage by plasmashell:
