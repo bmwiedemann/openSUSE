@@ -17,36 +17,47 @@
 #
 
 
-%define sover 3
+%define flavor @BUILD_FLAVOR@%nil
+%if "%{flavor}" == "UI"
+  %define enable_gtk true
+  %define _name_suffix -ui
+%else
+  %define enable_gtk false
+  %define _name_suffix %nil
+%endif
 
-Name:           sysprof
-Version:        3.36.0
+%define sover 4
+
+Name:           sysprof%{_name_suffix}
+Version:        3.38.1
 Release:        0
 Summary:        A system-wide Linux profiler
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Tools/Debuggers
 URL:            https://wiki.gnome.org/Apps/Sysprof
-Source0:        https://download.gnome.org/sources/sysprof/3.36/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM sysprof-fix-build-32-bit-platforms.patch -- Fix build on 32 bit arches
-Patch0:         sysprof-fix-build-32-bit-platforms.patch
+Source0:        https://download.gnome.org/sources/sysprof/3.38/sysprof-%{version}.tar.xz
 
 BuildRequires:  gcc-c++
-BuildRequires:  hicolor-icon-theme
 BuildRequires:  itstool
-BuildRequires:  meson >= 0.50.0
+BuildRequires:  meson >= 0.51.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gio-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.56
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
-BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.30.0
 BuildRequires:  pkgconfig(libsystemd) >= 222
 BuildRequires:  pkgconfig(libunwind-generic)
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.105
 BuildRequires:  pkgconfig(systemd)
+%if "%{flavor}" == "UI"
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  sysprof-capture-devel-static
+BuildRequires:  sysprof-devel
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.30.0
 Requires:       hicolor-icon-theme
-%{?systemd_requires}
+%endif
+%{?systemd_ordering}
 
 %description
 Sysprof is a sampling CPU profiler for Linux that collects accurate,
@@ -73,77 +84,97 @@ syspref's capture format.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n sysprof-%{version}
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-%meson
+%meson -Denable_gtk=%{enable_gtk} -Denable_tests=false
 %meson_build
 
 %install
 %meson_install
+%if "%{flavor}" == "UI"
+%suse_update_desktop_file org.gnome.Sysprof3 Profiling
+for file in $(rpm -qla "*sysprof*"); do
+  [ -f %{buildroot}${file} ] && rm %{buildroot}${file}
+done
+rm -rf %{buildroot}%{_datadir}/locale/*/LC_MESSAGES/sysprof.mo %{buildroot}/%{_datadir}/help/*/sysprof
+%else
 %find_lang %{name} %{?no_lang_C}
-%suse_update_desktop_file org.gnome.Sysprof%{sover} Profiling
+%endif
 
 %check
 %meson_test
 
+%if "%{flavor}" == ""
 %pre
-%service_add_pre sysprof%{sover}.service
+%service_add_pre sysprof3.service
 %service_add_pre sysprof2.service
 
 %preun
-%service_del_preun sysprof%{sover}.service
+%service_del_preun sysprof3.service
 %service_del_preun sysprof2.service
+%endif
 
 %post
 /sbin/ldconfig
-%service_add_post sysprof%{sover}.service
+%if "%{flavor}" == ""
+%service_add_post sysprof3.service
 %service_add_post sysprof2.service
+%endif
 
 %postun
 /sbin/ldconfig
-%service_del_postun sysprof%{sover}.service
+%if "%{flavor}" == ""
+%service_del_postun sysprof3.service
 %service_del_postun sysprof2.service
+%endif
 
 %files
 %license COPYING
 %doc NEWS README.md
+%if "%{flavor}" == "UI"
 %{_bindir}/sysprof
-%{_bindir}/sysprof-cli
 %{_datadir}/applications/*.desktop
+%{_datadir}/glib-2.0/schemas/org.gnome.sysprof3.gschema.xml
+%{_datadir}/icons/hicolor/*/*/*
+%{_datadir}/metainfo/org.gnome.Sysprof3.appdata.xml
+%{_datadir}/mime/packages/sysprof-mime.xml
+%{_libdir}/libsysprof-ui-%{sover}.so
+%else
+%{_bindir}/sysprof-cli
 %{_datadir}/dbus-1/interfaces/org.gnome.Sysprof2.xml
-%{_datadir}/dbus-1/interfaces/org.gnome.Sysprof%{sover}.Profiler.xml
-%{_datadir}/dbus-1/interfaces/org.gnome.Sysprof%{sover}.Service.xml
+%{_datadir}/dbus-1/interfaces/org.gnome.Sysprof3.Profiler.xml
+%{_datadir}/dbus-1/interfaces/org.gnome.Sysprof3.Service.xml
 %dir %{_datadir}/dbus-1/system.d
 %{_datadir}/dbus-1/system.d/org.gnome.Sysprof2.conf
-%{_datadir}/dbus-1/system.d/org.gnome.Sysprof%{sover}.conf
+%{_datadir}/dbus-1/system.d/org.gnome.Sysprof3.conf
 %{_datadir}/dbus-1/system-services/org.gnome.Sysprof2.service
-%{_datadir}/dbus-1/system-services/org.gnome.Sysprof%{sover}.service
-%{_datadir}/glib-2.0/schemas/org.gnome.sysprof%{sover}.gschema.xml
-%{_datadir}/icons/hicolor/*/*/*
-%{_datadir}/metainfo/org.gnome.Sysprof%{sover}.appdata.xml
-%{_datadir}/mime/packages/sysprof-mime.xml
-%{_datadir}/polkit-1/actions/org.gnome.sysprof%{sover}.policy
+%{_datadir}/dbus-1/system-services/org.gnome.Sysprof3.service
+%{_datadir}/polkit-1/actions/org.gnome.sysprof3.policy
 %{_libdir}/libsysprof-%{sover}.so
 %{_libdir}/libsysprof-memory-%{sover}.so
-%{_libdir}/libsysprof-ui-%{sover}.so
+%{_libdir}/libsysprof-speedtrack-%{sover}.so
 %{_libexecdir}/sysprofd
 %{_unitdir}/sysprof2.service
-%{_unitdir}/sysprof%{sover}.service
+%{_unitdir}/sysprof3.service
 %dir %{_datadir}/help/C/sysprof
 %doc %{_datadir}/help/C/sysprof/*
+%endif
 
 %files devel
 %doc AUTHORS
 %{_includedir}/sysprof-%{sover}/
-%{_libdir}/pkgconfig/sysprof-%{sover}.pc
+%if "%{flavor}" == "UI"
 %{_libdir}/pkgconfig/sysprof-ui-%{sover}.pc
+%else
+%{_libdir}/pkgconfig/sysprof-%{sover}.pc
 
 %files capture-devel-static
 %{_libdir}/libsysprof-capture-%{sover}.a
 %{_libdir}/pkgconfig/sysprof-capture-%{sover}.pc
 
 %files lang -f %{name}.lang
+%endif
 
 %changelog
