@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 17 15:26:35 UTC 2020 - psimons@suse.com
+
+- Update microlens-ghc to version 0.4.13.
+  # 0.4.13
+
+  * New minor release (microlens-0.4.12.0).
+
+-------------------------------------------------------------------
 Tue Aug 18 10:45:26 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.
