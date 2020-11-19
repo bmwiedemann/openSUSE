@@ -17,16 +17,16 @@
 
 
 # Use of library versioning and name versioning macros to facilitate updatings
-%define namever 0_14-0
-%define libver  0.14
+%define namever 1-0
+%define libver  1
 Name:           retro-gtk
-Version:        0.18.1
+Version:        1.0.0
 Release:        0
 Summary:        Toolkit to write Gtk+3-based frontends to libretro
 License:        GPL-3.0-only
 Group:          System/GUI/GNOME
 URL:            https://git.gnome.org/browse/retro-gtk
-Source0:        https://download.gnome.org/sources/retro-gtk/0.18/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/retro-gtk/1.0/%{name}-%{version}.tar.xz
 
 BuildRequires:  gobject-introspection-devel >= 0.6.7
 BuildRequires:  meson >= 0.50.0
@@ -40,6 +40,7 @@ BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libpulse-simple)
+BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(vapigen)
 
 %description
@@ -49,6 +50,7 @@ GNOME Games.
 %package -n libretro-gtk-%{namever}
 Summary:        Toolkit to write Gtk+3-based frontends to libretro
 Group:          System/Libraries
+Requires:       %{name} >= %{version}
 
 %description -n libretro-gtk-%{namever}
 retro-gtk wraps the libretro API for use in Gtk applications such as
@@ -91,6 +93,9 @@ rm -rf %{buildroot}%{_datadir}/doc/%{name}
 
 %post   -n libretro-gtk-%{namever} -p /sbin/ldconfig
 %postun -n libretro-gtk-%{namever} -p /sbin/ldconfig
+
+%files
+%{_libexecdir}/retro-runner
 
 %files -n libretro-gtk-%{namever}
 %license COPYING
