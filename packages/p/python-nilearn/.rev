@@ -39,4 +39,30 @@
     <comment></comment>
     <requestid>841775</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d15688abf5edb6ba5e4b7ba378213f5e</srcmd5>
+    <version>0.7.0</version>
+    <time>1605800857</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0
+- Add patch to fix aarch64 test:
+  * nilearn-fix-aarch64.patch
+- Drop upstreamed patches:
+  * fix-test_save_cmap.patch
+  * update-numpy-warning.patch
+- Disable 'test_clean_confounds' and 'test_reorder_img_mirror ' 
+  until we have a fix. See: 
+    https://github.com/nilearn/nilearn/issues/2608
+    https://github.com/nilearn/nilearn/issues/2610
+</comment>
+    <requestid>849415</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>a3fc19c0472d68b0823972c8db1b7a44</srcmd5>
+    <version>0.7.0</version>
+    <time>1605958993</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849637</requestid>
+  </revision>
 </revisionlist>
