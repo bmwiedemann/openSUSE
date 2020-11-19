@@ -152,4 +152,12 @@ Hi legal / babelworx -- you already reviewed this ok in previous sr (sr#452943),
     <comment>New stable rel (forwarded request 817408 from iznogood)</comment>
     <requestid>817613</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c7fd33367dbee140e6fc9c83b7115a9f</srcmd5>
+    <version>4.8.0</version>
+    <time>1605783399</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.38</comment>
+    <requestid>847239</requestid>
+  </revision>
 </revisionlist>
