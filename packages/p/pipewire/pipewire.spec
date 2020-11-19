@@ -35,7 +35,7 @@
 %endif
 
 Name:           pipewire
-Version:        0.3.13
+Version:        0.3.15
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -43,6 +43,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://pipewire.org/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
+Source99:       baselibs.conf
 Patch0:         fix-memfd_create-call.patch
 Patch1:         do-not-use-snd_pcm_ioplug_hw_avail.patch
 Patch2:         do-not-install-alsa-config-files.patch
@@ -290,10 +291,9 @@ export CC=gcc-9
 %meson_install
 
 mkdir -p %{buildroot}%{_sysconfdir}/alsa/conf.d/
-for filename in 50-pipewire.conf \
-                99-pipewire-default.conf ; do
-    cp -a pipewire-alsa/conf/"$filename" %{buildroot}%{_sysconfdir}/alsa/conf.d/
-done
+# Copy the alsa configuration but keep 99-pipewire-default.conf disabled by default
+cp -a pipewire-alsa/conf/50-pipewire.conf %{buildroot}%{_sysconfdir}/alsa/conf.d/
+cp -a pipewire-alsa/conf/99-pipewire-default.conf %{buildroot}%{_sysconfdir}/alsa/conf.d/99-pipewire-default.conf.example
 
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 for wrapper in pw-pulse pw-jack ; do
@@ -372,7 +372,7 @@ fi
 %dir %{_sysconfdir}/alsa
 %dir %{_sysconfdir}/alsa/conf.d
 %config(noreplace) %{_sysconfdir}/alsa/conf.d/50-pipewire.conf
-%config(noreplace) %{_sysconfdir}/alsa/conf.d/99-pipewire-default.conf
+%{_sysconfdir}/alsa/conf.d/99-pipewire-default.conf.example
 
 %files -n %{libpipewire}
 %license LICENSE COPYING
@@ -445,6 +445,7 @@ fi
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-portal.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-profiler.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-protocol-native.so
+%{_libdir}/pipewire-%{apiver}/libpipewire-module-protocol-pulse.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-rtkit.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-session-manager.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-spa-device-factory.so
