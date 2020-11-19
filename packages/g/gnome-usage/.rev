@@ -47,4 +47,12 @@
     <comment>Eliminate the -lang recommends (forwarded request 767156 from dimstar)</comment>
     <requestid>767421</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>da6331885c4e3b88cc8626ef1cefa95a</srcmd5>
+    <version>3.37.1</version>
+    <time>1605783377</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.38</comment>
+    <requestid>847233</requestid>
+  </revision>
 </revisionlist>
