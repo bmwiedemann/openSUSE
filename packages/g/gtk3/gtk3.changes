@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Oct 15 13:49:46 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Pass --disable-tracker3 to configure: This disables the tracker
+  search integration in the file open dialog, but avoids crashes in
+  apps loading GTK3 and still using Tracker.
+
+-------------------------------------------------------------------
+Mon Sep  7 09:59:18 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Enable tracker 3 support:
+  + Add pkgconfig(tracker-sparql-3.0) BuildRequires.
+  + Pass --enable-tracker3 to meson.
+
+-------------------------------------------------------------------
+Sat Sep  5 10:33:25 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.24.23:
+  + Adwaita: Support error states for labels and entries.
+  + Printing: Use the correct names for remote printers.
+  + File choser: Default to tracker2 for search to prevent
+    symbol clashes in tracker-using applications.
+  + Wayland:
+    - Support newer schemas for settings.
+    - Fix DND hotspot handling.
+    - Disconnect on display close.
+  + X11: Fix a possible crash with disabled devices.
+  + Updated translations.
+- Switch to regular release tarballs: it's been a while that we
+  deviated from the tags.
+
+-------------------------------------------------------------------
 Mon Aug 10 16:55:00 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.24.22:
@@ -40,7 +71,7 @@ Sun Jun 28 22:12:09 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
     - Improve frame clock smoothness.
     - Fix frame clock monotonicity.
   + Adwaita: Improve notebook tab legibility.
-  + Updated translations. 
+  + Updated translations.
 
 -------------------------------------------------------------------
 Mon Apr 27 18:13:11 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -170,7 +201,7 @@ Tue Nov 19 11:00:51 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
 -------------------------------------------------------------------
 Fri Nov  1 19:36:09 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
-- Don't recommend -lang subpackage 
+- Don't recommend -lang subpackage
 
 -------------------------------------------------------------------
 Wed Oct 23 10:06:55 UTC 2019 - bjorn.lie@gmail.com
