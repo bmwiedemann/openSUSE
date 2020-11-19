@@ -92,6 +92,7 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cabal-tweak-dep-ver microlens '< 0.4.12' '< 0.5'
 
 %build
 %ghc_lib_build
