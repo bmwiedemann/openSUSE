@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov  7 21:35:30 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.76.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.76.0
+- Changes since 5.75.0:
+  * If include is define in .h remove it if it's defined in .cpp too (scripted)
+  * Add enum and declarations to allow passing capabilities
+    in the registration process to NetworkManager
+
+-------------------------------------------------------------------
 Mon Oct  5 08:33:42 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.75.0
