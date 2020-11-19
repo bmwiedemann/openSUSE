@@ -178,6 +178,8 @@ Prefer: libdb-4_8-devel
 #Prefer: cdrtools
 VMinstall: util-linux libmount1 perl-base libdb-4_8 libsepol1 libblkid1 libuuid1 libsmartcols1 libcrypt1
 VMinstall: kernel-obs-build
+# USe the x86_64 kernel on i586 builds - boo#1178762 - Slow down in OBS since kernel 5.6.0 on 32bit
+ExportFilter: ^kernel-obs-build.*\.x86_64.rpm$ . i586
 VMInstall: iproute2 libmnl0
 
 ExportFilter: \.x86_64\.rpm$ x86_64
