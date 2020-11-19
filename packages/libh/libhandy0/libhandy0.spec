@@ -17,6 +17,7 @@
 
 
 %define shlib %{_name}-0_0-0
+#define with_glade 1
 
 Name:           libhandy0
 %define _name   libhandy
@@ -34,7 +35,9 @@ BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala
+%if 0%{?with_glade}
 BuildRequires:  pkgconfig(gladeui-2.0)
+%endif
 BuildRequires:  pkgconfig(gnome-desktop-3.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.1
@@ -98,7 +101,7 @@ libhandy widgets in Glade.
 	-Dgtk_doc=true \
 	-Dtests=false \
 	-Dexamples=false \
-	-Dglade_catalog=enabled \
+	-Dglade_catalog=%{?with_glade:enabled}%{?!with_glade:disabled} \
 	%{nil}
 %meson_build
 
@@ -125,8 +128,10 @@ libhandy widgets in Glade.
 %files -n typelib-1_0-Handy-0_0
 %{_libdir}/girepository-1.0/*.typelib
 
+%if 0%{?with_glade}
 %files -n glade-catalog-libhandy0
 %{_libdir}/glade/modules/*.so
 %{_datadir}/glade/catalogs/*.xml
+%endif
 
 %changelog
