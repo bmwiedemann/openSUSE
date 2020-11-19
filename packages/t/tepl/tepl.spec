@@ -16,24 +16,26 @@
 #
 
 
-%define api_ver 4
+%define api_ver 5
 %define lib_ver %{api_ver}-0
 Name:           tepl
-Version:        4.4.0
+Version:        5.0.0
 Release:        0
 Summary:        Text Editor Product Line
-License:        LGPL-2.1-or-later
+License:        LGPL-3.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Projects/Tepl
-Source:         https://download.gnome.org/sources/tepl/4.4/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/tepl/5.0/%{name}-%{version}.tar.xz
 BuildRequires:  gobject-introspection-devel >= 1.42.0
 BuildRequires:  gtk-doc
+BuildRequires:  meson >= 0.53
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(amtk-5) >= 5.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.52
+BuildRequires:  pkgconfig(gio-2.0) >= 2.64
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0
-BuildRequires:  pkgconfig(libxml-2.0) >= 2.5
+BuildRequires:  pkgconfig(icu-i18n)
+BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(uchardet)
 
 %description
@@ -79,29 +81,27 @@ applications that want to make use of tepl.
 %setup -q
 
 %build
-%configure \
-    --enable-gtk-doc
-%make_build
+%meson \
+        -Dgtk_doc=true
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 %find_lang %{name}-%{api_ver}
 
 %post   -n libtepl-%{lib_ver} -p /sbin/ldconfig
 %postun -n libtepl-%{lib_ver} -p /sbin/ldconfig
 
 %files -n libtepl-%{lib_ver}
-%license COPYING
-%doc NEWS
+%doc LICENSES/LGPL-3.0-or-later.txt
 %{_libdir}/libtepl-%{api_ver}.so.*
 
 %files -n typelib-1_0-Tepl-%{api_ver}
 %{_libdir}/girepository-1.0/Tepl-%{api_ver}.typelib
 
 %files devel
-%doc ABOUT-NLS AUTHORS ChangeLog HACKING README
-%doc %{_datadir}/gtk-doc/html/%{name}-4.0
+%doc AUTHORS HACKING README
+%doc %{_datadir}/gtk-doc/html/%{name}-5
 %{_datadir}/gir-1.0/Tepl-%{api_ver}.gir
 %{_includedir}/tepl-%{api_ver}/
 %{_libdir}/pkgconfig/tepl-%{api_ver}.pc
