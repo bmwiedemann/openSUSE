@@ -17,13 +17,13 @@
 
 
 Name:           gnome-tetravex
-Version:        3.36.4
+Version:        3.38.1
 Release:        0
 Summary:        Tetravex Game for GNOME
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://live.gnome.org/Tetravex
-Source0:        https://download.gnome.org/sources/gnome-tetravex/3.36/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-tetravex/3.38/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
