@@ -1,7 +1,7 @@
 #
 # spec file for package cairomm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,19 @@
 
 
 Name:           cairomm
-Version:        1.15.5
+Version:        1.16.0
 Release:        0
 Summary:        C++ Interface for Cairo
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            http://cairographics.org
-Source:         https://www.cairographics.org/releases/%{name}-%{version}.tar.gz
+Source:         https://www.cairographics.org/releases/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-# needs doxygen for the documentation
+
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
+BuildRequires:  graphviz
+BuildRequires:  meson
 BuildRequires:  mm-common
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -62,16 +64,16 @@ Group:          Documentation/HTML
 This package provides documentation for the Cairo C++ interface.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-export CXXFLAGS="-std=c++17 %{optflags}"
-%configure --disable-static
-make %{?_smp_mflags}
+%meson \
+	-Dbuild-documentation=true \
+	%{nil}
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 
 %post -n libcairomm-1_16-1 -p /sbin/ldconfig
 %postun -n libcairomm-1_16-1 -p /sbin/ldconfig
