@@ -222,4 +222,12 @@
     <comment></comment>
     <requestid>784408</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>eb485b2db1c7d683f128fffd2e3a02c5</srcmd5>
+    <version>0.2.2</version>
+    <time>1605783442</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.38</comment>
+    <requestid>847268</requestid>
+  </revision>
 </revisionlist>
