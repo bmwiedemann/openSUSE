@@ -17,13 +17,12 @@
 
 
 Name:           git-annex
-Version:        8.20201103
+Version:        8.20201116
 Release:        0
 Summary:        Manage files with git, without checking their contents into git
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND BSD-2-Clause AND MIT AND GPL-2.0-only
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://github.com/peti/git-annex/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         0001-enable-extensions-needed-by-new-version-of-persisten.patch
 BuildRequires:  bash-completion
 BuildRequires:  chrpath
 BuildRequires:  curl
@@ -169,7 +168,7 @@ Supplements:    (%{name} and bash-completion)
 Optional dependency offering bash completion for git-annex
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %define cabal_configure_options -ftestsuite

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Nov 17 15:41:20 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- drop 0001-enable-extensions-needed-by-new-version-of-persistent.patch
+
+-------------------------------------------------------------------
+Mon Nov 16 21:55:38 UTC 2020 - psimons@suse.com
+
+- Update git-annex to version 8.20201116.
+  git-annex (8.20201116) upstream; urgency=medium
+
+    * move: Fix a regression in the last release that made move --to not
+      honor numcopies settings.
+    * sync --content: Fix a bug where a file that was not preferred content
+      could be transferred to a remote. This happened when the file got deleted
+      after the sync started running.
+    * Warn when adding a annex symlink or pointer file that uses a key that
+      is not known to the repository, to prevent confusion if the user has
+      copied it from some other repository.
+    * examinekey: Added two new format variables: objectpath and objectpointer
+    * examinekey: Added --migrate-to-backend
+
+   -- Joey Hess <id@joeyh.name>  Mon, 16 Nov 2020 09:36:35 -0400
+
+-------------------------------------------------------------------
 Sat Nov  7 22:15:09 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - add ./0001-enable-extensions-needed-by-new-version-of-persisten.patch 
