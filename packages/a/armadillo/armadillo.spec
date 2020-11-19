@@ -18,7 +18,7 @@
 
 %define soname libarmadillo10
 Name:           armadillo
-Version:        10.1.1
+Version:        10.1.2
 Release:        0
 Summary:        C++ matrix library with interfaces to LAPACK and ATLAS
 License:        Apache-2.0
@@ -100,7 +100,7 @@ sed -i 's/\r$//' NOTICE.txt
 for i in `ls examples/*.cpp`; do sed -i 's/\r$//' $i; done
 
 %build
-%cmake
+%cmake -DBUILD_SMOKE_TEST:BOOL=ON
 %cmake_build
 
 %install
@@ -109,6 +109,10 @@ rm -f examples/Makefile.cmake
 rm -rf examples/example1_win64.*
 rm -rf examples/example2_win64.*
 rm -rf examples/lib_win64
+
+%check
+export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
+%ctest
 
 %post -n %{soname} -p /sbin/ldconfig
 %postun -n %{soname} -p /sbin/ldconfig
