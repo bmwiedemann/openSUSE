@@ -1,7 +1,7 @@
 #
 # spec file for package sound-juicer
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           sound-juicer
-Version:        3.24.0
+Version:        3.38.0
 Release:        0
 Summary:        Clean and Lean GNOME CD Ripper
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/CD/Grabbers
 URL:            http://www.burtonini.com/blog/computers/sound-juicer/
-Source0:        http://download.gnome.org/sources/sound-juicer/3.24/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/sound-juicer/3.38/%{name}-%{version}.tar.xz
 BuildRequires:  brasero-devel
 BuildRequires:  fdupes
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
@@ -55,31 +56,23 @@ GStreamer-based CD ripping tool. Saves audio CDs to Ogg/vorbis.
 translation-update-upstream po %{name}
 
 %build
-%configure
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
+# we do not want to pollute /usr/doc as a namespace
+rm -rf %{buildroot}%{_prefix}/doc
 %suse_update_desktop_file org.gnome.SoundJuicer AudioVideo Player Audio
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}
 
-%post
-%glib2_gsettings_schema_post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%glib2_gsettings_schema_postun
-%desktop_database_postun
-%icon_theme_cache_postun
-
 %files
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README TODO
+%doc AUTHORS NEWS TODO README.md
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/*
-%{_datadir}/appdata/org.gnome.SoundJuicer.appdata.xml
+%{_datadir}/metainfo/org.gnome.SoundJuicer.metainfo.xml
 %{_datadir}/applications/*.desktop
 %{_datadir}/dbus-1/services/org.gnome.SoundJuicer.service
 %{_datadir}/GConf/gsettings/sound-juicer.convert
