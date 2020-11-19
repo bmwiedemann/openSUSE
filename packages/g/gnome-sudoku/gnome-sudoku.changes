@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Sep 14 12:44:09 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep  5 10:41:09 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.92:
+  + Display incorrect earmarks as red.
+
+-------------------------------------------------------------------
+Fri Sep  4 11:58:43 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.90:
+  + Redesign new game menu using a listbox.
+  + Do not draw focused or highlighted cell when board is not in
+    focus.
+  + Highlight all numbers equal to selected one.
+- Changes from version 3.37.3:
+  + New app icon.
+- Changes from version 3.37.2:
+  + Remove limit on earmarks.
+  + Earmarks are now displayed in fixed positions.
+  + Improve earmark picker.
+  + Make D-Bus activatable.
+  + Additional preparation for GTK 4.
+- Changes from version 3.37.1:
+  + Various refactoring and preparation for GTK 4.
+
+-------------------------------------------------------------------
 Wed Aug 19 08:58:18 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Stop calling -%fdupes on %{buildroot}/%{_libexecdir}: no files
