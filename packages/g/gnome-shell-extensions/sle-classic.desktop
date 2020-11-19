@@ -135,7 +135,7 @@ Comment[vi]=Phiên làm việc này đăng nhập bạn vào SLE Cổ điển
 Comment[zh_CN]=该会话将登录到“SLE 经典模式”
 Comment[zh_HK]=這個作業階段讓你登入 SLE Classic
 Comment[zh_TW]=這個作業階段讓您登入 SLE Classic
-Exec=env GNOME_SHELL_SESSION_MODE=sle-classic gnome-session --session gnome-classic
+Exec=env GNOME_SHELL_SESSION_MODE=sle-classic gnome-session
 TryExec=gnome-session
 Icon=
 Type=Application
