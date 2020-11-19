@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 11:20:18 UTC 2020 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- dehydrated-apache2: Check for mod_compat (bsc#1178927) 
+
+-------------------------------------------------------------------
 Mon Sep 14 13:42:19 UTC 2020 - Daniel Molkentin <daniel.molkentin@suse.com>
 
 - Reenable nginx subpackage for factory 

@@ -4,4 +4,14 @@ Alias /.well-known/acme-challenge @CHALLENGEDIR@
    AllowOverride None
    Require all granted
    ForceType text/plain
+
+<IfModule !mod_access_compat.c>
+   Require all granted
+</IfModule>
+
+<IfModule mod_access_compat.c>
+   Order allow,deny
+   Allow from all
+</IfModule>
+
 </Directory>
