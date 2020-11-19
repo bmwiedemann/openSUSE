@@ -23,7 +23,7 @@
 %define _name   vte
 
 Name:           vte
-Version:        0.60.3
+Version:        0.62.1
 Release:        0
 Summary:        Terminal Emulator Library
 License:        LGPL-2.0-only AND LGPL-3.0-only AND GPL-3.0-or-later
@@ -150,7 +150,7 @@ translation-update-upstream po vte-%{_apiver}
 %{_bindir}/vte-%{?_binver}
 
 %files devel
-%doc AUTHORS NEWS
+%doc AUTHORS
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/*.so
 %{_includedir}/vte-%{_apiver}/
