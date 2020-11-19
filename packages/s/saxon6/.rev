@@ -88,4 +88,15 @@
     <comment>Fix build with jdk9</comment>
     <requestid>527099</requestid>
   </revision>
+  <revision rev="12" vrev="15">
+    <srcmd5>370e9c62c112e6ef2e99fdb841260bbd</srcmd5>
+    <version>6.5.5</version>
+    <time>1605800799</time>
+    <user>dimstar_suse</user>
+    <comment>- Add the maven metadata in order to be usable in maven build
+- Remove &quot;fop&quot; subpackage because it provides an empty JAR.
+  Source files do not contain any FOP support.
+</comment>
+    <requestid>849419</requestid>
+  </revision>
 </revisionlist>
