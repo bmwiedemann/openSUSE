@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Sep 11 12:33:34 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  4 15:49:58 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.1:
+  + Enable WebKitGTK sandbox.
+  + Add more keyboard shortcuts to zoom actions.
+  + Improvements to the build system.
+  + Improvement to the Flatpak.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Apr 25 18:19:41 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.2:
