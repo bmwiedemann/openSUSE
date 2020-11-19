@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 22 14:25:16 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.38.0:
+  + Fix build when Wayland is disabled.
+  + Make X11 and Wayland configurable at build time.
+  + Sync font-widget with gnome-font-viewer.
+  + Fix various meson build issues.
+  + Sandbox webkitgtk.
+  + Fix crash caused by the lack of getters for viewers'
+    properties.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:19:52 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
