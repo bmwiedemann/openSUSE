@@ -1,7 +1,7 @@
 #
 # spec file for package maven-plugin-build-helper
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,32 +16,25 @@
 #
 
 
+%global srcname build-helper-maven-plugin
 Name:           maven-plugin-build-helper
-Version:        1.9.1
+Version:        3.2.0
 Release:        0
 Summary:        Build Helper Maven Plugin
 License:        MIT
-Group:          Development/Libraries/Java
-URL:            http://mojo.codehaus.org/build-helper-maven-plugin/
-# The source tarball has been generated from upstream VCS:
-# svn export https://svn.codehaus.org/mojo/tags/build-helper-maven-plugin-%{version} %{name}-%{version}
-# tar caf %{name}-%{version}.tar.xz %{name}-%{version}
-Source0:        %{name}-%{version}.tar.xz
+URL:            https://www.mojohaus.org/build-helper-maven-plugin/
+Source0:        https://github.com/mojohaus/%{srcname}/archive/%{srcname}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
+BuildRequires:  mvn(org.apache-extras.beanshell:bsh)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-invoker-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
-BuildRequires:  mvn(org.apache.maven:maven-artifact)
-BuildRequires:  mvn(org.apache.maven:maven-compat)
+BuildRequires:  mvn(org.apache.maven.shared:file-management)
 BuildRequires:  mvn(org.apache.maven:maven-core)
-BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
-BuildRequires:  mvn(org.apache.maven:maven-project)
-BuildRequires:  mvn(org.beanshell:bsh)
 BuildRequires:  mvn(org.codehaus.mojo:mojo-parent:pom:)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
-BuildRequires:  xz
 BuildArch:      noarch
 
 %description
@@ -50,28 +43,25 @@ Maven build lifecycle.
 
 %package javadoc
 Summary:        API documentation for %{name}
-Group:          Documentation/HTML
 
 %description javadoc
 This package provides %{summary}.
 
 %prep
-%setup -q
-
-%pom_add_dep org.apache.maven:maven-compat
+%setup -q -n %{srcname}-%{srcname}-%{version}
 
 %build
-%{mvn_build} -f -- -Dsource=6
+%{mvn_build} -f -- -Dsource=7
 
 %install
 %mvn_install
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
-%license header.txt
-%dir %{_javadir}/%{name}
+%license LICENSE.txt
+%doc README.md
 
 %files javadoc -f .mfiles-javadoc
-%license header.txt
+%license LICENSE.txt
 
 %changelog
