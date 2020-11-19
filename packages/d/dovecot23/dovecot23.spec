@@ -114,10 +114,10 @@ BuildRequires:  libexttextcat-devel
 %endif
 %if %{with systemd}
 BuildRequires:  pkgconfig(systemd)
-%{?systemd_requires}
+%{?systemd_ordering}
 %define has_systemd 1
 %endif
-PreReq:         shadow %fillup_prereq
+PreReq:         %fillup_prereq
 # bump requires on noarch package to the version which copies the files from /usr/share/dovecot/
 Requires:       dovecot >= 2.3
 Conflicts:      otherproviders(dovecot-implementation)
@@ -461,16 +461,8 @@ rm %{buildroot}%{_unitdir}/dovecot.{service,socket}
 rm %{buildroot}%{_sysconfdir}/%{pkg_name}/README
 
 %pre
-test -n "$FIRST_ARG" || FIRST_ARG=$1
-getent group %{pkg_name} >/dev/null || /usr/sbin/groupadd -r %{pkg_name}
-getent passwd %{pkg_name} >/dev/null || \
-	/usr/sbin/useradd -g %{pkg_name} -s /bin/false -r \
-	-c "User for Dovecot imapd" -d %{_var}/run/%{pkg_name} %{pkg_name}
-getent passwd dovenull >/dev/null || \
-	/usr/sbin/useradd -g %{pkg_name} -s /bin/false -r \
-	-c "User for Dovecot login" -d %{_var}/run/%{pkg_name} dovenull
 # do not let dovecot run during upgrade rhbz#134325
-if [ "$FIRST_ARG" -ge "1" ]; then
+if [ "$1" -ge "1" ]; then
   rm -f %restart_flag
   %if %{with systemd}
     # we get installed before the unversioned dovecot package is installed
@@ -496,10 +488,9 @@ fi
 %post -p /sbin/ldconfig
 
 %postun
-test -n "$FIRST_ARG" || FIRST_ARG=$1
 /sbin/ldconfig
 # do not let dovecot run during upgrade rhbz#134325
-if [ "$FIRST_ARG" -ge "1" -a -e %restart_flag ]; then
+if [ "$1" -ge "1" -a -e %restart_flag ]; then
   %if %{with systemd}
     # we get installed before the unversioned dovecot package is installed
     # in that case we dont need to restart as there was no file to start us before
