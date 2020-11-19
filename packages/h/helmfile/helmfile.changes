@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov 19 09:42:48 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.135.0: Add support for Kustomize Transformers (#1592)
+  * b910591 (HEAD, tag: v0.135.0, origin/master, origin/HEAD, master)
+    Add support for Kustomize Transformers (#1592)
+  * d807510 Enable shell completion (#1559)
+  * 4e48521 Fix the logic of helmfile deps and add tests. (#1588)
+  * b0e0429 Fix incorrect help text of some CLI options. (#1587)
+  * f877de7 Fix openSUSE repo URL. (#1584)
+  * 655d593 Mention about helmBinary in readme (#1590)
+
+- v0.134.1: Fix `helmfile template --include-crds` not to break with
+  `chartify` (…
+  * f6bf885 (HEAD, tag: v0.134.1, origin/master, origin/HEAD, master)
+    Fix helmfile template --include-crds not to break with chartify (#1583)
+  * 2857382 fix: support arm binaries (#1580)
+  * 972667f Mention openSUSE packages for helmfile (#1581)
+  * 3c88145 Update readme stable/incubator URLs (#1582)
+
+-------------------------------------------------------------------
 Tue Nov 10 15:32:53 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.134.0: Bump dependencies (#1573)

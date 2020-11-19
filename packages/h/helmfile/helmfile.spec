@@ -2,7 +2,7 @@
 # spec file for package helmfile
 #
 # Copyright (c) 2020 SUSE LLC
-#		2020 Manfred Hollstein <manfred.h@gmx.net>
+#               2020 Manfred Hollstein <manfred.h@gmx.net>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define git_commit 709913b5eac85033effea3d4f05ad37c255f97bc
+%define git_commit b910591e1d08973f9a73951f41c3e0b028d475a8
 Name:           helmfile
-Version:        0.134.0
+Version:        0.135.0
 Release:        0
 Summary:        Deploy Kubernetes Helm Charts
 License:        MIT
@@ -26,7 +26,7 @@ Group:          Development/Languages/Other
 URL:            https://github.com/roboll/helmfile
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Requires:	helm
+Requires:       helm
 BuildRequires:  golang-packaging
 BuildRequires:  xz
 BuildRequires:  golang(API) >= 1.14
