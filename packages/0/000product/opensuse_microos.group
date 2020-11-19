@@ -265,7 +265,6 @@
     <package name="evolution-data-server" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="expat" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="fcoe-utils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-hardware -->
-    <package name="file-roller" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="flatpak" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="fontconfig" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="fonts-config" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
@@ -672,6 +671,8 @@
     <package name="libcrack2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libcreaterepo_c0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libcrypto46" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
+    <package name="libcryptui-data" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
+    <package name="libcryptui0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libcue2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libcups2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libcupsimage2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
@@ -702,7 +703,7 @@
     <package name="libecal-2_0-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libedata-book-1_2-26" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libedata-cal-2_0-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
-    <package name="libedataserver-1_2-24" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
+    <package name="libedataserver-1_2-25" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libedataserverui-1_2-2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libeditorconfig0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libefivar1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
@@ -758,8 +759,10 @@
     <package name="libgnome-bluetooth13" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libgnome-desktop-3-19" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libgnome-desktop-3_0-common" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
+    <package name="libgnome-keyring0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libgnome-menu-3-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libgnomekbd8" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
+    <package name="libgnomesoftware-3_38_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libgnomesu" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libgnomesu0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libgnutls30" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
@@ -816,6 +819,7 @@
     <package name="libgweather-3-16" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libgxps2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libhandy-0_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
+    <package name="libhandy-1-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libharfbuzz-gobject0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libharfbuzz-icu0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libharfbuzz0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
@@ -868,6 +872,8 @@
     <package name="liblrdf2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libltdl7" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="liblvm2cmd2_03" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
+    <package name="libmalcontent-0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
+    <package name="libmalcontent-ui-0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libmfx1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libminizip1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libmjpegutils-2_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
@@ -876,7 +882,6 @@
     <package name="libmnl0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libmodman1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libmodulemd2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
-    <package name="libmozjs-68" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libmozjs-78-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libmp3lame0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libmpath0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
@@ -890,7 +895,7 @@
     <package name="libmtdev1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libmtp-udev" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libmtp9" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
-    <package name="libmutter-6-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
+    <package name="libmutter-7-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libnautilus-extension1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libndp0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libndr-krb5pac0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
@@ -1042,8 +1047,8 @@
     <package name="libtotem-plparser18" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libtracker-common-2_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libtracker-control-2_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
-    <package name="libtracker-miner-2_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libtracker-sparql-2_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
+    <package name="libtracker-sparql-3_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libts0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libtss2-esys0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-ima_evm -->
     <package name="libtss2-mu0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-ima_evm -->
@@ -1054,6 +1059,7 @@
     <package name="libunwind" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libupower-glib3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="liburcu6" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
+    <package name="liburing1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libusb-1_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libusbmuxd6" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libv4l" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
@@ -1149,6 +1155,7 @@
     <package name="lua53" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="lua53-luasocket" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="lvm2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
+    <package name="malcontent" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="mdadm" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="metatheme-adwaita-common" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="microos-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
@@ -1162,6 +1169,7 @@
     <package name="mutter" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="mutter-data" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="nautilus" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
+    <package name="nautilus-extension-seahorse" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="nautilus-extension-terminal" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="nautilus-share" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="net-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
@@ -1335,6 +1343,7 @@
     <package name="sddm" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="sddm-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="sddm-theme-openSUSE" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
+    <package name="seahorse-daemon" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="selinux-policy" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="selinux-policy-targeted" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
     <package name="selinux-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-selinux -->
@@ -1374,9 +1383,9 @@
     <package name="timezone" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="toolbox" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-containers-container_runtime -->
     <package name="totem-pl-parser" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
+    <package name="tracker-miner-files" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
+    <package name="tracker-miners" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="tracker2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
-    <package name="tracker2-miner-files" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
-    <package name="tracker2-miners" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="transactional-update" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="transactional-update-zypp-config" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="typelib-1_0-AccountsService-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
@@ -1400,6 +1409,7 @@
     <package name="typelib-1_0-HarfBuzz-0_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="typelib-1_0-IBus-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="typelib-1_0-Json-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
+    <package name="typelib-1_0-Malcontent-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="typelib-1_0-NM-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="typelib-1_0-NMA-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="typelib-1_0-Notify-0_7" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
@@ -1413,12 +1423,14 @@
     <package name="ucode-amd" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="ucode-intel" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="udisks2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
+    <package name="unzip" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="upower" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="util-linux-systemd" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="vim-data-common" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="vim-small" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="wallpaper-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="webkit2gtk-4_0-injected-bundles" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
+    <package name="wget" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="which" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="wicked" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="wicked-service" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
