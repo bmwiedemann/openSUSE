@@ -604,4 +604,12 @@
 - Rebase gnome-boxes-opensuse.patch. (forwarded request 825134 from iznogood)</comment>
     <requestid>825303</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>e110fb759aecade960b072e9a5a0965c</srcmd5>
+    <version>3.38.1</version>
+    <time>1605783306</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.38</comment>
+    <requestid>847198</requestid>
+  </revision>
 </revisionlist>

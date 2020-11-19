@@ -22,16 +22,22 @@
 %define govf_sover 0.1
 %define gfrdp_sover 0.1
 Name:           gnome-boxes
-Version:        3.36.6
+Version:        3.38.1
 Release:        0
 Summary:        A GNOME 3 application to access remote or virtual systems
 License:        LGPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/Apps/Boxes
-Source0:        https://download.gnome.org/sources/gnome-boxes/3.36/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-boxes/3.38/%{name}-%{version}.tar.xz
 
 # PATCH-FEATURE-OPENSUSE fcrozat@suse.com -- Ensure openSUSE Leap and TW are listed as recommended distributions
 Patch0:         gnome-boxes-opensuse.patch
+# PATCH-FATURE-OPENSUSE gnome-boxes-system-libhandy.patch dimstar@opensuse.org -- Revert the way upstream introduced the linhandy submodule in 3.38 (master is solved better)
+Patch1:         gnome-boxes-system-libhandy.patch
+# PATCH-FEATURE-OPENSUSE gnome-boxes-libhandy-as-submodule.patch dimstar@opensuse.org -- Convert libhandy to submodule, the master branch way
+Patch2:         gnome-boxes-libhandy-as-submodule.patch
+# PATCH-FEATURE-OPENSUSE gnome-boxes-libhandy-1.patch dimstar@opensuse.org -- Port to libhandy-1, taken from git master
+Patch3:         gnome-boxes-libhandy-1.patch
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
@@ -46,8 +52,10 @@ BuildRequires:  pkgconfig(gobject-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.6
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.20
 BuildRequires:  pkgconfig(gtk-vnc-2.0) >= 0.4.4
+BuildRequires:  pkgconfig(gtksourceview-4)
 BuildRequires:  pkgconfig(gudev-1.0) >= 165
 BuildRequires:  pkgconfig(libarchive) >= 3.0.0
+BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libosinfo-1.0) >= 1.7
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.38
@@ -56,7 +64,7 @@ BuildRequires:  pkgconfig(libvirt-gconfig-1.0) >= 2.0.0
 BuildRequires:  pkgconfig(libvirt-gobject-1.0) >= 3.0.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.8
 BuildRequires:  pkgconfig(spice-client-gtk-3.0) >= 0.32
-BuildRequires:  pkgconfig(tracker-sparql-2.0)
+BuildRequires:  pkgconfig(tracker-sparql-3.0)
 BuildRequires:  pkgconfig(vte-2.91)
 BuildRequires:  pkgconfig(webkit2gtk-4.0)
 # Needed for unattended installations
@@ -199,6 +207,8 @@ translation-update-upstream
 %{_datadir}/gnome-boxes/sources/QEMU_Session
 %{_datadir}/gnome-boxes/unattended/disk.img
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Boxes*
+%{_datadir}/osinfo/os/gnome.org/gnome-nightly.xml
+%{_datadir}/osinfo/os/gnome.org/gnome-3.38.xml
 
 %files -n libgovf-%{govf_libver}
 %dir %{_libdir}/gnome-boxes/
