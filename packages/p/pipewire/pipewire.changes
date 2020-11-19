@@ -1,4 +1,147 @@
 -------------------------------------------------------------------
+Thu Nov  5 10:37:18 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.3.15:
+  * Highlights
+    + This is a quick update to fix critical issues with the
+      0.3.14 update, which broke screen sharing and accidentally
+      enabled the experimental pulse-server.
+    + Fix some compatibility issues in pulse-server with
+      pavucontrol and fix an issue that would block the complete
+      server.
+  * PipeWire improvements
+    + Permission checks for new clients are now done from a
+      global context, which makes it possible to assign initial
+      permissions to objects.
+    + Handle EINTR everywhere
+    + Fix an issue with the node state changes where a quick
+      pause/play would hang a client.
+  * Session manager improvements
+    + Disable the bluez5 and pulse-bridge modules by default
+      because they interfere with pulseaudio. These options should
+      only be enabled if pulseaudio is removed or disabled in the
+      system.
+    + Fix an issue where the session manager could end up in
+      infinite recursion while scanning for things to do.
+    + The session manager will now always configure nodes to remix
+      to the channel configuration of the device. This fixes the
+      case where mono streams would only end up on one channel of a
+      stereo device.
+  * Device support
+    + Initial merge of A2DP extra codec support using the new
+      bluez5 API.
+  * pulse-server
+    + Create the runtime directory when it doesn't exist.
+    + Don't ever block the server, use non-blocking IO everywhere.
+    + Fill description of profiles with the name if not otherwise
+      set, this fixes a crash in pavucontrol.
+    + the connection debug catergory will now also debug pulse
+      messages.
+    + Respect the no_remix flag to make the control panel channel
+      check work.
+  * ALSA plugin
+    + implement pause
+
+-------------------------------------------------------------------
+Tue Nov  3 08:11:46 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.3.14:
+  * Highlights
+    + This release focuses on bugfixes and stability
+      improvements.
+    + A new experimental pulse-server module was added. This
+      module implements the pulseaudio protocol on top of
+      PipeWire and can be used to make flatpaks work with
+      PipeWire. It looks like this might be a better way
+      forward compared to the libpulse.so replacement library.
+    + A2DP bluetooth was reworked. Playback should work a lot
+      better now. Support was also added to automatically link
+      an A2DP source to a playback device, which makes it possible
+      to use PipeWire as a bluetooth receiver as well.
+    + Improvements to the routing and volume restore features
+      of the session manager.
+  * PipeWire improvements
+    + The channelmixer does not normalize volumes anymore. Volumes
+      are only normalized for monitoring streams now.
+    + Streams can actually start in the inactive state now.
+    + The channelmixer can now also convert volume updates from one
+      channel layout to another. This makes saved volumes work
+      even when streams have different channel layouts.
+    + Clients are only registered after the properties have been
+      updated.
+    + Links now have a new active state.
+    + Drivers can now also specify a minimum quantum. This makes it
+      possible for bluetooth devices to specify an optimum quantum
+      for the given codec settings and MTU.
+    + The amount of data sent over the socket was reduced by only
+      sending the data that changed.
+    + Client objects are now exposed after they uploaded their
+      properties, which makes the new object more useful.
+  * Tools improvements
+    + pw-cat will now add metadata to the PipeWire streams.
+  * Session manager improvements
+    + Fix crashes when reading bad data in stored settings.
+    + volume and routing is improved. Settings are now remembered
+      per application or media-role.
+    + The session manager remembers the last device used per stream
+    + Fix a bug when moving streams where it could sometimes end
+      up with linking a stream to multiple devices.
+    + Use RTKit to set realtime priority on the data thread in the
+      session manager. This improves performance of the pulse-server
+      and bluetooth devices.
+    + Add a new property to mark streams that want to capture from
+      the monitor of the default sink.
+    + NODE_TARGET can now also contain the node name. This avoids
+      some lookups in the pulseaudio layer when selecting target
+      nodes by name.
+    + the -e and -d options are more usable now and can be used to
+      add and remove modules from the default list of modules.
+  * Device support
+    + v4l2: add some workarounds for buggy drivers. Add Limited
+      support for droidcam.
+    + ACP: improve selection of default port and profiles.
+    + ACP: add support for using the hardware mixer for more than
+      8 channel streams.
+    + ACP: support the new port type and availability group found
+      in PulseAudio.
+    + A2DP bluetooth timings were reworked. Automatic linking of
+      A2DP sources was added to make it possible for PipeWire to
+      act as a bluetooth receiver. The code was reworked to allow
+      other codecs such as APTX and LDAC in the future.
+    + Try harder to recover from ALSA errors.
+  * GStreamer improvements
+    + Fix some crashes in the monitor that cause
+      gnome-initial-setup to crash.
+  * PulseAudio layer improvements
+    + Many compatibility improvements. Improved playback in
+      chrome. Fix a crash in firefox when the daemon is stopped.
+    + Fix a leak in the formats.
+    + Fix !ADJUST_LATENCY streams like paplay.
+    + Make the device option in paplay work.
+    + Fix volume/mute notifications, this makes plasma volume updates
+      work again.
+    + Do the conversion between PulseAudio cubic volumes and PipeWire
+      linear volumes. Volume levels should behave now like they did
+      with PulseAudio.
+  * JACK layer improvements
+    + Return an error when we run out of midi events. Some application
+      rely on this behaviour.
+  * ALSA plugin improvements
+    + The ALSA plugin now also supports the node name in the
+      playback_node and capture_node properties.
+
+-------------------------------------------------------------------
+Tue Oct 27 17:32:57 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Rename 99-pipewire-default.conf to
+  99-pipewire-default.conf.example so it's disabled by default and
+  all ALSA I/O doesn't get redirected to pipewire (which was only
+  overrided by pulseaudio's configuration in alsa-plugins-pulse
+  casually). Thanks to Takashi Iwai for noticing (boo#1178104,
+  boo#1177166 and probably boo#1175584)
+- Add baselibs.conf (boo#1177555)
+
+-------------------------------------------------------------------
 Thu Oct  8 08:29:36 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.3.13:

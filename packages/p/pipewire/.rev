@@ -172,4 +172,12 @@
       start with something. (forwarded request 841457 from alarrosa)</comment>
     <requestid>841554</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>617bb408f7ce436de087afe8ef9d9439</srcmd5>
+    <version>0.3.15</version>
+    <time>1605783426</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.38</comment>
+    <requestid>847256</requestid>
+  </revision>
 </revisionlist>
