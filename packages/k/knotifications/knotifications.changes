@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Nov  7 21:35:05 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.76.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.76.0
+- Changes since 5.75.0:
+  * Mark KNotification::activated() as deprecated
+  * If include is define in .h remove it if it's defined in .cpp too (scripted)
+  * Apply some sanity checking to action keys (kde#427717)
+  * Use FindGradle from ECM
+  * Fix condition to use dbus
+  * Fix: enable legacy tray on platforms without dbus
+  * rewrite notifybysnore to provide more reliable support for Windows
+  * Add comments to describe DesktopEntry field in notifyrc file
+
+-------------------------------------------------------------------
 Mon Oct  5 08:33:26 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.75.0
