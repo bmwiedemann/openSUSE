@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Sep 14 14:20:58 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.0:
+  + No changes.
+
+-------------------------------------------------------------------
+Fri Sep  4 15:41:43 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.92:
+  + inkscape 1.0 based rendering.
+  + build system fixes.
+  + fullcolor: removable media.
+  + remove legacy fullcolor weather icons.
+- Changes from version 3.37.2:
+  + symbolic: night light metaphor.
+  + symbolic: larger expanders.
+  + scripts -- rendrable with inkscape 1.0.
+
+-------------------------------------------------------------------
 Fri Apr 17 18:21:26 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.1:
