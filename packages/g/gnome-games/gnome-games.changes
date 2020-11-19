@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Sep 14 12:54:27 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.0:
+  + Adapt to retro-gtk 1.0 changes.
+  + Fix criticals when opening preferences.
+  + Fix build with older valac.
+  + Updated translations.
+- Split out GNOME shell search provider package.
+
+-------------------------------------------------------------------
+Fri Sep  4 16:03:12 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.37.90:
+  + Introduce collections:
+    - Favorites
+    - Recently Played
+    - Manual collections
+    - Selection mode to manage collections and favorite games
+  + UI:
+    - Blur background behind game covers.
+    - Overhaul preferences window to match HdyPreferencesWindow
+      layout.
+    - Remove delay before pausing the game after focusing out.
+    - Make headerbar semi-transparent in fullscreen mode.
+  + Fixes:
+    - Fix desktop game detection.
+    - Fix criticals after removing games.
+    - Properly reveal the titlebar after exiting fullscreen mode.
+    - Fix Ctrl+Q shortcut on non-latin keyboard layouts.
+    - Don't use unsupported Vala syntax.
+- Changes from version 3.37.2:
+  + Support DBus activation.
+  + Add a Ctrl+? shortcut for opening the shortcuts window.
+  + Use libhandy rows in the preferences window.
+  + Add an option override to disable pcsx_rearmed dynarec for now.
+  + Update screenshots in appdata.
+  + Various cleanups.
+  + Updated translations.
+- Replace pkgconfig(libhandy-0.0) BuildRequires with
+  pkgconfig(libhandy-1) and pkgconfig(retro-gtk-0.14) with
+  pkgconfig(retro-gtk-1): Follow upstreams changes.
+
+-------------------------------------------------------------------
 Wed Apr  1 15:14:11 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.1:
