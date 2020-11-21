@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov 17 17:37:44 UTC 2020 - Dario Faggioli <dfaggioli@suse.com>
+
+- GNOME: encrypt/decript files from Nautilus
+  * we need both the extension and the package providing
+    /usr/bin/seahorse-daemon
+  * Seahorse, the app, is _not_ installed as it's available on
+    flathub
+
+-------------------------------------------------------------------
+Tue Nov 17 10:37:59 UTC 2020 - Dario Faggioli <dfaggioli@suse.com>
+
+- GNOME pattern package changes:
+  * drop file roller RPM as there is org.gnome.FileRoller
+  * add some packages that I've (as well as most users that have
+    tried MicroOS desktop recently) found useful during initial
+    setup
+  * while there, update a comment about using Requires vs. Recommends
+
+-------------------------------------------------------------------
 Mon Oct 19 10:41:20 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add cockpit pattern
