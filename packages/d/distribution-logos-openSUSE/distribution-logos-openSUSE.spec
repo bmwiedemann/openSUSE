@@ -1,7 +1,8 @@
 #
 # spec file for package distribution-logos-openSUSE
 #
-# Copyright (c) 2019 Stasiek Michalski <hellcp@opensuse.org>.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 Stasiek Michalski <hellcp@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,15 +13,15 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           distribution-logos-openSUSE
 Summary:        Logos for openSUSE Distros
-Version:        20190414
-Release:        0
 License:        CC-BY-SA-4.0
-Group:          System/GUI/Other
+Version:        20201117
+Release:        0
 Url:            https://github.com/openSUSE/distribution-logos
 Source:         distribution-logos-master.zip
 BuildRequires:  unzip
@@ -38,6 +39,7 @@ Conflicts:      distribution-logos
 
 RemovePathPostfixes: .Leap
 BuildArch:      noarch
+
 %description Leap
 Logos for openSUSE Leap
 
@@ -50,6 +52,7 @@ Conflicts:      distribution-logos
 
 RemovePathPostfixes: .Tumbleweed
 BuildArch:      noarch
+
 %description Tumbleweed
 Logos for openSUSE Tumbleweed
 
@@ -62,6 +65,7 @@ Conflicts:      distribution-logos
 
 RemovePathPostfixes: .Kubic
 BuildArch:      noarch
+
 %description Kubic
 Logos for openSUSE Kubic
 
@@ -74,6 +78,7 @@ Conflicts:      distribution-logos
 
 RemovePathPostfixes: .MicroOS
 BuildArch:      noarch
+
 %description MicroOS
 Logos for openSUSE MicroOS
 
