@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-tempora
-Version:        4.0.0
+Version:        4.0.1
 Release:        0
 Summary:        Objects and routines pertaining to date and time (tempora)
 License:        MIT
@@ -37,9 +37,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-jaraco.functools >= 1.20
 Requires:       python-pytz
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
 %python_subpackages
 
 %description
@@ -76,6 +76,7 @@ sed -i -e 's:--black::' -e 's:--cov::' -e 's/--flake8//g' pytest.ini
 %license LICENSE
 %doc CHANGES.rst README.rst docs/*rst
 %python_alternative %{_bindir}/calc-prorate
-%{python_sitelib}/*
+%{python_sitelib}/tempora
+%{python_sitelib}/tempora-%{version}-py*.egg-info
 
 %changelog
