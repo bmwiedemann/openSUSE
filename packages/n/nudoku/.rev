@@ -58,4 +58,20 @@
   Require gettext 0.20</comment>
     <requestid>770470</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6270f227e4aba1d28a7be04ebb93893c</srcmd5>
+    <version>2.1.0</version>
+    <time>1605958947</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.0:
+  * Use actual terminal background color (instead of black) as
+    background color (pr #31)
+  * Define minimum gettext version instead of exact one (pr #32)
+  * Require gettext 0.20
+  * Add Japanese translation (pr #40)
+  * Minor code change
+- Drop nudoku-2.0.0-unused-var.patch: upstreamed
+- Drop nudoku-2.0.0-gettext.patch: upstreamed</comment>
+    <requestid>849601</requestid>
+  </revision>
 </revisionlist>
