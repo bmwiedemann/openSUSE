@@ -1,0 +1,25 @@
+#!/usr/bin/perl -w
+use strict;
+{
+my $pkg=shift;
+die "usage: $0 PKGNAME" unless $pkg;
+die "invalid pkg" if $pkg =~ m/[^a-zA-Z0-9._+-]/;
+
+system("set -e ; cd in2/
+  if cd openSUSE:Factory/$pkg ; then
+    osc up
+  else
+    osc co openSUSE:Factory/$pkg
+    cd openSUSE:Factory/$pkg
+  fi
+  osc api /source/openSUSE:Factory/$pkg/_history > .rev
+  osc meta pkg openSUSE:Factory/$pkg | perl -pe 's!<(\\w+)/>!<\$1></\$1>!' > .meta
+  md5sum \$(ls |grep -v ^MD5SUMS) > MD5SUMS
+");
+die "rsync of $pkg failed" unless $? == 0;
+my $first=lc(substr($pkg, 0, 1));
+system(qw"rm -rf", glob("packages/$first*/$pkg"));
+$ENV{PKG}=$pkg;
+}
+push(@ARGV, "in2/openSUSE:Factory");
+do("./scripts/mappkgs.pl");
