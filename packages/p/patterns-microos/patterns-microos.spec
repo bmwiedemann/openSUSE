@@ -271,10 +271,8 @@ Requires:       gnome-power-manager
 # implied by gnome-shell
 #Requires:       gnome-control-center
 #
-# Default sessions
-# - Put in Recommends for now, to make sure the livecd will always build; but
-#   ideally, should be in Requires
-# - We also we explicitly put the packages required by those sessions, in case
+# Default sessions:
+# - We also explicitly put the packages required by those sessions, in case
 #   gnome-session-*-session is not installable, to make sure the livecd is
 #   somehow a bit usable
 #
@@ -286,7 +284,6 @@ Requires:       gnome-terminal
 Requires:       gnome-user-docs
 Requires:       gpgme
 # we need something for xdg-su
-Requires:       file-roller
 Requires:       flatpak
 Requires:       gnome-calculator
 Requires:       gnome-packagekit
@@ -309,6 +306,9 @@ Requires:       libgnomesu
 Requires:       nautilus
 Requires:       nautilus-extension-terminal
 Requires:       nautilus-share
+# For encrypting and decrypting files to work in Nautilus
+Requires:       nautilus-extension-seahorse
+Requires:       seahorse-daemon
 # So Trash and mounting USB sticks work in Nautilus
 Requires:       gvfs-backends
 Requires:       udisks2
@@ -334,6 +334,9 @@ Requires:       noto-coloremoji-fonts
 Requires:       noto-emoji-fonts
 Requires:       noto-sans-fonts
 Requires:       polkit-default-privs
+# Common tools, helpful during initial setup
+Requires:       unzip
+Requires:       wget
 # Pulseaudio is the default sound server
 Requires:       pulseaudio-module-bluetooth
 Requires:       pulseaudio-module-gsettings
