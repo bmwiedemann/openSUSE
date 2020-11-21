@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 21 14:17:03 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.8.2
+  * Fixed "reset" notification signal when editing toolbars in
+    settings.
+
+-------------------------------------------------------------------
 Fri Nov 20 13:58:38 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.8.1
