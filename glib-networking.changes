@@ -1,19 +1,4 @@
 -------------------------------------------------------------------
-Mon Sep 14 12:23:08 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 2.66.0:
-  + Updated translations.
-
--------------------------------------------------------------------
-Fri Sep  4 14:18:34 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 2.65.90:
-  + Many fixes to OpenSSL backend.
-- Changes from version 2.65.1:
-  + Fix peer-certificate[-errors] props set too soon.
-  + Implement ALPN for OpenSSL backend.
-
--------------------------------------------------------------------
 Fri May 29 04:05:54 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.64.3:
