@@ -105,7 +105,9 @@ BuildRequires:  pkgconfig(efivar) >= 33
 BuildRequires:  pkgconfig(libsmbios_c) >= 2.3.0
 %endif
 %if %{with efi_fw_update}
+Obsoletes:      dbxtool
 Obsoletes:      fwupdate
+Provides:       dbxtool
 %ifarch x86_64
 Requires:       shim >= 11
 %endif

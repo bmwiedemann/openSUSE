@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 16 07:01:08 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Obsoletes and Provides dbxtool since fwupd 1.5.0+ now embeds
+  dbxtool in the dbxtool plugin
+
+-------------------------------------------------------------------
 Tue Nov  3 07:22:31 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Amend the spec file (jsc#SLE-16818)
