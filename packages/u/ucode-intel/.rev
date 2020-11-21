@@ -692,4 +692,15 @@
   | HSX-E/EP       | Cx/M1    | 06-3f-02/6f | 00000043 | 00000044 | Core Gen4 X series; Xeon E5 v3</comment>
     <requestid>847755</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>52f19945859238e995d7eb2e7808e59f</srcmd5>
+    <version>20201118</version>
+    <time>1605958890</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated Intel CPU Microcode to 20201118 official release. (bsc#1178971)
+  - Removed TGL/06-8c-01/80 due to functional issues with some OEM platforms.
+
+ - CVE-2020-8695: Fixed Intel RAPL sidechannel attack (SGX) INTEL-SA-00389 (bsc#1170446)</comment>
+    <requestid>849467</requestid>
+  </revision>
 </revisionlist>
