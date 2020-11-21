@@ -17,33 +17,52 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "tests"
-%define psuffix -tests
-%bcond_without tests
-%else
-%bcond_with tests
+
+%if "%{flavor}" == "%{nil}"
+ExclusiveArch:  do_not_build
+%define pname   c-ares
 %endif
-%define pname c-ares
+
+%if "%{flavor}" == "tests"
+%define pname   c-ares-tests
+%bcond_without  tests
+%endif
+
+%if "%{flavor}" == "main"
+%define pname   c-ares
+%bcond_with     tests
+%endif
+
 %define sonum   2
 %define libname libcares%{sonum}
-Name:           %{pname}%{?psuffix}
-Version:        1.16.1
+
+%if 0%{!?cmake_build:1}
+%define cmake_build make -O VERBOSE=1 %{?_smp_mflags}
+%endif
+
+Name:           %{pname}
+Version:        1.17.0
 Release:        0
 Summary:        Library for asynchronous name resolves
 License:        MIT
 URL:            https://c-ares.haxx.se/
-Source0:        http://c-ares.haxx.se/download/%{pname}-%{version}.tar.gz
-Source1:        http://c-ares.haxx.se/download/%{pname}-%{version}.tar.gz.asc
-Source3:        %{pname}.keyring
+Source0:        http://c-ares.haxx.se/download/c-ares-%{version}.tar.gz
+Source1:        http://c-ares.haxx.se/download/c-ares-%{version}.tar.gz.asc
+Source3:        c-ares.keyring
 Source4:        baselibs.conf
+### REMOVE when upstream fixes https://github.com/c-ares/c-ares/issues/373
+Source5:        libcares.pc.cmake
+Source6:        c-ares-config.cmake.in
+Source7:        ares_dns.h
 Patch0:         0001-Use-RPM-compiler-options.patch
 Patch1:         disable-live-tests.patch
+Patch2:         missing_header.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  libtool
+%if %{with tests}
 # Needed for getservbyport_r function to work properly.
 BuildRequires:  netcfg
-BuildRequires:  pkgconfig
+%endif
 
 %description
 c-ares is a C library that performs DNS requests and name resolves
@@ -87,21 +106,17 @@ by Greg Hudson at MIT.
 This package provides the development libraries and headers needed
 to build packages that depend on c-ares.
 
-%prep
-%autosetup -p1 -n %{pname}-%{version}
 
-# Remove bogus cflags checking
-sed -i -e '/XC_CHECK_BUILD_FLAGS/d' configure.ac
-sed -i -e '/XC_CHECK_USER_FLAGS/d' m4/xc-cc-check.m4
+%prep
+%autosetup -p1 -n c-ares-%{version}
+
+cp %{S:5} %{S:6} .
+cp %{S:7} include
 
 %build
+
 %cmake \
-    -DCARES_STATIC:BOOL=OFF \
-    -DCARES_SHARED:BOOL=ON \
-    -DCARES_INSTALL:BOOL=ON \
-    -DCARES_BUILD_TOOLS:BOOL=ON \
 %if %{with tests}
-    -DCARES_STATIC:BOOL=ON \
     -DCARES_BUILD_TESTS:BOOL=ON \
 %endif
     %{nil}
@@ -110,21 +125,17 @@ sed -i -e '/XC_CHECK_USER_FLAGS/d' m4/xc-cc-check.m4
 %install
 %if !%{with tests}
 %cmake_install
-install -m 644 -Dt %{buildroot}%{_mandir}/man1/ *.1
-install -m 644 -Dt %{buildroot}%{_mandir}/man3/ *.3
-# Tests require static lib so lets remove it so it does not get in package
-find %{buildroot} -type f \( -name "*.la" -o -name "*.a" \) -delete -print
 %endif
 
 %if %{with tests}
 %check
 pushd build
-%make_build -C test
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./lib
+%cmake_build -C test
 ./bin/arestest
 %endif
 
 %if !%{with tests}
+
 %post   -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
@@ -139,7 +150,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./lib
 
 %files -n %{libname}
 %license LICENSE.md
-%{_libdir}/libcares.so.2*
+%{_libdir}/libcares.so.%{sonum}*
 
 %files devel
 %license LICENSE.md
@@ -148,6 +159,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./lib
 %{_mandir}/man3/ares_*.3%{?ext_man}
 %{_libdir}/pkgconfig/libcares.pc
 %{_libdir}/cmake/c-ares/
+
 %endif
 
 %changelog
