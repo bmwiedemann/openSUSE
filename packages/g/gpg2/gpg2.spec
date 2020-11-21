@@ -17,7 +17,7 @@
 
 
 Name:           gpg2
-Version:        2.2.23
+Version:        2.2.24
 Release:        0
 Summary:        File encryption, decryption, signature creation and verification utility
 License:        GPL-3.0-or-later
@@ -43,9 +43,9 @@ Patch1124847:   gnupg-gpg-agent-ulimit.patch
 BuildRequires:  expect
 BuildRequires:  fdupes
 BuildRequires:  libassuan-devel >= 2.5.0
-BuildRequires:  libgcrypt-devel >= 1.7.0
-BuildRequires:  libgpg-error-devel >= 1.25
-BuildRequires:  libksba-devel >= 1.3.4
+BuildRequires:  libgcrypt-devel >= 1.8.0
+BuildRequires:  libgpg-error-devel >= 1.27
+BuildRequires:  libksba-devel >= 1.3.5
 BuildRequires:  makeinfo
 BuildRequires:  npth-devel >= 1.2
 BuildRequires:  openldap2-devel
@@ -56,11 +56,10 @@ BuildRequires:  pkgconfig(gnutls) >= 3.0
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(sqlite3) >= 3.7
 BuildRequires:  pkgconfig(zlib)
-# Add an explicit runtime dependency to match boo#955982
-Requires:       libassuan0 >= 2.4.3
-# Explicit runtime depencency - runtime version check
-Requires:       libgcrypt20 >= 1.7.0
-Requires:       libksba >= 1.3.4
+# runtime dependency to support devel repository users - boo#955982
+Requires:       libassuan0 >= 2.5.0
+Requires:       libgcrypt20 >= 1.8.0
+Requires:       libksba >= 1.3.5
 Requires:       pinentry
 Requires(post): %{install_info_prereq}
 Recommends:     dirmngr = %{version}
