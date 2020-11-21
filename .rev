@@ -1354,12 +1354,4 @@ Hence, recommended to be added to 12.3</comment>
   GNOME 3.38, but TW started the migration path. (forwarded request 838212 from dimstar)</comment>
     <requestid>838228</requestid>
   </revision>
-  <revision rev="182" vrev="1">
-    <srcmd5>b132d954d0f48c94a25eba68fe00114e</srcmd5>
-    <version>3.38.1</version>
-    <time>1605783421</time>
-    <user>dimstar_suse</user>
-    <comment>Push GNOME 3.38</comment>
-    <requestid>847254</requestid>
-  </revision>
 </revisionlist>
