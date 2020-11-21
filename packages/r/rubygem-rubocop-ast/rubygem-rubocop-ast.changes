@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 20 16:46:17 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.1.1
+
+## 1.1.1 (2020-11-04)
+
+### Bug fixes
+
+* [#146](https://github.com/rubocop-hq/rubocop-ast/pull/146): Fix `IfNode#branches` to return both branches when called on ternary conditional. ([@fatkodima][])
+
+-------------------------------------------------------------------
 Mon Nov  2 15:31:41 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 1.1.0
