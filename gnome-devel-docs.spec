@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-devel-docs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnome-devel-docs
-Version:        3.38.1
+Version:        3.32.1
 Release:        0
 Summary:        GNOME Platform Documentation
 License:        GFDL-1.1-only AND CC-BY-SA-4.0
 Group:          Documentation/Other
 URL:            https://www.gnome.org
-Source:         https://download.gnome.org/sources/gnome-devel-docs/3.38/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gnome-devel-docs/3.32/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
