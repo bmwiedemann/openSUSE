@@ -1711,4 +1711,41 @@ for 12.3</comment>
   * tools: new script to cleanly remove duplicate actions</comment>
     <requestid>845677</requestid>
   </revision>
+  <revision rev="191" vrev="1">
+    <srcmd5>74ce325701f6a694bbd0f5d5830b6501</srcmd5>
+    <version>1550+20201119.2c1dce4</version>
+    <time>1605958864</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1550+20201119.2c1dce4:
+  - cleanup of dead and inconsistent polkit actions:
+    * profiles: drop the now rather confusing comment from nwfilter-binding actions
+    * profiles: harmonize and normalize profile syntax and style
+    * profiles: harmonize spice-space.lowlevelusbaccess actions
+    * profiles: remove dead pantheon actions
+    * profiles: remove dead org.gnome.DejaDup.duplicity action
+    * profiles: drop dead com.redhat.tuned.gui.run action
+    * profiles: fix brltty action(s)
+    * profiles: remove dead netvisix action
+    * profiles: realmd.discover-realm action: fix restrictive any setting
+    * profiles: remove dead com.redhat.lvm2.* actions
+    * profiles: group together org.kde.powerdevil actions
+    * profiles: remove dead org.kde.powerdevil.backlighthelper actions
+    * profiles: fix FirewallD1.info action in standard profile
+    * profiles: remove dead org.kde.baloo action
+    * profiles: remove dead kwallet actions and fix kwallet5 restrictive setting
+    * profiles: selinux actions: make restrictive profile no weaker than upstream
+    * profiles: remove dead gufw pkexec action
+    * profiles: adjust mate actions better to upstream defaults
+    * profiles: remove dead org.libvirt.api.newfilter.bind-* actions
+    * profiles: clear dead nepomuk.filewatch.raiselimit action
+    * profiles: remove dead kcmlightdm actions
+    * profiles: adjust gnome.controlcenter actions better to upstream defaults
+    * profiles: remove dead org.kde.recorditnow helper
+    * profiles: remove dead de.berlios.smb4k.mounthelper actions
+    * profiles: adjust user-administration action better to upstream defaults
+    * profiles: cleanup urfkill actions
+    * profiles: adjust ModemManager1 actions better to upstream settings
+    * profiles: cleanup ModemManager actions</comment>
+    <requestid>849352</requestid>
+  </revision>
 </revisionlist>
