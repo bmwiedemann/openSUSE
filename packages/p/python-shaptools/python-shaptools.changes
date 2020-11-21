@@ -1,8 +1,11 @@
 -------------------------------------------------------------------
 Thu Sep 24 12:16:46 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
+- Create version 0.3.11
 - Add new functionalities to know the currently installed ENSA
-  version for Netweaver (only for ASCS and ERS instances) 
+  version for Netweaver (only for ASCS and ERS instances)
+
+  (jsc#SLE-4047)
 
 -------------------------------------------------------------------
 Thu Sep  3 06:44:31 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
