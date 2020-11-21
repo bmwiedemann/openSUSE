@@ -1,22 +1,4 @@
 -------------------------------------------------------------------
-Sat Nov  7 21:35:17 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
-
-- Update to 5.76.0
-  * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/kde-frameworks-5.76.0
-- Changes since 5.75.0:
-  * Fix two recent regressions
-  * Allow NotShowIn=KDE apps, listed in mimeapps.list, to be used (kde#427469)
-  * If include is define in .h remove it if it's defined in .cpp too (scripted)
-  * autotests: port kmimeassociationstest to KApplicationTrader
-  * Write fallback value for KCM Exec lines with appropriate executable
-  * Various fixes
-  * Documentation fixes
-  * Remove a bit of dead code
-  * Solve some minor clazy warnings
-
--------------------------------------------------------------------
 Mon Oct  5 08:33:34 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.75.0
