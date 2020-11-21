@@ -155,6 +155,12 @@ BuildRequires:  libgnutls-devel >= 3.2.0
 BuildRequires:  libgnutls-devel >= 3.5.6
 BuildRequires:  libtasn1-devel >= 3.8
 %endif
+%if 0%{?sle_version} > 150200 || 0%{?suse_version} > 1500
+# liburing not yet available for all Factory architectures
+%ifnarch ppc armv6l armv7l
+BuildRequires:  liburing-devel
+%endif
+%endif
 
 %define libsmbclient_name libsmbclient0
 %define libnetapi_name libnetapi0
@@ -164,7 +170,7 @@ BuildRequires:  libtasn1-devel >= 3.8
 %else
 %define	build_make_smp_mflags %{?jobs:-j%jobs}
 %endif
-Version:        4.13.0+git.138.ff2d5480c67
+Version:        4.13.2+git.176.0a5e55b510c
 Release:        0
 Url:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -1360,6 +1366,12 @@ getent group ntadmin >/dev/null || groupadd -g 71 -o -r ntadmin
 %endif
 
 %post
+if testparm -s  2>&1 | grep "server schannel ="  | grep -E "Auto|No"
+then
+    echo "CVE-2020-1472(ZeroLogon):"
+    echo "Please configure 'server schannel = yes'"
+    echo "See https://bugzilla.samba.org/show_bug.cgi?id=14497"
+fi
 %if 0%{?suse_version} > 1220
 
 # bsc#1088574; bsc#1071090; bsc#1065551
