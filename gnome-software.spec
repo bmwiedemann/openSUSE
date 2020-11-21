@@ -17,23 +17,22 @@
 
 
 %define gs_plugin_api 13
-%define _version 3_38_0
 Name:           gnome-software
-Version:        3.38.0
+Version:        3.36.1
 Release:        0
 Summary:        GNOME Software Store
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Software
-Source0:        https://download.gnome.org/sources/gnome-software/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-software/3.36/%{name}-%{version}.tar.xz
 %if 0%{?sle_version}
 # PATCH-FIX-OPENSUSE gnome-software-launch-gpk-update-viewer-for-updates.patch bsc#1077332 boo#1090042 sckang@suse.com -- Don't launch gnome-software when clicking the updates notification. Launch gpk-update-viewer instead.
 Patch0:         gnome-software-launch-gpk-update-viewer-for-updates.patch
 %endif
 # PATCH-FIX-UPSTREAM gnome-software-failed-offline-update-notification.patch bsc#1161095 glgo#GNOME/gnome-software!471 sckang@suse.com -- plugin-loader: handle offline update errors properly.
 Patch1:         gnome-software-failed-offline-update-notification.patch
-# PATCH-FIX-OPENSUSE gnome-software-no-static-lib.patch dimstar@opensuse.org -- convert libgnomesoftware.a to a shared lib
-Patch2:         gnome-software-no-static-lib.patch
+# PATCH-FIX-UPSTREAM gnome-software-add-missing-headers.patch bsc#1174849 erico.mendonca@suse.com -- Add missing devel header files.
+Patch2:         gnome-software-add-missing-headers.patch
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.47.0
@@ -54,13 +53,10 @@ BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.0
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.52.0
-BuildRequires:  pkgconfig(malcontent-0) >= 0.3.0
 BuildRequires:  pkgconfig(ostree-1)
 BuildRequires:  pkgconfig(packagekit-glib2) >= 1.1.0
 BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(sqlite3)
-BuildRequires:  pkgconfig(sysprof-4)
-BuildRequires:  pkgconfig(sysprof-capture-4)
 BuildRequires:  pkgconfig(xmlb) >= 0.1.7
 # boo#1090042
 Requires:       fwupd
@@ -71,20 +67,10 @@ Recommends:     flatpak
 %description
 AppStore like management of Applications for your GNOME Desktop.
 
-%package -n libgnomesoftware-%{_version}
-Summary:        Library to access GNOME Software catalog
-Group:          System/GUI/GNOME
-
-%description -n libgnomesoftware-%{_version}
-AppStore like management of Applications for your GNOME Desktop.
-
-This library is not considered ABI/API stable
-
 %package devel
 Summary:        Development files for the GNOME software store
 Group:          Development/Libraries/GNOME
 Requires:       %{name} = %{version}
-Requires:       libgnomesoftware-%{_version} = %{version}
 
 %description devel
 This subpackage contains the header files for developing
@@ -99,7 +85,7 @@ GNOME software store plugins.
 %meson \
 	-Dtests=false \
 	-Dvalgrind=false \
-	-Dmalcontent=true \
+	-Dmalcontent=false \
 	%{nil}
 %meson_build
 
@@ -109,9 +95,6 @@ GNOME software store plugins.
 
 # Remove any piece of doc that ends up in non-standard locations and use the doc macro instead
 rm %{buildroot}%{_datadir}/doc/%{name}/README.md
-
-%post   -n libgnomesoftware-%{_version} -p /sbin/ldconfig
-%postun -n libgnomesoftware-%{_version} -p /sbin/ldconfig
 
 %files
 %license COPYING
@@ -142,9 +125,6 @@ rm %{buildroot}%{_datadir}/doc/%{name}/README.md
 %{_libexecdir}/gnome-software-restarter
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_sysconfdir}/xdg/autostart/gnome-software-service.desktop
-
-%files -n libgnomesoftware-%{_version}
-%{_libdir}/libgnomesoftware-%{version}.so
 
 %files devel
 %doc AUTHORS MAINTAINERS
