@@ -25,4 +25,12 @@ via the virtual console or network interface.</comment>
     <comment></comment>
     <requestid>847759</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>479dec67328960fbcb706db200a8ec20</srcmd5>
+    <version>2.0.55.1</version>
+    <time>1605958954</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849609</requestid>
+  </revision>
 </revisionlist>
