@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 17 13:02:10 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix boo#1178814: migration of old /usr/share/sip/PyQt5 to
+  update-alternatives needs special treatment
+- add QtRemoteObjects bindings to nonring build
+
+-------------------------------------------------------------------
 Wed Oct  7 15:13:41 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - disable _quick3d flavors in staging through ringdisabled
