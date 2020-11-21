@@ -16,9 +16,12 @@
 #
 
 
+# Disable doc as graphviz does not include PNG support
+%bcond_with build_html_doc
+
 %define libnum  0
 Name:           OpenCSD
-Version:        0.14.2
+Version:        0.14.4
 Release:        0
 Summary:        CoreSight Trace Decode library
 License:        BSD-3-Clause
@@ -67,11 +70,15 @@ OpenCSD is an Arm CoreSight Trace Decode library.
 %autosetup
 
 %build
-%make_build -C decoder/build/linux docs
+# Workaround - https://github.com/Linaro/OpenCSD/issues/33
+sed -i -e 's/-static//' decoder/tests/build/linux/trc_pkt_lister/makefile
+%make_build -C decoder/build/linux DISABLE_STATIC=1 \
+%if %{with build_html_doc}
+docs
+%endif
 
 %install
-make -C decoder/build/linux PREFIX=%{buildroot}%{_prefix} LIB_PATH=%{_lib} install
-rm %{buildroot}%{_libdir}/*.a
+%make_install -C decoder/build/linux DISABLE_STATIC=1 LIB_PATH=%{_lib}
 
 %post	-n libopencsd%{libnum} -p /sbin/ldconfig
 %postun	-n libopencsd%{libnum} -p /sbin/ldconfig
@@ -97,7 +104,9 @@ rm %{buildroot}%{_libdir}/*.a
 
 %files doc
 %doc HOWTO.md README.md TODO
+%if %{with build_html_doc}
 %doc decoder/docs/html/*.html
+%endif
 %doc decoder/docs/*.md
 
 %changelog
