@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Mon Nov 16 09:30:52 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 4.13.2
+  + s3: modules: vfs_glusterfs: Fix leak of char **lines onto
+    mem_ctx on return; (bso#14486);
+  + RN: vfs_zfsacl: Only grant DELETE_CHILD if ACL tag is special;
+    (bso#14471);
+  + smb.conf.5: Add clarification how configuration changes reflected
+    by Samba; (bso#14538);
+  + daemons: Report status to systemd even when running in foreground;
+    (bso#14552);
+  + DNS Resolver: Support both dnspython before and after 2.0.0;
+    (bso#14553);
+  + s3-vfs_glusterfs: Refuse connection when write-behind xlator is
+    present; (bso#14486);
+  + provision: Add support for BIND 9.16.x; (bso#14487);
+  + ctdb-common: Avoid aliasing errors during code optimization;
+    (bso#14537);
+  + libndr: Avoid assigning duplicate versions to symbols; (bso#14541);
+  + docs: Fix default value of spoolss:architecture; (bso#14522);
+  + winbind: Fix a memleak; (bso#14388);
+  + s4:dsdb:acl_read: Implement "List Object" mode feature; (bso#14531);
+  + docs-xml/manpages: Add warning about write-behind translator for
+    vfs_glusterfs; (bso#14486);
+  + nsswitch/nsstest.c: Avoid nss function conflicts with glibc nss.h.
+  + vfs_shadow_copy2: Avoid closing snapsdir twice; (bso#14530);
+  + third_party: Update resolv_wrapper to version 1.1.7; (bso#14547);
+  + examples:auth: Do not install example plugin; (bso#14550);
+  + ctdb-recoverd: Drop unnecessary and broken code; (bso#14513);
+  + RN: vfs_zfsacl: Only grant DELETE_CHILD if ACL tag is special;
+    (bso#14471);
+
+-------------------------------------------------------------------
+Thu Nov  5 12:23:49 UTC 2020 - Noel Power <nopower@suse.com>
+
+- Adjust smbcacls '--propagate-inheritance' feature to align with
+  upstream; (bsc#1178469).
+
+-------------------------------------------------------------------
+Tue Oct  6 16:52:00 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to samba 4.13.1
+  + CVE-2020-14383: An authenticated user can crash the DCE/RPC DNS with
+    easily crafted records; (bsc#1177613); (bso#14472);
+  + CVE-2020-14323: Unprivileged user can crash winbind; (bsc#1173994);
+    (bso#14436);
+  + CVE-2020-14318: Missing handle permissions check in SMB1/2/3 ChangeNotify;
+    (bsc#1173902); (bso#14434);
+- Adjust systemd tmpfiles.d configuration, use /run/samba instead of
+  /var/run/samba; (bsc#1177355);
+
+-------------------------------------------------------------------
+Mon Oct  5 12:44:53 UTC 2020 - David Disseldorp <ddiss@suse.com>
+
+- Fix vfs_ceph query_directory regression; (bso#14519)
+- Drop liburing-devel for SLE15-SP2; (bsc#1177245)
+
+-------------------------------------------------------------------
+Thu Sep 24 16:01:26 UTC 2020 - David Disseldorp <ddiss@suse.com>
+
+- Register CTDB recovery lock holder with ceph-mgr
+- Add liburing-devel dependency
+
+-------------------------------------------------------------------
 Tue Sep 22 16:20:33 UTC 2020 - David Disseldorp <ddiss@suse.com>
 
 - Update to samba 4.13.0
