@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 19 10:59:12 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Fix additional_dvds variable usage when salt uses python 2. The
+  variable is filtered by 'tojson' option to avoid 'u' prefix in
+  lists 
+
+-------------------------------------------------------------------
 Mon Oct 19 14:54:33 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
 - Set the native fence mechanism usage for CSP as optional
