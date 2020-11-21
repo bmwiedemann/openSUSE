@@ -564,4 +564,13 @@
     <comment></comment>
     <requestid>742526</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>5e31e641733ccd66e4428f5ebb1a8dab</srcmd5>
+    <version>3.34.0</version>
+    <time>1605958872</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove BuildRequires pkgconfig(libgepub-0.6), no longer needed
+  since epub support is in gnome-books now. (forwarded request 849135 from fcrozat)</comment>
+    <requestid>849374</requestid>
+  </revision>
 </revisionlist>
