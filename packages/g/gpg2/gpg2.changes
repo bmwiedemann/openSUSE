@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Nov 17 21:52:38 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GnuPG 2.2.24:
+  * gpg: New command --quick-revoke-sig
+  * gpg: Do not use weak digest algos if selected by recipient
+    preference during sign+encrypt
+  * gpg: Switch to AES256 for symmetric encryption in de-vs mode
+  * gpg: Silence weak digest warnings with --quiet
+  * gpg: Print new status line CANCELED_BY_USER for a cancel during
+    symmetric encryption
+  * gpg: Fix the encrypt+sign hash algo preference selection for
+    ECDSA.  This is in particular needed for keys created from
+    existing smartcard based keys
+  * agent: Fix secret key import of GnuPG 2.3 generated Ed25519
+    keys
+  * agent: Keep some permissions of private-keys-v1.d
+  * dirmngr: Align sks-keyservers.netCA.pem use between ntbtls and
+    gnutls builds
+  * dirmngr: Fix the pool keyserver case for a single host in the
+    pool
+  * scd: Fix the use case of verify_chv2 by CHECKPIN
+  * scd: Various improvements to the ccid-driver
+  * scd: Minor fixes for Yubikey
+  * gpgconf: New option --show-versions
+  * i18n: Complete overhaul and completion of the Italian
+    translation
+
+-------------------------------------------------------------------
 Thu Sep  3 17:16:41 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GnuPG 2.2.23: 
