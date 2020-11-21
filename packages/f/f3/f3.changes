@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 18 20:13:35 UTC 2020 - Olav Reinert <seroton10@gmail.com>
+
+- Upgrade to version 8.0:
+    * f3read: add parameter --max-read-rate
+    * f3read: report speed, percentage, remaining time like f3write
+    * f3write: improve speed measurement (commit 791acdc32627...)
+    * f3probe: handle rare assetion failure (issue #82 ENODATA)
+
+-------------------------------------------------------------------
 Wed May 20 11:50:43 UTC 2020 - Olav Reinert <seroton10@gmail.com>
 
 - update to 7.2:
