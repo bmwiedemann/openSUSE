@@ -17,11 +17,12 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "quick3d"
+%if "%{flavor}" == "nonring-extras"
+# These modules are not in staging
 %if 0%{?_with_ringdisabled}
 ExclusiveArch:  do_not_build
 %else
-%define build_quick3d 1
+%define build_nonring 1
 %endif
 %endif
 
@@ -69,7 +70,6 @@ BuildRequires:  pkgconfig(Qt5Nfc)
 BuildRequires:  pkgconfig(Qt5Positioning)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
-%{?build_quick3d:BuildRequires: pkgconfig(Qt5Quick3D)}
 BuildRequires:  pkgconfig(Qt5QuickWidgets)
 BuildRequires:  pkgconfig(Qt5SerialPort)
 BuildRequires:  pkgconfig(Qt5Svg)
@@ -79,6 +79,10 @@ BuildRequires:  pkgconfig(Qt5WebChannel)
 BuildRequires:  pkgconfig(Qt5WebSockets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5XmlPatterns)
+%if 0%{?build_nonring}
+BuildRequires:  pkgconfig(Qt5Quick3D)
+BuildRequires:  pkgconfig(Qt5RemoteObjects)
+%endif
 # Do not build WebKit support from SLE15
 %if 0%{?is_opensuse} || 0%{?suse_version} < 1500
 BuildRequires:  pkgconfig(Qt5WebKit)
@@ -188,6 +192,18 @@ PyQt is a set of Python bindings for the Qt framework.
 This package contains all the developer tools you need to create your
 own PyQt applications with QtQuick3D
 
+%package remoteobjects-devel
+Summary:        PyQt - devel part of python bindings for QtRemoteObjects
+Group:          Development/Libraries/Python
+Requires:       python-%{mname}-devel = %{version}
+Requires:       pkgconfig(Qt5RemoteObjects)
+
+%description remoteobjects-devel
+PyQt is a set of Python bindings for the Qt framework.
+
+This package contains all the developer tools you need to create your
+own PyQt applications with QtRemoteObjects
+
 %package doc
 Summary:        Examples for %{name}
 Group:          Documentation/Other
@@ -207,8 +223,17 @@ Requires:       %{python_module qt5 = %{version}}
 %description quick3d
 PyQt is a set of Python bindings for the Qt framework.
 
-This package contains the extension for QtQuick3D
+This package contains the extension for QtQuick3D.
 
+%package remoteobjects
+Summary:        Python bindings for QtRemoteObjects
+Group:          Development/Libraries/Python
+Requires:       %{python_module qt5 = %{version}}
+
+%description remoteobjects
+PyQt is a set of Python bindings for the Qt framework.
+
+This package contains the extension for QtRemoteObjects.
 
 %prep
 %autosetup -p1 -n PyQt5-%{version}
@@ -218,10 +243,10 @@ This package contains the extension for QtQuick3D
 %{pyqt_build -v \
     -c %{quote:--confirm-license \
                --assume-shared \
-               %{!?build_quick3d: --disable QtQuick3D \
+               %{!?build_nonring: --disable QtQuick3D --disable QtRemoteObjects \
                --qsci-api \
                --qsci-api-destdir %{_libqt5_datadir}/qsci} \
-               %{?build_quick3d: --enable QtQuick3D \
+               %{?build_nonring: --enable QtQuick3D --enable QtRemoteObjects \
                --no-python-dbus \
                --no-designer-plugin \
                --no-qml-plugin \
@@ -230,17 +255,17 @@ This package contains the extension for QtQuick3D
     -s %{quote:--pep484-pyi \
                --confirm-license \
                --qt-shared \
-               %{!?build_quick3d: --disable QtQuick3D} \
-               %{?build_quick3d: --enable QtQuick3D \
+               %{!?build_nonring: --disable QtQuick3D --disable QtRemoteObjects} \
+               %{?build_nonring: --enable QtQuick3D --enable QtRemoteObjects \
                --enable QtCore \
                --no-dbus-python \
                --no-designer-plugin \
                --no-qml-plugin \
-               --no-tools}}              
+               --no-tools}}
 }
 
 %install
-%if ! 0%{?build_quick3d}
+%if ! 0%{?build_nonring}
 %pyqt_install
 %pyqt_install_examples %mname
 
@@ -265,6 +290,7 @@ mkdir -p %{buildroot}%{_datadir}/sip/
 %define python3_pep484target install_pep484_stubs
 %{python_expand pushd build
 %__make sub-QtQuick3D-install_subtargets-ordered \
+        sub-QtRemoteObjects-install_subtargets-ordered \
         %{?use_sip4:%{$python_pep484target}} \
         INSTALL="%__install -p" INSTALL_ROOT=%{buildroot}
 popd
@@ -273,13 +299,41 @@ popd
 
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
-%if ! 0%{?build_quick3d}
+%if ! 0%{?build_nonring}
+%pre devel
+# boo#1178814 -- migration to update-alternatives, part 1
+# If it exists but is not a link yet, move existing old directory before cpio
+# starts to unpack the archive and tries to create the update-alternatives link
+if [ -d %{_datadir}/sip/PyQt5 -a ! -L %{_datadir}/sip/PyQt5 ]; then
+  mv %{_datadir}/sip/PyQt5 %{_datadir}/sip/PyQt5~
+fi
+
 %post devel
 %{python_install_alternative pyuic5 pylupdate5 pyrcc5} \
    --slave %{_datadir}/sip/PyQt5 pyqt5-sip %{_datadir}/pyqt5-sip-%{python_bin_suffix}
+# boo#1178814 -- migration to update-alternatives, part 2
+# temporaryily disable the u-a slave link again so that package removals later
+# in the same transaction, e.g. obsoleted python-qt5-devel-common don't remove
+# the freshly installed binding files
+if [ -d %{_datadir}/sip/PyQt5~ ]; then
+  mv %{_datadir}/sip/PyQt5 %{_datadir}/sip/PyQt5.u-a-link
+  mv %{_datadir}/sip/PyQt5~ %{_datadir}/sip/PyQt5
+fi
 
 %postun devel
 %python_uninstall_alternative pyuic5
+
+%posttrans devel
+# boo#1178814 -- migration to update-alternatives, part 3
+if [ ! -L  %{_datadir}/sip/PyQt5 ]; then
+  # move remaining files from foreign packages, if any, into new 
+  # bindings dir
+  find %{_datadir}/sip/PyQt5/ -mindepth 1 -maxdepth 1 -exec \
+    mv '{}' %{_datadir}/pyqt5-sip-%{python_bin_suffix}/ \;
+  rmdir %{_datadir}/sip/PyQt5
+  # restore the u-a link after all old packages have been removed
+  mv %{_datadir}/sip/PyQt5.u-a-link %{_datadir}/sip/PyQt5
+fi
 
 %files %{python_files}
 %license LICENSE
@@ -328,9 +382,23 @@ popd
 
 %files %{python_files quick3d-devel}
 %license LICENSE
-# sip4 has the sip files in the regular devel package
+# sip v4 builds have the sip files in the regular devel package
 %sip5_only %dir %pyqt5_sipdir
 %sip5_only %pyqt5_sipdir/QtQuick3D
+%sip5_only %exclude %pyqt5_sipdir/QtCore
+
+%files %{python_files remoteobjects}
+%license LICENSE
+%doc README NEWS ChangeLog
+%{python_sitearch}/PyQt5/QtRemoteObjects*
+%sip5_only %exclude %{python_sitearch}/PyQt5/QtCore*
+%sip5_only %exclude %pyqt5_sipdir
+
+%files %{python_files remoteobjects-devel}
+%license LICENSE
+# sip v4 builds have the sip files in the regular devel package
+%sip5_only %dir %pyqt5_sipdir
+%sip5_only %pyqt5_sipdir/QtRemoteObjects
 %sip5_only %exclude %pyqt5_sipdir/QtCore
 
 %endif
