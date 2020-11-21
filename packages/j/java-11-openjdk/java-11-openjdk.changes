@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 16 12:03:06 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream tag jdk-11.0.9.1-1
+  * Fix:
+    + JDK-8250861: Crash in MinINode::Ideal(PhaseGVN*, bool)
+- Removed patch:
+  * JDK-8250861.patch
+    + Integrated upstream
+
+-------------------------------------------------------------------
 Wed Nov  4 13:29:51 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Enable Sheandoah GC for x86_64

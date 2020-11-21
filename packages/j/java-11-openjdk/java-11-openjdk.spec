@@ -33,12 +33,12 @@
 %global featurever      11
 %global interimver      0
 %global updatever       9
-%global patchver        0
-%global datever         2020-10-20
-%global buildver        11
+%global patchver        1
+%global datever         2020-11-04
+%global buildver        1
 %global hg_project      jdk-updates
 %global hg_repository   jdk11u
-%global hg_revision     4397fa4529b2
+%global hg_revision     27723943c0dd
 %global icedtea_sound_version 1.0.1
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2
@@ -149,7 +149,7 @@ URL:            https://openjdk.java.net/
 # Sources from upstream OpenJDK project.
 Source0:        http://hg.openjdk.java.net/%{hg_project}/%{hg_repository}/archive/%{hg_revision}.tar.bz2
 # Accessibility support
-Source8:        ftp://ftp.gnome.org/pub/GNOME/sources/java-atk-wrapper/0.33/java-atk-wrapper-%{java_atk_wrapper_version}.tar.xz
+Source8:        https://download.gnome.org/sources/java-atk-wrapper/0.33/java-atk-wrapper-%{java_atk_wrapper_version}.tar.xz
 # Pulseaudio support
 Source9:        http://icedtea.classpath.org/download/source/icedtea-sound-%{icedtea_sound_version}.tar.xz
 # Systemtap tapsets. Zipped up to keep it small.
@@ -209,7 +209,6 @@ Patch16:        missing-return.patch
 Patch20:        loadAssistiveTechnologies.patch
 #
 Patch30:        JDK-8208602.patch
-Patch31:        JDK-8250861.patch
 #
 # OpenJDK specific patches
 #
@@ -505,7 +504,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch20 -p1
 
 %patch30 -p1
-%patch31 -p1
 
 # s390 build fixes
 
