@@ -48,3 +48,24 @@ oqgraph.social                                   : since 10.4.12 - i586 (MDEV-22
 main.symlink-myisam-11902                        : since 10.4.13 - i586
 main.ssl_system_ca                               : since 10.4.14 - all
 type_test.type_test_double                       : since 10.5.6 - all
+main.sp2                                         : since 10.5.8 - all
+main.mysqld--help-aria                           : since 10.5.8 - all
+unit.conc_connection                             : since 10.5.8 - all
+main.not_partition                               : since 10.5.8 - aarch64
+period.overlaps                                  : since 10.5.8 - s390x
+perfschema.memory_aggregate_32bit                : since 10.5.8 - s390x
+perfschema.socket_connect                        : since 10.5.8 - s390x
+sys_vars.gtid_ignore_duplicates_grant            : since 10.5.8 - i586
+sys_vars.myisam_stats_method_basic               : since 10.5.8 - i586
+innodb.innodb-page_compression_bzip2             : since 10.5.8 - i586
+sys_vars.read_only_func                          : since 10.5.8 - i586
+sys_vars.big_tables_basic                        : since 10.5.8 - i586
+main.mysql_protocols                             : since 10.5.8 - i586
+sys_vars.max_prepared_stmt_count_func            : since 10.5.8 - i586
+sys_vars.net_read_timeout_basic                  : since 10.5.8 - i586
+sys_vars.key_cache_age_threshold_basic           : since 10.5.8 - i586
+main.upgrade_MDEV-19650                          : since 10.5.8 - x86_64
+main.upgrade_MDEV-23102-1                        : since 10.5.8 - x86_64
+main.upgrade_MDEV-23102-2                        : since 10.5.8 - x86_64
+main.mysql_upgrade_to_100502                     : since 10.5.8 - x86_64
+
