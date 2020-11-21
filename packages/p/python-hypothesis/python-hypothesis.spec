@@ -61,6 +61,7 @@ Recommends:     python-pandas >= 0.19
 Recommends:     python-pytest >= 4.3
 Recommends:     python-python-dateutil >= 1.4
 Recommends:     python-pytz >= 2014.1
+Recommends:     python-redis >= 3.0.0
 BuildArch:      noarch
 %if %{with test}
 # SECTION test requirements
@@ -68,6 +69,7 @@ BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module attrs >= 19.2.0}
 BuildRequires:  %{python_module black}
 BuildRequires:  %{python_module dpcontracts >= 0.6.0}
+BuildRequires:  %{python_module fakeredis}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module hypothesis = %{version}}
 BuildRequires:  %{python_module lark-parser >= 0.6.5}
@@ -108,9 +110,9 @@ sed -i 's/assert (arr == 0.0)/assert np.asarray(arr == 0.0)/' tests/numpy/test_g
 %if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%endif
 
 %python_clone -a %{buildroot}%{_bindir}/hypothesis
+%endif
 
 %post
 %python_install_alternative hypothesis
