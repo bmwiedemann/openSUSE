@@ -571,4 +571,12 @@
     <comment>- Update to release 3.11</comment>
     <requestid>834974</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>843e333ebc01cd773b215a0ae345608c</srcmd5>
+    <version>3.12</version>
+    <time>1605958981</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.12</comment>
+    <requestid>849494</requestid>
+  </revision>
 </revisionlist>
