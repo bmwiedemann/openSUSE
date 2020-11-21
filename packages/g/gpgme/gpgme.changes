@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 17 21:44:17 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- gpgme 1.15.0:
+  * New function gpgme_op_setexpire to make changing the expiration
+    easier
+  * New function gpgme_op_revsig to revoke key signatures 
+  * Support exporting secret keys
+  * cpp: Support for set expire operations in the C++ bindings
+  * cpp: Support for revoking key signatures in the C++ bindings
+  * qt: Extended ChangeExpiryJob to support changing the expiry of
+    subkeys
+  * qt: Extended QuickJob to support revoking of key signatures
+  * qt: Added QDebug stream operator for GpgME::Error.
+  * Require libgpg-error 1.36
+
+-------------------------------------------------------------------
 Fri Jul 17 20:26:35 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - gpgme 1.14.0:
