@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 17 17:00:10 CEST 2020 - Richard Brown <rbrown@suse.de>
+
+- Normalise & correct minimum partition requirements (boo#1178895)
+- 20201117
+
+-------------------------------------------------------------------
 Wed Jul 29 10:59:21 CEST 2020 - schubi@suse.de
 
 - Removed unneeded AY installation step "autoimage" (bsc#1140711).
