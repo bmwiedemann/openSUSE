@@ -1,33 +1,9 @@
 -------------------------------------------------------------------
-Mon Sep 14 12:17:55 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 3.38.0:
-  + Updated translations.
-
--------------------------------------------------------------------
 Sun Sep 13 13:04:15 UTC 2020 - QK ZHU <qkzhu@suse.com>
 
 - Update gsettings-desktop-schemas-fate324570-Add-key-for-GDM-background-configuration.patch: 
   Set noise-texture.png as the default value of picture-uri to
   avoid failed to load background error (boo#1176418).
-
--------------------------------------------------------------------
-Wed Sep  9 08:14:48 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 3.37.92:
-  + Build gir even when cross-compiling.
-  + Updated translations.
-
--------------------------------------------------------------------
-Fri Sep  4 11:38:30 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 3.37.2:
-  + USB protection is enabled by default.
-  + Add tap-button-map and tap-drag-lock settings.
-  + Treat x-content/ostree-repository as software.
-  + Fix introspection on Visual Studio.
-  + Fix quotes in user strings to use HIG typography.
-  + Updated translations.
 
 -------------------------------------------------------------------
 Fri Aug  7 07:55:52 UTC 2020 - QK ZHU <qkzhu@suse.com>
