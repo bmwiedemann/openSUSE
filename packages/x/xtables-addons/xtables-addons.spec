@@ -17,7 +17,7 @@
 
 
 Name:           xtables-addons
-Version:        3.11
+Version:        3.12
 Release:        0
 Summary:        IP Packet Filter Administration Extensions
 License:        GPL-2.0-only AND GPL-2.0-or-later
@@ -96,7 +96,7 @@ find "$b/%_libdir" -maxdepth 1 -type l -iname "*.so" -delete
 %postun -p /sbin/ldconfig
 
 %files
-%_bindir/xt_geoip_fetch
+%_bindir/xt_geoip_fetch*
 %_mandir/man*/*
 %_sbindir/*
 %_libdir/*.so.*
