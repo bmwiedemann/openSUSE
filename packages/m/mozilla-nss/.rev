@@ -2191,4 +2191,25 @@
     <comment></comment>
     <requestid>841322</requestid>
   </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>52c2b92fbf6c2ec3a2d073b98daeea0b</srcmd5>
+    <version>3.58</version>
+    <time>1605958792</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.58
+  Bugs fixed:
+  * bmo#1641480 (CVE-2020-25648)
+    Tighten CCS handling for middlebox compatibility mode.
+  * bmo#1631890 - Add support for Hybrid Public Key Encryption
+    (draft-irtf-cfrg-hpke) support for TLS Encrypted Client Hello
+    (draft-ietf-tls-esni).
+  * bmo#1657255 - Add CI tests that disable SHA1/SHA2 ARM crypto
+    extensions.
+  * bmo#1668328 - Handle spaces in the Python path name when using
+    gyp on Windows.
+  * bmo#1667153 - Add PK11_ImportDataKey for data object import.
+  * bmo#1665715 - Pass the embedded SCT list extension (if present)
+    to TrustDomain::CheckRevocation instead of the notBefore value.</comment>
+    <requestid>849114</requestid>
+  </revision>
 </revisionlist>
