@@ -682,12 +682,4 @@ cd - (forwarded request 199127 from Zaitor)</comment>
   headers referenced by gnome-software.h (bsc#1174849). (forwarded request 824440 from yfjiang)</comment>
     <requestid>824806</requestid>
   </revision>
-  <revision rev="73" vrev="1">
-    <srcmd5>784d4570fb050d8c739f080a79306f1e</srcmd5>
-    <version>3.38.0</version>
-    <time>1605783368</time>
-    <user>dimstar_suse</user>
-    <comment>Push GNOME 3.38</comment>
-    <requestid>847226</requestid>
-  </revision>
 </revisionlist>

@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5GlobalAccel5
-%define _tar_path 5.76
+%define _tar_path 5.75
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kglobalaccel
-Version:        5.76.0
+Version:        5.75.0
 Release:        0
 Summary:        Global desktop keyboard shortcuts
 License:        LGPL-2.1-or-later
@@ -41,7 +41,6 @@ BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  libxcb-devel
 BuildRequires:  pkgconfig
-BuildRequires:  systemd-rpm-macros
 BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Crash) >= %{_kf5_bugfix_version}
@@ -132,15 +131,6 @@ does not need focus for them to be activated.
 %post -n libKF5GlobalAccelPrivate5 -p /sbin/ldconfig
 %postun -n libKF5GlobalAccelPrivate5 -p /sbin/ldconfig
 
-%post
-%{systemd_user_post plasma-kglobalaccel.service}
-
-%preun
-%{systemd_user_preun}
-
-%postun
-%{systemd_user_postun}
-
 %if %{with lang}
 %files -n %{lname}-lang -f %{name}5.lang
 %endif
@@ -172,6 +162,5 @@ does not need focus for them to be activated.
 %{_kf5_plugindir}/org.kde.kglobalaccel5.platforms/KF5GlobalAccelPrivateXcb.so
 %{_kf5_sharedir}/dbus-1/services/org.kde.kglobalaccel.service
 %{_kf5_servicesdir}/kglobalaccel5.desktop
-%{_userunitdir}/plasma-kglobalaccel.service
 
 %changelog

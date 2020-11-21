@@ -958,15 +958,4 @@
     <comment></comment>
     <requestid>802748</requestid>
   </revision>
-  <revision rev="125" vrev="1">
-    <srcmd5>d3f68eb78d98ee872293d64a2898f969</srcmd5>
-    <version>2.72.0</version>
-    <time>1605783471</time>
-    <user>dimstar_suse</user>
-    <comment>- Disable sysprof integration: this causes a nasty build cycle.
-  + Pass -Dsysprof=disabled to meson.
-  + Remove pkgconfig(sysprof-4) and pkgconfig(sysprof-capture-4),
-    as well as pkgconfig(sysprof-4) in the devel project. (forwarded request 848134 from dimstar)</comment>
-    <requestid>848135</requestid>
-  </revision>
 </revisionlist>

@@ -89,40 +89,4 @@
   with the installed cmake file..</comment>
     <requestid>833686</requestid>
   </revision>
-  <revision rev="10" vrev="1">
-    <srcmd5>73aee0e58451ce9d4c104c959d27d017</srcmd5>
-    <version>1.17.0</version>
-    <time>1605958821</time>
-    <user>dimstar_suse</user>
-    <comment>- ares_dns.h, missing_header.patch: re-add missing header in last release
-
-- Version update to 1.17.0
-  Security:
-  * avoid read-heap-buffer-overflow in ares_parse_soa_reply found during
-    fuzzing
-  * Avoid theoretical buffer overflow in RC4 loop comparison
-  * Empty hquery-&gt;name could lead to invalid memory access
-  * ares_parse_{a,aaaa}_reply() could return a larger *naddrttls than was
-    passed in (bsc#1178882, CVE-2020-8277)
-  Changes:
-  * Update help information for adig, acountry, and ahost
-  * Test Suite now uses dynamic system-assigned ports rather than hardcoded
-    ports to prevent failures in containers
-  * Detect remote DNS server does not support EDNS using rules from RFC 6891
-  * Source tree has been reorganized to use a more modern layout
-  * Allow parsing of CAA Resource Record
-  Bug fixes:
-  * readaddrinfo bad sizeof()
-  * Test cases should honor HAVE_WRITEV flag, not depend on WIN32
-  * FQDN with trailing period should be queried first
-  * ares_getaddrinfo() was returning members of the struct as garbage values if
-    unset, and was not honoring ai_socktype and ai_protocol hints.
-  * ares_gethostbyname() with AF_UNSPEC and an ip address would fail
-  * Properly document ares_set_local_ip4() uses host byte order
-For details, see https://c-ares.haxx.se/changelog.html
-- add missing upstream sources, to be removed for next release
-- remove unnecessary BuildRequires
-- fix building on SLE12 systems</comment>
-    <requestid>849356</requestid>
-  </revision>
 </revisionlist>

@@ -418,12 +418,4 @@
     <comment>Scripted push of project GNOME:Next (forwarded request 795008 from iznogood)</comment>
     <requestid>795164</requestid>
   </revision>
-  <revision rev="52" vrev="1">
-    <srcmd5>00d323c4e22738f27e68881f899db3d1</srcmd5>
-    <version>0.38.0</version>
-    <time>1605783260</time>
-    <user>dimstar_suse</user>
-    <comment>Push GNOME 3.38</comment>
-    <requestid>847175</requestid>
-  </revision>
 </revisionlist>

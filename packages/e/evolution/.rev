@@ -1992,12 +1992,4 @@ Recommended for 12.3</comment>
     <comment>New stable release (forwarded request 825144 from iznogood)</comment>
     <requestid>825305</requestid>
   </revision>
-  <revision rev="238" vrev="1">
-    <srcmd5>862e051dae3d7ee022971ee38ce1450d</srcmd5>
-    <version>3.38.1</version>
-    <time>1605783276</time>
-    <user>dimstar_suse</user>
-    <comment>Push GNOME 3.38</comment>
-    <requestid>847181</requestid>
-  </revision>
 </revisionlist>

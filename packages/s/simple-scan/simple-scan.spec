@@ -17,13 +17,13 @@
 
 
 Name:           simple-scan
-Version:        3.38.1
+Version:        3.36.6
 Release:        0
 Summary:        Simple Scanning Utility
 License:        GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/simple-scan
-Source0:        https://download.gnome.org/sources/simple-scan/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/simple-scan/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson

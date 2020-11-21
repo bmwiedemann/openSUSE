@@ -391,12 +391,4 @@ not all subpackages need the full blurb. (forwarded request 530874 from jengelh)
     <comment>- Update to version 3.11.0: (forwarded request 749664 from mgorse)</comment>
     <requestid>750922</requestid>
   </revision>
-  <revision rev="44" vrev="1">
-    <srcmd5>6332607110a13eee5c3b6482b806c42c</srcmd5>
-    <version>3.15.0</version>
-    <time>1605783410</time>
-    <user>dimstar_suse</user>
-    <comment>Push GNOME 3.38</comment>
-    <requestid>847247</requestid>
-  </revision>
 </revisionlist>

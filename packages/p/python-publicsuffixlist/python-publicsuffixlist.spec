@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-publicsuffixlist
-Version:        0.7.5
+Version:        0.7.2
 Release:        0
 Summary:        Public suffix list implementaion in Python
 License:        MPL-2.0
@@ -56,9 +56,7 @@ rm publicsuffixlist/update.py
 %install
 %python_install
 rm %{buildroot}%{_bindir}/publicsuffixlist-download
-%{python_expand rm -f %{buildroot}%{$python_sitelib}/publicsuffixlist/test* %{buildroot}%{$python_sitelib}/publicsuffixlist/__pycache__/test*
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_exec setup.py test

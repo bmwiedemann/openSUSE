@@ -17,21 +17,20 @@
 
 
 Name:           telepathy-idle
-Version:        0.2.2
+Version:        0.2.0
 Release:        0
 Summary:        IRC support for Telepathy
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/IRC
 URL:            https://gitlab.freedesktop.org/telepathy/telepathy-idle
 Source:         http://telepathy.freedesktop.org/releases/telepathy-idle/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM telepathy-idle-dont-bling-non-bling.patch --
+Patch:          telepathy-idle-dont-bling-non-bling.patch
 
+BuildRequires:  libxslt
 BuildRequires:  pkgconfig
-BuildRequires:  xsltproc
-BuildRequires:  pkgconfig(dbus-1) >= 0.51
-BuildRequires:  pkgconfig(dbus-glib-1) >= 0.51
+BuildRequires:  python-xml
 BuildRequires:  pkgconfig(gio-2.0) >= 2.32.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(telepathy-glib) >= 0.21
 
 %description

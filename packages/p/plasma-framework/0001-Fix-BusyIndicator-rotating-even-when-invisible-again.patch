@@ -1,0 +1,30 @@
+From ee5b68b0ec78f552b129bc382bc2f9643ae29929 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sat, 17 Oct 2020 13:45:15 +0200
+Subject: [PATCH] Fix BusyIndicator rotating even when invisible, again
+
+After "BusyIndicator: Do not rotate when invisible", plasmashell started
+consuming 100% CPU due to plasma-nm's icon having an invisible BusyIndicator.
+Adding the "visible" property back into the equation avoids this.
+
+Third time's the charm?
+---
+ src/declarativeimports/plasmacomponents3/BusyIndicator.qml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/declarativeimports/plasmacomponents3/BusyIndicator.qml b/src/declarativeimports/plasmacomponents3/BusyIndicator.qml
+index ec4ccaf13..6321d88cf 100644
+--- a/src/declarativeimports/plasmacomponents3/BusyIndicator.qml
++++ b/src/declarativeimports/plasmacomponents3/BusyIndicator.qml
+@@ -62,7 +62,7 @@ T.BusyIndicator {
+                 to: 360
+                 duration: 2000
+                 loops: Animation.Infinite
+-                running: control.running || baseItem.opacity > 0
++                running: visible && (control.running || baseItem.opacity > 0)
+             }
+         }
+     }
+-- 
+2.25.1
+

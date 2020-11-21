@@ -1,12 +1,4 @@
 -------------------------------------------------------------------
-Sun Nov 15 22:12:13 UTC 2020 - psimons@suse.com
-
-- Update base64-bytestring to version 1.2.0.1.
-  # 1.2.0.1
-
-  * Package update: support for `bytestring >=0.11`
-
--------------------------------------------------------------------
 Tue Aug 18 10:44:07 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.

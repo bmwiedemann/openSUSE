@@ -17,18 +17,19 @@
 
 
 Name:           gjs
-Version:        1.66.1
+Version:        1.64.4
 Release:        0
 Summary:        JavaScript bindings based on gobject-introspection and Mozilla
 License:        MIT AND LGPL-2.0-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/Gjs
-Source0:        https://download.gnome.org/sources/gjs/1.66/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gjs/1.64/%{name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler
 BuildRequires:  git
-BuildRequires:  meson >= 0.52.0
+BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  python
 BuildRequires:  readline-devel
 BuildRequires:  systemtap-sdt-devel
 BuildRequires:  pkgconfig(cairo)
@@ -42,10 +43,10 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.53.4
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 BuildRequires:  pkgconfig(libffi)
-BuildRequires:  pkgconfig(mozjs-78)
+BuildRequires:  pkgconfig(mozjs-68)
 # Hack - fix sysprof static devel requires instead
-BuildRequires:  pkgconfig(sysprof-4)
-BuildRequires:  pkgconfig(sysprof-capture-4)
+BuildRequires:  pkgconfig(sysprof-3)
+BuildRequires:  pkgconfig(sysprof-capture-3)
 Requires:       libgjs0 = %{version}
 ExcludeArch:    s390
 

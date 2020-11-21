@@ -24,16 +24,4 @@
     <comment>fix build with new maven-javadoc-plugin</comment>
     <requestid>750576</requestid>
   </revision>
-  <revision rev="4" vrev="1">
-    <srcmd5>b9401bcb7a43a0d8923a6c56b46c0805</srcmd5>
-    <version>4.3</version>
-    <time>1605800805</time>
-    <user>dimstar_suse</user>
-    <comment>- Ugrade to version 4.3
-- Modified patch:
-  * stringtemplate4-generated-sources.patch
-    + regenerate
-</comment>
-    <requestid>849421</requestid>
-  </revision>
 </revisionlist>

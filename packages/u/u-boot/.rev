@@ -1579,20 +1579,4 @@ boundary checks.
     <comment></comment>
     <requestid>847487</requestid>
   </revision>
-  <revision rev="136" vrev="4">
-    <srcmd5>4f861f12e3e9720cbdde8963b5277335</srcmd5>
-    <version>2020.10</version>
-    <time>1605783657</time>
-    <user>dimstar_suse</user>
-    <comment></comment>
-    <requestid>849301</requestid>
-  </revision>
-  <revision rev="137" vrev="5">
-    <srcmd5>be24490c06ed4d538c366b5dc920ab41</srcmd5>
-    <version>2020.10</version>
-    <time>1605959014</time>
-    <user>dimstar_suse</user>
-    <comment></comment>
-    <requestid>849744</requestid>
-  </revision>
 </revisionlist>

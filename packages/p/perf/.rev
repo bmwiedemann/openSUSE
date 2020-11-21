@@ -450,15 +450,4 @@
     <comment></comment>
     <requestid>838951</requestid>
   </revision>
-  <revision rev="56" vrev="65">
-    <srcmd5>4837811da1fcaacf2219b3276ad0fad0</srcmd5>
-    <version>MACRO</version>
-    <time>1605783691</time>
-    <user>dimstar_suse</user>
-    <comment>- pass GTK2=1 to make (needed after 4751bddd3f98)
-
-- Resolve build error due to updated kernel-source
-  Delete patch: 0001-perf-fix-off-by-ones-in-memset-after-realloc.patch</comment>
-    <requestid>849332</requestid>
-  </revision>
 </revisionlist>

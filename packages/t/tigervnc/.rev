@@ -682,12 +682,4 @@
     <comment></comment>
     <requestid>838621</requestid>
   </revision>
-  <revision rev="72" vrev="7">
-    <srcmd5>9d9184e802d1976292c4f61c606db966</srcmd5>
-    <version>1.10.1</version>
-    <time>1605958886</time>
-    <user>dimstar_suse</user>
-    <comment>- xvnc@.service: fixed path for %libexecdir (boo#1178601)</comment>
-    <requestid>849439</requestid>
-  </revision>
 </revisionlist>

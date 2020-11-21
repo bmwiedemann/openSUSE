@@ -17,13 +17,13 @@
 
 
 Name:           gnome-games
-Version:        3.38.0
+Version:        3.36.1
 Release:        0
 Summary:        Browse and play your games - all of them
 License:        GPL-3.0-only
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Games
-Source0:        https://download.gnome.org/sources/gnome-games/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-games/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.46.1
@@ -35,29 +35,18 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(grilo-0.3)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libarchive)
-BuildRequires:  pkgconfig(libhandy-1) >= 0.90
+BuildRequires:  pkgconfig(libhandy-0.0) >= 0.0.10
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(manette-0.2) >= 0.2.0
-BuildRequires:  pkgconfig(retro-gtk-1) >= 0.18.0
+BuildRequires:  pkgconfig(retro-gtk-0.14) >= 0.18.0
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(tracker-sparql-2.0)
 
 %description
 Games is a GNOME application to browse your video games library and
 to easily pick and play a game from it.
-
-%package -n gnome-shell-search-provider-gnome-games
-Summary:        GNOME Games -- Search Provider for GNOME Shell
-Group:          Productivity/Scientific/Math
-Requires:       %{name} = %{version}
-Supplements:    packageand(gnome-shell:%{name})
-
-%description -n gnome-shell-search-provider-gnome-games
-This package contains a search provider to enable GNOME Shell to get
-search results from GNOME Games.
-
 
 %lang_package
 
@@ -92,13 +81,5 @@ chmod -x COPYING
 %{_datadir}/%{name}/options/
 
 %files lang -f %{name}.lang
-
-%files -n gnome-shell-search-provider-gnome-games
-%{_libexecdir}/gnome-games-search-provider
-%{_datadir}/dbus-1/services/org.gnome.Games.SearchProvider.service
-%{_datadir}/dbus-1/services/org.gnome.Games.service
-%dir %{_datadir}/gnome-shell
-%dir %{_datadir}/gnome-shell/search-providers
-%{_datadir}/gnome-shell/search-providers/org.gnome.Games.SearchProvider.ini
 
 %changelog

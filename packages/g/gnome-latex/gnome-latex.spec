@@ -17,13 +17,13 @@
 
 
 Name:           gnome-latex
-Version:        3.38.0
+Version:        3.36.0
 Release:        0
 Summary:        Integrated LaTeX Environment for the GNOME desktop
 License:        GPL-3.0-or-later
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://wiki.gnome.org/Apps/GNOME-LaTeX
-Source0:        https://download.gnome.org/sources/%{name}/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/%{name}/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gsettings-desktop-schemas-devel
@@ -43,7 +43,7 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.30.0
 BuildRequires:  pkgconfig(gspell-1) >= 1.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(gtksourceview-4) >= 3.99.7
-BuildRequires:  pkgconfig(tepl-5) >= 4.99.2
+BuildRequires:  pkgconfig(tepl-4) >= 4.2
 BuildRequires:  pkgconfig(vapigen) >= 0.34
 Requires:       gsettings-desktop-schemas
 Requires:       texlive-latexmk-bin

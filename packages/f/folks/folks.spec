@@ -18,7 +18,6 @@
 
 %define soversion      25
 %define module_version 46
-%define with_tracker    0
 %define with_zeitgeist  0
 Name:           folks
 Version:        0.14.0
@@ -43,9 +42,7 @@ BuildRequires:  pkgconfig(libebook-contacts-1.2) >= 3.7.90
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.33.2
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(telepathy-glib) >= 0.19.9
-%if %{with_tracker}
 BuildRequires:  pkgconfig(tracker-sparql-2.0)
-%endif
 %if %{with_zeitgeist}
 BuildRequires:  pkgconfig(zeitgeist-2.0) >= 0.9.14
 %endif
@@ -165,13 +162,11 @@ Group:          Development/Libraries/GNOME
 Requires:       libfolks%{soversion} = %{version}
 Requires:       libfolks-eds%{soversion} = %{version}
 Requires:       libfolks-telepathy%{soversion} = %{version}
+Requires:       libfolks-tracker%{soversion} = %{version}
 Requires:       typelib-1_0-Folks-0_6 = %{version}
 Requires:       typelib-1_0-FolksEds-0_6 = %{version}
 Requires:       typelib-1_0-FolksTelepathy-0_6 = %{version}
-%if %{with_tracker}
-Requires:       libfolks-tracker%{soversion} = %{version}
 Requires:       typelib-1_0-FolksTracker-0_6 = %{version}
-%endif
 
 %description devel
 libfolks is a library that aggregates people from multiple sources (e.g.
@@ -187,9 +182,7 @@ This package provides the development files.
 %build
 %define _lto_cflags %{nil}
 %meson \
-%if %{with_tracker}
 	-Dtracker_backend=true \
-%endif
 %if %{with_zeitgeist}
 	-Dzeitgeist=true \
 %endif
@@ -240,10 +233,8 @@ rm %{buildroot}/usr/share/GConf/gsettings/folks.convert
 %files -n typelib-1_0-FolksEds-0_6
 %{_libdir}/girepository-1.0/FolksEds-0.6.typelib
 
-%if %{with_tracker}
 %files -n typelib-1_0-FolksTracker-0_6
 %{_libdir}/girepository-1.0/FolksTracker-0.6.typelib
-%endif
 
 %files -n typelib-1_0-FolksTelepathy-0_6
 %{_libdir}/girepository-1.0/FolksTelepathy-0.6.typelib
@@ -258,12 +249,10 @@ rm %{buildroot}/usr/share/GConf/gsettings/folks.convert
 %dir %{_libdir}/folks/%{module_version}/backends/telepathy
 %{_libdir}/folks/%{module_version}/backends/telepathy/telepathy.so
 
-%if %{with_tracker}
 %files -n libfolks-tracker%{soversion}
 %{_libdir}/libfolks-tracker.so.%{soversion}*
 %dir %{_libdir}/folks/%{module_version}/backends/tracker
 %{_libdir}/folks/%{module_version}/backends/tracker/tracker.so
-%endif
 
 %files tools
 %{_bindir}/folks-import
@@ -277,14 +266,12 @@ rm %{buildroot}/usr/share/GConf/gsettings/folks.convert
 %{_datadir}/gir-1.0/FolksDummy-0.6.gir
 %{_datadir}/gir-1.0/FolksEds-0.6.gir
 %{_datadir}/gir-1.0/FolksTelepathy-0.6.gir
-%if %{with_tracker}
 %{_datadir}/gir-1.0/FolksTracker-0.6.gir
-%{_datadir}/vala/vapi/folks-tracker.*
-%endif
 %{_datadir}/vala/vapi/folks.*
 %{_datadir}/vala/vapi/folks-dummy.*
 %{_datadir}/vala/vapi/folks-eds.*
 %{_datadir}/vala/vapi/folks-telepathy.*
+%{_datadir}/vala/vapi/folks-tracker.*
 
 %files lang -f %{name}.lang
 

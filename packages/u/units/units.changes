@@ -1,13 +1,4 @@
 -------------------------------------------------------------------
-Mon Nov 16 10:53:24 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
-
-- units 2.21:
-  * Fix bug arising when some environment variables are undefined
-  * Improve error reporting when input files are missing or invalid
-- remove obsolete texinfo macros on Factory
-- make the executable position independent
-
--------------------------------------------------------------------
 Thu Oct  1 11:36:57 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - units 2.20:

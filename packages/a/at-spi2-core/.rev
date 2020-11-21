@@ -1506,12 +1506,4 @@
   + Remove rpm groups (forwarded request 834034 from elimat)</comment>
     <requestid>836027</requestid>
   </revision>
-  <revision rev="88" vrev="1">
-    <srcmd5>0133bafc59a8c9ee5f2155ca887cb4b9</srcmd5>
-    <version>2.38.0</version>
-    <time>1605783246</time>
-    <user>dimstar_suse</user>
-    <comment>Push GNOME 3.38</comment>
-    <requestid>847169</requestid>
-  </revision>
 </revisionlist>

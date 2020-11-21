@@ -18,13 +18,13 @@
 
 %define _name   gtksourceview
 Name:           gtksourceview4
-Version:        4.8.0
+Version:        4.6.1
 Release:        0
 Summary:        GTK+ Source Editing Widget
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GtkSourceView
-Source0:        https://download.gnome.org/sources/gtksourceview/4.8/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gtksourceview/4.6/%{_name}-%{version}.tar.xz
 Source1:        changes.lang
 
 BuildRequires:  gobject-introspection-devel
@@ -37,7 +37,7 @@ BuildRequires:  pkgconfig(fribidi)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.48
 BuildRequires:  pkgconfig(gladeui-2.0) >= 3.9
 BuildRequires:  pkgconfig(glib-2.0) >= 2.48
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6
 
 %description

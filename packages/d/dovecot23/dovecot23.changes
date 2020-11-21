@@ -1,11 +1,4 @@
 -------------------------------------------------------------------
-Wed Nov  4 15:29:48 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
-
-- dovecot is already creating the user accounts, no need to duplicate
-  the code as this package does not need them.
-- Don't hard require systemd
-
--------------------------------------------------------------------
 Tue Sep 15 10:26:44 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - add dovecot-2.3.11.3-gssapi-nul.patch:

@@ -1118,12 +1118,4 @@ X-GNOME-DocPath=eog/eog.xml (forwarded request 128768 from dimstar)</comment>
     <comment>New stable release (forwarded request 818775 from iznogood)</comment>
     <requestid>819943</requestid>
   </revision>
-  <revision rev="145" vrev="1">
-    <srcmd5>f84b23b36897196573dacd4d27868424</srcmd5>
-    <version>3.38.0</version>
-    <time>1605783269</time>
-    <user>dimstar_suse</user>
-    <comment>Push GNOME 3.38</comment>
-    <requestid>847178</requestid>
-  </revision>
 </revisionlist>

@@ -16,15 +16,9 @@
 #
 
 
-# SBCL not available for older distros
-%if 0%{?suse_version} >= 1500
-%bcond_without sbcl
-%else
-%bcond_with sbcl
-%endif
-
-# clisp available for oS, cmucl and gcl are not
+# clisp and sbcl are available for oS, cmucl and gcl are not
 %bcond_without clisp
+%bcond_without sbcl
 %bcond_with cmucl
 %bcond_with gcl
 
@@ -124,8 +118,8 @@ Maxima compiled with CMUCL.
 %package exec-sbcl
 Summary:        Maxima compiled with SBCL
 Supplements:    packageand(maxima:sbcl)
+Requires:       sbcl
 Provides:       maxima_exec = %{version}
-%requires_eq    sbcl
 
 %description exec-sbcl
 Maxima compiled with SBCL.

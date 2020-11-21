@@ -1,7 +1,7 @@
 #
 # spec file for package libnice
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
 Name:           libnice
-Version:        0.1.17
+Version:        0.1.14
 Release:        0
 Summary:        Interactive Connectivity Establishment implementation
 License:        MPL-1.1 OR LGPL-2.1-only
@@ -74,6 +74,8 @@ make %{?_smp_mflags}
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
+# We don't ship the examples...
+rm %{buildroot}%{_bindir}/*-example
 
 %check
 # make check disabled - Since version 0.1.3, libnice tries to interact with NM during make check

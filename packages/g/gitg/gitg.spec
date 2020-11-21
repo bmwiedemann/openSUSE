@@ -17,7 +17,7 @@
 
 
 Name:           gitg
-Version:        3.32.1+312
+Version:        3.32.1+246
 Release:        0
 Summary:        Git repository viewer
 License:        GPL-2.0-or-later
@@ -160,7 +160,7 @@ translation-update-upstream po gitg
 %fdupes %{buildroot}%{_datadir}
 
 %check
-%meson_test || :
+%meson_test
 
 %post -n libgitg-1_0-0 -p /sbin/ldconfig
 %postun -n libgitg-1_0-0 -p /sbin/ldconfig

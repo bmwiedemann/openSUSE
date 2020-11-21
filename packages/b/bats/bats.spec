@@ -16,15 +16,14 @@
 #
 
 
-%define pname %{name}-core
 Name:           bats
-Version:        1.2.1
+Version:        1.2.0
 Release:        0
 Summary:        Bash Automated Testing System
 License:        MIT
 Group:          Development/Tools/Other
-URL:            https://github.com/%{pname}/%{pname}/
-Source:         https://github.com/%{pname}/%{pname}/archive/v%{version}.tar.gz
+URL:            https://github.com/bats-core/bats-core/
+Source:         https://github.com/bats-core/bats-core/archive/v%{version}.tar.gz
 BuildRequires:  ncurses-utils
 BuildArch:      noarch
 
@@ -40,13 +39,11 @@ Bats is most useful when testing software written in Bash, but you can use it
 to test any UNIX program.
 
 %prep
-%setup -q -n %{pname}-%{version}
+%setup -q -n %{name}-core-%{version}
+mv libexec lib
 
-sed -i '1s|#!%{_bindir}/env bash|#!/bin/bash|' ./lib{,exec}/%{pname}/* ./bin/bats
-%if 0%{?suse_version} <= 1500
-    mv -v libexec/%{pname}/* lib/%{pname}/
-    sed -i 's|libexec|lib|g' install.sh ./lib/%{pname}/* ./bin/bats
-%endif
+sed -i 's|libexec|lib|g' install.sh ./lib/bats-core/* ./bin/bats
+sed -i '1s|#!%{_bindir}/env bash|#!/bin/bash|' ./lib/bats-core/* ./bin/bats
 
 %build
 
@@ -61,10 +58,7 @@ sed -i '1s|#!%{_bindir}/env bash|#!/bin/bash|' ./lib{,exec}/%{pname}/* ./bin/bat
 %license LICENSE.md
 %doc README.md
 %{_bindir}/bats
-%{_prefix}/lib/%{pname}
-%if 0%{?suse_version} > 1500
-%{_libexecdir}/%{pname}
-%endif
+%{_prefix}/lib/%{name}-core
 %{_mandir}/man1/bats.1%{?ext_man}
 %{_mandir}/man7/bats.7%{?ext_man}
 

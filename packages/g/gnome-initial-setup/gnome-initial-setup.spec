@@ -17,18 +17,18 @@
 
 
 Name:           gnome-initial-setup
-Version:        3.38.1
+Version:        3.36.4
 Release:        0
 Summary:        GNOME Initial Setup Assistant
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/OS/InitialSetup
-Source0:        https://download.gnome.org/sources/gnome-initial-setup/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-initial-setup/3.36/%{name}-%{version}.tar.xz
 # PATCH-FEATURE-SLE gnome-initial-setup-smarter.patch FATE#325763 FATE#321126 boo#1067288 bnc#1029083 qzhao@suse.com -- Investigate gnome-initial-setup, and make a Smarter gnome initial configuration.
 Patch0:         gnome-initial-setup-smarter.patch
 
 BuildRequires:  krb5-devel
-BuildRequires:  meson >= 0.49.0
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  pkgconfig(accountsservice)
@@ -42,7 +42,6 @@ BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.7.5
 BuildRequires:  pkgconfig(goa-1.0)
 BuildRequires:  pkgconfig(goa-backend-1.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.37.1
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.11.3
 BuildRequires:  pkgconfig(gweather-3.0)
@@ -57,8 +56,8 @@ BuildRequires:  pkgconfig(pango) >= 1.32.5
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.103
 BuildRequires:  pkgconfig(pwquality)
 BuildRequires:  pkgconfig(rest-0.7)
-BuildRequires:  pkgconfig(systemd) >= 242
-BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.26.0
+BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(webkit2gtk-4.0)
 # Remove the yelp document dependency on both sle and leap, keeping tw consistent with upstream
 %if !0%{?sle_version}
 Requires:       gnome-getting-started-docs
@@ -97,7 +96,7 @@ useradd -rM -d /run/gnome-initial-setup/ -s /sbin/nologin %{name} || :
 
 %files
 %license COPYING
-%doc README.md
+%doc README
 %dir %{_datadir}/gdm
 %dir %{_datadir}/gdm/greeter
 %dir %{_datadir}/gdm/greeter/applications
@@ -116,13 +115,14 @@ useradd -rM -d /run/gnome-initial-setup/ -s /sbin/nologin %{name} || :
 %if !0%{?sle_version} || 0%{?sle_version} >= 160000
 %{_userunitdir}/gnome-initial-setup-copy-worker.service
 %{_userunitdir}/gnome-initial-setup-first-login.service
+%{_userunitdir}/gnome-initial-setup.service
 %{_userunitdir}/gnome-welcome-tour.service
-%dir %{_userunitdir}/gnome-session@gnome-initial-setup.target.d
-%{_userunitdir}/gnome-session@gnome-initial-setup.target.d/session.conf
 %dir %{_userunitdir}/gnome-session.target.wants
 %{_userunitdir}/gnome-session.target.wants/gnome-initial-setup-copy-worker.service
 %{_userunitdir}/gnome-session.target.wants/gnome-initial-setup-first-login.service
 %{_userunitdir}/gnome-session.target.wants/gnome-welcome-tour.service
+%dir %{_userunitdir}/gnome-session@gnome-initial-setup.target.wants
+%{_userunitdir}/gnome-session@gnome-initial-setup.target.wants/gnome-initial-setup.service
 %endif
 %if 0%{?sle_version} < 150200
 %{_libexecdir}/gnome-welcome-tour

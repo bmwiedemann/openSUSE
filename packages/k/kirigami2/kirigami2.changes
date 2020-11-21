@@ -1,15 +1,4 @@
 -------------------------------------------------------------------
-Sat Nov  7 21:34:56 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
-
-- Update to 5.76.0
-  * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/kde-frameworks-5.76.0
-- Too many changes since 5.75.0, only listing bugfixes:
-  * Also set a maximumWidth for icons in global drawer (kde#428658)
-  * Don't alter Item in code called from Item's destructor (kde#428481)
-
--------------------------------------------------------------------
 Mon Oct  5 08:33:20 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.75.0

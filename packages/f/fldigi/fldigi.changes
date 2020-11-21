@@ -1,61 +1,4 @@
 -------------------------------------------------------------------
-Wed Nov 18 21:02:00 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
-
-- Update to version 4.1.14
-  Cty.dat
-    * Update distibution cty.dat data files
-      dated 12 November 2020
-  Greek translation
-    * Update to Greek po files
-  Globals
-    * fix MODE_THOR_FIRST entry.
-    * fix MODE_DOMINOEX_FIRST entry.
-  fmt fixes
-    * track colors not correctly shown on tracking indicators
-  view_cw
-    * change sample rate to be keyed to cw decoder samplerate
-  Canadian Provinces
-    * update user configuration panel
-  FreeBSD/nullptr
-    * nullptr is defined in _null.h
-  Navtex
-    * fix kml file clean up code
-  benchmark
-    * update to current gcc version
-  Phase and FEC quality display
-    * Add phase-accuracy display for PSK modes (non-PSK31)
-    * Added better FEC confidence code to THOR
-  Add new platform optimizations
-    * added new --enable-optimizations options to ./configure
-      RaspberryPi 1,2,3,4 [rpi1, rpi2, rpi3, rpi4]
-      BeagleBone Black [bbb]
-      Cyclone5 [cyclone5]
-      Optimize for sse4 [sse4]
-      Use AVX extensions [avx, avx2]
-      i486, i686 [i486, i686]
-      x86-64 [x86-64]
-      ARM CPU-native [nativeARM]
-  Updated Doxygen Sourcecode Docs
-    * Now renders to SVG for graphics (doxygen 1.18)
-    * Fixed scripts for Cppcheck 1.9 changes
-    * Added auto-installer for packages on Debian-like systems
-    * Improved main page: index.html
-  fonts
-    * fix slow start caused by font fixed/proportional enumeration
-    * fixed evaluator moved to separate thread during first
-      instantiation of Font_Browser class.  Actual time to enumerate
-      2650 fonts on an i5 3.2 GHz system is approximately 25
-      seconds. Background process does not effect UI, but selection
-      of fixed fonts in font browser dialog may not show all of the
-      fixed fonts until the evaluator thread exits.
-  PSK Reporter query
-    * request fails to pskreporter, caused by hard coded request to NWS
-      pskreporter site very slow in responding to connect request; caused UI to freeze.
-    * change request process to separate thread
-  Logbook compile warning
-    * replace strncpy with "*comma_position ="
-
--------------------------------------------------------------------
 Sun Nov  1 15:08:05 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 4.1.15
@@ -113,7 +56,7 @@ Sun Nov  1 15:08:05 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
         the early or late accumulator, and never the long way around.
       - The adjustment limiting code had a bug that never seemed to break
         anything; simplify that code by removing the special case.
-    * fixed memory leaks, simplifiedexit code, improved C++17 compatibility
+  * fixed memory leaks, simplifiedexit code, improved C++17 compatibility
 
 -------------------------------------------------------------------
 Mon Jul 20 22:32:45 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>

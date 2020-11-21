@@ -19,13 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define _name   pyatspi
 Name:           python-atspi
-Version:        2.38.0
+Version:        2.36.0
 Release:        0
 Summary:        Python bindings for the Assistive Technology Service Provider Interface
 License:        LGPL-2.0-only
 Group:          Development/Libraries/Python
 URL:            http://www.gnome.org/
-Source0:        https://download.gnome.org/sources/pyatspi/2.38/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/pyatspi/2.36/%{_name}-%{version}.tar.xz
 
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module gobject >= 2.90.1}
@@ -36,7 +36,6 @@ BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-2to3
-BuildRequires:  pkgconfig(gtk+-3.0)
 Requires:       python-gobject >= 2.90.1
 # The bindings are really useful only if the at-spi registry is running. But
 # it's not a strict runtime dependency.

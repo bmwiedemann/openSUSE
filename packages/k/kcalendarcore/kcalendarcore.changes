@@ -1,15 +1,4 @@
 -------------------------------------------------------------------
-Sat Nov  7 21:34:18 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
-
-- Update to 5.76.0
-  * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/kde-frameworks-5.76.0
-- Changes since 5.75.0:
-  * Raise ambiguity in ICalFormat::toString() in tests
-  * Make MemoryCalendar::rawEvents(QDate, QDate) works for open bounds
-
--------------------------------------------------------------------
 Mon Oct  5 08:32:55 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.75.0

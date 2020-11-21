@@ -19,13 +19,13 @@
 
 %global __requires_exclude typelib\\(Meta\\)
 Name:           gnome-shell-extensions
-Version:        3.38.1
+Version:        3.36.7
 Release:        0
 Summary:        A collection of extensions for GNOME Shell
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeShell/Extensions
-Source0:        https://download.gnome.org/sources/gnome-shell-extensions/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-shell-extensions/3.36/%{name}-%{version}.tar.xz
 Source1:        README.SUSE
 Source2:        sle-classic.desktop
 Source5:        sle-classic.json
@@ -33,6 +33,10 @@ Source6:        sle-classic@suse.com.tar.gz
 Source7:        00_org.gnome.shell.extensions.sle-classic.gschema.override
 # PATCH-FEATURE-OPENSUSE gnome-shell-add-app-to-desktop.patch bnc#870580 dliang@suse.com --  allow adding app shortcut to desktop easily.
 Patch1:         gnome-shell-add-app-to-desktop.patch
+# PATCH-FIX-UPSTREAM gnome-session-remove-gsd-XSettings.patch bsc#1163262 glgo#GNOME/gnome-session#51 xwang@suse.com -- remove org.gnome.SettingsDaemon.XSettings from gnome-classic.session
+Patch2:         gnome-shell-extensions-remove-gsd-XSettings.patch
+# PATCH-FIX-OPENSUSE gnome-classic-s390-not-require-g-s-d_wacom.patch bsc#1129412 yfjiang@suse.com -- Remove the runtime requirement of g-s-d Wacom plugin
+Patch3:         gnome-classic-s390-not-require-g-s-d_wacom.patch
 
 ## NOTE keep SLE Classic patch at the bottom
 # PATCH-FIX-SLE gse-sle-classic-ext.patch Fate#318572 cxiong@suse.com -- add sle classic support
@@ -110,6 +114,10 @@ to pick system installed themes or even themes installed in the user's home.
 %prep
 %setup -q
 %patch1 -p1
+%patch2 -p1
+%ifarch s390 s390x
+%patch3 -p1
+%endif
 translation-update-upstream po %{name}
 gnome-patch-translation-prepare po %{name}
 
@@ -168,7 +176,10 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %doc README.SUSE HACKING.md NEWS README.md
 
 %files -n gnome-shell-classic
+%{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.auto-move-windows.gschema.xml
 %{_datadir}/glib-2.0/schemas/00_org.gnome.shell.extensions.classic.gschema.override
+%{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.native-window-placement.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.screenshot-window-sizer.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.user-theme.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.window-list.gschema.xml
 %{_datadir}/glib-2.0/schemas/00_org.gnome.shell.extensions.sle-classic.gschema.override
@@ -206,6 +217,7 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %files -n gnome-shell-classic-session
 %defattr(-,root,root)
 %license COPYING
+%{_datadir}/gnome-session/sessions/gnome-classic.session
 
 %files -n gnome-shell-extension-user-theme
 %license COPYING

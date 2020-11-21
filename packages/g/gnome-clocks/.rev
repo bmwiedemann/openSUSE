@@ -344,12 +344,4 @@
     <comment>New stable release (forwarded request 802500 from iznogood)</comment>
     <requestid>802680</requestid>
   </revision>
-  <revision rev="43" vrev="1">
-    <srcmd5>00f56ccfb77f4e7e488b75b0ab11c109</srcmd5>
-    <version>3.38.0</version>
-    <time>1605783314</time>
-    <user>dimstar_suse</user>
-    <comment>Push GNOME 3.38</comment>
-    <requestid>847204</requestid>
-  </revision>
 </revisionlist>

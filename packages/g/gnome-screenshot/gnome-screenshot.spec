@@ -17,14 +17,14 @@
 
 
 Name:           gnome-screenshot
-Version:        3.38.0
+Version:        3.36.0
 Release:        0
 Summary:        Utility to take pictures of your screen
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
 #Source0:       https://download.gnome.org/sources/gnome-screenshot/3.33/%%{name}-%%{version}.tar.xz
-Source:         https://download.gnome.org/sources/gnome-screenshot/3.38/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE gnome-screenshot-onlyshowin.patch dimstar@opensuse.org -- OnlyShowIn=GNOME: fix brp build check, allowing to use the icon from the gnome theme.
 Patch0:         gnome-screenshot-onlyshowin.patch
 
@@ -35,7 +35,6 @@ BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.35.1
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12.0
 BuildRequires:  pkgconfig(libcanberra-gtk3)
-BuildRequires:  pkgconfig(libhandy-1) >= 0.90.0
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 Conflicts:      gnome-utils < 3.3.1
@@ -69,6 +68,9 @@ translation-update-upstream
 %{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Screenshot-symbolic.svg
 %{_datadir}/metainfo/org.gnome.Screenshot.metainfo.xml
 %{_mandir}/man1/%{name}.1%{?ext_man}
+%dir %{_datadir}/GConf
+%dir %{_datadir}/GConf/gsettings
+%{_datadir}/GConf/gsettings/%{name}.convert
 
 %files lang -f %{name}.lang
 

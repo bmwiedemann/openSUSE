@@ -1,17 +1,4 @@
 -------------------------------------------------------------------
-Mon Oct  5 15:56:59 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 3.38.0:
-  + An overall update of Sound Recorder's design:
-    - The possibility to seek backward/forward while playing a
-      recording.
-    - Recordings now always display the associated wave.
-    - The possiblity to export a recording.
-    - Code cleanup and translations updates.
-- Add pkgconfig(gstreamer-player-1.0) and pkgconfig(libhandy-1)
-  BuildRequires: new dependencies.
-
--------------------------------------------------------------------
 Thu Aug 13 14:18:19 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Require gjs: /usr/bin/gnome-sound-recorder is a script using

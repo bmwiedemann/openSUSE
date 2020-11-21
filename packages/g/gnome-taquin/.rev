@@ -191,12 +191,4 @@
     <comment>New stable rel (forwarded request 840121 from iznogood)</comment>
     <requestid>840247</requestid>
   </revision>
-  <revision rev="25" vrev="1">
-    <srcmd5>847890c8da40a73fa3fcb7280f4b9b1f</srcmd5>
-    <version>3.38.1</version>
-    <time>1605800718</time>
-    <user>dimstar_suse</user>
-    <comment>Push GNOME 3.38</comment>
-    <requestid>847230</requestid>
-  </revision>
 </revisionlist>

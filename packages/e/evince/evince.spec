@@ -20,13 +20,13 @@
 %define pluginAPI 4
 
 Name:           evince
-Version:        3.38.0
+Version:        3.36.7
 Release:        0
 Summary:        GNOME Document Viewer
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/Apps/Evince
-Source0:        https://download.gnome.org/sources/evince/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/evince/3.36/%{name}-%{version}.tar.xz
 # PATCH-FIX-SLE alarrosa@suse.com - Reverse upstream bump of synctex required version to build with texlive 2017
 Patch0:         0001-reversed-synctex-Move-_GNU_SOURCE-to-the-top-of-the-source-code.patch
 Patch1:         0002-reversed-synctex-Remove-unused-labels.patch
@@ -49,7 +49,7 @@ BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(adwaita-icon-theme) >= 2.17.1
 BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(ddjvuapi) >= 3.5.22
-BuildRequires:  pkgconfig(gio-2.0) >= 2.44.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.36.0
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(gnome-desktop-3.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.6

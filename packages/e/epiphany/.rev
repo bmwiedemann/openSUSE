@@ -1398,12 +1398,4 @@ MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme
     <comment>New stable rel (forwarded request 825130 from iznogood)</comment>
     <requestid>825302</requestid>
   </revision>
-  <revision rev="178" vrev="1">
-    <srcmd5>a77a2f8fcd1de082c7093a2d2c36157b</srcmd5>
-    <version>3.38.1</version>
-    <time>1605800653</time>
-    <user>dimstar_suse</user>
-    <comment>Push GNOME 3.38</comment>
-    <requestid>847179</requestid>
-  </revision>
 </revisionlist>

@@ -1,51 +1,7 @@
 -------------------------------------------------------------------
-Fri Oct  9 09:19:24 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 3.38.1:
-  + Sound: Update g-v-c dependency. Necessary to support related
-    UCM changes in ALSA and Pulseaudio.
-  + Media-keys: Don't throw unnecessary warnings.
-  + Print-notification: Disable plugin if CUPS is diabled.
-  + Updated translations.
-
--------------------------------------------------------------------
-Tue Sep 22 03:38:00 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 3.38.0:
-  + Updated translations.
-
--------------------------------------------------------------------
-Tue Sep 22 03:37:52 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 3.37.92:
-  + USB-protection: Relax the whitelist to all HIDs and HUBs.
-  + Updated translations.
-
--------------------------------------------------------------------
-Tue Sep 22 03:37:01 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 3.37.1:
-  + WWan: Translatable string improvements.
-  + Media-keys: Use well-known name for screencast proxy.
-  + Xsettings: Fix race condition in fontconfig timestamp test.
-  + Power: Drop lid switch inhibitor when session is inactive.
-- Changes from version 3.37.0:
-  + Revamp of systemd service structure.
-  + Media-keys:
-    - Add static mapping for XF86RotationLockToggle.
-    - Use heuristic to switch MPRIS clients.
-  + Power: Ambient light moving average now time-aware.
-  + WWan:
-    - Handle multiple devices.
-    - Handle PUK unlocking.
-    - Other fixes.
-  + Wacom: Drop LED helper, handled by the kernel for long enough.
-  + Updated translations.
-
--------------------------------------------------------------------
 Fri Sep 18 01:31:34 CEST 2020 - ro@suse.de
 
-- fix build on s390x (wacom=false but wayland=true)
+- fix build on s390x (wacom=false but wayland=true) 
 
 -------------------------------------------------------------------
 Thu Apr 30 05:28:07 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>

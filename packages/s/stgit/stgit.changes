@@ -1,14 +1,4 @@
 -------------------------------------------------------------------
-Tue Nov 10 11:45:34 UTC 2020 - Dario Faggioli <dfaggioli@suse.com>
-
-- Move to latest version, 0.23
-  * `stg mail` was not working in v. 0.21, due to TLS issue. It
-    does in 0.23
-  * while there, update the URL
-- Add patch stgbashprompt-noexec.patch
-  * so rpmlint won't complain about executable without '#!'
-
--------------------------------------------------------------------
 Fri Jan 17 15:17:07 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Create .pyc files reproducibly (boo#1049186)

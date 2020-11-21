@@ -976,12 +976,4 @@
     <comment>New stable release (forwarded request 835595 from iznogood)</comment>
     <requestid>836044</requestid>
   </revision>
-  <revision rev="125" vrev="1">
-    <srcmd5>ac41f2c888bb2571c2298bba46a8fc50</srcmd5>
-    <version>1.48.0</version>
-    <time>1605783461</time>
-    <user>dimstar_suse</user>
-    <comment>Update to 1.48.0 (forwarded request 847304 from dimstar)</comment>
-    <requestid>847342</requestid>
-  </revision>
 </revisionlist>

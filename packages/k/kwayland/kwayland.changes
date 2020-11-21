@@ -1,16 +1,4 @@
 -------------------------------------------------------------------
-Sat Nov  7 21:35:23 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
-
-- Update to 5.76.0
-  * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/kde-frameworks-5.76.0
-- Changes since 5.75.0:
-  * Provide convenience methods around wl_data_offet_accept()
-  * Mark enums in a Q_OBJECT, Q_ENUM
-  * If include is define in .h remove it if it's defined in .cpp too (scripted)
-
--------------------------------------------------------------------
 Mon Oct  5 08:33:38 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.75.0

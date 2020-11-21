@@ -1,19 +1,4 @@
 -------------------------------------------------------------------
-Sat Nov  7 21:34:54 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
-
-- Update to 5.76.0
-  * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/kde-frameworks-5.76.0
-- Too many changes since 5.75.0, only listing bugfixes:
-  * CopyJob: don't count skipped files in the notification (kde#417034)
-  * FileWidget: Show Selected file preview on mouse leave (kde#418655)
-  * Add bookmarks for pictures, music and videos (kde#427876)
-  * kfilewidget: keep the text in the Name box when navigating (kde#418711)
-  * KFilePlacesModel: ignore hidden places when computing closestItem (kde#426690)
-  * kio_trash: fix the logic when no size limit is set (kde#426704)
-
--------------------------------------------------------------------
 Mon Oct  5 08:33:19 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.75.0

@@ -1,17 +1,4 @@
 -------------------------------------------------------------------
-Sat Sep 19 00:00:05 UTC 2020 - Michael Gorse <mgorse@suse.com>
-
-- Update to version 4.8.0:
-  + Bump GTK requirement to 3.24 for gdk_window_move_to_rect().
-  + Use gdk_window_move_to_rect() to more reliably position
-    completion windows.
-  + erb.lang: initial support for ERB.
-  + javascript.lang, typescript.lang: various correctness and
-    performance improvements.
-  + Updated translations.
-- Up gtk3 dependency.
-
--------------------------------------------------------------------
 Sat Jun 27 15:28:07 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.6.1:

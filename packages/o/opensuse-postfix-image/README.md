@@ -1,24 +1,5 @@
 # Postfix container
 
-- [Guide](#guide)
-  - [Create new postfix server](#create-new-postfix-server)
-- [Supported environment variables](#supported-environment-variables)
-  - [Generic variables](#generic-variables)
-  - [SMTP related variables](#smtp-related-variables)
-  - [Virtual mailbox related variables](#virtual-mailbox-related-variables)
-  - [LDAP related variables](#ldap-related-variables)
-- [Data persistence volumes](#data-persistence-volumes)
-- [Virtual domains and virtual users](#virtual-domains-and-virtual-users)
-  - [Environment Variables](#environment-variables)
-  - [Files](#files)
-- [Mail delivery via LMTP](#mail-delivery-via-lmtp)
-
-## Guide
-
-### Create new postfix server
-
-By default a simple relayhost postfix instance is started.
-
 The command to run this container is:
 
 ```sh
@@ -27,12 +8,9 @@ podman run -d --rm --name postfix -p 25:25 -e SMTP_RELAYHOST=smtp.example.com re
 
 In all examples, `podman` can be replaced directly with `docker`.
 
-## Supported environment variables
-### Generic variables
+## Supported environment variables:
 - `DEBUG=[0|1]`		Enables "set -x" in the entrypoint script.
 - `TZ`			Timezone to use in the container.
-
-### SMTP related variables
 - `SERVER_HOSTNAME` 	Server hostname. Emails will appear to come from the hostname's domain.
 - `SERVER_DOMAIN`   	If not set, the domain part of `SERVER_HOSTNAME` will be used.
 - `SMTP_RELAYHOST`	Name of the SMTP relay server to use.
@@ -44,14 +22,10 @@ In all examples, `podman` can be replaced directly with `docker`.
 - `MASQUERADE_DOMAINS`	Comma separated list of domains that must have their subdomain structure stripped off.
 - `MYDESTINATION`	List of domains for which mails are delivered locally instead of forwarding to another machine.
 - `LMTP=host`           Host on which the lmtp service is running. This will disable the usage of the vmail user account.
-
-### Virtual mailbox related variables
 - `VIRTUAL_MBOX=[0|1]`	Create virtual mail boxes in /var/spool/vmail owned by user vmail.
 - `VMAIL_UID=5000`	User ID and group ID of the vmail user for virtual domains and mailboxes.
 - `VIRTUAL_DOMAINS=`	Whitespace seperated list of virtual domains, will be written to `/etc/postfix/vhosts`.
 - `VIRTUAL_USERS=`	Whitespace seperated list of virtual users email addresses.
-
-### LDAP related variables
 - `USE_LDAP=[0|1]`	Use LDAP for virtual mail box user accounts.
 - `LDAP_BASE_DN`	LDAP base DN, defaults to `dc=example,dc=org`.
 - `LDAP_SERVER_URL`	LDAP Server URL, defaults to `ldap://localhost`.
@@ -97,7 +71,7 @@ podman run -d --rm --name postfix -p "25:25" -e VIRTUAL_MBOX=1 -e VMAIL_UID=5000
 ```
 
 Will store the mails for the users `user1@example.com`, `user2@example.com`,
-`user@example1.com` into the directories inside of the container:
+`user@example2.com` into the directories inside of the container:
 - `/var/spool/vmail/example.com/user1/`
 - `/var/spool/vmail/example.com/user2/`
 - `/var/spool/vmail/example1.com/user/`
@@ -144,14 +118,5 @@ user@example1.com 0
 
 The example call:
 ```sh
-podman run -d --rm --name postfix -p 25:25 -e VIRTUAL_MBOX=1 -e VMAIL_UID=5000 -e SERVER_HOSTNAME=smtp.example.com -e SMTP_RELAYHOST=relay.example.com -e SMTP_USERNAME=mailer -e SMTP_PASSWORD='XXX' -v "/srv/postfix/vmail:/var/spool/vmail" -v "/srv/postfix/etc/vhosts:/etc/postfix/vhosts:ro" -v "/srv/postfix/etc/vmaps:/etc/postfix/vmaps:ro" -v "/srv/postfix/etc/vquota:/etc/postfix/vquota:ro" registry.opensuse.org/opensuse/postfix:latest
-```
-
-## Mail delivery via LMTP
-
-To deliver the mails via a LMTP service, the container needs to know the host
-on which such a service is running:
-
-```sh
-podman run -d --rm --name postfix -p 25:25 -e MYDESTINATION=example.com -e LMTP=lmtp.example.com registry.opensuse.org/opensuse/postfix:latest
+podman run -d --rm --name postfix -p "25:25" -e VIRTUAL_MBOX=1 -e VMAIL_UID=5000 -e SERVER_HOSTNAME=smtp.example.com -e SMTP_RELAYHOST=relay.example.com -e SMTP_USERNAME=mailer -e SMTP_PASSWORD='XXX' -v "/srv/postfix/vmail:/var/spool/vmail" -v "/srv/postfix/etc/vhosts:/etc/postfix/vhosts:ro" -v "/srv/postfix/etc/vmaps:/etc/postfix/vmaps:ro" -v "/srv/postfix/etc/vquota:/etc/postfix/vquota:ro" registry.opensuse.org/opensuse/postfix:latest
 ```

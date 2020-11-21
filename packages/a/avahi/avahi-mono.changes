@@ -1,9 +1,4 @@
 -------------------------------------------------------------------
-Mon Aug 31 10:21:27 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
-
-- Update to version 0.8
-
--------------------------------------------------------------------
 Thu Aug  6 07:59:00 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Skip the xargs dance and just use find directly.

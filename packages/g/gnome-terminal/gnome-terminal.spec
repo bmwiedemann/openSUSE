@@ -17,19 +17,18 @@
 
 
 Name:           gnome-terminal
-Version:        3.38.1
+Version:        3.36.2
 Release:        0
 Summary:        GNOME Terminal
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          System/X11/Terminals
 URL:            https://wiki.gnome.org/Apps/Terminal
-Source0:        https://download.gnome.org/sources/gnome-terminal/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-terminal/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 # Needed for search provider. It should not be needed in my opinion,
 # we have to take this up with upstream, or just provide search
 # provider interface definition file as source.
-BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gnome-shell
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
@@ -44,7 +43,7 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.18
 BuildRequires:  pkgconfig(libnautilus-extension) >= 3.28.0
 BuildRequires:  pkgconfig(libpcre2-8) >= 10.00
 BuildRequires:  pkgconfig(uuid)
-BuildRequires:  pkgconfig(vte-2.91) >= 0.62.0
+BuildRequires:  pkgconfig(vte-2.91) >= 0.60.0
 BuildRequires:  pkgconfig(x11)
 Requires(pre):  filesystem
 
@@ -107,7 +106,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/glib-2.0/schemas/org.gnome.Terminal.gschema.xml
 %{_userunitdir}/gnome-terminal-server.service
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Terminal*.svg
-%{_mandir}/man1/gnome-terminal.1%{?ext_man}
 
 %files -n gnome-shell-search-provider-gnome-terminal
 %dir %{_datadir}/gnome-shell

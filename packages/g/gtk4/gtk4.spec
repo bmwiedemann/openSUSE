@@ -21,22 +21,20 @@
 %define gtk_binary_version 4.0.0
 %define _name gtk
 Name:           gtk4
-Version:        3.99.4
+Version:        3.98.4
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/X11
 URL:            https://www.gtk.org/
 
-Source:         https://download.gnome.org/sources/gtk/3.99/%{_name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gtk/3.98/%{_name}-%{version}.tar.xz
 Source2:        settings.ini
 Source3:        macros.gtk4
 Source98:       gtk4-rpmlintrc
 Source99:       baselibs.conf
 
-BuildRequires:  cups-devel >= 2.0
-# We do not support building against cups 2.3 betas
-BuildConflicts: (cups-devel > 2.3 with cups-devel < 2.3.0)
+BuildRequires:  cups-devel >= 1.2
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -53,12 +51,12 @@ BuildRequires:  pkgconfig(atk) >= 2.15.1
 BuildRequires:  pkgconfig(atk-bridge-2.0)
 BuildRequires:  pkgconfig(cairo) >= 1.14.0
 BuildRequires:  pkgconfig(cairo-gobject) >= 1.14.0
-BuildRequires:  pkgconfig(cloudproviders) >= 0.3.1
+BuildRequires:  pkgconfig(cloudproviders) >= 0.2.5
 BuildRequires:  pkgconfig(colord)
 BuildRequires:  pkgconfig(epoxy) >= 1.4
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.30.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.65.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.59.0
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.53.7
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.39.0
@@ -66,8 +64,7 @@ BuildRequires:  pkgconfig(graphene-1.0) >= 1.9.1
 BuildRequires:  pkgconfig(graphene-gobject-1.0) >= 1.9.1
 BuildRequires:  pkgconfig(gstreamer-player-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libavfilter)
-BuildRequires:  pkgconfig(pango) >= 1.47.0
+BuildRequires:  pkgconfig(pango) >= 1.44.0
 BuildRequires:  pkgconfig(pangocairo) >= 1.14.0
 BuildRequires:  pkgconfig(pangoft2)
 BuildRequires:  pkgconfig(rest-0.7)
@@ -212,14 +209,14 @@ translation-update-upstream
 	-Dbuild-tests=false \
 	-Ddocumentation=true \
 	-Dbroadway-backend=true \
-	-Dcloudproviders=enabled \
-	-Dcolord=enabled \
+	-Dcloudproviders=false \
+	-Dcolord=yes \
 	-Dprint-backends=all \
-	-Dvulkan=enabled \
+	-Dvulkan=yes \
 	-Dwayland-backend=true \
 	-Dx11-backend=true \
-	-Dxinerama=enabled \
-	-Dintrospection=enabled \
+	-Dxinerama=yes \
+	-Dintrospection=true \
 	-Dman-pages=true \
 	%{nil}
 %meson_build
@@ -261,7 +258,6 @@ cp %{SOURCE3} %{buildroot}%{_sysconfdir}/rpm
 %{_libdir}/gtk-4.0/%{gtk_binary_version}/printbackends/libprintbackend-cloudprint.so
 %{_libdir}/gtk-4.0/%{gtk_binary_version}/printbackends/libprintbackend-file.so
 %dir %{_libdir}/gtk-4.0/%{gtk_binary_version}/media/
-%{_libdir}/gtk-4.0/%{gtk_binary_version}/media/libmedia-ffmpeg.so
 %{_libdir}/gtk-4.0/%{gtk_binary_version}/media/libmedia-gstreamer.so
 %dir %{_libdir}/gtk-4.0/%{gtk_binary_version}/theming-engines/
 %dir %{_libdir}/gtk-4.0/modules
@@ -269,7 +265,6 @@ cp %{SOURCE3} %{buildroot}%{_sysconfdir}/rpm
 
 %files -n typelib-1_0-Gtk-4_0
 %{_libdir}/girepository-1.0/Gdk-4.0.typelib
-%{_libdir}/girepository-1.0/GdkWayland-4.0.typelib
 %{_libdir}/girepository-1.0/GdkX11-4.0.typelib
 %{_libdir}/girepository-1.0/Gsk-4.0.typelib
 %{_libdir}/girepository-1.0/Gtk-4.0.typelib
@@ -280,11 +275,9 @@ cp %{SOURCE3} %{buildroot}%{_sysconfdir}/rpm
 %{_bindir}/gtk4-builder-tool
 %{_bindir}/gtk4-encode-symbolic-svg
 %{_bindir}/gtk4-launch
-%{_bindir}/gtk4-print-editor
 %{_bindir}/gtk4-query-settings
 %{_bindir}/gtk4-update-icon-cache
 %{_datadir}/applications/org.gtk.IconBrowser4.desktop
-%{_datadir}/applications/org.gtk.PrintEditor4.desktop
 %{_mandir}/man1/gtk4-broadwayd.1%{?ext_man}
 %{_mandir}/man1/gtk4-icon-browser.1%{?ext_man}
 %{_mandir}/man1/gtk4-builder-tool.1%{?ext_man}
@@ -318,25 +311,15 @@ cp %{SOURCE3} %{buildroot}%{_sysconfdir}/rpm
 %{_datadir}/metainfo/org.gtk.Demo4.appdata.xml
 %{_datadir}/applications/org.gtk.WidgetFactory4.desktop
 %{_datadir}/metainfo/org.gtk.WidgetFactory4.appdata.xml
-%{_datadir}/metainfo/org.gtk.IconBrowser4.appdata.xml
-%{_datadir}/metainfo/org.gtk.PrintEditor4.appdata.xml
 %{_datadir}/gir-1.0/*.gir
 %dir %{_datadir}/gtk-4.0
 %{_datadir}/gtk-4.0/gtk4builder.rng
-%dir %{_datadir}/gtk-4.0/emoji
-%{_datadir}/gtk-4.0/emoji/de.gresource
-%{_datadir}/gtk-4.0/emoji/es.gresource
-%{_datadir}/gtk-4.0/emoji/fr.gresource
-%{_datadir}/gtk-4.0/emoji/zh.gresource
 %{_datadir}/icons/hicolor/scalable/apps/org.gtk.Demo4.svg
 %{_datadir}/icons/hicolor/scalable/apps/org.gtk.IconBrowser4.svg
 %{_datadir}/icons/hicolor/scalable/apps/org.gtk.WidgetFactory4.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.gtk.Demo4-symbolic.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.gtk.IconBrowser4-symbolic.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.gtk.WidgetFactory4-symbolic.svg
-%{_datadir}/icons/hicolor/scalable/apps/org.gtk.PrintEditor4.Devel.svg
-%{_datadir}/icons/hicolor/scalable/apps/org.gtk.PrintEditor4.svg
-%{_datadir}/icons/hicolor/symbolic/apps/org.gtk.PrintEditor4-symbolic.svg
 %{_includedir}/gtk-4.0/
 %{_libdir}/pkgconfig/gtk4.pc
 %{_libdir}/pkgconfig/gtk4-broadway.pc

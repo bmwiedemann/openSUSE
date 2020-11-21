@@ -1,17 +1,4 @@
 -------------------------------------------------------------------
-Mon Oct  5 15:45:08 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 3.38.0:
-  + No changes from 3.37.91.
-- Changes from version 3.37.91:
-  + meson: missing dependency on generated oids header.
-  + Correct display of key usage extensions.
-  + meson: Correctly set internal vapi dependencies.
-  + Cleanup GType boilerplate.
-  + gck: Fixed test failures.
-  + Updated translations.
-
--------------------------------------------------------------------
 Wed Apr 29 20:43:24 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Enable FIPS patch on Leap (jsc#SLE-11855).

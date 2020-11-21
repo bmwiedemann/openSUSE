@@ -17,18 +17,24 @@
 
 
 Name:           gnome-session
-Version:        3.38.0
+Version:        3.36.0
 Release:        0
 Summary:        Session Tools for the GNOME Desktop
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/gnome-session/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-session/3.36/%{name}-%{version}.tar.xz
 Source1:        gnome
 Source2:        gnome.desktop
 
 # PATCH-FIX-UPSTREAM gnome-session-better-handle-empty-xdg_session_type.patch bsc#1084756 bgo#794256 yfjiang@suse.com -- solution provided by msrb@suse.com using a more reasonable way to handle gpu acceleration check
 Patch0:         gnome-session-better-handle-empty-xdg_session_type.patch
+# PATCH-FIX-UPSTREAM gnome-session-remove-gsd-XSettings.patch bsc#1163262 glgo#GNOME/gnome-session#51 xwang@suse.com -- remove org.gnome.SettingsDaemon.XSettings from gnome.session
+Patch1:         gnome-session-remove-gsd-XSettings.patch
+# PATCH-FIX-OPENSUSE gnome-session-s390-not-require-g-s-d_wacom.patch bsc#1129412 yfjiang@suse.com -- Remove the runtime requirement of g-s-d Wacom plugin
+Patch2:         gnome-session-s390-not-require-g-s-d_wacom.patch
+# PATCH-FIX-UPSTREAM gnome-session-error-numbers-wrong.patch bsc#1169165 glgo!GNOME/gnome-session#42 xwang@suse.com -- Valid error numbers are all positive numbers 
+Patch3:         gnome-session-error-numbers-wrong.patch
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
@@ -44,13 +50,12 @@ BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.46.0
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.46.0
-BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.24.2
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.18.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.18.0
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 0.10
 BuildRequires:  pkgconfig(libsystemd) >= 209
 BuildRequires:  pkgconfig(sm)
-BuildRequires:  pkgconfig(systemd) >= 242
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xtrans)
@@ -102,7 +107,13 @@ functional GNOME desktop.
 %lang_package
 
 %prep
-%autosetup -p1
+%setup -q
+%patch0 -p1
+%patch1 -p1
+%ifarch s390 s390x
+%patch2 -p1
+%endif
+%patch3 -p1
 translation-update-upstream po gnome-session-3.0
 
 %build
@@ -195,8 +206,6 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %{_libexecdir}/gnome-session-ctl
 %{_libexecdir}/gnome-session-failed
 %{_datadir}/gnome-session/hardware-compatibility
-%dir %{_userunitdir}/gnome-launched-.scope.d
-%{_userunitdir}/gnome-launched-.scope.d/override.conf
 %{_userunitdir}/gnome-session-failed.service
 %{_userunitdir}/gnome-session-failed.target
 %{_userunitdir}/gnome-session-initialized.target
@@ -209,14 +218,11 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %{_userunitdir}/gnome-session-signal-init.service
 %{_userunitdir}/gnome-session-wayland.target
 %{_userunitdir}/gnome-session-wayland@.target
-%{_userunitdir}/gnome-session-x11-services-ready.target
-%{_userunitdir}/gnome-session-x11-services.target
 %{_userunitdir}/gnome-session-x11.target
 %{_userunitdir}/gnome-session-x11@.target
+%{_userunitdir}/gnome-session-x11-services.target
 %{_userunitdir}/gnome-session.target
 %{_userunitdir}/gnome-session@.target
-%dir %{_userunitdir}/gnome-session@gnome.target.d
-%{_userunitdir}/gnome-session@gnome.target.d/gnome.session.conf
 
 %files lang -f %{name}-3.0.lang
 

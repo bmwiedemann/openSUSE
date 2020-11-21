@@ -1,16 +1,4 @@
 -------------------------------------------------------------------
-Sat Nov  7 21:35:12 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
-
-- Update to 5.76.0
-  * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/kde-frameworks-5.76.0
-- Changes since 5.75.0:
-  * Some more IRIX/Solaris cleanup
-  * Rip out AIX, Tru64, Solaris, Irix support
-  * Make it compile without deprecated method
-
--------------------------------------------------------------------
 Mon Oct  5 08:33:30 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.75.0

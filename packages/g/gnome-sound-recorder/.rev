@@ -217,12 +217,4 @@
 - Don't use arch-specific libdir (boo#1109687). (forwarded request 826297 from dimstar)</comment>
     <requestid>828181</requestid>
   </revision>
-  <revision rev="28" vrev="1">
-    <srcmd5>9286cc47ed20370ede786b3af647e6b8</srcmd5>
-    <version>3.38.0</version>
-    <time>1605800712</time>
-    <user>dimstar_suse</user>
-    <comment>Push GNOME 3.38</comment>
-    <requestid>847227</requestid>
-  </revision>
 </revisionlist>

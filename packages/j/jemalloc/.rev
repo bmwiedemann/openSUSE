@@ -726,14 +726,4 @@ in future runs if it turned out to be implemented incorrectly).</comment>
     <comment></comment>
     <requestid>721222</requestid>
   </revision>
-  <revision rev="32" vrev="2">
-    <srcmd5>3dcdf05fa1018de4f9c69151500911bb</srcmd5>
-    <version>5.2.1</version>
-    <time>1605958995</time>
-    <user>dimstar_suse</user>
-    <comment>- Simplify spec file.
-
-- Re-enable profiling on armv6/armv7 since boo#1105633 is fixed</comment>
-    <requestid>849704</requestid>
-  </revision>
 </revisionlist>

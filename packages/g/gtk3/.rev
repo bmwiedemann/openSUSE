@@ -1423,12 +1423,4 @@ Putting the API-docs into a separate package removes 23MByte from a gtk3-devel i
   (where we have good control of the apps on them). (forwarded request 825426 from iznogood)</comment>
     <requestid>826635</requestid>
   </revision>
-  <revision rev="161" vrev="1">
-    <srcmd5>d04cfde7637508766a6076d9f9654ba3</srcmd5>
-    <version>3.24.23</version>
-    <time>1605783392</time>
-    <user>dimstar_suse</user>
-    <comment>Push GNOME 3.38</comment>
-    <requestid>847237</requestid>
-  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           ModemManager
-Version:        1.14.6
+Version:        1.12.10
 Release:        0
 Summary:        DBus interface for modem handling
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -30,15 +30,14 @@ BuildRequires:  dbus-1-glib-devel
 BuildRequires:  gobject-introspection-devel >= 0.9.6
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libgudev-1_0-devel
-BuildRequires:  libxslt-tools
 BuildRequires:  pkgconfig
 BuildRequires:  ppp-devel
 BuildRequires:  vala-devel >= 0.18
 BuildRequires:  pkgconfig(gudev-1.0) >= 147
 BuildRequires:  pkgconfig(libsystemd) >= 209
-BuildRequires:  pkgconfig(mbim-glib) >= 1.24.0
+BuildRequires:  pkgconfig(mbim-glib) >= 1.18.0
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.97
-BuildRequires:  pkgconfig(qmi-glib) >= 1.26.0
+BuildRequires:  pkgconfig(qmi-glib) >= 1.24.0
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 Requires:       hicolor-icon-theme
@@ -150,7 +149,7 @@ make %{?_smp_mflags} check
 %{_datadir}/icons/hicolor/*/*/ModemManager.png
 %{_datadir}/polkit-1/actions/org.freedesktop.ModemManager1.policy
 %dir %{_datadir}/ModemManager
-%{_datadir}/ModemManager/mm-foxconn-t77w968-carrier-mapping.conf
+%{_datadir}/ModemManager/mm-dell-dw5821e-carrier-mapping.conf
 %{_udevdir}/rules.d/*-mm-*.rules
 %{_unitdir}/ModemManager.service
 %{_mandir}/man1/mmcli.1%{?ext_man}

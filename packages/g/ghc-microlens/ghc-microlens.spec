@@ -18,7 +18,7 @@
 
 %global pkg_name microlens
 Name:           ghc-%{pkg_name}
-Version:        0.4.12.0
+Version:        0.4.11.2
 Release:        0
 Summary:        A tiny lens library with no dependencies
 License:        BSD-3-Clause

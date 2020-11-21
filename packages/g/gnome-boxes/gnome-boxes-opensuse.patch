@@ -1,8 +1,7 @@
-Index: gnome-boxes-3.37.90/data/recommended-downloads.xml
-===================================================================
---- gnome-boxes-3.37.90.orig/data/recommended-downloads.xml
-+++ gnome-boxes-3.37.90/data/recommended-downloads.xml
-@@ -9,12 +9,12 @@
+diff -up gnome-boxes-3.36.5/data/recommended-downloads.xml.orig gnome-boxes-3.36.5/data/recommended-downloads.xml
+--- gnome-boxes-3.36.5/data/recommended-downloads.xml.orig	2020-06-30 15:26:16.284969897 +0200
++++ gnome-boxes-3.36.5/data/recommended-downloads.xml	2020-07-01 08:54:14.692075927 +0200
+@@ -9,11 +9,10 @@
    available.
   -->
  <list>
@@ -13,8 +12,7 @@ Index: gnome-boxes-3.37.90/data/recommended-downloads.xml
    <os_id>http://fedoraproject.org/fedora/32</os_id>
 -  <os_id>http://fedoraproject.org/silverblue/32</os_id>
    <os_id>http://ubuntu.com/ubuntu/20.04</os_id>
-   <os_id>http://opensuse.org/opensuse/15.1</os_id>
+-  <os_id>http://opensuse.org/opensuse/15.1</os_id>
 -  <os_id>http://debian.org/debian/10</os_id>
-   <os_id>http://endlessos.com/eos/3.7</os_id>
-   <os_id>http://gnome.org/gnome/nightly</os_id>
+   <os_id>http://endlessos.com/eos/3.8</os_id>
  </list>

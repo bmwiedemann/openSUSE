@@ -20,13 +20,13 @@
 %define gcisover 1-0_0_0
 
 Name:           gnome-calculator
-Version:        3.38.1
+Version:        3.36.0
 Release:        0
 Summary:        A GNOME Calculator Application
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://wiki.gnome.org/Apps/Calculator
-Source0:        https://download.gnome.org/sources/gnome-calculator/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-calculator/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0

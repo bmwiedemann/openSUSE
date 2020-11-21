@@ -1780,22 +1780,4 @@ WANTED for 13.1 (forwarded request 202421 from RBrownCCB)</comment>
     <comment></comment>
     <requestid>843420</requestid>
   </revision>
-  <revision rev="229" vrev="1">
-    <srcmd5>de2a399e2d6053684dd2e2b6877964ee</srcmd5>
-    <version>2.66.3</version>
-    <time>1605783476</time>
-    <user>dimstar_suse</user>
-    <comment>- Add requires(post) libgio-2_0-0 to glib2-tools: ensures
-  glib-compile-schema to be functional when the file trigger fires,
-  by explicitly requesting the correct library to be present for
-  the post script. (boo#1178713).
-
-- Update to version 2.66.3:
-  + Fix awkward bug with `GPollFD` handling in some situations.
-  + Fix sending FDs attached to very large D-Bus messages.
-  + Bugs fixed: glgo#GNOME/GLib#1592, glgo#GNOME/GLib!1720,
-    glgo#GNOME/GLib!1721, glgo#GNOME/GLib!1723,
-    glgo#GNOME/GLib!1727, glgo#GNOME/GLib!1736. (forwarded request 848891 from dimstar)</comment>
-    <requestid>849054</requestid>
-  </revision>
 </revisionlist>

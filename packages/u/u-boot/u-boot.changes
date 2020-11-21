@@ -1,21 +1,4 @@
 -------------------------------------------------------------------
-Fri Nov 20 20:00:52 UTC 2020 - Frank Kunz <mailinglists@kunz-im-inter.net>
-
-- Added u-boot tools binaries to tools package
-
--------------------------------------------------------------------
-Fri Nov 20 13:58:32 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
-
-- Add pinebook-pro-rk3399 support
-
--------------------------------------------------------------------
-Wed Nov 18 13:50:35 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
-
-Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2020.10
-* Patches added:
-  0014-Disable-CONFIG_CMD_BTRFS-in-xilinx_.patch - bsc#1178884
-
--------------------------------------------------------------------
 Wed Oct 14 09:48:25 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Fix last change

@@ -1,26 +1,4 @@
 -------------------------------------------------------------------
-Mon Sep 14 12:38:12 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 3.38.0:
-  + Updated translations.
-
--------------------------------------------------------------------
-Fri Sep  4 13:02:49 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 3.37.3:
-  + Fix timed games opening as untimed games.
-  + Various refactoring and preparation for GTK 4.
-- Changes from version 3.37.2:
-  + Make easy mode vs. GNU Chess a bit easier.
-  + Support D-Bus activation.
-- Changes from version 3.37.1.1::
-  + Fix previous tag.
-- Changes from version 3.37.1:
-  + Various refactoring and preparation for GTK 4.
-  + Improve keyboard shortcuts dialog.
-  + Updated translations.
-
--------------------------------------------------------------------
 Thu Jun  4 10:37:16 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.1:

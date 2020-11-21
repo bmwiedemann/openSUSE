@@ -19,14 +19,14 @@
 %global __requires_exclude typelib\\(Meta\\)
 
 Name:           gnome-shell
-Version:        3.38.1
+Version:        3.36.7
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeShell
-Source:         https://download.gnome.org/sources/gnome-shell/3.38/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 # SOURCE-FEATURE-SLE aboutMenu fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
 Source1:        aboutMenu.js
 # SOURCE-FEATURE-OPENSUSE noise-texture boo#1176418 qkzhu@suse.com -- Add noise-texture as the default greeter background, used by patch4.
@@ -40,6 +40,8 @@ Patch2:         gnome-shell-disable-ibus-when-not-installed.patch
 Patch4:         gnome-shell-fate324570-Make-GDM-background-image-configurable.patch
 # PATCH-NEEDS-REBASE gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch jsc#SLE-9267 qkzhu@suse.com -- Remove sessionList of endSessionDialog (WAS: PATCH-FEATURE-OPENSUSE)
 Patch5:         gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch
+# PATCH-FIX-UPSTREAM gnome-shell-Get-resource-scale-by-get_resource_scale.patch bsc#1169845 glgo#GNOME/gnome-shell!1206 xwang@suse.com -- Get resource scale by get_resource_scale
+Patch6:         gnome-shell-Get-resource-scale-by-get_resource_scale.patch
 
 ## NOTE: Keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gnome-shell-gdm-login-applet.patch fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
@@ -78,10 +80,10 @@ BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gdk-x11-3.0)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.56.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.56.0
-BuildRequires:  pkgconfig(gjs-1.0) >= 1.65.1
+BuildRequires:  pkgconfig(gjs-1.0) >= 1.63.2
 BuildRequires:  pkgconfig(gnome-autoar-0)
 BuildRequires:  pkgconfig(gnome-bluetooth-1.0) >= 3.9.0
-BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.35.90
+BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.34.2
 BuildRequires:  pkgconfig(gnome-keybindings)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.49.1
@@ -95,9 +97,9 @@ BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libcroco-0.6) >= 0.6.8
 BuildRequires:  pkgconfig(libecal-2.0) >= 3.33.1
-BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.33.1
+BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.17.2
 BuildRequires:  pkgconfig(libgnome-menu-3.0) >= 3.5.3
-BuildRequires:  pkgconfig(libmutter-7) >= 3.38.0
+BuildRequires:  pkgconfig(libmutter-6) >= 3.36.1
 BuildRequires:  pkgconfig(libnm) >= 1.10.4
 BuildRequires:  pkgconfig(libpulse) >= 2.0
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
@@ -106,9 +108,9 @@ BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libstartup-notification-1.0) >= 0.11
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(mutter-clutter-7) >= 3.37.91
-BuildRequires:  pkgconfig(mutter-cogl-7) >= 3.37.91
-BuildRequires:  pkgconfig(mutter-cogl-pango-7) >= 3.37.91
+BuildRequires:  pkgconfig(mutter-clutter-6) >= 3.36.1
+BuildRequires:  pkgconfig(mutter-cogl-6) >= 3.36.1
+BuildRequires:  pkgconfig(mutter-cogl-pango-6) >= 3.36.1
 BuildRequires:  pkgconfig(polkit-agent-1) >= 0.100
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  python(abi) >= 3
@@ -174,10 +176,11 @@ This package contains an optional extensions app for managing GNOME Shell extens
 
 %prep
 %setup -q
-#patch1 -p1
+%patch1 -p1
 %patch2 -p1
 %patch4 -p1
 #patch5 -p1
+%patch6 -p1
 
 translation-update-upstream
 
@@ -268,10 +271,11 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %dir %{_datadir}/xdg-desktop-portal
 %dir %{_datadir}/xdg-desktop-portal/portals
 %{_datadir}/xdg-desktop-portal/portals/gnome-shell.portal
-%{_userunitdir}/org.gnome.Shell.target
-%{_userunitdir}/org.gnome.Shell@wayland.service
-%{_userunitdir}/org.gnome.Shell@x11.service
-%{_userunitdir}/org.gnome.Shell-disable-extensions.service
+%{_userunitdir}/gnome-shell-wayland.target
+%{_userunitdir}/gnome-shell-x11.target
+%{_userunitdir}/gnome-shell-wayland.service
+%{_userunitdir}/gnome-shell-x11.service
+%{_userunitdir}/gnome-shell-disable-extensions.service
 %{_sysconfdir}/xdg/autostart/gnome-shell-overrides-migration.desktop
 %{_libexecdir}/gnome-shell/gnome-shell-overrides-migration.sh
 %{_datadir}/glib-2.0/schemas/00_org.gnome.shell.gschema.override

@@ -1,7 +1,7 @@
 #
 # spec file for package python-dj-database-url
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,6 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/kennethreitz/dj-database-url
 Source:         https://github.com/kennethreitz/dj-database-url/archive/v%{version}.tar.gz
-BuildRequires:  %{python_module Django}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -60,8 +58,7 @@ Oracle, Oracle (GIS), and SQLite.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%check
-%pytest
+# all tests connect to AWS for DB servers
 
 %files %{python_files}
 %license LICENSE

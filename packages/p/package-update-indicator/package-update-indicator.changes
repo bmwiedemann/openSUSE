@@ -1,13 +1,4 @@
 -------------------------------------------------------------------
-Wed Nov 18 12:01:36 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
-
-- update to version 7:
-  * Explicitly schedule the initial check for updates after a
-    fixed short delay
-  * Add debug logging when periodic checks are inhibited
-  * Add Russian translations
-
--------------------------------------------------------------------
 Mon Aug 24 11:59:57 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - update to version 6:

@@ -1,23 +1,4 @@
 -------------------------------------------------------------------
-Mon Nov  9 02:03:34 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
-
-- actually make the uninstall step also call it with --system
-
--------------------------------------------------------------------
-Mon Nov  9 01:42:55 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
-
-- simplify README.packaging
-- no longer package the go sources
-
--------------------------------------------------------------------
-Mon Nov  9 01:38:48 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
-
-- update to 2.12.1
-  https://github.com/git-lfs/git-lfs/releases/tag/v2.11.0
-  https://github.com/git-lfs/git-lfs/releases/tag/v2.12.0
-  https://github.com/git-lfs/git-lfs/releases/tag/v2.12.1
-
--------------------------------------------------------------------
 Mon Sep 28 11:49:46 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - we only need one version of the ronn gem not all versions.

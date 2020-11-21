@@ -20,27 +20,27 @@
 %define vim_plugin_dir %{_datadir}/vim/site/plugin
 
 Name:           devhelp
-Version:        3.38.0
+Version:        3.36.2
 Release:        0
 Summary:        Developer's Help Program for GNOME
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Devhelp
-Source0:        https://download.gnome.org/sources/devhelp/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/devhelp/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel >= 1.30.0
 BuildRequires:  gtk-doc
 BuildRequires:  itstool
-BuildRequires:  meson >= 0.53
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(amtk-5) >= 5.0
-BuildRequires:  pkgconfig(gio-2.0) >= 2.64
+BuildRequires:  pkgconfig(gio-2.0) >= 2.60
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
-BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.26
+BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.20
 
 Suggests:       emacs-plugin-devhelp
 Suggests:       gedit-plugin-devhelp
@@ -137,7 +137,7 @@ cp -a plugins/devhelp.vim %{buildroot}%{vim_plugin_dir}
 
 %files
 %license LICENSES
-%doc AUTHORS HACKING NEWS
+%doc AUTHORS HACKING NEWS README
 %{_bindir}/devhelp
 %dir %{_datadir}/metainfo
 %{_datadir}/applications/org.gnome.Devhelp.desktop

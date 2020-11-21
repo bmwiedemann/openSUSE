@@ -17,41 +17,41 @@
 
 
 Name:           gnome-contacts
-Version:        3.38.1
+Version:        3.36.2
 Release:        0
 Summary:        Contacts Manager for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/Apps/Contacts
-Source0:        https://download.gnome.org/sources/gnome-contacts/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-contacts/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docbook_4
 BuildRequires:  meson >= 0.50
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
-BuildRequires:  vala >= 0.40.10
+BuildRequires:  vala
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(cheese)
 BuildRequires:  pkgconfig(cheese-gtk) >= 3.3.91
 BuildRequires:  pkgconfig(clutter-gtk-1.0)
-BuildRequires:  pkgconfig(folks) >= 0.14
+BuildRequires:  pkgconfig(folks) >= 0.11.4
 BuildRequires:  pkgconfig(folks-eds) >= 0.11.4
 # Disable telepathy by default
 #BuildRequires:  pkgconfig(folks-telepathy) >= 0.11.4
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(geocode-glib-1.0) >= 3.15.3
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.44.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.58
+BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gmodule-export-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gnome-desktop-3.0)
 BuildRequires:  pkgconfig(goa-1.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(libebook-1.2) >= 3.13.90
-BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.30
+BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.13.90
 BuildRequires:  pkgconfig(libedataserverui-1.2) >= 3.13.90
-BuildRequires:  pkgconfig(libhandy-1) >= 1.0.0
+BuildRequires:  pkgconfig(libhandy-0.0) >= 0.0.9
 # Disable telepathy by default, following upstream, NOTE pass -Dtelepathy=true to meson if you reenable this.
 #BuildRequires:  pkgconfig(telepathy-glib) >= 0.22.0
 

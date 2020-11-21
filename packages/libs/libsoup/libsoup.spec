@@ -17,17 +17,19 @@
 
 
 Name:           libsoup
-Version:        2.72.0
+Version:        2.70.0
 Release:        0
 Summary:        HTTP client/server library for GNOME
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/libsoup
-Source0:        https://download.gnome.org/sources/libsoup/2.72/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libsoup/2.70/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 # PATCH-FIX-OPENSUSE libsoup-disable-hsts-tests.patch mgorse@suse.com -- disable hsts tests.
 Patch0:         libsoup-disable-hsts-tests.patch
+# PATCH-FIX-UPSTREAM libsoup-test-utils-fix.patch -- test-utils: Clarify meaning of an environment variable
+Patch1:         libsoup-test-utils-fix.patch
 # PATCH-FIX-OPENSUSE libsoup-disable-ssl-tests.patch glgo#GNOME/libsoup#188 -- Disable ssl tests
 Patch2:         libsoup-disable-ssl-tests.patch
 
@@ -129,7 +131,6 @@ translation-update-upstream po libsoup
 	-Dvapi=enabled \
 	-Dgtk_doc=true \
 	-Dntlm=disabled \
-        -Dsysprof=disabled \
 	%{nil}
 %meson_build
 

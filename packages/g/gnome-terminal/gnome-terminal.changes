@@ -1,28 +1,4 @@
 -------------------------------------------------------------------
-Mon Oct  5 15:39:58 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 3.38.1:
-  + Updated translations.
-
--------------------------------------------------------------------
-Mon Sep 14 12:46:35 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 3.38.0:
-  + Updated translations.
-
--------------------------------------------------------------------
-Fri Sep  4 14:03:11 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 3.37.90:
-  + profile: Add pref to enable SIXEL.
-  + profile: editor: Only show font family and size in the font
-    chooser.
-  + Improve contrast in the "GNOME" terminal palette.
-  + Updated translations.
-- Add docbook-xsl-stylesheets BuildRequires: new dependency to
-  build the man page.
-
--------------------------------------------------------------------
 Sun Apr 26 11:18:05 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.2:

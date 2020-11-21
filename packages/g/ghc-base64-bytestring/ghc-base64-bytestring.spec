@@ -19,7 +19,7 @@
 %global pkg_name base64-bytestring
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.2.0.1
+Version:        1.2.0.0
 Release:        0
 Summary:        Fast base64 encoding and decoding for ByteStrings
 License:        BSD-3-Clause
@@ -31,6 +31,8 @@ BuildRequires:  ghc-rpm-macros
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-QuickCheck-devel
+BuildRequires:  ghc-containers-devel
+BuildRequires:  ghc-split-devel
 BuildRequires:  ghc-test-framework-devel
 BuildRequires:  ghc-test-framework-hunit-devel
 BuildRequires:  ghc-test-framework-quickcheck2-devel

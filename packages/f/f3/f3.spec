@@ -17,7 +17,7 @@
 
 
 Name:           f3
-Version:        8.0
+Version:        7.2
 Release:        0
 Summary:        Fight Flash Fraud / Fight Fake Flash
 License:        GPL-3.0-only

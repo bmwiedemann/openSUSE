@@ -17,13 +17,13 @@
 
 
 Name:           epiphany
-Version:        3.38.1
+Version:        3.36.4
 Release:        0
 Summary:        GNOME Web Browser
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://wiki.gnome.org/Apps/Web
-Source0:        https://download.gnome.org/sources/epiphany/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/epiphany/3.36/%{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
 
 BuildRequires:  fdupes
@@ -45,17 +45,17 @@ BuildRequires:  pkgconfig(hogweed) >= 3.2
 BuildRequires:  pkgconfig(icu-uc) >= 4.6
 BuildRequires:  pkgconfig(iso-codes) >= 0.35
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.4
-BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.37.1
-BuildRequires:  pkgconfig(libhandy-1) >= 0.90.0
-BuildRequires:  pkgconfig(libportal) >= 0.0.2
+BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.35.3
+BuildRequires:  pkgconfig(libhandy-0.0) >= 0.0.10
+BuildRequires:  pkgconfig(libnotify) >= 0.5.1
 BuildRequires:  pkgconfig(libsecret-1) >= 0.19.0
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.48.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.12
 BuildRequires:  pkgconfig(libxslt) >= 1.1.7
 BuildRequires:  pkgconfig(nettle) >= 3.2
-BuildRequires:  pkgconfig(sqlite3) >= 3.22
-BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.29.3
-BuildRequires:  pkgconfig(webkit2gtk-web-extension-4.0) >= 2.29.3
+BuildRequires:  pkgconfig(sqlite3) >= 3.0
+BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.27.4
+BuildRequires:  pkgconfig(webkit2gtk-web-extension-4.0) >= 2.27.4
 Requires:       %{name}-branding = %{version}
 Requires:       iso-codes
 Recommends:     ca-certificates

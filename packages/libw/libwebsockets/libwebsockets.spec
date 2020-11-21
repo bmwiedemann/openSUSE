@@ -60,7 +60,6 @@ HTTP/WebSocket servers or clients.
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       %{name}%{sover} = %{version}
-Requires:       openssl-devel
 
 %description devel
 This subpackage contains libraries and header files for developing

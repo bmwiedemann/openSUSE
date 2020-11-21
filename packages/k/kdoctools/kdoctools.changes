@@ -1,20 +1,4 @@
 -------------------------------------------------------------------
-Sat Nov  7 21:34:40 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
-
-- Update to 5.76.0
-  * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/kde-frameworks-5.76.0
-- Changes since 5.75.0:
-  * Fix xml formatting in contributor.entities.
-  * Update contributor.entities for KMail documentation Chapter 4.
-  * Korean update: fix typo on entity
-  * Various fixes
-  * Documentation fixes
-  * Korean update
-  * Korean update: reformat HTML files of GPL, FDL and add LGPL
-
--------------------------------------------------------------------
 Mon Oct  5 08:33:09 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.75.0

@@ -1,10 +1,4 @@
 -------------------------------------------------------------------
-Tue Nov 17 08:13:51 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
-
-- Add ovmf-jscSLE-16075-SEV-ES-fixes.patch to merge upstream SEV-ES
-  fixes (jsc#SLE-16075)
-
--------------------------------------------------------------------
 Thu Nov  5 07:56:36 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update the json descriptors to address all x86_64 firmware files
@@ -924,7 +918,7 @@ Thu Nov 15 07:25:30 UTC 2018 - Gary Ching-Pang Lin <glin@suse.com>
   + MdePkg: Add more checker in UefiDecompressLib to access the
     valid buffer only (CVE FIX)
   + MdeModulePkg/PartitionDxe: Add check for underlying device
-    block size (bsc#1130267, CVE-2019-0160)
+    block size
   + MdeModulePkg Xhci: Handle value 5 in Port Speed field of PORTSC
   + MdeModulePkg XhciDxe: Assign Usb2Hc.XXXRevision based on SBRN
   + MdePkg/BaseLib: AsciiStrToUnicodeStr(S) not handle EASCII
@@ -1210,7 +1204,7 @@ Fri Jul 13 08:32:57 UTC 2018 - glin@suse.com
   + SecurityPkg Tpm2DeviceLibDTpm: Update enum type name to match
     the one in lib
   + MdeModulePkg UsbBusDxe: Fix wrong buffer length used to read
-    hub desc (bsc#1131361, CVE-2019-0161)
+    hub desc
   + SecurityPkg: Tpm2DeviceLib: Enable CapCRBIdleBypass support
   + SecurityPkg: Cache TPM interface type info
   + FatPkg/FatPei: Add the recognition of recovery capsule on NVME
@@ -1312,7 +1306,6 @@ Thu May 10 08:05:16 UTC 2018 - glin@suse.com
     delete-safe
   + OvmfPkg/PlatformBootManagerLib: add USB keyboard to ConIn
   + CryptoPkg/OpensslLib: Update OpenSSL version to 1.1.0h
-    (bsc#1094289, CVE-2018-0739)
   + OvmfPkg/TlsAuthConfigLib: configure trusted cipher suites for
     HTTPS boot
   + ArmVirtPkg/ArmVirtQemu: hook NvVarStoreFormattedLib into
@@ -1371,7 +1364,7 @@ Thu Mar 15 08:40:01 UTC 2018 - glin@suse.com
   + NetworkPkg/IScsiDxe: Fix the ISCSI connection failure in
     certain case
   + OvmfPkg/QemuFlashFvbServicesRuntimeDxe: Clear C-bit when SEV is
-    active (bsc#1099193)
+    active
   + OvmfPkg: include Tcg2Dxe module
   + OvmfPkg: simplify SecurityStubDxe.inf inclusion
   + OvmfPkg/AmdSevDxe: decrypt the pages of the initial SMRAM save
@@ -1461,7 +1454,6 @@ Thu Mar 15 08:40:01 UTC 2018 - glin@suse.com
   + SecurityPkg/SecureBootConfigDxe: Fix deleting signature data issue
   + CryptoPkg/IntrinsicLib: Fix the warning on memset
   + MdeModulePkg/DxeCore: Filter out all paging capabilities
-    (bsc#1092943)
   + CryptoPkg/TlsLib: Change the return type of TlsInitialize()
   + NetworkPkg/HttpDxe: Fix the incorrect SizeofHeaders in
     HttpTcpReceiveHeader()

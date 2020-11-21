@@ -1,12 +1,4 @@
 -------------------------------------------------------------------
-Thu Nov 19 17:06:49 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
-
-- update to 2.0.55.1
-  * add bfb-install script
-- fix version number naming
-- add versioning to _service file
-
--------------------------------------------------------------------
 Wed Nov 11 10:12:08 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
 
 - update to latest version (jsc#SLE-16098 jsc#SLE-13565 jsc#SLE-16108 jsc#SLE-15271)

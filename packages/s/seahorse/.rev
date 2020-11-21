@@ -821,12 +821,4 @@ A couple of patches for this are competing for upstream approval at bgo#659834 -
     <comment></comment>
     <requestid>816722</requestid>
   </revision>
-  <revision rev="112" vrev="1">
-    <srcmd5>1ed736ac698517b06935741313eb4da0</srcmd5>
-    <version>3.38.0.1</version>
-    <time>1605783437</time>
-    <user>dimstar_suse</user>
-    <comment>Push GNOME 3.38</comment>
-    <requestid>847263</requestid>
-  </revision>
 </revisionlist>

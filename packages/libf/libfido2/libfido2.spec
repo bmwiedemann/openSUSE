@@ -1,7 +1,7 @@
 #
 # spec file for package libfido2
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,7 +54,6 @@ Summary:        Development files for FIDO U2F and FIDO 2.0 protocols
 Requires:       %{name}-%{sover} = %{version}
 Requires:       libopenssl-1_1-devel
 Conflicts:      libfido2-0_4_0
-Conflicts:      libfido2-1_0_0
 
 %description -n %{name}-devel
 This package contains the header file needed to develop applications that
@@ -63,7 +62,6 @@ use FIDO U2F and FIDO 2.0 protocols.
 %package     -n %{name}-utils
 Summary:        Utility programs making use of libfido2, a library for FIDO U2F and FIDO 2.0
 Conflicts:      libfido2-0_4_0
-Conflicts:      libfido2-1_0_0
 
 %description -n %{name}-utils
 This package contains utilities to use FIDO U2F and FIDO 2.0 protocols.

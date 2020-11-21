@@ -56,7 +56,7 @@
 # Build with cracklib plugin when cracklib-dict-full >= 2.9.0 is available
 %define with_cracklib_plugin 0
 Name:           mariadb
-Version:        10.5.8
+Version:        10.5.6
 Release:        0
 Summary:        Server part of MariaDB
 License:        SUSE-GPL-2.0-with-FLOSS-exception
@@ -569,7 +569,6 @@ rm %{buildroot}%{_libdir}/mysql/plugin/{auth_gssapi_client.so,dialog.so,mysql_cl
 # Devel files
 rm %{buildroot}%{_bindir}/mysql_config
 rm %{buildroot}%{_bindir}/mariadb_config
-rm %{buildroot}%{_bindir}/mariadb-config
 rm %{buildroot}%{_libdir}/pkgconfig/mariadb.pc
 rm -f %{buildroot}%{_prefix}/lib/pkgconfig/libmariadb.pc
 rm -f %{buildroot}%{_libdir}/pkgconfig/libmariadb.pc

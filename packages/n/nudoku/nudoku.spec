@@ -1,7 +1,7 @@
 #
 # spec file for package nudoku
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           nudoku
-Version:        2.1.0
+Version:        2.0.0
 Release:        0
 Summary:        Ncurses based sudoku game
 License:        GPL-3.0-only
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://github.com/jubalh/%{name}
 Source:         https://github.com/jubalh/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         nudoku-2.0.0-unused-var.patch
+Patch1:         nudoku-2.0.0-gettext.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cairo-devel
@@ -38,6 +40,8 @@ nudoku is a ncurses based sudoku game.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
 
 %build
 autoreconf -fi

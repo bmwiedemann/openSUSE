@@ -1,7 +1,7 @@
 #
 # spec file for package libsigc++2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name libsigc++
 Name:           libsigc++2
-Version:        2.10.4
+Version:        2.10.3
 Release:        0
 Summary:        Typesafe Signal Framework for C++
 License:        LGPL-2.1-or-later
@@ -28,7 +28,7 @@ Source0:        https://download.gnome.org/sources/libsigc++/2.10/%{_name}-%{ver
 Source99:       baselibs.conf
 
 BuildRequires:  gcc-c++
-BuildRequires:  meson
+BuildRequires:  m4
 BuildRequires:  pkgconfig
 
 %description
@@ -71,15 +71,16 @@ of use unmatched by other C++ callback libraries.
 %setup -q -n %{_name}-%{version}
 
 %build
-%meson
-%meson_build
+%configure --disable-static
+%make_build
 
 %install
-%meson_install
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
 export MALLOC_CHECK_=2 MALLOC_PERTURB_=$((${RANDOM:-256} % 256))
-%meson_test
+%make_build check
 unset MALLOC_CHECK_ MALLOC_PERTURB_
 
 %post -n libsigc-2_0-0 -p /sbin/ldconfig
@@ -95,5 +96,10 @@ unset MALLOC_CHECK_ MALLOC_PERTURB_
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/sigc++-2.0
 %{_includedir}/sigc++-2.0/
+%{_datadir}/devhelp/books/%{_name}-2.0
+%doc %{_datadir}/doc/%{_name}-2.0
+# Avoid BuildRequires on devhelp
+%dir %{_datadir}/devhelp
+%dir %{_datadir}/devhelp/books
 
 %changelog

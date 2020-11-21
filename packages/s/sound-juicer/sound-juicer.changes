@@ -1,24 +1,4 @@
 -------------------------------------------------------------------
-Mon Sep 14 10:30:34 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 3.38.0:
-  + Don't use proxy GSettings directly.
-  + Issue tracker URL is out-of-date in metainfo.
-  + Unescape proxy username.
-  + Add Flatpak manifest.
-  + support building with meson.
-  + Remove autotools.
-  + Migrate app menu to popover menu in main window.
-  + Fix musicbrainz lookups not working.
-  + Updated translations.
-- Switch to meson build system:
-  + Add meson BuildRequires.
-  + Replace configure/make/make_install macros with respective
-    meson/meson_build/meson_install.
-- Drop legacy glib2_gsettings_schema_, desktop_database_ and
-  icon_theme_cache_ post/postun macros.
-
--------------------------------------------------------------------
 Sat Jan 25 14:19:47 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

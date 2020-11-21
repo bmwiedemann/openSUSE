@@ -1,0 +1,45 @@
+From: Matthias Fehring <buschmann23@opensuse.org>
+Date: 2018-11-17 09:20:00 +0100
+Subject: fix mounting of LUKS2 volumes
+Upstream: submitted (https://sourceforge.net/p/pam-mount/pam-mount/merge-requests/2/)
+
+Cryptsetup version 2.0 added support for LUKS2.
+This patch adds support for mounting LUKS2 volumes with pam_mount.
+
+---
+ crypto-dmc.c |   10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+--- a/src/crypto-dmc.c	2016-09-23 09:52:47.000000000 +0200
++++ b/src/crypto-dmc.c	2018-11-17 09:17:11.357766056 +0100
+@@ -21,6 +21,12 @@
+ #include "libcryptmount.h"
+ #include "pam_mount.h"
+
++#ifndef CRYPT_LUKS
++#define CRYPT_LUKS NULL /* Passing NULL to crypt_load will
++                           default to LUKS(1) on older
++                           libcryptsetup versions. */
++#endif
++
+ /**
+  * dmc_is_luks - check if @path points to a LUKS volume (cf. normal dm-crypt)
+  * @path:	path to the crypto container
+@@ -48,7 +54,7 @@
+
+ 	ret = crypt_init(&cd, device);
+ 	if (ret == 0) {
+-		ret = crypt_load(cd, CRYPT_LUKS1, NULL);
++		ret = crypt_load(cd, CRYPT_LUKS, NULL);
+ 		if (ret == -EINVAL)
+ 			ret = false;
+ 		else if (ret == 0)
+@@ -106,7 +112,7 @@
+ #endif
+ 	}
+
+-	ret = crypt_load(cd, CRYPT_LUKS1, NULL);
++	ret = crypt_load(cd, CRYPT_LUKS, NULL);
+ 	if (ret == 0) {
+ 		ret = crypt_activate_by_passphrase(cd, mt->crypto_name,
+ 		      CRYPT_ANY_SLOT, req->key_data, req->key_size, flags);

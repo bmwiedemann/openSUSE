@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-rpm-spec
-Version:        0.10
+Version:        0.9
 Release:        0
 Summary:        Python module for parsing RPM spec files
 License:        MIT

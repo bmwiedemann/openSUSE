@@ -1,26 +1,4 @@
 -------------------------------------------------------------------
-Fri Sep 11 12:31:09 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 3.38.0:
-  + Updated translations.
-
--------------------------------------------------------------------
-Fri Sep  4 12:13:08 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 3.37.90:
-  + Port to libhandy.
-- Changes from version 3.37.1:
-  + Completely redesign the UI.
-  + Allow taking area screenshots with timeout.
-  + Deprecate --include-border and --remove-border options.
-  + Deprecate --border-effect option.
-  + Add -Dx11 build option to allow building without X11.
-  + Cleanups and deprecation fixes.
-  + Updated translations.
-- Add pkgconfig(libhandy-1) BuildRequires: new dependency.
-- Rebase gnome-screenshot-onlyshowin.patch.
-
--------------------------------------------------------------------
 Wed Mar 11 18:48:21 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update source service to obs_scm.

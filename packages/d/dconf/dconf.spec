@@ -17,13 +17,13 @@
 
 
 Name:           dconf
-Version:        0.38.0
+Version:        0.36.0
 Release:        0
 Summary:        Key-based configuration system
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://live.gnome.org/dconf
-Source0:        https://download.gnome.org/sources/dconf/0.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/dconf/0.36/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gtk-doc

@@ -17,13 +17,13 @@
 
 
 Name:           gnome-photos
-Version:        3.38.0
+Version:        3.34.2
 Release:        0
 Summary:        Photo viewer for GNOME
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://wiki.gnome.org/Design/Apps/Photos
-Source0:        https://download.gnome.org/sources/gnome-photos/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-photos/3.34/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM gnome-photos-on-demand-activate-dleyna.patch bsc#992420, glgo#GNOME/gnome-photos#75 sckang@suse.com -- Activate dleyna-renderer-service on demand instead of on start-up.
 Patch0:         gnome-photos-on-demand-activate-dleyna.patch
 
@@ -62,9 +62,7 @@ BuildRequires:  pkgconfig(librsvg-2.0) >= 2.26.0
 BuildRequires:  pkgconfig(tracker-control-2.0)
 BuildRequires:  pkgconfig(tracker-sparql-2.0)
 # gnome-photos references tracker's glib schemas
-Requires:       (tracker >= 2 with tracker < 2.99)
-# and also org.freedesktop.Tracker.Miner.Files, which lives in tracker-miner-files
-Requires:       (tracker-miner-files > 2 with tracker-miner-files < 2.99)
+Requires:       tracker
 # If we want to be able to send photos to a remote DLNA renderer, we require the dbus service for it
 Recommends:     dbus(dleyna-renderer-service)
 
@@ -114,14 +112,6 @@ rm %{buildroot}%{_datadir}/doc/%{name}/{ARTISTS,AUTHORS,NEWS,README}
 %{_libexecdir}/gnome-photos-thumbnailer
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/libgnome-photos.so
-%{_datadir}/dbus-1/services/org.gnome.Photos.Tracker1.Miner.Extract.service
-%{_datadir}/dbus-1/services/org.gnome.Photos.Tracker1.Miner.Files.service
-%{_datadir}/dbus-1/services/org.gnome.Photos.Tracker1.service
-%dir %{_datadir}/tracker/miners
-%{_datadir}/tracker/domain-ontologies/org.gnome.Photos.rule
-%{_datadir}/tracker/miners/org.gnome.Photos.Tracker1.Miner.Extract.service
-%{_datadir}/tracker/miners/org.gnome.Photos.Tracker1.Miner.Files.service
-
 
 %files -n gnome-shell-search-provider-gnome-photos
 # Own dirs so we don't have to depend on gnome-shell.

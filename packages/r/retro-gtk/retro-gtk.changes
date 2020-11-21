@@ -1,20 +1,4 @@
 -------------------------------------------------------------------
-Mon Sep 14 13:15:03 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 1.0.0:
-  + Major API overhaul and API version bump, detailing all the
-    changes would be ridiculous and hence won't be done.
-  + Run Libretro cores isolated in a dedicated subprocess,
-    similarly to how modern web browsers handle web pages.
-  + Support Libretro cores rendering their video with OpenGL.
-  + Improve the Libretro core timing accuracy.
-  + Resample the Libretro core's audio output to ensure it matches
-    its play speed.
-- Package the new retro-runner in the main package. The library
-  requires this to be present.
-- Add pkgconfig(samplerate) BuildRequires: new dependency.
-
--------------------------------------------------------------------
 Sun Jan 19 13:06:07 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.18.1:

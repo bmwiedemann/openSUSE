@@ -1,12 +1,4 @@
 -------------------------------------------------------------------
-Mon Nov  9 19:31:01 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
-
-- Add explicit pkgconfig(gdk-pixbuf-xlib-2.0) BuildRequires: used
-  to be pulled in (as part of gdk-pixbuf) by GTK3 in the past. But
-  as configure explicitly looks for it, it is our own duty to
-  ensure its presence.
-
--------------------------------------------------------------------
 Wed Oct 21 20:37:22 UTC 2020 - Kirk Allan <kallan@suse.com>
 
 - Update to 11.2.0 (build 16938113) (boo#1177987)

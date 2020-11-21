@@ -17,13 +17,13 @@
 
 
 Name:           gnome-chess
-Version:        3.38.0
+Version:        3.36.1
 Release:        0
 Summary:        Chess Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Chess
 URL:            https://wiki.gnome.org/Apps/Chess
-Source0:        https://download.gnome.org/sources/gnome-chess/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-chess/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 # ITS Tool is needed because there are some XML formats that Gettext does not handle, at least not now (3.27.2).
@@ -67,10 +67,9 @@ in a window.
 %{_datadir}/%{name}/
 %{_bindir}/%{name}
 %dir %{_datadir}/metainfo
-%{_datadir}/applications/org.gnome.Chess.desktop
-%{_datadir}/dbus-1/services/org.gnome.Chess.service
-%{_datadir}/glib-2.0/schemas/org.gnome.Chess.gschema.xml
 %{_datadir}/metainfo/org.gnome.Chess.appdata.xml
+%{_datadir}/applications/org.gnome.Chess.desktop
+%{_datadir}/glib-2.0/schemas/org.gnome.Chess.gschema.xml
 %{_mandir}/man6/%{name}.6%{?ext_man}
 %dir %{_sysconfdir}/gnome-chess
 %config %{_sysconfdir}/gnome-chess/engines.conf

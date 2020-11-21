@@ -508,12 +508,4 @@
     <comment>Allow OBS to pick better candidates to shorten rebuild queues (forwarded request 709159 from dimstar)</comment>
     <requestid>709208</requestid>
   </revision>
-  <revision rev="61" vrev="17">
-    <srcmd5>c09ac910ba550ab61da570bfb8e91df7</srcmd5>
-    <version>12.2</version>
-    <time>1605958895</time>
-    <user>dimstar_suse</user>
-    <comment></comment>
-    <requestid>849469</requestid>
-  </revision>
 </revisionlist>

@@ -17,13 +17,13 @@
 
 
 Name:           gnome-system-monitor
-Version:        3.38.0
+Version:        3.36.1
 Release:        0
 Summary:        A process monitor for the GNOME desktop
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/SystemMonitor
-Source0:        https://download.gnome.org/sources/gnome-system-monitor/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-system-monitor/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

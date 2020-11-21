@@ -1,7 +1,7 @@
 #
 # spec file for package skelcd-control-MicroOS
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -116,9 +116,9 @@ Requires:       yast2-vm
 #
 ######################################################################
 
-URL:            https://github.com/yast/skelcd-control-MicroOS
+Url:            https://github.com/yast/skelcd-control-MicroOS
 AutoReqProv:    off
-Version:        20201117
+Version:        20200729
 Release:        0
 Summary:        The MicroOS control file needed for installation
 License:        MIT
@@ -154,12 +154,12 @@ make -C control check
 #
 # Add control file
 #
-mkdir -p %{buildroot}/%{?skelcdpath}/CD1
-install -m 644 control/control.TWMicroOS.xml %{buildroot}/%{?skelcdpath}/CD1/control.xml
+mkdir -p $RPM_BUILD_ROOT%{?skelcdpath}/CD1
+install -m 644 control/control.TWMicroOS.xml $RPM_BUILD_ROOT%{?skelcdpath}/CD1/control.xml
 
 # install LICENSE (required by build service check)
-mkdir -p %{buildroot}/%{_defaultdocdir}/%{name}
-install -m 644 LICENSE %{buildroot}/%{_defaultdocdir}/%{name}
+mkdir -p $RPM_BUILD_ROOT/%{_prefix}/share/doc/packages/%{name}
+install -m 644 LICENSE $RPM_BUILD_ROOT/%{_prefix}/share/doc/packages/%{name}
 
 %files
 %defattr(644,root,root,755)
@@ -168,7 +168,7 @@ install -m 644 LICENSE %{buildroot}/%{_defaultdocdir}/%{name}
 %endif
 %dir %{?skelcdpath}/CD1
 %{?skelcdpath}/CD1/control.xml
-%doc %dir %{_defaultdocdir}/%{name}
-%license %{_defaultdocdir}/%{name}/LICENSE
+%doc %dir %{_prefix}/share/doc/packages/%{name}
+%license %{_prefix}/share/doc/packages/%{name}/LICENSE
 
 %changelog

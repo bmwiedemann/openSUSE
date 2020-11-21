@@ -1,0 +1,29 @@
+From d35c6e0e41ec8c0426d1317b9f28f485b7b4530d Mon Sep 17 00:00:00 2001
+From: Mike Gorse <mgorse@suse.com>
+Date: Wed, 16 Sep 2020 15:02:30 -0500
+Subject: [PATCH] gnome_bg_slide_show_get_current_slide: add NULL check
+
+Ensure that a file is present. Guards against a crash in case of a
+malformed xml file.
+
+    Resolves: https://gitlab.gnome.org/GNOME/gnome-desktop/-/issues/169
+---
+ libgnome-desktop/gnome-bg-slide-show.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libgnome-desktop/gnome-bg-slide-show.c b/libgnome-desktop/gnome-bg-slide-show.c
+index cad3cb6c..760ed566 100644
+--- a/libgnome-desktop/gnome-bg-slide-show.c
++++ b/libgnome-desktop/gnome-bg-slide-show.c
+@@ -543,7 +543,7 @@ gnome_bg_slide_show_get_current_slide (GnomeBGSlideShow  *self,
+                         if (is_fixed)
+                             *is_fixed = slide->fixed;
+ 
+-                        if (file1)
++                        if (file1 && slide->file1)
+                             *file1 = find_best_size (slide->file1, width, height);
+ 
+                         if (file2 && slide->file2)
+-- 
+2.28.0
+

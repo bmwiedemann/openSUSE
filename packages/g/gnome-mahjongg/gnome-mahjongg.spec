@@ -17,13 +17,13 @@
 
 
 Name:           gnome-mahjongg
-Version:        3.38.3
+Version:        3.36.2
 Release:        0
 Summary:        Mahjong Solitaire Game for GNOME
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://live.gnome.org/GnomeMahongg
-Source0:        https://download.gnome.org/sources/gnome-mahjongg/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-mahjongg/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -50,9 +50,7 @@ corresponding tiles and taking them out of play.
 %autosetup -p1
 
 %build
-%meson \
-    -Dcompile-schemas=disabled \
-    -Dupdate-icon-cache=disabled
+%meson
 %meson_build
 
 %install

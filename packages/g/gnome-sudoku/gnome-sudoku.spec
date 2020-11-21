@@ -17,13 +17,13 @@
 
 
 Name:           gnome-sudoku
-Version:        3.38.0
+Version:        3.36.0
 Release:        0
 Summary:        Sudoku Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Logic
 URL:            https://wiki.gnome.org/Apps/Sudoku
-Source0:        https://download.gnome.org/sources/gnome-sudoku/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-sudoku/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -36,7 +36,7 @@ BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.40.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.19.0
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(qqwing) >= 1.3.4
 
@@ -63,7 +63,6 @@ with the correct digits.
 %doc NEWS
 %doc %{_datadir}/help/C/%{name}/
 %{_datadir}/applications/org.gnome.Sudoku.desktop
-%{_datadir}/dbus-1/services/org.gnome.Sudoku.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Sudoku.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/metainfo/org.gnome.Sudoku.appdata.xml

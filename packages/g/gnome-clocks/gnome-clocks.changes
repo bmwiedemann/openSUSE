@@ -1,23 +1,4 @@
 -------------------------------------------------------------------
-Wed Sep 16 09:23:01 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 3.38.0:
-  + Alarms: Allow setting snooze/ring duration.
-  + World: Redesign the Add World Clock dialog.
-  + Various design refinement.
-
--------------------------------------------------------------------
-Tue Sep  1 13:54:52 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
-
-- Update to version 3.37.91:
-  + Updated translations.
-- Changes from version 3.37.90:
-  + World: Redesign the Add World Clock dialog.
-  + Various design refinement.
-- Replace pkgconfig(libhandy-0.0) BuildRequires with
-  pkgconfig(libhandy-1): follow upstreams port to new libhandy API.
-
--------------------------------------------------------------------
 Sun May 10 11:54:51 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.2:

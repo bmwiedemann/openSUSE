@@ -1,11 +1,11 @@
-Index: gdm-3.37.90/data/61-gdm.rules.in
+Index: gdm-3.36.2/data/61-gdm.rules.in
 ===================================================================
---- gdm-3.37.90.orig/data/61-gdm.rules.in
-+++ gdm-3.37.90/data/61-gdm.rules.in
-@@ -4,3 +4,13 @@ ATTR{vendor}=="0x19e5", ATTR{device}=="0
+--- gdm-3.36.2.orig/data/61-gdm.rules.in
++++ gdm-3.36.2/data/61-gdm.rules.in
+@@ -2,3 +2,12 @@
+ ATTR{vendor}=="0x19e5", ATTR{device}=="0x1711", RUN+="@libexecdir@/gdm-disable-wayland"
+ # disable Wayland when using the proprietary nvidia driver
  DRIVER=="nvidia", RUN+="@libexecdir@/gdm-disable-wayland"
- # disable Wayland if modesetting is disabled
- IMPORT{cmdline}="nomodeset", RUN+="@libexecdir@/gdm-disable-wayland"
 +# disable Wayland on Matrox Electronics Systems Ltd. MGA G200 server engines
 +ATTR{vendor}=="0x102b", ATTR{device}=="0x0522", RUN+="@libexecdir@/gdm-disable-wayland"
 +ATTR{vendor}=="0x102b", ATTR{device}=="0x0524", RUN+="@libexecdir@/gdm-disable-wayland"
@@ -15,4 +15,3 @@ Index: gdm-3.37.90/data/61-gdm.rules.in
 +ATTR{vendor}=="0x102b", ATTR{device}=="0x0534", RUN+="@libexecdir@/gdm-disable-wayland"
 +ATTR{vendor}=="0x102b", ATTR{device}=="0x0536", RUN+="@libexecdir@/gdm-disable-wayland"
 +ATTR{vendor}=="0x102b", ATTR{device}=="0x0538", RUN+="@libexecdir@/gdm-disable-wayland"
-+

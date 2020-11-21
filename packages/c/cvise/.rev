@@ -398,17 +398,4 @@
   * Fix first part of flake8 issues.</comment>
     <requestid>848702</requestid>
   </revision>
-  <revision rev="23" vrev="1">
-    <srcmd5>31b55fdfe4f288e7bd73219d6764d2ce</srcmd5>
-    <version>2.0.0+git.20201120.2b2ba30</version>
-    <time>1605958944</time>
-    <user>dimstar_suse</user>
-    <comment>- Update to version 2.0.0+git.20201120.2b2ba30:
-  * Fix flake8 issue.
-
-- Update to version 2.0.0+git.20201120.2b68f19:
-  * Count only non-empty lines.
-  * Revert to use `env python3` shebang.</comment>
-    <requestid>849556</requestid>
-  </revision>
 </revisionlist>

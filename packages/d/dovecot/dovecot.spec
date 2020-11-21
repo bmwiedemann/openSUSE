@@ -30,7 +30,6 @@ License:        BSD-3-Clause AND LGPL-2.1-or-later AND MIT
 Group:          Productivity/Networking/Email/Servers
 URL:            http://www.dovecot.org/
 PreReq:         dovecot-implementation
-PreReq:         shadow
 Recommends:     dovecot23
 #!BuildIgnore: dovecot-implementation
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -94,9 +93,9 @@ install -D -m 0644 %{S:9} %{buildroot}%{_unitdir}/dovecot.socket
   %{buildroot}%{_var}/lib/%{name}/
 
 %pre
-getent group %{name} > /dev/null || /usr/sbin/groupadd -r %{name} >/dev/null 2>&1 || :
-getent passwd %{name} > /dev/null || /usr/sbin/useradd -g %{name} -s /bin/false -r -c "User for Dovecot imapd" -d %{_var}/run/%{name} %{name} >/dev/null 2>&1 || :
-getent passwd dovenull > /dev/null || /usr/sbin/useradd -g %{name} -s /bin/false -r -c "User for Dovecot login" -d %{_var}/run/%{name} dovenull >/dev/null 2>&1 || :
+/usr/sbin/groupadd -r %{name} >/dev/null 2>&1 || :
+/usr/sbin/useradd -g %{name} -s /bin/false -r -c "User for Dovecot imapd" -d %{_var}/run/%{name} %{name} >/dev/null 2>&1 || :
+/usr/sbin/useradd -g %{name} -s /bin/false -r -c "User for Dovecot login" -d %{_var}/run/%{name} dovenull >/dev/null 2>&1 || :
 # try to copy the default configuration.
 #
 # we fail silently if the dovecot-implementation package is not
@@ -122,7 +121,7 @@ fi
 
 %if %{with systemd}
 %post
-%tmpfiles_create dovecot.conf
+systemd-tmpfiles --create /usr/lib/tmpfiles.d/dovecot.conf || true
 %service_add_post %{name}.service %{name}.socket
 %endif
 

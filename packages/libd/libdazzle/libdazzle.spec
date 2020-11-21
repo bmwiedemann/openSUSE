@@ -17,16 +17,16 @@
 
 
 Name:           libdazzle
-Version:        3.38.0
+Version:        3.36.0
 Release:        0
 Summary:        Collection of fancy features for GLib and Gtk+
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Tools/Other
 URL:            https://gitlab.gnome.org/GNOME/libdazzle
-Source0:        https://download.gnome.org/sources/libdazzle/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libdazzle/3.36/%{name}-%{version}.tar.xz
 
 BuildRequires:  gtk-doc
-BuildRequires:  meson >= 0.50.0
+BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= 2.55.0
 BuildRequires:  pkgconfig(glib-2.0)

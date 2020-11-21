@@ -298,12 +298,4 @@
   are being installed to this location. (forwarded request 827763 from dimstar)</comment>
     <requestid>828185</requestid>
   </revision>
-  <revision rev="38" vrev="1">
-    <srcmd5>3a532ff422f1cbe365efacaed67d5358</srcmd5>
-    <version>3.38.0</version>
-    <time>1605800716</time>
-    <user>dimstar_suse</user>
-    <comment>Push GNOME 3.38</comment>
-    <requestid>847228</requestid>
-  </revision>
 </revisionlist>

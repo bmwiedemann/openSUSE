@@ -27,8 +27,6 @@ Source0:        https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_%{v
 Patch1:         OpenRGB-use_system_libs.patch
 # PATCH-FIX-UPSTREAM 0001-Fix-build-on-powerpc-and-related.patch
 Patch2:         0001-Fix-build-on-powerpc-and-related.patch
-# PATCH-FIX-UPSTREAM reproducible.patch
-Patch3:         reproducible.patch
 BuildRequires:  gcc-c++
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Core)

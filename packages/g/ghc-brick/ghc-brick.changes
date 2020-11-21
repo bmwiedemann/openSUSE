@@ -1,21 +1,4 @@
 -------------------------------------------------------------------
-Sun Nov 15 22:16:04 UTC 2020 - psimons@suse.com
-
-- Update brick to version 0.57.1 revision 1.
-  Upstream has revised the Cabal build instructions on Hackage.
-
--------------------------------------------------------------------
-Sun Nov 15 12:26:52 UTC 2020 - psimons@suse.com
-
-- Update brick to version 0.57.1.
-  0.57.1
-  ------
-
-  Bug fixes:
-   * Fixed a small space leak in the main rendering loop (#260)
-   * Get `TailDemo` building on more versions of GHC
-
--------------------------------------------------------------------
 Tue Oct  6 08:56:57 UTC 2020 - psimons@suse.com
 
 - Update brick to version 0.57.

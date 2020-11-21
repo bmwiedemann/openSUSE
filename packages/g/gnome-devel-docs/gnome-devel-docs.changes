@@ -1,27 +1,4 @@
 -------------------------------------------------------------------
-Mon Oct  5 16:16:16 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 3.38.1:
-  + Updated translations.
-
--------------------------------------------------------------------
-Mon Sep 14 12:50:36 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 3.38.0:
-  + Updated translations.
-
--------------------------------------------------------------------
-Mon Sep  7 13:41:27 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 3.37.92:
-  + Fixed typos in Platform Overview.
-  + Updated project URLs in Platform Demos.
-  + Fixed broken link in Accessibility Devel Guide.
-  + Various style improvements.
-  + Fix function declaration that breaks the build.
-  + Updated translations.
-
--------------------------------------------------------------------
 Sat Jan 25 14:09:23 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

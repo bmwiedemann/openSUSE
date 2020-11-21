@@ -1,0 +1,34 @@
+From: Brahadambal Srinivasan <latha@linux.vnet.ibm.com>
+Subject: Correction to manpage of cpupower
+References: bsc#1162142
+Patch-Mainline: 
+Git-commit: 8c30fa7666ff08dad632411d1a9b9883940e53ef
+Git-repo: git://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm.git
+
+Manpage of cpupower is listing wrong sub-commands in "See Also"
+section. The option for cpupower-idle(1) should actually be
+cpupower-idle-info(1) and cpupower-idle-set(1). This patch corrects
+this anomaly.
+
+Signed-off-by: Brahadambal Srinivasan <latha@linux.vnet.ibm.com>
+Signed-off-by: Shuah Khan <skhan@linuxfoundation.org>
+
+
+Signed-off-by:  <trenn@suse.com>
+diff --git a/man/cpupower.1 b/man/cpupower.1
+index baf741d06e82..a5e4523a219b 100644
+--- a/man/cpupower.1
++++ b/man/cpupower.1
+@@ -62,9 +62,9 @@ all cores
+ Print the package name and version number.
+ 
+ .SH "SEE ALSO"
+-cpupower-set(1), cpupower-info(1), cpupower-idle(1),
+-cpupower-frequency-set(1), cpupower-frequency-info(1), cpupower-monitor(1),
+-powertop(1)
++cpupower-set(1), cpupower-info(1), cpupower-idle-info(1),
++cpupower-idle-set(1), cpupower-frequency-set(1), cpupower-frequency-info(1),
++cpupower-monitor(1), powertop(1)
+ .PP
+ .SH AUTHORS
+ .nf

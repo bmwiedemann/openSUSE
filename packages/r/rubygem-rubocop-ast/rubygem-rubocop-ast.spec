@@ -25,7 +25,7 @@
 # of those fields
 #
 Name:           rubygem-rubocop-ast
-Version:        1.1.1
+Version:        1.1.0
 Release:        0
 Summary:        RuboCop tools to deal with Ruby code AST
 License:        MIT
@@ -53,7 +53,7 @@ RuboCop's Node and NodePattern classes.
   -f
 # MANUAL
 for dir in %{buildroot}%{_libdir}/ruby/gems/* ; do
-    %fdupes $dir
+%fdupes $dir
 done
 # /MANUAL
 

@@ -1,22 +1,4 @@
 -------------------------------------------------------------------
-Sat Nov  7 21:35:35 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
-
-- Update to 5.76.0
-  * New feature release
-  * For more details please see:
-  * https://kde.org/announcements/kde-frameworks-5.76.0
-- Changes since 5.75.0:
-  * Fix ToolBar contentWidth binding loop
-  * Reference shortcut label directly by id instead of implicitly
-  * ComboBox.contentItem must be a QQuickTextInput to fix autocomplete (kde#425865)
-  * Simplify conditional clauses in Connections
-  * Fix Connections warning on ComboBox
-  * Add support for qrc icons to StyleItem (kde#427449)
-  * Properly indicate focus state of ToolButton
-  * Add TextFieldContextMenu for right click context menus on TextField and TextArea
-  * Set background color to ComboBox's ScrollView
-
--------------------------------------------------------------------
 Mon Oct  5 08:33:46 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.75.0

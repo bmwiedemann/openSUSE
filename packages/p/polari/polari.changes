@@ -1,25 +1,4 @@
 -------------------------------------------------------------------
-Sat Sep 19 17:27:11 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
-
-- Update to version 3.38.0:
-  + Disable URL previews when on metered data.
-  + Misc. bug fixes and cleanups.
-  + Updated translations.
-- Drop polari-fix-log-spam.patch: Fixed upstream.
-
--------------------------------------------------------------------
-Fri Sep  4 11:55:18 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 3.37.3:
-  + Add WHOIS command.
-- Changes from version 3.37.2:
-  + Misc. bug fixes and cleanups.
-- Changes from version 3.37.1:
-  + Add the ability to mute nicknames.
-  + Misc. bug fixes and cleanups.
-  + Updated translations.
-
--------------------------------------------------------------------
 Thu Aug 20 11:51:24 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop mozjs68 BuildRequires: it is only required to syntax check

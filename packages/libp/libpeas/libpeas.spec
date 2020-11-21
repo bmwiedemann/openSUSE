@@ -20,13 +20,13 @@
 %bcond_with python2
 %bcond_without python3
 Name:           libpeas
-Version:        1.28.0
+Version:        1.26.0
 Release:        0
 Summary:        GObject-based Plugin Engine
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/Libpeas
-Source0:        https://download.gnome.org/sources/libpeas/1.28/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libpeas/1.26/%{name}-%{version}.tar.xz
 
 BuildRequires:  gettext
 BuildRequires:  gtk-doc

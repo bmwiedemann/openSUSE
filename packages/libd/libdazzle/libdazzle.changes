@@ -1,20 +1,4 @@
 -------------------------------------------------------------------
-Mon Sep 14 10:12:36 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 3.38.0:
-  + No changes since 3.37.1.
-
--------------------------------------------------------------------
-Fri Sep  4 16:14:51 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 3.37.1:
-  + Fixes for powerpc32.
-  + Tweaks for CSS priorities.
-  + Add DzlApplicationWindow:titlebar-animation property.
-  + Fix C++ compilation.
-  + Make showing file browser asynchronous on Linux/BSD/etc.
-
--------------------------------------------------------------------
 Sun Mar  8 19:48:09 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.0:

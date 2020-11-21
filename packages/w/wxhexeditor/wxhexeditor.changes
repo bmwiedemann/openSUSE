@@ -1,9 +1,4 @@
 -------------------------------------------------------------------
-Mon Nov 16 20:12:32 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
-
-- Add wxhexeditor-appdata.patch for https://en.opensuse.org/openSUSE:AppStore
-
--------------------------------------------------------------------
 Wed Oct 14 13:03:20 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Backport patch to fix build on Arm:

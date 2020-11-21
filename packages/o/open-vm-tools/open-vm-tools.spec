@@ -77,7 +77,6 @@ BuildRequires:  update-desktop-files
 BuildRequires:  glibc >= 2.27
 BuildRequires:  libtirpc-devel
 BuildRequires:  rpcgen
-BuildRequires:  pkgconfig(gdk-pixbuf-xlib-2.0) >= 2.21.0
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xext)

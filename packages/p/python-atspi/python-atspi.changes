@@ -1,21 +1,4 @@
 -------------------------------------------------------------------
-Mon Sep 14 12:53:33 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 2.38.0:
-  + Updated translations.
-
--------------------------------------------------------------------
-Fri Sep  4 16:00:06 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 2.37.90:
-  + Tests: use libatspi's dbus-gmain implementation, eliminating
-    dependency on dbus-glib.
-  + Migrate to gtk 3.
-  + Add support for the mode-changed signal.
-- Add pkgconfig(gtk+-3.0) BuildRequires: align with what configure
-  is looking for.
-
--------------------------------------------------------------------
 Sun Mar  8 23:28:55 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.36.0:

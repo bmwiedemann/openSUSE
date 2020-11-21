@@ -1230,12 +1230,4 @@ See-also: gnupg-announce/2019q1/000434.html
      avoid conflicts with the version installed by GnuPG 1.4</comment>
     <requestid>831939</requestid>
   </revision>
-  <revision rev="151" vrev="1">
-    <srcmd5>33ed16b5fabb93b9c08908c774890ed0</srcmd5>
-    <version>2.2.24</version>
-    <time>1605958812</time>
-    <user>dimstar_suse</user>
-    <comment></comment>
-    <requestid>849250</requestid>
-  </revision>
 </revisionlist>

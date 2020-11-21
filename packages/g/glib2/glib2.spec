@@ -19,7 +19,7 @@
 %bcond_without     systemtap
 %bcond_without gtk_doc
 Name:           glib2
-Version:        2.66.3
+Version:        2.66.2
 Release:        0
 Summary:        General-Purpose Utility Library
 License:        LGPL-2.1-or-later
@@ -84,10 +84,7 @@ a main loop abstraction, and so on.
 
 %package tools
 Summary:        Tools from glib2, a general-purpose utility library
-# ensure libgio-2_0-0 is updated before glib2-tools' ensures glib-compile-schema to
-# be functional when the file trigger fires (boo#1178713)
 Group:          Development/Libraries/C and C++
-Requires(post): libgio-2_0-0 = %{version}
 
 %description tools
 GLib is a general-purpose utility library, which provides many useful

@@ -1,29 +1,4 @@
 -------------------------------------------------------------------
-Fri Sep 11 12:28:59 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 3.38.0:
-  + Updated translations.
-
--------------------------------------------------------------------
-Fri Sep  4 09:53:35 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 3.37.90:
-  + Add support for Tracker 3 indexer.
-  + Support auto-loading VTT subtitles.
-  + Fix some stutters on some systems when current state is being
-    saved to disk.
-  + Better error messages when SSL/TLS support is missing.
-  + Improve the search entry's behaviour.
-  + Improve the way time is written in some places.
-  + Remove association with audio files, as we really don't want
-    to be an audio player.
-  + Fix YouTube search not working.
-  + Fix a number of keyboard shortcuts not working.
-  + Remove a number of deprecated calls.
-  + Updated translations.
-- Drop totem-Fix-bracket-keys-and-backspace.patch: fixed upstream.
-
--------------------------------------------------------------------
 Thu Jun 18 16:46:26 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop totem-revert-vaapi-disable.patch: Changes elsewhere in the

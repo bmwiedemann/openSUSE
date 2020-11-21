@@ -237,12 +237,4 @@
 - Remove restorecond from the selinux pattern</comment>
     <requestid>842562</requestid>
   </revision>
-  <revision rev="26" vrev="26">
-    <srcmd5>1a5b322cdabf9fc4f818822efd6c7e31</srcmd5>
-    <version>5.0</version>
-    <time>1605958800</time>
-    <user>dimstar_suse</user>
-    <comment></comment>
-    <requestid>849148</requestid>
-  </revision>
 </revisionlist>

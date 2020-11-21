@@ -17,7 +17,7 @@
 
 
 Name:           veyon
-Version:        4.5.0
+Version:        4.4.2
 Release:        0
 Summary:        Free and Open Source computer monitoring and classroom management
 License:        GPL-2.0-or-later

@@ -1,16 +1,4 @@
 -------------------------------------------------------------------
-Tue Nov 17 09:22:44 UTC 2020 - Fridrich Strba <fstrba@suse.com>
-
-- Modified patch:
-  * java-atk-wrapper-security.patch
-    + Fix errors introduced by manual rediffing of the patch
-
--------------------------------------------------------------------
-Thu Nov  5 18:06:39 UTC 2020 - Archie Cobbs <archie.cobbs@gmail.com>
-
-- Add missing /etc/alternatives link for "jcmd" utility
-
--------------------------------------------------------------------
 Wed Nov  4 11:32:33 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Enable Shenandoah garbage collector on supported architectures

@@ -17,17 +17,19 @@
 
 
 Name:           gnome-desktop
-Version:        3.38.1
+Version:        3.36.7
 Release:        0
 Summary:        The GNOME Desktop API Library
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/gnome-desktop/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-desktop/3.36/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 # PATCH-FIX-OPENSUSE gnome-desktop-switch-Japanese-default-input-to-mozc.patch bnc#1029083 boo#1056289 qzhao@suse.com -- Switch new user's default input engine from "anthy" to "mozc" in gnome-desktop with Japanese language and ibus input frame-work condition.
 Patch1:         gnome-desktop-switch-Japanese-default-input-to-mozc.patch
+# PATCH-FIX-UPSTREAM gnome-desktop-invalid-size-crash.patch bsc#1176596 mgorse@suse.com -- fix a crash caused by a mal-formed background xml file.
+Patch2:         gnome-desktop-invalid-size-crash.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
@@ -46,6 +48,7 @@ BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xkbfile)
 BuildRequires:  pkgconfig(xkeyboard-config)
 

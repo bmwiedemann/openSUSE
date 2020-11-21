@@ -1,28 +1,4 @@
 -------------------------------------------------------------------
-Mon Oct  5 15:26:39 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 1.66.1:
-  + Update glib annotations.
-  + gimarshallingtests: Add more tests for flags..
-  + Revert "giscanner: Fix section matching for documentation.
-
--------------------------------------------------------------------
-Mon Sep 14 10:17:17 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 1.66.0:
-  + Support the gtk-doc action syntax.
-  + GITypeInfo storage type utility API.
-  + libgirepository: Add a couple missing nullable annotations.
-  + dumper: Fix missing symbols in LTO case or with overridden
-    symbol visibility settings.
-  + Documentation improvements.
-  + Remove old autoconf fallback code for the python tools.
-  + giscanner: parse block comments for members and fields.
-  + Add the notion of standalone doc sections.
-  + giscanner: Add support for using clang-cl.
-  + giscanner: Fix section matching for documentation.
-
--------------------------------------------------------------------
 Sun Apr  5 17:13:52 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.64.1:

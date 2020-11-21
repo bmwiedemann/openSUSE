@@ -21,14 +21,14 @@
 %define enable_split_authentication 0
 
 Name:           gdm
-Version:        3.38.2
+Version:        3.36.3
 Release:        0
 Summary:        The GNOME Display Manager
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GDM
 
-Source0:        https://download.gnome.org/sources/gdm/3.38/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        gdm.pamd
 Source2:        gdm-autologin.pamd
 Source3:        gdm-launch-environment.pamd
@@ -38,6 +38,8 @@ Source5:        gdm-smartcard.pamd
 Source6:        gdmflexiserver-wrapper
 # /etc/xinit.d/xdm integration script
 Source7:        X11-displaymanager-gdm
+# GDM does not boostrap using gnome-autogen.sh, but has it's own bootstrap script
+Source8:        autogen.sh
 # Use tmpfiles to create directories under /var to support transactional updates
 Source9:        gdm.tmpfiles
 # Use reserveVT.conf to make autologin user session not to select tty1
@@ -53,6 +55,8 @@ Patch3:         gdm-default-wm.patch
 Patch4:         gdm-xauthlocalhostname.patch
 # PATCH-FIX-OPENSUSE gdm-switch-to-tty1.patch bsc#1113700 xwang@suse.com -- switch to tty1 when stopping gdm service
 Patch6:         gdm-switch-to-tty1.patch
+# PATCH-NEEDS-REBASE gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch bnc#1075805 bgo#793255 msrb@suse.com -- Add runtime option to start X under root instead of regular user. Necessary if no DRI drivers are present. rejected upstream WAS: PATCH-FIX-OPENSUSE
+Patch8:         gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch
 # PATCH-FIX-OPENSUSE gdm-initial-setup-hardening.patch boo#1140851, glgo#GNOME/gnome-initial-setup#76 fezhang@suse.com -- Prevent gnome-initial-setup running if any regular user has perviously logged into the system
 Patch9:         gdm-initial-setup-hardening.patch
 # PATCH-FIX-OPENSUSE gdm-s390-not-require-g-s-d_wacom.patch bsc#1129412 yfjiang@suse.com -- Remove the runtime requirement of g-s-d Wacom plugin
@@ -73,7 +77,6 @@ BuildRequires:  dconf
 BuildRequires:  fdupes
 BuildRequires:  gnome-common
 BuildRequires:  gnome-session-core
-BuildRequires:  meson >= 0.50.0
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pwdutils
@@ -83,7 +86,6 @@ BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-server
 BuildRequires:  xorg-x11-server-extra
 BuildRequires:  pkgconfig(accountsservice) >= 0.6.35
-BuildRequires:  pkgconfig(audit)
 BuildRequires:  pkgconfig(check)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.36.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.36.0
@@ -210,11 +212,13 @@ running display manager.
 
 %prep
 %setup -q
+cp %{SOURCE8} .
 %patch0 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch6 -p1
+#patch8 -p1
 %patch9 -p1
 %ifarch s390 s390x
 %patch13 -p1
@@ -229,28 +233,33 @@ running display manager.
 %endif
 
 %build
-%meson \
+NOCONFIGURE=1 ./autogen.sh
+%configure\
+        --disable-static \
         --libexecdir=%{_libexecdir}/gdm \
-        -Dat-spi-registryd-dir=%{_libexecdir}/at-spi \
-        -Dgdm-xsession=true \
-        -Dgnome-settings-daemon-dir=%{_libexecdir}/gnome-settings-daemon-3.0 \
-        -Dinitial-vt=7 \
-        -Dipv6=true \
-        -Dpam-mod-dir=/%{_lib}/security \
-        -Dplymouth=enabled \
-        -Drun-dir=/run/gdm \
+        --localstatedir=%{_localstatedir} \
+        --with-at-spi-registryd-directory=%{_libexecdir}/at-spi \
+        --with-check-accelerated-directory=%{_libexecdir} \
+        --with-gnome-settings-daemon-directory=%{_libexecdir}/gnome-settings-daemon-3.0 \
+        --with-pam-mod-dir=/%{_lib}/security \
+        --enable-ipv6 \
+        --enable-gdm-xsession \
+        --with-plymouth \
+        --enable-wayland-support \
+        --enable-systemd-journal \
 %if %{enable_split_authentication}
-        -Dsplit-authentication=true \
+        --enable-split-authentication \
 %else
-        -Dsplit-authentication=false \
+        --disable-split-authentication \
 %endif
-        -Dudev-dir=%{_udevrulesdir} \
-        -Dwayland-support=true \
-        %nil
-%meson_build
+        --with-initial-vt=7 \
+        --with-run-dir=/run/gdm \
+        --with-udevdir=%{_prefix}/lib/udev
+%make_build
 
 %install
-%meson_install
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 ## Install PAM files.
 mkdir -p %{buildroot}%{_sysconfdir}/pam.d
 # Generic pam config
@@ -289,8 +298,8 @@ mkdir -p %{buildroot}/run/gdm
 mkdir -p %{buildroot}%{_bindir}
 ln -s ../sbin/gdm %{buildroot}%{_bindir}/gdm
 
-mkdir -p %{buildroot}%{_tmpfilesdir}
-install -m 644 %{SOURCE9} %{buildroot}%{_tmpfilesdir}/gdm.conf
+mkdir -p %{buildroot}%{_prefix}/lib/tmpfiles.d
+install -m 644 %{SOURCE9} %{buildroot}%{_prefix}/lib/tmpfiles.d/gdm.conf
 
 mkdir -p %{buildroot}%{_prefix}/lib/systemd/logind.conf.d
 install -m 644 %{SOURCE10} %{buildroot}%{_prefix}/lib/systemd/logind.conf.d/reserveVT.conf
@@ -299,7 +308,7 @@ install -m 644 %{SOURCE10} %{buildroot}%{_prefix}/lib/systemd/logind.conf.d/rese
 %fdupes -s %{buildroot}%{_datadir}/help
 
 %check
-%meson_test
+%make_build check
 
 %pre
 %{_sbindir}/groupadd -r gdm 2> /dev/null || :
@@ -361,11 +370,9 @@ dconf update
 %{_prefix}/lib/X11/displaymanagers/gdm
 %ghost %{_sysconfdir}/alternatives/default-displaymanager
 %{_udevrulesdir}/61-gdm.rules
-%{_tmpfilesdir}/gdm.conf
+%{_prefix}/lib/tmpfiles.d/gdm.conf
 %dir %{_prefix}/lib/systemd/logind.conf.d
 %{_prefix}/lib/systemd/logind.conf.d/reserveVT.conf
-%dir %{_userunitdir}/gnome-session@gnome-login.target.d
-%{_userunitdir}/gnome-session@gnome-login.target.d/session.conf
 
 %files -n libgdm1
 %{_libdir}/libgdm.so.*

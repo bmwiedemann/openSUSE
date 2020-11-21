@@ -1,22 +1,4 @@
 -------------------------------------------------------------------
-Mon Nov 16 14:34:46 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
-
-- Add requires(post) libgio-2_0-0 to glib2-tools: ensures
-  glib-compile-schema to be functional when the file trigger fires,
-  by explicitly requesting the correct library to be present for
-  the post script. (boo#1178713).
-
--------------------------------------------------------------------
-Mon Nov 16 14:26:35 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
-
-- Update to version 2.66.3:
-  + Fix awkward bug with `GPollFD` handling in some situations.
-  + Fix sending FDs attached to very large D-Bus messages.
-  + Bugs fixed: glgo#GNOME/GLib#1592, glgo#GNOME/GLib!1720,
-    glgo#GNOME/GLib!1721, glgo#GNOME/GLib!1723,
-    glgo#GNOME/GLib!1727, glgo#GNOME/GLib!1736.
-
--------------------------------------------------------------------
 Thu Oct 22 11:45:40 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Enable building of documentation:

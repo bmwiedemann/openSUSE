@@ -1,0 +1,19 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/srossross/rpmfile</param>
+    <param name="exclude">.git</param>
+    <param name="filename">python-rpmfile</param>
+    <param name="versionformat">1.0.0+git%cd.%h</param>
+    <param name="revision">master</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="set_version" mode="disabled">
+    <param name="basename">python-rpmfile</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+</services>

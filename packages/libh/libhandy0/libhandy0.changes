@@ -1,10 +1,4 @@
 -------------------------------------------------------------------
-Sat Sep  5 15:09:24 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
-
-- Disable glade catalogs for the time being: not compatible with
-  glade 3.37.
-
--------------------------------------------------------------------
 Tue Sep  1 14:18:14 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Rename to libhandy0, as libhandy moves to a newer version with a
