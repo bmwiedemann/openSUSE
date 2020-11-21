@@ -3376,4 +3376,41 @@ I cannot test locally unfortunately.
     https://www.thunderbird.net/en-US/thunderbird/78.4.1/releasenotes/</comment>
     <requestid>847757</requestid>
   </revision>
+  <revision rev="243" vrev="1">
+    <srcmd5>ca6d45f77b369d08f81aaa4e24558b8e</srcmd5>
+    <version>78.5.0</version>
+    <time>1605958829</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 78.5.0
+  MFSA 2020-52 (bsc#1178894)
+  * CVE-2020-26951 (bmo#1667113)
+    Parsing mismatches could confuse and bypass security
+    sanitizer for chrome privileged code
+  * CVE-2020-16012 (bmo#1642028)
+    Variable time processing of cross-origin images during
+    drawImage calls
+  * CVE-2020-26953 (bmo#1656741)
+    Fullscreen could be enabled without displaying the security
+    UI
+  * CVE-2020-26956 (bmo#1666300)
+    XSS through paste (manual and clipboard API)
+  * CVE-2020-26958 (bmo#1669355)
+    Requests intercepted through ServiceWorkers lacked MIME type
+    restrictions
+  * CVE-2020-26959 (bmo#1669466)
+    Use-after-free in WebRequestService
+  * CVE-2020-26960 (bmo#1670358)
+    Potential use-after-free in uses of nsTArray
+  * CVE-2020-15999 (bmo#1672223)
+    Heap buffer overflow in freetype
+  * CVE-2020-26961 (bmo#1672528)
+    DoH did not filter IPv4 mapped IP Addresses
+  * CVE-2020-26965 (bmo#1661617)
+    Software keyboards may have remembered typed passwords
+  * CVE-2020-26966 (bmo#1663571)
+    Single-word search queries were also broadcast to local
+    network
+  * CVE-2020-26968 (bmo#1551615, bmo#1607762, bmo#1656697,</comment>
+    <requestid>849310</requestid>
+  </revision>
 </revisionlist>
