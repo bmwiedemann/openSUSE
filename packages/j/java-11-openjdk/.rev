@@ -319,4 +319,12 @@
     <comment>Add Shenandoah</comment>
     <requestid>845985</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>17ba0d23f5b48a3ac498d419fff692c1</srcmd5>
+    <version>11.0.9.1</version>
+    <time>1605958747</time>
+    <user>dimstar_suse</user>
+    <comment>11.0.9.1</comment>
+    <requestid>848910</requestid>
+  </revision>
 </revisionlist>
