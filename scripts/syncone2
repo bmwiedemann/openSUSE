@@ -6,7 +6,7 @@ die "usage: $0 PKGNAME" unless $pkg;
 die "invalid pkg" if $pkg =~ m/[^a-zA-Z0-9._+-]/;
 
 system("set -e ; cd in2/
-  if cd openSUSE:Factory/$pkg ; then
+  if cd openSUSE:Factory/$pkg 2>/dev/null ; then
     osc up
   else
     osc co openSUSE:Factory/$pkg
