@@ -15,6 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%if !0%{?usrmerged}
+%define sbindir /sbin
+%else
+%define sbindir %{_sbindir}
+%endif
 
 %bcond_without drbdmon
 # Man pages are included in the released tarball.
@@ -96,8 +101,12 @@ PATH=/sbin:$PATH ./configure \
     --with-bashcompletion \
     --with-initscripttype=systemd \
     --with-systemdunitdir=%{_prefix}/lib/systemd/system \
+%if !0%{?usrmerged}
     --prefix=/ \
     --sbindir=/sbin \
+%else
+    --prefix=%{_prefix} \
+%endif
     --libdir=%{_prefix}/lib \
     --mandir=%{_mandir} \
     --sysconfdir=%{_sysconfdir} \
@@ -162,11 +171,11 @@ ln -sf drbdmon-9.0.8.gz %{_mandir}/ja/man8/drbdmon.8.gz
 %dir %{_sysconfdir}/drbd.d
 %dir %{_sysconfdir}/multipath
 %dir %{_sysconfdir}/multipath/conf.d
-/sbin/drbdadm
-/sbin/drbdsetup
-/sbin/drbdmeta
+%{sbindir}/drbdadm
+%{sbindir}/drbdsetup
+%{sbindir}/drbdmeta
 %if %{with drbdmon}
-/sbin/drbdmon
+%{sbindir}/drbdmon
 %endif
 %ifarch %{ix86} x86_64
 %dir %attr(700,root,root) %{_sysconfdir}/xen
