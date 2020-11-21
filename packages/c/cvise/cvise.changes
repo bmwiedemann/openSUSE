@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 20 06:09:41 UTC 2020 - mliska@suse.cz
+
+- Update to version 2.0.0+git.20201120.2b2ba30:
+  * Fix flake8 issue.
+
+-------------------------------------------------------------------
+Fri Nov 20 06:01:27 UTC 2020 - mliska@suse.cz
+
+- Update to version 2.0.0+git.20201120.2b68f19:
+  * Count only non-empty lines.
+  * Revert to use `env python3` shebang.
+
+-------------------------------------------------------------------
 Sun Nov 15 11:26:05 UTC 2020 - mliska@suse.cz
 
 - Update to version 2.0.0+git.20201115.492d2d7:
