@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 17 18:22:29 UTC 2020 - Teemu Mannermaa <wicked@iki.fi>
+
+- Fix failing tests:
+  * Also skip %python_clone during build of tests flavor.
+  * Recommend python-redis and BR python-fakeredis that are needed
+    for new redis based ExampleDatabase implemention.
+
+-------------------------------------------------------------------
 Wed Nov 11 12:15:41 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 5.41.2:
