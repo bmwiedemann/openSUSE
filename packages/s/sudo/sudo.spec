@@ -22,7 +22,7 @@
 %define use_usretc 1
 %endif
 Name:           sudo
-Version:        1.9.2
+Version:        1.9.3p1
 Release:        0
 Summary:        Execute some commands as root
 License:        ISC
@@ -38,6 +38,7 @@ Source6:        fate_313276_test.sh
 Source7:        README_313276.test
 # PATCH-OPENSUSE: the "SUSE" branding of the default sudo config
 Patch0:         sudo-sudoers.patch
+Patch1:         sudo-1.9.3p1-pam_xauth.patch
 BuildRequires:  audit-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  groff
@@ -89,6 +90,7 @@ Tests for fate#313276
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %ifarch s390 s390x %{sparc}
