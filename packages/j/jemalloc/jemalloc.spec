@@ -1,7 +1,7 @@
 #
 # spec file for package jemalloc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,16 +57,9 @@ implementation.
 %build
 %define _lto_cflags %{nil}
 export EXTRA_CFLAGS="%optflags -std=gnu99"
-%configure --disable-static \
+%configure --disable-static --enable-prof \
 %ifarch %arm
-  --disable-thp \
-  --disable-prof
-%else
-  %ifarch ppc
-  --disable-prof
-  %else
-  --enable-prof
-  %endif
+  --disable-thp
 %endif
 
 make %{?_smp_mflags}
