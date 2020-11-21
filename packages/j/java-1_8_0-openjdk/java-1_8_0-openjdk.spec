@@ -908,6 +908,7 @@ update-alternatives \
   --slave %{_bindir}/javadoc javadoc %{sdkbindir}/javadoc \
   --slave %{_bindir}/javah javah %{sdkbindir}/javah \
   --slave %{_bindir}/javap javap %{sdkbindir}/javap \
+  --slave %{_bindir}/jcmd jcmd %{sdkbindir}/jcmd \
   --slave %{_bindir}/jconsole jconsole %{sdkbindir}/jconsole \
   --slave %{_bindir}/jdb jdb %{sdkbindir}/jdb \
   --slave %{_bindir}/jhat jhat %{sdkbindir}/jhat \
