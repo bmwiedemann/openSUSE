@@ -843,6 +843,7 @@ Prefer: -parpack-openmpi2-devel-32bit
 Prefer: -parpack-openmpi3-devel-32bit                 
 Prefer: -pciutils-devel-32bit                         
 Prefer: -phonon4qt5-devel-32bit                       
+Prefer: -pipewire-libjack-0_3-32bit
 Prefer: -plasma-framework-devel-32bit                 
 Prefer: -popt-devel-32bit                             
 Prefer: -prison-qt5-devel-32bit                       
@@ -1570,7 +1571,7 @@ Optflags: armv7l
 Optflags: armv7hl
 Optflags: armv6l
 Optflags: armv6hl
-Optflags: aarch64
+Optflags: aarch64 -mbranch-protection=standard
 Optflags: ppc64le
 # need mcpu=ultrasparc to complete sparcv8plus to sparcv9 (adds, for example, atomic ops)
 Optflags: sparcv9 -mcpu=ultrasparc
