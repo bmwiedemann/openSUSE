@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Nov 20 13:58:38 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.8.1
+Added:
+  * New applications icons.
+  * Added some documentation related to message filters and some
+    other parts of the application:
+    https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md#documentation
+  * Add switchable action to automatically expand categories
+    when selected.
+  * Added basic CLI with some basic options, run "rssguard
+    --help" to see them.
+  * Ability to run multiple instance of RSS Guard at the same
+    time, can be activated via CLI.
+  * Ability to specify custom user data folder, can be activated
+    via CLI.
+  * Finnish translation.
+  * Greatly enhanced user experience for authors of message
+    filters. See the documentation: enums for accepting/rejecting
+    of messages are now directly calleable via their names.
+  Fixed/changed:
+  * Handles separating feeds list, messages list and message
+    viewer has now better color in default skin.
+  * Now only titles of messages are sanitized before they are
+    passed to message filters. Message content is left intact.
+  * Nextcloud News: Do not use obsolete API endpints.
+  * Nextcloud News: Support newest API breaking changes
+    regarding "parent categories".
+  * Partially fixed behavior of statusbar, which did not respect
+    new settings for order of its buttons.
+  * Use "cout" instead of "wcout" for debugging outputs.
+  * Do not escape empty strings when sanitizing messages.
+
+-------------------------------------------------------------------
 Tue Nov 10 12:01:28 UTC 2020 - aloisio@gmx.com
 
 - Update to version 3.8.0
