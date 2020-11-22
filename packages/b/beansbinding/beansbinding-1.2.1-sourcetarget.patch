@@ -1,0 +1,17 @@
+--- beansbinding-1.2.1/nbproject/project.properties	2017-09-15 11:48:44.495654837 +0200
++++ beansbinding-1.2.1/nbproject/project.properties	2017-09-15 11:50:41.965005152 +0200
+@@ -19,12 +19,11 @@
+ file.reference.el.jar=lib/el.jar
+ jar.compress=false
+ javac.classpath=
+-javac.compilerargs=-target 1.5
+ # Space-separated list of extra javac options
+ #javac.compilerargs=-Xlint:unchecked
+ javac.deprecation=false
+-javac.source=1.5
+-javac.target=1.5
++javac.source=8
++javac.target=8
+ javac.test.classpath=\
+     ${javac.classpath}:\
+     ${build.classes.dir}:\

@@ -9,5 +9,4 @@
 		<param name="versionrewrite-pattern">rshim(.*)</param>
 		<param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@</param>
         </service>
-        <service mode="disabled" name="set_version" />
 </services>

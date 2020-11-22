@@ -1,11 +1,4 @@
 -------------------------------------------------------------------
-Fri Nov 20 12:56:42 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
-
-- Update to upstream 0.9.0 release
-  * [ENHANCEMENT] Add support for python3.9 (#600)
-  * [ENHANCEMENT] Various updates for latest OpenMetrics draft spec (#576 #577)
-
--------------------------------------------------------------------
 Tue May 26 08:30:50 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
 
 - Update to upstream 0.8.0 release

@@ -18,21 +18,24 @@
 
 Name:           pam_mount
 %define lname	libcryptmount0
-Version:        2.17
-Release:        0
 Summary:        A PAM Module that can Mount Volumes for a User Session
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          System/Libraries
+Version:        2.16
+Release:        0
 URL:            http://pam-mount.sf.net/
 
 Source:         http://downloads.sf.net/pam-mount/%name-%version.tar.xz
 Source9:        http://downloads.sf.net/pam-mount/%name-%version.tar.asc
 Source1:        convert_pam_mount_conf.pl
 Source2:        convert_keyhash.pl
+Source3:        mount.crypt
 Source5:        baselibs.conf
-Source6:        %name.keyring
+Source6:        %{name}.keyring
 Patch1:         pam_mount-0.47-enable-logout-kill.dif
+Patch2:         pam_mount-2.16-fix-luks2-mount.patch
 Patch3:         bsc1153630-prevent-systemd-from-calling-pam_mount.patch
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  fdupes
 BuildRequires:  libtool
 # LOOP64 support:
@@ -113,6 +116,13 @@ mkdir -p %buildroot/%_docdir/%name/examples
 cp doc/bugs.txt doc/news.txt LICENSE* doc/faq.txt doc/todo.txt doc/options.txt doc/pam_mount.txt %buildroot/%_docdir/%name/
 install -m 755 %SOURCE1 %buildroot/%_docdir/%name/examples/
 install -m 755 %SOURCE2 %buildroot/%_docdir/%name/examples/
+#
+# move /sbin/mount.crypt to %_sbindir/mount.crypt and put a wrapper script to /sbin/mount.crypt
+#
+mkdir -p %buildroot%_sbindir/
+mv %buildroot/sbin/mount.crypt %buildroot%_sbindir/
+ln -s %_sbindir/mount.crypt %buildroot%_sbindir/umount.crypt
+install -m755 %SOURCE3 %buildroot/sbin/
 %fdupes %buildroot/%_prefix
 
 %post
@@ -124,7 +134,7 @@ then
 fi
 if [ "$1" -gt 1 ]
 then
-	for v in `rpm -q --queryformat "%%VERSION " %name`; do
+	for v in `rpm -q --queryformat "%%{VERSION} " %name`; do
 		if echo "$v" | grep -E "^0\." - ; then
 			%_docdir/%name/examples/convert_keyhash.pl \
 			-i etc/security/pam_mount.conf.xml
@@ -139,8 +149,10 @@ fi
 %files
 %_docdir/%name
 /%_lib/security/pam_mount*.so
-%_sbindir/mount.*
-%_sbindir/umount.*
+/sbin/mount.crypt*
+/sbin/umount.crypt*
+%_sbindir/mount.crypt
+%_sbindir/umount.crypt
 %_sbindir/pmvarrun
 %_sbindir/pmt-ehd
 %config(noreplace) %_sysconfdir/security/pam_mount.conf.xml

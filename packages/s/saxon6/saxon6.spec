@@ -1,7 +1,7 @@
 #
 # spec file for package saxon6
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        The SAXON XSLT Processor from Michael Kay
 License:        MPL-1.0
 Group:          Productivity/Publishing/XML
-URL:            http://saxon.sourceforge.net/
+Url:            http://saxon.sourceforge.net/
 Source0:        http://download.sf.net/saxon/saxon6-5-5.zip
 Source1:        %{name}.saxon.script
 Source2:        %{name}.build.script
@@ -41,8 +41,9 @@ Patch4:         saxon-add-fixes-from-com-isl-saxon-aelfred.patch
 Patch5:         saxon6-batch.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
+BuildRequires:  fop >= 0.20.1
 BuildRequires:  java-devel
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-tools
 BuildRequires:  jdom >= 1.0
 BuildRequires:  unzip
 BuildRequires:  xml-commons-apis
@@ -50,7 +51,6 @@ Requires:       %{_sbindir}/update-alternatives
 Requires:       jaxp_parser_impl
 Provides:       jaxp_transform_impl = %{name}-%{version}
 Provides:       saxon
-Obsoletes:      %{name}-fop
 BuildArch:      noarch
 
 %description
@@ -110,6 +110,16 @@ Requires:       %{name} = %{version}-%{release}
 %description    demo
 Demonstrations and samples for %{name}.
 
+%package        fop
+Summary:        FOP support for %{name}
+Group:          Productivity/Publishing/XML
+Requires:       %{name} = %{version}-%{release}
+Requires:       fop >= 0.20.1
+Provides:       saxon-fop
+
+%description    fop
+FOP support for %{name}.
+
 %package        jdom
 Summary:        JDOM support for %{name}
 Group:          Productivity/Publishing/XML
@@ -145,21 +155,20 @@ rm -rf *.jar docs/api
 %build
 # fixes the javadoc fail
 export LC_ALL=en_US.ISO-8859-2
-export CLASSPATH=%(build-classpath xml-commons-apis jdom)
+export CLASSPATH=%(build-classpath xml-commons-apis xmlgraphics-fop jdom)
 ant \
   -Dant.build.javac.source=1.6 -Dant.build.javac.target=1.6 \
   -Dj2se.javadoc=%{_javadocdir}/java \
+  -Dfop.javadoc=%{_javadocdir}/fop \
   -Djdom.javadoc=%{_javadocdir}/jdom
 
 %install
 # jars
 mkdir -p %{buildroot}%{_javadir}
 cp -p build/lib/saxon.jar %{buildroot}%{_javadir}/%{name}.jar
-%add_maven_depmap saxon:saxon:%{version} %{name}.jar
 cp -p build/lib/saxon-aelfred.jar %{buildroot}%{_javadir}/%{name}-aelfred.jar
-%add_maven_depmap saxon:saxon-aelfred:%{version} %{name}-aelfred.jar -f aelfred
+cp -p build/lib/saxon-fop.jar %{buildroot}%{_javadir}/%{name}-fop.jar
 cp -p build/lib/saxon-jdom.jar %{buildroot}%{_javadir}/%{name}-jdom.jar
-%add_maven_depmap saxon:saxon-jdom:%{version} %{name}-jdom.jar -f jdom
 
 # javadoc
 mkdir -p %{buildroot}%{_javadocdir}/%{name}
@@ -194,14 +203,20 @@ if [ $1 -eq 0 ] ; then
   update-alternatives --remove jaxp_transform_impl %{_javadir}/%{name}.jar
 fi
 
-%files -f .mfiles
+%files
+%{_javadir}/%{name}.jar
 %{_javadir}/%{name}.jar
 %{_javadir}/jaxp_transform_impl.jar
 %ghost %{_sysconfdir}/alternatives/jaxp_transform_impl.jar
 
-%files aelfred -f .mfiles-aelfred
+%files aelfred
+%{_javadir}/%{name}-aelfred*
 
-%files jdom -f .mfiles-jdom
+%files fop
+%{_javadir}/%{name}-fop*
+
+%files jdom
+%{_javadir}/%{name}-jdom*
 
 %files manual
 %doc doc/*.html

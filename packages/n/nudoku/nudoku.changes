@@ -1,17 +1,4 @@
 -------------------------------------------------------------------
-Fri Nov 20 09:53:01 UTC 2020 - Michael Vetter <mvetter@suse.com>
-
-- Update to 2.1.0:
-  * Use actual terminal background color (instead of black) as
-    background color (pr #31)
-  * Define minimum gettext version instead of exact one (pr #32)
-  * Require gettext 0.20
-  * Add Japanese translation (pr #40)
-  * Minor code change
-- Drop nudoku-2.0.0-unused-var.patch: upstreamed
-- Drop nudoku-2.0.0-gettext.patch: upstreamed
-
--------------------------------------------------------------------
 Thu Feb  6 07:47:24 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Add nudoku-2.0.0-unused-var.patch:

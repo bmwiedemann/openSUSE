@@ -1,9 +1,4 @@
 -------------------------------------------------------------------
-Tue Nov 17 16:01:34 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
-
-- prepare usrmerge (boo#1029961)
-
--------------------------------------------------------------------
 Mon Oct 12 12:12:12 UTC 2020 - ohering@suse.de
 
 - Move block-drbd back to /etc/xen/scripts (bsc#1177531)

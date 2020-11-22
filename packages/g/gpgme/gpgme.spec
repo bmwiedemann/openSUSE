@@ -29,7 +29,7 @@
 %bcond_without qt
 %endif
 Name:           gpgme%{psuffix}
-Version:        1.15.0
+Version:        1.14.0
 Release:        0
 Summary:        Programmatic library interface to GnuPG
 License:        LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -38,14 +38,13 @@ URL:            https://www.gnupg.org/related_software/gpgme/
 Source:         ftp://ftp.gnupg.org/gcrypt/gpgme/gpgme-%{version}.tar.bz2
 Source1:        ftp://ftp.gnupg.org/gcrypt/gpgme/gpgme-%{version}.tar.bz2.sig
 Source2:        baselibs.conf
-# https://www.gnupg.org/signature_key.html
 Source3:        gpgme.keyring
 # used to have a fixed timestamp
 Source99:       gpgme.changes
 BuildRequires:  gcc-c++
 BuildRequires:  gpg2 >= 2.0.10
 BuildRequires:  libassuan-devel >= 2.4.2
-BuildRequires:  libgpg-error-devel >= 1.36
+BuildRequires:  libgpg-error-devel >= 1.28
 BuildRequires:  pkgconfig
 BuildRequires:  swig
 Requires(post): %{install_info_prereq}

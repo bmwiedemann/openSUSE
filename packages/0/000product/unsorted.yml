@@ -523,9 +523,9 @@ unsorted:
   - android-udev-rules 
   - angelscript 
   - angelscript-devel 
-  - anjuta: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - anjuta: [i586] # suggested by dvd:suggested:patterns-gnome-gnome_ide 
   - anjuta-devel 
-  - anjuta-extras: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - anjuta-extras: [i586] # suggested by dvd:suggested:patterns-gnome-gnome_ide 
   - anjuta-extras-lang: [i586] 
   - anjuta-lang: [i586] 
   - anki 
@@ -1149,7 +1149,6 @@ unsorted:
   - bamf-daemon 
   - bamf-devel 
   - bamf-doc 
-  - bananapir2-firmware 
   - bandwidth 
   - baobab: [i586] 
   - baobab-lang: [i586] 
@@ -1523,7 +1522,7 @@ unsorted:
   - bumblebee 
   - bumblebee-status 
   - bumpversion 
-  - bup 
+  - bup: [x86_64] 
   - busybox-adduser 
   - busybox-attr 
   - busybox-bc 
@@ -3057,7 +3056,7 @@ unsorted:
   - emacs-color-theme 
   - emacs-completion-golang 
   - emacs-el 
-  - emacs-plugin-devhelp: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - emacs-plugin-devhelp: [i586] # suggested by dvd:suggested:patterns-gnome-gnome_ide 
   - emacs-scheme48 
   - emacs-semi 
   - embree-devel-static: [x86_64] 
@@ -4040,7 +4039,6 @@ unsorted:
   - gdk-pixbuf-loader-libopenraw: [i586] 
   - gdk-pixbuf-loader-libopenraw-32bit: [x86_64] 
   - gdk-pixbuf-loader-rsvg-32bit: [x86_64] 
-  - gdk-pixbuf-xlib-devel 
   - gdl-devel 
   - gdlmm-devel 
   - gdm: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
@@ -5402,7 +5400,6 @@ unsorted:
   - givaro-devel 
   - givaro-doc 
   - gjiten 
-  - gjs: [i586] 
   - gkeyfile-sharp 
   - gkeyfile-sharp-devel 
   - gkrellm 
@@ -5421,6 +5418,7 @@ unsorted:
   - glade-catalog-gtksourceview 
   - glade-catalog-gtksourceview4 
   - glade-catalog-libhandy 
+  - glade-catalog-libhandy0 
   - glade-catalog-libpeas 
   - glade-catalog-v3270 
   - glade-sharp2 
@@ -5558,6 +5556,7 @@ unsorted:
   - gnome-2048-lang 
   - gnome-autoar-devel 
   - gnome-backgrounds 
+  - gnome-backgrounds-lang 
   - gnome-bluetooth: [i586] 
   - gnome-bluetooth-devel 
   - gnome-bluetooth-lang: [i586] 
@@ -5706,7 +5705,6 @@ unsorted:
   - gnome-shell-search-provider-gnome-calendar 
   - gnome-shell-search-provider-gnome-characters: [i586] 
   - gnome-shell-search-provider-gnome-clocks: [i586] 
-  - gnome-shell-search-provider-gnome-games 
   - gnome-shell-search-provider-gnome-photos: [i586] 
   - gnome-shell-search-provider-gnome-recipes 
   - gnome-shell-search-provider-gnome-terminal: [i586] 
@@ -7193,7 +7191,7 @@ unsorted:
   - java-jwt 
   - java-jwt-javadoc 
   - java-libkolabxml1 
-  - java-mraa 
+  - java-mraa: [x86_64] 
   - javacc 
   - javacc-bootstrap 
   - javacc-demo 
@@ -9619,9 +9617,6 @@ unsorted:
   - libavahi-glib1-32bit: [x86_64] 
   - libavahi-gobject-devel 
   - libavahi-gobject0: [i586] 
-  - libavahi-libevent1 
-  - libavahi-qt5-1 
-  - libavahi-qt5-devel 
   - libavahi-ui-gtk3-0: [i586] 
   - libavc1394-0-32bit: [x86_64] 
   - libavc1394-devel 
@@ -10468,7 +10463,7 @@ unsorted:
   - libecryptfs1-32bit: [x86_64] 
   - libedata-book-1_2-26-32bit: [x86_64] 
   - libedata-cal-2_0-1-32bit: [x86_64] 
-  - libedataserver-1_2-25-32bit: [x86_64] 
+  - libedataserver-1_2-24-32bit: [x86_64] 
   - libedataserverui-1_2-2-32bit: [x86_64] 
   - libedc_ecc1_0: [i586] 
   - libedc_ecc_dec1_0: [i586] 
@@ -10698,6 +10693,7 @@ unsorted:
   - libfole1 
   - libfolks-eds25: [i586] 
   - libfolks-telepathy25 
+  - libfolks-tracker25 
   - libfolks25: [i586] 
   - libfoma-hfst0 
   - libfoma0 
@@ -10851,7 +10847,6 @@ unsorted:
   - libgdbm_compat4-32bit: [x86_64] 
   - libgdiplus-devel 
   - libgdiplus0 
-  - libgdk_pixbuf_xlib-2_0-0-32bit: [x86_64] 
   - libgdm1: [i586] 
   - libgdruntime1 
   - libgdruntime1-32bit: [x86_64] 
@@ -10909,7 +10904,6 @@ unsorted:
   - libgitg-devel 
   - libgivaro9 
   - libgjs-devel 
-  - libgjs0: [i586] 
   - libgl2ps1 
   - libglade-2_0-0-32bit: [x86_64] 
   - libglade2-devel 
@@ -10968,7 +10962,6 @@ unsorted:
   - libgnomekbd-devel 
   - libgnomekbd-lang: [i586] 
   - libgnomekbd8: [i586] 
-  - libgnomesoftware-3_38_0: [i586] 
   - libgnomesu-devel 
   - libgnt-devel 
   - libgnt0 
@@ -11208,8 +11201,9 @@ unsorted:
   - libhal1 
   - libhamlib++2 
   - libhamlib2 
-  - libhandy-0_0-0: [i586] 
+  - libhandy-1-0 
   - libhandy-devel 
+  - libhandy-lang 
   - libhandy0-devel 
   - libhangul-devel 
   - libhangul1: [i586] 
@@ -11900,7 +11894,7 @@ unsorted:
   - liblouis-devel 
   - liblouis-doc 
   - liblouis-tools 
-  - liblouis20: [i586] 
+  - liblouis19: [i586] 
   - liblqr-1-0-32bit: [x86_64] 
   - liblqr-devel 
   - liblrdf-devel 
@@ -11953,8 +11947,8 @@ unsorted:
   - libmagic1-32bit: [x86_64] 
   - libmaia-devel 
   - libmaia1 
-  - libmalcontent-0-0: [i586] 
-  - libmalcontent-ui-0-0: [i586] 
+  - libmalcontent-0-0 
+  - libmalcontent-ui-0-0 
   - libmanette-devel 
   - libmapi1 
   - libmapidb-devel 
@@ -12080,7 +12074,6 @@ unsorted:
   - libmirisdr-devel 
   - libmirisdr0 
   - libmisdn1 
-  - libmission-control-plugins0: [i586] 
   - libmjpegutils-2_0-0-32bit: [x86_64] 
   - libmjpegutils-devel 
   - libmlag_pb0 
@@ -12126,7 +12119,6 @@ unsorted:
   - libmowgli-2-0 
   - libmowgli2-devel 
   - libmozjs-52 
-  - libmozjs-68 
   - libmozjs-78-0: [i586] 
   - libmp3lame-devel 
   - libmp3lame0-32bit: [x86_64] 
@@ -12160,7 +12152,7 @@ unsorted:
   - libmpx2-gcc7-32bit: [x86_64] 
   - libmpxwrappers2-gcc7 
   - libmpxwrappers2-gcc7-32bit: [x86_64] 
-  - libmraa2 
+  - libmraa2: [x86_64] 
   - libmrss-devel 
   - libmrss0 
   - libmrss0-32bit: [x86_64] 
@@ -12208,7 +12200,7 @@ unsorted:
   - libmusicbrainz4-32bit: [x86_64] 
   - libmusicbrainz5-1-32bit: [x86_64] 
   - libmusicbrainz5-devel 
-  - libmutter-7-0: [i586] 
+  - libmutter-6-0: [i586] 
   - libmwaw-devel 
   - libmwaw-devel-doc 
   - libmwaw-tools 
@@ -12799,7 +12791,6 @@ unsorted:
   - libpipeline-devel 
   - libpipewire-0_2-1 
   - libpipewire-0_3-0: [i586] 
-  - libpipewire-0_3-0-32bit: [x86_64] 
   - libpisock-devel 
   - libpisock9 
   - libpisync-devel 
@@ -12893,6 +12884,7 @@ unsorted:
   - libpoppler-qt5-devel 
   - libpoppler103-32bit: [x86_64] 
   - libportal-devel 
+  - libportal0: [i586] 
   - libportaudio2-32bit: [x86_64] 
   - libportaudiocpp0 
   - libportmidi0 
@@ -13479,7 +13471,7 @@ unsorted:
   - libretro-freeintv 
   - libretro-fuse 
   - libretro-gambatte 
-  - libretro-gtk-1-0 
+  - libretro-gtk-0_14-0 
   - libretro-handy 
   - libretro-mame: [x86_64] 
   - libretro-mgba 
@@ -13513,7 +13505,7 @@ unsorted:
   - librrd8 
   - librsb-devel 
   - librsb0 
-  - librssguard-3_8_1 
+  - librssguard-3_8_0 
   - librssguard-devel 
   - librsvg-2-2-32bit: [x86_64] 
   - librsvg-devel 
@@ -14004,10 +13996,8 @@ unsorted:
   - libteec1 
   - libtelepathy-farstream3 
   - libtelepathy-farstream3-32bit: [x86_64] 
-  - libtelepathy-glib0: [i586] 
   - libtelepathy-glib0-32bit: [x86_64] 
   - libtelepathy-logger-qt5 
-  - libtelepathy-logger3: [i586] 
   - libtelepathy-qt5-0 
   - libtelepathy-qt5-0-32bit: [x86_64] 
   - libtelepathy-qt5-farstream0 
@@ -14177,7 +14167,6 @@ unsorted:
   - libubsan1-gcc9 
   - libubsan1-gcc9-32bit: [x86_64] 
   - libuchardet-devel 
-  - libuchardet0 
   - libuchardet0-32bit: [x86_64] 
   - libucl1 
   - libucm-devel: [x86_64] 
@@ -14243,6 +14232,7 @@ unsorted:
   - liburfkill-glib-devel 
   - liburfkill-glib0 
   - liburing-devel 
+  - liburing1 
   - liburiparser1 
   - liburiparser1-32bit: [x86_64] 
   - libusb-0_1-4-32bit: [x86_64] 
@@ -14261,6 +14251,7 @@ unsorted:
   - libusbmuxd-devel 
   - libusbmuxd-tools 
   - libusbmuxd6-32bit: [x86_64] 
+  - libusbprog0 
   - libusbredirhost1: [i586] 
   - libusrp-3_4_4+git_20190808-0 
   - libusrp-devel 
@@ -14281,6 +14272,7 @@ unsorted:
   - libv4l-devel-32bit: [x86_64] 
   - libv4l1-0-32bit: [x86_64] 
   - libv4l2-0-32bit: [x86_64] 
+  - libv4l2rds0: [x86_64] 
   - libv4l2rds0-32bit: [x86_64] 
   - libv4lconvert0-32bit: [x86_64] 
   - libva-devel 
@@ -14295,10 +14287,10 @@ unsorted:
   - libva-x11-2-32bit: [x86_64] 
   - libva2-32bit: [x86_64] 
   - libvacuumutils37 
-  - libvala-0_50-0: [i586] 
-  - libvala-0_50-devel 
-  - libvaladoc-0_50-0 
-  - libvaladoc-0_50-devel 
+  - libvala-0_48-0: [i586] 
+  - libvala-0_48-devel 
+  - libvaladoc-0_48-0 
+  - libvaladoc-0_48-devel 
   - libvamp-hostsdk3: [i586] 
   - libvamp-hostsdk3-32bit: [x86_64] 
   - libvamp-sdk2 
@@ -15487,9 +15479,9 @@ unsorted:
   - makewhat 
   - mako 
   - malaga-suomi 
-  - malcontent: [i586] 
+  - malcontent 
   - malcontent-devel 
-  - malcontent-lang: [i586] 
+  - malcontent-lang 
   - mame: [x86_64] 
   - mame-data 
   - mame-mess: [x86_64] 
@@ -16420,9 +16412,9 @@ unsorted:
   - mpv-mpris 
   - mpv-zsh-completion 
   - mr 
-  - mraa 
-  - mraa-devel 
-  - mraa-examples 
+  - mraa: [x86_64] 
+  - mraa-devel: [x86_64] 
+  - mraa-examples: [x86_64] 
   - mrboom 
   - mrouted 
   - mrrescue 
@@ -18549,6 +18541,7 @@ unsorted:
   - pcb-doc 
   - pcc 
   - pcfclock 
+  - pcfclock-kmp-default: [x86_64] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - pcfclock-kmp-pae: [i586] 
   - pciutils-devel 
   - pciutils-devel-32bit: [x86_64] 
@@ -19208,7 +19201,6 @@ unsorted:
   - perl-IO-All 
   - perl-IO-Async 
   - perl-IO-CaptureOutput 
-  - perl-IO-Compress-Lzma 
   - perl-IO-Event 
   - perl-IO-Handle-Util 
   - perl-IO-Interactive 
@@ -19384,7 +19376,6 @@ unsorted:
   - perl-Moose 
   - perl-Moose-Autobox 
   - perl-MooseX-Aliases 
-  - perl-MooseX-App 
   - perl-MooseX-App-Cmd 
   - perl-MooseX-ArrayRef 
   - perl-MooseX-Attribute-ENV 
@@ -19555,7 +19546,6 @@ unsorted:
   - perl-Pod-Coverage 
   - perl-Pod-Coverage-Moose 
   - perl-Pod-Coverage-TrustPod 
-  - perl-Pod-Elemental 
   - perl-Pod-Eventual 
   - perl-Pod-HtmlPsPdf 
   - perl-Pod-Markdown 
@@ -20164,13 +20154,9 @@ unsorted:
   - pipewire-devel 
   - pipewire-doc 
   - pipewire-libjack-0_3 
-  - pipewire-libjack-0_3-32bit: [x86_64] 
   - pipewire-libpulse-0_3 
-  - pipewire-libpulse-0_3-32bit: [x86_64] 
   - pipewire-modules: [i586] 
-  - pipewire-modules-32bit: [x86_64] 
   - pipewire-spa-plugins-0_2: [i586] 
-  - pipewire-spa-plugins-0_2-32bit: [x86_64] 
   - pipewire-spa-tools: [i586] 
   - pipewire-tools: [i586] 
   - pipewire0_2-compat 
@@ -20436,8 +20422,6 @@ unsorted:
   - poedit-lang 
   - poezio 
   - poezio-doc 
-  - polari: [i586] 
-  - polari-lang: [i586] 
   - policycoreutils: [i586] 
   - policycoreutils-devel 
   - policycoreutils-lang: [i586] 
@@ -21181,6 +21165,8 @@ unsorted:
   - python3-PrettyTable: [i586] 
   - python3-Protego 
   - python3-PsyLab 
+  - python3-PsychoPy 
+  - python3-PsychoPy-lang 
   - python3-PubChemPy 
   - python3-Pweave 
   - python3-PyAudio 
@@ -21828,7 +21814,6 @@ unsorted:
   - python3-contexter 
   - python3-contextlib2 
   - python3-control 
-  - python3-conu 
   - python3-convertdate 
   - python3-cookies 
   - python3-cooldict 
@@ -21956,10 +21941,8 @@ unsorted:
   - python3-distroinfo 
   - python3-distutils-extra 
   - python3-dj-database-url 
-  - python3-django-action-framework 
   - python3-django-allauth 
   - python3-django-appconf 
-  - python3-django-args 
   - python3-django-assets 
   - python3-django-attachments 
   - python3-django-auth-ldap 
@@ -21981,7 +21964,6 @@ unsorted:
   - python3-django-debreach 
   - python3-django-debug-toolbar 
   - python3-django-dj-inmemorystorage 
-  - python3-django-dynamic-fixture 
   - python3-django-environ 
   - python3-django-eremaea2 
   - python3-django-extensions 
@@ -22039,7 +22021,6 @@ unsorted:
   - python3-django-tagging 
   - python3-django-tastypie 
   - python3-django-threadedcomments 
-  - python3-django-timezone-field 
   - python3-django-treebeard 
   - python3-django-user-agents 
   - python3-django-utils-six 
@@ -22210,7 +22191,6 @@ unsorted:
   - python3-flask-restx 
   - python3-flatbuffers 
   - python3-flatdict 
-  - python3-fleming 
   - python3-flex 
   - python3-flexmock 
   - python3-flexx 
@@ -22735,7 +22715,6 @@ unsorted:
   - python3-markdown-math 
   - python3-markdown2 
   - python3-marshmallow 
-  - python3-marshmallow-enum 
   - python3-masakariclient 
   - python3-matplotlib-latex 
   - python3-matplotlib-qt5 
@@ -22796,7 +22775,7 @@ unsorted:
   - python3-mpi4py-devel 
   - python3-mplcursors 
   - python3-mpmath 
-  - python3-mraa 
+  - python3-mraa: [x86_64] 
   - python3-mrcz 
   - python3-msal 
   - python3-msal-extensions 
@@ -22920,7 +22899,6 @@ unsorted:
   - python3-octaviaclient 
   - python3-odfpy 
   - python3-odorik 
-  - python3-ogr 
   - python3-oic 
   - python3-oiffile 
   - python3-onionshare 
@@ -22940,7 +22918,6 @@ unsorted:
   - python3-opencv3 
   - python3-opengl 
   - python3-opengl-accelerate 
-  - python3-openidc-client 
   - python3-openmesh 
   - python3-openpyxl 
   - python3-openqa_client 
@@ -23167,7 +23144,6 @@ unsorted:
   - python3-pwquality 
   - python3-py-cpuinfo 
   - python3-py-espeak-ng 
-  - python3-py-moneyed 
   - python3-py-multihash 
   - python3-py-radix 
   - python3-py-ubjson 
@@ -23258,7 +23234,6 @@ unsorted:
   - python3-pyhibp 
   - python3-pyinotify 
   - python3-pyjavaproperties 
-  - python3-pyjnius 
   - python3-pyjokes 
   - python3-pyjsparser 
   - python3-pyjwkest 
@@ -23455,7 +23430,6 @@ unsorted:
   - python3-pytest5 
   - python3-python-afl 
   - python3-python-aiml 
-  - python3-python-args 
   - python3-python-barcode 
   - python3-python-bidi 
   - python3-python-box 
@@ -23469,9 +23443,7 @@ unsorted:
   - python3-python-dbusmock 
   - python3-python-docs-theme 
   - python3-python-dotenv 
-  - python3-python-fedora 
   - python3-python-fileinspector 
-  - python3-python-for-android 
   - python3-python-gammu 
   - python3-python-gflags 
   - python3-python-gitlab 
@@ -23564,8 +23536,6 @@ unsorted:
   - python3-qt5-doc 
   - python3-qt5-quick3d 
   - python3-qt5-quick3d-devel 
-  - python3-qt5-remoteobjects 
-  - python3-qt5-remoteobjects-devel 
   - python3-qtcharts-qt5 
   - python3-qtcharts-qt5-api 
   - python3-qtcharts-qt5-doc 
@@ -23631,7 +23601,6 @@ unsorted:
   - python3-requirements-detector 
   - python3-requirements-parser 
   - python3-requirementslib 
-  - python3-requre 
   - python3-resampy 
   - python3-resolvelib 
   - python3-responses 
@@ -23659,10 +23628,7 @@ unsorted:
   - python3-rpcq 
   - python3-rply 
   - python3-rpmconf 
-  - python3-rpmdeplint 
   - python3-rpmfile 
-  - python3-rpmfluff 
-  - python3-rpmlb 
   - python3-rpy2 
   - python3-rpyc 
   - python3-rq 
@@ -24563,7 +24529,6 @@ unsorted:
   - remmina-plugin-vnc: [i586] 
   - remmina-plugin-www 
   - remmina-plugin-xdmcp: [i586] 
-  - remontoire 
   - rendercheck 
   - rep-gtk 
   - rep-gtk-devel 
@@ -24587,7 +24552,6 @@ unsorted:
   - restorecond 
   - restund 
   - retext 
-  - retro-gtk 
   - retro-gtk-devel 
   - retroarch 
   - retroarch-assets 
@@ -25610,6 +25574,7 @@ unsorted:
   - saxon6 
   - saxon6-aelfred 
   - saxon6-demo 
+  - saxon6-fop 
   - saxon6-javadoc 
   - saxon6-jdom 
   - saxon6-manual 
@@ -26506,8 +26471,6 @@ unsorted:
   - sysprof-capture-devel-static 
   - sysprof-devel 
   - sysprof-lang: [i586] 
-  - sysprof-ui: [i586] 
-  - sysprof-ui-devel 
   - sysstat 
   - sysstat-isag 
   - system-config-printer: [i586] 
@@ -26635,13 +26598,9 @@ unsorted:
   - telepathy-gabble-xmpp-console 
   - telepathy-glib-devel 
   - telepathy-glib-doc 
-  - telepathy-idle: [i586] 
-  - telepathy-logger: [i586] 
   - telepathy-logger-devel 
   - telepathy-logger-qt5-devel 
-  - telepathy-mission-control: [i586] 
   - telepathy-mission-control-devel 
-  - telepathy-mission-control-plugin-goa: [i586] 
   - telepathy-qt5-devel 
   - telepathy-qt5-devel-32bit: [x86_64] 
   - telepathy-rakia 
@@ -34890,6 +34849,7 @@ unsorted:
   - typelib-1_0-Folks-0_6 
   - typelib-1_0-FolksEds-0_6 
   - typelib-1_0-FolksTelepathy-0_6 
+  - typelib-1_0-FolksTracker-0_6 
   - typelib-1_0-Fwupd-2_0: [i586] 
   - typelib-1_0-FwupdPlugin-1_0 
   - typelib-1_0-GCab-1_0 
@@ -34930,7 +34890,6 @@ unsorted:
   - typelib-1_0-Ggit-1_0 
   - typelib-1_0-Gitg-1_0 
   - typelib-1_0-GitgExt-1_0 
-  - typelib-1_0-GjsPrivate-1_0: [i586] 
   - typelib-1_0-Gkbd-3_0 
   - typelib-1_0-Gladeui-2_0 
   - typelib-1_0-GnomeAutoar-0_1 
@@ -34948,7 +34907,6 @@ unsorted:
   - typelib-1_0-GrlPls-0_3 
   - typelib-1_0-Grss-0_7 
   - typelib-1_0-Gsf-1 
-  - typelib-1_0-Gspell-1: [i586] 
   - typelib-1_0-Gst-1_0-32bit: [x86_64] 
   - typelib-1_0-GstAllocators-1_0 
   - typelib-1_0-GstApp-1_0 
@@ -34984,7 +34942,6 @@ unsorted:
   - typelib-1_0-ICal-3_0 
   - typelib-1_0-ICalGLib-3_0 
   - typelib-1_0-Ido3-0_1 
-  - typelib-1_0-JavaScriptCore-4_0: [i586] 
   - typelib-1_0-Jcat-1_0 
   - typelib-1_0-Json-1_0: [i586] 
   - typelib-1_0-Jsonrpc-1_0: [i586] 
@@ -34998,7 +34955,7 @@ unsorted:
   - typelib-1_0-LightDM-1 
   - typelib-1_0-LunarCalendar-3_0 
   - typelib-1_0-LunarDate-3_0 
-  - typelib-1_0-Malcontent-0: [i586] 
+  - typelib-1_0-Malcontent-0 
   - typelib-1_0-MalcontentUi-0 
   - typelib-1_0-Manette-0_2-0 
   - typelib-1_0-MateDesktop-2_0 
@@ -35020,25 +34977,21 @@ unsorted:
   - typelib-1_0-PackageKitGlib-1_0: [i586] 
   - typelib-1_0-Playerctl-2_0_1 
   - typelib-1_0-Pluma-1_0 
-  - typelib-1_0-Polari-1_0: [i586] 
   - typelib-1_0-Polkit-1_0: [i586] 
   - typelib-1_0-Poppler-0_18 
   - typelib-1_0-Rest-0_7: [i586] 
-  - typelib-1_0-Retro-1-0 
+  - typelib-1_0-Retro-0_14-0 
   - typelib-1_0-RygelCore-2_6 
   - typelib-1_0-RygelRenderer-2_6 
   - typelib-1_0-RygelRendererGst-2_6 
   - typelib-1_0-RygelServer-2_6 
-  - typelib-1_0-Secret-1: [i586] 
   - typelib-1_0-Signon-2_0 
   - typelib-1_0-Skk-1_0 
   - typelib-1_0-SpiceClientGlib-2_0 
   - typelib-1_0-SpiceClientGtk-3_0 
   - typelib-1_0-TelepathyFarstream-0_6 
-  - typelib-1_0-TelepathyGlib-0_12: [i586] 
-  - typelib-1_0-TelepathyLogger-0_2: [i586] 
   - typelib-1_0-Template-1_0: [i586] 
-  - typelib-1_0-Tepl-5 
+  - typelib-1_0-Tepl-4 
   - typelib-1_0-Thunarx-3_0 
   - typelib-1_0-TimezoneMap-1_0 
   - typelib-1_0-Tracker-2_0: [i586] 
@@ -35051,7 +35004,6 @@ unsorted:
   - typelib-1_0-Urfkill-0_0 
   - typelib-1_0-Vips-8_10 
   - typelib-1_0-Vte-2.91: [i586] 
-  - typelib-1_0-WebKit2-4_0: [i586] 
   - typelib-1_0-WebKit2WebExtension-4_0 
   - typelib-1_0-Wnck-1_0 
   - typelib-1_0-Workrave-1_0 
@@ -35222,6 +35174,9 @@ unsorted:
   - usbguard 
   - usbguard-devel 
   - usbguard-tools 
+  - usbprog 
+  - usbprog-devel 
+  - usbprog-gui 
   - usbredir 
   - usbredir-devel 
   - usbsdmux-udev 
@@ -35267,8 +35222,12 @@ unsorted:
   - uwsgi-xslt 
   - v2ray-core 
   - v4l-tools 
+  - v4l-utils: [x86_64] 
   - v4l-utils-devel-tools 
+  - v4l-utils-lang: [x86_64] 
+  - v4l2loopback-kmp-default: [x86_64] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - v4l2loopback-kmp-pae: [i586] 
+  - v4l2loopback-utils: [x86_64] 
   - vacuum-im 
   - vacuum-im-devel 
   - vacuum-im-lang 
@@ -35361,6 +35320,7 @@ unsorted:
   - vfontas 
   - vgrabbj 
   - vgrep 
+  - vhba-kmp-default: [x86_64] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - vhba-kmp-pae: [i586] 
   - vhostmd 
   - vidcutter 
@@ -36378,6 +36338,8 @@ unsorted:
   - youtube-dl 
   - youtube-dl-bash-completion 
   - youtube-dl-fish-completion 
+  - youtube-dl-gui 
+  - youtube-dl-gui-lang 
   - youtube-dl-zsh-completion 
   - ypserv 
   - ytree 

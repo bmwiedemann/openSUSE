@@ -1,4 +1,0 @@
-addFilter("devel-file-in-non-devel-package")
-addFilter("zero-length")
-addFilter("hidden-file-or-dir")
-addFilter("script-without-shebang .*/site-packages/pythonforandroid/recipes/android/src/setup.py")

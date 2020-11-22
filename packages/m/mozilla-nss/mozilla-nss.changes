@@ -1,22 +1,4 @@
 -------------------------------------------------------------------
-Sun Nov 15 08:17:37 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
-
-- update to NSS 3.58
-  Bugs fixed:
-  * bmo#1641480 (CVE-2020-25648)
-    Tighten CCS handling for middlebox compatibility mode.
-  * bmo#1631890 - Add support for Hybrid Public Key Encryption
-    (draft-irtf-cfrg-hpke) support for TLS Encrypted Client Hello
-    (draft-ietf-tls-esni).
-  * bmo#1657255 - Add CI tests that disable SHA1/SHA2 ARM crypto
-    extensions.
-  * bmo#1668328 - Handle spaces in the Python path name when using
-    gyp on Windows.
-  * bmo#1667153 - Add PK11_ImportDataKey for data object import.
-  * bmo#1665715 - Pass the embedded SCT list extension (if present)
-    to TrustDomain::CheckRevocation instead of the notBefore value.
-
--------------------------------------------------------------------
 Mon Oct 12 15:31:33 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.16: error: bare words are no longer

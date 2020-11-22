@@ -1,9 +1,7 @@
 -------------------------------------------------------------------
 Thu Oct 15 07:14:20 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
-- Version 0.3.11
-  * Improve extract_pydbapi to check recursively in subfolders
-  (jsc#SLE-4047)
+- Improve extract_pydbapi to check recursively in subfolders 
 
 -------------------------------------------------------------------
 Thu Sep 24 12:42:59 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>

@@ -18,7 +18,7 @@
 
 %bcond_without	units_cur
 Name:           units
-Version:        2.21
+Version:        2.20
 Release:        0
 Summary:        Conversion Utility
 License:        GPL-3.0-or-later
@@ -29,10 +29,8 @@ Source1:        http://ftp.gnu.org/gnu/units/units-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=units&download=1#/units.keyring
 BuildRequires:  bison
 BuildRequires:  readline-devel
-%if 0%{?suse_version} <= 1500
 Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
-%endif
 %if %{with units_cur}
 BuildRequires:  python-base
 %endif
@@ -49,24 +47,21 @@ page for details.
 %setup -q
 
 %build
-export CFLAGS="%{optflags} -fPIE"
-export LDFLAGS="-pie"
 %configure
-%make_build
+make %{?_smp_mflags}
 
 %install
+# install fails with %%{?_smp_mflags}
 %make_install
 
 %check
-%make_build check
+make %{?_smp_mflags} check
 
-%if 0%{?suse_version} <= 1500
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
 
 %preun
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
-%endif
 
 %files
 %license COPYING

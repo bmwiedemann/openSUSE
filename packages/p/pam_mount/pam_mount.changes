@@ -1,11 +1,4 @@
 -------------------------------------------------------------------
-Fri Nov 20 10:42:59 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
-
-- Update to release 2.17
-  * Abandon /sbin as a location
-- Drop pam_mount-2.16-fix-luks2-mount.patch (merged)
-
--------------------------------------------------------------------
 Tue Sep 15 23:39:22 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Demote Recommends to Suggests.

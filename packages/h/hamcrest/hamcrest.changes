@@ -1,9 +1,4 @@
 -------------------------------------------------------------------
-Tue Nov 17 17:39:48 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
-
-- Add obsoletes in core to fix updates. [bsc#1174544]
-
--------------------------------------------------------------------
 Wed Oct  2 20:24:49 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Remove references to the hamcrest-parent pom and do not
