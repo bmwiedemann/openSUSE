@@ -1,7 +1,7 @@
 #
 # spec file for package systemd-presets-branding-openSUSE
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,7 +45,7 @@ Default presets for systemd on openSUSE distribution.
 
 These are the openSUSE specific presets. The default
 presets needed for all SUSE based distributions can be 
-found in systemd-presets-common-SUSE.
+found in systemd-presets-branding-common-SUSE.
 
 %prep
 %setup -q -T -c
@@ -62,33 +62,33 @@ install -m644 %{SOURCE1}  %{buildroot}%{_prefix}/lib/systemd/system-preset/90-de
 %pre
 # On initial installation, branding-preset-states does not yet exist,
 # which is why we also check for the file to be present/executable
-if [ $1 -gt 1 -a -x %{_prefix}/lib/%{generic_name}/branding-preset-states ]; then
-    #
-    # Save the old state so we can detect which package have its
-    # default changed later.
-    #
-    # Note: the old version of the script is used here.
-    #
-    %{_prefix}/lib/%{generic_name}/branding-preset-states save
+if [ $1 -gt 1 -a -x %{_prefix}/lib/%{generic_name}/branding-preset-states ] ; then
+	#
+	# Save the old state so we can detect which package have its
+	# default changed later.
+	#
+	# Note: the old version of the script is used here.
+	#
+	%{_prefix}/lib/%{generic_name}/branding-preset-states save
 elif [ $1 -eq 1 ]; then
-    touch /run/rpm-%{name}-preset-all
+  touch /run/rpm-%{name}-preset-all
 fi
 
 %post
-if [ $1 -gt 1 ]; then
-    #
-    # Now that the updated presets are installed, find the ones
-    # that have been changed and apply "systemct preset" on them.
-    #
-    %{_prefix}/lib/%{generic_name}/branding-preset-states apply-changes
+if [ $1 -gt 1 ] ; then
+	#
+	# Now that the updated presets are installed, find the ones
+	# that have been changed and apply "systemct preset" on them.
+	#
+	%{_prefix}/lib/%{generic_name}/branding-preset-states apply-changes
 fi
 
 %posttrans
 if [ -f /run/rpm-%{name}-preset-all ]; then
-    # Enable all services, which were installed before systemd
-    # Don't disable services, since this would disable the
-    # complete network stack.
-    systemctl preset-all --preset-mode=enable-only
+  # Enable all services, which were installed before systemd
+  # Don't disable services, since this would disable the
+  # complete network stack.
+  systemctl preset-all --preset-mode=enable-only
 fi
 rm -f /run/rpm-%{name}-preset-all
 

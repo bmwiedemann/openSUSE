@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-documents
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,6 +46,7 @@ BuildRequires:  pkgconfig(goa-1.0) >= 3.2.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.31.6
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.15
 BuildRequires:  pkgconfig(libgdata) >= 0.13.3
+BuildRequires:  pkgconfig(libgepub-0.6) >= 0.6
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.41.3
 BuildRequires:  pkgconfig(tracker-control-2.0) >= 0.17.3
 BuildRequires:  pkgconfig(tracker-sparql-2.0) >= 0.17.3

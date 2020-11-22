@@ -1,5 +1,0 @@
-<package name="python-openidc-client" project="openSUSE:Factory">
-  <title></title>
-  <description>Python OpenID Connect client with token caching and management</description>
-  <devel project="devel:languages:python" package="python-openidc-client"/>
-</package>

@@ -84,15 +84,4 @@
   * Fix --help and --version flags</comment>
     <requestid>824072</requestid>
   </revision>
-  <revision rev="9" vrev="1">
-    <srcmd5>f4926454b189471970ddf01fc84318b0</srcmd5>
-    <version>6.0.13</version>
-    <time>1605800787</time>
-    <user>dimstar_suse</user>
-    <comment>- Update to 6.0.13:
-  * Fix warning by systemctl (#346)
-  * Import UST
-  * Several documentation fixes</comment>
-    <requestid>849345</requestid>
-  </revision>
 </revisionlist>

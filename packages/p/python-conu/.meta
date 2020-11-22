@@ -1,5 +1,0 @@
-<package name="python-conu" project="openSUSE:Factory">
-  <title></title>
-  <description>Python container testing library</description>
-  <devel project="devel:languages:python" package="python-conu"/>
-</package>

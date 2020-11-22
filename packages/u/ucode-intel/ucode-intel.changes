@@ -1,14 +1,8 @@
 -------------------------------------------------------------------
-Thu Nov 19 16:46:11 UTC 2020 - Marcus Meissner <meissner@suse.com>
-
-- Updated Intel CPU Microcode to 20201118 official release. (bsc#1178971)
-  - Removed TGL/06-8c-01/80 due to functional issues with some OEM platforms.
-
--------------------------------------------------------------------
 Wed Nov 11 08:23:06 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - Updated Intel CPU Microcode to 20201110 official release.
- - CVE-2020-8695: Fixed Intel RAPL sidechannel attack (SGX) INTEL-SA-00389 (bsc#1170446)
+ - CVE-2020-8695: Fixed Intel RAPL sidechannel attack (SGX) (bsc#1170446)
  - CVE-2020-8698: Fixed Fast Store Forward Predictor INTEL-SA-00381 (bsc#1173594)
  - CVE-2020-8696: Vector Register Sampling Active INTEL-SA-00381 (bsc#1173592)
 

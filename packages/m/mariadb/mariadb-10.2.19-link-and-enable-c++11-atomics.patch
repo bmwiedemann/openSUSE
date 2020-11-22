@@ -7,11 +7,9 @@ Date:   Fri Dec 21 19:14:04 2018 +0200
    atomic operations. Check first if support is available without
    linking, otherwise use the library.
 
-Index: mariadb-10.5.8/configure.cmake
-===================================================================
---- mariadb-10.5.8.orig/configure.cmake
-+++ mariadb-10.5.8/configure.cmake
-@@ -861,7 +861,25 @@ int main()
+--- a/configure.cmake
++++ b/configure.cmake
+@@ -926,7 +926,25 @@ int main()
    long long int *ptr= &var;
    return (int)__atomic_load_n(ptr, __ATOMIC_SEQ_CST);
  }"
@@ -38,12 +36,10 @@ Index: mariadb-10.5.8/configure.cmake
  
  IF(WITH_VALGRIND)
    SET(HAVE_valgrind 1)
-Index: mariadb-10.5.8/mysys/CMakeLists.txt
-===================================================================
---- mariadb-10.5.8.orig/mysys/CMakeLists.txt
-+++ mariadb-10.5.8/mysys/CMakeLists.txt
-@@ -140,6 +140,10 @@ TARGET_LINK_LIBRARIES(mysys dbug strings
-  ${LIBNSL} ${LIBM} ${LIBRT} ${CMAKE_DL_LIBS} ${LIBSOCKET} ${LIBEXECINFO})
+--- a/mysys/CMakeLists.txt
++++ b/mysys/CMakeLists.txt
+@@ -130,6 +130,10 @@
+  ${LIBNSL} ${LIBM} ${LIBRT} ${LIBDL} ${LIBSOCKET} ${LIBEXECINFO})
  DTRACE_INSTRUMENT(mysys)
  
 +IF (HAVE_GCC_C11_ATOMICS_WITH_LIBATOMIC)
@@ -53,11 +49,9 @@ Index: mariadb-10.5.8/mysys/CMakeLists.txt
  IF(HAVE_BFD_H)
    TARGET_LINK_LIBRARIES(mysys bfd)  
  ENDIF(HAVE_BFD_H)
-Index: mariadb-10.5.8/sql/CMakeLists.txt
-===================================================================
---- mariadb-10.5.8.orig/sql/CMakeLists.txt
-+++ mariadb-10.5.8/sql/CMakeLists.txt
-@@ -215,6 +215,10 @@ ELSE()
+--- a/sql/CMakeLists.txt
++++ b/sql/CMakeLists.txt
+@@ -215,6 +215,10 @@
    SET(MYSQLD_SOURCE main.cc ${DTRACE_PROBES_ALL})
  ENDIF()
  

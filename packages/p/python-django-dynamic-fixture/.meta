@@ -1,5 +1,0 @@
-<package name="python-django-dynamic-fixture" project="openSUSE:Factory">
-  <title></title>
-  <description>Python library to create dynamic model instances for testing purposes</description>
-  <devel project="devel:languages:python:django" package="python-django-dynamic-fixture"/>
-</package>
