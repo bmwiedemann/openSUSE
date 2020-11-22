@@ -1,5 +1,0 @@
-<package name="python-pyjnius" project="openSUSE:Factory">
-  <title></title>
-  <description>Access Java classes from Python</description>
-  <devel project="devel:languages:python" package="python-pyjnius"/>
-</package>

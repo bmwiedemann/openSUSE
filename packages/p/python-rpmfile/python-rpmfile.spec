@@ -1,7 +1,7 @@
 #
-# spec file for package python-rpmfile
+# spec file for package specRPM_CREATION_NAME
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) specCURRENT_YEAR SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,53 +12,43 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-rpmfile
-Version:        1.0.4
+
+Name:           python-rpmfile 
+Version:        1.0.0+git20190702.208ac80
 Release:        0
 Summary:        Python module to read rpm files
 License:        MIT
-URL:            https://github.com/srossross/rpmfile
-Source:         https://files.pythonhosted.org/packages/source/r/rpmfile/rpmfile-%{version}.tar.gz
+Group:          Development/Libraries/Python
+Url:            https://github.com/srossross/rpmfile 
+Source:         %{name}-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Recommends:     python-zstandard >= 0.13.0
+BuildRequires:  fdupes
 BuildArch:      noarch
-# SECTION test requirements
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module zstandard >= 0.13.0}
-# /SECTION
 %python_subpackages
 
 %description
 Tools for inspecting RPM files in python. This module is modeled after the tarfile module.
 
 %prep
-%setup -q -n rpmfile-%{version}
-sed -i '1{/#!/d}' rpmfile/cpiofile.py
+%setup -q
 
 %build
 %python_build
 
 %install
 %python_install
-%{python_expand rm -r %{buildroot}%{$python_sitelib}/tests/
-%fdupes %{buildroot}%{$python_sitelib}
-}
-
-%check
-# https://github.com/srossross/rpmfile/issues/35
-# test_extract depend on github.com
-%pytest -k 'not test_extract'
+%python_expand rm -rf %{buildroot}%{$python_sitelib}/tests
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
+%license LICENSE 
 %doc README.md
-%license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/rpmfile*
 
 %changelog
+

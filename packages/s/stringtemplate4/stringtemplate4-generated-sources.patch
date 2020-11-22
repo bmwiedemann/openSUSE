@@ -1,5 +1,5 @@
 --- src/CodeGenerator.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ src/CodeGenerator.tokens	2020-04-02 15:05:32.083265957 +0200
++++ src/CodeGenerator.tokens	2019-11-03 12:55:49.169482828 +0100
 @@ -0,0 +1,79 @@
 +RBRACK=17
 +LBRACK=16
@@ -81,7 +81,7 @@
 +'@end'=34
 +'/'=38
 --- src/Group.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ src/Group.tokens	2020-04-02 15:05:32.083265957 +0200
++++ src/Group.tokens	2019-11-03 12:55:49.169482828 +0100
 @@ -0,0 +1,44 @@
 +T__16=16
 +T__17=17
@@ -128,9 +128,9 @@
 +'import'=29
 +'true'=14
 --- src/org/stringtemplate/v4/compiler/CodeGenerator.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/org/stringtemplate/v4/compiler/CodeGenerator.java	2020-04-02 15:05:32.083265957 +0200
++++ src/org/stringtemplate/v4/compiler/CodeGenerator.java	2019-11-03 12:55:49.169482828 +0100
 @@ -0,0 +1,2595 @@
-+// $ANTLR 3.5.2 org/stringtemplate/v4/compiler/CodeGenerator.g 2020-04-02 13:04:44
++// $ANTLR 3.5.2 org/stringtemplate/v4/compiler/CodeGenerator.g 2019-11-03 11:54:31
 +
 +/*
 + * [The "BSD license"]
@@ -2726,9 +2726,9 @@
 +	public static final BitSet FOLLOW_NULL_in_listElement1095 = new BitSet(new long[]{0x0000000000000002L});
 +}
 --- src/org/stringtemplate/v4/compiler/GroupLexer.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/org/stringtemplate/v4/compiler/GroupLexer.java	2020-04-02 15:05:32.083265957 +0200
++++ src/org/stringtemplate/v4/compiler/GroupLexer.java	2019-11-03 12:55:49.169482828 +0100
 @@ -0,0 +1,1310 @@
-+// $ANTLR 3.5.2 org/stringtemplate/v4/compiler/Group.g 2020-04-02 13:04:44
++// $ANTLR 3.5.2 org/stringtemplate/v4/compiler/Group.g 2019-11-03 11:54:31
 +
 +/*
 + * [The "BSD license"]
@@ -4039,9 +4039,9 @@
 +
 +}
 --- src/org/stringtemplate/v4/compiler/GroupParser.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/org/stringtemplate/v4/compiler/GroupParser.java	2020-04-02 15:05:32.083265957 +0200
++++ src/org/stringtemplate/v4/compiler/GroupParser.java	2019-11-03 12:55:49.169482828 +0100
 @@ -0,0 +1,1420 @@
-+// $ANTLR 3.5.2 org/stringtemplate/v4/compiler/Group.g 2020-04-02 13:04:44
++// $ANTLR 3.5.2 org/stringtemplate/v4/compiler/Group.g 2019-11-03 11:54:31
 +
 +/*
 + * [The "BSD license"]
@@ -5462,9 +5462,9 @@
 +	public static final BitSet FOLLOW_ID_in_keyValue768 = new BitSet(new long[]{0x0000000000000002L});
 +}
 --- src/org/stringtemplate/v4/compiler/STParser.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/org/stringtemplate/v4/compiler/STParser.java	2020-04-02 15:05:32.083265957 +0200
-@@ -0,0 +1,5613 @@
-+// $ANTLR 3.5.2 org/stringtemplate/v4/compiler/STParser.g 2020-04-02 13:04:43
++++ src/org/stringtemplate/v4/compiler/STParser.java	2019-11-03 12:55:49.169482828 +0100
+@@ -0,0 +1,5574 @@
++// $ANTLR 3.5.2 org/stringtemplate/v4/compiler/STParser.g 2019-11-03 11:54:30
 +
 +package org.stringtemplate.v4.compiler;
 +import org.stringtemplate.v4.misc.ErrorManager;
@@ -5624,7 +5624,6 @@
 +			stream_template.add(template1.getTree());
 +			EOF2=(CommonToken)match(input,EOF,FOLLOW_EOF_in_templateAndEOF141);  
 +			stream_EOF.add(EOF2);
-+
 +
 +			// AST REWRITE
 +			// elements: template
@@ -6097,7 +6096,6 @@
 +					NEWLINE6=(CommonToken)match(input,NEWLINE,FOLLOW_NEWLINE_in_element173);  
 +					stream_NEWLINE.add(NEWLINE6);
 +
-+
 +					// AST REWRITE
 +					// elements: 
 +					// token labels: 
@@ -6130,9 +6128,8 @@
 +					state._fsp--;
 +
 +					stream_singleElement.add(singleElement8.getTree());
-+
 +					// AST REWRITE
-+					// elements: INDENT, singleElement
++					// elements: singleElement, INDENT
 +					// token labels: 
 +					// rule labels: retval
 +					// token list labels: 
@@ -6540,9 +6537,8 @@
 +			RDELIM21=(CommonToken)match(input,RDELIM,FOLLOW_RDELIM_in_exprTag273);  
 +			stream_RDELIM.add(RDELIM21);
 +
-+
 +			// AST REWRITE
-+			// elements: expr, exprOptions
++			// elements: exprOptions, expr
 +			// token labels: 
 +			// rule labels: retval
 +			// token list labels: 
@@ -6730,9 +6726,8 @@
 +
 +			}
 +
-+
 +			// AST REWRITE
-+			// elements: ID, template, template, ID, i
++			// elements: i, ID, template, ID, template
 +			// token labels: i
 +			// rule labels: retval
 +			// token list labels: 
@@ -6931,7 +6926,6 @@
 +
 +			char_literal35=(CommonToken)match(input,RCURLY,FOLLOW_RCURLY_in_subtemplate450);  
 +			stream_RCURLY.add(char_literal35);
-+
 +
 +			// AST REWRITE
 +			// elements: template, ids
@@ -7316,9 +7310,8 @@
 +
 +			}
 +
-+
 +			// AST REWRITE
-+			// elements: ELSE, IF, c2, i, ELSE, IF, c2, c1, ELSEIF, t3, t3, t1, ELSEIF, c1, t2, t2, t1
++			// elements: t1, ELSE, c2, c1, c1, IF, t2, IF, ELSE, c2, i, t3, ELSEIF, t1, ELSEIF, t3, t2
 +			// token labels: i
 +			// rule labels: t1, c1, retval, t3
 +			// token list labels: 
@@ -7352,7 +7345,7 @@
 +				stream_t1.reset();
 +
 +				// org/stringtemplate/v4/compiler/STParser.g:129:41: ( ^( 'elseif' $c2 $t2) )*
-+				while ( stream_ELSEIF.hasNext()||stream_t2.hasNext()||stream_c2.hasNext() ) {
++				while ( stream_c2.hasNext()||stream_ELSEIF.hasNext()||stream_t2.hasNext() ) {
 +					// org/stringtemplate/v4/compiler/STParser.g:129:41: ^( 'elseif' $c2 $t2)
 +					{
 +					CommonTree root_3 = (CommonTree)adaptor.nil();
@@ -7363,9 +7356,9 @@
 +					}
 +
 +				}
++				stream_c2.reset();
 +				stream_ELSEIF.reset();
 +				stream_t2.reset();
-+				stream_c2.reset();
 +
 +				// org/stringtemplate/v4/compiler/STParser.g:129:62: ( ^( 'else' ( $t3)? ) )?
 +				if ( stream_ELSE.hasNext()||stream_t3.hasNext() ) {
@@ -7774,7 +7767,6 @@
 +			ID64=(CommonToken)match(input,ID,FOLLOW_ID_in_notConditionalExpr773);  
 +			stream_ID.add(ID64);
 +
-+
 +			// AST REWRITE
 +			// elements: ID
 +			// token labels: 
@@ -7821,7 +7813,6 @@
 +
 +					prop=(CommonToken)match(input,ID,FOLLOW_ID_in_notConditionalExpr788);  
 +					stream_ID.add(prop);
-+
 +
 +					// AST REWRITE
 +					// elements: prop, notConditionalExpr
@@ -7870,9 +7861,8 @@
 +					char_literal67=(CommonToken)match(input,RPAREN,FOLLOW_RPAREN_in_notConditionalExpr820);  
 +					stream_RPAREN.add(char_literal67);
 +
-+
 +					// AST REWRITE
-+					// elements: notConditionalExpr, mapExpr
++					// elements: mapExpr, notConditionalExpr
 +					// token labels: 
 +					// rule labels: retval
 +					// token list labels: 
@@ -7985,7 +7975,6 @@
 +					break loop24;
 +				}
 +			}
-+
 +
 +			// AST REWRITE
 +			// elements: option
@@ -8107,9 +8096,8 @@
 +					state._fsp--;
 +
 +					stream_exprNoComma.add(exprNoComma73.getTree());
-+
 +					// AST REWRITE
-+					// elements: ID, EQUALS, exprNoComma
++					// elements: ID, exprNoComma, EQUALS
 +					// token labels: 
 +					// rule labels: retval
 +					// token list labels: 
@@ -8150,7 +8138,6 @@
 +									errMgr.compileTimeError(ErrorType.NO_DEFAULT_VALUE, templateToken, ID71);
 +								}
 +								
-+
 +					// AST REWRITE
 +					// elements: ID
 +					// token labels: 
@@ -8268,7 +8255,6 @@
 +					state._fsp--;
 +
 +					stream_mapTemplateRef.add(mapTemplateRef76.getTree());
-+
 +					// AST REWRITE
 +					// elements: memberExpr, mapTemplateRef
 +					// token labels: 
@@ -8301,7 +8287,6 @@
 +				case 2 :
 +					// org/stringtemplate/v4/compiler/STParser.g:184:14: 
 +					{
-+
 +					// AST REWRITE
 +					// elements: memberExpr
 +					// token labels: 
@@ -8496,9 +8481,8 @@
 +					state._fsp--;
 +
 +					stream_mapTemplateRef.add(mapTemplateRef80.getTree());
-+
 +					// AST REWRITE
-+					// elements: memberExpr, mapTemplateRef
++					// elements: mapTemplateRef, memberExpr
 +					// token labels: 
 +					// rule labels: retval
 +					// token list labels: 
@@ -8543,7 +8527,6 @@
 +				case 2 :
 +					// org/stringtemplate/v4/compiler/STParser.g:196:14: 
 +					{
-+
 +					// AST REWRITE
 +					// elements: memberExpr
 +					// token labels: 
@@ -8625,7 +8608,6 @@
 +							break loop29;
 +						}
 +					}
-+
 +
 +					// AST REWRITE
 +					// elements: mapExpr, x
@@ -8773,9 +8755,8 @@
 +					char_literal85=(CommonToken)match(input,RPAREN,FOLLOW_RPAREN_in_mapTemplateRef1216);  
 +					stream_RPAREN.add(char_literal85);
 +
-+
 +					// AST REWRITE
-+					// elements: qualifiedId, args
++					// elements: args, qualifiedId
 +					// token labels: 
 +					// rule labels: retval
 +					// token list labels: 
@@ -8865,9 +8846,8 @@
 +					char_literal90=(CommonToken)match(input,RPAREN,FOLLOW_RPAREN_in_mapTemplateRef1258);  
 +					stream_RPAREN.add(char_literal90);
 +
-+
 +					// AST REWRITE
-+					// elements: argExprList, mapExpr
++					// elements: mapExpr, argExprList
 +					// token labels: 
 +					// rule labels: retval
 +					// token list labels: 
@@ -8964,7 +8944,6 @@
 +			state._fsp--;
 +
 +			stream_includeExpr.add(includeExpr91.getTree());
-+
 +			// AST REWRITE
 +			// elements: includeExpr
 +			// token labels: 
@@ -9012,7 +8991,6 @@
 +					ID92=(CommonToken)match(input,ID,FOLLOW_ID_in_memberExpr1294);  
 +					stream_ID.add(ID92);
 +
-+
 +					// AST REWRITE
 +					// elements: ID, memberExpr
 +					// token labels: 
@@ -9058,7 +9036,6 @@
 +					stream_mapExpr.add(mapExpr94.getTree());
 +					char_literal95=(CommonToken)match(input,RPAREN,FOLLOW_RPAREN_in_memberExpr1326);  
 +					stream_RPAREN.add(char_literal95);
-+
 +
 +					// AST REWRITE
 +					// elements: mapExpr, memberExpr
@@ -9305,9 +9282,8 @@
 +					char_literal99=(CommonToken)match(input,RPAREN,FOLLOW_RPAREN_in_includeExpr1377);  
 +					stream_RPAREN.add(char_literal99);
 +
-+
 +					// AST REWRITE
-+					// elements: ID, expr
++					// elements: expr, ID
 +					// token labels: 
 +					// rule labels: retval
 +					// token list labels: 
@@ -9363,7 +9339,6 @@
 +					char_literal105=(CommonToken)match(input,RPAREN,FOLLOW_RPAREN_in_includeExpr1408);  
 +					stream_RPAREN.add(char_literal105);
 +
-+
 +					// AST REWRITE
 +					// elements: ID, args
 +					// token labels: 
@@ -9417,9 +9392,8 @@
 +					char_literal109=(CommonToken)match(input,RPAREN,FOLLOW_RPAREN_in_includeExpr1433);  
 +					stream_RPAREN.add(char_literal109);
 +
-+
 +					// AST REWRITE
-+					// elements: args, qualifiedId
++					// elements: qualifiedId, args
 +					// token labels: 
 +					// rule labels: retval
 +					// token list labels: 
@@ -9473,7 +9447,6 @@
 +					rp=(CommonToken)match(input,RPAREN,FOLLOW_RPAREN_in_includeExpr1464);  
 +					stream_RPAREN.add(rp);
 +
-+
 +					// AST REWRITE
 +					// elements: ID
 +					// token labels: 
@@ -9516,7 +9489,6 @@
 +
 +					rp=(CommonToken)match(input,RPAREN,FOLLOW_RPAREN_in_includeExpr1487);  
 +					stream_RPAREN.add(rp);
-+
 +
 +					// AST REWRITE
 +					// elements: ID
@@ -9832,9 +9804,8 @@
 +							char_literal132=(CommonToken)match(input,RPAREN,FOLLOW_RPAREN_in_primary1581);  
 +							stream_RPAREN.add(char_literal132);
 +
-+
 +							// AST REWRITE
-+							// elements: argExprList, expr
++							// elements: expr, argExprList
 +							// token labels: 
 +							// rule labels: retval
 +							// token list labels: 
@@ -9870,7 +9841,6 @@
 +						case 2 :
 +							// org/stringtemplate/v4/compiler/STParser.g:243:14: 
 +							{
-+
 +							// AST REWRITE
 +							// elements: expr
 +							// token labels: 
@@ -9979,7 +9949,6 @@
 +					ID133=(CommonToken)match(input,ID,FOLLOW_ID_in_qualifiedId1641);  
 +					stream_ID.add(ID133);
 +
-+
 +					// AST REWRITE
 +					// elements: ID
 +					// token labels: 
@@ -10010,9 +9979,8 @@
 +					ID135=(CommonToken)match(input,ID,FOLLOW_ID_in_qualifiedId1661);  
 +					stream_ID.add(ID135);
 +
-+
 +					// AST REWRITE
-+					// elements: SLASH, ID
++					// elements: ID, SLASH
 +					// token labels: 
 +					// rule labels: retval
 +					// token list labels: 
@@ -10061,9 +10029,8 @@
 +					r=(CommonToken)match(input,ID,FOLLOW_ID_in_qualifiedId1690);  
 +					stream_ID.add(r);
 +
-+
 +					// AST REWRITE
-+					// elements: qualifiedId, SLASH, r
++					// elements: r, SLASH, qualifiedId
 +					// token labels: r
 +					// rule labels: retval
 +					// token list labels: 
@@ -10270,7 +10237,6 @@
 +
 +					}
 +
-+
 +					// AST REWRITE
 +					// elements: ELLIPSIS, namedArg
 +					// token labels: 
@@ -10404,7 +10370,6 @@
 +					break loop44;
 +				}
 +			}
-+
 +
 +			// AST REWRITE
 +			// elements: arg
@@ -10541,9 +10506,8 @@
 +			state._fsp--;
 +
 +			stream_arg.add(arg150.getTree());
-+
 +			// AST REWRITE
-+			// elements: ID, arg, EQUALS
++			// elements: arg, EQUALS, ID
 +			// token labels: 
 +			// rule labels: retval
 +			// token list labels: 
@@ -10672,7 +10636,6 @@
 +					char_literal151=(CommonToken)match(input,RBRACK,FOLLOW_RBRACK_in_list1837);  
 +					stream_RBRACK.add(char_literal151);
 +
-+
 +					// AST REWRITE
 +					// elements: 
 +					// token labels: 
@@ -10736,7 +10699,6 @@
 +
 +					char_literal155=(CommonToken)match(input,RBRACK,FOLLOW_RBRACK_in_list1862);  
 +					stream_RBRACK.add(char_literal155);
-+
 +
 +					// AST REWRITE
 +					// elements: listElement
@@ -10846,7 +10808,6 @@
 +				case 2 :
 +					// org/stringtemplate/v4/compiler/STParser.g:272:29: 
 +					{
-+
 +					// AST REWRITE
 +					// elements: 
 +					// token labels: 
@@ -11078,7 +11039,7 @@
 +	public static final BitSet FOLLOW_exprNoComma_in_listElement1882 = new BitSet(new long[]{0x0000000000000002L});
 +}
 --- src/STParser.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ src/STParser.tokens	2020-04-02 15:05:32.083265957 +0200
++++ src/STParser.tokens	2019-11-03 12:55:49.169482828 +0100
 @@ -0,0 +1,79 @@
 +RBRACK=17
 +LBRACK=16

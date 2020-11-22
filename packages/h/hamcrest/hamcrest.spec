@@ -1,7 +1,7 @@
 #
 # spec file for package hamcrest
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,7 +63,6 @@ mocking libraries and UI validation rules.
 %package core
 Summary:        Core API of hamcrest matcher framework.
 Group:          Development/Libraries/Java
-Obsoletes:      %{name} < %{version}-%{release}
 
 %description core
 The core API of hamcrest matcher framework to be used by third-party framework providers.

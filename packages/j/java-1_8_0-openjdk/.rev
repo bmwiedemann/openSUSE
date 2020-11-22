@@ -602,12 +602,4 @@
     <comment>Add Shenandoah</comment>
     <requestid>845986</requestid>
   </revision>
-  <revision rev="76" vrev="3">
-    <srcmd5>6d4b035c180304adb2d579b90b85cc0d</srcmd5>
-    <version>1.8.0.272</version>
-    <time>1605958780</time>
-    <user>dimstar_suse</user>
-    <comment>Fix errors in patch</comment>
-    <requestid>849046</requestid>
-  </revision>
 </revisionlist>

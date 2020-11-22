@@ -1,9 +1,4 @@
 -------------------------------------------------------------------
-Thu Nov 19 13:43:27 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
-
-- xvnc@.service: fixed path for %libexecdir (boo#1178601) 
-
--------------------------------------------------------------------
 Fri Sep 25 10:38:58 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - CVE-2020-26117: Server certificates were stored as certiticate

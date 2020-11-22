@@ -1,10 +1,4 @@
 -------------------------------------------------------------------
-Tue Nov 17 17:59:21 UTC 2020 - Hans Petter Jansson <hpj@suse.com>
-
-- Add Conflicts: to supersede version 1.0.0. This is needed for
-  a clean upgrade path on SLE.
-
--------------------------------------------------------------------
 Wed Sep  9 13:33:47 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Add 7a17a4e9127fb6df6278f19396760e7d60a5862c.patch from upstream

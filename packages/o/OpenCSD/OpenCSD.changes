@@ -1,26 +1,4 @@
 -------------------------------------------------------------------
-Thu Nov 19 12:55:22 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
-
-- Update to 0.14.4:
-  * __Update__: makefile: Add DESTDIR to install targets. 
-    (github issue #30)
-  * __Update__: tests: add script to run single test only.
-  * __Update__: docs: update to location of ARM coresight driver 
-    backports directory.
-  * __Bugfix__: ETMv3: Fix missing comma in string list.
-    (github issue #31)
-  * __Bugfix__: makefile: tests: Fix build race problem
-    (github issue #32)
-  * __Bugfix__: tests: fix ignore tpiu command line options
-    (github issue #28)
-  Changes from 0.14.3:
-  * __Update__: Fix makefile to be compliant with RPM base distros.
-    (github issue #26, submitted by jlinton)
-  * __Update__: Add section to autofdo document.
-  * __Bugfix__: STM: fix bug that was missing ASYNC packets.
-    (github issue #27, reported by subhasish Karmakar)
-
--------------------------------------------------------------------
 Thu Jun 18 06:20:22 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Fix RPM groups, grammatically incorrect descriptions, and
