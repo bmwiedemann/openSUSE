@@ -1,23 +1,4 @@
 -------------------------------------------------------------------
-Fri Nov 20 08:18:25 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
-
-- Add runtime deps: python-requests
-
--------------------------------------------------------------------
-Mon Nov 16 08:30:47 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
-
-- Update to 0.7.0
-- Add patch to fix aarch64 test:
-  * nilearn-fix-aarch64.patch
-- Drop upstreamed patches:
-  * fix-test_save_cmap.patch
-  * update-numpy-warning.patch
-- Disable 'test_clean_confounds' and 'test_reorder_img_mirror ' 
-  until we have a fix. See: 
-    https://github.com/nilearn/nilearn/issues/2608
-    https://github.com/nilearn/nilearn/issues/2610
-
--------------------------------------------------------------------
 Wed Oct 14 11:42:18 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Backport patches to fix some tests:
