@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Nov 20 07:23:27 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Fixed detection of connection configuration changes (bsc#1178950)
+- 4.3.28
+
+-------------------------------------------------------------------
+Fri Nov 20 07:23:26 UTC 2020 - Michal Filka <mfilka@suse.com>
+
+- bnc#1175360
+  - more robust AY profile parser. Do not crash with internal error
+    on unknown node in interfaces section
+  - support for static configurations without ip address
+- bnc#1175206
+  - support for defined default when missing bootproto in AY
+
+-------------------------------------------------------------------
 Tue Oct 20 13:03:00 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - fix crash when hostname file missing (bsc#1177904)

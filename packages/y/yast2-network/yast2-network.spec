@@ -17,7 +17,7 @@
 
 
 Name:           yast2-network
-Version:        4.3.27
+Version:        4.3.28
 Release:        0
 Summary:        YaST2 - Network Configuration
 License:        GPL-2.0-only
