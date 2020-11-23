@@ -58,4 +58,17 @@
     <comment>Update to version 0.7.3. Other minor changes to the spec file were done automatically by the format spec service. (forwarded request 822315 from kailiu)</comment>
     <requestid>822328</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>45395f5957b47aebe370a5f3c1a45fe8</srcmd5>
+    <version>0.7.4</version>
+    <time>1606142937</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.4
+  * Addressed potential constant-time related issues in TPM 1.2 and
+    TPM 2 code
+    TPM 1.2: RSA decryption
+    TPM 2: EcSchnorr and EcSM2 signatures; Ecsda is handled by OpenSSL
+  * Fixed some compilation issues (forwarded request 850056 from gary_lin)</comment>
+    <requestid>850101</requestid>
+  </revision>
 </revisionlist>
