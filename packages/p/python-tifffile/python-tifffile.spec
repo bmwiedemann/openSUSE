@@ -20,7 +20,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tifffile
-Version:        2020.9.3
+Version:        2020.10.1
 Release:        0
 Summary:        Read and write TIFF(r) files
 License:        BSD-2-Clause
@@ -74,7 +74,7 @@ sed -i 's/\r//' README.rst
 
 %check
 # skip online tests and tests that OOM
-%pytest -k 'not (test_issue_infinite_loop or test_func_pformat_xml or test_filehandle_seekable or test_write_compress_lerc or test_write_imagej_raw or test_write_bigtiff or test_write_ome or test_class_omexml_attributes or test_class_omexml_multiimage or test_class_omexml)'
+%pytest -k 'not (test_issue_infinite_loop or test_func_pformat_xml or test_filehandle_seekable or test_write_compress_lerc or test_write_imagej_raw or test_write_bigtiff or test_write_ome or test_class_omexml_attributes or test_class_omexml_multiimage or test_class_omexml or test_write_compression_lerc)'
 
 %files %{python_files}
 %doc README.rst

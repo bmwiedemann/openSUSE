@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 17 13:48:44 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add _constraints file to avoid OOM 
+
+-------------------------------------------------------------------
+Mon Nov  2 20:06:00 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 2020.10.1.
+  * Formally deprecate unused TiffFile parameters (scikit-image)
+- Disabled test test_write_compression_lerc, python-imagecodecs not
+  build with lerc support.
+
+-------------------------------------------------------------------
 Fri Sep 18 21:20:20 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 2020.9.3.
