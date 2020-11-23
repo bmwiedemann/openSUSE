@@ -28,10 +28,9 @@ Source0:        https://github.com/Ultimaker/Uranium/archive/%{sversion}.tar.gz#
 # X-OPENSUSE-FIX fix cmake install directory.
 Patch1:         fix-cmake-install.patch
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
-BuildRequires:  libArcus-devel >= %{version}
-BuildRequires:  python3-devel >= 3.4.0
+#BuildRequires:  gcc-c++
 # for tests:
+BuildRequires:  python3-Arcus >= %{version}
 BuildRequires:  python3-Twisted
 BuildRequires:  python3-cryptography
 BuildRequires:  python3-numpy
@@ -40,6 +39,8 @@ BuildRequires:  python3-pytest
 BuildRequires:  python3-qt5
 BuildRequires:  python3-scipy
 BuildRequires:  python3-shapely
+# END for tests
+Requires:       python3-Arcus
 Requires:       python3-cryptography
 Recommends:     python3-numpy-stl
 BuildArch:      noarch
