@@ -17,7 +17,7 @@
 
 
 Name:           perl-Devel-PatchPerl
-Version:        2.02
+Version:        2.04
 Release:        0
 %define cpan_name Devel-PatchPerl
 Summary:        Patch perl source a la Devel::PPPort's buildperl.pl
