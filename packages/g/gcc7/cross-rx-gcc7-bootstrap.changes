@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Nov 19 08:22:09 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Add gcc7-aarch64-moutline-atomics.patch to backport the aarch64
+  -moutline-atomics feature and accumulated fixes but not its
+  default enabling.  [jsc#SLE-12209]
+- Order gcc7-pr92692.patch after gcc7-aarch64-moutline-atomics.patch
+  and refresh.
+
+-------------------------------------------------------------------
+Mon Nov 16 07:45:55 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Revert gcc7-pr97774.patch as it causes gdb to crash.
+
+-------------------------------------------------------------------
+Thu Nov 12 13:51:26 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Fix 32bit libgnat.so link.  [bsc#1178675]
+- Quote %{cross_arch} consistently when comparing expansion
+  against string in RPM %if condition.
+
+-------------------------------------------------------------------
+Tue Nov 10 15:24:57 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Add gcc7-pr97535.patch to fix memcpy miscompilation on aarch64.
+  [bsc#1178624, bsc#1178577]
+
+-------------------------------------------------------------------
+Tue Nov 10 10:11:33 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Add gcc7-pr97774.patch to fix debug line info for try/catch.
+  [bsc#1178614]
+
+-------------------------------------------------------------------
 Fri Sep 18 07:25:53 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Remove -mbranch-protection=standard (aarch64 flag) when gcc7 is

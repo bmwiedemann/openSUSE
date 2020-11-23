@@ -429,4 +429,28 @@
 This is in preparation of Pointer Authentication enablement in Tumbleweed. (forwarded request 835425 from Guillaume_G)</comment>
     <requestid>835760</requestid>
   </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>37a63f47f1bc7adc1ddce7aec5c6635c</srcmd5>
+    <version>7.5.0+r278197</version>
+    <time>1606142210</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gcc7-aarch64-moutline-atomics.patch to backport the aarch64
+  -moutline-atomics feature and accumulated fixes but not its
+  default enabling.  [jsc#SLE-12209]
+- Order gcc7-pr92692.patch after gcc7-aarch64-moutline-atomics.patch
+  and refresh.
+
+- Revert gcc7-pr97774.patch as it causes gdb to crash.
+
+- Fix 32bit libgnat.so link.  [bsc#1178675]
+- Quote %{cross_arch} consistently when comparing expansion
+  against string in RPM %if condition.
+
+- Add gcc7-pr97535.patch to fix memcpy miscompilation on aarch64.
+  [bsc#1178624, bsc#1178577]
+
+- Add gcc7-pr97774.patch to fix debug line info for try/catch.
+  [bsc#1178614]</comment>
+    <requestid>849362</requestid>
+  </revision>
 </revisionlist>

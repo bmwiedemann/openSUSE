@@ -327,11 +327,14 @@ Patch24:        gcc48-bsc1161913.patch
 Patch25:        gcc7-pr93965.patch
 Patch26:        gcc7-pr93888.patch
 Patch27:        gcc7-pr94148.patch
+Patch29:        gcc7-pr97535.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
 Patch60:        gcc44-textdomain.patch
 Patch61:        gcc44-rename-info-files.patch
+# Feature backports
+Patch100:       gcc7-aarch64-moutline-atomics.patch
 
 Summary:        Testsuite results
 License:        SUSE-Public-Domain
@@ -461,14 +464,16 @@ ln -s nvptx-newlib/newlib .
 %patch20
 %patch21 -p1
 %patch22 -p1
-%patch23 -p1
 %patch24 -p1
 %patch25 -p1
 %patch26 -p1
 %patch27 -p1
+%patch29
 %patch51
 %patch60
 %patch61
+%patch100 -p1
+%patch23 -p1
 
 #test patching end
 
