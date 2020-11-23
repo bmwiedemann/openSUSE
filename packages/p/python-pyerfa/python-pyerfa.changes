@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Nov 20 22:50:57 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to Version 1.7.1.1
+  * Fix incorrect ``__version__`` value [gh-60].
+- 1.7.1
+  * Bundled liberfa version update to v1.7.1.
+  * Now it is possible to build against system liberfa [gh-39].
+  * Improved the setup machinery to ensure a proper 
+    configuration of the embedded liberfa [gh-53] (see also 
+    https://github.com/liberfa/erfa/pull/73).
+  * Improve version testing [gh-53] (see issue gh-52 for 
+    rationale).
+  * Reworked version management [gh-57].
+  * Make pyerfa build reproducible [gh-46] (see issue gh-45 
+    for rationale).
+  * Improved docstring titles [gh-47].
+  * Most of the CI has been moved to GitHub Actions.
+- Drop pyerfa-pr39-usesystemerfa.patch merged upstream
+
+-------------------------------------------------------------------
 Fri Sep 25 08:33:49 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - skip version test to allow liberfa 1.7.1 -- gh#liberfa/pyerfa#52

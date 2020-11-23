@@ -17,14 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define erfaversion 1.7.1
 Name:           python-pyerfa
-Version:        1.7.0
+Version:        1.7.1.1
 Release:        0
 Summary:        Python bindings for ERFA
 License:        BSD-3-Clause
 URL:            https://github.com/liberfa/pyerfa
 Source:         https://files.pythonhosted.org/packages/source/p/pyerfa/pyerfa-%{version}.tar.gz
-Patch0:         https://github.com/liberfa/pyerfa/pull/39.patch#/pyerfa-pr39-usesystemerfa.patch
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.16}
@@ -35,7 +35,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(erfa) >= %{version}
+BuildRequires:  pkgconfig(erfa) >= %{erfaversion}
 Requires:       python-numpy >= 1.16
 %python_subpackages
 
@@ -51,8 +51,6 @@ context of Astropy project, into a standalone package.
 
 %prep
 %setup -q -n pyerfa-%{version}
-sed '11,+14 c remove patching nonexistent .travis.yml' ${P:0}
-%patch0 -p1
 rm -rf liberfa/
 
 %build
