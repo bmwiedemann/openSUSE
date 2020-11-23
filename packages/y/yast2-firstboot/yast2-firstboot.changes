@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 16 09:18:59 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Removed duplicated lan client from the firstboot control file and
+  modified the firstboot_dhcp_setup client using the installation
+  dhcp setup client directly (bsc#1177797)
+- 4.3.8
+
+-------------------------------------------------------------------
 Mon Oct 19 12:51:29 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Adapt to changes done in ntp-client (bsc#1177797)
