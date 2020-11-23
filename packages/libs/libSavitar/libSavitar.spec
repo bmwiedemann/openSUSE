@@ -34,7 +34,7 @@ BuildRequires:  cmake >= 2.8.12
 BuildRequires:  gmock
 BuildRequires:  gtest
 BuildRequires:  pugixml-devel >= 1.8
-BuildRequires:  python3-sip-devel
+BuildRequires:  python3-sip-devel < 5
 
 %description
 libSavitar is a C++ implementation of 3mf loading with SIP python bindings.

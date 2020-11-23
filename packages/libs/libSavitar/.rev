@@ -70,4 +70,12 @@ there is no online file with xz compression, so the url is in the _service file.
     <comment></comment>
     <requestid>847707</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>5e2b502e61a988fbbc78fbd364556b2f</srcmd5>
+    <version>4.8.0</version>
+    <time>1606142829</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849976</requestid>
+  </revision>
 </revisionlist>
