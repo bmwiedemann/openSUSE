@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 23 05:55:49 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 2.1.1.
+  * The SCAN functionals were affected by numerical issues with 
+    small gradient values.
+  * The installation of header files, CMake export files, and the
+    Python module was also fixed. Mostly relevant for the Conda 
+    package.
+
+-------------------------------------------------------------------
 Sun Nov  8 16:36:24 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 2.1.0.
