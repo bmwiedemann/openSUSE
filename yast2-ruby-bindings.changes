@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 19 10:13:01 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Removed Requires / BuildRequires to libyui (build failure)
+  (related to bsc#1175489)
+- 4.3.11
+
+-------------------------------------------------------------------
+Mon Nov 16 16:21:33 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Added UI test for menu bar shortcut priority (bsc#1175489)
+- 4.3.10
+
+-------------------------------------------------------------------
 Thu Nov 12 10:20:58 UTC 2020 - Martin Vidner <mvidner@suse.com>
 
 - Build fix for "error creating /run/tmux/399" (bsc#1178394)
