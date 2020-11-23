@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 21 20:47:38 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Depend on the python3-Arcus bindings instead of the versioned
+  library.
+
+-------------------------------------------------------------------
 Tue Nov 10 18:26:14 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 4.8.0
