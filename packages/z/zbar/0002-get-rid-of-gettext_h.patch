@@ -1,0 +1,36 @@
+commit a133aea7880bbb56d75535e534716d0e16a3b61a
+Author: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Date:   Tue Jul 28 09:47:03 2020 +0200
+
+    zbarcam, zbarimg: get rid of gettext.h
+    
+    This doesn't seem to be needed at all for translations to
+    work. Also, gettext.h uses a different license. So, let's get
+    rid of it.
+    
+    Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+
+diff --git a/zbarcam/zbarcam.c b/zbarcam/zbarcam.c
+index f7ea281..ad30101 100644
+--- a/zbarcam/zbarcam.c
++++ b/zbarcam/zbarcam.c
+@@ -35,7 +35,6 @@
+ #include <zbar.h>
+ 
+ #ifdef ENABLE_NLS
+-#include "../zbar/gettext.h"
+ # include <libintl.h>
+ # define _(string) gettext(string)
+ #else
+diff --git a/zbarimg/zbarimg.c b/zbarimg/zbarimg.c
+index 0796fd8..d05d832 100644
+--- a/zbarimg/zbarimg.c
++++ b/zbarimg/zbarimg.c
+@@ -40,7 +40,6 @@
+ #include <zbar.h>
+ 
+ #ifdef ENABLE_NLS
+-#include "../zbar/gettext.h"
+ # include <libintl.h>
+ # define _(string) gettext(string)
+ #else

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov 18 02:54:31 UTC 2020 - Wang Jun <jgwang@suse.com>
+
+- Update to version 0.23.1
+  * Add i18n translation support and add a pt_BR translation
+  * Change default to autodetect python and gtk versions
+  * Some documentation updates
+  * Add support for binary data extraction
+  * Add support for raw decoding without charset conversions
+  * Add one shot scanning mode
+  * Fix help messages
+  * Fix some makefile issues
+  * Fix error detection in video4linux read
+  * Fix pkgconfig for zbar-qt5
+  * Fix a double-free condition
+- Add 0002-get-rid-of-gettext_h.patch
+
+-------------------------------------------------------------------
 Sun Oct 20 11:40:04 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove references to Qt4 from zbar-qt pkgconfig file (#62),

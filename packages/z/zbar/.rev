@@ -149,4 +149,24 @@
     <comment></comment>
     <requestid>741319</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>79e084be6470b35b8d3abb864c40fc44</srcmd5>
+    <version>0.23.1</version>
+    <time>1606145884</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.23.1
+  * Add i18n translation support and add a pt_BR translation
+  * Change default to autodetect python and gtk versions
+  * Some documentation updates
+  * Add support for binary data extraction
+  * Add support for raw decoding without charset conversions
+  * Add one shot scanning mode
+  * Fix help messages
+  * Fix some makefile issues
+  * Fix error detection in video4linux read
+  * Fix pkgconfig for zbar-qt5
+  * Fix a double-free condition
+- Add 0002-get-rid-of-gettext_h.patch</comment>
+    <requestid>849552</requestid>
+  </revision>
 </revisionlist>

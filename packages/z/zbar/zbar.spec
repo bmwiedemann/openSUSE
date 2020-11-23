@@ -1,7 +1,7 @@
 #
 # spec file for package zbar
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2010 Carlos Goncalves <cgoncalves@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define sover   0
 %define libname lib%{name}%{sover}
 Name:           zbar
-Version:        0.23
+Version:        0.23.1
 Release:        0
 Summary:        Bar code reader
 License:        LGPL-2.0-or-later
@@ -30,11 +30,8 @@ Source0:        https://linuxtv.org/downloads/%{name}/%{name}-%{version}.tar.bz2
 Source98:       baselibs.conf
 # PATCH-FIX-UPSTREAM -- https://github.com/mchehab/zbar/pull/63
 Patch0:         0001-Create-correct-pkconfig-file-for-zbar-qt5.patch
-# autoconf/automake required due to patched configure.ac (Patch0)
-%if 0%{?suse_version} >= 1550
-BuildRequires:  autoconf
-BuildRequires:  automake >= 1.16
-%endif
+# PATCH-FIX-UPSTREAM -- https://github.com/mchehab/zbar/commit/a133aea7880bbb56d75535e534716d0e16a3b61a
+Patch1:         0002-get-rid-of-gettext_h.patch
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  xmlto
@@ -50,6 +47,11 @@ BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xv)
+# autoconf/automake required due to patched configure.ac (Patch0)
+%if 0%{?suse_version} >= 1550
+BuildRequires:  autoconf
+BuildRequires:  automake >= 1.16
+%endif
 %if 0%{?suse_version} < 1500
 BuildRequires:  gcc7
 %endif
@@ -108,6 +110,7 @@ applications using the zbar-qt library.
 %if 0%{?suse_version} >= 1550
 %patch0 -p1
 %endif
+%patch1 -p1
 
 %build
 test -x "$(type -p gcc)" && export CC=$_
@@ -127,6 +130,7 @@ find %{buildroot} -name "*.la"  -or -name "*.a" | xargs rm -f
 rm -rf %{buildroot}%{_datadir}/doc/zbar-%{version}/
 rm -f %{buildroot}%{_docdir}/zbar/{COPYING,LICENSE.md,INSTALL.md}
 
+%{find_lang} %{name}
 # Lets wait for review first
 rm -rf %{buildroot}%{_sysconfdir}/dbus-1/system.d/org.linuxtv.Zbar.conf
 
@@ -135,7 +139,7 @@ rm -rf %{buildroot}%{_sysconfdir}/dbus-1/system.d/org.linuxtv.Zbar.conf
 %post -n libzbarqt0 -p /sbin/ldconfig
 %postun -n libzbarqt0 -p /sbin/ldconfig
 
-%files
+%files -f %{name}.lang
 %license COPYING LICENSE.md
 %{_defaultdocdir}/%{name}/
 %{_bindir}/zbarimg
