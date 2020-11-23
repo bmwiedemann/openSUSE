@@ -537,4 +537,41 @@ Additions:
     existing VkDevice rather than creating a new one; this requires</comment>
     <requestid>814574</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7fe5d623993ff042d406acb48c91a064</srcmd5>
+    <version>2.72.2</version>
+    <time>1606142779</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.72.2
+This hotfix release fixes an additional glslang linking/build issue
+that was missed in v2.72.1.
+Bug fixes:
+  * fix linking issue with some installations of glslang &gt;= 11.0.0
+Changes for 2.72.1:
+This release backports a number of bug fixes from master affecting
+the v2.72.0 release, most notably extending the range of supported
+glslang versions, as well as fixing the 3DLUT/ICC generation code.
+Bug fixes:
+  * compatibility with glslang &gt;= 8.13.3743
+  * compatibility with new glslang semantic versioning scheme
+  * fix broken shaders on some versions of GLES by defaulting to
+    32-bit precision for floating point math
+  * fix the vulkan API version passed to shaderc
+  * fix the extension check for glInvalidateTexImage
+  * fix pl_tex_create on older GLES versions
+  * fix OpenGL logging thread safety
+  * fix undefined memcmp() in pl_shader_av1_grain
+  * fix pl_render_target.repr being ignored by pl_render_image
+  * fix 3DLUT generation code (generated corrupt LUTs in all cases)
+  * fix symbol visibility on some versions of GCC
+  * fix potential overflow in BT.2390 shader
+  * properly restrict pl_shader_sample_polar to GLSL &gt;= 130
+  * fix vulkan function loading of promoted core functions
+Other changes:
+  * tiny performance gain in 3DLUT generation
+  * pl_opengl_create now logs GL_EXTENSIONS
+  * log some additional VkResult enum members
+  * improve several vulkan log messages by using friendly names of</comment>
+    <requestid>849913</requestid>
+  </revision>
 </revisionlist>
