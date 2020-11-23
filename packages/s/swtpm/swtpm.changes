@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 22 03:16:13 UTC 2020 - Kai Liu <kai.liu@suse.com>
+
+- Update to version 0.5.1
+  * swtpm & swtpm_setup:
+    - Addressed potential symlink attack issue (CVE-2020-28407)
+  * build-sys:
+    - Fix configure python cryptography error message
+
+- Misc. spec file changes.
+
+-------------------------------------------------------------------
 Tue Oct 13 14:57:25 UTC 2020 - Kai Liu <kai.liu@suse.com>
 
 - Update Requires and BuildRequires for changes since 0.4.0.

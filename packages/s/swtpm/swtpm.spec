@@ -1,7 +1,7 @@
 #
 # spec file for package swtpm
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+# Scripts in this package are python3
+%define skip_python2 1
+
 Name:           swtpm
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        Software TPM emulator
 License:        BSD-3-Clause
 Group:          System/Base
-Url:            https://github.com/stefanberger/swtpm
+URL:            https://github.com/stefanberger/swtpm
 Source:         https://github.com/stefanberger/swtpm/archive/v%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  expect
-BuildRequires:  libtool
 BuildRequires:  fuse-devel
 BuildRequires:  glib2-devel
 BuildRequires:  gnutls
@@ -34,6 +37,7 @@ BuildRequires:  libgnutls-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libseccomp-devel
 BuildRequires:  libtasn1-devel
+BuildRequires:  libtool
 BuildRequires:  libtpms-devel
 BuildRequires:  python3-cryptography
 BuildRequires:  socat
@@ -58,9 +62,9 @@ Summary:        Development files for swtpm
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       glib2-devel
-Requires:       libtpms-devel
 Requires:       libopenssl-devel
 Requires:       libseccomp-devel
+Requires:       libtpms-devel
 
 %description    devel
 The development files for SWTPM
@@ -69,6 +73,16 @@ The development files for SWTPM
 %setup -q -n %{name}-%{version}
 
 %build
+
+# Fix rpmlint env-script-interpreter error
+sed -i -e "s|^#!/usr/bin/env |#!/usr/bin/|" \
+  %_builddir/%buildsubdir/src/swtpm_setup/swtpm_setup.in \
+  %_builddir/%buildsubdir/src/swtpm_setup/py_swtpm_setup/swtpm_setup.py \
+  %_builddir/%buildsubdir/samples/swtpm-create-tpmca \
+  %_builddir/%buildsubdir/samples/swtpm-create-user-config-files.in \
+  %_builddir/%buildsubdir/samples/swtpm-localca.in \
+  %_builddir/%buildsubdir/samples/py_swtpm_localca/swtpm_localca.py
+
 ./autogen.sh
 %configure --with-openssl --disable-static \
      --with-tss-user=root --with-tss-group=tss
@@ -82,7 +96,8 @@ make %{?_smp_mflags}
 
 %files
 %defattr(-,root,root)
-%doc README LICENSE
+%doc CHANGES README TODO
+%license LICENSE
 %{_bindir}/swtpm*
 %config %{_sysconfdir}/swtpm*
 %dir %{_datadir}/swtpm
