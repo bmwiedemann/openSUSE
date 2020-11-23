@@ -469,4 +469,12 @@
     <comment></comment>
     <requestid>845381</requestid>
   </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>35a9bfe908e61061f3673b9a6f586af5</srcmd5>
+    <version>8.6.10</version>
+    <time>1606145908</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix manpage symlink for wish8.6.</comment>
+    <requestid>849578</requestid>
+  </revision>
 </revisionlist>

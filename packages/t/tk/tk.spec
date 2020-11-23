@@ -119,7 +119,7 @@ make -C unix install install-private-headers \
 	TK_LIBRARY="%scriptdir" \
 	TK_PKG_DIR="tcl/tk%TK_MINOR"
 ln -sf wish%TK_MINOR %buildroot%_prefix/bin/wish
-ln -sf wish%TK_MINOR.n.gz %buildroot%_mandir/mann/wish.n.gz
+ln -sf wish.1.gz %buildroot%_mandir/man1/wish%TK_MINOR.1.gz
 install -m 0755 %{S:3} %buildroot%_bindir/tkcon
 
 %if "%_lib" == "lib64"
