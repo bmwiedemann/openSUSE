@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Nov 21 00:01:52 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update URL to https://foss.heptapod.net/python-libs/passlib
+- Add optional dependencies: Django, apache2-utils
+- Update %check to report skipped tests
+- Update to v0.7.4
+  * updated tests to pass for Django 1.8 - 3.1
+  * CryptContext will now throw UnknownHashError when it can't
+    identify a hash provided to methods such as CryptContext.verify
+    Previously it would throw a generic :exc:`ValueError`.
+- from v1.7.3
+  * ldap_salted_sha512 LDAP "salted hash" support added for SHA-256
+    and SHA-512
+  * bcrypt: Fixed Python 3 OS native backend detection on BSD platforms
+  * safe_crypt added support for crypt.crypt unexpectedly returning
+    bytes under Python 3
+  * safe_crypt added support for crypt.crypt throwing OSError
+    which can happen as of Python 3.9
+  * passlib.ext.django fixed lru_cache import for Django 3 compatibility
+  * bcrypt_sha256 Internal algorithm has been changed to use HMAC-SHA256
+    instead of plain SHA256
+  * bcrypt OS native backend ("os_crypt") now raises the new
+    PasswordValueError if password is provided as non-UTF8 bytes
+  * lookup_hash's required=False kwd was modified to report unsupported
+    hashes via the HashInfo.supported attribute; rather than letting
+    ValueErrors through uncaught.
+  * Various Python 3.9 compatibility fixes
+
+-------------------------------------------------------------------
 Thu Sep 24 17:34:01 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Add optional dependencies: bcrypt, argon2_cffi, cryptography

@@ -18,19 +18,21 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-passlib
-Version:        1.7.2
+Version:        1.7.4
 Release:        0
 Summary:        Password hashing framework supporting over 20 schemes
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            https://bitbucket.org/ecollins/passlib
+URL:            https://foss.heptapod.net/python-libs/passlib
 Source:         https://files.pythonhosted.org/packages/source/p/passlib/passlib-%{version}.tar.gz
 BuildRequires:  %{python_module argon2_cffi}
 BuildRequires:  %{python_module bcrypt}
 BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scrypt}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  apache2-utils
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-argon2_cffi
@@ -58,7 +60,7 @@ applications.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest -rs
 
 %files %{python_files}
 %license LICENSE
