@@ -1,7 +1,7 @@
 #
 # spec file for package guitarix
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,19 @@
 %bcond_without ladspa
 
 Name:           guitarix
-Version:        0.39.0
+Version:        0.41.0
 Release:        0
 Summary:        Simple Linux amplifier for jack
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
-Url:            http://guitarix.sourceforge.net/
+URL:            http://guitarix.sourceforge.net/
 Source:         http://downloads.sourceforge.net/project/guitarix/guitarix/guitarix2-%{version}.tar.xz
 Patch0:         fpexception.patch
 Patch1:         guitarix-boost69.patch
-%if 0%{?suse_version} > 1325
+BuildRequires:  fdupes
+BuildRequires:  gcc-c++
+BuildRequires:  gperf
+BuildRequires:  intltool
 BuildRequires:  libboost_context-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_headers-devel
@@ -38,21 +41,15 @@ BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_regex-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
-%else
-BuildRequires:  boost-devel >= 1.56
-%endif
-BuildRequires:  fdupes
-BuildRequires:  gcc-c++
-BuildRequires:  gperf
-BuildRequires:  intltool
 %if %{with ladspa}
 BuildRequires:  ladspa-devel
 %endif
+BuildRequires:  google-roboto-fonts
 BuildRequires:  pkgconfig
+BuildRequires:  sassc
 BuildRequires:  update-desktop-files
 BuildRequires:  zita-convolver-devel
-#BuildRequires:  zita-resampler-devel
-BuildRequires:  google-roboto-fonts
+BuildRequires:  zita-resampler-devel
 BuildRequires:  pkgconfig(avahi-gobject)
 BuildRequires:  pkgconfig(bluez)
 BuildRequires:  pkgconfig(eigen3)
@@ -60,15 +57,14 @@ BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(fftw3f)
 BuildRequires:  pkgconfig(fftw3l)
 BuildRequires:  pkgconfig(gail)
-BuildRequires:  pkgconfig(gdk-2.0)
-BuildRequires:  pkgconfig(gdk-x11-2.0)
-BuildRequires:  pkgconfig(gdkmm-2.4)
-BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(gtk+-unix-print-2.0)
-BuildRequires:  pkgconfig(gtk+-x11-2.0)
-BuildRequires:  pkgconfig(gtkmm-2.4)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtk+-unix-print-3.0)
+BuildRequires:  pkgconfig(gtk+-x11-3.0)
+BuildRequires:  pkgconfig(gtkmm-3.0)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(liblo)
+BuildRequires:  pkgconfig(libsass)
 BuildRequires:  pkgconfig(lilv-0)
 BuildRequires:  pkgconfig(lrdf)
 BuildRequires:  pkgconfig(lv2)
@@ -78,7 +74,11 @@ BuildRequires:  pkgconfig(sndfile)
 Requires:       jack
 Requires:       meterbridge
 Requires:       vorbis-tools
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Recommends:     lv2-%{name}
+Recommends:     bestplugins
+%if %{with ladspa}
+Recommends:     ladspa-%{name}
+%endif
 
 %description
 guitarix is a simple mono amplifier to jack with one input and two
@@ -146,7 +146,7 @@ Bestplugins Mega Pack 1+3 contains dozens of guitar sounds from famous bands.
 
 %prep
 %setup -q -n guitarix-%{version}
-%autopatch -p0
+%autopatch -p1
 
 %build
 #todo: add faust package to openSUSE
@@ -155,14 +155,12 @@ Bestplugins Mega Pack 1+3 contains dozens of guitar sounds from famous bands.
 #find . -name "*.py" -print -exec 2to3 -wn {} \;
 #for i in `grep -rl "/usr/bin/env python"`;do 2to3 -wn ${i} ;done
 for i in `grep -rl "/usr/bin/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
-
-export LDFLAGS="-ldl"
-%if 1 == 0
-%define gcc_version 7
-export CC=gcc-7
-export CPP=cpp-7
-export CXX=g++-7
+export CFLAGS=`echo %{optflags}| sed 's/-flto=auto//'`
+%ifarch %ix86
+export CFLAGS="$CFLAGS -mfxsr"
 %endif
+echo $CFLAGS
+export LDFLAGS="-ldl"
 ./waf configure -v --faust \
                    --libdir=%{_libdir} \
                    --includeresampler \
@@ -173,7 +171,7 @@ export CXX=g++-7
                    --new-ladspa \
 %endif
                    --prefix=%{_prefix} \
-                   --cxxflags="%{optflags} \
+                   --cxxflags="$CFLAGS \
                    -std=gnu++0x"
 ./waf build -v %{?_smp_mflags}
 

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Nov 22 15:41:53 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Update to version 0.41.0 and fix build by removing -flto=auto
+  from the build.
+- Upsteream changes:
+  *Add Slovak translation by Jozef Riha
+  *Fix issue #104 lv2 plugins contains executable stack, patch by
+   Alexander Tsoy
+  *Fix issue #105 Compile error on 0.40.0
+  *Fix issue #109 cannot initialize a variable of type 'char ' 
+   with an rvalue of type 'void '
+  *Fix issue #110 error: unknown type name 'va_list'
+  *Add NSM support
+  *Add midi out for tuner
+  *Add low/high cut filter before tuner
+  *GxTuner set to use same precision then the tuner in guitarix
+  *Use tabbox for LV2 plugs with to much controlls
+  *Disable GxVibe, because it is brocken
+  *Fix several Bug's and hopefully don't introduce to much new
+   one's
+  *Port GUI and underlying lib's (gxw/gxwmm) to GTK3 (gtkmm3)
+  *Port LV2 plugin GUI's to X11/cairo
+  *Add Midi feedback support
+  *Add new PowerAmp modul
+
+-------------------------------------------------------------------
 Thu Jan 16 10:33:25 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Update to 0.39.0, now builds with python3

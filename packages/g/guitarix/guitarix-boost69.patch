@@ -6,10 +6,10 @@ Upstream: https://sourceforge.net/p/guitarix/patches/10/
 
 boost/core/noncopyable.hpp needs to be specifically included.
 
-Index: src/headers/engine.h
+Index: guitarix-0.41.0/src/headers/engine.h
 ===================================================================
---- src/headers/engine.h.orig	2020-01-14 09:47:57.000000000 +0200
-+++ src/headers/engine.h	2020-01-16 11:42:17.223018118 +0200
+--- guitarix-0.41.0.orig/src/headers/engine.h	2020-11-22 16:27:59.585557596 +0200
++++ guitarix-0.41.0/src/headers/engine.h	2020-11-22 16:28:20.226377629 +0200
 @@ -40,6 +40,7 @@
  #include <boost/format.hpp>
  #include <boost/noncopyable.hpp>
