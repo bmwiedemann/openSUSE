@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov 22 13:21:43 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Replace ghc-pandoc-citeproc, removed as obsolete, with ghc-citeproc
+
+-------------------------------------------------------------------
 Thu Jul 23 07:28:02 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite

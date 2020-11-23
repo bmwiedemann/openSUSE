@@ -26,17 +26,18 @@ Group:          Development/Languages/Python
 URL:            https://github.com/bebraw/pypandoc
 Source:         https://pypi.org/packages/source/p/pypandoc/pypandoc-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-BuildRequires:  ghc-pandoc-citeproc
+BuildRequires:  ghc-citeproc
 BuildRequires:  pandoc
 BuildRequires:  python-rpm-macros
 BuildRequires:  texlive-latex-bin
 Requires:       pandoc
 Requires:       python-pip
 Requires:       python-wheel
-Suggests:       ghc-pandoc-citeproc
+Suggests:       ghc-citeproc
 BuildArch:      noarch
 %python_subpackages
 
@@ -56,7 +57,9 @@ sed -i 's/\(test_basic_conversion_from_http_url\)/_\1/' tests.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+# test_conversion_with_citeproc_filter depends on ghc-pandoc-citeproc
+# which was removed from factory
+%pytest tests.py -k 'not test_conversion_with_citeproc_filter'
 
 %files %{python_files}
 %license LICENSE
