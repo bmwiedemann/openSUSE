@@ -383,4 +383,16 @@
     <comment></comment>
     <requestid>841794</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>99b7e64d4129a7f620326c54a4128f3e</srcmd5>
+    <version>1.5.2</version>
+    <time>1606142238</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 1.5.2, see NEWS.md for details.
+- Drop patch `llvm-8.0.1-gcc-10.patch` - upstream upgraded to LLVM 9
+- Drop patch `julia-fix-aarch64.patch` - already upstream in 1.5
+- Drop reference to icon that disappeared from the source tree.
+</comment>
+    <requestid>849437</requestid>
+  </revision>
 </revisionlist>

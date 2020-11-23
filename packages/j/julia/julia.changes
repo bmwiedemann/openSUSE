@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 14 17:19:33 UTC 2020 - Radosław Wyrzykowski <r.wyrz@outlook.com>
+
+- Version bump to 1.5.2, see NEWS.md for details.
+- Drop patch `llvm-8.0.1-gcc-10.patch` - upstream upgraded to LLVM 9
+- Drop patch `julia-fix-aarch64.patch` - already upstream in 1.5
+- Drop reference to icon that disappeared from the source tree.
+
+-------------------------------------------------------------------
 Fri Oct  9 06:20:01 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on aarch64:

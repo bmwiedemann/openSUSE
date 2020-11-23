@@ -23,25 +23,20 @@
 %undefine _build_create_debug
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
-%define julia_ver            1.4.2
 %define libjulia_sover_major 1
-%define libjulia_sover_minor 4
+%define libjulia_sover_minor 5
 %if "@BUILD_FLAVOR@%{nil}" == "compat"
 %define compat_mode  1
 %else
 %define compat_mode  0
 %endif
-Version:        1.4.2
+Version:        1.5.2
 Release:        0
 URL:            http://julialang.org/
-Source0:        https://github.com/JuliaLang/julia/releases/download/v1.4.2/julia-%{julia_ver}-full.tar.gz
+Source0:        https://github.com/JuliaLang/julia/releases/download/v%{version}/julia-%{version}-full.tar.gz
 Source99:       juliabuildopts
 # PATCH-FIX-OPENSUSE julia-env-script-interpreter.patch ronisbr@gmail.com -- Change script interpreted to avoid errors in rpmlint.
 Patch0:         julia-env-script-interpreter.patch
-# PATCH-FIX-UPSTREAM llvm-8.0.1-gcc-10.patch ronisbr@gmail.com -- Fix LLVM 8.0.1 build using GCC 10 - https://reviews.llvm.org/D64937.
-Patch1:         llvm-8.0.1-gcc-10.patch
-# PATCH-FIX-UPSTREAM - https://github.com/JuliaLang/julia/commit/15dee645cdddda022de8960c91141109c41a66b4
-Patch2:         julia-fix-aarch64.patch
 BuildRequires:  arpack-ng-devel >= 3.3.0
 BuildRequires:  blas-devel
 BuildRequires:  cmake
@@ -173,13 +168,6 @@ Contains the Julia manual, the reference documentation of the standard library.
 %prep
 %setup -q -n julia-%{version}
 %patch0 -p1
-%patch2 -p1
-
-# Extract LLVM sources to apply the patch.
-make CFLAGS="%optflags" CXXFLAGS="%optflags" %{juliabuildopts} -C deps extract-llvm
-pushd deps/srccache/llvm-8.0.1
-    patch -p2 < %PATCH1
-popd
 
 # remove .gitignore
 find . -name ".git*" -exec rm {} \;
@@ -310,7 +298,6 @@ rm %{buildroot}%{_datadir}/appdata/julia.appdata.xml
 %{_datadir}/appdata/julia.appdata.xml
 %endif
 %{_datadir}/applications/julia.desktop
-%{_datadir}/icons/hicolor/scalable/apps/julia.svg
 %{_libdir}/julia/
 %{_libdir}/libjulia.so.%{libjulia_sover_major}.%{libjulia_sover_minor}
 %{_mandir}/man1/julia.1%{?ext_man}
