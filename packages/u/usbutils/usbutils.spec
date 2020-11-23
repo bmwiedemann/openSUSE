@@ -17,7 +17,7 @@
 
 
 Name:           usbutils
-Version:        012
+Version:        013
 Release:        0
 Summary:        Tools and libraries for USB devices
 License:        GPL-2.0-or-later
