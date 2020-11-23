@@ -32,4 +32,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>834619</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>88784f821548aeac9a6b73b5d0469229</srcmd5>
+    <version>6.1.1</version>
+    <time>1606142910</time>
+    <user>dimstar_suse</user>
+    <comment>- OpenCL required at runtime [boo#1177190]</comment>
+    <requestid>849989</requestid>
+  </revision>
 </revisionlist>

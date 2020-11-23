@@ -26,6 +26,7 @@ Group:          Productivity/Security
 URL:            https://hashcat.net/
 
 Source:         https://github.com/hashcat/hashcat/archive/v%version.tar.gz
+Source9:        %name-rpmlintrc
 Patch1:         system-libs.patch
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
@@ -71,6 +72,7 @@ This subpackage contains the header files.
 
 %prep
 %autosetup -p1
+find . -name .lock -type f -delete
 
 %build
 %global margs DOCUMENT_FOLDER="%_docdir/%name" our_CFLAGS="%optflags" LIBRARY_FOLDER="%_libdir"
@@ -94,12 +96,7 @@ ln -s "%_libdir/%name/modules" "$b/%_datadir/%name/"
 %_bindir/hashcat
 %_docdir/%name/
 %_libdir/%name/
-%dir %_datadir/%name/
-%_datadir/%name/modules
-%_datadir/%name/hashcat.hcstat2
-%_datadir/%name/hashcat.hctune
-%dir %_datadir/%name/OpenCL/
-%_datadir/%name/OpenCL/*.cl
+%_datadir/%name/
 
 %files -n %lname
 %_libdir/libhashcat.so.%version
@@ -107,7 +104,5 @@ ln -s "%_libdir/%name/modules" "$b/%_datadir/%name/"
 %files devel
 %_includedir/hashcat/
 %_libdir/libhashcat.so
-%dir %_datadir/%name/
-%_datadir/%name/OpenCL/*.h
 
 %changelog
