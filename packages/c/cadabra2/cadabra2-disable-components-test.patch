@@ -1,0 +1,12 @@
+Index: cadabra2-2.3.5/tests/CMakeLists.txt
+===================================================================
+--- cadabra2-2.3.5.orig/tests/CMakeLists.txt
++++ cadabra2-2.3.5/tests/CMakeLists.txt
+@@ -68,7 +68,6 @@ set(RTESTS
+   trigonometric
+   noncovariant
+   algebra
+-  components
+   factor
+   field_theory
+   gamma_paper

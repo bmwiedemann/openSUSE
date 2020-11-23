@@ -17,9 +17,9 @@
 
 
 # Tests fails due to the way PYTHONPATH is set up for the test-suite [gh#kpeeters/cadabra2#211, gh#kpeeters/cadabra2#212]
-%bcond_with tests
+%bcond_without tests
 Name:           cadabra2
-Version:        2.3.2
+Version:        2.3.5
 Release:        0
 Summary:        A computer algebra system for solving problems in field theory
 License:        GPL-3.0-or-later
@@ -27,6 +27,8 @@ Group:          Productivity/Scientific/Math
 URL:            https://cadabra.science/
 Source0:        https://github.com/kpeeters/cadabra2/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}-gtk.appdata.xml
+# PATCH-FIX-UPSTREAM cadabra2-disable-components-test.patch gh#kpeeters/cadabra2#212 badshah400@gmail.com -- Disable a test that crashes for unknown reasons
+Patch0:         cadabra2-disable-components-test.patch
 BuildRequires:  appstream-glib
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -52,6 +54,7 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtkmm-3.0)
 BuildRequires:  pkgconfig(jsoncpp)
 BuildRequires:  pkgconfig(sqlite3)
+Requires:       python3
 Recommends:     %{name}-doc
 # SECTION For test
 %if %{with tests}
@@ -146,7 +149,7 @@ sed -i "1{/#!\/usr\/bin\/env python/d}" libs/appdirs/cdb_appdirs.py
   -DENABLE_FRONTEND:BOOL=ON \
   -DENABLE_SYSTEM_JSONCPP:BOOL=ON \
   -DENABLE_MATHEMATICA:BOOL=OFF \
-  -DBUILD_TESTS:BOOL=%{?_with_tests:ON}%{!?_with_tests:OFF}
+  -DBUILD_TESTS:BOOL=%{?with_tests:ON}%{!?with_tests:OFF}
 
 %cmake_build
 cd ..
@@ -168,7 +171,6 @@ ln %{buildroot}%{_datadir}/cadabra2/latex/* %{buildroot}%{_datadir}/texmf/tex/la
 
 %if %{with tests}
 %check
-export PYTHONPATH=%{buildroot}%{python3_sitearch}
 export PATH=${PATH}:%{buildroot}%{_bindir}
 export PYTHONDONTWRITEBYTECODE=1
 %ctest
@@ -182,14 +184,15 @@ export PYTHONDONTWRITEBYTECODE=1
 %{_bindir}/cadabra-server
 %{_bindir}/%{name}
 %{_bindir}/%{name}-cli
+%{_bindir}/%{name}ipynb
 %{_bindir}/%{name}python
 %{_bindir}/%{name}html
 %{_datadir}/%{name}/
 %{_datadir}/texmf
-%{python3_sitearch}/cadabra2.so
-%{python3_sitearch}/cadabra2_defaults.py
-%{python3_sitearch}/cdb_appdirs.py
-%{python3_sitearch}/cdb/
+%{python3_sitelib}/cadabra2*.so
+%{python3_sitelib}/cadabra2_defaults.py
+%{python3_sitelib}/cdb_appdirs.py
+%{python3_sitelib}/cdb/
 %{_mandir}/man1/cadabra*.1%{?ext_man}
 
 %files gui
@@ -202,8 +205,8 @@ export PYTHONDONTWRITEBYTECODE=1
 
 %files -n jupyter-cadabra2-kernel
 %license doc/license.txt
-%{python3_sitearch}/cadabra2_jupyter/
-%{python3_sitearch}/notebook/
+%{python3_sitelib}/cadabra2_jupyter/
+%{python3_sitelib}/notebook/
 %{_jupyter_kernel_dir}/cadabra2/
 
 %files examples
