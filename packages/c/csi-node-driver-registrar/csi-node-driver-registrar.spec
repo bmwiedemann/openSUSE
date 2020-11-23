@@ -1,7 +1,7 @@
 #
 # spec file for package csi-node-driver-registrar
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %{go_nostrip}
 
@@ -22,13 +23,13 @@
 %define source node-driver-registrar
 
 Name:           %{package}
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Registers the CSI driver with Kubelet
 License:        Apache-2.0
 Group:          System/Management
-Url:            https://%{project}
-Source:         %{source}-%{version}.tar.gz
+URL:            https://%{project}
+Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.12
@@ -37,8 +38,8 @@ BuildRequires:  golang(API) >= 1.12
 Kubernetes node-driver-registrar is a sidecar container that registers the CSI driver with Kubelet using the kubelet plugin registration mechanism.
 
 %prep
-%setup -q -n %{source}-%{version}
-%setup -q -T -D -a 1 -n %{source}-%{version}
+%setup -q
+%setup -q -T -D -a 1
 
 %build
 %goprep %{project}
@@ -56,4 +57,3 @@ export CGO_ENABLED=0
 %{_bindir}/%{package}
 
 %changelog
-
