@@ -929,4 +929,12 @@ require bash-completion for iproute2-bash-completion]</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>843768</requestid>
   </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>213a535fc97e175329619b1770dc542b</srcmd5>
+    <version>5.9.0</version>
+    <time>1606145925</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849615</requestid>
+  </revision>
 </revisionlist>

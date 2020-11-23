@@ -121,11 +121,11 @@ install -pm0644 "lib/libnetlink.a" "$b/%_libdir/"
 chmod -x "$b/%_libdir/libnetlink.a"
 install -pm0644 "include/libnetlink.h" "$b/%_includedir/"
 chmod -x "$b/%_includedir/libnetlink.h"
-#UsrMerge
+%if !0%{?usrmerged}
 ln -s "%_sbindir/ip" "$b/sbin"
 mkdir -p "$b/bin"
 ln -sf "%_sbindir/ip" "$b/bin/ip"
-#EndUsrMerge
+%endif
 for BIN in lnstat nstat routef routel ss; do
 	ln -sf "%_sbindir/$BIN" "$b/%_bindir/$BIN"
 done
@@ -142,10 +142,10 @@ cp -an README* examples/bpf "$b/%_docdir/%name/"
 %_bindir/ss
 %_sbindir/*
 %exclude %_sbindir/arpd
-#UsrMerge
+%if !0%{?usrmerged}
 /sbin/*
 /bin/ip
-#EndUsrMerge
+%endif
 %_mandir/man7/*
 %_mandir/man8/*
 %exclude %_mandir/man8/arpd.8*
