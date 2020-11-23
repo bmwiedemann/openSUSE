@@ -366,6 +366,7 @@ Requires:       numad
 %endif
 # libvirtd depends on 'messagebus' service
 Requires:       dbus-1
+Requires:       group(libvirt)
 
 # A KVM or Xen libvirt stack really does need UEFI firmware these days
 %ifarch x86_64
@@ -1170,7 +1171,6 @@ mv %{buildroot}/%{_datadir}/systemtap/tapset/libvirt_qemu_probes.stp \
 VIR_TEST_DEBUG=1 %meson_test -t 5 --no-suite syntax-check
 
 %pre daemon
-%{_bindir}/getent group libvirt >/dev/null || %{_sbindir}/groupadd -r libvirt
 %service_add_pre libvirtd.service libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket virt-guest-shutdown.target
 
 %post daemon

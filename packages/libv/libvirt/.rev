@@ -3712,4 +3712,17 @@ StandardGroups in rpmlint package.
   boo#1175914, bsc#1177902</comment>
     <requestid>847927</requestid>
   </revision>
+  <revision rev="317" vrev="3">
+    <srcmd5>264891afe15cc5a320c37698c0c671b9</srcmd5>
+    <version>6.9.0</version>
+    <time>1606142083</time>
+    <user>dimstar_suse</user>
+    <comment>WARNING: This SR depends on https://build.opensuse.org/request/show/848960
+
+- spec: Remove creation of libvirt group and add Requires to the
+  libvirt group created with GID 108 by the system-group-libvirt
+  package.
+  jsc#SLE-11629</comment>
+    <requestid>849177</requestid>
+  </revision>
 </revisionlist>
