@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 13 17:46:38 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Drop '-f' option with %service_del_postun
+
+  This option shouldn't be needed besides very few special cases. But
+  this package doesn't seem to belong to this category.
+
+-------------------------------------------------------------------
 Fri Oct 23 08:22:27 UTC 2020 - Daniel Wagner <daniel.wagner@suse.com>
 
 - update to 1.13

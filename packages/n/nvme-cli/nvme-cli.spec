@@ -91,7 +91,7 @@ fi
 %service_add_post %services nvmf-connect@.service
 
 %preun
-%service_del_preun -f %services
+%service_del_preun %services
 
 %postun
 %service_del_postun %services
