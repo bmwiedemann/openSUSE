@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov 19 08:34:33 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Add gcc10-amdgcn-llvm-as.patch to fix build of amdgcn offload
+  compiler with llvm11.
+
+-------------------------------------------------------------------
+Tue Nov 17 10:39:16 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-10 branch head (98ba03ffe0b9f37b4916ce6238), git958.
+  * Includes fix for memcpy miscompilation on aarch64.
+    [bsc#1178624, bsc#1178577]
+
+-------------------------------------------------------------------
+Wed Nov 11 15:20:35 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Fix 32bit libgnat.so link.  [bsc#1178675]
+
+-------------------------------------------------------------------
 Wed Oct 28 09:45:37 UTC 2020 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-10 branch head (a78cd759754c92cecbf235ac9b), git872.

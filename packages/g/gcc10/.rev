@@ -146,4 +146,19 @@
   * Fixes inadvertant mixture of ARM and Thumb instructions in linker output</comment>
     <requestid>844614</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5f3acb1759c65732bd8bf7e296ae429a</srcmd5>
+    <version>10.2.1+git958</version>
+    <time>1606142199</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gcc10-amdgcn-llvm-as.patch to fix build of amdgcn offload
+  compiler with llvm11.
+
+- Update to gcc-10 branch head (98ba03ffe0b9f37b4916ce6238), git958.
+  * Includes fix for memcpy miscompilation on aarch64.
+    [bsc#1178624, bsc#1178577]
+
+- Fix 32bit libgnat.so link.  [bsc#1178675]</comment>
+    <requestid>849355</requestid>
+  </revision>
 </revisionlist>

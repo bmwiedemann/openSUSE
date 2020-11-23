@@ -113,7 +113,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        10.2.1+git872
+Version:        10.2.1+git958
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -136,6 +136,7 @@ Patch11:        gcc7-remove-Wexpansion-to-defined-from-Wextra.patch
 Patch15:        gcc7-avoid-fixinc-error.diff
 Patch16:        gcc9-reproducible-builds.patch
 Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
+Patch18:        gcc10-amdgcn-llvm-as.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 Patch52:        gcc10-foffload-default.patch
@@ -299,6 +300,9 @@ ln -s newlib-3.3.0/newlib .
 %patch15
 %patch16
 %patch17 -p1
+%if "%{TARGET_ARCH}" == "amdgcn"
+%patch18 -p1
+%endif
 %patch51
 %patch52
 %patch60
