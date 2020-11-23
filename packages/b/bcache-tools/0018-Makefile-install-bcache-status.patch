@@ -1,0 +1,31 @@
+From 096d205a9f1be8540cbc5a468c0da8203023de70 Mon Sep 17 00:00:00 2001
+From: Coly Li <colyli@suse.de>
+Date: Sun, 15 Nov 2020 23:18:31 +0800
+Subject: [PATCH] Makefile: install bcache-status
+Git-commit: 096d205a9f1be8540cbc5a468c0da8203023de70
+Patch-mainline: bcache-tools-1.1
+References: jsc#SLE-9807, bsc#1178725
+
+This patch modifies Makefile to intall bcache-status into
+$(DESTDIR)${PREFIX}/sbin/.
+
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ Makefile | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Makefile b/Makefile
+index df44085..d914200 100644
+--- a/Makefile
++++ b/Makefile
+@@ -9,6 +9,7 @@ all: make-bcache probe-bcache bcache-super-show bcache-register bcache
+ 
+ install: make-bcache probe-bcache bcache-super-show
+ 	$(INSTALL) -m0755 make-bcache bcache-super-show	bcache $(DESTDIR)${PREFIX}/sbin/
++	$(INSTALL) -m0755 bcache-status $(DESTDIR)${PREFIX}/sbin/
+ 	$(INSTALL) -m0755 probe-bcache bcache-register bcache-export-cached $(DESTDIR)$(UDEVLIBDIR)/
+ 	$(INSTALL) -m0644 69-bcache.rules	$(DESTDIR)$(UDEVLIBDIR)/rules.d/
+ 	$(INSTALL) -m0644 -- *.8 $(DESTDIR)${PREFIX}/share/man/man8/
+-- 
+2.26.2
+

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 15 15:58:35 UTC 2020 - Coly Li <colyli@suse.com>
+
+- Makefile: install bcache-status (jsc#SLE-9807, bsc#1178725)
+  0018-Makefile-install-bcache-status.patch
+- bcache-tools.spec: add '_sbindir/bcache-status' for the new added
+  bcache-status python script (jsc#SLE-9807, bsc#1178725)
+
+-------------------------------------------------------------------
 Tue Oct 13 04:32:51 UTC 2020 - Coly Li <colyli@suse.com>
 
 - Remove dependence of smartcols bcache-tools.spec, bcache-tools

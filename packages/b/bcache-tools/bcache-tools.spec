@@ -42,6 +42,7 @@ Patch14:        0014-bcache-tools-Remove-the-dependency-on-libsmartcols.patch
 Patch15:        0015-bcache-tools-make-permit-only-one-cache-device-to-be.patch
 Patch16:        0016-bcache-tools-add-bcache-status.patch
 Patch17:        0017-bcache-tools-add-man-page-bcache-status.8.patch
+Patch18:        0018-Makefile-install-bcache-status.patch
 BuildRequires:  pkg-config
 BuildRequires:  xz
 BuildRequires:  pkgconfig(blkid)
@@ -76,6 +77,7 @@ mv "$b/lib/udev" "$b/%_prefix/lib/"
 %_sbindir/bcache-super-show
 %_sbindir/make-bcache
 %_sbindir/bcache
+%_sbindir/bcache-status
 %_prefix/lib/dracut/
 %_prefix/lib/udev
 %_mandir/man8/*.8*
