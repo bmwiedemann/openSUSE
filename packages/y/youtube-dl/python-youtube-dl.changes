@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 18 22:44:58 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.11.19
+  * arte: Extract m3u8 formats
+  * mgtv: fix format extraction
+
+-------------------------------------------------------------------
+Tue Nov 17 23:36:26 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.11.18
+  * francetv: Add fallback video URL extraction
+
+-------------------------------------------------------------------
 Mon Nov 16 21:55:38 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.11.17

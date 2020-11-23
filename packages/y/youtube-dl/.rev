@@ -1313,4 +1313,12 @@
     <comment>- Update to release 2020.11.17</comment>
     <requestid>848980</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>9202029a3a42108b542bf7ae2b3c8601</srcmd5>
+    <version>2020.11.19</version>
+    <time>1605783591</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2020.11.19</comment>
+    <requestid>849349</requestid>
+  </revision>
 </revisionlist>
