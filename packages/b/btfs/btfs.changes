@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 22 03:30:47 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- 2.23
+  * Add --utp-only flag to disable TCP
+
+-------------------------------------------------------------------
 Fri Sep 11 08:49:01 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Fix build with libtorrent v2.

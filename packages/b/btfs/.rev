@@ -90,4 +90,13 @@
     <comment></comment>
     <requestid>838338</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ff278f49b3364c8191ff83a4aae7b52e</srcmd5>
+    <version>2.23</version>
+    <time>1606142790</time>
+    <user>dimstar_suse</user>
+    <comment>- 2.23
+  * Add --utp-only flag to disable TCP</comment>
+    <requestid>849914</requestid>
+  </revision>
 </revisionlist>
