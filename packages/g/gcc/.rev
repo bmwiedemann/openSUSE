@@ -537,4 +537,12 @@ from GCC 6).
     <comment>- Remove gnatbl and gprmake links (forwarded request 830802 from Andreas_Schwab)</comment>
     <requestid>830974</requestid>
   </revision>
+  <revision rev="66" vrev="3">
+    <srcmd5>b8d39f2884f6d195d17a25191ecdb105</srcmd5>
+    <version>10</version>
+    <time>1606142194</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildRequire packages we build symlinks to.  [bsc#1178675]</comment>
+    <requestid>848107</requestid>
+  </revision>
 </revisionlist>

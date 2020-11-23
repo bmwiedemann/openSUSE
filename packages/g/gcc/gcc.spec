@@ -58,6 +58,15 @@ Requires:       cpp
 Requires:       gcc%{gcc_version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc%{gcc_version}
+BuildRequires:  gcc%{gcc_version}-c++
+BuildRequires:  gcc%{gcc_version}-fortran
+BuildRequires:  gcc%{gcc_version}-go
+%if %{build_ada}
+BuildRequires:  gcc%{gcc_version}-ada
+%endif
+%if %{build_d}
+BuildRequires:  gcc%{gcc_version}-d
+%endif
 Source:         cpp
 
 %description
