@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 20 11:34:41 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 7.56
+   see /usr/share/doc/packages/perl-ExtUtils-MakeMaker/Changes
+
+  7.56    Thu 19 Nov 19:57:05 GMT 2020
+      No changes since v7.55_01
+  7.55_01 Wed 18 Nov 18:23:19 GMT 2020
+      Bug fixes:
+      - RT#133762 Explicitly print to STDOUT in EUMM.pm
+
+-------------------------------------------------------------------
 Fri Nov 13 03:08:38 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 7.54
