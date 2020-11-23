@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Nov 21 17:28:50 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.11.21.1
+  * amara: add new extractor
+  * discoverynetworks: add support new TLC/DMAX URLs
+  * youtube: Improve yt initial data extraction
+  * YoutubeDL: Fix --ignore-errors for playlists with
+    generator-based entries of url_transparent
+  * youtube:tab: Add support for current video and fix lives
+    extraction
+  * svtplay: Add support for svt.se/barnkanalen
+
+-------------------------------------------------------------------
 Wed Nov 18 22:44:58 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.11.19
