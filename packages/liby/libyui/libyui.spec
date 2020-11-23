@@ -17,7 +17,7 @@
 
 
 Name:           libyui
-Version:        3.12.1
+Version:        3.12.2
 Release:        0
 Source:         %{name}-%{version}.tar.bz2
 
@@ -28,14 +28,10 @@ Source:         %{name}-%{version}.tar.bz2
 # this uses debug build, do not use in production!
 %bcond_with coverage
 
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-BuildRequires:  libboost_test-devel
-%else
-BuildRequires:  boost-devel
-%endif
 BuildRequires:  cmake >= 2.8
 BuildRequires:  gcc-c++
+BuildRequires:  libboost_headers-devel
+BuildRequires:  libboost_test-devel
 BuildRequires:  pkg-config
 
 %if %{with coverage}
