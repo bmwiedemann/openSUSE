@@ -75,4 +75,22 @@
   * Update README for gitlab migration</comment>
     <requestid>683574</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8173d83ed54ff41ad32e80ba696a7a8b</srcmd5>
+    <version>1.2.5</version>
+    <time>1606145950</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.5
+  * Add missing `-help` function
+  * Make output with unknown width terminal the same as old code
+  * Free string list returned from XmbTextPropertyToTextList
+  * Correct icon buffer width computation for truecolor terminals
+  * Check return value from ioctl(TIOCGWINSZ)
+  * Don't display icons if they would line-wrap.
+  * Break down memory allocation logic and fix overallocating for UTF8.
+  * Fix aspect ratio for icon display by using two characters per icon pixel.
+  * Support true color output for icons if the terminal advertises it.
+  * Fix formatting of back-to-back not shown icons.</comment>
+    <requestid>849638</requestid>
+  </revision>
 </revisionlist>

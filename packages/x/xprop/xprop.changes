@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 20 10:57:17 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.2.5
+  * Add missing `-help` function
+  * Make output with unknown width terminal the same as old code
+  * Free string list returned from XmbTextPropertyToTextList
+  * Correct icon buffer width computation for truecolor terminals
+  * Check return value from ioctl(TIOCGWINSZ)
+  * Don't display icons if they would line-wrap.
+  * Break down memory allocation logic and fix overallocating for UTF8.
+  * Fix aspect ratio for icon display by using two characters per icon pixel.
+  * Support true color output for icons if the terminal advertises it.
+  * Fix formatting of back-to-back not shown icons.
+
+-------------------------------------------------------------------
 Sun Mar 10 11:51:03 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.2.4
