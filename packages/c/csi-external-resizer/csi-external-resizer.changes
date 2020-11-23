@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 18 05:49:51 UTC 2020 - Tim Serong <tserong@suse.com>
+
+- Update to version 0.5.0
+  * Ability to customize PVC workqueue retry interval
+  * Pass volume capability to ControllerExpandVolume RPC call
+
+-------------------------------------------------------------------
+Wed Nov 18 05:09:20 UTC 2020 - Tim Serong <tserong@suse.com>
+
+- Rework _service and spec file to make future version updates easier
+
+-------------------------------------------------------------------
 Wed Aug  5 04:40:46 UTC 2020 - Chin-Ya Huang <chin-ya.huang@suse.com>
 
 - Initial commit 

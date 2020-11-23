@@ -7,4 +7,16 @@
     <comment>CSI sidecar package, used when deploying ceph on k8s with rook</comment>
     <requestid>834256</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1c21d71c92db78eb97a79537a948b92b</srcmd5>
+    <version>0.5.0</version>
+    <time>1606145872</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.0
+  * Ability to customize PVC workqueue retry interval
+  * Pass volume capability to ControllerExpandVolume RPC call
+- Rework _service and spec file to make future version updates easier
+</comment>
+    <requestid>849531</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
-# spec file for package csi-resizer
+# spec file for package csi-external-resizer
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %{go_nostrip}
 
@@ -22,13 +23,13 @@
 %define source external-resizer
 
 Name:           csi-%{source}
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        Allows volume expansion after creation
 License:        Apache-2.0
 Group:          System/Management
-Url:            https://%{project}
-Source:         %{source}-%{version}.tar.gz
+URL:            https://%{project}
+Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.13
@@ -37,8 +38,8 @@ BuildRequires:  golang(API) >= 1.13
 The CSI external-resizer is a sidecar container that watches the Kubernetes API server for PersistentVolumeClaim updates and triggers ControllerExpandVolume operations against a CSI endpoint if user requested more storage on PersistentVolumeClaim object.
 
 %prep
-%setup -q -n %{source}-%{version}
-%setup -q -T -D -a 1 -n %{source}-%{version}
+%setup -q
+%setup -q -T -D -a 1
 
 %build
 %goprep %{project}
@@ -56,4 +57,3 @@ export CGO_ENABLED=0
 %{_bindir}/%{package}
 
 %changelog
-
