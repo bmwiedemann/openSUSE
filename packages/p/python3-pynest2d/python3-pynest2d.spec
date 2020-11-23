@@ -23,7 +23,7 @@ Release:        0
 Summary:        CPython bindings for libnest2d
 License:        LGPL-3.0-only
 Group:          Development/Libraries/C and C++
-URL:            https://github.com/Ultimaker/%name
+URL:            https://github.com/Ultimaker/pynest2d
 Source:         https://github.com/Ultimaker/pynest2d/archive/%{sversion}.tar.gz#/pynest2d-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE -- add PyQt5 namespace
 Patch0:         pynest2d-PyQt5.sip.patch
@@ -32,7 +32,7 @@ Patch1:         Retrieve-required-flags-from-Libnest2D-target.patch
 BuildRequires:  cmake >= 3.6
 BuildRequires:  gcc-c++
 BuildRequires:  libnest2d-devel
-BuildRequires:  python3-sip-devel
+BuildRequires:  python3-sip-devel < 5
 
 %description
 Binding allowing libnest2d to be called from Python using Numpy.
