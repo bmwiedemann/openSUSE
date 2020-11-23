@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Fri Nov 20 16:22:55 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#89
+- rework network device detection on aarch64 (bsc#1177600,
+  bsc#1177261)
+- 21.71
+
+--------------------------------------------------------------------
 Tue Apr 21 07:01:31 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/hwinfo#86
