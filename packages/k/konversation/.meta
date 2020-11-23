@@ -18,5 +18,5 @@ Features:
  Per channel encoding support
  Theme support for nick icons
  Highly configurable</description>
-  <devel project="KDE:Extra" package="konversation"/>
+  <devel project="KDE:Applications" package="konversation"/>
 </package>

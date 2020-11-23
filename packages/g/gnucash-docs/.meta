@@ -5,5 +5,5 @@ allows you to enter and track bank accounts, stocks, income and even
 currency trades. The interface is designed to be simple and easy to
 use, but is backed with double-entry accounting principles to ensure
 balanced books. This is the documentation module for GnuCash.</description>
-  <devel project="GNOME:Apps" package="gnucash-docs"/>
+  <devel project="Office" package="gnucash-docs"/>
 </package>

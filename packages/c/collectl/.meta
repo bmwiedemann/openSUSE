@@ -3,5 +3,5 @@
   <description>Unlike most monitoring tools that either focus on a small set of
 statistics, format their output in only one way, run either
 interatively or as a daemon but not both, collectl tries to do it all.</description>
-  <devel project="Base:System" package="collectl"/>
+  <devel project="server:monitoring" package="collectl"/>
 </package>
