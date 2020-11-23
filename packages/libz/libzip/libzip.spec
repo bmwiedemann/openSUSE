@@ -88,7 +88,7 @@ archives, and merging multiple archives together, respectively.
 
 %build
 %cmake -DDOCUMENTATION_FORMAT=man
-%make_build
+%cmake_build
 
 %install
 %cmake_install

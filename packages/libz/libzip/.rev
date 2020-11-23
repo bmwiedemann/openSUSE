@@ -447,4 +447,12 @@
   + libzip-cmake-rules.patch</comment>
     <requestid>821071</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>bfc6775b9677cbedb8f0fbc387d89af7</srcmd5>
+    <version>1.7.3</version>
+    <time>1606141974</time>
+    <user>dimstar_suse</user>
+    <comment>- Use full _libdir path in libzip.pc (forwarded request 848606 from olh)</comment>
+    <requestid>848803</requestid>
+  </revision>
 </revisionlist>
