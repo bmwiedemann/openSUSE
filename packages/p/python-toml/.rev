@@ -161,4 +161,12 @@
   * update testdata</comment>
     <requestid>830705</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c5d3631e000f7160758be1a5013e51d2</srcmd5>
+    <version>0.10.2</version>
+    <time>1606145895</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849559</requestid>
+  </revision>
 </revisionlist>

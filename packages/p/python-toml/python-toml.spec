@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-toml%{psuffix}
-Version:        0.10.1
+Version:        0.10.2
 Release:        0
 Summary:        Python module which parses and emits TOML
 License:        MIT

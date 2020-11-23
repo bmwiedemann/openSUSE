@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 19 19:41:13 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Update to 0.10.2:
+  Fix a ValueError: Circular reference detected for empty {}
+
+-------------------------------------------------------------------
 Mon Aug 31 08:53:10 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch to multibuild to not cycle with numpy
