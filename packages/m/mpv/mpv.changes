@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Nov 22 19:57:02 UTC 2020 - idonmez@suse.com
+
+- Update to version 0.33.0+git.20201122T184820.fa7afc3e19:
+  * Update VERSION
+  * Release 0.33.0
+  * file2string: remove question mark from safe chars
+  * Revert "options: disable vsfilter blur compat by default"
+  * build: always run waf with python3
+  * build: fix macOS arm builds
+  * vo_sixel: draw osd on the output frame
+  * vo_sixel: return -1 instead of SIXELSTATUS on failure
+  * vo_sixel: set --vo-sixel-fixedpalette=yes by default
+  * vo_sixel: Add aspect ratio based output centering
+  * vo_sixel: rename all user options with opt_ prefix
+  * vo_sixel: set output resolution based on terminal_get_size2
+  * osdep/terminal: Add function to get terminal pixel dimensions
+  * doc: split BNF definitions of <command> and <argument> in separate lines
+  * manpage: document improved --playlist security
+
+-------------------------------------------------------------------
 Tue Nov 17 10:24:37 UTC 2020 - idonmez@suse.com
 
 - Update to version 0.32.0+git.20201116T202958.24d6961833:

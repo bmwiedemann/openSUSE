@@ -1140,4 +1140,27 @@
   * player: fix external cover file prioritization</comment>
     <requestid>849062</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>8fe23ebd403d9f1a77cee5b4b92af537</srcmd5>
+    <version>0.33.0+git.20201122T184820.fa7afc3e19</version>
+    <time>1606142764</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.33.0+git.20201122T184820.fa7afc3e19:
+  * Update VERSION
+  * Release 0.33.0
+  * file2string: remove question mark from safe chars
+  * Revert &quot;options: disable vsfilter blur compat by default&quot;
+  * build: always run waf with python3
+  * build: fix macOS arm builds
+  * vo_sixel: draw osd on the output frame
+  * vo_sixel: return -1 instead of SIXELSTATUS on failure
+  * vo_sixel: set --vo-sixel-fixedpalette=yes by default
+  * vo_sixel: Add aspect ratio based output centering
+  * vo_sixel: rename all user options with opt_ prefix
+  * vo_sixel: set output resolution based on terminal_get_size2
+  * osdep/terminal: Add function to get terminal pixel dimensions
+  * doc: split BNF definitions of &lt;command&gt; and &lt;argument&gt; in separate lines
+  * manpage: document improved --playlist security</comment>
+    <requestid>850003</requestid>
+  </revision>
 </revisionlist>
