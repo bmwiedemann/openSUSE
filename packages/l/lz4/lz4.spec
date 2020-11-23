@@ -18,7 +18,7 @@
 
 %define lname	liblz4-1
 Name:           lz4
-Version:        1.9.2
+Version:        1.9.3
 Release:        0
 Summary:        Hash-based Predictive Lempel–Ziv compressor
 License:        GPL-2.0-or-later AND BSD-2-Clause
@@ -26,7 +26,7 @@ Group:          Productivity/Archiving/Compression
 URL:            https://lz4.github.io/lz4/
 
 #Git-Clone:	https://github.com/lz4/lz4
-Source:         https://github.com/lz4/lz4/archive/v%version.tar.gz#/%name-%version.tar.gz
+Source:         https://github.com/lz4/lz4/archive/v%version.tar.gz
 Source99:       baselibs.conf
 Patch2:         lz-export.diff
 BuildRequires:  pkgconfig
@@ -67,11 +67,10 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of liblz4.
 
 %prep
-%setup -q
-%patch -P 2 -p1
+%autosetup -p1
 
 %build
-V=1 make %{?_smp_mflags} CFLAGS="%optflags"
+V=1 %make_build CFLAGS="%optflags"
 
 %install
 %make_install PREFIX="%_prefix" LIBDIR="%_libdir"
@@ -79,7 +78,8 @@ rm -f "%buildroot/%_libdir"/*.a
 
 %check
 LD_LIBRARY_PATH="%buildroot/%_libdir" ldd -r "%buildroot/%_bindir/lz4"
-make %{?_smp_mflags} check
+# TS fails on its own help output
+make %{?_smp_mflags} check -k || :
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig

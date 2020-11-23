@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 16 06:14:25 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.9.3
+  * api: LZ4_decompress_safe_partial() now supports unknown
+    compressed size
+  * api: improved LZ4F_compressBound() with automatic flushing
+  * cli: multiple files are compressed now using the legacy format
+
+-------------------------------------------------------------------
 Wed Oct 16 08:51:54 UTC 2019 - pgajdos@suse.com
 
 - enable testsuite
