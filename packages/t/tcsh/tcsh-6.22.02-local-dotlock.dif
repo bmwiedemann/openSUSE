@@ -186,7 +186,7 @@ Avoid left over dot lock file after reboot
  }
  
  /* Save history before exiting the shell. */
-@@ -1284,11 +1286,12 @@ rechist(Char *fname, int ref)
+@@ -1288,11 +1290,12 @@ rechist(Char *fname, int ref)
  	    jmp_buf_t osetexit;
  	    if (lock) {
  #ifndef WINNT_NATIVE

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Nov 20 11:48:50 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Update to tcsh bug fix version V6.22.03 - 20201118
+  * Fix $x:q:h and $x:q:t to not crash (alzwded) with strings containing /
+  * Block SIGHUP while writing history/directory stack (Brett Frankenberger)
+  * Fixed reversed test that broke history merging (Brett Frankenberger)
+  * Prevent recursive entry for writing history (Brett Frankenberger)
+  * alxwded@github, keep track of the :g and :a modifiers per modifier they
+    affect.
+  * alzwded@github, fix infinite loop with :gas variable modifier
+  * PR/88: Add a Q: modifier that preserves empty arguments leaving :q
+    alone.
+- Port the patches to V6.22.03
+  * tcsh-6.15.00-pipe.dif
+  * tcsh-6.17.06-dspmbyte.dif
+  * tcsh-6.18.03-catalogs.dif
+  * tcsh-6.22.02-local-dotlock.dif
+- Remove patches now upstream
+  * tcsh-6.22.02-double_tilde.dif
+  * tcsh-6.22.02-history-merge.dif
+  * tcsh-6.22.02-workaround-common.patch
+- Make test suite work
+
+-------------------------------------------------------------------
+Fri Oct 16 10:20:03 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
 Wed Jul 15 07:34:33 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch tcsh-6.22.02-double_tilde.dif from mailing list for

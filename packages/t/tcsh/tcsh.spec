@@ -17,7 +17,7 @@
 
 
 Name:           tcsh
-Version:        6.22.02
+Version:        6.22.03
 Release:        0
 Summary:        The C SHell
 License:        BSD-3-Clause
@@ -32,10 +32,7 @@ Patch2:         tcsh-6.16.00-norm-cmd.dif
 Patch4:         tcsh-6.18.03-colorls.dif
 Patch5:         tcsh-6.17.06-dspmbyte.dif
 Patch6:         tcsh-6.18.03-catalogs.dif
-Patch7:         tcsh-6.22.02-workaround-common.patch
 Patch8:         tcsh-6.22.02-local-dotlock.dif
-Patch9:         tcsh-6.22.02-history-merge.dif
-Patch10:        tcsh-6.22.02-double_tilde.dif
 BuildRequires:  autoconf
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
@@ -61,10 +58,7 @@ correction, a history mechanism, job control, and a C-like syntax.
 %patch4      -b .colorls
 %patch5      -b .dspmbyte
 %patch6      -b .catalogs
-%patch7 -p 1 -b .workaround
 %patch8 -p 0 -b .dotlock
-%patch9 -p 0 -b .histmrg
-%patch10 -p0 -b .dbltilde
 %patch0      -b .0
 
 %build
@@ -108,7 +102,6 @@ correction, a history mechanism, job control, and a C-like syntax.
 %endif
     ./configure --build=${CPU}-suse-linux \
 	--prefix=/usr			\
-	--bindir=/bin			\
 	--sysconfdir=/etc		\
 	--localstatedir=/var		\
 	--sharedstatedir=%{_datadir}	\
@@ -140,7 +133,7 @@ correction, a history mechanism, job control, and a C-like syntax.
 	EOF
     > $SCREENLOG
     tail -q -s 0.5 -f $SCREENLOG & pid=$!
-    env -i HOME=$HOME TERM=$TERM TMPDIR=$TMPDIR \
+    env -i HOME=$HOME TERM=$TERM TMPDIR=$TMPDIR PATH=$PATH \
 	SCREENRC=$SCREENRC SCREENDIR=$SCREENDIR \
 	screen -D -m make check
     sleep 1
@@ -184,21 +177,23 @@ correction, a history mechanism, job control, and a C-like syntax.
     mkdir -p %{buildroot}%{_prefix}/bin
     install -m 644 $RPM_SOURCE_DIR/bindkey.tcsh  %{buildroot}%{_sysconfdir}/profile.d/
     install -m 644 $RPM_SOURCE_DIR/complete.tcsh %{buildroot}%{_sysconfdir}/profile.d/
-    rm -f  %{buildroot}/bin/csh
-    rm -f  %{buildroot}%{_bindir}/csh
-    rm -f  %{buildroot}%{_bindir}/tcsh
     rm -f  %{buildroot}%{_mandir}/man1/csh.*
     rm -rf %{buildroot}%{_datadir}/locale/C
-    ln -sf tcsh           %{buildroot}/bin/csh
+    ln -sf tcsh           %{buildroot}/%{_bindir}/csh
     ln -sf tcsh.1.gz      %{buildroot}%{_mandir}/man1/csh.1.gz
-    ln -sf ../../bin/tcsh %{buildroot}%{_bindir}/csh
-    ln -sf ../../bin/tcsh %{buildroot}%{_bindir}/tcsh
+%if !0%{?usrmerged}
+    mkdir -p %{buildroot}/bin
+    ln -s %{_bindir}/tcsh %{buildroot}/bin/tcsh 
+    ln -s %{_bindir}/tcsh %{buildroot}/bin/csh 
+%endif
 
 %files
 %defattr(-,root,root)
 %dir %{_docdir}/tcsh
+%if !0%{?usrmerged}
 /bin/csh
 /bin/tcsh
+%endif
 %config %{_sysconfdir}/profile.d/bindkey.tcsh
 %config %{_sysconfdir}/profile.d/complete.tcsh
 %{_bindir}/csh
