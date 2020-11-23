@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 23 08:39:47 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 8.14.10:
+  * fix: bad glyph when defined by SVG containing 'v' in
+  * fix: bad check of note length since commit 191fa55
+  * fix: memory corruption when error in %%staves/%%score
+  * fix: crash when too big note duration
+  * fix: crash when staff width too small
+
+-------------------------------------------------------------------
 Mon Jun 22 08:32:55 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 8.14.9:
