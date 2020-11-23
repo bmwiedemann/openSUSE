@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Nov 13 14:08:40 UTC 2020 - Andrei Dziahel <develop7@develop7.info>
+
+- Mercurial 5.6
+  This is a regularly-scheduled quarterly feature release.
+
+  * New Features
+    + `hg mv -A` can now be used with `--at-rev`. It behaves just like 
+      `hg cp -A --at-rev`, i.e. it marks the destination as a copy of the 
+      source whether or not the source still exists but the source must exist 
+      in the parent revision).
+    + New revset predicate `diffcontains(pattern)` for filtering revisions the 
+      same way as `hg grep --diff pattern`.
+    + The memory footprint per changeset and per file during pull/unbundle 
+      operations has been significantly reduced.
+  * Internal API Changes
+    + `merge.update()` is now private (renamed to `_update()`). Hopefully the 
+      higher-level functions available in the same module cover your use cases.
+    + `phases.registernew` now takes a set of revisions instead of a list 
+      of nodes. `phases.advanceboundary` takes an optional set of revisions in 
+      addition to the list of nodes. The corresponding members of the 
+      `phasecache` class follow this change.
+    + The `addgroup` member of `revlog` classes no longer keeps a list of all 
+      found nodes. It now returns `True` if a node was found in the group. 
+      An optional callback for duplicated nodes can be used by callers to keep 
+      track of all nodes themselve.
+    + The `_chaininfocache` of `revlog` classes has been changed from a dict 
+      to a LRU cache.
+
+-------------------------------------------------------------------
 Sat Oct  3 07:10:44 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mercurial 5.5.2:
