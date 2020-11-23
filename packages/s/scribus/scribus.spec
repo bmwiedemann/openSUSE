@@ -18,13 +18,13 @@
 
 
 Name:           scribus
-Version:        1.5.6
+Version:        1.5.6.1
 Release:        0
 Summary:        Page Layout and Desktop Publishing (DTP)
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/Other
 URL:            https://www.scribus.net/
-# https://sourceforge.net/projects/scribus/files/scribus-devel/1.5.6/
+# https://sourceforge.net/projects/scribus/files/scribus-devel/1.5.6.1/
 Source:         %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Make-sure-information-displayed-on-the-about-window-.patch
