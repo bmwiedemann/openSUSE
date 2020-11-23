@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- OBS-ExcludeArch: i586 s390 -->
+
+<image schemaversion="6.9" name="opensuse-dovecot-image" xmlns:suse_label_helper="com.suse.label_helper">
+  <description type="system">
+    <author>Thorsten Kukuk</author>
+    <contact>kukuk@suse.com</contact>
+    <specification>openSUSE image containing Dovecot as IMAP server.</specification>
+  </description>
+  <preferences>
+    <type
+      image="docker"
+      derived_from="obsrepositories:/opensuse/busybox#latest">
+      <containerconfig
+        name="opensuse/dovecot"
+        tag="latest"
+        additionaltags="%PKG_VERSION%,%PKG_VERSION%-%RELEASE%"
+        maintainer="Thorsten Kukuk &lt;kukuk@suse.com&gt;">
+	<entrypoint execute="/entrypoint/entrypoint.sh"/>
+        <subcommand execute="/usr/sbin/dovecot">
+          <argument name="-F"/>
+        </subcommand>
+	<expose>
+	  <port number='143'/> <!-- imap -->
+          <port number='993'/> <!-- imaps -->
+	  <port number='110'/> <!-- pop3 -->
+	  <port number='995'/> <!-- pop3s -->
+	  <port number='587'/> <!-- submission-login -->
+	</expose>
+        <volumes>
+          <volume name="/etc/dovecot"/>
+          <volume name="/var/spool/vmail"/>
+        </volumes>
+        <labels>
+          <suse_label_helper:add_prefix prefix="org.opensuse.dovecot">
+            <label name="org.opencontainers.image.title" value="openSUSE Dovecot container"/>
+            <label name="org.opencontainers.image.description" value="Image containing Dovecot IMAP daemon."/>
+            <label name="org.opencontainers.image.version" value="%PKG_VERSION%-%RELEASE%"/>
+            <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
+            <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/dovecot:%PKG_VERSION%-%RELEASE%"/>
+            <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
+          </suse_label_helper:add_prefix>
+        </labels>
+        <history author="Thorsten Kukuk &lt;kukuk@suse.com&gt;">openSUSE Dovecot container</history>
+      </containerconfig>
+    </type>
+    <version>1.0.0</version>
+    <packagemanager>zypper</packagemanager>
+    <rpm-excludedocs>false</rpm-excludedocs>
+  </preferences>
+  <repository>
+    <source path="obsrepositories:/"/>
+  </repository>
+  <packages type="bootstrap">
+    <package name="dovecot"/>
+    <package name="mandoc"/>
+    <package name="ca-certificates"/>
+    <package name="ca-certificates-mozilla"/>
+    <package name="-busybox-adduser"/>
+    <package name="-busybox-findutils"/>
+    <package name="-busybox-man"/>
+    <archive name="entrypoint.tar.gz"/>
+    <archive name="common-scripts.tar.gz"/>
+  </packages>
+</image>
