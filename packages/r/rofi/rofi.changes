@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Nov 22 21:28:14 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to 1.6.1:
+  * resolving issues that the default theme had on some systems
+  * [Theme] Add min/max operator support to calc()
+  * [Theme] @media statements can now be nested 
+  * FileBrowser: the file browser plugin is now integrated
+  * Use GdkPixbuf for Icon parsing
+  * Fix parsing dicts in config file (with " in middle of string)
+  * Add -normalize-match option, that tries to o match ö, é match e
+  * Show error message and return to list instead of closing
+  * [Textbox] Try to fix estimated font height
+  * [DRun] Fix crash in broken caching mechanism
+
+-------------------------------------------------------------------
 Mon Sep  7 07:55:23 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.6.0:

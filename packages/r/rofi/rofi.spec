@@ -17,7 +17,7 @@
 
 
 Name:           rofi
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        A window switcher, run dialog and dmenu replacement
 License:        MIT
