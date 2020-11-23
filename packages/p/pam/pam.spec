@@ -27,7 +27,7 @@
 %endif
 Name:           pam
 #
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        A Security Tool that Provides Authentication for Applications
 License:        GPL-2.0-or-later OR BSD-3-Clause
@@ -47,6 +47,11 @@ Source11:       unix2_chkpwd.8
 Source12:       pam-login_defs-check.sh
 Patch2:         pam-limit-nproc.patch
 Patch4:         pam-hostnames-in-access_conf.patch
+Patch5:         pam-xauth_ownership.patch
+Patch6:         pam_cracklib-removal.patch
+Patch7:         pam_tally2-removal.patch
+Patch8:         pam-bsc1177858-dont-free-environment-string.patch
+Patch9:         pam-pam_cracklib-add-usersubstr.patch
 BuildRequires:  audit-devel
 BuildRequires:  bison
 BuildRequires:  cracklib-devel
@@ -139,6 +144,11 @@ removed with one of the next releases.
 cp -a %{SOURCE12} .
 %patch2 -p1
 %patch4 -p1
+%patch5 -p1
+%patch6 -R -p1
+%patch7 -R -p1
+%patch8 -p1
+%patch9 -p1
 
 %build
 bash ./pam-login_defs-check.sh
@@ -210,8 +220,6 @@ for i in pam_*/README; do
 	cp -fpv "$i" "$DOC/modules/README.${i%/*}"
 done
 popd
-# XXX Remove until whitelisted
-rm %{buildroot}/%{_lib}/security/pam_faillock.so
 # Install unix2_chkpwd
 install -m 755 %{_builddir}/unix2_chkpwd %{buildroot}/sbin/
 install -m 644 %{_sourcedir}/unix2_chkpwd.8 %{buildroot}/%{_mandir}/man8/
@@ -310,6 +318,7 @@ done
 %{_mandir}/man8/pam_sepermit.8%{?ext_man}
 %{_mandir}/man8/pam_setquota.8%{?ext_man}
 %{_mandir}/man8/pam_shells.8%{?ext_man}
+%{_mandir}/man8/pam_stress.8%{?ext_man}
 %{_mandir}/man8/pam_succeed_if.8%{?ext_man}
 %{_mandir}/man8/pam_time.8%{?ext_man}
 %{_mandir}/man8/pam_timestamp.8%{?ext_man}
@@ -321,6 +330,7 @@ done
 %{_mandir}/man8/pam_warn.8%{?ext_man}
 %{_mandir}/man8/pam_wheel.8%{?ext_man}
 %{_mandir}/man8/pam_xauth.8%{?ext_man}
+%{_mandir}/man8/pwhistory_helper.8%{?ext_man}
 %{_mandir}/man8/unix2_chkpwd.8%{?ext_man}
 %{_mandir}/man8/unix_chkpwd.8%{?ext_man}
 %{_mandir}/man8/unix_update.8%{?ext_man}
@@ -338,7 +348,7 @@ done
 /%{_lib}/security/pam_env.so
 /%{_lib}/security/pam_exec.so
 /%{_lib}/security/pam_faildelay.so
-#/%{_lib}/security/pam_faillock.so
+/%{_lib}/security/pam_faillock.so
 /%{_lib}/security/pam_filter.so
 %dir /%{_lib}/security/pam_filter
 /%{_lib}/security//pam_filter/upperLOWER
@@ -386,6 +396,7 @@ done
 /sbin/mkhomedir_helper
 /sbin/pam_namespace_helper
 /sbin/pam_timestamp_check
+/sbin/pwhistory_helper
 %verify(not mode) %attr(4755,root,shadow) /sbin/unix_chkpwd
 %verify(not mode) %attr(4755,root,shadow) /sbin/unix2_chkpwd
 %attr(0700,root,root) /sbin/unix_update
@@ -401,8 +412,6 @@ done
 /%{_lib}/security/pam_cracklib.so
 /%{_lib}/security/pam_tally2.so
 /sbin/pam_tally2
-%{_mandir}/man8/pam_cracklib.8%{?ext_man}
-%{_mandir}/man8/pam_tally2.8%{?ext_man}
 
 %files doc
 %defattr(644,root,root,755)

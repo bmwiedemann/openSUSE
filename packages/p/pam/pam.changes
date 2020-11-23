@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Thu Nov 19 15:43:33 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to 1.5.0
+  - obsoletes pam-bsc1178727-initialize-daysleft.patch
+  - Multiple minor bug fixes, portability fixes, and documentation improvements.
+  - Extended libpam API with pam_modutil_check_user_in_passwd function.
+  - pam_faillock: changed /run/faillock/$USER permissions from 0600 to 0660.
+  - pam_motd: read motd files with target user credentials skipping unreadable ones.
+  - pam_pwhistory: added a SELinux helper executable.
+  - pam_unix, pam_usertype: implemented avoidance of certain timing attacks.
+  - pam_wheel: implemented PAM_RUSER fallback for the case when getlogin fails.
+  - pam_env: Reading of the user environment is deprecated and will be removed
+             at some point in the future.
+  - libpam: pam_modutil_drop_priv() now correctly sets the target user's
+    supplementary groups, allowing pam_motd to filter messages accordingly
+- Refresh pam-xauth_ownership.patch
+- pam_tally2-removal.patch: Re-add pam_tally2 for deprecated sub-package
+- pam_cracklib-removal.patch: Re-add pam_cracklib for deprecated sub-package
+
+-------------------------------------------------------------------
+Wed Nov 18 13:02:15 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- pam_cracklib: added code to check whether the password contains
+  a substring of of the user's name of at least <N> characters length
+  in some form.
+  This is enabled by the new parameter "usersubstr=<N>"
+  See https://github.com/libpwquality/libpwquality/commit/bfef79dbe6aa525e9557bf4b0a61e6dde12749c4
+  [jsc#SLE-16719, jsc#SLE-16720, pam-pam_cracklib-add-usersubstr.patch]
+
+-------------------------------------------------------------------
+Wed Nov 18 10:02:32 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- pam_xauth.c: do not free() a string which has been (successfully)
+  passed to putenv().
+  [bsc#1177858, pam-bsc1177858-dont-free-environment-string.patch]
+
+-------------------------------------------------------------------
+Fri Nov 13 09:13:18 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Initialize pam_unix pam_sm_acct_mgmt() local variable "daysleft"
+  to avoid spurious (and misleading)
+      Warning: your password will expire in ... days.
+  fixed upstream with commit db6b293046a
+  [bsc#1178727, pam-bsc1178727-initialize-daysleft.patch]
+
+-------------------------------------------------------------------
+Tue Nov 10 11:09:39 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Enable pam_faillock [bnc#1171562]
+
+-------------------------------------------------------------------
+Wed Oct  8 13:31:39 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- /usr/bin/xauth chokes on the old user's $HOME being on an NFS
+  file system. Run /usr/bin/xauth using the old user's uid/gid
+  Patch courtesy of Dr. Werner Fink.
+  [bsc#1174593, pam-xauth_ownership.patch]
+
+-------------------------------------------------------------------
+Thu Oct  8 02:33:16 UTC 2020 - Stanislav Brabec <sbrabec@suse.com>
+
+- pam-login_defs-check.sh: Fix the regexp to get a real variable
+  list (boo#1164274).
+
+-------------------------------------------------------------------
+Wed Jun 24 13:06:33 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Revert the previous change [SR#815713].
+  The group is not necessary for PAM functionality but used only
+  during testing. The test system should therefore create this group.
+  [bsc#1171016, pam.spec]
+
+-------------------------------------------------------------------
+Mon Jun 15 15:05:18 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Add requirement for group "wheel" to spec file.
+  [bsc#1171016, pam.spec]
+
+-------------------------------------------------------------------
 Mon Jun  8 13:19:12 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to final 1.4.0 release

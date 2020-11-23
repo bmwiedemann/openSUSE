@@ -879,4 +879,41 @@
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1177858</comment>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>4135ef1325a3ec956956dc23dba2cdb4</srcmd5>
+    <version>1.5.0</version>
+    <time>1606142172</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.0
+  - obsoletes pam-bsc1178727-initialize-daysleft.patch
+  - Multiple minor bug fixes, portability fixes, and documentation improvements.
+  - Extended libpam API with pam_modutil_check_user_in_passwd function.
+  - pam_faillock: changed /run/faillock/$USER permissions from 0600 to 0660.
+  - pam_motd: read motd files with target user credentials skipping unreadable ones.
+  - pam_pwhistory: added a SELinux helper executable.
+  - pam_unix, pam_usertype: implemented avoidance of certain timing attacks.
+  - pam_wheel: implemented PAM_RUSER fallback for the case when getlogin fails.
+  - pam_env: Reading of the user environment is deprecated and will be removed
+             at some point in the future.
+  - libpam: pam_modutil_drop_priv() now correctly sets the target user's
+    supplementary groups, allowing pam_motd to filter messages accordingly
+- Refresh pam-xauth_ownership.patch
+- pam_tally2-removal.patch: Re-add pam_tally2 for deprecated sub-package
+- pam_cracklib-removal.patch: Re-add pam_cracklib for deprecated sub-package
+
+- pam_cracklib: added code to check whether the password contains
+  a substring of of the user's name of at least &lt;N&gt; characters length
+  in some form.
+  This is enabled by the new parameter &quot;usersubstr=&lt;N&gt;&quot;
+  See https://github.com/libpwquality/libpwquality/commit/bfef79dbe6aa525e9557bf4b0a61e6dde12749c4
+  [jsc#SLE-16719, jsc#SLE-16720, pam-pam_cracklib-add-usersubstr.patch]
+
+- pam_xauth.c: do not free() a string which has been (successfully)
+  passed to putenv().
+  [bsc#1177858, pam-bsc1177858-dont-free-environment-string.patch]
+
+- Initialize pam_unix pam_sm_acct_mgmt() local variable &quot;daysleft&quot;
+  to avoid spurious (and misleading)</comment>
+    <requestid>849468</requestid>
+  </revision>
 </revisionlist>
