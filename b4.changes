@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 23 10:21:55 UTC 2020 - jslaby@suse.cz
+
+- Update to version 0.5.2+9:
+  * Fix crasher when attempting a 3-way prep
+  * Fix handling of series with the [PATCHvX] defect
+  * Fix header encoding introduced by earlier fix
+  * Fix some cherry-picking corner cases
+  * Don't crash when no valid patches are found
+  * Use bytes when dumping to stdout
+  * Set charset in order to generate MIME headers
+
+-------------------------------------------------------------------
 Thu Aug 20 05:30:13 UTC 2020 - jslaby@suse.com
 
 - Update to version 0.5.2+2:
