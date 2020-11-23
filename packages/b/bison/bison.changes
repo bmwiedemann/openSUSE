@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 14 16:55:12 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU bison 3.7.4:
+  * In Yacc mode, YYEMPTY token was missing its macro definiton
+  * Fix lalr1.cc skeleton internal assertions 
+  * Make macro YY_ASSERT obey the api.prefix %define variable
+  * Work around C++ limitations for long assertions
+  * The YYBISON macro in generated "regular C parsers" is now
+    defined to the version of Bison as an integer
+
+-------------------------------------------------------------------
 Tue Oct 13 13:25:23 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU bison 3.7.3:
