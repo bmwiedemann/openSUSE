@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 21 00:38:15 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Depend on python3-sip < 5, as libArcus build is incompatible with
+  SIP 5 and upstream currently has no intention to update, see
+  gh#Ultimaker/libSavitar#26.
+- Move the python bindings to a separate package which can be used
+  as a dependency elsewhere.
+
+-------------------------------------------------------------------
 Tue Nov 10 18:06:37 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 4.8.0

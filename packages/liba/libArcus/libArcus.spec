@@ -33,7 +33,7 @@ Patch1:         0001-Fix-build-with-Python-3.8-and-no-undefined-linker-flags.pat
 BuildRequires:  cmake >= 3.6
 BuildRequires:  gcc-c++
 BuildRequires:  protobuf-devel >= 3.0.0
-BuildRequires:  python3-sip-devel
+BuildRequires:  python3-sip-devel < 5
 
 %description
 Communication library between internal components for Ultimaker software
@@ -41,6 +41,8 @@ Communication library between internal components for Ultimaker software
 %package -n %name%{sover}
 Summary:        3D printer control software
 Group:          System/Libraries
+# The forked libArcus-lulzbot uses the same SONAME ...
+Provides:       libArcus-Ultimaker
 
 %description -n %name%{sover}
 Communication library between internal components for Ultimaker software
@@ -50,11 +52,19 @@ Summary:        Header files for libArcus
 Group:          Development/Libraries/C and C++
 Requires:       libArcus%{sover} = %{version}
 Requires:       protobuf-devel >= 3.0.0
-Requires:       python3-sip-devel
+Requires:       python3-sip-devel < 5
 
 %description devel
 The %{name}-devel package includes the header files, libraries and development
 tools necessary for compiling and linking programs which use %{name}.
+
+%package -n python3-Arcus
+Summary:        Python bindings for libArcus
+Group:          Development/Languages/Python
+Requires:       libArcus-Ultimaker
+
+%description -n python3-Arcus
+Python bindings for the Arcus communication library.
 
 %prep
 %setup -n %{name}-%{sversion}
@@ -82,7 +92,10 @@ tools necessary for compiling and linking programs which use %{name}.
 %files -n %name%{sover}
 %license LICENSE
 %doc README.md
-%{python3_sitearch}/Arcus.so
 %{_libdir}/libArcus.so.*
+
+%files -n python3-Arcus
+%license LICENSE
+%{python3_sitearch}/Arcus.so
 
 %changelog
