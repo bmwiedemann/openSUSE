@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Nov 21 08:26:32 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1605907861.e25dcaf93:
+  * Partially revert "circleci: Strip down base image to prevent "cache" jobs failing" due to failures
+  * Increase timeout of developer mode fullstack test (needs 56 seconds locally)
+  * Add git email address for dependency bot
+  * cache service: Do not perform re-indexing within a transaction
+  * parse_url_settings: don't parse value for non-asset types
+  * parse_url_settings: improve filename parse check
+  * Don't set FOO from FOO_URL if FOO is defined but false
+  * Handle placeholders after parsing _URL settings
+  * cache service: Avoid throwing away database needlessly
+  * circleci: Strip down base image to prevent "cache" jobs failing
+  * cache service: Use defaults/property to store service PID / exit code
+  * cache service: Simplify override for `reply.exception` helper
+  * cache service: Stop server manager when preforking on exit after db error
+  * cache service: Consider 'no such table/column' errors critical as well
+  * cache service: Stop service after a critical database error
+  * cache service: Extend checks for broken database
+  * cache service: Move database repair to its own function
+  * cache service: Have a reference to the cache model within the downloads model
+  * Docker: Fix worker Dockerfile to be buildable on OBS
+  * Makefile: Do not retry fullstack tests
+  * .gitignore: Add current temporary files from tests
+  * t: Mark all left uncoverable statements in OpenQA::SeleniumTest
+  * t: Delete unused and uncovered function OpenQA::SeleniumTest::make_screenshot
+  * t: Mark uncoverable statement in OpenQA::SeleniumTest
+  * Remove log/ and log_test_postgresql from .gitignore which can confuse developers
+  * Move .spec file to "dist/" as in os-autoinst and is common
+  * Docker: Fix web UI Dockerfile to be buildable on OBS
+
+-------------------------------------------------------------------
 Mon Nov 16 16:40:23 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1605530208.6b910f3fc:

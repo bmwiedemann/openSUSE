@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <services>
   <service name="obs_scm" mode="disabled">
-    <param name="extract">openQA.spec</param>
-    <param name="extract">openQA-test.spec</param>
-    <param name="extract">openQA-worker-test.spec</param>
-    <param name="extract">openQA-devel-test.spec</param>
-    <param name="extract">openQA-client-test.spec</param>
+    <param name="extract">dist/rpm/openQA.spec</param>
+    <param name="extract">dist/rpm/openQA-test.spec</param>
+    <param name="extract">dist/rpm/openQA-worker-test.spec</param>
+    <param name="extract">dist/rpm/openQA-devel-test.spec</param>
+    <param name="extract">dist/rpm/openQA-client-test.spec</param>
     <param name="url">git://github.com/os-autoinst/openQA.git</param>
     <param name="revision">master</param>
     <param name="versionprefix">4.6</param>
