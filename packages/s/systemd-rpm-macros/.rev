@@ -438,4 +438,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>839132</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>abd3b337427e06d542c2096e5a598b4c</srcmd5>
+    <version>8</version>
+    <time>1606142192</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version to 8
+
+- Introduce %service_del_postun_with_restart()
+  It's the counterpart of %service_del_postun_without_restart() and
+  replaces the '-f' option of %service_del_postun().
+- Expand %service_del_postun_without_restart in %service_del_postun
+
+- Add a missing space in %_restart_on_update()
+
+- Bump version to 7
+
+- Dont apply presets when migrating from a disabled initscript (bsc#1178481)
+
+- Bump version to 6
+
+- Test for the presence of systemd only once in %service_add_post
+
+- No need to run 'systemd-sysv-convert --save' in %service_add_pre anymore
+  Due to the fact that the initscripts being removed during package
+  updates are still available in %post, systemd-sysv-convert has been
+  reworked so it's only needed to call it in %post.
+
+- Make rpmbuild load our own macros.systemd to import %{%_unitdir} properly
+  Ideally we should also own other %{_*dir} paths...
+- Stop owning /usr/lib/systemd directory as no package other than
+  systemd is supposed to put files there.
+
+- DISABLE_RESTART_ON_UDPATE is no more read from the (build) environment
+  %service_del_postun_without_restart is the interface that should be
+  used by packages that need to prevent theirs services from being</comment>
+    <requestid>847458</requestid>
+  </revision>
 </revisionlist>

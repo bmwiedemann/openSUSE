@@ -17,7 +17,7 @@
 
 
 Name:           systemd-rpm-macros
-Version:        4.1
+Version:        8
 Release:        0
 Summary:        RPM macros for systemd
 License:        LGPL-2.1-or-later
@@ -30,6 +30,9 @@ BuildArch:      noarch
 #!BuildIgnore:  util-linux
 #!BuildIgnore:  %{name}
 
+# We need our own definition of %{_unitdir}.
+%{?load:%{S:0}}
+
 %description
 Starting with openSUSE 12.1, several RPM macros must be used to package systemd
 services files. This package provides these macros.
@@ -40,14 +43,11 @@ services files. This package provides these macros.
 
 %install
 install -Dm644 %{S:0} %{buildroot}%{_rpmconfigdir}/macros.d/macros.systemd
-UNITDIR="$(sed -n 's/.*_unitdir[[:blank:]]*//p' %{S:0})"
-for i in $UNITDIR `dirname $UNITDIR`; do
-   mkdir -p %{buildroot}$i
-   echo $i >> unitdir
-done
+mkdir -p %{buildroot}%{_unitdir}
 
-%files -f unitdir
+%files
 %defattr(-,root,root)
 %{_rpmconfigdir}/macros.d/macros.systemd
+%dir %{_unitdir}
 
 %changelog

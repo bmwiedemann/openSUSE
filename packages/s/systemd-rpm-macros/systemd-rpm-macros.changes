@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Tue Nov 10 11:21:44 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Bump version to 8
+
+-------------------------------------------------------------------
+Tue Nov 10 09:32:31 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Introduce %service_del_postun_with_restart()
+
+  It's the counterpart of %service_del_postun_without_restart() and
+  replaces the '-f' option of %service_del_postun().
+
+- Expand %service_del_postun_without_restart in %service_del_postun
+
+-------------------------------------------------------------------
+Tue Nov 10 09:13:03 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Add a missing space in %_restart_on_update()
+
+-------------------------------------------------------------------
+Mon Nov  9 11:38:23 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Bump version to 7
+
+-------------------------------------------------------------------
+Mon Nov  9 11:36:56 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Dont apply presets when migrating from a disabled initscript (bsc#1178481)
+
+-------------------------------------------------------------------
+Mon Nov  9 08:47:04 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Bump version to 6
+
+-------------------------------------------------------------------
+Mon Nov  9 07:58:01 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Test for the presence of systemd only once in %service_add_post
+
+-------------------------------------------------------------------
+Mon Nov  9 07:44:40 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- No need to run 'systemd-sysv-convert --save' in %service_add_pre anymore
+
+  Due to the fact that the initscripts being removed during package
+  updates are still available in %post, systemd-sysv-convert has been
+  reworked so it's only needed to call it in %post.
+
+-------------------------------------------------------------------
+Mon Nov  9 07:35:12 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Make rpmbuild load our own macros.systemd to import %{%_unitdir} properly
+
+  Ideally we should also own other %{_*dir} paths...
+
+- Stop owning /usr/lib/systemd directory as no package other than
+  systemd is supposed to put files there.
+
+-------------------------------------------------------------------
+Mon Nov  2 14:36:43 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- DISABLE_RESTART_ON_UDPATE is no more read from the (build) environment
+
+  %service_del_postun_without_restart is the interface that should be
+  used by packages that need to prevent theirs services from being
+  restarted.
+
+-------------------------------------------------------------------
+Fri Oct 30 17:39:01 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Bump version to 5
+
+-------------------------------------------------------------------
+Fri Oct 30 17:37:54 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Drop DISABLE_STOP_ON_REMOVAL support (jsc#SLE-8968)
+
+  %service_del_preun still accepts '-n' and '-f' options to keep
+  backward compatibility with SLE (as some packages share the same
+  devel project between SLE and openSUSE) but these options are now
+  ignored on Factory.
+
+-------------------------------------------------------------------
 Fri Sep 25 09:25:44 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Bump version to 4.1
