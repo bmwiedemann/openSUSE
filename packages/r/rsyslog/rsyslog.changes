@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  9 17:08:33 UTC 2020 - Thomas Blume <thomas.blume@suse.com>
+
+- fix location and naming of journald dropin (bsc#1178288)
+
+-------------------------------------------------------------------
 Wed Oct 28 07:10:22 UTC 2020 - Thomas Blume <thomas.blume@suse.com>
 
 - remove legacy stuff from specfile

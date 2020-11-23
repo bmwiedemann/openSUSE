@@ -805,8 +805,8 @@ install -m644 plugins/ompgsql/createDB.sql \
 %endif
 install -d -m0755 %{buildroot}%{_unitdir}
 install -m644 %{SOURCE3} %{buildroot}%{_unitdir}/
-install -d -m0755 %{buildroot}%{_sysconfdir}/systemd/journald.conf.d
-install -m644 %{SOURCE16} %{buildroot}%{_sysconfdir}/systemd/journald.conf.d/rsyslog.conf
+install -d -m0755 %{buildroot}%{_prefix}/lib/systemd/journald.conf.d
+install -m644 %{SOURCE16} %{buildroot}%{_prefix}/lib/systemd/journald.conf.d/30-rsyslog.conf
 # create ghosts
 install -d -m0755 %{buildroot}%{rsyslog_rundir}
 touch %{buildroot}%{rsyslog_sockets_cfg}
@@ -969,8 +969,8 @@ fi # first install
 %if %{with journal}
 %{rsyslog_module_dir_nodeps}/imjournal.so
 %{rsyslog_module_dir_nodeps}/omjournal.so
-%dir %{_sysconfdir}/systemd/journald.conf.d/
-%{_sysconfdir}/systemd/journald.conf.d/rsyslog.conf
+%dir %{_prefix}/lib/systemd/journald.conf.d/
+%{_prefix}/lib/systemd/journald.conf.d/30-rsyslog.conf
 %endif
 %dir %{rsyslog_module_dir_withdeps}
 %{_mandir}/man5/rsyslog.conf.5*
