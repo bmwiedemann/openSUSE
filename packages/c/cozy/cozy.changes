@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 22 20:31:41 UTC 2020 - Julian Geywitz <suse@geigi.de>
+
+Update to 0.7.6
+  * Fix: If an audiobook directory contained a lot of non audio files, Cozy could skip all other files on import (thanks foliva!)
+  * Fix: When copying files via Drag and Drop sometimes the progress bar reported an incorrect progress
+  * As always, updated translations thanks to all of the translators!
+
+-------------------------------------------------------------------
 Sat Nov 14 19:11:36 UTC 2020 - Julian Geywitz <suse@geigi.de>
 
 Update to 0.7.5
