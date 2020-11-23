@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Fri Nov 20 23:03:34 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to v1.33
+  * Fix: running ``load.timescale(builtin=False)`` was raising an
+    exception ``FileNotFoundError`` if the ``finals2000A.all`` file was
+    not already on disk, instead of downloading the file automatically.
+    `#477 <https://github.com/skyfielders/python-skyfield/issues/477>`_
+- v1.32
+  * A new :func:`~skyfield.eclipselib.lunar_eclipses()` routine finds
+    lunar eclipses and determines their degree of totality.
+    `#445 <https://github.com/skyfielders/python-skyfield/issues/445>`_
+  * The almanac module’s new :func:`~skyfield.almanac.meridian_transits()`
+    routine can find the moments at which a body transits the meridian and
+    antimeridian.
+    `#460 <https://github.com/skyfielders/python-skyfield/issues/460>`_
+* Fix: the :func:`~skyfield.searchlib.find_minima()` function was
+  ignoring its ``epsilon`` and ``num`` arguments and always using the
+  default values instead.
+  `#475 <https://github.com/skyfielders/python-skyfield/pull/475>`_
+
+* Fix: the ``.epoch`` attribute of Earth satellite objects that were
+  built using :meth:`~skyfield.sgp4lib.EarthSatellite.from_satrec()`
+  was, alas, a half-day off.
+  `#466 <https://github.com/skyfielders/python-skyfield/issues/466>`_
+
+* Fix: the :class:`~skyfield.toposlib.Topos` constructor arguments ``x``
+  and ``y``, which never worked properly, have been deprecated and are
+  now ignored.
+
+1.31 — 2020 October 24
+----------------------
+
+* Skyfield now uses the International Earth Rotation Service (IERS) file
+  ``finals2000A.all`` for updated ∆T and leap seconds.  The USNO is no
+  longer updating the files ``deltat.data`` and ``deltat.preds`` that
+  previous versions of Skyfield used, and the ``cddis.nasa.gov`` server
+  from which they were fetched will discontinue anonymous FTP on 2020
+  October 31.  See `downloading-timescale-files`.
+  `#452 <https://github.com/skyfielders/python-skyfield/issues/452>`_
+  `#464 <https://github.com/skyfielders/python-skyfield/issues/464>`_
+
+* The comets dataframe built from the MPC file ``CometEls.txt`` now
+  includes the ``reference`` column, so users can tell which orbit is
+  most recent if there are several orbits for a single comet.  (For
+  example, the file currently lists two C/2020 F3 (NEOWISE) orbits.)
+  The comet examples in the documentation now build a dataframe that
+  only includes the most recent orbit for each comet.
+  `#463 <https://github.com/skyfielders/python-skyfield/issues/463>`_
+
+* Two new methods :meth:`~skyfield.iokit.Loader.days_old()` and
+  :meth:`~skyfield.iokit.Loader.download()` make it simple to download a
+  fresh copy of a file if the copy on disk is older than you would like.
+
+1.30 — 2020 October 11
+----------------------
+
+* The various ``strftime()`` Skyfield methods now support the ``%j``
+  day-of-year format code.
+
+* Fix: the new Julian calendar support broke support for out-of-range
+  month numbers, wrapping them into the current year instead of letting
+  them overflow into subsequent years.
+  `#461 <https://github.com/skyfielders/python-skyfield/issues/461>`_
+
+* Fix: a stray debugging ``print()`` statement was stranded in ``t.dut1``.
+  `#455 <https://github.com/skyfielders/python-skyfield/issues/455>`_
+
+* The :class:`~skyfield.timelib.Time` object, if manually instantiated
+  without a Julian date fraction, now provides a fraction array with
+  dimensions that match the Julian date argument.
+  `#458 <https://github.com/skyfielders/python-skyfield/issues/458>`_ 
+
+-------------------------------------------------------------------
 Sat Sep 26 08:13:08 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 1.29

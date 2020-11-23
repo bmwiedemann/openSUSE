@@ -21,7 +21,7 @@
 %define assayver    256.23c18c2
 %define skip_python2 1
 Name:           python-skyfield
-Version:        1.29
+Version:        1.33
 Release:        0
 Summary:        Elegant astronomy for Python
 License:        MIT
