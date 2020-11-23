@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 13 11:16:50 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Correct perl license
+  According to https://dev.perl.org/licenses/ perl is licensed under the
+  artistic license or the GPL 1.0 or later
+
+-------------------------------------------------------------------
 Tue Oct 27 11:38:55 CET 2020 - mls@suse.de
 
 - update to perl-5.32.0

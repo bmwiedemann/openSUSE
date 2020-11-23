@@ -22,7 +22,7 @@ Name:           perl
 Version:        5.32.0
 Release:        0
 Summary:        The Perl interpreter
-License:        Artistic-1.0 OR GPL-2.0-or-later
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Languages/Perl
 URL:            https://www.perl.org/
 Source:         https://www.cpan.org/src/5.0/perl-%{version}.tar.xz
