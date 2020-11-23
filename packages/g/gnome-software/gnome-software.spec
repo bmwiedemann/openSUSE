@@ -67,6 +67,10 @@ Requires:       fwupd
 Requires:       iso-codes
 Requires:       libzypp-plugin-appdata
 Recommends:     flatpak
+# bsc#1178768
+%if 0%{?sle_version}
+Recommends:     gnome-packagekit
+%endif
 
 %description
 AppStore like management of Applications for your GNOME Desktop.

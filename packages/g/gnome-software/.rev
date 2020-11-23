@@ -690,4 +690,14 @@ cd - (forwarded request 199127 from Zaitor)</comment>
     <comment>Push GNOME 3.38</comment>
     <requestid>847226</requestid>
   </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>c488a72e126447af2c7eba43a4e52614</srcmd5>
+    <version>3.38.0</version>
+    <time>1606145708</time>
+    <user>dimstar_suse</user>
+    <comment>- Added gnome-packagekit as recommended dependency:
+  gnome-software-launch-gpk-update-viewer-for-updates.patch needs
+  gnome-packagekit to work (SLE only). (forwarded request 849342 from AZhou)</comment>
+    <requestid>849375</requestid>
+  </revision>
 </revisionlist>
