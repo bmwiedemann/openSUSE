@@ -25,7 +25,7 @@
 %define ipset_build_kmp 0
 %endif
 Name:           ipset
-Version:        7.6
+Version:        7.9
 Release:        0
 Summary:        Netfilter ipset administration utility
 License:        GPL-2.0-only
