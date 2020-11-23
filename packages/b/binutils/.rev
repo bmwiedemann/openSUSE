@@ -1897,4 +1897,19 @@ contain it.
 - Remove upstreamed patch binutils-pr25593.diff.</comment>
     <requestid>834649</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>34677f68efa1f9457772e49ea7259326</srcmd5>
+    <version>2.35.1</version>
+    <time>1606141776</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.35.1 and rebased branch diff:
+  * This is a point release over the previous 2.35 version, containing bug
+  fixes, and as an exception to the usual rule, one new feature.  The
+  new feature is the support for a new directive in the assembler:
+  &quot;.nop&quot;.  This directive creates a single no-op instruction in whatever
+  encoding is correct for the target architecture.  Unlike the .space or
+  .fill this is a real instruction, and it does affect the generation of
+  DWARF line number tables, should they be enabled. (forwarded request 848022 from marxin)</comment>
+    <requestid>848118</requestid>
+  </revision>
 </revisionlist>

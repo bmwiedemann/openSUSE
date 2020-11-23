@@ -1,7 +1,7 @@
 #
 # spec file for package cross-riscv64-binutils
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -36,7 +36,7 @@ BuildRequires:  zlib-devel-static
 %else
 BuildRequires:  zlib-devel
 %endif
-Version:        2.35
+Version:        2.35.1
 Release:        0
 #
 # RUN_TESTS
@@ -68,7 +68,7 @@ Release:        0
 #
 #
 #
-Url:            http://www.gnu.org/software/binutils/
+URL:            http://www.gnu.org/software/binutils/
 PreReq:         %{install_info_prereq}
 # bug437293
 %ifarch ppc64
@@ -120,10 +120,8 @@ License:        GPL-3.0-or-later
 Group:          Development/Tools/Building
 Requires:       binutils = %{version}-%{release}
 PreReq:         update-alternatives
-%if 0%{suse_version} > 1100
 %if 0%{!?cross:1}
 %define gold_archs %ix86 aarch64 %arm x86_64 ppc ppc64 ppc64le s390x %sparc
-%endif
 %endif
 
 %description gold
