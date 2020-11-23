@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 23 01:15:09 UTC 2020 - jenting.hsiao@suse.com
+
+- Update to version 0.16.2:
+  * Bump version to 0.16.2
+  * Fix resource viewer when a metrics server resource is unavailable
+  * Updated deprecated set-env to output parameter
+  * Fix applications view to load when service unavailable
+  * Updated changelog for 0.16.2 release
+  * Revert waitForAsync and remove overlayscrollbar (#1600)
+  * Updated changelog
+  * Help menu additional items
+  * Update 0.16.2 changelog
+  * internal/queryer: include volume-based configmaps in ConfigMapsForPod
+
+-------------------------------------------------------------------
 Fri Oct 23 17:02:48 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Allow to override build date with SOURCE_DATE_EPOCH (boo#1047218)
