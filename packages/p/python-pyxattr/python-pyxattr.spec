@@ -35,7 +35,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  libattr-devel
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-pytest
+BuildRequires:  %{python_module pytest}
 %python_subpackages
 
 %description
@@ -50,10 +50,7 @@ of the attr C library - see attr(5).
 %python_build
 
 %check
-# the module is just a C extension => need to add the installed destination to
-# PYTHONPATH, otherwise it won't be found
-export PYTHONPATH=%{buildroot}%{python3_sitearch}:$PYTHONPATH
-%python_exec -m pytest test
+%pytest_arch test
 
 %install
 %python_install
@@ -61,7 +58,7 @@ export PYTHONPATH=%{buildroot}%{python3_sitearch}:$PYTHONPATH
 
 %files %{python_files}
 %{python_sitearch}/xattr*
-%{python_sitearch}/*egg-info
+%{python_sitearch}/pyxattr-%{version}*-info
 %license COPYING
 %doc NEWS README.md
 

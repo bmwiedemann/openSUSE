@@ -15,4 +15,12 @@
     <comment>New upstream release 0.7.1</comment>
     <requestid>776225</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>74c5bb3fd00a7ff988fec85fffc0d99d</srcmd5>
+    <version>0.7.1</version>
+    <time>1606142004</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848863</requestid>
+  </revision>
 </revisionlist>

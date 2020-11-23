@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 13 23:01:05 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix BuildRequires for multiple python3 flavors
+  gh#openSUSE/python-rpm-macros#66
+- Use %pytest_arch
+
+-------------------------------------------------------------------
 Wed Feb 19 08:49:11 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 0.7.1
