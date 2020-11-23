@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 21 22:19:47 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.2
+  * Pseudo-English now allows "align" as a synonym for "aligned".
+  * The "set" command can now take multiple options.
+  * C99 type-qualified array function arguments can now have a
+    size omitted. ("void f(int a[const])")
+
+-------------------------------------------------------------------
 Mon Sep 14 07:45:12 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.1

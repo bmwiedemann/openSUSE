@@ -194,4 +194,12 @@
     <comment>- Update to release 8.1</comment>
     <requestid>834231</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>738bd5067a1a04d5a25380fd8f23ae34</srcmd5>
+    <version>8.2</version>
+    <time>1606142757</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 8.2</comment>
+    <requestid>849905</requestid>
+  </revision>
 </revisionlist>
