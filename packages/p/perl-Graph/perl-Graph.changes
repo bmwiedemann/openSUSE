@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 23 03:06:15 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.9709
+   see /usr/share/doc/packages/perl-Graph/Changes
+
+  0.9709 2020-11-22
+  - add path_count option to TransitiveClosure
+  - get_{edge,vertex}_attributes undef if no such entity, in list context
+  - as_hashes method
+  - ingest method
+
+-------------------------------------------------------------------
 Sat Nov  7 03:16:31 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.9708
