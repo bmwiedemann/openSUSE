@@ -18,7 +18,7 @@
 
 Name:           systemd-default-settings
 URL:            https://github.com/openSUSE/systemd-default-settings
-Version:        0.4
+Version:        0.5
 Release:        0
 Summary:        Customization of systemd default settings for SUSE distributions
 License:        GPL-2.0-or-later
@@ -83,6 +83,13 @@ find %{buildroot} -name \*.d -type d -printf "%%%%dir /%%P\n" >SUSE.list
 find %{buildroot} -name 20-defaults-SUSE.conf -printf "/%%P\n" >>SUSE.list
 find %{buildroot} -name 25-defaults-SLE.conf -printf "/%%P\n" >SLE.list
 find %{buildroot} -name 25-defaults-openSUSE.conf -printf "/%%P\n" >openSUSE.list
+
+%post
+# Reloading PID1 is probably not enough as some changes will require
+# service restarts or even a reboot. But it might be useful in a few
+# cases so...
+[ -x /usr/bin/systemctl ] &&
+	/usr/bin/systemctl systemctl daemon-reload || :
 
 %files -f SUSE.list
 %defattr(-,root,root)
