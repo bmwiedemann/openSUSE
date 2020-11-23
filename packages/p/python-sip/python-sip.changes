@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 16 22:00:46 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix files section for doc subpackage because python-rpm-macros
+  becomes stricter gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
+Mon Nov 16 10:56:33 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Don't provide or obsolete the python-sip package in -devel
+
+-------------------------------------------------------------------
 Thu Nov  5 09:40:25 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - dropped patches: disable-rpaths.diff disable-strip.diff not

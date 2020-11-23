@@ -45,7 +45,7 @@ Python bindings for the Qt toolkit, but can be used to create bindings
 for any C or C++ library.
 
 %package devel
-Summary:        A Python bindings generator for C/C++ libraries -- dummy devel package
+Summary:        A Python bindings generator for C/C++ libraries
 Group:          Development/Libraries/Python
 Requires:       c++_compiler
 Requires:       python >= 3.5.1
@@ -54,8 +54,6 @@ Requires:       python-devel
 Requires:       python-qt5-sip
 Requires:       python-setuptools
 Requires:       python-toml
-Provides:       %{name} = %{version}-%{release}
-Obsoletes:      %{name} < %{version}-%{release}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 
@@ -118,7 +116,7 @@ This package contains the documentation and example files.
 %{python_sitearch}/sipbuild
 %{python_sitearch}/sip-%{version}-py*.egg-info
 
-%files doc
+%files -n python-sip-doc
 %license LICENSE*
 %doc doc/
 

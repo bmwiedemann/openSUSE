@@ -915,4 +915,15 @@ I need to make a separate request for the py2 version.
     <comment>- Update to 5.3.0</comment>
     <requestid>846240</requestid>
   </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>758b7b229579e74f7e6754c104ff9377</srcmd5>
+    <version>5.4.0</version>
+    <time>1606142028</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix files section for doc subpackage because python-rpm-macros
+  becomes stricter gh#openSUSE/python-rpm-macros#66
+- Don't provide or obsolete the python-sip package in -devel
+</comment>
+    <requestid>848979</requestid>
+  </revision>
 </revisionlist>
