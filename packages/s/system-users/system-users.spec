@@ -40,6 +40,9 @@ Source16:       system-user-upsd.conf
 Source17:       system-user-uuidd.conf
 Source19:       system-user-tftp.conf
 Source20:       system-user-tss.conf
+Source21:       system-group-kvm.conf
+Source22:       system-user-qemu.conf
+Source23:       system-group-libvirt.conf
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildArch:      noarch
@@ -205,6 +208,31 @@ Group:          System/Fhs
 %description -n system-user-tss
 This package provides the system account and group 'tss'.
 
+%package -n system-group-kvm
+Summary:        System group kvm
+Group:          System/Fhs
+%{sysusers_requires}
+
+%description -n system-group-kvm
+This package provides the system group 'kvm'.
+
+%package -n system-user-qemu
+Summary:        System user and group qemu
+Group:          System/Fhs
+Requires(pre):  group(kvm)
+%{sysusers_requires}
+
+%description -n system-user-qemu
+This package provides the system account and group 'qemu'.
+
+%package -n system-group-libvirt
+Summary:        System group libvirt
+Group:          System/Fhs
+%{sysusers_requires}
+
+%description -n system-group-libvirt
+This package provides the system group 'libvirt'.
+
 %prep
 %setup -q -c -T
 
@@ -227,6 +255,9 @@ This package provides the system account and group 'tss'.
 %sysusers_generate_pre %{SOURCE17} uuidd
 %sysusers_generate_pre %{SOURCE19} tftp
 %sysusers_generate_pre %{SOURCE20} tss
+%sysusers_generate_pre %{SOURCE21} kvm
+%sysusers_generate_pre %{SOURCE22} qemu
+%sysusers_generate_pre %{SOURCE23} libvirt
 
 %install
 mkdir -p %{buildroot}%{_sysusersdir}
@@ -259,6 +290,9 @@ install -m 644 %{SOURCE16} %{buildroot}%{_sysusersdir}/system-user-upsd.conf
 install -m 644 %{SOURCE17} %{buildroot}%{_sysusersdir}/system-user-uuidd.conf
 install -m 644 %{SOURCE19} %{buildroot}%{_sysusersdir}/system-user-tftp.conf
 install -m 644 %{SOURCE20} %{buildroot}%{_sysusersdir}/system-user-tss.conf
+install -m 644 %{SOURCE21} %{buildroot}%{_sysusersdir}/system-group-kvm.conf
+install -m 644 %{SOURCE22} %{buildroot}%{_sysusersdir}/system-user-qemu.conf
+install -m 644 %{SOURCE23} %{buildroot}%{_sysusersdir}/system-group-libvirt.conf
 
 %pre -n system-user-uucp -f uucp.pre
 %pre -n system-user-games -f games.pre
@@ -281,6 +315,9 @@ test -x /usr/sbin/usermod && /usr/sbin/usermod -s /bin/bash nobody ||:
 %pre -n system-user-uuidd -f uuidd.pre
 %pre -n system-user-tftp -f tftp.pre
 %pre -n system-user-tss -f tss.pre
+%pre -n system-group-kvm -f kvm.pre
+%pre -n system-user-qemu -f qemu.pre
+%pre -n system-group-libvirt -f libvirt.pre
 
 %files -n system-user-uucp
 %defattr(-,root,root)
@@ -363,5 +400,17 @@ test -x /usr/sbin/usermod && /usr/sbin/usermod -s /bin/bash nobody ||:
 %defattr(-,root,root)
 %dir %attr(0750,tss,tss) /var/lib/tpm
 %{_sysusersdir}/system-user-tss.conf
+
+%files -n system-group-kvm
+%defattr(-,root,root)
+%{_sysusersdir}/system-group-kvm.conf
+
+%files -n system-user-qemu
+%defattr(-,root,root)
+%{_sysusersdir}/system-user-qemu.conf
+
+%files -n system-group-libvirt
+%defattr(-,root,root)
+%{_sysusersdir}/system-group-libvirt.conf
 
 %changelog
