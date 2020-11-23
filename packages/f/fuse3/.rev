@@ -116,4 +116,12 @@
     <comment>- Update to release 3.10.0</comment>
     <requestid>840409</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d2a11ddfca94defa5f047ce094a945b0</srcmd5>
+    <version>3.10.0</version>
+    <time>1606145958</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop /sbin links; they do not seem to be used from anywhere.</comment>
+    <requestid>849641</requestid>
+  </revision>
 </revisionlist>

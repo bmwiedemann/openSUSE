@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 20 10:10:06 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop /sbin links; they do not seem to be used from anywhere.
+- Package "permission" is required in %post, not %pre.
+- Update descriptions.
+
+-------------------------------------------------------------------
 Fri Oct  9 10:00:32 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.10.0

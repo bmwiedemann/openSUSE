@@ -34,28 +34,29 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(udev)
 Requires:       util-linux >= 2.18
 Requires(pre):  group(trusted)
-Requires(pre):  permissions
+Requires(post): permissions
 Supplements:    filesystem(fuse)
 
 %description
-With FUSE, a user space program can export a file system to the
-Linux kernel.
+FUSE (Filesystem in Userspace) is an interface by the Linux kernel
+for userspace programs to export a filesystem to the kernel.
 
-After installing fuse-devel, administrators can compile and install
-other user space file systems which can be found at
-https://github.com/libfuse/libfuse/wiki/
+This package contains helper programs for using FUSE mounts.
+
+FUSE file systems are typically implemented as a standalone
+applications in their own right and are packaged separately.
 
 %package -n libfuse3-3
 Summary:        Library of FUSE, the User space File System for GNU/Linux and BSD
 Group:          System/Filesystems
 
 %description -n libfuse3-3
-With FUSE, a user space program can export a file system to the
-Linux kernel.
+FUSE (Filesystem in Userspace) is an interface by the Linux kernel
+for userspace programs to export a filesystem to the kernel.
 
-After installing fuse-devel, administrators can compile and install
-other user space file systems which can be found at
-https://github.com/libfuse/libfuse/wiki/
+A FUSE file system is typically implemented as a standalone
+application that links with libfuse. libfuse provides a C API over
+the raw kernel interface.
 
 %package doc
 Summary:        Documentation for the FUSE library version 3
@@ -76,13 +77,11 @@ This package contains all include files, libraries and configuration
 files needed to develop programs that use the fuse (FUSE) library to
 implement file systems in user space.
 
-With fuse-devel, administrators can compile and install other user
-space file systems which can be found at
-https://github.com/libfuse/libfuse/wiki/
+With fuse-devel, users can compile and install other user space file
+systems.
 
 %prep
-%setup -q -n fuse-%{version}
-%patch1 -p1
+%autosetup -p1 -n fuse-%{version}
 
 %build
 %define _lto_cflags %{nil}
@@ -93,15 +92,6 @@ https://github.com/libfuse/libfuse/wiki/
 %meson_install
 
 find %{buildroot} -type f -name "*.la" -delete -print
-
-mkdir %{buildroot}/sbin
-mkdir %{buildroot}/%{_lib}
-ln -s -v %{_sbindir}/mount.fuse3 %{buildroot}/sbin
-pushd %{buildroot}/%{_libdir}
-for libname in $(ls *.so.*);do
-ln -s -v /%{_libdir}/$libname %{buildroot}/%{_lib}
-done
-popd
 
 # Remove unneeded stuff
 rm -r %{buildroot}%{_prefix}/lib/udev
@@ -122,14 +112,12 @@ rm -r %{buildroot}%{_initddir}
 %license LICENSE GPL2.txt LGPL2.txt
 %doc AUTHORS ChangeLog.rst
 %verify(not mode) %attr(4750,root,trusted) %{_bindir}/fusermount3
-/sbin/mount.fuse3
 %{_sbindir}/mount.fuse3
 %config %{_sysconfdir}/fuse3.conf
 %{_mandir}/man1/fusermount3.1%{?ext_man}
 %{_mandir}/man8/mount.fuse3.8%{?ext_man}
 
 %files -n libfuse3-3
-/%{_lib}/libfuse3.so.3*
 %{_libdir}/libfuse3.so.3*
 
 %files doc
