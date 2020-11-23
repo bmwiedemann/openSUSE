@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Nov 19 21:17:10 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Added patches:
+  - chromium-gcc11.patch
+  - chromium-86-fix-vaapi-on-intel.patch
+  - chromium-87-compiler.patch
+  - chromium-87-CursorFactory-include.patch
+  - chromium-87-openscreen-include.patch
+  - chromium-87-ozone-deps.patch
+  - chromium-87-ServiceWorkerContainerHost-crash.patch
+  - chromium-87-webcodecs-deps.patch
+  - chromium-88-vaapi-attribute.patch
+  - chromium-lp152-missing-includes.patch
+- Removed patches:
+  - chromium-86-ServiceWorkerRunningInfo-noexcept.patch
+  - chromium-86-compiler.patch
+  - fix-invalid-end-iterator-usage-in-CookieMonster.patch
+  - old-libva.patch
+- Update to 87.0.4280.66 bsc#1178923
+  - Wayland support by default
+  - CVE-2020-16018: Use after free in payments. 
+  - CVE-2020-16019: Inappropriate implementation in filesystem. 
+  - CVE-2020-16020: Inappropriate implementation in cryptohome. 
+  - CVE-2020-16021: Race in ImageBurner. 
+  - CVE-2020-16022: Insufficient policy enforcement in networking. 
+  - CVE-2020-16015: Insufficient data validation in WASM. R
+  - CVE-2020-16014: Use after free in PPAPI. 
+  - CVE-2020-16023: Use after free in WebCodecs. 
+  - CVE-2020-16024: Heap buffer overflow in UI.
+  - CVE-2020-16025: Heap buffer overflow in clipboard. 
+  - CVE-2020-16026: Use after free in WebRTC. 
+  - CVE-2020-16027: Insufficient policy enforcement in developer tools. R
+  - CVE-2020-16028: Heap buffer overflow in WebRTC. 
+  - CVE-2020-16029: Inappropriate implementation in PDFium. 
+  - CVE-2020-16030: Insufficient data validation in Blink. 
+  - CVE-2019-8075: Insufficient data validation in Flash. 
+  - CVE-2020-16031: Incorrect security UI in tab preview. 
+  - CVE-2020-16032: Incorrect security UI in sharing.
+  - CVE-2020-16033: Incorrect security UI in WebUSB. 
+  - CVE-2020-16034: Inappropriate implementation in WebRTC. 
+  - CVE-2020-16035: Insufficient data validation in cros-disks.
+  - CVE-2020-16012: Side-channel information leakage in graphics. 
+  - CVE-2020-16036: Inappropriate implementation in cookies. 
+
+-------------------------------------------------------------------
 Thu Nov 12 08:44:47 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Update to 86.0.4240.198 bsc#1178703

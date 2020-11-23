@@ -22,11 +22,9 @@
 %if 0%{?suse_version} > 1500
 %bcond_without system_icu
 %bcond_with system_vpx
-%bcond_with wayland
 %else
 %bcond_with system_icu
 %bcond_with system_vpx
-%bcond_with wayland
 %endif
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 %bcond_without system_harfbuzz
@@ -51,7 +49,7 @@
 %endif
 %bcond_with clang
 Name:           chromium
-Version:        86.0.4240.198
+Version:        87.0.4280.66
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -84,26 +82,32 @@ Patch11:        no-location-leap151.patch
 Patch12:        system-libdrm.patch
 Patch13:        chromium-disable-parallel-gold.patch
 Patch14:        chromium-lp151-old-drm.patch
-Patch15:        fix-invalid-end-iterator-usage-in-CookieMonster.patch
-# gentoo patchset
+# gentoo/fedora/arch patchset
 Patch50:        chromium-78-protobuf-RepeatedPtrField-export.patch
 Patch51:        chromium-79-gcc-protobuf-alignas.patch
 Patch52:        chromium-80-QuicStreamSendBuffer-deleted-move-constructor.patch
 Patch53:        chromium-84-blink-disable-clang-format.patch
-Patch54:        chromium-86-compiler.patch
+Patch54:        chromium-87-compiler.patch
 Patch55:        chromium-86-ConsumeDurationNumber-constexpr.patch
 Patch56:        chromium-86-ImageMemoryBarrierData-init.patch
 Patch57:        chromium-86-nearby-explicit.patch
 Patch58:        chromium-86-nearby-include.patch
-Patch59:        chromium-86-ServiceWorkerRunningInfo-noexcept.patch
 Patch60:        chromium-86-f_seal.patch
+Patch61:        chromium-gcc11.patch
+Patch62:        chromium-87-CursorFactory-include.patch
+Patch63:        chromium-87-openscreen-include.patch
+Patch64:        chromium-87-ServiceWorkerContainerHost-crash.patch
+Patch65:        chromium-88-vaapi-attribute.patch
+Patch66:        chromium-87-ozone-deps.patch
+Patch67:        chromium-87-webcodecs-deps.patch
+Patch68:        chromium-lp152-missing-includes.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
 #  Recreated from scratch to be smaller and use system the orginal switches
 #  (default on) compared to the PR
 Patch100:       chromium-vaapi.patch
-Patch101:       old-libva.patch
+Patch102:       chromium-86-fix-vaapi-on-intel.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch200:       chromium-prop-codecs.patch
 BuildRequires:  SDL-devel
@@ -228,17 +232,18 @@ Obsoletes:      chromium-ffmpeg
 Obsoletes:      chromium-ffmpegsumo
 # no 32bit supported and it takes ages to build
 ExcludeArch:    %{ix86} %{arm} ppc ppc64 ppc64le s390 s390x
+%if 0%{?suse_version} <= 1500
+BuildRequires:  pkgconfig(glproto)
+%endif
 %if %{with pipewire}
 BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libspa-0.2)
 %endif
-%if %{with wayland}
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(xkbcommon)
-%endif
 %ifnarch aarch64
 # Current tcmalloc does not support AArch64
 BuildRequires:  pkgconfig(libtcmalloc)
@@ -357,6 +362,7 @@ keeplibs=(
     third_party/devscripts
     third_party/devtools-frontend
     third_party/devtools-frontend/src/front_end/third_party/acorn
+    third_party/devtools-frontend/src/front_end/third_party/axe-core
     third_party/devtools-frontend/src/front_end/third_party/chromium
     third_party/devtools-frontend/src/front_end/third_party/codemirror
     third_party/devtools-frontend/src/front_end/third_party/fabricjs
@@ -366,6 +372,7 @@ keeplibs=(
     third_party/devtools-frontend/src/front_end/third_party/lit-html
     third_party/devtools-frontend/src/front_end/third_party/lodash-isequal
     third_party/devtools-frontend/src/front_end/third_party/marked
+    third_party/devtools-frontend/src/front_end/third_party/puppeteer
     third_party/devtools-frontend/src/front_end/third_party/wasmparser
     third_party/devtools-frontend/src/third_party
     third_party/dom_distiller_js
@@ -416,6 +423,7 @@ keeplibs=(
     third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2
     third_party/one_euro_filter
     third_party/opencv
+    third_party/openh264
     third_party/openscreen
     third_party/openscreen/src/third_party/mozilla
     third_party/openscreen/src/third_party/tinycbor/src/src
@@ -424,7 +432,6 @@ keeplibs=(
     third_party/pdfium/third_party/agg23
     third_party/pdfium/third_party/base
     third_party/pdfium/third_party/bigint
-    third_party/pdfium/third_party/eu-strip
     third_party/pdfium/third_party/freetype
     third_party/pdfium/third_party/lcms
     third_party/pdfium/third_party/libopenjpeg20
@@ -436,6 +443,7 @@ keeplibs=(
     third_party/ply
     third_party/polymer
     third_party/private-join-and-compute
+    third_party/private_membership
     third_party/protobuf
     third_party/protobuf/third_party/six
     third_party/pyjson5
@@ -444,6 +452,8 @@ keeplibs=(
     third_party/s2cellid
     third_party/schema_org
     third_party/securemessage
+    third_party/shaka-player
+    third_party/shell-encryption
     third_party/simplejson
     third_party/skia
     third_party/skia/third_party/skcms
@@ -465,6 +475,7 @@ keeplibs=(
     third_party/ukey2
     third_party/usrsctp
     third_party/vulkan
+    third_party/wayland
     third_party/web-animations-js
     third_party/webdriver
     third_party/webrtc
@@ -489,13 +500,6 @@ keeplibs=(
     v8/third_party/inspector_protocol
     v8/third_party/v8/builtins
 )
-%if %{with wayland}
-keeplibs+=(
-    third_party/v4l-utils
-    third_party/wayland
-    third_party/wayland-protocols
-)
-%endif
 %if !%{with system_harfbuzz}
 keeplibs+=(
     third_party/freetype
@@ -540,10 +544,8 @@ export CXXFLAGS="${CXXFLAGS} -Wno-attributes -Wno-subobject-linkage"
 export CXXFLAGS="${CXXFLAGS} -Wno-ignored-attributes"
 # ingore new gcc 8 warnings that aren't yet handled upstream
 export CXXFLAGS="${CXXFLAGS} -Wno-address -Wno-dangling-else -Wno-class-memaccess -Wno-invalid-offsetof -Wno-packed-not-aligned"
-%if %{with wayland}
 # for wayland
-export CXXFLAGS="${CXXFLAGS} -I/usr/include/libxkbcommon"
-%endif
+export CXXFLAGS="${CXXFLAGS} -I/usr/include/wayland -I/usr/include/libxkbcommon"
 export CFLAGS="${CXXFLAGS}"
 export CC=gcc
 export CXX=g++
@@ -649,16 +651,6 @@ myconf_gn+=" enable_vulkan=true"
 %if %{with pipewire}
 myconf_gn+=" rtc_use_pipewire=true rtc_link_pipewire=true"
 myconf_gn+=" rtc_use_pipewire_version=\"0.3\""
-%endif
-# ozone stuff
-%if %{with wayland}
-myconf_gn+=" use_system_libdrm=true"
-myconf_gn+=" use_system_minigbm=true use_xkbcommon=true"
-myconf_gn+=" use_ozone=true ozone_auto_platforms=false"
-myconf_gn+=" ozone_platform=\"x11\" ozone_platform_x11=true ozone_platform_gbm=true"
-myconf_gn+=" ozone_platform_wayland=true ozone_platform_headless=true"
-# use_v4l2_codec - uses patches in kernel-headers present on chromeos only
-myconf_gn+=" use_v4lplugin=true use_v4l2_codec=false"
 %endif
 %if %{with clang}
 myconf_gn+=" is_clang=true clang_base_path=\"/usr\" clang_use_chrome_plugins=false"
