@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 16 16:19:49 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Extended MenuBar-shortcut-test example to test shortcut priority
+  (bsc#1175489)
+- 4.3.7
+
+-------------------------------------------------------------------
 Tue Nov  3 12:30:19 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Added test case for boo#1178394
