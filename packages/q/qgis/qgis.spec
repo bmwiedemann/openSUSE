@@ -28,6 +28,8 @@ Source:         https://qgis.org/downloads/%{name}-%{version}.tar.bz2
 Source1:        https://qgis.org/downloads/%{name}-%{version}.tar.bz2.sha256
 Source2:        %{name}.rpmlintrc
 Source3:        qgis_sample_data.zip
+# PATCH-FIX-UPSTREAM https://github.com/qgis/QGIS/pull/37842 Get rid of SIP deprecated functions (support sip5)
+Patch0:         https://github.com/qgis/QGIS/pull/37842.patch#/qgis-pr37842-sip5.patch
 BuildRequires:  FastCGI-devel
 BuildRequires:  bison >= 2.4
 BuildRequires:  cmake >= 3.0.0
@@ -49,7 +51,6 @@ BuildRequires:  opencl-cpp-headers
 BuildRequires:  pkgconfig
 BuildRequires:  poppler-tools
 BuildRequires:  protobuf-devel
-BuildRequires:  python-qscintilla-qt5-sip
 BuildRequires:  python3-GDAL
 BuildRequires:  python3-Jinja2
 BuildRequires:  python3-OWSLib
@@ -58,8 +59,12 @@ BuildRequires:  python3-future
 BuildRequires:  python3-psycopg2
 BuildRequires:  python3-pygments
 BuildRequires:  python3-qscintilla-qt5
+BuildRequires:  python3-qscintilla-qt5-sip
 BuildRequires:  python3-qt5-devel
-BuildRequires:  python3-sip-devel > 4.12
+# The package can build with sip v4 or sip v5 but needs to use the same module
+# as PyQt5 (python-sip vs python-qt5-sip).The correct sip.so is pulled in by
+# python-qt5, do not explicitly depend on it.
+BuildRequires:  python3-sip-devel
 BuildRequires:  python3-six
 BuildRequires:  python3-termcolor
 BuildRequires:  qtkeychain-qt5-devel >= 0.5
@@ -127,7 +132,6 @@ Requires:       python3-future
 Requires:       python3-psycopg2
 # Those are not picked by obs
 Requires:       python3-qscintilla-qt5
-Requires:       python3-sip > 4.12
 Requires:       python3-six
 Requires:       python3-termcolor
 Recommends:     %{name}-sample-data

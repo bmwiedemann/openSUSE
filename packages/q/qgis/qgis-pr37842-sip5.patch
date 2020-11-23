@@ -1,0 +1,385 @@
+From 33192f38bc7db93ffe201110cab19fe082851f5f Mon Sep 17 00:00:00 2001
+From: Dmitry Shachnev <mitya57@gmail.com>
+Date: Wed, 15 Jul 2020 21:29:37 +0300
+Subject: [PATCH 1/3] Replace deprecated sipMappedType with sipTypeDef
+
+---
+ .../geometry/qgsgeometry.sip.in               | 12 ++---
+ python/core/conversions.sip                   | 44 +++++++++----------
+ src/core/geometry/qgsgeometry.h               | 12 ++---
+ 3 files changed, 34 insertions(+), 34 deletions(-)
+
+diff --git a/python/core/auto_generated/geometry/qgsgeometry.sip.in b/python/core/auto_generated/geometry/qgsgeometry.sip.in
+index 7ac9c015e142..d6c060a78dca 100644
+--- a/python/core/auto_generated/geometry/qgsgeometry.sip.in
++++ b/python/core/auto_generated/geometry/qgsgeometry.sip.in
+@@ -1533,7 +1533,7 @@ is null, a ValueError will be raised.
+     }
+     else
+     {
+-      const sipMappedType *qvector_type = sipFindMappedType( "QVector<QgsPointXY>" );
++      const sipTypeDef *qvector_type = sipFindType( "QVector<QgsPointXY>" );
+       sipRes = sipConvertFromNewType( new QVector< QgsPointXY >( sipCpp->randomPointsInPolygon( a0, a1 ) ), qvector_type, Py_None );
+     }
+ %End
+@@ -1681,7 +1681,7 @@ will be raised.
+     }
+     else
+     {
+-      const sipMappedType *qvector_type = sipFindMappedType( "QVector< QgsPointXY >" );
++      const sipTypeDef *qvector_type = sipFindType( "QVector< QgsPointXY >" );
+       sipRes = sipConvertFromNewType( new QgsPolylineXY( sipCpp->asPolyline() ), qvector_type, Py_None );
+     }
+ %End
+@@ -1712,7 +1712,7 @@ will be raised.
+     }
+     else
+     {
+-      const sipMappedType *qvector_type = sipFindMappedType( "QVector<QVector<QgsPointXY>>" );
++      const sipTypeDef *qvector_type = sipFindType( "QVector<QVector<QgsPointXY>>" );
+       sipRes = sipConvertFromNewType( new QgsPolygonXY( sipCpp->asPolygon() ), qvector_type, Py_None );
+     }
+ %End
+@@ -1742,7 +1742,7 @@ will be raised.
+     }
+     else
+     {
+-      const sipMappedType *qvector_type = sipFindMappedType( "QVector< QgsPointXY >" );
++      const sipTypeDef *qvector_type = sipFindType( "QVector< QgsPointXY >" );
+       sipRes = sipConvertFromNewType( new QgsPolylineXY( sipCpp->asMultiPoint() ), qvector_type, Py_None );
+     }
+ %End
+@@ -1773,7 +1773,7 @@ will be raised.
+     }
+     else
+     {
+-      const sipMappedType *qvector_type = sipFindMappedType( "QVector<QVector<QgsPointXY>>" );
++      const sipTypeDef *qvector_type = sipFindType( "QVector<QVector<QgsPointXY>>" );
+       sipRes = sipConvertFromNewType( new QgsMultiPolylineXY( sipCpp->asMultiPolyline() ), qvector_type, Py_None );
+     }
+ %End
+@@ -1804,7 +1804,7 @@ will be raised.
+     }
+     else
+     {
+-      const sipMappedType *qvector_type = sipFindMappedType( "QVector<QVector<QVector<QgsPointXY>>>" );
++      const sipTypeDef *qvector_type = sipFindType( "QVector<QVector<QVector<QgsPointXY>>>" );
+       sipRes = sipConvertFromNewType( new QgsMultiPolygonXY( sipCpp->asMultiPolygon() ), qvector_type, Py_None );
+     }
+ %End
+diff --git a/python/core/conversions.sip b/python/core/conversions.sip
+index fb355d1b09d5..abe85ecca4cb 100644
+--- a/python/core/conversions.sip
++++ b/python/core/conversions.sip
+@@ -41,7 +41,7 @@ template <TYPE>
+   if ((l = PyList_New(sipCpp->size())) == NULL)
+     return NULL;
+ 
+-  const sipMappedType *qvector_type = sipFindMappedType("QVector<TYPE>");
++  const sipTypeDef *qvector_type = sipFindType("QVector<TYPE>");
+ 
+   // Set the list elements.
+   for (int i = 0; i < sipCpp->size(); ++i)
+@@ -62,7 +62,7 @@ template <TYPE>
+ %End
+ 
+ %ConvertToTypeCode
+-  const sipMappedType *qvector_type = sipFindMappedType("QVector<TYPE>");
++  const sipTypeDef *qvector_type = sipFindType("QVector<TYPE>");
+ 
+   // Check the type if that is all that is required.
+   if (sipIsErr == NULL)
+@@ -71,7 +71,7 @@ template <TYPE>
+       return 0;
+ 
+     for (int i = 0; i < PyList_GET_SIZE(sipPy); ++i)
+-      if (!sipCanConvertToMappedType(PyList_GET_ITEM(sipPy, i), qvector_type, SIP_NOT_NONE))
++      if (!sipCanConvertToType(PyList_GET_ITEM(sipPy, i), qvector_type, SIP_NOT_NONE))
+         return 0;
+ 
+     return 1;
+@@ -84,16 +84,16 @@ template <TYPE>
+   {
+     int state;
+     //TYPE *t = reinterpret_cast<TYPE *>(sipConvertToType(PyList_GET_ITEM(sipPy, i), sipType_TYPE, sipTransferObj, SIP_NOT_NONE, &state, sipIsErr));
+-    QVector<TYPE> *t = reinterpret_cast< QVector<TYPE> * >(sipConvertToMappedType(PyList_GET_ITEM(sipPy, i), qvector_type, sipTransferObj, SIP_NOT_NONE, &state, sipIsErr));
++    QVector<TYPE> *t = reinterpret_cast< QVector<TYPE> * >(sipConvertToType(PyList_GET_ITEM(sipPy, i), qvector_type, sipTransferObj, SIP_NOT_NONE, &state, sipIsErr));
+ 
+     if (*sipIsErr)
+     {
+-      sipReleaseMappedType(t, qvector_type, state);
++      sipReleaseType(t, qvector_type, state);
+       delete ql;
+       return 0;
+     }
+     ql->append(*t);
+-    sipReleaseMappedType(t, qvector_type, state);
++    sipReleaseType(t, qvector_type, state);
+   }
+ 
+   *sipCppPtr = ql;
+@@ -118,7 +118,7 @@ template <TYPE>
+   if ((l = PyList_New(sipCpp->size())) == NULL)
+     return NULL;
+ 
+-  const sipMappedType *qvector_type = sipFindMappedType("QVector<QVector<TYPE> >");
++  const sipTypeDef *qvector_type = sipFindType("QVector<QVector<TYPE> >");
+ 
+   // Set the list elements.
+   for (int i = 0; i < sipCpp->size(); ++i)
+@@ -139,7 +139,7 @@ template <TYPE>
+ 
+ %ConvertToTypeCode
+ 
+-  const sipMappedType *qvector_type = sipFindMappedType("QVector<QVector<TYPE> >");
++  const sipTypeDef *qvector_type = sipFindType("QVector<QVector<TYPE> >");
+ 
+   // Check the type if that is all that is required.
+   if (sipIsErr == NULL)
+@@ -148,7 +148,7 @@ template <TYPE>
+       return 0;
+ 
+     for (int i = 0; i < PyList_GET_SIZE(sipPy); ++i)
+-      if (!sipCanConvertToMappedType(PyList_GET_ITEM(sipPy, i), qvector_type, SIP_NOT_NONE))
++      if (!sipCanConvertToType(PyList_GET_ITEM(sipPy, i), qvector_type, SIP_NOT_NONE))
+         return 0;
+ 
+     return 1;
+@@ -161,16 +161,16 @@ template <TYPE>
+   {
+     int state;
+     //TYPE *t = reinterpret_cast<TYPE *>(sipConvertToType(PyList_GET_ITEM(sipPy, i), sipType_TYPE, sipTransferObj, SIP_NOT_NONE, &state, sipIsErr));
+-    QVector<QVector<TYPE> > *t = reinterpret_cast< QVector< QVector<TYPE> > * >(sipConvertToMappedType(PyList_GET_ITEM(sipPy, i), qvector_type, sipTransferObj, SIP_NOT_NONE, &state, sipIsErr));
++    QVector<QVector<TYPE> > *t = reinterpret_cast< QVector< QVector<TYPE> > * >(sipConvertToType(PyList_GET_ITEM(sipPy, i), qvector_type, sipTransferObj, SIP_NOT_NONE, &state, sipIsErr));
+ 
+     if (*sipIsErr)
+     {
+-      sipReleaseMappedType(t, qvector_type, state);
++      sipReleaseType(t, qvector_type, state);
+       delete ql;
+       return 0;
+     }
+     ql->append(*t);
+-    sipReleaseMappedType(t, qvector_type, state);
++    sipReleaseType(t, qvector_type, state);
+   }
+ 
+   *sipCppPtr = ql;
+@@ -194,7 +194,7 @@ template <TYPE>
+   if ((l = PyList_New(sipCpp->size())) == NULL)
+     return NULL;
+ 
+-  const sipMappedType *qlist_type = sipFindMappedType("QList<TYPE>");
++  const sipTypeDef *qlist_type = sipFindType("QList<TYPE>");
+ 
+   // Set the list elements.
+   for (int i = 0; i < sipCpp->size(); ++i)
+@@ -215,7 +215,7 @@ template <TYPE>
+ %End
+ 
+ %ConvertToTypeCode
+-  const sipMappedType *qlist_type = sipFindMappedType("QList<TYPE>");
++  const sipTypeDef *qlist_type = sipFindType("QList<TYPE>");
+ 
+   // Check the type if that is all that is required.
+   if (sipIsErr == NULL)
+@@ -224,7 +224,7 @@ template <TYPE>
+       return 0;
+ 
+     for (int i = 0; i < PyList_GET_SIZE(sipPy); ++i)
+-      if (!sipCanConvertToMappedType(PyList_GET_ITEM(sipPy, i), qlist_type, SIP_NOT_NONE))
++      if (!sipCanConvertToType(PyList_GET_ITEM(sipPy, i), qlist_type, SIP_NOT_NONE))
+         return 0;
+ 
+     return 1;
+@@ -237,16 +237,16 @@ template <TYPE>
+   {
+     int state;
+     //TYPE *t = reinterpret_cast<TYPE *>(sipConvertToType(PyList_GET_ITEM(sipPy, i), sipType_TYPE, sipTransferObj, SIP_NOT_NONE, &state, sipIsErr));
+-    QList<TYPE> *t = reinterpret_cast< QList<TYPE> * >(sipConvertToMappedType(PyList_GET_ITEM(sipPy, i), qlist_type, sipTransferObj, SIP_NOT_NONE, &state, sipIsErr));
++    QList<TYPE> *t = reinterpret_cast< QList<TYPE> * >(sipConvertToType(PyList_GET_ITEM(sipPy, i), qlist_type, sipTransferObj, SIP_NOT_NONE, &state, sipIsErr));
+ 
+     if (*sipIsErr)
+     {
+-      sipReleaseMappedType(t, qlist_type, state);
++      sipReleaseType(t, qlist_type, state);
+       delete ql;
+       return 0;
+     }
+     ql->append(*t);
+-    sipReleaseMappedType(t, qlist_type, state);
++    sipReleaseType(t, qlist_type, state);
+   }
+ 
+   *sipCppPtr = ql;
+@@ -462,7 +462,7 @@ template<TYPE>
+   if ((d = PyDict_New()) == NULL)
+     return NULL;
+ 
+-  const sipMappedType *qmap2 = sipFindMappedType("QMap<int, TYPE>");
++  const sipTypeDef *qmap2 = sipFindType("QMap<int, TYPE>");
+ 
+   // Set the list elements.
+   for (QMap<qint64, QMap<int, TYPE> >::iterator it = sipCpp->begin(); it != sipCpp->end(); ++it)
+@@ -531,7 +531,7 @@ template<TYPE>
+   {
+     qint64 k = PyLong_AsLongLong(kobj);
+ 
+-    // using sipConvertToMappedType to convert directly to QMap<int, TYPE> doesn't work
++    // using sipConvertToType to convert directly to QMap<int, TYPE> doesn't work
+     // and ends with a segfault
+ 
+     QMap<int, TYPE> qm2;
+@@ -1025,7 +1025,7 @@ template<TYPE2>
+     Py_ssize_t i = 0;
+ 
+ 
+-    const sipMappedType *qlist_type = sipFindMappedType("QList<TYPE2>");
++    const sipTypeDef *qlist_type = sipFindType("QList<TYPE2>");
+ 
+ 
+     // Check the type if that is all that is required.
+@@ -1051,7 +1051,7 @@ template<TYPE2>
+ 
+         QString *t1 = reinterpret_cast<QString *>(sipConvertToType(t1obj, sipType_QString, sipTransferObj, SIP_NOT_NONE, &state, sipIsErr));
+ 
+-    QList<TYPE2> *t2 = reinterpret_cast< QList<TYPE2> * >(sipConvertToMappedType(t2obj, qlist_type, sipTransferObj, SIP_NOT_NONE, &state, sipIsErr));
++    QList<TYPE2> *t2 = reinterpret_cast< QList<TYPE2> * >(sipConvertToType(t2obj, qlist_type, sipTransferObj, SIP_NOT_NONE, &state, sipIsErr));
+         if (*sipIsErr)
+         {
+             sipReleaseType(t2, sipType_TYPE2, state);
+diff --git a/src/core/geometry/qgsgeometry.h b/src/core/geometry/qgsgeometry.h
+index 98aaa1e3cf2c..a7599b1265f3 100644
+--- a/src/core/geometry/qgsgeometry.h
++++ b/src/core/geometry/qgsgeometry.h
+@@ -1558,7 +1558,7 @@ class CORE_EXPORT QgsGeometry
+     }
+     else
+     {
+-      const sipMappedType *qvector_type = sipFindMappedType( "QVector<QgsPointXY>" );
++      const sipTypeDef *qvector_type = sipFindType( "QVector<QgsPointXY>" );
+       sipRes = sipConvertFromNewType( new QVector< QgsPointXY >( sipCpp->randomPointsInPolygon( a0, a1 ) ), qvector_type, Py_None );
+     }
+     % End
+@@ -1731,7 +1731,7 @@ class CORE_EXPORT QgsGeometry
+     }
+     else
+     {
+-      const sipMappedType *qvector_type = sipFindMappedType( "QVector< QgsPointXY >" );
++      const sipTypeDef *qvector_type = sipFindType( "QVector< QgsPointXY >" );
+       sipRes = sipConvertFromNewType( new QgsPolylineXY( sipCpp->asPolyline() ), qvector_type, Py_None );
+     }
+     % End
+@@ -1775,7 +1775,7 @@ class CORE_EXPORT QgsGeometry
+     }
+     else
+     {
+-      const sipMappedType *qvector_type = sipFindMappedType( "QVector<QVector<QgsPointXY>>" );
++      const sipTypeDef *qvector_type = sipFindType( "QVector<QVector<QgsPointXY>>" );
+       sipRes = sipConvertFromNewType( new QgsPolygonXY( sipCpp->asPolygon() ), qvector_type, Py_None );
+     }
+     % End
+@@ -1817,7 +1817,7 @@ class CORE_EXPORT QgsGeometry
+     }
+     else
+     {
+-      const sipMappedType *qvector_type = sipFindMappedType( "QVector< QgsPointXY >" );
++      const sipTypeDef *qvector_type = sipFindType( "QVector< QgsPointXY >" );
+       sipRes = sipConvertFromNewType( new QgsPolylineXY( sipCpp->asMultiPoint() ), qvector_type, Py_None );
+     }
+     % End
+@@ -1861,7 +1861,7 @@ class CORE_EXPORT QgsGeometry
+     }
+     else
+     {
+-      const sipMappedType *qvector_type = sipFindMappedType( "QVector<QVector<QgsPointXY>>" );
++      const sipTypeDef *qvector_type = sipFindType( "QVector<QVector<QgsPointXY>>" );
+       sipRes = sipConvertFromNewType( new QgsMultiPolylineXY( sipCpp->asMultiPolyline() ), qvector_type, Py_None );
+     }
+     % End
+@@ -1905,7 +1905,7 @@ class CORE_EXPORT QgsGeometry
+     }
+     else
+     {
+-      const sipMappedType *qvector_type = sipFindMappedType( "QVector<QVector<QVector<QgsPointXY>>>" );
++      const sipTypeDef *qvector_type = sipFindType( "QVector<QVector<QVector<QgsPointXY>>>" );
+       sipRes = sipConvertFromNewType( new QgsMultiPolygonXY( sipCpp->asMultiPolygon() ), qvector_type, Py_None );
+     }
+     % End
+
+From 12203f0ce52705c95c477934c7cdf09d02fccbe6 Mon Sep 17 00:00:00 2001
+From: Dmitry Shachnev <mitya57@gmail.com>
+Date: Wed, 15 Jul 2020 21:48:44 +0300
+Subject: [PATCH 2/3] Remove use of deprecated sipCanConvertToEnum
+
+sipConvertToEnum will raise an exception itself if the type is wrong.
+---
+ python/core/auto_generated/geometry/qgspoint.sip.in | 3 +--
+ src/core/geometry/qgspoint.h                        | 3 +--
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/python/core/auto_generated/geometry/qgspoint.sip.in b/python/core/auto_generated/geometry/qgspoint.sip.in
+index 464892212925..80e579894c3d 100644
+--- a/python/core/auto_generated/geometry/qgspoint.sip.in
++++ b/python/core/auto_generated/geometry/qgspoint.sip.in
+@@ -88,8 +88,7 @@ based on the following rules:
+       ( a0 == Py_None || PyFloat_AsDouble( a0 ) != -1.0 || !PyErr_Occurred() ) &&
+       ( a1 == Py_None || PyFloat_AsDouble( a1 ) != -1.0 || !PyErr_Occurred() ) &&
+       ( a2 == Py_None || PyFloat_AsDouble( a2 ) != -1.0 || !PyErr_Occurred() ) &&
+-      ( a3 == Py_None || PyFloat_AsDouble( a3 ) != -1.0 || !PyErr_Occurred() ) &&
+-      ( a4 == Py_None || sipCanConvertToEnum( a4, sipType_QgsWkbTypes_Type ) ) )
++      ( a3 == Py_None || PyFloat_AsDouble( a3 ) != -1.0 || !PyErr_Occurred() ) )
+     {
+       double x = a0 == Py_None ? std::numeric_limits<double>::quiet_NaN() : PyFloat_AsDouble( a0 );
+       double y = a1 == Py_None ? std::numeric_limits<double>::quiet_NaN() : PyFloat_AsDouble( a1 );
+diff --git a/src/core/geometry/qgspoint.h b/src/core/geometry/qgspoint.h
+index 1b28d2a9c83e..9840f5615f1f 100644
+--- a/src/core/geometry/qgspoint.h
++++ b/src/core/geometry/qgspoint.h
+@@ -110,8 +110,7 @@ class CORE_EXPORT QgsPoint: public QgsAbstractGeometry
+       ( a0 == Py_None || PyFloat_AsDouble( a0 ) != -1.0 || !PyErr_Occurred() ) &&
+       ( a1 == Py_None || PyFloat_AsDouble( a1 ) != -1.0 || !PyErr_Occurred() ) &&
+       ( a2 == Py_None || PyFloat_AsDouble( a2 ) != -1.0 || !PyErr_Occurred() ) &&
+-      ( a3 == Py_None || PyFloat_AsDouble( a3 ) != -1.0 || !PyErr_Occurred() ) &&
+-      ( a4 == Py_None || sipCanConvertToEnum( a4, sipType_QgsWkbTypes_Type ) ) )
++      ( a3 == Py_None || PyFloat_AsDouble( a3 ) != -1.0 || !PyErr_Occurred() ) )
+     {
+       double x = a0 == Py_None ? std::numeric_limits<double>::quiet_NaN() : PyFloat_AsDouble( a0 );
+       double y = a1 == Py_None ? std::numeric_limits<double>::quiet_NaN() : PyFloat_AsDouble( a1 );
+
+From 6e9d42d70099ac5d21e421fb75f55d428ea9e994 Mon Sep 17 00:00:00 2001
+From: Dmitry Shachnev <mitya57@gmail.com>
+Date: Wed, 15 Jul 2020 21:50:25 +0300
+Subject: [PATCH 3/3] Replace deprecated sipTransferBreak with sipTransferTo
+
+---
+ python/core/auto_generated/raster/qgsrasterpipe.sip.in | 2 +-
+ src/core/raster/qgsrasterpipe.h                        | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/python/core/auto_generated/raster/qgsrasterpipe.sip.in b/python/core/auto_generated/raster/qgsrasterpipe.sip.in
+index 5e65eec71451..d5a71e9d48b0 100644
+--- a/python/core/auto_generated/raster/qgsrasterpipe.sip.in
++++ b/python/core/auto_generated/raster/qgsrasterpipe.sip.in
+@@ -54,7 +54,7 @@ if connection would fail, the interface is not inserted and ``False`` is returne
+       // if insertion failed transfer ownership back to python
+       PyObject *o = sipGetPyObject( a1, sipType_QgsRasterInterface );
+       if ( o )
+-        sipTransferBreak( o );
++        sipTransferTo( o, NULL );
+     }
+ %End
+ 
+diff --git a/src/core/raster/qgsrasterpipe.h b/src/core/raster/qgsrasterpipe.h
+index 424a02279fdc..0da814011ae0 100644
+--- a/src/core/raster/qgsrasterpipe.h
++++ b/src/core/raster/qgsrasterpipe.h
+@@ -83,7 +83,7 @@ class CORE_EXPORT QgsRasterPipe
+       // if insertion failed transfer ownership back to python
+       PyObject *o = sipGetPyObject( a1, sipType_QgsRasterInterface );
+       if ( o )
+-        sipTransferBreak( o );
++        sipTransferTo( o, NULL );
+     }
+     % End
+ #endif
