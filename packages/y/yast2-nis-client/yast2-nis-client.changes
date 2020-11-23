@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 19 14:39:37 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Do not ask for package installation when CLI help is called
+  (bsc#1172340)
+- 4.3.5
+
+-------------------------------------------------------------------
 Tue Aug 11 11:19:41 CEST 2020 - schubi@suse.de
 
 - AutoYaST: Added supplements: autoyast(nis) into the spec file
