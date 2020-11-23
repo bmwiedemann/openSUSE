@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 20 11:27:15 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.09
+   see /usr/share/doc/packages/perl-HTTP-Cookies/Changes
+
+  6.09      2020-11-19 22:20:47Z
+      - Allow HttpOnly cookies to be loaded by HTTP::Cookies::Netscape (GH#63)
+        (Charlie Hothersall-Thomas)
+
+-------------------------------------------------------------------
 Tue Dec  3 03:16:55 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 6.08
