@@ -1,0 +1,5 @@
+<package name="sccache" project="openSUSE:Factory">
+  <title>sccache</title>
+  <description>A compiler caching tool for Rust, C and C++ with optional cloud storage</description>
+  <devel project="devel:tools:building" package="sccache"/>
+</package>

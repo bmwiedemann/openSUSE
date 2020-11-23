@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Fri Nov 20 00:29:39 UTC 2020 - William Brown <william.brown@suse.com>
+
+- Fix service file commit definition
+- Correct spec file example install
+
+-------------------------------------------------------------------
+Thu Nov 19 02:34:37 UTC 2020 - wbrown@suse.de
+
+- Update to version 0.2.13~git474.6628e1f:
+  * New entry in ServerStartup enum to indicate AddrInUse Error (#840)
+  * Revert "Bump to tiny-http 0.7.0 (#830)" because it caused a regression, #846.
+  * Include -fsanitizer-blacklist in common_args
+  * Consume sanitizer blacklist as extra hash in msvc (#842)
+  * In case we fail to read the compressed content from the cache, treat the failure as a forced
+    recache. This prevents us from failing build jobs unconditionally if cache entries are corrupt
+    (or in case of other sporadic failures), in which case we should continue on with
+    force-recompiling and recaching. (#836)
+  * Bump to tiny-http 0.7.0 (#830)
+  * Modify logging to use SCCACHE_LOG. (#822)
+  * Implement `g++` and `clang++` behavior when used on a `.c` input file. Fixes #803 (#818)
+  * clang: Allow chrome plugin arguments (#817)
+  * Add known caveats section to readme (#815)
+
+-------------------------------------------------------------------
+Wed Nov 18 21:50:56 UTC 2020 - William Brown <william.brown@suse.com>
+
+- Configure features to generate sccache-dist for distributed builds.
+- Add systemd unit files for builder and scheduler and example configs.
+
+-------------------------------------------------------------------
+Wed Nov 18 05:17:42 UTC 2020 - William Brown <william.brown@suse.com>
+
+- Add --features=all to allow all cache backends to be used.
+
+-------------------------------------------------------------------
+Tue Nov 17 04:56:20 UTC 2020 - William Brown <william.brown@suse.com>
+
+- Add support for obs cargo vendor to make packaging easier.
+  * osc service ra - now can update the source files.
+- Improvements to spec file.
+- Fix invalid license string.
+
+-------------------------------------------------------------------
+Fri May 22 13:44:53 UTC 2020 - Sumit Jamgade <sjamgade@suse.com>
+
+- Initial Package

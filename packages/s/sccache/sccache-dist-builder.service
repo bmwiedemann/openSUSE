@@ -1,0 +1,17 @@
+[Unit]
+Description=sccache-dist builder
+After=chronyd.service ntpd.service network-online.target
+
+[Service]
+User=0
+Type=simple
+CacheDirectory=sccache-builder
+Environment="RUST_LOG=sccache=info"
+Environment="SCCACHE_NO_DAEMON=1"
+ExecStart=sccache-dist server --config /etc/sccache/builder.conf
+
+[Install]
+WantedBy=multi-user.target
+
+
+

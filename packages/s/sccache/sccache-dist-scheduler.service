@@ -1,0 +1,16 @@
+[Unit]
+Description=sccache-dist server
+After=chronyd.service ntpd.service network-online.target
+
+[Service]
+DynamicUser=yes
+Type=simple
+Environment="RUST_LOG=sccache=info"
+Environment="SCCACHE_NO_DAEMON=1"
+ExecStart=sccache-dist scheduler --config /etc/sccache/scheduler.conf
+
+[Install]
+WantedBy=multi-user.target
+
+
+

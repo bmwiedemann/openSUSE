@@ -1,0 +1,22 @@
+# This file should be copied to ~/.config/sccache/config for your client.
+# You can debug client issues by starting the server with:
+# SCCACHE_NO_DAEMON=1 RUST_LOG=info /home/william/.cargo/bin/sccache --dist-status
+
+[dist]
+# The URL used to connect to the scheduler (should use https, given an ideal
+# setup of a HTTPS server in front of the scheduler)
+scheduler_url = "http://x.x.x.x:10600"
+# scheduler_url = "http://[::abcd]:10600"
+# Used for mapping local toolchains to remote cross-compile toolchains. Empty in
+# this example where the client and build server are both Linux.
+toolchains = []
+# Size of the local toolchain cache, in bytes (5GB here, 10GB if unspecified).
+# toolchain_cache_size = 5368709120
+
+# The location of the toolchain cache.
+cache_dir = "/tmp/toolchains"
+
+[dist.auth]
+# This should match the `client_auth` section of the scheduler config.
+type = "token"
+token = "token here"
