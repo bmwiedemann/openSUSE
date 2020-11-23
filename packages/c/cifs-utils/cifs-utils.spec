@@ -139,6 +139,9 @@ cp -a ${RPM_SOURCE_DIR}/README.cifstab.migration .
 export CFLAGS="%{optflags} -D_GNU_SOURCE -fpie"
 export LDFLAGS="-pie"
 autoreconf -i
+%if 0%{?usrmerged}
+export ROOTSBINDIR="%{_sbindir}"
+%endif
 %configure \
 	--with-pamdir=/%{_lib}/security
 make %{?_smp_mflags}
@@ -175,7 +178,11 @@ touch %{buildroot}/%{_sysconfdir}/sysconfig/network/if-{down,up}.d/${script} \
 %endif
 
 %files
+%if 0%{?usrmerged}
+%{_sbindir}/mount.cifs
+%else
 /sbin/mount.cifs
+%endif
 %{_bindir}/getcifsacl
 %{_bindir}/setcifsacl
 %{_sbindir}/cifs.idmap

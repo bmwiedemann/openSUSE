@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 17 13:42:23 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
 Mon Aug 10 06:56:11 UTC 2020 - Aurelien Aptel <aaptel@suse.com>
 
 - CVE-2020-14342: Shell command injection vulnerability in mount.cifs;
