@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Moo
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           perl-Moo
-Version:        2.004000
+Version:        2.004003
 Release:        0
 %define cpan_name Moo
 Summary:        Minimalist Object Orientation (with Moose compatibility)
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/H/HA/HAARG/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -31,14 +31,12 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Class::Method::Modifiers) >= 1.10
-BuildRequires:  perl(Module::Runtime) >= 0.014
 BuildRequires:  perl(Role::Tiny) >= 2.001004
 BuildRequires:  perl(Sub::Defer) >= 2.006006
 BuildRequires:  perl(Sub::Quote) >= 2.006006
 BuildRequires:  perl(Test::Fatal) >= 0.003
 BuildRequires:  perl(Test::More) >= 0.94
 Requires:       perl(Class::Method::Modifiers) >= 1.10
-Requires:       perl(Module::Runtime) >= 0.014
 Requires:       perl(Role::Tiny) >= 2.001004
 Requires:       perl(Sub::Defer) >= 2.006006
 Requires:       perl(Sub::Quote) >= 2.006006

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Nov 22 03:06:21 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.004003
+   see /usr/share/doc/packages/perl-Moo/Changes
+
+  2.004003 - 2020-11-21
+    - fix extraneous MANIFEST entry
+
+  2.004002 - 2020-11-20
+    - no changes
+    - releasing as stable
+
+  2.004_001 - 2020-07-30
+    - remove Module::Runtime prerequisite
+    - internal code cleanups
+    - added test for conflicts in extensions wrapping 'has' and similar subs
+
+-------------------------------------------------------------------
 Fri Apr 10 03:12:51 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 2.004000
