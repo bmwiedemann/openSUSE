@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 20 10:45:36 UTC 2020 - aloisio@gmx.com
+
+- Update to version 5.0.2
+  Breaking changes:
+  * warning Drop support for Python 2.7, 3.4 and 3.5
+  * MediaInfo.parse: remove the deprecated text parameter
+  New features:
+  * MediaInfo: add shortcuts to tracks by type: audio_tracks,
+    video_tracks, etc.
+
+-------------------------------------------------------------------
 Sat Nov  7 18:48:37 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.3
