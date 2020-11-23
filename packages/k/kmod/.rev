@@ -527,4 +527,12 @@
     <comment>- Add usr-lib-modprobe.patch [boo#1092648]</comment>
     <requestid>846461</requestid>
   </revision>
+  <revision rev="57" vrev="4">
+    <srcmd5>b91145f17cdfc6578b564f3753e5049f</srcmd5>
+    <version>27</version>
+    <time>1606145942</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849634</requestid>
+  </revision>
 </revisionlist>
