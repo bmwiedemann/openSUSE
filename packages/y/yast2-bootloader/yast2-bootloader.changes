@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 16 16:13:58 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Make wording in summary more consistent
+  (related to jsc#SLE-16033) 
+- 4.3.16
+
+-------------------------------------------------------------------
 Thu Nov 12 10:08:49 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Use shared Yast::Kernel.propose_hibernation? method when
