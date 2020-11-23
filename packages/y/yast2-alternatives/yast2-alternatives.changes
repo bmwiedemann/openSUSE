@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 18 22:10:43 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Handle properly help command for alternatives client
+  (bsc#1172340)
+- 4.3.0
+
+-------------------------------------------------------------------
 Thu Jan 16 12:12:09 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Clean spec file using spec-cleaner (main goal: use %license,
