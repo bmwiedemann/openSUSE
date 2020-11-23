@@ -144,8 +144,10 @@ for i in cryptsetup integritysetup veritysetup cryptsetup-reencrypt; do
 done
 rm -f %{buildroot}%{_tmpfilesdir}/cryptsetup.conf
 %endif
+%if !0%{?usrmerged}
 install -dm 0755 %{buildroot}/sbin
 ln -s ..%{_sbindir}/cryptsetup%{?is_backports:2} %{buildroot}/sbin
+%endif
 # don't want this file in /lib (FHS compat check), and can't move it to /usr/lib
 find %{buildroot} -type f -name "*.la" -delete -print
 #
@@ -170,7 +172,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %doc AUTHORS COPYING* FAQ README TODO docs/ChangeLog.old docs/*ReleaseNotes
+%if !0%{?usrmerged}
 /sbin/cryptsetup%{?is_backports:2}
+%endif
 %{_sbindir}/cryptsetup%{?is_backports:2}
 %{_sbindir}/veritysetup%{?is_backports:2}
 %{_sbindir}/integritysetup%{?is_backports:2}
