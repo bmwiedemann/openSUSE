@@ -5,6 +5,11 @@ Mon Oct 19 12:17:49 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
   line up with meson's structure.
 
 -------------------------------------------------------------------
+Fri Oct 16 09:57:32 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
 Wed Oct  7 12:16:44 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - No longer invoke permissions macros for ping. It now uses ICMP_PROTO sockets

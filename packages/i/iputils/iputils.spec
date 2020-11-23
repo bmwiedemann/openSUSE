@@ -91,7 +91,7 @@ install -Dpm 0644 %_vpath_builddir/rarpd@.service %{buildroot}/%{_unitdir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcrarpd
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcrdisc
 
-#UsrMerge
+%if !0%{?usrmerged}
 # We still have reverse dependencies using /sbin/* or /bin/*
 # so keep these symlinks for now. They are slowly being fixed
 # but lets not just break them yet.
@@ -104,7 +104,7 @@ ln -sf %{_bindir}/ping          %{buildroot}/bin
 ln -sf %{_bindir}/ping6         %{buildroot}/bin
 ln -sf %{_bindir}/tracepath     %{buildroot}/bin
 ln -sf %{_bindir}/tracepath6    %{buildroot}/bin
-#EndUsrMerge
+%endif
 
 %find_lang %{name}
 
@@ -148,7 +148,7 @@ ln -sf %{_bindir}/tracepath6    %{buildroot}/bin
 %{_bindir}/tracepath6
 %{_unitdir}/rdisc.service
 
-#UsrMerge
+%if !0%{?usrmerged}
 /bin/arping
 /bin/clockdiff
 /bin/ping
@@ -156,22 +156,21 @@ ln -sf %{_bindir}/tracepath6    %{buildroot}/bin
 /sbin/rdisc
 /bin/tracepath
 /bin/tracepath6
-#EndUsrMerge
+%endif
 %{_mandir}/man8/arping.8%{?ext_man}
 %{_mandir}/man8/clockdiff.8%{?ext_man}
 %{_mandir}/man8/ping.8%{?ext_man}
 %{_mandir}/man8/rdisc.8%{?ext_man}
 %{_mandir}/man8/tracepath.8%{?ext_man}
 %{_mandir}/man8/tracepath6.8%{?ext_man}
-#EndUsrMerge
 
 %files -n rarpd
 %{_sbindir}/rarpd
 %{_unitdir}/rarpd@.service
 %{_sbindir}/rcrarpd
-#UsrMerge
+%if !0%{?usrmerged}
 /sbin/rarpd
-#EndUsrMerge
+%endif
 %{_mandir}/man8/rarpd.8%{?ext_man}
 
 %changelog
