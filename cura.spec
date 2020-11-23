@@ -29,7 +29,7 @@ Source:         https://github.com/Ultimaker/Cura/archive/%{sversion}.tar.gz#/%{
 Patch1:         disable-code-style-check.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  libArcus3 >= %{version}
+BuildRequires:  python3-Arcus >= %{version}
 BuildRequires:  python3-Savitar >= %{version}
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy
@@ -51,6 +51,7 @@ Requires:       python3-numpy
 Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols
 Requires:       libqt5-qtquickcontrols2
+Requires:       python3-Arcus >= %{version}
 Requires:       python3-Savitar >= %{version}
 Requires:       python3-pynest2d
 Requires:       python3-pyserial
