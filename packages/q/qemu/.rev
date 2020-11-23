@@ -2099,4 +2099,23 @@ So VERY minor changes, but sounds like the gcc10 fix is wanted badly, so that's 
     <comment></comment>
     <requestid>846056</requestid>
   </revision>
+  <revision rev="187" vrev="10">
+    <srcmd5>a42f01756a2a17455d9aec08e5e1d1d5</srcmd5>
+    <version>5.1.0</version>
+    <time>1606142063</time>
+    <user>dimstar_suse</user>
+    <comment>- A patch has been applied to virt-manager to handle qemu spice
+  related modules not being present, so undo the change from Sep
+  30, 2020. Once again qemu-hw-display-qxl and qemu-hw-usb-redirect
+  are Recommends and not Required by the qemu package
+  (boo#1157320 boo#1176517, boo#1178141)
+- For jsc#SLE-11629, change qemu, qemu-tools, and qemu-guest-agent
+  to rely on system-user-qemu and system-group-kvm to provide now
+  static system UIDs and GID's for qemu user and group, and kvm
+  group. This will make guest migration more seamless for new
+  installations since there is no chance of having required ID's
+  differ in value.
+</comment>
+    <requestid>849134</requestid>
+  </revision>
 </revisionlist>

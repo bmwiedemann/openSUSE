@@ -380,7 +380,10 @@ BuildRequires:  qemu-ui-spice-app = %{qemuver}
 BuildRequires:  qemu-vgabios = %{sbver}
 BuildRequires:  qemu-x86    = %{qemuver}
 %endif
+Requires(pre):  group(kvm)
+Requires(pre):  group(qemu)
 Requires(pre):  shadow
+Requires(pre):  user(qemu)
 Requires(post): coreutils
 %if %{kvm_available}
 Requires(post): acl
@@ -391,8 +394,8 @@ Requires(post): procps
 Recommends:     kvm_stat
 %endif
 Recommends:     qemu-block-curl
-Requires:       qemu-hw-display-qxl
-Requires:       qemu-hw-usb-redirect
+Recommends:     qemu-hw-display-qxl
+Recommends:     qemu-hw-usb-redirect
 Recommends:     qemu-hw-usb-smartcard
 Recommends:     qemu-tools
 Recommends:     qemu-ui-curses
@@ -686,6 +689,7 @@ Summary:        QXL display support for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
+Provides:       %name:%_datadir/%name/forsplits/01
 Provides:       %name:%_docdir/%name/qemu-ga-ref.txt
 %{qemu_module_conflicts}
 
@@ -697,6 +701,7 @@ Summary:        USB redirection support for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
+Provides:       %name:%_datadir/%name/forsplits/02
 Provides:       %name:%_docdir/%name/qemu-qmp-ref.html
 %{qemu_module_conflicts}
 
@@ -761,6 +766,7 @@ Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
 Provides:       %name:%_libexecdir/qemu-bridge-helper
+Requires(pre):  group(kvm)
 Requires(pre):  permissions
 Requires(pre):  shadow
 Recommends:     multipath-tools
@@ -779,6 +785,7 @@ Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
 Provides:       %name:%_bindir/qemu-ga
+Requires(pre):  group(kvm)
 Requires(pre):  shadow
 Requires(post): udev
 Supplements:    modalias(acpi*:QEMU0002%3A*)
@@ -1617,21 +1624,13 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -s -f %{_sysconfdir}/alternatives/skiboot.lid %{buildroot}%{_datadir}/%name/skiboot.lid
 
 install -D -m 0644 %{SOURCE201} %{buildroot}%_datadir/%name/forsplits/pkg-split.txt
-for X in 00 01 02 03 04 05 06 07 08 09 10 11 12
+for X in 00 01 02 03 04 05 06 07 08 09 10 11 12 13
 do
   ln -s pkg-split.txt %{buildroot}%_datadir/%name/forsplits/$X
 done
 %fdupes -s %{buildroot}
 
 # ========================================================================
-# (qemu alone has pre* and post* sections for itself and subpackages):
-
-%pre
-%_bindir/getent group kvm >/dev/null || %_sbindir/groupadd -r kvm
-%_bindir/getent group qemu >/dev/null || %_sbindir/groupadd -r qemu
-%_bindir/getent passwd qemu >/dev/null ||
-  %_sbindir/useradd -r -g qemu -G kvm -d / -s /sbin/nologin \
-  -c "qemu user" qemu
 
 %if %{kvm_available}
 %post
@@ -1652,8 +1651,6 @@ if [ $(stat -L -c "%i" /proc/1/root/) = $(stat -L -c "%i" /) ]; then
 fi
 %endif
 
-%pre tools
-%_bindir/getent group kvm >/dev/null || %_sbindir/groupadd -r kvm
 %post tools
 %set_permissions %_libexecdir/qemu-bridge-helper
 
@@ -1661,7 +1658,6 @@ fi
 %verify_permissions %_libexecdir/qemu-bridge-helper
 
 %pre guest-agent
-%_bindir/getent group kvm >/dev/null || %_sbindir/groupadd -r kvm
 %service_add_pre qemu-ga@.service
 
 %post guest-agent
@@ -1726,8 +1722,6 @@ fi
 %dir %_datadir/%name/firmware
 %dir %_datadir/%name/forsplits
 %_datadir/%name/forsplits/pkg-split.txt
-%_datadir/%name/forsplits/01
-%_datadir/%name/forsplits/02
 %_datadir/%name/forsplits/04
 %_datadir/%name/forsplits/05
 %_datadir/%name/forsplits/07
@@ -1736,6 +1730,7 @@ fi
 %_datadir/%name/forsplits/10
 %_datadir/%name/forsplits/11
 %_datadir/%name/forsplits/12
+%_datadir/%name/forsplits/13
 %_datadir/%name/keymaps
 %_datadir/%name/qemu-ifup
 %_datadir/%name/qemu-nsis.bmp
@@ -2040,6 +2035,9 @@ fi
 
 %files hw-display-qxl
 %defattr(-, root, root)
+%dir %_datadir/%name
+%dir %_datadir/%name/forsplits
+%_datadir/%name/forsplits/01
 %dir %_docdir/%name
 %_docdir/%name/qemu-ga-ref.txt
 %dir %_libdir/%name
@@ -2047,6 +2045,9 @@ fi
 
 %files hw-usb-redirect
 %defattr(-, root, root)
+%dir %_datadir/%name
+%dir %_datadir/%name/forsplits
+%_datadir/%name/forsplits/02
 %dir %_docdir/%name
 %_docdir/%name/qemu-qmp-ref.html
 %dir %_libdir/%name
