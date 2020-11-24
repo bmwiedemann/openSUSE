@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 19 19:50:18 UTC 2020 - psimons@suse.com
+
+- Update git-lfs to version 1.1.1.
+  haskell-git-lfs (1.1.1) unstable; urgency=medium
+
+    * Expand aeson bounds to allow 1.5.x
+    * Expand http-client bounds to allow 0.7.x
+    * Improve other bounds that were too relaxed.
+
+   -- Joey Hess <id@joeyh.name>  Thu, 19 Nov 2020 12:11:00 -0400
+
+-------------------------------------------------------------------
 Tue Aug 18 10:44:56 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.
