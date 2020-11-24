@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov 23 13:55:05 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Update Requires: so -devel requires npm
+- Rely on rpmbuild to define necessary python dependencies
+
+-------------------------------------------------------------------
+Thu Nov 19 11:40:30 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- New upstream LTS version 12.19.1:
+  * deps: Denial of Service through DNS request (High).
+  A Node.js application that allows an attacker to trigger a DNS
+  request for a host of their choice could trigger a Denial of Service
+  by getting the application to resolve a DNS record with
+  a larger number of responses (bsc#1178882, CVE-2020-8277)
+
+-------------------------------------------------------------------
+Fri Nov 13 15:32:36 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- python3.patch: allows building of node with python3 toolchain
+
+-------------------------------------------------------------------
 Fri Oct  9 09:34:28 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - fix_ci_tests.patch: add support to SUSE's ECDH backport errors
