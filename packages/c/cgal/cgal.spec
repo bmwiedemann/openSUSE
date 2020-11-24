@@ -41,14 +41,15 @@
 %define _sourcename CGAL
 %define _libname() libCGAL%{?1}%{?2}%{expand:%{_sover%{?1}}}
 Name:           cgal
-Version:        5.1
+Version:        5.1.1
 Release:        0
 Summary:        Computational Geometry Algorithms Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Productivity/Graphics/CAD
 URL:            https://www.cgal.org/
 Source0:        https://github.com/CGAL/cgal/releases/download/v%{version}/CGAL-%{version}.tar.xz
-Source1:        https://github.com/CGAL/cgal/releases/download/v%{version}/CGAL-%{version}-doc_html.tar.xz
+# Strange release artifact, .xz is double
+Source1:        https://github.com/CGAL/cgal/releases/download/v%{version}/CGAL-%{version}-doc_html.tar.xz.xz#/CGAL-%{version}-doc_html.tar.xz
 Source2:        cgal-rpmlintrc
 BuildRequires:  blas-devel
 BuildRequires:  cmake >= 2.8.11

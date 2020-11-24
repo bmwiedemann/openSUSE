@@ -177,4 +177,14 @@
 </comment>
     <requestid>839125</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ffe737f873d25bef708c01b544a2b398</srcmd5>
+    <version>5.1.1</version>
+    <time>1606252283</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.1:
+  See https://github.com/CGAL/cgal/pulls?utf8=%E2%9C%93&amp;q=label%3AMerged_in_5.1.1
+</comment>
+    <requestid>850267</requestid>
+  </revision>
 </revisionlist>
