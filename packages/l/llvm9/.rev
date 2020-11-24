@@ -181,4 +181,14 @@
     <comment></comment>
     <requestid>838612</requestid>
   </revision>
+  <revision rev="18" vrev="14">
+    <srcmd5>189d43c80a80abd3a76393672fa615de</srcmd5>
+    <version>9.0.1</version>
+    <time>1606252318</time>
+    <user>dimstar_suse</user>
+    <comment>- Let CMake files in {llvm,clang}X-devel refer to the versioned
+  binaries that come with the package instead of the symlink
+  managed by update-alternatives. (boo#1178513)</comment>
+    <requestid>849510</requestid>
+  </revision>
 </revisionlist>
