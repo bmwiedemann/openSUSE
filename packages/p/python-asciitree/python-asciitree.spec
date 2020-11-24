@@ -26,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/mbr/asciitree
 # https://github.com/mbr/asciitree/issues/16 -- no tests on PyPI
 Source:         https://github.com/mbr/asciitree/archive/%{version}.tar.gz#/asciitree-%{version}-gh.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -47,7 +48,7 @@ sed -i '1{/env python/ d}' asciitree/__init__.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest -v
+%pytest
 
 %files %{python_files}
 %doc README.rst
