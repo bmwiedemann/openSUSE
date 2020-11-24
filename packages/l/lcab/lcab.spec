@@ -1,7 +1,7 @@
 #
 # spec file for package lcab
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,7 +20,7 @@ Name:           lcab
 Version:        1.0b12
 Release:        0
 Summary:        Create cabinet (.cab) files
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Archiving/Compression
 URL:            http://freecode.com/projects/lcab
 Source:         %{name}-%{version}.tar.gz
@@ -32,12 +32,12 @@ LCAB is a small program for linux that creates an uncompressed MS Cabinet
 File from a set of input files.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 autoreconf -fiv
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -45,8 +45,9 @@ install -Dpm 0644 lcab.1 \
   %{buildroot}%{_mandir}/man1/lcab.1
 
 %files
-%doc COPYING README
+%license COPYING
+%doc README
 %{_bindir}/lcab
-%{_mandir}/man1/lcab.1%{ext_man}
+%{_mandir}/man1/lcab.1%{?ext_man}
 
 %changelog
