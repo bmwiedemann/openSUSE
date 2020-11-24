@@ -17,15 +17,16 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-sorl-thumbnail
-Version:        12.6.3
+Version:        12.7.0
 Release:        0
 Summary:        Thumbnails for Django
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jazzband/sorl-thumbnail
 Source:         https://files.pythonhosted.org/packages/source/s/sorl-thumbnail/sorl-thumbnail-%{version}.tar.gz
-BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module Django >= 2}
 BuildRequires:  %{python_module boto}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module pgmagick}
@@ -41,7 +42,7 @@ BuildRequires:  lsof
 BuildRequires:  python-rpm-macros
 BuildRequires:  redis
 BuildRequires:  vips-tools
-Requires:       python-Django
+Requires:       python-Django >= 2
 Recommends:     ImageMagick
 Recommends:     python-dbm
 Suggests:       GraphicsMagick
@@ -78,6 +79,8 @@ Features at a glance
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+export LANG=en_US.UTF-8
+
 PYTHONPATH=.
 export DJANGO_SETTINGS_MODULE=tests.settings.pil
 %pytest -k 'not TemplateTestCaseB and not test_image_file_deserialize'
@@ -92,7 +95,8 @@ export DJANGO_SETTINGS_MODULE=tests.settings.pgmagick
 
 %{_sbindir}/redis-server &
 export DJANGO_SETTINGS_MODULE=tests.settings.redis
-%pytest -k 'not TemplateTestCaseB and not test_image_file_deserialize'
+# skipping test_write and test_no_source_get_image skipped as they count open file descriptors and sometimes is off
+%pytest -k 'not (TemplateTestCaseB or test_image_file_deserialize or test_no_source_get_image or test_write)'
 
 %files %{python_files}
 %doc AUTHORS CHANGES.rst README.rst

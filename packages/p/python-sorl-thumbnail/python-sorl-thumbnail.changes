@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 24 05:04:22 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Require Python 3 & Django 2+, fixing builds on Leap 15.x
+- Skip flaky test test_no_source_get_image which counts open file
+  descriptors
+- Update to v12.7.0
+  * Drop support for Django 1.11
+  * Added support for Django 3.1
+  * Correction in convert_engine with unknown exif orientation
+  * Using more resilient _get_exif_orientation logic in convert engine
+  * Update wand_engine.py for ImageMagick 7
+  * Fix cannot write mode RGBA as JPEG when thumbnailing a GIF
+
+-------------------------------------------------------------------
 Wed Sep  2 09:38:32 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Fix test execution
