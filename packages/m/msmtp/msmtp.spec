@@ -17,9 +17,9 @@
 
 
 Name:           msmtp
-Version:        1.8.12
+Version:        1.8.13
 Release:        0
-BuildRequires:  gnutls-devel
+BuildRequires:  gnutls-devel >= 3.4
 BuildRequires:  libidn2-devel
 BuildRequires:  pkg-config
 BuildRequires:  xz
