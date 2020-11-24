@@ -1,0 +1,24 @@
+commit 4000e2ceeaf2f7b1c6428bde88b619a3a56acdfd
+Author: Joachim Gleissner <jgleissner@suse.com>
+Date:   Thu Oct 15 17:23:34 2020 +0100
+
+    do not overwrite ifcfg files on SLES
+
+diff --git a/google_guest_agent/addresses.go b/google_guest_agent/addresses.go
+index 6326ff2..3080142 100644
+--- a/google_guest_agent/addresses.go
++++ b/google_guest_agent/addresses.go
+@@ -534,7 +534,12 @@ func enableSLESInterfaces(interfaces []string) error {
+ 	var priority = 10100
+ 	for _, iface := range interfaces {
+ 		var ifcfg *os.File
+-		ifcfg, err = os.Create("/etc/sysconfig/network/ifcfg-" + iface)
++		filename := "/etc/sysconfig/network/ifcfg-" + iface
++		_, err = os.Stat(filename)
++		if ! os.IsNotExist(err) {
++			return nil
++		}
++		ifcfg, err = os.Create(filename)
+ 		if err != nil {
+ 			return err
+ 		}

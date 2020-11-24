@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Tue Nov 24 13:05:17 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20201102.00 (bsc#1179031, bsc#1179032)
+  * Only attempt to connect to snapshot service once (#88)
+
+-------------------------------------------------------------------
+Thu Oct 29 13:49:55 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20201026.00
+  * remove old unused workflow files (#86)
+  * fallback to IP for metadata (#82)
+  * getPasswd: Check full prefix of line for username (#81)
+
+-------------------------------------------------------------------
+Fri Oct 23 14:09:16 UTC 2020 - Joachim Gleissner <jgleissner@suse.com>
+
+- dont_overwrite_ifcfg.patch: Do not overwrite existing ifcfg files
+  to allow manual configuration and compatibility with
+  cloud-netconfig (bsc#1159460, bsc#1178486)
+
+-------------------------------------------------------------------
+Thu Oct  1 13:32:08 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20200929.00
+  * correct varname (#75)
+  * don't call dhclient -x on network setup (#77)
+  * add instance id dir override (#78)
+  * update agent systemd service file (#73)
+  * typo, change to noadjfile (#79)
+  * add gaohannk to OWNERS
+  * remove illfelder from OWNERS
+  * Add all license files to packages (#71)
+
+-------------------------------------------------------------------
+Tue Aug 25 15:25:20 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20200819.00 (bsc#1175740, bsc#1175741)
+  * handle oslogin enable/disable cases (#70) (bsc#1175173)
+  * add README (#69)
+  * Fix metric for addIPForwardEntry (#68)
+  * Correctly determine default route index (#67)
+  * oslogin: dont add entry to pam.d/su (#66)
+  * end group.conf with newline (#64)
+  * Add source field in googet spec (#59)
+  * Set route to metadata on interface with default route (#47)
+  * fix typo in boto.cfg (#62)
+- Properly handle enabling of systemd services when upgrading
+  from the old google-compute-engine-init package (bsc#1174745)
+
+-------------------------------------------------------------------
+Wed Jul 22 10:46:57 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build (bsc#1174304, bsc#1174306, jsc#ECO-2099, jsc#PM-1945)
+  + Version 20200630.00
+  + Replaces google-compute-engine-init package
