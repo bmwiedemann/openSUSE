@@ -1,0 +1,5 @@
+<package name="google-osconfig-agent" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Cloud:Tools" package="google-osconfig-agent"/>
+</package>

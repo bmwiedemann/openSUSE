@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Tue Nov 24 13:18:46 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20201117.00 (bsc#1179031, bsc#1179032)
+  * Ignore Unavailable erros on stream receive (#260)
+  * Update test Windows images (#259)
+  * update ReportInventory e2e test regexes (#255)
+  * Don't return on a windows update error (#254)
+  * use retryutil for ReportInventory calls (#253)
+  * add additional debug logging for ReportInventory request payload for e2e tests (#252)
+  * stop logging instance identity token as part of ReportInventory request and remove
+    feature-flag setting in OSInventoryReporting e2e tests (#251)
+  * complete ExecTask as no-op when the ExecStepConfig doesn't match the OS (#250)
+  * Add software recipe tests for COS (#249)
+  * remove feature flag for inventory reporting (#243)
+  * Force yum to never colorize output (#247)
+  * Add sleep after Unavailable errors for agentendpoint (#241)
+  * Ensure we record epoch for rpm packages (#242)
+  * Make inventory WUAUpdates call spawn a new process,
+    retry on metadata unmarshal error (#239)
+  * add debug logging for report inventory response (#240)
+  * add initial e2e tests for inventory reporting (#237)
+  * Report installed packages on COS (#236)
+
+-------------------------------------------------------------------
+Thu Oct  8 09:19:12 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20200929.00
+  * Merge inventory feature from development (#235)
+  * Set full version during Windows build (#234)
+- Remove Provides/Obsoletes for google-compute-engine-init
+
+-------------------------------------------------------------------
+Tue Sep 15 13:11:45 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build (bsc#1176427, bsc#1178249, jsc#ECO-2702, jsc#PM-2203)
+  + Version 20200908.00
