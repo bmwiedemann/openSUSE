@@ -14,7 +14,13 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+# nodebuginfo
 
+
+# Disable binary stripping because bpftrace depends on debug symbols in its
+# implementation of the BEGIN trigger. See bsc#1178928.
+%undefine _build_create_debug
+%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           bpftrace
 Version:        0.11.4

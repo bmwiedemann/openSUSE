@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 23 06:25:32 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Do not strip bpftrace binaries -- bpftrace depends on debuginfos for
+  /proc/self/exe in order to implement the BEGIN trigger. bsc#1178928
+
+-------------------------------------------------------------------
 Sat Nov 14 23:44:23 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Update to bpftrace 0.11.4.
