@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Nov 22 22:50:15 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 3.6.1
+  * added menu entry "Set All Faders to New Client Level" (#622)
+  * isolate a channel from the group temporarily with 
+    shift-click-drag (#695)
+  * on shift-click the pan reset to 0 L/R (#707)
+  * support multiple custom central server addresses (#698)
+  * the Jamulus server now has a different icon, created by 
+    geheimerEichkater (#700)
+  * support two rows for the mixer panel (#720)
+  * changed RYG indicator lights with colour-blind compensation, 
+    created by geheimerEichkater (#57)
+  * saving and loading mixer settings is now possible during an 
+    active connection and a mixer settings file can be loaded with
+    drag'n'drop (#706)
+  * menu entry Clear All Stored Solo Settings is now enabled
+    during an active connection
+  * bug fix: the fader group property was not correctly loaded
+    from the ini file
+
+-------------------------------------------------------------------
 Sun Oct 25 08:43:39 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.6.0
