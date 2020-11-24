@@ -24,7 +24,9 @@ Release:        0
 Summary:        PDG particle data and identification codes
 License:        BSD-3-Clause
 URL:            https://github.com/scikit-hep/particle
-Source:         https://files.pythonhosted.org/packages/source/p/particle/%{modname}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/particle/%{modname}-%{version}.tar.gz
+# Downloaded separately from github using _service file
+Source1:        tests.tar.xz
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
@@ -35,6 +37,13 @@ Requires:       python-hepunits >= 2.0.0
 Recommends:     python-pandas
 Recommends:     python-tabulate
 BuildArch:      noarch
+# SECTION For tests
+BuildRequires:  %{python_module hepunits}
+BuildRequires:  %{python_module pytest}
+%if 0%{?suse_version} <= 1500
+BuildRequires:  %{python_module importlib_resources}
+%endif
+# /SECTION
 %python_subpackages
 
 %description
@@ -42,7 +51,8 @@ Particle provides a pythonic interface to the Particle Data Group (PDG)
 particle data tables and particle identification codes.
 
 %prep
-%setup -q -n particle-%{version}
+%setup -q -n %{modname}-%{version}
+%setup -q -D -n %{modname}-%{version} -a 1
 sed -Ei "1{/^#!\/usr\/bin\/env python/d}" src/particle/__main__.py
 
 %build
@@ -52,8 +62,8 @@ sed -Ei "1{/^#!\/usr\/bin\/env python/d}" src/particle/__main__.py
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-# NO TESTS DEFINED
-#%%check
+%check
+%pytest
 
 %files %{python_files}
 %doc README.rst
