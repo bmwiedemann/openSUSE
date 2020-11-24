@@ -57,13 +57,10 @@ chmod 0644 AUTHORS COPYING NEWS src/* data/icons/scalable/apps/viewnior.svg
 
 %build
 %meson
-cd build
-%ninja_build
+%meson_build
 
 %install
-cd build
-%ninja_install
-cd ..
+%meson_install
 %find_lang %{name} %{?no_lang_C}
 %suse_update_desktop_file -r -G "Elegant Image Viewer" %{name} Graphics Viewer GTK
 
