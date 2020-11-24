@@ -457,8 +457,8 @@ Prefer: star-rmt
 # A couple packares require a dbus daemon to show notifications - unless oterhwise specified, we prefer the 'standalong notification-daemon;
 Prefer: notification-daemon
 
-# We have multiple nodejs versions in the repo - prefer version 8 for now
-Prefer: nodejs10 npm10
+# We have multiple nodejs versions in the repo - prefer version 10 for now
+Prefer: nodejs10 nodejs10-devel npm10
 
 # have choice for libpulse.so.0 needed by wine-32bit: apulse-32bit libpulse0-32bit - prefering the 'original'
 Prefer: libpulse0-32bit libsane1-32bit
