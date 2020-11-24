@@ -63,7 +63,10 @@ BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?suse_version}
-PreReq:         %insserv_prereq %fillup_prereq
+%if %{without systemd}
+PreReq:         %insserv_prereq
+%endif
+PreReq:         %fillup_prereq
 PreReq:         shadow
 %else
 PreReq:         shadow-utils
