@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 24 09:09:41 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20201122:
+  * Switch CI to GitHub Actions
+  * Drop AppVeyor
+  * Version bump
+  * Revert "Update CI configuration to dpl v2"
+  * Update CI configuration to dpl v2
+  * Fix mishandling trailing newline
+  * Fix compatibility with older UEFIPatch
+  * Added MSR patches for C422, C620 motherboards (#204)
+  * Add support to parse/reconstruct LZMAF86 sections (#198)
+
+-------------------------------------------------------------------
 Wed Jan 22 13:47:18 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20200120:

@@ -82,4 +82,21 @@
   * Version bump</comment>
     <requestid>766319</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a6e4c15fb8a7e2ca8b79d12f5c02eac1</srcmd5>
+    <version>20201122</version>
+    <time>1606252434</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20201122:
+  * Switch CI to GitHub Actions
+  * Drop AppVeyor
+  * Version bump
+  * Revert &quot;Update CI configuration to dpl v2&quot;
+  * Update CI configuration to dpl v2
+  * Fix mishandling trailing newline
+  * Fix compatibility with older UEFIPatch
+  * Added MSR patches for C422, C620 motherboards (#204)
+  * Add support to parse/reconstruct LZMAF86 sections (#198)</comment>
+    <requestid>850381</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           UEFITool
-Version:        20200120
+Version:        20201122
 Release:        0
 Summary:        Tools to inspect and work on UEFI BIOSes
 License:        BSD-2-Clause
