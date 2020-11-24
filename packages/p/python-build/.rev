@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8c3515a8967b26ce0f81dd9673bc4aee</srcmd5>
+    <version>0.1.0</version>
+    <time>1606252634</time>
+    <user>dimstar_suse</user>
+    <comment>dependency of python-check-manifest, and general replacement for most tasks python-pep517 was doing</comment>
+    <requestid>850551</requestid>
+  </revision>
+</revisionlist>
