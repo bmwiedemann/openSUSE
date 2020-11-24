@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 24 10:16:29 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 5.0.3
+  * Fix TypeError when parsing certain files
+
+-------------------------------------------------------------------
 Fri Nov 20 10:45:36 UTC 2020 - aloisio@gmx.com
 
 - Update to version 5.0.2
