@@ -20,7 +20,7 @@
 %bcond_with    mutt_openssl
 %bcond_without mutt_gnutls
 Name:           mutt
-Version:        1.14.7
+Version:        2.0.2
 Release:        0
 Summary:        Mail Program
 # ftp://ftp.mutt.org/mutt/devel/
@@ -345,6 +345,8 @@ rm -f %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-notify
 %doc %{_docdir}/%{name}/samples/ca-bundle.crt
 %doc %{_docdir}/%{name}/samples/colors.*
 %doc %{_docdir}/%{name}/samples/markdown2html
+%doc %{_docdir}/%{name}/samples/mutt_oauth2.py
+%doc %{_docdir}/%{name}/samples/mutt_oauth2.py.README
 %doc %{_docdir}/%{name}/samples/mutt_xtitle
 %doc %{_docdir}/%{name}/samples/sample.*
 %doc %{_docdir}/%{name}/samples/smime_keys_test.pl

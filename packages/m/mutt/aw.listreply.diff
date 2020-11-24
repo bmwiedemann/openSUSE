@@ -3,12 +3,12 @@ ask when sending list message replies to author only - Armin Wolfermann (aw)
 ---
  init.h |    7 +++++++
  mutt.h |    1 +
- send.c |   18 ++++++++++++++++++
- 3 files changed, 26 insertions(+)
+ send.c |   17 +++++++++++++++++
+ 3 files changed, 25 insertions(+)
 
 --- init.h
 +++ init.h	2020-01-14 13:35:13.352604037 +0000
-@@ -1819,6 +1819,13 @@ struct option_t MuttVars[] = {
+@@ -1864,6 +1864,13 @@ struct option_t MuttVars[] = {
    ** from your spool mailbox to your $$mbox mailbox, or as a result of
    ** a ``$mbox-hook'' command.
    */
@@ -24,7 +24,7 @@ ask when sending list message replies to author only - Armin Wolfermann (aw)
    ** .pp
 --- mutt.h
 +++ mutt.h	2020-01-14 13:32:27.595685455 +0000
-@@ -337,6 +337,7 @@ enum
+@@ -341,6 +341,7 @@ enum
  #endif
    OPT_SUBJECT,
    OPT_VERIFYSIG,      /* verify PGP signatures */
@@ -34,15 +34,7 @@ ask when sending list message replies to author only - Armin Wolfermann (aw)
    OPT_MAX
 --- send.c
 +++ send.c	2020-01-14 13:32:27.599685379 +0000
-@@ -567,6 +567,7 @@ static int include_reply (CONTEXT *ctx,
- static int default_to (ADDRESS **to, ENVELOPE *env, int flags, int hmfupto)
- {
-   char prompt[STRING];
-+  struct Address *tmp;
- 
-   if (flags && env->mail_followup_to && hmfupto == MUTT_YES)
-   {
-@@ -580,6 +581,23 @@ static int default_to (ADDRESS **to, ENV
+@@ -582,6 +582,23 @@ static int default_to (ADDRESS **to, ENV
    if (flags & SENDLISTREPLY)
      return 0;
  
@@ -51,12 +43,12 @@ ask when sending list message replies to author only - Armin Wolfermann (aw)
 +   */
 +  if (!(flags & (SENDGROUPREPLY|SENDGROUPCHATREPLY)) && mutt_is_list_cc (0, env->to, env->cc)) {
 +    switch (query_quadoption (OPT_LISTREPLY,
-+	    _("Message came from a mailing list. Reply to author only?")))
++           _("Message came from a mailing list. Reply to author only?")))
 +    {
 +    case MUTT_NO:
-+      tmp = find_mailing_lists (env->to, env->cc);
-+      rfc822_append (to, tmp, 0);
-+      rfc822_free_address (&tmp);
++      default_addr = find_mailing_lists (env->to, env->cc);
++      rfc822_append (to, default_addr, 0);
++      rfc822_free_address (&default_addr);
 +      return 0;
 +    case -1:
 +      return -1; /* abort */
@@ -65,4 +57,4 @@ ask when sending list message replies to author only - Armin Wolfermann (aw)
 +
    if (!option(OPTREPLYSELF) && mutt_addr_is_user (env->from))
    {
-     /* mail is from the user, assume replying to recipients */
+     default_addr = env->to;

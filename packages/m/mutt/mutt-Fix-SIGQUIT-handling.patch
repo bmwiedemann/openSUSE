@@ -16,7 +16,7 @@ Signed-off-by: Michal Suchanek <msuchanek@suse.de>
 
 --- signal.c
 +++ signal.c	2019-11-14 08:40:31.823464569 +0000
-@@ -132,6 +132,7 @@ static void sighandler (int sig)
+@@ -170,6 +170,7 @@ static void sighandler (int sig)
        break;
  #endif
  
@@ -24,7 +24,7 @@ Signed-off-by: Michal Suchanek <msuchanek@suse.de>
      case SIGINT:
        SigInt = 1;
        break;
-@@ -159,7 +160,6 @@ void mutt_signal_init (void)
+@@ -199,7 +200,6 @@ void mutt_signal_init (void)
    act.sa_handler = exit_handler;
    sigaction (SIGTERM, &act, NULL);
    sigaction (SIGHUP, &act, NULL);
@@ -32,7 +32,7 @@ Signed-off-by: Michal Suchanek <msuchanek@suse.de>
  
    /* we want to avoid race conditions */
    sigaddset (&act.sa_mask, SIGTSTP);
-@@ -179,6 +179,7 @@ void mutt_signal_init (void)
+@@ -219,6 +219,7 @@ void mutt_signal_init (void)
  
    sigaction (SIGCONT, &act, NULL);
    sigaction (SIGTSTP, &act, NULL);
@@ -40,7 +40,7 @@ Signed-off-by: Michal Suchanek <msuchanek@suse.de>
    sigaction (SIGINT, &act, NULL);
  #if defined (USE_SLANG_CURSES) || defined (HAVE_RESIZETERM)
    sigaction (SIGWINCH, &act, NULL);
-@@ -213,6 +214,7 @@ void mutt_block_signals (void)
+@@ -258,6 +259,7 @@ void mutt_block_signals (void)
      sigaddset (&Sigset, SIGTERM);
      sigaddset (&Sigset, SIGHUP);
      sigaddset (&Sigset, SIGTSTP);
@@ -48,7 +48,7 @@ Signed-off-by: Michal Suchanek <msuchanek@suse.de>
      sigaddset (&Sigset, SIGINT);
  #if defined (USE_SLANG_CURSES) || defined (HAVE_RESIZETERM)
      sigaddset (&Sigset, SIGWINCH);
-@@ -287,5 +289,6 @@ void mutt_allow_interrupt (int dispositi
+@@ -332,5 +334,6 @@ void mutt_allow_interrupt (int dispositi
    if (disposition == 0)
      sa.sa_flags |= SA_RESTART;
  #endif

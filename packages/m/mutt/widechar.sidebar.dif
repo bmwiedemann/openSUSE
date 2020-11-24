@@ -4,7 +4,7 @@
 
 --- handler.c
 +++ handler.c	2018-07-04 13:48:57.285110213 +0000
-@@ -780,7 +780,7 @@ static void enriched_set_flags (const wc
+@@ -781,7 +781,7 @@ static void enriched_set_flags (const wc
  static int text_enriched_handler (BODY *a, STATE *s)
  {
    enum {
@@ -13,7 +13,7 @@
    } state = TEXT;
  
    long bytes = a->length;
-@@ -810,7 +810,7 @@ static int text_enriched_handler (BODY *
+@@ -811,7 +811,7 @@ static int text_enriched_handler (BODY *
    {
      if (state != ST_EOF)
      {
@@ -22,7 +22,7 @@
  	state = ST_EOF;
        else
  	bytes--;
-@@ -818,6 +818,8 @@ static int text_enriched_handler (BODY *
+@@ -819,6 +819,8 @@ static int text_enriched_handler (BODY *
  
      switch (state)
      {
@@ -31,7 +31,7 @@
        case TEXT :
  	switch (wc)
  	{
-@@ -879,9 +881,8 @@ static int text_enriched_handler (BODY *
+@@ -880,9 +882,8 @@ static int text_enriched_handler (BODY *
  	  enriched_flush (&stte, 1);
  	else
  	{
@@ -42,7 +42,7 @@
  	}
  	break;
  
-@@ -1588,7 +1588,7 @@ void mutt_decode_attachment (BODY *b, ST
+@@ -1589,7 +1590,7 @@ void mutt_decode_attachment (BODY *b, ST
   * strip all trailing spaces to improve interoperability;
   * if $text_flowed is unset, simply verbatim copy input
   */

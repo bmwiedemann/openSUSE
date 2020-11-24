@@ -1161,4 +1161,12 @@ with a run of spec-cleaner (forwarded request 826781 from AndreasStieger)</comme
   * Bug fix release. (forwarded request 835292 from dirkmueller)</comment>
     <requestid>835346</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>9404997bb4b9991ff216f5dbd421fcb2</srcmd5>
+    <version>2.0.2</version>
+    <time>1606252306</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850273</requestid>
+  </revision>
 </revisionlist>
