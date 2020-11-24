@@ -35,8 +35,8 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module parse}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -46,6 +46,11 @@ Python library to parse Arch .SRCINFO files.
 %prep
 %setup -q -n python-srcinfo-%{version}
 %patch0 -p1
+mv test/__init__.py test_srcinfo.py
+
+# Only needed until 0.0.9 is released
+# https://github.com/kyrias/python-srcinfo/pull/8
+sed -i '/nose/d' setup.py
 
 %build
 %python_build
@@ -56,7 +61,7 @@ Python library to parse Arch .SRCINFO files.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %post
 %python_install_alternative parse_srcinfo
