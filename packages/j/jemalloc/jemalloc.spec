@@ -27,7 +27,7 @@ URL:            http://jemalloc.net/
 Source:         https://github.com/jemalloc/jemalloc/releases/download/%version/jemalloc-%version.tar.bz2
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libxslt
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 Requires:       %lname = %version
 
 %description
@@ -52,20 +52,19 @@ Headers for jemalloc, general-purpose scalable concurrent malloc(3)
 implementation.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%define _lto_cflags %{nil}
 export EXTRA_CFLAGS="%optflags -std=gnu99"
 %configure --disable-static --enable-prof \
 %ifarch %arm
   --disable-thp
 %endif
 
-make %{?_smp_mflags}
+%make_build
 
 %install
-b="%buildroot"
+b=%buildroot
 %make_install
 if [ "%_docdir" != "%_datadir/doc" ]; then
 	# Makefile apparently ignored the --docdir in %%configure
@@ -75,13 +74,12 @@ fi
 
 %check
 export LD_LIBRARY_PATH="$PWD/lib:$LD_LIBRARY_PATH"
-make %{?_smp_mflags} check
+%make_build check
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %_bindir/jemalloc.sh
 %_bindir/jemalloc-config
 %_bindir/jeprof
@@ -89,12 +87,11 @@ make %{?_smp_mflags} check
 %_docdir/%name
 
 %files -n %lname
-%defattr(-,root,root)
-%doc ChangeLog COPYING README
+%license COPYING
+%doc ChangeLog README
 %_libdir/libjemalloc.so.2*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/jemalloc
 %_libdir/libjemalloc.so
 %_libdir/pkgconfig/jemalloc.pc

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 23 10:23:39 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Enable LTO as it works (boo#1133136).
+
+-------------------------------------------------------------------
 Fri Nov 20 15:37:37 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Simplify spec file.
