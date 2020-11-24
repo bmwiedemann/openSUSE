@@ -17,7 +17,7 @@
 
 
 Name:           perl-Algorithm-CheckDigits
-Version:        1.3.3
+Version:        1.3.5
 Release:        0
 %define cpan_name Algorithm-CheckDigits
 Summary:        Perl extension to generate and test check digits
