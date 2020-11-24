@@ -3494,6 +3494,7 @@
     <package name="syslinux" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="syslog-service" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
     <package name="system-group-hardware" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="system-group-libvirt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="system-group-wheel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="system-tuning-common-SUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="system-user-bin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3505,6 +3506,7 @@
     <package name="system-user-man" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="system-user-news" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="system-user-nobody" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="system-user-qemu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="system-user-root" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="system-user-tftp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="system-user-upsd" supportstatus="unsupported"/> <!-- reason: dvd:system-user-upsd -->
