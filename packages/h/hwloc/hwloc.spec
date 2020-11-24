@@ -160,6 +160,7 @@ rm %{buildroot}%{_datadir}/hwloc/hwloc-dump-hwdata.service
 %files
 %license COPYING
 %doc NEWS README VERSION
+%{_mandir}/man7/hwloc*
 %{_mandir}/man1/hwloc*
 %{_mandir}/man1/lstopo*
 %{_bindir}/hwloc*
@@ -172,7 +173,6 @@ rm %{buildroot}%{_datadir}/hwloc/hwloc-dump-hwdata.service
 %endif
 
 %files devel
-%{_mandir}/man7/hwloc*
 %{_includedir}/hwloc
 %{_includedir}/hwloc.h
 %{_libdir}/libhwloc.so

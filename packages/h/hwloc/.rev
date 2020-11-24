@@ -167,4 +167,12 @@
 - build against libnuma on all architectures</comment>
     <requestid>828324</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>7bb2f3d7bddf1c16f1db40e0ade625aa</srcmd5>
+    <version>2.2.0</version>
+    <time>1606252204</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850238</requestid>
+  </revision>
 </revisionlist>
