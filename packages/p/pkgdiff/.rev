@@ -7,4 +7,12 @@
     <comment>tool for visualizing changes in Linux software packages</comment>
     <requestid>497108</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a92a58b17a476232abfc65ed8907a730</srcmd5>
+    <version>1.7.2</version>
+    <time>1606252444</time>
+    <user>dimstar_suse</user>
+    <comment>- Package cleanup</comment>
+    <requestid>850387</requestid>
+  </revision>
 </revisionlist>
