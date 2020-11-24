@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-servicefabric
-Version:        7.1.0.45
+Version:        7.2.0.46
 Release:        0
 Summary:        Microsoft Azure Service Fabric Client Library
 License:        MIT
