@@ -17,7 +17,7 @@
 
 
 Name:           perl-Syntax-Keyword-Try
-Version:        0.18
+Version:        0.20
 Release:        0
 %define cpan_name Syntax-Keyword-Try
 Summary:        C<try/catch/finally> syntax for perl

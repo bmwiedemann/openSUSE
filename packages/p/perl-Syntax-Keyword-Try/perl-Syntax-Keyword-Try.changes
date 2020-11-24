@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov 24 03:06:24 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.20
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.20    2020-11-24
+          [BUGFIXES]
+           * Fix for perl 5.14 by #include'ing hax/ files in the right order
+
+  0.19    2020-11-24
+          [CHANGES]
+           * Avoid the core Off() and Bit() macros as they were removed after
+             perl 5.33.3
+           * Support :experimental(try_value) to activate and silence the
+             warning
+           * Add documentation about the scalar context propagation issue of
+             RT124229
+
+-------------------------------------------------------------------
 Sun Aug  2 03:12:52 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.18
