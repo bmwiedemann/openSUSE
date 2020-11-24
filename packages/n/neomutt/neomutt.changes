@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Sat Nov 21 13:47:00 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- add upstream signing key and validate source signature
+
+-------------------------------------------------------------------
+Sat Nov 21 11:56:38 UTC 2020 - Kai Liu <kai.liu@suse.com>
+
+- Update to 20201120. Address boo#1179035, CVE-2020-28896.
+  * Security
+    - imap: close connection on all failures
+  * Features
+    - alias: add function to Alias/Query dialogs
+    - config: add validators for {imap,smtp,pop}_authenticators
+    - config: warn when signature file is missing or not readable
+    - smtp: support for native SMTP LOGIN auth mech
+    - notmuch: show originating folder in index
+  * Bug Fixes
+    - sidebar: prevent the divider colour bleeding out
+    - sidebar: fix <sidebar-{next,prev}-new>
+    - notmuch: fix query for current email
+    - restore shutdown-hook functionality
+    - crash in reply-to
+    - user-after-free in folder-hook
+    - fix some leaks
+    - fix application of limits to modified mailboxes
+    - write Date header when postponing
+  * Translations
+    - 100% Lithuanian
+    - 100% Czech
+    - 70% Turkish
+  * Docs
+    - Document that $sort_alias affects the query menu
+  * Build
+    - improve ASAN flags
+    - add SASL and S/MIME to --everything
+    - fix contrib (un)install
+  * Code
+    - my_hdr compose screen notifications
+    - add contracts to the MXAPI
+    - maildir refactoring
+    - further reduce the use of global variables
+  * Upstream
+    - Add $count_alternatives to count attachments inside alternatives
+
+- Changes from 20200925
+  * Features
+    - Compose: display user-defined headers
+    - Address Book / Query: live sorting
+    - Address Book / Query: patterns for searching
+    - Config: Add '+=' and '-=' operators for String Lists
+    - Config: Add '+=' operator for Strings
+    - Allow postfix query ':setenv NAME?' for env vars
+  * Bug Fixes
+    - Fix crash when searching with invalid regexes
+    - Compose: Prevent infinite loop of send2-hooks
+    - Fix sidebar on new/removed mailboxes
+    - Restore indentation for named mailboxes
+    - Prevent half-parsing an alias
+    - Remove folder creation prompt for POP path
+    - Show error if $message_cachedir doesn't point to a valid directory
+    - Fix tracking LastDir in case of IMAP paths with Unicode characters
+    - Make sure all mail gets applied the index limit
+    - Add warnings to -Q query CLI option
+    - Fix index tracking functionality
+  * Changed Config
+    - Add $compose_show_user_headers (yes)
+  * Translations
+    - 100% Czech
+    - 100% Lithuanian
+    - Split up usage strings
+  * Build
+    - Run shellcheck on hcachever.sh
+    - Add the Address Sanitizer
+    - Move compose files to lib under compose/
+    - Move address config into libaddress
+    - Update to latest acutest - fixes a memory leak in the unit tests
+  * Code
+    - Implement ARRAY API
+    - Deglobalised the Config Sort functions
+    - Refactor the Sidebar to be Event-Driven
+    - Refactor the Color Event
+    - Refactor the Commands list
+    - Make ctx_update_tables private
+    - Reduce the scope/deps of some Validator functions
+    - Use the Email's IMAP UID instead of an increasing number as index
+    - debug: log window focus
+
+- Removed neomutt-sidebar-abbreviate-shorten-what-user-sees.patch.
+  No longer needed.
+
+- Misc spec file cleanups.
+
+-------------------------------------------------------------------
 Sun Aug 23 01:35:21 UTC 2020 - Kai Liu <kai.liu@suse.com>
 
 - Update to 20200821:

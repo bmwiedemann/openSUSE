@@ -17,14 +17,15 @@
 
 
 Name:           neomutt
-Version:        20200821
+Version:        20201120
 Release:        0
 Summary:        A command line mail reader (or MUA), a fork of Mutt with added features
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Clients
 URL:            https://neomutt.org
 Source:         https://github.com/neomutt/neomutt/archive/%{version}.tar.gz
-Patch0:         neomutt-sidebar-abbreviate-shorten-what-user-sees.patch
+Source2:        https://github.com/neomutt/neomutt/releases/download/%{version}/%{version}.tar.gz.sig
+Source3:        https://flatcap.org/id/richard.russon.neomutt.asc#/%{name}.keyring
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cyrus-sasl-devel
@@ -70,7 +71,6 @@ and requirements.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 export CFLAGS="%{optflags}"
@@ -98,7 +98,7 @@ make %{?_smp_mflags}
 
 %files
 %config(noreplace) %{_sysconfdir}/neomuttrc
-%license %{_docdir}/neomutt/LICENSE.md
+%license %{_docdir}/%{name}/LICENSE.md
 %{_bindir}/neomutt
 %{_mandir}/man1/neomutt.1%{?ext_man}
 %{_mandir}/man5/neomuttrc.5%{?ext_man}
@@ -111,19 +111,22 @@ make %{?_smp_mflags}
 %{_mandir}/man5/mbox_neomutt.5%{?ext_man}
 %{_mandir}/man5/mmdf_neomutt.5%{?ext_man}
 # this file is used from the default /etc/neomuttrc and moved from neomutt-doc
-%dir %{_docdir}/neomutt
-%doc %{_docdir}/neomutt/manual.txt
+%dir %{_docdir}/%{name}
+%doc %{_docdir}/%{name}/manual.txt
 
 %files doc
-%dir %{_docdir}/neomutt
+%dir %{_docdir}/%{name}
 %doc %{_docdir}/%{name}/README*
+%doc %{_docdir}/%{name}/AUTHORS.md
 %doc %{_docdir}/%{name}/ChangeLog.md
 %doc %{_docdir}/%{name}/CODE_OF_CONDUCT.md
-%doc %{_docdir}/neomutt/INSTALL.md
+%doc %{_docdir}/%{name}/CONTRIBUTING.md
+%doc %{_docdir}/%{name}/INSTALL.md
+%doc %{_docdir}/%{name}/SECURITY.md
 %dir %{_docdir}/%{name}/
 %doc %{_docdir}/%{name}/*.html
-%doc %{_docdir}/neomutt/mime.types
-%doc %{_docdir}/neomutt/smime-notes.txt
+%doc %{_docdir}/%{name}/mime.types
+%doc %{_docdir}/%{name}/smime-notes.txt
 %dir %doc %{_docdir}/%{name}/colorschemes/
 %doc %{_docdir}/%{name}/colorschemes/*.neomuttrc
 %dir %doc %{_docdir}/%{name}/keybase/
@@ -135,7 +138,6 @@ make %{?_smp_mflags}
 %doc %{_docdir}/%{name}/samples/*.rc
 %doc %{_docdir}/%{name}/samples/colors.*
 %doc %{_docdir}/%{name}/samples/sample.*
-%doc %{_docdir}/%{name}/samples/smime_keys_test.pl
 %dir %doc %{_docdir}/%{name}/vim-keys/
 %doc %{_docdir}/%{name}/vim-keys/*
 %dir %doc %{_docdir}/%{name}/hcache-bench/
