@@ -75,7 +75,7 @@
   boo#1174071: '20200714'
   boo#1174424: '20200729'
   boo#1174499: '20200728'
-  boo#1174680: '20201121'
+  boo#1174680: '20201123'
   boo#1174797: '20200805'
   boo#1174857: '20201123'
   boo#1175108: '20200831'
@@ -109,6 +109,7 @@
   boo#1177517: '20201123'
   boo#1177779: '20201026'
   boo#1177904: '20201022'
+  boo#1177923: '20201123'
   boo#1178050: '20201030'
   boo#1178096: '20201106'
   boo#1178451: '20201123'
@@ -128,6 +129,7 @@
   gh#os-autoinst/os-autoinst-distri-opensuse#10856: '20200825'
   gh#os-autoinst/os-autoinst-distri-opensuse#10982: '20200910'
   kde#427775: '20201014'
+  poo#42773: '20201123'
   poo#50399: '20200128'
   poo#55715: '20200414'
   poo#56267: '20200218'
@@ -284,7 +286,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20201123</value>
+    <value>20201124</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -507,9 +509,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20201123'
-published: '20201121'
-publishing: '20201121'
+    <value>failed: ''
+published: '20201123'
+publishing: '20201123'
 testing: '20201123'
 </value>
   </attribute>
