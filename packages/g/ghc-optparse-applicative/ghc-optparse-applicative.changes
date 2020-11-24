@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 23 09:59:18 UTC 2020 - psimons@suse.com
+
+- Update optparse-applicative to version 0.16.1.0.
+  ## Version 0.16.1.0 (21 Nov 2020)
+
+  - Guard `process` dependency behind an on by default flag.
+    This allows one to shrink the dependency tree significantly
+    by turning off the ability to use bash completion actions.
+
+  - Remove `bytestring` dependency from the test suite.
+
+-------------------------------------------------------------------
 Tue Aug 18 10:45:37 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.
