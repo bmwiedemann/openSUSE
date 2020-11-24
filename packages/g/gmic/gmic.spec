@@ -38,7 +38,7 @@
 %bcond_with opencv
 %endif
 Name:           gmic
-Version:        2.9.2
+Version:        2.9.3
 Release:        0
 Summary:        GREYC's Magick for Image Computing (denoise and others)
 # gmic-qt is GPL-3.0-or-later, zart is CECILL-2.0, libgmic and cli program are
@@ -154,6 +154,8 @@ a GUI for G'MIC real-time manipulations on the output of a webcam.
 
 %package bash-completion
 Summary:        Bash completion for gmic
+License:        CECILL-2.1
+Group:          Productivity/Graphics/Bitmap Editors
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
 

@@ -91,4 +91,12 @@
 - Update 0001-Don-t-use-CMake-commands-not-available-in-CMake-3.9.patch</comment>
     <requestid>832960</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>54fe53ffe4c994fb800f899f44a1c373</srcmd5>
+    <version>2.9.3</version>
+    <time>1606252274</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.9.3. No changelog.</comment>
+    <requestid>850266</requestid>
+  </revision>
 </revisionlist>
