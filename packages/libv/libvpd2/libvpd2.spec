@@ -1,7 +1,7 @@
 #
 # spec file for package libvpd2
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,15 @@
 
 
 Name:           libvpd2
-Version:        2.2.6
+Version:        2.2.8
 Release:        0
 Summary:        VPD Database access library for lsvpd
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Other
-URL:            https://github.com/open-power-host-os/libvpd
-Source:         http://downloads.sourceforge.net/project/linux-diag/libvpd/%{version}/libvpd-%{version}.tar.gz
-Source2:        baselibs.conf
+URL:            https://github.com/power-ras/libvpd
+Source:         https://github.com/power-ras/libvpd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        baselibs.conf
 Patch1:         libvpd2.makefile.patch
-Patch2:         udev-rules-don-t-touch-run.vpdupdate-for-ignored-dev.patch
-Patch3:         udev-rules-more-software-devices-to-ignore.patch
-Patch4:         udev-rules-don-t-generate-multiple-vpdupdate-events-.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++

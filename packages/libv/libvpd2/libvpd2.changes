@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 16 10:39:12 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 2.2.8 (jsc#SLE-12939).
+   - Reduce system load from vpdupdate udev rule
+   - VpdDbEnv: Make the sqlite operations asynchronous
+     This will improve `vpdupdate` performance quite a bit.
+  - Remove upstreamed patches
+    - udev-rules-don-t-touch-run.vpdupdate-for-ignored-dev.patch
+    - udev-rules-more-software-devices-to-ignore.patch
+    - udev-rules-don-t-generate-multiple-vpdupdate-events-.patch
+  - Update project and source URL
+
+-------------------------------------------------------------------
 Wed Feb 19 14:03:34 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
 
 - Amended existing patch
