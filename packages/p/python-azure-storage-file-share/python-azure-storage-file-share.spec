@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-storage-file-share
-Version:        12.2.0
+Version:        12.3.0
 Release:        0
 Summary:        Azure Storage File Share client library for Python
 License:        MIT
@@ -33,7 +33,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.2.2
+Requires:       python-azure-core >= 1.9.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-azure-storage-nspkg >= 3.0.0
 Requires:       python-cryptography >= 2.1.4
