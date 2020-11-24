@@ -1,7 +1,7 @@
 #
 # spec file for package filebench
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        File system and storage benchmark
 License:        CDDL-1.0
 Group:          System/Benchmark
-Url:            https://github.com/filebench/filebench/wiki
+URL:            https://github.com/filebench/filebench/wiki
 Source0:        https://github.com/filebench/filebench/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.1
 Patch0:         make-dofile-global.patch
@@ -41,23 +41,23 @@ database servers). Filebench is quick to set up and easy to use compared to
 deploying real applications. It is also a handy tool for micro-benchmarking.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
 autoreconf -fiv
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
-install -D -p -m 0644 %{SOURCE1} %{buildroot}%{_mandir}/man1/%{name}.1
+install -Dpm 0644 %{SOURCE1} \
+  %{buildroot}%{_mandir}/man1/%{name}.1
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING LICENSE NEWS README TODO
+%license COPYING LICENSE
+%doc AUTHORS ChangeLog NEWS README TODO
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog

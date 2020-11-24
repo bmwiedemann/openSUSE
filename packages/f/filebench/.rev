@@ -25,4 +25,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>484247</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f6a863c36d3d024fda7c7e41edc5279f</srcmd5>
+    <version>1.4.9.1</version>
+    <time>1606252474</time>
+    <user>dimstar_suse</user>
+    <comment>- Small packaging cleanup</comment>
+    <requestid>850468</requestid>
+  </revision>
 </revisionlist>
