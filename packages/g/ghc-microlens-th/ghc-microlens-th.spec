@@ -19,7 +19,7 @@
 %global pkg_name microlens-th
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.4.3.7
+Version:        0.4.3.8
 Release:        0
 Summary:        Automatic generation of record lenses for microlens
 License:        BSD-3-Clause
