@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 19 19:50:20 UTC 2020 - psimons@suse.com
+
+- Update yesod-core to version 1.6.18.7.
+  ## 1.6.18.7
+
+  * Fix functions generating Open Graph metadata[#1709](https://github.com/yesodweb/yesod/pull/1709)
+
+-------------------------------------------------------------------
 Sun Nov  8 12:53:01 UTC 2020 - psimons@suse.com
 
 - Update yesod-core to version 1.6.18.6.

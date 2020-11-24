@@ -47,4 +47,12 @@
     <comment>Automated update of haskell pckages</comment>
     <requestid>847881</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>09af2601825336beb02f3cdd8ef988a1</srcmd5>
+    <version>1.6.18.7</version>
+    <time>1606252493</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic update</comment>
+    <requestid>850499</requestid>
+  </revision>
 </revisionlist>
