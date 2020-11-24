@@ -157,7 +157,7 @@ export LDFLAGS="%{?build_ldflags} -Wl,-z,undefs"
 export XDG_RUNTIME_DIR="$PWD/xdg"
 mkdir -pm go-rwx "$XDG_RUNTIME_DIR"
 export BACKEND=headless-backend.so
-pushd build/
+pushd %_vpath_builddir/;
 if ! meson test; then
 	cat meson-logs/testlog.txt
 	# make check can not pass completely without an actual screen.
