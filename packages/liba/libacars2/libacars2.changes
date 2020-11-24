@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Nov 22 08:44:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.1
+  * Media Advisory: fixed a bug where a message with 10 or more
+    available link indicators could overflow the static buffer
+    and produce garbled result.
+  * Media Advisory: fixed a bug where a message with an
+    exceptionally long text field could cause buffer overrun and
+    crash the program.
+  * Media Advisory: replaced message parsing routine with a
+    simpler and more robust one.
+
+-------------------------------------------------------------------
 Sat Nov  7 10:30:26 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.1.0
