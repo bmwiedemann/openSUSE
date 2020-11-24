@@ -43,6 +43,26 @@ Helmfile is a declarative spec for deploying helm charts. It lets you...
 To avoid upgrades for each iteration of helm, the helmfile executable
 delegates to helm - as a result, helm must be installed.
 
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    packageand(%{name}:bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash command line completion support for %{name}.
+
+%package zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    packageand(%{name}:zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+Zsh command line completion support for %{name}.
+
 %prep
 %setup -qa1
 
@@ -53,10 +73,26 @@ go build -mod=vendor -buildmode=pie
 make TAG=v%{version} install
 mkdir -p %{buildroot}%{_bindir}
 install -m755 ${HOME}/go/bin/helmfile %{buildroot}/%{_bindir}/helmfile
+mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions
+install -m644 autocomplete/helmfile_bash_autocomplete \
+  %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
+mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d
+install -m644 autocomplete/helmfile_zsh_autocomplete \
+  %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/helmfile
+
+%files bash-completion
+%defattr(-,root,root)
+%dir %{_datarootdir}/bash-completion/completions/
+%{_datarootdir}/bash-completion/completions/%{name}
+
+%files zsh-completion
+%defattr(-,root,root)
+%dir %{_datarootdir}/zsh_completion.d/
+%{_datarootdir}/zsh_completion.d/_%{name}
 
 %changelog

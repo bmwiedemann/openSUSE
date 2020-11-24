@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 23 10:17:01 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Add bash and zsh completion sub-packages
+
+-------------------------------------------------------------------
 Thu Nov 19 09:42:48 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.135.0: Add support for Kustomize Transformers (#1592)
