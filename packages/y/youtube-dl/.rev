@@ -1329,4 +1329,12 @@
     <comment>- Update to release 2020.11.21.1</comment>
     <requestid>849894</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>e1d401f260e8a62115db3d9b780a1678</srcmd5>
+    <version>2020.11.24</version>
+    <time>1606252395</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2020.11.24</comment>
+    <requestid>850299</requestid>
+  </revision>
 </revisionlist>
