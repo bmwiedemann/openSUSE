@@ -69,4 +69,15 @@
     CHANGELOG.md file provided with this package (forwarded request 839795 from glaubitz)</comment>
     <requestid>839857</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7ab51099473a2b3bc95aa9774e0d47e5</srcmd5>
+    <version>2.0.0</version>
+    <time>1606252641</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 850444 from glaubitz)</comment>
+    <requestid>850547</requestid>
+  </revision>
 </revisionlist>

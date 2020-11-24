@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-loganalytics
-Version:        1.0.0
+Version:        2.0.0
 Release:        0
 Summary:        Microsoft Azure Log Analytics Management Client Library
 License:        MIT
