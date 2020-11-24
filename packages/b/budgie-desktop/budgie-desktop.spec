@@ -16,7 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 Name:           budgie-desktop
-Version:        10.5.1+21060898
+Version:        10.5.1+ed8be169
 Release:        0
 Summary:        GTK3 Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

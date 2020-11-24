@@ -165,4 +165,15 @@
 </comment>
     <requestid>845528</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>838018bf5548ffbc6232bc4085632205</srcmd5>
+    <version>10.5.1+ed8be169</version>
+    <time>1606252328</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 10.5.1+ed8be169:
+  * Precise fullscreen tracking in Abomination
+  * Update carbontray and fix its copyright headers
+  * Implement setting to choose which side of the screen Raven opens on (forwarded request 850310 from gmbr3)</comment>
+    <requestid>850311</requestid>
+  </revision>
 </revisionlist>
