@@ -23,7 +23,7 @@
 %endif
 %define major_ver 4.13
 %define qt5_version 5.12.0
-%define tar_version 4.13.2
+%define tar_version 4.13.3
 Name:           libqt5-creator
 Version:        4.13.2
 Release:        0
