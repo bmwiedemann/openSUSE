@@ -99,4 +99,18 @@
   * Fixes issue #148: CMake build script not in 0.5.0 tarball release</comment>
     <requestid>846147</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>16c666788b395aa4e8896c800f28ebaa</srcmd5>
+    <version>0.5.0+git.20201114</version>
+    <time>1606252461</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.0+git.20201114:
+  * Tests: fix path for cpuid_tool When we use CMake, the 'cpuid_tool' binary is in the 'build' directory
+  * DB: add Vermeer https://en.wikichip.org/wiki/amd/cores/vermeer Test file converted from http://users.atw.hu/instlatx64/AuthenticAMD/AuthenticAMD0A20F10_K19_Vermeer_CPUID1.txt
+  * DB: add Gemini Lake https://en.wikichip.org/wiki/intel/cores/gemini_lake Reported in X0rg/CPU-X#164
+  * DB: add Comet Lake-U https://en.wikipedia.org/wiki/Comet_Lake_(microprocessor)#U-series_(Medium_power) Reported in X0rg/CPU-X#162
+  * DB: add Kaby Lake-G https://en.wikichip.org/wiki/intel/cores/kaby_lake_g Test file converted from http://users.atw.hu/instlatx64/GenuineIntel/GenuineIntel00906E9_KabylakeG_CPUID.txt
+  * DB: add Kaby Lake Refresh https://en.wikichip.org/wiki/intel/cores/kaby_lake_r Core i5 8250U was detected as Coffee Lake wrongly. Reported in X0rg/CPU-X#161</comment>
+    <requestid>850394</requestid>
+  </revision>
 </revisionlist>
