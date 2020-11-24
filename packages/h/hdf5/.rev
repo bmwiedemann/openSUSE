@@ -674,4 +674,12 @@ fixed baselibs.conf compared to previous version</comment>
     <comment>- Add build support for gcc10 to HPC build (bsc#1174439). (forwarded request 833594 from eeich)</comment>
     <requestid>833710</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>f61f96d86de0f01175522a3595c93dc0</srcmd5>
+    <version>1.10.7</version>
+    <time>1606252163</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848498</requestid>
+  </revision>
 </revisionlist>

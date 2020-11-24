@@ -12,12 +12,12 @@ Index: hdf5-1.10.5/testpar/CMakeTests.cmake
 ===================================================================
 --- hdf5-1.10.5.orig/testpar/CMakeTests.cmake
 +++ hdf5-1.10.5/testpar/CMakeTests.cmake
-@@ -30,7 +30,7 @@ set (SKIP_testphdf5 "")
- #  set (SKIP_testphdf5 "${SKIP_testphdf5};-x;ecdsetw")
- #endif ()
+@@ -43,7 +43,7 @@
+   set (SKIP_testphdf5 "${SKIP_testphdf5};-x;${skiptest}")
+ endforeach ()
  
 -add_test (NAME MPI_TEST_testphdf5 COMMAND ${MPIEXEC_EXECUTABLE} ${MPIEXEC_NUMPROC_FLAG} ${MPIEXEC_MAX_NUMPROCS} ${MPIEXEC_PREFLAGS} $<TARGET_FILE:testphdf5> ${MPIEXEC_POSTFLAGS} ${SKIP_testphdf5})
-+## add_test (NAME MPI_TEST_testphdf5 COMMAND ${MPIEXEC_EXECUTABLE} ${MPIEXEC_NUMPROC_FLAG} ${MPIEXEC_MAX_NUMPROCS} ${MPIEXEC_PREFLAGS} $<TARGET_FILE:testphdf5> ${MPIEXEC_POSTFLAGS} ${SKIP_testphdf5})
++##add_test (NAME MPI_TEST_testphdf5 COMMAND ${MPIEXEC_EXECUTABLE} ${MPIEXEC_NUMPROC_FLAG} ${MPIEXEC_MAX_NUMPROCS} ${MPIEXEC_PREFLAGS} $<TARGET_FILE:testphdf5> ${MPIEXEC_POSTFLAGS} ${SKIP_testphdf5})
  set_tests_properties (MPI_TEST_testphdf5 PROPERTIES
      FIXTURES_REQUIRED par_clear_testphdf5
      ENVIRONMENT "HDF5_ALARM_SECONDS=3600;srcdir=${HDF5_TEST_PAR_BINARY_DIR}"

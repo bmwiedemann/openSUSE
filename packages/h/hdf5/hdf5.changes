@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Nov  6 10:41:02 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to version 1.10.7
+  * https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.6/src/hdf5-1.10.6-RELEASE.txt
+  * https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.7/src/hdf5-1.10.7-RELEASE.txt
+- Security bugs fixed: 
+  * CVE-2018-13870: heap-based buffer over-read in the function 
+    H5O_link_decode in H5Olink.c  (bsc#1101493)
+  * CVE-2018-13869: memcpy parameter overlap in the function 
+    H5O_link_decode in H5Olink.c (bsc#1101495)
+  * CVE-2018-17438:  A SIGFPE signal is raised in the function 
+    H5D__select_io() of H5Dselect.c in the HDF HDF5 through 1.10.3 
+    library during an attempted parse of a crafted HDF file, 
+    because of incorrect protection against division
+    (bsc#1109570)
+  * CVE-2018-17435: A heap-based buffer over-read in H5O_attr_decode() 
+    in H5Oattr.c in the HDF HDF5 through 1.10.3 library allows 
+    attackers to cause a denial of service via a crafted HDF5 file. 
+    (bsc#1109567)
+- Refresh patches
+
+-------------------------------------------------------------------
 Thu Jul 23 16:33:58 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Add build support for gcc10 to HPC build (bsc#1174439). 
@@ -71,6 +93,13 @@ Fri Aug 23 09:58:01 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Update to version 1.10.5: (jsc#SLE-8501)
   * https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.5/src/hdf5-1.10.5-RELEASE.txt
+- Security bugs fixed: 
+  * CVE-2018-17233: A SIGFPE signal is raised in the function 
+  H5D__create_chunk_file_map_hyper. (bsc#1109166)
+  * CVE-2018-17434: Memory leak in the H5O__chunk_deserialize() 
+  function in H5Ocache.c (bsc#1109167)
+  * CVE-2018-17437: A SIGFPE signal is raised in the function 
+  H5D__chunk_set_info_real. (bsc#1109168)
 - Bump fortran library soname, sonum_F from 100 to 102.
 - Adjust library installation path, use %hpc_prefix/lib64 in x86_64 
   and %hpc_libdir in all other cases
@@ -85,7 +114,6 @@ Fri Aug 23 09:58:01 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
   * hdf5-mpi.patch
 - Patch removed, merged upstream
   * 0001-Fix-return-value-in-test_libver_bounds_open.patch
-
 
 -------------------------------------------------------------------
 Thu Jul  4 11:45:55 UTC 2019 - Egbert Eich <eich@suse.com>
@@ -202,6 +230,26 @@ Fri Sep 21 14:50:12 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
   * hdf5-buildcompare.patch
   * hdf5-mpi.patch
 - Rebase Disable-phdf5-tests.patch
+- Security bugs fixed: 
+  * CVE-2017-17505: NULL pointer dereference in the function
+    H5O_pline_decode allowing for DoS via crafted file (bsc#1072087)
+  * CVE-2017-17506: Out of bounds read in the function 
+    H5Opline_pline_decode (bsc#1072090)
+  * CVE-2017-17508: divide-by-zero vulnerability in function 
+    H5T_set_loc (bsc#1072108)
+  * CVE-2017-17509: out of bounds write vulnerability in function 
+    H5G__ent_decode_vec (bsc#1072111)
+  * CVE-2018-11202: NULL pointer dereference in H5S_hyper_make_spans 
+    in H5Shyper.c allows a remote denial of service attack (bsc#1093641)
+  * CVE-2018-11203: division by zero in H5D__btree_decode_key in H5Dbtree.c
+    It could allow a remote denial of service attack (bsc#1093649)
+  * CVE-2018-11204: A NULL pointer dereference was discovered in 
+    H5O__chunk_deserialize in H5Ocache.c (bsc#1093655)
+  * CVE-2018-11206: A out of bounds read was discovered 
+    in H5O_fill_new_decode and H5O_fill_old_decode in H5Ofill.c
+    (bsc#1093657)
+  * CVE-2018-11207: division by zero was discovered in H5D__chunk_init 
+    in H5Dchunk.c (bsc#1093653)
 
 -------------------------------------------------------------------
 Tue Jun 19 06:15:06 UTC 2018 - eich@suse.com

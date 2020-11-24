@@ -11,10 +11,10 @@ Signed-off-by: Egbert Eich <eich@suse.com>
  hdf5-1.10.1/test/dt_arith.c                | 26 ++++++++++++++++++++++++--
  2 files changed, 40 insertions(+), 2 deletions(-)
 
-Index: hdf5-1.10.5/config/cmake/ConversionTests.c
+Index: hdf5-1.10.7/config/cmake/ConversionTests.c
 ===================================================================
---- hdf5-1.10.5.orig/config/cmake/ConversionTests.c
-+++ hdf5-1.10.5/config/cmake/ConversionTests.c
+--- hdf5-1.10.7.orig/config/cmake/ConversionTests.c
++++ hdf5-1.10.7/config/cmake/ConversionTests.c
 @@ -34,6 +34,14 @@ int HDF_NO_UBSAN main(void)
      unsigned char       s2[8];
      int                 ret = 1;
@@ -45,11 +45,11 @@ Index: hdf5-1.10.5/config/cmake/ConversionTests.c
      if(sizeof(long double) == 16) {
          /*make sure the long double type is the same as the failing type
           *which has 16 bytes in size and 11 bits of exponent.  If it is,
-Index: hdf5-1.10.5/test/dt_arith.c
+Index: hdf5-1.10.7/test/dt_arith.c
 ===================================================================
---- hdf5-1.10.5.orig/test/dt_arith.c
-+++ hdf5-1.10.5/test/dt_arith.c
-@@ -3051,7 +3051,18 @@ test_conv_flt_1 (const char *name, int r
+--- hdf5-1.10.7.orig/test/dt_arith.c
++++ hdf5-1.10.7/test/dt_arith.c
+@@ -3045,7 +3045,18 @@ test_conv_flt_1 (const char *name, int r
                          buf, saved, nelmts);
  #if H5_SIZEOF_LONG_DOUBLE!=H5_SIZEOF_DOUBLE && H5_SIZEOF_LONG_DOUBLE!=0
              } else if(src_type == FLT_LDOUBLE) {
@@ -69,7 +69,7 @@ Index: hdf5-1.10.5/test/dt_arith.c
                          buf, saved, nelmts);
  #endif
              } else
-@@ -3711,7 +3722,18 @@ test_conv_int_fp(const char *name, int r
+@@ -3705,7 +3716,18 @@ test_conv_int_fp(const char *name, int r
              INIT_FP_DENORM(long double, LDBL_MANT_DIG, src_size, src_nbits, sendian, dst_size,
                      buf, saved, nelmts);
          } else {

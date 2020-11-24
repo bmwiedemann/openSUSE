@@ -34,8 +34,8 @@
 
 %define use_sz2 0
 
-%define vers 1.10.5
-%define _vers 1_10_5
+%define vers 1.10.7
+%define _vers 1_10_7
 %define short_ver 1.10
 %define src_ver %{version}
 %define pname hdf5
@@ -785,13 +785,13 @@ make install DESTDIR=%{buildroot}
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %if %{without mpi}
-find %{buildroot}%{_prefix}/share/hdf5_examples -type f \
-                 | grep -v ".sh$" | xargs chmod 644
+
 %if %{with hpc}
 # copy to versioned subdir
 install -m 755 -d %{buildroot}%{_prefix}/share/%{version}
-mv %{buildroot}%{_prefix}/share/hdf5_examples/* \
-    %{buildroot}%{_prefix}/share/%{version}
+install -m 755 -d %{buildroot}%{_prefix}/share/hdf5_examples
+mv %{buildroot}%{_prefix}/lib/hpc/*/hdf5/*/share/hdf5_examples/* \
+    %{buildroot}%{_prefix}/share/%{version}/
 mv %{buildroot}%{_prefix}/share/%{version} \
     %{buildroot}%{_prefix}/share/hdf5_examples
 %else
@@ -805,9 +805,10 @@ cat > %{buildroot}%{_rpmconfigdir}/macros.d/macros.hdf5 <<EOF
 %_hdf5_version  %{version}
 EOF
 %endif
+
 %else
 # delete examples from parallel builds
-rm -rf %{buildroot}%{_prefix}/share/hdf5_examples
+find  %{buildroot} -type d -name "hdf5_examples" -exec rm -rf {} +;
 %endif
 
 %fdupes -s %{buildroot}/%{_datadir}
@@ -906,19 +907,16 @@ export HDF5_Make_Ignore=yes
 
 %if %{without mpi}
 %files -n %{vname}-examples
-%defattr(-,root,root)
 %{?with_hpc:%dir %{_prefix}/share/hdf5_examples}
 %{_prefix}/share/hdf5_examples%{?with_hpc:/%{version}}
 
 %if %{without hpc}
 %files -n %{pname}-devel-data
-%defattr(-,root,root,-)
 %{_rpmconfigdir}/macros.d/macros.hdf5
 %endif
 %endif # ?mpi
 
 %files -n %{name}
-%defattr(-,root,root)
 %{?with_hpc:%dir %my_bindir}
 %{my_bindir}/gif2h5
 %{my_bindir}/h52gif
@@ -943,9 +941,10 @@ export HDF5_Make_Ignore=yes
 %{my_bindir}/h5stat
 %{my_bindir}/h5unjam
 %{my_bindir}/h5watch
+%{my_bindir}/mirror_server
+%{my_bindir}/mirror_server_stop
 
 %files -n %{libname -s %{sonum}}
-%defattr(-,root,root)
 %doc ACKNOWLEDGMENTS README.txt
 %mylicense COPYING 
 ##
@@ -959,7 +958,6 @@ export HDF5_Make_Ignore=yes
 %{my_libdir}/libhdf5.so.%{sonum}.*
 
 %files -n %{libname -l _hl -s %{sonum_HL}}
-%defattr(-,root,root)
 %mylicense COPYING
 %defattr(0755,root,root)
 %{?with_hpc:%hpc_dirs}
@@ -967,7 +965,6 @@ export HDF5_Make_Ignore=yes
 %{my_libdir}/libhdf5_hl.so.%{sonum_HL}.*
 
 %files -n %{libname -l _cpp -s %{sonum_CXX}}
-%defattr(-,root,root)
 %mylicense COPYING
 %defattr(0755,root,root)
 %{?with_hpc:%hpc_dirs}
@@ -975,7 +972,6 @@ export HDF5_Make_Ignore=yes
 %{my_libdir}/libhdf5_cpp.so.%{sonum_CXX}.*
 
 %files -n %{libname -l _hl_cpp -s %{sonum_HL_CXX}}
-%defattr(-,root,root)
 %mylicense COPYING
 %defattr(0755,root,root)
 %{?with_hpc:%hpc_dirs}
@@ -983,7 +979,6 @@ export HDF5_Make_Ignore=yes
 %{my_libdir}/libhdf5_hl_cpp.so.%{sonum_HL_CXX}.*
 
 %files -n %{libname -l _fortran -s %{sonum_F}}
-%defattr(-,root,root)
 %mylicense COPYING
 %defattr(0755,root,root)
 %{?with_hpc:%hpc_dirs}
@@ -991,7 +986,6 @@ export HDF5_Make_Ignore=yes
 %{my_libdir}/libhdf5_fortran.so.%{sonum_F}.*
 
 %files -n %{libname -l hl_fortran -s %{sonum_HL_F}}
-%defattr(-,root,root)
 %mylicense COPYING
 %defattr(0755,root,root)
 %{?with_hpc:%hpc_dirs}
@@ -1000,12 +994,10 @@ export HDF5_Make_Ignore=yes
 
 %if %{with hpc}
 %files module
-%defattr(-,root,root)
 %hpc_modules_files
 %endif
 
 %files devel
-%defattr(-,root,root)
 ##
 %{?with_hpc:%dir %{my_incdir}}
 %doc release_docs/HISTORY-1_0-1_8_0_rc3.txt
@@ -1031,7 +1023,6 @@ export HDF5_Make_Ignore=yes
 %{my_incdir}/*.mod
 
 %files devel-static
-%defattr(-,root,root)
 %{my_libdir}/*.a
 
 %changelog
