@@ -28,4 +28,15 @@
 - Rename README.rst to README.md in %files section (forwarded request 821911 from glaubitz)</comment>
     <requestid>821943</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>98bc374d02191785f0486002cc73daff</srcmd5>
+    <version>0.6.0</version>
+    <time>1606252671</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.6.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 850449 from glaubitz)</comment>
+    <requestid>850550</requestid>
+  </revision>
 </revisionlist>
