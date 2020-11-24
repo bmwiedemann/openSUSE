@@ -1,7 +1,7 @@
 #
 # spec file for package txt2man
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           txt2man
-Version:        1.6.0
+Version:        1.7.1
 Release:        0
 Summary:        Convert Flat ASCII Text to man Page Format
 License:        GPL-2.0-or-later
@@ -32,9 +32,10 @@ Txt2man converts flat ASCII text to man page format. It is a shell
 script using gnu awk, that should run on any Unix like system.
 
 %prep
-%setup -q -n txt2man-txt2man-1.6.0
+%autosetup -n %{name}-%{name}-%{version}
 
 %build
+%make_build
 
 %install
 install -Dpm 0755 bookman %{buildroot}%{_bindir}/bookman

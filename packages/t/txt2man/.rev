@@ -23,4 +23,24 @@
     <comment>- Modernise spec file using spec-cleaner</comment>
     <requestid>585859</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c79ed5909c4a569567b321b47fc4d3d8</srcmd5>
+    <version>1.7.1</version>
+    <time>1606252449</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.1:
+  * txt2man: remove ksh check (@eribertomota)
+  * src2man: make it compliant with gawk &gt;= 5.0.1 (@eribertomota)
+  * txt2man: allow punctuation characters in section names
+  * txt2man: allow display blocks starting with a number
+  * *man: check for dependencies (@eribertomota)
+  * build: make build reproducible
+- Changes for version 1.7.0:
+  * bookman: added missing space (@marxst)
+  * txt2man: remove redundant escapes causing gawk warnings (@jolmg)
+  * *man: Fix usage of the date command on BSD systems (@ismaell)
+  * txt2man: fix -B option (@bgstack15)
+  * src2man: Print names of manuals to stdout (@ldorau)</comment>
+    <requestid>850392</requestid>
+  </revision>
 </revisionlist>
