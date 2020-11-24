@@ -18,7 +18,7 @@
 
 %global pkg_name git-lfs
 Name:           ghc-%{pkg_name}
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Git-lfs protocol
 License:        AGPL-3.0-or-later
@@ -50,8 +50,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver aeson '<= 1.5' '< 2'
-cabal-tweak-dep-ver http-client '<= 0.7' '< 1'
 
 %build
 %ghc_lib_build
