@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 24 00:58:48 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v3.0.0
+  * Change default behavior to `--from=mixed`
+
+-------------------------------------------------------------------
 Sun Oct  4 14:33:50 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Add missing runtime dependency on pip

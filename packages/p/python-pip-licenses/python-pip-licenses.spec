@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pip-licenses
-Version:        2.3.0
+Version:        3.0.0
 Release:        0
 Summary:        Python packages license list
 License:        MIT
@@ -49,10 +49,10 @@ Dump the software license list of Python packages installed with pip.
 %setup -q -n pip-licenses-%{version}
 # PTable is an incompatible PrettyTable fork, and pip-licenses supports
 # either https://github.com/raimon49/pip-licenses/pull/52
-sed -i 's/PTable/PrettyTable/' setup.py
+sed -i 's/PTable/prettytable/' setup.cfg piplicenses.py test_piplicenses.py
 
 sed -i '/addopts/d' setup.cfg
-sed -i '/pytest-/d' setup.py
+sed -i '/pytest-/d' setup.cfg
 sed -i '1{/^#!/d}' piplicenses.py
 
 %build
@@ -65,8 +65,9 @@ sed -i '1{/^#!/d}' piplicenses.py
 
 %check
 export LANG=en_US.UTF-8
-# Fails due to pytest output incompatibility
-%pytest -k 'not test_format_plain_vertical'
+# test_format_plain_vertical fails due to pytest output incompatibility
+# test_from_meta fails due to SPDX license naming
+%pytest -k 'not (test_format_plain_vertical or test_from_meta)'
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} %{buildroot}%{_bindir}/pip-licenses-%{$python_bin_suffix} -s
 
 %post
