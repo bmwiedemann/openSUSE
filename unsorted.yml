@@ -8444,6 +8444,8 @@ unsorted:
   - laptop-mode-tools-gui 
   - lasem 
   - lasem-devel 
+  - lash 
+  - lash-devel 
   - last-resort-font 
   - lastpass-cli 
   - laszip-devel 
@@ -11771,6 +11773,8 @@ unsorted:
   - liblapacke3 
   - liblapacke3-32bit: [x86_64] 
   - liblasem-0_4-4 
+  - liblash1 
+  - liblash1-32bit: [x86_64] 
   - liblasso-devel 
   - liblasso3 
   - liblastfm-qt5-devel 
@@ -13513,7 +13517,7 @@ unsorted:
   - librrd8 
   - librsb-devel 
   - librsb0 
-  - librssguard-3_8_1 
+  - librssguard-3_8_2 
   - librssguard-devel 
   - librsvg-2-2-32bit: [x86_64] 
   - librsvg-devel 
@@ -21069,6 +21073,7 @@ unsorted:
   - python2-setuptools 
   - python3-APScheduler 
   - python3-AnyQt 
+  - python3-Arcus 
   - python3-Arpeggio 
   - python3-Authlib 
   - python3-BTrees 
@@ -22586,6 +22591,7 @@ unsorted:
   - python3-langtable 
   - python3-language-check 
   - python3-lark-parser 
+  - python3-lash 
   - python3-lasso 
   - python3-latexcodec 
   - python3-lazr.uri 
@@ -25715,6 +25721,7 @@ unsorted:
   - scap-workbench 
   - scap-workbench-doc 
   - scat 
+  - sccache: [x86_64] 
   - sccs 
   - scdl 
   - scdoc 
@@ -26515,6 +26522,7 @@ unsorted:
   - system-config-printer-common: [i586] 
   - system-config-printer-common-lang: [i586] 
   - system-config-printer-dbus-service: [i586] 
+  - system-group-kvm 
   - system-group-obsolete 
   - system-user-flatpak: [i586] 
   - system-user-libvirt-dbus 
