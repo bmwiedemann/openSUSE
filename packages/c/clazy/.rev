@@ -92,4 +92,13 @@
     <comment></comment>
     <requestid>844114</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>e1f2f6645158b9ea33dc960f86ec13c0</srcmd5>
+    <version>1.7</version>
+    <time>1606252173</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure the clang executables matching the libraries we link
+  to are installed (mitigates boo#1178637).</comment>
+    <requestid>849485</requestid>
+  </revision>
 </revisionlist>

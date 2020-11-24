@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 19 17:55:04 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Make sure the clang executables matching the libraries we link
+  to are installed (mitigates boo#1178637).
+
+-------------------------------------------------------------------
 Mon Oct 26 14:38:09 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patches to address build issues with LLVM11:

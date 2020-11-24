@@ -31,6 +31,7 @@ BuildRequires:  clang
 BuildRequires:  clang-devel >= 5.0
 BuildRequires:  cmake >= 3.7
 BuildRequires:  libstdc++-devel
+Requires:       clang%{_llvm_sonum}
 
 %description
 clazy is a compiler plugin which allows Clang to understand Qt semantics.
