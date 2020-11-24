@@ -17,15 +17,14 @@
 
 
 Name:           git-subrepo
-Version:        0.4.1
+Version:        0.4.3
 Release:        0
 Summary:        Git Submodule Alternative
 License:        MIT
 Group:          Development/Tools/Version Control
 URL:            https://github.com/ingydotnet/git-subrepo
-Source:         https://github.com/ingydotnet/git-subrepo/archive/0.4.1.tar.gz
+Source:         https://github.com/ingydotnet/git-subrepo/archive/0.4.3.tar.gz
 Patch0:         fix-shebangs.patch
-Patch1:         fix-zsh-completion.patch
 BuildRequires:  bash >= 4
 BuildRequires:  git >= 2.7
 BuildRequires:  make
@@ -60,7 +59,6 @@ zsh shell completions for git-subrepo
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p0
 
 %build
 

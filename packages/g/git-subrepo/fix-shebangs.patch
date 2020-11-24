@@ -20,15 +20,6 @@ index 5178550..cc3de54 100755
  #------------------------------------------------------------------------------
  # Bash+ - Modern Bash Programming
  #
-diff --git a/ext/bashplus/lib/bash+.bash b/ext/bashplus/lib/bash+.bash
-index e33f626..4d71fd5 100644
---- a/ext/bashplus/lib/bash+.bash
-+++ b/ext/bashplus/lib/bash+.bash
-@@ -1,3 +1,4 @@
-+#!/bin/bash
- # bash+ - Modern Bash Programming
- #
- # Copyright (c) 2013-2016 Ingy döt Net
 diff --git a/lib/git-subrepo b/lib/git-subrepo
 index 3b8f562..741c3d8 100755
 --- a/lib/git-subrepo

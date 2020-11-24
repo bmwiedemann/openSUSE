@@ -9,4 +9,12 @@ It has been added already to several distributions and will soon be added to Deb
 https://repology.org/project/git-subrepo/versions</comment>
     <requestid>811390</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e2edb5b4bb28e0219674bdba8c45b737</srcmd5>
+    <version>0.4.3</version>
+    <time>1606252476</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850472</requestid>
+  </revision>
 </revisionlist>
