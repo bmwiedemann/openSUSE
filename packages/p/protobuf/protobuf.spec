@@ -17,23 +17,23 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define sover 23
+%define sover 25
 %define tarname protobuf
 %define src_install_dir %{_prefix}/src/%{name}
 %define extra_java_flags -source 7 -target 7
 # requires gmock, which is not yet in the distribution
-%bcond_with check
+%bcond_with    check
 %bcond_without java
 %bcond_without python2
 %bcond_without python3
 Name:           protobuf
-Version:        3.12.3
+Version:        3.14.0
 Release:        0
 Summary:        Protocol Buffers - Google's data interchange format
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-URL:            https://github.com/google/protobuf/
-Source0:        https://github.com/google/protobuf/archive/v%{version}.tar.gz#/%{tarname}-%{version}.tar.gz
+URL:            https://github.com/protocolbuffers/protobuf
+Source0:        https://github.com/protocolbuffers/protobuf/archive/v%{version}.tar.gz#/%{tarname}-%{version}.tar.gz
 Source1:        manifest.txt.in
 Source2:        baselibs.conf
 BuildRequires:  %{python_module devel}
@@ -55,6 +55,16 @@ BuildRequires:  libgmock-devel >= 1.7.0
 %if %{with java}
 BuildRequires:  java-devel >= 1.6.0
 BuildRequires:  javapackages-local
+%endif
+
+%if 0%{?python38_version_nodots}
+# if python multiflavor is in place yet, use it to generate subpackages
+%define python_subpackage_only 1
+%python_subpackages
+%else
+# same "defaults" for all distributions, used in files section
+%define python_files() -n python3-%{**}
+%define python_sitelib %{python3_sitelib}
 %endif
 
 %description
@@ -124,6 +134,16 @@ Requires:       java >= 1.6.0
 %description -n %{name}-java
 This package contains the Java bindings for Google Protocol Buffers.
 
+%if 0%{?python_subpackage_only}
+%package -n python-%{name}
+Summary:        Python Bindings for Google Protocol Buffers
+Group:          Development/Libraries/Python
+Requires:       python-six >= 1.9
+
+%description -n python-%{name}
+This package contains the Python bindings for Google Protocol Buffers.
+
+%else
 %package -n python2-%{name}
 Summary:        Python2 Bindings for Google Protocol Buffers
 Group:          Development/Libraries/Python
@@ -141,6 +161,7 @@ Requires:       python3-six >= 1.9
 
 %description -n python3-%{name}
 This package contains the Python bindings for Google Protocol Buffers.
+%endif
 
 %prep
 %autosetup -n %{tarname}-%{version}
@@ -259,16 +280,16 @@ find %{buildroot}%{src_install_dir} -type f -name ".gitignore" -exec rm -f "{}" 
 %{_javadir}/%{name}.jar
 %endif
 
-%if %{with python2}
+%if %{with python2} && ! 0%{?python_subpackage_only}
 %files -n python2-%{name}
 %license LICENSE
 %{python2_sitelib}/*
 %endif
 
-%if %{with python3}
-%files -n python3-%{name}
+%if %{with python3} || ( %{with python2} && 0%{?python_subpackage_only} )
+%files %{python_files %{name}}
 %license LICENSE
-%{python3_sitelib}/*
+%{python_sitelib}/*
 %endif
 
 %changelog

@@ -429,4 +429,135 @@
     <comment></comment>
     <requestid>817959</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>33589f4dec339749704316c649e50030</srcmd5>
+    <version>3.14.0</version>
+    <time>1606328858</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated URL to https://github.com/protocolbuffers/protobuf
+- Update to v3.14.0
+  Protocol Compiler
+  * The proto compiler no longer requires a .proto filename when it is not
+    generating code.
+  * Added flag `--deterministic_output` to `protoc --encode=...`.
+  * Fixed deadlock when using google.protobuf.Any embedded in aggregate options.
+  C++
+  * Arenas are now unconditionally enabled. cc_enable_arenas no longer has
+    any effect.
+  * Removed inlined string support, which is incompatible with arenas.
+  * Fix a memory corruption bug in reflection when mixing optional and
+    non-optional fields.
+  * Make SpaceUsed() calculation more thorough for map fields.
+  * Add stack overflow protection for text format with unknown field values.
+  * FieldPath::FollowAll() now returns a bool to signal if an out-of-bounds
+    error was encountered.
+  * Performance improvements for Map.
+  * Minor formatting fix when dumping a descriptor to .proto format with
+    DebugString.
+  * UBSAN fix in RepeatedField
+  * When running under ASAN, skip a test that makes huge allocations.
+  * Fixed a crash that could happen when creating more than 256 extensions in
+    a single message.
+  * Fix a crash in BuildFile when passing in invalid descriptor proto.
+  * Parser security fix when operating with CodedInputStream.
+  * Warn against the use of AllowUnknownExtension.
+  * Migrated to C++11 for-range loops instead of index-based loops where
+    possible. This fixes a lot of warnings when compiling with -Wsign-compare.
+  * Fix segment fault for proto3 optional
+  * Adds a CMake option to build `libprotoc` separately
+  Java
+  * Bugfix in mergeFrom() when a oneof has multiple message fields.
+  * Fix RopeByteString.RopeInputStream.read() returning -1 when told to read
+    0 bytes when not at EOF.
+  * Redefine remove(Object) on primitive repeated field Lists to avoid
+    autoboxing.
+  * Support &quot;\u&quot; escapes in textformat string literals.
+  * Trailing empty spaces are no longer ignored for FieldMask.
+  * Fix FieldMaskUtil.subtract to recursively remove mask.
+  * Mark enums with `@java.lang.Deprecated` if the proto enum has option
+    `deprecated = true;`.
+  * Adding forgotten duration.proto to the lite library
+  Python
+  * Print google.protobuf.NullValue as null instead of &quot;NULL_VALUE&quot; when it is
+    used outside WKT Value/Struct.
+  * Fix bug occurring when attempting to deep copy an enum type in python 3.
+  * Add a setuptools extension for generating Python protobufs
+  * Remove uses of pkg_resources in non-namespace packages
+  * [bazel/py] Omit google/__init__.py from the Protobuf runtime
+  * Removed the unnecessary setuptools package dependency for Python package
+  * Fix PyUnknownFields memory leak
+  PHP
+  * Added support for &quot;==&quot; to the PHP C extension
+  * Added `==` operators for Map and Array
+  * Native C well-known types
+  * Optimized away hex2bin() call in generated code
+  * New version of upb, and a new hash function wyhash in third_party
+  * add missing hasOneof method to check presence of oneof fields
+  Go:
+  * Update go_package options to reference google.golang.org/protobuf module.
+  C#:
+  * annotate ByteString.CopyFrom(ReadOnlySpan&lt;byte&gt;) as SecuritySafeCritical
+  * Fix C# optional field reflection when there are regular fields too
+  * Fix parsing negative Int32Value that crosses segment boundary
+  Javascript:
+  * JS: parse (un)packed fields conditionally
+- from version 3.13.0
+  PHP:
+  * The C extension is completely rewritten. The new C extension has significantly
+    better parsing performance and fixes a handful of conformance issues. It will
+    also make it easier to add support for more features like proto2 and proto3 presence.
+  * The new C extension does not support PHP 5.x. PHP 5.x users can still use pure-PHP.
+  C++:
+  * Removed deprecated unsafe arena string accessors
+  * Enabled heterogeneous lookup for std::string keys in maps.
+  * Removed implicit conversion from StringPiece to std::string
+  * Fix use-after-destroy bug when the Map is allocated in the arena.
+  * Improved the randomness of map ordering
+  * Added stack overflow protection for text format with unknown fields
+  * Use std::hash for proto maps to help with portability.
+  * Added more Windows macros to proto whitelist.
+  * Arena constructors for map entry messages are now marked &quot;explicit&quot;
+    (for regular messages they were already explicit).
+  * Fix subtle aliasing bug in RepeatedField::Add
+  * Fix mismatch between MapEntry ByteSize and Serialize with respect to unset
+    fields.
+  Python:
+  * JSON format conformance fixes:
+    * Reject lowercase t for Timestamp json format.
+    * Print full_name directly for extensions (no camelCase).
+    * Reject boolean values for integer fields.
+    * Reject NaN, Infinity, -Infinity that is not quoted.
+    * Base64 fixes for bytes fields: accept URL-safe base64 and missing padding.
+  * Bugfix for fields/files named &quot;async&quot; or &quot;await&quot;.
+  * Improved the error message when AttributeError is returned from __getattr__
+    in EnumTypeWrapper.
+  Java:
+  * Fixed a bug where setting optional proto3 enums with setFooValue() would
+    not mark the value as present.
+  * Add Subtract function to FieldMaskUtil.
+  C#:
+  * Dropped support for netstandard1.0 (replaced by support for netstandard1.1).
+    This was required to modernize the parsing stack to use the `Span&lt;byte&gt;`
+    type internally
+  * Add `ParseFrom(ReadOnlySequence&lt;byte&gt;)` method to enable GC friendly
+    parsing with reduced allocations and buffer copies
+  * Add support for serialization directly to a `IBufferWriter&lt;byte&gt;` or
+    to a `Span&lt;byte&gt;` to enable GC friendly serialization.
+    The new API is available as extension methods on the `IMessage` type
+  * Add `GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE` define to make
+    generated code compatible with old C# compilers (pre-roslyn compilers
+    from .NET framework and old versions of mono) that do not support
+    ref structs. Users that are still on a legacy stack that does
+    not support C# 7.2 compiler might need to use the new define
+    in their projects to be able to build the newly generated code
+  * Due to the major overhaul of parsing and serialization internals,
+    it is recommended to regenerate your generated code to achieve the best
+    performance (the legacy generated code will still work, but might incur
+    a slight performance penalty).
+- Fix the python subpackage generation
+  gh#openSUSE/python-rpm-macros#79
+- Support multiple python3 flavors gh#openSUSE/python-rpm-macros#66
+</comment>
+    <requestid>850509</requestid>
+  </revision>
 </revisionlist>
