@@ -741,4 +741,13 @@
     <comment>KDE Applications 20.08.3 (forwarded request 846547 from luca_b)</comment>
     <requestid>846724</requestid>
   </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>483e9916fdcf18718cf086178c8c5d81</srcmd5>
+    <version>20.08.3</version>
+    <time>1606328974</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with Qt 5.15.2:
+  * 0001-Portaway-from-Obsolete-methods-of-QPrinter.patch</comment>
+    <requestid>850474</requestid>
+  </revision>
 </revisionlist>

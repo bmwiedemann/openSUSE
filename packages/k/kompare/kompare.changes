@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 24 12:55:14 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with Qt 5.15.2:
+  * 0001-Portaway-from-Obsolete-methods-of-QPrinter.patch
+
+-------------------------------------------------------------------
 Thu Nov  5 22:46:55 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.08.3

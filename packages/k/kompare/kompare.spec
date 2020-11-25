@@ -28,6 +28,8 @@ License:        GPL-2.0-only AND GFDL-1.2-only
 Group:          Development/Tools/Other
 URL:            https://www.kde.org/
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Portaway-from-Obsolete-methods-of-QPrinter.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
@@ -66,7 +68,7 @@ Development files for the File Comparator package
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %ifarch ppc64
