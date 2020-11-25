@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 23 19:30:05 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix crash which can be triggerd with steam or claws mail:
+  https://gitlab.gnome.org/GNOME/gnome-shell/-/commit/98234acd5b48a58c2d112b5edb3dddb85e04a643.patch
+
+-------------------------------------------------------------------
 Thu Oct  8 03:38:01 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.38.1:
