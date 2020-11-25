@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 24 11:46:21 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Small package cleanup
+
+-------------------------------------------------------------------
 Tue Mar  6 09:15:05 UTC 2018 - schwab@suse.de
 
 - testsuite-race.patch: fix race condition in testsuite
