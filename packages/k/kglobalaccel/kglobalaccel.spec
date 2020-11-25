@@ -36,6 +36,8 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Revert-systemd-dbus-activation.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -172,6 +174,7 @@ does not need focus for them to be activated.
 %{_kf5_plugindir}/org.kde.kglobalaccel5.platforms/KF5GlobalAccelPrivateXcb.so
 %{_kf5_sharedir}/dbus-1/services/org.kde.kglobalaccel.service
 %{_kf5_servicesdir}/kglobalaccel5.desktop
-%{_userunitdir}/plasma-kglobalaccel.service
+#Disabled by Patch1
+#%{_userunitdir}/plasma-kglobalaccel.service
 
 %changelog

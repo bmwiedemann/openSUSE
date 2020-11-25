@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 20 20:41:50 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to workaround kglobalaccel breaking persistently after
+  unclean logout (kde#429415, boo#1179033)
+  * 0001-Revert-systemd-dbus-activation.patch
+
+-------------------------------------------------------------------
 Sat Nov  7 21:34:44 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.76.0
