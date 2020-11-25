@@ -1865,6 +1865,8 @@ unsorted:
   - cheese-devel 
   - cheese-lang: [i586] 
   - chemical-mime-data 
+  - cherrytree 
+  - cherrytree-lang 
   - chessx 
   - chezdav 
   - chmlib-devel 
@@ -5922,6 +5924,7 @@ unsorted:
   - google-exo-fonts 
   - google-gson 
   - google-gson-javadoc 
+  - google-guest-agent 
   - google-guest-configs 
   - google-guest-oslogin 
   - google-guice 
@@ -5946,6 +5949,7 @@ unsorted:
   - google-oauth-java-client-javadoc 
   - google-oauth-java-client-parent 
   - google-oauth-java-client-servlet 
+  - google-osconfig-agent 
   - google-quiche-source 
   - google-roboto-mono-fonts 
   - google-roboto-slab-fonts 
@@ -6520,35 +6524,35 @@ unsorted:
   - hdf5-openmpi4-devel 
   - hdf5-openmpi4-devel-32bit: [x86_64] 
   - hdf5-openmpi4-devel-static 
-  - hdf5_1_10_5-gnu-hpc 
-  - hdf5_1_10_5-gnu-hpc-devel 
-  - hdf5_1_10_5-gnu-hpc-devel-static 
-  - hdf5_1_10_5-gnu-hpc-module 
-  - hdf5_1_10_5-gnu-mpich-hpc 
-  - hdf5_1_10_5-gnu-mpich-hpc-devel 
-  - hdf5_1_10_5-gnu-mpich-hpc-devel-static 
-  - hdf5_1_10_5-gnu-mpich-hpc-module 
-  - hdf5_1_10_5-gnu-mvapich2-hpc 
-  - hdf5_1_10_5-gnu-mvapich2-hpc-devel 
-  - hdf5_1_10_5-gnu-mvapich2-hpc-devel-static 
-  - hdf5_1_10_5-gnu-mvapich2-hpc-module 
-  - hdf5_1_10_5-gnu-openmpi1-hpc 
-  - hdf5_1_10_5-gnu-openmpi1-hpc-devel 
-  - hdf5_1_10_5-gnu-openmpi1-hpc-devel-static 
-  - hdf5_1_10_5-gnu-openmpi1-hpc-module 
-  - hdf5_1_10_5-gnu-openmpi2-hpc 
-  - hdf5_1_10_5-gnu-openmpi2-hpc-devel 
-  - hdf5_1_10_5-gnu-openmpi2-hpc-devel-static 
-  - hdf5_1_10_5-gnu-openmpi2-hpc-module 
-  - hdf5_1_10_5-gnu-openmpi3-hpc 
-  - hdf5_1_10_5-gnu-openmpi3-hpc-devel 
-  - hdf5_1_10_5-gnu-openmpi3-hpc-devel-static 
-  - hdf5_1_10_5-gnu-openmpi3-hpc-module 
-  - hdf5_1_10_5-gnu-openmpi4-hpc 
-  - hdf5_1_10_5-gnu-openmpi4-hpc-devel 
-  - hdf5_1_10_5-gnu-openmpi4-hpc-devel-static 
-  - hdf5_1_10_5-gnu-openmpi4-hpc-module 
-  - hdf5_1_10_5-hpc-examples 
+  - hdf5_1_10_7-gnu-hpc 
+  - hdf5_1_10_7-gnu-hpc-devel 
+  - hdf5_1_10_7-gnu-hpc-devel-static 
+  - hdf5_1_10_7-gnu-hpc-module 
+  - hdf5_1_10_7-gnu-mpich-hpc 
+  - hdf5_1_10_7-gnu-mpich-hpc-devel 
+  - hdf5_1_10_7-gnu-mpich-hpc-devel-static 
+  - hdf5_1_10_7-gnu-mpich-hpc-module 
+  - hdf5_1_10_7-gnu-mvapich2-hpc 
+  - hdf5_1_10_7-gnu-mvapich2-hpc-devel 
+  - hdf5_1_10_7-gnu-mvapich2-hpc-devel-static 
+  - hdf5_1_10_7-gnu-mvapich2-hpc-module 
+  - hdf5_1_10_7-gnu-openmpi1-hpc 
+  - hdf5_1_10_7-gnu-openmpi1-hpc-devel 
+  - hdf5_1_10_7-gnu-openmpi1-hpc-devel-static 
+  - hdf5_1_10_7-gnu-openmpi1-hpc-module 
+  - hdf5_1_10_7-gnu-openmpi2-hpc 
+  - hdf5_1_10_7-gnu-openmpi2-hpc-devel 
+  - hdf5_1_10_7-gnu-openmpi2-hpc-devel-static 
+  - hdf5_1_10_7-gnu-openmpi2-hpc-module 
+  - hdf5_1_10_7-gnu-openmpi3-hpc 
+  - hdf5_1_10_7-gnu-openmpi3-hpc-devel 
+  - hdf5_1_10_7-gnu-openmpi3-hpc-devel-static 
+  - hdf5_1_10_7-gnu-openmpi3-hpc-module 
+  - hdf5_1_10_7-gnu-openmpi4-hpc 
+  - hdf5_1_10_7-gnu-openmpi4-hpc-devel 
+  - hdf5_1_10_7-gnu-openmpi4-hpc-devel-static 
+  - hdf5_1_10_7-gnu-openmpi4-hpc-module 
+  - hdf5_1_10_7-hpc-examples 
   - hdhomerun_config 
   - hdhomerun_config_gui 
   - hdjmod-kmp-pae: [i586] 
@@ -6578,6 +6582,8 @@ unsorted:
   - helm-mirror 
   - helm-zsh-completion 
   - helmfile 
+  - helmfile-bash-completion 
+  - helmfile-zsh-completion 
   - help2man 
   - help2man-lang 
   - herbstluftwm 
@@ -11246,13 +11252,13 @@ unsorted:
   - libhdf5-gnu-openmpi2-hpc 
   - libhdf5-gnu-openmpi3-hpc 
   - libhdf5-gnu-openmpi4-hpc 
-  - libhdf5_1_10_5-gnu-hpc 
-  - libhdf5_1_10_5-gnu-mpich-hpc 
-  - libhdf5_1_10_5-gnu-mvapich2-hpc 
-  - libhdf5_1_10_5-gnu-openmpi1-hpc 
-  - libhdf5_1_10_5-gnu-openmpi2-hpc 
-  - libhdf5_1_10_5-gnu-openmpi3-hpc 
-  - libhdf5_1_10_5-gnu-openmpi4-hpc 
+  - libhdf5_1_10_7-gnu-hpc 
+  - libhdf5_1_10_7-gnu-mpich-hpc 
+  - libhdf5_1_10_7-gnu-mvapich2-hpc 
+  - libhdf5_1_10_7-gnu-openmpi1-hpc 
+  - libhdf5_1_10_7-gnu-openmpi2-hpc 
+  - libhdf5_1_10_7-gnu-openmpi3-hpc 
+  - libhdf5_1_10_7-gnu-openmpi4-hpc 
   - libhdf5_cpp-gnu-hpc 
   - libhdf5_cpp-gnu-mpich-hpc 
   - libhdf5_cpp-gnu-mvapich2-hpc 
@@ -11272,13 +11278,13 @@ unsorted:
   - libhdf5_cpp103-openmpi3-32bit: [x86_64] 
   - libhdf5_cpp103-openmpi4 
   - libhdf5_cpp103-openmpi4-32bit: [x86_64] 
-  - libhdf5_cpp_1_10_5-gnu-hpc 
-  - libhdf5_cpp_1_10_5-gnu-mpich-hpc 
-  - libhdf5_cpp_1_10_5-gnu-mvapich2-hpc 
-  - libhdf5_cpp_1_10_5-gnu-openmpi1-hpc 
-  - libhdf5_cpp_1_10_5-gnu-openmpi2-hpc 
-  - libhdf5_cpp_1_10_5-gnu-openmpi3-hpc 
-  - libhdf5_cpp_1_10_5-gnu-openmpi4-hpc 
+  - libhdf5_cpp_1_10_7-gnu-hpc 
+  - libhdf5_cpp_1_10_7-gnu-mpich-hpc 
+  - libhdf5_cpp_1_10_7-gnu-mvapich2-hpc 
+  - libhdf5_cpp_1_10_7-gnu-openmpi1-hpc 
+  - libhdf5_cpp_1_10_7-gnu-openmpi2-hpc 
+  - libhdf5_cpp_1_10_7-gnu-openmpi3-hpc 
+  - libhdf5_cpp_1_10_7-gnu-openmpi4-hpc 
   - libhdf5_fortran-gnu-hpc 
   - libhdf5_fortran-gnu-mpich-hpc 
   - libhdf5_fortran-gnu-mvapich2-hpc 
@@ -11298,13 +11304,13 @@ unsorted:
   - libhdf5_fortran102-openmpi3-32bit: [x86_64] 
   - libhdf5_fortran102-openmpi4 
   - libhdf5_fortran102-openmpi4-32bit: [x86_64] 
-  - libhdf5_fortran_1_10_5-gnu-hpc 
-  - libhdf5_fortran_1_10_5-gnu-mpich-hpc 
-  - libhdf5_fortran_1_10_5-gnu-mvapich2-hpc 
-  - libhdf5_fortran_1_10_5-gnu-openmpi1-hpc 
-  - libhdf5_fortran_1_10_5-gnu-openmpi2-hpc 
-  - libhdf5_fortran_1_10_5-gnu-openmpi3-hpc 
-  - libhdf5_fortran_1_10_5-gnu-openmpi4-hpc 
+  - libhdf5_fortran_1_10_7-gnu-hpc 
+  - libhdf5_fortran_1_10_7-gnu-mpich-hpc 
+  - libhdf5_fortran_1_10_7-gnu-mvapich2-hpc 
+  - libhdf5_fortran_1_10_7-gnu-openmpi1-hpc 
+  - libhdf5_fortran_1_10_7-gnu-openmpi2-hpc 
+  - libhdf5_fortran_1_10_7-gnu-openmpi3-hpc 
+  - libhdf5_fortran_1_10_7-gnu-openmpi4-hpc 
   - libhdf5_hl-gnu-hpc 
   - libhdf5_hl-gnu-mpich-hpc 
   - libhdf5_hl-gnu-mvapich2-hpc 
@@ -11324,13 +11330,13 @@ unsorted:
   - libhdf5_hl100-openmpi3-32bit: [x86_64] 
   - libhdf5_hl100-openmpi4 
   - libhdf5_hl100-openmpi4-32bit: [x86_64] 
-  - libhdf5_hl_1_10_5-gnu-hpc 
-  - libhdf5_hl_1_10_5-gnu-mpich-hpc 
-  - libhdf5_hl_1_10_5-gnu-mvapich2-hpc 
-  - libhdf5_hl_1_10_5-gnu-openmpi1-hpc 
-  - libhdf5_hl_1_10_5-gnu-openmpi2-hpc 
-  - libhdf5_hl_1_10_5-gnu-openmpi3-hpc 
-  - libhdf5_hl_1_10_5-gnu-openmpi4-hpc 
+  - libhdf5_hl_1_10_7-gnu-hpc 
+  - libhdf5_hl_1_10_7-gnu-mpich-hpc 
+  - libhdf5_hl_1_10_7-gnu-mvapich2-hpc 
+  - libhdf5_hl_1_10_7-gnu-openmpi1-hpc 
+  - libhdf5_hl_1_10_7-gnu-openmpi2-hpc 
+  - libhdf5_hl_1_10_7-gnu-openmpi3-hpc 
+  - libhdf5_hl_1_10_7-gnu-openmpi4-hpc 
   - libhdf5_hl_cpp-gnu-hpc 
   - libhdf5_hl_cpp-gnu-mpich-hpc 
   - libhdf5_hl_cpp-gnu-mvapich2-hpc 
@@ -11350,13 +11356,13 @@ unsorted:
   - libhdf5_hl_cpp100-openmpi3-32bit: [x86_64] 
   - libhdf5_hl_cpp100-openmpi4 
   - libhdf5_hl_cpp100-openmpi4-32bit: [x86_64] 
-  - libhdf5_hl_cpp_1_10_5-gnu-hpc 
-  - libhdf5_hl_cpp_1_10_5-gnu-mpich-hpc 
-  - libhdf5_hl_cpp_1_10_5-gnu-mvapich2-hpc 
-  - libhdf5_hl_cpp_1_10_5-gnu-openmpi1-hpc 
-  - libhdf5_hl_cpp_1_10_5-gnu-openmpi2-hpc 
-  - libhdf5_hl_cpp_1_10_5-gnu-openmpi3-hpc 
-  - libhdf5_hl_cpp_1_10_5-gnu-openmpi4-hpc 
+  - libhdf5_hl_cpp_1_10_7-gnu-hpc 
+  - libhdf5_hl_cpp_1_10_7-gnu-mpich-hpc 
+  - libhdf5_hl_cpp_1_10_7-gnu-mvapich2-hpc 
+  - libhdf5_hl_cpp_1_10_7-gnu-openmpi1-hpc 
+  - libhdf5_hl_cpp_1_10_7-gnu-openmpi2-hpc 
+  - libhdf5_hl_cpp_1_10_7-gnu-openmpi3-hpc 
+  - libhdf5_hl_cpp_1_10_7-gnu-openmpi4-hpc 
   - libhdf5_hl_fortran-gnu-hpc 
   - libhdf5_hl_fortran-gnu-mpich-hpc 
   - libhdf5_hl_fortran-gnu-mvapich2-hpc 
@@ -11376,13 +11382,13 @@ unsorted:
   - libhdf5hl_fortran100-openmpi3-32bit: [x86_64] 
   - libhdf5hl_fortran100-openmpi4 
   - libhdf5hl_fortran100-openmpi4-32bit: [x86_64] 
-  - libhdf5hl_fortran_1_10_5-gnu-hpc 
-  - libhdf5hl_fortran_1_10_5-gnu-mpich-hpc 
-  - libhdf5hl_fortran_1_10_5-gnu-mvapich2-hpc 
-  - libhdf5hl_fortran_1_10_5-gnu-openmpi1-hpc 
-  - libhdf5hl_fortran_1_10_5-gnu-openmpi2-hpc 
-  - libhdf5hl_fortran_1_10_5-gnu-openmpi3-hpc 
-  - libhdf5hl_fortran_1_10_5-gnu-openmpi4-hpc 
+  - libhdf5hl_fortran_1_10_7-gnu-hpc 
+  - libhdf5hl_fortran_1_10_7-gnu-mpich-hpc 
+  - libhdf5hl_fortran_1_10_7-gnu-mvapich2-hpc 
+  - libhdf5hl_fortran_1_10_7-gnu-openmpi1-hpc 
+  - libhdf5hl_fortran_1_10_7-gnu-openmpi2-hpc 
+  - libhdf5hl_fortran_1_10_7-gnu-openmpi3-hpc 
+  - libhdf5hl_fortran_1_10_7-gnu-openmpi4-hpc 
   - libhdhomerun-devel 
   - libhdhomerun2 
   - libheif-devel 
@@ -16423,6 +16429,7 @@ unsorted:
   - mpv-devel 
   - mpv-mpris 
   - mpv-zsh-completion 
+  - mpvpaper 
   - mr 
   - mraa 
   - mraa-devel 
@@ -21699,6 +21706,7 @@ unsorted:
   - python3-bson 
   - python3-bugzilla 
   - python3-bugzillatools 
+  - python3-build 
   - python3-bump2version 
   - python3-buttplug 
   - python3-bytecode 
@@ -35695,6 +35703,7 @@ unsorted:
   - wsmancli 
   - wt 
   - wt-devel 
+  - wtype 
   - wumpus 
   - wv 
   - wv-devel 
