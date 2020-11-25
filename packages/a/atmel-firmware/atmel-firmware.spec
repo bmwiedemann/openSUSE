@@ -1,7 +1,7 @@
 #
 # spec file for package atmel-firmware
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           atmel-firmware
 Version:        1.3
 Release:        0
 Summary:        Firmware for Atmel at76c50x Wireless Network Chips
-License:        GPL-2.0+ and SUSE-Firmware
+License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          Hardware/Wifi
-Url:            http://www.thekelleys.org.uk/atmel
+URL:            http://www.thekelleys.org.uk/atmel
 Source0:        http://www.thekelleys.org.uk/atmel/atmel-firmware-%{version}.tar.gz
 # Modules: at76c503-i3861.ko at76c503-i3863.ko at76c503.ko
 #	   at76c503-rfmd-acc.ko at76c503-rfmd.ko at76c505a-rfmd2958.ko
@@ -82,9 +82,9 @@ can be used to accomplish the same thing when hotplug is not in use.
 %build
 
 %install
-mkdir -p -m 755 %{buildroot}/lib/firmware
-cp images/* %{buildroot}/lib/firmware/
-cp images.usb/* %{buildroot}/lib/firmware/
+mkdir -p -m 755 %{buildroot}%{_firmwaredir}
+cp images/* %{buildroot}%{_firmwaredir}/
+cp images.usb/* %{buildroot}%{_firmwaredir}/
 install -Dm755 atmel_fwl.pl %{buildroot}/%{_sbindir}/atmel_fwl
 install -Dm644 atmel_fwl.8  %{buildroot}/%{_mandir}/man8/atmel_fwl.8
 
@@ -93,6 +93,6 @@ install -Dm644 atmel_fwl.8  %{buildroot}/%{_mandir}/man8/atmel_fwl.8
 %doc README COPYING
 %{_sbindir}/atmel_fwl
 %{_mandir}/man8/atmel_fwl.8.gz
-/lib/firmware/*
+%{_firmwaredir}/*
 
 %changelog
