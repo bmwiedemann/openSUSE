@@ -653,4 +653,15 @@
     <comment></comment>
     <requestid>814121</requestid>
   </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>accf107dcf412e5ab62ccb97b153b5f4</srcmd5>
+    <version>4.0.2</version>
+    <time>1606328878</time>
+    <user>dimstar_suse</user>
+    <comment>Fixes https://bugzilla.suse.com/show_bug.cgi?id=1179055
+
+- move examples to /usr/share/swig/examples
+</comment>
+    <requestid>850226</requestid>
+  </revision>
 </revisionlist>

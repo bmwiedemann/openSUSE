@@ -139,20 +139,20 @@ make %{?_smp_mflags} check
 install -d %{buildroot}%{docpath}
 cp -a TODO ANNOUNCE CHANGES* LICENSE README Doc/{Devel,Manual} \
 	%{buildroot}%{docpath}
-install -d %{buildroot}%{_libdir}/swig
-cp -a Examples %{buildroot}%{_libdir}/swig/examples
-rm -rf %{buildroot}%{_libdir}/swig/examples/test-suite
+install -d %{buildroot}%{_datadir}/swig
+cp -a Examples %{buildroot}%{_datadir}/swig/examples
+rm -rf %{buildroot}%{_datadir}/swig/examples/test-suite
 
 # rm files that are not needed for running or rebuilding the examples
-find %{buildroot}%{_libdir}/swig \
+find %{buildroot}%{_datadir}/swig \
 	-name '*.dsp' -o -name '*.vcproj' -o -name '*.sln' -o \
 	-name '*.o' -o -name '*_wrap.c' | xargs rm
 
 # fix perms
 chmod -x %{buildroot}%{docpath}/Manual/*
-find %{buildroot}%{_libdir}/swig -name '*.h' -perm /111 | \
+find %{buildroot}%{_datadir}/swig -name '*.h' -perm /111 | \
 	xargs --no-run-if-empty chmod -x
-ln -s %{_libdir}/swig/examples %{buildroot}%{docpath}/Examples
+ln -s %{_datadir}/swig/examples %{buildroot}%{docpath}/Examples
 
 %fdupes %{buildroot}
 
@@ -161,6 +161,7 @@ ln -s %{_libdir}/swig/examples %{buildroot}%{docpath}/Examples
 %dir %{docpath}
 %{docpath}/[A-Z][A-Z]*
 %{_datadir}/swig
+%exclude %{_datadir}/swig/examples
 %attr(755,root,root) %{_bindir}/swig
 
 %files doc
@@ -169,6 +170,6 @@ ln -s %{_libdir}/swig/examples %{buildroot}%{docpath}/Examples
 
 %files examples
 %{docpath}/Examples
-%{_libdir}/swig
+%{_datadir}/swig/examples
 
 %changelog
