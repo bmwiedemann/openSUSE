@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 31 07:40:21 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.8.3
+  * update setup.py for 3.8 ast import
+
+-------------------------------------------------------------------
 Mon Mar 30 05:42:38 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Fix setup.py for Python 3.8

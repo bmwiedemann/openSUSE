@@ -1,7 +1,7 @@
 #
 # spec file for package python-ruamel.std.argparse
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ruamel.std.argparse
-Version:        0.8.1
+Version:        0.8.3
 Release:        0
-License:        MIT
 Summary:        Enhancements to argparse
-Url:            https://sourceforge.net/p/ruamel-std-argparse
+License:        MIT
 Group:          Development/Languages/Python
+URL:            https://sourceforge.net/p/ruamel-std-argparse
 Source:         https://files.pythonhosted.org/packages/source/r/ruamel.std.argparse/ruamel.std.argparse-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 %ifpython3
 Requires:       python-ruamel.base
 %endif
@@ -43,8 +44,6 @@ smart formatter, and a decorator based wrapper.
 
 %prep
 %setup -q -n ruamel.std.argparse-%{version}
-# https://sourceforge.net/p/ruamel-std-argparse/tickets/2/
-sed -i 's/_ast/ast/' setup.py
 
 %build
 %python_build
