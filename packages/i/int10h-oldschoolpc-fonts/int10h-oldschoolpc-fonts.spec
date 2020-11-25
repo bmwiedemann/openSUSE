@@ -17,14 +17,14 @@
 
 
 Name:           int10h-oldschoolpc-fonts
-Version:        2.1
+Version:        2.2
 Release:        0
 Summary:        Remakes of old computer hardware fonts
 License:        CC-BY-SA-4.0
 Group:          System/X11/Fonts
 URL:            http://int10h.org/oldschool-pc-fonts/
 
-Source:         https://int10h.org/oldschool-pc-fonts/download/oldschool_pc_font_pack_v2.1_FULL.zip
+Source:         https://int10h.org/oldschool-pc-fonts/download/oldschool_pc_font_pack_v2.2_FULL.zip
 Source8:        ratio.txt
 BuildRequires:  fontpackages-devel
 BuildRequires:  lcdf-typetools

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 24 21:23:43 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.2
+  * MxPlus line of fonts: The characters ď, ť, ľ, Ľ now
+    consistently use the modified form of the háček/caron
+    diacritic (as used in Czech/Slovak).
+  * New fonts:
+  * PC-compatible computers: NEC MultiSpeed (4 fonts), Schneider
+    EuroPC (3 fonts), Tandy 1000 Video I -2x (1 font), Tandy 1000
+    Video II -2x (1 font)
+  * PC semi-compatibles: DEC Rainbow 100 (4 fonts), HP 150
+    Touchscreen (1 font), Robotron A7100 (1 font), Tandy 2000
+    graphics modes (3 fonts), Zenith Z-100 (2 fonts)
+
+-------------------------------------------------------------------
 Tue Nov  3 11:11:23 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.1
