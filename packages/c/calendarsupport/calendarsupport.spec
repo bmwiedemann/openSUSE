@@ -29,6 +29,8 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Port-away-from-deprecated-QPrinter-functions.patch
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kdepim-apps-libs-devel
 BuildRequires:  kf5-filesystem
@@ -88,7 +90,7 @@ The development package for the calendarsupport libraries
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
