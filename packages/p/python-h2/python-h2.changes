@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov 21 17:07:56 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Drop hyperframe.patch no longer needed
+- Skip flaky tests test_connection_only_empty & test_delegated_eq
+  that hypothesis is failing on s390x
+- Update to v4.0.0
+  * Support for Python 2.7-3.5 has been dropped
+  * Support for Python 3.8 has been added.
+  * Receiving DATA before HEADERS now raises a ProtocolError
+    (see https://tools.ietf.org/html/rfc7540#section-8.1)
+
+-------------------------------------------------------------------
 Tue Sep 15 13:10:43 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Add hyperframe.patch to fix build with hyperframe 6
@@ -97,4 +109,3 @@ Fri Apr 21 19:25:18 UTC 2017 - aloisio@gmx.com
 Tue Dec 27 14:34:57 UTC 2016 - aloisio@gmx.com
 
 - Initial package (2.5.1)
-
