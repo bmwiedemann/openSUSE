@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Nov 24 15:02:46 UTC 2020 - kukuk@suse.com
+
+- Update to version 1.5.1:
+  * rename annotation-ttl to lock-ttl in all places, follow-up to #213
+  * Drain: allow pods grace period to terminate
+  * Prepare 1.5.1 release
+  * Add lint job
+  * Make lint happier in pkg folder
+  * Make lint happier
+  * Remove prom-active-alerts
+  * update docs following #210
+  * run 'go mod tidy'
+  * Replaced --annotationTTL with --lockTTL and made it work correctly
+  * Refactor drain/uncordon
+  * Remove kubectl exception in container scanning
+  * Bump prometheus
+  * Use kubectl as library instead of calling from cli
+  * fix: Follow DKL-DI-0004 guideline
+  * feat: Add security scanning into CI
+  * add missing quote - thanks Karan Arora for reporting
+  * Bump helm chart version
+  * Remove quote for parameter alert-filter-regexp
+  * Release helper
+
+-------------------------------------------------------------------
 Mon Sep 21 11:43:34 UTC 2020 - kukuk@suse.com
 
 - Update to version 1.5.0:

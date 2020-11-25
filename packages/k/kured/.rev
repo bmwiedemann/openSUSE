@@ -179,4 +179,32 @@
   * Prepare for k8s release 1.19 (Aug 25)</comment>
     <requestid>835813</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>df8076643f20e52b54dcb9798d074344</srcmd5>
+    <version>1.5.1</version>
+    <time>1606328862</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.1:
+  * rename annotation-ttl to lock-ttl in all places, follow-up to #213
+  * Drain: allow pods grace period to terminate
+  * Prepare 1.5.1 release
+  * Add lint job
+  * Make lint happier in pkg folder
+  * Make lint happier
+  * Remove prom-active-alerts
+  * update docs following #210
+  * run 'go mod tidy'
+  * Replaced --annotationTTL with --lockTTL and made it work correctly
+  * Refactor drain/uncordon
+  * Remove kubectl exception in container scanning
+  * Bump prometheus
+  * Use kubectl as library instead of calling from cli
+  * fix: Follow DKL-DI-0004 guideline
+  * feat: Add security scanning into CI
+  * add missing quote - thanks Karan Arora for reporting
+  * Bump helm chart version
+  * Remove quote for parameter alert-filter-regexp
+  * Release helper</comment>
+    <requestid>850527</requestid>
+  </revision>
 </revisionlist>

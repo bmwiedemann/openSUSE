@@ -19,12 +19,10 @@
 
 # Remove stripping of Go binaries.
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-# Project name when using go tooling.
-%define project github.com/weaveworks/kured
 # Project upstream commit.
-%define commit b024898
+%define commit 685f328
 Name:           kured
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Kubernetes daemonset to perform safe automatic node reboots
 License:        Apache-2.0
