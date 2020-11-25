@@ -57,4 +57,12 @@
     <comment></comment>
     <requestid>841066</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>40381f517758bfcc1415d729292e9c40</srcmd5>
+    <version>1.0.0</version>
+    <time>1606328984</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.0.0 (forwarded request 850153 from alois)</comment>
+    <requestid>850154</requestid>
+  </revision>
 </revisionlist>
