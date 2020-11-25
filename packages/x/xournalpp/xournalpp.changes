@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Nov 25 09:54:38 UTC 2020 - Markus Ebner <info@ebner-markus.de>
+
+- Update to version 1.0.19:
+  * Changed select object algorithm to be more intuitive
+  * Added ability for taps with Select Rectangle and Select Region
+    to act like Select Object (gh#xournalpp/xournalpp#1980).
+  * Improved document loading speed (gh#xournalpp/xournalpp#2002).
+  * Added a --version command to print the Xournal++ version
+  * Added a libgtk version display to the About dialog
+  * Added a 16kHz sample rate to audio settings and fixed the 91kHz
+    sample rate (gh#xournalpp/xournalpp#2092).
+  * Added file version check for future compatibility
+    (gh#xournalpp/xournalpp#1991).
+  * Changed wording of new page template dialog to be less
+    confusing (gh#xournalpp/xournalpp#1524).
+  * Fixed behavior of "Attach file to the journal" option when
+    choosing "Annotate PDF" (#1725, #2106). This now allows the
+    background PDF and the annotation files to be renamed and moved
+    as long as they 1) share the same file prefix; and 2) share the
+    same relative path.
+  * Fixed an issue where clicking the X on the replace file dialog
+    would overwrite the file (gh#xournalpp/xournalpp#1983).
+  * (libcairo >= 1.16 only): Fixed PDF export crashing when the
+    table of contents is empty (gh#xournalpp/xournalpp#2236)..
+  * Fixed a bug where the PDF background would not update when
+    loading a new document (gh#xournalpp/xournalpp#1964).
+  * Fixed plugin window causing a crash on Ubuntu 16.04
+  * Fixed a bug where the icon would not appear correctly on some
+    desktop environments (gh#xournalpp/xournalpp#1892).
+  * Fixed inconsistent ordering of button keybindings
+    (gh#xournalpp/xournalpp#1961).
+  * Fixed the Enter key not confirming PDF export settings
+    (gh#xournalpp/xournalpp#1977).
+  * Fixed exported PDF title (gh#xournalpp/xournalpp#2039).
+  * Fixed a bug where different page backgrounds can cause PDFs to
+    be exported with the wrong backgrounds
+    (gh#xournalpp/xournalpp#2119).
+  * Fixed a bug where the page number count would not be updated
+    after deleting a page (gh#xournalpp/xournalpp#2134).
+  * Fixed selection object tool not working correctly
+    (gh#xournalpp/xournalpp#2081). / crashing
+    (gh#xournalpp/xournalpp#2133). when there are multiple layers
+- Drop xournalpp-fix-exporting-pdf-with-references.patch:
+  incorporated upstream.
+
+-------------------------------------------------------------------
 Sat Sep 19 14:27:53 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add xournalpp-fix-exporting-pdf-with-references.patch: Fix PDF
