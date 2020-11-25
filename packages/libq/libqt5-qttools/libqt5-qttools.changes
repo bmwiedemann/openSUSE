@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 20 12:09:40 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.2:
+  * New bugfix release
+  * For more details please see:
+    http://code.qt.io/cgit/qt/qttools.git/plain/dist/changes-5.15.2/?h=5.15.2
+
+-------------------------------------------------------------------
+Mon Sep 28 08:12:24 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix the clang requirement for Leap 15.2. The clang headers are
+  also in the libclang<major version> package.
+- Use the %pkg_version macro available since Leap 15
+
+-------------------------------------------------------------------
 Thu Sep 10 07:57:29 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.15.1:

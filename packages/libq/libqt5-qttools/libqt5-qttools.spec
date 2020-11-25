@@ -18,9 +18,9 @@
 
 %define qt5_snapshot 0
 %define base_name libqt5
-%define real_version 5.15.1
-%define so_version 5.15.1
-%define tar_version qttools-everywhere-src-5.15.1
+%define real_version 5.15.2
+%define so_version 5.15.2
+%define tar_version qttools-everywhere-src-5.15.2
 %if 0%{?suse_version} >= 1330
 %bcond_without qdoc
 %else
@@ -28,7 +28,7 @@
 %bcond_with qdoc
 %endif
 Name:           libqt5-qttools
-Version:        5.15.1
+Version:        5.15.2
 Release:        0
 Summary:        Qt 5 QtTools Module
 # Legal:
@@ -208,10 +208,12 @@ License:        GPL-3.0-only
 Provides:       libqt5-qtbase-doc = %{version}
 Obsoletes:      libqt5-qtbase-doc < %{version}
 # qdoc hardcodes clang include paths: boo#1109367, QTBUG-70687
-%if 0%{?suse_version} < 1550
-%requires_eq    clang%(rpm -q --qf '%''{version}' clang-devel | cut -d. -f1)
+%global _clang_major_version %(printf %{pkg_version clang-devel} | cut -d. -f1)
+
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
+%requires_eq libclang%{_clang_major_version}
 %else
-%requires_eq    libclang%(rpm -q --qf '%''{version}' clang-devel | cut -d. -f1)
+%requires_eq clang%{_clang_major_version}
 %endif
 
 %description doc
