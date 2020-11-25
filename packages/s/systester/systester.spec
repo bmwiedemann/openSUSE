@@ -1,7 +1,7 @@
 #
 # spec file for package systester
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,18 +20,18 @@ Name:           systester
 Version:        1.5.1
 Release:        0
 Summary:        Benchmark and system stabilty tool
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Benchmark
-Url:            http://systester.sourceforge.net
+URL:            http://systester.sourceforge.net
 Source:         http://sourceforge.net/projects/systester/files/systester/1.5.0/%{name}-%{version}.tar.gz
+Patch0:         systester-qt5.patch
 BuildRequires:  gmp-devel
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Patch0:         systester-qt5.patch
 ExclusiveArch:  ix86 x86_64
 
 %description
@@ -42,15 +42,14 @@ implemented. The Quadratic Convergence of Borwein and Gauss-Legendre,
 the algorithm SuperPi uses.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
+
 %build
-export CFLAGS="%optflags"
-qmake-qt5 systester.pro QMAKE_CXXFLAGS="%optflags"
-make %{?_smp_mflags}
+export CFLAGS="%{optflags}"
+%qmake5 systester.pro
+%make_build
 pushd cli
-make %{?_smp_mflags}
-make %{?_smp_mflags} lite
+%make_build all lite
 popd
 
 %install
@@ -68,17 +67,8 @@ cp systester-lite %{buildroot}/%{_bindir}
 popd
 %suse_update_desktop_file  -r %{name} Education Math System Monitor
 
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-
 %files
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %{_bindir}/systester
 %{_bindir}/systester-cli
 %{_bindir}/systester-lite

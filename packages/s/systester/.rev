@@ -24,4 +24,12 @@
   * systester-qt5.patch</comment>
     <requestid>361019</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>9608bdae4f0dcaa202e3b8be178beaeb</srcmd5>
+    <version>1.5.1</version>
+    <time>1606329014</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file</comment>
+    <requestid>850689</requestid>
+  </revision>
 </revisionlist>
