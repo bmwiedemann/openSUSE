@@ -151,6 +151,9 @@ Patch1:         dovecot-2.3.0-better_ssl_defaults.patch
 Patch2:         allow-tls1.3-only.patch
 #               https://github.com/dovecot/core/pull/133
 Patch3:         dovecot-2.3.11.3-gssapi-nul.patch
+# Fix 32-bit test - Similar to https://github.com/dovecot/core/pull/134
+Patch4:         dovecot-2.3.11.3-ftbfs1.patch
+Patch5:         dovecot-2.3.11.3-ftbfs2.patch
 Summary:        IMAP and POP3 Server Written Primarily with Security in Mind
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND MIT
 Group:          Productivity/Networking/Email/Servers
@@ -332,6 +335,8 @@ dovecot tree.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
+%patch5 -p1
 gzip -9v ChangeLog
 # Fix plugins dir.
 sed -i 's|#mail_plugin_dir = /usr/lib/dovecot|mail_plugin_dir = %{_libdir}/dovecot/modules|' doc/example-config/conf.d/10-mail.conf

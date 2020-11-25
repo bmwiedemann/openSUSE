@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 24 07:59:06 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix test on 32-bit:
+  * dovecot-2.3.11.3-ftbfs1.patch
+  * dovecot-2.3.11.3-ftbfs2.patch
+
+-------------------------------------------------------------------
 Wed Nov  4 15:29:48 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - dovecot is already creating the user accounts, no need to duplicate
