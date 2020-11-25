@@ -17,6 +17,7 @@
 
 
 %bcond_with system_sqlite
+%bcond_without tests
 Name:           fossil
 Version:        2.13
 Release:        0
@@ -24,7 +25,7 @@ Summary:        Distributed software configuration management
 License:        BSD-2-Clause
 Group:          Development/Tools/Version Control
 URL:            https://www.fossil-scm.org/
-Source:         https://www.fossil-scm.org/index.html/uv/%{name}-src-%{version}.tar.gz
+Source:         %{URL}/index.html/uv/%{name}-src-%{version}.tar.gz
 BuildRequires:  fuse-devel
 BuildRequires:  gcc
 BuildRequires:  openssl-devel
@@ -44,12 +45,13 @@ these features:
 * sqlite-backed database
 
 %prep
-%setup -q
+%autosetup
 # test package version and source version match
 grep -qFx %{version} VERSION
 
 %build
-export CFLAGS="%{optflags}"
+%{?set_build_flags: %{set_build_flags}}
+%{!?set_build_flags: export CFLAGS="%{optflags}"}
 # FIXME: you should use the %%configure macro
 ./configure \
         --prefix=%{_prefix} \
@@ -63,6 +65,11 @@ export CFLAGS="%{optflags}"
 %install
 %make_install
 install -D -m 644 -t %{buildroot}%{_mandir}/man1 fossil.1
+
+%check
+%if %{with tests}
+tclsh test/tester.tcl %{buildroot}%{_bindir}/%{name}
+%endif
 
 %files
 %license COPYRIGHT-BSD2.txt
