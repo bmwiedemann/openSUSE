@@ -101,4 +101,12 @@
   to are installed (mitigates boo#1178637).</comment>
     <requestid>849485</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>896587301d7330e3e0d272c3b4311ab5</srcmd5>
+    <version>1.8</version>
+    <time>1606329047</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850731</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 25 07:32:45 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 1.8:
+  * New Checks:
+    - qt6-qhash-signature
+    - qt6-qdir-fixes
+    - qt6-header-fixes
+    - qt6-deprecated-api-fixes
+    - use-chrono-in-qtimer
+    - fixit for missing-qobject-macro
+- Drop patches merged upstream:
+  * 0001-updated-for-compatibility-with-LLVM-10.patch
+  * 0001-updated-for-compatibility-with-LLVM-10-clazy-standal.patch
+
+-------------------------------------------------------------------
 Thu Nov 19 17:55:04 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Make sure the clang executables matching the libraries we link
