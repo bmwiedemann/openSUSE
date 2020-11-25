@@ -21,6 +21,7 @@
 %define ap_serverroot %(%{apxs} -q PREFIX)
 %define ap_docroot_old %{ap_serverroot}/htdocs
 %define ap_docroot %{_datadir}
+%define ap_tmpdir %{_localstatedir}/cache/%{name}
 %define pma_config %{_sysconfdir}/%{name}/config.inc.php
 %if 0%{?suse_version}
 %define ap_usr wwwrun
@@ -30,7 +31,7 @@
 %define ap_grp nogroup
 %endif
 Name:           phpMyAdmin
-Version:        4.9.7
+Version:        5.0.4
 Release:        0
 Summary:        Administration of MySQL over the web
 License:        GPL-2.0-or-later
@@ -65,12 +66,9 @@ PreReq:         coreutils
 PreReq:         grep
 PreReq:         pwgen
 PreReq:         sed
-Recommends:     mod_php_any >= 5.5
+Recommends:     mod_php_any >= 7.4
 Recommends:     php-curl
 Recommends:     php-zip
-### will be removed with php >= 7.2
-## boo#1050980
-Suggests:       php-mcrypt
 BuildArch:      noarch
 
 %description
@@ -135,16 +133,16 @@ find . ! -name '*.sh' ! -name '*-query' -type f -exec chmod 644 {} \;
 %install
 #%%{__install} -d -m0750 $RPM_BUILD_ROOT%%{_sysconfdir}/%%{name}
 install -d -m0755 %{buildroot}%{ap_docroot}/%{name}
-cp -dR *.css *.php *.ico js libraries locale themes templates vendor \
+cp -dR *.css *.php *.ico *.yml js libraries locale themes templates vendor \
   %{buildroot}%{ap_docroot}/%{name}
 # install config to config dir
 install -D -m0640 %{buildroot}%{ap_docroot}/%{name}/config.sample.inc.php \
  %{buildroot}%{_sysconfdir}/%{name}/config.inc.php
-# install TempDir
-install -d -m0770 %{buildroot}%{ap_docroot}/%{name}/tmp
+# install TempDir (now in cache)
+install -d -m0770 %{buildroot}%{ap_tmpdir}
 
 # fix libraries/vendor_config.php
-sed -i -e "s,@docdir@,%{_docdir}/%{name},g" -e "s,@sysconfdir@,%{_sysconfdir}/%{name},g" \
+sed -i -e "s,@docdir@,%{_docdir}/%{name},g" -e "s,@sysconfdir@,%{_sysconfdir}/%{name},g" -e "s,@tmpdir@,%{ap_tmpdir},g" \
   %{buildroot}%{ap_docroot}/%{name}/libraries/vendor_config.php
 # fix libraries/common.inc.php
 #%%{__sed} -i -e "s,@PMA_Config@,%%{_sysconfdir}/%%{name}/config.inc.php,g" \
@@ -157,7 +155,7 @@ install -D -m0644 %{SOURCE3} %{buildroot}%{ap_sysconfdir}/conf.d/%{name}.conf
 install -D -m0644 %{SOURCE4} %{buildroot}%{ap_sysconfdir}/conf.d/%{name}.inc
 # fix paths in http config
 sed -i -e "s,@ap_docroot@,%{ap_docroot},g" -e "s,@name@,%{name},g" \
- -e "s,@docdir@,%{_docdir},g" -e "s,@ap_sysconfdir@,%{ap_sysconfdir},g" %{buildroot}%{ap_sysconfdir}/conf.d/%{name}.conf
+ -e "s,@docdir@,%{_docdir},g" -e "s,@ap_sysconfdir@,%{ap_sysconfdir},g" -e "s,@ap_tmpdir@,%{ap_tmpdir},g" %{buildroot}%{ap_sysconfdir}/conf.d/%{name}.conf
 
 # rpmlint stuff
 %fdupes %{buildroot}%{ap_docroot}/%{name}/libraries
@@ -170,12 +168,23 @@ if [ -d "%{ap_docroot_old}/%{name}/tmp" ]; then
   echo "info: removing %{ap_docroot_old}/%{name}/tmp for ap_docroot change"
   rm -rf "%{ap_docroot_old}/%{name}/tmp" || :
 fi
+# removing tmp/twig before ap_tmpdir change
+# a new one will be created anyway in new ap_docroot (like after a clean install)
+if [ -d "%{ap_docroot}/%{name}/tmp" ]; then
+  echo "info: removing %{ap_docroot}/%{name}/tmp for ap_tmpdir change"
+  rm -rf "%{ap_docroot}/%{name}/tmp" || :
+fi
 
 %preun
 if [ $1 -eq 0 ]; then
 if [ -d "%{ap_docroot}/%{name}/tmp" ]; then
   echo "info: removing %{ap_docroot}/%{name}/tmp for clean uninstall"
   rm -rf "%{ap_docroot}/%{name}/tmp" || :
+fi
+# Now the new tmpdir must also delete.
+if [ -d "%{ap_tmpdir}" ]; then
+  echo "info: removing %{ap_tmpdir} for clean uninstall"
+  rm -rf "%{ap_tmpdir}" || :
 fi
 fi
 
@@ -243,7 +252,7 @@ fi
 %doc README RELEASE-DATE*
 %doc examples doc sql
 %dir %attr(0750,root,%{ap_grp}) %{_sysconfdir}/%{name}
-%dir %attr(0770,root,%{ap_grp}) %{ap_docroot}/%{name}/tmp
+%dir %attr(0770,root,www) %{ap_tmpdir}
 %config(noreplace) %{_sysconfdir}/%{name}/config.inc.php
 %dir %{ap_docroot}/%{name}
 %config(noreplace) %{ap_sysconfdir}/conf.d/%{name}.conf

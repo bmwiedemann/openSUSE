@@ -32,14 +32,9 @@
         </IfModule>
     </IfVersion>
 
-    <IfModule mod_php5.c>
-        Include @ap_sysconfdir@/conf.d/@name@.inc
-        php_admin_value open_basedir "@ap_docroot@/@name@:/var/lib/php5:/tmp:@docdir@/@name@:/etc/@name@:/proc/meminfo:/proc/stat"
-    </IfModule>
-
     <IfModule mod_php7.c>
         Include @ap_sysconfdir@/conf.d/@name@.inc
-        php_admin_value open_basedir "@ap_docroot@/@name@:/var/lib/php7:/tmp:@docdir@/@name@:/etc/@name@:/proc/meminfo:/proc/stat"
+        php_admin_value open_basedir "@ap_docroot@/@name@:@ap_tmpdir@:/var/lib/php7:/tmp:@docdir@/@name@:/etc/@name@:/proc/meminfo:/proc/stat"
     </IfModule>
 
 </Directory>
@@ -82,7 +77,7 @@
 
 </Directory>
 
-<Directory @ap_docroot@/@name@/tmp>
+<Directory @ap_tmpdir@>
 
     <IfVersion < 2.4>
         Order allow,deny

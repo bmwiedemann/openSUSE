@@ -2,8 +2,8 @@ Index: config.sample.inc.php
 ===================================================================
 --- config.sample.inc.php.orig
 +++ config.sample.inc.php
-@@ -11,13 +11,56 @@
-  */
+@@ -12,13 +12,56 @@
+ declare(strict_types=1);
  
  /**
 + * Disable the default warning that is displayed on the DB Details Structure
@@ -60,7 +60,7 @@ Index: config.sample.inc.php
   */
  $i = 0;
  
-@@ -25,44 +68,153 @@ $i = 0;
+@@ -26,44 +69,153 @@ $i = 0;
   * First server
   */
  $i++;
@@ -250,24 +250,31 @@ Index: libraries/vendor_config.php
 ===================================================================
 --- libraries/vendor_config.php.orig
 +++ libraries/vendor_config.php
-@@ -28,25 +28,25 @@ define('TEMP_DIR', './tmp/');
+@@ -24,31 +24,31 @@ define('AUTOLOAD_FILE', ROOT_PATH . 'ven
+ /**
+  * Directory where cache files are stored.
+  */
+-define('TEMP_DIR', ROOT_PATH . 'tmp/');
++define('TEMP_DIR', '@tmpdir@/');
+ 
+ /**
   * Path to changelog file, can be gzip compressed. Useful when you want to
   * have documentation somewhere else, eg. /usr/share/doc.
   */
--define('CHANGELOG_FILE', './ChangeLog');
+-define('CHANGELOG_FILE', ROOT_PATH . 'ChangeLog');
 +define('CHANGELOG_FILE', '@docdir@/ChangeLog');
  
  /**
   * Path to license file. Useful when you want to have documentation somewhere
   * else, eg. /usr/share/doc.
   */
--define('LICENSE_FILE', './LICENSE');
+-define('LICENSE_FILE', ROOT_PATH . 'LICENSE');
 +define('LICENSE_FILE', '@docdir@/LICENSE');
  
  /**
   * Directory where SQL scripts to create/upgrade configuration storage reside.
   */
--define('SQL_DIR', './sql/');
+-define('SQL_DIR', ROOT_PATH . 'sql/');
 +define('SQL_DIR', '@docdir@/sql/');
  
  /**
@@ -275,7 +282,7 @@ Index: libraries/vendor_config.php
   * It is not used directly in code, just a convenient
   * define used further in this file.
   */
--define('CONFIG_DIR', '');
+-define('CONFIG_DIR', ROOT_PATH);
 +define('CONFIG_DIR', '@sysconfdir@/');
  
  /**
