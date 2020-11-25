@@ -19,7 +19,7 @@
 
 %global __requires_exclude typelib\\(Clutter\\)
 Name:           gpaste
-Version:        3.36.3
+Version:        3.38.3
 Release:        0
 Summary:        Clipboard management system for GNOME
 License:        BSD-2-Clause
@@ -45,7 +45,7 @@ BuildRequires:  pkgconfig(gnome-keybindings)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.58.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(mutter-clutter-6)
+BuildRequires:  pkgconfig(mutter-clutter-7)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vapigen) >= 0.42
 BuildRequires:  pkgconfig(x11)
@@ -55,11 +55,11 @@ BuildRequires:  pkgconfig(xtst)
 %description
 GPaste is a clipboard management daemon with DBus interface.
 
-%package -n libgpaste11
+%package -n libgpaste13
 Summary:        Library for managing clipboard history
 Group:          System/Libraries
 
-%description -n libgpaste11
+%description -n libgpaste13
 GPaste is a clipboard management daemon with DBus interface.
 
 This package provides a library for managing clipboard history.
@@ -86,7 +86,7 @@ managing clipboard history.
 %package devel
 Summary:        Development files for the gpaste clipboard history manager
 Group:          Development/Libraries/GNOME
-Requires:       libgpaste11 = %{version}
+Requires:       libgpaste13 = %{version}
 Requires:       typelib-1_0-GPaste-1_0 = %{version}
 
 %description devel
@@ -125,8 +125,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 desktop-file-edit --set-icon=edit-paste --remove-key Categories --add-category=Applet --add-only-show-in=GNOME %{buildroot}%{_datadir}/applications/org.gnome.GPaste.Ui.desktop
 %find_lang GPaste %{?no_lang_C}
 
-%post -n libgpaste11 -p /sbin/ldconfig
-%postun -n libgpaste11 -p /sbin/ldconfig
+%post -n libgpaste13 -p /sbin/ldconfig
+%postun -n libgpaste13 -p /sbin/ldconfig
 
 %files
 %license COPYING
@@ -146,7 +146,7 @@ desktop-file-edit --set-icon=edit-paste --remove-key Categories --add-category=A
 %dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/site-functions
 
-%files -n libgpaste11
+%files -n libgpaste13
 %{_libdir}/libgpaste.so.*
 
 %files -n typelib-1_0-GPaste-1_0

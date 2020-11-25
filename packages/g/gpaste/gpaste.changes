@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Nov 25 15:20:50 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.38.3:
+  + gnome-shell extension warning fixes.
+- Changes from version 3.38.2:
+  + gnome-shell extension cosmetic updates.
+- Changes from version 3.38.1:
+  + Disable images support by default (can be reenabled in
+    preferences).
+  + Search now includes passwords (using their names).
+  + systemd integration enhancements.
+- Changes from version 3.38.0:
+  + Drop the Tracking DBus signal.
+  + Switch to uuids to identify items.
+  + Bump DBus interface to org.gnome.GPaste2.
+  + Update to gnome-shell 3.38.0
+- Replace pkgconfig(mutter-clutter-6) with
+  pkgconfig(mutter-clutter-7) BuildRequires following upstreams
+  changes.
+- Rename libgpaste11 subpackage to libgpaste13, following upstreams
+  soname change.
+
+-------------------------------------------------------------------
 Sun Apr 26 17:29:58 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.3:
