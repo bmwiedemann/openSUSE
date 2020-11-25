@@ -19,7 +19,7 @@
 %define skip_python2 1
 %define packagename buttplug-py
 Name:           python-buttplug
-Version:        0.1.0
+Version:        0.2.0
 Release:        0
 Summary:        Implementations of the Buttplug Client for Python
 License:        BSD-3-Clause

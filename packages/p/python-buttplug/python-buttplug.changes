@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 22 08:46:29 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 0.2.0.
+  * DeviceRemoved event no longer tries to use non-existent dict 
+    method.
+  * Fixed wrong enum naming.
+  * Client now actually sends client name.
+
+-------------------------------------------------------------------
 Mon May 25 10:50:16 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Fix pytest version. 
