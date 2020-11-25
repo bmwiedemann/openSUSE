@@ -1,7 +1,7 @@
 #
 # spec file for package libyui-bindings
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 # nodebuginfo
 
 
 Name:           libyui-bindings
-Version:        2.0.2
+Version:        2.1.1
 Release:        0
 Summary:        Bindings for libyui
 License:        LGPL-2.1-only OR LGPL-3.0-only
 Group:          Development/Sources
-Url:            https://github.com/libyui/libyui-bindings
+URL:            https://github.com/libyui/libyui-bindings
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  libyui-devel >= 2.21.5
+# YMenuBar / libyui14
+BuildRequires:  libyui-devel >= 3.12.0
 BuildRequires:  perl
 BuildRequires:  python3-devel
 BuildRequires:  ruby-devel
 BuildRequires:  swig
 Source:         %{name}-%{version}.tar.bz2
-# PATCH-FIX-OPENSUSE - adapt to newer CMake kkaempf@suse.de
-Patch1:         libyui-bindings-2.0.2.patch
 Prefix:         /usr
 
 %description
@@ -50,7 +49,6 @@ Authors:
 
 %prep
 %setup -q
-%patch1 -p1
 
 %build
 mkdir build

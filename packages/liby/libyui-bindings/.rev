@@ -173,4 +173,12 @@
     <comment>fix the build</comment>
     <requestid>838786</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a7fb3ddd1156c6708728abac8b7b1d9c</srcmd5>
+    <version>2.1.1</version>
+    <time>1606329017</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.1.1</comment>
+    <requestid>850748</requestid>
+  </revision>
 </revisionlist>
