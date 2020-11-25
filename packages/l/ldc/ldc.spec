@@ -172,6 +172,13 @@ popd
 %endif
 
 %build
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
+%ifarch aarch64
+# llvm7 does not support '-mbranch-protection=standard' option
+export CFLAGS=`echo "%{optflags}" |sed 's/-mbranch-protection=standard//'`
+export CXXFLAGS=`echo "%{optflags}" |sed 's/-mbranch-protection=standard//'`
+%endif
+%endif
 %if %{with ldc_bootstrap}
 pushd ldc-0.17.6-src
 #Needs to be compiled with clang, but opensuse_rules.cmake forces gcc so disable rule

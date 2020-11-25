@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 25 15:09:09 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix aarch64 build:  Drop '-mbranch-protection=standard' option
+  as llvm7 does not support it
+
+-------------------------------------------------------------------
 Thu Oct  1 09:04:59 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 1.23.0:
