@@ -371,6 +371,17 @@ Patch142:     fix-novendorchange-option-284.patch
 Patch143:     fix-cve-2020-25592-and-add-tests-bsc-1178319.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/293
 Patch144:     set-passphrase-for-salt-ssh-keys-to-empty-string-293.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/279
+Patch145:     fix-for-bsc-1102248-psutil-is-broken-and-so-process-.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/58520
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/286
+Patch146:     grains-master-can-read-grains.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/58784
+Patch147:     add-migrated-state-and-gpg-key-management-functions-.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/292
+Patch148:     transactional_update-unify-with-chroot.call.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/295
+Patch149:     pkgrepo-support-python-2.7-function-call-295.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  logrotate
@@ -1022,6 +1033,11 @@ cp %{S:5} ./.travis.yml
 %patch142 -p1
 %patch143 -p1
 %patch144 -p1
+%patch145 -p1
+%patch146 -p1
+%patch147 -p1
+%patch148 -p1
+%patch149 -p1
 
 %build
 # Putting /usr/bin at the front of $PATH is needed for RHEL/RES 7. Without this

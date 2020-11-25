@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Nov 16 09:48:45 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix syntax error on pkgrepo state with Python 2.7
+- transactional_update: unify with chroot.call
+
+- Added:
+  * pkgrepo-support-python-2.7-function-call-295.patch
+  * transactional_update-unify-with-chroot.call.patch
+
+-------------------------------------------------------------------
+Tue Nov 10 15:43:09 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
+
+- Add "migrated" state and GPG key management functions
+
+- Added:
+  * add-migrated-state-and-gpg-key-management-functions-.patch
+
+-------------------------------------------------------------------
+Tue Nov 10 15:09:16 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
+
+- Master can read grains
+
+- Added:
+  * grains-master-can-read-grains.patch
+
+-------------------------------------------------------------------
+Tue Nov 10 14:03:22 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
+
+- Fix for broken psutil (bsc#1102248)
+
+- Added:
+  * fix-for-bsc-1102248-psutil-is-broken-and-so-process-.patch
+
+-------------------------------------------------------------------
 Fri Nov  6 09:19:22 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Set passphrase for salt-ssh keys to empty string (bsc#1178485)

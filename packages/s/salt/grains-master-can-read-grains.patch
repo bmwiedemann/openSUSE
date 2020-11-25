@@ -1,0 +1,34 @@
+From 0b6106815b708bc4cf25b4a02ebc8b7ebf299b39 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Tue, 27 Oct 2020 13:16:37 +0100
+Subject: [PATCH] grains: master can read grains
+
+---
+ salt/grains/extra.py | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/salt/grains/extra.py b/salt/grains/extra.py
+index 6a26aece77..f80061ff4e 100644
+--- a/salt/grains/extra.py
++++ b/salt/grains/extra.py
+@@ -94,8 +94,14 @@ def __secure_boot():
+     enabled = False
+     sboot = glob.glob("/sys/firmware/efi/vars/SecureBoot-*/data")
+     if len(sboot) == 1:
+-        with salt.utils.files.fopen(sboot[0], "rb") as fd:
+-            enabled = fd.read()[-1:] == b"\x01"
++        # The minion is usually running as a privileged user, but is
++        # not the case for the master.  Seems that the master can also
++        # pick the grains, and this file can only be readed by "root"
++        try:
++            with salt.utils.files.fopen(sboot[0], "rb") as fd:
++                enabled = fd.read()[-1:] == b"\x01"
++        except PermissionError:
++            pass
+     return enabled
+ 
+ 
+-- 
+2.29.1
+
+

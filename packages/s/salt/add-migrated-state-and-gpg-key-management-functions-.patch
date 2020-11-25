@@ -1,0 +1,1556 @@
+From 5254ec34316a0924edb4856f84e6092fafe479fa Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Tue, 20 Oct 2020 11:43:09 +0200
+Subject: [PATCH] Add "migrated" state and GPG key management functions
+ (#290)
+
+* rpm_lowpkg: add API for GPG keys
+
+* zypperpkg: do not quote the repo name
+
+* pkgrepo: add migrated function
+
+* pkg: unify apt and rpm API for key repo
+
+aptpkg is the virtual package "pkg" for Debian, and contains some API
+for key management.
+
+This patch add a similar API for zypperpkg and yumpkg, also part of the
+same virtual package, based on the counterpart from rpm_lowpkg API.
+---
+ changelog/58782.added                 |   1 +
+ salt/modules/aptpkg.py                |   7 +-
+ salt/modules/rpm_lowpkg.py            | 151 ++++++++
+ salt/modules/yumpkg.py                |  88 +++++
+ salt/modules/zypperpkg.py             |  90 ++++-
+ salt/states/pkgrepo.py                | 208 ++++++++++
+ tests/unit/modules/test_rpm_lowpkg.py | 215 +++++++++++
+ tests/unit/modules/test_yumpkg.py     |  43 ++-
+ tests/unit/modules/test_zypperpkg.py  |  40 +-
+ tests/unit/states/test_pkgrepo.py     | 527 ++++++++++++++++++++++++++
+ 10 files changed, 1363 insertions(+), 7 deletions(-)
+ create mode 100644 changelog/58782.added
+ create mode 100644 tests/unit/states/test_pkgrepo.py
+
+diff --git a/changelog/58782.added b/changelog/58782.added
+new file mode 100644
+index 0000000000..f9e69f64f2
+--- /dev/null
++++ b/changelog/58782.added
+@@ -0,0 +1 @@
++Add GPG key functions in "lowpkg" and a "migrated" function in the "pkgrepo" state for repository and GPG key migration.
+\ No newline at end of file
+diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
+index 765d69aff2..28b8597ef5 100644
+--- a/salt/modules/aptpkg.py
++++ b/salt/modules/aptpkg.py
+@@ -1878,7 +1878,7 @@ def _convert_if_int(value):
+     return value
+ 
+ 
+-def get_repo_keys():
++def get_repo_keys(**kwargs):
+     '''
+     .. versionadded:: 2017.7.0
+ 
+@@ -1950,7 +1950,9 @@ def get_repo_keys():
+     return ret
+ 
+ 
+-def add_repo_key(path=None, text=None, keyserver=None, keyid=None, saltenv='base'):
++def add_repo_key(
++    path=None, text=None, keyserver=None, keyid=None, saltenv='base', **kwargs
++):
+     '''
+     .. versionadded:: 2017.7.0
+ 
+@@ -1976,7 +1978,6 @@ def add_repo_key(path=None, text=None, keyserver=None, keyid=None, saltenv='base
+         salt '*' pkg.add_repo_key keyserver='keyserver.example' keyid='0000AAAA'
+     '''
+     cmd = ['apt-key']
+-    kwargs = {}
+ 
+     current_repo_keys = get_repo_keys()
+ 
+diff --git a/salt/modules/rpm_lowpkg.py b/salt/modules/rpm_lowpkg.py
+index c8a87276b2..fee0221a7c 100644
+--- a/salt/modules/rpm_lowpkg.py
++++ b/salt/modules/rpm_lowpkg.py
+@@ -823,3 +823,154 @@ def checksum(*paths, **kwargs):
+                                                         python_shell=False))
+ 
+     return ret
++
++
++def list_gpg_keys(info=False, root=None):
++    """Return the list of all the GPG keys stored in the RPM database
++
++    .. versionadded:: TBD
++
++    info
++       get the key information, returing a dictionary instead of a
++       list
++
++    root
++       use root as top level directory (default: "/")
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt '*' lowpkg.list_gpg_keys
++        salt '*' lowpkg.list_gpg_keys info=True
++
++    """
++    cmd = ["rpm"]
++    if root:
++        cmd.extend(["--root", root])
++    cmd.extend(["-qa", "gpg-pubkey*"])
++    keys = __salt__["cmd.run_stdout"](cmd, python_shell=False).splitlines()
++    if info:
++        return {key: info_gpg_key(key, root=root) for key in keys}
++    else:
++        return keys
++
++
++def info_gpg_key(key, root=None):
++    """Return a dictionary with the information of a GPG key parsed
++
++    .. versionadded:: TBD
++
++    key
++       key identificatior
++
++    root
++       use root as top level directory (default: "/")
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt '*' lowpkg.info_gpg_key gpg-pubkey-3dbdc284-53674dd4
++
++    """
++    cmd = ["rpm"]
++    if root:
++        cmd.extend(["--root", root])
++    cmd.extend(["-qi", key])
++    info = __salt__["cmd.run_stdout"](cmd, python_shell=False)
++
++    res = {}
++    # The parser algorithm is very ad-hoc.  Works under the
++    # expectation that all the fields are of the type "key: value" in
++    # a single line, except "Description", that will be composed of
++    # multiple lines.  Note that even if the official `rpm` makes this
++    # field the last one, other (like openSUSE) exted it with more
++    # fields.
++    in_description = False
++    description = []
++    for line in info.splitlines():
++        if line.startswith("Description"):
++            in_description = True
++        elif in_description:
++            description.append(line)
++            if line.startswith("-----END"):
++                res["Description"] = "\n".join(description)
++                in_description = False
++        elif line:
++            key, _, value = line.partition(":")
++            value = value.strip()
++            if "Date" in key:
++                try:
++                    value = datetime.datetime.strptime(
++                        value, "%a %d %b %Y %H:%M:%S %p %Z"
++                    )
++                except ValueError:
++                    pass
++            elif "Size" in key:
++                try:
++                    value = int(value)
++                except TypeError:
++                    pass
++            elif "(none)" in value:
++                value = None
++            res[key.strip()] = value
++    return res
++
++
++def import_gpg_key(key, root=None):
++    """Import a new key into the key storage
++
++    .. versionadded:: TBD
++
++    key
++       public key block content
++
++    root
++       use root as top level directory (default: "/")
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt '*' lowpkg.import_gpg_key "-----BEGIN ..."
++
++    """
++    key_file = salt.utils.files.mkstemp()
++    with salt.utils.files.fopen(key_file, "w") as f:
++        f.write(key)
++
++    cmd = ["rpm"]
++    if root:
++        cmd.extend(["--root", root])
++    cmd.extend(["--import", key_file])
++    ret = __salt__["cmd.retcode"](cmd)
++
++    os.remove(key_file)
++
++    return ret == 0
++
++
++def remove_gpg_key(key, root=None):
++    """Remove a key from the key storage
++
++    .. versionadded:: TBD
++
++    key
++       key identificatior
++
++    root
++       use root as top level directory (default: "/")
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt '*' lowpkg.remove_gpg_key gpg-pubkey-3dbdc284-53674dd4
++
++    """
++    cmd = ["rpm"]
++    if root:
++        cmd.extend(["--root", root])
++    cmd.extend(["-e", key])
++    return __salt__["cmd.retcode"](cmd) == 0
+diff --git a/salt/modules/yumpkg.py b/salt/modules/yumpkg.py
+index 04ab240cd4..85a2dbd857 100644
+--- a/salt/modules/yumpkg.py
++++ b/salt/modules/yumpkg.py
+@@ -3271,3 +3271,91 @@ def list_installed_patches(**kwargs):
+         salt '*' pkg.list_installed_patches
+     '''
+     return _get_patches(installed_only=True)
++
++
++def get_repo_keys(info=False, root=None, **kwargs):
++    """Return the list of all the GPG keys stored in the RPM database
++
++    .. versionadded:: TBD
++
++    info
++       get the key information, returing a dictionary instead of a
++       list
++
++    root
++       use root as top level directory (default: "/")
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt '*' pkg.get_repo_keys
++        salt '*' pkg.get_repo_keys info=True
++
++    """
++    return __salt__["lowpkg.list_gpg_keys"](info, root)
++
++
++def add_repo_key(path=None, text=None, root=None, saltenv="base", **kwargs):
++    """Import a new key into the key storage
++
++    .. versionadded:: TBD
++
++    path
++        the path of the key file to import
++
++    text
++        the key data to import, in string form
++
++    root
++        use root as top level directory (default: "/")
++
++    saltenv
++        the environment the key file resides in
++
++    CLI Examples:
++
++    .. code-block:: bash
++
++        salt '*' pkg.add_repo_key 'salt://apt/sources/test.key'
++        salt '*' pkg.add_repo_key text="'$KEY1'"
++
++    """
++    if not path and not text:
++        raise SaltInvocationError("Provide a key to add")
++
++    if path and text:
++        raise SaltInvocationError("Add a key via path or key")
++
++    if path:
++        cache_path = __salt__["cp.cache_file"](path, saltenv)
++
++        if not cache_path:
++            log.error("Unable to get cached copy of file: %s", path)
++            return False
++
++        with salt.utils.files.fopen(cache_path, "r") as f:
++            text = f.read()
++
++    return __salt__["lowpkg.import_gpg_key"](text, root)
++
++
++def del_repo_key(keyid, root=None, **kwargs):
++    """Remove a key from the key storage
++
++    .. versionadded:: TBD
++
++    keyid
++        key identificatior
++
++    root
++       use root as top level directory (default: "/")
++
++    CLI Examples:
++
++    .. code-block:: bash
++
++        salt '*' pkg.del_repo_key keyid=gpg-pubkey-3dbdc284-53674dd4
++
++    """
++    return __salt__["lowpkg.remove_gpg_key"](keyid, root)
+diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
+index d84a6af6e0..fab7736701 100644
+--- a/salt/modules/zypperpkg.py
++++ b/salt/modules/zypperpkg.py
+@@ -1270,7 +1270,7 @@ def mod_repo(repo, **kwargs):
+         cmd_opt.append("--priority={0}".format(kwargs.get('priority', DEFAULT_PRIORITY)))
+ 
+     if 'humanname' in kwargs:
+-        cmd_opt.append("--name='{0}'".format(kwargs.get('humanname')))
++        cmd_opt.extend(["--name", kwargs.get("humanname")])
+ 
+     if kwargs.get('gpgautoimport') is True:
+         global_cmd_opt.append('--gpg-auto-import-keys')
+@@ -2879,3 +2879,91 @@ def resolve_capabilities(pkgs, refresh=False, root=None, **kwargs):
+         else:
+             ret.append(name)
+     return ret
++
++
++def get_repo_keys(info=False, root=None, **kwargs):
++    """Return the list of all the GPG keys stored in the RPM database
++
++    .. versionadded:: TBD
++
++    info
++       get the key information, returing a dictionary instead of a
++       list
++
++    root
++       use root as top level directory (default: "/")
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt '*' pkg.get_repo_keys
++        salt '*' pkg.get_repo_keys info=True
++
++    """
++    return __salt__["lowpkg.list_gpg_keys"](info, root)
++
++
++def add_repo_key(path=None, text=None, root=None, saltenv="base", **kwargs):
++    """Import a new key into the key storage
++
++    .. versionadded:: TBD
++
++    path
++        the path of the key file to import
++
++    text
++        the key data to import, in string form
++
++    root
++        use root as top level directory (default: "/")
++
++    saltenv
++        the environment the key file resides in
++
++    CLI Examples:
++
++    .. code-block:: bash
++
++        salt '*' pkg.add_repo_key 'salt://apt/sources/test.key'
++        salt '*' pkg.add_repo_key text="'$KEY1'"
++
++    """
++    if not path and not text:
++        raise SaltInvocationError("Provide a key to add")
++
++    if path and text:
++        raise SaltInvocationError("Add a key via path or key")
++
++    if path:
++        cache_path = __salt__["cp.cache_file"](path, saltenv)
++
++        if not cache_path:
++            log.error("Unable to get cached copy of file: %s", path)
++            return False
++
++        with salt.utils.files.fopen(cache_path, "r") as f:
++            text = f.read()
++
++    return __salt__["lowpkg.import_gpg_key"](text, root)
++
++
++def del_repo_key(keyid, root=None, **kwargs):
++    """Remove a key from the key storage
++
++    .. versionadded:: TBD
++
++    keyid
++        key identificatior
++
++    root
++       use root as top level directory (default: "/")
++
++    CLI Examples:
++
++    .. code-block:: bash
++
++        salt '*' pkg.del_repo_key keyid=gpg-pubkey-3dbdc284-53674dd4
++
++    """
++    return __salt__["lowpkg.remove_gpg_key"](keyid, root)
+diff --git a/salt/states/pkgrepo.py b/salt/states/pkgrepo.py
+index c39e857580..6c42d17d32 100644
+--- a/salt/states/pkgrepo.py
++++ b/salt/states/pkgrepo.py
+@@ -84,6 +84,7 @@ package managers are APT, DNF, YUM and Zypper. Here is some example SLS:
+ 
+ # Import Python libs
+ from __future__ import absolute_import, print_function, unicode_literals
++import os
+ import sys
+ 
+ # Import salt libs
+@@ -96,6 +97,7 @@ import salt.utils.pkg.rpm
+ 
+ # Import 3rd-party libs
+ from salt.ext import six
++import salt.utils.versions
+ 
+ 
+ def __virtual__():
+@@ -643,3 +645,209 @@ def absent(name, **kwargs):
+         ret['comment'] = 'Failed to remove repo {0}'.format(name)
+ 
+     return ret
++
++
++def _normalize_repo(repo):
++    """Normalize the get_repo information"""
++    # `pkg.get_repo()` specific virtual module implementation is
++    # parsing the information directly from the repository
++    # configuration file, and can be different from the ones that
++    # `pkg.mod_repo()` accepts
++
++    # If the field is not present will be dropped
++    suse = {
++        # "alias": "repo",
++        "name": "humanname",
++        "priority": "priority",
++        "enabled": "enabled",
++        "autorefresh": "refresh",
++        "gpgcheck": "gpgcheck",
++        "keepackages": "cache",
++        "baseurl": "url",
++    }
++    translator = {
++        "Suse": suse,
++    }
++    table = translator.get(__grains__["os_family"], {})
++    return {table[k]: v for k, v in repo.items() if k in table}
++
++
++def _normalize_key(key):
++    """Normalize the info_gpg_key information"""
++
++    # If the field is not present will be dropped
++    rpm = {
++        "Description": "key",
++    }
++    translator = {
++        "Suse": rpm,
++        "RedHat": rpm,
++    }
++    table = translator.get(__grains__["os_family"], {})
++    return {table[k]: v for k, v in key.items() if k in table}
++
++
++def _repos_keys_migrate_drop(root, keys, drop):
++    """Helper function to calculate repost and key migrations"""
++
++    def _d2s(d):
++        """Serialize a dict and store in a set"""
++        return {
++            (k, tuple((_k, _v) for _k, _v in sorted(v.items())))
++            for k, v in sorted(d.items())
++        }
++
++    src_repos = _d2s(
++        {k: _normalize_repo(v) for k, v in __salt__["pkg.list_repos"]().items()}
++    )
++    # There is no guarantee that the target repository is even initialized
++    try:
++        tgt_repos = _d2s(
++            {
++                k: _normalize_repo(v)
++                for k, v in __salt__["pkg.list_repos"](root=root).items()
++            }
++        )
++    except Exception:  # pylint: disable=broad-except
++        tgt_repos = set()
++
++    src_keys = set()
++    tgt_keys = set()
++    if keys:
++        src_keys = _d2s(
++            {
++                k: _normalize_key(v)
++                for k, v in __salt__["lowpkg.list_gpg_keys"](info=True).items()
++            }
++        )
++        try:
++            tgt_keys = _d2s(
++                {
++                    k: _normalize_key(v)
++                    for k, v in __salt__["lowpkg.list_gpg_keys"](
++                        info=True, root=root
++                    ).items()
++                }
++            )
++        except Exception:  # pylint: disable=broad-except
++            pass
++
++    repos_to_migrate = src_repos - tgt_repos
++    repos_to_drop = tgt_repos - src_repos if drop else set()
++
++    keys_to_migrate = src_keys - tgt_keys
++    keys_to_drop = tgt_keys - src_keys if drop else set()
++
++    return (repos_to_migrate, repos_to_drop, keys_to_migrate, keys_to_drop)
++
++
++def _copy_repository_to(root):
++    repo = {
++        "Suse": ["/etc/zypp/repos.d"],
++        "RedHat": ["/etc/yum.conf", "/etc/yum.repos.d"],
++    }
++    for src in repo.get(__grains__["os_family"], []):
++        dst = os.path.join(root, os.path.relpath(src, os.path.sep))
++        __salt__["file.copy"](src=src, dst=dst, recurse=True)
++
++
++def migrated(name, keys=True, drop=False, method=None, **kwargs):
++    """Migrate a repository from one directory to another, including the
++    GPG keys if requested
++
++    .. versionadded:: TBD
++
++    name
++        Directory were to migrate the repositories. For example, if we
++        are booting from a USB key and we mounted the rootfs in
++        "/mnt", the repositories will live in "/mnt/etc/yum.repos.d"
++        or in "/etc/zypp/repos.d", depending on the system.  For both
++        cases the expected value for "name" would be "/mnt"
++
++    keys
++        If is is True, will migrate all the keys
++
++    drop
++        If True, the target repositories that do not exist in the
++        source will be dropped
++
++    method
++        If None or "salt", it will use the Salt API to migrate the
++        repositories, if "copy", it will copy the repository files
++        directly
++
++    """
++    ret = {"name": name, "result": False, "changes": {}, "comment": ""}
++
++    if __grains__["os_family"] not in ("Suse",):
++        ret["comment"] = "Migration not supported for this platform"
++        return ret
++
++    if keys and "lowpkg.import_gpg_key" not in __salt__:
++        ret["comment"] = "Keys cannot be migrated for this platform"
++        return ret
++
++    if method not in (None, "salt", "copy"):
++        ret["comment"] = "Migration method not supported"
++        return ret
++
++    (
++        repos_to_migrate,
++        repos_to_drop,
++        keys_to_migrate,
++        keys_to_drop,
++    ) = _repos_keys_migrate_drop(name, keys, drop)
++
++    if not any((repos_to_migrate, repos_to_drop, keys_to_migrate, keys_to_drop)):
++        ret["result"] = True
++        ret["comment"] = "Repositories are already migrated"
++        return ret
++
++    if __opts__["test"]:
++        ret["result"] = None
++        ret["comment"] = "There are keys or repositories to migrate or drop"
++        ret["changes"] = {
++            "repos to migrate": [repo for repo, _ in repos_to_migrate],
++            "repos to drop": [repo for repo, _ in repos_to_drop],
++            "keys to migrate": [key for key, _ in keys_to_migrate],
++            "keys to drop": [key for key, _ in keys_to_drop],
++        }
++        return ret
++
++    for repo, repo_info in repos_to_migrate:
++        if method == "copy":
++            _copy_repository_to(name)
++        else:
++            __salt__["pkg.mod_repo"](repo, **dict(repo_info), root=name)
++    for repo, _ in repos_to_drop:
++        __salt__["pkg.del_repo"](repo, root=name)
++
++    for _, key_info in keys_to_migrate:
++        __salt__["lowpkg.import_gpg_key"](dict(key_info)["key"], root=name)
++    for key, _ in keys_to_drop:
++        __salt__["lowpkg.remove_gpg_key"](key, root=name)
++
++    (
++        rem_repos_to_migrate,
++        rem_repos_to_drop,
++        rem_keys_to_migrate,
++        rem_keys_to_drop,
++    ) = _repos_keys_migrate_drop(name, keys, drop)
++
++    if any(
++        (rem_repos_to_migrate, rem_repos_to_drop, rem_keys_to_migrate, rem_keys_to_drop)
++    ):
++        ret["result"] = False
++        ret["comment"] = "Migration of repositories failed"
++        return ret
++
++    ret["result"] = True
++    ret["comment"] = "Repositories synchronized"
++    ret["changes"] = {
++        "repos migrated": [repo for repo, _ in repos_to_migrate],
++        "repos dropped": [repo for repo, _ in repos_to_drop],
++        "keys migrated": [key for key, _ in keys_to_migrate],
++        "keys dropped": [key for key, _ in keys_to_drop],
++    }
++
++    return ret
+diff --git a/tests/unit/modules/test_rpm_lowpkg.py b/tests/unit/modules/test_rpm_lowpkg.py
+index b6cbd9e5cb..ff3678fde5 100644
+--- a/tests/unit/modules/test_rpm_lowpkg.py
++++ b/tests/unit/modules/test_rpm_lowpkg.py
+@@ -5,6 +5,7 @@
+ 
+ # Import Python Libs
+ from __future__ import absolute_import
++import datetime
+ 
+ # Import Salt Testing Libs
+ from tests.support.mixins import LoaderModuleMockMixin
+@@ -205,3 +206,217 @@ class RpmTestCase(TestCase, LoaderModuleMockMixin):
+         with patch('salt.modules.rpm_lowpkg.rpm.labelCompare', MagicMock(return_value=0)), \
+                 patch('salt.modules.rpm_lowpkg.HAS_RPM', False):
+             self.assertEqual(-1, rpm.version_cmp('1', '2'))  # mock returns -1, a python implementation was called
++
++    def test_list_gpg_keys_no_info(self):
++        """
++        Test list_gpg_keys with no extra information
++        """
++        mock = MagicMock(return_value="\n".join(["gpg-pubkey-1", "gpg-pubkey-2"]))
++        with patch.dict(rpm.__salt__, {"cmd.run_stdout": mock}):
++            self.assertEqual(rpm.list_gpg_keys(), ["gpg-pubkey-1", "gpg-pubkey-2"])
++            self.assertFalse(_called_with_root(mock))
++
++    def test_list_gpg_keys_no_info_root(self):
++        """
++        Test list_gpg_keys with no extra information and root
++        """
++        mock = MagicMock(return_value="\n".join(["gpg-pubkey-1", "gpg-pubkey-2"]))
++        with patch.dict(rpm.__salt__, {"cmd.run_stdout": mock}):
++            self.assertEqual(
++                rpm.list_gpg_keys(root="/mnt"), ["gpg-pubkey-1", "gpg-pubkey-2"]
++            )
++            self.assertTrue(_called_with_root(mock))
++
++    @patch("salt.modules.rpm_lowpkg.info_gpg_key")
++    def test_list_gpg_keys_info(self, info_gpg_key):
++        """
++        Test list_gpg_keys with extra information
++        """
++        info_gpg_key.side_effect = lambda x, root: {
++            "Description": "key for {}".format(x)
++        }
++        mock = MagicMock(return_value="\n".join(["gpg-pubkey-1", "gpg-pubkey-2"]))
++        with patch.dict(rpm.__salt__, {"cmd.run_stdout": mock}):
++            self.assertEqual(
++                rpm.list_gpg_keys(info=True),
++                {
++                    "gpg-pubkey-1": {"Description": "key for gpg-pubkey-1"},
++                    "gpg-pubkey-2": {"Description": "key for gpg-pubkey-2"},
++                },
++            )
++            self.assertFalse(_called_with_root(mock))
++
++    def test_info_gpg_key(self):
++        """
++        Test info_gpg_keys from a normal output
++        """
++        info = """Name        : gpg-pubkey
++Version     : 3dbdc284
++Release     : 53674dd4
++Architecture: (none)
++Install Date: Fri 08 Mar 2019 11:57:44 AM UTC
++Group       : Public Keys
++Size        : 0
++License     : pubkey
++Signature   : (none)
++Source RPM  : (none)
++Build Date  : Mon 05 May 2014 10:37:40 AM UTC
++Build Host  : localhost
++Packager    : openSUSE Project Signing Key <opensuse@opensuse.org>
++Summary     : gpg(openSUSE Project Signing Key <opensuse@opensuse.org>)
++Description :
++-----BEGIN PGP PUBLIC KEY BLOCK-----
++Version: rpm-4.14.2.1 (NSS-3)
++
++mQENBEkUTD8BCADWLy5d5IpJedHQQSXkC1VK/oAZlJEeBVpSZjMCn8LiHaI9Wq3G
++3Vp6wvsP1b3kssJGzVFNctdXt5tjvOLxvrEfRJuGfqHTKILByqLzkeyWawbFNfSQ
++93/8OunfSTXC1Sx3hgsNXQuOrNVKrDAQUqT620/jj94xNIg09bLSxsjN6EeTvyiO
++mtE9H1J03o9tY6meNL/gcQhxBvwuo205np0JojYBP0pOfN8l9hnIOLkA0yu4ZXig
++oKOVmf4iTjX4NImIWldT+UaWTO18NWcCrujtgHueytwYLBNV5N0oJIP2VYuLZfSD
++VYuPllv7c6O2UEOXJsdbQaVuzU1HLocDyipnABEBAAG0NG9wZW5TVVNFIFByb2pl
++Y3QgU2lnbmluZyBLZXkgPG9wZW5zdXNlQG9wZW5zdXNlLm9yZz6JATwEEwECACYC
++GwMGCwkIBwMCBBUCCAMEFgIDAQIeAQIXgAUCU2dN1AUJHR8ElQAKCRC4iy/UPb3C
++hGQrB/9teCZ3Nt8vHE0SC5NmYMAE1Spcjkzx6M4r4C70AVTMEQh/8BvgmwkKP/qI
++CWo2vC1hMXRgLg/TnTtFDq7kW+mHsCXmf5OLh2qOWCKi55Vitlf6bmH7n+h34Sha
++Ei8gAObSpZSF8BzPGl6v0QmEaGKM3O1oUbbB3Z8i6w21CTg7dbU5vGR8Yhi9rNtr
++hqrPS+q2yftjNbsODagaOUb85ESfQGx/LqoMePD+7MqGpAXjKMZqsEDP0TbxTwSk
++4UKnF4zFCYHPLK3y/hSH5SEJwwPY11l6JGdC1Ue8Zzaj7f//axUs/hTC0UZaEE+a
++5v4gbqOcigKaFs9Lc3Bj8b/lE10Y
++=i2TA
++-----END PGP PUBLIC KEY BLOCK-----
++
++"""
++        mock = MagicMock(return_value=info)
++        with patch.dict(rpm.__salt__, {"cmd.run_stdout": mock}):
++            self.assertEqual(
++                rpm.info_gpg_key("key"),
++                {
++                    "Name": "gpg-pubkey",
++                    "Version": "3dbdc284",
++                    "Release": "53674dd4",
++                    "Architecture": None,
++                    "Install Date": datetime.datetime(2019, 3, 8, 11, 57, 44),
++                    "Group": "Public Keys",
++                    "Size": 0,
++                    "License": "pubkey",
++                    "Signature": None,
++                    "Source RPM": None,
++                    "Build Date": datetime.datetime(2014, 5, 5, 10, 37, 40),
++                    "Build Host": "localhost",
++                    "Packager": "openSUSE Project Signing Key <opensuse@opensuse.org>",
++                    "Summary": "gpg(openSUSE Project Signing Key <opensuse@opensuse.org>)",
++                    "Description": """-----BEGIN PGP PUBLIC KEY BLOCK-----
++Version: rpm-4.14.2.1 (NSS-3)
++
++mQENBEkUTD8BCADWLy5d5IpJedHQQSXkC1VK/oAZlJEeBVpSZjMCn8LiHaI9Wq3G
++3Vp6wvsP1b3kssJGzVFNctdXt5tjvOLxvrEfRJuGfqHTKILByqLzkeyWawbFNfSQ
++93/8OunfSTXC1Sx3hgsNXQuOrNVKrDAQUqT620/jj94xNIg09bLSxsjN6EeTvyiO
++mtE9H1J03o9tY6meNL/gcQhxBvwuo205np0JojYBP0pOfN8l9hnIOLkA0yu4ZXig
++oKOVmf4iTjX4NImIWldT+UaWTO18NWcCrujtgHueytwYLBNV5N0oJIP2VYuLZfSD
++VYuPllv7c6O2UEOXJsdbQaVuzU1HLocDyipnABEBAAG0NG9wZW5TVVNFIFByb2pl
++Y3QgU2lnbmluZyBLZXkgPG9wZW5zdXNlQG9wZW5zdXNlLm9yZz6JATwEEwECACYC
++GwMGCwkIBwMCBBUCCAMEFgIDAQIeAQIXgAUCU2dN1AUJHR8ElQAKCRC4iy/UPb3C
++hGQrB/9teCZ3Nt8vHE0SC5NmYMAE1Spcjkzx6M4r4C70AVTMEQh/8BvgmwkKP/qI
++CWo2vC1hMXRgLg/TnTtFDq7kW+mHsCXmf5OLh2qOWCKi55Vitlf6bmH7n+h34Sha
++Ei8gAObSpZSF8BzPGl6v0QmEaGKM3O1oUbbB3Z8i6w21CTg7dbU5vGR8Yhi9rNtr
++hqrPS+q2yftjNbsODagaOUb85ESfQGx/LqoMePD+7MqGpAXjKMZqsEDP0TbxTwSk
++4UKnF4zFCYHPLK3y/hSH5SEJwwPY11l6JGdC1Ue8Zzaj7f//axUs/hTC0UZaEE+a
++5v4gbqOcigKaFs9Lc3Bj8b/lE10Y
++=i2TA
++-----END PGP PUBLIC KEY BLOCK-----""",
++                },
++            )
++            self.assertFalse(_called_with_root(mock))
++
++    def test_info_gpg_key_extended(self):
++        """
++        Test info_gpg_keys from an extended output
++        """
++        info = """Name        : gpg-pubkey
++Version     : 3dbdc284
++Release     : 53674dd4
++Architecture: (none)
++Install Date: Fri 08 Mar 2019 11:57:44 AM UTC
++Group       : Public Keys
++Size        : 0
++License     : pubkey
++Signature   : (none)
++Source RPM  : (none)
++Build Date  : Mon 05 May 2014 10:37:40 AM UTC
++Build Host  : localhost
++Packager    : openSUSE Project Signing Key <opensuse@opensuse.org>
++Summary     : gpg(openSUSE Project Signing Key <opensuse@opensuse.org>)
++Description :
++-----BEGIN PGP PUBLIC KEY BLOCK-----
++Version: rpm-4.14.2.1 (NSS-3)
++
++mQENBEkUTD8BCADWLy5d5IpJedHQQSXkC1VK/oAZlJEeBVpSZjMCn8LiHaI9Wq3G
++3Vp6wvsP1b3kssJGzVFNctdXt5tjvOLxvrEfRJuGfqHTKILByqLzkeyWawbFNfSQ
++93/8OunfSTXC1Sx3hgsNXQuOrNVKrDAQUqT620/jj94xNIg09bLSxsjN6EeTvyiO
++mtE9H1J03o9tY6meNL/gcQhxBvwuo205np0JojYBP0pOfN8l9hnIOLkA0yu4ZXig
++oKOVmf4iTjX4NImIWldT+UaWTO18NWcCrujtgHueytwYLBNV5N0oJIP2VYuLZfSD
++VYuPllv7c6O2UEOXJsdbQaVuzU1HLocDyipnABEBAAG0NG9wZW5TVVNFIFByb2pl
++Y3QgU2lnbmluZyBLZXkgPG9wZW5zdXNlQG9wZW5zdXNlLm9yZz6JATwEEwECACYC
++GwMGCwkIBwMCBBUCCAMEFgIDAQIeAQIXgAUCU2dN1AUJHR8ElQAKCRC4iy/UPb3C
++hGQrB/9teCZ3Nt8vHE0SC5NmYMAE1Spcjkzx6M4r4C70AVTMEQh/8BvgmwkKP/qI
++CWo2vC1hMXRgLg/TnTtFDq7kW+mHsCXmf5OLh2qOWCKi55Vitlf6bmH7n+h34Sha
++Ei8gAObSpZSF8BzPGl6v0QmEaGKM3O1oUbbB3Z8i6w21CTg7dbU5vGR8Yhi9rNtr
++hqrPS+q2yftjNbsODagaOUb85ESfQGx/LqoMePD+7MqGpAXjKMZqsEDP0TbxTwSk
++4UKnF4zFCYHPLK3y/hSH5SEJwwPY11l6JGdC1Ue8Zzaj7f//axUs/hTC0UZaEE+a
++5v4gbqOcigKaFs9Lc3Bj8b/lE10Y
++=i2TA
++-----END PGP PUBLIC KEY BLOCK-----
++
++Distribution: (none)
++"""
++        mock = MagicMock(return_value=info)
++        with patch.dict(rpm.__salt__, {"cmd.run_stdout": mock}):
++            self.assertEqual(
++                rpm.info_gpg_key("key"),
++                {
++                    "Name": "gpg-pubkey",
++                    "Version": "3dbdc284",
++                    "Release": "53674dd4",
++                    "Architecture": None,
++                    "Install Date": datetime.datetime(2019, 3, 8, 11, 57, 44),
++                    "Group": "Public Keys",
++                    "Size": 0,
++                    "License": "pubkey",
++                    "Signature": None,
++                    "Source RPM": None,
++                    "Build Date": datetime.datetime(2014, 5, 5, 10, 37, 40),
++                    "Build Host": "localhost",
++                    "Packager": "openSUSE Project Signing Key <opensuse@opensuse.org>",
++                    "Summary": "gpg(openSUSE Project Signing Key <opensuse@opensuse.org>)",
++                    "Description": """-----BEGIN PGP PUBLIC KEY BLOCK-----
++Version: rpm-4.14.2.1 (NSS-3)
++
++mQENBEkUTD8BCADWLy5d5IpJedHQQSXkC1VK/oAZlJEeBVpSZjMCn8LiHaI9Wq3G
++3Vp6wvsP1b3kssJGzVFNctdXt5tjvOLxvrEfRJuGfqHTKILByqLzkeyWawbFNfSQ
++93/8OunfSTXC1Sx3hgsNXQuOrNVKrDAQUqT620/jj94xNIg09bLSxsjN6EeTvyiO
++mtE9H1J03o9tY6meNL/gcQhxBvwuo205np0JojYBP0pOfN8l9hnIOLkA0yu4ZXig
++oKOVmf4iTjX4NImIWldT+UaWTO18NWcCrujtgHueytwYLBNV5N0oJIP2VYuLZfSD
++VYuPllv7c6O2UEOXJsdbQaVuzU1HLocDyipnABEBAAG0NG9wZW5TVVNFIFByb2pl
++Y3QgU2lnbmluZyBLZXkgPG9wZW5zdXNlQG9wZW5zdXNlLm9yZz6JATwEEwECACYC
++GwMGCwkIBwMCBBUCCAMEFgIDAQIeAQIXgAUCU2dN1AUJHR8ElQAKCRC4iy/UPb3C
++hGQrB/9teCZ3Nt8vHE0SC5NmYMAE1Spcjkzx6M4r4C70AVTMEQh/8BvgmwkKP/qI
++CWo2vC1hMXRgLg/TnTtFDq7kW+mHsCXmf5OLh2qOWCKi55Vitlf6bmH7n+h34Sha
++Ei8gAObSpZSF8BzPGl6v0QmEaGKM3O1oUbbB3Z8i6w21CTg7dbU5vGR8Yhi9rNtr
++hqrPS+q2yftjNbsODagaOUb85ESfQGx/LqoMePD+7MqGpAXjKMZqsEDP0TbxTwSk
++4UKnF4zFCYHPLK3y/hSH5SEJwwPY11l6JGdC1Ue8Zzaj7f//axUs/hTC0UZaEE+a
++5v4gbqOcigKaFs9Lc3Bj8b/lE10Y
++=i2TA
++-----END PGP PUBLIC KEY BLOCK-----""",
++                    "Distribution": None,
++                },
++            )
++            self.assertFalse(_called_with_root(mock))
++
++    def test_remove_gpg_key(self):
++        """
++        Test remove_gpg_key
++        """
++        mock = MagicMock(return_value=0)
++        with patch.dict(rpm.__salt__, {"cmd.retcode": mock}):
++            self.assertTrue(rpm.remove_gpg_key("gpg-pubkey-1"))
++            self.assertFalse(_called_with_root(mock))
+diff --git a/tests/unit/modules/test_yumpkg.py b/tests/unit/modules/test_yumpkg.py
+index 9fbe3d051e..dfe00a7181 100644
+--- a/tests/unit/modules/test_yumpkg.py
++++ b/tests/unit/modules/test_yumpkg.py
+@@ -10,15 +10,17 @@ from tests.support.unit import TestCase, skipIf
+ from tests.support.mock import (
+     Mock,
+     MagicMock,
++    mock_open,
+     patch,
+ )
+ 
+ # Import Salt libs
+-from salt.exceptions import CommandExecutionError
++from salt.exceptions import CommandExecutionError, SaltInvocationError
+ import salt.modules.rpm_lowpkg as rpm
+ from salt.ext import six
+ import salt.modules.yumpkg as yumpkg
+ import salt.modules.pkg_resource as pkg_resource
++import salt.utils.platform
+ 
+ try:
+     import pytest
+@@ -799,8 +801,45 @@ class YumTestCase(TestCase, LoaderModuleMockMixin):
+             with pytest.raises(CommandExecutionError):
+                 yumpkg._get_yum_config()
+ 
++    def test_get_repo_keys(self):
++        salt_mock = {"lowpkg.list_gpg_keys": MagicMock(return_value=True)}
++        with patch.dict(yumpkg.__salt__, salt_mock):
++            self.assertTrue(yumpkg.get_repo_keys(info=True, root="/mnt"))
++            salt_mock["lowpkg.list_gpg_keys"].assert_called_once_with(True, "/mnt")
+ 
+-@skipIf(pytest is None, 'PyTest is missing')
++    def test_add_repo_key_fail(self):
++        with self.assertRaises(SaltInvocationError):
++            yumpkg.add_repo_key()
++
++        with self.assertRaises(SaltInvocationError):
++            yumpkg.add_repo_key(path="path", text="text")
++
++    def test_add_repo_key_path(self):
++        salt_mock = {
++            "cp.cache_file": MagicMock(return_value="path"),
++            "lowpkg.import_gpg_key": MagicMock(return_value=True),
++        }
++        with patch("salt.utils.files.fopen", mock_open(read_data="text")), patch.dict(
++            yumpkg.__salt__, salt_mock
++        ):
++            self.assertTrue(yumpkg.add_repo_key(path="path", root="/mnt"))
++            salt_mock["cp.cache_file"].assert_called_once_with("path", "base")
++            salt_mock["lowpkg.import_gpg_key"].assert_called_once_with("text", "/mnt")
++
++    def test_add_repo_key_text(self):
++        salt_mock = {"lowpkg.import_gpg_key": MagicMock(return_value=True)}
++        with patch.dict(yumpkg.__salt__, salt_mock):
++            self.assertTrue(yumpkg.add_repo_key(text="text", root="/mnt"))
++            salt_mock["lowpkg.import_gpg_key"].assert_called_once_with("text", "/mnt")
++
++    def test_del_repo_key(self):
++        salt_mock = {"lowpkg.remove_gpg_key": MagicMock(return_value=True)}
++        with patch.dict(yumpkg.__salt__, salt_mock):
++            self.assertTrue(yumpkg.del_repo_key(keyid="keyid", root="/mnt"))
++            salt_mock["lowpkg.remove_gpg_key"].assert_called_once_with("keyid", "/mnt")
++
++
++@skipIf(pytest is None, "PyTest is missing")
+ class YumUtilsTestCase(TestCase, LoaderModuleMockMixin):
+     '''
+     Yum/Dnf utils tests.
+diff --git a/tests/unit/modules/test_zypperpkg.py b/tests/unit/modules/test_zypperpkg.py
+index 8cc84485b5..1f2a7dc4b2 100644
+--- a/tests/unit/modules/test_zypperpkg.py
++++ b/tests/unit/modules/test_zypperpkg.py
+@@ -22,7 +22,7 @@ from tests.support.mock import (
+ import salt.utils.files
+ import salt.modules.zypperpkg as zypper
+ import salt.modules.pkg_resource as pkg_resource
+-from salt.exceptions import CommandExecutionError
++from salt.exceptions import CommandExecutionError, SaltInvocationError
+ 
+ # Import 3rd-party libs
+ from salt.ext.six.moves import configparser
+@@ -1728,3 +1728,41 @@ pattern() = package-c"""
+                 python_shell=False,
+                 env={"ZYPP_READONLY_HACK": "1"},
+             )
++            self.assertEqual(zypper.__context__, {"pkg.other_data": None})
++
++    def test_get_repo_keys(self):
++        salt_mock = {"lowpkg.list_gpg_keys": MagicMock(return_value=True)}
++        with patch.dict(zypper.__salt__, salt_mock):
++            self.assertTrue(zypper.get_repo_keys(info=True, root="/mnt"))
++            salt_mock["lowpkg.list_gpg_keys"].assert_called_once_with(True, "/mnt")
++
++    def test_add_repo_key_fail(self):
++        with self.assertRaises(SaltInvocationError):
++            zypper.add_repo_key()
++
++        with self.assertRaises(SaltInvocationError):
++            zypper.add_repo_key(path="path", text="text")
++
++    def test_add_repo_key_path(self):
++        salt_mock = {
++            "cp.cache_file": MagicMock(return_value="path"),
++            "lowpkg.import_gpg_key": MagicMock(return_value=True),
++        }
++        with patch("salt.utils.files.fopen", mock_open(read_data="text")), patch.dict(
++            zypper.__salt__, salt_mock
++        ):
++            self.assertTrue(zypper.add_repo_key(path="path", root="/mnt"))
++            salt_mock["cp.cache_file"].assert_called_once_with("path", "base")
++            salt_mock["lowpkg.import_gpg_key"].assert_called_once_with("text", "/mnt")
++
++    def test_add_repo_key_text(self):
++        salt_mock = {"lowpkg.import_gpg_key": MagicMock(return_value=True)}
++        with patch.dict(zypper.__salt__, salt_mock):
++            self.assertTrue(zypper.add_repo_key(text="text", root="/mnt"))
++            salt_mock["lowpkg.import_gpg_key"].assert_called_once_with("text", "/mnt")
++
++    def test_del_repo_key(self):
++        salt_mock = {"lowpkg.remove_gpg_key": MagicMock(return_value=True)}
++        with patch.dict(zypper.__salt__, salt_mock):
++            self.assertTrue(zypper.del_repo_key(keyid="keyid", root="/mnt"))
++            salt_mock["lowpkg.remove_gpg_key"].assert_called_once_with("keyid", "/mnt")
+diff --git a/tests/unit/states/test_pkgrepo.py b/tests/unit/states/test_pkgrepo.py
+new file mode 100644
+index 0000000000..9d8d88abd9
+--- /dev/null
++++ b/tests/unit/states/test_pkgrepo.py
+@@ -0,0 +1,527 @@
++"""
++    :codeauthor: Tyler Johnson <tjohnson@saltstack.com>
++"""
++import salt.states.pkgrepo as pkgrepo
++import salt.utils.platform
++from tests.support.mixins import LoaderModuleMockMixin
++from tests.support.mock import MagicMock, patch
++from tests.support.unit import TestCase, skipIf
++
++
++class PkgrepoTestCase(TestCase, LoaderModuleMockMixin):
++    """
++    Test cases for salt.states.pkgrepo
++    """
++
++    def setup_loader_modules(self):
++        return {
++            pkgrepo: {
++                "__opts__": {"test": True},
++                "__grains__": {"os": "", "os_family": ""},
++            }
++        }
++
++    def test_new_key_url(self):
++        """
++        Test when only the key_url is changed that a change is triggered
++        """
++        kwargs = {
++            "name": "deb http://mock/ sid main",
++            "disabled": False,
++        }
++        key_url = "http://mock/changed_gpg.key"
++
++        with patch.dict(
++            pkgrepo.__salt__, {"pkg.get_repo": MagicMock(return_value=kwargs)}
++        ):
++            ret = pkgrepo.managed(key_url=key_url, **kwargs)
++            self.assertDictEqual(
++                {"key_url": {"old": None, "new": key_url}}, ret["changes"]
++            )
++
++    def test_update_key_url(self):
++        """
++        Test when only the key_url is changed that a change is triggered
++        """
++        kwargs = {
++            "name": "deb http://mock/ sid main",
++            "gpgcheck": 1,
++            "disabled": False,
++            "key_url": "http://mock/gpg.key",
++        }
++        changed_kwargs = kwargs.copy()
++        changed_kwargs["key_url"] = "http://mock/gpg2.key"
++
++        with patch.dict(
++            pkgrepo.__salt__, {"pkg.get_repo": MagicMock(return_value=kwargs)}
++        ):
++            ret = pkgrepo.managed(**changed_kwargs)
++            self.assertIn("key_url", ret["changes"], "Expected a change to key_url")
++            self.assertDictEqual(
++                {
++                    "key_url": {
++                        "old": kwargs["key_url"],
++                        "new": changed_kwargs["key_url"],
++                    }
++                },
++                ret["changes"],
++            )
++
++    def test__normalize_repo_suse(self):
++        repo = {
++            "name": "repo name",
++            "autorefresh": True,
++            "priority": 0,
++            "pkg_gpgcheck": True,
++        }
++        grains = {"os_family": "Suse"}
++        with patch.dict(pkgrepo.__grains__, grains):
++            self.assertEqual(
++                pkgrepo._normalize_repo(repo),
++                {"humanname": "repo name", "refresh": True, "priority": 0},
++            )
++
++    def test__normalize_key_rpm(self):
++        key = {"Description": "key", "Date": "Date", "Other": "Other"}
++        for os_family in ("Suse", "RedHat"):
++            grains = {"os_family": os_family}
++            with patch.dict(pkgrepo.__grains__, grains):
++                self.assertEqual(pkgrepo._normalize_key(key), {"key": "key"})
++
++    def test__repos_keys_migrate_drop_migrate_to_empty(self):
++        src_repos = {
++            "repo-1": {
++                "name": "repo name 1",
++                "autorefresh": True,
++                "priority": 0,
++                "pkg_gpgcheck": True,
++            },
++            "repo-2": {
++                "name": "repo name 2",
++                "autorefresh": True,
++                "priority": 0,
++                "pkg_gpgcheck": False,
++            },
++        }
++        tgt_repos = {}
++
++        src_keys = {
++            "key1": {"Description": "key1", "Other": "Other1"},
++            "key2": {"Description": "key2", "Other": "Other2"},
++        }
++        tgt_keys = {}
++
++        grains = {"os_family": "Suse"}
++        salt_mock = {
++            "pkg.list_repos": MagicMock(side_effect=[src_repos, tgt_repos]),
++            "lowpkg.list_gpg_keys": MagicMock(side_effect=[src_keys, tgt_keys]),
++        }
++        with patch.dict(pkgrepo.__grains__, grains), patch.dict(
++            pkgrepo.__salt__, salt_mock
++        ):
++            self.assertEqual(
++                pkgrepo._repos_keys_migrate_drop("/mnt", False, False),
++                (
++                    {
++                        (
++                            "repo-1",
++                            (
++                                ("humanname", "repo name 1"),
++                                ("priority", 0),
++                                ("refresh", True),
++                            ),
++                        ),
++                        (
++                            "repo-2",
++                            (
++                                ("humanname", "repo name 2"),
++                                ("priority", 0),
++                                ("refresh", True),
++                            ),
++                        ),
++                    },
++                    set(),
++                    set(),
++                    set(),
++                ),
++            )
++
++    def test__repos_keys_migrate_drop_migrate_to_empty_keys(self):
++        src_repos = {
++            "repo-1": {
++                "name": "repo name 1",
++                "autorefresh": True,
++                "priority": 0,
++                "pkg_gpgcheck": True,
++            },
++            "repo-2": {
++                "name": "repo name 2",
++                "autorefresh": True,
++                "priority": 0,
++                "pkg_gpgcheck": False,
++            },
++        }
++        tgt_repos = {}
++
++        src_keys = {
++            "key1": {"Description": "key1", "Other": "Other1"},
++            "key2": {"Description": "key2", "Other": "Other2"},
++        }
++        tgt_keys = {}
++
++        grains = {"os_family": "Suse"}
++        salt_mock = {
++            "pkg.list_repos": MagicMock(side_effect=[src_repos, tgt_repos]),
++            "lowpkg.list_gpg_keys": MagicMock(side_effect=[src_keys, tgt_keys]),
++        }
++        with patch.dict(pkgrepo.__grains__, grains), patch.dict(
++            pkgrepo.__salt__, salt_mock
++        ):
++            self.assertEqual(
++                pkgrepo._repos_keys_migrate_drop("/mnt", True, False),
++                (
++                    {
++                        (
++                            "repo-1",
++                            (
++                                ("humanname", "repo name 1"),
++                                ("priority", 0),
++                                ("refresh", True),
++                            ),
++                        ),
++                        (
++                            "repo-2",
++                            (
++                                ("humanname", "repo name 2"),
++                                ("priority", 0),
++                                ("refresh", True),
++                            ),
++                        ),
++                    },
++                    set(),
++                    {("key1", (("key", "key1"),)), ("key2", (("key", "key2"),))},
++                    set(),
++                ),
++            )
++
++    def test__repos_keys_migrate_drop_migrate_to_populated_no_drop(self):
++        src_repos = {
++            "repo-1": {
++                "name": "repo name 1",
++                "autorefresh": True,
++                "priority": 0,
++                "pkg_gpgcheck": True,
++            },
++            "repo-2": {
++                "name": "repo name 2",
++                "autorefresh": True,
++                "priority": 0,
++                "pkg_gpgcheck": False,
++            },
++        }
++        tgt_repos = {
++            "repo-1": {
++                "name": "repo name 1",
++                "autorefresh": True,
++                "priority": 0,
++                "pkg_gpgcheck": True,
++            },
++            "repo-3": {
++                "name": "repo name 3",
++                "autorefresh": True,
++                "priority": 0,
++                "pkg_gpgcheck": False,
++            },
++        }
++
++        src_keys = {
++            "key1": {"Description": "key1", "Other": "Other1"},
++            "key2": {"Description": "key2", "Other": "Other2"},
++        }
++        tgt_keys = {
++            "key1": {"Description": "key1", "Other": "Other1"},
++            "key3": {"Description": "key3", "Other": "Other2"},
++        }
++
++        grains = {"os_family": "Suse"}
++        salt_mock = {
++            "pkg.list_repos": MagicMock(side_effect=[src_repos, tgt_repos]),
++            "lowpkg.list_gpg_keys": MagicMock(side_effect=[src_keys, tgt_keys]),
++        }
++        with patch.dict(pkgrepo.__grains__, grains), patch.dict(
++            pkgrepo.__salt__, salt_mock
++        ):
++            self.assertEqual(
++                pkgrepo._repos_keys_migrate_drop("/mnt", True, False),
++                (
++                    {
++                        (
++                            "repo-2",
++                            (
++                                ("humanname", "repo name 2"),
++                                ("priority", 0),
++                                ("refresh", True),
++                            ),
++                        ),
++                    },
++                    set(),
++                    {("key2", (("key", "key2"),))},
++                    set(),
++                ),
++            )
++
++    def test__repos_keys_migrate_drop_migrate_to_populated_drop(self):
++        src_repos = {
++            "repo-1": {
++                "name": "repo name 1",
++                "autorefresh": True,
++                "priority": 0,
++                "pkg_gpgcheck": True,
++            },
++            "repo-2": {
++                "name": "repo name 2",
++                "autorefresh": True,
++                "priority": 0,
++                "pkg_gpgcheck": False,
++            },
++        }
++        tgt_repos = {
++            "repo-1": {
++                "name": "repo name 1",
++                "autorefresh": True,
++                "priority": 0,
++                "pkg_gpgcheck": True,
++            },
++            "repo-3": {
++                "name": "repo name 3",
++                "autorefresh": True,
++                "priority": 0,
++                "pkg_gpgcheck": False,
++            },
++        }
++
++        src_keys = {
++            "key1": {"Description": "key1", "Other": "Other1"},
++            "key2": {"Description": "key2", "Other": "Other2"},
++        }
++        tgt_keys = {
++            "key1": {"Description": "key1", "Other": "Other1"},
++            "key3": {"Description": "key3", "Other": "Other2"},
++        }
++
++        grains = {"os_family": "Suse"}
++        salt_mock = {
++            "pkg.list_repos": MagicMock(side_effect=[src_repos, tgt_repos]),
++            "lowpkg.list_gpg_keys": MagicMock(side_effect=[src_keys, tgt_keys]),
++        }
++        with patch.dict(pkgrepo.__grains__, grains), patch.dict(
++            pkgrepo.__salt__, salt_mock
++        ):
++            self.assertEqual(
++                pkgrepo._repos_keys_migrate_drop("/mnt", True, True),
++                (
++                    {
++                        (
++                            "repo-2",
++                            (
++                                ("humanname", "repo name 2"),
++                                ("priority", 0),
++                                ("refresh", True),
++                            ),
++                        ),
++                    },
++                    {
++                        (
++                            "repo-3",
++                            (
++                                ("humanname", "repo name 3"),
++                                ("priority", 0),
++                                ("refresh", True),
++                            ),
++                        ),
++                    },
++                    {("key2", (("key", "key2"),))},
++                    {("key3", (("key", "key3"),))},
++                ),
++            )
++
++    @skipIf(salt.utils.platform.is_windows(), "Do not run on Windows")
++    def test__copy_repository_to_suse(self):
++        grains = {"os_family": "Suse"}
++        salt_mock = {"file.copy": MagicMock()}
++        with patch.dict(pkgrepo.__grains__, grains), patch.dict(
++            pkgrepo.__salt__, salt_mock
++        ):
++            pkgrepo._copy_repository_to("/mnt")
++            salt_mock["file.copy"].assert_called_with(
++                src="/etc/zypp/repos.d", dst="/mnt/etc/zypp/repos.d", recurse=True
++            )
++
++    def test_migrated_non_supported_platform(self):
++        grains = {"os_family": "Debian"}
++        with patch.dict(pkgrepo.__grains__, grains):
++            self.assertEqual(
++                pkgrepo.migrated("/mnt"),
++                {
++                    "name": "/mnt",
++                    "result": False,
++                    "changes": {},
++                    "comment": "Migration not supported for this platform",
++                },
++            )
++
++    def test_migrated_missing_keys_api(self):
++        grains = {"os_family": "Suse"}
++        with patch.dict(pkgrepo.__grains__, grains):
++            self.assertEqual(
++                pkgrepo.migrated("/mnt"),
++                {
++                    "name": "/mnt",
++                    "result": False,
++                    "changes": {},
++                    "comment": "Keys cannot be migrated for this platform",
++                },
++            )
++
++    def test_migrated_wrong_method(self):
++        grains = {"os_family": "Suse"}
++        salt_mock = {
++            "lowpkg.import_gpg_key": True,
++        }
++        with patch.dict(pkgrepo.__grains__, grains), patch.dict(
++            pkgrepo.__salt__, salt_mock
++        ):
++            self.assertEqual(
++                pkgrepo.migrated("/mnt", method="magic"),
++                {
++                    "name": "/mnt",
++                    "result": False,
++                    "changes": {},
++                    "comment": "Migration method not supported",
++                },
++            )
++
++    @patch("salt.states.pkgrepo._repos_keys_migrate_drop")
++    def test_migrated_empty(self, _repos_keys_migrate_drop):
++        _repos_keys_migrate_drop.return_value = (set(), set(), set(), set())
++
++        grains = {"os_family": "Suse"}
++        salt_mock = {
++            "lowpkg.import_gpg_key": True,
++        }
++        with patch.dict(pkgrepo.__grains__, grains), patch.dict(
++            pkgrepo.__salt__, salt_mock
++        ):
++            self.assertEqual(
++                pkgrepo.migrated("/mnt"),
++                {
++                    "name": "/mnt",
++                    "result": True,
++                    "changes": {},
++                    "comment": "Repositories are already migrated",
++                },
++            )
++
++    @patch("salt.states.pkgrepo._repos_keys_migrate_drop")
++    def test_migrated(self, _repos_keys_migrate_drop):
++        _repos_keys_migrate_drop.side_effect = [
++            (
++                {
++                    (
++                        "repo-1",
++                        (
++                            ("humanname", "repo name 1"),
++                            ("priority", 0),
++                            ("refresh", True),
++                        ),
++                    ),
++                },
++                {
++                    (
++                        "repo-2",
++                        (
++                            ("humanname", "repo name 2"),
++                            ("priority", 0),
++                            ("refresh", True),
++                        ),
++                    ),
++                },
++                {("key1", (("key", "key1"),))},
++                {("key2", (("key", "key2"),))},
++            ),
++            (set(), set(), set(), set()),
++        ]
++
++        grains = {"os_family": "Suse"}
++        opts = {"test": False}
++        salt_mock = {
++            "pkg.mod_repo": MagicMock(),
++            "pkg.del_repo": MagicMock(),
++            "lowpkg.import_gpg_key": MagicMock(),
++            "lowpkg.remove_gpg_key": MagicMock(),
++        }
++        with patch.dict(pkgrepo.__grains__, grains), patch.dict(
++            pkgrepo.__opts__, opts
++        ), patch.dict(pkgrepo.__salt__, salt_mock):
++            self.assertEqual(
++                pkgrepo.migrated("/mnt", True, True),
++                {
++                    "name": "/mnt",
++                    "result": True,
++                    "changes": {
++                        "repos migrated": ["repo-1"],
++                        "repos dropped": ["repo-2"],
++                        "keys migrated": ["key1"],
++                        "keys dropped": ["key2"],
++                    },
++                    "comment": "Repositories synchronized",
++                },
++            )
++            salt_mock["pkg.mod_repo"].assert_called_with(
++                "repo-1", humanname="repo name 1", priority=0, refresh=True, root="/mnt"
++            )
++            salt_mock["pkg.del_repo"].assert_called_with("repo-2", root="/mnt")
++            salt_mock["lowpkg.import_gpg_key"].assert_called_with("key1", root="/mnt")
++            salt_mock["lowpkg.remove_gpg_key"].assert_called_with("key2", root="/mnt")
++
++    @patch("salt.states.pkgrepo._repos_keys_migrate_drop")
++    def test_migrated_test(self, _repos_keys_migrate_drop):
++        _repos_keys_migrate_drop.return_value = (
++            {
++                (
++                    "repo-1",
++                    (("humanname", "repo name 1"), ("priority", 0), ("refresh", True)),
++                ),
++            },
++            {
++                (
++                    "repo-2",
++                    (("humanname", "repo name 2"), ("priority", 0), ("refresh", True)),
++                ),
++            },
++            {("key1", (("key", "key1"),))},
++            {("key2", (("key", "key2"),))},
++        )
++
++        grains = {"os_family": "Suse"}
++        opts = {"test": True}
++        salt_mock = {
++            "lowpkg.import_gpg_key": True,
++        }
++        with patch.dict(pkgrepo.__grains__, grains), patch.dict(
++            pkgrepo.__opts__, opts
++        ), patch.dict(pkgrepo.__salt__, salt_mock):
++            self.assertEqual(
++                pkgrepo.migrated("/mnt", True, True),
++                {
++                    "name": "/mnt",
++                    "result": None,
++                    "changes": {
++                        "repos to migrate": ["repo-1"],
++                        "repos to drop": ["repo-2"],
++                        "keys to migrate": ["key1"],
++                        "keys to drop": ["key2"],
++                    },
++                    "comment": "There are keys or repositories to migrate or drop",
++                },
++            )
+-- 
+2.29.1
+
+

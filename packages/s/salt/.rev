@@ -1606,4 +1606,28 @@ let build start it or we will get libvirt errors.
   * path-replace-functools.wraps-with-six.wraps-bsc-1177.patch</comment>
     <requestid>846425</requestid>
   </revision>
+  <revision rev="112" vrev="8">
+    <srcmd5>c955ead9f95d04bc4d9a946ad69d61a9</srcmd5>
+    <version>3000.3</version>
+    <time>1606328854</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix syntax error on pkgrepo state with Python 2.7
+- transactional_update: unify with chroot.call
+- Added:
+  * pkgrepo-support-python-2.7-function-call-295.patch
+  * transactional_update-unify-with-chroot.call.patch
+
+- Add &quot;migrated&quot; state and GPG key management functions
+- Added:
+  * add-migrated-state-and-gpg-key-management-functions-.patch
+
+- Master can read grains
+- Added:
+  * grains-master-can-read-grains.patch
+
+- Fix for broken psutil (bsc#1102248)
+- Added:
+  * fix-for-bsc-1102248-psutil-is-broken-and-so-process-.patch</comment>
+    <requestid>850470</requestid>
+  </revision>
 </revisionlist>
