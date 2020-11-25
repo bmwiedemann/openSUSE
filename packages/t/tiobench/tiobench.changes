@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 25 11:38:09 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernise spec file
+- Mark license information as such
+
+-------------------------------------------------------------------
 Thu Jun 18 15:24:33 UTC 2015 - crrodriguez@opensuse.org
 
 - Force GNU inline semantics, fixes build with GCC5 

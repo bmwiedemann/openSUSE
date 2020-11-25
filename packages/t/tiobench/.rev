@@ -25,4 +25,13 @@
     <comment>1</comment>
     <requestid>312534</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c03babd44274510f0ca7944109da4885</srcmd5>
+    <version>0.4.1</version>
+    <time>1606329016</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file
+- Mark license information as such</comment>
+    <requestid>850690</requestid>
+  </revision>
 </revisionlist>
