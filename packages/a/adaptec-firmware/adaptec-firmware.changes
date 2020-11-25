@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 19 12:47:57 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- Use %_firmwaredir
+
+-------------------------------------------------------------------
 Wed Dec 14 14:37:35 UTC 2011 - coolo@suse.com
 
 - as spdx.org has no concept of firmware, we decided to mark it as
