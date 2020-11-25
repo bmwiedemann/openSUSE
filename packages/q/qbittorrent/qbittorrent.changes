@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Nov 25 13:44:52 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.3.1
+  * FEATURE: Allow progress bar styling from custom themes
+  * FEATURE: Allow adding torrents using "Paste" key sequence
+  * FEATURE: Add Latgalian translation
+  * BUGFIX: Prevent resume data to be saved for removed torrent
+  * BUGFIX: Clarify connection protocol choice label
+  * BUGFIX: Fix crash when clicked outside the table of torrent
+    content view
+  * BUGFIX: Don't resume "paused" torrents when put into
+    "checking" state by libtorrent
+  * BUGFIX: Fix torrent state calculation
+  * BUGFIX: Align integer data to right in torrent content view
+  * WEBUI: Place WebUI RSS description in sandboxed iframe
+  * WEBUI: Avoid settings being reset via WebAPI
+  * WEBUI: Fix toggling advanced option in WebUI
+  * WEBUI: Expose contentPath in WebAPI torrents/info
+  * WEBUI: Fix the issue that IPv6 address can't be banned
+  * RSS: Fix confusion in date format description
+  * LINUX: Update .desktop file translations
+
+-------------------------------------------------------------------
 Sat Nov  7 19:15:00 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - qbittorrent 4.3.0.1:
