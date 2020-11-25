@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 23 19:07:13 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.3
+  * Fix (hopefully) a segfault in xkb_x11_keymap_new_from_device()
+    in some unclear situation (bug introduced in 1.0.2).
+  * Fix keymaps created with xkb_x11_keymap_new_from_device() do
+    not have level names (bug introduced in 0.8.0).
+
+-------------------------------------------------------------------
+Fri Nov 20 19:36:21 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.2
+  * Fix a bug where a keysym that cannot be resolved in a keymap
+    gets compiled to a garbage keysym. Now it is set to
+    XKB_KEY_NoSymbol instead.
+  * Improve the speed of xkb_x11_keymap_new_from_device() on
+    repeated calls in the same xkb_context().
+
+-------------------------------------------------------------------
 Sat Sep 12 10:28:13 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.0.1
