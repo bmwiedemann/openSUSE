@@ -148,6 +148,7 @@ done
 
 mkdir -p %{buildroot}%{_localstatedir}/lib/dbus
 
+%if !0%{?usrmerged}
 # Link the binaries that were in /bin back to /bin for compat (maybe remove for SLE-16)
 # Currently required to make upower work together with systemd
 mkdir -p %{buildroot}/bin
@@ -159,6 +160,7 @@ ln -sf /%{_bindir}/dbus-send %{buildroot}/bin/dbus-send
 ln -sf /%{_bindir}/dbus-test-tool %{buildroot}/bin/dbus-test-tool
 ln -sf /%{_bindir}/dbus-update-activation-environment %{buildroot}/bin/dbus-update-activation-environment
 ln -sf /%{_bindir}/dbus-uuidgen %{buildroot}/bin/dbus-uuidgen
+%endif
 
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -s -f %{_sysconfdir}/alternatives/dbus-launch %{buildroot}%{_bindir}/dbus-launch
@@ -221,6 +223,7 @@ fi
 %{_bindir}/dbus-test-tool
 %{_bindir}/dbus-update-activation-environment
 %{_bindir}/dbus-uuidgen
+%if !0%{?usrmerged}
 /bin/dbus-cleanup-sockets
 /bin/dbus-daemon
 /bin/dbus-monitor
@@ -228,6 +231,7 @@ fi
 /bin/dbus-test-tool
 /bin/dbus-update-activation-environment
 /bin/dbus-uuidgen
+%endif
 %{_mandir}/man1/dbus-cleanup-sockets.1%{?ext_man}
 %{_mandir}/man1/dbus-daemon.1%{?ext_man}
 %{_mandir}/man1/dbus-monitor.1%{?ext_man}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 16 08:50:11 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
 Fri Aug 21 22:09:46 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Require diffutils in post so that cmp is available

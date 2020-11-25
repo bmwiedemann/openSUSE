@@ -1347,4 +1347,12 @@ Thu Jan  9 17:33:31 UTC 2014 - fridrich.strba@suse.com
     <comment></comment>
     <requestid>828602</requestid>
   </revision>
+  <revision rev="164" vrev="3">
+    <srcmd5>33ee878fc0c2a93b8ad1a664ad99cb19</srcmd5>
+    <version>1.12.20</version>
+    <time>1606328840</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850346</requestid>
+  </revision>
 </revisionlist>
