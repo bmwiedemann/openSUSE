@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 16 16:37:45 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Actually, test the new structure of package. :$
+- Remove the additional sourced setuptools*.whl and use BR on
+  python-setuptools-wheel.
+
+-------------------------------------------------------------------
+Fri Nov 13 18:51:09 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add wheel subpackage with the generated wheel for this package
+  (bsc#1176262, CVE-2019-20916).
+- Make wheel a separate build run to avoid the setuptools/wheel build
+  cycle.
+
+-------------------------------------------------------------------
 Fri Oct 30 00:18:04 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Make executables setup compatible with multiple python3 flavors

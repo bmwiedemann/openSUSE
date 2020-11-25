@@ -21,9 +21,16 @@
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
+%bcond_with wheel
+%else
+%if "%{flavor}" == "wheel"
+%define psuffix -wheel
+%bcond_without wheel
 %else
 %define psuffix %{nil}
 %bcond_with test
+%bcond_with wheel
+%endif
 %endif
 Name:           python-pip%{psuffix}
 Version:        20.2.3
@@ -33,9 +40,6 @@ License:        MIT
 URL:            http://www.pip-installer.org
 # The PyPI archive lacks the tests
 Source:         https://github.com/pypa/pip/archive/%{version}.tar.gz#/pip-%{version}-gh.tar.gz
-# Wheel used for testing, no need to update regularly beyond the minimum version specified in 
-# tools/requirements/tests-common_wheels.txt
-Source1:        https://files.pythonhosted.org/packages/py3/s/setuptools/setuptools-45.1.0-py3-none-any.whl
 # PATCH-FIX-OPENSUSE pip-shipped-requests-cabundle.patch -- adapted patch from python-certifi package
 Patch0:         pip-shipped-requests-cabundle.patch
 BuildRequires:  %{python_module setuptools >= 40.8.0}
@@ -61,11 +65,15 @@ BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scripttest}
+BuildRequires:  %{python_module setuptools-wheel}
 BuildRequires:  %{python_module virtualenv >= 1.10}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  ca-certificates
 BuildRequires:  git
 BuildRequires:  subversion
+%endif
+%if %{with wheel}
+BuildRequires:  %{python_module wheel}
 %endif
 %python_subpackages
 
@@ -83,7 +91,7 @@ rm src/pip/_vendor/certifi/cacert.pem
 
 %if %{with test}
 mkdir -p tests/data/common_wheels
-cp %{SOURCE1} tests/data/common_wheels/
+%python_expand cp %{$python_sitelib}/../wheels/setuptools*.whl tests/data/common_wheels/
 %endif
 # remove shebangs verbosely (if only sed would offer a verbose mode...)
 for f in $(find src -name \*.py -exec grep -l '^#!%{_bindir}/env' {} \;); do
@@ -91,9 +99,13 @@ for f in $(find src -name \*.py -exec grep -l '^#!%{_bindir}/env' {} \;); do
 done
 
 %build
+%if ! %{with wheel}
 %python_build
+%else
+%python_exec setup.py bdist_wheel --universal
+%endif
 
-%if ! %{with test}
+%if !%{with test} && !%{with wheel}
 %install
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/pip
@@ -101,6 +113,10 @@ done
 # if we just cloned to pip3-2.7 delete it
 rm -f %{buildroot}%{_bindir}/pip3-2*
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
+
+%if %{with wheel}
+%python_expand install -D -m 0644 -t %{buildroot}%{$python_sitelib}/../wheels dist/*.whl
 %endif
 
 %if %{with test}
@@ -126,6 +142,7 @@ donttest+=" or test_from_link_vcs_without_source_dir"
 [ -h %{_bindir}/pip ] || rm -f %{_bindir}/pip
 [ -h %{_bindir}/pip3 ] || rm -f %{_bindir}/pip3
 
+%if !%{with test} && !%{with wheel}
 %post
 # keep the alternative groups separate. Users could decide to let pip and pip3 point to
 # different flavors
@@ -137,9 +154,10 @@ donttest+=" or test_from_link_vcs_without_source_dir"
 %postun
 %python_uninstall_alternative pip
 %python_uninstall_alternative pip3
+%endif
 
-%if ! %{with test}
 %files %{python_files}
+%if !%{with test} && !%{with wheel}
 %license LICENSE.txt
 %doc AUTHORS.txt NEWS.rst README.rst
 %python_alternative %{_bindir}/pip
@@ -151,6 +169,11 @@ donttest+=" or test_from_link_vcs_without_source_dir"
 %{_bindir}/pip%{python_bin_suffix}
 %{python_sitelib}/pip-%{version}*-info
 %{python_sitelib}/pip
+%endif
+
+%if %{with wheel}
+%dir %{python_sitelib}/../wheels
+%{python_sitelib}/../wheels/*
 %endif
 
 %changelog
