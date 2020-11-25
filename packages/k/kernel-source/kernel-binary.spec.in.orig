@@ -1,7 +1,7 @@
 #
-# spec file for package kernel-vanilla
+# spec file for package kernel-@FLAVOR@
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) @YEAR@ SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 # needssslcertforbuild
 
 
-%define srcversion 5.9
-%define patchversion 5.9.10
-%define variant %{nil}
-%define vanilla_only 0
-%define compress_modules xz
-%define compress_vmlinux xz
-%define livepatch livepatch%{nil}
+%define srcversion @SRCVERSION@
+%define patchversion @PATCHVERSION@
+%define variant @VARIANT@%{nil}
+%define vanilla_only @VANILLA_ONLY@
+%define compress_modules @COMPRESS_MODULES@
+%define compress_vmlinux @COMPRESS_VMLINUX@
+%define livepatch @LIVEPATCH@%{nil}
 
 %include %_sourcedir/kernel-spec-macros
 
-%define build_flavor	vanilla
+%define build_flavor	@FLAVOR@
 %define build_default	("%build_flavor" == "default")
 %define build_vanilla	("%build_flavor" == "vanilla")
 
@@ -44,7 +44,7 @@
 	%define klp_symbols 1
 %endif
 
-%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
+%(chmod +x %_sourcedir/{@SCRIPTS@})
 
 %global cpu_arch %(%_sourcedir/arch-symbols %_target_cpu)
 %define cpu_arch_flavor %cpu_arch/%build_flavor
@@ -53,8 +53,8 @@
 # defining them all at once.)
 %define config_vars CONFIG_MODULES CONFIG_MODULE_SIG CONFIG_KMSG_IDS CONFIG_SUSE_KERNEL_SUPPORTED CONFIG_EFI_STUB CONFIG_LIVEPATCH_IPA_CLONES
 %{expand:%(eval "$(test -n "%cpu_arch_flavor" && tar -xjf %_sourcedir/config.tar.bz2 --to-stdout config/%cpu_arch_flavor)"; for config in %config_vars; do echo "%%global $config ${!config:-n}"; done)}
-%define split_extra ("%CONFIG_MODULES" == "y" && "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y")
-%if "%CONFIG_MODULES" != "y"
+%define split_extra (%CONFIG_MODULES == "y" && %CONFIG_SUSE_KERNEL_SUPPORTED == "y")
+%if %CONFIG_MODULES != "y"
 	%define klp_symbols 0
 %endif
 
@@ -64,15 +64,15 @@
 %define install_vdso 0
 %endif
 
-Name:           kernel-vanilla
-Summary:        The Standard Kernel - without any SUSE patches
+Name:           kernel-@FLAVOR@
+Summary:        @SUMMARY@
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.9.10
+Version:        @RPMVERSION@
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gb7c3768
+Release:        <RELEASE>.g@COMMIT@
 %else
-Release:        0
+Release:        @RELEASE@
 %endif
 Url:            http://www.kernel.org/
 BuildRequires:  bc
@@ -95,8 +95,6 @@ BuildRequires:  modutils
 # Used to sign the kernel in the buildservice
 BuildRequires:  openssl
 BuildRequires:  pesign-obs-integration
-# for CONFIG_DEBUG_INFO_BTF - ToDo: make it conditional
-BuildRequires:  pahole
 # for objtool
 BuildRequires:  libelf-devel
 Provides:       %name = %version-%source_rel
@@ -179,86 +177,16 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-b7c376832975e08040a014ab1c36b480f0d3b41b
-Provides:       kernel-srchash-b7c376832975e08040a014ab1c36b480f0d3b41b
+Provides:       kernel-%build_flavor-base-srchash-@COMMIT_FULL@
+Provides:       kernel-srchash-@COMMIT_FULL@
 # END COMMON DEPS
-Provides:       %name-srchash-b7c376832975e08040a014ab1c36b480f0d3b41b
+Provides:       %name-srchash-@COMMIT_FULL@
+@PROVIDES_OBSOLETES@
+@PROVIDES_OBSOLETES_BASE@
 %obsolete_rebuilds %name
-Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
-Source2:        source-post.sh
-Source3:        kernel-source.rpmlintrc
-Source8:        devel-pre.sh
-Source9:        devel-post.sh
-Source10:       preun.sh
-Source11:       postun.sh
-Source12:       pre.sh
-Source13:       post.sh
-Source14:       series.conf
-Source16:       guards
-Source17:       apply-patches
-Source21:       config.conf
-Source23:       supported.conf
-Source33:       check-for-config-changes
-Source35:       group-source-files.pl
-Source36:       README.PATCH-POLICY.SUSE
-Source37:       README.SUSE
-Source38:       README.KSYMS
-Source39:       config-options.changes.txt
-Source40:       source-timestamp
-Source46:       split-modules
-Source47:       modversions
-Source48:       macros.kernel-source
-Source49:       kernel-module-subpackage
-Source50:       kabi.pl
-Source51:       mkspec
-Source52:       kernel-source%variant.changes
-Source53:       kernel-source.spec.in
-Source54:       kernel-binary.spec.in
-Source55:       kernel-syms.spec.in
-Source56:       kernel-docs.spec.in
-Source57:       kernel-cert-subpackage
-Source58:       constraints.in
-Source60:       config.sh
-Source61:       compute-PATCHVERSION.sh
-Source62:       old-flavors
-Source63:       arch-symbols
-Source64:       package-descriptions
-Source65:       kernel-spec-macros
-Source67:       log.sh
-Source68:       host-memcpy-hack.h
-Source69:       try-disable-staging-driver
-Source70:       kernel-obs-build.spec.in
-Source71:       kernel-obs-qa.spec.in
-Source72:       compress-vmlinux.sh
-Source73:       dtb.spec.in.in
-Source74:       mkspec-dtb
-Source75:       release-projects
-Source76:       check-module-license
-Source77:       klp-symbols
-Source78:       modules.fips
-Source79:       splitflist
-Source80:       mergedep
-Source81:       moddep
-Source82:       modflist
-Source83:       kernel-subpackage-build
-Source84:       kernel-subpackage-spec
-Source85:       kernel-default-base.spec.txt
-Source100:      config.tar.bz2
-Source101:      config.addon.tar.bz2
-Source102:      patches.arch.tar.bz2
-Source103:      patches.drivers.tar.bz2
-Source104:      patches.fixes.tar.bz2
-Source105:      patches.rpmify.tar.bz2
-Source106:      patches.suse.tar.bz2
-Source108:      patches.addon.tar.bz2
-Source109:      patches.kernel.org.tar.bz2
-Source110:      patches.apparmor.tar.bz2
-Source111:      patches.rt.tar.bz2
-Source113:      patches.kabi.tar.bz2
-Source120:      kabi.tar.bz2
-Source121:      sysctl.tar.bz2
+@SOURCES@
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  aarch64 armv6hl armv7hl %ix86 ppc64 ppc64le riscv64 s390x x86_64
+ExclusiveArch:  @ARCHS@
 %define kmp_target_cpu %_target_cpu
 %ifarch %ix86
 # Only i386/default supports i586, mark other flavors' packages as i686
@@ -272,85 +200,66 @@ BuildArch:      i686
 %endif
 
 # These files are found in the kernel-source package:
-NoSource:       0
-NoSource:       2
-NoSource:       3
-NoSource:       8
-NoSource:       9
-NoSource:       10
-NoSource:       11
-NoSource:       12
-NoSource:       13
-NoSource:       14
-NoSource:       16
-NoSource:       17
-NoSource:       21
-NoSource:       23
-NoSource:       33
-NoSource:       35
-NoSource:       36
-NoSource:       37
-NoSource:       38
-NoSource:       39
-NoSource:       40
-NoSource:       46
-NoSource:       47
-NoSource:       48
-NoSource:       49
-NoSource:       50
-NoSource:       51
-NoSource:       52
-NoSource:       53
-NoSource:       54
-NoSource:       55
-NoSource:       56
-NoSource:       57
-NoSource:       58
-NoSource:       60
-NoSource:       61
-NoSource:       62
-NoSource:       63
-NoSource:       64
-NoSource:       65
-NoSource:       67
-NoSource:       68
-NoSource:       69
-NoSource:       70
-NoSource:       71
-NoSource:       72
-NoSource:       73
-NoSource:       74
-NoSource:       75
-NoSource:       76
-NoSource:       77
-NoSource:       78
-NoSource:       79
-NoSource:       80
-NoSource:       81
-NoSource:       82
-NoSource:       83
-NoSource:       84
-NoSource:       85
-NoSource:       100
-NoSource:       101
-NoSource:       102
-NoSource:       103
-NoSource:       104
-NoSource:       105
-NoSource:       106
-NoSource:       108
-NoSource:       109
-NoSource:       110
-NoSource:       111
-NoSource:       113
-NoSource:       120
-NoSource:       121
+@NOSOURCE@
+
+# The following KMPs have been integrated into the kernel package,
+# grouped by the last product that contained them.
+# Usage: obsolete_kmp <basename> <upper bound of shipped versions>
+# Note that KMPs embed the version of the kernel built against, that's why
+# the _3 suffix for 2.6.x-based KMPs
+%define obsolete_kmp() Obsoletes: %1-kmp-%build_flavor <= %2 \
+Provides: %1-kmp = %2.1 \
+Provides: %1-kmp-%build_flavor = %2.1
+# sles10 / 10.3
+%obsolete_kmp iwlwifi 1.3.27_3
+%obsolete_kmp ipw3945 1.2.2_3
+# sled10 / 11.0
+%obsolete_kmp uvcvideo r200_3
+# sle11-ga
+%obsolete_kmp enic 0.0.1_3
+%obsolete_kmp fnic 1.0.0_3
+%obsolete_kmp brocade-bfa 1.1.0.2_3
+%obsolete_kmp kvm 78.2.6.30.1_3
+%obsolete_kmp perfmon 2_3
+%obsolete_kmp iwlagn-2-6-27 1.0_3
+%obsolete_kmp msi-wmi 1.0_3
+# 11.1
+%obsolete_kmp quickcam 0.6.7
+# sle11-sp1
+%obsolete_kmp   wacom 0.8.1_3
+%obsolete_kmp   btrfs 0_3
+%obsolete_kmp   brocade-bna 2.1.0.0_3
+%obsolete_kmp   hyper-v 0_3
+%obsolete_kmp   intel-e1000e 2.2.14
+Obsoletes:      firewire <= 3.0
+Provides:       firewire = 3.0
+%obsolete_kmp   firewire 3.0
+%obsolete_kmp   iwlagn 3.0
+Obsoletes:      compat-ath9k <= 3.0
+Provides:       compat-ath9k = 3.0
+%obsolete_kmp   compat-ath9k 3.0
+%obsolete_kmp   realtek-r8192ce_pci 2.6.0005_3
+%obsolete_kmp   realtek-r8192se_pci 2.6.0019.1207.2010_3
+%obsolete_kmp   rt3090 2.4.0.4_3
+%obsolete_kmp   rt3592 2.4.1.1_3
+%obsolete_kmp   rt5390 2.4.0.4_3
+%obsolete_kmp   ath3k 1.0_3
+%obsolete_kmp	compat-wireless 3.12
+%obsolete_kmp	rts5229 1.08
+%obsolete_kmp	rts_pstor 1.11
+# sle12-sp1 / Leap 42.1
+%obsolete_kmp	xen 4.6.1
+%obsolete_kmp	compat-wireless 4.4
+# TW 4.8
+%obsolete_kmp	ftsteutates 20160601
+# SLE12-SP3 / Leap 42.3
+%obsolete_kmp   drm 4.12
 
 # Will modules not listed in supported.conf abort the kernel build (0/1)?
 %define supported_modules_check 0
 
 %description
-The standard kernel - without any SUSE patches
+@DESCRIPTION@
 
 
 %source_timestamp
@@ -368,7 +277,7 @@ if test -e %_sourcedir/extra-symbols; then
 fi
 
 # Unpack all sources and patches
-%setup -q -c -T -a 0 -a 100 -a 101 -a 102 -a 103 -a 104 -a 105 -a 106 -a 108 -a 109 -a 110 -a 111 -a 113 -a 120 -a 121
+%setup -q -c -T -a 0 @UNPACK_PATCHES@
 
 mkdir -p %kernel_build_dir
 
@@ -389,8 +298,8 @@ awk '
 ' >%kernel_build_dir/Module.supported
 subpackages=(
 	base
-%if "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y"
-	cluster-md-kmp dlm-kmp gfs2-kmp kselftests-kmp ocfs2-kmp reiserfs-kmp
+%if %CONFIG_SUSE_KERNEL_SUPPORTED == "y"
+	@KMPS@
 %endif
 )
 for package in "${subpackages[@]}"; do
@@ -551,7 +460,7 @@ for f in %_sourcedir/*.crt; do
     cat "$f" >>certs/signing_key.pem
 done
 
-%if "%CONFIG_KMSG_IDS" == "y"
+%if %CONFIG_KMSG_IDS == "y"
     chmod +x ../scripts/kmsg-doc
     MAKE_ARGS="$MAKE_ARGS D=2"
 %endif
@@ -648,7 +557,7 @@ add_vmlinux()
     elif test -x "$(which dwarfextract 2>/dev/null)"; then
 	dwarfextract vmlinux %buildroot/boot/Kerntypes-%kernelrelease-%build_flavor || echo "dwarfextract failed ($?)"
     fi
-%if "%CONFIG_KMSG_IDS" == "y"
+%if %CONFIG_KMSG_IDS == "y"
     mkdir -p %buildroot/usr/share/man/man9
     find man -name '*.9' -exec install -m 644 -D '{}' %buildroot/usr/share/man/man9/ ';'
 %endif
@@ -671,13 +580,13 @@ add_vmlinux()
 
 # sign the modules, firmware and possibly the kernel in the buildservice
 BRP_PESIGN_FILES=""
-%if "%CONFIG_EFI_STUB" == "y"
+%if %CONFIG_EFI_STUB == "y"
 BRP_PESIGN_FILES="/boot/$image-%kernelrelease-%build_flavor"
 %endif
 %ifarch s390x ppc64 ppc64le
 BRP_PESIGN_FILES="/boot/$image-%kernelrelease-%build_flavor"
 %endif
-%if "%CONFIG_MODULE_SIG" == "y"
+%if %CONFIG_MODULE_SIG == "y"
 BRP_PESIGN_FILES="$BRP_PESIGN_FILES *.ko"
 %endif
 %ifarch %ix86
@@ -686,7 +595,7 @@ BRP_PESIGN_FILES="$BRP_PESIGN_FILES *.ko"
 BRP_PESIGN_FILES=""
 %endif
 export BRP_PESIGN_FILES
-%if "%{compress_modules}" != "none"
+%if %{compress_modules} != "none"
 export BRP_PESIGN_COMPRESS_MODULE=%{compress_modules}
 %endif
 
@@ -756,8 +665,8 @@ done
 # keep this -suffix list in sync with post.sh and postun.sh
 suffix=-%build_flavor
 %endif
-ln -s X$image$suffix %buildroot/boot/$image$suffix
-ln -s Xinitrd$suffix %buildroot/boot/initrd$suffix
+ln -s $image$suffix %buildroot/boot/$image$suffix
+ln -s initrd$suffix %buildroot/boot/initrd$suffix
 
 cp -p .config %buildroot/boot/config-%kernelrelease-%build_flavor
 sysctl_file=%buildroot/boot/sysctl.conf-%kernelrelease-%build_flavor
@@ -791,7 +700,7 @@ chmod 0600 %buildroot/boot/initrd-%kernelrelease-%build_flavor{,-kdump}
 if [ %CONFIG_MODULES = y ]; then
     mkdir -p %rpm_install_dir/%cpu_arch_flavor
     mkdir -p %buildroot/usr/src/linux-obj/%cpu_arch
-    ln -s X%build_flavor %buildroot/usr/src/linux-obj/%cpu_arch_flavor
+    ln -s %build_flavor %buildroot/usr/src/linux-obj/%cpu_arch_flavor
     install -m 755 -D -t %rpm_install_dir/%cpu_arch_flavor/scripts/mod/ scripts/mod/ksym-provides
 
     gzip -n -c9 < Module.symvers > %buildroot/boot/symvers-%kernelrelease-%build_flavor.gz
@@ -819,7 +728,7 @@ if [ %CONFIG_MODULES = y ]; then
         cp Symbols.list %rpm_install_dir/%cpu_arch/%build_flavor
         echo %obj_install_dir/%cpu_arch/%build_flavor/Symbols.list > %my_builddir/livepatch-files.no_dir
 
-        %if "%CONFIG_LIVEPATCH_IPA_CLONES" == "y"
+        %if %CONFIG_LIVEPATCH_IPA_CLONES == "y"
             find %kernel_build_dir -name "*.ipa-clones" ! -size 0 | sed -e 's|^%kernel_build_dir/||' > ipa-clones.list
             cp ipa-clones.list %rpm_install_dir/%cpu_arch/%build_flavor
             echo %obj_install_dir/%cpu_arch/%build_flavor/ipa-clones.list >> %my_builddir/livepatch-files.no_dir
@@ -863,7 +772,7 @@ if [ %CONFIG_MODULES = y ]; then
     %_sourcedir/split-modules -d %buildroot \
 	-o %my_builddir \
 	-b %kernel_build_dir \
-%if "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y"
+%if %CONFIG_SUSE_KERNEL_SUPPORTED == "y"
 	-e \
 %endif
 %if ! %supported_modules_check
@@ -904,7 +813,7 @@ if [ %CONFIG_MODULES = y ]; then
     # Check the license in each module
     if ! sh %_sourcedir/check-module-license %buildroot; then
 	echo "Please fix the missing licenses!"
-%if "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y"
+%if %CONFIG_SUSE_KERNEL_SUPPORTED == "y"
 	exit 1
 %endif
     fi
@@ -1079,7 +988,7 @@ fi
 %defattr(-, root, root)
 
 %package extra
-Summary:        The Standard Kernel - without any SUSE patches - Unsupported kernel modules
+Summary:        @SUMMARY@ - Unsupported kernel modules
 Group:          System/Kernel
 Url:            http://www.kernel.org/
 Provides:       %name-extra_%_target_cpu = %version-%source_rel
@@ -1090,6 +999,7 @@ Requires(pre):  coreutils awk
 Requires(post): modutils
 Requires(post): perl-Bootloader
 Requires(post): mkinitrd
+@PROVIDES_OBSOLETES_EXTRA@
 %obsolete_rebuilds %name-extra
 Supplements:    packageand(product(SLED):%{name}_%_target_cpu)
 Supplements:    packageand(product(sle-we):%{name}_%_target_cpu)
@@ -1098,7 +1008,7 @@ Conflicts:      libc.so.6()(64bit)
 %endif
 
 %description extra
-The standard kernel - without any SUSE patches
+@DESCRIPTION@
 
 This package contains additional modules not supported by SUSE.
 
@@ -1118,7 +1028,7 @@ This package contains additional modules not supported by SUSE.
 %defattr(-, root, root)
 %endif
 
-%if "%CONFIG_KMSG_IDS" == "y"
+%if %CONFIG_KMSG_IDS == "y"
 
 %package man
 Summary:        The collection of man pages generated by the kmsg script
@@ -1152,6 +1062,7 @@ Supplements:    packageand(%name:kernel-devel%variant)
 Requires:       kernel-source-vanilla = %version-%source_rel
 Supplements:    packageand(%name:kernel-source-vanilla)
 %endif
+@PROVIDES_OBSOLETES_DEVEL@
 %obsolete_rebuilds %name-devel
 PreReq:         coreutils
 
@@ -1162,7 +1073,7 @@ kernel module packages) against the %build_flavor flavor of the kernel.
 
 %source_timestamp
 
-%if "%CONFIG_MODULES" == "y"
+%if %CONFIG_MODULES == "y"
 
 %pre devel -f devel-pre.sh
 
@@ -1173,13 +1084,13 @@ kernel module packages) against the %build_flavor flavor of the kernel.
 %dir /usr/src/linux-obj
 %dir /usr/src/linux-obj/%cpu_arch
 %ghost /usr/src/linux-obj/%cpu_arch_flavor
-%if "%kmp_target_cpu" != "%cpu_arch"
+%if %kmp_target_cpu != %cpu_arch
 %obj_install_dir/%kmp_target_cpu
 /usr/src/linux-obj/%kmp_target_cpu
 %endif
 
-%if "%livepatch" != "" && "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y" && "%variant" == "" && %build_default
-%if "%livepatch" == "kgraft"
+%if "%livepatch" != "" && %CONFIG_SUSE_KERNEL_SUPPORTED == "y" && "%variant" == "" && %build_default
+%if %livepatch == kgraft
 %define patch_package %{livepatch}-patch
 %else
 %define patch_package kernel-%{livepatch}
@@ -1222,271 +1133,49 @@ symbol resolution.
 %files %{livepatch}-devel -f livepatch-files
 %endif
 
-%if "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y"
-%package -n cluster-md-kmp-%build_flavor
-Summary:        Clustering support for MD devices
+%if %CONFIG_SUSE_KERNEL_SUPPORTED == "y"
+# BEGIN KMP
+%package -n @KMP_NAME@-%build_flavor
+Summary:        @KMP_SUMMARY@
 Group:          System/Kernel
 Requires:       %name = %version-%source_rel
-Provides:       cluster-md-kmp = %version-%source_rel
+Provides:       @KMP_NAME@ = %version-%source_rel
 Provides:       multiversion(kernel)
 # tell weak-modules2 to ignore this package
 Provides:       kmp_in_kernel
 Requires(post): suse-module-tools >= 12.4
-Requires:       dlm-kmp-%build_flavor = %version-%release
+@KMP_DEPS@
 
-%description -n cluster-md-kmp-%build_flavor
-Clustering support for MD devices. This enables locking and
-synchronization across multiple systems on the cluster, so all
-nodes in the cluster can access the MD devices simultaneously.
+%description -n @KMP_NAME@-%build_flavor
+@KMP_DESCRIPTION@
 
-%post -n cluster-md-kmp-%build_flavor
+%post -n @KMP_NAME@-%build_flavor
 wm2=/usr/lib/module-init-tools/weak-modules2
-nvr=cluster-md-kmp-%build_flavor-%version-%release
+nvr=@KMP_NAME@-%build_flavor-%version-%release
 if test -x "$wm2"; then
 	rpm -ql "$nvr" | INITRD_IN_POSTTRANS=1 /bin/bash -${-/e/} "$wm2" \
 	--add-kernel-modules %kernelrelease-%build_flavor
 fi
 
-%posttrans -n cluster-md-kmp-%build_flavor
+%posttrans -n @KMP_NAME@-%build_flavor
 %{?regenerate_initrd_posttrans}
 
-%preun -n cluster-md-kmp-%build_flavor
-nvr=cluster-md-kmp-%build_flavor-%version-%release
+%preun -n @KMP_NAME@-%build_flavor
+nvr=@KMP_NAME@-%build_flavor-%version-%release
 rpm -ql "$nvr" | grep '\.ko\(\.xz\)\?$' > "/var/run/rpm-$nvr-modules"
 
-%postun -n cluster-md-kmp-%build_flavor
+%postun -n @KMP_NAME@-%build_flavor
 wm2=/usr/lib/module-init-tools/weak-modules2
-nvr=cluster-md-kmp-%build_flavor-%version-%release
+nvr=@KMP_NAME@-%build_flavor-%version-%release
 if test -x "$wm2"; then
 	/bin/bash -${-/e/} "$wm2" < "/var/run/rpm-$nvr-modules" \
 	--remove-kernel-modules %kernelrelease-%build_flavor
 fi
 rm -f "/var/run/rpm-$nvr-modules"
 
-%files -n cluster-md-kmp-%build_flavor -f cluster-md-kmp.files
+%files -n @KMP_NAME@-%build_flavor -f @KMP_NAME@.files
 %defattr(-, root, root)
-
-%package -n dlm-kmp-%build_flavor
-Summary:        DLM kernel modules
-Group:          System/Kernel
-Requires:       %name = %version-%source_rel
-Provides:       dlm-kmp = %version-%source_rel
-Provides:       multiversion(kernel)
-# tell weak-modules2 to ignore this package
-Provides:       kmp_in_kernel
-Requires(post): suse-module-tools >= 12.4
-
-%description -n dlm-kmp-%build_flavor
-DLM stands for Distributed Lock Manager, a means to synchronize access to
-shared resources over the cluster.
-
-%post -n dlm-kmp-%build_flavor
-wm2=/usr/lib/module-init-tools/weak-modules2
-nvr=dlm-kmp-%build_flavor-%version-%release
-if test -x "$wm2"; then
-	rpm -ql "$nvr" | INITRD_IN_POSTTRANS=1 /bin/bash -${-/e/} "$wm2" \
-	--add-kernel-modules %kernelrelease-%build_flavor
-fi
-
-%posttrans -n dlm-kmp-%build_flavor
-%{?regenerate_initrd_posttrans}
-
-%preun -n dlm-kmp-%build_flavor
-nvr=dlm-kmp-%build_flavor-%version-%release
-rpm -ql "$nvr" | grep '\.ko\(\.xz\)\?$' > "/var/run/rpm-$nvr-modules"
-
-%postun -n dlm-kmp-%build_flavor
-wm2=/usr/lib/module-init-tools/weak-modules2
-nvr=dlm-kmp-%build_flavor-%version-%release
-if test -x "$wm2"; then
-	/bin/bash -${-/e/} "$wm2" < "/var/run/rpm-$nvr-modules" \
-	--remove-kernel-modules %kernelrelease-%build_flavor
-fi
-rm -f "/var/run/rpm-$nvr-modules"
-
-%files -n dlm-kmp-%build_flavor -f dlm-kmp.files
-%defattr(-, root, root)
-
-%package -n gfs2-kmp-%build_flavor
-Summary:        GFS2 kernel modules
-Group:          System/Kernel
-Requires:       %name = %version-%source_rel
-Provides:       gfs2-kmp = %version-%source_rel
-Provides:       multiversion(kernel)
-# tell weak-modules2 to ignore this package
-Provides:       kmp_in_kernel
-Requires(post): suse-module-tools >= 12.4
-Requires:       dlm-kmp-%build_flavor = %version-%release
-
-%description -n gfs2-kmp-%build_flavor
-GFS2 is Global Filesystem, a shared device filesystem.
-
-%post -n gfs2-kmp-%build_flavor
-wm2=/usr/lib/module-init-tools/weak-modules2
-nvr=gfs2-kmp-%build_flavor-%version-%release
-if test -x "$wm2"; then
-	rpm -ql "$nvr" | INITRD_IN_POSTTRANS=1 /bin/bash -${-/e/} "$wm2" \
-	--add-kernel-modules %kernelrelease-%build_flavor
-fi
-
-%posttrans -n gfs2-kmp-%build_flavor
-%{?regenerate_initrd_posttrans}
-
-%preun -n gfs2-kmp-%build_flavor
-nvr=gfs2-kmp-%build_flavor-%version-%release
-rpm -ql "$nvr" | grep '\.ko\(\.xz\)\?$' > "/var/run/rpm-$nvr-modules"
-
-%postun -n gfs2-kmp-%build_flavor
-wm2=/usr/lib/module-init-tools/weak-modules2
-nvr=gfs2-kmp-%build_flavor-%version-%release
-if test -x "$wm2"; then
-	/bin/bash -${-/e/} "$wm2" < "/var/run/rpm-$nvr-modules" \
-	--remove-kernel-modules %kernelrelease-%build_flavor
-fi
-rm -f "/var/run/rpm-$nvr-modules"
-
-%files -n gfs2-kmp-%build_flavor -f gfs2-kmp.files
-%defattr(-, root, root)
-
-%package -n kselftests-kmp-%build_flavor
-Summary:        Kernel sefltests
-Group:          System/Kernel
-Requires:       %name = %version-%source_rel
-Provides:       kselftests-kmp = %version-%source_rel
-Provides:       multiversion(kernel)
-# tell weak-modules2 to ignore this package
-Provides:       kmp_in_kernel
-Requires(post): suse-module-tools >= 12.4
-
-%description -n kselftests-kmp-%build_flavor
-This package contains kernel modules which are part of the upstream kernel
-selftest effort. kselftest is the name of the upstream kernel target to build
-and run all selftests. You can also run each test individually from the
-respective upstream tools/testing/selftests/ directory, this package is
-intended to be used using individial upstream selftest scripts given only
-select supported selftest drivers are enabled.
-
-It should always be possible to always run the latest linux-next version of the
-selftest scripts and tests against any older kernel selftest driver.  Certain
-tests facilities may be backported onto older kernels to enable further
-testing.
-
-Selftests also provide for a vehicle or proof of concept issues to be
-reproduced, verified and corrected.
-
-Selftest drivers are intended to be supported only in testing and QA
-environments, they are not intended to be run on production systems.
-
-%post -n kselftests-kmp-%build_flavor
-wm2=/usr/lib/module-init-tools/weak-modules2
-nvr=kselftests-kmp-%build_flavor-%version-%release
-if test -x "$wm2"; then
-	rpm -ql "$nvr" | INITRD_IN_POSTTRANS=1 /bin/bash -${-/e/} "$wm2" \
-	--add-kernel-modules %kernelrelease-%build_flavor
-fi
-
-%posttrans -n kselftests-kmp-%build_flavor
-%{?regenerate_initrd_posttrans}
-
-%preun -n kselftests-kmp-%build_flavor
-nvr=kselftests-kmp-%build_flavor-%version-%release
-rpm -ql "$nvr" | grep '\.ko\(\.xz\)\?$' > "/var/run/rpm-$nvr-modules"
-
-%postun -n kselftests-kmp-%build_flavor
-wm2=/usr/lib/module-init-tools/weak-modules2
-nvr=kselftests-kmp-%build_flavor-%version-%release
-if test -x "$wm2"; then
-	/bin/bash -${-/e/} "$wm2" < "/var/run/rpm-$nvr-modules" \
-	--remove-kernel-modules %kernelrelease-%build_flavor
-fi
-rm -f "/var/run/rpm-$nvr-modules"
-
-%files -n kselftests-kmp-%build_flavor -f kselftests-kmp.files
-%defattr(-, root, root)
-
-%package -n ocfs2-kmp-%build_flavor
-Summary:        OCFS2 kernel modules
-Group:          System/Kernel
-Requires:       %name = %version-%source_rel
-Provides:       ocfs2-kmp = %version-%source_rel
-Provides:       multiversion(kernel)
-# tell weak-modules2 to ignore this package
-Provides:       kmp_in_kernel
-Requires(post): suse-module-tools >= 12.4
-Requires:       dlm-kmp-%build_flavor = %version-%release
-
-%description -n ocfs2-kmp-%build_flavor
-OCFS2 is the Oracle Cluster Filesystem, a filesystem for shared devices
-accessible simultaneously from multiple nodes of a cluster.
-
-%post -n ocfs2-kmp-%build_flavor
-wm2=/usr/lib/module-init-tools/weak-modules2
-nvr=ocfs2-kmp-%build_flavor-%version-%release
-if test -x "$wm2"; then
-	rpm -ql "$nvr" | INITRD_IN_POSTTRANS=1 /bin/bash -${-/e/} "$wm2" \
-	--add-kernel-modules %kernelrelease-%build_flavor
-fi
-
-%posttrans -n ocfs2-kmp-%build_flavor
-%{?regenerate_initrd_posttrans}
-
-%preun -n ocfs2-kmp-%build_flavor
-nvr=ocfs2-kmp-%build_flavor-%version-%release
-rpm -ql "$nvr" | grep '\.ko\(\.xz\)\?$' > "/var/run/rpm-$nvr-modules"
-
-%postun -n ocfs2-kmp-%build_flavor
-wm2=/usr/lib/module-init-tools/weak-modules2
-nvr=ocfs2-kmp-%build_flavor-%version-%release
-if test -x "$wm2"; then
-	/bin/bash -${-/e/} "$wm2" < "/var/run/rpm-$nvr-modules" \
-	--remove-kernel-modules %kernelrelease-%build_flavor
-fi
-rm -f "/var/run/rpm-$nvr-modules"
-
-%files -n ocfs2-kmp-%build_flavor -f ocfs2-kmp.files
-%defattr(-, root, root)
-
-%package -n reiserfs-kmp-%build_flavor
-Summary:        Reiserfs kernel module
-Group:          System/Kernel
-Requires:       %name = %version-%source_rel
-Provides:       reiserfs-kmp = %version-%source_rel
-Provides:       multiversion(kernel)
-# tell weak-modules2 to ignore this package
-Provides:       kmp_in_kernel
-Requires(post): suse-module-tools >= 12.4
-
-%description -n reiserfs-kmp-%build_flavor
-The reiserfs file system is no longer supported in SLE15.  This package
-provides the reiserfs module for the installation system.
-
-%post -n reiserfs-kmp-%build_flavor
-wm2=/usr/lib/module-init-tools/weak-modules2
-nvr=reiserfs-kmp-%build_flavor-%version-%release
-if test -x "$wm2"; then
-	rpm -ql "$nvr" | INITRD_IN_POSTTRANS=1 /bin/bash -${-/e/} "$wm2" \
-	--add-kernel-modules %kernelrelease-%build_flavor
-fi
-
-%posttrans -n reiserfs-kmp-%build_flavor
-%{?regenerate_initrd_posttrans}
-
-%preun -n reiserfs-kmp-%build_flavor
-nvr=reiserfs-kmp-%build_flavor-%version-%release
-rpm -ql "$nvr" | grep '\.ko\(\.xz\)\?$' > "/var/run/rpm-$nvr-modules"
-
-%postun -n reiserfs-kmp-%build_flavor
-wm2=/usr/lib/module-init-tools/weak-modules2
-nvr=reiserfs-kmp-%build_flavor-%version-%release
-if test -x "$wm2"; then
-	/bin/bash -${-/e/} "$wm2" < "/var/run/rpm-$nvr-modules" \
-	--remove-kernel-modules %kernelrelease-%build_flavor
-fi
-rm -f "/var/run/rpm-$nvr-modules"
-
-%files -n reiserfs-kmp-%build_flavor -f reiserfs-kmp.files
-%defattr(-, root, root)
-
+# END KMP
 %endif # %CONFIG_SUSE_KERNEL_SUPPORTED
 %endif # %CONFIG_MODULES
 

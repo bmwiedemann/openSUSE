@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-source
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.9
-%define patchversion 5.9.8
+%define patchversion 5.9.10
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -30,9 +30,9 @@ Name:           kernel-source
 Summary:        The Linux Kernel Sources
 License:        GPL-2.0
 Group:          Development/Sources
-Version:        5.9.8
+Version:        5.9.10
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gea93937
+Release:        <RELEASE>.gb7c3768
 %else
 Release:        0
 %endif
@@ -43,7 +43,7 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-ea9393740a2e1ec61d5f3ca2bdad4e3389c7f77e
+Provides:       %name-srchash-b7c376832975e08040a014ab1c36b480f0d3b41b
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
@@ -200,8 +200,9 @@ echo "Symbol(s): %symbols"
 %setup -q -c -T -a 100 -a 101 -a 102 -a 103 -a 104 -a 105 -a 106 -a 108 -a 109 -a 110 -a 111 -a 113 -a 120 -a 121
 
 %build
+%install
 mkdir -p $RPM_BUILD_ROOT/usr/src
-cd $RPM_BUILD_ROOT/usr/src
+pushd $RPM_BUILD_ROOT/usr/src
 
 # Unpack the vanilla kernel sources
 tar -xf %{S:0}
@@ -223,7 +224,7 @@ cd ..
 %endif
 
 %if ! %vanilla_only
-ln -sf linux%variant linux%variant  # dummy symlink
+ln -sf . linux%variant # dummy symlink
 
 cd linux-%kernelrelease%variant
 %_sourcedir/apply-patches %_sourcedir/series.conf %my_builddir %symbols
@@ -232,12 +233,13 @@ rm -f $(find . -name ".gitignore")
 if [ -f %_sourcedir/localversion ] ; then
     cat %_sourcedir/localversion > localversion
 fi
+cd ..
 %endif
 
 # Hardlink duplicate files automatically (from package fdupes).
 %fdupes $RPM_BUILD_ROOT
+popd
 
-%install
 %if ! %vanilla_only
 # Install the documentation and example Kernel Module Package.
 DOC=/usr/share/doc/packages/%name-%kernelrelease

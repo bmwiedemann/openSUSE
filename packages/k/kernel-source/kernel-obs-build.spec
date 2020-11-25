@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-obs-build
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 #!BuildIgnore: post-build-checks
 
-%define patchversion 5.9.8
+%define patchversion 5.9.10
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -45,14 +45,14 @@ BuildRequires:  util-linux
 %endif
 %endif
 %endif
-BuildRequires:  kernel%kernel_flavor-srchash-ea9393740a2e1ec61d5f3ca2bdad4e3389c7f77e
+BuildRequires:  kernel%kernel_flavor-srchash-b7c376832975e08040a014ab1c36b480f0d3b41b
 
 %if 0%{?rhel_version}
 BuildRequires:  kernel
 %define kernel_flavor ""
 %endif
 
-ExclusiveArch:  aarch64 armv6hl armv7hl %ix86 ppc64 ppc64le riscv64 s390x x86_64
+ExclusiveArch:  aarch64 armv6hl armv7hl ppc64 ppc64le riscv64 s390x x86_64
 %if 0%{?suse_version} < 1315
 # For SLE 11
 BuildRequires:  mkinitrd
@@ -64,9 +64,9 @@ BuildRequires:  dracut
 Summary:        package kernel and initrd for OBS VM builds
 License:        GPL-2.0
 Group:          SLES
-Version:        5.9.8
+Version:        5.9.10
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gea93937
+Release:        <RELEASE>.gb7c3768
 %else
 Release:        0
 %endif
@@ -104,9 +104,9 @@ cat > /usr/lib/dracut/modules.d/80obs/setup_obs.sh <<EOF
 #!/bin/sh
 info "Loading kernel modules for OBS"
 info "  Loop..."
-modprobe loop max_loop=64 lbs=0 || modprobe loop max_loop=64
+modprobe -q loop max_loop=64 lbs=0 || modprobe -q loop max_loop=64
 info "  binfmt misc..."
-modprobe binfmt_misc
+modprobe -q binfmt_misc
 EOF
 chmod a+rx /usr/lib/dracut/modules.d/80obs/setup_obs.sh
 # Configure systemd in kernel-obs-build's initrd not to limit TasksMax,
@@ -122,7 +122,7 @@ export KERNEL_MODULES="loop dm-crypt dm-mod dm-snapshot binfmt-misc fuse kqemu s
 for i in $KERNEL_MODULES; do
 (
   echo "info '  $i'"
-  echo "modprobe $i"
+  echo "modprobe -q $i"
 ) >> /usr/lib/dracut/modules.d/80obs/setup_obs.sh
 done
 

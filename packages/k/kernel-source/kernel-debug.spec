@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-debug
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.9
-%define patchversion 5.9.8
+%define patchversion 5.9.10
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -53,8 +53,8 @@
 # defining them all at once.)
 %define config_vars CONFIG_MODULES CONFIG_MODULE_SIG CONFIG_KMSG_IDS CONFIG_SUSE_KERNEL_SUPPORTED CONFIG_EFI_STUB CONFIG_LIVEPATCH_IPA_CLONES
 %{expand:%(eval "$(test -n "%cpu_arch_flavor" && tar -xjf %_sourcedir/config.tar.bz2 --to-stdout config/%cpu_arch_flavor)"; for config in %config_vars; do echo "%%global $config ${!config:-n}"; done)}
-%define split_extra (%CONFIG_MODULES == "y" && %CONFIG_SUSE_KERNEL_SUPPORTED == "y")
-%if %CONFIG_MODULES != "y"
+%define split_extra ("%CONFIG_MODULES" == "y" && "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y")
+%if "%CONFIG_MODULES" != "y"
 	%define klp_symbols 0
 %endif
 
@@ -68,9 +68,9 @@ Name:           kernel-debug
 Summary:        A Debug Version of the Kernel
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.9.8
+Version:        5.9.10
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gea93937
+Release:        <RELEASE>.gb7c3768
 %else
 Release:        0
 %endif
@@ -179,10 +179,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-ea9393740a2e1ec61d5f3ca2bdad4e3389c7f77e
-Provides:       kernel-srchash-ea9393740a2e1ec61d5f3ca2bdad4e3389c7f77e
+Provides:       kernel-%build_flavor-base-srchash-b7c376832975e08040a014ab1c36b480f0d3b41b
+Provides:       kernel-srchash-b7c376832975e08040a014ab1c36b480f0d3b41b
 # END COMMON DEPS
-Provides:       %name-srchash-ea9393740a2e1ec61d5f3ca2bdad4e3389c7f77e
+Provides:       %name-srchash-b7c376832975e08040a014ab1c36b480f0d3b41b
 %ifarch ppc64
 Provides:       kernel-kdump = 2.6.28
 Obsoletes:      kernel-kdump <= 2.6.28
@@ -398,7 +398,7 @@ awk '
 ' >%kernel_build_dir/Module.supported
 subpackages=(
 	base
-%if %CONFIG_SUSE_KERNEL_SUPPORTED == "y"
+%if "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y"
 	cluster-md-kmp dlm-kmp gfs2-kmp kselftests-kmp ocfs2-kmp reiserfs-kmp
 %endif
 )
@@ -560,7 +560,7 @@ for f in %_sourcedir/*.crt; do
     cat "$f" >>certs/signing_key.pem
 done
 
-%if %CONFIG_KMSG_IDS == "y"
+%if "%CONFIG_KMSG_IDS" == "y"
     chmod +x ../scripts/kmsg-doc
     MAKE_ARGS="$MAKE_ARGS D=2"
 %endif
@@ -657,7 +657,7 @@ add_vmlinux()
     elif test -x "$(which dwarfextract 2>/dev/null)"; then
 	dwarfextract vmlinux %buildroot/boot/Kerntypes-%kernelrelease-%build_flavor || echo "dwarfextract failed ($?)"
     fi
-%if %CONFIG_KMSG_IDS == "y"
+%if "%CONFIG_KMSG_IDS" == "y"
     mkdir -p %buildroot/usr/share/man/man9
     find man -name '*.9' -exec install -m 644 -D '{}' %buildroot/usr/share/man/man9/ ';'
 %endif
@@ -680,13 +680,13 @@ add_vmlinux()
 
 # sign the modules, firmware and possibly the kernel in the buildservice
 BRP_PESIGN_FILES=""
-%if %CONFIG_EFI_STUB == "y"
+%if "%CONFIG_EFI_STUB" == "y"
 BRP_PESIGN_FILES="/boot/$image-%kernelrelease-%build_flavor"
 %endif
 %ifarch s390x ppc64 ppc64le
 BRP_PESIGN_FILES="/boot/$image-%kernelrelease-%build_flavor"
 %endif
-%if %CONFIG_MODULE_SIG == "y"
+%if "%CONFIG_MODULE_SIG" == "y"
 BRP_PESIGN_FILES="$BRP_PESIGN_FILES *.ko"
 %endif
 %ifarch %ix86
@@ -695,7 +695,7 @@ BRP_PESIGN_FILES="$BRP_PESIGN_FILES *.ko"
 BRP_PESIGN_FILES=""
 %endif
 export BRP_PESIGN_FILES
-%if %{compress_modules} != "none"
+%if "%{compress_modules}" != "none"
 export BRP_PESIGN_COMPRESS_MODULE=%{compress_modules}
 %endif
 
@@ -765,8 +765,8 @@ done
 # keep this -suffix list in sync with post.sh and postun.sh
 suffix=-%build_flavor
 %endif
-ln -s $image$suffix %buildroot/boot/$image$suffix
-ln -s initrd$suffix %buildroot/boot/initrd$suffix
+ln -s X$image$suffix %buildroot/boot/$image$suffix
+ln -s Xinitrd$suffix %buildroot/boot/initrd$suffix
 
 cp -p .config %buildroot/boot/config-%kernelrelease-%build_flavor
 sysctl_file=%buildroot/boot/sysctl.conf-%kernelrelease-%build_flavor
@@ -800,7 +800,7 @@ chmod 0600 %buildroot/boot/initrd-%kernelrelease-%build_flavor{,-kdump}
 if [ %CONFIG_MODULES = y ]; then
     mkdir -p %rpm_install_dir/%cpu_arch_flavor
     mkdir -p %buildroot/usr/src/linux-obj/%cpu_arch
-    ln -s %build_flavor %buildroot/usr/src/linux-obj/%cpu_arch_flavor
+    ln -s X%build_flavor %buildroot/usr/src/linux-obj/%cpu_arch_flavor
     install -m 755 -D -t %rpm_install_dir/%cpu_arch_flavor/scripts/mod/ scripts/mod/ksym-provides
 
     gzip -n -c9 < Module.symvers > %buildroot/boot/symvers-%kernelrelease-%build_flavor.gz
@@ -828,7 +828,7 @@ if [ %CONFIG_MODULES = y ]; then
         cp Symbols.list %rpm_install_dir/%cpu_arch/%build_flavor
         echo %obj_install_dir/%cpu_arch/%build_flavor/Symbols.list > %my_builddir/livepatch-files.no_dir
 
-        %if %CONFIG_LIVEPATCH_IPA_CLONES == "y"
+        %if "%CONFIG_LIVEPATCH_IPA_CLONES" == "y"
             find %kernel_build_dir -name "*.ipa-clones" ! -size 0 | sed -e 's|^%kernel_build_dir/||' > ipa-clones.list
             cp ipa-clones.list %rpm_install_dir/%cpu_arch/%build_flavor
             echo %obj_install_dir/%cpu_arch/%build_flavor/ipa-clones.list >> %my_builddir/livepatch-files.no_dir
@@ -872,7 +872,7 @@ if [ %CONFIG_MODULES = y ]; then
     %_sourcedir/split-modules -d %buildroot \
 	-o %my_builddir \
 	-b %kernel_build_dir \
-%if %CONFIG_SUSE_KERNEL_SUPPORTED == "y"
+%if "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y"
 	-e \
 %endif
 %if ! %supported_modules_check
@@ -913,7 +913,7 @@ if [ %CONFIG_MODULES = y ]; then
     # Check the license in each module
     if ! sh %_sourcedir/check-module-license %buildroot; then
 	echo "Please fix the missing licenses!"
-%if %CONFIG_SUSE_KERNEL_SUPPORTED == "y"
+%if "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y"
 	exit 1
 %endif
     fi
@@ -1132,7 +1132,7 @@ This package contains additional modules not supported by SUSE.
 %defattr(-, root, root)
 %endif
 
-%if %CONFIG_KMSG_IDS == "y"
+%if "%CONFIG_KMSG_IDS" == "y"
 
 %package man
 Summary:        The collection of man pages generated by the kmsg script
@@ -1180,7 +1180,7 @@ kernel module packages) against the %build_flavor flavor of the kernel.
 
 %source_timestamp
 
-%if %CONFIG_MODULES == "y"
+%if "%CONFIG_MODULES" == "y"
 
 %pre devel -f devel-pre.sh
 
@@ -1191,13 +1191,13 @@ kernel module packages) against the %build_flavor flavor of the kernel.
 %dir /usr/src/linux-obj
 %dir /usr/src/linux-obj/%cpu_arch
 %ghost /usr/src/linux-obj/%cpu_arch_flavor
-%if %kmp_target_cpu != %cpu_arch
+%if "%kmp_target_cpu" != "%cpu_arch"
 %obj_install_dir/%kmp_target_cpu
 /usr/src/linux-obj/%kmp_target_cpu
 %endif
 
-%if "%livepatch" != "" && %CONFIG_SUSE_KERNEL_SUPPORTED == "y" && "%variant" == "" && %build_default
-%if %livepatch == kgraft
+%if "%livepatch" != "" && "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y" && "%variant" == "" && %build_default
+%if "%livepatch" == "kgraft"
 %define patch_package %{livepatch}-patch
 %else
 %define patch_package kernel-%{livepatch}
@@ -1240,7 +1240,7 @@ symbol resolution.
 %files %{livepatch}-devel -f livepatch-files
 %endif
 
-%if %CONFIG_SUSE_KERNEL_SUPPORTED == "y"
+%if "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y"
 %package -n cluster-md-kmp-%build_flavor
 Summary:        Clustering support for MD devices
 Group:          System/Kernel

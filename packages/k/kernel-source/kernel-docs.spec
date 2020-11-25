@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-docs
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define srcversion 5.9
-%define patchversion 5.9.8
+%define patchversion 5.9.10
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -31,9 +31,9 @@ Name:           kernel-docs
 Summary:        Kernel Documentation
 License:        GPL-2.0
 Group:          Documentation/Man
-Version:        5.9.8
+Version:        5.9.10
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gea93937
+Release:        <RELEASE>.gb7c3768
 %else
 Release:        0
 %endif
@@ -63,7 +63,7 @@ BuildRequires:  texlive-zapfding
 %endif
 Url:            http://www.kernel.org/
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-ea9393740a2e1ec61d5f3ca2bdad4e3389c7f77e
+Provides:       %name-srchash-b7c376832975e08040a014ab1c36b480f0d3b41b
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
