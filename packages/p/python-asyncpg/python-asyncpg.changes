@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Sun Nov 22 14:12:03 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Tidy spec
+- Add merged-static-fix.patch to support Python 3.8
+- Activate test suite
+
+-------------------------------------------------------------------
+Fri Jan 24 08:54:51 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 0.20.1 
+
+-------------------------------------------------------------------
+Wed Dec 26 14:01:50 UTC 2018 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Initial packaging asyncpg version 0.18.2
+
