@@ -40,6 +40,8 @@ Patch2:         gnome-shell-disable-ibus-when-not-installed.patch
 Patch4:         gnome-shell-fate324570-Make-GDM-background-image-configurable.patch
 # PATCH-NEEDS-REBASE gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch jsc#SLE-9267 qkzhu@suse.com -- Remove sessionList of endSessionDialog (WAS: PATCH-FEATURE-OPENSUSE)
 Patch5:         gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch
+# PATCH-FIX-UPSTREAM https://gitlab.gnome.org/GNOME/gnome-shell/-/commit/98234acd5b48a58c2d112b5edb3dddb85e04a643.patch mrueckert@suse.de -- Fix crash triggered with steam or gnome-shell
+Patch6:         https://gitlab.gnome.org/GNOME/gnome-shell/-/commit/98234acd5b48a58c2d112b5edb3dddb85e04a643.patch
 
 ## NOTE: Keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gnome-shell-gdm-login-applet.patch fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
@@ -178,6 +180,7 @@ This package contains an optional extensions app for managing GNOME Shell extens
 %patch2 -p1
 %patch4 -p1
 #patch5 -p1
+%patch6 -p1
 
 translation-update-upstream
 
