@@ -28,6 +28,8 @@ License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Utilities
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Compile-with-recent-Qt-5.15.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  pkgconfig
@@ -77,7 +79,7 @@ This package includes the user guide for KAddressbook in HTML format.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build

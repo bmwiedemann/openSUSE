@@ -415,4 +415,13 @@
     <comment>KDE Applications 20.08.3 (forwarded request 846547 from luca_b)</comment>
     <requestid>846632</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>aaaf719104d645f3ddd474002bc2dcbf</srcmd5>
+    <version>20.08.3</version>
+    <time>1606328967</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with Qt 5.15.2:
+  * 0001-Compile-with-recent-Qt-5.15.patch</comment>
+    <requestid>850396</requestid>
+  </revision>
 </revisionlist>
