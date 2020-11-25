@@ -568,4 +568,12 @@ depends on sr#251413</comment>
     <comment>- Add _constraints with 4GB min disk space</comment>
     <requestid>834634</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>214d2086a7104f491d3d6791800d9a94</srcmd5>
+    <version>5.15.2</version>
+    <time>1606328928</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.2</comment>
+    <requestid>850015</requestid>
+  </revision>
 </revisionlist>

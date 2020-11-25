@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 20 12:08:48 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.2:
+  * New bugfix release
+  * For more details please see:
+    http://code.qt.io/cgit/qt/qtdeclarative.git/plain/dist/changes-5.15.2/?h=5.15.2
+- Refresh qtdeclarative-5.15.0-FixMaxXMaxYExtent.patch
+
+-------------------------------------------------------------------
 Tue Sep 15 10:50:47 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints with 4GB min disk space

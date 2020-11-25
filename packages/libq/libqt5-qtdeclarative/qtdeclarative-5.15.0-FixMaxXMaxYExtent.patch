@@ -22,9 +22,11 @@ Fixes: QTBUG-83890
 Pick-to: 5.15
 Change-Id: I7f4060c2f46ae07611bedceca0d322c5f7f6affb
 ========================================================================================================================
---- a/src/quick/items/qquickitemview.cpp
-+++ b/src/quick/items/qquickitemview.cpp
-@@ -1393,7 +1393,7 @@
+Index: qtdeclarative-everywhere-src-5.15.2/src/quick/items/qquickitemview.cpp
+===================================================================
+--- qtdeclarative-everywhere-src-5.15.2.orig/src/quick/items/qquickitemview.cpp
++++ qtdeclarative-everywhere-src-5.15.2/src/quick/items/qquickitemview.cpp
+@@ -1393,7 +1393,7 @@ qreal QQuickItemView::maxYExtent() const
  {
      Q_D(const QQuickItemView);
      if (d->layoutOrientation() == Qt::Horizontal)
@@ -33,7 +35,7 @@ Change-Id: I7f4060c2f46ae07611bedceca0d322c5f7f6affb
  
      if (d->vData.maxExtentDirty) {
          d->maxExtent = d->maxExtentForAxis(d->vData, false);
-@@ -1421,7 +1421,7 @@
+@@ -1421,7 +1421,7 @@ qreal QQuickItemView::maxXExtent() const
  {
      Q_D(const QQuickItemView);
      if (d->layoutOrientation() == Qt::Vertical)
@@ -42,10 +44,11 @@ Change-Id: I7f4060c2f46ae07611bedceca0d322c5f7f6affb
  
      if (d->hData.maxExtentDirty) {
          d->maxExtent = d->maxExtentForAxis(d->hData, true);
-
---- a/tests/auto/quick/qquicklistview/tst_qquicklistview.cpp
-+++ b/tests/auto/quick/qquicklistview/tst_qquicklistview.cpp
-@@ -73,6 +73,8 @@
+Index: qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/qquicklistview/tst_qquicklistview.cpp
+===================================================================
+--- qtdeclarative-everywhere-src-5.15.2.orig/tests/auto/quick/qquicklistview/tst_qquicklistview.cpp
++++ qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/qquicklistview/tst_qquicklistview.cpp
+@@ -73,6 +73,8 @@ public:
      tst_QQuickListView();
  
  private slots:
@@ -54,17 +57,17 @@ Change-Id: I7f4060c2f46ae07611bedceca0d322c5f7f6affb
      void init();
      void cleanupTestCase();
      // Test QAbstractItemModel model types
-@@ -297,6 +299,8 @@
- 
+@@ -299,6 +301,8 @@ private slots:
      void requiredObjectListModel();
+     void clickHeaderAndFooterWhenClip();
  
 +    // WARNING: please add new tests to tst_qquicklistview2; this file is too slow to work with.
 +
  private:
      template <class T> void items(const QUrl &source);
      template <class T> void changed(const QUrl &source);
-@@ -10042,6 +10046,8 @@
-     }
+@@ -10094,6 +10098,8 @@ void tst_QQuickListView::clickHeaderAndF
+     QVERIFY(root->property("footerPressed").toBool());
  }
  
 +// WARNING: please add new tests to tst_qquicklistview2; this file is too slow to work with.
@@ -72,9 +75,10 @@ Change-Id: I7f4060c2f46ae07611bedceca0d322c5f7f6affb
  QTEST_MAIN(tst_QQuickListView)
  
  #include "tst_qquicklistview.moc"
-
---- a/tests/auto/quick/qquicklistview2/data/maxXExtent.qml
-+++ b/tests/auto/quick/qquicklistview2/data/maxXExtent.qml
+Index: qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/qquicklistview2/data/maxXExtent.qml
+===================================================================
+--- /dev/null
++++ qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/qquicklistview2/data/maxXExtent.qml
 @@ -0,0 +1,54 @@
 +/****************************************************************************
 +**
@@ -130,9 +134,10 @@ Change-Id: I7f4060c2f46ae07611bedceca0d322c5f7f6affb
 +        }
 +    }
 +}
-
---- a/tests/auto/quick/qquicklistview2/data/maxYExtent.qml
-+++ b/tests/auto/quick/qquicklistview2/data/maxYExtent.qml
+Index: qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/qquicklistview2/data/maxYExtent.qml
+===================================================================
+--- /dev/null
++++ qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/qquicklistview2/data/maxYExtent.qml
 @@ -0,0 +1,55 @@
 +/****************************************************************************
 +**
@@ -189,9 +194,10 @@ Change-Id: I7f4060c2f46ae07611bedceca0d322c5f7f6affb
 +        }
 +    }
 +}
-
---- a/tests/auto/quick/qquicklistview2/qquicklistview2.pro
-+++ b/tests/auto/quick/qquicklistview2/qquicklistview2.pro
+Index: qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/qquicklistview2/qquicklistview2.pro
+===================================================================
+--- /dev/null
++++ qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/qquicklistview2/qquicklistview2.pro
 @@ -0,0 +1,12 @@
 +CONFIG += testcase
 +TARGET = tst_qquicklistview2
@@ -205,9 +211,10 @@ Change-Id: I7f4060c2f46ae07611bedceca0d322c5f7f6affb
 +TESTDATA = data/*
 +
 +QT += core-private gui-private qml-private quick-private testlib qmltest
-
---- a/tests/auto/quick/qquicklistview2/tst_qquicklistview2.cpp
-+++ b/tests/auto/quick/qquicklistview2/tst_qquicklistview2.cpp
+Index: qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/qquicklistview2/tst_qquicklistview2.cpp
+===================================================================
+--- /dev/null
++++ qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/qquicklistview2/tst_qquicklistview2.cpp
 @@ -0,0 +1,114 @@
 +/****************************************************************************
 +**
@@ -323,10 +330,11 @@ Change-Id: I7f4060c2f46ae07611bedceca0d322c5f7f6affb
 +QTEST_MAIN(tst_QQuickListView2)
 +
 +#include "tst_qquicklistview2.moc"
-
---- a/tests/auto/quick/quick.pro
-+++ b/tests/auto/quick/quick.pro
-@@ -65,6 +65,7 @@
+Index: qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/quick.pro
+===================================================================
+--- qtdeclarative-everywhere-src-5.15.2.orig/tests/auto/quick/quick.pro
++++ qtdeclarative-everywhere-src-5.15.2/tests/auto/quick/quick.pro
+@@ -67,6 +67,7 @@ QUICKTESTS += \
      qquickitem2 \
      qquickitemlayer \
      qquicklistview \
