@@ -36,16 +36,16 @@
 %endif
 
 Name:           libqt5-qtbase
-Version:        5.15.1
+Version:        5.15.2
 Release:        0
 Summary:        C++ Program Library, Core Components
 License:        LGPL-3.0-only or GPL-3.0-with-Qt-Company-Qt-exception-1.1
 Group:          System/Libraries
 Url:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.15.1
-%define so_version 5.15.1
-%define tar_version qtbase-everywhere-src-5.15.1
+%define real_version 5.15.2
+%define so_version 5.15.2
+%define tar_version qtbase-everywhere-src-5.15.2
 Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
 # to get mtime of file:
 Source1:        libqt5-qtbase.changes
@@ -57,6 +57,8 @@ Source99:       libqt5-qtbase-rpmlintrc
 Patch1:         0001-Lower-required-version-of-OpenSSL-to-1.1.0.patch
 Patch2:         fix-build-openssl-1.1.0.patch
 Patch3:         0001-Revert-QMenu-hide-when-a-QWidgetAction-fires-the-tri.patch
+# Proposed: https://bugreports.qt.io/browse/QTBUG-88491
+Patch4:         0001-Avoid-SIGABRT-on-platform-plugin-initialization-fail.patch
 # PATCH-FIX-OPENSUSE disable-rc4-ciphers-bnc865241.diff bnc#865241-- Exclude rc4 ciphers from being used by default
 Patch6:         disable-rc4-ciphers-bnc865241.diff
 Patch8:         tell-the-truth-about-private-api.patch
@@ -67,7 +69,6 @@ Patch12:        0001-Add-remote-print-queue-support.patch
 # PATCH-FIX-OPENSUSE
 Patch21:        0001-Don-t-white-list-recent-Mesa-versions-for-multithrea.patch
 Patch24:        fix-fixqt4headers.patch
-Patch25:        0001-Revert-Emit-QScreen-availableG-g-eometryChanged-on-l.patch
 # patches 1000-2000 and above from upstream 5.15 branch #
 # patches 2000-3000 and above from upstream qt6/dev branch #
 # Not accepted yet, https://codereview.qt-project.org/c/qt/qtbase/+/255384
@@ -117,6 +118,7 @@ BuildRequires:  pkgconfig(xcb-render)
 BuildRequires:  pkgconfig(xcb-shape)
 BuildRequires:  pkgconfig(xcb-shm)
 BuildRequires:  pkgconfig(xcb-sync)
+BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xcb-xfixes)
 BuildRequires:  pkgconfig(xcb-xinerama)
 BuildRequires:  pkgconfig(xcb-xkb)
@@ -840,7 +842,7 @@ sed -i -e 's|^\(QMAKE_STRIP.*=\).*$|\1|g' mkspecs/common/linux.conf
 # Due to a binutils bug/misunderstanding, this option didn't do as much before 2.35,
 # so just disable it for now until a proper alternative appears.
 
-echo yes | ./configure \
+./configure \
 	-prefix %{_prefix} \
 	-L %{libqt5_libdir} \
 	-libdir %{libqt5_libdir} \
@@ -865,6 +867,7 @@ echo yes | ./configure \
 	-accessibility \
 	-no-strip \
 	-opensource \
+	-confirm-license \
 	-no-separate-debug-info \
 	-force-debug-info \
 	-shared \
@@ -888,7 +891,6 @@ echo yes | ./configure \
 	-glib \
 	-sctp \
 	-system-sqlite \
-	-no-sql-mysql \
 %if %journald
 	-journald \
 %endif
@@ -909,7 +911,6 @@ echo yes | ./configure \
 	-plugin-sql-mysql -I/usr/include/mysql/ \
 	-qpa "xcb;wayland" \
 	-no-feature-relocatable \
-	-v \
 	QMAKE_CFLAGS+="$CFLAGS" \
 	QMAKE_CXXFLAGS+="$CXXFLAGS"
 
@@ -1302,7 +1303,6 @@ install -Dm644 %{SOURCE4} %{buildroot}%{libqt5_datadir}/qtlogging.ini
 %doc *.txt
 %{libqt5_libdir}/libQt5Bootstrap.a
 %{libqt5_libdir}/libQt5Bootstrap.prl
-%{libqt5_libdir}/cmake/Qt5Bootstrap/
 
 %files -n libQt5OpenGLExtensions-devel-static
 %license LICENSE.*
