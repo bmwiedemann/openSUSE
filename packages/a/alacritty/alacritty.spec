@@ -19,12 +19,12 @@
 # Use hardening ldflags.
 %global rustflags "-Clink-arg=-Wl,-z,relro,-z,now"
 Name:           alacritty
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        A GPU-accelerated terminal emulator
 License:        Apache-2.0
-URL:            https://github.com/jwilm/alacritty/
-Source:         https://github.com/jwilm/alacritty/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/alacritty/alacritty/
+Source:         https://github.com/alacritty/alacritty/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 Source3:        README.suse-maint
