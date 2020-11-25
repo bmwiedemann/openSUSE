@@ -30,6 +30,7 @@ Source2:        rc.splash
 Source3:        rc.status
 Source4:        chkconfig
 Source5:        chkconfig.8
+Source6:        insserv-compat-rpmlintrc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 Obsoletes:      insserv <= 1.16.0
@@ -50,16 +51,18 @@ for i in /sbin %{_bindir} %{_sbindir} /usr/lib/lsb /lib/lsb %{_mandir}/man8 %{_s
 	install -d -m 755 %{buildroot}$i
 done
 install -m755 %{SOURCE0} %{buildroot}%{_sbindir}/insserv
-install -m755 %{SOURCE1} %{buildroot}/lib/lsb/init-functions
+install -m755 %{SOURCE1} %{buildroot}%{?usrmerged:/usr}/lib/lsb/init-functions
 install -m755 %{SOURCE2} %{buildroot}%{_sysconfdir}/
 install -m755 %{SOURCE3} %{buildroot}%{_sysconfdir}/
 install -m755 %{SOURCE4} %{buildroot}%{_bindir}/
 install -m644 %{SOURCE5} %{buildroot}%{_mandir}/man8
 install -m644 insserv.8 %{buildroot}%{_mandir}/man8
+%if !0%{?usrmerged}
 ln -s ../usr/sbin/insserv  %{buildroot}/sbin/insserv
+ln -s ../usr/bin/chkconfig  %{buildroot}/sbin/chkconfig
+%endif
 ln -s ../../sbin/insserv  %{buildroot}/usr/lib/lsb/install_initd
 ln -s ../../sbin/insserv  %{buildroot}/usr/lib/lsb/remove_initd
-ln -s ../usr/bin/chkconfig  %{buildroot}/sbin/chkconfig
 mkdir -p %{buildroot}/etc/init.d/{boot.d,rc0.d,rc1.d,rc2.d,rc3.d,rc4.d,rc5.d,rc6.d,rcS.d}
 ln -s init.d %{buildroot}/etc/rc.d
 
@@ -83,10 +86,12 @@ rm -rf %{buildroot}
 /etc/rc.d
 %{_bindir}/chkconfig
 %{_sbindir}/insserv
+%if !0%{?usrmerged}
 /sbin/chkconfig
 /sbin/insserv
 %dir /lib/lsb
-/lib/lsb/init-functions
+%endif
+%{?usrmerged:/usr}/lib/lsb/init-functions
 %dir /usr/lib/lsb
 /usr/lib/lsb/install_initd
 /usr/lib/lsb/remove_initd

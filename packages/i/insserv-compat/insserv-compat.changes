@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 23 09:33:59 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+- filter legacy init script warnings. The whole point of this
+  package is to have them. So has to pass even when the check is
+  switched to fatal.
+
+-------------------------------------------------------------------
 Tue Jan 28 14:28:09 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add chkconfig from aaa_base
