@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Nov 20 12:08:44 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.2:
+  * New bugfix release
+  * For more details please see:
+    http://code.qt.io/cgit/qt/qtbase.git/plain/dist/changes-5.15.2/?h=5.15.2
+- Drop patches, now upstream:
+  * 0001-Revert-Emit-QScreen-availableG-g-eometryChanged-on-l.patch
+- Pass -confirm-license option, drop duplicates
+- BuildRequire xcb-util
+
+-------------------------------------------------------------------
+Fri Nov 13 15:50:40 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to avoid coredumps with missing display:
+  * 0001-Avoid-SIGABRT-on-platform-plugin-initialization-fail.patch
+
+-------------------------------------------------------------------
 Wed Oct 28 13:22:24 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Disable -reduce-relocations for now (boo#1175278, QTBUG-86173)

@@ -1,0 +1,36 @@
+From 127e467e5ff86d5aba085c0e3410b3198d29b61a Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Fri, 13 Nov 2020 15:51:50 +0100
+Subject: [PATCH] Avoid SIGABRT on platform plugin initialization failure
+
+If all platform plugins failed to initialize, Qt calls qFatal which in turn
+calls abort. This causes SIGABRT and may generate a coredump.
+
+In the most common case it's because the connection to the display (Wayland,
+X11, whatever) is missing or failed, and a coredump will not help analyzing
+that at all.
+
+https://bugreports.qt.io/browse/QTBUG-88491
+---
+ src/gui/kernel/qguiapplication.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/gui/kernel/qguiapplication.cpp b/src/gui/kernel/qguiapplication.cpp
+index a95331e246..098c69d3c1 100644
+--- a/src/gui/kernel/qguiapplication.cpp
++++ b/src/gui/kernel/qguiapplication.cpp
+@@ -1251,9 +1251,9 @@ static void init_platform(const QString &pluginNamesWithArguments, const QString
+         if (!QLibraryInfo::isDebugBuild() && !GetConsoleWindow())
+             MessageBox(0, (LPCTSTR)fatalMessage.utf16(), (LPCTSTR)(QCoreApplication::applicationName().utf16()), MB_OK | MB_ICONERROR);
+ #endif // Q_OS_WIN && !Q_OS_WINRT
+-        qFatal("%s", qPrintable(fatalMessage));
++        qCritical("%s", qPrintable(fatalMessage));
+ 
+-        return;
++        _exit(1);
+     }
+ 
+     // Many platforms have created QScreens at this point. Finish initializing
+-- 
+2.25.1
+

@@ -2225,4 +2225,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>- Disable -reduce-relocations for now (boo#1175278, QTBUG-86173)</comment>
     <requestid>845064</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>36ef8da6c9804cd2aa592bd56e83d10d</srcmd5>
+    <version>5.15.2</version>
+    <time>1606328920</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.2</comment>
+    <requestid>850011</requestid>
+  </revision>
 </revisionlist>
