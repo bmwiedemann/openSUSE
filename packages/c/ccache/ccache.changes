@@ -1,3 +1,29 @@
+Mon Nov 23 11:00:00 UTC 2020 - Paul Fee <paul.fee@jci.com>
+
+- Update to version 4.1:
+   * Symlinks are now followed when guessing the compiler, e.g. /usr/bin/c++ -> g++10
+   * Added a new compiler_type (CCACHE_COMPILERTYPE) configuration option that allows for overriding the guessed compiler type. 
+   * Added support for caching compilations with -fsyntax-only.
+   * Added a command line option --config-path, which specifies the configuration file to operate on. It can be used instead of setting CCACHE_CONFIGPATH temporarily.
+
+-------------------------------------------------------------------
+Wed Nov  4 07:54:08 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.0:
+  * Changed the default cache directory location to follow the XDG base directory specification.
+  * Changed compression algorithm from Deflate (zlib) to Zstandard, enabled by default.
+  * Added functionality for recompressing cache content with a higher compression level.
+  * Changed hash algorithm from MD4 to BLAKE3.
+  * Added checksumming with XXH3 to detect data corruption.
+  * Improved cache directory structure.
+  * Added support for using file cloning (AKA “reflinks”).
+  * Added an experimental “inode cache” for file hashes.
+- Changes for version 3.7.12:
+  * Coverage files (.gcno) produced by GCC 9+ when using -fprofile-dir=dir are now handled gracefully by falling back to running the compiler.
+  * Fixed writing to log file larger than 2 GiB when running ccache compiled in 32-bit mode.
+- Drop no longer applying patch:
+  * 0001-Add-another-cleanup-mechanism-evict-older-than.patch
+
 -------------------------------------------------------------------
 Sun Jul 26 21:10:54 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
