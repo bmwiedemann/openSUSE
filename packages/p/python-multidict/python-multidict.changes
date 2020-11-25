@@ -1,9 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 21 10:47:36 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v5.0.2
+  * No runtime changes
+
+-------------------------------------------------------------------
 Thu Sep 17 11:34:02 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 4.7.6:
- - Fixed an issue with some versions of the ``wheel`` dist
-   failing because of being unable to detect the license file.
+  * Fixed an issue with some versions of the ``wheel`` dist
+    failing because of being unable to detect the license file.
 
 -------------------------------------------------------------------
 Fri Mar 13 08:40:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>

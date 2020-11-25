@@ -117,4 +117,12 @@
    failing because of being unable to detect the license file.</comment>
     <requestid>835171</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>785bd1ae98a5eb2459f60cd8a9707549</srcmd5>
+    <version>5.0.2</version>
+    <time>1606328867</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850140</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-multidict
-Version:        4.7.6
+Version:        5.0.2
 Release:        0
 Summary:        Multidict implementation
 License:        Apache-2.0
@@ -47,7 +47,7 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
-%python_expand rm %{buildroot}%{$python_sitearch}/multidict/*.c
+%python_expand rm %{buildroot}%{$python_sitearch}/multidict/*.c %{buildroot}%{$python_sitearch}/multidict/_multilib/*.h
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
