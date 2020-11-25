@@ -1,0 +1,5 @@
+<package name="python-reconfigure" project="openSUSE:Factory">
+  <title></title>
+  <description>Python ORM for config files</description>
+  <devel project="devel:languages:python" package="python-reconfigure"/>
+</package>
