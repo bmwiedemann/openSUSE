@@ -39,4 +39,17 @@
     <comment></comment>
     <requestid>763058</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>438b6472d80af89f351fbb06b4d44208</srcmd5>
+    <version>2.1.2</version>
+    <time>1606329029</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.2
+  * Fixes a packaging error in 2.1.1 that results in broken manual page
+    links (no code changes)
+- update to 2.1.1
+  * Fixes a bug that causes cone to garble some messages when showing
+    them</comment>
+    <requestid>850717</requestid>
+  </revision>
 </revisionlist>

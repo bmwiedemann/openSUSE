@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 25 13:13:57 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 2.1.2
+  * Fixes a packaging error in 2.1.1 that results in broken manual page
+    links (no code changes)
+- update to 2.1.1
+  * Fixes a bug that causes cone to garble some messages when showing
+    them
+
+-------------------------------------------------------------------
 Tue Nov 12 14:46:01 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
 
 - add courier-unicode.keyring for source verification
