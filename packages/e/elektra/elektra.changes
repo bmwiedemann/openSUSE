@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 24 14:14:56 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 0.8.26
+- Remove patch-fix-augeas-config.patch: applied upstream
+- Remove Qt-GUI-Do-not-use-deprecated-qt_use_modules.patch: applied 
+  upstream
+- Add more missing dependencies
+- Add patch to fix gtest linkage: fix-gtest-linkage.patch
+  package doesn't build without building tests
+- Cleap up spec, remove oS 13.2 artifacts
+- Use build conditionals
+- generate PIE
+- fix hash bangs
+
+-------------------------------------------------------------------
 Tue Jun  5 13:16:59 UTC 2018 - wbauer@tmo.at
 
 - Add Qt-GUI-Do-not-use-deprecated-qt_use_modules.patch to fix

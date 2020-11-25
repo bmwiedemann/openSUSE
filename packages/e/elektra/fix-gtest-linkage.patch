@@ -1,0 +1,13 @@
+Index: b/cmake/Modules/LibAddPlugin.cmake
+===================================================================
+--- a/cmake/Modules/LibAddPlugin.cmake
++++ b/cmake/Modules/LibAddPlugin.cmake
+@@ -186,6 +186,8 @@ function (add_plugintest testname)
+ 			target_link_libraries (${testexename} gtest_main)
+ 		endif (ARG_CPP)
+ 
++		target_link_libraries (${testexename} gtest)
++
+ 		set_additional_compile_definitions (${testname})
+ 
+ 		target_link_libraries (${testexename} ${ARG_LINK_LIBRARIES} ${ARG_TEST_LINK_LIBRARIES})

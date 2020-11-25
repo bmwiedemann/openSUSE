@@ -1,7 +1,7 @@
 #
 # spec file for package elektra
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,63 +12,81 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Version:        0.8.20
+Version:        0.8.26
 Release:        0
 %define tempdocdir %{_prefix}/elektra
 %define __libtoolize    /bin/true
 %define _disable_ld_no_undefined 1
 %define _disable_ld_as_needed 1
 
+%bcond_without augeas
+%bcond_without qt5
+%bcond_with glib2
+%bcond_with swig
+%bcond_with java
+
 Name:           elektra
 Source:         http://www.libelektra.org/ftp/elektra/releases/%{name}-%{version}.tar.gz
-Url:            http://www.libelektra.org
+URL:            http://www.libelektra.org
 %define api     4
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
 Source1:        elektra-rpmlintrc
+Patch1:         fix-gtest-linkage.patch
 BuildRequires:  boost-devel
+BuildRequires:  byacc
 BuildRequires:  cmake
+BuildRequires:  db-devel
+BuildRequires:  discount
 BuildRequires:  doxygen
+BuildRequires:  fdupes
+BuildRequires:  fish
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
-BuildRequires:  libxml2-devel
-BuildRequires:  pkgconfig(dbus-1)
-#BuildRequires:  java-1.8.0-devel
-
-# g-ir-compiler fails to build
-# BuildRequires:  gobject-introspection-devel
-%define use_aug 1
-%define use_glib 0
-%define use_swig 0
-BuildRequires:  augeas-devel
-BuildRequires:  glib2-devel
-BuildRequires:  gobject-introspection-devel
-%define use_qt5 1
-BuildRequires:  discount
-BuildRequires:  libQt5DBus-devel
-BuildRequires:  libQt5Test-devel
-BuildRequires:  libgit2-devel
-BuildRequires:  libmarkdown-devel
-BuildRequires:  libqt5-qtdeclarative-devel
-BuildRequires:  libqt5-qtsvg-devel
-BuildRequires:  libyajl-devel
+BuildRequires:  pkg-config
 BuildRequires:  python3-devel
 BuildRequires:  systemd-logger
 BuildRequires:  update-desktop-files
-%if 0%{?suse_version} > 1320 || 0%{?suse_version} == 1315
-BuildRequires:  fish
+BuildRequires:  pkgconfig(botan-2)
+BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(gconf-2.0)
+BuildRequires:  pkgconfig(gdlib)
+BuildRequires:  pkgconfig(gmock)
+BuildRequires:  pkgconfig(gtest)
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libev)
+BuildRequires:  pkgconfig(libgcrypt)
+BuildRequires:  pkgconfig(libgit2)
+BuildRequires:  pkgconfig(libmarkdown)
+BuildRequires:  pkgconfig(libuv)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(yajl)
+%if %{with augeas}
+BuildRequires:  augeas-devel
 %endif
-#BuildRequires:  lua-devel
-#BuildRequires:  python
-#BuildRequires:  python-devel
-#BuildRequires:  swig
-Patch:          patch-fix-augeas-config.patch
-# PATCH-FIX-UPSTREAM Qt-GUI-Do-not-use-deprecated-qt_use_modules.patch -- fix build with Qt 5.11
-Patch1:         Qt-GUI-Do-not-use-deprecated-qt_use_modules.patch
+%if %{with glib2}
+BuildRequires:  glib2-devel
+BuildRequires:  gobject-introspection-devel
+%endif
+%if %{with qt5}
+BuildRequires:  libqt5-qtdeclarative-devel
+BuildRequires:  libqt5-qtsvg-devel
+BuildRequires:  pkgconfig(Qt5DBus)
+BuildRequires:  pkgconfig(Qt5Test)
+%endif
+%if %{with swig}
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3
+BuildRequires:  python3-devel
+BuildRequires:  swig
+BuildRequires:  pkgconfig(lua5.3)
+%endif
+%if %{with java}
+BuildRequires:  java-1.8.0-devel
+%endif
 
 Summary:        A key/value pair database to store software configurations
 License:        BSD-3-Clause
@@ -88,7 +106,7 @@ Summary:        Augeas support for Elektra
 Group:          System/Libraries
 Requires:       lib%{name}%{api} = %{version}-%{release}
 
-%package -n libg%{name}-%{api}.0
+%package -n libg%{name}-%{api}_0
 Summary:        Glib support for Elektra
 Group:          System/Libraries
 
@@ -138,7 +156,7 @@ parameters in a hierarchical key-value pair tree.
 
 The augeas backend for elektra.
 
-%description -n libg%{name}-%{api}.0
+%description -n libg%{name}-%{api}_0
 Elektra provides a universal and secure framework to store configuration
 parameters in a hierarchical key-value pair tree.
 
@@ -172,25 +190,31 @@ This package contains development specific documentation.
 
 %prep
 %setup -q
-%patch -p1
 %patch1 -p1
 
 %build
+%define _lto_cflags %{nil}
 export SUSE_ASNEEDED=0
 %cmake -DTARGET_PLUGIN_FOLDER="elektra%{api}" \
   -DPLUGINS="ALL" \
   -DTOOLS="ALL" \
-  -DBINDINGS="ALL" \
   -DENABLE_TESTING="OFF" \
-  -DBUILD_TESTING="OFF" \
+  -DBUILD_TESTING="ON" \
   -DTARGET_DOCUMENTATION_HTML_FOLDER="share/doc/elektra-doc/html" \
   -DBUILD_DOCUMENTATION=ON \
   -DTARGET_CMAKE_FOLDER=%{_lib}/cmake/elektra \
   -DCMAKE_C_FLAGS="-fPIC $CFLAGS" \
-  -DCMAKE_CXX_FLAGS="-fPIC $CXXFLAGS"
-# get basics done, care abuot bindings later
-  #-DPYTHON_INCLUDE_DIR=`python3  -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())"` \
-  #-DPYTHON_LIBRARY=/usr/%{_lib}/libpython3.so \
+  -DCMAKE_CXX_FLAGS="-fPIC $CXXFLAGS" \
+  -DCMAKE_EXE_LINKER_FLAGS="-pie -Wl,--allow-multiple-definition" \
+%if %{with swig}
+  -DBINDINGS="MAINTAINED;swig_lua;swig_python" \
+  -DPYTHON_EXECUTABLE:PATH="%{_bindir}/python3" \
+  -DPYTHON_LIBRARY:FILEPATH="%{_libdir}/libpython3.so" \
+  -DPYTHON_INCLUDE_DIR:PATH="$(python3  -c 'from distutils.sysconfig import get_python_inc; print(get_python_inc())')" \
+%else
+  -DBINDINGS="MAINTAINED" \
+%endif
+
 # doxygen appears to have problems with multi level directory creation on elder distros
 mkdir -p doc/html doc/man
 make %{?_smp_mflags}
@@ -198,13 +222,24 @@ make %{?_smp_mflags}
 %install
 %suse_update_desktop_file -r org.libelektra.elektra-qt-editor "Settings;DesktopSettings;"
 %make_install -C build
-# Remove statically linked kdb
-#rm $RPM_BUILD_ROOT%{_bindir}/kdb-static
 # not known by any package?
-rm -r $RPM_BUILD_ROOT%{_datadir}/zsh/vendor-completions/
+rm -r %{buildroot}%{_datadir}/zsh/vendor-completions/
+# TODO: do we want to package test data?
+rm -rf %{buildroot}%{_datadir}/elektra/test_data/
+rm -rf %{buildroot}%{_libdir}/elektra/tool_exec/{race,test}*
+
 # add elektra modules paths
-mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d/
-echo "%{_libdir}/elektra%{api}" > $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d/elektra.conf
+mkdir -p %{buildroot}%{_sysconfdir}/ld.so.conf.d/
+echo "%{_libdir}/elektra%{api}" > %{buildroot}%{_sysconfdir}/ld.so.conf.d/elektra.conf
+%fdupes %{buildroot}/%{_datadir}/doc/elektra-doc/
+# cleanup hash bangs
+for f in benchmark-createtree check-env-dep configure-firefox convert-hosts elektra-merge \
+	 elektra-mount elektra-umount ffconfig/setupConfig ffconfig/setupHomepage ffconfig/setupProxy \
+	 install-sh-completion; do
+    sed -ri '1 s|/usr/bin/env\ (.*)|/usr/bin/\1|' %{buildroot}/%{_libdir}/elektra/tool_exec/$f
+done
+sed -ri '1 s|/usr/bin/env python$|/usr/bin/python3|' %{buildroot}/%{_libdir}/elektra/tool_exec/find-tools
+sed -i '1d' %{buildroot}%{_datadir}/{bash-completion/completions/kdb,fish/vendor_completions.d/kdb.fish}
 
 %post -n lib%{name}%{api}
 /sbin/ldconfig
@@ -212,17 +247,14 @@ echo "%{_libdir}/elektra%{api}" > $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d/ele
 %{_bindir}/kdb global-mount dbus || :
 
 %postun -n lib%{name}%{api} -p /sbin/ldconfig
-%post -n libg%{name}-%{api}.0 -p /sbin/ldconfig
-%postun -n libg%{name}-%{api}.0 -p /sbin/ldconfig
+
+%post -n libg%{name}-%{api}_0 -p /sbin/ldconfig
+%postun -n libg%{name}-%{api}_0 -p /sbin/ldconfig
 
 %files
 %defattr(-,root,root,-)
 %{_bindir}/kdb
 %{_datadir}/bash-completion/completions/*
-%if 0%{?suse_version} <= 1320
-%dir %{_datadir}/fish
-%dir %{_datadir}/fish/vendor_completions.d/
-%endif
 %{_datadir}/fish/vendor_completions.d/*
 %doc doc/AUTHORS LICENSE.md README.md doc/INSTALL.md
 %dir %{_libdir}/elektra/tool_exec
@@ -238,7 +270,7 @@ echo "%{_libdir}/elektra%{api}" > $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d/ele
 %{_datadir}/doc/elektra/*
 %config %{_sysconfdir}/ld.so.conf.d/elektra.conf
 
-%if 0%{?use_qt5} > 0
+%if %{with qt5}
 %files -n %{name}-qt-gui
 %defattr(-,root,root,-)
 %dir %{_libdir}/elektra%{api}
@@ -248,19 +280,19 @@ echo "%{_libdir}/elektra%{api}" > $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d/ele
 %{_datadir}/icons/*
 %endif
 
-%if 0%{?use_aug} > 0
+%if %{with augeas}
 %files -n lib%{name}-augeas
 %defattr(-,root,root,-)
 %{_libdir}/elektra%{api}/libelektra-augeas.so
 %endif
 
-%if 0%{?use_glib} > 0
-%files -n libg%{name}-%{api}.0
+%if %{with glib2}
+%files -n libg%{name}-%{api}_0
 %defattr(-,root,root,-)
 %{_libdir}/libgelektra-%{api}.0.so
 %endif
 
-%if 0%{?use_swig} > 0
+%if %{with swig}
 %files -n lib%{name}-lua
 %defattr(-,root,root,-)
 %{_libdir}/lua/*
