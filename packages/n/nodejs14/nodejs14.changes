@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
-Sat Oct 31 15:26:41 UTC 2020 - Adam Majer <amajer@suse.com>
+Mon Nov 23 16:06:15 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
-- Use python3 in node-gyp shebang lines
+- Update Requires: so -devel requires npm
+- Rely on rpmbuild to define necessary python dependencies
+
+-------------------------------------------------------------------
+Thu Nov 19 11:42:09 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- New upstream LTS version 14.15.1:
+  * deps: Denial of Service through DNS request (High).
+  A Node.js application that allows an attacker to trigger a DNS
+  request for a host of their choice could trigger a Denial of Service
+  by getting the application to resolve a DNS record with
+  a larger number of responses (bsc#1178882, CVE-2020-8277)
 
 -------------------------------------------------------------------
 Thu Oct 29 10:12:54 UTC 2020 - Adam Majer <adam.majer@suse.de>

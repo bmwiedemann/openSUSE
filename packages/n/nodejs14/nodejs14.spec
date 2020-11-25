@@ -26,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs14
-Version:        14.15.0
+Version:        14.15.1
 Release:        0
 
 %define node_version_number 14
@@ -210,7 +210,7 @@ BuildRequires:  xz
 BuildRequires:  zlib-devel
 
 # Python dependencies
-%if %node_version_number > 6
+%if %node_version_number >= 12
 BuildRequires:  netcfg
 BuildRequires:  python3
 %else
@@ -318,20 +318,21 @@ uses an event-driven, non-blocking I/O model. Node.js has a package ecosystem
 provided by npm.
 
 %package devel
-Summary:        Files needed for development of NodeJS platforms
+Summary:        Development headers for NodeJS 14.x
 Group:          Development/Languages/NodeJS
 Provides:       nodejs-devel = %{version}
 Requires:       %{name} = %{version}
+Requires:       npm14 = %{version}
 
 %description devel
-This package provides development headers for Node.js.
+This package provides development headers for Node.js needed for creation
+of binary modules.
 
 %package -n npm14
 Summary:        Package manager for Node.js
 Group:          Development/Languages/NodeJS
-Requires:       %{name} = %{version}
 Requires:       nodejs-common
-Recommends:     %{name}-devel = %{version}
+Requires:       nodejs14 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
 Provides:       npm = %{version}
@@ -342,18 +343,6 @@ Requires:       group(nobody)
 Requires:       user(nobody)
 %endif
 %endif
-
-# Python dependencies
-%if %node_version_number >= 8
-Recommends:     python3
-%else
-%if 0%{?suse_version} >= 1500
-Recommends:     python2
-%else
-Recommends:     python
-%endif
-%endif
-
 Provides:       bundled(node-JSONStream) = 1.3.5
 Provides:       bundled(node-abbrev) = 1.1.1
 Provides:       bundled(node-agent-base) = 4.2.1
@@ -807,7 +796,12 @@ find -name \*~ -print0 -delete
 find \( -name \*.js.orig -or -name \*.md.orig \) -delete
 
 %build
-find -name \*.py -perm -1 -type f -exec sed -i -e '1 s,^#!\s\?/usr/bin/env python\d*$,#!/usr/bin/python3,' -e '1 s,^#!\s\?/usr/bin/python$,#!/usr/bin/python3,' {} +
+# normalize shebang
+%if %{node_version_number} >= 12
+find -type f -exec sed -i -e '1 s,^#!\s\?/usr/bin/env python\d*$,#!/usr/bin/python3,' -e '1 s,^#!\s\?/usr/bin/python$,#!/usr/bin/python3,' {} +
+%else
+find -type f -exec sed -i '1 s,^#!\s\?/usr/bin/env python$,#!/usr/bin/python,' {} +
+%endif
 find deps/npm -type f -exec sed -i '1 s,^#!\s\?/usr/bin/env node$,#!/usr/bin/node%{node_version_number},' {} +
 find deps/npm -type f -exec sed -i '1 s,^#!\s\?/usr/bin/env \(bash\|sh\)\?$,#!/bin/bash,' {} +
 
