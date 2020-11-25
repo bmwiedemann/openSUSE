@@ -392,4 +392,13 @@
 - versioned.patch: refreshed</comment>
     <requestid>844833</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>8e8c7b2f401576130eadb6bfe0859cad</srcmd5>
+    <version>10.23.0</version>
+    <time>1606328891</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Requires: so -devel requires npm
+- Rely on rpmbuild to define necessary python dependencies</comment>
+    <requestid>850271</requestid>
+  </revision>
 </revisionlist>
