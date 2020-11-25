@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 24 10:03:21 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+ - Update to version 0.8.0
+  * Improve the performance by using a picture buffer pool;
+  * ARM32 optimizations for 8bit bitdepth for ipred paeth,
+    smooth, cfl
+  * ARM32 optimizations for 10/12/16bit bitdepth for
+    mc_avg/mask/w_avg,
+    put/prep 8tap/bilin, wiener and CDEF filters
+  * ARM64 optimizations for cfl_ac 444 for all bitdepths
+  * x86 optimizations for MC 8-tap, mc_scaled in AVX2
+  * x86 optimizations for CDEF in SSE and
+    {put/prep}_{8tap/bilin} in SSSE3
+- Bump soversion to 5
+- Drop dav1d-nasm-2.15.patch (merged upstream)
+
+-------------------------------------------------------------------
 Tue Sep  1 11:11:55 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add dav1d-nasm-2.15.patch: Fix compilation with nasm 2.15.

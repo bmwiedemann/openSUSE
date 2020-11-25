@@ -16,9 +16,9 @@
 #
 
 
-%define sover   4
+%define sover   5
 Name:           dav1d
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        An AV1 decoder
 License:        BSD-2-Clause
@@ -26,9 +26,7 @@ Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            https://code.videolan.org/videolan/dav1d
 Source0:        https://code.videolan.org/videolan/dav1d/-/archive/%{version}/dav1d-%{version}.tar.gz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM dav1d-nasm-2.15.patch dimstar@opensuse.org -- Fix compilation with nasm 2.15
-Patch0:         dav1d-nasm-2.15.patch
-BuildRequires:  meson >= 0.47.0
+BuildRequires:  meson >= 0.49.0
 BuildRequires:  nasm >= 2.14
 BuildRequires:  pkgconfig
 # necessary to meson
