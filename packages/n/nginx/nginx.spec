@@ -17,55 +17,33 @@
 
 
 %{!?vim_data_dir:%global vim_data_dir %{_datadir}/vim/%(readlink %{_datadir}/vim/current)}
-%define pkg_name nginx
-%define ngx_prefix     %{_prefix}
-%define ngx_sbin_path  %{_sbindir}/nginx
-%define ngx_module_dir %{_libdir}/nginx/modules
-%define ngx_conf_dir   %{_sysconfdir}/nginx
-%define ngx_conf_path  %{ngx_conf_dir}/nginx.conf
-%define ngx_log_dir    %{_localstatedir}/log/nginx
-%define ngx_error_log  %{ngx_log_dir}/error.log
-%define ngx_access_log %{ngx_log_dir}/access.log
-%define ngx_home       %{_localstatedir}/lib/nginx
-%define ngx_tmp_http   %{ngx_home}/tmp/
-%define ngx_tmp_proxy  %{ngx_home}/proxy/
-%define ngx_tmp_fcgi   %{ngx_home}/fastcgi/
-%define ngx_tmp_scgi   %{ngx_home}/scgi/
-%define ngx_tmp_uwsgi  %{ngx_home}/uwsgi/
-%define ngx_user_group nginx
-%define ngx_doc_dir    %{_docdir}/%{name}
-%define ngx_fancyindex_version 0.4.2
-%define ngx_fancyindex_module_path ngx-fancyindex-%{ngx_fancyindex_version}
-%define headers_more_nginx_version 0.33
-%define headers_more_nginx_module_path headers-more-nginx-module-%{headers_more_nginx_version}
+%define pkg_name       nginx
 %define nginx_upstream_check_version 0.3.0
 %define nginx_upstream_check_module_path nginx_upstream_check_module-%{nginx_upstream_check_version}
-%define nginx_rtmp_version 1.2.1
-%define nginx_rtmp_module_path nginx-rtmp-module-%{nginx_rtmp_version}
-%define nginx_geoip2_version 3.3
-%define nginx_geoip2_module_path ngx_http_geoip2_module-%{nginx_geoip2_version}
 %define src_install_dir %{_prefix}/src/%{name}
 %if 0%{?is_opensuse}
 %bcond_without extra_modules
 %else
 %bcond_with    extra_modules
 %endif
+#
+# keep in sync with ngx_conditionals in nginx-macros
 %if 0%{?suse_version} != 1315 || 0%{?is_opensuse}
-%bcond_without libatomic
+%bcond_without ngx_libatomic
 %else
-%bcond_with    libatomic
+%bcond_with    ngx_libatomic
 %endif
 %if 0%{?suse_version} > 1220
-%bcond_without http2
-%bcond_without pcre_jit
+%bcond_without ngx_http2
+%bcond_without ngx_pcre_jit
 %bcond_without systemd
 %else
-%bcond_with    http2
-%bcond_with    pcre_jit
+%bcond_with    ngx_http2
+%bcond_with    ngx_pcre_jit
 %bcond_with    systemd
 %endif
-%bcond_with    cpp_test
-%bcond_with    google_perftools
+%bcond_with    ngx_cpp_test
+%bcond_with    ngx_google_perftools
 #
 %if %{with systemd}
 %define ngx_pid_path   /run/nginx.pid
@@ -76,7 +54,7 @@
 %endif
 #
 Name:           nginx
-Version:        1.19.4
+Version:        1.19.5
 Release:        0
 Summary:        A HTTP server and IMAP/POP3 proxy server
 License:        BSD-2-Clause
@@ -86,11 +64,7 @@ Source0:        https://nginx.org/download/%{name}-%{version}.tar.gz
 Source1:        nginx.init
 Source2:        nginx.logrotate
 Source3:        nginx.service
-Source4:        https://github.com/aperezdc/ngx-fancyindex/archive/v%{ngx_fancyindex_version}/%{ngx_fancyindex_module_path}.tar.gz
-Source5:        https://github.com/openresty/headers-more-nginx-module/archive/v%{headers_more_nginx_version}/%{headers_more_nginx_module_path}.tar.gz
-Source6:        https://github.com/yaoweibin/nginx_upstream_check_module/archive/v%{nginx_upstream_check_version}/%{nginx_upstream_check_module_path}.tar.gz
-Source7:        https://github.com/arut/nginx-rtmp-module/archive/v%{nginx_rtmp_version}/%{nginx_rtmp_module_path}.tar.gz
-Source8:        https://github.com/leev/ngx_http_geoip2_module/archive/%{nginx_geoip2_version}.tar.gz#/%{nginx_geoip2_module_path}.tar.gz
+Source4:        https://github.com/yaoweibin/nginx_upstream_check_module/archive/v%{nginx_upstream_check_version}/%{nginx_upstream_check_module_path}.tar.gz
 Source9:        nginx.sysusers
 Source100:      nginx.rpmlintrc
 Source101:      https://nginx.org/download/%{name}-%{version}.tar.gz.asc
@@ -107,27 +81,32 @@ Patch3:         nginx-1.6.1-default_config.patch
 Patch4:         nginx-aio.patch
 # PATCH-FIX-UPSTREAM check_1.9.2+.patch
 Patch5:         check_1.9.2+.patch
+# keep Buildrequires for the libraries and everything in sync with the requires in the nginx-source package
 BuildRequires:  gcc-c++
 BuildRequires:  gd-devel
-#
 BuildRequires:  libxslt-devel
+BuildRequires:  nginx-macros
 BuildRequires:  openssl-devel
 BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
 BuildRequires:  vim
 BuildRequires:  zlib-devel
-BuildRequires:  pkgconfig(libmaxminddb)
 %requires_eq    perl
+#
 Recommends:     logrotate
+Recommends:     nginx-module-fancyindex
+Recommends:     nginx-module-geoip2
+Recommends:     nginx-module-headers-more
+Recommends:     nginx-module-http-flv
 Recommends:     vim-plugin-nginx
 Provides:       http_daemon
 Provides:       httpd
 #
-%if %{with google_perftools}
+%if %{with ngx_google_perftools}
 BuildRequires:  google-perftools-devel
 %endif
 #
-%if %{with libatomic}
+%if %{with ngx_libatomic}
 BuildRequires:  libatomic-ops-devel
 %endif
 #
@@ -164,19 +143,32 @@ This package holds the VIM support for nginx config files.
 %package -n nginx-source
 Summary:        The nginx source
 Group:          Development/Sources
+Requires:       gcc-c++
+Requires:       gd-devel
+Requires:       libxslt-devel
+Requires:       nginx = %{version}
+Requires:       openssl-devel
+Requires:       pcre-devel
+Requires:       pkgconfig
+Requires:       vim
+Requires:       zlib-devel
+%requires_ge    nginx-macros
 BuildArch:      noarch
+%if %{with  ngx_libatomic}
+Requires:       libatomic-ops-devel
+%endif
 
 %description -n nginx-source
 The source of nginx [engine x] HTTP server and IMAP/POP3 proxy server.
 
 %prep
-%setup -q -n %{pkg_name}-%{version} -a 4 -a 5 -a 6 -a 7 -a 8
+%setup -q -n %{pkg_name}-%{version} -a 4
 %patch0 -p1
 %patch1 -p1
 %patch2
 %patch3
 %patch4 -p1
-%if %{with extra_modules}
+%if %{with ngx_extra_modules}
 %patch5
 %endif
 
@@ -192,81 +184,11 @@ sed -i 's/^\(#define NGX_LISTEN_BACKLOG \).*/\1-1/' src/os/unix/ngx_linux_config
 
 %build
 # FIXME: you should use the %%configure macro
-./configure                                    \
-  --prefix=%{ngx_prefix}/                      \
-  --sbin-path=%{ngx_sbin_path}                 \
-  --modules-path=%{ngx_module_dir}             \
-  --conf-path=%{ngx_conf_path}                 \
-  --error-log-path=%{ngx_error_log}            \
-  --http-log-path=%{ngx_access_log}            \
-  --pid-path=%{ngx_pid_path}                   \
-  --lock-path=%{ngx_lock_path}                 \
-  --http-client-body-temp-path=%{ngx_tmp_http} \
-  --http-proxy-temp-path=%{ngx_tmp_proxy}      \
-  --http-fastcgi-temp-path=%{ngx_tmp_fcgi}     \
-  --http-uwsgi-temp-path=%{ngx_tmp_uwsgi}      \
-  --http-scgi-temp-path=%{ngx_tmp_scgi}        \
-  --user=nginx --group=nginx                   \
-  --without-select_module                      \
-  --without-poll_module                        \
-  --with-threads                               \
-  --with-file-aio                              \
-  --with-ipv6                                  \
-  --with-http_ssl_module                       \
-  %if %{with http2}
-  --with-http_v2_module                        \
-  %endif
-  --with-http_realip_module                    \
-  --with-http_addition_module                  \
-  --with-http_xslt_module=dynamic              \
-  --with-http_image_filter_module=dynamic      \
-  --with-http_sub_module                       \
-  --with-http_dav_module                       \
-  --with-http_flv_module                       \
-  --with-http_mp4_module                       \
-  --with-http_gunzip_module                    \
-  --with-http_gzip_static_module               \
-  --with-http_auth_request_module              \
-  --with-http_random_index_module              \
-  --with-http_secure_link_module               \
-  --with-http_degradation_module               \
-  --with-http_slice_module                     \
-  --with-http_stub_status_module               \
-  --with-http_perl_module=dynamic              \
-  --with-perl=%{_bindir}/perl                  \
-  --with-mail=dynamic                          \
-  --with-mail_ssl_module                       \
-  --with-stream=dynamic                        \
-  --with-stream_ssl_module                     \
-  --with-stream_realip_module                  \
-  --with-stream_ssl_preread_module             \
-  --with-pcre                                  \
-  %if %{with pcre_jit}
-  --with-pcre-jit                              \
-  %endif
-  %if %{with libatomic}
-  --with-libatomic                             \
-  %endif
-  %if %{with google_perftools}
-  --with-google_perftools_module               \
-  %endif
-  %if %{with cpp_test}
-  --with-cpp_test_module                       \
-  %endif
-  --with-compat                                \
-  %if %{with extra_modules}
+%{ngx_configure} \
+  %if %{with ngx_extra_modules}
   --add-module=%{nginx_upstream_check_module_path} \
-  --add-dynamic-module=%{ngx_fancyindex_module_path} \
-  --add-dynamic-module=%{headers_more_nginx_module_path} \
-  --add-dynamic-module=%{nginx_rtmp_module_path} \
   %endif
-  --add-dynamic-module=%{nginx_geoip2_module_path} \
-%if 0%{?suse_version} > 1220
-  --with-cc-opt="%{optflags} -fPIC -D_GNU_SOURCE" \
-  --with-ld-opt="-Wl,-z,relro,-z,now -pie"
-%else
-  --with-cc-opt="%{optflags}"
-%endif
+
 %make_build
 %if %{with systemd}
 %sysusers_generate_pre %{SOURCE9} nginx
@@ -276,16 +198,16 @@ sed -i 's/^\(#define NGX_LISTEN_BACKLOG \).*/\1-1/' src/os/unix/ngx_linux_config
 %make_install
 %perl_process_packlist
 
-install -d -m 0750 %{buildroot}%{ngx_home}/{,tmp,proxy,fastcgi,scgi,uwsgi}
+install -dpm0750 %{buildroot}%{ngx_home}/{,tmp,proxy,fastcgi,scgi,uwsgi}
 
-install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/logrotate.d/%{pkg_name}
+install -Dpm0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/logrotate.d/%{pkg_name}
 
 %if %{with systemd}
-install -D -m 0644 %{SOURCE3} %{buildroot}%{_unitdir}/nginx.service
+install -Dpm0644 %{SOURCE3} %{buildroot}%{_unitdir}/nginx.service
 ln -s -f %{_sbindir}/service %{buildroot}%{_sbindir}/rcnginx
-install -D -m 0644 %{SOURCE9} %{buildroot}%{_sysusersdir}/nginx.conf
+install -Dpm0644 %{SOURCE9} %{buildroot}%{_sysusersdir}/nginx.conf
 %else
-install -D -m 0755 %{SOURCE1} %{buildroot}%{_sysconfdir}/init.d/%{pkg_name}
+install -Dpm0755 %{SOURCE1} %{buildroot}%{_sysconfdir}/init.d/%{pkg_name}
 ln -s -f %{_sysconfdir}/init.d/%{pkg_name} %{buildroot}%{_sbindir}/rc%{pkg_name}
 %endif
 
@@ -319,17 +241,8 @@ copydocs() {
   popd
 }
 
-copydocs %{ngx_fancyindex_module_path} \
-  template* LICENSE *.rst
-
-copydocs %{headers_more_nginx_module_path} \
-  README.markdown
-
 copydocs %{nginx_upstream_check_module_path} \
   doc/*
-
-copydocs %{nginx_rtmp_module_path} \
-  AUTHORS  LICENSE  README.md stat.xsl
 
 %post
 %if %{with systemd}
@@ -386,19 +299,11 @@ copydocs %{nginx_rtmp_module_path} \
 %{ngx_sbin_path}
 %dir %{_libdir}/nginx/
 %dir %{ngx_module_dir}/
-%{ngx_module_dir}/ngx_http_geoip2_module.so
 %{ngx_module_dir}/ngx_http_image_filter_module.so
 %{ngx_module_dir}/ngx_http_perl_module.so
 %{ngx_module_dir}/ngx_http_xslt_filter_module.so
 %{ngx_module_dir}/ngx_mail_module.so
 %{ngx_module_dir}/ngx_stream_module.so
-%{ngx_module_dir}/ngx_stream_geoip2_module.so
-# external modules
-%if %{with extra_modules}
-%{ngx_module_dir}/ngx_http_fancyindex_module.so
-%{ngx_module_dir}/ngx_http_headers_more_filter_module.so
-%{ngx_module_dir}/ngx_rtmp_module.so
-%endif
 %{_mandir}/man3/nginx.3pm*
 /srv/www/htdocs/50x.html
 %if 0%{?suse_version} && 0%{?suse_version} < 1140

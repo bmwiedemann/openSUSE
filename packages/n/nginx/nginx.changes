@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 24 19:30:01 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to 1.19.5
+  * https://nginx.org/en/CHANGES
+  * Add the -e switch.
+  * The same source files can now be specified in different modules
+    while building addon modules.
+  * Fix SSL shutdown did not work when lingering close was used.
+  * Fix "upstream sent frame for closed stream" errors might occur
+    when working with gRPC backends.
+  * Fix in request body filters internal API.
+
+-------------------------------------------------------------------
+Mon Nov  9 11:07:07 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Refresh spec-file via spec-cleaner and manual optimizations.
+
+-------------------------------------------------------------------
 Tue Oct 27 20:23:09 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Update to 1.19.4
@@ -7,6 +25,22 @@ Tue Oct 27 20:23:09 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
     "grpc_ssl_conf_command", and "uwsgi_ssl_conf_command" directives.
   * Add the "ssl_reject_handshake" directive.
   * Add the "proxy_smtp_auth" directive in mail proxy.
+
+-------------------------------------------------------------------
+Fri Oct  2 04:14:33 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Use the ngx_* macros from the nginx-macros package to simplify
+  the spec file.
+
+-------------------------------------------------------------------
+Fri Oct  2 01:58:09 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Moved all the modules that support dynamic modules into their own
+  modules:
+  * nginx-module-geoip2
+  * nginx-module-fancyindex
+  * nginx-module-headers-more
+- The rtmp module is replaced with nginx-module-http-flv
 
 -------------------------------------------------------------------
 Wed Sep 30 11:28:16 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
