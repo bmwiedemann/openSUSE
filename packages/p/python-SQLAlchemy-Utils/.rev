@@ -235,4 +235,12 @@
   - Added psycopg2cffi support for create_database and drop_database (#447, pull request courtesy of DominicBurkart)</comment>
     <requestid>812913</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>2ae4a87443d253c52ec5e9880cfd4f59</srcmd5>
+    <version>0.36.8</version>
+    <time>1606328977</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850134</requestid>
+  </revision>
 </revisionlist>

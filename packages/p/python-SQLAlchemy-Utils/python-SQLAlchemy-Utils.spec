@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-SQLAlchemy-Utils
-Version:        0.36.6
+Version:        0.36.8
 Release:        0
 Summary:        Various utility functions for SQLAlchemy
 License:        BSD-3-Clause
@@ -97,7 +97,7 @@ rm tests/relationships/test_select_correlated_expression.py
 rm tests/types/test_composite.py
 rm tests/types/test_ltree.py
 rm tests/types/test_tsvector.py
-%pytest -k 'not (TestDatabasePostgres or TestDatabaseMssql or OnPostgres or OnMysql or TestPostgres or TestMysql or TestSortQueryRelationshipCounts or TestSortQueryWithPolymorphicInheritance or TestMaterializedViews or TestLazyEvaluatedSelectExpressionsForAggregates or TestAggregatesWithManyToManyRelationships or TestAggregateManyToManyAndManyToMany or TestAggregateOneToManyAndOneToMany or TestJSONSQL or TestJSONBSQL or TestSortQueryWithCustomPolymorphic or TestAggregateOneToManyAndManyToMany or test_timezone)'
+%pytest -rs -k 'not (TestDatabasePostgres or TestDatabaseMssql or OnPostgres or OnMysql or TestPostgres or TestMysql or TestSortQueryRelationshipCounts or TestSortQueryWithPolymorphicInheritance or TestMaterializedViews or TestLazyEvaluatedSelectExpressionsForAggregates or TestAggregatesWithManyToManyRelationships or TestAggregateManyToManyAndManyToMany or TestAggregateOneToManyAndOneToMany or TestJSONSQL or TestJSONBSQL or TestSortQueryWithCustomPolymorphic or TestAggregateOneToManyAndManyToMany or test_timezone or test_add_observed_object)'
 
 %files %{python_files}
 %license LICENSE

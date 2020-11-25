@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 11 18:37:48 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.36.8:
+  * Don't connect to 'postgres' data base for database existence check
+    (#372, pull request courtesy of bernt-matthias)
+
+- changes from version 0.36.7:
+  * Fix dynamic relationships for observables (#455)
+
+-------------------------------------------------------------------
 Tue Jun  9 12:14:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add missing deps
