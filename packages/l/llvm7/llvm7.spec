@@ -589,6 +589,10 @@ sed -i s,LLVM_REVISION,\"%{_revsn}\",g tools/clang/lib/Basic/Version.cpp
 # 2) Remove the -g. We don't want it in stage1 and it will be added by cmake in
 #    the following stage.
 flags=$(echo %{optflags} | sed 's/-D_FORTIFY_SOURCE=./-D_FORTIFY_SOURCE=0/;s/\B-g\b//g')
+%ifarch aarch64
+# -mbranch-protection=standard is used on llvm8 and later only
+flags=$(echo $flags | sed 's/-mbranch-protection=standard//')
+%endif
 
 %ifarch armv6hl
 flags+=" -mfloat-abi=hard -march=armv6zk -mtune=arm1176jzf-s -mfpu=vfp"

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 23 08:32:33 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Remove '-mbranch-protection=standard' option as it is supported
+  on llvm8 and later only
+
+-------------------------------------------------------------------
 Thu Oct  1 10:17:16 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update _constraints for armv6/7

@@ -214,4 +214,13 @@
     <comment></comment>
     <requestid>839002</requestid>
   </revision>
+  <revision rev="26" vrev="19">
+    <srcmd5>cfbd8c43dea7124c14ff364b933362f7</srcmd5>
+    <version>7.0.1</version>
+    <time>1606328992</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove '-mbranch-protection=standard' option as it is supported
+  on llvm8 and later only</comment>
+    <requestid>850626</requestid>
+  </revision>
 </revisionlist>
