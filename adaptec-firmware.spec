@@ -1,7 +1,7 @@
 #
 # spec file for package adaptec-firmware
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           adaptec-firmware
 Summary:        Firmware files for Adaptec SAS Cards (AIC94xx Series)
@@ -26,7 +27,6 @@ Release:        0
 # Install into this non-root directory (required when norootforbuild is used):
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-%define _datadir /lib/firmware
 # Modules: aic94xx.ko
 Supplements:    modalias(pci:v00009005d00000410sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00009005d00000412sv*sd*bc*sc*i*)
@@ -47,13 +47,13 @@ cp %{S:1} .
 %install
 # The firmware files must be installed in /lib/firmware
 # because the firmware loader from udev searches there
-mkdir -p %{buildroot}%{_datadir}
-install -m 644 %{S:0} %{buildroot}%{_datadir}
+mkdir -p %{buildroot}%{_firmwaredir}
+install -m 644 %{S:0} %{buildroot}%{_firmwaredir}
 
 %files
 %defattr(-,root,root)
 %doc LICENSE
-%{_datadir}/*
+%{_firmwaredir}/*
 
 %description
 Firmware files for the Adaptec AIC94xx (Razor) Series of SAS HBA
