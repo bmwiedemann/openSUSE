@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Nov 23 17:52:38 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to release 1.4.9
+  * Updated color schemes from iTerm2-Color-Schemes
+  * Use previously defined DATADIR to install Kiosk files
+  * RDP and VNC: Fix smooth scrolling when abs(delta) < 1.0, see issue #2273
+  * Alexander Kapshuna added to remmina_about.glade
+  * remmina_main_quickconnect: recognize ip when textbox has ip:port in it,
+    and strip whitespaces
+  * Implementing text search in the SSH plugin
+  * Spelling: Plugin manager language reworked
+  * Save screenshot_name and use correct seconds format
+  * Resolve "Autostart checkbox setting not saved"
+  * rdp: document freerdp Performance Flags setted by quality setting
+  * Resolve "Terminal general preferences are not saved"
+  * Resolve "Typo in FindFREERDP3.cmake"
+  * rdp: add freerdp log filters setting 
+  * Resolve "Extra underline character in "_Preferences" tooptip text" 
+
+- Requires pcre2-devel
+
+-------------------------------------------------------------------
 Fri Sep 11 07:58:54 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
 
 - Build with kwallet and libappindicator on Tumbleweed, Leap and

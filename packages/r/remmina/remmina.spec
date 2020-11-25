@@ -18,7 +18,7 @@
 
 %bcond_with nx
 Name:           remmina
-Version:        1.4.8
+Version:        1.4.9
 Release:        0
 Summary:        Versatile Remote Desktop Client
 License:        GPL-2.0-or-later
@@ -34,6 +34,7 @@ BuildRequires:  intltool
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libsodium-devel
+BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(atk)
