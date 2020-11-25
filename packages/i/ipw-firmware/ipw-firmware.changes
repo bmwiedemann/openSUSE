@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 19 12:56:50 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- use %_firmwaredir
+
+-------------------------------------------------------------------
 Tue Oct 13 09:56:33 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Replace old specfile constructs.

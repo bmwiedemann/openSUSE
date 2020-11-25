@@ -64,9 +64,9 @@ Intel license. See http://ipw2100.sourceforge.net/firmware.php?fid=4.
 %build
 
 %install
-mkdir -p %{buildroot}/lib/firmware
-cp *fw ipw2200-fw-3.1/*fw %{buildroot}/lib/firmware
-cp LICENSE %{buildroot}/lib/firmware/LICENSE.ipw2x00
+mkdir -p %{buildroot}%{_firmwaredir}
+cp *fw ipw2200-fw-3.1/*fw %{buildroot}%{_firmwaredir}
+cp LICENSE %{buildroot}%{_firmwaredir}/LICENSE.ipw2x00
 
 %post
 test -f /.buildenv && exit 0
@@ -87,6 +87,6 @@ for M in ipw2100 ipw2200 ; do
 done
 
 %files
-/lib/firmware/*
+%{_firmwaredir}/*
 
 %changelog
