@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Nov 21 00:16:24 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 0.3.14
+  Fixed
+  * Fix is_annotation for types used in classdef base and assign
+    value [#406]
+  * Visit concatenated f-strings during scope analysis [#411]
+  * Correct handling of walrus operator in function args [#417]
+  * Allow generator expressions in f-strings [#419]
+  * Keep track of assignment/access ordering during scope analysis
+    [#413]
+  * Handle string type references in cast() during scope analysis 
+    [#418]
+- 0.3.13
+  Fixed
+  * Use correct type for AugAssign and AnnAssign target [#396]
+  * Support string annotations for type aliases [#401]
+- 0.3.12
+  Fixed
+  * fix RemoveImportsVisitor crash when ImportAlias is 
+    inserted without comma [#397]
+  * Provide STORE for {Class,Function}Def.name in 
+    ExpressionContextProvider [#394]
+- 0.3.11
+  Added
+  * Implement TypeOf matcher [#384]
+  Updated
+  * Update return type of ParentNodeProvider to be CSTNode [#377]
+  * Add source code links to each class/function [#378]
+  Fixed
+  * Removing an import alias with a trailing standalone 
+    comment should preserve the comment [#392]
+
+-------------------------------------------------------------------
 Tue Aug 25 11:33:22 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to v0.3.10

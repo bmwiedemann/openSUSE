@@ -27,14 +27,14 @@
 %bcond_with test
 %endif
 Name:           python-libcst%{psuffix}
-Version:        0.3.10
+Version:        0.3.14
 Release:        0
 Summary:        Python 3.5+ concrete syntax tree with AST-like properties
 License:        MIT
 URL:            https://github.com/Instagram/LibCST
 Source:         https://files.pythonhosted.org/packages/source/l/libcst/libcst-%{version}.tar.gz
 # isort needed for the code regeneration, code mod also on non test flavor
-BuildRequires:  %{python_module isort}
+BuildRequires:  %{python_module isort >= 5.5.3}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,10 +46,9 @@ BuildArch:      noarch
 Requires:       python-dataclasses
 %endif
 %if %{with test}
-%if %{python_version_nodots} < 37
-BuildRequires:  %{python_module dataclasses}
-%endif
 BuildRequires:  %{python_module PyYAML >= 5.2}
+BuildRequires:  (python3-dataclasses if python3-base < 3.7)
+BuildRequires:  (python36-dataclasses if python36-base)
 # black needed for tests and the code regeneration
 BuildRequires:  %{python_module black}
 BuildRequires:  %{python_module hypothesis >= 4.36.0}
@@ -65,18 +64,13 @@ A concrete syntax tree with AST-like properties for Python 3.5+ programs.
 %prep
 %setup -q -n libcst-%{version}
 # fix executable
-sed -i 's/"python"/"python3"/' libcst/codemod/tests/test_codemod_cli.py
-# https://github.com/Instagram/LibCST/issues/331
-isort --version | grep "VERSION 4" || sed -i 's/"isort", "-y"/"isort"/' libcst/codegen/generate.py
+sed -i 's/"python"/sys.executable/' libcst/codemod/tests/test_codemod_cli.py
 
 # Depends on optional pyre
 rm \
   libcst/metadata/tests/test_type_inference_provider.py \
   libcst/metadata/tests/test_full_repo_manager.py \
   libcst/tests/test_pyre_integration.py
-
-# Test result depends on pyre
-sed -i 's/"error: .* stack:",/"Transformed 1 files successfully.",/' libcst/codemod/tests/test_codemod_cli.py
 
 %if !%{with test}
 %build
@@ -91,11 +85,6 @@ sed -i 's/"error: .* stack:",/"Transformed 1 files successfully.",/' libcst/code
 
 %if %{with test}
 %check
-%{python_expand # https://github.com/Instagram/LibCST/issues/331
-$python -m libcst.codegen.generate visitors
-$python -m libcst.codegen.generate return_types
-$python -m libcst.codegen.generate matchers
-}
 %pyunittest -v
 %endif
 
