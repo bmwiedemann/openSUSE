@@ -391,6 +391,7 @@ Wed Oct 16 15:08:29 UTC 2019 - Vítězslav Čížek <vcizek@suse.com>
   * The fix for Bug #869 caused "sudo -v" to prompt for a password
     when "verifypw" is set to "all" (the default) and all of the
     user's sudoers entries are marked with NOPASSWD.  Bug #901.
+    [bsc#1162675]
 
 -------------------------------------------------------------------
 Mon Oct 14 15:10:21 UTC 2019 - Vítězslav Čížek <vcizek@suse.com>
