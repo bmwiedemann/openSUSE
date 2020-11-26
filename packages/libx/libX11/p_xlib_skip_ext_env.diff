@@ -1,6 +1,8 @@
---- QuExt.c	2006-05-12 20:46:51.000000000 +0200
-+++ src/QuExt.c	2006-05-20 21:07:13.000000000 +0200
-@@ -43,6 +43,20 @@
+Index: src/QuExt.c
+===================================================================
+--- src/QuExt.c.orig
++++ src/QuExt.c
+@@ -40,6 +40,20 @@ XQueryExtension(
      xQueryExtensionReply rep;
      register xQueryExtensionReq *req;
  
