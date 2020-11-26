@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 24 22:08:42 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 0.8.1:
+  * Fix race condition that could lead shepherd to stop itself
+  * Use ‘signalfd’ on GNU/Linux to improve efficiency and simplify code
+  * Outdated bits have been removed from the manual
+  * Updated translation: sv
+
+-------------------------------------------------------------------
 Wed Apr 22 10:49:38 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
 
 - Update to 0.8.0:

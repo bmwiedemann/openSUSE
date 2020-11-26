@@ -52,4 +52,17 @@ conflicting man pages moved to shepherd-bins so conflict should be gone</comment
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>798876</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a8389b075785f3b02bf8ffab2cb61686</srcmd5>
+    <version>0.8.1</version>
+    <time>1606428901</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.1:
+  * Fix race condition that could lead shepherd to stop itself
+  * Use ‘signalfd’ on GNU/Linux to improve efficiency and simplify code
+  * Outdated bits have been removed from the manual
+  * Updated translation: sv
+</comment>
+    <requestid>850996</requestid>
+  </revision>
 </revisionlist>
