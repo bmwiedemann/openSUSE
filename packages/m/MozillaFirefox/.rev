@@ -4678,4 +4678,41 @@
   * few bugfixes for introduced regressions</comment>
     <requestid>847338</requestid>
   </revision>
+  <revision rev="322" vrev="1">
+    <srcmd5>547a824e8a69ceb52861069ea78613d2</srcmd5>
+    <version>83.0</version>
+    <time>1606428580</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 83.0
+  * major update for SpiderMonkey improving performance significantly
+  * optional HTTPS-Only mode
+  * more improvements
+    https://www.mozilla.org/en-US/firefox/83.0/releasenotes/
+  MFSA 2020-50 (bsc#1178824))
+  * CVE-2020-26951 (bmo#1667113)
+    Parsing mismatches could confuse and bypass security
+    sanitizer for chrome privileged code
+  * CVE-2020-26952 (bmo#1667685)
+    Out of memory handling of JITed, inlined functions could lead
+    to a memory corruption
+  * CVE-2020-16012 (bmo#1642028)
+    Variable time processing of cross-origin images during
+    drawImage calls
+  * CVE-2020-26953 (bmo#1656741)
+    Fullscreen could be enabled without displaying the security UI
+  * CVE-2020-26954 (bmo#1657026)
+    Local spoofing of web manifests for arbitrary pages in
+    Firefox for Android
+  * CVE-2020-26955 (bmo#1663261)
+    Cookies set during file downloads are shared between normal
+    and Private Browsing Mode in Firefox for Android
+  * CVE-2020-26956 (bmo#1666300)
+    XSS through paste (manual and clipboard API)
+  * CVE-2020-26957 (bmo#1667179)
+    OneCRL was not working in Firefox for Android
+  * CVE-2020-26958 (bmo#1669355)
+    Requests intercepted through ServiceWorkers lacked MIME type
+    restrictions</comment>
+    <requestid>849574</requestid>
+  </revision>
 </revisionlist>

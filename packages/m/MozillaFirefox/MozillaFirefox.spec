@@ -29,9 +29,9 @@
 # orig_suffix b3
 # major 69
 # mainver %major.99
-%define major          82
-%define mainver        %major.0.3
-%define orig_version   82.0.3
+%define major          83
+%define mainver        %major.0
+%define orig_version   83.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -101,9 +101,9 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.29
-BuildRequires:  mozilla-nss-devel >= 3.57
+BuildRequires:  mozilla-nss-devel >= 3.58
 BuildRequires:  nasm >= 2.14
-BuildRequires:  nodejs10 >= 10.21.0
+BuildRequires:  nodejs10 >= 10.22.1
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
 BuildRequires:  python-libxml2
 BuildRequires:  python36
@@ -195,7 +195,6 @@ Patch7:         mozilla-fix-aarch64-libopus.patch
 Patch8:         mozilla-disable-wasm-emulate-arm-unaligned-fp-access.patch
 Patch9:         mozilla-s390-context.patch
 Patch11:        mozilla-reduce-rust-debuginfo.patch
-Patch12:        mozilla-ppc-altivec_static_inline.patch
 Patch13:        mozilla-bmo1005535.patch
 Patch14:        mozilla-bmo1568145.patch
 Patch15:        mozilla-bmo1504834-part1.patch
@@ -336,7 +335,6 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %patch8 -p1
 %patch9 -p1
 %patch11 -p1
-%patch12 -p1
 %patch13 -p1
 %patch14 -p1
 %patch15 -p1
@@ -510,7 +508,8 @@ ac_add_options --enable-optimize="-O1"
 %endif
 %ifarch x86_64
 # LTO needs newer toolchain stack only (at least GCC 8.2.1 (r268506)
-%if 0%{?suse_version} > 1500
+# TW's gcc is currently also broken with LTO https://gcc.gnu.org/bugzilla/show_bug.cgi?id=93951
+%if 0%{?suse_version} > 1500 && 0%{?suse_version} < 1550
 ac_add_options --enable-lto
 %if 0%{?do_profiling}
 ac_add_options MOZ_PGO=1

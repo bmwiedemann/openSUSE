@@ -40,9 +40,9 @@ diff --git a/config/system-headers.mozbuild b/config/system-headers.mozbuild
      'pk11sdr.h',
      'pkcs11f.h',
      'pkcs11.h',
-diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/BUILD.gn b/media/webrtc/trunk/webrtc/modules/desktop_capture/BUILD.gn
---- a/media/webrtc/trunk/webrtc/modules/desktop_capture/BUILD.gn
-+++ b/media/webrtc/trunk/webrtc/modules/desktop_capture/BUILD.gn
+diff --git a/third_party/libwebrtc/webrtc/modules/desktop_capture/BUILD.gn b/third_party/libwebrtc/webrtc/modules/desktop_capture/BUILD.gn
+--- a/third_party/libwebrtc/webrtc/modules/desktop_capture/BUILD.gn
++++ b/third_party/libwebrtc/webrtc/modules/desktop_capture/BUILD.gn
 @@ -153,17 +153,17 @@ if (rtc_include_tests) {
        "../../test:test_support",
      ]
@@ -62,16 +62,16 @@ diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/BUILD.gn b/media/
        packages = [
          "gio-2.0",
          "gio-unix-2.0",
-diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/desktop_capture_generic_gn/moz.build b/media/webrtc/trunk/webrtc/modules/desktop_capture/desktop_capture_generic_gn/moz.build
---- a/media/webrtc/trunk/webrtc/modules/desktop_capture/desktop_capture_generic_gn/moz.build
-+++ b/media/webrtc/trunk/webrtc/modules/desktop_capture/desktop_capture_generic_gn/moz.build
+diff --git a/third_party/libwebrtc/webrtc/modules/desktop_capture/desktop_capture_generic_gn/moz.build b/third_party/libwebrtc/webrtc/modules/desktop_capture/desktop_capture_generic_gn/moz.build
+--- a/third_party/libwebrtc/webrtc/modules/desktop_capture/desktop_capture_generic_gn/moz.build
++++ b/third_party/libwebrtc/webrtc/modules/desktop_capture/desktop_capture_generic_gn/moz.build
 @@ -112,16 +112,39 @@ if CONFIG["OS_TARGET"] == "DragonFly":
-         "/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/x_atom_cache.cc",
-         "/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/x_error_trap.cc",
-         "/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/x_server_pixel_buffer.cc",
-         "/media/webrtc/trunk/webrtc/modules/desktop_capture/mouse_cursor_monitor_linux.cc",
-         "/media/webrtc/trunk/webrtc/modules/desktop_capture/screen_capturer_linux.cc",
-         "/media/webrtc/trunk/webrtc/modules/desktop_capture/window_capturer_linux.cc"
+         "/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/x_atom_cache.cc",
+         "/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/x_error_trap.cc",
+         "/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/x_server_pixel_buffer.cc",
+         "/third_party/libwebrtc/webrtc/modules/desktop_capture/mouse_cursor_monitor_linux.cc",
+         "/third_party/libwebrtc/webrtc/modules/desktop_capture/screen_capturer_linux.cc",
+         "/third_party/libwebrtc/webrtc/modules/desktop_capture/window_capturer_linux.cc"
      ]
  
 +# PipeWire specific files
@@ -92,9 +92,9 @@ diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/desktop_capture_g
 +    CXXFLAGS += [ "-I/usr/include/spa-0.2" ]
 +
 +    UNIFIED_SOURCES += [
-+        "/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc",
-+        "/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/screen_capturer_pipewire.cc",
-+        "/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/window_capturer_pipewire.cc"
++        "/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc",
++        "/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/screen_capturer_pipewire.cc",
++        "/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/window_capturer_pipewire.cc"
 +    ]
 +
  if CONFIG["OS_TARGET"] == "FreeBSD":
@@ -105,9 +105,9 @@ diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/desktop_capture_g
      DEFINES["_FILE_OFFSET_BITS"] = "64"
  
      OS_LIBS += [
-diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/desktop_capture_options.h b/media/webrtc/trunk/webrtc/modules/desktop_capture/desktop_capture_options.h
---- a/media/webrtc/trunk/webrtc/modules/desktop_capture/desktop_capture_options.h
-+++ b/media/webrtc/trunk/webrtc/modules/desktop_capture/desktop_capture_options.h
+diff --git a/third_party/libwebrtc/webrtc/modules/desktop_capture/desktop_capture_options.h b/third_party/libwebrtc/webrtc/modules/desktop_capture/desktop_capture_options.h
+--- a/third_party/libwebrtc/webrtc/modules/desktop_capture/desktop_capture_options.h
++++ b/third_party/libwebrtc/webrtc/modules/desktop_capture/desktop_capture_options.h
 @@ -136,15 +136,15 @@ class DesktopCaptureOptions {
  #if defined(USE_X11)
    bool use_update_notifications_ = false;
@@ -125,9 +125,9 @@ diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/desktop_capture_o
  }  // namespace webrtc
  
  #endif  // MODULES_DESKTOP_CAPTURE_DESKTOP_CAPTURE_OPTIONS_H_
-diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc b/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc
---- a/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc
-+++ b/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc
+diff --git a/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc b/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc
+--- a/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc
++++ b/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc
 @@ -10,18 +10,21 @@
  
  #include "modules/desktop_capture/linux/base_capturer_pipewire.h"
@@ -786,9 +786,9 @@ diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/base_captur
 +}
 +
  }  // namespace webrtc
-diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.h b/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.h
---- a/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.h
-+++ b/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.h
+diff --git a/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.h b/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.h
+--- a/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.h
++++ b/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.h
 @@ -17,99 +17,103 @@
  #include <spa/param/video/format-utils.h>
  
@@ -919,9 +919,9 @@ diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/base_captur
  
    static void OnProxyRequested(GObject* object,
                                 GAsyncResult* result,
-diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/screen_capturer_pipewire.cc b/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/screen_capturer_pipewire.cc
---- a/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/screen_capturer_pipewire.cc
-+++ b/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/screen_capturer_pipewire.cc
+diff --git a/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/screen_capturer_pipewire.cc b/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/screen_capturer_pipewire.cc
+--- a/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/screen_capturer_pipewire.cc
++++ b/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/screen_capturer_pipewire.cc
 @@ -10,17 +10,17 @@
  
  #include "modules/desktop_capture/linux/screen_capturer_pipewire.h"
@@ -941,9 +941,9 @@ diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/screen_capt
      const DesktopCaptureOptions& options) {
    return std::make_unique<ScreenCapturerPipeWire>();
  }
-diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/window_capturer_pipewire.cc b/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/window_capturer_pipewire.cc
---- a/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/window_capturer_pipewire.cc
-+++ b/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/window_capturer_pipewire.cc
+diff --git a/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/window_capturer_pipewire.cc b/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/window_capturer_pipewire.cc
+--- a/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/window_capturer_pipewire.cc
++++ b/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/window_capturer_pipewire.cc
 @@ -10,17 +10,17 @@
  
  #include "modules/desktop_capture/linux/window_capturer_pipewire.h"
@@ -963,9 +963,9 @@ diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/window_capt
      const DesktopCaptureOptions& options) {
    return std::make_unique<WindowCapturerPipeWire>();
  }
-diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/screen_capturer_linux.cc b/media/webrtc/trunk/webrtc/modules/desktop_capture/screen_capturer_linux.cc
---- a/media/webrtc/trunk/webrtc/modules/desktop_capture/screen_capturer_linux.cc
-+++ b/media/webrtc/trunk/webrtc/modules/desktop_capture/screen_capturer_linux.cc
+diff --git a/third_party/libwebrtc/webrtc/modules/desktop_capture/screen_capturer_linux.cc b/third_party/libwebrtc/webrtc/modules/desktop_capture/screen_capturer_linux.cc
+--- a/third_party/libwebrtc/webrtc/modules/desktop_capture/screen_capturer_linux.cc
++++ b/third_party/libwebrtc/webrtc/modules/desktop_capture/screen_capturer_linux.cc
 @@ -21,17 +21,17 @@
  
  namespace webrtc {
@@ -985,9 +985,9 @@ diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/screen_capturer_l
  #endif  // defined(USE_X11)
  
    return nullptr;
-diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/window_capturer_linux.cc b/media/webrtc/trunk/webrtc/modules/desktop_capture/window_capturer_linux.cc
---- a/media/webrtc/trunk/webrtc/modules/desktop_capture/window_capturer_linux.cc
-+++ b/media/webrtc/trunk/webrtc/modules/desktop_capture/window_capturer_linux.cc
+diff --git a/third_party/libwebrtc/webrtc/modules/desktop_capture/window_capturer_linux.cc b/third_party/libwebrtc/webrtc/modules/desktop_capture/window_capturer_linux.cc
+--- a/third_party/libwebrtc/webrtc/modules/desktop_capture/window_capturer_linux.cc
++++ b/third_party/libwebrtc/webrtc/modules/desktop_capture/window_capturer_linux.cc
 @@ -21,17 +21,17 @@
  
  namespace webrtc {
