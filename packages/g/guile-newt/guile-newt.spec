@@ -17,7 +17,7 @@
 
 
 Name:           guile-newt
-Version:        0.0.1
+Version:        0.0.2
 Release:        0
 Summary:        Guile bindings to Newt
 License:        GPL-3.0-or-later
@@ -25,8 +25,6 @@ Group:          System/Libraries
 URL:            https://gitlab.com/mothacehe/guile-newt
 Source0:        https://gitlab.com/mothacehe/%{name}/-/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        guile-newt-rpmlintrc
-# Support Guile 3.0. Patch proposed upstream in https://gitlab.com/mothacehe/guile-newt/merge_requests/1
-Patch0:         support-guile-3.0.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  guile-devel
@@ -41,7 +39,6 @@ interfaces.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 ./bootstrap
