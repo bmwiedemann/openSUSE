@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 20 12:09:29 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.2:
+  * New bugfix release
+  * For more details please see:
+    http://code.qt.io/cgit/qt/qtquick3d.git/plain/dist/changes-5.15.2/?h=5.15.2
+
+-------------------------------------------------------------------
 Tue Sep 29 21:36:09 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Use the system assimp package for openSUSE Tumbleweed.
