@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Package-Stash
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,27 @@
 
 
 Name:           perl-Package-Stash
-Version:        0.38
+Version:        0.39
 Release:        0
 %define cpan_name Package-Stash
-Summary:        Routines for Manipulating Stashes
+Summary:        Routines for manipulating stashes
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(CPAN::Meta::Check) >= 0.011
+BuildRequires:  perl(CPAN::Meta::Requirements)
 BuildRequires:  perl(Dist::CheckConflicts) >= 0.02
 BuildRequires:  perl(Module::Implementation) >= 0.06
 BuildRequires:  perl(Package::Stash::XS) >= 0.26
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.88
-BuildRequires:  perl(Test::Requires)
+BuildRequires:  perl(Test::Needs)
 Requires:       perl(Dist::CheckConflicts) >= 0.02
 Requires:       perl(Module::Implementation) >= 0.06
 Requires:       perl(Package::Stash::XS) >= 0.26
