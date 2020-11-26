@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov 26 00:43:00 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1606233578.6a2b83747:
+  * cache service: Allow setting the SQLite journaling mode
+  * cache service: Fix workaround for deleting broken database
+  * Revert "Enable strict merge on Mergify"
+  * Use TimeLimit from os-autoinst-common to get OPENQA_TEST_TIMEOUT_DISABLE
+  * Dependency cron 2020-11-24
+  * systemd: Prevent error reports in journal of openqa-auto-update service
+  * docker: Simplify worker Dockerfile with executable scripts
+  * git subrepo clone (merge) --force git@github.com:os-autoinst/os-autoinst-common.git external/os-autoinst-common
+  * worker cache: Also cleanup "*-shm" and "*-wal" files belonging to sqlite
+  * worker cache: Try to prevent any process accessing still malformed database file handles
+  * worker cache: Prevent hiding errors due to repair attempts in corrupted database
+
+-------------------------------------------------------------------
 Mon Nov 23 15:59:45 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1606027318.501936756:

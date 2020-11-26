@@ -19,7 +19,6 @@
 # can't use linebreaks here!
 %define openqa_services openqa-webui.service openqa-gru.service openqa-websockets.service openqa-scheduler.service openqa-enqueue-audit-event-cleanup.service openqa-enqueue-audit-event-cleanup.timer openqa-enqueue-asset-cleanup.service openqa-enqueue-asset-cleanup.timer openqa-enqueue-result-cleanup.service openqa-enqueue-result-cleanup.timer openqa-enqueue-bug-cleanup.service openqa-enqueue-bug-cleanup.timer
 %define openqa_worker_services openqa-worker.target openqa-slirpvde.service openqa-vde_switch.service openqa-worker-cacheservice.service openqa-worker-cacheservice-minion.service
-%define openqa_auto_upgrade_services openqa-auto-update.service openqa-auto-update.timer
 %if %{undefined tmpfiles_create}
 %define tmpfiles_create() \
 %{_bindir}/systemd-tmpfiles --create %{?*} || : \
@@ -57,7 +56,7 @@
 # The following line is generated from dependencies.yaml
 %define client_requires curl git-core jq perl(Getopt::Long::Descriptive) perl(IO::Socket::SSL) >= 2.009 perl(IPC::Run) perl(JSON::Validator) perl(LWP::Protocol::https) perl(LWP::UserAgent) perl(Test::More) perl(YAML::PP) >= 0.020 perl(YAML::XS)
 # The following line is generated from dependencies.yaml
-%define worker_requires openQA-client optipng os-autoinst < 5 perl(Minion::Backend::SQLite) >= 5.0.1 perl(Mojo::IOLoop::ReadWriteProcess) >= 0.26 perl(Mojo::SQLite) sqlite3 >= 3.24.0
+%define worker_requires openQA-client optipng os-autoinst < 5 perl(Minion::Backend::SQLite) >= 5.0.1 perl(Mojo::IOLoop::ReadWriteProcess) >= 0.26 perl(Mojo::SQLite) psmisc sqlite3 >= 3.24.0
 # The following line is generated from dependencies.yaml
 %define build_requires %assetpack_requires rubygem(sass)
 
@@ -77,7 +76,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        4.6.1606027318.501936756
+Version:        4.6.1606233578.6a2b83747
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -366,7 +365,7 @@ fi
 %service_add_pre %{openqa_worker_services}
 
 %pre auto-update
-%service_add_pre %{openqa_auto_upgrade_services}
+%service_add_pre openqa-auto-update.timer
 
 %post
 %tmpfiles_create %{_tmpfilesdir}/openqa-webui.conf
@@ -399,7 +398,7 @@ fi
 %service_add_post %{openqa_worker_services}
 
 %post auto-update
-%service_add_post %{openqa_auto_upgrade_services}
+%service_add_post openqa-auto-update.timer
 
 %preun
 %service_del_preun %{openqa_services}
@@ -408,7 +407,8 @@ fi
 %service_del_preun %{openqa_worker_services}
 
 %preun auto-update
-%service_del_preun %{openqa_auto_upgrade_services}
+# not changing the service which might have triggered this update itself
+%service_del_preun openqa-auto-update.timer
 
 %postun
 %service_del_postun %{openqa_services}
@@ -418,7 +418,7 @@ fi
 %service_del_postun %{openqa_worker_services}
 
 %postun auto-update
-%service_del_postun %{openqa_auto_upgrade_services}
+%service_del_postun openqa-auto-update.timer
 
 %post local-db
 %service_add_post openqa-setup-db.service
