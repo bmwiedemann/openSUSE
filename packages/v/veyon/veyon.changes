@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Nov 25 14:20:26 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 4.5.1.
+  * Core: fix key name conversion for arguments when invoking 
+    features
+  * Master: properly reload screenshot list also when using 
+    screenshot directories on network shares
+  * Master: add support for deleting multiple screenshots
+  * Master: fix bug with initial computer icon layout
+  * Master: update icon sizes and their aspect ratios dynamically 
+    whenever a computer is added, connected or removed
+  * Master: improve icon size auto adjust functionality when 
+    adding/removing multiple computers
+  * Master: add dedicated icon for computers not running the Veyon 
+    Server
+  * Master: only show connected computers in slideshow panel
+  * Master: fix issue with icons overlapping user name and/or 
+    computer name
+  * Screenshot: fix non-working feature invocation
+  * Server: notify first successful access control pass only
+- Remove group tag.
+
+-------------------------------------------------------------------
 Wed Nov 18 08:10:36 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 4.5.0.

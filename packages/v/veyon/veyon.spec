@@ -17,11 +17,10 @@
 
 
 Name:           veyon
-Version:        4.5.0
+Version:        4.5.1
 Release:        0
 Summary:        Free and Open Source computer monitoring and classroom management
 License:        GPL-2.0-or-later
-Group:          Productivity/Other
 URL:            https://veyon.io/
 Source:         https://github.com/veyon/veyon/releases/download/v%{version}/veyon-%{version}-src.tar.bz2
 BuildRequires:  cmake
