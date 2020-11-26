@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 16 14:02:11 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix an rpmlint warning by moving libwx_base symlinks to their
+  own -devel subpackage which is then required by
+  (wxWidgets-devel, wxGTK3-devel).
+
+-------------------------------------------------------------------
 Fri Oct  9 16:48:47 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Change wxGTK2 flavor to be the main (unnamed) flavor.

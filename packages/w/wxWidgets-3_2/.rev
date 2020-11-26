@@ -109,4 +109,14 @@
 </comment>
     <requestid>841336</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>6d1c74104bf3961ed6a26dba6c2dab30</srcmd5>
+    <version>3.1.4</version>
+    <time>1606428609</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix an rpmlint warning by moving libwx_base symlinks to their
+  own -devel subpackage which is then required by
+  (wxWidgets-devel, wxGTK3-devel).</comment>
+    <requestid>849726</requestid>
+  </revision>
 </revisionlist>

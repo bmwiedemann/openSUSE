@@ -16,8 +16,8 @@
 #
 
 
-%global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == ""
+%global flavor @BUILD_FLAVOR@%nil
+%if "%flavor" == ""
 # default flavor is GTK2
 Name:           wxWidgets-3_2
 %define pkgname wxWidgets-3_2
@@ -28,7 +28,7 @@ Name:           wxWidgets-3_2
 %bcond_with webview
 %endif
 
-%if "%{flavor}" == "GTK3"
+%if "%flavor" == "GTK3"
 Name:           wxGTK3-3_2
 %define pkgname wxGTK3-3_2
 %define variant suse
@@ -39,7 +39,7 @@ Name:           wxGTK3-3_2
 %bcond_without webview
 %endif
 
-%if "%{flavor}" == "GTK3-nostl"
+%if "%flavor" == "GTK3-nostl"
 Name:           wxWidgets-3_2-nostl
 %define pkgname wxWidgets-3_2-nostl
 %define variant suse-nostl
@@ -52,7 +52,7 @@ std::string), and is provided for old programs which fail to use e.g. \
 wxString and instead rely on the wxChar pointer API.
 %endif
 
-%if "%{flavor}" == "Qt"
+%if "%flavor" == "Qt"
 Name:           wxQt-3_2
 %define pkgname wxQt-3_2
 %define variant suse
@@ -62,10 +62,9 @@ Name:           wxQt-3_2
 %endif
 
 %define base_name wxWidgets-3_2
-%define tarball_name wxWidgets
 # Use default debug level, enabling exceptions
 # Other valid values: yes/no/max
-%define wx_debug %{nil}
+%define wx_debug %nil
 %define psonum 4_0_0
 %define sonum 4.0.0
 Version:        3.1.4
@@ -76,7 +75,7 @@ Summary:        C++ Library for Cross-Platform Development
 License:        LGPL-2.1-or-later WITH WxWindows-exception-3.1
 Group:          Development/Libraries/C and C++
 URL:            https://www.wxwidgets.org/
-Source:         https://github.com/wxWidgets/wxWidgets/releases/download/v%{version}/wxWidgets-%{version}.tar.bz2#/%tarball_name-%version.tar.bz2
+Source:         https://github.com/wxWidgets/wxWidgets/releases/download/v%version/wxWidgets-%version.tar.bz2
 Source2:        README.SUSE
 Source5:        wxWidgets-3_2-rpmlintrc
 # This script is not used during build, but it makes possible to
@@ -100,17 +99,17 @@ BuildRequires:  libnotify-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  zlib-devel
-%if "%{toolkit}" == "gtk2"
+%if "%toolkit" == "gtk2"
 BuildRequires:  gnome-vfs2-devel
 BuildRequires:  gtk2-devel
 %endif
-%if "%{toolkit}" == "gtk3"
+%if "%toolkit" == "gtk3"
 BuildRequires:  pkgconfig(gtk+-3.0)
 %if %{with webview}
 BuildRequires:  pkgconfig(webkit2gtk-4.0)
 %endif
 %endif
-%if "%{toolkit}" == "qt"
+%if "%toolkit" == "qt"
 BuildRequires:  pkgconfig(Qt5Core) >= 5.2.1
 BuildRequires:  pkgconfig(Qt5Gui) >= 5.2.1
 BuildRequires:  pkgconfig(Qt5OpenGL) >= 5.2.1
@@ -132,6 +131,20 @@ wxWidgets is a C++ library abstraction layer for a number of GUI
 backends. Applications can be created for different GUIs (GTK+,
 Motif, MS Windows, MacOS X, Windows CE, GPE) from the same source
 code.
+
+%package -n libwx_base-%variant-devel
+Summary:        Development files for %name
+Group:          Development/Libraries/C and C++
+Requires:       libwx_baseu-%variant%psonum = %version
+Requires:       libwx_baseu_net-%variant%psonum = %version
+Requires:       libwx_baseu_xml-%variant%psonum = %version
+Provides:       libwx_base-devel
+Conflicts:      libwx_base-devel
+
+%description -n libwx_base-%variant-devel
+wxWidgets is a C++ library abstraction layer for a number of GUI
+backends.
+This package is a build artifact and need not be manually installed.
 
 %package -n libwx_baseu-%variant%psonum
 Summary:        wxWidgets base library
@@ -282,15 +295,15 @@ Group:          System/Libraries
 SDL based sound plugin for the wxWidgets cross-platform GUI.
 
 %package devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Libraries/C and C++
-%if "%{toolkit}" == "gtk2"
+%if "%toolkit" == "gtk2"
 Requires:       gtk2-devel
 %endif
-%if "%{toolkit}" == "gtk3"
+%if "%toolkit" == "gtk3"
 Requires:       pkgconfig(gtk+-3.0)
 %endif
-%if "%{toolkit}" == "qt"
+%if "%toolkit" == "qt"
 Requires:       pkgconfig(Qt5OpenGL) >= 5.2.1
 Requires:       pkgconfig(Qt5Widgets) >= 5.2.1
 %endif
@@ -309,26 +322,24 @@ Requires:       libwx_%{toolkit}u_stc-%variant%psonum = %version
 Requires:       libwx_%{toolkit}u_webview-%variant%psonum = %version
 %endif
 Requires:       libwx_%{toolkit}u_xrc-%variant%psonum = %version
-Requires:       libwx_baseu-%variant%psonum = %version
-Requires:       libwx_baseu_net-%variant%psonum = %version
-Requires:       libwx_baseu_xml-%variant%psonum = %version
+Requires:       libwx_base-%variant-devel = %version
 Requires:       pkgconfig(gl)
 Requires:       pkgconfig(glu)
 Provides:       wxWidgets-any-devel
 Conflicts:      wxWidgets-any-devel
-%if "%{toolkit}" == "gtk2"
+%if "%toolkit" == "gtk2"
 Provides:       wxGTK2-devel = %version-%release
 Provides:       wxWidgets-devel = %version-%release
 # Name up to openSUSE 11.3 and up to wxGTK-2.8.x:
 Provides:       wxGTK-devel = %version-%release
 Obsoletes:      wxGTK-devel < %version-%release
 %endif
-%if "%{toolkit}" == "gtk3"
-%if "%{flavor}" != "GTK3-nostl"
+%if "%toolkit" == "gtk3"
+%if "%flavor" != "GTK3-nostl"
 Provides:       wxGTK3-devel = %version-%release
 %endif
 %endif
-%if "%{toolkit}" == "qt"
+%if "%toolkit" == "qt"
 Provides:       wxQt-devel = %version-%release
 %endif
 
@@ -338,14 +349,14 @@ backends. Applications can be created for different GUIs (GTK+,
 Motif, MS Windows, MacOS X, Windows CE, GPE) from the same source
 code.
 
-This package contains all files needed for developing with %{name}.
+This package contains all files needed for developing with %name.
 %{?extra_description}
 
 Note: wxWidgets variant devel packages are mutually exclusive. Please
 read %_docdir/%name/README.SUSE to pick a correct variant.
 
 %prep
-%autosetup -n %tarball_name-%version -p1
+%autosetup -n wxWidgets-%version -p1
 cp %{S:2} .
 
 %build
@@ -359,7 +370,7 @@ autoconf -f -i
 
 %configure \
 	--enable-vendor=%variant \
-%if "%{toolkit}" == "qt"
+%if "%toolkit" == "qt"
 	--with-qt \
 %else
 	--with-gtk=%gtk_version \
@@ -376,7 +387,7 @@ autoconf -f -i
 	--enable-optimise \
 	%{wx_debug:--enable-debug=%{wx_debug}} \
         --enable-repro-build \
-%if "%{flavor}" == "GTK3-nostl"
+%if "%flavor" == "GTK3-nostl"
 	--disable-stl \
 	--disable-plugins
 %else
@@ -384,17 +395,17 @@ autoconf -f -i
 	--enable-plugins
 %endif
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 export VENDORTAG='-$variant' # only needed for non-MSW
-make install DESTDIR="%buildroot"
+%make_install
 %if !%base_packages
 # Drop libraries already supplied by another packages
-rm -f "%buildroot/%_libdir"/libwx_baseu{,_net,_xml}-%variant.so.%{sonum}* \
-   "%buildroot/%_libdir/wx/%wx_micro"/sound_sdlu-*.so
+rm -fv "%buildroot/%_libdir"/libwx_baseu*.so* \
+	"%buildroot/%_libdir/wx/%wx_micro"/sound_sdlu-*.so
 %endif
-rm -Rf %buildroot/%_datadir/locale
+rm -Rfv %buildroot/%_datadir/locale
 
 # HACK: Fix wx-config symlink (bug introduced in 2.9.4).
 ln -sf $(echo %buildroot/%_libdir/wx/config/* | sed "s%%%buildroot%%%%") %buildroot/%_bindir/wx-config
@@ -433,6 +444,9 @@ ln -sf $(echo %buildroot/%_libdir/wx/config/* | sed "s%%%buildroot%%%%") %buildr
 %postun -n libwx_%{toolkit}u_xrc-%variant%psonum -p /sbin/ldconfig
 
 %if %base_packages
+%files -n libwx_base-%variant-devel
+%_libdir/libwx_baseu*.so
+
 %files -n libwx_baseu-%variant%psonum
 %_libdir/libwx_baseu-%variant.so.%{sonum}*
 
@@ -488,7 +502,7 @@ ln -sf $(echo %buildroot/%_libdir/wx/config/* | sed "s%%%buildroot%%%%") %buildr
 %_libdir/libwx_%{toolkit}u_xrc-%variant.so.%{sonum}*
 
 %if %base_packages
-%if "%{flavor}" != "GTK3-nostl"
+%if "%flavor" != "GTK3-nostl"
 %files -n %{base_name}-plugin-sound_sdlu-3_2
 %dir %_libdir/wx
 %dir %_libdir/wx/%wx_micro
@@ -506,6 +520,9 @@ ln -sf $(echo %buildroot/%_libdir/wx/config/* | sed "s%%%buildroot%%%%") %buildr
 %_datadir/bakefile
 %_includedir/wx-%wx_minor
 %_libdir/*.so
+%if %base_packages
+%exclude %_libdir/libwx_baseu*
+%endif
 %dir %_libdir/wx
 %_libdir/wx/config
 %_libdir/wx/include
