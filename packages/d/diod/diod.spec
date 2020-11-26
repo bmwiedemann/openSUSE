@@ -1,7 +1,7 @@
 #
 # spec file for package diod
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,8 +56,10 @@ make %{?_smp_mflags}
 mv %{buildroot}%{_sbindir}/diodmount %{buildroot}%{_sbindir}/mount.diod
 mv %{buildroot}%{_mandir}/man8/diodmount.8 %{buildroot}%{_mandir}/man8/mount.diod.8
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcdiod
+%if !0%{?usrmerged}
 mkdir %{buildroot}/sbin
 ln -s %{_sbindir}/mount.diod %{buildroot}/sbin/mount.diod
+%endif
 
 %pre
 %service_add_pre diod.service
@@ -75,7 +77,9 @@ ln -s %{_sbindir}/mount.diod %{buildroot}/sbin/mount.diod
 %license COPYING
 %doc README.md AUTHORS NEWS
 
+%if !0%{?usrmerged}
 /sbin/*
+%endif
 %{_sbindir}/*
 %{_unitdir}/diod.service
 
