@@ -25,7 +25,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyMySQL
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        Pure Python MySQL Driver
 License:        MIT
@@ -104,7 +104,7 @@ exit $exit_code
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGELOG README.rst
+%doc CHANGELOG.md README.rst
 %{python_sitelib}/*
 
 %changelog

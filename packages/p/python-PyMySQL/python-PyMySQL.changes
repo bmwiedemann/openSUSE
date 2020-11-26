@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 26 09:10:16 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- udpate to 0.10.1:
+  * Fix missing import of ProgrammingError. (#878)
+  * Fix auth switch request handling. (#890)
+
+-------------------------------------------------------------------
 Wed Sep 23 13:18:38 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - disable testing for Leaps 

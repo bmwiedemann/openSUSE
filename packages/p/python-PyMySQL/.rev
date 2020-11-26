@@ -171,4 +171,14 @@
     <comment></comment>
     <requestid>838337</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>cb259521be0f004e808fc37ea35d7cfb</srcmd5>
+    <version>0.10.1</version>
+    <time>1606428915</time>
+    <user>dimstar_suse</user>
+    <comment>- udpate to 0.10.1:
+  * Fix missing import of ProgrammingError. (#878)
+  * Fix auth switch request handling. (#890)</comment>
+    <requestid>850935</requestid>
+  </revision>
 </revisionlist>
