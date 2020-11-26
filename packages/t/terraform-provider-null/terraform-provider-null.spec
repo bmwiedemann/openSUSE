@@ -16,6 +16,35 @@
 #
 
 
+%global provider        github
+%global provider_tld    com
+%global project         terraform-providers
+%global repo            terraform-provider-null
+%global provider_prefix %{provider}.%{provider_tld}/%{project}/%{repo}
+%global import_path     %{provider_prefix}
+%global registry        registry.terraform.io
+%global namespace       hashicorp
+%global providername    null
+
+%ifarch aarch64
+%define terraformarch   amd64
+%endif
+%ifarch ppc64
+%define terraformarch   ppc64
+%endif
+%ifarch ppc64le
+%define terraformarch   ppc64le
+%endif
+%ifarch s390x
+%define terraformarch   s390x
+%endif
+%ifarch %{ix86}
+%define terraformarch   i386
+%endif
+%ifarch x86_64
+%define terraformarch   amd64
+%endif
+
 Name:           terraform-provider-null
 Version:        3.0.0
 Release:        0
@@ -23,7 +52,7 @@ Summary:        Terraform null-provider
 License:        MPL-2.0
 Group:          System/Management
 URL:            https://github.com/terraform-providers/terraform-provider-null
-Source:         %{name}-%{version}.tar.xz
+Source:         %{repo}-%{version}.tar.xz
 %if 0%{?suse_version}
 %{go_nostrip}
 %endif
@@ -53,21 +82,24 @@ BuildRequires:  golang(API) >= 1.12
 This is a terraform provider that lets you use null files
 
 %prep
-%setup -q
+%setup -q -n %{repo}-%{version}
 
 %build
-%{goprep} github.com/terraform-providers/%{name}
+%{goprep} %{import_path}
 %{gobuild} -mod=vendor ""
-ln -s %{_bindir}/%{name} %{buildroot}%{_bindir}/%{name}_v%{version}
 
 %install
 %{goinstall}
 rm -rf %{buildroot}/%{_libdir}/go/contrib
+ln -s %{_bindir}/%{name} %{buildroot}%{_bindir}/%{name}_v%{version}
+install -d 755 %{buildroot}%{_datadir}/terraform/providers/%{registry}/%{namespace}/%{providername}/%{version}/linux_%{terraformarch}
+ln -s %{_bindir}/%{name} %{buildroot}%{_datadir}/terraform/providers/%{registry}/%{namespace}/%{providername}/%{version}/linux_%{terraformarch}/%{name}_v%{version}
 
 %files
 %doc CHANGELOG.md README.md
 %license LICENSE
 %{_bindir}/%{name}
 %{_bindir}/%{name}_v%{version}
+%{_datadir}/terraform
 
 %changelog
