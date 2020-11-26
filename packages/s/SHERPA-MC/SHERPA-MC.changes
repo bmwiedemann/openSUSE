@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 25 00:25:56 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add SHERPA-MC-build-with-recent-glibc.patch to fix builds
+  against recent glibc; patch taken from upstream git.
+
+-------------------------------------------------------------------
 Wed Jun  3 10:30:10 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop post(un) install-info scripts for devel pkg, these are

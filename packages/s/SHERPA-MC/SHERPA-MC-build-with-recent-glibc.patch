@@ -1,0 +1,26 @@
+From 402bac007100bf573a2f55f4f1eb0a854e84891b Mon Sep 17 00:00:00 2001
+From: Andrii Verbytskyi <andrii.verbytskyi@desy.de>
+Date: Wed, 20 May 2020 13:21:17 +0000
+Subject: [PATCH] Fix build problem with very new glibc
+
+---
+ ATOOLS/Org/Run_Parameter.C | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/ATOOLS/Org/Run_Parameter.C b/ATOOLS/Org/Run_Parameter.C
+index c8913898c..ebd9986e0 100644
+--- a/ATOOLS/Org/Run_Parameter.C
++++ b/ATOOLS/Org/Run_Parameter.C
+@@ -20,7 +20,9 @@
+ #include <sys/time.h>
+ #include <sys/resource.h>
+ #include <sys/types.h>
++#ifdef ARCH_DARWIN
+ #include <sys/sysctl.h>
++#endif
+ #include <limits>
+ 
+ namespace ATOOLS {
+-- 
+GitLab
+

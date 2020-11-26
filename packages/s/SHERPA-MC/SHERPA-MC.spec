@@ -29,6 +29,8 @@ URL:            https://sherpa-team.gitlab.io/
 Source:         https://www.hepforge.org/downloads/sherpa/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM SHERPA-MC-no-return-in-non-void-function.patch badshah400@gmail.com -- Fix a non-void (bool) function that was not returning any data to return "true"
 Patch0:         SHERPA-MC-no-return-in-non-void-function.patch
+# PATCH-FIX-UPSTREAM SHERPA-MC-build-with-recent-glibc.patch badshah400@gmail.com -- Fix build problem with very new glibc; patch taken from upstream git
+Patch1:         SHERPA-MC-build-with-recent-glibc.patch
 BuildRequires:  HepMC-devel >= 3.0
 BuildRequires:  LHAPDF-devel
 BuildRequires:  Rivet-devel
@@ -134,6 +136,7 @@ This package provides the python extensions for Sherpa.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 # REMOVE HASHBANGS FROM FILES NOT TO BE INSTALLED TO EXEC PATH
 sed -E -i "1{s|#!/bin/env python2||}"     MODEL/UFO/test.py
