@@ -281,4 +281,12 @@
 - upstream isn't offering PGP signatures for the source tarballs anymore (forwarded request 712889 from wfrisch)</comment>
     <requestid>712932</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>5b98961ad5c14adfe233a92d0e0fdc1f</srcmd5>
+    <version>1.6</version>
+    <time>1606428526</time>
+    <user>dimstar_suse</user>
+    <comment>- prepare usrmerge (boo#1029961) (forwarded request 849618 from lnussel)</comment>
+    <requestid>849621</requestid>
+  </revision>
 </revisionlist>

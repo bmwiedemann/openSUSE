@@ -1,7 +1,7 @@
 #
 # spec file for package keyutils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           keyutils
 %define lname	libkeyutils1
-Url:            http://people.redhat.com/~dhowells/keyutils/
+URL:            http://people.redhat.com/~dhowells/keyutils/
 Summary:        Linux Key Management Utilities
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Kernel
@@ -70,10 +70,12 @@ make %{?_smp_mflags} NO_ARLIB=1 CFLAGS="%{optflags}" CC="%__cc"
 
 %install
 make install NO_ARLIB=1 DESTDIR=%{buildroot} BINDIR=/%{_bindir} SBINDIR=/%{_sbindir} LIBDIR=/%{_libdir} USRLIBDIR=%{_libdir}
+%if !0%{?usrmerged}
 mkdir -p %{buildroot}/bin %{buildroot}/sbin
 ln -s /%{_bindir}/keyctl %{buildroot}/bin
 ln -s /%{_sbindir}/key.dns_resolver %{buildroot}/sbin
 ln -s /%{_sbindir}/request-key %{buildroot}/sbin
+%endif
 
 %post -n %lname -p /sbin/ldconfig 
 
@@ -83,8 +85,10 @@ ln -s /%{_sbindir}/request-key %{buildroot}/sbin
 %defattr(-,root,root,-)
 %license LICENCE.GPL
 %doc README
+%if !0%{?usrmerged}
 /sbin/*
 /bin/*
+%endif
 /%{_sbindir}/*
 /%{_bindir}/*
 %{_datadir}/keyutils
