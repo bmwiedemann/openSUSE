@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Nov 25 20:40:49 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.11.26
+  * cda, nrk: fix extraction
+  * youtube: improve music metadata and license extraction
+  * medaltv: Add new extractor
+  * bbc: fix BBC News videos extraction, BBC Three clip extraction
+  * vlive: Add support for post URLs
+
+-------------------------------------------------------------------
+Mon Nov 23 18:26:17 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.11.24
+  * pinterest: Add extractor
+  * extractor/common: add generic support for akamai http format
+    extraction
+  * skyit: add support for multiple Sky Italia websites
+  * pinterest: Add support for large collections (more than 25
+    pins)
+
+-------------------------------------------------------------------
 Sat Nov 21 17:28:50 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.11.21.1

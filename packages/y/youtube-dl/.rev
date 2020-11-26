@@ -1337,4 +1337,12 @@
     <comment>- Update to release 2020.11.24</comment>
     <requestid>850299</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>aa8b4cdac6097c7810d825fc0ae32828</srcmd5>
+    <version>2020.11.26</version>
+    <time>1606428855</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2020.11.26</comment>
+    <requestid>850826</requestid>
+  </revision>
 </revisionlist>
