@@ -1,4 +1,273 @@
 -------------------------------------------------------------------
+Fri Nov 20 10:37:31 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.21.25 → 9.21.26
+
+-------------------------------------------------------------------
+Thu Nov 19 17:34:56 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed dnf plugin config setup
+
+  Only create a dnf plugin config if the plugin config directory
+  to store that file exists in the system
+
+-------------------------------------------------------------------
+Thu Nov 19 14:18:30 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Set --releasever=0 for microdnf
+
+  To allow microdnf to work from an empty root directory
+  we need to set the release version to zero
+
+-------------------------------------------------------------------
+Wed Nov 18 15:14:31 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Use custom varsdir for dnf builds
+
+-------------------------------------------------------------------
+Wed Nov 18 13:33:09 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Partially revert dcounter.c flaw report
+
+  I could not find a problem with this read call
+  it does check on the buffer boundaries and it
+  only writes the bytes that read returns until
+  read returns <= 0
+
+-------------------------------------------------------------------
+Wed Nov 18 13:19:31 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed dcounter.c flaw report
+
+  Check buffer boundaries if used in a loop
+
+-------------------------------------------------------------------
+Wed Nov 18 13:06:35 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed dcounter.c flaw report
+
+  Variable scope can be reduced and useless value assignment.
+
+-------------------------------------------------------------------
+Wed Nov 18 12:24:28 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed microdnf support
+
+  The installroot argument must be used together with --config
+  and additionally with --noplugins, as well as --setopt for
+  cachedir, reposdir and varsdir. Related to #1625
+
+-------------------------------------------------------------------
+Tue Nov 17 17:13:47 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Move tools README to ReST
+
+-------------------------------------------------------------------
+Tue Nov 17 17:11:14 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed Incorrect list-item indent
+
+-------------------------------------------------------------------
+Tue Nov 17 16:22:59 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed Incorrect list-item indent
+
+  Use two spaces between bullet and content
+
+-------------------------------------------------------------------
+Tue Nov 17 15:55:53 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Update codacy configuration file
+
+  Exclude .github helper scripts from the analysis
+
+-------------------------------------------------------------------
+Tue Nov 17 15:51:19 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Update codacy configuration file
+
+  Exclude doc sources and helper scripts from the analysis
+
+-------------------------------------------------------------------
+Mon Nov 16 17:59:06 CET 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Fix setopt argument for install_weak_deps for microdnf
+
+  Micro DNF does not support "True"/"False", only "1"/"0"...
+
+-------------------------------------------------------------------
+Mon Nov 16 17:32:35 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Better error reporting if jing is missing
+
+  On validation error we use jing to report detailed error
+  messages. However if jing is not present no validation
+  errors are displayed. There is a error_log variable as
+  part of the relaxNG object which holds the library error
+  log. This information is not as good as the jing report
+  but better than nothing
+
+-------------------------------------------------------------------
+Mon Nov 16 16:37:58 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added microdnf support in XML schema
+
+  The XML schema did not allow to specify microdnf as
+  supported package manager
+
+-------------------------------------------------------------------
+Mon Nov 16 16:26:50 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added microdnf integration test
+
+-------------------------------------------------------------------
+Mon Nov 16 16:19:15 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.21.24 → 9.21.25
+
+-------------------------------------------------------------------
+Fri Nov 13 15:54:41 CET 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Use --config instead of -c for DNF and Micro DNF
+
+  The -c option is not supported in Micro DNF, but --config is, and
+  it is supported with DNF as well.
+
+-------------------------------------------------------------------
+Fri Nov 13 15:49:48 CET 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Drop 'microdnf makecache' call for microdnf package manager
+
+  This subcommand does not exist and is not needed. Instead, we
+  need to use '--refresh' where this is needed.
+
+-------------------------------------------------------------------
+Fri Nov 13 15:28:39 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.21.23 → 9.21.24
+
+-------------------------------------------------------------------
+Fri Nov 13 09:55:34 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- No bootpartition for XFS by default
+
+  Selecting the xfs filesystem made kiwi to create an extra
+  boot partition. This is from times when grub was not able
+  to read from XFS. As grub doesn't have this limitation since
+  quite some time the bootpartition default in kiwi for XFS
+  should be changed. This is realted to #1611
+
+-------------------------------------------------------------------
+Thu Nov 12 23:14:03 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Create relative boot link for extra boot partition
+
+  If an extra boot partition is used the grub toolchain
+  still references files from that partition as /boot/...
+  which fails because they are now at the toplevel. To
+  avoid this and keep any /boot/some-file reference still
+  valid we create a symlink 'boot -> .' This Fixes #1611
+
+-------------------------------------------------------------------
+Thu Nov 12 16:19:01 CET 2020 - David Cassany <dcassany@suse.com>
+
+- Fix documentation to be consistent with the XML KIWI scheme
+
+  This commit fixes the user section documentation to properly reflect
+  XML KIWI scheme constraints. 'home' attribute is optional and 'password'
+  attribute is mandatory.
+
+  Fixes #1599
+
+-------------------------------------------------------------------
+Thu Nov 12 16:09:23 CET 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Add support for the Micro DNF package manager
+
+  Micro DNF is a minimal C implementation of DNF that is usable for
+  minimal appliances and containers. While it is not at parity with
+  DNF, it implements enough functionality that it is mostly usable
+  for building appliance images.
+
+-------------------------------------------------------------------
+Wed Nov 11 12:36:31 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added remote overlay boot documentation
+
+  Added a new chapter below: working with images, which describes
+  the options to remote boot via kiwi-overlay from an NBD or AOE
+  exported root filesystem image.
+
+-------------------------------------------------------------------
+Wed Nov 11 11:51:35 CET 2020 - Frank Schreiner <schreiner@suse.de>
+
+- use BuildRequires for distros which use fdupes
+
+-------------------------------------------------------------------
+Tue Nov 10 21:59:57 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added support for nbd and aoe root overlay
+
+  The kiwi-overlay dracut module can also be used as standalone
+  module that is not connected to a disk image. In this case
+  it's needed to specify the location for the root filesystem
+  and optionally the device to write data (default is ram space).
+  This commit adds the opportunity to specify a nbd/aoe location
+  for the root filesystem on the kernel cmdline like in the
+  following examples:
+
+  root=overlay:nbd=nbd0:192.168.100.42:exportname
+  root=overlay:aoe=e0.1
+
+  An optional write space, if it should not be ram space, can be
+  provided through the rd.root.overlay.write option on the kernel
+  cmdline. This Fixes: OSInside/kiwi-descriptions#78
+
+-------------------------------------------------------------------
+Mon Nov 09 12:54:23 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Increase allowed complexity level
+
+  Increase overall allowed flake8 complexity level and delete
+  the extra exceptions from code as much as possible
+
+-------------------------------------------------------------------
+Mon Nov 09 12:23:24 CET 2020 - David Cassany <dcassany@suse.com>
+
+- Add editbootinstall script for Arch Linux tests
+
+  This commit adds the editbootinstall script to Arch Linux OEM
+  integration tests. The provided script removes the use of linuxefi and
+  initrdefi commands on grub configuration since Arch does not support
+  linuxefi module.
+
+  Fixes #1559
+
+-------------------------------------------------------------------
+Mon Nov 09 11:55:47 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Update tox and travis setup for python 3_8
+
+  Move latest python test target to 3.8 and also change
+  the deploy travis target to use python 3.8
+
+-------------------------------------------------------------------
+Mon Nov 09 09:49:41 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Allow console login for the integration tests
+
+  The integration tests for the cloud targets had the console
+  login for root disabled. This is correct if the image would
+  be really used in the cloud. The integration test however
+  will be functional tested within openQA and that requires
+  serial console and root console login to be allowed.
+
+-------------------------------------------------------------------
+Sun Nov 08 20:43:35 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Added universal box to build status helper
+
+-------------------------------------------------------------------
 Thu Nov 05 09:27:08 CET 2020 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.21.22 → 9.21.23

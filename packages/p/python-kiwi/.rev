@@ -1485,4 +1485,41 @@
 - Fix quick start guide build command</comment>
     <requestid>846180</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>1726b4987662db2a9dbf237549861cd5</srcmd5>
+    <version>9.21.26</version>
+    <time>1606428603</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.21.25 → 9.21.26
+
+- Fixed dnf plugin config setup
+  Only create a dnf plugin config if the plugin config directory
+  to store that file exists in the system
+
+- Set --releasever=0 for microdnf
+  To allow microdnf to work from an empty root directory
+  we need to set the release version to zero
+
+- Use custom varsdir for dnf builds
+
+- Partially revert dcounter.c flaw report
+  I could not find a problem with this read call
+  it does check on the buffer boundaries and it
+  only writes the bytes that read returns until
+  read returns &lt;= 0
+
+- Fixed dcounter.c flaw report
+  Check buffer boundaries if used in a loop
+
+- Fixed dcounter.c flaw report
+  Variable scope can be reduced and useless value assignment.
+
+- Fixed microdnf support
+  The installroot argument must be used together with --config
+  and additionally with --noplugins, as well as --setopt for
+  cachedir, reposdir and varsdir. Related to #1625
+
+- Move tools README to ReST</comment>
+    <requestid>849700</requestid>
+  </revision>
 </revisionlist>

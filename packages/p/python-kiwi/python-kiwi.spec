@@ -43,7 +43,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.21.23
+Version:        9.21.26
 Provides:       kiwi-schema = 7.2
 Release:        0
 Url:            https://github.com/OSInside/kiwi
@@ -60,7 +60,9 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc
 BuildRequires:  python%{python3_pkgversion}-%{develsuffix}
 BuildRequires:  python%{python3_pkgversion}-setuptools
+%if 0%{?fedora} || 0%{?suse_version}
 BuildRequires:  fdupes
+%endif
 %if 0%{?suse_version}
 BuildRequires:  shadow
 %endif
@@ -133,6 +135,10 @@ Recommends:     gnupg2
 # If it's available, let's pull it in
 Recommends:     dnf
 Recommends:     gpg2
+%endif
+%if 0%{?fedora} || 0%{?rhel} >= 8 || 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
+Provides:       kiwi-packagemanager:microdnf
+Requires:       microdnf
 %endif
 %if 0%{?fedora} >= 26 || 0%{?suse_version}
 Requires:       zypper
