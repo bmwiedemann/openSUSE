@@ -287,7 +287,7 @@ make install install-libs DESTDIR=$RPM_BUILD_ROOT ELF_INSTALL_DIR=/%{_libdir}
 
 rm $RPM_BUILD_ROOT%{_libdir}/e2initrd_helper
 
-#UsrMerge
+%if !0%{?usrmerged}
 mkdir %{buildroot}/sbin
 ln -s %{_sbindir}/badblocks %{buildroot}/sbin/badblocks
 ln -s %{_sbindir}/debugfs   %{buildroot}/sbin/debugfs
@@ -314,7 +314,7 @@ popd
 for libName in $LIBNAMES;
   do ln -s %{_libdir}/$libName %{buildroot}/%{_lib};
 done
-#EndUsrMerge
+%endif
 
 %if %{with systemd}
 %if %{build_mini}
@@ -403,7 +403,7 @@ done
 %license NOTICE
 %endif
 %config /etc/mke2fs.conf
-#UsrMerge 
+%if !0%{?usrmerged}
 /sbin/badblocks
 /sbin/debugfs
 /sbin/dumpe2fs
@@ -422,7 +422,7 @@ done
 /sbin/tune2fs
 /sbin/e2image
 /sbin/logsave
-#EndUsrMerge
+%endif
 %{_sbindir}/badblocks
 %{_sbindir}/debugfs
 %{_sbindir}/dumpe2fs
@@ -487,10 +487,10 @@ done
 %files -n libext2fs2
 %endif
 %defattr(-, root, root)
-#UsrMerge
+%if !0%{?usrmerged}
 /%{_lib}/libext2fs.so.*
 /%{_lib}/libe2p.so.*
-#EndUsrMerge
+%endif
 %{_libdir}/libext2fs.so.*
 %{_libdir}/libe2p.so.*
 
@@ -513,10 +513,10 @@ done
 %files -n libcom_err2
 %endif
 %defattr(-, root, root)
-#UsrMerge
+%if !0%{?usrmerged}
 /%{_lib}/libcom_err.so.*
 /%{_lib}/libss.so.*
-#EndUsrMerge
+%endif
 %{_libdir}/libcom_err.so.*
 %{_libdir}/libss.so.*
 
