@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov  6 17:32:37 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 4.4.0:
+  * Breaking changes:
+  ** (scm->json) and (scm->json-string) #:espace keyword argument has been
+     renamed to #:solidus.
+  ** JSON null now defaults to the null symbol. This can be changed in all
+     public functions with the #:null keyword argument.
+  * Various bug fixes
+  * New features
+
+-------------------------------------------------------------------
 Mon Jan 13 21:51:46 UTC 2020 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Make guile-json-rpmlintrc compatible with Guile 3.0 

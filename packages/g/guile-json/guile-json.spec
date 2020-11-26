@@ -17,7 +17,7 @@
 
 
 Name:           guile-json
-Version:        3.2.0
+Version:        4.4.0
 Release:        0
 Summary:        JSON module for Guile
 License:        GPL-3.0-or-later

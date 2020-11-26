@@ -69,4 +69,13 @@ JSON module for guile language, dependency for Guix</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>767040</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7fbde49352deb1c86ba26a55d85d9c2b</srcmd5>
+    <version>4.4.0</version>
+    <time>1606428890</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.4.0, will break Guix 1.1.0. So it only makes sense to merge this when Guix 1.2.0 goes to factory.
+</comment>
+    <requestid>850990</requestid>
+  </revision>
 </revisionlist>
