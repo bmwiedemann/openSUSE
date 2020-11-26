@@ -37,10 +37,8 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Obsoletes:      %{oldpython}-cups < %{version}
 Provides:       %{oldpython}-cups = %{version}
 %endif
-%ifpython3
-Obsoletes:      python3-cups < %{version}
-Provides:       python3-cups = %{version}
-%endif
+Obsoletes:      python-cups < %{version}
+Provides:       python-cups = %{version}
 %python_subpackages
 
 %description

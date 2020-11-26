@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 21 10:49:51 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Let the python-rpm-macros take care of the correct python3
+  provides for all python3 flavors gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Mon Jul  6 08:48:20 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - ignore build requirement of cups-rpm-helper to avoid cycle with cups-devel
