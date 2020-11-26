@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 25 03:07:22 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.004004
+   see /usr/share/doc/packages/perl-Moo/Changes
+
+  2.004004 - 2020-11-25
+    - fix error location test when using core Carp on perl 5.8.9 - 5.10.1
+
+-------------------------------------------------------------------
 Sun Nov 22 03:06:21 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.004003
