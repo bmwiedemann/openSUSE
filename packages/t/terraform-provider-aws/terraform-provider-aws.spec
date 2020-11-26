@@ -22,6 +22,32 @@
 %global repo            terraform-provider-aws
 %global provider_prefix %{provider}.%{provider_tld}/%{project}/%{repo}
 %global import_path     %{provider_prefix}
+%global registry        registry.terraform.io
+%global namespace       hashicorp
+%global providername    aws
+
+%ifarch aarch64
+%define terraformarch   amd64
+%endif
+%ifarch ppc64
+%define terraformarch   ppc64
+%endif
+%ifarch ppc64le
+%define terraformarch   ppc64le
+%endif
+%ifarch s390x
+%define terraformarch   s390x
+%endif
+%ifarch %{ix86}
+%define terraformarch   i386
+%endif
+%ifarch x86_64
+%define terraformarch   amd64
+%endif
+
+%if 0%{?suse_version}
+%{go_nostrip}
+%endif
 
 Name:           terraform-provider-aws
 Version:        3.11.0
@@ -32,9 +58,6 @@ Group:          System/Management
 URL:            https://github.com/terraform-providers/terraform-provider-aws
 Source:         %{repo}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-%if 0%{?suse_version}
-%{go_nostrip}
-%endif
 %if 0%{?ubuntu_version}
 BuildRequires:  debhelper
 BuildRequires:  dh-golang
@@ -68,15 +91,18 @@ Services via Terraform.
 %build
 %{goprep} %{import_path}
 %{gobuild} -mod=vendor ""
-ln -s %{_bindir}/%{name} %{buildroot}%{_bindir}/%{name}_v%{version}
 
 %install
 %{goinstall}
+ln -s %{_bindir}/%{name} %{buildroot}%{_bindir}/%{name}_v%{version}
+install -d 755 %{buildroot}%{_datadir}/terraform/providers/%{registry}/%{namespace}/%{providername}/%{version}/linux_%{terraformarch}
+ln -s %{_bindir}/%{name} %{buildroot}%{_datadir}/terraform/providers/%{registry}/%{namespace}/%{providername}/%{version}/linux_%{terraformarch}/%{name}_v%{version}
 
 %files
 %doc CHANGELOG.md README.md
 %license LICENSE
 %{_bindir}/%{name}
 %{_bindir}/%{name}_v%{version}
+%{_datadir}/terraform
 
 %changelog
