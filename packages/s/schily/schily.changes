@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov 26 10:34:41 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.11.25
+  * libhfs_iso: changed malloc() to calloc() to avoid
+    uninitialized data.
+  * ved: A new colon command (ESC : vhelp) has been added.
+- Remove fix_junk_in_partition.patch (upstreamed)
+
+-------------------------------------------------------------------
+Fri Nov 20 16:38:12 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- fix_junk_in_partition.patch: Initialize memory that created the
+  partition table instead of writing random bytes to it (bsc#1178692)
+
+-------------------------------------------------------------------
 Sat Nov  7 10:50:14 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Move ctags to update-alternatives scheme.
