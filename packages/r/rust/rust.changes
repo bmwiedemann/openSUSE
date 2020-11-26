@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 20 13:40:04 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Make all shared libraries in %{common_libdir} executable; otherwise
+  fdupes will not find any duplicates in %{rustlibdir}.
+
+-------------------------------------------------------------------
+Thu Nov  5 09:27:56 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
+
+- rust-rpmlintrc: Reflect updated LLVM name in the filter.
+
+-------------------------------------------------------------------
 Sun Oct 11 22:43:36 UTC 2020 - William Brown <william.brown@suse.com>
 
 - Update to version 1.47.0

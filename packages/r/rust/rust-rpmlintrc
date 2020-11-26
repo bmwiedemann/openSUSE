@@ -20,4 +20,4 @@ addFilter("clippy.x86_64: W: useless-provides clippy")
 addFilter("rustfmt.x86_64: W: useless-provides rustfmt")
 
 # error when building with bootstrap. ignore for now
-addFilter(".*shlib-policy-name-error.*libLLVM-8.*")
+addFilter(".*shlib-policy-name-error.*libLLVM-11.*")

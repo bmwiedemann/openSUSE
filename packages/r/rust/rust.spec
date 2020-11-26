@@ -518,6 +518,9 @@ rm %{buildroot}%{_docdir}/%{name}/*.old
 # Remove installer artifacts (manifests, uninstall scripts, etc.)
 find %{buildroot}%{rustlibdir} -maxdepth 1 -type f -exec rm -v '{}' '+'
 
+# The shared libraries should be executable to allow fdupes find duplicates.
+find %{buildroot}%{common_libdir} -maxdepth 1 -type f -name '*.so' -exec chmod -v +x '{}' '+'
+
 # The shared libraries should be executable for debuginfo extraction.
 find %{buildroot}%{rustlibdir} -maxdepth 1 -type f -name '*.so' -exec chmod -v +x '{}' '+'
 
