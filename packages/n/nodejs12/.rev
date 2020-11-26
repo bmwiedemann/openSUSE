@@ -379,4 +379,22 @@
 - python3.patch: allows building of node with python3 toolchain</comment>
     <requestid>850259</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ce5eb986da6e1b90bcbad07a1d8fe8b4</srcmd5>
+    <version>12.20.0</version>
+    <time>1606428836</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream LTS version 12.20.0:
+  * deps:
+    + update llhttp '2.1.2' -&gt; '2.1.3'
+    + update uv '1.39.0' -&gt; '1.40.0'
+    + update uvwasi '0.0.10' -&gt; '0.0.11'
+  * fs: add .ref() and .unref() methods to watcher classes
+  * http: added scheduling option to http agent
+  * module:
+    + exports pattern support
+    + named exports for CJS via static analysis
+  * n-api: add more property defaults (gh#35214)</comment>
+    <requestid>850891</requestid>
+  </revision>
 </revisionlist>

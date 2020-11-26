@@ -26,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs12
-Version:        12.19.1
+Version:        12.20.0
 Release:        0
 
 %define node_version_number 12
@@ -246,7 +246,7 @@ Provides:       bundled(openssl) = 1.1.1g
 %if ! 0%{with intree_cares}
 BuildRequires:  pkgconfig(libcares) >= 1.10.0
 %else
-Provides:       bundled(libcares2) = 1.16.0
+Provides:       bundled(libcares2) = 1.16.1
 %endif
 
 %if ! 0%{with intree_icu}
@@ -297,11 +297,11 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 Provides:       bundled(brotli) = 1.0.9
 Provides:       bundled(http-parser) = 2.9.3
-Provides:       bundled(libuv) = 1.39.0
-Provides:       bundled(uvwasi) = 0.0.10
+Provides:       bundled(libuv) = 1.40.0
+Provides:       bundled(uvwasi) = 0.0.11
 Provides:       bundled(v8) = 7.8.279.23
 
-Provides:       bundled(llhttp) = 2.1.2
+Provides:       bundled(llhttp) = 2.1.3
 
 Provides:       bundled(node-acorn) = 7.1.1
 Provides:       bundled(node-acorn-class-fields) = 0.3.1
@@ -310,6 +310,7 @@ Provides:       bundled(node-acorn-private-class-elements) = 0.2.0
 Provides:       bundled(node-acorn-private-methods) = 0.3.0
 Provides:       bundled(node-acorn-static-class-features) = 0.2.0
 Provides:       bundled(node-acorn-walk) = 7.1.1
+Provides:       bundled(node-cjs-module-lexer) = 1.0.0
 Provides:       bundled(node-node-inspect) = 2.0.0
 
 %description
