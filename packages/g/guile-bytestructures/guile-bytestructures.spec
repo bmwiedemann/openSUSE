@@ -17,13 +17,13 @@
 
 
 Name:           guile-bytestructures
-Version:        1.0.7
+Version:        1.0.9
 Release:        0
 Summary:        Bytestructures for Guile
 License:        GPL-3.0-only
 Group:          Development/Libraries/Other
 URL:            https://github.com/TaylanUB/scheme-bytestructures
-Source0:        https://github.com/TaylanUB/scheme-bytestructures/archive/v%{version}.tar.gz
+Source0:        https://github.com/TaylanUB/scheme-bytestructures/archive/%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  guile-devel >= 2.0

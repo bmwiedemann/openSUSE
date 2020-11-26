@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  6 16:56:37 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to version 1.0.9:
+  * two small bug fixes
+- Adjust source url as upstream tag removed 'v' suffix 
+
+-------------------------------------------------------------------
 Mon Jan 13 21:34:03 UTC 2020 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Make files section compatible with Guile 3.0 

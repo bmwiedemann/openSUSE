@@ -40,4 +40,13 @@ dependency for guix</comment>
     <comment>Update and make ready for Guile 3.0</comment>
     <requestid>764387</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0dee226ac3e5e5a6630f3783a911858f</srcmd5>
+    <version>1.0.9</version>
+    <time>1606428878</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.9 for guix 1.2.0
+</comment>
+    <requestid>850984</requestid>
+  </revision>
 </revisionlist>
