@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 16 07:26:20 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
 Mon Aug 31 07:14:12 UTC 2020 - Bernhard Voelker <mail@bernhard-voelker.de>
 
 - gnulib-test-avoid-FP-perror-strerror.patch: Add patch to

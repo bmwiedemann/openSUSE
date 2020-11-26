@@ -68,6 +68,9 @@ BuildRequires:  valgrind
 %if "%{name}" == "coreutils" || "%{name}" == "coreutils-single"
 Provides:       fileutils = %{version}
 Provides:       mktemp = %{version}
+%if 0%{?usrmerged}
+Provides:       /bin/mktemp
+%endif
 Provides:       sh-utils = %{version}
 Provides:       stat = %{version}
 Provides:       textutils = %{version}
@@ -251,6 +254,7 @@ ln -v lib/parse-datetime.{c,y} .
 make install DESTDIR="%buildroot" pkglibexecdir=%{_libdir}/%{name}
 
 #UsrMerge
+%if !0%{?usrmerged}
 install -d %{buildroot}/bin
 for i in arch basename cat chgrp chmod chown cp date dd df echo \
   false ln ls mkdir mknod mktemp mv pwd rm rmdir sleep sort stat \
@@ -258,6 +262,7 @@ for i in arch basename cat chgrp chmod chown cp date dd df echo \
 do
   ln -sf %{_bindir}/$i %{buildroot}/bin/$i
 done
+%endif
 #EndUsrMerge
 echo '.so man1/test.1' > %{buildroot}/%{_mandir}/man1/\[.1
 %if "%{name}" == "coreutils"
@@ -294,7 +299,9 @@ rm -rf %{buildroot}%{_datadir}/locale
 %doc NEWS README THANKS
 %{_bindir}/*
 #UsrMerge
+%if !0%{?usrmerged}
 /bin/*
+%endif
 #EndUsrMerge
 %{_libdir}/%{name}
 
