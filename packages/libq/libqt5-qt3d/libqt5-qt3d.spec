@@ -19,11 +19,12 @@
 %define qt5_snapshot 0
 %define libname libQt53DCore5
 %define base_name libqt5
-%define real_version 5.15.1
-%define so_version 5.15.1
-%define tar_version qt3d-everywhere-src-5.15.1
+%define real_version 5.15.2
+%define so_version 5.15.2
+%define tar_version qt3d-everywhere-src-5.15.2
+%global enable_assimp (0%{?suse_version} >= 1550)
 Name:           libqt5-qt3d
-Version:        5.15.1
+Version:        5.15.2
 Release:        0
 Summary:        Qt 5 3D Addon
 # Legal: some files are GPL-3.0-only WITH Qt-GPL-exception-1.0
@@ -46,6 +47,9 @@ BuildRequires:  perl
 %endif
 BuildRequires:  pkgconfig
 BuildRequires:  xz
+%if %{enable_assimp}
+BuildRequires:  pkgconfig(assimp) > 3.3.1
+%endif
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -395,7 +399,13 @@ the exact Qt version.
 #force the configure script to generate the forwarding headers (it checks whether .git directory exists)
 mkdir .git
 %endif
-%qmake5
+%qmake5 -- \
+%if %{enable_assimp}
+	-system-assimp \
+%else
+	-no-assimp \
+%endif
+
 %make_jobs
 
 %install
@@ -404,15 +414,18 @@ mkdir .git
 # kill .la files
 rm -f %{buildroot}%{_libqt5_libdir}/lib*.la
 
-%fdupes %{buildroot}
+%if %{enable_assimp}
 # put all the binaries to %%_bindir and symlink them back to %%_qt5_bindir
 mkdir -p %{buildroot}%{_bindir}
 pushd %{buildroot}%{_libqt5_bindir}
 for i in * ; do
-      mv $i ../../../bin/
-      ln -s ../../../bin/$i .
+      ln -s %{libqt5_bindir}/$i %{buildroot}%{_bindir}/${i}-qt5
+      ln -s %{libqt5_bindir}/$i %{buildroot}%{_bindir}/${i}
 done
 popd
+%endif
+
+%fdupes %{buildroot}
 
 %files -n %{libname}
 %defattr(-,root,root,755)
@@ -441,7 +454,7 @@ popd
 %dir %{_libqt5_libdir}/qt5/plugins/sceneparsers
 %{_libqt5_libdir}/qt5/plugins/sceneparsers/libgltfsceneimport.so
 %{_libqt5_libdir}/qt5/plugins/sceneparsers/libgltfsceneexport.so
-%if 0%{?suse_version} >= 1500
+%if %{enable_assimp}
 %{_libqt5_libdir}/qt5/plugins/sceneparsers/libassimpsceneimport.so
 %endif
 %dir %{_libqt5_libdir}/qt5/plugins/geometryloaders
@@ -490,8 +503,11 @@ popd
 %files tools
 %defattr(-,root,root,755)
 %license LICENSE.*
+%if %{enable_assimp}
 %{_bindir}/qgltf
+%{_bindir}/qgltf-qt5
 %{_libqt5_bindir}/qgltf
+%endif
 
 %files examples
 %defattr(-,root,root,755)

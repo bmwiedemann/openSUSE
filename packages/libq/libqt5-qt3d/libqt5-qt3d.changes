@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 20 12:08:42 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.2:
+  * New bugfix release
+  * For more details please see:
+    http://code.qt.io/cgit/qt/qt3d.git/plain/dist/changes-5.15.2/?h=5.15.2
+- Use only the system provided assimp, which is only available on TW for now
+- Link from Qt bindir into %_bindir, not the other way around to fix
+  applicationDirPath called from Qt binaries
+- Add -qt5 suffix to all binaries in %_bindir
+
+-------------------------------------------------------------------
 Thu Sep 10 07:56:59 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.15.1:
