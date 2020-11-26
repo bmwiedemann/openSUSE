@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 22 09:18:32 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 10.0.4
+  * Fix a handful of integer overflows.
+
+-------------------------------------------------------------------
 Fri Oct 30 13:30:09 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 10.0.3

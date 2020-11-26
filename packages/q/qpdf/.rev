@@ -616,4 +616,13 @@
     for a complete changelog.</comment>
     <requestid>845210</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>3ec25931d179d6e55e1cee351cb9a129</srcmd5>
+    <version>10.0.4</version>
+    <time>1606428628</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 10.0.4
+  * Fix a handful of integer overflows.</comment>
+    <requestid>849955</requestid>
+  </revision>
 </revisionlist>
