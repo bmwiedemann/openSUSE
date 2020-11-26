@@ -1,7 +1,7 @@
 #
 # spec file for package fillup
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Release:        0
 Summary:        Tool for Merging Config Files
 License:        GPL-2.0-or-later
 Group:          System/Base
-Url:            http://github.com/openSUSE/fillup
+URL:            http://github.com/openSUSE/fillup
 Source:         fillup-%{version}.tar.bz2
 Patch0:         fillup-optflags.patch
 Patch1:         fillup-warnings.dif
@@ -65,11 +65,12 @@ install -m 755 BIN/fillup %{buildroot}/%{_bindir}
 install -d %{buildroot}/%{_mandir}/man8
 install -m 644 SGML/fillup.8.gz %{buildroot}/%{_mandir}/man8
 
-#UsrMerge - There are literally hundreds of rpm scritps referencing /bin/fillup (suse macro)
+%if !0%{?usrmerged}
+# There are literally hundreds of rpm scritps referencing /bin/fillup (suse macro)
 # So let's at least keep the symlink there for now (DimStar - 2014-10-31)
 install -d -m 755 $RPM_BUILD_ROOT/bin
 ln -sf %{_bindir}/fillup $RPM_BUILD_ROOT/bin
-#EndUserMerge
+%endif
 
 %check
 make %{?_smp_mflags} test    OPTISPLUS="%{optflags}"
@@ -77,7 +78,9 @@ make %{?_smp_mflags} test    OPTISPLUS="%{optflags}"
 %files
 %defattr(-,root,root)
 # rpm scriptlets still use this, based on %*fillup* macros
+%if !0%{?usrmerged}
 /bin/fillup
+%endif
 %{_bindir}/fillup
 %{_mandir}/man8/fillup*
 
