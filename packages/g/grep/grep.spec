@@ -17,7 +17,7 @@
 
 
 Name:           grep
-Version:        3.5
+Version:        3.6
 Release:        0
 Summary:        Print lines matching a pattern
 License:        GPL-3.0-or-later
@@ -27,6 +27,7 @@ Source0:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
 Source2:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source3:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=grep&download=1#/%{name}.keyring
 Source4:        profile.sh
+Patch0:         werror-return-type.patch
 BuildRequires:  fdupes
 BuildRequires:  makeinfo
 BuildRequires:  pcre-devel
@@ -42,6 +43,7 @@ match to a specified pattern.  By default, grep prints the matching lines.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure \
@@ -62,12 +64,12 @@ make %{?_smp_mflags} check
 
 %install
 %make_install
-#UsrMerge
+%if !0%{?usrmerged}
 install -d %{buildroot}/bin
 ln -sf %{_bindir}/egrep %{buildroot}/bin/egrep
 ln -sf %{_bindir}/fgrep %{buildroot}/bin/fgrep
 ln -sf %{_bindir}/grep %{buildroot}/bin/grep
-#EndUsrMerge
+%endif
 %fdupes -s %{buildroot}
 %find_lang %{name}
 
@@ -81,11 +83,11 @@ ln -sf %{_bindir}/grep %{buildroot}/bin/grep
 %defattr(-,root,root)
 %license COPYING
 %doc README AUTHORS NEWS THANKS TODO ChangeLog*
-#UsrMerge
+%if !0%{?usrmerged}
 /bin/egrep
 /bin/fgrep
 /bin/grep
-#EndUsrMerge
+%endif
 %{_bindir}/egrep
 %{_bindir}/fgrep
 %{_bindir}/grep

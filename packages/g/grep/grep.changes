@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Nov  9 15:47:58 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Update to grep 3.6
+
+  * The GREP_OPTIONS environment variable no longer affects grep's behavior.
+  * grep's DFA matcher performed an invalid regex transformation
+    that would convert an ERE like a+a+a+ to a+a+, which would make
+    grep a+a+a+ mistakenly match "aa".
+  * grep -P now reports the troublesome input filename upon PCRE execution
+    failure.
+- werror-return-type.patch: work around gcc bug
+
+-------------------------------------------------------------------
+Fri Oct 30 10:12:18 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
 Mon Sep 28 08:54:47 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - grep 3.5:
