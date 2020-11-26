@@ -170,4 +170,17 @@
   * Fixed a resource leak connected to using ServiceBrowser with multiple types</comment>
     <requestid>834888</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d6528e4ca31e2f78ed5f610d272cec37</srcmd5>
+    <version>0.28.6</version>
+    <time>1606428913</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.28.6:
+  * Loosened service name validation when receiving from the network this lets us handle
+  some real world devices previously causing errors
+  * Enabled ignoring duplicated messages which decreases CPU usage
+  * Fixed spurious AttributeError: module 'unittest' has no attribute 'mock'
+  * Improved cache reaper performance significantly</comment>
+    <requestid>850926</requestid>
+  </revision>
 </revisionlist>
