@@ -18,11 +18,11 @@
 
 %define qt5_snapshot 0
 %define base_name libqt5
-%define real_version 5.15.1
-%define so_version 5.15.1
-%define tar_version qttranslations-everywhere-src-5.15.1
+%define real_version 5.15.2
+%define so_version 5.15.2
+%define tar_version qttranslations-everywhere-src-5.15.2
 Name:           libqt5-qttranslations
-Version:        5.15.1
+Version:        5.15.2
 Release:        0
 Summary:        Qt 5 translations
 License:        GPL-3.0-only WITH Qt-GPL-exception-1.0
