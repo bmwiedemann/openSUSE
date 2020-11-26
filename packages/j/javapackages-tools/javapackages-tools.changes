@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Nov 22 00:23:21 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix the python subpackage generation
+  gh#openSUSE/python-rpm-macros#79
+
+-------------------------------------------------------------------
+Sat Nov 21 13:05:38 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Support python subpackages for each flavor
+  gh#openSUSE/python-rpm-macros#66
+- Replace old nose with pytest gh#fedora-java/javapackages#86
+
+-------------------------------------------------------------------
 Mon Sep  7 12:50:32 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - when building extra flavor, BuildRequire javapackages-filesystem:

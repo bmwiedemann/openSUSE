@@ -24,6 +24,8 @@
 %bcond_with python
 %endif
 %if %{with python}
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           javapackages-tools-%{flavor}
 %else
 Name:           javapackages-tools
@@ -58,11 +60,20 @@ Provides:       jpackage-utils = %{version}
 Obsoletes:      %{name}-doc
 Obsoletes:      jpackage-utils < %{version}
 %if %{with python}
-BuildRequires:  python3-lxml
-BuildRequires:  python3-nose
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-six
+BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+%if 0%{?python38_version_nodots}
+# if python multiflavor is in place yet, use it to generate subpackages
+%define python_subpackage_only 1
+%python_subpackages
+%else
+%define python_sitearch %python3_sitearch
+%define python_files() -n python3-%{**}
+%endif
 %else
 Provides:       mvn(com.sun:tools) = SYSTEM
 Provides:       mvn(sun.jdk:jconsole) = SYSTEM
@@ -101,6 +112,18 @@ Requires:       javapackages-tools = %{version}
 This package contains files needed by local mode fow Apache Ivy, which
 allows artifact resolution using XMvn resolver.
 
+%if 0%{?python_subpackage_only}
+%package -n python-javapackages
+Summary:        Module for handling various files for Java packaging
+Group:          Development/Languages/Java
+Requires:       python-lxml
+Requires:       python-six
+
+%description -n python-javapackages
+Module for handling, querying and manipulating of various files for Java
+packaging in Linux distributions
+
+%else
 %package -n python3-javapackages
 Summary:        Module for handling various files for Java packaging
 Group:          Development/Languages/Java
@@ -112,6 +135,7 @@ Provides:       python-javapackages = %{version}-%{release}
 %description -n python3-javapackages
 Module for handling, querying and manipulating of various files for Java
 packaging in Linux distributions
+%endif
 
 %package -n javapackages-local
 Summary:        Non-essential macros and scripts for Java packaging support
@@ -142,7 +166,7 @@ perl -pi -e "s#usr/lib#${new_dir}#g" configs/*.xml
 ./build
 %if %{with python}
 pushd python
-python3 setup.py build
+%python_build
 popd
 %endif
 
@@ -152,7 +176,7 @@ sed -e 's/.[17]$/&.gz/' -e 's/.py$/&*/' -i files-*
 
 %if %{with python}
 pushd python
-python3 setup.py install --root %{buildroot}
+%python_install
 popd
 # kill all the common files
 files="
@@ -193,7 +217,22 @@ rm -rf %{buildroot}%{_datadir}/fedora-review/
 %fdupes %{buildroot}/%{_prefix}
 
 %check
-./check
+# reference: ./check, but we don't want to check coverage and don't need old nose
+(
+. ./config.status
+for test in test/java-functions/*_test.sh; do
+    echo "`basename $test`:"
+    sh $test
+done
+)
+%if %{with python}
+pushd ./python
+%pytest
+popd
+pushd ./test
+%pytest
+popd
+%endif
 
 %if !%{with python}
 %files -f files-tools
@@ -211,9 +250,9 @@ rm -rf %{buildroot}%{_datadir}/fedora-review/
 %files -n javapackages-ivy -f files-ivy
 %dir %{_sysconfdir}/ant.d
 
-%files -n python3-javapackages
+%files %{python_files javapackages}
 %license LICENSE
-%{python3_sitelib}/javapackages*
+%{python_sitelib}/javapackages*
 %endif
 
 %changelog
