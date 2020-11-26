@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 23 17:29:28 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add compiler-rt-dont-compile-assembly-files-as-c.patch to fix
+  build failure with newer CMake versions.
+
+-------------------------------------------------------------------
+Sat Nov 14 22:09:41 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Let CMake files in {llvm,clang}X-devel refer to the versioned
+  binaries that come with the package instead of the symlink
+  managed by update-alternatives. (boo#1178513)
+
+-------------------------------------------------------------------
 Sat Oct 24 15:12:33 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Disable ThinLTO on aarch64 because of hangs. (boo#1178070)

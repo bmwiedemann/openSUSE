@@ -129,6 +129,8 @@ Patch26:        lld-default-sha1.patch
 # PATCH-FIX-OPENSUSE llvm-exegesis-link-dylib.patch -- Don't waste space for llvm-exegesis.
 # It's crippled anyway because of missing deps and not relevant for users. Eventually we should drop it.
 Patch27:        llvm-exegesis-link-dylib.patch
+# PATCH-FIX-UPSTREAM compiler-rt-dont-compile-assembly-files-as-c.patch -- https://reviews.llvm.org/D86308
+Patch28:        compiler-rt-dont-compile-assembly-files-as-c.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -550,6 +552,7 @@ This package contains the development files for Polly.
 %patch22 -p1
 %patch24 -p1
 %patch27 -p2
+%patch28 -p1
 
 pushd clang-%{_version}.src
 %patch2 -p1
@@ -991,6 +994,13 @@ for p in "${manfiles[@]}" ; do
     mv %{buildroot}%{_mandir}/man1/$p.1 %{buildroot}%{_mandir}/man1/$p-%{_relver}.1
     ln -s -f %{_sysconfdir}/alternatives/$p.1%{ext_man} %{buildroot}%{_mandir}/man1/$p.1%{ext_man}
 done
+
+# Also rewrite the CMake files referring to the binaries.
+sed -i "$(
+    for p in "${binfiles[@]}"; do
+        echo "s|\"\${_IMPORT_PREFIX}/bin/$p\"|\"\${_IMPORT_PREFIX}/bin/$p-%{_relver}\"|g"
+    done
+)" %{buildroot}%{_libdir}/cmake/{llvm/LLVMExports,clang/ClangTargets}-relwithdebinfo.cmake
 
 # rpm macro for version checking
 mkdir -p %{buildroot}%{_rpmconfigdir}/macros.d/
