@@ -1,7 +1,7 @@
 #
 # spec file for package dosfstools
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           dosfstools
 Version:        4.1
 Release:        0
 Summary:        Utilities for Making and Checking MS-DOS FAT File Systems on Linux
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/Filesystems
-Url:            https://github.com/dosfstools/dosfstools
+URL:            https://github.com/dosfstools/dosfstools
 Source:         https://github.com/dosfstools/dosfstools/releases/download/v%{version}/dosfstools-%{version}.tar.gz
 Source2:        https://github.com/dosfstools/dosfstools/releases/download/v%{version}/dosfstools-%{version}.tar.gz.sig
 Source3:        %{name}.keyring
@@ -51,10 +51,10 @@ make %{?_smp_mflags} CFLAGS="%{optflags} -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS
 
 %install
 %make_install
-#UsrMerge
+%if !0%{?usrmerged}
 mkdir %{buildroot}/sbin
 ln -sf %{_sbindir}/{dosfsck,dosfslabel,mkdosfs,fsck.msdos,mkfs.msdos,fsck.fat,fsck.vfat,mkfs.fat,mkfs.vfat} %{buildroot}/sbin
-#EndUsrMerge
+%endif
 
 %check
 make check
@@ -62,9 +62,9 @@ make check
 %files
 %defattr(-,root,root)
 %doc %{_docdir}/dosfstools
-#UsrMerge
+%if !0%{?usrmerged}
 /sbin/*
-#EndUsrMerge
+%endif
 %{_sbindir}/dosfsck
 %{_sbindir}/dosfslabel
 %{_sbindir}/fatlabel
