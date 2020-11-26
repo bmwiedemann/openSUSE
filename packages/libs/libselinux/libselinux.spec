@@ -107,7 +107,7 @@ mkdir -p %{buildroot}/%{_lib}
 mkdir -p %{buildroot}%{_libdir}
 mkdir -p %{buildroot}%{_includedir}
 mkdir -p %{buildroot}%{_sbindir}
-make DESTDIR=%{buildroot} LIBDIR="%{_libdir}" SHLIBDIR="/%{_lib}" BINDIR="%{_sbindir}" install
+make DESTDIR=%{buildroot} LIBDIR="%{_libdir}" SHLIBDIR="%{_libdir}" BINDIR="%{_sbindir}" install
 mv %{buildroot}%{_sbindir}/getdefaultcon %{buildroot}%{_sbindir}/selinuxdefcon
 mv %{buildroot}%{_sbindir}/getconlist %{buildroot}%{_sbindir}/selinuxconlist
 install -m 0755 %{SOURCE1} %{buildroot}%{_sbindir}/selinux-ready
@@ -150,7 +150,7 @@ install -m 0755 %{SOURCE1} %{buildroot}%{_sbindir}/selinux-ready
 %{_mandir}/ru/man8/*
 
 %files -n libselinux1
-/%{_lib}/libselinux.so.*
+%{_libdir}/libselinux.so.*
 
 %files devel
 %{_libdir}/libselinux.so
