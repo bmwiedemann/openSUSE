@@ -125,4 +125,12 @@ For details, see https://c-ares.haxx.se/changelog.html
 - fix building on SLE12 systems</comment>
     <requestid>849356</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>9d5e8622d1800fc3d286fea0de371dd2</srcmd5>
+    <version>1.17.0</version>
+    <time>1606428639</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849957</requestid>
+  </revision>
 </revisionlist>

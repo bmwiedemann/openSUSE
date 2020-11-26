@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 21 23:16:21 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- add BR for pkg-config to get the provides in the devel package
+
+-------------------------------------------------------------------
 Thu Nov 19 09:51:18 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - ares_dns.h, missing_header.patch: re-add missing header in last release

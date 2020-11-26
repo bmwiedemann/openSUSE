@@ -63,6 +63,7 @@ BuildRequires:  gcc-c++
 # Needed for getservbyport_r function to work properly.
 BuildRequires:  netcfg
 %endif
+BuildRequires:  pkg-config
 
 %description
 c-ares is a C library that performs DNS requests and name resolves
