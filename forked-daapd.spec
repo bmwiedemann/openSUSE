@@ -29,7 +29,7 @@
 Summary:        DAAP server for iTunes and Chromecast with MPD and RSP support
 License:        GPL-2.0-or-later
 Name:           forked-daapd
-Version:        27.1
+Version:        27.2
 Release:        0
 URL:            https://github.com/ejurgensen/forked-daapd
 Source0:        https://github.com/ejurgensen/forked-daapd/releases/download/%{version}/%{name}-%{version}.tar.xz
