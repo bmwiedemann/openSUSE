@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 17 13:48:06 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version master:
+  * Permissions: be robust against variables.conf not existing
+  * CheckSUIDPermissions: enhance parser to support new permissions variables
+
+-------------------------------------------------------------------
 Wed Nov  4 16:18:54 UTC 2020 - Malte Kraus <malte.kraus@suse.com>
 
 - allow pam_faillock.so PAM module (bsc#1171562)
