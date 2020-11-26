@@ -150,6 +150,7 @@ make -C unix install install-private-headers \
 	TCL_LIBRARY="%scriptdir/tcl%TCL_MINOR" 
 rm -f %buildroot%scriptdir/tcl%TCL_MINOR/ldAix
 ln -sf tclsh%TCL_MINOR %buildroot%_prefix/bin/tclsh
+ln -sf tclsh.1.gz %buildroot%_mandir/man1/tclsh%TCL_MINOR.1.gz
 mkdir -p %buildroot%_datadir/tcl
 install -D %{S:3} -m 644 %buildroot/etc/rpm/macros.tcl
 

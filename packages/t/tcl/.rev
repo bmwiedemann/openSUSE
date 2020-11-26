@@ -605,4 +605,12 @@ sqlite3 patch I will submit in a moment.</comment>
     <comment></comment>
     <requestid>841275</requestid>
   </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>d6947a3b0cfb681c4d9ca0eef4e98413</srcmd5>
+    <version>8.6.10</version>
+    <time>1606428516</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a manpage symlink for tclsh8.6.</comment>
+    <requestid>849577</requestid>
+  </revision>
 </revisionlist>
