@@ -547,4 +547,12 @@ Prompted by an error of 'osc service localrun download_files'.
   'test-strerror_r', visible on armv7l.</comment>
     <requestid>830936</requestid>
   </revision>
+  <revision rev="65" vrev="6">
+    <srcmd5>3244aec392d56a2ce42962c24b99ed79</srcmd5>
+    <version>4.7.0</version>
+    <time>1606428559</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849802</requestid>
+  </revision>
 </revisionlist>

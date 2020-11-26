@@ -107,10 +107,10 @@ make DESTDIR=%{buildroot} install
 
 rm -f %{buildroot}%{_infodir}/find-maint*
 %find_lang %{name}
-#UsrMerge
+%if !0%{?usrmerged}
 mkdir -p %{buildroot}/bin
 ln -sf %{_bindir}/find %{buildroot}/bin
-#UsrMerge
+%endif
 
 rm %{buildroot}%{_bindir}/locate
 rm %{buildroot}%{_bindir}/updatedb
@@ -129,9 +129,9 @@ rm %{buildroot}%{_mandir}/man5/locatedb.5*
 %defattr(-,root,root,-)
 %license COPYING
 %doc AUTHORS NEWS README THANKS TODO
-#UsrMerge
+%if !0%{?usrmerged}
 /bin/find
-#UsrMerge
+%endif
 %{_bindir}/find
 %{_bindir}/xargs
 %doc %{_infodir}/find.info*.gz
