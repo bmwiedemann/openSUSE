@@ -1,6 +1,8 @@
---- nls/compose.dir.pre.orig	2007-10-26 10:38:23.854146750 +0200
-+++ nls/compose.dir.pre	2007-10-26 10:38:51.159853250 +0200
-@@ -141,6 +141,7 @@
+Index: nls/compose.dir.pre
+===================================================================
+--- nls/compose.dir.pre.orig
++++ nls/compose.dir.pre
+@@ -171,6 +171,7 @@ georgian-academy/Compose:	ka_GE.GEORGIAN
  georgian-ps/Compose:		ka_GE.GEORGIAN-PS
  iso8859-1/Compose:		kl_GL.ISO8859-1
  iso8859-15/Compose:		kl_GL.ISO8859-15
