@@ -102,9 +102,9 @@ mkdir -p %{buildroot}/{usr/bin,bin}
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -sf %{_sysconfdir}/alternatives/mt %{buildroot}%{_bindir}/mt
 ln -sf %{_sysconfdir}/alternatives/mt.1%{ext_man} %{buildroot}%{_mandir}/man1/mt.1%{ext_man}
-#UsrMerge
+%if !0%{?usrmerged}
 ln -sf %{_bindir}/cpio %{buildroot}/bin
-#EndUsrMerge
+%endif
 
 %find_lang %{name}
 
@@ -130,9 +130,9 @@ fi
 %files
 %license COPYING
 %doc NEWS ChangeLog
-#UsrMerge
+%if !0%{?usrmerged}
 /bin/cpio
-#EndUsrMerge
+%endif
 %{_bindir}/cpio
 %{_infodir}/cpio.info%{?ext_info}
 %{_mandir}/man1/cpio.1%{?ext_man}
