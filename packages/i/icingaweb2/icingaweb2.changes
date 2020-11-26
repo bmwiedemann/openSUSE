@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 26 09:26:13 UTC 2020 - Eric Schirra <ecsos@opensuse.org>
+
+- Add missing requires php-curl, php-imagick.
+- Add a2enmod mod_php and mod_rewrite at post section.
+
+-------------------------------------------------------------------
 Sat Aug 22 15:00:54 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.8.2

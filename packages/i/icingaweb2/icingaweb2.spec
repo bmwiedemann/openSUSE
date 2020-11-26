@@ -151,7 +151,7 @@ Requires:       %{php}-gd %{php}-intl %{php}-mbstring
 Requires:       %{name}-vendor-zf1 = %{version}-%{release}
 %{?amzn:Requires:           %{php}-pecl-imagick}
 %{?fedora:Requires:         php-pecl-imagick}
-%{?suse_version:Requires:   %{php}-gettext %{php}-json %{php}-openssl %{php}-posix %{php}-ctype %{php}-pdo %{php}-xml}
+%{?suse_version:Requires:   %{php}-gettext %{php}-json %{php}-openssl %{php}-posix %{php}-ctype %{php}-pdo %{php}-xml %{php}-imagick %{php}-curl}
 
 %description -n php-Icinga
 Icinga Web 2 PHP library.
@@ -335,6 +335,27 @@ usermod -A icingacmd,%{icingawebgroup} %{wwwuser}
 usermod -a -G icingacmd,%{icingawebgroup} %{wwwuser}
 %endif
 exit 0
+
+%post
+# enable required apache modules
+if [ -x %{_sbindir}/a2enmod ]; then
+   echo "Info: adding rewrite to APACHE_MODULES..."
+   %{_sbindir}/a2enmod rewrite >/dev/null || :
+fi
+
+%post -n php-Icinga
+# enable required apache modules
+if [ -x %{_sbindir}/a2enmod ]; then
+  a2enmod -q version || a2enmod version
+  # get installed php_version (5 or 7)
+  # ap_mpm=$(awk '/Server MPM/ {print $3}' <<<$(start_apache2 -V))
+  # php_version=$(awk -F[." "] '/cli/ {print $2}' <<< $(php -v))
+  php_version=$(php -v | sed -n 's/^PHP\ \([[:digit:]]\+\)\..*$/\1/p')
+  if [[ -n ${php_version} ]] && start_apache2 -V | grep -q prefork; then
+    echo "Info: adding php${php_version} to APACHE_MODULES..."
+    a2enmod -q "php${php_version}" || a2enmod "php${php_version}"
+  fi
+fi
 
 %files
 %defattr(-,root,root)
