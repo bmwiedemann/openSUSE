@@ -26,4 +26,18 @@ dependency of guix</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>765947</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3e0442afbe8561db63fa213aa1598e36</srcmd5>
+    <version>0.0.4</version>
+    <time>1606428896</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.0.4:
+  * Add Guile 3.0 support.
+  * Fix unit-parse.
+  * Add support for nvme, ram and pmem.
+- Remove patch:
+  * support-guile-3.0.patch: support added in release
+</comment>
+    <requestid>850993</requestid>
+  </revision>
 </revisionlist>

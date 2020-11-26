@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov  6 17:41:35 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 0.0.4:
+  * Add Guile 3.0 support.
+  * Fix unit-parse.
+  * Add support for nvme, ram and pmem.
+- Remove patch:
+  * support-guile-3.0.patch: support added in release
+
+-------------------------------------------------------------------
 Mon Jan 13 22:47:18 UTC 2020 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Add patch:
