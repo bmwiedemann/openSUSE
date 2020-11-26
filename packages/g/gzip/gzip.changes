@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 16 09:48:53 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
 Wed Sep  2 14:12:24 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - Enable DFLTCC compression for s390x for levels 1-6 (i. e. to make

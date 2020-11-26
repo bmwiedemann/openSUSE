@@ -106,10 +106,10 @@ done
 
 %install
 %make_install
-#UsrMerge
+%if !0%{?usrmerged}
 mkdir -p %{buildroot}/bin
 ln -sf %{_bindir}/gzip %{_bindir}/gunzip %{_bindir}/zcat %{buildroot}/bin
-#EndUsrMerge
+%endif
 ln -sf zmore %{buildroot}%{_bindir}/zless
 ln -sf zmore.1 %{buildroot}%{_mandir}/man1/zless.1
 
@@ -122,11 +122,11 @@ ln -sf zmore.1 %{buildroot}%{_mandir}/man1/zless.1
 %files
 %license COPYING
 %doc README AUTHORS ChangeLog TODO NEWS THANKS
-#UsrMerge
+%if !0%{?usrmerged}
 /bin/gunzip
 /bin/gzip
 /bin/zcat
-#EndUsrMerge
+%endif
 %{_bindir}/gunzip
 %{_bindir}/gzexe
 %{_bindir}/gzip
