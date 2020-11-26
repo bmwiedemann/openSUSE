@@ -16,7 +16,35 @@
 #
 
 
-# Make sure that the binary is not getting stripped.
+%global provider        github
+%global provider_tld    com
+%global project         hashicorp
+%global repo            terraform-provider-vsphere
+%global provider_prefix %{provider}.%{provider_tld}/%{project}/%{repo}
+%global import_path     %{provider_prefix}
+%global registry        registry.terraform.io
+%global namespace       hashicorp
+%global providername    vsphere
+
+%ifarch aarch64
+%define terraformarch   amd64
+%endif
+%ifarch ppc64
+%define terraformarch   ppc64
+%endif
+%ifarch ppc64le
+%define terraformarch   ppc64le
+%endif
+%ifarch s390x
+%define terraformarch   s390x
+%endif
+%ifarch %{ix86}
+%define terraformarch   i386
+%endif
+%ifarch x86_64
+%define terraformarch   amd64
+%endif
+
 %if 0%{?suse_version}
 %{go_nostrip}
 %endif
@@ -28,7 +56,7 @@ Summary:        Terraform vSphere provider
 License:        MPL-2.0
 Group:          System/Management
 URL:            https://github.com/terraform-providers/terraform-provider-vsphere
-Source:         %{name}-%{version}.tar.xz
+Source:         %{repo}-%{version}.tar.xz
 %if 0%{?suse_version}
 BuildRequires:  golang-packaging
 BuildRequires:  xz
@@ -46,20 +74,23 @@ BuildRequires:  xz
 This is a terraform provider that lets you provision servers on a VMWare vSphere server.
 
 %prep
-%setup -q
+%setup -q -n %{repo}-%{version}
 
 %build
-%{goprep} github.com/hashicorp/terraform-provider-vsphere
+%{goprep} %{import_path}
 %{gobuild} -mod=vendor ""
-ln -s %{_bindir}/%{name} %{buildroot}%{_bindir}/%{name}_v%{version}
 
 %install
 %{goinstall}
+ln -s %{_bindir}/%{name} %{buildroot}%{_bindir}/%{name}_v%{version}
+install -d 755 %{buildroot}%{_datadir}/terraform/providers/%{registry}/%{namespace}/%{providername}/%{version}/linux_%{terraformarch}
+ln -s %{_bindir}/%{name} %{buildroot}%{_datadir}/terraform/providers/%{registry}/%{namespace}/%{providername}/%{version}/linux_%{terraformarch}/%{name}_v%{version}
 
 %files
 %license LICENSE
 %doc CHANGELOG.md README.md
 %{_bindir}/%{name}
 %{_bindir}/%{name}_v%{version}
+%{_datadir}/terraform
 
 %changelog
