@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Nov 25 16:10:54 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- Fix Source URL
+
+-------------------------------------------------------------------
+Sun Nov 22 08:30:52 UTC 2020 - svalx@svalx.net
+
+- Update to version 1.4:
+  * show default tape device in usage output (Iustin Pop)
+  * improve parsing of the stinit.def configuration file to detect and flag some of the possible errors,
+    and add tests to prevent regressions (Iustin Pop)
+  * add LTO-8 (hrchu) and LTO-7 formatted as M8 (Iustin Pop) density codes
+  * internal code improvements for issues flagged by Coverity scan warnings (Gris Ge)
+  * add bash auto-completion file (Paweł Marciniak)
+  * don't strip anymore binaries on installation, as nowadays this is the job of package managers (Dan Horák)
+- Cleanup with spec-cleaner
+
+-------------------------------------------------------------------
 Thu Mar 17 11:19:21 UTC 2017 - svalx@svalx.net
 
 - Switch binaries to alternatives system
