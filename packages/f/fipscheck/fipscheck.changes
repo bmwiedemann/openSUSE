@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 20 09:50:32 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- move libs to %_libdir (boo#1029961)
+
+-------------------------------------------------------------------
 Mon Sep 16 10:48:51 UTC 2019 - Vítězslav Čížek <vcizek@suse.com>
 
 - Remove #include of unused fips.h to fix build with OpenSSL 1.1.1

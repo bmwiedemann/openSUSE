@@ -1,7 +1,7 @@
 #
 # spec file for package fipscheck
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,7 +63,7 @@ This package contains development files for %{name}.
 %patch2 -p1
 
 %build
-%configure --disable-static --libdir=/%{_lib}
+%configure --disable-static
 
 make %{?_smp_mflags} LDFLAGS="-Wl,-z,relro"
 
@@ -73,17 +73,13 @@ make %{?_smp_mflags} LDFLAGS="-Wl,-z,relro"
     %{__arch_install_post} \
     %__os_install_post \
     %{buildroot}%{_bindir}/fipshmac %{buildroot}%{_bindir}/fipscheck \
-    %{buildroot}%{_bindir}/fipshmac %{buildroot}/%{_lib}/libfipscheck.so.%{soversion} \
-    ln -s .libfipscheck.so.%{soversion}.hmac %{buildroot}/%{_lib}/.libfipscheck.so.%{somajor}.hmac \
+    %{buildroot}%{_bindir}/fipshmac %{buildroot}/%{_libdir}/libfipscheck.so.%{soversion} \
+    ln -s .libfipscheck.so.%{soversion}.hmac %{buildroot}/%{_libdir}/.libfipscheck.so.%{somajor}.hmac \
 %{nil}
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-
-mkdir -p %{buildroot}%{_libdir}
-ln -s  /%{_lib}/libfipscheck.so.%{soversion} %{buildroot}%{_libdir}/libfipscheck.so
-rm %{buildroot}/%{_lib}/libfipscheck.so
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
@@ -96,8 +92,8 @@ rm %{buildroot}/%{_lib}/libfipscheck.so
 %{_bindir}/fipshmac
 
 %files -n %{lname}
-/%{_lib}/libfipscheck.so.*
-/%{_lib}/.libfipscheck.so.*
+%{_libdir}/libfipscheck.so.*
+%{_libdir}/.libfipscheck.so.*
 %{_mandir}/man8/*.8%{?ext_man}
 
 %files devel
