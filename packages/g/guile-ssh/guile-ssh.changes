@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov  6 17:51:15 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 0.13.1:
+  * API change: 'call-with-ssh-forward' does not start a thread
+  * API change: add 'nodelay' option for Guile-SSH sessions
+  * Fix some random segfaults in the channel and session code
+  * Add support for macOS
+  * Disable libguile-ssh static library
+  * Don't use deprecated libssh procedures
+  * Fix segfaults on GC'ing
+  * Channels procedures now check if the parent session is alive
+  * Changes in documentation
+- Update library to 13
+
+-------------------------------------------------------------------
 Tue Jan  7 14:54:46 UTC 2020 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Update to version 0.12.0:

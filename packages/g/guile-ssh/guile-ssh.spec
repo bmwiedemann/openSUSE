@@ -16,10 +16,10 @@
 #
 
 
-%define         libsoname lib%{name}12
+%define         libsoname lib%{name}13
 
 Name:           guile-ssh
-Version:        0.12.0
+Version:        0.13.1
 Release:        0
 Summary:        SSH protocol access from Guile
 License:        GPL-3.0-or-later

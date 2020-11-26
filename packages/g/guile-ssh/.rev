@@ -42,4 +42,23 @@ Upstream doesn't have a solution yet, but I'll follow the issue there...
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>764335</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2711e0d088ec9f8976581e8456967bee</srcmd5>
+    <version>0.13.1</version>
+    <time>1606428899</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.1:
+  * API change: 'call-with-ssh-forward' does not start a thread
+  * API change: add 'nodelay' option for Guile-SSH sessions
+  * Fix some random segfaults in the channel and session code
+  * Add support for macOS
+  * Disable libguile-ssh static library
+  * Don't use deprecated libssh procedures
+  * Fix segfaults on GC'ing
+  * Channels procedures now check if the parent session is alive
+  * Changes in documentation
+- Update library to 13
+</comment>
+    <requestid>850995</requestid>
+  </revision>
 </revisionlist>
