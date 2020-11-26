@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Nov 23 19:50:22 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 2.4.5
+  * Features
+    - disable caching token introspection results by setting
+      OIDCOAuthTokenIntrospectionInterval to -1
+    - add exec support to OIDCCryptoPassphrase
+    - delete stale session cookies that aren't in the cache
+    - allow OIDCDiscoverURL to be a relative URL
+    - add OIDCCABundlePath for configuring path to curl CA bundle
+  * Bugfixes
+    - enable authentication of sub-requests when the main request
+      doesn't require authentication
+    - fix content processing for info and JWKs handler so mod_headers etc. 
+      work; closes #497
+    - avoid Apache 2.4 appending 401 HTML document text to step-up 
+      authentication HTML refresh page; closes #484
+    - add config check for OIDCCryptoPassphrase in OAuth 2.0 RS setup with 
+      cache encryption enabled
+    - populate AUTH_TYPE when performing authentication
+    - improve sanity checking on Redis reply
+  * Security
+    - ensure that sub is returned from the userinfo endpoint following
+      https://openid.net/specs/openid-connect-core-1_0.html#UserInfoResponse;
+      prevents potential ID spoofing
+    - don't printout JSON errors about NULL characters in error log
+    - restrict printout of JSON parsing errors to 4096 bytes
+
+-------------------------------------------------------------------
 Wed Sep  9 17:42:14 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Update to version 2.4.4.1

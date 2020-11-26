@@ -167,4 +167,12 @@ Bugfixes
     - the libcjose &amp;gt;= 0.5.1 binaries that this module depends on are available from the &quot;Assets&quot; section in release 2.4.0 (forwarded request 833319 from stroeder)</comment>
     <requestid>833400</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cc0250435bd910f1419bd839e3974cb5</srcmd5>
+    <version>2.4.5</version>
+    <time>1606428826</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850781</requestid>
+  </revision>
 </revisionlist>
