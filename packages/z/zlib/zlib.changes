@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  9 08:00:35 UTC 2020 - Ali Abdallah <ali.abdallah@suse.com>
+
+- Fix hw compression on z15 bsc#1176201
+- Add zlib-s390x-z15-fix-hw-compression.patch
+
+-------------------------------------------------------------------
 Wed Sep 16 15:05:04 UTC 2020 - Stephan Kulow <coolo@suse.com>
 
 - Provide a testsuite subpackage to run post-build validation

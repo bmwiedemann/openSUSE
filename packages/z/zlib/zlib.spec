@@ -44,6 +44,8 @@ Patch5:         zlib-no-version-check.patch
 Patch6:         bsc1174736-DFLTCC_LEVEL_MASK-set-to-0x1ff.patch
 Patch7:         bsc1174551-fxi-imcomplete-raw-streams.patch
 Patch8:         zlib-compression-switching.patch
+#PATCH-FIX-SUSE: bsc#1176201, sent upstream by IBM
+Patch9:         zlib-s390x-z15-fix-hw-compression.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -137,6 +139,7 @@ It should exit 0
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 cp %{SOURCE4} .
 
 %build

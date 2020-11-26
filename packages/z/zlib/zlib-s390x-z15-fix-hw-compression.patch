@@ -1,0 +1,47 @@
+From 4a587d07b3774c603f1a33ab1648419064951988 Mon Sep 17 00:00:00 2001
+From: Ilya Leoshkevich <iii@linux.ibm.com>
+Date: Mon, 28 Sep 2020 19:32:44 +0200
+Subject: [PATCH] wip
+
+---
+ contrib/s390/dfltcc.h | 4 ++++
+ inflate.c             | 2 ++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/contrib/s390/dfltcc.h b/contrib/s390/dfltcc.h
+index e4447dd..bf41272 100644
+--- a/contrib/s390/dfltcc.h
++++ b/contrib/s390/dfltcc.h
+@@ -51,5 +51,9 @@ int ZLIB_INTERNAL dfltcc_inflate_disable OF((z_streamp strm));
+     do { \
+         if (dfltcc_was_inflate_used((strm))) return -(1L << 16); \
+     } while (0)
++#define INFLATE_SYNC_POINT_HOOK(strm) \
++    do { \
++        if (dfltcc_was_inflate_used((strm))) return Z_STREAM_ERROR; \
++    } while (0)
+ 
+ #endif
+diff --git a/inflate.c b/inflate.c
+index 2b7d564..6f19a87 100644
+--- a/inflate.c
++++ b/inflate.c
+@@ -100,6 +100,7 @@
+ #define INFLATE_NEED_CHECKSUM(strm) 1
+ #define INFLATE_NEED_UPDATEWINDOW(strm) 1
+ #define INFLATE_MARK_HOOK(strm) do {} while (0)
++#define INFLATE_SYNC_POINT_HOOK(strm) do {} while (0)
+ #endif
+ 
+ #ifdef MAKEFIXED
+@@ -1491,6 +1492,7 @@ z_streamp strm;
+     struct inflate_state FAR *state;
+ 
+     if (inflateStateCheck(strm)) return Z_STREAM_ERROR;
++    INFLATE_SYNC_POINT_HOOK(strm);
+     state = (struct inflate_state FAR *)strm->state;
+     return state->mode == STORED && state->bits == 0;
+ }
+-- 
+2.25.4
+
