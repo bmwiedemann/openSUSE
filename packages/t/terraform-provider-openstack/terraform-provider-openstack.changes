@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 11 11:48:18 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add symbolic link to comply with new filesystem layout for local provider copies
+- Define and use common Go spec file variables
+
+-------------------------------------------------------------------
 Tue Oct 20 10:22:43 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.31.0:

@@ -16,7 +16,35 @@
 #
 
 
-# Make sure that the binary is not getting stripped.
+%global provider        github
+%global provider_tld    com
+%global project         terraform-providers
+%global repo            terraform-provider-openstack
+%global provider_prefix %{provider}.%{provider_tld}/%{project}/%{repo}
+%global import_path     %{provider_prefix}
+%global registry        registry.terraform.io
+%global namespace       hashicorp
+%global providername    openstack
+
+%ifarch aarch64
+%define terraformarch   amd64
+%endif
+%ifarch ppc64
+%define terraformarch   ppc64
+%endif
+%ifarch ppc64le
+%define terraformarch   ppc64le
+%endif
+%ifarch s390x
+%define terraformarch   s390x
+%endif
+%ifarch %{ix86}
+%define terraformarch   i386
+%endif
+%ifarch x86_64
+%define terraformarch   amd64
+%endif
+
 %if 0%{?suse_version}
 %{go_nostrip}
 %endif
@@ -28,7 +56,7 @@ Summary:        Terraform OpenStack provider
 License:        MPL-2.0
 Group:          System/Management
 URL:            https://github.com/terraform-providers/terraform-provider-openstack
-Source:         %{name}-%{version}.tar.xz
+Source:         %{repo}-%{version}.tar.xz
 Source99:       terraform-provider-openstack-rpmlintrc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?ubuntu_version}
@@ -59,13 +87,13 @@ BuildRequires:  xz
 This is a terraform provider that lets you provision servers on an OpenStack platform via Terraform.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{repo}-%{version}
 
 %build
 export GO111MODULE=off
 export GOPROXY=off
 %if 0%{?suse_version}
-%goprep github.com/terraform-providers/%{name}
+%goprep %{import_path}
 %gobuild
 %endif
 %if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?ubuntu_version}
@@ -75,7 +103,6 @@ export GOPATH=$(pwd)/_build
 cd _build/src/github.com/terraform-providers/terraform-provider-openstack
 go build .
 %endif
-ln -s %{_bindir}/%{name} %{buildroot}%{_bindir}/%{name}_v%{version}
 
 %install
 export GO111MODULE=off
@@ -91,6 +118,9 @@ export GOBIN=%{buildroot}%{_bindir}
 cd _build/src/github.com/terraform-providers/terraform-provider-openstack
 go install
 %endif
+ln -s %{_bindir}/%{name} %{buildroot}%{_bindir}/%{name}_v%{version}
+install -d 755 %{buildroot}%{_datadir}/terraform/providers/%{registry}/%{namespace}/%{providername}/%{version}/linux_%{terraformarch}
+ln -s %{_bindir}/%{name} %{buildroot}%{_datadir}/terraform/providers/%{registry}/%{namespace}/%{providername}/%{version}/linux_%{terraformarch}/%{name}_v%{version}
 
 curr=$PWD
 # extract the binary to be published
@@ -105,5 +135,6 @@ cd $curr
 %license LICENSE
 %{_bindir}/%{name}
 %{_bindir}/%{name}_v%{version}
+%{_datadir}/terraform
 
 %changelog
