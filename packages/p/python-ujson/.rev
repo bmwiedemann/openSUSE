@@ -92,4 +92,16 @@
   * PyPy3 test fixes (#413) @mgorny</comment>
     <requestid>824027</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7d6a51ba4c3f305da26207336a5e272d</srcmd5>
+    <version>4.0.1</version>
+    <time>1606428865</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.1:
+  * Fix UnicodeDecodeError on arm64/aarch64
+  * Add support for Python 3.9
+  * Drop support for EOL Python 3.5
+  * Make PEP 384 compliant</comment>
+    <requestid>850915</requestid>
+  </revision>
 </revisionlist>

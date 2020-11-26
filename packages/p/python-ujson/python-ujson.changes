@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 26 08:33:12 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.0.1:
+  * Fix UnicodeDecodeError on arm64/aarch64
+  * Add support for Python 3.9
+  * Drop support for EOL Python 3.5
+  * Make PEP 384 compliant 
+
+-------------------------------------------------------------------
 Mon Aug  3 05:24:24 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.1.0:

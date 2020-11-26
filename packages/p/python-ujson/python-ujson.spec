@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-ujson
-Version:        3.1.0
+Version:        4.0.1
 Release:        0
 Summary:        JSON encoder and decoder for Python
 License:        BSD-3-Clause
