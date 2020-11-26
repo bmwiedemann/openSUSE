@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Nov 25 22:20:24 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net> 
+
+- Update to version 0.15, update LLVM/Clang to version 11.
+  * Fix crash due to undefined behavior in AST traversal.
+  * Improve handling of operator new including C++17 features.
+  * Improve handling of templates.
+  * In iwyu_tool, remove known compiler wrappers from the command
+    list.
+  * Improve Qt mapping generator.
+  * Improve boost mappings.
+  * Improve built-in mappings for <time.h>.
+  * Add built-in mappings for max_align_t, ptrdiff_t, and wchar_t.
+  * Support shared LLVM/Clang libraries and other improvements.
+- Get rid of obsolete test workaround, which stopped working on
+  32-bit architectures for some reason. Instead we use plain %ctest
+  now, but fix the mirror directory on 64-bit architectures.
+
+-------------------------------------------------------------------
 Tue May 19 21:48:58 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 0.14, update LLVM/Clang to version 10.

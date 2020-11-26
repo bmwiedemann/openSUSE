@@ -18,7 +18,7 @@
 
 
 Name:           include-what-you-use
-Version:        0.14
+Version:        0.15
 Release:        0
 Summary:        A tool to analyze #includes in C and C++ source files
 License:        NCSA
@@ -29,10 +29,10 @@ Patch1:         fix-shebang.patch
 Patch2:         iwyu_include_picker.patch
 Patch3:         remove-x86-specific-code.patch
 BuildRequires:  c++_compiler
-BuildRequires:  clang10-devel
+BuildRequires:  clang11-devel
 BuildRequires:  cmake
 BuildRequires:  libstdc++-devel
-BuildRequires:  llvm10-devel
+BuildRequires:  llvm11-devel
 BuildRequires:  python
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -60,10 +60,11 @@ This package contains additional scripts for using %{name} as automated
 refactoring tool.
 
 %prep
-%setup -q -n %{name}
+%setup -q -c
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+sed -i s#lib/#lib\${LLVM_LIBDIR_SUFFIX}/#g CMakeLists.txt
 
 %build
 # Remove obsolete files - this is now hardcoded into iwyu_include_picker.cc.
@@ -87,18 +88,7 @@ rm tests/cxx/ms_inline_asm.cc
 rm tests/cxx/badinc.cc
 %endif
 
-# IWYU needs to find Clang's builtin headers. It looks for them relative to the
-# binary (https://clang.llvm.org/docs/LibTooling.html#builtin-includes), but
-# since it isn't installed into /usr/bin, it fails to find them. So we pass
-# the directory manually to the executable, and because the test driver doesn't
-# allow us to specify additional flags, we build a stub.
-# Note that this isn't a problem for the installed package, because it will be
-# in the same directory as the Clang binary.
-export CLANG_BUILTIN_DIR=%{_libdir}/clang/%{_llvm_relver}/include
-echo -e "#!/bin/bash\\nbuild/bin/include-what-you-use -isystem ${CLANG_BUILTIN_DIR} \$@" >iwyu-stub
-chmod +x iwyu-stub
-# We suppress stdout because it's pretty noisy. Failures are written to stderr.
-./run_iwyu_tests.py -- ./iwyu-stub >/dev/null
+%ctest
 
 %files
 %license LICENSE.TXT
