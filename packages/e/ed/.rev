@@ -271,4 +271,12 @@ Semicolon is ambiguous (forwarded request 139095 from babelworx)</comment>
     <comment></comment>
     <requestid>781164</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>93547fc43f46d7a5fe6beeb117b5792b</srcmd5>
+    <version>1.16</version>
+    <time>1606428566</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850106</requestid>
+  </revision>
 </revisionlist>

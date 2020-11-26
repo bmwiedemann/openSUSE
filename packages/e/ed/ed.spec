@@ -49,10 +49,10 @@ make %{?_smp_mflags} CFLAGS="%{optflags}"
 
 %install
 %make_install
-#UsrMerge
+%if !0%{?usrmerged}
 install -d -m 0755 %{buildroot}/bin
 ln -s %{_bindir}/ed %{buildroot}/bin/ed
-#UsrMerge
+%endif
 
 %check
 make %{?_smp_mflags} check
@@ -66,7 +66,9 @@ make %{?_smp_mflags} check
 %files
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README TODO
+%if !0%{?usrmerged}
 /bin/%{name}
+%endif
 %{_bindir}/%{name}
 %{_bindir}/r%{name}
 %{_infodir}/%{name}.info%{?ext_info}
