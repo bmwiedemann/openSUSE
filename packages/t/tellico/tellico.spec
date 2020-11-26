@@ -17,7 +17,7 @@
 
 
 Name:           tellico
-Version:        3.3.3
+Version:        3.3.4
 Release:        0
 Summary:        A Collection Manager
 License:        GPL-2.0-or-later

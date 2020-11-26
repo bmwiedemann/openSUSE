@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 26 09:11:18 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 3.3.4:
+  Improvements:
+  * Added barcode searching to MusicBrainz data source
+    (kde#429483).
+  * Added barcode searching to Discogs data source.
+  Bug Fixes:
+  * Fixed text color in Group View for some dark themes
+    (kde#429475).
+  * Fixed crashing bug when checking in loans (kde#426815).
+
+-------------------------------------------------------------------
 Wed Sep 16 20:09:51 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 3.3.3:
