@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 29 10:45:54 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- install libraries to %{_libdir} (boo#1029961)
+
+-------------------------------------------------------------------
 Wed Apr 15 10:32:08 UTC 2020 - Petr Vorel <pvorel@suse.cz>
 
 - Update to libtirpc 1.2.6

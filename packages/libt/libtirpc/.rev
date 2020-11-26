@@ -460,4 +460,12 @@ Added: libtirpc-getbroadifs-crash.patch (forwarded request 220501 from okir)</co
     <comment></comment>
     <requestid>794153</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>83ba2fedf28d62520226e9ea2b7db138</srcmd5>
+    <version>1.2.6</version>
+    <time>1606428555</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849707</requestid>
+  </revision>
 </revisionlist>

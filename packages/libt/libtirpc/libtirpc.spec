@@ -75,8 +75,7 @@ TCP over IPv4.
 
 %build
 sed -i -e 's|@includedir@/tirpc|@includedir@|g' libtirpc.pc.in
-%configure --disable-static \
-		--libdir=/%{_lib}
+%configure --disable-static
 %make_build %{?_smp_mflags}
 
 %install
@@ -87,9 +86,7 @@ export NO_BRP_CHECK_ROOTFS=true
 %make_install
 # move devel so link to _libdir
 mkdir -p %{buildroot}/%{_libdir}
-ln -sv /%{_lib}/$(readlink %{buildroot}/%{_lib}/%{name}.so) %{buildroot}%{_libdir}/%{name}.so
-rm -v %{buildroot}/%{_lib}/%{name}.{la,so}
-mv -v %{buildroot}/%{_lib}/pkgconfig %{buildroot}/%{_libdir}
+rm -v %{buildroot}%{_libdir}/%{name}.la
 # Move RPC headers from tirpc subdirectory into main directory,
 # they are now default
 mv -v %{buildroot}%{_includedir}/tirpc/* %{buildroot}%{_includedir}
@@ -103,7 +100,7 @@ rm -v %{buildroot}/etc/bindresvport.blacklist
 %files -n libtirpc3
 %defattr(-,root,root)
 %license COPYING
-/%{_lib}/libtirpc.so.3*
+%{_libdir}/libtirpc.so.3*
 
 %files netconfig
 %defattr(-,root,root)
@@ -114,7 +111,7 @@ rm -v %{buildroot}/etc/bindresvport.blacklist
 %defattr(-,root,root)
 %{_libdir}/libtirpc.so
 /usr/include/*
-/usr/%{_lib}/pkgconfig/*
+%{_libdir}/pkgconfig/*
 %{_mandir}/man3/*
 
 %changelog
