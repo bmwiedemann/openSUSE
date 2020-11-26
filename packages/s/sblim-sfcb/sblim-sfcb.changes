@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 26 10:43:48 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- no_tlsv1_config.patch: add support for disabling TLSv1_1
+  as well as re-add missing disablement options for TLSv1 and SSLv3
+  (bsc#1178415)
+
+-------------------------------------------------------------------
 Tue Jul 28 15:17:07 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Don't package SuSEfirewall2 service file anymore, it's gone

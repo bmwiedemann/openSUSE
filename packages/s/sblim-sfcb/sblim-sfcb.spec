@@ -80,6 +80,7 @@ Patch25:        0025-Generates-certificates-during-service-start.patch
 Patch26:        0026-fix-build-dependencies-for-sfcbinst2mof.patch
 Patch27:        0027-Makefile.am-add-autoconfiscate.sh-to-dist.patch
 Patch28:        0028-allow-requests-with-Content-Type-set-to-text-xml.patch
+Patch29:        no_tlsv1_config.patch
 
 Provides:       cim-server
 Provides:       cimserver
@@ -174,6 +175,7 @@ cp %{S:7} .
 %patch26 -p1
 %patch27 -p1
 %patch28 -p1
+%patch29 -p1
 
 export PATCH_GET=0
 

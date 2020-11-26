@@ -622,4 +622,14 @@ Bugs fixed:
     <comment></comment>
     <requestid>824096</requestid>
   </revision>
+  <revision rev="60" vrev="13">
+    <srcmd5>1ea45351bce6f1e252ecf56f10a37d5d</srcmd5>
+    <version>1.4.9</version>
+    <time>1606428947</time>
+    <user>dimstar_suse</user>
+    <comment>- no_tlsv1_config.patch: add support for disabling TLSv1_1
+  as well as re-add missing disablement options for TLSv1 and SSLv3
+  (bsc#1178415)</comment>
+    <requestid>851001</requestid>
+  </revision>
 </revisionlist>

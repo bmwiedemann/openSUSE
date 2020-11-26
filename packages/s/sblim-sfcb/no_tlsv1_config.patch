@@ -1,0 +1,76 @@
+Index: sblim-sfcb-1.4.9/control.c
+===================================================================
+--- sblim-sfcb-1.4.9.orig/control.c
++++ sblim-sfcb-1.4.9/control.c
+@@ -175,6 +175,9 @@ static Control init[] = {
+   {"sslCiphers", CTL_STRING, "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH", {0}},
+   {"sslDhParamsFilePath", CTL_STRING, NULL, {0}},
+   {"sslEcDhCurveName", CTL_STRING, "secp224r1", {0}},
++  {"sslNoSSLv3", CTL_BOOL, NULL, {.b=0}},
++  {"sslNoTLSv1", CTL_BOOL, NULL, {.b=0}},
++  {"sslNoTLSv1_1", CTL_BOOL, NULL, {.b=0}},
+   {"enableSslCipherServerPref", CTL_BOOL, NULL, {.b=0}},
+ 
+   {"registrationDir", CTL_STRING, SFCB_STATEDIR "/registration", {0}},
+Index: sblim-sfcb-1.4.9/httpAdapter.c
+===================================================================
+--- sblim-sfcb-1.4.9.orig/httpAdapter.c
++++ sblim-sfcb-1.4.9/httpAdapter.c
+@@ -2039,7 +2039,7 @@ initSSL()
+                  *fdhp,
+                  *sslCiphers;
+   int             rc,
+-                  escsp;
++                  sslopt;
+ 
+   if (ctx)
+     SSL_CTX_free(ctx);
+@@ -2087,14 +2087,24 @@ initSSL()
+   /*
+    * Set options
+    */
+-  SSL_CTX_set_options(ctx, SSL_OP_ALL | 
+-                           SSL_OP_NO_SSLv2 |
+-                           SSL_OP_SINGLE_DH_USE);
++  long options = SSL_OP_ALL | SSL_OP_SINGLE_DH_USE | SSL_OP_NO_SSLv2;
+ 
+-  if (!getControlBool("enableSslCipherServerPref", &escsp) && escsp) {
++  if (!getControlBool("sslNoSSLv3", &sslopt) && sslopt)
++    options |= SSL_OP_NO_SSLv3;
++  if (!getControlBool("sslNoTLSv1", &sslopt) && sslopt)
++    options |= SSL_OP_NO_TLSv1;
++  if (!getControlBool("sslNoTLSv1_1", &sslopt) && sslopt)
++    options |= SSL_OP_NO_TLSv1_1;
++  _SFCB_TRACE(1, ("---  sslNoSSLv3=%s, sslNoTLSv1=%s, sslNoTLSv1_1=%s",
++      (options & SSL_OP_NO_SSLv3 ? "true" : "false"),
++      (options & SSL_OP_NO_TLSv1 ? "true" : "false"),
++      (options & SSL_OP_NO_TLSv1_1 ? "true" : "false")));
++
++  if (!getControlBool("enableSslCipherServerPref", &sslopt) && sslopt) {
+     _SFCB_TRACE(1, ("---  enableSslCipherServerPref = true"));
+-    SSL_CTX_set_options(ctx, SSL_OP_CIPHER_SERVER_PREFERENCE);
++    options |= SSL_OP_CIPHER_SERVER_PREFERENCE;
+   }
++  SSL_CTX_set_options(ctx, options);
+ 
+   /*
+    * Set valid ciphers
+Index: sblim-sfcb-1.4.9/sfcb.cfg.pre.in
+===================================================================
+--- sblim-sfcb-1.4.9.orig/sfcb.cfg.pre.in
++++ sblim-sfcb-1.4.9/sfcb.cfg.pre.in
+@@ -288,6 +288,14 @@ certificateAuthLib:   sfcCertificateAuth
+ ##      weak ciphers.
+ sslCiphers: ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH
+ 
++## When set to true, disable the indicated SSL/TLS protocol. This sets
++## the corresponding openssl option SSL_OP_NO_SSLv3 or SSL_OP_NO_TLSv1.
++## See man SSL_CTX_set_options(3) for details.
++## Default is false for both
++#sslNoSSLv3: false
++#sslNoTLSv1: false
++#sslNoTLSv1_1: false
++
+ ## Optionally configure a DH parameters file for ephemeral key generation.
+ ## See man SSL_CTX_set_tmp_dh_callback(3) for details. The value should be
+ ## the full path to the file. Note that ephemeral key generation will still
