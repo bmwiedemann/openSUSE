@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 12 18:34:03 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
+
+- Add patch which makes libnetwork compatible with firewalld with
+  nftables backend. Backport of https://github.com/moby/libnetwork/pull/2548
+  (boo#1178801, SLE-16460)
+  * boo1178801-0001-Add-docker-interfaces-to-firewalld-docker-zone.patch
+
+-------------------------------------------------------------------
 Thu Jun 25 22:29:28 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Update to libnetwork 026aabaa6598, which is required for Docker 19.03.12-ce.

@@ -214,4 +214,12 @@ the Docker 17.07.0_ce update. This SR is in conjunction with:
     <comment>- Update to libnetwork 026aabaa6598, which is required for Docker 19.03.12-ce.</comment>
     <requestid>817377</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>dad894e3bfe9344e20a5b63af3bc6f12</srcmd5>
+    <version>0.7.0.1+gitr2906_026aabaa6598</version>
+    <time>1606428702</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850093</requestid>
+  </revision>
 </revisionlist>

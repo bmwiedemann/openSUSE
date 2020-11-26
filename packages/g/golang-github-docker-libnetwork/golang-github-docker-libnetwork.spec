@@ -56,6 +56,8 @@ Group:          Development/Languages/Golang
 URL:            http://github.com/docker/libnetwork
 Source0:        %{repo}-git.%{git_short}.tar.xz
 Source1:        %{realname}-rpmlintrc
+# SUSE-BACKPORT: Backport of https://github.com/moby/libnetwork/pull/2548. boo#1178801, SLE-16460
+Patch0:         boo1178801-0001-Add-docker-interfaces-to-firewalld-docker-zone.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  xz
@@ -110,6 +112,7 @@ support.
 
 %prep
 %setup -q -n %{repo}-git.%{git_short}
+%patch0 -p1
 
 %build
 %goprep %{import_path}
