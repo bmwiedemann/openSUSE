@@ -368,4 +368,13 @@
   * rework dependencies to reduce system size for small OS (forwarded request 846083 from mwilck)</comment>
     <requestid>846084</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>0912236a2795f8e7b16f9f0c9e2dbea9</srcmd5>
+    <version>15.3.5</version>
+    <time>1606428737</time>
+    <user>dimstar_suse</user>
+    <comment>Moved missing bugrefs down to 15.3.5, as requested in review
+of sr#849755</comment>
+    <requestid>850918</requestid>
+  </revision>
 </revisionlist>

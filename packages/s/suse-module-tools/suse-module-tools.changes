@@ -3,6 +3,7 @@ Mon Nov 02 17:03:42 UTC 2020 - mwilck@suse.com
 
 - Update to version 15.3.5:
   * Skip coldplug for memory devices on ppc64le, using generator
+    (bsc#1174287, bsc#1172745)
 
 -------------------------------------------------------------------
 Tue Aug 25 15:43:20 UTC 2020 - mwilck@suse.com
