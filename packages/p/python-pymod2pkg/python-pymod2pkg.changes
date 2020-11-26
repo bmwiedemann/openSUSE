@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 17 05:09:23 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- update to version 0.26.0
+  * Fix PyYAML mapping for RDO
+  * Stop to use the __future__ module
+
+-------------------------------------------------------------------
 Fri Jun  5 07:52:09 UTC 2020 - cloud-devel@suse.de
 
 - update to version 0.25.0

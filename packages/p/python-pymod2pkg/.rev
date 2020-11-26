@@ -288,4 +288,12 @@
   - Cleanup py27 support</comment>
     <requestid>811683</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c03b6a2d3125cb3123ceed9decfaf0d4</srcmd5>
+    <version>0.26.0</version>
+    <time>1606428873</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850980</requestid>
+  </revision>
 </revisionlist>
