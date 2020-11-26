@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov  6 17:15:43 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 0.3.0:
+  * ‘sexp->canonical-sexp->sexp’ now accepts integers
+  * (gcrypt common) exports ‘error/’ constants and error handling procedures
+  * ‘verify’ now throws upon errors other than ‘error/bad-signature’
+  * (gcrypt hmac) and (gcrypt hash) export bindings for their syntax literals
+  * New ‘hash-algorithm-name’ and ‘mac-algorithm-name’ procedures 
+
+-------------------------------------------------------------------
 Mon Jul  6 03:28:39 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Build non-parallel for reproducible builds (boo#1170378)
