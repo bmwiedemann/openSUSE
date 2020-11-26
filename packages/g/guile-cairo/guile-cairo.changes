@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov  6 17:10:58 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- update to version 1.11.1:
+  * New bindings cairo-surface-get-mime-data, cairo-surface-set-mime-data.
+  * Compatibility with Guile 1.8 has been dropped.
+  * Documentation fixes. 
+- remove patch:
+  * use-stdint-types.patch: included in release
+- set source links
+
+-------------------------------------------------------------------
 Mon Jan 20 14:03:44 UTC 2020 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Add patch:

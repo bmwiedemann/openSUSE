@@ -18,16 +18,14 @@
 
 %define sover 0
 Name:           guile-cairo
-Version:        1.10.0
+Version:        1.11.1
 Release:        0
 Summary:        Guile bindings to Cairo
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/Other
 URL:            https://www.nongnu.org/guile-cairo/
-Source0:        %{name}-%{version}.tar.gz
-Source1:        %{name}-%{version}.tar.gz.sig
-# PATCH-FIX-UPSTREAM: Use stdint types -- 7d7dd23
-Patch0:         use-stdint-types.patch
+Source0:        http://download.savannah.gnu.org/releases/guile-cairo/guile-cairo-%{version}.tar.gz
+Source1:        http://download.savannah.gnu.org/releases/guile-cairo/guile-cairo-%{version}.tar.gz.sig
 BuildRequires:  cairo-devel >= 1.10.0
 BuildRequires:  guile-devel
 Requires(post): %{install_info_prereq}
@@ -56,7 +54,6 @@ Files required to build software using Guile Cairo bindings.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %configure
