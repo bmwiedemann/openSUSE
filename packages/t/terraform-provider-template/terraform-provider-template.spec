@@ -16,6 +16,39 @@
 #
 
 
+%global provider        github
+%global provider_tld    com
+%global project         terraform-providers
+%global repo            terraform-provider-template
+%global provider_prefix %{provider}.%{provider_tld}/%{project}/%{repo}
+%global import_path     %{provider_prefix}
+%global registry        registry.terraform.io
+%global namespace       hashicorp
+%global providername    template
+
+%ifarch aarch64
+%define terraformarch   amd64
+%endif
+%ifarch ppc64
+%define terraformarch   ppc64
+%endif
+%ifarch ppc64le
+%define terraformarch   ppc64le
+%endif
+%ifarch s390x
+%define terraformarch   s390x
+%endif
+%ifarch %{ix86}
+%define terraformarch   i386
+%endif
+%ifarch x86_64
+%define terraformarch   amd64
+%endif
+
+%if 0%{?suse_version}
+%{go_nostrip}
+%endif
+
 Name:           terraform-provider-template
 Version:        2.1.2
 Release:        0
@@ -23,14 +56,11 @@ Summary:        Terraform template-provider
 License:        MPL-2.0
 Group:          System/Management
 URL:            https://github.com/terraform-providers/terraform-provider-template
-Source:         %{name}-%{version}.tar.gz
+Source:         %{repo}-%{version}.tar.gz
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.8
 Requires:       terraform >= 0.12.0
-# Make sure that the binary is not getting stripped.
-%if 0%{?suse_version}
-%{go_nostrip}
-%endif
+
 %if 0%{?suse_version}
 %{go_provides}
 %endif
@@ -43,7 +73,7 @@ This is a terraform provider that lets you use template files
 
 %build
 %if 0%{?suse_version}
-%{goprep} github.com/terraform-providers/%{name}
+%{goprep} %{import_path}
 %{gobuild} -mod=vendor ""
 %endif
 %if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?ubuntu_version}
@@ -67,11 +97,14 @@ cd _build/src/github.com/terraform-providers/terraform-provider-template
 go install -ldflags "-X main.version=%{version}"
 %endif
 ln -s %{_bindir}/%{name} %{buildroot}%{_bindir}/%{name}_v%{version}
+install -d 755 %{buildroot}%{_datadir}/terraform/providers/%{registry}/%{namespace}/%{providername}/%{version}/linux_%{terraformarch}
+ln -s %{_bindir}/%{name} %{buildroot}%{_datadir}/terraform/providers/%{registry}/%{namespace}/%{providername}/%{version}/linux_%{terraformarch}/%{name}_v%{version}
 
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
 %{_bindir}/%{name}_v%{version}
+%{_datadir}/terraform
 
 %changelog
