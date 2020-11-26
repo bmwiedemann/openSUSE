@@ -134,6 +134,7 @@ Sat Aug 15 01:06:30 UTC 2020 - Kai Liu <kai.liu@suse.com>
       A large unused and unusable feature
   * Security
     - Add mitigation against DoS from thousands of parts
+      boo#1179113
   * Features
     - Allow index-style searching in postpone menu
     - Open NeoMutt using a mailbox name
@@ -213,8 +214,11 @@ Sun Jul  5 04:14:47 UTC 2020 - Kai Liu <kai.liu@suse.com>
 - Changes from 20200501:
   * Security
     - Abort GnuTLS certificate check if a cert in the chain is rejected
+      CVE-2020-14154 bsc#1172906
     - TLS: clear data after a starttls acknowledgement
+      CVE-2020-14954 bsc#1173197
     - Prevent possible IMAP MITM via PREAUTH response
+      CVE-2020-14093 bsc#1172935
   * Features
     - add config operations +=/-= for number,long
     - Address book has a comment field
