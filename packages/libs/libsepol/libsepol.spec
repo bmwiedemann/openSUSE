@@ -93,7 +93,7 @@ export CFLAGS="%{optflags} -fcommon"
 make %{?_smp_mflags}
 
 %install
-%make_install LIBDIR="%{_libdir}" SHLIBDIR="/%{_lib}"
+%make_install LIBDIR="%{_libdir}" SHLIBDIR="%{_libdir}"
 
 %post -n libsepol1 -p /sbin/ldconfig
 %postun -n libsepol1 -p /sbin/ldconfig
@@ -106,7 +106,7 @@ make %{?_smp_mflags}
 
 %files -n libsepol1
 %defattr(-,root,root)
-/%{_lib}/libsepol.so.*
+%{_libdir}/libsepol.so.*
 
 %files devel
 %defattr(-,root,root)
