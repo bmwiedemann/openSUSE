@@ -39,8 +39,6 @@ Source1:        https://download.lighttpd.net/lighttpd/releases-1.4.x/%{name}-%{
 Source2:        %{name}.sysconfig
 Source3:        %{name}.keyring
 Source4:        lightytest.sh
-Source5:        lighttpd.SuSEfirewall
-Source6:        lighttpd-ssl.SuSEfirewall
 Source7:        lighttpd.logrotate
 BuildRequires:  FastCGI-devel
 BuildRequires:  cyrus-sasl-devel
@@ -66,7 +64,7 @@ BuildRequires:  postgresql-devel
 # pg_config moved to postgresql-server-devel in postgresql11* packages boo#1153722
 BuildRequires:  postgresql-server-devel
 %endif 
-BuildRequires:  pwdutils
+BuildRequires:  shadow
 BuildRequires:  sqlite-devel >= 3
 BuildRequires:  zlib-devel
 BuildRequires:  perl(CGI)
@@ -338,13 +336,6 @@ find %{buildroot}%{_sysconfdir}/%{name}/ -name Makefile\* -delete
 install -D -m 0644 %{SOURCE2} \
     %{buildroot}%{_fillupdir}/sysconfig.%{name}
 #
-# susefirewall config file
-#
-install -D -m 0644 %{SOURCE5} \
-    %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/lighttpd
-install -D -m 0644 %{SOURCE6} \
-    %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/lighttpd-ssl
-#
 # logrotate config
 #
 install -D -m 0644 %{SOURCE7} \
@@ -373,7 +364,6 @@ chmod -x doc/scripts/spawn-php.sh doc/scripts/rrdtool-graph.sh
 %files
 %{_unitdir}/%{name}.service
 %{_sbindir}/rc%{name}
-%config(noreplace) %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/lighttpd*
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 %{_sbindir}/*
 %dir %attr(750,root,%{name}) %{_sysconfdir}/%{name}

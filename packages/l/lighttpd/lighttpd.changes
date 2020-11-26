@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 28 14:43:35 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove SuSEfirewall2 service files, SuSEfirewall2 does not exist
+  anymore
+
+-------------------------------------------------------------------
 Thu Jul  2 16:37:34 UTC 2020 - Alexander van Kaam <alexvkaam@gmail.com>
 
 - Changed /etc/logrotate.d/lighttpd from init.d to systemd
