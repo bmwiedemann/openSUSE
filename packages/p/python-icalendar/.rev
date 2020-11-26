@@ -290,4 +290,13 @@
   - Use ``vText`` as default type, when convert recurrence definition to ical string. [kam193]</comment>
     <requestid>810895</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>24acf7b401ebcd55b1c144e85ce77dbe</srcmd5>
+    <version>4.0.7</version>
+    <time>1606428919</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.7:
+  - fixed rrule handling, re-enabled test_create_america_new_york</comment>
+    <requestid>850949</requestid>
+  </revision>
 </revisionlist>
