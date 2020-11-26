@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 24 04:08:55 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
+
+- Add requisite of hana installation to subsequent salt states 
+
+-------------------------------------------------------------------
 Wed Nov 11 04:25:03 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
 
 - Add support to extract and install HANA Client sar packages
