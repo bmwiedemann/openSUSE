@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 25 15:31:22 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- update to version 4.33.0
+  * Remove XTLS
+  * API: Reflection Service Support @Vigilans
+  * Update to IETF QUIC draft-32
+- update in 4.32.1
+  * VLESS XTLS Direct Mode ReadV Experiment
+  * Disable 0-RTT mechanism for HTTP/1.x outbound
+  * Set default alterId to 0 for VMess dynamic ports
+
+-------------------------------------------------------------------
 Sun Nov  1 12:26:08 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
 
 - update version to 4.32.0
