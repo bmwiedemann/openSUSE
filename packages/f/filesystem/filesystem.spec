@@ -237,6 +237,8 @@ if posix.stat("/var/lock.rpmsave.tmpx") then
   os.execute("mv /var/lock.rpmsave.tmpx/* /var/lock")
   os.remove("/var/lock.rpmsave.tmpx")
 end
+posix.mkdir("/proc")
+posix.mkdir("/sys")
 
 %files -f filesystem.list
 /usr/lib/tmpfiles.d/fs-tmp.conf

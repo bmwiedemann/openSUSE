@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 16 14:22:50 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- /proc and /sys should be %ghost to allow filesystem package updates in
+  rootless container environments (rh#1548403)
+
+-------------------------------------------------------------------
 Sat Oct 10 12:41:34 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Add /usr/etc/skel (boo#1173321)

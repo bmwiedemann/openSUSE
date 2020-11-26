@@ -1158,4 +1158,12 @@
 - Move additional /etc/skel directories to /usr/etc/skel (forwarded request 842579 from gmbr3)</comment>
     <requestid>842793</requestid>
   </revision>
+  <revision rev="152" vrev="35">
+    <srcmd5>a5b66fe0e0a16c49d230329c946a29a4</srcmd5>
+    <version>MACRO</version>
+    <time>1606428534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849661</requestid>
+  </revision>
 </revisionlist>
