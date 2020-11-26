@@ -114,4 +114,13 @@ Accidentally packaged and older version. Sorry!</comment>
   * Fix CUdeviceptr definition for ARM64 CPU</comment>
     <requestid>841086</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b323293c951fa45391803241cc9c230b</srcmd5>
+    <version>11.0.10.0</version>
+    <time>1606428627</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 11.0.10.0:
+  * Update headers from Video SDK 11.0</comment>
+    <requestid>849915</requestid>
+  </revision>
 </revisionlist>
