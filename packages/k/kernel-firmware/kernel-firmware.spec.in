@@ -18,6 +18,10 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
+%if 0%{?suse_version} < 1550
+%define _firmwaredir /lib/firmware
+%endif
+
 %define __ksyms_path ^%{_firmwaredir}
 %define version_unconverted @@VERSION@@
 

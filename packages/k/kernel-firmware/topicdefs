@@ -1,6 +1,7 @@
 amdgpu		AMDGPU graphics driver
 atheros		Atheros wireless drivers
 ath10k		Atheros QCA988x WiFi drivers
+ath11k		Atheros Qualcomm WiFi drivers
 bluetooth	various Bluetooth drivers
 bnx2		Broadcom network drivers
 brcm		Broadcom wireless drivers

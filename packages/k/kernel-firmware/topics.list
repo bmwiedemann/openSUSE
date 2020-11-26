@@ -118,6 +118,7 @@ DFU:		atheros		ar3k
 Atheros:	atheros		ar3k
 ath6kl:		atheros		ath6kl_sdio ath6kl_usb
 ath10k:		ath10k		ath10k_pci ath10k_sdio ath10k_usb
+ath11k:		ath11k		ath11k_pci
 myri10ge:	network
 drxk:		media
 ene-ub6250:	platform	ums_eneub6250

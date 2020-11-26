@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Nov 23 14:40:14 CET 2020 - tiwai@suse.de
+
+- Fix build with older distros due to missing _firmwaredir
+
+-------------------------------------------------------------------
+Sun Nov 22 08:23:44 UTC 2020 - tiwai@suse.com
+
+- Update to version 20201120 (bc9cd0b7b0e9):
+  including AMDGPU update (bsc#1179062) and ath11k addition (bsc#1178274)
+  * linux-firmware: Update AMD SEV firmware
+  * amdgpu: add sienna cichlid firmware for 20.45
+  * amdgpu: update vega20 firmware for 20.45
+  * amdgpu: update vega12 firmware for 20.45
+  * amdgpu: update vega10 firmware for 20.45
+  * amdgpu: update renoir firmware for 20.45
+  * amdgpu: update navi14 firmware for 20.45
+  * amdgpu: update navi12 firmware for 20.45
+  * amdgpu: update navi10 firmware for 20.45
+  * amdgpu: update raven2 firmware for 20.45
+  * amdgpu: update raven firmware for 20.45
+  * rtlwifi: v88.2 firmware files for RTL8192CU
+  * rtw88: RTL8822C: Update firmware to v9.9.4
+  * Revert "rtw88: RTL8822C: Update firmware to v9.9.4"
+  * vpdma: Move firmware to ti directory
+  * amdgpu: update picasso VCN firmware
+  * amdgpu: update raven2 VCN firmware
+  * amdgpu: update raven VCN firmware
+  * rtw88: RTL8822C: Update firmware to v9.9.4
+  * rtl_bt: Update RTL8822C BT(USB I/F) FW to 0x099A_281A
+  * QCA: Update Bluetooth firmware for QCA6390
+  * qcom : updated venus firmware files for v5.4
+  * QCA : Fixed BT SSR due to command timeout / IO fatal error
+  * ath11k: QCA6390 hw2.0: add to WLAN.HST.1.0.1-01740-QCAHSTSWPLZ_V2_TO_X86-1
+  * ath11k: QCA6390 hw2.0: add board-2.bin
+  * ath11k: IPQ8074 hw2.0: add to WLAN.HK.2.1.0.1-01238-QCAHKSWPL_SILICONZ-2
+  * ath11k: IPQ8074 hw2.0: add board-2.bin
+  * ath11k: IPQ6018 hw1.0: add to WLAN.HK.2.1.0.1-01238-QCAHKSWPL_SILICONZ-2
+  * ath11k: IPQ6018 hw1.0: add board-2.bin
+  * ath10k: QCA6174 hw3.0: add firmware-sdio-6.bin version WLAN.RMH.4.4.1-00077
+  * ath10k: QCA9984 hw1.0: update firmware-5.bin to 10.4-3.9.0.2-00131
+  * ath10k: QCA9888 hw2.0: update firmware-5.bin to 10.4-3.9.0.2-00131
+  * ath10k: QCA6174 hw3.0: update board-2.bin
+  * ath10k: QCA6174 hw3.0: update firmware-6.bin to WLAN.RM.4.4.1-00157-QCARMSWPZ-1
+- ath11k is split into its own subpackage due to its size
+- Update topics list and aliases accordingly
+
+-------------------------------------------------------------------
 Thu Oct 29 08:07:03 UTC 2020 - tiwai@suse.com
 
 - Update to version 20201023 (git commit dae4b4cd0841):
