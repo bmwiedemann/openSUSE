@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 25 15:04:21 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- update to 4.4.1
+  * Allow specifying a name in getMetric() that is used for Prometheus
+  * Avoids a CNAME loop detection issue with DNS64
+  * No longer sends overly long NOD lookups.
+  * If a.b.c CNAME x.a.b.c is encountered, switch off QName Minimization.
+  * Fix the processing of answers generated from gettag.
+
+-------------------------------------------------------------------
 Mon Nov 23 13:57:43 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Only require 'insserv' when this package ships an initscript
