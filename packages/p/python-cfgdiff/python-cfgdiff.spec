@@ -30,6 +30,7 @@ BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module configobj}
 BuildRequires:  %{python_module dnspython}
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module reconfigure}
 ## /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -37,6 +38,7 @@ Requires:       python-PyYAML
 Requires:       python-configobj
 Requires:       python-dnspython
 Requires:       python-lxml
+Recommends:     python-reconfigure
 Provides:       cfgdiff
 BuildArch:      noarch
 %python_subpackages
