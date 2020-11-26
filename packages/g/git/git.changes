@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 20 21:53:07 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- only pull asciidoctor for the default ruby version
+
+-------------------------------------------------------------------
 Thu Oct 29 23:07:17 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - git 2.29.2: "--committer-date-is-author-date" option of "rebase"
@@ -111,7 +116,7 @@ Fri Apr 17 17:56:32 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
 -------------------------------------------------------------------
 Tue Apr 14 18:32:57 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- git 2.26.1:
+- git 2.26.1: (boo#1168930)
   * CVE-2020-5260: Specially crafted URLs with newline characters
     could have been used to make the Git client to send credential
     information for a wrong host to the attacker's site boo#1168930

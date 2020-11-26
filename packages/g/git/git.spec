@@ -16,6 +16,9 @@
 #
 
 
+%define rb_build_ruby_abis     %{rb_default_ruby_abi}
+%define rb_build_versions      %{rb_default_ruby}
+
 %define gitexecdir %{_libexecdir}/git
 %if 0%{?suse_version} < 1500
 %define _fwdefdir %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services
@@ -89,7 +92,7 @@ BuildRequires:  sgml-skel
 BuildRequires:  xmlto
 %if %{with asciidoctor}
 BuildRequires:  docbook5-xsl-stylesheets
-BuildRequires:  rubygem(asciidoctor)
+BuildRequires:  %{rubygem asciidoctor}
 %else
 BuildRequires:  asciidoc
 %endif
