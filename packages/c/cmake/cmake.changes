@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Nov 24 23:13:21 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cmake 3.19.1:
+  * avoid breaking projects relying on using the LANGUAGE property
+    to cause the specified language's compiler to be used
+  * CUDA 11.1 support for Clang.
+
+-------------------------------------------------------------------
+Thu Nov 19 12:51:09 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cmake 3.19.0:
+  * cmake(1) and cmake-gui(1) now recognize CMakePresets.json and
+    CMakeUserPresets.json files
+  * support for ISPC 
+  * exctend CUDA language support for Clang
+  * extend cmake-file-ap "codemodel"
+  * cli --install supports --default-directory-permissions
+  * cli supports creating hardlinks
+  * CMake GUI now has an environment variable editor
+  * Multiple cmake commands support new options and subcommands
+  * Multiple variables added or functionalities extended
+  * Multiple new modules and added functionality to existing modules
+  * Compatibility with versions of CMake older than 2.8.12 is now
+    deprecated and will be removed from a future version. Calls to
+    cmake_minimum_required() or cmake_policy() that set the policy
+    version to an older value now issue a deprecation diagnostic.
+  * cmake-gui now requires Qt5
+
+-------------------------------------------------------------------
 Mon Oct 19 21:56:10 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cmake 3.18.4:
