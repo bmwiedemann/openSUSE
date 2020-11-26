@@ -49,4 +49,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>822881</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f8ff5bc7ce0a7bba4dae30230508bf44</srcmd5>
+    <version>0.1.3</version>
+    <time>1606428897</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.3:
+  * Add trace support. 
+</comment>
+    <requestid>850994</requestid>
+  </revision>
 </revisionlist>

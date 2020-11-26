@@ -17,7 +17,7 @@
 
 
 Name:           guile-sqlite3
-Version:        0.1.2
+Version:        0.1.3
 Release:        0
 Summary:        SQLite3 database access from Guile
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
