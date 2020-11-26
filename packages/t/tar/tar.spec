@@ -156,10 +156,10 @@ rm %{buildroot}%{_localstatedir}/lib/tests/tar/{atconfig,atlocal,Makefile}*
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -sf %{_sysconfdir}/alternatives/rmt %{buildroot}%{_bindir}/rmt
 ln -sf %{_sysconfdir}/alternatives/rmt.1%{ext_man} %{buildroot}%{_mandir}/man1/rmt.1%{ext_man}
-#UsrMerge
+%if !0%{?usrmerged}
 mkdir -p %{buildroot}/bin
 ln -s %{_bindir}/%{name} %{buildroot}/bin
-#EndUsrMerge
+%endif
 %find_lang %{name}
 
 %post doc
@@ -213,9 +213,9 @@ fi
 
 %files
 %license COPYING
-#UsrMerge
+%if !0%{?usrmerged}
 /bin/%{name}
-#EndUsrMerge
+%endif
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 

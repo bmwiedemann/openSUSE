@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 19 16:20:06 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
 Fri Apr  3 07:20:20 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop Requires(pre) info in the preamble: the main package does
