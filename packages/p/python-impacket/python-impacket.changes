@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Nov 23 15:13:51 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.22
+  Library improvements
+  * Added implementation of RPC over HTTP v2 protocol.
+  * Added MS-NSPI, MS-OXNSPI and MS-OXABREF protocol
+    implementations.
+  * Improved the multi-page results in LDAP queries.
+  * NDR parser optimization.
+  * Improved serialization of WMI method parameters.
+  * Introduce the MS-NLMP 2.2.2.10 VERSION structure in
+    NTLMAuthNegotiate messages.
+  * Added some NETLOGON structs for NetrServerPasswordSet2.
+  * Python 3.8 support.
+  Examples improvements
+  * atexec.py: Fixed after MS patches related to RPC attacks.
+  * dpapi.py: Added -no-pass, pass-the-hash and AES Key support
+    for backup subcommand.
+  * GetNPUsers.py: Added ability to enumerate targets with
+    Kerberos KRB5CC.
+  * GetUserSPNs.py: Added new features for kerberoasting.
+  * ntlmrelayx.py:
+    + Added ability to relay on new Windows versions that have
+      SMB guest access disabled by default.
+    + Added option to specify the NTLM Server Challenge used
+      when receiving a connection.
+    + Added relaying to RPC support.
+    + Implemented WCFRelayServer.
+    + Added Zerologon DCSync Relay Client.
+    + Fixed issue in ldapattack.py when relaying and creating
+      computer in CN=Computers.
+    + rpcdump.py: Added RPC over HTTP v2 support.
+    + secretsdump.py:
+      - Added ability to specifically delete a shadow based on
+        its ID.
+      - Dump plaintext machine account password when dumping the
+        local registry secrets.
+  New examples
+  * exchanger.py: A tool for connecting to MS Exchange via RPC
+    over HTTP v2.
+  * rpcmap.py: Scan for listening DCE/RPC interfaces.
+
+-------------------------------------------------------------------
 Wed Jul  8 11:47:03 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 0.9.21

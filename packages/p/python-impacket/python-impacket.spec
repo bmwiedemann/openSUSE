@@ -1,6 +1,7 @@
 #
 # spec file for package python-impacket
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,12 +13,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-impacket
-Version:        0.9.21
+Version:        0.9.22
 Release:        0
 Summary:        Python3 module to easily build and dissect network protocols
 # License: modified Apache-1.1 (see file LICENSE)
@@ -78,13 +80,13 @@ sed -e '/^#!\//, 1d' -i \
 %python_clone -a %{buildroot}%{_bindir}/impacket-dcomexec
 %python_clone -a %{buildroot}%{_bindir}/impacket-dpapi
 %python_clone -a %{buildroot}%{_bindir}/impacket-esentutl
+%python_clone -a %{buildroot}%{_bindir}/impacket-exchanger
 %python_clone -a %{buildroot}%{_bindir}/impacket-findDelegation
 %python_clone -a %{buildroot}%{_bindir}/impacket-getArch
 %python_clone -a %{buildroot}%{_bindir}/impacket-getPac
 %python_clone -a %{buildroot}%{_bindir}/impacket-getST
 %python_clone -a %{buildroot}%{_bindir}/impacket-getTGT
 %python_clone -a %{buildroot}%{_bindir}/impacket-goldenPac
-%python_clone -a %{buildroot}%{_bindir}/impacket-ifmap
 %python_clone -a %{buildroot}%{_bindir}/impacket-karmaSMB
 %python_clone -a %{buildroot}%{_bindir}/impacket-kintercept
 %python_clone -a %{buildroot}%{_bindir}/impacket-lookupsid
@@ -96,7 +98,6 @@ sed -e '/^#!\//, 1d' -i \
 %python_clone -a %{buildroot}%{_bindir}/impacket-nmapAnswerMachine
 %python_clone -a %{buildroot}%{_bindir}/impacket-ntfs-read
 %python_clone -a %{buildroot}%{_bindir}/impacket-ntlmrelayx
-%python_clone -a %{buildroot}%{_bindir}/impacket-opdump
 %python_clone -a %{buildroot}%{_bindir}/impacket-ping
 %python_clone -a %{buildroot}%{_bindir}/impacket-ping6
 %python_clone -a %{buildroot}%{_bindir}/impacket-psexec
@@ -104,6 +105,7 @@ sed -e '/^#!\//, 1d' -i \
 %python_clone -a %{buildroot}%{_bindir}/impacket-rdp_check
 %python_clone -a %{buildroot}%{_bindir}/impacket-reg
 %python_clone -a %{buildroot}%{_bindir}/impacket-registry-read
+%python_clone -a %{buildroot}%{_bindir}/impacket-rpcmap
 %python_clone -a %{buildroot}%{_bindir}/impacket-rpcdump
 %python_clone -a %{buildroot}%{_bindir}/impacket-sambaPipe
 %python_clone -a %{buildroot}%{_bindir}/impacket-samrdump
@@ -137,13 +139,13 @@ sed -e '/^#!\//, 1d' -i \
 %python_install_alternative impacket-dcomexec
 %python_install_alternative impacket-dpapi
 %python_install_alternative impacket-esentutl
+%python_install_alternative impacket-exchanger
 %python_install_alternative impacket-findDelegation
 %python_install_alternative impacket-getArch
 %python_install_alternative impacket-getPac
 %python_install_alternative impacket-getST
 %python_install_alternative impacket-getTGT
 %python_install_alternative impacket-goldenPac
-%python_install_alternative impacket-ifmap
 %python_install_alternative impacket-karmaSMB
 %python_install_alternative impacket-kintercept
 %python_install_alternative impacket-lookupsid
@@ -155,7 +157,6 @@ sed -e '/^#!\//, 1d' -i \
 %python_install_alternative impacket-nmapAnswerMachine
 %python_install_alternative impacket-ntfs-read
 %python_install_alternative impacket-ntlmrelayx
-%python_install_alternative impacket-opdump
 %python_install_alternative impacket-ping
 %python_install_alternative impacket-ping6
 %python_install_alternative impacket-psexec
@@ -163,6 +164,7 @@ sed -e '/^#!\//, 1d' -i \
 %python_install_alternative impacket-rdp_check
 %python_install_alternative impacket-reg
 %python_install_alternative impacket-registry-read
+%python_install_alternative impacket-rpcmap
 %python_install_alternative impacket-rpcdump
 %python_install_alternative impacket-sambaPipe
 %python_install_alternative impacket-samrdump
@@ -190,13 +192,13 @@ sed -e '/^#!\//, 1d' -i \
 %python_uninstall_alternative impacket-dcomexec
 %python_uninstall_alternative impacket-dpapi
 %python_uninstall_alternative impacket-esentutl
+%python_uninstall_alternative impacket-exchanger
 %python_uninstall_alternative impacket-findDelegation
 %python_uninstall_alternative impacket-getArch
 %python_uninstall_alternative impacket-getPac
 %python_uninstall_alternative impacket-getST
 %python_uninstall_alternative impacket-getTGT
 %python_uninstall_alternative impacket-goldenPac
-%python_uninstall_alternative impacket-ifmap
 %python_uninstall_alternative impacket-karmaSMB
 %python_uninstall_alternative impacket-kintercept
 %python_uninstall_alternative impacket-lookupsid
@@ -208,7 +210,6 @@ sed -e '/^#!\//, 1d' -i \
 %python_uninstall_alternative impacket-nmapAnswerMachine
 %python_uninstall_alternative impacket-ntfs-read
 %python_uninstall_alternative impacket-ntlmrelayx
-%python_uninstall_alternative impacket-opdump
 %python_uninstall_alternative impacket-ping
 %python_uninstall_alternative impacket-ping6
 %python_uninstall_alternative impacket-psexec
@@ -216,6 +217,7 @@ sed -e '/^#!\//, 1d' -i \
 %python_uninstall_alternative impacket-rdp_check
 %python_uninstall_alternative impacket-reg
 %python_uninstall_alternative impacket-registry-read
+%python_uninstall_alternative impacket-rpcmap
 %python_uninstall_alternative impacket-rpcdump
 %python_uninstall_alternative impacket-sambaPipe
 %python_uninstall_alternative impacket-samrdump
@@ -251,6 +253,7 @@ rm tests/SMB_RPC/test_mgmt.py
 rm tests/SMB_RPC/test_mimilib.py
 rm tests/SMB_RPC/test_nmb.py
 rm tests/SMB_RPC/test_nrpc.py
+rm tests/SMB_RPC/test_rpch.py
 rm tests/SMB_RPC/test_rpcrt.py
 rm tests/SMB_RPC/test_rprn.py
 rm tests/SMB_RPC/test_rrp.py
@@ -277,13 +280,13 @@ rm tests/misc/test_structure.py
 %python_alternative %{_bindir}/impacket-dcomexec
 %python_alternative %{_bindir}/impacket-dpapi
 %python_alternative %{_bindir}/impacket-esentutl
+%python_alternative %{_bindir}/impacket-exchanger
 %python_alternative %{_bindir}/impacket-findDelegation
 %python_alternative %{_bindir}/impacket-getArch
 %python_alternative %{_bindir}/impacket-getPac
 %python_alternative %{_bindir}/impacket-getST
 %python_alternative %{_bindir}/impacket-getTGT
 %python_alternative %{_bindir}/impacket-goldenPac
-%python_alternative %{_bindir}/impacket-ifmap
 %python_alternative %{_bindir}/impacket-karmaSMB
 %python_alternative %{_bindir}/impacket-kintercept
 %python_alternative %{_bindir}/impacket-lookupsid
@@ -295,7 +298,6 @@ rm tests/misc/test_structure.py
 %python_alternative %{_bindir}/impacket-nmapAnswerMachine
 %python_alternative %{_bindir}/impacket-ntfs-read
 %python_alternative %{_bindir}/impacket-ntlmrelayx
-%python_alternative %{_bindir}/impacket-opdump
 %python_alternative %{_bindir}/impacket-ping
 %python_alternative %{_bindir}/impacket-ping6
 %python_alternative %{_bindir}/impacket-psexec
@@ -303,6 +305,7 @@ rm tests/misc/test_structure.py
 %python_alternative %{_bindir}/impacket-rdp_check
 %python_alternative %{_bindir}/impacket-reg
 %python_alternative %{_bindir}/impacket-registry-read
+%python_alternative %{_bindir}/impacket-rpcmap
 %python_alternative %{_bindir}/impacket-rpcdump
 %python_alternative %{_bindir}/impacket-sambaPipe
 %python_alternative %{_bindir}/impacket-samrdump
