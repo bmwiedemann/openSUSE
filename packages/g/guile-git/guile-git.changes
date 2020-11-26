@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov  6 17:29:36 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to version 0.4.0:
+  * Support for HTTP and HTTPS proxies
+  * Support for progress report
+  * Fix typo that made repository-index and repository-refdb unusable 
+
+-------------------------------------------------------------------
 Tue Jan 14 11:37:31 UTC 2020 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Update to version 0.3.0:
