@@ -51,10 +51,12 @@ supporting TLS/SSL and access via proxy servers.
 cd src
 
 %build
-ssbindir="%{_sbindir}" \
 dav_user="%{name}" \
 dav_group="%{name}" \
 %configure \
+%if 0%{?usrmerged}
+    ssbindir="%{_sbindir}" \
+%endif
     --disable-static
 %if 0%{?suse_version} >= 1000
 PIE="-fPIE"
@@ -105,7 +107,9 @@ rm -rf "%{buildroot}/%{_docdir}"
 %{_sbindir}/umount.davfs
 %{_datadir}/%{name}
 %attr(0750, %{name}, %{name}) %{_localstatedir}/cache/%{name}
+%if !0%{?usrmerged}
 /sbin/mount.davfs
 /sbin/umount.davfs
+%endif
 
 %changelog
