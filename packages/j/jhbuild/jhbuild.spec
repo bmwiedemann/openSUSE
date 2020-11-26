@@ -18,7 +18,7 @@
 
 %define moduleset latest
 Name:           jhbuild
-Version:        3.36.0+1
+Version:        3.38.0+3
 Release:        0
 Summary:        Tool to build GNOME
 License:        GPL-2.0-or-later

@@ -8,4 +8,4 @@ tar -Oxf "$1" --wildcards "*/modulesets/gnome-sysdeps-${2}.modules" | \
 	sed -e "s|</\?pkg-config>||g" \
 	    -e "s|\.pc\$|)|g" \
 	    -e "s|^|Requires:       pkgconfig(|g" | sort -u | \
-	grep -v -e "pkgconfig(bdw-gc-threaded)" -e "pkgconfig(lttng-ust)" -e "pkgconfig(fwup)"
+	grep -v -e "pkgconfig(bdw-gc-threaded)" -e "pkgconfig(lttng-ust)" -e "pkgconfig(fwup)" -e "pkgconfig(libpodofo)"

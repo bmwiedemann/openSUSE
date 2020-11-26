@@ -437,4 +437,16 @@
     <comment>Scripted push of project GNOME:Next (forwarded request 794996 from iznogood)</comment>
     <requestid>795151</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>1c462f87103bb1d51cf1748c71299bc3</srcmd5>
+    <version>3.38.0+3</version>
+    <time>1606428773</time>
+    <user>dimstar_suse</user>
+    <comment>- create_deps.sh: Filter out pkgconfig(libpodofo) Requires for now:
+  in all released versions of podofo, the .pc file is called
+  libpodofo-0, but in git, since April 2019, the .pc file is being
+  installed as libpodofo.pc. There is no information if and when
+  podofo will ever get a release with this change. (forwarded request 850269 from dimstar)</comment>
+    <requestid>851060</requestid>
+  </revision>
 </revisionlist>
