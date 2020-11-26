@@ -117,4 +117,19 @@
   - Feat/support for day or</comment>
     <requestid>821436</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fd2e4d9c1f9f7a3706e586e1c9fb7925</srcmd5>
+    <version>0.3.36</version>
+    <time>1606428917</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.36:
+- Updated docs section regarding ``max_years_between_matches`` to be more shorter and hopefully more relevant.
+- Add a new initialization parameter ``max_years_between_matches`` to support finding the next/previous date beyond the default 1 year window, if so desired.  Updated README to include additional notes and example of this usage.  Fixes #145.
+- The ``croniter_range()`` function was updated to automatically determines the appropriate ``max_years_between_matches`` value, this preventing handling of the ``CroniterBadDateError`` exception.
+- Updated exception handling classes:  ``CroniterBadDateError`` now only
+  applies during date finding operations (next/prev), and all parsing errors can now be caught using ``CroniterBadCronError``.  The ``CroniterNotAlphaError`` exception is now a subclass of ``CroniterBadCronError``.  A brief description of each exception class was added as an inline docstring.
+- Updated iterable interfaces to replace the ``CroniterBadDateError`` with ``StopIteration`` if (and only if) the ``max_years_between_matches`` argument is provided.  The rationale here is that if the user has specified the max tolerance between matches, then there's no need to further inform them of no additional matches.  Just stop the iteration.  This also keeps backwards compatibility.
+- Minor docs update</comment>
+    <requestid>850942</requestid>
+  </revision>
 </revisionlist>

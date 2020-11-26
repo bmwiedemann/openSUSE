@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 26 09:22:47 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.3.36:
+- Updated docs section regarding ``max_years_between_matches`` to be more shorter and hopefully more relevant.
+- Add a new initialization parameter ``max_years_between_matches`` to support finding the next/previous date beyond the default 1 year window, if so desired.  Updated README to include additional notes and example of this usage.  Fixes #145.
+- The ``croniter_range()`` function was updated to automatically determines the appropriate ``max_years_between_matches`` value, this preventing handling of the ``CroniterBadDateError`` exception.
+- Updated exception handling classes:  ``CroniterBadDateError`` now only
+  applies during date finding operations (next/prev), and all parsing errors can now be caught using ``CroniterBadCronError``.  The ``CroniterNotAlphaError`` exception is now a subclass of ``CroniterBadCronError``.  A brief description of each exception class was added as an inline docstring.
+- Updated iterable interfaces to replace the ``CroniterBadDateError`` with ``StopIteration`` if (and only if) the ``max_years_between_matches`` argument is provided.  The rationale here is that if the user has specified the max tolerance between matches, then there's no need to further inform them of no additional matches.  Just stop the iteration.  This also keeps backwards compatibility.
+- Minor docs update
+
+-------------------------------------------------------------------
 Fri Jul 17 07:25:05 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.3.34:
