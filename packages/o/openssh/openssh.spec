@@ -104,6 +104,9 @@ Patch36:        openssh-8.1p1-seccomp-clock_nanosleep.patch
 Patch37:        openssh-8.1p1-seccomp-clock_nanosleep_time64.patch
 Patch38:        openssh-8.1p1-seccomp-clock_gettime64.patch
 Patch39:        openssh-8.1p1-use-openssl-kdf.patch
+Patch40:        openssh-8.1p1-ed25519-use-openssl-rng.patch
+Patch41:        openssh-fips-ensure-approved-moduli.patch
+Patch42:        openssh-link-with-sk.patch
 BuildRequires:  audit-devel
 BuildRequires:  autoconf
 BuildRequires:  groff

@@ -1,0 +1,15 @@
+diff --git a/Makefile.in b/Makefile.in
+index 6dec09c..25e74ac 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -251,8 +251,8 @@ ssh-keyscan$(EXEEXT): $(LIBCOMPAT) libssh.a $(SSHKEYSCAN_OBJS)
+ ssh-ldap-helper$(EXEEXT): $(LIBCOMPAT) libssh.a ldapconf.o ldapbody.o ldapmisc.o ldap-helper.o
+ 	$(LD) -o $@ ldapconf.o ldapbody.o ldapmisc.o ldap-helper.o $(LDFLAGS) -lssh -lopenbsd-compat -lssh -lopenbsd-compat $(LIBS)
+ 
+-sftp-server$(EXEEXT): $(LIBCOMPAT) libssh.a $(SFTPSERVER_OBJS)
+-	$(LD) -o $@ $(SFTPSERVER_OBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(LIBS)
++sftp-server$(EXEEXT): $(LIBCOMPAT) libssh.a ssh-sk.o sk-usbhid.o $(SFTPSERVER_OBJS)
++	$(LD) -o $@ $(SFTPSERVER_OBJS) ssh-sk.o sk-usbhid.o $(LDFLAGS) -lssh -lopenbsd-compat $(LIBS) $(LIBFIDO2)
+ 
+ sftp$(EXEEXT): $(LIBCOMPAT) libssh.a $(SFTP_OBJS)
+ 	$(LD) -o $@ $(SFTP_OBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(LIBS) $(LIBEDIT)

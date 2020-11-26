@@ -1426,4 +1426,23 @@ So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded r
   Replace it with %service_del_postun_without_restart (forwarded request 840337 from hpjansson)</comment>
     <requestid>841947</requestid>
   </revision>
+  <revision rev="144" vrev="5">
+    <srcmd5>163f83ccb719a56b60c71eb174c03048</srcmd5>
+    <version>8.3p1</version>
+    <time>1606428642</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build breakage caused by missing security key objects:
+  + Modify openssh-7.7p1-cavstest-ctr.patch.
+  + Modify openssh-7.7p1-cavstest-kdf.patch.
+  + Add openssh-link-with-sk.patch.
+
+- Add openssh-fips-ensure-approved-moduli.patch (bsc#1177939).
+  This ensures only approved DH parameters are used in FIPS mode.
+
+- Add openssh-8.1p1-ed25519-use-openssl-rng.patch (bsc#1173799).
+  This uses OpenSSL's RAND_bytes() directly instead of the internal
+  ChaCha20-based implementation to obtain random bytes for Ed25519
+  curve computations. This is required for FIPS compliance. (forwarded request 849311 from hpjansson)</comment>
+    <requestid>849984</requestid>
+  </revision>
 </revisionlist>

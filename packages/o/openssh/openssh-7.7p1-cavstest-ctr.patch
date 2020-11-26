@@ -28,8 +28,8 @@ index d5c37b5..5d4fcd2 100644
  	$(LD) -o $@ $(SFTP_OBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(LIBS) $(LIBEDIT)
  
 +# FIPS tests
-+cavstest-ctr$(EXEEXT): $(LIBCOMPAT) libssh.a cavstest-ctr.o
-+	$(LD) -o $@ cavstest-ctr.o $(LDFLAGS) -lssh -lopenbsd-compat -lssh $(LIBS)
++cavstest-ctr$(EXEEXT): $(LIBCOMPAT) libssh.a ssh-sk.o sk-usbhid.o cavstest-ctr.o
++	$(LD) -o $@ cavstest-ctr.o ssh-sk.o sk-usbhid.o $(LDFLAGS) -lssh -lopenbsd-compat -lssh $(LIBS) $(LIBFIDO2)
 +
  # test driver for the loginrec code - not built by default
  logintest: logintest.o $(LIBCOMPAT) libssh.a loginrec.o

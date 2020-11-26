@@ -1,0 +1,74 @@
+commit d281831d887044ede45d458c3dda74be9ae017e3
+Author: Hans Petter Jansson <hpj@hpjansson.org>
+Date:   Fri Sep 25 23:26:58 2020 +0200
+
+    Use OpenSSL's FIPS approved RAND_bytes() to get randomness for Ed25519
+
+diff --git a/ed25519.c b/ed25519.c
+index 767ec24..5d506a9 100644
+--- a/ed25519.c
++++ b/ed25519.c
+@@ -9,6 +9,13 @@
+ #include "includes.h"
+ #include "crypto_api.h"
+ 
++#ifdef WITH_OPENSSL
++#include <openssl/rand.h>
++#include <openssl/err.h>
++#endif
++
++#include "log.h"
++
+ #include "ge25519.h"
+ 
+ static void get_hram(unsigned char *hram, const unsigned char *sm, const unsigned char *pk, unsigned char *playground, unsigned long long smlen)
+@@ -33,7 +40,15 @@ int crypto_sign_ed25519_keypair(
+   unsigned char extsk[64];
+   int i;
+ 
++#ifdef WITH_OPENSSL
++  /* Use FIPS approved RNG */
++  if (RAND_bytes(sk, 32) <= 0)
++    fatal("Couldn't obtain random bytes (error 0x%lx)",
++          (unsigned long)ERR_get_error());
++#else
+   randombytes(sk, 32);
++#endif
++
+   crypto_hash_sha512(extsk, sk, 32);
+   extsk[0] &= 248;
+   extsk[31] &= 127;
+diff --git a/kexc25519.c b/kexc25519.c
+index f13d766..2604eda 100644
+--- a/kexc25519.c
++++ b/kexc25519.c
+@@ -33,6 +33,13 @@
+ #include <string.h>
+ #include <signal.h>
+ 
++#ifdef WITH_OPENSSL
++#include <openssl/rand.h>
++#include <openssl/err.h>
++#endif
++
++#include "log.h"
++
+ #include "sshkey.h"
+ #include "kex.h"
+ #include "sshbuf.h"
+@@ -51,7 +58,15 @@ kexc25519_keygen(u_char key[CURVE25519_SIZE], u_char pub[CURVE25519_SIZE])
+ {
+ 	static const u_char basepoint[CURVE25519_SIZE] = {9};
+ 
++#ifdef WITH_OPENSSL
++	/* Use FIPS approved RNG */
++	if (RAND_bytes(key, CURVE25519_SIZE) <= 0)
++		fatal("Couldn't obtain random bytes (error 0x%lx)",
++		    (unsigned long)ERR_get_error());
++#else
+ 	arc4random_buf(key, CURVE25519_SIZE);
++#endif
++
+ 	crypto_scalarmult_curve25519(pub, key, basepoint);
+ }
+ 

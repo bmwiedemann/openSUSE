@@ -1,0 +1,78 @@
+commit 15c95d6eb2e8bc549719578c9a16541015363360
+Author: Hans Petter Jansson <hpj@hpjansson.org>
+Date:   Mon Oct 26 22:26:46 2020 +0100
+
+    Ensure DHGs are approved in FIPS mode using OpenSSL's DH_check_params()
+
+diff --git a/dh.c b/dh.c
+index 7cb135d..3fe7f75 100644
+--- a/dh.c
++++ b/dh.c
+@@ -143,6 +143,28 @@ parse_prime(int linenum, char *line, struct dhgroup *dhg)
+ 	return 0;
+ }
+ 
++static int
++dhg_is_approved(const struct dhgroup *dhg)
++{
++	BIGNUM *g, *p;
++	DH *dh;
++	int dh_status;
++	int is_ok = 0;
++
++	/* DH_set0_pqg() transfers ownership of the bignums, so we
++	 * make temporary copies here for simplicity. */
++	g = BN_dup(dhg->g);
++	p = BN_dup(dhg->p);
++	dh = dh_new_group(g, p);
++
++	if (dh) {
++		is_ok = DH_check_params(dh, &dh_status);
++	}
++
++	DH_free(dh);
++	return is_ok;
++}
++
+ DH *
+ choose_dh(int min, int wantbits, int max)
+ {
+@@ -161,12 +183,20 @@ choose_dh(int min, int wantbits, int max)
+ 	linenum = 0;
+ 	best = bestcount = 0;
+ 	while (getline(&line, &linesize, f) != -1) {
++		int dhg_is_ok;
++
+ 		linenum++;
+ 		if (!parse_prime(linenum, line, &dhg))
+ 			continue;
++
++		dhg_is_ok = dhg_is_approved(&dhg);
++
+ 		BN_clear_free(dhg.g);
+ 		BN_clear_free(dhg.p);
+ 
++		if (!dhg_is_ok)
++			continue;
++
+ 		if (dhg.size > max || dhg.size < min)
+ 			continue;
+ 
+@@ -193,10 +223,16 @@ choose_dh(int min, int wantbits, int max)
+ 	linenum = 0;
+ 	bestcount = 0;
+ 	while (getline(&line, &linesize, f) != -1) {
++		int dhg_is_ok;
++
+ 		linenum++;
+ 		if (!parse_prime(linenum, line, &dhg))
+ 			continue;
+-		if ((dhg.size > max || dhg.size < min) ||
++
++		dhg_is_ok = dhg_is_approved(&dhg);
++
++		if (!dhg_is_ok ||
++		    (dhg.size > max || dhg.size < min) ||
+ 		    dhg.size != best ||
+ 		    bestcount++ != which) {
+ 			BN_clear_free(dhg.g);
