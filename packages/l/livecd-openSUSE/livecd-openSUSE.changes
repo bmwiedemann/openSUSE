@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 27 07:57:16 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Ignore gimp-lang on all flavors, not only kde (mainly needed on
+  xfce, where space is tight).
+
+-------------------------------------------------------------------
 Wed Nov  4 09:30:39 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Forcibly remove noto-coloremoji-fonts until it can be replaced with

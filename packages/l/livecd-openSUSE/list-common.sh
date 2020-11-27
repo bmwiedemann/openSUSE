@@ -3,6 +3,7 @@ buildignore tin
 buildignore desktop-translations
 buildignore ft2demos
 buildignore gimp-help
+buildignore gimp-lang
 buildignore libreoffice-base
 buildignore libreoffice-mailmerge
 buildignore libreoffice-math

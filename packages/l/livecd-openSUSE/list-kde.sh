@@ -53,7 +53,6 @@ buildignore patterns-kde-kde_pim
 
 buildignore digikam
 buildignore gdb
-buildignore gimp-lang
 buildignore hugin
 buildignore icewm
 buildignore kmahjongg-lang
