@@ -2133,7 +2133,6 @@ unsorted:
   - combustion 
   - commandergenius 
   - compartm 
-  - compcache 
   - compface 
   - compface-devel 
   - compicc 
@@ -6382,10 +6381,12 @@ unsorted:
   - guile-gcrypt 
   - guile-git 
   - guile-json 
+  - guile-lzlib 
   - guile-newt 
   - guile-parted 
   - guile-sqlite3 
   - guile-ssh-devel 
+  - guile-zlib 
   - guile1 
   - guilt 
   - guitarix 
@@ -7019,8 +7020,6 @@ unsorted:
   - irrlicht-devel 
   - irssi-devel 
   - irssi-otr 
-  - isapnp: [i586] 
-  - isapnp-devel: [i586] 
   - isatapd 
   - iscsi-formula 
   - isight-firmware-tools 
@@ -11172,7 +11171,7 @@ unsorted:
   - libguile-srfi-srfi-13-14-v-3-3 
   - libguile-srfi-srfi-4-v-3-3 
   - libguile-srfi-srfi-60-v-2-2 
-  - libguile-ssh12 
+  - libguile-ssh13 
   - libguile1-devel 
   - libguile17 
   - libguilereadline-v-17-17 
@@ -14532,6 +14531,8 @@ unsorted:
   - libwtdbopostgres4_4_0 
   - libwv-1_2-4 
   - libwv2-4 
+  - libwx_base-suse-devel 
+  - libwx_base-suse-nostl-devel 
   - libwx_baseu-suse-nostl3_0_4 
   - libwx_baseu-suse-nostl4_0_0: [i586] 
   - libwx_baseu-suse3_0_4 
@@ -23266,6 +23267,8 @@ unsorted:
   - python3-pygame-devel 
   - python3-pygerrit2 
   - python3-pyghmi 
+  - python3-pyginac 
+  - python3-pyginac-devel 
   - python3-pyglet 
   - python3-pygments-ansi-color 
   - python3-pygments-pytest 
@@ -23395,6 +23398,7 @@ unsorted:
   - python3-pytest-cookies 
   - python3-pytest-cov 
   - python3-pytest-datadir 
+  - python3-pytest-dependency 
   - python3-pytest-describe 
   - python3-pytest-django 
   - python3-pytest-djangoapp 
