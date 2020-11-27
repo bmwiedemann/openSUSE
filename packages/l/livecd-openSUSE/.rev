@@ -1045,4 +1045,11 @@
     <time>1606467082</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="129" vrev="129">
+    <srcmd5>59a277e093167a3a2a296c6955c9fa3f</srcmd5>
+    <version>unknown</version>
+    <time>1606474993</time>
+    <user>dimstar_suse</user>
+    <comment>Remove more languages from glibc_locale</comment>
+  </revision>
 </revisionlist>

@@ -70,7 +70,7 @@ EULA_DIR=/etc/YaST2/licenses/base
 (cd "${EULA_DIR}"; tar -cvzf /license.tar.gz *)
 
 # Remove some large locales to save space
-rm -rf /usr/share/locale/{uk,sv,ru,ja,da,cs,sr,vi,cmn_TW}
+rm -rf /usr/share/locale/{ca,cs,da,ja,fi,id,nl,pl,tr,ru,sk,sr,sv,uk,vi,cmn_TW}
 zypper --non-interactive rm yast2-trans-{uk,sv,ru,ja,da,cs,sr,vi} || :
 
 # Some packages really exaggerate here
