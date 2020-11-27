@@ -1039,4 +1039,10 @@
     <comment>- Ignore gimp-lang on all flavors, not only kde (mainly needed on
   xfce, where space is tight).</comment>
   </revision>
+  <revision rev="128" vrev="128">
+    <srcmd5>7f079e2a53fd7c4e6959db1dc7cab0e5</srcmd5>
+    <version>unknown</version>
+    <time>1606467082</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>
