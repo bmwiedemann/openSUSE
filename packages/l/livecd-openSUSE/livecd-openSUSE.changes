@@ -1,8 +1,26 @@
 -------------------------------------------------------------------
+Fri Nov 27 12:49:12 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Also drop files from /usr/lib/locale and /usr/share/qt5/translations
+- Also drop zh* locales
+
+-------------------------------------------------------------------
 Fri Nov 27 07:57:16 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Ignore gimp-lang on all flavors, not only kde (mainly needed on
   xfce, where space is tight).
+
+-------------------------------------------------------------------
+Mon Nov 16 10:15:46 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Don't enable spice-vdagentd.service, that's done by udev
+- Don't try to delete netronome firmware twice
+- Add upgrade.desktop on xfce as well
+
+-------------------------------------------------------------------
+Wed Nov  4 12:38:52 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Switch "leap" back to "Leap" for 15.3
 
 -------------------------------------------------------------------
 Wed Nov  4 09:30:39 UTC 2020 - Fabian Vogt <fvogt@suse.com>

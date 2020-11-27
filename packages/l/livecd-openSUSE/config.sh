@@ -42,7 +42,7 @@ rpm -qa | grep "^cpp" | xargs -r rpm -e --nodeps
 #--------------------------------------
 # enable and disable services
 
-for i in langset NetworkManager firewalld spice-vdagentd; do
+for i in langset NetworkManager firewalld; do
 	systemctl -f enable $i
 done
 
@@ -70,7 +70,8 @@ EULA_DIR=/etc/YaST2/licenses/base
 (cd "${EULA_DIR}"; tar -cvzf /license.tar.gz *)
 
 # Remove some large locales to save space
-rm -rf /usr/share/locale/{ca,cs,da,ja,fi,id,nl,pl,tr,ru,sk,sr,sv,uk,vi,cmn_TW}
+rm -rf /usr/{lib,share}/locale/{ca,cs,da,ja,fi,id,nl,pl,tr,ru,sk,sr,sv,uk,vi,cmn_TW,zh}*
+rm -rf /usr/share/qt5/translations/*_{ca,cs,da,ja,fi,id,nl,pl,tr,ru,sk,sr,sv,uk,vi,cmn_TW,zh}*
 zypper --non-interactive rm yast2-trans-{uk,sv,ru,ja,da,cs,sr,vi} || :
 
 # Some packages really exaggerate here
@@ -107,31 +108,20 @@ pam-config -a --nullok
 
 : > /var/log/zypper.log
 
+# Add Installation and upgrade icons to the desktop
 if [ "$desktop" = "kde" ]; then
     # bug 989897, avoid creating desktop directory on KDE so that the default items are added on first login
-    cp /usr/share/applications/installation.desktop /usr/share/kio_desktop/DesktopLinks/
-    # Also show the update icon if the .desktop file is available
-    cp /usr/share/applications/upgrade.desktop /usr/share/kio_desktop/DesktopLinks/ || :
+    cp /usr/share/applications/{installation,upgrade}.desktop /usr/share/kio_desktop/DesktopLinks/
     # Set the application as being "trusted"
-    chmod a+x /usr/share/kio_desktop/DesktopLinks/installation.desktop
-    chmod a+x /usr/share/kio_desktop/DesktopLinks/upgrade.desktop || :
+    chmod a+x /usr/share/kio_desktop/DesktopLinks/{installation,upgrade}.desktop
 elif [ "$desktop" = "xfce" ]; then
-    # Add Installation icon to desktop folder
     mkdir -p /home/linux/.config /home/linux/Desktop
     echo 'XDG_DESKTOP_DIR="$HOME/Desktop"' > /home/linux/.config/user-dirs.dirs
-    cp /usr/share/applications/installation.desktop /home/linux/Desktop/
+    cp /usr/share/applications/{installation,upgrade}.desktop /home/linux/Desktop/
     # Set the application as being "trusted"
-    chown -R linux /home/linux/Desktop/installation.desktop
-    chmod a+x /home/linux/Desktop/installation.desktop
-# else case disabled: 'x11' (rescue) does not contain the installer, GNOME Shell has no concept of 'desktop'
-#else
-#    # Add Installation icon to desktop folder
-#    mkdir -p /home/linux/.config /home/linux/Desktop
-#    echo 'XDG_DESKTOP_DIR="$HOME/Desktop"' > /home/linux/.config/user-dirs.dirs
-#    ln -s /usr/share/applications/installation.desktop /home/linux/Desktop/
-#    # Set the application as being "trusted"
-#    chmod a+x /home/linux/Desktop/installation.desktop
+    chmod a+x /home/linux/Desktop/{installation,upgrade}.desktop
 fi
+# 'x11' (rescue) does not contain the installer, GNOME Shell has no concept of 'desktop'
 
 chown -R linux /home/linux
 
@@ -162,9 +152,6 @@ echo "Storage=volatile" >> /etc/systemd/journald.conf
 
 # Remove generated files (boo#1098535)
 rm -rf /var/cache/zypp/* /var/lib/zypp/AnonymousUniqueId /var/lib/systemd/random-seed
-
-# Remove netronome firmware (part of kernel-firmware): this sums up to 125MB
-rm -rf /lib/firmware/netronome/
 
 cat >/etc/systemd/system/fixupbootloader.service <<EOF
 # boo#1155545 - LOADER_TYPE has to be nil for the upgrade to work properly.

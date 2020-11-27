@@ -2,7 +2,7 @@
 
 <!-- OBS-ExclusiveArch: aarch64 i586 x86_64 -->
 
-<image schemaversion="6.5" name="openSUSE-Jump-%OS_VERSION_ID%-KDE-Live" displayname="openSUSE Jump %OS_VERSION_ID% KDE Live">
+<image schemaversion="6.5" name="openSUSE-Leap-%OS_VERSION_ID%-KDE-Live" displayname="openSUSE Leap %OS_VERSION_ID% KDE Live">
   <description type="system">
     <author>openSUSE Project</author>
     <contact>opensuse@opensuse.org</contact>
@@ -13,7 +13,7 @@
     <profile name="EFI" description="EFI" import="true" arch="x86_64,aarch64"/>
   </profiles>
   <preferences profiles="EFI">
-    <type primary="true" bootprofile="default" kernelcmdline="splash=silent quiet" flags="overlay" hybrid="true" hybridpersistent="true" hybridpersistent_filesystem="ext4" image="iso" firmware="uefi" volid="openSUSE_Jump_%OS_VERSION_ID%_KDE_Live" mediacheck="true"/>
+    <type primary="true" bootprofile="default" kernelcmdline="splash=silent quiet" flags="overlay" hybrid="true" hybridpersistent="true" hybridpersistent_filesystem="ext4" image="iso" firmware="uefi" volid="openSUSE_Leap_%OS_VERSION_ID%_KDE_Live" mediacheck="true"/>
     <version>2.8.0</version>
     <bootloader-theme>openSUSE</bootloader-theme>
     <bootsplash-theme>bgrt</bootsplash-theme>
@@ -23,7 +23,7 @@
     <rpm-excludedocs>true</rpm-excludedocs>
   </preferences>
   <preferences profiles="noEFI">
-    <type primary="true" bootprofile="default" kernelcmdline="splash=silent quiet" flags="overlay" hybrid="true" hybridpersistent="true" hybridpersistent_filesystem="ext4" image="iso" firmware="bios" volid="openSUSE_Jump_%OS_VERSION_ID%_KDE_Live" mediacheck="true"/>
+    <type primary="true" bootprofile="default" kernelcmdline="splash=silent quiet" flags="overlay" hybrid="true" hybridpersistent="true" hybridpersistent_filesystem="ext4" image="iso" firmware="bios" volid="openSUSE_Leap_%OS_VERSION_ID%_KDE_Live" mediacheck="true"/>
     <version>2.8.0</version>
     <bootloader-theme>openSUSE</bootloader-theme>
     <bootsplash-theme>bgrt</bootsplash-theme>
