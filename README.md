@@ -7,3 +7,4 @@ Advantages are:
 * offline access to history
 * distributed repo
 * increased visibility of changes
+* ability to download patch files
