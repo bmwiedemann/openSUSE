@@ -82,7 +82,7 @@ sub process($) {
 
 sub load_ignores()
 {
-  open(my $f, "< binary-list.txt") or die "$!";
+  open(my $f, "<", "scripts/binary-list.txt") or die "$!";
   my @ignores = <$f>;
   foreach(@ignores) {chomp($_)}
   my $ignorerestr = join("|", map {"(?:".Text::Glob::glob_to_regex_string($_).'$)'} @ignores);
