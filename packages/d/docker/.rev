@@ -1024,4 +1024,11 @@ delete request for docker-image-migrator was submitted in parallel.</comment>
     <comment></comment>
     <requestid>850092</requestid>
   </revision>
+  <revision rev="106" vrev="5">
+    <srcmd5>c43095c2f274946138c1c0abf8b1e83c</srcmd5>
+    <version>19.03.12_ce</version>
+    <time>1606601923</time>
+    <user>dimstar_suse</user>
+    <comment>osc copypac from project:openSUSE:Factory package:docker revision:104, using expand</comment>
+  </revision>
 </revisionlist>
