@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 26 09:07:17 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.5.0:
+  * Python 3 fixes to auth and wsgi.errors handling; notably making
+  wsgi.errors text.
+
+-------------------------------------------------------------------
 Fri Oct  9 04:10:19 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.4.6:

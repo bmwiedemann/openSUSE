@@ -311,4 +311,14 @@
   * Update setup.py to work with setuptools 50.1.0+</comment>
     <requestid>840343</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>c465db51228c2f677636ed97cca88a53</srcmd5>
+    <version>3.5.0</version>
+    <time>1606648749</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.5.0:
+  * Python 3 fixes to auth and wsgi.errors handling; notably making
+  wsgi.errors text.</comment>
+    <requestid>850933</requestid>
+  </revision>
 </revisionlist>
