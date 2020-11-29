@@ -20,20 +20,20 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-oiffile
-Version:        2020.1.18
+Version:        2020.9.18
 Release:        0
 Summary:        Read Olympus(r) image files (OIF and OIB)
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://www.lfd.uci.edu/~gohlke/
 Source:         https://github.com/cgohlke/oiffile/archive/v%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
-BuildRequires:  %{python_module numpy >= 1.14}
-BuildRequires:  %{python_module tifffile >= 2019.1.1}
+BuildRequires:  %{python_module numpy >= 1.15}
+BuildRequires:  %{python_module tifffile >= 2020.6.3}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.14
-Requires:       python-tifffile >= 2019.1.1
+Requires:       python-numpy >= 1.15
+Requires:       python-tifffile >= 2020.6.3
 BuildArch:      noarch
 %python_subpackages
 

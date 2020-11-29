@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 26 06:52:36 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 2020.9.18.
+  * Remove support for Python 3.6.
+  * Support os.PathLike file names.
+  * Fix unclosed files.
+
+-------------------------------------------------------------------
 Mon Aug 10 11:53:58 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix the archive to really match up the upstream tarball
