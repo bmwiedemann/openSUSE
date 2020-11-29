@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Nov 26 07:51:50 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 0.14.0.
+  * New features
+    * Adds the function find_classical_subsystem that tries to find
+      a subset of the modes with a classical covariance matrix.
+    * Adds the functions mean_number_of_clicks and 
+      variance_number_of_clicks that calculate the first and second 
+      statistical moments of the total number of clicks in a 
+      Gaussian state centered at the origin. 
+    * Adds the module decompositions with the function williamson 
+      to find the Williamson decomposition of an even-size 
+      positive-semidefinite matrix. 
+    * Adds the loop_hafnian_quad function to the Python interface 
+      for converting double precision matrices into quad precision, 
+      doing the calculations in quad precision, and then return the 
+      result as a double. 
+  * Improvements
+    * Introduces a new faster and significantly more accurate 
+      algorithm to calculate power traces allowing to speed up the 
+      calculation of loop hafnians 
+    * The quantum module has been refactored and organized into 
+      sub-modules. Several functions have been renamed, while the 
+      old names are being deprecated. 
+    * Adds support for C++14 
+    * pytest-randomly is added to the test suite to improve testing 
+      and avoid stochastically failing tests. 
+    * Modifies the function input_validation to use np.allclose for
+      checking the symmetry of the input matrices.
+    * Modifies the function _hafnian to calculate efficiently loop 
+      hafnians of diagonal matrices.
+  * Breaking changes
+    * Removes the redundant function normal_ordered_complex_cov.
+    * Renames the function mean_number_of_clicks to be 
+      mean_number_of_click_graph.
+
+-------------------------------------------------------------------
 Thu Sep 24 21:14:01 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Actually manually adding "-fopenmp" to CFLAGS allows us to use

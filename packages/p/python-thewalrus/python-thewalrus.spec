@@ -20,7 +20,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-thewalrus
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        An open-source software architecture for photonic quantum computing
 License:        Apache-2.0
@@ -29,8 +29,8 @@ URL:            https://github.com/XanaduAI/thewalrus
 Source:         https://github.com/XanaduAI/thewalrus/archive/v%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module dask-all}
-BuildRequires:  %{python_module numba >= 0.43.1}
-BuildRequires:  %{python_module numpy >= 1.13.3}
+BuildRequires:  %{python_module numba >= 0.49.1}
+BuildRequires:  %{python_module numpy >= 1.15.0}
 BuildRequires:  %{python_module numpy-devel >= 1.13.3}
 BuildRequires:  %{python_module pytest >= 5.4.1}
 BuildRequires:  %{python_module repoze.lru >= 0.7}
@@ -42,8 +42,8 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 Requires:       python-dask-all
-Requires:       python-numba
-Requires:       python-numpy >= 1.13.3
+Requires:       python-numba >= 0.49.1
+Requires:       python-numpy >= 1.15.0
 Requires:       python-repoze.lru >= 0.7
 Requires:       python-scipy >= 1.2.1
 Requires:       python-sympy >= 1.5.1
