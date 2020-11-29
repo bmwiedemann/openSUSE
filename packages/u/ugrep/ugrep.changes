@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 26 07:58:11 UTC 2020 - Wang Jun <jgwang@suse.com>
+
+- ugrep 3.0.5:
+  * 'enable-color' option deprecated, use 'disable-auto-color'
+  * support wide Unicode strings
+  * update some documents
+
+-------------------------------------------------------------------
 Sun Oct 25 13:59:32 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - ugrep 3.0.4:

@@ -90,4 +90,12 @@
     <comment>ugrep 3.0.4</comment>
     <requestid>843906</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>02bcedd2cb7bdbf76a6855b79a9d3a88</srcmd5>
+    <version>3.0.5</version>
+    <time>1606649322</time>
+    <user>dimstar_suse</user>
+    <comment>ugrep 3.0.5</comment>
+    <requestid>851099</requestid>
+  </revision>
 </revisionlist>
