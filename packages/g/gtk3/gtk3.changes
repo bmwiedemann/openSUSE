@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 24 15:58:47 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.24.23+118:
+  + cssnode: Bail out nicely if there is no settings (#2780).
+  + gdk/wayland: Add support for primary-selection-unstable-v1
+    (#2591).
+  + wayland: Emit dummy configure event when resizing while fixed.
+  + colorchooser: Backport the new color palette.
+  + gdk: Fix parent relative background crash.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Oct 15 13:49:46 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Pass --disable-tracker3 to configure: This disables the tracker

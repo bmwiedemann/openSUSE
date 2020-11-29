@@ -1431,4 +1431,19 @@ Putting the API-docs into a separate package removes 23MByte from a gtk3-devel i
     <comment>Push GNOME 3.38</comment>
     <requestid>847237</requestid>
   </revision>
+  <revision rev="162" vrev="1">
+    <srcmd5>09c8636f0a8a86f53c91b2b15cb51a79</srcmd5>
+    <version>3.24.23+118</version>
+    <time>1606648995</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.24.23+118:
+  + cssnode: Bail out nicely if there is no settings (#2780).
+  + gdk/wayland: Add support for primary-selection-unstable-v1
+    (#2591).
+  + wayland: Emit dummy configure event when resizing while fixed.
+  + colorchooser: Backport the new color palette.
+  + gdk: Fix parent relative background crash.
+  + Updated translations. (forwarded request 850956 from dimstar)</comment>
+    <requestid>851054</requestid>
+  </revision>
 </revisionlist>
