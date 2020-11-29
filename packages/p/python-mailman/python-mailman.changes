@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Nov 28 17:49:08 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Update to 3.3.2:
+  * Support for inviting users to join mailing lists.
+  * New adddmembers, delmembers and syncmembers command to
+    manage membership from CLI.
+  * Addition of new REST API endpoints that return the count of held messages
+    and subscription requests of much faster page loads in Postorius.
+  * Addition of support for filtering in some API endpoints like Members
+    and Subscription requests.
+  * Support for address= option in email join command to subscribe an address
+    other then sending address.
+  * Addition of who email command to lookup memberships.
+  * Expose emergency field for MailingList resource in REST API.
+  * Several bug fixes to support new major version of libraries like dnspython, 
+    flufl.* etc.
+
+-------------------------------------------------------------------
 Wed Oct  7 05:46:29 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 
 - Remove suid bit from /var/lib/mailman/data

@@ -37,7 +37,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-mailman%{psuffix}
-Version:        3.3.1
+Version:        3.3.2
 Release:        0
 Summary:        Mailman -- the GNU mailing list manager
 License:        GPL-3.0-only
