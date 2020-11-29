@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 26 14:57:37 UTC 2020 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- move /etc/X11/xim.d/* to /usr/etc/X11/xim.d/ (boo#1176431)
+
+-------------------------------------------------------------------
 Wed Aug 19 12:43:02 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)

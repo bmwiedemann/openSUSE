@@ -1,7 +1,7 @@
 #
 # spec file for package kinput2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,9 +12,15 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if ! %{defined _distconfdir}
+%define _distconfdir %{_sysconfdir}
+%else
+%define use_usretc 1
+%endif
 
 Name:           kinput2
 Version:        v3.1
@@ -22,7 +28,7 @@ Release:        0
 Summary:        Kanji Input Server for the X Window System
 License:        HPND
 Group:          System/I18n/Japanese
-Url:            ftp://ftp.sra.co.jp/pub/x11/kinput2
+URL:            ftp://ftp.sra.co.jp/pub/x11/kinput2
 Source:         ftp://ftp.sra.co.jp/pub/x11/kinput2/%{name}-v3.1.tar.bz2
 Source10:       etc-x11-xim.d-kinput2-canna
 Source11:       etc-x11-xim.d-kinput2-wnn
@@ -91,16 +97,16 @@ make %{?_smp_mflags} CCOPTIONS="%{optflags}"
 %install
 make DESTDIR=%{buildroot} install %{?_smp_mflags}
 make install.man MANSUFFIX=1 LIBMANSUFFIX=3 DESTDIR=%{buildroot}
-mkdir -p %{buildroot}%{_sysconfdir}/X11/xim.d/ja
+mkdir -p %{buildroot}%{_distconfdir}/X11/xim.d/ja
 install -m 644 %{SOURCE10} \
-               %{buildroot}%{_sysconfdir}/X11/xim.d/kinput2-canna
+               %{buildroot}%{_distconfdir}/X11/xim.d/kinput2-canna
 install -m 644 %{SOURCE11} \
-               %{buildroot}%{_sysconfdir}/X11/xim.d/kinput2-wnn
-pushd  %{buildroot}%{_sysconfdir}/X11/xim.d/
+               %{buildroot}%{_distconfdir}/X11/xim.d/kinput2-wnn
+pushd  %{buildroot}%{_distconfdir}/X11/xim.d/
     ln -s kinput2-canna kinput2
     pushd ja
         ln -s ../kinput2-canna 70-kinput2-canna
-	ln -s ../kinput2-wnn   71-kinput2-wnn
+        ln -s ../kinput2-wnn   71-kinput2-wnn
     popd
 popd
 
@@ -108,7 +114,13 @@ popd
 %defattr(-, root, root)
 %doc Copyright NEWS doc
 %doc client/README
+%if %{defined use_usretc}
+%dir %{_distconfdir}/X11
+%dir %{_distconfdir}/X11/xim.d
+%{_distconfdir}/X11/xim.d/*
+%else
 %config %{_sysconfdir}/X11/xim.d/*
+%endif
 %{_bindir}/*
 %{_datadir}/X11/app-defaults
 %doc %{_mandir}/*/*
