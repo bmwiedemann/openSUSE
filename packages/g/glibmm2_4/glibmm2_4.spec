@@ -20,7 +20,7 @@
 %define so_ver -2_4-1
 %define _name glibmm
 Name:           glibmm2_4
-Version:        2.64.2
+Version:        2.64.4
 Release:        0
 Summary:        C++ Interface for Glib
 License:        LGPL-2.1-or-later
@@ -29,9 +29,13 @@ URL:            http://www.gtkmm.org/
 Source0:        https://download.gnome.org/sources/glibmm/2.64/%{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
+BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  graphviz-devel
+BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.61.2
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.49.7
@@ -87,12 +91,13 @@ C++ and makes it possible for gtkmm to wrap GObject-based APIs.
 %autosetup -p1 -n %{_name}-%{version}
 
 %build
-%configure --disable-static
-%make_build
+%meson \
+	-Dbuild-documentation=true \
+	%{nil}
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 %fdupes %{buildroot}/{_prefix}
 
 %post -n libglibmm%{so_ver} -p /sbin/ldconfig
