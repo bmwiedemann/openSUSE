@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 21 12:51:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 5.1.0
+  * Add a manifest_strict setting to prevent Django throwing errors 
+    when missing files are referenced
+
+-------------------------------------------------------------------
 Thu Feb  6 13:10:34 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 5.0.1

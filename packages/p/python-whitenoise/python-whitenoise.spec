@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-whitenoise
-Version:        5.0.1
+Version:        5.1.0
 Release:        0
 Summary:        Static file serving for WSGI applications
 License:        MIT
@@ -52,6 +52,7 @@ Static file serving for WSGI applications.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+PYTHONPATH=$PWD
 %pytest
 
 %files %{python_files}
