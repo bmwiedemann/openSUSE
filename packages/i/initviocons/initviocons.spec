@@ -1,7 +1,7 @@
 #
 # spec file for package initviocons
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,16 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           initviocons
-Url:            http://svn.poeml.de/viewcvs/initviocons/
+URL:            http://svn.poeml.de/viewcvs/initviocons/
 Version:        0.5
 Release:        0
 Summary:        Terminal Initialization, e.g. for the iSeries Virtual Console
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Console
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  automake
@@ -54,17 +54,17 @@ make CFLAGS="$RPM_OPT_FLAGS -Wall"
 %install
 %make_install
 install -m 0755 termprobes $RPM_BUILD_ROOT/%{_bindir}/termprobes
-#UsrMerge
+%if !0%{?usrmerged}
 mkdir -p $RPM_BUILD_ROOT/bin
 ln -sf %{_bindir}/initviocons $RPM_BUILD_ROOT/bin
-#EndUsrMerge
+%endif
 
 %files
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog COPYING NEWS README
-#UsrMerge 
+%if !0%{?usrmerged}
 /bin/*
-#EndUsrMerge
+%endif
 %{_bindir}/*
 
 %changelog

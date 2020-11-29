@@ -150,4 +150,12 @@
   too long -F arguments (bsc#1041840) (forwarded request 500267 from msmeissn)</comment>
     <requestid>500268</requestid>
   </revision>
+  <revision rev="23" vrev="105">
+    <srcmd5>b535afb677fbe562c58b32bf121c4030</srcmd5>
+    <version>0.5</version>
+    <time>1606648834</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850975</requestid>
+  </revision>
 </revisionlist>
