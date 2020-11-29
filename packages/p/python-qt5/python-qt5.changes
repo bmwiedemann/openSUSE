@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 24 15:09:44 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 5.15.2
+  * Bound signals are now hashable. 
+- Drop patches merged upstream
+  * pyqt5-customaudio-qt511.patch
+  * pyqt5-signals-hashable.patch
+
+-------------------------------------------------------------------
 Tue Nov 17 13:02:10 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix boo#1178814: migration of old /usr/share/sip/PyQt5 to

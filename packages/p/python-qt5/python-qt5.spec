@@ -34,7 +34,7 @@ ExclusiveArch:  do_not_build
 %define oldpython python
 %define mname qt5
 Name:           python-%{mname}
-Version:        5.15.1
+Version:        5.15.2
 Release:        0
 Summary:        Python bindings for Qt 5
 License:        SUSE-GPL-2.0-with-FLOSS-exception OR GPL-3.0-only OR NonFree
@@ -42,14 +42,10 @@ Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqt
 Source:         https://files.pythonhosted.org/packages/source/P/PyQt5/PyQt5-%{version}.tar.gz
 Source99:       python-qt5-rpmlintrc
-# PATCH-FIX-UPSTREAM - allow hashable signals - https://www.riverbankcomputing.com/pipermail/pyqt/2020-September/043160.html
-Patch0:         pyqt5-signals-hashable.patch
-# PATCH-FIX-UPSTREAM - QCustomAudioRoleControl for Qt5 5.11 and later only - https://www.riverbankcomputing.com/pipermail/pyqt/2020-September/043241.html
-Patch1:         pyqt5-customaudio-qt511.patch
 # PATCH-FIX-OPENSUSE - disable-rpaths.diff - Disable RPATH when building PyQt5.
-Patch2:         disable-rpaths.diff
+Patch0:         disable-rpaths.diff
 # PATCH-FIX-OPENSUSE - install binary dbus mainloop integration in arch dependent directory
-Patch3:         0001-Use-a-noarch-wrapper-for-dbus-mainloop-integration.patch
+Patch1:         0001-Use-a-noarch-wrapper-for-dbus-mainloop-integration.patch
 BuildRequires:  %{python_module dbus-python-devel}
 BuildRequires:  %{python_module devel}
 BuildRequires:  dbus-1-devel
@@ -106,7 +102,7 @@ BuildRequires:  %{python_module sip4-devel >= 4.19.23}
 BuildRequires:  python2-enum34
 Requires:       python-sip(api) = %{python_sip_api_ver}
 %else
-BuildRequires:  %{python_module pyqt-builder}
+BuildRequires:  %{python_module pyqt-builder >= 1.6}
 BuildRequires:  %{python_module sip-devel >= 5.3}
 %requires_eq    python-qt5-sip
 %endif
