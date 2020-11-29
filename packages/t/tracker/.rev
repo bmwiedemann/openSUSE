@@ -1132,4 +1132,12 @@
   + Updated translations. (forwarded request 840123 from iznogood)</comment>
     <requestid>840249</requestid>
   </revision>
+  <revision rev="135" vrev="2">
+    <srcmd5>1a4d7b98cb148fa463293bb59d32b1a3</srcmd5>
+    <version>3.0.1</version>
+    <time>1606649009</time>
+    <user>dimstar_suse</user>
+    <comment>- split out the datafiles that are required by the tracker-miners (forwarded request 850958 from dimstar)</comment>
+    <requestid>851056</requestid>
+  </revision>
 </revisionlist>

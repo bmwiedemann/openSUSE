@@ -65,6 +65,7 @@ Obsoletes:      tracker-miner-evolution < 1.99.0
 Obsoletes:      tracker-miner-firefox < 1.99.0
 Obsoletes:      tracker-miner-thunderbird < 1.99.0
 BuildRequires:  libgupnp-dlna-devel >= 0.9.4
+Requires:       tracker-data-files = %{version}
 
 %description
 Tracker is a desktop-neutral object database, tag/metadata database,
@@ -119,6 +120,16 @@ search tool and indexer.
 
 This subpackage contains the headers to make use of its libraries.
 
+%package -n tracker-data-files
+Summary:        Data files for the Tracker Miners
+Group:          Productivity/Other
+
+%description -n tracker-data-files
+Tracker is a desktop-neutral object database, tag/metadata database,
+search tool and indexer.
+
+This subpackage contains the data files for the Tracker miners.
+
 %lang_package
 
 %prep
@@ -159,8 +170,7 @@ mkdir %{buildroot}%{_datadir}/tracker3/domain-ontologies
 %{_bindir}/tracker3
 %dir %{_libdir}/tracker-%{TrackerAPI}/
 %{_datadir}/bash-completion/completions/tracker3
-%{_datadir}/tracker3/
-%dir %{_datadir}/tracker3/domain-ontologies
+%dir %{_datadir}/tracker3/
 %{_libexecdir}/tracker3/
 %{_libexecdir}/tracker-xdg-portal-3
 %{_mandir}/man1/tracker3-endpoint.1.gz
@@ -171,6 +181,11 @@ mkdir %{buildroot}%{_datadir}/tracker3/domain-ontologies
 %{_mandir}/man1/tracker-xdg-portal-3.1.gz
 %{_datadir}/dbus-1/services/org.freedesktop.portal.Tracker.service
 %{_userunitdir}/tracker-xdg-portal-3.service
+
+%files -n tracker-data-files
+%dir %{_datadir}/tracker3/domain-ontologies
+%{_datadir}/tracker3/ontologies/
+%{_datadir}/tracker3/stop-words/
 
 %files -n libtracker-sparql-%{RPMTrackerAPI}-0
 %{_libdir}/libtracker-sparql*.so.*
