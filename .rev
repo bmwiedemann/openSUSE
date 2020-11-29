@@ -974,4 +974,13 @@
     <comment></comment>
     <requestid>839155</requestid>
   </revision>
+  <revision rev="84" vrev="3">
+    <srcmd5>8ba3b7f3480aa8721fd5e6a8a3881461</srcmd5>
+    <version>4.14+20200311</version>
+    <time>1606649425</time>
+    <user>dimstar_suse</user>
+    <comment>- Make noto-coloremoji-fonts a soft dependency. This avoids having
+  to break the dependency on the Rescue CD. (forwarded request 851319 from favogt)</comment>
+    <requestid>851350</requestid>
+  </revision>
 </revisionlist>

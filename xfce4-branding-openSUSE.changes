@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 27 13:22:08 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Make noto-coloremoji-fonts a soft dependency. This avoids having
+  to break the dependency on the Rescue CD.
+
+-------------------------------------------------------------------
 Fri Oct  2 12:23:17 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Make noto-sans-cjk-fonts a soft dependency
