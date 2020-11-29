@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 23 12:52:20 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.2:
+  + Do not make display an empty view on launch.
+  + Fix new songs retrieval when they are added to the music
+    directory.
+  + Fix artist queries to retrieve art.
+  + Fix playlist sorting crash.
+  + Wrong checkbox style in AlbumWidget.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Oct  6 07:23:16 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.38.1:
