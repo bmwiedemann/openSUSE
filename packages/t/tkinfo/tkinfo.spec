@@ -1,7 +1,7 @@
 #
-# spec file for package tkinfo (Version 2.8)
+# spec file for package tkinfo
 #
-# Copyright (c) 2009 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
-# norootforbuild
 
 
 Name:           tkinfo
-Url:            http://math-www.uni-paderborn.de/~axel/tkinfo/
+URL:            http://math-www.uni-paderborn.de/~axel/tkinfo/
+Version:        2.11
+Release:        0
+Summary:        Viewer for info-files
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/Texinfo
-Version:        2.8
-Release:        134
-Summary:        Viewer for info-files
-Source:         %name-%version.tar.bz2
+Source:         %name-%version.tar.gz
 Patch0:         tkinfo.patch
 Patch1:         tkinfo-alias.patch
 BuildArch:      noarch

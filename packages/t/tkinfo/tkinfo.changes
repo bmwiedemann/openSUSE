@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 27 07:05:53 UTC 2020 - Wang Jun <jgwang@suse.com>
+
+- update to 2.11
+  * Version 2.11 (17-October-2017): Documentation patches by Debian
+    maintainer Peter Blackman.
+  * Version 2.10 (12-October-2017): Correctly bind Shift-Tab, thanks
+    to Gerald Williams.
+  * Version 2.9 (04-October-2017): Correctly deal with "Local Variables:"
+    info nodes, thanks to Gerald Williams.
+
+-------------------------------------------------------------------
 Tue Oct 27 15:38:47 CET 2009 - max@suse.de
 
 - Relax wildcard searching, so that info pages with version

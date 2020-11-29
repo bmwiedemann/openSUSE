@@ -99,4 +99,12 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9b22ea460198c01f8e8e91644a609964</srcmd5>
+    <version>2.11</version>
+    <time>1606649336</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.11 (forwarded request 851241 from jgwang)</comment>
+    <requestid>851244</requestid>
+  </revision>
 </revisionlist>
