@@ -55,4 +55,16 @@
     <comment></comment>
     <requestid>816813</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>86dd5dc20c1cfcea41ee198bd1332545</srcmd5>
+    <version>1.2.5</version>
+    <time>1606649157</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.2.5
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Update HISTORY.txt from github releases page (forwarded request 850420 from glaubitz)</comment>
+    <requestid>850507</requestid>
+  </revision>
 </revisionlist>

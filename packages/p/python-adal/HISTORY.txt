@@ -1,3 +1,8 @@
+ADAL Python 1.2.5
+
+    Bugfix to address error "InvalidScope : FaultMessage: ID3082: The request scope is not valid or is unsupported." when using
+    username-password flow with federated user account while your tenant is migrating to a different cloud. (#240)
+
 ADAL Python 1.2.4
 
     Update project metadata on PyPI (#231 )
