@@ -335,4 +335,12 @@ It now only builds for &gt;12.2, not sure if there is a simple fix to get it to 
     <comment></comment>
     <requestid>848757</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>7dc69e9b0e96d723f159f46e706bec26</srcmd5>
+    <version>2.7.4</version>
+    <time>1606649352</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851277</requestid>
+  </revision>
 </revisionlist>

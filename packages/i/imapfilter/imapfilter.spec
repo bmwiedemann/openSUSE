@@ -17,7 +17,7 @@
 
 
 Name:           imapfilter
-Version:        2.7.3
+Version:        2.7.4
 Release:        0
 Summary:        A mail filtering utility
 License:        MIT

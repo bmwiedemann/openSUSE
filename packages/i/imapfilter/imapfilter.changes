@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 26 18:03:20 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.7.4:
+  * Bug fix; incorrect argument to regular expression compile
+    function.
+
+-------------------------------------------------------------------
 Sat Nov 14 23:49:42 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.7.3:
