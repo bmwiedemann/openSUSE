@@ -20,11 +20,11 @@
 %define asan_build     0
 %define maj            7
 %define mfr_version    %{maj}.0.10
-%define mfr_revision   35
+%define mfr_revision   43
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
-%define clibver        7
-%define cwandver       7
+%define clibver        8
+%define cwandver       8
 %define cxxlibver      4
 %define libspec        -%{maj}_Q%{quantum_depth}HDRI
 %define config_dir     ImageMagick-7
@@ -436,7 +436,7 @@ make install \
 mv -t %{buildroot}%{_sysconfdir}/%{name}* %{buildroot}%{_datadir}/%{name}*/*.xml
 mv %{buildroot}%{_sysconfdir}/%{config_dir}{,-upstream}
 cp -r %{buildroot}%{_sysconfdir}/%{config_dir}{-upstream,-SUSE}
-patch --dir %{buildroot}%{_sysconfdir}/%{config_dir}-SUSE < %{PATCH0}
+patch --fuzz=0 --dir %{buildroot}%{_sysconfdir}/%{config_dir}-SUSE < %{PATCH0}
 mkdir -p  %{buildroot}%{_sysconfdir}/alternatives/
 ln -sf %{_sysconfdir}/alternatives/%{config_dir} %{buildroot}%{_sysconfdir}/%{config_dir}
 # symlink header file relative to /usr/include/ImageMagick-7/

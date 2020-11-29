@@ -2815,4 +2815,28 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   % ImageMagick-configuration-SUSE.patch (refreshed)</comment>
     <requestid>845671</requestid>
   </revision>
+  <revision rev="218" vrev="1">
+    <srcmd5>86e763ddd768f2b8c1b4f5c1c74aefc5</srcmd5>
+    <version>7.0.10.43</version>
+    <time>1606649032</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.10.43
+  * add padding to AcquirePolicyString().
+  * revert memory patch to avert possible thread lock.
+  * add support for FilmLight FL32 image format.
+  * remove Linux shell artifact from Windows delegate configuration file.
+  * fix shell injection vulnerability via the -authenticate option (reference
+    alex@cure...).
+  * support DPX 4:2:2 sampling.
+  * Release ImageMagick version 7.0.10-38 GIT revision 17815:bf51a3f1f:20201114
+  * add image settings support to -fx.
+  * better support for TIFF YCbCr photometric.
+  * verify TTF glyph format before dereferencing (reference
+    https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=26932).
+  * force single HEIC image per container.
+  * Release ImageMagick version 7.0.10-37 GIT revision 17780:47a8392ef:20201107
+  * check and report if profile is corrupt.
+  * do not add entropy based on mkstemp() unique filename.</comment>
+    <requestid>850535</requestid>
+  </revision>
 </revisionlist>
