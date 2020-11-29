@@ -17,7 +17,7 @@
 
 
 Name:           uwsgi
-Version:        2.0.18
+Version:        2.0.19.1
 Release:        0
 Summary:        Application Container Server for Networked/Clustered Web Applications
 License:        Apache-2.0 AND GPL-2.0-only WITH GCC-exception-2.0
@@ -43,8 +43,6 @@ Patch2:         uwsgi-1.9.13-objc_gc-no-fobjc-gc.patch
 Patch3:         uwsgi-1.9.11-systemd_logger-old_systemd.patch
 # PATCH-FIX-OPENSUSE uwsgi-2.0.18-postgresql-config.patch - Use pkg-config instead of pg_config
 Patch4:         uwsgi-2.0.18-postgresql-config.patch
-# PATCH-FIX-OPENSUSE uwsgi-2.0.18-psgi-fix-duplicate-uperl.patch - Fix duplicate uperl with gcc 10
-Patch5:         uwsgi-2.0.18-psgi-fix-duplicate-uperl.patch
 %define apache_branch     %(rpm -q --qf %%{version} apache2 | grep -E -o "2\\.[0-9]+")
 %if "%{apache_branch}" == "2.4"
   %define apxs %{_bindir}/apxs2
@@ -439,7 +437,6 @@ This package contains support for PHP version 7.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
 # Generate a config that builds all plugins except for examples and stuff we
 # can't satisfy the requirements for or are just broken
 excluded_plugins=""
