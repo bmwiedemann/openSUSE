@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-cognitiveservices-knowledge-qnamaker
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        Microsoft Azure QnA Maker Client Library
 License:        MIT
