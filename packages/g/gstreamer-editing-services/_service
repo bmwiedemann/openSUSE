@@ -3,7 +3,7 @@
     <param name="url">https://gitlab.freedesktop.org/gstreamer/gst-editing-services.git</param>
     <param name="filename">gst-editing-services</param>
 <!--    <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>-->
-    <param name="revision">1.18.0</param>
+    <param name="revision">1.18.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
   </service>

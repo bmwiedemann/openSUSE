@@ -19,7 +19,7 @@
 
 %define _name gst-editing-services
 Name:           gstreamer-editing-services
-Version:        1.18.0
+Version:        1.18.1
 Release:        0
 Summary:        GStreamer Editing Services
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -37,7 +37,7 @@ BuildRequires:  pkgconfig(bash-completion) >= 2.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.16
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.6
-BuildRequires:  pkgconfig(gst-validate-1.0) >= %{version}
+BuildRequires:  pkgconfig(gst-validate-1.0) >= 1.18.0
 BuildRequires:  pkgconfig(gstreamer-1.0) >= %{version}
 BuildRequires:  pkgconfig(gstreamer-controller-1.0)
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= %{version}

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov 26 14:03:39 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Fix minimum version of pkgconfig(gst-validate-1.0) BuildRequires.
+
+-------------------------------------------------------------------
+Wed Oct 28 10:23:37 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 1.18.1:
+  + Highlighted bugfixes in 1.18.1
+    - important security fixes
+    - bug fixes and memory leak fixes
+    - various stability and reliability improvements
+  + gst-editing-services changes:
+    - ges: Do not recreate auto-transitions when changing clip
+      assets
+    - ges: Fix a copy/paste mistake in meson file
+
+-------------------------------------------------------------------
 Mon Sep 14 11:53:05 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 1.18.0:
