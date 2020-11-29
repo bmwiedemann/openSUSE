@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 28 10:45:52 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 1.18.1:
+  + Highlighted bugfixes in 1.18.1
+    - important security fixes
+    - bug fixes and memory leak fixes
+    - various stability and reliability improvements
+  + gstreamer-vaapi changes:
+    - decoder: don't reply src caps query with allowed if pad is fixed
+    - plugins: decode: fix a DMA caps typo in ensure_allowed_srcpad_caps
+
+-------------------------------------------------------------------
 Fri Sep 18 07:29:33 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 1.18.0:
