@@ -19,8 +19,8 @@
 #   BuildRequires: foobar
 #   Requires: foobar
 # ## used by gem2rpm
-:patches:
-  0001-Use-usr-bin-bash-instead-of-env-as-the-shebang.patch: -p1
+# :patches:
+#   0001-Use-usr-bin-bash-instead-of-env-as-the-shebang.patch: -p1
 # ## used by gem2rpm
 :sources:
 # - foo.desktop
