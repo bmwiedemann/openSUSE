@@ -18,7 +18,7 @@
 
 
 Name:           yelp-xsl
-Version:        3.38.1
+Version:        3.38.2
 Release:        0
 Summary:        XSL stylesheets for the yelp help browser
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
