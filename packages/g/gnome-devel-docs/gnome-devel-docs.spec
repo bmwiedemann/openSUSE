@@ -17,7 +17,7 @@
 
 
 Name:           gnome-devel-docs
-Version:        3.38.1
+Version:        3.38.2
 Release:        0
 Summary:        GNOME Platform Documentation
 License:        GFDL-1.1-only AND CC-BY-SA-4.0
