@@ -297,4 +297,13 @@ adds .desktop files</comment>
     <comment></comment>
     <requestid>595700</requestid>
   </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>cf6c2295ee7343877f7d853392ad7f9d</srcmd5>
+    <version>9.22</version>
+    <time>1606649267</time>
+    <user>dimstar_suse</user>
+    <comment>- add rxvt-unicode-9.22-perl_environ_segfault.patch to avoid a
+  segfault when closing urxvt</comment>
+    <requestid>851138</requestid>
+  </revision>
 </revisionlist>

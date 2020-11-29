@@ -1,7 +1,7 @@
 #
 # spec file for package rxvt-unicode
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,7 @@ Patch2:         rxvt-unicode-9.21-xsubpp.patch
 Patch3:         rxvt-unicode-0001-Prefer-XDG_RUNTIME_DIR-over-the-HOME.patch
 Patch4:         rxvt-unicode-hardening.patch
 Patch5:         rxvt-unicode-secondarywheel.patch
+Patch6:         rxvt-unicode-9.22-perl_environ_segfault.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  perl
@@ -72,6 +73,7 @@ at the same time, including Xft fonts.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6
 find -type d -name CVS -print0 | xargs -r0 rm -r
 install -m 0644 %{SOURCE2} README.SUSE
 

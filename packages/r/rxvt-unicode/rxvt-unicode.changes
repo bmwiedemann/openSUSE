@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 26 14:25:58 UTC 2020 - Marcus Hüwe <suse-tux@gmx.de>
+
+- add rxvt-unicode-9.22-perl_environ_segfault.patch to avoid a
+  segfault when closing urxvt
+
+-------------------------------------------------------------------
 Wed Apr  4 05:22:54 UTC 2018 - glin@suse.com
 
 - added rxvt-unicode-secondarywheel.patch from to add the new
