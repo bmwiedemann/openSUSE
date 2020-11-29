@@ -31,7 +31,7 @@
 %define _gold_linker 0
 %endif
 Name:           webkit2gtk3
-Version:        2.30.2
+Version:        2.30.3
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        LGPL-2.0-or-later AND BSD-3-Clause
@@ -41,12 +41,10 @@ Source0:        %{url}/releases/%{_name}-%{version}.tar.xz
 Source1:        %{url}/releases/%{_name}-%{version}.tar.xz.asc
 Source98:       baselibs.conf
 Source99:       webkit2gtk3.keyring
-# PATCH-FIX-OPENSUSE webkit2gtk3-fdo-soname.patch mgorse@suse.com -- don't call dlopen with an unversioned soname.
-Patch0:         webkit2gtk3-fdo-soname.patch
 # PATCH-FIX-OPENSUSE webkit-process.patch boo#1159329 mgorse@suse.com -- use single web process for evolution and geary.
-Patch1:         webkit-process.patch
+Patch0:         webkit-process.patch
 # PATCH-FIX-OPENSUSE no-forced-sse.patch jengelh@iani.de -- cure execution of illegal instruction in i586 firefox.
-Patch2:         no-forced-sse.patch
+Patch1:         no-forced-sse.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
@@ -273,11 +271,10 @@ A small test browswer from webkit, useful for testing features.
 
 %prep
 %setup -n webkitgtk-%{version}
-%patch0 -p1
 %if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150200
-%patch1 -p1
+%patch0 -p1
 %endif
-%patch2 -p1
+%patch1 -p1
 
 %build
 %define _lto_cflags %{nil}

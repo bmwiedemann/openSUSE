@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Nov 22 16:37:46 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.30.3 (boo#1179122):
+  + Add new build option USE(64KB_PAGE_BLOCK).
+  + Fix backdrop filters with rounded borders.
+  + Fix scrolling iframes when async scrolling is enabled.
+  + Allow applications to handle drag and drop on the web view
+    again.
+  + Update Outlook user agent quirk.
+  + Fix the build with video support disabled.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2020-13584, CVE-2020-9983.
+- Drop webkit2gtk3-fdo-soname.patch: fixed upstream.
+- Rebase webkit-process.patch.
+
+-------------------------------------------------------------------
 Fri Oct 23 09:35:30 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.30.2:
@@ -35,6 +51,7 @@ Mon Sep 14 23:28:52 UTC 2020 - Michael Gorse <mgorse@suse.com>
   + Fix NTLM authentication.
   + Don't try to use SHM on wayland with older wpebackend-fdo.
   + Fix the build due to seccomp.h header not found.
+  + Security fixes: CVE-2020-9948, CVE-2020-9951.
 - Drop seccomp-build-fix.patch and wpe-shm-check.patch: fixed
   upstream.
 
@@ -141,7 +158,7 @@ Fri Jul 10 12:08:05 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
   + Fix several crashes and rendering issues.
   + Security fixes: CVE-2020-9802, CVE-2020-9803, CVE-2020-9805,
     CVE-2020-9806, CVE-2020-9807, CVE-2020-9843, CVE-2020-9850,
-    CVE-2020-13753.
+    CVE-2020-13753, CVE-2020-9952.
 
 -------------------------------------------------------------------
 Mon Apr 27 15:27:49 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>

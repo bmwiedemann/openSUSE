@@ -1,7 +1,7 @@
-diff -urp webkitgtk-2.28.0.orig/Source/WebKit/UIProcess/API/glib/WebKitWebContext.cpp webkitgtk-2.28.0/Source/WebKit/UIProcess/API/glib/WebKitWebContext.cpp
---- webkitgtk-2.28.0.orig/Source/WebKit/UIProcess/API/glib/WebKitWebContext.cpp	2020-02-04 04:30:36.000000000 -0600
-+++ webkitgtk-2.28.0/Source/WebKit/UIProcess/API/glib/WebKitWebContext.cpp	2020-03-19 14:16:07.742318092 -0500
-@@ -379,8 +379,16 @@ static void webkitWebContextConstructed(
+diff -urp webkitgtk-2.30.3.orig/Source/WebKit/UIProcess/API/glib/WebKitWebContext.cpp webkitgtk-2.30.3/Source/WebKit/UIProcess/API/glib/WebKitWebContext.cpp
+--- webkitgtk-2.30.3.orig/Source/WebKit/UIProcess/API/glib/WebKitWebContext.cpp	2020-09-18 03:34:08.000000000 -0500
++++ webkitgtk-2.30.3/Source/WebKit/UIProcess/API/glib/WebKitWebContext.cpp	2020-11-20 16:25:05.830587831 -0600
+@@ -397,8 +397,16 @@ static void webkitWebContextConstructed(
      configuration.setProcessSwapsOnNavigation(priv->psonEnabled);
      if (!priv->psonEnabled) {
          const char* useSingleWebProcess = getenv("WEBKIT_USE_SINGLE_WEB_PROCESS");
@@ -18,5 +18,5 @@ diff -urp webkitgtk-2.28.0.orig/Source/WebKit/UIProcess/API/glib/WebKitWebContex
 +            }
 +        }
      }
- #endif
  
+ #if !USE(GTK4)

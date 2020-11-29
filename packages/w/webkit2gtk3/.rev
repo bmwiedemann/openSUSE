@@ -933,4 +933,12 @@
     <comment></comment>
     <requestid>844241</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>4c2b1dcc98dee2d39dedaf5f4d18d6b9</srcmd5>
+    <version>2.30.3</version>
+    <time>1606648978</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.30.3 (boo#1179122): (forwarded request 850518 from mgorse)</comment>
+    <requestid>851051</requestid>
+  </revision>
 </revisionlist>
