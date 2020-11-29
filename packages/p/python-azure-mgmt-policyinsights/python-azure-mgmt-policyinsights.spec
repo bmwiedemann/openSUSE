@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-policyinsights
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        Microsoft Azure Policy Insights Client Library
 License:        MIT
