@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 28 10:34:58 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 1.18.1:
+  + Highlighted bugfixes in 1.18.1
+    - important security fixes
+    - bug fixes and memory leak fixes
+    - various stability and reliability improvements
+  + gst-rtsp-server changes:
+    - rtsp-stream: collect rtp info when blocking
+    - rtsp-media: set a 0 storage size for TCP receivers
+    - rtsp-stream: preroll on gap events
+    - rtsp-media: do not unblock on unsuspend
+
+-------------------------------------------------------------------
 Thu Sep 17 15:09:30 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 1.18.0:

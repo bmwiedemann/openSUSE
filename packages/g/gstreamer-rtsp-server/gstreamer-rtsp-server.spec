@@ -19,7 +19,7 @@
 %define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
 %define _name gst-rtsp-server
 Name:           gstreamer-rtsp-server
-Version:        1.18.0
+Version:        1.18.1
 Release:        0
 Summary:        GStreamer-based RTSP server library
 License:        LGPL-2.0-or-later
