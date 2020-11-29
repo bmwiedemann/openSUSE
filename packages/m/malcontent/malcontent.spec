@@ -99,6 +99,9 @@ accounts to inappropriate content.
 
 %install
 %meson_install
+# com.endlessm.ParentalControls.rules would allow 'wheel' group users access without polkit auth
+# wheel is not used in openSUSE, so we simply package this file as an example %%doc file
+mv %{buildroot}%{_datadir}/polkit-1/rules.d/com.endlessm.ParentalControls.rules .
 %find_lang %{name}
 
 %post  -n libmalcontent-0-0 -p /sbin/ldconfig
@@ -109,6 +112,7 @@ accounts to inappropriate content.
 %files
 %license COPYING
 %doc NEWS README.md
+%doc com.endlessm.ParentalControls.rules
 /%{_lib}/security/pam_malcontent.so
 %{_bindir}/malcontent-client
 %{_bindir}/malcontent-control
@@ -122,7 +126,6 @@ accounts to inappropriate content.
 %{_datadir}/accountsservice/interfaces/com.endlessm.ParentalControl*
 %{_datadir}/polkit-1/actions/com.endlessm.ParentalControls.policy
 %{_datadir}/polkit-1/actions/org.freedesktop.MalcontentControl.policy
-%{_datadir}/polkit-1/rules.d/com.endlessm.ParentalControls.rules
 
 %files lang -f %{name}.lang
 
