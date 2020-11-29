@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Nov 26 15:29:54 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Y2Storage wrapper for the new Tmpfs class from libstorage-ng
+  (related to jsc#SLE-11308)
+
+-------------------------------------------------------------------
+Wed Nov 25 12:13:14 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Partitioner: improve support for Btrfs subvolumes, related to
+  bsc#996598, bsc#1175139, bsc#1161408, bsc#1004783, bsc#1067505.
+- Partitioner: add support for Btrfs quotas (jsc#SLE-7742).
+- 4.3.24
+
+-------------------------------------------------------------------
+Tue Nov 24 14:07:12 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Partitioner: fixed a crash when 'Do not format' is selected for a
+  device that used to be part of a Btrfs (bsc#1179100).
+- 4.3.23
+
+-------------------------------------------------------------------
 Fri Nov 20 12:53:43 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - print properly help to avoid accidental opening of module by bash
