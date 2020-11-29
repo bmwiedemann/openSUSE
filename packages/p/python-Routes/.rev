@@ -123,4 +123,21 @@
     <comment></comment>
     <requestid>815575</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ad3a08b09aaecc7398a7b3122c8b092e</srcmd5>
+    <version>2.5.1</version>
+    <time>1606648758</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.1:
+* Add compatibility for Python 3.7+.
+  * Add graceful fallback for invalid character encoding from request object.
+  * Enhanced performance for matching routes that share the same static prefix.
+  * Fixed issue with child routes not passing route conditions to the Mapper.connect call. 
+  * Fixed documentation to reflect default value for minimization.
+  * Allow backslash to escape special characters in route paths.
+  * Resolve invalid escape sequences.
+  * Remove support for Python 2.6, 3.3, and 3.4.
+  * Remove obsolete Python 2.3 compat code.</comment>
+    <requestid>850936</requestid>
+  </revision>
 </revisionlist>

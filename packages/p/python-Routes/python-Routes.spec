@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Routes
-Version:        2.4.1
+Version:        2.5.1
 Release:        0
 Summary:        Routing Recognition and Generation Tools
 License:        BSD-3-Clause

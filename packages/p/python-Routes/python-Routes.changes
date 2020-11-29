@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 26 09:12:36 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.5.1:
+* Add compatibility for Python 3.7+.
+  * Add graceful fallback for invalid character encoding from request object.
+  * Enhanced performance for matching routes that share the same static prefix.
+  * Fixed issue with child routes not passing route conditions to the Mapper.connect call. 
+  * Fixed documentation to reflect default value for minimization.
+  * Allow backslash to escape special characters in route paths.
+  * Resolve invalid escape sequences.
+  * Remove support for Python 2.6, 3.3, and 3.4.
+  * Remove obsolete Python 2.3 compat code.
+
+-------------------------------------------------------------------
 Wed Jun 17 15:08:24 UTC 2020 - pgajdos@suse.com
 
 - nose -> pytest
