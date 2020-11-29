@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-django-storages
-Version:        1.9.1
+Version:        1.10.1
 Release:        0
 Summary:        Support for many storage backends in Django
 License:        BSD-3-Clause
@@ -28,7 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/d/django-storages
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 1.11
+Requires:       python-Django >= 2.2
 Suggests:       python-apache-libcloud
 Suggests:       python-azure >= 3.0.0
 Suggests:       python-azure-storage-blob >= 1.3.1
@@ -38,7 +38,7 @@ Suggests:       python-google-cloud-storage >= 1.15.0
 Suggests:       python-paramiko
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 1.11}
+BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module azure-storage-blob >= 1.3.1}
 BuildRequires:  %{python_module boto3 >= 1.4.4}
 BuildRequires:  %{python_module dropbox >= 7.2.1}

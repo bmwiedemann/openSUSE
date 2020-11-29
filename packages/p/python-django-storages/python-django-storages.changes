@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Nov 27 13:23:14 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.10.1
+  * Restore AWS_DEFAULT_ACL handling.
+    This setting is ignored if ACL is set in AWS_S3_OBJECT_PARAMETERS
+  * Fix using SFTP_STORAGE_HOST
+- from v1.10
+  * Removed support for end-of-life Python 2.7 and 3.4
+  * Removed support for end-of-life Django 1.11
+  * Add support for Django 3.1
+  * Introduce a new BaseStorage class with a get_default_settings
+    method and use it in S3Boto3Storage, AzureStorage,
+    GoogleCloudStorage, and SFTPStorage. These backends now
+    calculate their settings when instantiated, not imported.
+  * S3 Breaking: Automatic bucket creation has been removed.
+    Doing so encourages using overly broad credentials.
+    As a result, support for the corresponding AWS_BUCKET_ACL and
+    AWS_AUTO_CREATE_BUCKET settings have been removed.
+  * Support for the undocumented setting AWS_PRELOAD_METADATA removed
+  * The constructor kwarg acl is no longer accepted. Instead, use the
+    ACL key in setting AWS_S3_OBJECT_PARAMETERS
+  * The constructor kwarg ``bucket`` is no longer accepted.
+    Instead, use ``bucket_name`` or AWS_STORAGE_BUCKET_NAME setting
+  * Support for setting AWS_REDUCED_REDUNDANCY has been removed.
+    Replace with StorageClass=REDUCED_REDUNDANCY in
+    AWS_S3_OBJECT_PARAMETERS
+  * Support for setting AWS_S3_ENCRYPTION has been removed.
+    Replace with ServerSideEncryption=AES256 in
+    AWS_S3_OBJECT_PARAMETERS
+  * Support for setting AWS_DEFAULT_ACL has been removed.
+    Replace with ACL in AWS_S3_OBJECT_PARAMETERS
+  * Add ``http_method`` parameter to ``.url`` method
+  * Add support for signing Cloudfront URLs to the ``.url`` method.
+    You must set AWS_CLOUDFRONT_KEY, AWS_CLOUDFRONT_KEY_ID and
+    install either cryptography or rsa.
+    URLs will only be signed if AWS_QUERYSTRING_AUTH is set to True
+  * Automatic Google Cloud bucket creation has been removed.
+    Doing so encourages using overly broad credentials.
+    As a result, support for the corresponding GS_AUTO_CREATE_BUCKET
+    and GS_AUTO_CREATE_ACL settings have been removed.
+  * Add DROPBOX_WRITE_MODE setting to control e.g. overwriting behavior.
+  * Remove SFTP exception swallowing during ssh connection
+  * Add FTP_STORAGE_ENCODING setting to set the filesystem encoding
+  * Support multiple nested paths for files
+
+-------------------------------------------------------------------
 Mon Apr 20 13:13:14 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
