@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 25 14:52:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.4.0:
+  #68 and bpo-42090: ``Path.joinpath`` now takes arbitrary
+  positional arguments and no longer accepts ``add`` as a
+  keyword argument.
+  Updated project metadata including badges.
+  bpo-42043: Add tests capturing subclassing requirements.
+  #9: ``Path`` objects now expose a ``.filename`` attribute
+  and rely on that to resolve ``.name`` and ``.parent`` when
+  the ``Path`` object is at the root of the zipfile.
+
+-------------------------------------------------------------------
 Mon Sep 28 12:03:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.2.0:
