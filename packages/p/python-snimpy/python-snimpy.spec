@@ -1,6 +1,7 @@
 #
 # spec file for package python-snimpy
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2016-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,12 +13,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-snimpy
-Version:        0.8.13
+Version:        0.8.14
 Release:        0
 Summary:        Interactive SNMP tool
 License:        ISC
@@ -35,7 +37,6 @@ BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module cffi >= 1.0.0}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pycryptodomex}
 BuildRequires:  %{python_module pysnmp >= 4}
 BuildRequires:  %{python_module setuptools}
@@ -81,7 +82,7 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_exec setup.py test
+%python_exec -m unittest discover tests -v
 
 %files %{python_files}
 %license docs/license.rst
