@@ -452,4 +452,20 @@
     functionality (jsc#SLE-9109)</comment>
     <requestid>830241</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>fe9ac37a43d5cd334fa4c216a5f697b0</srcmd5>
+    <version>0.3.29</version>
+    <time>1606649080</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.29
+- replace env ruby path with native ruby path during build phase
+- Recognize more formats when parsing .curlrc for proxy credentials (bsc#1155027)
+- Add rpmlintrc to filter false-positive warning about patch not applied
+- SUSEConnect now ensures that it writes its configuration when it
+  encounters errors. This helps in the situation where SUSEConnect
+  announces itself, but fails during a later step. Without the saved
+  configuration, a system could have credentials, but be unsure which
+  registration proxy they're valid for.</comment>
+    <requestid>850688</requestid>
+  </revision>
 </revisionlist>

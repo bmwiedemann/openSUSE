@@ -17,7 +17,7 @@
 
 
 Name:           SUSEConnect
-Version:        0.3.26
+Version:        0.3.29
 Release:        0
 %define mod_name suse-connect
 %define mod_full_name %{mod_name}-%{version}
@@ -83,6 +83,7 @@ Source:         %{mod_full_name}.gem
 Source1:        %{name}.5
 Source2:        %{name}.8
 Source3:        %{name}.example
+Source4:        %{name}-rpmlintrc
 Patch0:         switch_server_cert_location_to_etc.patch
 
 Summary:        Utility to register a system with the SUSE Customer Center
@@ -126,6 +127,10 @@ install -D -m 644 %_sourcedir/SUSEConnect.example %{buildroot}%_sysconfdir/SUSEC
 touch %{buildroot}%_sysconfdir/SUSEConnect
 mkdir -p %{buildroot}%_sysconfdir/zypp/credentials.d/
 touch %{buildroot}%_sysconfdir/zypp/credentials.d/SCCcredentials
+
+# replace /usr/bin/env with native ruby path
+sed -i "1s/.*/#\!\/usr\/bin\/ruby\.%{ruby_version}/" %{buildroot}%{_sbindir}/%{name}
+sed -i "1s/.*/#\!\/usr\/bin\/ruby\.%{ruby_version}/" %{buildroot}%{gem_base}/gems/%{mod_full_name}/bin/%{name}
 
 %post
 if [ -s /etc/zypp/credentials.d/NCCcredentials ] && [ ! -e /etc/zypp/credentials.d/SCCcredentials ]; then

@@ -1,0 +1,2 @@
+# this patch gets applied conditionally inline the .spec file
+addFilter("SUSEConnect.src: W: patch-not-applied Patch0: switch_server_cert_location_to_etc.patch")
