@@ -103,7 +103,8 @@ BuildFlags: useccache:glib2
 BuildFlags: useccache:gtk3
 BuildFlags: useccache:gtk3:doc
 BuildFlags: useccache:llvm9
-BuildFlags: useccache:webkit2gtk3
+# ccache 4.x breaks webkit2gtk3
+#BuildFlags: useccache:webkit2gtk3
 
 # switch to kiwi v8
 Prefer: python3-kiwi
