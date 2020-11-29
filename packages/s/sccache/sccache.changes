@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 25 14:25:45 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on non-x86_64 archs
+
+-------------------------------------------------------------------
 Fri Nov 20 00:29:39 UTC 2020 - William Brown <william.brown@suse.com>
 
 - Fix service file commit definition
