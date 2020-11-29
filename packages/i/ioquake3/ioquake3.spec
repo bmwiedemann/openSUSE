@@ -26,7 +26,7 @@
 %endif
 Name:           ioquake3
 # don't forget to change the version in the win32 spec file as well!
-Version:        1.36+git.20200211
+Version:        1.36+git.20201117
 Release:        0
 Summary:        Quake III
 License:        GPL-2.0-or-later

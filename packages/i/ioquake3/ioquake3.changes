@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Nov 28 09:06:52 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 1.36+git.20201117
+  - Add C syntax highlighting to readme
+  - Update README.md 
+  - Merge pull request #447 from HappyFacade/patch-1 
+  - Simplify glsl -> C stringification
+  - Make LCC path resolution more robust
+  - GitHub Actions setup
+  - Remove old CI system configurations
+  - Add status badge to README
+  - Fix shader stringify
+  - Run apt-get update before installing deps
+  - Avoid platform sed differences
+  - Merge pull request #436 from Calinou/default-texturemode-mipmap-linear
+  - [sdl] Turn tentative definition into actual definition 
+
+-------------------------------------------------------------------
 Wed Apr 29 12:05:45 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Handle architectures which have no VM (aarch64, ...)
