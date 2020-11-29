@@ -18,21 +18,19 @@
 
 %define soname 8
 Name:           libksba
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        A X.509 Library
 License:        (LGPL-3.0-or-later OR GPL-2.0-or-later) AND GPL-3.0-or-later AND MIT
 Group:          Development/Libraries/C and C++
 URL:            https://www.gnupg.org
-Source:         ftp://ftp.gnupg.org/gcrypt/libksba/%{name}-%{version}.tar.bz2
-Source2:        ftp://ftp.gnupg.org/gcrypt/libksba/%{name}-%{version}.tar.bz2.sig
-Source3:        libksba.keyring
+Source:         https://www.gnupg.org/ftp/gcrypt/libksba/%{name}-%{version}.tar.bz2
+Source2:        https://www.gnupg.org/ftp/gcrypt/libksba/%{name}-%{version}.tar.bz2.sig
+# https://www.gnupg.org/signature_key.html
+Source3:        %{name}.keyring
 Source4:        libksba.changes
-BuildRequires:  libgpg-error-devel >= 1.8
 BuildRequires:  pkgconfig
-# FIXME: use proper Requires(pre/post/preun/...)
-PreReq:         %{install_info_prereq}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(gpg-error) >= 1.8
 
 %description
 KSBA is a library to simplify the task of working with X.509
@@ -72,37 +70,30 @@ build_timestamp=$(date -u +%{Y}-%{m}-%{dT}%{H}:%{M}+0000 -r %{SOURCE4})
 	--with-pic \
 	--enable-build-timestamp="${build_timestamp}"
 
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n %{name}%{soname} -p /sbin/ldconfig
 %postun -n %{name}%{soname} -p /sbin/ldconfig
 
 %files -n %{name}%{soname}
-%defattr(-,root,root)
-%license COPYING
+%license COPYING*
 %doc README AUTHORS ChangeLog NEWS THANKS TODO
 %{_libdir}/libksba*.so.*
 
-%post devel
-%install_info --info-dir=%{_infodir} %{_infodir}/ksba.info.gz
-
-%postun devel
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/ksba.info.gz
-
 %files devel
-%defattr(-,root,root)
+%license COPYING*
 %{_bindir}/ksba-config
 %{_libdir}/libksba*.so
 %{_libdir}/pkgconfig/ksba.pc
 %{_includedir}/ksba.h
 %{_datadir}/aclocal/ksba.m4
-%{_infodir}/ksba.info*
+%{_infodir}/ksba.info%{?ext_info}
 
 %changelog

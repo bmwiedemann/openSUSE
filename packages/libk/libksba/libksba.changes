@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 20 18:49:02 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libksba 1.5.0:
+ * ksba_cms_identify now identifies OpenPGP keyblock content
+ * Supports TR-03111 plain format ECDSA signature verification
+ * Fixes a CMS signed data parser bug exhibited by a somewhat
+   strange CMS message
+- remove deprecated texinfo macros and update signing keyring
+
+-------------------------------------------------------------------
 Wed May 20 07:47:55 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - libksba 1.4.0:
