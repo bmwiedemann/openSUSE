@@ -64,4 +64,14 @@
     <comment></comment>
     <requestid>794551</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2f6e91f610db6bd55d56ac165a7cc460</srcmd5>
+    <version>3.2.0</version>
+    <time>1606648762</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.0:
+  * Added helper function ``check_service_availability`` for checking if the
+  Secret Service daemon is available without using it.</comment>
+    <requestid>850937</requestid>
+  </revision>
 </revisionlist>
