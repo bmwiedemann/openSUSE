@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 26 09:19:26 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 20.3.0:
+  - ``attr.define()``, ``attr.frozen()``, ``attr.mutable()``, and ``attr.field()`` remain **provisional**.
+
+-------------------------------------------------------------------
 Thu Sep 17 14:36:34 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 20.2.0:

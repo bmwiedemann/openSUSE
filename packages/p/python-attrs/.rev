@@ -143,4 +143,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>837189</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1a6a36d0cc3e6b75791f3ab9177e51c9</srcmd5>
+    <version>20.3.0</version>
+    <time>1606648769</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20.3.0:
+  - ``attr.define()``, ``attr.frozen()``, ``attr.mutable()``, and ``attr.field()`` remain **provisional**.</comment>
+    <requestid>850938</requestid>
+  </revision>
 </revisionlist>
