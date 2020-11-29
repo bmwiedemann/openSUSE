@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Nov 12 14:28:38 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 4.0.6.
+  * Fix return value bug in rysroots
+- Update since 3.1.1.
+  * Fix prescreening bug in int3c2e
+  * Fix cache size bug in int3c1e
+  * Fix memory allocation bug in int3c1e
+  * Improve macro MALLOC_INSTACK
+  * Fix function typedef bug in include/cint_funcs.h
+  * Update cmake configs and docs
+  * API Change. PTR_LIGHT_SPEED is replaced with PTR_EXPCUTOFF. 
+    Integral screening parameter can be passed through 
+    env[PTR_EXPCUTOFF]
+  * Add short-range integrals for range-separation
+  * Handle linear dependency in Rys polynomial
+  * Avoid calling exit function
+
+-------------------------------------------------------------------
 Fri Sep  4 16:20:17 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Clean up spec file.

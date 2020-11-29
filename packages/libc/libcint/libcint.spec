@@ -16,12 +16,12 @@
 #
 
 
-%define major 3
-%define minor 1
+%define major 4
+%define minor 0
 %define libname %{name}%{major}
 %define develname   cint
 Name:           libcint
-Version:        %{major}.%{minor}.1
+Version:        %{major}.%{minor}.6
 Release:        0
 Summary:        General Gaussian-type orbitals integrals for quantum chemistry
 License:        BSD-2-Clause
@@ -30,7 +30,6 @@ Source:         https://github.com/sunqm/libcint/archive/v%{version}/%{name}-%{v
 BuildRequires:  cmake
 BuildRequires:  gcc-fortran
 BuildRequires:  openblas-devel
-BuildRequires:  python3-devel
 BuildRequires:  python3-numpy
 # qcint is a drop-in replacement of the same library with architecture dependent optimizations
 Conflicts:      qcint

@@ -7,4 +7,12 @@
     <comment>Dependency for python-pyscf</comment>
     <requestid>833008</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>91e8a0a2cdb785ba73db3fb051045d57</srcmd5>
+    <version>4.0.6</version>
+    <time>1606649315</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851089</requestid>
+  </revision>
 </revisionlist>
