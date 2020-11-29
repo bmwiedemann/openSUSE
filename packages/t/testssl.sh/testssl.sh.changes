@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Nov 26 14:45:01 UTC 2020 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to version 3.0.4
+  * This version is a quick fix for a regression of detecting SSLv2
+    ciphers in a basic function.
+
+-------------------------------------------------------------------
+Thu Nov 19 09:50:48 UTC 2020 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to version 3.0.3
+  * Update certificate stores
+  * manpage fix (Karl)
+  * minor speedups for some vulnerability tests
+  * bash 5.1 fix
+  * Secure Client-Initiated Renegotiation false positive fix
+  * BREACH is now medium
+  * invalid JSON fix and other JSON improvements (David)
+  * Adding native Android 7 handshake instead of Chrome which has
+    TLS 1.3 (Christoph)
+  * Header flag X-XSS-Protection is now labled as INFO
+  * No cyan colors in HHHTP header flags anymore, colons added
+
+-------------------------------------------------------------------
 Fri Jul 24 08:04:11 UTC 2020 - Matthias Fehring <buschmann23@opensuse.org>
 
 - Update to version 3.0.2
