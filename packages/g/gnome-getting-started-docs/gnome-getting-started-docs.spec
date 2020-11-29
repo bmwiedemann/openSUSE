@@ -17,13 +17,13 @@
 
 
 Name:           gnome-getting-started-docs
-Version:        3.36.2
+Version:        3.38.0
 Release:        0
 Summary:        Getting started with GNOME - Documentation
 License:        CC-BY-SA-3.0
 Group:          Documentation/Other
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/gnome-getting-started-docs/3.36/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-getting-started-docs/3.38/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  yelp-tools
