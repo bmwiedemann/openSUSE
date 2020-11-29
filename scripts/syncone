@@ -1,5 +1,8 @@
 #!/usr/bin/perl -w
 use strict;
+our $tmpgit;
+our $mappedpkg;
+
 {
 my $pkg=shift;
 die "usage: $0 PKGNAME" unless $pkg;
@@ -15,7 +18,16 @@ my @rsync=qw"rsync -a
 system(@rsync, "/mounts/work/SRC/openSUSE\:Factory/$pkg", "in/");
 die "rsync of $pkg failed" unless $? == 0;
 my $first=lc(substr($pkg, 0, 1));
-system(qw"rm -rf", glob("packages/$first*/$pkg"));
+$tmpgit = ".tmp-$pkg-git";
+$mappedpkg=(glob("packages/$first*/$pkg"))[0];
+if($mappedpkg) {
+    rename("$mappedpkg/.git", $tmpgit);
+} else {
+    system("scripts/pagure-new-package", $pkg);
+    system(qw"git clone", "https://code.opensuse.org/package/$pkg", $tmpgit)
+}
+system(qw"rm -rf", $mappedpkg);
 $ENV{PKG}=$pkg;
 }
 do("./scripts/mappkgs.pl");
+rename($tmpgit, "$mappedpkg/.git");
