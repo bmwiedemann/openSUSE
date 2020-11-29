@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-kusto
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        Microsoft Azure Kusto Management Client Library
 License:        MIT
