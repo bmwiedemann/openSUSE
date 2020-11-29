@@ -1362,4 +1362,12 @@ Hence, recommended to be added to 12.3</comment>
     <comment>Push GNOME 3.38</comment>
     <requestid>847254</requestid>
   </revision>
+  <revision rev="183" vrev="1">
+    <srcmd5>f0e5a14cac4832824822e790ba926335</srcmd5>
+    <version>3.38.2</version>
+    <time>1606648909</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 849740 from iznogood)</comment>
+    <requestid>851027</requestid>
+  </revision>
 </revisionlist>
