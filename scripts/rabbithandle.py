@@ -88,9 +88,14 @@ for line in watchtail(sys.stdin):
     subprocess.call(["tail", "-10", "/mounts/work/SRC/openSUSE:Factory/"+package+"/.rev"], shell=False);
     subprocess.call(["lockfile", "-l", "600", ".pkglock"], shell=False)
     subprocess.call(["scripts/syncone", package], shell=False)
-    subprocess.call(["git", "add", pkgmap(package)], shell=False)
+    mappedpkg = pkgmap(package)
+    subprocess.call(["git", "add", mappedpkg], shell=False)
     process = subprocess.Popen(["git", "commit", "-F", "-"], stdin=subprocess.PIPE)
     process.communicate(info.encode('utf-8'))
+    if os.path.isdir(mappedpkg+'/.git'):
+        process = subprocess.Popen(["git", "commit", "-F", "-"], stdin=subprocess.PIPE, cwd=mappedpkg)
+        process.communicate(info.encode('utf-8'))
+        subprocess.call(["git", "push"], cwd=mappedpkg)
     count += 1
     #if os.environ.get('SSH_AUTH_SOCK') and (count%4) == 0:
     #    subprocess.call(["git", "push"])
