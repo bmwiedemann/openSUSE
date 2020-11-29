@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 20 18:02:11 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 3.38.2:
+  + Improve handling of file extensions.
+  + Update recommended downloads to latest distro releases.
+  + Update download URLs for GNOME OS.
+  + Install GNOME OS under the Boxes osinfo custom database.
+  + Updated translations.
+- Rebase gnome-boxes-opensuse.patch.
+
+-------------------------------------------------------------------
 Thu Oct  8 11:34:12 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.38.1:

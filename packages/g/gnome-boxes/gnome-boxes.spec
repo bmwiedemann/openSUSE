@@ -22,7 +22,7 @@
 %define govf_sover 0.1
 %define gfrdp_sover 0.1
 Name:           gnome-boxes
-Version:        3.38.1
+Version:        3.38.2
 Release:        0
 Summary:        A GNOME 3 application to access remote or virtual systems
 License:        LGPL-2.0-or-later
@@ -30,7 +30,7 @@ Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/Apps/Boxes
 Source0:        https://download.gnome.org/sources/gnome-boxes/3.38/%{name}-%{version}.tar.xz
 
-# PATCH-FEATURE-OPENSUSE fcrozat@suse.com -- Ensure openSUSE Leap and TW are listed as recommended distributions
+# PATCH-FEATURE-OPENSUSE fcrozat@suse.com -- Ensure Tumbleweed is listed as recommended distribution
 Patch0:         gnome-boxes-opensuse.patch
 # PATCH-FATURE-OPENSUSE gnome-boxes-system-libhandy.patch dimstar@opensuse.org -- Revert the way upstream introduced the linhandy submodule in 3.38 (master is solved better)
 Patch1:         gnome-boxes-system-libhandy.patch
@@ -207,8 +207,6 @@ translation-update-upstream
 %{_datadir}/gnome-boxes/sources/QEMU_Session
 %{_datadir}/gnome-boxes/unattended/disk.img
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Boxes*
-%{_datadir}/osinfo/os/gnome.org/gnome-nightly.xml
-%{_datadir}/osinfo/os/gnome.org/gnome-3.38.xml
 
 %files -n libgovf-%{govf_libver}
 %dir %{_libdir}/gnome-boxes/
