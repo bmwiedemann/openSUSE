@@ -106,13 +106,17 @@ and transparent use of the OS's crypto layer.
 
 %install
 %make_install
+b="%buildroot"
 # Remove static and libtool version
-rm -f "%buildroot/%_lib/security"/*.{a,la} "%buildroot/%_libdir"/*.la
+rm -f "$b/%_lib/security"/*.{a,la} "$b/%_libdir"/*.la
 #install the docs
-mkdir -p %buildroot/%_docdir/%name/examples
-cp doc/bugs.txt doc/news.txt LICENSE* doc/faq.txt doc/todo.txt doc/options.txt doc/pam_mount.txt %buildroot/%_docdir/%name/
-install -m 755 %SOURCE1 %buildroot/%_docdir/%name/examples/
-install -m 755 %SOURCE2 %buildroot/%_docdir/%name/examples/
+mkdir -p "$b/%_docdir/%name/examples"
+cp -a doc/bugs.txt doc/news.txt LICENSE* doc/faq.txt doc/todo.txt doc/options.txt doc/pam_mount.txt "$b/%_docdir/%name/"
+install -m 755 %SOURCE1 "$b/%_docdir/%name/examples/"
+install -m 755 %SOURCE2 "$b/%_docdir/%name/examples/"
+mkdir -p "$b/sbin"
+ln -s /usr/sbin/mount.crypt "$b/sbin"
+ln -s /usr/sbin/umount.crypt "$b/sbin"
 %fdupes %buildroot/%_prefix
 
 %post
@@ -143,6 +147,7 @@ fi
 %_sbindir/umount.*
 %_sbindir/pmvarrun
 %_sbindir/pmt-ehd
+/sbin/*mount*
 %config(noreplace) %_sysconfdir/security/pam_mount.conf.xml
 %doc %_mandir/man5/pam_mount.conf.5.gz
 %doc %_mandir/man8/*.8.gz
