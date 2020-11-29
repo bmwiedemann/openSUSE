@@ -19,14 +19,12 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-screeninfo
-Version:        0.6.5
+Version:        0.6.6
 Release:        0
 Summary:        Fetch location and size of physical screens
 License:        MIT
 URL:            https://github.com/rr-/screeninfo
 Source0:        https://github.com/rr-/screeninfo/archive/%{version}.tar.gz#/screeninfo-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/rr-/screeninfo/pull/36 -- Use dataclass when needed
-Patch0:         use_dataclasses_when_needed.patch
 BuildRequires:  %{python_module setuptools}
 %if 0%{?suse_version} <= 1500
 BuildRequires:  %{python_module dataclasses}
@@ -41,7 +39,6 @@ Python module to fetch location and size of physical screens.
 
 %prep
 %setup -q -n screeninfo-%{version}
-%patch0 -p1
 
 %build
 %python_build
