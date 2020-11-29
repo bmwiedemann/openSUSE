@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 26 06:58:50 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 2020.10.18.
+  *  Disallow comments after last value in PNM headers.
+- Update since 2020.1.1
+    Remove support for Python 3.6.
+    Support os.PathLike file names.
+
+-------------------------------------------------------------------
 Fri Jul 31 15:04:11 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update spec file to use python alternative.

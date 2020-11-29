@@ -20,7 +20,7 @@
 %define packagename netpbmfile
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-netpbmfile
-Version:        2020.1.1
+Version:        2020.10.18
 Release:        0
 Summary:        Read and write image files in the Netpbm format
 License:        BSD-3-Clause
@@ -28,13 +28,13 @@ Group:          Development/Languages/Python
 URL:            https://www.lfd.uci.edu/~gohlke/
 Source:         https://github.com/cgohlke/netpbmfile/archive/v%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module matplotlib >= 3.1}
-BuildRequires:  %{python_module numpy >= 1.14}
+BuildRequires:  %{python_module matplotlib >= 3.2}
+BuildRequires:  %{python_module numpy >= 1.15}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-matplotlib >= 3.1
-Requires:       python-numpy >= 1.14
+Requires:       python-matplotlib >= 3.2
+Requires:       python-numpy >= 1.15
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
