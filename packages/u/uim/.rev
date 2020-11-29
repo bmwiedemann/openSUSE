@@ -398,4 +398,12 @@ remove Provides: locale(*:ja) to slim down</comment>
     <comment>- riscv.patch: Add support for RISC-V to libgcroots (forwarded request 828565 from Andreas_Schwab)</comment>
     <requestid>828947</requestid>
   </revision>
+  <revision rev="51" vrev="5">
+    <srcmd5>116010d588a283de285851638c240069</srcmd5>
+    <version>1.8.8</version>
+    <time>1606649258</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851131</requestid>
+  </revision>
 </revisionlist>

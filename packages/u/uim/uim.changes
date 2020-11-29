@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 26 16:48:21 CET 2020 - tiwai@suse.de
+
+- Move the startup snippet to /usr/etc/X11/xim.d for TW
+
+-------------------------------------------------------------------
 Fri Aug 21 18:05:04 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - riscv.patch: Add support for RISC-V to libgcroots
