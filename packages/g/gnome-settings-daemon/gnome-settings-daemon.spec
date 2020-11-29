@@ -155,7 +155,6 @@ gnome-patch-translation-prepare po %{name}
 
 %build
 %meson \
-	--libexecdir=%{_libexecdir}/gnome-settings-daemon-3.0 \
 	-Dalsa=true \
 	%{!?with_wayland: -D wayland=false} \
 	%{!?with_smartcard: -D smartcard=false} \
@@ -179,72 +178,71 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.deskt
 %license COPYING COPYING.LIB
 %doc NEWS
 %{_datadir}/gnome-settings-daemon/
-%dir %{_libexecdir}/gnome-settings-daemon-3.0/
-%{_libexecdir}/gnome-settings-daemon-3.0/gsd-backlight-helper
-%{_libexecdir}/gnome-settings-daemon-3.0/gsd-printer
+%{_libexecdir}/gsd-backlight-helper
+%{_libexecdir}/gsd-printer
 %dir %{_libdir}/gnome-settings-daemon-3.0/
 %{_libdir}/gnome-settings-daemon-3.0/libgsd.so
 # Explicitly list all the plugins so we know we don't lose any
 
-%{_libexecdir}/gnome-settings-daemon-3.0/gsd-a11y-settings
+%{_libexecdir}/gsd-a11y-settings
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.A11ySettings.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.A11ySettings.service
 %{_userunitdir}/org.gnome.SettingsDaemon.A11ySettings.target
-%{_libexecdir}/gnome-settings-daemon-3.0/gsd-color
+%{_libexecdir}/gsd-color
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Color.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.Color.service
 %{_userunitdir}/org.gnome.SettingsDaemon.Color.target
-%{_libexecdir}/gnome-settings-daemon-3.0/gsd-datetime
+%{_libexecdir}/gsd-datetime
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Datetime.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.Datetime.service
 %{_userunitdir}/org.gnome.SettingsDaemon.Datetime.target
-%{_libexecdir}/gnome-settings-daemon-3.0/gsd-housekeeping
+%{_libexecdir}/gsd-housekeeping
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Housekeeping.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.Housekeeping.service
 %{_userunitdir}/org.gnome.SettingsDaemon.Housekeeping.target
-%{_libexecdir}/gnome-settings-daemon-3.0/gsd-keyboard
+%{_libexecdir}/gsd-keyboard
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Keyboard.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.Keyboard.service
 %{_userunitdir}/org.gnome.SettingsDaemon.Keyboard.target
-%{_libexecdir}/gnome-settings-daemon-3.0/gsd-media-keys
+%{_libexecdir}/gsd-media-keys
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.MediaKeys.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.MediaKeys.service
 %{_userunitdir}/org.gnome.SettingsDaemon.MediaKeys.target
-%{_libexecdir}/gnome-settings-daemon-3.0/gsd-power
+%{_libexecdir}/gsd-power
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Power.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.Power.service
 %{_userunitdir}/org.gnome.SettingsDaemon.Power.target
-%{_libexecdir}/gnome-settings-daemon-3.0/gsd-print-notifications
+%{_libexecdir}/gsd-print-notifications
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.PrintNotifications.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.PrintNotifications.service
 %{_userunitdir}/org.gnome.SettingsDaemon.PrintNotifications.target
-%{_libexecdir}/gnome-settings-daemon-3.0/gsd-rfkill
+%{_libexecdir}/gsd-rfkill
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Rfkill.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.Rfkill.service
 %{_userunitdir}/org.gnome.SettingsDaemon.Rfkill.target
-%{_libexecdir}/gnome-settings-daemon-3.0/gsd-screensaver-proxy
+%{_libexecdir}/gsd-screensaver-proxy
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.ScreensaverProxy.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.ScreensaverProxy.service
 %{_userunitdir}/org.gnome.SettingsDaemon.ScreensaverProxy.target
-%{_libexecdir}/gnome-settings-daemon-3.0/gsd-sharing
+%{_libexecdir}/gsd-sharing
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Sharing.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.Sharing.service
 %{_userunitdir}/org.gnome.SettingsDaemon.Sharing.target
 %if %{with smartcard}
-%{_libexecdir}/gnome-settings-daemon-3.0/gsd-smartcard
+%{_libexecdir}/gsd-smartcard
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Smartcard.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.Smartcard.service
 %{_userunitdir}/org.gnome.SettingsDaemon.Smartcard.target
 %endif
-%{_libexecdir}/gnome-settings-daemon-3.0/gsd-sound
+%{_libexecdir}/gsd-sound
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Sound.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.Sound.service
 %{_userunitdir}/org.gnome.SettingsDaemon.Sound.target
-%{_libexecdir}/gnome-settings-daemon-3.0/gsd-wwan
+%{_libexecdir}/gsd-wwan
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wwan.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.Wwan.service
 %{_userunitdir}/org.gnome.SettingsDaemon.Wwan.target
-%{_libexecdir}/gnome-settings-daemon-3.0/gsd-xsettings
+%{_libexecdir}/gsd-xsettings
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.XSettings.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.XSettings.service
 %{_userunitdir}/org.gnome.SettingsDaemon.XSettings.target
@@ -266,8 +264,8 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.deskt
 %{_datadir}/GConf/gsettings/gnome-settings-daemon.convert
 %if %{with wacom}
 %{_datadir}/polkit-1/actions/org.gnome.settings-daemon.plugins.wacom.policy
-%{_libexecdir}/gnome-settings-daemon-3.0/gsd-wacom-oled-helper
-%{_libexecdir}/gnome-settings-daemon-3.0/gsd-wacom
+%{_libexecdir}/gsd-wacom-oled-helper
+%{_libexecdir}/gsd-wacom
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.Wacom.service
 %{_userunitdir}/org.gnome.SettingsDaemon.Wacom.target
@@ -284,7 +282,7 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.deskt
 %{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.UsbProtection.desktop
 %{_userunitdir}/org.gnome.SettingsDaemon.UsbProtection.service
 %{_userunitdir}/org.gnome.SettingsDaemon.UsbProtection.target
-%{_libexecdir}/gnome-settings-daemon-3.0/gsd-usb-protection
+%{_libexecdir}/gsd-usb-protection
 
 %files devel
 %doc AUTHORS ChangeLog

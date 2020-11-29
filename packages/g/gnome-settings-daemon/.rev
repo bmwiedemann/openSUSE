@@ -1320,4 +1320,17 @@ work. (forwarded request 640069 from iznogood)</comment>
     <comment>Push GNOME 3.38</comment>
     <requestid>847223</requestid>
   </revision>
+  <revision rev="169" vrev="2">
+    <srcmd5>2c9c653ea9da812ca5f4ffe99e6c6970</srcmd5>
+    <version>3.38.1</version>
+    <time>1606648735</time>
+    <user>dimstar_suse</user>
+    <comment>- No longer pass
+  --libexecdir=%{_libexecdir}/gnome-settings-daemon-3.0 to meson,
+  but revert back to the default. The generated files contain
+  use libexecdir for own generated files (correct) but also to
+  identify where to find gnome-session-ctl, which for obvious
+  reasons is not in libexecdir/gnome-settings-daemon-3.0. (forwarded request 851012 from dimstar)</comment>
+    <requestid>851013</requestid>
+  </revision>
 </revisionlist>
