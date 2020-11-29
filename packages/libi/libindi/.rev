@@ -339,4 +339,12 @@
 - Use %cmake_build instead of %make_jobs</comment>
     <requestid>840208</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>80c4cdb422e55d7d4e2b4415bb41951d</srcmd5>
+    <version>1.8.7</version>
+    <time>1606649252</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851103</requestid>
+  </revision>
 </revisionlist>
