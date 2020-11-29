@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 26 07:59:32 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Add wireguard (boo#1179225)
+
+-------------------------------------------------------------------
 Tue Oct 13 07:19:13 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Create the list of crypto modules dynamically, supersedes hardcoded

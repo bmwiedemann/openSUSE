@@ -54,7 +54,7 @@ ums-realtek ums-sddr09 ums-sddr55 ums-usbat usb-storage usbhid
 af_packet arptable_filter arp_tables arpt_mangle bpfilter bridge br_netfilter    \
 ebt_.* ebtable_.* ebtables ip6table_.* ip6_tables ip6t_.* ip_.* ipt_.* iptable_.* \
 nf_.* nfnetlink.* nft_.* tun veth xfrm.*_tunnel xfrm_.* x_tables xt_.* tcp_diag \
-vxlan
+vxlan wireguard
 
 %define crypto_modules \
 %(rpm -ql %{kernel_package_name} | grep -E 'kernel/crypto/|kernel/arch/.*/crypto/' | xargs basename -a | cut -d. -f1)
