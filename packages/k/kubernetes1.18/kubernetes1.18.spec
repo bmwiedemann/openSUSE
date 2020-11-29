@@ -175,6 +175,7 @@ Group:          System/Management
 Requires:       kubernetes%{baseversion}-client
 Provides:       kubernetes-client-common = %{version}
 Conflicts:      kubernetes-client-common
+Conflicts:      kubernetes-common
 Recommends:     bash-completion
 
 %description client-common

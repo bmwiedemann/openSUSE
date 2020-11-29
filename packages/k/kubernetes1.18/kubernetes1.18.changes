@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 24 13:34:42 UTC 2020 - David Cassany <dcassany@suse.com>
+
+- Adding a conflict on kubernetes client common to ensure there are no
+  leftovers after migration from SP1 to SP2 on SLE15.
+
+-------------------------------------------------------------------
 Fri Nov 13 13:03:55 UTC 2020 - rbrown@suse.com
 
 - Update to version 1.18.12:

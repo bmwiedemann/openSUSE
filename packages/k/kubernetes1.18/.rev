@@ -264,4 +264,12 @@ sc
   * Updating kube-proxy to trim space from loadBalancerSourceRanges</comment>
     <requestid>848393</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>28ed334c7102de31fc23428f40ef5a47</srcmd5>
+    <version>1.18.12</version>
+    <time>1606649106</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850762</requestid>
+  </revision>
 </revisionlist>
