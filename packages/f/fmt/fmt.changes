@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 25 14:55:58 UTC 2020 - aloisio@gmx.com
+
+- Update to version 7.1.3
+  * Fixed handling of buffer boundaries in format_to_n
+  * Fixed linkage errors when linking with a shared library
+  * Reintroduced ostream support to range formatters
+  * Worked around an issue with mixing std versions in gcc
+
+-------------------------------------------------------------------
 Wed Nov  4 17:34:46 UTC 2020 - aloisio@gmx.com
 
 - Update to version 7.1.2
