@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov 25 13:40:19 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.40.0:
+  * udp: add UV_UDP_MMSG_FREE recv_cb flag
+  * include: re-map UV__EPROTO from 4046 to -4046
+  * doc: correct UV_UDP_MMSG_FREE version added
+  * doc: add uv_metrics_idle_time() version metadata
+  * src: suppress user_timeout maybe-uninitialized
+  * test: fix compiler warning
+  * build: fix the Haiku cmake build
+  * linux: fix i386 sendmmsg/recvmmsg support
+  * build: add libuv-static pkg-config file
+  * build,unix: add QNX support
+  * include: remove incorrect UV__ERR() for EPROTO
+
+-------------------------------------------------------------------
 Sat Sep 12 07:39:33 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.39.0:
