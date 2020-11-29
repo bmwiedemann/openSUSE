@@ -19,7 +19,7 @@
 %define soname libgladeui-2-13
 
 Name:           glade
-Version:        3.38.1
+Version:        3.38.2
 Release:        0
 Summary:        User Interface Builder for GTK+ 3
 License:        GPL-2.0-or-later
