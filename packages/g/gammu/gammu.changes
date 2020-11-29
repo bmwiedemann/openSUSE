@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct  4 09:47:33 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.42.0
+  * Localization updates.
+  * Improved CNMI command compatibility for AT module.
+  * Improved getting of network and manufacturer information in
+    AT module.
+  * Improved compatibility with D-Link modems that need to power on.
+  * Dropped Python 3 compatibility from utility scripts.
+  * Fixed bug in deleting SMS messages.
+
+-------------------------------------------------------------------
 Tue Apr 21 02:24:42 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch BuildRequires to Python 3 Sphinx due to Python 2 removal.

@@ -19,7 +19,7 @@
 %define so_ver 8
 %define gammu_docdir %{_docdir}/%{name}
 Name:           gammu
-Version:        1.41.0
+Version:        1.42.0
 Release:        0
 Summary:        Mobile phone management utility
 License:        GPL-2.0-only
