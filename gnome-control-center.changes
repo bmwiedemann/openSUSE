@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov 20 08:44:33 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.38.2:
+  + Applications: Fix NULL hash table being unreffed.
+  + Keyboard: Fix gtk_widget_get_can_default assertion error.
+  + Network: Correctly detect when ethernet devices are hotplugged.
+  + Printers:
+    - Make printers panel have a smaller minimum width.
+    - Fix leak of printer name in callbacks.
+  + Sharing: Disable Tracker 3.
+  + Sound: Update libgvc to add support for recent UCM related
+    changes in ALSA and PulseAudio.
+  + Users: Fix free of const string.
+  + Wacom: Fix a critical warning if loading a cursor fails.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Oct 20 13:43:08 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Enable parental support integration:
