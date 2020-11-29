@@ -27,16 +27,20 @@ Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/wsproto
 Source:         https://files.pythonhosted.org/packages/source/w/wsproto/wsproto-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
-%if 0%{?suse_version} <= 1520
-BuildRequires:  %{python_module dataclasses}
-%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-h11 >= 0.8.1
+BuildArch:      noarch
+%if 0%{?suse_version} <= 1520
+BuildRequires:  %{python_module dataclasses}
+%endif
+# SECTION test requirements
+BuildRequires:  %{python_module h11 >= 0.8.1}
+BuildRequires:  %{python_module pytest}
+# /SECTION
 %if 0%{?suse_version} <= 1520
 Requires:       python-dataclasses
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -63,7 +67,8 @@ RFC6455 and Compression Extensions for WebSocket via RFC7692
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-#it seems almost impossible to launch the tests, it has to be done via tox
+%check
+%pytest
 
 %files %{python_files}
 %doc README.rst

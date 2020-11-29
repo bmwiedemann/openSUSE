@@ -65,4 +65,12 @@
     <comment>Update to version 1.0.0 (forwarded request 850153 from alois)</comment>
     <requestid>850154</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>79cfce21291815d38cc406e542d3a7ea</srcmd5>
+    <version>1.0.0</version>
+    <time>1606649474</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851480</requestid>
+  </revision>
 </revisionlist>
