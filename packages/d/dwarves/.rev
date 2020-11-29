@@ -194,4 +194,12 @@
 (bsc#1177921):</comment>
     <requestid>844380</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>f8f91535fee2da9c4f782725a886fff8</srcmd5>
+    <version>1.19</version>
+    <time>1606649066</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.19</comment>
+    <requestid>850619</requestid>
+  </revision>
 </revisionlist>

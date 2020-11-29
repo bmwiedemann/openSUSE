@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 24 13:26:05 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.19
+  * Support for split BTF.
+  * Support cross-compiled ELF binaries with different endianness.
+  * Support for showing typedefs for anonymous types, like structs,
+    unions and enums.
+
+-------------------------------------------------------------------
 Tue Oct 27 15:52:01 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Add _service file / move to 1.18.g19 (863e6f0f)

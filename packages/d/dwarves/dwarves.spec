@@ -17,7 +17,7 @@
 
 
 Name:           dwarves
-Version:        1.18.g19
+Version:        1.19
 Release:        0
 Summary:        DWARF utilities
 License:        GPL-2.0-only
@@ -25,9 +25,8 @@ Group:          Development/Tools/Debuggers
 URL:            http://acmel.wordpress.com/
 #Git-Clone:	git://git.kernel.org/pub/scm/devel/pahole/pahole
 #Git-Web:	http://git.kernel.org/cgit/devel/pahole/pahole.git
-#Source:         https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.xz
-#Source2:        https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.sign
-Source:         %name-%version.tar.xz
+Source:         https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.xz
+Source2:        https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.sign
 Source9:        baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  libdw-devel >= 0.170
