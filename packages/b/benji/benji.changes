@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 27 18:04:29 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.0:
+  * Fix Helm chart repo URLs because of Helm chart repostitory
+    deprecation (see https://helm.sh/blog/charts-repo-deprecation)
+
+-------------------------------------------------------------------
 Mon Sep 21 20:59:41 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.12.0:

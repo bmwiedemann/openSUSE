@@ -213,4 +213,14 @@
   * Fix SQL generation for benji storage-usage command (issue #95)</comment>
     <requestid>835931</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>02297711a97facc59a298a3e07c65a9f</srcmd5>
+    <version>0.13.0</version>
+    <time>1606649459</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.0:
+  * Fix Helm chart repo URLs because of Helm chart repostitory
+    deprecation (see https://helm.sh/blog/charts-repo-deprecation)</comment>
+    <requestid>851381</requestid>
+  </revision>
 </revisionlist>
