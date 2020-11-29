@@ -38,8 +38,8 @@ BuildRequires:  intltool
 BuildRequires:  libboost_headers-devel
 BuildRequires:  liblcms2-devel
 BuildRequires:  libpoppler-glib-devel
-BuildRequires:  libtool
 BuildRequires:  libxslt-devel
+BuildRequires:  ninja
 BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  popt-devel
@@ -140,12 +140,13 @@ Inkscape is a vector graphics editor.
 export LDFLAGS+="-Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
 %endif
 %cmake \
+  -GNinja \
   -DINKSCAPE_INSTALL_LIBDIR=%{_libdir} \
   -DWITH_MANPAGE_COMPRESSION=OFF
-%cmake_build
+%ninja_build
 
 %install
-%cmake_install
+%ninja_install -C build
 
 # Only useful for translators.
 rm %{buildroot}%{_datadir}/inkscape/extensions/genpofiles.sh

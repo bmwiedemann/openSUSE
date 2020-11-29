@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  2 16:41:50 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Switch to ninja; probably fixes intermittent build failure
+  (bsc#1177208).
+
+-------------------------------------------------------------------
 Fri Oct  2 23:17:32 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Clean up constraints:
