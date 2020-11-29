@@ -1859,4 +1859,12 @@ Please do NOT put in Staging E - but different staging prj. This is against 3.12
     <comment>Push GNOME 3.38</comment>
     <requestid>847182</requestid>
   </revision>
+  <revision rev="217" vrev="1">
+    <srcmd5>f1b2bbe2a0de901260fc65b01ba47ddc</srcmd5>
+    <version>3.38.2</version>
+    <time>1606648867</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 849652 from iznogood)</comment>
+    <requestid>851020</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Nov 20 11:34:24 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.38.2:
+  + Calendar: Fix a possible leak in e_cal_util_parse_ics_string()
+  + ECalCache: Avoid runtime warning from
+    ecc_update_timezones_table()
+  + EReminderWatcher: Default alarm range should be from the day
+    begin
+  + EBufferTagger: Derive link color from the theme
+  + EBook/CalBackend: Correct free function for the
+    pending_operations queue
+  + Bugs fixed: glgo#GNOME/evolution-data-server#81,
+    glgo#GNOME/evolution-data-server#257,
+    glgo#GNOME/evolution-data-server#260,
+    glgo#GNOME/evolution-data-server#269,
+    glgo#GNOME/evolution-data-server#272,
+    glgo#GNOME/evolution-data-server#273,
+    glgo#GNOME/evolution-data-server!46,
+    glgo#GNOME/evolution-data-server!47,
+    glgo#GNOME/evolution-data-server!50.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Oct  5 15:47:12 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.38.1:
