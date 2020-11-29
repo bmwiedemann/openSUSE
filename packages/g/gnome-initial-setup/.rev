@@ -48,4 +48,12 @@ Resub it :-)</comment>
     <comment>Push GNOME 3.38</comment>
     <requestid>847211</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>db98ccf7f1b1ed81c915f75ed57f2842</srcmd5>
+    <version>3.38.2</version>
+    <time>1606649244</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.38.2 (forwarded request 850194 from dimstar)</comment>
+    <requestid>851045</requestid>
+  </revision>
 </revisionlist>

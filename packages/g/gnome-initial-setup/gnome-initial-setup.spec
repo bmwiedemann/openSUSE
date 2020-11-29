@@ -17,7 +17,7 @@
 
 
 Name:           gnome-initial-setup
-Version:        3.38.1
+Version:        3.38.2
 Release:        0
 Summary:        GNOME Initial Setup Assistant
 License:        GPL-2.0-or-later
