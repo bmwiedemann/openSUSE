@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 23 22:36:17 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GnuPG 2.2.25:
+  * scd: Fix regression in 2.2.24 requiring gpg --card-status
+    before signing or decrypting
+  * gpgsm: Using Libksba 1.5.0 signatures with a rarely used
+    combination of attributes can now be verified
+
+-------------------------------------------------------------------
 Tue Nov 17 21:52:38 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GnuPG 2.2.24:

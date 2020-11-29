@@ -1238,4 +1238,12 @@ See-also: gnupg-announce/2019q1/000434.html
     <comment></comment>
     <requestid>849250</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>ce8ef91e8cee8495afd9c973b2f21efc</srcmd5>
+    <version>2.2.25</version>
+    <time>1606648802</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850962</requestid>
+  </revision>
 </revisionlist>
