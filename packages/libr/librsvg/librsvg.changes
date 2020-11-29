@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 20 19:00:50 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.50.2:
+  + Fix dx/dy offsets in nested <tspan> elements.
+
+-------------------------------------------------------------------
 Mon Oct  5 16:20:32 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 2.50.1:

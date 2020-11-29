@@ -828,4 +828,12 @@
     <comment></comment>
     <requestid>843378</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>4f16402e180953a70b9de2799a9c5a15</srcmd5>
+    <version>2.50.2</version>
+    <time>1606648887</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 849732 from iznogood)</comment>
+    <requestid>851023</requestid>
+  </revision>
 </revisionlist>
