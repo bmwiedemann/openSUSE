@@ -17,7 +17,7 @@
 
 
 Name:           eog-plugins
-Version:        3.26.5
+Version:        3.26.6
 Release:        0
 #FIXME: add postr BuildRequires when we have a package
 Summary:        A collection of plugins for Eye of GNOME
