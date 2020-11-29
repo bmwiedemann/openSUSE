@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-ai-metricsadvisor
-Version:        1.0.0b1
+Version:        1.0.0b2
 Release:        0
 Summary:        Microsoft Azure Metrics Advisor Client Library for Python
 License:        MIT
