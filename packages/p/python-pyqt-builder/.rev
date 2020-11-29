@@ -7,4 +7,12 @@
     <comment>New package to build the PyQt5 family (python-qt5 and co)</comment>
     <requestid>846238</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fba4400c0660a59c049b04f72f4705ef</srcmd5>
+    <version>1.6.0</version>
+    <time>1606649046</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850604</requestid>
+  </revision>
 </revisionlist>

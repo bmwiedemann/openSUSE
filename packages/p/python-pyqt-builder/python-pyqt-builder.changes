@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 24 14:54:26 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 1.6.0
+  * Appropriate defaults are now provided for the 'abi-version' and
+    'sip-module' options.
+  * Added the 'jobs' builder option and corresponding '--jobs'
+    command line option to sip-build, sip-install and sip-wheel.
+- Update License tag
+
+-------------------------------------------------------------------
 Sun Aug 30 17:28:02 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 1.5.0

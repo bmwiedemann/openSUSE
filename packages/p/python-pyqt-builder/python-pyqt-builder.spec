@@ -15,14 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define mname pyqt-builder
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-%{mname}
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        The PEP 517 compliant PyQt build system
-License:        BSD-2-Clause
+License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP
 URL:            https://www.riverbankcomputing.com/software/pyqt
 Source0:        https://files.pythonhosted.org/packages/source/P/PyQt-builder/PyQt-builder-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -30,13 +31,13 @@ BuildRequires:  %{pythons >= 3.5}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python >= 3.5
-Requires:       python-sip-devel >= 5.3
+Requires:       python-sip-devel >= 5.5
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Provides:       python-PyQt-builder = %{version}
 BuildArch:      noarch
 # SECTION Test Requirements
-BuildRequires:  %{python_module sip-devel >= 5.3}
+BuildRequires:  %{python_module sip-devel >= 5.5}
 # /SECTION
 %python_subpackages
 
@@ -51,7 +52,6 @@ sip-install or pip can then be used to build and install the project.
 
 %prep
 %setup -q -n PyQt-builder-%{version}
-head -n 25 pyqtbuild/__init__.py | sed -E 's/^# ?//' > LICENSE
 
 %build
 %python_build
@@ -68,7 +68,6 @@ $python -c 'import pyqtbuild'
 %{buildroot}%{_bindir}/pyqt-bundle-%{$python_bin_suffix} -V
 }
 
-
 %post
 %python_install_alternative pyqt-bundle
 
@@ -76,7 +75,7 @@ $python -c 'import pyqtbuild'
 %python_uninstall_alternative pyqt-bundle
 
 %files %python_files
-%license LICENSE
+%license LICENSE*
 %doc README NEWS ChangeLog
 %python_alternative %{_bindir}/pyqt-bundle
 %{python_sitelib}/pyqtbuild
