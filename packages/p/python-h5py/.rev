@@ -133,4 +133,31 @@
     <comment>- ensure rebuild when hdf5 version changes (bsc#1150049)</comment>
     <requestid>802613</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9554a62b65a0b089f9c28697af4785ca</srcmd5>
+    <version>3.1.0</version>
+    <time>1606649419</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1.0:
+  * See https://docs.h5py.org/en/latest/whatsnew/3.1.html for list
+    of changes.
+- Changes from version 3.0.0: See
+  https://docs.h5py.org/en/latest/whatsnew/3.0.html
+- Drop upstreamed patches:
+  * remove_unittest2.patch.
+  * no_include_opt.patch.
+- Add python-h5py-relax-dependency-versions.patch to allow building
+  against more recent versions of numpy than minimally required.
+- Python 2 is no longer supported; at least version 3.6 is
+  required.
+- Run all tests except:
+  * MPI based ones, as we build against the non-mpi version of
+    hdf5.
+  * Offset test which overflows on 32-bit.
+- Tests require python-cached-property for openSUSE &lt;= 1500.
+- Fix `requires_eq` on libhdf5 (oS:F now has libhdf_hl103)
+  already.
+</comment>
+    <requestid>851345</requestid>
+  </revision>
 </revisionlist>

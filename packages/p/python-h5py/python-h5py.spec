@@ -17,21 +17,20 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-h5py
-Version:        2.10.0
+Version:        3.1.0
 Release:        0
 Summary:        Python interface to the Hierarchical Data Format library
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            https://github.com/h5py/h5py
 Source:         https://files.pythonhosted.org/packages/source/h/h5py/h5py-%{version}.tar.gz
-#PATCH-FIX-OPENSUSE no_include_opt.patch -- Don't include /opt/ directory.
-Patch0:         no_include_opt.patch
-#PATCH-FIX-OPENSUSE remove_unittest2.patch mcepl@suse.cz -- remove dependency unittest2
-Patch1:         remove_unittest2.patch
+# PATCH-FEATURE-OPENSUSE python-h5py-relax-dependency-versions.patch badshah400@gmail.com -- Build against newer version of numpy
+Patch0:         python-h5py-relax-dependency-versions.patch
 BuildRequires:  %{python_module Cython >= 0.23}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel >= 1.7}
+BuildRequires:  %{python_module numpy-devel >= 1.12}
 BuildRequires:  %{python_module pkgconfig}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -40,9 +39,12 @@ BuildRequires:  fdupes
 BuildRequires:  hdf5-devel
 BuildRequires:  python-rpm-macros
 Requires:       hdf5
-Requires:       python-numpy >= 1.7
+Requires:       python-numpy >= 1.12
 Requires:       python-six
-%requires_eq    libhdf5_hl100
+%requires_eq    libhdf5
+%if 0%{?suse_version} <= 1500
+BuildRequires:  %{python_module cached-property}
+%endif
 %python_subpackages
 
 %description
@@ -53,8 +55,7 @@ has dtype and shape attributes. HDF5 groups are presented using a dictionary
 metaphor, indexed by name.
 
 %prep
-%setup -q -n h5py-%{version}
-%autopatch -p1
+%autosetup -p1 -n h5py-%{version}
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
@@ -65,14 +66,16 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-export PYTHONDONTWRITEBYTECODE=1
-# test_float_round_tripping -- overflows on 32bit
-# py3 only code must be skipped
-%pytest_arch %{buildroot}%{$python_sitearch}/h5py/tests/ -k 'not (test_highlevel_access or test_deprecation_available_ftypes or test_read_uncompressed_offsets or test_read_write_chunk or test_float_round_tripping)'
+# Offset test fails on 32-bit and we don't build against mpi-hdf5
+%ifarch %{ix86}
+%pytest_arch %{buildroot}%{$python_sitearch}/h5py/tests/ -k 'not (TestMPI or test_float_round_tripping)'
+%else
+%pytest_arch %{buildroot}%{$python_sitearch}/h5py/tests/ -k 'not TestMPI'
+%endif
 
 %files %{python_files}
 %license lzf/LICENSE.txt
-%doc ANN.rst README.rst lzf/README.txt examples licenses/*
+%doc README.rst lzf/README.txt examples licenses/*
 %{python_sitearch}/h5py/
 %{python_sitearch}/h5py-%{version}-py*.egg-info
 
