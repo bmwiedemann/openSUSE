@@ -7,7 +7,7 @@
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">malcolmlewis@opensuse.org</param>
     <param name="filename">cherrytree</param>
-    <param name="versionformat">0.99.21+git%cd.%h</param>
+    <param name="versionformat">0.99.22+git%cd.%h</param>
   </service>
   <service mode="buildtime" name="tar" />
   <service mode="buildtime" name="recompress">

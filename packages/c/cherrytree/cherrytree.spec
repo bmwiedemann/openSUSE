@@ -16,7 +16,7 @@
 #
 
 Name:           cherrytree
-Version:        0.99.21+git20201121.e0afb5a6
+Version:        0.99.22+git20201123.fea3e66c
 Release:        0
 Summary:        A hierarchical note taking application
 License:        GPL-3.0-or-later and LGPL-2.1

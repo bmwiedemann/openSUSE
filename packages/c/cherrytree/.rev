@@ -7,4 +7,18 @@
     <comment>Re-introduce cherrytree</comment>
     <requestid>850270</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fa2294fc185d3fead113ef0486267dc3</srcmd5>
+    <version>0.99.22+git20201123.fea3e66c</version>
+    <time>1606649221</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.99.22+git20201123.fea3e66c:
+  * fixed not saving node properties when only node properties
+    are changed (#1364)
+  * fix issue (gitch) pasting tables from clipboard (#1358)
+  * added command line switch --new-window (#1339)
+  * the rich text tagged monospace is not forced to use a dedicated
+    font anymore - configurable and off by default (#1343) (forwarded request 850546 from polslinux)</comment>
+    <requestid>851061</requestid>
+  </revision>
 </revisionlist>

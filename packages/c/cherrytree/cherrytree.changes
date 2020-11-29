@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 24 15:54:13 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.99.22+git20201123.fea3e66c:
+  * fixed not saving node properties when only node properties
+    are changed (#1364)
+  * fix issue (gitch) pasting tables from clipboard (#1358)
+  * added command line switch --new-window (#1339)
+  * the rich text tagged monospace is not forced to use a dedicated
+    font anymore - configurable and off by default (#1343)
+
+-------------------------------------------------------------------
 Sat Nov 21 14:07:48 UTC 2020 - malcolmlewis@opensuse.org
 
 - Update to version 0.99.21+git20201121.e0afb5a6:
