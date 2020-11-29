@@ -17,7 +17,7 @@
 
 
 %define pkg_version 8.2
-%define patchlevel 1975
+%define patchlevel 2039
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim82
 %define site_runtimepath %{_datadir}/vim/site
@@ -312,11 +312,15 @@ ln -s -f %{_sysconfdir}/alternatives/vi %{buildroot}%{_bindir}/vi
 
 # compat symlinks
 mkdir %{buildroot}/bin
+%if !0%{?usrmerged}
 ln -s -f %{_bindir}/vim   %{buildroot}/bin/vi
 ln -s -f %{_bindir}/vim   %{buildroot}/bin/vim
+%endif
 ln -s -f vim              %{buildroot}%{_bindir}/vi
 ln -s -f vim              %{buildroot}%{_bindir}/edit
+%if !0%{?usrmerged}
 ln -s -f %{_bindir}/vim   %{buildroot}/bin/ex
+%endif
 
 # man pages
 ln -s -f vim.1.gz %{buildroot}%{_mandir}/man1/vi.1.gz
@@ -460,9 +464,11 @@ fi
 %{_bindir}/vim-nox11
 %{_bindir}/vim
 # symlinks
+%if !0%{?usrmerged}
 /bin/vi
 /bin/vim
 /bin/ex
+%endif
 %{_bindir}/edit
 %{_bindir}/ex
 %{_bindir}/rview

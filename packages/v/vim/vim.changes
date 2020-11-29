@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Wed Nov 25 09:50:56 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.2039, fixes the following problems
+  * Cannot backspace in prompt buffer after using cursor-left. (Maxim Kim)
+  * Vim9: error for using a string in a condition is confusing.
+  * Making a mapping work in all modes is complicated.
+  * "term_opencmd" option of term_start() is truncated. (Sergey Vlasov)
+  * Vim9: some tests are not done at the script level.
+  * MinGW: parallel compilation might fail.
+  * Quickfix window not updated when adding invalid entries.
+  * ml_get error when using <Cmd> to open a terminal.
+  * Cannot use :vimgrep in omni completion, causing C completion to fail.
+  * Crash when closing terminal popup with <Cmd> mapping.
+  * Expression test is flaky on Appveyor.
+  * Still in Insert mode when opening terminal popup with a <Cmd> mapping
+  in Insert mode.
+  * Info popup triggers WinEnter and WinLeave autocommands.
+  * Cursor position wrong in terminal popup with finished job.
+  * Coverity warns for not using the ga_grow() return value.
+  * Build fails with small features.
+  * Occasional failure of the netbeans test.
+  * The popup menu can cause too much redrawing.
+  * Vim9: invalid error for argument of extend().
+  * Window changes when using bufload() while in a terminal popup.
+  * Terminal Cmd test sometimes fails to close popup.
+  * Terminal popup test sometimes fails.
+  * Vim9: dict.key assignment not implemented yet.
+  * Vim9: :def function does not apply 'maxfuncdepth'.
+  * Vim9: lambda argument shadowed by function name.
+  * Build error with +conceal but without +popupwin.
+  * Compiler warning for uninitialized variable.
+  * Redoing a mapping with <Cmd> doesn't work properly.
+  * .pbtxt files are not recognized.
+  * Test for insert mode in popup is not reliable.
+  * Vim9: compiling fails for unreachable return statement.
+  * "syn sync" reports a very large number.
+  * Vim9: confusing error message when using bool wrongly.
+  * Vim9: not skipping white space after unary minus.
+  * Using CTRL-O in a prompt buffer moves cursor to start of the line.
+  * Vim9: literal dict #{} is not like any other language.
+  * Swap file test is a little flaky.
+  * Missing part of the dict change.
+  * Vim9: script variable not found from lambda.
+  * Swap file test fails on MS-Windows.
+  * Some compilers do not like the "namespace" argument.
+  * Vim9: get E1099 when autocommand resets did_emsg.
+  * Vim9: star command recognized errornously.
+  * Vim: memory leak when :execute fails.
+  * Flicker when redrawing a popup with a title and border.
+  * Amiga: Not all colors are used on OS4.
+  * Coverity warns for possibly using not NUL terminated string.
+  * Coverity warns for uninitialized field.
+  * Coverity warns for using an uninitialized variable.
+  * Coverity warns for not checking return value.
+  * Some tests fail on Mac.
+  * Some tests fail when run under valgrind.
+  * Cabalconfig and cabalproject filetypes not recognized.
+  * Vim9: :def without argument gives compilation error.
+  * Vim9: list unpack in for statement not compiled yet.
+  * Current buffer is messed up if creating a new buffer for the quickfix
+  window fails.
+  * Compiler test depends on list of compiler plugins.
+  * Viminfo is not written when creating a new file.
+
+-------------------------------------------------------------------
 Thu Nov 12 06:41:20 UTC 2020 - Wang Jun <jgwang@suse.com>
 
 - Updated to version 8.2.1975, fixes the following problems
@@ -160,6 +225,11 @@ Sun Oct 25 11:44:15 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
   * Command modifier parsing always uses global cmdmod.
   * Crash in out-of-memory situation.
   * Vim9: command modifiers do not work.
+
+-------------------------------------------------------------------
+Fri Oct 16 10:25:42 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
 
 -------------------------------------------------------------------
 Tue Oct 13 06:21:33 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>

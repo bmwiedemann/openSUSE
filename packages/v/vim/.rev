@@ -4864,4 +4864,41 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>848140</requestid>
   </revision>
+  <revision rev="275" vrev="1">
+    <srcmd5>a6489e6db4b943550d42232fa8bbf075</srcmd5>
+    <version>8.2.2039</version>
+    <time>1606649071</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.2.2039, fixes the following problems
+  * Cannot backspace in prompt buffer after using cursor-left. (Maxim Kim)
+  * Vim9: error for using a string in a condition is confusing.
+  * Making a mapping work in all modes is complicated.
+  * &quot;term_opencmd&quot; option of term_start() is truncated. (Sergey Vlasov)
+  * Vim9: some tests are not done at the script level.
+  * MinGW: parallel compilation might fail.
+  * Quickfix window not updated when adding invalid entries.
+  * ml_get error when using &lt;Cmd&gt; to open a terminal.
+  * Cannot use :vimgrep in omni completion, causing C completion to fail.
+  * Crash when closing terminal popup with &lt;Cmd&gt; mapping.
+  * Expression test is flaky on Appveyor.
+  * Still in Insert mode when opening terminal popup with a &lt;Cmd&gt; mapping
+  in Insert mode.
+  * Info popup triggers WinEnter and WinLeave autocommands.
+  * Cursor position wrong in terminal popup with finished job.
+  * Coverity warns for not using the ga_grow() return value.
+  * Build fails with small features.
+  * Occasional failure of the netbeans test.
+  * The popup menu can cause too much redrawing.
+  * Vim9: invalid error for argument of extend().
+  * Window changes when using bufload() while in a terminal popup.
+  * Terminal Cmd test sometimes fails to close popup.
+  * Terminal popup test sometimes fails.
+  * Vim9: dict.key assignment not implemented yet.
+  * Vim9: :def function does not apply 'maxfuncdepth'.
+  * Vim9: lambda argument shadowed by function name.
+  * Build error with +conceal but without +popupwin.
+  * Compiler warning for uninitialized variable.
+  * Redoing a mapping with &lt;Cmd&gt; doesn't work properly.</comment>
+    <requestid>850677</requestid>
+  </revision>
 </revisionlist>
