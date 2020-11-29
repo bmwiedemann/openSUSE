@@ -287,4 +287,18 @@ Build in science fails due to incompatible VTK 9.0, which is not yet in Tumblewe
     <comment></comment>
     <requestid>835691</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>715dafe85ff0f10d3601d369b27dae8a</srcmd5>
+    <version>0.18.5</version>
+    <time>1606649508</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.18.5:
+  * Fix addon manager to adapt to GitHub infrastructure changes.
+  * Add 0001-Fix-ODR-violation-correct-Ui_TaskSketcherGeneral-nam.patch
+  * Rebase 0001-boost-1.73.0-The-practice-of-declaring-the-Bind-plac.patch
+- Reenable workbenches dependent on Mesher (e.g. Path, FEM):
+  * Add fix-smesh-vtk9.patch
+</comment>
+    <requestid>851603</requestid>
+  </revision>
 </revisionlist>

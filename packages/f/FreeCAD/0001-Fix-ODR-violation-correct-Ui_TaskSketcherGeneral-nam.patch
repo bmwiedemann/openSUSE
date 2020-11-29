@@ -1,0 +1,35 @@
+From 47be1f5e46acd7f438672b238f1e8354a494decf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sat, 28 Nov 2020 13:35:59 +0100
+Subject: [PATCH] Fix ODR violation, correct Ui_TaskSketcherGeneral namespace
+
+The generated ui_TaskSketcherGeneral.h defines the class in the
+SketcherGui namespace.
+---
+ src/Mod/Sketcher/Gui/TaskSketcherGeneral.h | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/Mod/Sketcher/Gui/TaskSketcherGeneral.h b/src/Mod/Sketcher/Gui/TaskSketcherGeneral.h
+index eb3276ec7..c08489eeb 100644
+--- a/src/Mod/Sketcher/Gui/TaskSketcherGeneral.h
++++ b/src/Mod/Sketcher/Gui/TaskSketcherGeneral.h
+@@ -28,8 +28,6 @@
+ #include <Gui/Selection.h>
+ #include <boost/signals2.hpp>
+ 
+-class Ui_TaskSketcherGeneral;
+-
+ namespace App {
+ class Property;
+ }
+@@ -40,6 +38,7 @@ class ViewProvider;
+ 
+ namespace SketcherGui {
+ 
++class Ui_TaskSketcherGeneral;
+ class ViewProviderSketch;
+ 
+ class SketcherGeneralWidget : public QWidget
+-- 
+2.29.2
+

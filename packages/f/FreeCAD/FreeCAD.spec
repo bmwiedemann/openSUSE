@@ -26,10 +26,10 @@
 %bcond_with    boost_signals2
 %endif
 # Bundled SALOME-MESH (smesh) fails to build with VTK 9.0
-%bcond_with smesh
+%bcond_without smesh
 
 Name:           FreeCAD
-Version:        0.18.4
+Version:        0.18.5
 Release:        0
 Summary:        General Purpose 3D CAD Modeler
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later
@@ -50,6 +50,10 @@ Patch6:         fix_unittestgui_tkinter_py3.patch
 Patch7:         fix_qt_5.15_build.patch
 # PATCH-FIX-UPSTREAM -- Rebased https://github.com/FreeCAD/FreeCAD/commit/4ec45b545ebf
 Patch8:         0001-boost-1.73.0-The-practice-of-declaring-the-Bind-plac.patch
+# PATCH-FIX-UPSTREAM Rebased https://github.com/wwmayer/FreeCAD/commit/bb9bcbd51df7
+Patch9:         fix-smesh-vtk9.patch
+# PATCH-FIX-UPSTREAM
+Patch10:        0001-Fix-ODR-violation-correct-Ui_TaskSketcherGeneral-nam.patch
 
 # Test suite fails on 32bit and I don't want to debug that anymore
 ExcludeArch:    %ix86 %arm ppc s390 s390x
@@ -81,6 +85,7 @@ BuildRequires:  hdf5-devel
 BuildRequires:  hicolor-icon-theme
 # We use the internal smesh version with fixes atm
 #BuildRequires:  smesh-devel
+BuildRequires:  java-devel
 BuildRequires:  libXerces-c-devel
 BuildRequires:  libXi-devel
 BuildRequires:  libmed-devel
@@ -190,7 +195,6 @@ rm src/3rdparty/Pivy -fr
 rm src/3rdparty/Pivy-0.5 -fr
 
 %build
-# disabled until vtk 9 support arrives: -DBUILD_MESH_PART:BOOL=ON -DBUILD_FEM:BOOL=ON
 %cmake \
   -DCMAKE_INSTALL_PREFIX=%{x_prefix} \
   -DCMAKE_INSTALL_DATADIR=%{_datadir}/%{name} \

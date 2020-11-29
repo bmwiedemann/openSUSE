@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov 28 14:08:01 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.18.5:
+  * Fix addon manager to adapt to GitHub infrastructure changes.
+  * Add 0001-Fix-ODR-violation-correct-Ui_TaskSketcherGeneral-nam.patch
+  * Rebase 0001-boost-1.73.0-The-practice-of-declaring-the-Bind-plac.patch
+- Reenable workbenches dependent on Mesher (e.g. Path, FEM):
+  * Add fix-smesh-vtk9.patch
+
+-------------------------------------------------------------------
 Sat Sep 19 01:37:12 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with boost 1.73 and later, add
