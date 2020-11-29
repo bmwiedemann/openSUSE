@@ -475,4 +475,26 @@
   used by packages that need to prevent theirs services from being</comment>
     <requestid>847458</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d97a6b6981ca1f1c3d612eb76364bb99</srcmd5>
+    <version>9</version>
+    <time>1606648715</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version to 9
+
+- daemon-reload is not needed in %service_add_post
+  Applying presets, ie enabling/disabling units, doesn't require to
+  update units loaded in PID1 memory. It's actually needed after and
+  it's done implicitly by `systemctl preset`.
+
+- Rename the tag file used to detect when presets need to be applied
+  Rather than placing these tags directly under /run, let's place them
+  under /run/systemd/rpm. This also has the benefit to make the
+  workaround for bsc#1059627 no more needed.
+
+- %service_del_preun doesn't accept -f/-n options anymore
+  The few package calling %service_del_preun with '-f' or '-n' option
+  have been fixed. These options are not needed anymore.</comment>
+    <requestid>850414</requestid>
+  </revision>
 </revisionlist>

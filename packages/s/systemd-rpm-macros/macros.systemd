@@ -71,33 +71,29 @@ OrderWithRequires(postun): systemd \
 %service_add_pre()									\
 if [ $1 -gt 1 -a -x /usr/bin/systemctl ]; then						\
 	for service in %{?*} ; do							\
-		# The tag file might have been left by a preceding			\
-		# update (see bsc#1059627)						\
-		rm -f "/run/rpm-%{name}-update-$service-new-in-upgrade"			\
-											\
 		if [ ! -e "/usr/lib/systemd/system/$service" ] &&			\
 		   [ ! -e "/etc/init.d/${service%.*}" ]; then				\
-			touch "/run/rpm-%{name}-update-$service-new-in-upgrade"		\
+			mkdir -p /run/systemd/rpm/needs-preset				\
+			touch "/run/systemd/rpm/needs-preset/$service"			\
 		fi									\
 	done										\
 fi											\
 %{nil}
 
 # On install, tell systemd to reload its unit files
+#
 %service_add_post()									\
 if [ -x /usr/bin/systemctl ]; then							\
-	# FIXME: why is this needed ?							\
-        /usr/bin/systemctl daemon-reload || :						\
-											\
 	if [ $1 -eq 1 ]; then								\
 		/usr/bin/systemctl preset %{?*} || :					\
 	else										\
 		for service in %{?*} ; do						\
-			if [ -e "/run/rpm-%{name}-update-$service-new-in-upgrade" ]; then	\
-				rm -f "/run/rpm-%{name}-update-$service-new-in-upgrade"	\
+			if [ -e "/run/systemd/rpm/needs-preset/$service" ]; then	\
 				/usr/bin/systemctl preset "$service" || :		\
 			fi								\
 		done									\
+		rm -fr /run/systemd/rpm/needs-preset					\
+											\
 		/usr/lib/systemd/systemd-sysv-convert --apply %{?*} || :		\
 	fi										\
 fi											\
@@ -105,10 +101,7 @@ fi											\
 
 # On uninstall, disable and stop services
 #
-# Note: '-n' and '-f' options are still allowed to keep backward compatibility 
-# with SLE
-#
-%service_del_preun(fn)									\
+%service_del_preun()									\
 if [ $1 -eq 0 -a -x /usr/bin/systemctl ]; then						\
 	# Package removal, not upgrade							\
 	/usr/bin/systemctl --no-reload disable --now %{?*} || :				\
@@ -172,7 +165,7 @@ fi											\
 
 %systemd_user_post() %{expand:%systemd_post \\--global %%{?*}} 
 
-%systemd_preun(fn)									\
+%systemd_preun()									\
 if [ $1 -eq 0 -a -x /usr/bin/systemctl ]; then						\
 	# Package removal, not upgrade							\
 	/usr/bin/systemctl --no-reload disable --now %{?*} || :				\
@@ -182,7 +175,7 @@ fi											\
 %systemd_user_preun()									\
 if [ $1 -eq 0 -a -x /usr/bin/systemctl ]; then						\
         # Package removal, not upgrade							\
-        /usr/bin/systemctl --global disable %{?*} || :		\
+        /usr/bin/systemctl --global disable %{?*} || :					\
 fi											\
 %{nil}
 
