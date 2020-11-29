@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-attestation
-Version:        0.1.0.0
+Version:        0.2.0
 Release:        0
 Summary:        Microsoft Azure MyService Management Client Library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-attestation/azure-mgmt-attestation-0.1.0.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-attestation/azure-mgmt-attestation-%{version}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -54,10 +54,10 @@ replace the old Azure Service Management (ASM).
 This package has been tested with Python 2.7, 3.5, 3.6 and 3.7.
 
 %prep
-%setup -q -n azure-mgmt-attestation-0.1.0
+%setup -q -n azure-mgmt-attestation-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-attestation-0.1.0
+install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-attestation-%{version}
 %python_build
 
 %install
@@ -72,7 +72,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %defattr(-,root,root,-)
-%doc HISTORY.rst README.rst
+%doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/azure/mgmt/attestation
 %{python_sitelib}/azure_mgmt_attestation-*.egg-info
