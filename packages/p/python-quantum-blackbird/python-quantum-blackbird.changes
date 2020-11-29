@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov 26 07:36:38 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 0.3.0.
+  * Arrays and variables now support being defined as parameters 
+    (using braces) in a Blackbird template. 
+  * Time-domain multiplexing programs are now supported, using the
+    syntax type tdm (temporal_modes=3, copies=1).
+  * For-loops are supported inside Blackbird scripts. 
+  * Keyword arguments are supported inside operations; for example,
+    MeasureHomodyne(select=[0, 1]) or 
+    MeasureFock(dark_counts=[1, 0.5, 3]).
+  * Indexing is supported inside both modes and arguments; for 
+    example, MZgate(list[2], list[0]) | [list[3], list[1]])). 
+    All indices allow expressions such as phases[-3 + 2*2]. 
+  * Templates are no longer changed when calling them and replacing
+    the parameters with actual values.
+
+-------------------------------------------------------------------
 Thu Sep  3 19:48:29 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 0.2.4.

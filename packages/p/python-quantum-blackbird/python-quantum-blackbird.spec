@@ -20,14 +20,14 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-quantum-blackbird
-Version:        0.2.4
+Version:        0.3.0
 Release:        0
 Summary:        Quantum assembly language for continuous-variable quantum computation
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/XanaduAI/blackbird
 Source:         https://github.com/XanaduAI/blackbird/archive/v%{version}.tar.gz#/blackbird-%{version}.tar.gz
-BuildRequires:  %{python_module antlr4-python3-runtime >= 4.7.2}
+BuildRequires:  %{python_module antlr4-python3-runtime >= 4.8}
 BuildRequires:  %{python_module networkx}
 BuildRequires:  %{python_module numpy >= 1.16}
 BuildRequires:  %{python_module pytest}
@@ -36,7 +36,7 @@ BuildRequires:  %{python_module sympy}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  uuid-devel
-Requires:       python-antlr4-python3-runtime >= 4.7.1
+Requires:       python-antlr4-python3-runtime >= 4.8
 Requires:       python-networkx
 Requires:       python-numpy >= 1.16
 Requires:       python-sympy
