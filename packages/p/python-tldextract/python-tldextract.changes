@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 28 20:13:57 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- Update to 3.1.0:
+  * Features
+    + Prefer to cache in XDG cache directory in user folder,
+      vs. in Python install folder
+      (https://github.com/john-kurkowski/tldextract/issues/213)
+    + Fix `AttributeError` on `--update`
+      (https://github.com/john-kurkowski/tldextract/issues/215)
+
+-------------------------------------------------------------------
 Mon Oct 26 00:28:42 UTC 2020 - Mia Herkt <mia@0x0.st>
 
 - Update to 3.0.2:

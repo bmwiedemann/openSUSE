@@ -147,4 +147,18 @@ Needed for python-dns-lexicon</comment>
     file (https://github.com/john-kurkowski/tldextract/issues/211)</comment>
     <requestid>843974</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9a62e4f48b80d4b7dcadbdf7fe660946</srcmd5>
+    <version>3.1.0</version>
+    <time>1606649476</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.0:
+  * Features
+    + Prefer to cache in XDG cache directory in user folder,
+      vs. in Python install folder
+      (https://github.com/john-kurkowski/tldextract/issues/213)
+    + Fix `AttributeError` on `--update`
+      (https://github.com/john-kurkowski/tldextract/issues/215)</comment>
+    <requestid>851574</requestid>
+  </revision>
 </revisionlist>
