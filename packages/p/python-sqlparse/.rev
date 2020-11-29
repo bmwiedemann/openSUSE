@@ -97,4 +97,21 @@
   the stream is an instance of TextIOWrapper to support a pytest change.</comment>
     <requestid>787620</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>679430fdceda3e2100b0ab99655d6c91</srcmd5>
+    <version>0.4.1</version>
+    <time>1606648741</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.1:
+  * Python 3.9 support
+  * Remove support for end-of-life Python 2.7 and 3.4. Python 3.5+ is now
+  required.
+  * Remaining strings that only consist of whitespaces are not treated as
+  statements anymore. Code that ignored the last element from
+  sqlparse.split() should be updated accordingly since that function
+  now doesn't return an empty string as the last element in some
+  cases (issue496).
+- remove non-upstream stdout-encoding-set.patch patch</comment>
+    <requestid>850920</requestid>
+  </revision>
 </revisionlist>

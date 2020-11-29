@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sqlparse
-Version:        0.3.1
+Version:        0.4.1
 Release:        0
 Summary:        Non-validating SQL parser
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/andialbrecht/sqlparse
 Source:         https://files.pythonhosted.org/packages/source/s/sqlparse/sqlparse-%{version}.tar.gz
-Patch0:         stdout-encoding-set.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -43,7 +42,6 @@ parsing, splitting and formatting SQL statements.
 %prep
 %setup -q -n sqlparse-%{version}
 sed -i -e '1{\,^#!%{_bindir}/env python,d}' sqlparse/__main__.py sqlparse/cli.py
-%autopatch -p1
 
 %build
 %python_build
