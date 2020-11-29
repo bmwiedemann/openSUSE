@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 26 17:51:02 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.0.1:
+  * Add python_requires to setup.py for Python 3.6+ compatibility
+
+- changes from version 5.0.0:
+  * Additions
+    + Add option to set completion type while running.
+  * Changes
+    + Emit kernel_restarted after restarting kernel.
+    + Drop support for Python 2.7 and 3.5.
+
+-------------------------------------------------------------------
 Wed Sep 16 11:27:20 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - skip two tests: gh#jupyter/qtconsole#443 
