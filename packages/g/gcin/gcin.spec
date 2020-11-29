@@ -16,6 +16,10 @@
 #
 
 
+%if ! %{defined _distconfdir}
+%define _distconfdir %{_sysconfdir}
+%endif
+
 %define build_qt4 0%{?is_opensuse} && 0%{?suse_version} < 1550
 
 Name:           gcin
@@ -192,15 +196,15 @@ make %{?_smp_mflags}
 %install
 make DESTDIR=%{buildroot} install %{?_smp_mflags}
 
-mkdir -p %{buildroot}%{_sysconfdir}/X11/xim.d/
-install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/X11/xim.d/gcin
+mkdir -p %{buildroot}%{_distconfdir}/X11/xim.d/
+install -m 644 %{SOURCE1} %{buildroot}%{_distconfdir}/X11/xim.d/gcin
 
 rm -rf %{buildroot}%{_datadir}/doc
 
 %suse_update_desktop_file -r -G "Set Up your inputmethod" gcin-tools Settings System SystemSetup
 
 PRIORITY=30
-pushd  %{buildroot}%{_sysconfdir}/X11/xim.d/
+pushd  %{buildroot}%{_distconfdir}/X11/xim.d/
     for lang in en zh_TW zh_HK zh_MO ; do
         mkdir $lang
   pushd $lang
@@ -257,7 +261,7 @@ fi
 %defattr(-,root,root)
 %license COPYING
 %doc README.html Changelog.html AUTHORS gcin-README.suse xim.gcin.suse.template
-%config %{_sysconfdir}/X11/xim.d/
+%{_distconfdir}/X11/xim.d
 %{_bindir}/*
 %{_datadir}/gcin/
 %{_datadir}/pixmaps/gcin.png
