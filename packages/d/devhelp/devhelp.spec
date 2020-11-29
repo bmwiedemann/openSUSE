@@ -20,7 +20,7 @@
 %define vim_plugin_dir %{_datadir}/vim/site/plugin
 
 Name:           devhelp
-Version:        3.38.0
+Version:        3.38.1
 Release:        0
 Summary:        Developer's Help Program for GNOME
 License:        GPL-3.0-or-later
