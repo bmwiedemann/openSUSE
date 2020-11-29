@@ -27,6 +27,8 @@ Source0:        https://download.flashrom.org/releases/%{name}-v%{version}.tar.b
 Source1:        https://download.flashrom.org/releases/%{name}-v%{version}.tar.bz2.asc#/%{name}-%{version}.tar.bz2.sig
 # Got the key from David Hendricks
 Source2:        %{name}.keyring
+# PATCH-FIX-UPSTREAM - https://github.com/flashrom/flashrom/commit/da6b3b70cb852dd8e9f9e21aef95fa83e7f7ab0d
+Patch1:         fix_aarch64.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libftdi1)
 BuildRequires:  pkgconfig(libpci)
@@ -48,6 +50,7 @@ or SPI.
 
 %prep
 %setup -q -n %{name}-v%{version}
+%patch1 -p1
 
 %build
 make %{?_smp_mflags} \

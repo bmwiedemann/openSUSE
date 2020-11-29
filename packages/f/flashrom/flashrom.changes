@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 27 08:18:53 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on aarch64 with upstream patch:
+  * fix_aarch64.patch
+
+-------------------------------------------------------------------
 Thu Feb 20 21:18:38 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2
