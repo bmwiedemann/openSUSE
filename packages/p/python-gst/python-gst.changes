@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov  5 16:30:52 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.18.1:
+  + Python 2.x is no longer supported
+  + Support mapping buffers without any memcpy:
+    * Added a ContextManager to make the API more pythonic with
+      buf.map(Gst.MapFlags.READ | Gst.MapFlags.WRITE) as
+      info: info.data[42] = 0
+  + Added high-level helper API for constructing pipelines:
+    * Gst.Bin.make_and_add(factory_name, instance_name=None)
+    * Gst.Element.link_many(element, ...)
+
+-------------------------------------------------------------------
 Thu Nov  5 07:33:30 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.18.0:
