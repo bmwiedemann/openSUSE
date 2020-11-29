@@ -735,4 +735,13 @@ Use SPDX format (http://www.spdx.org/licenses). Where there is no suitable short
   See included Changes for benefits and breaking changes</comment>
     <requestid>831369</requestid>
   </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>575f871ea305ecec9de72702f4d48c7c</srcmd5>
+    <version>4.11.1</version>
+    <time>1606648789</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename rpmlintrc to ocaml-rpmlintrc
+  (boo#1179051). (forwarded request 850943 from marxin)</comment>
+    <requestid>850945</requestid>
+  </revision>
 </revisionlist>

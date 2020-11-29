@@ -70,7 +70,7 @@ License:        QPL-1.0 AND SUSE-LGPL-2.0-with-linking-exception
 Group:          Development/Languages/OCaml
 URL:            http://www.ocaml.org
 Source0:        http://caml.inria.fr/pub/distrib/ocaml-%{ocaml_base_version}/ocaml-%{version}.tar.xz
-Source2:        rpmlintrc
+Source2:        ocaml-rpmlintrc
 Patch0:         ocaml-configure-Allow-user-defined-C-compiler-flags.patch
 BuildRequires:  autoconf
 BuildRequires:  binutils-devel

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 26 08:54:10 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Rename rpmlintrc to ocaml-rpmlintrc
+  (boo#1179051).
+
+-------------------------------------------------------------------
 Tue Sep  1 12:34:56 UTC 2020 - ohering@suse.de
 
 - update to version 4.11.1
