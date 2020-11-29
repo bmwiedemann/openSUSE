@@ -60,4 +60,21 @@
 - Tighten Requires on python-jira</comment>
     <requestid>778911</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>12f2d0f28476c786aa0ab2a1bbe1f642</srcmd5>
+    <version>2.2.1</version>
+    <time>1606649217</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove capitalization.patch, as capitalisation of names does not
+  prevent setuptools from finding installed packages
+- Remove upper pins on dependency versions
+- Add missing dependencies and specify minimum versions
+- Switch to PyPI sdist
+- Activate test suite, and remove unnecessary build dependency tox
+- Update to v2.2.1
+  * Fallback to displayName if name is not available for
+    comment author
+</comment>
+    <requestid>851342</requestid>
+  </revision>
 </revisionlist>

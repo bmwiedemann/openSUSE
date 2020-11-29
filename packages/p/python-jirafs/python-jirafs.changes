@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 24 00:50:36 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove capitalization.patch, as capitalisation of names does not
+  prevent setuptools from finding installed packages
+- Remove upper pins on dependency versions
+- Add missing dependencies and specify minimum versions
+- Switch to PyPI sdist
+- Activate test suite, and remove unnecessary build dependency tox
+- Update to v2.2.1
+  * Fallback to displayName if name is not available for
+    comment author
+
+-------------------------------------------------------------------
 Tue Feb 25 04:21:46 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.2.0, partial changelog:

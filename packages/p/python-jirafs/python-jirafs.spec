@@ -19,31 +19,40 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-jirafs
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        Library for editing JIRA issues as local text files
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/coddingtonbear/jirafs
-Source:         https://github.com/coddingtonbear/jirafs/archive/%{version}.tar.gz
-Patch0:         capitalization.patch
-BuildRequires:  %{python_module PrettyTable}
-BuildRequires:  %{python_module behave}
-BuildRequires:  %{python_module blessings}
-BuildRequires:  %{python_module environmental-override}
-BuildRequires:  %{python_module ipdb}
-BuildRequires:  %{python_module jira}
-BuildRequires:  %{python_module mock}
+Source:         https://files.pythonhosted.org/packages/source/j/jirafs/jirafs-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module tox}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PrettyTable
-Requires:       python-blessings
-Requires:       python-environmental-override
-Requires:       python-ipdb
-Requires:       python-jira >= 2
+Requires:       git-core
+Requires:       python-Jinja2 >= 2.10.3
+Requires:       python-PrettyTable >= 0.7.2
+Requires:       python-blessings >= 1.5.1
+Requires:       python-environmental-override >= 0.1.2
+Requires:       python-jira >= 2.0.0
+Requires:       python-python-dateutil >= 2.8.1
+Requires:       python-watchdog >= 0.9.0
+Suggests:       python-ipdb
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module Jinja2 >= 2.10.3}
+BuildRequires:  %{python_module PrettyTable >= 0.7.2}
+BuildRequires:  %{python_module behave}
+BuildRequires:  %{python_module blessings >= 1.5.1}
+BuildRequires:  %{python_module environmental-override >= 0.1.2}
+BuildRequires:  %{python_module ipdb}
+BuildRequires:  %{python_module jira >= 2.0.0}
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-dateutil >= 2.8.1}
+BuildRequires:  %{python_module watchdog >= 0.9.0}
+BuildRequires:  git-core
+# /SECTION
 %python_subpackages
 
 %description
@@ -53,7 +62,9 @@ issues as a collection of text files using an interface inspired by
 
 %prep
 %setup -q -n jirafs-%{version}
-%autopatch -p1
+# Remove upper pins
+sed -i 's/,<[0-9.][0-9.]*//' requirements.txt
+rm jirafs/.pre-commit-config.yaml
 
 %build
 %python_build
@@ -63,8 +74,9 @@ issues as a collection of text files using an interface inspired by
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# tests require running JIRA instance
-#%%python_exec -m unittest discover -v
+git config --global user.name "John Doe"
+git config --global user.email johndoe@example.com
+%pytest -rs
 
 %files %{python_files}
 %{_bindir}/jirafs
