@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 25 09:07:36 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Avoid quadratic checking of identity-constraints: [bsc#1178823]
+  * key/unique/keyref schema attributes currently use qudratic loops
+    to check their various constraints (that keys are unique and that
+    keyrefs refer to existing keys).
+  * This fix uses a hash table to avoid the quadratic behaviour.
+- Add libxml2-Avoid-quadratic-checking-of-identity-constraints.patch
+
+-------------------------------------------------------------------
 Fri Oct 23 19:11:01 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Make python subpackage ready for multiple python3 flavors
