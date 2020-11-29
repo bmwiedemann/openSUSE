@@ -59,8 +59,9 @@ find %{buildroot}%{_libqt5_plugindir} -name '*pyqt5*.so' \\\
 exdir=%{buildroot}%{_docdir}/%{$python_prefix}-%{1} \
 mkdir -p $exdir \
 cp -r examples $exdir/ \
-# Fix wrong-script-interpreter \
-find $exdir -name "*.py" -exec sed -i "1 s|^#!%{_bindir}/env python.*$|#!%{_bindir}/$python|" {} \\; \
+# Fix shebang. Depending on version of python-rpm-macros, expanded python could be basename or full path. \
+python_exec=$(which $python) \
+find $exdir -name "*.py" -exec sed -i "1 s|^#!%{_bindir}/env python.*$|#!${python_exec}|" {} \\; \
 %fdupes $exdir \
 } \
 %{nil}

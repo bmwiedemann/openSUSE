@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 24 11:03:47 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix shebang replacement in pyqt_install_examples
+  gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Thu Nov  5 11:15:04 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - update to version 0.0.3
