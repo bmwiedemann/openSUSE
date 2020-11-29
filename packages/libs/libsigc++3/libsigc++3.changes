@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 23 17:48:01 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.0.4:
+  + Build:
+    - Meson build: Set default value of the 'warnings' option to
+      'min'.
+    - NMake Makefiles: Several improvements
+    - Update for Doxygen >= 1.8.16
+  + Updated documentation.
+- Switch to meson build system:
+  + Add meson BuildRequires.
+  + Replace configure/make/make_install macros with their meson
+    counterparts.
+
+-------------------------------------------------------------------
 Wed Mar 25 13:46:32 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.0.3:

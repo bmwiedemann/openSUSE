@@ -18,7 +18,7 @@
 
 %define _name libsigc++
 Name:           libsigc++3
-Version:        3.0.3
+Version:        3.0.4
 Release:        0
 Summary:        Typesafe Signal Framework for C++
 License:        LGPL-3.0-or-later
@@ -28,6 +28,7 @@ Source0:        https://download.gnome.org/sources/libsigc++/3.0/%{_name}-%{vers
 Source99:       baselibs.conf
 
 BuildRequires:  gcc-c++
+BuildRequires:  meson
 BuildRequires:  mm-common >= 0.9.12
 BuildRequires:  pkgconfig
 
@@ -71,16 +72,15 @@ of use unmatched by other C++ callback libraries.
 %setup -q -n %{_name}-%{version}
 
 %build
-%configure --disable-static
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 
 %check
 export MALLOC_CHECK_=2 MALLOC_PERTURB_=$((${RANDOM:-256} % 256))
-make %{?_smp_mflags} check
+%meson_test
 unset MALLOC_CHECK_ MALLOC_PERTURB_
 
 %post -n libsigc-3_0-0 -p /sbin/ldconfig
@@ -93,14 +93,9 @@ unset MALLOC_CHECK_ MALLOC_PERTURB_
 
 %files devel
 %doc AUTHORS ChangeLog
-%doc %{_datadir}/doc/%{_name}-3.0
 %{_libdir}/libsigc-3.0.so
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/sigc++-3.0
 %{_includedir}/sigc++-3.0/
-%{_datadir}/devhelp/books/%{_name}-3.0
-# Avoid BuildRequires on devhelp
-%dir %{_datadir}/devhelp
-%dir %{_datadir}/devhelp/books
 
 %changelog

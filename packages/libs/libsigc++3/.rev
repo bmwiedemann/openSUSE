@@ -133,4 +133,12 @@
     <comment> (forwarded request 788212 from iznogood)</comment>
     <requestid>789275</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4c87fa42a25c8d7257adb22a4a6e43b9</srcmd5>
+    <version>3.0.4</version>
+    <time>1606648973</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.0.4 (forwarded request 850293 from dimstar)</comment>
+    <requestid>851049</requestid>
+  </revision>
 </revisionlist>
