@@ -19,7 +19,7 @@
 %define __builder ninja
 %define tarname wxmaxima
 Name:           wxMaxima
-Version:        20.09.0
+Version:        20.11.1
 Release:        0
 Summary:        Graphical User Interface for the maxima Computer Algebra System
 License:        GPL-2.0-or-later
@@ -53,6 +53,13 @@ BuildRequires:  wxWidgets-devel >= 3
 Requires:       gnuplot
 Requires:       maxima >= 5.30.0
 Recommends:     %{name}-lang
+# SECTION For tests
+%if 0%{?suse_version} >= 1550
+BuildRequires:  xorg-x11-server-Xvfb
+%else
+BuildRequires:  xorg-x11-server
+%endif
+# /SECTION
 ExcludeArch:    ppc64 ppc64le
 
 %lang_package
@@ -62,7 +69,7 @@ wxMaxima is a GUI for the computer algebra system maxima
 based on wxWidgets.
 
 %prep
-%setup -q -n %{tarname}-Version-%{version}
+%autosetup -p1 -n %{tarname}-Version-%{version}
 
 %build
 %cmake
@@ -99,6 +106,12 @@ rm -fr %{buildroot}%{_datadir}/doc/%{tarname}/COPYING
 %fdupes %{buildroot}%{_prefix}
 
 %find_lang %{name} %{?no_lang_C}
+
+%check
+export DISPLAY=:98
+Xvfb ${DISPLAY} 2>&1 > /dev/null &
+sleep 5
+%ctest
 
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/wxmaxima.info%{ext_info}
