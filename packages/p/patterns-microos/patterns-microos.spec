@@ -426,6 +426,8 @@ Requires:       pipewire
 Requires:       plasma5-defaults-openSUSE
 Requires:       qqc2-desktop-style
 Requires:       sddm-theme-openSUSE
+Requires:       udisks2
+Requires:       upower
 Requires:       xdg-desktop-portal-kde
 
 %description desktop-kde
