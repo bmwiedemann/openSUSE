@@ -17,6 +17,13 @@ Mon Nov 16 14:26:35 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
     glgo#GNOME/GLib!1727, glgo#GNOME/GLib!1736.
 
 -------------------------------------------------------------------
+Sun Nov 15 18:52:39 UTC 2020 - Christopher Yeleighton <giecrilj@stegny.2a.pl>
+
+- add %license COPYING
+- add %doc README.md
+- rename -tests to -tests-devel
+
+-------------------------------------------------------------------
 Thu Oct 22 11:45:40 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Enable building of documentation:

@@ -1798,4 +1798,14 @@ WANTED for 13.1 (forwarded request 202421 from RBrownCCB)</comment>
     glgo#GNOME/GLib!1727, glgo#GNOME/GLib!1736. (forwarded request 848891 from dimstar)</comment>
     <requestid>849054</requestid>
   </revision>
+  <revision rev="230" vrev="2">
+    <srcmd5>ff7fb36418887e40c04dc2f609aac2ad</srcmd5>
+    <version>2.66.3</version>
+    <time>1606648851</time>
+    <user>dimstar_suse</user>
+    <comment>- add %license COPYING
+- add %doc README.md
+- rename -tests to -tests-devel (forwarded request 849384 from yecril71pl)</comment>
+    <requestid>851016</requestid>
+  </revision>
 </revisionlist>

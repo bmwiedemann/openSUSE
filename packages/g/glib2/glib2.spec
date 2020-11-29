@@ -241,13 +241,15 @@ a main loop abstraction, and so on.
 
 The GObject library provides an object-oriented framework for C.
 
-%package tests
+%package tests-devel
 Summary:        Tests for the glib2 package
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
+Provides: 	glib2-tests = %version-%release
+Obsoletes: 	glib2-tests < %version-%release
 
-%description tests
-The glib2-tests package contains tests that can be used to verify
+%description tests-devel
+The glib2-tests-devel package contains tests that can be used to verify
 the functionality of the installed glib2 package.
 
 %lang_package
@@ -395,6 +397,7 @@ done
 %endif
 
 %files tools
+%license COPYING
 %{_bindir}/gapplication
 %{_bindir}/gdbus
 %{_bindir}/gio
@@ -423,8 +426,10 @@ done
 # have a better home... The zzz-glib2 scripts could arguably be in
 # libglib-2_0-0 but that would break the shared library policy.
 %{_sysconfdir}/profile.d/zzz-glib2.*
+%doc README.md
 
 %files -n gio-branding-upstream
+%license COPYING
 %doc README.Gsettings-overrides
 %config (noreplace) %{_sysconfdir}/gnome_defaults.conf
 
@@ -434,15 +439,19 @@ done
 %{_libdir}/libglib*.so.*
 
 %files -n libgmodule-2_0-0
+%license COPYING
 %{_libdir}/libgmodule*.so.*
 
 %files -n libgobject-2_0-0
+%license COPYING
 %{_libdir}/libgobject*.so.*
 
 %files -n libgthread-2_0-0
+%license COPYING
 %{_libdir}/libgthread*.so.*
 
 %files -n libgio-2_0-0
+%license COPYING
 %{_libdir}/libgio*.so.*
 %dir %{_libdir}/gio
 %dir %{_libdir}/gio/modules
@@ -457,9 +466,11 @@ done
 %ghost %{_localstatedir}/cache/gio-2.0/lxde-mimeapps.list
 
 %files -n libgio-fam
+%license COPYING
 %{_libdir}/gio/modules/libgiofam.so
 
 %files devel
+%license COPYING
 %doc HACKING README.rationale
 %{_bindir}/gdbus-codegen
 %{_bindir}/glib-compile-resources
@@ -520,11 +531,14 @@ done
 %dir %{_datadir}/gdb/auto-load%{_libdir}
 
 %files devel-static
+%license COPYING
 %{_libdir}/lib*.a
 
 %files lang -f glib20.lang
+%license COPYING
 
-%files tests
+%files tests-devel
+%license COPYING
 %{_libexecdir}/installed-tests
 %{_datadir}/installed-tests
 
