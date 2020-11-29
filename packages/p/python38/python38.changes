@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 20 14:40:09 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- The Python stdlib >= does not provide importlib_metadata or
+  importlib_resources but importlib.metadata and importlib.resources.
+  If a package specifically asks for importlib_*, they actually
+  require the dedicated package with extended API.
+
+-------------------------------------------------------------------
 Mon Nov  9 10:51:30 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.8.6, which contains various bug fixes including security
