@@ -1,7 +1,7 @@
 #
 # spec file for package scim
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if ! %{defined _distconfdir}
+%define _distconfdir %{_sysconfdir}
+%endif
 
 Name:           scim
 Version:        1.4.18
@@ -147,13 +151,13 @@ make DESTDIR=%{buildroot} top_builddir=$(pwd) install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 # install configuration files
-mkdir -p %{buildroot}%{_sysconfdir}/X11/xim.d/
-install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/X11/xim.d/scim
+mkdir -p %{buildroot}%{_distconfdir}/X11/xim.d/
+install -m 644 %{SOURCE1} %{buildroot}%{_distconfdir}/X11/xim.d/scim
 
 # install symlinks in /etc/X11/xim.d/$lang for all languages
 # where SCIM might be useful:
 PRIORITY=50
-pushd %{buildroot}%{_sysconfdir}/X11/xim.d/
+pushd %{buildroot}%{_distconfdir}/X11/xim.d/
     for lang in am ar as bn el fa gu he hi hr ja ka kk kn ko lo ml my \
 		pa ru sk vi zh_TW zh_CN zh_HK zh_SG \
 		de fr it es nl cs pl da nn nb fi en sv
@@ -233,7 +237,7 @@ fi
 %files
 %license COPYING
 %doc AUTHORS README ChangeLog TODO
-%config %{_sysconfdir}/X11/xim.d/*
+%{_distconfdir}/X11/xim.d
 %config %{_sysconfdir}/rpm/macros.scim
 %dir %{_sysconfdir}/scim
 %config %{_sysconfdir}/scim/config
