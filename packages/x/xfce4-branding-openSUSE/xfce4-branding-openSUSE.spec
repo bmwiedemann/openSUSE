@@ -132,9 +132,9 @@ Requires:       gtk3-metatheme-adwaita
 Requires:       gtk3-metatheme-greybird-geeko
 Requires:       hack-fonts
 Requires:       metatheme-greybird-geeko-common
-Requires:       noto-coloremoji-fonts
 Requires:       noto-sans-fonts
 Requires:       openSUSE-xfce-icon-theme
+Recommends:     noto-coloremoji-fonts
 Recommends:     noto-sans-cjk-fonts
 Conflicts:      otherproviders(xfce4-settings-branding)
 Provides:       xfce4-settings-branding = %{xfce4_settings_version}
