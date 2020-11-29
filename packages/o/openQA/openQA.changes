@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Nov 28 08:03:49 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1606497673.f3348bd43:
+  * docs: Mention Dockerfile based container prominently
+  * docker: Fix worker Dockerfile scripts permissions
+  * cache service: Use DELETE journaling mode by default
+  * client: Fix warning "Wide character in print"
+  * Remove obsolete websockets module property "worker_status"
+  * Mark exceptional websocket error handling as explicitly untested for coverage
+  * Prevent line break in OpenQA::WebSockets with simple variable reuse
+  * Delete likely not needed periodic worker status table reset
+  * Fix UI build bar alignment broken on index page
+  * t: Fix flaky/incomplete coverage in 05-scheduler-full with uncoverable statements
+  * worker cache: Simplify error handling for uncovered, exceptional cases
+
+-------------------------------------------------------------------
 Thu Nov 26 00:43:00 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1606233578.6a2b83747:
