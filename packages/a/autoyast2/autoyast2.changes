@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 26 08:57:27 UTC 2020 - Stefan Schubert <schubi@suse.de>
+
+- Rules download: The result will be stored in the target file when
+  the download has failed. This file has to be removed (bsc#1178804)
+- 4.3.63
+
+-------------------------------------------------------------------
 Wed Oct 21 06:09:04 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - AutoYaST warnings timeout applies to the XML validation error
