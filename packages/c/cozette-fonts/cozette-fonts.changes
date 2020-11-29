@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov 26 09:14:07 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 1.9.3.
+  * Added
+    * (U+21B0 UPWARDS ARROW WITH TIP LEFTWARDS)
+    * (U+21B1 UPWARDS ARROW WITH TIP RIGHTWARDS)
+    * (U+21B2 DOWNWARDS ARROW WITH TIP LEFTWARDS)
+    * (U+21B3 DOWNWARDS ARROW WITH TIP RIGHTWARDS)
+  * Fixed
+    * Changed U+220F N-ARY PRODUCT and U+2210 N-ARY COPRODUCT 
+      to make them taller
+    * Extended the descender of U+04CC CYRILLIC SMALL LETTER 
+      KHAKASSIAN CHE
+- Minor spec file clean up.
+      
+-------------------------------------------------------------------
 Mon Oct 19 15:35:41 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 1.9.2.

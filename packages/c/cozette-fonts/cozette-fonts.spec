@@ -15,11 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define ttf_fontdir %{_datadir}/fonts/truetype
+
 %define fontname    Cozette
-%define fontversion    1.9.2
+%define fontversion    1.9.3
 Name:           cozette-fonts
-Version:        1.9.2+git.1601275698.ea2ec2b
+Version:        1.9.3+git.1606064809.c45933d
 Release:        0
 Summary:        A bitmap programming font
 License:        MIT
