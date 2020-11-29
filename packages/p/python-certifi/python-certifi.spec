@@ -18,17 +18,21 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-certifi
-Version:        2020.6.20
+Version:        2020.11.8
 Release:        0
 Summary:        Python package for providing Mozilla's CA Bundle
 License:        MPL-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/certifi/python-certifi
 Source:         https://files.pythonhosted.org/packages/source/c/certifi/certifi-%{version}.tar.gz
-# PATCH-FIX-SUSE -- prefer SUSE certificates (only for use on SUSE platforms)
+# PATCH-FIX-SUSE -- prefer SUSE certificates
 Patch0:         python-certifi-shipped-requests-cabundle.patch
+# PATCH-FEATURE-UPSTREAM two-basic-unit-tests.patch gh#certifi/python-certifi#137 mcepl@suse.com
+# Add at least primitive test suite (by bnavigator)
+Patch1:         two-basic-unit-tests.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  ca-certificates
+BuildRequires:  ca-certificates-mozilla
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       ca-certificates
@@ -44,10 +48,7 @@ identity of TLS hosts. It has been extracted from the Requests project.
 Note that on SUSE packages the used CA bundle is actually the system bundle
 
 %prep
-%setup -q -n certifi-%{version}
-%if 0%{?suse_version}
-%patch0 -p1
-%endif
+%autosetup -p1 -n certifi-%{version}
 
 %build
 %python_build
@@ -57,9 +58,7 @@ Note that on SUSE packages the used CA bundle is actually the system bundle
 
 %{python_expand chmod +x %{buildroot}%{$python_sitelib}/certifi/core.py
  sed -i "s|#!%{_bindir}/env python|#!%__$python|" %{buildroot}/%{$python_sitelib}/certifi/core.py
- %if 0%{?suse_version}
  rm %{buildroot}%{$python_sitelib}/certifi/cacert.pem
- %endif
 }
 
 %python_expand $python -m compileall %{buildroot}%{$python_sitelib}/certifi/
@@ -68,8 +67,7 @@ Note that on SUSE packages the used CA bundle is actually the system bundle
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# There are no upstream unit tests https://github.com/certifi/python-certifi/issues/136
-# Please check that downstream packages like python-requests still build after an update of certifi
+%pyunittest -v certifi.tests.test_certifi
 
 %files %{python_files}
 %license LICENSE

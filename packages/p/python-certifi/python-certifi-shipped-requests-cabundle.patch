@@ -1,22 +1,30 @@
-diff -ur certifi-2020.6.20.o/certifi/core.py certifi-2020.6.20/certifi/core.py
---- certifi-2020.6.20.o/certifi/core.py	2020-06-07 11:35:28.000000000 +0200
-+++ certifi-2020.6.20/certifi/core.py	2020-08-16 19:38:17.167625302 +0200
-@@ -5,56 +5,18 @@
+---
+ certifi/core.py |   54 +++++++++---------------------------------------------
+ 1 file changed, 9 insertions(+), 45 deletions(-)
+
+--- a/certifi/core.py
++++ b/certifi/core.py
+@@ -1,60 +1,24 @@
+ # -*- coding: utf-8 -*-
++import io
+ 
+ """
+ certifi.py
  ~~~~~~~~~~
  
  This module returns the installation location of cacert.pem or its contents.
--"""
++
++Patched by openSUSE: return the system bundle
+ """
 -import os
  
 -try:
 -    from importlib.resources import path as get_path, read_text
-+Patched by openSUSE: return the system bundle
-+"""
  
 -    _CACERT_CTX = None
 -    _CACERT_PATH = None
 +def read_text(_module=None, _path=None, encoding="ascii"):
-+    with open(where(), "r", encoding=encoding) as data:
++    with io.open(where(), "r", encoding=encoding) as data:
 +        return data.read()
  
 -    def where():

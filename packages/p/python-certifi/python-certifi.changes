@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 26 09:21:35 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2020.11.8:
+  * Python 3.8+ support 
+
+-------------------------------------------------------------------
+Wed Nov 25 11:41:29 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add two-basic-unit-tests.patch which includes two at least simple test
+  patches (gh#certifi/python-certifi#137).
+
+-------------------------------------------------------------------
 Sun Aug 16 17:45:09 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update package description
