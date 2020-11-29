@@ -1,7 +1,29 @@
 -------------------------------------------------------------------
-Thu Nov 12 15:41:30 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+Tue Nov 24 10:55:02 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-databoxedge
+- Update version numbers for component packages in Requires
+  + python-azure-mgmt-attestation >= 0.2.0
+  + python-azure-mgmt-billing >= 1.0.0
+  + python-azure-mgmt-communication >= 1.0.0b4
+  + python-azure-mgmt-compute >= 18.0.0
+  + python-azure-mgmt-containerservice >= 10.1.0
+  + python-azure-mgmt-datafactory >= 0.14.0
+  + python-azure-mgmt-datamigration >= 4.1.0
+  + python-azure-mgmt-hdinsight >= 2.0.0
+  + python-azure-mgmt-healthcareapis >= 0.2.0
+  + python-azure-mgmt-kusto >= 0.10.0
+  + python-azure-mgmt-loganalytics >= 2.0.0
+  + python-azure-mgmt-media >= 3.0.0
+  + python-azure-mgmt-netapp >= 0.14.0
+  + python-azure-mgmt-policyinsights >= 0.6.0
+  + python-azure-mgmt-security >= 0.6.0
+
+-------------------------------------------------------------------
+Thu Nov 12 15:41:30 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update version numbers for component packages in Requires
   + python-azure-mgmt-cognitiveservices >= 6.3.0
   + python-azure-mgmt-core >= 1.2.2
   + python-azure-mgmt-keyvault >= 8.0.0

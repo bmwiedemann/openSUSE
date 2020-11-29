@@ -227,4 +227,29 @@
   + python-azure-mgmt-subscription &amp;gt;= 0.7.0 (forwarded request 848165 from glaubitz)</comment>
     <requestid>848199</requestid>
   </revision>
+  <revision rev="20" vrev="17">
+    <srcmd5>439c928143c3772f8d5bcd2546d1336b</srcmd5>
+    <version>4.0.0</version>
+    <time>1606649201</time>
+    <user>dimstar_suse</user>
+    <comment>- Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-databoxedge
+- Update version numbers for component packages in Requires
+  + python-azure-mgmt-attestation &gt;= 0.2.0
+  + python-azure-mgmt-billing &gt;= 1.0.0
+  + python-azure-mgmt-communication &gt;= 1.0.0b4
+  + python-azure-mgmt-compute &gt;= 18.0.0
+  + python-azure-mgmt-containerservice &gt;= 10.1.0
+  + python-azure-mgmt-datafactory &gt;= 0.14.0
+  + python-azure-mgmt-datamigration &gt;= 4.1.0
+  + python-azure-mgmt-hdinsight &gt;= 2.0.0
+  + python-azure-mgmt-healthcareapis &gt;= 0.2.0
+  + python-azure-mgmt-kusto &gt;= 0.10.0
+  + python-azure-mgmt-loganalytics &gt;= 2.0.0
+  + python-azure-mgmt-media &gt;= 3.0.0
+  + python-azure-mgmt-netapp &gt;= 0.14.0
+  + python-azure-mgmt-policyinsights &gt;= 0.6.0
+  + python-azure-mgmt-security &gt;= 0.6.0</comment>
+    <requestid>851004</requestid>
+  </revision>
 </revisionlist>
