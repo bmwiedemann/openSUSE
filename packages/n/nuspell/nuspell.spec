@@ -16,10 +16,10 @@
 #
 
 
-%define sonum   3
+%define sonum   4
 %define libname libnuspell
 Name:           nuspell
-Version:        3.1.2
+Version:        4.1.0
 Release:        0
 Summary:        A spell checker library and command-line tool
 License:        LGPL-3.0-or-later
@@ -103,16 +103,14 @@ popd
 
 %files -n %{name}
 %{_bindir}/nuspell
-%{_mandir}/man1/nuspell.1%{?ext_man}
 
 %files -n %{libname}%{sonum}
 %doc README.md CHANGELOG.md AUTHORS
 %license COPYING.LESSER COPYING
-%{_libdir}/%{libname}.so.%{sonum}.1.2
+%{_libdir}/%{libname}.so.%{sonum}.1.0
 %exclude %{_datadir}/doc/nuspell/README.md
 
 %files devel
-
 %{_includedir}/%{name}
 %{_libdir}/%{libname}.so
 %{_libdir}/%{libname}.so.%{sonum}

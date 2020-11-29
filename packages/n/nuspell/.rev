@@ -25,4 +25,53 @@ Drop redundant (autodetected) pkgconfig require.</comment>
 </comment>
     <requestid>820818</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e0a36135fb4076e51314853bba38f643</srcmd5>
+    <version>4.1.0</version>
+    <time>1606648747</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.1.0.
+  * Added: Add new API for finding dictionaries on the file-system. 
+    It is a set of free functions located in the file finder.hxx.
+  * Fixed: Improve searching for dictionaries on the file-system.
+    Fix finding them on
+    Fedora.
+  * Deprecated: Deprecate the old API for finding dictionaries, 
+    i.e. the class Finder in the file finder.hxx.
+- Updates since 3.1.2.
+  * Fix handling CRLF line endings in .dic. Fixes #89.
+  * Fix CMake scripts for unusual install prefixes.
+  * Improve hash-table insertion, avoid temporaries. This improves
+    loading times.
+  * Switch man-page generator from Ronn to Pandoc. This changes the
+    dependencies for building. See the README.
+  * Fix lifetime issue (segmentation fault) in ngram-based 
+    suggestions.
+  * Fix internal usage of std::codecvt in edge case in function 
+    to_wide() and to_narrow()
+  * Fix not propagating recursion depth in spell_break(), which 
+    caused hangup.
+  * Fix overwriting of PDB files when compiling with Visual Studio.
+    This prevented debugging nuspell.dll.
+  * Fix output of CLI tool to be more compatible to ispell and 
+    hunspell.
+  * Boost is no longer a dependency of the library at all. It is 
+    still a dependency of the CLI tool. 
+  * Use std::string_view in the public API instead of const 
+    std::string&amp;. Also use it internally at various places.
+  * Build as shared library by default. Building as static is still 
+    possible via the CMake's variable BUILD_SHARED_LIBS.
+  * The public API is annotated with dll-export/visibility 
+    attributes, and also some private functions are annotated needed 
+    for testing. This reduces the file size. 
+  * Use Unicode text segmentation by default in the CLI tool. 
+    Simple segmentation on white-space is still available via CLI 
+    option.
+  * Delete deprecated functions in the class Finder.
+  * Drop under-designed and undocumented feature in the CLI tool 
+    about personal dictionaries.
+ 
+</comment>
+    <requestid>850930</requestid>
+  </revision>
 </revisionlist>
