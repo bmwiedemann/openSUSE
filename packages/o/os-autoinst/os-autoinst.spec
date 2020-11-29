@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1606298538.191b5988
+Version:        4.6.1606482144.ab6cdfe2
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -108,6 +108,27 @@ Requires:       os-autoinst
 %description openvswitch
 This package contains openvswitch support for os-autoinst.
 
+%ifarch x86_64
+%package qemu-kvm
+Summary:        Convenience package providing os-autoinst+qemu-kvm
+Group:          Development/Tools/Other
+Requires:       os-autoinst
+Requires:       qemu-kvm
+Requires:       qemu-tools
+
+%description qemu-kvm
+
+%package qemu-x86
+Summary:        Convenience package providing os-autoinst+qemu-x86
+Group:          Development/Tools/Other
+Requires:       os-autoinst
+Requires:       qemu-tools
+Requires:       qemu-x86
+
+%description qemu-x86
+Convenience package providing os-autoinst and qemu-x86 dependencies.
+%endif
+
 %prep
 %setup -q
 sed -e 's,/bin/env python,/bin/python3,' -i crop.py
@@ -194,5 +215,9 @@ cd %{__builddir}
 %{_sbindir}/rcos-autoinst-openvswitch
 
 %files devel
+%ifarch x86_64
+%files qemu-kvm
+%files qemu-x86
+%endif
 
 %changelog

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Nov 28 07:59:24 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1606482144.ab6cdfe2:
+  * docker: Add qemu-kvm variant Dockerfile
+  * docker: Use new convenience image for Dockerfile.qemu-x86
+  * Use modern standard asciidoc section title syntax
+  * README: Add instructions how to use published isotovideo container
+  * Document mmapi::api_call and mmapi::api_call_2
+  * Restore compatibility of mmapi::api_call
+  * spec: Add qemu specific convenience sub-packages
+  * Avoid unhandled output in mmapi test
+  * Log error when mmapi::get_job_autoinst_url can not find corresponding worker info
+  * Test whether mmapi errors are logged
+  * docker: Add Dockerfile for isotovideo+qemu-x86
+  * README: Fix asciidoc warnings about section titles
+  * README: Describe command-line test parameters as easy alternative
+  * isotovideo: Extend synopsis to show command line test parameters
+
+-------------------------------------------------------------------
 Wed Nov 25 10:02:30 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1606298538.191b5988:
