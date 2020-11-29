@@ -58,4 +58,14 @@
   * Allow graphical applications from inside a user toolbox to run</comment>
     <requestid>831617</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>caf73ceb73a30f2b7ff4cb991342d8c3</srcmd5>
+    <version>1.0+git20201126.3d26283</version>
+    <time>1606648839</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git20201126.3d26283:
+  * Make it easier to use custom images (#10)
+  * Update toolbox doc (#9)</comment>
+    <requestid>851003</requestid>
+  </revision>
 </revisionlist>
