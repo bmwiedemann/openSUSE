@@ -1,8 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 20 14:04:07 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 18.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+
+-------------------------------------------------------------------
 Mon Oct  5 12:52:03 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
-  + Version 13.0.0
+  + Version 17.0.0
   + For detailed information about changes see the
     CHANGELOG.md file provided with this package
 - Update Requires from setup.py
