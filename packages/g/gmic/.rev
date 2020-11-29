@@ -99,4 +99,12 @@
     <comment>- Update to 2.9.3. No changelog.</comment>
     <requestid>850266</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>32269a3045768465f8dc04e94ccd7fda</srcmd5>
+    <version>2.9.4</version>
+    <time>1606649275</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851116</requestid>
+  </revision>
 </revisionlist>
