@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 17 18:49:00 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Add libical-read-v2-v3-data.patch: correctly read slim timezone
+    data (bsc#1178412).
+
+-------------------------------------------------------------------
 Sat Apr 11 19:46:49 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.0.8:
