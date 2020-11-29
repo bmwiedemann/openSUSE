@@ -38,4 +38,30 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>846494</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4bdaeebcafba5677fe43e0040783376e</srcmd5>
+    <version>0.13.0</version>
+    <time>1606649270</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.13.0:
+  * fix(oracle): handle ksplice advisories (#745)
+  * fix: version comparison (#740)
+  * updated Readme.md (#737)
+  * Add suse sles 15.2 to the EOL list as well (#734)
+  * Update README.md (#731)
+  * Warn when a user attempts to use trivy without a detectable lockfile (#729)
+  * Add back support for FreeBSD &amp; OpenBSD (#728)
+  * Add support for ppc64le architecture (#724)
+  * Skip packages from unsupported repository (remi) (#695)
+  * Skip downloading DB if a remote DB is not updated (#717)
+  * Sunsetting VendorVectors (#718)
+  * Add GitHub Container Registry to README (#712)
+  * update BUG_REPORT.md using H2 instead of bold formatting (#714)
+  * fix(ci/deb): do not remove old packages for EOL versions (#706)
+  * Add linter check support (#679)
+  * Optimize images (#696)
+  * Update triage.md (#701)
+- remove 0001-Add-suse-sles-15.2-to-the-EOL-list-as-well.patch (merged)</comment>
+    <requestid>851108</requestid>
+  </revision>
 </revisionlist>
