@@ -19,7 +19,7 @@
 %define api_ver 5
 %define lib_ver %{api_ver}-0
 Name:           tepl
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        Text Editor Product Line
 License:        LGPL-3.0-or-later
