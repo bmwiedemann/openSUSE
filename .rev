@@ -88,4 +88,17 @@
   * Set charset in order to generate MIME headers</comment>
     <requestid>850164</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7763afbf4439f68d2ba53f2222372266</srcmd5>
+    <version>0.5.3+0</version>
+    <time>1606649365</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.3+0:
+  * Increment version to 0.5.3 in prep for release
+  * Unbreak thanks-tracking
+  * Fix crash on incomplete series thanks tracking
+  * Improve ty with cherrypicked subsets
+  * Unquote msgid if we're getting a full https URL</comment>
+    <requestid>851292</requestid>
+  </revision>
 </revisionlist>
