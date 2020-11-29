@@ -25,7 +25,7 @@
 # of those fields
 #
 Name:           rubygem-rubocop
-Version:        1.3.1
+Version:        1.4.2
 Release:        0
 Summary:        Automatic Ruby code style checking tool
 License:        MIT
@@ -39,19 +39,12 @@ BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
 # FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         update-alternatives
-# MANUAL
-Patch0:         0001-Use-usr-bin-bash-instead-of-env-as-the-shebang.patch
-# /MANUAL
 
 %description
 RuboCop is a Ruby code style checking and code formatting tool.
 It aims to enforce the community-driven Ruby Style Guide.
 
 %prep
-%gem_unpack
-%patch0 -p1
-find -type f -print0 | xargs -0 touch -r %{SOURCE0}
-%{gem_build}
 
 %build
 
