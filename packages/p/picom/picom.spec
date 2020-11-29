@@ -17,13 +17,13 @@
 
 
 Name:           picom
-Version:        8
+Version:        8.2
 Release:        0
 Summary:        Stand-alone compositor for X11
 License:        MPL-2.0 AND MIT
 Group:          System/X11/Utilities
 URL:            https://github.com/yshui/picom
-Source0:        https://github.com/yshui/picom/archive/v8.tar.gz
+Source0:        https://github.com/yshui/picom/archive/v%{version}.tar.gz
 Source1:        picom.desktop
 BuildRequires:  asciidoc
 BuildRequires:  c_compiler

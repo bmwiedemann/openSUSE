@@ -1,0 +1,24 @@
+From 3164e25267243ef4983f53ef5c1f849d3301c36f Mon Sep 17 00:00:00 2001
+From: Hans-Peter Jansen <hp@urpla.net>
+Date: Mon, 9 Nov 2020 18:06:49 +0100
+Subject: [PATCH] remove include <sys/sysctl.h>
+
+---
+ MainWindow.cpp | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/MainWindow.cpp b/MainWindow.cpp
+index c32bf9e..c634613 100644
+--- a/MainWindow.cpp
++++ b/MainWindow.cpp
+@@ -37,7 +37,6 @@
+ 
+ #include <unistd.h>
+ #include <sys/types.h>
+-#include <sys/sysctl.h>
+ 
+ #ifdef USEUDISKS2
+ #include "udisks2_interface.h"
+-- 
+2.29.2
+

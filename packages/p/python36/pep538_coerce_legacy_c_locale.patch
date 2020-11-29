@@ -1,5 +1,3 @@
-diff --git a/Doc/using/cmdline.rst b/Doc/using/cmdline.rst
-index d14793a..65aa3ad 100644
 --- a/Doc/using/cmdline.rst
 +++ b/Doc/using/cmdline.rst
 @@ -728,6 +728,45 @@ conflict.
@@ -48,8 +46,6 @@ index d14793a..65aa3ad 100644
  Debug-mode variables
  ~~~~~~~~~~~~~~~~~~~~
  
-diff --git a/Lib/test/support/script_helper.py b/Lib/test/support/script_helper.py
-index 507dc48..c3cb720 100644
 --- a/Lib/test/support/script_helper.py
 +++ b/Lib/test/support/script_helper.py
 @@ -56,8 +56,35 @@ def interpreter_requires_environment():
@@ -90,7 +86,7 @@ index 507dc48..c3cb720 100644
  
  
  # Executing the interpreter in a subprocess
-@@ -115,30 +142,7 @@ def run_python_until_end(*args, **env_vars):
+@@ -115,30 +142,7 @@ def run_python_until_end(*args, **env_va
  def _assert_python(expected_success, *args, **env_vars):
      res, cmd_line = run_python_until_end(*args, **env_vars)
      if (res.rc and expected_success) or (not res.rc and not expected_success):
@@ -122,9 +118,6 @@ index 507dc48..c3cb720 100644
      return res
  
  def assert_python_ok(*args, **env_vars):
-diff --git a/Lib/test/test_c_locale_coercion.py b/Lib/test/test_c_locale_coercion.py
-new file mode 100644
-index 0000000..635c98f
 --- /dev/null
 +++ b/Lib/test/test_c_locale_coercion.py
 @@ -0,0 +1,371 @@
@@ -499,8 +492,6 @@ index 0000000..635c98f
 +
 +if __name__ == "__main__":
 +    test_main()
-diff --git a/Lib/test/test_cmd_line.py b/Lib/test/test_cmd_line.py
-index 38156b4..5922ed9 100644
 --- a/Lib/test/test_cmd_line.py
 +++ b/Lib/test/test_cmd_line.py
 @@ -153,6 +153,7 @@ class CmdLineTest(unittest.TestCase):
@@ -511,8 +502,6 @@ index 38156b4..5922ed9 100644
          code = (
              b'import locale; '
              b'print(ascii("' + undecodable + b'"), '
-diff --git a/Lib/test/test_sys.py b/Lib/test/test_sys.py
-index 7866a5c..b41239a 100644
 --- a/Lib/test/test_sys.py
 +++ b/Lib/test/test_sys.py
 @@ -680,6 +680,7 @@ class SysModuleTest(unittest.TestCase):
@@ -523,8 +512,6 @@ index 7866a5c..b41239a 100644
          code = '\n'.join((
              'import sys',
              'def dump(name):',
-diff --git a/Modules/main.c b/Modules/main.c
-index 585d696..96d8be4 100644
 --- a/Modules/main.c
 +++ b/Modules/main.c
 @@ -107,7 +107,11 @@ static const char usage_6[] =
@@ -540,8 +527,6 @@ index 585d696..96d8be4 100644
  
  static int
  usage(int exitcode, const wchar_t* program)
-diff --git a/Programs/_testembed.c b/Programs/_testembed.c
-index 813cf30..2a64092 100644
 --- a/Programs/_testembed.c
 +++ b/Programs/_testembed.c
 @@ -1,4 +1,5 @@
@@ -550,8 +535,6 @@ index 813cf30..2a64092 100644
  #include "pythread.h"
  #include <stdio.h>
  
-diff --git a/Programs/python.c b/Programs/python.c
-index a7afbc7..03f8295 100644
 --- a/Programs/python.c
 +++ b/Programs/python.c
 @@ -15,6 +15,21 @@ wmain(int argc, wchar_t **argv)
@@ -622,11 +605,9 @@ index a7afbc7..03f8295 100644
  
      for (i = 0; i < argc; i++) {
          PyMem_RawFree(argv_copy2[i]);
-diff --git a/Python/pylifecycle.c b/Python/pylifecycle.c
-index ecfdfee..4fee178 100644
 --- a/Python/pylifecycle.c
 +++ b/Python/pylifecycle.c
-@@ -167,6 +167,7 @@ Py_SetStandardStreamEncoding(const char *encoding, const char *errors)
+@@ -167,6 +167,7 @@ Py_SetStandardStreamEncoding(const char
      return 0;
  }
  
@@ -634,7 +615,7 @@ index ecfdfee..4fee178 100644
  /* Global initializations.  Can be undone by Py_FinalizeEx().  Don't
     call this twice without an intervening Py_FinalizeEx() call.  When
     initializations fail, a fatal error is issued and the function does
-@@ -301,6 +302,183 @@ import_init(PyInterpreterState *interp, PyObject *sysmod)
+@@ -301,6 +302,183 @@ import_init(PyInterpreterState *interp,
  }
  
  
@@ -818,7 +799,7 @@ index ecfdfee..4fee178 100644
  void
  _Py_InitializeEx_Private(int install_sigs, int install_importlib)
  {
-@@ -315,11 +493,19 @@ _Py_InitializeEx_Private(int install_sigs, int install_importlib)
+@@ -315,11 +493,19 @@ _Py_InitializeEx_Private(int install_sig
      initialized = 1;
      _Py_Finalizing = NULL;
  
@@ -839,7 +820,7 @@ index ecfdfee..4fee178 100644
  #endif
  
      if ((p = Py_GETENV("PYTHONDEBUG")) && *p != '\0')
-@@ -1247,12 +1433,8 @@ initstdio(void)
+@@ -1250,12 +1436,8 @@ initstdio(void)
              }
          }
          if (!errors && !(pythonioencoding && *pythonioencoding)) {
@@ -854,11 +835,9 @@ index ecfdfee..4fee178 100644
          }
      }
  
-diff --git a/configure.ac b/configure.ac
-index 3f2459a..7444486 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -3360,6 +3360,40 @@ then
+@@ -3417,6 +3417,40 @@ then
  fi
  AC_MSG_RESULT($with_pymalloc)
  

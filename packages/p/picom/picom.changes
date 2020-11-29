@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 26 12:34:36 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 8.2:
+  * Fixes assertion failures related to WIN_FLAGS_SHADOW_STALE, see #479
+  * write-pid-path in configuration file now accepted, see #492
+  * Pid files are now deleted during shutdown, see #492
+  * Build fixes for certain platforms, see #501, #502
+
+-------------------------------------------------------------------
 Sun Jun 14 18:03:52 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Since it requires dbus, use dbus by default. 

@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Nov 27 15:59:09 UTC 2020 - Markéta Machová <mmachova@suse.com>
+
+- Pin Sphinx version to fix doc subpackage
+
+-------------------------------------------------------------------
+Wed Nov 25 17:16:15 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Change setuptools and pip version numbers according to new wheels
+- Add ignore_pip_deprec_warn.patch to switch of persistently
+  failing test.
+
+-------------------------------------------------------------------
+Tue Nov 24 17:38:21 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Replace bundled wheels for pip and setuptools with the updated ones
+  (bsc#1176262 CVE-2019-20916).
+
+-------------------------------------------------------------------
+Tue Oct 13 09:23:03 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Handful of changes to make python36 compatible with SLE15 and SLE12
+  (jsc#ECO-2799, jsc#SLE-13738)
+- Rebase bpo23395-PyErr_SetInterrupt-signal.patch
+
+-------------------------------------------------------------------
+Fri Oct  9 16:05:50 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.16: error: bare words are no longer
+  supported, please use "...":  x86 == ppc.
+
+-------------------------------------------------------------------
+Fri Oct  9 08:06:30 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Fix installing .desktop file
+
+-------------------------------------------------------------------
+Fri Sep 25 06:58:03 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Buildrequire timezone only for general flavor. It's used in this
+  flavor for the test suite.
+
+-------------------------------------------------------------------
+Wed Sep  2 20:31:39 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add faulthandler_stack_overflow_on_GCC10.patch to make build
+  working even with GCC10 (bpo#38965).
+
+-------------------------------------------------------------------
+Tue Sep  1 10:22:30 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Just cleanup and reordering items to synchronize with python38
+
+-------------------------------------------------------------------
+Mon Aug 31 11:12:31 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Format with spec-cleaner
+
+-------------------------------------------------------------------
 Fri Aug 21 15:14:15 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - riscv64-support.patch: bpo-33377: add triplets for mips-r6 and riscv
@@ -48,6 +106,7 @@ Wed Aug 19 12:46:41 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
   * CVE-2020-14422-ipaddress-hash-collision.patch
   * CVE-2019-20907_tarfile-inf-loop.patch
   * recursion.tar
+- This release also fixes CVE-2020-26116 (bsc#1177211) and CVE-2019-20907 (bsc#1174091).
 
 -------------------------------------------------------------------
 Mon Jul 20 12:06:41 UTC 2020 - Matej Cepl <mcepl@suse.com>
@@ -81,7 +140,7 @@ Fri Jul 17 09:03:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 Fri Jul 17 08:53:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.6.11:
-  * Include more security fixes
+  * Include more security fixes (CVE-2019-18348, bsc#1155094)
 - Remove merged patch CVE-2020-8492-urllib-ReDoS.patch
 
 -------------------------------------------------------------------

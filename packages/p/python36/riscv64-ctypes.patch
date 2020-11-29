@@ -13,18 +13,13 @@ https://bugs.python.org/issue35847
  2 files changed, 2 insertions(+), 1 deletion(-)
  create mode 100644 Misc/NEWS.d/next/Library/2019-01-29-09-11-09.bpo-35847.eiSi4t.rst
 
-diff --git a/Misc/NEWS.d/next/Library/2019-01-29-09-11-09.bpo-35847.eiSi4t.rst b/Misc/NEWS.d/next/Library/2019-01-29-09-11-09.bpo-35847.eiSi4t.rst
-new file mode 100644
-index 0000000000..e3775f96f3
 --- /dev/null
 +++ b/Misc/NEWS.d/next/Library/2019-01-29-09-11-09.bpo-35847.eiSi4t.rst
 @@ -0,0 +1 @@
 +RISC-V needed the CTYPES_PASS_BY_REF_HACK.  Fixes ctypes Structure test_pass_by_value.
-diff --git a/Modules/_ctypes/callproc.c b/Modules/_ctypes/callproc.c
-index a7965c19b7..bed5364020 100644
 --- a/Modules/_ctypes/callproc.c
 +++ b/Modules/_ctypes/callproc.c
-@@ -1058,7 +1058,7 @@ GetComError(HRESULT errcode, GUID *riid, IUnknown *pIunk)
+@@ -1063,7 +1063,7 @@ GetComError(HRESULT errcode, GUID *riid,
  #endif
  
  #if (defined(__x86_64__) && (defined(__MINGW64__) || defined(__CYGWIN__))) || \
@@ -33,6 +28,3 @@ index a7965c19b7..bed5364020 100644
  #define CTYPES_PASS_BY_REF_HACK
  #define POW2(x) (((x & ~(x - 1)) == x) ? x : 0)
  #define IS_PASS_BY_REF(x) (x > 8 || !POW2(x))
--- 
-2.28.0
-

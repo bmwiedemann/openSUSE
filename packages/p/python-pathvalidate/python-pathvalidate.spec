@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pathvalidate
-Version:        2.2.2
+Version:        2.3.0
 Release:        0
 Summary:        Python library to sanitize/validate a string such as filenames
 License:        MIT

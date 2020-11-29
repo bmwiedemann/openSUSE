@@ -66,13 +66,13 @@
 %define         so_minor 0
 %define         so_version %{python_version_soname}%{abi_kind}%{so_major}_%{so_minor}
 # rpm and python have different ideas about what is an arch-dependent name, so:
-%if %{__isa_name} == ppc
+%if "%{__isa_name}" == "ppc"
 %define archname %(echo %{_arch} | sed s/ppc/powerpc/)
 %else
 %define archname %{_arch}
 %endif
 # our arm has Hardware-Floatingpoint
-%if %{_arch} == arm
+%if "%{_arch}" == "arm"
 %define armsuffix hf
 %endif
 # pyexpat.cpython-35m-x86_64-linux-gnu
@@ -101,14 +101,18 @@ Source8:        import_failed.py
 Source9:        import_failed.map
 Source10:       pre_checkin.sh
 Source11:       skipped_tests.py
-Source19:       idle3.desktop
-Source20:       idle3.appdata.xml
-Source99:       https://www.python.org/static/files/pubkeys.txt#/python.keyring
+Source12:       idle3.desktop
+Source13:       idle3.appdata.xml
+
+# Fixed bundled wheels
+Source20:       setuptools-44.1.1-py2.py3-none-any.whl
+Source21:       pip-20.2.3-py2.py3-none-any.whl
+
 # The following files are not used in the build.
 # They are listed here to work around missing functionality in rpmbuild,
 # which would otherwise exclude them from distributed src.rpm files.
+Source99:       https://www.python.org/static/files/pubkeys.txt#/python.keyring
 Source100:      PACKAGING-NOTES
-### COMMON-PATCH-BEGIN ###
 # implement "--record-rpm" option for distutils installations
 Patch01:        Python-3.0b1-record-rpm.patch
 # support lib-vs-lib64 distinction
@@ -159,7 +163,13 @@ Patch35:        CVE-2019-9674-zip-bomb.patch
 Patch36:        riscv64-support.patch
 # PATCH-FIX-UPSTREAM riscv64-ctypes.patch bpo-35847: RISC-V needs CTYPES_PASS_BY_REF_HACK (GH-11694)
 Patch37:        riscv64-ctypes.patch
-### COMMON-PATCH-END ###
+# PATCH-FIX-UPSTREAM faulthandler._stack_overflow_on_GCC10.patch bpo#38965 mcepl@suse.com
+# Fix faulthandler._stack_overflow() on GCC 10
+Patch38:        faulthandler_stack_overflow_on_GCC10.patch
+# PATCH-FIX-UPSTREAM ignore_pip_deprec_warn.patch mcepl@suse.com
+# Ignore deprecation warning for old version of pip
+Patch39:        ignore_pip_deprec_warn.patch
+
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
@@ -167,7 +177,6 @@ BuildRequires:  lzma-devel
 BuildRequires:  netcfg
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
-BuildRequires:  timezone
 BuildRequires:  xz
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(expat)
@@ -181,9 +190,7 @@ BuildRequires:  pkgconfig(libtirpc)
 %if %{with doc}
 # Here we just run sphinx and we can use generic one, we don't need
 # the flavor variant
-BuildRequires:  python3-Sphinx < 3.0
-BuildRequires:  python3-python-docs-theme
-BuildRequires:  python3-sphinxcontrib-qthelp >= 1.0.2
+BuildRequires:  python3-Sphinx < 3
 %endif
 %if %{with general}
 # required for idle3 (.desktop and .appdata.xml files)
@@ -193,6 +200,7 @@ BuildRequires:  gdbm-devel
 BuildRequires:  gettext
 BuildRequires:  readline-devel
 BuildRequires:  sqlite-devel
+BuildRequires:  timezone
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(tk)
@@ -204,6 +212,7 @@ Recommends:     %{python_pkg_name}-pip
 Provides:       python = %{python_version}
 %if %{primary_interpreter}
 Provides:       python3 = %{python_version}
+Obsoletes:      python3 <= %{python_version}
 %endif
 %endif
 
@@ -226,6 +235,7 @@ Summary:        TkInter, a Python Tk Interface
 Requires:       %{python_pkg_name} = %{version}
 %if %{primary_interpreter}
 Provides:       python3-tk = %{version}
+Obsoletes:      python3-tk < %{version}
 %endif
 
 %description -n %{python_pkg_name}-tk
@@ -235,7 +245,8 @@ Python interface to Tk. Tk is the GUI toolkit that comes with Tcl.
 Summary:        Python Interface to the (N)Curses Library
 Requires:       %{python_pkg_name} = %{version}
 %if %{primary_interpreter}
-Provides:       python3-curses
+Provides:       python3-curses = %{version}
+Obsoletes:      python3-curses < %{version}
 %endif
 
 %description -n %{python_pkg_name}-curses
@@ -246,7 +257,8 @@ Console User Interface.
 Summary:        Python Interface to the GDBM Library
 Requires:       %{python_pkg_name} = %{version}
 %if %{primary_interpreter}
-Provides:       python3-dbm
+Provides:       python3-dbm = %{version}
+Obsoletes:      python3-dbm < %{version}
 %endif
 
 %description -n %{python_pkg_name}-dbm
@@ -259,6 +271,7 @@ Requires:       %{python_pkg_name} = %{version}
 Requires:       %{python_pkg_name}-tk
 %if %{primary_interpreter}
 Provides:       python3-idle = %{version}
+Obsoletes:      python3-idle < %{version}
 %endif
 
 %description -n %{python_pkg_name}-idle
@@ -272,6 +285,7 @@ Summary:        Package Documentation for Python 3
 Enhances:       %{python_pkg_name} = %{python_version}
 %if %{primary_interpreter}
 Provides:       python3-doc = %{version}
+Obsoletes:      python3-doc < %{version}
 %endif
 
 %description -n %{python_pkg_name}-doc
@@ -282,7 +296,8 @@ Python, and Macintosh Module Reference in HTML format.
 %package -n %{python_pkg_name}-doc-devhelp
 Summary:        Additional Package Documentation for Python 3 in devhelp format
 %if %{primary_interpreter}
-Provides:       python3-doc-devhelp = %{version} 
+Provides:       python3-doc-devhelp = %{version}
+Obsoletes:      python3-doc-devhelp < %{version}
 %endif
 
 %description -n %{python_pkg_name}-doc-devhelp
@@ -306,22 +321,15 @@ Provides:       %{python_pkg_name}-asyncio = %{version}
 Provides:       %{python_pkg_name}-typing = %{version}
 # python3-xml was merged into python3, now moved into -base
 Provides:       %{python_pkg_name}-xml = %{version}
-# python-importlib-metadata was specifical project which was merged into 3.8
-Provides:       %{python_pkg_name}-importlib-metadata = %{version}
-# python-importlib_resources is a backport of 3.7 behaviour into older pythons
-Provides:       %{python_pkg_name}-importlib_resources = %{version}
 %if %{primary_interpreter}
 Provides:       python3-asyncio = %{version}
 Provides:       python3-base = %{version}
 Obsoletes:      python3-asyncio < %{version}
+Obsoletes:      python3-base < %{version}
 Provides:       python3-typing = %{version}
 Obsoletes:      python3-typing < %{version}
 Provides:       python3-xml = %{version}
 Obsoletes:      python3-xml < %{version}
-Provides:       python3-importlib-metadata = %{version}
-Obsoletes:      python3-importlib-metadata < %{version}
-Provides:       python3-importlib_resources = %{version}
-Obsoletes:      python3-importlib_resources < %{version}
 %endif
 
 %description -n %{python_pkg_name}-base
@@ -346,6 +354,7 @@ Provides:       python3-demo = %{version}
 Provides:       python3-tools = %{version}
 Obsoletes:      python3-2to3 < %{version}
 Obsoletes:      python3-demo < %{version}
+Obsoletes:      python3-tools < %{version}
 %endif
 
 %description -n %{python_pkg_name}-tools
@@ -357,6 +366,7 @@ Summary:        Include Files and Libraries Mandatory for Building Python Module
 Requires:       %{python_pkg_name}-base = %{version}
 %if %{primary_interpreter}
 Provides:       python3-devel = %{version}
+Obsoletes:      python3-devel < %{version}
 %endif
 
 %description -n %{python_pkg_name}-devel
@@ -376,6 +386,7 @@ Requires:       %{python_pkg_name} = %{version}
 Requires:       %{python_pkg_name}-tk = %{version}
 %if %{primary_interpreter}
 Provides:       python3-testsuite = %{version}
+Obsoletes:      python3-testsuite < %{version}
 %endif
 
 %description -n %{python_pkg_name}-testsuite
@@ -421,6 +432,8 @@ other applications.
 %patch35 -p1
 %patch36 -p1
 %patch37 -p1
+%patch38 -p1
+%patch39 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
@@ -441,6 +454,15 @@ rm -r Modules/expat
 # drop duplicate README from site-packages
 rm Lib/site-packages/README.txt
 
+# Replace bundled wheels with the updates ones
+rm -v Lib/ensurepip/_bundled/*.whl
+cp -v %{SOURCE20} %{SOURCE21} Lib/ensurepip/_bundled/
+STVER=$(basename %{SOURCE20}|cut -d- -f2)
+PIPVER=$(basename %{SOURCE21}|cut -d- -f2)
+sed -E -i -e "s/^(\s*_SETUPTOOLS_VERSION\s+=\s+)\"[0-9.]+\"/\1\"${STVER}\"/" \
+          -e "s/^(\s*_PIP_VERSION\s+=\s+)\"[0-9.]+\"/\1\"${PIPVER}\"/" \
+    Lib/ensurepip/__init__.py
+
 %build
 %if %{with doc}
 TODAY_DATE=`date -r %{SOURCE0} "+%%B %%d, %%Y"`
@@ -448,7 +470,7 @@ TODAY_DATE=`date -r %{SOURCE0} "+%%B %%d, %%Y"`
 
 cd Doc
 sed -i "s/^today = .*/today = '$TODAY_DATE'/" conf.py
-%make_build -j1 html
+make %{?_smp_mflags} -j1 html
 
 # Build also devhelp files
 sphinx-build -a -b devhelp . build/devhelp
@@ -456,7 +478,11 @@ rm -rfv build/devhelp/.doctrees
 %else
 %define _lto_cflags %{nil}
 # use rpm_opt_flags
+%if 0%{?suse_version} < 1500
+export OPT="%{optflags} -DOPENSSL_LOAD_CONF -fwrapv $(pkg-config --cflags-only-I libffi)"
+%else
 export OPT="%{optflags} -DOPENSSL_LOAD_CONF -fwrapv $(pkg-config --cflags-only-I libffi) -fno-semantic-interposition"
+%endif
 
 touch -r %{SOURCE0} Makefile.pre.in
 
@@ -480,14 +506,14 @@ sed -e 's/-fprofile-correction//' -i Makefile.pre.in
     --enable-loadable-sqlite-extensions
 
 # prevent make from trying to rebuild PYTHON_FOR_GEN stuff
-%make_build -t Python/Python-ast.c \
+make -t Python/Python-ast.c \
         Include/Python-ast.h \
         Objects/typeslots.inc \
         Python/opcode_targets.h \
         Include/opcode.h
 
 %if %{with general}
-%make_build
+make %{?_smp_mflags}
 %endif
 %if %{with base}
 %if %{with profileopt}
@@ -496,7 +522,7 @@ sed -e 's/-fprofile-correction//' -i Makefile.pre.in
     target=all
 %endif
 LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH \
-    %make_build $target
+    make %{?_smp_mflags} $target
 %endif
 %endif
 
@@ -512,10 +538,12 @@ EXCLUDE="$EXCLUDE test_pydoc"
 # test_multiprocessing_forkserver is racy
 EXCLUDE="$EXCLUDE test_multiprocessing_forkserver"
 %endif
+%ifarch ppc ppc64 ppc64le
 # exclue test_faulthandler due to bnc#831629
 EXCLUDE="$EXCLUDE test_faulthandler"
+%endif
 # some tests break in QEMU
-%if 0%{?qemu_user_space_build} > 0
+%if 0%{?qemu_user_space_build}
 EXCLUDE="$EXCLUDE test_multiprocessing_forkserver test_multiprocessing_spawn test_posix test_os test_socket"
 # qemu bug (siginterrupt handling)
 EXCLUDE="$EXCLUDE test_signal"
@@ -538,7 +566,7 @@ export PYTHONPATH="$(pwd -P)/Lib"
 # Use timeout, like make target buildbottest
 # We cannot run tests parallel, because osc build environment doesn’t
 # have /dev/shm
-%make_build -j1 test TESTOPTS="-u curses -v -x $EXCLUDE --timeout=1200"
+make %{?_smp_mflags} -j1 test TESTOPTS="-u curses -v -x $EXCLUDE --timeout=3000"
 # use network, be verbose:
 #make test TESTOPTS="-l -u network -v"
 %endif
@@ -589,14 +617,15 @@ do
 done
 
 for library in \
-    array _asyncio audioop binascii _bisect _bz2 cmath _codecs_* _crypt _csv \
-    _ctypes _datetime _decimal fcntl grp _hashlib _heapq _json _lsprof \
-    _lzma math mmap _multibytecodec _multiprocessing _opcode ossaudiodev \
-    parser _pickle _posixsubprocess _random resource select _ssl _socket spwd \
-    _struct syslog termios _testbuffer _testimportmultiple _testmultiphase \
-    unicodedata zlib _ctypes_test _testcapi xxlimited \
-    _elementtree pyexpat \
-    _md5 _sha1 _sha256 _sha512 _blake2 _sha3
+    array _asyncio audioop binascii _bisect _bz2 cmath _codecs_* \
+    _crypt _csv _ctypes _datetime _decimal fcntl grp \
+    _hashlib _heapq _json _lsprof _lzma math mmap _multibytecodec \
+    _multiprocessing _opcode ossaudiodev parser _pickle \
+    _posixsubprocess _random resource select _ssl _socket spwd \
+    _struct syslog termios _testbuffer _testimportmultiple \
+    _testmultiphase unicodedata zlib _ctypes_test _testcapi xxlimited \
+    _elementtree pyexpat _md5 _sha1 \
+    _sha256 _sha512 _blake2 _sha3
 do
     eval rm "%{buildroot}%{sitedir}/lib-dynload/$library.*"
 done
@@ -622,13 +651,15 @@ for size in 16 32 48 ; do
 done
 
 # install idle desktop file
-cp %{SOURCE19} idle%{python_version}.desktop
+cp %{SOURCE12} idle%{python_version}.desktop
 sed -i -e 's:idle3:idle%{python_version}:g' idle%{python_version}.desktop
+mkdir -p %{buildroot}%{_datadir}/applications
 install -m 644 -D -t %{buildroot}%{_datadir}/applications idle%{python_version}.desktop
 %suse_update_desktop_file idle%{python_version}
 
-cp %{SOURCE20} idle%{python_version}.appdata.xml
+cp %{SOURCE13} idle%{python_version}.appdata.xml
 sed -i -e 's:idle3.desktop:idle%{python_version}.desktop:g' idle%{python_version}.appdata.xml
+mkdir -p %{buildroot}%{_datadir}/metainfo
 install -m 644 -D -t %{buildroot}%{_datadir}/metainfo idle%{python_version}.appdata.xml
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/idle%{python_version}.appdata.xml
 
@@ -773,6 +804,7 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %doc Lib/idlelib/ChangeLog
 %{_bindir}/idle%{python_version}
 %{_datadir}/applications/idle%{python_version}.desktop
+%dir %{_datadir}/metainfo
 %{_datadir}/metainfo/idle%{python_version}.appdata.xml
 %{_datadir}/icons/hicolor/*/apps/idle%{python_version}.png
 %dir %{_datadir}/icons/hicolor

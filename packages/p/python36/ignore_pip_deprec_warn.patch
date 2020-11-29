@@ -1,0 +1,10 @@
+--- a/Lib/test/test_venv.py
++++ b/Lib/test/test_venv.py
+@@ -438,6 +438,7 @@ class EnsurePipTest(BaseTest):
+                                     ' module unconditionally')
+     # Issue #26610: pip/pep425tags.py requires ctypes
+     @unittest.skipUnless(ctypes, 'pip requires ctypes')
++    @unittest.skip("Doesn't work with modified wheels")
+     @requires_zlib
+     def test_with_pip(self):
+         self.do_test_with_pip(False)

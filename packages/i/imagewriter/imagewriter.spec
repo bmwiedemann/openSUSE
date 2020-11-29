@@ -69,6 +69,7 @@ License:        GPL-2.0-only
 Group:          Hardware/Other
 URL:            https://github.com/openSUSE/imagewriter
 Source0:        imagewriter-%{version}.tar.xz
+Patch0:         0001-remove-include-sys-sysctl.h.patch
 BuildRequires:  %{backend}
 BuildRequires:  %{breq}
 BuildRequires:  gcc-c++
@@ -80,8 +81,7 @@ Requires:       xdg-utils
 A graphical utility for writing raw disk images & hybrid ISOs to USB keys.
 
 %prep
-%setup -q
-
+%autosetup -p1
 
 %build
 # Create qmake cache file for building and use optflags.
