@@ -194,4 +194,12 @@
   + Updated translations. (forwarded request 840124 from iznogood)</comment>
     <requestid>840250</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>2555231ce5e3897599fbe1d3b740a6e5</srcmd5>
+    <version>3.0.1</version>
+    <time>1606649013</time>
+    <user>dimstar_suse</user>
+    <comment>- require the newly split out tracker-data-files (forwarded request 850959 from dimstar)</comment>
+    <requestid>851057</requestid>
+  </revision>
 </revisionlist>

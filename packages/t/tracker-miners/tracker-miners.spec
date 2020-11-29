@@ -63,11 +63,13 @@ BuildRequires:  pkgconfig(poppler-glib) >= 0.16.0
 BuildRequires:  pkgconfig(totem-plparser)
 BuildRequires:  pkgconfig(tracker-sparql-3.0)
 BuildRequires:  pkgconfig(upower-glib) >= 0.9.0
+BuildRequires:  tracker-data-files
 # The schema files moved from libtracker-common to tracker-miners
 Conflicts:      libtracker-common-1_0 < 1.99
 # Make sure tracker is being updated to 1.99 too
 Conflicts:      tracker < 1.99
 Obsoletes:      tracker-miner-rss <= 2.2.2
+%requires_ge    tracker-data-files
 
 %description
 Tracker is a desktop-neutral object database, tag/metadata database,
