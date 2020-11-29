@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Nov 29 10:47:09 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Disable Update_Check to fix coredump.
+
+-------------------------------------------------------------------
+Sat Nov 28 09:49:32 UTC 2020 - Andrey Karepin <egdfree@opensuse.org>
+
+- Update to 1.17.3
+  * Features
+    - osx: Add support for macOS 10.16, remove support for macOS 10.13 (238b2478)
+    - windows:
+        - Build our own gdb (3092107a)
+        - Make sure no dlls are missing (3e6bc9b1)
+        - Link all Windows deps dynamically (5219ebc1)
+  * Bug Fixes
+    - build: cache debug deps during 2nd stage (2712bc68)
+    - osx:
+        - Allow rebuild using build script (b5538c3f)
+        - Fix missing variables in macOS build script (f741ac99)
+        - Update deprecated QDateTime and QProcess APIs (08abedb6)
+        - don't tap kde-mac/kde since it us deprecated and unused (b42ac760)
+    - tools:
+        - Add Windows to toxcore version update script (3ff53e8f)
+        - Use correct hash when automatically updating flatpak version (9fb96b08)
+        - use a subdirectory for release source archives (533f25e2)
+    - travis: Install virtualenv for nightly build upload script (bd5bdf18)
+    - windows: iconengines not being installed (399c0231)
+
+-------------------------------------------------------------------
 Sun May 10 08:54:08 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.17.2 

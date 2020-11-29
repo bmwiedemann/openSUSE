@@ -19,7 +19,7 @@
 %define realname qTox
 
 Name:           qtox
-Version:        1.17.2
+Version:        1.17.3
 Release:        0
 Summary:        Tox client
 License:        GPL-3.0-only
@@ -28,17 +28,19 @@ URL:            https://qtox.github.io/
 Source0:        https://github.com/qTox/qTox/releases/download/v%{version}/v%{version}.tar.gz
 Source1:        https://github.com/qTox/qTox/releases/download/v%{version}/v%{version}.tar.gz.asc
 Source2:        qtox.keyring
-BuildRequires:  cmake
+BuildRequires:  cmake >= 2.8.11
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(KF5Sonnet) >= 5.45
+BuildRequires:  cmake(LibsnoreQt5) >= 0.7.0
 
 # needed?
 ####BuildRequires:  gcc-c++
 ####BuildRequires:  opencv-devel >= 2.4.9
 ###BuildRequires:  opencv-qt5-devel
 ###BuildRequires:  pkgconfig(Qt5Sql5-sqlite)
-BuildRequires:  libqt5-qtbase-common-devel >= 5.2.0
+BuildRequires:  libqt5-qtbase-common-devel >= 5.5.0
 BuildRequires:  pkgconfig(sqlite3)
 # needed?
 
@@ -56,9 +58,9 @@ BuildRequires:  ffmpeg-devel
 BuildRequires:  glib2-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist-devel
-BuildRequires:  libqt5-qtbase-devel >= 5.2.0
+BuildRequires:  libqt5-qtbase-devel >= 5.5.0
 BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core) >= 5.2.0
+BuildRequires:  pkgconfig(Qt5Core) >= 5.5.0
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5Network)
@@ -76,8 +78,8 @@ BuildRequires:  pkgconfig(libqrencode) >= 3.0.3
 BuildRequires:  pkgconfig(libsodium)
 BuildRequires:  pkgconfig(openal) >= 1.16.0
 BuildRequires:  pkgconfig(opus)
-BuildRequires:  pkgconfig(sqlcipher)
-BuildRequires:  pkgconfig(toxcore)
+BuildRequires:  pkgconfig(sqlcipher) >= 3.2.0
+BuildRequires:  pkgconfig(toxcore) >= 0.2.10
 BuildRequires:  pkgconfig(vpx)
 BuildRequires:  pkgconfig(xscrnsaver) >= 1.2
 
@@ -88,7 +90,7 @@ Powerful Tox client that tries to follow the Tox UI mockup while running on all
 major systems.
 
 %prep
-%setup -q -c -n qTox-%{version}
+%setup -q -n qTox
 # rpmlint: datetime
 sed -i -e 's|__TIME__ + " " + __DATE__|"%(date +"%%H:%%M") %(date +"%%Y-%%m-%%d")"|g' src/main.cpp
 sed -i -e 's|__TIME__ << __DATE__|"%(date +"%%H:%%M") %(date +"%%Y-%%m-%%d")"|g' src/main.cpp
@@ -97,7 +99,7 @@ sed -i -e 's|__TIME__ << __DATE__|"%(date +"%%H:%%M") %(date +"%%Y-%%m-%%d")"|g'
 CFLAGS="%{optflags} -Wno-error=parentheses"
 mkdir build
 pushd build
-cmake -DCMAKE_C_FLAGS="$CFLAGS" -DCMAKE_INSTALL_PREFIX=%{_prefix} ..
+cmake -DCMAKE_C_FLAGS="$CFLAGS" -DCMAKE_INSTALL_PREFIX=%{_prefix} -DUPDATE_CHECK=False  ..
 make %{?_smp_mflags} PREFIX=%{_prefix}
 popd
 
