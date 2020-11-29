@@ -37,9 +37,11 @@ Requires:       python3-jsonschema >= 3.2.0
 Requires:       python3-jsonschema < 3
 Requires:       python3-jsonschema >= 2.4.0
 %endif
+Requires:       python3-distro >= 1.3.0
 Requires:       python3-psutil >= 2.2.1
 Requires:       python3-qt5
 Requires:       python3-sentry-sdk >= 0.14.4
+Recommends:     gns3-server
 
 BuildArch:      noarch
 # SECTION test requirements

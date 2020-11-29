@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 22 13:27:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Add missing runtime requirement: python3-distro
+- Recommend gns3-server since in most setups gns3-gui and
+  gns3-server will run on the same machine.
+
+-------------------------------------------------------------------
 Sun Nov 15 09:53:18 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Drop unused py3_ver macro
