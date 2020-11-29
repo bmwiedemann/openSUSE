@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Nov 24 15:53:15 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v0.45
+  * Add Python 3.9 support.
+  * Drop Python 3.5 support.
+  * Switch from pep517 to python-build
+  * Add ``--no-build-isolation`` option so check-manifest can
+    succeed building pep517-based distributions without an
+    internet connection.
+    With --no-build-isolation, you must preinstall the
+    ``build-system.requires`` beforehand.
+- from v0.44
+  * Try to avoid passing ``--recurse-submodules`` to ``git ls``
+    if the project doesn't use git submodules (i.e. doesn't
+    have a ``.gitsubmodules`` file)
+    This should make check-manifest work again with older git
+    versions, as long as you don't use submodules
+- from v0.43
+  * Fix collecting files versioned by ``git`` when a project
+    has submodules and ``GIT_INDEX_FILE`` is set. This bug was
+    triggered when ``check-manifest`` was run from a git hook
+
+-------------------------------------------------------------------
 Thu Aug 20 10:23:37 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v0.42
