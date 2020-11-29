@@ -285,7 +285,7 @@ install -m 755 numlockbios %{buildroot}%{_libexecdir}/%{name}
 install -d %{buildroot}%{_distconfdir}/pam.d
 install -m 644 %{SOURCE4} %{buildroot}%{_distconfdir}/pam.d/vlock
 install -m 644 %{SOURCE12} %{buildroot}%{_mandir}/man8/
-#UsrMerge
+%if !0%{?usrmerged}
 mkdir -p %{buildroot}/bin
 mkdir -p %{buildroot}/sbin
 ln -s %{_bindir}/chvt %{buildroot}/bin
@@ -328,7 +328,7 @@ ln -s %{_bindir}/setkeycodes %{buildroot}/bin
 %ifarch %{ix86} x86_64
 ln -s %{_bindir}/resizecons %{buildroot}/bin
 %endif
-#EndUsrMerge
+%endif
 
 # Make sure Perl has a locale where uc/lc works for unicode codepoints
 # see e.g. https://perldoc.perl.org/perldiag.html#Wide-character-(U%2b%25X)-in-%25s
@@ -415,7 +415,7 @@ test -f /etc/pam.d/vlock.rpmsave && mv -v /etc/pam.d/vlock.rpmsave /etc/pam.d/vl
 %{_fillupdir}/sysconfig.keyboard
 %{kbd}
 %exclude %{kbd}/keymaps/{%{legacy_folders}}
-#UsrMerge
+%if !0%{?usrmerged}
 /sbin/fbtest
 /bin/chvt
 /bin/openvt
@@ -456,7 +456,7 @@ test -f /etc/pam.d/vlock.rpmsave && mv -v /etc/pam.d/vlock.rpmsave /etc/pam.d/vl
 /bin/setvesablank
 /bin/spawn_console
 /bin/spawn_login
-#EndUsrMerge
+%endif
 %{_sbindir}/fbtest
 %{_bindir}/chvt
 %{_bindir}/openvt
