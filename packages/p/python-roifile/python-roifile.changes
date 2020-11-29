@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 26 07:20:28 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 2020.8.13.
+  * Support writing to ZIP file.
+  * Support os.PathLike file names.
+
+-------------------------------------------------------------------
+Sat Aug  1 16:24:41 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update spec file to use python alternative. 
+
+-------------------------------------------------------------------
 Mon Jun  1 23:21:19 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Initial package release. 

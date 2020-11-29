@@ -20,7 +20,7 @@
 %define packagename roifile
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-roifile
-Version:        2020.5.28
+Version:        2020.8.13
 Release:        0
 Summary:        Read and write ImageJ ROI format
 License:        BSD-3-Clause
@@ -32,11 +32,13 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module numpy >= 1.15.1}
-BuildRequires:  %{python_module matplotlib >= 3.1}
-BuildRequires:  %{python_module tifffile}
+BuildRequires:  %{python_module matplotlib >= 3.2}
+BuildRequires:  %{python_module tifffile >= 2020.8.13}
 Requires:       python-numpy >= 1.15.1
-Requires:       python-matplotlib >= 3.1
-Requires:       python-tifffile
+Requires:       python-matplotlib >= 3.2
+Requires:       python-tifffile >= 2020.8.13
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -56,7 +58,17 @@ sed -i 's/\r//' README.rst
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/%{packagename}
+
+
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%prepare_alternative %{packagename}
+
+%post
+%python_install_alternative %{packagename}
+
+%postun
+%python_uninstall_alternative %{packagename}
 
 %check
 # Test not given
@@ -64,7 +76,7 @@ sed -i 's/\r//' README.rst
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{_bindir}/%{packagename}
+%python_alternative %{_bindir}/%{packagename}
 %{python_sitelib}/*egg-info/
 %{python_sitelib}/%{packagename}/
 
