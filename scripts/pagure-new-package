@@ -1,0 +1,18 @@
+#!/bin/sh
+namespace=package
+apitoken=`cat ~/.pagureapitoken`
+name=$1
+description=$1
+#verbose=-v
+
+if [ -z "$name" -o -z "$description" ] ; then
+    echo "usage: $0 NAME"
+    exit 15
+fi
+
+curl $verbose \
+     --header "Content-Type: application/json" \
+     --header "Authorization: token $apitoken" \
+     --request POST \
+     --data "{\"name\":\"$name\",\"description\":\"$description\", \"namespace\": \"$namespace\", \"wait\": \"true\"}" \
+     https://code.opensuse.org/api/0/new
