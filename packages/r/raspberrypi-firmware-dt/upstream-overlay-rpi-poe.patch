@@ -1,0 +1,91 @@
+From 8945b3da73f895c85f5616d45e5d5962c62df99a Mon Sep 17 00:00:00 2001
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Date: Thu, 26 Nov 2020 12:48:29 +0100
+Subject: [PATCH] overlays: Update rpi-poe overlay to use upstream driver
+
+The new upstream driver provides the same functionality. So use it.
+
+Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+---
+ .../arm/boot/dts/overlays/rpi-poe-overlay.dts | 34 ++++++++++++-------
+ 1 file changed, 21 insertions(+), 13 deletions(-)
+
+diff --git a/arch/arm/boot/dts/overlays/rpi-poe-overlay.dts b/arch/arm/boot/dts/overlays/rpi-poe-overlay.dts
+index 544038b614e1..aa5ec4318802 100644
+--- a/arch/arm/boot/dts/overlays/rpi-poe-overlay.dts
++++ b/arch/arm/boot/dts/overlays/rpi-poe-overlay.dts
+@@ -8,21 +8,28 @@ / {
+ 	compatible = "brcm,bcm2835";
+ 
+ 	fragment@0 {
++		target = <&firmware>;
++		__overlay__ {
++			fwpwm: pwm {
++				compatible = "raspberrypi,firmware-poe-pwm";
++				#pwm-cells = <2>;
++			};
++		};
++	};
++
++	fragment@1 {
+ 		target-path = "/";
+ 		__overlay__ {
+-			fan0: rpi-poe-fan@0 {
+-				compatible = "raspberrypi,rpi-poe-fan";
+-				firmware = <&firmware>;
+-				cooling-min-state = <0>;
+-				cooling-max-state = <4>;
+-				#cooling-cells = <2>;
++			fan: pwm-fan {
++				compatible = "pwm-fan";
+ 				cooling-levels = <0 31 63 150 255>;
+-				status = "okay";
++				#cooling-cells = <2>;
++				pwms = <&fwpwm 0 80000>;
+ 			};
+ 		};
+ 	};
+ 
+-	fragment@1 {
++	fragment@2 {
+ 		target = <&cpu_thermal>;
+ 		__overlay__ {
+ 			trips {
+@@ -47,28 +54,29 @@ trip3: trip3 {
+ 					type = "active";
+ 				};
+ 			};
++
+ 			cooling-maps {
+ 				map0 {
+ 					trip = <&trip0>;
+-					cooling-device = <&fan0 0 1>;
++					cooling-device = <&fan 0 1>;
+ 				};
+ 				map1 {
+ 					trip = <&trip1>;
+-					cooling-device = <&fan0 1 2>;
++					cooling-device = <&fan 1 2>;
+ 				};
+ 				map2 {
+ 					trip = <&trip2>;
+-					cooling-device = <&fan0 2 3>;
++					cooling-device = <&fan 2 3>;
+ 				};
+ 				map3 {
+ 					trip = <&trip3>;
+-					cooling-device = <&fan0 3 4>;
++					cooling-device = <&fan 3 4>;
+ 				};
+ 			};
+ 		};
+ 	};
+ 
+-	fragment@2 {
++	fragment@3 {
+ 		target-path = "/__overrides__";
+ 		__overlay__ {
+ 			poe_fan_temp0 =		<&trip0>,"temperature:0";
+-- 
+2.29.2
+

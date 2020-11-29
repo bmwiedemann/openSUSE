@@ -27,6 +27,7 @@ Source:         raspberrypi-firmware-dt-%{version}.tar.xz
 Source1:        disable-vc4-overlay.dts
 Source2:        uboot-bcm2835-pl011-overlay.dts
 Source100:      get-from-git.sh
+Patch0:         upstream-overlay-rpi-poe.patch
 Requires:       raspberrypi-firmware
 BuildRequires:  dtc
 BuildRequires:  raspberrypi-firmware
@@ -40,6 +41,7 @@ for the Raspberry Pi boot process.
 
 %prep
 %setup
+%patch0 -p1
 
 %build
 SRCDIR=`pwd`

@@ -1,3 +1,9 @@
+-------------------------------------------------------------------
+Thu Nov 26 12:54:35 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Introduce upstream-overlay-rpi-poe.patch to adapt the overlay to our driver (jsc#SLE-16543)
+
+-------------------------------------------------------------------
 Thu Oct 29 16:35:31 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Update to 2dc96ad40979 (2020-10-26):
