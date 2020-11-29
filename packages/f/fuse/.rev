@@ -556,4 +556,12 @@
   non-zero offset e. g. by calling seekdir followed by readdir.</comment>
     <requestid>827055</requestid>
   </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>4718362d8ff8ff7af77f112c5a8e736e</srcmd5>
+    <version>2.9.9</version>
+    <time>1606648836</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850977</requestid>
+  </revision>
 </revisionlist>

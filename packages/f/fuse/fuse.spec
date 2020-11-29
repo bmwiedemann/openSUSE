@@ -177,7 +177,7 @@ install -m644 -D util/udev.rules %{buildroot}/%{_sysconfdir}/udev/rules.d/99-fus
 find %{buildroot} -type f -name "*.la" -delete -print
 # not needed for fuse, might reappar in separate package:
 rm -f %{buildroot}/%{_libdir}/libulockmgr.a
-#UsrMerge
+%if !0%{?usrmerged}
 mkdir %{buildroot}/sbin
 mkdir %{buildroot}/%{_lib}
 ln -s -v %{_sbindir}/mount.fuse %{buildroot}/sbin
@@ -186,7 +186,7 @@ for libname in $(ls *.so.*);do
 ln -s -v /%{_libdir}/$libname %{buildroot}/%{_lib}
 done
 popd
-#EndUsrMerge
+%endif
 
 (cd example && make clean)
 rm -rf example/.deps example/Makefile.am example/Makefile.in
@@ -216,9 +216,9 @@ rm -rf doc/Makefile.am doc/Makefile.in doc/Makefile
 %{_sysconfdir}/udev/rules.d/99-fuse.rules
 %endif
 %verify(not mode) %attr(4750,root,trusted) %{_bindir}/fusermount
-#UsrMerge
+%if !0%{?usrmerged}
 /sbin/mount.fuse
-#EndUsrMerge
+%endif
 %{_sbindir}/mount.fuse
 %config %{_sysconfdir}/fuse.conf
 %{_bindir}/ulockmgr_server
@@ -227,15 +227,15 @@ rm -rf doc/Makefile.am doc/Makefile.in doc/Makefile
 %{_mandir}/man8/mount.fuse.8%{?ext_man}
 
 %files -n libfuse2
-#UsrMerge
+%if !0%{?usrmerged}
 /%{_lib}/libfuse.so.2*
-#EndUsrMerge
+%endif
 %{_libdir}/libfuse.so.2*
 
 %files -n libulockmgr1
-#UsrMerge
+%if !0%{?usrmerged}
 /%{_lib}/libulockmgr.so.*
-#EndUsrMerge
+%endif
 %{_libdir}/libulockmgr.so.*
 
 %files doc
