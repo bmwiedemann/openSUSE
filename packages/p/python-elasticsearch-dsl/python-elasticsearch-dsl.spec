@@ -34,7 +34,6 @@ Requires:       python-six
 Suggests:       python-pytz
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module coverage < 5.0.0}
 BuildRequires:  %{python_module elasticsearch >= 7.0.0}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest >= 3.0.0}
