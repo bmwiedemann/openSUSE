@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Nov 27 14:20:31 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 0.10.0:
+  * Fix weapon pickup issues.
+  * Fix various trailer and hitscan issues.
+  * Fix crash when saving new player template.
+  * Fix black "(End)" menu item in player name menu.
+  * Fix bullet trail color.
+  * Fix crash when co-op AI present in mission with show map
+    pickup.
+  * Add dog character.
+  * Add option for missions having no exit area.
+  * Add multiple body types in various campaigns.
+  * Add facial expressions when using melee weapon, getting hurt.
+
+-------------------------------------------------------------------
 Thu Oct  1 18:35:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 0.9.1:
