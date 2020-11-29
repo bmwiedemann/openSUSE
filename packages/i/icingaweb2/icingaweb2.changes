@@ -1,5 +1,10 @@
 -------------------------------------------------------------------
-Thu Nov 26 09:26:13 UTC 2020 - Eric Schirra <ecsos@opensuse.org>
+Fri Nov 27 15:03:40 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Expand README.SUSE.
+
+-------------------------------------------------------------------
+Thu Nov 26 09:26:13 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Add missing requires php-curl, php-imagick.
 - Add a2enmod mod_php and mod_rewrite at post section.

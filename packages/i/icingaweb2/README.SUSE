@@ -1,10 +1,12 @@
 
 Information:
 
-To use module setup you must enable feature ido-mysql.
+To use module setup you must enable feature ido-mysql or ido-pgsql.
 
    icinga2 feature enable ido-mysql
+   or
+   icinga2 feature enable ido-pgsql
    
-And you must change settings in /etc/icinga2/features-enabled/ido-mysql.conf.
+And you must change settings in in ido-mysql.conf or ido-pgsql.conf under /etc/icinga2/features-enabled.
 
 After that youd must restart icinga2.
