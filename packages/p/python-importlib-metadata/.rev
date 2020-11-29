@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f8ae98fdd1ffc9e254d4fe9d3566cda4</srcmd5>
+    <version>2.0.0</version>
+    <time>1606648701</time>
+    <user>dimstar_suse</user>
+    <comment>This is needed in the python36 flavor branch (Staging:N).
+
+It does NOT conflict with python38 standard library (see upstream description)</comment>
+    <requestid>850139</requestid>
+  </revision>
+</revisionlist>

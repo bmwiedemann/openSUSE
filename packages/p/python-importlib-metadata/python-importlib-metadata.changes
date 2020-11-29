@@ -1,0 +1,140 @@
+-------------------------------------------------------------------
+Thu Nov 19 19:43:05 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Reintroduce into Tumbleweed for python36 flavor
+- Update to 2.0.0 
+  * importlib_metadata no longer presents a __version__ attribute. 
+    Consumers wishing to resolve the version of the package should 
+    query it directly with 
+    importlib_metadata.version('importlib-metadata'). Closes #71.
+- v1.7.0
+  * PathNotFoundError now has a custom __str__ mentioning “package 
+    metadata” being missing to help guide users to the cause when 
+    the package is installed but no metadata is present. Closes 
+    #124.
+- v1.6.1
+  * Added Distribution._local() as a provisional demonstration of 
+    how to load metadata for a local package. Implicitly requires 
+    that pep517 is installed. Ref #42.
+  * Ensure inputs to FastPath are Unicode. Closes #121.
+  * Tests now rely on importlib.resources.files (and backport) 
+    instead of the older path function.
+  * Support any iterable from find_distributions. Closes #122.
+- v1.6.0
+  * Added module and attr attributes to EntryPoint
+- v1.5.2
+  * Fix redundant entries from FastPath.zip_children. Closes #117.
+- v1.5.1
+  * Improve reliability and consistency of compatibility imports 
+    for contextlib and pathlib when running tests. Closes #116.
+
+-------------------------------------------------------------------
+Sun Mar  8 04:09:30 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to multibuild in order to avoid buildcycles
+
+-------------------------------------------------------------------
+Fri Feb 28 22:56:32 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.5.0:
+  * Additional performance optimizations in FastPath now
+    saves an additional 20% on a typical call.
+  * Correct for issue where PyOxidizer finder has no
+    ``__module__`` attribute. Closes #110.
+
+-------------------------------------------------------------------
+Fri Jan 17 09:33:46 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.4.0
+  * Renamed package parameter to distribution_name.
+  * For better compatibility with the stdlib implementation and to 
+    avoid the same distributions being discovered by the stdlib 
+    and backport implementations, the backport now disables the 
+    stdlib DistributionFinder during initialization (import time).
+  * Project adopts semver for versioning.
+  * EntryPoints are now pickleable.
+  * Dropped support for Python 3.4.
+  * Fixed repr(EntryPoint) on PyPy.
+  * Repaired project metadata to correctly declare the python_requires directive.
+  * Through careful optimization, distribution() is 3-4x faster.
+  * When searching through sys.path, if any error occurs attempting 
+    to list a path entry, that entry is skipped, making the system 
+    much more lenient to errors.
+
+-------------------------------------------------------------------
+Wed Sep 11 14:57:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.21:
+  * various minor fixes
+
+-------------------------------------------------------------------
+Wed Aug  7 14:15:47 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.19
+ * restrain over-eager egg metadata resolution.
+ * Add support for entry points with colons in the name.
+ * Parse entry points case sensitively. 
+ * Add a version constraint on the backport configparser package
+
+-------------------------------------------------------------------
+Wed Jul 31 12:49:46 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- This package is part of python 3.8 and we don't need to build
+  it there
+- Do not require importlib_resources on python3.7 where it is
+  part of core python
+
+-------------------------------------------------------------------
+Tue Jul  9 13:23:29 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fixup the requires for the SLE-12 build
+
+-------------------------------------------------------------------
+Tue Jul  9 11:19:45 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Enable python-pathlib2 build dependency for suse_version < 1500 to fix SLE-12 build
+
+-------------------------------------------------------------------
+Mon Jun  3 08:17:22 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove do-not-test-pip.patch as it seems no longer needed
+
+-------------------------------------------------------------------
+Mon Jun  3 08:11:44 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.17:
+  * Don't crash if there exists an EGG-INFO directory on sys.path.
+  * Update docstrings to match PEP 8. Closes #63.
+  * Merged modules into one module. Closes #62.
+  * Add support for eggs.  !65; Closes #19.
+  * Support generic zip files (not just wheels).  Closes #59
+  * Support zip files with multiple distributions in them.  Closes #60
+  * Fully expose the public API in importlib_metadata.__all__.
+  * The Distribution ABC is now officially part of the public API.
+  * Fixed support for older single file egg-info formats.  Closes #43.
+  * Fixed a testing bug when $CWD has spaces in the path.  Closes #50.
+  * Fixed issue where entry points without an attribute would raise an Exception.
+  * Removed unused name parameter from entry_points(). Closes #44.
+  * DistributionFinder classes must now be instantiated before being placed on sys.meta_path.
+
+-------------------------------------------------------------------
+Tue Feb 26 12:07:08 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add missing setuptools_scm dependency to fix generated egg.info
+
+-------------------------------------------------------------------
+Tue Feb 26 09:38:10 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Some packages request importlib_metadata to ease living provide
+  this symbol too
+
+-------------------------------------------------------------------
+Wed Feb  6 11:53:33 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add do-not-test-pip.patch so tests depending on pip are not used
+  (they fail when the tests are run without tox)
+
+-------------------------------------------------------------------
+Thu Jan 31 13:09:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Initial commit, needed by pygments-pytest
