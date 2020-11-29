@@ -17,7 +17,7 @@
 
 
 Name:           gnome-maps
-Version:        3.38.1.1
+Version:        3.38.2
 Release:        0
 Summary:        Maps Application for GNOME
 License:        GPL-2.0-or-later
