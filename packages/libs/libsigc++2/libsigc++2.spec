@@ -18,7 +18,7 @@
 
 %define _name libsigc++
 Name:           libsigc++2
-Version:        2.10.4
+Version:        2.10.6
 Release:        0
 Summary:        Typesafe Signal Framework for C++
 License:        LGPL-2.1-or-later
