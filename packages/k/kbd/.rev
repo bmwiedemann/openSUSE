@@ -830,4 +830,12 @@ Fix version typo:
     <comment></comment>
     <requestid>838620</requestid>
   </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>454d7e6e5c4604e8da6a5a9ee7d23553</srcmd5>
+    <version>2.3.0</version>
+    <time>1606648831</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850974</requestid>
+  </revision>
 </revisionlist>
