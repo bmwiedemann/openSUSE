@@ -1212,4 +1212,12 @@
     <comment>Push GNOME 3.38</comment>
     <requestid>847207</requestid>
   </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>e3dc14a9f54b545b608911503752221b</srcmd5>
+    <version>3.38.2</version>
+    <time>1606648985</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 850678 from dimstar)</comment>
+    <requestid>851052</requestid>
+  </revision>
 </revisionlist>
