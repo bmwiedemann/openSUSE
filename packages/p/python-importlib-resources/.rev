@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>386f5c2b10278e2c5f54af9efdd73d93</srcmd5>
+    <version>3.3.0</version>
+    <time>1606648729</time>
+    <user>dimstar_suse</user>
+    <comment>s is needed in the python36 flavor branch (Staging:N).
+
+It does NOT conflict with python38 standard library.</comment>
+    <requestid>850589</requestid>
+  </revision>
+</revisionlist>
