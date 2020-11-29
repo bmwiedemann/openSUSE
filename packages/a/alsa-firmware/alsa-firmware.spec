@@ -16,6 +16,10 @@
 #
 
 
+%if 0%{?suse_version} < 1550
+%define _firmwaredir /lib/firmware
+%endif
+
 Name:           alsa-firmware
 URL:            http://www.alsa-project.org/
 Summary:        Firmware Data Files for ALSA

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 26 13:51:31 CET 2020 - tiwai@suse.de
+
+- Fix build with older distros without %_firmwaredir
+
+-------------------------------------------------------------------
 Wed Oct 21 13:04:20 CEST 2020 - tiwai@suse.de
 
 - Update to alsa-firmware 1.2.4:
