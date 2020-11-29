@@ -1768,4 +1768,27 @@ Library portions are LGPL-2.1+ licensed (forwarded request 132611 from dimstar)<
     <comment></comment>
     <requestid>846473</requestid>
   </revision>
+  <revision rev="209" vrev="1">
+    <srcmd5>3706d0254bbedc869656f98bf605c2f2</srcmd5>
+    <version>1.2.2</version>
+    <time>1606649025</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.2:
+  + New Features: Notify the service manager when it's beginning to
+    shutdown.
+  + Bugfixes:
+    - Fix possible information disclosure (CVE-2020-16121).
+    - Install required test helper files.
+    - Silence meson warning by bumping minimum version.
+  + Changes related to zypp backend:
+    - Don’t refresh repos again when actually updating packages.
+    - Erase tmp repo from pool after local installation.
+    - Set PATH variable.
+- Drop upstream merged patches:
+  + PackageKit-test-Install-required-helper-files.patch
+  + PackageKit-zypp-dont-refresh-repos-on-offline-update.patch
+  + PackageKit-zypp-set-PATH.patch
+  + PackageKit-bsc1169739.patch (forwarded request 850961 from dimstar)</comment>
+    <requestid>851059</requestid>
+  </revision>
 </revisionlist>

@@ -32,7 +32,7 @@
 %endif
 
 Name:           PackageKit
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Simple software installation management software
 License:        GPL-2.0-or-later
@@ -50,14 +50,6 @@ Patch1:         PackageKit-systemd-timers.patch
 Patch2:         PackageKit-remove-polkit-rules.patch
 # PATCH-FIX-OPENSUSE PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch ngompa13@gmail.com -- Band-aid to deal with OBS producing differently named appstream repodata files
 Patch3:         PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch
-# PATCH-FIX-UPSTREAM PackageKit-test-Install-required-helper-files.patch gh#/hughsie/PackageKit/commit/a6904b4 ngompa13@gmail.com -- Fix installation of test backend files
-Patch4:         PackageKit-test-Install-required-helper-files.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-set-PATH.patch gh#/hughsie/PackageKit/commit/2fb7fc6e, bsc#1175315 sckang@suse.com -- zypp: Set PATH variable
-Patch5:         PackageKit-zypp-set-PATH.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-dont-refresh-repos-on-offline-update.patch gh#/hughsie/PackageKit/commit/81207bd3, bsc#1173562 sckang@suse.com -- zypp: Don’t refresh repos again when actually updating packages
-Patch6:         PackageKit-zypp-dont-refresh-repos-on-offline-update.patch
-# PATCH-FIX-UPSTREAM PackageKit-bsc1169739.patch gh#/hughsie/PackageKit/commit/d8dd484d, bsc#1169739 sckang@suse.com -- main: notify the service manager when it's beginning to shutdown
-Patch7:         PackageKit-bsc1169739.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
