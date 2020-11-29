@@ -2,8 +2,103 @@
 Fri Nov  6 10:41:02 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Update to version 1.10.7
-  * https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.6/src/hdf5-1.10.6-RELEASE.txt
-  * https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.7/src/hdf5-1.10.7-RELEASE.txt
+  * Add metadata cache optimization to reduce skip list usage.
+  * Add BEST_EFFORT value to HDF5_USE_FILE_LOCKING environment variable.
+  * Add H5Pset/get_file_locking() API calls.
+  * Add Mirror VFD.
+    Use TCP/IP sockets to perform write-only (W/O) file I/O on a remote
+    machine. Must be used in conjunction with the Splitter VFD.
+  * Add Splitter VFD.
+    Maintain separate R/W and W/O channels for "concurrent" file writes
+    to two files using a single HDF5 file handle.
+  * Fixed an assertion failure in the parallel library when collectively
+   filling chunks.
+  * Fortran/C++ libs: Add wrappers for H5Pset/get_file_locking() API calls.
+     h5pget_file_locking_f()
+     h5pset_file_locking_f()
+  * Added new Fortran parameters:
+        H5F_LIBVER_ERROR_F
+        H5F_LIBVER_NBOUNDS_F
+        H5F_LIBVER_V18_F
+        H5F_LIBVER_V110_F
+  * Add new Fortran API: h5pget_libver_bounds_f.
+  * h5repack added options to control how external links are handled.
+  * The tools library was updated by standardizing the error stack process.
+  * The H5DSis_scale function was updated to return "not a dimension scale" (0)
+    instead of failing (-1), when CLASS or DIMENSION_SCALE attributes are
+    not written according to Dimension Scales Specification.
+  * Bug Fixes:
+    + Fix bug and simplify collective metadata write operation when some ranks
+      have no entries to contribute.  This fixes parallel regression test
+      failures with IBM SpectrumScale MPI on the Summit system at ORNL.
+    + Fixed use-of-uninitialized-value error.
+      Appropriate initialization of local structs was added to remove the
+      use-of-uninitialized-value errors reported by MemorySanitizer.
+    + Creation of dataset with optional filter.
+      A fix is applied to allow the creation of a dataset in such
+      situation, as specified in the user documentation.
+    + Explicitly declared dlopen to use RTLD_LOCAL.
+    + H5Sset_extent_none() sets the dataspace class to H5S_NO_CLASS which
+      causes asserts/errors when passed to other dataspace API calls.
+    + Fixed the segmentation fault when reading attributes with multiple threads
+      The problem was fixed by setting the file pointer to the current opened
+      file pointer when the attribute was accessed.  Similar patch up was done
+      before when reading dataset with variable length string datatype.
+    + Don't allocate an empty (0-dimensioned) chunked dataset's chunk
+      index, until the dataset's dimensions are increased.
+    + Fortan: Corrected INTERFACE INTENT(IN) to INTENT(OUT) for buf_size in
+      h5fget_file_image_f.
+    + h5diff fixed a command line parsing error.
+    + h5diff added a command line option to ignore attributes.
+    + h5diff added another level to the verbose argument to print filenames.
+    + h5repack was fixed to repack the reference attributes properly.
+  * For details check:
+    https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.7/src/hdf5-1.10.7-RELEASE.txt
+- version 1.10.6
+  * Added S3 and HDFS Virtual File Drivers (VFDs) to HDF5.
+    Instructions to enable them when configuring HDF5 on Linux and Mac
+    may be found at.
+    https://portal.hdfgroup.org/display/HDF5/Virtual+File+Drivers+-+S3+and+HDFS.
+  * Added new wrappers for H5Pset/get_create_intermediate_group()
+        LinkCreatPropList::setCreateIntermediateGroup()
+        LinkCreatPropList::getCreateIntermediateGroup()
+  * h5repack was fixed to repack datasets with external storage
+    to other types of storage.
+  * Bug Fixes:
+    + Improved performance when creating a large number of small datasets by
+      retrieving default property values from the API context instead of doing
+      skip list searches. More work is required to achieve parity with HDF5 1.8.
+    + Fixed user-created data access properties not existing in the property list
+      returned by H5Dget_access_plist. Thanks to Steven Varga for submitting a
+      reproducer and a patch.
+    + Inappropriate linking with deprecated MPI C++ libraries.
+      HDF5 does not define *_SKIP_MPICXX in the public headers, so applications
+      can inadvertently wind up linking to the deprecated MPI C++ wrappers.
+      MPICH_SKIP_MPICXX and OMPI_SKIP_MPICXX have both been defined in H5public.h
+      so this should no longer be an issue. HDF5 makes no use of the deprecated
+      MPI C++ wrappers.
+    + fcntl(2)-based file locking incorrectly passed the lock argument struct
+      instead of a pointer to the struct, causing errors on systems where
+      flock(2) is not available.
+      This bug affects HDF5 1.10.0 through 1.10.5.
+      fcntl(2)-based file locking now correctly passes the struct pointer.
+    + Fixed a bug caused by a bad tag value when condensing object header
+      messages.
+    + Fixed an issue when creating a file with non-default file space info
+      together with library high bound setting to H5F_LIBVER_V18.
+      This was fixed by setting and checking the proper version in the file
+      space info message based on the library low and high bounds when creating
+      and opening the HDF5 file.
+    + Fixed an issue where copying a version 1.8 dataset between files using
+      H5Ocopy fails due to an incompatible fill version.
+    + Fixed a bug that would cause an error or cause fill values to be
+      incorrectly read from a chunked dataset using the "single chunk" index if
+    + Fixed a bug that could cause an error or cause fill values to be
+      incorrectly read from a dataset that was written to using H5Dwrite_chunk
+      if the dataset was not closed after writing.
+    + Fixed memory leak in scale offset filter.
+  * For details check:
+    https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.6/src/hdf5-1.10.6-RELEASE.txt
 - Security bugs fixed: 
   * CVE-2018-13870: heap-based buffer over-read in the function 
     H5O_link_decode in H5Olink.c  (bsc#1101493)

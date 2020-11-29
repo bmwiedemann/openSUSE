@@ -682,4 +682,41 @@ fixed baselibs.conf compared to previous version</comment>
     <comment></comment>
     <requestid>848498</requestid>
   </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>044416d7416570f071d523e5457003b6</srcmd5>
+    <version>1.10.7</version>
+    <time>1606649009</time>
+    <user>dimstar_suse</user>
+    <comment>  * Add metadata cache optimization to reduce skip list usage.
+  * Add BEST_EFFORT value to HDF5_USE_FILE_LOCKING environment variable.
+  * Add H5Pset/get_file_locking() API calls.
+  * Add Mirror VFD.
+    Use TCP/IP sockets to perform write-only (W/O) file I/O on a remote
+    machine. Must be used in conjunction with the Splitter VFD.
+  * Add Splitter VFD.
+    Maintain separate R/W and W/O channels for &quot;concurrent&quot; file writes
+    to two files using a single HDF5 file handle.
+  * Fixed an assertion failure in the parallel library when collectively
+   filling chunks.
+  * Fortran/C++ libs: Add wrappers for H5Pset/get_file_locking() API calls.
+     h5pget_file_locking_f()
+     h5pset_file_locking_f()
+  * Added new Fortran parameters:
+        H5F_LIBVER_ERROR_F
+        H5F_LIBVER_NBOUNDS_F
+        H5F_LIBVER_V18_F
+        H5F_LIBVER_V110_F
+  * Add new Fortran API: h5pget_libver_bounds_f.
+  * h5repack added options to control how external links are handled.
+  * The tools library was updated by standardizing the error stack process.
+  * The H5DSis_scale function was updated to return &quot;not a dimension scale&quot; (0)
+    instead of failing (-1), when CLASS or DIMENSION_SCALE attributes are
+    not written according to Dimension Scales Specification.
+  * Bug Fixes:
+    + Fix bug and simplify collective metadata write operation when some ranks
+      have no entries to contribute.  This fixes parallel regression test
+      failures with IBM SpectrumScale MPI on the Summit system at ORNL.
+    + Fixed use-of-uninitialized-value error.</comment>
+    <requestid>851572</requestid>
+  </revision>
 </revisionlist>
