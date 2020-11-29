@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-datafactory
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        Microsoft Azure Data Factory Management Client Library
 License:        MIT
