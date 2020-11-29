@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-PasteDeploy
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        Tool to load, configure, and compose WSGI applications and servers
 License:        MIT

@@ -140,4 +140,13 @@
   (gh#Pylons/pastedeploy#27)</comment>
     <requestid>816627</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>47461c0a15486a2a4528fdcd1ad78be5</srcmd5>
+    <version>2.1.1</version>
+    <time>1606648752</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.1:
+  * Added ``setuptools`` as an explicit dependency.</comment>
+    <requestid>850934</requestid>
+  </revision>
 </revisionlist>
