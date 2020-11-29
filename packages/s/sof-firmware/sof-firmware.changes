@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 26 13:53:53 CET 2020 - tiwai@suse.de
+
+- Fix build with older distros without %_firmwaredir
+
+-------------------------------------------------------------------
 Tue Nov  3 09:39:35 CET 2020 - tiwai@suse.de
 
 - Update to version 1.6-rc3 (bsc#1178306):

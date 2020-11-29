@@ -19,6 +19,10 @@
 %define repo_version 1.6
 %define package_version	1.6-rc3
 
+%if 0%{?suse_version} < 1550
+%define _firmwaredir /lib/firmware
+%endif
+
 Name:           sof-firmware
 Summary:        Firmware Data Files for SOF Drivers
 License:        BSD-3-Clause
