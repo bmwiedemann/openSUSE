@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 26 06:23:22 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 3.6.0.
+  * Add YokogawaGS200Channel message
+- Updates since 3.4.0.
+  * Add QDOSequencer, QDOSlowFluxChannel, and QDOFastFluxChannel.
+
+-------------------------------------------------------------------
 Tue Aug 18 08:21:57 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Initial package release.
