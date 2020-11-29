@@ -430,4 +430,14 @@
   * a few hundred changes, see included CHANGELOG.md for details</comment>
     <requestid>847331</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>15498c37bb1c6906486b25494c5c8c89</srcmd5>
+    <version>1.4.0</version>
+    <time>1606648780</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.0:
+  * Fixed tab completion crash on Windows
+  * Changed how multiline doc string help is formatted to match style of other help messages</comment>
+    <requestid>850944</requestid>
+  </revision>
 </revisionlist>

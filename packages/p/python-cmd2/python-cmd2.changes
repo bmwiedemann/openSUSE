@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 26 09:24:47 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.4.0:
+  * Fixed tab completion crash on Windows
+  * Changed how multiline doc string help is formatted to match style of other help messages
+
+-------------------------------------------------------------------
 Mon Nov  9 18:05:38 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.3.8:
