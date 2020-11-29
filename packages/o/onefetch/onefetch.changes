@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Nov 23 08:42:30 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.7.3:
+  * [info] if user.name is not set print unknown instead of crashing
+
+-------------------------------------------------------------------
+Mon Nov 23 08:41:49 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.7.2:
+  * [language] added support for HolyC
+  * [language] added support for Xaml
+  * [info] get_repo_name_and_url defaults to remote.origin.url
+  * [misc] replaced some git sys calls with git2-rs calls
+  * [ascii] improved coloring for c, c++, c#, typescript, and lua
+  * [ascii] fixed ascii max-width integration test --> update raku ascii logo
+  * [image] fixed image detection for kitty: remove check on env variable
+
+-------------------------------------------------------------------
+Mon Nov  9 07:52:39 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.7.1:
+  * Remove Language::Unknown
+
+-------------------------------------------------------------------
+Mon Nov  9 07:51:47 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.7.0:
+  New features:
+  * Detect dependencies
+  * add print-package-mangers cli option
+  Bug fixes:
+  * Don't output unnecessary newline when checking for image backend support
+  * Fix trailing white space in LOC
+  Misc:
+  * Colon is white by default
+
+-------------------------------------------------------------------
 Thu Nov  5 07:23:28 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.6.0:

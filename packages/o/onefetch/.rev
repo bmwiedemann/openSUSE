@@ -88,4 +88,35 @@
   * remove async/await</comment>
     <requestid>846133</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b2b958523dc69fb8dac5d529a3c40dac</srcmd5>
+    <version>2.7.3</version>
+    <time>1606649153</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.7.3:
+  * [info] if user.name is not set print unknown instead of crashing
+
+- Update to 2.7.2:
+  * [language] added support for HolyC
+  * [language] added support for Xaml
+  * [info] get_repo_name_and_url defaults to remote.origin.url
+  * [misc] replaced some git sys calls with git2-rs calls
+  * [ascii] improved coloring for c, c++, c#, typescript, and lua
+  * [ascii] fixed ascii max-width integration test --&gt; update raku ascii logo
+  * [image] fixed image detection for kitty: remove check on env variable
+
+- Update to 2.7.1:
+  * Remove Language::Unknown
+
+- Update to 2.7.0:
+  New features:
+  * Detect dependencies
+  * add print-package-mangers cli option
+  Bug fixes:
+  * Don't output unnecessary newline when checking for image backend support
+  * Fix trailing white space in LOC
+  Misc:
+  * Colon is white by default</comment>
+    <requestid>850113</requestid>
+  </revision>
 </revisionlist>
