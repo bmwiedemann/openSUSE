@@ -961,4 +961,39 @@
     <comment>Push GNOME 3.38</comment>
     <requestid>847271</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>9b7e5d1ff01cf514f074d744483b12b0</srcmd5>
+    <version>0.50.2</version>
+    <time>1606649021</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.50.2:
+  + Various improvements and bug fixes:
+    - codegen:
+      . More use of delegate_target_type and
+        delegate_target_destroy_type.
+      . Reduce get_delegate_target/
+        get_delegate_target_destroy_notify calls.
+      . Don't use inferred type for temp-value to access generic
+        property.
+      . Update outdated array _size_ variable of captured
+        local-variable.
+      . Report internal error for unsupported collection type in
+        foreach.
+    - vala:
+      . Issue an error on void initializer for local-variable.
+      . Allow markup-reader to accept spaces around '=' of
+        attribute assignment.
+      . CodeNode.source_reference is optional, so let the API
+        respect that.
+      . Use DataType.compatible() to check for string
+        concatenation.
+    - valadoc: Don't call CodeContext.pop() on empty stack.
+    - libvaladoc: Don't filter-out generic type-parameters of
+      delegates.
+    - libvaladoc/girimporter: Skip &quot;docsection&quot; elements in
+      &amp;lt;namespace&amp;gt;.
+    - testrunner: Add &quot;-Werror=return-local-addr&quot; flag.
+  + Bindings updates. (forwarded request 850960 from dimstar)</comment>
+    <requestid>851058</requestid>
+  </revision>
 </revisionlist>

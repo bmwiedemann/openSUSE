@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Nov 19 16:06:17 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 0.50.2:
+  + Various improvements and bug fixes:
+    - codegen:
+      . More use of delegate_target_type and
+        delegate_target_destroy_type.
+      . Reduce get_delegate_target/
+        get_delegate_target_destroy_notify calls.
+      . Don't use inferred type for temp-value to access generic
+        property.
+      . Update outdated array _size_ variable of captured
+        local-variable.
+      . Report internal error for unsupported collection type in
+        foreach.
+    - vala:
+      . Issue an error on void initializer for local-variable.
+      . Allow markup-reader to accept spaces around '=' of
+        attribute assignment.
+      . CodeNode.source_reference is optional, so let the API
+        respect that.
+      . Use DataType.compatible() to check for string
+        concatenation.
+    - valadoc: Don't call CodeContext.pop() on empty stack.
+    - libvaladoc: Don't filter-out generic type-parameters of
+      delegates.
+    - libvaladoc/girimporter: Skip "docsection" elements in
+      <namespace>.
+    - testrunner: Add "-Werror=return-local-addr" flag.
+  + Bindings updates.
+
+-------------------------------------------------------------------
 Thu Oct  1 08:16:58 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 0.50.1:
