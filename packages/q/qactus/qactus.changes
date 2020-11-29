@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 28 19:30:17 UTC 2020 - Javier Llorente <javier@opensuse.org>
+
+- Update to 2.0.3
+  * Minor fixes:
+    - follow redirects
+    - empty bookmark list on user switch
+  * Improve the configure dialog 
+
+-------------------------------------------------------------------
 Tue Jun 16 15:25:56 UTC 2020 - Javier Llorente <javier@opensuse.org>
 
 - Update to 2.0.2
