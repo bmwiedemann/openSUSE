@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 25 10:02:37 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not crash when trying to replace an /etc/hosts alias using the
+  current static hostname and it is not set (bsc#1179178)
+- 4.3.30
+
+-------------------------------------------------------------------
+Mon Nov 23 08:03:17 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not show a warn message when modifying a bonding configuration
+  and all the slaves are already configured with BOOTPROTO='none'
+  (bsc#1178950)
+- 4.3.29
+
+-------------------------------------------------------------------
 Fri Nov 20 07:23:27 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Fixed detection of connection configuration changes (bsc#1178950)
