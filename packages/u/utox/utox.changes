@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Nov 28 11:08:13 UTC 2020 - Andrey Karepin <egdfree@opensuse.org>
+
+- update to 0.18.0
+  Fixes:
+
+    * Fix crash when changing toxcore-related settings (92102bf)
+    * fix dragging friend list (#1470) (@w23rd) (70127ba)
+    * utox_settings struct: give proxy_ip[] a size (fix UB) (072d29e)
+    * Update and refactor settings loading and saving:
+      - Drop obsolete save and load settings format (@redmanmale) (6ead537)
+      - Rename (and fix usages) SETTINGS fields to match UTOXSAVE struct to be able to load it from config directly (@redmanmale) (751ea57)
+      - Remove unused function config_osdefaults() (@redmanmale) (fe8cfe0)
+      - Use settings instead of separate variables (@redmanmale) (94d474a)
+      - Refactoring save and load uTox settings (@redmanmale) (acb2787)
+      - Save settings before killing Tox threads (@redmanmale) (a615853)
+      - Style fixes (@redmanmale) (0a0b171)
+      - Update mock settings (@redmanmale) (0c8c74e)
+      - Try create Tox folder before saving settings (@redmanmale) (93aaef8)
+      - settings.c: Write macros for write_config_value_*() (6347681)
+    * getopt: Exit on wrong usage (c7353a3)
+    * Fix offset of the typing notification (@redmanmale) (c92dfe6)
+    * Fix file size formatting in chatlog (@redmanmale) (60a0085)
+    * Fix handling large files (@redmanmale) (590efb8)
+
+  Languages:
+
+    * Update Japanese (@xfm00mm) (6ef32a4)
+    * Update German (Markus V) (b4c8682)
+
+-------------------------------------------------------------------
 Thu Apr 16 18:53:34 UTC 2020 - Andrey Karepin <egdfree@opensuse.org>
 
 - drop patch fix_build_with_openAL_1.20.patch

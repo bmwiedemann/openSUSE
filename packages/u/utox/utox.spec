@@ -18,7 +18,7 @@
 
 %define realname uTox
 Name:           utox
-Version:        0.17.2
+Version:        0.18.0
 Release:        0
 Summary:        The lightweight Tox client
 License:        MIT
