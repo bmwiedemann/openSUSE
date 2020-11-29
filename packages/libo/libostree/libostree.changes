@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Thu Nov 19 15:17:22 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 2020.8:
+  + This release mostly contains scalability improvements and
+    bugfixes.
+  + Caching-related HTTP headers are now supported on summaries and
+    signatures, so that they do not have to be re-downloaded if not
+    changed in the meanwhile.
+  + Summaries and delta have been reworked to allow more
+    fine-grained fetching.
+  + Finally, this fixes several bugs related to atomic variables,
+    HTTP timeouts, and 32-bit architectures.
+- Changes from version 2020.7:
+  + Static deltas can now be signed to more easily support offline
+    verification.
+  + There's now support for multiple initramfs images; the idea
+    here is that one can have a "main" initramfs image and a
+    secondary one which represents local configuration.
+  + The documentation is now moved to
+    https://ostreedev.github.io/ostree/
+  + Lot of preparatory cleanups to the pull code landed for
+    upcoming work on indexing deltas outside of the summary.
+  + On the bugfix side, the biggest one is a fix for an assertion
+    failure when upgrading from systems before ostree supported
+    devicetree.
+  + Also notable is that ostree no longer hardlinks zero sized
+    files to avoid hitting filesystem maximum link counts.
+- Changes from version 2020.6:
+  + One notable feature: ostree now supports / and /boot being on
+    the same filesystem.
+  + Other than that it's mostly bugfixes; there is one quite
+    important one for anyone using the readonly=true for /sysroot
+    (which is still just Fedora CoreOS I suspect).
+  + There's some improvements to the GObject Introspection
+    metadata, some (cosmetic) static analyzer fixes, a fix for the
+    immutable bit on s390x, dropping a deprecated bit in the
+    systemd unit file, etc.
+- Changes from version 2020.5:
+  + This release primarily fixes a regression in 2020.4 where the
+    "readonly sysroot" changes incorrectly left the sysroot
+    read-only on systems that started out with a read-only / (most
+    of them, e.g. Fedora Silverblue/IoT at least).
+  + There's some additions to the pull API to aid flatpak.
+  + There were a few fixes to the man pages, and ostree show now
+    displays the parent commit.
+  + The default dracut config now enables reproducibility.
+  + On the "feature" side, there is a new ostree admin unlock
+    --transient. We expect this to be a foundation for further
+   support for "live" updates.
+- Changes from version 2020.4:
+  + By far the biggest change in this release is new ed25519
+    signing support, powered by libsodium.
+  + stree commit gained a new --base argument, which significantly
+    simplifies constructing "derived" commits, particularly for
+    systems using SELinux.
+  + Handling of the read-only sysroot was reimplemented to run in
+    the initramfs and be more reliable. Enabling the readonly=true
+    flag in the repo config is recommended.
+  + Several bugs were fixed in locking for the temporary "staging"
+    directories OSTree creates, particularly on NFS.
+  + lib: Coerce flags enums to GIR bitfields changed some values to
+    be (correctly) flags - this may show up as incompatible for
+    GObject Introspection consumers (but not C).
+  + A new timestamp-check-from-rev option was added for pulls,
+    which makes downgrade protection more reliable and will be used
+    by Fedora CoreOS.
+  + Several fixes and enhancements were made for "collection" pulls
+    including a new --mirror option.
+  + The ostree commit command learned a new --mode-ro-executables
+    which enforces W^R semantics on all executables.
+  + A new commit metadata key (OSTREE_COMMIT_META_KEY_ARCHITECTURE)
+    was added to help standardize the architecture of the OSTree
+    commit. This could be used on the client side for example to
+    sanity-check that the commit matches the architecture of the
+    machine before deploying.
+
+-------------------------------------------------------------------
 Thu Apr 30 15:13:19 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Stop invalid usage of %_libexecdir:

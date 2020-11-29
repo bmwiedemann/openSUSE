@@ -19,7 +19,7 @@
 %define _dracutmodulesdir %(pkg-config --variable dracutmodulesdir dracut)
 
 Name:           libostree
-Version:        2020.3
+Version:        2020.8
 Release:        0
 Summary:        Git for operating system binaries
 License:        LGPL-2.0-or-later
