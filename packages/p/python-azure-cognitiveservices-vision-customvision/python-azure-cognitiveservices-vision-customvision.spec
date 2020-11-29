@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-cognitiveservices-vision-customvision
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        Microsoft Azure Custom Vision Client Library
 License:        MIT
