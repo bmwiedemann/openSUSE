@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 26 16:48:21 CET 2020 - tiwai@suse.de
+
+- Move the startup snippet to /usr/etc/X11/xim.d for TW
+
+-------------------------------------------------------------------
 Sat Apr 13 13:52:34 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Stop packaging the -qt4 plugin on openSUSE >= 1500.
