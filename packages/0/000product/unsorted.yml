@@ -5494,7 +5494,7 @@ unsorted:
   - glib2-devel 
   - glib2-devel-32bit: [x86_64] 
   - glib2-devel-static 
-  - glib2-tests 
+  - glib2-tests-devel 
   - glib2-tools-32bit: [x86_64] 
   - glibc-devel-32bit: [x86_64] 
   - glibc-devel-static 
@@ -8969,8 +8969,8 @@ unsorted:
   - libMagick++-7_Q16HDRI4-32bit: [x86_64] 
   - libMagick++-devel 
   - libMagick++-devel-32bit: [x86_64] 
-  - libMagickCore-7_Q16HDRI7-32bit: [x86_64] 
-  - libMagickWand-7_Q16HDRI7-32bit: [x86_64] 
+  - libMagickCore-7_Q16HDRI8-32bit: [x86_64] 
+  - libMagickWand-7_Q16HDRI8-32bit: [x86_64] 
   - libMathMLSolver0_3 
   - libMrm4 
   - libMrm4-32bit: [x86_64] 
@@ -10073,7 +10073,7 @@ unsorted:
   - libcinnamon-menu-3-0 
   - libcinnamon-menu-3-0-32bit: [x86_64] 
   - libcinnamon-menu-3-devel 
-  - libcint3 
+  - libcint4 
   - libcircle-devel 
   - libcircle2 
   - libcircllhist-devel 
@@ -12380,6 +12380,8 @@ unsorted:
   - libnotmuch5 
   - libnova-0_15-0 
   - libnova-devel 
+  - libnpupnp-devel 
+  - libnpupnp4 
   - libns1604-32bit: [x86_64] 
   - libnscd-devel 
   - libnsl-devel 
@@ -12400,7 +12402,7 @@ unsorted:
   - libnuma1-32bit: [x86_64] 
   - libnumbertext-devel 
   - libnumbertext-tools 
-  - libnuspell3 
+  - libnuspell4 
   - libnvidia-container-devel: [x86_64] 
   - libnvidia-container-static: [x86_64] 
   - libnvidia-container-tools: [x86_64] 
@@ -14245,6 +14247,8 @@ unsorted:
   - libupm1 
   - libupnp-devel 
   - libupnp17-32bit: [x86_64] 
+  - libupnpp-devel 
+  - libupnpp9 
   - libupower-glib-devel 
   - libupsclient1 
   - liburcu-devel 
@@ -18157,6 +18161,8 @@ unsorted:
   - os-autoinst-devel 
   - os-autoinst-distri-opensuse-deps 
   - os-autoinst-openvswitch 
+  - os-autoinst-qemu-kvm: [x86_64] 
+  - os-autoinst-qemu-x86: [x86_64] 
   - os-maven-plugin 
   - os-maven-plugin-javadoc 
   - os-service-types-doc 
@@ -19541,7 +19547,6 @@ unsorted:
   - perl-Path-IsDev 
   - perl-Path-Router 
   - perl-Path-Tiny 
-  - perl-PathTools 
   - perl-Perl-Critic 
   - perl-Perl-Critic-Freenode 
   - perl-Perl-Critic-Policy-Variables-ProhibitLoopOnHash 
@@ -19583,6 +19588,7 @@ unsorted:
   - perl-Proc-Fork 
   - perl-Proc-ProcessTable 
   - perl-Proc-Simple 
+  - perl-Protocol-HTTP2 
   - perl-Protocol-Redis 
   - perl-Protocol-Redis-Faster 
   - perl-Protocol-WebSocket 
@@ -22802,7 +22808,6 @@ unsorted:
   - python3-mongoengine 
   - python3-monitoring-plugins-http_json 
   - python3-monotonic 
-  - python3-more-itertools 
   - python3-morecvutils 
   - python3-moreorless 
   - python3-moretools 
@@ -24222,7 +24227,6 @@ unsorted:
   - python3-zhon 
   - python3-zict 
   - python3-zignal 
-  - python3-zipp 
   - python3-zipstream 
   - python3-zodbpickle 
   - python3-zope.cachedescriptors 
@@ -25253,6 +25257,8 @@ unsorted:
   - ruby2.7-rubygem-po_to_json-doc 
   - ruby2.7-rubygem-po_to_json-testsuite 
   - ruby2.7-rubygem-polyglot-doc 
+  - ruby2.7-rubygem-prawn-core-doc 
+  - ruby2.7-rubygem-prawn-core-testsuite 
   - ruby2.7-rubygem-pry-doc-testsuite 
   - ruby2.7-rubygem-pry_debug 
   - ruby2.7-rubygem-pry_debug-doc 
