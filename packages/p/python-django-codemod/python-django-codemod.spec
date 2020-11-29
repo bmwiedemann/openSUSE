@@ -18,19 +18,21 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-codemod
-Version:        0.13.0
+Version:        1.0.0
 Release:        0
 Summary:        Collections of libCST codemodders to upgrade Django
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/browniebroke/django-codemod
-Source:         https://files.pythonhosted.org/packages/source/d/django-codemod/django-codemod-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+Source:         https://github.com/browniebroke/django-codemod/archive/v%{version}.tar.gz#/django-codemod-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click
 Requires:       python-libcst
 Requires:       python-rich
+Recommends:     python-setuptools
 Requires(post):   update-alternatives
 Requires(postun):  update-alternatives
 BuildArch:      noarch
@@ -49,14 +51,14 @@ Collections of libCST codemodders to upgrade Django.
 
 %prep
 %setup -q -n django-codemod-%{version}
-sed -i 's/rich<5/rich/' setup.cfg
-sed -i '/addopts/d' setup.cfg
+sed -i 's/rich = ".*"/rich = "*"/' pyproject.toml
+sed -i '/addopts/d' pyproject.toml
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/djcodemod
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
