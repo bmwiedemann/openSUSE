@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 25 16:28:09 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_tigervnc_update_default_vncxstartup.patch
+  * check first for /usr/libexec/xinit/xinitrc, then 
+    /etc/X11/xinit/xinitrc (reported by aschnell @SUSE)
+
+-------------------------------------------------------------------
 Thu Nov 19 13:43:27 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - xvnc@.service: fixed path for %libexecdir (boo#1178601) 

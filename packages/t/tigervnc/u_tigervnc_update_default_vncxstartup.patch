@@ -2,11 +2,11 @@ Author: Michal Srb <msrb@suse.com>
 References: bnc#956537
 Subject: Update default vnc xstartup script.
 
-Index: b/unix/vncserver
+Index: tigervnc-1.10.1/unix/vncserver
 ===================================================================
---- a/unix/vncserver
-+++ b/unix/vncserver
-@@ -58,27 +58,31 @@ $defaultXStartup
+--- tigervnc-1.10.1.orig/unix/vncserver
++++ tigervnc-1.10.1/unix/vncserver
+@@ -58,27 +58,33 @@ $defaultXStartup
      = ("#!/bin/sh\n\n".
         "unset SESSION_MANAGER\n".
         "unset DBUS_SESSION_BUS_ADDRESS\n".
@@ -22,12 +22,14 @@ Index: b/unix/vncserver
 -       "  esac\n".
 +       "\n".
 +       "userclientrc=\$HOME/.xinitrc\n".
-+       "sysclientrc=/etc/X11/xinit/xinitrc\n".
++       "sysclientrc=/usr/libexec/xinit/xinitrc\n".
 +       "\n".
 +       "if [ -f \"\$userclientrc\" ]; then\n".
 +       "  client=\"\$userclientrc\"\n".
 +       "elif [ -f \"\$sysclientrc\" ]; then\n".
 +       "  client=\"\$sysclientrc\"\n".
++       "elif [ -f \"/etc/X11/xinit/xinitrc\" ]; then\n".
++       "  client=\"/etc/X11/xinit/xinitrc\"\n".
         "fi\n".
 -       "if [ -x /etc/X11/xinit/xinitrc ]; then\n".
 -       "  exec /etc/X11/xinit/xinitrc\n".
