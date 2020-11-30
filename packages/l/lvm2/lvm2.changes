@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 25 03:06:00 UTC 2020 - heming.zhao@suse.com
+
+- Update lvm2.spec file (bsc#1177533)
+  - in %postun, disable restart blk-availability.service & lvm2-monitor.service
+
+-------------------------------------------------------------------
 Mon Oct 12 10:00:20 UTC 2020 - ghe@suse.com
 
 - Update lvm2.spec file (bsc#1174336)

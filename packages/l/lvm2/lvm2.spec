@@ -1,7 +1,7 @@
 #
 # spec file for package lvm2
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -480,7 +480,8 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 %postun
 /sbin/ldconfig
 %{?regenerate_initrd_post}
-%service_del_postun blk-availability.service lvm2-monitor.service lvm2-lvmpolld.service lvm2-lvmpolld.socket
+%service_del_postun lvm2-lvmpolld.service lvm2-lvmpolld.socket
+%service_del_postun_without_restart blk-availability.service lvm2-monitor.service
 
 %files
 %license COPYING COPYING.LIB
