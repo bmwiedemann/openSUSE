@@ -366,4 +366,12 @@ the core is LGPL-3.0+ but most of what is outside the code is BSD-3-Clause (forw
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>843235</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>26e35bd0a7d5e9e5ef778314b421fc3b</srcmd5>
+    <version>20.0.0</version>
+    <time>1606726383</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850815</requestid>
+  </revision>
 </revisionlist>

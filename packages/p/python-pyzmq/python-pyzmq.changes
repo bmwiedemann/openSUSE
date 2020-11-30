@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov 25 16:26:52 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- update to version 20.0.0:
+  * fix build with ZeroMQ 4.3.3
+  * drops support for Python < 3.5
+  * Respect $PKG_CONFIG env for finding libzmq when building from source
+  * :meth:`.Socket.bind` and :meth:`.Socket.connect`
+    can now be used as context managers.
+  * Hold GIL while calling ``zmq_curve_`` functions,
+    which may fix apparent threadsafety issues.
+
+- skip_test_tracker.patch: refreshed
+
+-------------------------------------------------------------------
 Wed Oct 14 13:59:04 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Skip failing tests (gh#zeromq/pyzmq#1431 or gh#zeromq/pyzmq#1432)

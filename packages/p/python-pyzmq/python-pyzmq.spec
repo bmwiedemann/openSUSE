@@ -16,6 +16,8 @@
 #
 
 
+%define skip_python2 1
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # Disable tests, they are very slow/halt on many arch
 %ifarch x86_64
@@ -24,7 +26,7 @@
 %bcond_with     tests
 %endif
 Name:           python-pyzmq
-Version:        19.0.2
+Version:        20.0.0
 Release:        0
 Summary:        Python bindings for 0MQ
 License:        LGPL-3.0-or-later AND BSD-3-Clause
@@ -76,17 +78,10 @@ Requires:       zeromq-devel
 Development libraries and headers needed to build software using %{name}.
 
 %prep
-%setup -q -n pyzmq-%{version}
+%autosetup -n pyzmq-%{version} -p1
+
 # Fix non-executable script rpmlint warning:
 find examples zmq -name "*.py" -exec sed -i "s|#\!\/usr\/bin\/env python||" {} \;
-
-# Remove non-deterministic authentication test
-# This fails to connect randomly
-rm -rf zmq/tests/test_auth.py
-sed -i '/from zmq.tests.test_auth/d' zmq/tests/asyncio/_test_asyncio.py
-sed -i 's/TestThreadAuthentication/object/' zmq/tests/asyncio/_test_asyncio.py
-
-%patch1
 
 %build
 export CFLAGS="%{optflags}"
