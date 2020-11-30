@@ -20,7 +20,7 @@
 %define packagename lfdfiles
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-lfdfiles
-Version:        2020.1.1
+Version:        2020.9.18
 Release:        0
 Summary:        Laboratory for Fluorescence Dynamics (LFD) file formats
 License:        BSD-3-Clause
@@ -29,21 +29,21 @@ Source:         https://github.com/cgohlke/lfdfiles/archive/v%{version}.tar.gz#/
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module czifile >= 2019.7.2}
-BuildRequires:  %{python_module matplotlib >= 3.1.0}
-BuildRequires:  %{python_module netpbmfile >= 2020.1.1}
-BuildRequires:  %{python_module numpy >= 1.14}
-BuildRequires:  %{python_module oiffile >= 2020.1.1}
+BuildRequires:  %{python_module matplotlib >= 3.2.0}
+BuildRequires:  %{python_module netpbmfile >= 2020.9.18}
+BuildRequires:  %{python_module numpy >= 1.15}
+BuildRequires:  %{python_module oiffile >= 2020.9.18}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module tifffile >= 2019.7.2}
+BuildRequires:  %{python_module tifffile >= 2020.9.3}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click
 Requires:       python-czifile >= 2019.7.2
-Requires:       python-matplotlib >= 3.1.0
-Requires:       python-netpbmfile >= 2020.1.1
-Requires:       python-numpy >= 1.14
-Requires:       python-oiffile >= 2020.1.1
-Requires:       python-tifffile >= 2019.7.2
+Requires:       python-matplotlib >= 3.2.0
+Requires:       python-netpbmfile >= 2020.9.18
+Requires:       python-numpy >= 1.15
+Requires:       python-oiffile >= 2020.9.18
+Requires:       python-tifffile >= 2020.9.3
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %python_subpackages

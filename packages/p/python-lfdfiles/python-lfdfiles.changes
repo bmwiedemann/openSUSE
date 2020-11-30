@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 26 07:06:44 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 2020.9.18.
+  * Remove support for Python 3.6.
+  * Support os.PathLike file names.
+  * Fix writing contiguous series to TIFF files with 
+    tifffile >= 2020.9.3.
+
+-------------------------------------------------------------------
 Mon Aug 10 11:58:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update the archive to match up the upstream one
