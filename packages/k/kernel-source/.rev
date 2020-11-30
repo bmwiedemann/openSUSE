@@ -5279,4 +5279,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>rpm 4.16 fixes &amp; 5.9.10 &amp; 5.9.9 &amp; no i386 kernel-obs-build</comment>
     <requestid>850131</requestid>
   </revision>
+  <revision rev="565" vrev="1">
+    <srcmd5>72e374c741d56f925d0cf6f04005670d</srcmd5>
+    <version>5.9.11</version>
+    <time>1606726387</time>
+    <user>dimstar_suse</user>
+    <comment>5.9.11 (incl. s390 BS crashes) &amp; AMIGA_PARTITION enabled</comment>
+    <requestid>850892</requestid>
+  </revision>
 </revisionlist>

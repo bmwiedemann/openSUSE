@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.9
-%define patchversion 5.9.10
+%define patchversion 5.9.11
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -68,9 +68,9 @@ Name:           kernel-pae
 Summary:        Kernel with PAE Support
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.9.10
+Version:        5.9.11
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gb7c3768
+Release:        <RELEASE>.g91426ef
 %else
 Release:        0
 %endif
@@ -179,10 +179,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-b7c376832975e08040a014ab1c36b480f0d3b41b
-Provides:       kernel-srchash-b7c376832975e08040a014ab1c36b480f0d3b41b
+Provides:       kernel-%build_flavor-base-srchash-91426efa17c9d25b4e397766a6ed536b4093c8f3
+Provides:       kernel-srchash-91426efa17c9d25b4e397766a6ed536b4093c8f3
 # END COMMON DEPS
-Provides:       %name-srchash-b7c376832975e08040a014ab1c36b480f0d3b41b
+Provides:       %name-srchash-91426efa17c9d25b4e397766a6ed536b4093c8f3
 %ifarch %ix86
 Provides:       kernel-bigsmp = 2.6.17
 Obsoletes:      kernel-bigsmp <= 2.6.17
@@ -785,8 +785,8 @@ done
 # keep this -suffix list in sync with post.sh and postun.sh
 suffix=-%build_flavor
 %endif
-ln -s X$image$suffix %buildroot/boot/$image$suffix
-ln -s Xinitrd$suffix %buildroot/boot/initrd$suffix
+ln -s XX$image$suffix %buildroot/boot/$image$suffix
+ln -s XXinitrd$suffix %buildroot/boot/initrd$suffix
 
 cp -p .config %buildroot/boot/config-%kernelrelease-%build_flavor
 sysctl_file=%buildroot/boot/sysctl.conf-%kernelrelease-%build_flavor
@@ -820,7 +820,7 @@ chmod 0600 %buildroot/boot/initrd-%kernelrelease-%build_flavor{,-kdump}
 if [ %CONFIG_MODULES = y ]; then
     mkdir -p %rpm_install_dir/%cpu_arch_flavor
     mkdir -p %buildroot/usr/src/linux-obj/%cpu_arch
-    ln -s X%build_flavor %buildroot/usr/src/linux-obj/%cpu_arch_flavor
+    ln -s XX%build_flavor %buildroot/usr/src/linux-obj/%cpu_arch_flavor
     install -m 755 -D -t %rpm_install_dir/%cpu_arch_flavor/scripts/mod/ scripts/mod/ksym-provides
 
     gzip -n -c9 < Module.symvers > %buildroot/boot/symvers-%kernelrelease-%build_flavor.gz

@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.9
-%define patchversion 5.9.10
+%define patchversion 5.9.11
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -30,9 +30,9 @@ Name:           kernel-source
 Summary:        The Linux Kernel Sources
 License:        GPL-2.0
 Group:          Development/Sources
-Version:        5.9.10
+Version:        5.9.11
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gb7c3768
+Release:        <RELEASE>.g91426ef
 %else
 Release:        0
 %endif
@@ -43,7 +43,7 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-b7c376832975e08040a014ab1c36b480f0d3b41b
+Provides:       %name-srchash-91426efa17c9d25b4e397766a6ed536b4093c8f3
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
@@ -224,7 +224,7 @@ cd ..
 %endif
 
 %if ! %vanilla_only
-ln -sf . linux%variant # dummy symlink
+ln -sf XXlinux%variant linux%variant # dummy symlink
 
 cd linux-%kernelrelease%variant
 %_sourcedir/apply-patches %_sourcedir/series.conf %my_builddir %symbols
