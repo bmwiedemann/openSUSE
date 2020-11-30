@@ -30,18 +30,14 @@
 %global zendver           20190902
 %define extension_dir     %{_libdir}/%{name}/extensions
 %define php_sysconf       %{_sysconfdir}/%{name}
-%if 0%{?is_opensuse} || 0%{?sle_version} >= 150200
-%define build_firebird 1
-%else
 %define build_firebird 0
-%endif
 %define build_sodium 1
 %define build_argon2 0
 %if %{?suse_version} >= 1500
 %define build_argon2 1
 %endif
 Name:           php7%{psuffix}
-Version:        7.4.12
+Version:        7.4.13
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 7
 License:        PHP-3.01
@@ -77,8 +73,6 @@ Patch10:        php-embed.patch
 Patch12:        php-crypt-tests.patch
 # https://bugs.php.net/bug.php?id=53007
 Patch14:        php-odbc-cmp-int-cast.patch
-# https://bugs.php.net/bug.php?id=70461
-Patch15:        php-fix_net-snmp_disable_MD5.patch
 # should be upstreamed, will do later
 Patch17:        php-date-regenerate-lexers.patch
 # build fixes in SLE12
@@ -922,7 +916,6 @@ cp %{SOURCE5} .
 %patch10 -p1
 %patch12 -p1
 %patch14 -p1
-%patch15
 %patch17 -p1
 %if 0%{?suse_version} <= 1315
 %patch18 -p1

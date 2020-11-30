@@ -1,18 +1,18 @@
 https://bugs.php.net/bug.php?id=53007
-Index: php-7.3.0/ext/odbc/php_odbc.c
+Index: php-7.4.13/ext/odbc/php_odbc.c
 ===================================================================
---- php-7.3.0.orig/ext/odbc/php_odbc.c	2018-12-04 17:12:22.000000000 +0100
-+++ php-7.3.0/ext/odbc/php_odbc.c	2018-12-10 10:19:02.668378553 +0100
-@@ -1804,7 +1804,7 @@ static void php_odbc_fetch_hash(INTERNAL
- 
- 				if (rc == SQL_SUCCESS_WITH_INFO) {
- 					ZVAL_STRINGL(&tmp, buf, result->longreadlen);
+--- php-7.4.13.orig/ext/odbc/php_odbc.c	2020-11-24 11:03:41.000000000 +0100
++++ php-7.4.13/ext/odbc/php_odbc.c	2020-11-26 08:19:46.512139501 +0100
+@@ -1811,7 +1811,7 @@ static void php_odbc_fetch_hash(INTERNAL
+ 				} else if (rc != SQL_SUCCESS) {
+ 					php_error_docref(NULL, E_WARNING, "Cannot get data of column #%d (retcode %u)", i + 1, rc);
+ 					ZVAL_FALSE(&tmp);
 -				} else if (result->values[i].vallen == SQL_NULL_DATA) {
 +				} else if ((int)result->values[i].vallen == (int)SQL_NULL_DATA) {
  					ZVAL_NULL(&tmp);
  					break;
  				} else {
-@@ -1813,7 +1813,7 @@ static void php_odbc_fetch_hash(INTERNAL
+@@ -1820,7 +1820,7 @@ static void php_odbc_fetch_hash(INTERNAL
  				break;
  
  			default:
@@ -21,16 +21,16 @@ Index: php-7.3.0/ext/odbc/php_odbc.c
  					ZVAL_NULL(&tmp);
  					break;
  				}
-@@ -1956,7 +1956,7 @@ PHP_FUNCTION(odbc_fetch_into)
- 				}
- 				if (rc == SQL_SUCCESS_WITH_INFO) {
- 					ZVAL_STRINGL(&tmp, buf, result->longreadlen);
+@@ -1967,7 +1967,7 @@ PHP_FUNCTION(odbc_fetch_into)
+ 				} else if (rc != SQL_SUCCESS) {
+ 					php_error_docref(NULL, E_WARNING, "Cannot get data of column #%d (retcode %u)", i + 1, rc);
+ 					ZVAL_FALSE(&tmp);
 -				} else if (result->values[i].vallen == SQL_NULL_DATA) {
 +				} else if ((int)result->values[i].vallen == (int)SQL_NULL_DATA) {
  					ZVAL_NULL(&tmp);
  					break;
  				} else {
-@@ -1965,7 +1965,7 @@ PHP_FUNCTION(odbc_fetch_into)
+@@ -1976,7 +1976,7 @@ PHP_FUNCTION(odbc_fetch_into)
  				break;
  
  			default:
@@ -39,16 +39,14 @@ Index: php-7.3.0/ext/odbc/php_odbc.c
  					ZVAL_NULL(&tmp);
  					break;
  				}
-@@ -2193,7 +2193,7 @@ PHP_FUNCTION(odbc_result)
+@@ -2208,13 +2208,13 @@ PHP_FUNCTION(odbc_result)
+ 				zend_string_efree(field_str);
+ 				php_error_docref(NULL, E_WARNING, "Cannot get data of column #%d (retcode %u)", field_ind + 1, rc);
  				RETURN_FALSE;
- 			}
- 
--			if (result->values[field_ind].vallen == SQL_NULL_DATA) {
-+			if ((int)result->values[field_ind].vallen == (int)SQL_NULL_DATA) {
+-			} else if (result->values[field_ind].vallen == SQL_NULL_DATA) {
++			} else if ((int)result->values[field_ind].vallen == (int)SQL_NULL_DATA) {
  				zend_string_efree(field_str);
  				RETURN_NULL();
- 			} else if (rc == SQL_NO_DATA_FOUND) {
-@@ -2202,7 +2202,7 @@ PHP_FUNCTION(odbc_result)
  			}
  			/* Reduce fieldlen by 1 if we have char data. One day we might
  			   have binary strings... */
@@ -57,7 +55,7 @@ Index: php-7.3.0/ext/odbc/php_odbc.c
  #if defined(ODBCVER) && (ODBCVER >= 0x0300)
  			    || (result->values[field_ind].coltype == SQL_WLONGVARCHAR)
  #endif
-@@ -2219,7 +2219,7 @@ PHP_FUNCTION(odbc_result)
+@@ -2232,7 +2232,7 @@ PHP_FUNCTION(odbc_result)
  			break;
  
  		default:
@@ -66,16 +64,25 @@ Index: php-7.3.0/ext/odbc/php_odbc.c
  				RETURN_NULL();
  			} else {
  				RETURN_STRINGL(result->values[field_ind].value, result->values[field_ind].vallen);
-@@ -2352,7 +2352,7 @@ PHP_FUNCTION(odbc_result_all)
- 					}
- 					if (rc == SQL_SUCCESS_WITH_INFO) {
- 						PHPWRITE(buf, result->longreadlen);
+@@ -2262,7 +2262,7 @@ PHP_FUNCTION(odbc_result)
+ 			RETURN_FALSE;
+ 		}
+ 
+-		if (result->values[field_ind].vallen == SQL_NULL_DATA) {
++		if ((int)result->values[field_ind].vallen == (int)SQL_NULL_DATA) {
+ 			efree(field);
+ 			RETURN_NULL();
+ 		}
+@@ -2376,7 +2376,7 @@ PHP_FUNCTION(odbc_result_all)
+ 						php_error_docref(NULL, E_WARNING, "Cannot get data of column #%zu (retcode %u)", i + 1, rc);
+ 						efree(buf);
+ 						RETURN_FALSE;
 -					} else if (result->values[i].vallen == SQL_NULL_DATA) {
 +					} else if ((int)result->values[i].vallen == (int)SQL_NULL_DATA) {
  						php_printf("<td>NULL</td>");
  						break;
  					} else {
-@@ -2361,7 +2361,7 @@ PHP_FUNCTION(odbc_result_all)
+@@ -2385,7 +2385,7 @@ PHP_FUNCTION(odbc_result_all)
  					php_printf("</td>");
  					break;
  				default:

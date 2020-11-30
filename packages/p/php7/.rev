@@ -969,4 +969,17 @@
   https://www.php.net/ChangeLog-7.php#7.4.12 (forwarded request 844919 from adkorte)</comment>
     <requestid>844983</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>2639895f2d5568360429008c238fd1ec</srcmd5>
+    <version>7.4.13</version>
+    <time>1606726397</time>
+    <user>dimstar_suse</user>
+    <comment>- do not build firebird extension in any case
+
+- updated to 7.4.13: This is a security release which also contains
+  several bug fixes. See https://www.php.net/ChangeLog-7.php#7.4.13
+- deleted patch (upstreamed)
+  - php-fix_net-snmp_disable_MD5.patch</comment>
+    <requestid>851286</requestid>
+  </revision>
 </revisionlist>
