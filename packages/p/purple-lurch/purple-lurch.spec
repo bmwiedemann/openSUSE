@@ -27,6 +27,8 @@ URL:            https://github.com/gkdr/lurch
 Source:         https://github.com/gkdr/lurch/releases/download/v%{version}/%{_name}-%{version}-src.tar.gz
 # PATCH-FIX-UPSTREAM purple-lurch-libomemo-fix-dino-compat.patch -- Fix compatibility issues with Dino (commit e3b2125e).
 Patch0:         purple-lurch-libomemo-fix-dino-compat.patch
+# PATCH-FIX-UPSTREAM https://github.com/gkdr/libomemo/pull/27
+Patch1:         libomemo-27.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libgcrypt-devel

@@ -31,4 +31,12 @@
     <comment>- Fix compatibility issues with Dino.</comment>
     <requestid>731340</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d6946e2275b2996ef3492c2e640e032f</srcmd5>
+    <version>0.6.8</version>
+    <time>1606726445</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851695</requestid>
+  </revision>
 </revisionlist>
