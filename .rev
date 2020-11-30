@@ -690,4 +690,14 @@
     <comment>- xvnc@.service: fixed path for %libexecdir (boo#1178601)</comment>
     <requestid>849439</requestid>
   </revision>
+  <revision rev="73" vrev="8">
+    <srcmd5>ab8c304a8701156ba03e6570fb936fb1</srcmd5>
+    <version>1.10.1</version>
+    <time>1606726381</time>
+    <user>dimstar_suse</user>
+    <comment>- u_tigervnc_update_default_vncxstartup.patch
+  * check first for /usr/libexec/xinit/xinitrc, then 
+    /etc/X11/xinit/xinitrc (reported by aschnell @SUSE)</comment>
+    <requestid>850782</requestid>
+  </revision>
 </revisionlist>
