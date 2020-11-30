@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 26 03:15:35 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible2.patch to negate influences from preinstallimage
+  to make package build reproducible
+
+-------------------------------------------------------------------
 Fri Oct 23 06:58:01 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Do not use lto compiler flags at all with this kind of code 

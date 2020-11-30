@@ -35,6 +35,7 @@ Patch6:         procmail-%{version}-ipv6.patch
 # PATCH-FIX-SUSE bmwiedemann -- make build reproducible
 Patch8:         reproducible.patch
 Patch10:        procmail-fix-Werror=return-type.patch
+Patch11:        reproducible2.patch
 BuildRequires:  pcre-devel
 BuildRequires:  postfix
 Requires:       /bin/sed
@@ -61,6 +62,7 @@ done
 %patch6 -p1
 %patch8 -p1
 %patch10 -p1
+%patch11 -p1
 sed -ri '\@^/\*@,\@\*/@{ s@^(/\*[^*]*)(/\*)@\1\*/ \2@; }' config.h
 sed -ri '\@^/\*@,\@\*/@{ s@^(/\*[^*]*)(/\*)@\1\*/ \2@; }' src/includes.h
 sed -ri '\@^#.*[[:blank:]]+/\*[^/]*$@M,\@\*/$@{ s@(^[[:blank:]]+)/\*@\1  @;}' src/includes.h

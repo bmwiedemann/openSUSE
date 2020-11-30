@@ -252,4 +252,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>844980</requestid>
   </revision>
+  <revision rev="34" vrev="276">
+    <srcmd5>67068db5bd74a7748641be81f8734ef2</srcmd5>
+    <version>3.22</version>
+    <time>1606726389</time>
+    <user>dimstar_suse</user>
+    <comment>Add reproducible2.patch to negate influences from preinstallimage to make package build reproducible (forwarded request 850841 from bmwiedemann)</comment>
+    <requestid>850903</requestid>
+  </revision>
 </revisionlist>
