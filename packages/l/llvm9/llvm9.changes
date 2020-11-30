@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 25 08:05:06 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Add patch Fix-big-endian-miscompile-of-bitcast-zex.patch
+  to fix miscompilations with rustc 1.43 that lead to LTO failures
+  (bsc#1173202)
+
+-------------------------------------------------------------------
 Sat Nov 14 22:09:41 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Let CMake files in {llvm,clang}X-devel refer to the versioned
