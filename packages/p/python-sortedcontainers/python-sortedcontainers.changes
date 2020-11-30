@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 26 08:40:07 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.3.0:
+  * Make sort order stable when updating with large iterables.
+
+-------------------------------------------------------------------
 Tue Aug 11 07:24:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch to multibuild to avoid cycles with matplotib

@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-sortedcontainers%{psuffix}
-Version:        2.2.2
+Version:        2.3.0
 Release:        0
 Summary:        Sorted container data types
 License:        Apache-2.0

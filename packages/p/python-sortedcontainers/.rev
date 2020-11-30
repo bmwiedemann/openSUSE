@@ -90,4 +90,13 @@
     <comment>- Switch to multibuild to avoid cycles with matplotib</comment>
     <requestid>825708</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5e8e1471b64edc7e31247c644c6b87bd</srcmd5>
+    <version>2.3.0</version>
+    <time>1606726396</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.0:
+  * Make sort order stable when updating with large iterables.</comment>
+    <requestid>850919</requestid>
+  </revision>
 </revisionlist>
