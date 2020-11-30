@@ -442,4 +442,12 @@ See lib/register/dmreg.c and tools/dmevent_tool.c (both have GPL-2.0 license) (f
   a warning. (forwarded request 705677 from marxin)</comment>
     <requestid>705713</requestid>
   </revision>
+  <revision rev="61" vrev="42">
+    <srcmd5>137ccd19d8f5797b15a26f00ea73cbce</srcmd5>
+    <version>1.0.0.rc16</version>
+    <time>1606726385</time>
+    <user>dimstar_suse</user>
+    <comment>- prepare usrmerge (boo#1029961) (forwarded request 849711 from lnussel)</comment>
+    <requestid>850824</requestid>
+  </revision>
 </revisionlist>

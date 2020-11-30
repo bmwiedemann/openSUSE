@@ -1,7 +1,7 @@
 #
 # spec file for package dmraid
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?usrmerged}
+%define sbindir %_sbindir
+%else
+%define sbindir /sbin
+%endif
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
@@ -34,10 +40,9 @@ Requires:       aaa_base
 Requires:       kpartx
 Requires(post): coreutils
 Requires(postun): coreutils
-Url:            http://people.redhat.com/~heinzm/sw/dmraid/src/
+URL:            http://people.redhat.com/~heinzm/sw/dmraid/src/
 Summary:        A Device-Mapper Software RAID Support Tool
 License:        GPL-2.0-only
-Group:          System/Base
 Version:        1.0.0.rc16
 Release:        0
 Source:         ftp://people.redhat.com/heinzm/sw/dmraid/src/dmraid-%{version}.tar.bz2
@@ -83,7 +88,6 @@ The following ATARAID types are supported:
 
 %package devel
 Summary:        Development files for dmraid
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 
 %description devel
@@ -116,15 +120,16 @@ cp %{SOURCE3} .
 autoreconf -fi
 rm -r autom4te.cache
 %configure \
-  --libdir=/%_lib \
-  --sbindir=/sbin \
+%if !0%{?usrmerged}
+  --sbindir=%{sbindir} \
+%endif
   --with-user=`id -nu` --with-group=`id -ng` \
   --enable-libselinux --enable-libsepol
 make
 
 %install
 make install DESTDIR=$RPM_BUILD_ROOT
-rm -f $RPM_BUILD_ROOT/%_lib/libdmraid.a
+rm -f $RPM_BUILD_ROOT/%_libdir/libdmraid.a
 mkdir -p $RPM_BUILD_ROOT%{_fillupdir}
 install -m644 %{SOURCE1} $RPM_BUILD_ROOT%{_fillupdir}/sysconfig.dmraid
 install -D -m 0644 %{S:6} %{buildroot}%{_unitdir}/dmraid-activation.service
@@ -156,13 +161,13 @@ chmod -x %{buildroot}%{_prefix}/include/dmraid/*h
 
 %files
 %defattr(-, root, root)
-/sbin/dmraid
-/sbin/dmevent_tool
+%{sbindir}/dmraid
+%{sbindir}/dmevent_tool
 %{_mandir}/man8/*
 %doc LICENSE LICENSE_GPL LICENSE_LGPL README README.SUSE TODO doc/*
 %{_fillupdir}/sysconfig.dmraid
-/%{_lib}/libdmraid-events-isw.so
-/%{_lib}/libdmraid.so.1.0.0.rc16-3
+%{_libdir}/libdmraid-events-isw.so
+%{_libdir}/libdmraid.so.1.0.0.rc16-3
 %dir %{_tmpfilesdir}
 %{_tmpfilesdir}/dmraid.conf
 %{_unitdir}/dmraid-activation.service
@@ -171,6 +176,6 @@ chmod -x %{buildroot}%{_prefix}/include/dmraid/*h
 %defattr(-, root, root)
 %dir %{_prefix}/include/dmraid
 %{_prefix}/include/dmraid
-/%{_lib}/libdmraid.so
+%{_libdir}/libdmraid.so
 
 %changelog
