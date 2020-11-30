@@ -41,4 +41,12 @@
     rr recordings run &quot;detached&quot; to create a separate recording.</comment>
     <requestid>844721</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>fef340a6bc95479c27f499bde9094741</srcmd5>
+    <version>5.4.0</version>
+    <time>1606726420</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851666</requestid>
+  </revision>
 </revisionlist>

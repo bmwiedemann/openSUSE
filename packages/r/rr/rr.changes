@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov 29 02:26:28 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Only build for x86_64
+
+-------------------------------------------------------------------
 Thu Oct 29 07:39:40 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 5.4.0:

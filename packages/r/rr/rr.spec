@@ -34,7 +34,7 @@ BuildRequires:  python3-base
 BuildRequires:  python3-pexpect
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(zlib)
-ExclusiveArch:  x86_64 %{ix86}
+ExclusiveArch:  x86_64
 %ifarch x86_64
 BuildRequires:  gcc-c++-32bit
 %endif
