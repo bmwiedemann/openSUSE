@@ -34,8 +34,10 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
+# upcoming python3 multiflavor: minimum supported python is 3.7
+%define         skip_python36 1
 Name:           python-astropy
-Version:        4.1
+Version:        4.2
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
@@ -44,43 +46,41 @@ Source:         https://files.pythonhosted.org/packages/source/a/astropy/astropy
 # Mark wcs headers as false positives for devel-file-in-non-devel-package
 # These are used by the python files so they must be available.
 Source100:      python-astropy-rpmlintrc
-# PATCH-FEATURE-UPSTREAM astropy-pr10329-unbundle-erfa_4.1.patch gh#astropy/astropy#10329 -- unbundle  _erfa and use pyerfa instead
-Patch0:         astropy-pr10329-unbundle-erfa_4.1.patch
 # https://docs.astropy.org/en/v4.1/install.html#requirements
 BuildRequires:  %{python_module Cython >= 0.21}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module extension-helpers}
-BuildRequires:  %{python_module numpy-devel >= 1.16}
+BuildRequires:  %{python_module numpy-devel >= 1.17}
+BuildRequires:  %{python_module pyerfa}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  hdf5-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-Requires:       python >= 3.6
+Requires:       python >= 3.7
 Requires:       python-dbm
-Requires:       python-numpy >= 1.16.0
+Requires:       python-numpy >= 1.17
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     libxml2-tools
 Recommends:     python-Bottleneck
-Recommends:     python-PyYAML >= 3.12
+Recommends:     python-PyYAML >= 3.13
 Recommends:     python-asdf >= 2.6
 Recommends:     python-beautifulsoup4
 Recommends:     python-bleach
 Recommends:     python-h5py
 Recommends:     python-html5lib
 Recommends:     python-jplephem
-Recommends:     python-matplotlib >= 2.1
+Recommends:     python-matplotlib >= 3
 Recommends:     python-mpmath
 Recommends:     python-pandas
-Recommends:     python-scipy >= 0.18
+Recommends:     python-scipy >= 1.1
 Recommends:     python-setuptools
 Recommends:     python-sortedcontainers
 Conflicts:      perl-Data-ShowTable
 %if %{with systemlibs}
-BuildRequires:  %{python_module pyerfa}
 BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(wcslib) >= 7
@@ -89,17 +89,17 @@ Requires:       python-pyerfa
 %if %{with test}
 # SECTION Optional requirements
 BuildRequires:  %{python_module Bottleneck}
-BuildRequires:  %{python_module PyYAML >= 3.12}
+BuildRequires:  %{python_module PyYAML >= 3.13}
 BuildRequires:  %{python_module asdf >= 2.6}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module bleach}
 BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module jplephem}
-BuildRequires:  %{python_module matplotlib >= 2.1}
+BuildRequires:  %{python_module matplotlib >= 3}
 BuildRequires:  %{python_module mpmath}
 BuildRequires:  %{python_module pandas}
-BuildRequires:  %{python_module scipy >= 0.18}
+BuildRequires:  %{python_module scipy >= 1.1}
 BuildRequires:  %{python_module sortedcontainers}
 BuildRequires:  libxml2-tools
 # /SECTION
@@ -128,18 +128,12 @@ managing them.
 %setup -q -n astropy-%{version}
 
 %if %{with systemlibs}
-# unbundle liberfa with new package pyerfa
-%patch0 -p1
-rm -rf cextern/erfa
-rm licenses/ERFA.rst
-
 # Make sure bundled libs are not used
 rm -rf cextern/cfitsio
 rm -rf cextern/expat
 rm -rf cextern/wcslib
 rm licenses/EXPAT_LICENSE.rst
 rm licenses/WCSLIB_LICENSE.rst
-
 %endif
 
 # Disable test failure on DeprecationWarnings
@@ -179,7 +173,7 @@ pytestargs = ('-v '
               '-n auto ' # pytest-xdist
               '-p no:cacheprovider '
               '--hypothesis-profile=obs '
-              '$testselect_expr')              
+              '$testselect_expr')
 returncode = astropy.test(args=pytestargs)
 sys.exit(returncode)
 "

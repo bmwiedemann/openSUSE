@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Nov 28 21:28:47 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to Version 4.2
+  Astropy 4.2 is a major release that adds new funcionality since
+  the 4.1 release.
+  In particular, this release includes:
+  * Planck 2018 is accepted and now the default cosmology
+  * Time performance improvements
+  * Removed ERFA module
+  In addition to these major changes, Astropy v4.2 includes smaller
+  improvements and bug fixes and significant cleanup, which are
+  described in the Full Changelog. By the numbers:
+  * 183 issues have been closed since v4.1
+  * 105 pull requests have been merged since v4.1
+  * 63 distinct people have contributed code
+- Bump requirements versions
+- Drop astropy-pr10329-unbundle-erfa_4.1.patch merged upstream
+
+-------------------------------------------------------------------
 Thu Oct 22 09:36:36 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 4.1
