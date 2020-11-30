@@ -20075,7 +20075,6 @@ unsorted:
   - php7-exif 
   - php7-fastcgi 
   - php7-fileinfo 
-  - php7-firebird 
   - php7-fpm 
   - php7-ftp 
   - php7-gmagick 
@@ -24703,7 +24702,7 @@ unsorted:
   - rpmlint-mini 
   - rpmorphan 
   - rpmrebuild 
-  - rr 
+  - rr: [x86_64] 
   - rrdtool 
   - rrdtool-cached 
   - rrdtool-devel 
@@ -35231,6 +35230,7 @@ unsorted:
   - update-test-trivial 
   - uperf 
   - upm-devel 
+  - upmpdcli 
   - upsm 
   - upx 
   - uranium: [x86_64] 
