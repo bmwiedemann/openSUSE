@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov 29 11:46:23 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- HPC: Fix environment module settings for MANPATH.
+
+-------------------------------------------------------------------
 Sat Jul 25 07:07:11 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - For HPC builds check for gnu compiler suite version >= 10 and

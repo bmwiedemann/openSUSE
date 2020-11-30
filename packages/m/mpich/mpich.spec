@@ -515,9 +515,9 @@ module-whatis "URL: %{url}"
 
 set     version                     %{version}
 
-prepend-path    PATH                %{hpc_prefix}/bin
-prepend-path    MANPATH             %{hpc_prefix}/man
-prepend-path    LD_LIBRARY_PATH     %{hpc_prefix}/%_lib
+prepend-path    PATH                %{hpc_bindir}
+prepend-path    MANPATH             %{hpc_mandir}
+prepend-path    LD_LIBRARY_PATH     %{hpc_libdir}
 prepend-path    MODULEPATH          %{hpc_modulepath}
 prepend-path    MPI_DIR             %{hpc_prefix}
 %{hpc_modulefile_add_pkgconfig_path}
