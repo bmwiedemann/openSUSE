@@ -128,6 +128,8 @@
   bsc#1174539: '20200909'
   bsc#1177675: '20201030'
   bsc#1177982: '20201030'
+  bsc#1179416: '20201129'
+  bsc#1179417: '20201129'
   gh#os-autoinst/os-autoinst-distri-opensuse#10856: '20200825'
   gh#os-autoinst/os-autoinst-distri-opensuse#10982: '20200910'
   kde#427775: '20201014'
@@ -514,8 +516,8 @@ set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
     <value>failed: ''
-published: '20201127'
-publishing: '20201127'
+published: '20201129'
+publishing: '20201129'
 testing: '20201129'
 </value>
   </attribute>
