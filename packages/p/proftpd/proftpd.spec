@@ -22,7 +22,7 @@ Summary:        Configurable GPL-licensed FTP server software
 # We only accept updates for "STABLE" Versions
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Ftp/Servers
-Version:        1.3.6d
+Version:        1.3.6e
 Release:        0
 URL:            http://www.proftpd.org/
 Source0:        ftp://ftp.proftpd.org/distrib/source/%{name}-%{version}.tar.gz
@@ -63,7 +63,7 @@ BuildRequires:  pkg-config
 BuildRequires:  postgresql-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  unixODBC-devel
-BuildRequires:  pkgconfig(libssl) < 1.1
+BuildRequires:  pkgconfig(libssl)
 Requires:       logrotate
 %if 0%{?lang_package:1} > 0
 Recommends:     %{name}-lang
