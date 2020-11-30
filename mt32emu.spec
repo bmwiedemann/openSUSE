@@ -27,16 +27,17 @@ URL:            https://github.com/munt/munt
 Source0:        https://github.com/munt/munt/archive/lib%{name}_%{_version}.tar.gz
 Source1:        %{name}.desktop
 Source2:        %{name}.png
-BuildRequires:  alsa-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  glib2-devel
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libQt5Core-devel
-BuildRequires:  libQt5Gui-devel
-BuildRequires:  libQt5Widgets-devel
-BuildRequires:  libpulse-devel
-BuildRequires:  portaudio-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(portaudio-2.0)
 Requires:       lib%{name}%{sover} = %{version}
 
 %description
@@ -51,14 +52,14 @@ This package provides the %{name} library.
 
 %package -n lib%{name}-devel
 Summary:        Development files for lib%{name}
-Requires:       alsa-devel
-Requires:       glib2-devel
-Requires:       libQt5Core-devel
-Requires:       libQt5Gui-devel
-Requires:       libQt5Widgets-devel
 Requires:       libmt32emu%{sover} = %{version}
-Requires:       libpulse-devel
-Requires:       portaudio-devel
+Requires:       pkgconfig(Qt5Core)
+Requires:       pkgconfig(Qt5Gui)
+Requires:       pkgconfig(Qt5Widgets)
+Requires:       pkgconfig(alsa)
+Requires:       pkgconfig(glib-2.0)
+Requires:       pkgconfig(libpulse)
+Requires:       pkgconfig(portaudio-2.0)
 
 %description -n lib%{name}-devel
 A multi-platform software synthesiser emulating pre-GM MIDI devices such as the Roland MT-32, CM-32L, CM-64 and LAPC-I.
