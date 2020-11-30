@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Wed Nov 25 12:31:40 UTC 2020 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to 1.5.2:
+  * Modify a few things which should not have mattered but which prevented Lumin to work with upmpdcli
+  * Qobuz plugin working again (for now), by identifying itself as the web client (thanks to qobuz-dl on github)
+  * Fixed crash
+  * Will now generate events for bitrate changes when playing
+
+- update to 1.5.1:
+  * Fix small issue resulting in missing metadata in ohinfo
+
+
+-------------------------------------------------------------------
+Thu Nov 19 10:39:33 UTC 2020 - Michael Pujos <pujos.michael@gmail.com>
+
+- removed unneeded systemd.obscpio
+- spec: removed unneeded %global __python python3
+- spec: removed unneeded autoconf, automake build deps
+
+-------------------------------------------------------------------
+Sun Nov 15 21:07:46 UTC 2020 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to upstream version 1.5.0
+
+-------------------------------------------------------------------
+Sat May 16 11:42:12 UTC 2020 - Michael Pujos <pujos.michael@gmail.com>
+
+- added explicit dependency on libupnp to force packqhe recompilaiton
+when libupnp version changes (eg libupnp15 => libupnp16)
+
+-------------------------------------------------------------------
+Fri Jan 24 18:39:54 UTC 2020 - Michael Pujos <pujos.michael@gmail.com>
+
+- Initial version of upmpdcli 1.4.5 
