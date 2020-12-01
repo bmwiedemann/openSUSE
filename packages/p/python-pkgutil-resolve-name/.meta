@@ -1,0 +1,7 @@
+<package name="python-pkgutil-resolve-name" project="openSUSE:Factory">
+  <title></title>
+  <description>Backport of Python 3.9's pkgutil.resolve_name which
+resolves a name to an object.
+</description>
+  <devel project="devel:languages:python" package="python-pkgutil-resolve-name"/>
+</package>
