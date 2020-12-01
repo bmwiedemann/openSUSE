@@ -1736,6 +1736,9 @@ unsorted:
   - casacore-openmpi3-devel 
   - casacore-openmpi4 
   - casacore-openmpi4-devel 
+  - casarest 
+  - casarest-devel 
+  - casarest-libs 
   - caslon-fonts 
   - casync: [x86_64] 
   - catalan-pos-dict 
@@ -1924,6 +1927,7 @@ unsorted:
   - cinnamon-theme-adapta 
   - cinnamon-theme-plata 
   - cint-devel 
+  - citra: [x86_64] 
   - civetweb 
   - civetweb-devel 
   - cjs 
@@ -3042,7 +3046,6 @@ unsorted:
   - elementary-icon-theme-inkscape-palette 
   - elementary-wallpapers 
   - elementary-xfce-icon-theme: [i586] 
-  - elemines 
   - elftoaout 
   - elfutils-debuginfod 
   - elinks: [x86_64] 
@@ -3101,7 +3104,6 @@ unsorted:
   - enlightenment-branding-upstream 
   - enlightenment-devel 
   - enlightenment-profiles-openSUSE 
-  - enlightenment-theme-cerium2 
   - enlightenment-theme-dark 
   - enlightenment-theme-openSUSE 
   - enlightenment-theme-openSUSE-ice 
@@ -10833,7 +10835,6 @@ unsorted:
   - libgda-5_0-bdb: [i586] 
   - libgda-5_0-devel 
   - libgda-5_0-doc 
-  - libgda-5_0-firebird 
   - libgda-5_0-jdbc 
   - libgda-5_0-ldap 
   - libgda-5_0-mdb 
@@ -13524,7 +13525,7 @@ unsorted:
   - librrd8 
   - librsb-devel 
   - librsb0 
-  - librssguard-3_8_2 
+  - librssguard-3_8_3 
   - librssguard-devel 
   - librsvg-2-2-32bit: [x86_64] 
   - librsvg-devel 
@@ -14415,7 +14416,7 @@ unsorted:
   - libvoikko-devel 
   - libvoikko1 
   - libvoikko1-32bit: [x86_64] 
-  - libvolk2_3 
+  - libvolk2_4 
   - libvorbis-devel 
   - libvorbis-devel-32bit: [x86_64] 
   - libvorbis-doc 
@@ -15142,6 +15143,7 @@ unsorted:
   - logwarn 
   - logwarn-nagios-plugin 
   - logwatch 
+  - loki 
   - lollypop 
   - lollypop-lang 
   - lomt-blackout-fonts 
@@ -15930,6 +15932,7 @@ unsorted:
   - menulibre: [i586] 
   - mercurial 
   - mercurial-lang 
+  - meshlab 
   - meslo-lg-fonts 
   - meson 
   - meson-test 
@@ -16363,30 +16366,47 @@ unsorted:
   - mpg123-sdl-32bit: [x86_64] 
   - mpi-selector 
   - mpiP-gnu-mpich-hpc 
+  - mpiP-gnu-mpich-hpc-devel 
   - mpiP-gnu-mpich-hpc-doc 
   - mpiP-gnu-mvapich2-hpc 
+  - mpiP-gnu-mvapich2-hpc-devel 
   - mpiP-gnu-mvapich2-hpc-doc 
   - mpiP-gnu-openmpi1-hpc 
+  - mpiP-gnu-openmpi1-hpc-devel 
   - mpiP-gnu-openmpi1-hpc-doc 
   - mpiP-gnu-openmpi2-hpc 
+  - mpiP-gnu-openmpi2-hpc-devel 
   - mpiP-gnu-openmpi2-hpc-doc 
   - mpiP-gnu-openmpi3-hpc 
+  - mpiP-gnu-openmpi3-hpc-devel 
   - mpiP-gnu-openmpi3-hpc-doc 
-  - mpiP_3_4_1-gnu-mpich-hpc 
-  - mpiP_3_4_1-gnu-mpich-hpc-devel-static 
-  - mpiP_3_4_1-gnu-mpich-hpc-doc 
-  - mpiP_3_4_1-gnu-mvapich2-hpc 
-  - mpiP_3_4_1-gnu-mvapich2-hpc-devel-static 
-  - mpiP_3_4_1-gnu-mvapich2-hpc-doc 
-  - mpiP_3_4_1-gnu-openmpi1-hpc 
-  - mpiP_3_4_1-gnu-openmpi1-hpc-devel-static 
-  - mpiP_3_4_1-gnu-openmpi1-hpc-doc 
-  - mpiP_3_4_1-gnu-openmpi2-hpc 
-  - mpiP_3_4_1-gnu-openmpi2-hpc-devel-static 
-  - mpiP_3_4_1-gnu-openmpi2-hpc-doc 
-  - mpiP_3_4_1-gnu-openmpi3-hpc 
-  - mpiP_3_4_1-gnu-openmpi3-hpc-devel-static 
-  - mpiP_3_4_1-gnu-openmpi3-hpc-doc 
+  - mpiP-gnu-openmpi4-hpc 
+  - mpiP-gnu-openmpi4-hpc-devel 
+  - mpiP-gnu-openmpi4-hpc-doc 
+  - mpiP_3_5-gnu-mpich-hpc 
+  - mpiP_3_5-gnu-mpich-hpc-devel 
+  - mpiP_3_5-gnu-mpich-hpc-devel-static 
+  - mpiP_3_5-gnu-mpich-hpc-doc 
+  - mpiP_3_5-gnu-mvapich2-hpc 
+  - mpiP_3_5-gnu-mvapich2-hpc-devel 
+  - mpiP_3_5-gnu-mvapich2-hpc-devel-static 
+  - mpiP_3_5-gnu-mvapich2-hpc-doc 
+  - mpiP_3_5-gnu-openmpi1-hpc 
+  - mpiP_3_5-gnu-openmpi1-hpc-devel 
+  - mpiP_3_5-gnu-openmpi1-hpc-devel-static 
+  - mpiP_3_5-gnu-openmpi1-hpc-doc 
+  - mpiP_3_5-gnu-openmpi2-hpc 
+  - mpiP_3_5-gnu-openmpi2-hpc-devel 
+  - mpiP_3_5-gnu-openmpi2-hpc-devel-static 
+  - mpiP_3_5-gnu-openmpi2-hpc-doc 
+  - mpiP_3_5-gnu-openmpi3-hpc 
+  - mpiP_3_5-gnu-openmpi3-hpc-devel 
+  - mpiP_3_5-gnu-openmpi3-hpc-devel-static 
+  - mpiP_3_5-gnu-openmpi3-hpc-doc 
+  - mpiP_3_5-gnu-openmpi4-hpc 
+  - mpiP_3_5-gnu-openmpi4-hpc-devel 
+  - mpiP_3_5-gnu-openmpi4-hpc-devel-static 
+  - mpiP_3_5-gnu-openmpi4-hpc-doc 
   - mpibash 
   - mpibash-examples 
   - mpich 
@@ -21343,9 +21363,12 @@ unsorted:
   - python3-aiohttp-theme 
   - python3-aiohttp_cors 
   - python3-aioitertools 
+  - python3-aioredis 
   - python3-aioresponses 
   - python3-aiorpcX 
   - python3-aiosmtplib 
+  - python3-aiosqlite 
+  - python3-aiounittest 
   - python3-akismet 
   - python3-alabaster 
   - python3-allpairspy 
@@ -21871,6 +21894,7 @@ unsorted:
   - python3-crayons 
   - python3-crcmod 
   - python3-createrepo_c: [i586] 
+  - python3-crochet 
   - python3-cron-descriptor 
   - python3-croniter 
   - python3-crontab 
@@ -22025,6 +22049,7 @@ unsorted:
   - python3-django-mailman3 
   - python3-django-minio-storage 
   - python3-django-model-utils 
+  - python3-django-money 
   - python3-django-multiselectfield 
   - python3-django-nine 
   - python3-django-nose 
@@ -22189,6 +22214,7 @@ unsorted:
   - python3-fb-re2 
   - python3-featureflow 
   - python3-fedmsg 
+  - python3-fedora-messaging 
   - python3-feedgen 
   - python3-feedgenerator 
   - python3-feedparser 
@@ -23053,6 +23079,7 @@ unsorted:
   - python3-passivetotal 
   - python3-pastel 
   - python3-pastream 
+  - python3-patchy 
   - python3-path 
   - python3-pathlib 
   - python3-pathlib2 
@@ -23111,6 +23138,7 @@ unsorted:
   - python3-pivy 
   - python3-pkgconfig 
   - python3-pkginfo 
+  - python3-pkgutil-resolve-name 
   - python3-plaster 
   - python3-plaster-pastedeploy 
   - python3-platformio 
@@ -23514,6 +23542,7 @@ unsorted:
   - python3-python-magic 
   - python3-python-mpd2 
   - python3-python-mpv 
+  - python3-python-multipart 
   - python3-python-nmap 
   - python3-python-openid-cla 
   - python3-python-openid-teams 
@@ -24747,7 +24776,6 @@ unsorted:
   - rtkit: [i586] 
   - rtl-sdr-devel 
   - rtl8812au 
-  - rtl8812au-kmp-default 
   - rtl8812au-kmp-pae: [i586] 
   - rtl_433-devel 
   - rtmidi-devel 
@@ -26548,6 +26576,7 @@ unsorted:
   - system-group-obsolete 
   - system-user-flatpak: [i586] 
   - system-user-libvirt-dbus 
+  - system-user-loki 
   - system-user-msr 
   - system-user-srvGeoClue: [i586] 
   - system-user-tss 
@@ -35231,6 +35260,7 @@ unsorted:
   - uperf 
   - upm-devel 
   - upmpdcli 
+  - upplay 
   - upsm 
   - upx 
   - uranium: [x86_64] 
@@ -35828,6 +35858,7 @@ unsorted:
   - xcowsay 
   - xcursor-themes 
   - xcursorgen 
+  - xcwd 
   - xdbedizzy 
   - xdg-desktop-portal: [i586] 
   - xdg-desktop-portal-devel 
