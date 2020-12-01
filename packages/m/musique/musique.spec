@@ -17,7 +17,7 @@
 
 
 Name:           musique
-Version:        1.10
+Version:        1.10.1
 Release:        0
 Summary:        A different take on the music player
 License:        GPL-3.0-only AND LGPL-2.1-only

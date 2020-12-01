@@ -4,7 +4,7 @@
     <param name="url">https://github.com/flaviotordini/musique.git</param>
     <param name="filename">musique</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">1.10</param>
+    <param name="revision">1.10.1</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>

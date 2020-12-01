@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 30 14:46:54 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 1.10.1
+  * No upstream changelog
+
+-------------------------------------------------------------------
 Mon Oct 26 08:33:03 UTC 2020 - Cor Blom <cornelis@solcon.nl>
 
 - Remove obsolete line: Recommends: %{name}-lang = %{version}
