@@ -13,25 +13,27 @@
 # published by the Open Source Initiative.
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-model-bakery
-Version:        1.1.1
+Version:        1.2.1
 Release:        0
-License:        Apache-2.0
 Summary:        Smart object creation facility for Django
-Url:            http://github.com/model-bakers/model_bakery
+License:        Apache-2.0
 Group:          Development/Languages/Python
+Url:            http://github.com/model-bakers/model_bakery
 Source:         https://files.pythonhosted.org/packages/source/m/model-bakery/model_bakery-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module django >= 1.11.0}
+BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module pytest-django}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-django >= 1.11.0
+Requires:       python-Django >= 2.2
 BuildArch:      noarch
 
 %python_subpackages
@@ -50,11 +52,11 @@ Smart object creation facility for Django.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export PYTHONPATH=.
+export PYTHONPATH=${PWD}
 %pytest
 
 %files %{python_files}
-%doc README.md
+%doc CHANGELOG.md README.md docs/source/*.rst
 %license LICENSE
 %{python_sitelib}/*
 
