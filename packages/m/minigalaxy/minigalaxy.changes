@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Nov 30 08:44:02 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.0.0:
+  * Games can now be updated
+  * DLC can now be installed and updated
+  * The installed filter now also shows games which are downloading
+  * Fix crash on some systems where /usr/bin is linked to /bin
+  * Create new config file if old one is unreadable
+  * Fix some Windows games not installing because of the directory name used
+  * Fix some Windows games like Witcher 3 not launching because of the working directory not being set
+  * Clean up installation files for cancelled downloads
+  * Fix crash on flaky internet connection
+  * Use 755 permissions for all directories created by Minigalaxy
+  * Remove cached files when cancelling a download
+  * Installed games should no longer be shown twice
+  * Add and update translations
+
+-------------------------------------------------------------------
 Mon Apr 20 19:57:09 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.4:

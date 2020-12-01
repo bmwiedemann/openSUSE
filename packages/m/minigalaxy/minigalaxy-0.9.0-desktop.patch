@@ -1,9 +1,10 @@
-diff -urEbw minigalaxy-0.9.4/data/io.github.sharkwouter.Minigalaxy.desktop minigalaxy-0.9.4.new/data/io.github.sharkwouter.Minigalaxy.desktop
---- minigalaxy-0.9.4/data/io.github.sharkwouter.Minigalaxy.desktop	2020-04-20 21:05:13.000000000 +0200
-+++ minigalaxy-0.9.4.new/data/io.github.sharkwouter.Minigalaxy.desktop	2020-04-20 22:02:25.395288312 +0200
-@@ -6,4 +6,4 @@
+diff -urEbw minigalaxy-1.0.0/data/io.github.sharkwouter.Minigalaxy.desktop minigalaxy-1.0.0.new/data/io.github.sharkwouter.Minigalaxy.desktop
+--- minigalaxy-1.0.0/data/io.github.sharkwouter.Minigalaxy.desktop	2020-11-29 13:25:24.000000000 +0100
++++ minigalaxy-1.0.0.new/data/io.github.sharkwouter.Minigalaxy.desktop	2020-11-30 09:42:35.690421038 +0100
+@@ -6,5 +6,5 @@
  Icon=io.github.sharkwouter.Minigalaxy
  Type=Application
- Keywords=galaxy,gaming,games,game,old,good
--Categories=Game
+ Keywords=galaxy;gaming;games;game;old;good;gog;
+-Categories=Game;
 +Categories=Game;Amusement;
+ 

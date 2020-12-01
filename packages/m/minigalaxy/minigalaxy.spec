@@ -17,7 +17,7 @@
 
 
 Name:           minigalaxy
-Version:        0.9.4
+Version:        1.0.0
 Release:        0
 Summary:        A GOG client for Linux that lets you download and play your GOG Linux games
 License:        GPL-3.0-only

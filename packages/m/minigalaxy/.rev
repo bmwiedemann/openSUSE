@@ -80,4 +80,25 @@
   * Added all contributors and translators to the about window.</comment>
     <requestid>795905</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2bc421eadc4344523ee10ec43280e727</srcmd5>
+    <version>1.0.0</version>
+    <time>1606828918</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * Games can now be updated
+  * DLC can now be installed and updated
+  * The installed filter now also shows games which are downloading
+  * Fix crash on some systems where /usr/bin is linked to /bin
+  * Create new config file if old one is unreadable
+  * Fix some Windows games not installing because of the directory name used
+  * Fix some Windows games like Witcher 3 not launching because of the working directory not being set
+  * Clean up installation files for cancelled downloads
+  * Fix crash on flaky internet connection
+  * Use 755 permissions for all directories created by Minigalaxy
+  * Remove cached files when cancelling a download
+  * Installed games should no longer be shown twice
+  * Add and update translations</comment>
+    <requestid>851779</requestid>
+  </revision>
 </revisionlist>
