@@ -17,7 +17,7 @@
 
 
 Name:           miller
-Version:        5.9.1
+Version:        5.10.0
 Release:        0
 Summary:        Name-indexed data processing tool
 # c/lib/netbsd_strptime.c is BSD-4-Clause
@@ -48,6 +48,7 @@ make %{?_smp_mflags}
 
 %install
 %make_install
+install -Dm0644 docs/mlr.1 %{buildroot}/%{_mandir}/man1/mlr.1
 
 %files
 %license LICENSE.txt
