@@ -17,7 +17,7 @@
 
 
 Name:           perl-PPIx-Regexp
-Version:        0.075
+Version:        0.076
 Release:        0
 %define cpan_name PPIx-Regexp
 Summary:        Represent a regular expression of some sort
