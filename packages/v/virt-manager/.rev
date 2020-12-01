@@ -1702,4 +1702,12 @@
     <comment>Update to virt-manager version 3.2.0</comment>
     <requestid>848981</requestid>
   </revision>
+  <revision rev="216" vrev="2">
+    <srcmd5>aedf269852e3cff28ead4f2e8df628bc</srcmd5>
+    <version>3.2.0</version>
+    <time>1606828975</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1179236 and boo#1178141</comment>
+    <requestid>851950</requestid>
+  </revision>
 </revisionlist>

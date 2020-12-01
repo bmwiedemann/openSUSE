@@ -1,0 +1,23 @@
+Index: virt-manager-3.2.0/virtinst/install/urldetect.py
+===================================================================
+--- virt-manager-3.2.0.orig/virtinst/install/urldetect.py
++++ virt-manager-3.2.0/virtinst/install/urldetect.py
+@@ -271,9 +271,16 @@ class _SUSEContent(object):
+         distro_version = distro_version.strip()
+ 
+         if "Enterprise" in self.product_name or "SLES" in self.product_name:
+-            sle_version = self.product_name.strip().rsplit(' ')[4]
++            if " SAP " in self.product_name:
++                sle_version = self.product_name.strip().rsplit(' ')[7]
++            else:
++                sle_version = self.product_name.strip().rsplit(' ')[4]
+             if len(self.product_name.strip().rsplit(' ')) > 5:
+-                sle_version = (sle_version + '.' +
++                if " SAP " in self.product_name:
++                    sle_version = (sle_version + '.' +
++                        self.product_name.strip().rsplit(' ')[8][2])
++                else:
++                    sle_version = (sle_version + '.' +
+                         self.product_name.strip().rsplit(' ')[5][2])
+             distro_version = sle_version
+ 

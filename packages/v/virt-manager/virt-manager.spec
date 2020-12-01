@@ -72,6 +72,7 @@ Patch174:       virtinst-use-qemu-for-cdrom-device.patch
 Patch175:       virtinst-keep-install-iso-attached.patch
 Patch176:       virtinst-dont-use-special-copy-cpu-features.patch
 Patch177:       virtinst-set-default-nic.patch
+Patch178:       virtinst-sap-detection.patch
 
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -196,6 +197,7 @@ machine).
 %patch175 -p1
 %patch176 -p1
 %patch177 -p1
+%patch178 -p1
 
 %build
 %if %{default_hvs}

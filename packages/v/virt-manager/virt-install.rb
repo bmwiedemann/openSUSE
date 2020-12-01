@@ -43,6 +43,11 @@ module Yast
       @details = {}
 
       Builtins.y2milestone("START HERE.")
+      if WFM.Args == ["help"]
+        # Ignore yast help request
+        return :next
+      end
+
       if UI.TextMode()
         Builtins.y2milestone("Running virt-install in text mode is not supported. Running vm-install instead in command line mode.")
         status = UI.RunInTerminal("/usr/bin/vm-install")

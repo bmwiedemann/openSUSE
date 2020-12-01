@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Nov 30 13:39:10 MST 2020 - carnold@suse.com
+
+- bsc#1179236 - L3: virt-install: "Error validating install
+  location: invalid literal for int() with base 10" reported by
+  virt-install ref:_00D1igLOd._5001iTe00n:ref
+  virtinst-sap-detection.patch
+
+-------------------------------------------------------------------
+Wed Nov 25 19:00:46 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- boo#1178141 - Accomodate qemu modularization with respect to v5.2
+  qemu changes, where 3 additional modular shared objects need to
+  be present for spice support. This change simply augments what
+  was done before, adding the additional code to the same patch
+
+-------------------------------------------------------------------
+Fri Nov 20 13:52:33 MST 2020 - carnold@suse.com
+
+- bsc#1172340 - Several YaST modules can be started by typing
+  "yast2 $module <tab><tab>"
+  virt-install.rb
+
+-------------------------------------------------------------------
 Mon Nov 16 09:57:34 MST 2020 - carnold@suse.com
 
 - jsc#SLE-16582, Upgrade virt-manager >= 3.x

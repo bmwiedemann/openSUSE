@@ -1,6 +1,6 @@
-From 2919f40ac931dce5dedf326f84e83e8c04e1fabe Mon Sep 17 00:00:00 2001
+From dc5e834199e19ad09de17ac13e9834d3f17bd112 Mon Sep 17 00:00:00 2001
 From: Bruce Rogers <brogers@suse.com>
-Date: Sat, 24 Oct 2020 08:10:29 -0600
+Date: Wed, 25 Nov 2020 10:34:56 -0700
 Subject: [PATCH] graphics: add check for qemu modules in spice graphics
  detection
 
@@ -13,30 +13,43 @@ detection can't yet help us out here, so we leapfrog libvirt by doing
 our own detection of whether the qemu modules needed to support the
 default guest install using spice, usb redirection, and qxl video are
 present.
+With v5.2, some additional qemu modules are also required, so we add
+a separate detection for that version, and add corresponding additional
+module checks.
 
 Signed-off-by: Bruce Rogers <brogers@suse.com>
 ---
- virtinst/devices/graphics.py | 9 +++++++++
- virtinst/support.py          | 1 +
- 2 files changed, 10 insertions(+)
+ virtinst/devices/graphics.py | 19 +++++++++++++++++++
+ virtinst/support.py          |  2 ++
+ 2 files changed, 21 insertions(+)
 
 Index: virt-manager-3.1.0/virtinst/devices/graphics.py
 ===================================================================
 --- virt-manager-3.1.0.orig/virtinst/devices/graphics.py
 +++ virt-manager-3.1.0/virtinst/devices/graphics.py
-@@ -135,6 +135,15 @@ class DeviceGraphics(Device):
+@@ -135,6 +135,25 @@ class DeviceGraphics(Device):
          # Spice has issues on some host arches, like ppc, so allow it
          if self.conn.caps.host.cpu.arch not in ["i686", "x86_64"]:
              return False
-+        if self.conn.support.conn_spice_modular():
++        if self.conn.support.conn_spice_modular1():
 +            if self.conn.caps.host.cpu.arch in ["x86_64"]:
 +                if not (os.path.exists("/usr/lib64/qemu/hw-usb-redirect.so") and
 +                    os.path.exists("/usr/lib64/qemu/hw-display-qxl.so")):
 +                        return False
++                if self.conn.support.conn_spice_modular2():
++                    if not (os.path.exists("/usr/lib64/qemu/chardev-spice.so") and
++                        os.path.exists("/usr/lib64/qemu/ui-spice-core.so") and
++                        os.path.exists("/usr/lib64/qemu/ui-opengl.so")):
++                            return False
 +            else:
 +                if not (os.path.exists("/usr/lib/qemu/hw-usb-redirect.so") and
 +                    os.path.exists("/usr/lib/qemu/hw-display-qxl.so")):
 +                        return False
++                if self.conn.support.conn_spice_modular2():
++                    if not (os.path.exists("/usr/lib/qemu/chardev-spice.so") and
++                        os.path.exists("/usr/lib/qemu/ui-spice-core.so") and
++                        os.path.exists("/usr/lib/qemu/ui-opengl.so")):
++                            return False
          return True
  
      def _listen_need_port(self):
@@ -44,11 +57,12 @@ Index: virt-manager-3.1.0/virtinst/support.py
 ===================================================================
 --- virt-manager-3.1.0.orig/virtinst/support.py
 +++ virt-manager-3.1.0/virtinst/support.py
-@@ -282,6 +282,7 @@ class SupportCache:
+@@ -282,6 +282,8 @@ class SupportCache:
      conn_disk_driver_name_qemu = _make(
          hv_version={"qemu": 0, "xen": "4.2.0"},
          hv_libvirt_version={"qemu": 0, "xen": "1.1.0"})
-+    conn_spice_modular = _make(hv_version={"qemu": "5.1.0", "test": 0})
++    conn_spice_modular1 = _make(hv_version={"qemu": "5.1.0", "test": 0})
++    conn_spice_modular2 = _make(hv_version={"qemu": "5.2.0", "test": 0})
  
      # Domain checks
      domain_xml_inactive = _make(function="virDomain.XMLDesc", run_args=(),
