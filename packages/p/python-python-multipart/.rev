@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c3612c5f94b14780107dc6b3fdf97e8c</srcmd5>
+    <version>0.0.5</version>
+    <time>1606828985</time>
+    <user>dimstar_suse</user>
+    <comment>dep of starlette, which is a test dep of Authlib, which is already in d-l-py without test being run, Authlib was introduced in https://build.opensuse.org/request/show/825427 , which said &quot;tox based tests, require internet connection to run&quot; but of course that is not true, it just depends on a long chain of missing dependencies that are present in Fedora already. https://repology.org/project/python:starlette/versions
+Also a dep of fastapi (https://repology.org/project/python:fastapi/versions) and other modern web aio frameworks</comment>
+    <requestid>851902</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="python-python-multipart" project="openSUSE:Factory">
+  <title></title>
+  <description>Python streaming multipart parser</description>
+  <devel project="devel:languages:python" package="python-python-multipart"/>
+</package>
