@@ -1,0 +1,6 @@
+<package name="loki" project="openSUSE:Factory">
+  <title>Loki: like Prometheus, but for logs.</title>
+  <description>Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation system inspired by Prometheus.</description>
+  <devel project="server:monitoring" package="loki"/>
+  <url>https://grafana.com/loki</url>
+</package>

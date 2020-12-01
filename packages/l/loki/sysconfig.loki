@@ -1,0 +1,10 @@
+## Path:        System/Monitoring/Loki
+## Description: Loki logging server settings
+
+## Type:        string
+## Default:     "/etc/loki/loki.yaml"
+## ServiceRestart: loki
+#
+# Command line options for loki
+#
+CONFIG_FILE="/etc/loki/loki.yaml"

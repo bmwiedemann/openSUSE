@@ -1,0 +1,15 @@
+[Unit]
+Description=Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation system
+Documentation=https://github.com/grafana/loki
+
+[Service]
+Restart=always
+User=loki
+EnvironmentFile=-/etc/sysconfig/loki
+ExecStart=/usr/bin/loki -config.file=$CONFIG_FILE
+ExecReload=/bin/kill -HUP $MAINPID
+TimeoutStopSec=20s
+SendSIGKILL=no
+
+[Install]
+WantedBy=multi-user.target

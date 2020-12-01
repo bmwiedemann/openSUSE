@@ -1,0 +1,187 @@
+-------------------------------------------------------------------
+Mon Nov  9 13:15:42 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
+
+- Update packaging
+  * avoid systemd and shadow hard requirements
+  * use systemd-sysusers to configure the user in a dedicated 'system-user-loki' subpackage
+- Update to upstream version v2.0.0
+
+-------------------------------------------------------------------
+Wed Sep  2 15:19:22 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
+
+- Install binaries in /usr/bin instead of /usr/sbin since they're supposed to be ran by an unprivileged user. 
+
+-------------------------------------------------------------------
+Thu May 28 16:59:26 UTC 2020 - dmaiocchi@suse.com
+
+- Update to version 1.5.0:
+  * Prep 1.5.0 release (#2098)
+  * updates loki config examples (#2097)
+  * Adds backtick for the quoted string token lexer. (#2095)
+  * Fixes unit in stats request log. (#2093)
+  * allow no encoding/compression on chunks (#2088)
+  * Accept suffixes to pod name in instance labels (#2080)
+  * removes yolostring (#2078)
+  * fluentd plugin: support placeholders in tenant field (#2074)
+  * Fixes a panic in dry-run when using external labels. (#2075)
+  * Allows to pass inlined pipeline stages to the docker driver. (#2076)
+  * Loki: Allow configuring query_store_max_look_back_period when running a filesystem store and boltdb-shipper (#2073)
+  * expand the match_all to also optionally allow counting bytes per stream (#2066)
+  * some metrics for measuring performance and failures in boltdb shipper (#2034)
+  * output a debug log if the requested path in the scrape config doesn't match any files (#2069)
+  * Targets not required in promtail config (#2026)
+  * Update loki to cortex master (#2030)
+  * Reverse entry iterator pool (#2064)
+  * Improve protobuf serialization (#2031)
+  * Recover from panic in http and grpc handlers. (#2059)
+  * Docker driver: Allow to provision external pipeline files to plugin (#2054)
+  * Fix a bug in range vector skipping data. (#2058)
+  * Docs: update Loki Helm Chart document to support Helm 3 (#2038)
+  * Fix promtail client default values (#2049)
+  * Fix spelling of per second (#2055)
+  * Update api.md (#2056)
+  * Chore: Correct typo "per seconds" (#2050)
+  * Fix bug in logql parsing that leads to crash. (#2046)
+  * fixes the cpu usage graphs (#2044)
+  * Add extraOutputs variable to support multiple outputs for fluent-bit (#2040)
+  * Swapped to container restarts over terminated reasons (#2043)
+  * Remove generated comment at top of .drone/drone.yaml (#2042)
+  * Dashboard: Loki Operational improvements (#2041)
+  * Support Post request in the frontend queryrange handler. (#2023)
+  * fluent-plugin-loki: Restructuring and CI (#2006)
+  * Revert "Update go from 1.13 to 1.14. (#2013)" (#2028)
+  * Update go from 1.13 to 1.14. (#2013)
+  * Adds :delegated flags to speed up build experience on MacOS. (#2009)
+  * logcli: Query needs to be stored into url.RawQuery, and not url.Path (#2027)
+  * more linter fixes (#2024)
+  * I <3 you Linter (#2022)
+  * Docs: Added labels content (#1999)
+  * Loki: refactor validation and improve error messages (#2021)
+  * Spelling (#2014)
+  * Change image tag from 1.4.1 to 1.4.0 in Helm chart (#2015)
+  * Update lz4 library to latest to ensure deterministic output. (#2010)
+  * make `loki_ingester_memory_streams` Gauge per tenant. (#2019)
+  * Loki: Improve logging and add metrics to streams dropped by stream limit (#2012)
+  * Fix a bad rebase between #1970 and #1965. (#2011)
+  * Adds config to disable HTTP and GRPC server in Promtail. (#2004)
+  * Allow to aggregate binary operations. (#1970)
+  * table client for boltdb shipper to enforce retention (#2001)
+  * Improve URL building in the logcli to strip trailing /. (#2000)
+  * Ensure trace propagation in our logs. (#1977)
+  * Loki: Adds an `interval` paramater to query_range queries allowing a sampling of events to be returned based on the provided interval (#1965)
+  * make boltdb shipper singleton and some other minor refactoring (#1995)
+  * Update cortex to latest. (#1982)
+  * Add a missing method to facade which is called by the metrics storage client in cortex (#1987)
+  * added extraCommandlineArgs in values file (#1981)
+  * Log error message for invalid checksum (#1713)
+  * Log slow query from the frontend by default in ksonnet. (#1980)
+  * incorporate some better defaults into table-manager configs (#1976)
+  * Update cortex vendoring to latest master (#1975)
+  * [Loki]: Cleanup dockerfile (#1949)
+  * Convert Loki modules to services (#1804)
+  * fix available stores for chunk and index in documentation for period config (#1974)
+  * Improve the local config to work locally and inside docker. (#1963)
+  * helm chart: add missing line feed (#1967)
+  * Docs: Update docker.md (#1966)
+  * chunk bounds metric now records 8h range in 1h increments (#1964)
+  * flush boltdb to object store (#1837)
+  * chunk lifespan histogram (#1958)
+  * Workaround for broken etcd gomod import (#1961)
+  * Go mod: explicit golang.org/x/net replace (#1953)
+  * Move build from source instructions to root readme. (#1951)
+  * update cortex to latest master (#1956)
+  * Loki Update the cut block size counter when creating a memchunk from byte slice (#1946)
+  * Fixes case handling in regex simplification. (#1950)
+  * Log docker driver config map. (#1903)
+  * version pin the docker image in docker-compose (#1945)
+  * Reverting helm changes which were included in Cortex 1.0 vendor upgrade because it resulted in us pushing an unstable helm.
+  * delete tag script filters by prefix instead of substring (#1942)
+  * Support stdin target via flag instead of automatic detection. (#1935)
+  * adds config validation, similar to cortex (#1939)
+  * bumps helm to keepalive-master after cortex vendoring (#1937)
+  * Update Cortex to latest master (#1869)
+  * Add no-file and keep-file log option for docker driver. (#1906)
+  * logcli: org-id/tls-skip-verify set via env var (#1922)
+  * Clarified that the api push path needs to be specified. (#1925)
+  * And the loki mixin
+  * Put loki-mixin and promtail-mixin dashboards in a folder.
+  * feat: tms readiness check bypass implementation
+  * this Dockerfile is a remnant from a long time ago, not needed. (#1918)
+  * only fetches one chunk per series in /series (#1914)
+  * Add cap_net_bind_service linux capabilities to Loki. (#1916)
+  * Fix fluent-bit metrics (#1915)
+  * s/dashboards/grafanaDashboards.
+  * fluentd loki plugin README: add note about labels (#1909)
+  * push images for `k` branches
+  * updating typo for end time parameter (#1905)
+  * updating helm and ksonnet to 1.4.1 updating Fluent Bit to correct image
+  * JSON encoding: avoid base64 encoding of []byte inside other slices (#1890)
+  * [helm loki/promtail] make UpdateStrategy configurable (#1898)
+  * Addition of a `/suspend` endpoint to Loki Canary (#1891)
+  * Removes file size check for pipe, not provided by linux. (#1893)
+  * Fixes possible panic in json pipeline stage. (#1894)
+  * Fix flaky promtail test (#1865)
+  * docs: cleaning up the comments for the cache_config, default_validity option (#1888)
+  * Adding a config change in release 1.4 upgrade doc Updating readme with links to new docs
+  * Sign helm package with GPG. (#1864)
+  * Add precision about the range notation for LogQL. (#1881)
+  * updating helm and ksonnet for 1.4.0 release
+  * clear out some changelog entries to fix a merge conflict from the release branch
+  * docs: update promtail docs for backoff (#1879)
+  * Support series API in logcli (#1861)
+  * support `match[]` encoding (#1875)
+  * Keep plugin install command example in one line (#1870)
+  * Add extraMount, extraVolumeMount to promtail helm chart for systemd-journal (#1871)
+  * documents frontend worker (#1873)
+  * clarify logcli commands and output (#1712)
+  * Logcli remote storage. (#1814)
+  * Sharding optimizations I: AST mapping (#1846)
+  * docs: tweak the doc section of the readme a little (#1856)
+  * Support configurable maximum of the limits parameter (#1798)
+  * bump gem version (#1853)
+  * throw exceptions on HTTPTooManyRequests and HTTPServerError so FluentD will retry (#1845)
+  * logcli client: use OrgID in LiveTail (#1850)
+  * remove a few places we recommend the schema version and consolidate in the configuration doc
+  * Pin helm version in circle-ci helm testing workflow. (#1849)
+  * Proposal: Promtail Push API (#1627)
+  * promtail retry 429 rate limit errors, clarifying risks in the docs of configuring multiple client sections in promtail, also increased the backoff and retry settings in promtail.
+  * Docs: Update configuration docs for redis (#1843)
+  * Log error message when source does not exist in extracted values (#1815)
+  * Helm/loki-stack: refresh default grafana.image.tag to 6.7.0 (#1825)
+  * Move default port for Loki to 3100 everywhere. (#1838)
+  * Change local storage directory to /loki/ and fix permissions (#1833) (#1834)
+  * Use 8080 for Loki http port  binding in tanka. (#1823)
+  * Adds a counter for total flushed chunks per reason. (#1819)
+  * Prevent prometheus to scrap both services (#1817)
+  * loki can not be started with loki-local-config.yaml (#1816)
+  * Optimize empty filter queries. (#1810)
+  * Improve fluentbit logfmt. (#1791)
+  * Test stats memchunk (#1809)
+  * Error handling: Show data stream at "debug" level, not "warn" (#1811)
+  * loki: update Cortex to master (#1799)
+  * Non-root user docker image for Loki. (#1706)
+
+-------------------------------------------------------------------
+Fri Apr 17 11:26:33 UTC 2020 - Dario Maiocchi <dmaiocchi@suse.com>
+
+- Update to version 1.4.1:
+  * updating changelog and version numbers in docs for 1.4.1 release
+  * JSON encoding: avoid base64 encoding of []byte inside other slices (#1890)
+  * Removes file size check for pipe, not provided by linux. (#1893)
+  * fixing release date
+  * Updating some of the references to v1.3.0 Adding an entry in the changelog to reference image name changes
+  * docs: update promtail docs for backoff (#1879)
+  * bump gem version (#1853)
+  * throw exceptions on HTTPTooManyRequests and HTTPServerError so FluentD will retry (#1845)
+  * promtail retry 429 rate limit errors, clarifying risks in the docs of configuring multiple client sections in promtail, also increased the backoff and retry settings in promtail.
+  * Adding upgrade doc and updating changelog for release
+
+-------------------------------------------------------------------
+Mon Jul  1 17:15:41 UTC 2019 - JMC <jcavalheiro@suse.com>
+
+- Add compat macro for _fillupdir to allow builds in SLE12 
+
+-------------------------------------------------------------------
+Mon Jul  1 14:40:56 UTC 2019 - João Cavalheiro <jcavalheiro@suse.com>
+
+- Initial commit (v0.1.0) 
