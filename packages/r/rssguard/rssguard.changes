@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 30 11:23:28 UTC 2020 - aloisio@gmx.com
+
+- Update to version 3.8.3
+  Added:
+  * Initial Qt 6 support.
+  * When you run "open source article externally" action, then
+    RSS Guard window regains focus again.
+  Fixed/changed:
+  * Fixed URL not passed to custom external web browser.
+
+-------------------------------------------------------------------
 Sat Nov 21 14:17:03 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.8.2
