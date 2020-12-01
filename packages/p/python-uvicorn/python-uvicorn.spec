@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-uvicorn
-Version:        0.12.1
+Version:        0.12.3
 Release:        0
 Summary:        An Asynchronous Server Gateway Interface server
 License:        BSD-3-Clause
@@ -31,29 +31,30 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click >= 7.0
 Requires:       python-h11 >= 0.8.0
-Requires:       python-httptools >= 0.0.13
+Requires:       python-httptools >= 0.1.0
 Requires:       python-typing_extensions
 Requires:       python-websockets >= 8.0
-Recommends:     python-PyYAML
+Recommends:     python-PyYAML >= 5.1
 Suggests:       python-uvloop >= 0.14.0
-Suggests:       python-watchgod
-Suggests:       python-wsproto
+Suggests:       python-watchgod >= 0.6
+Suggests:       python-wsproto >= 0.15.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module click >= 7.0}
 BuildRequires:  %{python_module h11 >= 0.8.0}
-BuildRequires:  %{python_module httptools >= 0.0.13}
+BuildRequires:  %{python_module httptools >= 0.1.0}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module trustme}
 BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module uvloop >= 0.14.0}
 BuildRequires:  %{python_module watchgod >= 0.6}
 BuildRequires:  %{python_module websockets >= 8.0}
-BuildRequires:  %{python_module wsproto >= 0.13.0}
+BuildRequires:  %{python_module wsproto >= 0.15.0}
 # /SECTION
 %python_subpackages
 
@@ -80,7 +81,11 @@ rm setup.cfg
 %python_uninstall_alternative uvicorn
 
 %check
-%pytest
+# Required for reporting bugs
+%python_exec -m uvicorn --version
+# Three wsproto upgrade related tests
+# https://github.com/encode/uvicorn/issues/868
+%pytest -rs -k 'not (test_supported_upgrade_request or test_invalid_upgrade)'
 
 %files %{python_files}
 %doc README.md

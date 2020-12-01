@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Nov 29 09:56:12 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Skip three tests due to minor change introduced in wsproto 1.0.0
+- Add some missing minimum versions to Requires and BuildRequires
+- Update to v0.12.3
+  * Fix race condition that leads Quart to hang
+  * Use latin1 when decoding X-Forwarded-* headers
+  * Rework IPv6 support
+  * Cancel old keepalive-trigger before setting new one
+- from v0.12.2
+  * Adding ability to decrypt ssl key file
+  * Support .yml log config files
+  * Added python 3.9 support
+  * Fixes watchgod with common prefixes
+  * Fix reload with ipv6 host
+  * Added cli support for headers containing colon
+  * Sharing socket across workers on windows
+  * Note the need to configure trusted "ips" when using unix sockets
+
+-------------------------------------------------------------------
 Tue Oct 13 09:42:02 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim marketing wording from descriptions.
