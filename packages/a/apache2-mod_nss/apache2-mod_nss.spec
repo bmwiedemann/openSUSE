@@ -16,13 +16,15 @@
 #
 
 
-%define    apxs %{_sbindir}/apxs2
+%if ! %{defined apache_apxs}
+%define    apache_apxs %{_sbindir}/apxs
 %define    apache apache2
 %define    apache_libexecdir %(%{apxs} -q LIBEXECDIR)
 %define    apache_sysconfdir %(%{apxs} -q SYSCONFDIR)
 %define    apache_includedir %(%{apxs} -q INCLUDEDIR)
 %define    apache_serverroot %(%{apxs} -q PREFIX)
 %define    apache_mmn        %(MMN=$(%{apxs} -q LIBEXECDIR)_MMN; test -x $MMN && $MMN)
+%endif
 %define    apache_sysconf_nssdir %{apache_sysconfdir}/mod_nss.d
 Name:           apache2-mod_nss
 Version:        1.0.18
@@ -101,7 +103,7 @@ autoreconf -fvi
     --with-nss-inc=$NSS_INCLUDE_DIR \
     --with-nspr-lib=$NSPR_LIB_DIR \
     --with-nspr-inc=$NSPR_INCLUDE_DIR \
-    --with-apxs=%{apxs} \
+    --with-apxs=%{apache_apxs} \
     --enable-ecc \
     --with-apr-config
 make %{?_smp_mflags} all
