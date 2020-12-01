@@ -13,7 +13,6 @@
     <conditions>
       <arch>aarch64</arch>
       <arch>x86_64</arch>
-      <arch>ppc64le</arch>
       <package>mame:mame</package>
     </conditions>
     <hardware>
@@ -26,11 +25,10 @@
     </hardware>
   </overwrite>
 
-<overwrite>
+  <overwrite>
     <conditions>
       <arch>aarch64</arch>
       <arch>x86_64</arch>
-      <arch>ppc64le</arch>
       <package>mame:mess</package>
     </conditions>
     <hardware>
@@ -42,4 +40,22 @@
       </memory>
     </hardware>
   </overwrite>
+
+  <overwrite>
+    <conditions>
+      <arch>ppc64</arch>
+      <arch>ppc64le</arch>
+      <package>mame:mame</package>
+      <package>mame:mess</package>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">34</size>
+      </disk>
+      <physicalmemory>
+        <size unit="M">11264</size>
+      </physicalmemory>
+    </hardware>
+  </overwrite>
+
 </constraints>

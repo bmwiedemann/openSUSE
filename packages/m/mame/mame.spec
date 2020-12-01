@@ -1,7 +1,7 @@
 #
 # spec file for package mame
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,12 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
+# disable lto for ppc64/ppc64le
+# as not enough resources today in OBS
+%ifarch ppc64 ppc64le
+%define _lto_cflags %{nil}
+%endif
+
 %if %{__isa_bits} == 64
 %define is_64bit 1
 %endif
@@ -32,7 +38,7 @@ ExclusiveArch:  do_not_build
 %define pkgsuffix -%{flavor}
 %endif
 
-%define fver    211
+%define fver    226
 
 # Build mame-mess by default, and use system libraries
 %bcond_without  systemlibs
@@ -42,12 +48,14 @@ Version:        0.%fver
 Release:        0
 %if "%{flavor}" != "mess"
 Summary:        Multiple Arcade Machine Emulator
-%else
-Summary:        Multi Emulator Super System
-%endif
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND BSD-3-Clause
 Group:          System/Emulators/Other
-URL:            http://mamedev.org/
+%else
+Summary:        Multi Emulator Super System
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND BSD-3-Clause
+Group:          System/Emulators/Other
+%endif
+URL:            https://mamedev.org/
 Source0:        https://github.com/mamedev/mame/archive/mame0%{fver}.tar.gz
 Source1:        https://github.com/mamedev/mame/releases/download/mame0%{fver}/whatsnew_0%{fver}.txt
 Source2:        mame.png
@@ -58,9 +66,10 @@ Source102:      mame.appdata.xml
 Source104:      mame-mess.appdata.xml
 # PATCH-FIX-UPSTREAM stefan.bruens@rwth-aachen.de gh#mamedev/mame#4771 -- Add a missing dependency on generated file
 Patch0:         add_tms57002_hxx_dependecy.patch
-Patch1:         fix_mkdir_order.patch
 # PATCH-FIX-OPENSUSE -- use thin archives for static libraries
 Patch2:         use_thin_archives.patch
+# details: https://github.com/mamedev/mame/issues/3157
+Patch3:         fix-922619.patch
 BuildRequires:  binutils-gold
 BuildRequires:  fdupes
 BuildRequires:  memory-constraints
@@ -135,8 +144,8 @@ gaming systems, computer platforms, and calculators.
 
 %package -n mame-tools
 Summary:        MAME Tools
-Group:          System/Emulators/Other
 # mess-tools was last used at version 0.159
+Group:          System/Emulators/Other
 Provides:       mess-tools = %{version}
 Obsoletes:      mess-tools < %{version}
 
@@ -156,14 +165,14 @@ This package contains all data files needed by the MAME binaries:
  * languages
 
 %prep
-%setup -q -n mame-mame0%fver
-%patch0 -p0
-%patch1 -p0
-%patch2 -p0
+%setup -q -n mame-mame0%{fver}
+%patch0
+%patch2
+%patch3 -p1
 
 cp %{SOURCE1} whatsnew-%{version}.txt
 # Fix rpmlint warning "wrong-file-end-of-line-encoding"
-sed -i 's/\r$//' LICENSE.md README.md whatsnew-%{version}.txt
+sed -i 's/\r$//' COPYING README.md whatsnew-%{version}.txt
 
 # Set DATADIR and SYSCONFDIR in ini files
 sed -e "s,@DATADIR@,%{_datadir},g"\
@@ -181,7 +190,12 @@ sed -i "s@-Wall -Wextra -Os@%{myoptflags}@" 3rdparty/genie/build/gmake.linux/gen
 sed -i "s@\. -s@\. %{myoptflags}@" 3rdparty/genie/build/gmake.linux/genie.make
 
 %build
-%limit_build -m 1800
+%ifarch ppc64 ppc64le
+%define limitbuild 3000
+%else
+%define limitbuild 1800
+%endif
+%limit_build -m %{limitbuild}
 
 # Memory mapped files occupy the limited 32bit address space
 %if ! 0%{?is_64bit}
@@ -217,20 +231,20 @@ COMMON_FLAGS="\
     %endif
     "
 # Bootstrap genie, scripts file has been patched
-make %{?_smp_mflags} OPT_FLAGS="%{myoptflags}" $COMMON_FLAGS genie
+%make_build OPT_FLAGS="%{myoptflags}" $COMMON_FLAGS genie
 (cd 3rdparty/genie/; bin/linux/genie embed)
-make %{?_smp_mflags} OPT_FLAGS="%{myoptflags}" $COMMON_FLAGS genie
+%make_build OPT_FLAGS="%{myoptflags}" $COMMON_FLAGS genie
 
 # Build the emulator itself
 %if "%{flavor}" == "mame"
-make %{?_smp_mflags} OPT_FLAGS="%{myoptflags}" $COMMON_FLAGS SUBTARGET=arcade TOOLS=0
+%make_build OPT_FLAGS="%{myoptflags}" $COMMON_FLAGS SUBTARGET=arcade TOOLS=0
 %endif
 %if "%{flavor}" == "mess"
-make %{?_smp_mflags} OPT_FLAGS="%{myoptflags}" $COMMON_FLAGS SUBTARGET=mess TOOLS=0
+%make_build OPT_FLAGS="%{myoptflags}" $COMMON_FLAGS SUBTARGET=mess TOOLS=0
 %endif
 %if "%{flavor}" == "tools-data"
 # Tiny still builds too much, but is the smallest target available for just building the tools
-make %{?_smp_mflags} OPT_FLAGS="%{myoptflags}" $COMMON_FLAGS SUBTARGET=tiny TOOLS=1
+%make_build OPT_FLAGS="%{myoptflags}" $COMMON_FLAGS SUBTARGET=tiny TOOLS=1
 %endif
 
 %install
@@ -268,7 +282,7 @@ install -Dpm 0644 %{SOURCE104}  %{buildroot}%{_datadir}/metainfo/mame-mess.appda
 install -dm 0755 %{buildroot}%{_bindir}
 install -pm 0755 castool chdman floptool imgtool jedutil ldresample \
                  ldverify romcmp unidasm %{buildroot}%{_bindir}/
-for mame_tool in nltool nlwav pngcmp regrep split src2html srcclean
+for mame_tool in nltool nlwav pngcmp regrep split srcclean
 do
   install -pm 0755 $mame_tool %{buildroot}%{_bindir}/mame-${mame_tool}
 done
@@ -291,8 +305,8 @@ install -dm 0755 %{buildroot}%{_datadir}/pixmaps
 
 install -pm 0644 hash/*      %{emu_data_dir}/hash/
 install -pm 0644 uismall.bdf %{emu_data_dir}/uismall.bdf
-install -pm 0644 keymaps/{LICENSE,README.md}    %{emu_data_dir}/keymaps/
-install -pm 0644 keymaps/*LINUX.map             %{emu_data_dir}/keymaps/
+install -pm 0644 keymaps/README.md    %{emu_data_dir}/keymaps/
+install -pm 0644 keymaps/*LINUX.map   %{emu_data_dir}/keymaps/
 cp -ar language %{emu_data_dir}/
 find %{emu_data_dir}/language/ -name "*.po" -delete
 cp -ar artwork              %{emu_data_dir}/
@@ -310,7 +324,7 @@ install -pm 0644 src/osd/modules/opengl/shader/*.{fsh,vsh} %{emu_data_dir}/openg
 %if "%{flavor}" == "mame" || "%{flavor}" == "mess"
 %files
 %doc README.md whatsnew-%{version}.txt
-%license docs/LICENSE LICENSE.md
+%license docs/LICENSE COPYING
 %{_bindir}/mame*
 %{_datadir}/pixmaps/mame*.png
 %{_datadir}/applications/mame*.desktop
@@ -318,17 +332,17 @@ install -pm 0644 src/osd/modules/opengl/shader/*.{fsh,vsh} %{emu_data_dir}/openg
 %config(noreplace) %{_sysconfdir}/skel/.*/*.ini
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/mame*.appdata.xml
-%{_mandir}/man6/mame*.6%{ext_man}
+%{_mandir}/man6/mame*.6%{?ext_man}
 %endif
 
 %if "%{flavor}" == "tools-data"
 %files -n mame-data
 %doc README.md
-%license docs/LICENSE LICENSE.md
+%license docs/LICENSE COPYING
 %{_datadir}/mame/
 
 %files -n mame-tools
-%license docs/LICENSE LICENSE.md
+%license docs/LICENSE COPYING
 %{_bindir}/castool
 %{_bindir}/chdman
 %{_bindir}/floptool
@@ -341,18 +355,17 @@ install -pm 0644 src/osd/modules/opengl/shader/*.{fsh,vsh} %{emu_data_dir}/openg
 %{_bindir}/mame-pngcmp
 %{_bindir}/mame-regrep
 %{_bindir}/mame-split
-%{_bindir}/mame-src2html
 %{_bindir}/mame-srcclean
 %{_bindir}/romcmp
 %{_bindir}/unidasm
-%{_mandir}/man1/castool.1%{ext_man}
-%{_mandir}/man1/chdman.1%{ext_man}
-%{_mandir}/man1/floptool.1%{ext_man}
-%{_mandir}/man1/imgtool.1%{ext_man}
-%{_mandir}/man1/jedutil.1%{ext_man}
-%{_mandir}/man1/ldresample.1%{ext_man}
-%{_mandir}/man1/ldverify.1%{ext_man}
-%{_mandir}/man1/romcmp.1%{ext_man}
+%{_mandir}/man1/castool.1%{?ext_man}
+%{_mandir}/man1/chdman.1%{?ext_man}
+%{_mandir}/man1/floptool.1%{?ext_man}
+%{_mandir}/man1/imgtool.1%{?ext_man}
+%{_mandir}/man1/jedutil.1%{?ext_man}
+%{_mandir}/man1/ldresample.1%{?ext_man}
+%{_mandir}/man1/ldverify.1%{?ext_man}
+%{_mandir}/man1/romcmp.1%{?ext_man}
 %endif
 
 %changelog

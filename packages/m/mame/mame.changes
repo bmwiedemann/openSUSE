@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Nov 23 01:07:34 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 0.226
+  * see https://mametesters.org/changelog_page.php for notes
+- partial cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Jun 19 04:35:58 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Changes for ppc64/ppc64le builds:
+  - Reduce build memory _constraints to match PowerPC workers
+  - Reduce number of parallel build threads to avoid oom
+  - Disable lto for for same reason.
+  - New fix-922619.patch https://github.com/mamedev/mame/issues/3157
+
+-------------------------------------------------------------------
+Fri Jun  5 16:25:23 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build of tool subpackage, src2html was removed in 0220.
+
+-------------------------------------------------------------------
+Sun Apr 12 22:25:06 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.220
+  See http://mamedev.org/releases/whatsnew_0220.txt for details
+- Drop patch:
+  * fix_mkdir_order.patch (fixed by upstream)
+
+-------------------------------------------------------------------
 Sun Dec 15 22:23:56 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Reduce constraints for mess and increase for mame, fix
