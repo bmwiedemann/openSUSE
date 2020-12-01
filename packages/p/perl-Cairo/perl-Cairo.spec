@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Cairo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           perl-Cairo
-Version:        1.107
+Version:        1.108
 Release:        0
 #Upstream: CHECK(Artistic-1.0 or GPL-1.0-or-later)
 %define cpan_name Cairo
 Summary:        Perl interface to the cairo 2d vector graphics library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/X/XA/XAOC/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -59,7 +59,7 @@ make test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc cairo-perl.typemap ChangeLog.pre-git doctypes examples NEWS perl-Cairo.doap README TODO
+%doc ChangeLog.pre-git examples NEWS README TODO
 %license LICENSE
 
 %changelog

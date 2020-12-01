@@ -21,3 +21,4 @@ license: LGPL-2.1-or-later
 #custom_test: |-
 #startserver && make test
 #ignore_requires: Bizarre::Module
+skip_doc: ^(cairo-perl.typemap|doctypes|perl-cairo.doap)$

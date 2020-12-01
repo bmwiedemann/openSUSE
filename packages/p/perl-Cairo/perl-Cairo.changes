@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec  1 11:13:34 UTC 2020 - Tina Müller <tina.mueller@suse.com>
+
+- Add some files to skip_doc
+
+-------------------------------------------------------------------
+Wed Nov 25 03:06:31 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.108
+   see /usr/share/doc/packages/perl-Cairo/ChangeLog.pre-git
+
+-------------------------------------------------------------------
 Tue Oct  8 11:55:05 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
 
 - Add license LGPL-2.1-or-later to cpanspec.yml as it couldn't be detected
