@@ -68,4 +68,13 @@
   * Add alt version back</comment>
     <requestid>788426</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5b9ec493b2a8188d8602b0927b53a564</srcmd5>
+    <version>20201129</version>
+    <time>1606828915</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20201129:
+  * Fix gnome 3.38 issues</comment>
+    <requestid>851775</requestid>
+  </revision>
 </revisionlist>
