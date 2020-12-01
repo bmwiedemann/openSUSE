@@ -1,7 +1,7 @@
 #
 # spec file for package parsec-tool
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 %{?systemd_ordering}
 Name:           parsec-tool
@@ -27,6 +28,7 @@ Source0:        https://github.com/parallaxsecond/parsec-tool/archive/%{version}
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  cargo
+BuildRequires:  protobuf-devel
 BuildRequires:  rust-packaging
 Requires:       parsec
 ExcludeArch:    armv6l armv6hl
@@ -40,6 +42,7 @@ mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
 %build
+export PROTOC=/usr/bin/protoc
 %cargo_build
 
 %install
