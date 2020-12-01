@@ -17,16 +17,16 @@
 
 
 %global sonum 2
-%global soname 2_3
-
+%global soname 2_4
 Name:           volk
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Vector-Optimized Library of Kernels
 License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
-URL:            http://libvolk.org/
-Source:         https://github.com/gnuradio/volk/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://libvolk.org/
+Source:         %{name}-%{version}.tar.xz
+Patch0:         volk-fix-cpu_features-compilation-error.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -35,6 +35,7 @@ BuildRequires:  libboost_system-devel
 BuildRequires:  orc
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Mako
+Provides:       bundled(cpu_features) = 0.6.0
 
 %description
 VOLK provides a library of vector-optimized kernels. It is a subproject
@@ -45,9 +46,9 @@ Summary:        Development files for VOLK
 # Formerly part of gnuradio 3.7.x.y
 Group:          Development/Libraries/C and C++
 Requires:       libvolk%{soname} = %{version}
+Recommends:     volk_modtool
 Conflicts:      gnuradio-devel < 3.8.0.0
 Provides:       gnuradio-devel:%{_libdir}/pkgconfig/volk.pc
-Recommends:     volk_modtool
 
 %description devel
 This package provides the the development files for VOLK.
@@ -70,6 +71,7 @@ VOLK kernels.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %cmake
@@ -77,9 +79,14 @@ VOLK kernels.
 
 %install
 %cmake_install
-
 chmod -x %{buildroot}%{python3_sitearch}/volk_modtool/*py
 sed -i -e '1 { \@.*/bin/env.*python.*@ d }' %{buildroot}%{python3_sitearch}/volk_modtool/*py
+
+# remove stuff from bundled cpu_features
+rm %{buildroot}%{_bindir}/list_cpu_features
+rm -R %{buildroot}%{_includedir}/cpu_features
+rm -R %{buildroot}%{_libdir}/cmake/CpuFeatures
+rm %{buildroot}%{_libdir}/libcpu_features.a
 
 %fdupes %{buildroot}
 

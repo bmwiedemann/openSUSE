@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Nov 30 11:31:35 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.0
+  Documentation
+  * Update README to be more verbose and to improve usefulness.
+  CMake
+  * Enable to not install volk_modtool.
+  * Remove "find_package_handle_standard_args" warning.
+  cpu_features
+  * Use cpu_features v0.6.0 as a private submodule to detect
+    available CPU features.
+  * Fix incorrect feature detection for newer AVX versions.
+  * Circumvent platform specific feature detection.
+  * Enable more architecture specific kernels on more platforms.
+  Kernels
+  * Disable slow and broken SSE4.1 kernel in
+    volk_32fc_x2_dot_prod_32fc.
+  * Adjust min/max for 32f_s32f_convert_8i kernel
+  * Use INT8_* instead of CHAR_*
+- Upstream tarball does not have the cpu_features included so use
+  a service file to generate the tarball.
+- Add patch:
+  * volk-fix-cpu_features-compilation-error.patch
+
+-------------------------------------------------------------------
 Sat May  9 12:09:27 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.0

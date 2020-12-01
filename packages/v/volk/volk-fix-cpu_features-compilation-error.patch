@@ -1,0 +1,12 @@
+diff --git a/cpu_features/src/utils/list_cpu_features.c b/cpu_features/src/utils/list_cpu_features.c
+index c80ffc5..82a8e72 100644
+--- a/cpu_features/src/utils/list_cpu_features.c
++++ b/cpu_features/src/utils/list_cpu_features.c
+@@ -340,6 +340,7 @@ static Node* GetCacheTypeString(CacheType cache_type) {
+     case CPU_FEATURE_CACHE_PREFETCH:
+       return CreateConstantString("prefetch");
+   }
++  return 0;
+ }
+ 
+ static void AddCacheInfo(Node* root, const CacheInfo* cache_info) {
