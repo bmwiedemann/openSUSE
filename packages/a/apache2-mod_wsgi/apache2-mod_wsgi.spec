@@ -68,11 +68,7 @@ existing WSGI adapters for mod_python or CGI.
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 %configure \
-%if 0%{?suse_version}
-    --with-apxs="%{apache_apxs}-prefork" \
-%else
     --with-apxs="%{apache_apxs}" \
-%endif
     --with-python="python3"
 make %{?_smp_mflags}
 %if 0%{?suse_version} >= 1500 || 0%{?fedora} || 0%{?rhel}
