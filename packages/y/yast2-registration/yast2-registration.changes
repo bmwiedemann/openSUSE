@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 26 16:54:21 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- correct add-on spelling (jsc#SLE-14772)
+- 4.3.14
+
+-------------------------------------------------------------------
 Tue Oct 27 15:50:31 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Fix the latest change to work in firstboot when system is
