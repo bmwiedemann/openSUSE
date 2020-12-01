@@ -1,0 +1,5 @@
+<package name="python-fedora-messaging" project="openSUSE:Factory">
+  <title></title>
+  <description>Python tools for Fedora's messaging infrastructure</description>
+  <devel project="devel:languages:python" package="python-fedora-messaging"/>
+</package>
