@@ -139,4 +139,15 @@
     <comment></comment>
     <requestid>778613</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>cdb1200d53cecc417240578a11062279</srcmd5>
+    <version>3.22.12+git4.454f139</version>
+    <time>1606829004</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.22.12+git4.454f139:
+  * Rebase parts of the %linked code (Fixes #265)
+  * Fix Thunar CSD when not focused (Fixes #274)
+  * Fix GTK3 dark colors</comment>
+    <requestid>851942</requestid>
+  </revision>
 </revisionlist>

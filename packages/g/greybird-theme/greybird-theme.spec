@@ -19,7 +19,7 @@
 %define _name Greybird
 
 Name:           greybird-theme
-Version:        3.22.11+git4.320a703
+Version:        3.22.12+git4.454f139
 Release:        0
 URL:            https://github.com/shimmerproject/Greybird
 Summary:        A grey theme for GNOME, XFCE, GTK+ 2 and 3
