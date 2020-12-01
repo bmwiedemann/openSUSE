@@ -216,4 +216,12 @@
     <comment>Update to 2.5.0 (forwarded request 841834 from Dead_Mozay)</comment>
     <requestid>841895</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>f313a2da870bd95e773bae4afb72ac92</srcmd5>
+    <version>2.5.0</version>
+    <time>1606828928</time>
+    <user>dimstar_suse</user>
+    <comment>Filter out obsolete typelib instead of current upstream version (forwarded request 851405 from iznogood)</comment>
+    <requestid>851786</requestid>
+  </revision>
 </revisionlist>
