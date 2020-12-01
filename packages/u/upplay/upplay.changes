@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Mon Nov 30 10:59:38 UTC 2020 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to 1.4.7
+  * Fix "close to tray" not working on Linux KDE
+  * Clean up exit when tray is not available
+  * Compilation warnings
+- added dark-theme-fix.patch
+- added browser-back-mouse-button-support.patch
+- remove duplicates icons with fdupes  
+
+-------------------------------------------------------------------
+Sun Nov 15 21:53:15 UTC 2020 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to upstream version 1.4.6

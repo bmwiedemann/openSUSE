@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8a7d8bfb64864c8dd6f0678862e2a7f7</srcmd5>
+    <version>1.4.7</version>
+    <time>1606829001</time>
+    <user>dimstar_suse</user>
+    <comment>New package. 
+upplay is a Qt5 UPnP / OpenHome audio  Control Point from the same developer than upmpdcli that it can control (among other devices).</comment>
+    <requestid>851896</requestid>
+  </revision>
+</revisionlist>
