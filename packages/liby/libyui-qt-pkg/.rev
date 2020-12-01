@@ -457,4 +457,12 @@
     <comment>submit new version 2.48.4</comment>
     <requestid>840454</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>43027b465d69bc16c596fab9c2deb4a6</srcmd5>
+    <version>2.48.5</version>
+    <time>1606828894</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.48.5</comment>
+    <requestid>851792</requestid>
+  </revision>
 </revisionlist>
