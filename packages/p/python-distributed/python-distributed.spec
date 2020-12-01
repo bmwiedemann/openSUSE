@@ -21,7 +21,7 @@
 # Test requires network connection
 %bcond_with     test
 Name:           python-distributed
-Version:        2.30.0
+Version:        2.30.1
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
