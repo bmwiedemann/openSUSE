@@ -1,7 +1,7 @@
 #
 # spec file for package python-httmock
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-httmock
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        A mocking library for requests
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/patrys/httmock
+URL:            https://github.com/patrys/httmock
 Source:         https://github.com/patrys/httmock/archive/%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
