@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 25 17:43:33 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Only conditionally build with firebird support, currently
+  disabled (boo#1179203).
+
+-------------------------------------------------------------------
 Sat Jan 25 14:16:14 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

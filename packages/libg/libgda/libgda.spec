@@ -1,7 +1,7 @@
 #
 # spec file for package libgda
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%bcond_with fbclient
 
 Name:           libgda
 Version:        5.2.9
@@ -55,7 +57,9 @@ BuildRequires:  unixODBC-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.26.0
 BuildRequires:  yelp-tools
+%if %{with fbclient}
 BuildRequires:  pkgconfig(fbclient)
+%endif
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(goocanvas-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
@@ -554,10 +558,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libgda-5.0/providers/libgda-bdb.so
 %{_datadir}/libgda-5.0/bdb_*.xml
 
+%if %{with fbclient}
 %files 5_0-firebird
 # NOTE: Files don't conflict with previous version => Use versioned package name
 %{_libdir}/libgda-5.0/providers/libgda-firebird-client.so
 %{_datadir}/libgda-5.0/firebird_*.xml
+%endif
 
 %files 5_0-jdbc
 # NOTE: Files don't conflict with previous version => Use versioned package name

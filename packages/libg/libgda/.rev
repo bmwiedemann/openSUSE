@@ -695,4 +695,13 @@ file is not available on the system.
     <comment>Eliminate the -lang recommends (forwarded request 767187 from dimstar)</comment>
     <requestid>767449</requestid>
   </revision>
+  <revision rev="89" vrev="3">
+    <srcmd5>b2becc8d0c095d2b25e89e9cd0a8ae24</srcmd5>
+    <version>5.2.9</version>
+    <time>1606828930</time>
+    <user>dimstar_suse</user>
+    <comment>- Only conditionally build with firebird support, currently
+  disabled (boo#1179203). (forwarded request 851344 from dimstar)</comment>
+    <requestid>851787</requestid>
+  </revision>
 </revisionlist>
