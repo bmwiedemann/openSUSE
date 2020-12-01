@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Nov 29 07:16:07 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Add docs/*.rst to %doc
+- Remove a test skip that has been resolved upstream
+- Update to v1.1.4
+  * Bugfix: parsing comma separated addresses in to header
+- from v1.1.3
+  * Feature: add pause and resume writing methods to SMTPProcotol,
+    via asyncio.streams.FlowControlMixin
+  * Bugfix: allow an empty sender
+  * Cleanup: more useful error message when login called without TLS
+
+-------------------------------------------------------------------
 Mon Mar 23 13:06:24 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Remove docs/tests folders that were not supposed to be installed

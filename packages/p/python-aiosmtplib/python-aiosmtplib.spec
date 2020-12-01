@@ -19,21 +19,23 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-aiosmtplib
-Version:        1.1.2
+Version:        1.1.4
 Release:        0
 Summary:        Python asyncio SMTP client
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/cole/aiosmtplib
 Source:         https://files.pythonhosted.org/packages/source/a/aiosmtplib/aiosmtplib-%{version}.tar.gz
-BuildRequires:  %{python_module aiosmtpd}
-BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Suggests:       python-aiosmtpd
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module aiosmtpd}
+BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module pytest-asyncio}
+# /SECTION
 %python_subpackages
 
 %description
@@ -52,11 +54,10 @@ Python asyncio SMTP client.
 
 %check
 # test_qq_login or test_starttls_gmail are online
-# https://github.com/cole/aiosmtplib/issues/79 for test_send_message_smtputf8_sender
-%pytest -k 'not (test_qq_login or test_starttls_gmail or test_send_message_smtputf8_sender)'
+%pytest -rs -k 'not (test_qq_login or test_starttls_gmail)'
 
 %files %{python_files}
-%doc README.rst
+%doc README.rst docs/*.rst
 %license LICENSE.txt
 %{python_sitelib}/*
 

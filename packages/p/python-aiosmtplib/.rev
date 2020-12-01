@@ -23,4 +23,12 @@
     <comment>- Remove docs/tests folders that were not supposed to be installed</comment>
     <requestid>787470</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3338100c22a42067f4b613206ab81d83</srcmd5>
+    <version>1.1.4</version>
+    <time>1606828987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851905</requestid>
+  </revision>
 </revisionlist>
