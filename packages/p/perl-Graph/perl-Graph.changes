@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Nov 28 03:06:17 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.9711
+   see /usr/share/doc/packages/perl-Graph/Changes
+
+  0.9711 2020-11-27
+  - ingest handle multivertexed, multiedged right
+
+  0.9710 2020-11-27
+  - all_paths method
+  - as_hashes handle multivertexed, multiedged right
+
+-------------------------------------------------------------------
 Mon Nov 23 03:06:15 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.9709
