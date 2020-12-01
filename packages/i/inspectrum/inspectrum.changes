@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov 29 10:56:11 UTC 2020 - mardnh@gmx.de
+
+- Update to version 0.2.2+git.20201123:
+  * fix(plotview): Implement showEvent() as an empty stub
+  * Maintain the current scroll position when zooming
+  * Fix build with Qt 5.15+
+- Drop patch:
+  * inspectrum-fix-with-qt-5.15.patch
+
+-------------------------------------------------------------------
 Sun Jun 07 19:39:15 UTC 2020 - mardnh@gmx.de
 
 - Add patch:

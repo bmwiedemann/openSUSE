@@ -2,7 +2,7 @@
 # spec file for package inspectrum
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2015-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 
 Name:           inspectrum
-Version:        0.2.2+git.20200527
+Version:        0.2.2+git.20201123
 Release:        0
 Summary:        A tool for analysing captured signals from SDRs
 License:        GPL-3.0-or-later
 Group:          Productivity/Hamradio/Other
 URL:            https://github.com/miek/inspectrum
 Source:         %{name}-%{version}.tar.xz
-Patch0:         inspectrum-fix-with-qt-5.15.patch
 BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -46,11 +45,10 @@ A tool for analysing captured signals, primarily from software-defined radio rec
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %cmake
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
