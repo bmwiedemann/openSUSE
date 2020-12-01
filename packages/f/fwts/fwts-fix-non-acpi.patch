@@ -1,0 +1,23 @@
+--- fwts-20.11.00/src/acpica/source/tools/acpiexec/aecommon.h	2020/11/27 15:57:25	1.1
++++ fwts-20.11.00/src/acpica/source/tools/acpiexec/aecommon.h	2020/11/27 15:57:41
+@@ -201,11 +201,18 @@
+ 
+ } INIT_FILE_ENTRY;
+ 
++#if defined(__x86_64__) || defined(__x86_64) || defined(__i386__) || defined(__i386) || defined(__aarch64__) || defined(__riscv)
++extern BOOLEAN              AcpiGbl_IgnoreErrors;
++extern UINT8                AcpiGbl_RegionFillValue;
++#else
++#define VOID_FUNC(name) void name(void);
++extern VOID_FUNC(AcpiGbl_IgnoreErrors)
++extern VOID_FUNC(AcpiGbl_RegionFillValue)
++#endif
++
+ extern BOOLEAN              AcpiGbl_UseLocalFaultHandler;
+ extern BOOLEAN              AcpiGbl_VerboseHandlers;
+-extern BOOLEAN              AcpiGbl_IgnoreErrors;
+ extern BOOLEAN              AcpiGbl_AbortLoopOnTimeout;
+-extern UINT8                AcpiGbl_RegionFillValue;
+ extern INIT_FILE_ENTRY      *AcpiGbl_InitEntries;
+ extern UINT32               AcpiGbl_InitFileLineCount;
+ extern UINT8                AcpiGbl_UseHwReducedFadt;
