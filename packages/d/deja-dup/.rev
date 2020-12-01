@@ -552,4 +552,12 @@ So preferably for 13.1 as well.</comment>
     which could mean up to 9 months) (forwarded request 844338 from polslinux)</comment>
     <requestid>844556</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>5e47609a6fe835362288d6dffb0d6aef</srcmd5>
+    <version>42.6</version>
+    <time>1606828926</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 851395 from iznogood)</comment>
+    <requestid>851785</requestid>
+  </revision>
 </revisionlist>
