@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 27 15:50:29 UTC 2020 - Kai Liu <kai.liu@suse.com>
+
+- Update to version 20201127:
+  * Bug Fixes
+    - Fix crash when saving an alias
+  * Translations
+    - 70% Russian
+  * Code
+    - Remove redundant function call
+
+-------------------------------------------------------------------
 Sat Nov 21 13:47:00 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - add upstream signing key and validate source signature
