@@ -340,8 +340,10 @@ install -m644 %{_sourcedir}/syslog-ng.sysconfig \
 # create empty /etc/syslog-ng/conf.d/
 install -d -m755 %{buildroot}%{_sysconfdir}/syslog-ng/conf.d/
 
+%if !0%{?usrmerged}
 # create a compatibility link in /sbin
 ln -sf %{_sbindir}/syslog-ng %{buildroot}/sbin/
+%endif
 
 # don't package update-patterndb now
 rm %{buildroot}%{_bindir}/update-patterndb
@@ -439,7 +441,9 @@ chmod 640 "${additional_sockets#/}"
 %license COPYING
 %doc AUTHORS NEWS.md
 %doc syslog-ng.conf.default
+%if !0%{?usrmerged}
 /sbin/syslog-ng
+%endif
 %attr(755,root,root) %{_sbindir}/syslog-ng
 %attr(755,root,root) %{_sbindir}/syslog-ng-ctl
 %attr(755,root,root) %{_sbindir}/syslog-ng-debun

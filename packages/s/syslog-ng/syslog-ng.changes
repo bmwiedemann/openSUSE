@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 26 13:21:48 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
 Mon May 11 14:51:28 UTC 2020 - peter czanik <peter@czanik.hu>
 
 - fix bnc#1169385 by removing creating news log files from post,
