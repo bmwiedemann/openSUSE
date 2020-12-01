@@ -1,5 +1,5 @@
 #
-# spec file for package black-hole-solver
+# spec file for package rinutils
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -17,7 +17,7 @@
 
 
 Name:           rinutils
-Version:        0.4.1
+Version:        0.8.0
 Release:        0
 Summary:        Shlomi Fish's gnu11 C Library of Random headers
 License:        MIT

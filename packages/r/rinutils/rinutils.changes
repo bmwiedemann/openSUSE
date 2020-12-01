@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 30 13:36:05 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 0.8.0:
+  * Enhance and expand the README.
+    https://lists.debian.org/debian-devel-games/2020/03/msg00008.html
+- Update to 0.6.0:
+  * Made the WITH_TEST_SUITE option off by default to avoid depending on cmocka
+    ( https://github.com/shlomif/fortune-mod/issues/44 )
+  * Remove unused code and other cleanups.
+
+-------------------------------------------------------------------
 Mon Jul 27 19:54:56 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Initial commit

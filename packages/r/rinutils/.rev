@@ -7,4 +7,18 @@
     <comment>BuildDep of black-hole-solver</comment>
     <requestid>823871</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c4cb56fbc2bdbe6642bf2e9cbc9bd2d2</srcmd5>
+    <version>0.8.0</version>
+    <time>1606828969</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.0:
+  * Enhance and expand the README.
+    https://lists.debian.org/debian-devel-games/2020/03/msg00008.html
+- Update to 0.6.0:
+  * Made the WITH_TEST_SUITE option off by default to avoid depending on cmocka
+    ( https://github.com/shlomif/fortune-mod/issues/44 )
+  * Remove unused code and other cleanups. (forwarded request 851852 from Vogtinator)</comment>
+    <requestid>851853</requestid>
+  </revision>
 </revisionlist>
