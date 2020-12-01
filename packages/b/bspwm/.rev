@@ -101,4 +101,155 @@
 - Add -fcommon to CPPFLAGS to make it build with gcc10</comment>
     <requestid>814130</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0ea279e93284172bb09737bf248a59e0</srcmd5>
+    <version>0.9.10</version>
+    <time>1606829003</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.10:
+  + Additions
+  - New node descriptor: first_ancestor.
+  - New node modifiers: horizontal, vertical.
+  + Changes
+  - The node descriptors next and prev might now return any node.
+    The previous behavior can be emulated by appending .!hidden.window.
+  - The node descriptors pointed, biggest and smallest now return
+    leaves (in particular pointed will now return the id of a
+    pointed receptacle). The previous behavior can be emulated by
+    appending .window.
+  - The query command now handles all the possible descriptor-free
+    constraints (for example, query -N -d .active now works as
+    expected).
+  - The rules can now match against the window's names (WM_NAME).
+  - The configuration script now receives an argument to indicate
+    whether is was executed after a restart or not.
+  - The intermediate consequences passed to the external rules
+    command are now in resolved form to avoid unwanted
+    code execution.
+- Package config to /etc/.skel
+- Ran spec-cleaner
+- Update to version 0.9.9:
+  * Fix a memory allocation bug in the implementation of wm --restart.
+  * Honor single_monocle when the hidden flag is toggled.
+- includes 0.9.8:
+  * Fix a potential infinite loop.
+  * Fix two bugs having to do with single_monocle.
+  * Honor removal_adjustment for the spiral automatic insertion scheme.
+- Add -fcommon to CPPFLAGS to make it build with gcc10  
+- Fix suggestions for bspwm-fish-completion
+- Update 0.9.7:
+  * Bug fix for &quot;single_monocle does not work for the first node on
+  a desktop&quot;
+- From 0.9.5 to 0.9.6
+- Additions
+  * New wm command: --restart. It was already possible to restart
+    bspwm without loosing the current state through
+    --{dump,load}-state, but this command will also keep the
+    existing subscribers intact.
+  * New settings: automatic_scheme, removal_adjustment.
+    The automatic insertion mode now provides three ways of
+    inserting a new node: spiral, longest_side (the default)
+    and alternate. Those schemes are described in the README.
+  * New settings: ignore_ewmh_struts, presel_feedback,
+    {top,right,bottom,left}_monocle_padding.
+  * New node descriptor: smallest.
+  * New desktop modifier: active.
+- Changes
+  * The focused and active modifiers now mean the same
+    thing across every object.
+  * Fullscreen windows are no longer sent to the above layer.
+    Within the same layer, fullscreen windows are now above floating
+    windows. If you want a floating window to be above a fullscreen
+    window, you'll need to rely on layers.
+  * Pseudo-tiled windows now shrink automatically.
+- Removals
+  * The paddingless_monocle setting was removed (and subsumed).
+- Update to 0.9.5
+  * Fix resize by mouse behavioral change
+  * Disable 4 default options (IGNORE_EWMH_FOCUS,
+    REMOVE_DISABLED_MONITORS, REMOVE_UNPLUGGED_MONITORS,
+    MERGE_OVERLAPPING_MONITORS)
+- Update to 0.9.4
+- Changes
+  * The following events: node_{manage,unmanage} are now
+    node_{add,remove}.
+- Additions
+  * New monitor/desktop/node descriptors: any, newest.
+  * New node flag: marked.
+  * New monitor descriptor: pointed.
+  * New wm command: --reorder-monitors.
+  * Receptacles are now described in the manual.
+  * New --follow option added to node -{m,d,n,s} and desktop
+    -{m,s}.
+  * The subscribe command now has the following options: --fifo,
+    --count.
+  * New settings: ignore_ewmh_fullscreen, mapping_events_count.
+- split completion scripts into sub-packages
+- fix lint errors
+- cleanup with spec-cleaner
+- compile with %optflags
+- delete _service file
+- remove manual desktop database config
+- Created _service file
+- Update to 0.9.3
+- Changes
+    * *click_to_focus* is now a button name. Specifying a boolean is
+      deprecated but will still work (`true` is equivalent to `button1`).
+- Additions
+    * `node -r` now accepts a relative fraction argument.
+    * An option was added to `query -{M,D,N}` in order to output names
+      instead of IDs: `--names`.
+    * New rule consequence: `rectangle=WxH+X+Y`.
+    * New settings: `swallow_first_click` and `directional_focus_tightness`.
+- Update to 0.9.2
+- Changes
+    * Monitors, desktops and nodes have unique IDs, `bspc query -{N,D,M}`
+      returns IDs and events reference objects by ID instead of name.
+    * `bspc` fails verbosely and only returns a single non-zero exit code.
+    * The `DIR` descriptor is based on [right-window](https://github.com/ntrrgc/right-window).
+    * The `CYCLE_DIR` descriptor isn't limited to the current
+      desktop/monitor anymore. (You can emulate the previous behavior
+      by appending a `.local` modifier to the selector.)
+    * `bspc query -{N,D,M}` accepts an optional reference argument
+      used by certain descriptors/modifiers.
+    * Monitors are ordered visually by default.
+    * The following settings: `border_width`, `window_gap` and
+      `*_padding` behave as expected.
+    * External rules also receives the monitor, desktop and node
+      selectors computed from the built-in rules stage as subsequent arguments.
+    * The `focus_follows_pointer` setting is implemented via enter
+      notify events.
+- Additions
+    * Nodes can be hidden/shown via the new `hidden` flag.
+    * Node receptacles can be inserted with `node -i`. An example
+      is given in `git show e8aa679`.
+    * Non-tiled nodes can be moved/resized via `node -{v,z}`.
+    * The reference of a selector can be set via the `{NODE,DESKTOP
+      ,MONITOR}_SEL#` prefix, example: `bspc node 0x0080000c#south -c`
+      will close the node at the south of `0x0080000c`.
+    * Node descriptors: `&lt;node_id&gt;`, `pointed`.
+    * Node modifiers: `hidden`, `descendant_of`, `ancestor_of`, `window`,
+      `active`. Example: `bspc query -N 0x00400006 -n .descendant_of` returns
+      the descendants of `0x00400006`.
+    * Desktop descriptor: `&lt;desktop_id&gt;`.
+    * Monitor descriptor: `&lt;monitor_id&gt;`.
+    * Settings: `pointer_motion_interval`, `pointer_modifier`,
+      `pointer_action{1,2,3}`, `click_to_focus`, `honor_size_hints`.
+    * Event: `pointer_action`.
+    * ICCCM/EWMH atoms: `WM_STATE`, `_NET_WM_STRUT_PARTIAL`.
+    * `bspc` shell completions for `fish`.
+- Removals
+    * The `pointer` domain. Pointer actions are handled internally.
+    You need to remove any binding that uses this domain from your
+    `sxhkdrc`.
+    * Settings: `history_aware_focus`, `focus_by_distance`. Both
+      settings are merged into the new `DIR` implementation.
+    * `monitor -r|--remove-desktops`: use `desktop -r|--remove` instead.
+    * `wm -r|--remove-monitor`: use `monitor -r|--remove` instead.
+- change sxhkd and dmenu to be recommended, not required
+- move to pkgconfig deps, add desktop-utils handling 
+- Initial packaging of bspwm
+</comment>
+    <requestid>851948</requestid>
+  </revision>
 </revisionlist>

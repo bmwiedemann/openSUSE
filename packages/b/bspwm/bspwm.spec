@@ -18,7 +18,7 @@
 
 
 Name:           bspwm
-Version:        0.9.9
+Version:        0.9.10
 Release:        0
 Summary:        A tiling window manager based on binary space partitioning
 License:        BSD-2-Clause
@@ -86,24 +86,23 @@ sed -i 's,^#! /usr/bin/env ,#!/usr/bin/,' ./examples/receptacles/{extract_canvas
 
 %build
 export CPPFLAGS="%{optflags} -fcommon"
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install PREFIX=%{_prefix} DOCPREFIX=%{_docdir}/%{name}
-install -pm 644 %{SOURCE1} contrib/freedesktop/bspwm.desktop
+install -pm 644 %{SOURCE1} contrib/freedesktop/%{name}.desktop
 install -D -p -m 644 examples/bspwmrc \
-        %{buildroot}%{_sysconfdir}/skel/.config/bspwm/bspwmrc
+        %{buildroot}%{_sysconfdir}/skel/.bspwmrc
 install -D -p -m 644 LICENSE %{buildroot}%{_docdir}/%{name}/LICENSE
 
 %files
-%{_bindir}/bspwm
+%config(noreplace) %{_sysconfdir}/skel/.bspwmrc
+%{_bindir}/%{name}
 %{_bindir}/bspc
 %{_docdir}/%{name}
-%{_mandir}/man1/bspwm.1%{?ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 %{_mandir}/man1/bspc.1%{?ext_man}
-%{_datadir}/xsessions/bspwm.desktop
-%{_sysconfdir}/skel/.config/bspwm
-%config %{_sysconfdir}/skel/.config/bspwm/bspwmrc
+%{_datadir}/xsessions/%{name}.desktop
 
 %files bash-completion
 %{_datadir}/bash-completion
