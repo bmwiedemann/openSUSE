@@ -136,4 +136,21 @@
     (for example, wine), will show up in a popover menu next to the runner icon.</comment>
     <requestid>848802</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b97115f4a2442c80e0ae0c403f170a05</srcmd5>
+    <version>0.5.8.1</version>
+    <time>1606828917</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.8.1:
+  * Remove Proton from available Wine versions
+  * Display a dialog until Lutris finishes initializing
+  * Allow to keep game files when uninstalling a game
+  * Remove custom sidebar CSS
+  * Fix popup menu not showing in list view
+  * Fix script loading for local files
+  * Fix installed at column setting name for list view
+  * Fix lutris not launching games with rungameid
+  * Fix installed Steam game for fresh lutris installs</comment>
+    <requestid>851778</requestid>
+  </revision>
 </revisionlist>
