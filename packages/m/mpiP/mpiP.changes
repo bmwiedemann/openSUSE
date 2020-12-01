@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Sat Nov 28 11:49:04 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Update to mpiP version 3.5
+   * Update deprecated functions.
+   * Fix ARM typo and add LSE configure test.
+   * Correct pt2pt histogram reporting check.
+   * Address compiler warnings for some mt function return types.
+   * Correct build behavior for testing multi-threaded support
+     with Spectrum MPI.
+   * Missing function argument entry.
+   * Additional I/O routines
+   * currBasetype fix
+   * Update to test suite to include multi-threaded tests
+   * Followup for renaming wrappers.c to mpiP-wrappers.c
+   * Include mpiP in wrappers file name for call site reporting
+   * Clarify stack tracing behavior
+   * Correct autoheader error with HAVE_BFD_GET_SECTION_MACROS.
+     Make define behavior consistent.
+   * Convenience functionality to avoid SMPI libmpiP
+   * Arch files corrections for gcc and opal code.
+   * update to work with binutils-2.34
+   * Fixed report header printing bug with large argument counts.
+   * fix make-wrappers.py indentation and make python 2 and 3 compatible
+   * Re-organized sizeof test to avoid CC defaulting to gcc.
+     Re-organized default compilers.
+   * Add Multi-Threading (MT) test suite
+   * Fix FORTRAN Bindings: properly handle strings
+   * Fix the code accounting the application time
+   * Fix TLS cleanup code
+   * Fix MT timings
+   * Refine statistics reset procedure
+   * Reduce the number of TLS accesses
+   * First cut on multi-threading
+   * Extract callsite code to a separate module
+   * Move nested call check down the stack
+   * Introduce additional statistics layer
+   * First step towards MT support
+   * Refactor global state: remove unneeded component
+   * Preliminary step for adding multi-threaded support
+   * Configury change: introduce mpiP-state.[c|h] files
+   * Get rid of mpiPi.h.in file as unneeded
+   * Adding autoconf PACKAGE defines to address current bfd.h
+     requirement.
+   * Fix mpi.h includes in some of the tests
+   * Indentation fixes only. No actual changes.
+   * Change default stack frame unwinding count.
+   * Remove functions deprecated since MPI-2.0
+   * Avoid LD_PRELOAD symbol conflict between srun and libiberty.
+   * Create README.md
+   * Corrected type issues resulting in compiler warnings in the
+     test suite.
+   * Make PC modification conditional. (Removed for now.)
+   * Adding additional RMA functions to cover all MPI3.1 RMA
+     functions. Expanded test coverage.
+   * Added MPI3 One-sided operation support, from changes by Jeff Hammond.
+   * Additional github migration.
+   * Adding README.md
+   * Added support for non-blocking collectives.
+   * Provide non-NULL error argument for dwarf calls.
+     Remove call to elf_end.  Ignore compile units with no
+     function information, rather than abort.
+   * Reduce unnecessary debugging output.
+   * Add count column to top time section.
+   * Adding fortran symbol failure output for debugging configure issues.
+- Add build support for gcc10 to HPC build (bsc#1174439).
+- Add openmpi4 flavors.
+- Add: Add-return-value-to-non-void-function.patch
+  Preliminary %check stage. A number of checks fail currently.
+  These need to be looked at.
+
+-------------------------------------------------------------------
 Wed May 13 19:38:31 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Enable openmpi3 build for all SLE versions.
@@ -8,6 +79,8 @@ Fri Nov 29 19:42:39 UTC 2019 - Egbert Eich <eich@suse.com>
 
 - Add missing openmpi2 build for gcc7.
 - Add support for gcc8 and gcc9 (jsc#SLE-7766 & jsc#SLE-8604).
+- Include mpiP wrapper scripts for mpirun and Slurm srun.
+- Package API.
 
 -------------------------------------------------------------------
 Thu Nov 28 16:03:47 UTC 2019 - Egbert Eich <eich@suse.com>

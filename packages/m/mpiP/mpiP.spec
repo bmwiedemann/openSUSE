@@ -19,11 +19,14 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname mpiP
-%define vers 3.4.1
-%define _vers 3_4_1
+%define vers 3.5
+%define _vers 3_5
 
 %if 0%{?sle_version} >= 150200
 %define DisOMPI1 ExclusiveArch:  do_not_build
+%endif
+%if 0%{?sle_version} >= 150300
+%define DisOMPI2 ExclusiveArch:  do_not_build
 %endif
 
 %if "%flavor" == ""
@@ -52,6 +55,14 @@ ExclusiveArch:  do_not_build
 %undefine c_f_ver
 %define mpi_family openmpi
 %define mpi_ver 3
+%endif
+
+%if "%{flavor}" == "gnu-openmpi4-hpc"
+%{?DisOMPI4}
+%global compiler_family gnu
+%undefine c_f_ver
+%define mpi_family openmpi
+%define mpi_ver 4
 %endif
 
 %if "%{flavor}" == "gnu-mvapich2-hpc"
@@ -90,6 +101,14 @@ ExclusiveArch:  do_not_build
 %define mpi_ver 3
 %endif
 
+%if "%{flavor}" == "gnu7-openmpi4-hpc"
+%{?DisOMPI4}
+%global compiler_family gnu
+%define c_f_ver 7
+%define mpi_family openmpi
+%define mpi_ver 4
+%endif
+
 %if "%{flavor}" == "gnu7-mvapich2-hpc"
 %global compiler_family gnu
 %define c_f_ver 7
@@ -110,6 +129,14 @@ ExclusiveArch:  do_not_build
 %define mpi_ver 1
 %endif
 
+%if "%{flavor}" == "gnu8-openmpi2-hpc"
+%{?DisOMPI2}
+%global compiler_family gnu
+%define c_f_ver 8
+%define mpi_family openmpi
+%define mpi_ver 2
+%endif
+
 %if "%{flavor}" == "gnu8-openmpi3-hpc"
 %{?DisOMPI3}
 %global compiler_family gnu
@@ -118,12 +145,12 @@ ExclusiveArch:  do_not_build
 %define mpi_ver 3
 %endif
 
-%if "%{flavor}" == "gnu8-openmpi2-hpc"
-%{?DisOMPI3}
+%if "%{flavor}" == "gnu8-openmpi4-hpc"
+%{?DisOMPI4}
 %global compiler_family gnu
 %define c_f_ver 8
 %define mpi_family openmpi
-%define mpi_ver 2
+%define mpi_ver 4
 %endif
 
 %if "%{flavor}" == "gnu8-mvapich2-hpc"
@@ -147,7 +174,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "gnu9-openmpi2-hpc"
-%{?DisOMPI3}
+%{?DisOMPI2}
 %global compiler_family gnu
 %define c_f_ver 9
 %define mpi_family openmpi
@@ -162,6 +189,14 @@ ExclusiveArch:  do_not_build
 %define mpi_ver 3
 %endif
 
+%if "%{flavor}" == "gnu9-openmpi4-hpc"
+%{?DisOMPI4}
+%global compiler_family gnu
+%define c_f_ver 9
+%define mpi_family openmpi
+%define mpi_ver 4
+%endif
+
 %if "%{flavor}" == "gnu9-mvapich2-hpc"
 %global compiler_family gnu
 %define c_f_ver 9
@@ -174,6 +209,50 @@ ExclusiveArch:  do_not_build
 %define mpi_family mpich
 %endif
 
+%if "%{flavor}" == "gnu10-openmpi-hpc"
+%{?DisOMPI1}
+%global compiler_family gnu
+%define c_f_ver 10
+%define mpi_family openmpi
+%define mpi_ver 1
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi2-hpc"
+%{?DisOMPI2}
+%global compiler_family gnu
+%define c_f_ver 10
+%define mpi_family openmpi
+%define mpi_ver 2
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi3-hpc"
+%{?DisOMPI3}
+%global compiler_family gnu
+%define c_f_ver 10
+%define mpi_family openmpi
+%define mpi_ver 3
+%endif
+
+%if "%{flavor}" == "gnu10-openmpi4-hpc"
+%{?DisOMPI4}
+%global compiler_family gnu
+%define c_f_ver 10
+%define mpi_family openmpi
+%define mpi_ver 4
+%endif
+
+%if "%{flavor}" == "gnu10-mvapich2-hpc"
+%global compiler_family gnu
+%define c_f_ver 10
+%define mpi_family mvapich2
+%endif
+
+%if "%{flavor}" == "gnu10-mpich-hpc"
+%global compiler_family gnu
+%define c_f_ver 10
+%define mpi_family mpich
+%endif
+
 %{?hpc_init:%{hpc_init -c %compiler_family -m %mpi_family %{?c_f_ver:-v %{c_f_ver}} %{?mpi_ver:-V %{mpi_ver}} %{?ext:-e %{ext}}}}
 
 Name:           %{?hpc_package_name:%{hpc_package_name %_vers}}%{!?hpc_package_name:%pname}
@@ -182,17 +261,21 @@ License:        BSD-3-Clause
 Group:          Development/Tools/Debuggers
 Version:        %vers
 Release:        0
-URL:            http://mpip.sourceforge.net/
-Source0:        http://sourceforge.net/projects/mpip/files/mpiP/mpiP-3.4.1/mpiP-%{version}.tar.gz
+URL:            https://github.com/LLNL/mpiP
+Source0:        https://github.com/LLNL/mpiP/releases/download/%{version}/mpip-%{version}.tgz#/%{pname}-%{version}.tgz
 Patch1:         mpip.unwinder.patch
+Patch2:         Add-return-value-to-non-void-function.patch
 
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
 BuildRequires:  %{mpi_family}%{?mpi_ver}-%{compiler_family}%{?c_f_ver}-hpc-macros-devel
+BuildRequires:  binutils-devel
+BuildRequires:  dejagnu
+BuildRequires:  libunwind-devel
 BuildRequires:  lua-lmod
 BuildRequires:  python
+#BuildRequires:  slurm-node
 BuildRequires:  suse-hpc
-%hpc_requires
-%hpc_requires_devel
+%{?hpc_requires}
 
 %description
 mpiP is a profiling library for MPI applications.
@@ -205,13 +288,26 @@ file.
 
 %{hpc_master_package -L}
 
+%package devel
+Summary:        Headers for profiling library for MPI applications
+Group:          Development/Libraries/C and C++
+%{?hpc_requires_devel}
+
+%description devel
+mpiP is a profiling library for MPI applications. This packages contains
+the build headers.
+
+%{hpc_master_package devel}
+
 %package devel-static
 Summary:        Static version of profiling library for MPI applications
 Group:          Development/Libraries/C and C++
-%hpc_requires_devel
+%{?hpc_requires_devel}
 
 %description devel-static
 mpiP is a profiling library for MPI applications.
+
+This package contains the static libraries.
 
 %package doc
 Summary:        Documentation for the mpiP profiling library
@@ -226,18 +322,20 @@ This contains the documentation.
 
 %prep
 %setup -q -n %{pname}-%{version}
-%patch1 -p1
+%autopatch -p1
+sed -i -e "/-shared -o \$@/s#\(\${LDFLAGS}\)#\1 -Wl,-soname,\$@#" Makefile.in
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %hpc_setup
-CC=mpicc
-CXX=mpicxx
-FC=mpif90
-CFLAGS="-D__DATE__=\\\"NODATE\\\" -D__TIME__=\\\"NOTIME\\\""
+export CC=mpicc
+export CXX=mpicxx
+export FC=mpifort
+export F77=$FC
+export CFLAGS="-D__DATE__=\\\"NODATE\\\" -D__TIME__=\\\"NOTIME\\\""
+export FFLAGS="-std=legacy"
 %hpc_configure \
     --enable-demangling \
-    --disable-libunwind \
 %ifarch aarch64
     --enable-setjmp \
 %endif
@@ -246,11 +344,19 @@ CFLAGS="-D__DATE__=\\\"NODATE\\\" -D__TIME__=\\\"NOTIME\\\""
 make %{?_smp_mflags} shared
 
 %install
-
 %hpc_setup
-%make_install
+make install-all DESTDIR=%{?buildroot}
 find "%{buildroot}" -type f -name "*.a" -exec chmod a-x {} +
 find "%{buildroot}/%{_docdir}" -type f -exec chmod a-x {} +
+find "%{buildroot}/%{hpc_includedir}" -type f -exec chmod a-x {} +
+%{hpc_shebang_sanitize_scripts %{buildroot}%{hpc_bindir}}
+for i in mpirun-mpip srun-mpip; do
+    sed -i \
+	-e "s@\(MPIP_DIR=\).*@\1%{?hpc_prefix}@" \
+	-e "s@\(LD_PRELOAD=\).*:\(.*\)@\1\2@" \
+	-e "s@\(ADDTL_RT_LIBS=.*\)@#\1@" \
+	-e "s@/lib/libmpiP.so@/%{_lib}/libmpiP.so@" %{buildroot}%{hpc_bindir}/$i
+done
 
 %hpc_write_modules_files
 #%%Module1.0#####################################################################
@@ -271,28 +377,44 @@ module-whatis "URL %{url}"
 
 set     version                     %{version}
 
+prepend-path    PATH                %{hpc_bindir}
 prepend-path    LD_LIBRARY_PATH     %{hpc_libdir}
+if {[file isdirectory  %{hpc_includedir}]} {
+prepend-path    C_INCLUDE_PATH      %{hpc_includedir}
+prepend-path    INCLUDE             %{hpc_includedir}
+}
 
 setenv          %{hpc_upcase %pname}_DIR        %{hpc_prefix}
 setenv          %{hpc_upcase %pname}_LIB        %{hpc_libdir}
 
 EOF
 
+%check
+%hpc_setup
+export CC=mpicc
+export CXX=mpicxx
+export FC=mpifort
+export F77=$FC
+export FFLAGS="-std=legacy"
+LD_LIBRARY_PATH=$(pwd)${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+make FFLAGS+=${FFLAGS} check || exit 0
+
 %postun
 %hpc_module_delete_if_default
 
 %files
-%defattr(-,root,root,-)
 %{hpc_dirs}
 %{hpc_modules_files}
 %{hpc_libdir}/*so
+%{hpc_bindir}
 
 %files doc
-%defattr(0644,root,root,-)
 %{_docdir}/%{name}/
 
+%files devel
+%{hpc_includedir}
+
 %files devel-static
-%defattr(0644,root,root,-)
 %{hpc_libdir}/*.a
 
 %changelog

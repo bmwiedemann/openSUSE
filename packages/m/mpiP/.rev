@@ -108,4 +108,41 @@
     <comment>- Enable openmpi3 build for all SLE versions. (forwarded request 805379 from eeich)</comment>
     <requestid>805380</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7fdfd5ee90f921c6b8bfcc2054081b1e</srcmd5>
+    <version>3.5</version>
+    <time>1606828911</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to mpiP version 3.5
+   * Update deprecated functions.
+   * Fix ARM typo and add LSE configure test.
+   * Correct pt2pt histogram reporting check.
+   * Address compiler warnings for some mt function return types.
+   * Correct build behavior for testing multi-threaded support
+     with Spectrum MPI.
+   * Missing function argument entry.
+   * Additional I/O routines
+   * currBasetype fix
+   * Update to test suite to include multi-threaded tests
+   * Followup for renaming wrappers.c to mpiP-wrappers.c
+   * Include mpiP in wrappers file name for call site reporting
+   * Clarify stack tracing behavior
+   * Correct autoheader error with HAVE_BFD_GET_SECTION_MACROS.
+     Make define behavior consistent.
+   * Convenience functionality to avoid SMPI libmpiP
+   * Arch files corrections for gcc and opal code.
+   * update to work with binutils-2.34
+   * Fixed report header printing bug with large argument counts.
+   * fix make-wrappers.py indentation and make python 2 and 3 compatible
+   * Re-organized sizeof test to avoid CC defaulting to gcc.
+     Re-organized default compilers.
+   * Add Multi-Threading (MT) test suite
+   * Fix FORTRAN Bindings: properly handle strings
+   * Fix the code accounting the application time
+   * Fix TLS cleanup code
+   * Fix MT timings
+   * Refine statistics reset procedure
+   * Reduce the number of TLS accesses</comment>
+    <requestid>851924</requestid>
+  </revision>
 </revisionlist>
