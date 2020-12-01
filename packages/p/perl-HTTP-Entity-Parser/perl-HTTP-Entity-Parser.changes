@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov 29 03:08:04 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.25
+   see /usr/share/doc/packages/perl-HTTP-Entity-Parser/Changes
+
+  0.25 2020-11-28T02:35:28Z
+
+    - handle empty Content-Type as if octet-stream blob #14
+
+-------------------------------------------------------------------
 Thu Aug  6 03:10:27 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.24

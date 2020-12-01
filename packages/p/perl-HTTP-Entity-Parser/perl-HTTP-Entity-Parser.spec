@@ -17,7 +17,7 @@
 
 
 Name:           perl-HTTP-Entity-Parser
-Version:        0.24
+Version:        0.25
 Release:        0
 %define cpan_name HTTP-Entity-Parser
 Summary:        PSGI compliant HTTP Entity Parser
