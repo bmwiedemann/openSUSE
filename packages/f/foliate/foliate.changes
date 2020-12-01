@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 27 23:28:16 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Change filter typelib(Handy) = 1 to exclude now obsolete version
+  0.0 instead of current version 1.
+
+-------------------------------------------------------------------
 Thu Oct 15 02:41:42 UTC 2020 - Dead Mozay <dead-mozay@opensuse.org>
 
 - Update to version 2.5.0:

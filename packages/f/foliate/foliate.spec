@@ -16,7 +16,7 @@
 #
 
 
-%global __requires_exclude typelib\\(Handy\\) = 1
+%global __requires_exclude typelib\\(Handy\\) = 0.0
 %define oname com.github.johnfactotum.Foliate
 Name:           foliate
 Version:        2.5.0
@@ -26,6 +26,7 @@ License:        GPL-3.0-only
 Group:          Productivity/Office/Other
 URL:            https://johnfactotum.github.io/foliate/
 Source:         %{name}-%{version}.tar.gz
+
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection
