@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 28 10:59:12 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove Suggest python-asyncio, which is in Python 3 stdlib
+
+-------------------------------------------------------------------
 Thu Feb  6 13:45:03 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 8.1

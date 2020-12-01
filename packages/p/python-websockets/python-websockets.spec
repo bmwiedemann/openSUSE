@@ -30,7 +30,6 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Suggests:       python-asyncio
 %python_subpackages
 
 %description
@@ -56,6 +55,8 @@ export CFLAGS="%{optflags}"
 %check
 # Test execution speed depends on BS load and architecture, relax
 export WEBSOCKETS_TESTS_TIMEOUT_FACTOR=5
+# https://github.com/aaugustin/websockets/issues/855 is an intermittent failure
+# for test_keepalive_ping_does_not_crash_when_connection_lost on s390x
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m unittest
 
 %files %{python_files}
