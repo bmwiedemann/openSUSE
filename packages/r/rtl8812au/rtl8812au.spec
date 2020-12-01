@@ -17,7 +17,7 @@
 
 
 Name:           rtl8812au
-Version:        5.6.4.2+git20200318.49e98ff
+Version:        5.6.4.2+git20200702.3110ad6
 Release:        0
 Summary:        Kernel driver for Realtek 802.11ac 8812au wifi cards
 License:        GPL-2.0-only
