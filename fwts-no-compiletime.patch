@@ -1,8 +1,6 @@
-Index: fwts-20.03.00/src/acpica/source/compiler/aslutils.c
-===================================================================
---- fwts-20.03.00.orig/src/acpica/source/compiler/aslutils.c
-+++ fwts-20.03.00/src/acpica/source/compiler/aslutils.c
-@@ -596,7 +596,7 @@ UtDisplayOneSummary (
+--- fwts-20.11.00/src/acpica/source/compiler/aslutils.c	2020/11/27 16:29:34	1.1
++++ fwts-20.11.00/src/acpica/source/compiler/aslutils.c	2020/11/27 16:29:50
+@@ -596,7 +596,7 @@
          /* Compiler name and version number */
  
          FlPrintFile (FileId, "%s version %X [%s]\n\n",

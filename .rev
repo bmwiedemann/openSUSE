@@ -576,4 +576,18 @@
   * See provided changelog for detailed list of changes</comment>
     <requestid>836083</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>abdf40a4ccc9b3d35c09b9734654e9db</srcmd5>
+    <version>20.11.00</version>
+    <time>1606829024</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix broken source url and prepare done in previous changes
+
+- add patch fwts-fix-non-acpi.patch
+  fix build on non-acpi platforms like ppc64le and s390x 
+
+- Update to version 20.11.00:
+  * See provided changelog for detailed list of changes</comment>
+    <requestid>852067</requestid>
+  </revision>
 </revisionlist>

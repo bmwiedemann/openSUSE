@@ -17,15 +17,17 @@
 
 
 Name:           fwts
-Version:        20.09.00
+Version:        20.11.00
 Release:        0
 Summary:        Firmware Test Suite
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://wiki.ubuntu.com/Kernel/Reference/fwts
-Source0:        http://fwts.ubuntu.com/release/%{name}-V%{version}.tar.gz
+Source0:        https://fwts.ubuntu.com/release/%{name}-V%{version}.tar.gz
 # PATCH-FIX-OPENSUSE fwts-no-compiletime.patch
 Patch1:         fwts-no-compiletime.patch
+# PATCH-FIX-OPENSUSE fwts-fix-non-acpi.patch
+Patch2:         fwts-fix-non-acpi.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -54,7 +56,7 @@ will give some form of advice on how to fix issues or workaround firmware
 issues.
 
 %prep
-%autosetup -c %{name}-%{version} -p1
+%autosetup -c %{name}-V%{version} -p1
 
 %build
 find . -name Makefile.am -exec sed -i "s|-Werror||g"  {} +

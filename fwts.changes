@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Dec  1 09:42:44 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix broken source url and prepare done in previous changes
+
+-------------------------------------------------------------------
+Mon Nov 30 14:47:38 CET 2020 - ro@suse.de
+
+- add patch fwts-fix-non-acpi.patch
+  fix build on non-acpi platforms like ppc64le and s390x 
+
+-------------------------------------------------------------------
+Fri Nov 27 17:33:03 CET 2020 - ro@suse.de
+
+- Update to version 20.11.00:
+  * See provided changelog for detailed list of changes  
+
+-------------------------------------------------------------------
 Tue Sep 22 11:51:22 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20.09.00:
