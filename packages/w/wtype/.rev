@@ -7,4 +7,14 @@
     <comment>wtype</comment>
     <requestid>850300</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9f225889f1f7bd8dd068413f586b7d0c</srcmd5>
+    <version>0.3</version>
+    <time>1606828913</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3:
+  * Use temporary files instead of shm objects (fix for FreeBSD)
+  * Add a manpage</comment>
+    <requestid>851773</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 30 08:29:29 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3:
+  * Use temporary files instead of shm objects (fix for FreeBSD)
+  * Add a manpage
+
+-------------------------------------------------------------------
 Mon Nov 23 16:07:47 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Initial package of wtype 0.2 for openSUSE

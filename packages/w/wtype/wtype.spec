@@ -17,7 +17,7 @@
 
 
 Name:           wtype
-Version:        0.2
+Version:        0.3
 Release:        0
 Summary:        Xdotool type for Wayland
 License:        MIT
@@ -47,5 +47,6 @@ xdotool type for Wayland.
 %license LICENSE
 %doc README.md
 %{_bindir}/wtype
+%{_mandir}/man1/wtype.1%{?ext_man}
 
 %changelog
