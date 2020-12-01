@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov 30 03:07:04 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.051
+   see /usr/share/doc/packages/perl-PAR-Packer/Changes
+
+  1.051  2020-11-29
+  - Fix #27: "pp -u broken in perl 5.32"
+    ignore "pp -u ..." (with a warning) for Perl >= 5.31.6
+  - Fix #25: unexpected interaction between pp options "--compile" and "--module Foo::"
+    scan_deps_runtime() is called for all detected Foo:: modules, but
+    modules by themselves are typically not suitable for dynamic scanning
+    (causing lots of spurious warnings for "--compile").
+  - cleanup argv handling in myldr/main.c
+  - placate cperl ("Attempt to change hash while iterating over it.")
+
+-------------------------------------------------------------------
 Thu Mar 19 03:14:14 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.050
