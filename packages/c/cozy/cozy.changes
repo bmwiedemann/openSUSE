@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 30 11:44:27 UTC 2020 - Julian Geywitz <suse@geigi.de>
+
+Update to 0.7.7
+  * The rewind and fast forward buttons in the desktop integration now jump 30 seconds back and forth instead of jumping a whole chapter
+  * Fix: the rewind button in the toolbar is now working again
+  * Fix: automatic rewind, when enabled in settings, is now working again
+  * Fix: when rewinding at the beginning of a book Cozy did jump to the end of the book
+  * Fix: pressing escape to leave the book detail view is now working again
+  * Many other small fixes that make Cozy more reliable
+  * As always, updated translations thanks to all of the translators!
+
+-------------------------------------------------------------------
 Sun Nov 22 20:31:41 UTC 2020 - Julian Geywitz <suse@geigi.de>
 
 Update to 0.7.6
