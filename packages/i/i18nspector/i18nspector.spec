@@ -17,7 +17,7 @@
 
 
 Name:           i18nspector
-Version:        0.25.9
+Version:        0.26
 Release:        0
 Summary:        Tool for Checking gettext POT/PO/MO Files
 License:        MIT

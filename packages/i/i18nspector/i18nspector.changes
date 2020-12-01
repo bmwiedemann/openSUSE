@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 29 16:15:12 UTC 2020 - Kyrill Detinov <lazy.kent@opensuse.org>
+
+- Update to 0.26.
+  * Summary of tag changes:
+    + Added:
+     - perl-brace-format-string-error
+     - perl-brace-format-string-missing-argument
+     - perl-brace-format-string-unknown-argument
+  * Check for errors in Perl brace format strings.
+
+-------------------------------------------------------------------
 Sat Aug 15 17:19:48 UTC 2020 - Kyrill Detinov <lazy.kent@opensuse.org>
 
 - Update to 0.25.9.
