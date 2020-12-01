@@ -16,6 +16,12 @@
 #
 
 
+%if !0%{?usrmerged}
+%define sbindir /sbin
+%else
+%define sbindir %{_sbindir}
+%endif
+
 %define lname   libecryptfs1
 Name:           ecryptfs-utils
 Version:        111
@@ -32,6 +38,7 @@ Patch0:         ecryptfs-setup-swap-SuSE.patch
 # PATCH-FIX-OPENSUSE build with -fpie/-pie
 Patch1:         ecryptfs-utils-src-utils-Makefile.patch
 Patch2:         ecryptfs-utils-openssl11.patch
+Patch3:         ecryptfs-usrmerge.diff
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -78,11 +85,13 @@ A stacked cryptographic filesystem for Linux.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p0
+%patch3 -p1
 
 %build
 export RPM_OPT_FLAGS="%{optflags} -fno-strict-aliasing"
 autoreconf -fiv
 %configure \
+	rootsbindir=%{sbindir} \
 	--docdir=%{_defaultdocdir}/%{name} \
 	--disable-static \
 	--disable-pywrap \
@@ -118,10 +127,10 @@ mkdir -p %{buildroot}%{_prefix}/lib/modules-load.d/
 echo -e "# ecryptfs module is needed before ecryptfs mount, so mount helper can \n# check for file name encryption support\necryptfs" >%{buildroot}%{_prefix}/lib/modules-load.d/ecryptfs.conf
 
 %verifyscript
-%verify_permissions -e /sbin/mount.ecryptfs_private
+%verify_permissions -e %{sbindir}/mount.ecryptfs_private
 
 %post
-%set_permissions /sbin/mount.ecryptfs_private
+%set_permissions %{sbindir}/mount.ecryptfs_private
 %{_sbindir}/pam-config -a --ecryptfs
 %desktop_database_post
 
@@ -140,10 +149,10 @@ fi
 %doc COPYING NEWS README THANKS doc/ecryptfs-faq.html
 %{_docdir}/%{name}
 %{_bindir}/*
-/sbin/mount.ecryptfs
-/sbin/umount.ecryptfs
-/sbin/umount.ecryptfs_private
-%verify(not mode) /sbin/mount.ecryptfs_private
+%{sbindir}/mount.ecryptfs
+%{sbindir}/umount.ecryptfs
+%{sbindir}/umount.ecryptfs_private
+%verify(not mode) %{sbindir}/mount.ecryptfs_private
 %{_mandir}/man1/*ecryptfs*
 %{_mandir}/man7/ecryptfs*
 %{_mandir}/man8/*ecryptfs*

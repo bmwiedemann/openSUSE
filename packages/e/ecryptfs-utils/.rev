@@ -395,4 +395,13 @@
     <comment></comment>
     <requestid>828245</requestid>
   </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>b9f492da23236afe1284894f6fae9708</srcmd5>
+    <version>111</version>
+    <time>1606828942</time>
+    <user>dimstar_suse</user>
+    <comment>- prepare usrmerge (boo#1029961)
+  - added: ecryptfs-usrmerge.diff</comment>
+    <requestid>851796</requestid>
+  </revision>
 </revisionlist>
