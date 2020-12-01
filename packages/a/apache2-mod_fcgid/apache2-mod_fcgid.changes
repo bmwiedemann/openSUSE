@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 25 08:57:52 UTC 2020 - pgajdos@suse.com
+
+- use /usr/sbin/apxs for build, not -prefork
+
+-------------------------------------------------------------------
 Tue Jun 25 13:53:57 UTC 2019 - pgajdos@suse.com
 
 - test via apache-rex instead

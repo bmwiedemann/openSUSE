@@ -238,4 +238,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>713070</requestid>
   </revision>
+  <revision rev="32" vrev="11">
+    <srcmd5>bda8c0a0268945060cb8678bcacef628</srcmd5>
+    <version>2.3.9</version>
+    <time>1606828964</time>
+    <user>dimstar_suse</user>
+    <comment>- use /usr/sbin/apxs for build, not -prefork</comment>
+    <requestid>851859</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_fcgid
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Alternative FastCGI module for Apache2
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Servers
-Url:            http://httpd.apache.org/mod_fcgid/
+URL:            http://httpd.apache.org/mod_fcgid/
 Source:         http://mirror.synyx.de/apache/httpd/mod_fcgid/mod_fcgid-%{version}.tar.bz2
 Source1:        apache2-mod_fcgid.conf
 Patch0:         mod_fcgid-2.3.5_suse_paths.patch
@@ -59,7 +59,7 @@ See %{_sysconfdir}/apache2/conf.d/mod_fcgid.conf and
 %patch1 -p1
 
 %build
-APXS="%{apache_apxs}-prefork" ./configure.apxs
+APXS="%{apache_apxs}" ./configure.apxs
 make %{?_smp_mflags}
 
 %install
