@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Nov 28 15:40:08 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.9.0
+  * Avoid graph overlapping legend in spectrum analyzer.
+  * Improve Auto Interpretation Performance.
+  * Improve sdr check fix.
+  * Use costas loop for PSK demod.
+  * Consider checksum label in copy operation.
+
+-------------------------------------------------------------------
+Tue Sep  8 12:33:14 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.8.9
+  * make HackRF bias tee configurable.
+  * Fix deprecation warnings due to invalid escape sequences.
+  * Use ElementTree instead of deprecated cElementTree.
+  * Refactor FileOperator.
+  * properly remember size and position of dialogs fix.
+  * add De Bruijn fuzzing.
+  * add support for already demodulated signals.
+  * Remove NRZ-I to prevent mixing with NRZ + Invert, clarify names.
+
+-------------------------------------------------------------------
 Sun May 17 14:53:56 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.8.8
