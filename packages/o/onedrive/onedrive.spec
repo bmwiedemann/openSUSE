@@ -28,7 +28,7 @@
 %endif
 
 Name:           onedrive
-Version:        2.4.7
+Version:        2.4.8
 Release:        0
 Summary:        Client for One Drive Service for Linux
 License:        GPL-3.0-only
@@ -120,7 +120,7 @@ install -d -m 0755 %{buildroot}%{_localstatedir}/log/%{name}
 %files
 %defattr(-,root,root)
 %license LICENSE
-%doc USAGE.md Office365.md INSTALL.md Docker.md CHANGELOG.md config README.md BusinessSharedFolders.md LICENSE
+%doc USAGE.md Office365.md INSTALL.md Docker.md CHANGELOG.md config README.md BusinessSharedFolders.md LICENSE advanced-usage.md
 %config(noreplace) %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 %{_bindir}/%{name}

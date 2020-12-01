@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Dec 01 06:33:45 UTC 2020 - egotthold@suse.com
+
+- Update to version 2.4.8:
+  * Release files for 2.4.8 (#1167)
+  * Fix broken link in manual (#1166)
+  * Fix application crash in --monitor mode due to 'Failed to stat file' when setgid is used on a directory (#1157)
+  * Check application_id before setting redirect URL when using specific Azure endpoints (#1165)
+  * Fix logging output when authentication authorisation fails (#1156)
+  * Update #1142 logging output handling (#1153)
+  * Fix changing permissions on pre-existing local directories (#1152)
+  * Corrected typo (#1151)
+  * Use config set option for 'remove_source_files' and 'skip_dir_strict_match' rather than ignore (#1142)
+  * Update sync.d
+  * Update sync.d
+  * Update sync.d
+  * Update sync.d
+  * catch folder creation errors due to file system permissions error
+  * Update error catching and handling
+  * Update onedrive.d
+  * Fix download failure due to incorrect filesystem permissions
+  * Update USAGE.md to clarify 'application_id' usage to utilise older 'skilion' application id (#1136)
+  * Release 2.4.8 Dev Prep (#1134)
+
+-------------------------------------------------------------------
 Mon Nov 09 07:33:01 UTC 2020 - hpj@urpla.net
 
 - Update to version 2.4.7:
