@@ -1163,4 +1163,28 @@
   * manpage: document improved --playlist security</comment>
     <requestid>850003</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>dc40508020ab29df1eb10c85f05de892</srcmd5>
+    <version>0.33.0+git.20201129T160245.f16c6472a1</version>
+    <time>1606828952</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.33.0+git.20201129T160245.f16c6472a1:
+  * travis: use newer 10.15 VM with newer xcode
+  * travis: fix macOS 10.13 build
+  * vo_sixel: don't leak the frame reference
+  * vo_tct: don't leak the frame reference
+  * vo_tct: remove unused variable
+  * player: allow vo to be switched at runtime
+  * demux: add function to refresh a track without (de-)selecting it
+  * vo_sixel: use draw_frame instead of draw_image
+  * vo_sixel: skip testdither init in fixed palette
+  * vo_sixel: Update libsixel constant values
+  * matroska.py: remove python2 support
+  * bootstrap.py: remove all python2 support
+  * vo_sixel: change default dither to &quot;auto&quot;
+  * vo_sixel: fix the image corruption with mlterm
+  * vo_sixel: support --vo-sixel-exit-clear[=yes]
+  * terminal: process input when foregrounded</comment>
+    <requestid>851822</requestid>
+  </revision>
 </revisionlist>
