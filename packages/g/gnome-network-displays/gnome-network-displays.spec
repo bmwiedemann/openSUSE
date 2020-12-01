@@ -17,21 +17,25 @@
 
 
 Name:           gnome-network-displays
-Version:        0.90.3
+Version:        0.90.4
 Release:        0
 Summary:        Miracast implementation for GNOME
-Group:          Productivity/Networking/Other
 License:        GPL-3.0-only
+Group:          Productivity/Networking/Other
 URL:            https://gitlab.gnome.org/GNOME/%{name}
-Source:         %{url}/-/archive/v%{version}/%{name}-v%{version}.tar.gz
+Source:         https://download.gnome.org/sources/%{name}/0.90/%{name}-%{version}.tar.xz
+
+BuildRequires:  desktop-file-utils
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(appstream-glib)
+BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-rtsp-server-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
-BuildRequires:  update-desktop-files
+Requires:       gstreamer-plugin-pipewire
 
 %description
 This is an experimental implementation of Wi-Fi Display (aka Miracast).
@@ -44,7 +48,7 @@ to use the created "Network-Displays" sink.
 %lang_package
 
 %prep
-%autosetup -n %{name}-v%{version}
+%autosetup -p1
 
 %build
 %meson
@@ -52,7 +56,8 @@ to use the created "Network-Displays" sink.
 
 %install
 %meson_install
-%suse_update_desktop_file -r org.gnome.NetworkDisplays "Network;RemoteAccess"
+desktop-file-validate %{buildroot}/%{_datadir}/applications/*.desktop
+appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/*.appdata.xml
 %find_lang %{name}
 
 %files
@@ -63,6 +68,7 @@ to use the created "Network-Displays" sink.
 %{_datadir}/glib-2.0/schemas/*.gschema.xml
 %{_datadir}/icons/*/*/*/*.svg
 %{_datadir}/metainfo/*.appdata.xml
+%{_prefix}/lib/firewalld/zones/P2P-WiFi-Display.xml
 
 %files lang -f %{name}.lang
 

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov 27 21:10:45 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.90.4:
+  + Add firewalld integration.
+  + Updated translations.
+- Add explicit runtime gstreamer-plugin-pipewire Requires.
+- Add missing explicit pkgconfig(gstreamer-plugins-base-1.0)
+  BuildRequires, fixed in future versions.
+- Replace update-desktop-files with desktop-file-utils
+  BuildRequires and distro independant command call.
+- Add pkgconfig(appstream-glib) BuildRequires and metainfo
+  validation call.
+
+-------------------------------------------------------------------
 Thu Aug 13 08:38:31 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Separate lang package

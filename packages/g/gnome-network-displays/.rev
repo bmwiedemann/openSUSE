@@ -7,4 +7,24 @@
     <comment>MiraCast implementation for GNOME</comment>
     <requestid>826645</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a2dcfdd8b7aff36215a5d84276a6167c</srcmd5>
+    <version>0.90.4</version>
+    <time>1606828925</time>
+    <user>dimstar_suse</user>
+    <comment>Yes I know this breaks the build for Leaps, but I don't care :-)
+This is more futureproof.
+
+- Update to version 0.90.4:
+  + Add firewalld integration.
+  + Updated translations.
+- Add explicit runtime gstreamer-plugin-pipewire Requires.
+- Add missing explicit pkgconfig(gstreamer-plugins-base-1.0)
+  BuildRequires, fixed in future versions.
+- Replace update-desktop-files with desktop-file-utils
+  BuildRequires and distro independant command call.
+- Add pkgconfig(appstream-glib) BuildRequires and metainfo
+  validation call. (forwarded request 851394 from iznogood)</comment>
+    <requestid>851784</requestid>
+  </revision>
 </revisionlist>
