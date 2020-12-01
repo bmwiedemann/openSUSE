@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Nov 29 15:33:57 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.90.4
+  * Authentication is now required to enroll a new print.
+  * Add support for the libfprint early reporting mechanism
+  * Proper hotplug support together with libfprint 1.90.4
+  * Handle STATE_DIRECTORY containing multiple paths
+- Add patch:
+  * 0001-tests-Fix-test-not-failing-on-error.patch
+    https://gitlab.freedesktop.org/libfprint/fprintd/-/merge_requests/70
+    Unittest test_manager_get_devices_on_name_appeared is broken
+    with this patch applied - so revert it for now.
+
+-------------------------------------------------------------------
 Thu Mar 19 08:00:08 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Few minor spec-cleaner tweaks

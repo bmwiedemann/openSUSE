@@ -1,0 +1,56 @@
+From 6dc699ae6fec2e2ff644b0d7b9c3665d3d302336 Mon Sep 17 00:00:00 2001
+From: Benjamin Berg <bberg@redhat.com>
+Date: Fri, 2 Oct 2020 17:54:20 +0200
+Subject: [PATCH] tests: Fix test not failing on error
+
+An assertion that is raised within a callback will not be swallowed by
+the C code that called the function. To ensure that errors will be
+noticable, pass the result back to the surrounding scope and check it
+there.
+---
+ tests/fprintd.py | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/tests/fprintd.py b/tests/fprintd.py
+index 0be7776..0bd9ac3 100755
+--- a/tests/fprintd.py
++++ b/tests/fprintd.py
+@@ -427,27 +427,27 @@ class FPrintdManagerPreStartTests(FPrintdTest):
+             self.manager.GetDefaultDevice()
+ 
+     def test_manager_get_devices_on_name_appeared(self):
+-        self._appeared = False
++        self._appeared_res = []
+ 
+         def on_name_appeared(connection, name, name_owner):
+-            self._appeared = True
+-            dev_path = connection.call_sync('net.reactivated.Fprint',
++            self._appeared_res.append(connection.call_sync('net.reactivated.Fprint',
+                 '/net/reactivated/Fprint/Manager',
+                 'net.reactivated.Fprint.Manager',
+                 'GetDefaultDevice', None, None,
+-                Gio.DBusCallFlags.NO_AUTO_START, 500, None)
+-            self.assertIsNotNone(dev_path)
+-            self.assertTrue(dev_path.startswith('/net/reactivated/Fprint/Device/'))
++                Gio.DBusCallFlags.NO_AUTO_START, 500, None))
+ 
+         id = Gio.bus_watch_name_on_connection(self.dbus,
+             'net.reactivated.Fprint', Gio.BusNameWatcherFlags.NONE,
+             on_name_appeared, None)
+ 
+         self.daemon_start()
+-        while not self._appeared:
++        while not self._appeared_res:
+             ctx.iteration(True)
+ 
+-        self.assertTrue(self._appeared)
++        self.assertIsNotNone(self._appeared_res[0])
++        dev_path = self._appeared_res[0][0]
++        self.assertTrue(dev_path.startswith('/net/reactivated/Fprint/Device/'))
++
+         Gio.bus_unwatch_name(id)
+ 
+ 
+-- 
+2.29.2
+

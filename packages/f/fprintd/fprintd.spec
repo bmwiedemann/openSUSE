@@ -16,16 +16,20 @@
 #
 
 
-%define gitlabhash a47c31c844e23e070665a8a85dae0144
+%define gitlabhash 88a627f1873ce8f30e5354593bf4d45953126395
+
 Name:           fprintd
-Version:        1.90.1
+Version:        1.90.4
 Release:        0
 Summary:        D-Bus service for Fingerprint reader access
 License:        GPL-2.0-or-later
 URL:            https://fprint.freedesktop.org/
-Source0:        https://gitlab.freedesktop.org/libfprint/fprintd/uploads/%{gitlabhash}/%{name}-%{version}.tar.xz
+#Git-Clone:     https://gitlab.freedesktop.org/libfprint/fprintd.git
+Source0:        https://gitlab.freedesktop.org/libfprint/fprintd/-/archive/v%{version}/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
 Source2:        README.SUSE
+Patch0:         0001-tests-Fix-test-not-failing-on-error.patch
+BuildRequires:  gobject-introspection
 BuildRequires:  gtk-doc >= 1.3
 BuildRequires:  intltool
 BuildRequires:  meson >= 0.46.1
@@ -33,9 +37,9 @@ BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-cairo
 BuildRequires:  python3-dbusmock
-BuildRequires:  python3-gobject
 BuildRequires:  python3-libpamtest
 BuildRequires:  python3-pydbus
+BuildRequires:  typelib-1_0-FPrint-2_0
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libfprint-2) >= 1.90.1
@@ -105,7 +109,8 @@ This package contains Development documents for fprintd
 %lang_package
 
 %prep
-%autosetup -p1
+%setup -q -n %{name}-v%{version}-%{gitlabhash}
+%patch0 -p1 -R
 cp %{SOURCE2} .
 
 %build
