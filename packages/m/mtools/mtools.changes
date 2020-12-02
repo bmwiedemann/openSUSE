@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 29 18:52:21 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- mtools 4.0.26:
+  * Ignore image file locking errors if we are performing a read-
+    only access anyways
+- remove obsolete texinfo packaging macros, update signing keyring
+
+-------------------------------------------------------------------
 Sun Oct 25 12:47:51 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - mtools 4.0.25:

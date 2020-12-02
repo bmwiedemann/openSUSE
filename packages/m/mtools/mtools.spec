@@ -17,15 +17,15 @@
 
 
 Name:           mtools
-Version:        4.0.25
+Version:        4.0.26
 Release:        0
 Summary:        Tools to access MS-DOS filesystems without kernel drivers
 License:        GPL-3.0-or-later
 Group:          System/Filesystems
 URL:            http://mtools.linux.lu/
-Source0:        http://ftp.gnu.org/gnu/mtools/%{name}-%{version}.tar.bz2
-Source1:        http://ftp.gnu.org/gnu/mtools/%{name}-%{version}.tar.bz2.sig
-Source2:        %{name}.keyring
+Source0:        https://ftp.gnu.org/gnu/mtools/%{name}-%{version}.tar.bz2
+Source1:        https://ftp.gnu.org/gnu/mtools/%{name}-%{version}.tar.bz2.sig
+Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=mtools&download=1#/%{name}.keyring
 Patch0:         %{name}-conf.diff
 Patch1:         %{name}-autoconf.diff
 Patch3:         %{name}-aliasing.diff
@@ -37,7 +37,6 @@ BuildRequires:  libtool
 BuildRequires:  makeinfo
 BuildRequires:  texinfo
 Requires:       glibc-locale-base
-Requires(pre):  %{install_info_prereq}
 
 %description
 Mtools allows access to an MS-DOS file system on disk without
@@ -76,12 +75,6 @@ autoreconf -fi
 install -d -m 755 %{buildroot}%{_sysconfdir}
 make DESTDIR=%{buildroot} install --jobs 1
 cp -p mtools.conf %{buildroot}%{_sysconfdir}
-
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/mtools.info.gz
-
-%postun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/mtools.info.gz
 
 %files
 %config %{_sysconfdir}/mtools.conf
