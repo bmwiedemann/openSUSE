@@ -33,4 +33,14 @@
   * fix imp deprecation warning</comment>
     <requestid>810917</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c56825446a98e0b6ba0e2821f53fa019</srcmd5>
+    <version>0.8.17</version>
+    <time>1606913907</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.17:
+  * add_dll_directory for python 3.8 on windows, as importlib.util.find_spec does not search all paths anymore
+  * Add additional test vector from RFC</comment>
+    <requestid>852368</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec  1 14:31:41 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.8.17:
+  * add_dll_directory for python 3.8 on windows, as importlib.util.find_spec does not search all paths anymore
+  * Add additional test vector from RFC
+
+-------------------------------------------------------------------
 Tue Jun  2 17:10:15 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.8.15:

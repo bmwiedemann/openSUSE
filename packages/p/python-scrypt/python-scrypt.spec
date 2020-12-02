@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-scrypt
-Version:        0.8.15
+Version:        0.8.17
 Release:        0
 Summary:        Bindings for scrypt
 License:        BSD-2-Clause
