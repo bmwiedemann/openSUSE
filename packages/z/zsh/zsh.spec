@@ -66,6 +66,9 @@ Requires(pre):  /sbin/install-info
 Requires(pre):  fileutils
 Requires(pre):  grep
 %endif
+%if 0%{?usrmerged}
+Provides:       /bin/zsh
+%endif
 
 %description
 Zsh is a UNIX command interpreter (shell) that resembles the Korn shell
@@ -171,9 +174,11 @@ done
 install -D -m 0644 %{SOURCE16} %{buildroot}%{_sysconfdir}/skel/.zshrc
 %endif
 
+%if !0%{?usrmerged}
 # link zsh binary
 %if 0%{?suse_version} || 0%{?rhel} <= 6
 ln -sf %{_bindir}/zsh %{buildroot}/bin/zsh
+%endif
 %endif
 
 # Remove versioned zsh binary
@@ -260,8 +265,10 @@ fi
 %endif
 
 %{_bindir}/zsh
+%if !0%{?usrmerged}
 %if 0%{?suse_version} || 0%{?rhel} <= 6
 /bin/zsh
+%endif
 %endif
 %{_libdir}/zsh/
 %{_datadir}/zsh/

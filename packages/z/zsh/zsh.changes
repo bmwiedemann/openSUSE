@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 16 10:27:34 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
 Tue Aug 25 13:25:50 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Add ncurses-fix.patch in order to fix ncurses failure.
