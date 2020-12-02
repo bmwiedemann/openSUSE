@@ -7,4 +7,21 @@
     <comment>Initial packaging for openSUSE</comment>
     <requestid>765595</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1f0b52bad0344f9e459227c94570b9b1</srcmd5>
+    <version>3.5.1</version>
+    <time>1606913839</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.5.1
+  + Add module enable and disable commands
+  + Add reports of module changes
+  + Add &quot;module enable&quot; command
+  + Add subcommands support
+  + Print info about obsoleted packages before transaction (rh#1855542)
+  + Relicense to GPLv2+
+- Backport fixes from upstream
+  + Patch: 0001-Add-support-for-setting-allow_vendor_change.patch
+  + Patch: 0001-Add-support-for-setting-a-platform-module-ID.patch</comment>
+    <requestid>851724</requestid>
+  </revision>
 </revisionlist>

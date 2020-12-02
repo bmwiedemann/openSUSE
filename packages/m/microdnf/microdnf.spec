@@ -15,16 +15,20 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%global libdnf_version 0.43.1
+%global libdnf_version 0.55.0
 
 Name:           microdnf
-Version:        3.4.0
+Version:        3.5.1
 Release:        0
 Summary:        Lightweight implementation of DNF in C
 Group:          System/Packages
-License:        GPL-3.0-or-later
+License:        GPL-2.0-or-later
 URL:            https://github.com/rpm-software-management/microdnf
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+
+# Backports from upstream
+Patch0001:      0001-Add-support-for-setting-allow_vendor_change.patch
+Patch0002:      0001-Add-support-for-setting-a-platform-module-ID.patch
 
 BuildRequires:  gcc
 BuildRequires:  meson >= 0.36.0

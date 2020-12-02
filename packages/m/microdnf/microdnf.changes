@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Nov 29 23:25:59 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 3.5.1
+  + Add module enable and disable commands
+  + Add reports of module changes
+  + Add "module enable" command
+  + Add subcommands support
+  + Print info about obsoleted packages before transaction (rh#1855542)
+  + Relicense to GPLv2+
+- Backport fixes from upstream
+  + Patch: 0001-Add-support-for-setting-allow_vendor_change.patch
+  + Patch: 0001-Add-support-for-setting-a-platform-module-ID.patch
+
+-------------------------------------------------------------------
 Sun Jan 19 16:32:30 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Initial package based on Fedora and Mageia packaging
