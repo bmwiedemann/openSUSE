@@ -820,4 +820,12 @@ Feature Improvements
   logrotate global section (bsc#1170505, bsc#1174905)</comment>
     <requestid>829736</requestid>
   </revision>
+  <revision rev="84" vrev="4">
+    <srcmd5>5b7d69c02729ee4fcd95004dbf2aa040</srcmd5>
+    <version>3.0.21</version>
+    <time>1606913937</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>852412</requestid>
+  </revision>
 </revisionlist>

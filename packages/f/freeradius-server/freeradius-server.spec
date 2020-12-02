@@ -17,8 +17,6 @@
 
 
 %define unitname radiusd
-%define apxs2 apxs2-prefork
-%define apache2_sysconfdir %(%{_sbindir}/%{apxs2} -q SYSCONFDIR)
 Name:           freeradius-server
 Version:        3.0.21
 Release:        0
