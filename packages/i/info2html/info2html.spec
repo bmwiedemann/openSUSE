@@ -1,7 +1,7 @@
 #
 # spec file for package info2html
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,19 +20,19 @@ Name:           info2html
 BuildRequires:  apache2-devel
 BuildRequires:  libapr-util1-devel
 BuildRequires:  pcre-devel
-Url:            http://sourceforge.net/projects/info2html/
+URL:            http://sourceforge.net/projects/info2html/
 Provides:       inf2htm
 Obsoletes:      inf2htm
 Version:        2.0
 Release:        0
 Summary:        Program to Convert Info Pages into HTML Pages
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/Texinfo
 Source0:        info2html-2.0.tar.bz2
 Source1:        info2html-rpmlintrc
 Source2:        arrows.tar.bz2
 Patch0:         info2html-2.0.dif
-%define apache_serverroot %(/usr/sbin/apxs2 -q datadir 2>/dev/null || apxs -q PREFIX)
+BuildRequires:  apache-rpm-macros
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 

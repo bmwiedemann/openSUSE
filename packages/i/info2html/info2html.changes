@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec  1 16:47:01 UTC 2020 - pgajdos@suse.com
+
+- use system apache rpm macros
+
+-------------------------------------------------------------------
 Mon Dec 11 12:54:50 UTC 2017 - dimstar@opensuse.org
 
 - Remove duplicate BuildArch: noarch: rpm 4.14 does not like this
