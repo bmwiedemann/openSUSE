@@ -1,7 +1,7 @@
 #
 # spec file for package whipper
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -76,11 +76,11 @@ echo "Version: %{version}" > PKG-INFO
 %fdupes %{buildroot}%{python_sitearch}
 
 %check
-export PYTHONPATH=%{buildroot}%{python3_sitearch}
 cd whipper/test/
 # Don't run accurip tests since those needs a network connection to www.accuraterip.com
 rm -f test_common_accurip.py
-/usr/bin/py.test3
+export PYTHONPATH=%{buildroot}%{python3_sitearch}
+%pytest
 
 %files
 %doc CHANGELOG.md README
