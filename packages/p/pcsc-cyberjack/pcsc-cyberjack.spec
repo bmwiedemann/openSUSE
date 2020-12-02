@@ -116,6 +116,7 @@ mv %{buildroot}/%{_sysconfdir}/cyberjack.conf{.default,}
 # exclude
 rm -rf %{buildroot}/%{_sysconfdir}/hal/fdi/policy/10osvendor/80-cyberjack.fdi
 rm -rf %{buildroot}/%{_libdir}/cyberjack/pcscd_init.diff
+chmod a-x %{buildroot}%{_udevrulesdir}/*
 
 %files
 %defattr(-,root,root)
