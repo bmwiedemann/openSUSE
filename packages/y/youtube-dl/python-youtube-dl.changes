@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec  1 19:49:34 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.12.02
+  * yandexmusic: Refactor and add support for artist's tracks
+    and albums
+  * mediaset: add support for movie URLs
+  * youtube: Improve age-gated videos extraction
+
+-------------------------------------------------------------------
 Sun Nov 29 10:12:40 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.11.29
