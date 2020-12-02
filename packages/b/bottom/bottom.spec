@@ -18,7 +18,7 @@
 
 
 Name:           bottom
-Version:        0.4.7
+Version:        0.5.3
 Release:        0
 Summary:        Yet another graphical process/system monitor
 License:        MIT
@@ -35,7 +35,7 @@ customizable interface and a multitude of features.
 
 %prep
 %setup -qa1
-mkdir .cargo
+mkdir -p .cargo
 cat >.cargo/config <<EOF
 [source.crates-io]
 registry = 'https://github.com/rust-lang/crates.io-index'

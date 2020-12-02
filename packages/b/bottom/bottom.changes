@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sat Nov 28 16:27:52 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.3
+  * Fixes custom battery colour levels being inverted.
+- Update to version 0.5.2
+  * Fixes hide_avg_cpu being inverted in config files.
+- Update to version 0.5.1
+  * Patch for some bugs that were spotted in the 0.5.0 release.
+- Update to version 0.5.0
+  Features
+  * Adaptive network graphs: the network widget's y-axis will now
+    adjust based on your current usage.
+  * Mouse support for tables and moving to widgets.
+  * The ability to hide specific temperature and disk entries
+    via config.
+  * Added a tree mode, you can access this with the t key.
+  * A simple indicator for when data updating is frozen.
+  * Built-in colour themes.
+  Changes
+  * Updated help descriptions, added auto-complete generation.
+  * Changed how we do battery theming. We now only set high,
+    medium, and low colours and we deal with the ratios.
+  Bug Fixes
+  * Fixes a bug where you could move down in the process widget
+    even if the process widget search was closed.
+  * Add labels to Linux temperature values.
+  * Implements sorting by count. It previously did absolutely
+    nothing.
+  * Fix being able to cause an index out-of-bounds by resizing to
+    a smaller terminal just after the program got the terminal
+    size, but right before the terminal started drawing.
+  * Fixed not clearing screen before drawing, which caused issues
+    for some environments.
+  * Fix highlighted entries being stuck in another colour when the
+    widget is not selected.
+  * Expanding a widget no longer overrides the widget/dialog title
+    colour.
+  * Fixed process names occasionally showing up as truncated, due
+    to only using /proc//stat as our data source.
+  * Fixed missing thread termination steps as well as improper
+    polling causing blocking in input thread.
+  * Fixed the CPU basic widget showing incorrect data due to an
+    incorrect offset when displaying the data.
+  * Fixed an incorrect offset affecting the CPU colour when
+    scrolling.
+  * Fixed spacing problems in basic CPU mode.
+  * Fixed an incorrect offset affecting the graph CPU colour
+    mismatching the legend.
+  * Removes an accidental extra comma in one of the headers in the
+    disk widget.
+  * Removes the automatically generated CPU colours method.
+
+-------------------------------------------------------------------
 Sun Aug 30 13:10:51 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.4.7
