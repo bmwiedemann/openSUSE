@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-icons-oxygen
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,15 +20,15 @@ Name:           apache2-icons-oxygen
 Version:        1.0.1  
 Release:        0
 Summary:        Oxygen icons for Apache 2 
-License:        LGPL-3.0
+License:        LGPL-3.0-only
 Group:          Productivity/Networking/Web/Servers
-Url:            https://github.com/javierllorente/apache2-icons-oxygen
+URL:            https://github.com/javierllorente/apache2-icons-oxygen
 Source:         %{name}-%{version}.tar.gz  
 BuildArch:      noarch 
+BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
 Requires:       apache2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%define         apache_sysconfdir %(/usr/sbin/apxs2 -q SYSCONFDIR)
 
 %description  
 KDE/Oxygen icons for Apache 2.

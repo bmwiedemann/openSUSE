@@ -103,4 +103,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>304910</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>b1eac0e67e3c9fd98f6a14659df56248</srcmd5>
+    <version>1.0.1</version>
+    <time>1606913889</time>
+    <user>dimstar_suse</user>
+    <comment>- use system apache rpm macros</comment>
+    <requestid>852347</requestid>
+  </revision>
 </revisionlist>
