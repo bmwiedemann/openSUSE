@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Plack
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           perl-Plack
-Version:        1.0047
+Version:        1.0048
 Release:        0
 %define cpan_name Plack
 Summary:        Perl Superglue for Web frameworks and Web Servers (PSGI toolkit)
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -37,7 +37,7 @@ BuildRequires:  perl(Devel::StackTrace::AsHTML) >= 0.11
 BuildRequires:  perl(File::ShareDir) >= 1.00
 BuildRequires:  perl(File::ShareDir::Install) >= 0.06
 BuildRequires:  perl(Filesys::Notify::Simple)
-BuildRequires:  perl(HTTP::Entity::Parser) >= 0.17
+BuildRequires:  perl(HTTP::Entity::Parser) >= 0.25
 BuildRequires:  perl(HTTP::Headers::Fast) >= 0.18
 BuildRequires:  perl(HTTP::Message) >= 5.814
 BuildRequires:  perl(HTTP::Tiny) >= 0.034
@@ -57,7 +57,7 @@ Requires:       perl(Devel::StackTrace) >= 1.23
 Requires:       perl(Devel::StackTrace::AsHTML) >= 0.11
 Requires:       perl(File::ShareDir) >= 1.00
 Requires:       perl(Filesys::Notify::Simple)
-Requires:       perl(HTTP::Entity::Parser) >= 0.17
+Requires:       perl(HTTP::Entity::Parser) >= 0.25
 Requires:       perl(HTTP::Headers::Fast) >= 0.18
 Requires:       perl(HTTP::Message) >= 5.814
 Requires:       perl(HTTP::Tiny) >= 0.034
@@ -81,7 +81,7 @@ Plack are and why we need them.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov 30 03:07:54 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.0048
+   see /usr/share/doc/packages/perl-Plack/Changes
+
+  1.0048  2020-11-29 16:20:00 PST
+      [IMPROVEMENTS]
+          - Updated documentation for cotent_length and content_type #625
+          - Allow hyphens in file extensions for custom MIME types #614
+          - Updated some python test script to work with Python 3 #639
+      [BUG FIXES]
+           - Fix HTTP::Message::PSGI to work with delayed writer without content #653
+           - Plackup reloader allows restarting the server when the path contains .git or .svn, just not at the beginning of the path #632
+           - Added MIME types for .webp, .ttf and .xlsx files (rrwo)
+           - Fix Plack::Request content to not error when Content-Type is empty #655
+
+-------------------------------------------------------------------
 Wed Apr  3 07:24:01 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.0047
