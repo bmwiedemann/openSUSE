@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  1 14:21:57 UTC 2020 - Marcin Bajor <marcin.bajor@gmail.com>
+
+- Restore symlinks for crypt_LUKS
+  Fixes: https://bugzilla.opensuse.org/show_bug.cgi?id=1179229 
+
+-------------------------------------------------------------------
 Thu Nov 26 20:18:51 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Restore symlinks while util-linux is pending

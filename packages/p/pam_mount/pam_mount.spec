@@ -117,6 +117,8 @@ install -m 755 %SOURCE2 "$b/%_docdir/%name/examples/"
 mkdir -p "$b/sbin"
 ln -s /usr/sbin/mount.crypt "$b/sbin"
 ln -s /usr/sbin/umount.crypt "$b/sbin"
+ln -s /usr/sbin/mount.crypt_LUKS "$b/sbin"
+ln -s /usr/sbin/umount.crypt_LUKS "$b/sbin"
 %fdupes %buildroot/%_prefix
 
 %post
