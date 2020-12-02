@@ -1,7 +1,7 @@
 #
 # spec file for package xml-security-c
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,13 +23,13 @@ Release:        0
 Summary:        Apache XML security C++ library
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
-URL:            http://santuario.apache.org/
+URL:            https://santuario.apache.org/
 Source0:        http://www.apache.org/dist/santuario/c-library/%{name}-%{version}.tar.bz2
 Source1:        http://www.apache.org/dist/santuario/c-library/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 # PATCH-FIX-UPSTREAM marguerite@opensuse.org - 'bool' can't be converted to pointer in c++11
 BuildRequires:  gcc-c++
-BuildRequires:  libxalan-c-devel
+BuildRequires:  libxalan-c-devel >= 1.11
 BuildRequires:  libxerces-c-devel >= 3.2
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
@@ -69,6 +69,7 @@ This package contains just the shared library.
 %package -n libxml-security-c-devel
 Summary:        Development files for the Apache C++ XML security library
 Group:          Development/Libraries/C and C++
+Requires:       libxalan-c-devel >= 1.11
 Requires:       libxerces-c-devel
 Requires:       libxml-security-c%{libvers} = %{version}-%{release}
 Requires:       openssl-devel
@@ -88,8 +89,9 @@ This package includes files needed for development with xml-security-c.
 
 %build
 %configure \
-  --disable-static
-make %{?_smp_mflags}
+  --disable-static \
+  --without-xalan
+%make_build
 
 %install
 %make_install

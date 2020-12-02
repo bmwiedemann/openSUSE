@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec  1 13:42:56 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- Run spec-cleaner
+- Temporarily disable xalan support because it fails with the recent
+  1.12 version
+
+-------------------------------------------------------------------
 Tue Nov 27 17:49:41 UTC 2018 - kstreitova@suse.com
 
 - update to 2.0.2
