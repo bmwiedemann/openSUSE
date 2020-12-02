@@ -1,13 +1,20 @@
-From 193530399a8b5167180ec5d86f8d3dc2e398729f Fri  6 11 11:30:41 2020
+From 491894bfded98ac674d6930b3cfc835f6a640094 Fri 27 11 11:20:23 2020
 From: Simon Vogl <simon.vogl@gmx.net>
-Date: Fri,  6 Nov 2020 11:30:41 UTC
+Date: Fri, 27 Nov 2020 11:20:23 UTC
 Subject: [PATCH] Fix youtube search of QMPlay2
 
 This patch is required to fix QMPlay2's YouTube search.
-
 --- a/src/modules/Extensions/YouTube.cpp
 +++ b/src/modules/Extensions/YouTube.cpp
-@@ -760,90 +760,96 @@ void YouTube::setSearchResults(const QByteArray &data)
+@@ -18,6 +18,7 @@
+ 
+ #include <YouTube.hpp>
+ 
++#include <Functions.hpp>
+ #include <YouTubeDL.hpp>
+ #include <LineEdit.hpp>
+
+@@ -760,90 +755,96 @@ void YouTube::setSearchResults(const QByteArray &data)
  {
      const auto json = getYtInitialData(data);
  
@@ -27,15 +34,15 @@ This patch is required to fix QMPlay2's YouTube search.
      {
 -        const auto videoRenderer = obj.toObject()["videoRenderer"].toObject();
 -        const auto playlistRenderer = obj.toObject()["playlistRenderer"].toObject();
--
--        const bool isVideo = !videoRenderer.isEmpty() && playlistRenderer.isEmpty();
--
--        QString title, contentId, length, user, publishedTime, viewCount, thumbnail, url;
 +        const auto contents = obj.toObject()
 +            ["itemSectionRenderer"].toObject()
 +            ["contents"].toArray()
 +        ;
  
+-        const bool isVideo = !videoRenderer.isEmpty() && playlistRenderer.isEmpty();
+-
+-        QString title, contentId, length, user, publishedTime, viewCount, thumbnail, url;
+-
 -        if (isVideo)
 +        for (auto &&obj : contents)
          {
@@ -168,7 +175,7 @@ This patch is required to fix QMPlay2's YouTube search.
          }
      }
  
-@@ -1048,7 +1054,7 @@ void YouTube::preparePlaylist(const QByteArray &data, QTreeWidgetItem *tWI)
+@@ -1048,7 +1049,7 @@ void YouTube::preparePlaylist(const QByteArray &data, QTreeWidgetItem *tWI)
      {
          const auto playlistRenderer = obj.toObject()["playlistVideoRenderer"].toObject();
  
@@ -177,12 +184,149 @@ This patch is required to fix QMPlay2's YouTube search.
          const auto videoId = playlistRenderer["videoId"].toString();
          if (title.isEmpty() || videoId.isEmpty())
              continue;
-@@ -1080,7 +1086,7 @@ QJsonDocument YouTube::getYtInitialData(const QByteArray &data)
+@@ -1076,13 +1077,10 @@ QJsonDocument YouTube::getYtInitialData(const QByteArray &data)
+     if (idx < 0)
+         return QJsonDocument();
+ 
+-    int idx2 = data.indexOf("\n", idx);
++    int idx2 = Functions::findJsonEnd(data, idx);
      if (idx2 < 0)
          return QJsonDocument();
  
 -    auto jsonData = data.mid(idx, idx2 - idx);
-+    auto jsonData = data.mid(idx, idx2 - idx).trimmed();
-     if (jsonData.endsWith(';'))
-         jsonData.chop(1);
+-    if (jsonData.endsWith(';'))
+-        jsonData.chop(1);
+-
++    const auto jsonData = data.mid(idx, idx2 - idx);
+     return QJsonDocument::fromJson(jsonData);
+ }
+
+--- a/src/qmplay2/Functions.cpp
++++ b/src/qmplay2/Functions.cpp
+@@ -940,6 +940,46 @@ QByteArray Functions::textWithFallbackEncoding(const QByteArray &data)
+     return data;
+ }
+ 
++int Functions::findJsonEnd(const QByteArray &data, int idx)
++{
++    const int dataLen = data.length();
++
++    if (dataLen < 1 || idx < 0 || idx >= dataLen || data.at(idx) != '{')
++        return -1;
++
++    int brackets = 1;
++    bool inString = false;
++    char prevChr = '\0';
++
++    for (int i = idx + 1; i < dataLen; ++i)
++    {
++        const char chr = data.at(i);
++
++        if (chr == '"')
++        {
++            if (!inString)
++                inString = true;
++            else if (prevChr != '\\')
++                inString = false;
++        }
++
++        prevChr = chr;
++
++        if (inString)
++            continue;
++
++        if (chr == '{')
++            ++brackets;
++        else if (chr == '}')
++            --brackets;
++
++        if (brackets == 0)
++            return i + 1;
++    }
++
++    return -1;
++}
++
+ Functions::LumaCoefficients Functions::getLumaCoeff(AVColorSpace colorSpace)
+ {
+     switch (colorSpace)
+
+--- a/src/qmplay2/Functions.hpp
++++ b/src/qmplay2/Functions.hpp
+@@ -149,6 +149,8 @@ namespace Functions
+ 
+     QMPLAY2SHAREDLIB_EXPORT QByteArray textWithFallbackEncoding(const QByteArray &data);
+ 
++    QMPLAY2SHAREDLIB_EXPORT int findJsonEnd(const QByteArray &data, int idx = 0);
++
+     struct LumaCoefficients
+     {
+         float cR, cG, cB;
+
+--- a/src/qmplay2/GPUInstance.cpp
++++ b/src/qmplay2/GPUInstance.cpp
+@@ -73,6 +73,10 @@ shared_ptr<GPUInstance> GPUInstance::create()
+     return nullptr;
+ }
+ 
++void GPUInstance::prepareDestroy()
++{
++}
++
+ shared_ptr<HWDecContext> GPUInstance::getHWDecContext() const
+ {
+     if (m_videoWriter)
+
+--- a/src/qmplay2/GPUInstance.hpp
++++ b/src/qmplay2/GPUInstance.hpp
+@@ -31,6 +31,8 @@ public:
+ public:
+     virtual ~GPUInstance() = default;
+ 
++    virtual void prepareDestroy();
++
+     virtual QString name() const = 0;
+     virtual QMPlay2CoreClass::Renderer renderer() const = 0;
+ 
+--- a/src/qmplay2/QMPlay2Core.cpp
++++ b/src/qmplay2/QMPlay2Core.cpp
+@@ -389,7 +389,11 @@ void QMPlay2CoreClass::quit()
+     delete qtTranslator;
+     delete translator;
+     delete settings;
+-    m_gpuInstance.reset();
++    if (m_gpuInstance)
++    {
++        m_gpuInstance->prepareDestroy();
++        m_gpuInstance.reset();
++    }
+ }
+ 
+ bool QMPlay2CoreClass::canSuspend()
+
+--- a/src/qmplay2/vulkan/VulkanInstance.cpp
++++ b/src/qmplay2/vulkan/VulkanInstance.cpp
+@@ -148,6 +148,11 @@ Instance::~Instance()
+     delete m_qVulkanInstance;
+ }
+ 
++void Instance::prepareDestroy()
++{
++    m_physicalDevice.reset();
++}
++
+ void Instance::init()
+ {
+ #ifdef QT_DEBUG
+
+--- a/src/qmplay2/vulkan/VulkanInstance.hpp
++++ b/src/qmplay2/vulkan/VulkanInstance.hpp
+@@ -55,6 +55,8 @@ public:
+     Instance(Priv);
+     ~Instance();
+ 
++    void prepareDestroy() override;
++
+ private:
+     void init();
  
