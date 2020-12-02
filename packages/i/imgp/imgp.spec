@@ -17,7 +17,7 @@
 
 
 Name:           imgp
-Version:        2.7
+Version:        2.8
 Release:        0
 Summary:        Image resizer and rotator
 License:        GPL-3.0-or-later
