@@ -941,4 +941,12 @@
     <comment>- Update to version 2.30.3 (boo#1179122): (forwarded request 850518 from mgorse)</comment>
     <requestid>851051</requestid>
   </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>e074d356b8b879ab637dd013fd474c61</srcmd5>
+    <version>2.30.3</version>
+    <time>1606917945</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>852625</requestid>
+  </revision>
 </revisionlist>

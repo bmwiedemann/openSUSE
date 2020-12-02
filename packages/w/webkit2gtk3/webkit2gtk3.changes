@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Sun Nov 22 16:37:46 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
-- Update to version 2.30.3 (boo#1179122):
+- Update to version 2.30.3 (boo#1179122 boo#1179451):
   + Add new build option USE(64KB_PAGE_BLOCK).
   + Fix backdrop filters with rounded borders.
   + Fix scrolling iframes when async scrolling is enabled.
@@ -10,7 +10,7 @@ Sun Nov 22 16:37:46 UTC 2020 - Michael Gorse <mgorse@suse.com>
   + Update Outlook user agent quirk.
   + Fix the build with video support disabled.
   + Fix several crashes and rendering issues.
-  + Security fixes: CVE-2020-13584, CVE-2020-9983.
+  + Security fixes: CVE-2020-13584, CVE-2020-9983, CVE-2020-13543.
 - Drop webkit2gtk3-fdo-soname.patch: fixed upstream.
 - Rebase webkit-process.patch.
 
