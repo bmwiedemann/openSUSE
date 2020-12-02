@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 15 11:06:16 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- update to version 3.12.1
+  + Changed default frequency level to SIMD128 for Skylake, Cannon
+    Lake, Comet Lake and Tiger Lake CPUs. This change typically 
+    improves performance for renderers that just use SSE by
+    maintaining higher CPU frequencies. In case your renderer is
+    AVX optimized you can get higher ray tracing performance
+    by configuring the frequency level to simd256 through passing
+    frequency_level=simd256 to rtcNewDevice.
+
+-------------------------------------------------------------------
 Fri Sep 25 08:26:06 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - update to version 3.12.0
