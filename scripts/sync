@@ -17,9 +17,14 @@ osc up "${p}_meta"
 rsync -a "./${p}_meta/"* in/_project/
 mkdir -p ~/.cache
 lockfile -l 600 .pkglock
+tmpgit=.sync-tmp-git
+mkdir -p $tmpgit
+find packages/ -mindepth 3 -maxdepth 3 -name .git | xargs -IARGS cp -al --parent ARGS $tmpgit
 rm -rf packages
 scripts/mappkgs.pl in packages
 [[ $(find packages/ |wc -l) -gt 100000 ]] || exit 5
+(cd $tmpgit ; find packages/ -mindepth 3 -maxdepth 3 -name .git | xargs -IARGS cp -al --parent  ARGS ../)
+rm -rf $tmpgit
 git add packages/*
 git commit -a -m "update $(date -u +"%Y-%m-%d %H:%M")"
 scripts/tagrelease
