@@ -2212,4 +2212,12 @@
     to TrustDomain::CheckRevocation instead of the notBefore value.</comment>
     <requestid>849114</requestid>
   </revision>
+  <revision rev="167" vrev="2">
+    <srcmd5>910234be587dfc2567fd852ce3d7113e</srcmd5>
+    <version>3.58</version>
+    <time>1606913847</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851799</requestid>
+  </revision>
 </revisionlist>

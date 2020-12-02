@@ -17,6 +17,11 @@ Sun Nov 15 08:17:37 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
     to TrustDomain::CheckRevocation instead of the notBefore value.
 
 -------------------------------------------------------------------
+Thu Nov 12 09:00:33 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- install libraries in %{_libdir} (boo#1029961)
+
+-------------------------------------------------------------------
 Mon Oct 12 15:31:33 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.16: error: bare words are no longer
