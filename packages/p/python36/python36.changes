@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec  1 17:20:14 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2020-27619-no-eval-http-content.patch fixing
+  CVE-2020-27619 (bsc#1178009), where Lib/test/multibytecodec_support
+  calls eval() on content retrieved via HTTP.
+
+-------------------------------------------------------------------
+Tue Dec  1 05:37:07 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch sphnix-update-removed-function.patch to no longer call
+  a now removed function (gh#python/cpython#13236). As
+  a consequence, no longer pin Sphinx version.
+
+-------------------------------------------------------------------
 Fri Nov 27 15:59:09 UTC 2020 - Markéta Machová <mmachova@suse.com>
 
 - Pin Sphinx version to fix doc subpackage
@@ -86,6 +100,8 @@ Thu Aug 20 08:17:16 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
   * bpo40784-Fix-sqlite3-deterministic-test.patch
   * bsc1167501-invalid-alignment.patch
   * python3-imp-returntype.patch
+- Working around missing python-packaging dependency in
+  python-Sphinx (bsc#1174571) is not necessary anymore.
 
 -------------------------------------------------------------------
 Wed Aug 19 12:46:41 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
@@ -140,7 +156,20 @@ Fri Jul 17 09:03:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 Fri Jul 17 08:53:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.6.11:
-  * Include more security fixes (CVE-2019-18348, bsc#1155094)
+  - bpo-39073: Disallow CR or LF in email.headerregistry. Address
+    arguments to guard against header injection attacks.
+  - bpo-38576 (bsc#1155094): Disallow control characters in
+    hostnames in http.client, addressing CVE-2019-18348. Such
+    potentially malicious header injection URLs now cause
+    a InvalidURL to be raised.
+  - bpo-39503: CVE-2020-8492: The AbstractBasicAuthHandler class
+    of the urllib.request module uses an inefficient regular
+    expression which can be exploited by an attacker to cause
+    a denial of service. Fix the regex to prevent the
+    catastrophic backtracking. Vulnerability reported by Ben
+    Caller and Matt Schwager.
+  - bpo-39401: Avoid unsafe load of
+    api-ms-win-core-path-l1-1-0.dll at startup on Windows 7.
 - Remove merged patch CVE-2020-8492-urllib-ReDoS.patch
 
 -------------------------------------------------------------------
@@ -238,7 +267,9 @@ Thu Dec 19 16:42:56 CET 2019 - Matej Cepl <mcepl@suse.com>
       max_line_length is not long enough to include the required
       markup and any values in the message. Patch by Paul Ganssle
 - Remove patches included in the upstream tarball:
-  - CVE-2019-16935-xmlrpc-doc-server_title.patch
+  - CVE-2019-16935-xmlrpc-doc-server_title.patch (and also
+    bpo37614-race_test_docxmlrpc_srv_setup.patch, which was
+    resolving bsc#1174701).
   - CVE-2019-16056-email-parse-addr.patch
 - Move idle subpackage build from python3-base to python3 (bsc#1159622).
   appstream-glib required for packaging introduces considerable

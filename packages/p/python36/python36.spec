@@ -169,6 +169,11 @@ Patch38:        faulthandler_stack_overflow_on_GCC10.patch
 # PATCH-FIX-UPSTREAM ignore_pip_deprec_warn.patch mcepl@suse.com
 # Ignore deprecation warning for old version of pip
 Patch39:        ignore_pip_deprec_warn.patch
+# PATCH-FIX-UPSTREAM stop calling removed Sphinx function gh#python/cpython#13236
+Patch40:        sphnix-update-removed-function.patch
+# PATCH-FIX-UPSTREAM CVE-2020-27619-no-eval-http-content.patch bsc#1178009 mcepl@suse.com
+# No longer call eval() on content received via HTTP in the CJK codec tests 
+Patch41:        CVE-2020-27619-no-eval-http-content.patch
 
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -190,7 +195,7 @@ BuildRequires:  pkgconfig(libtirpc)
 %if %{with doc}
 # Here we just run sphinx and we can use generic one, we don't need
 # the flavor variant
-BuildRequires:  python3-Sphinx < 3
+BuildRequires:  python3-Sphinx
 %endif
 %if %{with general}
 # required for idle3 (.desktop and .appdata.xml files)
@@ -434,6 +439,8 @@ other applications.
 %patch37 -p1
 %patch38 -p1
 %patch39 -p1
+%patch40 -p1
+%patch41 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
