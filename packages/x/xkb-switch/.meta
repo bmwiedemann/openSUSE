@@ -1,0 +1,5 @@
+<package name="xkb-switch" project="openSUSE:Factory">
+  <title></title>
+  <description>xkb-switch is a C++ program that allows to query and change the XKB layout state</description>
+  <devel project="X11:Utilities" package="xkb-switch"/>
+</package>
