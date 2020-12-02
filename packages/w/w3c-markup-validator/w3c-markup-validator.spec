@@ -1,7 +1,7 @@
 #
 # spec file for package w3c-markup-validator
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2006-2009 Sierk Bornemann
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,33 +13,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define pkgname validator
-%define apxs %{_sbindir}/apxs2
-%define apache_sysconfdir %(%{apxs} -q SYSCONFDIR)
-%define apache_serverroot %(%{apxs} -q PREFIX)
-%define apache_docroot %(%{apxs} -q PREFIX)/htdocs
+%define tbver 1_3
 
 Name:           w3c-markup-validator
 Version:        1.3
 Release:        0
-%{expand: %%define tbver %(echo %{version} | tr . _)}
 Summary:        W3C Markup Validator
 License:        W3C
 Group:          Productivity/Networking/Web/Utilities
-Url:            http://validator.w3.org/
-#Source0:        http://validator.w3.org/dist/validator-%{tbver}.tar.gz
+URL:            http://validator.w3.org/
+#Source0:        http://validator.w3.org/dist/validator-%%{tbver}.tar.gz
 Source0:        validator-%{tbver}.tar.gz
-#Source1:        http://validator.w3.org/dist/sgml-lib-%{tbver}.tar.gz
+#Source1:        http://validator.w3.org/dist/sgml-lib-%%{tbver}.tar.gz
 Source1:        sgml-lib-%{tbver}.tar.gz
 Source2:        %{pkgname}-opensuse-addons.tar.bz2
 Patch0:         %{pkgname}-opensuse-addons-ap_sroot.patch
 Patch1:         %{pkgname}-httpd.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
+BuildRequires:  apache-rpm-macros
 BuildRequires:  perl
 BuildRequires:  sgml-skel
 %if 0%{?suse_version}
