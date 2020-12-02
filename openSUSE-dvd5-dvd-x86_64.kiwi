@@ -4140,6 +4140,7 @@
       <repopackage name="python3-tornado6"/>
       <repopackage name="python3-trio"/>
       <repopackage name="python3-Twisted"/>
+      <repopackage name="python3-typing_extensions"/>
       <repopackage name="python3-urllib3"/>
       <repopackage name="python3-urwid"/>
       <repopackage name="python3-virt-bootstrap" arch="x86_64"/>
@@ -5061,7 +5062,7 @@
       <repopackage name="typelib-1_0-GtkSource-3_0"/>
       <repopackage name="typelib-1_0-GtkSource-4"/>
       <repopackage name="typelib-1_0-GWeather-3_0" arch="x86_64"/>
-      <repopackage name="typelib-1_0-Handy-0_0" arch="x86_64"/>
+      <repopackage name="typelib-1_0-Handy-1_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-HarfBuzz-0_0"/>
       <repopackage name="typelib-1_0-IBus-1_0"/>
       <repopackage name="typelib-1_0-JavaScriptCore-4_0" arch="x86_64"/>
