@@ -16,19 +16,17 @@
 #
 
 
-%define base_version 4.2+dbg-1.4
-%define pkg_version 4.2.1+dbg-1.4
+%define base_version 4.3+dbg-1.5
+%define pkg_version 4.3+dbg-1.5
 Name:           remake
-Version:        4.2.1_1.4
+Version:        4.3_1.5
 Release:        0
 Summary:        A gnu make version including a debuger
-Summary(de):    Eine gnu make Version inklusive Debugger
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Building
+Summary(de):    Eine gnu make Version inklusive Debugger
 URL:            http://bashdb.sourceforge.net/remake/
-Source0:        https://downloads.sourceforge.net/project/bashdb/remake/%{base_version}/remake-%{pkg_version}.tar.bz2
-Patch1:         glob-lstat.patch
-Patch2:         glob-interface.patch
+Source0:        https://downloads.sourceforge.net/project/bashdb/remake/%{base_version}/remake-%{pkg_version}.tar.gz
 BuildRequires:  readline-devel
 Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec 01 08:05:06 UTC 2020 - Wang Jun <jgwang@suse.com>
+
+- Update to version 4.3+dbg-1.5
+  * New and Changed Features:
+    + --search parent -- I really like this one.
+    + --tasks -- the definition of a "tasks" has been simplified.
+      Now, it is simply a target that has a description
+      comment (#:) before it.
+
+- Remove these two outdated patches, they are merged into upstream
+  * glob-interface.patch
+  * glob-lstat.patch
+
+-------------------------------------------------------------------
 Mon Jun 15 12:43:56 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix building with gcc10
