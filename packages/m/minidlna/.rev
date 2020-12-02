@@ -25,4 +25,12 @@
   (from https://706916.bugs.gentoo.org/attachment.cgi?id=641058) (forwarded request 812494 from oertel)</comment>
     <requestid>812495</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>011bc20ad08651df906e390869568e24</srcmd5>
+    <version>1.3.0</version>
+    <time>1606913888</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>852342</requestid>
+  </revision>
 </revisionlist>

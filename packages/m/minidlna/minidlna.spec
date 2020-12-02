@@ -18,7 +18,7 @@
 
 
 Name:           minidlna
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        DLNA compatible server
 License:        GPL-2.0-or-later
@@ -43,6 +43,7 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  libvorbis-devel
 BuildRequires:  sqlite-devel
+BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
