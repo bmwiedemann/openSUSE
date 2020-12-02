@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-eremaea2
-Version:        2.0.15
+Version:        2.0.16
 Release:        0
 Summary:        A simple Django application to store and show webcam snapshots
 License:        BSD-2-Clause
@@ -34,6 +34,8 @@ BuildRequires:  %{python_module cmdln}
 BuildRequires:  %{python_module django-dj-inmemorystorage}
 BuildRequires:  %{python_module djangorestframework >= 3.7.0}
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module requests-mock}
+BuildRequires:  %{python_module requests-toolbelt}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -46,6 +48,7 @@ Requires:       python-Django >= 1.10
 Requires:       python-cmdln
 Requires:       python-djangorestframework >= 3.7.0
 Requires:       python-requests
+Requires:       python-requests-toolbelt
 Requires:       python-six
 Requires(post):   update-alternatives
 Requires(postun):  update-alternatives
