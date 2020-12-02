@@ -1,7 +1,7 @@
 #
 # spec file for package devscripts
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Patch0:         devscripts-fix-build.patch
 Patch1:         devscripts-fix-python-install-layout.patch
 # PATCH-FEATURE-OPENSUSE devscripts-debcommit-hg16.patch -- Mercurial cannot commit empty, fix it.
 Patch2:         devscripts-debcommit-hg16.patch
+Patch3:         devscripts-checkbashisms-early-fail.patch
 BuildRequires:  bash-completion-devel
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  dpkg-devel >= 1.18.19
@@ -89,6 +90,7 @@ bashisms are detected.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 make %{?_smp_mflags} V=1 \
