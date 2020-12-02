@@ -1,9 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 30 09:39:29 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add explicit pkgconfig(gdk-pixbuf-xlib-2.0) BuildRequires:
+  plugin.c includes the relevant header.
+
+-------------------------------------------------------------------
 Sat Jul  4 06:48:22 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - lxpanel 0.10.0:
   * Allow switching workplaces by scrolling over the pager
-  * Font display fixes  
+  * Font display fixes
   * Memory calculation in lxpanel monitor now aligns with 'free'
   * Updates to weather plugins: Remove Yahoo, add OpenWeatherMap
   * Fix crashes in some specific locations
