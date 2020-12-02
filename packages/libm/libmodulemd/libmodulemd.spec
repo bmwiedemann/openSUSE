@@ -17,8 +17,8 @@
 
 
 %global majorversion 2
-%global minorversion 9
-%global patchversion 4
+%global minorversion 10
+%global patchversion 0
 %global majorminorversion %{majorversion}.%{minorversion}
 %global nsversion %{majorversion}.0
 
@@ -37,6 +37,9 @@ Group:          System/Packages
 License:        MIT
 URL:            https://github.com/fedora-modularity/libmodulemd
 Source0:        %{url}/releases/download/%{name}-%{libmodulemd_version}/modulemd-%{libmodulemd_version}.tar.xz
+
+# Patches from upstream
+Patch0001:      0001-Fix-integer-size-issue-on-32-bit-platforms.patch
 
 BuildRequires:  help2man
 BuildRequires:  meson >= 0.47.0

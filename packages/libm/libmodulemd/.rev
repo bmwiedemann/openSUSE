@@ -145,4 +145,16 @@
   + Relax handling of differing content for the same NSVCA</comment>
     <requestid>819221</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9a539098114018f6ed600b3fcd3abac5</srcmd5>
+    <version>2.10.0</version>
+    <time>1606913836</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.10.0
+  + Add modulemd-obsoletes
+  + Add modulemd v3 format
+- Fix build for 32-bit architectures with patch from upstream
+  + Patch: 0001-Fix-integer-size-issue-on-32-bit-platforms.patch</comment>
+    <requestid>851720</requestid>
+  </revision>
 </revisionlist>

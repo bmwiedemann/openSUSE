@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 29 22:03:09 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 2.10.0
+  + Add modulemd-obsoletes
+  + Add modulemd v3 format
+- Fix build for 32-bit architectures with patch from upstream
+  + Patch: 0001-Fix-integer-size-issue-on-32-bit-platforms.patch
+
+-------------------------------------------------------------------
 Tue Jul  7 10:43:34 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Rebase to 2.9.4
