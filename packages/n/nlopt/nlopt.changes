@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Nov 29 16:48:25 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.7.0:
+  * New nlopt_set_param API for setting internal algorithm
+    parameters (gh#stevengj/nlopt#365).
+  * Avoid library-symbol conflicts (gh#stevengj/nlopt#355,
+    gh#stevengj/nlopt#361)
+- Run tests using ctest as part of %check section.
+- Handle erroneous RPATH in openSUSE:Leap:15.2's %cmake macro by
+  explicitly setting CMAKE_SKIP_RPATH to OFF and
+  CMAKE_SKIP_INSTALL_RPATH to ON; while only required for 15.2,
+  setting these for all versions doesn't hurt.
+
+-------------------------------------------------------------------
 Sun Apr 26 23:56:20 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to verion 2.6.2:

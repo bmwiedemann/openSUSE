@@ -17,7 +17,7 @@
 
 
 Name:           nlopt
-Version:        2.6.2
+Version:        2.7.0
 Release:        0
 Summary:        A library for nonlinear optimization
 License:        LGPL-2.0-only
@@ -88,12 +88,18 @@ This package contains Octave interface to NLopt library.
 %autosetup -p1
 
 %build
-%cmake -DNLOPT_MATLAB=OFF
+%cmake \
+   -DCMAKE_SKIP_RPATH:BOOL=OFF \
+   -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
+   -DNLOPT_MATLAB=OFF
 %cmake_build
 
 %install
 %cmake_install
 %fdupes %{buildroot}%{py_sitedir}
+
+%check
+%ctest
 
 %post -n lib%{name}0 -p /sbin/ldconfig
 %postun -n lib%{name}0 -p /sbin/ldconfig
