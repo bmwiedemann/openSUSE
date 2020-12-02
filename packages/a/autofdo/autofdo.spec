@@ -1,7 +1,7 @@
 #
 # spec file for package autofdo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,8 +29,8 @@ BuildRequires:  libopenssl-devel
 BuildRequires:  libunwind-devel
 BuildRequires:  zlib-devel
 %if 0%{?suse_version} > 1320
-BuildRequires:  clang-devel
-BuildRequires:  llvm-devel
+BuildRequires:  clang10-devel
+BuildRequires:  llvm10-devel
 %endif
 
 %description
