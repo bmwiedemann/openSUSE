@@ -1,7 +1,7 @@
 #
 # spec file for package xmltooling
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,15 +12,15 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define libvers 8
-%define opensaml_version 3.0.1
+%define libvers 9
+%define opensaml_version 3.1.0
 %define pkgdocdir %{_docdir}/%{name}
 Name:           xmltooling
-Version:        3.0.4
+Version:        3.1.0
 Release:        0
 Summary:        OpenSAML XML Processing library
 License:        Apache-2.0
@@ -84,7 +84,6 @@ support.
 
 This package contains just the shared library.
 
-
 %package -n libxmltooling-devel
 Summary:        XMLTooling development Headers
 Group:          Development/Libraries/C and C++
@@ -132,7 +131,7 @@ This package includes XML schemas and related files.
 %build
 autoreconf -fiv
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 make install DESTDIR=%{buildroot} pkgdocdir=%{pkgdocdir}
@@ -142,11 +141,10 @@ rm -f %{buildroot}/%{_libdir}/libxmltooling.la
 rm -f %{buildroot}/%{_libdir}/libxmltooling-lite.la
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n libxmltooling%{libvers} -p /sbin/ldconfig
 %post -n libxmltooling-lite%{libvers} -p /sbin/ldconfig
-
 %postun -n libxmltooling%{libvers} -p /sbin/ldconfig
 %postun -n libxmltooling-lite%{libvers} -p /sbin/ldconfig
 
