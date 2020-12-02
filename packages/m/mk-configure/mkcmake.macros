@@ -3,12 +3,22 @@
 #
 
 %mkcmake \
-    export CFLAGS="%{optflags}" \
-    export PREFIX=%{_prefix} \
-    export DOCDIR=%{_docdir} \
-    export LIBDIR=%{_libdir} \
-    export MANDIR=%{_mandir} \
-    export SYSCONFDIR=%{_sysconfdir} \
-    export DESTDIR=%{buildroot} \
+    : ${BINDIR=%{_bindir}}; export BINDIR; \
+    : ${SBINDIR=%{_sbindir}}; export SBINDIR; \
+    : ${CC=%{__cc}}; export CC; \
+    : ${CFLAGS=%{optflags}}; export CFLAGS; \
+    : ${CPP=%{__cpp}}; export CPP; \
+    : ${CXX=%{__cxx}}; export CXX; \
+    : ${CXXFLAGS=%{optflags}}; export CXXFLAGS; \
+    : ${DATADIR=%{_datadir}}; export DATADIR; \
+    : ${DESTDIR=%{buildroot}}; export DESTDIR; \
+    : ${DOCDIR=%{_docdir}}; export DOCDIR; \
+    : ${INCLUDEDIR=%{_includedir}}; export INCLUDEDIR; \
+    : ${INFODIR=%{_infodir}}; export INFODIR; \
+    : ${LIBDIR=%{_libdir}}; export LIBDIR; \
+    : ${LIBEXECDIR=%{_libexecdir}}; export LIBEXECDIR; \
+    : ${MANDIR=%{_mandir}}; export MANDIR; \
+    : ${PREFIX=%{_prefix}}; export PREFIX; \
+    : ${SYSCONFDIR=%{_sysconfdir}}; export SYSCONFDIR; \
     %{_bindir}/mkcmake \\\
         %{?_smp_mflags}

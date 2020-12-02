@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Nov 30 08:25:23 UTC 2020 - vle@gmx.net
+
+- Update to mk-configure-0.35.0
+
+  Add the following new features: arc4random, bswap, dprintf, efun,
+  errc, fparseln, fts, posix_getopt, raise_default_signals,
+  reallocarray, strsep and vis.
+  See mk-configure.7 for details.
+
+  Fixes: 
+    * mkc_check_decl: fix "prototype" mode. Extraction of function name
+      was incorrect.  Add one more regression test for this case in
+      tests/os_NetBSD.
+    * Avoid multiple repetition of MKC_COMMON_DEFINES in CPPFLAGS
+    * Fix target "depend" that failed if SRCS contains full path to
+      source code.
+
+  Move -Wreturn-type from CFLAGS.warns.{clang,gcc}.2 to
+  CFLAGS.warns.{clang,gcc}.1 and make it an error for C++
+
+  CC_TYPE and CXX_TYPE are correctly set if MKC_CHECK_CUSTOM is set.
+
+  Use .error bmake command for checking MKC_REQD.  Also, move
+  appropriate check to mkc_imp.preinit.mk, so it is checked in the
+  very beginning.  Documentation and error message are slightly
+  updated.
+
+  Rename variable DISTCLEANFILES to CLEANDIRFILES, DISTCLEANFILES is
+  considered deprecated.
+
+  Rename variable DISTCLEANDIRS to CLEANDIRDIRS, DISTCLEANDIRS is
+  considered deprecated.
+
+  Add support for latest Intel C/C++ compiler.  We have to always add
+  -we10006 option to it in order it fail when invalid option is used.
+
+  Adapt some features for using functions implementation from
+  libnbcompat and libbsd libraries.
+
+  Use .depend_${.CURDIR:T} instead .depend to support MAKEOBJDIR.
+
+  New tests and examples.
+
+- Update to mk-configure-0.34.2
+
+  Do not pass *all* CFLAGS flags to CXXFLAGS.  This fixes builds
+  where, for example, clang is used as a C compile and gcc is used as
+  a C++ compiler. Also, MKC_CHECK_* variables update MKC_CPPFLAGS
+  instead of MKC_CFLAGS.
+
+  Avoid "install -d /" if there is nothing to install.  This fixes
+  some failures on some systems/conditions and improves support for
+  foreign install(1) programs, e.g., (UCB install on Solaris)
+
+  Fixes for CFLAGS containing -O2 and -D_FORTIFY_SOURCE=n
+
+  main.mk: clean-ups for target "cleandir" and "clean"
+-------------------------------------------------------------------
 Mon Mar 30 12:37:23 UTC 2020 - vle@gmx.net
 
 - Update to mk-configure-0.34.1

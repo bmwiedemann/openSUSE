@@ -17,7 +17,7 @@
 
 
 Name:           mk-configure
-Version:        0.34.1
+Version:        0.35.0
 Release:        0
 Summary:        A build system on top of bmake
 License:        BSD-2-Clause AND MIT AND ISC
@@ -40,6 +40,7 @@ BuildRequires:  glib2-devel
 BuildRequires:  groff
 BuildRequires:  info
 BuildRequires:  lua-devel
+BuildRequires:  libbsd-devel
 BuildRequires:  makeinfo
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
@@ -102,8 +103,8 @@ install -m644 %{SOURCE1} -D %{buildroot}%{_sysconfdir}/rpm/macros.mkcmake
 %check
 unset MAKEFLAGS
 env bmake test
-bmake cleandir-examples
-bmake cleandir-tests
+bmake -k cleandir-examples
+bmake -k cleandir-tests
 
 %files
 %defattr(-,root,root)
