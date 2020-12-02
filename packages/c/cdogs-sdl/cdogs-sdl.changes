@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  1 07:46:07 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 0.10.1:
+  * Fix freeze when slow moving bullets wall bounce.
+
+-------------------------------------------------------------------
 Fri Nov 27 14:20:31 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 0.10.0:
