@@ -19,28 +19,34 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-veusz
-Version:        3.2.1
+Version:        3.3
 Release:        0
 Summary:        Scientific plotting library for Python
 # The entire source code is GPL-2.0+ except helpers/src/_nc_cntr.c which is Python-2.0
 License:        GPL-2.0-or-later AND Python-2.0
 URL:            https://veusz.github.io/
 Source0:        https://files.pythonhosted.org/packages/source/v/veusz/veusz-%{version}.tar.gz
+Source1:        %{name}-rpmlintrc
 Source3:        veusz_256.png
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module qt5-devel}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module sip}
+BuildRequires:  %{python_module sip4-devel}
+BuildRequires:  %{python_module sip4}
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
 BuildRequires:  update-desktop-files
+# SECTION For Tests
+BuildRequires:  %{python_module astropy}
+BuildRequires:  %{python_module h5py}
+# /SECTION
 Requires:       python-numpy
 Requires:       python-qt5
 Recommends:     python-h5py
+Recommends:     python-astropy
 ExcludeArch:    i586
 %ifpython3
 Recommends:     veusz
@@ -142,14 +148,13 @@ update-desktop-database %{_datadir}/applications
 %icon_theme_cache_postun
 
 %files %{python_files}
-%doc README AUTHORS ChangeLog
+%doc README.md AUTHORS ChangeLog
 %doc Documents/manual/html
 %license COPYING
 %{python_sitearch}/veusz-%{version}-py*.egg-info
 %{python_sitearch}/veusz/
 
 %files -n veusz
-%doc AUTHORS
 %license COPYING
 %{_bindir}/veusz
 %{_datadir}/applications/veusz.desktop

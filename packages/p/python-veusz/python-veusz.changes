@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Nov 29 22:20:48 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.3:
+  * New histogramming widget (histo).
+  * Add keyboard shortcut for showing/hiding widgets (Ctrl+[ and
+    Ctrl+]).
+  * New security model allows running arbitrary code for documents
+    in allowed locations.
+  * Allow Python-level module imports.
+  * New separate lo and hi error bar styles (gh#veusz/veusz#428).
+  * Use same colour for key title as key text
+    (gh#veusz/veusz#414).
+  * Add preferences for number of significant figures in picker.
+  * New colormaps: inferno, magma, moreland, parula, plasma and
+    viridis.
+  * Add CurrentPath() API command to get current widget path.
+  * Add dataset operations for reversing and subtracting dataset
+    maximum.
+  * Now supports building using sip5.
+  * Bugfix for values in boxplots (gh#veusz/veusz#455).
+  * Add setting to optionally omit paths in document files.
+  * New flight-recorder and histogram examples.
+  * Make sure line around arrows is solid (gh#veusz/veusz#429).
+  * README is now renamed to README.md.
+  * Switch to unsigned long long for widget IDs to fix build.
+  * Add multiline FieldTextEdit (gh#veusz/veusz#392) field.
+- Switch BuildRequires: python-sip to python-sip4 and add
+  BuildRequires: python-sip4-devel to fix unresolvable build
+  status for openSUSE < 1550.
+- Add python-astropy as BuildRequires (for fits tests) and as
+  Recommends for python-veusz.
+- Add python-veusz-rpmlintrc file to suppress a warning for
+  incorrect EOL encodings in a file which should not be fixed.
+- Drop duplicated `AUTHORS` file from the `veusz` pkg: it is
+  already a part of the `python-veusz` pkg which is a `Requires`
+  for `veusz`.
+
+-------------------------------------------------------------------
 Fri Jul 17 10:43:44 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 3.2.1

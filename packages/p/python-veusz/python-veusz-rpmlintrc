@@ -1,0 +1,2 @@
+# The '\r' is not supposed to be fixed in this .inv file
+addFilter("wrong-file-end-of-line-encoding .*/usr/share/doc/packages/python3-veusz/html/objects.inv")
