@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec  1 09:35:57 UTC 2020 - Tina Müller <tina.mueller@suse.com>
+
+- Add license to cpanspec.yml (no license in Makefile.PL, META.(yml|json),
+  pod and no LICENSE file)
+
+-------------------------------------------------------------------
+Tue Dec  1 03:14:20 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.01
+   see /usr/share/doc/packages/perl-Types-Serialiser/Changes
+
+  1.01 Tue Dec  1 02:46:33 CET 2020
+  	- implement Types::Serialiser::as_bool.
+          - slight doc tweaks.
+
+-------------------------------------------------------------------
 Tue May 27 07:14:53 UTC 2014 - ncutler@suse.com
 
 - checked license

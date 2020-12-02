@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Types-Serialiser
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Types-Serialiser
-Version:        1.0
+Version:        1.01
 Release:        0
+#Upstream: CHECK(Artistic-1.0 or GPL-1.0-or-later)
 %define cpan_name Types-Serialiser
 Summary:        Simple data types for common serialisation formats
-License:        Artistic-1.0 or GPL-2.0+
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Types-Serialiser/
-Source:         http://www.cpan.org/authors/id/M/ML/MLEHMANN/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(common::sense)
-#BuildRequires: perl(Types::Serialiser)
 Requires:       perl(common::sense)
 %{perl_requires}
 
@@ -44,11 +45,11 @@ different implementations so they become interoperable between each other.
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -57,6 +58,7 @@ different implementations so they become interoperable between each other.
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes COPYING README
+%doc Changes README
+%license COPYING
 
 %changelog

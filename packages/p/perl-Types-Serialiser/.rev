@@ -27,4 +27,19 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4807adfa618cf79e47f0aa3f08a1fc7f</srcmd5>
+    <version>1.01</version>
+    <time>1606913875</time>
+    <user>dimstar_suse</user>
+    <comment>- Add license to cpanspec.yml (no license in Makefile.PL, META.(yml|json),
+  pod and no LICENSE file)
+- updated to 1.01
+   see /usr/share/doc/packages/perl-Types-Serialiser/Changes
+  1.01 
+  	- implement Types::Serialiser::as_bool.
+          - slight doc tweaks.
+</comment>
+    <requestid>852355</requestid>
+  </revision>
 </revisionlist>
