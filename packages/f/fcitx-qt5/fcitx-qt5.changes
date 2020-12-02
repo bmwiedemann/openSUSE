@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec  1 07:39:32 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 1.2.5
+  * many fixes are ported from fcitx5 counter part during 
+    the developement. Some fixes related to focus and relative
+    rect to allow the correct input window positioning on
+    gnome-shell wayland mode.  
+- drop fix-remove-paths-warnings.patch, upstreamed
+
+-------------------------------------------------------------------
 Sat Sep 21 15:38:37 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
 
 - Add upstream patch fix-remove-paths-warnings.patch

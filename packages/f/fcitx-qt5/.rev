@@ -149,4 +149,18 @@
     <comment></comment>
     <requestid>732423</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9c8c474f30c81efc3c0131f77a2bb5b1</srcmd5>
+    <version>1.2.5</version>
+    <time>1606913941</time>
+    <user>dimstar_suse</user>
+    <comment>- update version 1.2.5
+  * many fixes are ported from fcitx5 counter part during 
+    the developement. Some fixes related to focus and relative
+    rect to allow the correct input window positioning on
+    gnome-shell wayland mode.  
+- drop fix-remove-paths-warnings.patch, upstreamed
+</comment>
+    <requestid>852449</requestid>
+  </revision>
 </revisionlist>

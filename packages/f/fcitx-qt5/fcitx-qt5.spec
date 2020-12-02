@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx-qt5
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,16 @@
 
 
 Name:           fcitx-qt5
-Version:        1.2.2
+Version:        1.2.5
 Release:        0
 Summary:        Fcitx QT5 Input Context
 License:        GPL-2.0-or-later AND GPL-3.0-or-later AND BSD-3-Clause
 Group:          System/I18n/Chinese
-Url:            https://github.com/fcitx/fcitx-qt5
+URL:            https://github.com/fcitx/fcitx-qt5
 Source:         https://download.fcitx-im.org/%{name}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM: fix compilation with Qt 5.11 (missing include)
 Patch0:         fix-compilation-with-qt-5.11.patch
-Patch1:         fix-remove-paths-warnings.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx-devel >= 4.2.9.1
