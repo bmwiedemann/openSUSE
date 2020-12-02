@@ -24,7 +24,9 @@ if($mappedpkg) {
     rename("$mappedpkg/.git", $tmpgit);
 } else {
     system("scripts/pagure-new-package", $pkg);
-    system(qw"git clone", "https://code.opensuse.org/package/$pkg", $tmpgit)
+    system(qw"git clone", "https://code.opensuse.org/package/$pkg", $tmpgit);
+    system("mv", <$tmpgit/.git/*>, $tmpgit); # move one level up
+    rmdir("$tmpgit/.git");
 }
 system(qw"rm -rf", $mappedpkg);
 $ENV{PKG}=$pkg;
