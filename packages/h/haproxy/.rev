@@ -1002,4 +1002,12 @@
     &quot;source&quot; for server entries.</comment>
     <requestid>846512</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>7016673bf19570b68c0555501e74e0e9</srcmd5>
+    <version>2.3.2+git0.d522db763</version>
+    <time>1606913864</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.2+git0.d522db763:</comment>
+    <requestid>851927</requestid>
+  </revision>
 </revisionlist>
