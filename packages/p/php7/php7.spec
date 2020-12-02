@@ -1186,6 +1186,13 @@ popd
 %install
 %if !%{with test}
 
+# create httpd.conf file with a LoadModule line for apxs
+mkdir -p %{buildroot}%{apache_sysconfdir}
+cat > %{buildroot}%{apache_sysconfdir}/httpd.conf << EOF
+# DO NOT INSTALL THIS FILE
+LoadModule alias_module %{apache_libexecdir}-prefork/mod_alias.so
+EOF
+
 # install function
 Install()
 {
@@ -1201,6 +1208,7 @@ Install cli
 Install fpm
 Install embed
 rm %{buildroot}%{_libdir}/libphp7.la
+rm %{buildroot}%{apache_sysconfdir}/httpd.conf*
 
 # generate php.ini from php.ini-production:
 install -dm 755 %{buildroot}/%{php_sysconf}/conf.d

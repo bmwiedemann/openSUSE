@@ -982,4 +982,12 @@
   - php-fix_net-snmp_disable_MD5.patch</comment>
     <requestid>851286</requestid>
   </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>c1eae3e923cbb8ecd844d982fcdec9f3</srcmd5>
+    <version>7.4.13</version>
+    <time>1606913854</time>
+    <user>dimstar_suse</user>
+    <comment>- fix building with new apache2 from Apache development repo (forwarded request 851681 from adkorte)</comment>
+    <requestid>851805</requestid>
+  </revision>
 </revisionlist>

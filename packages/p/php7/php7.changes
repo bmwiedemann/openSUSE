@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov 29 13:42:37 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- fix building with new apache2 from Apache development repo
+
+-------------------------------------------------------------------
 Fri Nov 27 09:56:49 UTC 2020 - pgajdos@suse.com
 
 - do not build firebird extension in any case
