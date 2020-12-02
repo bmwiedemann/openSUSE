@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 27 23:05:42 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gnome-tweaks-port-libhandy-1.patch: Port to using new handy.
+
+-------------------------------------------------------------------
 Thu Aug  6 01:42:46 UTC 2020 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Added gnome-tweaks-fix-titlebar-buttons-left.patch: GNOME Tweaks

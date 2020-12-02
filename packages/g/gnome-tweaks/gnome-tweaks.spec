@@ -27,6 +27,8 @@ URL:            https://wiki.gnome.org/Apps/Tweaks
 Source0:        https://download.gnome.org/sources/gnome-tweaks/3.34/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM gnome-tweaks-fix-titlebar-buttons-left.patch bsc#1162080, glgo#GNOME/gnome-tweaks#245 alynx.zhou@suse.com -- Fix titlebar flicker after setting buttons placement to left
 Patch1:         gnome-tweaks-fix-titlebar-buttons-left.patch
+# PATCH-FEATURE-UPSTREAM gnome-tweaks-port-libhandy-1.patch -- Port to libhandy-1
+Patch2:         gnome-tweaks-port-libhandy-1.patch
 
 BuildRequires:  fdupes
 # GI is needed to have typelib() Requires
