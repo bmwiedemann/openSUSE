@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Dec  1 15:58:59 CET 2020 - tiwai@suse.de
+
+- Update to criu 3.15:
+  see details at https://criu.org/Download/criu/3.15
+  New features:
+  * Introduced criu-image-streamer
+  * Added MIPS support
+  * Allow checkpointing out of existing PID namespace and restoring
+    into existing PID namespace
+  * Added additional file validation mechanisms
+  * Added support to checkpoint and restore BPF hash maps
+   (BPF_MAP_TYPE_HASH) and array maps (BPF_MAP_TYPE_ARRAY)
+  * Initial cgroups v2 support
+- Fix build with nftables package:
+  0002-Fix-build-with-nftables-installed-in-different-direc.patch
+
+-------------------------------------------------------------------
 Wed Sep 23 12:17:11 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - fix filelist mismatch after libexecdir change 

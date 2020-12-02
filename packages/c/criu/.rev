@@ -447,4 +447,12 @@
     <comment>- fix filelist mismatch after libexecdir change</comment>
     <requestid>836307</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>5324f7b150ab978231f7d0e90ace32c7</srcmd5>
+    <version>3.15</version>
+    <time>1606913935</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>852396</requestid>
+  </revision>
 </revisionlist>

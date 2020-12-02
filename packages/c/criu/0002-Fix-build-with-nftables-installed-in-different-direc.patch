@@ -1,0 +1,47 @@
+From 95191250537d1cd872668647da76234241f16661 Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Tue, 1 Dec 2020 16:32:19 +0100
+Subject: [PATCH] Fix build with nftables installed in different directory
+
+The cflags needs to be passed to the build test.
+
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ Makefile.config | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.config b/Makefile.config
+index 3d99e680be7f..720df0b11c9e 100644
+--- a/Makefile.config
++++ b/Makefile.config
+@@ -30,13 +30,16 @@ else
+ endif
+ 
+ ifeq ($(call pkg-config-check,libnftables),y)
++        CFLAGS_NFTABLES := $(shell pkg-config --cflags libnftables)
+         LIB_NFTABLES	:= $(shell pkg-config --libs libnftables)
+-        ifeq ($(call try-cc,$(FEATURE_TEST_NFTABLES_LIB_API_0),$(LIB_NFTABLES)),true)
++        ifeq ($(call try-cc,$(FEATURE_TEST_NFTABLES_LIB_API_0),$(CFLAGS_NFTABLES) $(LIB_NFTABLES)),true)
+                 LIBS_FEATURES	+= $(LIB_NFTABLES)
+                 FEATURE_DEFINES	+= -DCONFIG_HAS_NFTABLES_LIB_API_0
+-        else ifeq ($(call try-cc,$(FEATURE_TEST_NFTABLES_LIB_API_1),$(LIB_NFTABLES)),true)
++                FEATURE_CFLAGS	+= $(CFLAGS_NFTABLES)
++        else ifeq ($(call try-cc,$(FEATURE_TEST_NFTABLES_LIB_API_1),$(CFLAGS_NFTABLES) $(LIB_NFTABLES)),true)
+                 LIBS_FEATURES	+= $(LIB_NFTABLES)
+                 FEATURE_DEFINES	+= -DCONFIG_HAS_NFTABLES_LIB_API_1
++                FEATURE_CFLAGS	+= $(CFLAGS_NFTABLES)
+         else
+                 $(warning Warn: you have libnftables installed but it has incompatible API)
+                 $(warning Warn: Building without nftables support)
+@@ -67,7 +70,7 @@ endif
+ endif
+ 
+ export DEFINES += $(FEATURE_DEFINES)
+-export CFLAGS += $(FEATURE_DEFINES)
++export CFLAGS += $(FEATURE_DEFINES) $(FEATURE_CFLAGS)
+ 
+ FEATURES_LIST	:= TCP_REPAIR STRLCPY STRLCAT PTRACE_PEEKSIGINFO \
+ 	SETPROCTITLE_INIT MEMFD TCP_REPAIR_WINDOW FSCONFIG MEMFD_CREATE
+-- 
+2.26.2
+

@@ -26,7 +26,7 @@
 %endif
 
 Name:           criu
-Version:        3.14
+Version:        3.15
 Release:        0
 Summary:        Checkpoint/Restore In Userspace Tools
 License:        GPL-2.0-only
@@ -34,6 +34,7 @@ Group:          System/Console
 URL:            https://criu.org/
 Source0:        https://download.openvz.org/criu/%{name}-%{version}.tar.bz2
 Patch1:         criu-py-install-fix.diff
+Patch2:         0002-Fix-build-with-nftables-installed-in-different-direc.patch
 BuildRequires:  libcap-devel
 BuildRequires:  libgnutls-devel
 BuildRequires:  libnet-devel
@@ -42,6 +43,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  protobuf-c
 BuildRequires:  protobuf-devel
 BuildRequires:  python3-devel
+%if 0%{?suse_version} >= 1550
+BuildRequires:  nftables-devel
+%endif
 %if 0%{?use_asciidoctor}
 BuildRequires:  rubygem(asciidoctor)
 %else
@@ -94,6 +98,7 @@ to develop applications with CRIU library.
 %prep
 %setup -q
 %patch1 -p1
+%patch2 -p1
 # default off
 echo "BINFMT_MISC_VIRTUALIZED" > .config
 
@@ -103,10 +108,11 @@ export CFLAGS="%{optflags}"
 %ifarch %arm
 export CFLAGS="$CFLAGS -Wno-error=deprecated"
 %endif
-make V=1 %{?_smp_mflags} %{?make_options}
+# WERROR=0 is needed for avoiding warning due to doubly _GNU_SOURCE defines
+make V=1 %{?_smp_mflags} %{?make_options} WERROR=0
 
 %install
-%make_install V=1 %{?make_options} \
+%make_install V=1 %{?make_options} WERROR=0 \
 	PREFIX=%{_prefix} \
 	LIBDIR=%{_libdir} \
 	LIBEXECDIR=%{_libexecdir}
