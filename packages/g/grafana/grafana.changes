@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Mon Nov  9 16:50:36 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
+
+- Update packaging
+  * avoid systemd and shadow hard requirements
+  * Require the user from a new dedicated 'system-user-grafana' sibling package
+  * avoid pinning to a specific Go version in the spec file
+
+-------------------------------------------------------------------
+Thu Nov 05 12:21:57 UTC 2020 - witold.bedyk@suse.com
+
+- Update to version 7.3.1:
+  * Breaking changes
+    - CloudWatch: The AWS CloudWatch data source's authentication scheme has changed. See the upgrade notes for details and how this may affect you.
+    - Units: The date time units `YYYY-MM-DD HH:mm:ss` and `MM/DD/YYYY h:mm:ss a` have been renamed to `Datetime ISO` and `Datetime US` respectively.
+  * Features / Enhancements
+    - AzureMonitor: Support decimal (as float64) type in analytics/logs.
+    - Add monitoring mixing for Grafana.
+    - CloudWatch: Missing Namespace AWS/EC2CapacityReservations.
+    - CloudWatch: Add support for AWS DirectConnect virtual interface metrics and add missing dimensions.
+    - CloudWatch: Adding support for Amazon ElastiCache Redis metrics.
+    - CloudWatch: Adding support for additional Amazon CloudFront metrics.
+    - CloudWatch: Re-implement authentication.
+    - Elasticsearch: Support multiple pipeline aggregations for a query.
+    - Prometheus: Add time range parameters to labels API.
+    - Loki: Visually distinguish error logs for LogQL2.
+    - Api: Add /healthz endpoint for health checks.
+    - API: Enrich add user to org endpoints with user ID in the response.
+    - API: Enrich responses and improve error handling for alerting API endpoints.
+    - Elasticsearch: Add support for date_nanos type.
+    - Elasticsearch: Allow fields starting with underscore.
+    - Elasticsearch: Increase maximum geohash aggregation precision to 12.
+    - Postgres: Support request cancellation properly (Uses new backendSrv.fetch Observable request API).
+    - Provisioning: Remove provisioned dashboards without parental reader.
+    - API: Return ID of the deleted resource for dashboard, datasource and folder DELETE endpoints.
+    - API: Support paging in the admin orgs list API.
+    - API: return resource ID for auth key creation, folder permissions update and user invite complete endpoints.
+    - BackendSrv: Uses credentials, deprecates withCredentials & defaults to same-origin.
+    - CloudWatch: Update list of AmazonMQ metrics and dimensions.
+    - Cloudwatch: Add Support for external ID in assume role.
+    - Cloudwatch: Add af-south-1 region.
+    - DateFormats: Default ISO & US formats never omit date part even if date is today (breaking change).
+    - Explore: Transform prometheus query to elasticsearch query.
+    - InfluxDB/Flux: Increase series limit for Flux datasource.
+    - InfluxDB: exclude result and table column from Flux table results.
+    - InfluxDB: return a table rather than an error when timeseries is missing time.
+    - Loki: Add scopedVars support in legend formatting for repeated variables.
+    - Loki: Re-introduce running of instant queries.
+    - Loki: Support request cancellation properly (Uses new backendSrv.fetch Observable request API).
+    - MixedDatasource: Shows retrieved data even if a data source fails.
+    - Postgres: Support Unix socket for host.
+    - Prometheus: Add scopedVars support in legend formatting for repeated variables.
+    - Prometheus: Support request cancellation properly (Uses new backendSrv.fetch Observable request API).
+    - Prometheus: add $__rate_interval variable.
+    - Table: Adds column filtering.
+    - grafana-cli: Add ability to read password from stdin to reset admin password.
+
+-------------------------------------------------------------------
 Fri Sep 18 08:58:14 UTC 2020 - jcavalheiro@suse.com
 
 - Update to version 7.1.5:
@@ -10,18 +67,18 @@ Fri Sep 18 08:58:14 UTC 2020 - jcavalheiro@suse.com
     - Graph: Support setting field unit & override data source (automatic) unit.
     - Explore: Unification of logs/metrics/traces user interface
     - Table: JSON Cell should try to convert strings to JSON
-    - Variables: enables cancel for slow query variables queries. 
+    - Variables: enables cancel for slow query variables queries.
     - TimeZone: unify the time zone pickers to one that can rule them all.
     - Search: support URL query params.
     - Grafana-UI: Add FileUpload.
     - TablePanel: Sort numbers correctly.
   * Bug fixes
     - Alerting: remove LongToWide call in alerting.
-    - AzureMonitor: fix panic introduced in 7.1.4 when unit was unspecified and alias was used. 
+    - AzureMonitor: fix panic introduced in 7.1.4 when unit was unspecified and alias was used.
     - Variables: Fixes issue with All variable not being resolved.
     - Templating: Fixes so texts show in picker not the values.
     - Templating: Templating: Fix undefined result when using raw interpolation format
-    - TextPanel: Fix content overflowing panel boundaries. 
+    - TextPanel: Fix content overflowing panel boundaries.
     - StatPanel: Fix stat panel display name not showing when explicitly set.
     - Query history: Fix search filtering if null value.
     - Flux: Ensure connections to InfluxDB are closed.
@@ -38,7 +95,7 @@ Fri Sep 18 08:58:14 UTC 2020 - jcavalheiro@suse.com
     - Datasources: Handle URL parsing error.
     - Security: Use Header.Set and Header.Del for X-Grafana-User header.
   * Changes in spec file
-    - Fix golang version = 1.14 to avoid dependency conflicts on some OBS projects  
+    - Fix golang version = 1.14 to avoid dependency conflicts on some OBS projects
 
 -------------------------------------------------------------------
 Fri Jun 05 10:31:13 UTC 2020 - jcavalheiro@suse.com
@@ -98,7 +155,7 @@ Mon Jun 01 13:12:54 UTC 2020 - jcavalheiro@suse.com
 -------------------------------------------------------------------
 Sun May 24 21:43:04 UTC 2020 - Joao Cavalheiro <jcavalheiro@suse.com>
 
-- Update to version 7.0.0 
+- Update to version 7.0.0
   * Breaking changes
     - Removed PhantomJS: PhantomJS was deprecated in Grafana v6.4 and starting from Grafana v7.0.0, all PhantomJS support has been removed. This means that Grafana no longer ships with a built-in image renderer, and we advise you to install the Grafana Image Renderer plugin.
     - Dashboard: A global minimum dashboard refresh interval is now enforced and defaults to 5 seconds.
@@ -153,7 +210,7 @@ Sun May 24 21:43:04 UTC 2020 - Joao Cavalheiro <jcavalheiro@suse.com>
     - SAML: Switch from email to login for user login attribute mapping (Enterprise)
 
 - Update Makefile and spec file
-  * Remove phantomJS patch from Makefile 
+  * Remove phantomJS patch from Makefile
   * Fix multiline strings in Makefile
   * Exclude s390 from SLE12 builds, golang 1.14 is not built for s390
 

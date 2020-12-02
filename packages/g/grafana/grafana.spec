@@ -16,19 +16,15 @@
 #
 
 
-%define GRAFANA_USER    %{name}
-%define GRAFANA_GROUP   %{name}
-%define GRAFANA_HOME    %{_datadir}/%{name}
-
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
 Name:           grafana
-Version:        7.1.5
+Version:        7.3.1
 Release:        0
-Summary:        Dashboards and editors for Graphite, InfluxDB, OpenTSDB
+Summary:        The open-source platform for monitoring and observability.
 License:        Apache-2.0
 Group:          System/Monitoring
 URL:            http://grafana.org/
@@ -42,10 +38,14 @@ Source4:        Makefile
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  golang-packaging
-BuildRequires:  shadow
-BuildRequires:  golang(API) = 1.14
+BuildRequires:  golang(API) >= 1.15
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%{?systemd_requires}
+Requires(post): %fillup_prereq
+Requires:       group(grafana)
+Requires:       user(grafana)
+%systemd_ordering
+
+%go_nostrip
 
 # Exclude s390 on SLE12, since golang 1.14 itself is not built for this arch on SLE12
 # See https://build.suse.de/package/view_file/SUSE:SLE-12:Update/go1.14/go1.14.spec?expand=1
@@ -117,11 +117,6 @@ install -d -m755 %{buildroot}%{_datadir}/%{name}/tools
 %pre
 %service_add_pre %{name}-server.service
 
-echo "Creating user %{GRAFANA_USER} and group %{GRAFANA_GROUP} if not present"
-getent group %{GRAFANA_GROUP} > /dev/null || groupadd -r %{GRAFANA_GROUP}
-getent passwd %{GRAFANA_GROUP} > /dev/null || useradd -r -g %{GRAFANA_GROUP} \
--d %{GRAFANA_HOME} -s /sbin/nologin -c "%{GRAFANA_USER} user" %{GRAFANA_GROUP}
-
 %post
 %{fillup_only -n %{name}-server}
 %service_add_post %{name}-server.service
@@ -143,13 +138,13 @@ getent passwd %{GRAFANA_GROUP} > /dev/null || useradd -r -g %{GRAFANA_GROUP} \
 %attr(0755,root,root) %dir %{_sysconfdir}/%{name}
 %attr(0755,root,root) %dir %{_sysconfdir}/%{name}/provisioning
 %attr(0755,root,root) %dir %{_sysconfdir}/%{name}/provisioning/dashboards
-%attr(0755,root,%{GRAFANA_GROUP}) %dir %{_datadir}/%{name}/conf
-%attr(0640,root,%{GRAFANA_GROUP}) %config(noreplace) %{_sysconfdir}/%{name}/%{name}.ini
-%attr(0640,root,%{GRAFANA_GROUP}) %config(noreplace) %{_sysconfdir}/%{name}/ldap.toml
-%attr(0755,%{GRAFANA_USER},%{GRAFANA_GROUP}) %dir %{_localstatedir}/lib/%{name}
-%attr(0755,%{GRAFANA_USER},%{GRAFANA_GROUP}) %dir %{_localstatedir}/lib/%{name}/plugins
-%attr(0755,%{GRAFANA_USER},%{GRAFANA_GROUP}) %dir %{_localstatedir}/lib/%{name}/dashboards
-%attr(0750,%{GRAFANA_USER},%{GRAFANA_GROUP}) %dir %{_localstatedir}/log/%{name}
+%attr(0755,root,grafana) %dir %{_datadir}/%{name}/conf
+%attr(0640,root,grafana) %config(noreplace) %{_sysconfdir}/%{name}/%{name}.ini
+%attr(0640,root,grafana) %config(noreplace) %{_sysconfdir}/%{name}/ldap.toml
+%attr(0755,grafana,grafana) %dir %{_localstatedir}/lib/%{name}
+%attr(0755,grafana,grafana) %dir %{_localstatedir}/lib/%{name}/plugins
+%attr(0755,grafana,grafana) %dir %{_localstatedir}/lib/%{name}/dashboards
+%attr(0750,grafana,grafana) %dir %{_localstatedir}/log/%{name}
 %doc %{_datadir}/%{name}/conf/sample.ini
 %doc %{_datadir}/%{name}/conf/provisioning/dashboards/sample.yaml
 %doc %{_datadir}/%{name}/conf/provisioning/datasources/sample.yaml
