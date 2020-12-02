@@ -639,7 +639,6 @@
       <repopackage name="libgweather-3-16" arch="x86_64"/>
       <repopackage name="libgxps2" arch="x86_64"/>
       <repopackage name="libHalf-2_5-25" arch="x86_64"/>
-      <repopackage name="libhandy-0_0-0" arch="x86_64"/>
       <repopackage name="libhandy-1-0" arch="x86_64"/>
       <repopackage name="libharfbuzz-gobject0" arch="x86_64"/>
       <repopackage name="libharfbuzz-icu0" arch="x86_64"/>
@@ -1450,7 +1449,7 @@
       <repopackage name="typelib-1_0-Graphene-1_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-Gtk-3_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-GWeather-3_0" arch="x86_64"/>
-      <repopackage name="typelib-1_0-Handy-0_0" arch="x86_64"/>
+      <repopackage name="typelib-1_0-Handy-1_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-HarfBuzz-0_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-IBus-1_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-Json-1_0" arch="x86_64"/>

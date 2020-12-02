@@ -819,7 +819,6 @@
     <package name="libgusb2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libgweather-3-16" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libgxps2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
-    <package name="libhandy-0_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libhandy-1-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libharfbuzz-gobject0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libharfbuzz-icu0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
@@ -1410,7 +1409,7 @@
     <package name="typelib-1_0-GnomeDesktop-3_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="typelib-1_0-Graphene-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="typelib-1_0-Gtk-3_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
-    <package name="typelib-1_0-Handy-0_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
+    <package name="typelib-1_0-Handy-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="typelib-1_0-HarfBuzz-0_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="typelib-1_0-IBus-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="typelib-1_0-Json-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->

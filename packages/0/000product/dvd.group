@@ -2848,6 +2848,7 @@
     <package name="python3-tevent" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-tornado6" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python3-trio" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python3-typing_extensions" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python3-urllib3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-urwid" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python3-zipp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
@@ -5375,7 +5376,7 @@
     <package name="typelib-1_0-Graphene-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Gspell-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-GtkClutter-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="typelib-1_0-Handy-0_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="typelib-1_0-Handy-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-JavaScriptCore-4_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Json-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Jsonrpc-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->

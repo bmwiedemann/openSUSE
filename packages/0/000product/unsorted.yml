@@ -9400,7 +9400,7 @@ unsorted:
   - libXxf86vm-devel 
   - libXxf86vm-devel-32bit: [x86_64] 
   - libXxf86vm1-32bit: [x86_64] 
-  - libYODA-1_8_4 
+  - libYODA-1_8_5 
   - libZXing1-32bit: [x86_64] 
   - liba52-0-32bit: [x86_64] 
   - liba52-devel 
@@ -13564,7 +13564,7 @@ unsorted:
   - libsamba-util-devel 
   - libsamdb-devel 
   - libsaml-devel 
-  - libsaml10 
+  - libsaml11 
   - libsamplerate-devel 
   - libsamplerate-progs 
   - libsamplerate0-32bit: [x86_64] 
@@ -14787,8 +14787,8 @@ unsorted:
   - libxmlsec1-gcrypt1 
   - libxmlsec1-gnutls1 
   - libxmltooling-devel 
-  - libxmltooling-lite8 
-  - libxmltooling8 
+  - libxmltooling-lite9 
+  - libxmltooling9 
   - libxmp-devel 
   - libxmp4 
   - libxosd2 
@@ -20295,8 +20295,10 @@ unsorted:
   - plater 
   - platformsh-cli 
   - playerctl 
+  - playerctl-bash-completion 
   - playerctl-devel 
   - playerctl-doc 
+  - playerctl-zsh-completion 
   - plee-the-bear 
   - plee-the-bear-data 
   - plexus-ant-factory 
@@ -21934,6 +21936,7 @@ unsorted:
   - python3-dask-distributed 
   - python3-dask-dot 
   - python3-dask-multiprocessing 
+  - python3-databases 
   - python3-datadiff 
   - python3-datashader 
   - python3-dateparser 
@@ -24068,7 +24071,6 @@ unsorted:
   - python3-typeguard 
   - python3-typepy 
   - python3-typing-inspect 
-  - python3-typing_extensions 
   - python3-tzlocal 
   - python3-u-msgpack-python 
   - python3-ua-parser 
@@ -26575,6 +26577,7 @@ unsorted:
   - system-group-kvm 
   - system-group-obsolete 
   - system-user-flatpak: [i586] 
+  - system-user-grafana 
   - system-user-libvirt-dbus 
   - system-user-loki 
   - system-user-msr 
@@ -35037,8 +35040,8 @@ unsorted:
   - typelib-1_0-GtkSpell-3_0 
   - typelib-1_0-GtkVnc-2_0 
   - typelib-1_0-Gucharmap-2_90 
-  - typelib-1_0-Handy-0_0: [i586] 
-  - typelib-1_0-Handy-1_0 
+  - typelib-1_0-Handy-0_0 
+  - typelib-1_0-Handy-1_0: [i586] 
   - typelib-1_0-Hinawa-2_0 
   - typelib-1_0-ICal-3_0 
   - typelib-1_0-ICalGLib-3_0 
@@ -35077,7 +35080,7 @@ unsorted:
   - typelib-1_0-OSTree-1_0 
   - typelib-1_0-OsmGpsMap-1_0 
   - typelib-1_0-PackageKitGlib-1_0: [i586] 
-  - typelib-1_0-Playerctl-2_0_1 
+  - typelib-1_0-Playerctl-2_0 
   - typelib-1_0-Pluma-1_0 
   - typelib-1_0-Polari-1_0: [i586] 
   - typelib-1_0-Polkit-1_0: [i586] 
@@ -35827,6 +35830,7 @@ unsorted:
   - xcalc 
   - xcalib 
   - xcalib-profiles 
+  - xcape 
   - xcas 
   - xcb 
   - xcb-proto-devel 
@@ -36071,6 +36075,7 @@ unsorted:
   - xiphos-lang 
   - xiterm 
   - xjadeo 
+  - xkb-switch 
   - xkbcomp-devel 
   - xkbevd 
   - xkbprint 
