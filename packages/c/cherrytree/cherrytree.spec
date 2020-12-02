@@ -1,7 +1,7 @@
 #
-# spec file for package cherrytree.spec
+# spec file for package cherrytree
 #
-# # Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,14 +12,15 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           cherrytree
-Version:        0.99.22+git20201123.fea3e66c
+Version:        0.99.24+1
 Release:        0
 Summary:        A hierarchical note taking application
-License:        GPL-3.0-or-later and LGPL-2.1
+License:        GPL-3.0-or-later AND LGPL-2.1-only
 Group:          Productivity/Office/Other
 URL:            https://www.giuspen.com/cherrytree/
 Source0:        %{name}-%{version}.tar.xz

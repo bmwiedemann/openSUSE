@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Dec  1 15:15:57 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update _service:
+  + Change to @PARENT_TAG@+@TAG_OFFSET@ version scheme comonly used
+    by the GNOME Team (with +0 being stripped when detected).
+
+-------------------------------------------------------------------
+Tue Dec 01 14:42:22 UTC 2020 - malcolmlewis@opensuse.org
+
+- Update to version 0.99.24+git20201130.67860cc0:
+  * Fix can't open encrypted .ctx/.ctz file when the filename is
+    renamed, (gh#giuspen/cherrytree#1383).
+  * Fix missing copy/cut/paste for tables and codeboxes in right
+    click menu, (gh#giuspen/cherrytree#1379).
+  * Fix insert TOC with closing bracket at the end of the headline,
+    (gh#giuspen/cherrytree#1382).
+  * Fixes setting date in Gtk::Calendar,
+    (gh#giuspen/cherrytree#1386).
+  * Fix crash parsing sqlite node with image,
+    (gh#giuspen/cherrytree#1337).
+  * New --export_single_file export option,
+    (gh#giuspen/cherrytree#1371).
+  * Fix Automatically Check for Newer version,
+    (gh#giuspen/cherrytree#1380).
+  * Flatpak build fix (needs --share=network).
+  * Run the unit tests automatically if you build them.
+  * Packaging cleanup.
+  * Exploit advantage of google parameterised tests.
+  * Added now required after clone for building the unit tests 'git submodule update --init'.
+  * Suppress gtk warning during unit tests.
+  * Migration to google test.
+- Changes from version 0.99.23:
+  * Debugging flatpak crash.
+
+-------------------------------------------------------------------
 Tue Nov 24 15:54:13 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 0.99.22+git20201123.fea3e66c:

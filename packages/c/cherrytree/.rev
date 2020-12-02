@@ -21,4 +21,39 @@
     font anymore - configurable and off by default (#1343) (forwarded request 850546 from polslinux)</comment>
     <requestid>851061</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>74e968b8e10ded43c06b4094fa1eba58</srcmd5>
+    <version>0.99.24+1</version>
+    <time>1606913912</time>
+    <user>dimstar_suse</user>
+    <comment>- Update _service:
+  + Change to @PARENT_TAG@+@TAG_OFFSET@ version scheme comonly used
+    by the GNOME Team (with +0 being stripped when detected).
+
+- Update to version 0.99.24+git20201130.67860cc0:
+  * Fix can't open encrypted .ctx/.ctz file when the filename is
+    renamed, (gh#giuspen/cherrytree#1383).
+  * Fix missing copy/cut/paste for tables and codeboxes in right
+    click menu, (gh#giuspen/cherrytree#1379).
+  * Fix insert TOC with closing bracket at the end of the headline,
+    (gh#giuspen/cherrytree#1382).
+  * Fixes setting date in Gtk::Calendar,
+    (gh#giuspen/cherrytree#1386).
+  * Fix crash parsing sqlite node with image,
+    (gh#giuspen/cherrytree#1337).
+  * New --export_single_file export option,
+    (gh#giuspen/cherrytree#1371).
+  * Fix Automatically Check for Newer version,
+    (gh#giuspen/cherrytree#1380).
+  * Flatpak build fix (needs --share=network).
+  * Run the unit tests automatically if you build them.
+  * Packaging cleanup.
+  * Exploit advantage of google parameterised tests.
+  * Added now required after clone for building the unit tests 'git submodule update --init'.
+  * Suppress gtk warning during unit tests.
+  * Migration to google test.
+- Changes from version 0.99.23:
+  * Debugging flatpak crash.</comment>
+    <requestid>852383</requestid>
+  </revision>
 </revisionlist>
