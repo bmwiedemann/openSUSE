@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul  6 16:01:32 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add patch remove-rpath-fiddling.diff in order to avoid build 
+  issues with TW.
+
+-------------------------------------------------------------------
 Fri Apr 24 09:35:34 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to version 3.4.3 (April 2020):

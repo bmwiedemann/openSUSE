@@ -28,6 +28,7 @@ License:        Apache-2.0
 Group:          Productivity/Graphics/Visualization/Raytracers
 URL:            https://graphics.pixar.com/opensubdiv/docs/intro.html
 Source:         https://github.com/PixarAnimationStudios/%{name}/archive/v%{pkgver}.tar.gz#/%{name}-%{pkgver}.tar.gz
+Patch:          remove-rpath-fiddling.diff
 BuildRequires:  cmake >= 2.8.6
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -72,6 +73,7 @@ you will need to install %{name}-devel.
 
 %prep
 %setup -q -n %{name}-%{pkgver}
+%autopatch -p0
 # work around linking glitch
 sed -i 's/${PLATFORM_GPU_LIBRARIES}/${PLATFORM_GPU_LIBRARIES} ${CMAKE_DL_LIBS}/' opensubdiv/CMakeLists.txt
 
