@@ -16,10 +16,10 @@
 #
 
 
-%define so_name lib%{name}-1_8_4
+%define so_name lib%{name}-1_8_5
 
 Name:           YODA
-Version:        1.8.4
+Version:        1.8.5
 Release:        0
 Summary:        A small set of data analysis classes for MC event generator validation analyses
 License:        GPL-2.0-only
