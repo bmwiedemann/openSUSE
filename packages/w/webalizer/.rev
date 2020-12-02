@@ -249,4 +249,12 @@
   + webalizer-static.patch</comment>
     <requestid>812472</requestid>
   </revision>
+  <revision rev="34" vrev="26">
+    <srcmd5>e012728aec659a223f9ff2869a5c2753</srcmd5>
+    <version>2.23</version>
+    <time>1606913893</time>
+    <user>dimstar_suse</user>
+    <comment>- use system apache rpm macros</comment>
+    <requestid>852349</requestid>
+  </revision>
 </revisionlist>

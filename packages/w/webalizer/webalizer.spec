@@ -16,7 +16,6 @@
 #
 
 
-%define apache_serverroot %(/usr/sbin/apxs2 -q datadir 2>/dev/null || apxs -q PREFIX)
 %define editlvl 08
 
 Name:           webalizer
@@ -45,6 +44,7 @@ Patch7:         webalizer-overlinking.patch
 # static variables
 Patch8:         webalizer-static.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
 BuildRequires:  autoconf
 BuildRequires:  db-devel
