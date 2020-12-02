@@ -1,0 +1,8 @@
+<package name="xcape" project="openSUSE:Factory">
+  <title>xcape</title>
+  <description>Use a modifier key as another key when pressed and released on its own
+
+Example:
+xcape -e 'Super_L=Alt_L|F1' maps Super key to Alt+F1 which is useful for opening whiskermenu in Xfce.</description>
+  <devel project="X11:xfce" package="xcape"/>
+</package>
