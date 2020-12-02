@@ -1,7 +1,7 @@
 #
 # spec file for package hdparm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        A Program to get and set hard disk parameters
 License:        SUSE-Permissive
 Group:          Hardware/Other
-Url:            http://sourceforge.net/projects/hdparm/
+URL:            http://sourceforge.net/projects/hdparm/
 Source:         http://downloads.sf.net/hdparm/%{name}-%{version}.tar.gz
 Patch1:         hdparm-nostrip.patch
 Patch2:         hdparm-wiper-warn.patch
@@ -57,19 +57,19 @@ install -d "%{buildroot}%{_libexecdir}/hdparm"
 install -m 755 contrib/idectl "%{buildroot}%{_libexecdir}/hdparm"
 install -m 755 contrib/ultrabayd "%{buildroot}%{_libexecdir}/hdparm"
 install -m 755 wiper/wiper.sh "%{buildroot}/%{_sbindir}"
-#UsrMerge
+%if !0%{?usrmerged}
 mkdir -p "%{buildroot}/sbin"
 ln -sf %{_sbindir}/wiper.sh "%{buildroot}/sbin"
 ln -sf %{_sbindir}/hdparm "%{buildroot}/sbin"
-#EndUsrMerge
+%endif
 
 %files
 %doc Changelog README.acoustic contrib/README.contrib README.wiper
 %{_mandir}/man8/hdparm.8%{?ext_man}
-#UsrMerge
+%if !0%{?usrmerged}
 /sbin/hdparm
 /sbin/wiper.sh
-#EndUserMerge
+%endif
 %{_sbindir}/hdparm
 %{_sbindir}/wiper.sh
 %{_libexecdir}/hdparm
