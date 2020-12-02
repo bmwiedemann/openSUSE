@@ -204,4 +204,33 @@ BUG FIXES:
     <comment></comment>
     <requestid>842496</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a150f235e9d03dfc7ce3d48ecd80cac9</srcmd5>
+    <version>4.3.4</version>
+    <time>1606913940</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release 4.3.4
+FEATURES:
+- Merge PR #141: ZONEMD RR type.
+BUG FIXES:
+- Fix that symlink does not interfere with chown of pidfile
+  (bsc#1179191, CVE-2020-28935)
+- Fix #129: ambiguous use of errno, in log message if sendmmsg fails.
+- Fix #128: Fix that the invalid port number is logged for sendmmsg
+  failed: Invalid argument.
+- Fix #127: two minor `-Wcast-qual` cleanups
+- Fix #126: minor header hygiene
+- Fix #125: include config.h in compat/setproctitle.c and fix
+  prototype of `setproctitle`
+- Fix #133: fix 0-init of local ( stack ) buffer.
+- Fix missing parenthesis on size of fix to init buffer.
+- Fix #134: IPV4_MINIMAL_RESPONSE_SIZE vs EDNS_MAX_MESSAGE_LEN.
+- Fix to add missing closest encloser NSEC3 for wildcard nodata type
+  DS answer.
+- Remove unused init_cfg_parse routine from configlexer.
+- Fix #138: NSD returns non-EDNS answer when QUESTION is empty.
+- Fix #142: NODATA answers missin SOA in authority section after
+  CNAME chain.</comment>
+    <requestid>852435</requestid>
+  </revision>
 </revisionlist>
