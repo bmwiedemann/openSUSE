@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Nov 29 22:14:35 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to version 0.55.0
+  + Add vendor to dnf API (rh#1876561)
+  + Add formatting function for solver error
+  + Add error types in ModulePackageContainer
+  + Implement module enable for context part
+  + Improve string formatting for translation
+  + Remove redundant printf and change logging info to notice (rh#1827424)
+  + Add allow_vendor_change option (rh#1788371) (rh#1788371)
+- Backport patches from upstream
+  + Patch: 0001-Support-allow_vendor_change-setting-in-dnf-context-A.patch
+  + Patch: 0001-context-dnf_keyring_add_public_keys-not-generate-err.patch
+- Add patch to turn off changing vendors by default
+  + Patch: libdnf-0.55.0-Switch-allow_vendor_change-off.patch
+
+-------------------------------------------------------------------
 Sat Oct 24 16:25:10 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to version 0.54.2

@@ -367,4 +367,24 @@
   + Add patch: libdnf-0.54.2-Switch-default-reposdir-to-etc-dnf-repos.d.patch</comment>
     <requestid>843802</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e2645b799ea714d1fac305c736d73350</srcmd5>
+    <version>0.55.0</version>
+    <time>1606913838</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.55.0
+  + Add vendor to dnf API (rh#1876561)
+  + Add formatting function for solver error
+  + Add error types in ModulePackageContainer
+  + Implement module enable for context part
+  + Improve string formatting for translation
+  + Remove redundant printf and change logging info to notice (rh#1827424)
+  + Add allow_vendor_change option (rh#1788371) (rh#1788371)
+- Backport patches from upstream
+  + Patch: 0001-Support-allow_vendor_change-setting-in-dnf-context-A.patch
+  + Patch: 0001-context-dnf_keyring_add_public_keys-not-generate-err.patch
+- Add patch to turn off changing vendors by default
+  + Patch: libdnf-0.55.0-Switch-allow_vendor_change-off.patch</comment>
+    <requestid>851721</requestid>
+  </revision>
 </revisionlist>

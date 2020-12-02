@@ -33,7 +33,7 @@
 %define devname %{name}-devel
 
 Name:           libdnf
-Version:        0.54.2
+Version:        0.55.0
 Release:        0
 Summary:        Library providing C and Python APIs atop libsolv
 License:        LGPL-2.1-or-later
@@ -42,12 +42,16 @@ Url:            https://github.com/rpm-software-management/%{name}
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
 # Backports from upstream
+Patch0001:      0001-Support-allow_vendor_change-setting-in-dnf-context-A.patch
+Patch0002:      0001-context-dnf_keyring_add_public_keys-not-generate-err.patch
 
 # openSUSE specific fixes
 ## Fix libdnf build with static libsolvext
 Patch1000:      libdnf-0.48.0-with-static-libsolvext.patch
 ## Switch default reposdir to /etc/dnf/repos.d
 Patch1001:      libdnf-0.54.2-Switch-default-reposdir-to-etc-dnf-repos.d.patch
+## Switch allow_vendor_change off by default
+Patch1002:      libdnf-0.55.0-Switch-allow_vendor_change-off.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc
