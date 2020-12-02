@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec  1 13:18:40 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- Update to 3.1.0
+  * [CPPOST-111] - Assorted build system fixups
+  * [CPPOST-114] - Add notion of profile to SecurityPolicy
+  * [CPPOST-112] - Implement message correlation in SAML2 encoder/decoder
+  * [CPPOST-115] - Add regular expression option to EntityAttributes filter
+- Update library version to 11
+- Run spec-cleaner
+- Refresh opensaml-2.5.5-doxygen_timestamp.patch
+
+-------------------------------------------------------------------
 Wed Mar 20 12:55:04 UTC 2019 - Kristýna Streitová <kstreitova@suse.com>
 
 - update to 3.0.1

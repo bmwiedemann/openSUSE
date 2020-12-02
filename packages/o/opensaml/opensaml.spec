@@ -1,7 +1,7 @@
 #
 # spec file for package opensaml
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define libvers 10
+%define libvers 11
 %define pkgdocdir %{_docdir}/%{name}
 Name:           opensaml
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        Security Assertion Markup Language library
 License:        Apache-2.0
@@ -34,7 +34,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  liblog4shib-devel >= 1.0.4
 BuildRequires:  libxerces-c-devel >= 3.2
 BuildRequires:  libxml-security-c-devel >= 2.0.0
-BuildRequires:  libxmltooling-devel >= 3.0.1
+BuildRequires:  libxmltooling-devel >= 3.1.0
 BuildRequires:  pkgconfig
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_headers-devel
@@ -78,7 +78,7 @@ Requires:       liblog4shib-devel >= 1.0.4
 Requires:       libsaml%{libvers} = %{version}-%{release}
 Requires:       libxerces-c-devel >= 3.2
 Requires:       libxml-security-c-devel >= 2.0.0
-Requires:       libxmltooling-devel >= 3.0.1
+Requires:       libxmltooling-devel >= 3.1.0
 Provides:       opensaml-devel = %{version}-%{release}
 Obsoletes:      opensaml-devel < %{version}-%{release}
 
@@ -106,7 +106,7 @@ This package includes XML schemas and related files.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 make install DESTDIR=%{buildroot} pkgdocdir=%{pkgdocdir}
@@ -115,7 +115,7 @@ rm -f %{buildroot}/%{_bindir}/samltest
 rm -f %{buildroot}/%{_libdir}/libsaml.la
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n libsaml%{libvers} -p /sbin/ldconfig
 %postun -n libsaml%{libvers} -p /sbin/ldconfig
