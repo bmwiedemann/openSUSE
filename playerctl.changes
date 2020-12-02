@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Tue Dec  1 14:42:17 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Obsolete typelib-1_0-Playerctl-2_0_1: the package was wrongly
+  named. With the correct name now provided, we have to ensure the
+  users can cleanly upgrade.
+
+-------------------------------------------------------------------
+Tue Dec  1 11:50:54 CET 2020 - tiwai@suse.de
+
+- Fix dependencies of bash and zsh completion subpackages
+
+-------------------------------------------------------------------
+Mon Nov 30 19:18:18 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 2.3.1
+  * Add option to toggle shuffle
+  * Add -s, quiet flag to supress some messages from stderr
+  * Add math operations to the formatter
+  * Change instance delimiter to "."
+  * Use playerctld to get players in order of activation when it
+    is running
+  * Remove warning message when the system bus isn't found
+  * playerctld: add daemon activation command
+  * playerctld: add unshift command
+  * bugfix: improve property setter reliability
+- add zsh shell completion package
+
+-------------------------------------------------------------------
+Thu Oct 15 16:16:28 UTC 2020 - aloisio@gmx.com
+
+- Update to version 2.2.1
+  * Fix a crash when the `emoji()` template function is used
+  * Add a `shift` command to `playerctld` to shift the active
+    player
+  * Fix a crash when system players are present
+  version 2.1.1
+  * Playerctl now has a test suite that covers most features of
+    the CLI.
+  playerctld:
+  * Add `playerctld`: an activatable DBus service for selecting
+    the most recently active player
+  CLI:
+  * Add the `markup_escape()` formatter function
+  * Mark the `emoji()` formatter function as no longer
+    experimental
+  * Add the `default()` formatter function
+  * Add the special `%any` player token for prioritizing player
+    selection
+  * Add bash completions
+  * Add debug logging
+  * Rewrite and expand manpage with `mdoc(7)`
+  * Attempt to autostart `playerctld` if it is present in players
+  * bugfix: incorrect error message for shuffle command
+  * bugfix: don't crash if no system bus is present
+  * bugfix: don't crash if given a nonexistent format function
+  Build:
+  * Required meson version is now `0.50.0`.
+  version 2.0.2
+  CLI:
+  * Regression: exit 1 when no players are found
+  * Regression: fix sort order for `--player` command
+  * Handle nonfile uris in the `open` command
+  Build:
+  * Fix documentation of the `--follow` flag
+  * Update manpage release date at build time
+  * fix gir build on cross compilation
+- Added bash-completion subpackage
+
+-------------------------------------------------------------------
 Fri Jan 25 11:41:33 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.0.1

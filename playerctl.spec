@@ -1,7 +1,7 @@
 #
 # spec file for package playerctl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017 Dakota Williams <raineforest@raineforest.me>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,20 +19,20 @@
 
 %global majorver 2
 %global minorver 0
-%global relver 1
 %global sover 2
 %global libname lib%{name}%{sover}
-%global typelibname typelib-1_0-Playerctl-%{majorver}_%{minorver}_%{relver}
+%global typelibname typelib-1_0-Playerctl-%{majorver}_%{minorver}
 Name:           playerctl
-Version:        2.0.1
+Version:        2.3.1
 Release:        0
 Summary:        MPRIS command-line controller and library for media players
 License:        LGPL-3.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://github.com/acrisci/playerctl
 Source0:        https://github.com/acrisci/playerctl/archive/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  meson >= 0.46.0
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.38
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.38
@@ -60,6 +60,8 @@ Interface Specification.
 %package -n %{typelibname}
 Summary:        GObject Introspection interface description for lib%{name}
 Group:          System/Libraries
+# Obsolete the wrongly named package, Last seen in package version 2.0.1
+Obsoletes:      typelib-1_0-Playerctl-2_0_1 < %{version}
 
 %description -n %{typelibname}
 This package provides the GObject Introspection bindings lib%{name},
@@ -82,11 +84,33 @@ BuildArch:      noarch
 %description doc
 This package provides HTML documentation for lib%{name}.
 
+%package        bash-completion
+Summary:        Bash completion for %{name}
+Group:          System/Shells
+Requires:       bash-completion
+Supplements:    packageand(%{name}:bash-completion)
+BuildArch:      noarch
+
+%description    bash-completion
+Bash command line completion support for %{name}.
+
+%package        zsh-completion
+Summary:        ZSH completion for %{name}
+Group:          System/Shells
+Requires:       zsh
+Supplements:    packageand(%{name}:zsh)
+BuildArch:      noarch
+
+%description    zsh-completion
+ZSH command line completion support for %{name}.
+
 %prep
-%setup -q
+%autosetup
+# remove shebang
+sed -i '/^#!/d' data/playerctl.bash
 
 %build
-%meson --default-library=shared
+%meson --default-library=shared -Dbash-completions=true -Dzsh-completions=true
 %meson_build
 
 %install
@@ -100,22 +124,30 @@ rm -f %{buildroot}%{_libdir}/lib%{name}.a
 %files
 %doc README.md
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_bindir}/%{name}d
+%{_datadir}/dbus-1/services/org.mpris.MediaPlayer2.playerctld.service
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files -n %{libname}
 %license COPYING
 %{_libdir}/lib%{name}.so.%{sover}*
 
 %files -n %{typelibname}
-%{_libdir}/girepository-1.0/Playerctl-2.0.typelib
+%{_libdir}/girepository-1.0/Playerctl-%{majorver}.%{minorver}.typelib
 
 %files devel
 %{_includedir}/%{name}/
 %{_libdir}/lib%{name}.so
-%{_libdir}/pkgconfig/playerctl.pc
+%{_libdir}/pkgconfig/%{name}.pc
 %{_datadir}/gir-1.0/Playerctl-%{majorver}.%{minorver}.gir
 
 %files doc
 %{_datadir}/gtk-doc/html/%{name}
+
+%files bash-completion
+%{_datadir}/bash-completion/
+
+%files zsh-completion
+%{_datadir}/zsh/
 
 %changelog
