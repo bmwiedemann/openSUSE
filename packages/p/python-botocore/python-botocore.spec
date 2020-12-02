@@ -17,8 +17,11 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%if 0%{?suse_version} >= 1500
+%define skip_python2 1
+%endif
 Name:           python-botocore
-Version:        1.18.15
+Version:        1.19.25
 Release:        0
 Summary:        Python interface for AWS
 License:        Apache-2.0
@@ -32,8 +35,8 @@ BuildRequires:  %{python_module jmespath >= 0.7.1}
 BuildRequires:  %{python_module python-dateutil <= 3.0.0}
 BuildRequires:  %{python_module python-dateutil >= 2.1}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module urllib3 < 1.26}
-BuildRequires:  %{python_module urllib3 >= 1.20}
+BuildRequires:  %{python_module urllib3 < 1.27}
+BuildRequires:  %{python_module urllib3 >= 1.25.4}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-jmespath < 1.0.0
@@ -42,8 +45,8 @@ Requires:       python-python-dateutil <= 3.0.0
 Requires:       python-python-dateutil >= 2.1
 Requires:       python-requests
 Requires:       python-six
-Requires:       python-urllib3 < 1.26
-Requires:       python-urllib3 >= 1.20
+Requires:       python-urllib3 < 1.27
+Requires:       python-urllib3 >= 1.25.4
 BuildArch:      noarch
 %if 0%{?suse_version} <= 1315
 # We need the ssl module, which is delivers by python and not python-base
