@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Dec 01 17:48:32 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.79.0:
+  * publisher: Fix memory usage in writeStats
+  * build(deps): bump gopkg.in/yaml.v2 from 2.3.0 to 2.4.0
+  * Fix server rebuild issue with partials referenced from render hooks
+  * Allow setting the delimiter used for setting config via OS env, e.g. HUGO_
+  * deps: Update to github.com/evanw/esbuild 0.8.11 to 0.8.14
+  * output: Add more layout lookup tests
+  * build(deps): bump github.com/google/go-cmp from 0.5.2 to 0.5.3
+  * examples: Remove unneeded meta tag from blog example
+  * build(deps): bump github.com/getkin/kin-openapi from 0.30.0 to 0.31.0
+  * docs: Regen docshelper
+  * Add menu params
+  * resources: Preserve url set in frontmatter without sanitizing
+  * watcher: Add file deleted by accident
+  * Revert "docs: Regenerate docshelper"
+  * docs: Regenerate docshelper
+  * deps: Update to Chroma v0.8.2
+  * build(deps): bump github.com/evanw/esbuild from 0.8.8 to 0.8.11
+  * build(deps): bump github.com/getkin/kin-openapi from 0.26.0 to 0.30.0
+  * build(deps): bump github.com/evanw/esbuild from 0.8.6 to 0.8.8
+
+-------------------------------------------------------------------
+Tue Dec 01 17:37:19 UTC 2020 - jkowalczyk@suse.com
+
+- Update to version 0.78.2:
+  * js: Let ESBuild handle all imports from node_modules
+  * build(deps): bump github.com/evanw/esbuild from 0.8.5 to 0.8.6
+  * build(deps): bump github.com/evanw/esbuild from 0.8.4 to 0.8.5
+  * build(deps): bump github.com/getkin/kin-openapi from 0.22.1 to 0.26.0
+  * Update GH docs to say "main" as default branch
+  * Updated year in header
+  * Added first fuzzer
+  * build(deps): bump github.com/frankban/quicktest from 1.11.1 to 1.11.2
+  * build(deps): bump golang.org/x/text from 0.3.3 to 0.3.4
+  * build(deps): bump github.com/evanw/esbuild from 0.8.3 to 0.8.4
+
+-------------------------------------------------------------------
 Wed Nov 11 03:45:47 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Improve packaging:

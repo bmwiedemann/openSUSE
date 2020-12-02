@@ -7,4 +7,31 @@
     <comment>New package hugo static site generator in Go. Will be used by kubic project for devel:kubic:containers and related websites.</comment>
     <requestid>847684</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e606168fdcaed351611e0a6ab7dceaed</srcmd5>
+    <version>0.79.0</version>
+    <time>1606913943</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.79.0:
+  * publisher: Fix memory usage in writeStats
+  * build(deps): bump gopkg.in/yaml.v2 from 2.3.0 to 2.4.0
+  * Fix server rebuild issue with partials referenced from render hooks
+  * Allow setting the delimiter used for setting config via OS env, e.g. HUGO_
+  * deps: Update to github.com/evanw/esbuild 0.8.11 to 0.8.14
+  * output: Add more layout lookup tests
+  * build(deps): bump github.com/google/go-cmp from 0.5.2 to 0.5.3
+  * examples: Remove unneeded meta tag from blog example
+  * build(deps): bump github.com/getkin/kin-openapi from 0.30.0 to 0.31.0
+  * docs: Regen docshelper
+  * Add menu params
+  * resources: Preserve url set in frontmatter without sanitizing
+  * watcher: Add file deleted by accident
+  * Revert &quot;docs: Regenerate docshelper&quot;
+  * docs: Regenerate docshelper
+  * deps: Update to Chroma v0.8.2
+  * build(deps): bump github.com/evanw/esbuild from 0.8.8 to 0.8.11
+  * build(deps): bump github.com/getkin/kin-openapi from 0.26.0 to 0.30.0
+  * build(deps): bump github.com/evanw/esbuild from 0.8.6 to 0.8.8 (forwarded request 852446 from jfkw)</comment>
+    <requestid>852490</requestid>
+  </revision>
 </revisionlist>

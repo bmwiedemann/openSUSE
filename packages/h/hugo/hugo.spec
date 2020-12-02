@@ -1,7 +1,7 @@
 #
 # spec file for package hugo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 # Project name when using go tooling.
 %define project github.com/gohugoio/hugo
 Name:           hugo
-Version:        0.78.1
+Version:        0.79.0
 Release:        0
 Summary:        Static website generator written in Go
 License:        Apache-2.0
@@ -96,7 +96,7 @@ install -Dm 644 %{name}-autocomplete.sh %{buildroot}%{_datadir}/bash-completion/
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}*.1.gz
 
-%changelog
-
 %files bash-completion
 %{_datadir}/bash-completion
+
+%changelog
