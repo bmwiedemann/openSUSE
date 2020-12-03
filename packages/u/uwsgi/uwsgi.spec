@@ -43,13 +43,7 @@ Patch2:         uwsgi-1.9.13-objc_gc-no-fobjc-gc.patch
 Patch3:         uwsgi-1.9.11-systemd_logger-old_systemd.patch
 # PATCH-FIX-OPENSUSE uwsgi-2.0.18-postgresql-config.patch - Use pkg-config instead of pg_config
 Patch4:         uwsgi-2.0.18-postgresql-config.patch
-%define apache_branch     %(rpm -q --qf %%{version} apache2 | grep -E -o "2\\.[0-9]+")
-%if "%{apache_branch}" == "2.4"
-  %define apxs %{_bindir}/apxs2
-%else
-  %define apxs %{_sbindir}/apxs2
-%endif
-%define apache_libexecdir %(%{apxs} -q LIBEXECDIR)
+BuildRequires:  apache-rpm-macros
 %if 0%{suse_version} < 1500
 BuildRequires:  apache2-devel
 %else
@@ -534,9 +528,9 @@ python3 uwsgiconfig.py --plugin plugins/python opensuse python3
 
 # Build Apache modules
 %if 0%{suse_version} < 1500
-%{apxs} -c apache2/mod_proxy_uwsgi.c
+%{apache_apxs} -c apache2/mod_proxy_uwsgi.c
 %endif
-%{apxs} -c apache2/mod_uwsgi.c
+%{apache_apxs} -c apache2/mod_uwsgi.c
 
 # Build php7 plugin
 %if 0%{?suse_version} > 1320
