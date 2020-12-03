@@ -17,7 +17,7 @@
 
 
 Name:           perl-File-Listing
-Version:        6.11
+Version:        6.14
 Release:        0
 %define cpan_name File-Listing
 Summary:        Parse directory listing

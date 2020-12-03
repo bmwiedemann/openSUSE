@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec  1 03:10:24 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.14
+   see /usr/share/doc/packages/perl-File-Listing/Changes
+
+  6.14      2020-11-30 05:48:07 -0700
+    - Production version identical to 6.12_01
+
+  6.12_01   2020-11-27 16:13:15 -0700
+    - Handle default apache indexes (gh#20)
+    - Ignore certain known navigation links in apache indexes (gh#20)
+    - Support Win32 OpenSSH listing (gh#21 simon04++)
+
+-------------------------------------------------------------------
 Wed Oct  7 03:07:33 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.11
