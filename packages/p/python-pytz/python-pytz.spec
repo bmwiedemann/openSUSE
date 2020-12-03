@@ -22,7 +22,7 @@
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytz
-Version:        2020.1
+Version:        2020.4
 Release:        0
 Summary:        World timezone definitions, modern and historical
 License:        MIT
