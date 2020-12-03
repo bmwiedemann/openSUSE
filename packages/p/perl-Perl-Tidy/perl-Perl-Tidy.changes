@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Thu Dec  3 03:07:54 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20201202
+   see /usr/share/doc/packages/perl-Perl-Tidy/CHANGES.md
+
+  ## 2020 12 02
+      - This release is being made primarily to make available a several new formatting
+        parameters, in particular -xci, -kbb=s, -kba=s, and -wnxl=s. No significant
+        bugs have been found since the previous release, but numerous minor issues have
+        been found and fixed as listed below.
+      - This version is about 20% faster than the previous version due to optimizations
+        made with the help of Devel::NYTProf.
+      - Added flag -wnxl=s, --weld-nested-exclusion-list=s, to provide control which containers
+        are welded with the --weld-nested-containers parameter.  This is related to issue git #45.
+      - Merged pull request git #46 which fixes the docs regarding the -fse flag.
+      - Fixed issue git #45, -vtc=n flag was ignored when -wn was set.
+      - implement request RT #133649, delete-old-newlines selectively. Two parameters,
+        -kbb=s or --keep-old-breakpoints-before=s, and
+        -kba=s or --keep-old-breakpoints-after=s
+        were added to request that old breakpoints be kept before or after
+        selected token types.  For example, -kbb='=>' means that newlines before
+        fat commas should be kept.
+      - Fix git #44, fix exit status for assert-tidy/untidy.  The exit status was
+        always 0 for --assert-tidy if the user had turned off all error messages with
+        the -quiet flag.  This has been fixed.
+      - Add flag -maxfs=n, --maximum-file-size-mb=n.  This parameter is provided to
+        avoid causing system problems by accidentally attempting to format an
+        extremely large data file. The default is n=10.  The command to increase
+        the limit to 20 MB for example would be  -mfs=20.  This only applies to
+        files specified by filename on the command line.
+      - Skip formatting if there are too many indentation level errors.  This is
+        controlled with -maxle=n, --maximum-level-errors=n.  This means that if
+        the ending indentation differs from the starting indentation by more than
+        n levels, the file will be output verbatim. The default is n=1.
+        To skip this check, set n=-1 or set n to a large number.
+      - A related new flag, --maximum-unexpected-errors=n, or -maxue=n, is available
+        but is off by default.
+      - Add flag -xci, --extended-continuation-indentation, regarding issue git #28
+        This flag causes continuation indentation to "extend" deeper into structures.
+        Since this is a fairly new flag, the default is -nxci to avoid disturbing
+        existing formatting.  BUT you will probably see some improved formatting
+        in complex data structures by setting this flag if you currently use -ci=n
+        and -i=n with the same value of 'n' (as is the case if you use -pbp,
+        --perl-best-practices, where n=4).
+      - Fix issue git #42, clarify how --break-at-old-logical-breakpoints works.
+        The man page was updated to note that it does not cause all logical breakpoints
+        to be replicated in the output file.
+      - Fix issue git #41, typo in manual regarding -fsb.
+      - Fix issue git #40: when using the -bli option, a closing brace followed by
+        a semicolon was not being indented.  This applies to braces which require
+        semicolons, such as a 'do' block.
+      - Added 'state' as a keyword.
+      - A better test for convergence has been added. When iterations are requested,
+        the new test will stop after the first pass if no changes in line break
+        locations are made.  Previously, file checksums were used and required at least two
+        passes to verify convergence unless no formatting changes were made.  With the new test,
+        only a single pass is needed when formatting changes are limited to adjustments of
+        indentation and whitespace on the lines of code.  Extensive testing has been made to
+        verify the correctness of the new convergence test.
+      - Line breaks are now automatically placed after 'use overload' to
+        improve formatting when there are numerous overloaded operators.  For
+        example
+          use overload
+            '+' => sub {
+            ...
+      - A number of minor problems with parsing signatures and prototypes have
+        been corrected, particularly multi-line signatures. Some signatures
+        had previously been parsed as if they were prototypes, which meant the
+        normal spacing rules were not applied.  For example
+        OLD:
+          sub echo ($message= 'Hello World!' ) {
+              ...;
+          }
+        NEW:
+          sub echo ( $message = 'Hello World!' ) {
+              ...;
+          }
+      - Numerous minor issues that the average user would not encounter were found
+        and fixed. They can be seen in the more complete list of updates at
+             https://github.com/perltidy/perltidy/blob/master/local-docs/BugLog.pod
+
+-------------------------------------------------------------------
 Tue Sep 29 03:11:28 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 20201001
