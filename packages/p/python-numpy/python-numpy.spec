@@ -256,12 +256,17 @@ mkdir testing
 pushd testing
 # boo#1148173 gh#numpy/numpy#14438
 %ifarch ppc64 ppc64le
-%define skiptest -k "not test_generalized_sq"
-%pytest_arch -n auto --pyargs numpy %{buildroot}%{python_sitearch}/numpy -k "test_generalized_sq" || true
+test_failok="test_generalized_sq"
 %endif
-%pytest_arch -n auto --pyargs numpy %{buildroot}%{python_sitearch}/numpy %{?skiptest}
+%{python_expand # for all python3 flavors
+export PYTHONPATH=%{buildroot}%{$python_sitearch}
+export PYTHONDONTWRITEBYTECODE=1
+testcall="pytest-%{$python_bin_suffix} -n auto %{buildroot}%{$python_sitearch}/numpy"
+[ -n "$test_failok" ] && ${testcall} -k "$test_failok" || true
+${testcall} ${test_failok:+-k "not ($test_failok)"}
+rm -Rf %{buildroot}%{$python_sitearch}/numpy/.pytest_cache
+}
 popd
-rm -Rf %{buildroot}%{python_sitearch}/numpy/.pytest_cache
 %endif
 
 %if %{without hpc}
@@ -276,7 +281,10 @@ rm -Rf %{buildroot}%{python_sitearch}/numpy/.pytest_cache
 %doc README.md THANKS.txt
 %if %{without hpc}
 %python_alternative %{_bindir}/f2py
-%python3_only %{_bindir}/f2py3*
+%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
+%{_bindir}/f2py3
+%endif
+%{_bindir}/f2py%{python_bin_suffix}
 %{python_sitearch}/numpy/
 %{python_sitearch}/numpy-%{version}-py*.egg-info
 %license %{python_sitearch}/numpy/LICENSE.txt
@@ -285,7 +293,11 @@ rm -Rf %{buildroot}%{python_sitearch}/numpy/.pytest_cache
 %exclude %{python_sitearch}/numpy/f2py/src/
 %exclude %{python_sitearch}/numpy/core/lib/libnpymath.a
 %else
-%python3_only %{p_bindir}/f2py*
+%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
+%{p_bindir}/f2py
+%{p_bindir}/f2py3
+%endif
+%{p_bindir}/f2py%{python_bin_suffix}
 %{p_python_sitearch}/numpy/
 %{p_python_sitearch}/numpy-%{version}-py*.egg-info
 %license %{p_python_sitearch}/numpy/LICENSE.txt
