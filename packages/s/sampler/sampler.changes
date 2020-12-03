@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Wed Dec  2 14:41:24 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Build on s390x 
+
+-------------------------------------------------------------------
+Wed Dec 25 03:35:29 UTC 2019 - dead_mozay@opensuse.org
+
+- Update to version 1.1.0:
+  * Update FUNDING.yml
+  * Remove metadata storage (used for statistics and licensing)
+  * Fix ticker rate issue
+  * Update README.md
+  * Remove all backend interaction
+  * Cast rateMs when calculating NewTicker duration to avoid overflow on Raspberry PI
+  * test(data): add tests for data/consumer
+  * test(util): add tests for util/geometry
+  * Update formatting
+  * Update README.md
+  * DOC: removes comments from constants
+  * DOC: adds doc comments to exported functions
+  * DOC: adds descriptive comments to exported types and functions
+  * WIP: console package tests (palette)
+  * WIP: console package tests (palette)
+  * fix gauge percentage calculation for the case when min value is not zero
+  * support newlines in asciibox
+  * cleanup escape codes for regular and interactive shell sampling
+
+-------------------------------------------------------------------
+Tue Oct 01 08:17:00 UTC 2019 - dead_mozay@opensuse.org
+
+- Update to version 1.0.3:
+  * Fix triggers functionality for textboxes and asciiboxes
+  * Update README.md
+  * Update README.md
+  * Update README.md
+  * Update README.md
+  * Update README.md
+  * support and assistance text added
+  * added sudo
+  * README and status bar text update for 1.0.2
+
+-------------------------------------------------------------------
+Mon Sep 30 16:51:48 UTC 2019 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Initial package 

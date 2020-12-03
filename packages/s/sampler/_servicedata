@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">git://github.com/sqshq/sampler.git</param>
+              <param name="changesrevision">43fa3049dba1c8bafc5592c7427f79489a527f3b</param></service></servicedata>
