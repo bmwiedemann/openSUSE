@@ -158,4 +158,12 @@
   * Speed up Shamir's secret sharing routines. Thanks to ncarve.</comment>
     <requestid>824348</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8f9c8800ebafa08c52055aa4604884e6</srcmd5>
+    <version>3.9.9</version>
+    <time>1607017283</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>852357</requestid>
+  </revision>
 </revisionlist>

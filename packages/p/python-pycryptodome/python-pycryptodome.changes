@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  1 09:48:51 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- update to 3.9.9:
+  * GH#435: Fixed Crypto.Util.number.size for negative numbers
+
+-------------------------------------------------------------------
 Tue Aug  4 14:36:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.9.8:
