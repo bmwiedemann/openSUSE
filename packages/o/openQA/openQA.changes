@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Dec 02 18:25:23 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1606933510.bed89ec4d:
+  * docs: Add Code style suggestions, in particular for use statements
+  * Dependency cron 2020-12-02
+  * t: Fix local execution of 16-utils-runcmd depending on filesystem layout
+  * t: Use fixtures explicitly in more tests to speedup runtime
+  * Don't try to use return value from run function as exit code
+  * Simplify OpenQA::Worker::_handle_client_status_changed
+  * Fix description in 404 page for table APIs
+  * t: Add specific fixture list for t/05-scheduler-restart-and-duplicate.t
+  * t: Slightly simplify 33-developer_mode.t
+  * Correct redundant newline in log_info in GRU
+
+-------------------------------------------------------------------
 Sat Nov 28 08:03:49 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1606497673.f3348bd43:
