@@ -1,4 +1,213 @@
 -------------------------------------------------------------------
+Fri Nov 27 09:24:04 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to edk2-stable202011
+  * MdeModulePkg/VariablePolicyLib: Fix runtime panic in
+    ValidateSetVariable()
+  * CryptoPkg: BaseCryptLib: Fix buffer double free in
+    CryptPkcs7VerifyEku
+  * Revert "SecurityPkg: Add RPMC Index to the RpmcLib"
+  * MdeModulePkg/LzmaCustomDecompressLib: catch 4GB+ uncompressed
+    buffer sizes
+  * MdeModulePkg/Core/Dxe: limit FwVol encapsulation section
+    recursion
+  * MdeModulePkg/Core/Dxe: assert SectionInstance invariant in
+    FindChildNode()
+  * SecurityPkg: Add RPMC Index to the RpmcLib
+  * BaseTools: Resolve index out of range errors.
+  * UefiCpuPkg/PiSmmCpuDxeSmm: Reflect page table depth with page
+    table address
+  * UefiCpuPkg/PiSmmCpuDxeSmm: Correct the Cr3 typo
+  * CryptoPkg: Make the MD5 disable as default for security
+  * NetworkPkg/Defines: Make iSCSI disable as default
+  * OvmfPkg/OvmfXen.dsc: Enable MD5 while enable iSCSI
+  * OvmfPkg/OvmfPkgX64.dsc: Enable MD5 while enable iSCSI
+  * OvmfPkg/OvmfPkgIa32X64.dsc: Enable MD5 while enable iSCSI
+  * OvmfPkg/OvmfPkgIa32.dsc: Enable MD5 while enable iSCSI
+  * ArmVirtPkg/ArmVirtQemuKernel.dsc: Enable MD5 while enable iSCSI
+  * ArmVirtPkg/ArmVirtQemu.dsc: Enable MD5 while enable iSCSI
+  * NetworkPkg: Enable MD5 while enable iSCSI
+  * CryptoPkg/dsc: Enable MD5 when CRYPTO_SERVICES enable MD5
+  * SecurityPkg/Hash2DxeCrypto: Remove SHA1 support
+  * SecurityPkg/Hash2DxeCrypto: Remove MD5 support
+  * MdeModulePkg: Drop VarLock from RuntimeDxe variable driver
+  * MdeModulePkg: Change TCG MOR variables to use VariablePolicy
+  * SecurityPkg: Allow VariablePolicy state to delete authenticated
+    variables
+  * MdeModulePkg: Allow VariablePolicy state to delete protected
+    variables
+  * MdeModulePkg: Connect VariablePolicy business logic to
+    VariableServices
+  * ArmVirtPkg: Add VariablePolicy engine to ArmVirtPkg platform
+  * OvmfPkg: Add VariablePolicy engine to OvmfPkg platform
+  * BaseTools: Fix BrotliCompress tool issue
+  * MdePkg/BaseRngLibDxe: Add DXE_RUNTIME_DRIVER class to RngLib
+  * MdeModulePkg DisplayEngineDxe: Correct the local variable name.
+  * MdeModulePkg/AtaAtapiPassThru: Trace ATA packets
+  * MdeModulePkg/AtaAtapiPassThru: Restart failed packets
+  * MdeModulePkg/AtaAtapiPassThru: Add SATA error recovery flow
+  * MdeModulePkg/AtaAtapiPassThru: Check IS to check for command
+    completion
+  * MdeModulePkg/DriverSampleDxe: Add HII sample options
+  * MdeModulePkg/Library: Revise HiiLib to check REST_STYLE
+  * BaseTools/VfrCompile: VFR compiler supports REST_STYLE in HII
+    option
+  * MdePkg: Add GUID for REST Style Formset
+  * UefiCpuPkg/MpInitLib: For SEV-ES guest, set stack based on
+    processor number
+  * UefiCpuPkg, OvmfPkg: Disable interrupts when using the GHCB
+  * OvmfPkg/QemuFlashFvbServicesRuntimeDxe: Fix erase blocks for
+    SEV-ES
+  * OvmfPkg/QemuFlashFvbServicesRuntimeDxe: Set the SwScratch valid
+    bit
+  * UefiCpuPkg/MpInitLib: Set the SW exit fields when performing
+    VMGEXIT
+  * OvmfPkg/VmgExitLib: Set the SwScratch valid bit for MMIO events
+  * OvmfPkg/VmgExitLib: Set the SwScratch valid bit for IOIO events
+  * OvmfPkg/VmgExitLib: Set the SW exit fields when performing
+    VMGEXIT
+  * OvmfPkg/VmgExitLib: Implement new VmgExitLib interfaces
+  * UefiCpuPkg/VmgExitLib: Add interfaces to set/read GHCB
+    ValidBitmap bits
+  * MdePkg: Clean up GHCB field offsets and save area
+  * BaseTools: Limit command line length.
+  * BaseTools: Update report map file format
+  * BaseTools: Add image type into generate map file
+  * BaseTools: Incremental build issue for included ASI file's
+    deletion.
+  * MdeModulePkg/Core/Dxe: log memory base and length, after lib
+    ctors again
+  * BaseTools: Fix BaseTools nmake cleanall hang issue
+  * ShellPkg:Fix bug in FileBuffer.c
+  * BaseTools: Enable Module Scope Structure Pcd
+  * MdeModulePkg/Gcd: Check memory allocation when initializing
+    memory
+  * BaseTools: Remove the dependency on the build intermediate file
+  * DynamicTablesPkg: Add SSDT CMN-600 Table generator
+  * MdePkg: Definitions for Extended Interrupt Flags
+  * BaseTools: Update the FV Space Information to display decimal
+    and Hex
+  * MdePkg/Include: Definitions of EFI REST JSON Structure Protocol
+  * MdeModulePkg/XhciDxe: Retry device slot init on failure
+  * MdeModulePkg/AcpiTableDxe: use pool allocation for RSDP if
+    possible
+  * MdeModulePkg/AcpiTableDxe: use pool allocation for RSDT/XSDT
+    if possible
+  * MdeModulePkg/AcpiTableDxe: use pool allocations when possible
+  * MdePkg: Fix SmBios.h PROCESSOR_CHARACTERISTIC_FLAGS to be
+    UINT16
+  * MdePkg: Update SmBios.h to add SMBIOS 3.4.0 ARM64 SoC ID field
+  * ShellPkg: Add ARM64 SoC ID to Processor Characteristics in
+    smbiosview
+  * ShellPkg: Fix smbiosview string definition name for "boot from CD"
+  * ShellPkg: Fix a couple of typos in smbiosview
+  * MdeModulePkg/Core: Support standalone MM in FV2 protocol
+    GetNextFile().
+  * MdePkg/SystemResourceTable.h: Add vendor range values
+  * MdePkg/Include: Fix wrong spelling in http11.h
+  * BaseTools/Ecc: Fix ECC check MetaFile Copyright information
+    issue
+  * MdeModulePkg/XhciDxe: Error handle for USB slot initialization
+    failure
+  * ArmPkg/ArmMmuLib: Explicitly cast function pointer argument
+  * ArmPkg/ArmMmuLib: Explicitly cast UINT32 data conversions
+  * DynamicTablesPkg: SsdtSerialPortFixupLib fix ECC errors
+  * DynamicTablesPkg: AmlEncoding change debug macro
+  * DynamicTablesPkg: AmlLib\AmlDbgPrint fix ECC error
+  * DynamicTablesPkg: AmlLib fix ECC errors
+  * DynamicTablesPkg: AcpiSratLibArm fix ECC error
+  * DynamicTablesPkg: SsdtSerialPortLibArm fix ECC error
+  * DynamicTablesPkg: Fix order of assert checks
+  * CryptoPkg/BaseCryptLib: fix NULL dereference (CVE-2019-14584)
+    (bsc#1177789)
+  * Revert "MdeModulePkg/PartitionDxe: Fix the incorrect LBA size
+    in child ..."
+  * UefiCpuPkg/MpInitLib: Reduce reset vector memory pressure
+  * SecurityPkg/Tcg2PhysicalPresenceLib: Fix incorrect TCG VER
+    comparision
+  * CryptoPkg: BaseCryptLib: Add unit tests (Host and Shell based)
+  * ArmVirtPkg: Add kvmtool to package dictionary
+  * ArmVirtPkg: Package dependency for MC146818 RTC
+  * ArmVirtPkg: Support for kvmtool virtual platform
+  * ArmVirtPkg: Add Kvmtool Platform Pei Lib
+  * ArmVirtPkg: 16550 UART Platform hook library
+  * ArmVirtPkg: GUID Hob for 16550 UART base address
+  * MdeModulePkg: Fix constructor invocation ordering
+  * ArmVirtPkg: Add Kvmtool NOR flash lib
+  * ArmVirtPkg: kvmtool platform memory map
+  * ArmVirtPkg: Add kvmtool platform driver
+  * ArmPlatformPkg: Dynamic flash variable base
+  * ArmVirtPkg: Add Kvmtool RTC Fdt Client Library
+  * PcAtChipsetPkg: Add MMIO Support to RTC driver
+  * MdePkg/Include: Add HTTP definitions
+  * BaseMemoryLibSse2: Take advantage of write combining buffers
+  * RedfishPkg/Include: PCD definitions of Host Interface EFI
+    device path
+  * MdePkg/Include: Definitions of EFI REST EX Protocol
+  * ShellPkg/SmbiosView: Add DDR5 support
+  * MdePkg/BaseLib: Fix invalid memory access in AArch64
+    SetJump/LongJump
+  * BaseTools: Add EDKII_DSC_PLATFORM_GUID MACRO
+  * MdeModulePkg: Remove code wrapped by
+    DISABLE_NEW_DEPRECATED_INTERFACES
+  * MdePkg: Remove code wrapped by
+    DISABLE_NEW_DEPRECATED_INTERFACES
+  * BaseTools Build_Rule: Add the missing ASM16_FLAGS for ASM16
+    source file
+  * BaseTools: Move C tool flags before the common flags
+  * BaseTools: Copy PACKED definition from MdePkg Base.h
+  * MdeModulePkg/Core/Dxe: expose SP and CRYPTO capabilities in
+    UEFI memmap
+  * MdePkg/UefiSpec: separate page access bitmask from SP and
+    CRYPTO caps
+  * MdePkg: SMBIOS 3.4.0 Update "adding DDR5 definitions".
+  * NetworkPkg: Fix possible infinite loop in HTTP msg body
+    parser
+  * NetworkPkg/HttpDxe: TlsChildHandle is not cleared when reset
+  * NetworkPkg: Add RngLib entry to .dsc file.
+  * MdeModulePkg/HiiDatabase: Do not modify CONST string
+  * OvmfPkg: enable HttpDynamicCommand
+  * ArmVirtPkg: enable HttpDynamiCommand
+  * ShellPkg/DynamicCommand: add HttpDynamicCommand
+  * CryptoPkg/BaseCryptLib: add crypto algorithms needed by
+    variable protection
+  * BaseTools: Add RISCV64 binding
+  * MdeModulePkg/XhciDxe: Fix Broken Timeouts
+  * BaseTools: Set section alignment as zero if its type is Auto
+  * BaseTools: Remove CanSkip calling for incremental build
+  * BaseTools: Normalize case of pathname when evaluating Macros.
+  * BaseTools: Clean the ffs folder before generating files in it
+  * BaseTools: Add included files to deps_target file.
+  * OvmfPkg/README: HTTPS Boot: describe host-side TLS cipher
+    suites forwarding
+  * MdeModulePkg/NonDiscoverablePciDeviceDxe: Add NULL pointer
+    check
+  * CryptoPkg: OpensslLib: Use RngLib to generate entropy in
+    rand_pool
+  * ArmVirtPkg: Add RngLib based on TimerLib for CryptoPkg
+  * OvmfPkg: Add RngLib based on TimerLib for Crypto
+  * MdePkg: BaseRngLibDxe: Add RngLib that uses RngDxe
+  * MdePkg: TimerRngLib: Added RngLib that uses TimerLib
+  * MdePkg: Correct EFI_BLOCK_IO_PROTOCOL_REVISION3 value
+  * OvmfPkg: drop redundant VendorID check in VirtioMmioDeviceLib
+  * MdePkg: PciExpressLib support variable size MMCONF
+  * UefiPayloadPkg: Store the size of the MMCONF window
+  * SecurityPkg/PeiTpmMeasurementLib: remove
+    gEfiTpmDeviceSelectedGuid
+  * BaseTools: update IASL extdep to more modern version
+  * UefiCpuPkg/RegisterCpuFeaturesLib: Support MpServices2 only
+    case.
+  * BaseTools: Sort the Pcd set when generating the VPD binary
+  * SecurityPkg/DxeImageVerificationLib: Disable SHA1 base on MACRO
+- Refresh ovmf-add-exclude-shell-flag.patch
+- Drop upstreamed ovmf-jscSLE-16075-SEV-ES-fixes.patch
+
+-------------------------------------------------------------------
+Thu Nov 26 09:50:12 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Cosmetic changes in the spec file suggested by spec-cleaner
+
+-------------------------------------------------------------------
 Tue Nov 17 08:13:51 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add ovmf-jscSLE-16075-SEV-ES-fixes.patch to merge upstream SEV-ES

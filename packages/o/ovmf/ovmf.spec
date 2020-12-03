@@ -22,12 +22,12 @@
 %global softfloat_version b64af41c3276f
 
 Name:           ovmf
-URL:            http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=EDK2
+Version:        202011
+Release:        0
 Summary:        Open Virtual Machine Firmware
 License:        BSD-2-Clause-Patent
 Group:          System/Emulators/PC
-Version:        202008
-Release:        0
+URL:            https://sourceforge.net/apps/mediawiki/tianocore/index.php?title=EDK2
 Source0:        https://github.com/tianocore/edk2/archive/edk2-stable%{version}.tar.gz
 Source1:        https://www.openssl.org/source/openssl-%{openssl_version}.tar.gz
 Source111:      https://www.openssl.org/source/openssl-%{openssl_version}.tar.gz.asc
@@ -52,11 +52,9 @@ Patch2:         %{name}-gdb-symbols.patch
 Patch3:         %{name}-pie.patch
 Patch4:         %{name}-disable-ia32-firmware-piepic.patch
 Patch5:         %{name}-set-fixed-enroll-time.patch
-Patch6:         %{name}-jscSLE-16075-SEV-ES-fixes.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
-BuildRequires:  cross-arm-gcc%gcc_version
+BuildRequires:  cross-arm-gcc%{gcc_version}
 BuildRequires:  dosfstools
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -74,13 +72,13 @@ BuildRequires:  qemu-x86 >= 3.0.0
 BuildRequires:  unzip
 %ifarch x86_64
 BuildRequires:  cross-aarch64-binutils
-BuildRequires:  cross-aarch64-gcc%gcc_version
-%endif 
+BuildRequires:  cross-aarch64-gcc%{gcc_version}
+%endif
 %ifarch aarch64
 BuildRequires:  cross-i386-binutils
-BuildRequires:  cross-i386-gcc%gcc_version
+BuildRequires:  cross-i386-gcc%{gcc_version}
 BuildRequires:  cross-x86_64-binutils
-BuildRequires:  cross-x86_64-gcc%gcc_version
+BuildRequires:  cross-x86_64-gcc%{gcc_version}
 %endif
 # Only build on the architectures with
 #  1. cross-compilers, 2. iasl, 3. qemu-arm and qemu-x86
@@ -103,8 +101,8 @@ This package contains the tools from edk2.
 %package -n qemu-ovmf-ia32
 Summary:        Open Virtual Machine Firmware - QEMU rom images (IA32)
 Group:          System/Emulators/PC
-BuildArch:      noarch
 Requires:       qemu
+BuildArch:      noarch
 
 %description -n qemu-ovmf-ia32
 The Open Virtual Machine Firmware (OVMF) project aims to support
@@ -116,8 +114,8 @@ boot in a qemu environment (IA32)
 %package -n qemu-ovmf-x86_64
 Summary:        Open Virtual Machine Firmware - QEMU rom images (x86_64)
 Group:          System/Emulators/PC
-BuildArch:      noarch
 Requires:       qemu
+BuildArch:      noarch
 
 %description -n qemu-ovmf-x86_64
 The Open Virtual Machine Firmware (OVMF) project aims to support
@@ -170,7 +168,6 @@ rm -rf $PKG_TO_REMOVE
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl
@@ -279,11 +276,11 @@ source %{SOURCE103}
 source ./edksetup.sh
 
 ### Build x86 UEFI Images ###
-%ifnarch %ix86 x86_64
+%ifnarch %{ix86} x86_64
 # Assign the cross-compiler prefix
 export ${TOOL_CHAIN}_BIN="i586-suse-linux-"
 %endif
-build $BUILD_OPTIONS_X86 
+build $BUILD_OPTIONS_X86
 
 cp Build/OvmfIa32/DEBUG_*/FV/OVMF.fd ovmf-ia32.bin
 cp Build/OvmfIa32/DEBUG_*/FV/OVMF_CODE.fd ovmf-ia32-code.bin
@@ -300,7 +297,7 @@ collect_x86_64_debug_files()
 	local out_dir="debug/$target"
 	local abs_path="`pwd`/$out_dir/"
 	local source_path="`pwd`"
-	local gdb_src_path="/usr/src/debug/ovmf-x86_64"
+	local gdb_src_path="%{_prefix}/src/debug/ovmf-x86_64"
 
 	# copy the debug symbols
 	mkdir -p $out_dir
@@ -482,7 +479,6 @@ for key in ${KEY_SOURCES[@]}; do
 done
 
 %install
-rm -rf %{buildroot}
 cp %{SOURCE2} README
 
 sed -i s/'\r'// License.txt
@@ -507,12 +503,12 @@ install -m 0644 -D descriptors/*.json \
 # Install debug symbols, gdb-uefi.py
 install -d %{buildroot}/%{_datadir}/ovmf-x86_64/
 install -m 0644 gdb_uefi-*.py %{buildroot}/%{_datadir}/ovmf-x86_64/
-mkdir -p %{buildroot}/usr/lib/debug
-mv debug/ovmf-x86_64* %{buildroot}/usr/lib/debug
-%fdupes %{buildroot}/usr/lib/debug/ovmf-x86_64*
-mkdir -p %{buildroot}/usr/src/debug
-mv source/ovmf-x86_64* %{buildroot}/usr/src/debug
-%fdupes -s %{buildroot}/usr/src/debug/ovmf-x86_64
+mkdir -p %{buildroot}%{_prefix}/lib/debug
+mv debug/ovmf-x86_64* %{buildroot}%{_prefix}/lib/debug
+%fdupes %{buildroot}%{_prefix}/lib/debug/ovmf-x86_64*
+mkdir -p %{buildroot}%{_prefix}/src/debug
+mv source/ovmf-x86_64* %{buildroot}%{_prefix}/src/debug
+%fdupes -s %{buildroot}%{_prefix}/src/debug/ovmf-x86_64
 %endif
 
 # Install Secure Boot key enroller
@@ -526,19 +522,16 @@ install -m 0644 AARCH64/*.efi %{buildroot}/%{_datadir}/ovmf/
 %endif
 
 %files
-%defattr(-,root,root)
 %doc README
 %dir %{_datadir}/ovmf/
 %{_datadir}/ovmf/*.efi
 %{_datadir}/ovmf/*.sh
 
 %files tools
-%defattr(-,root,root)
 %doc BaseTools/UserManuals/EfiRom_Utility_Man_Page.rtf
 %{_bindir}/EfiRom
 
 %files -n qemu-ovmf-ia32
-%defattr(-,root,root)
 %license License.txt License-ovmf.txt
 %dir %{_datadir}/qemu/
 %{_datadir}/qemu/ovmf-ia32*.bin
@@ -546,7 +539,6 @@ install -m 0644 AARCH64/*.efi %{buildroot}/%{_datadir}/ovmf/
 %{_datadir}/qemu/firmware/*-ia32*.json
 
 %files -n qemu-ovmf-x86_64
-%defattr(-,root,root)
 %license License.txt License-ovmf.txt
 %dir %{_datadir}/qemu/
 %{_datadir}/qemu/ovmf-x86_64*.bin
@@ -555,16 +547,14 @@ install -m 0644 AARCH64/*.efi %{buildroot}/%{_datadir}/ovmf/
 
 %ifarch x86_64
 %files -n qemu-ovmf-x86_64-debug
-%defattr(-,root,root)
 %{_datadir}/ovmf-x86_64/
-%dir /usr/lib/debug/
-/usr/lib/debug/ovmf-x86_64*
-%dir /usr/src/debug/
-/usr/src/debug/ovmf-x86_64*
+%dir %{_prefix}/lib/debug/
+%{_prefix}/lib/debug/ovmf-x86_64*
+%dir %{_prefix}/src/debug/
+%{_prefix}/src/debug/ovmf-x86_64*
 %endif
 
 %files -n qemu-uefi-aarch64
-%defattr(-,root,root)
 %license License.txt
 %dir %{_datadir}/qemu/
 %{_datadir}/qemu/qemu-uefi-aarch64*.bin
@@ -574,7 +564,6 @@ install -m 0644 AARCH64/*.efi %{buildroot}/%{_datadir}/ovmf/
 %{_datadir}/qemu/firmware/*-aarch64*.json
 
 %files -n qemu-uefi-aarch32
-%defattr(-,root,root)
 %license License.txt
 %dir %{_datadir}/qemu/
 %{_datadir}/qemu/qemu-uefi-aarch32.bin
