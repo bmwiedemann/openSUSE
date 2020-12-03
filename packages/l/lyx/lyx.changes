@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Dec  1 08:26:16 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Add  0001-Store-correctly-the-window-position-with-Wayland.patch
+  to fix possible menu shifting on GNOME Wayland (see upstream bug
+  https://www.lyx.org/trac/ticket/11746)
+
+-------------------------------------------------------------------
+Sat Nov 28 09:58:37 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 2.3.6:
+  * Small improvements and bug fixes all over the place. For
+    details see included ANNOUNCE
+    or https://www.lyx.org/announce/2_3_6.txt
+  Some highlights:
+  * On openSUSE: the correct mathfonts are now displayed
+  * Added the ability to create new child documents from within the
+    'include file' dialog
+  * Pasting table content outside a table no longer pastes tab
+    characters
+
+-------------------------------------------------------------------
+Sat Nov 21 20:41:51 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Add texlive-tablefootnote to recommends: The package tablefootnote
+  is needed by LyX to be able to output footnotes in floating tables
+
+-------------------------------------------------------------------
 Thu Sep  3 19:19:34 UTC 2020 - Cor Blom <cornelis@solcon.nl>
 
 - Place the math fonts coming with LyX in a separate package and

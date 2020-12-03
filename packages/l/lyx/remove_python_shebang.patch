@@ -97,14 +97,6 @@
  # -*- coding: utf-8 -*-
  
  # file lyx_pot.py
---- a/po/postats.py
-+++ b/po/postats.py
-@@ -1,4 +1,4 @@
--#! /usr/bin/env python
-+#!/usr/bin/python3
- # -*- coding: utf-8 -*-
- # Copyright (C) 2007 Michael Gerz <michael.gerz@teststep.org>
- # Copyright (C) 2007 José Matos <jamatos@lyx.org>
 --- a/src/tex2lyx/test/runtests.py
 +++ b/src/tex2lyx/test/runtests.py
 @@ -1,4 +1,4 @@

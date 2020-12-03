@@ -801,4 +801,28 @@
   in LyX. The other half comes with the next release</comment>
     <requestid>832693</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>260260158ba875227e92ea12c9e92bee</srcmd5>
+    <version>2.3.6</version>
+    <time>1607017332</time>
+    <user>dimstar_suse</user>
+    <comment>- Add  0001-Store-correctly-the-window-position-with-Wayland.patch
+  to fix possible menu shifting on GNOME Wayland (see upstream bug
+  https://www.lyx.org/trac/ticket/11746)
+
+- Update to 2.3.6:
+  * Small improvements and bug fixes all over the place. For
+    details see included ANNOUNCE
+    or https://www.lyx.org/announce/2_3_6.txt
+  Some highlights:
+  * On openSUSE: the correct mathfonts are now displayed
+  * Added the ability to create new child documents from within the
+    'include file' dialog
+  * Pasting table content outside a table no longer pastes tab
+    characters
+
+- Add texlive-tablefootnote to recommends: The package tablefootnote
+  is needed by LyX to be able to output footnotes in floating tables</comment>
+    <requestid>852040</requestid>
+  </revision>
 </revisionlist>
