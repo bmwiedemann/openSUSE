@@ -17,7 +17,7 @@
 
 
 Name:           perl-Date-Manip
-Version:        6.82
+Version:        6.83
 Release:        0
 %define cpan_name Date-Manip
 Summary:        Date manipulation routines

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec  1 03:09:32 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.83
+   see /usr/share/doc/packages/perl-Date-Manip/Changes
+
+  6.83  2020-12-01
+    -  Time zone fixes
+           No new zoneinfo data so no release on 2020-09-01.
+
+           Newest zoneinfo data (tzdata 2020d). Requested by Shawn Carroll
+           (GitHub #32)
+
+-------------------------------------------------------------------
 Tue Jun  2 03:14:01 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 updated to 6.82
