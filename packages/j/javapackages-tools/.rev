@@ -271,4 +271,12 @@
     <comment></comment>
     <requestid>850199</requestid>
   </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>02eb8fe706919b801fa5f7601caedac7</srcmd5>
+    <version>5.3.1</version>
+    <time>1607017098</time>
+    <user>dimstar_suse</user>
+    <comment>fix typo</comment>
+    <requestid>851469</requestid>
+  </revision>
 </revisionlist>

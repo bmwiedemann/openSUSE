@@ -71,7 +71,7 @@ BuildArch:      noarch
 %define python_subpackage_only 1
 %python_subpackages
 %else
-%define python_sitearch %python3_sitearch
+%define python_sitelib %python3_sitelib
 %define python_files() -n python3-%{**}
 %endif
 %else
