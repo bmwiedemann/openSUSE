@@ -13,7 +13,7 @@ if ! which hardlink >/dev/null; then
 	exit 1;
 fi;
 
-version="2.8.106"
+version="2.8.109"
 shortver="2.8" # agh...
 if [ ! -e "gsoap_$version.zip" ]; then
 	wget -c "http://downloads.sf.net/gsoap2/gsoap_$version.zip"

@@ -561,4 +561,12 @@
     <comment>- Update to release 2.8.106</comment>
     <requestid>829026</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>1a7a91fcf06057c59ae9ea79ede7656b</srcmd5>
+    <version>2.8.109</version>
+    <time>1607017249</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.8.109</comment>
+    <requestid>851977</requestid>
+  </revision>
 </revisionlist>

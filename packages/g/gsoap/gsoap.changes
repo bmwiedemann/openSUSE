@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 25 00:54:08 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.109
+  * Faster `soap_http_get_body()` to extract a HTTP message body
+    to a string.
+  * Fixed wsdl2h output for a special case when schemas have
+    no namespaces.
+  * Improved streaming MIME/MTOM attachment output.
+
+-------------------------------------------------------------------
 Mon Aug 24 07:12:05 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.106
