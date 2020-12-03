@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Dec  1 05:40:13 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 4.2.9.8
+  * fix issue with appindicator on gnome-shell
+  * Relicense the im module to BSD to allow Proprietary
+    software for bundling it. This was already done for
+    the Qt5 counter part, but never done for Qt4 version.
+    This is mainly to allow WPS to reuse our up-to-date
+    im module to support fcitx 5
+  * Slightly change to the tray menu to remove some
+    redudant entries
+
+-------------------------------------------------------------------
+Thu Nov 26 16:48:21 CET 2020 - tiwai@suse.de
+
+- Move the startup snippet to /usr/etc/X11/xim.d for TW
+
+-------------------------------------------------------------------
 Sat Feb 29 15:14:52 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 4.2.9.7

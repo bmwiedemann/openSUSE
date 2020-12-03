@@ -16,9 +16,13 @@
 #
 
 
+%if ! %{defined _distconfdir}
+%define _distconfdir %{_sysconfdir}
+%endif
+
 %define libver -4_2_9
 Name:           fcitx
-Version:        4.2.9.7
+Version:        4.2.9.8
 Release:        0
 Summary:        Flexible Context-aware Input Tool with eXtension
 License:        GPL-2.0-or-later
@@ -371,11 +375,11 @@ cp -r AUTHORS %{buildroot}%{_docdir}/%{name}/
 cp -r ChangeLog %{buildroot}%{_docdir}/%{name}/
 
 # create autostart
-mkdir -p %{buildroot}%{_sysconfdir}/X11/xim.d/
-install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/X11/xim.d/fcitx
+mkdir -p %{buildroot}%{_distconfdir}/X11/xim.d/
+install -m 644 %{SOURCE1} %{buildroot}%{_distconfdir}/X11/xim.d/fcitx
 
 priority=30
-pushd  %{buildroot}%{_sysconfdir}/X11/xim.d/
+pushd  %{buildroot}%{_distconfdir}/X11/xim.d/
     for lang in am ar as bn el fa gu he hi hr ja ka kk kn ko lo ml my \
                 pa ru sk vi zh_TW zh_CN zh_HK zh_SG \
                 de fr it es nl cs pl da nn nb fi en sv ; do
@@ -446,7 +450,7 @@ exit 0
 %{_mandir}/man1/fcitx-remote.1%{?ext_man}
 %{_libdir}/%{name}/
 %{_sysconfdir}/xdg/autostart/%{name}*.desktop
-%config %{_sysconfdir}/X11/xim.d/
+%{_distconfdir}/X11/xim.d
 %doc %{_docdir}/%{name}/
 
 # excludes

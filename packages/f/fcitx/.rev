@@ -553,4 +553,12 @@
   * clean up unused variable. (forwarded request 780500 from hillwood)</comment>
     <requestid>780501</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>3a18902ee6b2c025c219ab89477248e5</srcmd5>
+    <version>4.2.9.8</version>
+    <time>1607017148</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>852017</requestid>
+  </revision>
 </revisionlist>
