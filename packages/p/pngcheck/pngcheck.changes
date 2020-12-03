@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  3 11:45:40 UTC 2020 - pgajdos@suse.com
+
+- security update
+- added patches
+  fix CVE-2020-27818 [bsc#1179528], global buffer overflow was discovered in check_chunk_name function via crafted pngfile
+  + pngcheck-CVE-2020-27818.patch
+
+-------------------------------------------------------------------
 Sun Aug  2 09:37:14 UTC 2015 - mpluskal@suse.com
 
 - Use url for source

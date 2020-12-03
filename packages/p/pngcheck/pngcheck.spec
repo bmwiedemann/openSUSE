@@ -1,7 +1,7 @@
 #
 # spec file for package pngcheck
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,12 +20,14 @@ Name:           pngcheck
 Version:        2.3.0
 Release:        0
 Summary:        PNG file format checker
-License:        HPND and GPL-2.0+
+License:        HPND AND GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
-Url:            http://www.libpng.org/pub/png/apps/pngcheck.html
+URL:            http://www.libpng.org/pub/png/apps/pngcheck.html
 Source:         http://prdownloads.sourceforge.net/png-mng/%{name}-%{version}.tar.gz
 Source2:        %{name}.1.gz
 Patch0:         fixbuild.diff
+# CVE-2020-27818 [bsc#1179528], global buffer overflow was discovered in check_chunk_name function via crafted pngfile
+Patch1:         pngcheck-CVE-2020-27818.patch
 BuildRequires:  zlib-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -43,6 +45,7 @@ ORDR). This is a command-line program with batch capabilities (e.g.,
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 make %{?_smp_mflags} -f Makefile.unx
