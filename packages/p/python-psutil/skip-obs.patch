@@ -1,20 +1,7 @@
-Index: psutil-5.7.2/psutil/tests/__init__.py
+Index: psutil-5.7.3/psutil/tests/test_misc.py
 ===================================================================
---- psutil-5.7.2.orig/psutil/tests/__init__.py
-+++ psutil-5.7.2/psutil/tests/__init__.py
-@@ -185,7 +185,7 @@ HAS_SENSORS_BATTERY = hasattr(psutil, "s
- try:
-     HAS_BATTERY = HAS_SENSORS_BATTERY and bool(psutil.sensors_battery())
- except Exception:
--    HAS_BATTERY = True
-+    HAS_BATTERY = False
- HAS_SENSORS_FANS = hasattr(psutil, "sensors_fans")
- HAS_SENSORS_TEMPERATURES = hasattr(psutil, "sensors_temperatures")
- HAS_THREADS = hasattr(psutil.Process, "threads")
-Index: psutil-5.7.2/psutil/tests/test_misc.py
-===================================================================
---- psutil-5.7.2.orig/psutil/tests/test_misc.py
-+++ psutil-5.7.2/psutil/tests/test_misc.py
+--- psutil-5.7.3.orig/psutil/tests/test_misc.py
++++ psutil-5.7.3/psutil/tests/test_misc.py
 @@ -664,7 +664,7 @@ class TestScripts(PsutilTestCase):
              src = f.read()
          ast.parse(src)
@@ -33,20 +20,11 @@ Index: psutil-5.7.2/psutil/tests/test_misc.py
          self.assert_stdout('disk_usage.py')
  
      def test_free(self):
-@@ -763,6 +763,8 @@ class TestScripts(PsutilTestCase):
-     def test_battery(self):
-         self.assert_stdout('battery.py')
- 
-+    @unittest.skipIf(not HAS_SENSORS_BATTERY, "not supported")
-+    @unittest.skipIf(not HAS_BATTERY, "no battery")
-     def test_sensors(self):
-         self.assert_stdout('sensors.py')
- 
-Index: psutil-5.7.2/psutil/tests/test_linux.py
+Index: psutil-5.7.3/psutil/tests/test_linux.py
 ===================================================================
---- psutil-5.7.2.orig/psutil/tests/test_linux.py
-+++ psutil-5.7.2/psutil/tests/test_linux.py
-@@ -637,7 +637,7 @@ class TestSystemCPUCountLogical(PsutilTe
+--- psutil-5.7.3.orig/psutil/tests/test_linux.py
++++ psutil-5.7.3/psutil/tests/test_linux.py
+@@ -682,7 +682,7 @@ class TestSystemCPUCountLogical(PsutilTe
          self.assertEqual(psutil.cpu_count(logical=True), num)
  
      @unittest.skipIf(not which("lscpu"), "lscpu utility not available")
@@ -55,7 +33,7 @@ Index: psutil-5.7.2/psutil/tests/test_linux.py
          out = sh("lscpu -p")
          num = len([x for x in out.split('\n') if not x.startswith('#')])
          self.assertEqual(psutil.cpu_count(logical=True), num)
-@@ -680,7 +680,7 @@ class TestSystemCPUCountLogical(PsutilTe
+@@ -725,7 +725,7 @@ class TestSystemCPUCountLogical(PsutilTe
  class TestSystemCPUCountPhysical(PsutilTestCase):
  
      @unittest.skipIf(not which("lscpu"), "lscpu utility not available")
@@ -64,7 +42,7 @@ Index: psutil-5.7.2/psutil/tests/test_linux.py
          out = sh("lscpu -p")
          core_ids = set()
          for line in out.split('\n'):
-@@ -1009,7 +1009,7 @@ class TestSystemDiskPartitions(PsutilTes
+@@ -1080,7 +1080,7 @@ class TestSystemDiskPartitions(PsutilTes
  
      @unittest.skipIf(not hasattr(os, 'statvfs'), "os.statvfs() not available")
      @skip_on_not_implemented()
@@ -73,7 +51,7 @@ Index: psutil-5.7.2/psutil/tests/test_linux.py
          # test psutil.disk_usage() and psutil.disk_partitions()
          # against "df -a"
          def df(path):
-@@ -1183,7 +1183,7 @@ class TestSystemDiskIoCounters(PsutilTes
+@@ -1254,7 +1254,7 @@ class TestSystemDiskIoCounters(PsutilTes
                  self.assertEqual(ret.read_count, 1)
                  self.assertEqual(ret.write_count, 5)
  
@@ -82,10 +60,10 @@ Index: psutil-5.7.2/psutil/tests/test_linux.py
          def exists(path):
              if path == '/proc/diskstats':
                  return False
-Index: psutil-5.7.2/psutil/tests/test_posix.py
+Index: psutil-5.7.3/psutil/tests/test_posix.py
 ===================================================================
---- psutil-5.7.2.orig/psutil/tests/test_posix.py
-+++ psutil-5.7.2/psutil/tests/test_posix.py
+--- psutil-5.7.3.orig/psutil/tests/test_posix.py
++++ psutil-5.7.3/psutil/tests/test_posix.py
 @@ -371,7 +371,7 @@ class TestSystemAPIs(PsutilTestCase):
  
      # AIX can return '-' in df output instead of numbers, e.g. for /proc
@@ -95,11 +73,11 @@ Index: psutil-5.7.2/psutil/tests/test_posix.py
          def df(device):
              out = sh("df -k %s" % device).strip()
              line = out.split('\n')[1]
-Index: psutil-5.7.2/psutil/tests/test_system.py
+Index: psutil-5.7.3/psutil/tests/test_system.py
 ===================================================================
---- psutil-5.7.2.orig/psutil/tests/test_system.py
-+++ psutil-5.7.2/psutil/tests/test_system.py
-@@ -589,7 +589,7 @@ class TestDiskAPIs(PsutilTestCase):
+--- psutil-5.7.3.orig/psutil/tests/test_system.py
++++ psutil-5.7.3/psutil/tests/test_system.py
+@@ -591,7 +591,7 @@ class TestDiskAPIs(PsutilTestCase):
      def test_disk_usage_bytes(self):
          psutil.disk_usage(b'.')
  

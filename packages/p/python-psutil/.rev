@@ -541,4 +541,27 @@ It does not make sense to double the whole HISTORY of upstream source in .change
     <comment>- Fix shebang replacement for multiple python flavors (forwarded request 845689 from bnavigator)</comment>
     <requestid>845690</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>2a173620104cfacd30da17dc05daa377</srcmd5>
+    <version>5.7.3</version>
+    <time>1607017277</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.7.3:
+  - 809_: [FreeBSD] add support for `Process.rlimit()`.
+  - 893_: [BSD] add support for `Process.environ()` (patch by Armin Gruner)
+  - 1830_: [UNIX] `net_if_stats()`'s `isup` also checks whether the NIC is
+    running (meaning Wi-Fi or ethernet cable is connected).
+  - 1837_: [Linux] improved battery detection and charge &quot;secsleft&quot; calculation
+  - 1620_: [Linux] physical cpu_count() result is incorrect on systems with more
+    than one CPU socket.
+  - 1738_: [macOS] Process.exe() may raise FileNotFoundError if process is still
+    alive but the exe file which launched it got deleted.
+  - 1791_: [macOS] fix missing include for getpagesize().
+  - 1823_: [Windows] Process.open_files() may cause a segfault due to a NULL
+    pointer.
+  - 1838_: [Linux] sensors_battery(): if `percent` can be determined but not
+    the remaining values, still return a result instead of None.
+- skip-obs.patch, skip_failing_tests.patch: rediff</comment>
+    <requestid>852339</requestid>
+  </revision>
 </revisionlist>
