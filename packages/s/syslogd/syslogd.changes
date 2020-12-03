@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 24 17:03:30 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+- replace broken rcsyslog script with rcsyslogd link
+
+-------------------------------------------------------------------
 Wed Aug 19 07:15:13 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Set permission also in file list for /etc/syslog.conf 

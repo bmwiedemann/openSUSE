@@ -40,7 +40,6 @@ Source6:        klog.service
 Source7:        klogd.service
 Source8:        syslogd.service
 Source9:        syslogd-service-prepare
-Source10:       rc.syslog
 Source11:       syslogd-rpmlintrc
 Source12:       sysconfig.boot
 Patch0:         sysklogd-1.4.1.dif
@@ -181,11 +180,13 @@ install -m 644 %{SOURCE6} %{buildroot}%{_unitdir}/
 install -m 644 %{SOURCE7} %{buildroot}%{_unitdir}/
 install -m 644 %{SOURCE8} %{buildroot}%{_unitdir}/
 install -m 755 %{SOURCE9} %{buildroot}/%{_sbindir}/
-install -m 755 %{SOURCE10} %{buildroot}/sbin/rcsyslog
+ln -s service %{buildroot}/%{_sbindir}/rcsyslogd
 install -m 644 %{SOURCE12} %{buildroot}%{_fillupdir}
+%if !0%{?usrmerged}
 for sbin in klogd syslogd ; do
 	ln -sf %{_sbindir}/${sbin} %{buildroot}/sbin/${sbin}
 done
+%endif
 %ifarch s390 s390x
 sed -i 's/^KERNEL_LOGLEVEL=1/KERNEL_LOGLEVEL=7/' \
 %{buildroot}%{_fillupdir}/sysconfig.klogd
@@ -369,7 +370,10 @@ rm -f %{_sysconfdir}/systemd/system/multi-user.target.wants/syslog.service
 %{_sbindir}/syslogd-service-prepare
 %attr(0755,root,root) %dir %ghost %{_rundir}/syslogd
 %{_sbindir}/syslogd
+%{_sbindir}/rcsyslogd
+%if !0%{?usrmerged}
 /sbin/syslogd
+%endif
 
 %files -n klogd
 %defattr(-,root,root)
@@ -377,7 +381,9 @@ rm -f %{_sysconfdir}/systemd/system/multi-user.target.wants/syslog.service
 %{_unitdir}/klogd.service
 %{_mandir}/man8/klogd.8%{ext_man}
 %{_sbindir}/klogd
+%if !0%{?usrmerged}
 /sbin/klogd
+%endif
 
 %files -n syslog-service
 %defattr(-,root,root)
@@ -385,6 +391,5 @@ rm -f %{_sysconfdir}/systemd/system/multi-user.target.wants/syslog.service
 %config(noreplace) %{_sysconfdir}/logrotate.d/syslog
 %{_unitdir}/klog.service
 %{_mandir}/man8/syslog.8%{ext_man}
-/sbin/rcsyslog
 
 %changelog

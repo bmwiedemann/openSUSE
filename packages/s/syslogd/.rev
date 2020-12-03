@@ -763,4 +763,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>830112</requestid>
   </revision>
+  <revision rev="94" vrev="793">
+    <srcmd5>1c67865e40e770b3ea7980ae621e346e</srcmd5>
+    <version>unknown</version>
+    <time>1607017254</time>
+    <user>dimstar_suse</user>
+    <comment>- prepare usrmerge (boo#1029961)
+- replace broken rcsyslog script with rcsyslogd link (forwarded request 851915 from lnussel)</comment>
+    <requestid>852030</requestid>
+  </revision>
 </revisionlist>
