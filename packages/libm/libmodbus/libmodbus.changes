@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Wed Aug  7 18:42:16 CEST 2019 - sbrabec@suse.com
+
+- Update to version 3.1.6:
+  - API extensions and minor API changes
+  - Fix VD-1301 and VD-1302 vulnerabilities.
+  - Bug fixes.
+  * For more see NEWS.
+
+-------------------------------------------------------------------
+Thu Apr 20 15:19:23 CEST 2017 - sbrabec@suse.com
+
+- New package, version 3.1.4 (development, but stable).
+

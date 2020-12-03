@@ -1,0 +1,8 @@
+<package name="libmodbus" project="openSUSE:Factory">
+  <title>Modbus Library</title>
+  <description>libmodbus is a free software library to send/receive data with a device which respects the Modbus protocol. This library can use a serial port or an Ethernet connection.
+
+The functions included in the library have been derived from the Modicon Modbus Protocol Reference Guide which can be obtained from Schneider.</description>
+  <devel project="hardware" package="libmodbus"/>
+  <url>http://www.libmodbus.org/</url>
+</package>
