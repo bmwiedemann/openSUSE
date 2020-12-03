@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Dec  1 03:13:24 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.51
+   see /usr/share/doc/packages/perl-PAR-Dist/Changes
+
+  0.51  2020-11-30
+
+  - Fix problem with Cwd::realpath()
+
+    Some versions of Cwd::realpath() must be called on an *existing* path,
+    otherwise they will return undef.
+
+-------------------------------------------------------------------
+Wed Nov 18 03:11:15 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.50
+   see /usr/share/doc/packages/perl-PAR-Dist/Changes
+
+-------------------------------------------------------------------
 Sat Jun  8 07:55:13 UTC 2013 - coolo@suse.com
 
 - updated to 0.49
