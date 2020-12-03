@@ -27,7 +27,7 @@
 %endif
 Name:           pam
 #
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        A Security Tool that Provides Authentication for Applications
 License:        GPL-2.0-or-later OR BSD-3-Clause

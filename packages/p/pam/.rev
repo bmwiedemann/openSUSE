@@ -916,4 +916,17 @@
   to avoid spurious (and misleading)</comment>
     <requestid>849468</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>fb830ac06ef1c6d4e490e225c3d449c2</srcmd5>
+    <version>1.5.1</version>
+    <time>1607017079</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.1
+  - pam_unix: fixed CVE-2020-27780 - authentication bypass when a user
+    doesn't exist and root password is blank [bsc#1179166]
+  - pam_faillock: added nodelay option to not set pam_fail_delay
+  - pam_wheel: use pam_modutil_user_in_group to check for the group membership
+    with getgrouplist where it is available</comment>
+    <requestid>851278</requestid>
+  </revision>
 </revisionlist>
