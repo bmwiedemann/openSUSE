@@ -90,10 +90,10 @@ install -m 0755 %{SOURCE1} %{buildroot}/%{_sbindir}
 mkdir -p %{buildroot}/%{_unitdir}
 install -m644 %{SOURCE3} %{buildroot}/%{_unitdir}
 ln -s service %{buildroot}%{_sbindir}/rckexec-load
-#UsrMerge
+%if !0%{?usrmerged}
 mkdir -p %{buildroot}/sbin
 ln -s %{_sbindir}/kexec %{buildroot}/sbin
-#EndUsrMerge
+%endif
 
 %post
 %service_add_post kexec-load.service
@@ -128,9 +128,9 @@ ln -s %{_sbindir}/kexec %{buildroot}/sbin
 %license COPYING
 %doc AUTHORS News TODO doc
 %{_mandir}/man*/*
-#UsrMerge
+%if !0%{?usrmerged}
 /sbin/kexec
-#EndUsrMerge
+%endif
 %{_sbindir}/rckexec-load
 %{_sbindir}/kexec
 %{_sbindir}/kexec-bootloader

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 24 16:54:57 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
 Tue Nov 10 12:17:44 UTC 2020 - olaf@aepfle.de
 
 - Remove kexec-tools-xen-balloon-up.patch (bsc#1176606)
