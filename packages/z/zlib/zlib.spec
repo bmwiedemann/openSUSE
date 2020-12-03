@@ -1,7 +1,7 @@
 #
 # spec file for package zlib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -154,7 +154,7 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
 CC="cc" ./configure \
     --shared \
     --prefix=%{_prefix} \
-    --libdir=/%{_lib} \
+    --libdir=%{_libdir} \
 %ifarch s390x s390
     --dfltcc \
 %endif
@@ -183,13 +183,6 @@ make check %{?_smp_mflags}
 %install
 mkdir -p %{buildroot}%{_libdir}
 %make_install
-# Fix shared library placement/symlinks
-ln -s -v /%{_lib}/$(readlink %{buildroot}/%{_lib}/libz.so) %{buildroot}%{_libdir}/libz.so
-rm -v %{buildroot}/%{_lib}/libz.so
-# Static lib
-mv %{buildroot}/%{_lib}/libz.a %{buildroot}%{_libdir}
-# Move .pc file to _libdir
-mv %{buildroot}/%{_lib}/pkgconfig %{buildroot}%{_libdir}
 # manpage
 install -m 644 zlib.3 %{buildroot}%{_mandir}/man3
 install -m 644 zutil.h %{buildroot}%{_includedir}
@@ -211,8 +204,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n libz1
 %license LICENSE
-/%{_lib}/libz.so.1.2.*
-/%{_lib}/libz.so.1
+%{_libdir}/libz.so.1.2.*
+%{_libdir}/libz.so.1
 
 %files devel
 %doc README ChangeLog
