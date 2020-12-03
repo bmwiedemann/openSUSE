@@ -1,0 +1,49 @@
+Fixup gdb-dts-rhel6-python-compat.patch
+
+---
+ gdb/python/lib/gdb/command/backtrace.py | 12 +++++++++---
+ gdb/testsuite/gdb.base/help.exp         |  4 +++-
+ 2 files changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/gdb/python/lib/gdb/command/backtrace.py b/gdb/python/lib/gdb/command/backtrace.py
+index eeea9093e8..5059b6518a 100644
+--- a/gdb/python/lib/gdb/command/backtrace.py
++++ b/gdb/python/lib/gdb/command/backtrace.py
+@@ -81,13 +81,19 @@ Use of the 'raw' qualifier avoids any filtering by loadable modules.
+         # FIXME: provide option to start at selected frame
+         # However, should still number as if starting from newest
+         newest_frame = gdb.newest_frame()
+-        iter = itertools.imap (FrameWrapper,
+-                               FrameIterator (newest_frame))
++        if sys.version_info.major >= 3:
++            iter = map (FrameWrapper, FrameIterator (newest_frame))
++        else:
++            iter = itertools.imap (FrameWrapper,
++                                   FrameIterator (newest_frame))
+         if filter:
+             iter = gdb.backtrace.create_frame_filter (iter)
+ 
+         # Now wrap in an iterator that numbers the frames.
+-        iter = itertools.izip (itertools.count (0), iter)
++        if sys.version_info.major >= 3:
++            iter = zip (itertools.count (0), iter)
++        else:
++            iter = itertools.izip (itertools.count (0), iter)
+ 
+         # Reverse if the user wanted that.
+         if self.reverse.value:
+diff --git a/gdb/testsuite/gdb.base/help.exp b/gdb/testsuite/gdb.base/help.exp
+index 0b6893cf79..af5fb232ce 100644
+--- a/gdb/testsuite/gdb.base/help.exp
++++ b/gdb/testsuite/gdb.base/help.exp
+@@ -129,7 +129,9 @@ gdb_test "apropos apropos" "apropos -- Search for commands matching a REGEXP.*"
+ 
+ # Test apropos for commands having aliases.
+ gdb_test "apropos Print backtrace of all stack frames, or innermost COUNT frames\." \
+-    "backtrace, where, bt -- Print backtrace of all stack frames, or innermost COUNT frames\."
++    [multi_line \
++	 "backtrace, where, bt -- Print backtrace of all stack frames, or innermost COUNT frames\." \
++	 "new-backtrace -- Print backtrace of all stack frames, or innermost COUNT frames\."]
+ 
+ # Test help for commands having aliases.
+ gdb_test "help bt" "backtrace, where, bt\[\r\n\]+Print backtrace of all stack frames, or innermost COUNT frames\..*"

@@ -1,0 +1,26 @@
+Fixup gdb-archer-vla-tests.patch
+
+---
+ gdb/testsuite/gdb.pascal/arrays.exp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/gdb/testsuite/gdb.pascal/arrays.exp b/gdb/testsuite/gdb.pascal/arrays.exp
+index 22acdb86d87..6a176732599 100644
+--- a/gdb/testsuite/gdb.pascal/arrays.exp
++++ b/gdb/testsuite/gdb.pascal/arrays.exp
+@@ -89,11 +89,15 @@ gdb_test "print s" ".* = 'test'#0'string'" "Print string containing null-char"
+ 
+ if { $fpc_generates_dwarf_for_dynamic_arrays == 0} {
+   setup_xfail "*-*-*"
++} else {
++  setup_kfail "*-*-*" pascal/26106
+ }
+ gdb_test "print DynArrStr" ".* = \\{'dstr0', 'dstr1', 'dstr2', 'dstr3', 'dstr4', 'dstr5', 'dstr6', 'dstr7', 'dstr8', 'dstr9', 'dstr10', 'dstr11', 'dstr12'\\}" "Print dynamic array of string"
+ 
+ if { $fpc_generates_dwarf_for_dynamic_arrays == 0} {
+   setup_xfail "*-*-*"
++} else {
++  setup_kfail "*-*-*" pascal/26855
+ }
+ gdb_test "print StatArrStr" ".* = \\{'str0', 'str1', 'str2', 'str3', 'str4', 'str5', 'str6', 'str7', 'str8', 'str9', 'str10', 'str11', 'str12'\\}" "Print static array of string"
+ 

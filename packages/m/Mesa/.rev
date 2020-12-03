@@ -4326,4 +4326,19 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   * third bugfix release for the 20.2 branch</comment>
     <requestid>850309</requestid>
   </revision>
+  <revision rev="396" vrev="268">
+    <srcmd5>5be525eeb425455ec8ba2090f9e2d75a</srcmd5>
+    <version>unknown</version>
+    <time>1607017156</time>
+    <user>dimstar_suse</user>
+    <comment>- require llvm-devel *without* any explicit version number for 
+  factory/TW to imply 'distro default llvm version', which we 
+  usually bump up when a new stable llvm comes out
+
+- use llvm11 on factory/TW and sle15-sp3/Leap 15.3 
+
+- enabled build of radeonsi DRI and VDPAU driver on aarch64
+  (boo#1179376)</comment>
+    <requestid>852334</requestid>
+  </revision>
 </revisionlist>

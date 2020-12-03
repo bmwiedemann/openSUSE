@@ -39,10 +39,10 @@ gdb/
 
 	* dwarf2read.c (process_die): Change gdb_assert to complaint.
 
-diff --git a/gdb/dwarf2read.c b/gdb/dwarf2read.c
---- a/gdb/dwarf2read.c
-+++ b/gdb/dwarf2read.c
-@@ -10657,6 +10657,13 @@ private:
+diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
+--- a/gdb/dwarf2/read.c
++++ b/gdb/dwarf2/read.c
+@@ -10162,6 +10162,13 @@ class process_die_scope
  static void
  process_die (struct die_info *die, struct dwarf2_cu *cu)
  {
@@ -56,27 +56,10 @@ diff --git a/gdb/dwarf2read.c b/gdb/dwarf2read.c
    process_die_scope scope (die, cu);
  
    switch (die->tag)
-diff --git a/gdb/infrun.c b/gdb/infrun.c
---- a/gdb/infrun.c
-+++ b/gdb/infrun.c
-@@ -601,6 +601,13 @@ holding the child stopped.  Try \"set detach-on-fork\" or \
- 				target_pid_to_str (process_ptid).c_str ());
- 	    }
- 
-+#ifdef NEED_DETACH_SIGSTOP
-+	  /* We should check PID_WAS_STOPPED and detach it stopped accordingly.
-+	     In this point of code it cannot be 1 as we would not get FORK
-+	     executed without CONTINUE first which resets PID_WAS_STOPPED.
-+	     We would have to first TARGET_STOP and WAITPID it as with running
-+	     inferior PTRACE_DETACH, SIGSTOP will ignore the signal.  */
-+#endif
- 	  target_detach (parent_inf, 0);
- 	}
- 
 diff --git a/gdb/linux-nat.c b/gdb/linux-nat.c
 --- a/gdb/linux-nat.c
 +++ b/gdb/linux-nat.c
-@@ -189,6 +189,12 @@ struct linux_nat_target *linux_target;
+@@ -190,6 +190,12 @@ struct linux_nat_target *linux_target;
  /* Does the current host support PTRACE_GETREGSET?  */
  enum tribool have_ptrace_getregset = TRIBOOL_UNKNOWN;
  
@@ -89,17 +72,17 @@ diff --git a/gdb/linux-nat.c b/gdb/linux-nat.c
  static unsigned int debug_linux_nat;
  static void
  show_debug_linux_nat (struct ui_file *file, int from_tty,
-@@ -1030,6 +1036,9 @@ linux_nat_post_attach_wait (ptid_t ptid, int *signalled)
-       if (debug_linux_nat)
- 	fprintf_unfiltered (gdb_stdlog,
- 			    "LNPAW: Attaching to a stopped process\n");
+@@ -1044,6 +1050,9 @@ linux_nat_post_attach_wait (ptid_t ptid, int *signalled)
+   if (linux_proc_pid_is_stopped (pid))
+     {
+       linux_nat_debug_printf ("Attaching to a stopped process");
 +#ifdef NEED_DETACH_SIGSTOP
 +      pid_was_stopped = ptid.pid ();
 +#endif
  
        /* The process is definitely stopped.  It is in a job control
  	 stop, unless the kernel predates the TASK_STOPPED /
-@@ -1361,6 +1370,25 @@ get_detach_signal (struct lwp_info *lp)
+@@ -1359,6 +1368,25 @@ get_detach_signal (struct lwp_info *lp)
        return gdb_signal_to_host (signo);
      }
  
@@ -125,7 +108,7 @@ diff --git a/gdb/linux-nat.c b/gdb/linux-nat.c
    return 0;
  }
  
-@@ -1509,6 +1537,10 @@ linux_nat_target::detach (inferior *inf, int from_tty)
+@@ -1502,6 +1530,10 @@ linux_nat_target::detach (inferior *inf, int from_tty)
        detach_one_lwp (main_lwp, &signo);
  
        detach_success (inf);
@@ -136,7 +119,7 @@ diff --git a/gdb/linux-nat.c b/gdb/linux-nat.c
      }
  }
  
-@@ -1766,6 +1798,16 @@ linux_nat_target::resume (ptid_t ptid, int step, enum gdb_signal signo)
+@@ -1744,6 +1776,16 @@ linux_nat_target::resume (ptid_t ptid, int step, enum gdb_signal signo)
        return;
      }
  
@@ -153,7 +136,7 @@ diff --git a/gdb/linux-nat.c b/gdb/linux-nat.c
    if (resume_many)
      iterate_over_lwps (ptid, [=] (struct lwp_info *info)
  			     {
-@@ -3770,6 +3812,10 @@ linux_nat_target::mourn_inferior ()
+@@ -3617,6 +3659,10 @@ linux_nat_target::mourn_inferior ()
  
    /* Let the arch-specific native code know this process is gone.  */
    linux_target->low_forget_process (pid);

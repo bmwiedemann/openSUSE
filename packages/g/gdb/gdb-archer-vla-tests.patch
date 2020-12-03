@@ -3689,7 +3689,7 @@ new file mode 100644
 diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
 --- a/gdb/testsuite/lib/gdb.exp
 +++ b/gdb/testsuite/lib/gdb.exp
-@@ -170,6 +170,11 @@ proc gdb_unload {} {
+@@ -224,6 +224,11 @@ proc gdb_unload {} {
  	    send_gdb "y\n" answer
  	    exp_continue
  	}
@@ -3705,12 +3705,12 @@ diff --git a/gdb/testsuite/lib/pascal.exp b/gdb/testsuite/lib/pascal.exp
 --- a/gdb/testsuite/lib/pascal.exp
 +++ b/gdb/testsuite/lib/pascal.exp
 @@ -37,6 +37,9 @@ proc pascal_init {} {
-     global pascal_compiler_is_fpc
-     global gpc_compiler
-     global fpc_compiler
-+    global fpcversion_major
-+    global fpcversion_minor
-+    global fpcversion_release
+     gdb_persistent_global pascal_compiler_is_fpc
+     gdb_persistent_global gpc_compiler
+     gdb_persistent_global fpc_compiler
++    gdb_persistent_global fpcversion_major
++    gdb_persistent_global fpcversion_minor
++    gdb_persistent_global fpcversion_release
      global env
   
      if { $pascal_init_done == 1 } {

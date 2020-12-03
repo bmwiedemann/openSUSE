@@ -1,0 +1,41 @@
+fixup-2-gdb-archer-vla-tests
+
+Fixup gdb-archer-vla-tests.patch
+
+---
+ gdb/testsuite/gdb.opt/fortran-string.exp | 11 +++++++++--
+ gdb/testsuite/gdb.opt/fortran-string.f90 |  1 +
+ 2 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.opt/fortran-string.exp b/gdb/testsuite/gdb.opt/fortran-string.exp
+index 90a2bdf..5255424 100644
+--- a/gdb/testsuite/gdb.opt/fortran-string.exp
++++ b/gdb/testsuite/gdb.opt/fortran-string.exp
+@@ -34,6 +34,13 @@ if ![runto $srcfile:[gdb_get_line_number "s = s"]] then {
+     continue
+ }
+ 
+-gdb_test "frame" ".*s='foo'.*"
+-gdb_test "ptype s" "type = character\\*3"
++gdb_test "info args" ".*s = 'foo'.*"
++gdb_test_multiple "ptype s" "" {
++    -re -wrap "type = character \\(3\\)" {
++	pass $gdb_test_name
++    }
++    -re -wrap "type = character\\*3" {
++	pass $gdb_test_name
++    }
++}
+ gdb_test "p s" "\\$\[0-9\]* = 'foo'"
+diff --git a/gdb/testsuite/gdb.opt/fortran-string.f90 b/gdb/testsuite/gdb.opt/fortran-string.f90
+index e48d520..e3bb6ad 100644
+--- a/gdb/testsuite/gdb.opt/fortran-string.f90
++++ b/gdb/testsuite/gdb.opt/fortran-string.f90
+@@ -21,6 +21,7 @@
+   subroutine f(s)
+   character*(*) s
+   s = s
++  print *, s
+   end
+ 
+   program main

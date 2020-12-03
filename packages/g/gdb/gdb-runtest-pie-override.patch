@@ -25,7 +25,7 @@ a problem with make -j parallelization of the testsuite.
 diff --git a/gdb/testsuite/lib/future.exp b/gdb/testsuite/lib/future.exp
 --- a/gdb/testsuite/lib/future.exp
 +++ b/gdb/testsuite/lib/future.exp
-@@ -195,6 +195,10 @@ proc gdb_default_target_compile {source destfile type options} {
+@@ -197,6 +197,10 @@ proc gdb_default_target_compile_1 {source destfile type options} {
      set ldflags ""
      set dest [target_info name]
  
@@ -36,7 +36,7 @@ diff --git a/gdb/testsuite/lib/future.exp b/gdb/testsuite/lib/future.exp
      if {[info exists CFLAGS_FOR_TARGET]} {
  	append add_flags " $CFLAGS_FOR_TARGET"
      }
-@@ -529,10 +533,6 @@ proc gdb_default_target_compile {source destfile type options} {
+@@ -531,10 +535,6 @@ proc gdb_default_target_compile_1 {source destfile type options} {
  	}
      }
  

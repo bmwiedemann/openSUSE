@@ -314,6 +314,7 @@ Prefer: ghostscript-mini
 Prefer: krb5-mini-devel:krb5-mini
 Prefer: krb5-mini krb5-mini-devel
 Prefer: libudev-mini-devel libudev-mini1 udev-debuginfo libudev1-debuginfo
+Prefer: libdebuginfod1
 Prefer: libunbound-devel-mini
 Prefer: log4j12-mini log4j-mini
 Prefer: systemd-mini-devel:systemd-mini

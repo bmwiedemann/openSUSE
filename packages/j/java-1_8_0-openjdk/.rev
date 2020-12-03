@@ -610,4 +610,12 @@
     <comment>Fix errors in patch</comment>
     <requestid>849046</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>96ce29dd0f63ba13c4b87b911aa510ac</srcmd5>
+    <version>1.8.0.275</version>
+    <time>1607017152</time>
+    <user>dimstar_suse</user>
+    <comment>jdk8u275</comment>
+    <requestid>852320</requestid>
+  </revision>
 </revisionlist>

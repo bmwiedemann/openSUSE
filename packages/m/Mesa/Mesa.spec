@@ -209,17 +209,25 @@ BuildRequires:  pkgconfig(wayland-protocols) >= 1.8
 BuildRequires:  pkgconfig(wayland-server) >= 1.11
 %if 0%{with_llvm}
 %if 0%{?suse_version} >= 1550
-BuildRequires:  llvm-devel >= 10.0.0
+BuildRequires:  llvm-devel
+%else
+%if 0%{?sle_version} >= 150300
+BuildRequires:  llvm11-devel
 %else
 BuildRequires:  llvm9-devel
+%endif
 %endif
 %endif
 
 %if 0%{with_opencl}
 %if 0%{?suse_version} >= 1550
-BuildRequires:  clang-devel >= 10.0.0
+BuildRequires:  clang-devel
+%else
+%if 0%{?sle_version} >= 150300
+BuildRequires:  clang11-devel
 %else
 BuildRequires:  clang9-devel
+%endif
 %endif
 BuildRequires:  libclc
 %endif
@@ -780,7 +788,7 @@ egl_platforms=x11,drm,surfaceless,wayland
   %else
   %ifarch %{arm} aarch64
             -Ddri-drivers=nouveau \
-            -Dgallium-drivers=r300,r600,nouveau,swrast,virgl,freedreno,vc4,etnaviv,lima,panfrost,kmsro,v3d \
+            -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast,virgl,freedreno,vc4,etnaviv,lima,panfrost,kmsro,v3d \
   %else
   %ifarch ppc64 ppc64le
             -Ddri-drivers=nouveau \
@@ -1016,7 +1024,7 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %{_libdir}/vdpau/libvdpau_r600.so.1.0.0
 %endif
 
-%ifarch %{ix86} x86_64 ppc64 ppc64le
+%ifarch %{ix86} x86_64 ppc64 ppc64le %{arm} aarch64
 %files -n libvdpau_radeonsi
 %{_libdir}/vdpau/libvdpau_radeonsi.so
 %{_libdir}/vdpau/libvdpau_radeonsi.so.1

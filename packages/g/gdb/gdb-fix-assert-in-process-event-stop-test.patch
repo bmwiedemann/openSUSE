@@ -1,0 +1,24 @@
+Fix assert in process_event_stop_test
+
+Fixes PR26881 - "infrun.c:6384: internal-error: void
+process_event_stop_test(execution_control_state*): Assertion
+`ecs->event_thread->control.exception_resume_breakpoint != NULL' failed".
+
+https://sourceware.org/bugzilla/show_bug.cgi?id=26881
+
+---
+ gdb/infrun.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/gdb/infrun.c b/gdb/infrun.c
+index 4c2e1f56d24..6000c58c142 100644
+--- a/gdb/infrun.c
++++ b/gdb/infrun.c
+@@ -6431,6 +6431,7 @@ process_event_stop_test (struct execution_control_state *ecs)
+ 	    else
+ 	      {
+ 		/* Case 3.  */
++		ecs->event_thread->stepping_over_breakpoint = 1;
+ 		keep_going (ecs);
+ 		return;
+ 	      }

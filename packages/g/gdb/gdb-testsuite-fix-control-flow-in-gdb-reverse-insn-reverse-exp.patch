@@ -1,0 +1,76 @@
+[gdb/testsuite] Fix control-flow in gdb.reverse/insn-reverse.exp
+
+In gdb.reverse/insn-reverse.exp, we have loop containing a call to
+gdb_test_multiple, which itself contains a break:
+...
+  for {} {$count < 500} {incr count} {
+    ...
+    gdb_test_multiple "x/i \$pc" "" {
+      ...
+      break
+    }
+...
+
+On SLE-11 with:
+...
+$ runtest --version
+Expect version is       5.44.1.11
+Tcl version is          8.5
+Framework version is    1.4.4
+...
+the break doesn't seem to have the effect of breaking out of the loop.
+
+The break does have the effect of terminating evaluation of the expect clause,
+which means we don't set insn_array, after which we run into:
+...
+ERROR: tcl error sourcing /tmp/tdevries/src/gdb/testsuite/gdb.reverse/insn-reverse.exp.
+ERROR: can't read "insn_array(5)": no such element in array
+...
+
+---
+ gdb/testsuite/gdb.reverse/insn-reverse.exp | 26 +++++++++++++++-----------
+ 1 file changed, 15 insertions(+), 11 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.reverse/insn-reverse.exp b/gdb/testsuite/gdb.reverse/insn-reverse.exp
+index 39e276964f9..d1fdebf75fe 100644
+--- a/gdb/testsuite/gdb.reverse/insn-reverse.exp
++++ b/gdb/testsuite/gdb.reverse/insn-reverse.exp
+@@ -79,23 +79,27 @@ proc test { func testcase_nr } {
+ 	set count 0
+ 	set insn_addr ""
+ 	for {} {$count < 500} {incr count} {
++	    set prev_insn_addr $insn_addr
++	    set insn_addr ""
+ 	    gdb_test_multiple "x/i \$pc" "" {
+ 		-re ".* ($hex) <.*>:\[ \t\]*(.*)\r\n$gdb_prompt $" {
+-		    set prev_insn_addr $insn_addr
+ 		    set insn_addr $expect_out(1,string)
++		    set insn_array($count) $expect_out(2,string)
++		}
++	    }
+ 
+-		    if [expr {$last_insn == $insn_addr}] {
+-			break
+-		    }
++	    if [expr {$insn_addr == ""}] {
++		break
++	    }
+ 
+-		    if [expr {$prev_insn_addr == $insn_addr}] {
+-			# Failed to make progress, might have run into SIGILL.
+-			unsupported "no progress at: $expect_out(2,string)"
+-			break
+-		    }
++	    if [expr {$last_insn == $insn_addr}] {
++		break
++	    }
+ 
+-		    set insn_array($count) $expect_out(2,string)
+-		}
++	    if [expr {$prev_insn_addr == $insn_addr}] {
++		# Failed to make progress, might have run into SIGILL.
++		unsupported "no progress at: $expect_out(2,string)"
++		break
+ 	    }
+ 
+ 	    set pre_regs($count) [capture_command_output "info all-registers" ""]

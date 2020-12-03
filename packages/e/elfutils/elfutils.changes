@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Nov 30 12:03:29 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Mention elfutils-rpmlintrc as a Source.
+
+-------------------------------------------------------------------
+Thu Nov  5 09:15:00 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add rpmlintrc for
+  libdebuginfod1-dummy.s390x: E: shlib-policy-name-error (Badness: 10000) libdebuginfod1
+  which is expected as libdebuginfod1 and it's dummy library do share equal
+  soname.
+- Update to version 0.182:
+  backends: Support for tilegx has been removed.
+
+  config: New /etc/profile.d files to provide default $DEBUGINFOD_URLS.
+
+  debuginfod: More efficient package traversal, tolerate various errors
+              during scanning, grooming progress is more visible and
+              interruptible, more prometheus metrics.
+
+  debuginfod-client: Now supports compressed (kernel) ELF images.
+
+  libdwfl: Add ZSTD compression support.
+
+-------------------------------------------------------------------
+Tue Sep 22 07:56:37 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Creatu dummy subpackages that can be used for build of packages
+  that are in bootstrap cycle.
+- Add Provides for real packages.
+
+-------------------------------------------------------------------
 Tue Sep  8 15:18:57 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to version 0.181:

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Dec  1 12:31:55 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- require llvm-devel *without* any explicit version number for 
+  factory/TW to imply 'distro default llvm version', which we 
+  usually bump up when a new stable llvm comes out
+
+-------------------------------------------------------------------
+Mon Nov 30 13:56:08 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- use llvm11 on factory/TW and sle15-sp3/Leap 15.3 
+
+-------------------------------------------------------------------
+Sun Nov 29 12:35:33 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- enabled build of radeonsi DRI and VDPAU driver on aarch64
+  (boo#1179376)
+
+-------------------------------------------------------------------
 Mon Nov 23 19:44:31 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 20.2.3

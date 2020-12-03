@@ -1,0 +1,43 @@
+diff --git a/gdb/testsuite/gdb.base/morestack.c b/gdb/testsuite/gdb.base/morestack.c
+index 1cc33df29c9..63c3e23c903 100644
+--- a/gdb/testsuite/gdb.base/morestack.c
++++ b/gdb/testsuite/gdb.base/morestack.c
+@@ -22,7 +22,6 @@
+ #include <stdlib.h>
+ #include <sys/types.h>
+ #include <sys/resource.h>
+-#include <stdio.h>
+ #include <sys/mman.h>
+ 
+ /* Use a noinline function to ensure that the buffer is not removed
+@@ -63,7 +62,6 @@ down (int i)
+ 
+   if (last && last < (void *) buf)
+     {
+-      printf ("%d: %p < %p\n", i, last, buf);
+       marker_hit ();
+     }
+   last = buf;
+diff --git a/gdb/testsuite/gdb.base/morestack.exp b/gdb/testsuite/gdb.base/morestack.exp
+index 95ec9adc62b..bdbb9870c57 100644
+--- a/gdb/testsuite/gdb.base/morestack.exp
++++ b/gdb/testsuite/gdb.base/morestack.exp
+@@ -21,17 +21,13 @@ if {$gcc_compiled == 0} {
+     return -1
+ }
+ 
+-if { [have_fuse_ld_gold] == 0} {
+-    return -1
+-}
+-
+ standard_testfile
+ 
+ # -fuse-ld=gold is used for calling printf code built without -fsplit-stack
+ # which could crash otherwise.  See GCC documentation of -fsplit-stack.
+ set opts "additional_flags=-fsplit-stack"
+ if { [prepare_for_testing "failed to prepare" ${testfile} $srcfile \
+-	  [list $opts additional_flags=-fuse-ld=gold]] } {
++	  [list $opts]] } {
+     return -1
+ }
+ 

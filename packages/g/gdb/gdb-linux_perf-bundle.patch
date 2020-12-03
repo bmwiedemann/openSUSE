@@ -6,30 +6,6 @@ Subject: gdb-linux_perf-bundle.patch
 ;; [dts+el7] [x86*] Bundle linux_perf.h for libipt (RH BZ 1256513).
 ;;=fedora
 
-diff --git a/gdb/configure b/gdb/configure
---- a/gdb/configure
-+++ b/gdb/configure
-@@ -11905,7 +11905,7 @@ else
- 
- #include <linux/perf_event.h>
- #ifndef PERF_ATTR_SIZE_VER5
--# error
-+// error // PERF_ATTR_SIZE_VER5_BUNDLE is not available here - Fedora+RHEL
- #endif
- 
- _ACEOF
-diff --git a/gdb/configure.ac b/gdb/configure.ac
---- a/gdb/configure.ac
-+++ b/gdb/configure.ac
-@@ -1414,7 +1414,7 @@ else
-   AC_PREPROC_IFELSE([AC_LANG_SOURCE([[
- #include <linux/perf_event.h>
- #ifndef PERF_ATTR_SIZE_VER5
--# error
-+// error // PERF_ATTR_SIZE_VER5_BUNDLE is not available here - Fedora+RHEL
- #endif
-   ]])], [perf_event=yes], [perf_event=no])
-   if test "$perf_event" != yes; then
 diff --git a/gdb/gdb.c b/gdb/gdb.c
 --- a/gdb/gdb.c
 +++ b/gdb/gdb.c
@@ -234,3 +210,15 @@ diff --git a/gdb/nat/linux-btrace.h b/gdb/nat/linux-btrace.h
  struct target_ops;
  
  #if HAVE_LINUX_PERF_EVENT_H
+diff --git a/gdbsupport/common.m4 b/gdbsupport/common.m4
+--- a/gdbsupport/common.m4
++++ b/gdbsupport/common.m4
+@@ -145,7 +145,7 @@ AC_DEFUN([GDB_AC_COMMON], [
+     AC_PREPROC_IFELSE([AC_LANG_SOURCE([[
+   #include <linux/perf_event.h>
+   #ifndef PERF_ATTR_SIZE_VER5
+-  # error
++  // error // PERF_ATTR_SIZE_VER5_BUNDLE is not available here - Fedora+RHEL
+   #endif
+     ]])], [perf_event=yes], [perf_event=no])
+     if test "$perf_event" != yes; then

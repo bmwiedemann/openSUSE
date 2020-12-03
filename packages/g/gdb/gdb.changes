@@ -1,4 +1,210 @@
 -------------------------------------------------------------------
+Mon Nov 30 14:46:49 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Mention fedora patch fixups added:
+  * fixup-3-gdb-archer-vla-tests.patch
+- Mention patch to be upstreamed added:
+  * gdb-fix-selftest-fails-with-gdb-build-with-O2-flto.patch
+
+-------------------------------------------------------------------
+Fri Nov 27 13:54:42 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Fedora patch fixups update:
+  * fixup-2-gdb-rhbz1156192-recursive-dlopen-test.patch
+- Fedora patch fixups added:
+  * fixup-gdb-test-ivy-bridge.patch
+- Add xz to BuildRequires for testsuite flavour.
+- Add note on mpfr-devel for SLE-11.
+
+-------------------------------------------------------------------
+Thu Nov 26 08:05:44 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Backport from master:
+  * gdb-testsuite-fix-failure-in-gdb-base-step-over-no-symbols-exp.patch
+- Patch to be upstreamed:
+  * gdb-testsuite-fix-control-flow-in-gdb-reverse-insn-reverse-exp.patch
+
+-------------------------------------------------------------------
+Thu Nov 26 00:35:52 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Patch updated:
+  * gdb-testsuite-gdb-tui-new-layout-exp-partly-require-tcl86.patch
+
+-------------------------------------------------------------------
+Wed Nov 25 23:45:19 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Patch updated:
+  * gdb-testsuite-gdb-tui-new-layout-exp-partly-require-tcl86.patch
+
+-------------------------------------------------------------------
+Tue Nov 24 13:10:46 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Patch to be upstreamed:
+  * gdb-testsuite-gdb-base-morestack-exp-no-clang.patch
+  * gdb-testsuite-handle-sigill-in-gdb-reverse-insn-reverse-exp.patch
+  * gdb-testsuite-fix-gdb-reverse-insn-reverse-x86-c-for-m32.patch
+  * gdb-testsuite-gdb-tui-new-layout-exp-partly-require-tcl86.patch
+  * gdb-tui-enable-work-around-libncurses-segfault.patch
+- Backport from master dropped:
+  * gdb-testsuite-fix-unbalanced-braces-in-gdb-tui-new-layout-exp.patch
+
+-------------------------------------------------------------------
+Wed Nov 18 09:59:52 UTC 2020 - Tom de Vries <tdevries@suse.com> - 10.1
+
+- Fedora patch fixups updated:
+  * fixup-2-gdb-archer-vla-tests.patch
+- Fedora patch fixups added:
+  * fixup-2-gdb-rhbz1156192-recursive-dlopen-test.patch
+- Testsuite patch:
+  * gdb-testsuite-disable-selftests-for-factory.patch
+- Backport from master:
+  * gdb-symtab-read-cu-base-address-for-enqueued-cu.patch
+  * gdb-symtab-use-early-continue-in-find_pc_sect_compunit.patch
+  * gdb-fix-section-matching-in-find_pc_sect_compunit.patch
+  * gdb-symtab-fix-language-of-frame-without-debug-info.patch
+- Patch to be upstreamed: 
+  * gdb-symtab-set-default-dwarf-max-cache-age-1000.patch
+
+-------------------------------------------------------------------
+Thu Nov 12 22:30:53 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- BuildRequire curl for debuginfod test-case.
+- Patch to be upstreamed: 
+  * gdb-don-t-return-non-existing-path-in-debuginfod-source-query.patch
+  * gdb-fix-assert-in-process-event-stop-test.patch
+  * gdb-fix-filename-in-not-in-executable-format-error.patch
+  * gdb-handle-no-upper-bound-in-value-subscript.patch
+  * gdb-fortran-handle-dw-at-string-length-with-loclistptr.patch
+- Testsuite patch:
+  * gdb-testsuite-fix-gdb-server-ext-run-exp-for-obs.patch
+- Fedora patch fixups added:
+  * fixup-gdb-rhbz1156192-recursive-dlopen-test.patch
+- Fedora patch fixups updated:
+  * fixup-gdb-btrobust.patch
+  * fixup-2-gdb-archer-vla-tests.patch
+
+-------------------------------------------------------------------
+Thu Nov 12 17:04:42 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Add missing patch command for:
+  * gdb-fortran-fix-print-dynamic-array.patch
+
+-------------------------------------------------------------------
+Thu Nov 12 16:31:58 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Fix patch application on SLE-11:
+  * gdb-testsuite-detect-gdb-prompt-after-monitor-exit.patch
+
+-------------------------------------------------------------------
+Thu Nov 12 07:44:58 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Disable xz-devel and binutils-gold for SLE-10.
+- More enabling of gdbserver for riscv64.
+- Backport from master:
+  * gdb-testsuite-fix-unbalanced-braces-in-gdb-tui-new-layout-exp.patch
+  * gdb-testsuite-catch-condition-evaluation-errors-in-gdb-assert.patch
+  * gdb-testsuite-detect-gdb-prompt-after-monitor-exit.patch
+  * gdb-testsuite-fix-gdb-dlang-watch-loc-exp-on-ppc64.patch
+- Patch to be upstreamed:
+  * gdb-fortran-fix-print-dynamic-array.patch
+
+-------------------------------------------------------------------
+Wed Nov 11 22:13:49 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Enable gdbserver for riscv64.
+- Restrict BuildRequires libdebuginfod to Factory and supporting
+  archs.
+
+-------------------------------------------------------------------
+Tue Nov 10 15:12:24 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Rebase to 10.1 release (as in fedora 33 @ 6c8ccd6).
+  * Debuginfod support.
+  * Multi-target debugging support.
+  * Multithreaded symbol loading enabled by default.
+  * New command set exec-file-mismatch.
+  * New command tui new-layout.
+  * Alias command can now specify default args for an alias.
+- Update libipt to v2.0.2.
+- Fedora-specific patches dropped:
+  * gdb-6.8-bz466901-backtrace-full-prelinked.patch
+- Broken/obsolete fedora patches dropped:
+  * gdb-bz533176-fortran-omp-step.patch
+  * gdb-6.5-BEA-testsuite.patch
+  * gdb-6.7-charsign-test.patch
+- Obsoleted fedora patches dropped:
+  * gdb-6.3-attach-see-vdso-test.patch
+  * gdb-6.3-inferior-notification-20050721.patch
+  * gdb-6.5-gcore-buffer-limit-test.patch
+  * gdb-6.5-missed-trap-on-step-test.patch
+  * gdb-rhbz1818011-bfd-gcc10-error.patch
+- Fedora patches updated:
+  * gdb-6.3-gstack-20050411.patch
+  * gdb-6.3-test-self-20050110.patch
+  * gdb-6.5-bz185337-resolve-tls-without-debuginfo-v2.patch
+  * gdb-6.5-bz218379-solib-trampoline-lookup-lock-fix.patch
+  * gdb-6.6-buildid-locate-core-as-arg.patch
+  * gdb-6.6-buildid-locate-rpm-librpm-workaround.patch
+  * gdb-6.6-buildid-locate-rpm-scl.patch
+  * gdb-6.6-buildid-locate-rpm.patch
+  * gdb-6.6-buildid-locate-solib-missing-ids.patch
+  * gdb-6.6-buildid-locate.patch
+  * gdb-6.7-testsuite-stable-results.patch
+  * gdb-6.8-quit-never-aborts.patch
+  * gdb-archer-pie-addons-keep-disabled.patch
+  * gdb-archer-pie-addons.patch
+  * gdb-archer-vla-tests.patch
+  * gdb-attach-fail-reasons-5of5.patch
+  * gdb-bz1219747-attach-kills.patch
+  * gdb-bz533176-fortran-omp-step.patch
+  * gdb-container-rh-pkg.patch
+  * gdb-fedora-libncursesw.patch
+  * gdb-gnat-dwarf-crash-3of3.patch
+  * gdb-jit-reader-multilib.patch
+  * gdb-linux_perf-bundle.patch
+  * gdb-moribund-utrace-workaround.patch
+  * gdb-runtest-pie-override.patch
+  * gdb-vla-intel-fix-print-char-array.patch
+  * gdb-vla-intel-fortran-strides.patch
+  * gdb-vla-intel-fortran-vla-strings.patch
+  * gdb-vla-intel-stringbt-fix.patch
+  * gdb-vla-intel-tests.patch
+- Fedora patches added:
+  * gdb-config.patch
+- Obsoleted patched dropped:
+  * gdb-testsuite-avoid-pagination-in-attach-32.exp.patch
+  * gdb-fix-toplevel-types-with-fdebug-types-section.patch
+  * gdb-fix-range-loop-index-in-find_method.patch
+  * gdb-fix-python3.9-related-runtime-problems.patch
+  * gdb-fix-unused-function-error.patch
+  * gdb-fix-the-thread-pool.c-compilation.patch
+  * gdb-aarch64-fix-erroneous-use-of-spu-architecture-bfd.patch
+  * gdb-fix-debug-agent-odr-bool-int.patch
+  * gdbserver-fix-build-with-make-3.81.patch
+  * gdb-threads-fix-hang-in-stop_all_threads-after-killing-inferior.patch
+- Fedora patch fixups added:
+  * fixup-gdb-6.3-test-pie-20050107.patch
+  * fixup-gdb-6.5-sharedlibrary-path.patch
+  * fixup-gdb-6.6-buildid-locate.patch
+  * fixup-gdb-6.8-bz442765-threaded-exec-test.patch
+  * fixup-gdb-archer-vla-tests.patch
+  * fixup-gdb-base-gnu-ifunc-strstr-workaround-exp.patch
+  * fixup-gdb-btrobust.patch
+  * fixup-gdb-bz634108-solib_address.patch
+  * fixup-gdb-dts-rhel6-python-compat.patch
+  * fixup-gdb-gnat-dwarf-crash-3of3.patch
+  * fixup-gdb-vla-intel-fortran-vla-strings.patch
+  * fixup-gdb-vla-intel-tests.patch
+  * fixup-gdb-6.3-threaded-watchpoints2-20050225.patch
+- Patches renamed:
+  * gdb-testsuite-fix-perror-in-gdb.opt-fortran-string.exp.patch
+    to fixup-2-gdb-archer-vla-tests.patch
+- Patches updated:
+  * gdb-testsuite-ada-pie.patch
+- Backport from master:
+  * gdb-testsuite-prevent-pagination-in-gdb-internalflags.patch
+
+-------------------------------------------------------------------
 Mon Sep  7 09:04:30 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Enable CTF support also for riscv64

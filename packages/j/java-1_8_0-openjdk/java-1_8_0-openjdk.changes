@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Nov 26 19:13:31 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version jdk8u275 (icedtea 3.17.1)
+  * Import of OpenJDK 8 u275 build 01
+    + JDK-8214440, bsc#1179441: ldap over a TLS connection negotiate
+      failed with "javax.net.ssl.SSLPeerUnverifiedException:
+      hostname of the server "does not match the hostname in the
+      server's certificate"
+    + JDK-8223940: Private key not supported by chosen signature
+      algorithm
+    + JDK-8236512: PKCS11 Connection closed after Cipher.doFinal
+      and NoPadding
+    + JDK-8250861: Crash in MinINode::Ideal(PhaseGVN*, bool)
+  * Bug fixes
+    + PR3815: Fix new s390 size_t issue in
+      g1ConcurrentMarkObjArrayProcessor.cpp
+- Removed patches:
+  * JDK-8250861.patch
+  * s390.patch
+    + integrated upstream
+
+-------------------------------------------------------------------
 Tue Nov 17 09:22:44 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:
@@ -14,6 +36,7 @@ Thu Nov  5 18:06:39 UTC 2020 - Archie Cobbs <archie.cobbs@gmail.com>
 Wed Nov  4 11:32:33 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Enable Shenandoah garbage collector on supported architectures
+  and distributions
 
 -------------------------------------------------------------------
 Mon Nov  2 16:04:46 UTC 2020 - Fridrich Strba <fstrba@suse.com>
@@ -1888,7 +1911,7 @@ Fri Nov 15 09:08:43 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 -------------------------------------------------------------------
 Mon Oct 21 06:41:23 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
-- Apply hotspot-aarch64.patch only for aarch64, as some other 
+- Apply hotspot-aarch64.patch only for aarch64, as some other
   archs (armv6/7) use other hotspot sources
 
 -------------------------------------------------------------------
@@ -4756,7 +4779,7 @@ Thu Nov  2 06:30:45 UTC 2017 - fstrba@suse.com
     + S8176751, CVE-2017-10295: Better URL connections (bsc#1064075)
     + S8178794, CVE-2017-10388: Correct Kerberos ticket grants
       (bsc#1064086)
-    + S8180024: Improve construction of objects during 
+    + S8180024: Improve construction of objects during
       deserialization
     + S8180711, CVE-2017-10346: Better invokespecial checks
       (bsc#1064078)
@@ -4766,7 +4789,7 @@ Thu Nov  2 06:30:45 UTC 2017 - fstrba@suse.com
     + S8181327, CVE-2017-10349: Better X processing (bsc#1064081)
     + S8181370, CVE-2017-10345: Better keystore handling
       (bsc#1064077)
-    + S8181432, CVE-2017-10348: Better processing of unresolved 
+    + S8181432, CVE-2017-10348: Better processing of unresolved
       permissions (bsc#1064080)
     + S8181597, CVE-2017-10357: Process Proxy presentation
       (bsc#1064085)
@@ -4776,87 +4799,87 @@ Thu Nov  2 06:30:45 UTC 2017 - fstrba@suse.com
       (bsc#1064084)
     + S8183028, CVE-2016-10165: Improve CMS header processing
       (bsc#1064069)
-    + S8184682, CVE-2016-9840, CVE-2016-9841, CVE-2016-9842, 
+    + S8184682, CVE-2016-9840, CVE-2016-9841, CVE-2016-9842,
       CVE-2016-9843: Upgrade compression library (bsc#1064070)
   * New features
     + PR3469: Alternative path to tzdb.dat
-    + PR3483: Separate addition of nss.cfg and tz.properties into 
+    + PR3483: Separate addition of nss.cfg and tz.properties into
       separate targets
     + PR3484: Move SystemTap support to its own target
     + PR3485: Support additional targets for the bootstrap build
   * Import of OpenJDK 8 u151 build 12
-    + S8029659: Keytool, print key algorithm of certificate or key 
+    + S8029659: Keytool, print key algorithm of certificate or key
       entry
     + S8057810: New defaults for DSA keys in jarsigner and keytool
-    + S8075484, PR3473, RH1490713: SocketInputStream.socketRead0 
+    + S8075484, PR3473, RH1490713: SocketInputStream.socketRead0
       can hang even with soTimeout set
-    + S8077670: sun/security/krb5/auto/MaxRetries.java may fail 
+    + S8077670: sun/security/krb5/auto/MaxRetries.java may fail
       with BindException
-    + S8087144: sun/security/krb5/auto/MaxRetries.java fails with 
+    + S8087144: sun/security/krb5/auto/MaxRetries.java fails with
       Retry count is -1 less
-    + S8153146: sun/security/krb5/auto/MaxRetries.java failed with 
+    + S8153146: sun/security/krb5/auto/MaxRetries.java failed with
       timeout
     + S8157561: Ship the unlimited policy files in JDK Updates
     + S8158517: Minor optimizations to ISO10126PADDING
-    + S8171319: keytool should print out warnings when reading or 
+    + S8171319: keytool should print out warnings when reading or
       generating cert/cert req using weak algorithms
-    + S8177569: keytool should not warn if signature algorithm 
+    + S8177569: keytool should not warn if signature algorithm
       used in cacerts is weak
     + S8177837: need to upgrade install tools
-    + S8178714: PKIX validator nameConstraints check failing after 
+    + S8178714: PKIX validator nameConstraints check failing after
       change 8175940
     + S8179423: 2 security tests started failing for
       JDK 1.6.0 u161 b05
     + S8179564: Missing @bug for tests added with JDK-8165367
-    + S8181048: Refactor existing providers to refer to the same 
+    + S8181048: Refactor existing providers to refer to the same
       constants for default values for key length
     + S8182879: Add warnings to keytool when using JKS and JCEKS
     + S8184937: LCMS error 13: Couldn't link the profiles
-    + S8185039: Incorrect GPL header causes RE script to miss swap 
+    + S8185039: Incorrect GPL header causes RE script to miss swap
       to commercial header for licensee source bundle
-    + S8185040: Incorrect GPL header causes RE script to miss swap 
+    + S8185040: Incorrect GPL header causes RE script to miss swap
       to commercial header for licensee source bundle
     + S8185778: 8u151 L10n resource file update
     + S8185845: Add SecurityTools.java test library
-    + S8186503: sun/security/tools/jarsigner/DefaultSigalg.java 
+    + S8186503: sun/security/tools/jarsigner/DefaultSigalg.java
       failed after backport to JDK 6/7/8
     + S8186533: 8u151 L10n resource file update md20
     + S8186674: Remove JDK-8174109 from CPU Aug 21 week builds
   * Backports
-    + S8035496, PR3487: G1 ARM: missing remset entry noticed by 
+    + S8035496, PR3487: G1 ARM: missing remset entry noticed by
       VerifyAfterGC for vm/gc/concurrent/lp50yp10rp70mr30st0
-    + S8146086, PR3439, RH1478402: Publishing two webservices on 
+    + S8146086, PR3439, RH1478402: Publishing two webservices on
       same port fails with "java.net.BindException: Address already
       in use"
-    + S8184673, PR3475, RH1487266: Fix compatibility issue in 
+    + S8184673, PR3475, RH1487266: Fix compatibility issue in
       AlgorithmChecker for 3rd party JCE providers
-    + S8185164, PR3438: GetOwnedMonitorInfo() returns incorrect 
+    + S8185164, PR3438: GetOwnedMonitorInfo() returns incorrect
       owned monitor
-    + S8187822, PR3478, RH1494230: C2 conditonal move optimization 
+    + S8187822, PR3478, RH1494230: C2 conditonal move optimization
       might create broken graph
   * Bug fixes
     + PR3479, RH1486025: ECC and NSS JVM crash
     + PR3486: Path to jvm.cfg is wrong in add-systemtap-boot
-    + S8165852, PR3468: (fs) Mount point not found for a file 
+    + S8165852, PR3468: (fs) Mount point not found for a file
       which is present in overlayfs
-    + S8188030, PR3459, RH1484079: AWT java apps fail to start 
+    + S8188030, PR3459, RH1484079: AWT java apps fail to start
       when some minimal fonts are present
   * PPC port
-    + S8145913, PR3466, RH1498309: PPC64: add Montgomery multiply 
+    + S8145913, PR3466, RH1498309: PPC64: add Montgomery multiply
       intrinsic
-    + S8168318, PR3466, RH1498320: PPC64: Use cmpldi instead of 
+    + S8168318, PR3466, RH1498320: PPC64: Use cmpldi instead of
       li/cmpld
-    + S8170328, PR3466, RH1498321: PPC64: Use andis instead of 
+    + S8170328, PR3466, RH1498321: PPC64: Use andis instead of
       lis/and
-    + S8181810, PR3466, RH1498319: PPC64: Leverage extrdi for 
+    + S8181810, PR3466, RH1498319: PPC64: Leverage extrdi for
       bitfield extract
   * AArch64 port
-    + S8161190, PR3488: AArch64: Fix overflow in immediate cmp 
+    + S8161190, PR3488: AArch64: Fix overflow in immediate cmp
       instruction
-    + S8187224, PR3488: aarch64: some inconsistency between 
+    + S8187224, PR3488: aarch64: some inconsistency between
       aarch64_ad.m4 and aarch64.ad
   * SystemTap
-    + PR3467, RH1492139: Hotspot object_alloc tapset uses 
+    + PR3467, RH1492139: Hotspot object_alloc tapset uses
       HeapWordSize incorrectly
   * Shenandoah
     + Add missing UseShenandoahGC checks to C2
@@ -4871,52 +4894,52 @@ Thu Nov  2 06:30:45 UTC 2017 - fstrba@suse.com
     + [backport] Cannot do more than 1000 Full GCs
     + [backport] Cap heap size for TestRegionSizeArgs test
     + [backport] Cleanup "dirty" mentions
-    + [backport] Cleanup unused methods and statements + Trivial 
+    + [backport] Cleanup unused methods and statements + Trivial
       cleanup: removed unused field, etc.
-    + [backport] Common pause marker to capture everything 
+    + [backport] Common pause marker to capture everything
       before/after pause
     + [backport] Consistent print_on and tty handling
     + [backport] "continuous" heuristics
     + [backport] Disable biased locking by default
     + [backport] Fix build error: avoid loops with empty bodies
-    + [backport] Fix build error: switches over enums should take 
+    + [backport] Fix build error: switches over enums should take
       all enums
-    + [backport] Fix build error: verifier liveness should not be 
+    + [backport] Fix build error: verifier liveness should not be
       implicitly casted to size_t
-    + [backport] Fixed assertion failures when printing heap 
+    + [backport] Fixed assertion failures when printing heap
       region to trace output
-    + [backport] Fixed C calling convention of shenandoah_wb() on 
+    + [backport] Fixed C calling convention of shenandoah_wb() on
       Windows
     + [backport] LotsOfCycles test always degrades to Full GC
     + [backport] Made ShenandoahPrinter debug only
     + [backport] Make sure different Verifier levels work
-    + [backport] Make sure we have at least one memory pool per 
+    + [backport] Make sure we have at least one memory pool per
       memory manager (JMX) + JMX double-counts heap used size
     + [backport] Mark heuristics diagnostic/experimental
     + [backport] Move Verifier "start" message under (gc,start)
     + [backport] On-demand commit as heap resizing strategy
     + [backport] Periodic GC
-    + [backport] PhiNode::has_only_data_users() needs to apply to 
+    + [backport] PhiNode::has_only_data_users() needs to apply to
       shenandoah barrier only
     + [backport] Pinning humongous regions should be allowed
-    + [backport] Reclaimed humongous regions should count towards 
+    + [backport] Reclaimed humongous regions should count towards
       immediate garbage
     + [backport] Refactor region flags into finite state machine
     + [backport] Refactor ShConcThread dispatch
-    + [backport] Refactor ShenandoahFreeSet + Fast-forward over 
+    + [backport] Refactor ShenandoahFreeSet + Fast-forward over
       humongous regions to keep "current" non-humongous
     + [backport] Refactor ShenandoahHeapLock
     + [backport] Refactor ShenandoahHeapRegionSet
-    + [backport] Region (byte|word) shifts as the replacement for 
+    + [backport] Region (byte|word) shifts as the replacement for
       divisions
-    + [backport] Rehash -XX:-UseTLAB in tests + Rehash allocation 
+    + [backport] Rehash -XX:-UseTLAB in tests + Rehash allocation
       tests
     + [backport] Rename inline guards
-    + [backport] Selectable humongous threshold + Humongous top() 
+    + [backport] Selectable humongous threshold + Humongous top()
       should be correct for iteration
-    + [backport] Shortcut concurrent cycle when enough immediate 
+    + [backport] Shortcut concurrent cycle when enough immediate
       garbage is reclaimed
-    + [backport] Templatize and improve inlining of arraycopy and 
+    + [backport] Templatize and improve inlining of arraycopy and
       clone barriers.
     + [backport] TestRegionSampling test
     + [backport] TestSmallHeap test for Shenandoah
@@ -4924,7 +4947,7 @@ Thu Nov  2 06:30:45 UTC 2017 - fstrba@suse.com
     + [backport] Underflow in adaptive free_threshold calculation
     + [backport] Unlock more GC-specific tests for Shenandoah
     + [backport] Update counters on slow-path more rarely
-    + [backport] Verifier should avoid pushing on stack when 
+    + [backport] Verifier should avoid pushing on stack when
       walking objects past TAMS
     + [backport] Verifier should walk cset and humongous regions
     + [backport] Verify humongous regions liveness
@@ -4933,11 +4956,11 @@ Thu Nov  2 06:30:45 UTC 2017 - fstrba@suse.com
     + Fix build error in release config.
     + Fixed Fixed message logging
     + Handle Java heap initialization and expansion failures
-    + Make sure -verbose:gc, PrintGC, PrintGCDetails work 
+    + Make sure -verbose:gc, PrintGC, PrintGCDetails work
       consistently
-    + Missing barriers on constant oops + acmp rework + cas fix + 
+    + Missing barriers on constant oops + acmp rework + cas fix +
       write barrier on constant oop fix
-    + Missing UseShenandoahGC check in 
+    + Missing UseShenandoahGC check in
       LibraryCallKit::inline_multiplyToLen()
     + Missing UseShenandoahGC check to C2
     + OOME in SurrogateLockerThread deadlocks the GC cycle
@@ -6718,7 +6741,7 @@ Tue May 31 06:47:43 UTC 2016 - fstrba@suse.com
 - Added patch:
   * java-1_8_0-openjdk-gcc6.patch
     + Fix build with gcc 6.1
-- Add -fno-delete-null-pointer-checks -fno-lifetime-dse to try to 
+- Add -fno-delete-null-pointer-checks -fno-lifetime-dse to try to
   avoid some crashes
 
 -------------------------------------------------------------------
@@ -6956,7 +6979,7 @@ Thu Apr 28 08:19:17 UTC 2016 - fstrba@suse.com
     - PR2511: Reset success following calls in LayoutManager.cpp
     - PR2541: Allow the user to specify the cacerts file to use
     - PR2544: Desktop files do not allow installation from multiple
-      versions of IcedTea 
+      versions of IcedTea
     - PR2547: Extend tarball checksumming option to allow the
       checksum to be specified
     - PR2631: jvm.cfg missing for ppc64le
@@ -7138,7 +7161,7 @@ Mon Jan 25 07:54:33 UTC 2016 - fstrba@suse.com
     ESR 38.x before 38.5.2, does not reject MD5 signatures in Server
     Key Exchange messages in TLS 1.2 Handshake Protocol traffic,
     which makes it easier for man-in-the-middle attackers to spoof
-    servers by triggering a collision. 
+    servers by triggering a collision.
   * CVE-2015-8126: Multiple buffer overflows in the (1) png_set_PLTE
     and (2) png_get_PLTE functions in libpng before 1.0.64, 1.1.x
     and 1.2.x before 1.2.54, 1.3.x and 1.4.x before 1.4.17, 1.5.x
@@ -7149,7 +7172,7 @@ Mon Jan 25 07:54:33 UTC 2016 - fstrba@suse.com
   * CVE-2016-0402: Unspecified vulnerability in the Java SE and
     Java SE Embedded components in Oracle Java SE 6u105, 7u91, and
     8u66 and Java SE Embedded 8u65 allows remote attackers to affect
-    integrity via unknown vectors related to Networking. 
+    integrity via unknown vectors related to Networking.
   * CVE-2016-0448: Unspecified vulnerability in the Java SE and
     Java SE Embedded components in Oracle Java SE 6u105, 7u91, and
     8u66, and Java SE Embedded 8u65 allows remote authenticated
@@ -7158,22 +7181,22 @@ Mon Jan 25 07:54:33 UTC 2016 - fstrba@suse.com
     Embedded, and JRockit components in Oracle Java SE 6u105, 7u91,
     and 8u66; Java SE Embedded 8u65; and JRockit R28.3.8 allows
     remote attackers to affect availability via vectors related to
-    JAXP. 
+    JAXP.
   * CVE-2016-0475: Unspecified vulnerability in the Java SE, Java SE
     Embedded, and JRockit components in Oracle Java SE 8u66; Java SE
     Embedded 8u65; and JRockit R28.3.8 allows remote attackers to
     affect confidentiality and integrity via unknown vectors related
-    to Libraries. 
+    to Libraries.
   * CVE-2016-0483: Unspecified vulnerability in the Java SE, Java SE
     Embedded, and JRockit components in Oracle Java SE 6u105, 7u91,
     and 8u66; Java SE Embedded 8u65; and JRockit R28.3.8 allows
     remote attackers to affect confidentiality, integrity, and
-    availability via vectors related to AWT. 
+    availability via vectors related to AWT.
   * CVE-2016-0494: Unspecified vulnerability in the Java SE and Java
     SE Embedded components in Oracle Java SE 6u105, 7u91, and 8u66
     and Java SE Embedded 8u65 allows remote attackers to affect
     confidentiality, integrity, and availability via unknown vectors
-    related to 2D. 
+    related to 2D.
 - Modified patch:
   * s390-java-opts.patch
     + rediff to the changed context
@@ -7232,7 +7255,7 @@ Thu Oct 22 12:19:38 UTC 2015 - fstrba@suse.com
   * CVE-2015-4908: A remote user can exploit a flaw in the JavaFX
     component to partially access data
   * CVE-2015-4916: A remote user can exploit a flaw in the JavaFX
-    component to partially access data  
+    component to partially access data
 - Modified patch:
   * s390-size_t.patch
     - Account for an additional uintptr_t <-> size_t mismatch
@@ -7413,7 +7436,7 @@ Tue Jan 27 07:52:58 UTC 2015 - fstrba@suse.com
     -  replaced by one that forward-ports to b22
 - Added patch
   * aarch64-b12tob22.patch
-    - forward-port the aarch64 hotspot to b22. 
+    - forward-port the aarch64 hotspot to b22.
 
 -------------------------------------------------------------------
 Sun Jan 25 18:06:11 UTC 2015 - fstrba@suse.com

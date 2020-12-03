@@ -26,46 +26,33 @@ not have this problem result in ~200 FAILs.
 
 gdb/testsuite/ChangeLog:
 
-2019-08-06  Tom de Vries  <tdevries@suse.de>
+2020-11-06  Tom de Vries  <tdevries@suse.de>
 
-	* lib/ada.exp (gdb_compile_ada_bare): Factor out of ...
-	(gdb_compile_ada): ... here.
+	* lib/ada.exp (gdb_compile_ada): Call gdb_can_compile_ada.
 	(gdb_can_compile_ada): New gdb_caching_proc.
 	* lib/gdb.exp: Add load_lib ada.exp.
 	(skip_ada_tests): Return 1 if !gdb_can_compile_ada.
 
 ---
- gdb/testsuite/lib/ada.exp | 38 +++++++++++++++++++++++++++++++++++++-
+ gdb/testsuite/lib/ada.exp | 31 +++++++++++++++++++++++++++++++
  gdb/testsuite/lib/gdb.exp |  6 ++++++
- 2 files changed, 43 insertions(+), 1 deletion(-)
+ 2 files changed, 37 insertions(+)
 
 diff --git a/gdb/testsuite/lib/ada.exp b/gdb/testsuite/lib/ada.exp
-index 1345c747c5..e3a600327e 100644
+index 0ffc5957c8..8370ce5b9b 100644
 --- a/gdb/testsuite/lib/ada.exp
 +++ b/gdb/testsuite/lib/ada.exp
-@@ -29,7 +29,7 @@ proc target_compile_ada_from_dir {builddir source dest type options} {
+@@ -87,12 +87,43 @@ proc gdb_compile_ada_1 {source dest type options} {
+ # compile was successful.
  
- # Compile some Ada code.
- 
--proc gdb_compile_ada {source dest type options} {
-+proc gdb_compile_ada_bare {source dest type options} {
- 
-     set srcdir [file dirname $source]
-     set gprdir [file dirname $srcdir]
-@@ -53,10 +53,46 @@ proc gdb_compile_ada {source dest type options} {
-     # We therefore simply check whether the dest file has been created
-     # or not. Unless not present, the build has succeeded.
-     if [file exists $dest] { set result "" }
-+    return $result
-+}
-+
-+proc gdb_compile_ada {source dest type options} {
+ proc gdb_compile_ada {source dest type options} {
 +    if { [gdb_can_compile_ada] == 0 } {
 +	global gdb_test_file_name
 +	unsupported "$gdb_test_file_name"
 +	return "Cannot compile ada"
 +    }
-+    set result [gdb_compile_ada_bare $source $dest $type $options]
+     set result [gdb_compile_ada_1 $source $dest $type $options]
+ 
      gdb_compile_test $source $result
      return $result
  }
@@ -87,7 +74,7 @@ index 1345c747c5..e3a600327e 100644
 +
 +    file mkdir $dir
 +    gdb_produce_source $src $code
-+    set res [gdb_compile_ada_bare $src $dest executable {debug}]
++    set res [gdb_compile_ada_1 $src $dest executable {debug}]
 +    file delete -force $dir
 +
 +    if { $res != "" } {
@@ -100,18 +87,18 @@ index 1345c747c5..e3a600327e 100644
  # used a different naming convention from many of the other gdb tests,
  # and this difference was preserved during the conversion to
 diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
-index edc8dfcdfd..8585320bd2 100644
+index 653f145c1c..a0f2961a75 100644
 --- a/gdb/testsuite/lib/gdb.exp
 +++ b/gdb/testsuite/lib/gdb.exp
-@@ -29,6 +29,7 @@ load_lib libgloss.exp
- load_lib cache.exp
+@@ -84,6 +84,7 @@ load_lib cache.exp
  load_lib gdb-utils.exp
  load_lib memory.exp
+ load_lib check-test-names.exp
 +load_lib ada.exp
  
  global GDB
  
-@@ -1881,6 +1882,11 @@ proc skip_fortran_tests {} {
+@@ -2093,6 +2094,11 @@ proc skip_fortran_tests {} {
  # Return a 1 if I don't even want to try to test ada.
  
  proc skip_ada_tests {} {

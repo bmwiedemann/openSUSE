@@ -8,12 +8,12 @@ Subject: gdb-archer-pie-addons-keep-disabled.patch
 diff --git a/gdb/breakpoint.c b/gdb/breakpoint.c
 --- a/gdb/breakpoint.c
 +++ b/gdb/breakpoint.c
-@@ -15396,6 +15396,51 @@ static struct cmd_list_element *enablebreaklist = NULL;
+@@ -15431,6 +15431,50 @@ static struct cmd_list_element *enablebreaklist = NULL;
  
  cmd_list_element *commands_cmd_element = nullptr;
  
 +void
-+breakpoints_relocate (struct objfile *objfile, struct section_offsets *delta)
++breakpoints_relocate (struct objfile *objfile, section_offsets &delta)
 +{
 +  struct bp_location *bl, **blp_tmp;
 +  int changed = 0;
@@ -32,7 +32,7 @@ diff --git a/gdb/breakpoint.c b/gdb/breakpoint.c
 +	  CORE_ADDR relocated_address;
 +	  CORE_ADDR delta_offset;
 +
-+	  delta_offset = ANOFFSET (delta, osect->the_bfd_section->index);
++	  delta_offset = delta[osect->the_bfd_section->index];
 +	  if (delta_offset == 0)
 +	    continue;
 +	  relocated_address = bl->address + delta_offset;
@@ -56,19 +56,18 @@ diff --git a/gdb/breakpoint.c b/gdb/breakpoint.c
 +	       bp_location_is_less_than);
 +}
 +
-+void _initialize_breakpoint (void);
+ void _initialize_breakpoint ();
  void
- _initialize_breakpoint (void)
- {
+ _initialize_breakpoint ()
 diff --git a/gdb/breakpoint.h b/gdb/breakpoint.h
 --- a/gdb/breakpoint.h
 +++ b/gdb/breakpoint.h
-@@ -1696,6 +1696,9 @@ extern const char *ep_parse_optional_if_clause (const char **arg);
+@@ -1691,6 +1691,9 @@ extern const char *ep_parse_optional_if_clause (const char **arg);
     UIOUT iff debugging multiple threads.  */
  extern void maybe_print_thread_hit_breakpoint (struct ui_out *uiout);
  
 +extern void breakpoints_relocate (struct objfile *objfile,
-+				  struct section_offsets *delta);
++				  section_offsets &delta);
 +
  /* Print the specified breakpoint.  */
  extern void print_breakpoint (breakpoint *bp);
@@ -76,7 +75,7 @@ diff --git a/gdb/breakpoint.h b/gdb/breakpoint.h
 diff --git a/gdb/objfiles.c b/gdb/objfiles.c
 --- a/gdb/objfiles.c
 +++ b/gdb/objfiles.c
-@@ -816,6 +816,11 @@ objfile_relocate1 (struct objfile *objfile,
+@@ -742,6 +742,11 @@ objfile_relocate1 (struct objfile *objfile,
  				obj_section_addr (s));
      }
  
@@ -88,15 +87,3 @@ diff --git a/gdb/objfiles.c b/gdb/objfiles.c
    /* Data changed.  */
    return 1;
  }
-diff --git a/gdb/value.c b/gdb/value.c
---- a/gdb/value.c
-+++ b/gdb/value.c
-@@ -2840,7 +2840,7 @@ value_static_field (struct type *type, int fieldno)
-     case FIELD_LOC_KIND_PHYSADDR:
-       retval = value_at_lazy (TYPE_FIELD_TYPE (type, fieldno),
- 			      TYPE_FIELD_STATIC_PHYSADDR (type, fieldno)
--			      + (TYPE_OBJFILE (type) == NULL ? 0 : TYPE_OBJFILE (type)->section_offsets[SECT_OFF_TEXT (TYPE_OBJFILE (type))]));
-+			      + (TYPE_OBJFILE (type) == NULL ? 0 : ANOFFSET (TYPE_OBJFILE (type)->section_offsets, SECT_OFF_TEXT (TYPE_OBJFILE (type)))));
-       break;
-     case FIELD_LOC_KIND_PHYSNAME:
-     {

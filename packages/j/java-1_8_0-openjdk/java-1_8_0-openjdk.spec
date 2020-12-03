@@ -18,7 +18,7 @@
 
 %{!?aarch64:%global aarch64 aarch64 arm64 armv8}
 %global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm}
-%global icedtea_version 3.17.0
+%global icedtea_version 3.17.1
 %global icedtea_sound_version 1.0.1
 %global buildoutputdir openjdk.build/
 # Convert an absolute path to a relative path.  Each symbolic link is
@@ -32,8 +32,8 @@
 # priority must be 6 digits in total
 %global priority        1805
 %global javaver         1.8.0
-%global updatever       272
-%global buildver        10
+%global updatever       275
+%global buildver        01
 # Standard JPackage directories and symbolic links.
 %global sdklnk          java-%{javaver}-openjdk
 %global archname        %{sdklnk}
@@ -146,7 +146,11 @@
 %else
 %global with_systemtap 0
 %endif
-%global with_shenandoah 1
+%if 0%{?suse_version} > 1500 && !0%{?sle_version}
+%global with_shanandoah 1
+%else
+%global with_shenandoah 0
+%endif
 %if %{with_systemtap}
 # Where to install systemtap tapset (links)
 # We would like these to be in a package specific subdir,
@@ -192,10 +196,6 @@ Patch14:        zero-javadoc-verbose.patch
 #
 # Patch for PPC
 Patch103:       ppc-zero-hotspot.patch
-# Patch for S390
-Patch104:       s390.patch
-#
-Patch200:       JDK-8250861.patch
 
 Patch1001:      java-1_8_0-openjdk-suse-desktop-files.patch
 Patch1002:      icedtea-3.8.0-s390.patch
@@ -536,12 +536,6 @@ patch -p0 -i %{PATCH14}
 # PPC fixes
 patch -p0 -i %{PATCH103}
 %endif
-
-%ifarch s390
-patch -p0 -i %{PATCH104}
-%endif
-
-patch -p0 -i %{PATCH200}
 
 patch -p0 -i %{PATCH2001}
 patch -p0 -i %{PATCH2002}

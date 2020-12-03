@@ -12,7 +12,7 @@ https://bugzilla.redhat.com/show_bug.cgi?id=953585
 diff --git a/gdb/build-id.c b/gdb/build-id.c
 --- a/gdb/build-id.c
 +++ b/gdb/build-id.c
-@@ -743,7 +743,11 @@ static int missing_rpm_list_entries;
+@@ -742,7 +742,11 @@ static int missing_rpm_list_entries;
  /* Returns the count of newly added rpms.  */
  
  static int
@@ -24,7 +24,7 @@ diff --git a/gdb/build-id.c b/gdb/build-id.c
  {
    static int rpm_init_done = 0;
    rpmts ts;
-@@ -850,7 +854,11 @@ missing_rpm_enlist (const char *filename)
+@@ -849,7 +853,11 @@ missing_rpm_enlist (const char *filename)
    mi = rpmtsInitIterator_p (ts, RPMTAG_BASENAMES, filename, 0);
    if (mi != NULL)
      {
@@ -36,7 +36,7 @@ diff --git a/gdb/build-id.c b/gdb/build-id.c
  	{
  	  Header h;
  	  char *debuginfo, **slot, *s, *s2;
-@@ -968,6 +976,37 @@ missing_rpm_enlist (const char *filename)
+@@ -967,6 +975,37 @@ missing_rpm_enlist (const char *filename)
  	    xfree (debuginfo);
  	  count++;
  	}
@@ -74,7 +74,7 @@ diff --git a/gdb/build-id.c b/gdb/build-id.c
  
        rpmdbFreeIterator_p (mi);
      }
-@@ -977,6 +1016,20 @@ missing_rpm_enlist (const char *filename)
+@@ -976,6 +1015,20 @@ missing_rpm_enlist (const char *filename)
    return count;
  }
  
@@ -95,10 +95,10 @@ diff --git a/gdb/build-id.c b/gdb/build-id.c
  static bool
  missing_rpm_list_compar (const char *ap, const char *bp)
  {
-diff --git a/gdb/dwarf2read.c b/gdb/dwarf2read.c
---- a/gdb/dwarf2read.c
-+++ b/gdb/dwarf2read.c
-@@ -3497,6 +3497,16 @@ read_gdb_index_from_buffer (struct objfile *objfile,
+diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
+--- a/gdb/dwarf2/read.c
++++ b/gdb/dwarf2/read.c
+@@ -3025,6 +3025,16 @@ read_gdb_index_from_buffer (const char *filename,
       "set use-deprecated-index-sections on".  */
    if (version < 6 && !deprecated_ok)
      {
@@ -115,7 +115,7 @@ diff --git a/gdb/dwarf2read.c b/gdb/dwarf2read.c
        static int warning_printed = 0;
        if (!warning_printed)
  	{
-@@ -3508,6 +3518,10 @@ to use the section anyway."),
+@@ -3036,6 +3046,10 @@ to use the section anyway."),
  	  warning_printed = 1;
  	}
        return 0;

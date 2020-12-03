@@ -44,7 +44,7 @@ glibc-debuginfo-2.7-2.x86_64: /usr/lib/debug/lib64/libc.so.6.debug:
 diff --git a/gdb/printcmd.c b/gdb/printcmd.c
 --- a/gdb/printcmd.c
 +++ b/gdb/printcmd.c
-@@ -1214,6 +1214,10 @@ print_command_1 (const char *args, int voidprint)
+@@ -1210,6 +1210,10 @@ print_command_1 (const char *args, int voidprint)
  
    if (exp != nullptr && *exp)
      {

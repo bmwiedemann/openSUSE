@@ -17,7 +17,7 @@
 
 
 Name:           elfutils-debuginfod
-Version:        0.181
+Version:        0.182
 Release:        0
 Summary:        debuginfod part of elfutils
 License:        GPL-3.0-or-later
@@ -62,6 +62,7 @@ such servers to download those files on demand.
 %package -n libdebuginfod1
 Summary:        Library for build-id HTTP ELF/DWARF server
 Group:          System/Libraries
+Conflicts:      libdebuginfod1-dummy = %{version}
 
 %description -n libdebuginfod1
 The libdebuginfod1 package contains shared libraries
@@ -72,6 +73,7 @@ command-line frontend.
 %package -n libdebuginfod-devel
 Summary:        Libraries and headers to build debuginfod client applications
 Group:          Development/Libraries/C and C++
+Conflicts:      libdebuginfod-dummy-devel = %{version}
 
 %description -n libdebuginfod-devel
 The libdebuginfod-devel package contains the libraries
@@ -80,6 +82,7 @@ to create applications to use the debuginfod service.
 %package -n debuginfod-client
 Summary:        Command line client for build-id HTTP ELF/DWARF server
 Group:          Development/Tools/Building
+Conflicts:      debuginfod-dummy-client = %{version}
 
 %description -n debuginfod-client
 The elfutils-debuginfod-client package contains a command-line frontend.
@@ -161,6 +164,8 @@ export XFAIL_TESTS="dwfl-proc-attach run-backtrace-dwarf.sh run-backtrace-native
 %{_unitdir}/debuginfod.service
 %{_mandir}/man8/debuginfod.8*
 %{_fillupdir}/sysconfig.debuginfod
+%config %{_sysconfdir}/profile.d/debuginfod.sh
+%config %{_sysconfdir}/profile.d/debuginfod.csh
 
 %dir %attr(0700,debuginfod,debuginfod) %{_localstatedir}/cache/debuginfod
 %verify(not md5 size mtime) %attr(0600,debuginfod,debuginfod) %{_localstatedir}/cache/debuginfod/debuginfod.sqlite

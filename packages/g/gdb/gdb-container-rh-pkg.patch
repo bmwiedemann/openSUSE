@@ -9,7 +9,7 @@ Subject: gdb-container-rh-pkg.patch
 diff --git a/gdb/remote.c b/gdb/remote.c
 --- a/gdb/remote.c
 +++ b/gdb/remote.c
-@@ -13916,7 +13916,17 @@ remote_target::pid_to_exec_file (int pid)
+@@ -14031,7 +14031,17 @@ remote_target::pid_to_exec_file (int pid)
    char *annex = NULL;
  
    if (packet_support (PACKET_qXfer_exec_file) != PACKET_ENABLE)
@@ -26,5 +26,5 @@ diff --git a/gdb/remote.c b/gdb/remote.c
 +      return NULL;
 +    }
  
-   inf = find_inferior_pid (pid);
+   inferior *inf = find_inferior_pid (this, pid);
    if (inf == NULL)

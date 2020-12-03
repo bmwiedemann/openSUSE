@@ -1,0 +1,14 @@
+diff --git a/gdb/f-valprint.c b/gdb/f-valprint.c
+index 7467e518d06..fc9bd7a15f3 100644
+--- a/gdb/f-valprint.c
++++ b/gdb/f-valprint.c
+@@ -117,7 +117,8 @@ f77_print_array_1 (int nss, int ndimensions, struct type *type,
+   LONGEST lowerbound, upperbound;
+   LONGEST i;
+ 
+-  get_discrete_bounds (range_type, &lowerbound, &upperbound);
++  if (get_discrete_bounds (range_type, &lowerbound, &upperbound) < 0)
++    lowerbound = 0, upperbound = -1;
+ 
+   if (nss != ndimensions)
+     {

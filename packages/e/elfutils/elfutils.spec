@@ -17,7 +17,7 @@
 
 
 Name:           elfutils
-Version:        0.181
+Version:        0.182
 Release:        0
 Summary:        Higher-level library to access ELF files
 License:        GPL-3.0-or-later
@@ -30,6 +30,7 @@ Source2:        baselibs.conf
 Source3:        %{name}.changes
 Source4:        https://fedorahosted.org/releases/e/l/%{name}/%{version}/%{name}-%{version}.tar.bz2.sig
 Source5:        %{name}.keyring
+Source6:        elfutils-rpmlintrc
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -100,6 +101,37 @@ Requires:       libelf-devel = %{version}
 This package contains the headers and libraries needed to build
 applications that require libdw.
 
+%package -n libdebuginfod1-dummy
+Summary:        Library for build-id HTTP ELF/DWARF server
+Group:          System/Libraries
+Provides:       libdebuginfod1 = %{version}
+
+%description -n libdebuginfod1-dummy
+The libdebuginfod1 package contains shared libraries
+dynamically loaded from -ldw, which use a debuginfod service
+to look up debuginfo and associated data. Also includes a
+command-line frontend.
+The package is dummy.
+
+%package -n libdebuginfod-dummy-devel
+Summary:        Libraries and headers to build debuginfod client applications
+Group:          Development/Libraries/C and C++
+Provides:       libdebuginfod-devel = %{version}
+
+%description -n libdebuginfod-dummy-devel
+The libdebuginfod-devel package contains the libraries
+to create applications to use the debuginfod service.
+The package is dummy.
+
+%package -n debuginfod-dummy-client
+Summary:        Command line client for build-id HTTP ELF/DWARF server
+Group:          Development/Tools/Building
+Provides:       debuginfod-client = %{version}
+
+%description -n debuginfod-dummy-client
+The elfutils-debuginfod-client package contains a command-line frontend.
+The package is dummy.
+
 %lang_package
 
 %prep
@@ -126,7 +158,7 @@ CFLAGS+=" -fPIC"
 autoreconf -fi
 # some patches create new test scripts, which are created 644 by default
 chmod a+x tests/run*.sh
-%configure --program-prefix=eu- --disable-debuginfod --disable-libdebuginfod
+%configure --program-prefix=eu- --disable-debuginfod --enable-libdebuginfod=dummy
 %make_build
 
 %install
@@ -142,6 +174,8 @@ ls -lR %{buildroot}/%{_libdir}/libelf*
 %postun -n libasm1 -p /sbin/ldconfig
 %postun -n libelf1 -p /sbin/ldconfig
 %postun -n libdw1 -p /sbin/ldconfig
+%post -n libdebuginfod1-dummy -p /sbin/ldconfig
+%postun -n libdebuginfod1-dummy -p /sbin/ldconfig
 
 %check
 %if 0%{?qemu_user_space_build}
@@ -212,6 +246,20 @@ export XFAIL_TESTS="dwfl-proc-attach run-backtrace-dwarf.sh run-backtrace-native
 %{_includedir}/elfutils/libdwfl.h
 %{_includedir}/elfutils/known-dwarf.h
 %{_libdir}/pkgconfig/libdw.pc
+
+%files -n libdebuginfod1-dummy
+%{_libdir}/libdebuginfod.so.*
+%{_libdir}/libdebuginfod-%{version}.so
+
+%files -n libdebuginfod-dummy-devel
+%{_mandir}/man3/debuginfod_*.3*
+%dir %{_includedir}/elfutils
+%{_includedir}/elfutils/debuginfod.h
+%{_libdir}/libdebuginfod.so
+
+%files -n debuginfod-dummy-client
+%{_bindir}/debuginfod-find
+%{_mandir}/man1/debuginfod-find.1*
 
 %files lang -f %{name}.lang
 

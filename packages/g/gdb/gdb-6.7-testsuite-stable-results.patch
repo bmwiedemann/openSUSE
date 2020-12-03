@@ -28,7 +28,7 @@ frames-invalid can happen asynchronously.
 diff --git a/gdb/testsuite/gdb.base/fileio.c b/gdb/testsuite/gdb.base/fileio.c
 --- a/gdb/testsuite/gdb.base/fileio.c
 +++ b/gdb/testsuite/gdb.base/fileio.c
-@@ -560,6 +560,28 @@ strerrno (int err)
+@@ -559,6 +559,28 @@ strerrno (int err)
  int
  main ()
  {

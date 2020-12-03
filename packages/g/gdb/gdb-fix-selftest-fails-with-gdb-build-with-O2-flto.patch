@@ -1,0 +1,54 @@
+Fix selftest FAILs with gdb build with -O2 -flto
+
+---
+ gdb/complaints.h                   | 5 +++--
+ gdb/main.c                         | 5 +++++
+ gdb/testsuite/gdb.gdb/selftest.exp | 2 +-
+ 3 files changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/gdb/complaints.h b/gdb/complaints.h
+index 6ad056d257..cac09ff573 100644
+--- a/gdb/complaints.h
++++ b/gdb/complaints.h
+@@ -42,9 +42,10 @@ extern int stop_whining;
+   while (0)
+ 
+ /* Clear out / initialize all complaint counters that have ever been
+-   incremented.  */
++   incremented.  Prevent inlining this function for the benefit of GDB's
++   selftests in the testsuite.  */
+ 
+-extern void clear_complaints ();
++extern void clear_complaints ()  __attribute__((noinline));
+ 
+ 
+ #endif /* !defined (COMPLAINTS_H) */
+diff --git a/gdb/main.c b/gdb/main.c
+index 19bbb92388..9d35f9baa8 100644
+--- a/gdb/main.c
++++ b/gdb/main.c
+@@ -1235,6 +1235,11 @@ captured_main_1 (struct captured_main_args *context)
+     }
+ }
+ 
++/* Prevent inlining this function for the benefit of GDB's selftests in the
++   testsuite.  */
++
++static void captured_main (void *data) __attribute__((noinline));
++
+ static void
+ captured_main (void *data)
+ {
+diff --git a/gdb/testsuite/gdb.gdb/selftest.exp b/gdb/testsuite/gdb.gdb/selftest.exp
+index 43043e58ea..992d79f5cf 100644
+--- a/gdb/testsuite/gdb.gdb/selftest.exp
++++ b/gdb/testsuite/gdb.gdb/selftest.exp
+@@ -143,7 +143,7 @@ proc test_with_self { } {
+     setup_xfail "i*86-pc-linuxaout-gnu"
+     set description "backtrace through signal handler"
+     gdb_test_multiple "backtrace" "$description" {
+-	-re "#0.*(read|poll).*in main \\(.*\\) at .*gdb\\.c.*$gdb_prompt $" {
++	-re "#0.*(read|poll).* main \\(.*\\) at .*gdb\\.c.*$gdb_prompt $" {
+ 	    pass "$description"
+ 	}
+     }
