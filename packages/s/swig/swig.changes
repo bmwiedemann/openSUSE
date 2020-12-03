@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 26 20:34:33 UTC 2020 - Michael Behrisch <oss@behrisch.de>
+
+- Fixing package dependencies for CentOS
+
+-------------------------------------------------------------------
 Mon Nov 23 10:08:22 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
 
 - move examples to /usr/share/swig/examples

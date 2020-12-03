@@ -21,7 +21,9 @@
 %define docpath %{_docdir}/%{name}-%{version}
 BuildRequires:  perl-Test-Simple
 BuildRequires:  perl-devel
+%if 0%{?centos_version} < 800
 BuildRequires:  ruby
+%endif
 %endif
 %if 0%{?suse_version} > 0
 %define docpath %{_docdir}/%{name}
@@ -48,6 +50,11 @@ BuildRequires:  libtool
 BuildRequires:  pcre-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
+%if 0%{?centos_version} >= 800
+BuildRequires:  boost-devel
+BuildRequires:  python3-devel
+BuildRequires:  python3-tools
+%else
 %if 0%{?suse_version} >= 1500
 BuildRequires:  libboost_headers-devel
 BuildRequires:  python3-devel
@@ -55,6 +62,7 @@ BuildRequires:  python3-tools
 %else
 BuildRequires:  boost-devel
 BuildRequires:  python-devel > 2.6
+%endif
 %endif
 %if %{with swig_ocaml}
 BuildRequires:  ncurses-devel
@@ -128,7 +136,7 @@ export CCSHARED="-fPIC"
 make %{?_smp_mflags}
 
 %check
-%if 0%{?suse_version} >= 1500
+%if 0%{?suse_version} >= 1500 || 0%{?centos_version} >= 800
 export PY3=true
 %endif
 make %{?_smp_mflags} check
