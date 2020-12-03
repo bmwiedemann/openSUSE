@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov 30 23:30:22 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Updatged to latest upstream, including:
+  * iscsiadm: Optimize the the verification of mode paramters
+  * iscsid: Poll timeout value to 1 minute for iscsid
+  * iscsiadm: fix host stats mode coredump
+  * iscsid: fix logging level when starting and shutting down daemon
+  * Updated iscsiadm man page.
+  * Fix memory leak in sysfs_get_str
+  * libopeniscsiusr: Compare with max int instead of max long
+
+- Systemd unit files should not depend on network.target (bsc#1179440),
+  updating:
+  * open-iscsi-SUSE-latest.diff.bz2
+
+-------------------------------------------------------------------
 Wed Nov  4 18:58:29 UTC 2020 - Lee Duncan <lduncan@suse.com>
 
 - Updated to latest upstream, including async login ability:
