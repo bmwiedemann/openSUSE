@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec  1 15:22:15 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.4
+- Changes since 5.20.3:
+  * weight main categories properly (kde#429153)
+
+-------------------------------------------------------------------
 Wed Nov 11 11:08:02 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.3
