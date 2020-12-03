@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Dec  1 09:42:11 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Import commit f6104ea5f554233e34b94ffd92da8332c3bd7d8f
+
+  617aed9236 scope: on unified, make sure to unwatch all PIDs once they've been moved to the cgroup scope
+
+-------------------------------------------------------------------
+Tue Nov 24 13:39:28 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Don't post-require systemd-default-settings-branding anymore
+
+  This is actually not needed now that the branding package issues a
+  PID1 reloading every times it's being updated.
+
+-------------------------------------------------------------------
+Mon Nov 23 17:20:28 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Import commit 49caf8e37aba04841e5493ccc25e7edab462d95b
+
+  f8f7286527 units: restore sysfs conditions in sys-fs-fuse-connections.mount and sys-kernel-config.mount
+  e9c7158dc7 units: wait until some fs modules are entirely loaded before mounting their corresponding filesystem (bsc#1178631)
+  ac7ddc4201 Revert "units: skip modprobe@.service if the unit appears to be already loaded"
+  17310a1d19 core: serialize u->pids until the processes have been moved to the scope cgroup (bsc#1174436)
+  1416965614 meson: add option to skip installing to $sysconfdir
+  f71a1ef5d0 systemctl: give a nice hint about org.freedesktop.LogControl1 when applicable
+  20a3f9fd95 systemctl: immediately reject invalid log levels
+  9f67d2e57b systemctl: merge log_target(), log_level(), service_log_setting()
+  ddf7cf4872 systemctl: add service-log-{level,target} verbs
+  026d7d156d systemctl: list unit introspection verbs first, modification second
+
+-------------------------------------------------------------------
+Fri Nov 20 14:54:55 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- systemd-default-settings is needed by %post scriptlet
+
+-------------------------------------------------------------------
+Tue Nov 17 08:44:10 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Revert the change that dropped %{release} from the package version
+  constraints used in Requires:
+
+  The release number is actually relevant since it can be increased
+  when some patches, which might touch multiple sub-packages of
+  systemd, are added/modified.
+
+  However the %{release} is still no more used in conflicts.
+
+-------------------------------------------------------------------
 Fri Nov  6 08:34:18 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Import commit fdce77ce2067f9dd90d816bad28b51efed0b6dc1

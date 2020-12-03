@@ -26,7 +26,7 @@
 ##### WARNING: please do not edit this auto generated spec file. Use the systemd.spec! #####
 %define mini -mini
 %define min_kernel_version 4.5
-%define suse_version +suse.32.gfdce77ce20
+%define suse_version +suse.45.gf6104ea5f5
 
 %bcond_with     gnuefi
 %if 0%{?bootstrap}
@@ -115,7 +115,7 @@ BuildRequires:  gnu-efi
 %if 0%{?bootstrap}
 #!BuildIgnore:  dbus-1
 Requires:       this-is-only-for-build-envs
-Provides:       systemd = %{version}
+Provides:       systemd = %{version}-%{release}
 %else
 # the buildignore is important for bootstrapping
 #!BuildIgnore:  udev
@@ -125,7 +125,7 @@ Requires:       kmod >= 15
 Requires:       netcfg >= 11.5
 Requires:       systemd-default-settings-branding
 Requires:       systemd-presets-branding
-Requires:       udev = %{version}
+Requires:       udev = %{version}-%{release}
 Requires:       util-linux >= 2.27.1
 Requires:       group(lock)
 Requires(post): coreutils
@@ -142,7 +142,7 @@ Conflicts:      sysvinit
 Conflicts:      filesystem < 11.5
 Conflicts:      mkinitrd < 2.7.0
 Obsoletes:      systemd-analyze < 201
-Provides:       systemd-analyze = %{version}
+Provides:       systemd-analyze = %{version}-%{release}
 Obsoletes:      pm-utils <= 1.4.1
 Obsoletes:      suspend <= 1.0
 Source0:        systemd-v%{version}%{suse_version}.tar.xz
@@ -211,7 +211,7 @@ The HTML documentation for systemd.
 Summary:        Development headers for systemd
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libsystemd0%{?mini} = %{version}
+Requires:       libsystemd0%{?mini} = %{version}-%{release}
 Requires:       systemd-rpm-macros
 %if 0%{?bootstrap}
 Conflicts:      systemd-devel
@@ -224,10 +224,10 @@ Development headers and auxiliary files for developing applications for systemd.
 Summary:        System V init tools
 License:        LGPL-2.1-or-later
 Group:          System/Base
-Requires:       %{name} = %{version}
+Requires:       %{name} = %{version}-%{release}
 Provides:       sbin_init
 Conflicts:      otherproviders(sbin_init)
-Provides:       systemd-sysvinit = %{version}
+Provides:       systemd-sysvinit = %{version}-%{release}
 Provides:       sysvinit:/sbin/init
 
 %description sysvinit
@@ -283,7 +283,7 @@ Conflicts:      util-linux < 2.16
 Conflicts:      ConsoleKit < 0.4.1
 Requires:       filesystem
 %if 0%{?bootstrap}
-Provides:       udev = %{version}
+Provides:       udev = %{version}-%{release}
 Conflicts:      libudev1
 Conflicts:      udev
 # avoid kiwi picking it for bootstrap
@@ -316,9 +316,9 @@ access to udev device information
 Summary:        Development files for libudev
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Other
-Requires:       libudev%{?mini}1 = %{version}
+Requires:       libudev%{?mini}1 = %{version}-%{release}
 %if 0%{?bootstrap}
-Provides:       libudev-devel = %{version}
+Provides:       libudev-devel = %{version}-%{version}
 Conflicts:      libudev1 = %{version}
 Conflicts:      libudev-devel
 %endif
@@ -332,7 +332,7 @@ dynamic library, which provides access to udev device information.
 Summary:        Systemd tools for coredump management
 License:        LGPL-2.1-or-later
 Group:          System/Base
-Requires:       %{name} = %{version}
+Requires:       %{name} = %{version}-%{release}
 %systemd_requires
 Provides:       systemd:%{_bindir}/coredumpctl
 
@@ -346,7 +346,7 @@ This package contains systemd-coredump, coredumpctl.
 Summary:        Systemd tools for container management
 License:        LGPL-2.1-or-later
 Group:          System/Base
-Requires:       %{name} = %{version}
+Requires:       %{name} = %{version}-%{release}
 %systemd_requires
 Provides:       systemd:%{_bindir}/systemd-nspawn
 %if 0%{?bootstrap}
@@ -364,7 +364,7 @@ and systemd-importd.
 Summary:        Systemd tools for networkd and resolved
 License:        LGPL-2.1-or-later
 Group:          System/Base
-Requires:       %{name} = %{version}
+Requires:       %{name} = %{version}-%{release}
 Provides:       systemd:/usr/lib/systemd/systemd-networkd
 Provides:       systemd:/usr/lib/systemd/systemd-resolved
 %systemd_requires
@@ -380,7 +380,7 @@ resolver tools for resolved
 Summary:        Systemd tools for portable services
 License:        LGPL-2.1-or-later
 Group:          System/Base
-Requires:       %{name} = %{version}
+Requires:       %{name} = %{version}-%{release}
 %systemd_requires
 
 %description portable
@@ -442,7 +442,7 @@ To activate this NSS module, you will need to include it in
 Summary:        Plugin for local hostname resolution via systemd-resolved
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
-Requires:       %{name}-network = %{version}
+Requires:       %{name}-network = %{version}-%{release}
 
 %description -n nss-resolve
 This package contains a plug-in module for the Name Service Switch
@@ -476,7 +476,7 @@ To activate this NSS module, you will need to include it in
 Summary:        Gateway for serving journal events over the network using HTTP
 License:        LGPL-2.1-or-later
 Group:          System/Base
-Requires:       %{name} = %{version}
+Requires:       %{name} = %{version}-%{release}
 Requires(post):   systemd
 Requires(preun):  systemd
 Requires(postun): systemd
