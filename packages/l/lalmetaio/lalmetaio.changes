@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 19 09:20:15 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable builds for 32-bit archs where lal is not supported.
+
+-------------------------------------------------------------------
+Fri Nov  6 14:59:22 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Build without octave bindings on Leap 15.x, requires SWIG 4.0
+
+-------------------------------------------------------------------
 Thu Oct 29 04:25:07 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to override build date (boo#1047218)

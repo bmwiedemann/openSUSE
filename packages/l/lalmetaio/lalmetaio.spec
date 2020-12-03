@@ -17,7 +17,11 @@
 
 
 %define shlib lib%{name}8
+%if 0%{?suse_version} >= 1550
 %bcond_without octave
+%else
+%bcond_with    octave
+%endif
 Name:           lalmetaio
 Version:        1.6.1
 Release:        0
@@ -50,6 +54,7 @@ BuildRequires:  python3-pytest
 # /SECTION
 Requires:       python-lal >= 6.21.0
 Requires:       python-numpy
+ExcludeArch:    %{ix86}
 
 %python_subpackages
 
