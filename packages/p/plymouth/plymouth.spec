@@ -47,6 +47,8 @@ Patch3:         plymouth-manpages.patch
 Patch4:         plymouth-no-longer-modify-conf-to-drop-isopensuse-macro.patch
 # PATCH-FIX-OPENSUSE plymouth-ignore-serial-console.patch qzhao@opensuse.org bnc#1051692 bnc#1164123 bnc#1170906 -- Don't output in serial console for openQA need to take serial in the test, and yast-installation prgram has a feature to install system through it.
 Patch5:         plymouth-ignore-serial-console.patch
+# PATCH-FIX-OPENSUSE plymouth-disable-fedora-logo.patch qzhao@opensuse.org -- Disable the fedora logo reference which is not in openSUSE.
+Patch6:         plymouth-disable-fedora-logo.patch
 # PATCH-FIX-UPSTREAM 0001-Add-label-ft-plugin.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
 Patch1000:      0001-Add-label-ft-plugin.patch
 # PATCH-FIX-UPSTREAM 0002-Install-label-ft-plugin-into-initrd-if-available.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
@@ -389,9 +391,11 @@ make %{?_smp_mflags}
 %make_install
 rm -f %{buildroot}/%{_bindir}/rhgb-client
 
+%if !0%{?usrmerged}
 #Link the plymouth client binary also to /bin until the move to /usr is completed
 mkdir %{buildroot}/bin
 (cd %{buildroot}/bin; ln -s ..%{_bindir}/plymouth)
+%endif
 
 # Glow isn't quite ready for primetime
 rm -rf %{buildroot}%{_datadir}/plymouth/glow/
@@ -417,14 +421,14 @@ rm -f  %{buildroot}%{_datadir}/plymouth/plymouthd.conf
 if [ ! -e /.buildenv ]; then
    [ -f %{_localstatedir}/lib/plymouth/boot-duration ] || cp -f %{_datadir}/plymouth/default-boot-duration %{_localstatedir}/lib/plymouth/boot-duration
 fi
-[ -x /bin/systemctl ] && /bin/systemctl daemon-reload >/dev/null 2>&1 || :
+%service_add_post
 
 %postun
 %{?regenerate_initrd_post}
+%service_del_postun
 if [ $1 -eq 0 ]; then
     rm -f %{_libdir}/plymouth/default.so
     rm -f /boot/initrd-plymouth.img
-    [ -x /bin/systemctl ] && /bin/systemctl daemon-reload >/dev/null 2>&1 || :
 fi
 
 %posttrans
@@ -519,7 +523,9 @@ fi
 /etc/logrotate.d/bootlog
 %{plymouthdaemon_execdir}/plymouthd
 %{plymouthclient_execdir}/plymouth
+%if !0%{?usrmerged}
 /bin/plymouth
+%endif
 %{_libdir}/plymouth/details.so
 %{_libdir}/plymouth/text.so
 %{_libdir}/plymouth/renderers/drm*
@@ -599,7 +605,6 @@ fi
 %{_datadir}/plymouth/themes/spinfinity/entry.png
 %{_datadir}/plymouth/themes/spinfinity/lock.png
 %{_datadir}/plymouth/themes/spinfinity/capslock.png
-%{_datadir}/plymouth/themes/spinfinity/header-image.png
 %{_datadir}/plymouth/themes/spinfinity/keyboard.png
 %{_datadir}/plymouth/themes/spinfinity/keymap-render.png
 %{_datadir}/plymouth/themes/spinfinity/animation-0001.png

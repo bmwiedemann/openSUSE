@@ -1,10 +1,23 @@
 -------------------------------------------------------------------
+Thu Sat 21 14:26:51 UTC 2020 - Cliff Zhao <qzhao@suse.com>
+
+- Add plymouth-disable-fedora-logo.patch:
+  Disable the image link which point to the fedora logo. this
+  modification will also avoid the failure report from build
+  checker.
+
+-------------------------------------------------------------------
 Thu Oct 27 06:38:44 UTC 2020 - Cliff Zhao <qzhao@suse.com>
 
 - Add plymouth-ignore-serial-console.patch:
   Don't output in serial console for openQA need to take serial in
   the test, and yast-installation prgram has a feature to install 
   system through it (bnc#1051692 bnc#1164123 bnc#1170906). 
+
+-------------------------------------------------------------------
+Fri Oct 16 10:16:39 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- Update plymouth.spec: prepare usrmerge (boo#1029961)
 
 -------------------------------------------------------------------
 Wed Oct  7 14:53:06 UTC 2020 - Cliff Zhao <qzhao@suse.com>
@@ -87,8 +100,8 @@ Wed Sep 11 07:54:48 UTC 2019 - Cliff Zhao <qzhao@suse.com>
 
 - Add patch plymouth-avoid-umount-hanging-shutdown.patch:
   To avoid grantpt() call nsslookup, it will hanging system unmount
-  /var during shutdown period(bsc#1105688, bsc#1129386, 
-  bsc#1134660). 
+  /var during shutdown period(bnc#1105688, bnc#1129386, 
+  bnc#1134660, bnc#1166601, bnc#1171971). 
 
 -------------------------------------------------------------------
 Thu Aug 15 03:56:10 UTC 2019 - Cliff Zhao <qzhao@suse.com>
