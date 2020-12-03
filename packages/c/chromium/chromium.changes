@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 28 16:29:53 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
+
+- Remove erroneous call to ldconfig which causes Firefox crashes (boo#1179298)
+
+-------------------------------------------------------------------
 Thu Nov 19 21:17:10 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Added patches:

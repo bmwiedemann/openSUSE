@@ -795,12 +795,10 @@ sed -i "s|@@MENUNAME@@|Chromium|g" %{buildroot}%{_mandir}/man1/chromium.1
 %post
 %icon_theme_cache_post
 %desktop_database_post
-/sbin/ldconfig %{_libdir}/chromium
 
 %postun
 %icon_theme_cache_postun
 %desktop_database_postun
-/sbin/ldconfig %{_libdir}/chromium
 
 %files
 %license LICENSE
