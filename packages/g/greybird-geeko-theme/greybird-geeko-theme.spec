@@ -21,7 +21,7 @@
 %define _name Greybird-Geeko
 
 Name:           greybird-geeko-theme
-Version:        3.22.11+git1.968e3b5
+Version:        3.22.11+git2.751e0f3
 Release:        0
 URL:            https://github.com/shimmerproject/Greybird-Geeko
 Summary:        A grey theme for GNOME, XFCE, GTK+ 2 and 3
