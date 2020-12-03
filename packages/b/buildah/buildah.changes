@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 30 13:24:14 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- added cni to requires as its needed for buildah to run 
+
+-------------------------------------------------------------------
 Tue Nov  3 14:44:18 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
 - Update to v1.17.0 (bsc#1165184)

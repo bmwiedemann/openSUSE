@@ -44,6 +44,7 @@ BuildRequires:  libgpgme-devel
 BuildRequires:  libseccomp-devel
 BuildRequires:  golang(API) >= 1.13
 Requires:       patterns-base-apparmor
+Requires:       cni
 Requires:       libcontainers-common
 Requires:       libcontainers-image
 Requires:       libcontainers-storage
