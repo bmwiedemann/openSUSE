@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 27 02:12:57 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.16.4
+  * Fix the termination of the readlink result                                                                        
+  * udev: update rules to handle bind/unbind events                                                                   
+
+-------------------------------------------------------------------
 Tue Nov  3 10:15:49 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.16.3
