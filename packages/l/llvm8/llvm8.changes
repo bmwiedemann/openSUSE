@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  2 09:12:39 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- '-mbranch-protection=standard' is broken on llvm8, so disable it
+  boo#1179085
+
+-------------------------------------------------------------------
 Mon Sep 28 21:10:54 UTC 2020 - Tom de Vries <tdevries@suse.com>
 
 - Fix dsymutil crash on ELF file. (bsc#1176964)
