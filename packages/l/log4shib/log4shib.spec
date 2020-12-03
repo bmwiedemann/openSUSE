@@ -1,7 +1,7 @@
 #
 # spec file for package log4shib
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,15 +24,14 @@ Release:        0
 Summary:        Log for C++, Shibboleth Edition
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
-Url:            https://wiki.shibboleth.net/confluence/display/OpenSAML/log4shib
+URL:            https://wiki.shibboleth.net/confluence/display/OpenSAML/log4shib
 Source0:        http://shibboleth.net/downloads/log4shib/%{version}/%{name}-%{version}.tar.gz
 Source1:        http://shibboleth.net/downloads/log4shib/%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Patch0:         log4shib-1.0.9-doxygen_timestamp.patch
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
-BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig
 
 %description
 Log for C++ is a library of classes for flexible logging to files, syslog,
@@ -71,7 +70,7 @@ The static libraries and header files needed for development with log4shib.
 %configure \
   --disable-static \
   --enable-doxygen
-make %{?_smp_mflags}
+%make_build
 
 %install
 make DESTDIR=%{buildroot} apidir=%{buildroot}%{pkgdocdir}/api install
@@ -85,7 +84,6 @@ config/install-sh -m 644 -c AUTHORS COPYING NEWS README THANKS ChangeLog %{build
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n liblog4shib%{libvers} -p /sbin/ldconfig
-
 %post -n liblog4shib-devel
 if test "x$RPM_INSTALL_PREFIX0" != "x" ; then
     perl -pi -e"s|^prefix=\"[^\"]*\"|prefix=\"$RPM_INSTALL_PREFIX0\"|" $RPM_INSTALL_PREFIX0/bin/log4shib-config
