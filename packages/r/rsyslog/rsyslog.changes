@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 26 10:57:12 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
 Mon Nov  9 17:08:33 UTC 2020 - Thomas Blume <thomas.blume@suse.com>
 
 - fix location and naming of journald dropin (bsc#1178288)

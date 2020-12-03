@@ -754,10 +754,10 @@ if test "%{rsyslog_module_dir_nodeps}" != "%{rsyslog_module_dir_withdeps}" ; the
 		      %{buildroot}%{rsyslog_module_dir_withdeps}
 	done
 fi
-if test "%{_sbindir}" != "/sbin" ; then
+%if !0%{?usrmerged}
 	install -d -m0755 %{buildroot}/sbin
 	ln -sf %{_sbindir}/rsyslogd $RPM_BUILD_ROOT/sbin/rsyslogd
-fi
+%endif
 # it is simply broken (bnc#890228)
 rm -f $RPM_BUILD_ROOT%{_sbindir}/zpipe
 #
@@ -916,7 +916,7 @@ fi # first install
 %config(noreplace) %attr(600,root,root) %{_sysconfdir}/rsyslog.d/remote.conf
 %config(noreplace) %attr(600,root,root) %{_sysconfdir}/rsyslog.d/*.frule
 %{_sbindir}/rsyslogd
-%if "%{_sbindir}" != "/sbin"
+%if !0%{?usrmerged}
 /sbin/rsyslogd
 %endif
 %dir %{rsyslog_module_dir_nodeps}
