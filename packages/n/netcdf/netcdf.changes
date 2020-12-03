@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Nov  6 13:44:53 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to version 4.7.4.
+  * Support has been added for HDF5-1.12.0. 
+  * Support has been added for multiple filters per variable.
+  * Now nc_inq_var_szip retuns 0 for parameter values if szip is not in
+    use for var.
+  * Now allow parallel I/O with filters, for HDF5-1.10.3 and later.
+  * Increased default size of cache buffer to 16 MB, from 4 MB. Increased
+    number of slots to 4133.
+  * Allow zlib compression to be used with parallel I/O writes, if HDF5
+    version is 1.10.3 or greater. 
+  * Restore use of szip compression when writing data (including writing
+    in parallel if HDF5 version is 1.10.3 or greater).
+  * Enable use of compact storage option for small vars in netCDF/HDF5 files.
+  * Updated benchmarking program bm_file.c to better handle very large files.
+  * Added version number to dispatch table, and now check version with
+    nc_def_user_format().
+  * Increased size of maximum allowed name in HDF4 files to NC_MAX_NAME.
+  * Bug Fixes:
+    - Correct behavior for the command line utilities when
+      directly accessing a directory using utf8 characters.
+    - Attempts to set filters or chunked storage on scalar vars will now
+      return NC_EINVAL. Scalar vars cannot be chunked, and only chunked
+      vars can have filters. Previously the library ignored these attempts,
+      and always storing scalars as contiguous storage.
+    - Fixed problem of growing memory when netCDF-4 files were
+      opened and closed.
+  Further details can be found at:
+  https://github.com/Unidata/netcdf-c/releases/tag/v4.7.4
+- Bump soname from 15 to 18.
+- Add Fix-logging-argument.patch:
+  Fix argument to logging function.
+- get_filter_info-get-correct-number-of-filter-elements.patch
+  Fix intermittend issue found by unit tests.
+
+-------------------------------------------------------------------
 Mon Aug 17 09:01:15 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Ignore make check error for ppc64 & s390x

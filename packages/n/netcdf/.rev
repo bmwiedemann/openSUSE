@@ -523,4 +523,13 @@ Use SPDX- proprietary prefix until this license is accepted upstream by spdx.org
 - Remove unused build option. (forwarded request 833597 from eeich)</comment>
     <requestid>833713</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>2e25d9eefdc475f3a90dec19bb38453f</srcmd5>
+    <version>4.7.4</version>
+    <time>1607017311</time>
+    <user>dimstar_suse</user>
+    <comment>- get_filter_info-get-correct-number-of-filter-elements.patch
+  Fix intermittend issue found by unit tests. (forwarded request 851835 from eeich)</comment>
+    <requestid>851838</requestid>
+  </revision>
 </revisionlist>

@@ -20,10 +20,10 @@
 
 %define _do_check 1
 
-%define ver 4.7.3
-%define _ver 4_7_3
+%define ver 4.7.4
+%define _ver 4_7_4
 %define pname netcdf
-%define sonum   15
+%define sonum   18
 
 %if 0%{?sle_version} >= 150200
 %define DisOMPI1 ExclusiveArch:  do_not_build
@@ -419,6 +419,8 @@ Release:        0
 URL:            https://www.unidata.ucar.edu/software/netcdf/
 Source:         ftp://ftp.unidata.ucar.edu/pub/%{pname}/%{pname}-c-%{version}.tar.gz
 Source1:        nc-config.1.gz
+Patch0:         Fix-logging-argument.patch
+Patch1:         get_filter_info-get-correct-number-of-filter-elements.patch
 BuildRequires:  gawk
 BuildRequires:  libtool
 BuildRequires:  m4
@@ -569,6 +571,7 @@ and sharing of array-oriented scientific data.
 %prep
 %{?with_hpc:%hpc_debug}
 %setup -q -n %{pname}-c-%{version}
+%autopatch -p1
 m4 libsrc/ncx.m4 > libsrc/ncx.c
 
 # Create baselib.conf dynamically (non-HPC build only).
@@ -616,6 +619,7 @@ export FCFLAGS="%{optflags} %{?with_hpc:-L$HDF5_LIB -I$HDF5_INC}"
     --with-pic \
     --disable-doxygen \
     --enable-static \
+#    --enable-logging \
 
 make %{?_smp_mflags}
 
