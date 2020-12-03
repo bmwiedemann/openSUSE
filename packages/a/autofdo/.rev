@@ -47,4 +47,12 @@
     <comment></comment>
     <requestid>852567</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>2c57ec6b27047f00cd011e420d78d1af</srcmd5>
+    <version>0.18</version>
+    <time>1607017384</time>
+    <user>dimstar_suse</user>
+    <comment>- Add llvm11-fix.patch in order to fix build with LLVM11.</comment>
+    <requestid>852858</requestid>
+  </revision>
 </revisionlist>

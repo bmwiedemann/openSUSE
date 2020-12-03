@@ -23,14 +23,15 @@ Summary:        A tool to convert perf.data profile to AutoFDO profile
 License:        Apache-2.0
 URL:            https://github.com/google/autofdo
 Source:         https://github.com/google/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         llvm11-fix.patch
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libopenssl-devel
 BuildRequires:  libunwind-devel
 BuildRequires:  zlib-devel
 %if 0%{?suse_version} > 1320
-BuildRequires:  clang10-devel
-BuildRequires:  llvm10-devel
+BuildRequires:  clang-devel
+BuildRequires:  llvm-devel
 %endif
 
 %description
@@ -44,7 +45,7 @@ incompatible. You cannot use the profile generated for GCC in
 LLVM and vice-versa.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 autoreconf -fiv
