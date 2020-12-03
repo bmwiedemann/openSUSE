@@ -51,11 +51,12 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  swig >= 2.0.9
 %if 0%{?python38_version_nodots}
-# if python multiflavor is in place yet, use it to generate subpackages
+# if python multiflavor is in place, use it to generate subpackages
 %define python_subpackage_only 1
 %python_subpackages
 %else
-%define python_files() -n %python_prefix-%{**}
+%define python_files() -n python3-%{**}
+%define python_sitearch %python3_sitearch
 %endif
 
 %description
@@ -124,8 +125,29 @@ Proton is a messaging library.
 
 This subpackage contains the documentation.
 
-# TODO: Remove the python2 shim as soon as the rpm-macros support python_subpackage_only.
-%if 0%{?have_python2} && ! 0%{?python_subpackage_only}
+%if 0%{?python_subpackage_only}
+# NOTE: the name on pypi for the package is python-qpid-proton so the name
+# for the RPM package should be <flavor>-python-qpid-proton (python-$pypi_name)
+%package -n python-python-qpid-proton
+Summary:        Python language bindings for the Qpid Proton messaging framework
+Group:          Development/Libraries/Python
+Requires:       libqpid-proton%{qpid_proton_soversion} = %{version}-%{release}
+Requires:       python = %{python_version}
+# These will automatically be rewritten for the python flavors
+# including additional python- for python2 and python3- for the primary provider
+# flavor
+Provides:       python-qpid-proton = %{version}
+Obsoletes:      python-qpid-proton < %{version}
+
+%description -n python-python-qpid-proton
+Proton is a messaging library. It can be used in brokers, client
+libraries, routers, bridges and proxies. Proton is based on the AMQP
+1.0 messaging standard.
+
+%else
+# for distributions with no support for python_subpackage_only
+
+%if 0%{?have_python2}
 %package -n python2-python-qpid-proton
 Summary:        Python language bindings for the Qpid Proton messaging framework
 Group:          Development/Libraries/Python
@@ -142,25 +164,19 @@ libraries, routers, bridges and proxies. Proton is based on the AMQP
 1.0 messaging standard.
 %endif
 
-%package -n %{python_flavor}-python-qpid-proton
+%package -n python3-python-qpid-proton
 Summary:        Python language bindings for the Qpid Proton messaging framework
 Group:          Development/Libraries/Python
 Requires:       libqpid-proton%{qpid_proton_soversion} = %{version}-%{release}
 Requires:       python = %{python_version}
-# NOTE: the name on pypi for the package is python-qpid-proton so the name
-# for the RPM package should be <flavor>-python-qpid-proton (pythonXY-$pypi_name)
-%if "%{python_flavor}" == "python2"
-Provides:       %{oldpython}-qpid-proton = %{version}
-Obsoletes:      %{oldpython}-qpid-proton < %{version}
-%else
 Provides:       python3-qpid-proton = %{version}
 Obsoletes:      python3-qpid-proton < %{version}
-%endif
 
-%description -n %{python_flavor}-python-qpid-proton
+%description -n python3-python-qpid-proton
 Proton is a messaging library. It can be used in brokers, client
 libraries, routers, bridges and proxies. Proton is based on the AMQP
 1.0 messaging standard.
+%endif
 
 %prep
 %autosetup -p1
@@ -245,7 +261,7 @@ mv %{buildroot}%{_datadir}/proton/docs/* %{buildroot}%{_docdir}/%{name}/
 %{_docdir}/%{name}/api-c
 %{_docdir}/%{name}/api-cpp
 
-# only for non-multiple-flavor. TODO: Remove as soon as python_subpackage_only is supported
+# only for distributions with no support for python_subpackage_only
 %if 0%{?have_python2} && ! 0%{?python_subpackage_only}
 %files -n python2-python-qpid-proton
 %{python2_sitearch}/*_cproton*.so
