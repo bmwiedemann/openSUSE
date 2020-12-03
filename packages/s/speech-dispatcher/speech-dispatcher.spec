@@ -24,7 +24,7 @@
 %define espeakdev espeak-devel
 %endif
 Name:           speech-dispatcher
-Version:        0.9.1
+Version:        0.10.2
 Release:        0
 # FIXME missing backends: festival lite, ibmeci (ibm tts), dumbtts/ivona, nas
 # The API and bindings are LGPL-2.1-or-later, other parts are
@@ -33,7 +33,8 @@ Summary:        Device independent layer for speech synthesis
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Daemons
 URL:            https://devel.freebsoft.org/speechd
-Source0:        https://download-mirror.savannah.gnu.org/releases/speechd/%{name}-%{version}.tar.gz
+#Source0:        https://download-mirror.savannah.gnu.org/releases/speechd/%%{name}-%%{version}.tar.gz
+Source0:        https://github.com/brailcom/speechd/releases/download/%{version}/%{name}-%{version}.tar.gz
 # Logrotate file taken from Debian
 Source2:        speech-dispatcher.logrotate
 Source99:       baselibs.conf
@@ -47,6 +48,7 @@ BuildRequires:  libao-devel
 BuildRequires:  libpulse-devel
 BuildRequires:  libsndfile-devel
 BuildRequires:  libtool
+BuildRequires:  makeinfo
 BuildRequires:  python3-setuptools
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(systemd)
@@ -182,7 +184,8 @@ sed -i "s/#AddModule \"%{espeak}\"/AddModule \"%{espeak}\"/" -i config/speechd.c
         --without-baratinoo \
         --without-flite \
         --without-kali \
-        --with-ibmtts=no
+        --with-ibmtts=no \
+        --with-voxin=no
 %make_build
 
 %install
@@ -196,14 +199,16 @@ install -d -m 0700 %{buildroot}%{_localstatedir}/log/speech-dispatcher/
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/logrotate.d/speech-dispatcher
 # Remove config files for modules we don't support
 rm %{buildroot}%{_sysconfdir}/speech-dispatcher/modules/flite.conf
-rm %{buildroot}%{_sysconfdir}/speech-dispatcher/modules/ibmtts.conf
+rm -f %{buildroot}%{_sysconfdir}/speech-dispatcher/modules/ibmtts.conf
 rm %{buildroot}%{_sysconfdir}/speech-dispatcher/modules/ivona.conf
 # Remove config files that we don't need a second time
 # but then user can not create its own configuration, because here is default, while in /etc is system-wide
 # %%{__rm} -r %%{buildroot}%%{_datadir}/speech-dispatcher/conf/
-# Remove %{_infodir}/dir file if it exists
+# Remove %%{_infodir}/dir file if it exists
 test -d %{buildroot}%{_infodir}/dir && rm %{buildroot}%{_infodir}/dir
 %find_lang %{name}
+# rpmlint
+sed -i -e 's|/usr/bin/env python3|/usr/bin/python3|g' %{buildroot}%{_bindir}/spd-conf
 
 # Deduplicate python bytecode
 %fdupes %{buildroot}%{python3_sitearch}/speechd*
