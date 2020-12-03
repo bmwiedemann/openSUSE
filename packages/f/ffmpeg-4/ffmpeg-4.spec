@@ -117,6 +117,7 @@ Patch5:         soversion.patch
 Patch6:         ffmpeg.git-ba3e771a42c29ee02c34e7769cfc1b2dbc5c760a.patch
 Patch7:         0001-lavf-srt-fix-build-fail-when-used-the-libsrt-1.4.1.patch
 Patch8:         vmaf-trim-usr-local.patch
+Patch9:         ffmpeg_altivec_yuv2rgb_novsx.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel

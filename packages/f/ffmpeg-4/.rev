@@ -350,4 +350,12 @@
 - Add vmaf-trim-usr-local.patch .</comment>
     <requestid>842612</requestid>
   </revision>
+  <revision rev="35" vrev="6">
+    <srcmd5>4cc0a7a047d5ec5ac73af2eb60bc1f82</srcmd5>
+    <version>4.3.1</version>
+    <time>1607017089</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851368</requestid>
+  </revision>
 </revisionlist>

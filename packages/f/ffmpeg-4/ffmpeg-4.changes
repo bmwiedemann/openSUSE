@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 27 15:03:17 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add ffmpeg_altivec_yuv2rgb_novsx.patch for ppc64 (BE) as per
+  https://trac.ffmpeg.org/ticket/8750
+  https://bugzilla.opensuse.org/show_bug.cgi?id=1179332
+
+-------------------------------------------------------------------
 Mon Oct 19 06:42:32 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable VMAF. This can be used to compute VMAF/PSNR/SSIM.
