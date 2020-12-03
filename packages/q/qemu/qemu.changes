@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 24 21:24:59 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Be more careful about what directives are used for qemu-testsuite
+
+-------------------------------------------------------------------
+Tue Nov 24 17:17:47 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Fix some spec file 'Requires' statements to be accurate to the
+  new model of relying on system-user-qemu and system-group-kvm to
+  provide the needed users and groups
+
+-------------------------------------------------------------------
+Thu Nov 19 18:43:48 UTC 2020 - Milan Savić <milsav92@outlook.com>
+
+- Added io_uring support. 
+
+-------------------------------------------------------------------
 Tue Nov 17 01:41:49 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - A patch has been applied to virt-manager to handle qemu spice

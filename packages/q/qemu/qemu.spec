@@ -73,6 +73,11 @@
 %define with_daxctl 1
 %endif
 
+%ifarch %ix86 x86_64
+%define with_uring 1
+%define liburing_min_version 0.3
+%endif
+
 # qemu, qemu-linux-user, and qemu-testsuite "flavors" enabled via OBS Multibuild
 %define flavor @BUILD_FLAVOR@%{nil}
 %if "%flavor" == ""
@@ -307,6 +312,9 @@ BuildRequires:  libseccomp-devel >= 2.3.0
 BuildRequires:  libslirp-devel >= 4.2.0
 BuildRequires:  libspice-server-devel >= 0.12.5
 BuildRequires:  libssh-devel >= 0.8
+%if 0%{?with_uring}
+BuildRequires:  liburing-devel >= %liburing_min_version
+%endif
 BuildRequires:  libusb-1_0-devel >= 1.0.13
 BuildRequires:  libvdeplug-devel
 BuildRequires:  libxkbcommon-devel
@@ -342,48 +350,10 @@ BuildRequires:  xfsprogs-devel
 BuildRequires:  xz-devel
 %endif
 BuildRequires:  zlib-devel
-%if "%{name}" == "qemu-testsuite"
-BuildRequires:  bc
-BuildRequires:  qemu-arm = %{qemuver}
-BuildRequires:  qemu-audio-alsa = %{qemuver}
-BuildRequires:  qemu-audio-pa = %{qemuver}
-BuildRequires:  qemu-block-curl = %{qemuver}
-BuildRequires:  qemu-block-dmg = %{qemuver}
-BuildRequires:  qemu-block-gluster = %{qemuver}
-BuildRequires:  qemu-block-iscsi = %{qemuver}
-BuildRequires:  qemu-block-nfs = %{qemuver}
-%if 0%{?with_rbd}
-BuildRequires:  qemu-block-rbd = %{qemuver}
-%endif
-BuildRequires:  qemu-block-ssh = %{qemuver}
-BuildRequires:  qemu-chardev-baum = %{qemuver}
-%if %{provide_edk2_firmware}
-BuildRequires:  qemu-edk2 = %{qemuver}
-%endif
-BuildRequires:  qemu-extra = %{qemuver}
-BuildRequires:  qemu-guest-agent = %{qemuver}
-BuildRequires:  qemu-hw-display-qxl = %{qemuver}
-BuildRequires:  qemu-hw-usb-redirect = %{qemuver}
-BuildRequires:  qemu-hw-usb-smartcard = %{qemuver}
-BuildRequires:  qemu-ipxe = 1.0.0+
-BuildRequires:  qemu-ksm = %{qemuver}
-BuildRequires:  qemu-lang = %{qemuver}
-BuildRequires:  qemu-ppc   = %{qemuver}
-BuildRequires:  qemu-s390  = %{qemuver}
-BuildRequires:  qemu-seabios = %{sbver}
-BuildRequires:  qemu-sgabios = 8
-BuildRequires:  qemu-skiboot = %{qemuver}
-BuildRequires:  qemu-tools = %{qemuver}
-BuildRequires:  qemu-ui-curses = %{qemuver}
-BuildRequires:  qemu-ui-gtk = %{qemuver}
-BuildRequires:  qemu-ui-spice-app = %{qemuver}
-BuildRequires:  qemu-vgabios = %{sbver}
-BuildRequires:  qemu-x86    = %{qemuver}
-%endif
-Requires(pre):  group(kvm)
-Requires(pre):  group(qemu)
-Requires(pre):  shadow
-Requires(pre):  user(qemu)
+%if "%{name}" == "qemu"
+Requires:       group(kvm)
+Requires:       group(qemu)
+Requires:       user(qemu)
 Requires(post): coreutils
 %if %{kvm_available}
 Requires(post): acl
@@ -447,8 +417,6 @@ virtualization.
 %{generic_qemu_description}
 
 This package acts as an umbrella package to the other QEMU sub-packages.
-
-%if "%{name}" != "qemu-testsuite"
 
 %package x86
 Summary:        Machine emulator and virtualizer for x86 architectures
@@ -766,9 +734,8 @@ Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
 Provides:       %name:%_libexecdir/qemu-bridge-helper
-Requires(pre):  group(kvm)
 Requires(pre):  permissions
-Requires(pre):  shadow
+Requires:       group(kvm)
 Recommends:     multipath-tools
 Recommends:     qemu-block-curl
 %if 0%{?with_rbd}
@@ -785,8 +752,7 @@ Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
 Provides:       %name:%_bindir/qemu-ga
-Requires(pre):  group(kvm)
-Requires(pre):  shadow
+Requires:       group(kvm)
 Requires(post): udev
 Supplements:    modalias(acpi*:QEMU0002%3A*)
 Supplements:    modalias(pci:v0000FFFDd00000101sv*sd*bc*sc*i*)
@@ -900,6 +866,47 @@ Kernel Samepage Merging (KSM) is a memory-saving de-duplication feature, that
 merges anonymous (private) pages (not pagecache ones).
 
 This package provides a service file for starting and stopping KSM.
+
+%else #qemu
+BuildRequires:  bc
+BuildRequires:  qemu-arm = %{qemuver}
+BuildRequires:  qemu-audio-alsa = %{qemuver}
+BuildRequires:  qemu-audio-pa = %{qemuver}
+BuildRequires:  qemu-block-curl = %{qemuver}
+BuildRequires:  qemu-block-dmg = %{qemuver}
+BuildRequires:  qemu-block-gluster = %{qemuver}
+BuildRequires:  qemu-block-iscsi = %{qemuver}
+BuildRequires:  qemu-block-nfs = %{qemuver}
+%if 0%{?with_rbd}
+BuildRequires:  qemu-block-rbd = %{qemuver}
+%endif
+BuildRequires:  qemu-block-ssh = %{qemuver}
+BuildRequires:  qemu-chardev-baum = %{qemuver}
+%if %{provide_edk2_firmware}
+BuildRequires:  qemu-edk2 = %{qemuver}
+%endif
+BuildRequires:  qemu-extra = %{qemuver}
+BuildRequires:  qemu-guest-agent = %{qemuver}
+BuildRequires:  qemu-hw-display-qxl = %{qemuver}
+BuildRequires:  qemu-hw-usb-redirect = %{qemuver}
+BuildRequires:  qemu-hw-usb-smartcard = %{qemuver}
+BuildRequires:  qemu-ipxe = 1.0.0+
+BuildRequires:  qemu-ksm = %{qemuver}
+BuildRequires:  qemu-lang = %{qemuver}
+BuildRequires:  qemu-ppc   = %{qemuver}
+BuildRequires:  qemu-s390  = %{qemuver}
+BuildRequires:  qemu-seabios = %{sbver}
+BuildRequires:  qemu-sgabios = 8
+BuildRequires:  qemu-skiboot = %{qemuver}
+BuildRequires:  qemu-tools = %{qemuver}
+BuildRequires:  qemu-ui-curses = %{qemuver}
+BuildRequires:  qemu-ui-gtk = %{qemuver}
+BuildRequires:  qemu-ui-spice-app = %{qemuver}
+BuildRequires:  qemu-vgabios = %{sbver}
+BuildRequires:  qemu-x86    = %{qemuver}
+
+%description
+This package records qemu testsuite results and represents successful testing.
 
 %endif # ! qemu-testsuite
 %endif # ! qemu-linux-user
@@ -1178,6 +1185,9 @@ cd %mybuilddir
 	--enable-libusb \
 	--disable-libxml2 \
 	--enable-linux-aio \
+%if 0%{?with_uring}
+	--enable-linux-io-uring \
+%endif
 	--enable-lzfse \
 	--enable-lzo \
 	--disable-malloc-trim \

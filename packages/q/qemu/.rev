@@ -2118,4 +2118,17 @@ So VERY minor changes, but sounds like the gcc10 fix is wanted badly, so that's 
 </comment>
     <requestid>849134</requestid>
   </revision>
+  <revision rev="188" vrev="11">
+    <srcmd5>64564963cf584560a1200d1643247c5e</srcmd5>
+    <version>5.1.0</version>
+    <time>1607017288</time>
+    <user>dimstar_suse</user>
+    <comment>- Be more careful about what directives are used for qemu-testsuite
+- Fix some spec file 'Requires' statements to be accurate to the
+  new model of relying on system-user-qemu and system-group-kvm to
+  provide the needed users and groups
+- Added io_uring support. 
+</comment>
+    <requestid>852363</requestid>
+  </revision>
 </revisionlist>
