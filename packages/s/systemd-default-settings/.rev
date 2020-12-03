@@ -42,4 +42,12 @@
   5473da6 Makefile: introduce 'archive' target</comment>
     <requestid>849695</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7918bd1d74375e0a03bc626ffd421add</srcmd5>
+    <version>0.5</version>
+    <time>1607017052</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix typo introduced by the previous change (bsc#1179183)</comment>
+    <requestid>851121</requestid>
+  </revision>
 </revisionlist>

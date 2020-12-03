@@ -89,7 +89,7 @@ find %{buildroot} -name 25-defaults-openSUSE.conf -printf "/%%P\n" >openSUSE.lis
 # service restarts or even a reboot. But it might be useful in a few
 # cases so...
 [ -x /usr/bin/systemctl ] &&
-	/usr/bin/systemctl systemctl daemon-reload || :
+	/usr/bin/systemctl daemon-reload || :
 
 %files -f SUSE.list
 %defattr(-,root,root)

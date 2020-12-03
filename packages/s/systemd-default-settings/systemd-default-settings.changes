@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 26 16:04:48 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Fix typo introduced by the previous change (bsc#1179183)
+
+-------------------------------------------------------------------
 Thu Nov 19 14:29:34 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Issue a daemon-reload in %post of the main package
