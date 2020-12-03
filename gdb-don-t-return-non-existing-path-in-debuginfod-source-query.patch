@@ -1,0 +1,69 @@
+[gdb] Don't return non-existing path in debuginfod_source_query
+
+When setting env var DEBUGINFOD_URLS to " " and running the testsuite, we run
+into these regressions:
+...
+FAIL: gdb.base/list-missing-source.exp: info source
+FAIL: gdb.base/source-dir.exp: info source before setting directory search list
+...
+
+Setting var DEBUGINFOD_URLS to " " allows the debuginfod query function
+debuginfod_source_query to get past its early exit.
+
+The function debuginfod_source_query is documented as: "If the file is
+successfully retrieved, its path on the local machine is stored in DESTNAME".
+
+However, in case we get back -ENOENT from libdebuginfod, we still set
+DESTNAME:
+....
+  if (fd.get () < 0 && fd.get () != -ENOENT)
+    printf_filtered (_("Download failed: %s.  Continuing without source file %ps.\n"),
+                     safe_strerror (-fd.get ()),
+                     styled_string (file_name_style.style (),  srcpath));
+  else
+    *destname = make_unique_xstrdup (srcpath);
+
+  return fd;
+...
+
+Fix this by making debuginfod_source_query fit it's documentation and only
+setting DESTNAME when successfully retrieving a file.  Likewise in
+debuginfod_debuginfo_query.
+
+gdb/ChangeLog:
+
+2020-11-16  Tom de Vries  <tdevries@suse.de>
+
+	* debuginfod-support.c (debuginfod_source_query)
+	(debuginfod_debuginfo_query): Only set DESTNAME if successful.
+
+---
+ gdb/debuginfod-support.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/debuginfod-support.c b/gdb/debuginfod-support.c
+index 0dc88c2c2a1..1282fc0e9da 100644
+--- a/gdb/debuginfod-support.c
++++ b/gdb/debuginfod-support.c
+@@ -120,7 +120,8 @@ debuginfod_source_query (const unsigned char *build_id,
+     printf_filtered (_("Download failed: %s.  Continuing without source file %ps.\n"),
+ 		     safe_strerror (-fd.get ()),
+ 		     styled_string (file_name_style.style (),  srcpath));
+-  else
++
++  if (fd.get () >= 0)
+     destname->reset (xstrdup (srcpath));
+ 
+   debuginfod_end (c);
+@@ -154,8 +155,10 @@ debuginfod_debuginfo_query (const unsigned char *build_id,
+ 		     safe_strerror (-fd.get ()),
+ 		     styled_string (file_name_style.style (),  filename));
+ 
+-  destname->reset (dname);
++  if (fd.get () >= 0)
++    destname->reset (dname);
+   debuginfod_end (c);
++
+   return fd;
+ }
+ #endif

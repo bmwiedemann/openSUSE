@@ -16,7 +16,7 @@ on the debugger termination).
 diff --git a/gdb/defs.h b/gdb/defs.h
 --- a/gdb/defs.h
 +++ b/gdb/defs.h
-@@ -168,6 +168,10 @@ extern void default_quit_handler (void);
+@@ -177,6 +177,10 @@ extern void default_quit_handler (void);
  /* Flag that function quit should call quit_force.  */
  extern volatile int sync_quit_force_run;
  
@@ -30,24 +30,24 @@ diff --git a/gdb/defs.h b/gdb/defs.h
 diff --git a/gdb/extension.c b/gdb/extension.c
 --- a/gdb/extension.c
 +++ b/gdb/extension.c
-@@ -823,6 +823,11 @@ check_quit_flag (void)
-   int i, result = 0;
-   const struct extension_language_defn *extlang;
+@@ -769,6 +769,11 @@ check_quit_flag (void)
+ {
+   int result = 0;
  
 +#ifdef NEED_DETACH_SIGSTOP
 +  if (quit_flag_cleanup)
 +    return 0;
 +#endif
 +
-   ALL_ENABLED_EXTENSION_LANGUAGES (i, extlang)
+   for (const struct extension_language_defn *extlang : extension_languages)
      {
-       if (extlang->ops->check_quit_flag != NULL)
+       if (extlang->ops != nullptr
 diff --git a/gdb/top.c b/gdb/top.c
 --- a/gdb/top.c
 +++ b/gdb/top.c
-@@ -1703,7 +1703,13 @@ quit_force (int *exit_arg, int from_tty)
- 
-   qt.from_tty = from_tty;
+@@ -1770,7 +1770,13 @@ quit_force (int *exit_arg, int from_tty)
+   else if (return_child_result)
+     exit_code = return_child_result_value;
  
 +#ifndef NEED_DETACH_SIGSTOP
    /* We want to handle any quit errors and exit regardless.  */
@@ -62,7 +62,7 @@ diff --git a/gdb/top.c b/gdb/top.c
 diff --git a/gdb/utils.c b/gdb/utils.c
 --- a/gdb/utils.c
 +++ b/gdb/utils.c
-@@ -102,6 +102,13 @@ static std::chrono::steady_clock::duration prompt_for_continue_wait_time;
+@@ -103,6 +103,13 @@ static std::chrono::steady_clock::duration prompt_for_continue_wait_time;
  
  static bool debug_timestamp = false;
  

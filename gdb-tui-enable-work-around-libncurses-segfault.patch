@@ -1,0 +1,47 @@
+diff --git a/gdb/tui/tui.c b/gdb/tui/tui.c
+index 828e42bccf7..551a72e3992 100644
+--- a/gdb/tui/tui.c
++++ b/gdb/tui/tui.c
+@@ -57,7 +57,7 @@
+ 
+ /* Tells whether the TUI is active or not.  */
+ bool tui_active = false;
+-static bool tui_finish_init = true;
++static int tui_init = -1;
+ 
+ enum tui_key_mode tui_current_key_mode = TUI_COMMAND_MODE;
+ 
+@@ -363,7 +363,13 @@ tui_enable (void)
+   /* To avoid to initialize curses when gdb starts, there is a deferred
+      curses initialization.  This initialization is made only once
+      and the first time the curses mode is entered.  */
+-  if (tui_finish_init)
++  if (tui_init == 0)
++    {
++      /* Initalization failed before, just throw a generic error, don't try
++	 again.  Workaround for segfault in libncurses5 bsc#1179210.  */
++      error (_("Cannot enable the TUI"));
++    }
++  else if (tui_init == -1)
+     {
+       WINDOW *w;
+       SCREEN *s;
+@@ -383,6 +389,8 @@ tui_enable (void)
+       if (!gdb_stderr->isatty ())
+ 	error (_("Cannot enable the TUI when output is not a terminal"));
+ 
++      tui_init = 0;
++
+       s = newterm (NULL, stdout, stdin);
+ #ifdef __MINGW32__
+       /* The MinGW port of ncurses requires $TERM to be unset in order
+@@ -435,7 +443,8 @@ tui_enable (void)
+       tui_set_win_focus_to (TUI_SRC_WIN);
+       keypad (TUI_CMD_WIN->handle.get (), TRUE);
+       wrefresh (TUI_CMD_WIN->handle.get ());
+-      tui_finish_init = false;
++
++      tui_init = 1;
+     }
+   else
+     {

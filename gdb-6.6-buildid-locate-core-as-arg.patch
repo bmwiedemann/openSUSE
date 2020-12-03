@@ -73,7 +73,7 @@ diff --git a/gdb/exec.c b/gdb/exec.c
  #include "frame.h"
  #include "inferior.h"
  #include "target.h"
-@@ -345,12 +347,27 @@ exec_file_attach (const char *filename, int from_tty)
+@@ -495,12 +497,27 @@ exec_file_attach (const char *filename, int from_tty)
  
        if (!bfd_check_format_matches (exec_bfd, bfd_object, &matching))
  	{
@@ -88,8 +88,8 @@ diff --git a/gdb/exec.c b/gdb/exec.c
  	  /* Make sure to close exec_bfd, or else "run" might try to use
  	     it.  */
  	  exec_close ();
--	  error (_("\"%s\": not in executable format: %s"),
--		 scratch_pathname,
+-	  error (_("\"%ps\": not in executable format: %s"),
+-		 styled_string (file_name_style.style (), scratch_pathname),
 -		 gdb_bfd_errmsg (bfd_get_error (), matching).c_str ());
 +
 +	  if (is_core != 0)
@@ -98,29 +98,16 @@ diff --git a/gdb/exec.c b/gdb/exec.c
 +			   "Please specify an executable to debug."),
 +			 scratch_pathname);
 +	  else
-+	    error (_("\"%ss\": not in executable format: %s"),
-+		   scratch_pathname,
++	    error (_("\"%ps\": not in executable format: %s"),
++		   styled_string (file_name_style.style (), scratch_pathname),
 +		   gdb_bfd_errmsg (bfd_get_error (), matching).c_str ());
  	}
  
        if (build_section_table (exec_bfd, &sections, &sections_end))
-diff --git a/gdb/gdbsupport/common-exceptions.h b/gdb/gdbsupport/common-exceptions.h
---- a/gdb/gdbsupport/common-exceptions.h
-+++ b/gdb/gdbsupport/common-exceptions.h
-@@ -106,6 +106,9 @@ enum errors {
-      "_ERROR" is appended to the name.  */
-   MAX_COMPLETIONS_REACHED_ERROR,
- 
-+  /* Attempt to load a core file as executable.  */
-+  IS_CORE_ERROR,
-+
-   /* Add more errors here.  */
-   NR_ERRORS
- };
 diff --git a/gdb/main.c b/gdb/main.c
 --- a/gdb/main.c
 +++ b/gdb/main.c
-@@ -467,6 +467,34 @@ struct cmdarg
+@@ -524,6 +524,34 @@ struct cmdarg
    char *string;
  };
  
@@ -155,7 +142,7 @@ diff --git a/gdb/main.c b/gdb/main.c
  static void
  captured_main_1 (struct captured_main_args *context)
  {
-@@ -907,6 +935,8 @@ captured_main_1 (struct captured_main_args *context)
+@@ -959,6 +987,8 @@ captured_main_1 (struct captured_main_args *context)
  	{
  	  symarg = argv[optind];
  	  execarg = argv[optind];
@@ -164,7 +151,7 @@ diff --git a/gdb/main.c b/gdb/main.c
  	  optind++;
  	}
  
-@@ -1063,12 +1093,25 @@ captured_main_1 (struct captured_main_args *context)
+@@ -1114,12 +1144,25 @@ captured_main_1 (struct captured_main_args *context)
        && symarg != NULL
        && strcmp (execarg, symarg) == 0)
      {
@@ -194,3 +181,16 @@ diff --git a/gdb/main.c b/gdb/main.c
  	ret = catch_command_errors (symbol_file_add_main_adapter,
  				    symarg, !batch_flag);
      }
+diff --git a/gdbsupport/common-exceptions.h b/gdbsupport/common-exceptions.h
+--- a/gdbsupport/common-exceptions.h
++++ b/gdbsupport/common-exceptions.h
+@@ -106,6 +106,9 @@ enum errors {
+      "_ERROR" is appended to the name.  */
+   MAX_COMPLETIONS_REACHED_ERROR,
+ 
++  /* Attempt to load a core file as executable.  */
++  IS_CORE_ERROR,
++
+   /* Add more errors here.  */
+   NR_ERRORS
+ };

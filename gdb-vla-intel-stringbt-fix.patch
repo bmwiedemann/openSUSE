@@ -27,10 +27,10 @@ cannot reproduce it.
 Thanks,
 Jan
 
-diff --git a/gdb/dwarf2loc.c b/gdb/dwarf2loc.c
---- a/gdb/dwarf2loc.c
-+++ b/gdb/dwarf2loc.c
-@@ -2154,6 +2154,20 @@ dwarf2_evaluate_loc_desc_full (struct type *type, struct frame_info *frame,
+diff --git a/gdb/dwarf2/loc.c b/gdb/dwarf2/loc.c
+--- a/gdb/dwarf2/loc.c
++++ b/gdb/dwarf2/loc.c
+@@ -2249,6 +2249,20 @@ dwarf2_evaluate_loc_desc_full (struct type *type, struct frame_info *frame,
    ctx.per_cu = per_cu;
    ctx.obj_address = 0;
  
@@ -50,7 +50,7 @@ diff --git a/gdb/dwarf2loc.c b/gdb/dwarf2loc.c
 +
    scoped_value_mark free_values;
  
-   ctx.gdbarch = get_objfile_arch (objfile);
+   ctx.gdbarch = per_objfile->objfile->arch ();
 diff --git a/gdb/testsuite/gdb.fortran/dynamic-other-frame-stub.f90 b/gdb/testsuite/gdb.fortran/dynamic-other-frame-stub.f90
 new file mode 100644
 --- /dev/null

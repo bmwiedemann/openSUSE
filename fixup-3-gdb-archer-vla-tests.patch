@@ -1,0 +1,24 @@
+diff --git a/gdb/testsuite/gdb.cp/gdb9593.exp b/gdb/testsuite/gdb.cp/gdb9593.exp
+index ef404244028..70afbcc3bc9 100644
+--- a/gdb/testsuite/gdb.cp/gdb9593.exp
++++ b/gdb/testsuite/gdb.cp/gdb9593.exp
+@@ -141,9 +141,16 @@ gdb_test "step" \
+   ".*function1 ().*" \
+   "step into finish, for until"
+ 
+-gdb_test "until" \
+-  ".*function1 ().*" \
+-  "until with no argument 1"
++gdb_test_multiple "until" "until with no argument 1" {
++    -re -wrap ".*function1 ().*" {
++	pass $gdb_test_name
++    }
++    -re -wrap ".*$hex\t80\t  \}" {
++	# PR gcc/97774 - "Incorrect line info for try/catch"
++	# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=97774
++	xfail $gdb_test_name
++    }
++}
+ 
+ set line [gdb_get_line_number "marker for until" $testfile.cc]
+ 

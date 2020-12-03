@@ -80,7 +80,7 @@ gdb/testsuite/ChangeLog
 diff --git a/gdb/main.c b/gdb/main.c
 --- a/gdb/main.c
 +++ b/gdb/main.c
-@@ -1148,7 +1148,10 @@ captured_main_1 (struct captured_main_args *context)
+@@ -1199,7 +1199,10 @@ captured_main_1 (struct captured_main_args *context)
  	{
  	  ret = catch_command_errors (attach_command, pid_or_core_arg,
  				      !batch_flag);

@@ -240,10 +240,10 @@ diff --git a/gdb/build-id.c b/gdb/build-id.c
  #include "gdbcmd.h"
  #include "gdbcore.h"
 +#include "inferior.h"
- #include "libbfd.h"
  #include "objfiles.h"
  #include "observable.h"
-@@ -698,8 +699,374 @@ build_id_to_filename (const struct bfd_build_id *build_id, char **link_return)
+ #include "symfile.h"
+@@ -697,8 +698,374 @@ build_id_to_filename (const struct bfd_build_id *build_id, char **link_return)
    return result;
  }
  
@@ -619,7 +619,7 @@ diff --git a/gdb/build-id.c b/gdb/build-id.c
     avoidance.  */
  
  struct missing_filepair
-@@ -753,11 +1120,17 @@ missing_filepair_change (void)
+@@ -752,11 +1119,17 @@ missing_filepair_change (void)
        /* All their memory came just from missing_filepair_OBSTACK.  */
        missing_filepair_hash = NULL;
      }
@@ -637,7 +637,7 @@ diff --git a/gdb/build-id.c b/gdb/build-id.c
    missing_filepair_change ();
  }
  
-@@ -824,14 +1197,38 @@ debug_print_missing (const char *binary, const char *debug)
+@@ -823,14 +1196,38 @@ debug_print_missing (const char *binary, const char *debug)
  
    *slot = missing_filepair;
  
@@ -686,9 +686,9 @@ diff --git a/gdb/build-id.c b/gdb/build-id.c
 diff --git a/gdb/config.in b/gdb/config.in
 --- a/gdb/config.in
 +++ b/gdb/config.in
-@@ -36,6 +36,9 @@
- /* Define to BFD's default target vector. */
- #undef DEFAULT_BFD_VEC
+@@ -39,6 +39,9 @@
+ /* Handle .ctf type-info sections */
+ #undef ENABLE_LIBCTF
  
 +/* librpm version specific library name to dlopen. */
 +#undef DLOPEN_LIBRPM
@@ -696,7 +696,7 @@ diff --git a/gdb/config.in b/gdb/config.in
  /* Define to 1 if translation of program messages to the user's native
     language is requested. */
  #undef ENABLE_NLS
-@@ -245,6 +248,9 @@
+@@ -247,6 +250,9 @@
  /* Define if you have the mpfr library. */
  #undef HAVE_LIBMPFR
  
@@ -709,7 +709,7 @@ diff --git a/gdb/config.in b/gdb/config.in
 diff --git a/gdb/configure b/gdb/configure
 --- a/gdb/configure
 +++ b/gdb/configure
-@@ -761,6 +761,11 @@ CODESIGN_CERT
+@@ -769,6 +769,11 @@ PKG_CONFIG
  HAVE_NATIVE_GCORE_TARGET
  TARGET_OBS
  subdirs
@@ -721,7 +721,7 @@ diff --git a/gdb/configure b/gdb/configure
  GDB_DATADIR
  DEBUGDIR
  MAKEINFO_EXTRA_FLAGS
-@@ -864,6 +869,7 @@ with_gdb_datadir
+@@ -873,6 +878,7 @@ with_gdb_datadir
  with_relocated_sources
  with_auto_load_dir
  with_auto_load_safe_path
@@ -729,42 +729,34 @@ diff --git a/gdb/configure b/gdb/configure
  enable_targets
  enable_64_bit_bfd
  enable_gdbmi
-@@ -926,6 +932,11 @@ CCC
- CPP
- MAKEINFO
- MAKEINFOFLAGS
-+PKG_CONFIG
-+PKG_CONFIG_PATH
-+PKG_CONFIG_LIBDIR
+@@ -949,6 +955,8 @@ PKG_CONFIG_PATH
+ PKG_CONFIG_LIBDIR
+ DEBUGINFOD_CFLAGS
+ DEBUGINFOD_LIBS
 +RPM_CFLAGS
 +RPM_LIBS
  YACC
  YFLAGS
  XMKMF'
-@@ -1598,6 +1609,8 @@ Optional Packages:
-                           [--with-auto-load-dir]
-   --without-auto-load-safe-path
+@@ -1621,6 +1629,8 @@ Optional Packages:
                            do not restrict auto-loaded files locations
+   --with-debuginfod       Enable debuginfo lookups with debuginfod
+                           (auto/yes/no)
 +  --with-rpm              query rpm database for missing debuginfos (yes/no,
 +                          def. auto=librpm.so)
    --with-libunwind-ia64   use libunwind frame unwinding for ia64 targets
    --with-curses           use the curses library instead of the termcap
                            library
-@@ -1661,6 +1674,13 @@ Some influential environment variables:
-   MAKEINFO    Parent configure detects if it is of sufficient version.
-   MAKEINFOFLAGS
-               Parameters for MAKEINFO.
-+  PKG_CONFIG  path to pkg-config utility
-+  PKG_CONFIG_PATH
-+              directories to add to pkg-config's search path
-+  PKG_CONFIG_LIBDIR
-+              path overriding pkg-config's built-in search path
+@@ -1702,6 +1712,8 @@ Some influential environment variables:
+               C compiler flags for DEBUGINFOD, overriding pkg-config
+   DEBUGINFOD_LIBS
+               linker flags for DEBUGINFOD, overriding pkg-config
 +  RPM_CFLAGS  C compiler flags for RPM, overriding pkg-config
 +  RPM_LIBS    linker flags for RPM, overriding pkg-config
    YACC        The `Yet Another Compiler Compiler' implementation to use.
                Defaults to the first program found out of: `bison -y', `byacc',
                `yacc'.
-@@ -6587,6 +6607,494 @@ _ACEOF
+@@ -6666,6 +6678,494 @@ _ACEOF
  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $with_auto_load_safe_path" >&5
  $as_echo "$with_auto_load_safe_path" >&6; }
  
@@ -1262,7 +1254,7 @@ diff --git a/gdb/configure b/gdb/configure
 diff --git a/gdb/configure.ac b/gdb/configure.ac
 --- a/gdb/configure.ac
 +++ b/gdb/configure.ac
-@@ -144,6 +144,199 @@ AC_DEFINE_DIR(AUTO_LOAD_SAFE_PATH, escape_dir,
+@@ -143,6 +143,199 @@ AC_DEFINE_DIR(AUTO_LOAD_SAFE_PATH, escape_dir,
  	      [Directories safe to hold auto-loaded files.])
  AC_MSG_RESULT([$with_auto_load_safe_path])
  
@@ -1465,15 +1457,15 @@ diff --git a/gdb/configure.ac b/gdb/configure.ac
 diff --git a/gdb/event-top.c b/gdb/event-top.c
 --- a/gdb/event-top.c
 +++ b/gdb/event-top.c
-@@ -41,6 +41,7 @@
- #include "ser-event.h"
- #include "gdb_select.h"
+@@ -42,6 +42,7 @@
+ #include "gdbsupport/gdb_select.h"
  #include "gdbsupport/gdb-sigmask.h"
+ #include "async-event.h"
 +#include "symfile.h"
  
  /* readline include files.  */
  #include "readline/readline.h"
-@@ -363,6 +364,8 @@ display_gdb_prompt (const char *new_prompt)
+@@ -364,6 +365,8 @@ display_gdb_prompt (const char *new_prompt)
    /* Reset the nesting depth used when trace-commands is set.  */
    reset_command_nest_depth ();
  
@@ -1482,7 +1474,7 @@ diff --git a/gdb/event-top.c b/gdb/event-top.c
    /* Do not call the python hook on an explicit prompt change as
       passed to this function, as this forms a secondary/local prompt,
       IE, displayed but not set.  */
-@@ -772,7 +775,10 @@ command_line_handler (gdb::unique_xmalloc_ptr<char> &&rl)
+@@ -773,7 +776,10 @@ command_line_handler (gdb::unique_xmalloc_ptr<char> &&rl)
        command_handler (cmd);
  
        if (ui->prompt_state != PROMPTED)
@@ -1497,12 +1489,11 @@ diff --git a/gdb/event-top.c b/gdb/event-top.c
 diff --git a/gdb/symfile.h b/gdb/symfile.h
 --- a/gdb/symfile.h
 +++ b/gdb/symfile.h
-@@ -542,6 +542,8 @@ extern void generic_load (const char *args, int from_tty);
+@@ -560,6 +560,7 @@ extern void generic_load (const char *args, int from_tty);
  /* build-id support.  */
  extern struct bfd_build_id *build_id_addr_get (CORE_ADDR addr);
  extern void debug_print_missing (const char *binary, const char *debug);
 +extern void debug_flush_missing (void);
-+#define BUILD_ID_MAIN_EXECUTABLE_FILENAME _("the main executable file")
+ #define BUILD_ID_MAIN_EXECUTABLE_FILENAME _("the main executable file")
  
  /* From dwarf2read.c */
- 

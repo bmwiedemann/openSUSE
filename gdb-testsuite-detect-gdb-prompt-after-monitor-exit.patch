@@ -1,0 +1,71 @@
+[gdb/testsuite] Detect gdb prompt after monitor exit
+
+With this gdbserver-support.exp patch:
+...
+<SNIP to fix patch application problems>
+...
+and with this in parallel:
+...
+$ stress -c 5
+...
+we run into this and similar FAILs:
+...
+FAIL: gdb.multi/multi-target.exp: continue: non-stop=on: $have_prompt
+...
+
+In more detail:
+...
+(gdb) PASS: gdb.multi/multi-target.exp: continue: non-stop=on: inferior 5
+Remote debugging from host ::1, port 40712^M
+Process build/gdb/testsuite/outputs/gdb.multi/multi-target/multi-target \
+  created; pid = 11098^M
+monitor exit^M
+Killing process(es): 11098^M
+FAIL: gdb.multi/multi-target.exp: continue: non-stop=on: $have_prompt
+spawn build/gdb/testsuite/../../gdb/gdb -nw -nx -data-directory \
+  build/gdb/testsuite/../data-directory^M
+...
+
+After issuing a "monitor exit" command, we should always get a prompt back, so
+check for that.
+
+Tested on x86_64-linux.
+
+gdb/testsuite/ChangeLog:
+
+2020-09-16  Tom de Vries  <tdevries@suse.de>
+
+	* lib/gdbserver-support.exp (gdbserver_exit): Make sure we
+	get the gdb prompt after issuing "monitor exit".
+
+---
+ gdb/testsuite/ChangeLog                 | 5 +++++
+ gdb/testsuite/lib/gdbserver-support.exp | 9 ++++++++-
+ 2 files changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/lib/gdbserver-support.exp b/gdb/testsuite/lib/gdbserver-support.exp
+index a2cc80f28d7..2734ca6c878 100644
+--- a/gdb/testsuite/lib/gdbserver-support.exp
++++ b/gdb/testsuite/lib/gdbserver-support.exp
+@@ -451,13 +451,20 @@ proc gdbserver_exit { is_mi } {
+ 	    # We use expect rather than gdb_expect because
+ 	    # we want to suppress printing exception messages, otherwise,
+ 	    # remote_expect, invoked by gdb_expect, prints the exceptions.
++	    set have_prompt 0
+ 	    expect {
+ 		-i "$gdb_spawn_id" -re "$gdb_prompt $" {
+-		    exp_continue
++		    set have_prompt 1
++		    if { [info exists server_spawn_id] } {
++			exp_continue
++		    }
+ 		}
+ 		-i "$server_spawn_id" eof {
+ 		    wait -i $expect_out(spawn_id)
+ 		    unset server_spawn_id
++		    if { ! $have_prompt } {
++			exp_continue
++		    }
+ 		}
+                timeout {
+                    warning "Timed out waiting for EOF in server after $monitor_exit"

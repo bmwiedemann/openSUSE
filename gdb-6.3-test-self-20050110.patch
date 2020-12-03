@@ -17,7 +17,7 @@ Subject: gdb-6.3-test-self-20050110.patch
 diff --git a/gdb/testsuite/lib/selftest-support.exp b/gdb/testsuite/lib/selftest-support.exp
 --- a/gdb/testsuite/lib/selftest-support.exp
 +++ b/gdb/testsuite/lib/selftest-support.exp
-@@ -151,18 +151,18 @@ proc do_self_tests {function body} {
+@@ -152,18 +152,18 @@ proc do_self_tests {function body} {
      }
  
      # Remove any old copy lying around.

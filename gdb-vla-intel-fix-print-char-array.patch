@@ -22,15 +22,13 @@ And adjust its testcase.
 diff --git a/gdb/f-valprint.c b/gdb/f-valprint.c
 --- a/gdb/f-valprint.c
 +++ b/gdb/f-valprint.c
-@@ -319,8 +319,22 @@ f_val_print (struct type *type, int embedded_offset,
- 				      original_value, &opts, 0, stream);
+@@ -310,7 +310,21 @@ f_value_print_inner (struct value *val, struct ui_file *stream, int recurse,
+ 	  value_print_scalar_formatted (val, &opts, 0, stream);
  	}
        else
--	val_print_scalar_formatted (type, embedded_offset,
--				    original_value, options, 0, stream);
+-	value_print_scalar_formatted (val, options, 0, stream);
 +	{
-+	  val_print_scalar_formatted (type, embedded_offset,
-+				      original_value, options, 0, stream);
++	  value_print_scalar_formatted (val, options, 0, stream);
 +	  /* C and C++ has no single byte int type, char is used instead.
 +	     Since we don't know whether the value is really intended to
 +	     be used as an integer or a character, print the character
@@ -40,7 +38,7 @@ diff --git a/gdb/f-valprint.c b/gdb/f-valprint.c
 +	      LONGEST c;
 +
 +	      fputs_filtered (" ", stream);
-+	      c = unpack_long (type, valaddr + embedded_offset);
++	      c = unpack_long (type, valaddr);
 +	      LA_PRINT_CHAR ((unsigned char) c, type, stream);
 +	    }
 +	}
@@ -50,7 +48,7 @@ diff --git a/gdb/f-valprint.c b/gdb/f-valprint.c
 diff --git a/gdb/testsuite/gdb.fortran/printing-types.exp b/gdb/testsuite/gdb.fortran/printing-types.exp
 --- a/gdb/testsuite/gdb.fortran/printing-types.exp
 +++ b/gdb/testsuite/gdb.fortran/printing-types.exp
-@@ -29,7 +29,7 @@ if {![runto MAIN__]} then {
+@@ -30,7 +30,7 @@ if {![fortran_runto_main]} then {
  gdb_breakpoint [gdb_get_line_number "write"]
  gdb_continue_to_breakpoint "write"
  

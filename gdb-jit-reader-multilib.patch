@@ -9,7 +9,7 @@ Subject: gdb-jit-reader-multilib.patch
 diff --git a/gdb/configure b/gdb/configure
 --- a/gdb/configure
 +++ b/gdb/configure
-@@ -9694,10 +9694,12 @@ _ACEOF
+@@ -9968,10 +9968,12 @@ _ACEOF
  
  
  
@@ -28,7 +28,7 @@ diff --git a/gdb/configure b/gdb/configure
 diff --git a/gdb/configure.ac b/gdb/configure.ac
 --- a/gdb/configure.ac
 +++ b/gdb/configure.ac
-@@ -808,10 +808,12 @@ AC_CHECK_SIZEOF(unsigned long long)
+@@ -803,10 +803,12 @@ AC_CHECK_SIZEOF(unsigned long long)
  AC_CHECK_SIZEOF(unsigned long)
  AC_CHECK_SIZEOF(unsigned __int128)
  

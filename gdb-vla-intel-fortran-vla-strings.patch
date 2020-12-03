@@ -33,7 +33,7 @@ git diff --stat -p gdb/master...gdb/users/bheckel/fortran-vla-strings
 diff --git a/gdb/NEWS b/gdb/NEWS
 --- a/gdb/NEWS
 +++ b/gdb/NEWS
-@@ -805,6 +805,8 @@ SH-5/SH64 running OpenBSD 	SH-5/SH64 support in sh*-*-openbsd*
+@@ -985,6 +985,8 @@ SH-5/SH64 running OpenBSD 	SH-5/SH64 support in sh*-*-openbsd*
  
  *** Changes in GDB 8.1
  
@@ -45,11 +45,11 @@ diff --git a/gdb/NEWS b/gdb/NEWS
 diff --git a/gdb/c-valprint.c b/gdb/c-valprint.c
 --- a/gdb/c-valprint.c
 +++ b/gdb/c-valprint.c
-@@ -649,6 +649,28 @@ c_value_print (struct value *val, struct ui_file *stream,
+@@ -572,6 +572,28 @@ c_value_print (struct value *val, struct ui_file *stream,
        else
  	{
  	  /* normal case */
-+	  if (TYPE_CODE (type) == TYPE_CODE_PTR
++	  if (type->code () == TYPE_CODE_PTR
 +	      && 1 == is_dynamic_type (type))
 +	    {
 +	      CORE_ADDR addr;
@@ -64,7 +64,7 @@ diff --git a/gdb/c-valprint.c b/gdb/c-valprint.c
 +		  && (0 == type_not_associated (type)))
 +		  TYPE_TARGET_TYPE (type) =
 +		      resolve_dynamic_type (TYPE_TARGET_TYPE (type),
-+					    NULL, addr);
++					    {}, addr);
 +	    }
 +	  else
 +	    {
@@ -74,10 +74,10 @@ diff --git a/gdb/c-valprint.c b/gdb/c-valprint.c
  	  fprintf_filtered (stream, "(");
  	  type_print (value_type (val), "", stream, -1);
  	  fprintf_filtered (stream, ") ");
-diff --git a/gdb/dwarf2read.c b/gdb/dwarf2read.c
---- a/gdb/dwarf2read.c
-+++ b/gdb/dwarf2read.c
-@@ -1827,7 +1827,10 @@ static void read_signatured_type (struct signatured_type *);
+diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
+--- a/gdb/dwarf2/read.c
++++ b/gdb/dwarf2/read.c
+@@ -1562,7 +1562,10 @@ static void read_signatured_type (signatured_type *sig_type,
  
  static int attr_to_dynamic_prop (const struct attribute *attr,
  				 struct die_info *die, struct dwarf2_cu *cu,
@@ -89,16 +89,25 @@ diff --git a/gdb/dwarf2read.c b/gdb/dwarf2read.c
  
  /* memory allocation interface */
  
-@@ -13799,7 +13802,7 @@ read_func_scope (struct die_info *die, struct dwarf2_cu *cu)
+@@ -13631,7 +13634,7 @@ read_func_scope (struct die_info *die, struct dwarf2_cu *cu)
        newobj->static_link
  	= XOBNEW (&objfile->objfile_obstack, struct dynamic_prop);
        attr_to_dynamic_prop (attr, die, cu, newobj->static_link,
--			    dwarf2_per_cu_addr_type (cu->per_cu));
-+			    dwarf2_per_cu_addr_type (cu->per_cu), NULL, 0);
+-			    cu->addr_type ());
++			    cu->addr_type (), NULL, 0);
      }
  
    cu->list_in_scope = cu->get_builder ()->get_local_symbols ();
-@@ -16565,7 +16568,7 @@ read_array_type (struct die_info *die, struct dwarf2_cu *cu)
+@@ -16073,7 +16076,7 @@ read_structure_type (struct die_info *die, struct dwarf2_cu *cu)
+       else
+ 	{
+ 	  struct dynamic_prop prop;
+-	  if (attr_to_dynamic_prop (attr, die, cu, &prop, cu->addr_type ()))
++	  if (attr_to_dynamic_prop (attr, die, cu, &prop, cu->addr_type (), NULL, 0))
+ 	    type->add_dyn_prop (DYN_PROP_BYTE_SIZE, prop);
+           TYPE_LENGTH (type) = 0;
+ 	}
+@@ -16764,7 +16767,7 @@ read_array_type (struct die_info *die, struct dwarf2_cu *cu)
        byte_stride_prop
  	= (struct dynamic_prop *) alloca (sizeof (struct dynamic_prop));
        stride_ok = attr_to_dynamic_prop (attr, die, cu, byte_stride_prop,
@@ -107,7 +116,7 @@ diff --git a/gdb/dwarf2read.c b/gdb/dwarf2read.c
        if (!stride_ok)
  	{
  	  complaint (_("unable to read array DW_AT_byte_stride "
-@@ -17325,7 +17328,7 @@ read_tag_string_type (struct die_info *die, struct dwarf2_cu *cu)
+@@ -17522,7 +17525,7 @@ read_tag_string_type (struct die_info *die, struct dwarf2_cu *cu)
    struct attribute *attr;
    struct dynamic_prop prop;
    bool length_is_constant = true;
@@ -116,7 +125,7 @@ diff --git a/gdb/dwarf2read.c b/gdb/dwarf2read.c
  
    /* There are a couple of places where bit sizes might be made use of
       when parsing a DW_TAG_string_type, however, no producer that we know
-@@ -17346,6 +17349,10 @@ read_tag_string_type (struct die_info *die, struct dwarf2_cu *cu)
+@@ -17543,6 +17546,10 @@ read_tag_string_type (struct die_info *die, struct dwarf2_cu *cu)
  	}
      }
  
@@ -125,9 +134,9 @@ diff --git a/gdb/dwarf2read.c b/gdb/dwarf2read.c
 +
 +  /* If DW_AT_string_length is defined, the length is stored in memory.  */
    attr = dwarf2_attr (die, DW_AT_string_length, cu);
-   if (attr != nullptr && !attr_form_is_constant (attr))
+   if (attr != nullptr && !attr->form_is_constant ())
      {
-@@ -17372,13 +17379,71 @@ read_tag_string_type (struct die_info *die, struct dwarf2_cu *cu)
+@@ -17569,13 +17576,68 @@ read_tag_string_type (struct die_info *die, struct dwarf2_cu *cu)
  	}
  
        /* Convert the attribute into a dynamic property.  */
@@ -139,7 +148,7 @@ diff --git a/gdb/dwarf2read.c b/gdb/dwarf2read.c
      }
    else if (attr != nullptr)
      {
-+      if (attr_form_is_block (attr))
++      if (attr->form_is_block ())
 +	{
 +	  struct attribute *byte_size, *bit_size;
 +	  struct dynamic_prop high;
@@ -189,18 +198,15 @@ diff --git a/gdb/dwarf2read.c b/gdb/dwarf2read.c
 +		complaint (_("Could not parse DW_AT_string_length"));
 +	    }
 +
-+	  TYPE_RANGE_DATA (range_type)->high = high;
++	  range_type->bounds ()->high = high;
 +	}
 +      else
-+	{
-+	  TYPE_HIGH_BOUND (range_type) = DW_UNSND(attr);
-+	  TYPE_HIGH_BOUND_KIND (range_type) = PROP_CONST;
-+	}
++	range_type->bounds ()->high.set_const_val (DW_UNSND(attr));
 +
        /* This DW_AT_string_length just contains the length with no
  	 indirection.  There's no need to create a dynamic property in this
  	 case.  Pass 0 for the default value as we know it will not be
-@@ -17392,6 +17457,20 @@ read_tag_string_type (struct die_info *die, struct dwarf2_cu *cu)
+@@ -17589,6 +17651,14 @@ read_tag_string_type (struct die_info *die, struct dwarf2_cu *cu)
      }
    else
      {
@@ -208,28 +214,22 @@ diff --git a/gdb/dwarf2read.c b/gdb/dwarf2read.c
 +	 in this case.  */
 +      attr = dwarf2_attr (die, DW_AT_byte_size, cu);
 +      if (attr)
-+	{
-+	  TYPE_HIGH_BOUND (range_type) = DW_UNSND(attr);
-+	  TYPE_HIGH_BOUND_KIND (range_type) = PROP_CONST;
-+	}
++	range_type->bounds ()->high.set_const_val (DW_UNSND(attr));
 +      else
-+	{
-+	  TYPE_HIGH_BOUND (range_type) = 1;
-+	  TYPE_HIGH_BOUND_KIND (range_type) = PROP_CONST;
-+	}
++	range_type->bounds ()->high.set_const_val (1);
 +
        /* Use 1 as a fallback length if we have nothing else.  */
        length = 1;
      }
-@@ -17407,6 +17486,7 @@ read_tag_string_type (struct die_info *die, struct dwarf2_cu *cu)
-       low_bound.data.const_val = 1;
+@@ -17603,6 +17673,7 @@ read_tag_string_type (struct die_info *die, struct dwarf2_cu *cu)
+       low_bound.set_const_val (1);
        range_type = create_range_type (NULL, index_type, &low_bound, &prop, 0);
      }
 +
    char_type = language_string_char_type (cu->language_defn, gdbarch);
    type = create_string_type (NULL, char_type, range_type);
  
-@@ -17858,7 +17938,8 @@ read_base_type (struct die_info *die, struct dwarf2_cu *cu)
+@@ -18078,7 +18149,8 @@ read_base_type (struct die_info *die, struct dwarf2_cu *cu)
  static int
  attr_to_dynamic_prop (const struct attribute *attr, struct die_info *die,
  		      struct dwarf2_cu *cu, struct dynamic_prop *prop,
@@ -238,18 +238,17 @@ diff --git a/gdb/dwarf2read.c b/gdb/dwarf2read.c
 +		      const gdb_byte *additional_data, int additional_data_size)
  {
    struct dwarf2_property_baton *baton;
-   struct obstack *obstack
-@@ -17885,9 +17966,30 @@ attr_to_dynamic_prop (const struct attribute *attr, struct die_info *die,
- 	  baton->locexpr.is_reference = false;
+   dwarf2_per_objfile *per_objfile = cu->per_objfile;
+@@ -18108,6 +18180,26 @@ attr_to_dynamic_prop (const struct attribute *attr, struct die_info *die,
  	  break;
  	}
-+
+ 
 +      if (additional_data != NULL && additional_data_size > 0)
 +	{
 +	  gdb_byte *data;
 +
 +	  data = (gdb_byte *) obstack_alloc(
-+	      &cu->per_cu->dwarf2_per_objfile->objfile->objfile_obstack,
++	      &cu->per_objfile->objfile->objfile_obstack,
 +	      DW_BLOCK (attr)->size + additional_data_size);
 +	  memcpy (data, DW_BLOCK (attr)->data, DW_BLOCK (attr)->size);
 +	  memcpy (data + DW_BLOCK (attr)->size, additional_data,
@@ -264,17 +263,13 @@ diff --git a/gdb/dwarf2read.c b/gdb/dwarf2read.c
 +	  baton->locexpr.size = DW_BLOCK (attr)->size;
 +	}
 +
-       prop->data.baton = baton;
-       prop->kind = PROP_LOCEXPR;
--      gdb_assert (prop->data.baton != NULL);
-+      gdb_assert(prop->data.baton != NULL);
+       prop->set_locexpr (baton);
+       gdb_assert (prop->baton () != NULL);
      }
-   else if (attr_form_is_ref (attr))
-     {
-@@ -17920,9 +18022,29 @@ attr_to_dynamic_prop (const struct attribute *attr, struct die_info *die,
- 		baton = XOBNEW (obstack, struct dwarf2_property_baton);
+@@ -18142,11 +18234,31 @@ attr_to_dynamic_prop (const struct attribute *attr, struct die_info *die,
  		baton->property_type = die_type (target_die, target_cu);
  		baton->locexpr.per_cu = cu->per_cu;
+ 		baton->locexpr.per_objfile = per_objfile;
 -		baton->locexpr.size = DW_BLOCK (target_attr)->size;
 -		baton->locexpr.data = DW_BLOCK (target_attr)->data;
  		baton->locexpr.is_reference = true;
@@ -283,7 +278,7 @@ diff --git a/gdb/dwarf2read.c b/gdb/dwarf2read.c
 +		  {
 +		    gdb_byte *data;
 +
-+		    data = (gdb_byte *) obstack_alloc (&cu->per_cu->dwarf2_per_objfile->objfile->objfile_obstack,
++		    data = (gdb_byte *) obstack_alloc (&cu->per_objfile->objfile->objfile_obstack,
 +			    DW_BLOCK (target_attr)->size + additional_data_size);
 +		    memcpy (data, DW_BLOCK (target_attr)->data,
 +			    DW_BLOCK (target_attr)->size);
@@ -300,10 +295,13 @@ diff --git a/gdb/dwarf2read.c b/gdb/dwarf2read.c
 +		    baton->locexpr.size = DW_BLOCK (target_attr)->size;
 +		  }
 +
- 		prop->data.baton = baton;
- 		prop->kind = PROP_LOCEXPR;
- 		gdb_assert (prop->data.baton != NULL);
-@@ -18099,8 +18221,8 @@ read_subrange_type (struct die_info *die, struct dwarf2_cu *cu)
+ 		prop->set_locexpr (baton);
+-		gdb_assert (prop->baton () != NULL);
++		gdb_assert (prop->baton() != NULL);
+ 	      }
+ 	    else
+ 	      {
+@@ -18308,8 +18420,8 @@ read_subrange_type (struct die_info *die, struct dwarf2_cu *cu)
      }
  
    attr = dwarf2_attr (die, DW_AT_lower_bound, cu);
@@ -314,7 +312,7 @@ diff --git a/gdb/dwarf2read.c b/gdb/dwarf2read.c
    else if (!low_default_is_valid)
      complaint (_("Missing DW_AT_lower_bound "
  				      "- DIE at %s [in module %s]"),
-@@ -18109,10 +18231,10 @@ read_subrange_type (struct die_info *die, struct dwarf2_cu *cu)
+@@ -18318,10 +18430,10 @@ read_subrange_type (struct die_info *die, struct dwarf2_cu *cu)
  
    struct attribute *attr_ub, *attr_count;
    attr = attr_ub = dwarf2_attr (die, DW_AT_upper_bound, cu);
@@ -326,80 +324,54 @@ diff --git a/gdb/dwarf2read.c b/gdb/dwarf2read.c
 +      if (attr_to_dynamic_prop (attr, die, cu, &high, base_type, NULL, 0))
  	{
  	  /* If bounds are constant do the final calculation here.  */
- 	  if (low.kind == PROP_CONST && high.kind == PROP_CONST)
-@@ -18164,7 +18286,7 @@ read_subrange_type (struct die_info *die, struct dwarf2_cu *cu)
-       struct type *prop_type
- 	= dwarf2_per_cu_addr_sized_int_type (cu->per_cu, false);
+ 	  if (low.kind () == PROP_CONST && high.kind () == PROP_CONST)
+@@ -18372,7 +18484,7 @@ read_subrange_type (struct die_info *die, struct dwarf2_cu *cu)
+     {
+       struct type *prop_type = cu->addr_sized_int_type (false);
        attr_to_dynamic_prop (attr_byte_stride, die, cu, &byte_stride_prop,
 -			    prop_type);
 +			    prop_type, NULL, 0);
      }
  
    struct dynamic_prop bit_stride_prop;
-@@ -18185,7 +18307,7 @@ read_subrange_type (struct die_info *die, struct dwarf2_cu *cu)
- 	  struct type *prop_type
- 	    = dwarf2_per_cu_addr_sized_int_type (cu->per_cu, false);
+@@ -18392,7 +18504,7 @@ read_subrange_type (struct die_info *die, struct dwarf2_cu *cu)
+ 	{
+ 	  struct type *prop_type = cu->addr_sized_int_type (false);
  	  attr_to_dynamic_prop (attr_bit_stride, die, cu, &bit_stride_prop,
 -				prop_type);
 +				prop_type, NULL, 0);
  	}
      }
  
-@@ -25879,7 +26001,7 @@ set_die_type (struct die_info *die, struct type *type, struct dwarf2_cu *cu)
+@@ -24424,7 +24536,7 @@ set_die_type (struct die_info *die, struct type *type, struct dwarf2_cu *cu)
+   if (attr != NULL)
      {
-       struct type *prop_type
- 	= dwarf2_per_cu_addr_sized_int_type (cu->per_cu, false);
+       struct type *prop_type = cu->addr_sized_int_type (false);
 -      if (attr_to_dynamic_prop (attr, die, cu, &prop, prop_type))
 +      if (attr_to_dynamic_prop (attr, die, cu, &prop, prop_type, NULL, 0))
-         add_dyn_prop (DYN_PROP_ALLOCATED, prop, type);
+         type->add_dyn_prop (DYN_PROP_ALLOCATED, prop);
      }
-   else if (attr != NULL)
-@@ -25895,7 +26017,7 @@ set_die_type (struct die_info *die, struct type *type, struct dwarf2_cu *cu)
+ 
+@@ -24433,13 +24545,13 @@ set_die_type (struct die_info *die, struct type *type, struct dwarf2_cu *cu)
+   if (attr != NULL)
      {
-       struct type *prop_type
- 	= dwarf2_per_cu_addr_sized_int_type (cu->per_cu, false);
+       struct type *prop_type = cu->addr_sized_int_type (false);
 -      if (attr_to_dynamic_prop (attr, die, cu, &prop, prop_type))
 +      if (attr_to_dynamic_prop (attr, die, cu, &prop, prop_type, NULL, 0))
-         add_dyn_prop (DYN_PROP_ASSOCIATED, prop, type);
+         type->add_dyn_prop (DYN_PROP_ASSOCIATED, prop);
      }
-   else if (attr != NULL)
-@@ -25908,7 +26030,7 @@ set_die_type (struct die_info *die, struct type *type, struct dwarf2_cu *cu)
+ 
    /* Read DW_AT_data_location and set in type.  */
    attr = dwarf2_attr (die, DW_AT_data_location, cu);
-   if (attr_to_dynamic_prop (attr, die, cu, &prop,
--			    dwarf2_per_cu_addr_type (cu->per_cu)))
-+			    dwarf2_per_cu_addr_type (cu->per_cu), NULL, 0))
-     add_dyn_prop (DYN_PROP_DATA_LOCATION, prop, type);
+-  if (attr_to_dynamic_prop (attr, die, cu, &prop, cu->addr_type ()))
++  if (attr_to_dynamic_prop (attr, die, cu, &prop, cu->addr_type (), NULL, 0))
+     type->add_dyn_prop (DYN_PROP_DATA_LOCATION, prop);
  
-   if (dwarf2_per_objfile->die_type_hash == NULL)
+   if (per_objfile->die_type_hash == NULL)
 diff --git a/gdb/f-typeprint.c b/gdb/f-typeprint.c
 --- a/gdb/f-typeprint.c
 +++ b/gdb/f-typeprint.c
-@@ -197,15 +197,14 @@ f_type_print_varspec_suffix (struct type *type, struct ui_file *stream,
- 	print_rank_only = true;
-       else if ((TYPE_ASSOCIATED_PROP (type)
- 		&& PROP_CONST != TYPE_DYN_PROP_KIND (TYPE_ASSOCIATED_PROP (type)))
--	       || (TYPE_ALLOCATED_PROP (type)
--		   && PROP_CONST != TYPE_DYN_PROP_KIND (TYPE_ALLOCATED_PROP (type)))
--	       || (TYPE_DATA_LOCATION (type)
--		   && PROP_CONST != TYPE_DYN_PROP_KIND (TYPE_DATA_LOCATION (type))))
--	{
--	  /* This case exist when we ptype a typename which has the dynamic
--	     properties but cannot be resolved as there is no object.  */
--	  print_rank_only = true;
--	}
-+	      || (TYPE_ALLOCATED_PROP (type)
-+		&& PROP_CONST != TYPE_DYN_PROP_KIND (TYPE_ALLOCATED_PROP (type)))
-+	      || (TYPE_DATA_LOCATION (type)
-+		  && PROP_CONST != TYPE_DYN_PROP_KIND (TYPE_DATA_LOCATION (type))))
-+	/* This case exist when we ptype a typename which has the
-+	   dynamic properties but cannot be resolved as there is
-+	   no object.  */
-+	print_rank_only = true;
- 
-       if (TYPE_CODE (TYPE_TARGET_TYPE (type)) == TYPE_CODE_ARRAY)
- 	f_type_print_varspec_suffix (TYPE_TARGET_TYPE (type), stream, 0,
-@@ -217,8 +216,9 @@ f_type_print_varspec_suffix (struct type *type, struct ui_file *stream,
+@@ -217,8 +217,9 @@ f_type_print_varspec_suffix (struct type *type, struct ui_file *stream,
        else
  	{
  	  LONGEST lower_bound = f77_get_lowerbound (type);
@@ -410,7 +382,7 @@ diff --git a/gdb/f-typeprint.c b/gdb/f-typeprint.c
  
  	  /* Make sure that, if we have an assumed size array, we
  	       print out a warning and print the upperbound as '*'.  */
-@@ -229,7 +229,7 @@ f_type_print_varspec_suffix (struct type *type, struct ui_file *stream,
+@@ -229,7 +230,7 @@ f_type_print_varspec_suffix (struct type *type, struct ui_file *stream,
  	    {
  	      LONGEST upper_bound = f77_get_upperbound (type);
  
@@ -419,7 +391,7 @@ diff --git a/gdb/f-typeprint.c b/gdb/f-typeprint.c
  	    }
  	}
  
-@@ -249,7 +249,7 @@ f_type_print_varspec_suffix (struct type *type, struct ui_file *stream,
+@@ -249,7 +250,7 @@ f_type_print_varspec_suffix (struct type *type, struct ui_file *stream,
      case TYPE_CODE_REF:
        f_type_print_varspec_suffix (TYPE_TARGET_TYPE (type), stream, 0, 1, 0,
  				   arrayprint_recurse_level, false);
@@ -431,17 +403,17 @@ diff --git a/gdb/f-typeprint.c b/gdb/f-typeprint.c
 diff --git a/gdb/gdbtypes.c b/gdb/gdbtypes.c
 --- a/gdb/gdbtypes.c
 +++ b/gdb/gdbtypes.c
-@@ -1939,7 +1939,8 @@ is_dynamic_type_internal (struct type *type, int top_level)
+@@ -1977,7 +1977,8 @@ is_dynamic_type_internal (struct type *type, int top_level)
    type = check_typedef (type);
  
    /* We only want to recognize references at the outermost level.  */
--  if (top_level && TYPE_CODE (type) == TYPE_CODE_REF)
+-  if (top_level && type->code () == TYPE_CODE_REF)
 +  if (top_level &&
-+      (TYPE_CODE (type) == TYPE_CODE_REF || TYPE_CODE (type) == TYPE_CODE_PTR))
++      (type->code () == TYPE_CODE_REF || type-> code() == TYPE_CODE_PTR))
      type = check_typedef (TYPE_TARGET_TYPE (type));
  
    /* Types that have a dynamic TYPE_DATA_LOCATION are considered
-@@ -1972,10 +1973,10 @@ is_dynamic_type_internal (struct type *type, int top_level)
+@@ -2017,10 +2018,10 @@ is_dynamic_type_internal (struct type *type, int top_level)
  		|| is_dynamic_type_internal (TYPE_TARGET_TYPE (type), 0));
        }
  
@@ -451,26 +423,26 @@ diff --git a/gdb/gdbtypes.c b/gdb/gdbtypes.c
      case TYPE_CODE_ARRAY:
 +    case TYPE_CODE_STRING:
        {
- 	gdb_assert (TYPE_NFIELDS (type) == 1);
+ 	gdb_assert (type->num_fields () == 1);
  
-@@ -2139,11 +2140,15 @@ resolve_dynamic_array_or_string (struct type *type,
+@@ -2183,11 +2184,15 @@ resolve_dynamic_array_or_string (struct type *type,
  
    ary_dim = check_typedef (TYPE_TARGET_TYPE (elt_type));
  
--  if (ary_dim != NULL && TYPE_CODE (ary_dim) == TYPE_CODE_ARRAY)
-+  if (ary_dim != NULL && (TYPE_CODE (ary_dim) == TYPE_CODE_ARRAY
-+      || TYPE_CODE (ary_dim) == TYPE_CODE_STRING))
+-  if (ary_dim != NULL && ary_dim->code () == TYPE_CODE_ARRAY)
++  if (ary_dim != NULL && (ary_dim->code () == TYPE_CODE_ARRAY
++      || ary_dim->code () == TYPE_CODE_STRING))
      elt_type = resolve_dynamic_array_or_string (ary_dim, addr_stack);
    else
      elt_type = TYPE_TARGET_TYPE (type);
  
-+  if (TYPE_CODE (type) == TYPE_CODE_STRING)
++  if (type->code () == TYPE_CODE_STRING)
 +    return create_string_type (type, elt_type, range_type);
 +
-   prop = get_dyn_prop (DYN_PROP_BYTE_STRIDE, type);
+   prop = type->dyn_prop (DYN_PROP_BYTE_STRIDE);
    if (prop != NULL)
      {
-@@ -2295,6 +2300,28 @@ resolve_dynamic_struct (struct type *type,
+@@ -2533,6 +2538,25 @@ resolve_dynamic_struct (struct type *type,
    return resolved_type;
  }
  
@@ -488,10 +460,7 @@ diff --git a/gdb/gdbtypes.c b/gdb/gdbtypes.c
 +  /* Resolve associated property.  */
 +  prop = TYPE_ASSOCIATED_PROP (type);
 +  if (prop != NULL && dwarf2_evaluate_property (prop, NULL, addr_stack, &value))
-+    {
-+      TYPE_DYN_PROP_ADDR (prop) = value;
-+      TYPE_DYN_PROP_KIND (prop) = PROP_CONST;
-+    }
++    prop->set_const_val (value);
 +
 +  return type;
 +}
@@ -499,7 +468,7 @@ diff --git a/gdb/gdbtypes.c b/gdb/gdbtypes.c
  /* Worker for resolved_dynamic_type.  */
  
  static struct type *
-@@ -2349,6 +2376,9 @@ resolve_dynamic_type_internal (struct type *type,
+@@ -2594,6 +2618,9 @@ resolve_dynamic_type_internal (struct type *type,
  	case TYPE_CODE_ARRAY:
  	  resolved_type = resolve_dynamic_array_or_string (type, addr_stack);
  	  break;
@@ -804,7 +773,7 @@ diff --git a/gdb/testsuite/gdb.fortran/print_type.exp b/gdb/testsuite/gdb.fortra
  # This program is free software; you can redistribute it and/or modify
  # it under the terms of the GNU General Public License as published by
  # the Free Software Foundation; either version 3 of the License, or
-@@ -40,7 +41,7 @@ set complex [fortran_complex4]
+@@ -42,7 +43,7 @@ set complex [fortran_complex4]
  # matches the string TYPE.
  proc check_pointer_type { var_name type } {
      gdb_test "ptype ${var_name}" \
@@ -813,7 +782,7 @@ diff --git a/gdb/testsuite/gdb.fortran/print_type.exp b/gdb/testsuite/gdb.fortra
  }
  
  gdb_breakpoint [gdb_get_line_number "Before pointer assignment"]
-@@ -85,7 +86,8 @@ gdb_test "ptype twop" \
+@@ -87,7 +88,8 @@ gdb_test "ptype twop" \
      [multi_line "type = PTR TO -> \\( Type two" \
                  "    $int, allocatable :: ivla1\\(:\\)" \
                  "    $int, allocatable :: ivla2\\(:,:\\)" \
@@ -823,7 +792,7 @@ diff --git a/gdb/testsuite/gdb.fortran/print_type.exp b/gdb/testsuite/gdb.fortra
  
  gdb_breakpoint [gdb_get_line_number "After value assignment"]
  gdb_continue_to_breakpoint "After value assignment"
-@@ -97,11 +99,11 @@ gdb_test "ptype intv" "type = $int"
+@@ -99,11 +101,11 @@ gdb_test "ptype intv" "type = $int"
  gdb_test "ptype inta" "type = $int \\(10,2\\)"
  gdb_test "ptype realv" "type = $real"
  
@@ -840,7 +809,7 @@ diff --git a/gdb/testsuite/gdb.fortran/print_type.exp b/gdb/testsuite/gdb.fortra
  set test "ptype intap"
  gdb_test_multiple $test $test {
      -re "type = $int \\(10,2\\)\r\n$gdb_prompt $" {
-@@ -111,4 +113,4 @@ gdb_test_multiple $test $test {
+@@ -113,4 +115,4 @@ gdb_test_multiple $test $test {
          pass $test
      }
  }
@@ -1001,7 +970,7 @@ new file mode 100644
 diff --git a/gdb/testsuite/gdb.fortran/vla-value.exp b/gdb/testsuite/gdb.fortran/vla-value.exp
 --- a/gdb/testsuite/gdb.fortran/vla-value.exp
 +++ b/gdb/testsuite/gdb.fortran/vla-value.exp
-@@ -35,7 +35,7 @@ gdb_breakpoint [gdb_get_line_number "vla1-init"]
+@@ -37,7 +37,7 @@ gdb_breakpoint [gdb_get_line_number "vla1-init"]
  gdb_continue_to_breakpoint "vla1-init"
  gdb_test "print vla1" " = <not allocated>" "print non-allocated vla1"
  gdb_test "print &vla1" \
@@ -1010,7 +979,7 @@ diff --git a/gdb/testsuite/gdb.fortran/vla-value.exp b/gdb/testsuite/gdb.fortran
    "print non-allocated &vla1"
  gdb_test "print vla1(1,1,1)" "no such vector element \\\(vector not allocated\\\)" \
    "print member in non-allocated vla1 (1)"
-@@ -56,7 +56,7 @@ with_timeout_factor 15 {
+@@ -58,7 +58,7 @@ with_timeout_factor 15 {
  	"step over value assignment of vla1"
  }
  gdb_test "print &vla1" \
@@ -1019,7 +988,7 @@ diff --git a/gdb/testsuite/gdb.fortran/vla-value.exp b/gdb/testsuite/gdb.fortran
    "print allocated &vla1"
  gdb_test "print vla1(3, 6, 9)" " = 1311" "print allocated vla1(3,6,9)"
  gdb_test "print vla1(1, 3, 8)" " = 1311" "print allocated vla1(1,3,8)"
-@@ -76,7 +76,7 @@ gdb_test "print vla1(9, 9, 9)" " = 999" \
+@@ -78,7 +78,7 @@ gdb_test "print vla1(9, 9, 9)" " = 999" \
  # Try to access values in undefined pointer to VLA (dangling)
  gdb_test "print pvla" " = <not associated>" "print undefined pvla"
  gdb_test "print &pvla" \
@@ -1028,7 +997,7 @@ diff --git a/gdb/testsuite/gdb.fortran/vla-value.exp b/gdb/testsuite/gdb.fortran
    "print non-associated &pvla"
  gdb_test "print pvla(1, 3, 8)" "no such vector element \\\(vector not associated\\\)" \
    "print undefined pvla(1,3,8)"
-@@ -85,7 +85,7 @@ gdb_test "print pvla(1, 3, 8)" "no such vector element \\\(vector not associated
+@@ -87,7 +87,7 @@ gdb_test "print pvla(1, 3, 8)" "no such vector element \\\(vector not associated
  gdb_breakpoint [gdb_get_line_number "pvla-associated"]
  gdb_continue_to_breakpoint "pvla-associated"
  gdb_test "print &pvla" \
@@ -1040,7 +1009,7 @@ diff --git a/gdb/testsuite/gdb.fortran/vla-value.exp b/gdb/testsuite/gdb.fortran
 diff --git a/gdb/typeprint.c b/gdb/typeprint.c
 --- a/gdb/typeprint.c
 +++ b/gdb/typeprint.c
-@@ -574,6 +574,25 @@ whatis_exp (const char *exp, int show)
+@@ -565,6 +565,25 @@ whatis_exp (const char *exp, int show)
        printf_filtered (" */\n");    
      }
  
@@ -1048,7 +1017,7 @@ diff --git a/gdb/typeprint.c b/gdb/typeprint.c
 +     additional information about the target.
 +     For example, in Fortran and C we are printing the dimension of the
 +     dynamic array the pointer is pointing to.  */
-+  if (TYPE_CODE (type) == TYPE_CODE_PTR
++  if (type->code () == TYPE_CODE_PTR
 +      && is_dynamic_type (type) == 1)
 +    {
 +      CORE_ADDR addr;
@@ -1060,7 +1029,7 @@ diff --git a/gdb/typeprint.c b/gdb/typeprint.c
 +      if (addr != 0
 +	  && type_not_associated (type) == 0)
 +	TYPE_TARGET_TYPE (type) = resolve_dynamic_type (TYPE_TARGET_TYPE (type),
-+							NULL, addr);
++							{}, addr);
 +    }
 +
    LA_PRINT_TYPE (type, "", gdb_stdout, show, 0, &flags);
@@ -1070,7 +1039,7 @@ diff --git a/gdb/valops.c b/gdb/valops.c
 --- a/gdb/valops.c
 +++ b/gdb/valops.c
 @@ -1553,6 +1553,19 @@ value_ind (struct value *arg1)
-   if (TYPE_CODE (base_type) == TYPE_CODE_PTR)
+   if (base_type->code () == TYPE_CODE_PTR)
      {
        struct type *enc_type;
 +      CORE_ADDR addr;
@@ -1085,24 +1054,24 @@ diff --git a/gdb/valops.c b/gdb/valops.c
 +
 +      if (addr != 0)
 +	TYPE_TARGET_TYPE (base_type) =
-+	    resolve_dynamic_type (TYPE_TARGET_TYPE (base_type), NULL, addr);
++	    resolve_dynamic_type (TYPE_TARGET_TYPE (base_type), {}, addr);
  
        /* We may be pointing to something embedded in a larger object.
           Get the real type of the enclosing object.  */
-@@ -1568,8 +1581,7 @@ value_ind (struct value *arg1)
+@@ -1570,8 +1583,7 @@ value_ind (struct value *arg1)
        else
- 	/* Retrieve the enclosing object pointed to.  */
- 	arg2 = value_at_lazy (enc_type, 
--			      (value_as_address (arg1)
--			       - value_pointed_to_offset (arg1)));
-+			      (addr - value_pointed_to_offset (arg1)));
- 
+ 	{
+ 	  /* Retrieve the enclosing object pointed to.  */
+-	  base_addr = (value_as_address (arg1)
+-		       - value_pointed_to_offset (arg1));
++	  base_addr = (addr - value_pointed_to_offset (arg1));
+ 	}
+       arg2 = value_at_lazy (enc_type, base_addr);
        enc_type = value_type (arg2);
-       return readjust_indirect_value_type (arg2, enc_type, base_type, arg1);
 diff --git a/gdb/valprint.c b/gdb/valprint.c
 --- a/gdb/valprint.c
 +++ b/gdb/valprint.c
-@@ -1149,12 +1149,6 @@ value_check_printable (struct value *val, struct ui_file *stream,
+@@ -1046,12 +1046,6 @@ value_check_printable (struct value *val, struct ui_file *stream,
        return 0;
      }
  

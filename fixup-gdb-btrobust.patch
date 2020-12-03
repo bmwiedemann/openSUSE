@@ -1,0 +1,28 @@
+diff --git a/gdb/testsuite/gdb.python/py-framefilter.exp b/gdb/testsuite/gdb.python/py-framefilter.exp
+index 300a5be840d..68cb7d8d7e7 100644
+--- a/gdb/testsuite/gdb.python/py-framefilter.exp
++++ b/gdb/testsuite/gdb.python/py-framefilter.exp
+@@ -277,9 +277,20 @@ gdb_test_multiple "bt 1" $test {
+ # Now verify that we can see a quit.
+ gdb_test_no_output "python name_error = KeyboardInterrupt" \
+     "Change ErrorFilter to throw KeyboardInterrupt"
+-gdb_test "bt 1" "Quit" "bt 1 with KeyboardInterrupt"
+-
+-
++set re1 [multi_line \
++	     "Python Exception <class 'KeyboardInterrupt'> whoops: " \
++	     "\\(More stack frames follow\.\.\.\\)"]
++set re2 [multi_line \
++	     "Python Exception <type 'exceptions.KeyboardInterrupt'> whoops: " \
++	     "\\(More stack frames follow\.\.\.\\)"]
++gdb_test_multiple "bt 1" "" {
++    -re -wrap $re1 {
++	pass $gdb_test_name
++    }
++    -re -wrap $re2 {
++	pass $gdb_test_name
++    }
++}
+ # Test with no debuginfo
+ 
+ # We cannot use prepare_for_testing as we have to set the safe-patch

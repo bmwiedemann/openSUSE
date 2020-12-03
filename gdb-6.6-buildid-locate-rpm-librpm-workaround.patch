@@ -9,7 +9,7 @@ Subject: gdb-6.6-buildid-locate-rpm-librpm-workaround.patch
 diff --git a/gdb/build-id.c b/gdb/build-id.c
 --- a/gdb/build-id.c
 +++ b/gdb/build-id.c
-@@ -709,6 +709,19 @@ build_id_to_filename (const struct bfd_build_id *build_id, char **link_return)
+@@ -708,6 +708,19 @@ build_id_to_filename (const struct bfd_build_id *build_id, char **link_return)
  #include <dlfcn.h>
  #endif
  

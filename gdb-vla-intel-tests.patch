@@ -18,12 +18,15 @@ diff --git a/gdb/testsuite/gdb.fortran/ptr-indentation.exp b/gdb/testsuite/gdb.f
 diff --git a/gdb/testsuite/gdb.fortran/ptype-on-functions.exp b/gdb/testsuite/gdb.fortran/ptype-on-functions.exp
 --- a/gdb/testsuite/gdb.fortran/ptype-on-functions.exp
 +++ b/gdb/testsuite/gdb.fortran/ptype-on-functions.exp
-@@ -42,4 +42,4 @@ gdb_test "ptype say_numbers" \
+@@ -42,7 +42,7 @@ gdb_test "ptype say_numbers" \
      "type = void \\(integer\\(kind=4\\), integer\\(kind=4\\), integer\\(kind=4\\)\\)"
  
  gdb_test "ptype fun_ptr" \
 -    "type = PTR TO -> \\( integer\\(kind=4\\) \\(\\) \\(REF TO -> \\( integer\\(kind=4\\) \\)\\) \\)"
 +    "type = PTR TO -> \\( integer\\(kind=4\\) \\(\\) \\(REF TO -> \\( integer\\(kind=4\\)\\)\\)\\)"
+ 
+ gdb_test "ptype say_string" \
+     "type = void \\(character\\*\\(\\*\\), integer\\(kind=\\d+\\)\\)"
 diff --git a/gdb/testsuite/gdb.fortran/vla-func.exp b/gdb/testsuite/gdb.fortran/vla-func.exp
 new file mode 100644
 --- /dev/null
@@ -169,12 +172,12 @@ new file mode 100644
 diff --git a/gdb/testsuite/gdb.fortran/vla-ptr-info.exp b/gdb/testsuite/gdb.fortran/vla-ptr-info.exp
 --- a/gdb/testsuite/gdb.fortran/vla-ptr-info.exp
 +++ b/gdb/testsuite/gdb.fortran/vla-ptr-info.exp
-@@ -28,5 +28,5 @@ if ![runto_main] {
+@@ -33,5 +33,5 @@ set real4 [fortran_real4]
  # Check the status of a pointer to a dynamic array.
  gdb_breakpoint [gdb_get_line_number "pvla-associated"]
  gdb_continue_to_breakpoint "pvla-associated"
--gdb_test "print &pvla" " = \\(PTR TO -> \\( real\\(kind=4\\) \\(10,10,10\\) \\)\\) ${hex}" \
-+gdb_test "print &pvla" " = \\(PTR TO -> \\( real\\(kind=4\\) \\(10,10,10\\)\\)\\) ${hex}" \
+-gdb_test "print &pvla" " = \\(PTR TO -> \\( $real4 \\(10,10,10\\) \\)\\) ${hex}" \
++gdb_test "print &pvla" " = \\(PTR TO -> \\( $real4 \\(10,10,10\\)\\)\\) ${hex}" \
    "print pvla pointer information"
 diff --git a/gdb/testsuite/gdb.fortran/vla-stringsold.exp b/gdb/testsuite/gdb.fortran/vla-stringsold.exp
 new file mode 100644

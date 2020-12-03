@@ -1,0 +1,157 @@
+Fixup gdb-vla-intel-tests.patch
+
+---
+ gdb/testsuite/gdb.fortran/ptr-indentation.exp    |  2 +-
+ gdb/testsuite/gdb.fortran/ptype-on-functions.exp |  2 +-
+ gdb/testsuite/gdb.fortran/vla-ptr-info.exp       |  2 +-
+ gdb/testsuite/gdb.fortran/vla-stringsold.exp     | 36 ++++++++++++------------
+ gdb/testsuite/gdb.fortran/whatis_type.exp        |  4 +--
+ 5 files changed, 23 insertions(+), 23 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.fortran/ptr-indentation.exp b/gdb/testsuite/gdb.fortran/ptr-indentation.exp
+index 5e459fdb62e..209809a2922 100644
+--- a/gdb/testsuite/gdb.fortran/ptr-indentation.exp
++++ b/gdb/testsuite/gdb.fortran/ptr-indentation.exp
+@@ -37,5 +37,5 @@ gdb_continue_to_breakpoint "BP1"
+ gdb_test "ptype tinsta" \
+   [multi_line "type = Type tuserdef" \
+               "    $int :: i" \
+-              "    PTR TO -> \\( $real :: ptr\\)" \
++              "    PTR TO -> \\( $real :: ptr \\)" \
+               "End Type tuserdef"]
+diff --git a/gdb/testsuite/gdb.fortran/ptype-on-functions.exp b/gdb/testsuite/gdb.fortran/ptype-on-functions.exp
+index 761432ea82e..93e984af243 100644
+--- a/gdb/testsuite/gdb.fortran/ptype-on-functions.exp
++++ b/gdb/testsuite/gdb.fortran/ptype-on-functions.exp
+@@ -42,7 +42,7 @@ gdb_test "ptype say_numbers" \
+     "type = void \\(integer\\(kind=4\\), integer\\(kind=4\\), integer\\(kind=4\\)\\)"
+ 
+ gdb_test "ptype fun_ptr" \
+-    "type = PTR TO -> \\( integer\\(kind=4\\) \\(\\) \\(REF TO -> \\( integer\\(kind=4\\)\\)\\)\\)"
++    "type = PTR TO -> \\( integer\\(kind=4\\) \\(\\) \\(REF TO -> \\( integer\\(kind=4\\) \\)\\) \\)"
+ 
+ gdb_test "ptype say_string" \
+     "type = void \\(character\\*\\(\\*\\), integer\\(kind=\\d+\\)\\)"
+diff --git a/gdb/testsuite/gdb.fortran/vla-ptr-info.exp b/gdb/testsuite/gdb.fortran/vla-ptr-info.exp
+index ca8541bf92f..7ead9191b93 100644
+--- a/gdb/testsuite/gdb.fortran/vla-ptr-info.exp
++++ b/gdb/testsuite/gdb.fortran/vla-ptr-info.exp
+@@ -33,5 +33,5 @@ set real4 [fortran_real4]
+ # Check the status of a pointer to a dynamic array.
+ gdb_breakpoint [gdb_get_line_number "pvla-associated"]
+ gdb_continue_to_breakpoint "pvla-associated"
+-gdb_test "print &pvla" " = \\(PTR TO -> \\( $real4 \\(10,10,10\\)\\)\\) ${hex}" \
++gdb_test "print &pvla" " = \\(PTR TO -> \\( $real4 \\(10,10,10\\) \\)\\) ${hex}" \
+   "print pvla pointer information"
+diff --git a/gdb/testsuite/gdb.fortran/vla-stringsold.exp b/gdb/testsuite/gdb.fortran/vla-stringsold.exp
+index 7d7876d71ab..c1bf7ef763a 100644
+--- a/gdb/testsuite/gdb.fortran/vla-stringsold.exp
++++ b/gdb/testsuite/gdb.fortran/vla-stringsold.exp
+@@ -31,11 +31,11 @@ if ![runto MAIN__] then {
+ gdb_breakpoint [gdb_get_line_number "var_char-allocated-1"]
+ gdb_continue_to_breakpoint "var_char-allocated-1"
+ gdb_test "print var_char" \
+-  " = \\(PTR TO -> \\( character\\*10\\)\\) ${hex}" \
++  " = \\(PTR TO -> \\( character\\*10 \\)\\) ${hex}" \
+   "print var_char after allocated first time"
+-gdb_test "whatis var_char" "type = PTR TO -> \\( character\\*10\\)" \
++gdb_test "whatis var_char" "type = PTR TO -> \\( character\\*10 \\)" \
+   "whatis var_char first time"
+-gdb_test "ptype var_char" "type = PTR TO -> \\( character\\*10\\)" \
++gdb_test "ptype var_char" "type = PTR TO -> \\( character\\*10 \\)" \
+   "ptype var_char first time"
+ gdb_test "next" "\\d+.*var_char = 'foo'.*" \
+   "next to allocation status of var_char"
+@@ -44,13 +44,13 @@ gdb_test "print l" " = .TRUE." "print allocation status first time"
+ gdb_breakpoint [gdb_get_line_number "var_char-filled-1"]
+ gdb_continue_to_breakpoint "var_char-filled-1"
+ gdb_test "print var_char" \
+-  " = \\(PTR TO -> \\( character\\*3\\)\\) ${hex}" \
++  " = \\(PTR TO -> \\( character\\*3 \\)\\) ${hex}" \
+   "print var_char after filled first time"
+ gdb_test "print *var_char" " = 'foo'" \
+   "print *var_char after filled first time"
+-gdb_test "whatis var_char" "type = PTR TO -> \\( character\\*3\\)" \
++gdb_test "whatis var_char" "type = PTR TO -> \\( character\\*3 \\)" \
+   "whatis var_char after filled first time"
+-gdb_test "ptype var_char" "type = PTR TO -> \\( character\\*3\\)" \
++gdb_test "ptype var_char" "type = PTR TO -> \\( character\\*3 \\)" \
+   "ptype var_char after filled first time"
+ gdb_test "print var_char(1)" " = 102 'f'" "print var_char(1)"
+ gdb_test "print var_char(3)" " = 111 'o'" "print var_char(3)"
+@@ -58,44 +58,44 @@ gdb_test "print var_char(3)" " = 111 'o'" "print var_char(3)"
+ gdb_breakpoint [gdb_get_line_number "var_char-filled-2"]
+ gdb_continue_to_breakpoint "var_char-filled-2"
+ gdb_test "print var_char" \
+-  " = \\(PTR TO -> \\( character\\*6\\)\\) ${hex}" \
++  " = \\(PTR TO -> \\( character\\*6 \\)\\) ${hex}" \
+   "print var_char after allocated second time"
+ gdb_test "print *var_char" " = 'foobar'" \
+   "print *var_char after allocated second time"
+-gdb_test "whatis var_char" "type = PTR TO -> \\( character\\*6\\)" \
++gdb_test "whatis var_char" "type = PTR TO -> \\( character\\*6 \\)" \
+   "whatis var_char second time"
+-gdb_test "ptype var_char" "type = PTR TO -> \\( character\\*6\\)" \
++gdb_test "ptype var_char" "type = PTR TO -> \\( character\\*6 \\)" \
+   "ptype var_char second time"
+ 
+ gdb_breakpoint [gdb_get_line_number "var_char-empty"]
+ gdb_continue_to_breakpoint "var_char-empty"
+ gdb_test "print var_char" \
+-  " = \\(PTR TO -> \\( character\\*0\\)\\) ${hex}" \
++  " = \\(PTR TO -> \\( character\\*0 \\)\\) ${hex}" \
+   "print var_char after set empty"
+ gdb_test "print *var_char" " = \"\"" "print *var_char after set empty"
+-gdb_test "whatis var_char" "type = PTR TO -> \\( character\\*0\\)" \
++gdb_test "whatis var_char" "type = PTR TO -> \\( character\\*0 \\)" \
+   "whatis var_char after set empty"
+-gdb_test "ptype var_char" "type = PTR TO -> \\( character\\*0\\)" \
++gdb_test "ptype var_char" "type = PTR TO -> \\( character\\*0 \\)" \
+   "ptype var_char after set empty"
+ 
+ gdb_breakpoint [gdb_get_line_number "var_char-allocated-3"]
+ gdb_continue_to_breakpoint "var_char-allocated-3"
+ gdb_test "print var_char" \
+-  " = \\(PTR TO -> \\( character\\*21\\)\\) ${hex}" \
++  " = \\(PTR TO -> \\( character\\*21 \\)\\) ${hex}" \
+   "print var_char after allocated third time"
+-gdb_test "whatis var_char" "type = PTR TO -> \\( character\\*21\\)" \
++gdb_test "whatis var_char" "type = PTR TO -> \\( character\\*21 \\)" \
+   "whatis var_char after allocated third time"
+-gdb_test "ptype var_char" "type = PTR TO -> \\( character\\*21\\)" \
++gdb_test "ptype var_char" "type = PTR TO -> \\( character\\*21 \\)" \
+   "ptype var_char after allocated third time"
+ 
+ gdb_breakpoint [gdb_get_line_number "var_char_p-associated"]
+ gdb_continue_to_breakpoint "var_char_p-associated"
+ gdb_test "print var_char_p" \
+-  " = \\(PTR TO -> \\( character\\*7\\)\\) ${hex}" \
++  " = \\(PTR TO -> \\( character\\*7 \\)\\) ${hex}" \
+   "print var_char_p after associated"
+ gdb_test "print *var_char_p" " = 'johndoe'" \
+   "print *var_char_ after associated"
+-gdb_test "whatis var_char_p" "type = PTR TO -> \\( character\\*7\\)" \
++gdb_test "whatis var_char_p" "type = PTR TO -> \\( character\\*7 \\)" \
+   "whatis var_char_p after associated"
+-gdb_test "ptype var_char_p" "type = PTR TO -> \\( character\\*7\\)" \
++gdb_test "ptype var_char_p" "type = PTR TO -> \\( character\\*7 \\)" \
+   "ptype var_char_p after associated"
+diff --git a/gdb/testsuite/gdb.fortran/whatis_type.exp b/gdb/testsuite/gdb.fortran/whatis_type.exp
+index e2a56a63410..4b0cbf9c28d 100644
+--- a/gdb/testsuite/gdb.fortran/whatis_type.exp
++++ b/gdb/testsuite/gdb.fortran/whatis_type.exp
+@@ -44,7 +44,7 @@ gdb_test "whatis t2" "type = Type t2"
+ gdb_test "whatis t2v" "type = Type t2"
+ gdb_test "whatis t3" "type = Type t3"
+ gdb_test "whatis t3v" "type = Type t3"
+-gdb_test "whatis t3p" "type = PTR TO -> \\( Type t3\\)"
++gdb_test "whatis t3p" "type = PTR TO -> \\( Type t3 \\)"
+ 
+ gdb_test "ptype t1" \
+   [multi_line "type = Type t1" \
+@@ -73,4 +73,4 @@ gdb_test "ptype t3p" \
+   [multi_line "type = PTR TO -> \\( Type t3" \
+               "    $int :: t3_i" \
+               "    Type t2 :: t2_n" \
+-              "End Type t3\\)"]
++              "End Type t3 \\)"]

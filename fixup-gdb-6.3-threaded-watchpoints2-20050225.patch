@@ -1,0 +1,22 @@
+Fixup
+
+---
+ gdb/testsuite/gdb.threads/watchthreads-threaded.exp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.threads/watchthreads-threaded.exp b/gdb/testsuite/gdb.threads/watchthreads-threaded.exp
+index e9cdd59771c..29c470292af 100644
+--- a/gdb/testsuite/gdb.threads/watchthreads-threaded.exp
++++ b/gdb/testsuite/gdb.threads/watchthreads-threaded.exp
+@@ -85,9 +85,9 @@ for {set i 0} {$i < 30} {incr i} {
+        { set args_2 1; set test_flag 1 }
+     -re "Hardware watchpoint 4: args\\\[3\\\].*Old value = 0.*New value = 1.*main \\\(\\\) at .*watchthreads-threaded.c:$init_line.*$gdb_prompt $"
+        { set args_3 1; set test_flag 1 }
+-    -re "Hardware watchpoint 3: args\\\[2\\\].*Old value = $args_2.*New value = [expr $args_2+1].*in thread_function \\\(arg=0x2\\\) at .*watchthreads-threaded.c:$inc_line.*$gdb_prompt $"
++    -re "Hardware watchpoint 3: args\\\[2\\\].*Old value = $args_2.*New value = [expr $args_2+1].*thread_function \\\(arg=0x2\\\) at .*watchthreads-threaded.c:$inc_line.*$gdb_prompt $"
+        { set args_2 [expr $args_2+1]; set test_flag 1 }
+-    -re "Hardware watchpoint 4: args\\\[3\\\].*Old value = $args_3.*New value = [expr $args_3+1].*in thread_function \\\(arg=0x3\\\) at .*watchthreads-threaded.c:$inc_line.*$gdb_prompt $"
++    -re "Hardware watchpoint 4: args\\\[3\\\].*Old value = $args_3.*New value = [expr $args_3+1].*thread_function \\\(arg=0x3\\\) at .*watchthreads-threaded.c:$inc_line.*$gdb_prompt $"
+        { set args_3 [expr $args_3+1]; set test_flag 1 }
+   }
+   # If we fail above, don't bother continuing loop

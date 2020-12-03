@@ -1,0 +1,29 @@
+Fixup gdb.base/gnu-ifunc-strstr-workaround.exp
+
+---
+ gdb/testsuite/gdb.base/gnu-ifunc-strstr-workaround.exp | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/gnu-ifunc-strstr-workaround.exp b/gdb/testsuite/gdb.base/gnu-ifunc-strstr-workaround.exp
+index 4aa710b914..889f8c6f58 100644
+--- a/gdb/testsuite/gdb.base/gnu-ifunc-strstr-workaround.exp
++++ b/gdb/testsuite/gdb.base/gnu-ifunc-strstr-workaround.exp
+@@ -43,6 +43,10 @@ gdb_test_multiple $test $test {
+ 	untested "$test (no DWARF)"
+ 	return 0
+     }
++    -re "type = <unknown return type> \\(\\)\r\n$gdb_prompt $" {
++	untested "$test (no DWARF)"
++	return 0
++    }
+ }
+ 
+ set addr ""
+@@ -111,5 +115,5 @@ gdb_test_multiple "print strstr" $test {
+     }
+ }
+ 
+-gdb_test {print strstr("abc","b")} { = 0x[0-9a-f]+ "bc"}
+-gdb_test {print strstr("def","e")} { = 0x[0-9a-f]+ "ef"}
++gdb_test {print (char *)strstr("abc","b")} { = 0x[0-9a-f]+ "bc"}
++gdb_test {print (char *)strstr("def","e")} { = 0x[0-9a-f]+ "ef"}
