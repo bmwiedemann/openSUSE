@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Dec  1 14:56:43 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Correct upstream URL and upstream release URL 
+
+-------------------------------------------------------------------
+Mon Nov 30 13:40:28 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch crda-default.patch as well as template file crda.default
+  for /usr/etc/default/crda to support WLAN USB dongles as well as
+  mostly raspberry WLAN drivers not knowing about kernel builtin
+  support for WLAN regular country domains (boo#1179308)
+
+-------------------------------------------------------------------
+Tue Nov 17 13:43:31 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
+Mon Aug 17 17:34:41 CEST 2020 - ro@suse.de
+
+- update to 4.14 and update home URL to use the github project
+  - fix keys defined but not used error
+- add patch from upstream
+  crda-67f1e6ddbdfade357e234c9d58a30fe0a283fe60.patch
+  - add URLs to README
+- add patch from upstream
+  crda-f4ef2531698fb9ba006e8b31a223b3269be8bc7c.patch
+  - add legacy note to README
+  - ## CRDA is no longer needed as of kernel v4.15
+
+-------------------------------------------------------------------
 Thu Mar 12 11:34:19 CET 2020 - ro@suse.de
 
 - add patch crda-python3.patch to build using python3
