@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Dec  1 11:27:06 UTC 2020 - aloisio@gmx.com
+
+- Update to version 2.13.3
+  Fixes:
+  * Fixed possible infinite loop when combining generators with
+    section filter (`-c` option)
+  Miscellaneous:
+  * Fixed `ParseAndAddCatchTests` not finding `TEST_CASE`s
+    without tags
+  * `ParseAndAddCatchTests` supports `CMP0110` policy for
+    changing behaviour of `add_test`
+    + This was the shortlived change in CMake 3.18.0 that
+      temporarily broke `ParseAndAddCatchTests`
+  version 2.13.2
+  Improvements:
+  * Implemented workaround for NVCC ICE
+  Fixes:
+  * Fixed detection of `std::uncaught_exceptions` support under
+    non-msvc platforms
+  Miscellaneous:
+  * `catch_discover_tests` has been improved significantly
+    + You can now specify which reporter should be used
+    + You can now modify where the output will be written
+    + `WORKING_DIRECTORY` setting is respected
+  * `ParseAndAddCatchTests` now supports `TEMPLATE_TEST_CASE`
+    macros
+  * Various documentation fixes and improvements
+  version 2.13.1
+  Improvements:
+  * `ParseAndAddCatchTests` handles CMake v3.18.0 correctly
+  * Improved autodetection of `std::byte`
+  * Simplified implementation of templated test cases
+    + This should have a tiny positive effect on its compilation
+      throughput
+  Fixes:
+  * Automatic stringification of ranges handles sentinel ranges
+    properly
+
+-------------------------------------------------------------------
 Fri Aug 14 13:05:03 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.13.0
