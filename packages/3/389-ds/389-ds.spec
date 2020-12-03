@@ -16,20 +16,6 @@
 #
 
 
-# bcond is confusingly backwards to what you expect - without means
-#  to ENABLE the option, with means to DISABLE it.
-%if (0%{?sle_version} > 150099) || (0%{?suse_version} > 1549)
-%bcond_without lib389
-%else
-%bcond_with    lib389
-%endif
-
-%if (0%{?sle_version} > 150299) || (0%{?suse_version} > 1549)
-%bcond_without rust
-%else
-%bcond_with    rust
-%endif
-
 %define use_python python3
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -51,7 +37,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        1.4.4.8~git0.bf454ad07
+Version:        2.0.1~git0.b557f5daa
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -60,10 +46,8 @@ URL:            https://pagure.io/389-ds-base
 Source:         389-ds-base-%{version}.tar.bz2
 Source1:        extra-schema.tgz
 Source2:        LICENSE.openldap
-%if %{with rust}
 Source3:        vendor.tar.xz
 # Source4:        cargo_config
-%endif
 Source9:        %{name}-rpmlintrc
 Source10:       %{user_group}-user.conf
 # 389-ds does not support i686
@@ -89,17 +73,15 @@ BuildRequires:  sysuser-tools
 BuildRequires:  net-snmp-devel >= 5.1.2
 BuildRequires:  openldap2-devel
 # pam-devel is required by the pam passthru auth plug-in
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
-%if %{with lib389}
 BuildRequires:  %{python_module argcomplete}
 BuildRequires:  %{python_module argparse-manpage}
+BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module ldap >= 3}
 BuildRequires:  %{python_module pyasn1-modules}
 BuildRequires:  %{python_module pyasn1}
 BuildRequires:  %{python_module python-dateutil}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
-%endif
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -116,11 +98,9 @@ BuildRequires:  pkgconfig(systemd)
 %if %{use_tcmalloc}
 BuildRequires:  pkgconfig(libtcmalloc)
 %endif
-BuildRequires:  rsync
-%if %{with rust}
 BuildRequires:  cargo
+BuildRequires:  rsync
 BuildRequires:  rust
-%endif
 Requires:       %{_sbindir}/service
 Requires:       acl
 # This is a requirement as it's the only known "safe" method of
@@ -128,18 +108,7 @@ Requires:       acl
 # ldaps.
 Requires:       cyrus-sasl-plain
 Requires:       db-utils
-%if %{with lib389}
 Requires:       lib389 = %{version}
-%else
-Requires:       bind-utils
-Requires:       perl(Mozilla::LDAP::API)
-Requires:       perl(Mozilla::LDAP::Conn)
-Requires:       perl(Mozilla::LDAP::Entry)
-Requires:       perl(Mozilla::LDAP::LDIF)
-Requires:       perl(Mozilla::LDAP::Utils)
-Requires:       perl(NetAddr::IP)
-Requires:       perl(Socket6)
-%endif
 # Needed for creating the ccache and some GSSAPI steps in sasl
 Requires:       krb5
 %sysusers_requires
@@ -203,7 +172,6 @@ Obsoletes:      %{name} <= 1.3.6.2
 %description      snmp
 SNMP Agent for the 389 Directory Server base package.
 
-%if %{with lib389}
 %package -n lib389
 Summary:        389 Directory Server administration tools and library
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -234,7 +202,6 @@ Obsoletes:      python3-lib389 < %{version}-%{release}
 %description -n lib389
 Python library for interacting with and administering 389
 Directory Server instances locally or remotely.
-%endif
 
 %package -n %{svrcorelib}
 Summary:        Secure PIN handling using NSS crypto
@@ -253,11 +220,7 @@ uses the facilities provided by NSS.
 
 # Extract the vendor.tar.gz. The -D -T here prevents removal of the sources
 # from the previous setup step.
-%if %{with rust}
-# mkdir .cargo
-# cp %{SOURCE4} .cargo/config
 %setup -q -n %{name}-base-%{version} -D -T -a 3
-%endif
 
 %build
 %sysusers_generate_pre %{SOURCE10} %{user_group}
@@ -283,15 +246,8 @@ export CFLAGS="%{optflags}" # -std=gnu99"
   --enable-tcmalloc \
   %endif
   --with-selinux \
-  %if %{with rust}
   --enable-rust-offline \
-  %endif
-  %if %{with lib389}
   --disable-perl \
-  %else
-  --enable-perl \
-  --with-perldir=%{_bindir} \
-  %endif
   --libexecdir=%{_prefix}/lib/dirsrv/ \
   --with-pythonexec="%{_bindir}/%{use_python}" \
   --with-systemd \
@@ -304,21 +260,17 @@ export CFLAGS="%{optflags}" # -std=gnu99"
 export XCFLAGS="$CFLAGS"
 make %{?_smp_mflags}
 #make setup.py
-%if %{with lib389}
 pushd src/lib389
 %python_build
 popd
-%endif
 
 %install
 %make_install
-%if %{with lib389}
 pushd src/lib389
 %python_install
 mv %{buildroot}/usr/libexec/dirsrv/dscontainer %{buildroot}%{_prefix}/lib/dirsrv/
 rmdir %{buildroot}/usr/libexec/dirsrv/
 popd
-%endif
 
 cp -r man/man3 %{buildroot}%{_mandir}/man3
 
@@ -330,11 +282,6 @@ mkdir -p %{buildroot}%{_sysusersdir}
 
 #remove libtool archives and static libs
 find %{buildroot} -type f -name "*.la" -delete -print
-
-# make sure perl scripts have a proper shebang
-%if ! %{with lib389}
-sed -i -e 's|#{{PERL-EXEC}}|#!%{_bindir}/perl|' %{buildroot}%{_datadir}/%{pkgname}/script-templates/template-*.pl
-%endif
 
 # install extra schema files
 cp -R extra-schema "%{buildroot}/%{_datadir}/dirsrv/"
@@ -402,111 +349,20 @@ exit 0
 %dir %{_sysconfdir}/dirsrv/schema
 %{_libdir}/dirsrv/libns-dshttpd-*.so
 %{_libdir}/dirsrv/librewriters.so
-%if ! %{with lib389}
-%{_libdir}/dirsrv/perl/*.pm
-%endif
 %{_libdir}/dirsrv/plugins/*.so
 %{_libdir}/dirsrv/python/*.py
 %{_libdir}/dirsrv/*.so.*
 %exclude %{_mandir}/man1/ldap-agent*
 %{_mandir}/man1/*
 %{_mandir}/man5/*
-%if %{with lib389}
 %{_mandir}/man8/ns-slapd.8.gz
 %{_mandir}/man8/openldap_to_ds.8.gz
-
-# With lib389 we don't package all the man pages for deprecated commands. Upstream needs to remove
-# these from the build with --disable-perl flag set.
-# These are excluded now
-%exclude %{_mandir}/man8/bak2db.8.gz
-%exclude %{_mandir}/man8/bak2db.pl.8.gz
-%exclude %{_mandir}/man8/cleanallruv.pl.8.gz
-%exclude %{_mandir}/man8/db2bak.8.gz
-%exclude %{_mandir}/man8/db2bak.pl.8.gz
-%exclude %{_mandir}/man8/db2index.8.gz
-%exclude %{_mandir}/man8/db2index.pl.8.gz
-%exclude %{_mandir}/man8/db2ldif.8.gz
-%exclude %{_mandir}/man8/db2ldif.pl.8.gz
-%exclude %{_mandir}/man8/dbmon.sh.8.gz
-%exclude %{_mandir}/man8/dbverify.8.gz
-%exclude %{_mandir}/man8/dn2rdn.8.gz
-%exclude %{_mandir}/man8/fixup-linkedattrs.pl.8.gz
-%exclude %{_mandir}/man8/fixup-memberof.pl.8.gz
-%exclude %{_mandir}/man8/ldif2db.8.gz
-%exclude %{_mandir}/man8/ldif2db.pl.8.gz
-%exclude %{_mandir}/man8/ldif2ldap.8.gz
-%exclude %{_mandir}/man8/migrate-ds.pl.8.gz
-%exclude %{_mandir}/man8/monitor.8.gz
-%exclude %{_mandir}/man8/ns-accountstatus.pl.8.gz
-%exclude %{_mandir}/man8/ns-activate.pl.8.gz
-%exclude %{_mandir}/man8/ns-inactivate.pl.8.gz
-%exclude %{_mandir}/man8/ns-newpwpolicy.pl.8.gz
-%exclude %{_mandir}/man8/remove-ds.pl.8.gz
-%exclude %{_mandir}/man8/restart-dirsrv.8.gz
-%exclude %{_mandir}/man8/restoreconfig.8.gz
-%exclude %{_mandir}/man8/saveconfig.8.gz
-%exclude %{_mandir}/man8/schema-reload.pl.8.gz
-%exclude %{_mandir}/man8/setup-ds.pl.8.gz
-%exclude %{_mandir}/man8/start-dirsrv.8.gz
-%exclude %{_mandir}/man8/status-dirsrv.8.gz
-%exclude %{_mandir}/man8/stop-dirsrv.8.gz
-%exclude %{_mandir}/man8/suffix2instance.8.gz
-%exclude %{_mandir}/man8/syntax-validate.pl.8.gz
-%exclude %{_mandir}/man8/upgradedb.8.gz
-%exclude %{_mandir}/man8/upgradednformat.8.gz
-%exclude %{_mandir}/man8/usn-tombstone-cleanup.pl.8.gz
-%exclude %{_mandir}/man8/verify-db.pl.8.gz
-%exclude %{_mandir}/man8/vlvindex.8.gz
-%else
-%{_mandir}/man8/*
-%endif
 %{_bindir}/*
 # TODO: audit bug running https://bugzilla.opensuse.org/show_bug.cgi?id=1111564
 # This also needs a lot more work on the service file
 #attr(750,root,dirsrv) #caps(CAP_NET_BIND_SERVICE=pe) #{_sbindir}/ns-slapd
 %verify(not caps) %attr(755,root,root) %{_sbindir}/ns-slapd
 %{_sbindir}/openldap_to_ds
-%if ! %{with lib389}
-%{_sbindir}/bak2db
-%{_sbindir}/bak2db.pl
-%{_sbindir}/cleanallruv.pl
-%{_sbindir}/db2bak
-%{_sbindir}/db2bak.pl
-%{_sbindir}/db2index
-%{_sbindir}/db2index.pl
-%{_sbindir}/db2ldif
-%{_sbindir}/db2ldif.pl
-%{_sbindir}/dbmon.sh
-%{_sbindir}/dbverify
-%{_sbindir}/dn2rdn
-%{_sbindir}/fixup-linkedattrs.pl
-%{_sbindir}/fixup-memberof.pl
-%{_sbindir}/ldif2db
-%{_sbindir}/ldif2db.pl
-%{_sbindir}/ldif2ldap
-%{_sbindir}/migrate-ds.pl
-%{_sbindir}/monitor
-%{_sbindir}/ns-accountstatus.pl
-%{_sbindir}/ns-activate.pl
-%{_sbindir}/ns-inactivate.pl
-%{_sbindir}/ns-newpwpolicy.pl
-%{_sbindir}/remove-ds.pl
-%{_sbindir}/restart-dirsrv
-%{_sbindir}/restoreconfig
-%{_sbindir}/saveconfig
-%{_sbindir}/schema-reload.pl
-%{_sbindir}/setup-ds.pl
-%{_sbindir}/start-dirsrv
-%{_sbindir}/status-dirsrv
-%{_sbindir}/stop-dirsrv
-%{_sbindir}/suffix2instance
-%{_sbindir}/syntax-validate.pl
-%{_sbindir}/upgradedb
-%{_sbindir}/upgradednformat
-%{_sbindir}/usn-tombstone-cleanup.pl
-%{_sbindir}/verify-db.pl
-%{_sbindir}/vlvindex
-%endif
 %{_unitdir}/dirsrv@.service
 %{_unitdir}/dirsrv.target
 %exclude %{_unitdir}/dirsrv@.service.d/custom.conf
@@ -549,7 +405,6 @@ exit 0
 %{_mandir}/man1/ldap-agent.1*
 %{_unitdir}/%{pkgname}-snmp.service
 
-%if %{with lib389}
 %files -n lib389
 %defattr(-,root,root,-)
 %license src/lib389/LICENSE
@@ -565,6 +420,5 @@ exit 0
 %{_mandir}/man8/dsctl.8.gz
 %{_mandir}/man8/dsidm.8.gz
 /usr/lib/python*/site-packages/lib389*
-%endif
 
 %changelog

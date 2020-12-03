@@ -386,4 +386,24 @@
     <comment></comment>
     <requestid>847971</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>7eeeb0d3c2ef54fc26adafd33d123ea4</srcmd5>
+    <version>2.0.1~git0.b557f5daa</version>
+    <time>1607017381</time>
+    <user>dimstar_suse</user>
+    <comment>- Rust is a hard-requirement of 2.0.0 series, so enable-rust flags removed
+- Perl has been completly removed in 2.0.0, enable-perl removed and lib389
+  is the default. Perl tools have not been included in SUSE since 1.4.1.x
+- Update to version 2.0.1~git0.b557f5daa:
+  * Bump version to 2.0.1
+  * Issue 4420 - change NVR to use X.X.X instead of X.X.X.X
+  * Issue 4391 - DSE config modify does not call be_postop (#4394)
+  * Issue 4218 - Verify the new wtime and optime access log keywords (#4397)
+  * Issue 4176 - CL trimming causes high CPU
+  * ticket 2058: Add keep alive entry after on-line initialization - second version (#4399)
+  * Issue 4403 RFE - OpenLDAP pw hash migration tests (#4408)
+  * Bump version to 2.0.0
+  * Bump version to 1.4.5.0</comment>
+    <requestid>852782</requestid>
+  </revision>
 </revisionlist>
