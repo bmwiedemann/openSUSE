@@ -121,4 +121,12 @@
 Delete the linked python-qscintilla-qt5 (A delete request is automatically decline)</comment>
     <requestid>846254</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4b7eaa196b1352b278fab998f748590a</srcmd5>
+    <version>2.11.6</version>
+    <time>1607017323</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851178</requestid>
+  </revision>
 </revisionlist>

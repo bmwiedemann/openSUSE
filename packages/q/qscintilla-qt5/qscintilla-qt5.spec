@@ -1,5 +1,5 @@
 #
-# spec file for package qscintilla-qt5
+# spec file for package qscintilla
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -34,7 +34,7 @@
 %define mname   qscintilla-qt5
 %define sonum   15
 Name:           %{?pprefix}%{mname}
-Version:        2.11.5
+Version:        2.11.6
 Release:        0
 Summary:        C++ Editor Class Library
 License:        GPL-3.0-only
@@ -58,7 +58,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module sip4-devel >= 4.19.8}
 Requires:       python-sip(api) = %{python_sip_api_ver}
 %else
-BuildRequires:  %{python_module pyqt-builder}
+BuildRequires:  %{python_module pyqt-builder >= 1.6}
 BuildRequires:  %{python_module sip-devel >= 5.3}
 %requires_eq    python-qt5-sip
 %endif

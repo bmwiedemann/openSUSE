@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 24 20:05:48 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to Version 2.11.6
+  * Added the --qsci-translations-dir option to sip-wheel.
+  * Added the .api file for Python v3.9.
+  * Build system changes.
+  * Bug fixes.
+
+-------------------------------------------------------------------
 Thu Nov  5 14:00:18 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Dropped patch: python-config.diff -- not needed even for the SIP4
