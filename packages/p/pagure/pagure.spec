@@ -52,6 +52,9 @@ Patch0007:          0007-Remove-fenced-code-block-when-checking-mention.patch
 Patch0008:          0008-Add-support-for-using-cchardet-to-detect-files-encod.patch
 Patch0009:          0009-Add-support-for-disabling-user-registration.patch
 
+# Fixes proposed upstream
+## From: https://pagure.io/pagure/pull-request/5056
+Patch0101:          0001-api-project-Fix-handling-of-false.patch
 
 # SUSE-specific fixes
 ## Change the defaults in the example config to match packaging
