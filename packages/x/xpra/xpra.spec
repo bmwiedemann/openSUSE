@@ -19,7 +19,7 @@
 
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        4.0.4
+Version:        4.0.5
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        GPL-2.0-or-later AND BSD-3-Clause AND LGPL-3.0-or-later AND MIT
@@ -68,7 +68,6 @@ Requires:       python3-dbus-python
 Requires:       python3-gobject-Gdk
 Requires:       python3-gst
 Requires:       python3-lz4
-Requires:       python3-numpy
 Requires:       python3-opencv
 Requires:       python3-pycups
 Requires:       python3-rencode
