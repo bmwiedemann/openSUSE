@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec  3 02:36:03 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Add proposed fix for setting project options via API
+  + Patch: 0001-api-project-Fix-handling-of-false.patch
+
+-------------------------------------------------------------------
 Thu Sep 24 22:57:42 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Backport various fixes from upstream
