@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Tue Dec  1 23:00:32 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20201201
+
+  - Added icons
+
+    * Alsa Tools GUI #2433
+    * Amazon WorkSpaces (Flathub) #2007
+    * Android Messages Desktop (tray icon)
+    * Angry IP Scanner #2432
+    * Applications Other
+    * Bless (Flathub) #2007
+    * Bless Hex Editor #2420
+    * Cadence (tray icons)
+    * CoreCtrl (app and tray icons) #2247
+    * Deepin Wine Wechat #2452
+    * DeSmuME (Flathub) #2007
+    * Dialect #2421
+    * DuckStation #2416
+    * EasyTAG (FlatHub) #2007
+    * edit-clear-history #2428
+    * Electron 9 #2437
+    * FontManager #2007
+    * G'MIC-Qt & ZArt #2451
+    * Giara #2417
+    * GNOME FontViewer #2007
+    * GNOME Pika Backup
+    * GNOME Solanum
+    * Gwenview (Flathub) #2007
+    * HideMy.name VPN
+    * Ideogram #2427
+    * KCachegrind (Flathub) #2007
+    * Kontrast (Flathub) #2007
+    * LabPlot (FlatHub) #2007
+    * Liferea (Flathub) #2007
+    * MEGAsync (FlatHub) #2007
+    * Moonlighter #2424
+    * MPZ Music Player #2436
+    * OBD Auto Doctor #2449
+    * OpenDiablo2 #2418
+    * OpenRCT 2 (Flathub) #2007
+    * Outlook PWA #2438
+    * Preferences Other
+    * Pritunl Client Electron
+    * ProtonMail Import-Export (Flathub) #2007
+    * Qnapi (Flathub) #2007
+    * qView (Flathub) #2007
+    * RcloneBrowser (AppImage)
+    * Scribus (mimetype icon) #2419
+    * Simplenote (Flathub) #2007
+    * SQLite3 (mime type icon) #2434
+    * Super Productivity (tray icons)
+    * VGrive (Appindicator icon)
+    * Video Downloader (FlatHub) #2007
+    * WhatsApp Qt (Flathub) #2007
+    * xfce4-session (Switch User) #2429
+
+  - Updated icons
+
+    * Elisa #2423
+    * GNOME Reversi #2435
+    * Juk #2423
+    * KCachegrind
+    * Plasma #2422
+    * PlasmaShell #2422
+    * Plasmoid (mime type icon) #2422
+    * RcloneBrowser
+    * Spotify #1984 #2431
+    * Super Productivity
+
+  - Changes and fixes
+
+    * Fixed eMule icon
+    * Fixed viewBox in several icons #2426
+
+-------------------------------------------------------------------
 Sun Nov  1 23:45:04 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to verion 20201031
