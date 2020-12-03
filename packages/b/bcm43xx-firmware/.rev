@@ -119,4 +119,14 @@
     <comment></comment>
     <requestid>834571</requestid>
   </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>bbeb35eb3beab8f101ee6b97ac8a752d</srcmd5>
+    <version>20180314</version>
+    <time>1607017305</time>
+    <user>dimstar_suse</user>
+    <comment>Fix previous request. The symbolic links have to be created relative to the
+original file location. Otherwise, the link contains absolute paths which
+traverse into the build machine tree. (forwarded request 852418 from nsaenzjulienne)</comment>
+    <requestid>852420</requestid>
+  </revision>
 </revisionlist>

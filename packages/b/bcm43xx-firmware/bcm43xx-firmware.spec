@@ -42,6 +42,10 @@ Source4309:     https://github.com/RPi-Distro/bluez-firmware/raw/master/broadcom
 #brcmfmac4356-pcie.txt is taken from ChromeOS repo
 # https://chromium.googlesource.com/chromiumos/third_party/linux-firmware/+/f151f016b4fe656399f199e28cabf8d658bcb52b/brcm/brcmfmac4356-pcie.txt
 Source4356:     brcmfmac4356-pcie.txt
+#BCM43456
+Source4561:     https://github.com/RPi-Distro/firmware-nonfree/raw/master/brcm/brcmfmac43456-sdio.bin
+Source4562:     https://github.com/RPi-Distro/firmware-nonfree/raw/master/brcm/brcmfmac43456-sdio.clm_blob
+Source4563:     https://github.com/RPi-Distro/firmware-nonfree/raw/master/brcm/brcmfmac43456-sdio.txt
 Source4559:     https://github.com/RPi-Distro/bluez-firmware/raw/master/broadcom/BCM4345C0.hcd
 # Owns /lib/firmware/brcm and potentially conflicts
 BuildRequires:  kernel-firmware-brcm
@@ -74,6 +78,11 @@ install -c -m 0644 %{SOURCE301} %{buildroot}/lib/firmware/brcm/
 install -c -m 0644 %{SOURCE391} %{buildroot}/lib/firmware/brcm/
 install -c -m 0644 %{SOURCE3622} %{buildroot}/lib/firmware/brcm/
 install -c -m 0644 %{SOURCE4356} %{buildroot}/lib/firmware/brcm/
+install -c -m 0644 %{SOURCE4561} %{buildroot}/lib/firmware/brcm/
+install -c -m 0644 %{SOURCE4562} %{buildroot}/lib/firmware/brcm/
+install -c -m 0644 %{SOURCE4563} %{buildroot}/lib/firmware/brcm/
+ln -s brcmfmac43456-sdio.txt %{buildroot}/lib/firmware/brcm/brcmfmac43456-sdio.raspberrypi,400.txt
+ln -s brcmfmac43456-sdio.txt %{buildroot}/lib/firmware/brcm/brcmfmac43456-sdio.raspberrypi,4-compute-module.txt
 # Used by bluez (hciattach)
 install -c -m 0644 %{SOURCE4309} %{buildroot}/lib/firmware/
 install -c -m 0644 %{SOURCE4559} %{buildroot}/lib/firmware/
@@ -87,5 +96,10 @@ install -c -m 0644 %{SOURCE4559} %{buildroot}/lib/firmware/
 /lib/firmware/brcm/brcmfmac4339-sdio.tronsmart,vega-s95-telos.txt
 /lib/firmware/brcm/brcmfmac43362-sdio.sinovoip,bpi-m2.txt
 /lib/firmware/brcm/brcmfmac4356-pcie.txt
+/lib/firmware/brcm/brcmfmac43456-sdio.bin
+/lib/firmware/brcm/brcmfmac43456-sdio.clm_blob
+/lib/firmware/brcm/brcmfmac43456-sdio.txt
+/lib/firmware/brcm/brcmfmac43456-sdio.raspberrypi,400.txt
+/lib/firmware/brcm/brcmfmac43456-sdio.raspberrypi,4-compute-module.txt
 
 %changelog
