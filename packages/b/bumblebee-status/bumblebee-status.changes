@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Dec  2 04:11:36 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate contrib module nvidia-prime
+- Add zpool dependency on python-setuptools
+- Add octoprint dependencies Pillow-tk and simplejson
+- Remove unneeded dependency on python-regex
+- Remove macro python_module in Requires and Supplements
+
+-------------------------------------------------------------------
+Wed Dec  2 02:20:22 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove dependencies not in Factory:
+  nvidia-smi, pi-hole, twmn and zfs
+
+-------------------------------------------------------------------
+Tue Jul 21 13:24:24 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Fix dependency dbus -> dbus-1
+
+-------------------------------------------------------------------
+Fri Jul 17 16:41:03 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Fix broken installation, including adding import_fix.patch to
+  restore layout used up until v1.10.4
+- Activate test suite
+- Restore and expand subpackages, due to many varied dependencies
+- Add missing dependencies so installation is reliable
+- Re-enable stock module, no longer using deprecated API
+
+-------------------------------------------------------------------
 Tue Jun 30 14:21:32 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.0.5:

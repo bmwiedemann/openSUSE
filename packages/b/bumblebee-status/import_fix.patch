@@ -1,0 +1,29 @@
+Index: bumblebee-status-2.0.5/bumblebee-status
+===================================================================
+--- bumblebee-status-2.0.5.orig/bumblebee-status
++++ bumblebee-status-2.0.5/bumblebee-status
+@@ -9,9 +9,12 @@ import select
+ import logging
+ import threading
+ 
+-import bumblebee_status.discover
++__file__ = os.path.join(os.path.dirname(__file__), os.readlink(__file__))
++sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'bumblebee'))
+ 
+-bumblebee_status.discover.discover()
++import bumblebee.discover
++
++bumblebee.discover.discover()
+ 
+ import core.config
+ import core.output
+Index: bumblebee-status-2.0.5/bumblebee_status/__init__.py
+===================================================================
+--- bumblebee-status-2.0.5.orig/bumblebee_status/__init__.py
++++ bumblebee-status-2.0.5/bumblebee_status/__init__.py
+@@ -1,3 +1,3 @@
+-import bumblebee_status.discover
++import bumblebee.discover
+ 
+-bumblebee_status.discover.discover()
++bumblebee.discover.discover()
