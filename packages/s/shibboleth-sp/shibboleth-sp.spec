@@ -16,12 +16,13 @@
 #
 
 
-%define libvers 8
+%define libvers 9
+%define libvers_lite 8
 %define runuser shibd
 %define realname shibboleth
 %define pkgdocdir %{_docdir}/%{realname}
 Name:           shibboleth-sp
-Version:        3.0.4
+Version:        3.1.0
 Release:        0
 Summary:        System for attribute-based Web Single Sign On
 License:        Apache-2.0
@@ -40,19 +41,19 @@ BuildRequires:  gcc-c++
 BuildRequires:  krb5-devel
 BuildRequires:  liblog4shib-devel >= 2
 BuildRequires:  libmemcached-devel
-BuildRequires:  libsaml-devel >= 3.0.1
+BuildRequires:  libsaml-devel >= 3.1.0
 BuildRequires:  libtool
 BuildRequires:  libxerces-c-devel >= 3.2
 BuildRequires:  libxml-security-c-devel >= 2.0.0
-BuildRequires:  libxmltooling-devel >= 3.0.4
+BuildRequires:  libxmltooling-devel >= 3.1.0
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  unixODBC-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(libsystemd)
 Requires:       openssl
-PreReq:         opensaml-schemas >= 3.0.1
-PreReq:         xmltooling-schemas >= 3.0.4
+PreReq:         opensaml-schemas >= 3.1.0
+PreReq:         xmltooling-schemas >= 3.1.0
 Requires(pre):  shadow
 Obsoletes:      shibboleth-sp = 2.5.0
 %{?systemd_requires}
@@ -81,11 +82,11 @@ exchange of rich attributes subject to privacy controls.
 
 This package contains just the shared library.
 
-%package -n libshibsp-lite%{libvers}
+%package -n libshibsp-lite%{libvers_lite}
 Summary:        Shared Library for Shibboleth
 Group:          Productivity/Networking/Security
 
-%description -n libshibsp-lite%{libvers}
+%description -n libshibsp-lite%{libvers_lite}
 Shibboleth is a Web Single Sign-On implementations based on OpenSAML
 that supports multiple protocols, federated identity, and the extensible
 exchange of rich attributes subject to privacy controls.
@@ -97,12 +98,12 @@ Summary:        Shibboleth Development Headers
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}-%{release}
 Requires:       liblog4shib-devel >= 2
-Requires:       libsaml-devel >= 3.0.1
+Requires:       libsaml-devel >= 3.1.0
 Requires:       libshibsp%{libvers} = %{version}-%{release}
-Requires:       libshibsp-lite%{libvers} = %{version}-%{release}
+Requires:       libshibsp-lite%{libvers_lite} = %{version}-%{release}
 Requires:       libxerces-c-devel >= 3.2
 Requires:       libxml-security-c-devel >= 2.0.0
-Requires:       libxmltooling-devel >= 3.0.4
+Requires:       libxmltooling-devel >= 3.1.0
 Obsoletes:      shibboleth-sp-devel = 2.5.0
 
 %description devel
@@ -175,7 +176,7 @@ getent passwd %{runuser} >/dev/null || useradd -r -g %{runuser} \
 exit 0
 
 %post -n libshibsp%{libvers} -p /sbin/ldconfig
-%post -n libshibsp-lite%{libvers} -p /sbin/ldconfig
+%post -n libshibsp-lite%{libvers_lite} -p /sbin/ldconfig
 %post
 
 # Generate two keys on new installs.
@@ -198,7 +199,7 @@ fi
 exit 0
 
 %postun -n libshibsp%{libvers} -p /sbin/ldconfig
-%postun -n libshibsp-lite%{libvers} -p /sbin/ldconfig
+%postun -n libshibsp-lite%{libvers_lite} -p /sbin/ldconfig
 %postun
 %service_del_postun shibd.service
 %restart_on_update apache2
@@ -242,7 +243,7 @@ exit 0
 %files -n libshibsp%{libvers}
 %{_libdir}/libshibsp.so.*
 
-%files -n libshibsp-lite%{libvers}
+%files -n libshibsp-lite%{libvers_lite}
 %{_libdir}/libshibsp-lite.so.*
 
 %files devel

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec  1 13:27:30 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- Update to 3.1.0
+  * list of fixes and enhancements
+    https://wiki.shibboleth.net/confluence/display/SP3/ReleaseNotes
+- Update xmltooling and opensaml versions in "Requires"
+- Change library soname from 8 to 9
+
+-------------------------------------------------------------------
 Wed Aug 19 11:27:22 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Rely on the distro-provided macros for tmpfilesdir. All half-way
