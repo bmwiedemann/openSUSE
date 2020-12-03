@@ -1,7 +1,7 @@
 #
 # spec file for package libcacard
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,19 +21,15 @@ URL:            http://cgit.freedesktop.org/spice/libcacard/
 Summary:        Common Access Card (CAC) emulation
 License:        LGPL-2.1-or-later
 Group:          System/Emulators/PC
-Version:        2.7.0
+Version:        2.8.0
 Release:        0
 Source:         http://www.spice-space.org/download/libcacard/%{name}-%{version}.tar.xz
-Source1:        http://www.spice-space.org/download/libcacard/%{name}-%{version}.tar.xz.asc
-Source2:        %{name}.keyring
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  glib2-devel
+BuildRequires:  gcc-c++
+BuildRequires:  glib2-devel >= 2.32
+BuildRequires:  meson
 BuildRequires:  mozilla-nss-devel
 BuildRequires:  pkg-config
-%if 0%{?suse_version} < 1210
-BuildRequires:  xz
-%endif
-Provides:       qemu-tools:%{_bindir}/vscclient
 
 %description
 This emulator is designed to provide emulation of actual smart cards to a
@@ -77,20 +73,17 @@ This sub-package contains development files for the Smartcard library.
 %setup -q
 
 %build
-%configure
-make %{?_smp_mflags} V=1
+%meson -Dpcsc=disabled -Ddisable_tests=true
+%meson_build
 
 %install
-make install DESTDIR=%{buildroot}
+%meson_install
 rm -f %{buildroot}%{_libdir}/libcacard.a
 rm -f %{buildroot}%{_libdir}/libcacard.la
 
 %post   -n libcacard0 -p /sbin/ldconfig
 
 %postun -n libcacard0 -p /sbin/ldconfig
-
-%files
-%defattr(-, root, root)
 
 %files -n libcacard0
 %defattr(-, root, root)

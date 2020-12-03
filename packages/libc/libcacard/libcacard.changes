@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec  1 01:32:31 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Update to v2.8.0. Changes include:
+* Improve project documentation
+* Bump minimal glib version to 2.32 and remove old compatibility functions
+* Introduce meson build system in addition to existing autotools
+* Create and run fuzzer drivers to improve stability
+* Introduce a new API vcard_emul_finalize() to clean up allocated resources
+* Remove key caching to avoid issues with some PKCS #11 modules
+* Prevent logging critical errors on unknown instruction
+- Remove empty libcacard package, and also drop the rpm provided
+  symbol qemu-tools:/usr/bin/vscclient, both assumed unused by now
+
+-------------------------------------------------------------------
 Tue Nov 26 15:32:36 UTC 2019 - Bruce Rogers <brogers@suse.com>
 
 - Update to v2.7.0. Changes include:
