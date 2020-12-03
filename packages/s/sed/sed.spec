@@ -66,10 +66,10 @@ make %{?_smp_mflags} check
 
 %install
 %make_install
-#UsrMerge
+%if !0%{?usrmerged}
 mkdir -p %{buildroot}/bin
 ln -s %{_bindir}/sed %{buildroot}/bin/sed
-#EndUserMerge
+%endif
 %find_lang %{name}
 
 %check
@@ -85,7 +85,9 @@ make %{?_smp_mflags} check
 %files
 %license COPYING*
 %doc AUTHORS BUGS NEWS README* THANKS
+%if !0%{?usrmerged}
 /bin/sed
+%endif
 %{_bindir}/sed
 %{_mandir}/man*/*%{ext_man}
 %{_infodir}/sed.info*%{ext_info}
