@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Dec  1 15:22:18 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.4
+- Changes since 5.20.3:
+  * Fix Environment Canada weather domain.
+  * Fix build with newer Qt
+  * fix: Font files, kfontview and thumbnailer crash on Wayland (kde#401031)
+  * Readd searching for breeze decoration (kde#429298)
+  * [Notifications] Check pause button when job is paused
+  * The cursor previews are in a layout
+  * Revert "Use new simpler way to disable session management in services"
+  * [Tab switcher] Fix binding loop that spams the log (kde#410984)
+
+-------------------------------------------------------------------
 Wed Nov 11 11:08:07 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.3
