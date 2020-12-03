@@ -108,6 +108,9 @@ Recommends:     iptables
 Recommends:     org.freedesktop.ModemManager
 # Recommend the rp-pppoe binary for PPP over Ethernet (common for ADSL) connections.
 Recommends:     rp-pppoe
+# Provides required by sysconfig. The latter is used by older versions.
+Provides:       service(network)
+Provides:       sysvinit(network)
 Provides:       dhcdbd = 1.14
 Obsoletes:      dhcdbd < 1.14
 Obsoletes:      libnm-glib-vpn1

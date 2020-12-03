@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 27 13:36:02 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Provide service(network) and sysvinit(network) to be an alternative
+  to wicked-service
+
+-------------------------------------------------------------------
 Fri Oct 30 10:41:19 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Exclude systemd.automount from nfs processing: fix boo#1116625
