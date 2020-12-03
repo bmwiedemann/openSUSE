@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 26 12:37:34 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.25.0:
+  * Added support for NETRC environment variable. (#5643)
+  * Requests now supports urllib3 v1.26.
+  * Requests v2.25.x will be the last release series with support for Python 3.5.
+- refreshed requests-no-hardcoded-version.patch
+
+-------------------------------------------------------------------
 Thu Jul 23 18:47:44 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - remove patch pr_5251-pytest5.patch, not needed anymore.

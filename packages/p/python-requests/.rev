@@ -694,4 +694,16 @@
     <comment></comment>
     <requestid>822516</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>88c7f0ad3fd4753dc095d758f9a468f5</srcmd5>
+    <version>2.25.0</version>
+    <time>1607017047</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.25.0:
+  * Added support for NETRC environment variable. (#5643)
+  * Requests now supports urllib3 v1.26.
+  * Requests v2.25.x will be the last release series with support for Python 3.5.
+- refreshed requests-no-hardcoded-version.patch</comment>
+    <requestid>851065</requestid>
+  </revision>
 </revisionlist>
