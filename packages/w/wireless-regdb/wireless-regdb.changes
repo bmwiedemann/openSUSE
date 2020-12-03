@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 26 19:03:53 UTC 2020 - dmueller@suse.com
+
+- Update to version 20201120:
+  * wireless-regdb: update regulatory database based on preceding changes
+  * wireless-regdb: Update regulatory rules for Kazakhstan (KZ)
+  * wireless-regdb: update 5.8 GHz regulatory rule for GB
+  * wireless-regdb: Update regulatory rules for Pakistan (PK) on 5GHz
+  * wireless-regdb: Update regulatory rules for Croatia (HR)
+  * wireless-regdb: restore channel 12 & 13 limitation in the US
+  * wireless-regdb: update regulatory rules for Egypt (EG)
+
+-------------------------------------------------------------------
 Fri Jun  5 12:07:01 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec
