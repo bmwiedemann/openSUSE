@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-vpenso-prometheus_slurm_exporter
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,29 +15,25 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{go_nostrip}
 
-%define version 0.8
-
 Name:           golang-github-vpenso-prometheus_slurm_exporter
-Version:        0.8
+Version:        0.15
 Release:        0
 Summary:        Prometheus exporter for Slurm metrics
 License:        GPL-3.0-or-later
 Group:          System/Management
 URL:            https://github.com/vpenso/prometheus-slurm-exporter
-Source0:        prometheus-slurm-exporter-%{version}.tar.gz
+Source0:        https://github.com/vpenso/prometheus-slurm-exporter/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Source2:        go.mod
-Source3:        README.packaging     
-Source4:        update-tarball.sh
 Patch0:         use_sbin.patch          
-BuildRequires:  golang-packaging 
+BuildRequires:  golang-packaging
 %{?systemd_requires}
 Requires(pre):  shadow
 %{go_provides}
-Requires: /usr/bin/sinfo
-Requires: /usr/bin/squeue
+Requires:       /usr/bin/sinfo
+Requires:       /usr/bin/squeue
 
 %description
 Prometheus collector and exporter for metrics extracted from the Slurm 

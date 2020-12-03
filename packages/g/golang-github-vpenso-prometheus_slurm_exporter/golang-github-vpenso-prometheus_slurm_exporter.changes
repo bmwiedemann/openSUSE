@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  2 12:51:19 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- New version 0.15 
+  * Metric updates
+  * Bugfixes
+- Upstream now provides go.mod, update packaging accordingly.
+
+-------------------------------------------------------------------
 Wed Dec 18 16:54:26 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - List all source files.

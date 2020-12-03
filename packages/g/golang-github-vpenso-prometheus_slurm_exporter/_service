@@ -1,5 +1,5 @@
 <services>
   <service name="go_modules" mode="disabled">
-  <param name="archive">prometheus-slurm-exporter-0.8.tar.gz</param>
+  <param name="archive">golang-github-vpenso-prometheus_slurm_exporter-0.15.tar.gz</param>
   </service>
 </services>
