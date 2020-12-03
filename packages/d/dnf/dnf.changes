@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov 29 23:50:38 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to version 4.4.2
+  + Warn about key retrieval over http
+  + Fix --setopt=cachedir writing outside of installroot
+  + Add vendor to dnf API (rh#1876561)
+  + Add allow_vendor_change option (rh#1788371) (rh#1788371)
+- Rename dnf-conf package to dnf-data, in line with upstream
+
+-------------------------------------------------------------------
 Sat Oct 24 16:54:21 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to version 4.4.0

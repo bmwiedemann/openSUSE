@@ -17,7 +17,7 @@
 #
 
 
-%global hawkey_version 0.54.1
+%global hawkey_version 0.55.0
 %global libcomps_version 0.1.8
 %global rpm_version 4.14.0
 %global min_plugins_core 4.0.16
@@ -47,7 +47,7 @@
 %bcond_with tests
 
 Name:           dnf
-Version:        4.4.0
+Version:        4.4.2
 Release:        0
 Summary:        Package manager forked from Yum, using libsolv as a dependency resolver
 # For a breakdown of the licensing, see PACKAGE-LICENSING
@@ -96,13 +96,15 @@ BuildArch:      noarch
 DNF is an package manager for RPM systems that was forked from Yum. Among the
 many improvements, it uses libsolv as a dependency resolver.
 
-%package conf
-Summary:        Configuration files for DNF
+%package data
+Summary:        Common data and configuration files for DNF
 Group:          System/Packages
+Obsoletes:      dnf-conf < 4.4.2
+Provides:       dnf-conf = %{version}-%{release}
 Recommends:     logrotate
 
-%description conf
-This package provides the configuration files for DNF.
+%description data
+This package provides the common data and configuration files for DNF.
 
 %package -n %{yum_subpackage_name}
 Summary:        As a Yum CLI compatibility layer, supplies %{_bindir}/yum redirecting to DNF
@@ -153,7 +155,7 @@ BuildRequires:  python3-nose
 BuildRequires:  python3-rpm >= %{rpm_version}
 Recommends:     (python3-dbus-python if NetworkManager)
 Requires:       deltarpm
-Requires:       dnf-conf = %{version}-%{release}
+Requires:       dnf-data = %{version}-%{release}
 Requires:       python3-curses
 Requires:       python3-gpg
 Requires:       python3-hawkey >= %{hawkey_version}
@@ -251,7 +253,7 @@ popd
 
 %files lang -f %{name}.lang
 
-%files conf
+%files data
 %license COPYING PACKAGE-LICENSING
 %doc AUTHORS README.rst
 %dir %{confdir}
