@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 26 15:39:16 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- require library required by pkg-config file 
+
+-------------------------------------------------------------------
 Mon Oct 19 20:30:28 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.1.0:

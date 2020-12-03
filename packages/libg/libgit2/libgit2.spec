@@ -55,6 +55,7 @@ with bindings.
 Summary:        C git library
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-%{sover} >= %{version}
+Requires:       pkgconfig(libssh2)
 
 %description devel
 This package contains all necessary include files and libraries needed
