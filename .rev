@@ -95,4 +95,12 @@
     <comment>- Update to release 2020.11.0</comment>
     <requestid>849059</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>889ba182ae9848e04ff37b7f76889527</srcmd5>
+    <version>2020.11.0</version>
+    <time>1607017404</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>852933</requestid>
+  </revision>
 </revisionlist>
