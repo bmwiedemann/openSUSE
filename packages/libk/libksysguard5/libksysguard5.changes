@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec  1 15:22:16 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.4
+- Changes since 5.20.3:
+  * Do not insert non existing columns
+  * Write entries if face config changes (kde#429155,kde#429167,kde#429367)
+  * Delete compactRepresentation when switching faces (kde#424599)
+
+-------------------------------------------------------------------
 Wed Nov 11 11:08:03 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.3
