@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Dec 02 13:23:00 UTC 2020 - pcervinka@suse.com
+
+- Update to version 0+20201022.e10add0:
+  * nvme/038: Test removal of un-enabled subsystem and ports
+  * nvme/037: Add test which loops passthru connect and disconnect
+  * nvme/036: Add test for testing reset command on nvme-passthru
+  * nvme/035: Add test to verify passthru controller with a filesystem
+  * nvme/034: Add test for passthru data verification
+  * nvme/033: Simple test to create and connect to a passthru target
+  * nvme: Add common helpers for passthru tests
+  * nvme: Search for specific subsysnqn in _find_nvme_loop_dev
+  * common/xfs: Create common helper to verify block device with xfs
+  * common/xfs: Create common helper to check for XFS support
+  * common/fio: Remove state file in common helper
+  * zbd/003: Reset zones when the test device has max_active_zones limit
+  * block/004: Provide max_active_zones to fio command
+  * common/rc: Add _test_dev_max_active_zones() helper function
+  * nvme: support rdma transport type
+  * common: move module_unload to common
+  * nvme: support nvme-tcp when runinng tests
+  * tests/nvme: restrict tests to specific transports
+  * nvme: make tests transport type agnostic
+  * nvme: consolidate some nvme-cli utility functions
+  * nvme: consolidate nvme requirements based on transport type
+  * nvme/005: add the missing _have_program nvme
+  * common/multipath-over-rdma: make block scheduler directory optional
+  * zbd/002: Check write pointers only when zones have valid conditions
+  * zbd/005: Enable zonemode=zbd when zone capacity is less than zone size
+  * zbd/004: Check zone boundary writes using zones without zone capacity gap
+  * zbd/002: Check validity of zone capacity
+  * zbd/rc: Support zone capacity report by blkzone
+  * Remove partition rereading tests for reverted fixes
+  * tests/srp/rc: Separate login parameters with a comma
+  * srp tests: Use _{init,exit}_scsi_debug() instead of duplicating these functions
+  * common/multipath-over-rdma: Log mkfs output
+  * srp, nvmeof-mp: Use no_path_retry instead of queue_if_no_path
+  * tests/nvmeof-mp/rc: Make login failures easier to debug
+  * block/012: add comment explaning second --setro
+  * tests/srp/rc: Fix a shellcheck warning
+  * tests: mark tests with CAN_BE_ZONED=1
+  * common/cpuhotplug: fix ALL_CPUS
+  * tests/srp/rc: Do not pass an empty string to dd
+  * zbd/007: Add --force option to blkzone reset
+  * Fix ./check: line 275: LAST_TEST_RUN["$key"]: unbound variable
+  * Fix unquoted integer shellcheck errors
+  * travis: update shellcheck URL
+  * tests/srp/rc: Make the SRP tests pass against kernel v5.7
+
+-------------------------------------------------------------------
 Fri May  1 08:48:32 UTC 2020 - Petr Cervinka <pcervinka@suse.com>
 
 - Update to version 0+20200430.bff70b0:
