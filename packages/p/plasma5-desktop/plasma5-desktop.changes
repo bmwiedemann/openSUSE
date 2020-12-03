@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec  1 15:22:17 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.4
+- Changes since 5.20.3:
+  * Remove cmake checks for breeze decoration
+  * There is no Q_FALLTHROUGH in qml or js (kde#429574)
+  * Fix translation extraction (kde#429466)
+  * [kcms/users]: Fix 429313 (kde#429313)
+  * Use plasma theme icons in kickoff leave view
+  * Don't use visible property in procedural code to determine state (kde#408116)
+  * [panel] Fix dragging panel to resize for top and right panels (kde#429063)
+
+-------------------------------------------------------------------
 Wed Nov 11 11:08:04 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.3
