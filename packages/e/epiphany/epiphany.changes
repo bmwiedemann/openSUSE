@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec  2 11:53:55 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.38.2:
+  + Fix pinned tabs reordering themselves.
+  + Avoid crash during Storage Access API permission requests.
+  + Reduce size of Storage Access API permission request info bar.
+  + Fix fullscreen reveal animation.
+  + Fix crash when Safe Browsing database is corrupted.
+  + History dialog title should be translatable.
+
+-------------------------------------------------------------------
 Wed Oct  7 18:40:28 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.1:
