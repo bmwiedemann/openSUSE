@@ -260,7 +260,7 @@ splitter-whitelist = B C D E F G H I J
 # now just for testing
 source_projects_expand = devel:languages:haskell
 
-devel-whitelist = KDE:Qt:5.15 Cloud:Seafile M17N:l10n.opensuse.org X11:Solus
+devel-whitelist = KDE:Qt:5.15 KDE:Qt:6.0 Cloud:Seafile M17N:l10n.opensuse.org X11:Solus devel:languages:rust:crates
  
 # packagelist generator related configuration
 pkglistgen-archs = i586 x86_64
@@ -517,7 +517,7 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20201202'
 published: '20201201'
 publishing: '20201201'
 testing: '20201202'
