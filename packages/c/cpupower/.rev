@@ -427,4 +427,14 @@ M rapl_monitor.patch</comment>
     <comment></comment>
     <requestid>849290</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>73d9deb54e4c29bf09934a982c55f3cc</srcmd5>
+    <version>5.10</version>
+    <time>1607017107</time>
+    <user>dimstar_suse</user>
+    <comment>- Add AMD Fam 19h support (bsc#1177394)
+
+Needed for SLE people as reference</comment>
+    <requestid>852864</requestid>
+  </revision>
 </revisionlist>

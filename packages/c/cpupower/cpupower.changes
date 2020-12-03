@@ -1,6 +1,7 @@
 -------------------------------------------------------------------
 Thu Nov 12 22:01:00 UTC 2020 - Thomas Renninger <trenn@suse.de>
 
+- Add AMD Fam 19h support (bsc#1177394)
 - Update turbostat to latest version 20.09.30 including:
   * jsc#SLE-13412, jsc#SLE-13174 (rocket lake support)
   * jsc#SLE-13448 (Alder Lake support)
