@@ -32,6 +32,8 @@ Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Scanner-Avoid-accessing-dangling-pointers-in-destroy.patch
 BuildRequires:  fdupes
 BuildRequires:  libqt5-qtbase-private-headers-devel >= %{version}
 BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= %{version}

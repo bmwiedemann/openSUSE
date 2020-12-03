@@ -299,4 +299,13 @@ This is a part of the 5.4 release, but can be built and used with older Qt relea
     <comment>Qt 5.15.2</comment>
     <requestid>850039</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>8b7b66b7ffdda4e2587e97ea8374b9a7</srcmd5>
+    <version>5.15.2</version>
+    <time>1607017274</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch to fix a regression:
+  * 0001-Scanner-Avoid-accessing-dangling-pointers-in-destroy.patch</comment>
+    <requestid>852329</requestid>
+  </revision>
 </revisionlist>

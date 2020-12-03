@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  1 11:36:23 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch to fix a regression:
+  * 0001-Scanner-Avoid-accessing-dangling-pointers-in-destroy.patch
+
+-------------------------------------------------------------------
 Fri Nov 20 12:09:45 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.15.2:
