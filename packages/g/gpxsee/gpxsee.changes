@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 24 23:12:22 CET 2020 - tumic@cbox.cz
+
+- Update to version 7.37
+  * Added "copy coordinates to clipboard" feature.
+  * Improved graphs zooming.
+  * Various minor GUI tweaks/fixes.
+  * Improved IMG maps drawing performance.
+  * Improved GeoTIFF compatability.
+
+-------------------------------------------------------------------
 Wed Nov 11 21:39:56 CET 2020 - tumic@cbox.cz
 
 - Update to version 7.36

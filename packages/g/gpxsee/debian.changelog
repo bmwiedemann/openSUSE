@@ -1,3 +1,13 @@
+gpxsee (7.37) stable; urgency=low
+
+  * Added "copy coordinates to clipboard" feature.
+  * Improved graphs zooming.
+  * Various minor GUI tweaks/fixes.
+  * Improved IMG maps drawing performance.
+  * Improved GeoTIFF compatability.
+
+ -- Martin Tuma <tumic@cbox.cz>  Tue, 24 Nov 2020 23:20:54 +0100
+
 gpxsee (7.36) stable; urgency=low
 
   * IMG format fixes/improvements (mostly labels related).
