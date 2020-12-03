@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Dec  1 15:22:16 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.4
+- Changes since 5.20.3:
+  * xwl: No need to delete the source immediately
+  * xwl: No need to create createX11Source twice consecutively
+  * xwl: Do not refresh the x11 Clipboard while fetching (kde#424754)
+  * xwl: Include errors and warnings
+  * screencating: query for dmabuf availability before we start streaming
+  * wayland: Fix clipped thumbnails of client-side decorated apps (kde#428595)
+  * Fixed Toggle Night Color global shortcut, which used i18n in object name, leading to erratic behavior e.g. when system locale or translations changed. (kde#428024)
+  * Set setMoveResize(true) after stopping fullscreen and quick tiling (kde#427848)
+  * screencasting: don't crash if the cursor is too big for our buffer
+  * fix: magiclamp effect wrong direction.
+  * kcm/decorations: Fix border size updating for thumbnails
+
+-------------------------------------------------------------------
 Wed Nov 11 11:08:03 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.3
