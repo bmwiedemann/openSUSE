@@ -147,4 +147,12 @@
 - remove python383.patch (upstream)</comment>
     <requestid>835017</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3d6df1abd70f71e2d8ce4a092dc2e027</srcmd5>
+    <version>6.15.0</version>
+    <time>1607017245</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851911</requestid>
+  </revision>
 </revisionlist>
