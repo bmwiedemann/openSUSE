@@ -215,6 +215,7 @@ This package contains the symlinks to replace iputils with busybox.
 %package -n busybox-iproute2
 Summary:        Busybox applets replacing iproute2
 Requires:       busybox = %{version}
+Conflicts:      bridge-utils
 Conflicts:      iproute2
 Conflicts:      wicked-service
 

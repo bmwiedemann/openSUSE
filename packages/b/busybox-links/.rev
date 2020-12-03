@@ -91,4 +91,13 @@
     <comment></comment>
     <requestid>838876</requestid>
   </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>91eaa0ee1c73d8b43800d7a58edb4700</srcmd5>
+    <version>MACRO</version>
+    <time>1607017300</time>
+    <user>dimstar_suse</user>
+    <comment>- Add conflicts: bridge-utils to busybox-iproute2: both packages
+  provide /usr/sbin/brctl. (forwarded request 852370 from dimstar)</comment>
+    <requestid>852390</requestid>
+  </revision>
 </revisionlist>
