@@ -1,7 +1,7 @@
 #
 # spec file for package libass
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define sover   9
 Name:           libass
-Version:        0.14.0
+Version:        0.15.0
 Release:        0
 Summary:        Library for SSA/ASS-formatted subtitle rendering
 License:        ISC
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/libass/libass
+URL:            https://github.com/libass/libass
 Source:         https://github.com/libass/libass/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 BuildRequires:  nasm
@@ -61,13 +61,13 @@ Requires:       pkgconfig(harfbuzz)
 This package is needed if you want to develop / compile against libASS.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure \
   --disable-silent-rules \
   --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
