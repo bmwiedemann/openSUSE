@@ -135,4 +135,12 @@ quite lacking, and here is a fix. (forwarded request 206702 from jengelh)</comme
     <comment></comment>
     <requestid>611867</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b8f0242f54b13d90dd81faa55b35ec34</srcmd5>
+    <version>1.22</version>
+    <time>1607017059</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851246</requestid>
+  </revision>
 </revisionlist>

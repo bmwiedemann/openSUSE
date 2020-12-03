@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov 26 19:46:02 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.22:
+  * fix ts_uinput build on 32 bit arch on newer kernels
+  * ts_uinput: fix building on FreeBSD
+  * various fixes for cmake builds
+  * improved documentation for systemd
+  * new filter plugin: module evthres
+  * ts_calibrate: close framebuffer after validation. add timeout option -s for it
+  * support for screen-rotation in ts_calibrate and linear module
+  * add experimental module_raw input_evdev that needs libevdev
+  * new ts_calibrate --min_interval option to avoid inaccurate calibration
+  * add ts_calibrate --validate functionality to verify the calibration
+  * add ts_conf_get() and ts_conf_set() API
+
+-------------------------------------------------------------------
 Thu May 24 12:05:00 UTC 2018 - guillaume.gardet@opensuse.org
 
 - Update to version 1.16:

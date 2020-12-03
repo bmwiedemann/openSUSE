@@ -1,7 +1,7 @@
 #
 # spec file for package tslib
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Guillaume GARDET <guillaume@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,18 +13,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           tslib
-Version:        1.16
+Version:        1.22
 Release:        0
 Summary:        Abstraction layer for touchscreen
 License:        LGPL-2.1-or-later AND GPL-2.0-only
 Group:          Hardware/Other
-Url:            https://github.com/kergoth/tslib.git
-#Git-Clone:	git://github.com/kergoth/tslib
+URL:            https://github.com/kergoth/tslib.git
 Source0:        https://github.com/kergoth/tslib/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/kergoth/tslib/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
@@ -75,7 +74,7 @@ Devel package for tslib. Tslib is an abstraction layer for touchscreen panel eve
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -85,7 +84,6 @@ make %{?_smp_mflags}
 %postun -n libts0 -p /sbin/ldconfig
 
 %files devel
-%defattr(-,root,root)
 %dir %{_libdir}/ts
 %{_includedir}/tslib.h
 %{_libdir}/libts.la
@@ -95,18 +93,16 @@ make %{?_smp_mflags}
 %{_libdir}/libts.so
 
 %files -n libts0
-%defattr(-,root,root)
 %{_libdir}/libts.so.0*
 
 %files plugins
-%defattr(-,root,root)
 %dir %{_libdir}/ts
 %{_libdir}/ts/*.so
 
 %files
-%defattr(-,root,root)
 %config %{_sysconfdir}/ts.conf
 %{_bindir}/ts_calibrate
+%{_bindir}/ts_conf
 %{_bindir}/ts_finddev
 %{_bindir}/ts_harvest
 %{_bindir}/ts_print
