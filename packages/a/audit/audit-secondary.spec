@@ -174,10 +174,12 @@ rm -f %{buildroot}/%{_mandir}/man5/libaudit.conf.5
 rm -rf %{buildroot}/%{_mandir}/man3
 # Cleanup plugins
 #USR-MERGE
+%if !0%{?usrmerged}
 mkdir %{buildroot}/sbin/
 for prog in auditctl auditd ausearch autrace audispd aureport augenrules; do
   ln -s %{_sbindir}/$prog %{buildroot}/sbin/$prog
 done
+%endif
 #END-USR-MERGE
 # rcauditd symlink
 ln -s service %{buildroot}%{_sbindir}/rcauditd
@@ -226,22 +228,24 @@ fi
 %attr(644,root,root) %{_mandir}/man5/ausearch-expression.5.gz
 %attr(644,root,root) %{_mandir}/man8/auvirt.8.gz
 %attr(644,root,root) %{_mandir}/man8/augenrules.8.gz
+%if !0%{?usrmerged}
 /sbin/auditctl
-%attr(750,root,root) %{_sbindir}/auditctl
 /sbin/auditd
-%attr(750,root,root) %{_sbindir}/auditd
 /sbin/ausearch
-%attr(755,root,root) %{_sbindir}/ausearch
 /sbin/autrace
-%attr(750,root,root) %{_sbindir}/autrace
 /sbin/audispd
-%attr(750,root,root) %{_sbindir}/augenrules
 /sbin/augenrules
+/sbin/aureport
+%endif
+%attr(750,root,root) %{_sbindir}/auditctl
+%attr(750,root,root) %{_sbindir}/auditd
+%attr(755,root,root) %{_sbindir}/ausearch
+%attr(750,root,root) %{_sbindir}/autrace
+%attr(750,root,root) %{_sbindir}/augenrules
 %attr(750,root,root) %{_sbindir}/audispd
 %attr(755,root,root) %{_bindir}/aulast
 %attr(755,root,root) %{_bindir}/aulastlog
 %attr(755,root,root) %{_bindir}/ausyscall
-/sbin/aureport
 %attr(755,root,root) %{_sbindir}/aureport
 %attr(755,root,root) %{_bindir}/auvirt
 %dir %attr(750,root,root) %{_sysconfdir}/audit
