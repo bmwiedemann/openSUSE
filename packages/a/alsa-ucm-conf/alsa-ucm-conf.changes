@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec  1 09:40:25 CET 2020 - tiwai@suse.de
+
+- Backport upstream fixes for HD-audio and soundwire HDMI:
+  0001-fix-the-ucm2-codecs-hda-hdmi.conf-use.patch
+  0002-codecs-hda-hdmi.conf-add-DisplayPort-to-the-device-d.patch
+  0003-sof-soundwire-use-the-codecs-hda-hdmi.conf-macro.patch
+- Revert the workaround for the missing HD-audio init
+
+-------------------------------------------------------------------
 Wed Oct 21 12:53:36 CEST 2020 - tiwai@suse.de
 
 - Update to alsa-ucm-conf 1.2.4:

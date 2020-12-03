@@ -23,6 +23,9 @@ Summary:        ALSA UCM Profiles
 License:        BSD-3-Clause
 URL:            http://www.alsa-project.org/
 Source:         ftp://ftp.alsa-project.org/pub/lib/alsa-ucm-conf-%{version}.tar.bz2
+Patch1:         0001-fix-the-ucm2-codecs-hda-hdmi.conf-use.patch
+Patch2:         0002-codecs-hda-hdmi.conf-add-DisplayPort-to-the-device-d.patch
+Patch3:         0003-sof-soundwire-use-the-codecs-hda-hdmi.conf-macro.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -31,10 +34,9 @@ This package contains the profiles files for ALSA UCM (Use Case Manager).
 
 %prep
 %setup -q
-#
-# workaround for a regression on openQA (muted as default)
-#
-mv ucm2/HDA-Intel/HDA-Intel.conf ucm2/HDA-Intel/HDA-Intel-broken.conf
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 
