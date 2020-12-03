@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec  1 16:39:02 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_Check-SetMap-request-length-carefully.patch
+  * XkbSetMap Out-Of-Bounds Access: Insufficient checks on the
+    lengths of the XkbSetMap request can lead to out of bounds
+    memory accesses in the X server. (ZDI-CAN 11572, 
+    CVE-2020-14360, bsc#1174908)
+- U_Fix-XkbSetDeviceInfo-and-SetDeviceIndicators-heap-ov.patch
+  * XkbSetDeviceInfo Heap-based Buffer Overflow: Insufficient
+    checks on input of the XkbSetDeviceInfo request can lead to a
+    buffer overflow on the head in the X server. (ZDI-CAN 11389,
+    CVE-2020-25712, bsc#1177596)
+
+-------------------------------------------------------------------
 Wed Sep 30 10:30:06 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - n_xorg-wrapper-anybody.patch

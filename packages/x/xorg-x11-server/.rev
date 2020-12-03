@@ -3506,4 +3506,21 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   * Xserver option whitelist filter (boo#1175867)</comment>
     <requestid>838746</requestid>
   </revision>
+  <revision rev="388" vrev="4">
+    <srcmd5>52cd1d5202384ff33e3e6079692b2fa0</srcmd5>
+    <version>1.20.9</version>
+    <time>1607017302</time>
+    <user>dimstar_suse</user>
+    <comment>- U_Check-SetMap-request-length-carefully.patch
+  * XkbSetMap Out-Of-Bounds Access: Insufficient checks on the
+    lengths of the XkbSetMap request can lead to out of bounds
+    memory accesses in the X server. (ZDI-CAN 11572, 
+    CVE-2020-14360, bsc#1174908)
+- U_Fix-XkbSetDeviceInfo-and-SetDeviceIndicators-heap-ov.patch
+  * XkbSetDeviceInfo Heap-based Buffer Overflow: Insufficient
+    checks on input of the XkbSetDeviceInfo request can lead to a
+    buffer overflow on the head in the X server. (ZDI-CAN 11389,
+    CVE-2020-25712, bsc#1177596)</comment>
+    <requestid>852408</requestid>
+  </revision>
 </revisionlist>

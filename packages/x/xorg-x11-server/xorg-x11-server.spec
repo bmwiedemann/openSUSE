@@ -258,6 +258,9 @@ Patch1802:      U_Revert-linux-Fix-platform-device-probe-for-DT-based-.patch
 Patch1803:      U_Revert-linux-Fix-platform-device-PCI-detection-for-c.patch
 Patch1804:      U_Revert-linux-Make-platform-device-probe-less-fragile.patch
 
+Patch1901:      U_Fix-XkbSetDeviceInfo-and-SetDeviceIndicators-heap-ov.patch
+Patch1902:      U_Check-SetMap-request-length-carefully.patch
+
 %description
 This package contains the X.Org Server.
 
@@ -412,6 +415,8 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch1802 -p1
 %patch1803 -p1
 %patch1804 -p1
+%patch1901 -p1
+%patch1902 -p1
 
 %build
 %define _lto_cflags %{nil}
