@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Dec 01 15:51:44 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1606837217.bf7af3a6:
+  * Dev: unittest: adjust ut for disable_service and enable_service changes
+  * Fix: utils: improve disable_service and enable_service function(bsc#1178701)
+
+-------------------------------------------------------------------
+Mon Nov 16 07:42:07 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1605511823.7cff5ff0:
+  * Dev: unittest: adjust unit test for disable corosync-qdevice
+  * Fix: bootstrap: disable corosync-qdevice if not configured(bsc#1178701)
+
+-------------------------------------------------------------------
+Thu Nov 12 08:02:08 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1605167067.631c7f2c:
+  * Dev: hb_report: change the default dest data format, more readable
+
+-------------------------------------------------------------------
+Tue Nov 10 02:34:50 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1604973283.791bdb4c:
+  * Dev: unittest: add unit test for _get_sbd_device_interactive function
+  * Low: bootstrap: minor change for _get_sbd_device_interactive function(bsc#1178333)
+
+-------------------------------------------------------------------
+Mon Nov 09 07:17:24 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1604900699.29415625:
+  * Low: bootstrap: should include /etc/sysconfig/nfs into csync2.cfg(bsc#1178373)
+
+-------------------------------------------------------------------
 Fri Oct 30 16:54:56 UTC 2020 - XLiang@suse.com
 
 - Update to version 4.2.0+git.1604052559.2a348644:
