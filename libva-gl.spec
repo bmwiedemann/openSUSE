@@ -23,14 +23,13 @@
 
 Name:           libva-gl
 %define _name   libva
-Version:        2.9.0
+Version:        2.9.1
 Release:        0
 Summary:        Video Acceleration (VA) API
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            http://freedesktop.org/wiki/Software/vaapi
-Source0:        https://github.com/intel/libva/releases/download/%{version}/%{_name}-%{version}.tar.bz2
-Source1:        https://github.com/intel/libva/releases/download/%{version}/%{_name}-%{version}.tar.bz2.sha1sum
+Source0:        https://github.com/intel/libva/archive/%{version}.tar.gz#/libva-%{version}.tar.gz
 Source2:        baselibs.conf
 BuildRequires:  gcc-c++
 BuildRequires:  libtool

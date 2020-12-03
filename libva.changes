@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 26 13:35:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.9.1:
+  * fix version mismatch between meson and autotools 
+
+-------------------------------------------------------------------
 Mon Oct  5 13:16:22 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
 
 - update to 2.9.0:
