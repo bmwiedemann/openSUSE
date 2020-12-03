@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 30 15:50:47 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- Do not show a warning when running in a HVM Xen guest
+  (bsc#1179197).
+- 4.3.3
+
+-------------------------------------------------------------------
 Mon Aug 10 16:20:25 CEST 2020 - schubi@suse.de
 
 - AutoYaST: Added supplements: autoyast(kdump) into the spec file
