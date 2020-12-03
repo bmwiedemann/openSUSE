@@ -17,7 +17,7 @@
 
 
 Name:           perl-Encode
-Version:        3.07
+Version:        3.08
 Release:        0
 %define cpan_name Encode
 Summary:        Character encodings in Perl
@@ -30,7 +30,7 @@ Source2:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Test::More) >= 0.81_01
+BuildRequires:  perl(Test::More) >= 0.92
 BuildRequires:  perl(parent) >= 0.221
 Requires:       perl(parent) >= 0.221
 %{perl_requires}
