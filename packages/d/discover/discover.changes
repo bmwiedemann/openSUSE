@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec  1 15:22:14 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.4
+- Changes since 5.20.3:
+  * Fix incorrect usage of units on ApplicationDelegate
+  * Fix sidebar header/toolbar sizing and height
+  * Display title in application page
+  * pk: Set the Daemon locale at start
+  * Fix installation of local packages (kde#428125)
+
+-------------------------------------------------------------------
 Wed Nov 11 11:08:01 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.3

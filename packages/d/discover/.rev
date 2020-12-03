@@ -700,4 +700,12 @@
     <comment>Plasma 5.20.3</comment>
     <requestid>848034</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>f835b1c36f436f06969b7aaebaea86d5</srcmd5>
+    <version>5.20.4</version>
+    <time>1607017172</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.20.4</comment>
+    <requestid>852503</requestid>
+  </revision>
 </revisionlist>
