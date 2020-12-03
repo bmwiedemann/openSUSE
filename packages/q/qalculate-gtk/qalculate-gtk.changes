@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov  5 22:54:01 UTC 2020 - Matthew Trescott <matthewtrescott@gmail.com>
+
+- Update to version 3.14.0:
+  * Customizable keypad buttons—change labels and actions for
+    all buttons on the right-hand side of the keypad
+  * Notifications for invisible actions, e.g. result left-click
+    copy
+  * Use v1, v2, … as default variable names
+  * Improvements and fixes in insert function dialog
+  * Fix input of circumflex on Windows with dead circumflex
+    without modifier, e.g. German and Swiss keyboard layouts
+  * Fix programming keypad base conversion for negative integers
+
+-------------------------------------------------------------------
 Fri Aug 21 14:19:01 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 3.12.1:

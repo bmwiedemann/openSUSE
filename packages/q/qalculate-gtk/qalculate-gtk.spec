@@ -17,7 +17,7 @@
 
 
 Name:           qalculate-gtk
-Version:        3.12.1
+Version:        3.14.0
 Release:        0
 Summary:        Multi-purpose cross-platform desktop calculator
 License:        GPL-2.0-or-later
