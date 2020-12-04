@@ -20,7 +20,7 @@
 %bcond_without lang
 
 Name:           plasma5-disks
-Version:        5.20.3
+Version:        5.20.4
 Release:        0
 Summary:        Plasma service for monitoring disk health
 License:        GPL-2.0-only OR GPL-3.0-only
