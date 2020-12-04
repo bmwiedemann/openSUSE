@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  3 21:27:44 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 0.15
+  * fix non-ASCII (Unicode) chars in ncurses
+  * fix sprintf build warnings
+
+-------------------------------------------------------------------
 Mon Jul  2 00:22:10 UTC 2018 - avindra@opensuse.org
 
 - Update to version 0.14

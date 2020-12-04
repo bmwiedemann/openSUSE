@@ -49,4 +49,15 @@
 </comment>
     <requestid>620523</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2cb0a56dbc416e1193e276eaf366f6b8</srcmd5>
+    <version>0.15</version>
+    <time>1607113745</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.15
+  * fix non-ASCII (Unicode) chars in ncurses
+  * fix sprintf build warnings
+</comment>
+    <requestid>852967</requestid>
+  </revision>
 </revisionlist>
