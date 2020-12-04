@@ -47,4 +47,41 @@
     <comment></comment>
     <requestid>831920</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d8cef56b896058705ef1e1fad8c2a27c</srcmd5>
+    <version>1.22.0</version>
+    <time>1607113769</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.22.0
+    * PIN management has been revised.
+    * App navigation on iOS and Android harmonized. The sidebar on Android has
+      been removed and replaced with a bar at the bottom of the screen.
+    * The &quot;Help&quot; area has been revised and restructured on all platforms.
+      The software licenses can now be viewed within the application.
+    * A new start page has been added on Android and iOS.
+    * A function test can now be carried out on Android and iOS via the
+      entry &quot;Check device and ID card&quot; on the start page.
+    * Auxiliary animations have been added to Android and iOS to
+      clarify possible positions for placing the ID card.
+    * The one-off notice that the transport PIN must be changed
+      has been added to Android and iOS.
+    * Option entry and query for the permission &quot;local network access&quot; has been
+      added on iOS 14. This is necessary for using a smartphone as a card reader.
+    * AusweisAppp2 can now be installed on macOS via the App Store. Updates that
+      appear in the future can be obtained automatically through the store.
+    * The update mechanism on Windows has been revised. The download of the update
+      and the start of the installation are now carried out automatically when an
+      update is started.
+    * Support for the German eID card for Union citizens has been added.
+    * Support for macOS Sierra 10.12 has been discontinued.
+    * Support for Bluetooth card readers has been discontinued.
+    * Minor bug fixes.
+    * The SDK now supports changing the PIN.
+    * The SDK now supports displaying the permissions &quot;PinManagement&quot; and &quot;CanAllowed&quot;.
+    * Update of OpenSSL to version 1.1.1h.
+    * Update of Qt to version 5.15.2.
+- Add libQt5QuickTemplates2-devel to BuildRequires (forwarded request 852697 from glaubitz)</comment>
+    <requestid>853120</requestid>
+  </revision>
 </revisionlist>

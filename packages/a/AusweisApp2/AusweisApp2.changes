@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Dec  2 18:09:47 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.22.0
+    * PIN management has been revised.
+    * App navigation on iOS and Android harmonized. The sidebar on Android has
+      been removed and replaced with a bar at the bottom of the screen.
+    * The "Help" area has been revised and restructured on all platforms.
+      The software licenses can now be viewed within the application.
+    * A new start page has been added on Android and iOS.
+    * A function test can now be carried out on Android and iOS via the
+      entry "Check device and ID card" on the start page.
+    * Auxiliary animations have been added to Android and iOS to
+      clarify possible positions for placing the ID card.
+    * The one-off notice that the transport PIN must be changed
+      has been added to Android and iOS.
+    * Option entry and query for the permission "local network access" has been
+      added on iOS 14. This is necessary for using a smartphone as a card reader.
+    * AusweisAppp2 can now be installed on macOS via the App Store. Updates that
+      appear in the future can be obtained automatically through the store.
+    * The update mechanism on Windows has been revised. The download of the update
+      and the start of the installation are now carried out automatically when an
+      update is started.
+    * Support for the German eID card for Union citizens has been added.
+    * Support for macOS Sierra 10.12 has been discontinued.
+    * Support for Bluetooth card readers has been discontinued.
+    * Minor bug fixes.
+    * The SDK now supports changing the PIN.
+    * The SDK now supports displaying the permissions "PinManagement" and "CanAllowed".
+    * Update of OpenSSL to version 1.1.1h.
+    * Update of Qt to version 5.15.2.
+- Add libQt5QuickTemplates2-devel to BuildRequires
+- Add manpage to %files section
+- Add patch to fix manpage installation path
+  + 0001-fix-manpage-path.patch
+
+-------------------------------------------------------------------
 Thu Sep  3 11:31:04 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
