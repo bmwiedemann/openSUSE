@@ -24,6 +24,7 @@
 %define minor_version 0
 %define micro_version 36
 %define packdname apache-tomcat-%{version}-src
+%define serverxmltool_version 1.0
 # FHS 2.3 compliant tree structure - http://www.pathname.com/fhs/2.3/
 %global basedir /srv/%{name}
 %define appdir %{basedir}/webapps
@@ -51,7 +52,6 @@ Group:          Productivity/Networking/Web/Servers
 URL:            https://tomcat.apache.org
 Source0:        https://archive.apache.org/dist/tomcat/tomcat-%{major_version}/v%{version}/src/%{packdname}.tar.gz
 Source1:        %{name}-%{major_version}.%{minor_version}.conf
-Source2:        %{name}-%{major_version}.%{minor_version}.init
 Source3:        %{name}-%{major_version}.%{minor_version}.sysconfig
 Source4:        %{name}-%{major_version}.%{minor_version}.wrapper
 Source5:        %{name}-%{major_version}.%{minor_version}.logrotate
@@ -64,7 +64,7 @@ Source21:       tomcat-functions
 Source30:       tomcat-preamble
 Source31:       tomcat-server
 Source32:       tomcat-named.service
-Source33:       tomcat-serverxml-tool.tar.gz
+Source33:       https://gitlab.suse.de/galaxy/tomcat-serverxml-tool/-/archive/%{serverxmltool_version}/tomcat-serverxml-tool-%{serverxmltool_version}.tar.gz
 Source34:       tomcat-serverxml-tool.sh.in
 Source1000:     tomcat-rpmlintrc
 Source1001:     https://archive.apache.org/dist/tomcat/tomcat-%{major_version}/v%{version}/src/%{packdname}.tar.gz.asc
@@ -125,18 +125,12 @@ Requires(pre):  %{_sbindir}/useradd
 Recommends:     libtcnative-1-0 >= 1.1.24
 Recommends:     logrotate
 BuildArch:      noarch
-%systemd_requires
 
 %description
 Tomcat is the servlet container that is used in the official Reference
 Implementation for the Java Servlet and JavaServer Pages technologies.
 The Java Servlet and JavaServer Pages specifications are developed by
 Sun under the Java Community Process.
-
-Tomcat is developed in an open and participatory environment and
-released under the Apache Software License version 2.0. Tomcat is
-intended to be a collaboration of the best-of-breed developers from
-around the world.
 
 ATTENTION: This tomcat is built with java 1.8.0.
 
@@ -180,6 +174,7 @@ Expression Language API version 3.0.
 %package javadoc
 Summary:        Javadoc generated documentation for Apache Tomcat
 Group:          Documentation/HTML
+BuildArch:      noarch
 
 %description javadoc
 Javadoc generated documentation files for Apache Tomcat.
@@ -323,15 +318,12 @@ jar cf ../../../../../../../../output/build/webapps/docs/appdev/sample/sample.wa
 popd
 popd
 
-pushd %{_builddir}/tomcat-serverxml-tool
+pushd %{_builddir}/tomcat-serverxml-tool-%{serverxmltool_version}/src
 javac -source %{javac_target} -target %{javac_target} com/suse/tcserverxml/ApplyStylesheet.java
-jar cfe serverxmltool.jar com.suse.tcserverxml.ApplyStylesheet com/suse/tcserverxml/ApplyStylesheet.class com/suse/tcserverxml/add-context.xslt com/suse/tcserverxml/remove-context.xslt
+jar cfe %{_builddir}/tomcat-serverxml-tool-%{serverxmltool_version}/serverxmltool.jar com.suse.tcserverxml.ApplyStylesheet com/suse/tcserverxml/ApplyStylesheet.class com/suse/tcserverxml/add-context.xslt com/suse/tcserverxml/remove-context.xslt
 popd
 
 %install
-%if 0%{?suse_version} == 1110
-export NO_BRP_CHECK_BYTECODE_VERSION=true
-%endif
 # build initial path structure
 install -d -m 0755 %{buildroot}%{_bindir}
 install -d -m 0755 %{buildroot}%{_sbindir}
@@ -418,6 +410,7 @@ pushd %{buildroot}%{_javadir}
    ln -s %{name}-jsp-%{jspspec}-api.jar %{name}-jsp-api.jar
    mv %{name}/servlet-api.jar %{name}-servlet-%{servletspec}-api.jar
    ln -s %{name}-servlet-%{servletspec}-api.jar %{name}-servlet-api.jar
+   ln -s %{name}-servlet-%{servletspec}-api.jar %{name}-servlet.jar
    mv %{name}/el-api.jar %{name}-el-%{elspec}-api.jar
    ln -s %{name}-el-%{elspec}-api.jar %{name}-el-api.jar
 popd
@@ -572,15 +565,12 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -s -f %{_sysconfdir}/alternatives/el_api %{buildroot}%{_javadir}/%{name}-el_api.jar
 ln -s -f %{_sysconfdir}/alternatives/el_1_0_api %{buildroot}%{_javadir}/%{name}-el_1_0_api.jar
 ln -s -f %{_sysconfdir}/alternatives/jsp %{buildroot}%{_javadir}/%{name}-jsp.jar
-ln -s -f %{_sysconfdir}/alternatives/servlet %{buildroot}%{_javadir}/%{name}-servlet.jar
-
-mkdir -p %{buildroot}%{_tmpfilesdir}
-cat > %{buildroot}%{_tmpfilesdir}/%{name}.conf <<EOF
-f /run/%{name}.pid 0644 tomcat tomcat -
-EOF
+# To avoid conflicts with servletapi4 and servletapi5 create a link to incorrect /etc/alternatives/servlet.jar.
+# It will be changed anyways to the correct symlink by update-alternatives.
+ln -s -f %{_sysconfdir}/alternatives/servlet.jar %{buildroot}%{_javadir}/servlet.jar
 
 # Install tool used to edit server.xml
-pushd %{_builddir}/tomcat-serverxml-tool
+pushd %{_builddir}/tomcat-serverxml-tool-%{serverxmltool_version}
 cat %{SOURCE34} | sed 's#@LIBEXECDIR@#%{_libexecdir}#g' >tomcat-serverxml-tool.sh
 install -m 0755 tomcat-serverxml-tool.sh \
     %{buildroot}%{_libexecdir}/%{name}/serverxml-tool.sh
@@ -589,16 +579,15 @@ popd
 
 %pre
 # add the tomcat user and group
-%{_sbindir}/groupadd -r tomcat 2>/dev/null || :
-%{_sbindir}/useradd -c "Apache Tomcat" -g tomcat \
-    -s /sbin/nologin -r -d %{homedir} tomcat 2>/dev/null || :
+getent group tomcat >/dev/null || %{_sbindir}/groupadd -r tomcat
+getent passwd tomcat >/dev/null || %{_sbindir}/useradd -c "Apache Tomcat" \
+	-g tomcat -s /sbin/nologin -r -d %{homedir} tomcat
 %service_add_pre %{name}.service
 
 %post
 %service_add_post %{name}.service
 %service_add_post %{name}@.service
 %{fillup_only %{name}}
-%tmpfiles_create %_tmpfilesdir/%{name}.conf
 
 %preun
 %service_del_preun %{name}.service
@@ -639,11 +628,26 @@ if [ $1 -eq 0 ] ; then
 fi
 
 %post servlet-4_0-api
-update-alternatives --install %{_javadir}/%{name}-servlet.jar servlet \
+update-alternatives --install %{_javadir}/servlet.jar servlet \
     %{_javadir}/%{name}-servlet-%{servletspec}-api.jar 30000
+# Fix for bsc#1092163.
+# Keep the /usr/share/java/tomcat-servlet.jar symlink for compatibility.
+# In case of update from an older version where /usr/share/java/tomcat-servlet.jar is an alternatives symlink 
+# the update-alternatives in the new version will cause a rename tomcat-servlet.jar -> servlet.jar.
+# This makes sure the tomcat-servlet.jar is recreated if it's missing because of the rename.
+if [ ! -f %{_javadir}/%{name}-servlet.jar ]; then 
+    echo "Recreating symlink %{_javadir}/%{name}-servlet.jar"
+    ln -s %{_javadir}/%{name}-servlet-%{servletspec}-api.jar %{_javadir}/%{name}-servlet.jar
+fi
 
 %postun servlet-4_0-api
 if [ $1 -eq 0 ] ; then
+    if [ ! -f %{_sysconfdir}/alternatives/servlet ]; then 
+        # /etc/alternatives/servlet was removed on uninstall.
+        # Create a broken symlink to make sure update-alternatives works correctly and falls back
+        # to servletapi5 or servletapi4 if they're installed.
+        ln -s %{_javadir}/%{name}-servlet-%{servletspec}-api.jar %{_sysconfdir}/alternatives/servlet
+    fi
     update-alternatives --remove servlet \
         %{_javadir}/%{name}-servlet-%{servletspec}-api.jar
 fi
@@ -665,7 +669,7 @@ rm -f \
 if [ $1 -eq 0 ]; then # uninstall only
   %{serverxmltool} remove %{tomcatappdir}/ROOT /
   %{serverxmltool} remove %{tomcatappdir}/sample /sample
-  %{serverxmltool} remove %{tomcatappdir}/examples /example
+  %{serverxmltool} remove %{tomcatappdir}/examples /examples
 fi
 
 %post admin-webapps
@@ -687,7 +691,6 @@ if [ $1 -eq 0 ]; then # uninstall only
 fi
 
 %files
-%defattr(-,root,root)
 %doc {LICENSE,NOTICE,RELEASE*}
 %attr(0755,root,root) %{_bindir}/%{name}-digest
 %attr(0755,root,root) %{_bindir}/%{name}-tool-wrapper
@@ -731,7 +734,6 @@ fi
 %attr(0644,root,tomcat) %config(noreplace) %{confdir}/web.xml
 %attr(0644,root,tomcat) %config(noreplace) %{confdir}/jaspic-providers.xml
 %attr(0755,root,tomcat) %dir %{homedir}
-%attr(0644,root,tomcat) %{_tmpfilesdir}/%{name}.conf
 %attr(0644,root,tomcat) %{bindir}/bootstrap.jar
 %attr(0644,root,tomcat) %{bindir}/catalina-tasks.xml
 %{homedir}/lib
@@ -788,10 +790,11 @@ fi
 %{_javadir}/%{name}-servlet-%{servletspec}-api.jar
 %{_javadir}/%{name}-servlet-api.jar
 %{_javadir}/%{name}-servlet.jar
+%{_javadir}/servlet.jar
 %ghost %{_sysconfdir}/alternatives/servlet
 
 %files webapps
-%defattr(0644,tomcat,tomcat,0755)
+%defattr(0644,root,tomcat,0755)
 #bnc#520532
 %config(noreplace) %{tomcatappdir}/ROOT
 %{tomcatappdir}/examples

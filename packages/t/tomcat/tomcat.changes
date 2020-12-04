@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov  3 10:08:03 UTC 2020 - Matei Albu <malbu@suse.com>
+
+- Add source url for tomcat-serverxml-tool
+- Fix typo in tomcat-webapps %postun that caused /examples
+  context to remain in server.xml when package was removed
+- Remove tomcat-9.0.init and /usr/lib/tmpfiles.d/tomcat.conf from
+  package. They're not used anymore becuse of systemd (bsc#1178396)
+
+-------------------------------------------------------------------
+Fri Oct 30 17:05:52 UTC 2020 - Matei Albu <malbu@suse.com>
+
+- Fix tomcat-servlet-4_0-api package alternatives to use
+  /usr/share/java/servlet.jar instead of /usr/share/java/tomcat-servlet.jar.
+  Keep /usr/share/java/tomcat-servlet.jar symlink for compatibility. 
+  (bsc#1092163) 
+- Change default file ownership in tomcat-webapps from 
+  tomcat:tomcat to root:tomcat
+
+-------------------------------------------------------------------
 Tue Oct 13 11:23:32 UTC 2020 - Matei Albu <malbu@suse.com>
 
 - Fix CVE-2020-13943 (bsc#1177582)
@@ -6,6 +25,15 @@ Tue Oct 13 11:23:32 UTC 2020 - Matei Albu <malbu@suse.com>
   * tomcat-9.0-CVE-2020-13943.patch
 - Change /usr/lib/tomcat to /usr/libexec/tomcat in startup
   scripts (bsc#1177601)
+
+-------------------------------------------------------------------
+Tue Oct 13 10:47:39 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace old specfile constructs. Remove support for SUSE 11.x.
+- Drop %systemd_requires, which is considered a no-op.
+- Trim redundant license mention from description.
+- Make documentation noarch.
+- Do not suppress errors from useradd.
 
 -------------------------------------------------------------------
 Wed Aug 26 06:04:58 UTC 2020 - Fridrich Strba <fstrba@suse.com>
