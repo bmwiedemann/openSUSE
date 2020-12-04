@@ -1,0 +1,19 @@
+--- a/screenplain/main.py
++++ b/screenplain/main.py
+@@ -30,7 +30,7 @@ def invalid_format(parser, message):
+     )
+ 
+ 
+-def main(args):
++def main(args=sys.argv[1:]):
+     parser = OptionParser(usage=usage)
+     parser.add_option(
+         '-f', '--format', dest='output_format',
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -1,2 +1,5 @@
+ [metadata]
+ license_files = LICENSE.txt
++
++[pycodestyle]
++ignore = E402,W504

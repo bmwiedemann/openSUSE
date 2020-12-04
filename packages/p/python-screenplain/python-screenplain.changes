@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 03 21:34:14 UTC 2020 - mcepl@cepl.eu
+
+- Update to version 0.9.0+git.1597423678.4e34d1f:
+  * Don't use open, but more compatible io.open
+- Remove py2.patch, which has been included upstream.
+- Add fix_entry_point.patch
+- We don't need any stinking pytest.
+
+-------------------------------------------------------------------
 Fri Aug 14 16:29:32 UTC 2020 - mcepl@cepl.eu
 
 - Update to version 0.9.0+git.1597420829.0ff963d:

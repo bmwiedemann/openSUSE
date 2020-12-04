@@ -1,7 +1,7 @@
 #
 # spec file for package python-screenplain
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
 
 %if 0%{?suse_version} > 1500
 %bcond_with python2
@@ -21,24 +23,23 @@
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-screenplain
-Version:        0.9.0+git.1597420829.0ff963d
+Version:        0.9.0+git.1597423678.4e34d1f
 Release:        0
-License:        MIT
 Summary:        Convert text file to viewable screenplay
-Url:            http://www.screenplain.com/
+License:        MIT
 Group:          Development/Languages/Python
+URL:            http://www.screenplain.com/
 # Source:         https://files.pythonhosted.org/packages/source/s/screenplain/screenplain-%%{version}.tar.gz
 # Tarball generated from gh#vilcans/screenplain#62
 Source:         screenplain-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM py2.patch mcepl@suse.com
-# Don't use open(), but more compatible io.open()
-Patch0:         py2.patch
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module reportlab}
-BuildRequires:  %{python_module pytest}
+# PATCH-FIX-UPSTREAM fix_entry_point.patch mcepl@suse.com
+# entry point lead to incorrect function.
+Patch0:         fix_entry_point.patch
 BuildRequires:  %{python_module pycodestyle}
+BuildRequires:  %{python_module reportlab}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 Requires:       python-reportlab
 Requires(post):   update-alternatives
@@ -77,9 +78,9 @@ sed -i '1{/^#!.*env python/d}' screenplain/main.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export PYTEST_ADDOPTS="--doctest-modules"
-%pytest
-python3 -mpycodestyle -v --ignore=E402,W504 screenplain tests
+%pyunittest discover -v -p '*test*.py'
+%python_exec -mdoctest -v screenplain/*.py
+%python_exec -mpycodestyle -v screenplain tests
 
 %post
 %python_install_alternative screenplain
