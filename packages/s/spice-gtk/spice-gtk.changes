@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Dec  2 16:32:25 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Update to version 0.39. Issues addressed:
+  + !33 - Remove PulseAudio backend
+  + !34 - Remove support to CELT codec
+  + !42 - Drop capabilities from usb-acl-helper binary
+  + !45 - #123 - Install ACL helper in libexec directory
+  + !48 - Add support to Wayland mouse in server mode
+  + !49 - #126 - Read all SASL buffer
+  + !54 - Add Copy & Paste support over Webdav
+  + !58 - Improve input and display on HiDPI displays
+  + !64 - Add support for Physical size display
+  + !69 - Fix leak on Display's surface
+  + !74 - Fix read overflow on (not seamless) migration code
+  + !75 - Fix usb redirect on connect, see [rhbz#1874740]
+  + !77 - Fixes buffer overflow in QUIC [CVE-2020-14355]
+- Be explicit about the configuration options
+- Drop these patches, which are in release tarball:
+  Remove-celt-support.patch
+  0001-quic-Check-we-have-some-data-to-start-decoding-quic-.patch
+  0002-quic-Check-image-size-in-quic_decode_begin.patch
+  0003-quic-Check-RLE-lengths.patch
+  0004-quic-Avoid-possible-buffer-overflow-in-find_bucket.patch
+
+-------------------------------------------------------------------
+Thu Oct  8 14:27:50 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Note: The Mar 9, 2020 spec file cleanup satisfies jsc#SLE-15520
+
+-------------------------------------------------------------------
 Mon Oct  5 19:51:44 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Fix buffer overflow vunerabilities in QUIC image decoding

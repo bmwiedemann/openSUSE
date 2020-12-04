@@ -18,7 +18,7 @@
 
 
 Name:           spice-gtk
-Version:        0.38
+Version:        0.39
 Release:        0
 Summary:        Gtk client and libraries for SPICE remote desktop servers
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -30,11 +30,6 @@ Source2:        %{name}.keyring
 Source3:        README.SUSE
 # PATCH-FIX-OPENSUSE spice-gtk-polkit-privs.patch bnc#804184 dimstar@opensuse.org -- Set the polkit defaults to auth_admin
 Patch0:         spice-gtk-polkit-privs.patch
-Patch1:         Remove-celt-support.patch
-Patch2:         0001-quic-Check-we-have-some-data-to-start-decoding-quic-.patch
-Patch3:         0002-quic-Check-image-size-in-quic_decode_begin.patch
-Patch4:         0003-quic-Check-RLE-lengths.patch
-Patch5:         0004-quic-Avoid-possible-buffer-overflow-in-find_bucket.patch
 
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  gstreamer-plugins-bad
@@ -44,15 +39,15 @@ BuildRequires:  json-glib-devel
 BuildRequires:  libacl-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtool
-BuildRequires:  meson
+BuildRequires:  meson >= 0.53
 BuildRequires:  pkgconfig
 BuildRequires:  python3-pyparsing
 BuildRequires:  python3-six
 BuildRequires:  vala
 BuildRequires:  perl(Text::CSV)
 BuildRequires:  pkgconfig(cairo) >= 1.2.0
-BuildRequires:  pkgconfig(gio-2.0) >= 2.46
-BuildRequires:  pkgconfig(glib-2.0) >= 2.46
+BuildRequires:  pkgconfig(gio-2.0) >= 2.52
+BuildRequires:  pkgconfig(glib-2.0) >= 2.52
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.0
@@ -63,6 +58,8 @@ BuildRequires:  pkgconfig(gthread-2.0) >= 2.0.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(gudev-1.0)
+BuildRequires:  pkgconfig(libcap-ng)
+BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libphodav-2.0)
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.49.91
@@ -72,9 +69,8 @@ BuildRequires:  pkgconfig(libusbredirparser-0.5) >= 0.4
 BuildRequires:  pkgconfig(openssl) >= 1.0.0
 BuildRequires:  pkgconfig(opus) >= 0.9.14
 BuildRequires:  pkgconfig(pixman-1) >= 0.17.7
-BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.96
+BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.101
 # spice-protocol is bundled, but we still need the system-wide .pc file for the pkgconfig() requires magic
-BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(spice-protocol) >= 0.14.1
 Requires(pre):  permissions
 BuildRequires:  pkgconfig(libcacard) >= 2.5.1
@@ -138,17 +134,31 @@ A Gtk client and libraries for SPICE remote desktop servers, (Linux and Windows)
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-cd subprojects/spice-common
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-cd ../../
 cp %{SOURCE3} .
 
 %build
-%meson -Dvapi=enabled -Dlz4=enabled -Dsmartcard=enabled -Dusb-ids-path=/usr/share/hwdata/usb.ids
+%meson \
+ -Dopus=enabled \
+ -Dgtk=enabled \
+ -Dwayland-protocols=enabled \
+ -Dwebdav=enabled \
+ -Dbuiltin-mjpeg=true \
+ -Dusbredir=enabled \
+ -Dlibcap-ng=enabled \
+ -Dpolkit=enabled \
+ -Dpie=true \
+ -Dusb-acl-helper-dir=%{_bindir} \
+ -Dusb-ids-path=/usr/share/hwdata/usb.ids \
+ -Dcoroutine=auto \
+ -Dintrospection=enabled \
+ -Dvapi=enabled \
+ -Dlz4=enabled \
+ -Dsasl=enabled \
+ -Dsmartcard=enabled \
+ -Dvalgrind=false \
+ -Dgtk_doc=enabled \
+ -Dalignment-checks=false \
+ -Drecorder=false
 %meson_build
 
 %install
