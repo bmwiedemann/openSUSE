@@ -2898,4 +2898,12 @@ Petr</comment>
   * .3 bugfix release of 7.0 series</comment>
     <requestid>845004</requestid>
   </revision>
+  <revision rev="217" vrev="2">
+    <srcmd5>4a6b012ad49c27928d3f30dba5283e5a</srcmd5>
+    <version>7.0.3.1</version>
+    <time>1607113598</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>852694</requestid>
+  </revision>
 </revisionlist>

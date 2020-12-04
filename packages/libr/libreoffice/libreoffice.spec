@@ -34,11 +34,7 @@
 %else
 %bcond_with kdeintegration
 %endif
-%if 0%{?suse_version} >= 1500 && 0%{?is_opensuse}
-%bcond_without firebird
-%else
 %bcond_with firebird
-%endif
 %if 0%{?suse_version} > 1320 || (0%{?sle_version} >= 120300 && 0%{?is_opensuse})
 %bcond_without system_gpgme
 %else
