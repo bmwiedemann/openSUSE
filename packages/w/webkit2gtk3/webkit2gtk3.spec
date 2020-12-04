@@ -45,7 +45,8 @@ Source99:       webkit2gtk3.keyring
 Patch0:         webkit-process.patch
 # PATCH-FIX-OPENSUSE no-forced-sse.patch jengelh@iani.de -- cure execution of illegal instruction in i586 firefox.
 Patch1:         no-forced-sse.patch
-
+# PATCH-FIX-UPSTREAM 0001-ICU-68.1-no-longer-exposes-FALSE-and-TRUE-macros-by-.patch dimstar@opensuse.org -- ICU 68.1 no longer exposes FALSE and TRUE macros by default
+Patch2:         http://git.yoctoproject.org/cgit/cgit.cgi/poky/plain/meta/recipes-sato/webkit/webkitgtk/0001-ICU-68.1-no-longer-exposes-FALSE-and-TRUE-macros-by-.patch
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  Mesa-libGLESv1_CM-devel
@@ -275,6 +276,7 @@ A small test browswer from webkit, useful for testing features.
 %patch0 -p1
 %endif
 %patch1 -p1
+%patch2 -p1
 
 %build
 %define _lto_cflags %{nil}

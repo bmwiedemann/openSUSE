@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  2 13:36:15 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- 0001-ICU-68.1-no-longer-exposes-FALSE-and-TRUE-macros-by-.patch:
+  ICU 68.1 no longer exposes FALSE and TRUE macros by default.
+
+-------------------------------------------------------------------
 Sun Nov 22 16:37:46 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.30.3 (boo#1179122 boo#1179451):
