@@ -388,4 +388,19 @@
   * Removed unnecessary padding from SVG charts. Improves readability on mobile.</comment>
     <requestid>848804</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d01cb190e9f2371f55295acaca96fc55</srcmd5>
+    <version>1.4.3</version>
+    <time>1607113755</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.3:
+  * Added the ability to set how often goaccess will parse data and output to
+    the HTML report via '--html-refresh=&lt;secs&gt;'.
+  * Changed how TLS is parsed so the Cypher uses a separate specifier.
+    It now uses '%K' for the TLS version and '%k' for the Cypher.
+  * Fixed issue where real-time output would double count a rotated log. This
+    was due to the change of inode upon rotating the log.
+  * Updated man page to reflect proper way of 'tail -f' a remote access log.</comment>
+    <requestid>853059</requestid>
+  </revision>
 </revisionlist>
