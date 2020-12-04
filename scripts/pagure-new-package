@@ -16,3 +16,5 @@ curl $verbose \
      --request POST \
      --data "{\"name\":\"$name\",\"description\":\"$description\", \"namespace\": \"$namespace\", \"wait\": \"true\"}" \
      https://code.opensuse.org/api/0/new
+
+scripts/pagure-set-projectoptions $name

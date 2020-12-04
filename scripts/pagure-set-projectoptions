@@ -1,0 +1,17 @@
+#!/bin/sh
+namespace=package
+apitoken=`cat ~/.pagureapitoken`
+pkg=$1
+#verbose=-v
+
+if [ -z "$pkg" ] ; then
+    echo "usage: $0 PKGNAME"
+    exit 15
+fi
+
+curl $verbose \
+     --header "Authorization: token $apitoken" \
+     --request POST \
+     --data "issue_tracker=false&pull_requests=false" \
+     https://code.opensuse.org/api/0/$namespace/$pkg/options/update
+
