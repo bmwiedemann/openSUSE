@@ -57,8 +57,11 @@ rm -rf jaraco.functools.egg-info
 
 %python_expand rm %{buildroot}%{$python_sitelib}/jaraco/__init__.py
 
+%{?python_compileall}
+%{!?python_compileall: # if we haven no python_compileall we are for sure still without multiple python3 flavors.
 %py3_compile %{buildroot}%{python3_sitelib}/jaraco/
 %py3_compile -O %{buildroot}%{python3_sitelib}/jaraco/
+}
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
