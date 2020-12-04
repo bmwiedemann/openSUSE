@@ -32,10 +32,9 @@
 #define APPARMOR_DOC_DIR /usr/share/doc/packages/apparmor-docs/
 #define JNI_SO libJNIChangeHat.so
 %define JAR_FILE changeHatValve.jar
-%define apache_module_path %(/usr/sbin/apxs2 -q LIBEXECDIR)
 
 Name:           apparmor
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        AppArmor userlevel parser utility
 License:        GPL-2.0-or-later
@@ -65,15 +64,6 @@ Patch4:         apparmor-lessopen-profile.patch
 # workaround for boo#1119937 / lp#1784499 - allow network access for reading files on NFS (proper solution needs kernel fix)
 Patch5:         apparmor-lessopen-nfs-workaround.diff
 
-# changes since 3.0.0 release up to 3e18c0785abc03ee42a022a67a27a085516a7921
-Patch6:         changes-since-3.0.0.diff
-
-# fix hotkey conflict for utils (de, id and sv), and fix the test (accepted upstream 2020-11-01 https://gitlab.com/apparmor/apparmor/-/merge_requests/675)
-Patch10:        utils-fix-hotkey-conflict.diff
-
-# fix invalid Pux (should be PUx) in inactive profile - breaks creating a new profile with aa-autodep, aa-logprof and aa-genprof (accepted upstream 2020-11-01 https://gitlab.com/apparmor/apparmor/-/merge_requests/676)
-Patch11:        extra-profiles-fix-Pux.diff
-
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define apparmor_bin_prefix /lib/apparmor
@@ -100,6 +90,7 @@ BuildRequires:  ruby-devel
 %endif
 
 %if %{with apache}
+BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
 %endif
 
@@ -334,9 +325,6 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch3 -p1
 %patch4
 %patch5
-%patch6 -p1
-%patch10 -p1
-%patch11 -p1
 
 %build
 %define _lto_cflags %{nil}
@@ -685,7 +673,7 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 
 %files -n apache2-mod_apparmor
 %defattr(-,root,root)
-%{apache_module_path}/mod_apparmor.so
+%{apache_libexecdir}/mod_apparmor.so
 %doc %{_mandir}/man8/mod_apparmor.8.gz
 %endif
 

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Dec  2 19:29:34 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 3.0.1
+  - minor additions to profiles and abstractions
+  - some bugfixes in libapparmor, apparmor_parser and the aa-* utils
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.0.1
+    for the detailed upstream changelog
+- removed upstream(ed) patches:
+  - changes-since-3.0.0.diff
+  - extra-profiles-fix-Pux.diff
+  - utils-fix-hotkey-conflict.diff
+
+-------------------------------------------------------------------
+Wed Dec  2 14:31:18 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use apache provided variables for the module_directry:
+  + Use %apache_libexecdir
+  + Add apache-rpm-macros BuildRequires
+
+-------------------------------------------------------------------
 Sat Oct 31 19:05:14 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
 
 - add utils-fix-hotkey-conflict.diff to fix a hotkey conflict in

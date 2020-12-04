@@ -2049,4 +2049,30 @@ libapparmor:
 - drop 2.13-only patch libapparmor-so-number.diff</comment>
     <requestid>845533</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>10d5c5f4e2801187b788553c99279a22</srcmd5>
+    <version>3.0.1</version>
+    <time>1607113630</time>
+    <user>dimstar_suse</user>
+    <comment>- update to AppArmor 3.0.1
+  - minor additions to profiles and abstractions
+  - some bugfixes in libapparmor, apparmor_parser and the aa-* utils
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.0.1
+    for the detailed upstream changelog
+- removed upstream(ed) patches:
+  - changes-since-3.0.0.diff
+  - extra-profiles-fix-Pux.diff
+  - utils-fix-hotkey-conflict.diff
+
+- Use apache provided variables for the module_directry:
+  + Use %apache_libexecdir
+  + Add apache-rpm-macros BuildRequires
+
+libapparmor:
+- update to AppArmor 3.0.1
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.0.1
+    for the detailed upstream changelog
+  - drop upstream patch changes-since-3.0.0.diff</comment>
+    <requestid>852711</requestid>
+  </revision>
 </revisionlist>

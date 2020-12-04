@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  2 19:28:22 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 3.0.1
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.0.1
+    for the detailed upstream changelog
+  - drop upstream patch changes-since-3.0.0.diff
+
+-------------------------------------------------------------------
 Sun Oct 25 11:15:54 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
 
 - update to AppArmor 3.0.0
