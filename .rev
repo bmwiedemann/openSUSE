@@ -410,4 +410,12 @@
     <comment>bugfix release</comment>
     <requestid>847928</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>23f2d67d7c21ea9def60886b9a77332c</srcmd5>
+    <version>5.0.30</version>
+    <time>1607113762</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix release</comment>
+    <requestid>853115</requestid>
+  </revision>
 </revisionlist>
