@@ -128,4 +128,24 @@
     that match Coq's grammar in most but not all chapters.</comment>
     <requestid>824553</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a78dc069cb6d07fa897cfe4a5154c2c1</srcmd5>
+    <version>8.12.1</version>
+    <time>1607113673</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.12.1. This contains mostly bug fixes:
+  * Polymorphic side-effects inside monomorphic definitions were
+    incorrectly handled as not inlined. This allowed deriving an
+    inconsistency.
+  * Regression in error reporting after SSReflect's case tactic.
+    A generic error message &quot;Could not fill dependent hole in
+    apply&quot; was reported for any error following case or elim.
+  * Several bugs with Search.
+  * The details environment introduced in coqdoc in Coq 8.12 can
+    now be used as advertised in the reference manual.
+  * View menu &quot;Display parentheses&quot; introduced in CoqIDE in
+    Coq 8.12 now works correctly.
+- Use memoryperjob constraint instead of %limit_build macro.</comment>
+    <requestid>849178</requestid>
+  </revision>
 </revisionlist>

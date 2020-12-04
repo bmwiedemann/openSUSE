@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov 17 22:09:12 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 8.12.1. This contains mostly bug fixes:
+  * Polymorphic side-effects inside monomorphic definitions were
+    incorrectly handled as not inlined. This allowed deriving an
+    inconsistency.
+  * Regression in error reporting after SSReflect's case tactic.
+    A generic error message "Could not fill dependent hole in
+    apply" was reported for any error following case or elim.
+  * Several bugs with Search.
+  * The details environment introduced in coqdoc in Coq 8.12 can
+    now be used as advertised in the reference manual.
+  * View menu "Display parentheses" introduced in CoqIDE in
+    Coq 8.12 now works correctly.
+
+-------------------------------------------------------------------
+Thu Aug 20 08:33:34 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use memoryperjob constraint instead of %limit_build macro.
+
+-------------------------------------------------------------------
 Tue Jul 28 21:48:40 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 8.12.0.

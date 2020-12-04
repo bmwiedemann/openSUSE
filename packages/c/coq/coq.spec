@@ -18,7 +18,7 @@
 
 
 Name:           coq
-Version:        8.12.0
+Version:        8.12.1
 Release:        0
 Summary:        Proof Assistant based on the Calculus of Inductive Constructions
 License:        LGPL-2.1-only
@@ -29,7 +29,6 @@ Source1:        coq.desktop
 Source2:        coq.xml
 Source100:      %{name}-rpmlintrc
 BuildRequires:  desktop-file-utils
-BuildRequires:  memory-constraints
 # Required for standard coq:
 BuildRequires:  make >= 3.81
 BuildRequires:  ocaml >= 4.05.0
@@ -92,7 +91,6 @@ export CFLAGS='%{optflags}'
    -natdynlink yes \
    -browser "xdg-open %s"
 
-%limit_build -m 800
 make %{?_smp_mflags} world
 
 %install
