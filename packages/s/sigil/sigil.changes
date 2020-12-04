@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Dec  3 16:03:58 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.4.3
+  - critical bug fix for OPF metadata attributes that use named
+    entities
+  - fix mismatched override wait cursor usage
+  - fix crashes when dictionaries are missing on load or during
+    first spellcheck
+  - update the mapping of language codes to dictionaries without
+    the need to restart
+  - fix critical bug which caused split to break links that are
+    bare fragments
+  - fix additional critical bugs which caused split to lose
+    fragments from link targets
+  - fix double # chars in fragment ids during merge
+  - fix hang on load with bad encryption.xml font uris
+  - quiet unneeded debug output when importing an epub
+  - fix opf cleanup bug when identical xmlns values are used with
+    two different prefixes on the same tag
+
+-------------------------------------------------------------------
 Sun Nov 22 09:51:53 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.4.2
