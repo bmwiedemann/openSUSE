@@ -53,16 +53,26 @@ sed -i '1 {/^#!/d}' dbusapi/tests/*.py dbusdeviation/utilities/*.py
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/dbus-interface-diff
+%python_clone -a %{buildroot}%{_bindir}/dbus-interface-vcs-helper
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest -v
+
+%post
+%python_install_alternative dbus-interface-diff dbus-interface-vcs-helper
+
+%postun
+%python_uninstall_alternative dbus-interface-diff dbus-interface-vcs-helper
 
 %files %{python_files}
 %doc AUTHORS NEWS README
 %license COPYING
-%python3_only %{_bindir}/dbus-interface-diff
-%python3_only %{_bindir}/dbus-interface-vcs-helper
-%{python_sitelib}/*
+%python_alternative %{_bindir}/dbus-interface-diff
+%python_alternative %{_bindir}/dbus-interface-vcs-helper
+%{python_sitelib}/dbusapi
+%{python_sitelib}/dbusdeviation
+%{python_sitelib}/dbus_deviation-%{version}*-info
 
 %changelog
