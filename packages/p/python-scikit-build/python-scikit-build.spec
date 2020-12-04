@@ -61,8 +61,8 @@ Improved build system generator for Python C/C++/Fortran/Cython extensions
 %setup -q -n scikit-build-%{version}
 # some tests call setup.py develop|install|test, which by default write to /usr
 # This is not allowed in OBS
-# gh#scikit-build/scikit-build/issues/469
-mkdir -p /tmp/fakepythonroot%{python_sitelib}
+# gh#scikit-build/scikit-build#469
+%python_expand mkdir -p /tmp/fakepythonroot%{$python_sitelib}
 cp %{S:99} tests/samples/hello-cpp/setup.cfg
 sed -i "/hello-1.2.3\/setup.py/ a \        'hello-1.2.3/setup.cfg'," tests/test_hello_cpp.py
 cp %{S:99} tests/samples/issue-274-support-default-package-dir/setup.cfg
@@ -79,7 +79,7 @@ cp %{S:99} tests/samples/issue-334-configure-cmakelist-non-cp1252-encoding/setup
 %check
 %{python_expand  export PYTHONDONTWRITEBYTECODE=1
 export PYTHONPATH=/tmp/fakepythonroot%{$python_sitelib}:%{buildroot}%{$python_sitelib}
-py.test-%{$python_bin_suffix}
+pytest-%{$python_bin_suffix} -v
 }
 
 %files %{python_files}
