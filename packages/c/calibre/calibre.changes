@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Nov 27 06:41:00 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.6.0
+  * New Features
+    - Edit book: Show a non-modal popup for a few seconds to allow
+      undoing file delete operations
+    - Device books view: Add an action to the context menu to 
+      easily jump to the matching book in the calibre library view
+    - Add ability to undo Generate cover in the Edit metadata 
+      screen, by long clicking the Generate cover button
+    - Edit book: Allow adding tags to the list of tags for the
+      insert tag button
+    - calibredb add: New option --automerge to automatically merge
+      duplicates
+    - Add an edit notes action to the context menu in the viewer 
+      highlights panel
+    - Content server viewer: Allow viewing images in a new window
+      by right clicking them, matches the calibre builtin viewer
+      behavior
+    - Book details window: Allow opening the edit metadata window
+      using either the keyboard shortcut or the context menu
+    - Allow copying the current search as a calibre:// URL by right
+      clicking the search box
+    - Book details panel: Add entries to copy calibre:// links for
+      the current book to the context menu
+    - Edit book: Upgrade book: Ask whether to keep the NCX based
+      Table of Contents
+  * Bug Fixes
+    - Windows: Fix calibre portable launcher not working correctly
+      from root directory in calibre 5.5
+    - macOS: Fix rendering of space after punctuation incorrect in
+      Big Sur
+    - DOCX Input: When converting images placed using the obsolete
+      VML markup default them to being inline rather than block
+      images
+    - Metadata edit dialog: Fix keyboard shortcuts for 
+      bold/italic/underline not working when more than one comments
+      editor widget is present on a single tab
+    - When using calibre://show-book URLs and the book is not
+      found, clear any Virtual library or search restriction and
+      then show the book
+    - macOS: Fix calibre:// URLs not working from other documents
+    - Fix calibre:// URL search action not changing library if
+      needed
+    - annotation_count() template function displaying value for
+      deleted annotations
+    - Edit book: Fix syntax highlighting not recognizing ends-with
+      selector
+
+-------------------------------------------------------------------
 Sat Nov 14 19:37:48 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to Version 5.5.0

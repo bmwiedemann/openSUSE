@@ -17,7 +17,7 @@
 
 
 Name:           calibre
-Version:        5.5.0
+Version:        5.6.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -133,6 +133,7 @@ BuildRequires:  python3-qtwebengine-qt5 >= 5.15.1
 BuildRequires:  python3-six >= 1.10.0
 BuildRequires:  python3-soupsieve >= 1.9.1
 #BuildRequires:  python-unrardll >= 0.1.3
+BuildRequires:  python3-speechd >= 0.10.1
 BuildRequires:  python3-webencodings >= 0.5.1
 # upstream use python-zeroconf 0.21.3
 BuildRequires:  python3-zeroconf >= 0.19.1
@@ -177,6 +178,7 @@ Requires:       python3-setuptools >= 23.1.0
 Requires:       python3-six >= 1.10.0
 Requires:       python3-soupsieve >= 1.9.1
 #Requires:       python3-unrardll >= 0.1.3
+Requires:       python3-speechd >= 0.10.1
 Requires:       python3-webencodings >= 0.5.1
 Requires:       python3-zeroconf >= 0.19.1
 #
