@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Sun Nov 29 00:45:14 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Convert to single spec
+- Remove merged patch CVE-2019-13611.patch
+- Activate test suite
+- Update to v3.14.1
+
+-------------------------------------------------------------------
+Tue Aug 13 18:52:37 UTC 2019 - eapodaca@suse.com
+
+- Add patch CVE-2019-13611.patch (SOC-9989) (bsc#1141676)
+  * python-python-engineio: An issue was discovered in
+    python-engineio through 3.8.2. There is a Cross-Site WebSocket
+    Hijacking (CSWSH) vulnerability that allows attackers to make
+    WebSocket connections to a server
+
+-------------------------------------------------------------------
+Thu Feb  1 15:27:05 UTC 2018 - gsmith@suse.com
+
+- Initial version 2.0.2
