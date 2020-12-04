@@ -146,4 +146,17 @@
     sharp)</comment>
     <requestid>843822</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>87880461737a60aa902734d1bbabb55e</srcmd5>
+    <version>0.24.3</version>
+    <time>1607113771</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.24.3:
+  - Added --padding option:
+    fzf --margin 5% --padding 5% --border --preview 'cat {}' \
+    --color bg:#222222,preview-bg:#333333
+  - Bug fixes and improvements
+</comment>
+    <requestid>853095</requestid>
+  </revision>
 </revisionlist>
