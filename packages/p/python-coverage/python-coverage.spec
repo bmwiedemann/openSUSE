@@ -17,6 +17,13 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# We redefine this locally, because we are sure that it is only used for files,
+# which only the primary python3 flavor should provide for python3 multiflavor
+# gh#openSUSE/python-rpm-macros#66
+%define python3_only() %%if "%%{python_flavor}" == "python3" || "%%{python_provides}" == "python3" \
+%** \
+%%endif
+
 Name:           python-coverage
 Version:        5.3
 Release:        0
@@ -88,18 +95,19 @@ ln -sf coverage-%{python3_version} %{buildroot}%{_bindir}/coverage3
 # test_xdist_sys_path_nuttiness_is_fixed - xdist check that we actually fail on purpose
 # test_debug_sys_ctracer - requires dep on ctracer
 export LANG=en_US.UTF8
-# Copy executables to py2/3 build areas, to be used for testing
-%{python_expand mkdir build/bin
-for filepath in %{buildroot}/%{_bindir}/coverage*-%{$python_bin_suffix}; do
+%{python_expand # Link executables to flavor specific build areas, to be used for testing. build/ is shuffled around by python_expand
+mkdir build/bin
+for filepath in %{buildroot}%{_bindir}/coverage*-%{$python_bin_suffix}; do
   filename=$(basename $filepath)
   unsuffixed=${filename/-%{$python_bin_suffix}/}
-  cp $filepath build/bin/$unsuffixed
+  ln -s $filepath build/bin/$unsuffixed
 done
-export PATH="$(pwd)/build/bin:$PATH"
-export PYTHONPATH=%{buildroot}%{$python_sitearch}
-py.test-%{$python_bin_suffix} -v -k 'not (test_get_encoded_zip_files or test_egg or test_doctest or test_unicode or test_version or test_multiprocessing_with_branching or test_farm or test_dothtml_not_python or test_one_of or test_bytes or test_encoding or test_multi or test_xdist_sys_path_nuttiness_is_fixed or test_debug_sys_ctracer)'
-rm -r build/bin
 }
+export PATH="$(pwd)/build/bin:$PATH"
+# the tests need the empty leading part for importing local test projects, the x is a dummy"
+export PYTHONPATH=":x"
+%pytest_arch -k 'not (test_get_encoded_zip_files or test_egg or test_doctest or test_unicode or test_version or test_multiprocessing_with_branching or test_farm or test_dothtml_not_python or test_one_of or test_bytes or test_encoding or test_multi or test_xdist_sys_path_nuttiness_is_fixed or test_debug_sys_ctracer)'
+
 
 %post
 %python_install_alternative coverage
