@@ -1,7 +1,7 @@
 #
-# spec file for package java
+# spec file for package java-15-openjdk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?arm6:%global arm6 armv3l armv4b armv4l armv4tl armv5b armv5l armv5teb armv5tel armv5tejl armv6l armv6hl}
 %global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm} s390x
 %global debug 0
-%global add_back_javaee_modules 1
+%global add_back_javaee_modules 0
 %global buildoutputdir build
 # Convert an absolute path to a relative path.  Each symbolic link is
 # specified relative to the directory in which it is installed so that
@@ -32,15 +32,14 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      15
 %global interimver      0
-%global updatever       0
+%global updatever       1
 %global patchver        0
-%global datever         2020-09-15
-%global buildver        14
-%global hg_project      jdk
-%global hg_repository   jdk
-%global hg_revision     1d6ceb13e142
+%global datever         2020-10-20
+%global buildver        9
+%global hg_project      jdk-updates
+%global hg_repository   jdk15u
+%global hg_revision     d9b7c0759310
 %global icedtea_sound_version 1.0.1
-%global java_atk_wrapper_version 0.33.2
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2
 %global java_activation_repository activation
@@ -145,7 +144,7 @@
 %global tapsetdir %{tapsetroot}/tapset/%{_build_cpu}
 %endif
 Name:           java-%{featurever}-openjdk
-Version:        %{featurever}.%{interimver}.%{updatever}.%{patchver}~%{buildver}
+Version:        %{featurever}.%{interimver}.%{updatever}.%{patchver}
 Release:        0
 Summary:        OpenJDK %{featurever} Runtime Environment
 License:        Apache-1.1 AND Apache-2.0 AND GPL-1.0-or-later AND GPL-2.0-only AND GPL-2.0-only WITH Classpath-exception-2.0 AND LGPL-2.0-only AND MPL-1.0 AND MPL-1.1 AND SUSE-Public-Domain AND W3C
@@ -154,7 +153,7 @@ URL:            http://openjdk.java.net/
 # Sources from upstream OpenJDK project.
 Source0:        http://hg.openjdk.java.net/%{hg_project}/%{hg_repository}/archive/%{hg_revision}.tar.bz2
 # Accessibility support
-Source8:        ftp://ftp.gnome.org/pub/GNOME/sources/java-atk-wrapper/0.33/java-atk-wrapper-%{java_atk_wrapper_version}.tar.xz
+Source8:        https://download.gnome.org/sources/java-atk-wrapper/0.33/java-atk-wrapper-%{java_atk_wrapper_version}.tar.xz
 # Pulseaudio support
 Source9:        http://icedtea.classpath.org/download/source/icedtea-sound-%{icedtea_sound_version}.tar.xz
 # Systemtap tapsets. Zipped up to keep it small.
@@ -207,7 +206,8 @@ Patch10:        memory-limits.patch
 Patch12:        adlc-parser.patch
 # Fix: implicit-pointer-decl
 Patch13:        implicit-pointer-decl.patch
-#
+# Fix: error: requested alignment is not an integer constant with gcc < 4.9
+Patch14:        zgc-alignment.patch
 Patch15:        system-pcsclite.patch
 Patch16:        missing-return.patch
 #
@@ -298,7 +298,7 @@ Provides:       jre-%{bits} = %{javaver}
 Provides:       jre-%{javaver}-%{bits}
 Provides:       jre-%{javaver}-openjdk-%{bits} = %{version}-%{release}
 Provides:       jre-openjdk-%{bits} = %{version}-%{release}
-Provides:       jre1.10.x
+Provides:       jre1.1openSUSE_Leap_42.30.x
 Provides:       jre1.3.x
 Provides:       jre1.4.x
 Provides:       jre1.5.x
@@ -307,8 +307,8 @@ Provides:       jre1.7.x
 Provides:       jre1.8.x
 Provides:       jre1.9.x
 %if %{bootcycle}
-BuildRequires:  java-devel >= 13
-BuildConflicts: java-devel >= 15
+BuildRequires:  java-devel >= 14
+BuildConflicts: java-devel >= 16
 %else
 BuildRequires:  %{name}-devel
 %endif
@@ -481,6 +481,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch10 -p1
 %patch12 -p1
 %patch13 -p1
+%patch14 -p1
 
 %if %{with_system_pcsc}
 %patch15 -p1
@@ -576,7 +577,7 @@ bash ../configure \
     --with-version-patch=%{patchver} \
     --with-version-date=%{datever} \
     --with-version-build=%{buildver} \
-%if 0
+%if 1
     --with-version-pre="" \
 %endif
     --with-version-opt="suse-%{release}-%{_arch}" \
@@ -607,9 +608,6 @@ bash ../configure \
     --with-stdc++lib=dynamic \
 %ifarch s390
     --with-boot-jdk-jvmargs="-Xms256M -Xmx768M" \
-%endif
-%ifarch x86_64
-    --with-jvm-features=zgc \
 %endif
     --with-extra-cxxflags="$EXTRA_CPP_FLAGS" \
     --with-extra-cflags="$EXTRA_CFLAGS" \
@@ -976,14 +974,11 @@ ext=.gz
 update-alternatives \
   --install %{_bindir}/java java %{jrebindir}/java %{priority} \
   --slave %{_jvmdir}/jre jre %{_jvmdir}/%{jrelnk} \
-  --slave %{_bindir}/jjs jjs %{jrebindir}/jjs \
   --slave %{_bindir}/keytool keytool %{jrebindir}/keytool \
   --slave %{_bindir}/rmid rmid %{jrebindir}/rmid \
   --slave %{_bindir}/rmiregistry rmiregistry %{jrebindir}/rmiregistry \
   --slave %{_mandir}/man1/java.1$ext java.1$ext \
   %{_mandir}/man1/java-%{sdklnk}.1$ext \
-  --slave %{_mandir}/man1/jjs.1$ext jjs.1$ext \
-  %{_mandir}/man1/jjs-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/keytool.1$ext keytool.1$ext \
   %{_mandir}/man1/keytool-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/rmid.1$ext rmid.1$ext \
@@ -1072,7 +1067,6 @@ update-alternatives \
   --slave %{_bindir}/jstack jstack %{sdkbindir}/jstack \
   --slave %{_bindir}/jstat jstat %{sdkbindir}/jstat \
   --slave %{_bindir}/jstatd jstatd %{sdkbindir}/jstatd \
-  --slave %{_bindir}/rmic rmic %{sdkbindir}/rmic \
   --slave %{_bindir}/serialver serialver %{sdkbindir}/serialver \
 %if %{with aot}
   --slave %{_mandir}/man1/jaotc.1$ext jaotc.1$ext \
@@ -1126,8 +1120,6 @@ update-alternatives \
   %{_mandir}/man1/jstat-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/jstatd.1$ext jstatd.1$ext \
   %{_mandir}/man1/jstatd-%{sdklnk}.1$ext \
-  --slave %{_mandir}/man1/rmic.1$ext rmic.1$ext \
-  %{_mandir}/man1/rmic-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/serialver.1$ext serialver.1$ext \
   %{_mandir}/man1/serialver-%{sdklnk}.1$ext \
   --slave %{_datadir}/applications/jconsole.desktop jconsole.desktop \
@@ -1206,7 +1198,6 @@ fi
 
 %{_jvmdir}/%{sdkdir}/bin/java
 %{_jvmdir}/%{sdkdir}/bin/jfr
-%{_jvmdir}/%{sdkdir}/bin/jjs
 %{_jvmdir}/%{sdkdir}/bin/keytool
 %{_jvmdir}/%{sdkdir}/bin/rmid
 %{_jvmdir}/%{sdkdir}/bin/rmiregistry
@@ -1271,7 +1262,7 @@ fi
 %{_jvmdir}/%{sdkdir}/lib/*/libjvm.so
 %if ! %{with zero}
 %{_jvmdir}/%{sdkdir}/lib/classlist
-%{_jvmdir}/%{sdkdir}/lib/*/classes.jsa
+%{_jvmdir}/%{sdkdir}/lib/*/classes*.jsa
 %endif
 
 %config(noreplace) %{_jvmdir}/%{sdkdir}/lib/security/blacklisted.certs
@@ -1281,7 +1272,6 @@ fi
 
 %{_mandir}/man1/java-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/jfr-%{sdklnk}.1%{?ext_man}
-%{_mandir}/man1/jjs-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/keytool-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/rmid-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/rmiregistry-%{sdklnk}.1%{?ext_man}
@@ -1325,7 +1315,6 @@ fi
 %{_jvmdir}/%{sdkdir}/bin/jstack
 %{_jvmdir}/%{sdkdir}/bin/jstat
 %{_jvmdir}/%{sdkdir}/bin/jstatd
-%{_jvmdir}/%{sdkdir}/bin/rmic
 %{_jvmdir}/%{sdkdir}/bin/serialver
 %{_jvmdir}/%{sdkdir}/include/classfile_constants.h
 %{_jvmdir}/%{sdkdir}/include/jawt.h
@@ -1376,7 +1365,6 @@ fi
 %{_mandir}/man1/jstack-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/jstat-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/jstatd-%{sdklnk}.1%{?ext_man}
-%{_mandir}/man1/rmic-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/serialver-%{sdklnk}.1%{?ext_man}
 
 %if %{with_systemtap}

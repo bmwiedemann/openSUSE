@@ -7,4 +7,12 @@
     <comment>OpenJDK 15 technology preview of the next OpenJDK</comment>
     <requestid>786248</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>89a8154968e851a9a38cf4e718a7a9c4</srcmd5>
+    <version>15.0.1.0</version>
+    <time>1607113679</time>
+    <user>dimstar_suse</user>
+    <comment>ZGC is built on supported archs by default</comment>
+    <requestid>852046</requestid>
+  </revision>
 </revisionlist>

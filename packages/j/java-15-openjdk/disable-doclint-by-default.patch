@@ -28,7 +28,7 @@
  
  //            test(List.of("-Xdoclint:none"),
  //                    Main.Result.OK,
-@@ -175,8 +175,8 @@
+@@ -183,8 +183,8 @@
                      EnumSet.of(Message.DL_WRN12));
  
              test(List.of(htmlVersion, rawDiags, "-private"),
@@ -37,5 +37,5 @@
 +                    Main.Result.OK,
 +                    EnumSet.of(Message.JD_WRN10, Message.JD_WRN13));
  
-             test(List.of(htmlVersion, rawDiags, "-Xdoclint:syntax", "-private"),
+             test(List.of(htmlVersion, rawDiags, "-Xdoclint:missing,syntax", "-private"),
                      Main.Result.ERROR,

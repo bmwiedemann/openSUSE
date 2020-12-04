@@ -1,6 +1,6 @@
---- jdk13/make/autoconf/lib-bundled.m4	2019-03-27 22:25:03.000000000 +0100
-+++ jdk13/make/autoconf/lib-bundled.m4	2019-04-04 08:18:52.952572757 +0200
-@@ -37,6 +37,7 @@
+--- jdk15/make/autoconf/lib-bundled.m4	2020-05-07 13:35:09.825368428 +0200
++++ jdk15/make/autoconf/lib-bundled.m4	2020-05-07 13:37:41.358280752 +0200
+@@ -40,6 +40,7 @@
    LIB_SETUP_LIBPNG
    LIB_SETUP_ZLIB
    LIB_SETUP_LCMS
@@ -8,7 +8,7 @@
  ])
  
  ################################################################################
-@@ -260,3 +261,41 @@
+@@ -263,3 +264,41 @@
    AC_SUBST(LCMS_CFLAGS)
    AC_SUBST(LCMS_LIBS)
  ])
@@ -50,9 +50,9 @@
 +
 +  AC_SUBST(USE_EXTERNAL_PCSCLITE)
 +])
---- jdk13/make/autoconf/spec.gmk.in	2019-03-27 22:25:03.000000000 +0100
-+++ jdk13/make/autoconf/spec.gmk.in	2019-04-04 08:18:52.952572757 +0200
-@@ -767,6 +767,7 @@
+--- jdk15/make/autoconf/spec.gmk.in	2020-05-07 13:35:09.825368428 +0200
++++ jdk15/make/autoconf/spec.gmk.in	2020-05-07 13:37:41.358280752 +0200
+@@ -769,6 +769,7 @@
  ENABLE_INTREE_EC:=@ENABLE_INTREE_EC@
  USE_EXTERNAL_LIBJPEG:=@USE_EXTERNAL_LIBJPEG@
  USE_EXTERNAL_LIBGIF:=@USE_EXTERNAL_LIBGIF@
@@ -60,8 +60,8 @@
  USE_EXTERNAL_LIBZ:=@USE_EXTERNAL_LIBZ@
  LIBZ_CFLAGS:=@LIBZ_CFLAGS@
  LIBZ_LIBS:=@LIBZ_LIBS@
---- jdk13/make/lib/Lib-java.smartcardio.gmk	2019-03-27 22:25:03.000000000 +0100
-+++ jdk13/make/lib/Lib-java.smartcardio.gmk	2019-04-04 08:18:52.952572757 +0200
+--- jdk15/make/modules/java.smartcardio/Lib.gmk	2020-05-07 13:35:09.933369079 +0200
++++ jdk15/make/modules/java.smartcardio/Lib.gmk	2020-05-07 13:40:06.651155470 +0200
 @@ -30,12 +30,12 @@
  $(eval $(call SetupJdkLibrary, BUILD_LIBJ2PCSC, \
      NAME := j2pcsc, \
@@ -78,8 +78,8 @@
      LIBS_windows := winscard.lib, \
  ))
  
---- jdk13/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.c	2019-03-27 22:25:03.000000000 +0100
-+++ jdk13/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.c	2019-04-04 08:18:52.952572757 +0200
+--- jdk15/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.c	2020-05-07 13:35:10.301371295 +0200
++++ jdk15/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.c	2020-05-07 13:37:55.482365786 +0200
 @@ -36,6 +36,7 @@
  
  #include "pcsc_md.h"
@@ -122,8 +122,8 @@
  #endif // __APPLE__
 +#endif
  }
---- jdk13/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.h	2019-03-27 22:25:03.000000000 +0100
-+++ jdk13/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.h	2019-04-04 08:19:49.820857713 +0200
+--- jdk15/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.h	2020-05-07 13:35:10.301371295 +0200
++++ jdk15/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.h	2020-05-07 13:37:55.482365786 +0200
 @@ -23,6 +23,8 @@
   * questions.
   */
