@@ -2839,4 +2839,17 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * do not add entropy based on mkstemp() unique filename.</comment>
     <requestid>850535</requestid>
   </revision>
+  <revision rev="219" vrev="1">
+    <srcmd5>ef24d19a2be33e270856a4ff056983f3</srcmd5>
+    <version>7.0.10.45</version>
+    <time>1607113657</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.10.45
+  * added support for the farbfeld format (reference
+    https://github.com/ImageMagick/ImageMagick/discussions/2664).
+  * specify the bilateral neighbor as width/height rather than radius/sigma.
+  * correct reading of first row in TIFF decoder.
+  * correct rotation parameter for SVG transform.</comment>
+    <requestid>852887</requestid>
+  </revision>
 </revisionlist>

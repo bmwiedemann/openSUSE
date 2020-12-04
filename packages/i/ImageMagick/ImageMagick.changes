@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec  3 11:16:30 UTC 2020 - pgajdos@suse.com
+
+- version update to 7.0.10.45
+  * added support for the farbfeld format (reference
+    https://github.com/ImageMagick/ImageMagick/discussions/2664).
+  * specify the bilateral neighbor as width/height rather than radius/sigma.
+  * correct reading of first row in TIFF decoder.
+  * correct rotation parameter for SVG transform.
+
+-------------------------------------------------------------------
 Tue Nov 24 12:32:20 UTC 2020 - pgajdos@suse.com
 
 - version update to 7.0.10.43
