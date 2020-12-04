@@ -22,13 +22,10 @@ Version:        1.2.1
 Release:        0
 Summary:        .spec file cleaner
 License:        BSD-3-Clause
-URL:            https://github.com/openSUSE/spec-cleaner
-Source0:        https://github.com/openSUSE/%{name}/archive/%{name}-%{version}.tar.gz
+URL:            https://github.com/rpm-software-management/spec-cleaner
+Source0:        https://github.com/rpm-software-management/spec-cleaner/archive/%{name}-%{version}.tar.gz
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-pytest
-BuildRequires:  python3-pytest-cov
-BuildRequires:  python3-pytest-isort
-BuildRequires:  python3-pytest-xdist
 BuildRequires:  python3-setuptools
 # For the pkg_resources used in the binary loader
 Requires:       python3-setuptools
@@ -50,13 +47,14 @@ user to use spec-cleaner rather than to stick to perl based format_spec_file.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
+rm pytest.ini
 
 %build
 %python3_build
 
 %check
 export LANG=en_US.UTF-8
-python3 -m pytest -k "not webtest"
+python3 -m pytest -k "not webtest" tests/*-tests.py
 
 %install
 %python3_install
