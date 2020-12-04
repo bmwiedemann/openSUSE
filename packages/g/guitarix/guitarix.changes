@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  4 05:46:10 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Add guitarix-fix-cannot-select-non-users-preset.patch fixes #21
+- Use proper lto disablement 
+
+-------------------------------------------------------------------
 Sun Nov 22 15:41:53 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Update to version 0.41.0 and fix build by removing -flto=auto

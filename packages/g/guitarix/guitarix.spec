@@ -16,6 +16,7 @@
 #
 
 
+%define _lto_cflags %{nil}
 %bcond_without ladspa
 
 Name:           guitarix
@@ -28,6 +29,7 @@ URL:            http://guitarix.sourceforge.net/
 Source:         http://downloads.sourceforge.net/project/guitarix/guitarix/guitarix2-%{version}.tar.xz
 Patch0:         fpexception.patch
 Patch1:         guitarix-boost69.patch
+Patch2:         guitarix-fix-cannot-select-non-users-preset.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gperf
@@ -146,7 +148,9 @@ Bestplugins Mega Pack 1+3 contains dozens of guitar sounds from famous bands.
 
 %prep
 %setup -q -n guitarix-%{version}
-%autopatch -p1
+%patch0 -p1
+%patch1 -p1
+%patch2 -p2
 
 %build
 #todo: add faust package to openSUSE
@@ -155,11 +159,6 @@ Bestplugins Mega Pack 1+3 contains dozens of guitar sounds from famous bands.
 #find . -name "*.py" -print -exec 2to3 -wn {} \;
 #for i in `grep -rl "/usr/bin/env python"`;do 2to3 -wn ${i} ;done
 for i in `grep -rl "/usr/bin/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
-export CFLAGS=`echo %{optflags}| sed 's/-flto=auto//'`
-%ifarch %ix86
-export CFLAGS="$CFLAGS -mfxsr"
-%endif
-echo $CFLAGS
 export LDFLAGS="-ldl"
 ./waf configure -v --faust \
                    --libdir=%{_libdir} \
@@ -171,7 +170,10 @@ export LDFLAGS="-ldl"
                    --new-ladspa \
 %endif
                    --prefix=%{_prefix} \
-                   --cxxflags="$CFLAGS \
+                   --cxxflags="%{optflags} \
+%ifarch %ix86
+                   -mfxsr \
+%endif
                    -std=gnu++0x"
 ./waf build -v %{?_smp_mflags}
 
