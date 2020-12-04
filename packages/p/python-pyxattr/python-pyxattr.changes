@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 30 12:13:40 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.7.2
+
+  Minor release:
+
+  * Expand testing by adding better mixed-access checks (e.g. set via symlink and read on file) and by not leaking resources during tests.
+  * Enable testing with Python 3.9 and confirm compatibility with it.
+  * Fix documentation building with Sphinx 3.0+.
+
+-------------------------------------------------------------------
 Fri Nov 13 23:01:05 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix BuildRequires for multiple python3 flavors

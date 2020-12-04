@@ -21,7 +21,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define github_url https://github.com/iustin/%{mod_name}/releases/download
 Name:           python-%{mod_name}
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        Filesystem extended attributes for python
 License:        LGPL-2.1-or-later
@@ -30,12 +30,12 @@ Source0:        %{github_url}/v%{version}/%{mod_name}-%{version}.tar.gz
 Source1:        %{github_url}/v%{version}/%{mod_name}-%{version}.tar.gz.asc
 Source2:        https://k1024.org/files/key.asc#/%{name}.keyring
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  libattr-devel
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module pytest}
 %python_subpackages
 
 %description
@@ -50,7 +50,7 @@ of the attr C library - see attr(5).
 %python_build
 
 %check
-%pytest_arch test
+%pytest_arch tests
 
 %install
 %python_install
