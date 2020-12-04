@@ -52,6 +52,15 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  perl(ExtUtils::MakeMaker)
+BuildRequires:  python-rpm-macros
+%if 0%{?python38_version_nodots}
+# if python multiflavor is in place yet, use it to generate subpackages
+%define python_subpackage_only 1
+%python_subpackages
+%else
+%define python_sitelib %python3_sitelib
+%define python_files() -n python3-%{**}
+%endif
 
 %description
 Subunit C bindings.  See the python-subunit package for test processing
@@ -111,6 +120,37 @@ BuildArch:      noarch
 Subunit shell bindings.  See the python3-python-subunit package for test
 processing functionality.
 
+%if 0%{?python_subpackage_only}
+%package -n python-python-%{name}
+Summary:        Streaming protocol for test results
+Group:          Development/Libraries/Python
+Requires:       python-extras
+Requires:       python-testtools >= 1.8.0
+BuildArch:      noarch
+
+%description -n python-python-%{name}
+Subunit is a streaming protocol for test results.  The protocol is a
+binary encoding that is generated and parsed.  By design, all the
+components of the protocol conceptually fit into the xUnit TestCase ->
+TestResult interaction.
+
+Subunit comes with command line filters to process a subunit stream and
+language bindings for Python, C, C++ and Shell. Bindings can be
+written for other languages.
+
+A number of useful things can be done easily with subunit:
+- Test aggregation: Tests run separately can be combined and then
+  reported/displayed together.  For instance, tests from different
+  languages can be shown as a seamless whole.
+- Test archiving: A test run may be recorded and replayed later.
+- Test isolation: Tests that may crash or otherwise interact badly with
+  each other can be run separately and then aggregated, rather than
+  interfering with each other.
+- Grid testing: subunit can act as the necessary serialization and
+  deserialization to get test runs on distributed machines to be
+  reported in real time.
+
+%else
 %package -n python3-python-%{name}
 Summary:        Streaming protocol for test results
 Group:          Development/Libraries/Python
@@ -139,6 +179,7 @@ A number of useful things can be done easily with subunit:
 - Grid testing: subunit can act as the necessary serialization and
   deserialization to get test runs on distributed machines to be
   reported in real time.
+%endif
 
 %package filters
 Summary:        Command line filters for processing subunit streams
@@ -280,10 +321,10 @@ make %{?_smp_mflags} check
 %license Apache-2.0 BSD COPYING
 %config(noreplace) %{_sysconfdir}/profile.d/%{name}.sh
 
-%files -n python3-python-%{name}
+%files %{python_files python-%{name}}
 %license Apache-2.0 BSD COPYING
-%{python3_sitelib}/%{name}/
-%{python3_sitelib}/python_%{name}-*.egg-info
+%{python_sitelib}/%{name}/
+%{python_sitelib}/python_%{name}-*.egg-info
 
 %files filters
 %{_bindir}/*

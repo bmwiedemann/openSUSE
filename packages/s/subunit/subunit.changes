@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec  3 01:52:05 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Support multiple python flavors in python subpackage
+  gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Fri Jun  5 08:36:13 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add remove_unittest2.patch to remove dependency on unittest2
