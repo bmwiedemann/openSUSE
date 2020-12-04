@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 02 01:17:23 UTC 2020 - nick wang <nwang@suse.com>
+
+- bsc#1179420, fix secauth and support crypto_cipher/crypto_hash
+- bsc#1179007, not to write bind address when unicast
+- Fix fail to configure ttl for the second ring
+- Version 4.3.5
+
+-------------------------------------------------------------------
 Tue Nov  3 05:08:44 UTC 2020 - nick wang <nwang@suse.com>
 
 - bsc#1178373, include "/etc/sysconfig/nfs" into csync2.cfg
