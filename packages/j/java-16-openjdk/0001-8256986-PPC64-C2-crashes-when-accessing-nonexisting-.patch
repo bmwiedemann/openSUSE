@@ -1,0 +1,62 @@
+From d51e2ab219ad50ffd3646d6cca227e3d71f05c55 Mon Sep 17 00:00:00 2001
+From: Martin Doerr <mdoerr@openjdk.org>
+Date: Fri, 27 Nov 2020 15:43:52 +0000
+Subject: [PATCH] 8256986: [PPC64] C2 crashes when accessing nonexisting jvms
+ of CallLeafDirectNode
+
+Reviewed-by: clanger
+---
+ src/hotspot/cpu/ppc/ppc.ad | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/src/hotspot/cpu/ppc/ppc.ad b/src/hotspot/cpu/ppc/ppc.ad
+index f9f5852a0a9..339242195f5 100644
+--- a/src/hotspot/cpu/ppc/ppc.ad
++++ b/src/hotspot/cpu/ppc/ppc.ad
+@@ -1115,11 +1115,17 @@ int MachCallDynamicJavaNode::ret_addr_offset() {
+ }
+ 
+ int MachCallRuntimeNode::ret_addr_offset() {
++  if (rule() == CallRuntimeDirect_rule) {
++    // CallRuntimeDirectNode uses call_c.
+ #if defined(ABI_ELFv2)
+-  return 28;
++    return 28;
+ #else
+-  return 40;
++    return 40;
+ #endif
++  }
++  assert(rule() == CallLeafDirect_rule, "unexpected node with rule %u", rule());
++  // CallLeafDirectNode uses bl.
++  return 4;
+ }
+ 
+ int MachCallNativeNode::ret_addr_offset() {
+@@ -3578,6 +3584,7 @@ encode %{
+     call->_tf                = _tf;
+     call->_entry_point       = _entry_point;
+     call->_cnt               = _cnt;
++    call->_guaranteed_safepoint = true;
+     call->_oop_map           = _oop_map;
+     call->_jvms              = _jvms;
+     call->_jvmadj            = _jvmadj;
+@@ -3778,6 +3785,7 @@ encode %{
+     call->_tf          = _tf;
+     call->_entry_point = _entry_point;
+     call->_cnt         = _cnt;
++    call->_guaranteed_safepoint = false;
+     call->_oop_map     = _oop_map;
+     guarantee(!_jvms, "You must clone the jvms and adapt the offsets by fix_jvms().");
+     call->_jvms        = NULL;
+@@ -3785,7 +3793,6 @@ encode %{
+     call->_in_rms      = _in_rms;
+     call->_nesting     = _nesting;
+ 
+-
+     // New call needs all inputs of old call.
+     // Req...
+     for (uint i = 0; i < req(); ++i) {
+-- 
+2.29.2
+
