@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec  2 18:41:35 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
+
+- Start the saptune systemd service 
+
+-------------------------------------------------------------------
 Thu Nov 19 10:59:12 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
 - Fix additional_dvds variable usage when salt uses python 2. The

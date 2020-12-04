@@ -5,7 +5,7 @@
     <param name="exclude">.git</param>
     <param name="filename">sapnwbootstrap-formula</param>
     <param name="versionformat">0.5.2+git.%ct.%h</param>
-    <param name="revision">01a3adcf056a60fa9b661d28bff7793c242c1cbd</param>
+    <param name="revision">77233b67b743d945425abff8925a4ce934c91586</param>
   </service>
 
   <service name="recompress" mode="disabled">
