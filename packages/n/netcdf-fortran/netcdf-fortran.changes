@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov  6 14:09:11 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to version 4.5.3, read changes at:
+  * https://github.com/Unidata/netcdf-fortran/releases/tag/v4.5.3
+  * Add a new libnetcdff.settings file
+- Requires at least netcdf 4.7.4, update Requires accordingly.
+
+-------------------------------------------------------------------
 Mon Sep 14 14:01:08 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Make static build conditional.

@@ -155,4 +155,12 @@
   to disable static builds by default. (forwarded request 834366 from eeich)</comment>
     <requestid>834367</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4110790f27d7e99f6083d93d927c5ceb</srcmd5>
+    <version>4.5.3</version>
+    <time>1607113698</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846515</requestid>
+  </revision>
 </revisionlist>

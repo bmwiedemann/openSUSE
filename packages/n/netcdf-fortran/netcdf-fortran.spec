@@ -21,8 +21,8 @@
 %define _do_check 1
 
 %global pname netcdf-fortran
-%global ver 4.5.2
-%global _ver 4_5_2
+%global ver 4.5.3
+%global _ver 4_5_3
 
 %if 0%{?sle_version} >= 150200
 %define DisOMPI1 ExclusiveArch:  do_not_build
@@ -356,7 +356,7 @@ BuildRequires:  zlib-devel >= 1.2.5
 BuildRequires:  %{mpi_flavor}%{?mpi_ver}-%{compiler_family}%{?c_f_ver}-hpc-macros-devel
 %endif
 BuildRequires:  hdf5-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc-devel
-BuildRequires:  netcdf-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc-devel >= 4.6.2
+BuildRequires:  netcdf-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc-devel >= 4.7.4
 Requires:       %{libname}%{hpc_package_name_tail %_ver} = %{version}
 
 %description
@@ -597,6 +597,7 @@ export F77="mpif77"
 %dir %{hpc_datadir}
 %dir %{hpc_mandir}
 %{hpc_mandir}/man3/
+%{hpc_libdir}/libnetcdff.settings
 
 %if %{with staticlibs}
 %files devel-static
