@@ -711,6 +711,8 @@ unsorted:
   - apiguardian 
   - apiguardian-javadoc 
   - apparmor-rpm-macros 
+  - apparmor-utils 
+  - apparmor-utils-lang 
   - appeditor 
   - appeditor-lang 
   - appframework 
@@ -1197,7 +1199,7 @@ unsorted:
   - bbe 
   - bbswitch 
   - bbswitch-kmp-pae: [i586] 
-  - bcache-tools: [i586] 
+  - bcache-tools 
   - bcal: [x86_64] 
   - bcc-devel 
   - bcc-docs 
@@ -18600,6 +18602,7 @@ unsorted:
   - patterns-media-rest_cd_x11 
   - patterns-media-rest_core_dvd 
   - patterns-media-rest_dvd: [i586] 
+  - patterns-microos-onlyDVD: [x86_64] 
   - patterns-openSUSEway 
   - patterns-rpm-macros 
   - patterns-server-dhcp_dns_server-32bit 
@@ -20528,7 +20531,7 @@ unsorted:
   - policycoreutils-devel 
   - policycoreutils-lang: [i586] 
   - policycoreutils-newrole 
-  - policycoreutils-python-utils: [i586] 
+  - policycoreutils-python-utils 
   - polkit: [i586] 
   - polkit-default-privs: [i586] 
   - polkit-devel 
@@ -21441,6 +21444,7 @@ unsorted:
   - python3-apipkg 
   - python3-apiron 
   - python3-apns2 
+  - python3-apparmor 
   - python3-application 
   - python3-applicationinsights 
   - python3-apptools 
@@ -22980,6 +22984,7 @@ unsorted:
   - python3-notcurses 
   - python3-notebook 
   - python3-notebook-lang 
+  - python3-notify2 
   - python3-notmuch 
   - python3-novaclient 
   - python3-nox 
@@ -34601,6 +34606,7 @@ unsorted:
   - texworks-plugin-python 
   - tftpboot-installation-common 
   - tftpboot-installation-openSUSE-Kubic-x86_64: [x86_64] 
+  - tftpboot-installation-openSUSE-MicroOS-x86_64: [x86_64] 
   - tftpboot-installation-openSUSE-Tumbleweed-i586: [i586] 
   - tftpboot-installation-openSUSE-Tumbleweed-x86_64: [x86_64] 
   - the_silver_searcher 
