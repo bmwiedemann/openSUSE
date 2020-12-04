@@ -31,6 +31,7 @@ Patch4:         paps-gutter-width.patch
 Patch5:         paps-page_setup.patch
 Patch6:         paps-layout.patch
 Patch7:         paps-glib.patch
+Patch8:         paps-header_features.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  intltool
@@ -38,6 +39,9 @@ BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(pangoft2)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
+%define add_optflags(a:f:t:p:w:W:d:g:O:A:C:D:E:H:i:M:n:P:U:u:l:s:X:B:I:L:b:V:m:x:c:S:E:o:v:) \
+%global optflags %{optflags} %{**}
 
 %description
 paps is a command line program for converting Unicode text encoded in UTF-8 to postscript and pdf by using pango.
@@ -51,6 +55,7 @@ paps is a command line program for converting Unicode text encoded in UTF-8 to p
 %patch5 -p0 -b .p5
 %patch6 -p0 -b .p6
 %patch7 -p0 -b .p7
+%patch8 -p0 -b .p8
 mkdir -p config m4
 for c in /usr/share/aclocal*/{codeset,gettext,glibc21,iconv,isc-posix,lcmessage}.m4
 do
@@ -65,6 +70,7 @@ done
 unset c
 
 %build
+%add_optflags -D_XOPEN_SOURCE
 echo "no" | glib-gettextize --force --copy
 intltoolize --copy --force --automake
 autoreconf --force --install -I config -I m4

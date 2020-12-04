@@ -28,4 +28,14 @@
 - Drop patch paps-prog_cc_c_o.patch as now solved upstream</comment>
     <requestid>840067</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4519c0f380a9e1a4ccf9a69f1daf8340</srcmd5>
+    <version>0.7.1</version>
+    <time>1607113765</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch paps-header_features.patch which combines three
+  patches to be able to change header font, date, and rule
+  thickness</comment>
+    <requestid>853148</requestid>
+  </revision>
 </revisionlist>

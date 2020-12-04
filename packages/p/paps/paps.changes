@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  4 13:37:59 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch paps-header_features.patch which combines three
+  patches to be able to change header font, date, and rule
+  thickness 
+
+-------------------------------------------------------------------
 Wed Oct  7 13:30:36 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Update to paps 0.7.1
