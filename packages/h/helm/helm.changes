@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Thu Nov 12 01:31:56 UTC 2020 - jenting.hsiao@suse.com
 
-- Update to version 3.4.1:
+- Update to version 3.4.1 (bsc#1179619):
   * add unittes for 'helm dep build' with --skip-refresh flag.
   * Add --skip-refresh option in helm dep build
   * Added tests for PR 8948
