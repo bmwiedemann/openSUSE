@@ -48,12 +48,13 @@ tools to make them usable, like contextlib.asynccontextmanager.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m pytest
+%pytest
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE.MIT
 %license LICENSE.APACHE2
-%{python_sitelib}/*
+%{python_sitelib}/async_generator
+%{python_sitelib}/async_generator-%{version}*-info
 
 %changelog

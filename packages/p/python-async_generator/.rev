@@ -36,4 +36,12 @@
  * Add support for PEP 525-style garbage collection hooks</comment>
     <requestid>680420</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>26201e70304670f5765061e60f6b758d</srcmd5>
+    <version>1.10</version>
+    <time>1607113637</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>852725</requestid>
+  </revision>
 </revisionlist>
