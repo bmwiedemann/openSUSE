@@ -1269,6 +1269,7 @@
     <package name="libdcerpc-binding0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libdcerpc0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libdconf1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libdebuginfod1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdeflt1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdevmapper-event1_03" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libdevmapper1_03" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
