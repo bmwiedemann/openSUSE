@@ -18,7 +18,7 @@
 
 %define octpkg  io
 Name:           octave-forge-%{octpkg}
-Version:        2.6.2
+Version:        2.6.3
 Release:        0
 Summary:        Input/Output in external formats from Octave
 License:        GPL-3.0-or-later AND BSD-2-Clause
