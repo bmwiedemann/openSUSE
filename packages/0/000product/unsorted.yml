@@ -1522,6 +1522,50 @@ unsorted:
   - buildstream 
   - bumblebee 
   - bumblebee-status 
+  - bumblebee-status-module-alsa 
+  - bumblebee-status-module-arandr 
+  - bumblebee-status-module-brightness 
+  - bumblebee-status-module-caffeine 
+  - bumblebee-status-module-cmus 
+  - bumblebee-status-module-deadbeef 
+  - bumblebee-status-module-deezer 
+  - bumblebee-status-module-dnf 
+  - bumblebee-status-module-docker-ps 
+  - bumblebee-status-module-dunst 
+  - bumblebee-status-module-git 
+  - bumblebee-status-module-hddtemp 
+  - bumblebee-status-module-indicator 
+  - bumblebee-status-module-layout 
+  - bumblebee-status-module-layout-xkb 
+  - bumblebee-status-module-layout-xkbswitch 
+  - bumblebee-status-module-libvirt 
+  - bumblebee-status-module-mocp 
+  - bumblebee-status-module-mpd 
+  - bumblebee-status-module-notmuch 
+  - bumblebee-status-module-nvidia 
+  - bumblebee-status-module-nvidia-prime 
+  - bumblebee-status-module-octoprint 
+  - bumblebee-status-module-pihole 
+  - bumblebee-status-module-playerctl 
+  - bumblebee-status-module-progress 
+  - bumblebee-status-module-pulseaudio 
+  - bumblebee-status-module-redshift 
+  - bumblebee-status-module-rss 
+  - bumblebee-status-module-sensors 
+  - bumblebee-status-module-smartstatus 
+  - bumblebee-status-module-speedtest 
+  - bumblebee-status-module-spotify 
+  - bumblebee-status-module-sun 
+  - bumblebee-status-module-taskwarrior 
+  - bumblebee-status-module-title 
+  - bumblebee-status-module-twmn 
+  - bumblebee-status-module-vault 
+  - bumblebee-status-module-vpn 
+  - bumblebee-status-module-watson 
+  - bumblebee-status-module-xrandr 
+  - bumblebee-status-module-yubikey 
+  - bumblebee-status-module-zfs 
+  - bumblebee-status-theme-powerline 
   - bumpversion 
   - bup 
   - busybox-adduser 
@@ -2640,6 +2684,7 @@ unsorted:
   - debhelper 
   - debootstrap 
   - debuginfod-client 
+  - debuginfod-dummy-client 
   - decentxml 
   - decentxml-javadoc 
   - deepin-calendar 
@@ -2777,7 +2822,7 @@ unsorted:
   - dmz-icon-theme-cursors 
   - dnf 
   - dnf-automatic 
-  - dnf-conf 
+  - dnf-data 
   - dnf-lang 
   - dnf-plugins-core 
   - dnf-plugins-core-lang 
@@ -8419,7 +8464,7 @@ unsorted:
   - lalinference-data: [x86_64] 
   - lalinference-devel: [x86_64] 
   - lalinspiral-devel: [x86_64] 
-  - lalmetaio-devel 
+  - lalmetaio-devel: [x86_64] 
   - lalpulsar-data: [x86_64] 
   - lalpulsar-devel: [x86_64] 
   - lalsimulation-data: [x86_64] 
@@ -9938,7 +9983,6 @@ unsorted:
   - libcaca0-32bit: [x86_64] 
   - libcaca0-plugins 
   - libcaca0-plugins-32bit: [x86_64] 
-  - libcacard 
   - libcacard-devel 
   - libcaes-devel 
   - libcaes1 
@@ -10349,7 +10393,8 @@ unsorted:
   - libdeal_II9_2_0-openmpi2: [x86_64] 
   - libdeal_II9_2_0-openmpi3: [x86_64] 
   - libdebuginfod-devel 
-  - libdebuginfod1 
+  - libdebuginfod-dummy-devel 
+  - libdebuginfod1-dummy 
   - libdecoration0 
   - libdecoration0-32bit: [x86_64] 
   - libdevil-tools 
@@ -11087,7 +11132,7 @@ unsorted:
   - libgsm-utils 
   - libgsm1-32bit: [x86_64] 
   - libgsmsd8 
-  - libgsoap-2_8_106 
+  - libgsoap-2_8_109 
   - libgssdp-1_2-0-32bit: [x86_64] 
   - libgssdp-devel 
   - libgssglue-devel 
@@ -11768,7 +11813,7 @@ unsorted:
   - liblalframe11: [x86_64] 
   - liblalinference21: [x86_64] 
   - liblalinspiral15: [x86_64] 
-  - liblalmetaio8 
+  - liblalmetaio8: [x86_64] 
   - liblalpulsar21: [x86_64] 
   - liblalsimulation23: [x86_64] 
   - liblalsupport14: [x86_64] 
@@ -12108,6 +12153,8 @@ unsorted:
   - libmng2-32bit: [x86_64] 
   - libmnl-devel 
   - libmnl0-32bit: [x86_64] 
+  - libmodbus-devel 
+  - libmodbus5 
   - libmodman-devel 
   - libmodman1-32bit: [x86_64] 
   - libmodplug-devel 
@@ -12289,23 +12336,23 @@ unsorted:
   - libnetcdf-gnu-openmpi2-hpc 
   - libnetcdf-gnu-openmpi3-hpc 
   - libnetcdf-gnu-openmpi4-hpc 
-  - libnetcdf15 
-  - libnetcdf15-32bit: [x86_64] 
-  - libnetcdf15-openmpi1 
-  - libnetcdf15-openmpi1-32bit: [x86_64] 
-  - libnetcdf15-openmpi2 
-  - libnetcdf15-openmpi2-32bit: [x86_64] 
-  - libnetcdf15-openmpi3 
-  - libnetcdf15-openmpi3-32bit: [x86_64] 
-  - libnetcdf15-openmpi4 
-  - libnetcdf15-openmpi4-32bit: [x86_64] 
-  - libnetcdf_4_7_3-gnu-hpc 
-  - libnetcdf_4_7_3-gnu-mpich-hpc 
-  - libnetcdf_4_7_3-gnu-mvapich2-hpc 
-  - libnetcdf_4_7_3-gnu-openmpi1-hpc 
-  - libnetcdf_4_7_3-gnu-openmpi2-hpc 
-  - libnetcdf_4_7_3-gnu-openmpi3-hpc 
-  - libnetcdf_4_7_3-gnu-openmpi4-hpc 
+  - libnetcdf18 
+  - libnetcdf18-32bit: [x86_64] 
+  - libnetcdf18-openmpi1 
+  - libnetcdf18-openmpi1-32bit: [x86_64] 
+  - libnetcdf18-openmpi2 
+  - libnetcdf18-openmpi2-32bit: [x86_64] 
+  - libnetcdf18-openmpi3 
+  - libnetcdf18-openmpi3-32bit: [x86_64] 
+  - libnetcdf18-openmpi4 
+  - libnetcdf18-openmpi4-32bit: [x86_64] 
+  - libnetcdf_4_7_4-gnu-hpc 
+  - libnetcdf_4_7_4-gnu-mpich-hpc 
+  - libnetcdf_4_7_4-gnu-mvapich2-hpc 
+  - libnetcdf_4_7_4-gnu-openmpi1-hpc 
+  - libnetcdf_4_7_4-gnu-openmpi2-hpc 
+  - libnetcdf_4_7_4-gnu-openmpi3-hpc 
+  - libnetcdf_4_7_4-gnu-openmpi4-hpc 
   - libnetcdf_c++-devel 
   - libnetcdf_c++4 
   - libnetcdf_c++4-1 
@@ -13683,7 +13730,7 @@ unsorted:
   - libsharp-devel 
   - libsharp0 
   - libshibsp-lite8 
-  - libshibsp8 
+  - libshibsp9 
   - libshine-devel 
   - libshine3 
   - libshout-devel 
@@ -16986,27 +17033,27 @@ unsorted:
   - netcdf-openmpi4 
   - netcdf-openmpi4-devel 
   - netcdf-openmpi4-devel-static 
-  - netcdf_4_7_3-gnu-hpc 
-  - netcdf_4_7_3-gnu-hpc-devel 
-  - netcdf_4_7_3-gnu-hpc-devel-static 
-  - netcdf_4_7_3-gnu-mpich-hpc 
-  - netcdf_4_7_3-gnu-mpich-hpc-devel 
-  - netcdf_4_7_3-gnu-mpich-hpc-devel-static 
-  - netcdf_4_7_3-gnu-mvapich2-hpc 
-  - netcdf_4_7_3-gnu-mvapich2-hpc-devel 
-  - netcdf_4_7_3-gnu-mvapich2-hpc-devel-static 
-  - netcdf_4_7_3-gnu-openmpi1-hpc 
-  - netcdf_4_7_3-gnu-openmpi1-hpc-devel 
-  - netcdf_4_7_3-gnu-openmpi1-hpc-devel-static 
-  - netcdf_4_7_3-gnu-openmpi2-hpc 
-  - netcdf_4_7_3-gnu-openmpi2-hpc-devel 
-  - netcdf_4_7_3-gnu-openmpi2-hpc-devel-static 
-  - netcdf_4_7_3-gnu-openmpi3-hpc 
-  - netcdf_4_7_3-gnu-openmpi3-hpc-devel 
-  - netcdf_4_7_3-gnu-openmpi3-hpc-devel-static 
-  - netcdf_4_7_3-gnu-openmpi4-hpc 
-  - netcdf_4_7_3-gnu-openmpi4-hpc-devel 
-  - netcdf_4_7_3-gnu-openmpi4-hpc-devel-static 
+  - netcdf_4_7_4-gnu-hpc 
+  - netcdf_4_7_4-gnu-hpc-devel 
+  - netcdf_4_7_4-gnu-hpc-devel-static 
+  - netcdf_4_7_4-gnu-mpich-hpc 
+  - netcdf_4_7_4-gnu-mpich-hpc-devel 
+  - netcdf_4_7_4-gnu-mpich-hpc-devel-static 
+  - netcdf_4_7_4-gnu-mvapich2-hpc 
+  - netcdf_4_7_4-gnu-mvapich2-hpc-devel 
+  - netcdf_4_7_4-gnu-mvapich2-hpc-devel-static 
+  - netcdf_4_7_4-gnu-openmpi1-hpc 
+  - netcdf_4_7_4-gnu-openmpi1-hpc-devel 
+  - netcdf_4_7_4-gnu-openmpi1-hpc-devel-static 
+  - netcdf_4_7_4-gnu-openmpi2-hpc 
+  - netcdf_4_7_4-gnu-openmpi2-hpc-devel 
+  - netcdf_4_7_4-gnu-openmpi2-hpc-devel-static 
+  - netcdf_4_7_4-gnu-openmpi3-hpc 
+  - netcdf_4_7_4-gnu-openmpi3-hpc-devel 
+  - netcdf_4_7_4-gnu-openmpi3-hpc-devel-static 
+  - netcdf_4_7_4-gnu-openmpi4-hpc 
+  - netcdf_4_7_4-gnu-openmpi4-hpc-devel 
+  - netcdf_4_7_4-gnu-openmpi4-hpc-devel-static 
   - netcomponents 
   - netcomponents-javadoc 
   - netconsole-tools 
@@ -17732,7 +17779,7 @@ unsorted:
   - octave-lalframe: [x86_64] 
   - octave-lalinference: [x86_64] 
   - octave-lalinspiral: [x86_64] 
-  - octave-lalmetaio 
+  - octave-lalmetaio: [x86_64] 
   - octave-lalpulsar: [x86_64] 
   - octave-lalsimulation: [x86_64] 
   - octave-mathgl 
@@ -22041,6 +22088,7 @@ unsorted:
   - python3-django-guardian 
   - python3-django-haystack 
   - python3-django-health-check 
+  - python3-django-import-export 
   - python3-django-invitations 
   - python3-django-ipware 
   - python3-django-jinja 
@@ -22627,7 +22675,7 @@ unsorted:
   - python3-lalframe: [x86_64] 
   - python3-lalinference: [x86_64] 
   - python3-lalinspiral: [x86_64] 
-  - python3-lalmetaio 
+  - python3-lalmetaio: [x86_64] 
   - python3-lalpulsar: [x86_64] 
   - python3-lalsimulation: [x86_64] 
   - python3-lancet-ioam 
@@ -23333,6 +23381,8 @@ unsorted:
   - python3-pylint 
   - python3-pylons-sphinx-themes 
   - python3-pylru 
+  - python3-pyls-black 
+  - python3-pyls-spyder 
   - python3-pylzma 
   - python3-pymacaroons 
   - python3-pymacaroons-pynacl 
@@ -23997,6 +24047,7 @@ unsorted:
   - python3-thespian 
   - python3-thewalrus: [x86_64] 
   - python3-threadpoolctl 
+  - python3-three-merge 
   - python3-threevis 
   - python3-thrift 
   - python3-thriftpy2 
@@ -25642,6 +25693,7 @@ unsorted:
   - samba-krb-printing 
   - samba-libs-python3-32bit: [x86_64] 
   - samba-test 
+  - sampler 
   - samplicator 
   - samtools 
   - sane-backends-32bit: [x86_64] 

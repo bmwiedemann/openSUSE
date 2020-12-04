@@ -1654,6 +1654,7 @@
       <repopackage name="libdcerpc0"/>
       <repopackage name="libdcerpc0-32bit" arch="x86_64"/>
       <repopackage name="libdconf1"/>
+      <repopackage name="libdebuginfod1"/>
       <repopackage name="libdeflt1_0"/>
       <repopackage name="libdevmapper-event1_03"/>
       <repopackage name="libdevmapper1_03"/>
