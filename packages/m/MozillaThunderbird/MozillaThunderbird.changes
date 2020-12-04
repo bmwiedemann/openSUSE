@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec  1 21:34:15 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 78.5.1
+  MFSA 2020-53 (bsc#1179530)
+  * CVE-2020-26970 (bmo#1677338)
+    Stack overflow due to incorrect parsing of SMTP server response codes
+
+-------------------------------------------------------------------
 Mon Nov 16 20:13:34 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 78.5.0

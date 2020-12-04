@@ -3413,4 +3413,15 @@ I cannot test locally unfortunately.
   * CVE-2020-26968 (bmo#1551615, bmo#1607762, bmo#1656697,</comment>
     <requestid>849310</requestid>
   </revision>
+  <revision rev="244" vrev="1">
+    <srcmd5>eb63c2155c4a33aebce8fc979606c7ba</srcmd5>
+    <version>78.5.1</version>
+    <time>1607113578</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 78.5.1
+  MFSA 2020-53 (bsc#1179530)
+  * CVE-2020-26970 (bmo#1677338)
+    Stack overflow due to incorrect parsing of SMTP server response codes</comment>
+    <requestid>852686</requestid>
+  </revision>
 </revisionlist>
