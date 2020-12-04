@@ -96,6 +96,6 @@ rm -v tests/test_transcript.py tests/test_parsing.py tests/test_cmd2.py
 %files %{python_files}
 %license LICENSE
 %doc CHANGELOG.md README.md
-%{python3_sitelib}/*
+%{python_sitelib}/*
 
 %changelog
