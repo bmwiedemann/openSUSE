@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  3 01:35:39 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Remove Sphinx, coverage, flake8 and pytest build dependency
+
+-------------------------------------------------------------------
 Sat Mar 14 08:06:08 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

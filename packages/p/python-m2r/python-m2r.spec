@@ -27,13 +27,9 @@ License:        MIT
 URL:            https://github.com/miyakogi/m2r
 Source:         https://files.pythonhosted.org/packages/source/m/m2r/%{modname}-%{version}.tar.gz
 Patch0:         open-encoding.patch
-BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module docutils}
-BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module mistune}
 BuildRequires:  %{python_module pygments}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -72,7 +68,7 @@ sed -i '/^#!.*/d' m2r.py
 %python_uninstall_alternative m2r
 
 %check
-%pytest
+%pyunittest discover tests -v
 
 %files %{python_files}
 %license LICENSE
