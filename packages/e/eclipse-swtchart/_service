@@ -3,9 +3,9 @@
   <service name="tar_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://github.com/eclipse/swtchart</param>
-	<param name="revision">REL-0.12.0</param>
+	<param name="revision">REL-0.13.0</param>
     <param name="filename">eclipse-swtchart</param>
-    <param name="version">0.12.0</param>
+    <param name="version">0.13.0</param>
     <param name="package-meta">no</param>
   </service>
 

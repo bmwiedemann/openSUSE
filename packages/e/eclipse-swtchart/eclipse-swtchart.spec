@@ -17,12 +17,13 @@
 
 
 Name:           eclipse-swtchart
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        Eclipse SWTChart
 License:        EPL-2.0
+Group:          Development/Languages/Java
 URL:            https://projects.eclipse.org/projects/science.swtchart
-Source0:        %{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  tycho
 BuildArch:      noarch
 # Upstream Eclipse no longer supports non-64bit arches
@@ -49,6 +50,8 @@ SWTChart is a light-weight charting component for SWT.
 
 # Drop export bundle not needed at runtime and shrinks the dep tree for this package
 %pom_disable_module ../org.eclipse.swtchart.export org.eclipse.swtchart.cbi
+%pom_disable_module ../org.eclipse.swtchart.export.extended org.eclipse.swtchart.cbi
+%pom_disable_module ../org.eclipse.swtchart.export.extended.test org.eclipse.swtchart.cbi
 %pom_disable_module ../org.eclipse.swtchart.export.test org.eclipse.swtchart.cbi
 %pom_disable_module ../org.eclipse.swtchart.feature org.eclipse.swtchart.cbi
 

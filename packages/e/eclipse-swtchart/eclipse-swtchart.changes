@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov  2 18:43:39 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Update to version 0.13.0
+  * Added Support Pie & Doughnut Chart
+  * Added Support for Multilevel Pie & Doughnut Chart
+  * Custom Charts moved to a separate bundle: org.eclipse.swtchart.customcharts
+  * An extended legend has been added, which allows to modify the series color and description
+  * SVG export via a template has been added - no dependencies and faster than using Apache Batik
+  * The export bundle has been splitted into export (no dependencies) and export.extended (with dependencies: Apache Batik, ...)
+  * Buffered Selection option to optimize the range selection (avoid redraw of series when doing the selection)
+
+-------------------------------------------------------------------
 Thu Jul  2 06:47:10 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of eclipse-swtchart plugin 0.12.0
