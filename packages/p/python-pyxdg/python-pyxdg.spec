@@ -19,14 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-pyxdg
-Version:        0.26
+Version:        0.27
 Release:        0
 Summary:        Implementations of freedesktop.org standards in python
 License:        LGPL-2.1-only
 URL:            https://freedesktop.org/wiki/Software/pyxdg
-Source:         https://files.pythonhosted.org/packages/source/p/pyxdg/pyxdg-%{version}.tar.gz
-Patch0:         resource_leak.patch
-Patch1:         https://gitlab.freedesktop.org/tcallawa/pyxdg/-/commit/b8d3d7b337adeb2fc2ef8a36f3a500e147d7a41b.diff#/new-api.patch
+Source0:        https://files.pythonhosted.org/packages/source/p/pyxdg/pyxdg-%{version}.tar.gz
+# Test data: examples
+Source1:        https://gitlab.freedesktop.org/xdg/pyxdg/-/archive/rel-%{version}/pyxdg-rel-%{version}.tar.gz?path=test/example#/pyxdg-%{version}-test-example.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -49,8 +49,9 @@ PyXDG is a python library to access freedesktop.org standards. Currently support
  * Shared-MIME-Database Specification 0.13
 
 %prep
-%setup -q -n pyxdg-%{version}
+%setup -q -n pyxdg-%{version} -b 1
 %autopatch -p1
+cp -r ../pyxdg-rel-%{version}-test-example/test/example test/
 
 %build
 %python_build
@@ -60,13 +61,7 @@ PyXDG is a python library to access freedesktop.org standards. Currently support
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# https://gitlab.freedesktop.org/xdg/pyxdg/issues/15
-# test_get_type{,2} both fail but come from s-m-i package for data
-# https://gitlab.freedesktop.org/xdg/pyxdg/merge_requests/4
-# RulesTest.test_rule_from_node failure is https://gitlab.freedesktop.org/xdg/pyxdg/-/issues/20
-%{python_expand sed -i "s/Exec=python.*$/Exec=$python/" test/resources.py
-PYTHONPATH=%{buildroot}%{$python_sitelib} pytest-%{$python_bin_suffix} test/test-*.py -v -k 'not (test_get_type or test_rule_from_node)'
-}
+%pytest test/test-*.py -v
 
 %files %{python_files}
 %license COPYING

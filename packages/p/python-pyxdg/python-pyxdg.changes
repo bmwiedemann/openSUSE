@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec  3 02:30:45 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 0.27
+  * Menu: Fix compatibility with Python >= 3.8.4
+  * Menu: Fix several AttributeErrors
+  * Menu: Fix duplication of menu entries due when Layout is provided
+  * MenuEditor: Fix fromstring typo
+  * Certain tests are more independent of external system conditions
+  * Standardise shebangs to /usr/bin/env python3 
+- drop new-api.patch, resource_leak.patch merged upstream
+- get example test data from gitlab repository -- pass all tests
+
+-------------------------------------------------------------------
 Mon Oct  5 12:47:20 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Also conflict with the python-xdg as we provide same namespace
