@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec  2 21:38:05 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Prepare for upcoming python multiflavor
+  * gh#openSUSE/python-rpm-macros#66
+  * Skip python36 flavor
+  * Provide ipython3 and iptest3 for primary python3 flavor only
+    (in case that more than python38 is present, e.g. python39)
+
+-------------------------------------------------------------------
 Fri Oct 30 22:35:05 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 7.19.0:

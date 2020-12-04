@@ -24,8 +24,19 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+
+# -- Definitions for python3 multiflavor gh#openSUSE/python-rpm-macros#66 --
+# Python 3.6 was supported with IPython up to 7.16
+%define         skip_python36 1
+# We redefine this locally, because we are sure that it is only used for files,
+# which only the primary python3 flavor should provide
+%define python3_only() %%if "%%{python_flavor}" == "python3" || "%%{python_provides}" == "python3" \
+%** \
+%%endif
+
 %bcond_without  iptest
 Name:           python-ipython%{psuffix}
 Version:        7.19.0
