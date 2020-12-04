@@ -1824,4 +1824,12 @@
     <comment>submit new version 4.3.14</comment>
     <requestid>851365</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>257a56adf3dee0c9efadbce1d519151b</srcmd5>
+    <version>4.3.15</version>
+    <time>1607113666</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.3.15</comment>
+    <requestid>852922</requestid>
+  </revision>
 </revisionlist>

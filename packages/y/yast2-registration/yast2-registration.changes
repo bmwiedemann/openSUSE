@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  2 14:20:56 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed finding the installed base product when doing upgrade
+  using the Full installation medium (bsc#1178652)
+- 4.3.15
+
+-------------------------------------------------------------------
 Thu Nov 26 16:54:21 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - correct add-on spelling (jsc#SLE-14772)
