@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 20 08:59:57 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
 Tue Sep 29 10:00:25 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Disable RPM builtin, did become pretty useless

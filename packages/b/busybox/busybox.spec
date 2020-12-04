@@ -92,6 +92,9 @@ cp -a %{SOURCE2} .config
 make %{?_smp_mflags} -e oldconfig
 make -e %{?_smp_mflags}
 make -e doc busybox.links %{?_smp_mflags}
+%if 0%{?usrmerged}
+sed -i -e 's,^/\(s\?bin\)/,/usr/\1/,' busybox.links
+%endif
 
 %install
 install -d %{buildroot}/%{_bindir}
