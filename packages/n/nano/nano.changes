@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec  3 07:35:47 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU nano 5.4:
+  * Moving the cursor now skips over combining characters (an
+    other zero-width characters)
+  * Deleting a character deletes also any succeeding zero-width
+    characters but backspacing deletes just one character at a time
+
+-------------------------------------------------------------------
 Wed Oct  7 19:46:46 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
 
 - GNU nano 5.3:
