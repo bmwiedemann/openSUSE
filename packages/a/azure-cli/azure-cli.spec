@@ -32,7 +32,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.14.2
+Version:        2.15.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -73,7 +73,7 @@ Requires:       python3-azure-mgmt-applicationinsights >= 0.1.1
 Requires:       python3-azure-mgmt-authorization >= 0.61.0
 Requires:       python3-azure-mgmt-batch >= 9.0.0
 Requires:       python3-azure-mgmt-batchai >= 2.0
-Requires:       python3-azure-mgmt-billing >= 0.2
+Requires:       python3-azure-mgmt-billing >= 1.0.0
 Requires:       python3-azure-mgmt-botservice >= 0.2.0
 Requires:       python3-azure-mgmt-cdn >= 5.0.0
 Requires:       python3-azure-mgmt-cognitiveservices >= 6.3.0
@@ -91,12 +91,12 @@ Requires:       python3-azure-mgmt-devtestlabs >= 2.2
 Requires:       python3-azure-mgmt-dns >= 2.1
 Requires:       python3-azure-mgmt-eventgrid >= 3.0.0rc7
 Requires:       python3-azure-mgmt-eventhub >= 4.1.0
-Requires:       python3-azure-mgmt-hdinsight >= 1.7.0
+Requires:       python3-azure-mgmt-hdinsight >= 2.0.0
 Requires:       python3-azure-mgmt-imagebuilder >= 0.4.0
 Requires:       python3-azure-mgmt-iotcentral >= 3.0.0
 Requires:       python3-azure-mgmt-iothub >= 0.12.0
 Requires:       python3-azure-mgmt-iothubprovisioningservices >= 0.2.0
-Requires:       python3-azure-mgmt-keyvault >= 7.0.0b3
+Requires:       python3-azure-mgmt-keyvault >= 8.0.0
 Requires:       python3-azure-mgmt-kusto >= 0.3.0
 Requires:       python3-azure-mgmt-loganalytics >= 0.7.0
 Requires:       python3-azure-mgmt-managedservices >= 1.0
@@ -106,7 +106,7 @@ Requires:       python3-azure-mgmt-marketplaceordering >= 0.1
 Requires:       python3-azure-mgmt-media >= 2.1.0
 Requires:       python3-azure-mgmt-monitor >= 0.11.0
 Requires:       python3-azure-mgmt-msi >= 0.2
-Requires:       python3-azure-mgmt-netapp >= 0.12.0
+Requires:       python3-azure-mgmt-netapp >= 0.13.0
 Requires:       python3-azure-mgmt-network >= 12.0.0
 Requires:       python3-azure-mgmt-policyinsights >= 0.5.0
 Requires:       python3-azure-mgmt-privatedns >= 0.1.0
@@ -124,7 +124,7 @@ Requires:       python3-azure-mgmt-servicefabric >= 0.5.0
 Requires:       python3-azure-mgmt-signalr >= 0.4.0
 Requires:       python3-azure-mgmt-sql >= 0.21.0
 Requires:       python3-azure-mgmt-sqlvirtualmachine >= 0.5.0
-Requires:       python3-azure-mgmt-storage >= 11.2.0
+Requires:       python3-azure-mgmt-storage >= 16.0.0
 Requires:       python3-azure-mgmt-synapse >= 0.3.0
 Requires:       python3-azure-mgmt-trafficmanager >= 0.51.0
 Requires:       python3-azure-mgmt-web >= 0.48.0

@@ -219,4 +219,16 @@
 - Update Requires from setup.py (forwarded request 848872 from glaubitz)</comment>
     <requestid>848900</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>06f1d0b1cebbab4bea8fce5776474d3b</srcmd5>
+    <version>2.15.0</version>
+    <time>1607113708</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.15.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Update Requires from setup.py (forwarded request 851140 from glaubitz)</comment>
+    <requestid>851832</requestid>
+  </revision>
 </revisionlist>
