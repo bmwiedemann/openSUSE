@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 25 22:44:51 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- BuildRequire flit-core for all possible python3 flavors
+  gh#openSUSE/python-rpm-macros#66
+- remove python2 skip for test_meta in check section. The test is
+  correctly marked for skipping with python2 in the source file.
+
+-------------------------------------------------------------------
 Fri Nov 13 10:18:51 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Add Recommends pip & python-wheel >= 0.25

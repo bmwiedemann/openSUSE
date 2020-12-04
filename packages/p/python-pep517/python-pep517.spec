@@ -38,7 +38,12 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testpath}
 BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module wheel >= 0.25}
+%if 0%{?suse_version} >= 1550
+# necessary assumption: only TW has multiple python flavors and no python2 flavor
+BuildRequires:  %{python_module flit-core}
+%else
 BuildRequires:  python3-flit-core
+%endif
 # /SECTION
 %python_subpackages
 
@@ -66,13 +71,7 @@ sed -i 's/"flit_core >=2,<3"/"flit_core"/' pyproject.toml
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-if [ $python = "%{_bindir}/python2" ]; then
-  $python -m pytest -v -k "not test_meta"
-else
-  $python -m pytest -v
-fi
-}
+%pytest
 
 %files %{python_files}
 %doc README.rst doc/*.rst
