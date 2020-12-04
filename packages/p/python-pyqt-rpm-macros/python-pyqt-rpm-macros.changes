@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec  2 16:55:14 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- remove --debug flag for sip v5 builds. Mitigates boo#1179214
+
+-------------------------------------------------------------------
 Tue Nov 24 11:03:47 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix shebang replacement in pyqt_install_examples

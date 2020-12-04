@@ -25,7 +25,6 @@ export CFLAGS="%{optflags}" \
     sip-build-%{$python_bin_suffix} \\\
         --verbose  \\\
         --api-dir %{_libqt5_datadir}/qsci/api/python_%{$python_bin_suffix}/ \\\
-        --debug \\\
         --no-make \\\
         --qmake=%{_libqt5_qmake} \\\
         --qmake-setting "QMAKE_CFLAGS += ${CFLAGS} ${CPPFLAGS}" \\\
