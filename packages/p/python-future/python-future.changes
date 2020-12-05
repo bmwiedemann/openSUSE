@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec  3 22:24:41 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Need dbm for more than one python3 flavor
+  gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Thu Dec  5 15:02:01 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.18.2:
