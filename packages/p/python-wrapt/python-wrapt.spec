@@ -26,6 +26,8 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/GrahamDumpleton/wrapt
 Source:         https://github.com/GrahamDumpleton/wrapt/archive/%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#GrahamDumpleton/wrapt#168 -- fix pytest 6 dummy collection
+Patch0:         https://github.com/GrahamDumpleton/wrapt/pull/168.patch#/fix-dummy-collector-pytest6.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -59,6 +61,7 @@ For further information on the **wrapt** module see:
 
 %prep
 %setup -q -n wrapt-%{version}
+%patch0 -p1
 
 %build
 export CFLAGS="%{optflags}"

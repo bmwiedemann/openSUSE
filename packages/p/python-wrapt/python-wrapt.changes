@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  4 00:37:53 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix python3.6 build with pytest 6
+  * fix-dummy-collector-pytest6.patch
+  * gh#GrahamDumpleton/wrapt#168
+
+-------------------------------------------------------------------
 Mon Mar 16 11:01:55 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.12.1:
