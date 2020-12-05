@@ -22,7 +22,7 @@
 %define with_libostree 1
 %endif
 Name:           podman
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -140,9 +140,15 @@ install -D -m 0644 %{SOURCE4} %{buildroot}%{_docdir}/%{name}/README.SUSE
 # Configs
 %dir %{_prefix}/lib/modules-load.d
 %{_prefix}/lib/modules-load.d/podman.conf
+%{_tmpfilesdir}/podman.conf
 # Completion
 %{_datadir}/bash-completion/completions/podman
+%{_datadir}/bash-completion/completions/podman-remote
 %{_datadir}/zsh/site-functions/_podman
+%{_datadir}/zsh/site-functions/_podman-remote
+%{_datadir}/fish/
+%{_datadir}/fish/vendor_completions.d/podman.fish
+%{_datadir}/fish/vendor_completions.d/podman-remote.fish
 %{_unitdir}/podman.service
 %{_unitdir}/podman.socket
 %{_unitdir}/podman-auto-update.service
@@ -167,6 +173,7 @@ test -f /etc/containers/libpod.conf.rpmsave && mv -v /etc/containers/libpod.conf
 
 %post
 %service_add_post podman.service podman.socket
+%tmpfiles_create %{_tmpfilesdir}/podman.conf
 
 %preun
 %service_del_preun podman.service podman.socket
