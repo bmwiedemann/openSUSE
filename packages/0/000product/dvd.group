@@ -83,6 +83,8 @@
     <package name="apparmor-parser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="apparmor-parser-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="apparmor-profiles" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="apparmor-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="apparmor-utils-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="arabic-ae-fonts" supportstatus="unsupported"/> <!-- reason: dvd:arabic-fonts -->
     <package name="arabic-bitmap-fonts" supportstatus="unsupported"/> <!-- reason: dvd:arabic-fonts -->
     <package name="arabic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:arabic-fonts -->
@@ -355,7 +357,6 @@
     <package name="fillup" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="findutils" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="findutils-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="firebird" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="firewalld" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="firewalld-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="flac" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -663,7 +664,7 @@
     <package name="inkscape-lang" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="inn" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="inotify-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
-    <package name="insserv-compat" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="insserv-compat" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="intel-vaapi-driver" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="intlfonts-euro-bitmap-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="inxi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1338,7 +1339,6 @@
     <package name="libfarstream-0_2-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfastjson4" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
     <package name="libfaxutil7_0_3" supportstatus="unsupported"/> <!-- reason: dvd:capi4hylafax -->
-    <package name="libfbclient2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libfcitx-4_2_9" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libfdisk1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libfdt1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
@@ -1519,7 +1519,6 @@
     <package name="libhugetlbfs" supportstatus="unsupported"/> <!-- reason: dvd:nvme-cli -->
     <package name="libhunspell-1_7-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libhyphen0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libib_util" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libibus-1_0-5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libibverbs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libibverbs1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
@@ -1859,7 +1858,6 @@
     <package name="libreiserfscore0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libreoffice" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libreoffice-base" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libreoffice-base-drivers-firebird" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libreoffice-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libreoffice-calc" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libreoffice-draw" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2005,7 +2003,7 @@
     <package name="libtirpc3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libtls20" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
     <package name="libtomcrypt1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libtommath1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libtommath1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtool" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="libtotem-plparser-mini18" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtotem-plparser18" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2710,6 +2708,7 @@
     <package name="python3-Twisted" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python3-aiosmtpd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python3-alembic" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python3-apparmor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-appdirs" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python3-argon2-cffi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python3-asn1crypto" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2784,6 +2783,7 @@
     <package name="python3-netaddr" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python3-netifaces" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="python3-nftables" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="python3-notify2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-numpy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python3-olefile" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python3-ordered-set" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2794,7 +2794,7 @@
     <package name="python3-pexpect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="python3-ply" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-protobuf" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python3-psutil" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="python3-psutil" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-ptyprocess" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="python3-publicsuffix2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python3-py" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

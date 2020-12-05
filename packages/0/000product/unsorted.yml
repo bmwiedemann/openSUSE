@@ -711,8 +711,6 @@ unsorted:
   - apiguardian 
   - apiguardian-javadoc 
   - apparmor-rpm-macros 
-  - apparmor-utils 
-  - apparmor-utils-lang 
   - appeditor 
   - appeditor-lang 
   - appframework 
@@ -1199,7 +1197,7 @@ unsorted:
   - bbe 
   - bbswitch 
   - bbswitch-kmp-pae: [i586] 
-  - bcache-tools 
+  - bcache-tools: [i586] 
   - bcal: [x86_64] 
   - bcc-devel 
   - bcc-docs 
@@ -3557,6 +3555,7 @@ unsorted:
   - fips 
   - fipscheck 
   - fipscheck-devel 
+  - firebird 
   - firebird-doc 
   - firebird-examples 
   - firebird-server 
@@ -7222,6 +7221,14 @@ unsorted:
   - java-15-openjdk-javadoc 
   - java-15-openjdk-jmods 
   - java-15-openjdk-src 
+  - java-16-openjdk 
+  - java-16-openjdk-accessibility 
+  - java-16-openjdk-demo 
+  - java-16-openjdk-devel 
+  - java-16-openjdk-headless 
+  - java-16-openjdk-javadoc 
+  - java-16-openjdk-jmods 
+  - java-16-openjdk-src 
   - java-1_7_0-bootstrap 
   - java-1_7_0-bootstrap-devel 
   - java-1_7_0-bootstrap-headless 
@@ -10650,6 +10657,7 @@ unsorted:
   - libfastjson-devel 
   - libfastlz1 
   - libfbclient-devel 
+  - libfbclient2 
   - libfbclient2-32bit: [x86_64] 
   - libfcache-devel 
   - libfcache1 
@@ -11481,6 +11489,7 @@ unsorted:
   - libhyphen0-32bit: [x86_64] 
   - libi2c0 
   - libi2c0-devel 
+  - libib_util 
   - libib_util-32bit: [x86_64] 
   - libib_util-devel 
   - libibdm1 
@@ -12324,13 +12333,20 @@ unsorted:
   - libnetcdf-fortran-gnu-openmpi2-hpc 
   - libnetcdf-fortran-gnu-openmpi3-hpc 
   - libnetcdf-fortran-gnu-openmpi4-hpc 
-  - libnetcdf-fortran_4_5_2-gnu-hpc 
-  - libnetcdf-fortran_4_5_2-gnu-mpich-hpc 
-  - libnetcdf-fortran_4_5_2-gnu-mvapich2-hpc 
-  - libnetcdf-fortran_4_5_2-gnu-openmpi1-hpc 
-  - libnetcdf-fortran_4_5_2-gnu-openmpi2-hpc 
-  - libnetcdf-fortran_4_5_2-gnu-openmpi3-hpc 
-  - libnetcdf-fortran_4_5_2-gnu-openmpi4-hpc 
+  - libnetcdf-fortran_4_5_2-gnu-hpc: [i586] 
+  - libnetcdf-fortran_4_5_2-gnu-mpich-hpc: [i586] 
+  - libnetcdf-fortran_4_5_2-gnu-mvapich2-hpc: [i586] 
+  - libnetcdf-fortran_4_5_2-gnu-openmpi1-hpc: [i586] 
+  - libnetcdf-fortran_4_5_2-gnu-openmpi2-hpc: [i586] 
+  - libnetcdf-fortran_4_5_2-gnu-openmpi3-hpc: [i586] 
+  - libnetcdf-fortran_4_5_2-gnu-openmpi4-hpc: [i586] 
+  - libnetcdf-fortran_4_5_3-gnu-hpc: [x86_64] 
+  - libnetcdf-fortran_4_5_3-gnu-mpich-hpc: [x86_64] 
+  - libnetcdf-fortran_4_5_3-gnu-mvapich2-hpc: [x86_64] 
+  - libnetcdf-fortran_4_5_3-gnu-openmpi1-hpc: [x86_64] 
+  - libnetcdf-fortran_4_5_3-gnu-openmpi2-hpc: [x86_64] 
+  - libnetcdf-fortran_4_5_3-gnu-openmpi3-hpc: [x86_64] 
+  - libnetcdf-fortran_4_5_3-gnu-openmpi4-hpc: [x86_64] 
   - libnetcdf-gnu-hpc 
   - libnetcdf-gnu-mpich-hpc 
   - libnetcdf-gnu-mvapich2-hpc 
@@ -16995,20 +17011,34 @@ unsorted:
   - netcdf-fortran-gnu-openmpi3-hpc-devel 
   - netcdf-fortran-gnu-openmpi4-hpc 
   - netcdf-fortran-gnu-openmpi4-hpc-devel 
-  - netcdf-fortran_4_5_2-gnu-hpc 
-  - netcdf-fortran_4_5_2-gnu-hpc-devel 
-  - netcdf-fortran_4_5_2-gnu-mpich-hpc 
-  - netcdf-fortran_4_5_2-gnu-mpich-hpc-devel 
-  - netcdf-fortran_4_5_2-gnu-mvapich2-hpc 
-  - netcdf-fortran_4_5_2-gnu-mvapich2-hpc-devel 
-  - netcdf-fortran_4_5_2-gnu-openmpi1-hpc 
-  - netcdf-fortran_4_5_2-gnu-openmpi1-hpc-devel 
-  - netcdf-fortran_4_5_2-gnu-openmpi2-hpc 
-  - netcdf-fortran_4_5_2-gnu-openmpi2-hpc-devel 
-  - netcdf-fortran_4_5_2-gnu-openmpi3-hpc 
-  - netcdf-fortran_4_5_2-gnu-openmpi3-hpc-devel 
-  - netcdf-fortran_4_5_2-gnu-openmpi4-hpc 
-  - netcdf-fortran_4_5_2-gnu-openmpi4-hpc-devel 
+  - netcdf-fortran_4_5_2-gnu-hpc: [i586] 
+  - netcdf-fortran_4_5_2-gnu-hpc-devel: [i586] 
+  - netcdf-fortran_4_5_2-gnu-mpich-hpc: [i586] 
+  - netcdf-fortran_4_5_2-gnu-mpich-hpc-devel: [i586] 
+  - netcdf-fortran_4_5_2-gnu-mvapich2-hpc: [i586] 
+  - netcdf-fortran_4_5_2-gnu-mvapich2-hpc-devel: [i586] 
+  - netcdf-fortran_4_5_2-gnu-openmpi1-hpc: [i586] 
+  - netcdf-fortran_4_5_2-gnu-openmpi1-hpc-devel: [i586] 
+  - netcdf-fortran_4_5_2-gnu-openmpi2-hpc: [i586] 
+  - netcdf-fortran_4_5_2-gnu-openmpi2-hpc-devel: [i586] 
+  - netcdf-fortran_4_5_2-gnu-openmpi3-hpc: [i586] 
+  - netcdf-fortran_4_5_2-gnu-openmpi3-hpc-devel: [i586] 
+  - netcdf-fortran_4_5_2-gnu-openmpi4-hpc: [i586] 
+  - netcdf-fortran_4_5_2-gnu-openmpi4-hpc-devel: [i586] 
+  - netcdf-fortran_4_5_3-gnu-hpc: [x86_64] 
+  - netcdf-fortran_4_5_3-gnu-hpc-devel: [x86_64] 
+  - netcdf-fortran_4_5_3-gnu-mpich-hpc: [x86_64] 
+  - netcdf-fortran_4_5_3-gnu-mpich-hpc-devel: [x86_64] 
+  - netcdf-fortran_4_5_3-gnu-mvapich2-hpc: [x86_64] 
+  - netcdf-fortran_4_5_3-gnu-mvapich2-hpc-devel: [x86_64] 
+  - netcdf-fortran_4_5_3-gnu-openmpi1-hpc: [x86_64] 
+  - netcdf-fortran_4_5_3-gnu-openmpi1-hpc-devel: [x86_64] 
+  - netcdf-fortran_4_5_3-gnu-openmpi2-hpc: [x86_64] 
+  - netcdf-fortran_4_5_3-gnu-openmpi2-hpc-devel: [x86_64] 
+  - netcdf-fortran_4_5_3-gnu-openmpi3-hpc: [x86_64] 
+  - netcdf-fortran_4_5_3-gnu-openmpi3-hpc-devel: [x86_64] 
+  - netcdf-fortran_4_5_3-gnu-openmpi4-hpc: [x86_64] 
+  - netcdf-fortran_4_5_3-gnu-openmpi4-hpc-devel: [x86_64] 
   - netcdf-gnu-hpc 
   - netcdf-gnu-hpc-devel 
   - netcdf-gnu-mpich-hpc 
@@ -18602,7 +18632,6 @@ unsorted:
   - patterns-media-rest_cd_x11 
   - patterns-media-rest_core_dvd 
   - patterns-media-rest_dvd: [i586] 
-  - patterns-microos-onlyDVD: [x86_64] 
   - patterns-openSUSEway 
   - patterns-rpm-macros 
   - patterns-server-dhcp_dns_server-32bit 
@@ -20531,7 +20560,7 @@ unsorted:
   - policycoreutils-devel 
   - policycoreutils-lang: [i586] 
   - policycoreutils-newrole 
-  - policycoreutils-python-utils 
+  - policycoreutils-python-utils: [i586] 
   - polkit: [i586] 
   - polkit-default-privs: [i586] 
   - polkit-devel 
@@ -21444,7 +21473,6 @@ unsorted:
   - python3-apipkg 
   - python3-apiron 
   - python3-apns2 
-  - python3-apparmor 
   - python3-application 
   - python3-applicationinsights 
   - python3-apptools 
@@ -22984,7 +23012,6 @@ unsorted:
   - python3-notcurses 
   - python3-notebook 
   - python3-notebook-lang 
-  - python3-notify2 
   - python3-notmuch 
   - python3-novaclient 
   - python3-nox 
@@ -23581,6 +23608,7 @@ unsorted:
   - python3-python-dbusmock 
   - python3-python-docs-theme 
   - python3-python-dotenv 
+  - python3-python-engineio 
   - python3-python-fedora 
   - python3-python-fileinspector 
   - python3-python-for-android 
@@ -23620,6 +23648,7 @@ unsorted:
   - python3-python-rtmidi 
   - python3-python-slugify 
   - python3-python-snappy 
+  - python3-python-socketio 
   - python3-python-sofa 
   - python3-python-sql 
   - python3-python-stdnum 
@@ -34606,7 +34635,6 @@ unsorted:
   - texworks-plugin-python 
   - tftpboot-installation-common 
   - tftpboot-installation-openSUSE-Kubic-x86_64: [x86_64] 
-  - tftpboot-installation-openSUSE-MicroOS-x86_64: [x86_64] 
   - tftpboot-installation-openSUSE-Tumbleweed-i586: [i586] 
   - tftpboot-installation-openSUSE-Tumbleweed-x86_64: [x86_64] 
   - the_silver_searcher 

@@ -97,6 +97,8 @@
       <repopackage name="apparmor-parser"/>
       <repopackage name="apparmor-parser-lang"/>
       <repopackage name="apparmor-profiles"/>
+      <repopackage name="apparmor-utils"/>
+      <repopackage name="apparmor-utils-lang"/>
       <repopackage name="arabic-ae-fonts"/>
       <repopackage name="arabic-bitmap-fonts"/>
       <repopackage name="arabic-fonts"/>
@@ -369,7 +371,6 @@
       <repopackage name="fillup"/>
       <repopackage name="findutils"/>
       <repopackage name="findutils-lang"/>
-      <repopackage name="firebird"/>
       <repopackage name="firewalld"/>
       <repopackage name="firewalld-lang"/>
       <repopackage name="flac"/>
@@ -1165,7 +1166,6 @@
       <repopackage name="libfarstream-0_2-5"/>
       <repopackage name="libfastjson4"/>
       <repopackage name="libfaxutil7_0_3"/>
-      <repopackage name="libfbclient2"/>
       <repopackage name="libfcitx-4_2_9"/>
       <repopackage name="libfdisk1"/>
       <repopackage name="libfdt1"/>
@@ -1350,7 +1350,6 @@
       <repopackage name="libhunspell-1_7-0"/>
       <repopackage name="libHX32"/>
       <repopackage name="libhyphen0"/>
-      <repopackage name="libib_util"/>
       <repopackage name="libibus-1_0-5"/>
       <repopackage name="libibverbs"/>
       <repopackage name="libibverbs1"/>
@@ -1822,7 +1821,6 @@
       <repopackage name="libreiserfscore0"/>
       <repopackage name="libreoffice"/>
       <repopackage name="libreoffice-base"/>
-      <repopackage name="libreoffice-base-drivers-firebird"/>
       <repopackage name="libreoffice-branding-openSUSE"/>
       <repopackage name="libreoffice-calc"/>
       <repopackage name="libreoffice-draw"/>
@@ -2747,6 +2745,7 @@
       <repopackage name="python2-pycairo"/>
       <repopackage name="python3-aiosmtpd"/>
       <repopackage name="python3-alembic"/>
+      <repopackage name="python3-apparmor"/>
       <repopackage name="python3-appdirs"/>
       <repopackage name="python3-argon2-cffi"/>
       <repopackage name="python3-asn1crypto"/>
@@ -2829,6 +2828,7 @@
       <repopackage name="python3-netaddr"/>
       <repopackage name="python3-netifaces"/>
       <repopackage name="python3-nftables"/>
+      <repopackage name="python3-notify2"/>
       <repopackage name="python3-numpy"/>
       <repopackage name="python3-olefile"/>
       <repopackage name="python3-ordered-set"/>
