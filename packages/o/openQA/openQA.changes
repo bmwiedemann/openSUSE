@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Dec 05 08:51:25 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1607108258.175f03ea7:
+  * Add possibility to call custom hook scripts on "job done" based on result
+  * t: Add full schema init+upgrade cycle test
+  * script: Add command line options to override script dir in initdb/upgradedb
+  * Schema: Allow to override schema version for testing purposes
+  * Improve 404 page
+  * Dependency cron 2020-12-04
+  * load_templates: Use ref instead of reftype to avoid Perl warning
+  * cache service: Remove creating/dropping table to test database
+  * Ensure proper return values in OpenQA::Schema::Result::Jobs::carry_over_bugrefs
+  * t: Delete redundant, uncovered INT handler in 25-cache.t
+  * t: Fix coverage of separate process in 25-cache.t
+  * Test whether worker still accepts jobs when a configured web UI is offline
+  * Simplify 'view' method in WebAPI::Controller::Step
+
+-------------------------------------------------------------------
 Wed Dec 02 18:25:23 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1606933510.bed89ec4d:
