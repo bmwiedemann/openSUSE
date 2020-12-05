@@ -3756,4 +3756,18 @@
 - update staging to 5.22 release</comment>
     <requestid>849811</requestid>
   </revision>
+  <revision rev="323" vrev="1">
+    <srcmd5>d9660a8792d3fb57bbd56b402b0212f5</srcmd5>
+    <version>6.0~rc1</version>
+    <time>1607197038</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 6.0rc1 development release
+  - Gecko engine update.
+  - WindowsCodecs and QCap libraries converted to PE.
+  - Faster font initialization at process start.
+  - Support for named pipes with empty names.
+  - Various bug fixes.
+- update staging to 6.0rc1 release</comment>
+    <requestid>853249</requestid>
+  </revision>
 </revisionlist>

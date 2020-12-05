@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Dec  5 07:33:48 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 6.0rc1 development release
+  - Gecko engine update.
+  - WindowsCodecs and QCap libraries converted to PE.
+  - Faster font initialization at process start.
+  - Support for named pipes with empty names.
+  - Various bug fixes.
+- update staging to 6.0rc1 release
+
+-------------------------------------------------------------------
 Sat Nov 21 08:06:16 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 5.22 development release
