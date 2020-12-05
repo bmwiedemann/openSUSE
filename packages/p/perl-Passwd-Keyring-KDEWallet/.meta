@@ -1,0 +1,6 @@
+<package name="perl-Passwd-Keyring-KDEWallet" project="openSUSE:Factory">
+  <title>perl-Passwd-Keyring-KDEWallet - Password storage implementation based on KDE Wallet</title>
+  <description>Password storage implementation based on KDE Wallet.</description>
+  <devel project="devel:languages:perl" package="perl-Passwd-Keyring-KDEWallet"/>
+  <url>https://metacpan.org/release/Passwd-Keyring-KDEWallet</url>
+</package>
