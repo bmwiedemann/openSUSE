@@ -31,19 +31,18 @@
 %endif
 
 Name:           libarchive
-Version:        3.4.3
+Version:        3.5.0
 Release:        0
 Summary:        Utility and C library to create and read several different streaming archive formats
 License:        BSD-2-Clause
 Group:          Productivity/Archiving/Compression
 URL:            http://www.libarchive.org/
-Source0:        https://github.com/libarchive/libarchive/releases/download/v%{version}/libarchive-%{version}.tar.gz
-Source1:        https://github.com/libarchive/libarchive/releases/download/v%{version}/libarchive-%{version}.tar.gz.asc
+Source0:        https://github.com/libarchive/libarchive/releases/download/v%{version}/libarchive-%{version}.tar.xz
+Source1:        https://github.com/libarchive/libarchive/releases/download/v%{version}/libarchive-%{version}.tar.xz.asc
 Source2:        libarchive.keyring
 Source1000:     baselibs.conf
 Patch1:         lib-suffix.patch
 Patch2:         fix-soversion.patch
-Patch3:         libarchive-3.4.3-fix_test_write_disk_secure.patch
 BuildRequires:  cmake
 BuildRequires:  libacl-devel
 BuildRequires:  libbz2-devel

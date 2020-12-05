@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Dec  1 10:24:21 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 3.5.0
+  New features:
+  * mtree digest reader support (#1347)
+  * completed support for UTF-8 encoding conversion (#1389)
+  * minor API enhancements (#1258, #1405)
+  * support for system extended attributes (#1409)
+  * support for decompression of symbolic links in zipx archives (#1435)
+  Important bugfixes
+  * fixed extraction of archives with hard links pointing to itself (#1381)
+  * cpio fixes (#1387, #1388)
+  * fixed uninitialized size in rar5_read_data (#1408)
+  * fixed memory leaks in error case of archive_write_open() functions (#1456)
+- Drop libarchive-3.4.3-fix_test_write_disk_secure.patch, fixed upstream.
+
+-------------------------------------------------------------------
 Mon Sep  7 17:17:45 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix build with binutils submitted to Factory, adding upstream
