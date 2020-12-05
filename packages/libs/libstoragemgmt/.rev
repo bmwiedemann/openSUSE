@@ -236,4 +236,14 @@
     <comment></comment>
     <requestid>845762</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d1bc9346e3fd469c208fe6c8543d3ab3</srcmd5>
+    <version>1.8.7</version>
+    <time>1607196924</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.7:
+  * Fix for Areca RAID cards #444
+  * Static code analysis fixes #441</comment>
+    <requestid>853064</requestid>
+  </revision>
 </revisionlist>

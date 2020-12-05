@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  4 09:06:20 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.7:
+  * Fix for Areca RAID cards #444
+  * Static code analysis fixes #441
+
+-------------------------------------------------------------------
 Tue Nov  3 07:41:35 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.6:
