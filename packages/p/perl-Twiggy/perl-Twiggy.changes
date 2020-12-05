@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Wed Nov 25 09:44:17 UTC 2020 - Frank Schreiner <FSchreiner@suse.com>
+
+- re-run cpanspec 
+
+-------------------------------------------------------------------
+Tue Apr 14 21:15:18 UTC 2015 - coolo@suse.com
+
+- updated to 0.1025
+   see /usr/share/doc/packages/perl-Twiggy/Changes
+
+  0.1025  2015-01-04 07:00:16 JST
+          - Fix a bug where Twiggy's run loop exits after a streaming request is cut off (hoelzro) #41
+  
+  0.1024  2013-10-12 11:35:35 PDT
+          - Fix a bug where exit_guard is not correctly decremented when writing header failed (maedama) #37
+  
+  0.1023  2013-06-15 01:51:22 PDT
+          - Move the bin directory (moznion) #35
+  
+  0.1022  2013-06-12 12:36:16 PDT
+          - convert to use Milla
+          - Fix dependency for LWP
+  
+  0.1021 Fri Oct 19 15:09:17 PDT 2012
+          - Repackage with the latest Module::Install
+  
+  0.1020 Mon Feb 20 16:31:44 PST 2012
+          - Improve SEREVR_PORT when binding multiple ports
+          - Documentation fixes (Pedro Melo)
+          - Suppres 400 if client disconnected (athomason)
+          - Don't restrict parsing the request body to PUT and POST requests (Moritz Onken)
+          - Fixed broken POST data processing (und3f, hidekiy)
+  
+  0.1010 Mon Jan 17 17:04:14 PST 2011
+          - Returning CondVar as a PSGI response is deprecated. Will be removed in the next release
+  
+  0.1009 Fri Dec  3 11:52:20 PST 2010
+          - Fixed leaking fd (t0m)
+
+-------------------------------------------------------------------
+Tue Apr 14 21:15:17 UTC 2015 - coolo@suse.com
+
+- updated to 0.1010
+   see /usr/share/doc/packages/perl-Twiggy/Changes
+
+  0.1010 Mon Jan 17 17:04:14 PST 2011
+          - Returning CondVar as a PSGI response is deprecated. Will be removed in the next release
+  
+  0.1009 Fri Dec  3 11:52:20 PST 2010
+          - Fixed leaking fd (t0m)
+
+-------------------------------------------------------------------
+Wed Dec  1 13:35:55 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:31:25 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Thu Oct  7 10:58:57 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.1008)
+

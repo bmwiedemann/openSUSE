@@ -1,0 +1,12 @@
+<package name="perl-Twiggy" project="openSUSE:Factory">
+  <title>AnyEvent HTTP server for PSGI (like Thin)</title>
+  <description>Twiggy is a lightweight and fast HTTP server with unique features such as:
+
+PSGI - Can run any PSGI applications. Fully supports *psgi.nonblocking* and *psgi.streaming* interfaces.
+AnyEvent - This server uses AnyEvent and runs in a non-blocking event loop, so it's best to run event-driven web applications that runs I/O bound jobs or delayed responses such as long-poll, WebSocket or streaming content (server push). This software used to be called Plack::Server::AnyEvent but was renamed to Twiggy. See &quot;NAMING&quot; for details.
+Fast header parser - Uses XS/C based HTTP header parser for the best performance. (optional)
+Lightweight and Fast - The memory required to run twiggy is 6MB and it can serve more than 4500 req/s with a single process on Perl 5.10 with MacBook Pro 13&quot; late 2009.
+Superdaemon aware - Supports Server::Starter for hot deploy and graceful restarts.</description>
+  <devel project="devel:languages:perl" package="perl-Twiggy"/>
+  <url>https://metacpan.org/release/Twiggy</url>
+</package>
