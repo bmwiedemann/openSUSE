@@ -1,4 +1,316 @@
 -------------------------------------------------------------------
+Wed Dec  2 10:24:35 CET 2020 - jslaby@suse.cz
+
+- Linux 5.9.12 (bsc#1012628).
+- io_uring: get an active ref_node from files_data (bsc#1012628).
+- io_uring: order refnode recycling (bsc#1012628).
+- spi: bcm-qspi: Fix use-after-free on unbind (bsc#1012628).
+- spi: bcm2835: Fix use-after-free on unbind (bsc#1012628).
+- ipv4: use IS_ENABLED instead of ifdef (bsc#1012628).
+- IB/hfi1: Ensure correct mm is used at all times (bsc#1012628).
+- RDMA/i40iw: Address an mmap handler exploit in i40iw
+  (bsc#1012628).
+- btrfs: fix missing delalloc new bit for new delalloc ranges
+  (bsc#1012628).
+- btrfs: tree-checker: add missing return after error in root_item
+  (bsc#1012628).
+- btrfs: tree-checker: add missing returns after data_ref
+  alignment checks (bsc#1012628).
+- btrfs: don't access possibly stale fs_info data for printing
+  duplicate device (bsc#1012628).
+- btrfs: fix lockdep splat when reading qgroup config on mount
+  (bsc#1012628).
+- rtc: pcf2127: fix a bug when not specify interrupts property
+  (bsc#1012628).
+- s390: fix fpu restore in entry.S (bsc#1012628).
+- mm: fix VM_BUG_ON(PageTail) and BUG_ON(PageWriteback)
+  (bsc#1012628).
+- smb3: Call cifs reconnect from demultiplex thread (bsc#1012628).
+- smb3: Avoid Mid pending list corruption (bsc#1012628).
+- smb3: Handle error case during offload read path (bsc#1012628).
+- cifs: fix a memleak with modefromsid (bsc#1012628).
+- powerpc/64s: Fix KVM system reset handling when
+  CONFIG_PPC_PSERIES=y (bsc#1012628).
+- powerpc/64s/exception: KVM Fix for host DSI being taken in
+  HPT guest MMU context (bsc#1012628).
+- KVM: PPC: Book3S HV: XIVE: Fix possible oops when accessing
+  ESB page (bsc#1012628).
+- KVM: arm64: vgic-v3: Drop the reporting of GICR_TYPER.Last
+  for userspace (bsc#1012628).
+- KVM: x86: handle !lapic_in_kernel case in kvm_cpu_*_extint
+  (bsc#1012628).
+- KVM: x86: Fix split-irqchip vs interrupt injection window
+  request (bsc#1012628).
+- iommu/vt-d: Don't read VCCAP register unless it exists
+  (bsc#1012628).
+- firmware: xilinx: Use hash-table for api feature check
+  (bsc#1012628).
+- drm/amdgpu: fix SI UVD firmware validate resume fail
+  (bsc#1012628).
+- io_uring: fix ITER_BVEC check (bsc#1012628).
+- trace: fix potenial dangerous pointer (bsc#1012628).
+- arm64: tegra: Correct the UART for Jetson Xavier NX
+  (bsc#1012628).
+- arm64: tegra: Fix USB_VBUS_EN0 regulator on Jetson TX1
+  (bsc#1012628).
+- arm64: pgtable: Fix pte_accessible() (bsc#1012628).
+- arm64: pgtable: Ensure dirty bit is preserved across
+  pte_wrprotect() (bsc#1012628).
+- drm/amdgpu: fix a page fault (bsc#1012628).
+- drm/amdgpu: update golden setting for sienna_cichlid
+  (bsc#1012628).
+- drm/amd/amdgpu: fix null pointer in runtime pm (bsc#1012628).
+- drm/amd/display: Avoid HDCP initialization in devices without
+  output (bsc#1012628).
+- HID: uclogic: Add ID for Trust Flex Design Tablet (bsc#1012628).
+- HID: ite: Replace ABS_MISC 120/121 events with touchpad on/off
+  keypresses (bsc#1012628).
+- HID: cypress: Support Varmilo Keyboards' media hotkeys
+  (bsc#1012628).
+- HID: add support for Sega Saturn (bsc#1012628).
+- Input: i8042 - allow insmod to succeed on devices without an
+  i8042 controller (bsc#1012628).
+- HID: hid-sensor-hub: Fix issue with devices with no report ID
+  (bsc#1012628).
+- staging: ralink-gdma: fix kconfig dependency bug for DMA_RALINK
+  (bsc#1012628).
+- HID: add HID_QUIRK_INCREMENT_USAGE_ON_DUPLICATE for Gamevice
+  devices (bsc#1012628).
+- dmaengine: xilinx_dma: use readl_poll_timeout_atomic variant
+  (bsc#1012628).
+- x86/xen: don't unbind uninitialized lock_kicker_irq
+  (bsc#1012628).
+- kunit: fix display of failed expectations for strings
+  (bsc#1012628).
+- HID: logitech-hidpp: Add HIDPP_CONSUMER_VENDOR_KEYS quirk for
+  the Dinovo Edge (bsc#1012628).
+- HID: Add Logitech Dinovo Edge battery quirk (bsc#1012628).
+- proc: don't allow async path resolution of /proc/self components
+  (bsc#1012628).
+- nvme: free sq/cq dbbuf pointers when dbbuf set fails
+  (bsc#1012628).
+- io_uring: handle -EOPNOTSUPP on path resolution (bsc#1012628).
+- net: stmmac: dwmac_lib: enlarge dma reset timeout (bsc#1012628).
+- vdpasim: fix "mac_pton" undefined error (bsc#1012628).
+- vhost: add helper to check if a vq has been setup (bsc#1012628).
+- vhost scsi: alloc cmds per vq instead of session (bsc#1012628).
+- vhost scsi: fix cmd completion race (bsc#1012628).
+- cpuidle: tegra: Annotate tegra_pm_set_cpu_in_lp2() with
+  RCU_NONIDLE (bsc#1012628).
+- dmaengine: pl330: _prep_dma_memcpy: Fix wrong burst size
+  (bsc#1012628).
+- scsi: libiscsi: Fix NOP race condition (bsc#1012628).
+- scsi: target: iscsi: Fix cmd abort fabric stop race
+  (bsc#1012628).
+- lockdep: Put graph lock/unlock under lock_recursion protection
+  (bsc#1012628).
+- perf/x86: fix sysfs type mismatches (bsc#1012628).
+- xtensa: uaccess: Add missing __user to strncpy_from_user()
+  prototype (bsc#1012628).
+- x86/dumpstack: Do not try to access user space code of other
+  tasks (bsc#1012628).
+- net: dsa: mv88e6xxx: Wait for EEPROM done after HW reset
+  (bsc#1012628).
+- bus: ti-sysc: Fix reset status check for modules with quirks
+  (bsc#1012628).
+- bus: ti-sysc: Fix bogus resetdone warning on enable for cpsw
+  (bsc#1012628).
+- ARM: OMAP2+: Manage MPU state properly for
+  omap_enter_idle_coupled() (bsc#1012628).
+- phy: tegra: xusb: Fix dangling pointer on probe failure
+  (bsc#1012628).
+- iwlwifi: mvm: use the HOT_SPOT_CMD to cancel an AUX ROC
+  (bsc#1012628).
+- iwlwifi: mvm: properly cancel a session protection for P2P
+  (bsc#1012628).
+- iwlwifi: mvm: write queue_sync_state only for sync
+  (bsc#1012628).
+- KVM: s390: pv: Mark mm as protected after the set secure
+  parameters and improve cleanup (bsc#1012628).
+- KVM: s390: remove diag318 reset code (bsc#1012628).
+- batman-adv: set .owner to THIS_MODULE (bsc#1012628).
+- usb: cdns3: gadget: fix some endian issues (bsc#1012628).
+- usb: cdns3: gadget: calculate TD_SIZE based on TD (bsc#1012628).
+- phy: qualcomm: usb: Fix SuperSpeed PHY OF dependency
+  (bsc#1012628).
+- phy: qualcomm: Fix 28 nm Hi-Speed USB PHY OF dependency
+  (bsc#1012628).
+- arch: pgtable: define MAX_POSSIBLE_PHYSMEM_BITS where needed
+  (bsc#1012628).
+- bus: ti-sysc: suppress err msg for timers used as
+  clockevent/source (bsc#1012628).
+- ARM: dts: dra76x: m_can: fix order of clocks (bsc#1012628).
+- scsi: ufs: Fix race between shutdown and runtime resume flow
+  (bsc#1012628).
+- bnxt_en: fix error return code in bnxt_init_one() (bsc#1012628).
+- bnxt_en: fix error return code in bnxt_init_board()
+  (bsc#1012628).
+- video: hyperv_fb: Fix the cache type when mapping the VRAM
+  (bsc#1012628).
+- bnxt_en: Release PCI regions when DMA mask setup fails during
+  probe (bsc#1012628).
+- block/keyslot-manager: prevent crash when num_slots=1
+  (bsc#1012628).
+- cxgb4: fix the panic caused by non smac rewrite (bsc#1012628).
+- dpaa2-eth: select XGMAC_MDIO for MDIO bus support (bsc#1012628).
+- s390/qeth: make af_iucv TX notification call more robust
+  (bsc#1012628).
+- s390/qeth: fix af_iucv notification race (bsc#1012628).
+- s390/qeth: fix tear down of async TX buffers (bsc#1012628).
+- drm/mediatek: dsi: Modify horizontal front/back porch byte
+  formula (bsc#1012628).
+- bonding: wait for sysfs kobject destruction before freeing
+  struct slave (bsc#1012628).
+- ibmvnic: fix call_netdevice_notifiers in do_reset (bsc#1012628).
+- ibmvnic: notify peers when failover and migration happen
+  (bsc#1012628).
+- powerpc/64s: Fix allnoconfig build since uaccess flush
+  (bsc#1012628).
+- iommu: Check return of __iommu_attach_device() (bsc#1012628).
+- IB/mthca: fix return value of error branch in mthca_init_cq()
+  (bsc#1012628).
+- i40e: Fix removing driver while bare-metal VFs pass traffic
+  (bsc#1012628).
+- firmware: xilinx: Fix SD DLL node reset issue (bsc#1012628).
+- spi: imx: fix the unbalanced spi runtime pm management
+  (bsc#1012628).
+- io_uring: fix shift-out-of-bounds when round up cq size
+  (bsc#1012628).
+- aquantia: Remove the build_skb path (bsc#1012628).
+- nfc: s3fwrn5: use signed integer for parsing GPIO numbers
+  (bsc#1012628).
+- net: ena: handle bad request id in ena_netdev (bsc#1012628).
+- net: ena: set initial DMA width to avoid intel iommu issue
+  (bsc#1012628).
+- net: ena: fix packet's addresses for rx_offset feature
+  (bsc#1012628).
+- ibmvnic: fix NULL pointer dereference in reset_sub_crq_queues
+  (bsc#1012628).
+- ibmvnic: fix NULL pointer dereference in ibmvic_reset_crq
+  (bsc#1012628).
+- ibmvnic: enhance resetting status check during module exit
+  (bsc#1012628).
+- optee: add writeback to valid memory type (bsc#1012628).
+- x86/tboot: Don't disable swiotlb when iommu is forced on
+  (bsc#1012628).
+- arm64: tegra: Wrong AON HSP reg property size (bsc#1012628).
+- efi/efivars: Set generic ops before loading SSDT (bsc#1012628).
+- efivarfs: revert "fix memory leak in efivarfs_create()"
+  (bsc#1012628).
+- efi: EFI_EARLYCON should depend on EFI (bsc#1012628).
+- riscv: Explicitly specify the build id style in vDSO Makefile
+  again (bsc#1012628).
+- RISC-V: Add missing jump label initialization (bsc#1012628).
+- RISC-V: fix barrier() use in <vdso/processor.h> (bsc#1012628).
+- net: stmmac: fix incorrect merge of patch upstream
+  (bsc#1012628).
+- enetc: Let the hardware auto-advance the taprio base-time of 0
+  (bsc#1012628).
+- ptp: clockmatrix: bug fix for idtcm_strverscmp (bsc#1012628).
+- drm/nouveau: fix relocations applying logic and a double-free
+  (bsc#1012628).
+- can: gs_usb: fix endianess problem with candleLight firmware
+  (bsc#1012628).
+- platform/x86: thinkpad_acpi: Send tablet mode switch at wakeup
+  time (bsc#1012628).
+- platform/x86: toshiba_acpi: Fix the wrong variable assignment
+  (bsc#1012628).
+- RDMA/hns: Fix wrong field of SRQ number the device supports
+  (bsc#1012628).
+- RDMA/hns: Fix retry_cnt and rnr_cnt when querying QP
+  (bsc#1012628).
+- RDMA/hns: Bugfix for memory window mtpt configuration
+  (bsc#1012628).
+- can: m_can: m_can_open(): remove IRQF_TRIGGER_FALLING from
+  request_threaded_irq()'s flags (bsc#1012628).
+- can: m_can: fix nominal bitiming tseg2 min for version >= 3.1
+  (bsc#1012628).
+- perf record: Synthesize cgroup events only if needed
+  (bsc#1012628).
+- perf stat: Use proper cpu for shadow stats (bsc#1012628).
+- perf probe: Fix to die_entrypc() returns error correctly
+  (bsc#1012628).
+- USB: core: Change %pK for __user pointers to %px (bsc#1012628).
+- usb: gadget: f_midi: Fix memleak in f_midi_alloc (bsc#1012628).
+- USB: core: Fix regression in Hercules audio card (bsc#1012628).
+- USB: quirks: Add USB_QUIRK_DISCONNECT_SUSPEND quirk for Lenovo
+  A630Z TIO built-in usb-audio card (bsc#1012628).
+- usb: gadget: Fix memleak in gadgetfs_fill_super (bsc#1012628).
+- irqchip/exiu: Fix the index of fwspec for IRQ type
+  (bsc#1012628).
+- x86/mce: Do not overwrite no_way_out if mce_end() fails
+  (bsc#1012628).
+- x86/speculation: Fix prctl() when
+  spectre_v2_user={seccomp,prctl},ibpb (bsc#1012628).
+- x86/resctrl: Remove superfluous kernfs_get() calls to prevent
+  refcount leak (bsc#1012628).
+- x86/resctrl: Add necessary kernfs_put() calls to prevent
+  refcount leak (bsc#1012628).
+- drm/amdgpu: add rlc iram and dram firmware support
+  (bsc#1012628).
+- commit 46922da
+
+-------------------------------------------------------------------
+Tue Dec  1 12:02:07 CET 2020 - msuchanek@suse.de
+
+- rpm/kernel-{source,binary}.spec: do not include ghost symlinks
+  (boo#1179082).
+- commit 76a9256
+
+-------------------------------------------------------------------
+Tue Dec  1 09:43:02 CET 2020 - jslaby@suse.cz
+
+- Update config files.
+  Refresh after SOUNDWIRE removal.
+- commit fa3b6ea
+
+-------------------------------------------------------------------
+Mon Nov 30 13:58:44 CET 2020 - ohering@suse.de
+
+- scripts/lib/SUSE/MyBS.pm: properly close prjconf Macros: section
+- commit 965157e
+
+-------------------------------------------------------------------
+Mon Nov 30 11:39:07 CET 2020 - tiwai@suse.de
+
+- Update config files: make CONFIG_SOUNDWIRE=m (bsc#1179201)
+  Also turned it off for unrelated platforms
+- commit afd1f81
+
+-------------------------------------------------------------------
+Thu Nov 26 16:02:20 CET 2020 - jslaby@suse.cz
+
+- Update
+  patches.kernel.org/5.9.11-181-sched-Fix-data-race-in-wakeup.patch
+  (bsc#1012628 bsc#1175893).
+  Add a bsc.
+- commit d5a5c02
+
+-------------------------------------------------------------------
+Thu Nov 26 14:07:00 CET 2020 - nsaenzjulienne@suse.de
+
+- dt-bindings: pwm: Add binding for RPi firmware PWM bus
+  (jsc#SLE-16543).
+- staging: vchiq: Release firmware handle on unbind
+  (jsc#SLE-16543).
+- soc: bcm: raspberrypi-power: Release firmware handle on unbind
+  (jsc#SLE-16543).
+-  - pwm: Add Raspberry Pi Firmware based PWM bus (jsc#SLE-16543).
+   - Update configs: Enable pwm driver on arm64/arm32
+   - supported.conf: Enable pwm driver
+- input: raspberrypi-ts: Release firmware handle when not needed
+  (jsc#SLE-16543).
+- gpio: raspberrypi-exp: Release firmware handle on unbind
+  (jsc#SLE-16543).
+- firmware: raspberrypi: Keep count of all consumers
+  (jsc#SLE-16543).
+- firmware: raspberrypi: Introduce devm_rpi_firmware_get()
+  (jsc#SLE-16543).
+- clk: bcm: rpi: Release firmware handle on unbind
+  (jsc#SLE-16543).
+- commit e8d4edd
+
+-------------------------------------------------------------------
 Tue Nov 24 20:32:13 CET 2020 - jslaby@suse.cz
 
 - spi: bcm2835aux: Restore err assignment in bcm2835aux_spi_probe
@@ -447,6 +759,14 @@ Tue Nov 24 08:49:09 CET 2020 - jslaby@suse.cz
   in some configs, but don't enable support for Amiga partitions. That is
   a bit pointless. So fix this.
 - commit cc720a5
+
+-------------------------------------------------------------------
+Mon Nov 23 11:32:29 CET 2020 - jslaby@suse.cz
+
+- rpm/kernel-binary.spec.in: use grep -E instead of egrep (bsc#1179045)
+  egrep is only a deprecated bash wrapper for "grep -E". So use the latter
+  instead.
+- commit 63d7072
 
 -------------------------------------------------------------------
 Mon Nov 23 10:08:45 CET 2020 - jslaby@suse.cz

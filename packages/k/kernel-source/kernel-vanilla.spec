@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.9
-%define patchversion 5.9.11
+%define patchversion 5.9.12
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -40,7 +40,7 @@
 %define rpm_install_dir %buildroot%obj_install_dir
 %define kernel_build_dir %my_builddir/linux-%srcversion/linux-obj
 
-%if 0%{?_project:1} && ( %(echo %_project | egrep -x -f %_sourcedir/release-projects | grep -v ^PTF | grep -vc openSUSE) || %(echo %_project | grep -Ec "^(Devel:)?Kernel:") )
+%if 0%{?_project:1} && ( %(echo %_project | grep -Ex -f %_sourcedir/release-projects | grep -v ^PTF | grep -vc openSUSE) || %(echo %_project | grep -Ec "^(Devel:)?Kernel:") )
 	%define klp_symbols 1
 %endif
 
@@ -68,9 +68,9 @@ Name:           kernel-vanilla
 Summary:        The Standard Kernel - without any SUSE patches
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.9.11
+Version:        5.9.12
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g91426ef
+Release:        <RELEASE>.g46922da
 %else
 Release:        0
 %endif
@@ -179,10 +179,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-91426efa17c9d25b4e397766a6ed536b4093c8f3
-Provides:       kernel-srchash-91426efa17c9d25b4e397766a6ed536b4093c8f3
+Provides:       kernel-%build_flavor-base-srchash-46922da21ebc0021475dc0fa8ee5514f71ebce59
+Provides:       kernel-srchash-46922da21ebc0021475dc0fa8ee5514f71ebce59
 # END COMMON DEPS
-Provides:       %name-srchash-91426efa17c9d25b4e397766a6ed536b4093c8f3
+Provides:       %name-srchash-46922da21ebc0021475dc0fa8ee5514f71ebce59
 %obsolete_rebuilds %name
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
 Source2:        source-post.sh
@@ -451,7 +451,7 @@ fi
 
 CONFIG_SUSE_KERNEL_RELEASED="--disable CONFIG_SUSE_KERNEL_RELEASED"
 %if 0%{?_project:1}
-if echo %_project | egrep -qx -f %_sourcedir/release-projects; then
+if echo %_project | grep -Eqx -f %_sourcedir/release-projects; then
 	CONFIG_SUSE_KERNEL_RELEASED="--enable CONFIG_SUSE_KERNEL_RELEASED"
 fi
 %endif
@@ -756,8 +756,6 @@ done
 # keep this -suffix list in sync with post.sh and postun.sh
 suffix=-%build_flavor
 %endif
-ln -s XX$image$suffix %buildroot/boot/$image$suffix
-ln -s XXinitrd$suffix %buildroot/boot/initrd$suffix
 
 cp -p .config %buildroot/boot/config-%kernelrelease-%build_flavor
 sysctl_file=%buildroot/boot/sysctl.conf-%kernelrelease-%build_flavor
@@ -791,7 +789,6 @@ chmod 0600 %buildroot/boot/initrd-%kernelrelease-%build_flavor{,-kdump}
 if [ %CONFIG_MODULES = y ]; then
     mkdir -p %rpm_install_dir/%cpu_arch_flavor
     mkdir -p %buildroot/usr/src/linux-obj/%cpu_arch
-    ln -s XX%build_flavor %buildroot/usr/src/linux-obj/%cpu_arch_flavor
     install -m 755 -D -t %rpm_install_dir/%cpu_arch_flavor/scripts/mod/ scripts/mod/ksym-provides
 
     gzip -n -c9 < Module.symvers > %buildroot/boot/symvers-%kernelrelease-%build_flavor.gz

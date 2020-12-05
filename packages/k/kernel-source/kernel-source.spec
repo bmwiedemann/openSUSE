@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.9
-%define patchversion 5.9.11
+%define patchversion 5.9.12
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -30,9 +30,9 @@ Name:           kernel-source
 Summary:        The Linux Kernel Sources
 License:        GPL-2.0
 Group:          Development/Sources
-Version:        5.9.11
+Version:        5.9.12
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g91426ef
+Release:        <RELEASE>.g46922da
 %else
 Release:        0
 %endif
@@ -43,7 +43,7 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-91426efa17c9d25b4e397766a6ed536b4093c8f3
+Provides:       %name-srchash-46922da21ebc0021475dc0fa8ee5514f71ebce59
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
@@ -224,8 +224,6 @@ cd ..
 %endif
 
 %if ! %vanilla_only
-ln -sf XXlinux%variant linux%variant # dummy symlink
-
 cd linux-%kernelrelease%variant
 %_sourcedir/apply-patches %_sourcedir/series.conf %my_builddir %symbols
 rm -f $(find . -name ".gitignore")
