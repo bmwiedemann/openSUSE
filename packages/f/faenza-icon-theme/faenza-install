@@ -28,10 +28,10 @@ class Faenza():
          print header
     '''
     def header(self):
-        print '\n    faenza-install -- version %s \n' % VERSION
-        print '  This script performs minimum rebranding and installs the'
-        print '  faenza-icon-theme in INSTALL_DIR (sys.argv[1]). For help'
-        print '  run the following this script with "-h" or "--help".  \n'
+        print('\n    faenza-install -- version %s \n' % VERSION)
+        print('  This script performs minimum rebranding and installs the')
+        print('  faenza-icon-theme in INSTALL_DIR (sys.argv[1]). For help')
+        print('  run the following this script with "-h" or "--help".  \n')
 
 
     '''
@@ -54,9 +54,9 @@ class Faenza():
             if os.path.exists(target):
                 os.unlink(target)
             else:
-                print '    - file not found: %s' % target
-        except Exception, errno:
-            print errno
+                print('    - file not found: %s' % target)
+        except Exception as errno:
+            print(errno)
             sys.exit(1)
         return 0
 
@@ -69,22 +69,22 @@ class Faenza():
         self.scan('start-here')
         self.scan('distributor-logo')
         if not icons:
-            print '\n - NO icons found.. Exiting!\n'
+            print('\n - NO icons found.. Exiting!\n')
             sys.exit(1)
         else:
             for icon in icons:
                 dirname, myfile = os.path.split(icon)
                 filename, myext = os.path.splitext(myfile)
-                print ' - %s' % icon
+                print(' - %s' % icon)
                 try:
                      self.delete(icon)
-                     print '     + delete file:         %s' % icon
-                except Exception, errno:
-                    print errno
+                     print('     + delete file:         %s' % icon)
+                except Exception as errno:
+                    print(errno)
                     sys.exit(1)
                 os.chdir(dirname)
                 os.system('ln -s %s %s' % ( filename + '-' + dist + myext, myfile))
-                print '     + file rebranded to:   %s' % ( filename + '-' + distribution + myext )
+                print('     + file rebranded to:   %s' % ( filename + '-' + distribution + myext ))
                 os.chdir(base)
         return 0
 
@@ -94,15 +94,15 @@ class Faenza():
          install Faenza themes on sys.argv[1]
     '''
     def install(self, target):
-        print ' - Installation \n'
+        print(' - Installation \n')
         for variant in variants:
             fs_dir = os.path.join(target, variant)
             if not os.path.isdir(fs_dir):
                 try:
                     shutil.copytree(variant, fs_dir)
-                    print '     + file installed:      %s' % fs_dir
-                except Exception, err:
-                    print err
+                    print('     + file installed:      %s' % fs_dir)
+                except Exception as err:
+                    print(err)
                     return 1
         return 0
 
@@ -143,10 +143,10 @@ def main():
 
 
     if option.version:
-        print '\n    faenza-install -- version %s \n' % VERSION
-        print '  This script performs minimum rebranding and installs the'
-        print '  faenza-icon-theme in INSTALL_DIR (sys.argv[1]). For help'
-        print '  run the following this script with "-h" or "--help".  \n'
+        print('\n    faenza-install -- version %s \n' % VERSION)
+        print('  This script performs minimum rebranding and installs the')
+        print('  faenza-icon-theme in INSTALL_DIR (sys.argv[1]). For help')
+        print('  run the following this script with "-h" or "--help".  \n')
         sys.exit(0)
 
     global dist

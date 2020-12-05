@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  4 09:25:53 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use python3 to perform installation:
+  + Replace python BuildRequires with python3-base.
+  + Change syntax of faenza-install to be python3 compatible.
+
+-------------------------------------------------------------------
 Fri May 10 09:45:06 UTC 2013 - rmilasan@suse.com
 
 - Also rebrand svg icons, otherwise default icon is set to Ubuntu.

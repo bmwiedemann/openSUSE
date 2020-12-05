@@ -2,7 +2,7 @@
 #
 # spec file for package faenza-icon-theme
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2011 PAscal Bleser
 # Copyright (c) 2010 Nelson Marques
 #
@@ -15,7 +15,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,16 +23,16 @@ Name:           faenza-icon-theme
 Version:        1.3
 Release:        0
 Summary:        Faenza Icon Theme
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/GUI/GNOME
-Url:            http://tiheum.deviantart.com/art/Faenza-Icons-173323228
+URL:            http://tiheum.deviantart.com/art/Faenza-Icons-173323228
 ## http://www.deviantart.com/download/173323228/faenza_icons_by_tiheum-d2v6x24.zip
 Source0:        https://faenza-icon-theme.googlecode.com/files/%{name}_%{version}.zip
 Source1:        http://gnome-look.org/CONTENT/content-files/132681-Faenza-Mint.tar.gz
 # script to rebrand and install stuff...
 Source2:        faenza-install
 BuildRequires:  fdupes
-BuildRequires:  python
+BuildRequires:  python3-base
 %if 0%{?suse_version}
 # For all the icon themes macros
 BuildRequires:  hicolor-icon-theme
@@ -122,7 +122,7 @@ done
 %build
 
 %install
-python %{S:2} --install %{buildroot}%{_datadir}/icons/
+python3 %{S:2} --install %{buildroot}%{_datadir}/icons/
 %fdupes %{buildroot}%{_datadir}/icons
 find %{buildroot}%{_datadir}/icons -type f -exec chmod 0644 {} \;
 
