@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define         oldpython python
 Name:           python-pycairo
-Version:        1.19.1
+Version:        1.20.0
 Release:        0
 Summary:        Python Bindings for Cairo
 License:        LGPL-2.1-or-later OR MPL-1.1
@@ -29,7 +29,7 @@ Source:         https://github.com/pygobject/pycairo/releases/download/v%{versio
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  cairo-devel >= 1.13.1
+BuildRequires:  cairo-devel >= 1.15.10
 BuildRequires:  python-rpm-macros
 Provides:       python-cairo = %{version}
 Obsoletes:      python-cairo < %{version}
@@ -50,7 +50,7 @@ Obsoletes:      python-cairo-devel < %{version}
 Pycairo is a Python module providing bindings for the cairo graphics library.
 
 This package provides the development files needed to build
-packages that depen on Pycairo.
+packages that depend on Pycairo.
 
 %package     -n python-pycairo-common-devel
 Summary:        Headers for the Cairo Python bindings
@@ -65,7 +65,7 @@ Obsoletes:      python-cairo-common-devel < %{version}
 Pycairo is a Python module providing bindings for the cairo graphics library.
 
 This package provides the headers and development files needed to build
-packages that depen on Pycairo.
+packages that depend on Pycairo.
 
 %prep
 %setup -q -n pycairo-%{version}
@@ -77,22 +77,23 @@ packages that depen on Pycairo.
 %python_install
 
 %check
+# this is not the deprecated setuptools test call but a custom setup compiling stuff and running pytest
 %python_exec setup.py test
 
 %files %{python_files}
 %doc NEWS docs
 %license COPYING COPYING-LGPL-2.1 COPYING-MPL-1.1
 %{python_sitearch}/cairo/
+%exclude %{python_sitearch}/cairo/include
 %{python_sitearch}/pycairo-*.egg-info
 
 %files %{python_files devel}
 %license COPYING COPYING-LGPL-2.1 COPYING-MPL-1.1
-%ifpython3
-%{_libdir}/pkgconfig/py3cairo.pc
-%endif
+%{python_sitearch}/cairo/include
 
 %files -n python-pycairo-common-devel
 %license COPYING COPYING-LGPL-2.1 COPYING-MPL-1.1
 %{_includedir}/pycairo/
+%{_libdir}/pkgconfig/py3cairo.pc
 
 %changelog

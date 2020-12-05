@@ -33,4 +33,12 @@
 - Remove patch python38.patch</comment>
     <requestid>785536</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a89ec8c00fb6ae3ec0fa26be004fde01</srcmd5>
+    <version>1.20.0</version>
+    <time>1607196907</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>852941</requestid>
+  </revision>
 </revisionlist>
