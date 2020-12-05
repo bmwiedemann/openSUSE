@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec  3 18:50:31 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.38.1:
+  + Web: Fix crash when generating speech for childless math
+    element.
+  + General: Fix bug causing the new radio button group to not be
+    presented when the group was first entered.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Sep 11 17:35:29 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.38.0:
