@@ -1,7 +1,7 @@
 #
 # spec file for package dd_rhelp
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Bash Helper Script That Handles dd_rescue
 License:        GPL-2.0-or-later
 Group:          System/Base
-Url:            http://www.kalysto.org/utilities/dd_rhelp/index.en.html
+URL:            http://www.kalysto.org/utilities/dd_rhelp/index.en.html
 Source0:        http://www.kalysto.org/pkg/%{name}-%{version}.tar.gz
 Patch1:         dd_rhelp_EOF.diff
 Patch2:         dd_rhelp_Summary.diff
@@ -56,10 +56,10 @@ that work and only then tries to approach the bad spots from both sides.
 mkdir -p %{buildroot}%{_bindir}
 install -Dpm 0755 dd_rhelp %{buildroot}%{_bindir}
 
-#UsrMerge
+%if !0%{?usrmerged}
 mkdir %{buildroot}/bin
 ln -sf %{_bindir}/dd_rhelp %{buildroot}/bin
-#EndUsrMerge
+%endif
 
 %check
 ./dd_rhelp.test
@@ -68,8 +68,8 @@ ln -sf %{_bindir}/dd_rhelp %{buildroot}/bin
 %defattr(-,root,root,-)
 %doc COPYING ChangeLog FAQ NEWS README THANKS TODO doc/example.txt
 %{_bindir}/dd_rhelp
-#UsrMerge
+%if !0%{?usrmerged}
 /bin/dd_rhelp
-#EndUsrMerge
+%endif
 
 %changelog

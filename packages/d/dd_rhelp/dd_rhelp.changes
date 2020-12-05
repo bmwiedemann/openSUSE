@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 19 16:02:42 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
 Wed Mar 14 14:05:31 CET 2018 - kurt@garloff.de
 
 - dd_r_version.diff: Make dd_rhelp accept version 1.99.x. 
