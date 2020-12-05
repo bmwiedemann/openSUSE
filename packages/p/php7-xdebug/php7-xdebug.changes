@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Dec  4 18:28:43 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Updated to Xdebug 3.0.1
+  * Fixed issue #1893: Crash with ext-fiber and xdebug.mode=coverage
+  * Fixed issue #1896: Segfault with closures that are not created from
+    user code
+  * Fixed issue #1897: Crash when removing a breakpoint
+  * Fixed issue #1900: Update README and add run-xdebug-tests.php to package
+  * Fixed issue #1901: Stack traces are shown (with a broken time) when
+    Xdebug's mode includes 'debug' but not 'develop' or 'trace'
+  * Fixed issue #1902: Compillation failure on AIX
+  * Fixed issue #1903: Constants should always be available, regardless of
+    which mode Xdebug is in
+  * Fixed issue #1904: Profile and trace files using %t or %u do not get the
+    right names
+  * Fixed issue #1905: Debugger does not disable request timeouts
+
+-------------------------------------------------------------------
+Wed Nov 25 16:24:54 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Updated to Xdebug 3.0.0
+  * Xdebug 3 includes major changes in functionality compared to Xdebug 2.
+    The primary way how you turn on functionality is through the new
+    xdebug.mode PHP configuration setting. This made it possible to
+    massively increase performance in many of Xdebug's sub systems as
+    Xdebug is now much more conservative in which hooks are enabled.
+
+    Configuration changes, massive performance improvements, and PHP 8
+    support are the primary features in Xdebug 3, but there is much more.
+    The upgrade guide lists the changes in great detail, please read it:
+
+    https://xdebug.org/docs/upgrade_guide
+
+-------------------------------------------------------------------
 Mon Sep 28 17:08:47 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - Updated to Xdebug 2.9.8

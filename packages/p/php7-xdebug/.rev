@@ -135,4 +135,12 @@
   * Fixed issue #1855: Build issues on FreeBSD</comment>
     <requestid>838350</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>dc00d952d1b2d5532aeadfacd481a85a</srcmd5>
+    <version>3.0.1</version>
+    <time>1607197059</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853275</requestid>
+  </revision>
 </revisionlist>
