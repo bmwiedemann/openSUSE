@@ -205,4 +205,17 @@ preparation for submit to SUSE. Remove %defattr(-,root,root,-) in %files</commen
   * go#42557 cmd/go: improper validation of cgo flags can lead to remote code execution at build time (forwarded request 848226 from jfkw)</comment>
     <requestid>848228</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fd019a584fcd3ef473417c6a52362163</srcmd5>
+    <version>1.14.13</version>
+    <time>1607196914</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.14.13 (released 2020-12-03) includes fixes to the compiler,
+  runtime, and the go command.
+  Refs boo#1164903 go1.14 release tracking
+  * go#42755 cmd/compile: ICE due to bad ORL constant
+  * go#42635 runtime: infinite loop in lockextra on linux/amd64
+  * go#42566 cmd/go: allow flags in CGO_LDFLAGS environment variable not in security allowlist</comment>
+    <requestid>852983</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec  3 22:31:19 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.14.13 (released 2020-12-03) includes fixes to the compiler,
+  runtime, and the go command.
+  Refs boo#1164903 go1.14 release tracking
+  * go#42755 cmd/compile: ICE due to bad ORL constant
+  * go#42635 runtime: infinite loop in lockextra on linux/amd64
+  * go#42566 cmd/go: allow flags in CGO_LDFLAGS environment variable not in security allowlist
+
+-------------------------------------------------------------------
 Thu Nov 12 21:10:05 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.14.12 (released 2020-11-12) includes security fixes to the
