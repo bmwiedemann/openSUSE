@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Dec  2 14:28:44 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Include xen and qemu-guest packages for aarch64 too
+
+-------------------------------------------------------------------
+Wed Dec  2 13:58:56 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add aarch64 support for kvm-and-xen image
+
+-------------------------------------------------------------------
+Wed Dec  2 13:36:23 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add aarch64 support for MS-HyperV
+
+-------------------------------------------------------------------
 Fri Sep 11 07:34:51 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Add pam_pwquality

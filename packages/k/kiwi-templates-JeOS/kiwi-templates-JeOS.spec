@@ -17,15 +17,9 @@
 
 
 %define dest %_datadir/kiwi/image/openSUSE-Tumbleweed-JeOS
-
-%if "@BUILD_FLAVOR@" != ""
-ExclusiveArch:  do_not_build
-%endif
-
 Name:           kiwi-templates-JeOS
 Version:        84.87
 Release:        0
-BuildArch:      noarch
 Summary:        KIWI - openSUSE Tumbleweed JeOS image templates
 License:        MIT
 Group:          System/Management
@@ -37,6 +31,10 @@ Source03:       editbootinstall_rpi.sh
 Source99:       LICENSE
 Requires:       python3-kiwi
 Supplements:    kiwi-templates
+BuildArch:      noarch
+%if "@BUILD_FLAVOR@" != ""
+ExclusiveArch:  do_not_build
+%endif
 
 %description
 This package contains system image templates to easily build
@@ -44,7 +42,7 @@ a openSUSE Tumbleweed based operating system image with
 kiwi.
 
 %prep
-%setup -cT
+%setup -q -cT
 cp "%SOURCE99" .
 
 %build

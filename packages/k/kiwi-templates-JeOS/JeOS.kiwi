@@ -9,13 +9,29 @@
         <specification>openSUSE Tumbleweed JeOS</specification>
     </description>
     <profiles>
-        <profile name="kvm-and-xen" description="JeOS for KVM and HVM Xen" arch="x86_64"/>
+        <!-- Those two are only used as deps -->
+        <profile name="kvm-and-xen.x86_64" description="JeOS for KVM and HVM Xen" arch="x86_64"/>
+        <profile name="kvm-and-xen.aarch64" description="JeOS for KVM and HVM Xen" arch="aarch64"/>
+        <profile name="kvm-and-xen" description="JeOS for KVM and HVM Xen" arch="x86_64">
+            <requires profile="kvm-and-xen.x86_64"/>
+        </profile>
+        <profile name="kvm-and-xen" description="JeOS for KVM and HVM Xen" arch="aarch64">
+            <requires profile="kvm-and-xen.aarch64"/>
+        </profile>
         <profile name="VMware" description="JeOS for VMware" arch="x86_64"/>
-        <profile name="MS-HyperV" description="JeOS for Hyper-V" arch="x86_64"/>
+        <!-- Those two are only used as deps -->
+        <profile name="MS-HyperV.x86_64" description="JeOS for Hyper-V" arch="x86_64"/>
+        <profile name="MS-HyperV.aarch64" description="JeOS for Hyper-V" arch="aarch64"/>
+        <profile name="MS-HyperV" description="JeOS for Hyper-V" arch="x86_64">
+            <requires profile="MS-HyperV.x86_64"/>
+        </profile>
+        <profile name="MS-HyperV" description="JeOS for Hyper-V" arch="aarch64">
+            <requires profile="MS-HyperV.aarch64"/>
+        </profile>
         <profile name="OpenStack-Cloud" description="JeOS for OpenStack Cloud" arch="x86_64"/>
         <profile name="RaspberryPi" description="JeOS for the Raspberry Pi" arch="aarch64"/>
     </profiles>
-    <preferences profiles="kvm-and-xen">
+    <preferences profiles="kvm-and-xen.x86_64">
         <version>15.1.0</version>
         <packagemanager>zypper</packagemanager>
         <bootloader-theme>openSUSE</bootloader-theme>
@@ -41,6 +57,38 @@
                 <volume name="srv"/>
                 <volume name="boot/grub2/i386-pc"/>
                 <volume name="boot/grub2/x86_64-efi" mountpoint="boot/grub2/x86_64-efi"/>
+                <volume name="usr/local"/>
+                <volume name="var" copy_on_write="false"/>
+            </systemdisk>
+            <size unit="G">24</size>
+        </type>
+    </preferences>
+
+    <preferences profiles="kvm-and-xen.aarch64">
+        <version>15.1.0</version>
+        <packagemanager>zypper</packagemanager>
+        <bootloader-theme>openSUSE</bootloader-theme>
+        <rpm-excludedocs>true</rpm-excludedocs>
+        <type
+            image="vmx"
+            filesystem="btrfs"
+            format="qcow2"
+            bootloader="grub2"
+            firmware="uefi"
+            efipartsize="33"
+            kernelcmdline="quiet plymouth.enable=0 console=ttyS0,115200 console=tty0"
+            bootpartition="false"
+            bootkernel="custom"
+            devicepersistency="by-uuid"
+            btrfs_quota_groups="true"
+            btrfs_root_is_snapshot="true"
+        >
+            <systemdisk>
+                <volume name="home"/>
+                <volume name="root"/>
+                <volume name="opt"/>
+                <volume name="srv"/>
+                <volume name="boot/grub2/arm64-efi" mountpoint="boot/grub2/arm64-efi"/>
                 <volume name="usr/local"/>
                 <volume name="var" copy_on_write="false"/>
             </systemdisk>
@@ -104,7 +152,7 @@
         </type>
     </preferences>
 
-    <preferences profiles="MS-HyperV">
+    <preferences profiles="MS-HyperV.x86_64">
         <version>15.1.0</version>
         <packagemanager>zypper</packagemanager>
         <bootloader-theme>openSUSE</bootloader-theme>
@@ -131,6 +179,40 @@
                 <volume name="srv"/>
                 <volume name="boot/grub2/i386-pc"/>
                 <volume name="boot/grub2/x86_64-efi" mountpoint="boot/grub2/x86_64-efi"/>
+                <volume name="usr/local"/>
+                <volume name="var" copy_on_write="false"/>
+            </systemdisk>
+            <size unit="G">24</size>
+        </type>
+    </preferences>
+
+    <preferences profiles="MS-HyperV.aarch64">
+        <version>15.1.0</version>
+        <packagemanager>zypper</packagemanager>
+        <bootloader-theme>openSUSE</bootloader-theme>
+        <rpm-excludedocs>true</rpm-excludedocs>
+        <type
+            image="vmx"
+            filesystem="btrfs"
+            format="vhdx"
+            boottimeout="10"
+            bootloader="grub2"
+            firmware="uefi"
+            efipartsize="33"
+            kernelcmdline="quiet plymouth.enable=0 rootdelay=300 console=ttyS0,115200 console=tty0 earlyprintk=ttyS0,115200"
+            bootpartition="false"
+            bootkernel="custom"
+            devicepersistency="by-uuid"
+            btrfs_quota_groups="true"
+            btrfs_root_is_snapshot="true"
+        >
+            <systemdisk>
+                <volume name="home"/>
+                <volume name="root"/>
+                <volume name="tmp"/>
+                <volume name="opt"/>
+                <volume name="srv"/>
+                <volume name="boot/grub2/arm64-efi" mountpoint="boot/grub2/arm64-efi"/>
                 <volume name="usr/local"/>
                 <volume name="var" copy_on_write="false"/>
             </systemdisk>
@@ -234,12 +316,12 @@
     </packages>
 
     <packages type="image" profiles="kvm-and-xen">
-        <package name="xen-tools-domU" arch="x86_64"/>
-        <package name="xen-libs" arch="x86_64"/>
+        <package name="xen-tools-domU"/>
+        <package name="xen-libs"/>
         <package name="kernel-default-base"/>
     </packages>
     <packages type="image" profiles="kvm-and-xen,OpenStack-Cloud">
-        <package name="qemu-guest-agent" arch="x86_64"/>
+        <package name="qemu-guest-agent"/>
     </packages>
     <packages type="image" profiles="VMware">
         <package name="open-vm-tools" arch="x86_64"/>
