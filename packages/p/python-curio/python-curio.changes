@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec  3 21:47:14 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Although upstream reduced their requirement to python >= 3.6,
+  we keep python >= 3.7 and skip the upcoming python36 flavor,
+  because the unittests fail.
+  * https://github.com/dabeaz/curio/commit/1ea5653
+  * gh#dabeaz/curio#336  
+  * gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Thu Oct 22 03:11:22 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.4:

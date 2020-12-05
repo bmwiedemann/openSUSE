@@ -18,6 +18,8 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+# skip for future multiple python3 flavors
+%define skip_python36 1
 Name:           python-curio
 Version:        1.4
 Release:        0
@@ -26,6 +28,7 @@ License:        BSD-Source-Code
 URL:            https://github.com/dabeaz/curio
 Source:         https://github.com/dabeaz/curio/archive/%{version}.tar.gz#/curio-%{version}.tar.gz
 Patch0:         make-tests-reproducible.patch
+# https://github.com/dabeaz/curio/issues/336
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -55,6 +58,8 @@ Curio is a library for performing concurrent I/O with coroutines in Python 3.
 %files %{python_files}
 %license LICENSE
 %doc CHANGES README.rst
-%{python_sitelib}/*
+%{python_sitelib}/curio
+%{python_sitelib}/curio-%{version}*-info
 
 %changelog
+
