@@ -114,4 +114,12 @@
     <comment>- improve package description for discoverability (boo#1160070)</comment>
     <requestid>760728</requestid>
   </revision>
+  <revision rev="16" vrev="24">
+    <srcmd5>cb94697c77a3fd0f650293f739340bdf</srcmd5>
+    <version>11.4</version>
+    <time>1607197880</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853286</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package fetchmsttfonts
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,9 @@ Release:        0
 Summary:        Helper package to download Microsoft Core fonts for the Web
 License:        GPL-2.0-or-later
 Group:          System/X11/Fonts
+URL:            https://corefonts.sourceforge.net/
 Source0:        fetchmsttfonts.sh.in
 Source1:        COPYING
-Source2:        corefonts.md5
-Source3:        corefonts.sha1
 Source4:        corefonts.sha512
 #these stop the patch from pulling in the package
 #Provides:       pullin-msttf-fonts = 11.1
@@ -54,8 +53,6 @@ Roman, Trebuchet MS, Verdana, Webdings.
 %prep
 cp %{SOURCE0} .
 cp %{SOURCE1} .
-cp %{SOURCE2} .
-cp %{SOURCE3} .
 cp %{SOURCE4} .
 
 %build
@@ -63,7 +60,6 @@ sed \
 	-e 's,__VERSION__,%version,' \
 	-e 's,__RELEASE__,%release,' \
 	-e 's,__NAME__,%name,' \
-	-e 's,__DOCDIR__,%{_docdir},' \
 	fetchmsttfonts.sh.in > fetchmsttfonts.sh
 
 %install
@@ -79,15 +75,13 @@ for f in webdings.ttf verdanaz.ttf verdana.ttf verdanai.ttf verdanab.ttf trebuc.
 do
 	touch %buildroot/usr/share/fonts/truetype/$f
 done
-
-%clean
-rm -rf $RPM_BUILD_ROOT
+mkdir -p %{buildroot}/usr/share/%{name}
+mv corefonts.sha512 %{buildroot}/usr/share/%{name}
 
 %postun -p /usr/sbin/fonts-config
 
 %files
 %license COPYING
-%doc corefonts.{md5,sha1,sha512}
 /var/adm/update-scripts/*
 %dir /usr/share/doc/corefonts
 %dir /usr/share/fonts/truetype
@@ -124,5 +118,6 @@ rm -rf $RPM_BUILD_ROOT
 %ghost /usr/share/fonts/truetype/arialbi.ttf
 %ghost /usr/share/fonts/truetype/arialbd.ttf
 %ghost /usr/share/fonts/truetype/andalemo.ttf
+/usr/share/%{name}
 
 %changelog

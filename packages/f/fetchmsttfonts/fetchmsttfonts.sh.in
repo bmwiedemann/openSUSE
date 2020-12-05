@@ -47,13 +47,11 @@ for archive in $FONTS; do
         continue
     fi
 
-    for algo in md5 sha1 sha512; do
-        if ! grep "$file" "__DOCDIR__/__NAME__/corefonts.$algo" | ${algo}sum --check --quiet --status > /dev/null 2>&1; then
-            rm -f "$file"
-            echo "$algo checksum mismatch for $file ... deleted!"
-            continue
-        fi
-    done
+    if ! grep "$file" "/usr/share/__NAME__/corefonts.sha512" | sha512sum --check --quiet --status > /dev/null 2>&1; then
+        rm -f "$file"
+        echo "checksum mismatch for $file ... deleted!"
+        continue
+    fi
 
     echo "done"
     echo -n "  Extracting ... "
