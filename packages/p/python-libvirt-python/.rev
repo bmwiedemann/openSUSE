@@ -433,4 +433,16 @@ fix a jira reference in the changelog.
 - Remove signature file and python-libvirt-python.keyring</comment>
     <requestid>845550</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>4337874b6a84cbb346321c6d3bfbe429</srcmd5>
+    <version>6.10.0</version>
+    <time>1607196950</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 6.10.0.
+
+- Update to 6.10.0
+  - Add all new APIs and constants in libvirt 6.10.0
+  - jsc#SLE-13688</comment>
+    <requestid>852458</requestid>
+  </revision>
 </revisionlist>
