@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Thu Nov 26 13:52:20 UTC 2020 - Frank Schreiner <FSchreiner@suse.com>
+
+- fixed summary 
+
+-------------------------------------------------------------------
+Tue Nov 24 08:40:49 UTC 2020 - Frank Schreiner <FSchreiner@suse.com>
+
+- added BuildRequires ncurses5-devel
+- re-run cpanspec
+
+-------------------------------------------------------------------
+Sun May 10 10:59:56 UTC 2020 - Frank Schreiner <FSchreiner@suse.com>
+
+- updated to new upstream version (0.09)
+
+-------------------------------------------------------------------
+Sun Nov 06 23:50:42 CET 2011 - pascal.bleser@opensuse.org
+
+- initial version (0.07)
+
