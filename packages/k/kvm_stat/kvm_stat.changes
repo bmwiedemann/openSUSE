@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  4 17:40:20 UTC 2020 - Dario Faggioli <dfaggioli@suse.com>
+
+- Include the example service file in the package
+  * install it in /usr/share/kvm_stat
+  * this deals properly with bsc#1179469
+
+-------------------------------------------------------------------
 Fri Nov 13 17:45:02 UTC 2020 - Dario Faggioli <dfaggioli@suse.com>
 
 - Implement jsc#SLE-13784

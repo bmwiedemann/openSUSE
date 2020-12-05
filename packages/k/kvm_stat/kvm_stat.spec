@@ -78,11 +78,14 @@ make -C tools/kvm/kvm_stat %{?_smp_mflags}
 
 %install
 make -C tools kvm_stat_install INSTALL_ROOT=%{buildroot}
+install -d -m 755 %{buildroot}/%{_datadir}/kvm_stat
+install -m 644 tools/kvm/kvm_stat/kvm_stat.service %{buildroot}/%{_datadir}/kvm_stat/
 
 %files
 %defattr(-, root, root)
 %license COPYING
 %{_bindir}/kvm_stat
 %{_mandir}/man1/kvm_stat*
+%{_datadir}/kvm_stat
 
 %changelog
