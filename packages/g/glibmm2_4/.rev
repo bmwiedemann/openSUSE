@@ -97,4 +97,12 @@
     <comment>New stable release (forwarded request 849859 from iznogood)</comment>
     <requestid>851032</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f92519cab007b387129d0b8e7d4c8b8a</srcmd5>
+    <version>2.64.5</version>
+    <time>1607196974</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 852319 from iznogood)</comment>
+    <requestid>852649</requestid>
+  </revision>
 </revisionlist>
