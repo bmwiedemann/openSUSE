@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Dec  2 09:09:34 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Do not check license in vector images (needed for jsc#SLE-16313).
+- 1.4.14
+
+-------------------------------------------------------------------
+Tue Dec  1 14:51:52 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Use the "--non-interactive" zypper option in the
+  "build_dependencies:install" task if not running in a terminal
+  (related to bsc#1179445)
+- 1.4.13
+
+-------------------------------------------------------------------
+Tue Dec  1 08:54:02 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Use "sudo" in the "build_dependencies:install" task only when
+  running as non-root, "sudo" might not be installed when running
+  as root (bsc#1179445)
+- 1.4.12
+
+-------------------------------------------------------------------
 Tue Jun 23 08:08:11 UTC 2020 - David Diaz <dgonzalez@suse.com>
 
 - Add support for using Linux Foundation Bugzilla and Github issues
