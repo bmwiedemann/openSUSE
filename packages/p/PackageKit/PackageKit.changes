@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  2 07:24:08 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-cleanup-tmp-files.patch: Revert "Revert
+  "zypp: Clean up temporary files when PK quits""
+  (bsc#1169739 gh#hughsie/PackageKit/commit#cf73b01a).
+
+-------------------------------------------------------------------
 Wed Nov  4 02:43:07 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Update summary and description of gstreamer-plugin and
