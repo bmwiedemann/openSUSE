@@ -17,7 +17,7 @@
 
 
 Name:           stdman
-Version:        2019.08.27
+Version:        2020.11.17
 Release:        0
 Summary:        C++ stdlib man pages
 License:        MIT
