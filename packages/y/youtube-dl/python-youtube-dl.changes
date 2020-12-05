@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec  4 20:57:46 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.12.05
+  * gamespot: Extract DASH and HTTP formats
+  * zdf: extract webm formats
+  * nrk: improve format extraction and geo-restriction detection
+
+-------------------------------------------------------------------
 Tue Dec  1 19:49:34 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.12.02
