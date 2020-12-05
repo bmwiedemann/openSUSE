@@ -55,12 +55,9 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# using expand here instead of %%pytest_arch as the macro does not do export on the PYTHONPATH, see https://github.com/openSUSE/python-rpm-macros/issues/43
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-PYTHONDONTWRITEBYTECODE=1
 # disable tests 'test_ignores' and 'test_convert_strs' because of bsc#1171573, failing on ppc64.
-py.test-%{$python_bin_suffix} -v -k 'not test_ignores and not test_convert_strs'
-}
+%pytest_arch -k 'not test_ignores and not test_convert_strs'
+
 
 %files %{python_files}
 %license LICENSE

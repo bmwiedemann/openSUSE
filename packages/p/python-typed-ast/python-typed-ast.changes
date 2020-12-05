@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  4 11:40:59 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Use (fixed in the meantime) pytest_arch macro in order to ignore
+  the _build directories from multiple python3 flavors
+  gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Sun May 17 19:36:16 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - disable tests 'test_ignores' and 'test_convert_strs', failing on ppc64, fixes bsc#1171573.
