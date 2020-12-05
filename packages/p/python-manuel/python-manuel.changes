@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  3 23:06:12 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix Sphinx build with primary python3 flavor for
+  gh#openSUSE/python-rpm-macros#66
+- Reorganize BuildRequires
+
+-------------------------------------------------------------------
 Mon Oct 14 14:00:08 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Replace %fdupes -s with plain %fdupes; hardlinks are better.

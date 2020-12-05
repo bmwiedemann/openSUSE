@@ -1,7 +1,7 @@
 #
 # spec file for package python-manuel
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013-2018 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,15 +27,18 @@ URL:            https://pypi.org/project/manuel/
 Source:         https://files.pythonhosted.org/packages/source/m/manuel/manuel-%{version}.tar.gz
 # add fixed sphinx config <hpj@urpla.net>
 Source1:        conf.py
-# Documentation requirements:
-BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
-# Testing requirements:
-BuildRequires:  %{python_module zope.testing}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-six
 BuildArch:      noarch
+# SECTION Documentation requirements:
+BuildRequires:  python3-Sphinx
+# /SECTION
+# SECTION Testing requirements:
+BuildRequires:  %{python_module zope.testing}
+# /SECTION
 %python_subpackages
 
 %description
@@ -56,8 +59,12 @@ cp %{SOURCE1} .
 
 %build
 %python_build
-%{_python_use_flavor python3}
-python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
+%{python_expand # build docs only one time with primary python3 flavor
+if [ $(which $python) -ef $(which python3) ]; then
+  $python setup.py build_sphinx
+  rm build/sphinx/html/.buildinfo
+fi
+}
 
 %install
 %python_install
@@ -69,7 +76,8 @@ python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
 %files %{python_files}
 %license LICENSE.rst
 %doc CHANGES.rst COPYRIGHT.rst PKG-INFO README.rst
-%{python_sitelib}/*
+%{python_sitelib}/manuel
+%{python_sitelib}/manuel-%{version}*-info
 
 %files %{python_files doc}
 %doc build/sphinx/html
