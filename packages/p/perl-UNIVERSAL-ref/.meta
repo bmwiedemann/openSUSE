@@ -1,0 +1,6 @@
+<package name="perl-UNIVERSAL-ref" project="openSUSE:Factory">
+  <title>perl-UNIVERSAL-ref - Turns ref() into a multimethod</title>
+  <description>This module changes the behavior of the builtin function ref(). If ref() is called on an object that has requested an overloaded ref, the object's '-&amp;gt;ref' method will be called and its return value used instead.</description>
+  <devel project="devel:languages:perl" package="perl-UNIVERSAL-ref"/>
+  <url>https://metacpan.org/release/UNIVERSAL-ref/</url>
+</package>
