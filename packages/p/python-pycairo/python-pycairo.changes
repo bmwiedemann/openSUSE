@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Dec  3 10:46:14 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 1.20.0
+  * Require Python 3.6+ #pr-201
+  * Require cairo 1.15.10+ #pr-204
+  * docs: support Sphinx 3.0 #pr-207
+  * meson: add ‘tests’ option to skip tests #pr-188
+  * Windows: build wheels #pr-197
+  * Add support for Python 3.9 and 3.10 #pr-198 #pr-202
+  * examples: add a Jupyter Notebook example #pr-181
+  * Raise an error early when being passed a file object not opened
+    in binary mode #pr-205
+  * Add a pyproject.toml file #pr-206
+- move header file in sitearch to devel package (rpmlint error)
+  header is packaged twice: gh#pygobject/pycairo#98
+
+-------------------------------------------------------------------
+Wed Dec  2 22:46:52 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Move the pkgconfig file to the common package
+  gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Mon Mar 16 09:47:12 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add missing dep on setuptools
