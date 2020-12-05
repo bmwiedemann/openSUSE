@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  1 13:47:35 UTC 2020 - pgajdos@suse.com
+
+- use system apache rpm macros
+- run spec-cleaner
+
+-------------------------------------------------------------------
 Fri Dec  6 13:38:50 CET 2013 - pth@suse.de
 
 - Update to 2.30 which alignes webdot with graphiz 2.30.
