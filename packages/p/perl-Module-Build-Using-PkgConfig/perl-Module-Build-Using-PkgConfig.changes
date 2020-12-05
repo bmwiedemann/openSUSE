@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Mon Nov 23 17:15:38 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- fix summary
+
+-------------------------------------------------------------------
+Fri Apr 12 05:19:06 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.03
+   see /usr/share/doc/packages/perl-Module-Build-Using-PkgConfig/Changes
+
+  0.03    2019-04-11 13:05:56
+          [CHANGES]
+           * Declare dependency on perl 5.010 because of // operator
+           * Spelling fixes from debian (thanks gregor herrmann) (RT128590)
+
+-------------------------------------------------------------------
+Wed Apr  3 07:49:54 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- initial package 0.02
+ * created by cpanspec 1.78.09
