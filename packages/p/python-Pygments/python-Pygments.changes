@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  4 13:06:36 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Revert to 2.6.1 (higher version break python-Pelican).
+
+-------------------------------------------------------------------
 Sat Oct 24 18:12:13 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 2.7.2:

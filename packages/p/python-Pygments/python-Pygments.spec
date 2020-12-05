@@ -19,7 +19,8 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Pygments
-Version:        2.7.2
+# DO NOT UPGRADE UNTIL PELICAN IS COMPATIBLE!
+Version:        2.6.1
 Release:        0
 Summary:        A syntax highlighting package written in Python
 License:        BSD-2-Clause
@@ -59,8 +60,8 @@ source code. Highlights are:
 # Remove non-oss licensed files, see bnc# 760344
 rm tests/examplefiles/firefox.mak tests/examplefiles/example.webidl
 
-# Remove unnecessary executable bit
-find . -type f -print0 | xargs -0 chmod -x
+# Remove unnecessary shebang
+sed -i '1 { /^#!/ d }' pygments/lexers/_usd_builtins.py
 
 %build
 %python_build
