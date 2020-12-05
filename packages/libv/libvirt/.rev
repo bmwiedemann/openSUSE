@@ -3725,4 +3725,12 @@ StandardGroups in rpmlint package.
   jsc#SLE-11629</comment>
     <requestid>849177</requestid>
   </revision>
+  <revision rev="318" vrev="1">
+    <srcmd5>db66d3f808d8db62a38341bd6ae6ad4d</srcmd5>
+    <version>6.10.0</version>
+    <time>1607196948</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>852456</requestid>
+  </revision>
 </revisionlist>

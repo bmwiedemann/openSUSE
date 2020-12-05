@@ -47,16 +47,16 @@
 %define with_apparmor      0%{!?_without_apparmor:1}
 
 # Optional bits on by default
-%define with_sanlock       0%{!?_without_sanlock:1}
+%define with_sanlock       1
 %define with_polkit_rules  1
-%define with_wireshark     0%{!?_without_wireshark:1}
-%define with_libssh2       0%{!?_without_libssh2:1}
-%define with_numactl       0%{!?_without_numactl:1}
+%define with_wireshark     1
+%define with_libssh2       1
+%define with_numactl       1
 
 # A few optional bits off by default, we enable later
-%define with_numad         0%{!?_without_numad:0}
-%define with_firewalld_zone 0%{!?_without_firewalld_zone:0}
-%define with_libssh        0%{!?_without_libssh:0}
+%define with_numad         0
+%define with_firewalld_zone 0
+%define with_libssh        0
 
 # Set the OS / architecture specific special cases
 
@@ -141,7 +141,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        6.9.0
+Version:        6.10.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -271,7 +271,7 @@ BuildRequires:  systemtap-sdt-devel
 BuildRequires:  numad
 %endif
 %if %{with_wireshark}
-BuildRequires:  wireshark-devel >= 2.4.0
+BuildRequires:  wireshark-devel
 %endif
 %if %{with_libssh}
 BuildRequires:  libssh-devel >= 0.7.0
@@ -291,7 +291,6 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
-Patch0:         f035f53b-virt-guest-shutdown.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -809,7 +808,7 @@ Includes the Sanlock lock manager plugin for the QEMU driver
 Summary:        Wireshark plugin for libvirt RPC protocol
 Group:          Productivity/Networking/Diagnostic
 Requires:       %{name}-libs = %{version}-%{release}
-Requires:       wireshark >= 2.4.0
+Requires:       wireshark
 
 %description -n wireshark-plugin-libvirt
 Wireshark dissector plugin for better analysis of libvirt RPC traffic.
@@ -823,33 +822,7 @@ Requires:       %{name}-daemon-driver-network = %{version}-%{release}
 libvirt plugin for NSS for translating domain names into IP addresses.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch100 -p1
-%patch101 -p1
-%patch150 -p1
-%patch151 -p1
-%patch152 -p1
-%patch153 -p1
-%patch154 -p1
-%patch155 -p1
-%patch156 -p1
-%patch200 -p1
-%patch201 -p1
-%patch202 -p1
-%patch203 -p1
-%patch204 -p1
-%patch205 -p1
-%patch206 -p1
-%patch207 -p1
-%patch208 -p1
-%patch209 -p1
-%patch210 -p1
-%patch211 -p1
-%patch212 -p1
-%patch213 -p1
-%patch214 -p1
-%patch215 -p1
+%autosetup -p1
 
 %build
 %if %{with_qemu}
@@ -873,9 +846,9 @@ libvirt plugin for NSS for translating domain names into IP addresses.
     %define arg_vbox -Ddriver_vbox=disabled
 %endif
 %if %{with_esx}
-    %define arg_esx -Ddriver_esx=enabled
+    %define arg_esx -Ddriver_esx=enabled -Dcurl=enabled
 %else
-    %define arg_esx -Ddriver_esx=disabled
+    %define arg_esx -Ddriver_esx=disabled -Dcurl=disabled
 %endif
 %if %{with_vmware}
     %define arg_vmware -Ddriver_vmware=enabled
@@ -883,11 +856,9 @@ libvirt plugin for NSS for translating domain names into IP addresses.
     %define arg_vmware -Ddriver_vmware=disabled
 %endif
 %if %{with_hyperv}
-    %define arg_hyperv -Ddriver_hyperv=enabled
-    %define arg_openwsman -Dopenwsman=enabled
+    %define arg_hyperv -Ddriver_hyperv=enabled -Dopenwsman=enabled
 %else
-    %define arg_hyperv -Ddriver_hyperv=disabled
-    %define arg_openwsman -Dopenwsman=disabled
+    %define arg_hyperv -Ddriver_hyperv=disabled -Dopenwsman=disabled
 %endif
 %if %{with_libxl}
     %define arg_libxl -Ddriver_libxl=enabled
@@ -905,14 +876,14 @@ libvirt plugin for NSS for translating domain names into IP addresses.
     %define arg_storage_sheepdog -Dstorage_sheepdog=disabled
 %endif
 %if %{with_storage_gluster}
-    %define arg_storage_gluster -Dstorage_gluster=enabled
+    %define arg_storage_gluster -Dstorage_gluster=enabled -Dglusterfs=enabled
 %else
-    %define arg_storage_gluster -Dstorage_gluster=disabled
+    %define arg_storage_gluster -Dstorage_gluster=disabled -Dglusterfs=disabled
 %endif
 %if %{with_storage_iscsi_direct}
-    %define arg_storage_iscsi_direct -Dstorage_iscsi_direct=enabled
+    %define arg_storage_iscsi_direct -Dstorage_iscsi_direct=enabled -Dlibiscsi=enabled
 %else
-    %define arg_storage_iscsi_direct -Dstorage_iscsi_direct=disabled
+    %define arg_storage_iscsi_direct -Dstorage_iscsi_direct=disabled -Dlibiscsi=disabled
 %endif
 %if %{with_libssh}
     %define arg_libssh -Dlibssh=enabled
@@ -992,7 +963,6 @@ libvirt plugin for NSS for translating domain names into IP addresses.
            -Ddriver_libvirtd=enabled \
            %{?arg_esx} \
            %{?arg_hyperv} \
-           %{?arg_openwsman} \
            %{?arg_vmware} \
            -Ddriver_vz=disabled \
            -Ddriver_bhyve=disabled \
@@ -1077,8 +1047,6 @@ cp %{buildroot}/%{_sysconfdir}/%{name}/qemu/networks/default.xml \
    %{buildroot}/%{_datadir}/%{name}/networks/default.xml
 rm -f %{buildroot}/%{_sysconfdir}/%{name}/qemu/networks/default.xml
 rm -f %{buildroot}/%{_sysconfdir}/%{name}/qemu/networks/autostart/default.xml
-# Strip auto-generated UUID - we need it generated per-install
-sed -i -e "/<uuid>/d" %{buildroot}/%{_datadir}/%{name}/networks/default.xml
 %if ! %{with_lxc}
 rm -rf %{buildroot}/%{_sysconfdir}/%{name}/lxc.conf
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/libvirtd_lxc.aug
@@ -1247,12 +1215,9 @@ fi
 %post daemon-config-network
 # Install the default network if one doesn't exist
 if test $1 -eq 1 && test ! -f %{_sysconfdir}/%{name}/qemu/networks/default.xml ; then
-    UUID=`/usr/bin/uuidgen`
-    sed -e "s,</name>,</name>\n  <uuid>$UUID</uuid>," \
-         < %{_datadir}/%{name}/networks/default.xml \
-         > %{_sysconfdir}/%{name}/qemu/networks/default.xml
+    cp %{_datadir}/%{name}/networks/default.xml %{_sysconfdir}/%{name}/qemu/networks/default.xml
     # libvirt saves this file with mode 0600
-    chmod 0600 %{_sysconfdir}/libvirt/qemu/networks/default.xml
+    chmod 0600 %{_sysconfdir}/%{name}/qemu/networks/default.xml
 fi
 
 %pre daemon-driver-nwfilter

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec  1 23:55:16 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 6.10.0
+  - jsc#SLE-13688
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+  - Dropped patches:
+    f035f53b-virt-guest-shutdown.patch
+
+-------------------------------------------------------------------
 Fri Nov 13 18:06:41 UTC 2020 - James Fehlig <jfehlig@suse.com>
 
 - spec: Remove creation of libvirt group and add Requires to the
