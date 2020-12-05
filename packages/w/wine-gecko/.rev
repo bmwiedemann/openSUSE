@@ -260,4 +260,12 @@
     <comment>Update to 2.47.1 - wine5 actually needs this version at least (See https://progress.opensuse.org/issues/61704)</comment>
     <requestid>762637</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>8560f9f65cdedbb6a6d7e663a56cf5bd</srcmd5>
+    <version>2.47.2</version>
+    <time>1607197027</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.47.2 for 6.0rc1</comment>
+    <requestid>853240</requestid>
+  </revision>
 </revisionlist>
