@@ -200,6 +200,10 @@ BuildRequires:  libunwind-devel
 BuildRequires:  dejagnu
 BuildRequires:  expect
 BuildRequires:  gdb
+%if %{build_nvptx}
+BuildRequires:  cross-nvptx-gcc7
+BuildRequires:  cross-nvptx-newlib7-devel
+%endif
 %endif
 #!BuildIgnore: gcc-PIE
 
@@ -310,6 +314,8 @@ Patch25:        gcc7-pr93965.patch
 Patch26:        gcc7-pr93888.patch
 Patch27:        gcc7-pr94148.patch
 Patch29:        gcc7-pr97535.patch
+Patch30:        gcc7-pr88522.patch
+Patch31:        gcc7-testsuite-fixes.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -317,6 +323,10 @@ Patch60:        gcc44-textdomain.patch
 Patch61:        gcc44-rename-info-files.patch
 # Feature backports
 Patch100:       gcc7-aarch64-moutline-atomics.patch
+Patch101:       gcc7-fix-retrieval-of-testnames.patch
+Patch102:       gcc7-aarch64-sls-miti-1.patch
+Patch103:       gcc7-aarch64-sls-miti-2.patch
+Patch104:       gcc7-aarch64-sls-miti-3.patch
 
 Summary:        The GNU C Compiler and Support Files
 License:        GPL-3.0-or-later
@@ -1773,11 +1783,17 @@ ln -s nvptx-newlib/newlib .
 %patch26 -p1
 %patch27 -p1
 %patch29
+%patch30 -p1
+%patch31 -p1
 %patch51
 %patch60
 %patch61
 %patch100 -p1
 %patch23 -p1
+%patch101 -p1
+%patch102 -p1
+%patch103 -p1
+%patch104 -p1
 
 #test patching end
 
@@ -1880,7 +1896,7 @@ TCFLAGS="$RPM_OPT_FLAGS" \
 hsa,\
 %endif
 %if %{build_nvptx}
-nvptx-none=%{_prefix}/nvptx-none, \
+nvptx-none, \
 %endif
 %endif
 %if %{build_nvptx}

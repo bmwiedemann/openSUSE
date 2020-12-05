@@ -1,0 +1,193 @@
+Backport to gcc7 of the below commit for bsc#1172798
+
+commit 20da13e395bde597d8337167c712039c8f923c3b
+Author: Matthew Malcomson <matthew.malcomson@arm.com>
+Date:   Thu Jul 9 09:11:58 2020 +0100
+
+    aarch64: New Straight Line Speculation (SLS) mitigation flags
+    
+    Here we introduce the flags that will be used for straight line speculation.
+    
+    The new flag introduced is `-mharden-sls=`.
+    This flag can take arguments of `none`, `all`, or a comma seperated list
+    of one or more of `retbr` or `blr`.
+    `none` indicates no special mitigation of the straight line speculation
+    vulnerability.
+    `all` requests all mitigations currently implemented.
+    `retbr` requests that the RET and BR instructions have a speculation
+    barrier inserted after them.
+    `blr` requests that BLR instructions are replaced by a BL to a function
+    stub using a BR with a speculation barrier after it.
+    
+    Setting this on a per-function basis using attributes or the like is not
+    enabled, but may be in the future.
+    
+    (cherry picked from commit a9ba2a9b77bec7eacaf066801f22d1c366a2bc86)
+    
+    gcc/ChangeLog:
+    
+    2020-06-02  Matthew Malcomson  <matthew.malcomson@arm.com>
+    
+            * config/aarch64/aarch64-protos.h (aarch64_harden_sls_retbr_p):
+            New.
+            (aarch64_harden_sls_blr_p): New.
+            * config/aarch64/aarch64.c (enum aarch64_sls_hardening_type):
+            New.
+            (aarch64_harden_sls_retbr_p): New.
+            (aarch64_harden_sls_blr_p): New.
+            (aarch64_validate_sls_mitigation): New.
+            (aarch64_override_options): Parse options for SLS mitigation.
+            * config/aarch64/aarch64.opt (-mharden-sls): New option.
+            * doc/invoke.texi: Document new option.
+
+Index: gcc-7.5.0+r278197/gcc/config/aarch64/aarch64-protos.h
+===================================================================
+--- gcc-7.5.0+r278197.orig/gcc/config/aarch64/aarch64-protos.h
++++ gcc-7.5.0+r278197/gcc/config/aarch64/aarch64-protos.h
+@@ -485,4 +485,7 @@ extern const atomic_ool_names aarch64_oo
+ extern const atomic_ool_names aarch64_ool_ldclr_names;
+ extern const atomic_ool_names aarch64_ool_ldeor_names;
+ 
++extern bool aarch64_harden_sls_retbr_p (void);
++extern bool aarch64_harden_sls_blr_p (void);
++
+ #endif /* GCC_AARCH64_PROTOS_H */
+Index: gcc-7.5.0+r278197/gcc/config/aarch64/aarch64.c
+===================================================================
+--- gcc-7.5.0+r278197.orig/gcc/config/aarch64/aarch64.c
++++ gcc-7.5.0+r278197/gcc/config/aarch64/aarch64.c
+@@ -8814,6 +8814,79 @@ aarch64_validate_mcpu (const char *str,
+   return false;
+ }
+ 
++/* Straight line speculation indicators.  */
++enum aarch64_sls_hardening_type
++{
++  SLS_NONE = 0,
++  SLS_RETBR = 1,
++  SLS_BLR = 2,
++  SLS_ALL = 3,
++};
++static enum aarch64_sls_hardening_type aarch64_sls_hardening;
++
++/* Return whether we should mitigatate Straight Line Speculation for the RET
++   and BR instructions.  */
++bool
++aarch64_harden_sls_retbr_p (void)
++{
++  return aarch64_sls_hardening & SLS_RETBR;
++}
++
++/* Return whether we should mitigatate Straight Line Speculation for the BLR
++   instruction.  */
++bool
++aarch64_harden_sls_blr_p (void)
++{
++  return aarch64_sls_hardening & SLS_BLR;
++}
++
++/* As of yet we only allow setting these options globally, in the future we may
++   allow setting them per function.  */
++static void
++aarch64_validate_sls_mitigation (const char *const_str)
++{
++  char *token_save = NULL;
++  char *str = NULL;
++
++  if (strcmp (const_str, "none") == 0)
++    {
++      aarch64_sls_hardening = SLS_NONE;
++      return;
++    }
++  if (strcmp (const_str, "all") == 0)
++    {
++      aarch64_sls_hardening = SLS_ALL;
++      return;
++    }
++
++  char *str_root = xstrdup (const_str);
++  str = strtok_r (str_root, ",", &token_save);
++  if (!str)
++    error ("invalid argument given to %<-mharden-sls=%>");
++
++  int temp = SLS_NONE;
++  while (str)
++    {
++      if (strcmp (str, "blr") == 0)
++	temp |= SLS_BLR;
++      else if (strcmp (str, "retbr") == 0)
++	temp |= SLS_RETBR;
++      else if (strcmp (str, "none") == 0 || strcmp (str, "all") == 0)
++	{
++	  error ("%<%s%> must be by itself for %<-mharden-sls=%>", str);
++	  break;
++	}
++      else
++	{
++	  error ("invalid argument %<%s%> for %<-mharden-sls=%>", str);
++	  break;
++	}
++      str = strtok_r (NULL, ",", &token_save);
++    }
++  aarch64_sls_hardening = (aarch64_sls_hardening_type) temp;
++  free (str_root);
++}
++
+ /* Validate a command-line -march option.  Parse the arch and extensions
+    (if any) specified in STR and throw errors if appropriate.  Put the
+    results, if they are valid, in RES and ISA_FLAGS.  Return whether the
+@@ -8930,6 +9003,9 @@ aarch64_override_options (void)
+   selected_arch = NULL;
+   selected_tune = NULL;
+ 
++  if (aarch64_harden_sls_string)
++    aarch64_validate_sls_mitigation (aarch64_harden_sls_string);
++
+   /* -mcpu=CPU is shorthand for -march=ARCH_FOR_CPU, -mtune=CPU.
+      If either of -march or -mtune is given, they override their
+      respective component of -mcpu.  */
+Index: gcc-7.5.0+r278197/gcc/config/aarch64/aarch64.opt
+===================================================================
+--- gcc-7.5.0+r278197.orig/gcc/config/aarch64/aarch64.opt
++++ gcc-7.5.0+r278197/gcc/config/aarch64/aarch64.opt
+@@ -68,6 +68,10 @@ mgeneral-regs-only
+ Target Report RejectNegative Mask(GENERAL_REGS_ONLY) Save
+ Generate code which uses only the general registers.
+ 
++mharden-sls=
++Target RejectNegative Joined Var(aarch64_harden_sls_string)
++Generate code to mitigate against straight line speculation.
++
+ mfix-cortex-a53-835769
+ Target Report Var(aarch64_fix_a53_err835769) Init(2) Save
+ Workaround for ARM Cortex-A53 Erratum number 835769.
+Index: gcc-7.5.0+r278197/gcc/doc/invoke.texi
+===================================================================
+--- gcc-7.5.0+r278197.orig/gcc/doc/invoke.texi
++++ gcc-7.5.0+r278197/gcc/doc/invoke.texi
+@@ -589,6 +589,7 @@ Objective-C and Objective-C++ Dialects}.
+ -mlow-precision-recip-sqrt  -mno-low-precision-recip-sqrt@gol
+ -mlow-precision-sqrt  -mno-low-precision-sqrt@gol
+ -mlow-precision-div  -mno-low-precision-div @gol
++-mharden-sls=@var{opts} @gol
+ -march=@var{name}  -mcpu=@var{name}  -mtune=@var{name}}
+ 
+ @emph{Adapteva Epiphany Options}
+@@ -14143,6 +14144,17 @@ Permissible values are @samp{none}, whic
+ functions, and @samp{all}, which enables pointer signing for all functions.  The
+ default value is @samp{none}.
+ 
++@item -mharden-sls=@var{opts}
++@opindex mharden-sls
++Enable compiler hardening against straight line speculation (SLS).
++@var{opts} is a comma-separated list of the following options:
++@table @samp
++@item retbr
++@item blr
++@end table
++In addition, @samp{-mharden-sls=all} enables all SLS hardening while
++@samp{-mharden-sls=none} disables all SLS hardening.
++
+ @end table
+ 
+ @subsubsection @option{-march} and @option{-mcpu} Feature Modifiers

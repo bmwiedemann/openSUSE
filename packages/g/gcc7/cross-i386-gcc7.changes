@@ -1,9 +1,36 @@
 -------------------------------------------------------------------
+Thu Nov 26 17:17:44 UTC 2020 - Michael Matz <matz@suse.com>
+
+- Add gcc7-aarch64-sls-miti-1.patch, gcc7-aarch64-sls-miti-2.patch,
+  gcc7-aarch64-sls-miti-3.patch to backport aarch64 Straight Line
+  Speculation mitigation [bsc#1172798, CVE-2020-13844]
+- Add gcc7-fix-retrieval-of-testnames.patch to support usage in
+  testcases added by the above.
+
+-------------------------------------------------------------------
+Thu Nov 26 15:06:50 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Enable fortran for the nvptx offload compiler. 
+- Do not specify alternate offload compiler location at
+  configure time.
+- Update README.First-for.SuSE.packagers
+
+-------------------------------------------------------------------
+Thu Nov 26 07:58:17 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Add gcc7-pr88522.patch to avoid assembler errors with AVX512
+  gather and scatter instructions when using -masm=intel.
+- Amend gcc7-remove-Wexpansion-to-defined-from-Wextra.patch to
+  reflect changes in option handling in the testsuite.
+- Add gcc7-testsuite-fixes.patch to fix PR98001 and PR98002 which
+  are broken testcases showing with malloc debugging enabled.
+
+-------------------------------------------------------------------
 Thu Nov 19 08:22:09 UTC 2020 - Richard Biener <rguenther@suse.com>
 
 - Add gcc7-aarch64-moutline-atomics.patch to backport the aarch64
   -moutline-atomics feature and accumulated fixes but not its
-  default enabling.  [jsc#SLE-12209]
+  default enabling.  [jsc#SLE-12209, bsc#1167939]
 - Order gcc7-pr92692.patch after gcc7-aarch64-moutline-atomics.patch
   and refresh.
 

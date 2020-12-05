@@ -453,4 +453,30 @@ This is in preparation of Pointer Authentication enablement in Tumbleweed. (forw
   [bsc#1178614]</comment>
     <requestid>849362</requestid>
   </revision>
+  <revision rev="31" vrev="6">
+    <srcmd5>0f161ff49616208c10f17203c5c374ad</srcmd5>
+    <version>7.5.0+r278197</version>
+    <time>1607196958</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gcc7-aarch64-sls-miti-1.patch, gcc7-aarch64-sls-miti-2.patch,
+  gcc7-aarch64-sls-miti-3.patch to backport aarch64 Straight Line
+  Speculation mitigation [bsc#1172798, CVE-2020-13844]
+- Add gcc7-fix-retrieval-of-testnames.patch to support usage in
+  testcases added by the above.
+
+- Enable fortran for the nvptx offload compiler. 
+- Do not specify alternate offload compiler location at
+  configure time.
+- Update README.First-for.SuSE.packagers
+
+- Add gcc7-pr88522.patch to avoid assembler errors with AVX512
+  gather and scatter instructions when using -masm=intel.
+- Amend gcc7-remove-Wexpansion-to-defined-from-Wextra.patch to
+  reflect changes in option handling in the testsuite.
+- Add gcc7-testsuite-fixes.patch to fix PR98001 and PR98002 which
+  are broken testcases showing with malloc debugging enabled.
+
+  default enabling.  [jsc#SLE-12209, bsc#1167939]</comment>
+    <requestid>852639</requestid>
+  </revision>
 </revisionlist>

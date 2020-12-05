@@ -1,0 +1,260 @@
+Backport of the below
+
+commit db489777bb0185e64cf4b9b8c7afed4dcc6669bd
+Author: Thomas Preud'homme <thomas.preudhomme@arm.com>
+Date:   Fri Nov 10 09:42:45 2017 +0000
+
+    [testsuite] Fix retrieval of testname
+    
+    When gcc-dg-runtest is used to run a test the test is run several times
+    with different options. For clarity of the log, the test infrastructure
+    then append the options to the testname. This means that all the code
+    that must deal with the testcase itself (eg. removing the output files
+    after the test has run) needs to remove the option name.
+    
+    There is already a pattern (see below) for this in several place of the
+    testsuite framework but it is also missing in many places. This patch
+    fixes all of these places. The pattern is as follows:
+    
+    set testcase [testname-for-summary]
+    ; The name might include a list of options; extract the file name.
+    set testcase [lindex $testcase 0]
+    
+    2017-11-10  Thomas Preud'homme  <thomas.preudhomme@arm.com>
+    
+        gcc/testsuite/
+        * lib/scanasm.exp (scan-assembler): Extract filename from testname used
+        in summary.
+        (scan-assembler-not): Likewise.
+        (scan-hidden): Likewise.
+        (scan-not-hidden): Likewise.
+        (scan-stack-usage): Likewise.
+        (scan-stack-usage-not): Likewise.
+        (scan-assembler-times): Likewise.
+        (scan-assembler-dem): Likewise.
+        (scan-assembler-dem-not): Likewise.
+        (object-size): Likewise.
+        (scan-lto-assembler): Likewise.
+        * lib/scandump.exp (scan-dump): Likewise.
+        (scan-dump-times): Likewise.
+        (scan-dump-not): Likewise.
+        (scan-dump-dem): Likewise.
+        (scan-dump-dem-not): Likewise
+    
+    From-SVN: r254622
+
+Index: gcc-7.5.0+r278197/gcc/testsuite/lib/scanasm.exp
+===================================================================
+--- gcc-7.5.0+r278197.orig/gcc/testsuite/lib/scanasm.exp
++++ gcc-7.5.0+r278197/gcc/testsuite/lib/scanasm.exp
+@@ -78,7 +78,9 @@ proc dg-scan { name positive testcase ou
+ 
+ proc scan-assembler { args } {
+     set testcase [testname-for-summary]
+-    set output_file "[file rootname [file tail $testcase]].s"
++    # The name might include a list of options; extract the file name.
++    set filename [lindex $testcase 0]
++    set output_file "[file rootname [file tail $filename]].s"
+     dg-scan "scan-assembler" 1 $testcase $output_file $args
+ }
+ 
+@@ -89,7 +91,9 @@ force_conventional_output_for scan-assem
+ 
+ proc scan-assembler-not { args } {
+     set testcase [testname-for-summary]
+-    set output_file "[file rootname [file tail $testcase]].s"
++    # The name might include a list of options; extract the file name.
++    set filename [lindex $testcase 0]
++    set output_file "[file rootname [file tail $filename]].s"
+ 
+     dg-scan "scan-assembler-not" 0 $testcase $output_file $args
+ }
+@@ -117,7 +121,9 @@ proc hidden-scan-for { symbol } {
+ 
+ proc scan-hidden { args } {
+     set testcase [testname-for-summary]
+-    set output_file "[file rootname [file tail $testcase]].s"
++    # The name might include a list of options; extract the file name.
++    set filename [lindex $testcase 0]
++    set output_file "[file rootname [file tail $filename]].s"
+ 
+     set symbol [lindex $args 0]
+ 
+@@ -133,7 +139,9 @@ proc scan-hidden { args } {
+ 
+ proc scan-not-hidden { args } {
+     set testcase [testname-for-summary]
+-    set output_file "[file rootname [file tail $testcase]].s"
++    # The name might include a list of options; extract the file name.
++    set filename [lindex $testcase 0]
++    set output_file "[file rootname [file tail $filename]].s"
+ 
+     set symbol [lindex $args 0]
+     set hidden_scan [hidden-scan-for $symbol]
+@@ -163,7 +171,9 @@ proc scan-file-not { output_file args }
+ 
+ proc scan-stack-usage { args } {
+     set testcase [testname-for-summary]
+-    set output_file "[file rootname [file tail $testcase]].su"
++    # The name might include a list of options; extract the file name.
++    set filename [lindex $testcase 0]
++    set output_file "[file rootname [file tail $filename]].su"
+ 
+     dg-scan "scan-file" 1 $testcase $output_file $args
+ }
+@@ -173,7 +183,9 @@ proc scan-stack-usage { args } {
+ 
+ proc scan-stack-usage-not { args } {
+     set testcase [testname-for-summary]
+-    set output_file "[file rootname [file tail $testcase]].su"
++    # The name might include a list of options; extract the file name.
++    set filename [lindex $testcase 0]
++    set output_file "[file rootname [file tail $filename]].su"
+ 
+     dg-scan "scan-file-not" 0 $testcase $output_file $args
+ }
+@@ -230,11 +242,13 @@ proc scan-assembler-times { args } {
+     }
+ 
+     set testcase [testname-for-summary]
++    # The name might include a list of options; extract the file name.
++    set filename [lindex $testcase 0]
+     set pattern [lindex $args 0]
+     set pp_pattern [make_pattern_printable $pattern]
+ 
+     # This must match the rule in gcc-dg.exp.
+-    set output_file "[file rootname [file tail $testcase]].s"
++    set output_file "[file rootname [file tail $filename]].s"
+ 
+     set files [glob -nocomplain $output_file]
+     if { $files == "" } {
+@@ -290,9 +304,11 @@ proc scan-assembler-dem { args } {
+     }
+ 
+     set testcase [testname-for-summary]
++    # The name might include a list of options; extract the file name.
++    set filename [lindex $testcase 0]
+     set pattern [lindex $args 0]
+     set pp_pattern [make_pattern_printable $pattern]
+-    set output_file "[file rootname [file tail $testcase]].s"
++    set output_file "[file rootname [file tail $filename]].s"
+ 
+     set files [glob -nocomplain $output_file]
+     if { $files == "" } {
+@@ -344,9 +360,11 @@ proc scan-assembler-dem-not { args } {
+     }
+ 
+     set testcase [testname-for-summary]
++    # The name might include a list of options; extract the file name.
++    set filename [lindex $testcase 0]
+     set pattern [lindex $args 0]
+     set pp_pattern [make_pattern_printable $pattern]
+-    set output_file "[file rootname [file tail $testcase]].s"
++    set output_file "[file rootname [file tail $filename]].s"
+ 
+     set files [glob -nocomplain $output_file]
+     if { $files == "" } {
+@@ -399,6 +417,8 @@ proc object-size { args } {
+     }
+ 
+     set testcase [testname-for-summary]
++    # The name might include a list of options; extract the file name.
++    set filename [lindex $testcase 0]
+     set what [lindex $args 0]
+     set where [lsearch { text data bss total } $what]
+     if { $where == -1 } {
+@@ -416,7 +436,7 @@ proc object-size { args } {
+         return
+     }
+ 
+-    set output_file "[file rootname [file tail $testcase]].o"
++    set output_file "[file rootname [file tail $filename]].o"
+     if ![file_on_host exists $output_file] {
+ 	verbose -log "$testcase: $output_file does not exist"
+ 	unresolved "$testcase object-size $what $cmp $with"
+@@ -510,7 +530,9 @@ proc dg-function-on-line { args } {
+ 
+ proc scan-lto-assembler { args } {
+     set testcase [testname-for-summary]
+-    set output_file "[file rootname [file tail $testcase]].exe.ltrans0.s"
++    # The name might include a list of options; extract the file name.
++    set filename [lindex $testcase 0]
++    set output_file "[file rootname [file tail $filename]].exe.ltrans0.s"
+     verbose "output_file: $output_file"
+     dg-scan "scan-assembler" 1 $testcase $output_file $args
+ }
+Index: gcc-7.5.0+r278197/gcc/testsuite/lib/scandump.exp
+===================================================================
+--- gcc-7.5.0+r278197.orig/gcc/testsuite/lib/scandump.exp
++++ gcc-7.5.0+r278197/gcc/testsuite/lib/scandump.exp
+@@ -45,11 +45,13 @@ proc scan-dump { args } {
+     }
+ 
+     set testcase [testname-for-summary]
++    # The name might include a list of options; extract the file name.
++    set filename [lindex $testcase 0]
+ 
+     set printable_pattern [make_pattern_printable [lindex $args 1]]
+     set suf [dump-suffix [lindex $args 2]]
+     set testname "$testcase scan-[lindex $args 0]-dump $suf \"$printable_pattern\""
+-    set src [file tail [lindex $testcase 0]]
++    set src [file tail $filename]
+     set output_file "[glob -nocomplain $src.[lindex $args 2]]"
+     if { $output_file == "" } {
+ 	verbose -log "$testcase: dump file does not exist"
+@@ -86,10 +88,12 @@ proc scan-dump-times { args } {
+     }
+ 
+     set testcase [testname-for-summary]
++    # The name might include a list of options; extract the file name.
++    set filename [lindex $testcase 0]
+     set suf [dump-suffix [lindex $args 3]]
+     set printable_pattern [make_pattern_printable [lindex $args 1]]
+     set testname "$testcase scan-[lindex $args 0]-dump-times $suf \"$printable_pattern\" [lindex $args 2]"
+-    set src [file tail [lindex $testcase 0]]
++    set src [file tail $filename]
+     set output_file "[glob -nocomplain $src.[lindex $args 3]]"
+     if { $output_file == "" } {
+ 	verbose -log "$testcase: dump file does not exist"
+@@ -126,10 +130,12 @@ proc scan-dump-not { args } {
+     }
+ 
+     set testcase [testname-for-summary]
++    # The name might include a list of options; extract the file name.
++    set filename [lindex $testcase 0]
+     set printable_pattern [make_pattern_printable [lindex $args 1]]
+     set suf [dump-suffix [lindex $args 2]]
+     set testname "$testcase scan-[lindex $args 0]-dump-not $suf \"$printable_pattern\""
+-    set src [file tail [lindex $testcase 0]]
++    set src [file tail $filename]
+     set output_file "[glob -nocomplain $src.[lindex $args 2]]"
+     if { $output_file == "" } {
+ 	verbose -log "$testcase: dump file does not exist"
+@@ -179,10 +185,12 @@ proc scan-dump-dem { args } {
+     }
+ 
+     set testcase [testname-for-summary]
++    # The name might include a list of options; extract the file name.
++    set filename [lindex $testcase 0]
+     set printable_pattern [make_pattern_printable [lindex $args 1]]
+     set suf [dump-suffix [lindex $args 2]]
+     set testname "$testcase scan-[lindex $args 0]-dump-dem $suf \"$printable_pattern\""
+-    set src [file tail [lindex $testcase 0]]
++    set src [file tail $filename]
+     set output_file "[glob -nocomplain $src.[lindex $args 2]]"
+     if { $output_file == "" } {
+ 	verbose -log "$testcase: dump file does not exist"
+@@ -231,10 +239,12 @@ proc scan-dump-dem-not { args } {
+     }
+ 
+     set testcase [testname-for-summary]
++    # The name might include a list of options; extract the file name.
++    set filename [lindex $testcase 0]
+     set printable_pattern [make_pattern_printable [lindex $args 1]
+     set suf [dump-suffix [lindex $args 2]]
+     set testname "$testcase scan-[lindex $args 0]-dump-dem-not $suf \"$printable_pattern\""
+-    set src [file tail [lindex $testcase 0]]
++    set src [file tail $filename]
+     set output_file "[glob -nocomplain $src.[lindex $args 2]]"
+     if { $output_file == "" } {
+ 	verbose -log "$testcase: dump file does not exist"
