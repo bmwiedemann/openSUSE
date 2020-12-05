@@ -1,0 +1,6 @@
+<package name="perl-Sys-MemInfo" project="openSUSE:Factory">
+  <title>perl-Sys-MemInfo - Query the Total Free and Used Physical Memory</title>
+  <description>Sys::MemInfo return the total amount of free and used physical memory in bytes in totalmem and freemem variables. Total amount of free and user swap memory are alse returned in totalswap and freeswap variables. This module has been tested on Linux 3.13.0, UnixWare 7.1.2, AIX5, OpenBSD 3.8, NetBSD 2.0.2, FreBSD 5.4, HPUX11, Solaris 9, Tru64 5.1, Irix 6.5, Mac OS X 10.2 darwin and Windows XP. It should work on FreeBSD 4 and Windows 9X/ME/NT/200X/Vista.</description>
+  <devel project="devel:languages:perl" package="perl-Sys-MemInfo"/>
+  <url>https://metacpan.org/release/Sys-MemInfo/</url>
+</package>

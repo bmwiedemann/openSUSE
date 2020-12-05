@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Tue Nov 24 08:45:32 UTC 2020 - Frank Schreiner <FSchreiner@suse.com>
+
+- re-run cpanspec
+
+-------------------------------------------------------------------
+Fri Oct 14 06:20:08 UTC 2016 - coolo@suse.com
+
+- updated to 0.99
+   see /usr/share/doc/packages/perl-Sys-MemInfo/Changes
+
+  
+  0.99  Fri Oct 14 02:12:00 2016
+      - fixed compilation (RT #69366), thanks Stefan Jakobs <projects _at_ localside.net>
+
+-------------------------------------------------------------------
+Mon Jun 13 05:32:05 UTC 2016 - fschreiner@suse.com
+
+- initial package 0.98
+ * created by cpanspec 1.78.08
+
