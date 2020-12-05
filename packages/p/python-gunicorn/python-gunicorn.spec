@@ -26,8 +26,6 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://gunicorn.org
 Source:         https://files.pythonhosted.org/packages/source/g/gunicorn/gunicorn-%{version}.tar.gz
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 3.0}
 BuildRequires:  fdupes
@@ -61,6 +59,8 @@ This package contains the documentation.
 # remove version pinning for test requirements
 sed -i 's/==.*//' requirements_test.txt
 sed -i -e '/cover/d' requirements_test.txt
+# do not check coverage
+sed -i -e 's/--cov[^ ]*//' -e 's/--cov-report[^ ]*//' setup.cfg
 
 %build
 %python_build
@@ -90,3 +90,4 @@ sphinx-build -b html -d docs/build/doctrees docs/source docs/build/html
 %doc README.rst NOTICE THANKS docs/build/html
 
 %changelog
+

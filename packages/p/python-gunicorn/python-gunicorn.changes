@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  4 01:58:26 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Neither pytest-cov nor standalone mock are true BuildRequirements
+
+-------------------------------------------------------------------
 Wed Apr  8 14:16:12 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 20.0.4
