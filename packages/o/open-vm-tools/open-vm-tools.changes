@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec  2 14:34:21 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable build on aarch64
+
+-------------------------------------------------------------------
 Mon Nov  9 19:31:01 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add explicit pkgconfig(gdk-pixbuf-xlib-2.0) BuildRequires: used

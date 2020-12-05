@@ -134,7 +134,7 @@ Requires:       which
 # of open-vm-tools package itself.
 Obsoletes:      open-vm-tools-deploypkg <= 10.0.5
 Supplements:    modalias(pci:v000015ADd*sv*sd*bc*sc*i*)
-ExclusiveArch:  %ix86 x86_64
+ExclusiveArch:  %ix86 x86_64 aarch64
 #Upstream patches
 Patch0:         pam-vmtoolsd.patch
 
