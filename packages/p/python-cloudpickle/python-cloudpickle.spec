@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-cloudpickle
-Version:        1.4.1
+Version:        1.6.0
 Release:        0
 Summary:        Extended pickling support for Python objects
 License:        BSD-3-Clause
@@ -27,9 +27,9 @@ URL:            https://github.com/cloudpipe/cloudpickle
 Source:         https://files.pythonhosted.org/packages/source/c/cloudpickle/cloudpickle-%{version}.tar.gz
 BuildRequires:  %{python_module curses}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module numpy >= 1.8.2}
+BuildRequires:  %{python_module numpy >= 1.8.5}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools}
@@ -37,7 +37,7 @@ BuildRequires:  %{python_module tornado}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-curses
-Requires:       python-numpy >= 1.8.2
+Requires:       python-numpy >= 1.8.5
 Requires:       python-scipy
 Requires:       python-tornado
 BuildArch:      noarch
@@ -72,9 +72,9 @@ functions and classes defined interactively in the __main__ module.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+pip install ./tests/cloudpickle_testpkg
 export PYTHONPATH='.:tests'
-# Because of gh#cloudpipe/cloudpickle#316
-%pytest -s -k 'not (test_dynamic_module or test_load_dynamic_module_in_grandchild_process)'
+%pytest -s
 
 %files %{python_files}
 %doc README.md

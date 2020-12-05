@@ -161,4 +161,12 @@
   * Add support for pickling dynamic classes subclassing typing.Generic instances on Python 3.7+ (PR #351)</comment>
     <requestid>817136</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e474c5ef20ef60aeeea68ac0de45bceb</srcmd5>
+    <version>1.6.0</version>
+    <time>1607196942</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853101</requestid>
+  </revision>
 </revisionlist>
