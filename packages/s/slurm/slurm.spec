@@ -17,14 +17,15 @@
 
 
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
-%define so_version 35
-%define ver 20.02.6
-%define _ver _20_02
+%define so_version 36
+%define ver 20.11.0
+%define _ver _20_11
 %define dl_ver %{ver}
 # so-version is 0 and seems to be stable
 %define pmi_so 0
 %define nss_so 2
 %define pmix_so 2
+%define ver_major %(ver=%{version}; echo ${ver%.*})
 
 %define pname slurm
 
@@ -32,6 +33,9 @@
 ExclusiveArch:  do_not_build
 %endif
 
+%if 0%{?suse_version} < 1315
+ExclusiveArch:  do_not_build
+%endif
 %if 0%{?sle_version} == 120200
 %define base_ver 1702
 %define nocheck 1
@@ -44,6 +48,9 @@ ExclusiveArch:  do_not_build
 %endif
 %if 0%{?sle_version} == 150200
 %define base_ver 2002
+%endif
+%if 0%{?sle_version} == 150300
+%define base_ver 2011
 %endif
 
 %if 0%{?base_ver} > 0 && 0%{?base_ver} < %(echo %{_ver} | tr -d _)
@@ -74,6 +81,10 @@ ExclusiveArch:  do_not_build
 
 %if 0%{?sle_version} >= 150000 || 0%{?is_opensuse}
 %define have_http_parser 1
+%endif
+
+%if 0%{?have_http_parser} && 0%{?have_json_c}
+%define build_slurmrestd 1
 %endif
 
 %if 0
@@ -109,6 +120,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 %define libslurm libslurm%{so_version}
+%{!?_rundir:%define _rundir /var/run}
 
 Name:           %{pname}%{?upgrade:%{_ver}}
 Version:        %{ver}
@@ -240,7 +252,9 @@ through Perl.
 # therefore no need for a version string for Leap/SLE upgrade packages
 Summary:        Libraries for SLURM
 Group:          System/Libraries
-Requires:       %{name}-config = %{version}
+Requires:       %{name}-config
+Conflicts:      %{name}-config < %{ver_major}
+Conflicts:      %{name}-config > %{ver_major}.99
 Provides:       libslurm = %{version}
 Conflicts:      libslurm
 
@@ -550,7 +564,7 @@ export CPPFLAGS=-DPMIX_SO=%{pmix_so}
            --without-rpath \
            --without-datawarp \
            --with-shared-libslurm \
-%if 0%{?have_http_parser} && 0%{?have_json_c}
+%if 0%{?build_slurmrestd}
            --enable-slurmrestd \
 %endif
 %{!?have_netloc:--without-netloc} \
@@ -575,7 +589,7 @@ ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcslurmctld
 install -d -m 0755 %{buildroot}/%{_tmpfilesdir}/
 cat <<-EOF > %{buildroot}/%{_tmpfilesdir}/%{pname}.conf
 	# Create a directory with permissions 0700 owned by user slurm, group slurm
-	d /var/run/slurm 0700 slurm slurm
+	d %{_rundir}/slurm 0700 slurm slurm
 EOF
 chmod 0644 %{buildroot}/%{_tmpfilesdir}/%{pname}.conf
 %else
@@ -587,9 +601,6 @@ ln -sf %{_initrddir}/slurmdbd %{buildroot}%{_sbindir}/rcslurmdbd
 mkdir -p %{buildroot}%{_localstatedir}/spool/slurm
 
 install -D -m644 etc/cgroup.conf.example %{buildroot}/%{_sysconfdir}/%{pname}/cgroup.conf
-install -D -m644 etc/layouts.d.power.conf.example %{buildroot}/%{_sysconfdir}/%{pname}/layouts.d/power.conf.example
-install -D -m644 etc/layouts.d.power_cpufreq.conf.example %{buildroot}/%{_sysconfdir}/%{pname}/layouts.d/power_cpufreq.conf.example
-install -D -m644 etc/layouts.d.unit.conf.example %{buildroot}/%{_sysconfdir}/%{pname}/layouts.d/unit.conf.example
 install -D -m644 etc/slurm.conf.example %{buildroot}/%{_sysconfdir}/%{pname}/slurm.conf.example
 install -D -m600 etc/slurmdbd.conf.example %{buildroot}/%{_sysconfdir}/%{pname}/slurmdbd.conf
 install -D -m600 etc/slurmdbd.conf.example %{buildroot}%{_sysconfdir}/%{pname}/slurmdbd.conf.example
@@ -649,10 +660,6 @@ rm -f %{buildroot}/%{_sbindir}/capmc_suspend \
 # Build man pages that are generated directly by the tools
 %{buildroot}%{_bindir}/sjobexitmod --roff > %{buildroot}/%{_mandir}/man1/sjobexitmod.1
 %{buildroot}%{_bindir}/sjstat --roff > %{buildroot}/%{_mandir}/man1/sjstat.1
-
-# rpmlint reports wrong end of line for those files
-#sed -i 's/\r$//' %{buildroot}/%{_bindir}/qrerun
-#sed -i 's/\r$//' %{buildroot}/%{_bindir}/qalter
 
 # avoid conflicts with other packages, make wrapper unique
 mv %{buildroot}/%{_bindir}/mpiexec %{buildroot}/%{_bindir}/mpiexec.slurm
@@ -719,7 +726,7 @@ cat > %{buildroot}/%{_sysconfdir}/%{pname}/nss_slurm.conf <<EOF
 EOF
 %fdupes -s %{buildroot}
 # Temporary - remove when build is fixed upstream.
-%if 0%{!?have_http_parser:1} || 0%{!?have_json_c:1}
+%if !0%{?build_slurmrestd}
 rm -f %{buildroot}/%{_mandir}/man8/slurmrestd.*
 %endif
 
@@ -858,7 +865,7 @@ exit 0
 %{!?nil:
 # Until a posttrans macro has been added to macros.systemd, we need this
 # Do NOT delete the line breaks in the macro definition: they help
-# to cope with different versions of the %_restart_on_update.
+# to cope with different versions of the %%_restart_on_update.
 }
 %define _res_update() %{?with_systemd: 
  %{expand:%%_restart_on_update %{?*}}
@@ -902,6 +909,7 @@ exit 0
 %{_bindir}/sbatch
 %{_bindir}/sbcast
 %{_bindir}/scancel
+%{_bindir}/scrontab
 %{_bindir}/scontrol
 %{_bindir}/sdiag
 %{_bindir}/sgather
@@ -928,6 +936,7 @@ exit 0
 %{_mandir}/man1/sbatch.1*
 %{_mandir}/man1/sbcast.1*
 %{_mandir}/man1/scancel.1*
+%{_mandir}/man1/scrontab.1*
 %{_mandir}/man1/scontrol.1*
 %{_mandir}/man1/sdiag.1.*
 %{_mandir}/man1/sgather.1.*
@@ -1036,9 +1045,9 @@ exit 0
 %config %{_sysconfdir}/ld.so.conf.d/slurm.conf
 %dir %{_libdir}/slurm
 %{_libdir}/slurm/libslurmfull.so
-%{_libdir}/slurm/accounting_storage_filetxt.so
 %{_libdir}/slurm/accounting_storage_none.so
 %{_libdir}/slurm/accounting_storage_slurmdbd.so
+%{_libdir}/slurm/acct_gather_energy_pm_counters.so
 %{_libdir}/slurm/acct_gather_energy_ibmaem.so
 %{_libdir}/slurm/acct_gather_energy_none.so
 %{_libdir}/slurm/acct_gather_energy_rapl.so
@@ -1076,9 +1085,7 @@ exit 0
 %{_libdir}/slurm/job_submit_require_timelimit.so
 %{_libdir}/slurm/job_submit_throttle.so
 %{_libdir}/slurm/launch_slurm.so
-%{_libdir}/slurm/layouts_power_cpufreq.so
-%{_libdir}/slurm/layouts_power_default.so
-%{_libdir}/slurm/layouts_unit_default.so
+%{_libdir}/slurm/libslurm_pmi.so
 %{_libdir}/slurm/mcs_account.so
 %{_libdir}/slurm/mcs_group.so
 %{_libdir}/slurm/mcs_none.so
@@ -1088,6 +1095,13 @@ exit 0
 %if %{with pmix}
 %{_libdir}/slurm/mpi_pmix.so
 %{_libdir}/slurm/mpi_pmix_v3.so
+%endif
+%if 0%{?build_slurmrestd}
+%{_libdir}/slurm/openapi_dbv0_0_36.so
+%{_libdir}/slurm/openapi_v0_0_35.so
+%{_libdir}/slurm/openapi_v0_0_36.so
+%{_libdir}/slurm/rest_auth_jwt.so
+%{_libdir}/slurm/rest_auth_local.so
 %endif
 %{_libdir}/slurm/power_none.so
 %{_libdir}/slurm/preempt_none.so
@@ -1109,14 +1123,12 @@ exit 0
 %{_libdir}/slurm/select_linear.so
 %{_libdir}/slurm/site_factor_none.so
 %{_libdir}/slurm/slurmctld_nonstop.so
-%{_libdir}/slurm/switch_generic.so
 %{_libdir}/slurm/switch_none.so
 %{_libdir}/slurm/task_affinity.so
 %{_libdir}/slurm/task_cgroup.so
 %{_libdir}/slurm/task_none.so
 %{_libdir}/slurm/topology_3d_torus.so
 %{_libdir}/slurm/topology_hypercube.so
-%{_libdir}/slurm/topology_node_rank.so
 %{_libdir}/slurm/topology_none.so
 %{_libdir}/slurm/topology_tree.so
 %if 0%{?suse_version} > 1310
@@ -1162,7 +1174,7 @@ exit 0
 /%_lib/security/pam_slurm.so
 /%_lib/security/pam_slurm_adopt.so
 
-%if 0%{?have_http_parser} && 0%{?have_json_c}
+%if 0%{?build_slurmrestd}
 %files rest
 %{?comp_at}
 %{_sbindir}/slurmrestd
@@ -1189,13 +1201,9 @@ exit 0
 %files config
 %{?comp_at}
 %dir %{_sysconfdir}/%{pname}
-%dir %{_sysconfdir}/%{pname}/layouts.d
 %config(noreplace) %{_sysconfdir}/%{pname}/slurm.conf
 %config %{_sysconfdir}/%{pname}/slurm.conf.example
 %config(noreplace) %{_sysconfdir}/%{pname}/cgroup.conf
-%config(noreplace) %{_sysconfdir}/%{pname}/layouts.d/power.conf.example
-%config(noreplace) %{_sysconfdir}/%{pname}/layouts.d/power_cpufreq.conf.example
-%config(noreplace) %{_sysconfdir}/%{pname}/layouts.d/unit.conf.example
 %attr(0755, %slurm_u, %slurm_g) %_localstatedir/lib/slurm
 %{?with_systemd:%{_tmpfilesdir}/%{pname}.conf}
 %{?_rundir:%ghost %{_rundir}/slurm}
@@ -1225,7 +1233,6 @@ exit 0
 %{?comp_at}
 # do not remove cray sepcific packages from SLES update
 # Only for Cray
-%{_libdir}/slurm/acct_gather_energy_cray_aries.so
 %{_libdir}/slurm/core_spec_cray_aries.so
 %{_libdir}/slurm/job_submit_cray_aries.so
 %{_libdir}/slurm/select_cray_aries.so

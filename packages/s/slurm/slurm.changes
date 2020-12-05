@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Nov 30 20:48:01 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Update to version 20.11.0
+  Slurm 20.11 includes a number of new features including:
+  * Overhaul of the job step management and launch code, alongside improved
+    GPU task placement support.
+  * A new "Interactive Step" mode of operation for salloc.
+  * A new "scrontab" command that can be used to submit and manage
+    periodically repeating jobs.
+  * IPv6 support.
+  * Changes to the reservation logic, with new options allowing users
+    to delete reservations, allowing admins to skip the next occurance of a
+    repeated reservation, and allowing for a job to be submitted and eligible
+    to run within multiple reservations.
+  * Dynamic Future Nodes - automatically associate a dynamically
+    provisioned (or "cloud") node against a NodeName definition with matching
+    hardware.
+  * An experimental new RPC queuing mode for slurmctld to reduce thread
+    contention on heavily loaded clusters.
+  * SlurmDBD integration with the Slurm REST API.
+  Also check
+  https://github.com/SchedMD/slurm/blob/slurm-20-11-0-1/RELEASE_NOTES
+  
+-------------------------------------------------------------------
 Wed Nov 18 08:40:59 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Updated to 20.02.6, addresses two security fixes:
