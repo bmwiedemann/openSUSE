@@ -1,0 +1,36 @@
+---
+description_paragraphs: 1
+#description: |-
+#  override description from CPAN
+#summary: override summary from CPAN
+#no_testing: broken upstream
+#sources:
+#  - source1
+#  - source2
+#patches:
+#  foo.patch: -p1
+#  bar.patch:
+#preamble: |-
+# BuildRequires:  gcc-c++
+#post_prep: |-
+# hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
+# sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
+#post_build: |-
+# rm unused.files
+#post_install: |-
+# sed on %{name}.files
+
+
+# As I got no answer to 
+# https://rt.cpan.org/Public/Bug/Display.html?id=131968 since 25. Feb 2020
+# I assume it is the same license like perl an CPAN modules in general
+# https://www.cpan.org/misc/cpan-faq.html#How_is_Perl_licensed
+license: Artistic-1.0 OR GPL-1.0-or-later
+
+#skip_noarch: 1
+#custom_build: |-
+#./Build build flags=%{?_smp_mflags} --myflag
+#custom_test: |-
+#startserver && make test
+#ignore_requires: Bizarre::Module
+
