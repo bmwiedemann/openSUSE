@@ -17,8 +17,8 @@
 
 
 Name:           fplll
-%define lname   libfplll6
-Version:        5.3.3
+%define lname   libfplll7
+Version:        5.4.0
 Release:        0
 Summary:        Lenstra-Lovász Lattice Basis Reduction Algorithm Library
 License:        LGPL-2.1-or-later
@@ -88,7 +88,6 @@ rm -f "%buildroot/%_libdir"/*.la
 %defattr(-,root,root)
 %_bindir/fplll
 %_bindir/latticegen
-%_bindir/latsieve
 %_datadir/fplll/
 %doc COPYING NEWS README.md
 
