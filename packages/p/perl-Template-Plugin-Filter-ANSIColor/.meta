@@ -1,0 +1,6 @@
+<package name="perl-Template-Plugin-Filter-ANSIColor" project="openSUSE:Factory">
+  <title>perl-Template-Plugin-Filter-ANSIColor - Colorizes text using ANSI colors</title>
+  <description>Colorizes text using ANSI colors.</description>
+  <devel project="devel:languages:perl" package="perl-Template-Plugin-Filter-ANSIColor"/>
+  <url>https://metacpan.org/release/Template-Plugin-Filter-ANSIColor/</url>
+</package>
