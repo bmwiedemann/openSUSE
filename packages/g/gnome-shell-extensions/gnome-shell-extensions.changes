@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec  3 20:58:59 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.38.2:
+  + window-list: Honor changes in skip-taskbar property.
+  + window-list, workspace-indicator:
+    - Improve previews in workspace thumbs.
+    - Adjust to 3.38 changes.
+  + auto-move: Improve behavior on multi-monitor setups.
+  + windowNavigator: Adjust to 3.38 changes.
+  + Misc. bug fixes.
+
+-------------------------------------------------------------------
 Tue Oct 13 03:07:02 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Update file sle-classic.desktop according to the upstream commit
