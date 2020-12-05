@@ -1052,4 +1052,12 @@ Update 5.0.6 upstream patches to 20111210 (bnc#741878)</comment>
   - always use PROC_MOUNTS to make mount lists.</comment>
     <requestid>781473</requestid>
   </revision>
+  <revision rev="123" vrev="2">
+    <srcmd5>4f9a76b7241c155903877b31a0adf682</srcmd5>
+    <version>5.1.6</version>
+    <time>1607196909</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>852948</requestid>
+  </revision>
 </revisionlist>
