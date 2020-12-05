@@ -951,4 +951,12 @@
     <comment>submit new version 0.8.14</comment>
     <requestid>837219</requestid>
   </revision>
+  <revision rev="120" vrev="2">
+    <srcmd5>034417941686c9c63dcacc2329b4bdb6</srcmd5>
+    <version>0.8.14</version>
+    <time>1607196954</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to latest repository</comment>
+    <requestid>852580</requestid>
+  </revision>
 </revisionlist>
