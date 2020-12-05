@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec  3 22:31:19 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.15.6 (released 2020-12-03) includes fixes to the compiler,
+  linker, runtime, the go command, and the io package.
+  Refs boo#1175132 go1.15 release tracking
+  * go#42948 cmd/link: unexpected bindingNone in '_go.buildid'
+  * go#42753 cmd/compile: ICE due to bad ORL constant
+  * go#42636 runtime: infinite loop in lockextra on linux/amd64
+  * go#42567 cmd/go: allow flags in CGO_LDFLAGS environment variable not in security allowlist
+  * go#42550 io: Copy leaves file zero bytes in Azure AKS with CIFS - Go1.15 regression
+  * go#42521 cmd/link: debug_line can contain multiple entries for the same PC address in Go 1.15.4
+  * go#42369 internal/poll: CopyFileRange returns EIO on CentOS 7 ( Linux Kernel 3.10.0-1127) when io.Copy in mounted CIFS
+
+-------------------------------------------------------------------
 Thu Nov 12 21:10:05 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.15.5 (released 2020-11-12) includes security fixes to the
