@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Dec 04 22:57:32 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1607122640.3bb9e173:
+  * Add convenience Makefile after we removed autotools
+  * git subrepo commit (merge) external/os-autoinst-common
+  * Delete unused "diag" imports
+  * Phrase debug message "Extract" as a progress description rather than command
+  * Delete not helpful debug message about a qmpsocket file descriptor
+  * Add tests for wait_for_children and wait_for_children_to_start
+  * Mark sleeps in mmapi/lockapi for retrying/polling as uncoverable
+  * Avoid hard-coded retry count and poll intervals in mmapi
+  * Improve mmapi test
+  * lockapi tests: Add checks for mocked record_info
+  * Improve error handling in mmapi/lockapi
+  * Add better tests for lockapi
+  * Return 0 instead of undef when destroying a barrier fails
+  * lockapi: Make hard-coded intervals and retry attempts overridable
+
+-------------------------------------------------------------------
 Sat Nov 28 07:59:24 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1606482144.ab6cdfe2:
