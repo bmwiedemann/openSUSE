@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Dec  3 13:58:44 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.2:
+  + Fix unwanted position changes on window resize.
+  + Fix _NET_WM_FRAME_DRAWN timestamps.
+  + Fix missed redraws of newly-mapped actors.
+  + (Temporarily) make Xwayland listen on abstract namespace socket
+    again.
+  + Fix tiling to the correct monitor.
+  + Fix background artifacts in magnifier.
+  + Fix monitor tiling support on X11.
+  + Fix device configuration not being picked up on X11.
+  + Improve compatibility with Qt's wayland support.
+  + Support tagging devices as primary GPU via udev.
+  + Fix size hints with CSD.
+  + Do not disable the X Security extension by default.
+  + Fix unresponsive input after screen blank.
+  + Improve tablet-mode-switch support.
+  + Plugged memory leaks.
+  + Fixed crashes.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Oct  8 03:38:01 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.38.1:

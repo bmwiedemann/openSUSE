@@ -1362,4 +1362,12 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
     <comment>Push GNOME 3.38</comment>
     <requestid>847253</requestid>
   </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>f39ae2c1effa4179f0eef0ce07361dd9</srcmd5>
+    <version>3.38.2</version>
+    <time>1607196918</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.38.2 (forwarded request 852918 from dimstar)</comment>
+    <requestid>853060</requestid>
+  </revision>
 </revisionlist>
