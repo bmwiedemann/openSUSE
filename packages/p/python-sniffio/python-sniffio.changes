@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  4 11:13:06 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- skip upcoming python36 flavor because there is no python36-curio
+
+-------------------------------------------------------------------
 Thu Nov 26 08:56:32 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.2.0:

@@ -18,6 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+# because recent curio requires python >= 3.7 there is no (or won't be) python36-curio for the python36 flavor
+# distributions without python36 but python3 = 3.6 still build with a present python3-curio
+%define skip_python36 1
 Name:           python-sniffio
 Version:        1.2.0
 Release:        0
