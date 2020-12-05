@@ -1,23 +1,27 @@
---- a/files/fail2ban.service.in	2020-01-11 11:01:00.000000000 +0100
-+++ b/files/fail2ban.service.in	2020-05-21 09:48:12.049645909 +0200
-@@ -6,13 +6,14 @@
+diff -ur fail2ban-0.11.2-orig/files/fail2ban.service.in fail2ban-0.11.2/files/fail2ban.service.in
+--- fail2ban-0.11.2-orig/files/fail2ban.service.in	2020-11-23 21:43:03.000000000 +0100
++++ fail2ban-0.11.2/files/fail2ban.service.in	2020-12-05 18:22:01.503018894 +0100
+@@ -2,17 +2,18 @@
+ Description=Fail2Ban Service
+ Documentation=man:fail2ban(1)
+ After=network.target iptables.service firewalld.service ip6tables.service ipset.service nftables.service
+-PartOf=iptables.service firewalld.service ip6tables.service ipset.service nftables.service
++PartOf=firewalld.service ipset.service nftables.service
  
  [Service]
  Type=simple
--ExecStartPre=/bin/mkdir -p /run/fail2ban
--ExecStart=@BINDIR@/fail2ban-server -xf start
 +EnvironmentFile=-/etc/sysconfig/fail2ban
-+ExecStartPre=/bin/mkdir -p /var/run/fail2ban
+ Environment="PYTHONNOUSERSITE=1"
+ ExecStartPre=/bin/mkdir -p /run/fail2ban
+-ExecStart=@BINDIR@/fail2ban-server -xf start
 +ExecStart=/usr/bin/fail2ban-server -xf $FAIL2BAN_OPTIONS start
  # if should be logged in systemd journal, use following line or set logtarget to sysout in fail2ban.local
 -# ExecStart=@BINDIR@/fail2ban-server -xf --logtarget=sysout start
 -ExecStop=@BINDIR@/fail2ban-client stop
 -ExecReload=@BINDIR@/fail2ban-client reload
--PIDFile=/run/fail2ban/fail2ban.pid
 +# ExecStart=/usr/bin/fail2ban-server -xf --logtarget=sysout start
 +ExecStop=/usr/bin/fail2ban-client stop
 +ExecReload=/usr/bin/fail2ban-client reload
-+PIDFile=/var/run/fail2ban/fail2ban.pid
+ PIDFile=/run/fail2ban/fail2ban.pid
  Restart=on-failure
  RestartPreventExitStatus=0 255
- 

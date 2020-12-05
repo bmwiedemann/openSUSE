@@ -1,8 +1,7 @@
-Index: config/jail.conf
-===================================================================
---- config/jail.conf.orig
-+++ config/jail.conf
-@@ -688,7 +688,7 @@ backend = %(syslog_backend)s
+diff -ur fail2ban-0.11.2-orig/config/jail.conf fail2ban-0.11.2/config/jail.conf
+--- fail2ban-0.11.2-orig/config/jail.conf	2020-11-23 21:43:03.000000000 +0100
++++ fail2ban-0.11.2/config/jail.conf	2020-11-29 10:14:13.229200191 +0100
+@@ -731,7 +731,7 @@
  # filter   = named-refused
  # port     = domain,953
  # protocol = udp
@@ -11,7 +10,7 @@ Index: config/jail.conf
  
  # IMPORTANT: see filter.d/named-refused for instructions to enable logging
  # This jail blocks TCP traffic for DNS requests.
-@@ -696,7 +696,7 @@ backend = %(syslog_backend)s
+@@ -739,7 +739,7 @@
  [named-refused]
  
  port     = domain,953
@@ -20,11 +19,11 @@ Index: config/jail.conf
  
  
  [nsd]
-Index: config/paths-common.conf
-===================================================================
---- config/paths-common.conf.orig
-+++ config/paths-common.conf
-@@ -90,7 +90,7 @@ solidpop3d_log = %(syslog_local0)s
+Nur in fail2ban-0.11.2/config: jail.conf.orig.
+diff -ur fail2ban-0.11.2-orig/config/paths-common.conf fail2ban-0.11.2/config/paths-common.conf
+--- fail2ban-0.11.2-orig/config/paths-common.conf	2020-11-23 21:43:03.000000000 +0100
++++ fail2ban-0.11.2/config/paths-common.conf	2020-11-29 10:14:13.237200352 +0100
+@@ -90,7 +90,7 @@
  mysql_log = %(syslog_daemon)s
  mysql_backend = %(default_backend)s
  

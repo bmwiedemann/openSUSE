@@ -22,13 +22,13 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           fail2ban
-Version:        0.11.1
+Version:        0.11.2
 Release:        0
 Summary:        Bans IP addresses that make too many authentication failures
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
 URL:            http://www.fail2ban.org/
-Source0:        https://github.com/fail2ban/fail2ban/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/fail2ban/fail2ban/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/fail2ban/fail2ban/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.sysconfig
 Source3:        %{name}.logrotate
@@ -47,8 +47,6 @@ Patch101:       %{name}-opensuse-service.patch
 Patch200:       %{name}-disable-iptables-w-option.patch
 # PATCH-FIX-OPENSUSE fail2ban-0.10.4-env-script-interpreter.patch jweberhofer@weberhofer.at -- use exact path to define interpretor
 Patch201:       %{name}-0.10.4-env-script-interpreter.patch
-# PATH-FIX-UPSTREAM fail2ban-0.10.4-upstream-pid-file-location.patch boo#1145181 jweberhofer@weberhofer.at -- changed fail2ban pid file location (gh#fail2ban/fail2ban#2474)
-Patch202:       %{name}-0.10.4-upstream-pid-file-location.patch
 # PATCH-FEATURE-OPENSUSE fail2ban-opensuse-service-sfw.patch jweberhofer@weberhofer.at -- start after SuSEfirewall2 only for older distributions
 Patch300:       fail2ban-opensuse-service-sfw.patch
 BuildRequires:  fdupes
@@ -126,13 +124,12 @@ install -m644 %{SOURCE8} config/paths-opensuse.conf
 # Use openSUSE paths
 sed -i -e 's/^before = paths-.*/before = paths-opensuse.conf/' config/jail.conf
 
-%patch100
+%patch100 -p1
 %patch101 -p1
 %if 0%{?suse_version} < 1310
 %patch200 -p1
 %endif
 %patch201 -p1
-%patch202 -p1
 %if !0%{?suse_version} > 1500
 %patch300 -p1
 %endif

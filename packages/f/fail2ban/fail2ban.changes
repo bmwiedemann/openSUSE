@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Sat Dec  5 17:25:17 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Integrate change to resolve bnc#1146856
+
+-------------------------------------------------------------------
+Sun Nov 29 11:23:09 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to 0.11.2
+  increased stability, filter and action updates
+  
+- New Features and Enhancements
+  * fail2ban-regex:
+    - speedup formatted output (bypass unneeded stats creation)
+    - extended with prefregex statistic
+    - more informative output for `datepattern` (e. g. set from filter) - pattern : description
+  * parsing of action in jail-configs considers space between action-names as separator also
+  (previously only new-line was allowed), for example `action = a b` would specify 2 actions `a` and `b`
+  * new filter and jail for GitLab recognizing failed application logins (gh#fail2ban/fail2ban#2689)
+  * new filter and jail for Grafana recognizing failed application logins (gh#fail2ban/fail2ban#2855)
+  * new filter and jail for SoftEtherVPN recognizing failed application logins (gh#fail2ban/fail2ban#2723)
+  * `filter.d/guacamole.conf` extended with `logging` parameter to follow webapp-logging if it's configured 
+    (gh#fail2ban/fail2ban#2631)
+  * `filter.d/bitwarden.conf` enhanced to support syslog (gh#fail2ban/fail2ban#2778)
+  * introduced new prefix `{UNB}` for `datepattern` to disable word boundaries in regex;
+  * datetemplate: improved anchor detection for capturing groups `(^...)`;
+  * datepattern: improved handling with wrong recognized timestamps (timezones, no datepattern, etc)
+  as well as some warnings signaling user about invalid pattern or zone (gh#fail2ban/fail2ban#2814):
+    - filter gets mode in-operation, which gets activated if filter starts processing of new messages;
+      in this mode a timestamp read from log-line that appeared recently (not an old line), deviating too much
+      from now (up too 24h), will be considered as now (assuming a timezone issue), so could avoid unexpected 
+      bypass of failure (previously exceeding `findtime`);
+    - better interaction with non-matching optional datepattern or invalid timestamps;
+    - implements special datepattern `{NONE}` - allow to find failures totally without date-time in log messages,
+    whereas filter will use now as timestamp (gh#fail2ban/fail2ban#2802)
+  * performance optimization of `datepattern` (better search algorithm in datedetector, especially for single template);
+  * fail2ban-client: extended to unban IP range(s) by subnet (CIDR/mask) or hostname (DNS), gh#fail2ban/fail2ban#2791;
+  * extended capturing of alternate tags in filter, allowing combine of multiple groups to single tuple token with new tag
+    prefix `<F-TUPLE_`, that would combine value of `<F-V>` with all value of `<F-TUPLE_V?_n?>` tags (gh#fail2ban/fail2ban#2755)
+
+- Fixes
+  * [stability] prevent race condition - no ban if filter (backend) is continuously busy if
+    too many messages will be found in log, e. g. initial scan of large log-file or journal (gh#fail2ban/fail2ban#2660)
+  * pyinotify-backend sporadically avoided initial scanning of log-file by start
+  * python 3.9 compatibility (and Travis CI support)
+  * restoring a large number (500+ depending on files ulimit) of current bans when using PyPy fixed
+  * manual ban is written to database, so can be restored by restart (gh#fail2ban/fail2ban#2647)
+  * `jail.conf`: don't specify `action` directly in jails (use `action_` or `banaction` instead)
+  * no mails-action added per default anymore (e. g. to allow that `action = %(action_mw)s` should be specified
+    per jail or in default section in jail.local), closes gh#fail2ban/fail2ban#2357
+  * ensure we've unique action name per jail (also if parameter `actname` is not set but name deviates from standard name, gh#fail2ban/fail2ban#2686)
+  * don't use `%(banaction)s` interpolation because it can be complex value (containing `[...]` and/or quotes), 
+    so would bother the action interpolation
+  * fixed type conversion in config readers (take place after all interpolations get ready), that allows to 
+    specify typed parameters variable (as substitutions) as well as to supply it in other sections or as init parameters.
+  * `action.d/*-ipset*.conf`: several ipset actions fixed (no timeout per default anymore), so no discrepancy
+    between ipset and fail2ban (removal from ipset will be managed by fail2ban only, gh#fail2ban/fail2ban#2703)
+  * `action.d/cloudflare.conf`: fixed `actionunban` (considering new-line chars and optionally real json-parsing
+   with `jq`, gh#fail2ban/fail2ban#2140, gh#fail2ban/fail2ban#2656)
+  * `action.d/nftables.conf` (type=multiport only): fixed port range selector, replacing `:` with `-` (gh#fail2ban/fail2ban#2763)
+  * `action.d/firewallcmd-*.conf` (multiport only): fixed port range selector, replacing `:` with `-` (gh#fail2ban/fail2ban#2821)
+  * `action.d/bsd-ipfw.conf`: fixed selection of rule-no by large list or initial `lowest_rule_num` (gh#fail2ban/fail2ban#2836)
+  * `filter.d/common.conf`: avoid substitute of default values in related `lt_*` section, `__prefix_line`
+    should be interpolated in definition section (inside the filter-config, gh#fail2ban/fail2ban#2650)
+  * `filter.d/dovecot.conf`: 
+    - add managesieve and submission support (gh#fail2ban/fail2ban#2795);
+    - accept messages with more verbose logging (gh#fail2ban/fail2ban#2573);
+  * `filter.d/courier-smtp.conf`: prefregex extended to consider port in log-message (gh#fail2ban/fail2ban#2697)
+  * `filter.d/traefik-auth.conf`: filter extended with parameter mode (`normal`, `ddos`, `aggressive`) to handle 
+    the match of username differently (gh#fail2ban/fail2ban#2693):
+    - `normal`: matches 401 with supplied username only
+    - `ddos`: matches 401 without supplied username only
+    - `aggressive`: matches 401 and any variant (with and without username)
+  * `filter.d/sshd.conf`: normalizing of user pattern in all RE's, allowing empty user (gh#fail2ban/fail2ban#2749)
+  
+- Rebased patches
+- Removed upstream patch fail2ban-0.10.4-upstream-pid-file-location.patch
+
+-------------------------------------------------------------------
 Wed Aug 19 09:04:12 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %{_tmpfilesdir} consistently throughout the .spec.
