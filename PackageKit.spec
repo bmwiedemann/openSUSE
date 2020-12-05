@@ -50,6 +50,8 @@ Patch1:         PackageKit-systemd-timers.patch
 Patch2:         PackageKit-remove-polkit-rules.patch
 # PATCH-FIX-OPENSUSE PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch ngompa13@gmail.com -- Band-aid to deal with OBS producing differently named appstream repodata files
 Patch3:         PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch
+# PATCH-FIX-UPSTREAM PackageKit-zypp-cleanup-tmp-files.patch bsc#1169739 gh#hughsie/PackageKit/commit#cf73b01a sckang@suse.com -- Revert "Revert "zypp: Clean up temporary files when PK quits""
+Patch4:         PackageKit-zypp-cleanup-tmp-files.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
