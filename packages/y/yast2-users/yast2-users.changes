@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  2 10:41:55 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- In the public key selector, allow to choose any device that
+  contains any filesystem except swap and squashfs (bsc#1178509).
+- 4.3.10
+
+-------------------------------------------------------------------
 Wed Nov 11 11:09:04 UTC 2020 - Stefan Schubert <schubi@suse.de>
 
 - Importing public SSH key in administrator screen: Disable
