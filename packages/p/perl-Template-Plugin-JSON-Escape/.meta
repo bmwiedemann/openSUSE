@@ -1,0 +1,6 @@
+<package name="perl-Template-Plugin-JSON-Escape" project="openSUSE:Factory">
+  <title>perl-Template-Plugin-JSON-Escape - Adds a .json vmethod and a json filter</title>
+  <description>This plugin allows you to embed JSON strings in HTML. In the output, special characters such as '&lt;' and '&amp;' are escaped as '\uxxxx' to prevent XSS attacks. It also provides decoding function to keep compatibility with the Template::Plugin::JSON manpage.</description>
+  <devel project="devel:languages:perl" package="perl-Template-Plugin-JSON-Escape"/>
+  <url>https://metacpan.org/release/Template-Plugin-JSON-Escape/</url>
+</package>
