@@ -1,4 +1,557 @@
 -------------------------------------------------------------------
+Fri Dec  4 12:56:02 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream tag jdk-16+27
+  * Fixes:
+    + JDK-6232267: TrueType Fonts which have only Apple platform
+      names cannot be loaded
+    + JDK-6388543: improve accuracy of source positions for
+      AnnotationValue param of Messager.printMessage
+    + JDK-7190595: Nimbus: Test6657026 fails
+    + JDK-8003495: [findbugs] javax.swing.* - Storing a reference
+      to an externally mutable object into the internal
+      representation
+    + JDK-8004842: Unify values of boolean make variables set in
+      configure to true/false
+    + JDK-8028544: Add SourceVersion.RELEASE_10
+    + JDK-8028546: Add -source 10 and -target 10 to javac
+    + JDK-8029942: Update VERSION_MAJOR for JDK 10
+    + JDK-8037325: Class.getConstructor() performance regression
+    + JDK-8041793: javap misses newline after printing
+      AnnotationDefault
+    + JDK-8048628: javadoc strips HTML incorrectly; causes invalid
+      generated HTML files
+    + JDK-8051768: Inconsistent output for Visible and
+      InvisibleParameterAnnotations
+    + JDK-8055206: Update SecurityManager::checkPackageAccess to
+      restrict non-exported JDK packages by default
+    + JDK-8059000: hgforest: pass options to serve command
+    + JDK-8062731: Cipher object can be created without calling
+      Cipher.getInstance
+    + JDK-8067747: javac throws exception during compilation when
+      annotation processing is enabled
+    + JDK-8071566: Improve testing for multi-version JAR file maker
+      tool
+    + JDK-8075616: Create tests to check schemagen work with
+      multi-version jar
+    + JDK-8075617: Create tests to check wsgen work with
+      multi-version jar
+    + JDK-8077395: org.omg.CORBA_2_3.portable.InputStream
+      constructor should not specify JDK-specific property
+    + JDK-8079441: Intermittent failures on Windows with
+      "Unexpected exit from test [exit code: 1080890248]"
+      (0x406d1388)
+    + JDK-8081694: Remove DISABLED_WARNINGS_gcc for libsctp
+    + JDK-8081820: javadoc does not report warnings in case of
+      multiple "@param" tags for the same parameter and multiple
+      "@return" tags for the same method
+    + JDK-8138725: Add options for Javadoc generation
+    + JDK-8140353: Improve signature checking
+    + JDK-8140588: Internal Error: gc/g1/ptrQueue.hpp:126
+      assert(_index == _sz) failed: invariant: queues are empty
+      when activated
+    + JDK-8144518: ClassVerboseTest crashes on Windows
+    + JDK-8145019: Exceptions from TIFFImageReader.read() when
+      loading bit depth test images
+    + JDK-8147414: java.nio.file.ClosedFileSystemException in
+      javadoc
+    + JDK-8149879: Examine UIDefaults::addResourceBundle(String
+      bundleName) with resource encapsulation
+    + JDK-8151465: SSLSession may not return a valid chain
+    + JDK-8151934: Resolve class resolution
+    + JDK-8152206: Simplify jvmstat modules
+    + JDK-8152561: Is it allowed to have zero value for count in
+      TIFFField.createArrayForType() for the rationals
+    + JDK-8153759: jshell tool: Smart completion detection is not
+      reliable
+    + JDK-8154228: [TIFF] IIOException: "Insufficient data offsets
+      or byte counts" when loading test image
+    + JDK-8156762: test/compiler/ciReplay/TestVMNoCompLevel.java
+      fails with - 'Unexpected exit code for negative case:
+      [-client]: expected 0 to not equal 0'
+    + JDK-8156802: Better constraint checking
+    + JDK-8157611: field visiblePackages is null for the unnamed
+      module producing NPE when accessed
+    + JDK-8158406: Limited Parameter Processing
+    + JDK-8158997: JNDI Protocols Switch
+    + JDK-8159507: RuntimeVisibleAnnotation validation
+    + JDK-8160302: Reduce number of lambdas created when loading
+      java.util.regex.Pattern
+    + JDK-8160710: Enable Thread to grant VarHandle field access to
+      ThreadLocalRandom/Striped64
+    + JDK-8160881: Remove jvisualvm from JDK9
+    + JDK-8161218: Better bytecode loading
+    + JDK-8161228: URL objects with custom protocol handlers have
+      port changed after deserializing
+    + JDK-8161732: [TEST_BUG] Test closed/java/awt/MenuBar/
+      /MenuBarPeer/MenuBarPeerDisposeTest.java fails in unix
+      enviroments with NullPointerException
+    + JDK-8161743: Provide proper login context
+    + JDK-8162577: Standardize logging levels
+    + JDK-8162973: Better component components
+    + JDK-8163889: [macosx] Can't print from browser on Mac OS X
+    + JDK-8164143: Improve components for menu items
+    + JDK-8164147: Improve streaming socket output
+    + JDK-8165071: Expand TLS support
+    + JDK-8165102: incorrect message from javac
+    + JDK-8165230: RMIConnection addNotificationListeners failing
+      with specific inputs
+    + JDK-8165344: Update concurrency support
+    + JDK-8165705: Robot.createScreenCapture produces black
+      screenshot on Oracle Linux 7.1
+    + JDK-8166002: Emulate client build on platforms with reduced
+      virtual address space
+    + JDK-8166125: [JVMCI] Missing JVMCI flag default values
+    + JDK-8166175: javadoc search doesn't work on local doc bundles
+    + JDK-8166186: ClassCastException with arguments usage
+    + JDK-8166374: compiler/loopopts/
+      /UseCountedLoopSafepointsTest.java fails with "Safepoint not
+      found"
+    + JDK-8166420: Confusing error message when reading bad module
+      declaration
+    + JDK-8166535: jshell tool: cannot handle non-ascii characters
+    + JDK-8166675: Latent bug in jar file handling during module
+      path processing
+    + JDK-8166878: Connection reset during TLS handshake
+    + JDK-8166988: Improve image processing performance
+    + JDK-8167063: spurious message "A JNI error has occurred" if
+      start-class cannot be initialized
+    + JDK-8167104: Additional class construction refinements
+    + JDK-8167178: Exported elements referring to inaccessible
+      types in java.naming
+    + JDK-8167223: URL handling improvements
+    + JDK-8167228: Update to libpng 1.6.28
+    + JDK-8167273: Calendar.getDisplayNames inconsistent with
+      DateFormatSymbols
+    + JDK-8167278: ArrayIndexOutOfBoundsException when calling
+      ImageIO.read(InputStream) with RLE4 BMP
+    + JDK-8167337: When jmxremote.port=0, JDP broadcasts "0"
+      instead of assigned port
+    + JDK-8167420: Fixes for InetAddressImpl native coding on
+      Linux/Unix platforms
+    + JDK-8167457: Fixes for InetAddressImpl native coding on
+      Windows
+    + JDK-8167519: [AOT] Failed compilation:
+      java.math.MutableBigInteger.divide3n2n
+    + JDK-8168075: Custom system class loader + security manager +
+      malformed policy file = recursive initialization
+    + JDK-8168137: import-hotspot build target not removed from
+      hotspot-ide-project
+    + JDK-8168254: Detect duplicated resources in packaged modules
+    + JDK-8168537: Test fails with AccessControlException
+    + JDK-8168705: Better ObjectIdentifier validation
+    + JDK-8168714: Tighten ECDSA validation
+    + JDK-8168724: ECDSA signing improvments
+    + JDK-8168728: DSA signing improvments
+    + JDK-8168751: Two "Direct Clip" threads are created to play
+      the same "AudioClip" object, what makes clip sound corrupted
+    + JDK-8168792: [AOT] problems in MethodHandle with aot-compiled
+      java.base
+    + JDK-8168926: C2: Bytecode escape analyzer crashes due to
+      stack overflow
+    + JDK-8169481: StackOverflowError on start when parsing PAC
+      file to autodetect Proxy settings
+    + JDK-8169588: [AOT] jaotc --classpath option is confusing
+    + JDK-8169608: Compiler Tree API's Doctrees.getDocTreePath
+      needs to accept a PackageElement
+    + JDK-8169643: [TESTBUG] GCBasher test fails with G1, CMS and
+      Serial
+    + JDK-8169748: LinkedTransferQueue bulk remove is O(n^2)
+    + JDK-8169813: The index pages are sorted in a confusing manner
+    + JDK-8170116: Remove qualified exports from java.base to
+      java.corba
+    + JDK-8170250: update/improve testing of classfile module
+      attribute
+    + JDK-8170483: Remove modules_src_jake workaround for JavaFX
+      transition to new module-info syntax
+    + JDK-8170692: inconsistent check of module-related options
+      against target version
+    + JDK-8170821: Ensure access checks result in consistent answers
+    + JDK-8170827: Correct errant "java.base" string to macro
+    + JDK-8170832: Add a new launcher environment variable
+      JAVA_OPTIONS
+    + JDK-8170855: Example for -Xlog:help do not contain one with
+      multiple tags
+    + JDK-8170857: Typo in -Xlog:help output
+    + JDK-8170860: Get rid of the humanReadableByteCount() method
+      in openjdk/hotspot
+    + JDK-8170861: Remove DcmdMBeanPermissionsTest.java from
+      ProblemList
+    + JDK-8170863: Always pass MAKE_ARGS to MAKE in Main.gmk
+    + JDK-8170868: DefaultProxySelector should use system defaults
+      on Windows, MacOS and Gnome
+    + JDK-8170918: Remove shell script from
+      test/compiler/c2/cr7200264/TestIntVect.java
+    + JDK-8170959: unloading archived shared class caused crash
+    + JDK-8170981: Possible access to char array with negative index
+    + JDK-8171045: gc/stress/TestStressG1Humongous.java fails to
+      allocate the heap
+    + JDK-8171082: [AOT] AOT'd SystemModules.modules() fails to
+      load when too large
+    + JDK-8171098: NPE when --add-modules java.corba is used
+    + JDK-8171130: jshell tool: /edit adds empty statement to brace
+      terminated snippet
+    + JDK-8171139: Simplify ResourceBundle.CacheKey and ClassLoader
+      may not be needed
+    + JDK-8171140: Re-examine ResourceBundle::clearCache method
+    + JDK-8171142: jdk_rmi registry test fail to clean up on failure
+    + JDK-8171149: java/lang/invoke/LFCaching/
+      /LFSingleThreadCachingTest.java failed with "Out of space in
+      CodeCache for adapters"
+    + JDK-8171173: EXCEPTION_ACCESS_VIOLATION running
+      VirtualObjectDebugInfoTest.java
+    + JDK-8171177: Compiler should issue a warning for incubating
+      modules that are resolved
+    + JDK-8171266: PPC64: Add support to -XX:RTMSpinLoopCount=0
+    + JDK-8171294: Slow compilation with long classpaths under JDK 9
+    + JDK-8171318: serviceability/sa/jmap-hprof/
+      /JMapHProfLargeHeapTest.java fails latest Jigsaw integration
+    + JDK-8171322: AssertionError in
+      TypeSymbol.getAnnotationTypeMetadata
+    + JDK-8171343: jshell tool: missing options: --help-extra
+      --show-version
+    + JDK-8171380: Remove all exports from jdk.jlink
+    + JDK-8171435: "assert(is_single_cpu() && !is_virtual())
+      failed: type check" with -XX:+PatchALot on SPARC
+    + JDK-8171441: tools/launcher/VersionCheck.java doesn't report
+      names of tools which failed checks
+    + JDK-8171456: Upgrade harfbuzz in JDK 9 to v1.4.1
+    + JDK-8171522: Jar prints error message with old (non gnu-style
+      options)
+    + JDK-8171524: jar --help doesn't provide information that
+      stdout and stdin can be used as output and input for tool
+    + JDK-8171809: Remove unused CDS code from JDK 9
+    + JDK-8171836: Memory leak in java.desktop/unix/native/common/
+      /awt/fontpath.c
+    + JDK-8171855: Move package name transformations during module
+      bootstrap into native code
+    + JDK-8171886: Miscellaneous changes imported from jsr166 CVS
+      2017-02
+    + JDK-8171900: javax/net/ssl/SSLSession/SessionTimeOutTests.java
+      failed with "SSLHandshakeException: Remote host terminated the
+      handshake"
+    + JDK-8171909: [PIT] on Windows, failure of
+      java/awt/Dialog/DialogAboveFrame/DialogAboveFrameTest.java
+    + JDK-8171924: Use SIZE_FORMAT to print size_t values
+    + JDK-8171960: Event-based tracing needs separate flag
+      representation for Method
+    + JDK-8171971: Fix timing bug in JVM management of package
+      export lists
+    + JDK-8171974: Fix for R10 Register clobbering with usage of
+      ExternalAddress
+    + JDK-8172006: Nashorn JavaScript engine fails to call
+      @FunctionalInterface with a java.util.List argument
+    + JDK-8172010: [AOT] RecompilationTest.java fails with
+      "expected compilation level after compilation to be no less
+      than 1"
+    + JDK-8172012: [TEST_BUG] delays needed in
+      javax/swing/JTree/4633594/bug4633594.java
+    + JDK-8172023: Concurrent spliterators fail to handle
+      exhaustion properly
+    + JDK-8172049: [s390] Implement "JEP 270: Reserved Stack Areas
+      for Critical Sections"
+    + JDK-8172054: Aot tests should include Java assertions into
+      AOT compiled code
+    + JDK-8172094: 8171433 changes in generated-configure should be
+      restored
+    + JDK-8172098: A lot of gtests uses TEST instead of TEST_VM
+    + JDK-8172144: AArch64: Implement "JEP 270: Reserved Stack
+      Areas for Critical Sections"
+    + JDK-8172145: C2: anti dependence missed because store hidden
+      by membar
+    + JDK-8172149: CTW library should call System::exit
+    + JDK-8172169: Re-examine String field optionality
+    + JDK-8172179: jshell tool: builtin startup settings should be
+      by reference not content
+    + JDK-8172188: JDI tests fail due to "permission denied" when
+      creating temp file
+    + JDK-8172199: s390: Use same get_key_start_from_aescrypt_object
+      implementation as PPC64
+    + JDK-8172240: javac should not need the transitive closure to
+      compile a module
+    + JDK-8172246: [TESTBUG] runtime/RedefineTests/
+      /RedefinePreviousVersions.java 'Class unloading:
+      has_previous_versions = true' missing from stdout/stderr
+    + JDK-8172261: [JVMTI] Specification for early VM start event
+      needs to lower expectations in relation class loading
+    + JDK-8172288: Fix Jigsaw related module/package error messages
+      and throw correct exceptions
+    + JDK-8172309: classpath wildcards code does not support
+      --class-path
+    + JDK-8172310: [AOT] Fix unverified entry point
+    + JDK-8172350: Typo in Timestamp.toString()
+    + JDK-8172365: Provide a better migration path for
+      ResourceBundleControlProvider
+    + JDK-8172509: [TEST_BUG] [macosx] Failure of the new test
+      java/awt/Focus/FocusTraversalPolicy/ButtonGroupLayoutTraversal/
+      /ButtonGroupLayoutTraversalTest.java
+    + JDK-8172527: Rename jdk.crypto.token to jdk.crypto.cryptoki
+    + JDK-8172528: problem generating JavaFX docs
+    + JDK-8172529: Use PKIXValidator in jarsigner
+    + JDK-8172547: (se) Selector.select(Long.MAX_VALUE) fires
+      repeatedly
+    + JDK-8172548: unpack200 fails linking with new update of SS12u4
+    + JDK-8172557: quarantine ctw/JarDirTest
+    + JDK-8172659: PluginException("TargetPlatform attribute is
+      missing ...") - should be ModuleTarget
+    + JDK-8172686: Use less aggressive deprecation of utility
+      visitors
+    + JDK-8172721: Fix for 8172144 breaks AArch64 build
+    + JDK-8172726: ForkJoin common pool retains a reference to the
+      thread context class loader
+    + JDK-8172731: runtime/Thread/TooSmallStackSize.java fails on
+      solaris-x64 with product build
+    + JDK-8172732: spec clarification for URLClassLoader for
+      Multirelease jars
+    + JDK-8172733: [JVMCI] add
+      ResolvedJavaMethod.hasNeverInlineDirective
+    + JDK-8172751: OSR compilation at unreachable bci causes C1
+      crash
+    + JDK-8172753: Improve style of left-side index pages
+    + JDK-8172807: Javac doesn't report errors on duplicate
+      provides with different service implementations
+    + JDK-8172808: Handle sun.security.util.Resources bundle in
+      ResourcesMgr in the same way as AuthResources
+    + JDK-8172809: Error compiling javafx modules after fix for
+      JDK-8169197
+    + JDK-8172810: ModuleElement should declare and provide
+      appropriate modifiers
+    + JDK-8172813: test/java/awt/font/JNICheck/JNICheck.sh fails on
+      Linux
+    + JDK-8172844: Assert fails in deoptimization due to original
+      PC at the end of code section
+    + JDK-8172850: Anti-dependency on membar causes crash in
+      register allocator due to invalid instruction scheduling
+    + JDK-8172864: Remove custom plugin module path
+    + JDK-8172869: 4096 is not supported yet for the DH Parameter
+      Generator
+    + JDK-8172870: test/tools/jmod/JmodTest.java fails on windows
+      with AccessDeniedException
+    + JDK-8172881: AArch64: assertion failure: the int pressure is
+      incorrect
+    + JDK-8172884: TraceOptoPipelining and TraceOptoOutput are
+      broken
+    + JDK-8172886: Add a test that shows how the LogManager can be
+      implemented by a module
+    + JDK-8172901: javac: 'opens' statement cannot specify non
+      observable package
+    + JDK-8172905: Minor startup cleanup of CallSite and MethodType
+    + JDK-8172910: Use default methods as appropriate for language
+      model visitors
+    + JDK-8172912: JTReg concurrency value must be limited
+    + JDK-8172921: Zip filesystem performance improvement and code
+      cleanup
+    + JDK-8172964: [aix] AIX VM should not handle SIGDANGER
+    + JDK-8172971: java.management could use System.Logger
+    + JDK-8172972: Add gc/g1/logging/TestG1LoggingFailure.java to
+      the ProblemList
+    + JDK-8172973: Remove add exports from ModuleSummary build
+    + JDK-8172975: SecurityTools.keytool() needs to accept user
+      input
+    + JDK-8172982: tools/jlink/ResourceDuplicateCheckTest.java
+      requires jdk.tools.jlink.plugin to be exported
+    + JDK-8172990: [AOT] Missing GC scan of _metaspace_got array
+      containing Klass*
+    + JDK-8172999: Crash on Windows getting FontMetrics since JDK 9
+      b96
+    + JDK-8173007: JShell Tests: ToolFormatTest takes too long
+    + JDK-8173019: Backout JDK-8172990 changes
+    + JDK-8173024: Replace direct use of AuthResources resource
+      bundle from jdk.security.auth
+    + JDK-8173037: V [jvm.dll+0x2343fc]
+      GraphBuilder::args_list_for_profiling+0x8c
+    + JDK-8173038: [TESTBUG] compiler/loopopts/
+      /UseCountedLoopSafepointsTest.java fails with TESTBUG: Not
+      server mode
+    + JDK-8173054: [AOT] Avoid zero-shift for compressed oops
+    + JDK-8173056: Add test that captures current behavior of
+      annotations with invalid annotation types
+    + JDK-8173064: Unexpected <body> tag in
+      javax/imageio/plugins/tiff/package.html
+    + JDK-8173066: More verbose debug output for selection of X509
+      certs
+    + JDK-8173068: ElementUtils getPackageElement does not allow
+      for an unnamed package
+    + JDK-8173072: zipfs fails to handle incorrect info-zip
+      "extended timestamp extra field"
+    + JDK-8173073: jshell tool: blank lines removed from multi-line
+      snippets
+    + JDK-8173081: VM no longer prints "Picked up _JAVA_OPTONS: "
+      message
+    + JDK-8173082: java/bean/* tests fail since change of
+      JDK-8055206
+    + JDK-8173083: VarHandle usages in LockSupport and
+      ThreadLocalRandom result in circularity issues
+    + JDK-8173085: Warning module name in --add-exports not found:
+      jdk.jdeps when compiling for BUILD_JIGSAW_TOOLS
+    + JDK-8173096: jmod files are not world-readable
+    + JDK-8173107: Fix autoconf/spec.gmk mismatches
+    + JDK-8173111: Excessive recursion in EventFilterSupport when
+      filtering over large number of XML events can cause
+      StackOverflow
+    + JDK-8173117: Compilation significantly slower after
+      JDK-8169197
+    + JDK-8173120: Preserve command line at build failure
+    + JDK-8173134: Add failing java/bean tests in JDK-8173082 to
+      the ProblemList
+    + JDK-8173135: compiler/aot/fingerprint/SelfChangedCDS.java
+      fails with: Unrecognized VM option 'UnlockCommercialFeatures'
+    + JDK-8173141: tools/javac/classreader/FileSystemClosedTest.java
+      fails on Windows
+    + JDK-8173147: [ctw] fails during compilation of
+      sun.security.krb5.internal.crypto.RsaMd5DesCksumType
+      ::calculateKeyedChecksum with " graph should be schedulable"
+    + JDK-8173156: Remove JmodTest.java from the probelm list on
+      windows
+    + JDK-8173158: [AOT] fix typo in jaotc --help output
+    + JDK-8173159: Problem list java/rmi/activation/ActivationGroup/
+      /downloadActivationGroup/DownloadActivationGroup.java on
+      Windows
+    + JDK-8173163: searching for a versioned entry in a
+      multi-release jar in hotspot is inconsistent with java code
+    + JDK-8173164: Resolve remaining HTML5 issues in
+      javax.lang.model.*
+    + JDK-8173195: [BACKOUT] 8087341: C2 doesn't optimize redundant
+      memory operations with G1
+    + JDK-8173197: (se) WindowsSelectorImpl.c does not compile with
+      VS2010
+    + JDK-8173201: java/lang/reflect/PublicMethods/
+      /PublicMethodsTest.java fails because of too many open files
+    + JDK-8173204: JShell tests: ProblemList
+      jdk/jshell/UserJdiUserRemoteTest.java
+    + JDK-8173232: JShell tests: ReplaceTest takes too long
+    + JDK-8173234: JShell tests: remove from ProblemList
+      jdk/jshell/ToolFormatTest.java
+    + JDK-8173257: test/script/trusted/JDK-8021189.js and
+      test/script/trusted/JDK-8021129.js fail in nashorn nightly
+    + JDK-8173260: CatalogManager.catalogResolver should not fail
+      when non-existing URI is passed to it
+    + JDK-8173261: JAXP: TESTBUG:
+      javax/xml/jaxp/isolatedjdk/catalog/PropertiesTest.sh
+    + JDK-8173278: [JVMCI] query_update_method_data might write
+      outside _trap_hist array
+    + JDK-8173300: [TESTBUG] compiler/tiered/
+      /NonTieredLevelsTest.java fails with
+      compiler.whitebox.SimpleTestCaseHelper(int) must be compiled
+    + JDK-8173305: Trial reversion of langtools test changes for
+      limited win32 address space
+    + JDK-8173309: jvmtiDeferredLocalVariableSet may update the
+      wrong frame
+    + JDK-8173312: Hide support for --inherit-runtime-environment
+    + JDK-8173315: java/net/HttpURLConnection/SetAuthenticator/
+      /HTTPSetAuthenticatorTest.java fails intermittently
+    + JDK-8173326: Problem list
+      java/rmi/registry/readTest/CodebaseTest.java on Windows
+    + JDK-8173339: AArch64: Fix minimum stack size computations
+    + JDK-8173354: javadoc warning notice for types in Incubator
+      Modules
+    + JDK-8173366: Update .jcheck/conf files for JDK 10
+    + JDK-8173372: Add tests for multi-release module jar API
+      validator
+    + JDK-8173381: osName/osArch/osVersion is missing in
+      ModuleDescriptor created by SystemModules
+    + JDK-8173383: Update JDK build to use -source and -target 10
+    + JDK-8173395: Problemlist
+      tools/jar/multiRelease/ApiValidatorTest.java
+    + JDK-8173396: Error message issue with jar tool API validator
+    + JDK-8173412: @Test in java/lang/annotation and
+      java/lang/reflect/Proxy tests not run
+    + JDK-8173419: Javadoc fix 8166175 results in test failures
+    + JDK-8173421: Obsolete and expired flags for JDK 10 need to be
+      removed and related tests updated
+    + JDK-8173423: Wrong display name for supplemental Japanese era
+    + JDK-8173456: com.sun.tools.javac.util.Assert.error during
+      code compilation
+    + JDK-8173474: AArch64: fix reported -Xss minimum
+    + JDK-8173475: java/net/HttpURLConnection/SetAuthenticator
+      tests have undeclared dependency on java.logging module
+    + JDK-8173476: Provide lldb from devkit when running tests on
+      macosx
+    + JDK-8173478: SSL related tests failes with message:
+      "java.security.NoSuchAlgorithmException: EC KeyFactory not
+      available"
+    + JDK-8173480: in operator should work on java objects and
+      classes
+    + JDK-8173577: JShell tests: Some testng tests check nothing
+    + JDK-8173581: performance regression in
+      com/sun/crypto/provider/OutputFeedback.java
+    + JDK-8173602: JAXP: TESTBUG: javax/xml/jaxp/unittest/transform/
+      /TransformerTest.java needs refactoring
+    + JDK-8173604: Rename module java.annotations.common to
+      java.xml.ws.annoations
+    + JDK-8173607: JMX RMI connector should be in its own module
+    + JDK-8173608: Separate JDK management agent from
+      java.management module
+    + JDK-8173609: Elements.printElements needs to support modules
+    + JDK-8173634: libjli/cmdtoargs.c does not compile with VS2010
+    + JDK-8173636: Results from
+      Processor.getSupportedAnnotationTypes should be intepreted
+      strictly
+    + JDK-8173652: jshell tool: store history on fatal exit
+    + JDK-8173653: jshell tool: ctrl-C when in external editor
+      aborts jshell -- history lost
+    + JDK-8173667: Update command line help for -public -protected
+      -package -private options
+    + JDK-8173676: Improvements to javax.annotation.processing and
+      javax.lang.model doc
+    + JDK-8173706: Is able to set a negative j.u.Vector size in
+      JDK9 b151
+    + JDK-8173707: Javadoc generated pages should default to
+      no-frames view
+    + JDK-8173711: Disable JAVA_OPTIONS env variable support until
+      JDK-8173712 is resolved
+    + JDK-8173717: jlink --help fails with missing
+      "plugin.opt.plugin-module-path" key in resource bundle
+    + JDK-8173758: tools/javac/Paths/wcMineField.sh failing with
+      java.lang.ClassNotFoundException
+    + JDK-8173763: Two security tests fail with message:
+      "java.security.NoSuchAlgorithmException: EC KeyFactory not
+      available"
+    + JDK-8173776: More javax.lang.model improvements to support
+      modules
+    + JDK-8173789: Fix broken test header
+    + JDK-8173798: Tests for printing modules
+    + JDK-8173807: JShell: control characters should be escaped in
+      String values
+    + JDK-8173821: com.sun.jmx.remote.internal.Unmarshal should be
+      removed
+    + JDK-8173822: Remove dead code in BuildNashorn.gmk
+    + JDK-8173827: Remove forRemoval=true from several deprecated
+      security APIs
+    + JDK-8173834: cleanup macosx jspawnhelper build settings
+    + JDK-8173848: JShell: less-than causes: reached end of file
+      while parsing
+    + JDK-8173851: JDK-8008448.js fails to parse test for
+      JDK-8169481
+    + JDK-8173858: Rename libmanagement_rmi to libmanagement_agent
+    + JDK-8173864: Problem list src/jdk/nashorn/api/tree/test/
+      /ParseAPITest.java for some platforms
+    + JDK-8173888: Test for JDK-8169481 causes stack overflows in
+      parser tests
+    + JDK-8173894: jib reports version "" in jdk10
+    + JDK-8173903: Update various tests to pass under JDK 10
+    + JDK-8173908: Problem list tools/jar/multiRelease/
+      /RuntimeTest.java until JDK-8173905 is fixed
+    + JDK-8173944: Reference Origin.MANDATED in getEnclosedElements
+      specs
+    + JDK-8173947: jconsole does not show local running VMs to
+      attach
+    + JDK-8173956: KeyStore regression due to default keystore
+      being changed to PKCS12
+    + JDK-8173982: (fs) DefaultFileSystemProvider should be split
+      into platform specific versions
+    + JDK-8174039: (ch) DefaultAsynchronousChannelProvider should
+      be split into platform specific versions
+    + JDK-8174051: fix terminology in javadoc comment
+    + JDK-8174086: jspawnhelper build settings cleanup
+    + JDK-8174693: Problem list MultiReleaseJarTest.java tests
+      until JDK-8174692 is fixed
+- Removed patches:
+  * 0001-8256986-PPC64-C2-crashes-when-accessing-nonexisting-.patch
+  * 0001-8256486-Linux-Windows-x86-builds-broken-after-JDK-82.patch
+    + integrated upstream
+
+-------------------------------------------------------------------
 Mon Nov 30 08:31:25 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of OpenJDK tag jdk-16+26 as java-16-openjdk

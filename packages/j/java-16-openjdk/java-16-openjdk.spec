@@ -35,10 +35,10 @@
 %global updatever       0
 %global patchver        0
 %global datever         2021-03-16
-%global buildver        26
+%global buildver        27
 %global openjdk_repo    jdk
-%global openjdk_tag     jdk-16+26
-%global openjdk_dir     jdk-jdk-16-26
+%global openjdk_tag     jdk-16+27
+%global openjdk_dir     jdk-jdk-16-27
 %global icedtea_sound_version 1.0.1
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2
@@ -206,9 +206,7 @@ Patch10:        memory-limits.patch
 Patch12:        adlc-parser.patch
 # Fix: implicit-pointer-decl
 Patch13:        implicit-pointer-decl.patch
-Patch14:        0001-8256486-Linux-Windows-x86-builds-broken-after-JDK-82.patch
 Patch15:        system-pcsclite.patch
-Patch16:        0001-8256986-PPC64-C2-crashes-when-accessing-nonexisting-.patch
 #
 Patch20:        loadAssistiveTechnologies.patch
 #
@@ -484,13 +482,10 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch10 -p1
 %patch12 -p1
 %patch13 -p1
-%patch14 -p1
 
 %if %{with_system_pcsc}
 %patch15 -p1
 %endif
-
-%patch16 -p1
 
 %patch20 -p1
 
