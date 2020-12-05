@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Dec  4 06:14:47 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 1.5.2:
+  + ata: Add OUI quirk for Toshiba
+  + libfwupd: Restore recognizing gpg and pkcs7 types still
+  + Register the SoupSession gtype when required
+  + Switch from libsoup to libcurl
+  + Fix sync method when called from threads without a context
+  + Move ABI check to Github actions
+  + Enable github workflows
+  + libfwupd: Add fwupd_client_download_file()
+  + libfwupd: Add fwupd_client_get_user_agent()
+  + Only download the remote metadata as required
+  + Add breaks for fwupdate 12-7 (Closes: #960688)
+  + Install modules-load configs in the correct directory
+  + vli: Do not be clever replugging the MSP430 device
+  + vli: Make some trivial debugging more specific to help debug
+    an issue
+  + make gcab optional
+  + Fall back to FAT32 internal partitions for detecting ESP
+  + Add a flag to indicate if packages are supported
+  + uefi: a new option for uefi configuration to use UEFI removable
+    path
+  + Add a section to man page on scripting
+  + synaptics-mst: Improve reliability by waiting 2 seconds after
+    writing data
+  + hailuck: Add an plugin for the Pinebook Pro laptop
+  + Allow setting global flags for FuHidDevice
+  + Set the SMBIOS chassis type to portable if a DT battery exists
+  + colorhug: Don't set the version format to triplet at startup
+  + Allow components to set the icon from the metadata
+  + colorhug: Fix detection of version on older firmware versions
+  + bcm57xx: Fix reading vendor/device ids from firmware.
+  + Remove HSI update and attestation suffixes
+  + trivial: make dbxtool executable to fix snap build
+  + Ignore an invalid vendor-id when adding releases for display
+  + Notify the service manager when idle-quitting
+- Refresh fwupd-bsc1130056-change-shim-path.patch
+- Changes in BuildRequires:
+  + Replace pkgconfig(libsoup-2.4) with pkgconfig(libcurl)
+  + Replace pkgconfig(systemd) with pkgconfig(libsystemd)
+- fwupd-msr.conf and fwupd-platform-integrity.conf are moved to
+  %{_modulesloaddir}.
+
+-------------------------------------------------------------------
 Mon Nov 16 07:01:08 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Obsoletes and Provides dbxtool since fwupd 1.5.0+ now embeds

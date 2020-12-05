@@ -30,7 +30,7 @@
 %endif
 
 Name:           fwupd
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -85,12 +85,12 @@ BuildRequires:  pkgconfig(gusb) >= 0.2.9
 BuildRequires:  pkgconfig(jcat) >= 0.1.3
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.1.1
 BuildRequires:  pkgconfig(libarchive)
+BuildRequires:  pkgconfig(libcurl) >= 7.62.0
 BuildRequires:  pkgconfig(libelf)
 BuildRequires:  pkgconfig(libgcab-1.0) >= 1.0
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.51.92
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.103
 BuildRequires:  pkgconfig(sqlite3)
-BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(tss2-esys) >= 2.0
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(valgrind)
@@ -316,9 +316,9 @@ fi
 %{_mandir}/man1/fwupdtool.1%{?ext_man}
 %{_datadir}/polkit-1/actions/org.freedesktop.fwupd.policy
 %ifarch %{ix86} x86_64
-%{_sysconfdir}/modules-load.d/fwupd-msr.conf
+%{_modulesloaddir}/fwupd-msr.conf
 %endif
-%{_sysconfdir}/modules-load.d/fwupd-platform-integrity.conf
+%{_modulesloaddir}/fwupd-platform-integrity.conf
 %config %{_sysconfdir}/%{name}/
 %dir %{_sysconfdir}/pki
 %dir %{_sysconfdir}/pki/fwupd
