@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Dec  4 11:50:52 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to v3.7.3
+  Features
+  * Made exceptions pickleable. Also changed the repr of 
+    some exceptions. #4077 
+  Bugfixes
+  * Raise a ClientResponseError instead of an AssertionError for a 
+    blank HTTP Reason Phrase. #3532
+  * Fix web_middlewares.normalize_path_middleware behavior for   
+    patch without slash. #3669
+  * Fix overshadowing of overlapped sub-applications prefixes. 
+    #3701
+  * Make BaseConnector.close() a coroutine and wait until the 
+    client closes all connections. Drop deprecated "with  
+    Connector():" syntax. #3736
+  * Reset the sock_read timeout each time data is received for a   
+    aiohttp.client response. #3808
+  * Fixed type annotation for add_view method of UrlDispatcher to 
+    accept any subclass of View #3880
+  * Fixed querying the address families from DNS that the current 
+    host supports. #5156
+  * Change return type of MultipartReader.__aiter__() and 
+    BodyPartReader.__aiter__() to AsyncIterator. #5163
+  * Provide x86 Windows wheels. #5230
+  * Improved Documentation
+  * Add documentation for aiohttp.web.FileResponse. #3958
+  * Removed deprecation warning in tracing example docs #3964
+  * Fixed wrong "Usage" docstring of aiohttp.client.request. #4603
+  * Add aiohttp-pydantic to third party libraries #5228
+  Misc
+  * #4102
+- Also clean header files in sitearch
+- Remove hidden .hash directory (remnant from build process)
+- Fix python 3.6 build 
+  * For Leap
+  * For TW with python36 flavor gh#openSUSE/python-rpm-macros#66
+  * Always BuildRequire idna_ssl
+  * Skip a failing test on python 3.6
+  * Next upstream release will drop python 3.6
+
+-------------------------------------------------------------------
 Wed Oct 28 15:33:18 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Re-activate tests
