@@ -312,4 +312,12 @@ No indication of GPL-3.0 ^only^ files in package. Fedora also using GPL-3.0+ (fo
     <comment></comment>
     <requestid>844377</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>19912320cf1cfdb9ae98149b6a44b73b</srcmd5>
+    <version>1.9.0</version>
+    <time>1607196935</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853094</requestid>
+  </revision>
 </revisionlist>

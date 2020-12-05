@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 29 20:55:01 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- librelp 1.9.0:
+  * openssl bugfix: preprocessor check for tlsconfigcmd code
+
+-------------------------------------------------------------------
 Fri Oct 23 11:49:25 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - librelp 1.8.0:
