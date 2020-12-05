@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  1 14:20:58 UTC 2020 - pgajdos@suse.com
+
+- use system rpm macros
+- run spec-cleaner
+
+-------------------------------------------------------------------
 Mon Nov 13 15:26:52 UTC 2017 - dimstar@opensuse.org
 
 - Rename README.SuSE to README.SUSE, adhering to the correct
