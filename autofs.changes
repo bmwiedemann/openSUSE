@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 23 14:28:02 UTC 2020 - Goldwyn Rodrigues <rgoldwyn@suse.com>
+
+- automount-fix-master-wait.patch: Fix options string for master wait
+  (bsc#1178006)
+
+-------------------------------------------------------------------
+Mon Aug 31 18:12:49 UTC 2020 - Goldwyn Rodrigues <rgoldwyn@suse.com>
+
+- autofs-nsswitch-usr-etc.patch: Use /usr/etc/nsswitch.conf if
+   /etc/nsswitch.con is unavailable (bsc#1175238)
+
+-------------------------------------------------------------------
 Tue Mar  3 17:08:03 UTC 2020 - Goldwyn Rodrigues <rgoldwyn@suse.com>
 
 - Upgrade to 5.1.6
