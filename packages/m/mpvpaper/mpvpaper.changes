@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Dec  5 18:54:08 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.1:
+  * 2 new options "--auto-pause/-p" and "--auto-stop/-s"
+  * 2 watch lists "pauselist" and "stoplist"
+  * New program called "mpvpaper-holder" to facilitate "stopping" mpvpaper
+  * User configs in "~/.config/mpv/" are now loaded
+  * mpv terminal mode is enabled by default for better controls
+    set "terminal=no" mpv option if you don't want that
+  * Various minor improvements
+  * See https://github.com/GhostNaN/mpvpaper/releases/tag/1.1
+
+-------------------------------------------------------------------
 Mon Nov 23 15:32:01 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Initial package of mpvpaper 1.0 for openSUSE
