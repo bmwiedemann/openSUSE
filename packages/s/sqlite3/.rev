@@ -1289,4 +1289,12 @@ CVE-2020-13871 boo#1172646</comment>
     <comment></comment>
     <requestid>826778</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>2b8df76bb5412967750e95dac17c72b9</srcmd5>
+    <version>3.34.0</version>
+    <time>1607196968</time>
+    <user>dimstar_suse</user>
+    <comment>- SQLite 3.34.0:</comment>
+    <requestid>852646</requestid>
+  </revision>
 </revisionlist>
