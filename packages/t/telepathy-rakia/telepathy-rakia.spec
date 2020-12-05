@@ -1,7 +1,7 @@
 #
 # spec file for package telepathy-rakia
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,11 +22,12 @@ Release:        0
 Summary:        SIP connection manager for Telepathy
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Instant Messenger
-URL:            http://telepathy.freedesktop.org/wiki/Components
+URL:            https://telepathy.freedesktop.org/wiki/Components
 Source:         http://telepathy.freedesktop.org/releases/telepathy-rakia/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM 1.patch dimstar@opensuse.org -- Fix build with python3
+Patch0:         https://patch-diff.githubusercontent.com/raw/TelepathyIM/telepathy-rakia/pull/1.patch
 BuildRequires:  libxslt
 BuildRequires:  pkgconfig
-BuildRequires:  python-xml
 BuildRequires:  sofia-sip-devel >= 1.12.11
 BuildRequires:  telepathy-glib-devel >= 0.17.7
 BuildRequires:  pkgconfig(glib-2.0) >= 2.16
@@ -47,11 +48,11 @@ IETF SIP connection manager for Telepathy using the SofiaSIP protocol
 stack.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -60,7 +61,7 @@ make %{?_smp_mflags}
 %{_datadir}/dbus-1/services/org.freedesktop.Telepathy.ConnectionManager.sofiasip.service
 %{_datadir}/telepathy/
 %{_libexecdir}/telepathy-rakia
-%{_mandir}/man8/telepathy-rakia.8%{ext_man}
+%{_mandir}/man8/telepathy-rakia.8%{?ext_man}
 
 %files devel
 %{_includedir}/%{name}-0.7/

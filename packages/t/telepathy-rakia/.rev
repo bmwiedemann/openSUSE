@@ -89,4 +89,14 @@ Dominique / DimStar</comment>
     <comment>Scripted push of project GNOME:Next (forwarded request 583624 from dimstar)</comment>
     <requestid>584785</requestid>
   </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>18137c7efae51de310ba914577fb3b90</srcmd5>
+    <version>0.8.0</version>
+    <time>1607197044</time>
+    <user>dimstar_suse</user>
+    <comment>- Build using python3:
+  + Add 1.patch: Fix build when using python3.
+  + Drop python-xml BuildRequires. (forwarded request 853074 from dimstar)</comment>
+    <requestid>853263</requestid>
+  </revision>
 </revisionlist>
