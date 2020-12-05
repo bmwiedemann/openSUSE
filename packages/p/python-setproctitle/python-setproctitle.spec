@@ -17,23 +17,19 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-setproctitle
-Version:        1.1.10
+Version:        1.2
 Release:        0
 Summary:        Python module to allow customization of the process title
 License:        BSD-3-Clause
 URL:            https://github.com/dvarrazzo/py-setproctitle/
 Source:         https://files.pythonhosted.org/packages/source/s/setproctitle/setproctitle-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Test build/harness helper; heavily revised in next release jayvdb@gmail.com
-Patch0:         use-pkg-config.patch
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module modernize}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  pkg-config
 BuildRequires:  procps
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-tools
 %python_subpackages
 
 %description
@@ -44,8 +40,6 @@ the OpenSSH Server for example.
 
 %prep
 %setup -q -n setproctitle-%{version}
-%autopatch -p1
-python-modernize -nw tests
 
 %build
 export CFLAGS="%{optflags}"
@@ -55,16 +49,12 @@ export CFLAGS="%{optflags}"
 %python_install
 
 %check
-export LANG=en_US.UTF-8
-%{python_expand export PYTHON=$python
-PYTHON_MAJOR=${PYTHON:6:1}
-make tests/pyrun${PYTHON_MAJOR}
-PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m pytest -v
-}
+%pytest_arch
 
 %files %{python_files}
 %doc HISTORY.rst README.rst
 %license COPYRIGHT
-%{python_sitearch}/*
+%{python_sitearch}/setproctitle*.so
+%{python_sitearch}/setproctitle-%{version}*-info
 
 %changelog

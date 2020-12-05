@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec  4 01:17:03 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 1.2 
+  * added ``getthreadtitle()`` and ``setthreadtitle()``.
+  * Initialisation of the module moved to the first usage: 
+    importing the module doesn't cause side effects.
+  * Manage much longer command lines (#52)
+  * Improved build on BSD, dropped ancient versions (issue #67).
+  * Fixed build for Python 3.8 (#66, #72)
+  * Added support for Python 3.9
+  * Dropped support for Python < 3.6
+- Drop use-pkg-config.patch
+- Drop extra requirements
+
+-------------------------------------------------------------------
 Sun Aug 16 07:30:43 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Revert to working test suite, re-adding use-pkg-config.patch,
