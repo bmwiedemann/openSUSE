@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec  4 17:17:46 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to release 2.7.0
+  * More Keen Dreams fixes
+  * More Lua support and remaining python code is now completely
+    removed
+  * Added sound buffer amplifier for improving the sound/music
+    quality hopefully on certain systems
+
+-------------------------------------------------------------------
 Mon Oct 26 08:12:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to release 2.6.3

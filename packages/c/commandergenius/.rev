@@ -103,4 +103,17 @@
     <comment></comment>
     <requestid>844148</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7b3ea7f952708bc466c1e7d34f11929e</srcmd5>
+    <version>2.7.0</version>
+    <time>1607197021</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.7.0
+  * More Keen Dreams fixes
+  * More Lua support and remaining python code is now completely
+    removed
+  * Added sound buffer amplifier for improving the sound/music
+    quality hopefully on certain systems</comment>
+    <requestid>853191</requestid>
+  </revision>
 </revisionlist>

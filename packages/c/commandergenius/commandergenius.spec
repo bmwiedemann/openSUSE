@@ -17,7 +17,7 @@
 
 
 Name:           commandergenius
-Version:        2.6.3
+Version:        2.7.0
 Release:        0
 Summary:        An open clone of the Commander Keen engines
 License:        GPL-2.0-only
@@ -34,7 +34,6 @@ BuildRequires:  pkgconfig(SDL2_image) >= 2.0.0
 BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(SDL2_ttf)
 BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(zlib)
