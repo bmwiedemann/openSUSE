@@ -250,7 +250,7 @@
   poo#78538: '20201203'
   poo#80082: '20201201'
   poo#80102: '20201127'
-  poo#80628: '20201204'
+  poo#80628: '20201205'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -517,9 +517,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20201205'
+    <value>failed: ''
 published: '20201203'
-publishing: '20201203'
+publishing: '20201205'
 testing: '20201205'
 </value>
   </attribute>
