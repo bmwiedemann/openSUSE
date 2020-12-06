@@ -2,9 +2,10 @@
 use strict;
 our $tmpgit;
 our $mappedpkg;
+my $pkg=shift;
+my $first=lc(substr($pkg, 0, 1));
 
 {
-my $pkg=shift;
 die "usage: $0 PKGNAME" unless $pkg;
 die "invalid pkg" if $pkg =~ m/[^a-zA-Z0-9._+-]/;
 
@@ -17,19 +18,19 @@ my @rsync=qw"rsync -a
   --delete-excluded";
 system(@rsync, "/mounts/work/SRC/openSUSE\:Factory/$pkg", "in/");
 die "rsync of $pkg failed" unless $? == 0;
-my $first=lc(substr($pkg, 0, 1));
 $tmpgit = ".tmp-$pkg-git";
 $mappedpkg=(glob("packages/$first*/$pkg"))[0];
 if($mappedpkg) {
     rename("$mappedpkg/.git", $tmpgit);
+    system(qw"rm -rf", $mappedpkg);
 } else {
     system("scripts/pagure-new-package", $pkg);
     system(qw"git clone", "https://code.opensuse.org/package/$pkg", $tmpgit);
     system("mv", <$tmpgit/.git/*>, $tmpgit); # move one level up
     rmdir("$tmpgit/.git");
 }
-system(qw"rm -rf", $mappedpkg);
 $ENV{PKG}=$pkg;
 }
 do("./scripts/mappkgs.pl");
+$mappedpkg=(glob("packages/$first*/$pkg"))[0];
 rename($tmpgit, "$mappedpkg/.git");
