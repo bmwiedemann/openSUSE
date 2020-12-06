@@ -1,13 +1,21 @@
 #!/usr/bin/perl -w
 # zypper in perl-libwww-perl perl-LWP-Protocol-https perl-JSON-XS
 use strict;
-use LWP::Simple;
+use LWP::UserAgent ();
 use JSON::XS;
+
+our $UA = LWP::UserAgent->new(
+        parse_head=>0,
+        timeout=>9,
+        agent=>"bmwiedemann/perl-get-packages/0.02",
+        keep_alive => 5);
+
 
 sub process($)
 { my $url = shift;
     while($url) {
-	my $json = get($url);
+	my $response = $UA->request(HTTP::Request->new('GET', $url));
+	my $json = $response->content;
 	my $data = decode_json($json);
 	for my $p (@{$data->{projects}}) {
 	    print $p->{name},"\n";
