@@ -10770,7 +10770,7 @@ unsorted:
   - libfonts-javadoc 
   - libformula-javadoc 
   - libfparser-4_5_2 
-  - libfplll6 
+  - libfplll7 
   - libfpm_helper-devel 
   - libfpm_helper0 
   - libfpm_pb0 
@@ -13793,7 +13793,7 @@ unsorted:
   - libsliplu1 
   - libslirp-devel 
   - libslopy7_5 
-  - libslurm35: [x86_64] 
+  - libslurm36: [x86_64] 
   - libsmartcols-devel 
   - libsmartcols-devel-static 
   - libsmbclient-devel 
@@ -19418,10 +19418,12 @@ unsorted:
   - perl-MRO-Compat 
   - perl-Mac-PropertyList 
   - perl-Mail-IMAPClient 
+  - perl-Mail-Message 
   - perl-Mail-SPF-Test 
   - perl-Mail-Sender 
   - perl-Mail-Sendmail 
   - perl-Mail-SpamAssassin-Plugin-iXhash2 
+  - perl-Mail-Transport 
   - perl-Mason 
   - perl-Math-Base-Convert 
   - perl-Math-BigInt 
@@ -19452,6 +19454,7 @@ unsorted:
   - perl-Module-Build-Deprecated 
   - perl-Module-Build-Prereqs-FromCPANfile 
   - perl-Module-Build-Tiny 
+  - perl-Module-Build-Using-PkgConfig 
   - perl-Module-Build-WithXSpp 
   - perl-Module-Build-XSUtil 
   - perl-Module-CPANfile 
@@ -19640,6 +19643,8 @@ unsorted:
   - perl-Parse-PMFile 
   - perl-Parse-Win32Registry 
   - perl-Parse-Yapp 
+  - perl-Passwd-Keyring-Gnome 
+  - perl-Passwd-Keyring-KDEWallet 
   - perl-PatchReader 
   - perl-Path-Class 
   - perl-Path-FindDev 
@@ -19687,6 +19692,7 @@ unsorted:
   - perl-Proc-Fork 
   - perl-Proc-ProcessTable 
   - perl-Proc-Simple 
+  - perl-Proc-SyncExec 
   - perl-Protocol-HTTP2 
   - perl-Protocol-Redis 
   - perl-Protocol-Redis-Faster 
@@ -19801,6 +19807,7 @@ unsorted:
   - perl-Sys-Guestfs: [x86_64] 
   - perl-Sys-Hostname-Long 
   - perl-Sys-LoadAvg 
+  - perl-Sys-MemInfo 
   - perl-Sys-SigAction 
   - perl-Sys-Virt 
   - perl-Sysadm-Install 
@@ -19819,12 +19826,15 @@ unsorted:
   - perl-Task-Moose 
   - perl-Task-Weaken 
   - perl-Template-GD 
+  - perl-Template-Plugin-Filter-ANSIColor 
+  - perl-Template-Plugin-JSON-Escape 
   - perl-Template-Tiny 
   - perl-Template-Toolkit 
   - perl-Term-Encoding 
   - perl-Term-ProgressBar 
   - perl-Term-ReadPassword 
   - perl-Term-Table 
+  - perl-Term-Terminfo 
   - perl-Term-UI 
   - perl-Test-API 
   - perl-Test-Assert 
@@ -19862,6 +19872,7 @@ unsorted:
   - perl-Test-LeakTrace 
   - perl-Test-LectroTest 
   - perl-Test-LongString 
+  - perl-Test-Magpie 
   - perl-Test-Manifest 
   - perl-Test-Memory-Cycle 
   - perl-Test-Metrics-Any 
@@ -19971,10 +19982,12 @@ unsorted:
   - perl-Tk-devel 
   - perl-Tree-DAG_Node 
   - perl-TryCatch 
+  - perl-Twiggy 
   - perl-Type-Tiny 
   - perl-UNIVERSAL-can 
   - perl-UNIVERSAL-isa 
   - perl-UNIVERSAL-moniker 
+  - perl-UNIVERSAL-ref 
   - perl-UNIVERSAL-require 
   - perl-URI-Fetch 
   - perl-URI-Find 
@@ -19982,6 +19995,7 @@ unsorted:
   - perl-URI-Template 
   - perl-URI-db 
   - perl-URI-ws 
+  - perl-UUID 
   - perl-Unicode-Collate 
   - perl-Unicode-EastAsianWidth 
   - perl-Unicode-LineBreak 
@@ -19990,6 +20004,7 @@ unsorted:
   - perl-Unicode-Normalize 
   - perl-Unicode-String 
   - perl-Unicode-Stringprep 
+  - perl-User-Identity 
   - perl-Variable-Magic 
   - perl-Verilog-Perl 
   - perl-WWW-Form-UrlEncoded 
@@ -21497,6 +21512,7 @@ unsorted:
   - python3-astroid 
   - python3-astropy 
   - python3-astropy-helpers 
+  - python3-asttokens 
   - python3-astunparse 
   - python3-asv 
   - python3-async_timeout 
