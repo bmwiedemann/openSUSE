@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  3 12:06:24 UTC 2020 - Markéta Machová <mmachova@suse.com>
+
+- Launch tests
+  * around 70 of them are inconsistently (sometimes they pass, sometimes 
+    fail) broken by new pytest-asyncio (and similar number of other tests 
+    got deselected mostly because of similar names)
+
+-------------------------------------------------------------------
 Sat Nov 21 22:35:43 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.30.1:
