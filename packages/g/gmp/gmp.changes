@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec  3 12:54:56 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GMP 6.2.1:
+  * A possible overflow of type int is avoided for mpz_cmp on huge
+    operands
+  * Overflows are more carefully detected and reported for
+    mpz_pow_ui
+  * Fix a bug in longlong.h for aarch64 sub_ddmmss
+  * mini-gmp: mpz_out_str and mpq_out_str now correctly handle out
+    of range bases
+  * C90 compliance
+  * Support for more processors
+
+-------------------------------------------------------------------
 Tue May 26 07:36:38 UTC 2020 - Stephan Kulow <coolo@suse.com>
 
 - correct license statement (library itself is no GPL-3.0)

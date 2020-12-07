@@ -17,7 +17,7 @@
 
 
 Name:           gmp
-Version:        6.2.0
+Version:        6.2.1
 Release:        0
 Summary:        A library for calculating huge numbers
 License:        GPL-3.0-or-later AND (LGPL-3.0-or-later OR GPL-2.0-or-later)
