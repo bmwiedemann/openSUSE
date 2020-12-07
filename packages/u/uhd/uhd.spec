@@ -15,7 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 %define libname libuhd4_0_0
 Name:           uhd
 Version:        4.0.0.0
@@ -138,6 +137,9 @@ cd host
 %cmake \
   -DPYTHON_EXECUTABLE=%{_bindir}/python3 \
   -DENABLE_TESTS=OFF \
+%ifarch %arm
+  -DNEON_SIMD_ENABLE=OFF \
+%endif
   -DENABLE_GPSD=OFF
 %make_jobs
 

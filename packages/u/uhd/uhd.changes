@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  7 09:26:35 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on %arm by disabling Neon
+
+-------------------------------------------------------------------
 Tue Sep 15 07:39:46 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.0.0.0
