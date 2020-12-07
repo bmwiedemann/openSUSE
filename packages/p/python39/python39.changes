@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec  5 16:55:12 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add patch sphinx-update-removed-function.patch to no longer call
+  a now removed function and to make documentation build independent of
+  the Sphinx version (bsc#1179630, gh#python/cpython#13236).
+
+-------------------------------------------------------------------
 Fri Nov 13 17:20:08 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Don't require packages which break build on SLE-15 although we really

@@ -140,6 +140,8 @@ Patch29:        bpo-31046_ensurepip_honours_prefix.patch
 # PATCH-FIX-UPSTREAM bsc1167501-invalid-alignment.patch gh#python/cpython#19133 mcepl@suse.com
 # Fix wrong misalignment of pointer to vectorcallfunc
 Patch31:        bsc1167501-invalid-alignment.patch
+# PATCH-FIX-UPSTREAM stop calling removed Sphinx function gh#python/cpython#13236
+Patch32:        sphinx-update-removed-function.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
@@ -265,7 +267,7 @@ Python, and Macintosh Module Reference in HTML format.
 %package -n %{python_pkg_name}-doc-devhelp
 Summary:        Additional Package Documentation for Python 3 in devhelp format
 %if %{primary_interpreter}
-Provides:       python3-doc-devhelp = %{version} 
+Provides:       python3-doc-devhelp = %{version}
 %endif
 
 %description -n %{python_pkg_name}-doc-devhelp
@@ -395,6 +397,7 @@ other applications.
 %patch27 -p1
 %patch29 -p1
 %patch31 -p1
+%patch32 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

@@ -110,4 +110,15 @@
 </comment>
     <requestid>848385</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>59923093f0694c01cecf35455def9e40</srcmd5>
+    <version>3.9.0</version>
+    <time>1607349618</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch sphinx-update-removed-function.patch to no longer call
+  a now removed function and to make documentation build independent of
+  the Sphinx version (bsc#1179630, gh#python/cpython#13236).
+</comment>
+    <requestid>853313</requestid>
+  </revision>
 </revisionlist>
