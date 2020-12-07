@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  7 08:44:22 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.11.1:
+  * string.c: swap calloc arguments
+  * Cast ctype.h inputs to unsigned char
+  * Suppress sentence spacing after end-of-sentence characters.
+
+-------------------------------------------------------------------
 Thu Jul 30 09:15:59 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Use _datadir macro

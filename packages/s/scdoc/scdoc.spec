@@ -17,7 +17,7 @@
 
 
 Name:           scdoc
-Version:        1.11.0
+Version:        1.11.1
 Release:        0
 Summary:        A man page generator written in C99
 License:        MIT
