@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 28 09:48:12 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- remove deprecated texinfo macros
+- silence egrep,fgrep packaging warnings
+
+-------------------------------------------------------------------
 Mon Nov  9 15:47:58 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Update to grep 3.6

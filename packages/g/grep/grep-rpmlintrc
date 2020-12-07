@@ -1,0 +1,2 @@
+# the package itself still contains the compatibility links
+addFilter("grep.* deprecated-grep .*[ef]grep")

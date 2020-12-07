@@ -27,12 +27,11 @@ Source0:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
 Source2:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source3:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=grep&download=1#/%{name}.keyring
 Source4:        profile.sh
+Source5:        %{name}-rpmlintrc
 Patch0:         werror-return-type.patch
 BuildRequires:  fdupes
 BuildRequires:  makeinfo
 BuildRequires:  pcre-devel
-Requires(pre):  %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
 Provides:       base:%{_bindir}/grep
 
 %description
@@ -42,8 +41,7 @@ match to a specified pattern.  By default, grep prints the matching lines.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure \
@@ -51,16 +49,16 @@ match to a specified pattern.  By default, grep prints the matching lines.
   --without-included-regex \
   %{nil}
 %if 0%{?do_profiling}
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}"
+  %make_build CFLAGS="%{optflags} %{cflags_profile_generate}"
   sh %{SOURCE4} # profiling run
-  make clean
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_feedback}"
+  %make_build clean
+  %make_build CFLAGS="%{optflags} %{cflags_profile_feedback}"
 %else
-  make %{?_smp_mflags} CFLAGS="%{optflags}"
+  %make_build
 %endif
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
 %make_install
@@ -73,14 +71,7 @@ ln -sf %{_bindir}/grep %{buildroot}/bin/grep
 %fdupes -s %{buildroot}
 %find_lang %{name}
 
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/grep.info%{ext_info}
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/grep.info%{ext_info}
-
 %files
-%defattr(-,root,root)
 %license COPYING
 %doc README AUTHORS NEWS THANKS TODO ChangeLog*
 %if !0%{?usrmerged}
@@ -91,12 +82,11 @@ ln -sf %{_bindir}/grep %{buildroot}/bin/grep
 %{_bindir}/egrep
 %{_bindir}/fgrep
 %{_bindir}/grep
-%{_mandir}/man1/egrep.1%{ext_man}
-%{_mandir}/man1/fgrep.1%{ext_man}
-%{_mandir}/man1/grep.1%{ext_man}
-%{_infodir}/grep.info%{ext_info}
+%{_mandir}/man1/egrep.1%{?ext_man}
+%{_mandir}/man1/fgrep.1%{?ext_man}
+%{_mandir}/man1/grep.1%{?ext_man}
+%{_infodir}/grep.info%{?ext_info}
 
 %files lang -f %{name}.lang
-%defattr(-,root,root)
 
 %changelog

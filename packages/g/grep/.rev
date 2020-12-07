@@ -640,4 +640,12 @@ also requires -fno-profile-values to avoid ~3 differing bits (forwarded request 
     <comment></comment>
     <requestid>850976</requestid>
   </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>09cdc1888f2560e03855884352840b4d</srcmd5>
+    <version>3.6</version>
+    <time>1607349592</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>852358</requestid>
+  </revision>
 </revisionlist>
