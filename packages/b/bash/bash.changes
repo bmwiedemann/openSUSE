@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 19 15:47:13 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- remove obsolete info macros
+
+-------------------------------------------------------------------
+Fri Oct 16 07:08:31 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
 Wed Sep 23 16:30:31 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - dot.profile: moved example for user specific LANG setting 

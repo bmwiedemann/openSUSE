@@ -88,9 +88,11 @@ BuildRequires:  sed
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
+Provides:       /bin/bash
+Provides:       /bin/sh
 %global         _sysconfdir /etc
 %global         _incdir     %{_includedir}
-%global         _ldldir     /%{_lib}/bash
+%global         _ldldir     /%{_libdir}/bash
 %global         _minsh      0
 
 %description
@@ -105,7 +107,6 @@ Summary:        Documentation how to Use the GNU Bourne-Again Shell
 Group:          Documentation/HTML
 Provides:       bash:%{_infodir}/bash.info.gz
 Supplements:    packageand(bash:patterns-base-documentation)
-PreReq:         %install_info_prereq
 BuildArch:      noarch
 
 %description doc
@@ -192,6 +193,17 @@ unlink	      Remove a directory entry.
 
 whoami	      Print out username of current user.
 
+%if 0%{?usrmerged}
+%package legacybin
+Summary:        Legacy usrmove helper files
+Group:          System/Shells
+Requires:       bash = %{version}-%{release}
+Requires:       this-is-only-for-build-envs
+Conflicts:      rpmlib(X-CheckUnifiedSystemdir)
+
+%description legacybin
+Legacy usrmove helper files for the build system. Do not install.
+%endif
 
 %prep
 %if %{with sjis}
@@ -440,13 +452,11 @@ test ${rl1[2]} = ${rl2[2]} || exit 1
 
 %install
   %make_install
-  make -C examples/loadables/ install-supported DESTDIR=%{buildroot} libdir=/%{_lib}
+  make -C examples/loadables/ install-supported DESTDIR=%{buildroot} libdir=%{_libdir}
   mv -vf %{buildroot}%{_ldldir}/*.h   %{buildroot}%{_includedir}/bash/
   mv -vf %{buildroot}%{_ldldir}/*.inc %{buildroot}%{_datadir}/bash
-  rm -rf %{buildroot}%{_libdir}/bash
   rm -rf %{buildroot}/%{_lib}/pkgconfig
   sed -ri '/CC = gcc/s@(CC = gcc).*@\1@' %{buildroot}%{_libdir}/pkgconfig/bash.pc
-  mkdir -p %{buildroot}/bin
   mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 #
 # It should be noted that the move of /bin/bash to /usr/bin/bash
@@ -454,6 +464,7 @@ test ${rl1[2]} = ${rl2[2]} || exit 1
 # remains here :(
 # The same had happen for the system POSIX shell /bin/sh
 #
+  mkdir -p %{buildroot}/bin
   ln -sf %{_bindir}/bash %{buildroot}/bin/bash
   ln -sf %{_bindir}/sh   %{buildroot}/bin/sh
   ln -sf bash            %{buildroot}%{_bindir}/rbash
@@ -495,24 +506,18 @@ EOF
   %fdupes -s %{buildroot}%{_datadir}/bash/helpfiles
   sed -ri '1{ s@/bin/sh@/bin/bash@ }' %{buildroot}%{_bindir}/bashbug
 
-%post -p /bin/bash
+%post -p /usr/bin/bash
 %{_sbindir}/update-alternatives --quiet --force \
 	--install %{_bindir}/sh sh %{_bindir}/bash 10100
 
-%preun -p /bin/bash
+%preun -p /usr/bin/bash
 if test "$1" = 0; then
         %{_sbindir}/update-alternatives --quiet --remove sh %{_bindir}/bash
 fi
 
-%post doc
-%install_info --info-dir=%{_infodir} %{_infodir}/bash.info.gz
-
-%preun doc
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/bash.info.gz
-
 %clean
-LD_LIBRARY_PATH=%{buildroot}/%{_lib} \
-ldd -u -r %{buildroot}/bin/bash || true
+LD_LIBRARY_PATH=%{buildroot}/%{_libdir} \
+ldd -u -r %{buildroot}%{_bindir}/bash || true
 %{?buildroot: %__rm -rf %{buildroot}}
 
 %files
@@ -523,8 +528,10 @@ ldd -u -r %{buildroot}/bin/bash || true
 %config %attr(644,root,root) %{_sysconfdir}/skel/.profile
 %ghost %config %{_sysconfdir}/alternatives/sh
 %dir %{_sysconfdir}/bash_completion.d
+%if !0%{?usrmerged}
 /bin/bash
 /bin/sh
+%endif
 %{_bindir}/bash
 %{_bindir}/bashbug
 %{_bindir}/rbash
@@ -559,5 +566,11 @@ ldd -u -r %{buildroot}/bin/bash || true
 %files loadables
 %defattr(-,root,root)
 %{_ldldir}
+
+%if 0%{?usrmerged}
+%files legacybin
+/bin/bash
+/bin/sh
+%endif
 
 %changelog
