@@ -1,7 +1,7 @@
 #
 # spec file for package c_count
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,17 +13,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           c_count
-Version:        7.18
+Version:        7.19
 Release:        0
 Summary:        Source Code Measure Counter for C/C++/Java
 License:        MIT
 Group:          Development/Tools/Other
-URL:            http://invisible-island.net/c_count/
+URL:            https://invisible-island.net/c_count/
 Source0:        ftp://ftp.invisible-island.net/c_count/%{name}-%{version}.tgz
 Source1:        ftp://ftp.invisible-island.net/c_count/%{name}-%{version}.tgz.asc
 Source2:        %{name}.keyring
@@ -34,18 +34,18 @@ source programs. It is not lex/yacc based, and is easily portable to a
 variety of systems.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure \
   --enable-warnings
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %files
 %license COPYING

@@ -88,4 +88,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>623594</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>520513c58e797b736b3885e93e01bffc</srcmd5>
+    <version>7.19</version>
+    <time>1607349725</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 7.19:
+  + remove obsolete makefile-rules
+  + updated configure macros
+  + update config.guess and config.sub</comment>
+    <requestid>853576</requestid>
+  </revision>
 </revisionlist>
