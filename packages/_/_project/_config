@@ -161,6 +161,7 @@ FileProvides: /usr/bin/awk gawk
 FileProvides: /usr/bin/host bind-utils
 FileProvides: /sbin/start_daemon sysvinit-tools
 FileProvides: /sbin/pidof sysvinit-tools
+FileProvides: /sbin/ifup wicked-service
 
 Preinstall: aaa_base attr bash coreutils diffutils
 Preinstall: filesystem fillup glibc grep
@@ -1084,7 +1085,7 @@ Prefer: libreoffice:xerces-j2
 Prefer: k3b:libdvdread4
 Prefer: glibc-devel
 Prefer: -libpcap -libiniparser -loudmouth -libkonq4 -libnetcdf-4 libnetcdf11 netcdf-devel -libnetcdf13-openmpi -libnetcdf13-openmpi2
-Prefer: libnetcdf15
+Prefer: libnetcdf18
 Prefer: NetworkManager:dhcp-client
 Prefer: kdebase3-SuSE:kdebase3
 Prefer: pcre-tools
