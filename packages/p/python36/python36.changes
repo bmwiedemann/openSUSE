@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec  5 16:37:56 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- (bsc#1179630) Update sphinx-update-removed-function.patch to
+  work with all versions of Sphinx (not binding the Python
+  documentation build to the latest verison of Sphinx). Updated
+  version mentioned on gh#python/cpython#13236.
+
+-------------------------------------------------------------------
 Tue Dec  1 17:20:14 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add CVE-2020-27619-no-eval-http-content.patch fixing
@@ -8,7 +16,7 @@ Tue Dec  1 17:20:14 UTC 2020 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Tue Dec  1 05:37:07 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Add patch sphnix-update-removed-function.patch to no longer call
+- Add patch sphinx-update-removed-function.patch to no longer call
   a now removed function (gh#python/cpython#13236). As
   a consequence, no longer pin Sphinx version.
 
