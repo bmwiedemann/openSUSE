@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  4 17:15:31 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.2
+  * Fixed a build failure when compiling without libxml2 support.
+
+-------------------------------------------------------------------
 Sun Nov 22 08:44:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.1.1

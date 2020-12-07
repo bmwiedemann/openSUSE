@@ -20,7 +20,7 @@
 %define sover   2
 %define libname libacars-2-%{sover}
 Name:           libacars2
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        A library for decoding various ACARS message payloads
 License:        MIT
