@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec  6 19:20:13 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.12.07
+  * peertube: Recognize audio-only formats
+  * nrk: reduce requests for Radio series
+
+-------------------------------------------------------------------
 Fri Dec  4 20:57:46 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.12.05
