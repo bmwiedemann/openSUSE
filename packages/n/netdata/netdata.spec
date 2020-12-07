@@ -38,7 +38,7 @@ BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  git-core
 # suse_version is set to 1500 even for 15.2
-%if 0%{?sle_version} >= 150200
+%if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
 BuildRequires:  go >= 1.13
 BuildRequires:  python3
 %else
@@ -60,7 +60,7 @@ Recommends:     curl
 Recommends:     iproute-tc
 Recommends:     lm_sensors
 Recommends:     nmap-ncat curl openssl(cli)
-%if 0%{?sle_version} >= 150200
+%if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
 Recommends:     python3
 Recommends:     python3-PyMySQL
 Recommends:     python3-psycopg2
@@ -87,7 +87,7 @@ using interactive web dashboards.
 %patch2 -p1
 sed -i 's,/usr/bin/env bash,/bin/bash,' claim/%{name}-claim.sh.in
 
-%if 0%{?sle_version} >= 150200
+%if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
 sed -i 's,^pybinary=.*,pybinary=/usr/bin/python3,' collectors/python.d.plugin/python.d.plugin.in
 
 tar xf %{S:1}
@@ -110,7 +110,7 @@ export GOFLAGS=-mod=vendor
     %{?conf}
 %make_build
 
-%if 0%{?sle_version} >= 150200
+%if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
 cd go.d.plugin-%{godplugin_version}
 go vet ./...
 
@@ -143,7 +143,7 @@ sed -i 's|/usr/lib|%{_libdir}|' %{buildroot}%{_libexecdir}/%{name}/edit-config
 # Hence, disable statistics by default.
 touch %{buildroot}%{_sysconfdir}/%{name}/.opt-out-from-anonymous-statistics
 
-%if 0%{?sle_version} >= 150200
+%if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
 pushd go.d.plugin-%{godplugin_version}
 
 install -d -m 0755 %{buildroot}/%{_libdir}/%{name}/conf.d
