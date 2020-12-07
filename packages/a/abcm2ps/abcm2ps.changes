@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  7 08:57:29 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 8.14.11:
+  * fix: error "'staffwidth' too small" when generating sample3.abc
+
+-------------------------------------------------------------------
 Mon Nov 23 08:39:47 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 8.14.10:

@@ -18,7 +18,7 @@
 
 
 Name:           abcm2ps
-Version:        8.14.10
+Version:        8.14.11
 Release:        0
 Summary:        A program to typeset abc tunes into Postscript
 License:        LGPL-3.0-or-later
