@@ -2155,4 +2155,13 @@ http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html
 </comment>
     <requestid>853314</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>53ef463185bc85b5458d4d7283385066</srcmd5>
+    <version>3.6.12</version>
+    <time>1607430272</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust sphinx-update-removed-function.patch
+</comment>
+    <requestid>853646</requestid>
+  </revision>
 </revisionlist>
