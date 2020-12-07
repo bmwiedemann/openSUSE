@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 28 10:59:15 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 1.18.1:
+  + Highlighted bugfixes in 1.18.1
+    - important security fixes
+    - bug fixes and memory leak fixes
+    - various stability and reliability improvements
+
+-------------------------------------------------------------------
 Tue Oct 27 13:25:48 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Also provide/obsolete gstreamer-validate-devel.
