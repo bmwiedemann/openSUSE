@@ -96,7 +96,7 @@ install -D -m 0755 %{S:3} %{buildroot}%{_sysconfdir}/init.d/influxdb
 ln -s -f %{_sysconfdir}/init.d/influxdb %{buildroot}%{_sbindir}/rcinfluxdb
 mkdir -p %{buildroot}%{_localstatedir}/run/influxdb
 %endif
-install -D -m 0755 %{_builddir}/go/bin/* %{buildroot}%{_bindir}
+install -D -m 0755 -t %{buildroot}%{_bindir} %{_builddir}/go/bin/*
 
 # Warn about compatibility problems with previous version
 mkdir -p %{buildroot}%{_localstatedir}/adm/update-messages/
