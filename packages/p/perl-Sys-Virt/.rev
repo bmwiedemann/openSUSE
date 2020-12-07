@@ -751,4 +751,16 @@ bindings we currently have in Factory.
 - Add new file _service for tar_scm source service</comment>
     <requestid>845551</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>615d062367e4e8c8586fc43c064a334e</srcmd5>
+    <version>6.10.0</version>
+    <time>1607349609</time>
+    <user>dimstar_suse</user>
+    <comment>Updated perl bindings for libvirt 6.10.0.
+
+- Update to 6.10.0
+  - Add all new APIs and constants in libvirt 6.10.0
+  - jsc#SLE-13688</comment>
+    <requestid>852457</requestid>
+  </revision>
 </revisionlist>
