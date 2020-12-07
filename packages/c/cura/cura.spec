@@ -27,6 +27,8 @@ URL:            https://github.com/Ultimaker/Cura
 Source:         https://github.com/Ultimaker/Cura/archive/%{sversion}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE disable-code-style-check.patch code style is no distro business
 Patch1:         disable-code-style-check.patch
+# PATCH-FIX-OPENSUSE -- avoid bad UI layout and crash in preview
+Patch2:         0001-Avoid-crash-caused-by-KDE-qqc2-desktop-style.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  python3-Arcus >= %{version}
@@ -80,6 +82,7 @@ settings, and send this G-Code to the 3D printer for printing.
 %prep
 %setup -q -n Cura-%sversion
 %patch1 -p1
+%patch2 -p1
 sed -i -e '1 s/env python3/python3/' cura_app.py
 
 %build
@@ -100,8 +103,8 @@ sed -i 's/PythonInterp 3.5.0/PythonInterp 3.4.0/' CMakeLists.txt cmake/CuraTests
 %cmake_install
 
 for x in 128 64 48 32; do
-    install -m 755 -d %{buildroot}%{_datadir}/icons/hicolor/${x}x${x}
-    install -m 644 icons/cura-${x}.png %{buildroot}%{_datadir}/icons/hicolor/${x}x${x}/cura-icon.png
+    install -m 755 -d %{buildroot}%{_datadir}/icons/hicolor/${x}x${x}/apps/
+    install -m 644 icons/cura-${x}.png %{buildroot}%{_datadir}/icons/hicolor/${x}x${x}/apps/cura-icon.png
 done
 
 # i18n sources (po/pot) are installed in cura/resources, .mo in uranium/resources
