@@ -31,26 +31,26 @@ Source1:        %{name}.service
 Source2:        %{name}-tmpfiles.conf
 # logrotate configuration
 Source3:        minidlna_logrotate
+# systemd-sysusers user configuration
+Source4:        %{name}-user.conf
 # VDR FIX thanks to Boris from openSuse
 Patch0:         minidlna-vdr.diff
 Patch1:         minidlna-multiple_definition.patch
-#BuildRequires:  cvs
-BuildRequires:  e2fsprogs-devel
 BuildRequires:  flac-devel
 BuildRequires:  libexif-devel
 BuildRequires:  libid3tag-devel
 BuildRequires:  libjpeg-devel
-BuildRequires:  libuuid-devel
 BuildRequires:  libvorbis-devel
 BuildRequires:  sqlite-devel
+BuildRequires:  sysuser-shadow
+BuildRequires:  sysuser-tools
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
-Requires:       logrotate
-Requires:       sqlite3
-Requires(pre):  pwdutils
+Recommends:     logrotate
 Provides:       ReadyMedia = %{version}
+%sysusers_requires
 
 %description
 MiniDLNA (aka ReadyDLNA) is server software with the aim of being fully
@@ -75,6 +75,7 @@ CFLAGS="%{optflags} -I/usr/include/ffmpeg"
   --enable-tivo
 
 make %{?_smp_mflags}
+%sysusers_generate_pre %{SOURCE4} minidlna
 
 %install
 %make_install
@@ -96,14 +97,13 @@ install  -D -m0644 minidlna.conf.5 %{buildroot}/%{_mandir}/man5/minidlna.conf.5
 install  -D -m0644 minidlnad.8 %{buildroot}/%{_mandir}/man8/minidlnad.8
 # install example config
 install  -D -m0644 minidlna.conf %{buildroot}/%{_sysconfdir}/minidlna.conf
+# install sysusers config
+install -D -m0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/minidlna.conf
+
 # find language dependent files
 %find_lang minidlna
 
-%pre
-getent group minidlna >/dev/null || groupadd -r minidlna
-getent passwd minidlna >/dev/null || \
-useradd -r -g minidlna -d /dev/null -s /sbin/nologin \
-  -c "minidlna service account" minidlna
+%pre -f minidlna.pre
 %service_add_pre minidlna.service
 
 %preun
@@ -124,6 +124,7 @@ useradd -r -g minidlna -d /dev/null -s /sbin/nologin \
 %{_mandir}/man5/*
 %{_mandir}/man8/*
 %{_sbindir}/*
+%{_sysusersdir}/%{name}.conf
 %{_tmpfilesdir}/%{name}.conf
 %{_unitdir}/%{name}.service
 %attr(0700,minidlna,minidlna) %{_var}/cache/%{name}

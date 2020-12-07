@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  2 13:43:53 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use sysusers macros to create minidlna user
+- Cleanup dependencies
+- Don't hardrequire logrotate, we don't write log files anymore
+
+-------------------------------------------------------------------
 Tue Dec  1 11:08:23 CET 2020 - ro@suse.de
 
 - update to version 1.3.0 (bsc#1179447)
