@@ -22,7 +22,7 @@ ExclusiveArch: do-not-build
 %define build_libjava 0
 %define build_java 0
 
-%define build_fortran 0
+%define build_fortran 0%{?gcc_accel:1}
 %define build_objc 0
 %define build_objcp 0
 %define build_go 0

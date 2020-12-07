@@ -224,6 +224,14 @@ BuildRequires:  libunwind-devel
 BuildRequires:  dejagnu
 BuildRequires:  expect
 BuildRequires:  gdb
+%if %{build_nvptx}
+BuildRequires:  cross-nvptx-gcc10
+BuildRequires:  cross-nvptx-newlib10-devel
+%endif
+%if %{build_gcn}
+BuildRequires:  cross-amdgcn-gcc10
+BuildRequires:  cross-amdgcn-newlib10-devel
+%endif
 %endif
 #!BuildIgnore: gcc-PIE
 
@@ -259,7 +267,7 @@ BuildRequires:  gdb
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        10.2.1+git958
+Version:        10.2.1+git1030
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -1916,10 +1924,10 @@ TCFLAGS="$RPM_OPT_FLAGS" \
 %if %{build_nvptx} || %{build_gcn}
 	--enable-offload-targets=\
 %if %{build_nvptx}
-nvptx-none=%{_prefix}/nvptx-none,\
+nvptx-none,\
 %endif
 %if %{build_gcn}
-amdgcn-amdhsa=%{_prefix}/amdgcn-amdhsa,\
+amdgcn-amdhsa,\
 %endif
 %endif
 %if %{build_nvptx}

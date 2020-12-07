@@ -161,4 +161,20 @@
 - Fix 32bit libgnat.so link.  [bsc#1178675]</comment>
     <requestid>849355</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>31dac767f87fa2e7aa27d7d800ff7e0d</srcmd5>
+    <version>10.2.1+git1030</version>
+    <time>1607349593</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc-10 branch head (e563687cf9d3d1278f45aaebd), git1030
+  * Includes fix for firefox build [gcc#97918]
+
+- Do not specify alternate offload compiler location at
+  configure time.
+- Update README.First-for.SuSE.packagers
+- Install offload compilers for gcc10-testresults build
+
+- Enable fortran for offload compilers.</comment>
+    <requestid>852655</requestid>
+  </revision>
 </revisionlist>

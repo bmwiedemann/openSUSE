@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Dec  2 14:20:06 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-10 branch head (e563687cf9d3d1278f45aaebd), git1030
+  * Includes fix for firefox build [gcc#97918]
+
+-------------------------------------------------------------------
+Fri Nov 27 13:31:26 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Do not specify alternate offload compiler location at
+  configure time.
+- Update README.First-for.SuSE.packagers
+- Install offload compilers for gcc10-testresults build
+
+-------------------------------------------------------------------
+Thu Nov 26 12:25:25 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Enable fortran for offload compilers.
+
+-------------------------------------------------------------------
 Thu Nov 19 08:34:33 UTC 2020 - Richard Biener <rguenther@suse.com>
 
 - Add gcc10-amdgcn-llvm-as.patch to fix build of amdgcn offload

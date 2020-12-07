@@ -43,7 +43,7 @@ ExclusiveArch:  do-not-build
 %define build_libjava 0
 %define build_java 0
 
-%define build_fortran 0
+%define build_fortran 0%{?gcc_accel:1}
 %define build_objc 0
 %define build_objcp 0
 %define build_go 0
@@ -113,7 +113,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        10.2.1+git958
+Version:        10.2.1+git1030
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -413,10 +413,10 @@ TCFLAGS="$RPM_OPT_FLAGS" \
 %if %{build_nvptx} || %{build_gcn}
 	--enable-offload-targets=\
 %if %{build_nvptx}
-nvptx-none=%{_prefix}/nvptx-none,\
+nvptx-none,\
 %endif
 %if %{build_gcn}
-amdgcn-amdhsa=%{_prefix}/amdgcn-amdhsa,\
+amdgcn-amdhsa,\
 %endif
 %endif
 %if %{build_nvptx}
