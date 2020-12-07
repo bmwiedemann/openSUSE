@@ -17,7 +17,7 @@
 
 
 Name:           htop
-Version:        3.0.2
+Version:        3.0.3
 Release:        0
 Summary:        An Interactive text-mode Process Viewer for Linux
 License:        GPL-2.0-or-later
@@ -60,5 +60,9 @@ better 'top' and requires ncurses.
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
 %{_mandir}/man1/%{name}.1%{?ext_man}
+%dir %{_datadir}/icons/hicolor/
+%dir %{_datadir}/icons/hicolor/scalable/
+%dir %{_datadir}/icons/hicolor/scalable/apps/
+%{_datadir}/icons/hicolor/scalable/apps/htop.svg
 
 %changelog

@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Mon Dec  7 09:19:09 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 3.0.3
+  * Process sorting in 'tree' mode
+  * Improved command display/sort functionality
+  * Add screen for active file locks
+  * Calculate library size (M_LRS column) from maps file
+  * Add a Zram meter
+  * Add Linux cwd process column
+  * Dynamically load libsensors at runtime
+  * Improve PressureStall Meter display strings
+  * Hide process selection on ESC
+  * Fully support non-ascii characters in Meter-Bar
+  * Add support to change numeric options in settings screen
+  * Rename virtual memory column from M_SIZE to M_VIRT
+  * Add process column for normalized CPU usage
+  * Show CPU temperature in CPU meter
+  * Drop hideThreads Setting
+  * Add a systemd meter
+  * Add a network IO meter
+  * Add a SELinux meter
+  * Compress size of default FunctionBar
+  * Updates to the OpenFiles screen
+  * Continue updating header data in paused mode
+  * BUGFIX: Handle data wraparounds in IO meters
+  * BUGFIX: Update InfoScreen content on resize
+  * Add security attribute process column
+  * Add DiskIOMeter for IO read/write usage
+  * Read CPU frequency from sysfs by default
+  * Add Linux process column for context switches
+  * Several FreeBSD and Mac OS X platform updates
+  * Add process environment for FreeBSD
+  * Parse POWER_SUPPLY_CAPACITY for Linux Battery meter
+  * Add octuple-column CPU meters.
+  * BUGFIX: On Linux consider ZFS ARC to be cache
+  * BUGFIX: Limit screen title length to window width
+  * Show selected command wrapped in a separate window
+  * Allow to pass '/' for item search
+  * Document implicit incremental search
+  * Handle 'q' as quit if first character
+  * Avoid expensive build of process tree when not using it
+  * Include documentation for COMM and EXE
+  * Distinguish display of no permissions for reading M_LRS
+  * Only calculate M_LRS size every 2 seconds
+  * Improvements to comm / cmdline display functionality
+  * Merged view for COMM, EXE and cmdline
+    (thanks to Narendran Gopalakrishnan and Benny Baumann)
+  * Consistent kernel thread display for COMM/EXE columns
+  * Central fault handling for all platforms
+  * Handle parsing envID & VPid from process status file
+  * Use threshold for display of guest/steal/irq meters
+  * Enhance highlighting of semi-large and large numbers
+  * Documentation on the repository style guide
+  * Align processor identifier to the right
+  * Document M_PSS, M_PSSWP, M_SWAP in man page
+  * Add Date and DateTime meters
+  * BUGFIX: Fix Solaris 11.4 due to missing ZFS ARC kstats
+  * Code hardening, speedups, fd and memory leak fixes
+  * Number CPUs from zero by default
+  * Remove residual python checks during the build process
+
+-------------------------------------------------------------------
 Tue Sep 15 21:46:04 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 3.0.2
