@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  7 10:12:24 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Resurrect 0001-Avoid-crash-caused-by-KDE-qqc2-desktop-style.patch
+- Correct icon install paths
+
+-------------------------------------------------------------------
 Sat Nov 21 20:47:38 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Depend on the python3-Arcus bindings instead of the versioned
