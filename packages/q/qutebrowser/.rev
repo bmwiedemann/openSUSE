@@ -1494,4 +1494,88 @@ Changed
     <comment></comment>
     <requestid>848890</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>cf01e6f659e214ee975ea520779774f8</srcmd5>
+    <version>1.14.1</version>
+    <time>1607349666</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.14.1
+Added
+With v1.14.0, qutebrowser configures the main window to be
+transparent, so that it's possible to configure a translucent tab-
+or statusbar. However, that change introduced various issues, such
+as performance degradation on some systems or breaking dmenu window
+embedding with its -w option. To avoid those issues for people who
+are not using transparency, the default behavior is reverted to
+versions before v1.14.0 in this release. A new window.transparent
+setting can be set to true to restore the behavior of v1.14.0.
+Fixed
+* Setting the content.headers.referer setting to same-domain (the
+  default) was supposed to truncate referers to only the host with
+  QtWebEngine. Unfortunately, this functionality broke in Qt 5.14.
+  It works properly again.
+* with this release, including a test so this won't happen again.
+* With QtWebEngine 5.15, setting the content.headers.referer
+  setting to never did still send referers. This is now fixed as
+  well.
+* In v1.14.0, a regression was introduced, causing a crash when
+  qutebrowser was closed after opening a download with PDF.js.
+  This is now fixed.
+* With Qt 5.12, the Object.fromEntries JavaScript API is
+  unavailable (it was introduced in Chromium 73, while Qt 5.12 is
+  based on 69). This caused https://www.vr.fi/en and possibly other
+  websites to break when accessed with Qt 5.12. A suitable polyfill
+  is now included with qutebrowser if content.site_specific_quirks
+  is enabled (which is the default).
+* While XDG startup notifications (e.g. launch feedback via the
+  bouncy cursor in KDE Plasma) were supported ever since Qt 5.1,
+  qutebrowser's desktop file accidentally declared that it wasn't
+  supported. This is now fixed.
+* The dmenu_qutebrowser and qutedmenu userscripts now correctly
+  read the qutebrowser sqlite history which has been in use since
+  v1.0.0.
+* With Python 3.8+ and vertical tabs, a deprecation warning for an
+  implicit int conversion was shown. This is now fixed.
+* Ever since Qt 5.11, fetching more completion data when that data
+  is loaded lazily (such as with history) and the last visible item
+  is selected was broken. The exact reason is currently unknown,
+  but this release adds a tenative fix.
+* When PgUp/PgDown were used to go beyond the last visible item,
+  the above issue caused a crash, which is now also fixed.
+* As a workaround for an overzealous Microsoft Defender
+  false-positive detecting a &quot;trojan&quot; in the (unprocessed) adblock
+  list, :adblock-update now doesn't cache the HTTP response anymore
+* With the QtWebKit backend and content.headers set to same-domain
+  (the default), origins with the same domain but different schemes
+  or ports were treated as the same domain. They now are correctly
+  treated as different domains.
+* When a URL path uses percent escapes
+  (such as https://example.com/embedded%2Fpath), using :navigate up
+  would treat the %2F as a path separator and replace any remaining
+  percent escapes by their unescaped equivalents. Those are now
+  handled correctly.
+* The open_url_instance.sh userscript now complains when socat is
+  not installed, rather than silencing the error.
+* The example AppArmor profile in misc/ was outdated and written
+  for the older QtWebKit backend. It is now updated to serve as a
+  useful starting point with QtWebEngine.
+* With Qt 5.15.2, lines/borders coming from the readability-js
+  userscript were invisible. This is now fixed by changing the
+  border color to grey (with all Qt versions).
+* Due to changes in the underlying Chromium, the
+  colors.webpage.prefers_color_scheme_dark setting broke with
+  Qt 5.15.2. It now works properly again.
+* A bug in the pkg_resources module used by qutebrowser caused
+  deprecation warnings to appear on start with Python 3.9 on some
+  setups. Those are now hidden.
+* Minor performance improvements.
+* Fix for various functionality breaking in private windows with
+  v1.14.0, after the last private window is closed. This includes:
+    + Ad blocking
+    + Downloads
+    + Site-specific quirks (e.g. for Google login)
+    + Certain settings such as content.javascript.enabled
+</comment>
+    <requestid>853375</requestid>
+  </revision>
 </revisionlist>
