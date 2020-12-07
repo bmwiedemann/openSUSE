@@ -1,0 +1,25 @@
+From dae1718d50bec1b40b860280acafbdd94fc4cd5d Mon Sep 17 00:00:00 2001
+From: Ben Boeckel <ben.boeckel@kitware.com>
+Date: Sat, 21 Nov 2020 13:37:34 -0500
+Subject: [PATCH] vtkFreeTypeTools: avoid using an internal macro
+
+This macro has been removed upstream as it was always intended to be
+private.
+---
+ VTK/Rendering/FreeType/vtkFreeTypeTools.cxx | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+Index: ParaView-v5.8.1/VTK/Rendering/FreeType/vtkFreeTypeTools.cxx
+===================================================================
+--- ParaView-v5.8.1.orig/VTK/Rendering/FreeType/vtkFreeTypeTools.cxx
++++ ParaView-v5.8.1/VTK/Rendering/FreeType/vtkFreeTypeTools.cxx
+@@ -378,8 +378,7 @@ FTC_CMapCache* vtkFreeTypeTools::GetCMap
+ }
+ 
+ //----------------------------------------------------------------------------
+-FT_CALLBACK_DEF(FT_Error)
+-vtkFreeTypeToolsFaceRequester(
++static FT_Error vtkFreeTypeToolsFaceRequester(
+   FTC_FaceID face_id, FT_Library lib, FT_Pointer request_data, FT_Face* face)
+ {
+ #if VTK_FTFC_DEBUG_CD

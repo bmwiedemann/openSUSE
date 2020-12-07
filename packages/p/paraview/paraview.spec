@@ -50,6 +50,8 @@ Patch2:         fix-3d48a287-support-new-api-cgio_read_data_type.patch
 Patch8:         fix-libharu-missing-m.patch
 # PATCH-FIX-OPENSUSE bundled_exodusii_add_missing_libpthread.patch stefan.bruens@rwth-aachen.de -- Add missing libm for linking (updated to upstream patch, see https://gitlab.kitware.com/vtk/vtk/-/merge_requests/6865)
 Patch10:        bundled_exodusii_add_missing_libpthread.patch
+# PATCH-FIX-UPSTREAM paraview-vtkFreeTypeTools-internal-macro.patch badshah400@gmail.com -- vtkFreeTypeTools: avoid using an internal macro; patch taken from upstream vtk git and rebased to apply with -p1
+Patch11:        paraview-vtkFreeTypeTools-internal-macro.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  cgns-devel
 BuildRequires:  cmake >= 3.13

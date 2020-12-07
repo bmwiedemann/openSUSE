@@ -14,11 +14,11 @@ Data conversion is not let to CGNS with new API as it may only be stable for HDF
  .../CGNSReader/vtkCGNSReaderInternal.h        | 53 ++++++++++--
  5 files changed, 133 insertions(+), 66 deletions(-)
 
-diff --git a/VTKExtensions/CGNSReader/cgio_helpers.cxx b/VTKExtensions/CGNSReader/cgio_helpers.cxx
-index 1e8ecae8c5..44429a4dd0 100644
---- a/VTKExtensions/CGNSReader/cgio_helpers.cxx
-+++ b/VTKExtensions/CGNSReader/cgio_helpers.cxx
-@@ -44,7 +44,7 @@ int readNodeStringData(int cgioNum, double nodeId, std::string& data)
+Index: ParaView-v5.8.1/VTKExtensions/CGNSReader/cgio_helpers.cxx
+===================================================================
+--- ParaView-v5.8.1.orig/VTKExtensions/CGNSReader/cgio_helpers.cxx
++++ ParaView-v5.8.1/VTKExtensions/CGNSReader/cgio_helpers.cxx
+@@ -44,7 +44,7 @@ int readNodeStringData(int cgioNum, doub
  
    data.resize(size);
    // read data
@@ -27,7 +27,7 @@ index 1e8ecae8c5..44429a4dd0 100644
    {
      return 1;
    }
-@@ -80,7 +80,7 @@ int readNodeData<char>(int cgioNum, double nodeId, std::vector<char>& data)
+@@ -80,7 +80,7 @@ int readNodeData<char>(int cgioNum, doub
    data.resize(size + 1);
  
    // read data
@@ -36,7 +36,7 @@ index 1e8ecae8c5..44429a4dd0 100644
    {
      return 1;
    }
-@@ -167,7 +167,7 @@ int readBaseIds(int cgioNum, double rootId, std::vector<double>& baseIds)
+@@ -167,7 +167,7 @@ int readBaseIds(int cgioNum, double root
  int readBaseCoreInfo(int cgioNum, double baseId, CGNSRead::BaseInformation& baseInfo)
  {
    CGNSRead::char_33 dataType;
@@ -45,7 +45,7 @@ index 1e8ecae8c5..44429a4dd0 100644
  
    if (cgio_get_name(cgioNum, baseId, baseInfo.name) != CG_OK)
    {
-@@ -187,7 +187,7 @@ int readBaseCoreInfo(int cgioNum, double baseId, CGNSRead::BaseInformation& base
+@@ -187,7 +187,7 @@ int readBaseCoreInfo(int cgioNum, double
      return 1;
    }
  
@@ -54,7 +54,7 @@ index 1e8ecae8c5..44429a4dd0 100644
    {
      std::cerr << "error while reading base dimension" << std::endl;
      return 1;
-@@ -209,7 +209,7 @@ int readBaseIteration(int cgioNum, double nodeId, CGNSRead::BaseInformation& bas
+@@ -209,7 +209,7 @@ int readBaseIteration(int cgioNum, doubl
    bool createTimeStates = true;
    bool createIterStates = true;
  
@@ -63,7 +63,7 @@ index 1e8ecae8c5..44429a4dd0 100644
    // read node data type
    if (cgio_get_data_type(cgioNum, nodeId, dataType) != CG_OK)
    {
-@@ -222,7 +222,7 @@ int readBaseIteration(int cgioNum, double nodeId, CGNSRead::BaseInformation& bas
+@@ -222,7 +222,7 @@ int readBaseIteration(int cgioNum, doubl
      return 1;
    }
  
@@ -72,7 +72,7 @@ index 1e8ecae8c5..44429a4dd0 100644
    {
      std::cerr << "error while reading number of state in base" << std::endl;
      return 1;
-@@ -298,7 +298,7 @@ int readBaseIteration(int cgioNum, double nodeId, CGNSRead::BaseInformation& bas
+@@ -298,7 +298,7 @@ int readBaseIteration(int cgioNum, doubl
        }
  
        baseInfo.steps.clear();
@@ -81,11 +81,11 @@ index 1e8ecae8c5..44429a4dd0 100644
        if (static_cast<int>(baseInfo.steps.size()) != nstates)
        {
          std::cerr << "Error reading steps node";
-diff --git a/VTKExtensions/CGNSReader/cgio_helpers.h b/VTKExtensions/CGNSReader/cgio_helpers.h
-index bef0f3fbfa..07deb54ebe 100644
---- a/VTKExtensions/CGNSReader/cgio_helpers.h
-+++ b/VTKExtensions/CGNSReader/cgio_helpers.h
-@@ -46,6 +46,7 @@ inline int readNodeData(int cgioNum, double nodeId, std::vector<T>& data)
+Index: ParaView-v5.8.1/VTKExtensions/CGNSReader/cgio_helpers.h
+===================================================================
+--- ParaView-v5.8.1.orig/VTKExtensions/CGNSReader/cgio_helpers.h
++++ ParaView-v5.8.1/VTKExtensions/CGNSReader/cgio_helpers.h
+@@ -46,6 +46,7 @@ inline int readNodeData(int cgioNum, dou
    cgsize_t size = 1;
    cgsize_t dimVals[12];
    int ndim;
@@ -93,7 +93,7 @@ index bef0f3fbfa..07deb54ebe 100644
  
    if (cgio_get_dimensions(cgioNum, nodeId, &ndim, dimVals) != CG_OK)
    {
-@@ -65,7 +66,7 @@ inline int readNodeData(int cgioNum, double nodeId, std::vector<T>& data)
+@@ -65,7 +66,7 @@ inline int readNodeData(int cgioNum, dou
    data.resize(size);
  
    // read data
@@ -102,11 +102,11 @@ index bef0f3fbfa..07deb54ebe 100644
    {
      return 1;
    }
-diff --git a/VTKExtensions/CGNSReader/vtkCGNSReader.cxx b/VTKExtensions/CGNSReader/vtkCGNSReader.cxx
-index a1c417b810..7ca523997a 100644
---- a/VTKExtensions/CGNSReader/vtkCGNSReader.cxx
-+++ b/VTKExtensions/CGNSReader/vtkCGNSReader.cxx
-@@ -526,6 +526,33 @@ int StartsWithFlowSolution(const char* s)
+Index: ParaView-v5.8.1/VTKExtensions/CGNSReader/vtkCGNSReader.cxx
+===================================================================
+--- ParaView-v5.8.1.orig/VTKExtensions/CGNSReader/vtkCGNSReader.cxx
++++ ParaView-v5.8.1/VTKExtensions/CGNSReader/vtkCGNSReader.cxx
+@@ -522,6 +522,33 @@ int StartsWithFlowSolution(const char* s
  
    return ret;
  }
@@ -140,7 +140,7 @@ index a1c417b810..7ca523997a 100644
  
  //----------------------------------------------------------------------------
  vtkCGNSReader::vtkCGNSReader()
-@@ -672,7 +699,8 @@ int vtkCGNSReader::vtkPrivate::getGridAndSolutionNames(int base, std::string& gr
+@@ -668,7 +695,8 @@ int vtkCGNSReader::vtkPrivate::getGridAn
      {
        CGNSRead::char_33 gname;
        const cgsize_t offset = static_cast<cgsize_t>(self->ActualTimeStep * 32);
@@ -150,7 +150,7 @@ index a1c417b810..7ca523997a 100644
        gname[32] = '\0';
        // NOTE: Names or identifiers contain no spaces and capitalization
        //       is used to distinguish individual words making up a name.
-@@ -732,9 +760,9 @@ int vtkCGNSReader::vtkPrivate::getGridAndSolutionNames(int base, std::string& gr
+@@ -728,9 +756,9 @@ int vtkCGNSReader::vtkPrivate::getGridAn
          EndsWithPointers(nodeName))
        {
          CGNSRead::char_33 gname;
@@ -162,7 +162,7 @@ index a1c417b810..7ca523997a 100644
          gname[32] = '\0';
          CGNSRead::removeTrailingWhiteSpaces(gname);
          std::string tmpStr = std::string(gname);
-@@ -1197,28 +1225,30 @@ int vtkCGNSReader::vtkPrivate::readSolution(const std::string& solutionNameStr,
+@@ -1193,28 +1221,30 @@ int vtkCGNSReader::vtkPrivate::readSolut
        continue;
      }
      double cgioVarId = solChildId[ff];
@@ -199,7 +199,7 @@ index a1c417b810..7ca523997a 100644
        }
      }
      cgio_release_id(self->cgioNum, cgioVarId);
-@@ -1448,6 +1478,7 @@ int vtkCGNSReader::vtkPrivate::readBCData(const double nodeId, const int cellDim
+@@ -1444,6 +1474,7 @@ int vtkCGNSReader::vtkPrivate::readBCDat
              continue;
            }
            double cgioVarId = varIds[ff];
@@ -207,7 +207,7 @@ index a1c417b810..7ca523997a 100644
  
            cgsize_t dataSize = 1;
            cgsize_t dimVals[12];
-@@ -1474,12 +1505,12 @@ int vtkCGNSReader::vtkPrivate::readBCData(const double nodeId, const int cellDim
+@@ -1470,12 +1501,12 @@ int vtkCGNSReader::vtkPrivate::readBCDat
              // quick transfer of data because data types is given by cgns database
              if (cgnsVars[ff].isComponent == false)
              {
@@ -223,7 +223,7 @@ index a1c417b810..7ca523997a 100644
                }
                if (dataSize == 1)
                {
-@@ -1510,14 +1541,14 @@ int vtkCGNSReader::vtkPrivate::readBCData(const double nodeId, const int cellDim
+@@ -1506,14 +1537,14 @@ int vtkCGNSReader::vtkPrivate::readBCDat
                fieldVectMemDims[0] = fieldSrcEnd[0] * fieldVectMemStride[0];
                fieldVectMemEnd[0] = fieldSrcEnd[0] * fieldVectMemStride[0];
  
@@ -242,7 +242,7 @@ index a1c417b810..7ca523997a 100644
                }
                if (dataSize == 1)
                {
-@@ -2231,7 +2262,7 @@ int vtkCGNSReader::GetUnstructuredZone(
+@@ -2227,7 +2258,7 @@ int vtkCGNSReader::GetUnstructuredZone(
  
      //
      CGNSRead::char_33 dataType;
@@ -251,7 +251,7 @@ index a1c417b810..7ca523997a 100644
  
      if (cgio_get_name(this->cgioNum, elemIdList[sec], sectionInfoList[sec].name) != CG_OK)
      {
-@@ -2246,7 +2277,7 @@ int vtkCGNSReader::GetUnstructuredZone(
+@@ -2242,7 +2273,7 @@ int vtkCGNSReader::GetUnstructuredZone(
        vtkErrorMacro(<< "Unexpected data type for dimension data of Element\n");
      }
  
@@ -260,7 +260,7 @@ index a1c417b810..7ca523997a 100644
      if (mdata.size() != 2)
      {
        vtkErrorMacro(<< "Unexpected data for Elements_t node\n");
-@@ -2267,8 +2298,8 @@ int vtkCGNSReader::GetUnstructuredZone(
+@@ -2263,8 +2294,8 @@ int vtkCGNSReader::GetUnstructuredZone(
  
      if (strcmp(dataType, "I4") == 0)
      {
@@ -271,7 +271,7 @@ index a1c417b810..7ca523997a 100644
        if (mdata2.size() != 2)
        {
          vtkErrorMacro(<< "Unexpected data for ElementRange node\n");
-@@ -2278,8 +2309,8 @@ int vtkCGNSReader::GetUnstructuredZone(
+@@ -2274,8 +2305,8 @@ int vtkCGNSReader::GetUnstructuredZone(
      }
      else if (strcmp(dataType, "I8") == 0)
      {
@@ -282,7 +282,7 @@ index a1c417b810..7ca523997a 100644
        if (mdata2.size() != 2)
        {
          vtkErrorMacro(<< "Unexpected data for ElementRange node\n");
-@@ -4437,8 +4468,8 @@ int vtkCGNSReader::RequestData(vtkInformation* vtkNotUsed(request),
+@@ -4433,8 +4464,8 @@ int vtkCGNSReader::RequestData(vtkInform
  
        if (strcmp(dataType, "I4") == 0)
        {
@@ -293,7 +293,7 @@ index a1c417b810..7ca523997a 100644
          for (std::size_t index = 0; index < mdata.size(); index++)
          {
            zsize[index] = static_cast<cgsize_t>(mdata[index]);
-@@ -4446,8 +4477,8 @@ int vtkCGNSReader::RequestData(vtkInformation* vtkNotUsed(request),
+@@ -4442,8 +4473,8 @@ int vtkCGNSReader::RequestData(vtkInform
        }
        else if (strcmp(dataType, "I8") == 0)
        {
@@ -304,7 +304,7 @@ index a1c417b810..7ca523997a 100644
          for (std::size_t index = 0; index < mdata.size(); index++)
          {
            zsize[index] = static_cast<cgsize_t>(mdata[index]);
-@@ -4724,7 +4755,7 @@ int vtkCGNSReader::CanReadFile(const char* name)
+@@ -4720,7 +4751,7 @@ int vtkCGNSReader::CanReadFile(const cha
    }
  
    // read data
@@ -313,11 +313,11 @@ index a1c417b810..7ca523997a 100644
    {
      vtkErrorMacro(<< "read CGNS version number");
      ierr = 0;
-diff --git a/VTKExtensions/CGNSReader/vtkCGNSReaderInternal.cxx b/VTKExtensions/CGNSReader/vtkCGNSReaderInternal.cxx
-index 92c0d6ac51..a2bcf1a443 100644
---- a/VTKExtensions/CGNSReader/vtkCGNSReaderInternal.cxx
-+++ b/VTKExtensions/CGNSReader/vtkCGNSReaderInternal.cxx
-@@ -36,8 +36,8 @@ int setUpRind(const int cgioNum, const double rindId, int* rind)
+Index: ParaView-v5.8.1/VTKExtensions/CGNSReader/vtkCGNSReaderInternal.cxx
+===================================================================
+--- ParaView-v5.8.1.orig/VTKExtensions/CGNSReader/vtkCGNSReaderInternal.cxx
++++ ParaView-v5.8.1/VTKExtensions/CGNSReader/vtkCGNSReaderInternal.cxx
+@@ -36,8 +36,8 @@ int setUpRind(const int cgioNum, const d
  
    if (strcmp(dataType, "I4") == 0)
    {
@@ -328,7 +328,7 @@ index 92c0d6ac51..a2bcf1a443 100644
      for (std::size_t index = 0; index < mdata.size(); index++)
      {
        rind[index] = static_cast<int>(mdata[index]);
-@@ -45,8 +45,8 @@ int setUpRind(const int cgioNum, const double rindId, int* rind)
+@@ -45,8 +45,8 @@ int setUpRind(const int cgioNum, const d
    }
    else if (strcmp(dataType, "I8") == 0)
    {
@@ -339,7 +339,7 @@ index 92c0d6ac51..a2bcf1a443 100644
      for (std::size_t index = 0; index < mdata.size(); index++)
      {
        rind[index] = static_cast<int>(mdata[index]);
-@@ -156,12 +156,12 @@ int get_section_connectivity(const int cgioNum, const double cgioSectionId, cons
+@@ -156,12 +156,12 @@ int get_section_connectivity(const int c
  
    if (sizeOfCnt == sizeof(vtkIdType))
    {
@@ -355,7 +355,7 @@ index 92c0d6ac51..a2bcf1a443 100644
        return 1;
      }
    }
-@@ -181,13 +181,13 @@ int get_section_connectivity(const int cgioNum, const double cgioSectionId, cons
+@@ -181,13 +181,13 @@ int get_section_connectivity(const int c
          std::cerr << "Allocation failed for temporary connectivity array\n";
        }
  
@@ -372,7 +372,7 @@ index 92c0d6ac51..a2bcf1a443 100644
          return 1;
        }
        for (cgsize_t n = 0; n < nn; n++)
-@@ -204,13 +204,13 @@ int get_section_connectivity(const int cgioNum, const double cgioSectionId, cons
+@@ -204,13 +204,13 @@ int get_section_connectivity(const int c
          std::cerr << "Allocation failed for temporary connectivity array\n";
          return 1;
        }
@@ -389,7 +389,7 @@ index 92c0d6ac51..a2bcf1a443 100644
          return 1;
        }
        for (cgsize_t n = 0; n < nn; n++)
-@@ -258,12 +258,12 @@ int get_section_start_offset(const int cgioNum, const double cgioSectionId, cons
+@@ -258,12 +258,12 @@ int get_section_start_offset(const int c
  
    if (sizeOfCnt == sizeof(vtkIdType))
    {
@@ -405,7 +405,7 @@ index 92c0d6ac51..a2bcf1a443 100644
        return 1;
      }
    }
-@@ -283,13 +283,13 @@ int get_section_start_offset(const int cgioNum, const double cgioSectionId, cons
+@@ -283,13 +283,13 @@ int get_section_start_offset(const int c
          std::cerr << "Allocation failed for temporary connectivity offset array\n";
        }
  
@@ -422,7 +422,7 @@ index 92c0d6ac51..a2bcf1a443 100644
          return 1;
        }
        for (cgsize_t n = 0; n < nn; n++)
-@@ -306,13 +306,13 @@ int get_section_start_offset(const int cgioNum, const double cgioSectionId, cons
+@@ -306,13 +306,13 @@ int get_section_start_offset(const int c
          std::cerr << "Allocation failed for temporary connectivity array\n";
          return 1;
        }
@@ -439,10 +439,10 @@ index 92c0d6ac51..a2bcf1a443 100644
          return 1;
        }
        for (cgsize_t n = 0; n < nn; n++)
-diff --git a/VTKExtensions/CGNSReader/vtkCGNSReaderInternal.h b/VTKExtensions/CGNSReader/vtkCGNSReaderInternal.h
-index 4bcfd5c75a..3df3bae8de 100644
---- a/VTKExtensions/CGNSReader/vtkCGNSReaderInternal.h
-+++ b/VTKExtensions/CGNSReader/vtkCGNSReaderInternal.h
+Index: ParaView-v5.8.1/VTKExtensions/CGNSReader/vtkCGNSReaderInternal.h
+===================================================================
+--- ParaView-v5.8.1.orig/VTKExtensions/CGNSReader/vtkCGNSReaderInternal.h
++++ ParaView-v5.8.1/VTKExtensions/CGNSReader/vtkCGNSReaderInternal.h
 @@ -72,6 +72,39 @@ struct is_float<float>
  };
  }
@@ -499,7 +499,7 @@ index 4bcfd5c75a..3df3bae8de 100644
    std::vector<double> times;
  
    // For unsteady meshes :
-@@ -469,16 +502,18 @@ int get_XYZ_mesh(const int cgioNum, const std::vector<double>& gridChildId,
+@@ -469,16 +502,18 @@ int get_XYZ_mesh(const int cgioNum, cons
      // quick transfer of data if same data types
      if (sameType == true)
      {
@@ -521,7 +521,7 @@ index 4bcfd5c75a..3df3bae8de 100644
        Y* dataArray = 0;
        const cgsize_t memNoStride[3] = { 1, 1, 1 };
  
-@@ -489,13 +524,13 @@ int get_XYZ_mesh(const int cgioNum, const std::vector<double>& gridChildId,
+@@ -489,13 +524,13 @@ int get_XYZ_mesh(const int cgioNum, cons
          std::cerr << "Error allocating buffer array\n";
          break;
        }
@@ -538,6 +538,3 @@ index 4bcfd5c75a..3df3bae8de 100644
          break;
        }
        for (vtkIdType ii = 0; ii < nPts; ++ii)
--- 
-2.24.1
-
