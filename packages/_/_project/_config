@@ -315,7 +315,7 @@ Prefer: ghostscript-mini
 Prefer: krb5-mini-devel:krb5-mini
 Prefer: krb5-mini krb5-mini-devel
 Prefer: libudev-mini-devel libudev-mini1 udev-debuginfo libudev1-debuginfo
-Prefer: libdebuginfod1
+Prefer: libdebuginfod1 debuginfod-client
 Prefer: libunbound-devel-mini
 Prefer: log4j12-mini log4j-mini
 Prefer: systemd-mini-devel:systemd-mini
@@ -915,7 +915,7 @@ Prefer: python3-msgpack
 Prefer: opencv-devel
 
 # python3-pytest should win over the other python3-pytest<n> variants
-Prefer: python3-pytest
+Prefer: python3-pytest python38-pytest python36-pytest
 
 # There is python3-Django and python3-Django1 - as usual, we favor the unversioned one
 Prefer: -python3-Django1
