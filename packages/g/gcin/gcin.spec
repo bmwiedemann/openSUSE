@@ -20,7 +20,7 @@
 %define _distconfdir %{_sysconfdir}
 %endif
 
-%define build_qt4 0%{?is_opensuse} && 0%{?suse_version} < 1550
+%define build_qt4 0%{?is_opensuse} && 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
 
 Name:           gcin
 Version:        2.9.0
