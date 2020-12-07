@@ -1282,6 +1282,7 @@ unsorted:
   - bitlbee-steam 
   - bitmap 
   - bittwist 
+  - bitwise 
   - black-hole-solver 
   - black-hole-solver-devel 
   - blacs-devel-headers 
@@ -1636,6 +1637,7 @@ unsorted:
   - c2hs 
   - c3p0 
   - c3p0-javadoc 
+  - cJSON-devel 
   - c_count 
   - ca-certificates-cacert 
   - ca-certificates-steamtricks 
@@ -10137,6 +10139,7 @@ unsorted:
   - libcjose-devel 
   - libcjose0 
   - libcjs0 
+  - libcjson1 
   - libck0 
   - libckteec0 
   - libclFFT2: [x86_64] 
@@ -26683,6 +26686,7 @@ unsorted:
   - system-user-libvirt-dbus 
   - system-user-loki 
   - system-user-msr 
+  - system-user-prometheus 
   - system-user-srvGeoClue: [i586] 
   - system-user-tss 
   - system-user-uuidd 
