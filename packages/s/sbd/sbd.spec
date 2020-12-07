@@ -33,7 +33,7 @@
 %global sync_resource_startup_sysconfig no
 
 Name:           sbd
-Version:        1.4.1+20200819.4a02ef2
+Version:        1.4.2+20201202.0446439
 Release:        0
 Summary:        Storage-based death
 License:        GPL-2.0-or-later
@@ -125,6 +125,7 @@ fi
 %{_sbindir}/rcsbd
 %{_sbindir}/rcsbd_remote
 %{_datadir}/sbd
+%{_datadir}/pkgconfig/sbd.pc
 %exclude %{_datadir}/sbd/regressions.sh
 %{_mandir}/man8/sbd*
 %{_unitdir}/sbd.service

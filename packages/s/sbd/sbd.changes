@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec 04 10:43:43 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 1.4.2+20201202.0446439 (v1.4.2):
+- ship sbd.pc with basic sbd build information for downstream packages to use
+
+-------------------------------------------------------------------
+Tue Nov 10 17:01:53 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 1.4.1+20201105.507bd5f:
+- sbd: inform the user to restart the sbd service (bsc#1179655)
+
+-------------------------------------------------------------------
 Fri Oct 30 16:02:05 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Update the uses of the systemd rpm macros

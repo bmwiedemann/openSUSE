@@ -414,4 +414,16 @@ the sources.</comment>
     <comment></comment>
     <requestid>845071</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>45d3fbd8f75f2a21fca48f0b4c5c067b</srcmd5>
+    <version>1.4.2+20201202.0446439</version>
+    <time>1607349707</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.2+20201202.0446439 (v1.4.2):
+- ship sbd.pc with basic sbd build information for downstream packages to use
+
+- Update to version 1.4.1+20201105.507bd5f:
+- sbd: inform the user to restart the sbd service (bsc#1179655) (forwarded request 853539 from yan_gao)</comment>
+    <requestid>853540</requestid>
+  </revision>
 </revisionlist>
