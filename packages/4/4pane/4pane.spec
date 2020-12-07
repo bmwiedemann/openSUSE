@@ -18,14 +18,12 @@
 
 
 Name:           4pane
-Version:        6.0
+Version:        7.0
 Release:        0
 Summary:        A multi-pane detailed-list file manager
 License:        GPL-3.0-only
 URL:            http://www.4pane.co.uk/
 Source0:        https://sourceforge.net/projects/fourpane/files/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 4pane-fix_for_wx3.1.4.patch
-Patch0:         4pane-fix_for_wx3.1.4.patch
 BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
