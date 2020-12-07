@@ -87,4 +87,41 @@
     <comment></comment>
     <requestid>711486</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d10f1ec7379986782d00442fdf4eeb52</srcmd5>
+    <version>3.3.0</version>
+    <time>1607349602</time>
+    <user>dimstar_suse</user>
+    <comment>- Use defined gcc version for all architectures
+
+- Update to v3.3.0
+  * Fixes assembly of trap.S when building ARM multilibs (related
+    to [bsc#1106014]
+- Remove unused configure flag --with-multilib-list. Newlib's configure
+  script obtains this information from the GCC used to build it.
+
+- Use defined gcc version for all architectures
+
+- Update to v3.3.0
+  * Fixes assembly of trap.S when building ARM multilibs (related
+    to [bsc#1106014]
+- Remove unused configure flag --with-multilib-list. Newlib's configure
+  script obtains this information from the GCC used to build it.
+
+- Use defined gcc version for all architectures
+
+- Update to v3.3.0
+  * Fixes assembly of trap.S when building ARM multilibs (related
+    to [bsc#1106014]
+- Remove unused configure flag --with-multilib-list. Newlib's configure
+  script obtains this information from the GCC used to build it.
+
+- Use defined gcc version for all architectures
+
+- Update to v3.3.0
+  * Fixes assembly of trap.S when building ARM multilibs (related
+    to [bsc#1106014]
+- Remove unused configure flag --with-multilib-list. Newlib's configure</comment>
+    <requestid>853584</requestid>
+  </revision>
 </revisionlist>

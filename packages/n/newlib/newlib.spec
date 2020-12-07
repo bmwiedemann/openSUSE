@@ -1,7 +1,7 @@
 #
 # spec file for package newlib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           newlib
-Version:        3.1.0
+Version:        3.3.0
 Release:        0
 Summary:        C library intended for use on embedded systems
 License:        BSD-3-Clause AND MIT AND LGPL-2.0-or-later AND ISC
 Group:          Development/Tools
-Url:            https://sourceware.org/newlib/
+URL:            https://sourceware.org/newlib/
 Source0:        ftp://sourceware.org/pub/newlib/newlib-%{version}.tar.gz
 
 Patch1:         epiphany-fixes.diff

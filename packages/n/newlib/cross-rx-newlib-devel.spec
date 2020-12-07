@@ -1,7 +1,7 @@
 #
 # spec file for package cross-rx-newlib-devel
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,21 +24,17 @@
 %endif
 
 Name:           cross-%{cross_arch}-newlib-devel
-Version:        3.1.0
+Version:        3.3.0
 Release:        0
 Summary:        C library intended for use on %{cross_arch} embedded systems
 License:        BSD-3-Clause AND MIT AND LGPL-2.0-or-later AND ISC
 Group:          Development/Tools
-Url:            https://sourceware.org/newlib/
+URL:            https://sourceware.org/newlib/
 Source0:        ftp://sourceware.org/pub/newlib/newlib-%{version}.tar.gz
 
 Patch1:         epiphany-fixes.diff
 
-%if "%{cross_arch}" == "riscv64"
-BuildRequires:  cross-%{gcc_cross_arch}-gcc8-bootstrap
-%else
 BuildRequires:  cross-%{gcc_cross_arch}-gcc%{gcc_version}-bootstrap
-%endif
 %if %{suse_version} > 1220
 BuildRequires:  makeinfo
 %else
@@ -72,9 +68,6 @@ cd build-dir
 ../configure \
 	--prefix=%{_prefix} --libdir=%{_libdir} --mandir=%{_mandir} --infodir=%{_infodir} \
 	--target=%{target} \
-%if "%{cross_arch}" == "arm-none"
-	--with-multilib-list=armv6-m,armv7-m,armv7e-m,cortex-m7,armv7-r \
-%endif
 	--with-build-sysroot=%{sysroot}
 make %{?_smp_mflags}
 

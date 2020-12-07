@@ -5,7 +5,7 @@
 %endif
 
 Name:           cross-%{cross_arch}-newlib-devel
-Version:        3.1.0
+Version:        3.3.0
 Release:        0
 Summary:        C library intended for use on %{cross_arch} embedded systems
 Group:          Development/Tools
@@ -15,11 +15,7 @@ Source0:        ftp://sourceware.org/pub/newlib/newlib-%{version}.tar.gz
 
 Patch1:         epiphany-fixes.diff
 
-%if "%{cross_arch}" == "riscv64"
-BuildRequires:  cross-%{gcc_cross_arch}-gcc8-bootstrap
-%else
 BuildRequires:  cross-%{gcc_cross_arch}-gcc%{gcc_version}-bootstrap
-%endif
 %if %{suse_version} > 1220
 BuildRequires:  makeinfo
 %else
@@ -53,9 +49,6 @@ cd build-dir
 ../configure \
 	--prefix=%{_prefix} --libdir=%{_libdir} --mandir=%{_mandir} --infodir=%{_infodir} \
 	--target=%{target} \
-%if "%{cross_arch}" == "arm-none"
-	--with-multilib-list=armv6-m,armv7-m,armv7e-m,cortex-m7,armv7-r \
-%endif
 	--with-build-sysroot=%{sysroot}
 make %{?_smp_mflags}
 

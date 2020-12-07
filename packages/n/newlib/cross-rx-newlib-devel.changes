@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec  7 09:17:44 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Use defined gcc version for all architectures
+
+-------------------------------------------------------------------
+Tue Oct 27 03:49:05 UTC 2020 - Matthew Trescott <matthewtrescott@gmail.com>
+
+- Update to v3.3.0
+  * Fixes assembly of trap.S when building ARM multilibs (related
+    to [bsc#1106014]
+- Remove unused configure flag --with-multilib-list. Newlib's configure
+  script obtains this information from the GCC used to build it.
+
+-------------------------------------------------------------------
 Sun Jun 23 01:00:01 UTC 2019 - Andreas Färber <afaerber@suse.de>
 
 - Update to v3.1.0
