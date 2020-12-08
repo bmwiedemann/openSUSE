@@ -49,7 +49,7 @@
 %endif
 %bcond_with clang
 Name:           chromium
-Version:        87.0.4280.66
+Version:        87.0.4280.88
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -101,6 +101,8 @@ Patch65:        chromium-88-vaapi-attribute.patch
 Patch66:        chromium-87-ozone-deps.patch
 Patch67:        chromium-87-webcodecs-deps.patch
 Patch68:        chromium-lp152-missing-includes.patch
+Patch69:        chromium-87-v8-icu68.patch
+Patch70:        chromium-87-icu68.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches

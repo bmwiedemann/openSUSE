@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec  4 15:24:58 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
+
+- Added patches:
+  - chromium-87-icu68.patch
+  - chromium-87-v8-icu68.patch
+- Update to 87.0.4280.88 bsc#1179576
+  - CVE-2020-16037: Use after free in clipboard
+  - CVE-2020-16038: Use after free in media
+  - CVE-2020-16039: Use after free in extensions
+  - CVE-2020-16040: Insufficient data validation in V8
+  - CVE-2020-16041: Out of bounds read in networking
+  - CVE-2020-16042: Uninitialized Use in V8
+
+-------------------------------------------------------------------
 Sat Nov 28 16:29:53 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
 
 - Remove erroneous call to ldconfig which causes Firefox crashes (boo#1179298)
