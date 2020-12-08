@@ -17,7 +17,7 @@
 
 
 Name:           OpenRGB
-Version:        0.4
+Version:        0.5
 Release:        0
 Summary:        Open source RGB lighting control
 License:        GPL-2.0-only
@@ -25,10 +25,6 @@ URL:            https://gitlab.com/CalcProgrammer1/OpenRGB
 Source0:        https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_%{version}/OpenRGB-release_%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE OpenRGB-use_system_libs.patch
 Patch1:         OpenRGB-use_system_libs.patch
-# PATCH-FIX-UPSTREAM 0001-Fix-build-on-powerpc-and-related.patch
-Patch2:         0001-Fix-build-on-powerpc-and-related.patch
-# PATCH-FIX-UPSTREAM reproducible.patch
-Patch3:         reproducible.patch
 BuildRequires:  gcc-c++
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Core)
@@ -49,10 +45,10 @@ Accessing the SMBus is a potentially dangerous operation, so exercise caution.
 %make_build
 
 %install
-install -Dpm0755 OpenRGB %{buildroot}/%{_bindir}/%{name}
+install -Dpm0755 openrgb %{buildroot}/%{_bindir}/openrgb
 install -Dpm0644 qt/OpenRGB.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
 install -Dpm0644 60-openrgb.rules %{buildroot}%{_udevrulesdir}/60-openrgb.rules
-%suse_update_desktop_file -c %{name} %{name} 'Configure RGB LEDs' %{name} %{name} Settings HardwareSettings
+%suse_update_desktop_file -c %{name} %{name} 'Configure RGB LEDs' openrgb %{name} Settings HardwareSettings
 
 # see if creating .conf to load speficic kernel modules is necessary
 
@@ -65,7 +61,7 @@ install -Dpm0644 60-openrgb.rules %{buildroot}%{_udevrulesdir}/60-openrgb.rules
 %files
 %license LICENSE
 %doc README.md
-%{_bindir}/%{name}
+%{_bindir}/openrgb
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
 %{_udevrulesdir}/60-openrgb.rules

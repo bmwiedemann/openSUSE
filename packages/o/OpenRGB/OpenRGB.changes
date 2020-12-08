@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Mon Dec  7 18:50:41 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Udpate to version 0.5
+  New Features:
+  * Settings have been consolidated into a new file OpenRGB.json,
+    using JSON format
+  * Settings tab allows enabling and disabling devices from the
+    user interface
+  * Configuration files are stored in an XDG-compliant
+    configuration directory (%APPDATA%\OpenRGB or ~/.config/OpenRGB)
+  * Speed up detection by limiting I2C/SMBus detectors to specific
+    PCI IDs
+  * Fixed profile loading, deleting
+  Device Controller Changes:
+  * E1.31 improvements - better grouping, unicast support
+  * MSI-RGB color inversion fixed
+  * LED labels added to some Corsair mice
+  * Espurna controller API support
+  * EVGA GPU (V1 and partial V2 - 1xxx and 2xxx series) support
+  * New SteelSeries devices - Apex Pro TKL, Old Apex
+  * Philips Wiz support
+  * Linux LED sysfs support
+  * Corsair Dominator Platinum RGB support
+  * Sony DualShock 4 support
+  * Logitech G213 support
+  * ASUS Mice support - ROG Gladius II Core, ROG Gladius II, and
+    ROG Gladius II Origin
+  * HyperX Fury Ultra mousemat support
+  * SteelSeries Apex M750
+  * ASUS TUF gaming laptops on Windows (already supported via
+    Faustus on Linux)
+  * Cooler Master ARGB controller support
+  * NZXT Hue+ performance improved
+  * HyperX DRAM mapping issues resolved, flicker reduced
+  * More keymaps for Razer keyboards
+  Known Issues:
+  * Redragon M711 wave effect doesn't work
+  * Some Corsair mice do not have specific LED labels
+  * Some Razer keyboards are missing key maps
+  * Corsair Vengeance RGB Pro takes 2 "Set All Device" clicks to
+    properly set
+  * Asus Addressable number of channels may be incorrect
+  * MSI Mystic Light controller still disabled due to bricking
+    risk, bricking situation being investigated. OpenRGB 0.5 will
+    not brick your MSI board as this code is disabled.
+  Notes:
+  * Due to changes to the profile manager, any existing profiles
+    you have saved from previous versions likely will not work
+    and will need to be recreated. Same goes for saved addressable
+    controller sizes.
+- Drop patches (included upstream):
+  * 0001-Fix-build-on-powerpc-and-related.patch
+  * reproducible.patch
+
+-------------------------------------------------------------------
 Wed Nov 18 06:37:05 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to override build date (boo#1047218)
