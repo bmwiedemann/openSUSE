@@ -1,7 +1,7 @@
 #
 # spec file for package pw3270
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) <2008> <Banco do Brasil S.A.>
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,48 +16,50 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 #---[ Versions ]------------------------------------------------------------------------------------------------------
 
 %define _product %(pkg-config --variable=product_name lib3270)
 
 #---[ Packaging ]-----------------------------------------------------------------------------------------------------
 
-Name:			pw3270
-Version:		5.3
-Release:		0
-Summary:		IBM 3270 Terminal emulator for GTK
-License:		GPL-2.0
-Group:			System/X11/Terminals
-Url:			https://github.com/PerryWerneck/pw3270
+Name:           pw3270
+Version:        5.3
+Release:        0
+Summary:        IBM 3270 Terminal emulator for GTK
+License:        GPL-2.0-only
+Group:          System/X11/Terminals
+URL:            https://github.com/PerryWerneck/pw3270
 
-Source:		pw3270-%{version}.tar.xz
+Source:         pw3270-%{version}.tar.xz
+Patch0:         fix-appdata-xml.patch
 
-BuildRoot:		%{_tmppath}/%{name}-%{version}-build
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
-Requires:		shared-mime-info
-Requires:		%{name}-branding = %{version}
+Requires:       %{name}-branding = %{version}
+Requires:       shared-mime-info
 
-BuildRequires:	update-desktop-files
+BuildRequires:  update-desktop-files
 
 %glib2_gsettings_schema_requires
 
-BuildRequires:	pkgconfig(gtk+-3.0)
-BuildRequires:	pkgconfig(glib-2.0)
-BuildRequires:	pkgconfig(libv3270) >= 5.3
-BuildRequires:	autoconf >= 2.61
-BuildRequires:	automake
-BuildRequires:	binutils
-BuildRequires:	coreutils
-BuildRequires:	desktop-file-utils
-BuildRequires:	findutils
-BuildRequires:	gcc-c++
-BuildRequires:	gettext-devel
-BuildRequires:	gettext-tools
-BuildRequires:	m4
-BuildRequires:	pkgconfig
+BuildRequires:  autoconf >= 2.61
+BuildRequires:  autoconf-archive
+BuildRequires:  automake
+BuildRequires:  binutils
+BuildRequires:  coreutils
+BuildRequires:  desktop-file-utils
+BuildRequires:  fdupes
+BuildRequires:  findutils
+BuildRequires:  gcc-c++
+BuildRequires:  gettext-devel
+BuildRequires:  gettext-tools
+BuildRequires:  m4
+BuildRequires:  pkgconfig
 BuildRequires:  sed
-BuildRequires:	fdupes
-BuildRequires:	autoconf-archive
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(libv3270) >= 5.3
 %glib2_gsettings_schema_requires
 
 %description
@@ -71,8 +73,10 @@ Based on the original x3270 code, pw3270 was originally created for Banco do Bra
 Summary:        Default branding for %{name}
 Group:          System/X11/Terminals
 
-Requires:       	%{name} = %{version}
-Requires(post):	desktop-file-utils
+Requires:       %{name} = %{version}
+BuildArch:      noarch
+
+Requires(post):		desktop-file-utils
 Requires(postun):	desktop-file-utils
 
 %description branding
@@ -81,13 +85,13 @@ GTK-based IBM 3270 terminal emulator with many advanced features. It can be used
 This package contains the default branding for %{name}.
 
 %package keypads
-Summary:	Keypads for %{name}
-Group:		System/X11/Terminals
-Requires:	%{name} = %{version}
-BuildArch:	noarch
+Summary:        Keypads for %{name}
+Group:          System/X11/Terminals
+Requires:       %{name} = %{version}
+BuildArch:      noarch
 
-Conflicts:	otherproviders(pw3270-keypads)
-Enhances:	%{name}
+Conflicts:      otherproviders(pw3270-keypads)
+Enhances:       %{name}
 
 %description keypads
 GTK-based IBM 3270 terminal emulator with many advanced features. It can be used to communicate with any IBM host that supports 3270-style connections over TELNET.
@@ -98,6 +102,7 @@ This package contains the keypads for %{name}.
 
 %prep
 %setup
+%patch0 -p1
 
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 NOCONFIGURE=1 ./autogen.sh
@@ -138,7 +143,8 @@ make all -j1
 %{_datadir}/%{_product}/icons/disconnect-*.svg
 
 %{_datadir}/applications/*.desktop
-%{_datadir}/appdata/%{_product}.appdata.xml
+%{_datadir}/appdata/*.appdata.xml
+%{_datadir}/icons/hicolor/scalable/apps/*.svg
 
 %{_datadir}/mime/packages/*.xml
 

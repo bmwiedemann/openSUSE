@@ -71,4 +71,12 @@
     <comment>Updating from git.</comment>
     <requestid>845854</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>a456ae7108b384d339249113b6fc5254</srcmd5>
+    <version>5.3</version>
+    <time>1607430301</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853774</requestid>
+  </revision>
 </revisionlist>

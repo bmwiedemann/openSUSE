@@ -1,0 +1,137 @@
+diff -Naur a/branding/appdata.xml.in b/branding/appdata.xml.in
+--- a/branding/appdata.xml.in	2020-11-03 11:00:09.000000000 -0300
++++ b/branding/appdata.xml.in	2020-11-24 20:06:07.151075588 -0300
+@@ -1,39 +1,54 @@
+ <?xml version="1.0" encoding="UTF-8"?>
++
++<!--
++
++	References: 
++
++		https://www.freedesktop.org/software/appstream/docs/chap-Quickstart.html#sect-Quickstart-DesktopApps
++		https://people.freedesktop.org/~hughsient/temp/AppData_WhitePaper.pdf
++		https://docs.fedoraproject.org/en-US/packaging-guidelines/AppData/
++
++-->
++
+ <component type="desktop">
+-	<id>br.com.bb.pw3270</id>
+-	<name>3270 Terminal</name>
+-	<name xml:lang="pt_BR">Terminal 3270</name>
+-	<summary>IBM 3270 Terminal emulator</summary>
+-	<summary xml:lang="pt_BR">Emulador de terminal IBM 3270</summary>
+-	<developer_name>perry.werneck@gmail.com</developer_name>
+-	<description>
+-	<p>
+-	GTK Based 3270 terminal emulator
+-	pw3270 is a modern, GTK-based, completely free tn3270 emulator.
+ 
+-	Created originally for Banco do Brasil, it's now an official Brazilian Government Public Software project, and is used worldwide.
+-	</p>
+-	</description>
++	<id>br.com.bb.@PRODUCT_NAME@.desktop</id>
+ 
+ 	<metadata_license>CC0-1.0</metadata_license>
+ 	<project_license>LGPL-3.0</project_license>
+ 
+-	<url type="bugtracker">https://github.com/PerryWerneck/pw3270/issues</url>
+-	<url type="homepage">https://github.com/PerryWerneck/pw3270</url>
+-	<project_group>GNOME</project_group>
++	<name>@PRODUCT_NAME@</name>
++	<name xml:lang="pt_BR">@PRODUCT_NAME@</name>
+ 
+-	<launchable type="desktop-id">@PRODUCT_NAME@.desktop</launchable>
++	<summary>IBM 3270 Terminal emulator</summary>
++	<summary xml:lang="pt_BR">Emulador de terminal IBM 3270</summary>
++
++	<developer_name>Perry Werneck</developer_name>
++
++	<description>
++		<p>GTK Based 3270 terminal emulator</p>
++		<p>pw3270 is a modern, GTK-based, completely free tn3270 emulator.</p>
++		<p>Created originally for Banco do Brasil, it's now an official Brazilian Government Public Software project, and is used worldwide.</p>
++	</description>
++
++	<url type="homepage">https://github.com/PerryWerneck/pw3270</url>
++	<url type="bugtracker">https://github.com/PerryWerneck/pw3270/issues</url>
+ 
+ 	<screenshots>
+ 		<screenshot type="default">
+ 			<caption>@PRODUCT_NAME@</caption>
+-			<image height="600" width="600">https://raw.githubusercontent.com/PerryWerneck/pw3270/master/branding/pw3270-logo.svg</image>
++			<image height="600" width="600">https://raw.githubusercontent.com/PerryWerneck/pw3270/master/branding/pw3270.svg</image>
+ 		</screenshot>
+ 	</screenshots>
+ 
+ 	<update_contact>perry.werneck@gmail.com</update_contact>
+ 
++	<project_group>GNOME</project_group>
++
+ 	<provides>
+-		<id>@PRODUCT_NAME@pw32.desktop</id>
++		<binary>@PRODUCT_NAME@</binary>
+ 	</provides>
++
++	<translation type="gettext">@PRODUCT_NAME@</translation>
++
+ </component>
+diff -Naur a/branding/launcher.desktop.in b/branding/launcher.desktop.in
+--- a/branding/launcher.desktop.in	2020-11-03 11:00:09.000000000 -0300
++++ b/branding/launcher.desktop.in	2020-11-24 20:06:07.151075588 -0300
+@@ -1,12 +1,13 @@
+ [Desktop Entry]
+ X-SuSE-translate=true
+ GenericName=@PRODUCT_NAME@
++GenericName[pt_BR]=@PRODUCT_NAME@
+ Name=3270 Terminal
+ Name[pt_BR]=Terminal 3270
+ Comment=IBM 3270 Terminal emulator
+ Comment[pt_BR]=Emulador de terminal IBM 3270
+ Exec=@PRODUCT_NAME@ %u
+-Icon=/usr/share/@PRODUCT_NAME@/icons/@PRODUCT_NAME@.svg
++Icon=br.com.bb.@PRODUCT_NAME@
+ Terminal=false
+ Type=Application
+ StartupNotify=true
+diff -Naur a/branding/Makefile.in b/branding/Makefile.in
+--- a/branding/Makefile.in	2020-11-03 11:00:09.000000000 -0300
++++ b/branding/Makefile.in	2020-11-24 20:06:07.151075588 -0300
+@@ -28,6 +28,7 @@
+ PACKAGE_VERSION=@PACKAGE_VERSION@
+ PACKAGE_TARNAME=@PACKAGE_TARNAME@
+ PRODUCT_NAME=@PRODUCT_NAME@
++APPLICATION_ID=br.com.bb.@PRODUCT_NAME@
+ 
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+@@ -113,13 +114,13 @@
+ 
+ 	@$(INSTALL_DATA) \
+ 		launcher.desktop \
+-		$(PRODUCT_NAME).desktop
++		$(APPLICATION_ID).desktop
+ 
+ 	@$(DESKTOP_INSTALL) \
+ 		--mode 644 \
+ 		--delete-original \
+ 		--dir $(DESTDIR)$(datarootdir)/applications \
+-		$(PRODUCT_NAME).desktop
++		$(APPLICATION_ID).desktop
+ 
+ 	@$(MKDIR) $(DESTDIR)$(datarootdir)/mime/packages
+ 
+@@ -131,7 +132,13 @@
+ 
+ 	@$(INSTALL_DATA) \
+ 		appdata.xml \
+-		$(DESTDIR)$(datarootdir)/appdata/$(PRODUCT_NAME).appdata.xml
++		$(DESTDIR)$(datarootdir)/appdata/$(APPLICATION_ID).appdata.xml
++
++	@$(MKDIR) $(DESTDIR)$(datarootdir)/icons/hicolor/scalable/apps
++
++	@$(INSTALL_DATA) \
++		$(DESTDIR)$(datarootdir)/$(PRODUCT_NAME)/icons/$(PRODUCT_NAME).svg \
++		$(DESTDIR)$(datarootdir)/icons/hicolor/scalable/apps/$(APPLICATION_ID).svg
+ 
+ install-windows: \
+ 	$(DESTDIR)$(datarootdir)/$(PRODUCT_NAME)/$(PRODUCT_NAME).svg \
