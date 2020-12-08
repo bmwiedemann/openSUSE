@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec  7 20:26:40 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.7.6 fixed meson build and functional integration
+  tests.
+- new since v3.7.4 implemented ags-fx recalls on AgsOutput,
+  extended ags_fx_factory.c to respect sound behviour flags chained
+  to output or input.
+- improved ags_soundcard_util_adjust_delay_and_attack() to correct
+  attack within AGS_SOUNDCARD_DEFAULT_PERIOD.
+- new since v3.7.3 changed base key to lower of AgsFFPlayer and
+  AgsPitchSampler.
+- improved Soundfont2 support to select nearest sample.
+- improved SFZ support.
+
+-------------------------------------------------------------------
 Thu Dec  3 17:12:09 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.7.1 fixed pitch loudness by adjusting volume.
