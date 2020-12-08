@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  4 09:29:20 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop python-xml BuildRequires: the installation is using python3.
+
+-------------------------------------------------------------------
 Mon Feb 26 11:54:46 UTC 2018 - dimstar@opensuse.org
 
 - Use SPDX3.0 license tags and package COPYING as %license.

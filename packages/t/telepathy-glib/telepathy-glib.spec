@@ -1,7 +1,7 @@
 #
 # spec file for package telepathy-glib
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,13 +22,12 @@ Release:        0
 Summary:        GObject-based library for the Telepathy D-Bus API
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/C and C++
-Url:            http://telepathy.freedesktop.org/
+URL:            http://telepathy.freedesktop.org/
 Source:         http://telepathy.freedesktop.org/releases/telepathy-glib/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  gtk-doc >= 1.17
 BuildRequires:  libxslt-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python-xml
 BuildRequires:  vala >= 0.16.0
 BuildRequires:  pkgconfig(dbus-1) >= 0.95
 BuildRequires:  pkgconfig(dbus-glib-1) >= 0.90
