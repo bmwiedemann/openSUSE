@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 25 12:32:53 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.6.3
+  * add a few options to expose the mechanism used for authentication
+    (when multiple are available) and to control the timeout interval
+    for Basic Auth sessions
+  * CI and other minor fixes, as well as a fix for gss_localname()
+  * see
+    https://github.com/gssapi/mod_auth_gssapi/releases
+- modified patches
+  % apache2-mod_auth_gssapi-test.patch (refreshed)
+
+-------------------------------------------------------------------
 Wed Apr  8 14:44:12 UTC 2020 - pgajdos@suse.com
 
 - version update to 1.6.1

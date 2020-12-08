@@ -18,7 +18,7 @@
 
 
 Name:           apache2-mod_auth_gssapi
-Version:        1.6.1
+Version:        1.6.3
 Release:        0
 Summary:        GSSAPI Module for Apache
 License:        MIT
@@ -28,6 +28,8 @@ Source0:        https://github.com/modauthgssapi/mod_auth_gssapi/releases/downlo
 Patch0:         apache2-mod_auth_gssapi-test.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
+BuildRequires:  byacc
+BuildRequires:  flex
 BuildRequires:  krb5-devel
 BuildRequires:  openssl-devel
 Requires:       %{apache_mmn}
@@ -54,6 +56,7 @@ as much as possible agnostic of the actual mechanism used.
 %patch0 -p1
 
 %build
+export APACHE="%{_sbindir}/httpd"
 %configure
 %make_build APXS=%{apache_apxs}
 
@@ -63,6 +66,7 @@ rm %{buildroot}%{apache_libexecdir}/*.la
 
 %check
 sed -i 's/env python/python3/' tests/*.py
+export PATH="$PATH:%{_sbindir}"
 make check
 
 %files
