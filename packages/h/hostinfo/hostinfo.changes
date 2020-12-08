@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 23 16:22:47 UTC 2020 - jason.record@suse.com
+
+- Additions to version 1.0.6
+  + Only include hostinfo details in /etc/motd (bsc#1170092)
+  + Fixed CPU load average calculation (bsc#1170094)
+  + Added program and version to output
+  + Consolidated memory output
+  + Understands 3rd party packages on SLES or OpenSUSE (bsc#1170858)
+
+-------------------------------------------------------------------
 Sat Mar 10 17:55:17 UTC 2018 - jason.record@suse.com
 
 - Added 91-hostinfo.rules for network rules

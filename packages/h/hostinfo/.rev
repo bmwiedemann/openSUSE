@@ -16,4 +16,12 @@
  Add INCLUDE_MOTD for message of the day (forwarded request 585337 from jrecord)</comment>
     <requestid>585338</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>db7ba7e131c435c0e40e4c5c1af0bb35</srcmd5>
+    <version>1.0.6</version>
+    <time>1607430298</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853765</requestid>
+  </revision>
 </revisionlist>
