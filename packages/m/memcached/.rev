@@ -426,4 +426,12 @@ bsc#1007869) (CVE-2016-8706)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>839657</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>bfb6780e5c74bb451f4d60cf424cf6b1</srcmd5>
+    <version>1.6.9</version>
+    <time>1607430229</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853293</requestid>
+  </revision>
 </revisionlist>

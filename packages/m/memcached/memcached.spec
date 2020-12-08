@@ -28,7 +28,7 @@
 %endif
 
 Name:           memcached
-Version:        1.6.7
+Version:        1.6.9
 Release:        0
 Summary:        A high-performance, distributed memory object caching system
 License:        BSD-3-Clause
@@ -46,6 +46,7 @@ BuildRequires:  libevent-devel >= 2.0
 BuildRequires:  libtool
 %if %{with tls}
 BuildRequires:  openssl-devel >= 1.1.0
+BuildRequires:  perl
 BuildRequires:  perl-IO-Socket-SSL
 BuildRequires:  perl-Net-SSLeay
 %endif
@@ -56,7 +57,7 @@ Requires(pre):  %{_sbindir}/useradd
 Conflicts:      memcached-unstable
 %if 0%{?suse_version} > 1210
 BuildRequires:  systemd-rpm-macros
-%{?systemd_requires}
+%{?systemd_ordering}
 %else
 Requires(pre):  %insserv_prereq
 %endif
@@ -65,14 +66,6 @@ Requires(pre):  %insserv_prereq
 Memcached is a high-performance, distributed memory object caching
 system, generic in nature, but intended for use in speeding up dynamic
 web applications by alleviating database load.
-
-Danga Interactive developed memcached to enhance the speed of
-LiveJournal.com, a site which was already doing 20 million+ dynamic
-page views per day for 1 million users with a bunch of webservers and a
-bunch of database servers. memcached dropped the database load to
-almost nothing, yielding faster page load times for users, better
-resource utilization, and faster access to the databases on a memcache
-miss.
 
 %package devel
 Summary:        Files needed for development using memcached protocol
@@ -123,8 +116,11 @@ ln -s  ../..%{_sysconfdir}/init.d/%{name} %{buildroot}%{_sbindir}/rc%{name}
 make %{?_smp_mflags} test
 
 %pre
-%{_sbindir}/groupadd -r %{name} >/dev/null 2>&1 || :
-%{_sbindir}/useradd -g %{name} -s /bin/false -r -c "user for %{name}" -d %{_localstatedir}/lib/%{name} %{name} >/dev/null 2>&1 || :
+getent group %{name} >/dev/null || \
+	%{_sbindir}/groupadd -r %{name}
+getent passwd %{name} >/dev/null || \
+	%{_sbindir}/useradd -g %{name} -s /bin/false -r \
+	-c "user for %{name}" -d %{_localstatedir}/lib/%{name} %{name}
 %if 0%{?suse_version} > 1210
 %service_add_pre %{name}.service
 %endif
