@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec  8 07:18:07 UTC 2020 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 1.0.5
+    - Update dnsplug for DNS Python (dns) 2.0 compatibility (LP: #1888583)
+    - Fix @param srv_id typos (LP: #1890532)
+    - Correct dkim.verify processing to avoid errors when verifying messages
+      with no DKIM signatures
+
+-------------------------------------------------------------------
 Tue May 26 07:22:41 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
