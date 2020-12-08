@@ -286,7 +286,7 @@ do
 	fi
 	echo
 done >> build-outputs.mK
-export CFLAGS="$(apxs2 -q CFLAGS) %{optflags} -fstack-protector -fpie"
+export CFLAGS="%{apache_cflags} %{optflags} -fstack-protector -fpie"
 export CXXFLAGS="$CFLAGS"
 export APACHE_LDFLAGS="-Wl,-z,relro,-z,now"
 export LDFLAGS="-pie"
@@ -296,7 +296,7 @@ export LDFLAGS="-pie"
 	--with-serf=%{_prefix} \
 	--with-apr=%{_prefix} \
 	--with-apr-util=%{_prefix} \
-	--with-apxs=apxs2 \
+	--with-apxs=%{apache_apxs} \
 	--with-zlib=%{_prefix} \
 	--with-berkeley-db=db.h:db.h:%{_prefix}:db \
 	--with-apache-libexecdir=%{apache_libexecdir} \
