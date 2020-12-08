@@ -24,11 +24,11 @@
 %endif
 
 Name:           poppler%{?psuffix}
-Version:        20.10.0
+Version:        20.12.0
 Release:        0
 # Actual version of poppler-data:
 %define poppler_data_version 0.4.9
-%define poppler_sover 103
+%define poppler_sover 105
 %define poppler_cpp_sover 0
 %define poppler_glib_sover 8
 %define poppler_qt5_sover 1
@@ -260,9 +260,7 @@ echo "libpoppler-cpp%{poppler_cpp_sover}" >> %SOURCE99
 %{_libdir}/libpoppler.so
 %{_libdir}/libpoppler-cpp.so
 %{_libdir}/pkgconfig/poppler.pc
-%{_libdir}/pkgconfig/poppler-cairo.pc
 %{_libdir}/pkgconfig/poppler-cpp.pc
-%{_libdir}/pkgconfig/poppler-splash.pc
 
 %files -n libpoppler-glib-devel
 %{_includedir}/poppler/glib

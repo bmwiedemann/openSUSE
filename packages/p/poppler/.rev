@@ -1680,4 +1680,12 @@ New upstream release</comment>
       of .</comment>
     <requestid>844239</requestid>
   </revision>
+  <revision rev="162" vrev="1">
+    <srcmd5>f303558cbeabb9e3ac4c27a90fae9cd7</srcmd5>
+    <version>20.12.0</version>
+    <time>1607430244</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853309</requestid>
+  </revision>
 </revisionlist>
