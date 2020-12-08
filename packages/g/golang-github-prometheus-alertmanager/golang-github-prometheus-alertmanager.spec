@@ -31,15 +31,14 @@ BuildRequires:  fdupes
 BuildRequires:  golang-github-prometheus-promu
 BuildRequires:  golang-packaging
 BuildRequires:  xz
-Requires(pre):  shadow
+BuildRequires:  golang(API) >= 1.11
+Requires(pre):  group(prometheus)
+Requires(pre):  user(prometheus)
+Provides:       prometheus-alertmanager = %{version}
+ExcludeArch:    s390
+%{?systemd_ordering}
+
 %{go_nostrip}
-%{?systemd_requires}
-%{go_provides}
-%if 0%{?suse_version} > 1500
-BuildRequires:  go1.14
-%else
-BuildRequires:  go1.11
-%endif
 
 %description
 The Alertmanager handles alerts sent by client applications such as the
@@ -73,8 +72,6 @@ install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus/alertmanager
 
 %pre
 %service_add_pre prometheus-alertmanager.service
-getent group prometheus >/dev/null || %{_sbindir}/groupadd -r prometheus
-getent passwd prometheus >/dev/null || %{_sbindir}/useradd -r -g prometheus -d %{_localstatedir}/lib/prometheus -M -s /sbin/nologin prometheus
 
 %post
 %service_add_post prometheus-alertmanager.service
