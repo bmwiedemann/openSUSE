@@ -16,10 +16,6 @@
 #
 
 
-%if 0%{?suse_version} < 1130
-%define _libexecdir   /usr/lib
-%endif
-
 %define ap_major                 2
 %if 0%{?suse_version}
 %define ap_branch                %(rpm -q --qf "%%{version}" apache%{ap_major} | tr '.' ' ' | { read maj min patch; printf "%d%02d" $maj $min; })
@@ -35,7 +31,7 @@
 %define ap_libexecdir            %(%{ap_apxs} -q LIBEXECDIR)
 %define ap_localstatedir         %(%{ap_apxs} -q LOCALSTATEDIR)
 %if 0%{?suse_version}
-%define ap_mmn                   %(MMN=$(%{ap_apxs} -q LIBEXECDIR)_MMN; test -x $MMN && $MMN)
+%define ap_mmn                   %(%{_libexecdir}/apache2_MMN 2>/dev/null || %{_libdir}/apache2_MMN 2>/dev/null)
 %define ap_maint_mmn             %(MMN=$(rpm -q --provides apache2 | grep suse_maintenance_mmn); test -z "$MMN" && MMN=apache2; echo $MMN)
 %endif
 %define ap_serverroot            %(%{ap_apxs} -q PREFIX)
@@ -59,7 +55,7 @@
 %endif
 %define macros_file           macros.apache
 Name:           apache-rpm-macros
-Version:        20200211
+Version:        20201124
 Release:        0
 Summary:        Apache RPM Macros
 License:        Apache-2.0
