@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Dec  7 20:49:38 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.38.1:
+  + Try to make all chess engines easier on Easy and Normal
+    difficulty.
+  + Fix claim draw dialog appearing every turn after threefold
+    repetition.
+  + Fix bogus "computer player is confused" errors in several
+    situations:
+    - When the engine is stalemated.
+    - When starting a new game while the game is paused, if the
+      engine has moved during pause.
+    - When resigning immediately before the engine moves.
+  + Fix file chooser defaulting to /run when game is saved for a
+    second time under flatpak.
+  + Fix detection of stalled chess engine in untimed games.
+  + Fix claim draw dialog appearing before a forced draw.
+  + Fix ChessScene removing invalid GSource.
+
+-------------------------------------------------------------------
 Mon Sep 14 12:38:12 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.38.0:
