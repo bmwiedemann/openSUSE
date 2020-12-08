@@ -1,0 +1,213 @@
+diff --git a/src/network_modules/openssl/crl.c b/src/network_modules/openssl/crl.c
+index 408340a..b07c08b 100644
+--- a/src/network_modules/openssl/crl.c
++++ b/src/network_modules/openssl/crl.c
+@@ -27,7 +27,7 @@
+  *
+  */
+ 
+-/// @brief Get CRL infro from X509 cert.
++/// @brief Get CRL info from X509 cert.
+ ///
+ /// References:
+ ///
+@@ -35,6 +35,7 @@
+ 
+ 
+ #include "private.h"
++#include <utilc.h>
+ 
+ /*--[ Implement ]------------------------------------------------------------------------------------*/
+ 
+@@ -79,7 +80,13 @@ LIB3270_STRING_ARRAY * lib3270_openssl_get_crls_from_peer(H3270 *hSession, X509
+ #endif // OpenSSL 1.1.0+
+ 
+ 				if(data && length > 0)
+-					lib3270_string_array_append_with_length(uris,(char *) data, (size_t) length);
++				{
++					lib3270_autoptr(char) uri = lib3270_malloc( ((size_t) length) + 1);
++					strncpy(uri,(char *) data, (size_t) length);
++
++					lib3270_autoptr(char) unescaped = lib3270_unescape(uri);
++					lib3270_string_array_append(uris,unescaped);
++				}
+ 
+ 			}
+ 
+diff --git a/src/network_modules/openssl/start.c b/src/network_modules/openssl/start.c
+index f0ecb92..d720117 100644
+--- a/src/network_modules/openssl/start.c
++++ b/src/network_modules/openssl/start.c
+@@ -34,6 +34,7 @@
+ 
+  #include "private.h"
+  #include <lib3270/properties.h>
++ #include <utilc.h>
+ 
+  static int import_crl(H3270 *hSession, SSL_CTX * ssl_ctx, LIB3270_NET_CONTEXT * context, const char *url) {
+ 
+@@ -103,25 +104,26 @@
+ 
+ 	if(X509_STORE_add_crl(store, x509_crl)) {
+ 		trace_ssl(hSession,"CRL was added to context cert store\n");
+-	} else {
+-		trace_ssl(hSession,"CRL was not added to context cert store\n");
++		return 0;
+ 	}
+ 
+-	return 0;
++	trace_ssl(hSession,"CRL was not added to context cert store\n");
++
++	return -1;
+ 
+  }
+ 
+- static void download_crl_from_peer(H3270 *hSession, SSL_CTX * ctx_context, LIB3270_NET_CONTEXT * context, X509 *peer) {
++ static int download_crl_from_peer(H3270 *hSession, SSL_CTX * ctx_context, LIB3270_NET_CONTEXT * context, X509 *peer) {
+ 
+ 	debug("%s peer=%p",__FUNCTION__,(void *) peer);
+ 
+ 	if(!peer)
+-		return;
++		return -1;
+ 
+ 	lib3270_autoptr(LIB3270_STRING_ARRAY) uris = lib3270_openssl_get_crls_from_peer(hSession, peer);
+ 	if(!uris) {
+ 		trace_ssl(hSession,"Can't get distpoints from peer certificate\n");
+-		return;
++		return -1;
+ 	}
+ 
+ 	size_t ix;
+@@ -134,11 +136,11 @@
+ 
+ 			if(!import_crl(hSession,ctx_context,context,uris->str[ix])) {
+ 				trace_ssl(hSession,"Got CRL from %s\n",uris->str[ix]);
+-				return;
++				return 0;
+ 			}
+ 
+ 		}
+-		return;
++		return -1;
+ 
+ 	}
+ 
+@@ -152,10 +154,9 @@
+ 		if(strncasecmp(prefer,uris->str[ix],length))
+ 			continue;
+ 
+-		debug("Trying %s",uris->str[ix]);
+ 		if(!import_crl(hSession,ctx_context,context,uris->str[ix])) {
+ 			trace_ssl(hSession,"Got CRL from %s\n",uris->str[ix]);
+-			return;
++			return 0;
+ 		}
+ 
+ 	}
+@@ -168,13 +169,34 @@
+ 
+ 		if(!import_crl(hSession,ctx_context,context,uris->str[ix])) {
+ 			trace_ssl(hSession,"Got CRL from %s\n",uris->str[ix]);
+-			return;
++			return 0;
+ 		}
+ 
+ 	}
+ 
++	return -1;
++
+  }
+ 
++int x509_store_ctx_error_callback(int ok, X509_STORE_CTX GNUC_UNUSED(*ctx))
++{
++	debug("%s(%d)",__FUNCTION__,ok);
++
++/*
++  55     {
++  56         if (!ok) {
++  57             Category::getInstance("OpenSSL").error(
++  58                 "path validation failure at depth(%d): %s",
++  59                 X509_STORE_CTX_get_error_depth(ctx),
++  60                 X509_verify_cert_error_string(X509_STORE_CTX_get_error(ctx))
++  61                 );
++  62         }
++  63         return ok;
++  64     }
++*/
++	return ok;
++}
++
+  int openssl_network_start_tls(H3270 *hSession) {
+ 
+ 	SSL_CTX * ctx_context = (SSL_CTX *) lib3270_openssl_get_context(hSession);
+@@ -199,7 +221,8 @@
+ 
+ 	SSL_set_ex_data(context->con,lib3270_openssl_get_ex_index(hSession),(char *) hSession);
+ //	SSL_set_verify(context->con, SSL_VERIFY_FAIL_IF_NO_PEER_CERT, NULL);
+-	SSL_set_verify(context->con, 0, NULL);
++//	SSL_set_verify(context->con, SSL_VERIFY_PEER, NULL);
++	SSL_set_verify(context->con, SSL_VERIFY_NONE, NULL);
+ 
+ 	if(SSL_set_fd(context->con, context->sock) != 1)
+ 	{
+@@ -295,13 +318,40 @@
+ 
+ 		// CRL download is enabled and verification has failed; look for CRL file.
+ 
++
+ 		trace_ssl(hSession,"CRL Validation has failed, requesting CRL download\n");
+ 		set_ssl_state(hSession,LIB3270_SSL_VERIFYING);
+ 
++		int rc_download = -1;
++
+ 		if(context->crl.url) {
+-			import_crl(hSession, ctx_context,context,context->crl.url);
++			rc_download = import_crl(hSession, ctx_context,context,context->crl.url);
+ 		} else {
+-			download_crl_from_peer(hSession, ctx_context, context, peer);
++			rc_download = download_crl_from_peer(hSession, ctx_context, context, peer);
++		}
++
++		debug("Download rc=%d",rc_download);
++
++		if(!rc_download)
++		{
++			// Got CRL, verify it!
++			// Reference: https://stackoverflow.com/questions/10510850/how-to-verify-the-certificate-for-the-ongoing-ssl-session
++
++			X509_STORE_CTX *csc = X509_STORE_CTX_new();
++			X509_STORE_CTX_set_verify_cb(csc, x509_store_ctx_error_callback);
++			X509_STORE_CTX_init(csc, SSL_CTX_get_cert_store(ctx_context), peer, NULL);
++
++			if(X509_verify_cert(csc) != 1)
++				rv = X509_STORE_CTX_get_error(csc);
++			else
++				rv = X509_V_OK;
++
++			trace_ssl(hSession, "X509_verify_cert error code was %d\n", rv);
++
++			SSL_set_verify_result(context->con, rv);
++
++			X509_STORE_CTX_free(csc);
++
+ 		}
+ 
+ 	}
+@@ -313,6 +363,7 @@
+ 
+ 	// Get validation message.
+ 	hSession->ssl.message = lib3270_openssl_message_from_id(verify_result);
++	debug("Verify message: %s",hSession->ssl.message->summary);
+ 
+ 	// Trace cypher
+ 	if(lib3270_get_toggle(hSession,LIB3270_TOGGLE_SSL_TRACE))
+@@ -331,7 +382,7 @@
+ 
+ 	// Check results.
+ 	if(hSession->ssl.message)
+-		trace_ssl(hSession,"%s",hSession->ssl.message->summary);
++		trace_ssl(hSession,"%s\n",hSession->ssl.message->summary);
+ 	else
+ 		trace_ssl(hSession,"TLS/SSL verify result was %ld\n", verify_result);
+ 

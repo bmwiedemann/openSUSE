@@ -25,6 +25,7 @@ License:        LGPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/PerryWerneck/lib3270
 Source:         %{name}-%{version}.tar.xz
+Patch0:         fix-crl-get-engine.patch
 BuildRequires:  autoconf >= 2.61
 BuildRequires:  automake
 BuildRequires:  binutils
@@ -73,6 +74,7 @@ Header files for the TN3270 access library.
 
 %prep
 %setup -q
+%patch0 -p1
 NOCONFIGURE=1 ./autogen.sh
 %configure --with-release=%{release}
 
