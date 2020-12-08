@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  7 23:00:16 UTC 2020 - Dominik Heidler <dheidler@suse.de>
+
+- Removed dependency perl(Archive::Tar)
+
+-------------------------------------------------------------------
 Sat Nov 21 08:45:39 UTC 2020 - Dominik Heidler <dheidler@suse.de>
 
 - Added dependency perl(Code::DRY)
