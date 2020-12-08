@@ -79,9 +79,13 @@ applications that want to make use of libsmputils.
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
+%post   -n %{lname} -p /sbin/ldconfig
+%postun -n %{lname} -p /sbin/ldconfig
+
 %files
 # smp_utils
 %doc README ChangeLog
+%license COPYING
 %{_bindir}/smp_*
 %{_mandir}/man8/*.8%{?ext_man}
 
