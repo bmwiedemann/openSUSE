@@ -967,4 +967,12 @@ in future, e.g. &quot;Version: 2.0~beta1&quot; (forwarded request 160813 from je
     <comment>- prepare usrmerge (boo#1029961) (forwarded request 849583 from lnussel)</comment>
     <requestid>849585</requestid>
   </revision>
+  <revision rev="112" vrev="3">
+    <srcmd5>83ef26df885b4172ad643e445cd2ef6c</srcmd5>
+    <version>2.3.4</version>
+    <time>1607430197</time>
+    <user>dimstar_suse</user>
+    <comment>- SLE marker: implements jsc#SLE-5911, bsc#116558, jsc#SLE-145149</comment>
+    <requestid>853733</requestid>
+  </revision>
 </revisionlist>

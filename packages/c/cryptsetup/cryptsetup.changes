@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec  8 08:52:50 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- SLE marker: implements jsc#SLE-5911, bsc#1165580, jsc#SLE-145149
+
+-------------------------------------------------------------------
 Wed Nov  4 17:33:26 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)
