@@ -20,7 +20,7 @@
 %define commands arcsign arcverify dkimsign dkimverify dknewkey
 %define skip_python2 1
 Name:           python-dkimpy
-Version:        1.0.3
+Version:        1.0.5
 Release:        0
 Summary:        DKIM (DomainKeys Identified Mail)
 License:        BSD-2-Clause
