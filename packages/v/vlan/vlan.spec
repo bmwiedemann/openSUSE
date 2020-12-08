@@ -1,7 +1,7 @@
 #
 # spec file for package vlan
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           vlan
 BuildRequires:  gcc-c++
-Url:            http://www.candelatech.com/~greear/vlan.html
+URL:            http://www.candelatech.com/~greear/vlan.html
 Version:        1.9
 Release:        0
 Summary:        802.1q VLAN Implementation for Linux
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 Source:         http://www.candelatech.com/~greear/vlan/vlan.%{version}.tar.bz2
 Source1:        http://scry.wanfear.com/~greear/vlan/cisco_howto.html.bz2
@@ -51,17 +51,17 @@ make DESTDIR=$RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT/{sbin,%_sbindir,%{_mandir}/man8/}
 install -m755 vconfig   $RPM_BUILD_ROOT/%_sbindir
 install -m644 vconfig.8 $RPM_BUILD_ROOT%{_mandir}/man8/
-#UsrMerge
+%if !0%{?usrmerged}
 ln -sf %_sbindir/vconfig $RPM_BUILD_ROOT/sbin
-#EndUsrMerge
+%endif
 
 %files
 %defattr(644,root,root,755)
 %doc *.html *.pl CHANGELOG README
 %doc %{_mandir}/man8/vconfig.8.gz
 %attr(755,root,root) %_sbindir/vconfig
-#UsrMerge
+%if !0%{?usrmerged}
 %attr(755,root,root) /sbin/vconfig
-#EndUsrMerge
+%endif
 
 %changelog
