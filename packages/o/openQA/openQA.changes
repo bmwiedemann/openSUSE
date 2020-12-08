@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 07 21:24:32 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1607368100.ab9d59cad:
+  * Fix reading config for custom job hooks following 6cf76ae8b
+  * Clarify caveats with custom job hooks after 6cf76ae8b
+  * Extend tests for asset caching to cover more error paths
+  * Distinguish different types of setup failures
+  * Fix web UI container script in basic execution
+  * t: Reuse "collect_coverage_of_gru_jobs" to reduce duplication
+
+-------------------------------------------------------------------
 Sat Dec 05 08:51:25 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1607108258.175f03ea7:
