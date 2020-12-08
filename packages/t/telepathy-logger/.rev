@@ -198,4 +198,17 @@
     <comment></comment>
     <requestid>723513</requestid>
   </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>873f81b8596477c4e038fb28c839c75a</srcmd5>
+    <version>0.8.2</version>
+    <time>1607430219</time>
+    <user>dimstar_suse</user>
+    <comment>- Build with python3 instead of python2:
+  + Add 1.diff: tools: Fix the build with Python 3.
+  + Drop python2-devel and python-xml BuildRequires.
+- Drop empty post/postun scriptlets that were calling
+  glib2_gsettings_schema_post/postun: macros are now empty
+  placeholder and the funcionality handled by file triggers. (forwarded request 853072 from dimstar)</comment>
+    <requestid>853262</requestid>
+  </revision>
 </revisionlist>

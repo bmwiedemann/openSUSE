@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec  4 09:37:53 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Build with python3 instead of python2:
+  + Add 1.diff: tools: Fix the build with Python 3.
+  + Drop python2-devel and python-xml BuildRequires.
+- Drop empty post/postun scriptlets that were calling
+  glib2_gsettings_schema_post/postun: macros are now empty
+  placeholder and the funcionality handled by file triggers.
+
+-------------------------------------------------------------------
 Thu Aug 15 10:28:48 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add libtpl-extensions-dependencies.patch: Fix dependencies of

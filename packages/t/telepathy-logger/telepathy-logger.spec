@@ -1,7 +1,7 @@
 #
 # spec file for package telepathy-logger
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,18 +22,18 @@ Release:        0
 Summary:        Centralized Logging for the Telepathy Framework
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
-Url:            http://telepathy.freedesktop.org/wiki/Logger
+URL:            http://telepathy.freedesktop.org/wiki/Logger
 Source:         http://telepathy.freedesktop.org/releases/telepathy-logger/%{name}-%{version}.tar.bz2
 # PATCH-FIX-UPSTREAM telepathy-logger-tests-Rename-function.patch zaitor@opensuse.org -- Fix build
 Patch0:         telepathy-logger-tests-Rename-function.patch
 # PATCH-FIx-UPSTREAM libtpl-extensions-dependencies.patch gh#TelepathyIM/telepathy-logger#2 dimstar@opensuse.org -- Fix dependencies of tpl-extensions
 Patch1:         libtpl-extensions-dependencies.patch
+# PATCH-FIX-UPSTREAM 1.diff dimstar@opensuse.org -- tools: Fix the build with Python 3
+Patch2:         https://gitlab.freedesktop.org/telepathy/telepathy-logger/-/merge_requests/1.diff
 BuildRequires:  gnome-doc-utils-devel
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  python2-devel
-BuildRequires:  python2-xml
 BuildRequires:  pkgconfig(dbus-1) >= 1.1.0
 BuildRequires:  pkgconfig(dbus-glib-1) >= 0.82
 BuildRequires:  pkgconfig(glib-2.0) >= 2.28
@@ -125,12 +125,6 @@ make %{?_smp_mflags} V=1
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-
-%post
-%glib2_gsettings_schema_post
-
-%postun
-%glib2_gsettings_schema_postun
 
 %post -n libtelepathy-logger3 -p /sbin/ldconfig
 %postun -n libtelepathy-logger3 -p /sbin/ldconfig
