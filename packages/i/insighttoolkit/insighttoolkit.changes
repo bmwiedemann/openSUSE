@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  7 10:21:33 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update RAM requirements to avoid OOM seen with LTO
+
+-------------------------------------------------------------------
 Tue Oct  6 06:54:33 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Re-enable build for aarch64 since eigen has been fixed
