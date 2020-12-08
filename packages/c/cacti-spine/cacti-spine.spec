@@ -17,13 +17,12 @@
 
 
 Name:           cacti-spine
-Version:        1.2.15
+Version:        1.2.16
 Release:        0
 Summary:        Threaded poller for Cacti written in C
 License:        LGPL-2.1-or-later
 URL:            https://www.cacti.net/spine_info.php
 Source:         https://www.cacti.net/downloads/spine/%{name}-%{version}.tar.gz
-BuildRequires:  dos2unix
 BuildRequires:  help2man
 BuildRequires:  libtool
 BuildRequires:  mysql-devel

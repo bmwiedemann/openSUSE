@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec  7 16:13:30 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti-spine 1.2.16:
+  * Some developer debug log messages falsely labeled as WARNINGS
+  * Remove the need of the dos2unix program
+  * Fix Spine experiencing MySQL socket error 2002 under load
+  * Under heavy load MySQL/MariaDB return 2006 and 2013 errors on query
+  * Add backtrace output to stderr for signals
+  * Add Data Source turnaround time to debug output
+
+-------------------------------------------------------------------
 Wed Nov 11 18:02:18 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti-spine 1.2.15:
