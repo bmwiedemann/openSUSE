@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec  5 17:42:33 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- mutt 2.0.3:
+  * Fix pager dropped input on SigWinch flag handling
+  * Fix REPLY_TO environment variable handling
+  * Fix undefined NULL pointer arithmetic
+  * Fix exact-address recording of last value
+  * Fix exact-address handling when addr->personal is set
+
+-------------------------------------------------------------------
 Fri Nov 20 22:13:06 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.0.2:
