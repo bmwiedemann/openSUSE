@@ -1,7 +1,7 @@
 #
 # spec file for package java-atk-wrapper
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%global major_version 0.33
+%global major_version 0.38
 Name:           java-atk-wrapper
-Version:        0.33.2
+Version:        %{major_version}.0
 Release:        0
 Summary:        Java ATK Wrapper
-License:        LGPL-2.0+
+License:        LGPL-2.0-or-later
 Group:          Development/Libraries/Java
-Url:            http://git.gnome.org/browse/java-atk-wrapper/
-Source0:        http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{major_version}/%{name}-%{version}.tar.xz
+URL:            https://gitlab.gnome.org/GNOME/java-atk-wrapper/
+Source0:        https://download.gnome.org/sources/%{name}/%{major_version}/%{name}-%{version}.tar.xz
 Source1:        HOWTO
-Source2:        https://git.gnome.org/browse/java-atk-wrapper/plain/wrapper/manifest.txt
-Source3:        https://git.gnome.org/browse/java-atk-wrapper/plain/autogen.sh
-# Avoid libtool versioning; this library is dynamically loaded from Java code
-Patch0:         jaw-avoid-version.patch
-Patch1:         jaw-java_required.patch
-Patch2:         jaw-quotes.patch
-Patch3:         jaw-gdk.patch
-Patch4:         jaw-javah.patch
+Source2:        https://gitlab.gnome.org/GNOME/%{name}/-/raw/%{version}/autogen.sh
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  java-devel >= 1.7
@@ -42,7 +35,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  xprop
 BuildRequires:  xz
 BuildRequires:  pkgconfig(atk) >= 2.14.0
-BuildRequires:  pkgconfig(atk-bridge-2.0)
+BuildRequires:  pkgconfig(atk-bridge-2.0) >= 2.33.1
 BuildRequires:  pkgconfig(atspi-2) >= 2.14.0
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gdk-2.0)
@@ -65,20 +58,13 @@ change of underlying communication mechanism.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-cp %{SOURCE1} .
-cp %{SOURCE2} wrapper/
-cp %{SOURCE3} .
+cp %{SOURCE1} %{SOURCE2} .
 rm -f wrapper/org/GNOME/Accessibility/AtkWrapper.java
 
 %build
 chmod +x autogen.sh
 ./autogen.sh
-%configure JAVACFLAGS="-source 1.7 -target 1.7" --libdir=%{_libdir}/%{name}
+%configure --libdir=%{_libdir}/%{name}
 make %{?_smp_mflags}
 
 %install
@@ -88,7 +74,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %doc AUTHORS
-%doc COPYING.LESSER
+%license COPYING.LESSER
 %doc NEWS
 %doc README
 %doc HOWTO

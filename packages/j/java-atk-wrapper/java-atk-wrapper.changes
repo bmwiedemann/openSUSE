@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Mon Nov  9 08:08:22 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 3.38.0
+  * Build:
+    + Fix 32bit build
+    + Distribute manifest.txt
+    + 783982: Fix build warnings
+    + 789956: Build cleanups
+    + Allow building outside source tree
+    + Do not use GTK+
+    + Require java 7
+    + 789959: Provide a java module
+    + Bump atk-bridge-2.0 dependency to 2.33.1
+    + 760227: Filter out AtkWrapper.java from distributed files
+    + 768824: Replace GNOME_COMPILE_WARNINGS with AX_COMPILER_FLAGS
+    + Fix all warnings
+    + Extend JAW_DEBUG
+    + 752590: Include --enable-compile-warning option
+    + 752350: Make with PLATFORM_CFLAGS
+    + 752095: Remove AC_PROG_RANLIB and AC_ISC_POSIX from configure.ac
+    + 750533: Don't use hard path for HOME install
+  * JNI:
+    + 752588: Create AtkWrapper.h and include in AtkWrapper.c
+    + 751997: Create prototype for access init and shutdown
+    + 740439: Create jaw_editable_text_set_run_attributes
+    + 752334: remove jaw_table_get_index_at
+    + 740542: Create jaw_action_get_localized_name
+    + 752291: Replace jaw_set_current_value with jaw_value_set_value
+    + 742499: Implement bounds-changed signal in AtkWrapper
+    + 752236: Create jaw_value_get_range
+    + 752190: Create jaw_table_cell_get_column_span
+    + 752188: Create jaw_table_cell_get_row_span
+    + 752187: Create jaw_table_cell_get_row_column_span
+    + 752174: Create jaw_table_cell_get_position
+    + 751267:  BUGFIX: remove custom implementation of util listeners
+    + 752346: Fix unused event listener warnings in jaw_util
+  * Wrapper:
+    + Fix extents value for invalid extents
+    + Compact data-changed events queue
+    + Provide javax.accessibility.AccessibilityProvider
+    + 754688, 768347: Fix crashes on accessible context being NULL
+    + 775609: Fix crashes on accessiblestateset being NULL
+    + 793544: Fix crashes on ref_selection returning NULL
+    + 760058: Deliver accessibility events in a separate context
+    + 766772: Fix crash on unbound recursion
+    + 770575: Gracefully abort initialization if at-spi fails
+    + 793620: Fix iterating hash table in jaw_impl_finalize
+    + 793823: Fix coordinates returned by atkcomponent
+    + 791970: Fix removing component listener
+    + 766774: Call jaw_impl_get_instance from the application thread
+    + 793543: Make sure atk objects exist while processing signals
+    + 793622: Fix missing reference addition on children_changed::add
+    + 793821: Fix atk event parameters
+    + 775947: Make jaw thread a daemon thread
+    + 793819: Fix freeing objects
+    + 669029: Fix netbeans crashes
+    + 754748: Fix freemind crashes
+    + 758242: Fix swing threading rules
+    + Fix SetName/Description/Role/AccessibleParent
+    + Fix GetLocale
+    + Fix Component extents
+    + Fix TableSetCaption/Summary
+    + Fix ActionSet/GetDescription
+    + Fix GetTextAtOffset
+    + Add GetTextBefore/AfterOffset
+    + Fix calling Accessible* methods in the EDT only
+    + Fix weak/global reference management, to make sure Accessible objects can
+    + easily be freed by the GC, but Atk* objects can't.
+    + Fix some null dereferences
+    + Fix text selection offsets
+    + Support alt graph modifier
+    + Fix key event hw_code reporting
+    + Support TableGetIndexAt
+    + Fix TableCell
+    + 750937: Emit object:visible-data-changed signals
+    + 752319: Create java AtkTextGranularity interface
+    + 740439: Create setRunAttributes in AtkEditableText
+    + 740542: Create getLocalizedName in AtkAction
+    + 752190: Create getColumnSpan in AtkTableCell
+    + 752188: Create getRowSpan in AtkTableCell
+    + 752187: Create getRowColumnSpan in AtkTableCell
+    + 752174: Create getPosition for AtkTableCell
+  * Internal:
+    + Make debugging cope with current directory not being writable
+    + Improve debugging log
+    + Update HACKING
+    + Update bug tracker URL
+    + Update missing atk interface implementations
+    + Document the whole picture
+    + Make Samuel Thibault maintainer
+  * Maintainership:
+    + Update HACKING
+- Removed patches
+  * jaw-avoid-version.patch
+  * jaw-gdk.patch
+  * jaw-java_required.patch
+  * jaw-javah.patch
+  * jaw-quotes.patch
+    + integrated upstream
+
+-------------------------------------------------------------------
 Tue Jan  2 17:35:32 UTC 2018 - fstrba@suse.com
 
 - Added patch:
