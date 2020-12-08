@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec  7 09:31:35 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update to version 0.20.0
+  + Provides initial support for draft OGC API - Records standard. 
+  + WFS: make wfs:FeatureTypeList optional for 1.1 and 2.0 (#673)
+  + OGC API - Records: initial draft implementation (#679, #693)
+  + WPS: add support for retrieving data from local filesystem (huard, #681)
+  + WMTS: add support for boundingboxes (kordian-kowalski, #687)
+  + Authentication: Enable switching off SSL verification (Samweli, #685)
+
+-------------------------------------------------------------------
 Mon Mar  2 08:35:26 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - update to version 0.19.1

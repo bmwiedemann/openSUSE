@@ -22,14 +22,14 @@
 %define         oldpython python
 %define         skip_python2 1
 Name:           python-OWSLib
-Version:        0.19.1
+Version:        0.20.0
 Release:        0
 Summary:        Python interface to OGC Web Services
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Other
 URL:            http://geopython.github.com/OWSLib/
 Source:         https://files.pythonhosted.org/packages/source/O/OWSLib/OWSLib-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel} > 3.6
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
