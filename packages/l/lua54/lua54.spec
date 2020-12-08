@@ -19,7 +19,7 @@
 %define major_version 5.4
 %define libname liblua5_4-5
 Name:           lua54
-Version:        5.4.1
+Version:        5.4.2
 Release:        0
 Summary:        Small Embeddable Language with Procedural Syntax
 License:        MIT
@@ -34,8 +34,9 @@ Patch0:         lua-build-system.patch
 # Fix failing test
 Patch1:         attrib_test.patch
 Patch2:         files_test.patch
-# PATCH-FIX-UPSTREAM https://www.lua.org/bugs.html#5.4.1
-#Patch3:         upstream-bugs.patch
+Patch3:         main_test.patch
+# PATCH-FIX-UPSTREAM https://www.lua.org/bugs.html#5.4.2
+#Patch4:         upstream-bugs.patch
 BuildRequires:  libtool
 BuildRequires:  lua-macros
 BuildRequires:  pkgconfig
@@ -122,7 +123,9 @@ scripting, and rapid prototyping. Lua is implemented as a small library
 of C functions, written in ANSI C.
 
 %prep
-%autosetup -n lua-%{version} -p1 -a1
+%setup -q -n lua-%{version} -a1
+mv lua-%{version}-tests lua-tests
+%autopatch -p1
 
 # manpage
 cat doc/lua.1  | sed 's/TH LUA 1/TH LUA%{major_version} 1/' > doc/lua%{major_version}.1
@@ -184,7 +187,7 @@ touch %{buildroot}%{_sysconfdir}/alternatives/lua.pc
 ln -sf %{_sysconfdir}/alternatives/lua.pc %{buildroot}%{_libdir}/pkgconfig/lua.pc
 
 %check
-cd ./lua-%{version}-tests/
+cd ./lua-tests/
 LD_LIBRARY_PATH=%{buildroot}%{_libdir} %{buildroot}%{_bindir}/lua%{major_version} all.lua
 
 %post -n %{libname} -p /sbin/ldconfig

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec  5 12:48:18 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 5.4.2:
+  * Fixes garbage collection bug
+- Add main_test.patch: fix bug in main.lua test
+
+-------------------------------------------------------------------
 Sat Oct 10 13:10:50 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Update to version 5.4.1:
