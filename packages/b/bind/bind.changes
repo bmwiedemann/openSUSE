@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Nov 11 10:55:46 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Added special make instruction for the "Administrator Reference
+  Manual" which is built using python3-Sphinx
+  [bsc#1177983, bind.spec]
+- Removed "Before=nss-lookup.target" from named.service as that
+  leads to a systemd ordering cycle
+  [bsc#1177491, bsc#1178626, bsc#1177991, vendor-files.tar.bz2]
+
+-------------------------------------------------------------------
+Wed Oct 28 12:50:56 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to version 9.16.8
+  New Features:
+  * Add a new rndc command, "rndc dnssec -rollover", which triggers a
+    manual rollover for a specific key.
+  * Add a new rndc command, "rndc dumpdb -expired", which dumps the
+    cache database, including expired RRsets that are awaiting
+    cleanup, to the dump-file for diagnostic purposes.
+  Bug Fixes:
+  * named reported an invalid memory size when running in an environment
+    that did not properly report the number of available memory pages
+    and/or the size of each memory page.
+  * With multiple forwarders configured, named could fail the
+    REQUIRE(msg->state == (-1)) assertion in lib/dns/message.c,
+    causing it to crash. This has been fixed.
+  * named erroneously performed continuous key rollovers for KASP
+    policies that used algorithm Ed25519 or Ed448 due to a mismatch
+    between created key size and expected key size.
+  * Updating contents of an RPZ zone which contained names spelled
+    using varying letter case could cause some processing rules in
+    that RPZ zone to be erroneously ignored.
+  Local changes:
+  * Add /usr/lib64/named to the files and directories in
+    bind-chrootenv.conf. This directory contains plugins loaded
+    after the chroot().
+  [bsc#1177913,bsc#1178078,bsc#1177603,bind-chrootenv.conf]
+
+-------------------------------------------------------------------
+Fri Oct 23 11:29:25 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Removed "dnssec-enable" from named.conf as it has been obsoleted.
+  Added a comment for reference which should be removed
+  in the future.
+- Added a comment to the "dnssec-validation" in named.conf
+  with a reference to forwarders which do not return signed responses.
+- Replaced named's dependency on time-sync with a dependency on time-set
+  in named.service.
+  [bsc#1177790,bsc#1175894,bsc#1177915,vendor-files.tar.bz2]
+
+-------------------------------------------------------------------
 Wed Oct 21 09:05:49 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
 
 - Upgrade to version 9.16.7

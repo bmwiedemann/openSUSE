@@ -20,17 +20,17 @@
 # Note that the sonums are LIBINTERFACE - LIBAGE
 %define bind9_sonum 1600
 %define libbind9 libbind9-%{bind9_sonum}
-%define dns_sonum 1607
+%define dns_sonum 1608
 %define libdns libdns%{dns_sonum}
 %define irs_sonum 1601
 %define libirs libirs%{irs_sonum}
-%define isc_sonum 1606
+%define isc_sonum 1607
 %define libisc libisc%{isc_sonum}
 %define isccc_sonum 1600
 %define libisccc libisccc%{isccc_sonum}
 %define isccfg_sonum 1601
 %define libisccfg libisccfg%{isccfg_sonum}
-%define ns_sonum 1604
+%define ns_sonum 1605
 %define libns libns%{ns_sonum}
 
 %define	VENDOR SUSE
@@ -61,7 +61,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           bind
-Version:        9.16.7
+Version:        9.16.8
 Release:        0
 Summary:        Domain Name System (DNS) Server (named)
 License:        MPL-2.0
@@ -91,6 +91,7 @@ BuildRequires:  openldap2-devel
 BuildRequires:  openssl
 BuildRequires:  pkgconfig
 BuildRequires:  python3
+BuildRequires:  python3-Sphinx
 BuildRequires:  python3-ply
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(json)
@@ -344,6 +345,10 @@ sed -i '
   s|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g
 ' libtool
 make %{?_smp_mflags}
+# special make for the Administrators Reference Manual
+for d in arm; do
+	make -C doc/${d} SPHINXBUILD=sphinx-build doc
+done
 %if %{with_systemd}
 %sysusers_generate_pre %{SOURCE72} named
 %endif
@@ -426,7 +431,11 @@ find doc/arm -type f ! -name '*.html' -print0 | xargs -0 rm -f
 cp -a vendor-files/docu/README %{buildroot}/%{_defaultdocdir}/bind/README.%{VENDOR}
 mkdir -p vendor-files/config/ISC-examples
 cp -a bin/tests/*.conf* vendor-files/config/ISC-examples
-for file in CHANGES COPYRIGHT README version contrib doc/{arm,misc} vendor-files/config; do
+for d in arm; do
+	cp -a doc/${d}/_build %{buildroot}/%{_defaultdocdir}/bind/${d}
+	echo "%doc %{_defaultdocdir}/bind/${d}" >>filelist-bind-doc
+done
+for file in CHANGES COPYRIGHT README version contrib doc/misc vendor-files/config; do
 	basename=$( basename ${file})
 	cp -a ${file} %{buildroot}/%{_defaultdocdir}/bind/${basename}
 	echo "%doc %{_defaultdocdir}/bind/${basename}" >>filelist-bind-doc
