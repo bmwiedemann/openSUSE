@@ -77,6 +77,6 @@ make %{?_smp_mflags} test
 %files -f %{name}.files
 %defattr(-,root,root,755)
 %license COPYING
-%doc Artistic BUGS Changes TODO
+%doc Artistic BUGS Changes TODO cpanspec.yml
 
 %changelog
