@@ -1,7 +1,7 @@
 #
 # spec file for package bridge-utils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           bridge-utils
-Version:        1.6
+Version:        1.7
 Release:        0
 Summary:        Utilities for Configuring the Linux Ethernet Bridge
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Routing
-Url:            http://www.linuxfoundation.org/collaborate/workgroups/networking/bridge
-Source:         http://www.kernel.org/pub/linux/utils/net/bridge-utils/%{name}-%{version}.tar.gz
+URL:            https://www.linuxfoundation.org/collaborate/workgroups/networking/bridge
+Source0:        https://kernel.org/pub/linux/kernel/people/shemminger/%{name}/%{name}-%{version}.tar.xz
+Source1:        https://kernel.org/pub/linux/kernel/people/shemminger/%{name}/%{name}-%{version}.tar.sign
 Patch0:         %{name}-1.5-hz.diff
 Patch1:         %{name}-1.5-optflags.patch
 Patch2:         bridge-utils-1.5-ip6.patch
@@ -66,7 +67,8 @@ install -D -m 644 libbridge/libbridge.a %{buildroot}%{_libdir}/libbridge.a
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog README THANKS TODO doc/[FHPRSW]*
+%license COPYING
+%doc AUTHORS ChangeLog README THANKS doc/[FHPRSW]*
 %{_mandir}/man?/*
 %{_sbindir}/*
 
