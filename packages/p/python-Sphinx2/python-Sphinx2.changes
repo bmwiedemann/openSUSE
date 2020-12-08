@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  4 16:52:10 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- remove unused mypy from BuildRequires in :test
+- require test tools for all python3 flavors
+  gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Tue Nov  3 20:56:32 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix lang files collection for multiple flavors

@@ -73,10 +73,9 @@ BuildRequires:  %{python_module Sphinx2-latex = %{version}}
 BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sphinxcontrib-websupport}
+BuildRequires:  %{python_module testsuite}
+BuildRequires:  %{python_module typed-ast}
 BuildRequires:  ImageMagick
-BuildRequires:  python3-mypy
-BuildRequires:  python3-testsuite
-BuildRequires:  python3-typed-ast
 %endif
 %python_subpackages
 
