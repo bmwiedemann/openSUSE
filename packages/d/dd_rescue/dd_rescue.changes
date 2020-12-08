@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 19 16:01:24 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
 Thu Sep  3 08:07:30 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable LTO on %arm and aarch64 to fix UnitTests - boo#1176219

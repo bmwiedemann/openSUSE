@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %ifarch aarch64 %arm
 # boo#1176219
 %define _lto_cflags %{nil}
@@ -142,8 +143,10 @@ make RPM_OPT_FLAGS="%{optflags}" LIBDIR=%{_libdir} LIB=%{_lib} %{?_smp_mflags}
 %make_install RPM_OPT_FLAGS="%{optflags}" INSTALLDIR=%{buildroot}/%{_bindir} LIB=%{_lib} LIBDIR=%{_libdir} \
     INSTASROOT= INSTALLFLAGS=
 
+%if !0%{?usrmerged}
 mkdir %{buildroot}/bin
 ln -sf %{_bindir}/dd_rescue %{buildroot}/bin
+%endif
 
 %check
 make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags} -fcommon" check
@@ -153,7 +156,9 @@ make %{?_smp_mflags} RPM_OPT_FLAGS="%{optflags} -fcommon" check
 %doc README.dd_rescue TODO
 %license COPYING
 %{_bindir}/dd_rescue
+%if !0%{?usrmerged}
 /bin/dd_rescue
+%endif
 %{_libdir}/libddr_hash.so
 %{_libdir}/libddr_MD5.so
 %{_libdir}/libddr_null.so
