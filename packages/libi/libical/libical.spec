@@ -49,6 +49,7 @@ Patch3:         0003-vcc.y-fix-infinite-loop-with-non-hex-digits.patch
 Patch4:         0004-vobject.c-vCard-Unicode-reading-support.patch
 Patch5:         0005-vcc.y-do-not-ignore-field-separator-in-QUOTED-PRINTA.patch
 Patch6:         libical-read-v2-v3-data.patch
+Patch7:         0001-Fix-build-with-icu-68.1.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.1
