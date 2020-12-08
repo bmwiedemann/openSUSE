@@ -42,11 +42,11 @@ Conflicts:
  server/protocol.c           | 25 +++++++++++++++++--------
  6 files changed, 77 insertions(+), 10 deletions(-)
 
-Index: httpd-2.4.26/modules/http/http_filters.c
+Index: httpd-2.4.46/modules/http/http_filters.c
 ===================================================================
---- httpd-2.4.26.orig/modules/http/http_filters.c	2017-01-09 22:17:08.000000000 +0100
-+++ httpd-2.4.26/modules/http/http_filters.c	2017-06-19 13:02:30.698399025 +0200
-@@ -1472,10 +1472,17 @@ AP_CORE_DECLARE_NONSTD(apr_status_t) ap_
+--- httpd-2.4.46.orig/modules/http/http_filters.c	2020-07-08 13:09:13.000000000 +0200
++++ httpd-2.4.46/modules/http/http_filters.c	2020-11-10 16:16:44.663449886 +0100
+@@ -1483,10 +1483,17 @@ AP_CORE_DECLARE_NONSTD(apr_status_t) ap_
       * zero C-L to the client.  We can't just remove the C-L filter,
       * because well behaved 2.0 handlers will send their data down the stack,
       * and we will compute a real C-L for the head request. RBB
@@ -65,11 +65,11 @@ Index: httpd-2.4.26/modules/http/http_filters.c
          apr_table_unset(r->headers_out, "Content-Length");
      }
  
-Index: httpd-2.4.26/server/core.c
+Index: httpd-2.4.46/server/core.c
 ===================================================================
---- httpd-2.4.26.orig/server/core.c	2016-12-05 15:34:29.000000000 +0100
-+++ httpd-2.4.26/server/core.c	2017-06-19 12:54:26.353988343 +0200
-@@ -528,6 +528,12 @@ static void *merge_core_server_configs(a
+--- httpd-2.4.46.orig/server/core.c	2020-07-03 21:53:37.000000000 +0200
++++ httpd-2.4.46/server/core.c	2020-11-10 16:16:44.695450065 +0100
+@@ -530,6 +530,12 @@ static void *merge_core_server_configs(a
      if (virt->http_methods != AP_HTTP_METHODS_UNSET)
          conf->http_methods = virt->http_methods;
  
@@ -82,7 +82,7 @@ Index: httpd-2.4.26/server/core.c
      /* no action for virt->accf_map, not allowed per-vhost */
  
      if (virt->protocol)
-@@ -3955,6 +3961,32 @@ static const char *set_http_method(cmd_p
+@@ -4034,6 +4040,32 @@ static const char *set_http_method(cmd_p
      return NULL;
  }
  
@@ -115,7 +115,7 @@ Index: httpd-2.4.26/server/core.c
  static apr_hash_t *errorlog_hash;
  
  static int log_constant_item(const ap_errorlog_info *info, const char *arg,
-@@ -4474,6 +4506,10 @@ AP_INIT_TAKE1("TraceEnable", set_trace_e
+@@ -4567,6 +4599,10 @@ AP_INIT_TAKE1("TraceEnable", set_trace_e
                "'on' (default), 'off' or 'extended' to trace request body content"),
  AP_INIT_FLAG("MergeTrailers", set_merge_trailers, NULL, RSRC_CONF,
                "merge request trailers into request headers or not"),
@@ -126,11 +126,11 @@ Index: httpd-2.4.26/server/core.c
  AP_INIT_ITERATE("Protocols", set_protocols, NULL, RSRC_CONF,
                  "Controls which protocols are allowed"),
  AP_INIT_TAKE1("ProtocolsHonorOrder", set_protocols_honor_order, NULL, RSRC_CONF,
-Index: httpd-2.4.26/server/protocol.c
+Index: httpd-2.4.46/server/protocol.c
 ===================================================================
---- httpd-2.4.26.orig/server/protocol.c	2017-05-30 14:27:41.000000000 +0200
-+++ httpd-2.4.26/server/protocol.c	2017-06-19 12:54:26.353988343 +0200
-@@ -1416,14 +1416,23 @@ request_rec *ap_read_request(conn_rec *c
+--- httpd-2.4.46.orig/server/protocol.c	2020-07-08 13:09:13.000000000 +0200
++++ httpd-2.4.46/server/protocol.c	2020-11-10 16:16:44.695450065 +0100
+@@ -1502,14 +1502,23 @@ request_rec *ap_read_request(conn_rec *c
              r->expecting_100 = 1;
          }
          else {
@@ -162,10 +162,10 @@ Index: httpd-2.4.26/server/protocol.c
          }
      }
  
-Index: httpd-2.4.26/include/http_core.h
+Index: httpd-2.4.46/include/http_core.h
 ===================================================================
---- httpd-2.4.26.orig/include/http_core.h	2016-12-05 15:34:29.000000000 +0100
-+++ httpd-2.4.26/include/http_core.h	2017-06-19 12:54:26.353988343 +0200
+--- httpd-2.4.46.orig/include/http_core.h	2019-03-18 09:49:59.000000000 +0100
++++ httpd-2.4.46/include/http_core.h	2020-11-10 16:16:44.695450065 +0100
 @@ -723,6 +723,16 @@ typedef struct {
  #define AP_MERGE_TRAILERS_DISABLE  2
      int merge_trailers;

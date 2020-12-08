@@ -1767,4 +1767,41 @@ In apache2-vhost.template, we recommend users to create custom logs like `/var/l
     <comment>- /var/run is depracted, /run should be used instead (forwarded request 841741 from fbui)</comment>
     <requestid>841747</requestid>
   </revision>
+  <revision rev="175" vrev="7">
+    <srcmd5>d0555af50b9a5a886ae0e7cae115a74a</srcmd5>
+    <version>2.4.46</version>
+    <time>1607430172</time>
+    <user>dimstar_suse</user>
+    <comment>- apache2 main package recommends apache2-utils
+
+- break some long lines in the spec as requested by review team
+
+- maybe make spec acceptable for factory bot
+- modified sources
+  % _multibuild
+
+- buildrequire netcfg for tests
+
+- remove Requires(post): firewalld hard dependency (this is already
+  handled by the %firewalld_reload macro)
+
+- package reworked trough [bsc#1178478]
+- modified patches
+  % apache2-mod_proxy_uwsgi-fix-crash.patch (refreshed)
+- modified sources
+  % apache2-loadmodule.conf
+  % apache2-manual.conf
+  % apache2-script-helpers
+  % apache2@.service
+  % sysconfig.apache2
+- deleted patches
+  - deprecated-scripts-arch.patch (not needed)
+  - httpd-2.0.54-envvars.dif (not needed)
+  - httpd-2.1.3alpha-layout.dif
+    (renamed to apache2-system-dirs-layout.patch)
+  - httpd-2.2.0-apxs-a2enmod.dif (not needed)
+  - httpd-2.4.9-bnc690734.patch
+    (renamed to apache2-LimitRequestFieldSize-limits-headers.patch)</comment>
+    <requestid>853601</requestid>
+  </revision>
 </revisionlist>

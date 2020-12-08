@@ -125,13 +125,8 @@ APACHE_HTTPD_CONF=""
 #
 # MPM (multi-processing module) to use.
 #
-# Needed to determine with which MPM apache will run, as well as
-# against which header files modules will be built. 
-#
-# If not set, the system will simply pick one of the installed MPMs.
-#
-# The implementation of the logic is in /usr/share/apache2/find_mpm,
-# a script which can be used standalone as well if needed.
+# Needed to determine with which MPM apache will run (when run
+# via systemd service). 
 #
 APACHE_MPM=""
 

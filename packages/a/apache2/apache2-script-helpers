@@ -10,9 +10,9 @@ HTTPD_SBIN_BASE="/usr/sbin/httpd"
 function load_sysconfig
 {
   [ -n "$sysconfig_loaded" ] && return
-  [ ! -f "$SYSCONFIG_FILE" ] && return
+  [ ! -f "$HTTPD_SYSCONFIG_FILE" ] && return
 
-  . $SYSCONFIG_FILE
+  . $HTTPD_SYSCONFIG_FILE
 
   export ${!APACHE_*} sysconfig_loaded=true
 }
@@ -32,22 +32,10 @@ function find_mpm
 
   # try to read from sysconfig's APACHE_MPM
   HTTPD_MPM="$APACHE_MPM"
-  # if empty, then choose one from installed
+  # if empty, then choose the one chosen by
+  # update alternatives
   if [ -z "$HTTPD_MPM" ]; then
-      installed_mpms=""
-      for i in $HTTPD_SBIN_BASE-*; do
-          test -f $i || continue
-          i=$(basename $i)
-          i=${i#*-}
-	  installed_mpms="$installed_mpms $i"
-      done
-      # hardcoded preference here:
-      for mpm in event worker prefork; do
-        if [[ $installed_mpms =~ "$mpm" ]]; then
-	  HTTPD_MPM=$mpm
-          break
-        fi
-      done
+     HTTPD_MPM=$(readlink $(readlink /usr/sbin/httpd) | sed "s:/usr/sbin/httpd-::")
   fi
 
   # in case no 

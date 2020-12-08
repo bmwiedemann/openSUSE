@@ -1,0 +1,14 @@
+<multibuild>
+  <package>event</package>
+  <package>worker</package>
+  <package>prefork</package>
+  <package>utils</package>
+  <package>devel</package>
+  <package>manual</package>
+  <package>test_event</package>
+  <package>test_worker</package>
+  <package>test_prefork</package>
+  <package>test_devel</package>
+  <package>test_main</package>
+</multibuild>
+

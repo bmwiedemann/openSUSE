@@ -14,26 +14,33 @@
 . /usr/share/apache2/script-helpers
 
 #
-# which instance should we will run
+# which instance should we will run, comes from
+# apache2@ service file
 #
-
 unset instance_suffix
-if [ -n "$HTTPD_INSTANCE" ]; then 
-  instance_suffix="@$HTTPD_INSTANCE"
+if [ -n "$START_APACHE_INSTANCE" ]; then 
+  instance_suffix="@$START_APACHE_INSTANCE"
 fi
 
 #
 # load sysconfig variables APACHE_* from instance sysconfig
-# file
+# file; START_APACHE_SYSCONFIG_FILE can be used for change the system
+# default (e. g. for testing purposes)
 #
-export SYSCONFIG_FILE=/etc/sysconfig/apache2${instance_suffix}
+export HTTPD_SYSCONFIG_FILE=${START_APACHE_SYSCONFIG_FILE:-/etc/sysconfig/apache2${instance_suffix}}
 load_sysconfig
+
+#
+# dir to locate pid file into; START_APACHE_RUN_DIR can be used
+# to change the system default (e. g. for testing purposes)
+#
+run_dir="${START_APACHE_RUN_DIR:-/run}"
 
 unset server_flags
 #
 # server_flags: -DSYSCONFIG
 #
-if [ -f "$SYSCONFIG_FILE" ]; then
+if [ -f "$HTTPD_SYSCONFIG_FILE" ]; then
   server_flags="$server_flags -DSYSCONFIG"
 fi
 
@@ -50,9 +57,9 @@ if [ -n "$HTTPD_MPM" ]; then
 	exit 1
     fi
 else
-  echo >&2 "${warn}No Apache binary found. No MPM package installed? $norm"
-  echo >&2 "Hint: install the apache2-prefork package, and try again."
-  exit 1
+    # take /usr/sbin/httpd, which will
+    # exist thanks to update alternatives
+    apache_bin="$HTTPD_SBIN_BASE"
 fi
 
 # server flags from APACHE_SERVER_FLAGS
@@ -79,15 +86,14 @@ sysconfd_dir=$(dirname $httpd_conf)/sysconfig${instance_suffix}.d/
 # be used in the configuration to change this, otherwise
 # stopping will not work
 #
-pid_file=/run/httpd${instance_suffix}.pid
+pid_file=$run_dir/httpd${instance_suffix}.pid
 
-unset sysconfig_setting
 #
 # involve the sysconfig variables
 #
 [ -d ${sysconfd_dir} ] || mkdir -p ${sysconfd_dir} || exit 1
 for c in global.conf include.conf loadmodule.conf; do
-  echo "# File generated from $SYSCONFIG_FILE, do not edit. Edit the sysconfig file instead." > ${sysconfd_dir}/$c
+  echo "# File generated from $HTTPD_SYSCONFIG_FILE, do not edit. Edit the sysconfig file instead." > ${sysconfd_dir}/$c
 done
 # APACHE_ACCESS_LOG -> global.conf
 if [ -n "$APACHE_ACCESS_LOG" ]; then
@@ -163,7 +169,6 @@ exec $apache_bin $server_flags \
         -C "Include $sysconfd_dir/global.conf" \
         -f $httpd_conf \
         -c "Include $sysconfd_dir/include.conf" \
-        "${sysconfig_setting[@]}" \
         $@
 
 exit 0

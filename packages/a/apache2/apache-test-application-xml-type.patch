@@ -1,0 +1,12 @@
+Index: httpd-framework/t/conf/extra.conf.in
+===================================================================
+--- a/httpd-framework/t/conf/extra.conf.in	2020-06-15 10:43:26.156701553 +0200
++++ b/httpd-framework/t/conf/extra.conf.in	2020-06-15 10:46:16.141693081 +0200
+@@ -875,6 +875,7 @@ LimitRequestFields    32
+        </IfModule>
+    </Directory>
+    <Directory @SERVERROOT@/htdocs/modules/filter/bytype>
++      AddType application/xml .xml
+       <IfModule mod_deflate.c>
+         AddOutputFilterByType DEFLATE application/xml
+         AddOutputFilterByType DEFLATE text/xml

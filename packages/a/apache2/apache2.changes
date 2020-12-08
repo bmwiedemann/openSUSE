@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Mon Dec  7 14:08:42 UTC 2020 - pgajdos@suse.com
+
+- apache2 main package recommends apache2-utils
+
+-------------------------------------------------------------------
+Thu Dec  3 11:23:48 UTC 2020 - pgajdos@suse.com
+
+- break some long lines in the spec as requested by review team
+
+-------------------------------------------------------------------
+Tue Dec  1 13:14:29 UTC 2020 - pgajdos@suse.com
+
+- maybe make spec acceptable for factory bot
+- modified sources
+  % _multibuild
+
+-------------------------------------------------------------------
+Tue Dec  1 09:44:08 UTC 2020 - pgajdos@suse.com
+
+- buildrequire netcfg for tests
+
+-------------------------------------------------------------------
+Sun Nov 29 13:45:39 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- remove Requires(post): firewalld hard dependency (this is already
+  handled by the %firewalld_reload macro)
+
+-------------------------------------------------------------------
+Thu Nov 26 12:10:52 UTC 2020 - pgajdos@suse.com
+
+- package reworked trough [bsc#1178478]
+- modified patches
+  % apache2-mod_proxy_uwsgi-fix-crash.patch (refreshed)
+- modified sources
+  % apache2-loadmodule.conf
+  % apache2-manual.conf
+  % apache2-script-helpers
+  % apache2@.service
+  % sysconfig.apache2
+- deleted patches
+  - deprecated-scripts-arch.patch (not needed)
+  - httpd-2.0.54-envvars.dif (not needed)
+  - httpd-2.1.3alpha-layout.dif
+    (renamed to apache2-system-dirs-layout.patch)
+  - httpd-2.2.0-apxs-a2enmod.dif (not needed)
+  - httpd-2.4.9-bnc690734.patch
+    (renamed to apache2-LimitRequestFieldSize-limits-headers.patch)
+  - httpd-2.4.x-fate317766-config-control-two-protocol-options.diff 
+    (renamed to apache2-HttpContentLengthHeadZero-HttpExpectStrict.patch)
+  - httpd-2.x.x-logresolve.patch
+    (renamed to apache2-logresolve-tmp-security.patch)
+  - httpd-apachectl.patch
+    (renamed to apache2-apachectl.patch)
+  - httpd-implicit-pointer-decl.patch (not needed)
+  - httpd-visibility.patch (not needed)
+- deleted sources
+  - SUSE-NOTICE (outdated)
+  - a2enflag (renamed to apache2-a2enflag)
+  - a2enmod (renamed to apache2-a2enmod)
+  - apache-22-24-upgrade (outdated)
+  - apache2-README (outdated)
+  - apache2-README.QUICKSTART (outedated)
+  - apache2-find-directives (renamed to apache2-find_directives)
+  - apache2-init.logrotate (not needed)
+  - apache2.firewalld (renamed to firewalld.apache2)
+  - apache2.logrotate (renamed to logrotate.apache2)
+  - apache2.ssl.firewalld (renamed to firewalld-ssl.apache2)
+  - apache2.ssl.susefirewall (renamed to susefirewall.apache2)
+  - apache2.susefirewall (renamed to susefirewall-ssl.apache2)
+  - favicon.ico (not needed)
+  - rc.apache2 (not needed)
+  - robots.txt (not needed)
+  - sysconf_addword (not needed, in aaa_base)
+- added patches
+  fix PATCH:  https://marc.info/?l=apache-httpd-users&m=147448312531134&w=2
+  + apache-test-application-xml-type.patch
+  fix these variables from the test
+  + apache-test-turn-off-variables-in-ssl-var-lookup.patch
+  fix [fate317766] backport of an upstream commit
+  + apache2-HttpContentLengthHeadZero-HttpExpectStrict.patch
+  fix [bnc#690734] TODO, to be upstreamed
+  + apache2-LimitRequestFieldSize-limits-headers.patch
+  fix apachectl is frontend for start_apache2, suse specific
+  + apache2-apachectl.patch
+  fix [bnc#210904] perhaps to be upstreamed
+  + apache2-logresolve-tmp-security.patch
+  fix layout of system dirs configuration, may be upstreamed
+  + apache2-system-dirs-layout.patch
+- added sources
+  + _multibuild
+  + apache2-a2enflag
+  + apache2-a2enmod
+  + apache2-find_directives
+  + apache2-gensslcert
+  + apache2-mod_example.c
+  + apache2-start_apache2
+  + firewalld-ssl.apache2
+  + firewalld.apache2
+  + logrotate.apache2
+  + susefirewall-ssl.apache2
+  + susefirewall.apache2
+
+-------------------------------------------------------------------
 Wed Oct 14 09:43:08 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - /var/run is depracted, /run should be used instead

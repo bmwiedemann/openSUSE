@@ -1,7 +1,7 @@
 Index: httpd-2.4.46/modules/proxy/mod_proxy_uwsgi.c
 ===================================================================
 --- httpd-2.4.46.orig/modules/proxy/mod_proxy_uwsgi.c	2020-07-24 11:35:25.000000000 +0200
-+++ httpd-2.4.46/modules/proxy/mod_proxy_uwsgi.c	2020-08-07 14:03:05.266134827 +0200
++++ httpd-2.4.46/modules/proxy/mod_proxy_uwsgi.c	2020-11-10 16:38:14.507125446 +0100
 @@ -175,7 +175,7 @@ static int uwsgi_send_headers(request_re
      env = (apr_table_entry_t *) env_table->elts;
  

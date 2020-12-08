@@ -7,7 +7,7 @@ PartOf=apache2.target
 [Service]
 Type=notify
 PrivateTmp=true
-Environment="HTTPD_INSTANCE=%i"
+Environment="START_APACHE_INSTANCE=%i"
 ExecStart=/usr/sbin/start_apache2 -DSYSTEMD -DFOREGROUND -k start	
 ExecReload=/usr/sbin/start_apache2 -DSYSTEMD -DFOREGROUND -k graceful
 ExecStop=/usr/sbin/start_apache2 -DSYSTEMD -DFOREGROUND -k graceful-stop

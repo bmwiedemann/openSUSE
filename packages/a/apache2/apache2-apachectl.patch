@@ -1,9 +1,9 @@
 
-Index: support/apachectl.in
+Index: httpd-2.4.46/support/apachectl.in
 ===================================================================
---- support/apachectl.in.orig	2012-02-01 04:47:28.000000000 +0100
-+++ support/apachectl.in	2015-07-13 17:09:06.651280087 +0200
-@@ -42,7 +42,7 @@
+--- httpd-2.4.46.orig/support/apachectl.in	2012-02-01 04:47:28.000000000 +0100
++++ httpd-2.4.46/support/apachectl.in	2020-11-09 15:29:52.479823800 +0100
+@@ -42,7 +42,7 @@ ARGV="$@"
  # --------------------                              --------------------
  # 
  # the path to your httpd binary, including options if necessary
@@ -12,7 +12,7 @@ Index: support/apachectl.in
  #
  # pick up any necessary environment variables
  if test -f @exp_sbindir@/envvars; then
-@@ -52,7 +52,11 @@
+@@ -52,7 +52,11 @@ fi
  # a command that outputs a formatted text version of the HTML at the
  # url given on the command line.  Designed for lynx, however other
  # programs may work.  

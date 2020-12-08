@@ -1,8 +1,8 @@
-Index: server/util_script.c
+Index: httpd-2.4.46/server/util_script.c
 ===================================================================
---- server/util_script.c.orig
-+++ server/util_script.c
-@@ -448,11 +448,20 @@ AP_DECLARE(int) ap_scan_script_header_er
+--- httpd-2.4.46.orig/server/util_script.c	2020-07-20 07:58:49.000000000 +0200
++++ httpd-2.4.46/server/util_script.c	2020-11-10 16:10:54.525476516 +0100
+@@ -468,11 +468,20 @@ AP_DECLARE(int) ap_scan_script_header_er
      apr_table_t *cookie_table;
      int trace_log = APLOG_R_MODULE_IS_LEVEL(r, module_index, APLOG_TRACE1);
      int first_header = 1;
@@ -24,7 +24,7 @@ Index: server/util_script.c
  
      /* temporary place to hold headers to merge in later */
      merge = apr_table_make(r->pool, 10);
-@@ -468,7 +477,7 @@ AP_DECLARE(int) ap_scan_script_header_er
+@@ -488,7 +497,7 @@ AP_DECLARE(int) ap_scan_script_header_er
  
      while (1) {
  
@@ -33,7 +33,7 @@ Index: server/util_script.c
          if (rv == 0) {
              const char *msg = "Premature end of script headers";
              if (first_header)
-@@ -583,10 +592,13 @@ AP_DECLARE(int) ap_scan_script_header_er
+@@ -603,10 +612,13 @@ AP_DECLARE(int) ap_scan_script_header_er
          if (!(l = strchr(w, ':'))) {
              if (!buffer) {
                  /* Soak up all the script output - may save an outright kill */
