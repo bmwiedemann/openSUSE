@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec  8 10:31:37 UTC 2020 - peter czanik <peter@czanik.hu> 3.30.1-0
+
+- update to 3.30.1
+- follow up snmp support changes
+- add secure logging
+- add PAN-OS parser
+- add SumoLogic destination 
+
+-------------------------------------------------------------------
 Thu Nov 26 13:21:48 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)

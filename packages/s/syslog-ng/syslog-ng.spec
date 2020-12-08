@@ -52,7 +52,7 @@
 %bcond_with	mongodb
 %bcond_with	amqp
 Name:           syslog-ng
-Version:        3.26.1
+Version:        3.30.1
 Release:        0
 Summary:        Enhanced system logging daemon
 License:        GPL-2.0-only
@@ -72,13 +72,14 @@ BuildRequires:  libjson-devel
 BuildRequires:  libnet-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libtool
+BuildRequires:  net-snmp-devel
 BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  tcpd-devel
 BuildRequires:  pkgconfig(libsystemd)
 #!BuildIgnore:  rsyslog
-Requires:       libevtlog-3_26-0
+Requires:       libevtlog-3_30-0
 Requires(pre):  %fillup_prereq
 Requires(pre):  syslog-service >= 2.0
 Conflicts:      syslog
@@ -132,11 +133,11 @@ Key features:
  * hand on messages for further processing using message queues (like
    AMQP), files or databases (like PostgreSQL or MongoDB).
 
-%package -n libevtlog-3_26-0
+%package -n libevtlog-3_30-0
 Summary:        Syslog-ng event logger library runtime
 Group:          System/Libraries
 
-%description -n libevtlog-3_26-0
+%description -n libevtlog-3_30-0
 The EventLog library provides an alternative to the simple syslog()
 API provided on UNIX systems. Compared to syslog, EventLog adds
 structured messages.
@@ -218,6 +219,15 @@ Obsoletes:      libevtlog-devel <= 0.2.13
 %description devel
 This package provides files necessary for syslog-ng development.
 
+%package snmp
+Summary:        SNMP support for syslog-ng
+Group:          System/Daemons
+Requires:       %{name} = %{version}
+
+%description snmp
+This package provides SNMP support for syslog-ng
+
+
 %prep
 %setup -q -n syslog-ng-%{version}
 # fill out placeholders in the config,
@@ -239,6 +249,7 @@ done
 
 # fix python
 sed -i 's|^#\s*!%{_bindir}/env python|#!%{_bindir}/python|' lib/merge-grammar.py
+touch -r lib/cfg-grammar.y lib/merge-grammar.py
 
 %build
 ##
@@ -262,6 +273,7 @@ export AM_YFLAGS=-d
 	--datadir="%{_datadir}"	\
 	--without-compile-date			\
 	--enable-ssl				\
+        --enable-afsnmp                         \
 	--disable-native			\
 %if %{with smtp}
         --with-libesmtp=%{_prefix}/lib                \
@@ -431,8 +443,8 @@ chmod 640 "${additional_sockets#/}"
 #
 %{service_del_postun syslog-ng.service}
 
-%post -n libevtlog-3_26-0 -p /sbin/ldconfig
-%postun -n libevtlog-3_26-0 -p /sbin/ldconfig
+%post -n libevtlog-3_30-0 -p /sbin/ldconfig
+%postun -n libevtlog-3_30-0 -p /sbin/ldconfig
 
 %files
 ##
@@ -452,6 +464,9 @@ chmod 640 "${additional_sockets#/}"
 %attr(755,root,root) %{_bindir}/pdbtool
 %attr(755,root,root) %{_bindir}/dqtool
 %attr(755,root,root) %{_bindir}/persist-tool
+%attr(755,root,root) %{_bindir}/slogencrypt
+%attr(755,root,root) %{_bindir}/slogkey
+%attr(755,root,root) %{_bindir}/slogverify
 %{_mandir}/man5/syslog-ng.conf.5%{?ext_man}
 %{_mandir}/man8/syslog-ng.8%{?ext_man}
 %{_mandir}/man1/pdbtool.1%{?ext_man}
@@ -460,6 +475,10 @@ chmod 640 "${additional_sockets#/}"
 %{_mandir}/man1/dqtool.1%{?ext_man}
 %{_mandir}/man1/syslog-ng-debun.1%{?ext_man}
 %{_mandir}/man1/persist-tool.1.gz
+%{_mandir}/man1/slogencrypt.1*
+%{_mandir}/man1/slogkey.1*
+%{_mandir}/man1/slogverify.1*
+%{_mandir}/man7/secure-logging.7*
 %dir %{_libdir}/syslog-ng
 %dir %{_libdir}/syslog-ng/loggen
 %dir %{_datadir}/syslog-ng
@@ -493,6 +512,8 @@ chmod 640 "${additional_sockets#/}"
 %dir %{_datadir}/syslog-ng/include/scl/netskope/
 %dir %{_datadir}/syslog-ng/include/scl/junos/
 %dir %{_datadir}/syslog-ng/include/scl/checkpoint/
+%dir %{_datadir}/syslog-ng/include/scl/paloalto/
+%dir %{_datadir}/syslog-ng/include/scl/sumologic/
 %dir %{_datadir}/syslog-ng/xsd
 %dir %{_sysconfdir}/syslog-ng
 %dir %{_sysconfdir}/syslog-ng/conf.d
@@ -512,6 +533,7 @@ chmod 640 "${additional_sockets#/}"
 %{_libdir}/libloggen_helper-*.so.*
 %{_libdir}/libloggen_plugin-*.so.*
 %attr(755,root,root) %{_libdir}/syslog-ng/libadd-contextual-data.so
+%attr(755,root,root) %{_libdir}/syslog-ng/libsecure-logging.so
 %if %{with amqp}
 %attr(755,root,root) %{_libdir}/syslog-ng/libafamqp.so
 %endif
@@ -546,7 +568,6 @@ chmod 640 "${additional_sockets#/}"
 %attr(755,root,root) %{_libdir}/syslog-ng/libsyslogformat.so
 %attr(755,root,root) %{_libdir}/syslog-ng/libstardate.so
 %attr(755,root,root) %{_libdir}/syslog-ng/libsystem-source.so
-%attr(755,root,root) %{_libdir}/syslog-ng/libsnmptrapd-parser.so
 %attr(755,root,root) %{_libdir}/syslog-ng/libhook-commands.so
 %attr(755,root,root) %{_libdir}/syslog-ng/loggen/libloggen_socket_plugin.so
 %attr(755,root,root) %{_libdir}/syslog-ng/loggen/libloggen_ssl_plugin.so
@@ -585,10 +606,15 @@ chmod 640 "${additional_sockets#/}"
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/netskope/plugin.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/junos/plugin.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/checkpoint/plugin.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/paloalto/panos.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/sumologic/sumologic.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/xsd/*
 
-%files -n libevtlog-3_26-0
+%files -n libevtlog-3_30-0
 %{_libdir}/libevtlog-*.so.*
+
+%files snmp
+%attr(755,root,root) %{_libdir}/syslog-ng/libafsnmp.so
 
 %if %{with curl}
 %files curl
