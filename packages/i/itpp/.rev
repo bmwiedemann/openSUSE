@@ -25,4 +25,12 @@
 - Fix  building - boo#1129920</comment>
     <requestid>693267</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>15a65ead52ffdc29c2bbb7e5190481b6</srcmd5>
+    <version>4.3.1</version>
+    <time>1607432463</time>
+    <user>dimstar_suse</user>
+    <comment>- Use correct macro for building</comment>
+    <requestid>853791</requestid>
+  </revision>
 </revisionlist>

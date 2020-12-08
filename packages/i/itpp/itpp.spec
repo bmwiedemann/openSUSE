@@ -1,7 +1,7 @@
 #
 # spec file for package itpp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -116,7 +116,7 @@ IT++ similar to MATLAB or GNU Octave.
   -DGTEST_DIR=%{_includedir}/gtest \
   -DLAPACK_LIBRARIES=%{_libdir}/liblapack.so.3 \
   -DCMAKE_BUILD_TYPE=Release
-%make_jobs
+%cmake_build
 
 %check
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
