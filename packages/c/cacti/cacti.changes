@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Dec  3 14:08:39 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- cacti 1.2.16:
+  * When generating a report, the Cascade to Branches function does not as expected
+  * When viewing graphs, automatic refresh so not always work as expected
+  * Realtime graph pop up counter bug
+  * Undefined variable errors may occur when creating a new datasource
+  * The cli-based installer does not exit with a non-zero exit code when error occurs
+  * When an export is complete, sometimes the progress bar remains
+  * When enabling many devices, a threshold can be reached causing a slowdown in the process
+  * When performing actions against Devices, replicated device information could sometimes be lost
+  * When using API to rename a tree node, backtrace may be incorrectly shown
+  * When searching, valid pages can sometimes be shown as empty by ddb4github
+  * When exporting data from graphs, not all data was properly included
+  * Graph Templates filter is not updated after new graph created by ddb4github
+  * Username and password on the login page is not visible in Classic theme
+  * Improve wording of concurrent process and thread settings
+  * Location filter should remove blank entries by ddb4github
+  * When syncing data collectors, a reindex event may be triggered unnecessarily
+  * Automation Networks allows discovery of invalid IP addresses
+  * When changing permissions of the current user, they don't take effect immediately
+  * When reindexing a device, an incorrect page was sometimes displayed
+  * When repairing database, audit_database.php does not add missing columns
+  * Log page should not be empty if no log info exists
+  * During upgrade, there are times when realms can be duplicated leading to SQL errors
+  * When using ping.php, UDP response times are not interpreted properly by hypnotoad
+  * Improve warning you get when attempting to view a log file you don't have access to
+  * When replicating files, scripts are not marked as executable
+  * When creating plugin tables, collation is not set properly
+  * Update c3.js to version 0.7.20
+  * Update Chart.js to version 2.9.4
+  * Update phpseclib to version 2.0.29
+  * Update PHPMailer to version 6.1.8
+  * Use LSB shebang notation for cli scripts
+  * Add support for cactid daemon based launcher
+  * Add ability to hide the Graph Drilldown icons by datatecuk
+  * Add hooks for plugins to show custom Graph Source and custom Template URL (List View)
+
+-------------------------------------------------------------------
 Wed Nov 11 18:07:46 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti 1.2.15, fixing the following bugs:

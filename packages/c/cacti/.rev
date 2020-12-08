@@ -288,4 +288,12 @@
     <comment>cacti 1.2.15</comment>
     <requestid>847931</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>c16c988be11f229184a62187e0b16509</srcmd5>
+    <version>1.2.16</version>
+    <time>1607430266</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853622</requestid>
+  </revision>
 </revisionlist>
