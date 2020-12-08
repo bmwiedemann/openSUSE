@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Dec  4 20:08:53 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Updated SPEC file to Recommend open-iscsi
+
+-------------------------------------------------------------------
+Fri Dec  4 19:51:59 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Updated to latest upstream, including:
+  * Add man page for isnssetup.
+  * Fix broken server authentication initialization.
+  * Update version string to "0.100".
+  * Added a TODO: 'make depend' not worrking
+  * libisns: remove sighold and sigrelse
+  * fix compilation without deprecated OpenSSL APIs
+  * socket.c: include poll.h instead of sys/poll.h for POSIX compatibility
+  * Fix 586 compile issue and remove -Werror
+  * Do not ignore write() return value.
+  * Fix compiler issue when n
+  Which updates open-isns-updates.diff.bz2, and removes the
+  no-longer-needed patch open-isns-fix-586-time.patch.
+  Also, security will be enabled/configured with this update.
+
+-------------------------------------------------------------------
 Fri Jan 31 22:05:13 UTC 2020 - lduncan@suse.com
 
 - Update to version 0.100:

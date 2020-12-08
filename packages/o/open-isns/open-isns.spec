@@ -1,7 +1,7 @@
 #
 # spec file for package open-isns
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,7 @@ Version:        0.100
 Release:        0
 Source:         %{name}-%{version}.tar.xz
 Patch1:         %{name}-updates.diff.bz2
-Patch2:         %{name}-fix-586-time.patch
-Url:            https://github.com/open-iscsi/%{name}
+URL:            https://github.com/open-iscsi/%{name}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -35,6 +34,7 @@ BuildRequires:  openssl-devel
 BuildRequires:  systemd-rpm-macros
 %{?systemd_requires}
 Requires:       coreutils
+Recommends:     open-iscsi
 
 %description
 This is a partial implementation of the iSNS protocol (see below),
@@ -58,13 +58,12 @@ Files to develop an application using the open-isns library.
 %prep
 %setup -n %{name}-%{version}
 %patch1 -p1
-%patch2 -p1
 
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 autoconf
 autoheader
-%configure
+%configure --prefix=/usr --with-security
 make OPTFLAGS="%{optflags}"
 
 %install
@@ -74,6 +73,7 @@ if [ ! -d "%{buildroot}/usr/sbin" ] ; then
 fi
 ln -sf /usr/sbin/service %{buildroot}/usr/sbin/rcisnsd
 make DESTDIR="%{buildroot}" install_hdrs install_lib
+install -m 755 isnssetup %{buildroot}%{_sbindir}
 
 %post
 %{service_add_post isnsd.socket isnsd.service}
@@ -92,15 +92,18 @@ make DESTDIR="%{buildroot}" install_hdrs install_lib
 %{_sbindir}/isnsd
 %{_sbindir}/isnsadm
 %{_sbindir}/isnsdd
+%{_sbindir}/isnssetup
 %dir %{_sysconfdir}/isns
 %attr(0600,root,root) %config(noreplace) %{_sysconfdir}/isns/isnsd.conf
 %attr(0600,root,root) %config(noreplace) %{_sysconfdir}/isns/isnsadm.conf
 %attr(0600,root,root) %config(noreplace) %{_sysconfdir}/isns/isnsdd.conf
 %{_sbindir}/rcisnsd
-%doc COPYING HACKING README TODO
+%license COPYING
+%doc HACKING README TODO
 %doc %{_mandir}/man8/isnsd.8%{?ext_man}
 %doc %{_mandir}/man8/isnsadm.8%{?ext_man}
 %doc %{_mandir}/man8/isnsdd.8%{?ext_man}
+%doc %{_mandir}/man8/isnssetup.8%{?ext_man}
 %doc %{_mandir}/man5/isns_config.5%{?ext_man}
 %{_unitdir}/isnsd.service
 %{_unitdir}/isnsd.socket
