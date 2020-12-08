@@ -17,7 +17,7 @@
 
 
 Name:           geeqie
-Version:        1.5.1
+Version:        1.6
 Release:        0
 Summary:        Lightweight Gtk+ based image viewer
 License:        GPL-2.0-or-later
@@ -26,8 +26,6 @@ URL:            http://www.geeqie.org
 Source0:        %{url}/%{name}-%{version}.tar.xz
 Source1:        %{url}/%{name}-%{version}.tar.xz.asc
 Source2:        geeqie.keyring
-# PATCH-FIX-UPSTREAM geeqie-gcc10-buildfix.patch -- Fix build with gcc 10
-Patch0:         geeqie-gcc10-buildfix.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
@@ -56,7 +54,7 @@ Geeqie is a lightweight image viewer for Linux, BSDs and compatibles.
 %lang_package
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
 # Needed to bootstrap
@@ -85,6 +83,7 @@ rm %{buildroot}%{_docdir}/%{name}/COPYING
 %{_datadir}/applications/geeqie.desktop
 %{_datadir}/geeqie/
 %{_datadir}/pixmaps/geeqie.png
+%{_datadir}/metainfo/org.geeqie.Geeqie.appdata.xml
 %{_prefix}/lib/geeqie/
 %{_mandir}/man1/geeqie.1%{?ext_man}
 

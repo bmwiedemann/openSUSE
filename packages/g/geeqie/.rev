@@ -167,4 +167,33 @@
     <comment>- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075) (forwarded request 838303 from gmbr3)</comment>
     <requestid>838340</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>2e6658fd892b3765a77729ac7206dec3</srcmd5>
+    <version>1.6</version>
+    <time>1607432458</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6:
+  - Support (excluding exif) for heic, webp, psd, cr3, jp2, djvu, svg
+  - Load remote URLs
+  - Save named window layouts
+  - Save workspace layout
+  - Export duplicates data to file
+  - Search and Run command (&quot;/&quot; keystroke)
+  - Tiff/pdf multi-page viewing
+  - Show over/underexposed
+  - Search for broken images
+  - Show lens ID
+  - File pane - filter by name or class
+  - User definable status toolbar
+  - Search by path
+  - Search on collection
+  - Find duplicates with same name but different content
+  - User definable mouse buttons 8 and 9 (back/forward)
+  - Folder pane list view - sort by name or date
+  - Many small improvements
+  - Many bug fixes
+  - Updated language support
+- Removed geeqie-gcc10-buildfix.patch (forwarded request 852920 from polslinux)</comment>
+    <requestid>853789</requestid>
+  </revision>
 </revisionlist>
