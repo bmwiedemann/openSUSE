@@ -47,7 +47,7 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 Requires:       /sbin/ifup
 Requires:       /sbin/netconfig
-Requires:       sysvinit(network)
+Requires:       (sysvinit(network) or service(network))
 Requires(post): %fillup_prereq
 Requires(post): /usr/bin/grep
 Requires(post): /usr/bin/chmod /usr/bin/mkdir /usr/bin/touch
