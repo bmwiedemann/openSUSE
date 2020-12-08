@@ -681,6 +681,7 @@ unsorted:
   - apache2-devel 
   - apache2-event 
   - apache2-icons-oxygen 
+  - apache2-manual 
   - apache2-mod_apparmor 
   - apache2-mod_auth_gssapi 
   - apache2-mod_auth_mellon 
@@ -4245,6 +4246,7 @@ unsorted:
   - gfxboot-branding-openSUSE 
   - gfxboot-branding-upstream 
   - gfxboot-devel 
+  - gh 
   - ghc 
   - ghc-Cabal 
   - ghc-Cabal-devel 
@@ -10448,7 +10450,7 @@ unsorted:
   - libdnf-devel 
   - libdnf2 
   - libdnnl1: [x86_64] 
-  - libdns1607-32bit: [x86_64] 
+  - libdns1608-32bit: [x86_64] 
   - libdns_sd 
   - libdns_sd-32bit: [x86_64] 
   - libdolphinvcs5: [i586] 
@@ -10601,7 +10603,7 @@ unsorted:
   - libevt-devel 
   - libevt-tools 
   - libevt1 
-  - libevtlog-3_26-0 
+  - libevtlog-3_30-0 
   - libevtlog-devel 
   - libevtlog0 
   - libevtx-devel 
@@ -11599,7 +11601,7 @@ unsorted:
   - libirrecord0 
   - libirs-devel 
   - libirs1601-32bit: [x86_64] 
-  - libisc1606-32bit: [x86_64] 
+  - libisc1607-32bit: [x86_64] 
   - libisccc1600-32bit: [x86_64] 
   - libisccfg1601-32bit: [x86_64] 
   - libiscsi-devel 
@@ -12451,7 +12453,7 @@ unsorted:
   - libnova-devel 
   - libnpupnp-devel 
   - libnpupnp4 
-  - libns1604-32bit: [x86_64] 
+  - libns1605-32bit: [x86_64] 
   - libnscd-devel 
   - libnsl-devel 
   - libnss_slurm2: [x86_64] 
@@ -12971,7 +12973,7 @@ unsorted:
   - libpoppler-qt5-1: [i586] 
   - libpoppler-qt5-1-32bit: [x86_64] 
   - libpoppler-qt5-devel 
-  - libpoppler103-32bit: [x86_64] 
+  - libpoppler105-32bit: [x86_64] 
   - libportal-devel 
   - libportaudio2-32bit: [x86_64] 
   - libportaudiocpp0 
@@ -14290,7 +14292,7 @@ unsorted:
   - libuev2 
   - libuhd4_0_0 
   - libuhttpmock-0_0-0 
-  - libulfius2_6 
+  - libulfius2_7 
   - libulockmgr1 
   - libuna-devel 
   - libuna-tools 
@@ -26664,6 +26666,7 @@ unsorted:
   - syslog-ng-python 
   - syslog-ng-redis 
   - syslog-ng-smtp 
+  - syslog-ng-snmp 
   - syslog-ng-sql 
   - syslogd 
   - sysprof: [i586] 

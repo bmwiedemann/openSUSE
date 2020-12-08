@@ -73,8 +73,6 @@
     <package name="analitza-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="apache-commons-logging" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="apache2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="apache2-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="apache2-example-pages" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="apache2-mod_php7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="apache2-prefork" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="apache2-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
@@ -1281,7 +1279,7 @@
     <package name="libdmapsharing-4_0-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdmtx0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdmx1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libdns1607" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libdns1608" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdouble-conversion3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libdrm-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libdrm2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -1546,7 +1544,7 @@
     <package name="libiptcdata-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libiptcdata0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libirs1601" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libisc1606" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libisc1607" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libisccc1600" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libisccfg1601" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libiscsi9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
@@ -1695,7 +1693,7 @@
     <package name="libnma0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnotify4" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libnpth0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libns1604" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libns1605" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnscd1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libnsl2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libnss_nis2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -1771,7 +1769,7 @@
     <package name="libpng16-16" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpoppler-cpp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpoppler-glib8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libpoppler103" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libpoppler105" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpopt0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libportal0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libportaudio2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
