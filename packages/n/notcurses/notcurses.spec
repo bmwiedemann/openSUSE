@@ -19,7 +19,7 @@
 
 %global sover   2
 Name:           notcurses
-Version:        2.0.3
+Version:        2.0.10
 Release:        0
 Summary:        Character graphics and TUI library
 License:        Apache-2.0
@@ -139,7 +139,7 @@ library.
 
 %prep
 %setup -q
-sed -e '/^#!\//, 1d' -i python/src/notcurses/notcurses.py
+#sed -e '/^#!\//, 1d' -i python/src/notcurses/notcurses.py
 
 %build
 %cmake -DUSE_DOCTEST=OFF -DUSE_STATIC=OFF
@@ -173,6 +173,7 @@ cd build
 %{_libdir}/libnotcurses++.so.%{sover}*
 
 %files demos
+%{_bindir}/ncls
 %{_bindir}/ncneofetch
 %{_bindir}/notcurses-demo
 %{_bindir}/notcurses-input
@@ -183,6 +184,7 @@ cd build
 %{_mandir}/man1/notcurses-tester.1%{?ext_man}
 %{_mandir}/man1/notcurses-tetris.1%{?ext_man}
 %{_mandir}/man1/notcurses-view.1%{?ext_man}
+%{_mandir}/man1/ncls.1%{?ext_man}
 %{_mandir}/man1/ncneofetch.1%{?ext_man}
 %{_datadir}/notcurses/
 
@@ -199,13 +201,11 @@ cd build
 %{_includedir}/ncpp
 %{_libdir}/libnotcurses++.so
 %{_libdir}/pkgconfig/notcurses++.pc
+%dir %{_libdir}/cmake/Notcurses++
+%{_libdir}/cmake/Notcurses++/Notcurses++Config.cmake
+%{_libdir}/cmake/Notcurses++/Notcurses++ConfigVersion.cmake
 
 %files -n python3-notcurses
-%{_bindir}/notcurses-pydemo
-%{_bindir}/notcurses-direct-pydemo
-%{_mandir}/man1/notcurses-pydemo.1%{?ext_man}
-%{_mandir}/man1/notcurses-direct-pydemo.1%{?ext_man}
-
 %{python3_sitearch}/*
 
 %changelog
