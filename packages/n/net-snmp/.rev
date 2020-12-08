@@ -717,4 +717,12 @@
     <comment>Fixed bug #1173487 (forwarded request 817756 from Xilanaz)</comment>
     <requestid>822087</requestid>
   </revision>
+  <revision rev="93" vrev="6">
+    <srcmd5>a3ec5c11b52717524daf431cd9e1d598</srcmd5>
+    <version>5.8</version>
+    <time>1607430240</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853302</requestid>
+  </revision>
 </revisionlist>

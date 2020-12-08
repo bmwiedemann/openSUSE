@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Nov 22 00:19:34 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix the python subpackage generation
+  gh#openSUSE/python-rpm-macros#79
+
+-------------------------------------------------------------------
+Thu Nov 19 18:23:53 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Support multiple python 3 flavors in the python subpackage
+  gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Mon Jun 29 17:20:01 UTC 2020 - Alexander van Kaam <alexvkaam@gmail.com>
 
 - Change /etc/logrotate.d/net-snmp from init.d to systemd

@@ -80,6 +80,17 @@ Requires(post): %fillup_prereq
 BuildRequires:  libsensors4-devel
 %endif
 
+%if 0%{?python38_version_nodots}
+# if python multiflavor is in place yet, use it to generate subpackages
+%define python_subpackage_only 1
+%python_subpackages
+%else
+# same "defaults" for all distributions, used in files section
+%define python_files() -n python3-%{**}
+%define python_sitearch %{python3_sitearch}
+%endif
+
+
 %description
 Net-SNMP is a suite of applications used to implement SNMP v1, SNMP v2c
 and SNMP v3 using both IPv4 and IPv6. The suite includes:
@@ -177,6 +188,19 @@ Requires:       perl-base = %{perl_version}
 %description -n perl-SNMP
 The Perl5 'SNMP' Extension Module v3.1.0 for the UCD SNMPv3 library.
 
+%if 0%{?python_subpackage_only}
+%package -n python-%{name}
+Summary:        The Python 3 'netsnmp' module for the Net-SNMP
+License:        BSD-3-Clause AND MIT
+Group:          Development/Libraries/Python
+Requires:       %{libname} = %{version}
+
+%description -n python-%{name}
+The 'netsnmp' module provides a full featured, tri-lingual SNMP (SNMPv3,
+SNMPv2c, SNMPv1) client API. The 'netsnmp' module internals rely on the
+Net-SNMP toolkit library.
+
+%else
 %package -n python2-%{name}
 Summary:        The Python 'netsnmp' module for the Net-SNMP
 License:        BSD-3-Clause AND MIT
@@ -201,6 +225,7 @@ Requires:       %{libname} = %{version}
 The 'netsnmp' module provides a full featured, tri-lingual SNMP (SNMPv3,
 SNMPv2c, SNMPv1) client API. The 'netsnmp' module internals rely on the
 Net-SNMP toolkit library.
+%endif
 
 %prep
 %setup -q
@@ -387,14 +412,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{perl_vendorarch}/NetSNMP
 %{_bindir}/tkmib
 
-%if %{with python2}
+%if %{with python2} && ! 0%{?python_subpackage_only}
 %files -n python2-%{name}
 %doc README
 %{python2_sitearch}/*
 %endif
 
-%files -n python3-%{name}
+%files %{python_files %{name}}
 %doc README
-%{python3_sitearch}/*
+%{python_sitearch}/*
 
 %changelog
