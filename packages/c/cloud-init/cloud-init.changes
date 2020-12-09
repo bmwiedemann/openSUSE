@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Nov 24 21:14:56 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Add wget as a requirement (bsc#1178029)
+  + wget is used in the CloudStack data source
+
+-------------------------------------------------------------------
+Tue Nov 24 12:40:00 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Add cloud-init-azure-def-usr-pass.patch (bsc#1179150, bsc#1179151)
+  + Properly set the password for the default user in all circumstances
+
+-------------------------------------------------------------------
+Fri Nov 13 19:44:11 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Patch the full package version into the cloud-init version file
+
+-------------------------------------------------------------------
+Tue Nov 10 11:39:09 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Update cloud-init-write-routes.patch (bsc#1177526)
+  + Fix missing default route when dual stack network setup is used. Once
+    a default route was configured for Ipv6 or IPv4 the default route
+    configuration for the othre protocol was skipped.
+
+-------------------------------------------------------------------
 Sat Oct 17 10:25:30 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Update cloud-init-write-routes.patch (bsc#1177526)
@@ -16,6 +41,7 @@ Fri Jul 24 19:55:40 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
     - cloud-init-long-pass.patch
     - cloud-init-mix-static-dhcp.patch
   + Remove patches build switched to Python 3 for all distributions
+    (jsc#PM-2335)
     - cloud-init-python2-sigpipe.patch
     - cloud-init-template-py2.patch
   + Add

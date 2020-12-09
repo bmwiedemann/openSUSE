@@ -38,6 +38,8 @@ Patch56:        cloud-init-sysconf-path.patch
 Patch57:        cloud-init-no-tempnet-oci.patch
 Patch58:        cloud-init-after-kvp.diff
 Patch59:        cloud-init-recognize-hpc.patch
+# FIXME https://github.com/canonical/cloud-init/commit/eea754492f074e00b601cf77aa278e3623857c5a
+Patch60:        cloud-init-azure-def-usr-pass.patch
 BuildRequires:  fdupes
 BuildRequires:  filesystem
 # pkg-config is needed to find correct systemd unit dir
@@ -83,6 +85,7 @@ Requires:       python3-six
 Requires:       python3-xml
 Requires:       sudo
 Requires:       util-linux
+Requires:       wget
 Requires:       wicked-service
 Requires:       cloud-init-config = %configver
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -134,6 +137,12 @@ Documentation and examples for cloud-init tools
 %patch57
 %patch58 -p1
 %patch59
+%patch60
+# patch in the full version to version.py
+version_pys=$(find . -name version.py -type f)
+[ -n "$version_pys" ] ||
+   { echo "failed to find 'version.py' to patch with version." 1>&2; exit 1; }
+sed -i "s,@@PACKAGED_VERSION@@,%{version}-%{release}," $version_pys
 
 %build
 python3 setup.py build

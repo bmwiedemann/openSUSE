@@ -10,7 +10,7 @@ Index: cloudinit/distros/opensuse.py
  
  from cloudinit import helpers
  from cloudinit import log as logging
-@@ -174,7 +175,140 @@ class Distro(distros.Distro):
+@@ -174,7 +175,147 @@ class Distro(distros.Distro):
              util.write_file(out_fn, str(conf), 0o644)
  
      def _write_network_config(self, netconfig):
@@ -34,6 +34,7 @@ Index: cloudinit/distros/opensuse.py
 +            subnets = config.get('subnets', [])
 +            config_routes = ''
 +            has_default_route = False
++            seen_default_gateway = None
 +            for subnet in subnets:
 +                # Render the default gateway if it is present
 +                gateway = subnet.get('gateway')
@@ -42,6 +43,8 @@ Index: cloudinit/distros/opensuse.py
 +                        ['default', gateway, '-', '-\n']
 +                    )
 +                    has_default_route = True
++                    if not seen_default_gateway:
++                        seen_default_gateway = gateway
 +                # Render subnet routes
 +                routes = subnet.get('routes', [])
 +                for route in routes:
@@ -58,7 +61,11 @@ Index: cloudinit/distros/opensuse.py
 +                                'Skipping route; has no prefix "%s"', dest
 +                            )
 +                            continue
-+                    if dest == 'default' and has_default_route:
++                    if (
++                           dest == 'default' and
++                           has_default_route and
++                           gateway == seen_default_gateway
++                        ):
 +                        dest_info = dest
 +                        if gateway:
 +                            dest_info = ' '.join([dest, gateway, '-', '-'])
