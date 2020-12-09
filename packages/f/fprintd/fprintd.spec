@@ -16,10 +16,10 @@
 #
 
 
-%define gitlabhash 88a627f1873ce8f30e5354593bf4d45953126395
+%define gitlabhash 52058c1ea0c3bd0eeb6e10c81af98aa687227f7f
 
 Name:           fprintd
-Version:        1.90.4
+Version:        1.90.6
 Release:        0
 Summary:        D-Bus service for Fingerprint reader access
 License:        GPL-2.0-or-later
@@ -28,7 +28,6 @@ URL:            https://fprint.freedesktop.org/
 Source0:        https://gitlab.freedesktop.org/libfprint/fprintd/-/archive/v%{version}/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
 Source2:        README.SUSE
-Patch0:         0001-tests-Fix-test-not-failing-on-error.patch
 BuildRequires:  gobject-introspection
 BuildRequires:  gtk-doc >= 1.3
 BuildRequires:  intltool
@@ -110,7 +109,6 @@ This package contains Development documents for fprintd
 
 %prep
 %setup -q -n %{name}-v%{version}-%{gitlabhash}
-%patch0 -p1 -R
 cp %{SOURCE2} .
 
 %build
