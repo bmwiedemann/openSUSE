@@ -352,4 +352,12 @@
     <comment>- Drop rd.neednet=0, the dracut bug is fixed and network is opt-in now</comment>
     <requestid>835362</requestid>
   </revision>
+  <revision rev="34" vrev="34">
+    <srcmd5>d56f61c4da81214deac75c56ffa74e6e</srcmd5>
+    <version>16.0.0</version>
+    <time>1607548364</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853999</requestid>
+  </revision>
 </revisionlist>

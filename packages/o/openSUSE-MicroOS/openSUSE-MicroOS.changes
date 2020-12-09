@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  8 10:52:17 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Use 'systemd.show_status=yes' to ensure users see clear status
+  during image boots 
+
+-------------------------------------------------------------------
 Thu Sep 17 11:27:21 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Drop rd.neednet=0, the dracut bug is fixed and network is opt-in now
