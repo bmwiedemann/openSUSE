@@ -1728,4 +1728,14 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
 </comment>
     <requestid>851872</requestid>
   </revision>
+  <revision rev="145" vrev="2">
+    <srcmd5>9ac8f71ceb3d21ae3a76f0b0a4a58e15</srcmd5>
+    <version>10.1</version>
+    <time>1607548303</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport from master [jsc#13656]:
+  * gdb-powerpc-remove-512-bytes-region-limit-if-2nd-dawr-is-avaliable.patch
+- Require 8GB diskspace for x86_64. (forwarded request 854204 from tomdevries)</comment>
+    <requestid>854272</requestid>
+  </revision>
 </revisionlist>
