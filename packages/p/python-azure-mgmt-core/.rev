@@ -27,4 +27,12 @@
 - Update Requires from setup.py (forwarded request 848167 from glaubitz)</comment>
     <requestid>848201</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>11fd9ce83daeba0f4ff5e34805d159a3</srcmd5>
+    <version>1.2.2</version>
+    <time>1607548651</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853910</requestid>
+  </revision>
 </revisionlist>
