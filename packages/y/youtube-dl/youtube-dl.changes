@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec  9 01:58:16 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.12.09
+  * slideslive: Add support for yoda service videos and
+    extract subtitles
+  * youtube:tab: Capture and output alerts
+  * telequebec: Fix Extraction and Add Support for
+    video.telequebec.tv
+
+-------------------------------------------------------------------
 Sun Dec  6 19:20:13 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.12.07
