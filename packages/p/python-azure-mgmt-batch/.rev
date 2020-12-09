@@ -58,4 +58,12 @@
     CHANGELOG.md file provided with this package (forwarded request 821895 from glaubitz)</comment>
     <requestid>821951</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>1b482df93dee82746c851f9fc0ee19e4</srcmd5>
+    <version>9.0.0</version>
+    <time>1607548611</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853897</requestid>
+  </revision>
 </revisionlist>
