@@ -24,7 +24,7 @@
 %endif
 
 Name:           budgie-desktop-branding
-Version:        20201017.1
+Version:        20201128.1
 Release:        0
 Summary:        Branding of the Budgie Desktop Environment
 Group:          System/GUI/Other
@@ -47,6 +47,7 @@ Conflicts:      budgie-desktop-branding
 Provides:       budgie-desktop-branding = %{version}
 BuildArch:      noarch
 # Best themes/icons for Budgie in openSUSE
+Recommends:     budgie-desktop-view
 Recommends:     wallpaper-branding-%{nsuffix}
 Recommends:     gtk3-metatheme-greybird-geeko
 Recommends:     adwaita-icon-theme
