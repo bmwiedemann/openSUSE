@@ -17,6 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%if 0%{?suse_version} >= 1500
+%define skip_python2 1
+%endif
 Name:           python-msrestazure
 Version:        0.6.4
 Release:        0
