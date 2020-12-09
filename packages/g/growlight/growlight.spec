@@ -18,7 +18,7 @@
 
 
 Name:           growlight
-Version:        1.2.18
+Version:        1.2.23
 Release:        0
 Summary:        Disk manipulation and system setup tool
 License:        GPL-3.0-or-later
@@ -26,17 +26,19 @@ Group:          System/Monitoring
 URL:            https://nick-black.com/dankwiki/index.php/Growlight
 Source:         https://github.com/dankamongmen/growlight/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  pandoc
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(blkid) >= 2.20.1
 BuildRequires:  pkgconfig(devmapper) >= 1.02.74
+BuildRequires:  pkgconfig(doctest) >= 2.3.5
 BuildRequires:  pkgconfig(libatasmart) >= 0.19
 BuildRequires:  pkgconfig(libcap) >= 2.24
 BuildRequires:  pkgconfig(libcryptsetup) >= 2.0.2
 BuildRequires:  pkgconfig(libpci) >= 3.1.9
 BuildRequires:  pkgconfig(libudev) >= 175
 BuildRequires:  pkgconfig(nettle) >= 3.5.1
-BuildRequires:  pkgconfig(notcurses) >= 2.0.1
+BuildRequires:  pkgconfig(notcurses) >= 2.0.5
 BuildRequires:  pkgconfig(pciaccess) >= 0.13.1
 BuildRequires:  pkgconfig(readline)
 BuildRequires:  pkgconfig(zlib) >= 1.2.11
@@ -72,8 +74,10 @@ are available.
 %files
 %license COPYING
 %doc README.md
-%{_bindir}/growlight
-%{_bindir}/growlight-readline
+%{_sbindir}/growlight
+%{_sbindir}/growlight-readline
+%dir %{_datadir}/growlight
+%{_datadir}/growlight/growlight.jpg
 %{_mandir}/man8/growlight-readline.8%{?ext_man}
 %{_mandir}/man8/growlight.8%{?ext_man}
 
