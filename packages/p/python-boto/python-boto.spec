@@ -17,7 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-
+%if 0%{?suse_version} >= 1500
+%define skip_python2 1
+%endif
 Name:           python-boto
 Version:        2.49.0
 Release:        0

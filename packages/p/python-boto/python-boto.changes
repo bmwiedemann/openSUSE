@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 26 11:07:08 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Only build Python3 flavors for distributions 15 and greater
+
+-------------------------------------------------------------------
 Tue Jan 14 10:59:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build under python3.8 by skipping more tests
