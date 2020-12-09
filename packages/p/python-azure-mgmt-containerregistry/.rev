@@ -101,4 +101,12 @@
     CHANGELOG.md file provided with this package (forwarded request 841487 from glaubitz)</comment>
     <requestid>841538</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>f0ad284be72a402b83b86a1390ebbe30</srcmd5>
+    <version>3.0.0rc15</version>
+    <time>1607548646</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853908</requestid>
+  </revision>
 </revisionlist>
