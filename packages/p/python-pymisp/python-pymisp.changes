@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Wed Nov 25 20:55:45 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.4.135.3:
+ - Changes
+   - Bump version. [Raphaël Vinot]
+   - Improve typing. [Raphaël Vinot]
+   - Improve add_attribute with a list. [Raphaël Vinot]
+ - Fix
+   - Do not fail on PyMISP import when mail-parser is not present. [Raphaël
+     Vinot]
+- update to version 2.4.135.2:
+ - New
+   - Add Github workflow. [Raphaël Vinot]
+ - Changes
+   - Bump changelog. [Raphaël Vinot]
+   - Bump version. [Raphaël Vinot]
+   - Improve error message if a type in missing. [Raphaël Vinot]
+   - [type] process-state added. [Alexandre Dulaunoy]
+   - Bump misp-objects. [Raphaël Vinot]
+   - [misp-objects] updated. [Alexandre Dulaunoy]
+   - Add path to CSV sample files. [Raphaël Vinot]
+   - [types] jarm-fingerprint added. [Alexandre Dulaunoy]
+ - Fix
+   - Remove python 3.9 from action (lief not supported yet) [Raphaël Vinot]
+   - Initialize submodules in gh action. [Raphaël Vinot]
+   - Make mail-parser really optional. [Raphaël Vinot]
+- update to version 2.4.135.1:
+ - Changes
+   - Bump changelog. [Raphaël Vinot]
+   - Bump version, travis install. [Raphaël Vinot]
+   - Make mail-parser an optional dependency. [Raphaël Vinot]
+- update to version 2.4.135:
+ - New
+   - Test parsing just email header. [Jakub Onderka]
+   - Test parsing outlook message format. [Jakub Onderka]
+   - Add tests for EmailObject. [Jakub Onderka]
+   - Refactored emailobject generator. [Jakub Onderka]
+   - Export display name from email. [Jakub Onderka]
+   - Parse date from email. [Jakub Onderka]
+   - Method to check attribute and object existence. [Jakub Onderka]
+   - Allow to get just event metadata after add_event and edit_event.
+     [Jakub Onderka]
+   - Method to check event existence. [Jakub Onderka]
+   - Add method to search for tags. [Raphaël Vinot]
+     fix #648
+ - Changes
+   - Bump changelog. [Raphaël Vinot]
+   - Bump version. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Add search info field with "\" [Raphaël Vinot]
+   - Improve documentation of search_index. [Raphaël Vinot]
+   - Improve error handling for Outlook emails. [Raphaël Vinot]
+   - Bump object templates. [Raphaël Vinot]
+   - Bump dependencies. [Raphaël Vinot]
+   - Update gitignore. [Raphaël Vinot]
+     fix #613
+   - Do not split a string into a list in complex query builder. [Raphaël
+     Vinot]
+     fix #597
+   - Force enable debug in test, test update tags. [Raphaël Vinot]
+   - Use REST search for the tags. [Raphaël Vinot]
+     Related to comments on a1326f2cf2bcfd6e285188e0661b12076fe92747
+   - Add typing meta. [Raphaël Vinot]
+ - Fix
+   - [emailobject] Correctly parse multiple addresses. [Jakub Onderka]
+   - Test suite for exists calls. [Raphaël Vinot]
+   - Path for event creating and editing. [Jakub Onderka]
+   - Object_uuid could be None. [Raphaël Vinot]
+     Fix #640
+   - Last_seen has to be after first_seen, and it should habe been failing
+     before. [Raphaël Vinot]
+   - Missing f-string marker. [Raphaël Vinot]
+   - Fix: Docstring improvment based on @chrisinmtown's feedback. [Raphaël
+     Vinot]
+ - Other
+   - We can now upload stix object directly. File is not necessary. [Remy
+     Dewailly]
+   - We can now upload stix object directly. File is not necessary. [Remy
+     Dewailly]
+
+-------------------------------------------------------------------
 Mon Nov  2 19:30:59 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 2.4.134:
