@@ -1,7 +1,7 @@
 #
 # spec file for package netcat-openbsd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,7 @@ Patch10:        set-TCP-MD5SIG-correctly-for-client-connections.patch
 Patch11:        destination-port-list.patch
 Patch12:        use-flags-to-specify-listen-address.patch
 Patch13:        misc-failures-and-features.patch
+Patch14:        port-select-on-connect.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libbsd)
 Provides:       nc6 = %{version}

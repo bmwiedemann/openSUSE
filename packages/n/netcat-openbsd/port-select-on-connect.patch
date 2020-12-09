@@ -1,0 +1,16 @@
+Index: netcat-openbsd-1.203/netcat.c
+===================================================================
+--- netcat-openbsd-1.203.orig/netcat.c
++++ netcat-openbsd-1.203/netcat.c
+@@ -1190,7 +1190,10 @@ remote_connect(const char *host, const c
+ 			ahints.ai_flags = AI_PASSIVE;
+ 			if ((error = getaddrinfo(sflag, pflag, &ahints, &ares)))
+ 				errx(1, "getaddrinfo: %s", gai_strerror(error));
+-
++#ifdef IP_BIND_ADDRESS_NO_PORT
++			if(sflag && !pflag)
++				setsockopt(s, SOL_IP, IP_BIND_ADDRESS_NO_PORT, &on, sizeof(on));
++#endif
+ 			if (bind(s, (struct sockaddr *)ares->ai_addr,
+ 			    ares->ai_addrlen) < 0)
+ 				err(1, "bind failed");
