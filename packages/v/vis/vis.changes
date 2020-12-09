@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Dec  8 18:42:07 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to the released version 0.7:
+  This is mostly a bug fix release with fixes for a few cases of
+  undefined behavior and preliminary work for experimentation with
+  different core text management data structures and general editor
+  architecture.
+  - fix UB in core text management data structure
+  - text refactoring, splitting out reusable text iterator and I/O
+    components
+  - new *at() variants taking directory descriptor for file load/save
+    API
+  - more efficient initial file read, avoiding spurious syscalls and
+    copy
+  - text API cleanups, const correctness improvements
+  - increased test coverage for core text data structure
+  - support for Lua 5.4
+  - Lua API improvements: vis.mark, vis.register, vis.win.file.modified
+  - and support for terminal CSI events
+  - NetBSD support
+  - new :set ignorecase option to search case independently
+  - new visual mode mapping <C-a> to select all matching selections
+  - fix mappings involving non-leading <C-c>
+  - minor file detection fixes for racket, node.js modules, Typescript
+    and liliypond
+  - new lexers for Zig, meson build system, Mikrotik RouterOS scripts,
+    Gemini
+  - improved inner word text object and its use for <C-n> in normal mode
+  - improved <C-n> behavior in visual mode
+  - removed ie, ae inner/outer entire text object, use :, as shorthand
+    for :0,$
+  - removed pairwise selection combinators z>, z<, z-, z+, z&, z|
+  - remove ~ as alias for g~
+  - use ~ instead of ! for selection complement
+  - remove special key and window related aliases
+  - vis-open(1) adds a trailing slash to indicate folders
+  - add primary clipboard support to vis-clipboard(1)
+  - support wayland clipboard using wl-clipboard(1)
+  - new Makefile targets: distclean, testclean
+
+
+-------------------------------------------------------------------
 Mon Jun 15 07:25:48 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to the released version 0.6 (all changes since 0.5):

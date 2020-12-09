@@ -83,4 +83,49 @@
   - implement g~, gu and gU using tr(1), they are no longer</comment>
     <requestid>814686</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>20190390ba2cdfdfedb025979e0b0209</srcmd5>
+    <version>0.7</version>
+    <time>1607548908</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to the released version 0.7:
+  This is mostly a bug fix release with fixes for a few cases of
+  undefined behavior and preliminary work for experimentation with
+  different core text management data structures and general editor
+  architecture.
+  - fix UB in core text management data structure
+  - text refactoring, splitting out reusable text iterator and I/O
+    components
+  - new *at() variants taking directory descriptor for file load/save
+    API
+  - more efficient initial file read, avoiding spurious syscalls and
+    copy
+  - text API cleanups, const correctness improvements
+  - increased test coverage for core text data structure
+  - support for Lua 5.4
+  - Lua API improvements: vis.mark, vis.register, vis.win.file.modified
+  - and support for terminal CSI events
+  - NetBSD support
+  - new :set ignorecase option to search case independently
+  - new visual mode mapping &lt;C-a&gt; to select all matching selections
+  - fix mappings involving non-leading &lt;C-c&gt;
+  - minor file detection fixes for racket, node.js modules, Typescript
+    and liliypond
+  - new lexers for Zig, meson build system, Mikrotik RouterOS scripts,
+    Gemini
+  - improved inner word text object and its use for &lt;C-n&gt; in normal mode
+  - improved &lt;C-n&gt; behavior in visual mode
+  - removed ie, ae inner/outer entire text object, use :, as shorthand
+    for :0,$
+  - removed pairwise selection combinators z&gt;, z&lt;, z-, z+, z&amp;, z|
+  - remove ~ as alias for g~
+  - use ~ instead of ! for selection complement
+  - remove special key and window related aliases
+  - vis-open(1) adds a trailing slash to indicate folders
+  - add primary clipboard support to vis-clipboard(1)
+  - support wayland clipboard using wl-clipboard(1)
+  - new Makefile targets: distclean, testclean
+</comment>
+    <requestid>854112</requestid>
+  </revision>
 </revisionlist>

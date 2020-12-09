@@ -16,9 +16,9 @@
 #
 
 
-%define test_version 0.4
+%define test_version 0.5
 Name:           vis
-Version:        0.6
+Version:        0.7
 Release:        0
 Summary:        An editor combining the strengths of both vi(m) and sam
 License:        ISC
