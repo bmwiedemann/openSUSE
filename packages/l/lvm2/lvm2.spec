@@ -224,8 +224,10 @@ rm %{buildroot}%{_unitdir}/lvm2-monitor.service
 rm %{buildroot}%{_mandir}/man8/blkdeactivate.8
 
 # compat symlinks in /sbin remove with Leap 43
+%if !0%{?usrmerged}
 mkdir -p %{buildroot}/sbin
 ln -s %{_sbindir}/dmsetup %{buildroot}/sbin/dmsetup
+%endif
 %else
 %if %{with lockd}
 make DESTDIR=%{buildroot} \
@@ -298,6 +300,7 @@ rm %{buildroot}%{_mandir}/man8/dmstats.8
 rm %{buildroot}%{_mandir}/man8/dmsetup.8
 rm %{buildroot}%{_mandir}/man8/dmeventd.8
 
+%if !0%{?usrmerged}
 # compat symlinks in /sbin remove with Leap 43
 mkdir -p %{buildroot}/sbin
 pushd %{buildroot}/%{_sbindir}
@@ -305,6 +308,7 @@ for i in {vg,pv,lv}*; do
     ln -s %{_sbindir}/$i %{buildroot}/sbin/$i
 done
 popd
+%endif
 %endif
 %endif
 
@@ -341,7 +345,9 @@ Programs and man pages for configuring and using the device mapper.
 %license COPYING COPYING.LIB
 %doc README
 %doc udev/12-dm-permissions.rules
+%if !0%{?usrmerged}
 /sbin/dmsetup
+%endif
 %{_sbindir}/dmsetup
 %{_sbindir}/dmeventd
 %{_sbindir}/dmstats
@@ -370,6 +376,8 @@ Device mapper main shared library
 %{_libdir}/libdevmapper.so.1.02
 
 %post   -n %{libname}
+%if !0%{?usrmerged}
+# in usrmerged scenario we better don't remove ourselves :-)
 if [ -f /%{_lib}/libdevmapper.so.1.03 ]; then
   # Special migration - the library is now in %{_libdir}, but up to the point where
   # zypp removes the 'old' device-mapper package, the old library 'wins' the ldloader race
@@ -378,7 +386,8 @@ if [ -f /%{_lib}/libdevmapper.so.1.03 ]; then
   # Remove /%{_lib}/libdevmapper.so.1.02 - and the run ldconfig
   rm /%{_lib}/libdevmapper.so.1.03
 fi
- /sbin/ldconfig
+%endif
+/sbin/ldconfig
 
 %postun -n %{libname} -p /sbin/ldconfig
 
@@ -542,6 +551,7 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 %{_sbindir}/rclvm2-lvmpolld
 %{_sbindir}/rclvm2-monitor
 # compat symlinks in /sbin
+%if !0%{?usrmerged}
 /sbin/lvm
 /sbin/lvmconfig
 /sbin/lvmdump
@@ -588,6 +598,7 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 /sbin/vgs
 /sbin/vgscan
 /sbin/vgsplit
+%endif
 %{_mandir}/man5/lvm.conf.5%{?ext_man}
 %{_mandir}/man7/lvmcache.7%{?ext_man}
 %{_mandir}/man7/lvmraid.7%{?ext_man}
