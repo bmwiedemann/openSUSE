@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 26 11:07:08 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Only build Python3 flavors for distributions 15 and greater
+
+-------------------------------------------------------------------
 Mon Apr 30 21:37:25 UTC 2018 - jengelh@inai.de
 
 - Trim bias and uninterpreted markup from description.
