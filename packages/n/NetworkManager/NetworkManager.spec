@@ -22,13 +22,13 @@
 %define with_cacert_patch 0
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           NetworkManager
-Version:        1.26.4
+Version:        1.28.0
 Release:        0
 Summary:        Network Link Manager and user applications for it
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/System
 URL:            https://www.gnome.org/projects/NetworkManager/
-Source0:        https://download.gnome.org/sources/%{name}/1.26/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/NetworkManager/1.28/%{name}-%{version}.tar.xz
 Source1:        nfs
 Source2:        NetworkManager.conf
 Source3:        baselibs.conf
@@ -79,7 +79,7 @@ BuildRequires:  pkgconfig(dbus-glib-1) >= 0.94
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk-doc)
-BuildRequires:  pkgconfig(jansson)
+BuildRequires:  pkgconfig(jansson) >= 2.7
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libndp)
 BuildRequires:  pkgconfig(libnewt) >= 0.52.15
@@ -200,10 +200,10 @@ export PYTHON=%{_bindir}/python3
     --disable-silent-rules \
     --with-hostname-persist=suse \
     --enable-ld-gc \
+    --enable-lto \
     --disable-static \
     --with-crypto=nss \
     --enable-gtk-doc \
-    --enable-json-validation \
     --with-tests=yes \
     --with-netconfig=yes \
     --with-config-dns-rc-manager-default=netconfig \

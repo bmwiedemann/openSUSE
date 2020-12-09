@@ -1,14 +1,78 @@
 -------------------------------------------------------------------
+Sun Dec  6 16:48:42 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.0:
+  + Change the behavior of nm-initrd-generator so that the
+    'ip=off|none' kernel cmdline argument actually generates a
+    connection which disables both ipv4 and ipv6. Previously the
+    generated connection would disable ipv4 but ipv6 would be set
+    to the 'auto' method.
+
+-------------------------------------------------------------------
 Fri Nov 27 13:36:02 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Provide service(network) and sysvinit(network) to be an alternative
   to wicked-service
 
 -------------------------------------------------------------------
+Tue Nov 24 12:35:56 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Pass --enable-lto to configure, build with LTO enabled.
+- Stop passing --enable-json-validation to configure, no longer
+  needed, nor recognized.
+
+-------------------------------------------------------------------
 Fri Oct 30 10:41:19 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Exclude systemd.automount from nfs processing: fix boo#1116625
   as suggested from Neil Brown
+
+-------------------------------------------------------------------
+Wed Oct 21 14:09:10 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.27.91:
+  + Change the default DNS priority for VPNs from 50 to -50. This
+    is a change in behavior and means that when connecting to a VPN
+    with the default route, DNS queries will never leak to local
+    resolvers. To restore the old behavior, set the DNS priority of
+    the connection to 50.
+  + The initrd generator now supports creating Infiniband
+    connections.
+
+-------------------------------------------------------------------
+Fri Oct 16 01:27:51 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rebase patches:
+  + 0001-Coerce-connectivity-LIMITED-to-NONE-when-device-is-d.patch
+  + NetworkManager-1.10.6-netconfig.patch
+  + nm-dont-overwrite-resolv-conf.patch
+
+-------------------------------------------------------------------
+Fri Oct 16 01:27:50 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.27.90:
+  + Introduce a new "rc-manager=auto" setting and make it the
+    default, unless a different default is chosen at compile time.
+    This mode tries to detect "systemd-resolved", "resolvconf", and
+    "netconfig".
+- Disable patches that needs rebase or dropping:
+  + nm-dont-overwrite-resolv-conf.patch
+  + NetworkManager-1.10.6-netconfig.patch
+  + 0001-Coerce-connectivity-LIMITED-to-NONE-when-device-is-d.patch
+
+-------------------------------------------------------------------
+Fri Oct 16 01:27:03 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 1.27.3:
+  + Introduce new "rc-manager=auto" setting and make it the
+    default, unless a different default is chosen at compile time.
+    This mode tries to detect "systemd-resolved", "resolvconf",
+    and "netconfig" and chooses the mode that seems most suitable
+    depending on build setting and runtime detection.
+    "resolvconf" and "netconfig" are only considered iff
+    NetworkManager was built with the respective options enabled.
+- Rebase nm-dont-overwrite-resolv-conf.patch and
+  0001-Coerce-connectivity-LIMITED-to-NONE-when-device-is-d.patch.
 
 -------------------------------------------------------------------
 Thu Oct 15 08:25:35 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>

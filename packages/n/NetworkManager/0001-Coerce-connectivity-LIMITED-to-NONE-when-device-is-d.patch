@@ -12,17 +12,17 @@ Fixes #138
  src/devices/nm-device.c | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-Index: NetworkManager-1.24.0/src/devices/nm-device.c
+Index: NetworkManager-1.27.90/src/devices/nm-device.c
 ===================================================================
---- NetworkManager-1.24.0.orig/src/devices/nm-device.c
-+++ NetworkManager-1.24.0/src/devices/nm-device.c
-@@ -2967,7 +2967,8 @@ concheck_update_state (NMDevice *self,
- 				state = NM_CONNECTIVITY_LIMITED;
- 		} else
- 			state = NM_CONNECTIVITY_NONE;
--	}
-+	} else if (state == NM_CONNECTIVITY_LIMITED && priv->state <= NM_DEVICE_STATE_DISCONNECTED)
-+		state = NM_CONNECTIVITY_NONE;
+--- NetworkManager-1.27.90.orig/src/devices/nm-device.c
++++ NetworkManager-1.27.90/src/devices/nm-device.c
+@@ -4232,7 +4232,8 @@ concheck_update_state(NMDevice *
+                 state = NM_CONNECTIVITY_LIMITED;
+         } else
+             state = NM_CONNECTIVITY_NONE;
+-    }
++    } else if (state == NM_CONNECTIVITY_LIMITED && priv->state <= NM_DEVICE_STATE_DISCONNECTED)
++	state = NM_CONNECTIVITY_NONE;
  
- 	if (priv->concheck_x[IS_IPv4].state == state) {
- 		/* we got a connectivty update, but the state didn't change. If we were probing,
+     if (priv->concheck_x[IS_IPv4].state == state) {
+         /* we got a connectivity update, but the state didn't change. If we were probing,
