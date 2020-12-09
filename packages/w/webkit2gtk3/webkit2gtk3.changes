@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec  3 22:23:20 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Add old-wayland-scanner.patch for 15.0/15.1: support older
+  wayland-scanner. Also renumber patches to group
+  15.0/15.1-specific patches together.
+- Have the libwebkit2gtk package require libjavascriptcoregtk of
+  the same version (boo#1171531).
+
+-------------------------------------------------------------------
 Wed Dec  2 13:36:15 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - 0001-ICU-68.1-no-longer-exposes-FALSE-and-TRUE-macros-by-.patch:

@@ -41,12 +41,15 @@ Source0:        %{url}/releases/%{_name}-%{version}.tar.xz
 Source1:        %{url}/releases/%{_name}-%{version}.tar.xz.asc
 Source98:       baselibs.conf
 Source99:       webkit2gtk3.keyring
-# PATCH-FIX-OPENSUSE webkit-process.patch boo#1159329 mgorse@suse.com -- use single web process for evolution and geary.
-Patch0:         webkit-process.patch
 # PATCH-FIX-OPENSUSE no-forced-sse.patch jengelh@iani.de -- cure execution of illegal instruction in i586 firefox.
-Patch1:         no-forced-sse.patch
+Patch0:         no-forced-sse.patch
 # PATCH-FIX-UPSTREAM 0001-ICU-68.1-no-longer-exposes-FALSE-and-TRUE-macros-by-.patch dimstar@opensuse.org -- ICU 68.1 no longer exposes FALSE and TRUE macros by default
-Patch2:         http://git.yoctoproject.org/cgit/cgit.cgi/poky/plain/meta/recipes-sato/webkit/webkitgtk/0001-ICU-68.1-no-longer-exposes-FALSE-and-TRUE-macros-by-.patch
+Patch1:         http://git.yoctoproject.org/cgit/cgit.cgi/poky/plain/meta/recipes-sato/webkit/webkitgtk/0001-ICU-68.1-no-longer-exposes-FALSE-and-TRUE-macros-by-.patch
+# Below patches are for 15.0/15.1 only
+# PATCH-FIX-OPENSUSE webkit-process.patch boo#1159329 mgorse@suse.com -- use single web process for evolution and geary.
+Patch100:       webkit-process.patch
+# PATCH-FIX-OPENSUSE old-wayland-scanner.patch mgorse@suse.com -- pass code to wayland-scanner, rather than private-code
+Patch101:       old-wayland-scanner.patch
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  Mesa-libGLESv1_CM-devel
@@ -139,6 +142,7 @@ Group:          System/Libraries
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 Requires:       bubblewrap
 %endif
+Requires:       libjavascriptcoregtk%{_sover} = %{version}
 Requires:       webkit2gtk-4_0-injected-bundles
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 Requires:       xdg-dbus-proxy
@@ -272,11 +276,12 @@ A small test browswer from webkit, useful for testing features.
 
 %prep
 %setup -n webkitgtk-%{version}
-%if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150200
 %patch0 -p1
-%endif
 %patch1 -p1
-%patch2 -p1
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150200
+%patch100 -p1
+%patch101 -p1
+%endif
 
 %build
 %define _lto_cflags %{nil}
