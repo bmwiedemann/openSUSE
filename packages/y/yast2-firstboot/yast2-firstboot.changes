@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec  4 16:12:43 UTC 2020 - Stefan Schubert <schubi@suse.de>
+
+- Fix: Starting YaST2 Control Center if the flag SHOW_Y2CC_CHECKBOX
+  has been set in /etc/sysconfig/firstboot and the user has
+  selected it while the firstboot installation workflow
+  (bsc#1178834).
+- 4.3.9
+
+-------------------------------------------------------------------
 Mon Nov 16 09:18:59 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Removed duplicated lan client from the firstboot control file and
