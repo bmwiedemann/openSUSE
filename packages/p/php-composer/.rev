@@ -407,4 +407,20 @@
 </comment>
     <requestid>844126</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>6a43411283c8c688713002a23401aac7</srcmd5>
+    <version>1.10.19</version>
+    <time>1607548920</time>
+    <user>dimstar_suse</user>
+    <comment>- Add provides of php8-composer
+- Version 1.10.19
+  * Fixed regression on PHP 8.0
+- Version 1.10.18
+  * Allow installation on PHP 8.0
+- Version 1.10.17
+  * Fixed Bitbucket API authentication issue
+  * Fixed parsing of Composer 2 lock files breaking in some rare conditions
+</comment>
+    <requestid>853797</requestid>
+  </revision>
 </revisionlist>
