@@ -18,7 +18,11 @@
 
 %define somajor 8
 %define libname libprocps%{somajor}
+%if !0%{?usrmerged}
 %bcond_with     bin2usr
+%else
+%bcond_without  bin2usr
+%endif
 %bcond_without  pidof
 Name:           procps
 Version:        3.3.16
@@ -238,10 +242,12 @@ then
 	ln snice skill
     popd
 fi
+%if !0%{?usrmerged}
 ln -s %{_bindir}/ps      %{buildroot}/bin/
 ln -s %{_bindir}/pgrep   %{buildroot}/bin/
 ln -s %{_bindir}/pkill   %{buildroot}/bin/
 ln -s %{_sbindir}/sysctl %{buildroot}/sbin/
+%endif
 %else
 mv %{buildroot}%{_bindir}/ps      %{buildroot}/bin/
 mv %{buildroot}%{_bindir}/pgrep   %{buildroot}/bin/
@@ -323,10 +329,12 @@ test $error = no || exit 1
 %license COPYING COPYING.LIB
 %doc NEWS Documentation/bugs.md Documentation/FAQ
 %if %{with bin2usr}
+%if !0%{?usrmerged}
 %verify(link) /bin/ps
 %verify(link) /bin/pgrep
 %verify(link) /bin/pkill
 %verify(link) /sbin/sysctl
+%endif
 %{_bindir}/ps
 %{_bindir}/pgrep
 %{_bindir}/pkill
