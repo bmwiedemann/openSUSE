@@ -279,7 +279,7 @@ Requires(pre):  user(wwwrun)
 %{?systemd_ordering}
 %endif
 %if "%{flavor}" == "utils"
-Requires:       which
+Requires:       /usr/bin/which
 Recommends:     w3m
 %endif
 %if "%{flavor}" == "devel"
