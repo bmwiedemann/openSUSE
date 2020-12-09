@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  9 14:57:29 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Update to f77383ec0ed3 (2020-12-07):
+ * Introduce RPi400 device-tree
+
+-------------------------------------------------------------------
 Thu Nov 26 12:54:35 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Introduce upstream-overlay-rpi-poe.patch to adapt the overlay to our driver (jsc#SLE-16543)
