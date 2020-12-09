@@ -18,6 +18,7 @@
 
 %define long_name io.otsaloma.gaupol
 %bcond_without test
+%define skip_python2 1
 Name:           gaupol
 Version:        1.8
 Release:        0
@@ -28,11 +29,12 @@ URL:            https://otsaloma.io/gaupol/
 Source0:        https://github.com/otsaloma/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE gaupol-1.7-desktop.patch prusnak@suse.cz -- add desktop category
 Patch0:         gaupol-1.7-desktop.patch
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module gobject >= 3.12}
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  python3-devel
-BuildRequires:  python3-gobject >= 3.12
+BuildRequires:  python-rpm-macros
 Requires:       python3
 Requires:       python3-aeidon
 Requires:       python3-gobject >= 3.12
@@ -40,10 +42,18 @@ Recommends:     iso-codes >= 3.67
 Recommends:     python3-chardet
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module chardet}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  myspell-en_US
-BuildRequires:  python3-chardet
-BuildRequires:  python3-pytest
 BuildRequires:  typelib(Gspell) >= 1
+%endif
+%if 0%{?python38_version_nodots}
+# if python multiflavor is in place yet, use it to generate subpackages
+%define python_subpackage_only 1
+%python_subpackages
+%else
+%define python_sitelib %python3_sitelib
+%define python_files() -n python3-%{**}
 %endif
 
 %description
@@ -57,6 +67,18 @@ on Windows. Technically it should be able to run on Mac as well, but that has
 not been tested nor made convenient. Gaupol's user interface is based on the GTK+
 toolkit and has been designed to best fit the GNOME desktop environment.
 
+%if 0%{?python_subpackage_only}
+%package -n python-aeidon
+Summary:        Package for reading, writing and manipulating text-based subtitle files
+Group:          Development/Libraries/Python
+
+%description -n python-aeidon
+This is a Python package for reading, writing and manipulating
+text-based subtitle files. It is separate from the gaupol package,
+which provides a subtitle editor application with a GTK+ user
+interface.
+
+%else
 %package -n python3-aeidon
 Summary:        Package for reading, writing and manipulating text-based subtitle files
 Group:          Development/Libraries/Python
@@ -68,23 +90,25 @@ This is a Python package for reading, writing and manipulating
 text-based subtitle files. It is separate from the gaupol package,
 which provides a subtitle editor application with a GTK+ user
 interface.
+%endif
 
 %prep
 %setup -q
 %patch0
 
 %build
-export CFLAGS="%{optflags}"
-python3 setup.py build
+%python_build
 
 %install
-python3 setup.py clean install --prefix=%{_prefix} --root=%{buildroot}
-rm -f %{buildroot}%{_datadir}/gaupol/extensions/side-pane/__pycache__/*.pyc
-rm -f %{buildroot}%{_datadir}/gaupol/extensions/custom-framerates/__pycache__/*.pyc
-rm -f %{buildroot}%{_datadir}/gaupol/extensions/bookmarks/__pycache__/*.pyc
+%python_install
 
-#remove zero length files
-find %{buildroot} -type f -size 0 -delete
+rm -rf %{buildroot}%{_datadir}/gaupol/extensions/*/__pycache__
+
+#remove zero length header files
+find %{buildroot}%{_datadir} -type f -size 0 -delete
+
+# We provide gaupol only for the primary python3 provider, but python-aeidon is multiflavor.
+%python_expand [ $(which $python) -ef $(which python3) ] || rm -r %{buildroot}/%{$python_sitelib}/gaupol*
 
 %find_lang %{name}
 %fdupes %{buildroot}
@@ -94,7 +118,9 @@ find %{buildroot} -type f -size 0 -delete
 # No idea why "en" language can't be found
 sed -i 's/"en"/"en_US"/' aeidon/test/test_spell.py
 sed -i 's/language="en"/language="en_US"/' aeidon/agents/test/test_text.py
-LANG=en py.test aeidon
+export LANG=en
+# gaupol tests segfault
+%pytest aeidon
 %endif
 
 %files -f %{name}.lang
@@ -109,9 +135,9 @@ LANG=en py.test aeidon
 %{_datadir}/icons/*/*/apps/%{long_name}*
 %{_mandir}/man1/gaupol.1%{?ext_man}
 
-%files -n python3-aeidon
+%files %{python_files aeidon}
 %doc AUTHORS.md README.aeidon.md NEWS.md
 %license COPYING
-%{python3_sitelib}/aeidon
+%{python_sitelib}/aeidon
 
 %changelog
