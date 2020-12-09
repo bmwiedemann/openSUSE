@@ -18,19 +18,17 @@
 
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           ModemManager
-Version:        1.14.6
+Version:        1.14.8
 Release:        0
 Summary:        DBus interface for modem handling
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Networking/System
 URL:            http://cgit.freedesktop.org/ModemManager/ModemManager
 Source0:        http://www.freedesktop.org/software/%{name}/%{name}-%{version}.tar.xz
-
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  gobject-introspection-devel >= 0.9.6
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libgudev-1_0-devel
-BuildRequires:  libxslt-tools
 BuildRequires:  pkgconfig
 BuildRequires:  ppp-devel
 BuildRequires:  vala-devel >= 0.18
@@ -83,7 +81,7 @@ DBus interface for modem handling. Provides a standard abstracted API
 CDMA).
 
 %package -n %{name}-bash-completion
-Summary:        Bash completion for nmcli
+Summary:        Bash completion for mmcli
 Group:          Productivity/Networking/System
 Requires:       bash-completion
 Supplements:    packageand(%{name}:bash-completion)

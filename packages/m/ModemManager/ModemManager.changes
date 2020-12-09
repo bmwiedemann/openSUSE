@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Dec  6 15:41:18 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.14.8:
+  + Build:
+    - Fixed distcheck with new gtk-doc releases.
+    - ModemManager-names.h was being included in the dist tarball,
+      but then removed on the 'clean' target. Fix that, by only
+      removing it on the 'maintainer-clean' target. Therefore,
+      'xsltproc' is now only needed in git builds, not needed when
+      building from a dist tarball.
+  + QMI:
+    - Fix daemon crash when the device is removed during the
+      initialization sequence.
+  + Several other minor improvements and fixes.
+- Drop libxslt-tools BuildRequires: No longer needed.
+
+-------------------------------------------------------------------
 Mon Nov  2 08:50:31 UTC 2020 - Petr Vorel <pvorel@suse.cz>
 
 - Update to version 1.14.6:
