@@ -1,7 +1,7 @@
 #
-# spec file for package apache
+# spec file for package apache-commons-el
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,9 @@ Release:        0
 Summary:        The Apache Commons Extension Language
 License:        Apache-1.1
 Group:          Development/Libraries/Java
-URL:            http://commons.apache.org/%{base_name}
-Source0:        http://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
-Source1:        http://repo1.maven.org/maven2/%{short_name}/%{short_name}/%{version}/%{short_name}-%{version}.pom
+URL:            https://commons.apache.org/%{base_name}
+Source0:        https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
+Source1:        https://repo1.maven.org/maven2/%{short_name}/%{short_name}/%{version}/%{short_name}-%{version}.pom
 Patch0:         %{short_name}-%{version}-license.patch
 Patch1:         %{short_name}-eclipse-manifest.patch
 Patch2:         %{short_name}-enum.patch
@@ -38,6 +38,9 @@ BuildRequires:  glassfish-servlet-api
 BuildRequires:  javapackages-local
 BuildRequires:  junit
 Requires:       mvn(commons-logging:commons-logging)
+Provides:       jakarta-%{short_name}
+Obsoletes:      jakarta-%{short_name}
+Provides:       %{short_name}
 BuildArch:      noarch
 
 %description
@@ -83,6 +86,7 @@ export OPT_JAR_LIST=:
 install -dm 0755 %{buildroot}%{_javadir}
 install -pm 0644 dist/%{short_name}.jar %{buildroot}%{_javadir}/%{short_name}.jar
 ln -sf %{short_name}.jar %{buildroot}%{_javadir}/%{name}.jar
+ln -sf %{short_name}.jar %{buildroot}%{_javadir}/jakarta-%{short_name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
 install -pm 0644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{short_name}.pom
@@ -96,6 +100,7 @@ cp -pr dist/docs/api/* %{buildroot}%{_javadocdir}/%{name}/
 %license LICENSE.txt
 %doc STATUS.html
 %{_javadir}/%{name}.jar
+%{_javadir}/jakarta-%{short_name}.jar
 
 %files javadoc
 %license LICENSE.txt
