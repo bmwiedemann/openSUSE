@@ -51,4 +51,21 @@ It's very actively maintained upstream, so I see no reason why it shouldn't be p
 - Use %cmake_build instead of %make_jobs</comment>
     <requestid>838477</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e7b9a8c98dc8ed08275c5c8f4ce70fb6</srcmd5>
+    <version>2.24.6</version>
+    <time>1607548362</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.24.6. Bugs fixed:
+  * kde#424728 Skrooge reconciliation should play happy
+    sounds when delta is 0 and when you validate pointed
+    operations
+  * kde#425208 Import of .gnucash failed
+  * kde#421302 Ability to create aliases for accounts to
+    assist with import
+  * Correction: Ledger-cli export doesn't export negative
+    values in the correct format
+  * Feature: Import Ledger</comment>
+    <requestid>853800</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec  8 13:28:28 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.24.6. Bugs fixed:
+  * kde#424728 Skrooge reconciliation should play happy
+    sounds when delta is 0 and when you validate pointed
+    operations
+  * kde#425208 Import of .gnucash failed
+  * kde#421302 Ability to create aliases for accounts to
+    assist with import
+  * Correction: Ledger-cli export doesn't export negative
+    values in the correct format
+  * Feature: Import Ledger
+
+-------------------------------------------------------------------
 Tue Sep 29 08:56:38 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Pull in hicolor-icon-theme for dir ownership

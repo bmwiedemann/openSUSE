@@ -24,7 +24,7 @@
 %bcond_with qtwebengine
 %endif
 Name:           skrooge
-Version:        2.23.0
+Version:        2.24.6
 Release:        0
 Summary:        A Personal Finance Management Tool
 License:        GPL-3.0-only
@@ -34,16 +34,14 @@ Source:         https://download.kde.org/stable/skrooge/%{name}-%{version}.tar.x
 BuildRequires:  breeze5-icons
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  grantlee5-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libQt5Sql-private-headers-devel
 BuildRequires:  libofx-devel
-BuildRequires:  libqca-qt5-devel
 BuildRequires:  libxslt-tools
-BuildRequires:  pkgconfig
 BuildRequires:  shared-mime-info
 BuildRequires:  sqlcipher-devel
 BuildRequires:  sqlite-devel
+BuildRequires:  cmake(Grantlee5)
 BuildRequires:  cmake(KF5Activities)
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Completion)
@@ -67,6 +65,7 @@ BuildRequires:  cmake(KF5Runner)
 BuildRequires:  cmake(KF5Wallet)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Qca-qt5)
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
@@ -79,13 +78,13 @@ BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
+Requires:       hicolor-icon-theme
 Recommends:     %{name}-lang = %{version}
 %if %{with qtwebengine}
 BuildRequires:  cmake(Qt5WebEngineWidgets)
 %else
 BuildRequires:  cmake(Qt5WebKitWidgets)
 %endif
-Requires:       hicolor-icon-theme
 
 %description
 Skrooge allows managing personal finances, powered by KDE.
