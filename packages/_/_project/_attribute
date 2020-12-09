@@ -396,6 +396,8 @@ products:
     - x86_64
   - opensuse-haproxy-image:
     - x86_64
+  - opensuse-hugo-image:
+    - x86_64
   - opensuse-mariadb-client-image:
     - x86_64
   - opensuse-mariadb-image:
@@ -521,7 +523,7 @@ set_snapshot_number: True</value>
     <value>failed: ''
 published: '20201207'
 publishing: '20201207'
-testing: '20201207'
+testing: '20201208'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
