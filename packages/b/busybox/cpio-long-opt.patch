@@ -1,0 +1,13 @@
+diff -urN busybox-1.32.0.orig/archival/cpio.c busybox-1.32.0/archival/cpio.c
+--- busybox-1.32.0.orig/archival/cpio.c	2020-06-26 20:47:44.000000000 +0200
++++ busybox-1.32.0/archival/cpio.c	2020-12-07 11:23:44.913676627 +0100
+@@ -367,6 +367,9 @@
+ 	const char *long_opts =
+ 		"extract\0"      No_argument       "i"
+ 		"list\0"         No_argument       "t"
++		"unconditional\0" No_argument      "u"
++		"preserve-modification-time\0" No_argument "m"
++		"make-directories\0" No_argument   "d"
+ #if ENABLE_FEATURE_CPIO_O
+ 		"create\0"       No_argument       "o"
+ 		"format\0"       Required_argument "H"

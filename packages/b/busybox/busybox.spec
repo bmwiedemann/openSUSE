@@ -28,6 +28,7 @@ Source1:        BusyBox.1
 Source2:        busybox.config
 Source3:        busybox-static.config
 Source4:        man.conf
+Patch0:         cpio-long-opt.patch
 # other patches
 Patch100:       busybox.install.patch
 Provides:       useradd_or_adduser_dep
@@ -71,6 +72,7 @@ PATH=/usr/share/busybox:$PATH SKIP_KNOWN_BUGS=1 ./runtest
 
 %prep
 %setup -q
+%patch0 -p1
 %patch100 -p0
 cp -a %{SOURCE1} docs/
 find "(" -name CVS -o -name .cvsignore -o -name .svn -o -name .gitignore ")" \

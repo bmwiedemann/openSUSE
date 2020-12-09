@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  7 10:25:00 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- cpio-long-opt.patch: add more long options to cpio for IBS/unrpm
+
+-------------------------------------------------------------------
 Fri Nov 20 08:59:57 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)
