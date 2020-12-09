@@ -24,7 +24,7 @@
 %define pyexe %{_bindir}/python3
 %global use_qt5 1
 Name:           hplip
-Version:        3.20.6
+Version:        3.20.9
 Release:        0
 Summary:        HP's Printing, Scanning, and Faxing Software
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
@@ -90,6 +90,7 @@ BuildRequires:  cups-devel > 1.5
 BuildRequires:  dbus-1-devel
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  libavahi-devel
 BuildRequires:  libdrm-devel
 BuildRequires:  libgphoto2-devel
 BuildRequires:  libjpeg-devel
@@ -149,11 +150,11 @@ Requires(post): %{_bindir}/find
 Requires(post): /bin/grep
 Requires(post): /bin/sed
 Requires(post): coreutils
+Recommends:     python3-reportlab
 # Obsolete earlier package names
 Obsoletes:      hplip17
 Provides:       hplip3 = 3.9.5
 Obsoletes:      hplip3 < 3.9.5
-Recommends:     python3-reportlab
 # cups-rpm-helper is now pulled in indirectly via cups-devel.
 # This causes the "postscriptdriver" provides to be generated.
 # To avoid that, put "Ignore: cups-devel: cups-rpm-helper in the prjconf.

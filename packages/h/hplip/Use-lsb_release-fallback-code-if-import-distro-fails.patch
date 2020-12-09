@@ -14,10 +14,10 @@ using lsb_release.
  installer/core_install.py | 10 +++++++---
  2 files changed, 13 insertions(+), 5 deletions(-)
 
-diff --git a/base/password.py b/base/password.py
-index cc91ac7..4352f9d 100644
---- a/base/password.py
-+++ b/base/password.py
+Index: hplip-3.20.9/base/password.py
+===================================================================
+--- hplip-3.20.9.orig/base/password.py
++++ hplip-3.20.9/base/password.py
 @@ -84,8 +84,12 @@ def get_distro_name():
      try:
          os_name = platform.dist()[0]
@@ -33,11 +33,11 @@ index cc91ac7..4352f9d 100644
  
      if not os_name:
          name = os.popen('lsb_release -i | cut -f 2')
-diff --git a/installer/core_install.py b/installer/core_install.py
-index eaecdc6..8c6b67f 100644
---- a/installer/core_install.py
-+++ b/installer/core_install.py
-@@ -644,9 +644,13 @@ class CoreInstall(object):
+Index: hplip-3.20.9/installer/core_install.py
+===================================================================
+--- hplip-3.20.9.orig/installer/core_install.py
++++ hplip-3.20.9/installer/core_install.py
+@@ -647,9 +647,13 @@ class CoreInstall(object):
                  name = platform.dist()[0].lower()
                  ver = platform.dist()[1]
              except AttributeError:
@@ -54,6 +54,3 @@ index eaecdc6..8c6b67f 100644
  
              if not name:
                  found = False
--- 
-2.25.1
-

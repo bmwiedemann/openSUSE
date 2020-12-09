@@ -1,8 +1,8 @@
-Index: b/Makefile.am
+Index: hplip-3.20.9/Makefile.am
 ===================================================================
---- a/Makefile.am
-+++ b/Makefile.am
-@@ -134,7 +134,7 @@ dist_rulessystem_DATA =data/rules/hplip-
+--- hplip-3.20.9.orig/Makefile.am
++++ hplip-3.20.9/Makefile.am
+@@ -137,7 +137,7 @@ dist_rulessystem_DATA =data/rules/hplip-
  
  # hpmud.rules
  if !HPLIP_CLASS_DRIVER

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Nov 23 11:47:45 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 3.20.9
+  Add support for the following printers:
+  * HP Color LaserJet Managed MFP E57540dn
+  * HP Color LaserJet Managed Flow MFP E57540c
+  * HP Color LaserJet Enterprise MFP M578dn
+  * HP Color LaserJet Enterprise MFP M578f
+  * HP Color LaserJet Enterprise Flow MFP M578c
+  * HP Color LaserJet Enterprise Flow MFP M578z
+  * HP Color LaserJet Managed E55040dw
+  * HP Color LaserJet Managed E55040dn
+  * HP Color LaserJet Enterprise M554dn
+  * HP Color LaserJet Enterprise M555dn
+  * HP Color LaserJet Enterprise M555x
+- Modified patches:
+  * Use-lsb_release-fallback-code-if-import-distro-fails.patch
+  * hp_ipp.h-add-missing-prototypes.patch
+  * hplip-remove-imageprocessor.diff
+  * hplip-udev-rules-in-usr.patch
+    + refresh using source service
+  * add_missing_includes_and_define_GNU_SOURCE.patch
+    + refresh, drop inexisting file and add GNU_SOURCE definition
+      and missing include in common/utils.c
+  * hplip-misc-missing-includes-and-definitions.patch
+    + rediff to changed context
+- New build dependency on libavahi-devel
+
+-------------------------------------------------------------------
 Thu Oct 29 13:23:39 UTC 2020 - Michal Svec <msvec@suse.com>
 
 - Fixed bugzilla link (bsc#1177527)
