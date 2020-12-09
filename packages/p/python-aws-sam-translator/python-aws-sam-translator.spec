@@ -24,7 +24,9 @@
 %else
 %bcond_without test
 %endif
-%bcond_without python2
+%if 0%{?suse_version} >= 1500
+%define skip_python2 1
+%endif
 Name:           python-aws-sam-translator
 Version:        1.25.0
 Release:        0

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 26 11:07:08 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Only build Python3 flavors for distributions 15 and greater
+
+-------------------------------------------------------------------
 Wed Jul  1 12:55:50 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.25.0
