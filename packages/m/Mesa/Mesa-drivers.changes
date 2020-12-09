@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  7 11:09:59 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 20.2.4
+  * fourth (second to last) bugfix release for the 20.2 branch
+
+-------------------------------------------------------------------
 Tue Dec  1 12:31:55 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - require llvm-devel *without* any explicit version number for 
