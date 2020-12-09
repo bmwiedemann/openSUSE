@@ -7,4 +7,12 @@
     <comment>- Another Azure SDK package</comment>
     <requestid>840771</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>231910da3b4221a9172f42b6787591df</srcmd5>
+    <version>1.0.0b1</version>
+    <time>1607548608</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853896</requestid>
+  </revision>
 </revisionlist>
