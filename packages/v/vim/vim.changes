@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Mon Dec  7 07:08:18 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.2105, fixes the following problems
+  * Viminfo is not written when creating a new file.
+  * Terminal buffer disappears even when 'bufhidden' is "hide". (Sergey Vlasov)
+  * Haskell filetype not optimally recognized.
+  * Build failure with +profile but without +reltime.
+  * GTK3: white border around text stands out.
+  * Highlighting a character too much with incsearch.
+  * Some test failures don't give a clear error.
+  * Amiga: FEAT_ARP defined when it should not.
+  * Amiga: obsolete code.
+  * Amiga: obsolete function.
+  * Search test contains unneeded sleeps.
+  * Vim9: crash when aborting a user function call.
+  * Vim9: "edit +4 fname" gives an error. (Naruhiko Nishino)
+  * Vim9: lamba doesn't accept argument types.
+  * Configure fails when building with the "implicit-function-declaration"
+  error enabled, specifically on Mac.
+  * Getting the selection may trigger TextYankPost autocmd.
+  * Using mkview/loadview changes the jumplist.
+  * Check for features implemented with "if".
+  * Vim9: E1030 error when using empty string for term_sendkeys().
+  * <Cmd> does not handle CTRL-V.
+  * Vim9: only one level of indexing supported.
+  * terminal: cursor is on while redrawing, causing flicker.
+  * Using map() and filter() on a range() is inefficient.
+  * Vim9: assignment with += doesn't work.
+  * Cursor position in popup terminal is wrong.
+  * Transparent syntax item uses start/end of containing region.
+  * The quickfix window is not updated after setqflist().
+  * Can't get the exit value in VimLeave or VimLeavePre autocommands.
+  * Vim9: list assign doesn't except empty remainder list.
+  * Vim9: list assign not well tested.
+  * Vim9: for with unpack only works for local variables.
+  * Vim9: using :normal from Vim9 script can't handle range.
+  * Error for const argument to mapnew().
+  * Build failure with small features.
+  * Illegal memory access when using :print on invalid text. (Dhiraj Mishra)
+  * Vim9: cannot put a linebreak before or after "in" of ":for".
+  * Vim9: no proper error message for using s:var in for loop.
+  * Vim9: cannot handle a linebreak after "=" in assignment.
+  * Vim9: can still use the depricated #{} dict syntax.
+  * Vim9: crash when using ":silent!" and getting member fails.
+  * CTRL-V U doesn't work to enter a Unicode character when modifyOtherKeys
+  is effective. (Ken Takata)
+  * Qt translation file is recognized as typescript.
+  * Libvterm tests are only run on Linux.
+  * Vim9: memory leak when statement is truncated.
+  * Vim9: script test sometimes fails.
+  * Vim9: dict does not accept a key in quotes.
+  * Vim9: unpredictable errors for script tests.
+  * Vim9: script test sometimes fails.
+  * When an expression fails getting the next command may be wrong.
+  * Vim9: crash when failed dict member is followed by concatenation.
+  * Vim9: command modifiers not restored after assignment.
+  * Vim9: using :silent! when calling a function prevents abortng that
+  function.
+  * Vim9: function argument of sort() and map() not tested.
+  * Vim9: some checks are not tested.
+  * Insufficient testing for function range and dict.
+  * Vim9: memory leak when literal dict has an error and when an expression
+  is not complete.
+  * Vim9: not all error messages tested.
+  * Vim9: unreachable code.
+  * Build problem with Ruby 2.7.
+  * Sound test is a bit flaky.
+
+-------------------------------------------------------------------
 Wed Nov 25 09:50:56 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.2039, fixes the following problems
