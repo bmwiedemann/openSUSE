@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  9 17:21:48 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Only build the qt4 subpackage up to Leap 15.2 / SLE 15 SP2
+  (boo#1179613)
+
+-------------------------------------------------------------------
 Mon Oct 14 12:36:18 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Stop packaging qimageblitz4 for Tumbleweed.

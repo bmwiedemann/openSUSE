@@ -1,7 +1,7 @@
 #
 # spec file for package qimageblitz
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define soname_qt5 libqimageblitz5
 %define sover_qt5 1
-%if 0%{?suse_version} <= 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
+%bcond_with qt4
+%else
 %bcond_without qt4
 %define soname_qt4 libqimageblitz
 %define sover_qt4 4
-%else
-%bcond_with qt4
 %endif
 Name:           qimageblitz
 Version:        0.0.6+svn1515099
