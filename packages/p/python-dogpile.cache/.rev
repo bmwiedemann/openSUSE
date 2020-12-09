@@ -258,4 +258,12 @@
     py2/py3 wheels.   dogpile 1.0.x is Python 3 only so a py3-only wheel is now</comment>
     <requestid>844065</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>dedc5fda3f3f1f49f444ac517446e683</srcmd5>
+    <version>1.1.1</version>
+    <time>1607548366</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853805</requestid>
+  </revision>
 </revisionlist>

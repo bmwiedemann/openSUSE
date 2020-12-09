@@ -19,14 +19,17 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-dogpile.cache
-Version:        1.0.2
+Version:        1.1.1
 Release:        0
+%define modname dogpile.cache
+%define modver  1_1_1
 Summary:        A caching front-end based on the Dogpile lock
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/sqlalchemy/dogpile.cache
-Source:         https://files.pythonhosted.org/packages/source/d/dogpile.cache/dogpile.cache-%{version}.tar.gz
+Source:         https://github.com/sqlalchemy/%{modname}/archive/rel_%{modver}.tar.gz#/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module Mako}
+BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module decorator >= 4.0.0}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
@@ -48,7 +51,7 @@ continued access to an expiring data value while a single thread generates a
 new value.
 
 %prep
-%setup -q -n dogpile.cache-%{version}
+%setup -q -n %{modname}-rel_%{modver}
 
 %build
 %python_build
