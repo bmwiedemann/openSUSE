@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 26 11:07:08 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Only build Python3 flavors for distributions 15 and greater
+
+-------------------------------------------------------------------
 Mon May  4 08:29:42 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.4.2:
