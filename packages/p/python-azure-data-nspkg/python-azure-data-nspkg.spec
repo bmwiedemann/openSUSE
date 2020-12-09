@@ -17,13 +17,16 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%if 0%{?suse_version} >= 1500
+%define skip_python2 1
+%endif
 Name:           python-azure-data-nspkg
 Version:        1.0.0
 Release:        0
 Summary:        Microsoft Azure Data Namespace Package
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/Azure/azure-sdk-for-python
+URL:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-data-nspkg/azure-data-nspkg-%{version}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
