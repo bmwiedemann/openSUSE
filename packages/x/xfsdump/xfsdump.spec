@@ -1,7 +1,7 @@
 #
 # spec file for package xfsdump
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Administrative Utilities for the XFS File System
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
-Url:            https://xfs.wiki.kernel.org/
+URL:            https://xfs.wiki.kernel.org/
 Source0:        https://www.kernel.org/pub/linux/utils/fs/xfs/xfsdump/xfsdump-%{version}.tar.xz
 Source1:        https://www.kernel.org/pub/linux/utils/fs/xfs/xfsdump/xfsdump-%{version}.tar.sign
 Source2:        %{name}.keyring
@@ -71,20 +71,18 @@ make %{?_smp_mflags}
 export DIST_ROOT=%{buildroot}
 make DESTDIR=%{buildroot} install %{?_smp_mflags}
 %find_lang xfsdump
-# Remove the link created by the make file
-rm %{buildroot}/%{_sbindir}/{xfsdump,xfsrestore}
 mv %{buildroot}/sbin/{xfsdump,xfsrestore} %{buildroot}/%{_sbindir}
-#UsrMerge
+%if !0%{?usrmerged}
 ln -s %{_sbindir}/xfsdump %{buildroot}/sbin
 ln -s %{_sbindir}/xfsrestore %{buildroot}/sbin
-#EndUsrMerge
+%endif
 
 %files -f xfsdump.lang
 %defattr(-,root,root,755)
 %{_sbindir}/*
-#UsrMerge
+%if !0%{?usrmerged}
 /sbin/*
-#EndUsrMerge
+%endif
 %doc %{_defaultdocdir}/%{name}
 %{_mandir}/man8/*
 %if 0%{?suse_version} > 1200
