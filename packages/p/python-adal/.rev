@@ -67,4 +67,12 @@
 - Update HISTORY.txt from github releases page (forwarded request 850420 from glaubitz)</comment>
     <requestid>850507</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e4c94e1bcdb9b9853cf953045c6ba49c</srcmd5>
+    <version>1.2.5</version>
+    <time>1607548394</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853821</requestid>
+  </revision>
 </revisionlist>
