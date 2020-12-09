@@ -63,6 +63,7 @@ Patch5:         php-pts.patch
 Patch6:         php-openssl.patch
 Patch7:         php-systzdata-v19.patch
 Patch8:         php-systemd-unit.patch
+Patch9:         php-install-mod_php.patch
 Patch10:        php-embed.patch
 ## Bugfix patches
 # following patch is to fix configure tests for crypt; the aim is to have php
@@ -82,6 +83,7 @@ BuildRequires:  apache-rex
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache-rpm-macros-control
 BuildRequires:  apache2-devel
+BuildRequires:  apache2-prefork
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  curl
@@ -222,7 +224,8 @@ Group:          Productivity/Networking/Web/Servers
 Requires:       %{apache_mmn}
 Requires:       %{name} = %{version}
 Requires:       apache2-prefork
-Requires(pre):  apache2
+Requires(post): %{_sbindir}/a2enmod
+Requires(preun): %{_sbindir}/a2enmod
 Provides:       mod_php_any = %{version}
 Provides:       php-date = %{version}
 Provides:       php-filter = %{version}
@@ -913,6 +916,7 @@ cp %{SOURCE5} .
 %patch6
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 %patch10 -p1
 %patch12 -p1
 %patch14 -p1
@@ -1015,10 +1019,6 @@ Build()
         --with-system-tzdata=%{_datadir}/zoneinfo \
         --with-mhash \
         --disable-phpdbg \
-%if %{build_sodium}
-        --with-sodium=shared \
-%endif
-        --with-zip=shared \
 %if %{build_argon2}
         --with-password-argon2=%{_usr} \
 %endif
@@ -1052,13 +1052,15 @@ Build()
 Build apache2 \
     --with-apxs2=%{apache_apxs} \
     --disable-all \
+    --disable-cgi \
     --disable-cli
 
 # fast-cgi sapi
 Build fastcgi \
     --bindir=%{_bindir} \
-    --disable-cli \
-    --disable-all
+    --disable-all \
+    --enable-cgi \
+    --disable-cli
 
 Build fpm \
     --with-fpm-systemd \
@@ -1066,14 +1068,16 @@ Build fpm \
     --with-fpm-user=wwwrun \
     --with-fpm-group=www \
     --bindir=%{_bindir} \
-    --disable-cli \
     --disable-all \
+    --disable-cgi \
+    --disable-cli \
     --localstatedir=%{_localstatedir}
 
 Build embed \
     --enable-embed=shared \
-    --disable-cli \
-    --disable-all
+    --disable-all \
+    --disable-cgi \
+    --disable-cli
 
 Build cli \
     --enable-cli \
@@ -1138,6 +1142,10 @@ Build cli \
 %endif
     --with-pdo-pgsql=shared,%{_usr} \
     --with-pdo-odbc=shared,unixODBC,%{_usr} \
+%if %{build_sodium}
+    --with-sodium=shared \
+%endif
+    --enable-opcache=shared \
     --with-zip=shared \
     --enable-intl=shared \
     --disable-cgi
@@ -1268,17 +1276,17 @@ install -m 0644 %{SOURCE12} %{buildroot}/%{_tmpfilesdir}/php-fpm.conf
 %post -n apache2-mod_%{name}
 #some distro versions does not have this tool.
 if [ -x %{_sbindir}/a2enmod ]; then
-    if a2enmod -q php5 && ! a2enmod -q php7; then
-        a2dismod php5
-        a2enmod php7
+    if %{_sbindir}/a2enmod -q php5 && ! %{_sbindir}/a2enmod -q php7; then
+        %{_sbindir}/a2enmod -d php5
+        %{_sbindir}/a2enmod php7
     fi
 fi
 
 %preun -n apache2-mod_%{name}
 if [ "$1" = "0" ]; then
     if [ -x %{_sbindir}/a2enmod ]; then
-        if a2enmod -q php7; then
-            a2dismod php7
+        if %{_sbindir}/a2enmod -q php7; then
+            %{_sbindir}/a2enmod -d php7
         fi
     fi
 fi
@@ -1298,6 +1306,7 @@ fi
 
 %post embed -p /sbin/ldconfig
 %postun embed -p /sbin/ldconfig
+
 %postun -n apache2-mod_%{name}
 # request restart apache instanaces (which loaded php7) after apache2-mod_%{name} package update
 if [ $1 -eq 1 ]; then

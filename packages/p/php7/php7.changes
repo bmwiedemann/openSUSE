@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec  4 20:10:10 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- do not add mod_php to httpd.conf during %install (better fix for
+  new apache2 from Apache development repo)
+  + php-install-mod_php.patch
+- do not build php-cgi when not needed
+- only build extensions in cli
+
+-------------------------------------------------------------------
 Sun Nov 29 13:42:37 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - fix building with new apache2 from Apache development repo
