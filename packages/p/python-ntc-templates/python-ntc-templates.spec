@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-ntc-templates
-Version:        1.4.2
+Version:        1.6.0
 Release:        0
 Summary:        Package to return structured data from the output of network devices
 License:        Apache-2.0
@@ -58,13 +58,15 @@ Package to return structured data from the output of network devices.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+%if 0%{suse_version} <= 1500
 # https://github.com/networktocode/ntc-templates/issues/743
 rm tests/cisco_ios/show_access-list/cisco_ios_show_access-list.raw
+%endif
 %pytest -k 'not (arista_eos_show_ip_access-lists or cisco_ios_show_access-list or cisco_nxos_show_ip_bgp_neighbors or cisco_nxos_show_ip_bgp_neighbors_with_policy_names or show_arp)'
 
 %files %{python_files}
 %license LICENSE
-%doc README.md CHANGELOG.md
+%doc README.md CHANGELOG
 %{python_sitelib}/*
 
 %changelog

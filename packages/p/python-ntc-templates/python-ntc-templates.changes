@@ -1,5 +1,41 @@
 -------------------------------------------------------------------
+Tue Dec  8 10:13:14 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.6.0
+  [Full Changelog](https://github.com/networktocode/ntc-templates/compare/v1.5.0...v1.6.0)
+  **Implemented enhancements:**
+    - Creation of a Faq [\#716]
+  **Closed issues:**
+    - This is not a data modeling project. So is there any data modeling project can work with this? [\#802]
+    - Black 20.b0 breaks tox test [\#794]
+    - Unable to Parse show version on IOSv Device [\#780]
+    - TXTFSM will not process template even though Regex checker  says line is acceptable for ciena SAOS [\#779]
+    - cisco\_nxos\_show\_ip\_bgp\_summary.textfsm doesn't account for dual line bgp when output is too wide [\#766]
+    - arista eos show mac address-table is choking on case sensitivity on line Total Mac Addresses for this criterion: 0 [\#764]
+    - Cisco IOS - textfsm.parser.TextFSMError: State Error raised. Rule Line: 17. [\#718]
+  **Merged pull requests:**
+    - changes tests to import from lib [\#806]
+    - modify for show inventory all. [\#804]
+    - Change TextFSM Windows failure to a runtime failure \(instead of an import failure\) [\#803]
+    - Added juniper\_junos\_show\_lldp\_neighbors [\#797]
+    - Bugfix: Re-formatted development\_scripts.py and tests/test\_testcases\_… [\#795]
+    - Fix typos in README.md [\#792]
+    - Detect hostname on NX-OS platforms [\#789]
+    - Cisco ASA show access-list command templates update. [\#783]
+    - Updates to include capture on single word, no number model number [\#781]
+    - Bugfix: Account for powered-up value in the output of nxos show module [\#774]
+    - Dual line support for Cisco NX-OS 'ip bgp summary' command [\#772]
+    - Arista eos show mac address table [\#765]
+    - New Template: cisco\_nxos\_show\_ip\_interface [\#761]
+    - New Template: cisco\_nxos\_show\_hsrp\_all [\#760]
+    - New Template: cisco\_nxos\_show\_license\_usage [\#759]
+    - New Template: cisco\_nxos\_show\_interface\_description [\#758]
+    - Fixes \#716 [\#753](https://github.com/networktocode/ntc-templates/pull/753)
+- Changes from 1.5.0
+  [Full Changelog](https://github.com/networktocode/ntc-templates/compare/v1.4.2...v1.5.0)
+- Fix build errors.
+
+-------------------------------------------------------------------
 Thu Jun  4 10:52:21 UTC 2020 - pgajdos@suse.com
 
 - initial version 1.4.2, required by python-junos-eznc
-
