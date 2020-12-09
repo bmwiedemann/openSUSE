@@ -16,10 +16,10 @@
 #
 
 
-%define SrcVersion 151u
+%define SrcVersion 153f
 
 Name:           imagej
-Version:        1.51u
+Version:        1.53f
 Release:        0
 Summary:        A Java image processing program
 License:        SUSE-Public-Domain

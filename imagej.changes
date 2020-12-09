@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Wed Dec  2 18:37:15 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 1.53f.
+  * Added a popup menu to the magnifying glass tool icon.
+  * Added a popup menu triggered on a right click or long press 
+    inside a selection.
+  * Updated the built in toolbar "Dev" menu.
+  * The text in a text selection can be edited in the 
+    Edit>Selection>Properties dialog.
+  * The File>Import>Image Sequence dialog is used when drag and 
+    dropping a folder on the "ImageJ" window.
+  * Undo works with overlays when translating and rotating images,
+    and the "Overlay only" checkbox is only shown in the Translate 
+    dialog when there is an overlay.
+  * Added the Edit>Options>Fresh Start command, which closes all 
+    images, empties the ROI Manager, clears the Results table and
+    enables the "Black background" option.
+  * The Reslice command is faster on Windows when re-slicing from 
+    "Left" or "Right" and it uses an ordinary progress bar when 
+    run from a macro.
+  * Added an "Open as separate images" checkbox to the 
+    File>Import>Image Sequence dialog.
+  * Added "Foreground..." and "Background..." entries to the color
+    picker tool popup menu.
+  * Added the Image.width, Image.height, Image.copy and 
+    Image.paste(x,y) macro functions (example).
+  * Added the Array.filter(arr,str), Math.toRadians(degrees) and
+    Math.toDegrees(radians) functions.
+  * Added the ResultsTable.addRow() method. For an example, run 
+    Help>Examples>JavaScript>Sine/Cosine Table.
+  * Fixed a bug that caused the RoiManager.getSelectedIndexes() 
+    method to sometimes not work as expected.
+  * Fixed a bug that slowed saving of virtual stacks in TIFF 
+    format.
+  * Fixed a bug that caused the dynamic "Value" and "Count" values
+    in HIstogram windows to sometimes not be displayed correctly.
+  * Fixed a bug that caused the Ctrl+F (Edit>Fill) keyboard 
+    shortcut on Windows, when used on a stack, to not display the 
+    "Proces Stack?" dialog.
+  * Fixed a 1.53e regression that caused the imageCaculator() macro
+    function do somethimes not work as expected.
+  * Fixed a 1.52 regression that caused the Analyze Skeleton plugin
+    to output incorrect Results tables.
+  * Fixed a regression that caused the Edit>Copy to Image Info 
+    command in the text editor to fail.
+  * Fixed a 1.53c regression in the AVI Reader that caused it to 
+    throw a null pointer exception.
+  * Fixed a 1.52 regression that caused the IJ.getImage() method to 
+    sometimes display model error dialogs. 
+  * Many bugfixes and usability improvements
+
+-------------------------------------------------------------------
 Sun Feb 18 11:36:26 UTC 2018 - jengelh@inai.de
 
 - Wrap and compact description.
