@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 16 10:18:52 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
 Mon Apr 27 14:57:57 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Modify patch 0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch

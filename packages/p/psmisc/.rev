@@ -698,4 +698,12 @@
   * Allow not unique mounts as well as not unique mountpoint (bsc#1170247)</comment>
     <requestid>798507</requestid>
   </revision>
+  <revision rev="75" vrev="6">
+    <srcmd5>3332db5b12190393cdc4ff1ef0960219</srcmd5>
+    <version>23.2</version>
+    <time>1607548330</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853760</requestid>
+  </revision>
 </revisionlist>
