@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec  7 09:27:38 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Do not cleanup the libzypp cache when the system has low memory,
+  incomplete cache confuses libzypp later (bsc#1179415)
+- 4.3.24
+
+-------------------------------------------------------------------
+Fri Dec  4 17:08:17 UTC 2020 - Stefan Schubert <schubi@suse.de>
+
+- Starting YAST2 Control Center if it has been set while an
+  yast2-firstboot installation workflow (bsc#1178834).
+- 4.3.23
+
+-------------------------------------------------------------------
 Thu Nov 26 19:13:34 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - correct add-on spelling (jsc#SLE-14772)
