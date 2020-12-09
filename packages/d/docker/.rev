@@ -1031,4 +1031,15 @@ delete request for docker-image-migrator was submitted in parallel.</comment>
     <user>dimstar_suse</user>
     <comment>osc copypac from project:openSUSE:Factory package:docker revision:104, using expand</comment>
   </revision>
+  <revision rev="107" vrev="6">
+    <srcmd5>d44b369bd750ee296d5a432bc313fd68</srcmd5>
+    <version>19.03.12_ce</version>
+    <time>1607548254</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a patch which makes Docker compatible with firewalld with
+  nftables backend. Backport of https://github.com/moby/libnetwork/pull/2548
+  (boo#1178801, SLE-16460)
+  * boo1178801-0001-Add-docker-interfaces-to-firewalld-docker-zone.patch</comment>
+    <requestid>851816</requestid>
+  </revision>
 </revisionlist>

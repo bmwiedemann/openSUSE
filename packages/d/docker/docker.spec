@@ -86,6 +86,8 @@ Patch402:       bsc1122469-0001-apparmor-allow-readby-and-tracedby.patch
 # SUSE-FEATURE: Add support to mirror inofficial/private registries
 #               (https://github.com/docker/docker/pull/34319)
 Patch500:       private-registry-0001-Add-private-registry-mirror-support.patch
+# SUSE-BACKPORT: Backport of https://github.com/moby/libnetwork/pull/2548. boo#1178801, SLE-16460
+Patch600:       boo1178801-0001-Add-docker-interfaces-to-firewalld-docker-zone.patch
 BuildRequires:  audit
 BuildRequires:  bash-completion
 BuildRequires:  ca-certificates
@@ -272,6 +274,7 @@ docker container runtime configuration for kubeadm
 # PATCH-SUSE: Mirror patch.
 %patch500 -p1
 %endif
+%patch600 -p1
 
 cp %{SOURCE7} .
 
