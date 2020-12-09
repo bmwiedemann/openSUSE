@@ -176,4 +176,12 @@
   * Implement setting to choose which side of the screen Raven opens on (forwarded request 850310 from gmbr3)</comment>
     <requestid>850311</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>09469b7dc9eb373bf4cb8ed6f6929024</srcmd5>
+    <version>10.5.2+5a56d6dd</version>
+    <time>1607548952</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854329</requestid>
+  </revision>
 </revisionlist>

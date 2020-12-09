@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Dec 09 15:21:08 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
+
+- Removed budgie-desktop-nemo-autostart.desktop
+- Removed nemo-instead-of-nautilus.patch: nemo no longer used 
+- Update to version 10.5.2+5a56d6dd:
+  * Fix issue with KeePass causing panel segfaults (#2072)
+  * Bump to 10.5.2
+  * Last sync of translations before release.
+  * Ensure our requirement bumps for GNOME 3.36 stack is consistent.
+  * Fix accidental whitespace adding before a namespace.
+  * Add Click Policy to Budgie Desktop Settings.
+  * Add note that Caja won't be an available override at this time.
+  * Sync translations.
+  * Rejig nemo support with desktop settings (#2064)
+  * Apply dock mode class on init (#2058)
+
+-------------------------------------------------------------------
 Mon Nov 23 20:06:02 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Update to version 10.5.1+ed8be169:

@@ -1,7 +1,7 @@
 #
 # spec file for package budgie-desktop
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013-2016 Ikey Doherty <ikey@solus-project.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,36 +15,38 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
+#
 Name:           budgie-desktop
-Version:        10.5.1+ed8be169
+Version:        10.5.2+5a56d6dd
 Release:        0
 Summary:        GTK3 Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/Other
 URL:            https://getsol.us/solus/experiences/
 Source:         %{name}-%{version}.tar.xz
-#Source1:        https://github.com/solus-project/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
-#Source2:        %{name}.keyring
-Source3:        budgie-desktop-nemo-autostart.desktop
 # PATCH-FIX-OPENSUSE: Create a clean separation between Budgie and GNOME desktops
 Patch:          desktop-override.patch
-# PATCH-FIX-OPENSUSE: Use nemo instead of nautilus for desktop icons
-Patch1:         nemo-instead-of-nautilus.patch
 BuildRequires:  intltool
-BuildRequires:  meson >= 0.41.2
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  sassc
+BuildRequires:  (pkgconfig(libmutter-6) or pkgconfig(libmutter-7))
 BuildRequires:  pkgconfig(accountsservice)
+BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(gnome-bluetooth-1.0)
 BuildRequires:  pkgconfig(gnome-desktop-3.0)
+BuildRequires:  pkgconfig(gnome-settings-daemon)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(ibus-1.0)
 BuildRequires:  pkgconfig(libgnome-menu-3.0)
+BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpeas-gtk-1.0)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libwnck-3.0)
@@ -52,24 +54,18 @@ BuildRequires:  pkgconfig(polkit-agent-1)
 BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(upower-glib)
 BuildRequires:  pkgconfig(uuid)
-BuildRequires:  pkgconfig(vapigen) >= 0.28
-BuildRequires:  (pkgconfig(libmutter-6) or pkgconfig(libmutter-7))
-BuildRequires:  pkgconfig(libnotify)
-BuildRequires:  pkgconfig(gnome-settings-daemon)
-BuildRequires:  pkgconfig(alsa)
-Requires:       typelib-1_0-PeasGtk-1_0
-Requires:       typelib-1_0-Budgie-1_0
-Requires:       ibus
+BuildRequires:  pkgconfig(vapigen)
+Requires:       budgie-screensaver
+Requires:       gnome-control-center
 Requires:       gnome-session-core
 Requires:       gnome-settings-daemon
-Requires:       gnome-control-center
-Requires:       budgie-screensaver
-Requires:       nemo
+Requires:       ibus
+Requires:       typelib-1_0-Budgie-1_0
+Requires:       typelib-1_0-PeasGtk-1_0
 Recommends:     gnome-software
 Recommends:     NetworkManager-applet
 Recommends:     gnome-backgrounds
 Recommends:     budgie-desktop-doc
-%define vala_version %(rpm -q --queryformat='%%{VERSION}' vala | sed 's/\.[0-9]*$//g')
 
 %description
 Budgie Desktop is the flagship desktop for the Solus Operating System.
@@ -134,25 +130,19 @@ Private library for Budgie desktop to link against.
 %lang_package
 
 %prep
-%setup -q
-%patch -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
-%meson -Dwith-stateless=true -Dxdg-appdir=%{_distconfdir}/xdg/autostart
+%meson -Dxdg-appdir=%{_distconfdir}/xdg/autostart
 %meson_build
 
 %install
-export LANG=en_US.UTF-8
 %meson_install
 
 # update-alternatives
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
 ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
-
-# nemo autostart
-cp %{SOURCE3} %{buildroot}%{_distconfdir}/xdg/autostart
 
 %find_lang %{name}
 
@@ -186,7 +176,6 @@ cp %{SOURCE3} %{buildroot}%{_distconfdir}/xdg/autostart
 %{_libdir}/budgie-desktop
 %{_distconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
 %{_distconfdir}/xdg/autostart/budgie-desktop-nm-applet.desktop
-%{_distconfdir}/xdg/autostart/budgie-desktop-nemo-autostart.desktop
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop
 
 %files -n libraven0
