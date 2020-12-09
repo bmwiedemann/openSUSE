@@ -7,10 +7,10 @@ build: make the build work with just shared libs
  libreiser4/Makefile.am |    1 -
  2 files changed, 7 deletions(-)
 
-Index: reiser4progs-1.2.1/configure.ac
+Index: reiser4progs-2.0.4/configure.ac
 ===================================================================
---- reiser4progs-1.2.1.orig/configure.ac
-+++ reiser4progs-1.2.1/configure.ac
+--- reiser4progs-2.0.4.orig/configure.ac
++++ reiser4progs-2.0.4/configure.ac
 @@ -70,9 +70,6 @@ libaal_config_minor_version=`echo $2 | \
  libaal_config_micro_version=`echo $2 | \
      sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\3/'`
@@ -38,10 +38,10 @@ Index: reiser4progs-1.2.1/configure.ac
  
  if test x$with_libaal != x; then
      	LIBS="-L$with_libaal/lib"
-Index: reiser4progs-1.2.1/libreiser4/Makefile.am
+Index: reiser4progs-2.0.4/libreiser4/Makefile.am
 ===================================================================
---- reiser4progs-1.2.1.orig/libreiser4/Makefile.am
-+++ reiser4progs-1.2.1/libreiser4/Makefile.am
+--- reiser4progs-2.0.4.orig/libreiser4/Makefile.am
++++ reiser4progs-2.0.4/libreiser4/Makefile.am
 @@ -30,7 +30,6 @@ libreiser4_static_la_LIBADD  = $(top_bui
  
  libreiser4_static_la_SOURCES = $(libreiser4_sources)
@@ -49,4 +49,4 @@ Index: reiser4progs-1.2.1/libreiser4/Makefile.am
 -libreiser4_static_la_LDFLAGS = -static
  
  if ENABLE_MINIMAL
- libreiser4_minimal_la_LIBADD   = $(top_builddir)/libaux/libaux-minimal.la \
+ libreiser4_minimal_la_LIBADD   = $(top_builddir)/libmisc/libmisc-minimal.la \
