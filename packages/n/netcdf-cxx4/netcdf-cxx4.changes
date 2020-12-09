@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  9 08:38:32 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Change 'Requires:' to netcdf to %requires_eq to match the exact
+  version of hdf5 in the dependency. This should take care of
+  HPC packages ignoring proper ABI versioning (boo#1179521).
+
+-------------------------------------------------------------------
 Fri Sep 11 06:12:00 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Add build support for gcc8/9/10 to HPC build (bsc#1174439). 

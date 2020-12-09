@@ -134,7 +134,7 @@ Group:          System/Libraries
 Provides:       libnetcdf%{sover}:%{p_libdir}/libnetcdf_c++.so.%{sover}
 %else
 %hpc_requires
-Requires:       libnetcdf-%{compiler_family}%{?c_f_ver}-hpc
+%{requires_eq libnetcdf-%{compiler_family}%{?c_f_ver}-hpc}
 %endif
 
 %description -n %{libname -s %{sover} -l %_ver}
@@ -152,7 +152,7 @@ Group:          Development/Libraries/C and C++
 %if %{without hpc}
 Provides:       libnetcdf-devel:%{_libdir}/libnetcdf_c++.so
 %else
-Requires:       netcdf-%{compiler_family}%{?c_f_ver}-hpc-devel
+%{requires_eq netcdf-%{compiler_family}%{?c_f_ver}-hpc-devel}
 %endif
 Requires:       %{libname -s %{sover} -l %_ver} = %{version}
 %{?with_hpc:%hpc_requires_devel}

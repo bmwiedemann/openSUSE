@@ -116,4 +116,12 @@
     <comment>- Add build support for gcc8/9/10 to HPC build (bsc#1174439). (forwarded request 833680 from eeich)</comment>
     <requestid>833708</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>809ed47d25ccac83f286ed7bf507e843</srcmd5>
+    <version>4.3.1</version>
+    <time>1607548945</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854316</requestid>
+  </revision>
 </revisionlist>
