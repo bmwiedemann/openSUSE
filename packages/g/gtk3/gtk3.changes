@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Dec  7 20:37:56 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.24.24:
+  + GtkColorChooser: Update the default color palette.
+  + GtkFontChooser: Fix family-only mode to return regular style.
+  + GtkTreeView: Don't set focus-on-click for header buttons.
+  + Accessibility:
+    - Implement scrollSubstringTo.
+    - Add a11y support to GtkPlug/GtkSocket.
+  + Printing: Allow the lpr backend to print pdf and ps files.
+  + Theme:
+    - Update gesture graphics.
+    - Update HighContrast css.
+  + Wayland: Support the primary-selection-unstable-v1 protocol.
+  + X11: Fix a crash with parent-relative backgrounds.
+  + Broadway: Set modifier state of scroll events.
+  + Build: Fix pc file generation on NixOS.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Nov 24 15:58:47 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.24.23+118:
