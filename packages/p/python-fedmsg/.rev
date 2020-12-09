@@ -23,4 +23,19 @@
     <comment></comment>
     <requestid>809381</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>012fd2d14869c3d7d9660e91840ffce4</srcmd5>
+    <version>1.1.2</version>
+    <time>1607548934</time>
+    <user>dimstar_suse</user>
+    <comment>- Use PyPI source instead of upstream tagged tarball
+- Fix missing Recommends python-moksha.hub to be python-moksha-hub
+- Remove unpackaged and deprecated dependency m2ext
+- Add missing build dependencies M2Crypto, cryptography, service_identity
+- Add tests subpackage needed by fedmsg dependencies
+- Update to v1.1.2
+  * Fix a DOS bug when consuming non-dict JSON messages
+</comment>
+    <requestid>854265</requestid>
+  </revision>
 </revisionlist>

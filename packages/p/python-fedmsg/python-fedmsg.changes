@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 22 16:30:31 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Use PyPI source instead of upstream tagged tarball
+- Fix missing Recommends python-moksha.hub to be python-moksha-hub
+- Remove unpackaged and deprecated dependency m2ext
+- Add missing build dependencies M2Crypto, cryptography, service_identity
+- Add tests subpackage needed by fedmsg dependencies
+- Update to v1.1.2
+  * Fix a DOS bug when consuming non-dict JSON messages
+
+-------------------------------------------------------------------
 Tue May 26 06:34:13 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
