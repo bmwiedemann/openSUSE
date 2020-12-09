@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec  5 19:09:59 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Use python-rpm-macros to provide python3X-gpg for all present 
+  python3 flavors -- gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Tue Nov 17 21:44:17 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - gpgme 1.15.0:

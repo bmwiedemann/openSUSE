@@ -28,6 +28,7 @@
 %bcond_with python3
 %bcond_without qt
 %endif
+%{!?python_module:%define python_module() python-%{**} python3-{**}}
 Name:           gpgme%{psuffix}
 Version:        1.15.0
 Release:        0
@@ -48,18 +49,25 @@ BuildRequires:  libassuan-devel >= 2.4.2
 BuildRequires:  libgpg-error-devel >= 1.36
 BuildRequires:  pkgconfig
 BuildRequires:  swig
+%if %{with python2} || %{with python3}
+BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module devel}
+%endif
 Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
-%if %{with python2}
-BuildRequires:  python2-devel >= 2.7
-%endif
-%if %{with python3}
-BuildRequires:  python3-devel >= 3.4
-%endif
 %if %{with qt}
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Test)
 %endif
+%if 0%{?python38_version_nodots}
+# if python multiflavor is in place yet, use it to generate subpackages
+%define python_subpackage_only 1
+%python_subpackages
+%else
+%define python_sitearch %python3_sitearch
+%define python_files() -n python3-%{**}
+%endif
+
 
 %description
 GnuPG Made Easy (GPGME) is a library designed to make access to GnuPG
@@ -128,6 +136,20 @@ management.
 This subpackage contains the headers needed for building applications
 making use of libgpgmepp.
 
+%if 0%{?python_subpackage_only}
+%package -n python-gpg
+Summary:        Python %{python_version} bindings for GPGME, a library for accessing GnuPG
+Group:          Development/Languages/Python
+
+%description -n python-gpg
+GnuPG Made Easy (GPGME) is a library designed to make access to GnuPG
+easier for applications. It provides a high-level crypto API for
+encryption, decryption, signing, signature verification, and key
+management.
+
+This package contains the bindings to use the library from Python %{python_version} applications.
+
+%else
 %package -n python2-gpg
 Summary:        Python 2 bindings for GPGME, a library for accessing GnuPG
 Group:          Development/Languages/Python
@@ -153,6 +175,7 @@ encryption, decryption, signing, signature verification, and key
 management.
 
 This package contains the bindings to use the library from Python 3 applications.
+%endif
 
 %package -n libqgpgme7
 Summary:        Programmatic Qt library interface to GnuPG
@@ -278,14 +301,14 @@ rm -r %{buildroot}%{_libdir}/pkgconfig/gpgme*
 %{_libdir}/cmake/Gpgmepp/GpgmeppConfig*.cmake
 %endif
 
-%if %{with python2}
+%if %{with python2} && ! 0%{?python_subpackage_only}
 %files -n python2-gpg
 %{python_sitearch}/gpg*
 %endif
 
-%if %{with python3}
-%files -n python3-gpg
-%{python3_sitearch}/gpg*
+%if %{with python3} || ( 0%{?python_subpackage_only} && %{with python2} )
+%files %{python_files gpg}
+%{python_sitearch}/gpg*
 %endif
 
 %if %{with qt}
