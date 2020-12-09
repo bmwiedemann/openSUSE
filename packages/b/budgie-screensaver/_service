@@ -1,0 +1,14 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/getsolus/budgie-screensaver.git</param>
+    <param name="revision">8aa17131cdfb327ca8b1f73273665a9d9a6cf98d</param>
+    <param name="versionformat">%cd</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

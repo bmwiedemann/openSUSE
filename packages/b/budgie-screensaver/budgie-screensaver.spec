@@ -16,8 +16,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           budgie-screensaver
-Version:        20190923
+Version:        20201110
 Release:        0
 Summary:        Fork of GNOME Screensaver for Budgie 10
 License:        GPL-2.0-or-later
@@ -27,29 +28,28 @@ Source:         %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE remove-old-automake-macros.patch
 Patch:          remove-old-automake-macros.patch
 # PATCH-FEATURE-OPENSUSE gnome-screensaver-suse-pam.patch
-Patch1:          gnome-screensaver-suse-pam.patch
+Patch1:         gnome-screensaver-suse-pam.patch
 # PATCH-FIX-UPSTREAM gnome-screensaver-helper.patch bgo#640647 fcrozat@novell.com -- Put back helper authentication, removed by upstream
 Patch2:         gnome-screensaver-helper.patch
 # PATCH-FEATURE-OPENSUSE gnome-screensaver-xvkbd-on-lock.patch rodrigo@novell.com -- Run xvkbd when locking the screen
 Patch3:         gnome-screensaver-xvkbd-on-lock.patch
 # PATCH-FIX-UPSTREAM gnome-screensaver-multihead-unlock.patch bnc#444157 bgo#455118 rodrigo@novell.com
-Patch4:        gnome-screensaver-multihead-unlock.patch
-Patch5:         gnome-desktop-3.36.patch
+Patch4:         gnome-screensaver-multihead-unlock.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  intltool
-BuildRequires:  libtool
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(gnome-desktop-3.0)
-BuildRequires:  pkgconfig(gsettings-desktop-schemas)
-BuildRequires:  pam-devel
-BuildRequires:  pkgconfig(libgnomekbdui)
 BuildRequires:  libXScrnSaver-devel
 BuildRequires:  libXext-devel
 BuildRequires:  libXxf86vm-devel
+BuildRequires:  libtool
+BuildRequires:  pam-devel
+BuildRequires:  pkgconfig(dbus-glib-1)
+BuildRequires:  pkgconfig(gnome-desktop-3.0)
+BuildRequires:  pkgconfig(gsettings-desktop-schemas)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(libgnomekbdui)
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(x11)
 Requires:       /sbin/unix2_chkpwd
 
 %lang_package
@@ -64,9 +64,6 @@ Fork of GNOME Screensaver for Budgie 10
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-if pkg-config --atleast-version 3.36 gnome-desktop-3.0; then
-%patch5 -p1
-fi
 
 %build
 touch ./config.rpath

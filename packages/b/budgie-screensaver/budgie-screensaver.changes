@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  9 15:13:32 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
+
+- Removed gnome-desktop-3.36.patch: contained in upstream
+- Update to version 20201110
+  * Updated for new gnome versions
+
+-------------------------------------------------------------------
 Sat Sep 19 16:08:09 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Use a better format for testing gnome versions
