@@ -7,4 +7,12 @@
     <comment>- New Python Azure ADK component package</comment>
     <requestid>735782</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>396e800285cb8af2d6379d528d7ff572</srcmd5>
+    <version>0.2.0rc2</version>
+    <time>1607548579</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853885</requestid>
+  </revision>
 </revisionlist>
