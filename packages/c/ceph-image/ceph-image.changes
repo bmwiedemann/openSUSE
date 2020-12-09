@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 21 08:48:14 UTC 2020 - Tim Serong <tserong@suse.com>
+
+- Add patterns-server-enterprise-fips to SES7 (bsc#1176340)
+
+-------------------------------------------------------------------
 Thu Mar 12 12:34:16 UTC 2020 - Kristoffer Gronlund <kgronlund@suse.com>
 
 - Set ceph=True label (SES-1589)

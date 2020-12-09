@@ -33,6 +33,9 @@
     <package>
       <name>patterns-ses-ceph_base</name>
     </package>
+    <package>
+      <name>patterns-server-enterprise-fips</name>
+    </package>
   </packages_image>
 
 </param>
