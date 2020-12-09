@@ -700,4 +700,12 @@
     /etc/X11/xinit/xinitrc (reported by aschnell @SUSE)</comment>
     <requestid>850782</requestid>
   </revision>
+  <revision rev="74" vrev="9">
+    <srcmd5>7c06e1da51337c7f1db2a9acc96075cd</srcmd5>
+    <version>1.10.1</version>
+    <time>1607548301</time>
+    <user>dimstar_suse</user>
+    <comment>- x11vnc wrapper script: converted to python3 (boo#1179592)</comment>
+    <requestid>853664</requestid>
+  </revision>
 </revisionlist>
