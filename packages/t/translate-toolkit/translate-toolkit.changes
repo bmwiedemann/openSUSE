@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Dec  6 15:12:39 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 3.2.0
+   * Fixed bugs in YAML, Android and JSON formats
+   * Dropped support for Python 3.5
+- refresh versionend_executables.patch
+- Fix name definition of -devel-doc package because of stricter
+  python-rpm-macros %python_subpackages requirement
+- move html docs in common file tree to -doc package in order to 
+  avoid conflicts for multiple python flavor packages 
+  gh#openSUSE/python-rpm-macros#66
+- replace my_install_alternatives by python_install_alternative
+  * fix manpages alternatives install
+
+-------------------------------------------------------------------
 Fri Oct 16 08:39:10 UTC 2020 - Matthias Fehring <buschmann23@opensuse.org>
 
 - Update to 3.1.1:

@@ -27,10 +27,22 @@
 %define modname translate-toolkit
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define binaries pocompile build_firefox.sh build_tmdb buildxpi.py csv2po csv2tbx flatxml2po get_moz_enUS.py html2po ical2po idml2po ini2po json2po junitmsgfmt moz2po mozlang2po odf2xliff oo2po oo2xliff php2po phppo2pypo po2csv po2flatxml po2html po2ical po2idml po2ini po2json po2moz po2mozlang po2oo po2php po2prop po2rc po2resx po2sub po2symb po2tiki po2tmx po2ts po2txt po2web2py po2wordfast po2xliff po2yaml poclean pocommentclean pocompendium poconflicts pocount podebug pofilter pogrep pomerge pomigrate2 popuretext poreencode porestructure posegment posplit poswap pot2po poterminology pretranslate prop2po pydiff pypo2phppo rc2po resx2po sub2po symb2po tbx2po tiki2po tmserver ts2po txt2po web2py2po xliff2odf xliff2oo xliff2po yaml2po
-%define manpages pocompile build_firefox.sh csv2po csv2tbx flatxml2po html2po idml2po ini2po json2po junitmsgfmt moz2po mozlang2po odf2xliff oo2po oo2xliff phppo2pypo po2csv po2flatxml po2html po2idml po2ini po2json po2moz po2mozlang po2oo po2prop po2rc po2resx po2sub po2symb po2tiki po2tmx po2ts po2txt po2web2py po2wordfast po2xliff poclean poconflicts podebug pofilter pogrep pomerge porestructure posegment poswap pot2po poterminology pretranslate prop2po pypo2phppo rc2po resx2po sub2po symb2po tbx2po tiki2po translatetoolkit ts2po txt2po web2py2po xliff2odf xliff2oo xliff2po
+%define binaries_and_manpages %{shrink:\
+    poclean pocompile poconflicts podebug pofilter pogrep pomerge porestructure posegment poswap poterminology \
+    build_firefox.sh junitmsgfmt pretranslate \
+    csv2po csv2tbx flatxml2po html2po ical2po idml2po ini2po json2po \
+    moz2po mozlang2po odf2xliff oo2po oo2xliff php2po phppo2pypo \
+    po2csv po2flatxml po2html po2ical po2idml po2ini po2json po2moz po2mozlang po2oo \
+    po2php po2prop po2rc po2resx po2sub po2symb po2tiki po2tmx po2ts po2txt po2web2py \
+    po2wordfast po2xliff po2yaml pot2po prop2po pypo2phppo rc2po resx2po sub2po symb2po \
+    tbx2po tiki2po ts2po txt2po web2py2po xliff2odf xliff2oo xliff2po yaml2po}
+%define binaries %{shrink: %binaries_and_manpages\
+    pocommentclean pocompendium pocount pomigrate2 popuretext poreencode posplit \
+    build_tmdb buildxpi.py get_moz_enUS.py pydiff tmserver}
+%define manpages translatetoolkit %binaries_and_manpages
+
 Name:           translate-toolkit%{psuffix}
-Version:        3.1.1
+Version:        3.2.0
 Release:        0
 Summary:        Tools and API to assist with translation and software localization
 License:        GPL-2.0-or-later
@@ -67,6 +79,7 @@ Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 # The following are for the full experience of translate-toolkit
+Recommends:     %{name}-doc
 Recommends:     gaupol
 Recommends:     iso-codes
 Recommends:     python-Levenshtein >= 0.12
@@ -114,14 +127,23 @@ these formats.
 Also part of the Toolkit are Python programs to create word counts, merge
 translations and perform various checks on translation files.
 
-%package devel-doc
-Summary:        Tools and API to assist with translation and software localization
+%package -n %{name}-doc
+Summary:        Tools and API to assist with translation and software localization -- HTML docs
 Requires:       %{name} = %{version}
+BuildArch:      noarch
+
+%description -n %{name}-doc
+The %{name}-doc package contains Translate Toolkit documentation in HTML format.
+
+%package -n %{name}-devel-doc
+Summary:        Tools and API to assist with translation and software localization -- API docs
+Requires:       %{name} = %{version}
+Requires:       %{name}-doc = %{version}
 Provides:       %{name}-devel = %{version}
 Obsoletes:      %{name}-devel < %{version}
 BuildArch:      noarch
 
-%description devel-doc
+%description -n %{name}-devel-doc
 The %{name}-devel-doc package contains Translate Toolkit API documentation for developers wishing to build new tools for the
 toolkit or to use the libraries in other localization tools.
 
@@ -157,21 +179,15 @@ popd
 # create manpages
 mkdir -p %{buildroot}%{_mandir}/man1
 for program in %{buildroot}%{_bindir}/*; do
-    case $(basename $program) in
-      pocompendium|poen|pomigrate2|popuretext|poreencode|posplit|pocount|poglossary|lookupclient.py|tmserver|build_tmdb)
-        ;;
-      *)
-        MPAGE="%{buildroot}%{_mandir}/man1/$(basename $program).1"
-        LC_ALL=C PYTHONPATH=. $program --manpage > "$MPAGE" || rm -f "$MPAGE"
-        ;;
-    esac
+    MPAGE="%{buildroot}%{_mandir}/man1/$(basename $program).1"
+    LC_ALL=C PYTHONPATH=. $program --manpage > "$MPAGE" || rm -f "$MPAGE"
 done
 install -m 644 docs/_build/man/* %{buildroot}%{_mandir}/man1/
 
-# move documentation files to datadir
-%{python_expand install -d -m 755 %{buildroot}%{_defaultdocdir}/%{modname}
-mv %{buildroot}%{$python_sitelib}/translate/docs/_build/html %{buildroot}%{_defaultdocdir}/%{modname}
-rm -rf %{buildroot}%{$python_sitelib}/translate/docs
+# move documentation files to datadir, use default flavor version for common
+install -d -m 755 %{buildroot}%{_defaultdocdir}/%{modname}
+mv %{buildroot}%{python_sitelib}/translate/docs/_build/html %{buildroot}%{_defaultdocdir}/%{modname}
+%{python_expand rm -rf %{buildroot}%{$python_sitelib}/translate/docs
 rm -rf %{buildroot}home/abuild/.local/lib/python%{$python_version}/site-packages/
 }
 
@@ -191,65 +207,31 @@ done
 
 %check
 %if %{with test}
-export PYTHONDONTWRITEBYTECODE=1
 %pytest
 %endif
 
 %post
-
-%define my_install_alternatives() %{lua:\
-    function file_exists(path) \
-    	local f = io.open(path) \
-    	if f == nil then return false \
-    	else f:close() return true  \
-    	end \
-    end \
-    local t={} \
-    local manpath = "" \
-    for str in string.gmatch(rpm.expand("%**"), "([^%s]+)") do \
-            table.insert(t, str) \
-    end \
-    local bindir = rpm.expand("%{_bindir}") \
-    local mandir = rpm.expand("%{_mandir}") .. "/man1" \
-    local ver_ext = "-" .. t[1] \
-    local man_ext = ".1" .. rpm.expand("%{?ext_man}") \
-    local man_ext_ver = ver_ext .. man_ext \
-    \
-    local ua_cmd = "update-alternatives --install " .. mandir .. "/translatetoolkit" .. man_ext .. " translatetoolkit.1 " .. \
-        mandir .. "/translatetoolkit" .. man_ext_ver .. " 20 \\\\\\n" \
-    local elems = table.pack(table.unpack(t, 2)) \
-    for arg, name in ipairs(elems) do \
-        ua_cmd = ua_cmd .. " --slave " .. bindir .. "/" .. name .. " " .. name .. " " .. bindir .. "/" .. name .. ver_ext .. " \\\\\\n" \
-        manpath = mandir .. "/" .. name .. man_ext_ver \
-        if file_exists(manpath) then \
-            ua_cmd = ua_cmd .. " --slave " .. mandir .. "/" .. name .. man_ext .. " " .. name .. ".1 " .. manpath .. " \\\\\\n" \
-        end \
-    end\
-    -- we need to remove the last backslash and EOL \
-    print(ua_cmd:sub(1, -3)) \
-}
-%my_install_alternatives %{_rec_macro_helper}%{lua:expand_macro("version")} %{binaries}
+%python_install_alternative %{lua: for m in string.gmatch(rpm.expand("%manpages"),"%S+") do print(m .. ".1 ") end} %binaries
 
 %postun
-if [ ! -f %{_mandir}/man1/translatetoolkit-%{_rec_macro_helper}%{lua:expand_macro("version")}.1%{?ext_man} ] ; then
-   update-alternatives --remove translatetoolkit %{_mandir}/man1/translatetoolkit-%{_rec_macro_helper}%{lua:expand_macro("version")}.1%{?ext_man}
-fi
+%python_uninstall_alternative translatetoolkit
 
 %if !%{with test}
 %files %{python_files}
-%dir %{_defaultdocdir}/%{modname}
-%{_defaultdocdir}/%{modname}/html/
-%exclude %{_defaultdocdir}/%{modname}/html/api
-%exclude %{_defaultdocdir}/%{modname}/html/_sources
 %license COPYING
 %doc README.rst
-%ghost %{_sysconfdir}/alternatives/*
-%{_bindir}/*
-%{_mandir}/man1/*
+%{lua: for b in string.gmatch(rpm.expand("%binaries"),"%S+") do print(rpm.expand("%python_alternative %{_bindir}/" .. b) .. "\n") end}
+%{lua: for m in string.gmatch(rpm.expand("%manpages"),"%S+") do print(rpm.expand("%python_alternative %{_mandir}/man1/" .. m .. ".1") .. "\n") end}
 %{python_sitelib}/translate
 %{python_sitelib}/translate_toolkit-%{version}-*.egg-info
 
-%files devel-doc
+%files -n %{name}-doc
+%dir %{_defaultdocdir}/%{modname}
+%doc %{_defaultdocdir}/%{modname}/html/
+%exclude %{_defaultdocdir}/%{modname}/html/api
+%exclude %{_defaultdocdir}/%{modname}/html/_sources
+
+%files -n %{name}-devel-doc
 %doc %{_defaultdocdir}/%{modname}/html/api
 %doc %{_defaultdocdir}/%{modname}/html/_sources
 %endif

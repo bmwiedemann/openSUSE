@@ -1,6 +1,16 @@
---- a/tests/xliff_conformance/test_xliff_conformance.py
-+++ b/tests/xliff_conformance/test_xliff_conformance.py
-@@ -48,7 +48,7 @@ def find_files(base, check_ext):
+Index: translate-toolkit-3.2.0/tests/xliff_conformance/test_xliff_conformance.py
+===================================================================
+--- translate-toolkit-3.2.0.orig/tests/xliff_conformance/test_xliff_conformance.py
++++ translate-toolkit-3.2.0/tests/xliff_conformance/test_xliff_conformance.py
+@@ -16,6 +16,7 @@
+ # You should have received a copy of the GNU General Public License
+ # along with this program; if not, see <http://www.gnu.org/licenses/>.
+ 
++import sys
+ import os
+ import os.path as path
+ from subprocess import call
+@@ -46,7 +47,7 @@ def find_files(base, check_ext):
  
  
  def test_open_office_to_xliff():
@@ -9,7 +19,7 @@
      for filepath in find_files('fr', '.xlf'):
          assert xmllint(filepath)
      cleardir('fr')
-@@ -56,7 +56,7 @@ def test_open_office_to_xliff():
+@@ -54,7 +55,7 @@ def test_open_office_to_xliff():
  
  def test_po_to_xliff():
      OUTPUT = 'af-pootle.xlf'
