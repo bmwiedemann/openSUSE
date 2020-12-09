@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  9 08:29:38 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Change 'Requires:' to hdf5 to %requires_eq to match the exact
+  version of hdf5 in the dependency. This should take care of
+  HPC packages ignoring proper ABI versioning (boo#1179521).
+
+-------------------------------------------------------------------
 Fri Nov  6 13:44:53 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Update to version 4.7.4.

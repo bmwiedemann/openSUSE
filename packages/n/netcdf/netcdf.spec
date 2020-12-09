@@ -470,12 +470,12 @@ Obsoletes:      %{libname}-4 < %{version}
 Obsoletes:      %{libname} < %{version}
 %if %{without hpc}
 # To avoid unresolvable errors due to multiple providers of the library
-Requires:       libhdf5%{p_suffix}
-Requires:       libhdf5_hl%{p_suffix}
+%{requires_eq libhdf5%{p_suffix}}
+%{requires_eq libhdf5_hl%{p_suffix}}
 %else
 %{hpc_requires}
-Requires:       libhdf5%{hpc_package_name_tail} >= 1.8.8
-Requires:       libhdf5_hl%{hpc_package_name_tail} >= 1.8.8
+%{requires_eq libhdf5%{hpc_package_name_tail}}
+%{requires_eq libhdf5_hl%{hpc_package_name_tail}}
 %endif
 
 %description -n %{libname -s %{sonum}}
@@ -534,11 +534,11 @@ Requires:       libcurl-devel >= 7.18.0
 Requires:       pkgconfig
 Requires:       zlib-devel >= 1.2.5
 %if %{without hpc}
-Requires:       hdf5%{p_suffix}-devel >= 1.8.8
+%{requires_eq hdf5%{p_suffix}-devel}
 %{?with_mpi:Requires:       %{mpi_flavor}%{?mpi_ext}-devel}
 %else
 %{hpc_requires_devel}
-Requires:       hdf5%{hpc_package_name_tail}-devel >= 1.8.8
+%{requires_eq hdf5%{hpc_package_name_tail}-devel}
 %endif
 
 %description devel
@@ -554,7 +554,7 @@ and sharing of array-oriented scientific data.
 Summary:        Static development files for %{name}
 Group:          Development/Libraries/C and C++
 %if %{without hpc}
-Requires:       hdf5%{p_suffix}-devel >= 1.8.8
+%{requires_eq hdf5%{p_suffix}-devel}
 %else
 Requires:       %{name}-devel = %{version}
 %endif

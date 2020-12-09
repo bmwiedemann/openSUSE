@@ -532,4 +532,12 @@ Use SPDX- proprietary prefix until this license is accepted upstream by spdx.org
   Fix intermittend issue found by unit tests. (forwarded request 851835 from eeich)</comment>
     <requestid>851838</requestid>
   </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>9fa1d96d53eaa3e34a25bec9c347cbd3</srcmd5>
+    <version>4.7.4</version>
+    <time>1607548947</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854317</requestid>
+  </revision>
 </revisionlist>
