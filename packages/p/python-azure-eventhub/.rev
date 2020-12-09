@@ -34,4 +34,12 @@
     CHANGELOG.md file provided with this package (forwarded request 839787 from glaubitz)</comment>
     <requestid>839849</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>cf092f1fe2422a7dd03622344c7fde48</srcmd5>
+    <version>5.2.0</version>
+    <time>1607548532</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853870</requestid>
+  </revision>
 </revisionlist>
