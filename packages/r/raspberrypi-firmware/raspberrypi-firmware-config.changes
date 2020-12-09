@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  9 15:45:44 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Update to 919aee0ed7 (2020-12-08):
+  * firmware: Switch DA9121 PMIC to PWM mode when ARM > 600 MHz
+  * firmware: xhci: Don't reset BCM2711 XHCI from filesys in start.elf
+  * firmware: platform: Avoid vco issue with low arm_freq_min on Pi0-3
+
+-------------------------------------------------------------------
 Thu Oct 29 16:50:40 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Remove vl805-firmware-loader overlay as it now reached upstream.
