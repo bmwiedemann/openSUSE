@@ -129,4 +129,12 @@ original file location. Otherwise, the link contains absolute paths which
 traverse into the build machine tree. (forwarded request 852418 from nsaenzjulienne)</comment>
     <requestid>852420</requestid>
   </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>69e16afb3b74d4bdee7bdefe879a22b6</srcmd5>
+    <version>20180314</version>
+    <time>1607548282</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853554</requestid>
+  </revision>
 </revisionlist>

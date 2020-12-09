@@ -16,6 +16,10 @@
 #
 
 
+%if !%{defined _firmwaredir}
+%define _firmwaredir /lib/firmware
+%endif
+
 Name:           bcm43xx-firmware
 Version:        20180314
 Release:        0
@@ -72,34 +76,34 @@ cp %{SOURCE0} %{SOURCE3} .
 
 %install
 # Used by brcmfmac
-mkdir -p %{buildroot}/lib/firmware/brcm
-install -c -m 0644 %{SOURCE291} %{buildroot}/lib/firmware/brcm/
-install -c -m 0644 %{SOURCE301} %{buildroot}/lib/firmware/brcm/
-install -c -m 0644 %{SOURCE391} %{buildroot}/lib/firmware/brcm/
-install -c -m 0644 %{SOURCE3622} %{buildroot}/lib/firmware/brcm/
-install -c -m 0644 %{SOURCE4356} %{buildroot}/lib/firmware/brcm/
-install -c -m 0644 %{SOURCE4561} %{buildroot}/lib/firmware/brcm/
-install -c -m 0644 %{SOURCE4562} %{buildroot}/lib/firmware/brcm/
-install -c -m 0644 %{SOURCE4563} %{buildroot}/lib/firmware/brcm/
-ln -s brcmfmac43456-sdio.txt %{buildroot}/lib/firmware/brcm/brcmfmac43456-sdio.raspberrypi,400.txt
-ln -s brcmfmac43456-sdio.txt %{buildroot}/lib/firmware/brcm/brcmfmac43456-sdio.raspberrypi,4-compute-module.txt
+mkdir -p %{buildroot}%{_firmwaredir}/brcm
+install -c -m 0644 %{SOURCE291} %{buildroot}%{_firmwaredir}/brcm/
+install -c -m 0644 %{SOURCE301} %{buildroot}%{_firmwaredir}/brcm/
+install -c -m 0644 %{SOURCE391} %{buildroot}%{_firmwaredir}/brcm/
+install -c -m 0644 %{SOURCE3622} %{buildroot}%{_firmwaredir}/brcm/
+install -c -m 0644 %{SOURCE4356} %{buildroot}%{_firmwaredir}/brcm/
+install -c -m 0644 %{SOURCE4561} %{buildroot}%{_firmwaredir}/brcm/
+install -c -m 0644 %{SOURCE4562} %{buildroot}%{_firmwaredir}/brcm/
+install -c -m 0644 %{SOURCE4563} %{buildroot}%{_firmwaredir}/brcm/
+ln -s brcmfmac43456-sdio.txt %{buildroot}%{_firmwaredir}/brcm/brcmfmac43456-sdio.raspberrypi,400.txt
+ln -s brcmfmac43456-sdio.txt %{buildroot}%{_firmwaredir}/brcm/brcmfmac43456-sdio.raspberrypi,4-compute-module.txt
 # Used by bluez (hciattach)
-install -c -m 0644 %{SOURCE4309} %{buildroot}/lib/firmware/
-install -c -m 0644 %{SOURCE4559} %{buildroot}/lib/firmware/
+install -c -m 0644 %{SOURCE4309} %{buildroot}%{_firmwaredir}/
+install -c -m 0644 %{SOURCE4559} %{buildroot}%{_firmwaredir}/
 
 %files
 %license LICENCE.broadcom_bcm43xx LICENCE.cypress
-/lib/firmware/BCM43430A1.hcd
-/lib/firmware/BCM4345C0.hcd
-/lib/firmware/brcm/brcmfmac4329-sdio.solidrun,cubox-i-dl.txt
-/lib/firmware/brcm/brcmfmac4330-sdio.solidrun,cubox-i-q.txt
-/lib/firmware/brcm/brcmfmac4339-sdio.tronsmart,vega-s95-telos.txt
-/lib/firmware/brcm/brcmfmac43362-sdio.sinovoip,bpi-m2.txt
-/lib/firmware/brcm/brcmfmac4356-pcie.txt
-/lib/firmware/brcm/brcmfmac43456-sdio.bin
-/lib/firmware/brcm/brcmfmac43456-sdio.clm_blob
-/lib/firmware/brcm/brcmfmac43456-sdio.txt
-/lib/firmware/brcm/brcmfmac43456-sdio.raspberrypi,400.txt
-/lib/firmware/brcm/brcmfmac43456-sdio.raspberrypi,4-compute-module.txt
+%{_firmwaredir}/BCM43430A1.hcd
+%{_firmwaredir}/BCM4345C0.hcd
+%{_firmwaredir}/brcm/brcmfmac4329-sdio.solidrun,cubox-i-dl.txt
+%{_firmwaredir}/brcm/brcmfmac4330-sdio.solidrun,cubox-i-q.txt
+%{_firmwaredir}/brcm/brcmfmac4339-sdio.tronsmart,vega-s95-telos.txt
+%{_firmwaredir}/brcm/brcmfmac43362-sdio.sinovoip,bpi-m2.txt
+%{_firmwaredir}/brcm/brcmfmac4356-pcie.txt
+%{_firmwaredir}/brcm/brcmfmac43456-sdio.bin
+%{_firmwaredir}/brcm/brcmfmac43456-sdio.clm_blob
+%{_firmwaredir}/brcm/brcmfmac43456-sdio.txt
+%{_firmwaredir}/brcm/brcmfmac43456-sdio.raspberrypi,400.txt
+%{_firmwaredir}/brcm/brcmfmac43456-sdio.raspberrypi,4-compute-module.txt
 
 %changelog

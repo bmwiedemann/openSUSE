@@ -14,6 +14,11 @@ Fri Nov 27 16:16:32 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@s
   * brcmfmac43456-sdio.txt
 
 -------------------------------------------------------------------
+Mon Oct 19 12:54:10 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- use %_firmwaredir
+
+-------------------------------------------------------------------
 Tue Sep 15 07:23:29 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Update bluetooth firmware to address Sweyntooth and Spectra issues (bsc#1176631):
