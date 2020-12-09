@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-logzero
-Version:        1.6.2
+Version:        1.6.3
 Release:        0
 Summary:        A logging module for Python
 License:        MIT
