@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  7 12:01:22 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- x11vnc wrapper script: converted to python3 (boo#1179592)
+
+-------------------------------------------------------------------
 Wed Nov 25 16:28:09 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_tigervnc_update_default_vncxstartup.patch

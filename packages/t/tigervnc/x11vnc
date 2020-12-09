@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 
 # This is wrapper for x0vncserver that translate most common x11vnc arguments
 # to x0vncserver's arguments
