@@ -17,6 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%if 0%{?suse_version} >= 1500
+%define skip_python2 1
+%endif
 Name:           python-azure-communication-chat
 Version:        1.0.0b3
 Release:        0
