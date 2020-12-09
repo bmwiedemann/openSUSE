@@ -1744,4 +1744,41 @@
 - resources: don't check host-specific conditions in attribute validate (forwarded request 842719 from yan_gao)</comment>
     <requestid>842721</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>a2c7fd7b1ebd54f376c6f0aa7b41110a</srcmd5>
+    <version>2.0.5+20201202.ba59be712</version>
+    <time>1607548276</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.5+20201202.ba59be712 (Pacemaker-2.0.5):
+- xml: Revert to correct schema for alerts-3.5
+- tools: match calloc() with free() in crm_resource
+- tools: &quot;Connectivity is lost&quot; may not be displayed even if the ping communication is lost.
+
+- Update to version 2.0.4+20201116.ae2c04b54:
+- tools: make cibsecret use bash
+- fencer: allow peer configuration requests
+
+- Update to version 2.0.4+20201027.31aa4f551:
+- pacemakerd: handle shutdown requests better
+- daemons,libcrmcommon: send status code with client acks
+- fencer: restrict certain IPC requests to privileged users (CVE-2020-25654, bsc#1177916)
+- pacemakerd: ignore shutdown requests from unprivileged users (CVE-2020-25654, bsc#1177916)
+- pacemakerd: check client for NULL before using it
+- executor: restrict certain IPC requests to Pacemaker daemons (CVE-2020-25654, bsc#1177916)
+- executor: return appropriate error code when no remote support
+- executor: mark controller connections to pacemaker-remoted as privileged
+- executor: show CRM_OP_REGISTER rc in debug message
+
+- Update to version 2.0.4+20201022.354625c62:
+- tools: revert some changes in crm_resource NULL checks
+- xml: Mark new crm_mon attributes as optional.
+- scheduler: fix build when DEFAULT_CONCURRENT_FENCING_TRUE is set
+
+- Update to version 2.0.4+20201019.878658661:
+- cib: create reply when needed for diff
+- cib: only build reply when needed
+
+- Update to version 2.0.4+20201014.b0ef36d82: (forwarded request 853533 from yan_gao)</comment>
+    <requestid>853534</requestid>
+  </revision>
 </revisionlist>

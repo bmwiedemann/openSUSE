@@ -1,4 +1,167 @@
 -------------------------------------------------------------------
+Sun Dec 06 12:32:29 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20201202.ba59be712 (Pacemaker-2.0.5):
+- xml: Revert to correct schema for alerts-3.5
+- tools: match calloc() with free() in crm_resource
+- tools: "Connectivity is lost" may not be displayed even if the ping communication is lost.
+
+-------------------------------------------------------------------
+Sun Dec 06 12:22:38 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.4+20201116.ae2c04b54:
+- tools: make cibsecret use bash
+- fencer: allow peer configuration requests
+
+-------------------------------------------------------------------
+Sun Dec 06 12:12:36 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.4+20201027.31aa4f551:
+- pacemakerd: handle shutdown requests better
+- daemons,libcrmcommon: send status code with client acks
+- fencer: restrict certain IPC requests to privileged users (CVE-2020-25654, bsc#1177916)
+- pacemakerd: ignore shutdown requests from unprivileged users (CVE-2020-25654, bsc#1177916)
+- pacemakerd: check client for NULL before using it
+- executor: restrict certain IPC requests to Pacemaker daemons (CVE-2020-25654, bsc#1177916)
+- executor: return appropriate error code when no remote support
+- executor: mark controller connections to pacemaker-remoted as privileged
+- executor: show CRM_OP_REGISTER rc in debug message
+
+-------------------------------------------------------------------
+Sun Dec 06 11:54:44 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.4+20201022.354625c62:
+- tools: revert some changes in crm_resource NULL checks
+- xml: Mark new crm_mon attributes as optional.
+- scheduler: fix build when DEFAULT_CONCURRENT_FENCING_TRUE is set
+
+-------------------------------------------------------------------
+Sun Dec 06 11:42:57 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.4+20201019.878658661:
+- cib: create reply when needed for diff
+- cib: only build reply when needed
+
+-------------------------------------------------------------------
+Fri Oct 30 13:45:28 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.4+20201014.b0ef36d82:
+- cibsecret: read value to set from input (or stdin) if not specified
+- libcrmcommon: Don't leak memory in pcmk__cmdline_preproc.
+- tools: Don't leak options.xml_file in crm_simulate.
+- tools: Prevent a potential memory problem in crm_resource.
+- tools: Use glib for cmdline handling in crmadmin.
+- tools: Apply resource filtering to failed actions in crm_mon.
+- scheduler: require pre-/post-start notifications correctly
+- tools: avoid memory leak if crm_mon --include/--exclude have bad syntax
+- pacemakerd: change one message so CTS recognizes it
+- libcrmcommon: check controller API object for NULL
+- fencer: properly deactivate stonith API callbacks
+- controld: Avoiding Broken pipe when shutdown.
+- Stateful: add ability to return custom rc saved in state file
+- Dummy: add ability to return custom rc saved in state file
+- Use effective OCF rc-code to avoid increasing failcount for DEGRADED statuses
+- tools: Don't display crm_resource error messages twice.
+- Accept PCMK_OCF_DEGRADED and PCMK_OCF_DEGRADED_MASTER status codes
+- libcrmservice: avoid dangling reference after DBus memory allocation error
+- libcrmservice: avoid double logging an error
+- libcrmservice: improve DBus log messages
+- fenced: Avoiding Broken pipe when shutdown.
+- controld: Avoiding Broken pipe when shutdown.
+- attrd: Avoiding Broken pipe when shutdown.
+- Dont add OCF_RESKEY_ prefix to OCF_CHECK_LEVEL
+- controller: recognize reprobe requests correctly again
+- tools: allow crm_resource --option to be specified multiple times again
+- tools: only create validate parameters table when needed
+- tools: use glib types/free in crm_resource where appropriate to GOption
+- xml: Add a new schema version for crm_mon.
+- scheduler: Display stop-all-resources in cluster options.
+- scheduler: Add management status to group output. (rh#1748139)
+- scheduler: Change output for disabled clones. (rh#1748139)
+- scheduler: Change output for disabled groups. (rh#1748139)
+- scheduler: don't select instance to be promoted on a guest that can't run
+- fenced: Set the delegate correctly when fencing fails.
+- scheduler: improve messages when creating actions
+- libcrmcommon: Warn instead of err in scan_ll() (rh#1874391)
+- libcrmcommon: Don't always write out a name attribute.
+- scheduler, tools: Add a resource-list message.
+
+- Rebase:
+  * bug-728579_pacemaker-stonith-dev-id.patch
+
+-------------------------------------------------------------------
+Fri Oct 30 13:11:41 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.4+20200820.09f345c49:
+- controller, Pacemaker Explained: improve the documentation of `stonith-watchdog-timeout` cluster option (bsc#1174696)
+- scheduler: improve the documentation of `have-watchdog` cluster option (bsc#1174696)
+- libpe_status: downgrade the message about the meaning of `have-watchdog=true` to info (bsc#1174696)
+
+-------------------------------------------------------------------
+Fri Oct 30 13:10:26 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.4+20200820.216d5db57:
+- tools: properly detect local node name
+- various: improve client flag handling
+
+-Rebase:
+  * bug-806256_pacemaker-log-level-notice.patch
+  * bug-728579_pacemaker-stonith-dev-id.patch
+
+-------------------------------------------------------------------
+Fri Oct 30 11:11:36 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.4+20200819.643f19b71:
+- scheduler: update migrate-fail-9 test for migration code change (bsc#1177212)
+- scheduler: don't schedule a dangling migration stop if one already occurred (bsc#1177212)
+
+-------------------------------------------------------------------
+Thu Oct 29 10:58:25 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.4+20200819.114974685:
+- controld: Log correct timeout for timed-out stonith monitor
+- libpe_status: Use pcmk_monitor_timeout as stonith start timeout (rh#1856015)
+- crm_mon: Displays completed failed actions as processed.
+- libpe_status: Support integer as rule type attribute
+- libpe_status: Error-check and expand range of type="number"
+- xml: Support integer as rule type attribute
+- daemons, lib, tools: Correct comparisons to string functions.
+- libcrmcommon: Allow default formatted output message handlers.
+- tools: Apply resource filtering to bans.
+- tools: Apply resource filtering to --brief option.
+- libpe_status: Allow filtering bundled resources.
+- libpe_status: Allow filtering cloned resources.
+- libpe_status: Allow filtering resource groups.
+- libpe_status: Allow filtering primitive resources.
+- tools: Add "No active resources" to one case in crm_mon output.
+- tools: Allow filtering node history by resource.
+- tools: Add --resource= to the crm_mon command line.
+- cluster: Close corosync handles when they disconnect (rh#1614166)
+- libcrmcommon: Use truly implicit deny for ACLs (rh#1833173)
+- libpe_status: Destroy hash table after use
+- controld: improve message indicating the RA execution request
+- tools: Convert crm_resource to use glib for command line handling.
+- Allow logfile perms to be set in sysconfig
+- pacemakerd: improve logging when synced with SBD
+- pacemakerd: interworking with sbd not using pacemakerd-api
+- tools: Add -P to crmadmin to ping via pacemakerd-api
+- sbd-integration: sync pacemakerd with sbd
+- executor: only send executor notifications to executor clients
+- ipc-api: avoid infinite loop when disconnected
+- ipc-api: allow calling connect after disconnection
+- fencer: don't log assertion if unable to create full request reply
+- libcrmcommon: avoid assertion on controller protocol errors
+- tools: Add the http-equiv header to crm_mon at the right time.
+- tools, libcrmcommon: Reopen the output dest on reset.
+- libcrmcommon: Make reset and finish work more similarly. (rh#1857728)
+- libcib: Update known_paths
+- tools: Update valid scope values for cibadmin --help
+- controld: Show action timer plus cluster-delay in action_timer cb (rh#1856035)
+
+- Rebase:
+  * bug-943295_pacemaker-lrmd-log-notice.patch
+
+-------------------------------------------------------------------
 Tue Aug 25 11:37:48 UTC 2020 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.0.4+20200702.813fdbfdc:
