@@ -30,13 +30,11 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.10.0}
 BuildRequires:  %{python_module setuptools >= 18.0}
 BuildRequires:  fdupes
-BuildRequires:  hdf-devel
 BuildRequires:  hdf5-devel >= 1.8.4
 BuildRequires:  libcurl-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  netcdf-devel >= 4.2
 BuildRequires:  python-rpm-macros
-Requires:       hdf
 Requires:       hdf5 >= 1.8.4
 Requires:       netcdf >= 4.2
 Requires:       python-cftime
