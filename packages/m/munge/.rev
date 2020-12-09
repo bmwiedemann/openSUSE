@@ -130,4 +130,12 @@ as well.</comment>
     <comment>- Fix up for check scripts. (forwarded request 789121 from eeich)</comment>
     <requestid>789122</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>a1f3583fe23e5260e131b223b1f706d0</srcmd5>
+    <version>0.5.14</version>
+    <time>1607548926</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854216</requestid>
+  </revision>
 </revisionlist>

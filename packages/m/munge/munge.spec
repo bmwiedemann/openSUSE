@@ -51,6 +51,8 @@ BuildRequires:  libbz2-devel
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
+# For %%check
+BuildRequires:  procps
 BuildRequires:  zlib-devel
 Requires:       logrotate
 %if 0%{?suse_version} <= 1140
@@ -66,9 +68,6 @@ BuildRequires:  pkgconfig(systemd)
 %endif
 Requires(post):     coreutils
 Requires(postun):   coreutils
-%if 0%{?suse_version} < 1310
-%{!?_tmpfilesdir:%global _tmpfilesdir /usr/lib/tmpfiles.d}
-%endif
 
 %description
 MUNGE (MUNGE Uid 'N' Gid Emporium) is an authentication service for
@@ -99,14 +98,23 @@ Group:          Development/Libraries/C and C++
 A header file and libraries for building applications using the %{name} 
 authenication service.
 
+%{!?_rundir:%define _rundir %_localstatedir/run}
+%define munge_run %_rundir/munge
+
 %prep
 %setup -n %{name}-%{name}-%{version}
-%patch0 -p1
+%autopatch -p1
+
 cp %{SOURCE3} .
 
 %build
 ./bootstrap
-%configure
+%configure --disable-static \
+    --with-crypto-lib=openssl \
+    --with-logrotateddir=%{_sysconfdir}/logrotate.d \
+    --with-pkgconfigdir=%{_libdir}/pkgconfig \
+%{?have_systemd:--with-systemdunitdir=%{_unitdir}} \
+    --with-runstatedir=%{_rundir}
 %if 0%{!?make_build:1}
 %define make_build make %{?_smp_mflags}
 %endif
@@ -116,31 +124,34 @@ cp %{SOURCE3} .
 %makeinstall
 rm -f %{buildroot}%{_libdir}/*.la
 rm -f %{buildroot}%{_libdir}/*.a
-rm -f %{buildroot}%{_sysconfdir}/sysconfig/munge
 
-mkdir -p %{buildroot}%{_tmpfilesdir}
-cp src/etc/munge.tmpfiles.conf %{buildroot}%{_tmpfilesdir}/munge.conf
 mkdir -p %{buildroot}%{_datarootdir}/licenses
 
+install -m 0755 -d %{buildroot}%{_fillupdir}
 # We don't want systemd file on SLE 11
 %if 0%{!?have_systemd:1}
    test -d %{buildroot}%{_prefix}/lib/systemd && \
       rm -rf %{buildroot}%{_prefix}/lib/systemd
    test -f %{buildroot}/lib/systemd/system/munge.service && \
       rm -f %{buildroot}/lib/systemd/system/munge.service
-   rm -f %{buildroot}/%{_tmpfilesdir}/munge.conf
    sed -i 's/USER="munge"/USER="%munge_u"/g' %{buildroot}/%{_initrddir}/%{name}
    ln -s -f %{_initrddir}/%{name} %{buildroot}%{_sbindir}/rc%{name}
-   install -m 0755 -d %{buildroot}%{_fillupdir}
+   rm -f %{buildroot}%{_sysconfdir}/sysconfig/munge
    cp -p %{S:2} %{buildroot}%{_fillupdir}/sysconfig.munge
 %else
   sed -i 's/User=munge/User=%munge_u/g' %{buildroot}%{_unitdir}/munge.service
   sed -i 's/Group=munge/Group=%munge_g/g' %{buildroot}%{_unitdir}/munge.service
-  sed -i 's/munge \+munge/%munge_u %munge_g/g' %{buildroot}%{_tmpfilesdir}/munge.conf
   rm -f %{buildroot}%{_initddir}/munge
-  rmdir %{buildroot}%{_localstatedir}/run/munge
+  rmdir %{buildroot}/%{_rundir}/munge
+  rmdir %{buildroot}/%{_rundir}
   ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
+  mv %{buildroot}%{_sysconfdir}/sysconfig/munge \
+     %{buildroot}%{_fillupdir}/sysconfig.munge
 %endif
+
+%check
+# To debug add verbose=t to T_LOG_DRIVER variable in t/Makefile.am 
+make check
 
 %post -n lib%{name}%{lversion} -p /sbin/ldconfig
 
@@ -150,10 +161,9 @@ mkdir -p %{buildroot}%{_datarootdir}/licenses
 %if 0%{?have_systemd}
 %service_add_pre munge.service
 %endif
-%define munge_home "%_localstatedir%_rundir/munge"
 %define munge_descr "MUNGE authentication service"
 getent group %munge_g >/dev/null || groupadd -r %munge_g
-getent passwd %munge_u >/dev/null || useradd -r -g %munge_g -d %munge_home -s /bin/false -c %munge_descr %munge_u
+getent passwd %munge_u >/dev/null || useradd -r -g %munge_g -d %munge_run -s /bin/false -c %munge_descr %munge_u
 exit 0
 
 %preun
@@ -169,7 +179,9 @@ if [ $1 -eq 1 ]
 then
     %{fixperm %{_localstatedir}/log/munge}
     %{fixperm %{_localstatedir}/log/munge/munged.log}
-    %{fixperm %{_localstatedir}/run/munge}
+    %{fixperm %munge_run}
+else
+    rm -f %{_sysconfdir}/munge/munge.key
 fi
 %if 0%{?have_systemd}
 %service_del_postun munge.service
@@ -183,7 +195,7 @@ if [ $1 -eq 1 ]
 then
     %{fixperm %{_localstatedir}/log/munge}
     %{fixperm %{_localstatedir}/log/munge/munged.log}
-    %{fixperm %{_localstatedir}/run/munge}
+    %{fixperm %munge_run}
 fi
 unset tmpfile
 tmpdir=$(mktemp -d /tmp/tmpdir-XXXXXXXXX)
@@ -194,25 +206,23 @@ fi
 # Make sure this is no symlinks - this may have been created by an attacker!
 if [ -e ${tmpdir}/munge.key -a ! -h ${tmpdir}/munge.key ]; then
     if [ $(/usr/bin/stat -c %U:%G:%a ${tmpdir}/munge.key) != \
-    %munge_u:%munge_g:400 ]; then
+    %munge_u:%munge_g:600 ]; then
 	tmpfile=${tmpdir}/munge.key
     fi
 else
     /usr/bin/rm -f ${tmpdir}/munge.key
-    if [ -c /dev/urandom ]; then
-	tmpfile=${tmpdir}/munge.key
-	/bin/dd if=/dev/urandom bs=1 count=1024 > $tmpfile 2>/dev/null
-    fi
+    tmpfile=${tmpdir}/munge.key
+    /usr/sbin/mungekey -c -b 8192 -k $tmpfile
 fi
 if [ -n "$tmpfile" ]; then
-    /bin/chmod 0400 $tmpfile
+    /bin/chmod 0600 $tmpfile
     /bin/chown -h %munge_u:%munge_g $tmpfile
     /bin/mv -f $tmpfile %{_sysconfdir}/munge/munge.key
 fi
 /usr/bin/rm -rf ${tmpdir}
 %if 0%{?have_systemd}
 %service_add_post munge.service
-systemd-tmpfiles --create %{_tmpfilesdir}/munge.conf
+%{fillup_only}
 %else
 %{fillup_and_insserv -i munge}
 %endif
@@ -232,21 +242,27 @@ systemd-tmpfiles --create %{_tmpfilesdir}/munge.conf
 %doc README
 %doc README.SUSE
 %doc doc/*
-%dir %attr(0700,%munge_u,%munge_g) %config %{_sysconfdir}/munge
-%dir %attr(0711,%munge_u,%munge_g) %config %{_localstatedir}/lib/munge
-%dir %attr(0700,%munge_u,%munge_g) %config %{_localstatedir}/log/munge
+%dir %attr(0700,%munge_u,%munge_g) %{_sysconfdir}/munge
+%attr(0600,%munge_u,%munge_g) %config(noreplace) %ghost %{_sysconfdir}/munge/munge.key
+%config(noreplace) %{_sysconfdir}/logrotate.d/munge
+# bsc#1173167
+#%%config(noreplace) %%ghost %%{_sysconfdir}/sysconfig/munge
+%{_fillupdir}/sysconfig.munge
+%dir %attr(0711,%munge_u,%munge_g) %{_localstatedir}/lib/munge
+%attr(0600,%munge_u,%munge_g) %ghost %{_localstatedir}/lib/munge/munged.seed
+%dir %attr(0700,%munge_u,%munge_g) %{_localstatedir}/log/munge
+%attr(0640,%munge_u,%munge_g) %ghost %{_localstatedir}/log/munge/munged.log
 %{_bindir}/*
 %{_sbindir}/*
 %{_mandir}/*[^3]/*
-%config(noreplace) %{_sysconfdir}/logrotate.d/munge
 %if 0%{?have_systemd}
+%dir %attr(0755,%munge_u,%munge_g) %ghost %{munge_run}
 %{_unitdir}/munge.service
-%{_tmpfilesdir}/munge.conf
 %else
-%{_fillupdir}/sysconfig.munge
-%attr(0755,%munge_u,%munge_g) %dir %{_localstatedir}/run/%{name}
+%dir %attr(0755,%munge_u,%munge_g) %{munge_run}
 %{_initddir}/munge
 %endif
+%dir %attr(0755,munge,munge) %ghost %{munge_run}/munged.pid
 
 %files devel
 %{_includedir}/*

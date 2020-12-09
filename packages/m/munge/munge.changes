@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jun 19 05:00:01 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Use 'mungekey' to generate munge key,
+  Change permission of 'mungekey' from 0400 to 0600
+- Remove munge key on uninstall  
+- Add a bit of QA by running 'make check'
+- Consolidate 'rundir'-handling:
+  * fixed the location using %_rundir
+  * %ghost-ed %_rundir/munge
+- Pinned down configuration by adding more configure options
+- Consolidated the file attribute setting
+- Consolidated handline of /etc/sysconfig/munge
+- Remove tmpfiles.d/munge.conf: the runtime directory is created
+  by systemd itself.
+
+-------------------------------------------------------------------
 Tue Mar 24 08:56:31 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Update to version 0.5.14, most relevant changes:
