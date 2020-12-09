@@ -20,4 +20,12 @@
 - Rename README.rst to README.md in %files section (forwarded request 850436 from glaubitz)</comment>
     <requestid>850525</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8e787450368a40c07a1d498175e059c9</srcmd5>
+    <version>0.2.0</version>
+    <time>1607548661</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853913</requestid>
+  </revision>
 </revisionlist>
