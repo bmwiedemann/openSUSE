@@ -27,7 +27,7 @@
 %define plymouth_initrd_file /boot/initrd-plymouth.img
 
 Name:           plymouth
-Version:        0.9.5+git20200921+20778f2
+Version:        0.9.5+git20201026+53c83cc
 Release:        0
 Summary:        Graphical Boot Animation and Logger
 License:        GPL-2.0-or-later

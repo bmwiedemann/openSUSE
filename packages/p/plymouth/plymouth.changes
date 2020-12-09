@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  8 03:46:39 UTC 2020 - Cliff Zhao <qzhao@suse.com>
+
+- Update to version: 0.9.5+git20201026: 
+  Don't wait forever for a ping reply.
+
+-------------------------------------------------------------------
 Sat Nov 21 14:26:51 UTC 2020 - Cliff Zhao <qzhao@suse.com>
 
 - Add plymouth-disable-fedora-logo.patch:
