@@ -6,7 +6,7 @@ Documentation=https://github.com/grafana/loki
 Restart=always
 User=loki
 EnvironmentFile=-/etc/sysconfig/loki
-ExecStart=/usr/bin/loki -config.file=$CONFIG_FILE
+ExecStart=/usr/bin/loki -config.file=${CONFIG_FILE}
 ExecReload=/bin/kill -HUP $MAINPID
 TimeoutStopSec=20s
 SendSIGKILL=no

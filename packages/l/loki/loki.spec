@@ -15,24 +15,25 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           loki
 Version:        2.0.0+git.1603727260.6978ee5d
 Release:        0
 Summary:        Loki: like Prometheus, but for logs.
 License:        Apache-2.0
 Group:          System/Monitoring
-Url:            https://grafana.com/loki
+URL:            https://grafana.com/loki
 Source:         %{name}-%{version}.tar.bz2
 Source1:        loki.service
 Source2:        promtail.service
 Source3:        sysconfig.loki
 Source4:        sysconfig.promtail
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  golang(API) >= 1.13
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-devel
-Requires:       user(loki)
+BuildRequires:  golang(API) >= 1.13
 Requires:       group(loki)
+Requires:       user(loki)
 Requires(post): %fillup_prereq
 %systemd_ordering
 
@@ -57,7 +58,6 @@ export GOLDFLAGS="-s -w -X %{buildpkg}.Version=%{version} \
 go build -ldflags="$GOLDFLAGS" ./cmd/loki
 go build -ldflags="$GOLDFLAGS" ./cmd/logcli
 CGO_ENABLED=1 go build -ldflags="$GOLDFLAGS" ./cmd/promtail
-
 
 %install
 

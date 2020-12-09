@@ -6,7 +6,7 @@ Documentation=https://github.com/grafana/loki/blob/master/docs/promtail.md
 Restart=always
 User=loki
 EnvironmentFile=-/etc/sysconfig/promtail
-ExecStart=/usr/bin/promtail -config.file=$CONFIG_FILE
+ExecStart=/usr/bin/promtail -config.file=${CONFIG_FILE}
 ExecReload=/bin/kill -HUP $MAINPID
 TimeoutStopSec=20s
 SendSIGKILL=no

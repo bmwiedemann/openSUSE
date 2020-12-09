@@ -7,4 +7,12 @@
     <comment>New package for the Loki log aggregator.</comment>
     <requestid>849378</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0c37ed134262bd187d773a0332dc8b2c</srcmd5>
+    <version>2.0.0+git.1603727260.6978ee5d</version>
+    <time>1607548942</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854273</requestid>
+  </revision>
 </revisionlist>

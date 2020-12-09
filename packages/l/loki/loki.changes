@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec  8 23:05:04 UTC 2020 - Bogdano Arendartchuk <BArendartchuk@suse.com>
+
+- .service: Fix CONFIG_FILE to expand mid-word
+
+-------------------------------------------------------------------
 Mon Nov  9 13:15:42 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
 
 - Update packaging
