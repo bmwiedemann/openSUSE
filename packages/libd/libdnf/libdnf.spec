@@ -33,7 +33,7 @@
 %define devname %{name}-devel
 
 Name:           libdnf
-Version:        0.55.0
+Version:        0.55.2
 Release:        0
 Summary:        Library providing C and Python APIs atop libsolv
 License:        LGPL-2.1-or-later
@@ -42,8 +42,7 @@ Url:            https://github.com/rpm-software-management/%{name}
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
 # Backports from upstream
-Patch0001:      0001-Support-allow_vendor_change-setting-in-dnf-context-A.patch
-Patch0002:      0001-context-dnf_keyring_add_public_keys-not-generate-err.patch
+
 
 # openSUSE specific fixes
 ## Fix libdnf build with static libsolvext
@@ -159,7 +158,7 @@ sed -e "s/sphinx-build-3/sphinx-build-%{python3_version}/" -i docs/hawkey/CMakeL
 
 %build
 %cmake -DPYTHON_DESIRED:FILEPATH=%{__python3} %{!?with_valgrind:-DDISABLE_VALGRIND=1}
-%make_build
+%cmake_build
 
 %if %{with check}
 %check
@@ -181,9 +180,7 @@ popd
 %endif
 
 %install
-pushd build
-  %make_install
-popd
+  %cmake_install
 
 %find_lang %{name}
 

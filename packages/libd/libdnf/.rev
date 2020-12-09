@@ -387,4 +387,22 @@
   + Patch: libdnf-0.55.0-Switch-allow_vendor_change-off.patch</comment>
     <requestid>851721</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f1b63868be741745662341cb517903d3</srcmd5>
+    <version>0.55.2</version>
+    <time>1607548257</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.55.2
+  + Improve performance of query installed() and available()
+  + Swdb: Add a method to get the current transaction
+  + [modules] Add special handling for src artifacts (rh#1809314)
+  + Better msgs if &quot;basecachedir&quot; or &quot;proxy_password&quot; isn't set (rh#1888946)
+  + Add new options module_stream_switch
+  + Support allow_vendor_change setting in dnf context API
+- Drop patches incorporated into this release
+  + Patch: 0001-Support-allow_vendor_change-setting-in-dnf-context-A.patch
+  + Patch: 0001-context-dnf_keyring_add_public_keys-not-generate-err.patch
+- Use cmake_build and cmake_install macros</comment>
+    <requestid>853401</requestid>
+  </revision>
 </revisionlist>
