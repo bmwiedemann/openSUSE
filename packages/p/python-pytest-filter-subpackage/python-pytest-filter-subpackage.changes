@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  9 00:01:05 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix test failure gh#astropy/pytest-filter-subpackage#3
+  fix-doctestplus-count.patch
+
+-------------------------------------------------------------------
 Mon Mar 16 08:37:56 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - New package, needed by pytest-astropy

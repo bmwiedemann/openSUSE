@@ -25,9 +25,13 @@ Summary:        Pytest plugin for filtering based on sub-packages
 License:        BSD-3-Clause
 URL:            https://github.com/astropy/pytest-filter-subpackage
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-filter-subpackage/pytest-filter-subpackage-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM -- fix gh#astropy/pytest-filter-subpackage#3
+Patch0:         fix-doctestplus-count.patch
 BuildRequires:  %{python_module pytest >= 3.0}
-BuildRequires:  %{python_module pytest-doctestplus}
+# Patch0 is for the change from doctestplus 0.5 to 0.6
+BuildRequires:  %{python_module pytest-doctestplus >= 0.6}
 BuildRequires:  %{python_module setuptools >= 30.3}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest >= 3.0
@@ -39,7 +43,7 @@ This package contains a simple plugin for the `pytest`_ framework that provides 
 shortcut to testing all code and documentation for a given sub-package.
 
 %prep
-%setup -q -n pytest-filter-subpackage-%{version}
+%autosetup -p1 -n pytest-filter-subpackage-%{version}
 
 %build
 %python_build
@@ -54,6 +58,7 @@ shortcut to testing all code and documentation for a given sub-package.
 %files %{python_files}
 %doc README.rst CHANGES.rst
 %license LICENSE.rst
-%{python_sitelib}/*
+%{python_sitelib}/pytest_filter_subpackage
+%{python_sitelib}/pytest_filter_subpackage-%{version}*-info
 
 %changelog
