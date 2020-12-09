@@ -17,16 +17,16 @@
 
 
 Name:           upmpdcli
-Version:        1.5.2
+Version:        1.5.5
 Release:        0
 Summary:        UPnP Media Renderer front-end to MPD, the Music Player Daemon
 License:        GPL-2.0-or-later
 URL:            https://www.lesbonscomptes.com/updmpdcli
 Source0:        https://www.lesbonscomptes.com/upmpdcli/downloads/upmpdcli-%{version}.tar.gz
 BuildRequires:  gcc-c++
-BuildRequires:  group(audio)
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  group(audio)
 BuildRequires:  pkgconfig(jsoncpp)
 BuildRequires:  pkgconfig(libmicrohttpd)
 BuildRequires:  pkgconfig(libmpdclient)

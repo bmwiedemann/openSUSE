@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec  9 13:56:21 UTC 2020 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to 1.5.5:
+  * Fix issue with removing tracks from the playlist (sometimes slow or freezed).
+  * Fix bad locking causing multiple execs of radio scripts.
+  * Setting lumincompat = 1 is not useful any more and crashes some Kazoo versions.
+    So you should keep the default value which is off.
+  * Improve metadata processing when playing radios with BubbleDS.
+
+-------------------------------------------------------------------
 Wed Nov 25 12:31:40 UTC 2020 - Michael Pujos <pujos.michael@gmail.com>
 
 - update to 1.5.2:
@@ -9,7 +19,6 @@ Wed Nov 25 12:31:40 UTC 2020 - Michael Pujos <pujos.michael@gmail.com>
 
 - update to 1.5.1:
   * Fix small issue resulting in missing metadata in ohinfo
-
 
 -------------------------------------------------------------------
 Thu Nov 19 10:39:33 UTC 2020 - Michael Pujos <pujos.michael@gmail.com>
