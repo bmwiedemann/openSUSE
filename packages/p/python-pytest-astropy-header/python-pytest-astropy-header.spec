@@ -22,6 +22,8 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
+# current astropy in TW requires python >= 3.7
+%define skip_python36 1
 %bcond_without test
 %else
 %define psuffix %{nil}
@@ -35,12 +37,15 @@ License:        BSD-3-Clause
 Group:          Productivity/Scientific/Astronomy
 URL:            https://github.com/astropy/pytest-astropy-header
 Source:         https://files.pythonhosted.org/packages/source/p/%{modname}/%{modname}-%{version}.tar.gz
+Patch0:         https://github.com/astropy/pytest-astropy-header/pull/16.patch#/pytest-astropy-header-pr16-no-helper-version.patch
+Patch1:         https://github.com/astropy/pytest-astropy-header/pull/29.patch#/pytest-astropy-header-pr29-nohelpers.patch
 BuildRequires:  %{python_module setuptools >= 30.3.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest >= 2.8
 %if %{with test}
-BuildRequires:  %{python_module astropy >= 3.0}
+# Patch0 and Patch1: helpers got removed in astropy 4
+BuildRequires:  %{python_module astropy >= 4.0}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest >= 2.8}
 %endif
@@ -53,7 +58,7 @@ running pytest. It can be used with packages that are not affiliated with the
 Astropy project, but is optimized for use with astropy-related projects.
 
 %prep
-%setup -q -n %{modname}-%{version}
+%autosetup -p1 -n %{modname}-%{version}
 
 %build
 %python_build

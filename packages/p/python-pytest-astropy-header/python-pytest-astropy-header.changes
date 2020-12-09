@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec  9 09:49:05 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix test failures
+  * requires astropy >= 4 which removed astropy-helpers 
+  * gh#/astropy/pytest-astropy-header#16
+    pytest-astropy-header-pr16-no-helper-version.patch
+  * gh#/astropy/pytest-astropy-header#29
+    pytest-astropy-header-pr29-nohelpers.patch
+
+-------------------------------------------------------------------
 Thu Aug 16 12:25:00 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix test failures by testing the source directory in multibuild
