@@ -41,7 +41,7 @@
 %endif
 
 Name:           xorg-x11-server
-Version:        1.20.9
+Version:        1.20.10
 Release:        0
 URL:            http://xorg.freedesktop.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -251,15 +251,8 @@ Patch1503:      u_xfree86-Do-not-claim-pci-slots-if-fb-slot-is-already.patch
 Patch1505:      U_xwayland-Allow-passing-a-fd.patch
 
 Patch1600:      U_glamor_egl-Reject-OpenGL-2.1-early-on.patch
-Patch1700:      U_xfree86_take_second_ref_for_xcursor.patch
 
 Patch1801:      U_Fix-segfault-on-probing-a-non-PCI-platform-device-on.patch
-Patch1802:      U_Revert-linux-Fix-platform-device-probe-for-DT-based-.patch
-Patch1803:      U_Revert-linux-Fix-platform-device-PCI-detection-for-c.patch
-Patch1804:      U_Revert-linux-Make-platform-device-probe-less-fragile.patch
-
-Patch1901:      U_Fix-XkbSetDeviceInfo-and-SetDeviceIndicators-heap-ov.patch
-Patch1902:      U_Check-SetMap-request-length-carefully.patch
 
 %description
 This package contains the X.Org Server.
@@ -410,13 +403,7 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch1503 -p1
 %patch1505 -p1
 %patch1600 -p1
-%patch1700 -p1
 %patch1801 -p1
-%patch1802 -p1
-%patch1803 -p1
-%patch1804 -p1
-%patch1901 -p1
-%patch1902 -p1
 
 %build
 %define _lto_cflags %{nil}
@@ -549,6 +536,8 @@ ln -snf %{_sysconfdir}/alternatives/libglx.so %{buildroot}%{_libdir}/xorg/module
 
 mkdir -p %{buildroot}/usr/src/xserver
 xargs cp --parents --target-directory=%{buildroot}/usr/src/xserver < source-file-list
+# unneeded python2 script; simply remove it (boo#1179591)
+rm -f %{buildroot}/usr/src/xserver/config/fdi2iclass.py
 
 %post
 %tmpfiles_create xbb.conf

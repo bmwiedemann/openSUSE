@@ -3523,4 +3523,12 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
     CVE-2020-25712, bsc#1177596)</comment>
     <requestid>852408</requestid>
   </revision>
+  <revision rev="389" vrev="1">
+    <srcmd5>9a64827cac8c05a67edce1b2fd5f4326</srcmd5>
+    <version>1.20.10</version>
+    <time>1607548299</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853611</requestid>
+  </revision>
 </revisionlist>
