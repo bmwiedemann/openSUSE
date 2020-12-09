@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec 04 09:35:51 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.2+20201203.def947e (v2.0.2):
+- ipcs : Decrease log level. (#426)
+- cov: Quieten some covscan warnings (#427)
+- doxygen2man: Fix a couple of covscan-detected errors (#425)
+- ipcs: Add missing qb_list_del when freeing server (#423) (gh#ClusterLabs/libqb#422)
+- ipc: add qb_ipcc_auth_get() API call (#418)
+- doxygen2man: Remove horrible hack (#420) (gh#ClusterLabs/libqb#419)
+- doxygen2man: Add support for @code blocks (#417)
+- man: Tidy man pages (#416)
+- doxygen2man: Add option to read copyright line from the header file (#415) (gh#ClusterLabs/libqb#414)
+
+-------------------------------------------------------------------
 Wed Aug 26 10:29:23 UTC 2020 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.0.1+20200729.416caf2 (v2.0.1):
