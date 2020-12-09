@@ -76,4 +76,12 @@
     HISTORY.rst file provided with this package (forwarded request 848172 from glaubitz)</comment>
     <requestid>848212</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>47844459f04a35b344de368808132197</srcmd5>
+    <version>1.2.12</version>
+    <time>1607548892</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>854022</requestid>
+  </revision>
 </revisionlist>
