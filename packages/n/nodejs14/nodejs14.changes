@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 30 19:44:30 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- openssl_binary_detection.patch: fixes unit tests on SLE12
+
+-------------------------------------------------------------------
 Mon Nov 23 16:06:15 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Update Requires: so -devel requires npm

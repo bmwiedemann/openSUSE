@@ -168,4 +168,12 @@ fixed unit tests</comment>
   a larger number of responses (bsc#1178882, CVE-2020-8277)</comment>
     <requestid>850272</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>cc3d27adb609c26df7a6faaa2ae95415</srcmd5>
+    <version>14.15.1</version>
+    <time>1607548340</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853776</requestid>
+  </revision>
 </revisionlist>
