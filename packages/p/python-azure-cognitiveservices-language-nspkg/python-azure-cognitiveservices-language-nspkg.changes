@@ -1,5 +1,10 @@
 -------------------------------------------------------------------
-Wed Apr 10 15:18:16 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+Thu Nov 26 11:07:08 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Only build Python3 flavors for distributions 15 and greater
+
+-------------------------------------------------------------------
+Fri Oct  4 12:11:19 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
   + Version 3.0.1
