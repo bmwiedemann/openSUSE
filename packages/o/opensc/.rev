@@ -337,4 +337,12 @@
     <comment>Added support for the PIVKey I just got.</comment>
     <requestid>724313</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>5ad9467900b94fefa8e8b61806040f08</srcmd5>
+    <version>0.21.0</version>
+    <time>1607548918</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854174</requestid>
+  </revision>
 </revisionlist>

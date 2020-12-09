@@ -1,7 +1,7 @@
 #
 # spec file for package opensc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define completionsdir %(pkg-config --variable completionsdir bash-completion)
 Name:           opensc
-Version:        0.19.0
+Version:        0.21.0
 Release:        0
 Summary:        Smart Card Utilities
 License:        LGPL-2.1-or-later
@@ -30,18 +30,14 @@ Source2:        %{name}-rpmlintrc
 # Register with p11-kit
 # https://web.archive.org/web/20111225073733/http://www.opensc-project.org/opensc/ticket/390
 Source3:        opensc.module
-Patch1:         opensc-0.19.0-rsa-pss.patch
-Patch2:         opensc-0.19.0-redundant_logging.patch
-Patch3:         opensc-0.19.0-piv_card_matching.patch
 BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  libtool
 BuildRequires:  libxslt
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(bash-completion)
-BuildRequires:  pkgconfig(libpcsclite)
-BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(libpcsclite) >= 1.8.22
+BuildRequires:  pkgconfig(openssl) >= 1.0.1
 Requires:       pcsc-lite
 # There is no more devel package.
 Obsoletes:      opensc-devel < %{version}
@@ -63,18 +59,14 @@ may require third party proprietary software.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %build
-autoreconf -fvi
 %configure \
   --docdir=%{_docdir}/%{name} \
   --disable-static \
   --enable-doc \
   --disable-silent-rules
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -96,6 +88,7 @@ install -D -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/pkcs11/modules/opensc.mo
 %doc %{_docdir}/%{name}/opensc.conf
 %{_bindir}/*
 %{_datadir}/applications/*.desktop
+%{_sysconfdir}/xdg/autostart/pkcs11-register.desktop
 %{_datadir}/opensc
 # Note: .la and .so must be in the main package, required by ltdl:
 %{_libdir}/*.la

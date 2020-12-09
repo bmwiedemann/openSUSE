@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Fri Nov 27 19:27:30 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- OpenSC 0.21.0:
+  * CVE-2020-26571: stack-based buffer overflow in the gemsafe GPK
+    smart card software driver (boo#1177380)
+  * CVE-2020-26572: stack-based buffer overflow in the TCOS smart
+    card software driver (boo#1177378)
+  * CVE-2020-26570: heap-based buffer overflow in the Oberthur
+    smart card software driver (boo#1177364)
+  * CardOS 5.x support boo#1179291
+  * Support for OAEP encryption, make SHA256 default
+  * New separate debug level for PIN commands
+  * Fix handling of card/reader insertion/removal events in pcscd
+  * Fixes of removed readers handling
+  * Fix Firefox crash because of invalid pcsc context
+  * PKCS#11: Return CKR_TOKEN_NOT_RECOGNIZED for not recognized cards
+  * Propagate ignore_user_content to PKCS#11 layer not to confuse applications
+  * Minidriver: Fix check of ATR length (2-to 33 characters inclusive)
+  * pkcs11-tool: allow using SW tokens
+  * opensc-explorer asn1 accepts offsets and decode records
+  * opensc-explorer cat accepts records
+  * OpenPGP: Add new ec curves supported by GNUK 
+  * First steps supporting OpenPGP 3.4
+  * OpenPGP: Add support for EC key import
+  * Rutoken: Add ATR for Rutoken ECP SC NFC
+  * Improve detection of various CardOS 5 configurations
+  * DNIe: Add new DNIe CA structure for the secure channel
+  * ePass2003: Improve ECC support
+  * ePass2003: Fix erase sequence
+  * IAS-ECC: Fix support for Idemia Cosmo cards
+  * IAS-ECC: PIN padding settings are now used from PKCS#15 info when available
+  * IAS-ECC: Added PIN-pad support for PIN unblock
+  * New driver for Gemalto IDPrime (only some types)
+  * eDo: New driver with initial support for Polish eID card (e-dowód, eDO)
+  * MCRD: Remove unused and broken RSA EstEID support
+  * TCOS: Add missing encryption certificates
+  * PIV: Add ATR of DOD Yubikey
+  * fixed PIV global pin bug
+  * CAC1: Support changing PIN with CAC Alt tokens
+- includes changes from 0.20.0
+  * CVE-2019-6502: memory leak in libopensc (boo#1122756) 
+  * CVE-2019-15946: out-of-bounds access of an ASN.1 Octet string (boo#1149747)
+  * CVE-2019-15945: out-of-bounds access of an ASN.1 Bitstring (boo#1149746)
+  * CVE-2019-19479: incorrect read operation during parsing of a SETCOS file attribute (boo#1158256)
+  * CVE-2019-19480: improper free operation in sc_pkcs15_decode_prkdf_entry (boo#1158307) 
+  * Support RSA-PSS signature mechanisms using RSA-RAW
+  * Added memory locking for secrets
+  * added support for terminal colors
+  * PC/SC driver: Fixed error handling in case of changing or removing the card reader
+  * rename md_read_only to read_only and use it for PKCS#11 and Minidriver
+  * allow global use of ignore_private_certificate
+  * PKCS#11: Implement write protection (CKF_WRITE_PROTECTED) based on the card profile
+  * PKCS#11: Add C_WrapKey and C_UnwrapKey implementations
+  * PKCS#11: Handle CKA_ALWAYS_AUTHENTICATE when creating key objects
+  * PKCS#11: Truncate long PKCS#11 labels with ...
+  * PKCS#11: Fixed recognition of a token when being unplugged and reinserted
+  * Minidriver: Register for CardOS5 cards
+  * Minidriver: Add support for RSA-PSS
+  * tools: Harmonize the use of option -r/--reader
+  * goid-tool: GoID personalization with fingerprint
+  * openpgp-tool: replace the options -L/--key-length with -t/--key-type
+  * openpgp-tool: add options -C/--card-info and -K/--key-info
+  * opensc-explorer: add command pin_info, extend random
+  * pkcs11-register: Auto-configuration of applications for use of OpenSC PKCS#11
+  * pkcd11-register: Autostart
+  * opensc-tool: Show ATR also for cards not recognized by OpenSC
+  * pkcs11-spy: parse CKM_AES_GCM, EC Derive parameters
+  * pkcs11-spy: Add support for CKA_OTP_* and CKM_*_PSS values
+  * pkcs11-tool: Support for signature verification via --verify
+  * pkcs11-tool: Add object type secrkey for --type option
+  * pkcs11-tool: Implement Secret Key write object
+  * pkcs11-tool: Add GOSTR3410-2012 support
+  * pkcs11-tool: Add support for testing CKM_RSA_PKCS_OAEP
+  * pkcs11-tool: Add extractable option to key import
+  * pkcs11-tool: list more key access flags when listing keys
+  * pkcs11-tool: Add support for CKA_ALLOWED_MECHANISMS when creating new objects and listing keys
+  * pkcs15-crypt: *Handle keys with user consent
+  * New separate CAC1 driver using the old CAC specification (#1502)
+  * CardOS: Add support for 4K RSA keys in CardOS 5
+  * CardOS: Fixed decryption with CardOS 5
+  * Enable CoolKey driver to handle 2048-bit keys
+  * EstEID: add support for a minimalistic, small and fast card profile based on IAS-ECC issued since December 2018
+  * GIDS Decipher fix (#1881)
+  * GIDS: Allow RSA 4K support
+  * MICARDO: Remove long expired EstEID 1.0/1.1 card support
+  * MyEID: Add support for unwrapping a secret key with an RSA key or secret key
+  * MyEID Add support for wrapping a secret key with a secret key
+  * Support for MyEID 4K RSA
+  * Support for OsEID
+  * Gemalto GemSafe: add new PTeID ATRs, add support for 4K RSA keys
+  * OpenPGP Card v3 ECC support
+  * Add Rutoken ECP SC
+  * Add Rutoken Lite
+  * Add SmartCard-HSM 4K ATR
+  * Add missing secp384r1 curve parameter
+  * Stacros: Fix decipher with 2.3
+  * Stacros: Add ATR for 2nd gen. eGK
+  * Stacros: Add new ATR for 3.5
+  * Stacros: Detect and allow Globalplatform PIN encoding
+  * Fix TCOS IDKey support
+  * TCOS: add encryption certificate for IDKey
+  * Infocamere, Postecert, Cnipa: Remove profiles
+  * Remove incomplete acos5 driver
+- drop patches now upstream:
+  * opensc-0.19.0-piv_card_matching.patch
+  * opensc-0.19.0-redundant_logging.patch
+  * opensc-0.19.0-rsa-pss.patch
+
+-------------------------------------------------------------------
 Sun Aug 18 01:35:45 UTC 2019 - Jason Sikes <jsikes@suse.com>
 
 - added opensc-0.19.0-piv_card_matching.patch
