@@ -17,6 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%if 0%{?suse_version} >= 1500
+%define skip_python2 1
+%endif
 Name:           python-azure-ai-nspkg
 Version:        1.0.0
 Release:        0
