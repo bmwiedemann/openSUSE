@@ -10,5 +10,15 @@
       </disk>
     </hardware>
   </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>x86_64</arch>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">8</size>
+      </disk>
+    </hardware>
+  </overwrite>
 </constraints>
 

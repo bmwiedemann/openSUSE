@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec  9 07:56:36 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Backport from master [jsc#13656]:
+  * gdb-powerpc-remove-512-bytes-region-limit-if-2nd-dawr-is-avaliable.patch
+- Require 8GB diskspace for x86_64.
+
+-------------------------------------------------------------------
+Mon Nov 30 15:43:58 UTC 2020 - Tom de Vries <tdevries@suse.com>
+
+- Patches to be upstreamed:
+  * gdb-fix-use-of-invalid-pointer-in-remote-async-inferior-event-handler.patch
+
+-------------------------------------------------------------------
 Mon Nov 30 14:46:49 UTC 2020 - Tom de Vries <tdevries@suse.com>
 
 - Mention fedora patch fixups added:

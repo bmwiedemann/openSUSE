@@ -294,6 +294,7 @@ Patch1510:      gdb-testsuite-fix-gdb-reverse-insn-reverse-x86-c-for-m32.patch
 Patch1511:      gdb-testsuite-gdb-tui-new-layout-exp-partly-require-tcl86.patch
 Patch1512:      gdb-tui-enable-work-around-libncurses-segfault.patch
 Patch1513:      gdb-testsuite-fix-control-flow-in-gdb-reverse-insn-reverse-exp.patch
+Patch1514:      gdb-fix-use-of-invalid-pointer-in-remote-async-inferior-event-handler.patch
 
 # Backports from master
 
@@ -306,6 +307,7 @@ Patch2006:      gdb-symtab-use-early-continue-in-find_pc_sect_compunit.patch
 Patch2007:      gdb-fix-section-matching-in-find_pc_sect_compunit.patch
 Patch2008:      gdb-symtab-fix-language-of-frame-without-debug-info.patch
 Patch2009:      gdb-testsuite-fix-failure-in-gdb-base-step-over-no-symbols-exp.patch
+Patch2010:      gdb-powerpc-remove-512-bytes-region-limit-if-2nd-dawr-is-avaliable.patch
 
 # Testsuite patches
 
@@ -702,6 +704,7 @@ find -name "*.info*"|xargs rm -f
 %patch1511 -p1
 %patch1512 -p1
 %patch1513 -p1
+%patch1514 -p1
 
 %patch2000 -p1
 %patch2002 -p1
@@ -712,6 +715,7 @@ find -name "*.info*"|xargs rm -f
 %patch2007 -p1
 %patch2008 -p1
 %patch2009 -p1
+%patch2010 -p1
 
 %patch2500 -p1
 %if 0%{?suse_version} > 1500 
