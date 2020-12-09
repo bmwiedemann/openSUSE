@@ -1,7 +1,7 @@
 #
 # spec file for package python-taskw
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-taskw
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Python bindings for taskwarrior
 License:        GPL-3.0-or-later
@@ -36,7 +36,7 @@ Requires:       taskwarrior
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module kitchen}
-BuildRequires:  %{python_module nose >= 1.3.4}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module six}
@@ -49,9 +49,6 @@ Python bindings for your taskwarrior database.
 
 %prep
 %setup -q -n taskw-%{version}
-sed -i '/tox/d' test_requirements.txt
-# https://github.com/ralphbean/taskw/pull/128
-sed -i 's/in e:/in str(e):/' taskw/warrior.py
 
 %build
 %python_build
@@ -61,7 +58,7 @@ sed -i 's/in e:/in str(e):/' taskw/warrior.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc README.rst

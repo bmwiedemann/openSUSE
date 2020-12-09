@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec  8 11:22:08 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.3.0
+  * Pass taskrc via environment variable to subprocess.
+  * Adds testing for Python 3.7 and 3.8
+  * Fix error raised when taskwarrior is not installed.
+  * Fix bug on deletion of completed task; disable confirmation for
+    recurring tasks; fix bug in numeric deserialization.
+  * Fixes bug in which UUIDs were improperly parsed
+    when creating recurring tasks.
+  * Fix a bug in which configuration values having an equal
+    sign in their value would be improperly parsed.
+  * Switched from nose to pytest.
+  * Dropped automated testing for Python 3.4.
+
+-------------------------------------------------------------------
 Sat Oct 19 13:19:31 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite
