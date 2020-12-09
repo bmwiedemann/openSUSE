@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec  8 08:24:53 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 2.42.2:
+  + Requre Meson 0.55.3.
+  + Improve the PNG save operation.
+  + Fix leak in the error path of the XPM loader.
+  + Fix loading GIF without a GCE rendering color 0.
+  + Fix invalid LZW codes in the GIF loader (CVE-2020-29385).
+
+-------------------------------------------------------------------
 Mon Nov  9 15:52:50 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Udpate to version 2.42.0:

@@ -20,7 +20,7 @@
 %define gdk_pixbuf_binary_version 2.10.0
 
 Name:           gdk-pixbuf
-Version:        2.42.0
+Version:        2.42.2
 Release:        0
 Summary:        An image loading library
 License:        LGPL-2.1-or-later
@@ -41,7 +41,7 @@ BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gtk-doc
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtiff-devel
-BuildRequires:  meson
+BuildRequires:  meson >= 0.55.3
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  unzip
