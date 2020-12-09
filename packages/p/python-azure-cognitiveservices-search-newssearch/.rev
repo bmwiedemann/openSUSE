@@ -43,4 +43,12 @@
 - Update %description from README.rst (forwarded request 767716 from glaubitz)</comment>
     <requestid>767779</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4a6ca35f1e87d4853731b224c80707a0</srcmd5>
+    <version>2.0.0</version>
+    <time>1607548461</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853847</requestid>
+  </revision>
 </revisionlist>
