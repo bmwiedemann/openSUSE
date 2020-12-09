@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 17 11:26:22 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Update to sysvinit 2.98:
+  * Fixed time parsing in shutdown when there is a + in front of a 0 time offset.
+    Commands with a postiive time offset (+1) would work but +0 fails.
+    This has been corrected by Arkadiusz Miskiewicz.
+
+-------------------------------------------------------------------
 Wed Aug 26 12:42:23 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop /bin/pidof and /sbin/pidof, including corresponding man
