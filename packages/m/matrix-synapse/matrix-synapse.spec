@@ -48,7 +48,7 @@
 %define         modname synapse
 %define         pkgname matrix-synapse
 Name:           %{pkgname}
-Version:        1.22.1
+Version:        1.24.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -106,7 +106,7 @@ BuildRequires:  python3-netaddr >= 0.7.18
 %requires_eq    python3-netaddr
 BuildRequires:  python3-phonenumbers >= 8.2.0
 %requires_eq    python3-phonenumbers
-BuildRequires:  (python3-prometheus_client >= 0.4.0 with python3-prometheus_client < 0.9.0)
+BuildRequires:  python3-prometheus_client >= 0.4.0
 %requires_eq    python3-prometheus_client
 BuildRequires:  python3-psutil >= 2.0.0
 %requires_eq    python3-psutil
