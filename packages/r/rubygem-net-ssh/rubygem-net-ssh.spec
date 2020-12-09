@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-net-ssh
-Version:        6.1.0
+Version:        6.2.0.rc1
 Release:        0
 %define mod_name net-ssh
 %define mod_full_name %{mod_name}-%{version}
