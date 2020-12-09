@@ -22,7 +22,7 @@ Index: libvirt-6.10.0/src/lxc/lxc_driver.c
  
  #define VIR_FROM_THIS VIR_FROM_LXC
  
-@@ -5068,6 +5070,128 @@ lxcDomainHasManagedSaveImage(virDomainPt
+@@ -5071,6 +5073,128 @@ lxcDomainHasManagedSaveImage(virDomainPt
      return ret;
  }
  
@@ -151,7 +151,7 @@ Index: libvirt-6.10.0/src/lxc/lxc_driver.c
  
  /* Function Tables */
  static virHypervisorDriver lxcHypervisorDriver = {
-@@ -5165,6 +5289,7 @@ static virHypervisorDriver lxcHypervisor
+@@ -5168,6 +5292,7 @@ static virHypervisorDriver lxcHypervisor
      .nodeGetFreePages = lxcNodeGetFreePages, /* 1.2.6 */
      .nodeAllocPages = lxcNodeAllocPages, /* 1.2.9 */
      .domainHasManagedSaveImage = lxcDomainHasManagedSaveImage, /* 1.2.13 */

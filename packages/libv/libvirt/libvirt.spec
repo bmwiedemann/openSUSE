@@ -291,6 +291,8 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
+Patch0:         0d05d51b-apparmor-lxc-fix.patch
+Patch1:         cf4e7e62-lxc-def-secmodel.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -444,7 +446,7 @@ Group:          System/Management
 Requires:       %{name}-daemon = %{version}-%{release}
 Requires:       %{name}-libs = %{version}-%{release}
 # For managing persistent mediated devices
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
 Requires:       mdevctl
 %endif
 

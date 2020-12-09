@@ -37,7 +37,7 @@ Index: libvirt-6.10.0/src/lxc/lxc_driver.c
  #include "virstring.h"
  #include "viraccessapicheck.h"
  #include "viraccessapichecklxc.h"
-@@ -3546,6 +3547,7 @@ lxcDomainAttachDeviceNetLive(virLXCDrive
+@@ -3549,6 +3550,7 @@ lxcDomainAttachDeviceNetLive(virLXCDrive
          case VIR_DOMAIN_NET_TYPE_NETWORK:
          case VIR_DOMAIN_NET_TYPE_ETHERNET:
              ignore_value(virNetDevVethDelete(veth));
@@ -45,7 +45,7 @@ Index: libvirt-6.10.0/src/lxc/lxc_driver.c
              break;
  
          case VIR_DOMAIN_NET_TYPE_DIRECT:
-@@ -3985,6 +3987,7 @@ lxcDomainDetachDeviceNetLive(virDomainOb
+@@ -3988,6 +3990,7 @@ lxcDomainDetachDeviceNetLive(virDomainOb
              virDomainAuditNet(vm, detach, NULL, "detach", false);
              goto cleanup;
          }

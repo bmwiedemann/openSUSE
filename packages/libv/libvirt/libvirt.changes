@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec  9 00:07:16 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- spec: Enable mdevctl support in the nodedev driver for SLE15 SP3
+  jsc#SLE-15861, bsc#1179770
+
+-------------------------------------------------------------------
+Mon Dec  7 23:11:45 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- apparmor: Allow lxc processes to receive signals from libvirt
+  lxc: Set default security model in XML parser config
+  0d05d51b-apparmor-lxc-fix.patch, cf4e7e62-lxc-def-secmodel.patch
+  bsc#1179735
+
+-------------------------------------------------------------------
 Tue Dec  1 23:55:16 UTC 2020 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 6.10.0

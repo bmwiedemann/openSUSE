@@ -3733,4 +3733,18 @@ StandardGroups in rpmlint package.
     <comment></comment>
     <requestid>852456</requestid>
   </revision>
+  <revision rev="319" vrev="2">
+    <srcmd5>0f8252af9199a34070360d7fac5b7957</srcmd5>
+    <version>6.10.0</version>
+    <time>1607548353</time>
+    <user>dimstar_suse</user>
+    <comment>- spec: Enable mdevctl support in the nodedev driver for SLE15 SP3
+  jsc#SLE-15861, bsc#1179770
+
+- apparmor: Allow lxc processes to receive signals from libvirt
+  lxc: Set default security model in XML parser config
+  0d05d51b-apparmor-lxc-fix.patch, cf4e7e62-lxc-def-secmodel.patch
+  bsc#1179735</comment>
+    <requestid>854168</requestid>
+  </revision>
 </revisionlist>
