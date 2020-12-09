@@ -22,4 +22,12 @@
     a consistent behavior on Windows and macOS. (forwarded request 833100 from glaubitz)</comment>
     <requestid>833122</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>4705bfef86022b37e53917161effe6b8</srcmd5>
+    <version>0.3.0</version>
+    <time>1607548885</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>854018</requestid>
+  </revision>
 </revisionlist>
