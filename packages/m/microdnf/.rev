@@ -24,4 +24,18 @@
   + Patch: 0001-Add-support-for-setting-a-platform-module-ID.patch</comment>
     <requestid>851724</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e22b8363b575093d2c356dbca3c7661b</srcmd5>
+    <version>3.6.0</version>
+    <time>1607548259</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.6.0
+  + Add support for setting allow_vendor_change
+  + Add support for setting a platform module ID
+- Drop patches incorporated into this release
+  + Patch: 0001-Add-support-for-setting-allow_vendor_change.patch
+  + Patch: 0001-Add-support-for-setting-a-platform-module-ID.patch
+- Add weak dependency for DNF configuration skeleton</comment>
+    <requestid>853402</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec  6 15:36:53 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 3.6.0
+  + Add support for setting allow_vendor_change
+  + Add support for setting a platform module ID
+- Drop patches incorporated into this release
+  + Patch: 0001-Add-support-for-setting-allow_vendor_change.patch
+  + Patch: 0001-Add-support-for-setting-a-platform-module-ID.patch
+- Add weak dependency for DNF configuration skeleton
+
+-------------------------------------------------------------------
 Sun Nov 29 23:25:59 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 3.5.1
