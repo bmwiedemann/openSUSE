@@ -19,4 +19,12 @@
 - Update %description from setup.py (forwarded request 767740 from glaubitz)</comment>
     <requestid>767800</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>4894b03a5838d0af380d5c627f587310</srcmd5>
+    <version>0.2.0</version>
+    <time>1607548679</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853921</requestid>
+  </revision>
 </revisionlist>
