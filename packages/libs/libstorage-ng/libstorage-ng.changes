@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Mon Dec 7 09:31:47 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#785
+- handle missing partition device nodes for multipath (bsc#1175981)
+- 4.3.72
+
+--------------------------------------------------------------------
 Thu Nov 12 16:14:56 UTC 2020 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#784
