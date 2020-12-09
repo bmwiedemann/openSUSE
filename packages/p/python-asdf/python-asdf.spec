@@ -18,12 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+# current astropy in TW requires python >= 3.7
+%define         skip_python36 1
 Name:           python-asdf
 Version:        2.7.1
 Release:        0
 Summary:        Python tools to handle ASDF files
 License:        BSD-3-Clause AND BSD-2-Clause
-URL:            https://github.com/spacetelescope/asdf
+URL:            https://github.com/asdf-format/asdf
 Source0:        https://files.pythonhosted.org/packages/source/a/asdf/asdf-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools >= 30.3.0}
 BuildRequires:  %{python_module setuptools_scm}
@@ -60,6 +62,7 @@ Python implementation of the ASDF Standard.
 %prep
 %setup -q -n asdf-%{version}
 sed -i -e '/^#!\//, 1d' asdf/extern/RangeHTTPServer.py
+chmod a-x asdf/extern/RangeHTTPServer.py
 sed -i 's/\r$//' asdf/tests/data/example_schema.json
 chmod a-x asdf/tests/data/example_schema.json
 
@@ -69,10 +72,15 @@ chmod a-x asdf/tests/data/example_schema.json
 %install
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/asdftool
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%{python_expand #
+sed -i -e 's|^#!/usr/bin/env python|#!%{__$python}|' %{buildroot}%{$python_sitelib}/asdf/reference_files/generate/generate
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 %check
 export LANG=en_US.UTF-8
+# import everything from the source directory because of collection conflicts with buildroot
+export PYTHONPATH=":x"
 %pytest
 
 %post
@@ -85,6 +93,8 @@ export LANG=en_US.UTF-8
 %doc CHANGES.rst README.rst
 %license licenses/*
 %python_alternative %{_bindir}/asdftool
-%{python_sitelib}/*
+%{python_sitelib}/asdf
+%{python_sitelib}/asdf-%{version}*-info
+%{python_sitelib}/pytest_asdf
 
 %changelog

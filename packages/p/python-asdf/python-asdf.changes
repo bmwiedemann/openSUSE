@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  8 22:37:37 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix pytest collection error by importing from source dir 
+- Fix rpmlint shebang errors
+
+-------------------------------------------------------------------
 Mon Sep 14 18:11:01 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 2.7.1 
