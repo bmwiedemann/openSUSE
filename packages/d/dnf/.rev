@@ -410,4 +410,22 @@
 - Rename dnf-conf package to dnf-data, in line with upstream</comment>
     <requestid>852448</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>82dfa69422a0038653ea3a835e880427</srcmd5>
+    <version>4.5.2</version>
+    <time>1607612337</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.5.2
+  + Change behaviour of Package().from_repo
+  + Add a get_current() method to SwdbInterface
+  + Add `from_repo` attribute for Package class (rh#1898968, rh#1879168)
+  + Correct description of Package().reponane attribute
+  + Add unittest for new API
+  + Make rotated log file (mode, owner, group) match previous log settings (rh#1894344)
+  + [doc] Improve description of modular filtering
+  + [doc] add documentation for from_repo
+  + [doc] deprecated alias for dnf repoquery --deplist &lt;deplist_option-label&gt;
+  + New config option module_allow_stream_switch allows switching enabled streams</comment>
+    <requestid>853403</requestid>
+  </revision>
 </revisionlist>

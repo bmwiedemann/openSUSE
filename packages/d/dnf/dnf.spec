@@ -17,8 +17,9 @@
 #
 
 
-%global hawkey_version 0.55.0
+%global hawkey_version 0.55.1
 %global libcomps_version 0.1.8
+%global libmodulemd_version 2.9.3
 %global rpm_version 4.14.0
 %global min_plugins_core 4.0.16
 %global min_plugins_extras 4.0.4
@@ -47,7 +48,7 @@
 %bcond_with tests
 
 Name:           dnf
-Version:        4.4.2
+Version:        4.5.2
 Release:        0
 Summary:        Package manager forked from Yum, using libsolv as a dependency resolver
 # For a breakdown of the licensing, see PACKAGE-LICENSING
@@ -151,6 +152,7 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-gpg
 BuildRequires:  python3-hawkey >= %{hawkey_version}
 BuildRequires:  python3-libcomps >= %{libcomps_version}
+BuildRequires:  python3-libmodulemd >= %{libmodulemd_version}
 BuildRequires:  python3-nose
 BuildRequires:  python3-rpm >= %{rpm_version}
 Recommends:     (python3-dbus-python if NetworkManager)
@@ -160,6 +162,7 @@ Requires:       python3-curses
 Requires:       python3-gpg
 Requires:       python3-hawkey >= %{hawkey_version}
 Requires:       python3-libcomps >= %{libcomps_version}
+Requires:       python3-libmodulemd >= %{libmodulemd_version}
 Requires:       python3-rpm >= %{rpm_version}
 Recommends:     bash-completion
 # DNF 2.0 doesn't work with old plugins
