@@ -40,4 +40,14 @@
   * https://www.postgresql.org/docs/13/release-13-1.html</comment>
     <requestid>848147</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>75ffed7a00e5ac34f6ee0e1121704a21</srcmd5>
+    <version>13.1</version>
+    <time>1607612200</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1178961: %ghost the symlinks to pg_config and ecpg.
+- boo#1179765: BuildRequire libpq5 and libecpg6 when not building
+  them to avoid dangling symlinks in the devel package.</comment>
+    <requestid>854082</requestid>
+  </revision>
 </revisionlist>
