@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 10 10:16:57 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Re-enable compress=lzo for Raspberry Pi 
+
+-------------------------------------------------------------------
 Tue Dec  8 10:52:17 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Use 'systemd.show_status=yes' to ensure users see clear status
