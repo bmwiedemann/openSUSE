@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec  9 20:16:43 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- Update to 1.6.3
+  - switch to ghcr.io for CI ([gh#votca/tools#297])
+  - use master .clang-format in format action
+    ([gh#votca/tools#304], [gh#votca/tools#307])
+  - strip windows line endings in readers ([gh#votca/tools#309])
+
+-------------------------------------------------------------------
 Sat Aug 22 18:08:56 UTC 2020 - Christoph Junghans <junghans@votca.org>
 
 - Update to 1.6.2

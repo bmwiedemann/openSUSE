@@ -18,7 +18,7 @@
 
 
 Name:           votca-tools
-Version:        1.6.2
+Version:        1.6.3
 Release:        0
 %define         uversion %{version}
 %define         sover 6
