@@ -174,4 +174,16 @@
   * Add LDAP_BIND_DN, make password files configureable</comment>
     <requestid>848355</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b98fe6319f800703125abf4dc5858304</srcmd5>
+    <version>0.0+git20201208.1b4413e</version>
+    <time>1607612198</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20201208.1b4413e:
+  * Add support for dovecot
+  * Fix description
+  * Add support for minidlna container
+  * Add LMTP variable</comment>
+    <requestid>854067</requestid>
+  </revision>
 </revisionlist>
