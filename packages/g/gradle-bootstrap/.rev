@@ -31,4 +31,12 @@
     <comment>Allow buildign with Java 11</comment>
     <requestid>755230</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>9fdc24b911504fdecae03519eb123ee8</srcmd5>
+    <version>unknown</version>
+    <time>1607612293</time>
+    <user>dimstar_suse</user>
+    <comment>Regenerate with a new groovy version</comment>
+    <requestid>853704</requestid>
+  </revision>
 </revisionlist>

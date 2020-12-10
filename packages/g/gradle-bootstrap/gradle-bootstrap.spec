@@ -1,7 +1,7 @@
 #
 # spec file for package gradle-bootstrap
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global short_name gradle
 %global gradle_version 4.4.1
-%global groovy_version 2.4.16
+%global groovy_version 2.4.21
 %global gpars_version 1.2.1
 Name:           %{short_name}-bootstrap
 Version:        %{gradle_version}
