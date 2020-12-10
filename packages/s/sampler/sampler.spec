@@ -32,8 +32,6 @@ Source1:        vendor.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  go >= 1.11
 BuildRequires:  go-md2man
-BuildRequires:  golang-github-kr-pty
-BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig(alsa)
 ExcludeArch:    s390
 

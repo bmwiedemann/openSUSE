@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  3 02:29:51 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Remove unused BuildRequires: golang-github-kr-pty and golang-packaging
+  * github.com/kr/pty already vendored via obs-service-go_modules
+  * golang-packaging currently not needed for apps using go modules
+
+-------------------------------------------------------------------
 Wed Dec  2 14:41:24 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Build on s390x 
