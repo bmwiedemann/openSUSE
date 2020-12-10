@@ -19,10 +19,7 @@
 Name:           phpPgAdmin
 
 %define lc_name phppgadmin
-%define apxs %{_sbindir}/apxs2
-%define ap_sysconfdir %(%{apxs} -q SYSCONFDIR)
-%define ap_serverroot %(%{apxs} -q PREFIX)
-%define ap_docroot_old %(%{apxs} -q PREFIX)/htdocs
+%define ap_docroot_old %{apache_serverroot}/htdocs
 %define ap_docroot %{_datadir}
 %define ppa_config %{_sysconfdir}/%{name}/config.inc.php
 
@@ -39,7 +36,8 @@ Source2:        %{name}.http.inc
 Patch0:         %{name}-config.inc.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  apache2-devel
+BuildRequires:  apache-rpm-macros
+BuildRequires:  apache2
 BuildRequires:  fdupes
 Requires:       mod_php_any
 Requires:       php >= 7.1
@@ -98,12 +96,12 @@ find %{buildroot}%{ap_docroot}/%{name} -mindepth 1 -maxdepth 1 -type d | grep -v
 find %{buildroot}%{ap_docroot}/%{name} -maxdepth 1 -type f | grep -v 'config.inc.php-dist' | sed -e "s@$RPM_BUILD_ROOT@@" >> FILELIST
 
 # install config for apache
-%{__install} -D -m0644 %{S:1} %{buildroot}%{ap_sysconfdir}/conf.d/%{name}.conf
-%{__install} -D -m0644 %{S:2} %{buildroot}%{ap_sysconfdir}/conf.d/%{name}.inc
+%{__install} -D -m0644 %{S:1} %{buildroot}%{apache_sysconfdir}/conf.d/%{name}.conf
+%{__install} -D -m0644 %{S:2} %{buildroot}%{apache_sysconfdir}/conf.d/%{name}.inc
 
 # fix paths in http config
 %{__sed} -i -e "s,@ap_docroot@,%{ap_docroot},g" -e "s,@name@,%{name},g" \
--e "s,@docdir@,%{_docdir},g" -e "s,@ap_sysconfdir@,%{ap_sysconfdir},g" %{buildroot}%{ap_sysconfdir}/conf.d/%{name}.conf
+-e "s,@docdir@,%{_docdir},g" -e "s,@ap_sysconfdir@,%{apache_sysconfdir},g" %{buildroot}%{apache_sysconfdir}/conf.d/%{name}.conf
 
 # rpmlint stuff
 %fdupes %{buildroot}%{ap_docroot}/%{name}
@@ -121,13 +119,13 @@ fi
 # If someone did 'manually' change the config file it won't be replaced by rpm
 # Hence we backup the existing and place the new one
 find=0
-find=$(grep -cw %{ap_sysconfdir}/conf.d/%{name}.conf -e "%{ap_docroot_old}/%{name}") || :
+find=$(grep -cw %{apache_sysconfdir}/conf.d/%{name}.conf -e "%{ap_docroot_old}/%{name}") || :
 if [ $find -gt 0 ]; then
   ap_date="$(date '+%Y%m%d-%H%M')"
-  echo "creating backup of %{ap_sysconfdir}/conf.d/%{name}.conf to %{ap_sysconfdir}/conf.d/%{name}.conf.backup-${ap_date}"
-  cp -a %{ap_sysconfdir}/conf.d/%{name}.conf %{ap_sysconfdir}/conf.d/%{name}.conf.backup-${ap_date}
-  echo "copying %{ap_sysconfdir}/conf.d/%{name}.conf.rpmnew to %{ap_sysconfdir}/conf.d/%{name}.conf"
-  cp -a %{ap_sysconfdir}/conf.d/%{name}.conf.rpmnew %{ap_sysconfdir}/conf.d/%{name}.conf
+  echo "creating backup of %{apache_sysconfdir}/conf.d/%{name}.conf to %{apache_sysconfdir}/conf.d/%{name}.conf.backup-${ap_date}"
+  cp -a %{apache_sysconfdir}/conf.d/%{name}.conf %{apache_sysconfdir}/conf.d/%{name}.conf.backup-${ap_date}
+  echo "copying %{apache_sysconfdir}/conf.d/%{name}.conf.rpmnew to %{apache_sysconfdir}/conf.d/%{name}.conf"
+  cp -a %{apache_sysconfdir}/conf.d/%{name}.conf.rpmnew %{apache_sysconfdir}/conf.d/%{name}.conf
 fi
 %restart_on_update apache2
 
@@ -150,8 +148,8 @@ fi
 %doc CREDITS DEVELOPERS FAQ HISTORY TODO TRANSLATORS
 %license LICENSE
 %dir %{ap_docroot}/%{name}
-%config(noreplace) %{ap_sysconfdir}/conf.d/%{name}.conf
-%config(noreplace) %{ap_sysconfdir}/conf.d/%{name}.inc
+%config(noreplace) %{apache_sysconfdir}/conf.d/%{name}.conf
+%config(noreplace) %{apache_sysconfdir}/conf.d/%{name}.inc
 %dir %attr(0750,wwwrun,root) %{_sysconfdir}/%{name}
 %config(noreplace) %attr(0640,root,www) %{ppa_config}
 

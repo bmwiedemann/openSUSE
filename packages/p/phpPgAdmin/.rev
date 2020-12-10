@@ -183,4 +183,12 @@
     <comment>change ap_docroot from /srv/www/htdocs to /usr/share (forwarded request 817388 from computersalat)</comment>
     <requestid>817389</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>4f87ad32ff9eaed7fd49a1ac5c7fcbf0</srcmd5>
+    <version>7.12.1</version>
+    <time>1607612333</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854464</requestid>
+  </revision>
 </revisionlist>

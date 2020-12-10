@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec  1 15:04:30 UTC 2020 - pgajdos@suse.com
+
+- use system apache rpm macros
+
+-------------------------------------------------------------------
 Sat Jun 20 22:13:04 UTC 2020 - chris@computersalat.de
 
 - change ap_docroot from /srv/www/htdocs to /usr/share
