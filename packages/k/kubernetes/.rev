@@ -672,4 +672,12 @@
     <comment>- Bump kubernetes to 1.18.12 and 1.19.4</comment>
     <requestid>848394</requestid>
   </revision>
+  <revision rev="72" vrev="12">
+    <srcmd5>251689bc088d0d9c14cb770c36825db8</srcmd5>
+    <version>unknown</version>
+    <time>1607612233</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump kubernetes to 1.20.0 and assign 1.19.4 to *minus1 packages</comment>
+    <requestid>854267</requestid>
+  </revision>
 </revisionlist>
