@@ -18,9 +18,9 @@
 
 %define skip_python2 1
 %define appname limnoria
-%define srcver 2020-10-13
+%define srcver 2020-12-07
 Name:           python-limnoria
-Version:        2020.10.13
+Version:        2020.12.07
 Release:        0
 Summary:        A modified version of Supybot (an IRC bot and framework)
 License:        BSD-3-Clause
