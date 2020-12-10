@@ -54,7 +54,7 @@ Geeqie is a lightweight image viewer for Linux, BSDs and compatibles.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 # Needed to bootstrap

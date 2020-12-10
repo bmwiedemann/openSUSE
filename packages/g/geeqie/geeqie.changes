@@ -2,27 +2,28 @@
 Thu Dec  3 14:14:57 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 1.6:
-  - Support (excluding exif) for heic, webp, psd, cr3, jp2, djvu, svg
-  - Load remote URLs
-  - Save named window layouts
-  - Save workspace layout
-  - Export duplicates data to file
-  - Search and Run command ("/" keystroke)
-  - Tiff/pdf multi-page viewing
-  - Show over/underexposed
-  - Search for broken images
-  - Show lens ID
-  - File pane - filter by name or class
-  - User definable status toolbar
-  - Search by path
-  - Search on collection
-  - Find duplicates with same name but different content
-  - User definable mouse buttons 8 and 9 (back/forward)
-  - Folder pane list view - sort by name or date
-  - Many small improvements
-  - Many bug fixes
-  - Updated language support
-- Removed geeqie-gcc10-buildfix.patch
+  + Support (excluding exif) for heic, webp, psd, cr3, jp2, djvu,
+    svg
+  + Load remote URLs
+  + Save named window layouts
+  + Save workspace layout
+  + Export duplicates data to file
+  + Search and Run command ("/" keystroke)
+  + Tiff/pdf multi-page viewing
+  + Show over/underexposed
+  + Search for broken images
+  + Show lens ID
+  + File pane - filter by name or class
+  + User definable status toolbar
+  + Search by path
+  + Search on collection
+  + Find duplicates with same name but different content
+  + User definable mouse buttons 8 and 9 (back/forward)
+  + Folder pane list view - sort by name or date
+  + Many small improvements
+  + Many bug fixes
+  + Updated translations.
+- Removed geeqie-gcc10-buildfix.patch: Fixed upstream.
 
 -------------------------------------------------------------------
 Mon Sep 28 13:56:57 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
