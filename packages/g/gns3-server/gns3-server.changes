@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec  4 08:06:24 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.17
+  * Close and remove projects deleted from disks after SIGHUP
+    signal is received.
+  * Release Web Ui 2.2.17
+  * New config file options to configure the VNC console port
+    range.
+  * Use asyncio.all_tasks instead of deprecated method for
+    Python 3.9 compatibility.
+
+-------------------------------------------------------------------
 Thu Nov  5 09:01:37 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.16
