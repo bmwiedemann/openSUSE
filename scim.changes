@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 10 13:06:24 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Do not build the qt4 subpackage for Leap 15.3 or newer
+  (boo#1179613).
+
+-------------------------------------------------------------------
 Thu Nov 26 16:48:21 CET 2020 - tiwai@suse.de
 
 - Move the startup snippet to /usr/etc/X11/xim.d for TW
