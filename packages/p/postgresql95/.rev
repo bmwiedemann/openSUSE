@@ -293,4 +293,14 @@
   * https://www.postgresql.org/docs/9.5/release-9-5-24.html</comment>
     <requestid>848148</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>55485bbe58176ebbddc10b9628ec9de9</srcmd5>
+    <version>9.5.24</version>
+    <time>1607612214</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1178961: %ghost the symlinks to pg_config and ecpg.
+- boo#1179765: BuildRequire libpq5 and libecpg6 when not building
+  them to avoid dangling symlinks in the devel package.</comment>
+    <requestid>854087</requestid>
+  </revision>
 </revisionlist>

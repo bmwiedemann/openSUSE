@@ -73,6 +73,10 @@ BuildRequires:  timezone
 BuildRequires:  zlib-devel
 %bcond_without  selinux
 %bcond_without  icu
+%if  !%buildlibs
+BuildRequires:  %libecpg
+BuildRequires:  %libpq
+%endif
 %if 0%{?suse_version} >= 1300
 %bcond_without  systemd
 %bcond_without  systemd_notify
@@ -917,7 +921,7 @@ fi
 %defattr(-,root,root)
 %dir %pgbasedir
 %dir %pgbindir
-%_bindir/ecpg
+%ghost %_bindir/ecpg
 %_libdir/pkgconfig/*
 %_libdir/lib*.so
 %pgbindir/ecpg
@@ -932,7 +936,7 @@ fi
 %files server-devel -f server-devel.files
 %endif
 %defattr(-,root,root)
-%_bindir/pg_config
+%ghost %_bindir/pg_config
 %pgbindir/pg_config
 %pgincludedir/server
 %pglibdir/pgxs
