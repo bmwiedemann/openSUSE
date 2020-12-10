@@ -416,6 +416,7 @@ This package contains the symlinks to replace sendmail with busybox.
 %package -n busybox-adduser
 Summary:        Busybox applets containing adduser and some shadow tools
 Requires:       busybox = %{version}
+Requires:       group(nogroup)
 Conflicts:      shadow
 
 %description -n busybox-adduser

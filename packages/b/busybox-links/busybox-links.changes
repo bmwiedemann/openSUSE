@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  9 14:41:57 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- busybox-adduser needs "nogroup" for system accounts, which have
+  no group specified.
+
+-------------------------------------------------------------------
 Tue Dec  1 14:38:57 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add conflicts: bridge-utils to busybox-iproute2: both packages

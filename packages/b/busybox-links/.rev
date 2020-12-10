@@ -100,4 +100,13 @@
   provide /usr/sbin/brctl. (forwarded request 852370 from dimstar)</comment>
     <requestid>852390</requestid>
   </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>4cd880f85e8e26db1ea010098be6cebb</srcmd5>
+    <version>MACRO</version>
+    <time>1607612248</time>
+    <user>dimstar_suse</user>
+    <comment>- busybox-adduser needs &quot;nogroup&quot; for system accounts, which have
+  no group specified.</comment>
+    <requestid>854284</requestid>
+  </revision>
 </revisionlist>
