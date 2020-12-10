@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-veusz
-Version:        3.3
+Version:        3.3.1
 Release:        0
 Summary:        Scientific plotting library for Python
 # The entire source code is GPL-2.0+ except helpers/src/_nc_cntr.c which is Python-2.0
