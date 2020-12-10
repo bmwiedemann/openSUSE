@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20201209" schemaversion="4.1">
+<image name="OBS__MicroOS___20201210" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20201209</productvar>
+      <productvar name="VERSION">20201210</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20201209,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20201210,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20201209/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20201210/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -151,6 +151,7 @@
       <repopackage name="diffutils"/>
       <repopackage name="discover" arch="x86_64"/>
       <repopackage name="discover-backend-flatpak" arch="x86_64"/>
+      <repopackage name="discover-notifier" arch="x86_64"/>
       <repopackage name="distribution-logos-openSUSE-MicroOS" arch="x86_64"/>
       <repopackage name="dmidecode" arch="x86_64"/>
       <repopackage name="docbook_4" arch="x86_64"/>
@@ -222,6 +223,7 @@
       <repopackage name="gnome-session" arch="x86_64"/>
       <repopackage name="gnome-session-core" arch="x86_64"/>
       <repopackage name="gnome-session-default-session" arch="x86_64"/>
+      <repopackage name="gnome-session-wayland" arch="x86_64"/>
       <repopackage name="gnome-settings-daemon" arch="x86_64"/>
       <repopackage name="gnome-shell" arch="x86_64"/>
       <repopackage name="gnome-shell-calendar" arch="x86_64"/>
@@ -1218,6 +1220,7 @@
       <repopackage name="patterns-microos-cloud" arch="x86_64"/>
       <repopackage name="patterns-microos-cockpit" arch="x86_64"/>
       <repopackage name="patterns-microos-defaults" arch="x86_64"/>
+      <repopackage name="patterns-microos-desktop-common" arch="x86_64"/>
       <repopackage name="patterns-microos-desktop-gnome" arch="x86_64"/>
       <repopackage name="patterns-microos-desktop-kde" arch="x86_64"/>
       <repopackage name="patterns-microos-hardware" arch="x86_64"/>
@@ -1263,6 +1266,7 @@
       <repopackage name="pkgconf"/>
       <repopackage name="pkgconf-m4"/>
       <repopackage name="pkgconf-pkg-config"/>
+      <repopackage name="plasma-browser-integration" arch="x86_64"/>
       <repopackage name="plasma-framework" arch="x86_64"/>
       <repopackage name="plasma-framework-components" arch="x86_64"/>
       <repopackage name="plasma-nm5" arch="x86_64"/>
@@ -1271,7 +1275,6 @@
       <repopackage name="plasma5-desktop" arch="x86_64"/>
       <repopackage name="plasma5-integration-plugin" arch="x86_64"/>
       <repopackage name="plasma5-pa" arch="x86_64"/>
-      <repopackage name="plasma5-pk-updates" arch="x86_64"/>
       <repopackage name="plasma5-session" arch="x86_64"/>
       <repopackage name="plasma5-session-wayland" arch="x86_64"/>
       <repopackage name="plasma5-theme-openSUSE" arch="x86_64"/>

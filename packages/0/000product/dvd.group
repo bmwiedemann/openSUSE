@@ -2872,8 +2872,12 @@
     <package name="qemu-block-nfs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="qemu-block-ssh" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="qemu-chardev-baum" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="qemu-chardev-spice" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-guest-agent" supportstatus="unsupported"/> <!-- reason: dvd:qemu-guest-agent -->
     <package name="qemu-hw-display-qxl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
+    <package name="qemu-hw-display-virtio-gpu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
+    <package name="qemu-hw-display-virtio-gpu-pci" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
+    <package name="qemu-hw-display-virtio-vga" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-hw-usb-redirect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-hw-usb-smartcard" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-ipxe" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
@@ -2881,14 +2885,16 @@
     <package name="qemu-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-microvm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-ppc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="qemu-s390" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="qemu-s390x" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="qemu-seabios" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-sgabios" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-skiboot" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="qemu-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-ui-curses" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-ui-gtk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
+    <package name="qemu-ui-opengl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-ui-spice-app" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
+    <package name="qemu-ui-spice-core" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-vgabios" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-vhost-user-gpu" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="qemu-x86" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->

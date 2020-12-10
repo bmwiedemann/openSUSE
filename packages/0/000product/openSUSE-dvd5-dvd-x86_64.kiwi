@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20201209" schemaversion="4.1">
+<image name="OBS__openSUSE___20201210" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20201209</productvar>
+      <productvar name="VERSION">20201210</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20201209,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20201210,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20201209/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20201210/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -4169,8 +4169,12 @@
       <repopackage name="qemu-block-rbd" arch="x86_64"/>
       <repopackage name="qemu-block-ssh"/>
       <repopackage name="qemu-chardev-baum"/>
+      <repopackage name="qemu-chardev-spice"/>
       <repopackage name="qemu-guest-agent"/>
       <repopackage name="qemu-hw-display-qxl"/>
+      <repopackage name="qemu-hw-display-virtio-gpu"/>
+      <repopackage name="qemu-hw-display-virtio-gpu-pci"/>
+      <repopackage name="qemu-hw-display-virtio-vga"/>
       <repopackage name="qemu-hw-usb-redirect"/>
       <repopackage name="qemu-hw-usb-smartcard"/>
       <repopackage name="qemu-ipxe"/>
@@ -4180,7 +4184,7 @@
       <repopackage name="qemu-microvm"/>
       <repopackage name="qemu-ovmf-x86_64" arch="x86_64"/>
       <repopackage name="qemu-ppc"/>
-      <repopackage name="qemu-s390"/>
+      <repopackage name="qemu-s390x"/>
       <repopackage name="qemu-seabios"/>
       <repopackage name="qemu-sgabios"/>
       <repopackage name="qemu-skiboot"/>
@@ -4188,7 +4192,9 @@
       <repopackage name="qemu-uefi-aarch64" arch="x86_64"/>
       <repopackage name="qemu-ui-curses"/>
       <repopackage name="qemu-ui-gtk"/>
+      <repopackage name="qemu-ui-opengl"/>
       <repopackage name="qemu-ui-spice-app"/>
+      <repopackage name="qemu-ui-spice-core"/>
       <repopackage name="qemu-vgabios"/>
       <repopackage name="qemu-vhost-user-gpu"/>
       <repopackage name="qemu-x86"/>
