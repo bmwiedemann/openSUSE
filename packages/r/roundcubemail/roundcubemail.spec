@@ -16,8 +16,6 @@
 #
 
 
-%define apache_serverroot %(%{_sbindir}/apxs2 -q DATADIR)
-%define apache_sysconfdir %(%{_sbindir}/apxs2 -q SYSCONFDIR)
 %define roundcubepath %{apache_serverroot}/%{name}
 %define roundcubeconfigpath %{_sysconfdir}/%{name}
 %define php_major_version       %(php -r "echo PHP_MAJOR_VERSION;")
@@ -39,8 +37,8 @@ Source7:        https://github.com/roundcube/%{name}/releases/download/%{version
 Source8:        robots.txt
 # PATCH-FIX-OPENSUSE roundcubemail-config_dir.patch -- use the general config directory /etc
 Patch0:         %{name}-config_dir.patch
-BuildRequires:  apache2-devel
-BuildRequires:  pcre-devel
+BuildRequires:  apache-rpm-macros
+BuildRequires:  apache2
 BuildRequires:  php
 Requires:       http_daemon
 Requires:       mod_php_any >= 5.4
