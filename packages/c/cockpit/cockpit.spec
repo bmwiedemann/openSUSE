@@ -58,7 +58,7 @@ Summary:        Web Console for Linux servers
 License:        LGPL-2.1-or-later
 URL:            https://cockpit-project.org/
 
-Version:        230
+Version:        232
 %if %{defined wip}
 Release:        1.%{wip}%{?dist}
 Source0:        cockpit-%{version}.tar.xz
@@ -232,6 +232,9 @@ find %{buildroot}%{_datadir}/cockpit/systemd -type f >> system.list
 echo '%dir %{_datadir}/cockpit/users' >> system.list
 find %{buildroot}%{_datadir}/cockpit/users -type f >> system.list
 
+echo '%dir %{_datadir}/cockpit/metrics' >> system.list
+find %{buildroot}%{_datadir}/cockpit/metrics -type f >> system.list
+
 echo '%dir %{_datadir}/cockpit/kdump' >> kdump.list
 find %{buildroot}%{_datadir}/cockpit/kdump -type f >> kdump.list
 
@@ -261,7 +264,7 @@ find %{buildroot}%{_datadir}/cockpit/playground -type f >> tests.list
 
 # when not building basic packages, remove their files
 %if 0%{?build_basic} == 0
-for pkg in base1 branding motd kdump networkmanager selinux shell sosreport ssh static systemd tuned users; do
+for pkg in base1 branding motd kdump networkmanager selinux shell sosreport ssh static systemd tuned users metrics; do
     rm -r %{buildroot}/%{_datadir}/cockpit/$pkg
     rm -rf %{buildroot}/usr/src/debug/%{_datadir}/cockpit/$pkg
     rm -f %{buildroot}/%{_datadir}/metainfo/org.cockpit-project.cockpit-${pkg}.metainfo.xml
@@ -435,7 +438,7 @@ Recommends: (reportd >= 0.7.1 if abrt)
 %endif
 # NPM modules which are also available as packages
 Provides: bundled(js-jquery) = 3.5.1
-Provides: bundled(js-moment) = 2.28.0
+Provides: bundled(js-moment) = 2.29.1
 Provides: bundled(nodejs-flot) = 0.8.3
 Provides: bundled(xstatic-bootstrap-datepicker-common) = 1.9.0
 Provides: bundled(xstatic-patternfly-common) = 3.59.5
