@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 10 14:04:33 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Do not build the qt4 subpackage for Leap 15.3 or newer
+  (boo#1179613).
+
+-------------------------------------------------------------------
 Tue Mar  3 19:49:00 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 6.2.0

@@ -18,6 +18,8 @@
 #
 
 
+%define build_qt4 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
+
 Name:           yate
 Version:        6.2.0
 Release:        0
@@ -42,7 +44,7 @@ BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(spandsp)
 BuildRequires:  pkgconfig(speex)
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?suse_version} <= 1500
+%if %{build_qt4}
 BuildRequires:  libqt4-devel
 %else
 # Needed to avoid conflicts caused by providers.conf which is now in the main package
@@ -77,7 +79,7 @@ Requires:       libyate6 = %{version}
 This package contains all necessary include files and libraries needed
 to compile and develop applications that use Yate.
 
-%if 0%{?suse_version} <= 1500
+%if %{build_qt4}
 %package qt4
 Summary:        Qt4 client package for Yate
 License:        GPL-2.0-only
@@ -121,7 +123,7 @@ make #%%{?_smp_mflags} # Parallel build causes side-effects (compile errors)
 
 %install
 %make_install
-%if 0%{?suse_version} <= 1500
+%if %{build_qt4}
 %suse_update_desktop_file -i %{name}-qt4 Network Telephony Qt
 rm %{buildroot}%{_prefix}/lib/menu/yate-qt4.menu # Unused, causes lots of rpmlint warnings
 %endif
@@ -135,7 +137,7 @@ This %{name} package has been built with AMRNB support.
 EOF
 %endif
 
-%if 0%{?suse_version} > 1500
+%if !%{build_qt4}
 # These files are installed unconditionally but belong to the -qt4 package
 rm -fr %{buildroot}%{_datadir}/%{name}/skins
 rm -fr %{buildroot}%{_datadir}/%{name}/help
@@ -146,7 +148,7 @@ rm %{buildroot}%{_sysconfdir}/%{name}/yate-qt4.conf
 
 %post   -n libyate6 -p /sbin/ldconfig
 %postun -n libyate6 -p /sbin/ldconfig
-%if 0%{?suse_version} <= 1500
+%if %{build_qt4}
 %post qt4 -p /sbin/ldconfig
 %postun qt4 -p /sbin/ldconfig
 %endif
@@ -306,7 +308,7 @@ rm %{buildroot}%{_sysconfdir}/%{name}/yate-qt4.conf
 %{_mandir}/man8/%{name}-config.8%{?ext_man}
 %{_libdir}/pkgconfig/%{name}.pc
 
-%if 0%{?suse_version} <= 1500
+%if %{build_qt4}
 %files qt4
 %{_bindir}/yate-qt4
 %{_libdir}/libyateqt4.so.*
