@@ -18,9 +18,9 @@
 
 
 %global base_name jetty
-%global addver  .v20200611
+%global addver  .v20201120
 Name:           %{base_name}-websocket
-Version:        9.4.30
+Version:        9.4.35
 Release:        0
 Summary:        The websocket modules for Jetty
 License:        Apache-2.0 OR EPL-1.0
@@ -136,9 +136,6 @@ find . -name "*.class" -exec rm {} \;
 %pom_remove_plugin -r :flatten-maven-plugin jetty-bom
 
 %pom_disable_module aggregates/jetty-all
-
-# Use proper groupId for apache ant
-%pom_xpath_replace "pom:groupId[text()='ant']" "<groupId>org.apache.ant</groupId>" jetty-ant/pom.xml
 
 %pom_remove_dep "com.sun.net.httpserver:http" jetty-http-spi
 

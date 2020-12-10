@@ -39,4 +39,12 @@
     <comment>9.4.30.v20200611</comment>
     <requestid>849426</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>27b7c44fab128eff61d9903d4d715a53</srcmd5>
+    <version>9.4.35</version>
+    <time>1607612283</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1179727, CVE-2020-27218</comment>
+    <requestid>853651</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  7 18:12:50 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 9.4.35.v20201120
+  * Fixes bsc#1179727, CVE-2020-27218
+
+-------------------------------------------------------------------
 Thu Nov 19 13:05:09 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 9.4.30.v20200611
