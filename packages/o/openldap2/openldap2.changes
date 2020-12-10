@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 11 12:13:27 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- updated to 2.4.56
+
+OpenLDAP 2.4.56 Release (2020/11/10)
+  Fixed slapd to remove assert in certificateListValidate (ITS#9383)
+  Fixed slapd to remove assert in csnNormalize23 (ITS#9384)
+  Fixed slapd to better parse ldapi listener URIs (ITS#9379)
+
+-------------------------------------------------------------------
 Tue Oct 27 01:01:54 UTC 2020 - William Brown <william.brown@suse.com>
 
 - bsc#1175568 CVE-2020-8027
