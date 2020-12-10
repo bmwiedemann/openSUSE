@@ -40,7 +40,7 @@
 -    if (JavaVersion.current().java7Compatible) {
 -        dependsOn 'asciidocAll', 'assembleAsciidoc'
 -    }
-     ext.footer = 'Copyright &copy; 2003-2018 The Apache Software Foundation. All rights reserved.'
+     ext.footer = 'Copyright &copy; 2003-2019 The Apache Software Foundation. All rights reserved.'
      ext.title = "Groovy ${groovyVersion}"
  }
  

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec  7 22:39:21 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 2.4.21
+  * Fixes bsc#1179729, CVE-2020-17521
+- Modified patch:
+  * 0003-Bintray.patch
+    + Rediff to changed context
+
+-------------------------------------------------------------------
 Thu Apr  9 09:15:55 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Avoid bogus eclipse-platform dependencies

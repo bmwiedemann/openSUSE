@@ -17,7 +17,7 @@
 
 
 Name:           groovy
-Version:        2.4.16
+Version:        2.4.21
 Release:        0
 Summary:        Dynamic language for the Java Platform
 License:        Apache-2.0 AND BSD-3-Clause AND EPL-1.0 AND SUSE-Public-Domain AND CC-BY-2.5
@@ -252,6 +252,8 @@ find \( -name *.jar -o -name *.class \) -delete
 %{mvn_package} ':groovy::indy:'
 %{mvn_package} ':groovy-{*}' @1
 %{mvn_package} ':groovy-{*}::indy:' @1
+
+sed -i 's#organization\ =#organization#g' gradle/pomconfigurer.gradle 
 
 %build
 %{gradle_build} -f -G jarAll -- -x javadoc -Pindy=true
