@@ -44,4 +44,13 @@
   * clientv3: cancel watches proactively on client context cancellation</comment>
     <requestid>833434</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b50df37a5ada50370e048494d49a0221</srcmd5>
+    <version>3.4.13</version>
+    <time>1607612267</time>
+    <user>dimstar_suse</user>
+    <comment>- Add provides etcd-for-k8s1.20 so it will also work with
+  k8s 1.20</comment>
+    <requestid>854498</requestid>
+  </revision>
 </revisionlist>

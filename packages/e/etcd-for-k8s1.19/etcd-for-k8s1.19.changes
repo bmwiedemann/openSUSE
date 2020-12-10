@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 10 10:02:26 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Add provides etcd-for-k8s1.20 so it will also work with
+  k8s 1.20
+
+-------------------------------------------------------------------
 Thu Sep 10 09:55:45 UTC 2020 - rbrown@suse.com
 
 - Update to version 3.4.13:

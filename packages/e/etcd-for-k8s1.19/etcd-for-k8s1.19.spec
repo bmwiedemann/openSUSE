@@ -37,6 +37,8 @@ Conflicts:      etcd
 Conflicts:      etcdctl
 Provides:       etcd-for-k8s = %{version}
 Conflicts:      etcd-for-k8s
+# k8s 1.20 uses same etcd
+Provides:       etcd-for-k8s1.20
 
 %description
 etcd is a distributed, consistent key-value store for shared configuration and
