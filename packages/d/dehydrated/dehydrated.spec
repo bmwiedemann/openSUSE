@@ -45,7 +45,7 @@
 %endif
 
 Name:           dehydrated
-Version:        0.6.5
+Version:        0.7.0
 Release:        0
 Summary:        A client for signing certificates with an ACME server
 License:        MIT

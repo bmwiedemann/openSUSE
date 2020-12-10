@@ -199,4 +199,32 @@
     <comment>- dehydrated-apache2: Check for mod_compat (bsc#1178927)</comment>
     <requestid>849382</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>da101ba88057df898a31f1fd1f9a0531</srcmd5>
+    <version>0.7.0</version>
+    <time>1607620796</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to dehydrated 0.7.0 (JSC#SLE-15909)
+  Added
+    Support for external account bindings
+    Special support for ZeroSSL
+    Support presets for some CAs instead of requiring URLs
+    Allow requesting preferred chain (--preferred-chain)
+    Added method to show CAs current terms of service (--display-terms)
+    Allow setting path to domains.txt using cli arguments (--domains-txt)
+    Added new cli command --cleanupdelete which deletes old files instead of archiving them
+  Fixed
+    No more silent failures on broken hook-scripts
+    Better error-handling with KEEP_GOING enabled
+    Check actual order status instead of assuming it's valid
+    Don't include keyAuthorization in challenge validation (RFC compliance)
+  Changed
+    Using EC secp384r1 as default certificate type
+    Use JSON.sh to parse JSON
+    Use account URL instead of account ID (RFC compliance)
+    Dehydrated now has a new home: https://github.com/dehydrated-io/dehydrated
+    Added OCSP_FETCH and OCSP_DAYS to per-certificate configurable options
+    Cleanup now also removes dangling symlinks</comment>
+    <requestid>854627</requestid>
+  </revision>
 </revisionlist>
