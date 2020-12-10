@@ -243,17 +243,53 @@ Requires:       cloud-init-config-MicroOS
 %description cloud
 Packages required to enable openSUSE MicroOS in the Cloud.
 
+%package desktop-common
+Summary:        Common packages for Desktops on MicroOS
+Group:          Metapackages
+Provides:       pattern() = microos_desktop_common
+Provides:       pattern-category() = MicroOS
+Provides:       pattern-icon() = pattern-x11
+Provides:       pattern-order() = 9100
+Requires:       pattern() = x11
+
+# Pulseaudio is the default sound server
+Requires:       alsa-plugins-pulse
+Requires:       pulseaudio-module-bluetooth
+Requires:       pulseaudio-module-gsettings
+Requires:       pulseaudio-module-x11
+Requires:       pulseaudio-module-zeroconf
+Requires:       pulseaudio-utils
+
+# Allow users to print (and add some common printer drivers)
+Requires:       OpenPrintingPPDs
+Requires:       cups
+Requires:       cups-filters
+Requires:       hplip-hpijs
+
+Requires:       bluez-firmware
+Requires:       hicolor-icon-theme-branding-openSUSE
+Requires:       polkit-default-privs
+Requires:       udisks2
+Requires:       upower
+
+%if 0%{is_opensuse}
+Requires:       avahi
+%endif
+
+%description desktop-common
+Packages required for openSUSE MicroOS Desktops.
+
 %package desktop-gnome
 Summary:        MicroOS GNOME Desktop
 Group:          Metapackages
 Provides:       pattern() = microos_gnome_desktop
 Provides:       pattern-category() = MicroOS
-Provides:       pattern-icon() = pattern-generic
+Provides:       pattern-icon() = pattern-gnome
 Provides:       pattern-order() = 9100
 Provides:       pattern-visible()
 Requires:       gdm-branding-MicroOS
 Requires:       pattern() = gnome_basic
-Requires:       pattern() = x11
+Requires:       pattern() = microos_desktop_common
 # from data/COMMON-DESKTOP
 Requires:       desktop-data
 Requires:       desktop-file-utils
@@ -277,20 +313,21 @@ Requires:       gnome-power-manager
 #   somehow a bit usable
 #
 Requires:       gnome-session-default-session
+# ensure we have wayland session available (and used by default)
+Requires:       gnome-session-wayland
 # boo#1090117
-Requires:       gnome-shell-classic
-Requires:       gnome-terminal
-# bnc#879466
-Requires:       gnome-user-docs
-Requires:       gpgme
-# we need something for xdg-su
 Requires:       flatpak
 Requires:       gnome-calculator
 Requires:       gnome-packagekit
+Requires:       gnome-shell-classic
 Requires:       gnome-software
 Requires:       gnome-system-monitor
+Requires:       gnome-terminal
 Requires:       gnome-tweak-tool
 Requires:       gnome-usage
+Requires:       gnome-user-docs
+# bnc#879466
+Requires:       gpgme
 # for online accounts and calendar integration
 Requires:       gnome-bluetooth
 Requires:       gnome-control-center-goa
@@ -302,6 +339,7 @@ Requires:       gsf-office-thumbnailer
 Requires:       rsvg-thumbnailer
 # So that GNOME shell extensions can be installed
 Requires:       chrome-gnome-shell
+# we need something for xdg-su
 Requires:       libgnomesu
 Requires:       nautilus
 Requires:       nautilus-extension-terminal
@@ -311,12 +349,6 @@ Requires:       nautilus-extension-seahorse
 Requires:       seahorse-daemon
 # So Trash and mounting USB sticks work in Nautilus
 Requires:       gvfs-backends
-Requires:       udisks2
-# Allow users to print (and add some common printer drivers)
-Requires:       OpenPrintingPPDs
-Requires:       cups
-Requires:       cups-filters
-Requires:       hplip-hpijs
 # We need the icons to work
 Requires:       adwaita-icon-theme
 # Some fonts
@@ -333,20 +365,14 @@ Requires:       google-roboto-fonts
 Requires:       noto-coloremoji-fonts
 Requires:       noto-emoji-fonts
 Requires:       noto-sans-fonts
-Requires:       polkit-default-privs
 # Common tools, helpful during initial setup
 Requires:       unzip
 Requires:       wget
 # Pulseaudio is the default sound server
-Requires:       pulseaudio-module-bluetooth
 Requires:       pulseaudio-module-gsettings
-Requires:       pulseaudio-module-x11
 # So that GNOME keyring works
 Requires:       gcr-ssh-askpass
 Requires:       samba
-# implied by gnome-bluetooth
-#Requires:       bluez
-Requires:       bluez-firmware
 # #509829
 Requires:       xdg-user-dirs-gtk
 Requires:       yelp
@@ -356,12 +382,7 @@ Requires:       yelp
 %if 0%{is_opensuse}
 # bnc#430161
 Requires:       NetworkManager
-%endif
-%if 0%{is_opensuse}
 Requires:       canberra-gtk-play
-%endif
-%if 0%{is_opensuse}
-Requires:       avahi
 #
 # Branding
 #
@@ -369,7 +390,6 @@ Requires:       avahi
 Requires:       gio-branding-openSUSE
 Requires:       gtk2-branding-openSUSE
 Requires:       gtk3-branding-openSUSE
-Requires:       hicolor-icon-theme-branding-openSUSE
 
 #PackageKit
 Requires:       PackageKit
@@ -384,10 +404,11 @@ Summary:        MicroOS KDE Plasma Desktop
 Group:          Metapackages
 Provides:       pattern() = microos_kde_desktop
 Provides:       pattern-category() = MicroOS
-Provides:       pattern-icon() = pattern-generic
+Provides:       pattern-icon() = pattern-kde
 Provides:       pattern-order() = 9101
 Provides:       pattern-visible()
 Requires:       pattern() = kde_plasma
+Requires:       pattern() = microos_desktop_common
 
 # Some basic system tools
 Requires:       kate
@@ -405,7 +426,8 @@ Requires:       phonon4qt5-backend-gstreamer
 Requires:       plasma-nm5
 Requires:       plasma5-addons
 Requires:       plasma5-pa
-Requires:       plasma5-pk-updates
+# PackageKit doesn't handle MicroOS yet
+#Requires:       plasma5-pk-updates
 Requires:       plasma5-session-wayland
 Requires:       sddm
 # Not useful with excludedocs...
@@ -414,21 +436,18 @@ Requires:       kio-extras5
 Requires:       kwalletmanager5
 Requires:       pinentry-qt5
 
-Requires:       alsa-plugins-pulse
-Requires:       pulseaudio
-Requires:       pulseaudio-module-x11
-Requires:       pulseaudio-module-zeroconf
-Requires:       pulseaudio-utils
-
 # Recommends and Supplements won't work, so pull in manually
 Requires:       discover-backend-flatpak
 Requires:       pipewire
+Requires:       plasma-browser-integration
 Requires:       plasma5-defaults-openSUSE
+Requires:       purpose
 Requires:       qqc2-desktop-style
 Requires:       sddm-theme-openSUSE
-Requires:       udisks2
-Requires:       upower
 Requires:       xdg-desktop-portal-kde
+
+# Doesn't depend on PackageKit, but also works for other backends
+Requires:       discover-notifier
 
 %description desktop-kde
 Packages required for the openSUSE MicroOS with KDE Plasma
@@ -498,8 +517,8 @@ Alternative additional packages on a openSUSE MicroOS DVD.
 
 %install
 mkdir -p %buildroot/usr/share/doc/packages/patterns-microos/
-for i in basesystem base defaults hardware ima_evm apparmor selinux cockpit sssd_ldap cloud desktop-gnome desktop-kde \
-    onlyDVD alt_onlyDVD; do
+for i in basesystem base defaults hardware ima_evm apparmor selinux cockpit \
+    sssd_ldap cloud desktop-common desktop-gnome desktop-kde onlyDVD alt_onlyDVD; do
 	echo "This file marks the pattern $i to be installed." >%buildroot/usr/share/doc/packages/patterns-microos/$i.txt
 done
 
@@ -551,6 +570,11 @@ done
 %defattr(-,root,root)
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/cloud.txt
+
+%files desktop-common
+%defattr(-,root,root)
+%dir %{_docdir}/patterns-microos
+%{_docdir}/patterns-microos/desktop-common.txt
 
 %files desktop-gnome
 %defattr(-,root,root)

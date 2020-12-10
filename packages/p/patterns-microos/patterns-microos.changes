@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec  8 14:07:24 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
+
+- Ensure gnome-session-wayland is pulled by GNOME desktop pattern.
+
+-------------------------------------------------------------------
+Thu Dec  3 11:21:45 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Add desktop-common pattern for packages common to GNOME and KDE
+  patterns
+- Some small cleanups, also because of the source formatter...
+- Use proper icons for desktop patterns
+- Switch the KDE pattern from plasma5-pk-updates to discover-notifier
+  and add plasma-browser-integration
+
+-------------------------------------------------------------------
 Wed Nov 25 08:02:23 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Add udisks2 and upower to the Plasma desktop pattern
