@@ -34,6 +34,8 @@ BuildRequires:  golang(API) >= 1.13
 Conflicts:      coredns
 Provides:       coredns-for-k8s = %{version}
 Conflicts:      coredns-for-k8s
+# k8s 1.20 uses the same version of coredns
+Provides:       coredns-for-k8s1.20
 
 %description
 CoreDNS is a DNS server in Go. It has a plugin architecture for
