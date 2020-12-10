@@ -1503,6 +1503,7 @@ unsorted:
   - budgie-desktop-devel 
   - budgie-desktop-doc 
   - budgie-desktop-lang 
+  - budgie-desktop-view 
   - budgie-haste-applet 
   - budgie-haste-applet-lang 
   - budgie-screensaver 
@@ -13385,8 +13386,8 @@ unsorted:
   - libregf-tools 
   - libregf1 
   - libregina3 
-  - libreiser4-2_0-0 
-  - libreiser4-minimal-2_0-0 
+  - libreiser4-2_0-4 
+  - libreiser4-minimal-2_0-4 
   - libreiserfs-0_3-0 
   - libreiserfs-0_3-0-32bit: [x86_64] 
   - libreiserfs-devel 
@@ -13515,7 +13516,7 @@ unsorted:
   - librep 
   - librep-devel 
   - librep16 
-  - librepair-2_0-0 
+  - librepair-2_0-4 
   - libreplaygain-devel 
   - libreplaygain1 
   - librepo-devel 
@@ -22318,6 +22319,7 @@ unsorted:
   - python3-fb-re2 
   - python3-featureflow 
   - python3-fedmsg 
+  - python3-fedmsg-tests 
   - python3-fedora-messaging 
   - python3-feedgen 
   - python3-feedgenerator 
@@ -22534,6 +22536,7 @@ unsorted:
   - python3-httpretty 
   - python3-httpsig_cffi 
   - python3-httptools 
+  - python3-hug 
   - python3-humanfriendly 
   - python3-humanhash3 
   - python3-humanize 
@@ -34833,6 +34836,7 @@ unsorted:
   - transifex-client 
   - translate-shell 
   - translate-toolkit-devel-doc 
+  - translate-toolkit-doc 
   - translation-update-bg 
   - translation-update-ca 
   - translation-update-dz 
