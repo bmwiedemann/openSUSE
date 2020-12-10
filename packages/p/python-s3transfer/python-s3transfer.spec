@@ -17,7 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%if 0%{?suse_version} >= 1500
+%define skip_python2 1
+%endif
 Name:           python-s3transfer
 Version:        0.3.3
 Release:        0
