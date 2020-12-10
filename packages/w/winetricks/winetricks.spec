@@ -17,7 +17,7 @@
 
 
 Name:           winetricks
-Version:        20200412
+Version:        20201206
 Release:        0
 Summary:        A way to work around problems in WINE
 License:        LGPL-2.1-or-later
