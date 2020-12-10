@@ -262,4 +262,17 @@
     <comment>Push GNOME 3.38</comment>
     <requestid>847201</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>44add07bbc31d13c28a0052233e488af</srcmd5>
+    <version>3.38.1+7</version>
+    <time>1607620800</time>
+    <user>dimstar_suse</user>
+    <comment>- Udpate to version 3.38.1+7:
+  + gcal-timeline: never reset completed_calendars.
+  + gcal-timeline: completed_calendars should be unsigned.
+  + Updated translations.
+- Switch to _service: upstream did not produce a 3.38.2 tarball,
+  but 3.38.1 crashes, so we do want to move quicker. (forwarded request 854623 from dimstar)</comment>
+    <requestid>854628</requestid>
+  </revision>
 </revisionlist>
