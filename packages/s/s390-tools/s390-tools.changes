@@ -1,4 +1,189 @@
 -------------------------------------------------------------------
+Mon Dec  7 17:53:46 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 2.15.1. (bsc#1178250, jsc#SLE-13663)
+- Added s390-tools-sles15sp3-dasdfmt-Fix-segfault-when-an-incorrect-option-is-spe.patch
+  (bsc#1178313). When specifying an incorrect program option, dasdfmt segfaults
+  as the format string for the corresponding error message has no parameter.
+- Added s390-tools-sles15sp3-libutil-Compare-proc-entries-to-vfstype.patch
+  (bsc#1178315). The fdasd command was failing if sysfs was mounted this way:
+  mount -t sysfs none /sys
+  To make sure that the mount point of the sysfs is still found when mounted
+  with a device keyword specified other than 'sysfs', check for the filesystem
+  type instead, which is more specific.
+- Added the following patches for bsc#1178427, and jsc#SLE-13768,
+  Log DASD info for endpoint security
+  * s390-tools-sles15sp3-01-zdev-Add-FC-Endpoint-Security-information-for-DASD-d.patch
+  * s390-tools-sles15sp3-02-lsdasd-Add-FC-Endpoint-Security-information.patch
+- Added the following patch for bsc#1178628 and jsc#SLE-13765, Converged
+  HiperSockets/Ethernet Interface
+  * s390-tools-sles15sp3-hsci-Add-new-tool-to-control-HiperSockets-Converged-.patch
+- Added the following patches for bsc#1178992 and jsc#SLE-13772, Add host-key
+  document verification support to genprotimg.
+  * s390-tools-sles15sp3-01-genprotimg-abort-if-one-of-the-recursive-targets-is-.patch
+  * s390-tools-sles15sp3-02-genprotimg-fix-two-memory-leaks.patch
+  * s390-tools-sles15sp3-03-genprotimg-require-argument-for-ramdisk-and-parmfile.patch
+  * s390-tools-sles15sp3-04-genprotimg-add-host-key-document-verification-suppor.patch
+- Added the following patch for bsc#1178734. Running zcryptstats when many domains
+  are available per cryto card does not produce any output, and is hanging in a loop.
+  * s390-tools-sles15sp3-zcryptstats-Fix-handling-of-partial-results-with-man.patch
+- Reworked and renamed the following patches to accommodate changes made by IBM
+  to the structure of the dasdfmt command.
+  * s390-tools-sles15-Allow-multiple-device-arguments.patch renamed to
+    s390-tools-sles15sp3-Allow-multiple-device-arguments.patch.
+  * s390-tools-sles15-Format-devices-in-parallel.patch renamed to
+    s390-tools-sles15sp3-Format-devices-in-parallel.patch
+  * dasdfmt-retry-BIODASDINFO-if-device-is-busy.patch renamed to
+    s390-tools-sles15sp3-dasdfmt-retry-BIODASDINFO-if-device-is-busy.patch
+  * s390-tools-sles15-Implement-f-for-backwards-compability.patch renamed to
+    s390-tools-sles15sp3-Implement-f-for-backwards-compability.patch renamed to
+  * s390-tools-sles15-Implement-Y-yast_mode.patch
+    s390-tools-sles15sp3-Implement-Y-yast_mode.patch
+
+-------------------------------------------------------------------
+Tue Oct 27 23:06:45 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 2.15.0 (jsc#SLE-13662, jsc#SLE-13663,
+  jsc#SLE-13667, jsc#SLE-13724, jsc#SLE-13728, jsc#SLE-13730,
+  jsc#SLE-13739, jsc#SLE-13744, jsc#SLE-13751, jsc#SLE-13755,
+  jsc#SLE-13765, jsc#SLE-13768, jsc#SLE-13777, jsc#SLE-13814,
+  jsc#SLE-13819, jsc#SLE-13820)
+- Reworked s390-tools-sles12-sysconfig-compatible-dumpconf.patch to fit the
+  current version and renamed it to s390-tools-sles15-sysconfig-compatible-dumpconf.patch
+- Removed the following obsolete patches:
+  * s390-tools-sles15sp2-01-zkey-Separate-and-rework-CCA-host-library-loading.patch
+  * s390-tools-sles15sp2-02-zkey-Move-utility-functions-into-separate-source-fil.patch
+  * s390-tools-sles15sp2-03-zkey-Add-utility-function-to-get-the-serial-number-o.patch
+  * s390-tools-sles15sp2-04-zkey-Add-utility-function-to-get-the-mkvp-of-a-crypt.patch
+  * s390-tools-sles15sp2-05-zkey-add-function-to-iterate-over-all-available-CCA-.patch
+  * s390-tools-sles15sp2-06-zkey-Add-function-to-print-the-MKVPs-of-APQNs.patch
+  * s390-tools-sles15sp2-07-zkey-Add-function-to-cross-check-APQNs-for-valid-mas.patch
+  * s390-tools-sles15sp2-08-zkey-Add-function-to-obtain-the-mkvp-of-a-secure-key.patch
+  * s390-tools-sles15sp2-09-zkey-Display-MKVP-when-validating-a-secure-key.patch
+  * s390-tools-sles15sp2-10-zkey-Cross-check-APQNs-when-generating-secure-keys.patch
+  * s390-tools-sles15sp2-11-zkey-Cross-check-APQNs-when-validating-secure-keys.patch
+  * s390-tools-sles15sp2-12-zkey-Cross-check-APQNs-when-importing-secure-keys.patch
+  * s390-tools-sles15sp2-13-zkey-Cross-check-APQNs-when-changing-APQN-associatio.patch
+  * s390-tools-sles15sp2-14-zkey-Add-function-to-select-a-specific-CCA-adapter.patch
+  * s390-tools-sles15sp2-15-zkey-Add-function-to-select-a-CCA-adapter-by-mkvp.patch
+  * s390-tools-sles15sp2-16-zkey-Select-CCA-adapter-when-re-enciphering.patch
+  * s390-tools-sles15sp2-17-zkey-cryptsetup-Add-to-new-and-from-old-options.patch
+  * s390-tools-sles15sp2-18-zkey-Display-key-type-with-list-and-validate-command.patch
+  * s390-tools-sles15sp2-19-zkey-Allow-to-filter-list-output-by-key-type.patch
+  * s390-tools-sles15sp2-20-zkey-Allow-to-specify-the-key-type-with-the-generate.patch
+  * s390-tools-sles15sp2-21-zkey-Preparations-for-introducing-a-new-key-type.patch
+  * s390-tools-sles15sp2-22-zkey-Introduce-the-CCA-AESCIPHER-key-type.patch
+  * s390-tools-sles15sp2-23-zkey-Add-wrappers-for-the-new-IOCTLs-with-fallback-t.patch
+  * s390-tools-sles15sp2-24-zkey-Add-helper-functions-to-build-lists-of-APQNs.patch
+  * s390-tools-sles15sp2-25-zkey-Add-support-for-generating-AES-CIPHER-keys.patch
+  * s390-tools-sles15sp2-26-zkey-Add-support-for-validating-AES-CIPHER-keys.patch
+  * s390-tools-sles15sp2-27-zkey-Add-support-for-re-enciphering-AES-CIPHER-keys.patch
+  * s390-tools-sles15sp2-28-zkey-Check-crypto-card-level-during-APQN-cross-check.patch
+  * s390-tools-sles15sp2-29-zkey-Add-helper-function-to-query-the-CCA-firmware-v.patch
+  * s390-tools-sles15sp2-30-zkey-Add-helper-function-to-convert-secure-keys-betw.patch
+  * s390-tools-sles15sp2-31-zkey-Add-helper-function-to-restrict-export-of-secur.patch
+  * s390-tools-sles15sp2-32-zkey-Add-helper-function-to-check-an-AES-CIPHER-key.patch
+  * s390-tools-sles15sp2-33-zkey-Add-key-checks-when-importing-a-CCA-AESCIPHER-k.patch
+  * s390-tools-sles15sp2-34-zkey-Add-convert-command-to-convert-keys-from-one-ty.patch
+  * s390-tools-sles15sp2-35-zkey-Allow-zkey-cryptsetup-setkey-to-set-different-k.patch
+  * s390-tools-sles15sp2-zcrypt-CEX7S-exploitation-support.patch
+  * s390-tools-sles15sp2-zcryptstats-Add-support-for-CEX7.patch
+  * s390-tools-sles15sp2-zkey-Fix-listing-of-keys-on-file-systems-reporting-D.patch
+  * s390-tools-sles15sp2-zkey-Fix-display-of-clear-key-size-for-XTS-keys.patch
+  * s390-tools-sles15sp2-zkey-Fix-display-of-XTS-attribute-for-validate-comma.patch
+  * s390-tools-sles15sp2-zkey-Fix-display-of-clear-key-size-for-CCA-AESCIPHER.patch
+  * s390-tools-sles15sp2-01-zipl-libc-Introduce-vsnprintf.patch
+  * s390-tools-sles15sp2-02-zipl-libc-Fix-potential-buffer-overflow-in-printf.patch
+  * s390-tools-sles15sp2-03-zipl-libc-Replace-sprintf-with-snprintf.patch
+  * s390-tools-sles15sp2-04-zipl-libc-Indicate-truncated-lines-in-printf-with.patch
+  * s390-tools-sles15sp2-01-zpcictl-Initiate-recover-after-reset.patch
+  * s390-tools-sles15sp2-02-zpcictl-Rename-misleading-sysfs_write_data.patch
+  * s390-tools-sles15sp2-03-zpcitctl-Exit-on-error-in-sysfs_report_error.patch
+  * s390-tools-sles15sp2-01-zipl-fix-Wdiscarded-qualifiers.patch
+  * s390-tools-sles15sp2-02-zipl-fix-Waddress-of-packed-member.patch
+  * s390-tools-sles15sp2-03-zipl-remove-some-useless-__packed___-attributes.patch
+  * s390-tools-sles15sp2-04-zipl-Fix-entry-point-for-stand-alone-kdump.patch
+  * s390-tools-sles15sp2-05-zipl-Fix-dependency-generation-in-zipl-boot.patch
+  * s390-tools-sles15sp2-06-zipl-Make-use-of-__packed-macro.patch
+  * s390-tools-sles15sp2-07-zipl-define-__section-macro-and-make-use-of-it.patch
+  * s390-tools-sles15sp2-08-zipl-Make-use-of-__noreturn-macro.patch
+  * s390-tools-sles15sp2-09-zipl-Define-__noinline-macro-and-make-use-of-it.patch
+  * s390-tools-sles15sp2-10-zipl-stage3-Mark-start_kernel-__noreturn.patch
+  * s390-tools-sles15sp2-11-zipl-sclp-Remove-duplicate-macros.patch
+  * s390-tools-sles15sp2-12-zipl-Make-address-size-mask-macros-UL.patch
+  * s390-tools-sles15sp2-13-zipl-libc-Use-stdint.h-instead-of-self-defined-macro.patch
+  * s390-tools-sles15sp2-14-zipl-Consolidate-IMAGE-macros.patch
+  * s390-tools-sles15sp2-15-zipl-Consolidate-STAGE-2-3-macros.patch
+  * s390-tools-sles15sp2-16-zipl-stfle-use-uint64_t-instead-of-u64.patch
+  * s390-tools-sles15sp2-17-zipl-boot-fix-comment-in-stage3.lds.patch
+  * s390-tools-sles15sp2-18-lib-zt_common-add-STATIC_ASSERT-macro.patch
+  * s390-tools-sles15sp2-19-zipl-use-STATIC_ASSERT-macro-for-no-padding-verifica.patch
+  * s390-tools-sles15sp2-20-Support-lib-zt_common.h-to-be-used-in-assembler-and-.patch
+  * s390-tools-sles15sp2-21-zipl-move-IPL-related-definitions-into-separate-head.patch
+  * s390-tools-sles15sp2-22-zipl-move-SIGP-related-functions-and-definitions-int.patch
+  * s390-tools-sles15sp2-23-zipl-add-SIGP_SET_ARCHITECTURE-to-sigp.h-and-use-it.patch
+  * s390-tools-sles15sp2-24-zipl-stage3-make-IPL_DEVICE-definition-consistent-wi.patch
+  * s390-tools-sles15sp2-25-zipl-move-Linux-layout-definitions-into-separate-hea.patch
+  * s390-tools-sles15sp2-26-zipl-tape0-use-constants-defined-in-linux_layout.h.patch
+  * s390-tools-sles15sp2-27-zipl-use-STAGE3_ENTRY-for-STAGE3_LOAD_ADDRESS.patch
+  * s390-tools-sles15sp2-28-zipl-move-loaders-layout-definitions-into-separate-h.patch
+  * s390-tools-sles15sp2-29-zipl-s390.h-rename-inline-macro-into-__always_inline.patch
+  * s390-tools-sles15sp2-30-zipl-move-__always_inline-barrier-__pa32-pa-to-zt_co.patch
+  * s390-tools-sles15sp2-31-zipl-make-BLK_PWRT-unsigned-int.patch
+  * s390-tools-sles15sp2-32-Consolidate-MIN-and-MAX-macros.patch
+  * s390-tools-sles15sp2-33-zipl-remove-libc.h-include-in-s390.h.patch
+  * s390-tools-sles15sp2-34-zipl-move-s390.h-to-include-boot-s390.h.patch
+  * s390-tools-sles15sp2-35-zipl-libc-include-s390.h.patch
+  * s390-tools-sles15sp2-36-include-boot-s390.h-move-panic-and-panic_notify-to-l.patch
+  * s390-tools-sles15sp2-37-include-boot-s390.h-fixes-for-Werror-sign-conversion.patch
+  * s390-tools-sles15sp2-38-zipl-refactor-all-EBCDIC-code-into-separate-files.patch
+  * s390-tools-sles15sp2-39-zipl-sclp-add-macros-for-the-control-program-masks.patch
+  * s390-tools-sles15sp2-40-zipl-sclp-add-sclp_print_ascii.patch
+  * s390-tools-sles15sp2-41-zipl-libc-printf-print-on-linemode-and-ASCII-console.patch
+  * s390-tools-sles15sp2-42-Consolidate-ALIGN-__ALIGN_MASK-ARRAY_SIZE-macros.patch
+  * s390-tools-sles15sp2-43-genprotimg-boot-initial-bootloader-support.patch
+  * s390-tools-sles15sp2-44-genprotimg-boot-use-C-pre-processor-for-linker-scrip.patch
+  * s390-tools-sles15sp2-45-genprotimg-add-relocator-for-stage3b.patch
+  * s390-tools-sles15sp2-46-README.md-remove-useless-empty-line.patch
+  * s390-tools-sles15sp2-47-include-boot-s390.h-add-guard-for-struct-__vector128.patch
+  * s390-tools-sles15sp2-48-genprotimg-introduce-new-tool-for-the-creation-of-PV.patch
+  * s390-tools-sles15sp2-01-zipl-Add-missing-options-to-help-output.patch
+  * s390-tools-sles15sp2-02-zipl-allow-stand-alone-secure-option-on-command-l.patch
+  * s390-tools-sles15sp2-03-zipl-correct-secure-boot-config-handling.patch
+  * s390-tools-sles15sp2-04-zipl-fix-zipl.conf-man-page-example-for-secure-boot.patch
+  * s390-tools-sles15sp2-01-cpumf-add-new-deflate-counters-for-z15.patch
+  * s390-tools-sles15sp2-vmcp-exit-code.patch
+  * s390-tools-sles15sp2-zipl-prevent-endless-loop-during-IPL.patch
+  * s390-tools-sles15sp2-zipl-check-for-valid-ipl-parmblock-lowcore-pointer.patch
+  * s390-tools-sles15sp2-01-zipl-libc-libc_stop-move-noreturn-to-declaration.patch
+  * s390-tools-sles15sp2-02-zipl-stage3-correctly-handle-diag308-response-code.patch
+  * s390-tools-sles15sp2-lsluns-try-harder-to-find-udevadm.patch
+  * s390-tools-sles15sp2-znetconf-introduce-better-ways-to-locate-udevadm.patch
+  * s390-tools-sles15sp2-mon_tools-update-udevadm-location.patch
+  * s390-tools-sles15sp2-lscpumf-change-dflt-ccerror-counter-name.patch
+  * s390-tools-sles15sp2-01-zdev-Introduce-read-only-attributes.patch
+  * s390-tools-sles15sp2-02-zdev-Handle-special-case-in-if-case.patch
+  * s390-tools-sles15sp2-03-zdev-Report-FC-Endpoint-Security-of-zfcp-devices.patch
+  * s390-tools-sles15sp2-04-zfcpdbf-print-HBA-FC-Endpoint-Security-trace-records.patch
+  * s390-tools-sles15sp1-zdev-Also-include-the-ctc-driver-in-the-initrd.patch not in spec file
+  * s390-tools-sles15sp2-Close-file-descriptor-when-checking-for-read-only.patch not in spec file
+
+-------------------------------------------------------------------
+Thu Sep 17 20:16:08 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Added s390-tools-sles15sp2-lscpumf-change-dflt-ccerror-counter-name.patch
+  (bsc#1176508)
+  lscpumf displays counter number 265 as DFLT_CCERROR. This is wrong
+  and differs from the counter name as defined in the Linux kernel
+  version 5.8 and later.
+- Added the following patches to implement the post-GA feature jsc#ECO-2636
+  Log FCP link info for endpoint security (bsc#1175477)
+  * s390-tools-sles15sp2-01-zdev-Introduce-read-only-attributes.patch
+  * s390-tools-sles15sp2-02-zdev-Handle-special-case-in-if-case.patch
+  * s390-tools-sles15sp2-03-zdev-Report-FC-Endpoint-Security-of-zfcp-devices.patch
+  * s390-tools-sles15sp2-04-zfcpdbf-print-HBA-FC-Endpoint-Security-trace-records.patch
+
+-------------------------------------------------------------------
 Tue Sep 15 18:46:04 CEST 2020 - ro@suse.de
 
 - use libexecdir for net-snmp agent config 
@@ -13,19 +198,7 @@ Fri Jul 24 21:17:36 UTC 2020 - Mark Post <mpost@suse.com>
   Added the following patches for bsc#1171587
   * s390-tools-sles15sp2-lsluns-try-harder-to-find-udevadm.patch
   * s390-tools-sles15sp2-znetconf-introduce-better-ways-to-locate-udevadm.patch
-  *s390-tools-sles15sp2-mon_tools-update-udevadm-location.patch
-
--------------------------------------------------------------------
-Thu Jul 23 19:28:25 UTC 2020 - Mark Post <mpost@suse.com>
-
-- Added s390-tools-sles15sp2-zipl-prevent-endless-loop-during-IPL.patch
-  (bsc#1174309) zipl: prevent endless loop during secure IPL
-- Added s390-tools-sles15sp2-zipl-check-for-valid-ipl-parmblock-lowcore-pointer.patch
-  (bsc#1174310) zipl: check for valid ipl parmblock lowcore pointer
-- Added s390-tools-sles15sp2-01-zipl-libc-libc_stop-move-noreturn-to-declaration.patch
-        s390-tools-sles15sp2-02-zipl-stage3-correctly-handle-diag308-response-code.patch
-  (bsc1174311) zipl: Fix KVM IPL without bootindex
-- Updated cputype and read_values to recognize the new z15 models.
+  * s390-tools-sles15sp2-mon_tools-update-udevadm-location.patch
 
 -------------------------------------------------------------------
 Thu Jul 23 19:28:25 UTC 2020 - Mark Post <mpost@suse.com>

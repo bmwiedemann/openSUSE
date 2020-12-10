@@ -1,0 +1,34 @@
+From 148d3f9b64da599adf453baf65e7a8596e2e7d97 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jan=20H=C3=B6ppner?= <hoeppner@linux.ibm.com>
+Date: Mon, 2 Nov 2020 09:09:51 +0100
+Subject: [PATCH] dasdfmt: Fix segfault when an incorrect option is specified
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+When specifying an incorrect program option, dasdfmt segfaults as the
+format string for the corresponding error message has no parameter.
+Add the missing parameter to fix this.
+
+Fixes: 732b3dddab84 ("dasdfmt: Replace ERRMSG_EXIT macro with an error handling function")
+Signed-off-by: Jan Höppner <hoeppner@linux.ibm.com>
+---
+ dasdfmt/dasdfmt.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
+index a424f3c..5665f64 100644
+--- a/dasdfmt/dasdfmt.c
++++ b/dasdfmt/dasdfmt.c
+@@ -1637,7 +1637,7 @@ int main(int argc, char *argv[])
+ 			/* End of options string - start of devices list */
+ 			break;
+ 		default:
+-			error("Try '%s --help' for more information.");
++			error("Try '%s --help' for more information.", prog_name);
+ 		}
+ 
+ 		if (rc == -1)
+-- 
+2.26.2
+

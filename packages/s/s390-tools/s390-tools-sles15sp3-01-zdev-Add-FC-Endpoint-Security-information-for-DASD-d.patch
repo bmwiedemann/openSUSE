@@ -1,0 +1,47 @@
+Subject: [PATCH] [FEAT IO1812] zdev/lsdasd: Add FC Endpoint Security information
+From: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+Summary:     zdev/lsdasd: Add FC Endpoint Security information
+Description: Provide the status of the FC Endpoint Security information via the
+             long output of lsdasd for online Base and Alias devices.
+Upstream-ID: -
+Problem-ID:  IO1812
+
+Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+---
+ zdev/src/dasd.c |   17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+--- a/zdev/src/dasd.c
++++ b/zdev/src/dasd.c
+@@ -313,6 +313,22 @@ static struct attrib dasd_attr_safe_offl
+ 	.writeonly = 1,
+ };
+ 
++static struct attrib dasd_attr_fc_security = {
++	.name = "fc_security",
++	.title = "Show FC Endpoint Security state of DASD device",
++	.desc =
++	"This read-only attribute shows the Fibre Channel Endpoint Security\n"
++	"status of the connection to the DASD device:\n"
++	"  Unsupported   : The DASD device does not support Fibre Channel\n"
++	"                  Endpoint Security\n"
++	"  Inconsistent  : The operational channel paths of the DASD device\n"
++	"                  report inconsistent Fibre Channel Endpoint\n"
++	"                  Security status\n"
++	"  Authentication: The connection has been authenticated\n"
++	"  Encryption    : The connection is encrypted\n",
++	.readonly = 1,
++};
++
+ /*
+  * DASD subtype methods.
+  */
+@@ -617,6 +633,7 @@ struct subtype dasd_subtype_eckd = {
+ 		&dasd_attr_reservation_policy,
+ 		&dasd_attr_last_known_reservation_state,
+ 		&dasd_attr_safe_offline,
++		&dasd_attr_fc_security,
+ 		&internal_attr_early,
+ 	),
+ 	.unknown_dev_attribs	= 1,

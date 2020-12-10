@@ -1,0 +1,120 @@
+From eabcb26fa4a91d410a6f75a9915a9ebb9f702c6b Mon Sep 17 00:00:00 2001
+From: Hannes Reinecke <hare@suse.de>
+Date: Fri, 6 Oct 2017 09:55:40 +0200
+Subject: [PATCH] dasdfmt: Implement '-Y/--yast_mode'
+
+Implement an option '-Y' to suppress most output.
+
+Signed-off-by: Hannes Reinecke <hare@suse.com>
+---
+ dasdfmt/dasdfmt.8 |  7 ++++++-
+ dasdfmt/dasdfmt.c | 27 ++++++++++++++++++++-------
+ dasdfmt/dasdfmt.h |  1 +
+ 3 files changed, 27 insertions(+), 8 deletions(-)
+
+diff --git a/dasdfmt/dasdfmt.8 b/dasdfmt/dasdfmt.8
+index 07c674b..3fd10a2 100644
+--- a/dasdfmt/dasdfmt.8
++++ b/dasdfmt/dasdfmt.8
+@@ -7,7 +7,7 @@
+ dasdfmt \- formatting of DASD (ECKD) disk drives.
+ 
+ .SH SYNOPSIS
+-\fBdasdfmt\fR [-h] [-t] [-v] [-y] [-p] [-Q] [-P] [-m \fIstep\fR]
++\fBdasdfmt\fR [-h] [-t] [-v] [-y] [-p] [-Q] [-P] [-Y] [-m \fIstep\fR]
+ .br
+         [-r \fIcylinder\fR] [-b \fIblksize\fR] [-l \fIvolser\fR] [-d \fIlayout\fR]
+ .br
+@@ -113,6 +113,11 @@ The value will be at least as big as the -r or --requestsize value.
+ .br
+ 
+ .TP
++\fB-Y\fR or \fB--yast_mode\fR
++YaST mode; suppress most output.
++.br
++
++.TP
+ \fB-M\fR \fImode\fR or \fB--mode\fR=\fImode\fR
+ Specify the \fImode\fR to be used to format the device. Valid modes are:
+ .RS
+diff --git a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
+index 6dd28fa..5b6023a 100644
+--- a/dasdfmt/dasdfmt.c
++++ b/dasdfmt/dasdfmt.c
+@@ -83,6 +83,7 @@ static struct dasdfmt_globals {
+ 	int   ese;
+ 	int   no_discard;
+ 	int   procnum;
++	int   yast_mode;
+ } g = {
+ 	.dasd_info = { 0 },
+ };
+@@ -172,6 +173,10 @@ static struct util_opt opt_vec[] = {
+ 		.option = { "percentage", no_argument, NULL, 'Q' },
+ 		.desc = "Show progress in percent",
+ 	},
++	{
++		.option = { "yast_mode", no_argument, NULL, 'Y' },
++		.desc = "YaST mode",
++	},
+ 	UTIL_OPT_SECTION("MISC"),
+ 	{
+ 		.option = { "check_host_count", no_argument, NULL, 'C' },
+@@ -392,7 +397,7 @@ static void evaluate_format_error(format
+ 	unsigned int kl = 0;
+ 	int blksize = cdata->expect.blksize;
+ 
+-	if (g.print_progressbar || g.print_hashmarks)
++	if ((g.print_progressbar || g.print_hashmarks) && !g.yast_mode)
+ 		printf("\n");
+ 
+ 	/*
+@@ -780,8 +785,9 @@ static void check_hashmarks(void)
+ 			g.hashstep = 10;
+ 		}
+
+-		printf("Printing hashmark every %d cylinders.\n",
+-		       g.hashstep);
++		if (!g.yast_mode)
++			printf("Printing hashmark every %d cylinders.\n",
++			       g.hashstep);
+ 	}
+ }
+ 
+@@ -1462,17 +1468,19 @@ static void do_format_dasd(volume_label_
+ 			break;
+ 		}
+ 
+-		printf("Finished formatting the %s device.\n", g.dev_path);
++		if (!g.yast_mode)
++			printf("Finished formatting the %s device.\n", g.dev_path);
+ 
+ 		if (!(g.writenolabel || mode == EXPAND))
+ 			dasdfmt_write_labels(vlabel, cylinders, heads);
+ 
+-		printf("Rereading the partition table for %s... ", g.dev_path);
++		if (!g.yast_mode)
++			printf("Rereading the partition table for %s... ", g.dev_path);
+ 		err = dasd_reread_partition_table(g.dev_node, 5);
+ 		if (err != 0) {
+ 			ERRMSG("%s: error during rereading the partition "
+ 			       "table: %s.\n", prog_name, strerror(err));
+-		} else {
++		} else if (!g.yast_mode) {
+ 			printf("ok\n");
+ 		}
+ 	}
+@@ -1693,6 +1701,10 @@ int main(int argc, char *argv[])
+ 		case OPT_NODISCARD:
+ 			g.no_discard = 1;
+ 			break;
++		case 'Y':
++			/* YaST mode */
++			g.yast_mode = 1;
++			break;
+ 		case 'P':
+ 			max_parallel = atoi(optarg);
+ 			break;
+-- 
+1.7.12.4
+

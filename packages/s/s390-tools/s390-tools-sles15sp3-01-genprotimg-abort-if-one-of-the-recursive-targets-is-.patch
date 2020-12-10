@@ -1,0 +1,38 @@
+Subject: [PATCH] [FEAT VS2010] genprotimg: abort if one of the recursive targets is failing
+From: Marc Hartmayer <mhartmay@linux.ibm.com>
+
+Summary:     genprotimg: add host-key document verification
+Description: Add host-key document verification support to genprotimg. This
+             ensures that a host-key document is genuine and provided by
+             IBM. For this the user must provide the IBM Z signing key, the
+             intermediate CA certificate (signed by the root CA used) so a
+             chain of trust starting from the host-key document and ending in
+             the root CA can be established.
+Upstream-ID: 6db7fbe0187042f44a63a5c7dbeb9f116909d02e
+Problem-ID:  VS2010
+
+Upstream-Description:
+
+             genprotimg: abort if one of the recursive targets is failing
+
+             Abort compilation as soon as one of the recursive targets is failing.
+
+             Fixes: 65b9fc442c1a ("genprotimg: introduce new tool for the creation of PV images")
+             Signed-off-by: Marc Hartmayer <mhartmay@linux.ibm.com>
+             Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Marc Hartmayer <mhartmay@linux.ibm.com>
+Index: s390-tools-service/genprotimg/Makefile
+===================================================================
+--- s390-tools-service.orig/genprotimg/Makefile
++++ s390-tools-service/genprotimg/Makefile
+@@ -21,7 +21,7 @@ clean: clean-recursive
+ $(RECURSIVE_TARGETS):
+ 	@target=`echo $@ |sed s/-recursive//`; \
+ 		for d in $(SUBDIRS); do \
+-			$(MAKE) -C $$d $$target; \
++			$(MAKE) -C $$d $$target || exit 1; \
+ 		done
+ 
+ .PHONY: all install clean $(RECURSIVE_TARGETS)

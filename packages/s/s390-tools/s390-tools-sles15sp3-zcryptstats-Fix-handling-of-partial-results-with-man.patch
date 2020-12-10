@@ -1,0 +1,73 @@
+Subject: [PATCH] [BZ 189239] zcryptstats: Fix handling of partial results with many domains
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+
+Description:   zcryptstats: Fix handling of partial results with many domains
+Symptom:       Running zcryptstats when many domains are available per cryto
+               card does not produce any output, and is hanging in a loop.
+Problem:       When many domains per card are available, then the results of 
+               the SCDMD CHSC call may not fit into the output area, and a
+               partial result is returned. The further results must be 
+               retrieved with another CHSC call. Fix the code to pass the 
+               correct next-domain to the subsequent CHSC call of a partial
+               response. Otherwise the same set of domains 1 to n are retrieved
+               again, resulting in an infinite loop, because this will always
+               produce a partial result.
+Solution:      Fix the code to pass the correct next-domain to the subsequent 
+               CHSC call of a partial response.
+Reproduction:  Run zcryptstats on a system with many domains per card.
+Upstream-ID:   cf2311f1f1de17435b49ba8c8697be91705ba031
+Problem-ID:    189239
+
+Upstream-Description:
+
+              zcryptstats: Fix handling of partial results with many domains
+
+              When many domains per card are available, then the results of the SCDMD
+              CHSC call may not fit into the output area, and a partial result is
+              returned. The further results must be retrieved with another CHSC call.
+
+              Fix the code to pass the correct next-domain to the subsequent CHSC call
+              of a partial response. Otherwise the same set of domains 1 to n are
+              retrieved again, resulting in an infinite loop, because this will always
+              produce a partial result.
+
+              Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+              Reviewed-by: Harald Freudenberger <freude@linux.ibm.com>
+              Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ zconf/zcrypt/zcryptstats.c |   14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
+
+--- a/zconf/zcrypt/zcryptstats.c
++++ b/zconf/zcrypt/zcryptstats.c
+@@ -1178,8 +1178,14 @@ static int get_apqn_measurement_data(uin
+ 		scdmd_area.request.header.code = 0x102d;
+ 		scdmd_area.request.header.length =
+ 				sizeof(struct chsc_scdmd_request);
+-		scdmd_area.request.first_drid.ap_index = card;
+-		scdmd_area.request.first_drid.domain_index = g.min_domain;
++		if (scdmd_area.response.p) {
++			scdmd_area.request.first_drid =
++						scdmd_area.response.crid;
++		} else {
++			scdmd_area.request.first_drid.ap_index = card;
++			scdmd_area.request.first_drid.domain_index =
++								g.min_domain;
++		}
+ 		scdmd_area.request.last_drid.ap_index = card;
+ 		scdmd_area.request.last_drid.domain_index = g.max_domain;
+ 		scdmd_area.request.s = 1;
+@@ -1217,10 +1223,6 @@ static int get_apqn_measurement_data(uin
+ 		rc = process_apqn_measurement_data(&scdmd_area);
+ 		if (rc != 0)
+ 			break;
+-
+-		if (scdmd_area.response.p)
+-			scdmd_area.request.first_drid =
+-					scdmd_area.response.crid;
+ 	} while (scdmd_area.response.p);
+ 
+ 	return rc;

@@ -1,0 +1,41 @@
+From 8ec47052397a868c0764900db69fda4a892bd512 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jan=20H=C3=B6ppner?= <hoeppner@linux.ibm.com>
+Date: Fri, 6 Nov 2020 18:47:07 +0100
+Subject: [PATCH] libutil: Compare proc entries to vfstype
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Modern systems have systemd manage system mount points like sysfs which
+specify 'sysfs' as a keyword for the device as there is no device
+associated with this special filesystem. However, any arbitrary string
+could be specified here and the determination of the sysfs mount point
+would fail in such a case.
+To make sure that the mount point of the sysfs is still found when
+mounted with a device keyword specified other than 'sysfs', check for
+the filesystem type instead, which is more specific.
+
+Fixes: https://github.com/ibm-s390-tools/s390-tools/issues/91
+Suggested-by: Mark Post <mpost@suse.com>
+Reviewed-by: Stefan Haberland <sth@linux.ibm.com>
+Signed-off-by: Jan Höppner <hoeppner@linux.ibm.com>
+---
+ libutil/util_proc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libutil/util_proc.c b/libutil/util_proc.c
+index 080f831..9ac4381 100644
+--- a/libutil/util_proc.c
++++ b/libutil/util_proc.c
+@@ -460,7 +460,7 @@ int util_proc_mnt_get_entry(const char *file_name, const char *spec,
+ 		rc = scan_mnt_entry(&file, entry);
+ 		if (rc)
+ 			goto out_free;
+-		if (!strcmp(entry->spec, spec)) {
++		if (!strcmp(entry->vfstype, spec)) {
+ 			rc = 0;
+ 			goto out_free;
+ 		}
+-- 
+2.26.2
+
