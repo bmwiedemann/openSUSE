@@ -1,7 +1,7 @@
 #
 # spec file for package mingw32-headers
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mingw32-headers
-Version:        7.0.0
+Version:        8.0.0
 Release:        0
 Summary:        MinGW-w64 headers for Win32 and Win64
 License:        SUSE-Public-Domain
