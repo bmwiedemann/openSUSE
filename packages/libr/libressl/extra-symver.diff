@@ -23,12 +23,12 @@ b) the dynamic loader is required to look for SSL_CTX_new@@LIBRESSL
  tls/Makefile.am    |    6 +++++-
  3 files changed, 15 insertions(+), 4 deletions(-)
 
-Index: libressl-3.2.2/crypto/Makefile.am
+Index: libressl-3.2.3/crypto/Makefile.am
 ===================================================================
---- libressl-3.2.2.orig/crypto/Makefile.am
-+++ libressl-3.2.2/crypto/Makefile.am
+--- libressl-3.2.3.orig/crypto/Makefile.am
++++ libressl-3.2.3/crypto/Makefile.am
 @@ -105,8 +105,11 @@ libcrypto_la_objects.mk: Makefile
- 	  | sed 's/  */ $$\(abs_top_builddir\)\/crypto\//g' \
+ 	  | sed 's/compat\// $$\(abs_top_builddir\)\/crypto\/&/g' \
  	  >> libcrypto_la_objects.mk
  
 -libcrypto_la_LDFLAGS = -version-info @LIBCRYPTO_VERSION@ -no-undefined -export-symbols crypto_portable.sym
@@ -41,10 +41,10 @@ Index: libressl-3.2.2/crypto/Makefile.am
  EXTRA_libcrypto_la_DEPENDENCIES += libcrypto_la_objects.mk
  libcrypto_la_LIBADD = libcompat.la
  if !HAVE_EXPLICIT_BZERO
-Index: libressl-3.2.2/ssl/Makefile.am
+Index: libressl-3.2.3/ssl/Makefile.am
 ===================================================================
---- libressl-3.2.2.orig/ssl/Makefile.am
-+++ libressl-3.2.2/ssl/Makefile.am
+--- libressl-3.2.3.orig/ssl/Makefile.am
++++ libressl-3.2.3/ssl/Makefile.am
 @@ -15,7 +15,11 @@ libssl_la_objects.mk: Makefile
  	  | sed 's/  */ $$\(abs_top_builddir\)\/ssl\//g' \
  	  > libssl_la_objects.mk
@@ -58,10 +58,10 @@ Index: libressl-3.2.2/ssl/Makefile.am
  libssl_la_LIBADD = $(abs_top_builddir)/crypto/libcrypto.la $(PLATFORM_LDADD)
  
  libssl_la_SOURCES = bio_ssl.c
-Index: libressl-3.2.2/tls/Makefile.am
+Index: libressl-3.2.3/tls/Makefile.am
 ===================================================================
---- libressl-3.2.2.orig/tls/Makefile.am
-+++ libressl-3.2.2/tls/Makefile.am
+--- libressl-3.2.3.orig/tls/Makefile.am
++++ libressl-3.2.3/tls/Makefile.am
 @@ -9,7 +9,11 @@ EXTRA_DIST = VERSION
  EXTRA_DIST += CMakeLists.txt
  EXTRA_DIST += tls.sym

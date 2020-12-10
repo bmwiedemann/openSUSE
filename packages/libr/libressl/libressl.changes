@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 10 13:30:12 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.3
+  * Fixed: Malformed ASN.1 in a certificate revocation list or a
+    timestamp response token could lead to a NULL pointer
+    dereference.
+
+-------------------------------------------------------------------
 Wed Oct 21 07:55:27 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.2.2
