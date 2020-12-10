@@ -17,13 +17,13 @@
 
 
 Name:           gnome-calendar
-Version:        3.38.1
+Version:        3.38.1+7
 Release:        0
 Summary:        A calendar application for GNOME
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Organizers
 URL:            https://wiki.gnome.org/Design/Apps/Calendar
-Source0:        https://download.gnome.org/sources/gnome-calendar/3.38/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson
