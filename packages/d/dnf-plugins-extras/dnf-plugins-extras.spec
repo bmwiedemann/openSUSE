@@ -17,25 +17,32 @@
 #
 
 
-%{!?dnf_lowest_compatible: %global dnf_lowest_compatible 4.2.19}
+%{!?dnf_lowest_compatible: %global dnf_lowest_compatible 4.4.3}
 %global dnf_plugins_extra_obsolete 2.0.0
+
 # YUM v3 has been removed from openSUSE Tumbleweed as of 20191119
 %if 0%{?sle_version} && 0%{?sle_version} < 160000
 %bcond_with as_yum
 %else
 %bcond_without as_yum
 %endif
+
 # openSUSE does not have tracer
 %bcond_with tracer
 %bcond_without tests
+
 Name:           dnf-plugins-extras
-Version:        4.0.12
+Version:        4.0.13
 Release:        0
 Summary:        Extras Plugins for DNF
 License:        GPL-2.0-or-later
 Group:          System/Packages
 URL:            https://github.com/rpm-software-management/%{name}
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+
+# Backports from upstream
+Patch0001:      0001-test_system_upgrade-Set-installroot-in-the-mocked-cl.patch
+
 BuildRequires:  cmake
 BuildRequires:  gettext
 BuildRequires:  python3-Sphinx

@@ -71,4 +71,16 @@
   + [system-upgrade] Upgrade groups and environments (rh#1845562, rh#1860408)</comment>
     <requestid>843805</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>64cd3e2fb374fc6d5230ffde5807384a</srcmd5>
+    <version>4.0.13</version>
+    <time>1607612340</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.13
+  + system-upgrade: Use Transaction Store/Replay
+  + system-upgrade: Pretty-print the state json
+- Backport fix for system-upgrade tests
+  + Patch: 0001-test_system_upgrade-Set-installroot-in-the-mocked-cl.patch</comment>
+    <requestid>853459</requestid>
+  </revision>
 </revisionlist>
