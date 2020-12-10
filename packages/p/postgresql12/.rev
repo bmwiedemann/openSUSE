@@ -100,4 +100,14 @@
   * https://www.postgresql.org/docs/12/release-12-5.html</comment>
     <requestid>848146</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>bccb41de41325391ee97b8d3aa4b9427</srcmd5>
+    <version>12.5</version>
+    <time>1607612203</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1178961: %ghost the symlinks to pg_config and ecpg.
+- boo#1179765: BuildRequire libpq5 and libecpg6 when not building
+  them to avoid dangling symlinks in the devel package.</comment>
+    <requestid>854083</requestid>
+  </revision>
 </revisionlist>
