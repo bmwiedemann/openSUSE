@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 10 01:53:43 UTC 2020 - jenting.hsiao@suse.com
+
+- Update to version 0.16.3:
+  * Bump to version 0.16.3 and changelogs
+  * Fix grep exit code; added check to github action
+  * Add verification to npm registry
+  * Bump electron-builder from 22.8.1 to 22.9.1 in /web
+
+-------------------------------------------------------------------
 Mon Nov 23 01:15:09 UTC 2020 - jenting.hsiao@suse.com
 
 - Update to version 0.16.2:

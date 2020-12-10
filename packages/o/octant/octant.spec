@@ -20,7 +20,7 @@
 %define commit 8aebb34922f83894fb02ad393740e96ee1b3d8fe
 
 Name:           octant
-Version:        0.16.2
+Version:        0.16.3
 Release:        0
 Summary:        A platform to better understand the complexity of Kubernetes clusters
 License:        Apache-2.0
