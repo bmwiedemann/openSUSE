@@ -56,4 +56,12 @@ This library is &quot;required&quot; by libewf in the security repo for its apps
 - singlespec auto-conversion</comment>
     <requestid>625821</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dfc13f64482bac554f4875ba733c1517</srcmd5>
+    <version>1.0.0</version>
+    <time>1607612350</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854529</requestid>
+  </revision>
 </revisionlist>
