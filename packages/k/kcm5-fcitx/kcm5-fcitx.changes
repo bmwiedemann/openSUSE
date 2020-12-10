@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  9 08:27:36 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to build with Qt 5.12 which doesn't have
+  QList::swapItemsAt. The patch is only applied if Qt < 5.13 is being
+  used to build the package.
+  * fix-building-with-qt-5.12.patch
+
+-------------------------------------------------------------------
 Mon Sep 28 04:27:56 UTC 2020 - Marguerite Su <i@marguerite.su>
 
 - update version 0.5.6

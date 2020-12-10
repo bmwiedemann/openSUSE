@@ -1,0 +1,22 @@
+Index: kcm-fcitx-0.5.6/src/impage.cpp
+===================================================================
+--- kcm-fcitx-0.5.6.orig/src/impage.cpp
++++ kcm-fcitx-0.5.6/src/impage.cpp
+@@ -674,7 +674,7 @@ void IMPage::Private::moveDownIM()
+         }
+ 
+         if (curIMIdx >= 0 && nextIMIdx >= 0 && curIMIdx != nextIMIdx) {
+-            m_list.swapItemsAt(curIMIdx, nextIMIdx);
++            m_list.swap(curIMIdx, nextIMIdx);
+             std::stable_sort(m_list.begin(), m_list.end());
+             emit updateIMList(m_list, curIndex.data(FcitxIMUniqueNameRole).toString());
+             emit changed();
+@@ -720,7 +720,7 @@ void IMPage::Private::moveUpIM()
+         }
+ 
+         if (curIMIdx >= 0 && nextIMIdx >= 0 && curIMIdx != nextIMIdx) {
+-            m_list.swapItemsAt(curIMIdx, nextIMIdx);
++            m_list.swap(curIMIdx, nextIMIdx);
+             std::stable_sort(m_list.begin(), m_list.end());
+             emit updateIMList(m_list, curIndex.data(FcitxIMUniqueNameRole).toString());
+             emit changed();

@@ -26,6 +26,7 @@ Group:          System/I18n/Chinese
 URL:            http://github.com/fcitx/kcm-fcitx
 Source:         http://download.fcitx-im.org/kcm-fcitx/kcm-fcitx-%{version}.tar.xz
 Source1:        input-keyboard.svg
+Patch0:         fix-building-with-qt-5.12.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx-devel
@@ -92,6 +93,9 @@ This package provides systemsettings5 icons for fcitx in plasma5-workspace.
 
 %prep
 %setup -q -n kcm-fcitx-%{version}
+%if %{?pkg_vcmp:%{pkg_vcmp libqt5-qtbase-devel < 5.13.0}}%{!?pkg_vcmp:0}
+%patch0 -p1
+%endif
 
 %build
 %cmake_kf5 -d build
