@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Dec  7 17:06:08 UTC 2020 - Pau Garcia Quiles <pau.garcia@suse.com>
+
+- Update to version 0.62
+- Install additional translated manpages: de, es, fr, it, ja, nl, pt_BR, ru
+
+po4a tool:
+ * Improve po_paths on misconfigurations, improve doc and error messages.
+
+Asciidoc:
+ * Unwrap all paragraphs by default (Github's #242).
+   Introduce "forcewrap" option to re-enable line wrapping on output.
+ * Support definition list continuations with indent (Github's #273)
+
+DocBook:
+ * Mark xreflabel attributes as translatable (GitHub's #267).
+ 
+Translations:
+
+Updated: Croatian, Chinese (simplified), Dutch, French, German, Hungarian, 
+Italian, Norwegian Bokmål, Portuguese, Portuguese (Brazil), Russian, 
+Serbian (cyrillic), Spanish and Ukrainian
+
+-------------------------------------------------------------------
 Mon Nov  9 16:59:43 UTC 2020 - Luiz Fernando Ranghetti <elchevive@opensuse.org>
 
 - Also add perl(Pod::Parser) to Requires, otherwise POD generation fail

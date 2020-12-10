@@ -17,7 +17,7 @@
 
 
 Name:           po4a
-Version:        0.61
+Version:        0.62
 Release:        0
 Summary:        Framework to translate documentation and other materials
 License:        GPL-2.0-only
@@ -67,6 +67,8 @@ po4a supports currently the following formats:
   * TeX (generic, LaTeX, or Texinfo)
   * text (simple text files with some formatting, markdown, or AsciiDoc)
   * INI
+  * YAML
+  * KernelHelp
 
 %prep
 %setup -q
@@ -98,10 +100,22 @@ rm -rf t/fmt-tex.t t/fmt/tex
 %files lang -f %{name}.lang
 %defattr(-,root,root)
 %dir %{_mandir}/ca
+%dir %{_mandir}/de
+#%dir %{_mandir}/eo
+%dir %{_mandir}/es
+%dir %{_mandir}/fr
+#%dir %{_mandir}/hr
+#%dir %{_mandir}/hu
+%dir %{_mandir}/it
+%dir %{_mandir}/ja
+#%dir %{_mandir}/nb
+%dir %{_mandir}/nl
 %dir %{_mandir}/pl
 %dir %{_mandir}/pt
+%dir %{_mandir}/pt_BR
+%dir %{_mandir}/ru
+%dir %{_mandir}/sr_Cyrl
 %dir %{_mandir}/uk
 %dir %{_mandir}/zh_CHS
-%dir %{_mandir}/sr_Cyrl
 
 %changelog
