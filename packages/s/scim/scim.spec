@@ -19,6 +19,7 @@
 %if ! %{defined _distconfdir}
 %define _distconfdir %{_sysconfdir}
 %endif
+%define build_qt4 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150300
 
 Name:           scim
 Version:        1.4.18
@@ -44,12 +45,12 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  x11-tools
 BuildRequires:  xz
-%if 0%{?suse_version} <= 1500
+%if %{build_qt4}
 BuildRequires:  libqt4-devel
 %endif
 Requires:       scim-gtk = %{version}
 Recommends:     scim-lang = %{version}
-%if 0%{?suse_version} <= 1500
+%if %{build_qt4}
 Requires:       scim-qt4 = %{version}
 %endif
 # not SLE_12
@@ -101,7 +102,7 @@ Supplements:    packageand(scim:gtk3)
 This package contains SCIM im module for gtk3
 %endif
 
-%if 0%{?suse_version} <= 1500
+%if %{build_qt4}
 %package qt4
 Summary:        SCIM im module for qt4
 Group:          System/I18n/Chinese
@@ -136,7 +137,7 @@ sed -i \
         --with-gtk-version=3\
 %endif
 	--enable-gtk2-immodule\
-%if 0%{?suse_version} <= 1500
+%if %{build_qt4}
         --enable-qt4-immodule\
 %endif
 	--disable-static\
@@ -289,7 +290,7 @@ fi
 %{_libdir}/gtk-3.0/3.0.0/immodules/im-scim.so
 %endif
 
-%if 0%{?suse_version} <= 1500
+%if %{build_qt4}
 %files qt4
 %{_libdir}/qt4/plugins/inputmethods/im-scim.so
 %endif
