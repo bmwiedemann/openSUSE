@@ -1,11 +1,11 @@
 [qemu-x86 package document]
 
-POST SLES 15 SP2 QEMU/KVM RELATED SUPPORT STATEMENTS
+SLES 15 SP3 QEMU/KVM RELATED SUPPORT STATEMENTS
 
 Overview
 --------
 
-  The QEMU based packages included with SLES 15 SP2 provide a large variety of
+  The QEMU based packages included with SLES 15 SP3 provide a large variety of
   features, from the very latest customer requests to features of questionable
   quality or value. The linux kernel includes components which contribute KVM
   virtualization features as well. This document was created to assist the user
@@ -81,7 +81,7 @@ Major QEMU/KVM Supported Features
 
 - Guest execution state may be "moved" in both time (save/restore) and space
   (static and live migration). These migrations or save/restore operations can
-  take place either from certain prior SLES versioned hosts to a SLES 15 SP2
+  take place either from certain prior SLES versioned hosts to a SLES 15 SP3
   host or between hosts of the same version. Certain other restrictions also
   apply.
 
@@ -132,7 +132,7 @@ Major QEMU/KVM Supported Features
 
 - Portions of the host file system may be shared with a guest by using virtFS.
 
-- A guest "agent" is available for SLES 15 SP2 KVM guests via the
+- A guest "agent" is available for SLES 15 SP3 KVM guests via the
   qemu-guest-agent package. This allows some introspection and control of the
   guest OS environment from the host.
 
@@ -267,6 +267,9 @@ Deprecated, Superseded, Modified and Dropped Features
   -device sysbus-ohci
   -device tegra2-ehci-usb
   -device testdev (use -device pc-testdev instead)
+  -device vhost-user-vsock-pci-transitional
+  -device vhost-vsock-pci-transitional
+  -device virtio-iommu-pci-transitional
   -device virtio-mmio
   -device xln,ps7-usb
   -enable-hax (use -accel hax instead)
@@ -304,11 +307,11 @@ Deprecated, Superseded, Modified and Dropped Features
 
 - These previously supported monitor commands are now deprecated:
   change
-  cpu-add
   migrate_set_downtime
   migrate_set_speed
 
 - These previously supported monitor commands are no longer recognized:
+  cpu-add
   cpu_set
   pci_add (use device_add instead)
   pci_del (use device_del instead)
@@ -372,8 +375,8 @@ QEMU Command-Line and Monitor Syntax and Support
   better functionality and usability going forward. In some cases existing
   problems or even bugs in older interfaces cannot be fixed due to functional
   expectations, but are resolved in the newer interface or option.
-  This advice includes moving to the most recent machine type (eg pc-i440fx-4.2
-  instead of pc-i440fx-3.1) if possible.
+  This advice includes moving to the most recent machine type (eg pc-i440fx-5.2
+  instead of pc-i440fx-4.2) if possible.
 
 - The following command line options are supported:
   -accel ...
@@ -409,8 +412,7 @@ QEMU Command-Line and Monitor Syntax and Support
           vhost-user-blk|vhost-user-blk-pci|vhost-user-blk-pci-non-transitional|
           vhost-user-blk-pci-transitional|vhost-user-scsi|vhost-user-scsi-pci|
           vhost-user-scsi-pci-non-transitional|vhost-user-pci-transitional|
-          vhost-vsock-pci|vhost-vsock-pci-non-transitional|
-          vhost-vsock-pci-transitional|virtio-balloon-pci|
+          vhost-vsock-pci|vhost-vsock-pci-non-transitional|virtio-balloon-pci|
           virtio-balloon-pci-non-transitional|virtio-balloon-pci-transitional|
           virtio-blk-pci|virtio-blk-pci-non-transitional|
           virtio-blk-pci-transitional|virtio-net-pci|
@@ -461,15 +463,16 @@ QEMU Command-Line and Monitor Syntax and Support
   -M
 
      [help|?|none|pc|pc-i440fx-1.4|pc-i440fx-1.7|pc-i440fx-2.0|pc-i440fx-2.3|
-     pc-i440fx-2.6|pc-i440fx-2.9|pc-i440fx-2.11|pc-i440fx-3.1|pc-i440fx-4.2|q35|
-     pc-q35-2.6|pc-q35-2.9|pc-q35-2.11|pc-q35-3.1|pc-q35-4.2|xenfv|xenfv-4.2]
+     pc-i440fx-2.6|pc-i440fx-2.9|pc-i440fx-2.11|pc-i440fx-3.1|pc-i440fx-4.2|
+     pc-i440fx-5.2|q35|pc-q35-2.6|pc-q35-2.9|pc-q35-2.11|pc-q35-3.1|pc-q35-4.2|
+     pc-q35-5.2|xenfv|xenfv-4.2]
 
   -machine
 
            [help|?|none|pc|pc-i440fx-1.4|pc-i440fx-1.7|pc-i440fx-2.0|
            pc-i440fx-2.3|pc-440fx-2.6|pc-i440fx-2.9|pc-i440fx-2.11|
-           pc-i440fx-3.1|pc-i440fx-4.2|q35|pc-q35-2.6|pc-q35-2.9|pc-q35-2.11|
-           pc-q35-3.1|pc-q35-4.2|xenfv|xenifv-4.2]
+           pc-i440fx-3.1|pc-i440fx-4.2|pc-i440fx-5.2|q35|pc-q35-2.6|pc-q35-2.9|
+           pc-q35-2.11|pc-q35-3.1|pc-q35-4.2|pc-q35-5.2|xenfv|xenifv-4.2]
 
   -mem-path ...
   -mem-prealloc
@@ -547,7 +550,6 @@ QEMU Command-Line and Monitor Syntax and Support
   closefd ...
   cont
   cpu ...
-  cpu-add ...
   delvm ...
   device_add ...
   device_del ...
@@ -637,12 +639,15 @@ QEMU Command-Line and Monitor Syntax and Support
   block-dirty-bitmap-enable
   block-dirty-bitmap-merge
   block-dirty-bitmap-remove
+  block-export-add
+  block-export-del
   block-latency-histogram-set
   block_passwd
   block_resize
   block_set_io_throttle
   block-set-write-threshold
   block_stream
+  calc-dirty-rate
   change
   change-vnc-password
   chardev-add
@@ -694,6 +699,7 @@ QEMU Command-Line and Monitor Syntax and Support
   query-acpi-ospm-status
   query-balloon
   query-block
+  query-block-exports
   query-block-jobs
   query-blockstats
   query-chardev
@@ -701,12 +707,11 @@ QEMU Command-Line and Monitor Syntax and Support
   query-command-line-options
   query-commands
   query-cpu-definitions
-  query-cpu-model-baseline
-  query-cpu-model-comparison
   query-cpu-model-expansion
   query-cpus
   query-cpus-fast
   query-current-machine
+  query-dirty-rate
   query-display-options
   query-dump
   query-dump-guest-memory-capability
@@ -736,6 +741,9 @@ QEMU Command-Line and Monitor Syntax and Support
   query-rocker-of-dpa-groups
   query-rocker-ports
   query-rx-filter
+  query-sev
+  query-sev-capabilities
+  query-sev-launch-measure
   query-spice
   query-status
   query-target
@@ -751,7 +759,6 @@ QEMU Command-Line and Monitor Syntax and Support
   remove-fd
   ringbuf-read
   ringbuf-write
-  rtc-reset-reinjection
   screendump
   send-key
   set_link
@@ -802,11 +809,10 @@ QEMU Command-Line and Monitor Syntax and Support
           vfio-platform|xen-bridge|xen-cdrom|xen-disk|ati-vga|cpu-cluster|
           intel-iommu|vhost-user-fs-device|tulip|ati-vga|i2c-ddc|pci-ipmi-bt|
           pci-ipmi-kcs|serial|serial-io|serial-mm|virtio-iommu-device|
-          virtio-iommu-pci|virtio-iommu-pci-nontransitional|
-          virtio-iommu-pci-transitional|xen-sysdev|imx.usbphy|vmbus-bridge|
-          vhost-user-vsock-device|vhost-user-vsock-pci|
-          vhost-user-vsock-pci-non-transitional|
-          vhost-user-vsock-pci-transitional|virtio-mem|virtio-mem-pci]
+          virtio-iommu-pci|virtio-iommu-pci-nontransitional|xen-sysdev|
+          imx.usbphy|vmbus-bridge|vhost-user-vsock-device|vhost-user-vsock-pci|
+          vhost-user-vsock-pci-non-transitional|virtio-mem|virtio-mem-pci|
+          nvme-ns|ctucan_pci|u2f-passthru]
           (the following are aliases of these unsupported devices: lsi)
           (note that some of these device names represent supported devices and
           are used internally, but are not specifyable via -device even though
@@ -893,6 +899,9 @@ QEMU Command-Line and Monitor Syntax and Support
   netdev_add
   netdev_del ...
   pcie_aer_inject_error ...
+  replay_break ...
+  replay_delete_break
+  replay_seek ...
   set_link ...
   set_password ...
   singlestep ...
@@ -911,15 +920,16 @@ QEMU Command-Line and Monitor Syntax and Support
   change-backing-file
   drive-backup
   drive-mirror
-  dump-skeys
   netdev_add
   netdev_del
   nbd-server-add
   nbd-server-start
   nbd-server-stop
   query-colo-status
-  query-sev
-  query-sev-launch-measure
+  query-replay
+  replay_break
+  replay_delete_break
+  replay_seek
   x-blockdev-amend
   x-blockdev-change
   x-blockdev-insert-medium

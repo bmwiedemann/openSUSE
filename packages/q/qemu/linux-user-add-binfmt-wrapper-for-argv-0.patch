@@ -29,66 +29,10 @@ Signed-off-by: Alexander Graf <agraf@suse.de>
 [AF: Rebased onto script rewrite for v2.7.0-rc2 - to be fixed]
 Signed-off-by: Andreas Färber <afaerber@suse.de>
 ---
- Makefile.target          | 13 +++++++++++++
- linux-user/Makefile.objs |  1 +
- linux-user/binfmt.c      | 42 ++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 56 insertions(+)
+ linux-user/binfmt.c | 42 ++++++++++++++++++++++++++++++++++++++++++
+ meson.build         |  5 +++++
+ 2 files changed, 47 insertions(+)
 
-diff --git a/Makefile.target b/Makefile.target
-index ffa2657269ac5e4ed4eab213e1bd..b6621549b8909d76e64cc0c5c2f3 100644
---- a/Makefile.target
-+++ b/Makefile.target
-@@ -39,6 +39,10 @@ endif
- PROGS=$(QEMU_PROG) $(QEMU_PROGW)
- STPFILES=
- 
-+ifdef CONFIG_LINUX_USER
-+PROGS+=$(QEMU_PROG)-binfmt
-+endif
-+
- config-target.h: config-target.h-timestamp
- config-target.h-timestamp: config-target.mak
- 
-@@ -134,6 +138,8 @@ QEMU_CFLAGS+=-I$(SRC_PATH)/linux-user/$(TARGET_ABI_DIR) \
- obj-y += linux-user/
- obj-y += gdbstub.o thunk.o
- 
-+obj-binfmt-y += linux-user/
-+
- endif #CONFIG_LINUX_USER
- 
- #########################################################
-@@ -173,7 +179,11 @@ generated-files-y += config-devices.h
- 
- endif # CONFIG_SOFTMMU
- 
-+ifdef CONFIG_LINUX_USER
-+dummy := $(call unnest-vars,,obj-y obj-binfmt-y)
-+else
- dummy := $(call unnest-vars,,obj-y)
-+endif
- all-obj-y := $(obj-y)
- 
- #
-@@ -222,6 +232,9 @@ ifdef CONFIG_DARWIN
- 	$(call quiet-command,SetFile -a C $@,"SETFILE","$(TARGET_DIR)$@")
- endif
- 
-+$(QEMU_PROG)-binfmt: $(obj-binfmt-y)
-+	$(call LINK,$^)
-+
- gdbstub-xml.c: $(TARGET_XML_FILES) $(SRC_PATH)/scripts/feature_to_c.sh
- 	$(call quiet-command,rm -f $@ && $(SHELL) $(SRC_PATH)/scripts/feature_to_c.sh $@ $(TARGET_XML_FILES),"GEN","$(TARGET_DIR)$@")
- 
-diff --git a/linux-user/Makefile.objs b/linux-user/Makefile.objs
-index 1940910a7321c5a44d29c2602f9e..84c770a6cb58193d73afdffa2b01 100644
---- a/linux-user/Makefile.objs
-+++ b/linux-user/Makefile.objs
-@@ -23,3 +23,4 @@ obj-$(TARGET_SPARC) += sparc/
- obj-$(TARGET_SPARC64) += $(TARGET_ABI_DIR)/
- obj-$(TARGET_X86_64) += x86_64/
- obj-$(TARGET_XTENSA) += xtensa/
-+obj-binfmt-y = binfmt.o
 diff --git a/linux-user/binfmt.c b/linux-user/binfmt.c
 new file mode 100644
 index 0000000000000000000000000000000000000000..cd1f513b334f3b263d9e4b5adb1981e376429fa6
@@ -137,3 +81,19 @@ index 0000000000000000000000000000000000000000..cd1f513b334f3b263d9e4b5adb1981e3
 +
 +    return execve(new_argv[0], new_argv, envp);
 +}
+diff --git a/meson.build b/meson.build
+index e3386196ba4106a973edb7f9d07c..a4743a83ae82bbe57e8dfeec3da4 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1883,6 +1883,11 @@ endforeach
+ 
+ # Other build targets
+ 
++if 'CONFIG_LINUX_USER' in config_target
++    executable('qemu-binfmt', files('linux-user/binfmt.c'),
++               install: true)
++endif
++
+ if 'CONFIG_PLUGIN' in config_host
+   install_headers('include/qemu/qemu-plugin.h')
+ endif

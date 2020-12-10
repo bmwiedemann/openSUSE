@@ -16,10 +16,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 8 insertions(+)
 
 diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 8a80cf418ab4299548a85b90e427..1a835798d19cc77da8d7ec6bdc7b 100644
+index 1526c70a6ef9899fa160bae96efc..2839a2c5e906dde840f040c5f235 100644
 --- a/linux-user/syscall.c
 +++ b/linux-user/syscall.c
-@@ -5485,6 +5485,13 @@ static abi_long do_ioctl(int fd, int cmd, abi_long arg)
+@@ -5773,6 +5773,13 @@ static abi_long do_ioctl(int fd, int cmd, abi_long arg)
          arg_type++;
          target_size = thunk_type_size(arg_type, 0);
          switch(ie->access) {
@@ -33,7 +33,7 @@ index 8a80cf418ab4299548a85b90e427..1a835798d19cc77da8d7ec6bdc7b 100644
          case IOC_R:
              ret = get_errno(safe_ioctl(fd, ie->host_cmd, buf_temp));
              if (!is_error(ret)) {
-@@ -5503,6 +5510,7 @@ static abi_long do_ioctl(int fd, int cmd, abi_long arg)
+@@ -5791,6 +5798,7 @@ static abi_long do_ioctl(int fd, int cmd, abi_long arg)
              unlock_user(argptr, arg, 0);
              ret = get_errno(safe_ioctl(fd, ie->host_cmd, buf_temp));
              break;

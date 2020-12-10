@@ -83,7 +83,7 @@ index 6f980bb83647da13c62f514391b3..094bc6703a3febdf5fefb7c0024f 100644
       * set of muxes
       */
 diff --git a/chardev/char.c b/chardev/char.c
-index 77e7ec814f2196d8352e2f3ec75e..bcdec537e8753025b715e75214e6 100644
+index aa4282164acabbba58a6eea76b8c..9add6ca377e402f5ce3215e4934d 100644
 --- a/chardev/char.c
 +++ b/chardev/char.c
 @@ -22,6 +22,7 @@
@@ -95,10 +95,10 @@ index 77e7ec814f2196d8352e2f3ec75e..bcdec537e8753025b715e75214e6 100644
  #include "qemu/cutils.h"
  #include "monitor/monitor.h"
 diff --git a/chardev/chardev-internal.h b/chardev/chardev-internal.h
-index f4d0429763bc28438e6cd6e7de1a..fc6cd39eb2d98af15aec25642438 100644
+index aba0240759ebf938cf391d89edb8..fb3957b771f9e24547619fd45669 100644
 --- a/chardev/chardev-internal.h
 +++ b/chardev/chardev-internal.h
-@@ -36,6 +36,9 @@ typedef struct MuxChardev {
+@@ -36,6 +36,9 @@ struct MuxChardev {
      Chardev parent;
      CharBackend *backends[MAX_MUX];
      CharBackend chr;
@@ -121,7 +121,7 @@ index eecdc615ee1c6c64060452ac837d..c052f101e89c193af1effa9c6fa5 100644
  #include "sysemu/sysemu.h"
  #include "chardev/char.h"
 diff --git a/tests/test-char.c b/tests/test-char.c
-index d35cc839bc60db1884c3f265629b..51635ba059ef2302608459e84a65 100644
+index 9196e566e9ba671ed268a3178845..5d84a777738abfb28de151930c46 100644
 --- a/tests/test-char.c
 +++ b/tests/test-char.c
 @@ -1,3 +1,4 @@

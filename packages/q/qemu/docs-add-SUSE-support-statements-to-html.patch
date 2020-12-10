@@ -14,12 +14,12 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/docs/index.html.in b/docs/index.html.in
-index 6736fa4360cfb8c40cbab2a362b0..ad431321ee858bcbe3e237e687b5 100644
+index 33db4396ac83b95b60ef16580d31..ba157bf3c8dcace7149eabf171af 100644
 --- a/docs/index.html.in
 +++ b/docs/index.html.in
 @@ -7,6 +7,7 @@
      <body>
-         <h1>QEMU @@VERSION@@ Documentation</h1>
+         <h1>QEMU @VERSION@ Documentation</h1>
          <ul>
 +            <li><a href="/usr/share/doc/packages/qemu-kvm/kvm-supported.html">SUSE Support Statements</a></li>
              <li><a href="system/index.html">System Emulation User's Guide</a></li>

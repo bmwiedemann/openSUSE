@@ -1,11 +1,11 @@
 [qemu-s390 package document]
 
-POST SLES 15 SP2 QEMU/KVM RELATED SUPPORT STATEMENTS
+SLES 15 SP3 QEMU/KVM RELATED SUPPORT STATEMENTS
 
 Overview
 --------
 
-  The QEMU based packages included with SLES 15 SP2 provide a large variety of
+  The QEMU based packages included with SLES 15 SP3 provide a large variety of
   features, from the very latest customer requests to features of questionable
   quality or value. The linux kernel includes components which contribute KVM
   virtualization features as well. This document was created to assist the user
@@ -73,7 +73,7 @@ Major QEMU/KVM Supported Features
 
 - Guest execution state may be "moved" in both time (save/restore) and space
   (static and live migration). These migrations or save/restore operations can
-  take place either from certain prior SLES versioned hosts to a SLES 15 SP2
+  take place either from certain prior SLES versioned hosts to a SLES 15 SP3
   host or between hosts of the same version. Certain other restrictions also
   apply.
 
@@ -113,7 +113,7 @@ Major QEMU/KVM Supported Features
 
 - Portions of the host file system may be shared with a guest by using virtFS.
 
-- A guest "agent" is available for SLES 15 SP2 KVM guests via the
+- A guest "agent" is available for SLES 15 SP3 KVM guests via the
   qemu-guest-agent package. This allows some introspection and control of the
   guest OS environment from the host.
 
@@ -203,6 +203,9 @@ Deprecated, Superseded, Modified and Dropped Features
 - These previously unsupported command line options are no longer recognized:
   -device mmio_interface
   -device ramfb
+  -device vhost-user-vsock-pci-transitional
+  -device vhost-vsock-pci-transitional
+  -device virtio-iommu-pci-transitional
   -enable-hax
   -tdf
   -xen-create
@@ -219,11 +222,11 @@ Deprecated, Superseded, Modified and Dropped Features
 
 - These previously supported monitor commands are now deprecated:
   change
-  cpu-add
   migrate_set_downtime
   migrate_set_speed
 
 - These previously supported monitor commands are no longer recognized:
+  cpu-add
   pci_add (use device_add instead)
   pci_del (use device_del instead)
 
@@ -275,7 +278,7 @@ QEMU Command-Line and Monitor Syntax and Support
   problems or even bugs in older interfaces cannot be fixed due to functional
   expectations, but are resolved in the newer interface or option.
   This advice includes moving to the most recent machine type (eg
-  s390-ccw-virtio-4.2 instead of s390-ccw-virtio-3.1) if possible.
+  s390-ccw-virtio-5.2 instead of s390-ccw-virtio-4.2) if possible.
 
 - The following command line options are supported:
   -accel ...
@@ -301,14 +304,14 @@ QEMU Command-Line and Monitor Syntax and Support
           scsi-generic|scsi-disk|scsi-block|virtio-rng-pci|pci-bridge|
           megasas-gen2|e1000e|e1000|zpci|virtio-gpu-ccw|virtio-keyboard-ccw|
           vhost-user-blk-pci|vhost-user-scsi|vhost-user-scsi-pci|
-          vhost-vsock-ccw|virtio-balloon-ccw|virtio-blk-ccw|
-          vhost-scsi-ccw|vhost-user-blk|virtio-crypto-ccw|virtio-net-ccw|
-          virtio-rng-ccw|virtio-scsi-ccw|virtio-serial-ccw|virtio-mouse-ccw|
-          virtio-tablet-ccw|vfio-pci|virtio-vga|vhost-scsi-pci-non-transitional|
+          vhost-vsock-ccw|virtio-balloon-ccw|virtio-blk-ccw|vhost-scsi-ccw|
+          vhost-user-blk|virtio-crypto-ccw|virtio-net-ccw|virtio-rng-ccw|
+          virtio-scsi-ccw|virtio-serial-ccw|virtio-mouse-ccw|virtio-tablet-ccw|
+          vfio-pci|virtio-vga|vhost-scsi-pci-non-transitional|
           vhost-scsi-pci-transitional|vhost-user-blk-pci-non-transitional|
           vhost-user-blk-pci-transitional|vhost-user-scsi-pci-non-transitional|
           vhost-user-scsi-pci-transitional|vhost-vsock-pci-non-transitional|
-          vhost-vsock-pci-transitional|virtio-9p-pci-non-transitional|
+          virtio-9p-ccw|virtio-9p-pci-non-transitional|
           virtio-9p-pci-transitional|virtio-balloon-pci-non-transitional|
           virtio-balloon-pci-transitional|virtio-blk-pci-non-transitional|
           virtio-blk-pci-transitional|virtio-input-host-pci-non-transitional|
@@ -351,12 +354,14 @@ QEMU Command-Line and Monitor Syntax and Support
   -M
 
      [help|?|none|s390-ccw-virtio|s390-ccw-virtio-2.6|s390-ccw-virtio-2.9|
-     s390-ccw-virtio-2.11|s390-ccw-virtio-3.1|s390-ccw-virtio-4.2]
+     s390-ccw-virtio-2.11|s390-ccw-virtio-3.1|s390-ccw-virtio-4.2|
+     s390-ccw-virtio-5.2]
 
   -machine
 
            [help|?|none|s390-ccw-virtio|s390-ccw-virtio-2.6|s390-ccw-virtio-2.9|
-           s390-ccw-virtio-2.11|s390-ccw-virtio-3.1|s390-ccw-virtio-4.2]
+           s390-ccw-virtio-2.11|s390-ccw-virtio-3.1|s390-ccw-virtio-4.2|
+           s390-ccw-virtio-5.2]
 
   -mem-path ...
   -mem-prealloc
@@ -421,7 +426,6 @@ QEMU Command-Line and Monitor Syntax and Support
   closefd ...
   cont
   cpu ...
-  cpu-add ...
   delvm ...
   device_add ...
   device_del ...
@@ -509,12 +513,15 @@ QEMU Command-Line and Monitor Syntax and Support
   block-dirty-bitmap-enable
   block-dirty-bitmap-merge
   block-dirty-bitmap-remove
+  block-export-add
+  block-export-del
   block-latency-histogram-set
   block_passwd
   block_resize
   block_set_io_throttle
   block-set-write-threshold
   block_stream
+  calc-dirty-rate
   change
   change-vnc-password
   chardev-add
@@ -566,6 +573,7 @@ QEMU Command-Line and Monitor Syntax and Support
   query-acpi-ospm-status
   query-balloon
   query-block
+  query-block-exports
   query-block-jobs
   query-blockstats
   query-chardev
@@ -579,6 +587,7 @@ QEMU Command-Line and Monitor Syntax and Support
   query-cpus
   query-cpus-fast
   query-current-machine
+  query-dirty-rate
   query-display-options
   query-dump
   query-dump-guest-memory-capability
@@ -620,7 +629,6 @@ QEMU Command-Line and Monitor Syntax and Support
   remove-fd
   ringbuf-read
   ringbuf-write
-  rtc-reset-reinjection
   screendump
   send-key
   set_link
@@ -656,8 +664,8 @@ QEMU Command-Line and Monitor Syntax and Support
           isa-parallel|isa-serial|isa-vga|lsi53c810|lsi53c810a|max-s390x-cpu|
           megasas|mptsas1068|ne2k_isa|ne2k_pci|nec-usb-xhci|nvdimm|nvme|pc-dimm|
           pci-testdev|pcnet|pc-testdev|piix3-ide|piix3-ide|piix3-ide-xen|
-          piix4-usb-uhci|pvscsi|pxb|pxb-host|pxb-pcie|qemu-s390-cpu|
-          rocker|s390-flic|s390-flic-qemu|s390-ipl|s390-pcihost|
+          piix4-usb-uhci|pvscsi|pxb|pxb-host|pxb-pcie|qemu-s390-cpu|rocker|
+          s390-flic|s390-flic-qemu|s390-ipl|s390-pcihost|
           s390-sclp-event-facility|s390-skeys-qemu|sb16|sclp|sclpconsole|
           sclp-cpu-hotplug|sclplmconsole|sclp-memory-hotplug-dev|sclpquiesce|
           sd-card|sdhci-pci|secondary-vga|sga|smbus-eeprom|tpci200|usb-audio|
@@ -688,10 +696,9 @@ QEMU Command-Line and Monitor Syntax and Support
           zEC12.2-s390x-cpu|zEC12-base-s390x-cpu|zEC12-s390x-cpu|cpu-cluster|
           z14.2-base-s390x-cpu|z14.2-s390x-cpu|vhost-user-fs-device|
           virtio-iommu-device|virtio-iommu-pci|
-          virtio-iommu-pci-non-transitional|virtio-iommu-pci-transitional|
-          vhost-user-vsock-device|vhost-user-vsock-pci|
-          vhost-user-vsock-pci-non-transitional|
-          vhost-user-vsock-pci-transitional]
+          virtio-iommu-pci-non-transitional|vhost-user-vsock-device|
+          vhost-user-vsock-pci|vhost-user-vsock-pci-non-transitional|
+          vhost-user-fs-ccw]
           (the following are aliases of these unsupported devices: lsi|
           ahci|e1000-82540em|vfio-ccw)
           (note that some of these device names represent supported devices and
@@ -791,6 +798,9 @@ QEMU Command-Line and Monitor Syntax and Support
   netdev_add
   netdev_del ...
   pcie_aer_inject_error ...
+  replay_break ...
+  replay_delete_break
+  replay_seek ...
   set_link ...
   set_password ...
   singlestep ...
@@ -816,11 +826,12 @@ QEMU Command-Line and Monitor Syntax and Support
   nbd-server-start
   nbd-server-stop
   query-colo-status
-  query-sev
-  query-sev-launch-measure
   query-tpm
   query-tpm-models
   query-tpm-types
+  replay_break
+  replay_delete_break
+  replay_seek
   x-blockdev-amend
   x-blockdev-change
   x-blockdev-insert-medium

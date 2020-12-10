@@ -10,14 +10,14 @@ KVM guests work there, even if possibly racy in some odd circumstances.
 
 Signed-off-by: Bruce Rogers <brogers@suse.com>
 ---
- exec.c | 2 ++
+ softmmu/physmem.c | 2 ++
  1 file changed, 2 insertions(+)
 
-diff --git a/exec.c b/exec.c
-index 6f381f98e2a01c432c28c0c094db..0cec6a514147a1b90e2056f3eac4 100644
---- a/exec.c
-+++ b/exec.c
-@@ -2328,11 +2328,13 @@ RAMBlock *qemu_ram_alloc_from_fd(ram_addr_t size, MemoryRegion *mr,
+diff --git a/softmmu/physmem.c b/softmmu/physmem.c
+index 3027747c0302c0904db2568eabb8..402a33cb95d898db6a951563c168 100644
+--- a/softmmu/physmem.c
++++ b/softmmu/physmem.c
+@@ -1957,11 +1957,13 @@ RAMBlock *qemu_ram_alloc_from_fd(ram_addr_t size, MemoryRegion *mr,
          return NULL;
      }
  

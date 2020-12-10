@@ -8,7 +8,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 6 insertions(+)
 
 diff --git a/linux-user/signal.c b/linux-user/signal.c
-index 8cf51ffecde659742b7aac6dfaae..08cb813a8a1782ed4b845d716ce2 100644
+index 73de934c65117c5caa0f2dabe8e2..be83f5e4030f2a6e90606f762396 100644
 --- a/linux-user/signal.c
 +++ b/linux-user/signal.c
 @@ -632,6 +632,10 @@ static void QEMU_NORETURN dump_core_and_abort(int target_sig)

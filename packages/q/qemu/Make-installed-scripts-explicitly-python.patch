@@ -13,7 +13,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/scripts/analyze-migration.py b/scripts/analyze-migration.py
-index 95838cbff3f00f1ba097ee032032..d5f6c67bf1f7305461bb536f57b1 100755
+index d7177b212c86e826303bd93e74cb..502ae14111aa328e549b70ac66e7 100755
 --- a/scripts/analyze-migration.py
 +++ b/scripts/analyze-migration.py
 @@ -1,4 +1,4 @@

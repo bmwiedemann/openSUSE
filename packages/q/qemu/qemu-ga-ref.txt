@@ -1,8 +1,0 @@
-If you are looking for the QEMU Guest Agent protocol reference, see:
-/usr/share/doc/packages/qemu/interop/qemu-ga-ref.txt
-
-The file you are reading is now provided simply to support a packaging
-"Split-Provides", in order to maintain prior-release functionality. The
-new package has split that functionality into another package which may
-be optional going forward. If you find the package providing this file
-is not needed, you may uninstall it.

@@ -7,12 +7,12 @@
 # The following specifies the upstream tag or commit upon which our patchqueue
 # gets rebased. The special value LATEST may be used to "automatically" track
 # the upstream development tree in the master branch
-GIT_UPSTREAM_COMMIT_ISH=v5.1.0
+GIT_UPSTREAM_COMMIT_ISH=v5.2.0
 # WARNING: If transitioning from using LATEST to not, MANUALLY re-set the
 # tarball present. If transitioning TO LATEST, make sure that
 # NEXT_RELEASE_IS_MAJOR is set correctly
 # This is used to choose the version number when LATEST processing is active
-NEXT_RELEASE_IS_MAJOR=0
+NEXT_RELEASE_IS_MAJOR=1
 
 # Unfortunately, SeaBIOS doesn't always follow an "always increasing" version
 # model, so there may be times we should overide the automated version setting.
@@ -28,7 +28,7 @@ BUNDLE_DIR=/dev/shm/qemu-factory-bundle-dir
 NUMBERED_PATCHES=0
 
 PATCH_RANGE=1000
-REPO_COUNT=26
+REPO_COUNT=36
 
 # Perhaps we need to instead use the terminal local dirname as the index
 # and store the ~/git/ as a separate VARIABLE
@@ -55,12 +55,22 @@ LOCAL_REPO_MAP=(
     ~/git/qemu-seabios-hppa
     ~/git/qemu-u-boot-sam460ex
     ~/git/qemu-QemuMacDrivers
+    ~/git/qemu-meson
     ~/git/qemu-tests-berkeley-softfloat-3
     ~/git/qemu-tests-berkeley-testfloat-3
     ~/git/qemu-edk2-berkeley-softfloat-3
     ~/git/qemu-edk2-openssl-boringssl
     ~/git/qemu-edk2-openssl-krb5
     ~/git/qemu-edk2-openssl-pyca-cryptography
+    ~/git/qemu-edk2-BrotliCompress-brotli
+    ~/git/qemu-edk2-BrotliCustomDecompressLib-brotli
+    ~/git/qemu-edk2-oniguruma
+    ~/git/qemu-edk2-cmocka
+    ~/git/qemu-vbootrom
+    ~/git/qemu-edk2-BrotliCustomDecompressLib-brotli-research-esaxx
+    ~/git/qemu-edk2-BrotliCustomDecompressLib-brotli-research-libdivsufsort
+    ~/git/qemu-edk2-BrotliCompress-brotli-research-esaxx
+    ~/git/qemu-edk2-BrotliCompress-brotli-research-libdivsufsort
 )
 
 # TEMPORARY! FOR NOW WE REQUIRE THESE LOCALLY TO DO WORK ON PACKAGE
@@ -94,12 +104,23 @@ PATCH_PATH_MAP=(
     "roms/seabios-hppa/"
     "roms/u-boot-sam460ex/"
     "roms/QemuMacDrivers/"
+    "meson/"
     "tests/fp/berkeley-softfloat-3/"
     "tests/fp/berkeley-testfloat-3/"
     "roms/edk2/ArmPkg/Library/ArmSoftFloatLib/berkeley-softfloat-3/"
     "roms/edk2/CryptoPkg/Library/OpensslLib/openssl/boringssl/"
     "roms/edk2/CryptoPkg/Library/OpensslLib/openssl/krb5/"
     "roms/edk2/CryptoPkg/Library/OpensslLib/openssl/pyca-cryptography/"
+    "roms/edk2/BaseTools/Source/C/BrotliCompress/brotli/"
+    "roms/edk2/MdeModulePkg/Library/BrotliCustomDecompressLib/brotli/"
+    "roms/edk2/MdeModulePkg/Universal/RegularExpressionDxe/oniguruma/"
+    "roms/edk2/UnitTestFrameworkPkg/Library/CmockaLib/cmocka/"
+    "roms/vbootrom/"
+    "roms/edk2/MdeModulePkg/Library/BrotliCustomDecompressLib/brotli/research/esaxx/"
+    "roms/edk2/MdeModulePkg/Library/BrotliCustomDecompressLib/brotli/research/libdivsufsort/"
+    "roms/edk2/MdeModulePkg/Library/BrotliCompress/brotli/research/esaxx/"
+    "roms/edk2/MdeModulePkg/Library/BrotliCompress/brotli/research/libdivsufsort/"
+
 )
 
 # Zero based numbering, so we subtract 1 here:

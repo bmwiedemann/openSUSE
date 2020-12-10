@@ -1,0 +1,41 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Thu, 3 Dec 2020 16:48:13 -0700
+Subject: usb: Help compiler out to avoid a warning on x86 compilation
+
+Include-If: %ifarch %arm %ix86
+
+There is an assert present which already should give the compiler
+enough information about the value of i as used in the snprintf,
+but if I remember right, for x86, because memory is tighter some of
+the compiler smarts are turned off, so we get the uninformed warning
+there and not on other archs. So on x86 only we'll add some code to
+help the compiler out, so we can again compile qemu with
+--enable-werror.
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/usb/hcd-xhci.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/hw/usb/hcd-xhci.c b/hw/usb/hcd-xhci.c
+index 9ce7ca706e3beff96cde32ddded3..e0884d777093a39506ac01fdce3a 100644
+--- a/hw/usb/hcd-xhci.c
++++ b/hw/usb/hcd-xhci.c
+@@ -3306,7 +3306,7 @@ static void usb_xhci_init(XHCIState *xhci)
+                 USB_SPEED_MASK_FULL |
+                 USB_SPEED_MASK_HIGH;
+             assert(i < XHCI_MAXPORTS);
+-            snprintf(port->name, sizeof(port->name), "usb2 port #%d", i+1);
++            snprintf(port->name, sizeof(port->name), "usb2 port #%d", i+1 < XHCI_MAXPORTS ? i+1 : 0);
+             speedmask |= port->speedmask;
+         }
+         if (i < xhci->numports_3) {
+@@ -3320,7 +3320,7 @@ static void usb_xhci_init(XHCIState *xhci)
+             port->uport = &xhci->uports[i];
+             port->speedmask = USB_SPEED_MASK_SUPER;
+             assert(i < XHCI_MAXPORTS);
+-            snprintf(port->name, sizeof(port->name), "usb3 port #%d", i+1);
++            snprintf(port->name, sizeof(port->name), "usb3 port #%d", i+1 < XHCI_MAXPORTS ? i+1 : 0);
+             speedmask |= port->speedmask;
+         }
+         usb_register_port(&xhci->bus, &xhci->uports[i], xhci, i,

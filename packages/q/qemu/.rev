@@ -2131,4 +2131,111 @@ So VERY minor changes, but sounds like the gcc10 fix is wanted badly, so that's 
 </comment>
     <requestid>852363</requestid>
   </revision>
+  <revision rev="189" vrev="1">
+    <srcmd5>17bc16ed2cbdbfd9ea235d55dce0b9c2</srcmd5>
+    <version>5.2.0</version>
+    <time>1607612220</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v5.2.0: See http://wiki.qemu.org/ChangeLog/5.2
+  Take note that ongoing feature deprecation is tracked at both
+  http://wiki.qemu-project.org/Features/LegacyRemoval and in
+  the deprecated.html file installed with the qemu package
+  Some noteworthy changes:
+* Dropped system emulators: qemu-system-lm32, qemu-system-unicore32
+* Dropped linux user emulator: qemu-ppc64abi32
+* Added linux user emulator: qemu-extensaeb
+* Unicore32 and lm32 guest support dropped
+* New sub-packages (most due to ongoing modularization of QEMU):
+  qemu-audio-spice, qemu-hw-chardev-spice, qemu-hw-display-virtio-vga, 
+  qemu-hw-display-virtio-gpu, qemu-hw-display-virtio-gpu-pci,
+  qemu-ui-spice-core, qemu-ui-opengl, qemu-ivshmem-tools
+* x86: A new KVM feature which improves the handling of asynchronous page
+  faults is available with -cpu ...,kvm-async-pf-int (requires Linux 5.8)
+* s390: More instructions emulated under TCG
+* PowerPC: nvdimm= machine option now functions correctly; misc improvements
+* ARM: new boards: mps2-an386 (Cortex-M4 based) and mps2-an500
+  (Cortex-M7 based),  raspi3ap (the Pi 3 model A+), raspi0 (the Pi Zero)
+  and raspi1ap (the Pi A+)
+* RISC-V: OpenSBI v0.8 included by default; Generic OpenSBI platform used
+  when no -bios argument is supplied; Support for NUMA sockets on Virt
+  and Spike Machines; Support for migrating machines; misc improvements
+* Misc NVMe improvements
+* The 'vhost-user-blk' export type has been added, allowing
+  qemu-storage-daemon to act as a vhost-user-blk device backend
+* The SMBIOS OEM strings can now come from a file
+* 9pfs - misc performance related improvements
+* virtiofs - misc improvements
+* migration: The default migration bandwidth has been increased to 1Gbps
+  (users are still encouraged to tune it to their own hardware); The new
+  'calc-dirty-rate' and 'query-dirty-rate' QMP commands can help determine
+  the likelihood of precopy migration success; TLS+multifd now supported
+  for higher bandwidth encrypted migration; misc minor features added
+* Misc minor block features added
+* Misc doc improvements
+* qemu-microvm subpackage change: the bios-microvm.bin is now SeaBIOS based,
+  and the qboot based on is now qboot.rom
+* elf2dmp is no longer part of qemu-tools (it was never intended to be
+  a packaged binary)
+* Some subpackages which were 'Requires' are now 'Recommends', allowing for
+  a smaller qemu packaging footprint if needed
+* Patches dropped (included in release tarball, unless otherwise noted):
+  docs-fix-trace-docs-build-with-sphinx-3..patch (fixed differently)
+  hw-hyperv-vmbus-Fix-32bit-compilation.patch
+  linux-user-properly-test-for-infinite-ti.patch
+  Switch-order-of-libraries-for-mpath-supp.patch (fixed differently)
+  Conditionalize-ui-bitmap-installation-be.patch (fixed differently)
+  hw-usb-hcd-xhci-Fix-GCC-9-build-warning.patch (no longer using gcc9)
+  hw-usb-dev-mtp-Fix-GCC-9-build-warning.patch (no longer using gcc9)
+  roms-Makefile-enable-cross-compile-for-b.patch (fixed with different patch)
+  libvhost-user-handle-endianness-as-manda.patch
+  virtio-add-vhost-user-fs-ccw-device.patch
+  Fix-s-directive-argument-is-null-error.patch
+  build-Workaround-compilation-error-with-.patch
+  build-Be-explicit-about-fcommon-compiler.patch
+  intel-Avoid-spurious-compiler-warning-on.patch
+  golan-Add-explicit-type-casts-for-nodnic.patch
+  Do-not-apply-WORKAROUND_CFLAGS-for-host-.patch
+  ensure-headers-included-are-compatible-w.patch
+  Enable-cross-compile-prefix-for-C-compil.patch (fixed differently)
+  hw-net-net_tx_pkt-fix-assertion-failure-.patch
+  hw-net-xgmac-Fix-buffer-overflow-in-xgma.patch
+  s390x-protvirt-allow-to-IPL-secure-guest.patch
+  usb-fix-setup_len-init-CVE-2020-14364.patch
+* Patches added:
+  meson-install-ivshmem-client-and-ivshmem.patch
+  Revert-roms-efirom-tests-uefi-test-tools.patch
+  Makefile-Don-t-check-pc-bios-as-pre-requ.patch
+  roms-Makefile-add-cross-file-to-qboot-me.patch
+  qboot-add-cross.ini-file-to-handle-aarch.patch
+  usb-Help-compiler-out-to-avoid-a-warning.patch
+- In spec file, where reasonable, switch BuildRequires: XXX-devel
+  to be pkgconfig(XXX') instead
+- No longer disable link time optimization for qemu for x86. It looks like
+  either the build service, qemu code changes and/or the switch to meson
+  have resolved issues previously seen there. We still see problems for
+  other architectures however.
+- For the record, the following issues reported for SUSE SLE15-SP2
+  are either fixed in this current package, or are otherwise no longer
+  an issue: bsc#1172384 bsc#1174386 bsc#1174641 bsc#1174863 bsc#1175370
+  bsc#1175441 bsc#1176494 CVE-2020-13361 CVE-2020-14364 CVE-2020-15863
+  CVE-2020-16092 CVE-2020-24352
+  and the following feature requests are satisfied by this package:
+  jsc#SLE-13689 jsc#SEL-13780 jsc#SLE-13840
+- To be more accurate, and to align with other qemu packaging
+  practices, rename the qemu-s390 package to qemu-s390x. The old
+  name (in the rpm namespace) is provided with a &quot;Provides&quot;
+  directive, and an &quot;Obsoletes&quot; done against that name for prior
+  qemu versions, as is standard practice (boo#1177764 jsc#SLE-17060)
+- Take this opportunity to remove some ancient Split-Provides
+  mechanisms which can't conceivably be needed any more:
+  qemu-block-curl provided: qemu:%_libdir/%name/block-curl.so
+  qemu-guest-agent provided: qemu:%_bindir/qemu-ga
+  qemu-tools provided: qemu:%_libexecdir/qemu-bridge-helper
+- Disable linux-user 'ls' test on 32 bit arm. It's failing with
+  &quot;Allocating guest commpage: Cannot allocate memory&quot; error, which
+  we should hunt down, but for now we don't want it to prevent the
+  package from being built
+</comment>
+    <requestid>854157</requestid>
+  </revision>
 </revisionlist>

@@ -27,10 +27,10 @@ index 758c7ac6c89978ee762e9d946584..2e2d6bca932c83bea993850b60f8 100644
  /**
   * qht_statistics_destroy - Destroy a &struct qht_stats
 diff --git a/util/qht.c b/util/qht.c
-index 67e5d5b9163f5f33e41f76a7cd26..a5a332d98998209875a47ebfdeee 100644
+index 079605121b1452dac9937b0e6137..cfc2c60639af8f7905aae51c53bb 100644
 --- a/util/qht.c
 +++ b/util/qht.c
-@@ -900,9 +900,9 @@ bool qht_resize(struct qht *ht, size_t n_elems)
+@@ -901,9 +901,9 @@ bool qht_resize(struct qht *ht, size_t n_elems)
  }
  
  /* pass @stats to qht_statistics_destroy() when done */
@@ -41,8 +41,8 @@ index 67e5d5b9163f5f33e41f76a7cd26..a5a332d98998209875a47ebfdeee 100644
 +    struct qht_map *map;
      int i;
  
-     map = atomic_rcu_read(&ht->map);
-@@ -919,8 +919,8 @@ void qht_statistics_init(const struct qht *ht, struct qht_stats *stats)
+     map = qatomic_rcu_read(&ht->map);
+@@ -920,8 +920,8 @@ void qht_statistics_init(const struct qht *ht, struct qht_stats *stats)
      stats->head_buckets = map->n_buckets;
  
      for (i = 0; i < map->n_buckets; i++) {

@@ -1,0 +1,27 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Mon, 23 Nov 2020 07:13:23 -0700
+Subject: roms/Makefile: add --cross-file to qboot meson setup for aarch64
+
+Include-If: %ifarch aarch64
+
+We conditionally add a --cross-file reference so that we can do
+cross compilation of qboot from an aarch64 build.
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ roms/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/roms/Makefile b/roms/Makefile
+index a91ffad548af3e95410ce6712fb3..2db995dab25f6d842def858ebbcc 100644
+--- a/roms/Makefile
++++ b/roms/Makefile
+@@ -199,7 +199,7 @@ MESON = meson
+ NINJA = ninja
+ qboot:
+ 	mkdir -p qboot/build
+-	$(MESON) setup $(if $(wildcard qboot/build/meson-private),--wipe,) qboot qboot/build
++	$(MESON) setup --cross-file qboot/cross.ini $(if $(wildcard qboot/build/meson-private),--wipe,) qboot qboot/build
+ 	$(NINJA) -C qboot/build
+ 	cp qboot/build/bios.bin ../pc-bios/qboot.rom
+ 

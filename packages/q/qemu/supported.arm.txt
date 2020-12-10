@@ -1,11 +1,11 @@
 [qemu-arm package document]
 
-POST SLES 15 SP2 QEMU/KVM RELATED SUPPORT STATEMENTS
+SLES 15 SP3 QEMU/KVM RELATED SUPPORT STATEMENTS
 
 Overview
 --------
 
-  The QEMU based packages included with SLES 15 SP2 provide a large variety of
+  The QEMU based packages included with SLES 15 SP3 provide a large variety of
   features, from the very latest customer requests to features of questionable
   quality or value. The linux kernel includes components which contribute KVM
   virtualization features as well. This document was created to assist the user
@@ -57,7 +57,7 @@ Major QEMU/KVM Supported Features
   Since a KVM guest runs in the context of a normal linux process, some types
   of execution controls are managed with linux tools.
 
-- QEMU is compatible with EDK II based UEFI firmware available with SLES 15 SP2,
+- QEMU is compatible with EDK II based UEFI firmware available with SLES 15 SP3,
   which allow boot options common to physical systems, along with other features
   tailored to virtualization. Various VGABIOS ROMs, from the SEABIOS project,
   are also available.
@@ -73,7 +73,7 @@ Major QEMU/KVM Supported Features
 
 - Guest execution state may be "moved" in both time (save/restore) and space
   (static and live migration). These migrations or save/restore operations can
-  take place either from certain prior SLES versioned hosts to a SLES 15 SP2
+  take place either from certain prior SLES versioned hosts to a SLES 15 SP3
   host or between hosts of the same version. Certain other restrictions also
   apply.
 
@@ -113,7 +113,7 @@ Major QEMU/KVM Supported Features
 
 - Portions of the host file system may be shared with a guest by using virtFS.
 
-- A guest "agent" is available for SLES 15 SP2 KVM guests via the
+- A guest "agent" is available for SLES 15 SP3 KVM guests via the
   qemu-guest-agent package. This allows some introspection and control of the
   guest OS environment from the host.
 
@@ -210,6 +210,9 @@ Deprecated, Superseded, Modified and Dropped Features
   -device at24c-eeprom
   -device mmio_interface
   -device ssi-sd
+  -device vhost-user-vsock-pci-transitional
+  -device vhost-vsock-pci-transitional
+  -device virtio-iommu-pci-transitional
   -enable-hax
   -tdf
   -xen-create
@@ -224,6 +227,8 @@ Deprecated, Superseded, Modified and Dropped Features
   query-events
   query-migrate-cache-size (use query-migrate-parameters instead)
 
+- This previously supported QMP command is no longer recognized:
+
 - These previously supported monitor commands are now deprecated:
   change
   cpu-add
@@ -231,6 +236,7 @@ Deprecated, Superseded, Modified and Dropped Features
   migrate_set_speed
 
 - These previously supported monitor commands are no longer recognized:
+  cpu-add
   pci_add (use device_add instead)
   pci_del (use device_del instead)
   usb_add (use device_add instead)
@@ -281,8 +287,8 @@ QEMU Command-Line and Monitor Syntax and Support
   better functionality and usability going forward. In some cases existing
   problems or even bugs in older interfaces cannot be fixed due to functional
   expectations, but are resolved in the newer interface or option.
-  This advice includes moving to the most recent machine type (eg virt-4.2
-  instead of virt-3.1) if possible.
+  This advice includes moving to the most recent machine type (eg virt-5.2
+  instead of virt-4.2) if possible.
 
 - The following command line options are supported:
   -accel ...
@@ -316,11 +322,10 @@ QEMU Command-Line and Monitor Syntax and Support
           vhost-scsi-pci-non-transitional|vhost-scsi-pci-transitional|
           vhost-user-blk-pci-non-transitional|vhost-user-blk-pci-transitional|
           vhost-user-scsi-pci-non-transitional|vhost-user-scsi-pci-transitional|
-          vhost-vsock-pci-non-transitional|vhost-vsock-pci-transitional|
-          virtio-9p-pci-non-transitional|virtio-9p-pci-transitional|
-          virtio-balloon-pci-non-transitional|virtio-balloon-pci-transitional|
-          virtio-blk-pci-non-transitional|virtio-blk-pci-transitional|
-          virtio-input-host-pci-non-transitional|
+          vhost-vsock-pci-non-transitional|virtio-9p-pci-non-transitional|
+          virtio-9p-pci-transitional|virtio-balloon-pci-non-transitional|
+          virtio-balloon-pci-transitional|virtio-blk-pci-non-transitional|
+          virtio-blk-pci-transitional|virtio-input-host-pci-non-transitional|
           virtio-input-host-pci-transitional|virtio-net-pci-non-transitional|
           virtio-net-pci-transitional|virtio-rng-pci-non-transitional|
           virtio-rng-pci-transitional|virtio-scsi-pci-non-transitional|
@@ -357,8 +362,8 @@ QEMU Command-Line and Monitor Syntax and Support
   -kernel ...
   -loadvm ...
   -m ...
-  -M [help|?|none|virt|virt-2.6|virt-2.11|virtio-3.1|virt-4.2]
-  -machine [help|?|none|virt|virt-2.6|virt-2.11|virt-3.1|virt-4.2]
+  -M [help|?|none|virt|virt-2.6|virt-2.11|virtio-3.1|virt-4.2|virt-5.2]
+  -machine [help|?|none|virt|virt-2.6|virt-2.11|virt-3.1|virt-4.2|virt-5.2]
   -mem-path ...
   -mem-prealloc
   -mon ...
@@ -428,7 +433,6 @@ QEMU Command-Line and Monitor Syntax and Support
   closefd ...
   cont
   cpu ...
-  cpu-add ...
   delvm ...
   device_add ...
   device_del ...
@@ -516,12 +520,15 @@ QEMU Command-Line and Monitor Syntax and Support
   block-dirty-bitmap-enable
   block-dirty-bitmap-merge
   block-dirty-bitmap-remove
+  block-export-add
+  block-export-del
   block-latency-histogram-set
   block_passwd
   block_resize
   block_set_io_throttle
   block-set-write-threshold
   block_stream
+  calc-dirty-rate
   change
   change-vnc-password
   chardev-add
@@ -573,6 +580,7 @@ QEMU Command-Line and Monitor Syntax and Support
   query-acpi-ospm-status
   query-balloon
   query-block
+  query-block-exports
   query-block-jobs
   query-blockstats
   query-chardev
@@ -580,13 +588,12 @@ QEMU Command-Line and Monitor Syntax and Support
   query-command-line-options
   query-commands
   query-cpu-definitions
-  query-cpu-model-baseline
-  query-cpu-model-comparison
   query-cpu-model-expansion
   query-cpus
   query-cpus-fast
   query-current-machine
   query-display-options
+  query-dirty-rate
   query-dump
   query-dump-guest-memory-capability
   query-events
@@ -630,7 +637,6 @@ QEMU Command-Line and Monitor Syntax and Support
   remove-fd
   ringbuf-read
   ringbuf-write
-  rtc-reset-reinjection
   screendump
   send-key
   set_link
@@ -727,15 +733,18 @@ QEMU Command-Line and Monitor Syntax and Support
           nrf51_soc.timer|platform-ehci-usb|sse-200|vmware-svga|vmxnet3|ati-vga|
           cirrus-vga|vhost-user-fs-device|tulip|ati-vga|aw-hc-ehci-usb|
           virtio-iommu-device|virtio-iommu-pci|
-          virtio-iommu-pci-non-transitional|virtio-iommu-pci-transitional|
-          cortex-m7-arm-cpu|allwinner-cpucfg|allwinner-h3|allwinner-h3-ccu|
-          allwinner-h3-dramc|allwinner-h3-sysctrl|allwinner-rtc-sun4i|
-          allwinner-rtc-sun6i|allwinner-rtc-sun7i|allwinner-sdhost-sun4i|
-          allwinner-sdhost-sun5i|allwinner-sid|allwinner-sun8i-emac|imx.rngc|
-          imx.usbphy|serial|serial-io|stm32f405-soc|stm32f4xx-exti|
-          stm32f4xx-syscfg|tpm-tis-device|nvdimm|vhost-user-vsock-device|i
-          vhost-user-vsock-pci|vhost-user-vsock-pci-non-transitional|
-          vhost-user-vsock-pci-transitional]
+          virtio-iommu-pci-non-transitional|cortex-m7-arm-cpu|allwinner-cpucfg|
+          allwinner-h3|allwinner-h3-ccu|allwinner-h3-dramc|allwinner-h3-sysctrl|
+          allwinner-rtc-sun4i|allwinner-rtc-sun6i|allwinner-rtc-sun7i|
+          allwinner-sdhost-sun4i|allwinner-sdhost-sun5i|allwinner-sid|
+          allwinner-sun8i-emac|imx.rngc|imx.usbphy|serial|serial-io|
+          stm32f405-soc|stm32f4xx-exti|stm32f4xx-syscfg|tpm-tis-device|nvdimm|
+          vhost-user-vsock-device|vhost-user-vsock-pci|
+          vhost-user-vsock-pci-non-transitional|nvme-ns|ads7846|led|ssd0323|
+          vhost-user-vga|ctucan_pci|bcm2835-cprman-clock-mux|
+          bcm2835-cprman-cprman-dsi0hsck-mux|bcm2835-cprman-cprman-pll|
+          bcm2835-cprman-cprman-pll-channel|mt25ql512ab|mx66l5123f|n25q512ax3|
+          ssd0323|u2f-passthru]
           (the following are aliases of these unsupported devices: lsi|
           piix3-usb-uhci)
           (note that some of these device names represent supported devices and
@@ -759,29 +768,32 @@ QEMU Command-Line and Monitor Syntax and Support
 
      [akita|ast2500-evb|ast2600-evb|borzoi|canon-a1100|cheetah|collie|connex|
      cubieboard|highbank|imx25-pdk|integratorcp|kzm|lm3s6965evb|lm3s811evb|
-     mainstone|mcimx6ul-evk|mcimx7d-sabre|microbit|midway|mps2-an385|mps2-an505|
-     mps2-an511|mps2-an521|musca-a|musca-b1|musicpal|n800|n810|netduino2|
-     netduinoplus2|nuri|orangepi-pc|palmetto-bmc|raspi2|raspi3|realview-eb|
-     realview-eb-mpcore|realview-pb-a8|realview-pbx-a9|romulus-bmc|sabrelite|
-     sbsa-ref|smdkc210|sonorapass-bmc|spitz|swift-bmc|sx1|sx1-v1|tacoma-bmc|
-     terrier|tosa|verdex|versatileab|versatilepb|vexpress-a15|vexpress-a9|
-     virt-2.7|virt-2.8|virt-2.12|virt-3.0|virt-4.0|virt-4.1|virt-5.0|virt-5.1|
-     witherspoon-bmc|xilinx-zynq-a9|xlnx-versal-virt|xlnx-zcu102|z2]
+     mainstone|mcimx6ul-evk|mcimx7d-sabre|microbit|midway|mps2-an385|mps2-an386|
+     mps2-an500|mps2-an505|mps2-an511|mps2-an521|musca-a|musca-b1|musicpal|n800|
+     n810|netduino2|netduinoplus2|npcm750-evb|nuri|orangepi-pc|palmetto-bmc|
+     quanta-gsj|raspi0|raspi1ap|raspi2|raspi2b|raspi3|raspi3ap|raspi3b|
+     realview-eb|realview-eb-mpcore|realview-pb-a8|realview-pbx-a9|romulus-bmc|
+     sabrelite|sbsa-ref|smdkc210|sonorapass-bmc|spitz|supermicrox11-bmc|
+     swift-bmc|sx1|sx1-v1|tacoma-bmc|terrier|tosa|verdex|versatileab|
+     versatilepb|vexpress-a15|vexpress-a9|virt-2.7|virt-2.8|virt-2.12|virt-3.0|
+     virt-4.0|virt-4.1|virt-5.0|virt-5.1|witherspoon-bmc|xilinx-zynq-a9|
+     xlnx-versal-virt|xlnx-zcu102|z2]
 
   -machine
 
            [akita|ast2500-evb|ast2600-evb|borzoi|canon-a1100|cheetah|collie|
            connex|cubieboard|highbank|imx25-pdk|integratorcp|kzm|lm3s6965evb|
            lm3s811evb|mainstone|mcimx6ul-evk|mcimx7d-sabre|microbit|midway|
-           mps2-an385|mps2-an521|mps2-an505|mps2-an511|musca-a|musca-b1|
-           musicpal|n800|n810|netduino2|netduinoplus2|nuri|orangepi-pc|
-           palmetto-bmc|raspi2|raspi3|realview-eb|realview-eb-mpcore|
-           realview-pb-a8|realview-pbx-a9|romulus-bmc|sabrelite|sbsa-ref|
-           smdkc210|sonorapass-bmc|spitz|swift-bmc|sx1|sx1-v1|tacoma-bmc|
-           terrier|tosa|verdex|versatileab|versatilepb|vexpress-a15|vexpress-a9|
-           virt-2.7|virt-2.8|virt-2.12|virt-3.0|virt-4.0|virt-4.1|virt-5.0|
-           virt-5.1|witherspoon-bmc|xilinx-zynq-a9|xlnx-versal-virt|xlnx-zcu102|
-           z2]
+           mps2-an385|mps2-an386|mps2-an500|mps2-an521|mps2-an505|mps2-an511|
+           musca-a|musca-b1|musicpal|n800|n810|netduino2|netduinoplus2|
+           npcm750-evb|nuri|orangepi-pc|palmetto-bmc|quanta-gsj|raspi0|raspi1ap|
+           raspi2|raspi2b|raspi3|raspi3ap|raspi3b|realview-eb|
+           realview-eb-mpcore|realview-pb-a8|realview-pbx-a9|romulus-bmc|
+           sabrelite|sbsa-ref|smdkc210|sonorapass-bmc|spitz|supermicrox11-bmc|
+           swift-bmc|sx1|sx1-v1|tacoma-bmc|terrier|tosa|verdex|versatileab|
+           versatilepb|vexpress-a15|vexpress-a9|virt-2.7|virt-2.8|virt-2.12|
+           virt-3.0|virt-4.0|virt-4.1|virt-5.0|virt-5.1|witherspoon-bmc|
+           xilinx-zynq-a9|xlnx-versal-virt|xlnx-zcu102|z2]
 
   -mtdblock file
   -net [dump|socket|vde] ...
@@ -842,6 +854,9 @@ QEMU Command-Line and Monitor Syntax and Support
   netdev_add
   netdev_del ...
   pcie_aer_inject_error ...
+  replay_break ...
+  replay_delete_break
+  replay_seek ...
   set_link ...
   set_password ...
   singlestep ...
@@ -860,15 +875,15 @@ QEMU Command-Line and Monitor Syntax and Support
   change-backing-file
   drive-backup
   drive-mirror
-  dump-skeys
   netdev_add
   netdev_del
   nbd-server-add
   nbd-server-start
   nbd-server-stop
   query-colo-status
-  query-sev
-  query-sev-launch-measure
+  replay_break
+  replay_delete_break
+  replay_seek
   x-blockdev-amend
   x-blockdev-change
   x-blockdev-insert-medium

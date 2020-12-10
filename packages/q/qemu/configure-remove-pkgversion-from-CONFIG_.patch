@@ -18,10 +18,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/configure b/configure
-index 3b3c5dc2f93b87a91d247079f4c8..4340229b47a3294307a08df3339e 100755
+index b9c4fec9793d2815e52479779d10..379a03b111d9e7a80e5717782953 100755
 --- a/configure
 +++ b/configure
-@@ -7229,7 +7229,7 @@ fi
+@@ -6047,7 +6047,7 @@ echo "TARGET_DIRS=$target_list" >> $config_host_mak
  if test "$modules" = "yes"; then
    # $shacmd can generate a hash started with digit, which the compiler doesn't
    # like as an symbol. So prefix it with an underscore
