@@ -395,6 +395,7 @@ Prefer: postfix
 
 # Python3 exists in multiple versions - we currently favor 3.8 (our default):
 Prefer: -python36 -python39
+Prefer: -python36-hotdoc
 
 # prefer the PHP5 variants over PHP7
 Prefer: php5-ctype
@@ -883,7 +884,7 @@ Prefer: -zvbi-devel-32bit
 Prefer: -zziplib-devel-32bit                          
 
 # have choice for python3-Sphinx needed by trytond: python3-Sphinx python3-Sphinx2
-Prefer: python3-Sphinx -python36-Sphinx2 -python38-Sphinx2
+Prefer: python3-Sphinx -python36-Sphinx2 -python38-Sphinx2 -python38-Sphinx2-latex
 
 # Ruby stuff - quite a few packages exist in multiple versions in the distro; in each case, the Preference is on the 'unversioned' package
 Prefer: ruby2.6-rubygem-addressable
