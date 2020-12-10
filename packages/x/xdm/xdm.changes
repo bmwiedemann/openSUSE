@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  1 12:08:44 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed %postun for older releases than factory/TW (see change
+  right below, which broke it)
+
+-------------------------------------------------------------------
 Tue Nov  3 14:38:22 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Replace  '%service_del_postun -n' with '%service_del_postun_without_restart'
