@@ -17,6 +17,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
+%define build_qt4 0
+%else
+%define build_qt4 1
+%endif
+
 %define ver_master      1.24
 %define gobject_libname lightdm-gobject-1
 %define gobject_lib     lib%{gobject_libname}-0
@@ -69,7 +75,7 @@ BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
-%if 0%{?suse_version} <= 1500
+%if %{build_qt4}
 BuildRequires:  pkgconfig(QtCore)
 BuildRequires:  pkgconfig(QtDBus)
 BuildRequires:  pkgconfig(QtGui)
@@ -137,7 +143,7 @@ Group:          System/Libraries
 This package contains the GObject Introspection bindings for the
 LightDM client library.
 
-%if 0%{?suse_version} <= 1500
+%if %{build_qt4}
 %package -n %{qt4_lib}
 Summary:        LightDM Qt4-based Client Library
 License:        LGPL-2.0-only OR LGPL-3.0-only
@@ -162,7 +168,7 @@ Qt4-based LightDM clients.
 Summary:        LightDM Qt5-based Client Library
 License:        LGPL-2.0-only OR LGPL-3.0-only
 Group:          System/Libraries
-%if 0%{?suse_version} > 1500
+%if !%{build_qt4}
 Provides:       %{qt4_lib} = %{version}
 Obsoletes:      %{qt4_lib} < %{version}
 %endif
@@ -176,7 +182,7 @@ Summary:        Development Files for %{qt5_lib}
 License:        LGPL-2.0-only OR LGPL-3.0-only
 Group:          Development/Libraries/C and C++
 Requires:       %{qt5_lib} = %{version}
-%if 0%{?suse_version} > 1500
+%if !%{build_qt4}
 Provides:       %{name}-qt-devel = %{version}
 Obsoletes:      %{name}-qt-devel < %{version}
 %endif
@@ -301,7 +307,7 @@ fi
 
 %postun -n %{gobject_lib} -p /sbin/ldconfig
 
-%if 0%{?suse_version} <= 1500
+%if %{build_qt4}
 %post -n %{qt4_lib} -p /sbin/ldconfig
 
 %postun -n %{qt4_lib} -p /sbin/ldconfig
@@ -374,7 +380,7 @@ fi
 %files -n %{typelibname}
 %{_libdir}/girepository-1.0/LightDM-1.typelib
 
-%if 0%{?suse_version} <= 1500
+%if %{build_qt4}
 %files -n %{qt4_lib}
 %license COPYING.LGPL2 COPYING.LGPL3
 %{_libdir}/lib%{qt4_libname}.so.*
