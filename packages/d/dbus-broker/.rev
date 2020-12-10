@@ -63,4 +63,12 @@
     <comment>- Update to release 24</comment>
     <requestid>832351</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5edd681a8fc0836f9978ddf7bbd2db66</srcmd5>
+    <version>25</version>
+    <time>1607612360</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>854544</requestid>
+  </revision>
 </revisionlist>

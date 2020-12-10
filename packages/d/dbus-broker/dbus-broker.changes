@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec  3 11:34:56 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 25
+  * Fix an assertion failure when disconnecting monitors with active
+    unique-name matches.
+  * Fix the selinux error-handling to no longer mark all errors as
+    auditable by default.
+
+-------------------------------------------------------------------
 Fri Sep  4 08:09:00 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 24
