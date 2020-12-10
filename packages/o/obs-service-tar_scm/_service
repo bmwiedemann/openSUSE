@@ -8,6 +8,7 @@
     <param name="changesgenerate">enable</param>
     <param name="extract">dist/obs-service-tar_scm.spec</param>
     <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="revision">master</param>
   </service>
   <service name="set_version" mode="disabled">
     <param name="basename">obs-service-tar_scm</param>

@@ -111,8 +111,8 @@ Recommends:     %{use_python}-keyrings.alt                      \
 
 %define pkg_name obs-service-tar_scm
 Name:           %{pkg_name}%{nsuffix}
-%define version_unconverted 0.10.16.1595245235.15a0df2
-Version:        0.10.16.1595245235.15a0df2
+%define version_unconverted 0.10.19.1605080719.3b79112
+Version:        0.10.19.1605080719.3b79112
 Release:        0
 Summary:        An OBS source service: create tar ball from svn/git/hg
 License:        GPL-2.0-or-later
@@ -267,6 +267,7 @@ make %{use_test}
 
 %files -n obs-service-obs_scm-common
 %defattr(-,root,root)
+%license COPYING
 %dir %{_prefix}/lib/obs
 %dir %{_prefix}/lib/obs/service
 %{_prefix}/lib/obs/service/TarSCM

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Nov 11 07:50:03 UTC 2020 - FSchreiner@suse.com
+
+- Update to version 0.10.19.1605080719.3b79112:
+  * [dist] prefer python3 over python2
+
+-------------------------------------------------------------------
+Tue Nov 10 16:24:47 UTC 2020 - FSchreiner@suse.com
+
+- Update to version 0.10.18.1600256320.569e5be:
+  * add license file (issue 257)
+  * additional option verification
+  * new option '--maintainers-asc' and '--last-signed-tag'
+  * new option '--latest-signed-commit'
+  * Remove superflous ')' in an error message.
+
+-------------------------------------------------------------------
+Mon Jul 20 15:45:18 UTC 2020 - FSchreiner@suse.com
+
+- Update to version 0.10.16.1595259906.d3308f5:
+  * [dist] updated debian control file for use in OBS
+
+-------------------------------------------------------------------
 Mon Jul 20 12:05:22 UTC 2020 - FSchreiner@suse.com
 
 - Update to version 0.10.16.1595245235.15a0df2:
