@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 08 23:31:30 UTC 2020 - jfehlig@suse.com
+
+- Update to version 0.78:
+  * Automatic version commit for tag 0.78
+  * use standard bash path
+  * avoid other tags spilling into the .spec changelog
+  * mdevctl: fix cleanup on error when creating and removing mdev
+  * version support
+  * Fix attributes getting applied via start-parent-mdevs
+  * mdevctl: fix cleanup on error when writing to attribute
+  * Remove never used 'available' option
+  * Fix attribute validation
+  jsc#SLE-15861, bsc#1179770
+
+-------------------------------------------------------------------
 Wed Jul  1 20:06:28 UTC 2020 - James Fehlig <jfehlig@suse.com>
 
 - Initial packaging of mdevctl utility

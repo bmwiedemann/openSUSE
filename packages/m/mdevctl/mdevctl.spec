@@ -17,7 +17,7 @@
 
 
 Name:           mdevctl
-Version:        0.61
+Version:        0.78
 Release:        0
 Summary:        Mediated device management and persistence utility
 License:        LGPL-2.1-or-later

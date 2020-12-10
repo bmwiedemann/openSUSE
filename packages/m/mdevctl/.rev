@@ -9,4 +9,22 @@ libvirt node device driver to manage mediated devices for use
 in virtual machines.</comment>
     <requestid>818405</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0565d390ce41336f48c727da8ee08909</srcmd5>
+    <version>0.78</version>
+    <time>1607612229</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.78:
+  * Automatic version commit for tag 0.78
+  * use standard bash path
+  * avoid other tags spilling into the .spec changelog
+  * mdevctl: fix cleanup on error when creating and removing mdev
+  * version support
+  * Fix attributes getting applied via start-parent-mdevs
+  * mdevctl: fix cleanup on error when writing to attribute
+  * Remove never used 'available' option
+  * Fix attribute validation
+  jsc#SLE-15861, bsc#1179770</comment>
+    <requestid>854165</requestid>
+  </revision>
 </revisionlist>
