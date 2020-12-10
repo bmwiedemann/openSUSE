@@ -522,4 +522,12 @@
     <comment>- update to 0.8.6 (bsc#1178103):</comment>
     <requestid>847793</requestid>
   </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>97c178f77405c7f4da2b366eb5e1f012</srcmd5>
+    <version>0.8.6</version>
+    <time>1607612369</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854571</requestid>
+  </revision>
 </revisionlist>

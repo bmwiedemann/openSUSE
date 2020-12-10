@@ -39,6 +39,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
 Requires:       python-metaextract
 Requires:       python-pbr
+Requires:       python-requests
 Requires:       python-setuptools
 Requires:       python-six
 Requires(post): update-alternatives
