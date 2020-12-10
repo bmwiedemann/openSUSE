@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  9 13:21:40 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Only build the qt4 subpackage up to Leap 15.2 / SLE 15 SP2
+  (boo#1179613)
+
+-------------------------------------------------------------------
 Sat Oct  3 11:13:03 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Change paths from /etc to /usr/etc for UsrEtc Move (boo#1177197)
