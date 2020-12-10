@@ -24,7 +24,7 @@
 %endif
 %endif
 Name:           drbd
-Version:        9.0.25~0+git.bd41626d
+Version:        9.0.26~0+git.9114a038
 Release:        0
 Summary:        Linux driver for the "Distributed Replicated Block Device"
 License:        GPL-2.0-or-later
@@ -35,17 +35,17 @@ Source1:        preamble
 Source2:        Module.supported
 Source3:        drbd_git_revision
 Patch1:         fix-resync-finished-with-syncs-have-bits-set.patch
-Patch2:         rely-on-sb-handlers.patch
-Patch3:         drbd-fix-zero-metadata-limit-by-page-size-misaligned.patch
-Patch4:         compat_remove_pgprot_88dca4c.patch
-Patch5:         compat_remove_include_vermagic.patch
+Patch2:         drbd-fix-zero-metadata-limit-by-page-size-misaligned.patch
+#opensuse specific patch
+Patch3:         compat_remove_include_vermagic.patch
+#compat to v5.9
+Patch4:         compat-test-header.patch
+Patch5:         submit-bio-private-date.patch
 Patch6:         compat_remove_kernel_setsockopt.patch
-# Compat to kernel v5.9
-Patch7:         compat_generic_make_request.patch
-Patch8:         blk_alloc_queue_make_request.patch
-Patch9:         remove_congested_fn_congested_data.patch
-Patch10:        compat_blk_queue_stack_limits.patch
-Patch11:        fix-err-of-wrong-return-type.patch
+Patch7:         compat_blk_queue_stack_limits.patch
+#compat to v5.10
+Patch8:         remove_bdi_cap_stable_writes.patch
+Patch9:         compat_get_fs.patch
 Patch99:        suse-coccinelle.patch
 #https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py
 BuildRequires:  coccinelle >= 1.0.8
@@ -88,8 +88,6 @@ installed kernel.
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
-%patch10 -p1
-%patch11 -p1
 %patch99 -p1
 
 mkdir source

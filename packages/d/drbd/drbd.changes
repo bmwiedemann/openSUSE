@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed Dec  9 06:40:33 UTC 2020 - nick wang <nwang@suse.com>
+
+- bsc#1179708, compat to kernel v5.10
+- Add patch compat_get_fs.patch
+  Add patch remove_bdi_cap_stable_writes.patch
+
+-------------------------------------------------------------------
+Tue Dec  8 09:23:06 UTC 2020 - nick wang <nwang@suse.com>
+
+- Update to 9.0.26
+ * fix a case of a disk unexpectedly becoming Outdated by moving the
+   exchange of the initial packets into the body of the two-phase-commit
+   that happens at a connect
+ * fix adding of new volumes to resources with a primary node
+ * reliably detect split brain situation on both nodes
+ * fix an unexpected occurrence of NetworkFailure state in a tight
+   drbdsetup disconnect; drbdsetup connect sequence
+ * fix online verify to return to Established from VerifyS if the VerifyT node
+   was temporarily Inconsistent during the run
+ * fix a corner case where a node ends up Outdated after the crash and rejoin
+   of a primary node
+ * implement 'blockdev --setro' in DRBD
+ * following upstream changes to DRBD up to Linux 5.9 and ensure
+   compatibility with Linux 5.8 and 5.9
+ * fix a crash if during resync a discard operation fails on the
+   resync-target node
+ * fix online verify to not clamp disk states to UpToDate
+ * fix promoting resync-target nodes; the problem was that it could modify
+   the bitmap of an ongoing resync; which leads to alarming log messages
+ * pause a resync if the sync-source node becomes inconsistent; an example
+   is a cascading resync where the upstream resync aborts and leaves the
+   sync-source node for the downstream resync with an inconsistent disk;
+   note, the node at the end of the chain could still have an outdated disk
+   (better than inconsistent)
+ * allow force primary on a sync-target node by breaking the resync
+ * minor fixes to the compat tests
+ * fix for writes not getting mirrored over a connection while the primary
+   transitions through the WFBitMapS state
+ * completed missing logic of the new two-phase-commit based connect process;
+   avoid connecting partitions with a primary in each; ensure consistent
+   decisions if the connect attempt will be retried
+- Add patch compat-test-header.patch
+  Add patch submit-bio-private-date.patch
+- Remove patch rely-on-sb-handlers.patch (187bddac0)
+  Remove patch fix-err-of-wrong-return-type.patch (969310232)
+  Remove patch compat_remove_pgprot_88dca4c.patch (ee025dc84)
+  Remove patch compat_generic_make_request.patch (8615d6837)
+  Remove patch blk_alloc_queue_make_request.patch (edaa9b0f/fb59b40e)
+  Remove patch remove_congested_fn_congested_data.patch (34484003/9b80d46b)
+- Modify patch compat_remove_kernel_setsockopt.patch (518846b54)
+  Modify patch compat_blk_queue_stack_limits.patch (edaa9b0f2)
+
+-------------------------------------------------------------------
 Tue Nov  3 11:21:13 UTC 2020 - nick wang <nwang@suse.com>
 
 - bsc#1178388, build error with -Wreturn-type
