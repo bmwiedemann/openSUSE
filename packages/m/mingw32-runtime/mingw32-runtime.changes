@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Dec  3 12:18:00 UTC 2020 - Tobias Klausmann <tobias.klausmann@freenet.de>
+
+- Update to new upstream release 8.0.0
+  * New Hyper-V headers and libraries by Biswapriyo Nath
+  * Many headers updated from Wine by Jacek Caban.
+  * ARM math improvements by Martin Storsjö
+  * floating point fixes by Liu Hao
+  * many *printf compatibility fixes by Liu Hao and Martin Storsjö
+  * massive Windows App Store API updates by Steve Lhomme
+  * winstorecompat library updates by Martin Storsjö
+  * __USE_MINGW_ANSI_STDIO now automatically enabled in C99 and C11 mode when
+    not using UCRT by Pali Rohár
+  * wdm and ddk updates by Zebediah Figura
+  * UCRT for Windows Store Apps (-lucrtapp) by Martin Storsjö
+  * Audioclient and ActivateAudioInterfaceAsync API updates by Liu Hao
+  * DirectX SDKs are now always installed
+
+-------------------------------------------------------------------
 Sat Nov 23 14:51:10 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to new upstream release 7.0.0
