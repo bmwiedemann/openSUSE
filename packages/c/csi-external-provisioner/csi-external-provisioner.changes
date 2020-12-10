@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 24 03:08:44 UTC 2020 - Tim Serong <tserong@suse.com>
+
+- Remove duplicate version information from _service file 
+
+-------------------------------------------------------------------
+Wed Nov 18 05:09:15 UTC 2020 - Tim Serong <tserong@suse.com>
+
+- Rework _service and spec file to make future version updates easier
+
+-------------------------------------------------------------------
 Tue Aug 11 01:18:55 UTC 2020 - Chin-Ya Huang <chin-ya.huang@suse.com>
 
 - Update version to 1.6.0.

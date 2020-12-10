@@ -7,4 +7,12 @@
     <comment>CSI sidecar package, used when deploying ceph on k8s with rook</comment>
     <requestid>834255</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>458181765f0b9488b20b54c32538f564</srcmd5>
+    <version>1.6.0</version>
+    <time>1607612176</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>854033</requestid>
+  </revision>
 </revisionlist>
