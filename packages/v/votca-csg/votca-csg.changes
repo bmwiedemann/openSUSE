@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec  9 20:22:15 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- Update to 1.6.3
+  - fix test dependencies for parallel ctest ([gh#votca/csg#585])
+  - fix trigger for gmx-2020 warning in run_gromacs.sh
+    ([gh#votca/csg#591])
+  - switch to ghcr.io for CI ([gh#votca/csg#595])
+  - format code with clang-11 ([gh#votca/csg#605])
+  - add gmx2021 builds to CI ([gh#votca/csg#607])
+  - remove set-env call from CI ([gh#votca/csg#608])
+  - use master .clang-format in format action ([gh#votca/csg#610])
+  - strip windows line endings in readers ([gh#votca/csg#614])
+
+-------------------------------------------------------------------
 Sat Aug 22 18:28:13 UTC 2020 - Christoph Junghans <junghans@votca.org>
 
 - Update to 1.6.2
