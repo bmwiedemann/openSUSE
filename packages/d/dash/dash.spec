@@ -48,14 +48,18 @@ possible without sacrificing speed where possible.
 %install
 %make_install
 # compatibility symlink to /bin
+%if !0%{?usrmerged}
 mkdir -p %{buildroot}/bin
 ln -s %{_bindir}/dash %{buildroot}/bin/dash
+%endif
 
 %files
 %license COPYING
 %doc ChangeLog
 %{_bindir}/dash
+%if !0%{?usrmerged}
 /bin/dash
+%endif
 %{_mandir}/man1/dash.1%{?ext_man}
 
 %changelog
