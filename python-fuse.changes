@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Dec  5 08:38:10 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 1.0.0.
+  * Add poll support.
+  * Use bytes objects for read and write data: please note that 
+    while this has no effect on Python 2,it is a breaking change in
+    Python 3; it's worth it however since it fixes a serious 
+    usability bug that arbitrarily limited file content to valid 
+    UTF-8 data.
+
+-------------------------------------------------------------------
 Wed Jun 20 16:36:09 UTC 2018 - mcepl@suse.com
 
 - Clean SPEC file
