@@ -1,7 +1,40 @@
 -------------------------------------------------------------------
+Wed Dec  9 21:27:32 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 4.1.17
+  N3FJP support
+    * remove sending OTHER8 category for all logs
+  CW keying
+    * added Elecraft KY cat command CW string keying
+      . K3S tested
+    * added Kenwood KY cat command CW string keying
+      . TS-480 tested
+    * added Icom cat command CW string keying
+      . IC-7100, IC-705 tested
+    * added Yaesu cat CW string keying
+      . FT-991a tested
+    * For use ONLY with
+      . RigCAT transceiver control
+      . flrig transceiver control
+        - requires flrig 1.3.53 or greater
+  Rx Monitor
+    * fluid source cleanup
+    * split UI source from confdialog.fl
+  Contestia / Olivia
+    * Added mode CONTESTIA 16/250 with RsID 275
+    * Added macro code to allow any valid Contestia or
+      Olivia BW/TONES combination to be set via macro tags:
+      . <MODEM:CONTESTIA:BW:TONES>
+      . <MODEM:OLIVIA:BW:TONES>
+      . where BW in set {125, 250, 500, 1000, 2000}
+           TONES in set {2, 4, 8, 16, 32, 64, 256}
+  Greek translation
+    * Update to Greek po file
+
+-------------------------------------------------------------------
 Wed Nov 18 21:02:00 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
-- Update to version 4.1.14
+- Update to version 4.1.16
   Cty.dat
     * Update distibution cty.dat data files
       dated 12 November 2020
