@@ -2332,6 +2332,7 @@ unsorted:
   - cpu-x-zsh-completion 
   - cpuid 
   - cpulimit 
+  - cpuminer 
   - cpupower-bench 
   - cpupower-devel 
   - cpuset 
@@ -2787,7 +2788,7 @@ unsorted:
   - discover-backend-fwupd: [i586] 
   - discover-backend-packagekit: [i586] 
   - discover-lang: [i586] 
-  - discover-notifier 
+  - discover-notifier: [i586] 
   - diskimage-builder 
   - diskscan 
   - disorderfs 
@@ -6645,7 +6646,6 @@ unsorted:
   - herbstluftwm-examples 
   - herbstluftwm-fish-completion 
   - herbstluftwm-zsh-completion 
-  - heroes-tron 
   - hevea 
   - hex 
   - hex2bin 
@@ -8371,13 +8371,22 @@ unsorted:
   - kubernetes1.18-client-common: [x86_64] 
   - kubernetes1.18-controller-manager: [x86_64] 
   - kubernetes1.18-kubeadm: [x86_64] 
+  - kubernetes1.18-kubelet: [x86_64] 
   - kubernetes1.18-kubelet-common: [x86_64] 
   - kubernetes1.18-proxy: [x86_64] 
   - kubernetes1.18-scheduler: [x86_64] 
   - kubernetes1.19-apiserver: [x86_64] 
+  - kubernetes1.19-client: [x86_64] 
+  - kubernetes1.19-client-common: [x86_64] 
   - kubernetes1.19-controller-manager: [x86_64] 
+  - kubernetes1.19-kubeadm: [x86_64] 
+  - kubernetes1.19-kubelet-common: [x86_64] 
   - kubernetes1.19-proxy: [x86_64] 
   - kubernetes1.19-scheduler: [x86_64] 
+  - kubernetes1.20-apiserver: [x86_64] 
+  - kubernetes1.20-controller-manager: [x86_64] 
+  - kubernetes1.20-proxy: [x86_64] 
+  - kubernetes1.20-scheduler: [x86_64] 
   - kubevirt-container-disk: [x86_64] 
   - kubevirt-manifests: [x86_64] 
   - kubevirt-virt-api: [x86_64] 
@@ -15952,8 +15961,6 @@ unsorted:
   - mbox-importer: [i586] 
   - mbox-importer-lang: [i586] 
   - mbuffer 
-  - mcabber 
-  - mcabber-devel 
   - mccs 
   - mcds 
   - mcelog: [i586] 
@@ -16564,9 +16571,6 @@ unsorted:
   - mtdev 
   - mtools-doc 
   - mtp-tools 
-  - mtpaint 
-  - mtpaint-handbook 
-  - mtpaint-lang 
   - mtr-gtk 
   - mtree 
   - mtx 
@@ -17117,10 +17121,6 @@ unsorted:
   - netty3 
   - netty3-javadoc 
   - network-autoconfig 
-  - neverball 
-  - neverball-doc 
-  - neverball-mapc 
-  - neverball-neverputt 
   - newlib 
   - newsboat 
   - newsboat-lang 
@@ -24441,7 +24441,9 @@ unsorted:
   - qemacs 
   - qemu-audio-alsa 
   - qemu-audio-pa 
+  - qemu-audio-spice 
   - qemu-extra 
+  - qemu-ivshmem-tools 
   - qemu-kvm: [i586] 
   - qemu-linux-user 
   - qemu-ovmf-x86_64-debug: [x86_64] 
