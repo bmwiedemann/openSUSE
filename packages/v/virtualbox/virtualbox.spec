@@ -66,7 +66,7 @@ python3 -O -c "import sys, os, compileall; br='%{buildroot}'; compileall.compile
 
 # ********* If the VB version exceeds 6.1.x, notify the libvirt maintainer!!
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        6.1.14
+Version:        6.1.16
 Release:        0
 Summary:        %{package_summary}
 License:        GPL-2.0-or-later
@@ -179,8 +179,11 @@ Patch135:       fix-missing-includes-with-qt-5.15.patch
 Patch136:       fixes_for_gcc10.patch
 # Fix for changes in GSOAP 2.8.103
 Patch137:       handle_gsoap_208103.patch
-# Fixes for kernel 5.9
-Patch138:       fixes_for_5.9.patch
+# Fixes for kernel 5.10
+Patch138:       linux-5.10-r0drv-memobj-fix-r0.patch
+Patch139:       linux-5.10-address-space-fixes.patch
+Patch140:       linux-5.10-framebuffer-fixes.patch
+Patch141:       vb-6.1.16-modal-dialog-parent.patch
 Patch999:       virtualbox-fix-ui-background-color.patch
 #
 
@@ -266,7 +269,7 @@ BuildRequires:  xorg-x11-libXext-devel-32bit
 BuildRequires:  xorg-x11-libXmu-devel-32bit
 BuildRequires:  xorg-x11-libXt-devel-32bit
 %endif
-%{?systemd_requires}
+%{?systemd_ordering}
 # package i4l-vbox from source package i4l-base shares the directory /etc/vbox
 # with us, but with different owner.
 Conflicts:      i4l-vbox
@@ -288,8 +291,7 @@ Obsoletes:      %{name}-ose < %{version}
 ### Requirements for virtualbox-kmp ###
 %if %{kmp_package}
 BuildRequires:  libxml2-devel
-%(sed -e '/^Provides: multiversion(kernel)/d' %{_prefix}/lib/rpm/kernel-module-subpackage > %{_builddir}/virtualbox-kmp-template)
-%kernel_module_package -t %{_builddir}/virtualbox-kmp-template -p %{SOURCE7} -n virtualbox -f %{SOURCE5} -x kdump um xen pae xenpae pv
+%kernel_module_package -p %{SOURCE7} -n virtualbox -f %{SOURCE5} -x kdump um xen pae xenpae pv
 Obsoletes:      virtualbox-guest-kmp
 Obsoletes:      virtualbox-host-kmp
 # end of kmp_package
@@ -505,6 +507,9 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch136 -p1
 %patch137 -p1
 %patch138 -p1
+%patch139 -p1
+%patch140 -p1
+%patch141 -p1
 # make VB UI background colors look sane again
 %patch999 -p1
 
@@ -585,11 +590,6 @@ echo "build VNC extension pack"
 # tar must use GNU, not POSIX, format here
 sed -i 's/tar /tar --format=gnu /' src/VBox/ExtPacks/VNC/Makefile.kmk
 kmk -C src/VBox/ExtPacks/VNC packing
-pushd out/linux.*/release/packages/
-mkdir -p "%{buildroot}%{_datadir}/virtualbox/extensions/"
-install -D -m 644 VNC-*.vbox-extpack "%{buildroot}%{_datadir}/virtualbox/extensions/VNC-%{version}.vbox-extpack"
-popd
-install -D -m 644 "COPYING" "%{buildroot}%{_datadir}/licenses/LICENSE.vnc"
 
 %install
 #################################
@@ -628,6 +628,16 @@ install -m 644 %{SOURCE3}			%{buildroot}%{_udevrulesdir}/60-vboxguest.rules
 %if 0%{?suse_version} > 1320 || 0%{?sle_version} == 120300
 install -d -m 755 %{buildroot}/media
 %endif
+
+###########################################
+echo "entering VNC extension install section"
+###########################################
+pushd out/linux.*/release/packages/
+mkdir -p "%{buildroot}%{_datadir}/virtualbox/extensions/"
+install -D -m 644 VNC-*.vbox-extpack "%{buildroot}%{_datadir}/virtualbox/extensions/VNC-%{version}.vbox-extpack"
+popd
+install -D -m 644 "COPYING" "%{buildroot}%{_datadir}/licenses/LICENSE.vnc"
+
 #
 ##############################################################
 echo "entering guest-x11 install section"
