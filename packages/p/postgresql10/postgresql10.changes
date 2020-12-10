@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 20 11:51:37 UTC 2020 - Reinhard Max <max@suse.com>
+
+- bsc#1178961: %ghost the symlinks to pg_config and ecpg.
+- boo#1179765: BuildRequire libpq5 and libecpg6 when not building
+  them to avoid dangling symlinks in the devel package.
+
+-------------------------------------------------------------------
 Wed Nov 11 12:10:53 UTC 2020 - Reinhard Max <max@suse.com>
 
 - Upgrade to version 10.15:
