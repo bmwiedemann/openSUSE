@@ -19,8 +19,10 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %bcond_without test
+%define psuffix -test
 %else
 %bcond_with test
+%define psuffix %{nil}
 %endif
 
 %define binaries fitsdiff fitsheader fitscheck fitsinfo fits2bitmap samp_hub showtable volint wcslint
@@ -36,7 +38,7 @@
 %define         skip_python2 1
 # upcoming python3 multiflavor: minimum supported python is 3.7
 %define         skip_python36 1
-Name:           python-astropy
+Name:           python-astropy%{psuffix}
 Version:        4.2
 Release:        0
 Summary:        Community-developed python astronomy tools

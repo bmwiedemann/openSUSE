@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  8 22:41:32 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- OBS thinks the test flavor creates a build-cycle. Reintroduce
+  the pseudo package suffix.
+
+-------------------------------------------------------------------
 Sat Nov 28 21:28:47 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to Version 4.2
