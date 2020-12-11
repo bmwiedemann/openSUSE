@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Dec 11 02:55:29 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 6.0.7
+
+   * Addresses regression introduced in 6.0.5 when attempting to establish database connection after fork and activerecord is not configured in the expected way. Closes GH-2281.
+   * Addresses regression introduced in 5.1.5 where hook scripts would fail to run. As a result the PASSENGER_ERROR_PAGE and PASSENGER_CONFIG_MANIFEST env vars have been removed from the passenger hook script environment.
+   * Match static rails assets on 8-digit content hash. Contributed by @mattozinga.
+   * Allow skipping the Apache/Nginx sections of the `passenger-memory-stats` output, through the `--no-apache` and `--no-nginx` commandline options. Closes GH-2306. Contributed by Saverio Miroddi (@saveriomiroddi).
+   * Fixes an issue where `passenger-memory-stats` would throw an error if a process went away while it was running. Closes GH-2305.
+   * Fixes a formatting issue with apr-1 include flags on macOS.
+   * Fixes a warning about BOOST_*_ENDIAN macros being deprecated by migrating to new suggested macros.
+   * Fixes an occasional issue with the node loader where the startup handshake would fail to record progress.
+   * Adds an option for specifying the address to bind ruby apps to, for sending requests directly to specific app instances:
+    - Standalone: direct_instance_request_address
+    - Nginx:      passenger_direct_instance_request_address
+    - Apache:     PassengerDirectInstanceRequestAddress
+   * Updated various library versions used in precompiled binaries (used for e.g. gem installs):
+
+      - ccache: 4.0 (was: 3.7.10)
+      - curl: 7.73.0 (was: 7.71.1)
+      - git: 2.29.1 (was: 2.27.0)
+      - gnupg: 2.2.23 (was: 2.2.21)
+      - libgpg_error: 1.39 (was: 1.38)
+      - ruby: 2.7.2 (was: 2.7.1)
+      - libassuan 2.5.4 (was: 2.5.3)
+      - libgcrypt 1.8.7 (was 1.8.6)
+      - OpenSSL 1.1.1h (was 1.0.2u)
+
+- added apache-rpm-macros and apache2-utils to gem2rpm.yml file
+  (otherwise the dependencies are missing when generating the spec
+  file again)
+
+-------------------------------------------------------------------
+Tue Dec  1 14:40:08 UTC 2020 - pgajdos@suse.com
+
+- use system apache rpm macros
+- require apache2-utils for build (apachectl)
+
+-------------------------------------------------------------------
 Wed Jul 15 19:20:19 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 6.0.6

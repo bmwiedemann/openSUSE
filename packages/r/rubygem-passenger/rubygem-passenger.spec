@@ -24,15 +24,11 @@
 #
 
 Name:           rubygem-passenger
-Version:        6.0.6
+Version:        6.0.7
 Release:        0
 %define mod_name passenger
 %define mod_full_name %{mod_name}-%{version}
 # MANUAL
-%define apxs /usr/sbin/apxs2
-%define apache_libexecdir %(%{apxs} -q LIBEXECDIR)
-%define apache_sysconfdir %(%{apxs} -q SYSCONFDIR)
-%define apache_mmn        %(MMN=$(%{apxs} -q LIBEXECDIR)_MMN; test -x $MMN && $MMN)
 %if 0%{?suse_version} > 1220
 %bcond_without systemd
 %define passenger_tempdir /run/passenger
@@ -56,6 +52,8 @@ BuildRequires:  zlib-devel
 #BuildRequires:  libev-devel
 %endif
 BuildRequires:  %{rubygem rake}
+BuildRequires:  apache-rpm-macros
+BuildRequires:  apache2-utils
 # TODO: move to subpackage
 Recommends:     packageand(apache2:rubygem-passenger-apache2)
 Recommends:     packageand(nginx:rubygem-passenger-nginx)
@@ -200,7 +198,7 @@ Summary:        Passenger apache module
 Group:          Development/Languages/Ruby
 Supplements:    packageand(apache2:rubygem-passenger)
 
-# Requires:      rubygem-passenger = 6.0.6
+# Requires:      rubygem-passenger = 6.0.7
 %description apache2
 
 A modern web server and application server for Ruby, Python and Node.js,
@@ -220,7 +218,7 @@ Summary:        Passenger Nginx module
 Group:          Development/Languages/Ruby
 Supplements:    packageand(nginx:rubygem-passenger)
 
-# Requires:      rubygem-passenger = 6.0.6
+# Requires:      rubygem-passenger = 6.0.7
 %description nginx
 
 A modern web server and application server for Ruby, Python and Node.js,
