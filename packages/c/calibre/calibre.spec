@@ -17,7 +17,7 @@
 
 
 Name:           calibre
-Version:        5.6.0
+Version:        5.7.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -53,9 +53,9 @@ BuildRequires:  update-desktop-files
 BuildRequires:  chmlib-devel >= 0.40
 BuildRequires:  dbus-1-python3 >= 1.2.0
 BuildRequires:  hyphen-devel >= 2.8.8
-BuildRequires:  libQt5Core-private-headers-devel >= 5.15.1
-BuildRequires:  libQt5Gui-private-headers-devel >= 5.15.1
-BuildRequires:  libQt5PlatformSupport-private-headers-devel >= 5.15.1
+BuildRequires:  libQt5Core-private-headers-devel >= 5.15.2
+BuildRequires:  libQt5Gui-private-headers-devel >= 5.15.2
+BuildRequires:  libQt5PlatformSupport-private-headers-devel >= 5.15.2
 BuildRequires:  liberation-fonts
 BuildRequires:  libicu-devel >= 4.4.0
 BuildRequires:  libmtp-devel >= 1.1.5
@@ -67,11 +67,11 @@ BuildRequires:  optipng >= 0.7.5
 BuildRequires:  podofo >= 0.8.2
 BuildRequires:  poppler-tools >= 0.20.2
 BuildRequires:  xdg-utils >= 1.0.2
-BuildRequires:  pkgconfig(Qt5Core) >= 5.15.1
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.15.1
-BuildRequires:  pkgconfig(Qt5Network) >= 5.15.1
-BuildRequires:  pkgconfig(Qt5WebEngineWidgets) >= 5.15.1
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.15.1
+BuildRequires:  pkgconfig(Qt5Core) >= 5.15.2
+BuildRequires:  pkgconfig(Qt5Gui) >= 5.15.2
+BuildRequires:  pkgconfig(Qt5Network) >= 5.15.2
+BuildRequires:  pkgconfig(Qt5WebEngineWidgets) >= 5.15.2
+BuildRequires:  pkgconfig(Qt5Widgets) >= 5.15.2
 BuildRequires:  pkgconfig(espeak-ng)
 BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(python3)
@@ -80,9 +80,11 @@ BuildRequires:  pkgconfig(sqlite3)
 # but keept BuildRequires to convert icon to serveral sizes
 BuildRequires:  pkgconfig(ImageMagick) >= 6.5.9
 #
-BuildRequires:  libjpeg-turbo
+BuildRequires:  jxrlib-devel >= 0.2.4
+BuildRequires:  libjpeg-turbo >= 2.0.5
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libwebp) >= 1.1.0
 # upstream use python-Pillow 6.0.0
 BuildRequires:  python3-Pillow >= 5.0.0
 # upstream use python-Pygments 2.3.1
@@ -92,8 +94,7 @@ BuildRequires:  python3-apsw >= 3.9.2
 # upstream use python-beautifulsoup4 4.7.1
 BuildRequires:  python3-beautifulsoup4 >= 4.6.0
 BuildRequires:  python3-chardet >= 3.0.4
-# upstream use python-css-parser 1.0.5
-BuildRequires:  python3-css-parser >= 1.0.4
+BuildRequires:  python3-css-parser >= 1.0.6
 # upstream use python-dateutil 2.8.0
 BuildRequires:  python3-dateutil >= 2.7.3
 # upstream use python-dnspython 0.16.0
@@ -122,13 +123,14 @@ BuildRequires:  python3-html2text >= 2018.1.9
 BuildRequires:  python3-pychm
 BuildRequires:  python3-pycrypto >= 2.6.1
 BuildRequires:  python3-pyparsing
-BuildRequires:  python3-pyqt-builder
-BuildRequires:  python3-qt5-devel >= 5.13.1
+BuildRequires:  python3-pyqt-builder >= 1.6.0
+BuildRequires:  python3-qt5-devel >= 5.15.2
 BuildRequires:  python3-regex >= 2017.07.28
 BuildRequires:  python3-setuptools >= 23.1.0
-BuildRequires:  python3-sip-devel >= 5.3
+BuildRequires:  python3-sip-devel >= 5.5
 BuildRequires:  python3-toml
 # Need at buildtime too, to produce the bash completion
+# upstream use python3-qtwebengine-qt5 >= 5.15.2
 BuildRequires:  python3-qtwebengine-qt5 >= 5.15.1
 BuildRequires:  python3-six >= 1.10.0
 BuildRequires:  python3-soupsieve >= 1.9.1
@@ -153,7 +155,7 @@ Requires:       python3-Pygments >= 2.1.3
 Requires:       python3-apsw >= 3.9.2
 Requires:       python3-beautifulsoup4 >= 4.6.0
 Requires:       python3-chardet >= 3.0.4
-Requires:       python3-css-parser >= 1.0.4
+Requires:       python3-css-parser >= 1.0.6
 Requires:       python3-dateutil >= 2.7.3
 Requires:       python3-dnspython >= 1.15.0
 Requires:       python3-dukpy-kovidgoyal >= 0.3
@@ -170,8 +172,8 @@ Requires:       python3-odfpy
 Requires:       python3-psutil >= 5.4.8
 Requires:       python3-pychm
 Requires:       python3-pycrypto >= 2.6.1
-Requires:       python3-qt5 >= 5.15.1
-Requires:       python3-qt5-sip
+Requires:       python3-qt5 >= 5.15.2
+Requires:       python3-qt5-sip >= 5.5
 Requires:       python3-qtwebengine-qt5 >= 5.15.1
 Requires:       python3-regex >= 2017.07.28
 Requires:       python3-setuptools >= 23.1.0
