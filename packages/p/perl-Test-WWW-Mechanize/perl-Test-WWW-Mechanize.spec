@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-WWW-Mechanize
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 
 
 Name:           perl-Test-WWW-Mechanize
-Version:        1.52
+Version:        1.54
 Release:        0
 %define cpan_name Test-WWW-Mechanize
 Summary:        Testing-specific WWW::Mechanize subclass
 License:        Artistic-2.0
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Carp::Assert::More)
+BuildRequires:  perl(Carp::Assert::More) >= 1.16
 BuildRequires:  perl(HTML::Form)
 BuildRequires:  perl(HTML::TokeParser)
 BuildRequires:  perl(HTTP::Server::Simple) >= 0.42
@@ -42,7 +42,7 @@ BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(URI::file)
 BuildRequires:  perl(WWW::Mechanize) >= 1.68
 BuildRequires:  perl(parent)
-Requires:       perl(Carp::Assert::More)
+Requires:       perl(Carp::Assert::More) >= 1.16
 Requires:       perl(HTML::Form)
 Requires:       perl(HTML::TokeParser)
 Requires:       perl(HTTP::Server::Simple) >= 0.42

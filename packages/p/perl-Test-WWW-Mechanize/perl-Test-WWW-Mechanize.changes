@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Dec 11 03:08:55 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.54
+   see /usr/share/doc/packages/perl-Test-WWW-Mechanize/Changes
+
+
+  1.54    Tue Dec  8 23:25:06 CST 2020
+  ------------------------------------
+  [ENHANCEMENTS]
+  Use ok() instead of cmp_ok() inside of lacks_uncapped_inputs().
+  This output makes more sense.
+  lacks_uncapped_inputs() now has a a default message if one isn't supplied.
+  [FIXES]
+  Fixed the subtest name inside of C<lacks_ids_ok>.
+  Fixed the minimum version of Carp::Assert::More in Makefile.PL.
+
+-------------------------------------------------------------------
 Thu Dec  6 16:26:44 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.52
