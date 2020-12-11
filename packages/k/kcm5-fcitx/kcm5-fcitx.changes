@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 11 07:35:09 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- fix-building-with-qt-5.12.patch does not work as it said, it should
+  detect Qt version by itself
+
+-------------------------------------------------------------------
 Wed Dec  9 08:27:36 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to build with Qt 5.12 which doesn't have

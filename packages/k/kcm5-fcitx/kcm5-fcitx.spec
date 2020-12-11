@@ -93,9 +93,7 @@ This package provides systemsettings5 icons for fcitx in plasma5-workspace.
 
 %prep
 %setup -q -n kcm-fcitx-%{version}
-%if %{?pkg_vcmp:%{pkg_vcmp libqt5-qtbase-devel < 5.13.0}}%{!?pkg_vcmp:0}
 %patch0 -p1
-%endif
 
 %build
 %cmake_kf5 -d build
