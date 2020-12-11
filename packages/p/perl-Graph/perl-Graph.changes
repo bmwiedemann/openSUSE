@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Dec  6 03:06:57 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.9712
+   see /usr/share/doc/packages/perl-Graph/Changes
+
+  0.9712 2020-12-05
+  - bug-fix: set_edge_attribute_by_id add_edge_by_id if not exist
+  - connected_component_by_index behaves same with/without unionfind
+  - AdjacencyMatrix handle multiedged
+  - reduce redundant sorting for _UNORD, fix AdjacencyMap::Vertex with ID 0
+  - AdjacencyMap.stringify
+  - allow constructor args to override "prototype" object
+  - fix docs for TransitiveClosure to correctly say path_vertices default true
+  - AdjacencyMatrix now always creates adjacency matrix (clue in name)
+  - remove compat02 features
+  - drop untested scalar-context Traversal.postorder mutation behaviour
+  - much more lazy-loading of modules
+  - set_vertex_attribute_by_id now works on hypervertexed
+  - internal AdjacencyMap uses array not hash for mapping index to path
+  - successors/predecessors/rename_path work right with multivertex
+  - AdjacencyMap array -> stable vertices ordering, TCM performance benefit
+  - TransitiveClosure etc handle multiedged
+  - all_paths ignore self-loops
+
+-------------------------------------------------------------------
 Sat Nov 28 03:06:17 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.9711
