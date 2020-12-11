@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 11 10:52:31 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add BuildRequires: libboost_atomic-devel to fix building the
+  package in Leap 15.3
+
+-------------------------------------------------------------------
 Wed Sep 16 08:22:09 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 4.4.0:

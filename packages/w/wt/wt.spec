@@ -56,6 +56,7 @@ Recommends:     %{name}-dbo = %{version}
 Suggests:       %{name}-dbo-mysql = %{version}
 Suggests:       %{name}-dbo-postgres = %{version}
 %if 0%{?suse_version} > 1315
+BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_system-devel
