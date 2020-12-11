@@ -1,0 +1,26 @@
+From a545ad4b1d812e9ab4d282d390c8d174f2e0b731 Thu 10 12 17:06:11 2020
+From: Simon Vogl <simon.vogl@gmx.net>
+Date: Fri, 10 Dec 2020 17:06:11 UTC
+Subject: [PATCH] Fix YouTube video playback offset for QMPlay2
+
+This patch is required to fix QMPlay2's YouTube video playback offset.
+---- a/src/modules/FFmpeg/FormatContext.cpp
++++ b/src/modules/FFmpeg/FormatContext.cpp
+@@ -730,6 +730,7 @@ bool FormatContext::open(const QString &_url, const QString &param)
+     if (name() == "sdp")
+     {
+         isLocal = false;
++        formatCtx->flags |= AVFMT_FLAG_NOBUFFER;
+     }
+     else if (name().startsWith("image2") || name().endsWith("_pipe"))
+     {
+@@ -742,9 +743,6 @@ bool FormatContext::open(const QString &_url, const QString &param)
+         formatCtx->flags |= AVFMT_FLAG_FAST_SEEK; //This should be set before "avformat_open_input", but seems to be working for MP3...
+     }
+ 
+-    if (!isLocal)
+-        formatCtx->flags |= AVFMT_FLAG_NOBUFFER;
+-
+     if (avformat_find_stream_info(formatCtx, nullptr) < 0)
+         return false;
+ 
