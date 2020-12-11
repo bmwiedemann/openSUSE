@@ -9311,7 +9311,7 @@ unsorted:
   - libSDL_Pango1 
   - libSDL_Pango1-32bit: [x86_64] 
   - libSDL_bgi-devel 
-  - libSDL_bgi-suse4 
+  - libSDL_bgi-suse5 
   - libSDL_gfx-devel 
   - libSDL_gfx-devel-32bit: [x86_64] 
   - libSDL_gfx15-32bit: [x86_64] 
@@ -25106,7 +25106,6 @@ unsorted:
   - ruby2.7-rubygem-equalizer-doc 
   - ruby2.7-rubygem-equalizer-testsuite 
   - ruby2.7-rubygem-erubi-doc 
-  - ruby2.7-rubygem-erubi-testsuite 
   - ruby2.7-rubygem-erubis-doc 
   - ruby2.7-rubygem-erubis-doc-2_6 
   - ruby2.7-rubygem-erubis-testsuite 
@@ -36278,6 +36277,7 @@ unsorted:
   - xmoto-data 
   - xmp 
   - xmppc 
+  - xmrig 
   - xmvn 
   - xmvn-api 
   - xmvn-bisect 
