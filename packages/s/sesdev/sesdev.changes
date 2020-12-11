@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Dec  3 16:18:07 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 1.11.0+1607012263.g73dea97:
+  + upstream 1.11.0 release (2020-12-03)
+    * Implement --rgw-ssl option for deploying RGWs with SSL enabled (PR #557)
+    * zypper: add repos when needed (PR #558)
+    * ses7: use product container image when --product given (PR #561)
+    * Handle image_paths_product, image_paths_devel overrides in config.yaml (PR #564)
+    * seslib/constant.py: add SES7 Update repo (PR #565)
+
+-------------------------------------------------------------------
+Fri Nov 13 16:04:04 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 1.10.0+1605283435.g8e610fb:
+  + upstream 1.10.0 release (2020-11-13)
+    * contrib/standalone.sh: add --fqdn test cases (PR #523)
+    * Implement --no-apparmor option (PR #543)
+    * Expose Ceph Dashboard on CaaSP SES deployment (PR #553)
+    * doc/README.md: add common pitfall "Failed to intialize libnetcontrol" (PR #554)
+    * spec: pin sesdev-qa version to sesdev version (PR #551)
+    * constant,zypper: use download.nue.suse.com instead of download.suse.de (PR #552)
+    * deployment_day_2.sh: create CephFS using documented procedure (PR #555)
+
+-------------------------------------------------------------------
 Fri Oct 23 13:26:53 UTC 2020 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 1.9.1+1603459604.g8c9ed2c 

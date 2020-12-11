@@ -16,7 +16,7 @@
 #
 
 Name:           sesdev
-Version:        1.9.1+1603459604.g8c9ed2c
+Version:        1.11.0+1607012263.g73dea97
 Release:        1%{?dist}
 Summary:        CLI tool to deploy and manage SES clusters
 License:        MIT
@@ -54,7 +54,7 @@ Requires:       python3-pycryptodomex >= 3.4.6
 Requires:       python3-setuptools
 Requires:       vagrant > 2.2.2
 Requires:       vagrant-libvirt
-Requires:       sesdev-qa
+Requires:       sesdev-qa = %{version}-%{release}
 
 %if 0%{?el8} || 0%{?fedora}
 %{?python_disable_dependency_generator}

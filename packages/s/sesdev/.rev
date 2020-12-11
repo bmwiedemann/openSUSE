@@ -143,4 +143,12 @@
     <comment>1.9.1 upstream release</comment>
     <requestid>843663</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>fb1c2b4824ab8a960a37838e83a814c9</srcmd5>
+    <version>1.11.0+1607012263.g73dea97</version>
+    <time>1607714194</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>854638</requestid>
+  </revision>
 </revisionlist>
