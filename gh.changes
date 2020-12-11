@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Dec 10 09:26:16 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Fix app not showing the correct version
+- Install readme and license files
+
+-------------------------------------------------------------------
+Thu Dec 10 09:19:24 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Build and install manpages as well
+
+-------------------------------------------------------------------
+Wed Dec  9 17:44:56 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Use source specified at Source0 URL
+- Switch from tar_scm to download_files for obtaining source archive
+
+-------------------------------------------------------------------
+Tue Dec  8 22:58:18 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Simplify BuildRequires
+
+-------------------------------------------------------------------
 Mon Dec  7 05:46:36 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
 
 - Revert back to tar_scm service for submission to openSUSE:Factory
