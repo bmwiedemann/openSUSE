@@ -16,10 +16,13 @@
 #
 
 
+%define base_url http://download.opensuse.org
+
+# AArch64 has a different repo url on TW and Leap < 15.3
+%if !0%{?sle_version} || !0%{?sle_version} < 150300
 %ifarch aarch64
 %define base_url http://download.opensuse.org/ports/aarch64
-%else
-%define base_url http://download.opensuse.org
+%endif
 %endif
 
 Name:           live-net-installer

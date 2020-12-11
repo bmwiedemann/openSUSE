@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 11 13:48:48 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Remove special handling for AArch64 on Leap > 15.2
+
+-------------------------------------------------------------------
 Fri Mar  6 10:48:32 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Add some more Requires for the installation (boo#1138045)
