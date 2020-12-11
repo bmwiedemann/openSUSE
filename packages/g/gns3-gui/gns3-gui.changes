@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec  4 08:08:54 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.17
+  * Remove "-nographic" option by default for Qemu VM.
+  * Require confirmation before stopping all devices.
+
+-------------------------------------------------------------------
+Sun Nov 29 12:03:01 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Recommend telnet. Telnet is often used as default communication
+  protocol on old equipment.
+- Recommend sudo and libcap-progs. GNS3 needs to setcap on ubridge.
+
+-------------------------------------------------------------------
 Sun Nov 22 13:27:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Add missing runtime requirement: python3-distro
