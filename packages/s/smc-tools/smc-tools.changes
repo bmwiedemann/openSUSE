@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec  7 22:10:32 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 1.4.0 (bsc#1179554, jsc#SLE-13707)
+  * Changes:
+    - Add SMC-Dv2 support
+    - `smc`: Add new tools `smcd` and `smcr` to list linkgroups, links and
+             devices. Requires Linux kernel 5.11 or higher.
+    - `smc_rnics`: Display enabled devices per default, add new option `--all`
+    - `smc_rnics`: Sort output by FID
+  * Bug fixes:
+    - `smc_rnics`/`smc_dbg`: Fix PNETID for multiport devices
+    - `smcss`/`smc_pnet`: Consistent use of option `-v`
+- Changed the %setup macro to %autosetup in the spec file.
+
+-------------------------------------------------------------------
 Wed Sep 16 16:37:51 UTC 2020 - Mark Post <mpost@suse.com>
 
 - Upgraded to version 1.3.1 (jsc#SLE-13707)

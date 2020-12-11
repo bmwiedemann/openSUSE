@@ -17,7 +17,7 @@
 
 
 Name:           smc-tools
-Version:        1.3.1
+Version:        1.4.0
 Release:        0
 Summary:        Shared Memory Communication via RDMA
 License:        EPL-1.0
@@ -39,10 +39,15 @@ The tools provided in this package allow existing TCP applications
 to use a RoCE network without needing to make changes in them.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-MYCFLAGS=$(grep ^CFLAGS Makefile | cut -f2 -d=)
+# The next two lines are to get around the Makefile not adding
+# its own values to CFLAGS if it is already set. This is needed
+# so that we can specify the optflags macro to pull in our own
+# parameters.
+MYCFLAGS=$(grep ^CFLAGS Makefile | head -n1 | cut -f2 -d=)
+MYCFLAGS+=" $(pkg-config --silence-errors --cflags libnl-genl-3.0)"
 make %{?_smp_mflags} V=1 CFLAGS="${MYCFLAGS} %{optflags}"
 
 %install
@@ -62,10 +67,12 @@ rm -Rf "%{buildroot}%{_prefix}/lib64"
 
 %files
 %license LICENSE
-%doc README.smctools
+%doc README.md
 %{_bindir}/smc_dbg
 %{_bindir}/smc_pnet
 %{_bindir}/smc_run
+%{_bindir}/smcd
+%{_bindir}/smcr
 %ifarch s390 s390x
 %{_bindir}/smc_rnics
 %endif
@@ -77,6 +84,12 @@ rm -Rf "%{buildroot}%{_prefix}/lib64"
 %{_mandir}/man8/smc_rnics.8%{?ext_man}
 %endif
 %{_mandir}/man8/smc_run.8%{?ext_man}
+%{_mandir}/man8/smcd-device.8%{?ext_man}
+%{_mandir}/man8/smcd-linkgroup.8%{?ext_man}
+%{_mandir}/man8/smcd.8%{?ext_man}
+%{_mandir}/man8/smcr-device.8%{?ext_man}
+%{_mandir}/man8/smcr-linkgroup.8%{?ext_man}
+%{_mandir}/man8/smcr.8%{?ext_man}
 %{_mandir}/man8/smcss.8%{?ext_man}
 
 %changelog

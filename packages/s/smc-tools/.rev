@@ -126,4 +126,23 @@
 Changed Jira reference to the Epic and not the Team tasks.</comment>
     <requestid>836415</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>40c5b569079bf1cd5fad8fc7f131dc7d</srcmd5>
+    <version>1.4.0</version>
+    <time>1607714155</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgraded to version 1.4.0 (bsc#1179554, jsc#SLE-13707)
+  * Changes:
+    - Add SMC-Dv2 support
+    - `smc`: Add new tools `smcd` and `smcr` to list linkgroups, links and
+             devices. Requires Linux kernel 5.11 or higher.
+    - `smc_rnics`: Display enabled devices per default, add new option `--all`
+    - `smc_rnics`: Sort output by FID
+  * Bug fixes:
+    - `smc_rnics`/`smc_dbg`: Fix PNETID for multiport devices
+    - `smcss`/`smc_pnet`: Consistent use of option `-v`
+- Changed the %setup macro to %autosetup in the spec file.
+</comment>
+    <requestid>854103</requestid>
+  </revision>
 </revisionlist>
