@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 10 17:44:48 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.0.0, see changelog.rst
+
+-------------------------------------------------------------------
 Wed Apr  1 14:34:43 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Remove nose dep as we are not running the tests 

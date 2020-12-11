@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-Kivy
-Version:        1.11.1
+Version:        2.0.0
 Release:        0
 Summary:        Hardware-accelerated multitouch application library
 License:        MIT AND Apache-2.0 AND LGPL-2.1-or-later AND GPL-2.0-or-later AND GPL-3.0-only AND BSD-3-Clause
@@ -95,6 +95,11 @@ rm examples/demo/pictures/images/.empty # Remove empty file
 rm -r examples/audio # Remove content with non-commercial only license (bnc#749340)
 # do not upper restrict cython dep
 sed -i -e 's:0\.29\.10:1.0.0:' setup.py
+# fix shebang
+sed -i "/^#!/c#!%{__python3}" kivy/tools/image-testsuite/gimp28-testsuite.py
+sed -i "/^#!/c#!`which sh`" kivy/tools/image-testsuite/imagemagick-testsuite.sh
+
+chmod -x kivy/tools/pep8checker/pre-commit.githook
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
@@ -105,7 +110,7 @@ sed -e '/^PYTHON/s/python/python3/' \
     -e '/^SPHINXOPTS	/s/$/ %{?_smp_mflags}/' \
     -i Makefile
 export PYTHONPATH=`ls -d ../build/lib*`
-make %{?_smp_mflags} html && rm -r build/html/.buildinfo
+make %{?_smp_mflags} PYTHON=python3 html && rm -r build/html/.buildinfo
 popd
 
 %install
@@ -114,6 +119,7 @@ popd
 # would be used after fdupes so rpmlint would complain about duplicates...
 install -dm0755 %{buildroot}%{_defaultdocdir}/%{name}-doc
 cp -a doc/build/html %{buildroot}/%{_defaultdocdir}/%{name}-doc
+rm -rf %{buildroot}%{python3_sitearch}/doc
 
 %python_expand %fdupes %{buildroot}%{$python_sitearch}/kivy
 %fdupes %{buildroot}%{_defaultdocdir}/%{name}-doc
@@ -125,7 +131,7 @@ cp -a doc/build/html %{buildroot}/%{_defaultdocdir}/%{name}-doc
 # export LANG=en_US.UTF-8
 # %%{python_expand pushd %%{buildroot}%%{$python_sitearch}
 # ln -s %%{buildroot}%%{_defaultdocdir}/%%{name}-doc/examples examples
-# ln -s %{_builddir}/kivy-%{version}/doc .
+# ln -s %%{_builddir}/kivy-%%{version}/doc .
 # xvfb-run --server-args "-screen 0 1920x1080x24" $python %%{_bindir}/nosetests kivy.tests \
 #  -e test_urlrequest -e test_remote_zipsequence
 # rm examples doc results.png
@@ -141,6 +147,7 @@ cp -a doc/build/html %{buildroot}/%{_defaultdocdir}/%{name}-doc
 %exclude %{python_sitearch}/kivy/tools/gles_compat/gl2.h
 
 %files %{python_files devel}
+%doc doc/sources/changelog.rst
 %{python_sitearch}/kivy/include
 %{python_sitearch}/kivy/tools/gles_compat/gl2.h
 
