@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Dec 10 15:53:45 UTC 2020 - mardnh@gmx.de
+
+- Update to version 0.0.0+git.20201202:
+  * test_xtrxll: Only set TCXO DAC value when it's changed in the
+    GPSDO algo.
+  * Document XTRXLL_ONEPPS_CAPTURED sensor enum value.
+  * Fix log output laguage.
+  * test_xtrxll: Debug output and usage text improvements.
+  * test_xtrxll: Cleanup the GPSDO test code.
+  * test_xtrxll: Correctly handle coefficients history in GPSDO code.
+  * test_xtrxll: Support -h command line argument
+  * general fixes for rev5
+  * add extrenal SPI interface over FPC GPIO
+  * add ability to work with any packet size using short packets
+
+-------------------------------------------------------------------
 Sun Jan 13 10:28:09 UTC 2019 - mardnh@gmx.de
 
 - Update to version 0.0.0+git.20190113:
