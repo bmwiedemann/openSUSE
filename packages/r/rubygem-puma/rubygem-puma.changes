@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Dec 11 03:18:21 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+  ## 5.1.1 / 2020-12-10
+
+  * Bugfixes 
+    * Fix over eager matching against banned header names ([#2510])
+    
+  ## 5.1.0 / 2020-11-30
+
+  * Features
+    * Phased restart availability is now always logged, even if it is not available.
+    * Prints the loaded configuration if the environment variable `PUMA_LOG_CONFIG` is present ([#2472])
+    * Integrate with systemd's watchdog and notification features ([#2438])
+    * Adds max_fast_inline as a configuration option for the Server object ([#2406])
+    * You can now fork workers from worker 0 using SIGURG w/o fork_worker enabled [#2449]
+    * Add option to bind to systemd activated sockets ([#2362])
+    * Add compile option to change the `QUERY_STRING` max length ([#2485])
+
+  * Bugfixes
+    * Fix JRuby handling in Puma::DSL#ssl_bind ([#2489])
+    * control_cli.rb - all normal output should be to @stdout ([#2487])
+    * Catch 'Error in reactor loop escaped: mode not supported for this object: r' ([#2477])
+    * Ignore Rails' reaper thread (and any thread marked forksafe) for warning ([#2475])
+    * Ignore illegal (by Rack spec) response header ([#2439])
+    * Close idle connections immediately on shutdown ([#2460])
+    * Fix some instances of phased restart errors related to the `json` gem ([#2473])
+    * Remove use of `json` gem to fix phased restart errors ([#2479])
+    * Fix grouping regexp of ILLEGAL_HEADER_KEY_REGEX ([#2495])- 
+
+-------------------------------------------------------------------
 Sun Nov  1 16:31:28 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 5.0.4
