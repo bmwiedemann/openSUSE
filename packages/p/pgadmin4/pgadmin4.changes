@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Dec 11 07:59:42 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.29:
+  - Ensure that folder rename should work properly in Storage 
+    Manager
+  - Fixed an issue where the debugger's custom tab title not
+    applied when opened in the new browser tab
+  - Fixed an issue where dynamic tab title has not applied the
+    first time for debugger panel
+  - Fixed an issue where schema diff doesn't show the result of
+    compare if source schema has tables with RLS
+  - Fixed an issue where the process watcher dialog throws an error
+    for the database server which is already removed
+  - Ensure that code coverage should cover class and function
+    declarations
+  - Ensure that dirty indicator (*) should not be visible when
+    renaming the tabs
+  - Fixed an issue where shared servers import is failing
+  - Improve code coverage and API test cases for Foreign Tables,
+    Debugger, Views and Materialized Views
+- Fix some requirement versions.
+
+-------------------------------------------------------------------
+Wed Nov 18 03:01:56 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.28:
+  - Added support to download utility files at the client-side.
+  - Added support to rename query tool and debugger tabs title.
+  - Added support for dynamic tab size.
+  - Added tab title placeholder for Query Tool, View/Edit Data, and
+    Debugger.
+  - Added support to compare schemas and databases in schema diff.
+  - Ensure that non-superuser should be able to debug the function.
+  - Ensure that query history should be listed by date/time in
+    descending order.
+  - Ensure that Grant Wizard should include foreign tables.
+  - Ensure that search object functionality works with case
+    insensitive string.
+
+-------------------------------------------------------------------
 Sat Oct 17 09:21:57 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.27:

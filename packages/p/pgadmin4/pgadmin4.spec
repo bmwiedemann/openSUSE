@@ -21,7 +21,7 @@
 %global user_group_name pgadmin
 
 Name:           pgadmin4
-Version:        4.27
+Version:        4.29
 Release:        0
 Summary:        Management tool for PostgreSQL
 License:        PostgreSQL
@@ -106,12 +106,12 @@ Requires:       python3-pycrypto >= 2.6.1
 Requires:       python3-pyrsistent >= 0.14.2
 Requires:       python3-python-dateutil >= 2.8.0
 Requires:       python3-python-mimeparse >= 1.6.0
-Requires:       python3-pytz >= 2018.9
+Requires:       python3-pytz >= 2020.1
 Requires:       python3-simplejson >= 3.16.0
 Requires:       python3-six >= 1.12.0
 Requires:       python3-speaklater >= 1.3
-Requires:       python3-sqlparse >= 0.2.4
-Requires:       python3-sshtunnel >= 0.1.4
+Requires:       python3-sqlparse >= 0.3.0
+Requires:       python3-sshtunnel >= 0.1.5
 Recommends:     python3-mod_wsgi
 Suggests:       %{name}-doc
 BuildArch:      noarch
