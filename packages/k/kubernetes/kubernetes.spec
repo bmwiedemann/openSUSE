@@ -21,7 +21,7 @@
 # baseversionminus1 - previous base version of kubernetes
 %define baseversionminus1 1.19
 # versionminus1 - full previous version of kubernetes, including point revision
-%define versionminus1 1.19.42
+%define versionminus1 1.19.4
 # etcdversion - version of etcd
 %define etcdversion 3.4.13
 # etcdversionminus1 - version of etcd for versionminus1
