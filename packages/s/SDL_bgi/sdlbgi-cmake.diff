@@ -23,7 +23,7 @@ Index: SDL_bgi-2.4.1/CMakeLists.txt
  
  # Create shared library
  add_library (${PROJECT_NAME} SHARED ${SOURCES})
-+set_target_properties(${PROJECT_NAME} PROPERTIES SOVERSION suse4)
++set_target_properties(${PROJECT_NAME} PROPERTIES SOVERSION suse5)
  # fix provided by Austin Hurst
 -target_link_libraries (SDL_bgi ${SDL2_LIBRARIES})
 +target_link_libraries (SDL_bgi -lm ${SDL2_LIBRARIES})

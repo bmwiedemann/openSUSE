@@ -143,4 +143,12 @@
     <comment>- Update to release 2.4.1</comment>
     <requestid>825859</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>23aed1954570146bceb8fa9c5d00d686</srcmd5>
+    <version>2.4.2</version>
+    <time>1607714230</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>854905</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Nov 11 11:55:12 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.4.2
+  * Implemented native vector fonts, compatible with Borland .CHR
+    fonts.
+  * Implemented long-forgotten graphics error checks.
+  * Added resetwinoptions(), getscreensize(), edelay(),
+    getmaxheight(), getmaxwidth(), resizepalette(), added
+    undocumented clearviewport() in setbkcolor().
+  * Changed setwinoptions() to reset options for newly created
+    windows.
+  * Fixed graphresult() to provide actual error codes
+  * Fixed compatibility in getpalette(), getpalettesize(),
+    setallpalette(), setusercharsize().
+  * Fixed setrgbpalette() to avoid out of range errors.
+  * Improved fill patterns.
+
+-------------------------------------------------------------------
 Tue Aug 11 11:58:03 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.4.1
