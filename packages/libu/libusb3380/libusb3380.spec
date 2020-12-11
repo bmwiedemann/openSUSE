@@ -1,8 +1,8 @@
 #
 # spec file for package libusb3380
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2017-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,14 +13,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define sover   0
 %define libname libusb3380-%{sover}
 Name:           libusb3380
-Version:        0.0.0+git.20190112
+Version:        0.0.0+git.20190126
 Release:        0
 Summary:        USB3380 abstraction layer for libusb
 License:        LGPL-2.1-only
