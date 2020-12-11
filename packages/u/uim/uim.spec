@@ -19,6 +19,7 @@
 %if ! %{defined _distconfdir}
 %define _distconfdir %{_sysconfdir}
 %endif
+%define build_qt4 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150300
 
 Name:           uim
 Version:        1.8.8
@@ -49,7 +50,7 @@ BuildRequires:  perl-XML-Parser
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xemacs
-%if 0%{?suse_version} <= 1500
+%if %{build_qt4}
 BuildRequires:  libqt4-devel
 %endif
 BuildRequires:  pkgconfig(Qt5X11Extras)
@@ -91,7 +92,7 @@ Requires:       %{name} = %{version}
 %description gtk3
 Contains GTK+3.0 IM module for uim
 
-%if 0%{?suse_version} <= 1500
+%if %{build_qt4}
 %package qt4
 Summary:        Qt4 input module plugin for uim
 Group:          System/I18n/Japanese
@@ -123,7 +124,7 @@ iconv -f euc-jp -t utf-8 < emacs/README.ja > README.ja.emacs
         --libexecdir=%{_prefix}/lib/uim \
         --with-canna\
         --with-anthy-utf8 \
-%if 0%{?suse_version} <= 1500
+%if %{build_qt4}
         --with-qt4 \
         --with-qt4-immodule \
 %endif
@@ -256,7 +257,7 @@ uim-module-manager --register \
 %{_prefix}/lib/uim/uim-*-gtk3
 %{_libdir}/gtk-3*/*/immodules/*.so
 
-%if 0%{?suse_version} <= 1500
+%if %{build_qt4}
 %files qt4 -f uim-chardict-qt.lang
 %{_bindir}/uim-*-qt4
 %{_prefix}/lib/uim/uim-*-qt4
