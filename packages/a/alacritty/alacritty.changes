@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  4 03:45:47 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Use rust-packaging macros for vendoring dependencies
+- remove cargo_config
+
+-------------------------------------------------------------------
 Wed Nov 25 08:33:52 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Update to 0.6.0

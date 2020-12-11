@@ -26,15 +26,13 @@ License:        Apache-2.0
 URL:            https://github.com/alacritty/alacritty/
 Source:         https://github.com/alacritty/alacritty/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
-Source2:        cargo_config
 Source3:        README.suse-maint
-BuildRequires:  cargo
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  freetype-devel
 BuildRequires:  libxcb-devel
 BuildRequires:  pkgconfig
-BuildRequires:  rust >= 1.41.0
+BuildRequires:  rust-packaging
 BuildRequires:  update-desktop-files
 BuildRequires:  xclip
 BuildRequires:  pkgconfig(fontconfig)
@@ -71,8 +69,8 @@ The official zsh completion script for alacritty.
 
 %prep
 %setup -qa1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
+%define cargo_registry $(pwd)/vendor
+%cargo_prep
 
 %ifarch aarch64 ppc64le
 # Remove checksum of config.guess and config.sub since aarch64 and ppc64le modify them
@@ -81,7 +79,7 @@ sed -i 's#"expat/conftools/config.sub":"523cb028db907d1fbbcecdcac6737f9e2eeba48f
 %endif
 
 %build
-RUSTFLAGS=%{rustflags} cargo build --release --bin alacritty
+%cargo_build
 
 %install
 mkdir -p "%{buildroot}%{_bindir}"
