@@ -18,7 +18,7 @@
 
 %bcond_with nx
 Name:           remmina
-Version:        1.4.9
+Version:        1.4.10
 Release:        0
 Summary:        Versatile Remote Desktop Client
 License:        GPL-2.0-or-later
@@ -201,7 +201,7 @@ export CFLAGS="$CFLAGS -fPIC"
 %endif
 
 %if 0%{?sle_version} > 150200 || 0%{?is_opensuse}
-%cmake -DWITH_NEWS=OFF -DWITH_KIOSK_SESSION=ON
+%cmake -DWITH_NEWS=OFF -DWITH_KIOSK_SESSION=ON -DWITH_KF5WALLET=ON
 %else
 %cmake -DWITH_NEWS=OFF -DWITH_KIOSK_SESSION=ON -DWITH_APPINDICATOR=OFF
 %endif

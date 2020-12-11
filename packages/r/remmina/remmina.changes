@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Dec 11 04:23:42 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to release 1.4.10
+  * Resolve "RDP Black Screen on connection" !2123 @antenore
+  * Correctly importing and exporting audiocapturemode, closes #2349 !2124 @antenore
+  * [RFC] rdp: add Use base credential for RD gateway authentication !2125 @Fantu
+  * Resolve "Auto accept changes to fingerprints and auto accept certificates" !2126 @antenore
+  * "Fingerprinters" corrected to "fingerprints". !2127 @kingu
+  * Implementing network type option !2128 @antenore
+  * Improving the terminal colour file picker !2129 @antenore
+  * Resolve "[RDP] Since v1.4.9 Audio is no longer working" !2130 @antenore
+  * New connection strings corrected !2131 @kingu
+  * Correct location of Terminal colour scheme setting !2132 @kingu
+  * Fixing pulseaudio LD_LIBRARY_PATH and staging PA libraries !2136 @antenore
+  * [RFC][v2] RDP: Add Use base credential for RD gateway authentication !2135 @Fantu
+  * fix incorrect name date log sessions ssh !2137 @acendrou
+  * Resolve "Strange padding in main window" !2138 @antenore
+  * Remove legacy rfx code !2139 @antenore
+  * Resolve "RDP export features does not properly include gatewayhostname" !2140 @antenore
+  * RDP log filters keep previous value across connections !2143 @antenore
+  * [RFC][v2] RDP: Add Use base credential for RD gateway authentication !2135 @Fantu
+  * Emit warning if libkf5wallet missing but required by -DWITH_KF5WALLET=ON !2144 @giox069
+  * Do not activate performance optimisations based on network type unless explicitly requested. !2145 @antenore
+
+-------------------------------------------------------------------
 Mon Nov 23 17:52:38 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Update to release 1.4.9
