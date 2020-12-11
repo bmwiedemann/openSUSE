@@ -9,8 +9,8 @@
 #  bar.patch:
 #preamble: |-
 # BuildRequires:  gcc-c++
-post_prep: |-
-  sed -i s/example/examples/ t/11_dsnlist.t
+#post_prep: |-
+#  sed -i s/example/examples/ t/11_dsnlist.t
 #post_install: |-
 # sed on %{name}.files
 #license: SUSE-NonFree

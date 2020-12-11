@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Dec 10 10:57:55 UTC 2020 - Tina Müller <tina.mueller@suse.com>
+
+- Remove post_prep typo fix (was fixed upstream)
+
+-------------------------------------------------------------------
+Sun Dec  6 03:06:07 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.56
+   see /usr/share/doc/packages/perl-DBD-CSV/ChangeLog
+
+  0.56	- 2020-12-05, H.Merijn Brand
+      * Fix Changes (add missing 0.54)
+      * Bugtrackter => github issues
+      * f_dir should exist (CVE fix in DBI-1.644 / DBD::File-0.45)
+      * TODO tests better skipped if failing
+
+-------------------------------------------------------------------
 Mon Nov  9 15:18:54 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - fix test 11_dsnlist.t

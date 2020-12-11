@@ -17,7 +17,7 @@
 
 
 Name:           perl-DBD-CSV
-Version:        0.55
+Version:        0.56
 Release:        0
 %define cpan_name DBD-CSV
 Summary:        DBI driver for CSV files
@@ -42,8 +42,8 @@ Requires:       perl(Test::More) >= 0.9
 Requires:       perl(Text::CSV_XS) >= 1.01
 Recommends:     perl(DBD::File) >= 0.44
 Recommends:     perl(DBI) >= 1.643
-Recommends:     perl(SQL::Statement) >= 1.412
-Recommends:     perl(Test::More) >= 1.302175
+Recommends:     perl(SQL::Statement) >= 1.414
+Recommends:     perl(Test::More) >= 1.302183
 Recommends:     perl(Text::CSV_XS) >= 1.44
 %{perl_requires}
 
@@ -60,9 +60,6 @@ and DBD::File for details on the base class DBD::File.
 %prep
 %setup -q -n %{cpan_name}-%{version}
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
-# MANUAL BEGIN
-sed -i s/example/examples/ t/11_dsnlist.t
-# MANUAL END
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
