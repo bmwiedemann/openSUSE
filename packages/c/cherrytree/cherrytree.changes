@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Dec 09 14:24:52 UTC 2020 - malcolmlewis@opensuse.org
+
+- Update to version 0.99.25:
+  * Fixed unit test.
+  * Icon theme update, (gh#giuspen/cherrytree#1408).
+  * Debugging too slow large tables...
+  * Added missing tooltips on the bookmarks handle dialog,
+    (gh#giuspen/cherrytree#1403).
+  * Fix spell-check language selection from right click menu was
+    not saved to preferences.
+  * Fix spell-check language selection from poreferences dialog not
+    working (but ok from right click menu),
+    (gh#giuspen/cherrytree#1400).
+  * Fix TOC generation when existing anchor but wrong name,
+    (gh#giuspen/cherrytree#1382).
+  * Allow to override build date with SOURCE_DATE_EPOCH,
+    (gh#giuspen/cherrytree#1401).
+  * Improved command line switch --new-window,
+    (gh#giuspen/cherrytree#1339).
+  * Export to plain text do not alter node name case and prefix
+    with a # per node level, (gh#giuspen/cherrytree#1385).
+  * Fix the cherrytree shebang, (gh#giuspen/cherrytree#1396).
+  * Translation updates.
+
+-------------------------------------------------------------------
 Tue Dec  1 15:15:57 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update _service:
