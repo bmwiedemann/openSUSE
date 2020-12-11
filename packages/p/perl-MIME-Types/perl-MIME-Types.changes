@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec 11 03:07:54 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.18
+   see /usr/share/doc/packages/perl-MIME-Types/ChangeLog
+
+  version 2.18: Wed  9 Dec 10:29:46 CET 2020
+
+  	Improvements:
+  	- update with newest data
+
+  	Changes:
+  	- Mojo 6.0 changed types() into mapping() [Dmitry Latin ]
+  	- Mojo 7.94 adds experimental file_type()
+  	- Mojo 7.94 adds experimental content_type()
+
+-------------------------------------------------------------------
 Wed Feb  7 15:46:47 UTC 2018 - coolo@suse.com
 
 - updated to 2.17
