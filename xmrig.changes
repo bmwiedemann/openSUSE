@@ -1,0 +1,97 @@
+-------------------------------------------------------------------
+Thu Dec 10 10:51:00 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Install license and some documentation
+
+-------------------------------------------------------------------
+Wed Dec 02 06:12:55 UTC 2020 - nopeinomicon@posteo.net
+
+- Update to version 6.6.2:
+  * v6.6.2
+  * Update CHANGELOG.md
+  * Fix RandomX init when switching to other algo and back
+  * Optimized JIT compiler
+  * Update base
+  * Example mining scripts to help new miners
+  * v6.6.2-dev
+
+-------------------------------------------------------------------
+Wed Nov 25 18:46:11 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Update to version 6.6.1:
+  * Fixed, benchmark validation on NUMA hardware produced incorrect results in some conditions.
+
+-------------------------------------------------------------------
+Wed Nov 25 10:05:17 UTC 2020 - 
+
+- Transition from tar_scm service to obs_scm service
+- Update to version 6.6.0:
+    * Online benchmark protocol upgraded to v2, validation not compatible with previous versions.
+        + Single thread benchmark now is cheat-resistant, not possible speedup it with multiple threads.
+        + RandomX dataset is now always initialized with static seed, to prevent time cheat by report slow dataset initialization.
+        + Zero delay online submission, to make time validation much more precise and strict.
+        + DNS cache for online benchmark to prevent unexpected delays.
+
+
+-------------------------------------------------------------------
+Sun Nov 15 09:08:51 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Removed unnecessary "mkdir" function from .spec file
+- Update to version 6.5.3:
+  * v6.5.3
+  * Update CHANGELOG.md
+  * Added warning about libcpuid deprecation.
+  * Add static_assert
+  * Fixed MSR mod names in JSON API
+  * v6.5.3-dev
+
+-------------------------------------------------------------------
+Sat Nov 14 06:49:10 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Update to version 6.5.2:
+  * v6.5.2
+  * Fixed build without benchmark.
+  * Update CHANGELOG.md
+  * Add support for benchmark in generated config.
+  * #1937 Print path to existing WinRing0 service without verbose option.
+  * Update randomx_boost.sh
+  * Added 250K and 500K offline benchmarks.
+  * MemoryPool: fix alignment modification
+  * Added --token command line option.
+  * Added CPUID info to JSON report
+  * CompiledVm: define default constructor
+  * Separate MSR mod for Zen/Zen2 and Zen3
+  * v6.5.2-dev
+
+-------------------------------------------------------------------
+Tue Nov 10 06:47:36 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Added _service file for version updates
+- Ensure proper installation of executable
+- Update to version 6.5.1:
+  * v6.5.1
+  * Update CHANGELOG.md
+  * Update README.md
+  * Update RxConfig.cpp
+  * New MSR mod for Ryzen
+  * Fixed build without HTTP.
+  * #1918 Fixed check for 1GB huge pages on ARM Linux.
+  * Fix compilation on ARMv8 with GCC 9.3.0
+
+-------------------------------------------------------------------
+Tue Nov  3 07:47:18 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Cleaned up .spec file
+- Removed home-folder-config.patch as this patch was implemented upstream
+- Updated to version 6.5.0
+    * Added a new online benchmark mode to share results
+    * Fixed MSR Kernel module warning with new Linux kernels
+    * Added checking for config files in user home directory
+    * Added vendor to ARM CPUs name and added "arch" field to API
+    * Removed legacy CUDA plugin API
+
+-------------------------------------------------------------------
+Mon Nov  2 00:02:59 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Added patch to remove forced donation feature
+- Added patch to scan for configuration files at ~/.xmrig.json and ~/.config/xmrig.json for better ease of use. 
