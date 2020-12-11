@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Sys-LoadAvg
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,37 +12,39 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define cpan_name Sys-LoadAvg
 Name:           perl-Sys-LoadAvg
 Version:        0.03
 Release:        0
+%define cpan_name Sys-LoadAvg
 Summary:        Perl extension for accessing system CPU load averages
-License:        Artistic-1.0 or GPL-1.0+
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/~jeremy/Sys-LoadAvg-0.03/LoadAvg.pm
-Source:         http://search.cpan.org/CPAN/authors/id/J/JE/JEREMY/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/J/JE/JEREMY/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
+Patch0:         0001-enhance-loadavg-array-from-2-to-3-doubles.patch
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{perl_requires}
 
 %description
-Algorithm::Annotate generates a list that is useful for generating output
-similar to 'cvs annotate'.
+Module for accessing System load averages.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
+%patch0 -p1
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
 make %{?_smp_mflags}
 
 %check
-make %{?_smp_mflags} test
+make test
 
 %install
 %perl_make_install
@@ -51,5 +53,6 @@ make %{?_smp_mflags} test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
+%doc Changes README
 
 %changelog

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 10 06:41:42 UTC 2020 - Frank Schreiner <FSchreiner@suse.com>
+
+- added 0001-enhance-loadavg-array-from-2-to-3-doubles.patch
+  (Fixes: https://rt.cpan.org/Public/Bug/Display.html?id=120617)
+- re-run cpanspec version 1.80.01
+
+-------------------------------------------------------------------
 Sat Dec 12 18:07:34 UTC 2015 - p.drouand@gmail.com
 
 - Initial relase (version 0.03)
