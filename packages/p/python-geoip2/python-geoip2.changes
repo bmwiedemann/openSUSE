@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 10 01:27:35 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- replace deprecated setup.py test call by pyunittest macro so that
+  pip does not try to download stuff 
+
+-------------------------------------------------------------------
 Wed Nov  4 15:56:32 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to version 4.1.0:

@@ -62,11 +62,12 @@ The API also works with MaxMind's free GeoLite2 databases.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest tests/*_test.py -v
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst HISTORY.rst
-%{python_sitelib}/*
+%{python_sitelib}/geoip2
+%{python_sitelib}/geoip2-%{version}*-info
 
 %changelog
