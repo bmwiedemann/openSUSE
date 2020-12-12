@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Dec  8 17:58:23 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.37.1:
+    - Remove support for CentOS 6 and Python 2.6 (remove 
+      tests.vendor module). Python 2.7 is still fully supported.
+    - Remodel CI:
+      - on GitHub switched from Travis-CI to GH Actions
+      - on GitLab-CI: stop testing 2.7 on Fedora, add centos7
+      - update appveyor.yml
+    - Stop playing with swig in setup.py, we don't support swig 1.* 
+      anymore.
+    - Fix dereferencing of pointers (gl#m2crypto/m2crypto#281)
+    - Replace deprecated PyObject_AsReadBuffer with our own shim 
+      (thanks to Casey Deccio for saving my bacon there).
+    - Use parametrized to create parametrized tests (new external 
+      dependency).
+    - Only use DigestSign() and DigestUpdate() with OpenSSL >= 1.1.1
+    - Expose all the X509_V_FLAG
+    - Add support for DigestSign* and DigestVerify*
+
+-------------------------------------------------------------------
 Mon Jul 13 21:07:34 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 Update to 0.36.0:

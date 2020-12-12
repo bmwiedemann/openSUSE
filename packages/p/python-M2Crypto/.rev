@@ -365,4 +365,29 @@ this has necessary adjustments for openssl w/o sslv2; needed for Factory! (forwa
 - Remove upstream merged patch 001-fix-buffering-for-python38.patch.</comment>
     <requestid>820764</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>24686eac8c06d098557c4f0c03813747</srcmd5>
+    <version>0.37.1</version>
+    <time>1607801352</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.37.1:
+    - Remove support for CentOS 6 and Python 2.6 (remove 
+      tests.vendor module). Python 2.7 is still fully supported.
+    - Remodel CI:
+      - on GitHub switched from Travis-CI to GH Actions
+      - on GitLab-CI: stop testing 2.7 on Fedora, add centos7
+      - update appveyor.yml
+    - Stop playing with swig in setup.py, we don't support swig 1.* 
+      anymore.
+    - Fix dereferencing of pointers (gl#m2crypto/m2crypto#281)
+    - Replace deprecated PyObject_AsReadBuffer with our own shim 
+      (thanks to Casey Deccio for saving my bacon there).
+    - Use parametrized to create parametrized tests (new external 
+      dependency).
+    - Only use DigestSign() and DigestUpdate() with OpenSSL &gt;= 1.1.1
+    - Expose all the X509_V_FLAG
+    - Add support for DigestSign* and DigestVerify*
+</comment>
+    <requestid>854111</requestid>
+  </revision>
 </revisionlist>
