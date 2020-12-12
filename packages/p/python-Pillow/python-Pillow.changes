@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Sun Nov 15 18:03:48 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * README.rst -> README.md
+
+- update to version 8.0.1:
+  * Update FreeType used in binary wheels to 2.10.4 to fix
+    CVE-2020-15999. [radarhere]
+  * Moved string_dimension image to pillow-depends #4993 [radarhere]
+
+- changes from version 8.0.0:
+  * Drop support for EOL Python 3.5 #4746, #4794 [hugovk, radarhere,
+    nulano]
+  * Drop support for PyPy3 < 7.2.0 #4964 [nulano]
+  * Remove ImageCms.CmsProfile attributes deprecated since 3.2.0 #4768
+    [hugovk, radarhere]
+  * Remove long-deprecated Image.py functions #4798 [hugovk, nulano,
+    radarhere]
+  * Add support for 16-bit precision JPEG quantization values #4918
+    [gofr]
+  * Added reading of IFD tag type #4979 [radarhere]
+  * Initialize offset memory for PyImagingPhotoPut #4806 [nqbit]
+  * Fix TiffDecode comparison warnings #4756 [nulano]
+  * Docs: Add dark mode #4968 [hugovk, nulano]
+  * Added macOS SDK install path to library and include directories
+    #4974 [radarhere, fxcoudert]
+  * Imaging.h: prevent confusion with system #4923 [ax3l, ,radarhere]
+  * Avoid using pkg_resources in PIL.features.pilinfo #4975 [nulano]
+  * Add getlength and getbbox functions for TrueType fonts #4959
+    [nulano, radarhere, hugovk]
+  * Allow tuples with one item to give single color value in getink
+    #4927 [radarhere, nulano]
+  * Add support for CBDT and COLR fonts #4955 [nulano, hugovk]
+  * Removed OSError in favour of DecompressionBombError for BMP #4966
+    [radarhere]
+  * Implemented another ellipse drawing algorithm #4523 [xtsm,
+    radarhere]
+  * Removed unused JpegImagePlugin._fixup_dict function #4957
+    [radarhere]
+  * Added reading and writing of private PNG chunks #4292 [radarhere]
+  * Implement anchor for TrueType fonts #4930 [nulano, hugovk]
+  * Fixed bug in Exif __delitem__ #4942 [radarhere]
+  * Fix crash in ImageTk.PhotoImage on MinGW 64-bit #4946 [nulano]
+  * Moved CVE images to pillow-depends #4929 [radarhere]
+  * Refactor font_getsize and font_render #4910 [nulano]
+  * Fixed loading profile with non-ASCII path on Windows #4914
+    [radarhere]
+  * Fixed effect_spread bug for zero distance #4908 [radarhere,
+    hugovk]
+  * Added formats parameter to Image.open #4837 [nulano, radarhere]
+  * Added regular_polygon draw method #4846 [comhar]
+  * Raise proper TypeError in putpixel #4882 [nulano, hugovk]
+  * Added writing of subIFDs #4862 [radarhere]
+  * Fix IFDRational __eq__ bug #4888 [luphord, radarhere]
+  * Fixed duplicate variable name #4885 [liZe, radarhere]
+  * Added homebrew zlib include directory #4842 [radarhere]
+  * Corrected inverted PDF CMYK colors #4866 [radarhere]
+  * Do not try to close file pointer if file pointer is empty #4823
+    [radarhere]
+  * ImageOps.autocontrast: add mask parameter #4843 [navneeth, hugovk]
+  * Read EXIF data tEXt chunk into info as bytes instead of string
+    #4828 [radarhere]
+  * Replaced distutils with setuptools #4797, #4809, #4814, #4817,
+    #4829, #4890 [hugovk, radarhere]
+  * Add MIME type to PsdImagePlugin #4788 [samamorgan]
+  * Allow ImageOps.autocontrast to specify low and high cutoffs
+    separately #4749 [millionhz, radarhere]
+
+-------------------------------------------------------------------
 Sat Nov  7 16:13:42 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fix build with RPM 4.16: error: bare words are no longer

@@ -20,7 +20,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Pillow
-Version:        7.2.0
+Version:        8.0.1
 Release:        0
 Summary:        Python Imaging Library (Fork)
 License:        HPND
@@ -116,7 +116,7 @@ pytest-%{$python_bin_suffix} --ignore=_build.python2 --ignore=_build.python3 --i
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGES.rst README.rst
+%doc CHANGES.rst README.md
 %{python_sitearch}/PIL
 %{python_sitearch}/PIL.pth
 %{python_sitearch}/Pillow-%{version}-py%{python_version}.egg-info
