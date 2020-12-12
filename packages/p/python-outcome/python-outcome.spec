@@ -32,10 +32,15 @@ Requires:       python-attrs >= 19.2.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module attrs >= 19.2.0}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
+%if 0%{suse_version} >= 1550
+# for more than one python 3 flavor, but no python2 flavor
+BuildRequires:  %{python_module async_generator}
+BuildRequires:  %{python_module pytest-asyncio}
+%else
 BuildRequires:  python3-async_generator
 BuildRequires:  python3-pytest-asyncio
+%endif
 # /SECTION
 %python_subpackages
 
@@ -59,6 +64,7 @@ function call, so that it can be passed around.
 %files %{python_files}
 %doc README.rst
 %license LICENSE LICENSE.APACHE2 LICENSE.MIT
-%{python_sitelib}/*
+%{python_sitelib}/outcome
+%{python_sitelib}/outcome-%{version}*-info
 
 %changelog
