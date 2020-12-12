@@ -25,7 +25,7 @@ Name:           rsyslog
 Summary:        The enhanced syslogd for Linux and Unix
 License:        (GPL-3.0-or-later AND Apache-2.0)
 Group:          System/Daemons
-Version:        8.2010.0
+Version:        8.2012.0
 Release:        0
 %bcond_with     udpspoof
 %bcond_with     dbi

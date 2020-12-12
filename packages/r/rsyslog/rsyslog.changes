@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec  8 19:44:05 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Upgrade to rsyslog 8.2012.0:
+  * testbench bugfix: some tests did not work in make distcheck
+  * immark: rewrite with many improvements
+  * usability: re-phrase error message to help users better understand cause
+  * add new system property $now-unixtimestamp
+  * omfwd: add new rate limit option
+  * omfwd bug: param "StreamDriver.PermitExpiredCerts" is not "off" by default
+
+-------------------------------------------------------------------
 Thu Nov 26 10:57:12 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)
