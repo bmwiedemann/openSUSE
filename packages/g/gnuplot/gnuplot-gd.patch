@@ -7,12 +7,12 @@ Index: gnuplot-5.2.2/configure.ac
 
 --- gnuplot-5.4.0/configure.ac
 +++ gnuplot-5.4.0/configure.ac	2020-07-17 07:31:14.828189953 +0000
-@@ -535,63 +535,17 @@ AC_ARG_WITH(gd,dnl
-   with_gd=yes)
+@@ -541,63 +541,17 @@ AC_ARG_WITH(gd,dnl
  
  if test "$with_gd" != no; then
+   PKG_CHECK_MODULES_NOFAIL(libgd, [gdlib])
 -  AC_PATH_PROG([GDLIB_CONFIG], [gdlib-config])
--  if test -n "$GDLIB_CONFIG"; then
+-  if test $pkg_failed == no && test -n "$GDLIB_CONFIG"; then
 -    libgd_CPPFLAGS=`$GDLIB_CONFIG --cflags`
 -    libgd_LDFLAGS=`$GDLIB_CONFIG --ldflags`
 -    libgd_LIBS=`$GDLIB_CONFIG --libs`

@@ -75,7 +75,7 @@ BuildRequires:  tex(pdftex.def)
 BuildRequires:  tex(subfigure.sty)
 %endif
 URL:            http://www.gnuplot.info/
-Version:        5.4.0
+Version:        5.4.1
 Release:        0
 %global         underscore 5_4
 %if "%{flavor}" == ""
@@ -103,10 +103,6 @@ Patch4:         gnuplot-4.6.0-demo.diff
 Patch5:         gnuplot-wx3.diff
 Patch6:         gnuplot-QtCore-PIC.dif
 Patch7:         gnuplot-gd.patch
-Patch10:        963c7df3.patch
-Patch11:        052cbd17.patch
-Patch12:        1f36c4fb.patch
-Patch13:        a31c3b70.patch
 %define _x11lib     %{_libdir}
 %define _x11data    %{_datadir}/X11
 %define _libx11     %{_exec_prefix}/lib/X11
@@ -141,10 +137,6 @@ cp %{_sourcedir}/picins.sty docs
 %patch5 -p1 -b .w3x
 %patch6 -p0 -b .pic
 %patch7 -p1 -b .gd
-%patch10
-%patch11
-%patch12
-%patch13
 %build
 autoreconf -fi
 
