@@ -139,4 +139,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>819617</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ab3953047492501169b88481a47aa993</srcmd5>
+    <version>3.2.3</version>
+    <time>1607801425</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix AppStream file location to match latest standard (forwarded request 845307 from guoyunhe)</comment>
+    <requestid>846089</requestid>
+  </revision>
 </revisionlist>

@@ -32,8 +32,8 @@ diff -r -U 5 a/modules/mbedtls/crypto_mbedtls.cpp b/modules/mbedtls/crypto_mbedt
 @@ -44,10 +44,12 @@
  #define PEM_END_CRT "-----END CERTIFICATE-----\n"
  
- #include "mbedtls/pem.h"
  #include <mbedtls/debug.h>
+ #include <mbedtls/pem.h>
  
 +#include <string.h>
 +

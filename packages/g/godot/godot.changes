@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sun Nov  1 23:35:40 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Fix AppStream file location to match latest standard
+
+-------------------------------------------------------------------
+Fri Sep 18 16:00:00 UTC 2020 - cunix@mail.de
+
+- Update to 3.2.3
+
+  Added:
+  * Input: Support SDL2 half axes and inverted axes mappings
+  * LineEdit: Add option to disable virtual keyboard for LineEdit
+  * Rendering: Allow nearest neighbor lookup when using mipmaps
+
+  Changed:
+  * GDScript: Auto completion enhanced for extends and
+    class level identifier
+  * Physics: Better damping implementation for Bullet rigid bodies.
+    If you're using damping with the Bullet backend,
+    you may need to adjust some properties to restore
+    the behavior from 3.2.2 or earlier.
+  * Project Settings: Enable file logging by default on desktops
+  * Script editor: Don't open dominant script in external editor
+  * Sprite3D: Use mesh instead of immediate for drawing Sprite3D
+
+  Fixed:
+  * Core: debugger error when Dictionary key is a freed Object
+  * Core: leaked ObjectRCs on object Variant reassignment
+  * GLES3: OpenGL error when generating radiance
+  * Import: custom tracks causing issues on reimport
+  * Import: regression causing crashes with some OGG files
+  * Particles: 2D Particle velocity with directed emission mask
+  * PathFollow3D: repeated updates of PathFollow3D Transform
+  * Physics: Trigger broadphase update when changing collision layer/mask
+  * Physics: laxist collision detection on one way shapes
+  * Physics: Properly pass safe margin on initialization
+  * Project Settings: overriding compression related settings
+  * Rendering: images in black margins
+  * Rendering: Properly calculate Polygon2D AABB with skeleton
+  * Shaders: specular 'render_mode' for Visual Shaders
+
+  And more:
+  https://downloads.tuxfamily.org/godotengine/3.2.3/Godot_v3.2.3-stable_changelog_chrono.txt
+
+- "certs_fallback.patch" rebased
+
+-------------------------------------------------------------------
 Tue Jul 01 12:00:00 UTC 2020 - cunix@mail.de
 
 - In .desktop file prefix "PrefersNonDefaultGPU" with "X-" only

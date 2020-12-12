@@ -24,7 +24,7 @@
 %define ca_bundle %{_localstatedir}/lib/ca-certificates/ca-bundle.pem
 
 Name:           godot
-Version:        3.2.2
+Version:        3.2.3
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -142,14 +142,14 @@ Provides:       bundled(assimp)
 
 %if 0%{?suse_version} > 1500
 %else
-Provides:       bundled(bullet) = 2.90
+Provides:       bundled(bullet) = 2.89
 Provides:       bundled(libzstd)
 %if 0%{?sle_version} < 150200
-Provides:       bundled(mbedtls) = 2.16.6
+Provides:       bundled(mbedtls) = 2.16.8
 %endif
 %if !0%{?is_opensuse}
 # SLES seems not to have miniupnpc and wslay
-Provides:       bundled(libwslay) = 1.1.0
+Provides:       bundled(libwslay) = 1.1.1
 Provides:       bundled(miniupnpc)
 %endif
 %endif
@@ -225,6 +225,10 @@ if [[ -z "$(desktop-file-validate misc/dist/linux/org.godotengine.Godot.desktop)
  then
   # desktop-file-utils version >= 0.25
   echo desktop-file-utils is up to date and recognizes PrefersNonDefaultGPU.
+  # rpmlint complains nevertheless (on Tumbleweed). A false negative?
+  # see https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html#recognized-keys
+  # Perhaps because rpmlint-mini includes as of today (18.09.2020)
+  # desktop-file-utils-0.24 while we checked for available default version >= 0.25
  else
   echo PrefersNonDefaultGPU not recognized.
   # rpmlint considers file invalid without "X-" prefix
@@ -294,6 +298,7 @@ touch thirdparty/certs/ca-certificates.crt
         system_certs_path=%{ca_bundle} $system_libs
 
 # Build graphical editor (tools)
+# rename x11 to linuxbsd ?
 scons %{build_args} platform=x11 tools=yes target=release_debug
 
 %if !0%{?faster_build}
@@ -314,7 +319,7 @@ install -D -p -m 755 bin/%{name}.x11.opt.tools.%{__isa_bits} %{buildroot}%{_bind
 install -D -p -m 644 misc/dist/linux/godot.6 %{buildroot}/%{_mandir}/man6/%{name}.6%{?ext_man}
 install -D -p -m 644 icon.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/%{name}.png
 install -D -p -m 644 icon.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
-install -D -p -m 644 misc/dist/linux/org.godotengine.Godot.appdata.xml  %{buildroot}%{_datadir}/appdata/org.godotengine.Godot.appdata.xml
+install -D -p -m 644 misc/dist/linux/org.godotengine.Godot.appdata.xml  %{buildroot}%{_datadir}/metainfo/org.godotengine.Godot.appdata.xml
 %suse_update_desktop_file -i org.godotengine.Godot
 
 %if !0%{?faster_build}
@@ -338,14 +343,14 @@ install -D -p -m 644 misc/dist/shell/godot-server %{buildroot}%{_datadir}/bash-c
 
 %files
 %license LICENSE.txt LOGO_LICENSE.md COPYRIGHT.txt thirdparty_README.md
-%doc AUTHORS.md CHANGELOG.md CONTRIBUTING.md DONORS.md README.md CODE_OF_CONDUCT.md
+%doc AUTHORS.md CHANGELOG.md CONTRIBUTING.md DONORS.md README.md logo.svg
 %dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/256x256
 %dir %{_datadir}/icons/hicolor/256x256/apps
 %dir %{_datadir}/icons/hicolor/scalable
 %dir %{_datadir}/icons/hicolor/scalable/apps
 %{_bindir}/%{name}
-%{_datadir}/appdata/org.godotengine.Godot.appdata.xml
+%{_datadir}/metainfo/org.godotengine.Godot.appdata.xml
 %{_datadir}/applications/org.godotengine.Godot.desktop
 %{_datadir}/icons/hicolor/256x256/apps/%{name}.png
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
@@ -354,17 +359,17 @@ install -D -p -m 644 misc/dist/shell/godot-server %{buildroot}%{_datadir}/bash-c
 %if !0%{?faster_build}
 %files headless
 %license LICENSE.txt LOGO_LICENSE.md COPYRIGHT.txt thirdparty_README.md
-%doc AUTHORS.md CHANGELOG.md CONTRIBUTING.md DONORS.md README.md CODE_OF_CONDUCT.md
+%doc AUTHORS.md CHANGELOG.md CONTRIBUTING.md DONORS.md README.md logo.svg
 %{_bindir}/%{name}-headless
 
 %files runner
 %license LICENSE.txt LOGO_LICENSE.md COPYRIGHT.txt thirdparty_README.md
-%doc AUTHORS.md CHANGELOG.md CONTRIBUTING.md DONORS.md README.md CODE_OF_CONDUCT.md
+%doc AUTHORS.md CHANGELOG.md CONTRIBUTING.md DONORS.md README.md logo.svg
 %{_bindir}/%{name}-runner
 
 %files server
 %license LICENSE.txt LOGO_LICENSE.md COPYRIGHT.txt thirdparty_README.md
-%doc AUTHORS.md CHANGELOG.md CONTRIBUTING.md DONORS.md README.md CODE_OF_CONDUCT.md
+%doc AUTHORS.md CHANGELOG.md CONTRIBUTING.md DONORS.md README.md logo.svg
 %{_bindir}/%{name}-server
 %endif
 
