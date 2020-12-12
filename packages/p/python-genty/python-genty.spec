@@ -1,7 +1,7 @@
 #
 # spec file for package python-genty
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,10 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/box/genty
 Source:         https://files.pythonhosted.org/packages/source/g/genty/genty-%{version}.tar.gz
+# PATCH-FEATURE-UPSTREAM remove_mock.patch bsc#[0-9]+ mcepl@suse.com
+# Remove dependency on mock
+Patch0:         remove_mock.patch
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
@@ -43,7 +44,7 @@ generative testing, where a single test can execute over a variety of
 input. Genty makes this a breeze.
 
 %prep
-%setup -q -n genty-%{version}
+%autosetup -p1 -n genty-%{version}
 
 %build
 %python_build
@@ -53,7 +54,7 @@ input. Genty makes this a breeze.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v
 
 %files %{python_files}
 %license LICENSE
