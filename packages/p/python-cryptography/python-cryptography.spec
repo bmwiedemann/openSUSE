@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-cryptography
-Version:        3.2.1
+Version:        3.3
 Release:        0
 Summary:        Python library which exposes cryptographic recipes and primitives
 License:        Apache-2.0 OR BSD-3-Clause
@@ -63,7 +63,6 @@ BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pyasn1 >= 0.1.8}
 BuildRequires:  %{python_module pytest > 3.3.0}
-BuildRequires:  %{python_module virtualenv}
 # /SECTION
 # python-base is not enough, we need the _ssl module
 %ifpython2
