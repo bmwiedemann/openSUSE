@@ -1,0 +1,37 @@
+From be0d520c9bc9e3b3959f84d80c65e418e6081887 Mon Sep 17 00:00:00 2001
+From: Sergey Shepelev <temotor@gmail.com>
+Date: Wed, 2 Dec 2020 01:10:02 +0300
+Subject: [PATCH] pyopenssl tsafe module was deprecated and removed in v20.0.0
+
+https://github.com/eventlet/eventlet/issues/671
+https://github.com/pyca/pyopenssl/pull/913
+---
+ eventlet/green/OpenSSL/__init__.py | 7 ++++++-
+ tests/openssl_test.py              | 1 -
+ 4 files changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/eventlet/green/OpenSSL/__init__.py b/eventlet/green/OpenSSL/__init__.py
+index d86147645..1b2500971 100644
+--- a/eventlet/green/OpenSSL/__init__.py
++++ b/eventlet/green/OpenSSL/__init__.py
+@@ -1,4 +1,9 @@
+ from . import crypto
+ from . import SSL
+-from . import tsafe
++try:
++    # pyopenssl tsafe module was deprecated and removed in v20.0.0
++    # https://github.com/pyca/pyopenssl/pull/913
++    from . import tsafe
++except ImportError:
++    pass
+ from .version import __version__
+diff --git a/tests/openssl_test.py b/tests/openssl_test.py
+index a127408b8..1108adaf6 100644
+--- a/tests/openssl_test.py
++++ b/tests/openssl_test.py
+@@ -12,5 +12,4 @@ def test_import():
+ 
+     import eventlet.green.OpenSSL.SSL
+     import eventlet.green.OpenSSL.crypto
+-    import eventlet.green.OpenSSL.tsafe
+     import eventlet.green.OpenSSL.version

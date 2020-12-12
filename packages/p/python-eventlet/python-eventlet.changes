@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Dec 10 22:43:44 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Add pr_672-remove-OpenSSL-tsafe.patch to support pyopenssl 20
+- skip some tests which are flaky inside OBS environment
+- fix python2 build requirement for Leap
+
+-------------------------------------------------------------------
+Mon Dec  7 00:14:23 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 0.29.1
+  * patcher: [py27] recursion error in pytest/python2.7 installing 
+    register_at_fork
+  * patcher: monkey_patch(builtins=True) failed on py3 because 
+    `file` class is gone
+  * don't crash on PyPy 7.0.0   
+  * Only install monotonic on python2 
+- Changes for 0.29.0
+  * ssl: context wrapped listener fails accept()
+- Changes for 0.28.1
+  * Clean up TypeError in __del__
+- Changes for 0.28.0
+  * Always remove the right listener from the hub 
+    gh#enventlet/eventlet#645
+- Changes for 0.27.0
+  * patcher: Clean up threading book-keeping at fork when
+    monkey-patched
+  * backdoor: handle disconnects better
+- Fix test skips for non-default python 3.6 flavor
+  gh#openSUSE/python-rpm-macros#66
+- refresh newdnspython.patch
+
+-------------------------------------------------------------------
 Wed Aug 19 15:28:03 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - do not run test on python 2 (sadly no real macro expansion
