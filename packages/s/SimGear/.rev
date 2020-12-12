@@ -157,4 +157,12 @@ Depends on SR 556011</comment>
     <comment></comment>
     <requestid>847979</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>70bf8d4e00d202bd3db98ef77ed66f48</srcmd5>
+    <version>2020.3.4</version>
+    <time>1607801432</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854911</requestid>
+  </revision>
 </revisionlist>
