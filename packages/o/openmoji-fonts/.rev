@@ -29,4 +29,17 @@ The license is part of the FAQ.md file. I cannot find the separated license file
 </comment>
     <requestid>843801</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2d96cd2d88dbc455ea61028dc24ef346</srcmd5>
+    <version>13.0.0+git.1605265744.4a80b536e</version>
+    <time>1607801402</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.0.0.
+  * Full support of Unicode Emoji 13.0. 
+  * New Coronavirus related emojis by Guemil Project
+  * Lots of fixes and redesigns
+  * New logos and symbols
+</comment>
+    <requestid>849888</requestid>
+  </revision>
 </revisionlist>
