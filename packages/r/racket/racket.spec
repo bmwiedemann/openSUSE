@@ -18,10 +18,10 @@
 
 
 Name:           racket
-Version:        7.3
+Version:        7.8
 Release:        0
 Summary:        Scheme implementation with teaching tools
-License:        LGPL-2.1-or-later AND GPL-3.0-or-later
+License:        MIT or Apache-2.0
 Group:          Development/Languages/Scheme
 URL:            http://racket-lang.org
 Source0:        http://download.racket-lang.org/installers/%{version}/%{name}-%{version}-src.tgz

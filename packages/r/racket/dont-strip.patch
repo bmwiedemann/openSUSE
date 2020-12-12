@@ -1,21 +1,19 @@
-Index: racket-7.2/src/cfg-racket
-===================================================================
---- racket-7.2.orig/src/cfg-racket
-+++ racket-7.2/src/cfg-racket
-@@ -6833,7 +6833,7 @@ if test "${enable_shared}" = "yes" ; the
+diff -ru old/src/cfg-racket new/src/cfg-racket
+--- old/src/cfg-racket	2020-08-21 15:04:58.350336921 +0200
++++ new/src/cfg-racket	2020-08-21 15:05:24.934420798 +0200
+@@ -7011,7 +7011,7 @@
    LIBSFX=la
    WXLIBS=WXLIBSDYN
    ICP="${LIBTOOLPROG} --mode=install cp"
 -  ICP_LIB="${LIBTOOLPROG} --mode=install install -s"
 +  ICP_LIB="${LIBTOOLPROG} --mode=install install"
+   ICP_STATIC_LIB='$(NOOP)'
    MRLIBINSTALL="install-lib"
    LIBFINISH="${LIBTOOLPROG} --mode=finish"
-   LTO="lo"
-Index: racket-7.2/src/cs/c/configure
-===================================================================
---- racket-7.2.orig/src/cs/c/configure
-+++ racket-7.2/src/cs/c/configure
-@@ -4615,7 +4615,7 @@ if test "${enable_shared}" = "yes" ; the
+diff -ru old/src/cs/c/configure new/src/cs/c/configure
+--- old/src/cs/c/configure	2020-08-21 15:04:58.366336971 +0200
++++ new/src/cs/c/configure	2020-08-21 15:05:45.366485257 +0200
+@@ -5429,7 +5429,7 @@
    LTA="la"
    STRIP_LIB_DEBUG=":"
    LIBSFX=la
@@ -24,11 +22,10 @@ Index: racket-7.2/src/cs/c/configure
  else
    ICP=cp
    LTO="o"
-Index: racket-7.2/src/cs/c/configure.ac
-===================================================================
---- racket-7.2.orig/src/cs/c/configure.ac
-+++ racket-7.2/src/cs/c/configure.ac
-@@ -415,7 +415,7 @@ if test "${enable_shared}" = "yes" ; the
+diff -ru old/src/cs/c/configure.ac new/src/cs/c/configure.ac
+--- old/src/cs/c/configure.ac	2020-08-21 15:04:58.366336971 +0200
++++ new/src/cs/c/configure.ac	2020-08-21 15:06:01.478536085 +0200
+@@ -658,7 +658,7 @@
    LTA="la"
    STRIP_LIB_DEBUG=":"
    LIBSFX=la
@@ -37,24 +34,22 @@ Index: racket-7.2/src/cs/c/configure.ac
  else
    ICP=cp
    LTO="o"
-Index: racket-7.2/src/racket/configure.ac
-===================================================================
---- racket-7.2.orig/src/racket/configure.ac
-+++ racket-7.2/src/racket/configure.ac
-@@ -1382,7 +1382,7 @@ if test "${enable_shared}" = "yes" ; the
+diff -ru old/src/racket/configure.ac new/src/racket/configure.ac
+--- old/src/racket/configure.ac	2020-08-21 15:04:58.350336921 +0200
++++ new/src/racket/configure.ac	2020-08-21 15:06:14.246576366 +0200
+@@ -1408,7 +1408,7 @@
    LIBSFX=la
    WXLIBS=WXLIBSDYN
    ICP="${LIBTOOLPROG} --mode=install cp"
 -  ICP_LIB="${LIBTOOLPROG} --mode=install install -s"
 +  ICP_LIB="${LIBTOOLPROG} --mode=install install"
+   ICP_STATIC_LIB='$(NOOP)'
    MRLIBINSTALL="install-lib"
    LIBFINISH="${LIBTOOLPROG} --mode=finish"
-   LTO="lo"
-Index: racket-7.2/src/rktio/configure
-===================================================================
---- racket-7.2.orig/src/rktio/configure
-+++ racket-7.2/src/rktio/configure
-@@ -4490,7 +4490,7 @@ if test "${enable_shared}" = "yes" ; the
+diff -ru old/src/rktio/configure new/src/rktio/configure
+--- old/src/rktio/configure	2020-08-21 15:04:58.406337098 +0200
++++ new/src/rktio/configure	2020-08-21 15:06:40.086657892 +0200
+@@ -4568,7 +4568,7 @@
    LTA="la"
    STRIP_LIB_DEBUG=":"
    LIBSFX=la
@@ -63,11 +58,10 @@ Index: racket-7.2/src/rktio/configure
  else
    ICP=cp
    LTO="o"
-Index: racket-7.2/src/rktio/configure.ac
-===================================================================
---- racket-7.2.orig/src/rktio/configure.ac
-+++ racket-7.2/src/rktio/configure.ac
-@@ -384,7 +384,7 @@ if test "${enable_shared}" = "yes" ; the
+diff -ru old/src/rktio/configure.ac new/src/rktio/configure.ac
+--- old/src/rktio/configure.ac	2020-08-21 15:04:58.406337098 +0200
++++ new/src/rktio/configure.ac	2020-08-21 15:06:49.942688988 +0200
+@@ -393,7 +393,7 @@
    LTA="la"
    STRIP_LIB_DEBUG=":"
    LIBSFX=la
@@ -76,16 +70,3 @@ Index: racket-7.2/src/rktio/configure.ac
  else
    ICP=cp
    LTO="o"
-Index: racket-7.2/src/start/configure.ac
-===================================================================
---- racket-7.2.orig/src/start/configure.ac
-+++ racket-7.2/src/start/configure.ac
-@@ -1360,7 +1360,7 @@ if test "${enable_shared}" = "yes" ; the
-   LIBSFX=la
-   WXLIBS=WXLIBSDYN
-   ICP="${LIBTOOLPROG} --mode=install cp"
--  ICP_LIB="${LIBTOOLPROG} --mode=install install -s"
-+  ICP_LIB="${LIBTOOLPROG} --mode=install install"
-   MRLIBINSTALL="install-lib"
-   LIBFINISH="${LIBTOOLPROG} --mode=finish"
-   LTO="lo"

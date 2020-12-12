@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Aug 21 13:14:06 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 7.8:
+* Racket CS supports AArch32 and AArch64, including places and
+  futures.
+* Racket CS supports an "incremental" garbage-collection mode that can
+  eliminate long GC pauses for some applications, such as animations and
+  interactive games.
+* Racket CS unboxes local floating-point arithmetic
+* DrRacket's spell check features lower overhead and has fewer bugs.
+* Web Server performance under high concurrency is better by up to an
+  order of magnitude
+* The math library includes the Kronecker product.
+* The new prop:struct-field-info property provides static information
+  about field names.
+* In `plot`, the legend font and the plot font can be controlled
+  independently, and error-bars have an `#:invert?` option.
+* Racket CS uses a new HAMT implementation, dramatically reducing the memory
+  required for immutable hash tables.
+* GC callbacks are reliably called on major collections in Racket CS.
+  Also, Garbage collection is 10-20% faster.
+* DrRacket can recover much more quickly from errors involving large
+  stack traces.
+* Call-with-current-language allows more reliable tests for language
+  level code.
+* Use of the Cairo library can be multi-threaded.
+* DrRacket's scrolling has been made more responsive.
+* DrRacket's dark mode support is improved for Mac OS and Unix.
+* The Web Server provides fine-grained control over various aspects of
+  handling client connections (timeouts, buffer sizes, maximum header
+  counts, etc.) via the new "safety limits" construct.
+* The Web Server's handling of large files is improved, and its
+  latency for long-running request handlers is reduced.
+
+-------------------------------------------------------------------
 Tue Mar 24 13:53:40 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - adapt _constraints, sse3 never existed, but this is not anymore
