@@ -1,0 +1,26 @@
+Index: tornado-5.1.1/tornado/test/runtests.py
+===================================================================
+--- tornado-5.1.1.orig/tornado/test/runtests.py
++++ tornado-5.1.1/tornado/test/runtests.py
+@@ -8,6 +8,8 @@ import operator
+ import textwrap
+ import sys
+ 
++from cryptography.utils import CryptographyDeprecationWarning
++
+ from tornado.httpclient import AsyncHTTPClient
+ from tornado.httpserver import HTTPServer
+ from tornado.ioloop import IOLoop
+@@ -159,6 +161,12 @@ def main():
+         category=DeprecationWarning,
+         message="PY_SSIZE_T_CLEAN will be required",
+     )
++    # This deprecation warning prevents Leap python2 from building now
++    warnings.filterwarnings(
++        "ignore",
++        category=CryptographyDeprecationWarning,
++        message="Python 2 is no longer supported",
++    )
+ 
+     logging.getLogger("tornado.access").setLevel(logging.CRITICAL)
+ 

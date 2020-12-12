@@ -31,15 +31,21 @@ Patch2:         openssl-cert-size.patch
 Patch3:         skip-failing-tests.patch
 Patch4:         py38-0001-test-silence-deprecation-warning.patch
 Patch5:         py38-0002-dont-log-CancelledError.patch
+Patch6:         py2-dont-log-cryptographywarning.patch
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module certifi}
+BuildRequires:  %{python_module curses}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pycurl}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module simplejson}
+%if 0%{?suse_version} >= 1550
+BuildRequires:  %{python_module pycares}
+%else
+BuildRequires:  python3-pycares
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-pycares
 Requires:       python
 Requires:       python-simplejson
 Conflicts:      python-tornado-impl
@@ -60,6 +66,7 @@ Recommends:     python-service_identity
 BuildRequires:  python-backports_abc
 BuildRequires:  python-futures
 BuildRequires:  python-mock
+BuildRequires:  python-service_identity
 BuildRequires:  python-singledispatch
 %endif
 %if %{python3_version_nodots} < 35
@@ -115,15 +122,14 @@ fi
 %check
 export ASYNC_TEST_TIMEOUT=30
 export TRAVIS=1
-mv tornado tornado_temp
-rm -rf build _build.*
-%{python_expand rm -rf build _build.*
-ln -s `pwd`/tornado_temp/test %{buildroot}%{$python_sitearch}/tornado/
-export PYTHONPATH=%{buildroot}%{$python_sitearch}
-$python -Bm tornado.test.runtests
-rm -rf %{buildroot}%{$python_sitearch}/tornado/test
+%{python_expand # merge the compiled sitearch and the test directory into testenv dir
+mkdir testenv-%{$python_bin_suffix}
+pushd testenv-%{$python_bin_suffix}
+cp -r %{buildroot}%{$python_sitearch}/tornado ./
+cp -r ../tornado/test tornado/
+$python -Bm tornado.test.runtests --verbose
+popd
 }
-mv tornado_temp tornado
 
 %files %{python_files}
 %license LICENSE

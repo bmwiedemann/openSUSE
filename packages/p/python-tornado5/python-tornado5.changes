@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Dec  6 18:04:33 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix Python 2 tests for Leap
+  * Don't log another deprecation warning
+    py2-dont-log-cryptographywarning.patch
+  * BuildRequire python2 service_identity
+- Fix test failures, which surfaced while preparing support for
+  multiple python3 flavors gh#openSUSE/python-rpm-macros#66
+  * BuildRequire python-pycares for all python3 flavors
+  * explicitely BuildRequire python-curses
+  * clean creation of test environment
+
+-------------------------------------------------------------------
 Tue Jan  7 12:04:12 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patches to build with python 3.8:
