@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -26,23 +27,25 @@
 %bcond_with test
 %endif
 %bcond_with ringdisabled
-%bcond_without python2
 Name:           python-celery%{psuffix}
-Version:        4.4.7
+Version:        5.0.2
 Release:        0
 Summary:        Distributed Task Queue module for Python
 License:        BSD-3-Clause
 URL:            http://celeryproject.org
 Source:         https://files.pythonhosted.org/packages/source/c/celery/celery-%{version}.tar.gz
+Patch0:         move-pytest-configuration-to-conftest.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  netcfg
 BuildRequires:  python-rpm-macros
 Requires:       python-billiard >= 3.6.3.0
-Requires:       python-future >= 0.18.0
-Requires:       python-kombu >= 4.6.10
+Requires:       python-click => 7.0
+Requires:       python-click-didyoumean >= 0.0.3
+Requires:       python-click-repl >= 0.1.6
+Requires:       python-kombu >= 5.0.0
 Requires:       python-pytz >= 2016.7
-Requires:       python-vine >= 1.3.0
+Requires:       python-vine >= 5.0.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-curses
@@ -59,19 +62,16 @@ BuildRequires:  %{python_module billiard >= 3.6.3.0}
 BuildRequires:  %{python_module boto3 >= 1.9.178}
 BuildRequires:  %{python_module case >= 1.3.1}
 BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module eventlet >= 0.24.1}
-BuildRequires:  %{python_module future >= 0.18.0}
+BuildRequires:  %{python_module eventlet >= 0.26.1}
 BuildRequires:  %{python_module gevent}
-BuildRequires:  %{python_module kombu >= 4.6.10}
+BuildRequires:  %{python_module kombu >= 5.0.0}
 BuildRequires:  %{python_module moto >= 1.3.7}
 BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module pymongo >= 3.3.0}
 BuildRequires:  %{python_module pytest >= 4.5.0}
+BuildRequires:  %{python_module pytest-subtests}
 BuildRequires:  %{python_module pytz >= 2016.7}
-BuildRequires:  %{python_module vine >= 1.3.0}
-%if %{with python2}
-BuildRequires:  %{python_module python-dateutil >= 2.1}
-%endif
+BuildRequires:  %{python_module vine >= 5.0.0}
 %if %{with ringdisabled}
 ExclusiveArch:  do-not-build
 %endif
@@ -85,6 +85,7 @@ scheduling as well.
 
 %prep
 %setup -q -n celery-%{version}
+%autopatch -p1
 # do not hardcode versions
 sed -i -e 's:==:>=:g' requirements/*.txt
 

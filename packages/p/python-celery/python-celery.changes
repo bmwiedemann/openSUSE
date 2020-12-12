@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue Nov 17 04:14:43 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.02:
+  * Fix _autodiscover_tasks_from_fixups (#6424).
+  * Flush worker prints, notably the banner (#6432).
+  * Breaking Change: Remove ha_policy from queue definition. (#6440)
+  * This argument has no effect since RabbitMQ 3.0. Therefore, We feel
+    comfortable dropping it in a patch release.
+  * Python 3.9 support (#6418).
+  * Regression: When using the prefork pool, pick the fair scheduling strategy
+    by default (#6447).
+  * Preserve callbacks when replacing a task with a chain (#6189).
+  * Fix max_retries override on self.retry() (#6436).
+  * Raise proper error when replacing with an empty chain (#6452)
+  * Specify UTF-8 as the encoding for log files (#6357).
+  * Custom headers now propagate when using the protocol 1 hybrid messages
+    (#6374).
+  * Retry creating the database schema for the database results backend in case of a race condition (#6298).
+  * When using the Redis results backend, awaiting for a chord no longer hangs
+    when setting :setting:`result_expires` to 0 (#6373).
+  * When a user tries to specify the app as an option for the subcommand, a
+    custom error message is displayed (#6363).
+  * Fix the --without-gossip, --without-mingle, and --without-heartbeat options
+    which now work as expected. (#6365)
+  * Provide a clearer error message when the application cannot be loaded.
+  * Avoid printing deprecation warnings for settings when they are loaded from
+    Django settings (#6385).
+  * Allow lowercase log levels for the --loglevel option (#6388).
+  * Detaching now works as expected (#6401).
+  * Restore broadcasting messages from celery control (#6400).
+  * Pass back real result for single task chains (#6411).
+  * Ensure group tasks a deeply serialized (#6342).
+  * Fix chord element counting (#6354).
+  * Restore the celery shell command (#6421).
+  * Breaking Change Remove AMQP result backend (#6360).
+  * Warn when deprecated settings are used (#6353).
+  * Expose retry_policy for Redis result backend (#6330).
+  * Prepare Celery to support the yet to be released Python 3.9 (#6328).
+  * More cleanups of leftover Python 2 support (#6338).
+  * Bump minimum required eventlet version to 0.26.1.
+  * Update Couchbase Result backend to use SDK V3.
+  * Restore monkeypatching when gevent or eventlet are used.
+  * Allow to opt out of ordered group results when using the Redis result
+    backend (#6290).
+  * Breaking Change Remove the deprecated celery.utils.encoding module.
+  * Breaking Change Drop support for the Riak result backend (#5686).
+  * Breaking Change pytest plugin is no longer enabled by default (#6288).
+    Install pytest-celery to enable it.
+  * Breaking Change Brand new CLI based on Click (#5718).
+  * Bump Kombu version to 5.0 (#5686).
+  * Removed most of the compatibility code that supports Python 2 (#5686).
+  * Modernized code to work on Python 3.6 and above (#5686). 
+- Update BuildRequires/Requires.
+- Add patch move-pytest-configuration-to-conftest.patch to fix testsuite.
+
+-------------------------------------------------------------------
 Wed Sep 30 07:32:47 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Use really the upstream tarball
