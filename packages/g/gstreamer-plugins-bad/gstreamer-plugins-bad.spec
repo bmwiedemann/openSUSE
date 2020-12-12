@@ -28,15 +28,18 @@
 %bcond_with faad
 
 Name:           gstreamer-plugins-bad
-Version:        1.18.1
+Version:        1.18.2
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
-URL:            https://gstreamer.freedesktop.org/
-Source:         https://gstreamer.freedesktop.org/src/gst-plugins-bad/%{_name}-%{version}.tar.xz
+URL:            https://gstreamer.freedesktop.org
+# Disable tarball source url, use _service
+#Source0:        %%{url}/src/gst-plugins-bad/%%{_name}-%%{version}.tar.xz
+Source0:        %{_name}-%{version}.tar.xz
 Source2:        gstreamer-plugins-bad.appdata.xml
 Source99:       baselibs.conf
+
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
