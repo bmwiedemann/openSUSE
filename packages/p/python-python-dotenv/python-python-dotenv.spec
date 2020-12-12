@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-dotenv
-Version:        0.14.0
+Version:        0.15.0
 Release:        0
 Summary:        Python library for .env support
 License:        BSD-3-Clause
 URL:            https://github.com/theskumar/python-dotenv
 Source:         https://github.com/theskumar/python-dotenv/archive/v%{version}.tar.gz#/python-dotenv-%{version}.tar.gz
 BuildRequires:  %{python_module click >= 5.0}
-BuildRequires:  %{python_module jupyter_ipython}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest >= 3.0.5}
 BuildRequires:  %{python_module setuptools}
@@ -65,7 +64,8 @@ mv %{buildroot}%{_bindir}/dotenv %{buildroot}%{_bindir}/dotenv.orig
 export PATH=%{buildroot}%{_bindir}:$PATH
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
 cp %{buildroot}%{_bindir}/dotenv-%{$python_bin_suffix} %{buildroot}%{_bindir}/dotenv
-$python -m pytest -v
+# ipython is optional and only available for python >= 3.7 in Tumbleweed
+$python -m pytest -v -k "not ipython"
 }
 mv %{buildroot}%{_bindir}/dotenv.orig %{buildroot}%{_bindir}/dotenv
 
