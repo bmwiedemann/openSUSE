@@ -799,4 +799,22 @@
    incorrectly True for GROUP BY queries (e.g. .annotate().values()) on models with</comment>
     <requestid>845465</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>c3ea32f9ca7ddf8e28c1912f881ebae4</srcmd5>
+    <version>3.1.4</version>
+    <time>1607801365</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.4
+ * Fixed setting the Content-Length HTTP header in AsyncRequestFactory
+ * Fixed passing extra HTTP headers to AsyncRequestFactory request methods
+ * Fixed crash of key transforms for JSONField on PostgreSQL when usingi
+     on a Subquery() annotation
+ * Fixed a regression in Django 3.1 that caused the incorrect grouping
+     by a Q object annotation
+ * Fixed a regression in Django 3.1 that caused suppressing connection errors
+     when JSONField is used on SQLite
+ * Fixed a crash on SQLite, when QuerySet.values()/values_list() contained
+     key transforms for JSONField returning non-string primitive values</comment>
+    <requestid>854260</requestid>
+  </revision>
 </revisionlist>

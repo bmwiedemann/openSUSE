@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Dec  9 12:16:46 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 3.1.4
+ * Fixed setting the Content-Length HTTP header in AsyncRequestFactory
+ * Fixed passing extra HTTP headers to AsyncRequestFactory request methods
+ * Fixed crash of key transforms for JSONField on PostgreSQL when usingi
+     on a Subquery() annotation
+ * Fixed a regression in Django 3.1 that caused the incorrect grouping
+     by a Q object annotation
+ * Fixed a regression in Django 3.1 that caused suppressing connection errors
+     when JSONField is used on SQLite
+ * Fixed a crash on SQLite, when QuerySet.values()/values_list() contained
+     key transforms for JSONField returning non-string primitive values
+
+-------------------------------------------------------------------
 Mon Nov  2 15:03:13 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 3.1.3
