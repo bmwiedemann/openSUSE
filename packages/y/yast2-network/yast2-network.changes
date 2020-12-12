@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 10 10:43:48 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix bonding slaves sorting (bsc#1178950)
+- 4.3.32
+
+-------------------------------------------------------------------
 Wed Dec  9 12:28:21 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Clean the ifcfg file cached data before the connection
