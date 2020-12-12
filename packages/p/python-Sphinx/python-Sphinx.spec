@@ -28,7 +28,7 @@
 %endif
 %define skip_python2 1
 Name:           python-Sphinx%{psuffix}
-Version:        3.2.1
+Version:        3.3.1
 Release:        0
 Summary:        Python documentation generator
 License:        BSD-2-Clause
@@ -36,10 +36,11 @@ Group:          Development/Languages/Python
 URL:            http://sphinx-doc.org
 Source:         https://files.pythonhosted.org/packages/source/S/Sphinx/Sphinx-%{version}.tar.gz
 Source1:        https://files.pythonhosted.org/packages/source/S/Sphinx/Sphinx-%{version}.tar.gz.asc
-Source2:        python3.inv
+# Provide intersphinx inventory offline
+Source2:        https://docs.python.org/3/objects.inv#/python3.inv
 Source99:       python-Sphinx-rpmlintrc
-# PATCH-FIX-UPSTREAM: https://patch-diff.githubusercontent.com/raw/sphinx-doc/sphinx/pull/8205.patch
-Patch0:         sphinx-pygments-compat.patch
+# PATCH-FIX-UPSTREAM gh#sphinx-doc/sphinx#8520
+Patch0:         https://github.com/sphinx-doc/sphinx/pull/8520.patch#/sphinx-pr8520-fix-AliasNode-copy.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -74,12 +75,16 @@ BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Sphinx = %{version}}
 BuildRequires:  %{python_module Sphinx-latex = %{version}}
 BuildRequires:  %{python_module html5lib}
-BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sphinxcontrib-websupport}
 BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module typed-ast}
 BuildRequires:  ImageMagick
+BuildRequires:  graphviz
+# For PNG format
+BuildRequires:  graphviz-gd
+# For PDF format (!?)
+BuildRequires:  graphviz-gnome
 %endif
 %python_subpackages
 
@@ -229,12 +234,15 @@ sed -i 's/\r$//' sphinx/themes/basic/static/jquery.js # Fix wrong end-of-line en
 %if %{with test}
 mkdir build.doc
 
-# get its intersphinx_inventroy from python3-doc
-# instead of via network from https://docs.python.org/3/objects.inv
 cp %{SOURCE2} doc/python3.inv
-%python_expand sed -i -e "s/\(intersphinx_mapping = ..python.: (.https:..docs.python.org.3.., \)None\()}\)/\1'%{$python_prefix}.inv'\2/g" doc/conf.py
-%python_exec setup.py build_sphinx && rm build/sphinx/html/.buildinfo
-%python_exec setup.py build_sphinx -b man
+%{python_expand # Use one bundled intersphinx inventory for all flavors.
+# The python3.6 inventory fails to build even in its own flavor.
+# Use a more recent default (currently 3.9) from the source tag instead.
+sed -i -e "s/\(intersphinx_mapping = ..python.: (.https:..docs.python.org.3.., \)None\()\)/\1'python3.inv'\2/g" doc/conf.py
+$python setup.py build_sphinx
+rm build/sphinx/html/.buildinfo
+$python setup.py build_sphinx -b man
+}
 
 mv build/sphinx/{html,man} build.doc/
 %endif
@@ -287,6 +295,7 @@ mv build.doc/man/sphinx-quickstart.1 %{buildroot}%{_mandir}/man1/sphinx-quicksta
 %check
 %if %{with test}
 export LC_ALL="C.utf8"
+# test_latex_images test downloading a remote image
 %pytest tests -k 'not (linkcheck or test_latex_images)'
 %endif
 

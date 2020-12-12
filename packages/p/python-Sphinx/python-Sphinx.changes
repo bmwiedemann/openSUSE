@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Dec  4 17:19:43 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Remove unused mypy from BuildRequires in :test
+- Fix the intersphinx inventory bundle for multiple python flavors
+  gh#openSUSE/python-rpm-macros#66
+- Fix failing graphviz dot calls by including packages for png
+  and pdf formats. The png fail was masked by an incorrect use of
+  a shell command chain. Fails for pdf format were in the tests.
+- Add sphinx-pr8520-fix-AliasNode-copy.patch to fix failing 
+  manpages build -- gh#sphinx-doc/sphinx#8520
+ 
+-------------------------------------------------------------------
+Thu Nov 26 09:18:00 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.3.1:
+  * #8372: autodoc: autoclass directive became slower than Sphinx-3.2
+  * #7727: autosummary: raise PycodeError when documenting python package
+  * #8350: autosummary: autosummary_mock_imports causes slow down builds
+  * #8364: C, properly initialize attributes in empty symbols.
+  * #8399: i18n: Put system locale path after the paths specified by configuration
+  * #8100: html: Show a better error message for failures on copying
+  html_static_files
+  * #8141: C: added a ``maxdepth`` option to :rst:dir:`c:alias` to insert
+  nested declarations.
+  * #8081: LaTeX: Allow to add LaTeX package via ``app.add_latex_package()`` until
+  just before writing .tex file
+  * #7996: manpage: Add :confval:`man_make_section_directory` to make a section
+  directory on build man page
+  * #8289: epub: Allow to suppress "duplicated ToC entry found" warnings from epub
+  builder using :confval:`suppress_warnings`.
+  * #8298: sphinx-quickstart: Add :option:`sphinx-quickstart --no-sep` option
+  * #8304: sphinx.testing: Register public markers in sphinx.testing.fixtures
+  * #8051: napoleon: use the obj role for all See Also items
+  * #8050: napoleon: Apply :confval:`napoleon_preprocess_types` to every field
+  * C and C++, show line numbers for previous declarations when duplicates are
+  detected.
+  * #8183: Remove substitution_reference nodes from doctree only on LaTeX builds
+  * bugfixes
+  - remove sphinx-pygments-compat.patch (obsolete)
+
+-------------------------------------------------------------------
 Wed Nov  4 11:10:14 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix the lang collection macro override.
