@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec  6 23:22:34 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Require xonsh for testing of all Python 3 flavors in Tumbleweed
+  gh#openSUSE/python-rpm-macros#66
+- Update to 20.2.1
+  * Optionally skip VCS ignore directive for entire virtualenv directory
+  * Add ``--read-only-app-data`` option to allow for creation based on 
+    an existing app data cache which is non-writable
+  * The python specification can now take one or more values, first found 
+    is used to create the virtual environment
+
+-------------------------------------------------------------------
 Thu Oct  8 04:11:15 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 20.0.33:

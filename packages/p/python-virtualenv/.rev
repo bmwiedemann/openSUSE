@@ -489,4 +489,19 @@ ers toes by using a lock while creating the base images. By :user:`gaborbernat`.
 - Drop tests.patch, included upstream.</comment>
     <requestid>840217</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>0caf2ab22cd0f74557ed42e865e48888</srcmd5>
+    <version>20.2.1</version>
+    <time>1607801341</time>
+    <user>dimstar_suse</user>
+    <comment>- Require xonsh for testing of all Python 3 flavors in Tumbleweed
+  gh#openSUSE/python-rpm-macros#66
+- Update to 20.2.1
+  * Optionally skip VCS ignore directive for entire virtualenv directory
+  * Add ``--read-only-app-data`` option to allow for creation based on 
+    an existing app data cache which is non-writable
+  * The python specification can now take one or more values, first found 
+    is used to create the virtual environment</comment>
+    <requestid>853600</requestid>
+  </revision>
 </revisionlist>

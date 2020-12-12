@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-virtualenv%{psuffix}
-Version:        20.0.33
+Version:        20.2.1
 Release:        0
 Summary:        Virtual Python Environment builder
 License:        MIT
@@ -62,7 +62,11 @@ BuildRequires:  %{python_module pytest-mock >= 2.0.0}
 BuildRequires:  %{python_module pytest-timeout >= 1.3.4}
 BuildRequires:  %{python_module virtualenv >= %{version}}
 BuildRequires:  fish
+%if 0%{?suse_version} >= 1550
+BuildRequires:  %{python_module xonsh >= 0.9.13}
+%else
 BuildRequires:  python3-xonsh >= 0.9.13
+%endif
 BuildRequires:  tcsh
 %endif
 %python_subpackages
