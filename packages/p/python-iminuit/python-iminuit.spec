@@ -19,18 +19,22 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # Python2 support dropped since version 1.4.0
 %define skip_python2 1
-Name:           python-iminuit
-Version:        1.5.4
+%define modname iminuit
+Name:           python-%{modname}
+Version:        2.0.0
 Release:        0
 Summary:        Python bindings for MINUIT2
 License:        MIT
 URL:            https://github.com/scikit-hep/iminuit
-Source:         https://files.pythonhosted.org/packages/source/i/iminuit/iminuit-%{version}.tar.gz
+# No tests in pypi tarball
+Source0:        https://files.pythonhosted.org/packages/source/i/iminuit/%{modname}-%{version}.tar.gz
+Source1:        tests.tar.xz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy >= 1.11.3}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  cmake >= 3.13
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
@@ -52,7 +56,8 @@ but is most commonly used for likelihood fits of models to data,
 and to get model parameter error estimates from likelihood profile analysis.
 
 %prep
-%setup -q -n iminuit-%{version}
+%setup -q -n %{modname}-%{version}
+%setup -q -D -T -a 1 -n %{modname}-%{version}
 
 %build
 export CFLAGS="%{optflags}"
@@ -63,11 +68,12 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%pytest_arch %{buildroot}%{$python_sitearch}/iminuit
+%pytest_arch
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/%{modname}/
+%{python_sitearch}/%{modname}-%{version}-py%{python_version}.egg-info/
 
 %changelog
