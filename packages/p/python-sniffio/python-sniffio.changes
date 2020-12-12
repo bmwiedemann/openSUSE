@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec  9 22:59:17 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Revert the python36 skip. python36-curio has been reenabled
+
+-------------------------------------------------------------------
 Fri Dec  4 11:13:06 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - skip upcoming python36 flavor because there is no python36-curio
