@@ -28,7 +28,7 @@ URL:            https://github.com/Kozea/cairocffi
 Source:         https://files.pythonhosted.org/packages/source/c/cairocffi/cairocffi-%{version}.tar.gz
 BuildRequires:  %{python_module cffi >= 1.1.0}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 39.2.0}
 BuildRequires:  %{python_module xcffib >= 0.3.2}
 BuildRequires:  cairo
@@ -65,6 +65,12 @@ This package provides the optional gdk-pixbuf image loader module.
 
 %prep
 %setup -q -n cairocffi-%{version}
+# disable development tools for unit tests. Remove deprecated pytest-runner
+sed -i -e 's/pytest-runner$/pytest/' \
+       -e '/pytest-flake8$/ d' \
+       -e '/pytest-isort$/ d' \
+       -e '/pytest-cov$/ d' \
+       -e '/^addopts.*flake8.*isort$/ d' setup.cfg
 
 %build
 %python_build
@@ -74,9 +80,7 @@ This package provides the optional gdk-pixbuf image loader module.
 %python_expand %fdupes %{buildroot}%{$python_sitearch} 
 
 %check
-sed -i '/^addopts/d' setup.cfg
-sed -i -e '/pytest-flake8/d' -e '/pytest-isort/d' -e '/pytest-cov/d' setup.cfg
-%python_expand $python setup.py test
+%pytest --pyargs cairocffi
 
 %files %{python_files}
 %license LICENSE

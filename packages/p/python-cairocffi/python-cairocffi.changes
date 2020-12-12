@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  7 12:34:39 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Replace obsolete pytest-runner with %pytest macro to avoid
+  pulling in _build directories of other flavors during testing
+  * gh#Kozea/cairocffi#171
+  * gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Fri Oct 30 06:20:59 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.2.0:
