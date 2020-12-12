@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 11 11:24:05 UTC 2020 - schubi <schubi@localhost>
+
+- Removed handling of obsolete entry SYSTOHC in /etc/sysconfig/clock
+  (bsc#1175496)
+- 4.3.5
+
+-------------------------------------------------------------------
 Tue Oct 27 13:26:57 CET 2020 - schubi@suse.de
 
 - AY-Import: Translate <enable_sysrq> setting to <kernel.sysrq>
