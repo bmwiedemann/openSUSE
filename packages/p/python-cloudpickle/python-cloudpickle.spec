@@ -28,7 +28,6 @@ Source:         https://files.pythonhosted.org/packages/source/c/cloudpickle/clo
 BuildRequires:  %{python_module curses}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module numpy >= 1.8.5}
-BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
@@ -72,8 +71,9 @@ functions and classes defined interactively in the __main__ module.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-pip install ./tests/cloudpickle_testpkg
-export PYTHONPATH='.:tests'
+# make local source and testpkg importable
+export PYTHONPATH=':./tests/cloudpickle_testpkg'
+# -s: tests need direct print
 %pytest -s
 
 %files %{python_files}
