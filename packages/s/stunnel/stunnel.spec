@@ -50,7 +50,6 @@ Source1:        https://www.stunnel.org/downloads/%{name}-%{version}.tar.gz.asc
 Source2:        stunnel.keyring
 Source3:        sysconfig.syslog-stunnel
 Source4:        stunnel.rc
-Source5:        stunnel.service
 Source7:        stunnel.README
 BuildRequires:  libopenssl-devel
 BuildRequires:  tcpd-devel
@@ -111,7 +110,7 @@ mkdir -p %{buildroot}%{_docdir}/stunnel/tools
 mkdir -p %{buildroot}%{_fillupdir}
 cp -p %{SOURCE3} %{buildroot}%{_fillupdir}/
 %if 0%{?has_systemd}
-install -D -m 0644 %{_sourcedir}/stunnel.service %{buildroot}/%{_unitdir}/stunnel.service
+install -D -m 0644 %{buildroot}%{_docdir}/stunnel/examples/stunnel.service %{buildroot}/%{_unitdir}/stunnel.service
 ln -s service %{buildroot}%{_sbindir}/rcstunnel
 %else
 mkdir -p %{buildroot}%{_initddir}/
