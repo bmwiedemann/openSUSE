@@ -84,6 +84,7 @@ find demos -name "*.py" -exec sed -i "/#\!\/usr\/bin\/.*/d" {} \;
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+export LANG=en_US.UTF-8
 %pytest
 
 %files %{python_files}

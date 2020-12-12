@@ -534,4 +534,12 @@
     <comment></comment>
     <requestid>841523</requestid>
   </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>25de7b0e854f558e0c2d3826c12cbb05</srcmd5>
+    <version>2.7.2</version>
+    <time>1607801337</time>
+    <user>dimstar_suse</user>
+    <comment>- Set environment to utf-8 to allow tests to pass on Python 2. (bsc#1178341)</comment>
+    <requestid>853510</requestid>
+  </revision>
 </revisionlist>
