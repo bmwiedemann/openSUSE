@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  9 19:48:58 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.2:
+  + avauddec: Check planar-ness of frame rather than context, fixes
+    issue with aptX HD decoding.
+
+-------------------------------------------------------------------
 Wed Oct 28 10:30:41 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 1.18.1:

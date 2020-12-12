@@ -17,16 +17,18 @@
 
 
 %define gst_branch 1.0
+
 Name:           gstreamer-plugins-libav
-Version:        1.18.1
+Version:        1.18.2
 Release:        0
 Summary:        A ffmpeg/libav plugin for GStreamer
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
-URL:            https://gstreamer.freedesktop.org/
-Source:         https://gstreamer.freedesktop.org/src/gst-libav/gst-libav-%{version}.tar.xz
+URL:            https://gstreamer.freedesktop.org
+Source0:        %{url}/src/gst-libav/gst-libav-%{version}.tar.xz
 Source1000:     baselibs.conf
 Patch0:         add-gpl-option.patch
+
 BuildRequires:  gcc-c++
 BuildRequires:  hotdoc
 BuildRequires:  meson
