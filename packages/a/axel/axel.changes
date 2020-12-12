@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Nov 22 21:03:33 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 2.17.10:
+  * Potential NULL pointer dereference
+  * Fixed incrementig procedure for delay_time
+  * Fixed speed limiting
+  * Made stop signal handler portable
+  * Build system improvements
+    - Now you can specify where OpenSSL is installed
+    - Further improved code portability
+  * Optimized wildcard search in URLs
+  * Added human-readable file size report at the begining of downloads
+  * Reworked Request Range support check
+  * Added "Accept-Encoding" header to requests
+  * Updated the documentation
+  * Fixed data type for sizes and offsets on 32-bit systems
+  * Fixed duplicated non-default port when using proxy
+  * Fixed request range comparison and overflow
+  * i8n fixes and updates for Simplified Chinese, Dutch, German,
+    Italian, Portuguese, Spanish. Also updates for Indonesian,
+    Japanese, Russian.
+- CREDITS and AUTHORS files removed from upstream
+
+-------------------------------------------------------------------
 Fri Aug 21 21:11:44 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - update to 2.17.9: 

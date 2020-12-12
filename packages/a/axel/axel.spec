@@ -19,7 +19,7 @@
 %{!?license: %global license %doc}
 %{!?make_build: %global make_build make %{?_smp_mflags}}
 Name:           axel
-Version:        2.17.9
+Version:        2.17.10
 Release:        0
 Summary:        Lightweight Download Accelerator
 License:        GPL-2.0-or-later
@@ -47,7 +47,7 @@ byte-critical systems.
 %find_lang axel
 
 %files -f axel.lang
-%doc ChangeLog NEWS README.md AUTHORS CREDITS
+%doc ChangeLog NEWS README.md
 %license COPYING
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
