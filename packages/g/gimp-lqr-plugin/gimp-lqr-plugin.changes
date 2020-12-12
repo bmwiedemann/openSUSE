@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 13 12:10:57 UTC 2020 - munix9@googlemail.com
+
+- Use (newer) source package from github
+- Add upstream-Fix-compilation-errors.patch
+  * fixes "multiple definition of ..." with gcc10
+- Clean up spec file
+
+-------------------------------------------------------------------
 Tue Aug  6 16:20:56 UTC 2013 - zaitor@opensuse.org
 
 - Update to version 0.7.2:
