@@ -34,9 +34,9 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module threadpoolctl}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-threadpoolctl
 Requires:       python-lz4
 Recommends:     python-numpy
 Recommends:     python-psutil
