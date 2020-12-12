@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 10 16:31:13 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>
+
+- Add malcontent-control recommendation to the base pattern
+
+-------------------------------------------------------------------
 Sat Sep  5 10:31:13 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Drop a few suggests, making the DVD a bit smaller (no change on

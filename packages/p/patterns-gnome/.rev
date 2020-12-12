@@ -195,4 +195,12 @@
   + gnome-backgrounds (50MB RPM)
   + python-gobject-devel</comment>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d194d1dce4b4b72f99889f0b4c336a9a</srcmd5>
+    <version>20201210</version>
+    <time>1607801294</time>
+    <user>dimstar_suse</user>
+    <comment>- Add malcontent-control recommendation to the base pattern (forwarded request 854626 from hellcp)</comment>
+    <requestid>854631</requestid>
+  </revision>
 </revisionlist>

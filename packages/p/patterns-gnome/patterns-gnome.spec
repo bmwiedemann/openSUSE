@@ -18,7 +18,7 @@
 
 %bcond_with betatest
 Name:           patterns-gnome
-Version:        20200416
+Version:        20201210
 Release:        0
 Summary:        Patterns for Installation (Gnome)
 License:        MIT
@@ -224,6 +224,7 @@ Recommends:     NetworkManager-openvpn-gnome
 Recommends:     NetworkManager-pptp-gnome
 Recommends:     desktop-data-SLE-extra
 %endif
+Recommends:     malcontent-control
 
 %description gnome_x11
 The GNOME desktop environment is an intuitive and attractive desktop for users.
