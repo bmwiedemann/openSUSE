@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec 11 17:02:21 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 4.5.2.
+  * Core: add support for building with ninja
+  * LDAP: update 3rdparty component kldap
+  * LDAP: add warning on invalid location groups
+  * Linux: update 3rdparty component x11vnc to fix CVE-2020-29074
+  * Linux: debug server crashes using catchsegv
+  * Linux: forward server log messages to system journal
+  * RemoteAccess: add option to show window on the same screen as 
+    the master window
+  * RemoteAccess: use non-deprecated API call to fix build with 
+    Qt >= 5.15.2
+  * WebAPI: add Python client implementation + tests
+
+-------------------------------------------------------------------
 Wed Nov 25 14:20:26 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 4.5.1.
