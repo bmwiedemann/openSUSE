@@ -2,6 +2,7 @@
 # spec file for package fetchmsttfonts
 #
 # Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 B1 Systems GmbH
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           fetchmsttfonts
-Version:        11.4
+Version:        12.0
 Release:        0
 Summary:        Helper package to download Microsoft Core fonts for the Web
 License:        GPL-2.0-or-later
@@ -29,7 +30,6 @@ Source4:        corefonts.sha512
 #these stop the patch from pulling in the package
 #Provides:       pullin-msttf-fonts = 11.1
 #Obsoletes:      pullin-msttf-fonts <= 11.1
-Requires:       awk
 Requires:       cabextract
 Requires:       coreutils
 Requires:       curl

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 12 10:53:12 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- if the fonts are already present, just skip the download. These
+  fonts are not going to change, besides we ar checking for a
+  specific version (shasum) anyway
+- bump version by one to indicate this change of behaviour
+- get rid of awk dependency
+
+-------------------------------------------------------------------
 Wed Dec  2 21:03:08 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - When using rpm --excludedocs (rpm.install.excludedocs = yes),

@@ -18,13 +18,20 @@ https://sourceforge.net/projects/corefonts/files/the%20fonts/final/verdan32.exe 
 https://sourceforge.net/projects/corefonts/files/the%20fonts/final/webdin32.exe \
 "
 
+# same order like FONTS...
+FILES="andalemo.ttf arial.ttf arialbi.ttf comic.ttf cour.ttf georgia.ttf impact.ttf times.ttf trebuc.ttf verdana.ttf webdings.ttf"
+
 CURL_OPTIONS="-L -s --speed-limit 3500 --speed-time 15"
 
 echo "EULA:"
-echo -n "  Fetching   ... "
-curl $CURL_OPTIONS -o /usr/share/doc/corefonts/EULA.html $EULA || \
-  rm -f /usr/share/doc/corefonts/EULA.html
-echo "done"
+if [ -e /usr/share/doc/corefonts/EULA.html ]; then
+    echo "already present"
+else
+    echo -n "  Fetching   ... "
+    curl $CURL_OPTIONS -o /usr/share/doc/corefonts/EULA.html $EULA || \
+      rm -f /usr/share/doc/corefonts/EULA.html
+    echo "done"
+fi
 
 tmpname=$(basename "$0")
 tmpdir=$(mktemp -d "/tmp/$tmpname.XXXXXX")
@@ -36,9 +43,18 @@ fi
 
 cd "$tmpdir"
 
+all_skipped=true
 for archive in $FONTS; do
-    file=$(echo "$archive" | awk -F "/" '{print $NF}')
+    # POSIX sh does not know arrays, so just pop the first element from FILES 'list'
+    font=${FILES%% *}
+    FILES=${FILES#* }
+    file=${archive##*/}
     echo "$file ($archive):"
+    if [ -e "/usr/share/fonts/truetype/$font" ]; then
+        echo "font already installed, skipping..."
+        continue
+    fi
+    all_skipped=false
     echo -n "  Fetching   ... "
 
     if ! curl $CURL_OPTIONS -o "$file" "$archive"; then
@@ -66,6 +82,13 @@ for archive in $FONTS; do
 
     rm -f "$file"
 done
+
+if $all_skipped; then
+    echo "*** No update necessary. ***"
+    # do not annoy with an interactive update message, just exit
+    # also skip EULA display
+    exit
+fi
 
 if [ "x$success" != "x" ]; then 
     for i in ./*.[Tt][Tt][CFcf]; do
