@@ -1,0 +1,68 @@
+From 64bf4dff34301a4b44883a8bc03f7835faef121e Mon Sep 17 00:00:00 2001
+From: Lidong Zhong <lidong.zhong@suse.com>
+Date: Mon, 14 Sep 2020 10:52:18 +0800
+Subject: [PATCH 01/17] Detail: show correct raid level when the array is
+ inactive
+
+Sometimes the raid level in the output of `mdadm -D /dev/mdX` is
+misleading when the array is in inactive state. Here is a testcase for
+introduction.
+1\ creating a raid1 device with two disks. Specify a different hostname
+rather than the real one for later verfication.
+
+node1:~ # mdadm --create /dev/md0 --homehost TESTARRAY -o -l 1 -n 2 /dev/sdb
+/dev/sdc
+2\ remove one of the devices and reboot
+3\ show the detail of raid1 device
+
+node1:~ # mdadm -D /dev/md127
+/dev/md127:
+        Version : 1.2
+     Raid Level : raid0
+  Total Devices : 1
+    Persistence : Superblock is persistent
+          State : inactive
+Working Devices : 1
+
+You can see that the "Raid Level" in /dev/md127 is raid0 now.
+After step 2\ is done, the degraded raid1 device is recognized
+as a "foreign" array in 64-md-raid-assembly.rules. And thus the
+timer to activate the raid1 device is not triggered. The array
+level returned from GET_ARRAY_INFO ioctl is 0. And the string
+shown for "Raid Level" is
+str = map_num(pers, array.level);
+And the definition of pers is
+mapping_t pers[] = {
+{ "linear", LEVEL_LINEAR},
+{ "raid0", 0},
+{ "0", 0}
+...
+So the misleading "raid0" is shown in this testcase.
+
+Changelog:
+v1: don't show "Raid Level" when array is inactive
+Signed-off-by: Lidong Zhong <lidong.zhong@suse.com>
+Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+---
+ Detail.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/Detail.c b/Detail.c
+index 24eeba0..b6587c8 100644
+--- a/Detail.c
++++ b/Detail.c
+@@ -224,7 +224,10 @@ int Detail(char *dev, struct context *c)
+ 	}
+ 
+ 	/* Ok, we have some info to print... */
+-	str = map_num(pers, array.level);
++	if (inactive)
++		str = map_num(pers, info->array.level);
++	else
++		str = map_num(pers, array.level);
+ 
+ 	if (c->export) {
+ 		if (array.raid_disks) {
+-- 
+2.26.2
+

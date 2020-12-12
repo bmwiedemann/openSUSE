@@ -1,0 +1,95 @@
+From a8f3cfd54e45c8aabc4a99cdc92b6b9080b26607 Mon Sep 17 00:00:00 2001
+From: Mariusz Tkaczyk <mariusz.tkaczyk@intel.com>
+Date: Wed, 4 Nov 2020 10:01:28 +0100
+Subject: [PATCH 13/17] imsm: limit support to first NVMe namespace
+
+Due to metadata limitations NVMe multinamespace support has to be removed.
+
+Signed-off-by: Mariusz Tkaczyk <mariusz.tkaczyk@intel.com>
+---
+ platform-intel.c | 31 +++++++++++++++++++++++++++++++
+ platform-intel.h |  1 +
+ super-intel.c    | 11 ++++++++++-
+ 3 files changed, 42 insertions(+), 1 deletion(-)
+
+diff --git a/platform-intel.c b/platform-intel.c
+index 04bffc5..f1f6d4c 100644
+--- a/platform-intel.c
++++ b/platform-intel.c
+@@ -766,3 +766,34 @@ char *vmd_domain_to_controller(struct sys_dev *hba, char *buf)
+ 	closedir(dir);
+ 	return NULL;
+ }
++/* Verify that NVMe drive is supported by IMSM
++ * Returns:
++ *	0 - not supported
++ *	1 - supported
++ */
++int imsm_is_nvme_supported(int disk_fd, int verbose)
++{
++	char nsid_path[PATH_MAX];
++	char buf[PATH_MAX];
++	struct stat stb;
++
++	if (disk_fd < 0)
++		return 0;
++
++	if (fstat(disk_fd, &stb))
++		return 0;
++
++	snprintf(nsid_path, PATH_MAX-1, "/sys/dev/block/%d:%d/nsid",
++		 major(stb.st_rdev), minor(stb.st_rdev));
++
++	if (load_sys(nsid_path, buf, sizeof(buf))) {
++		pr_err("Cannot read %s, rejecting drive\n", nsid_path);
++		return 0;
++	}
++	if (strtoll(buf, NULL, 10) != 1) {
++		if (verbose)
++			pr_err("Only first namespace is supported by IMSM, aborting\n");
++		return 0;
++	}
++	return 1;
++}
+diff --git a/platform-intel.h b/platform-intel.h
+index 7cb370e..7371478 100644
+--- a/platform-intel.h
++++ b/platform-intel.h
+@@ -251,4 +251,5 @@ const struct orom_entry *get_orom_entry_by_device_id(__u16 dev_id);
+ const struct imsm_orom *get_orom_by_device_id(__u16 device_id);
+ struct sys_dev *device_by_id(__u16 device_id);
+ struct sys_dev *device_by_id_and_path(__u16 device_id, const char *path);
++int imsm_is_nvme_supported(int disk_fd, int verbose);
+ char *vmd_domain_to_controller(struct sys_dev *hba, char *buf);
+diff --git a/super-intel.c b/super-intel.c
+index 95f4eaf..715febf 100644
+--- a/super-intel.c
++++ b/super-intel.c
+@@ -2364,7 +2364,9 @@ static int print_nvme_info(struct sys_dev *hba)
+ 				continue;
+ 			if (path_attached_to_hba(rp, hba->path)) {
+ 				fd = open_dev(ent->d_name);
+-				if (fd < 0) {
++				if (!imsm_is_nvme_supported(fd, 0)) {
++					if (fd >= 0)
++						close(fd);
+ 					free(rp);
+ 					continue;
+ 				}
+@@ -5868,6 +5870,13 @@ static int add_to_super_imsm(struct supertype *st, mdu_disk_info_t *dk,
+ 		snprintf(controller_path, PATH_MAX-1, "%s/device", devpath);
+ 		free(devpath);
+ 
++		if (!imsm_is_nvme_supported(dd->fd, 1)) {
++			if (dd->devname)
++				free(dd->devname);
++			free(dd);
++			return 1;
++		}
++
+ 		if (devpath_to_vendor(controller_path) == 0x8086) {
+ 			/*
+ 			 * If Intel's NVMe drive has serial ended with
+-- 
+2.26.2
+

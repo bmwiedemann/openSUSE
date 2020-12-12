@@ -1,0 +1,29 @@
+From 2ce091724031e18f522994ffd1e5eb0dc404bcba Mon Sep 17 00:00:00 2001
+From: Xiao Ni <xni@redhat.com>
+Date: Tue, 15 Sep 2020 15:44:42 +0800
+Subject: [PATCH 02/17] Don't create bitmap for raid5 with journal disk
+
+Journal disk and bitmap can't exist at the same time. It needs to check if the raid
+has a journal disk when creating bitmap.
+
+Signed-off-by: Xiao Ni <xni@redhat.com>
+Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+---
+ Create.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Create.c b/Create.c
+index 6f84e5b..0efa19c 100644
+--- a/Create.c
++++ b/Create.c
+@@ -542,6 +542,7 @@ int Create(struct supertype *st, char *mddev,
+ 	if (!s->bitmap_file &&
+ 	    s->level >= 1 &&
+ 	    st->ss->add_internal_bitmap &&
++	    s->journaldisks == 0 &&
+ 	    (s->consistency_policy != CONSISTENCY_POLICY_RESYNC &&
+ 	     s->consistency_policy != CONSISTENCY_POLICY_PPL) &&
+ 	    (s->write_behind || s->size > 100*1024*1024ULL)) {
+-- 
+2.26.2
+

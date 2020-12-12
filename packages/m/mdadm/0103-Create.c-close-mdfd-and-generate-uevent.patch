@@ -1,0 +1,37 @@
+From ce559078a5650afb9f635204b31a89a1fa0061e3 Mon Sep 17 00:00:00 2001
+From: Mariusz Tkaczyk <mariusz.tkaczyk@linux.intel.com>
+Date: Tue, 24 Nov 2020 13:39:49 +0100
+Subject: [PATCH 09/17] Create.c: close mdfd and generate uevent
+
+During mdfd closing change event is not generated because open() is
+called before start watching mddevice by udev.
+Device is ready at this stage. Unblock device, close fd and
+generate event to give a chance next layers to work.
+
+Signed-off-by: Mariusz Tkaczyk <mariusz.tkaczyk@linux.intel.com>
+---
+ Create.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/Create.c b/Create.c
+index 0efa19c..51f8826 100644
+--- a/Create.c
++++ b/Create.c
+@@ -1083,12 +1083,9 @@ int Create(struct supertype *st, char *mddev,
+ 	} else {
+ 		pr_err("not starting array - not enough devices.\n");
+ 	}
+-	close(mdfd);
+-	/* Give udev a moment to process the Change event caused
+-	 * by the close.
+-	 */
+-	usleep(100*1000);
+ 	udev_unblock();
++	close(mdfd);
++	sysfs_uevent(&info, "change");
+ 	return 0;
+ 
+  abort:
+-- 
+2.26.2
+

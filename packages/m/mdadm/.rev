@@ -1287,4 +1287,41 @@ which haven't landed upstream yet
 - uuid.c: split uuid stuffs from util.c (jsc#SLE-13700) (forwarded request 841255 from colyli)</comment>
     <requestid>842010</requestid>
   </revision>
+  <revision rev="125" vrev="10">
+    <srcmd5>4b8b8e55f837e5c01eef7e68babbc74d</srcmd5>
+    <version>4.1</version>
+    <time>1607801231</time>
+    <user>dimstar_suse</user>
+    <comment>- There are some important fixes merged in mdadm upstream which
+  should go with jsc#SLE-13700. This is the update from upstream
+  mdadm including the important fixes we should have.
+- Detail: show correct raid level when the array is inactive
+  (jsc#SLE-13700)
+  0095-Detail-show-correct-raid-level-when-the-array-is-ina.patch
+- Don't create bitmap for raid5 with journal disk
+  (jsc#SLE-13700)
+  0096-Don-t-create-bitmap-for-raid5-with-journal-disk.patch
+- Monitor: refresh mdstat fd after select (jsc#SLE-13700)
+  0097-Monitor-refresh-mdstat-fd-after-select.patch
+- Monitor: stop notifing about containers.  (jsc#SLE-13700)
+  0098-Monitor-stop-notifing-about-containers.patch
+- mdmonitor: set small delay once (jsc#SLE-13700)
+  0099-mdmonitor-set-small-delay-once.patch
+- Check if other Monitor instance running before fork.
+  (jsc#SLE-13700)
+  0100-Check-if-other-Monitor-instance-running-before-fork.patch
+- Super1: allow RAID0 layout setting to be removed.
+  (jsc#SLE-13700)
+  0101-Super1-allow-RAID0-layout-setting-to-be-removed.patch
+- Detail: fix segfault during IMSM raid creation
+  (jsc#SLE-13700)
+  0102-Detail-fix-segfault-during-IMSM-raid-creation.patch
+- Create.c: close mdfd and generate uevent (jsc#SLE-13700)
+  0103-Create.c-close-mdfd-and-generate-uevent.patch
+- imsm: update num_data_stripes according to dev_size
+  (jsc#SLE-13700)
+  0104-imsm-update-num_data_stripes-according-to-dev_size.patch
+- imsm: remove redundant calls to imsm_get_map (jsc#SLE-13700) (forwarded request 853269 from colyli)</comment>
+    <requestid>854352</requestid>
+  </revision>
 </revisionlist>

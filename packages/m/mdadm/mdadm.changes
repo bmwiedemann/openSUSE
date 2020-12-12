@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sat Dec  5 13:53:38 UTC 2020 - Coly Li <colyli@suse.com>
+- There are some important fixes merged in mdadm upstream which
+  should go with jsc#SLE-13700. This is the update from upstream
+  mdadm including the important fixes we should have.
+
+- Detail: show correct raid level when the array is inactive
+  (jsc#SLE-13700)
+  0095-Detail-show-correct-raid-level-when-the-array-is-ina.patch
+- Don't create bitmap for raid5 with journal disk
+  (jsc#SLE-13700)
+  0096-Don-t-create-bitmap-for-raid5-with-journal-disk.patch
+- Monitor: refresh mdstat fd after select (jsc#SLE-13700)
+  0097-Monitor-refresh-mdstat-fd-after-select.patch
+- Monitor: stop notifing about containers.  (jsc#SLE-13700)
+  0098-Monitor-stop-notifing-about-containers.patch
+- mdmonitor: set small delay once (jsc#SLE-13700)
+  0099-mdmonitor-set-small-delay-once.patch
+- Check if other Monitor instance running before fork.
+  (jsc#SLE-13700)
+  0100-Check-if-other-Monitor-instance-running-before-fork.patch
+- Super1: allow RAID0 layout setting to be removed.
+  (jsc#SLE-13700)
+  0101-Super1-allow-RAID0-layout-setting-to-be-removed.patch
+- Detail: fix segfault during IMSM raid creation
+  (jsc#SLE-13700)
+  0102-Detail-fix-segfault-during-IMSM-raid-creation.patch
+- Create.c: close mdfd and generate uevent (jsc#SLE-13700)
+  0103-Create.c-close-mdfd-and-generate-uevent.patch
+- imsm: update num_data_stripes according to dev_size
+  (jsc#SLE-13700)
+  0104-imsm-update-num_data_stripes-according-to-dev_size.patch
+- imsm: remove redundant calls to imsm_get_map (jsc#SLE-13700)
+  0105-imsm-remove-redundant-calls-to-imsm_get_map.patch
+- Monitor: don't use default modes when creating a file
+  (jsc#SLE-13700)
+  0106-Monitor-don-t-use-default-modes-when-creating-a-file.patch
+- imsm: limit support to first NVMe namespace (jsc#SLE-13700)
+  0107-imsm-limit-support-to-first-NVMe-namespace.patch
+- mdadm: Unify forks behaviour (jsc#SLE-13700)
+  0108-mdadm-Unify-forks-behaviour.patch
+- mdadm/Detail: show correct state for clustered array
+  (jsc#SLE-13700)
+  0109-mdadm-Detail-show-correct-state-for-clustered-array.patch
+- Make target to install binaries only (jsc#SLE-13700)
+  0110-Make-target-to-install-binaries-only.patch
+- udev: start grow service automatically (jsc#SLE-13700)
+  0111-udev-start-grow-service-automatically.patch
+
+-------------------------------------------------------------------
 Sun Oct 11 16:14:50 UTC 2020 - Coly Li <colyli@suse.com>
 
 - Update to latest mdadm which is requested by jsc#SLE-13700 from

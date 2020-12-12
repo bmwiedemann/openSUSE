@@ -1,0 +1,70 @@
+From e2308733910a157b0a4d4e78721f239d44b91a24 Mon Sep 17 00:00:00 2001
+From: Mariusz Tkaczyk <mariusz.tkaczyk@intel.com>
+Date: Wed, 9 Sep 2020 10:31:17 +0200
+Subject: [PATCH 03/17] Monitor: refresh mdstat fd after select
+
+After 52209d6ee118 ("Monitor: release /proc/mdstat fd when no arrays
+present") mdstat fd is closed if mdstat is empty or cannot be opened.
+It causes that monitor is not able to select on mdstat. Select
+doesn't fail because it gets valid descriptor to a different resource.
+As a result any new event will be unnoticed until timeout (delay).
+
+Refresh mdstat after wake up, don't poll on wrong resource.
+
+Signed-off-by: Mariusz Tkaczyk <mariusz.tkaczyk@intel.com>
+Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+---
+ Monitor.c | 6 +++---
+ mdstat.c  | 4 ++--
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/Monitor.c b/Monitor.c
+index 2d6b3b9..80a3200 100644
+--- a/Monitor.c
++++ b/Monitor.c
+@@ -216,8 +216,6 @@ int Monitor(struct mddev_dev *devlist,
+ 		if (mdstat)
+ 			free_mdstat(mdstat);
+ 		mdstat = mdstat_read(oneshot ? 0 : 1, 0);
+-		if (!mdstat)
+-			mdstat_close();
+ 
+ 		for (st = statelist; st; st = st->next)
+ 			if (check_array(st, mdstat, c->test, &info,
+@@ -238,8 +236,10 @@ int Monitor(struct mddev_dev *devlist,
+ 		if (!new_found) {
+ 			if (oneshot)
+ 				break;
+-			else
++			else {
+ 				mdstat_wait(c->delay);
++				mdstat_close();
++			}
+ 		}
+ 		c->test = 0;
+ 
+diff --git a/mdstat.c b/mdstat.c
+index 20577a3..48559e6 100644
+--- a/mdstat.c
++++ b/mdstat.c
+@@ -135,7 +135,6 @@ struct mdstat_ent *mdstat_read(int hold, int start)
+ 	if (hold && mdstat_fd != -1) {
+ 		off_t offset = lseek(mdstat_fd, 0L, 0);
+ 		if (offset == (off_t)-1) {
+-			mdstat_close();
+ 			return NULL;
+ 		}
+ 		fd = dup(mdstat_fd);
+@@ -312,7 +311,8 @@ void mdstat_wait(int seconds)
+ 	if (mdstat_fd >= 0) {
+ 		FD_SET(mdstat_fd, &fds);
+ 		maxfd = mdstat_fd;
+-	}
++	} else
++		return;
+ 	tm.tv_sec = seconds;
+ 	tm.tv_usec = 0;
+ 	select(maxfd + 1, NULL, NULL, &fds, &tm);
+-- 
+2.26.2
+
