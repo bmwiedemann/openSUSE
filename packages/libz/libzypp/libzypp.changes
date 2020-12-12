@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Dec 11 16:52:54 CET 2020 - ma@suse.de
+
+- Fix lsof monitoring (bsc#1179909)
+- version 17.25.5 (22)
+
+-------------------------------------------------------------------
+Thu Dec  3 17:06:35 CET 2020 - ma@suse.de
+
+- Prevent librpmDb iterator from accidentally creating an empty
+  rpmdb in / (repoened bsc#1178910)
+- Fix update of gpg keys with elongated expire date (bsc#1179222)
+- needreboot: remove udev from the list (bsc#1179083)
+- Prefer /run over /var/run.
+- version 17.25.4 (22)
+
+-------------------------------------------------------------------
+Fri Nov 27 10:17:50 CET 2020 - ma@suse.de
+
+- RepoManager: Carefully tidy up the caches. Remove non-directory
+  entries. (bsc#1178966)
+- RpmDb: If no database exists use the _dbpath configured in rpm.
+  Still makes sure a compat symlink at /var/lib/rpm exists in case
+  the configures _dbpath is elsewhere. (bsc#1178910)
+- Url: Hide known password entries when writing the query part
+  (bsc#1050625 bsc#1177583, CVE-2017-9271)
+- adapt testcase to change introduced by libsolv#402.
+- RepoManager: Force refresh if repo url has changed (bsc#1174016)
+- RepoInfo: ignore legacy type= in a .repo file and let RepoManager
+  probe (bsc#1177427, Fixes openSUSE/zypper#357).
+- version 17.25.3 (22)
+
+-------------------------------------------------------------------
 Wed Oct  7 12:05:33 CEST 2020 - ma@suse.de
 
 - Bump version to force rebuild against a fixed libsolv.
