@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Dec 12 06:32:48 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 4.9. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-4-9-has-been-released/9673
+  boo#1179972
+
+  + Mediated GPU devices for Virtual Machines
+  + IOMMU groups for PCI devices
+  + QEMU version in server environment information
+  * Improved lifecycle events
+  + "user." keys allowed on all objects
+  + usb_address and pci_address properties in USB/network resources
+  + ipv4.dhcp and ipv6.dhcp on OVN networks
+  + ovn.ingress_mode on physical networks
+  + ipv4.routes.anycast and ipv6.routes.anycast on physical networks
+  + limits.instances project option
+  + zstd compression for images and backups
+
+-------------------------------------------------------------------
 Fri Nov 13 06:15:10 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 4.8. The full upstream changelog is available from:
