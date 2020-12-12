@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jun 13 22:44:57 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.0.1:
+  * Minor changes in src/Makefile
+- Update to version 2.0.0:
+  * API changed, added XOR operation, and help strings rewritten
+- Update to version 1.0.9
+  * Minor changes due to
+    http://wiki.octave.org/Remove_class_of_function_from_documentation_strings
+- Rebase octclip-openmp.patch
+- Drop obsolete compile-with-gcc-9.patch from Debian
+- Force GCC 9 on Leap, OpenMP code is only compatible with GCC>=9
+
+-------------------------------------------------------------------
 Mon Aug 26 21:13:51 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add compile-with-gcc-9.patch from Debian
