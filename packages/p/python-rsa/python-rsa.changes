@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec  9 10:45:29 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Remove mypy test requirement. The test calls mypy via its API.
+  But mypy as importable module is only available for the default
+  python3 flavor. For packaging, we don't need to run the static
+  type checker at all.
+- Remove mock requirement.
+
+-------------------------------------------------------------------
 Sun Aug 16 21:04:02 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Replace setup.py test with pytest

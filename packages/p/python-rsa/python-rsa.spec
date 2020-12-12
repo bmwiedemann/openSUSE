@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-rsa
 Version:        4.6
 Release:        0
@@ -34,8 +35,6 @@ Requires(pre):  coreutils
 Requires(preun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module pyasn1 >= 0.1.3}
 BuildRequires:  %{python_module pytest}
 # /SECTION
@@ -73,7 +72,8 @@ export LC_ALL=en_US.utf8
 
 %check
 export LC_ALL=en_US.utf8
-%pytest
+# don't run the static type checker test -- mypy is only available for the default python3 flavor
+%pytest --ignore tests/test_mypy.py
 
 %files %{python_files}
 %license LICENSE
@@ -84,6 +84,7 @@ export LC_ALL=en_US.utf8
 %python_alternative %{_bindir}/pyrsa-priv2pub
 %python_alternative %{_bindir}/pyrsa-sign
 %python_alternative %{_bindir}/pyrsa-verify
-%{python_sitelib}/*
+%{python_sitelib}/rsa
+%{python_sitelib}/rsa-%{version}*-info
 
 %changelog
