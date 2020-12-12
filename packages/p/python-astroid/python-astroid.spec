@@ -76,7 +76,7 @@ objects.
 %files %{python_files}
 %license COPYING COPYING.LESSER
 %doc ChangeLog README.rst
-%{python3_sitelib}/astroid/
-%{python3_sitelib}/astroid-*.egg-info
+%{python_sitelib}/astroid/
+%{python_sitelib}/astroid-*.egg-info
 
 %changelog

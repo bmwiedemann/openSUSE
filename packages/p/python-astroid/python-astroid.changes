@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec  5 22:49:26 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix python_sitelib usage for possibly multiple python3 flavors
+  gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Tue Jun 23 16:52:52 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add part_rm_dep_imp.patch to replace missing `imp` package
