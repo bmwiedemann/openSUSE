@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 11 09:26:31 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- added 'VERSION_ID="Dummy"' string to /etc/os-release as some
+  packages might need this
+
+-------------------------------------------------------------------
 Tue Mar 19 12:44:26 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - Require this-is-only-for-build-envs to avoid people using it for
