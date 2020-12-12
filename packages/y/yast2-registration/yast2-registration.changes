@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec  8 09:16:16 UTC 2020 - schubi <schubi@intern>
+
+- Updating warning popup if the user has skipped the registration.
+  (bsc#1177504)
+- 4.3.16
+
+-------------------------------------------------------------------
 Wed Dec  2 14:20:56 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
 
 - Fixed finding the installed base product when doing upgrade
