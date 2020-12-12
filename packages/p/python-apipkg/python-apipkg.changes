@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec  8 10:59:41 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- The now broken apicycle requires apipkg to be importable from
+  elsewhere -- use src dir.
+
+-------------------------------------------------------------------
+Sun Dec  6 11:49:49 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Split package into multibuild, to avoid apipkg -> pytest -> py ->
+  apipkg cycle.
+
+-------------------------------------------------------------------
 Fri Jul 19 09:02:40 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - refresh pytest4.patch for pytest5 

@@ -1,7 +1,5 @@
-Index: apipkg-1.5/test_apipkg.py
-===================================================================
---- apipkg-1.5.orig/test_apipkg.py
-+++ apipkg-1.5/test_apipkg.py
+--- a/test_apipkg.py
++++ b/test_apipkg.py
 @@ -13,7 +13,7 @@ ModuleType = types.ModuleType
  class TestRealModule:
  

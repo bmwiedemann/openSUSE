@@ -1,7 +1,7 @@
 #
-# spec file for package python-apipkg
+# spec file for package python
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-apipkg
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -%{flavor}
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-apipkg%{psuffix}
 Version:        1.5
 Release:        0
 Summary:        Namespace control and lazy-import mechanism
@@ -25,8 +33,13 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/apipkg/
 Source:         https://files.pythonhosted.org/packages/source/a/apipkg/apipkg-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM pytest4.patch bsc#[0-9]+ mimi.vx@gmail.com
+# Collected upstream fixes for gh#pytest-dev/apipkg#14 and
+# gh#pytest-dev/apipkg#15
 Patch0:         pytest4.patch
+%if %{with test}
 BuildRequires:  %{python_module pytest}
+%endif
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -46,24 +59,30 @@ Usage is very simple: you can require 'apipkg' as a dependency or you
 can copy paste the <100 Lines of code into your project.
 
 %prep
-%setup -q -n apipkg-%{version}
-%patch0 -p1
+%autosetup -p1 -n apipkg-%{version}
 
 %build
 %python_build
 
 %install
+%if ! %{with test}
 %python_install
 %python_expand %fdupes -s %{buildroot}%{$python_sitelib}
+%endif
 
 %check
-%python_expand PYTHONPATH="%{buildroot}%{$python_sitelib}" $python -m pytest
+%if %{with test}
+PYTHONPATH=$(pwd)/src
+%pytest
+%endif
 
+%if ! %{with test}
 %files %{python_files}
 %license LICENSE
 %doc README.rst CHANGELOG
 %dir %{python_sitelib}/apipkg
 %{python_sitelib}/apipkg/*
 %{python_sitelib}/apipkg-%{version}-py%{python_version}.egg-info
+%endif
 
 %changelog

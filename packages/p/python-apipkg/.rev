@@ -52,4 +52,12 @@
     <comment>- refresh pytest4.patch for pytest5</comment>
     <requestid>716841</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>952aecb1426a7709e06530baaba4da47</srcmd5>
+    <version>1.5</version>
+    <time>1607801354</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854121</requestid>
+  </revision>
 </revisionlist>
