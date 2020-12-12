@@ -143,7 +143,11 @@ if [ -n "$APACHE_SERVERTOKENS" ]; then
 fi
 # APACHE_EXTENDED_STATUS -> global.conf
 if [ -n "$APACHE_EXTENDED_STATUS" ]; then
-    echo "ExtendedStatus $APACHE_EXTENDED_STATUS" >> ${sysconfd_dir}/global.conf
+    if [ "$APACHE_EXTENDED_STATUS" == "lua" ]; then
+      server_flags="$server_flags -DLUA_STATUS"
+    elif [ "$APACHE_EXTENDED_STATUS" == "on" ]; then
+      server_flags="$server_flags -DEXTENDED_STATUS"
+    fi
 fi
 # APACHE_MODULES -> loadmodule.conf
 get_module_list

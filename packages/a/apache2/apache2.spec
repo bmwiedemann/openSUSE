@@ -178,6 +178,7 @@ Source191:      apache2-vhost-ssl.template
 # READMEs and other documentation
 Source200:      apache2-README-access_compat.txt
 Source201:      apache2-README-instances.txt
+Source202:      apache2-README-configuration.txt
 # layout of system dirs configuration, may be upstreamed
 Patch0:         apache2-system-dirs-layout.patch
 # apachectl is frontend for start_apache2, suse specific
@@ -369,6 +370,7 @@ EOF
 # there does not exist as configure switches), so
 # override them back
 %configure \
+        --prefix=%{datadir} \
         --libexecdir=%{libexecdir} \
         --includedir=%{includedir} \
         --sysconfdir=%{sysconfdir} \
@@ -506,7 +508,7 @@ mkdir -p %{buildroot}%{logfiledir} \
 
 # save MODULE_MAGIC_NUMBER
 mkdir -p %{buildroot}/%{_libexecdir}
-cat > %{buildroot}/%{_libexecdir}/%{name}_MMN <<-EOF
+cat > %{buildroot}/%{_libexecdir}/apache2_MMN <<-EOF
 #!/bin/sh
 echo %{apache_mmn}
 EOF
@@ -589,10 +591,17 @@ ln -sf ../mime.types %{buildroot}/%{sysconfdir}/mime.types
 
 make DESTDIR=%{buildroot} install-icons
 make DESTDIR=%{buildroot} install-error
+make DESTDIR=%{buildroot} sysconfdir=%{_docdir}/apache2/conf install-conf
+
+cp -r docs/server-status %{buildroot}%{_datadir}/apache2/lua-server-status
 
 mkdir -p %{buildroot}%{_mandir}/man8/
 install -D -m 644 docs/man/suexec.8 %{buildroot}%{_mandir}/man8/
 install -D -m 644 docs/man/httpd.8 %{buildroot}%{_mandir}/man8/
+
+cp %{SOURCE200} README-access_compat.txt
+cp %{SOURCE201} README-instances.txt
+cp %{SOURCE202} README-configuration.txt
 %endif
 
 # utils install
@@ -826,7 +835,7 @@ exit 0
 %attr(750,%{httpduser},root) %dir %{localstatedir}
 %dir %{libexecdir}
 %dir %{_libexecdir}
-%attr(755,root,root) %{_libexecdir}/%{name}_MMN
+%attr(755,root,root) %{_libexecdir}/apache2_MMN
 %dir %{sysconfdir}
 %config %{sysconfdir}/magic
 %config %{sysconfdir}/mime.types
@@ -869,6 +878,7 @@ exit 0
 %{_mandir}/man8/httpd.8.*
 %{_mandir}/man8/suexec.8.*
 %doc support/SHA1
+%{_docdir}/apache2/conf
 %endif
 
 # utils files

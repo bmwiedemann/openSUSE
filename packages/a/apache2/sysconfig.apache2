@@ -96,7 +96,6 @@ APACHE_MODULES="actions alias auth_basic authn_core authn_file authz_host authz_
 #             something temporarily.
 #
 # Notably, to enable ssl support, 'SSL' needs to be added here.
-# To enable the server-status, 'STATUS' needs to be added here.
 #
 # It does not matter if you write flag1, -D flag1 or -Dflag1.
 # Multiple flags can be given as "-D flag1 -D flag2" or simply "flag1 flag2".
@@ -105,7 +104,7 @@ APACHE_MODULES="actions alias auth_basic authn_core authn_file authz_host authz_
 # (e.g. via rcapache2 start -DReverseProxy)
 #
 # Example:
-#      "SSL HTTP2 STATUS AWSTATS SVN_VIEWCVS no_subversion_today"
+#      "SSL HTTP2 AWSTATS SVN_VIEWCVS no_subversion_today"
 #
 APACHE_SERVER_FLAGS=""
 
@@ -242,13 +241,16 @@ APACHE_USE_CANONICAL_NAME="off"
 #
 APACHE_SERVERTOKENS="ProductOnly"
 
-## Type:	list(on,off)
+## Type:	list(on,off,lua)
 ## Default:	"off"
 ## ServiceReload: apache2
 #
 # If mod_status is used, include extended information about the server, like 
 # CPU usage, in the status report. It is a server-wide setting, and it can cost
 # some performance!
+#
+# Server status GUI written in lua (see https://www.apache.org/server-status
+# for an example) requires both mod_status and mod_lua to be loaded.
 #
 APACHE_EXTENDED_STATUS="off"
 

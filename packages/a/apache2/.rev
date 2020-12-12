@@ -1812,4 +1812,24 @@ In apache2-vhost.template, we recommend users to create custom logs like `/var/l
     <comment>- Require /usr/bin/which instead of which: allow usage of busybox
   variant for containers.</comment>
   </revision>
+  <revision rev="177" vrev="9">
+    <srcmd5>8a8efcebe7f2438c0997dd70b0b545dd</srcmd5>
+    <version>2.4.46</version>
+    <time>1607801297</time>
+    <user>dimstar_suse</user>
+    <comment>- added https://httpd.apache.org/server-status like server status
+  (configured by APACHE_EXTENDED_STATUS=&quot;lua&quot;)
+- modified sources
+  % apache2-mod_status.conf
+  % apache2-start_apache2
+  % sysconfig.apache2
+
+- actually install suse provided READMEs
+- install upstream configuration example
+- added sources
+  + apache2-README-configuration.txt
+
+- apxs -q PREFIX now returns /srv/www again</comment>
+    <requestid>854976</requestid>
+  </revision>
 </revisionlist>
