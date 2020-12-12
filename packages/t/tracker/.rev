@@ -1140,4 +1140,12 @@
     <comment>- split out the datafiles that are required by the tracker-miners (forwarded request 850958 from dimstar)</comment>
     <requestid>851056</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>3651df898b59eea007ae6b73fa21a322</srcmd5>
+    <version>3.0.2</version>
+    <time>1607801260</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 854479 from iznogood)</comment>
+    <requestid>854565</requestid>
+  </revision>
 </revisionlist>

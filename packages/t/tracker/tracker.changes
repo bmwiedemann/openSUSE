@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Dec 10 08:50:34 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.0.2:
+  + Update some wording in website
+  + Fix initialization issues in portal
+  + Improve turtle parser
+  + Improve checks for dates in the far past/future
+  + Cleanup meson build options
+  + Fix invalid reads
+  + Make UPDATE parser tree processing iterative rather than
+    recursive
+  + Fix errors in tracker:uri-is-parent
+  + Protect harder against invalid database state
+  + Introspection annotation fixes
+  + Improve thread safety of internal ontology objects
+  + Add missing <package> element to gir file.
+
+-------------------------------------------------------------------
 Sat Oct 24 18:29:40 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - split out the datafiles that are required by the tracker-miners
