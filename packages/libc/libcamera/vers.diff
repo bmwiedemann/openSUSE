@@ -17,7 +17,7 @@ Index: libcamera-0~1118.4de31cc/src/libcamera/meson.build
 -libcamera = shared_library('camera',
 +libcamera = shared_library('camera-suse',
                             libcamera_sources,
-+                           soversion : '2',
++                           soversion : '3',
                             install : true,
                             link_with : libcamera_link_with,
                             include_directories : includes,

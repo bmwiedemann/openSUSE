@@ -17,8 +17,8 @@
 
 
 Name:           libcamera
-%define lname   libcamera-suse2
-Version:        0~1118.4de31cc
+%define lname   libcamera-suse3
+Version:        0~1998.4757ff4
 Release:        0
 Summary:        A complex camera support library in C++
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -27,15 +27,20 @@ URL:            http://libcamera.org/
 
 Source:         %name-%version.tar.xz
 Patch1:         vers.diff
-Patch2:         noforcedsize.diff
+BuildRequires:  boost-devel
 BuildRequires:  c++_compiler
+BuildRequires:  libQt5Core-devel
+BuildRequires:  libQt5Gui-devel
+BuildRequires:  libQt5Widgets-devel
 BuildRequires:  meson >= 0.47
 BuildRequires:  pkg-config
 BuildRequires:  python3-PyYAML
 BuildRequires:  xz
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(openssl)
 
 %description
 libcamera is an experimental camera user-space API.
@@ -90,7 +95,11 @@ This is its integration plugin for gstreamer.
 %autosetup -p1
 
 %build
-%meson
+%meson \
+  -Ddocumentation=disabled \
+  -Dqcam=enabled \
+  -Dv4l2=false \
+  -Dpipelines=ipu3,raspberrypi,rkisp1,simple,uvcvideo,vimc
 %meson_build
 
 %install
@@ -106,15 +115,17 @@ perl -i -pe 's{-lcamera-suse}{-lcamera}' "%buildroot/%_libdir/pkgconfig"/*.pc
 %_libdir/libcamera*.so.*
 
 %files devel
-%license licenses/*gpl*
+%license LICENSES/*GPL*
 %_includedir/libcamera/
 %_libdir/libcamera.so
 %_libdir/pkgconfig/*.pc
 
 %files tools
 %_bindir/cam
+%_bindir/qcam
 %_libexecdir/libcamera/
 %_libdir/libcamera/
+%_datadir/libcamera/
 
 %files -n gstreamer-plugins-libcamera
 %_libdir/gstreamer-1.0/
