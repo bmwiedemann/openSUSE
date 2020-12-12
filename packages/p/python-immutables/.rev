@@ -40,4 +40,14 @@
 - remove py38.patch (upstream)</comment>
     <requestid>841417</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6b2468a529f25ed3440a4111eeed5c23</srcmd5>
+    <version>0.14</version>
+    <time>1607801342</time>
+    <user>dimstar_suse</user>
+    <comment>- Add skip_32bit_tests.patch (gh#MagicStack/immutables#53) to skip tests
+  which fail on 32bit architectures.
+</comment>
+    <requestid>853620</requestid>
+  </revision>
 </revisionlist>

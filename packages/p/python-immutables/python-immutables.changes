@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  7 15:34:37 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add skip_32bit_tests.patch (gh#MagicStack/immutables#53) to skip tests
+  which fail on 32bit architectures.
+
+-------------------------------------------------------------------
 Tue Oct 13 07:42:13 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - skip tests that fail on 32bit 

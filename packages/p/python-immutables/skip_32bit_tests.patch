@@ -1,0 +1,23 @@
+--- a/tests/test_none_keys.py
++++ b/tests/test_none_keys.py
+@@ -1,8 +1,10 @@
++import sys
+ import unittest
+ 
+ from immutables.map import map_hash, map_mask, Map as PyMap
+-from immutables._testutils import *  # NoQA
++from immutables._testutils import HashKey  # NoQA
+ 
++is_32bits = sys.maxsize <= 2**32  # 32bit-dness
+ 
+ none_hash = map_hash(None)
+ assert(none_hash != 1)
+@@ -35,6 +37,8 @@ class NoneCollision(HashKey):
+ class BaseNoneTest:
+     Map = None
+ 
++    @unittest.skipIf(is_32bits,
++                     "fail on 32bit arch, gh#MagicStack/immutables#53")
+     def test_none_collisions(self):
+         collisions = [NoneCollision('a', level) for level in range(7)]
+         indices = [map_mask(none_hash, shift) for shift in range(0, 32, 5)]
