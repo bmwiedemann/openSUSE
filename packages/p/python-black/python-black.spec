@@ -40,6 +40,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml >= 0.10.1}
 BuildRequires:  %{python_module typed-ast >= 1.4.0}
 BuildRequires:  %{python_module typing_extensions}
+BuildRequires:  (python36-dataclasses if python36-base)
+BuildRequires:  (python3-dataclasses if python3-base < 3.7)
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-aiohttp >= 3.3.2
@@ -53,6 +55,9 @@ Requires:       python-regex >= 2020.1.8
 Requires:       python-toml >= 0.10.1
 Requires:       python-typed-ast >= 1.4.0
 Requires:       python-typing_extensions
+%if 0%{?python_version_nodots} == 36
+Requires:       python-dataclasses
+%endif
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch

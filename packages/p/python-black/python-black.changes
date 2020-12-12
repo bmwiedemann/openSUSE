@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec  5 23:44:07 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix Python 3.6 for Leap 15.2 and for the upcoming python36 flavor
+  in Tumbleweed: Requires python-dataclasses
+  gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Fri Sep  4 12:19:10 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Include change log and docs in package
