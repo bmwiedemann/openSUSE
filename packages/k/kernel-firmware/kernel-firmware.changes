@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 03 13:57:11 UTC 2020 - tiwai@suse.com
+
+- Update to version 20201130 (git commit 7455a3606674):
+  * linux-firmware: Update firmware file for Intel Bluetooth AX210
+  * linux-firmware: Update firmware file for Intel Bluetooth AX210
+  * i915: Add GuC firmware v49.0.1 for all platforms
+  * i915: Remove duplicate KBL DMC entry
+  * Mellanox: Add new mlxsw_spectrum firmware xx.2008.2018
+
+-------------------------------------------------------------------
 Mon Nov 23 14:40:14 CET 2020 - tiwai@suse.de
 
 - Fix build with older distros due to missing _firmwaredir
