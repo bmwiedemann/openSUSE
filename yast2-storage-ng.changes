@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 10 08:45:09 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Partitioner: do not show summary when there are no actions to
+  perform (bsc#1179829).
+- 4.3.28
+
+-------------------------------------------------------------------
 Fri Dec  4 08:57:17 UTC 2020 - José Iván López González <jlopez@suse.com>
 
 - Fix unit tests (related to jsc#SLE-11308).
