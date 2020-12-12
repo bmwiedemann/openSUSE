@@ -1,0 +1,32 @@
+From 895a9a0c7141646847a8c798f695c92e543af035 Mon Sep 17 00:00:00 2001
+From: Alex Gaynor <alex.gaynor@gmail.com>
+Date: Mon, 3 Aug 2020 21:00:25 -0400
+Subject: [PATCH] Make the twisted tests work when pyOpenSSL deletes NPN
+
+---
+ src/twisted/newsfragments/9928.misc | 0
+ src/twisted/test/test_sslverify.py  | 7 +++++--
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+ create mode 100644 src/twisted/newsfragments/9928.misc
+
+diff --git a/src/twisted/newsfragments/9928.misc b/src/twisted/newsfragments/9928.misc
+new file mode 100644
+index 00000000000..e69de29bb2d
+diff --git a/src/twisted/test/test_sslverify.py b/src/twisted/test/test_sslverify.py
+index 4a1e082737f..a8992741d55 100644
+--- a/src/twisted/test/test_sslverify.py
++++ b/src/twisted/test/test_sslverify.py
+@@ -62,8 +62,11 @@
+     try:
+         ctx = SSL.Context(SSL.SSLv23_METHOD)
+         ctx.set_npn_advertise_callback(lambda c: None)
+-    except NotImplementedError:
+-        skipNPN = "OpenSSL 1.0.1 or greater required for NPN support"
++    except (NotImplementedError, AttributeError):
++        skipNPN = (
++            "NPN is deprecated (and OpenSSL 1.0.1 or greater required for NPN"
++            " support)"
++        )
+ 
+     try:
+         ctx = SSL.Context(SSL.SSLv23_METHOD)

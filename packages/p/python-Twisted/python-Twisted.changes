@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 11 00:02:02 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Add twisted-pr1369-remove-pyopenssl-npn.patch to support 
+  pyOpenSSL 20
+- Add twisted-pr1487-increase-ffdh-keysize.patch to support
+  crpytography 3.3
+- Fix the update-alternatives setup
+  * manpages were cloned but never registerd with u-a
+  * install alternatives as master and slave links now
+
+-------------------------------------------------------------------
 Mon Oct 12 21:14:33 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add no-test_successResultOfWithFailureHasTraceback.patch to

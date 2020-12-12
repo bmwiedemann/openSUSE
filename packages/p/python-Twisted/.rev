@@ -421,4 +421,19 @@
   been confirmed, even less fixed.</comment>
     <requestid>841601</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>27eb51f793563bfae6224e8b15fa83ef</srcmd5>
+    <version>20.3.0</version>
+    <time>1607801387</time>
+    <user>dimstar_suse</user>
+    <comment>- Add twisted-pr1369-remove-pyopenssl-npn.patch to support 
+  pyOpenSSL 20
+- Add twisted-pr1487-increase-ffdh-keysize.patch to support
+  crpytography 3.3
+- Fix the update-alternatives setup
+  * manpages were cloned but never registerd with u-a
+  * install alternatives as master and slave links now
+</comment>
+    <requestid>854874</requestid>
+  </revision>
 </revisionlist>

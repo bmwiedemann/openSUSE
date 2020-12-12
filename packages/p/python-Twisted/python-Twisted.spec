@@ -36,6 +36,10 @@ Patch7:         true-binary.patch
 # PATCH-FIX-UPSTREAM no-test_successResultOfWithFailureHasTraceback.patch https://twistedmatrix.com/trac/ticket/9665 mcepl@suse.com
 # skip over the test test_successResultOfWithFailureHasTraceback
 Patch8:         no-test_successResultOfWithFailureHasTraceback.patch
+# PATCH-FIX-UPSTREAM gh#twisted/twisted#1369 https://twistedmatrix.com/trac/ticket/9928
+Patch9:         twisted-pr1369-remove-pyopenssl-npn.patch
+# PATCH-FIX-UPSTRAM gh#twisted/twisted#1487 https://twistedmatrix.com/trac/ticket/10061
+Patch10:        twisted-pr1487-increase-ffdh-keysize.patch
 BuildRequires:  %{python_module Automat >= 0.3.0}
 BuildRequires:  %{python_module PyHamcrest >= 1.9.0}
 BuildRequires:  %{python_module appdirs >= 1.4.0}
@@ -129,24 +133,15 @@ export PYTHONDONTWRITEBYTECODE=1
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m twisted.trial twisted
 
 %post
-%python_install_alternative twist
-%python_install_alternative trial
-%python_install_alternative tkconch
-%python_install_alternative pyhtmlizer
-%python_install_alternative conch
-%python_install_alternative ckeygen
-%python_install_alternative cftp
-%python_install_alternative twistd
+# these were master alternatives until Dec 2020. Remove before the install as slave links
+for f in cftp ckeygen conch pyhtmlizer tkconch trial twist; do
+  (update-alternatives --quiet --list $f 2>&1 >/dev/null) && update-alternatives --remove-all $f
+done
+%{python_install_alternative twistd cftp ckeygen conch pyhtmlizer tkconch trial twist 
+                             twistd.1 cftp.1 ckeygen.1 conch.1 pyhtmlizer.1 tkconch.1 trial.1}
 
 %postun
-%python_uninstall_alternative twist
-%python_uninstall_alternative trial trial.1
-%python_uninstall_alternative tkconch tkconch.1
-%python_uninstall_alternative pyhtmlizer pyhtmlizer.1
-%python_uninstall_alternative conch conch.1
-%python_uninstall_alternative ckeygen ckeygen.1
-%python_uninstall_alternative cftp cftp.1
-%python_uninstall_alternative twistd twistd.1
+%python_uninstall_alternative twistd
 
 %files -n %{name}-doc
 %doc docs/*
@@ -169,6 +164,7 @@ export PYTHONDONTWRITEBYTECODE=1
 %python_alternative %{_mandir}/man1/pyhtmlizer.1%{?ext_man}
 %python_alternative %{_mandir}/man1/tkconch.1%{?ext_man}
 %python_alternative %{_mandir}/man1/trial.1%{?ext_man}
-%{python_sitearch}/*
+%{python_sitearch}/twisted
+%{python_sitearch}/Twisted-%{version}*-info
 
 %changelog
