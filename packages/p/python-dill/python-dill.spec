@@ -29,7 +29,11 @@ BuildRequires:  %{python_module objgraph >= 1.7.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if 0%{?suse_version} >= 1550
+BuildRequires:  %{python_module dbm}
+%else
 BuildRequires:  python3-dbm
+%endif
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-objgraph >= 1.7.2
