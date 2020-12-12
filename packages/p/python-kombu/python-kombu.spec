@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-kombu
-Version:        4.6.11
+Version:        5.0.2
 Release:        0
 Summary:        AMQP Messaging Framework for Python
 License:        BSD-3-Clause
@@ -28,7 +29,7 @@ BuildRequires:  %{python_module Brotli >= 1.0.0}
 BuildRequires:  %{python_module PyYAML >= 3.10}
 BuildRequires:  %{python_module Pyro4}
 BuildRequires:  %{python_module SQLAlchemy}
-BuildRequires:  %{python_module amqp >= 2.6.0}
+BuildRequires:  %{python_module amqp >= 5.0.0}
 BuildRequires:  %{python_module boto3 >= 1.4.4}
 BuildRequires:  %{python_module case >= 1.5.2}
 BuildRequires:  %{python_module importlib-metadata >= 0.18}
@@ -40,7 +41,7 @@ BuildRequires:  %{python_module redis >= 3.3.11}
 BuildRequires:  %{python_module setuptools >= 20.6.7}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-amqp >= 2.6.0
+Requires:       python-amqp >= 5.0.0
 Requires:       python-importlib-metadata >= 0.18
 Requires:       python-setuptools
 Recommends:     python-Brotli >= 1.0.0
