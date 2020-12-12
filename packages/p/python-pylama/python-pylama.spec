@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylama
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,6 +43,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Recommends:     mypy
 Recommends:     python-mccabe >= 0.5.2
 Recommends:     python-pycodestyle >= 2.3.1
 Recommends:     python-pydocstyle >= 2.0.0
@@ -78,7 +79,9 @@ export LANG=en_US.UTF-8
 %check
 export LANG=en_US.UTF-8
 # test_ignore_select - relies on number of errors reported by pyflakes/etc.
-%pytest -k 'not test_ignore_select'
+# mypy as module is only available for default python3 provider
+%python_exec -c 'import mypy' || $python_skiptest+=" or test_mypy"
+%pytest -k "not (test_ignore_select ${$python_skiptest})"
 
 %post
 %python_install_alternative pylama
@@ -90,6 +93,7 @@ export LANG=en_US.UTF-8
 %doc AUTHORS Changelog README.rst
 %license LICENSE
 %python_alternative %{_bindir}/pylama
-%{python_sitelib}/*
+%{python_sitelib}/pylama
+%{python_sitelib}/pylama-%{version}*-info
 
 %changelog
