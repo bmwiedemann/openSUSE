@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-mocket%{psuffix}
-Version:        3.9.1
+Version:        3.9.3
 Release:        0
 Summary:        Python socket mock framework
 License:        BSD-3-Clause
@@ -77,7 +77,7 @@ included, with gevent/asyncio/SSL support.
 %setup -q -n mocket-%{version}
 sed -i '/cov/ d' setup.cfg
 sed -i '/pipenv/ d' setup.py
-sed -i 's/==/>=/' requirements.txt
+sed -i 's/==.*$//' requirements.txt
 
 %build
 %if !%{with test}
