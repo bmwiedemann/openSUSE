@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 10 03:55:27 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.0.1:
+  * Require vine 5.0.0.
+  * Stop to use deprecated method ssl.wrap_socket.
+  * Dropped Python 3.5 support.
+  * Removed additional compatibility code.
+  * Dropped Python 2.x support.
+  * Dropped Python 3.4 support.
+- Add vine-no-double-equals-deps.patch that loosens the vine requirement
+
+-------------------------------------------------------------------
 Tue Aug  4 12:09:50 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.6.1:

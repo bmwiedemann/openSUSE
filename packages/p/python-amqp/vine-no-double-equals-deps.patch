@@ -1,0 +1,7 @@
+Index: amqp-5.0.1/requirements/default.txt
+===================================================================
+--- amqp-5.0.1.orig/requirements/default.txt
++++ amqp-5.0.1/requirements/default.txt
+@@ -1 +1 @@
+-vine==5.0.0
++vine>=5.0.0

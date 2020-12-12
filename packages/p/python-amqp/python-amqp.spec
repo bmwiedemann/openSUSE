@@ -17,21 +17,22 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-amqp
-Version:        2.6.1
+Version:        5.0.1
 Release:        0
 Summary:        Low-level AMQP client for Python (fork of amqplib)
 License:        LGPL-2.1-or-later
-Group:          Development/Languages/Python
 URL:            http://github.com/celery/py-amqp
 Source:         https://files.pythonhosted.org/packages/source/a/amqp/amqp-%{version}.tar.gz
+Patch0:         vine-no-double-equals-deps.patch
 BuildRequires:  %{python_module case >= 1.3.1}
 BuildRequires:  %{python_module pytest >= 3.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module vine >= 1.1.3}
+BuildRequires:  %{python_module vine >= 5.0.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-vine >= 1.1.3
+Requires:       python-vine >= 5.0.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -43,6 +44,7 @@ This library should be API compatible with librabbitmq.
 
 %prep
 %setup -q -n amqp-%{version}
+%autopatch -p1
 # requires internet connection:
 rm t/integration/test_rmq.py
 
