@@ -1,4 +1,132 @@
 -------------------------------------------------------------------
+Tue Dec 08 12:37:47 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.22.0 → 9.22.1
+
+-------------------------------------------------------------------
+Tue Dec 08 12:21:11 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed validation of bool value in dracut module
+
+  The oem-multipath-scan setup results in a bool variable inside
+  of the initrd code. The variable kiwi_oemmultipath_scan is
+  therefore either set to "true" or "false". A check in code
+  of the form [ -n ... ] is stupid since the variable always
+  contains text. This commit fixes the validation to make use
+  of the bool() method provided for these type of variables
+
+-------------------------------------------------------------------
+Thu Dec 03 15:37:30 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.21.26 → 9.22.0
+
+-------------------------------------------------------------------
+Thu Dec 03 10:35:34 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Omit multipath module by default
+
+  The plain installation of the multipath toolkit activates the
+  dracut multipath code. The setup if the target image runs in a
+  multipath environment or not should however be decided explicitly
+  in the image description via <oem-multipath-scan> and not
+  implicitly by the presence of tools
+
+-------------------------------------------------------------------
+Wed Dec 02 16:15:00 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed multipath disk device assignment in kiwi lib
+
+  The former lookup of the multipath mapped disk device contained
+  a race condition. If the lookup of the device mapper files happened
+  before multipathd has finished the initialization, kiwi continues
+  with the unix node name and fails when the device mapper keeps
+  a busy state on it. This commit changes the code such that in case
+  of an explicit request to use multipath the lookup of the mapped
+  device becomes a mandatory process that runs until the
+  DEVICE_TIMEOUT is reached. Default timeout is set to 60 sec.
+  This references Issue SUSE-Enceladus/azure-li-services#255
+
+-------------------------------------------------------------------
+Wed Nov 25 17:09:10 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed PackageManager decorator in unit test
+
+  Implement patch decorators for factories consistently
+
+-------------------------------------------------------------------
+Wed Nov 25 13:11:31 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Refactor Repository
+
+  This commit refactors the Repository class and turns it into a
+  proper factory class and also includes type hints to facilitate
+  it's use from an API POV. Related to #1498
+
+-------------------------------------------------------------------
+Tue Nov 24 18:09:41 CET 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Add DNF as a proper dependency for openSUSE
+
+  This is required so that OBS can build openSUSE containers and appliances
+  using DNF as the package manager.
+
+-------------------------------------------------------------------
+Tue Nov 24 18:05:29 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fixed spec file microdnf requirement
+
+  SUSE/SLES doesn't provide microdnf within the official channels yet
+
+-------------------------------------------------------------------
+Tue Nov 24 12:59:53 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Refactor Partitioner
+
+  This commit refactors the Partitioner class and turns it into a
+  proper factory class and also includes type hints to facilitate
+  it's use from an API POV. Related to #1498
+
+-------------------------------------------------------------------
+Tue Nov 24 12:58:20 CET 2020 - David Cassany <dcassany@suse.com>
+
+- Avoid using generators in pre-mount hooks
+
+  This commit deletes the generator that was creating the sysroot.mount
+  unit for ramdisk deployments. Generators, specially the sysroot.mount is
+  expected to be created on very early stages of the boot procedure as
+  this has impact on relevant targets such as initrd-root-fs.target, which
+  does not depend on sysroot.mount if the unit is not there.
+
+  In ramdisk deployments some data is known on pre-mount stage as
+  as it is downloaded from the PXE server. At this stage it is not safe to
+  generate a sysroot.mount unit that depends on initrd-root-fs.target as
+  the target is close to finalize or even finalized already and could
+  potentially skip sysroot.mount exection.
+
+  Instead we include a mount hook which is only executed on ramdisk
+  deployments that simply runs the mount command to mount /sysroot.
+
+  This fixes bsc#1178670
+
+-------------------------------------------------------------------
+Mon Nov 23 15:35:03 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Refactor PackageManager
+
+  This commit refactors the PackageManager class and turns it into
+  a proper factory class which also include type hints to facilitate
+  it's use from an API POV. Related to #1498
+
+-------------------------------------------------------------------
+Mon Nov 23 13:02:44 CET 2020 - Marcus Schäfer <ms@suse.de>
+
+- Refactor Markup
+
+  This commit refactors the Markup class and turns it into a proper
+  factory class which also include type hints to facilitate it's
+  use from an API POV. Related to #1498
+
+-------------------------------------------------------------------
 Fri Nov 20 10:37:31 CET 2020 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.21.25 → 9.21.26

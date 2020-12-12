@@ -1522,4 +1522,85 @@
 - Move tools README to ReST</comment>
     <requestid>849700</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>9f839dd77b93d223d2931369e3a61d22</srcmd5>
+    <version>9.22.1</version>
+    <time>1607801228</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.22.0 → 9.22.1
+
+- Fixed validation of bool value in dracut module
+  The oem-multipath-scan setup results in a bool variable inside
+  of the initrd code. The variable kiwi_oemmultipath_scan is
+  therefore either set to &quot;true&quot; or &quot;false&quot;. A check in code
+  of the form [ -n ... ] is stupid since the variable always
+  contains text. This commit fixes the validation to make use
+  of the bool() method provided for these type of variables
+
+- Bump version: 9.21.26 → 9.22.0
+
+- Omit multipath module by default
+  The plain installation of the multipath toolkit activates the
+  dracut multipath code. The setup if the target image runs in a
+  multipath environment or not should however be decided explicitly
+  in the image description via &lt;oem-multipath-scan&gt; and not
+  implicitly by the presence of tools
+
+- Fixed multipath disk device assignment in kiwi lib
+  The former lookup of the multipath mapped disk device contained
+  a race condition. If the lookup of the device mapper files happened
+  before multipathd has finished the initialization, kiwi continues
+  with the unix node name and fails when the device mapper keeps
+  a busy state on it. This commit changes the code such that in case
+  of an explicit request to use multipath the lookup of the mapped
+  device becomes a mandatory process that runs until the
+  DEVICE_TIMEOUT is reached. Default timeout is set to 60 sec.
+  This references Issue SUSE-Enceladus/azure-li-services#255
+
+- Fixed PackageManager decorator in unit test
+  Implement patch decorators for factories consistently
+
+- Refactor Repository
+  This commit refactors the Repository class and turns it into a
+  proper factory class and also includes type hints to facilitate
+  it's use from an API POV. Related to #1498
+
+- Add DNF as a proper dependency for openSUSE
+  This is required so that OBS can build openSUSE containers and appliances
+  using DNF as the package manager.
+
+- Fixed spec file microdnf requirement
+  SUSE/SLES doesn't provide microdnf within the official channels yet
+
+- Refactor Partitioner
+  This commit refactors the Partitioner class and turns it into a
+  proper factory class and also includes type hints to facilitate
+  it's use from an API POV. Related to #1498
+
+- Avoid using generators in pre-mount hooks
+  This commit deletes the generator that was creating the sysroot.mount
+  unit for ramdisk deployments. Generators, specially the sysroot.mount is
+  expected to be created on very early stages of the boot procedure as
+  this has impact on relevant targets such as initrd-root-fs.target, which
+  does not depend on sysroot.mount if the unit is not there.
+  In ramdisk deployments some data is known on pre-mount stage as
+  as it is downloaded from the PXE server. At this stage it is not safe to
+  generate a sysroot.mount unit that depends on initrd-root-fs.target as
+  the target is close to finalize or even finalized already and could
+  potentially skip sysroot.mount exection.
+  Instead we include a mount hook which is only executed on ramdisk
+  deployments that simply runs the mount command to mount /sysroot.
+  This fixes bsc#1178670
+
+- Refactor PackageManager
+  This commit refactors the PackageManager class and turns it into
+  a proper factory class which also include type hints to facilitate
+  it's use from an API POV. Related to #1498
+
+- Refactor Markup
+  This commit refactors the Markup class and turns it into a proper
+  factory class which also include type hints to facilitate it's
+  use from an API POV. Related to #1498</comment>
+    <requestid>854171</requestid>
+  </revision>
 </revisionlist>

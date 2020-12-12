@@ -43,7 +43,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.21.26
+Version:        9.22.1
 Provides:       kiwi-schema = 7.2
 Release:        0
 Url:            https://github.com/OSInside/kiwi
@@ -124,9 +124,6 @@ Requires(postun): chkconfig
 Requires:       qemu-img
 Requires:       squashfs-tools
 Requires:       gdisk
-Requires:       dnf
-Provides:       kiwi-packagemanager:dnf
-Provides:       kiwi-packagemanager:yum
 %if 0%{?fedora} || 0%{?rhel} >= 8
 Recommends:     gnupg2
 %endif
@@ -136,9 +133,14 @@ Recommends:     gnupg2
 Recommends:     dnf
 Recommends:     gpg2
 %endif
-%if 0%{?fedora} || 0%{?rhel} >= 8 || 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
+%if 0%{?fedora} || 0%{?rhel} >= 8 || 0%{?suse_version} >= 1550
 Provides:       kiwi-packagemanager:microdnf
 Requires:       microdnf
+%endif
+%if 0%{?fedora} || 0%{?rhel} || 0%{?suse_version} >= 1550
+Requires:       dnf
+Provides:       kiwi-packagemanager:dnf
+Provides:       kiwi-packagemanager:yum
 %endif
 %if 0%{?fedora} >= 26 || 0%{?suse_version}
 Requires:       zypper
