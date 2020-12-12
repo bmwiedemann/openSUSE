@@ -30,7 +30,7 @@
 %endif
 
 Name:           fwupd
-Version:        1.5.2
+Version:        1.5.3
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -105,8 +105,8 @@ BuildRequires:  pkgconfig(efivar) >= 33
 BuildRequires:  pkgconfig(libsmbios_c) >= 2.3.0
 %endif
 %if %{with efi_fw_update}
-Obsoletes:      dbxtool
-Obsoletes:      fwupdate
+Obsoletes:      dbxtool <= 8
+Obsoletes:      fwupdate <= 12
 Provides:       dbxtool
 %ifarch x86_64
 Requires:       shim >= 11
@@ -201,6 +201,7 @@ done
   -Dplugin_msr=false \
 %endif
   -Dgtkdoc=true \
+  -Dsupported_build=true \
   -Dtests=false
 %meson_build
 
@@ -213,6 +214,7 @@ rm %{buildroot}%{_localstatedir}/lib/fwupd/builder/README.md
 mkdir -p %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcfwupd-offline-update
+ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcfwupd-refresh
 %find_lang %{name}
 
 # Do not ship default polkit .rules - openSUSE overrides them anyway - boo#1125428
@@ -238,17 +240,17 @@ rm -fr %{buildroot}%{_datadir}/fish
 %postun -n libfwupdplugin1 -p /sbin/ldconfig
 
 %preun
-%service_del_preun %{name}.service fwupd-offline-update.service
+%service_del_preun %{name}.service fwupd-offline-update.service fwupd-refresh.service
 
 %pre
-%service_add_pre %{name}.service fwupd-offline-update.service
+%service_add_pre %{name}.service fwupd-offline-update.service fwupd-refresh.service
 
 %post
 %udev_rules_update
-%service_add_post %{name}.service fwupd-offline-update.service
+%service_add_post %{name}.service fwupd-offline-update.service fwupd-refresh.service
 
 %postun
-%service_del_postun %{name}.service fwupd-offline-update.service
+%service_del_postun %{name}.service fwupd-offline-update.service fwupd-refresh.service
 %if %{with efi_fw_update}
 if [ -e /etc/os-release ]; then
   . /etc/os-release
@@ -284,6 +286,7 @@ fi
 %{_bindir}/fwupdtool
 %{_sbindir}/rc%{name}
 %{_sbindir}/rcfwupd-offline-update
+%{_sbindir}/rcfwupd-refresh
 %{_datadir}/dbus-1/system.d/org.freedesktop.fwupd.conf
 %{_datadir}/dbus-1/interfaces/org.freedesktop.fwupd.xml
 %{_datadir}/dbus-1/system-services/org.freedesktop.fwupd.service
@@ -318,7 +321,6 @@ fi
 %ifarch %{ix86} x86_64
 %{_modulesloaddir}/fwupd-msr.conf
 %endif
-%{_modulesloaddir}/fwupd-platform-integrity.conf
 %config %{_sysconfdir}/%{name}/
 %dir %{_sysconfdir}/pki
 %dir %{_sysconfdir}/pki/fwupd

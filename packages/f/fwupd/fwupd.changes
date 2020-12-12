@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Dec 09 07:53:07 UTC 2020 - glin@suse.com
+
+- Update to version 1.5.3:
+  + Lower the CURL version required to fix build in RHEL
+  + Do not use meson ternary operations to avoid bumping the
+    required meson version
+  + Added Lite Mk III
+  + Allow setting the GMainContext when used for sync methods
+  + Fall back to the misc device for serio devices
+  + Actually implement rescan in FuUdevDevice
+  + bcm57xx: Refactor CRC code to remove extra byteswap
+  + bcm57xx: Fix CRC check
+  + synaptics-rmi: Don't crash if calling ->to_string() before
+    ->setup()
+  + Fix a possible critical warning due to missing retval
+  + Add the serio->firmare_id for UDev devices
+  + Export the driver name from FuUdevDevice
+  + Allow the client to send PKCS7 and GPG signatures
+  + Force the remote kind to JCat server-side
+  + Only parse the signature if the remote is JCat
+  + fu-main: Fix sender_features insert with wrong size
+  + make platform integrity plugin optional and disabled by default
+  + Add quirk for Western Digital
+  + Mark more user-visible strings as translatable
+  + modem-manager: validate firmware update method combinations
+  + modem-manager: remove unused byte counts in QMI/PDC update logic
+  + modem-manager: make sure the correct interface number is used
+    for QMI
+  + modem-manager: udev monitoring only if device switches layout
+  + modem-manager: plug udev client leak
+  + Restrict loading component types of firmware
+- Enable supported_build to clarify that this package is supported
+  (bsc#1179790)
+- Drop fwupd-platform-integrity.conf since upstream disables the
+  platform integrity module by default now due to incompleteness.
+- Address fwupd-refresh.service in %preun, %pre, %post, and %postun
+  and provide a rc link for it
+- Version "Obsoletes: dbxtool" and "Obsoletes: fwupdate"
+
+-------------------------------------------------------------------
 Fri Dec  4 06:14:47 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to version 1.5.2:
