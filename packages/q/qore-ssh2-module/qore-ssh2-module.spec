@@ -45,7 +45,7 @@ SSH2 module for the Qore Programming Language.
 %setup -q
 
 %build
-%ifarch x86_64 ppc64 ppc64le x390x
+%ifarch x86_64 ppc64 ppc64le s390x
 c64=--enable-64bit
 %endif
 CFLAGS="$RPM_OPT_FLAGS" CXXFLAGS="$RPM_OPT_FLAGS" ./configure RPM_OPT_FLAGS="%{optflags}" --prefix=/usr --disable-debug $c64
