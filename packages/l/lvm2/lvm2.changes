@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec 09 01:16:00 UTC 2020 - heming.zhao@suse.com
+
+- lvm2 should use 'external_device_info_source="udev"' by default (bsc#1179691)
+  - change external_device_info_source from none to udev
+- comment out lvm.conf item preferred_names by default (bsc#1179738)
+  - comment out preferred_names
+- Update lvm.conf, make it closely to upstream's setting (bsc#1179739)
+  - change lvm.conf, follow upstream 7b41ea61b2e33dbfad754fd4c6e7851faf7ca5ef
+
+-------------------------------------------------------------------
 Thu Nov 26 10:28:13 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)
