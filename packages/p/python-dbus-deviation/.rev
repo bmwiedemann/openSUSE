@@ -18,4 +18,12 @@
   gh#openSUSE/python-rpm-macros#66</comment>
     <requestid>852870</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8fb92905bce15bf2fd2a7ca37ddb5187</srcmd5>
+    <version>0.6.0</version>
+    <time>1607801385</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>854619</requestid>
+  </revision>
 </revisionlist>

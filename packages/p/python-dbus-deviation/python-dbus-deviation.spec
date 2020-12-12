@@ -64,7 +64,7 @@ sed -i '1 {/^#!/d}' dbusapi/tests/*.py dbusdeviation/utilities/*.py
 %python_install_alternative dbus-interface-diff dbus-interface-vcs-helper
 
 %postun
-%python_uninstall_alternative dbus-interface-diff dbus-interface-vcs-helper
+%python_uninstall_alternative dbus-interface-diff
 
 %files %{python_files}
 %doc AUTHORS NEWS README
