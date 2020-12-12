@@ -23,7 +23,7 @@ $mappedpkg=(glob("packages/$first*/$pkg"))[0];
 if($mappedpkg) {
     rename("$mappedpkg/.git", $tmpgit);
     system(qw"rm -rf", $mappedpkg);
-} else {
+} elsif(0) {
     system("scripts/pagure-new-package", $pkg);
     system(qw"git clone", "https://code.opensuse.org/package/$pkg", $tmpgit);
     system("mv", <$tmpgit/.git/*>, $tmpgit); # move one level up
