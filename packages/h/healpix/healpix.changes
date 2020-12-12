@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Tue Nov 10 10:33:52 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Use _service file to build source tarball from svn repo directly
+  while omitting idl source files: this avoids licensing issues
+  that the idl source files carry.
+
+-------------------------------------------------------------------
+Sun Aug 16 08:54:39 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package
