@@ -17,7 +17,7 @@
 
 
 Name:           tracker-miners
-Version:        3.0.1
+Version:        3.0.3
 Release:        0
 Summary:        Various miners for Tracker
 License:        GPL-2.0-or-later
@@ -32,6 +32,7 @@ BuildRequires:  libtiff-devel
 BuildRequires:  libtool
 BuildRequires:  meson >= 0.51.0
 BuildRequires:  pkgconfig
+BuildRequires:  tracker-data-files
 BuildRequires:  vala
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(enca) >= 1.9
@@ -63,7 +64,6 @@ BuildRequires:  pkgconfig(poppler-glib) >= 0.16.0
 BuildRequires:  pkgconfig(totem-plparser)
 BuildRequires:  pkgconfig(tracker-sparql-3.0)
 BuildRequires:  pkgconfig(upower-glib) >= 0.9.0
-BuildRequires:  tracker-data-files
 # The schema files moved from libtracker-common to tracker-miners
 Conflicts:      libtracker-common-1_0 < 1.99
 # Make sure tracker is being updated to 1.99 too

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 10 08:53:21 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.0.3:
+  + Allow newstatat/statat64 syscalls
+  + Brown paper bag release
+- Changes from version 3.0.2:
+  + Fix sched test under non glibc platforms
+  + Refcount fixes
+  + Avoid the fluiddec gstreamer plugin
+  + Ensure to avoid non-native files in tracker-extract-3
+  + CI fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Oct 24 18:32:21 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - require the newly split out tracker-data-files

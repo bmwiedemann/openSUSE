@@ -202,4 +202,12 @@
     <comment>- require the newly split out tracker-data-files (forwarded request 850959 from dimstar)</comment>
     <requestid>851057</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2ea983ce41e8c50e5eb02a91f052ffec</srcmd5>
+    <version>3.0.3</version>
+    <time>1607801262</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 854480 from iznogood)</comment>
+    <requestid>854566</requestid>
+  </revision>
 </revisionlist>
