@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-reportlab
-Version:        3.5.51
+Version:        3.5.56
 Release:        0
 Summary:        The Reportlab Toolkit
 License:        BSD-3-Clause

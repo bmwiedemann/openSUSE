@@ -1,5 +1,7 @@
---- a/src/rl_addons/renderPM/gt1/gt1-namecontext.c
-+++ b/src/rl_addons/renderPM/gt1/gt1-namecontext.c
+Index: reportlab-3.5.56/src/rl_addons/renderPM/gt1/gt1-namecontext.c
+===================================================================
+--- reportlab-3.5.56.orig/src/rl_addons/renderPM/gt1/gt1-namecontext.c
++++ reportlab-3.5.56/src/rl_addons/renderPM/gt1/gt1-namecontext.c
 @@ -1,6 +1,10 @@
  /* A module for a simple "name context", i.e. lisp-style atoms */
  
@@ -10,4 +12,4 @@
 +#include <sys/socket.h>
  
  #include "gt1-namecontext.h"
- #if defined(_WIN32) || defined(macintosh)
+ #if defined(_WIN32) || defined(macintosh) || defined(__APPLE__)

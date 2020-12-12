@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec  9 15:56:35 UTC 2020 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.5.56
+  * allow setting initial template cycle
+  * fix for pillow 8.0.x
+  * added trustedHosts & trustedSchemes settings
+  * allow Drawing.outDir to be a callable 
+- Rebased reportlab-missing-includes.patch
+
+-------------------------------------------------------------------
 Thu Sep 24 17:54:30 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to 3.5.51
