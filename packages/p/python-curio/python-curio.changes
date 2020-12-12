@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec  9 11:04:13 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Reenable python36 build and skip the failing tests. The 
+  dependency tree on curio is too large to just define
+  skip_python36
+  * gh#dabeaz/curio#336
+  * gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Thu Dec  3 21:47:14 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Although upstream reduced their requirement to python >= 3.6,

@@ -18,8 +18,6 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-# skip for future multiple python3 flavors
-%define skip_python36 1
 Name:           python-curio
 Version:        1.4
 Release:        0
@@ -28,13 +26,16 @@ License:        BSD-Source-Code
 URL:            https://github.com/dabeaz/curio
 Source:         https://github.com/dabeaz/curio/archive/%{version}.tar.gz#/curio-%{version}.tar.gz
 Patch0:         make-tests-reproducible.patch
-# https://github.com/dabeaz/curio/issues/336
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module contextvars}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+%if 0%{?python_version_nodots} == 36
+Requires:       python-contextvars
+%endif
 %python_subpackages
 
 %description
@@ -53,7 +54,17 @@ Curio is a library for performing concurrent I/O with coroutines in Python 3.
 
 %check
 # disabled network tests
-%pytest -k 'not (test_ssl_outgoing or test_socket_funcs)'
+skiptest_allpython="test_ssl_outgoing or test_socket_funcs"
+# https://github.com/dabeaz/curio/issues/336
+# The dependency tree on curio is too large to just define skip_python36.
+# Let's hope the python36 flavor will be in Tumbleweed before upstream drops
+# Python 3.6 support completely, so that a dedicated staging project can work
+# out the skips on all the depending packages.
+skiptest_python36_only=" or test_uqueue_asyncio_consumer or test_uevent_get_asyncio or test_universal"
+%if 0%{?python3_version_nodots} == 36
+skiptest_python3_only="$skiptest_python36_only"
+%endif
+%pytest -k "not (${skiptest_allpython} ${skiptest_$python_only})"
 
 %files %{python_files}
 %license LICENSE
@@ -62,4 +73,3 @@ Curio is a library for performing concurrent I/O with coroutines in Python 3.
 %{python_sitelib}/curio-%{version}*-info
 
 %changelog
-
