@@ -17,21 +17,26 @@
 
 
 %define gst_branch 1.0
+
 Name:           gstreamer
-Version:        1.18.1
+Version:        1.18.2
 Release:        0
 Summary:        Streaming-Media Framework Runtime
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
-URL:            https://gstreamer.freedesktop.org/
-Source0:        https://gstreamer.freedesktop.org/src/gstreamer/%{name}-%{version}.tar.xz
+URL:            https://gstreamer.freedesktop.org
+# Disable tarball source url, use _service
+#Source0:        %%{url}/src/gstreamer/%%{name}-%%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        gstreamer.macros
 Source2:        gstreamer.prov
 Source99:       baselibs.conf
+
 # PATCH-FEATURE-UPSTREAM gstreamer-rpm-prov.patch bgo#588784 dimstar@opensuse.org -- Add --rpm parameter to allow creation of rpm provides, patch from fedora
 Patch1:         gstreamer-rpm-prov.patch
 # PATCH-FIX-OPENSUSE gstreamer-pie.patch mgorse@suse.com -- create position-independent executables.
 Patch2:         gstreamer-pie.patch
+
 BuildRequires:  bison >= 2.4
 BuildRequires:  check-devel
 BuildRequires:  fdupes
