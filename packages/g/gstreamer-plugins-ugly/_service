@@ -1,10 +1,15 @@
+<?xml version="1.0"?>
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="url">https://gitlab.freedesktop.org/gstreamer/gst-plugins-ugly.git</param>
     <param name="filename">gst-plugins-ugly</param>
-    <!--<param name="versionformat">@PARENT_TAG@+git%cd.%h</param>-->
-    <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">1.18.1</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+    <param name="versionrewrite-pattern">(.*)\+0</param>
+    <param name="versionrewrite-replacement">\1</param>
+<!--
+    <param name="changesgenerate">enable</param>
+-->
+    <param name="revision">1.18.2</param>
     <param name="scm">git</param>
   </service>
   <service name="recompress" mode="disabled">

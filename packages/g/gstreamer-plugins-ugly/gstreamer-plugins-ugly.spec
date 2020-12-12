@@ -26,14 +26,17 @@
 %define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
 
 Name:           gstreamer-plugins-ugly
-Version:        1.18.1
+Version:        1.18.2
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
-URL:            https://gstreamer.freedesktop.org/
-Source:         https://gstreamer.freedesktop.org/src/gst-plugins-ugly/%{_name}-%{version}.tar.xz
+URL:            https://gstreamer.freedesktop.org
+# Disable tarball source url, use _service
+#Source0:        %%{url}/src/gst-plugins-ugly/%%{_name}-%%{version}.tar.xz
+Source0:        %{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
+
 BuildRequires:  gcc-c++
 BuildRequires:  gtk-doc >= 1.12
 BuildRequires:  hotdoc
