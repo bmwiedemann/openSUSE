@@ -1,3 +1,65 @@
+Mon Dec  7 20:42:00 UTC 2020 - Gordon Schulz <gordon@gordonschulz.de>
+
+- Update to 0.17.1
+  * Features
+    - Added a new --style value, rule, which adds a simple horizontal
+      ruled line between files, see #1276 (@tommilligan)
+    - Pass -S ("chop long lines") to less if --wrap=never is set in
+      bat, see #1255 (@gahag)
+    - Added support for the NO_COLOR environment variable, see #1021
+      and #1031 (@eth-p)
+    - Added -P short flag to disable paging, see #1075 and #1082
+      (@LordFlashmeow)
+    - Added --force-colorization/-f flag to provide an alias for
+      forced color and decoration output, see #1141
+      (@alexanderkarlis)
+  * Bugfixes
+    - Running bat without arguments fails ("output file is also
+      an input"), see #1396
+    - Detect infinite loop when input and output are the same, see
+      #1193 and #1197 (@niklasmohrin)
+    - Throw an error when bat is being used as pager, see #1343
+      (@adrian-rivera)
+    - Bash syntax highlighting not selected for *.ebuild and *.eclass
+      files, see #1292 (@sharkdp)
+    - Fix zsh completion when using -p, see #1320 (@xzfc)
+    - Fixed non-printable characters display for redirected output,
+      see #1061 (@gsomix)
+    - Handle file extension conflicts in --list-languages, see #1076
+      and #1135 (@Kienyew)
+  * Other
+    - Add note to refer to see detailed help with --help (and vice
+      versa with -h), see #1215 (@henil)
+    - Add a Contributors section to README, see #1348
+      (@adrian-rivera)
+    - Switched to "·" (U+00B7) Middle Dot from "•" (U+2022) Bullet
+      for non-printing spaces, see #1056 and #1100 (@LordFlashmeow)
+    - Added zsh shell completion script, see #1136 (@Kienyew)
+    - Improved --help text (@sharkdp)
+    - Added custom languages/themes sections to manpage (@eth-p)
+  * Syntaxes
+    - Manpage syntax highlighting has been improved, see #1315
+      (@keith-hall)
+    - Add Svelte file syntax, see #1285 (@kjmph)
+    - Update AsciiDoc syntax, see #1034 (@rxt1077)
+    - GLSL (@caioalonso)
+    - Add Nginx and Apache config file syntax, see #1137 (@kjmph,
+      @niklasmohrin)
+    - Use fstab syntax for crypttab files, see #1073 (@sharkdp)
+    - Support syntax highlighting for files in $XDG_CONFIG_HOME/git/,
+      see #1191 (@ahmedelgabri)
+  * New themes
+    - Coldark, see #1329 (@ArmandPhilippot)
+    - Gruvbox, see #1069 (@KyleOndy)
+    - base16-256 for base16-shell users, see #1111 (@mk12)
+  * bat as a library
+    - Add APIs to provide Input descriptions with InputDescription (@eth-p)
+    - Add function to directly provide Inputs to PrettyPrinter (@eth-p)
+    - Breaking: Input::theme_preview_file is no longer available. (@eth-p)
+  * Packaging
+    - Package maintainers: note that we now include zsh shell completion files
+    - Removed build dependency on liquid (@sharkdp).
+
 -------------------------------------------------------------------
 Mon Jun  1 14:01:29 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
