@@ -58,15 +58,11 @@ sed -i 's/--flake8 --black --cov//' pytest.ini
 
 %python_expand rm %{buildroot}%{$python_sitelib}/jaraco/__init__.py
 
-%if 0%{?have_python2} && ! 0%{?skip_python2}
-%py_compile %{buildroot}%{python2_sitelib}/jaraco/
-%py_compile -O %{buildroot}%{python2_sitelib}/jaraco/
-%endif
-
-%if 0%{?have_python3} && ! 0%{?skip_python3}
+%{?python_compileall}
+%{!?python_compileall: # if we haven no python_compileall we are for sure still without multiple python3 flavors.
 %py3_compile %{buildroot}%{python3_sitelib}/jaraco/
 %py3_compile -O %{buildroot}%{python3_sitelib}/jaraco/
-%endif
+}
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 

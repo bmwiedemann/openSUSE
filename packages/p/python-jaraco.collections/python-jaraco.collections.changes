@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec  5 22:16:50 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- compile cache for all python3 flavors, remove unused python2
+  compile statements -- gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Mon Mar  9 12:59:46 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 3.0.0
