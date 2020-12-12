@@ -41,6 +41,9 @@ BuildRequires:  python-rpm-macros
 Requires:       net-tools
 Requires:       procps
 %if %{with test}
+%if 0%{suse_version} < 1550
+BuildRequires:  %{python_module unittest2}
+%endif
 BuildRequires:  net-tools
 BuildRequires:  procps
 %if %{with python2}

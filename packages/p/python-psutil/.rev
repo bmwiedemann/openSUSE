@@ -564,4 +564,12 @@ It does not make sense to double the whole HISTORY of upstream source in .change
 - skip-obs.patch, skip_failing_tests.patch: rediff</comment>
     <requestid>852339</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>94d7e03d68dce14829876581601eb443</srcmd5>
+    <version>5.7.3</version>
+    <time>1607801304</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854885</requestid>
+  </revision>
 </revisionlist>
