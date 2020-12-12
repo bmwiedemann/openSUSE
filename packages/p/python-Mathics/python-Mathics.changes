@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Nov 14 22:17:20 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.1.0:
+  * Add Symbolic Comparisons [gh#mathics/Mathics#1000].
+  * Support for externally PyPI-packagable builtin modules -
+    PyMathics.
+  * SetDirectory fixes [gh#mathics/Mathics#994].
+  * Catch `PatternError Exceptions.
+  * Fix formatting of .. and ... (RepeatAll)
+  * tokenization of \. without a following space (ReplaceAll)
+    [gh#mathics/Mathics#992].
+  * Support for assignments to named `Pattern`
+  * Improving support for `Names [gh#mathics/Mathics#1003].
+  * Adding a MathicsSession class to simplify running Mathics from
+    Python [gh#mathics/Mathics#1001].
+  * Improving support for `Protect` and `Unprotect` list
+    of symbols and regular expressions [gh#mathics/Mathics#1003].
+- Updated source URL.
+- Disable python2 as it is not supported any more by upstream.
+- Run tests:
+  * Omit home_page tests as they require a running django server
+    set up first.
+  * Add additional BuildRequires needed for tests: python-Pint,
+    python-chardet, python-palettable, python-pytest,
+    python-requests.
+- Sympy >= 1.6 is now required.
+
+-------------------------------------------------------------------
 Mon May 25 06:50:45 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

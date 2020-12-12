@@ -17,15 +17,17 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define pyname Mathics
+# Upstream no longer supports python2
+%define skip_python2 1
+%define pyname Mathics3
 Name:           python-Mathics
-Version:        1.0
+Version:        1.1.0
 Release:        0
 Summary:        A general-purpose computer algebra system
 # Mathics itself is licensed as GPL-3.0 but it includes third-party software with MIT, BSD-3-Clause, and Apache-2.0 Licensing; also includes data from wikipedia licensed under CC-BY-SA-3.0 and GFDL-1.3
 License:        GPL-3.0-only AND BSD-3-Clause AND MIT AND Apache-2.0
 URL:            https://mathics.github.io/
-Source:         https://github.com/mathics/Mathics/archive/v%{version}.tar.gz
+Source:         https://github.com/mathics/Mathics/archive/%{version}/%{pyname}-%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 1.8}
 BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module devel}
@@ -35,14 +37,21 @@ BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.10}
-BuildRequires:  %{python_module sympy}
+BuildRequires:  %{python_module sympy >= 1.6}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 1.8
 Requires:       python-mpmath >= 0.19
 Requires:       python-python-dateutil
 Requires:       python-six >= 1.10
-Requires:       python-sympy
+Requires:       python-sympy >= 1.6
+# SECTION For tests
+BuildRequires:  %{python_module Pint}
+BuildRequires:  %{python_module chardet}
+BuildRequires:  %{python_module palettable}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests}
+# /SECTION
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %python_subpackages
@@ -51,7 +60,7 @@ Requires(postun): update-alternatives
 Mathics is a general-purpose computer algebra system (CAS). It is meant to be a free, lightweight alternative to Mathematica.
 
 %prep
-%setup -q -n %{pyname}-%{version}
+%setup -q -n Mathics-%{version}
 %autopatch -p1
 
 # FIX SPURIOUS EXEC PERMISSIONS
@@ -81,8 +90,8 @@ popd
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Tests fail with new sympy, probably worth fixing upstream
-#%%python_exec setup.py test
+# Home page tests require django server up and running
+%pytest -k 'not test_home_page'
 
 %post
 %python_install_alternative mathics
