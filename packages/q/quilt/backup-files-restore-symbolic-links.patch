@@ -1,0 +1,164 @@
+From: Jean Delvare <jdelvare@suse.de>
+Date: Wed, 9 Dec 2020 11:39:56 +0100
+Subject: backup-files: Restore symbolic links
+Patch-mainline: yes
+Git-commit: 26f7bc93d2bbe49a96d23f879b24e82651392497
+References: https://savannah.nongnu.org/bugs/index.php?59479
+
+As "patch" originally did not handle symbolic links, backup-files
+didn't have to care about them either. But now that git has
+introduced an extended syntax which allows manipulating symbolic
+links in patch files, "quilt push" may create or delete symbolic
+links, which means that backup-files must support such operations
+too.
+
+Also extend the backup-files test case to cover these operations.
+
+This fixes bug #59479:
+https://savannah.nongnu.org/bugs/index.php?59479
+
+Signed-off-by: Jean Delvare <jdelvare@suse.de>
+---
+ quilt/scripts/backup-files.in |   40 ++++++++++++++++++++++++++++++----------
+ test/backup-files.test        |   33 +++++++++++++++++++++++++++++++++
+ 2 files changed, 63 insertions(+), 10 deletions(-)
+
+--- a/quilt/scripts/backup-files.in
++++ b/quilt/scripts/backup-files.in
+@@ -89,7 +89,7 @@ backup()
+ 	dir=$(dirname "$backup")
+ 	[ -d "$dir" ] || mkdir -p "$dir"
+ 
+-	if [ -e "$file" ]; then
++	if [ -L "$file" -o -e "$file" ]; then
+ 		$ECHO "Copying $file"
+ 		if [ -n "$OPT_NOLINKS" -a "$(stat @STAT_HARDLINK@ "$file")" = 1 ]; then
+ 			cp -p "$file" "$backup"
+@@ -110,24 +110,28 @@ restore()
+ 	local file=$1
+ 	local backup=$OPT_PREFIX$file
+ 
+-	if [ ! -e "$backup" ]; then
++	if [ ! -L "$backup" -a ! -e "$backup" ]; then
+ 		return 1
+ 	fi
+-	if [ -s "$backup" ]; then
++	if [ -L "$backup" -o -s "$backup" ]; then
+ 		$ECHO "Restoring $file"
+-		if [ -e "$file" ]; then
++		if [ -L "$file" -o -e "$file" ]; then
+ 			rm "$file"
+ 		else
+ 			mkdir -p "$(dirname "$file")"
+ 		fi
+-		ln "$backup" "$file" 2>&4 || cp -p "$backup" "$file"
++		if [ -L "$backup" ]; then
++			ln -s "$(readlink "$backup")" "$file"
++		else
++			ln "$backup" "$file" 2>&4 || cp -p "$backup" "$file"
++		fi
+ 
+-		if [ -n "$OPT_TOUCH" ]; then
++		if [ -n "$OPT_TOUCH" -a ! -L "$file" ]; then
+ 			touch "$file"
+ 		fi
+ 	else
+ 		$ECHO "Removing $file"
+-		if [ -e "$file" ]; then
++		if [ -L "$file" -o -e "$file" ]; then
+ 			rm "$file"
+ 		fi
+ 	fi
+@@ -145,11 +149,13 @@ restore_all()
+ 	# Store the list of files to process
+ 	EMPTY_FILES=$(gen_tempfile)
+ 	NONEMPTY_FILES=$(gen_tempfile)
+-	trap "rm -f \"$EMPTY_FILES\" \"$NONEMPTY_FILES\"" EXIT
++	LINK_FILES=$(gen_tempfile)
++	trap "rm -f \"$EMPTY_FILES\" \"$NONEMPTY_FILES\" \"$LINK_FILES\"" EXIT
+ 
+ 	cd "$OPT_PREFIX"
+ 	find . -type f -size 0 -print0 > "$EMPTY_FILES"
+ 	find . -type f -size +0 -print0 > "$NONEMPTY_FILES"
++	find . -type l -print0 > "$LINK_FILES"
+ 	cd "$OLDPWD"
+ 
+ 	if [ -s "$EMPTY_FILES" ]; then
+@@ -189,6 +195,20 @@ restore_all()
+ 		fi
+ 	fi
+ 
++	if [ -s "$LINK_FILES" ]; then
++		(cd "$OPT_PREFIX" && find . -type d -print0) \
++		| xargs -0 mkdir -p
++
++		while read -d $'\0' -r
++		do
++			local file=${REPLY#./}
++			local backup=$OPT_PREFIX$file
++
++			$ECHO "Restoring $file"
++			ln -sf "$(readlink "$backup")" "$file"
++		done < "$LINK_FILES"
++	fi
++
+ 	if [ -z "$OPT_KEEP_BACKUP" ]; then
+ 		rm -rf "$OPT_PREFIX"
+ 	fi
+@@ -212,7 +232,7 @@ copy()
+ 	dir=$(dirname "$backup")
+ 	[ -d "$dir" ] || mkdir -p "$dir"
+ 
+-	if [ -e "$file" ]; then
++	if [ -L "$file" -o -e "$file" ]; then
+ 		$ECHO "Copying $file"
+ 		cp -p "$file" "$backup"
+ 	else
+@@ -234,7 +254,7 @@ copy_many()
+ 	cat "$OPT_FILE" \
+ 	| while read
+ 	do
+-		if [ -e "$REPLY" ]; then
++		if [ -L "$REPLY" -o -e "$REPLY" ]; then
+ 			printf '%s\0' "$REPLY" >&3
+ 		else
+ 			# This is a rare case, not worth optimizing
+--- a/test/backup-files.test
++++ b/test/backup-files.test
+@@ -229,3 +229,36 @@ Unit test of the backup-files script.
+ 	> 1
+ 	$ [ ! -s new ] || echo "file snapshot/new should be empty"
+ 	$ rm -rf snapshot
++
++	# Test backup and restoration of a symbolic link
++	$ mkdir dir
++	$ ln -s foo dir/link
++	$ readlink dir/link
++	> foo
++	$ %{QUILT_DIR}/scripts/backup-files -B backup/ -b dir/link
++	> Copying dir/link
++	$ readlink backup/dir/link
++	> foo
++	$ rm -f dir/link
++	$ echo crap > dir/link
++	$ %{QUILT_DIR}/scripts/backup-files -B backup/ -r -k dir/link
++	> Restoring dir/link
++	$ readlink dir/link
++	> foo
++
++	# Same but reading from a file
++	$ rm -f dir/link
++	$ echo crap > dir/link
++	$ %{QUILT_DIR}/scripts/backup-files -B backup/ -r -k -f -
++	< dir/link
++	> Restoring dir/link
++	$ readlink dir/link
++	> foo
++
++	# Same but without specifying the file
++	$ rm -f dir/link
++	$ echo crap > dir/link
++	$ %{QUILT_DIR}/scripts/backup-files -B backup/ -r -
++	> Restoring dir/link
++	$ readlink dir/link
++	> foo

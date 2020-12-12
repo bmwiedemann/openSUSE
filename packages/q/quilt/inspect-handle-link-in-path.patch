@@ -1,0 +1,38 @@
+From: Jean Delvare <jdelvare@suse.de>
+Subject: inspect-wrapper: procfs resolves links
+Patch-mainline: yes
+Git-commit: 6363f217b08b07cabbbe09d2d2ddc68596502e38
+References: boo#1179023
+
+When patch files are passed through stdin, we get the actual patch
+file name from procfs. It turns out that procfs resolves symbolic
+links, and that breaks our later attempt to strip the prefix from
+the path to extract a relative path to the patch file.
+
+This is solved by also resolving symbolic links in the prefix
+before stripping it.
+
+Signed-off-by: Jean Delvare <jdelvare@suse.de>
+---
+ quilt/scripts/inspect-wrapper.in |   10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+--- a/quilt/scripts/inspect-wrapper.in
++++ b/quilt/scripts/inspect-wrapper.in
+@@ -268,7 +268,15 @@ esac
+ if [ -n "$QUILT_SETUP_FAST" -a -z "$inputfile" ]
+ then
+ 	inputfile=$(readlink /proc/self/fd/0)
+-	[ "${inputfile:0:1}" = / -a -f "$inputfile" ] || inputfile=
++	if [ "${inputfile:0:1}" = / -a -f "$inputfile" ]
++	then
++		# procfs resolved the symlinks, so do the same, otherwise the
++		# path prefix won't match
++		RPM_SOURCE_DIR=$(cd -P "$RPM_SOURCE_DIR" && echo "$PWD")/
++	else
++		# Didn't work, so fall back to the slow method
++		inputfile=
++	fi
+ fi
+ 
+ if [ -n "$inputfile" ]

@@ -1,7 +1,7 @@
 #
 # spec file for package quilt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,18 +35,21 @@ Requires:       less
 Requires:       mktemp
 Requires:       patch
 Requires:       perl
-Url:            http://savannah.nongnu.org/projects/quilt
+URL:            http://savannah.nongnu.org/projects/quilt
 Source:         %{name}-%{version}.tar.bz2
 Source1:        suse-start-quilt-mode.el
 Patch1:         expand.diff
 Patch2:         quilt-support-vimdiff.patch
 Patch3:         test-faildiff-workaround-order-bug.patch
 Patch4:         suse-workaround-pseudo-release.patch
+Patch5:         inspect-handle-link-in-path.patch
+Patch6:         backup-files-restore-symbolic-links.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %if 0%{?suse_version}
 Recommends:     procmail
 Recommends:     bzip2
+Recommends:     ed
 Recommends:     /usr/bin/rpmbuild
 %endif
 %if 0%{?suse_version} > 1120
@@ -64,6 +67,8 @@ un-applied, refreshed, and more.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
+%patch6 -p1
 
 %build
 # --with-rpmbuild=/usr/lib/rpm/rpmb:

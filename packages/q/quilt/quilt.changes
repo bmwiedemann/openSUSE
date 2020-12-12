@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec  9 14:15:38 UTC 2020 - Jean Delvare <jdelvare@suse.com>
+
+- backup-files-restore-symbolic-links.patch: Handle git-generated
+  patches which include symbolic link manipulation (savannah bug
+  #59479).
+- quilt.spec: Recommend "ed", as the annotate command requires it.
+
+-------------------------------------------------------------------
+Tue Nov 24 14:37:49 UTC 2020 - Jean Delvare <jdelvare@suse.com>
+
+- inspect-handle-link-in-path.patch: inspect-wrapper: procfs
+  resolves links, so we must do the same (bsc#1179023)
+
+-------------------------------------------------------------------
 Fri Mar 29 16:06:38 UTC 2019 - Jean Delvare <jdelvare@suse.com>
 
 - test-faildiff-workaround-order-bug.patch: Avoid false-positive
