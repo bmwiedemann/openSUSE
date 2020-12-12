@@ -5014,6 +5014,7 @@
     <package name="mailimporter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="mailimporter-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="malcontent" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="malcontent-control" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="malcontent-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="mate-calc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="mate-calc-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->

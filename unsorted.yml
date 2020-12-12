@@ -1905,6 +1905,7 @@ unsorted:
   - chasen 
   - chasen-devel 
   - chck-devel 
+  - chealpix-devel 
   - check-create-certificate 
   - check-devel 
   - check_postgres 
@@ -6011,6 +6012,7 @@ unsorted:
   - googler 
   - gops 
   - gos-wallpapers 
+  - goss 
   - gource 
   - govpn 
   - govpn-server 
@@ -6615,6 +6617,8 @@ unsorted:
   - hdsploader 
   - hdspmixer 
   - headmore 
+  - healpix 
+  - healpix_cxx-devel 
   - health-check 
   - health-check-bash-completion 
   - health-checker-plugins-caasp 
@@ -9346,7 +9350,7 @@ unsorted:
   - libSampleICC1 
   - libSavitar-devel 
   - libSavitar0 
-  - libSimGearCore-2020_3_2 
+  - libSimGearCore-2020_3_4 
   - libSoQt20 
   - libSoapyOsmoSDR0 
   - libSoundTouch1-32bit: [x86_64] 
@@ -10024,7 +10028,7 @@ unsorted:
   - libcamd-doc 
   - libcamel-1_2-62-32bit: [x86_64] 
   - libcamera-devel 
-  - libcamera-suse2 
+  - libcamera-suse3 
   - libcamera-tools 
   - libcanberra-devel 
   - libcanberra-gtk-devel 
@@ -10113,6 +10117,7 @@ unsorted:
   - libchardet1-32bit: [x86_64] 
   - libcharls2 
   - libchck0 
+  - libchealpix0 
   - libcheck0 
   - libcheck0-32bit: [x86_64] 
   - libcheese-common: [i586] 
@@ -11461,6 +11466,7 @@ unsorted:
   - libhdf5hl_fortran_1_10_7-gnu-openmpi4-hpc 
   - libhdhomerun-devel 
   - libhdhomerun2 
+  - libhealpix_cxx2 
   - libheif-devel 
   - libheimdal 
   - libheimdal-devel 
@@ -15585,6 +15591,7 @@ unsorted:
   - mako 
   - malaga-suomi 
   - malcontent: [i586] 
+  - malcontent-control: [i586] 
   - malcontent-devel 
   - malcontent-lang: [i586] 
   - mame: [x86_64] 
