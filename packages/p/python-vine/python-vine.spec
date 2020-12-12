@@ -1,7 +1,7 @@
 #
 # spec file for package python-vine
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-vine
-Version:        1.3.0
+Version:        5.0.0
 Release:        0
 Summary:        Python Promises
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
-Url:            http://github.com/celery/vine/
+URL:            http://github.com/celery/vine/
 Source:         https://pypi.io/packages/source/v/vine/vine-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -54,7 +54,8 @@ Promises implementation for python.
 
 %files %python_files
 %defattr(-,root,root,-)
-%doc Changelog LICENSE README.rst
+%doc Changelog README.rst
+%license LICENSE
 %{python_sitelib}/*
 
 %changelog
