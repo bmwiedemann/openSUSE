@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec  9 16:08:26 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Import commit d5e7958d35dc7758fe2e87e0a8193b93ce1a1b15 (merge of v246.7)
+
+  450792497e sd-event: fix delays assert brain-o (#17790)
+  1040a19d08 udevadm: rename option '--log-priority' into '--log-level'
+  a7b41e19bd udev: rename kernel option 'log_priority' into 'log_level'
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/f6104ea5f554233e34b94ffd92da8332c3bd7d8f...d5e7958d35dc7758fe2e87e0a8193b93ce1a1b15
+
+-------------------------------------------------------------------
 Tue Dec  1 09:42:11 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Import commit f6104ea5f554233e34b94ffd92da8332c3bd7d8f

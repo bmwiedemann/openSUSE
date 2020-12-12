@@ -24,7 +24,7 @@
 %define bootstrap 0
 %define mini %nil
 %define min_kernel_version 4.5
-%define suse_version +suse.45.gf6104ea5f5
+%define suse_version +suse.50.gd5e7958d35
 
 %bcond_with     gnuefi
 %if 0%{?bootstrap}
@@ -53,7 +53,7 @@
 
 Name:           systemd
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        246.6
+Version:        246.7
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
