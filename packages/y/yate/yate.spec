@@ -18,7 +18,11 @@
 #
 
 
-%define build_qt4 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
+%define build_qt4 1
+%else
+%define build_qt4 0
+%endif
 
 Name:           yate
 Version:        6.2.0

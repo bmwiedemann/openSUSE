@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 11 11:59:11 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Fix for previous change so the !%{build_qt4} test actually works
+
+-------------------------------------------------------------------
 Thu Dec 10 14:04:33 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Do not build the qt4 subpackage for Leap 15.3 or newer
