@@ -18,16 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sh
-Version:        1.13.1
+Version:        1.14.1
 Release:        0
 Summary:        Python subprocess interface
 License:        MIT
 URL:            https://github.com/amoffat/sh
 Source:         https://files.pythonhosted.org/packages/source/s/sh/sh-%{version}.tar.gz
-Patch0:         no-coverage.patch
-Patch1:         fix-test_signal_group.diff
-Patch2:         fix-test_general_signal.diff
-Patch3:         fix-sleep-path-in-test.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -45,7 +41,6 @@ sh is not a collection of system commands implemented in Python.
 
 %prep
 %setup -q -n sh-%{version}
-%autopatch -p1
 
 %build
 %python_build
