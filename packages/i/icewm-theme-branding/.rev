@@ -114,4 +114,12 @@ icewm-theme-branding icewm-config-upstream</comment>
     <comment></comment>
     <requestid>842211</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>da49cd6e02b6d1951059d69480a72aa1</srcmd5>
+    <version>1.2.5</version>
+    <time>1607801237</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854466</requestid>
+  </revision>
 </revisionlist>

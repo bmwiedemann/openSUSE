@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  9 02:36:17 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Change file /etc/icewm/startup: Pass environment variables to
+  systemd --user session (bsc#1179237).
+
+-------------------------------------------------------------------
 Fri Oct  9 06:52:40 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
 
 - Bring back the obsoletion of icemwm-upstream-config (bsc#1173441,
