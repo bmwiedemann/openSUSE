@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  9 10:26:01 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Support TW with multiple python3 flavors
+  * gh#openSUSE/python-rpm-macros#66
+  * fix BuildRequires
+  * fix %python_expand $python executable replacement
+
+-------------------------------------------------------------------
 Sun Jun 14 09:11:15 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.8.0:
