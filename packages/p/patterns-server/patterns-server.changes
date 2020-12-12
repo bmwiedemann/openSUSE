@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  9 18:03:04 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- kvm-server for s390x: beginning with the v5.2.0 qemu package,the
+  s390x specific sub-package is named qemu-s390x, not qemu-s390.
+  Reference using the new name (boo#1177764 jsc#SLE-17060)
+
+-------------------------------------------------------------------
 Wed Mar 25 13:14:43 UTC 2020 - Sergio Lindo Mansilla <slindomansilla@suse.com>
 
 - Use new macro %arm64 instead of bare arch name

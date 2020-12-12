@@ -47,9 +47,9 @@ Provides:       pattern() = dhcp_dns_server
 Provides:       pattern-icon() = pattern-server
 Provides:       pattern-order() = 3040
 Provides:       pattern-visible()
-Requires:       pattern() = basesystem
 Requires:       bind
 Requires:       dhcp-server
+Requires:       pattern() = basesystem
 Recommends:     bind-chrootenv
 Recommends:     bind-doc
 Recommends:     dhcp
@@ -113,8 +113,8 @@ Provides:       pattern() = file_server
 Provides:       pattern-icon() = pattern-server
 Provides:       pattern-order() = 2900
 Provides:       pattern-visible()
-Requires:       pattern() = basesystem
 Requires:       nfs-kernel-server
+Requires:       pattern() = basesystem
 Recommends:     nfsidmap
 Recommends:     samba
 Recommends:     samba-client
@@ -153,8 +153,8 @@ Provides:       pattern() = gateway_server
 Provides:       pattern-icon() = pattern-server
 Provides:       pattern-order() = 3020
 Provides:       pattern-visible()
-Requires:       pattern() = basesystem
 Requires:       wireshark
+Requires:       pattern() = basesystem
 Recommends:     arptables
 Recommends:     calamaris
 Recommends:     ddclient
@@ -192,8 +192,8 @@ Provides:       pattern() = kvm_server
 Provides:       pattern-icon() = pattern-server
 Provides:       pattern-order() = 3099
 Provides:       pattern-visible()
-Requires:       pattern() = basesystem
 Requires:       tftp
+Requires:       pattern() = basesystem
 Recommends:     libvirt-daemon-qemu
 Recommends:     tigervnc
 Recommends:     virt-install
@@ -215,7 +215,7 @@ Requires:       qemu-x86
 Requires:       qemu-ppc
 %endif
 %ifarch s390x
-Requires:       qemu-s390
+Requires:       qemu-s390x
 %endif
 %ifarch %arm %arm64
 Requires:       qemu-arm
@@ -239,12 +239,12 @@ Provides:       pattern() = kvm_tools
 Provides:       pattern-icon() = pattern-server
 Provides:       pattern-order() = 1090
 Provides:       pattern-visible()
-Requires:       pattern() = basesystem
-Requires:       pattern() = kvm_server
 Requires:       libvirt-client
 Requires:       libvirt-daemon-config-network
 Requires:       libvirt-daemon-qemu
 Requires:       tigervnc
+Requires:       pattern() = basesystem
+Requires:       pattern() = kvm_server
 # bnc#868542
 Requires:       virt-manager
 Requires:       vm-install
@@ -283,8 +283,8 @@ Provides:       pattern() = lamp_server
 Provides:       pattern-icon() = pattern-web-devel
 Provides:       pattern-order() = 3000
 Provides:       pattern-visible()
-Requires:       pattern() = basesystem
 Requires:       apache2
+Requires:       pattern() = basesystem
 Recommends:     apache2-doc
 Recommends:     apache2-example-pages
 Recommends:     apache2-mod_php7
@@ -320,8 +320,8 @@ Provides:       pattern() = mail_server
 Provides:       pattern-icon() = pattern-server
 Provides:       pattern-order() = 2980
 Provides:       pattern-visible()
-Requires:       pattern() = basesystem
 Requires:       vacation
+Requires:       pattern() = basesystem
 Recommends:     amavisd-new
 Recommends:     clamav
 Recommends:     cyrus-imapd
@@ -353,8 +353,8 @@ Provides:       pattern() = print_server
 Provides:       pattern-icon() = pattern-server
 Provides:       pattern-order() = 2960
 Provides:       pattern-visible()
-Requires:       pattern() = basesystem
 Requires:       cups
+Requires:       pattern() = basesystem
 Recommends:     OpenPrintingPPDs-ghostscript
 Recommends:     OpenPrintingPPDs-hpijs
 Recommends:     OpenPrintingPPDs-postscript
@@ -398,12 +398,12 @@ Provides:       pattern() = xen_server
 Provides:       pattern-icon() = pattern-server
 Provides:       pattern-order() = 3080
 Provides:       pattern-visible()
-Requires:       pattern() = basesystem
 Requires:       kernel-xen
 Requires:       tftp
 Requires:       xen
 Requires:       xen-libs
 Requires:       xen-tools
+Requires:       pattern() = basesystem
 Recommends:     libvirt-daemon-xen
 Recommends:     tigervnc
 # #382423
@@ -436,12 +436,12 @@ Provides:       pattern() = xen_tools
 Provides:       pattern-icon() = pattern-server
 Provides:       pattern-order() = 1080
 Provides:       pattern-visible()
-Requires:       pattern() = basesystem
-Requires:       pattern() = xen_server
 Requires:       libvirt-client
 Requires:       libvirt-daemon-config-network
 Requires:       libvirt-daemon-xen
 Requires:       tigervnc
+Requires:       pattern() = basesystem
+Requires:       pattern() = xen_server
 # bnc#868542
 Requires:       virt-manager
 Requires:       vm-install
