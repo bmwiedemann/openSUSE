@@ -89,6 +89,13 @@ Libmalcontent implements parental controls support which can be
 used by applications to filter or limit the access of child
 accounts to inappropriate content.
 
+%package control
+Summary:        Parental Control Application
+Requires:       malcontent >= %{version}
+
+%description control
+Parental Control management application for Malcontent
+
 %prep
 %autosetup
 
@@ -115,12 +122,8 @@ mv %{buildroot}%{_datadir}/polkit-1/rules.d/com.endlessm.ParentalControls.rules 
 %doc com.endlessm.ParentalControls.rules
 /%{_lib}/security/pam_malcontent.so
 %{_bindir}/malcontent-client
-%{_bindir}/malcontent-control
 %{_mandir}/man8/malcontent-client.8%{?ext_man}
 %{_datadir}/dbus-1/interfaces/com.endlessm.ParentalControls.*
-%{_datadir}/metainfo/org.freedesktop.MalcontentControl.appdata.xml
-%{_datadir}/icons/hicolor/*/apps/org.freedesktop.MalcontentControl*
-%{_datadir}/applications/org.freedesktop.MalcontentControl.desktop
 %dir %{_datadir}/accountsservice
 %dir %{_datadir}/accountsservice/interfaces
 %{_datadir}/accountsservice/interfaces/com.endlessm.ParentalControl*
@@ -150,5 +153,11 @@ mv %{buildroot}%{_datadir}/polkit-1/rules.d/com.endlessm.ParentalControls.rules 
 %{_libdir}/pkgconfig/malcontent-ui-0.pc
 %{_datadir}/gir-1.0/Malcontent-0.gir
 %{_datadir}/gir-1.0/MalcontentUi-0.gir
+
+%files control
+%{_bindir}/malcontent-control
+%{_datadir}/metainfo/org.freedesktop.MalcontentControl.appdata.xml
+%{_datadir}/icons/hicolor/*/apps/org.freedesktop.MalcontentControl*
+%{_datadir}/applications/org.freedesktop.MalcontentControl.desktop
 
 %changelog

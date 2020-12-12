@@ -18,4 +18,13 @@
   file as sample file (boo#1177974#c8). (forwarded request 850957 from dimstar)</comment>
     <requestid>851055</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c9574a5bcf80500583eff0de7326d449</srcmd5>
+    <version>0.9.0</version>
+    <time>1607801292</time>
+    <user>dimstar_suse</user>
+    <comment>- Split MalcontentControl into seperate package so a library
+  doesn't require a desktop application. (forwarded request 854615 from hellcp)</comment>
+    <requestid>854630</requestid>
+  </revision>
 </revisionlist>
