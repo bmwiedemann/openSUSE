@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  7 07:22:31 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Set environment to utf-8 to allow tests to pass on Python 2. (bsc#1178341) 
+
+-------------------------------------------------------------------
 Tue Oct 13 10:51:07 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - remove dependency on pytest-relaxed
