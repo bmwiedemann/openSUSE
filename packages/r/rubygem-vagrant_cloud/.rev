@@ -47,4 +47,23 @@
     <comment>Revert sr#837782</comment>
     <requestid>840197</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8c4c9421458769dcfd325273e823e863</srcmd5>
+    <version>3.0.2</version>
+    <time>1607801515</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release 3.0.2
+# v3.0.2 (October 30, 2020)
+* Raise custom exception on request error [GH-67](https://github.com/hashicorp/vagrant_cloud/pull/67)
+# v3.0.1 (October 27, 2020)
+* Fixes on authentication related client methods [GH-65](https://github.com/hashicorp/vagrant_cloud/pull/65)
+* Prevent frozen data modifications on deletions [GH-65](https://github.com/hashicorp/vagrant_cloud/pull/65)
+* Update direct upload callback behaviors [GH-65](https://github.com/hashicorp/vagrant_cloud/pull/65)
+# v3.0.0 (September 21, 2020)
+* Refactor library implementation [GH-59](https://github.com/hashicorp/vagrant_cloud/pull/59)
+* Add support for direct storage uploads [GH-62](https://github.com/hashicorp/vagrant_cloud/pull/62)
+_NOTE_: This release includes breaking changes and is not backwards compatible
+</comment>
+    <requestid>854951</requestid>
+  </revision>
 </revisionlist>

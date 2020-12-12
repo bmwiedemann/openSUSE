@@ -25,7 +25,7 @@
 # of those fields
 #
 Name:           rubygem-vagrant_cloud
-Version:        2.0.3
+Version:        3.0.2
 Release:        0
 Summary:        Ruby library for the HashiCorp Vagrant Cloud API
 License:        MIT
