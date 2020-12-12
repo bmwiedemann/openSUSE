@@ -18,7 +18,7 @@
 
 %define _name libsigc++
 Name:           libsigc++3
-Version:        3.0.4
+Version:        3.0.6
 Release:        0
 Summary:        Typesafe Signal Framework for C++
 License:        LGPL-3.0-or-later
@@ -29,7 +29,6 @@ Source99:       baselibs.conf
 
 BuildRequires:  gcc-c++
 BuildRequires:  meson
-BuildRequires:  mm-common >= 0.9.12
 BuildRequires:  pkgconfig
 
 %description

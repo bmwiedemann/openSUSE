@@ -141,4 +141,21 @@
     <comment>Update to 3.0.4 (forwarded request 850293 from dimstar)</comment>
     <requestid>851049</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9a459d2358e25487a03b8b9c188ef8c7</srcmd5>
+    <version>3.0.6</version>
+    <time>1607801265</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.6:
+  + Build: Meson build: Fix versioning on macOS.
+  + Documentation:
+    - sigc++/sigc++.h: Describe how to use libsigc++ with Meson.
+    - Update links to the web page, now at
+      libsigcplusplus.github.io/libsigcplusplus
+- Remove mm-common BuildRequires: no longer needed after the switch
+  to meson.
+
+  + No longer ship the htmldoc as part of the devel package. (forwarded request 854496 from dimstar)</comment>
+    <requestid>854567</requestid>
+  </revision>
 </revisionlist>
