@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-breathe
-Version:        4.22.1
+Version:        4.24.1
 Release:        0
 Summary:        Sphinx Doxygen renderer
 License:        BSD-3-Clause
@@ -32,7 +32,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.9}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Sphinx >= 2.0
+Requires:       python-Sphinx >= 3.0
 Requires:       python-docutils >= 0.12
 Requires:       python-setuptools
 Requires:       python-six >= 1.9

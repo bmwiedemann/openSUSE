@@ -132,4 +132,12 @@
   * Avoid duplicate doxygen targets when debug tracing. #563</comment>
     <requestid>841649</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>56cae0af4e6dd486c7f63ea69b167983</srcmd5>
+    <version>4.24.1</version>
+    <time>1607801381</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854518</requestid>
+  </revision>
 </revisionlist>
