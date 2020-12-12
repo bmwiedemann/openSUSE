@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Dec 10 16:21:44 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.0.0+git.20201202:
+  * xtrx_open_string: properly terminate 4096-byte paramstrings
+  * soapy: Fix RX stream activation by avoiding unintended
+    runtime error.
+  * Fix test_xtrx_soapy build issue
+  * soapy: Fix the timestamp calculation of the first sample in
+    the burst
+  * soapy: Implement support of special mode for simultaneous Rx
+    and Tx streams activation
+  * soapy: add the option for setting antenna in auto mode using
+    the function setAntenna()
+  * soapy: set antenna in auto mode during setup stream procedure
+  * soapy: Explain an internal variable purpose.
+  * Fix typos in the log output.
+  * add RCVEX_REPORT_GTIME to report global time on recv()
+  * Set reference clock at all levels when needed.
+  * Set _actual_masterclock in the SoapySDR module.
+  * Remove xtrx_fe_lms7.c - we no longer support libLMS7002M.
+  * Add API flags to work with time sync without seconds recovery
+  * Fix compilation due to xtrx_api.h not being found
+  * octoCAL: add ability to switch A/B channels in GUI
+  * add new octo version
+  * fix GPIO xonfiguration
+  * xtrx_fe_octorx0.c: don't use absolute include paths for
+    external libraries
+  * build and install example
+  * fix include for proper build
+  * add octoRFX6 support
+  * fix uninitialized variables
+- Drop not longer needed patch
+  * libxtrx-fix-include.patch
+- Rebase and rename patch
+  * libxtrx-fix-xtrx_fft.patch -> 0001-Fix-CMake-FindQCustomPlot.patch
+- Add patch:
+  * 0001-Fix-test_xtrx_soapy-build-issue.patch
+
+-------------------------------------------------------------------
 Thu Dec 27 09:41:38 UTC 2018 - mardnh@gmx.de
 
 - Update to version 0.0.0+git.20181227:

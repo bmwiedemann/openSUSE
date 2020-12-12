@@ -1,8 +1,8 @@
 #
 # spec file for package libxtrx
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2017-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@
 %define soapy_modname soapysdr%{soapy_modver}-module-xtrx
 
 Name:           libxtrx
-Version:        0.0.0+git.20181227
+Version:        0.0.0+git.20201202
 Release:        0
 Summary:        High level XTRX API
 License:        LGPL-2.1-only
@@ -31,8 +31,9 @@ Group:          Development/Libraries/C and C++
 URL:            http://xtrx.io
 #Git-Clone:     https://github.com/xtrx-sdr/libxtrx.git
 Source:         %{name}-%{version}.tar.xz
-Patch1:         libxtrx-fix-include.patch
-Patch2:         libxtrx-fix-xtrx_fft.patch
+# We are still using SoapySDR ABI 0.7 (revert change for ABI 0.8 comapatibility)
+Patch0:         0001-Fix-test_xtrx_soapy-build-issue.patch
+Patch1:         0001-Fix-CMake-FindQCustomPlot.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
@@ -69,6 +70,7 @@ applications that want to make use of libxtrx.
 %package -n xtrx-tools
 Summary:        Tools for XTRX
 Group:          Productivity/Hamradio/Other
+Requires:       %{soapy_modname}
 
 %description -n xtrx-tools
 Tools for XTRX SDR devices.
@@ -83,8 +85,8 @@ A Soapy module that supports XTRX devices within the Soapy API.
 
 %prep
 %setup -q
+%patch0 -p1 -R
 %patch1 -p1
-%patch2 -p1
 
 %build
 # FIXME: Architecture detection in the used CMake is br0ken, use FORCE_ARCH for now
@@ -102,8 +104,10 @@ A Soapy module that supports XTRX devices within the Soapy API.
 %install
 %cmake_install
 install -d %{buildroot}/%{_bindir}
-install -m 0755 build/examples/xtrx_fft/mainwindow %{buildroot}/%{_bindir}/xtrx_fft
+#install -m 0755 build/examples/xtrx_fft/mainwindow %{buildroot}/%{_bindir}/xtrx_fft
+mv %{buildroot}/%{_libdir}/xtrx/xtrx_fft %{buildroot}/%{_bindir}/xtrx_fft
 mv %{buildroot}/%{_libdir}/xtrx/test_xtrx %{buildroot}/%{_bindir}/test_xtrx
+mv build/soapy/test_xtrx_soapy %{buildroot}/%{_bindir}/test_xtrx_soapy
 
 %post   -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -125,6 +129,7 @@ mv %{buildroot}/%{_libdir}/xtrx/test_xtrx %{buildroot}/%{_bindir}/test_xtrx
 
 %files -n xtrx-tools
 %{_bindir}/test_xtrx
+%{_bindir}/test_xtrx_soapy
 %{_bindir}/xtrx_fft
 
 %changelog

@@ -1,8 +1,22 @@
+From 9c2fd206367616b22ab6442aedd2af217e51fd84 Mon Sep 17 00:00:00 2001
+From: Martin Hauke <mardnh@gmx.de>
+Date: Thu, 10 Dec 2020 17:54:01 +0100
+Subject: [PATCH] Fix CMake FindQCustomPlot
+
+---
+ CMakeLists.txt                          |  2 +-
+ cmake/FindQCustomPlot.cmake             | 31 +++++++++++++++++++++++++
+ examples/xtrx_fft/CMakeLists.txt        |  4 ++--
+ examples/xtrx_fft/FindQCustomPlot.cmake | 31 +++++++++++++++++++++++++
+ 4 files changed, 65 insertions(+), 3 deletions(-)
+ create mode 100644 cmake/FindQCustomPlot.cmake
+ create mode 100644 examples/xtrx_fft/FindQCustomPlot.cmake
+
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 16804b5..08841f9 100644
+index 4615124..c8ec2d6 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -110,7 +110,7 @@ target_link_libraries(test_xtrx xtrx ${SYSTEM_LIBS})
+@@ -103,7 +103,7 @@ target_link_libraries(test_xtrx xtrx ${SYSTEM_LIBS})
  find_package(Qt5Widgets)
  find_package(Qt5PrintSupport)
  find_package(QCustomPlot)
@@ -49,7 +63,7 @@ index 0000000..385cb1e
 +endif(NOT QCUSTOMPLOT_FOUND)
 +
 diff --git a/examples/xtrx_fft/CMakeLists.txt b/examples/xtrx_fft/CMakeLists.txt
-index 6f5ee74..6e52d18 100644
+index 2d1662a..2cd1ca5 100644
 --- a/examples/xtrx_fft/CMakeLists.txt
 +++ b/examples/xtrx_fft/CMakeLists.txt
 @@ -12,7 +12,7 @@ message(${CMAKE_MODULE_PATH})
@@ -61,12 +75,13 @@ index 6f5ee74..6e52d18 100644
  find_package(LibXTRX REQUIRED)
  
  # Populate a CMake variable with the sources
-@@ -27,4 +27,4 @@ set(mainwindow_SRCS
+@@ -27,5 +27,5 @@ set(mainwindow_SRCS
  include_directories(${LIBXTRX_INCLUDE_DIRS})
  
- add_executable(mainwindow ${mainwindow_SRCS})
--target_link_libraries(mainwindow Qt5::Widgets Qt5::PrintSupport ${QCustomPlot_LIBRARIES} ${LIBXTRX_LIBRARIES})
-+target_link_libraries(mainwindow Qt5::Widgets Qt5::PrintSupport ${QCUSTOMPLOT_LIBRARIES} ${LIBXTRX_LIBRARIES})
+ add_executable(xtrx_fft ${mainwindow_SRCS})
+-target_link_libraries(xtrx_fft Qt5::Widgets Qt5::PrintSupport ${QCustomPlot_LIBRARIES} ${LIBXTRX_LIBRARIES})
++target_link_libraries(xtrx_fft Qt5::Widgets Qt5::PrintSupport ${QCUSTOMPLOT_LIBRARIES} ${LIBXTRX_LIBRARIES})
+ install(TARGETS xtrx_fft DESTINATION ${XTRX_UTILS_DIR})
 diff --git a/examples/xtrx_fft/FindQCustomPlot.cmake b/examples/xtrx_fft/FindQCustomPlot.cmake
 new file mode 100644
 index 0000000..385cb1e
@@ -104,3 +119,6 @@ index 0000000..385cb1e
 +        mark_as_advanced(QCUSTOMPLOT_LIBRARIES QCUSTOMPLOT_INCLUDE_DIRS)
 +endif(NOT QCUSTOMPLOT_FOUND)
 +
+-- 
+2.26.2
+
