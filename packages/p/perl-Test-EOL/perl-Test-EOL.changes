@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec  8 03:06:42 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.02
+   see /usr/share/doc/packages/perl-Test-EOL/Changes
+
+  2.02      2020-12-07 07:08:39Z
+    - fix failing test on MSWin32
+
+  2.01      2020-12-06 00:39:19Z
+    - better matching on files, directories to be ignored (e.g. no longer
+      confuses directory "vincent" for "inc") - closes RT#133862, PR #1
+    - handle long @INC lines by passing through $PERL5LIB (Father Chrysostomos,
+      RT#123448)
+
+-------------------------------------------------------------------
 Thu May  4 06:47:52 UTC 2017 - coolo@suse.com
 
 - updated to 2.00
