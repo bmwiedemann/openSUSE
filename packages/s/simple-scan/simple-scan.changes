@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec  8 13:48:03 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.38.2:
+  + Add new text resolution 200 dpi.
+  + Fix crash when scanning on Lexmark MFP.
+  + Display an error, when no documents found in the feeder during
+    start scanning.
+  + Do not use is_inhibited() as it is not reliable, check the
+    cookie value instead.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Oct  5 15:54:33 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.38.1:

@@ -618,4 +618,12 @@
     <comment>Push GNOME 3.38</comment>
     <requestid>847283</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>5cf5edf3ab49ec2f7fcd149d2280ab3e</srcmd5>
+    <version>3.38.2</version>
+    <time>1607801272</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 853802 from iznogood)</comment>
+    <requestid>854570</requestid>
+  </revision>
 </revisionlist>
