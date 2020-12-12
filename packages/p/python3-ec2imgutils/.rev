@@ -113,4 +113,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>830919</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8a365d08c386267aa075379c7af5ba65</srcmd5>
+    <version>9.0.1</version>
+    <time>1607801524</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 9.0.1 (bsc#1179890)
+  + Support gp3 as option to create EBS root volume. This allows image
+    creation with the new storage class and save 20% of cost.</comment>
+    <requestid>855360</requestid>
+  </revision>
 </revisionlist>

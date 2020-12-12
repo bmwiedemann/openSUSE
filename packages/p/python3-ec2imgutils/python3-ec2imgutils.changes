@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 12 12:21:19 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 9.0.1 (bsc#1179890)
+  + Support gp3 as option to create EBS root volume. This allows image
+    creation with the new storage class and save 20% of cost.
+
+-------------------------------------------------------------------
 Mon Aug 24 17:57:41 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Update to version 9.0.0
