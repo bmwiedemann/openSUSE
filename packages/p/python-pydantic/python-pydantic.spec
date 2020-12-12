@@ -30,13 +30,17 @@ Source:         https://github.com/samuelcolvin/pydantic/archive/v%{version}.tar
 # PATCH-FIX-UPSTREAM https://github.com/samuelcolvin/pydantic/commit/9c4860ce964a4eb2e22eedc21f21d406c596a82f Valdiate arguments config (#1663)
 Patch0:         validate-config.patch
 BuildRequires:  %{python_module email_validator >= 1.0.3}
-BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dotenv >= 0.10.4}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing_extensions >= 3.7.2}
+BuildRequires:  (python36-dataclasses if python36-base)
+BuildRequires:  (python3-dataclasses if python3-base < 3.7)
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if 0%{?python_version_nodots} == 36
+Requires:       python-dataclasses
+%endif
 Recommends:     python-typing_extensions >= 3.7.2
 Suggests:       python-email_validator >= 1.0.3
 Suggests:       python-python-dotenv >= 0.10.4
@@ -49,7 +53,6 @@ Data validation and settings management using Python type hinting.
 %prep
 %setup -q -n pydantic-%{version}
 %patch0 -p1
-sed -i /dataclasses/d setup.py
 
 %build
 %python_build
@@ -64,6 +67,7 @@ sed -i /dataclasses/d setup.py
 %files %{python_files}
 %license LICENSE
 %doc README.md HISTORY.md
-%{python_sitelib}/*
+%{python_sitelib}/pydantic
+%{python_sitelib}/pydantic-%{version}*-info
 
 %changelog
