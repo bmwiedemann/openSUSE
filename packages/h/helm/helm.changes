@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 09 21:58:44 UTC 2020 - dmueller@suse.com
+
+- Update to version 3.4.2:
+  * Updating to Kubernetes 1.19.4 package versions
+  * fix: ingress path issue
+
+-------------------------------------------------------------------
 Thu Nov 12 01:31:56 UTC 2020 - jenting.hsiao@suse.com
 
 - Update to version 3.4.1 (bsc#1179619):
