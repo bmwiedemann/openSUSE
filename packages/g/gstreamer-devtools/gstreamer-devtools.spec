@@ -18,7 +18,7 @@
 
 %define _name   gst-devtools
 Name:           gstreamer-devtools
-Version:        1.18.1
+Version:        1.18.2
 Release:        0
 Summary:        Development and debugging tools for GStreamer
 License:        LGPL-2.1-or-later
