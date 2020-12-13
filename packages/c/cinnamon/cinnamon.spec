@@ -18,7 +18,7 @@
 
 %define _version 4.0.0
 Name:           cinnamon
-Version:        4.6.7
+Version:        4.8.0
 Release:        0
 Summary:        GNU/Linux Desktop featuring a traditional layout
 License:        GPL-2.0-or-later AND LGPL-2.1-only
@@ -35,14 +35,10 @@ Patch2:         %{name}-settings-native.patch
 Patch3:         %{name}-settings-xscreensaver-path.patch
 # PATCH-FEATURE-OPENSUSE cinnamon-favourite-applications.patch sor.alexei@meowr.ru -- Remove mintinstall from favourites and add YaST.
 Patch4:         %{name}-favourite-applications.patch
-# PATCH-FIX-OPENSUSE cinnamon-fix-cogl.patch sor.alexei@meowr.ru -- Fix compilation with Cogl.
-Patch6:         %{name}-fix-cogl.patch
 # PATCH-FEATURE-OPENSUSE cinnamon-fallback-icewm.patch sor.alexei@meowr.ru -- Use IceWM as fallback.
 Patch7:         %{name}-fallback-icewm.patch
-BuildRequires:  autoconf
-BuildRequires:  autoconf-archive
-BuildRequires:  automake
 # For gnome-background-properties.
+BuildRequires:  cmake
 BuildRequires:  desktop-data-openSUSE-extra
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -51,12 +47,13 @@ BuildRequires:  gtk-doc
 BuildRequires:  hicolor-icon-theme-branding-openSUSE
 BuildRequires:  intltool
 BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  python3-xml
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cinnamon-desktop) >= %{_version}
-BuildRequires:  pkgconfig(cjs-1.0)
+BuildRequires:  pkgconfig(cjs-1.0) >= %{version}
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gstreamer-1.0)
@@ -153,8 +150,8 @@ Summary:        Upstream definitions of default settings and applications
 Group:          System/Libraries
 Requires:       %{name}-gschemas = %{version}
 Requires:       libgnomesu
-Supplements:    packageand(%{name}-gschemas:branding-upstream)
-Conflicts:      otherproviders(%{name}-gschemas-branding)
+Supplements:    (%{name}-gschemas and branding-upstream)
+Conflicts:      %{name}-gschemas-branding
 Provides:       %{name}-gschemas-branding = %{version}
 # cinnamon-branding-upstream was last used in openSUSE Leap 42.2.
 Provides:       %{name}-branding-upstream = %{version}
@@ -170,22 +167,12 @@ BuildArch:      noarch
 This package provides upstream defaults for settings stored with
 GSettings and applications used by the MIME system.
 
-%package devel-doc
-Summary:        Development Documentation files for Cinnamon
-Group:          System/GUI/Other
-BuildArch:      noarch
-Requires:       %{name} = %{version}-%{release}
-
-%description devel-doc
-This package contains the code documentation for various Cinnamon components.
-
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-%patch6 -p1
 %patch7 -p1
 cp -a %{SOURCE1} .
 
@@ -198,19 +185,11 @@ chmod a-x files%{_datadir}/%{name}/%{name}-settings/bin/__init__.py
 sed -i -e 's!imports.gi.NMClient!imports_gi_NMClient!g' js/ui/extension.js
 
 %build
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-    --disable-static \
-    --disable-schemas-compile \
-    --disable-silent-rules \
-    --enable-introspection=yes \
-    --enable-compile-warnings=no \
-    --with-ca-certificates=%{_sysconfdir}/ssl/ca-bundle.pem
-
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 # Non-executable in /usr/bin/ is unacceptable.
 chmod a+x %{buildroot}%{_bindir}/%{name}-file-dialog
@@ -232,8 +211,8 @@ touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
 ln -s %{_sysconfdir}/alternatives/default-xsession.desktop \
   %{buildroot}%{_datadir}/xsessions/default.desktop
 
-%{_bindir}/find %{buildroot}%{_libdir} -name '*.a' -print -delete
-%{_bindir}/find %{buildroot}%{_libdir} -name '*.la' -print -delete
+find %{buildroot} -type f -name "*.a" -delete -print
+find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes %{buildroot}%{_datadir}/
 
 %suse_update_desktop_file %{name}-settings
@@ -276,16 +255,18 @@ fi
 %files
 %license COPYING
 %doc AUTHORS README.rst debian/changelog
-%{_bindir}/*
+%{_bindir}/%{name}
+%{_bindir}/%{name}2d
+%{_bindir}/%{name}-*
+%{_bindir}/xlet-about-dialog
+%{_bindir}/xlet-settings
 %config(noreplace) %{_sysconfdir}/xdg/menus/*
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop
 %ghost %{_sysconfdir}/alternatives/default.desktop
 %{_datadir}/cinnamon-session
-%{_datadir}/cinnamon-session/sessions
 %{_datadir}/applications/*
 %{_datadir}/dbus-1/services/org.Cinnamon.*.service
 %{_datadir}/desktop-directories/*
-%{_datadir}/%{name}-session/sessions/*
 %exclude %{_datadir}/%{name}/theme/menu*.svg
 %{_datadir}/icons/hicolor/*/*/*.svg
 %{_datadir}/polkit-1/actions/org.%{name}.settings-users.policy
@@ -293,8 +274,8 @@ fi
 %{_datadir}/%{name}/
 %{_datadir}/%{name}-background-properties
 %{_libdir}/%{name}/
-%{_libexecdir}/%{name}/
-%{_mandir}/man1/*
+%{_mandir}/man1/cinnamon*%{?ext_man}
+%{_mandir}/man1/gnome-session-cinnamon*%{?ext_man}
 
 %files gschemas
 %{_datadir}/glib-2.0/schemas/org.cinnamon.gschema.xml
@@ -302,8 +283,5 @@ fi
 %files gschemas-branding-upstream
 %doc README.Gsettings-overrides
 %{_datadir}/%{name}/theme/menu*.svg
-
-%files devel-doc
-%doc %{_datadir}/gtk-doc/html/*/
 
 %changelog

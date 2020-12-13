@@ -1,4 +1,131 @@
 -------------------------------------------------------------------
+Sat Dec  5 10:19:02 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 4.8.0.
+  * implement suspend-then-hibernate 
+  * fix RTL bug in panel-edit-mode
+  * fix bug when dragging windows in RTL
+  * fix dragging launchers in RTL
+  * change round to floor in position calculation
+  * remove build dependency on dbus-glib
+  * configure.ac: remove pkg-config module checks which are never 
+    used
+  * Add Percentage Label to OSD for Volume Control (#9532)
+  * cr-rgb: remove handling of "inherit" and "transparent"
+  * Fix always-true condition
+  * croco: Remove duplicated conditions
+  * libcroco: Limit recursion in block and any productions 
+    (CVE-2020-12825)
+  * Handle "color: inherit" directly in get_color_from_term(), 
+    not in libcroco
+  * network applet: Make sure there's always a menu item for the 
+    active connection.
+  * xapp status applet: Store icons using a unique key based on the
+    icon name and object path.
+  * xapp applet: Go back to using icon 'name' property, not the 
+    constructed key, to do applet role checking.
+  * menu applet: Added option to display panel when the menu is 
+    opened
+  * menu applet: Default new 'force show panel' preference to true, 
+    move it to the panel behavior group.
+  * Update cinnamon-xlet-makepot
+  * systray manager: make all role comparisons lower case
+  * [sound@cinnamon.org] Update applet.js
+  * Display volume tooltip while scrolling with the mouse for 
+    sound@cinnamon.org
+  * js/misc/utils.js Fix latinise()
+  * menu@cinnamon.org: Allow items to be re-ordered to better 
+    reflect the search outcome.
+  * Update cs_panel.py:
+  * Add show-buttons option to the TreeList Widgets, align titles 
+    as contents and update doc
+  * menu applet: search for words inbetween
+  * cinnamon-menu-editor: refactor ui file layout, add button to 
+    open a selected item's desktop file.
+  * menu applet: fix broken search, if no recent documents
+  * add applet uuid formatted as style class name
+  * Fix Typo
+  * Revert "add applet uuid formatted as style class name"
+  * js/ui/scripting.js: Refactor invalid catch statement 
+    (not allowed with mozjs78).
+  * Fixed applet not responding to fast workspace switches. due to 
+    the 100ms throttle, the applet shows the wrong window list for 
+    current workspace if more than 1 switch happens in a 100ms 
+    timespan (for example, when switching from workspace 1 to 3 very fast).
+  * update throttle, see #9606; fix #9567
+  * Updade xlet-settings.py: Code debug
+  * Clutter.KeyName -> Clutter.KEY_KeyName
+  * " == Clutter.KEY_" -> " === Clutter.KEY_"
+  * workspace-switcher applet: Standardization
+  * workspace-switcher applet: 
+    New option: "Reverse scrolling direction"
+  * windows-quick-list applet: Support scrolling, place the icons 
+    before the labels to be more consistent with the rest of cinnamon.
+  * Port to meson
+  * Port to mozjs78 
+  * Replace deprecated gvfs-bin calls with gio-tool
+  * Add 2 man pages from debian packages
+  * Fix ./test
+  * meson.build: Fix gettext domain (Cinnamon -> cinnamon), fix 
+    incorrect version check for cjs.
+  * build: re-add missing defines to suppress some extra noise in 
+    the logs.
+  * "KEY_KP_Enter" as an alternative to "KEY_Return" everywhere
+  * Simplify spice version checks
+  * Spices: Bypass global proxy
+  * sound@cinnamon.org: Fix spotify artwork url.
+  * network@cinnamon.org - add keybinding to show applet menu
+  * Update xlet-settings.py: Take into account icon.svg prior to 
+    icon.png. Until now, when viewing an applet's settings, the 
+    icon.png icon was displayed in the panel, which could contrast 
+    with the applet icon itself and confuse the user. From now on, 
+    if an icon.svg icon exists then this one is displayed first.
+  * Add Blueman to the possible icon in cinnamon settings
+  * fix lmde4 build
+  * Removed logic that was keeping icons around after window closed
+  * GWL appList.js:
+  * Make building the reference documentation optional
+  * fix placeholder size not scaling to ui
+  * Fix monitor disconnect resetting icon sizes
+  * grouped-window-list: Add FLASH_MAX_COUNT constant
+  * Improve dragging of items * fix juddring of windows while 
+    dragging (fix #8639). * change dragging animation. * fix problems
+    with dragging icon showing incorrect operation. * add checks to
+    keep pinned and unpinned items separate while dragging. * add
+    support for dragging new launchers into middle of window list.
+  * add name to proxy drag actor so it can be detected
+  * update drag logic to test for 'xdnd-proxy-actor'
+  * Add a favorites applet.
+  * menu applet: Add a favorites category.
+  * Solve a deprecation problem in an if statement
+  * window-list applet: Add FLASH_MAX_COUNT constant
+  * Add missing GdkPixbuf import
+  * menu@cinnamon.org: lengthen the bit mask for the RefreshFlags.
+  * cinnamon-window-tracker.c: Try to identify web apps in certain 
+    situations so that the correct icon can be used.
+  * applet.js: adapt configureApplet to xlet-settings
+  * desklet.js: adapt configureDesklet to xlet-settings
+  * checkBox: refactor from prototype to es class 
+  * cinnamon-window-tracker.c: Remove leftover debugging line
+  * Add mic mute keyboard shortcut option
+  * fix apps being reactive during panel-edit-mode
+  * Fix tooltip lables stuck on after menu cycle
+  * Improve integration of flatpak apps for side-by-side
+    installations
+  * fix icon getting hidden in panel-edit-mode when toggling 
+    show-empty-tray setting
+  * [FEAUTURE] [BETTER THEMING] Add applet uuid formatted as style 
+    class name
+  * Icons: Make system settings use preferences-desktop instead of 
+    preferences-system
+  * debian/control, meson: Update some dependencies.
+  * l10n: Update POT and fix l10n issues.
+  * Many bugs fixed.
+- Rebase cinnamon-favourite-applications.patch.
+- Rebase cinnamon-settings-native.patch.
+- Remove cinnamon-fix-cogl.patch, meson replace make.
+
+-------------------------------------------------------------------
 Fri Sep 18 13:44:39 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 4.6.7.

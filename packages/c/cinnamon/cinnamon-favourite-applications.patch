@@ -1,11 +1,12 @@
---- a/data/org.cinnamon.gschema.xml.in
-+++ b/data/org.cinnamon.gschema.xml.in
+diff -ruN a/data/org.cinnamon.gschema.xml b/data/org.cinnamon.gschema.xml
+--- a/data/org.cinnamon.gschema.xml	2020-11-26 22:18:02.000000000 +0700
++++ b/data/org.cinnamon.gschema.xml	2020-12-05 23:41:00.084634339 +0700
 @@ -412,7 +412,7 @@
      </key>
  
      <key name="favorite-apps" type="as">
 -      <default>[ 'firefox.desktop', 'mintinstall.desktop', 'cinnamon-settings.desktop', 'hexchat.desktop', 'org.gnome.Terminal.desktop', 'nemo.desktop' ]</default>
 +      <default>[ 'firefox.desktop', 'YaST.desktop', 'cinnamon-settings.desktop', 'pidgin.desktop', 'org.gnome.Terminal.desktop', 'nemo.desktop' ]</default>
-       <_summary>List of desktop file IDs for favorite applications</_summary>
-       <_description>
+       <summary>List of desktop file IDs for favorite applications</summary>
+       <description>
          The applications corresponding to these identifiers
