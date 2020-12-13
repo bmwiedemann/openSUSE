@@ -17,13 +17,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# We redefine this locally, because we are sure that it is only used for files,
-# which only the primary python3 flavor should provide for python3 multiflavor
-# gh#openSUSE/python-rpm-macros#66
-%define python3_only() %%if "%%{python_flavor}" == "python3" || "%%{python_provides}" == "python3" \
-%** \
-%%endif
-
 Name:           python-coverage
 Version:        5.3
 Release:        0
@@ -72,14 +65,9 @@ rm tests/test_plugins.py
 
 %install
 %python_install
+rm -vf %{buildroot}%{_bindir}/coverage{2,3}
 %python_clone -a %{buildroot}%{_bindir}/coverage
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-%if 0%{?have_python2} && ! 0%{?skip_python2}
-ln -sf coverage-%{python2_version} %{buildroot}%{_bindir}/coverage2
-%endif
-%if 0%{?have_python3} && ! 0%{?skip_python3}
-ln -sf coverage-%{python3_version} %{buildroot}%{_bindir}/coverage3
-%endif
 
 %check
 # GetZipBytesTest.test_get_encoded_zip_files - needs zip command
@@ -108,7 +96,6 @@ export PATH="$(pwd)/build/bin:$PATH"
 export PYTHONPATH=":x"
 %pytest_arch -k 'not (test_get_encoded_zip_files or test_egg or test_doctest or test_unicode or test_version or test_multiprocessing_with_branching or test_farm or test_dothtml_not_python or test_one_of or test_bytes or test_encoding or test_multi or test_xdist_sys_path_nuttiness_is_fixed or test_debug_sys_ctracer)'
 
-
 %post
 %python_install_alternative coverage
 
@@ -119,8 +106,6 @@ export PYTHONPATH=":x"
 %license LICENSE.txt
 %doc CHANGES.rst CONTRIBUTORS.txt README.rst howto.txt
 %python_alternative %{_bindir}/coverage
-%python2_only %{_bindir}/coverage2
-%python3_only %{_bindir}/coverage3
 %{python_sitearch}/coverage/
 %{python_sitearch}/coverage-%{version}-py%{python_version}.egg-info
 

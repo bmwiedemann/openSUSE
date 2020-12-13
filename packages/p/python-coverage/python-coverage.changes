@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 10 18:42:00 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Fix alternatives
+
+-------------------------------------------------------------------
 Wed Dec  2 23:04:31 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Support multiple python3 flavors gh#openSUSE/python-rpm-macros#66
