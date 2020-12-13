@@ -298,4 +298,48 @@
 </comment>
     <requestid>838002</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8a9a4aac5c6159514d9bed0fa09d122b</srcmd5>
+    <version>2.8.0</version>
+    <time>1607877002</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.8.0.
+  * Get toolbar visibility from GtkRevealer when saving view 
+    metadata
+  * Add g_assert_not_reached to sizing_mode_to_string
+  * setting to hide/show menubar (WIP)
+  * Update menubar toggle action on init
+  * fix saving menubar visibility as default
+  * Added logic to fix issue of Tab key toggling checkboxes
+  * Fix mimetype handling and backend selection:
+  * Clean up build files
+  * Fix for #89. Added logic to allow for cursor position to change
+    in multiline-text fields
+  * Added keyboard shortcut for toolbar
+  * Fix for #442. Added null check to stop segfault with 
+    annotations
+  * Implemented ticket #241. Added show sidebar button to toolbar
+  * Move the new sidebar button to be part of the navigation group 
+    on the left end of the toolbar.
+  * Added keyboard shortcuts to history buttons
+  * Favorites - rework startup page to display both favorites and 
+    recents, add favorites to the file menu.
+  * Disable pixbuf support properly.
+  * ev-window.c: Temporarily disable menu toggling using the alt 
+    key.
+  * Implements ticket #279. Added Go To Page By Number to menu
+  * Displays entire label in tooltip
+  * Revert &quot;Implements ticket #279. Added Go To Page By Number to 
+    menu&quot;
+  * l10n: Fix po/POTFILES.in
+  * ev-window-title.c: Don't show &quot;Recent Documents&quot; in the landing
+    page titlebar - it is no longer showing only recents.
+  * l10n: Update POT
+- Removed fix_ev-window.c_error.patch, fixed.
+- Add fix_no_return_statement_ev-application.c.patch to fix
+  /shell/ev-application.c error no return statement in 
+  function returning non-void.
+</comment>
+    <requestid>855380</requestid>
+  </revision>
 </revisionlist>

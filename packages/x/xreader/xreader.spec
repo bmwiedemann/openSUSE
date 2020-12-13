@@ -20,15 +20,15 @@
 %define typelib1 typelib-1_0-XreaderDocument-1_5
 %define typelib2 typelib-1_0-XreaderView-1_5
 Name:           xreader
-Version:        2.6.4
+Version:        2.8.0
 Release:        0
 Summary:        Document viewer for documents like PDF/PostScript
 License:        GPL-2.0-only AND LGPL-2.0-only
 Group:          Productivity/Office/Other
 URL:            https://github.com/linuxmint/xreader
 Source:         https://github.com/linuxmint/xreader/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE fix_ev-window.c_error.patch gh#linuxmint/xreader#418  andythe_great@pm.me -- Fix error: control reaches end of non-void function during build.
-Patch0:         fix_ev-window.c_error.patch
+# PATCH-FIX-UPSTREAM fix_no_return_statement_ev-application.c.patch andythe_great@pm.me -- Fix /shell/ev-application.c error no return statement in function returning non-void.
+Patch0:         fix_no_return_statement_ev-application.c.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gnome-common
