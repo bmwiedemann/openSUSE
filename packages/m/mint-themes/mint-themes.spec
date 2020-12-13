@@ -18,7 +18,7 @@
 
 %define _name   mint
 Name:           mint-themes
-Version:        1.8.6
+Version:        1.8.7
 Release:        0
 Summary:        Mint Themes
 License:        GPL-3.0-or-later
