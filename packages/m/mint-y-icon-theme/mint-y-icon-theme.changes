@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Dec 12 17:52:23 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 1.4.6.
+  * create symbolic links for new favorites icons
+  * add folder-recent-symbolic icon
+  * Change generic mystery person
+  * Add hypnotix icon
+
+-------------------------------------------------------------------
+Sun Dec  6 18:52:38 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 1.4.5.
+  * add symbolic link for new poedit icon name
+  * fix some broken symbolic links
+  * add symbolic link for keepassxc
+  * fix false warnings in create-symbolic-link script
+  * fix another false warning in create-symbolic-link script
+  * nicer output for show-deadlinks script
+- Update for version 1.4.4.
+  * remove dead symbolic links in Mint-Y-Dark
+  * brave-browser icon
+  * Fix GNOME Screen Recorder Icon
+  * evince.png <- org.gnome.Evince.png
+  * Change cs-general to make it look like preferences-desktop
+  * add application-certificate icon
+
+-------------------------------------------------------------------
 Fri Oct  2 16:39:26 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 1.4.3.
