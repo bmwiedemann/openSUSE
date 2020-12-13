@@ -26,7 +26,7 @@
 
 
 Name:           vagrant
-Version:        2.2.10
+Version:        2.2.14
 Release:        0
 Summary:        Tool for building and distributing virtualized development environments
 License:        MIT
@@ -57,7 +57,8 @@ Patch6:         0006-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
 Patch7:         0007-Don-t-abuse-relative-paths-in-plugins.patch
 Patch8:         0008-Skip-failing-tests.patch
 Patch9:         0009-Disable-Subprocess-unit-test.patch
-Patch10:        0010-Add-check-for-etc-fstab.patch
+# https://github.com/hashicorp/vagrant/pull/12097
+Patch10:        0010-Update-rake-to-13.0.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -92,8 +93,8 @@ BuildRequires:  %{rubygem bcrypt_pbkdf:1.0 }
 BuildRequires:  %{rubygem childprocess:4.0 }
 #  s.add_dependency "ed25519", "~> 1.2.4"
 BuildRequires:  %{rubygem ed25519:1.2 >= 1.2.4 }
-#  s.add_dependency "erubis", "~> 2.7.0"
-BuildRequires:  %{rubygem erubis:2.7 }
+#  s.add_dependency "erubi"
+BuildRequires:  %{rubygem erubi }
 #  s.add_dependency "i18n", "~> 1.8"
 BuildRequires:  %{rubygem i18n:1 >= 1.8 }
 #  s.add_dependency "listen", "~> 3.1"
@@ -103,19 +104,16 @@ BuildRequires:  %{rubygem hashicorp-checkpoint:0.1 >= 0.1.5 }
 #  s.add_dependency "log4r", "~> 1.1.9", "< 1.1.11"
 BuildRequires:  %{rubygem log4r:1.1 >= 1.1.9 }
 BuildConflicts:  %{rubygem log4r:1.1 >= 1.1.11 }
-#  s.add_dependency "mime", "~> 0.4.4"
-BuildRequires:  %{rubygem mime:0.4 >= 0.4.4}
-#  s.add_dependency "net-ssh", "~> 6.0"
-BuildRequires:  %{rubygem net-ssh:6 }
+#  s.add_dependency "mime-types", "~> 3.3"
+BuildRequires:  %{rubygem mime-types:3 >= 3.3 }
+#  s.add_dependency "net-ssh", ">= 6.2.0.rc1", "< 7"
+BuildRequires:  %{rubygem net-ssh:6 >= 6.2.0 }
 #  s.add_dependency "net-sftp", "~> 3.0"
 BuildRequires:  %{rubygem net-sftp:3 }
 #  s.add_dependency "net-scp", "~> 1.2.0"
 BuildRequires:  %{rubygem net-scp:1.2 }
 #  s.add_dependency "rb-kqueue", "~> 0.2.0"
 BuildRequires:  %{rubygem rb-kqueue:0.2 }
-#  s.add_dependency "rest-client", ">= 1.6.0", "< 3.0"
-BuildRequires:  %{rubygem rest-client >= 1.6}
-BuildConflicts:  %{rubygem rest-client >= 3.0}
 #  s.add_dependency "rubyzip", "~> 2.0"
 BuildRequires:  %{rubygem rubyzip:2}
 # Intentionally removed, wdm only works on Windows
@@ -126,12 +124,13 @@ BuildRequires:  %{rubygem winrm:2 >= 2.3.4 }
 BuildRequires:  %{rubygem winrm-fs:1 >= 1.3.4 }
 #  s.add_dependency "winrm-elevated", ">= 1.2.1", "< 2.0"
 BuildRequires:  %{rubygem winrm-elevated:1 >= 1.2.1 }
-#  s.add_dependency "vagrant_cloud", "~> 2.0.3"
-BuildRequires:  %{rubygem vagrant_cloud:2.0 >= 2.0.3 }
+#  s.add_dependency "vagrant_cloud", "~> 3.0.2"
+BuildRequires:  %{rubygem vagrant_cloud:3.0 >= 3.0.2 }
 
 # devel dependencies:
-#  s.add_development_dependency "rake", "~> 12.0.0"
-BuildRequires:  %{rubygem rake:12.0 }
+# PATCHED
+#  s.add_development_dependency "rake", "~> 13.0"
+BuildRequires:  %{rubygem rake:13 }
 #  s.add_development_dependency "rspec", "~> 3.5.0"
 BuildRequires:  %{rubygem rspec:3.5 }
 #  s.add_development_dependency "rspec-its", "~> 1.3.0"
@@ -169,7 +168,6 @@ BuildRequires:  openssh
 BuildRequires:  curl
 BuildRequires:  bsdtar
 BuildRequires:  %{rubygem vagrant-spec}
-BuildRequires:  rsync
 %endif
 
 BuildRequires:  fdupes
@@ -186,8 +184,8 @@ Requires:       %{rubygem bcrypt_pbkdf:1.0 }
 Requires:       %{rubygem childprocess:4.0}
 #   s.add_dependency "ed25519", "~> 1.2.4"
 Requires:       %{rubygem ed25519:1.2 >= 1.2.4}
-#  s.add_dependency "erubis", "~> 2.7.0"
-Requires:       %{rubygem erubis:2.7}
+#  s.add_dependency "erubi"
+Requires:       %{rubygem erubi}
 #  s.add_dependency "i18n", "~> 1.8"
 Requires:       %{rubygem i18n:1 >= 1.8}
 #  s.add_dependency "listen", "~> 3.1"
@@ -197,19 +195,16 @@ Requires:       %{rubygem hashicorp-checkpoint:0.1 >= 0.1.5}
 #  s.add_dependency "log4r", "~> 1.1.9", "< 1.1.11"
 Requires:       %{rubygem log4r:1.1 >= 1.1.9 }
 Requires:       %{rubygem log4r:1.1 < 1.1.11 }
-#  s.add_dependency "mime", "~> 0.4.4"
-Requires:       %{rubygem mime:0.4 >= 0.4.4}
-#  s.add_dependency "net-ssh", "~> 6.0"
-Requires:       %{rubygem net-ssh:6}
+#  s.add_dependency "mime-types", "~> 3.3"
+Requires:       %{rubygem mime-types:3 >= 3.3}
+#  s.add_dependency "net-ssh", ">= 6.2.0.rc1", "< 7"
+Requires:       %{rubygem net-ssh:6 >= 6.2.0 }
 #  s.add_dependency "net-sftp", "~> 3.0"
 Requires:       %{rubygem net-sftp:3 }
 #  s.add_dependency "net-scp", "~> 1.2.0"
 Requires:       %{rubygem net-scp:1.2 >= 1.2.0}
 #  s.add_dependency "rb-kqueue", "~> 0.2.0"
 Requires:       %{rubygem rb-kqueue:0.2}
-#  s.add_dependency "rest-client", ">= 1.6.0", "< 3.0"
-Requires:       %{rubygem rest-client >= 1.6}
-Requires:       %{rubygem rest-client < 3.0}
 #  s.add_dependency "rubyzip", "~> 2.0"
 Requires:       %{rubygem rubyzip:2}
 #   s.add_dependency "wdm", "~> 0.1.0"
@@ -220,14 +215,12 @@ Requires:       %{rubygem winrm:2 >= 2.3.4}
 Requires:       %{rubygem winrm-fs:1 >= 1.3.4}
 #  s.add_dependency "winrm-elevated", ">= 1.2.1", "< 2.0"
 Requires:       %{rubygem winrm-elevated:1 >= 1.2.1}
-#  s.add_dependency "vagrant_cloud", "~> 2.0.3"
-Requires:       %{rubygem vagrant_cloud:2.0 >= 2.0.3}
+#  s.add_dependency "vagrant_cloud", "~> 3.0.2"
+Requires:       %{rubygem vagrant_cloud:3.0 >= 3.0.2}
 #  s.add_dependency "ruby_dep", "<= 1.3.1"
 Requires:       %{rubygem ruby_dep <= 1.3.1 }
 
 
-# We don't require rubygem mime-types since it's pulled in transitively
-#
 Requires:       bsdtar
 Requires:       curl
 Requires:       openssh

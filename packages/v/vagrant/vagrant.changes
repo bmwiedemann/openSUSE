@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Fri Dec 11 10:01:47 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Patch rake version to ~> 13.0
+
+  Add patch:
+  * 0010-Update-rake-to-13.0.patch
+
+  Rebase patches:
+  * 0001-bin-vagrant-silence-warning-about-installer.patch
+  * 0002-Use-a-private-temporary-dir.patch
+  * 0003-plugins-don-t-abuse-require_relative.patch.patch
+  * 0004-fix-vbox-package-boo-1044087-added-by-robert.muntean.patch
+  * 0005-do-not-depend-on-wdm.patch
+  * 0006-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
+  * 0007-Don-t-abuse-relative-paths-in-plugins.patch
+  * 0008-Skip-failing-tests.patch
+  * 0009-Disable-Subprocess-unit-test.patch
+
+-------------------------------------------------------------------
+Thu Dec  3 20:13:55 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 2.2.14
+
+  remove rsync build dependency
+
+  remove patch (fixed upstream):
+  * 0010-Add-check-for-etc-fstab.patch
+  rebased patches:
+  * 0001-bin-vagrant-silence-warning-about-installer.patch
+  * 0002-Use-a-private-temporary-dir.patch
+  * 0003-plugins-don-t-abuse-require_relative.patch.patch
+  * 0004-fix-vbox-package-boo-1044087-added-by-robert.muntean.patch
+  * 0005-do-not-depend-on-wdm.patch
+  * 0006-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
+  * 0007-Don-t-abuse-relative-paths-in-plugins.patch
+  * 0008-Skip-failing-tests.patch
+  * 0009-Disable-Subprocess-unit-test.patch
+
+
+## 2.2.14 (November 20, 2020)
+
+IMPROVEMENTS:
+
+- host/windows: Update filesystem type matching on WSL2 [GH-12056]
+
+BUG FIXES:
+
+- core: Track raw actions as they are applied to prevent multiple insertions [GH-12037]
+- core/bundler: Update solution file resolution to support prerelease matching [GH-12054]
+- guest/darwin: Mount vmware synced folders for big sur guests [GH-12053]
+
+## 2.2.13 (November 06, 2020)
+
+BUG FIXES:
+
+- core/bundler: Adjust request sets properly with non-development prerelease [GH-12025]
+
+## 2.2.12 (November 06, 2020)
+
+BUG FIXES:
+
+- core/bundler: Automatically enable prerelease dependency resolution [GH-12023]
+
+NOTE: This is a fix release to resolve an immediate issue with Vagrant
+      plugin functionality
+
+## 2.2.11 (November 05, 2020)
+
+IMPROVEMENTS:
+
+- command/cap: Add ability to specify target [GH-11965]
+- command/cloud: Add --force flag to `version release` command [GH-11912]
+- command/cloud: Updates to utilize the 3.0 version of vagrant_cloud [GH-11916]
+- core: Switch from unmaintained gem erubis to erubi [GH-11893]
+- core: Download Vagrant boxes using auth headers [GH-11835]
+- core: Remove dependency on mime gem [GH-11857]
+- core: Handle Errno::EALREADY exceptions on port check [GH-12008]
+- core: Fix missing hook/trigger insertion into action stack [GH-12014]
+- guest/linux: Make max reboot wait duration configurable [GH-12011]
+- guest/windows: Make max reboot wait duration configurable [GH-12011]
+- providers/virtualbox: Fix availability check of provider [GH-11936]
+- tests: Add integration tests for Docker provider [GH-11907]
+
+BUG FIXES:
+
+- core/synced_folders: Don't persist synced folders to fstab if guest is not reachable [GH-11900]
+- core: Don't try to recover machine without a uuid [GH-11863]
+- config/disks: Transform provider specific config to common form [GH-11939]
+- config/vm: Override synced-folder `:nfs` option [GH-11988]
+- contrib/zsh: Remove newline from beginning of completion script [GH-11963]
+- guests/arch: Install smbclient when setting up arch smb [GH-11923]
+- guest/linux: Check for /etc/fstab before trying to modify [GH-11897]
+- guest/linux: Create an /etc/fstab if does not exist [GH-11909]
+- guest/linux: Persist SMB mounts [GH-11846]
+- guest/debian: Set hostname in /etc/hosts as first step to changing hostname [GH-11885]
+- guest/rhel: Check for existence of network files before trying to update them [GH-11877]
+- guest/suse: Don't use hostnamectl to set hostname if not available on system [GH-11996]
+- tests: Remove rsync dependency from tests [GH-11889]
+
+-------------------------------------------------------------------
 Wed Sep  9 12:47:45 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Switch back to using transfiletriggerin/un

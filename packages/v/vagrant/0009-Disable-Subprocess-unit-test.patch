@@ -1,4 +1,4 @@
-From 5dc6903fbc40884c5811a71ad43700f7357f7836 Mon Sep 17 00:00:00 2001
+From 5e3f0edc8a1bc1db2355c424684a3fcd7f654e19 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Wed, 28 Aug 2019 13:39:58 +0200
 Subject: [PATCH 09/10] Disable Subprocess unit test
@@ -33,5 +33,5 @@ index 0ff5835c8..757d8ef8a 100644
            thread = Thread.new{ sp.execute }
            sleep(0.1)
 -- 
-2.28.0
+2.29.2
 

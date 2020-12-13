@@ -1,4 +1,4 @@
-From 4ae304867d0e714254cd4130a9a56eb1560da354 Mon Sep 17 00:00:00 2001
+From 5f9ae130821abc783b793fc222c471cebadf1891 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Mon, 1 Apr 2019 17:28:31 +0200
 Subject: [PATCH 08/10] Skip failing tests
@@ -30,5 +30,5 @@ index bc11309aa..4d329151a 100644
        end
      end
 -- 
-2.28.0
+2.29.2
 
