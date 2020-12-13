@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 10 22:40:33 UTC 2020 - lduncan@suse.com
+
+- Update to version v1.1+18.0e969d0edcc4:
+  * event_iface: only set rcv buf size if too small (bsc#1175570)
+
+-------------------------------------------------------------------
 Mon Nov 09 17:25:48 UTC 2020 - lduncan@suse.com
 
 - Update to version v1.1+15.ef8495548d04, by merging
