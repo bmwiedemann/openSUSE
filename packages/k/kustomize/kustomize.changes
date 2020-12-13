@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Dec 11 05:43:08 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
+
+- Update to version 3.9.0
+  - Auto update go.sum
+  - Pin kustomize to api/v0.7.0, enabling kyaml by default
+  - Flip default value of --enable_kyaml from false to true.
+- Update to version 3.8.8
+  - Pin kustomize to api/v0.6.7
+  - Pin to api v0.6.7
+  - Unpin kustomize from api.
+  - Pin to api v0.6.6
+  - Pin to cmd/config v0.8.6
+  - Pin to kyaml v0.10.3 cliutils v0.22.1
+  - Automated Go mod cache updates.
+  - Revert "helm values on inflator config"
+  - helm values on inflator config spec.
+  - connected allowresourcesidchanges bool to allow_id_changes flag
+  - Automated go.sum updates.
+  - update Go version to 1.15
+  - Use DepProvider in tests to access kyaml impls.
+  - mark the list-builtin command alpha
+  - Add command to list builtin plugins
+  - added kustomize edit set label
+  - Unpin everything post v3.8.7 release
+- Refresh vendor.tar.xz
+
+-------------------------------------------------------------------
 Thu Nov 12 00:01:31 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
 
 - Update to version 3.8.7

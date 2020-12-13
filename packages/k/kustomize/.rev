@@ -82,4 +82,12 @@
 - Refresh vendor.tar.xz</comment>
     <requestid>848296</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5ad1a5e1d7ad8d5b5c4babedaa8851ab</srcmd5>
+    <version>3.9.0</version>
+    <time>1607876966</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854842</requestid>
+  </revision>
 </revisionlist>
