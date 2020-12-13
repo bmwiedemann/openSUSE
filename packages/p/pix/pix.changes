@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec  7 19:46:12 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 2.6.0.
+  * Fix picture greyed out even if not selected
+  * Added backspace to list of hot keys for fullscreen mode
+  * Added line on how to remove image from selection
+  * Added Rating to filter list for ticket #104
+  * gth-browser.c: Improve handling of invalid uris.
+  * Use debhelper 10 to allow parallel (-j) make jobs.
+  * Implements #74. Allow for override of permanent delete message
+  * Add favorites:/// to the sidebar file browser.
+  * l10n: Update POT
+  * Fix pix crashes with some XCF files.
+
+-------------------------------------------------------------------
 Sun Sep 27 20:54:26 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 2.4.11.
