@@ -138,4 +138,23 @@
     <comment></comment>
     <requestid>838456</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>577a2533193ee3052a5a8c8b3064a26a</srcmd5>
+    <version>4.8.0</version>
+    <time>1607876999</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.8.0.
+  * support for tiff images
+  * Port to meson
+  * add PDF pages count column to nemo-media-columns 
+  * Update nemo-media-columns.py
+  * Update nemo-media-columns.py: Avoid a NameError 
+  * nemo-media-columns.py: Support favorite and recent uris by 
+    working 
+  * Add support for Zstandard archives
+  * Update the URL in README
+  * l10n: Update POT
+</comment>
+    <requestid>855379</requestid>
+  </revision>
 </revisionlist>

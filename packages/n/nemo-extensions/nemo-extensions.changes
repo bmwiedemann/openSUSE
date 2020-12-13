@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Dec  6 19:03:13 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 4.8.0.
+  * support for tiff images
+  * Port to meson
+  * add PDF pages count column to nemo-media-columns 
+  * Update nemo-media-columns.py
+  * Update nemo-media-columns.py: Avoid a NameError 
+  * nemo-media-columns.py: Support favorite and recent uris by 
+    working 
+  * Add support for Zstandard archives
+  * Update the URL in README
+  * l10n: Update POT
+
+-------------------------------------------------------------------
 Wed Sep 23 20:27:18 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 4.6.0.

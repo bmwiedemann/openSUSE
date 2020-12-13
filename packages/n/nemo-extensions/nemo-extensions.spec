@@ -22,7 +22,7 @@
 %define __requires_exclude typelib\\((Vte))\ =
 %define _version 4.0.0
 Name:           nemo-extensions
-Version:        4.6.0
+Version:        4.8.0
 Release:        0
 Summary:        Set of extensions for Nemo, the Cinnamon file manager
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later
@@ -397,10 +397,8 @@ pushd nemo-terminal
 popd
 
 pushd nemo-preview
-NOCONFIGURE=1 ./autogen.sh
-intltoolize -f
-%configure
-%make_build
+%meson
+%meson_build
 popd
 
 pushd nemo-emblems
@@ -479,7 +477,7 @@ pushd nemo-terminal
 popd
 
 pushd nemo-preview
-%make_install
+%meson_install
 popd
 
 pushd nemo-emblems
