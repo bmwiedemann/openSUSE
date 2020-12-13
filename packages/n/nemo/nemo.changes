@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Dec  6 16:30:24 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 4.8.0.
+  * Misc cleanup
+  * data/nemo.desktop.in: fix icon
+  * Add option to preview files up to 64GB
+  * Drop Debian menu file
+  * Fixed small copy-paste bug.
+  * small improves to debian/copyright and debian/not-installed
+  * Removed unused variables in pathbar function (#2549)
+  * Remove uft8 colon-like char in datetime strings
+  * Add XAppFavorites support.
+  * Fix for #2513. Avoid single quote escape by checkng for QUOTE_TYPE_SINGLE and QUOTE_TYPE_DOUBLE.
+  * nemo-action.c: Fix build from previous commit typo.
+  * make sure pango development files are installed
+  * Fixes #942. Uses g_content_type_get_description for when mime type is NULL.
+  * Fixing small memory leak. Freeing volume_monitor per GIO documentation.
+  * Fixes #2499. Changes the option from -x to -- when using gnome-terminal
+  * nemo-connect-dialog: Remove Help button (#2562)
+  * nemo-mime-actions.c: Don't show mime button if the activation URI is null (#2559)
+  * l10n: Update POT
+  * l10n: Generate files
+
+-------------------------------------------------------------------
 Tue Sep 29 19:35:40 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Move nemo-lang from Requires to Recommends.  

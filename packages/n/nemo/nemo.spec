@@ -20,7 +20,7 @@
 %define sover   1
 %define typelib typelib-1_0-Nemo-3_0
 Name:           nemo
-Version:        4.6.5
+Version:        4.8.0
 Release:        0
 Summary:        File browser for Cinnamon
 License:        GPL-2.0-or-later
@@ -55,7 +55,7 @@ BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(polkit-agent-1)
 BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xapp) >= 1.0.4
+BuildRequires:  pkgconfig(xapp) >= 1.9.0
 Requires:       desktop-file-utils >= 0.7
 Requires:       glib2-tools
 Requires:       gvfs >= 1.3.2
