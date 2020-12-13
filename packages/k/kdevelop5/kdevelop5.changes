@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Dec  9 20:39:52 UTC 2020 - wbauer@tmo.at
+
+- Update to 5.6.1
+  * Fix support for gdb 10.x (kde#428688)
+  * Fix an issue in the "Run test" feature with tests launched by
+    the same executable (kde#377639)
+  * Fix several crashes on exit while debugging (kde#425994,
+    kde#425993, kde#425985)
+  * The output view now highlights glibc assert messages by default
+  * Less confusing behaviour of the "Stop" and "Stop all" toolbar
+    buttons (it no longer has a delayed-dropdown)
+  * Fix a set of oddities with initial parsing of project files
+  * Fix a crash when closing KDevelop directly after opening a
+    large project (kde#427387, kde#427386)
+  * Fix a crash in some cases when launching an executable
+    (kde#399511, kde#416874)
+  * Improved support for changing the CMake_BUILD_TYPE in projects
+    (kde#429605)
+  * Fix a crash when the problem reporter plugin was turned off
+    during runtime
+  * Various other small bug fixes
+  * Various smaller performance improvements
+  
+-------------------------------------------------------------------
 Tue Sep  8 11:36:14 UTC 2020 - wbauer@tmo.at
 
 - Update to 5.6.0
