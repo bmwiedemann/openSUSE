@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec  8 15:05:01 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 4.8.0.
+  * implement suspend-then-hibernate
+  * respect suspend-then-hibernate setting when suspending from
+    menu
+
+-------------------------------------------------------------------
 Mon Sep 14 14:03:11 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 4.6.2.

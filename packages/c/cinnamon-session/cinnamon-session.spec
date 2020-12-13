@@ -17,7 +17,7 @@
 
 
 Name:           cinnamon-session
-Version:        4.6.2
+Version:        4.8.0
 Release:        0
 Summary:        The session manager for the Cinnamon Desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

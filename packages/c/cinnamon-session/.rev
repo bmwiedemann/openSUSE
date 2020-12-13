@@ -167,4 +167,16 @@
     <comment></comment>
     <requestid>834952</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d6a60483acc6df9549a1eba6de8f1218</srcmd5>
+    <version>4.8.0</version>
+    <time>1607877014</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.8.0.
+  * implement suspend-then-hibernate
+  * respect suspend-then-hibernate setting when suspending from
+    menu
+</comment>
+    <requestid>855387</requestid>
+  </revision>
 </revisionlist>
