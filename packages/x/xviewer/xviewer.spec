@@ -17,7 +17,7 @@
 
 
 Name:           xviewer
-Version:        2.6.2
+Version:        2.8.0
 Release:        0
 Summary:        Fast and functional graphics viewer
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -28,6 +28,7 @@ BuildRequires:  fdupes
 BuildRequires:  gnome-common
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libjpeg-devel
+BuildRequires:  libxapp-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
