@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Dec  5 15:01:03 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 4.8.0.
+  * Rebase on GJS 1.66 and Mozjs78.
+  * deprecation.cpp: Add additional info to ByteArray deprecation 
+    warning, and link to the xlet versioning tutorial page.
+- Add cjs-tests package.
+- Switch to meson.
+
+-------------------------------------------------------------------
+Mon Sep 28 19:13:50 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Build with mozjs68. 
+
+-------------------------------------------------------------------
 Sun Sep 27 13:55:38 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 4.6.0.
