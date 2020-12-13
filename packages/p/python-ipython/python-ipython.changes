@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 10 20:14:51 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update requirement to python >= 3.7, which is officially the case
+  since ipython > 7.15
+- remove python3_only macro override not compatible with rpm 4.16
+  * provide ipython3 its manpage and iptest3 through alternatives
+    for possible multiple python3 flavors
+
+-------------------------------------------------------------------
 Wed Dec  2 21:38:05 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Prepare for upcoming python multiflavor

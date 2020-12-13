@@ -27,15 +27,8 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
-
-# -- Definitions for python3 multiflavor gh#openSUSE/python-rpm-macros#66 --
-# Python 3.6 was supported with IPython up to 7.16
+# Python 3.6 was officiallay supported with IPython up to 7.15
 %define         skip_python36 1
-# We redefine this locally, because we are sure that it is only used for files,
-# which only the primary python3 flavor should provide
-%define python3_only() %%if "%%{python_flavor}" == "python3" || "%%{python_provides}" == "python3" \
-%** \
-%%endif
 
 %bcond_without  iptest
 Name:           python-ipython%{psuffix}
@@ -48,13 +41,13 @@ URL:            https://github.com/ipython/ipython
 Source:         https://files.pythonhosted.org/packages/source/i/ipython/ipython-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/jupyter/qtconsole/4.0.0/qtconsole/resources/icon/JupyterConsole.svg
 BuildRequires:  %{python_module backcall}
-BuildRequires:  %{python_module base >= 3.5}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools >= 18.5}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pygments
 Requires:       python-backcall
-Requires:       python-base >= 3.5
+Requires:       python-base >= 3.7
 Requires:       python-decorator
 Requires:       python-jedi >= 0.10
 Requires:       python-pexpect >= 4.6
@@ -165,18 +158,21 @@ popd
 %install
 %if !%{with test}
 %python_install
+
 %python_clone -a %{buildroot}%{_bindir}/ipython
-%python_clone -a %{buildroot}%{_mandir}/man1/ipython.1
+%python_clone -a %{buildroot}%{_bindir}/ipython3
 
 %if %{with iptest}
 %python_clone -a %{buildroot}%{_bindir}/iptest
+%python_clone -a %{buildroot}%{_bindir}/iptest3
 %else
 rm %{buildroot}%{_bindir}/iptest*
 %endif
 
-%if %{have_python3} && ! 0%{?skip_python3}
-ln -s %{_mandir}/man1/ipython-%{python3_bin_suffix}.1.gz %{buildroot}%{_mandir}/man1/ipython3.1.gz
-%endif
+# must clone after copy
+cp %{buildroot}%{_mandir}/man1/ipython{,3}.1
+%python_clone -a %{buildroot}%{_mandir}/man1/ipython.1
+%python_clone -a %{buildroot}%{_mandir}/man1/ipython3.1
 
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
 %python_expand cp %{SOURCE1} %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/IPython-%{$python_bin_suffix}.svg
@@ -207,14 +203,9 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/IP
 
 %fdupes %{buildroot}%{$python_sitelib}
 }
+%fdupes %{buildroot}%{_bindir}
+%fdupes %{buildroot}%{_mandir}
 
-rm %{buildroot}%{_bindir}/ipython3
-ln -s %{_bindir}/ipython-%{python3_bin_suffix} %{buildroot}%{_bindir}/ipython3
-
-%if %{with iptest}
-rm %{buildroot}%{_bindir}/iptest3
-ln -s %{_bindir}/iptest-%{python3_bin_suffix} %{buildroot}%{_bindir}/iptest3
-%endif
 %endif
 
 %if %{with test}
@@ -228,12 +219,12 @@ popd
 
 %if !%{with test}
 %post
-%{python_install_alternative ipython ipython.1.gz}
+%python_install_alternative ipython ipython3 ipython.1.gz ipython3.1.gz
 %desktop_database_post
 %icon_theme_cache_post
 
 %post iptest
-%python_install_alternative iptest
+%python_install_alternative iptest iptest3
 
 %postun
 %python_uninstall_alternative ipython
@@ -249,9 +240,9 @@ popd
 %license COPYING.rst
 %doc README.rst docs/source/about/license_and_copyright.rst
 %python_alternative %{_bindir}/ipython
+%python_alternative %{_bindir}/ipython3
 %python_alternative %{_mandir}/man1/ipython.1.gz
-%python3_only %{_bindir}/ipython3
-%python3_only %{_mandir}/man1/ipython3.1.gz
+%python_alternative %{_mandir}/man1/ipython3.1.gz
 %{python_sitelib}/IPython/
 %{python_sitelib}/ipython-%{version}-py*.egg-info
 %{_datadir}/applications/ipython-%{python_bin_suffix}.desktop
@@ -264,7 +255,7 @@ popd
 %if %{with iptest}
 %files %{python_files iptest}
 %python_alternative %{_bindir}/iptest
-%python3_only %{_bindir}/iptest3
+%python_alternative %{_bindir}/iptest3
 
 %endif
 %endif
