@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Sun Dec  6 16:43:39 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 2.0.0.
+  * Bump for favorites support
+  * .gitignore: Ignore the new debian build folder.
+  * favorites: expose xapp_favorites_rename (), it was mistakenly
+    made private during some cleanup.
+  * xapp-gtk3-module.c: Don't initialize favorites until they're 
+    needed.
+  * xapp-gtk3-module.c: Register the favorites uri scheme 
+    immediately, rather than when XAppFavorites is instantiated.
+  * xapp-favorites: Add missing pointer to the DestroyData.
+  * l10n: Update POT
+- Updates since 1.6.10.
+  * sn-watcher.c: Move invocation completion to the registration
+    callback.
+  * sn-item.c: use a different method of fetching the pixmap.
+  * Make property-retrieval fully asynchronous.
+  * mate-xapp-status-applet.py: Adapt to change brought by 
+    9c4d5e92d2eb288.
+  * build: Allow making a library-only build for flatpak packaging.
+  * xapp-icon-chooser-button.c: Remove leftover debugging line.
+  * xapp-sn-watcher: Create StatusNotifierItem proxies 
+    asynchronously, and don't try to load their properties.
+  * xapp-sn-watcher: Add an app list to flag items that should 
+    have their tooltip replaced by the application name.
+  * build: Make build of xapp-sn-watcher optional, defaulting to
+    true.
+  * xapp-sn-watcher: Add key to disable StatusNotifier support, 
+    but leave appindicator support enabled.
+  * l10n: Update translations
+  * Update docs
+  * xapp-status-icon.c: Get rid of the dead 'shadow' region around
+    menus, as they can interfere with clicking on the icon to 
+    close the menu.
+  * xapp-status-icon: Add new properties for menu/button state 
+    handling and one for metadata (miscellaneous info to help 
+    define behavior in the status applets).
+  * xapp-sn-watcher: Set status icon metadata for appindicator 
+    icons, to inform the applet to highlight/toggle the panel icon 
+    with either button click when opening the menu.
+  * mate-xapp-status-applet.py: Use new properties to sync button 
+    toggle state with the menu state.
+  * test-scripts: Update some scripts to demonstrate new property
+    use.
+  * sn-item: Remove support for XAyatanaLabel.
+  * xapp-sn-watcher: Update clear the registration list before 
+    freeing the table of registered items.
+  * xapp-status-icon.c: Add xapp_status_icon_popup_menu() and use 
+    a more reliable GtkMenu popup method.
+  * xapp-status-icon.c: Fix inadvertant verison change in doc 
+    string.
+  * Icons: Add symbolic icons for xreaders annotation features
+  * xapp-status-icon: Add a get_visible method.
+  * mate applet: Use markup for tooltips, and update test script to
+    reflect this as well.
+  * mate-xapp-status-applet: Fix set icon error handling when an 
+    icon name is missing.
+  * xapp-status-icon: Add a get_visible method.
+  * mate applet: Use markup for tooltips, and update test script to
+    reflect this as well.
+  * mate-xapp-status-applet: Fix set icon error handling when an 
+    icon name is missing.
+  * Update documentation
+  * README: Update link to docs
+  * Update README.md
+  * xapp-util.c: Initialize auto variables.
+  * Icons: add pin/unpin symbolic (#90)
+  * Icons: Add xapp-diaporama-symbolic
+  * xapp-sn-watcher: Add autostart file, to start at session, to
+    start at the session initialization phase.
+  * Add a utility function to check for nvidia on-demand mode.
+  * xapp-sn-watcher: Don't enable in MATE
+  * l10n: Fix makepot picking up unwanted service file
+  * Eliminate all appindicator-specific code from 
+    xapp-status-icon.c, Add a whitelist for xapp-sn-watcher to list
+    ai icons  that should left-click to activate.
+  * l10n: Fix makepot picking up unwanted service file
+  * Eliminate all appindicator-specific code from 
+    xapp-status-icon.c,
+    Add a whitelist for xapp-sn-watcher to list ai icons  that 
+    should left-click to activate.
+  * xapp-sn-watcher: Add a whitelist to manage what desktop 
+    environments to start in.
+  * Add option to specify path to pygobject override directory
+  * Install icons and scripts using meson options
+  * xapp-status-icon.c: Sync the visible state of the fallback 
+    GtkStatusIcon when it is first created.
+  * xapp-status-icon.c: Fix the timeout duration for 
+    xapp_status_icon_any_monitors.
+  * Remove use of deprecated g_type_class_add_private function.
+  * xapp-monitor-blanker: Use G_DECLARE_FINAL_TYPE
+  * xapp-status-icon.c: check if we have a fallback status icon 
+    before disconnecting signals from it.
+  * xapp-status-icon.c: Only call gtk_status_icon_set_name() when 
+    explicitly requested.
+  * Add StatusNotifier watcher.
+  * mate applet: Set the new icon size property (this provides a 
+    hint to xapp-sn-watcher or any client app to provide a correct
+    icon size in some situations).
+  * status icon: Add support for scroll events
+  * debian: Remove python2 deps.
+  * debian/control: Add missing dbusmenu dependency.
+  * Packaging: Re-add python-gi-dev as build-dep
+  * xapp-sn-watcher: rewrite in C due to leaky dbus python 
+    bindings.
+- Removed xapps-python3.patch, fixed.
+- Removed gtkstatusicon-fix.patch, fixed
+- Add fix_sn-item_control_reaches_end_of_non-void_function.patch
+  to fix Fix control reaches end of non-void function in sn-item.c
+
+-------------------------------------------------------------------
 Mon Sep  7 10:58:06 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)

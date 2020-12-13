@@ -20,19 +20,17 @@
 %define soname  libxapp
 %define sover   1
 Name:           xapps
-Version:        1.6.10
+Version:        2.0.0
 Release:        0
 Summary:        XApp library and common files
 License:        GPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/linuxmint/xapps
-Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/xapp-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE xapps-void-return-no-return.patch -- Satisfy rpmlint checks.
 Patch0:         xapps-void-return-no-return.patch
-# PATCH-FIX-UPSTREAM xapps-python3.patch -- python2 is gone
-Patch1:         xapps-python3.patch
-# PATCH-FIX-UPSTREAM gtkstatusicon-fix.patch maurizio.galli@gmail.com -- Backport fix for icon crashing when using gtkstatus icon
-Patch2:         gtkstatusicon-fix.patch
+# PATCH-FIX-UPSTREAM fix_sn-item_control_reaches_end_of_non-void_function.patch andythe_great@pm.me -- Fix control reaches end of non-void function in sn-item.c
+Patch1:         fix_sn-item_control_reaches_end_of_non-void_function.patch
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc
 BuildRequires:  hicolor-icon-theme
@@ -41,6 +39,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-gobject
 BuildRequires:  vala
 BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.22.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.37.3
 BuildRequires:  pkgconfig(glib-2.0) >= 2.37.3
@@ -117,7 +116,9 @@ Mate status applet with HIDPI support
 %lang_package -n %{name}-common
 
 %prep
-%autosetup -p1
+%setup -q -n xapp-%{version}
+%patch0 -p1
+%patch1 -p1
 
 %build
 python3 -c 'import gi;print(gi._overridesdir)'
@@ -134,7 +135,6 @@ rm %{buildroot}%{_bindir}/{pastebin,upload-system-info}
 %find_lang xapp
 
 %post -n %{soname}%{sover} -p /sbin/ldconfig
-
 %postun -n %{soname}%{sover} -p /sbin/ldconfig
 
 %if 0%{?suse_version} < 1500
@@ -151,10 +151,10 @@ rm %{buildroot}%{_bindir}/{pastebin,upload-system-info}
 %license debian/copyright
 %doc debian/changelog
 %{_libdir}/%{soname}.so.%{sover}*
+%{_libdir}/libxapp.so.2.0.0
 
 %files -n %{typelib}
 %{_libdir}/girepository-1.0/XApp-1.0.typelib
-#%{python_sitearch}/gi/overrides/XApp.py
 %{python3_sitearch}/gi/overrides/XApp.py
 
 %files -n %{soname}-devel
@@ -168,6 +168,7 @@ rm %{buildroot}%{_bindir}/{pastebin,upload-system-info}
 %dir %{_datadir}/glade/catalogs/
 %{_datadir}/glade/catalogs/xapp-glade-catalog.xml
 %{_datadir}/gtk-doc/html/libxapp/
+%{_libdir}/gtk-3.0/modules/libxapp-gtk3-module.so
 
 %files common
 %license debian/copyright
@@ -176,6 +177,11 @@ rm %{buildroot}%{_bindir}/{pastebin,upload-system-info}
 %{_datadir}/icons/hicolor/*/actions/*.*
 %{_datadir}/icons/hicolor/*/categories/*.*
 %{_datadir}/glib-2.0/schemas/org.x.apps.*.xml
+%dir %{_sysconfdir}/X11/Xsession.d
+%config %{_sysconfdir}/X11/Xsession.d/80xapp-gtk3-module
+%{_sysconfdir}/xdg/autostart/xapp-sn-watcher.desktop
+%{_datadir}/dbus-1/services/org.x.StatusNotifierWatcher.service
+%{_datadir}/icons/hicolor/scalable/emblems/emblem-xapp-favorite.svg
 
 %files mate
 %dir %{_datadir}/mate-panel/
