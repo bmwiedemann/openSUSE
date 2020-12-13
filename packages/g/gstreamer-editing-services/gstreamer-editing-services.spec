@@ -18,14 +18,17 @@
 
 
 %define _name gst-editing-services
+
 Name:           gstreamer-editing-services
-Version:        1.18.1
+Version:        1.18.2
 Release:        0
 Summary:        GStreamer Editing Services
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer-editing-services/html/ges-architecture.html
-Source:         https://gstreamer.freedesktop.org/src/gstreamer-editing-services/%{_name}-%{version}.tar.xz
+#Source0:        https://gstreamer.freedesktop.org/src/gstreamer-editing-services/%%{_name}-%%{version}.tar.xz
+Source0:        %{_name}-%{version}.tar.xz
+
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  flex
