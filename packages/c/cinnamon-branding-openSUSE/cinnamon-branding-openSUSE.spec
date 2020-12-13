@@ -1,7 +1,7 @@
 #
 # spec file for package cinnamon-branding-openSUSE
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define mint_artwork_ver 5.3
+%define mint_artwork_ver 5.7
 %define cinnamon_gschemas_version %(rpm -q --queryformat '%%{VERSION}' cinnamon-gschemas)
 %define libcinnamon_desktop_data_version %(rpm -q --queryformat '%%{VERSION}' libcinnamon-desktop-data)
 Name:           cinnamon-branding-openSUSE
 Version:        42.2
 Release:        0
 Summary:        openSUSE Branding of the Cinnamon Desktop Environment
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/GUI/Other
-Url:            https://en.opensuse.org/Portal:Cinnamon
+URL:            https://en.opensuse.org/Portal:Cinnamon
 Source1:        cinnamon-branding.gschema.override
 Source2:        libcinnamon-desktop-branding.gschema.override.in
 Source3:        http://packages.linuxmint.com/pool/main/m/mint-artwork-cinnamon/mint-artwork-cinnamon_%{mint_artwork_ver}.tar.gz

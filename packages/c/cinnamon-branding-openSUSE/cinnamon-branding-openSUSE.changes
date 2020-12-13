@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec  8 19:13:00 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update mint-artwork-cinnamon from version 5.3 to 5.7.
+  * Remove obsolete key org.cinnamon.screensaver 
+    ask-for-away-message
+- Updates for mint-artwork-cinnamon 5.6
+  * Remove obsolete key org.cinnamon.desktop.session 
+    screensaver-uses-logind
+- Updates for mint-artwork-cinnamon 5.5
+  * Set HiDPI mode to Auto.
+- Updates for mint-artwork-cinnamon 5.4
+  * Add a notification sound (disabled by default)
+
+-------------------------------------------------------------------
 Tue Nov  8 13:01:41 UTC 2016 - sor.alexei@meowr.ru
 
 - Replace cinnamon-branding with cinnamon-gschemas-branding:
