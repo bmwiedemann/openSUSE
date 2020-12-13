@@ -29,12 +29,9 @@ Source3:        MPL-2.0.html
 Source4:        %{name}.conf
 Source5:        %{name}-rpmlintrc
 Patch1:         fix_whine_error.patch
-BuildRequires:  apache
+BuildRequires:  apache-rpm-macros
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig(systemd)
-Requires:       apache
-Requires:       apache2-mod_perl >= 1.999022
-#Recommonds:	Apache-SizeLimit
 Requires:       patchutils
 Requires:       perl-Authen-SASL
 #Recommends:		RadiusPerl
@@ -112,9 +109,25 @@ Requires:       %{name} = %{version}-%{release}
 %description lang-de
 This package includes german language files for bugzilla
 
+%package apache
+Summary:        Apache configuration for %{name}
+Group:          Productivity/Networking/Web/Utilities
+BuildRequires:  apache2
+Requires:       apache2
+Requires:       apache2-mod_perl >= 1.999022
+#Recommonds:	Apache-SizeLimit
+Supplements:    packageand(apache2:%name)
+
+%description apache
+This subpackage contains the Apache configuration files
+
 %prep
 %setup -q
 %patch1 -p1
+# rpmlint
+sed -i -e 's|\/usr\/bin\/env python|\/usr\/bin\/python|g' contrib/bugzilla-submit/bugzilla-submit
+sed -i -e 's|\/usr\/bin\/env perl|\/usr\/bin\/perl|g' contrib/perl-fmt
+#
 tar -xzf %{SOURCE2}  --directory "template"
 cd template/de
 cd ../..
@@ -142,33 +155,31 @@ find . -type f "(" -name ".git*" -o -name ".bzr*" -o -name ".travis*" -o -name "
 find . -type f -print0 | xargs -0r grep -l '^#!' | xargs -r chmod a+x
 find . -type f -print0 | xargs -0r grep -l '^#!' | \
 	xargs -r perl -i -pe 's{^#!%{_prefix}/local/}{#!%{_prefix}/}' "{}" "+"
-mkdir -p "%{buildroot}/srv/www"
-cp -a . "%{buildroot}/srv/www/%{name}"
+mkdir -p "%{buildroot}%{apache_serverroot}"
+cp -a . "%{buildroot}%{apache_serverroot}/%{name}"
 
 %fdupes %{buildroot}/srv
 
 cp "%{SOURCE3}" .
 #install bugzilla.conf to apache conf.d
-install -D -m0640 %{SOURCE4} %{buildroot}%{_sysconfdir}/apache2/conf.d/bugzilla.conf
+install -D -m0640 %{SOURCE4} %{buildroot}%{apache_sysconfdir}/conf.d/bugzilla.conf
+# fix apache serverroot
+sed -i -e 's|@APACHE_SERVERROOT@|%{apache_serverroot}|g' %{buildroot}%{apache_sysconfdir}/conf.d/bugzilla.conf
 # remove included .htaccess which has been moved to bugzilla.conf
-rm %{buildroot}/srv/www/bugzilla/.htaccess
-
-%post
-%service_add_post apache2.service
-
-%postun
-%service_del_postun apache2.service
+rm %{buildroot}%{apache_serverroot}/%{name}/.htaccess
 
 %files
 %doc MPL-2.0.html
-%defattr(-,wwwrun,root)
+%defattr(-,%{apache_user},root)
 # exclude language de_DE
-%exclude /srv/www/bugzilla/template/de
-%config(noreplace) %{_sysconfdir}/apache2/conf.d/bugzilla.conf
-/srv/www/bugzilla
+%exclude %{apache_serverroot}/bugzilla/template/de
+%{apache_serverroot}/bugzilla
 
 %files lang-de
-%defattr(0644,wwwrun,root,755)
-/srv/www/bugzilla/template/de
+%defattr(0644,%{apache_user},root,755)
+%{apache_serverroot}/bugzilla/template/de
+
+%files apache
+%attr(-,%{apache_user},%{apache_group}) %config(noreplace) %{apache_sysconfdir}/conf.d/bugzilla.conf
 
 %changelog

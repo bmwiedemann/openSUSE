@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 13 11:12:55 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Use apache-rpm-macros.
+- Put apache configuration files in separate subpackage.
+- Remove %service_add_post and %server_del_postun apache2.service
+  from spec.
+- Fix two rpmlint errors.
+
+-------------------------------------------------------------------
 Mon Feb  3 12:04:12 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
