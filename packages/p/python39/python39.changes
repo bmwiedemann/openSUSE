@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Dec 12 14:29:33 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update sphinx-update-removed-function.patch patch to the latest
+  version in python36.
+
+-------------------------------------------------------------------
+Thu Dec 10 00:26:51 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Last try before this results in an editwar:
+  * remove importlib_resources and importlib-metadata 
+    provides/obsoletes
+  * import importlib_resources is not the same as
+    import importlib.resources, same for metadata
+  * The backport packages from PyPI needed for older flavors are
+    specified as such for setuptools or in pyproject.toml. If a
+    package requires them they typically add them with a python
+    version qualifier and the packages have their own version
+    numbers.
+
+-------------------------------------------------------------------
 Sat Dec  5 16:55:12 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add patch sphinx-update-removed-function.patch to no longer call

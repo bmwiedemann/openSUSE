@@ -291,10 +291,6 @@ Provides:       %{python_pkg_name}-asyncio = %{version}
 Provides:       %{python_pkg_name}-typing = %{version}
 # python3-xml was merged into python3, now moved into -base
 Provides:       %{python_pkg_name}-xml = %{version}
-# python-importlib-metadata was specifical project which was merged into 3.8
-Provides:       %{python_pkg_name}-importlib-metadata = %{version}
-# python-importlib_resources is a backport of 3.7 behaviour into older pythons
-Provides:       %{python_pkg_name}-importlib_resources = %{version}
 %if %{primary_interpreter}
 Provides:       python3-asyncio = %{version}
 Provides:       python3-base = %{version}
@@ -303,10 +299,6 @@ Provides:       python3-typing = %{version}
 Obsoletes:      python3-typing < %{version}
 Provides:       python3-xml = %{version}
 Obsoletes:      python3-xml < %{version}
-Provides:       python3-importlib-metadata = %{version}
-Obsoletes:      python3-importlib-metadata < %{version}
-Provides:       python3-importlib_resources = %{version}
-Obsoletes:      python3-importlib_resources < %{version}
 %endif
 
 %description -n %{python_pkg_name}-base
