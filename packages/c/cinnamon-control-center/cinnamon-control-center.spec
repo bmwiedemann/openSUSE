@@ -19,24 +19,20 @@
 %define soname  libcinnamon-control-center
 %define sover   1
 Name:           cinnamon-control-center
-Version:        4.6.2
+Version:        4.8.1
 Release:        0
 Summary:        Utilities to configure the Cinnamon desktop
 License:        GPL-2.0-only AND GPL-3.0-or-later AND MIT
 Group:          System/GUI/Other
 URL:            https://github.com/linuxmint/cinnamon-control-center
 Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE %%{name}-ignore-polkit-rules.patch - marguerite@opensuse.org fix boo#1125427
-Patch:          %{name}-ignore-polkit-rules.patch
-BuildRequires:  autoconf
-BuildRequires:  autoconf-archive
-BuildRequires:  automake
 BuildRequires:  cups-devel
 BuildRequires:  desktop-data
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xsltproc
@@ -121,30 +117,18 @@ needed to develop applications that require these.
 
 %prep
 %setup -q
-%patch -p1
 
 %build
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-  --disable-static         \
-  --disable-update-mimedb  \
-%if 0%{?suse_version} < 1500
-  --disable-networkmanager \
-  --disable-modemmanager   \
-%endif
-  --enable-systemd
-make %{?_smp_mflags} V=1
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 ls %{buildroot}%{_datadir}/applications/cinnamon-* | while read desktop; do
     %suse_update_desktop_file $desktop
 done
 
-find %{buildroot} -type f -name "*.la" -delete -print
-
-%find_lang %{name}-timezones
 %fdupes %{buildroot}%{_datadir}/
 
 %if 0%{?suse_version} < 1500
@@ -171,13 +155,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/cinnamon-*
 %{_datadir}/applications/cinnamon-*.desktop
 
-%files common -f %{name}-timezones.lang
-%config %{_sysconfdir}/xdg/menus/cinnamoncc.menu
+%files common 
 %{_datadir}/%{name}/
-%dir %{_datadir}/desktop-directories/
-%{_datadir}/desktop-directories/cinnamoncc.directory
 %{_datadir}/icons/hicolor/*/*/*
-%{_datadir}/polkit-1/actions/org.cinnamon.controlcenter.datetime.policy
 
 %files -n %{soname}%{sover}
 %{_libdir}/%{name}-%{sover}/
