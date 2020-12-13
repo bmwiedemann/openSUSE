@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Dec  7 20:54:16 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 2.2.8.
+  * Bump version with no change.
+- Updates for 2.2.7.
+  * l10n: Update translations
+
+-------------------------------------------------------------------
+Tue Sep 29 20:15:36 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 2.2.6.
+  * Packaging: Remove obsolete calls to dh_python2
+  * l10n: Update translations
+- Update since version 2.2.1.
+  * Packaging: Remove python build-dep
+  * debian: Move the .thumbnailer launcher file to the same package
+    that contains the thumbnail executable.
+
+-------------------------------------------------------------------
 Fri Sep 11 20:55:44 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Change define bcond_without zeitgeist to becond_with, no longer

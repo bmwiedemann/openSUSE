@@ -184,4 +184,23 @@
     <comment></comment>
     <requestid>833869</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>cfc78d04c1cb7effc589bd07bb915cf6</srcmd5>
+    <version>2.2.8</version>
+    <time>1607877011</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.8.
+  * Bump version with no change.
+- Updates for 2.2.7.
+  * l10n: Update translations
+- Update to version 2.2.6.
+  * Packaging: Remove obsolete calls to dh_python2
+  * l10n: Update translations
+- Update since version 2.2.1.
+  * Packaging: Remove python build-dep
+  * debian: Move the .thumbnailer launcher file to the same package
+    that contains the thumbnail executable.
+</comment>
+    <requestid>855385</requestid>
+  </revision>
 </revisionlist>
