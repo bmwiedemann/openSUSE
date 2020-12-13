@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 10 18:10:11 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Removed isns.xml, as firewalld already supplies this file.
+  Note that SuSEFirewall2 is also no longer supported, which
+  obviates the need for the file "open-isns-firewall.service",
+  which was used in SLES but not in openSUSE.
+
+-------------------------------------------------------------------
+Mon Dec  7 23:49:05 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Added file isns.xml for firewalld, updated SPEC file for it,
+  since SuSEfirewall2 is deprecated.
+
+-------------------------------------------------------------------
 Fri Dec  4 20:08:53 UTC 2020 - Lee Duncan <lduncan@suse.com>
 
 - Updated SPEC file to Recommend open-iscsi

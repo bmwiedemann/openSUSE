@@ -63,7 +63,7 @@ Files to develop an application using the open-isns library.
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 autoconf
 autoheader
-%configure --prefix=/usr --with-security
+%configure --prefix=%{_prefix} --with-security
 make OPTFLAGS="%{optflags}"
 
 %install
