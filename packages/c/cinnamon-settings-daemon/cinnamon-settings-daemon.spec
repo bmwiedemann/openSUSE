@@ -17,26 +17,24 @@
 
 
 Name:           cinnamon-settings-daemon
-Version:        4.6.4
+Version:        4.8.2
 Release:        0
 Summary:        The settings Daemon for the Cinnamon Desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only
 Group:          System/GUI/Other
 URL:            https://github.com/linuxmint/cinnamon-settings-daemon
 Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  autoconf-archive
-BuildRequires:  automake
 BuildRequires:  cups-devel
 BuildRequires:  docutils
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xf86-input-wacom
-BuildRequires:  pkgconfig(cinnamon-desktop) >= 3.8.0
+BuildRequires:  pkgconfig(cinnamon-desktop) >= 4.8.0
 BuildRequires:  pkgconfig(colord)
 BuildRequires:  pkgconfig(cvc)
 BuildRequires:  pkgconfig(dbus-glib-1)
@@ -58,7 +56,6 @@ BuildRequires:  pkgconfig(nss)
 BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(upower-glib)
 BuildRequires:  pkgconfig(xtst)
-Requires:       libcinnamon-desktop-data
 Recommends:     %{name}-lang
 Recommends:     colord
 Recommends:     pulseaudio
@@ -80,18 +77,17 @@ This package contains development files for cinnamon-settings-daemon.
 %setup -q
 
 %build
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-  --libexecdir=%{_libexecdir}/%{name}/ \
-  --disable-static          \
-  --disable-schemas-compile \
-  --enable-polkit           \
-  --enable-systemd
-make %{?_smp_mflags} V=1
+%meson \
+ -Ddocs=true \
+ -Ddeprecated_warnings=false \
+ -Denable_smartcard=disabled \
+ --libexecdir=%{_libdir}
+
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
+
 %fdupes %{buildroot}%{_datadir}/
 
 %if 0%{?suse_version} < 1500
@@ -111,9 +107,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %doc AUTHORS README.rst debian/changelog
 %config %{_datadir}/dbus-1/system.d/org.cinnamon.SettingsDaemon.DateTimeMechanism.conf
 %{_sysconfdir}/xdg/autostart/%{name}-*.desktop
+%{_bindir}/csd-*
 %{_libdir}/%{name}-3.0/
 %{_datadir}/%{name}-3.0/
-%{_libexecdir}/%{name}/
+%{_libdir}/csd-*
 %{_datadir}/%{name}/
 %{_datadir}/applications/csd-*.desktop
 %{_datadir}/icons/hicolor/*/apps/csd-*.*

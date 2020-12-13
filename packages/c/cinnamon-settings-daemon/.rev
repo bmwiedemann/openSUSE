@@ -183,4 +183,29 @@
     <comment></comment>
     <requestid>834950</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>26725956e1ba11a6c7546a4045edccda</srcmd5>
+    <version>4.8.2</version>
+    <time>1607877019</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.8.2.
+  * media-keys/bus-watch-namespace.c: Fix media player shortcuts.
+- Fix spec file.
+- Updates for 4.8.1. 
+  * meson.build: Disable deprecated warnings (you can enable with 
+    a build flag).
+  * csd-media-keys: Check for the availability of a mouse/keyboard
+    grab when running screenshot commands.
+- Updates for 4.8.0.
+  * implement suspend-then-hibernate (issue #237)
+  * typo
+  * Port to meson
+  * Use libexec dir for plugins.
+  * Make bin links part of the meson build.
+  * Clean up some files.
+  * Revert &quot;csd-automount-manager.c: Add a small delay to folder 
+    opening after (#290)&quot;
+</comment>
+    <requestid>855390</requestid>
+  </revision>
 </revisionlist>
