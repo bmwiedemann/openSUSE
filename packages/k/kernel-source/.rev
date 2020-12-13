@@ -5295,4 +5295,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.9.12 &amp; another rpm 4.16 fix &amp; rpi4 support &amp; soundwire cleanup</comment>
     <requestid>852571</requestid>
   </revision>
+  <revision rev="567" vrev="1">
+    <srcmd5>09ed38a8334d19ffd906bb65cd9ee43f</srcmd5>
+    <version>5.9.14</version>
+    <time>1607876968</time>
+    <user>dimstar_suse</user>
+    <comment>2 tty CVEs &amp; 5.9.14 &amp; 5.9.13 &amp; disable DEBUG_SECTION_MISMATCH</comment>
+    <requestid>855307</requestid>
+  </revision>
 </revisionlist>

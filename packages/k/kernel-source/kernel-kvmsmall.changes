@@ -1,4 +1,253 @@
 -------------------------------------------------------------------
+Sat Dec 12 07:57:32 CET 2020 - jslaby@suse.cz
+
+- drm/i915/gt: Declare gen9 has 64 mocs entries! (git-fixes).
+- commit c648a46
+
+-------------------------------------------------------------------
+Sat Dec 12 07:55:40 CET 2020 - jslaby@suse.cz
+
+- Linux 5.9.14 (bsc#1012628).
+- usb: gadget: f_fs: Use local copy of descriptors for userspace
+  copy (bsc#1012628).
+- USB: serial: kl5kusb105: fix memleak on open (bsc#1012628).
+- USB: serial: ch341: add new Product ID for CH341A (bsc#1012628).
+- USB: serial: ch341: sort device-id entries (bsc#1012628).
+- USB: serial: option: add Fibocom NL668 variants (bsc#1012628).
+- USB: serial: option: add support for Thales Cinterion EXS82
+  (bsc#1012628).
+- USB: serial: option: fix Quectel BG96 matching (bsc#1012628).
+- speakup: Reject setting the speakup line discipline outside
+  of speakup (bsc#1012628).
+- ALSA: hda/realtek: Fix bass speaker DAC assignment on Asus
+  Zephyrus G14 (bsc#1012628).
+- ALSA: hda/realtek: Add mute LED quirk to yet another HP x360
+  model (bsc#1012628).
+- ALSA: hda/realtek: Enable headset of ASUS UX482EG & B9400CEA
+  with ALC294 (bsc#1012628).
+- ALSA: hda/realtek - Add new codec supported for ALC897
+  (bsc#1012628).
+- ALSA: hda/realtek - Fixed Dell AIO wrong sound tone
+  (bsc#1012628).
+- ALSA: hda/generic: Add option to enforce preferred_dacs pairs
+  (bsc#1012628).
+- ring-buffer: Update write stamp with the correct ts
+  (bsc#1012628).
+- ring-buffer: Set the right timestamp in the slow path of
+  __rb_reserve_next() (bsc#1012628).
+- ring-buffer: Always check to put back before stamp when crossing
+  pages (bsc#1012628).
+- ftrace: Fix updating FTRACE_FL_TRAMP (bsc#1012628).
+- ftrace: Fix DYNAMIC_FTRACE_WITH_DIRECT_CALLS dependency
+  (bsc#1012628).
+- cifs: allow syscalls to be restarted in __smb_send_rqst()
+  (bsc#1012628).
+- cifs: fix potential use-after-free in cifs_echo_request()
+  (bsc#1012628).
+- cifs: refactor create_sd_buf() and and avoid corrupting the
+  buffer (bsc#1012628).
+- cifs: add NULL check for ses->tcon_ipc (bsc#1012628).
+- gfs2: Upgrade shared glocks for atime updates (bsc#1012628).
+- gfs2: Fix deadlock between gfs2_{create_inode,inode_lookup}
+  and delete_work_func (bsc#1012628).
+- s390/pci: fix CPU address in MSI for directed IRQ (bsc#1012628).
+- i2c: imx: Fix reset of I2SR_IAL flag (bsc#1012628).
+- i2c: imx: Check for I2SR_IAL after every byte (bsc#1012628).
+- i2c: imx: Don't generate STOP condition if arbitration has
+  been lost (bsc#1012628).
+- tracing: Fix userstacktrace option for instances (bsc#1012628).
+- thunderbolt: Fix use-after-free in remove_unplugged_switch()
+  (bsc#1012628).
+- drm/omap: sdi: fix bridge enable/disable (bsc#1012628).
+- drm/amdgpu/vcn3.0: stall DPG when WPTR/RPTR reset (bsc#1012628).
+- drm/amdgpu/vcn3.0: remove old DPG workaround (bsc#1012628).
+- drm/i915/gt: Retain default context state across shrinking
+  (bsc#1012628).
+- drm/i915/gt: Limit frequency drop to RPe on parking
+  (bsc#1012628).
+- drm/i915/gt: Program mocs:63 for cache eviction on gen9
+  (bsc#1012628).
+- KVM: PPC: Book3S HV: XIVE: Fix vCPU id sanity check
+  (bsc#1012628).
+- scsi: mpt3sas: Fix ioctl timeout (bsc#1012628).
+- io_uring: fix recvmsg setup with compat buf-select
+  (bsc#1012628).
+- dm writecache: advance the number of arguments when reporting
+  max_age (bsc#1012628).
+- dm writecache: fix the maximum number of arguments
+  (bsc#1012628).
+- powerpc/64s/powernv: Fix memory corruption when saving SLB
+  entries on MCE (bsc#1012628).
+- genirq/irqdomain: Add an irq_create_mapping_affinity() function
+  (bsc#1012628).
+- powerpc/pseries: Pass MSI affinity to irq_create_mapping()
+  (bsc#1012628).
+- dm: fix bug with RCU locking in dm_blk_report_zones
+  (bsc#1012628).
+- dm: fix double RCU unlock in dm_dax_zero_page_range() error path
+  (bsc#1012628).
+- dm: remove invalid sparse __acquires and __releases annotations
+  (bsc#1012628).
+- x86/uprobes: Do not use prefixes.nbytes when looping over
+  prefixes.bytes (bsc#1012628).
+- coredump: fix core_pattern parse error (bsc#1012628).
+- mm: list_lru: set shrinker map bit when child nr_items is not
+  zero (bsc#1012628).
+- mm/swapfile: do not sleep with a spin lock held (bsc#1012628).
+- hugetlb_cgroup: fix offline of hugetlb cgroup with reservations
+  (bsc#1012628).
+- Revert "amd/amdgpu: Disable VCN DPG mode for Picasso"
+  (bsc#1012628).
+- iommu/amd: Set DTE[IntTabLen] to represent 512 IRTEs
+  (bsc#1012628).
+- mm: memcg/slab: fix obj_cgroup_charge() return value handling
+  (bsc#1012628).
+- lib/syscall: fix syscall registers retrieval on 32-bit platforms
+  (bsc#1012628).
+- can: af_can: can_rx_unregister(): remove WARN() statement from
+  list operation sanity check (bsc#1012628).
+- gfs2: check for empty rgrp tree in gfs2_ri_update (bsc#1012628).
+- netfilter: ipset: prevent uninit-value in hash_ip6_add
+  (bsc#1012628).
+- ASoC: wm_adsp: fix error return code in wm_adsp_load()
+  (bsc#1012628).
+- gfs2: Fix deadlock dumping resource group glocks (bsc#1012628).
+- gfs2: Don't freeze the file system during unmount (bsc#1012628).
+- rtw88: debug: Fix uninitialized memory in debugfs code
+  (bsc#1012628).
+- i2c: qcom: Fix IRQ error misassignement (bsc#1012628).
+- i2c: qup: Fix error return code in qup_i2c_bam_schedule_desc()
+  (bsc#1012628).
+- dm writecache: remove BUG() and fail gracefully instead
+  (bsc#1012628).
+- Input: i8042 - fix error return code in i8042_setup_aux()
+  (bsc#1012628).
+- netfilter: nf_tables: avoid false-postive lockdep splat
+  (bsc#1012628).
+- netfilter: nftables_offload: set address type in control
+  dissector (bsc#1012628).
+- netfilter: nftables_offload: build mask based from the matching
+  bytes (bsc#1012628).
+- x86/insn-eval: Use new for_each_insn_prefix() macro to loop
+  over prefixes bytes (bsc#1012628).
+- Revert "geneve: pull IP header before ECN decapsulation"
+  (bsc#1012628).
+- bpf: Fix propagation of 32-bit signed bounds from 64-bit bounds
+  (bsc#1012628).
+- commit 960bcea
+
+-------------------------------------------------------------------
+Fri Dec 11 07:22:27 CET 2020 - jslaby@suse.cz
+
+- Update patches.suse/tty-Fix-pgrp-locking-in-tiocspgrp.patch
+  (bsc#1179745 CVE-2020-29661).
+- Update patches.suse/tty-Fix-session-locking.patch (bsc#1179745
+  CVE-2020-29660).
+  Add CVE numbers.
+- commit 1329f77
+
+-------------------------------------------------------------------
+Thu Dec 10 11:03:39 CET 2020 - mgorman@suse.de
+
+- Update config files to disable CONFIG_DEBUG_SECTION_MISMATCH (bsc#1177403)
+- commit a0a476d
+
+-------------------------------------------------------------------
+Tue Dec  8 12:18:06 CET 2020 - jslaby@suse.cz
+
+- Linux 5.9.13 (bsc#1012628).
+- devlink: Hold rtnl lock while reading netdev attributes
+  (bsc#1012628).
+- devlink: Make sure devlink instance and port are in same net
+  namespace (bsc#1012628).
+- ipv6: addrlabel: fix possible memory leak in ip6addrlbl_net_init
+  (bsc#1012628).
+- net/af_iucv: set correct sk_protocol for child sockets
+  (bsc#1012628).
+- net: openvswitch: fix TTL decrement action netlink message
+  format (bsc#1012628).
+- net/tls: missing received data after fast remote close
+  (bsc#1012628).
+- net/tls: Protect from calling tls_dev_del for TLS RX twice
+  (bsc#1012628).
+- rose: Fix Null pointer dereference in rose_send_frame()
+  (bsc#1012628).
+- sock: set sk_err to ee_errno on dequeue from errq (bsc#1012628).
+- tcp: Set INET_ECN_xmit configuration in
+  tcp_reinit_congestion_control (bsc#1012628).
+- tun: honor IOCB_NOWAIT flag (bsc#1012628).
+- usbnet: ipheth: fix connectivity with iOS 14 (bsc#1012628).
+- vsock/virtio: discard packets only when socket is really closed
+  (bsc#1012628).
+- mptcp: fix NULL ptr dereference on bad MPJ (bsc#1012628).
+- net/packet: fix packet receive on L3 devices without visible
+  hard header (bsc#1012628).
+- netfilter: bridge: reset skb->pkt_type after
+  NF_INET_POST_ROUTING traversal (bsc#1012628).
+- ipv4: Fix tos mask in inet_rtm_getroute() (bsc#1012628).
+- dt-bindings: net: correct interrupt flags in examples
+  (bsc#1012628).
+- chelsio/chtls: fix panic during unload reload chtls
+  (bsc#1012628).
+- ibmvnic: Ensure that SCRQ entry reads are correctly ordered
+  (bsc#1012628).
+- ibmvnic: Fix TX completion error handling (bsc#1012628).
+- tipc: fix incompatible mtu of transmission (bsc#1012628).
+- inet_ecn: Fix endianness of checksum update when setting ECT(1)
+  (bsc#1012628).
+- geneve: pull IP header before ECN decapsulation (bsc#1012628).
+- net: ip6_gre: set dev->hard_header_len when using header_ops
+  (bsc#1012628).
+- dpaa_eth: copy timestamp fields to new skb in A-050385
+  workaround (bsc#1012628).
+- cxgb3: fix error return code in t3_sge_alloc_qset()
+  (bsc#1012628).
+- net: pasemi: fix error return code in pasemi_mac_open()
+  (bsc#1012628).
+- vxlan: fix error return code in __vxlan_dev_create()
+  (bsc#1012628).
+- chelsio/chtls: fix a double free in chtls_setkey()
+  (bsc#1012628).
+- net: mvpp2: Fix error return code in mvpp2_open() (bsc#1012628).
+- net: skbuff: ensure LSE is pullable before decrementing the
+  MPLS ttl (bsc#1012628).
+- net: openvswitch: ensure LSE is pullable before reading it
+  (bsc#1012628).
+- net/sched: act_mpls: ensure LSE is pullable before reading it
+  (bsc#1012628).
+- net/mlx5: DR, Proper handling of unsupported Connect-X6DX SW
+  steering (bsc#1012628).
+- net/mlx5: Fix wrong address reclaim when command interface is
+  down (bsc#1012628).
+- net: mlx5e: fix fs_tcp.c build when IPV6 is not enabled
+  (bsc#1012628).
+- ALSA: usb-audio: US16x08: fix value count for level meters
+  (bsc#1012628).
+- Input: xpad - support Ardwiino Controllers (bsc#1012628).
+- Input: i8042 - add ByteSpeed touchpad to noloop table
+  (bsc#1012628).
+- Input: atmel_mxt_ts - fix lost interrupts (bsc#1012628).
+- tracing: Fix alignment of static buffer (bsc#1012628).
+- tracing: Remove WARN_ON in start_thread() (bsc#1012628).
+- uapi: fix statx attribute value overlap for DAX & MOUNT_ROOT
+  (bsc#1012628).
+- drm/i915/gt: Fixup tgl mocs for PTE tracking (bsc#1012628).
+- commit 3dfd18b
+
+-------------------------------------------------------------------
+Tue Dec  8 07:10:41 CET 2020 - jslaby@suse.cz
+
+- tty: Fix ->session locking (bsc#1179745).
+- tty: Fix ->pgrp locking in tiocspgrp() (bsc#1179745).
+- commit 9455f8b
+
+-------------------------------------------------------------------
+Mon Dec  7 16:57:41 CET 2020 - mkubecek@suse.cz
+
+- net/x25: prevent a couple of overflows (bsc#1178590).
+- commit 2a06597
+
+-------------------------------------------------------------------
 Wed Dec  2 10:24:35 CET 2020 - jslaby@suse.cz
 
 - Linux 5.9.12 (bsc#1012628).
