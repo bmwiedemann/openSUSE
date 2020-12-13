@@ -1,6 +1,6 @@
-diff -ruN FreeFileSync_11.2_Source_orig/FreeFileSync/Source/Makefile FreeFileSync_11.2_Source/FreeFileSync/Source/Makefile
---- FreeFileSync_11.2_Source_orig/FreeFileSync/Source/Makefile	2020-10-02 20:14:56.000000000 +0200
-+++ FreeFileSync_11.2_Source/FreeFileSync/Source/Makefile	2020-10-03 10:53:29.564126702 +0200
+diff -Naur FreeFileSync_11.4_Source_orig/FreeFileSync/Source/Makefile FreeFileSync_11.4_Source/FreeFileSync/Source/Makefile
+--- FreeFileSync_11.4_Source_orig/FreeFileSync/Source/Makefile	2020-12-05 14:38:38.000000000 +0100
++++ FreeFileSync_11.4_Source/FreeFileSync/Source/Makefile	2020-12-11 09:24:39.418116342 +0100
 @@ -2,9 +2,9 @@
  
  cxxFlags = -std=c++2a -pipe -DWXINTL_NO_GETTEXT_MACRO -I../.. -I../../zenXml -include "zen/i18n.h" -include "zen/warn_static.h" \
@@ -8,8 +8,8 @@ diff -ruN FreeFileSync_11.2_Source_orig/FreeFileSync/Source/Makefile FreeFileSyn
 -           -O3 -DNDEBUG `wx-config --cxxflags --debug=no` -pthread
 +           -O3 -DNDEBUG `wx-config --cxxflags --debug=no` -pthread -fpie
  
--linkFlags = -s -no-pie `wx-config --libs std, aui --debug=no` -pthread
-+linkFlags = -s `wx-config --libs std, aui --debug=no` -pthread -lz -pie
+-linkFlags = -s -no-pie `wx-config --libs std, aui, richtext --debug=no` -pthread
++linkFlags = -s `wx-config --libs std, aui, richtext --debug=no` -pthread -lz -pie
  
  
  cxxFlags  += `pkg-config --cflags openssl`
@@ -26,9 +26,9 @@ diff -ruN FreeFileSync_11.2_Source_orig/FreeFileSync/Source/Makefile FreeFileSyn
  
  #support for SELinux (optional)
  SELINUX_EXISTING=$(shell pkg-config --exists libselinux && echo YES)
-diff -ruN FreeFileSync_11.2_Source_orig/FreeFileSync/Source/RealTimeSync/Makefile FreeFileSync_11.2_Source/FreeFileSync/Source/RealTimeSync/Makefile
---- FreeFileSync_11.2_Source_orig/FreeFileSync/Source/RealTimeSync/Makefile	2020-10-02 20:14:56.000000000 +0200
-+++ FreeFileSync_11.2_Source/FreeFileSync/Source/RealTimeSync/Makefile	2020-10-03 10:54:14.051922165 +0200
+diff -Naur FreeFileSync_11.4_Source_orig/FreeFileSync/Source/RealTimeSync/Makefile FreeFileSync_11.4_Source/FreeFileSync/Source/RealTimeSync/Makefile
+--- FreeFileSync_11.4_Source_orig/FreeFileSync/Source/RealTimeSync/Makefile	2020-12-05 14:38:38.000000000 +0100
++++ FreeFileSync_11.4_Source/FreeFileSync/Source/RealTimeSync/Makefile	2020-12-11 09:19:38.287288344 +0100
 @@ -2,14 +2,15 @@
  
  cxxFlags = -std=c++2a -pipe -DWXINTL_NO_GETTEXT_MACRO -I../../.. -I../../../zenXml -include "zen/i18n.h" -include "zen/warn_static.h" \
@@ -36,8 +36,8 @@ diff -ruN FreeFileSync_11.2_Source_orig/FreeFileSync/Source/RealTimeSync/Makefil
 -           -O3 -DNDEBUG `wx-config --cxxflags --debug=no` -pthread
 +           -O3 -DNDEBUG `wx-config --cxxflags --debug=no` -pthread -fpie
  
--linkFlags = -s -no-pie `wx-config --libs std, aui --debug=no` -pthread
-+linkFlags = -s `wx-config --libs std, aui --debug=no` -pthread -lz -pie
+-linkFlags = -s -no-pie `wx-config --libs std, aui, richtext --debug=no` -pthread
++linkFlags = -s `wx-config --libs std, aui, richtext --debug=no` -pthread -lz -pie
  
  #Gtk - support "no button border"
 -cxxFlags  += `pkg-config --cflags gtk+-2.0`
@@ -49,9 +49,9 @@ diff -ruN FreeFileSync_11.2_Source_orig/FreeFileSync/Source/RealTimeSync/Makefil
  
  cppFiles=
  cppFiles+=application.cpp
-diff -ruN FreeFileSync_11.2_Source_orig/libssh2/libssh2_wrap.h FreeFileSync_11.2_Source/libssh2/libssh2_wrap.h
---- FreeFileSync_11.2_Source_orig/libssh2/libssh2_wrap.h	2020-10-02 20:14:58.000000000 +0200
-+++ FreeFileSync_11.2_Source/libssh2/libssh2_wrap.h	2020-10-03 10:55:03.571680367 +0200
+diff -Naur FreeFileSync_11.4_Source_orig/libssh2/libssh2_wrap.h FreeFileSync_11.4_Source/libssh2/libssh2_wrap.h
+--- FreeFileSync_11.4_Source_orig/libssh2/libssh2_wrap.h	2020-12-05 14:38:38.000000000 +0100
++++ FreeFileSync_11.4_Source/libssh2/libssh2_wrap.h	2020-12-11 09:17:38.447774909 +0100
 @@ -20,6 +20,22 @@
      #error libssh2_sftp.h header guard changed
  #endif
@@ -61,7 +61,7 @@ diff -ruN FreeFileSync_11.2_Source_orig/libssh2/libssh2_wrap.h FreeFileSync_11.2
 + * packets.
 + */
 +#ifndef MAX_SFTP_READ_SIZE
-+#define MAX_SFTP_READ_SIZE 30000
++    #define MAX_SFTP_READ_SIZE 30000
 +#endif
 +
 +/*
@@ -69,15 +69,15 @@ diff -ruN FreeFileSync_11.2_Source_orig/libssh2/libssh2_wrap.h FreeFileSync_11.2
 + * amount of data sent in each FXP_WRITE packet
 + */
 +#ifndef MAX_SFTP_OUTGOING_SIZE
-+#define MAX_SFTP_OUTGOING_SIZE 30000
++    #define MAX_SFTP_OUTGOING_SIZE 30000
 +#endif
 +
  //fix libssh2 64-bit warning mess: https://github.com/libssh2/libssh2/pull/96
  #undef libssh2_userauth_password
  inline int libssh2_userauth_password(LIBSSH2_SESSION* session, const std::string& username, const std::string& password)
-diff -ruN FreeFileSync_11.2_Source_orig/zen/ring_buffer.h FreeFileSync_11.2_Source/zen/ring_buffer.h
---- FreeFileSync_11.2_Source_orig/zen/ring_buffer.h	2020-10-02 20:14:58.000000000 +0200
-+++ FreeFileSync_11.2_Source/zen/ring_buffer.h	2020-10-03 10:55:35.991520674 +0200
+diff -Naur FreeFileSync_11.4_Source_orig/zen/ring_buffer.h FreeFileSync_11.4_Source/zen/ring_buffer.h
+--- FreeFileSync_11.4_Source_orig/zen/ring_buffer.h	2020-12-05 14:38:38.000000000 +0100
++++ FreeFileSync_11.4_Source/zen/ring_buffer.h	2020-12-11 09:16:43.519997924 +0100
 @@ -8,6 +8,7 @@
  #define RING_BUFFER_H_01238467085684139453534
  

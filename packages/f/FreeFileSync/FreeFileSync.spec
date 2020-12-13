@@ -17,7 +17,7 @@
 
 
 Name:           FreeFileSync
-Version:        11.3
+Version:        11.4
 Release:        0
 Summary:        Free backup software to synchronize files and folders
 License:        GPL-3.0-or-later
@@ -56,12 +56,9 @@ in one of the monitored directories or when a directory becomes available (e. g.
 Usually this command line will trigger a FreeFileSync batch job.
 
 %prep
-%setup -q -c %{name}-%{version}
+%autosetup -p1 -c %{name}-%{version}
 sed -i 's/\r$//' License.txt
-#chmod -x License.txt
 mkdir FreeFileSync/Build/Bin
-%patch0 -p1
-%patch1 -p1
 
 %build
 export TMPDIR=/tmp # necessary since 11.0
@@ -97,11 +94,11 @@ install -p %{SOURCE4} %{buildroot}%{_datadir}/pixmaps/
 %suse_update_desktop_file -i %{name}
 %suse_update_desktop_file -i RealTimeSync
 
-%post
-%desktop_database_post
+%filetriggerin -- %{_datadir}/applications
+%{_bindir}/update-desktop-database --quiet %{_datadir}/applications || true
 
-%postun
-%desktop_database_postun
+%filetriggerpostun -- %{_datadir}/applications
+%{_bindir}/update-desktop-database --quiet %{_datadir}/applications || true
 
 %files
 %license %attr(444, -, -) License.txt
