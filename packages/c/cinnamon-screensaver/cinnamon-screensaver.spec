@@ -17,7 +17,7 @@
 
 
 Name:           cinnamon-screensaver
-Version:        4.6.0
+Version:        4.8.0
 Release:        0
 Summary:        Cinnamon screensaver and locker
 License:        GPL-2.0-or-later

@@ -151,4 +151,22 @@
     <comment></comment>
     <requestid>839618</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>aa2b6313a5099efd717ffd7fe6b279ea</srcmd5>
+    <version>4.8.0</version>
+    <time>1607876994</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.8.0.
+  * Build: Only generate python bytecode during builds with no 
+    temporary install folder.  Package managers should handle this
+    otherwise.
+  * use debhelper 11 for integrated meson support
+  * build: Don't rely on debian magic to install the correct pam 
+    file.
+  * Fix meson syntax error when xinerama support is disabled.
+  * build: use datadir in define_variable for dbus_services_dir
+  * album art: Adjust the album art url for spotify.
+</comment>
+    <requestid>855375</requestid>
+  </revision>
 </revisionlist>
