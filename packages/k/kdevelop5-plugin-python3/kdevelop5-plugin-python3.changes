@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  9 20:39:59 UTC 2020 - wbauer@tmo.at
+
+- Update to 5.6.1
+  * Fix an incompatibility with Python versions earlier than 3.9.0,
+    which led to instability (kde#426292)
+  * Change PEP8 max line length configuration single steps to 1
+
+-------------------------------------------------------------------
 Tue Sep  8 11:36:22 UTC 2020 - wbauer@tmo.at
 
 - Update to 5.6.0
