@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Dec  8 17:28:48 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 2.8.1.
+  * cleanup: remove code dropped
+  * remove never-used variable added
+  * bracketcompletion: Enable plugin by default
+  * Remove links in plugin about dialogs
+- Updates for 2.8.0.
+  * Port to Gtksourceview4
+  * Add a new window desktop action
+  * plugins: Clean up deprecated preprcessor commands
+  * Clean up remaining deprecated preprocessor commands
+  * xed-highlight-mode-selector.c: Fix a couple of missing casts
+  * textsize plugin: Zoom text regardless of selection
+  * xed-highlight-mode-dialog/selector: Clean up code style
+  * xed-completion-plugin.c: Clean up the code style
+  * auto bracket complete feature   - added bracket-complete dir 
+    in plugins   - gtksourceview min depedency change to 4.0.3
+  * Add XAppFavorites support to the file menu.
+  * meson.build: bump xapp version.
+  * l10n: Update POT
+
+-------------------------------------------------------------------
 Sun Sep 13 18:32:49 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 2.6.2.

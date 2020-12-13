@@ -199,4 +199,31 @@
     <comment></comment>
     <requestid>834946</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c1f06015cc54c5265b493e9959753860</srcmd5>
+    <version>2.8.1</version>
+    <time>1607877017</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.8.1.
+  * cleanup: remove code dropped
+  * remove never-used variable added
+  * bracketcompletion: Enable plugin by default
+  * Remove links in plugin about dialogs
+- Updates for 2.8.0.
+  * Port to Gtksourceview4
+  * Add a new window desktop action
+  * plugins: Clean up deprecated preprcessor commands
+  * Clean up remaining deprecated preprocessor commands
+  * xed-highlight-mode-selector.c: Fix a couple of missing casts
+  * textsize plugin: Zoom text regardless of selection
+  * xed-highlight-mode-dialog/selector: Clean up code style
+  * xed-completion-plugin.c: Clean up the code style
+  * auto bracket complete feature   - added bracket-complete dir 
+    in plugins   - gtksourceview min depedency change to 4.0.3
+  * Add XAppFavorites support to the file menu.
+  * meson.build: bump xapp version.
+  * l10n: Update POT
+</comment>
+    <requestid>855389</requestid>
+  </revision>
 </revisionlist>

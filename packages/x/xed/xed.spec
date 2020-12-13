@@ -17,7 +17,7 @@
 
 
 Name:           xed
-Version:        2.6.2
+Version:        2.8.1
 Release:        0
 Summary:        A text editor with highlighting
 License:        GPL-2.0-or-later
@@ -35,13 +35,12 @@ BuildRequires:  pkgconfig(enchant)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gspell-1)
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(gtksourceview-3.0)
+BuildRequires:  pkgconfig(gtksourceview-4)
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libpeas-gtk-1.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(xapp)
-Requires:       libpeas-loader-python3
 Requires:       xapps-common
 Recommends:     %{name}-lang
 %glib2_gsettings_schema_requires
