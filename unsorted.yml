@@ -1512,6 +1512,7 @@ unsorted:
   - budgie-screenshot-applet-lang 
   - buffer 
   - bugzilla 
+  - bugzilla-apache 
   - bugzilla-lang-de 
   - build 
   - build-compare 
@@ -1960,7 +1961,7 @@ unsorted:
   - cinnamon-control-center-common 
   - cinnamon-control-center-devel 
   - cinnamon-control-center-lang 
-  - cinnamon-devel-doc 
+  - cinnamon-devel-doc: [x86_64] 
   - cinnamon-gschemas 
   - cinnamon-gschemas-branding-openSUSE 
   - cinnamon-gschemas-branding-upstream 
@@ -1981,6 +1982,7 @@ unsorted:
   - civetweb-devel 
   - cjs 
   - cjs-devel 
+  - cjs-tests 
   - ck-devel 
   - ckb-next 
   - ckermit-doc 
@@ -1994,10 +1996,10 @@ unsorted:
   - clang 
   - clang-devel 
   - clang-tools: [i586] 
-  - clang10: [i586] 
+  - clang10 
   - clang10-devel 
   - clang10-devel-32bit: [x86_64] 
-  - clang10-doc: [i586] 
+  - clang10-doc 
   - clang11: [i586] 
   - clang11-devel 
   - clang11-devel-32bit: [x86_64] 
@@ -9020,7 +9022,7 @@ unsorted:
   - libLASi-devel 
   - libLASi2 
   - libLHAPDF-6_3_0 
-  - libLLVM10: [i586] 
+  - libLLVM10 
   - libLLVM10-32bit: [x86_64] 
   - libLLVM11-32bit: [x86_64] 
   - libLLVM7 
@@ -9029,7 +9031,7 @@ unsorted:
   - libLLVM8-32bit: [x86_64] 
   - libLLVM9 
   - libLLVM9-32bit: [x86_64] 
-  - libLTO10: [i586] 
+  - libLTO10 
   - libLTO10-32bit: [x86_64] 
   - libLTO11: [i586] 
   - libLTO11-32bit: [x86_64] 
@@ -10160,7 +10162,7 @@ unsorted:
   - libck0 
   - libckteec0 
   - libclFFT2: [x86_64] 
-  - libclang10: [i586] 
+  - libclang10 
   - libclang10-32bit: [x86_64] 
   - libclang11: [i586] 
   - libclang11-32bit: [x86_64] 
@@ -10785,6 +10787,7 @@ unsorted:
   - libfolks25: [i586] 
   - libfoma-hfst0 
   - libfoma0 
+  - libfont-specimen0 
   - libfontenc-devel-32bit: [x86_64] 
   - libfontenc1-32bit: [x86_64] 
   - libfonts-javadoc 
@@ -15120,7 +15123,7 @@ unsorted:
   - lldb: [x86_64] 
   - lldb-devel: [x86_64] 
   - lldb10: [x86_64] 
-  - lldb10-devel: [x86_64] # devel package of dvd:clang10-doc 
+  - lldb10-devel: [x86_64] 
   - lldb11: [x86_64] 
   - lldb11-devel: [x86_64] # devel package of dvd:libLLVM11 
   - lldb7: [x86_64] 
@@ -23034,7 +23037,6 @@ unsorted:
   - python3-nose-cover3 
   - python3-nose-exclude 
   - python3-nose-progressive 
-  - python3-nose-random 
   - python3-nose-timer 
   - python3-nose2 
   - python3-nose2pytest 
@@ -36490,6 +36492,7 @@ unsorted:
   - yast2-drbd: [i586] # suggested by dvd:suggested:patterns-yast-yast2_server 
   - yast2-fcoe-client 
   - yast2-firstboot-wsl 
+  - yast2-fonts 
   - yast2-geo-cluster 
   - yast2-gpmc 
   - yast2-installation-control 
