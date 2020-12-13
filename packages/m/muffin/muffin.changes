@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec  7 20:25:57 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 4.8.0.
+  * core/main.c: Squelch certain glib debug messages to reduce log 
+    spam.
+  * shaped-texture: Use the REPLACE combine function on opaque 
+    areas said to give 5% render improvement at 4K and lower power 
+    use.
+
+-------------------------------------------------------------------
 Fri Sep 18 18:57:44 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 4.6.3.
