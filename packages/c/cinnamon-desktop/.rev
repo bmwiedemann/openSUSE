@@ -143,4 +143,22 @@
     <comment></comment>
     <requestid>834948</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>64da1a733ef90656e6db7eca01dfe95b</srcmd5>
+    <version>4.8.1</version>
+    <time>1607877021</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.8.1.
+  * gnome-bg.c: don't decrement hour by 1 when parsing xml 
+    backgrounds
+- Updates for version 4.8.0
+  * cdesktop-enums.h: Don't allow area or window screenshots while 
+    cinnamon is in a grab state
+  * debian: Bump debhelper compat level to 12
+  * small improves to debian/copyright
+  * gnome-rr-config.c: Remove some unused variables
+  * Default terminal: Change exec-arg from '-x' to '--' 
+</comment>
+    <requestid>855392</requestid>
+  </revision>
 </revisionlist>
