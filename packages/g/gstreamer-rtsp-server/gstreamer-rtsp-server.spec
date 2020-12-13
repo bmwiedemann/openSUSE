@@ -18,15 +18,19 @@
 
 %define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
 %define _name gst-rtsp-server
+
 Name:           gstreamer-rtsp-server
-Version:        1.18.1
+Version:        1.18.2
 Release:        0
 Summary:        GStreamer-based RTSP server library
 License:        LGPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
-Source0:        %{url}/src/gst-rtsp-server/%{_name}-%{version}.tar.xz
+# Disable tarball source url, use _service
+#Source0:        %%{url}/src/gst-rtsp-server/%%{_name}-%%{version}.tar.xz
+Source0:        %{_name}-%{version}.tar.xz
 Source99:       gstreamer-rtsp-server-rpmlintrc
+
 BuildRequires:  hotdoc
 BuildRequires:  meson >= 0.47
 BuildRequires:  pkgconfig
