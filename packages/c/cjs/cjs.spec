@@ -20,21 +20,20 @@
 %define sover   0
 %define typelib typelib-1_0-CjsPrivate-1_0
 Name:           cjs
-Version:        4.6.0
+Version:        4.8.0
 Release:        0
 Summary:        JavaScript module used by Cinnamon
 License:        MIT AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later)
 Group:          System/GUI/Other
 URL:            https://github.com/linuxmint/cjs
 Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  autoconf-archive
-BuildRequires:  automake
 BuildRequires:  dbus-1
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  python
+BuildRequires:  sysprof-devel
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(cairo-gobject)
 BuildRequires:  pkgconfig(dbus-glib-1)
@@ -42,7 +41,9 @@ BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
 BuildRequires:  pkgconfig(libffi)
-BuildRequires:  pkgconfig(mozjs-52)
+BuildRequires:  pkgconfig(mozjs-78)
+BuildRequires:  pkgconfig(readline)
+BuildRequires:  pkgconfig(sysprof-capture-4)
 
 %description
 JavaScript bindings based on GObject Introspection for the
@@ -82,28 +83,29 @@ Cinnamon Desktop.
 
 This package contains development files for cjs.
 
+%package tests
+Summary:        Tests for the cjs package
+Group:          System/GUI/Other
+Requires:       %{name}%{?_isa} = %{?epoch}:%{version}-%{release}
+
+%description tests
+The cjs-tests package contains tests that can be used to verify
+the functionality of the installed cjs package.
+
 %prep
 %setup -q
-# we didn't enable code-coverage tests, so "@CODE_COVERAGE_RULES@" never get filled
-sed -i '$d' Makefile-test.am
 
 %build
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-%if 0%{?suse_version} < 1500
-  --without-dbus-tests \
-%endif
-  --disable-static
-
-export CFLAGS+='%{optflags}'
-make %{?_smp_mflags} V=1
+%meson --libexecdir=%{_libdir}/%{name}/
+%meson_build
 
 %install
-%make_install
+%meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n %{soname}%{sover} -p /sbin/ldconfig
+%fdupes -s %{buildroot}%{_libdir}/%{name}/installed-tests/
 
+%post -n %{soname}%{sover} -p /sbin/ldconfig
 %postun -n %{soname}%{sover} -p /sbin/ldconfig
 
 %files
@@ -115,13 +117,19 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libcjs.so.%{sover}*
 
 %files -n %{typelib}
-%dir %{_libdir}/cjs/
-%dir %{_libdir}/cjs/girepository-1.0/
-%{_libdir}/cjs/girepository-1.0/CjsPrivate-1.0.typelib
+%dir %{_libdir}/%{name}/
+%dir %{_libdir}/%{name}/girepository-1.0/
+%{_libdir}/%{name}/girepository-1.0/CjsPrivate-1.0.typelib
 
 %files devel
 %{_includedir}/%{name}-1.0/
 %{_libdir}/%{soname}.so
 %{_libdir}/pkgconfig/%{name}*.pc
+%{_datadir}/cjs-1.0/
+
+%files tests
+%{_libdir}/%{name}/installed-tests/
+%{_datadir}/installed-tests/
+%{_datadir}/glib-2.0/schemas/org.cinnamon.CjsTest.gschema.xml
 
 %changelog
