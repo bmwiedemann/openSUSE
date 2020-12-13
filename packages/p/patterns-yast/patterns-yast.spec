@@ -20,7 +20,7 @@
 
 Name:           patterns-yast
 
-Version:        20191229
+Version:        20201210
 Release:        0
 Summary:        Patterns for Installation (YaST)
 License:        MIT
@@ -105,7 +105,6 @@ Requires:       yast2-services-manager
 Requires:       yast2-sysconfig
 Requires:       yast2-users
 
-Recommends:     yast2-fonts
 Recommends:     yast2-journal
 Recommends:     yast2-printer
 Recommends:     yast2-scanner

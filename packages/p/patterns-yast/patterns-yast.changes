@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 10 22:23:40 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Do not recomment yast2-fonts (bsc#1179866).
+- 20201210
+
+-------------------------------------------------------------------
 Sun Dec 29 11:55:24 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
 
 - Split basis pattern into basis, desktop and server (boo#1159875)
