@@ -24,7 +24,7 @@ Release:        0
 Summary:        A simple manual pages editor
 License:        GPL-3.0-only
 Group:          Development/Tools/Other
-URL:            http://gtk-apps.org/content/show.php?content=160219
+URL:            https://www.opendesktop.org/p/1129669
 Source0:        http://khapplications.darktech.org/zips/manpageeditor/%{oname}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE vs. various errors & warnings about desktop files.
 Patch1:         manpageeditor-desktop-warnings.diff
