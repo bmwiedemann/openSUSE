@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysvn
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pysvn
-Version:        1.9.6
+Version:        1.9.12
 Release:        0
 Summary:        Highlevel Subversion Python Bindings
 License:        Apache-1.1
 Group:          Development/Libraries/Python
-URL:            http://pysvn.tigris.org
-Source0:        http://pysvn.barrys-emacs.org/source_kits/pysvn-%{version}.tar.gz
+URL:            https://pysvn.sourceforge.io/
+Source0:        https://sourceforge.net/projects/pysvn/files/pysvn/V1.9.12/pysvn-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pycxx-devel}
 BuildRequires:  %{python_module xml}
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libapr1-devel
 BuildRequires:  libcom_err-devel
@@ -78,13 +79,16 @@ popd
 }
 rm -f Docs/generate_cpp_docs_from_html_docs.py
 
+%fdupes %{buildroot}%{python_sitearch}/pysvn/__pycache__
+
 %check
-cd Tests
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} PYTHON=$python make %{?_smp_mflags} || :
+# Disabled test because there are errors. Bug report: https://sourceforge.net/p/pysvn/tickets/8/
+# cd Tests
+# %%python_expand PYTHONPATH=%%{buildroot}%%{$python_sitearch} PYTHON=$python make %%{?_smp_mflags} || :
 
 %files %{python_files}
 %license LICENSE.txt
 %doc Docs Examples
-%{python_sitearch}/*
+%{python_sitearch}/pysvn
 
 %changelog

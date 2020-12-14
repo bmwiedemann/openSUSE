@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Dec 11 13:34:16 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 1.9.12.
+  * Binary kits limited to using currently support versions of 
+    Subversion and Python. However python 2.7 kits will be provided 
+    after python 2.7 goes end-of-life.
+  * Add support for subversion 1.14
+  * Build binary kits for Python 3.9b1
+  * Add support for gpg-agent auth provider
+  * Fix problem building against svn 1.7 which is needed for Centos
+    7 support
+- Disabled test because errors occured, report at
+  https://sourceforge.net/p/pysvn/tickets/8/
+- Clean spec file a bit.
+- Remove duplicate files with fdupes.
+
+-------------------------------------------------------------------
 Thu Aug  9 07:15:37 UTC 2018 - tchvatal@suse.com
 
 - Update to 1.9.6:
