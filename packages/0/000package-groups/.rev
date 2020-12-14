@@ -1012,4 +1012,10 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <comment>Add the new pattern yast2_server to the DVD</comment>
     <requestid>847066</requestid>
   </revision>
+  <revision rev="140" vrev="138">
+    <srcmd5>126a4e9aa1c608b6ed7087891e71a213</srcmd5>
+    <version>unknown</version>
+    <time>1607958242</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>

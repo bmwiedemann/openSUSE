@@ -348,6 +348,8 @@ dvd:
   - Mesa-demo-x
   - inkscape
   - autoyast2
+  # impitool can be handy when machines are configured using autoyast
+  - ipmitool
 
   # Have a bootable system for RPi3/4 - boo#1172574
   - raspberrypi-firmware: [aarch64]  # bsc 1130015
