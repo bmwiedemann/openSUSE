@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Dec 13 19:52:48 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 24.4.4:
+  - Added --preview-window option follow
+    # Preview window will automatically scroll to the bottom
+    fzf --preview-window follow --preview 'for i in $(seq 100000); do
+      echo "$i"
+      sleep 0.01
+      (( i % 300 == 0 )) && printf "\033[2J"
+    done'
+  - Added change-prompt action
+    fzf --prompt 'foo> ' --bind $'a:change-prompt:\x1b[31mbar> '
+  - Bug fixes and improvements
+- Enable tests
+
+-------------------------------------------------------------------
 Fri Dec  4 10:29:16 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.24.3:

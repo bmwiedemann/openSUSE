@@ -159,4 +159,24 @@
 </comment>
     <requestid>853095</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>464217dfb163ecffc0f4b0b7526050e0</srcmd5>
+    <version>0.24.4</version>
+    <time>1607965778</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 24.4.4:
+  - Added --preview-window option follow
+    # Preview window will automatically scroll to the bottom
+    fzf --preview-window follow --preview 'for i in $(seq 100000); do
+      echo &quot;$i&quot;
+      sleep 0.01
+      (( i % 300 == 0 )) &amp;&amp; printf &quot;\033[2J&quot;
+    done'
+  - Added change-prompt action
+    fzf --prompt 'foo&gt; ' --bind $'a:change-prompt:\x1b[31mbar&gt; '
+  - Bug fixes and improvements
+- Enable tests
+</comment>
+    <requestid>855603</requestid>
+  </revision>
 </revisionlist>

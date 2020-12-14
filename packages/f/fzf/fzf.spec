@@ -17,7 +17,7 @@
 
 
 Name:           fzf
-Version:        0.24.3
+Version:        0.24.4
 Release:        0
 Summary:        A command-line fuzzy finder
 License:        MIT
@@ -126,6 +126,22 @@ install -Dm0644 shell/key-bindings.fish \
 # vim plugin
 install -D -m0644 -t %{buildroot}%{vimplugin_dir}/doc doc/*
 install -D -m0644 -t %{buildroot}%{vimplugin_dir}/plugin plugin/*
+
+%check
+export SHELL=/bin/sh GOOS=
+export GOCACHE=$(readlink -f vendor/)
+%ifarch ppc64
+BUILDMOD=""
+%else
+BUILDMOD="-buildmode=pie"
+%endif
+export RPM_OPT_FLAGS="%{optflags}"
+go test -v -x -mod=vendor ${BUILDMOD} -a \
+    -ldflags "-X main.revision=%{version}" \
+    github.com/junegunn/fzf/src \
+    github.com/junegunn/fzf/src/algo \
+    github.com/junegunn/fzf/src/tui \
+    github.com/junegunn/fzf/src/util
 
 %files
 %doc README.md
