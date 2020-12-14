@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Dec 14 12:46:29 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- update to 4.4.2:
+
+  Improvements
+  * UUID: Use the non-cryptographic variant of the boost::uuid.
+  * Keep a cached, valid entry over a fresher Bogus one.
+  * Ensure socket-dir matches runtime directory on old systemd
+  * Move to several distinct Bogus states, for easier debugging.
+  * Do not chase CNAME during qname minimization step 4.
+
+  Bug Fixes
+  * Untangle the validation/resolving qnames and qtypes.
+  * APL records: fix endianness problem.
+
+For details see,
+https://doc.powerdns.com/recursor/changelog/4.4.html#change-4.4.2
+
+-------------------------------------------------------------------
 Wed Nov 25 15:04:21 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - update to 4.4.1
