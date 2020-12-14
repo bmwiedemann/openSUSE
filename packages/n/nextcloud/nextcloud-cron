@@ -6,4 +6,4 @@
 SHELL=/bin/sh
 PATH=/sbin:/bin:/usr/sbin:/usr/bin
 
-#*/5 * * * * wwwrun /usr/bin/php -f /srv/www/htdocs/nextcloud/cron.php /dev/null 2>&1
+#*/5 * * * * @APACHE_USER@ /usr/bin/php -f @APACHE_MYSERVERROOT@/nextcloud/cron.php /dev/null 2>&1

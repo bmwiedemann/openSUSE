@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 14 10:28:07 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Put apache configuration files in separate subpackage.
+
+-------------------------------------------------------------------
+Thu Dec 10 12:26:39 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Use apache-rpm-macros for SUSE.
+- Change oc_* macros to nc_* macros.
+- Insert macro apache_serverroot also in cron files.
+
+-------------------------------------------------------------------
 Thu Dec 10 10:28:40 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Update to 20.0.3

@@ -18,11 +18,9 @@
 
 #
 %if 0%{?suse_version}
-%define apache_serverroot /srv/www/htdocs
-%define apache_confdir /etc/apache2/conf.d
+%define apache_myserverroot %{apache_serverroot}/htdocs
+%define apache_confdir %{apache_sysconfdir}/conf.d
 %define apache_docdir /usr/share/doc/packages
-%define apache_user wwwrun
-%define apache_group www
 %else
 %if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version}
 %define apache_serverroot /var/www/html
@@ -38,8 +36,8 @@
 %endif
 %endif
 
-%define oc_user 	%{apache_user}
-%define oc_dir  	%{apache_serverroot}/%{name}
+%define nc_user 	%{apache_user}
+%define nc_dir  	%{apache_myserverroot}/%{name}
 %define ocphp_bin	/usr/bin
 
 %if 0%{?rhel} == 600 || 0%{?rhel_version} == 600 || 0%{?centos_version} == 600
@@ -67,15 +65,10 @@ Source12:       %{name}-cron.timer
 Source99:       %{name}-rpmlintrc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-
-%if 0%{?suse_version}
-BuildRequires:  apache2 >= 2.4
+BuildRequires:  apache-rpm-macros
 BuildRequires:  cron
-%if 0%{?suse_version} > 1020
 BuildRequires:  fdupes
-%endif
 BuildRequires:  unzip
-%endif
 #
 Requires:       cron
 Requires:       curl
@@ -96,14 +89,10 @@ Requires:       php < 7.5.0
 Requires:       php >= 7.2.0
 Requires:       php-process
 Requires:       php-xml
-#
 Recommends:     sqlite
 %endif
 #
 %if 0%{?suse_version}
-Requires:       apache2
-Requires:       mod_php_any < 7.5.0
-Requires:       mod_php_any >= 7.2.0
 Requires:       php-ctype
 Requires:       php-curl
 # SUSE does not include the fileinfo module in php-common.
@@ -143,6 +132,18 @@ Recommends:     php-pcntl
 Nextcloud is a suite of client-server software for creating file
 hosting services and using them.
 
+%package apache
+Summary:        Apache configuration for %{name}
+Group:          Productivity/Networking/Web/Utilities
+BuildRequires:  apache2 >= 2.4
+Requires:       apache2
+Requires:       mod_php_any < 7.5.0
+Requires:       mod_php_any >= 7.2.0
+Supplements:    packageand(apache2:%name)
+
+%description apache
+This subpackage contains the Apache configuration files
+
 %prep
 %setup -q -n %{name}
 cp %{SOURCE2} .
@@ -165,7 +166,7 @@ cp %{SOURCE5} .
 
 %install
 # no server side java code contained, alarm is false
-idir=$RPM_BUILD_ROOT/%{apache_serverroot}/%{name}
+idir=$RPM_BUILD_ROOT/%{apache_myserverroot}/%{name}
 mkdir -p $idir
 mkdir -p $idir/data
 mkdir -p $idir/search
@@ -181,7 +182,7 @@ fi
 
 # create the AllowOverride directive
 install -p -D -m 644 %{SOURCE1} $RPM_BUILD_ROOT/%{apache_confdir}/nextcloud.conf
-ocpath="%{apache_serverroot}/%{name}"
+ocpath="%{apache_myserverroot}/%{name}"
 sed -i -e"s|@DATAPATH@|${ocpath}|g" $RPM_BUILD_ROOT/%{apache_confdir}/nextcloud.conf
 
 # not needed for distro packages
@@ -189,7 +190,7 @@ rm -f ${idir}/indie.json
 
 %if 0%{?suse_version}
 # link duplicate doc files
-%fdupes -s $RPM_BUILD_ROOT/%{apache_serverroot}/%{name}
+%fdupes -s $RPM_BUILD_ROOT/%{apache_myserverroot}/%{name}
 %endif
 
 # CronJob
@@ -197,6 +198,10 @@ install -d -m 0755 %{buildroot}%{_sysconfdir}/cron.d
 install -D -m 0644 %{SOURCE10} %{buildroot}%{_sysconfdir}/cron.d/%{name}
 install -D -m 0644 %{SOURCE11} %{buildroot}%{_unitdir}/%{name}-cron.service
 install -D -m 0644 %{SOURCE12} %{buildroot}%{_unitdir}/%{name}-cron.timer
+sed -i -e"s|@APACHE_USER@|%{apache_user}|g" %{buildroot}%{_sysconfdir}/cron.d/%{name}
+sed -i -e"s|@APACHE_MYSERVERROOT@|%{apache_myserverroot}|g" %{buildroot}%{_sysconfdir}/cron.d/%{name}
+sed -i -e"s|@APACHE_USER@|%{apache_user}|g" %{buildroot}%{_unitdir}/%{name}-cron.service
+sed -i -e"s|@APACHE_MYSERVERROOT@|%{apache_myserverroot}|g" %{buildroot}%{_unitdir}/%{name}-cron.service
 mkdir -p %{buildroot}%{_sbindir}
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}-cron
 
@@ -236,9 +241,9 @@ else
     echo "%{name}-server: Upgrade starting ..."
 fi
 # https://github.com/nextcloud
-if [ -x %{ocphp_bin}/php -a -f %{oc_dir}/occ ]; then
+if [ -x %{ocphp_bin}/php -a -f %{nc_dir}/occ ]; then
   echo "%{name}: occ maintenance:mode --on"
-  su %{oc_user} -s /bin/sh -c "cd %{oc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ maintenance:mode --on" || true
+  su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ maintenance:mode --on" || true
   echo yes > %{statedir}/occ_maintenance_mode_during_nextcloud_install
 fi
 
@@ -273,13 +278,13 @@ fi
 
 if [ -s %{statedir}/occ_maintenance_mode_during_nextcloud_install ]; then
 echo "%{name}: occ maintenance:repair (fix possible errors)"
-su %{oc_user} -s /bin/sh -c "cd %{oc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ maintenance:repair" || true
+su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ maintenance:repair" || true
 echo "%{name}: occ update apps"
-su %{oc_user} -s /bin/sh -c "cd %{oc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ app:update --all" || true
+su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ app:update --all" || true
 echo "%{name}: occ upgrade"
-su %{oc_user} -s /bin/sh -c "cd %{oc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ upgrade" || true
+su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ upgrade" || true
 echo "%{name}: occ maintenance:mode --off"
-su %{oc_user} -s /bin/sh -c "cd %{oc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ maintenance:mode --off" || true
+su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ maintenance:mode --off" || true
 fi
 
 rm -f %{statedir}/apache_stopped_during_nextcloud_install
@@ -299,24 +304,26 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%exclude %{apache_serverroot}/%{name}/README
-%exclude %{apache_serverroot}/%{name}/README.SUSE
-%exclude %{apache_serverroot}/%{name}/README.SELinux
+%exclude %{apache_myserverroot}/%{name}/README
+%exclude %{apache_myserverroot}/%{name}/README.SUSE
+%exclude %{apache_myserverroot}/%{name}/README.SELinux
 %doc README README.SUSE README.SELinux
 %config(noreplace) %{_sysconfdir}/cron.d/%{name}
 %{_sbindir}/rc%{name}-cron
 %{_unitdir}/%{name}-cron.service
 %{_unitdir}/%{name}-cron.timer
-%{apache_serverroot}/%{name}
-%attr(-,wwwrun,www) %{apache_serverroot}/%{name}/occ
+%{apache_myserverroot}/%{name}
+%attr(-,%{apache_user},%{apache_group}) %{apache_myserverroot}/%{name}/occ
+%config(noreplace) %{apache_myserverroot}/%{name}/.user.ini
+%defattr(664,%{apache_user},%{apache_group},775)
+%{apache_myserverroot}/%{name}/apps
+%{apache_myserverroot}/%{name}/core/js/mimetypelist.js
+%dir %{apache_myserverroot}/%{name}/core/img/filetypes
+%defattr(660,%{apache_user},%{apache_group},770)
+%{apache_myserverroot}/%{name}/config
+%{apache_myserverroot}/%{name}/data
+
+%files apache
 %config(noreplace) %{apache_confdir}/nextcloud.conf
-%config(noreplace) %{apache_serverroot}/%{name}/.user.ini
-%defattr(664,wwwrun,www,775)
-%{apache_serverroot}/%{name}/apps
-%{apache_serverroot}/%{name}/core/js/mimetypelist.js
-%dir %{apache_serverroot}/%{name}/core/img/filetypes
-%defattr(660,wwwrun,www,770)
-%{apache_serverroot}/%{name}/config
-%{apache_serverroot}/%{name}/data
 
 %changelog
