@@ -23,8 +23,6 @@
 %endif
 #
 %bcond_without pdns_lua
-# no idea which package provides pkgconfig(gss)
-%bcond_with    pdns_experimental_gss_tsig
 %bcond_without pdns_odbc
 %bcond_without pdns_sqlite3
 %bcond_with    pdns_tinydns
@@ -91,10 +89,6 @@ BuildRequires:  yaml-cpp-devel >= 0.5
 %endif
 %if %{with pdns_geoip}
 BuildRequires:  pkgconfig(libmaxminddb)
-%endif
-%if %{with pdns_experimental_gss_tsig}
-BuildRequires:  pkgconfig(gss)
-BuildRequires:  pkgconfig(krb5-gssapi)
 %endif
 %if %{with pdns_lua}
 BuildRequires:  lua-devel
@@ -272,9 +266,6 @@ This package holds the LMDB backend for pdns.
   --with-socketdir=/run/ \
 %if %{with pdns_protobuf}
   --with-protobuf \
-%endif
-%if %{with pdns_experimental_gss_tsig}
-  --enable-experimental-gss-tsig \
 %endif
   --sysconfdir=%{_sysconfdir}/%{name} \
   --libdir=%{_libdir} \

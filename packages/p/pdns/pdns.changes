@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  7 11:43:15 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Drop GSS-TSIG support in the spec file as it's a removed from the
+  upcoming 4.4.0 version due to security issues and lack of testing
+  https://doc.powerdns.com/authoritative/security-advisories/powerdns-advisory-2020-06.html
+
+-------------------------------------------------------------------
 Tue Sep 22 20:12:33 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Update to 4.3.1 especially a security fix for
