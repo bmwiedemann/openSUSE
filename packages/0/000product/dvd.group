@@ -673,6 +673,7 @@
     <package name="ipa-pgothic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ipa-pmincho-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ipa-uigothic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="ipmitool" supportstatus="unsupported"/> <!-- reason: dvd:ipmitool -->
     <package name="iproute2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ipset" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="iptables" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1358,7 +1359,7 @@
     <package name="libfreebl3-hmac" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libfreecell-solver0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libfreehand-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libfreeipmi17" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libfreeipmi17" supportstatus="unsupported"/> <!-- reason: dvd:ipmitool -->
     <package name="libfreerdp2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfreetype6" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libfreshclam2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
