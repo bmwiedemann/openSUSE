@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 13 15:55:58 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 8.12.2. Fixes two impacting 8.12 regressions:
+  * Fixed a regression causing notations mentioning a coercion to
+    be ignored.
+  * Fixed a regression causing incomplete inference of implicit
+    arguments in exists.
+
+-------------------------------------------------------------------
 Tue Nov 17 22:09:12 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 8.12.1. This contains mostly bug fixes:
