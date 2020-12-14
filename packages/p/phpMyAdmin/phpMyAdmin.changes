@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Dec 13 13:06:16 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Use %apache_request_restart/%apache_restart_if_needed macros to restart
+  apache in order to prevent unneccessary restarts
+
+-------------------------------------------------------------------
+Fri Dec 11 16:46:30 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Package language files in separately
+
+-------------------------------------------------------------------
+Fri Dec 11 13:52:52 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Put Apache configuration files in separate subpackage
+- Generate blowfish secret with openssl on non-openSUSE systems as
+  pwgen is not available
+
+-------------------------------------------------------------------
+Thu Dec 10 21:18:42 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Use system apache rpm macros
+
+-------------------------------------------------------------------
 Mon Nov  9 13:22:27 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.0.4
