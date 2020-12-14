@@ -17,7 +17,7 @@
 
 
 Name:           perl-Mojolicious-Plugin-AssetPack
-Version:        2.09
+Version:        2.10
 Release:        0
 %define cpan_name Mojolicious-Plugin-AssetPack
 Summary:        Compress and convert css, less, sass, javascript and coffeescript files
