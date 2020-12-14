@@ -103,7 +103,7 @@
 %define sunxi_spl 1
 %define binext .itb
 %endif
-%if "%target" == "bananapi" || "%target" == "cubieboard" || "%target" == "cubieboard2" || "%target" == "cubietruck" || "%target" == "melea1000" || "%target" == "a10-olinuxino-lime" || "%target" == "a13-olinuxino" || "%target" == "a13-olinuxinom" || "%target" == "a20-olinuxino-lime" || "%target" == "a20-olinuxino-lime2" || "%target" == "a20-olinuxinomicro" || "%target" == "nanopineo" || "%target" == "orangepipc" || "%target" == "hyundaia7hd" || "%target" == "lamobor1" || "%target" == "bananapim2plush3" || "%target" == "orangepizero"
+%if "%target" == "bananapi" || "%target" == "cubieboard" || "%target" == "cubieboard2" || "%target" == "cubietruck" || "%target" == "melea1000" || "%target" == "a10-olinuxino-lime" || "%target" == "a13-olinuxino" || "%target" == "a13-olinuxinom" || "%target" == "a20-olinuxino-lime" || "%target" == "a20-olinuxino-lime2" || "%target" == "a20-olinuxinomicro" || "%target" == "nanopineo" || "%target" == "orangepipc" || "%target" == "hyundaia7hd" || "%target" == "lamobor1" || "%target" == "bananapim2plush3" || "%target" == "bananapim2zero" || "%target" == "orangepizero"
 %define is_armv7 1
 %define binext .img
 %define sunxi_spl 1
@@ -141,7 +141,7 @@
 %if  "%target" == "dragonboard410c" || "%target" == "dragonboard820c"
 %define is_armv8 1
 %endif
-%if  "%target" == "geekbox" || "%target" == "hikey" || "%target" == "khadas-vim" || "%target" == "khadas-vim2" || "%target" == "libretech-ac" || "%target" == "libretech-cc" || "%target" == "ls1012afrdmqspi" || "%target" == "mvebudb-88f3720" || "%target" == "mvebudbarmada8k" || "%target" == "mvebuespressobin-88f3720" || "%target" == "mvebumcbin-88f8040" || "%target" == "odroid-c2" || "%target" == "odroid-n2" || "%target" == "p2371-2180" || "%target" == "p2771-0000-500" || "%target" == "p3450-0000" || "%target" == "poplar"
+%if  "%target" == "geekbox" || "%target" == "hikey" || "%target" == "khadas-vim" || "%target" == "khadas-vim2" || "%target" == "libretech-ac" || "%target" == "libretech-cc" || "%target" == "ls1012afrdmqspi" || "%target" == "mvebudb-88f3720" || "%target" == "mvebudbarmada8k" || "%target" == "mvebuespressobin-88f3720" || "%target" == "mvebumcbin-88f8040" || "%target" == "odroid-c2" || "%target" == "odroid-c4" || "%target" == "odroid-n2" || "%target" == "p2371-2180" || "%target" == "p2771-0000-500" || "%target" == "p3450-0000" || "%target" == "poplar"
 %define is_armv8 1
 %endif
 %if "%target" == "avnetultra96rev1" || "%target" == "xilinxzynqmpvirt" || "%target" == "xilinxzynqmpzcu102rev10"
