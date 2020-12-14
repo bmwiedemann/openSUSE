@@ -1,7 +1,8 @@
-diff -burNE desktop-3.0.0.orig/src/cmd/CMakeLists.txt desktop-3.0.0/src/cmd/CMakeLists.txt
---- desktop-3.0.0.orig/src/cmd/CMakeLists.txt	2020-08-21 09:16:36.442970505 +0200
-+++ desktop-3.0.0/src/cmd/CMakeLists.txt	2020-08-21 09:17:05.485724098 +0200
-@@ -23,8 +23,13 @@
+Index: desktop-3.1.0/src/cmd/CMakeLists.txt
+===================================================================
+--- desktop-3.1.0.orig/src/cmd/CMakeLists.txt
++++ desktop-3.1.0/src/cmd/CMakeLists.txt
+@@ -23,8 +23,13 @@ if(NOT BUILD_LIBRARIES_ONLY)
     add_executable(${cmd_NAME}  ${cmd_SRC})
  	set_target_properties(${cmd_NAME} PROPERTIES
  	        RUNTIME_OUTPUT_DIRECTORY  ${BIN_OUTPUT_DIRECTORY} )
@@ -15,10 +16,11 @@ diff -burNE desktop-3.0.0.orig/src/cmd/CMakeLists.txt desktop-3.0.0/src/cmd/CMak
  
      target_link_libraries(${cmd_NAME} ocsync ${synclib_NAME} Qt5::Core Qt5::Network)
  
-diff -burNE desktop-3.0.0.orig/src/crashreporter/CMakeLists.txt desktop-3.0.0/src/crashreporter/CMakeLists.txt
---- desktop-3.0.0.orig/src/crashreporter/CMakeLists.txt	2020-08-21 09:16:36.518967243 +0200
-+++ desktop-3.0.0/src/crashreporter/CMakeLists.txt	2020-08-21 09:17:05.489723926 +0200
-@@ -29,7 +29,11 @@
+Index: desktop-3.1.0/src/crashreporter/CMakeLists.txt
+===================================================================
+--- desktop-3.1.0.orig/src/crashreporter/CMakeLists.txt
++++ desktop-3.1.0/src/crashreporter/CMakeLists.txt
+@@ -29,7 +29,11 @@ if(NOT BUILD_LIBRARIES_ONLY)
      target_include_directories(${CRASHREPORTER_EXECUTABLE} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
      set_target_properties(${CRASHREPORTER_EXECUTABLE} PROPERTIES AUTOMOC ON)
      set_target_properties(${CRASHREPORTER_EXECUTABLE} PROPERTIES RUNTIME_OUTPUT_DIRECTORY  ${BIN_OUTPUT_DIRECTORY} )
@@ -30,10 +32,11 @@ diff -burNE desktop-3.0.0.orig/src/crashreporter/CMakeLists.txt desktop-3.0.0/sr
      target_link_libraries(${CRASHREPORTER_EXECUTABLE}
          crashreporter-gui
          Qt5::Core Qt5::Widgets
-diff -burNE desktop-3.0.0.orig/src/gui/CMakeLists.txt desktop-3.0.0/src/gui/CMakeLists.txt
---- desktop-3.0.0.orig/src/gui/CMakeLists.txt	2020-08-21 09:16:36.650961579 +0200
-+++ desktop-3.0.0/src/gui/CMakeLists.txt	2020-08-21 09:17:05.493723755 +0200
-@@ -311,8 +311,13 @@
+Index: desktop-3.1.0/src/gui/CMakeLists.txt
+===================================================================
+--- desktop-3.1.0.orig/src/gui/CMakeLists.txt
++++ desktop-3.1.0/src/gui/CMakeLists.txt
+@@ -325,8 +325,13 @@ set_target_properties( ${APPLICATION_EXE
          RUNTIME_OUTPUT_DIRECTORY  ${BIN_OUTPUT_DIRECTORY}
  )
  # Only relevant for Linux? On OS X it by default properly checks in the bundle directory next to the exe
@@ -46,12 +49,13 @@ diff -burNE desktop-3.0.0.orig/src/gui/CMakeLists.txt desktop-3.0.0/src/gui/CMak
          INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR}/${APPLICATION_EXECUTABLE};${CMAKE_INSTALL_RPATH}" )
 +endif()
  
- target_link_libraries( ${APPLICATION_EXECUTABLE} Qt5::Widgets Qt5::Svg Qt5::Network Qt5::Xml Qt5::Qml Qt5::Quick Qt5::QuickControls2 Qt5::WebEngineWidgets)
+ target_link_libraries( ${APPLICATION_EXECUTABLE} Qt5::Widgets Qt5::GuiPrivate Qt5::Svg Qt5::Network Qt5::Xml Qt5::Qml Qt5::Quick Qt5::QuickControls2 Qt5::WebEngineWidgets)
  target_link_libraries( ${APPLICATION_EXECUTABLE} ${synclib_NAME} )
-diff -burNE desktop-3.0.0.orig/src/libsync/CMakeLists.txt desktop-3.0.0/src/libsync/CMakeLists.txt
---- desktop-3.0.0.orig/src/libsync/CMakeLists.txt	2020-08-21 09:16:37.282934457 +0200
-+++ desktop-3.0.0/src/libsync/CMakeLists.txt	2020-08-21 09:17:05.501723411 +0200
-@@ -131,8 +131,13 @@
+Index: desktop-3.1.0/src/libsync/CMakeLists.txt
+===================================================================
+--- desktop-3.1.0.orig/src/libsync/CMakeLists.txt
++++ desktop-3.1.0/src/libsync/CMakeLists.txt
+@@ -126,8 +126,13 @@ set_target_properties( ${synclib_NAME}
  	SOVERSION ${MIRALL_SOVERSION}
  	RUNTIME_OUTPUT_DIRECTORY ${BIN_OUTPUT_DIRECTORY}
  )
