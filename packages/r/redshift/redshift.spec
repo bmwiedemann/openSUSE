@@ -26,7 +26,6 @@ Group:          System/X11/Utilities
 URL:            http://jonls.dk/redshift/
 Source:         https://github.com/jonls/redshift/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Patch0:         desktop.patch
-Patch1:         fix_apparmor.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
 BuildRequires:  gobject-introspection
@@ -56,7 +55,7 @@ Summary:        Gtk frontend for redshift
 Group:          System/X11/Utilities
 Requires:       %{name} = %{version}-%{release}
 Requires:       hicolor-icon-theme
-Requires:       python3-xdg
+Recommends:     python3-pyxdg
 %{?systemd_requires}
 %if 0%{?sle_version} > 120100 || 0%{?suse_version} > 1320
 Requires:       python3-gobject-Gdk
@@ -70,7 +69,6 @@ A graphical user interface for the redshift tool that integrates into Gtk+ and G
 %prep
 %setup -q
 %patch0 -p0
-%patch1 -p0
 
 %build
 %configure \

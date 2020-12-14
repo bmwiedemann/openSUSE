@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 14 15:34:00 UTC 2020 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- redshift-gtk require python-pyxdg, not incompatible python-xdg (boo#1179328)
+  Downgrade to a Recommends since it only affects autostart installation
+- Remove temporary apparmor profile fix (fix_apparmor.patch)
+
+-------------------------------------------------------------------
 Mon Jul 20 03:08:01 UTC 2020 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Update apparmor profile to work around boo#1174290
