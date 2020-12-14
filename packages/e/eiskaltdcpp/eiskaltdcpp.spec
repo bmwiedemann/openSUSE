@@ -17,26 +17,22 @@
 
 
 Name:           eiskaltdcpp
-Version:        2.3.0~git20200908.0e0ccde5
+Version:        2.4.0
 Release:        0
 Summary:        Cross-platform program that uses the Direct Connect and ADC protocol
 License:        GPL-3.0-only
-URL:            https://github.com/eiskaltdcpp/eiskaltdcpp
-Source0:        %{name}-%{version}.tar.xz
+URL:            https://github.com/%{name}/%{name}
+Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.firewalld
 Patch0:         ru.ts.patch
 BuildRequires:  aspell-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
 BuildRequires:  git
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  libattr-devel
-BuildRequires:  libboost_system-devel
-BuildRequires:  libidn-devel
-BuildRequires:  libminiupnpc-devel
-BuildRequires:  lua51-devel
-BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
-BuildRequires:  zlib-devel
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
@@ -44,10 +40,17 @@ BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Multimedia)
 BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Script)
 BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(libidn)
+BuildRequires:  pkgconfig(libpcrecpp)
+BuildRequires:  pkgconfig(lua5.1)
+BuildRequires:  pkgconfig(miniupnpc)
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 EiskaltDC++ is a cross-platform program that uses the Direct Connect and ADC
@@ -80,7 +83,7 @@ clients. This is the Qt frontend.
 
 %install
 %cmake_install
-install -Dm644 %{SOURCE1} %{buildroot}%{_prefix}/lib/firewalld/services/%{name}.xml
+install -Dpm0644 %{SOURCE1} %{buildroot}%{_prefix}/lib/firewalld/services/%{name}.xml
 %fdupes %{buildroot}
 
 %find_lang --with-qt lib%{name} %{name}.lang
@@ -96,8 +99,6 @@ install -Dm644 %{SOURCE1} %{buildroot}%{_prefix}/lib/firewalld/services/%{name}.
 %{_mandir}/man?/%{name}-qt.?%{ext_man}
 %{_datadir}/applications/%{name}-qt.desktop
 %{_datadir}/pixmaps/%{name}.png
-%dir %{_datadir}/icons/hicolor/*
-%dir %{_datadir}/icons/hicolor/*/apps
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/emoticons
