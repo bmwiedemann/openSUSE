@@ -131,6 +131,7 @@ Source20:       bash_output_helper.bash
 ## Patches not distribution specific
 Patch3:         fix_ci_tests.patch
 Patch7:         manual_configure.patch
+Patch13:        openssl_binary_detection.patch
 
 ## Patches specific to SUSE and openSUSE
 Patch100:       linker_lto_jobs.patch
@@ -230,6 +231,13 @@ BuildRequires:  user(nobody)
 
 %if %node_version_number >= 8
 BuildRequires:  pkgconfig(openssl) >= %{openssl_req_ver}
+
+%if 0%{suse_version} >= 1330
+BuildRequires:  openssl >= %{openssl_req_ver}
+%else
+BuildRequires:  openssl-1_1 >= %{openssl_req_ver}
+%endif
+
 %else
 
 %if 0%{?suse_version} >= 1330
@@ -777,6 +785,7 @@ tar Jxf %{SOURCE11}
 %patch7 -p1
 %if 0%{with valgrind_tests}
 %endif
+%patch13 -p1
 %patch100 -p1
 %patch101 -p1
 %patch102 -p1

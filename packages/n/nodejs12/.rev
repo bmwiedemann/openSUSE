@@ -397,4 +397,12 @@
   * n-api: add more property defaults (gh#35214)</comment>
     <requestid>850891</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>09a62c6b0ff5e2351115df7fd7b6fe62</srcmd5>
+    <version>12.20.0</version>
+    <time>1607965821</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>855766</requestid>
+  </revision>
 </revisionlist>

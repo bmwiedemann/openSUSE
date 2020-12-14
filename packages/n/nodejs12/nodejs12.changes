@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 30 19:45:06 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- openssl_binary_detection.patch: fixes unit tests on SLE12
+
+-------------------------------------------------------------------
 Thu Nov 26 05:58:39 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - New upstream LTS version 12.20.0:
