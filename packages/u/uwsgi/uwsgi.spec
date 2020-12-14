@@ -102,7 +102,7 @@ BuildRequires:  ruby19-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  tcpd-devel
 BuildRequires:  pkgconfig(libsystemd)
-%ifarch %{ix86} x86_64 %{arm} aarch64
+%ifarch %{ix86} x86_64 %{arm}
 %if 0%{?suse_version} < 1310
 BuildRequires:  v8-devel
 %endif
@@ -386,9 +386,6 @@ uWSGI is a self-healing application container server coded in pure C.
 This package contains support for storing application configuration in SQLite3
 databases.
 
-
-%ifarch %{ix86} x86_64 %{arm} aarch64
-%if 0%{?suse_version} < 1310
 %package v8
 Summary:        V8 JavaScript Plugin for uWSGI
 Group:          Productivity/Networking/Web/Servers
@@ -398,8 +395,6 @@ Requires:       %{name} = %{version}
 uWSGI is a self-healing application container server coded in pure C.
 
 This package contains support for JavaScript using V8.
-%endif
-%endif
 
 %package xslt
 Summary:        XSLT Plugin for uWSGI
@@ -490,8 +485,10 @@ excluded_plugins="$excluded_plugins greenlet"
 
 # V8 is not yet available on all platforms and is broken in the v8 versions in
 # 13.1+
-%ifarch %{ix86} x86_64 %{arm} aarch64 ppc ppc64 ppc64le
 %if 0%{?suse_version} >= 1310
+excluded_plugins="$excluded_plugins v8"
+%else
+%ifnarch %{ix86} x86_64 %{arm}
 excluded_plugins="$excluded_plugins v8"
 %endif
 %endif
