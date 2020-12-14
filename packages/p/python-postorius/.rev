@@ -58,4 +58,12 @@
     the SITE_ID for each webhost. (forwarded request 824271 from hellcp)</comment>
     <requestid>824274</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>2521af3a9cedc8ab3daa136c4e98eca0</srcmd5>
+    <version>1.3.3</version>
+    <time>1607965766</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>855618</requestid>
+  </revision>
 </revisionlist>

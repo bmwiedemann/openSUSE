@@ -1,0 +1,17 @@
+[uwsgi]
+#plugin = apparmor
+#apparmor-hat = postorius
+
+uid = postorius
+gid = postorius
+
+processes = 1
+threads = 25
+
+socket = /run/uwsgi/uwsgi-postorius.sock
+chmod-socket = 660
+chown-socket = wwwrun:www
+
+plugin = python3
+chdir = /srv/www/webapps/mailman/postorius
+module = wsgi

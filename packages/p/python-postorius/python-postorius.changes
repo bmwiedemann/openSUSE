@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Dec 12 19:19:35 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix chdir path in uwsgi config
+- Update README.SUSE.md
+
+-------------------------------------------------------------------
+Sat Oct  3 07:55:13 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Create a postorius-web package with webroot files
+- Create a postorius-web-uwsgi with uwsgi configuration
+- Added postorius-settings.patch
+  * Sets the FHS default paths
+
+-------------------------------------------------------------------
 Tue Aug  4 02:03:24 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>
 
 - Update to 1.3.3
