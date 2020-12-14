@@ -17,7 +17,7 @@
 
 
 Name:           uhubctl
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        USB hub per-port power control
 License:        GPL-2.0-only
