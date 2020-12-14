@@ -1,7 +1,7 @@
 #
 # spec file for package python-mock-open
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-mock-open
 Version:        1.4.0
 Release:        0
-License:        MIT
 Summary:        A better mock for file I/O
-Url:            http://github.com/nivbend/mock-open
+License:        MIT
 Group:          Development/Languages/Python
+URL:            https://github.com/nivbend/mock-open
 Source:         https://files.pythonhosted.org/packages/source/m/mock-open/mock-open-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
+%if 0%{?suse_version} <= 1500
+BuildRequires:  python-mock
+%endif
+%ifpython2
+Requires:       python-mock
+%endif
 %python_subpackages
 
 %description
@@ -45,7 +51,7 @@ A better mock for file I/O
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest -v
 
 %files %{python_files}
 %doc README.md
