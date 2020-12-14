@@ -70,6 +70,7 @@ BuildRequires:  python3-gobject-cairo
 BuildRequires:  python3-mako >= 0.9.1
 BuildRequires:  python3-numpy
 BuildRequires:  python3-pyaml >= 3.11
+BuildRequires:  python3-pycairo
 BuildRequires:  python3-qt5-devel
 BuildRequires:  python3-six
 BuildRequires:  qwt6-qt5-devel
@@ -102,7 +103,6 @@ performance wireless devices into software problems.
 %package     -n libgnuradio-%{sover}
 Summary:        Libraries for GNU Radio
 Group:          System/Libraries
-Obsoletes:      libgnuradio0
 
 %description -n libgnuradio-%{sover}
 GNU Radio is a collection of software that when combined with minimal
@@ -175,6 +175,7 @@ find  gr-utils/python/modtool/templates/gr-newmod -name CMakeLists.txt -exec mv 
 
 %build
 %cmake \
+  -DENABLE_GRC=ON \
 %ifarch armv6l armv6hl
   -Dhave_mfpu_neon=0 \
 %endif

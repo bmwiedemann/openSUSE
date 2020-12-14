@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 14 09:24:12 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Drop obsolete "Obsoletes: libgnuradio0"
+- Add "BuildRequires: python3-pycairo", needed by the GRC
+- Force GRC builds
+
+-------------------------------------------------------------------
 Thu Sep 17 08:54:28 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Add patches to build with boost >= 1.73.0:
