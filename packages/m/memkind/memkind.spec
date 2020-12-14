@@ -20,7 +20,7 @@ Name:           memkind
 Summary:        User Extensible Heap Manager
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
-Version:        1.10.0
+Version:        1.10.1
 Release:        0
 URL:            http://memkind.github.io/memkind
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -50,8 +50,6 @@ ExclusiveArch:  x86_64 ppc64 ppc64le s390x
 %{!?buildsubdir: %define buildsubdir %{namespace}-%{commit}}
 Source0:        https://github.com/%{namespace}/%{namespace}/archive/v%{commit}/%{buildsubdir}.tar.gz
 Patch0:         memkind-fix-build.diff
-# Upstream patch for GCC10 support. Will be available in 1.10.1
-Patch1:         Add-missing-includes.patch
 
 %description
 The memkind library is an user extensible heap manager built on top
@@ -87,7 +85,6 @@ Header files for building applications with libmemkind.
 %prep
 %setup -q -n memkind-%{version}
 %patch0
-%patch1
 
 %build
 
