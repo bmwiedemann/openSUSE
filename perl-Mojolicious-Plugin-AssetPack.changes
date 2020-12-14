@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec 12 03:07:39 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.10
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-AssetPack/Changes
+
+  2.10 2020-12-11T11:16:01+0900
+   - Fixes warnings issued by latest Mojolicious
+     Contributor: Zoffix Znet
+
+-------------------------------------------------------------------
 Mon Sep  7 03:10:40 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.09
