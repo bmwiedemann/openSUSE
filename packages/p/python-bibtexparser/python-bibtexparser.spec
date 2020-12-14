@@ -41,7 +41,7 @@ BuildRequires:  %{python_module future >= 0.16.0}
 BuildRequires:  %{python_module pyparsing >= 2.0.3}
 BuildRequires:  %{python_module pytest}
 # Required for assertLogs unavailable in 2.7 unittest
-%if "%{python_flavor}" == "python2"
+%if 0%{?suse_version} <= 1500
 BuildRequires:  python-unittest2
 %endif
 # /SECTION

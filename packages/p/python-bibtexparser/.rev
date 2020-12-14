@@ -40,4 +40,12 @@
 - Don't build python2 on Tumbleweed.</comment>
     <requestid>827275</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>62a648191aaed3d31f570ac82013ded5</srcmd5>
+    <version>1.1.0</version>
+    <time>1607965760</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>855664</requestid>
+  </revision>
 </revisionlist>

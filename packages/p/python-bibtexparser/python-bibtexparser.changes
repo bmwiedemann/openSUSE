@@ -1,4 +1,8 @@
 -------------------------------------------------------------------
+Mon Dec 14 00:56:46 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix condition around BuildRequirement
+-------------------------------------------------------------------
 Mon Aug 17 08:29:09 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Remove unnecessary BR on devel.
