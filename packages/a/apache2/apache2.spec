@@ -232,11 +232,17 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2
 BuildRequires:  apache2-devel
-BuildRequires:  apache2-event
 BuildRequires:  apache2-manual
-BuildRequires:  apache2-prefork
 BuildRequires:  apache2-utils
+%endif
+%if "%{flavor}" == "test_prefork"
+BuildRequires:  apache2-prefork
+%endif
+%if "%{flavor}" == "test_worker"
 BuildRequires:  apache2-worker
+%endif
+%if "%{flavor}" == "test_event"
+BuildRequires:  apache2-event
 %endif
 %if %{unittest}
 BuildRequires:  mod_php_any

@@ -1832,4 +1832,12 @@ In apache2-vhost.template, we recommend users to create custom logs like `/var/l
 - apxs -q PREFIX now returns /srv/www again</comment>
     <requestid>854976</requestid>
   </revision>
+  <revision rev="178" vrev="10">
+    <srcmd5>22541c103d53e159c6bc9c9d1b4b962b</srcmd5>
+    <version>2.4.46</version>
+    <time>1608031845</time>
+    <user>dimstar_suse</user>
+    <comment>- only include BuildRequires: apache2-{prefork,worker,event} used in test target (forwarded request 855763 from adkorte)</comment>
+    <requestid>855764</requestid>
+  </revision>
 </revisionlist>
