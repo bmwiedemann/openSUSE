@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 14 03:06:10 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.201
+   see /usr/share/doc/packages/perl-Algorithm-Diff/Changes
+
+  1.201     2020-12-13
+          - speed up LCS when $keyGen is undef (RT 101105; thanks, XENU)
+
+-------------------------------------------------------------------
 Mon Sep 28 03:06:45 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.200

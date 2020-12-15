@@ -17,7 +17,7 @@
 
 
 Name:           perl-Algorithm-Diff
-Version:        1.200
+Version:        1.201
 Release:        0
 %define cpan_name Algorithm-Diff
 Summary:        Compute `intelligent' differences between two files / lists
