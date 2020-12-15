@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec  7 17:14:48 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.77.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.77.0
+- Changes since 5.76.0:
+  * Pass parent to Q*Layout ctor instead of calling setLayout()
+  * Don't emit twice passwordChanged
+  * We require Qt 5.13 now, so remove ifdef
+  * KEditListWidget: fix runtime warning from QLayout
+  * typo--
+  * Add KMessageDialog, an async-centric variant of KMessageBox
+  * Restore the old default popup mode of KActionMenu
+  * Port KActionMenu to QToolButton::ToolButtonPopupMode
+
+-------------------------------------------------------------------
 Sat Nov  7 21:35:24 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.76.0
