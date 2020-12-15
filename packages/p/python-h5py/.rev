@@ -160,4 +160,21 @@
 </comment>
     <requestid>851345</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>56ea817a545641a9dfa98d9bffbd6fd8</srcmd5>
+    <version>3.1.0</version>
+    <time>1608031867</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace %__python3 usage by %python_exec.
+- Enable parallel hdf5:
+  * Implement multibuild for different flavors of openmpi.
+  * Export env variables `HDF5_LIBDIR` and `HDF5_INCLUDEDIR`
+    pointing to the hdf library and headers location when enabling
+    openmpi flavored builds.
+  * Add BuildRequires: python-pytest-mpi for mpi tests.
+  * Replace python rpm macros with their expansions in most cases
+    to adapt to mpi paths.
+</comment>
+    <requestid>854906</requestid>
+  </revision>
 </revisionlist>
