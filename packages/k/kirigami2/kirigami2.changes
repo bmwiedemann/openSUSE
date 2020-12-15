@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec  5 18:56:41 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.77.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.77.0
+- Too many changes since 5.76.0, only listing bugfixes:
+  * Refine list separator appearance (kde#428739)
+  * Fix rendering borders the proper size with software fallback (kde#427556)
+  * Use fwidth() for smoothing in low power mode (kde#427553)
+
+-------------------------------------------------------------------
 Sat Nov  7 21:34:56 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.76.0
