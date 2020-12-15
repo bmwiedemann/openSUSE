@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 14 14:49:26 UTC 2020 - schubi <schubi@intern>
+
+- Removed obsolete setting DISPLAYMANAGER_SHUTDOWN from
+  /etc/sysconfig/displaymanager (bsc#1175495).
+- 4.3.6 
+
+-------------------------------------------------------------------
 Fri Dec 11 11:24:05 UTC 2020 - schubi <schubi@localhost>
 
 - Removed handling of obsolete entry SYSTOHC in /etc/sysconfig/clock
