@@ -1,6 +1,6 @@
 [Unit]
 Description=Load extra kernel modules for sound stuff
-After=alsasound.service
+After=alsa-restore.service
 ConditionPathExists=/proc/asound
 
 [Service]
