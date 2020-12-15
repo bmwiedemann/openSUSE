@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Dec 12 09:24:23 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 8.2.2129, fixes the following problems:
+  * There is no way to do something on CTRL-Z
+  * Vim9: executing user command from Vim9 script not tested
+  * Ruby: missing function prototype
+  * Vim9: leaking memory
+  * Vim9: a range cannot be computed at runtime
+  * After using a complete popup the buffer is listed
+  * Vim9: crash when sourcing vim9script early
+  * Internal error when using \ze before \zs in a pattern
+  * Not all Perl functionality is tested
+  * GTK3: status line background color is wrong
+  * Dead code in the job support
+  * Some functions use any value as a string
+  * Vim9: some errors not tested for; dead code
+  * Vim9: unreachable code in assignment
+  * Running tests may leave some files behind
+  * GTK: menu background is the same color as the main window
+  * Cannot use ":shell" when reading from stdin
+  * "vim -" does not work well when modifyOtherKeys is enabled
+  * Vim9: no test to check for :let error
+  * Vim9: some errors not tested
+  * TOML files are not recognized
+  * Update runtime files.
+
+-------------------------------------------------------------------
 Mon Dec  7 07:08:18 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.2105, fixes the following problems

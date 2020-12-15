@@ -4938,4 +4938,12 @@ always built-in because vim has direct perl dependencies anyway.
   * Can't get the exit value in VimLeave or VimLeavePre autocommands.</comment>
     <requestid>853509</requestid>
   </revision>
+  <revision rev="277" vrev="1">
+    <srcmd5>e4513c1f42bf9f3677ab26c18cd21b13</srcmd5>
+    <version>8.2.2129</version>
+    <time>1608031648</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>855481</requestid>
+  </revision>
 </revisionlist>
