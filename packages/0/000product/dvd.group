@@ -1045,6 +1045,7 @@
     <package name="libQt5Svg5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libQt5Test5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libQt5TextToSpeech5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libQt5WaylandClient5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libQt5WebChannel5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libQt5WebChannel5-imports" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libQt5WebKit5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
@@ -4577,7 +4578,6 @@
     <package name="libQt5HunspellInputMethod5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt5Sql5-mysql" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt5VirtualKeyboard5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libQt5WaylandClient5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libQt5WaylandCompositor5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libSM6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libX11-6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->

@@ -1961,7 +1961,6 @@ unsorted:
   - cinnamon-control-center-common 
   - cinnamon-control-center-devel 
   - cinnamon-control-center-lang 
-  - cinnamon-devel-doc: [x86_64] 
   - cinnamon-gschemas 
   - cinnamon-gschemas-branding-openSUSE 
   - cinnamon-gschemas-branding-upstream 
@@ -7872,7 +7871,6 @@ unsorted:
   - kelbt 
   - kemoticons-devel 
   - kemoticons-devel-32bit: [x86_64] 
-  - kernel-coverage 
   - kernel-debug 
   - kernel-debug-devel 
   - kernel-default-base: [i586] 
@@ -9250,7 +9248,6 @@ unsorted:
   - libQt5Test5-32bit: [x86_64] 
   - libQt5TextToSpeech5-32bit: [x86_64] 
   - libQt5VirtualKeyboard5: [i586] 
-  - libQt5WaylandClient5: [i586] 
   - libQt5WaylandClient5-32bit: [x86_64] 
   - libQt5WaylandCompositor5: [i586] 
   - libQt5WaylandCompositor5-32bit: [x86_64] 
@@ -16217,6 +16214,7 @@ unsorted:
   - minidlna 
   - minigalaxy 
   - minikube 
+  - minikube-bash-completion 
   - minimodem 
   - mininet 
   - mininews 
@@ -22512,6 +22510,10 @@ unsorted:
   - python3-h11 
   - python3-h5netcdf 
   - python3-h5py 
+  - python3-h5py-openmpi1 
+  - python3-h5py-openmpi2 
+  - python3-h5py-openmpi3 
+  - python3-h5py-openmpi4 
   - python3-hammett 
   - python3-hankel 
   - python3-hanzidentifier 
@@ -23582,6 +23584,7 @@ unsorted:
   - python3-pytest-localserver 
   - python3-pytest-metadata 
   - python3-pytest-mock 
+  - python3-pytest-mpi 
   - python3-pytest-mpl 
   - python3-pytest-openfiles 
   - python3-pytest-ordering 
@@ -25784,10 +25787,6 @@ unsorted:
   - sassc 
   - sat4j 
   - saweri-fonts 
-  - sawfish 
-  - sawfish-devel 
-  - sawfish-pager 
-  - sawfish-sounds 
   - sax3 
   - saxon6 
   - saxon6-aelfred 
@@ -25851,13 +25850,7 @@ unsorted:
   - sca-appliance-common 
   - sca-appliance-patdev 
   - sca-patterns-base 
-  - sca-patterns-edir 
-  - sca-patterns-filr 
-  - sca-patterns-groupwise 
   - sca-patterns-hae 
-  - sca-patterns-oes 
-  - sca-patterns-sle09 
-  - sca-patterns-sle10 
   - sca-patterns-sle11 
   - sca-patterns-sle12 
   - sca-patterns-sle15 
