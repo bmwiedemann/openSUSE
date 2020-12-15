@@ -1002,4 +1002,14 @@
 - only build extensions in cli (forwarded request 853189 from adkorte)</comment>
     <requestid>853525</requestid>
   </revision>
+  <revision rev="90" vrev="4">
+    <srcmd5>9460013c3af99ec4f2558029917809e0</srcmd5>
+    <version>7.4.13</version>
+    <time>1608031824</time>
+    <user>dimstar_suse</user>
+    <comment>- restart php-fpm.service in %posttrans fpm (extensions may need
+  to be updated too, so restart must be delayed to after all RPM
+  transactions have completed) (forwarded request 855562 from adkorte)</comment>
+    <requestid>855689</requestid>
+  </revision>
 </revisionlist>

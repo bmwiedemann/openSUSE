@@ -1294,15 +1294,19 @@ fi
 %pre fpm
 %service_add_pre php-fpm.service
 
-%postun fpm
-%service_del_postun php-fpm.service
+%post fpm
+%service_add_post php-fpm.service
+%tmpfiles_create %{_tmpfilesdir}/php-fpm.conf
 
 %preun fpm
 %service_del_preun php-fpm.service
 
-%post fpm
-%service_add_post php-fpm.service
-%tmpfiles_create %{_tmpfilesdir}/php-fpm.conf
+%postun fpm
+# do not try-restart yet as extensions may be updated too
+%service_del_postun_without_restart php-fpm.service
+
+%posttrans fpm
+%_restart_on_update php-fpm.service
 
 %post embed -p /sbin/ldconfig
 %postun embed -p /sbin/ldconfig

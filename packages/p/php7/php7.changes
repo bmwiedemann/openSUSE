@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 13 10:04:58 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- restart php-fpm.service in %posttrans fpm (extensions may need
+  to be updated too, so restart must be delayed to after all RPM
+  transactions have completed)
+
+-------------------------------------------------------------------
 Fri Dec  4 20:10:10 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - do not add mod_php to httpd.conf during %install (better fix for
