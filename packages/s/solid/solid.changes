@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec  7 17:14:56 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.77.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.77.0
+- Changes since 5.76.0:
+  * Include errno.h for EBUSY/EPERM
+  * FstabBackend: return DeviceBusy where umount failed on EBUSY (kde#411772)
+  * Fix detection of recent libplist and libimobiledevice
+
+-------------------------------------------------------------------
 Sat Nov  7 21:35:36 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.76.0
