@@ -55,4 +55,12 @@
   - Fix race condition in RED Brick overview sorting</comment>
     <requestid>828389</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f7b4ed6669e597393ad2152a2aa7056a</srcmd5>
+    <version>2.4.16</version>
+    <time>1608031873</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>855586</requestid>
+  </revision>
 </revisionlist>
