@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 11 16:12:46 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add BuildRequires: pkgconfig(Qt5WebKitWidgets) to explicitly
+  list the dependencies which fixes building in Leap 15.3
+
+-------------------------------------------------------------------
 Sat Nov 21 14:18:19 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - remove lower sip-devel limit for Leaps.
