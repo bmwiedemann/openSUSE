@@ -132,6 +132,7 @@ Source20:       bash_output_helper.bash
 Patch3:         fix_ci_tests.patch
 Patch7:         manual_configure.patch
 Patch11:        valgrind_fixes.patch
+Patch13:        openssl_binary_detection.patch
 
 ## Patches specific to SUSE and openSUSE
 # PATCH-FIX-OPENSUSE -- set correct path for dtrace if it is built
@@ -230,6 +231,13 @@ BuildRequires:  user(nobody)
 
 %if %node_version_number >= 8
 BuildRequires:  pkgconfig(openssl) >= %{openssl_req_ver}
+
+%if 0%{suse_version} >= 1330
+BuildRequires:  openssl >= %{openssl_req_ver}
+%else
+BuildRequires:  openssl-1_1 >= %{openssl_req_ver}
+%endif
+
 %else
 
 %if 0%{?suse_version} >= 1330
@@ -768,6 +776,7 @@ tar Jxf %{SOURCE11}
 %if 0%{with valgrind_tests}
 %patch11 -p1
 %endif
+%patch13 -p1
 %patch101 -p1
 %patch102 -p1
 # Add check_output to configure script (not part of Python 2.6 in SLE11).
