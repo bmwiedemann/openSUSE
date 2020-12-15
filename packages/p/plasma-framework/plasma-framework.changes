@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec  7 17:14:53 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.77.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.77.0
+- Too many changes since 5.76.0, only listing bugfixes:
+  * Finish the animation before changing the length of the progressbar highlight (kde#428955)
+  * [textfield] Fix clear button overlapping text (kde#429187)
+
+-------------------------------------------------------------------
 Sat Nov  7 21:35:31 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.76.0
