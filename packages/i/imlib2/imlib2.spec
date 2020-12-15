@@ -18,27 +18,26 @@
 
 %define lname	libImlib2-1
 Name:           imlib2
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        Image handling and conversion library
 License:        BSD-3-Clause
 Group:          Development/Libraries/X11
 URL:            https://sourceforge.net/projects/enlightenment/
 Source:         http://downloads.sourceforge.net/project/enlightenment/imlib2-src/%{version}/%{name}-%{version}.tar.bz2
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  freetype2-devel
 BuildRequires:  giflib-devel
-BuildRequires:  libid3tag-devel
+BuildRequires:  libICE-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
-BuildRequires:  libtiff-devel
-BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  xorg-x11-libX11-devel
 BuildRequires:  xorg-x11-libXext-devel
-BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(id3tag)
+BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(libwebp)
+BuildRequires:  pkgconfig(zlib)
 Recommends:     imlib2-loaders
 
 %description
@@ -99,7 +98,6 @@ jpeg, png, pnm, tga, tiff, xpm
 %setup -q
 
 %build
-autoreconf -fiv
 %configure \
 %ifarch %{ix86}
 	--enable-mmx \
@@ -109,9 +107,6 @@ autoreconf -fiv
 %ifarch x86_64
 	--enable-amd64 \
 %endif
-	--bindir=%{_bindir} \
-	--libdir=%{_libdir} \
-	--includedir=%{_includedir} \
 	--enable-shared \
 	--enable-visibility-hiding \
 	--disable-static
