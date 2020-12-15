@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Dec  5 18:56:41 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.77.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.77.0
+- Too many changes since 5.76.0, only listing bugfixes:
+  * NewFile Dialog: allow to accept directory creation before stat has run (kde#429838)
+  * KUrlNavBtn: make opening subdirs from dropdown menu with the keyboard work (kde#428226)
+  * Places view: highlight place only when it is displayed (kde#429806)
+  * KIO::iconNameForUrl: resolve icon for remote files based on name (kde#429530)
+  * RenameDialog: allow to overwrite when files are older (kde#236884)
+  * Do not add unnecessary separators (kde#427830)
+
+-------------------------------------------------------------------
 Sat Nov  7 21:34:54 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.76.0

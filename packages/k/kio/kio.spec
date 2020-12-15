@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.76
+%define _tar_path 5.77
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kio
-Version:        5.76.0
+Version:        5.77.0
 Release:        0
 Summary:        Network transparent access to files and data
 License:        LGPL-2.1-or-later
@@ -65,16 +65,16 @@ BuildRequires:  cmake(KF5Wallet) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5XmlGui) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Concurrent) >= 5.12.0
-BuildRequires:  cmake(Qt5Core) >= 5.12.0
-BuildRequires:  cmake(Qt5DBus) >= 5.12.0
-BuildRequires:  cmake(Qt5Network) >= 5.12.0
-BuildRequires:  cmake(Qt5Qml) >= 5.12.0
-BuildRequires:  cmake(Qt5Test) >= 5.12.0
-BuildRequires:  cmake(Qt5UiPlugin) >= 5.12.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.12.0
-BuildRequires:  cmake(Qt5X11Extras) >= 5.12.0
-BuildRequires:  cmake(Qt5Xml) >= 5.12.0
+BuildRequires:  cmake(Qt5Concurrent) >= 5.13.0
+BuildRequires:  cmake(Qt5Core) >= 5.13.0
+BuildRequires:  cmake(Qt5DBus) >= 5.13.0
+BuildRequires:  cmake(Qt5Network) >= 5.13.0
+BuildRequires:  cmake(Qt5Qml) >= 5.13.0
+BuildRequires:  cmake(Qt5Test) >= 5.13.0
+BuildRequires:  cmake(Qt5UiPlugin) >= 5.13.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.13.0
+BuildRequires:  cmake(Qt5X11Extras) >= 5.13.0
+BuildRequires:  cmake(Qt5Xml) >= 5.13.0
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(x11)
 Requires:       %{name}-core = %{version}
@@ -119,9 +119,9 @@ Requires:       cmake(KF5Service) >= %{_kf5_bugfix_version}
 Requires:       cmake(KF5Solid) >= %{_kf5_bugfix_version}
 Requires:       cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
 Requires:       cmake(KF5XmlGui) >= %{_kf5_bugfix_version}
-Requires:       cmake(Qt5Concurrent) >= 5.12.0
-Requires:       cmake(Qt5DBus) >= 5.12.0
-Requires:       cmake(Qt5Network) >= 5.12.0
+Requires:       cmake(Qt5Concurrent) >= 5.13.0
+Requires:       cmake(Qt5DBus) >= 5.13.0
+Requires:       cmake(Qt5Network) >= 5.13.0
 
 %description devel
 This framework implements almost all the file management functions you
