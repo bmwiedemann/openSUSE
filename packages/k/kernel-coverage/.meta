@@ -1,5 +1,0 @@
-<package name="kernel-coverage" project="openSUSE:Factory">
-  <title>Kernel Coverage Imageing, Galaxy Poster</title>
-  <description>Creating the linux kernel coverage galaxy poster.</description>
-  <devel project="benchmark" package="kernel-coverage"/>
-</package>
