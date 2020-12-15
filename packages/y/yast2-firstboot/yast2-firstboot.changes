@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 14 12:54:19 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Map the current static hostname only to the primary IP address
+  of the connections without a hostname.
+- Do not write network changes that are not related with the
+  hostname client (bsc#1178834)
+- 4.3.10
+
+-------------------------------------------------------------------
 Fri Dec  4 16:12:43 UTC 2020 - Stefan Schubert <schubi@suse.de>
 
 - Fix: Starting YaST2 Control Center if the flag SHOW_Y2CC_CHECKBOX

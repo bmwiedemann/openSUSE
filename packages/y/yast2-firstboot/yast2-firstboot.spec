@@ -17,7 +17,7 @@
 
 
 Name:           yast2-firstboot
-Version:        4.3.9
+Version:        4.3.10
 Release:        0
 Summary:        YaST2 - Initial System Configuration
 License:        GPL-2.0-only
@@ -42,7 +42,7 @@ Requires:       yast2-country >= 4.3.10
 Requires:       yast2-installation >= 4.1.2
 # Use Yast::Lan.write_config to write hostname changes
 Requires:       yast2-configuration-management >= 4.1.3
-Requires:       yast2-network >= 4.3.13
+Requires:       yast2-network >= 4.3.34
 Requires:       yast2-ruby-bindings >= 1.0.0
 
 # bsc #1165646
