@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Dec 10 20:06:30 UTC 2020 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- Update to new upstream version 2.4.3:
+- Properly shutdown subsystems on Ctrl+C instead of abruptly exiting on Windows
+- Rotate persistent log file on Windows and limit its total size to 25 MB
+- Add commandline options to override log and config file location on Windows
+- Colorize Log Viewer live log messages on Windows
+- Reword Log Viewer messages to be less ambiguous on Windows
+- Add build option to work without a device file manager such as udevd on Linux
+- Allow to handle more then 6 USB devices on Windows
+- Use BCM2835 library for SPI connected Bricklets on Raspberry Pi to improve
+  performance and work around SPI chip select conflict between Linux kernel 5.4
+  and HAT Brick firmware < 2.0.2
+- Improve log messages related to HAT (Zero) Brick on Linux
+- Fix SPI hardware chip select usage on Linux
+- Allow to fully static link brickd for Docker container usage on Linux
+- Switch Debian package build to debhelper and drop SysV init support
+- Improve USB transfer error logging and stall error recovery
+- Fix SPI clock for HAT (Zero) Brick on Linux, if core_freq differs from 250 MHz
+- Add config option to override SPI backend detection
+
+-------------------------------------------------------------------
 Sun Jan  5 10:26:41 UTC 2020 - Frank Kunz <mailinglists@kunz-im-inter.net>
 
 - Update to new upstream version 2.4.1:

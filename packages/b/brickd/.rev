@@ -15,4 +15,12 @@
     <comment>- Update to new upstream version 2.4.1...</comment>
     <requestid>761279</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b648f90838280626e1b5ff324b4d62b7</srcmd5>
+    <version>2.4.3</version>
+    <time>1608031870</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>855585</requestid>
+  </revision>
 </revisionlist>
