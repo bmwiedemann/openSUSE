@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec 14 08:56:14 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Build only on supported architectures
+- Install example scripts as doc
+- Supress some warning
+- Install config and systemd service from arch linux
+- Switch to systemwide config json
+
+-------------------------------------------------------------------
+Sat Dec 12 08:55:48 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Correct filename in OpenCL library loader with patch correct-opencl-file.patch
+- Add recommended package libOpenCL1 for OpenCL support
+
+-------------------------------------------------------------------
 Thu Dec 10 10:51:00 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Install license and some documentation
@@ -93,5 +108,5 @@ Tue Nov  3 07:47:18 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
 -------------------------------------------------------------------
 Mon Nov  2 00:02:59 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
 
-- Added patch to remove forced donation feature
-- Added patch to scan for configuration files at ~/.xmrig.json and ~/.config/xmrig.json for better ease of use. 
+- Added patch disable-forced-donation.patch to remove forced donation feature
+- Added patch home-folder-config.patch to scan for configuration files at ~/.xmrig.json and ~/.config/xmrig.json for better ease of use. 

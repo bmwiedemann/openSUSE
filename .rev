@@ -7,4 +7,18 @@
     <comment>fancy new package</comment>
     <requestid>854869</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>03dcc3c17037f3941ff4607a2a0b4dce</srcmd5>
+    <version>6.6.2</version>
+    <time>1608031877</time>
+    <user>dimstar_suse</user>
+    <comment>- Build only on supported architectures
+- Install example scripts as doc
+- Supress some warning
+- Install config and systemd service from arch linux
+- Switch to systemwide config json
+- Correct filename in OpenCL library loader with patch correct-opencl-file.patch
+- Add recommended package libOpenCL1 for OpenCL support</comment>
+    <requestid>855806</requestid>
+  </revision>
 </revisionlist>
