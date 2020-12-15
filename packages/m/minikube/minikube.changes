@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 14 18:44:50 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
+
+- Remove %check section - minikube tests require Internet acceess
+  and we will be never able to run them on OBS.
+
+-------------------------------------------------------------------
+Mon Dec 14 12:00:42 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Add bash completion subpackage
+- use %make_build and %autosetup macros
+
+-------------------------------------------------------------------
 Tue Nov 17 00:46:29 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
 
 - Update to 1.15.1:

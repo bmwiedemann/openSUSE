@@ -23,9 +23,9 @@ Summary:        Tool to run Kubernetes locally
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/kubernetes/minikube
-Source0:        https://github.com/kubernetes/minikube/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{URL}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Source2:        minikube-rpmlintrc
+Source2:        %{name}-rpmlintrc
 BuildRequires:  git-core
 BuildRequires:  golang-github-jteeuwen-go-bindata
 BuildRequires:  golang-packaging
@@ -57,8 +57,22 @@ KVM driver for docker-machine which is using libvirt for setting up
 virtual machines with Docker.
 %endif
 
+%package        bash-completion
+Summary:        Minikube bash completion
+Group:          System/Management
+BuildRequires:  bash
+BuildRequires:  bash-completion
+Requires:       bash
+Requires:       bash-completion
+Requires:       minikube = %{version}
+Supplements:    (minikube and bash)
+BuildArch:      noarch
+
+%description    bash-completion
+Optional bash completion for minikube.
+
 %prep
-%setup -q
+%autosetup
 tar -zxf %{SOURCE1}
 sed -i -e "s|GO111MODULE := on|GO111MODULE := off|" Makefile
 
@@ -76,19 +90,16 @@ echo '*' > .gitignore
 touch .dummy
 git add -f .dummy .gitignore
 git commit -m "trick hack/get_k8s_version.py"
-make %{?_smp_mflags} out/minikube
+%make_build out/minikube
 %ifnarch i586
 %ifarch aarch64
-make %{?_smp_mflags} out/docker-machine-driver-kvm2-arm64
+%make_build out/docker-machine-driver-kvm2-arm64
 %else
-make %{?_smp_mflags} out/docker-machine-driver-kvm2
+%make_build out/docker-machine-driver-kvm2
 %endif
 %endif
 
-%check
-export GOPATH=%{_builddir}/go
-cd $GOPATH/src/k8s.io/minikube
-make %{?_smp_mflags} test || true
+%{_builddir}/go/src/k8s.io/minikube/out/%{name} completion bash > %{_builddir}/%{name}-bash-completions
 
 %install
 output_path="%{_builddir}/go/src/k8s.io/minikube/out/"
@@ -105,6 +116,9 @@ popd
 %endif
 %endif
 
+install -D -m 0644 %{_builddir}/%{name}-bash-completions \
+    %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+
 %files
 %license LICENSE
 %doc CHANGELOG.md CONTRIBUTING.md README.md
@@ -115,5 +129,8 @@ popd
 %license LICENSE
 %{_bindir}/docker-machine-driver-kvm2*
 %endif
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/%{name}
 
 %changelog

@@ -269,4 +269,13 @@
   * Upgrade buildroot and kernel minor version (forwarded request 848988 from mrostecki)</comment>
     <requestid>848989</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>cd0c1269af61b222bf35232dbc149904</srcmd5>
+    <version>1.15.1</version>
+    <time>1608031880</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove %check section - minikube tests require Internet acceess
+  and we will be never able to run them on OBS. (forwarded request 855827 from mrostecki)</comment>
+    <requestid>855828</requestid>
+  </revision>
 </revisionlist>
