@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Dec 13 13:01:31 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.5.6:
+  + Fix crashes in WiFi handling code.
+  + Plug a leak.
+- Changes from version 2.5.5:
+  + Plug another leak.
+  + Fix another buffer overflow.
+  + Fix WiFi-geolocation that got broken in 2.5.4.
+  + Put freequently used small strings on the stack to avoid
+    excessive memory usage.
+
+-------------------------------------------------------------------
 Tue Dec 10 20:11:13 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.5.4:

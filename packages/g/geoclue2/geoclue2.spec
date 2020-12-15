@@ -1,7 +1,7 @@
 #
 # spec file for package geoclue2
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %define _name geoclue
+
 Name:           geoclue2
-Version:        2.5.4
+Version:        2.5.6
 Release:        0
 Summary:        GeoLocation Framework
 License:        GPL-2.0-or-later
