@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.76
+%define _tar_path 5.77
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcalendarcore
-Version:        5.76.0
+Version:        5.77.0
 Release:        0
 Summary:        Library to access and handle calendar data
 License:        LGPL-2.0-or-later
@@ -36,9 +36,9 @@ Source2:        frameworks.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  cmake(LibIcal) >= 2.0
-BuildRequires:  cmake(Qt5Core) >= 5.12.0
-BuildRequires:  cmake(Qt5Gui) >= 5.12.0
-BuildRequires:  cmake(Qt5Test) >= 5.12.0
+BuildRequires:  cmake(Qt5Core) >= 5.13.0
+BuildRequires:  cmake(Qt5Gui) >= 5.13.0
+BuildRequires:  cmake(Qt5Test) >= 5.13.0
 
 %description
 KCalendarCore is a library to provide access to and handling of calendar data.
