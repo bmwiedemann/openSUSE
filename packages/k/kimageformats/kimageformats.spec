@@ -16,7 +16,7 @@
 #
 
 
-%define _tar_path 5.76
+%define _tar_path 5.77
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -24,7 +24,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           kimageformats
-Version:        5.76.0
+Version:        5.77.0
 Release:        0
 Summary:        Image format plugins for Qt
 License:        LGPL-2.1-or-later
@@ -42,9 +42,9 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  openexr
 BuildRequires:  openexr-devel
 BuildRequires:  cmake(KF5Archive) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Gui) >= 5.12.0
-BuildRequires:  cmake(Qt5PrintSupport) >= 5.12.0
-BuildRequires:  cmake(Qt5Test) >= 5.12.0
+BuildRequires:  cmake(Qt5Gui) >= 5.13.0
+BuildRequires:  cmake(Qt5PrintSupport) >= 5.13.0
+BuildRequires:  cmake(Qt5Test) >= 5.13.0
 %requires_ge    libQt5Gui5
 %requires_ge    libQt5PrintSupport5
 Recommends:     libqt5-qtimageformats >= 5.12.0
