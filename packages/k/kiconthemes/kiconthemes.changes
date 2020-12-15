@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec  5 18:56:37 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.77.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.77.0
+- Changes since 5.76.0:
+  * Pass parent to Q*Layout ctor instead of calling setLayout()
+  * Add selected property to effects
+  * Use qDebug instead if icon theme is not found
+
+-------------------------------------------------------------------
 Sat Nov  7 21:34:49 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.76.0
