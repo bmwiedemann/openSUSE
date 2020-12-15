@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 14 16:20:59 CET 2020 - tiwai@suse.de
+
+- Backport upstream fixes: AMD MCP mute issue, chtnau8824 fixes,
+  rt715 fix, and soundwire initialization fix:
+  0004-Revert-ucm2-HDA-acp-add-Capture-simple-mixer-element.patch
+  0005-chtnau8824-Fix-mono-speaker-config-not-working.patch
+  0006-chtnau8824-Add-support-for-laptops-using-stereo-DMIC.patch
+  0007-chtnau8824-Boost-analog-mic-volumes-a-bit.patch
+  0008-rt715-init-setup-ADC07-to-a-proper-volume.patch
+  0009-sof-hda-dsp-Set-Master-Playback-Switch-on-in-the-Boo.patch
+
+-------------------------------------------------------------------
 Tue Dec  1 09:40:25 CET 2020 - tiwai@suse.de
 
 - Backport upstream fixes for HD-audio and soundwire HDMI:
