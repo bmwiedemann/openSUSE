@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Dec  5 18:56:51 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.77.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.77.0
+- Changes since 5.76.0:
+  * Deprecate embed() method, for lack of usage
+  * Make KParts use KPluginMetaData instead of KAboutData
+
+-------------------------------------------------------------------
 Sat Nov  7 21:35:09 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.76.0
