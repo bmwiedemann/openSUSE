@@ -1,7 +1,7 @@
-Index: b/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsExtension.cpp
+Index: VirtualBox-6.1.16/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsExtension.cpp
 ===================================================================
---- a/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsExtension.cpp
-+++ b/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsExtension.cpp
+--- VirtualBox-6.1.16.orig/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsExtension.cpp
++++ VirtualBox-6.1.16/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsExtension.cpp
 @@ -16,6 +16,7 @@
   */
  
@@ -19,10 +19,10 @@ Index: b/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsExten
  
      QString strFilePath;
      if (!fileNames.isEmpty())
-Index: b/src/VBox/Frontends/VirtualBox/src/widgets/UIFilePathSelector.cpp
+Index: VirtualBox-6.1.16/src/VBox/Frontends/VirtualBox/src/widgets/UIFilePathSelector.cpp
 ===================================================================
---- a/src/VBox/Frontends/VirtualBox/src/widgets/UIFilePathSelector.cpp
-+++ b/src/VBox/Frontends/VirtualBox/src/widgets/UIFilePathSelector.cpp
+--- VirtualBox-6.1.16.orig/src/VBox/Frontends/VirtualBox/src/widgets/UIFilePathSelector.cpp
++++ VirtualBox-6.1.16/src/VBox/Frontends/VirtualBox/src/widgets/UIFilePathSelector.cpp
 @@ -397,10 +397,10 @@ void UIFilePathSelector::selectPath()
      switch (m_enmMode)
      {
@@ -45,3 +45,79 @@ Index: b/src/VBox/Frontends/VirtualBox/src/widgets/UIFilePathSelector.cpp
      }
  
      /* Do nothing if nothing chosen: */
+Index: VirtualBox-6.1.16/src/VBox/Frontends/VirtualBox/src/widgets/UIEmptyFilePathSelector.cpp
+===================================================================
+--- VirtualBox-6.1.16.orig/src/VBox/Frontends/VirtualBox/src/widgets/UIEmptyFilePathSelector.cpp
++++ VirtualBox-6.1.16/src/VBox/Frontends/VirtualBox/src/widgets/UIEmptyFilePathSelector.cpp
+@@ -232,16 +232,16 @@ void UIEmptyFilePathSelector::choose()
+     switch (mMode)
+     {
+         case UIEmptyFilePathSelector::Mode_File_Open:
+-            path = QIFileDialog::getOpenFileName (initDir, mFileFilters, parentWidget(), mFileDialogTitle); break;
++            path = QIFileDialog::getOpenFileName (initDir, mFileFilters, QApplication::activeWindow(), mFileDialogTitle); break;
+         case UIEmptyFilePathSelector::Mode_File_Save:
+         {
+-            path = QIFileDialog::getSaveFileName (initDir, mFileFilters, parentWidget(), mFileDialogTitle);
++            path = QIFileDialog::getSaveFileName (initDir, mFileFilters, QApplication::activeWindow(), mFileDialogTitle);
+             if (!path.isEmpty() && QFileInfo (path).suffix().isEmpty())
+                 path = QString ("%1.%2").arg (path).arg (mDefaultSaveExt);
+             break;
+         }
+         case UIEmptyFilePathSelector::Mode_Folder:
+-            path = QIFileDialog::getExistingDirectory (initDir, parentWidget(), mFileDialogTitle); break;
++            path = QIFileDialog::getExistingDirectory (initDir, QApplication::activeWindow(), mFileDialogTitle); break;
+     }
+     if (path.isEmpty())
+         return;
+Index: VirtualBox-6.1.16/src/VBox/Frontends/VirtualBox/src/medium/UIMediumSelector.cpp
+===================================================================
+--- VirtualBox-6.1.16.orig/src/VBox/Frontends/VirtualBox/src/medium/UIMediumSelector.cpp
++++ VirtualBox-6.1.16/src/VBox/Frontends/VirtualBox/src/medium/UIMediumSelector.cpp
+@@ -438,7 +438,7 @@ void UIMediumSelector::sltButtonLeaveEmp
+ 
+ void UIMediumSelector::sltAddMedium()
+ {
+-    QUuid uMediumID = uiCommon().openMediumWithFileOpenDialog(m_enmMediumType, this, m_strMachineFolder);
++    QUuid uMediumID = uiCommon().openMediumWithFileOpenDialog(m_enmMediumType, QApplication::activeWindow(), m_strMachineFolder);
+     if (uMediumID.isNull())
+         return;
+     repopulateTreeWidget();
+Index: VirtualBox-6.1.16/src/VBox/Frontends/VirtualBox/src/globals/UICommon.cpp
+===================================================================
+--- VirtualBox-6.1.16.orig/src/VBox/Frontends/VirtualBox/src/globals/UICommon.cpp
++++ VirtualBox-6.1.16/src/VBox/Frontends/VirtualBox/src/globals/UICommon.cpp
+@@ -3197,7 +3197,7 @@ void UICommon::updateMachineStorage(cons
+                 }
+                 else if (target.type == UIMediumTarget::UIMediumTargetType_WithFileDialog)
+                 {
+-                    uMediumID = openMediumWithFileOpenDialog(target.mediumType, windowManager().mainWindowShown(),
++                    uMediumID = openMediumWithFileOpenDialog(target.mediumType, QApplication::activeWindow(),
+                                                              strMachineFolder, false /* fUseLastFolder */);
+                 }
+                 else if(target.type == UIMediumTarget::UIMediumTargetType_CreateAdHocVISO)
+Index: VirtualBox-6.1.16/src/VBox/Frontends/VirtualBox/src/medium/UIMediumManager.cpp
+===================================================================
+--- VirtualBox-6.1.16.orig/src/VBox/Frontends/VirtualBox/src/medium/UIMediumManager.cpp
++++ VirtualBox-6.1.16/src/VBox/Frontends/VirtualBox/src/medium/UIMediumManager.cpp
+@@ -486,7 +486,7 @@ void UIMediumManagerWidget::sltHandleMac
+ void UIMediumManagerWidget::sltAddMedium()
+ {
+     QString strDefaultMachineFolder = uiCommon().virtualBox().GetSystemProperties().GetDefaultMachineFolder();
+-    uiCommon().openMediumWithFileOpenDialog(currentMediumType(), this,
++    uiCommon().openMediumWithFileOpenDialog(currentMediumType(), QApplication::activeWindow(),
+                                               strDefaultMachineFolder, true /* use most recent medium folder */);
+ }
+ 
+Index: VirtualBox-6.1.16/src/VBox/Frontends/VirtualBox/src/settings/machine/UIMachineSettingsStorage.cpp
+===================================================================
+--- VirtualBox-6.1.16.orig/src/VBox/Frontends/VirtualBox/src/settings/machine/UIMachineSettingsStorage.cpp
++++ VirtualBox-6.1.16/src/VBox/Frontends/VirtualBox/src/settings/machine/UIMachineSettingsStorage.cpp
+@@ -3958,7 +3958,7 @@ void UIMachineSettingsStorage::sltChoose
+ {
+     const QString strMachineFolder(QFileInfo(m_strMachineSettingsFilePath).absolutePath());
+ 
+-    QUuid uMediumId = uiCommon().openMediumWithFileOpenDialog(m_pMediumIdHolder->type(), this, strMachineFolder);
++    QUuid uMediumId = uiCommon().openMediumWithFileOpenDialog(m_pMediumIdHolder->type(), QApplication::activeWindow(), strMachineFolder);
+     if (uMediumId.isNull())
+         return;
+     m_pMediumIdHolder->setId(uMediumId);
