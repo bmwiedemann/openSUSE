@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Dec  5 18:56:48 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.77.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.77.0
+- Changes since 5.76.0:
+  * Remove redundant setLayout() call
+  * Don't pass transient hint (kde#422042)
+  * Add SPDX license statement for the impl on macOS
+  * Fix case-sensitive error of AppKit header on macOS
+  * Do not invoke invalid notification actions
+  * Fix memory handling for notifybysnore
+
+-------------------------------------------------------------------
 Sat Nov  7 21:35:05 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.76.0
