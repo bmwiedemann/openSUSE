@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec  5 18:56:47 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.77.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.77.0
+- Too many changes since 5.76.0, only listing bugfixes:
+  * Reuse QWidgets dialog (kde#416328)
+  * Fix entry disappearing too early from updatable page (kde#427801)
+  * Remove entry from cache before inserting new entry (kde#424919)
+
+-------------------------------------------------------------------
 Sat Nov  7 21:35:04 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.76.0
