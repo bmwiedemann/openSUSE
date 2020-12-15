@@ -1183,4 +1183,24 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
     * Updated lists of ioctl commands from Linux 5.9. (forwarded request 836568 from AndreasSchwab)</comment>
     <requestid>836569</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>f30355b86bf7a0bf401594596c4a51ea</srcmd5>
+    <version>5.10</version>
+    <time>1608031833</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 5.10
+  * Improvements
+    * libdw-based stack tracing is now enabled for non-native personalities.
+    * Implemented decoding of process_madvise syscall introduced in Linux 5.10.
+    * Updated decoding of pidfd_open syscall to match Linux 5.10.
+    * Updated decoding of membarrier syscall to match Linux 5.10.
+    * Updated lists of ALG_*, BPF_*, INET_DIAG_*, IORING_*, KEY_*, KVM_*, MDBA_*,
+      MEMBARRIER_CMD_*, MS_*, NLMSGERR_*, NT_*, STATX_*, SEGV_*, and V4L2_*
+      constants.
+    * Updated lists of ioctl commands from Linux 5.10.
+  * Bug fixes
+    * Added clock_gettime64, clock_settime64, clock_adjtime64, and
+      lock_getres_time64 syscalls to %clock trace class. (forwarded request 855728 from AndreasSchwab)</comment>
+    <requestid>855729</requestid>
+  </revision>
 </revisionlist>

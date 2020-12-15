@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec 14 09:43:57 UTC 2020 - Andreas Schwab <schwab@linux-m68k.org>
+
+- Update to strace 5.10
+  * Improvements
+    * libdw-based stack tracing is now enabled for non-native personalities.
+    * Implemented decoding of process_madvise syscall introduced in Linux 5.10.
+    * Updated decoding of pidfd_open syscall to match Linux 5.10.
+    * Updated decoding of membarrier syscall to match Linux 5.10.
+    * Updated lists of ALG_*, BPF_*, INET_DIAG_*, IORING_*, KEY_*, KVM_*, MDBA_*,
+      MEMBARRIER_CMD_*, MS_*, NLMSGERR_*, NT_*, STATX_*, SEGV_*, and V4L2_*
+      constants.
+    * Updated lists of ioctl commands from Linux 5.10.
+  * Bug fixes
+    * Added clock_gettime64, clock_settime64, clock_adjtime64, and
+      lock_getres_time64 syscalls to %clock trace class.
+
+-------------------------------------------------------------------
 Thu Sep 24 12:01:01 UTC 2020 - Andreas Schwab <schwab@linux-m68k.org>
 
 - Update to strace 5.9
