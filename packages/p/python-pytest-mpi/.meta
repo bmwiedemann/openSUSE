@@ -1,0 +1,8 @@
+<package name="python-pytest-mpi" project="openSUSE:Factory">
+  <title>MPI plugin for pytest</title>
+  <description>mpi plugin for pytest to collect information from openmpi-based tests.
+
+</description>
+  <devel project="devel:languages:python:numeric" package="python-pytest-mpi"/>
+  <url>https://pytest-mpi.readthedocs.io</url>
+</package>
