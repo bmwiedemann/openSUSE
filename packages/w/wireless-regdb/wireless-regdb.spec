@@ -36,13 +36,13 @@ frequency ranges for 802.11 wireless drivers.
 %build
 
 %install
-%make_install
+%make_install FIRMWARE_PATH="%{_firmwaredir}"
 
 %files
 %license LICENSE
 %doc README
-/lib/firmware/regulatory.db
-/lib/firmware/regulatory.db.p7s
+%{_firmwaredir}/regulatory.db
+%{_firmwaredir}/regulatory.db.p7s
 %dir /usr/lib/crda
 /usr/lib/crda/regulatory.bin
 %dir /usr/lib/crda/pubkeys

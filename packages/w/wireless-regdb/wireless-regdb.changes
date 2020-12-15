@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 14 12:47:27 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- leverage %{_firmwaredir} to install firmware into correct location (boo#1029961)
+
+-------------------------------------------------------------------
 Thu Nov 26 19:03:53 UTC 2020 - dmueller@suse.com
 
 - Update to version 20201120:
