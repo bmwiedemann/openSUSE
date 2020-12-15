@@ -124,4 +124,12 @@
     <comment>- Drop /sbin links; they do not seem to be used from anywhere.</comment>
     <requestid>849641</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>44fb55735937aa2cf3778e53921a43f8</srcmd5>
+    <version>3.10.1</version>
+    <time>1608031830</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>855715</requestid>
+  </revision>
 </revisionlist>
