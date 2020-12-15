@@ -114,4 +114,12 @@
   * Increment version to 0.5.4-dev</comment>
     <requestid>852601</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dd921d9f1ebb10d18dd4d7671c4b3dee</srcmd5>
+    <version>0.6.1</version>
+    <time>1608031886</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>855939</requestid>
+  </revision>
 </revisionlist>

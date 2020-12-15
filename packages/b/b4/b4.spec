@@ -17,9 +17,9 @@
 
 
 %define skip_python2 1
-%define version_unconverted 0.5.4+0
+%define version_unconverted 0.6.1
 Name:           b4
-Version:        0.5.4+0
+Version:        0.6.1
 Release:        0
 Summary:        Helper scripts for kernel.org patches
 License:        GPL-2.0-or-later
@@ -29,8 +29,9 @@ Source0:        %{name}-%{version}.tar.xz
 BuildArch:      noarch
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  tar
-Requires:       python3-requests
+Requires:       python3-dkimpy >= 1.0.5
+Requires:       python3-dnspython >= 2.0.0
+Requires:       python3-requests >= 2.24.0
 
 %description
 This is a helper utility to work with patches made available via a
@@ -51,9 +52,8 @@ sed -i.old '1{/#!.*/d}' b4/*.py
 %python_build
 
 %install
-install -d %{buildroot}/%{_mandir}/man.5
-install -m 0644 -t %{buildroot}/%{_mandir}/man.5 man/b4.5
 %python_install
+mv %{buildroot}/%{_mandir}/man5 %{buildroot}/%{_mandir}/man.5
 
 %check
 %python_exec setup.py check
