@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec 14 09:36:40 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Write also connections in case that the hostname mapped to a
+  connection primary IP address is changed through the DNS
+  standalone client (bsc#1174431)
+- 4.3.34
+
+-------------------------------------------------------------------
+Mon Dec 14 08:27:46 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Allow to modify the hostname mapped to a connection primary IP
+  address when the associated hostname is modified (bsc#1174431)
+- 4.3.33
+
+-------------------------------------------------------------------
 Thu Dec 10 10:43:48 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Fix bonding slaves sorting (bsc#1178950)
@@ -10563,4 +10578,3 @@ Thu Jun  8 20:46:57 MEST 2000 - dan@suse.cz
 Fri May 19 09:44:08 CEST 2000 - kkaempf@suse.de
 
 - initial version
-
