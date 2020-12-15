@@ -1,6 +1,12 @@
---- include/fuse_kernel.h
-+++ include/fuse_kernel.h
-@@ -85,12 +85,7 @@
+---
+ include/fuse_kernel.h |    7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
+
+Index: fuse-2.9.9/include/fuse_kernel.h
+===================================================================
+--- fuse-2.9.9.orig/include/fuse_kernel.h
++++ fuse-2.9.9/include/fuse_kernel.h
+@@ -88,12 +88,7 @@
  #ifndef _LINUX_FUSE_H
  #define _LINUX_FUSE_H
  

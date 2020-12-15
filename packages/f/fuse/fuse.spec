@@ -19,7 +19,7 @@
 Name:           fuse
 Version:        2.9.9
 Release:        0
-Summary:        User space File System
+Summary:        Reference implementation of the "Filesystem in Userspace"
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Filesystems
 URL:            https://github.com/libfuse/libfuse
@@ -36,53 +36,19 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-# FIXME: use proper Requires(pre/post/preun/...)
-PreReq:         permissions
-%if 0%{?suse_version} > 1320
+Requires(post): permissions
 Requires(pre):  group(trusted)
-%endif
-%if 0%{?suse_version} > 1130
 Requires:       util-linux >= 2.18
-%else
-Requires:       util-linux(fake+no-canonicalize)
-%endif
-%if 0%{?suse_version} >= 1000
 Supplements:    filesystem(fuse)
-%endif
 
 %description
-With FUSE, a user space program can export a file system through the
-kernel-default (Linux kernel).
+FUSE (Filesystem in Userspace) is an interface by the Linux kernel
+for userspace programs to export a filesystem to the kernel.
 
-User space file systems which are implemented using FUSE are provided
-by the following packages:
+This package contains helper programs for using FUSE mounts.
 
-- curlftpfs (mount FTP servers),
-
-- encfs (layered file encryption),
-
-- fuseiso (mount iso, img, bin, mdf and nrg CD-ROM images),
-
-- fusepod (mount iPods),
-
-- fusesmb (mount a fully browseable network neighborhood),
-
-- gphotofs (mount gphoto-supported cameras),
-
-- ntfs-3g (mount NTFS volumes read-write),
-
-- obexfs (mount of bluetooth devices),
-
-- sshfs (mount over ssh),
-
-- wdfs (mount of WebDAV shares)
-
-This package contains the mount binaries for fuse (might not be needed
-by some FUSE filesystems like ntfs-3g) and the documentation for FUSE.
-
-After installing fuse-devel, administrators can compile and install
-other user space file systems which can be found at
-https://github.com/libfuse/libfuse/wiki/
+FUSE file systems are typically implemented as a standalone
+applications in their own right and are packaged separately.
 
 %package -n libulockmgr1
 Summary:        Library of FUSE, the User space File System for GNU/Linux and BSD
@@ -97,16 +63,12 @@ Summary:        Library of FUSE, the User space File System for GNU/Linux and BS
 Group:          System/Filesystems
 
 %description -n libfuse2
-With FUSE, a user space program can export a file system through the
-kernel-default (Linux kernel).
+FUSE (Filesystem in Userspace) is an interface by the Linux kernel
+for userspace programs to export a filesystem to the kernel.
 
-A FUSE file system which only needs libfuse2 is ntfs-3g, other FUSE
-file systems might need the fuse package in addition to have fusermount
-and /sbin/mount.fuse.
-
-After installing fuse-devel, administrators can compile and install
-other user space file systems which can be found at
-https://github.com/libfuse/libfuse/wiki/
+A FUSE file system is typically implemented as a standalone
+application that links with libfuse. libfuse provides a C API over
+the raw kernel interface.
 
 %package doc
 Summary:        Document package for FUSE (userspace filesystem)
@@ -127,11 +89,10 @@ Requires:       libulockmgr1 = %{version}
 %description devel
 This package contains all include files, libraries and configuration
 files needed to develop programs that use the fuse (FUSE) library to
-implement kernel-default (Linux) file systems in user space.
+implement file systems in user space.
 
-With fuse-devel, administrators can compile and install other user
-space file systems which can be found at
-https://github.com/libfuse/libfuse/wiki/
+With fuse-devel, users can compile and install other user space file
+systems.
 
 %package devel-static
 Summary:        Development package for FUSE (userspace filesystem) modules
@@ -140,26 +101,17 @@ Requires:       fuse-devel = %{version}
 Provides:       fuse-devel:%{_libdir}/libfuse.a
 
 %description devel-static
-This package contains all include files, libraries and configuration
-files needed to develop programs that use the fuse (FUSE) library to
-implement kernel-default (Linux) file systems in user space.
-
-With fuse-devel, administrators can compile and install other user
-space file systems which can be found at
-https://github.com/libfuse/libfuse/wiki/
+This package contains the static library variants of libfuse.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch3 -p1
-%patch4
+%autosetup -p1
 
 %build
 %define _lto_cflags %{nil}
 export CFLAGS="%{optflags} -g -fno-strict-aliasing"
 export MOUNT_FUSE_PATH=%{_sbindir}
 autoreconf -fi
-%configure --with-pic \
+%configure \
     --with-pkgconfigdir=%{_libdir}/pkgconfig \
     --enable-lib \
     --enable-util \

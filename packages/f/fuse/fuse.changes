@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 20 10:10:06 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Modernize some older specfile constructs. Rediff patch4 as -p1.
+- Update descriptions.
+
+-------------------------------------------------------------------
 Tue Nov 10 10:52:32 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)
