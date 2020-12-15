@@ -81,4 +81,12 @@
     <comment>Add upstreams port to libhandy-1 (forwarded request 851397 from iznogood)</comment>
     <requestid>851788</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2a20ffcf0065dcd00db2b9120fd51d16</srcmd5>
+    <version>3.34.1</version>
+    <time>1608031644</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>855312</requestid>
+  </revision>
 </revisionlist>
