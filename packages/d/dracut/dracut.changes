@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Dec 14 15:41:28 UTC 2020 - daniel.molkentin@suse.com
+
+- Update to version 051 (051+suse.84.gc6bd70b8):
+  * suse.spec: add 051 modules dbus, wicked
+  * Update AUTHORS, NEWS
+  * Drop 51-dracut-rescue-postinst.sh entirely
+  * Revert "Retrieve service, rpc and protcol entries via getent in hostonly mode"
+  * Adding stalebot file
+  * Revert "Add --uefi-output for custom output filename"
+  * Improve documentation of iso-scan/filename feature
+  * multipathd: fix the comparison
+  * 06dbus: consider dbus-broker
+  * 06dbus: Add busctl as a more useful tool
+  * 06dbus: Include dbus or messagebus group and user, depending on distro
+  * 35network-wicked: openSUSE Factory has reintroduced libexec
+  * 35network-wicked: install ip utility anyway
+  * 35network-wicked: Run wicked early enough to unlock block devices
+  * 06dbus: Do not install superfluous services
+  * 40network: introduce wicked option
+  * 35network-wicked: introduce wicked support module
+  * 06dbus: introduce dbus support
+  * Add --uefi-output for custom output filename
+  * 95fcoe: don't install if there is no FCoE hostonly devices
+  * 95fcoe: ensure needed modules are installed
+  * dracut-install: Globbing support for resolving "firmware:"
+  * dracut-bash-completion.sh: add positional argument completion
+  * Prevent creating unexpected files on the host when running dracut
+  * configure: Find FTS library with --as-needed
+
+-------------------------------------------------------------------
+Sat Nov 14 19:42:27 UTC 2020 - daniel.molkentin@suse.com
+
+- Update to version 050+suse.275.gc9639522:
+  * Don't print when a module is explicitly omitted (by default)
+  * 95nfs: /var/lib/nfs/statd/sm is /var/lib/nfs/sm on SUSE (boo#1177462)
+  * Retrieve service, rpc and protcol entries via getent in hostonly mode (boo#1177461)
+  * Remove uses of bash (and bash specific syntax) in runtime scripts
+  * 90crypt: pull in remote-cryptsetup.target enablement
+  * 90multipath: install kpartx's 11-dm-parts.rules
+  * Revert "90crypt: ship initrd-cryptsetup.target"
+  * 90qemu-net: install less module for strict hostonly mode
+  * 90qemu-net: in hostonly mode, only install if network is needed
+  * 95nfs: Install less module if hostonly mode is strict
+  * 90kernel-modules: Install less modules for hostonly mode
+  * 90kernel-modules: install block drivers more strictly
+  * 04watchdog-modules: Simplify install_kernel using new added helper
+  * dracut-init.sh: Add a helper for detect device kernel modules
+  * dracut-functions.sh: Fix check_block_and_slaves_all
+  * 90kernel-network-modules: Don't install iscsi related module
+  * Add a --hostonly-nics option
+  * Configure the runner for team interfaces
+  * 99squash: Check require module earlier, and properly
+  * dracut-functions: add a helper to check if kernel module is available
+  * 90crypt: ship initrd-cryptsetup.target
+  * Revert "90crypt: pull in remote-cryptsetup.target enablement"
+  * dmsquash-live/iso-scan: Provide an easy reference to iso-scan device.
+  * 99memstrack: use /bin/bash
+
+-------------------------------------------------------------------
 Tue Oct 13 14:09:17 UTC 2020 - daniel.molkentin@suse.com
 
 - Update to version 050+suse.250.ge6b6e843:

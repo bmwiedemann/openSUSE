@@ -1834,4 +1834,41 @@ Add:  dracut_git_v034_to_head.patch</comment>
   * 99memstrack: use /bin/bash</comment>
     <requestid>841563</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>d07c7c118b6c7561a82454fa15a37c41</srcmd5>
+    <version>051+suse.84.gc6bd70b8</version>
+    <time>1608031849</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 051 (051+suse.84.gc6bd70b8):
+  * suse.spec: add 051 modules dbus, wicked
+  * Update AUTHORS, NEWS
+  * Drop 51-dracut-rescue-postinst.sh entirely
+  * Revert &quot;Retrieve service, rpc and protcol entries via getent in hostonly mode&quot;
+  * Adding stalebot file
+  * Revert &quot;Add --uefi-output for custom output filename&quot;
+  * Improve documentation of iso-scan/filename feature
+  * multipathd: fix the comparison
+  * 06dbus: consider dbus-broker
+  * 06dbus: Add busctl as a more useful tool
+  * 06dbus: Include dbus or messagebus group and user, depending on distro
+  * 35network-wicked: openSUSE Factory has reintroduced libexec
+  * 35network-wicked: install ip utility anyway
+  * 35network-wicked: Run wicked early enough to unlock block devices
+  * 06dbus: Do not install superfluous services
+  * 40network: introduce wicked option
+  * 35network-wicked: introduce wicked support module
+  * 06dbus: introduce dbus support
+  * Add --uefi-output for custom output filename
+  * 95fcoe: don't install if there is no FCoE hostonly devices
+  * 95fcoe: ensure needed modules are installed
+  * dracut-install: Globbing support for resolving &quot;firmware:&quot;
+  * dracut-bash-completion.sh: add positional argument completion
+  * Prevent creating unexpected files on the host when running dracut
+  * configure: Find FTS library with --as-needed
+
+- Update to version 050+suse.275.gc9639522:
+  * Don't print when a module is explicitly omitted (by default)
+  * 95nfs: /var/lib/nfs/statd/sm is /var/lib/nfs/sm on SUSE (boo#1177462)</comment>
+    <requestid>855784</requestid>
+  </revision>
 </revisionlist>
