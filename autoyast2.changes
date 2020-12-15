@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 14 10:16:55 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add support for Btrfs quotas (jsc#SLE-7742).
+- 4.3.64
+
+-------------------------------------------------------------------
 Thu Nov 26 08:57:27 UTC 2020 - Stefan Schubert <schubi@suse.de>
 
 - Rules download: The result will be stored in the target file when
