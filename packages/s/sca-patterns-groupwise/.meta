@@ -1,5 +1,0 @@
-<package name="sca-patterns-groupwise" project="openSUSE:Factory">
-  <title>Supportconfig Analysis Patterns for GroupWise</title>
-  <description>Supportconfig Analysis (SCA) appliance patterns to identify known issues relating to all versions of GroupWise</description>
-  <devel project="Novell:NTS:Unstable" package="sca-patterns-groupwise"/>
-</package>
