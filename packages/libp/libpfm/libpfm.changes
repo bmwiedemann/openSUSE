@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Nov 22 00:18:22 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix the python subpackage generation
+  gh#openSUSE/python-rpm-macros#79
+
+-------------------------------------------------------------------
+Thu Nov 19 18:21:46 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Support multiple python 3 flavors in the python subpackage
+  gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Tue Mar  3 02:49:22 UTC 2020 - Tony Jones <tonyj@suse.com>
 
 - Add Cavium ThunderX2 uncore support (jsc#SLE-8440)

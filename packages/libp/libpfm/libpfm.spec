@@ -43,6 +43,15 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 BuildRequires:  swig >= 2.0.5
 
+%if 0%{?python38_version_nodots}
+# if python multiflavor is in place yet, use it to generate subpackages
+%define python_subpackage_only 1
+%python_subpackages
+%else
+%define python_sitearch %python3_sitearch
+%define python_files() -n python3-%{**}
+%endif
+
 %description
 This package provides a library that can be used to encode events into the
 format required by the operating systems performance monitoring subsystem.
@@ -78,6 +87,16 @@ Requires:       %{name}-devel = %{version}
 %description devel-static
 This package contains the static variant of libpfm.
 
+%if 0%{?python_subpackage_only}
+%package -n     python-%{name}
+Summary:        Python bindings for libpfm and perf_event_open system call
+Group:          Development/Libraries/Python
+Requires:       %{vname} = %{version}
+
+%description -n python-%{name}
+This package provides python bindings for the libpfm4 package and the perf_event_open system call.
+
+%else
 %package -n     python2-%{name}
 Summary:        Python bindings for libpfm and perf_event_open system call
 Group:          Development/Libraries/Python
@@ -95,6 +114,7 @@ Requires:       %{vname} = %{version}
 
 %description -n python3-%{name}
 This package provides python3 bindings for the libpfm4 package and the perf_event_open system call.
+%endif
 
 %prep
 %setup -q
@@ -150,12 +170,14 @@ popd
 %files devel-static
 %{_libdir}/lib*.a
 
-%if %{with python2}
+%files %{python_files %{name}}
+%{python_sitearch}/perfmon
+%{python_sitearch}/perfmon-*-info
+
+%if %{with python2} && ! 0%{?python_subpackage_only}
 %files -n python2-%{name}
 %{python2_sitearch}/*
 %endif
 
-%files -n python3-%{name}
-%{python3_sitearch}/*
 
 %changelog
