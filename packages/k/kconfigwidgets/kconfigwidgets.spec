@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5ConfigWidgets5
-%define _tar_path 5.76
+%define _tar_path 5.77
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kconfigwidgets
-Version:        5.76.0
+Version:        5.77.0
 Release:        0
 Summary:        Widgets for configuration dialogs
 License:        LGPL-2.1-or-later
@@ -47,10 +47,10 @@ BuildRequires:  cmake(KF5DocTools) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5GuiAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5DBus) >= 5.12.0
-BuildRequires:  cmake(Qt5Test) >= 5.12.0
-BuildRequires:  cmake(Qt5UiPlugin) >= 5.12.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.12.0
+BuildRequires:  cmake(Qt5DBus) >= 5.13.0
+BuildRequires:  cmake(Qt5Test) >= 5.13.0
+BuildRequires:  cmake(Qt5UiPlugin) >= 5.13.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.13.0
 
 %description
 KConfigWidgets provides easy-to-use classes to create configuration dialogs, as

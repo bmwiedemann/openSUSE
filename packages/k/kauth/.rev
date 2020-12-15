@@ -714,4 +714,12 @@ depends on sr#237875</comment>
     <comment>KDE Frameworks 5.76</comment>
     <requestid>848528</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>fb4f02f3318d464318b067bbbda846e1</srcmd5>
+    <version>5.77.0</version>
+    <time>1608031685</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.77</comment>
+    <requestid>855409</requestid>
+  </revision>
 </revisionlist>

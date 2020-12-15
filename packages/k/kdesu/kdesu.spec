@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Su5
-%define _tar_path 5.76
+%define _tar_path 5.77
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdesu
-Version:        5.76.0
+Version:        5.77.0
 Release:        0
 Summary:        User interface for running shell commands with root privileges
 License:        LGPL-2.1-or-later
@@ -48,7 +48,7 @@ BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Pty) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Service) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Core) >= 5.12.0
+BuildRequires:  cmake(Qt5Core) >= 5.13.0
 BuildRequires:  pkgconfig(x11)
 
 %description

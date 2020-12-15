@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Dec  5 18:56:08 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.77.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.77.0
+- Changes since 5.76.0:
+  * Add text-field variants: -frameless (-> text-field), -framed
+  * Add symbolic name symlink for input-* icons.
+  * Add icon for True Type XML font
+  * Add add-subtitle
+  * Change MathML icon to use a formula and use specific mime type
+  * Add icon for QEMU disk image and SquashFS image
+  * Add edit-move action icon
+  * Add icon for core dumps
+  * Add a bunch of subtitle mime types
+  * Remove useless blur from kontrast icon
+
+-------------------------------------------------------------------
 Sat Nov  7 21:34:08 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.76.0

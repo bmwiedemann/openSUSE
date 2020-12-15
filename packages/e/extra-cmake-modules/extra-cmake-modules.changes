@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Dec  5 18:56:09 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.77.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.77.0
+- Changes since 5.76.0:
+  * clang-format: No space before initializer list
+  * Fix category extraction from desktop files
+  * Define install dir variable for file templates
+  * Add fastlane metadata generation for Android builds
+  * (Qt)WaylandScanner: Properly mark files as SKIP_AUTOMOC
+  * Fix updating of apptemplate tars
+
+-------------------------------------------------------------------
 Sat Nov  7 21:34:09 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.76.0
