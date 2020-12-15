@@ -47,7 +47,7 @@
 %endif
 
 Name:           nextcloud
-Version:        20.0.3
+Version:        20.0.4
 Release:        0
 Summary:        File hosting service
 License:        AGPL-3.0-only
@@ -137,6 +137,7 @@ Summary:        Apache configuration for %{name}
 Group:          Productivity/Networking/Web/Utilities
 BuildRequires:  apache2 >= 2.4
 Requires:       apache2
+Requires:       %{name} = %{version}
 Requires:       mod_php_any < 7.5.0
 Requires:       mod_php_any >= 7.2.0
 Supplements:    packageand(apache2:%name)

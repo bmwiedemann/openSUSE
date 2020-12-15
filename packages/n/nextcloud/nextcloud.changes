@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 15 08:21:19 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- The apache subpackage must require the main package, otherwise it
+  will not be uninstalled when the main package is uninstalled.
+
+-------------------------------------------------------------------
+Mon Dec 14 19:26:37 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 20.0.4
+  No changelog from upstream at this time.
+
+-------------------------------------------------------------------
 Mon Dec 14 10:28:07 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Put apache configuration files in separate subpackage.
