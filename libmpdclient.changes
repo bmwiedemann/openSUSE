@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 14 14:29:40 UTC 2020 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Add patch libmpdclient-doxygen_nodatetime.patch.
+- Add file doxygen-nodatetime-footer.html.
+- Include documentation and place vala files in properly versioned
+  subdirectory in devel package.
+
+-------------------------------------------------------------------
 Fri Jul  3 23:11:53 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Update to 2.19
@@ -60,6 +68,17 @@ Thu Oct  4 08:43:30 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
 - Use meson macros
 
 -------------------------------------------------------------------
+Sat May  5 14:34:20 UTC 2018 - tejas.guruswamy@opensuse.org
+
+- Update to 2.14
+  * support MPD protocol 0.21
+   - command "outputset"
+   - mpd_output_get_plugin()
+   - receive output attributes
+  * MSVC compatibility
+  * improved local and abstract socket support
+
+-------------------------------------------------------------------
 Thu Jul 27 08:36:00 UTC 2017 - olaf@aepfle.de
 
 - Update to 2.13
@@ -103,4 +122,3 @@ Sun Nov  1 15:02:15 UTC 2015 - rpm@fthiessen.de
 Sat Oct 31 05:12:06 UTC 2015 - rpm@fthiessen.de
 
 - Initial version 2.9
-

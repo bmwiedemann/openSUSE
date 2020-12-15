@@ -50,4 +50,15 @@
     <comment></comment>
     <requestid>818651</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>6f224f476385f6f563a552cc25d590e3</srcmd5>
+    <version>2.19</version>
+    <time>1608031875</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch libmpdclient-doxygen_nodatetime.patch.
+- Add file doxygen-nodatetime-footer.html.
+- Include documentation and place vala files in properly versioned
+  subdirectory in devel package.</comment>
+    <requestid>855780</requestid>
+  </revision>
 </revisionlist>
