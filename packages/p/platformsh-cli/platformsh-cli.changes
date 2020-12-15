@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Tue Dec 15 03:49:04 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.64.0:
+  * Release v3.64.0
+  * Fix 500 error in backup:list (backups) command
+  * Add --unsafe option to the backup:create (backup) command
+  * Remove problematic progress output
+  * Add a new line after progress messages
+  * More loading messages (for slow connections)
+  * Show a loading message on environments and project lists
+  * Update slow integration tests from PHP 7.3 -> 7.4 on Travis
+  * Update Travis to Ubuntu Xenial
+  * Remove hardcoded instances of "master" for the default branch (#1003)
+  * Recommend an SSH certificate if not present after a publickey error
+  * Add mongodb support to the db:size command (#1001)
+  * Add activity choice
+  * Add activity:cancel command
+  * Add state and result filters to activity commands
+  * Disable Travis coverage to fix unit tests on PHP 7.3
+  * Update dependencies (inc. Symfony v3.4.42 => v3.4.47)
+  * SSH diagnostics: do not make a test connection >3 seconds after the failed one started
+  * Update README for travis-ci.com migration
+  * Check host key error in SSH diagnostics (#1004)
+  * Release v3.63.3
+  * Avoid sending prompt=select_account to authorization when not logged in
+  * Fix "Property not found: token" when trying to check integration hooks
+  * Enable auto login from curl commands
+  * Improve placement of session advice when requiring auto login
+  * Tweak README for default state of auto_load_ssh_cert
+  * Release v3.63.2
+  * Fix browser login after session expiry
+  * Add a timeout for browser login
+  * Revert "Add the --app (-A) option to the environment:url (url) command"
+  * Allow updating the default_branch in the project:info command
+  * Add the --app (-A) option to the environment:url (url) command
+  * Automatically rewrite installer.php config on build, to match config.yaml
+  * Release v3.63.1
+  * Fix script display in the integration:list command (#998)
+  * Fix "box" composer.lock for Composer 2 (#999)
+  * Change default release branch
+  * Add --insecure option to the installer
+  * Fix writable test on self:build --output option [skip changelog]
+  * Increase timeout when fetching activity logs (#991)
+  * Update README: Add note about a possible need for "php.exe" when running the install command
+  * Release v3.63.0
+  * Add --gateway-ports (-g) option to tunnel commands (#993)
+  * Stop using SSH home directory substitution (#995)
+  * Installer: auto-detect existing but disabled extensions (#996)
+  * Fix missing Git detection on Windows
+  * Modify ProcessFailedException to extend Symfony's, for easier try/catch
+  * Fix test namespaces for Composer 2 compatibility [skip changelog]
+  * Avoid running getUser() when api.auth is not enabled
+  * Bugfix 32bit limit (#989)
+  * Release v3.62.6
+  * Try "which" as well as "where" on Windows for command existence
+  * Typo in method name [skip changelog]
+  * Release v3.62.5
+  * Move test connection messages to debug verbosity
+  * Do not display "You probably need to add an SSH key" if the authentication succeeded
+  * Release v3.62.4
+  * Fix Windows arg escaping for SSH commands (#982)
+  * Clarify when a sensitive variable value cannot be read
+  * Fix error message for variable:get when there are no variables
+  * Avoid repeating IdentityFile SSH options
+  * Release v3.62.3
+  * Fix file quoting for SSH options (#981)
+  * Github Actions workflow to build platform.sh CLI phar executable (#977)
+  * Fix shell arguments for multi-instance mongo commands
+  * Strip mongo log messages when detecting collections in mongoexport command
+
+-------------------------------------------------------------------
 Sat Aug 29 02:16:38 UTC 2020 - jimmy@boombatower.com
 
 - Update to version 3.62.2:
