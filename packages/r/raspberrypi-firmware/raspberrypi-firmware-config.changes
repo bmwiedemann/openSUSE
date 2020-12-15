@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 15 08:29:09 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 8cd7665 (2020-12-14):
+  * firmware: Use DMA40 for PWM audio
+  * firmware: imx477: Replace existing 720p120 mode with a new 1332x990 120fps mode
+  * firmware: arm_loader: Allow max_framebuffers=0 to disable framebuffers
+    See: #1507
+
+-------------------------------------------------------------------
 Wed Dec  9 15:45:44 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Update to 919aee0ed7 (2020-12-08):
