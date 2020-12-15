@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 10 16:45:41 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- AutoYaST: add support for Btrfs quotas (jsc#SLE-7742).
+- 4.3.29
+
+-------------------------------------------------------------------
 Thu Dec 10 08:45:09 UTC 2020 - José Iván López González <jlopez@suse.com>
 
 - Partitioner: do not show summary when there are no actions to
