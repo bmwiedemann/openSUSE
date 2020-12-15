@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Nov 22 00:17:00 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix the python subpackage generation
+  gh#openSUSE/python-rpm-macros#79
+
+-------------------------------------------------------------------
+Sat Nov 14 22:55:37 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Support multiple python3 flavors gh#openSUSE/python-rpm-macros#66
+- Don't own the whole python sitearch directory
+
+-------------------------------------------------------------------
 Wed Sep  5 12:58:18 UTC 2018 - joop.boonen@opensuse.org
 
 - Version 2.1 solved:

@@ -179,4 +179,12 @@
     <comment>Version 2.1 solved: CVE-2017-1000494 bnc#1075137 - (CVE-2017-1000494) VUL-1: CVE-2017-1000494 miniupnpc: Multiple vulnerabilities can allow a remote attacker to cause a denial of service or potentially execute code (forwarded request 633475 from worldcitizen)</comment>
     <requestid>633476</requestid>
   </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>bed62f05b1a9e321d52c9c114fc2a483</srcmd5>
+    <version>2.1</version>
+    <time>1608031642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>855007</requestid>
+  </revision>
 </revisionlist>

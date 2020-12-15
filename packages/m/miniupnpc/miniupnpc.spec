@@ -36,6 +36,16 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       libminiupnpc%{soname} = %{version}-%{release}
 
+%if 0%{?python38_version_nodots}
+# if python multiflavor is in place yet, use it to generate subpackages
+%define python_subpackage_only 1
+%python_subpackages
+%else
+# same "defaults" for all distributions, used in %files below
+%define python_files() -n python3-%{**}
+%define python_sitearch %{python3_sitearch}
+%endif
+
 %description
 The MiniUPnP project offers software which supports the UPnP Internet Gateway
 Device (IGD) specifications.
@@ -57,6 +67,17 @@ Requires:       libminiupnpc%{soname} = %{version}-%{release}
 The MiniUPnP project offers software which supports the UPnP Internet Gateway
 Device (IGD) specifications.
 
+%if 0%{?python_subpackage_only}
+%package -n python-miniupnpc
+Summary:        Universal Plug'n'Play (UPnP) Client Module for Python
+Group:          Development/Libraries/Python
+Requires:       libminiupnpc%{soname} = %{version}-%{release}
+
+%description -n python-miniupnpc
+The MiniUPnP project offers software which supports the UPnP Internet Gateway
+Device (IGD) specifications.
+
+%else
 %package -n python2-miniupnpc
 Summary:        Universal Plug'n'Play (UPnP) Client Module for Python
 Group:          Development/Libraries/Python
@@ -74,6 +95,7 @@ Requires:       libminiupnpc%{soname} = %{version}-%{release}
 %description -n python3-miniupnpc
 The MiniUPnP project offers software which supports the UPnP Internet Gateway
 Device (IGD) specifications.
+%endif
 
 %prep
 %setup -q
@@ -92,7 +114,7 @@ make %{?_smp_mflags} \
 %make_install INSTALLDIRLIB=%{_libdir}
 
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 # Remove static libs
 rm -f %{buildroot}%{_libdir}/*.a
 # The man page should be non executable
@@ -116,16 +138,16 @@ chmod -x %{buildroot}%{_mandir}/man3/miniupnpc.3.gz
 %{_libdir}/libminiupnpc.so
 %{_libdir}/pkgconfig/miniupnpc.pc
 
-%if %{with python2}
+%if %{with python2} && ! 0%{?python_subpackage_only}
 %files -n python2-miniupnpc
 %doc Changelog.txt README
 %license LICENSE
-%{python2_sitearch}/
+%{python2_sitearch}/miniupnpc*
 %endif
 
-%files -n python3-miniupnpc
+%files %{python_files miniupnpc}
 %doc Changelog.txt README
 %license LICENSE
-%{python3_sitearch}/
+%{python_sitearch}/miniupnpc*
 
 %changelog
