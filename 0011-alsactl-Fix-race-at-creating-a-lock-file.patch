@@ -1,0 +1,47 @@
+From c53f7cd03881092d5a61505d23ab8f920b7faf12 Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Fri, 11 Dec 2020 23:46:23 +0100
+Subject: [PATCH] alsactl: Fix race at creating a lock file
+
+A race at creating a lock file in state_lock() was discovered
+recently: namely, between the first open(O_RDWR) and the second
+open(O_RDWR|O_CREAT|O_EXCL) calls, another alsactl invocation may
+already create a lock file, then the second open() will return EEXIST,
+which isn't handled properly and treated as a fatal error.
+
+In this patch, we check EEXIST case and try again open() with O_RDWR.
+This must succeed usually, and if it fails, handle finally as the
+fatal error.
+
+BugLink: https://bugzilla.opensuse.org/show_bug.cgi?id=1179904
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ alsactl/lock.c | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/alsactl/lock.c b/alsactl/lock.c
+index 05f6e4d2a102..5b4746231996 100644
+--- a/alsactl/lock.c
++++ b/alsactl/lock.c
+@@ -63,10 +63,15 @@ static int state_lock_(const char *file, int lock, int timeout, int _fd)
+ 			if (fd < 0) {
+ 				if (errno == EBUSY || errno == EAGAIN) {
+ 					sleep(1);
+-				} else {
+-					err = -errno;
+-					goto out;
++					continue;
+ 				}
++				if (errno == EEXIST) {
++					fd = open(nfile, O_RDWR);
++					if (fd >= 0)
++						break;
++				}
++				err = -errno;
++				goto out;
+ 			}
+ 		}
+ 	}
+-- 
+2.26.2
+

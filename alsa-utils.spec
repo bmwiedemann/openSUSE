@@ -29,6 +29,9 @@ Source:         ftp://ftp.alsa-project.org/pub/utils/alsa-utils-%{version}.tar.b
 Source1:        01beep.conf
 Source2:        sound-extra.service
 Source5:        load-sound-modules.sh
+Patch10:        0010-alsactl-Fix-double-decrease-of-lock-timeout.patch
+Patch11:        0011-alsactl-Fix-race-at-creating-a-lock-file.patch
+Patch12:        0012-alsactl-Remove-asound.state-file-check-from-alsa-res.patch
 Patch101:       alsa-utils-configure-version-revert.patch
 BuildRequires:  alsa-devel
 %ifarch %ix86 x86_64 %arm aarch64 ppc64le riscv64
@@ -71,6 +74,9 @@ and test audio before and after PM state changes.
 
 %prep
 %setup -q
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
 %if 0%{?do_autoreconf}
 %patch101 -p1
 # fix stupid automake's automatic action

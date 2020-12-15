@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 11 23:52:24 CET 2020 - tiwai@suse.de
+
+- Fix alsactl restore behavior during locking (boo#1179904):
+  0010-alsactl-Fix-double-decrease-of-lock-timeout.patch
+  0011-alsactl-Fix-race-at-creating-a-lock-file.patch
+- Remove unnecessary condition for alsa-restore.service
+  0012-alsactl-Remove-asound.state-file-check-from-alsa-res.patch
+- Fix dependency in sound-extra.service
+
+-------------------------------------------------------------------
 Wed Oct 21 13:01:26 CEST 2020 - tiwai@suse.de
 
 - Update to alsa-utils 1.2.3:
