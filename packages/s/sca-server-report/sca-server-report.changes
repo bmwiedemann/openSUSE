@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Nov 12 15:29:10 UTC 2020 - jason.record@suse.com
+
+- Additional to version 1.0.1
+  + Updated the man pages with -r
+  + -k is retained for compatibility, but keeping the archive is default
+  + Fixed service pack version when GA
+  + Print actual hostname instead of localhost with -s
+  + scatool trys to run README file (bsc#1178528)
+
+-------------------------------------------------------------------
+Fri Nov  6 17:14:48 UTC 2020 - jason.record@suse.com
+
+- Additions to version 1.0.1
+  + Updated man pages for scatool(8) and scatool.conf(5)
+  + Removed CONSOLE_MODE from scatool.conf
+  + should support archive or server argument and not require -a (bsc#1178229)
+  + scatool copies remote scc_* supportconfigs (bsc#1178151)
+  + Exits gracefully when attempting to process damaged files (bsc#1178152)
+  + scatool correctly cleans up and saves archives (bsc#1178094)
+
+-------------------------------------------------------------------
+Sat Oct 24 17:19:11 UTC 2020 - jason.record@suse.com
+
+- Additions to version 1.0.1
+  + Arg with / treated as files, not remote servers (bsc#1178099)
+  + Optimized tar ball extraction (bsc#1178093)
+  + Added /etc/os-release support (bsc#1178092)
+  + scatool correctly process -s for local server (bsc#1178088)
+  + Fixed progress bar timing (bsc#1178086)
+  + Fixed scatool fails with no module named readline (bsc#1177249)
+  + If run against path '.' use cwd name (issue#1)
+  + Added support for xz compression (bsc#1155181)
+
+-------------------------------------------------------------------
 Mon Jan 22 21:58:14 UTC 2018 - jason.record@suse.com
 
 - Fixed pattern runtime error divide by zero (bsc#1077110)

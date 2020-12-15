@@ -23,4 +23,12 @@
     <comment>Fixed pattern runtime error divide by zero (bsc#1077110) (forwarded request 568429 from jrecord)</comment>
     <requestid>568430</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>20bd15b1d2916dca4c98dd09bab18e22</srcmd5>
+    <version>1.0.1</version>
+    <time>1608040293</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>855956</requestid>
+  </revision>
 </revisionlist>
