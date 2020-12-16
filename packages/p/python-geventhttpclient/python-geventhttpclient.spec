@@ -25,14 +25,19 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/gwik/geventhttpclient
 Source:         https://files.pythonhosted.org/packages/source/g/geventhttpclient/geventhttpclient-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM remove_mock.patch gh#gwik/geventhttpclient#135 mcepl@suse.com
+# remove dependency on the external module mock
+Patch0:         remove_mock.patch
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module dpkt}
 BuildRequires:  %{python_module gevent}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+%if 0%{?suse_version} <= 1500
+BuildRequires:  python-mock
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-certifi
@@ -52,7 +57,7 @@ generally, it is designed for pulling from REST APIs and streaming
 APIs like Twitter's.
 
 %prep
-%setup -q -n geventhttpclient-%{version}
+%autosetup -p1 -n geventhttpclient-%{version}
 
 %build
 %python_build

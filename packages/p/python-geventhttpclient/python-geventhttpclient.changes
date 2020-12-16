@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec 14 00:36:02 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix condition around BuildRequirement
+
+-------------------------------------------------------------------
+Sun Dec 13 20:26:16 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- We don't need to break Python 2.7
+
+-------------------------------------------------------------------
+Fri Dec 11 23:08:43 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add remove_mock.patch to remove dependency on the external mock
+  package (gh#gwik/geventhttpclient#135).
+
+-------------------------------------------------------------------
 Sat Aug  1 05:08:20 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove gevent-mark-tests.patch and LICENSE-MIT that are
