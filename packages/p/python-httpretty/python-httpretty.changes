@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 14 15:44:23 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 1.0.3
+  * Fix compatibility with urllib3>=1.26. #410 
+
+-------------------------------------------------------------------
 Sun Aug 16 11:36:11 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Replace nose with nose2

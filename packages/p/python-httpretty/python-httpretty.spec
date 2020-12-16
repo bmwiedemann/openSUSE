@@ -1,7 +1,7 @@
 #
 # spec file for package python-httpretty
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-httpretty
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        HTTP client mocking tool for Python
 License:        MIT
