@@ -18,7 +18,6 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-%define oldpython python
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -28,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-urllib3%{psuffix}
-Version:        1.25.10
+Version:        1.26.2
 Release:        0
 Summary:        HTTP library with thread-safe connection pooling, file post, and more
 License:        MIT
@@ -37,6 +36,9 @@ URL:            https://urllib3.readthedocs.org/
 Source:         https://files.pythonhosted.org/packages/source/u/urllib3/urllib3-%{version}.tar.gz
 # Wrapper for ssl to unbundle ssl_match_hostname
 Source1:        ssl_match_hostname_py3.py
+# PATCH-FIX-UPSTREAM remove_mock.patch gh#urllib3/urllib3#2108 mcepl@suse.com
+# remove dependency on the external module mock
+Patch0:         remove_mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
@@ -46,29 +48,29 @@ Requires:       ca-certificates-mozilla
 Requires:       python-certifi
 Requires:       python-cryptography >= 1.3.4
 Requires:       python-idna >= 2.0.0
-Requires:       python-pyOpenSSL
+Requires:       python-pyOpenSSL >= 0.14
 Requires:       python-six >= 1.12.0
+Recommends:     python-PySocks >= 1.5.6
+Recommends:     python-brotlipy >= 0.6.0
 BuildArch:      noarch
-# for SSL module on older distros
-%if 0%{?suse_version} < 1500
-BuildRequires:  %{oldpython}
-%endif
 %if %{with test}
-BuildRequires:  %{python_module PySocks}
+BuildRequires:  %{python_module PySocks >= 1.5.6}
 BuildRequires:  %{python_module brotlipy >= 0.6.0}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module cryptography >= 1.3.4}
+BuildRequires:  %{python_module dateutil}
+BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module idna >= 2.0.0}
 BuildRequires:  %{python_module mock >= 1.3.0}
 BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pytest-freezegun}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six >= 1.12.0}
-BuildRequires:  %{python_module tornado < 6}
+BuildRequires:  %{python_module python-dateutil}
+BuildRequires:  %{python_module tornado >= 6}
 BuildRequires:  %{python_module trustme >= 0.5.3}
 BuildRequires:  %{python_module urllib3 >= %{version}}
 %endif
-Recommends:     python-PySocks >= 1.5.6
-Recommends:     python-brotlipy >= 0.6.0
 %python_subpackages
 
 %description
@@ -88,7 +90,8 @@ Highlights
   Requests which is also powered by urllib3.
 
 %prep
-%setup -q -n urllib3-%{version}
+%autosetup -p1 -n urllib3-%{version}
+
 find . -type f -exec chmod a-x '{}' \;
 find . -name __pycache__ -type d -exec rm -fr {} +
 
@@ -128,18 +131,13 @@ ln -sf %{python3_sitelib}/__pycache__/six.cpython-%{python3_version_nodots}.pyc 
 
 %if %{with test}
 %check
-skiplist='not test_select_interrupt_exception and not test_selector_error and not timeout and not test_request_host_header_ignores_fqdn_dot and not test_dotted_fqdn and not TestImportWithoutSSL and not test_ssl_failed_fingerprint_verification'
-case $(uname -m) in
-ppc*)
-skiplist="$skiplist and not test_select_timing and not test_select_multiple_interrupts_with_event and not test_interrupt_wait_for_read_with_event and not test_select_interrupt_with_event";;
-esac
-# the certificate validation is much stricter in new openssl so skip
-# tests which would not validate it
-skiplist="$skiplist and not test_client_no_intermediate"
-
-export PYTHONDONTWRITEBYTECODE=1
-export LANG="en_US.UTF8"
-%pytest -k "${skiplist}"
+# still broken with new ssl
+skiplist='test_import_urllib3'
+# skip some randomly failing tests (mostly on i586, but sometimes they fail on other architectures)
+skiplist="$skiplist or test_ssl_read_timeout or test_ssl_failed_fingerprint_verification or test_ssl_custom_validation_failure_terminates"
+# gh#urllib3/urllib3#2109
+skiplist="$skiplist or test_timeout_errors_cause_retries"
+%pytest -k "not (${skiplist})"
 %endif
 
 %if ! %{with test}
