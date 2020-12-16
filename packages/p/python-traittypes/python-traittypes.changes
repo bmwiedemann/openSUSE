@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 15 15:21:19 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix BuildRequire of python-xarray for all python3 flavors
+  gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Thu Jul 16 09:00:34 UTC 2020 - pgajdos@suse.com
 
 - pytest instead of unittest, upstream prefered solution

@@ -39,7 +39,7 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module traitlets >= 4.2.2}
-BuildRequires:  python3-xarray
+BuildRequires:  %{python_module xarray}
 # /SECTION
 %python_subpackages
 
