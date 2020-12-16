@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Dec 14 00:45:00 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix condition around BuildRequirement
+
+-------------------------------------------------------------------
+Sun Dec 13 20:54:48 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- We don't need to break Python 2.7
+
+-------------------------------------------------------------------
+Mon Dec  7 07:45:39 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add remove_external_pkgs.patch to remove use of external
+  packages (gh#paver/paver#206).
+  Remove remove_nose.patch, because it is merged into that patch
+  as well.
+
+-------------------------------------------------------------------
+Sat Dec  5 23:00:15 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add remove_nose.patch to remove dependency on nose.
+
+-------------------------------------------------------------------
 Fri Aug 23 20:18:54 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim bias and filler wording from description.

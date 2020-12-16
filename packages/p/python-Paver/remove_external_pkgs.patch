@@ -1,0 +1,274 @@
+--- a/pavement.py
++++ b/pavement.py
+@@ -10,7 +10,7 @@ from paver.setuputils import setup
+ options = environment.options
+ 
+ setup(**setup_meta)
+-    
++
+ options(
+     minilib=Bunch(
+         extra_files=['doctools', 'virtual'],
+@@ -22,7 +22,7 @@ options(
+         sourcedir="source"
+     ),
+     virtualenv=Bunch(
+-        packages_to_install=["nose", "Sphinx>=0.6b1", "docutils", "virtualenv", "six"],
++        packages_to_install=["Sphinx>=0.6b1", "docutils", "virtualenv", "six"],
+         install_paver=False,
+         script_name='bootstrap.py',
+         paver_command_line=None,
+@@ -36,12 +36,12 @@ options(
+     )
+ )
+ 
+-# not only does paver bootstrap itself, but it should work even with just 
++# not only does paver bootstrap itself, but it should work even with just
+ # distutils
+ if paver.setuputils.has_setuptools:
+     old_sdist = "setuptools.command.sdist"
+     options.setup.update(dict(
+-        test_suite='nose.collector',
++        test_suite='paver.tests',
+         zip_safe=False,
+         entry_points="""
+ [console_scripts]
+@@ -64,7 +64,7 @@ if paver.doctools.has_sphinx:
+         destdir = path("paver") / "docs"
+         destdir.rmtree_p()
+         builtdocs.move(destdir)
+-    
++
+     @task
+     @needs('html', "minilib", "generate_setup", old_sdist)
+     def sdist():
+@@ -87,7 +87,7 @@ if paver.virtual.has_virtualenv:
+                               """import paver.command; paver.command.main()', """
+                               """'develop'])""",
+                               dest_dir=options.virtualenv.dest_dir)
+-    
++
+ @task
+ def clean():
+     """Cleans up this paver directory. Removes the virtualenv traces and
+@@ -96,7 +96,7 @@ def clean():
+     path("bin").rmtree_p()
+     path("lib").rmtree_p()
+     path(".Python").remove_p()
+-    
++
+ @task
+ @needs("uncog")
+ @consume_args
+--- a/paver/release.py
++++ b/paver/release.py
+@@ -8,9 +8,9 @@ setup_meta=Bunch(
+     version=VERSION,
+     description='Easy build, distribution and deployment scripting',
+     long_description="""Paver is a Python-based build/distribution/deployment scripting tool along the
+-lines of Make or Rake. What makes Paver unique is its integration with 
+-commonly used Python libraries. Common tasks that were easy before remain 
+-easy. More importantly, dealing with *your* applications specific needs and 
++lines of Make or Rake. What makes Paver unique is its integration with
++commonly used Python libraries. Common tasks that were easy before remain
++easy. More importantly, dealing with *your* applications specific needs and
+ requirements is also easy.""",
+     author='Kevin Dangoor',
+     author_email='dangoor+paver@gmail.com',
+@@ -19,7 +19,7 @@ requirements is also easy.""",
+     url='https://github.com/paver/paver',
+     packages=['paver', 'paver.deps'],
+     install_requires=['six'],
+-    tests_require=['nose', 'virtualenv', 'mock', 'cogapp'],
++    tests_require=['virtualenv', 'cogapp'],
+     classifiers=[
+         "Development Status :: 5 - Production/Stable",
+         "Intended Audience :: Developers",
+--- a/paver/tests/test_doctools.py
++++ b/paver/tests/test_doctools.py
+@@ -1,6 +1,6 @@
+ import sys
+ 
+-from nose.plugins.skip import SkipTest
++from unittest import SkipTest
+ from six import print_
+ 
+ from paver.easy import *
+@@ -69,7 +69,7 @@ Second one.
+         assert str(e) == """section 'foo' redefined
+ (in file 'None', first section at line 2, second at line 6)""", \
+         "error was: %s" % (str(e))
+-        
++
+ 
+ def test_endmarker_without_start():
+     myfile = """
+@@ -102,7 +102,7 @@ def test_whole_file():
+     Hi there.
+     Yo.
+ """, "All was: %s" % (f.all)
+-    
++
+ def test_bad_section():
+     f = doctools.SectionedFile(from_string="")
+     try:
+@@ -112,7 +112,7 @@ def test_bad_section():
+         e = sys.exc_info()[1]
+         assert str(e) == "No section 'foo' in file 'None'", \
+                "Error: '%s'" % (str(e))
+-    
++
+ def test_include_lookup():
+     basedir = path(__file__).dirname() / "data"
+     include = doctools.Includer(basedir, include_markers={})
+@@ -130,7 +130,7 @@ print "Hi!"
+     assert second == """# section 'second.inner' in file 't2.py'
+ print sys.path
+ """, "Second was '%s'" % (second)
+-    
++
+ def test_cogging():
+     if not paver.doctools.has_cog:
+         raise SkipTest("Cog must be installed for this test")
+@@ -153,7 +153,7 @@ def test_cogging():
+     with open(textfile) as f:
+         data = f.read()
+     assert "print sys.path" not in data
+-    
++
+ def test_cogging_with_markers_removed():
+     if not paver.doctools.has_cog:
+         raise SkipTest("Cog must be installed for this test")
+--- a/paver/tests/test_git.py
++++ b/paver/tests/test_git.py
+@@ -1,36 +1,44 @@
+-from mock import patch
++try:
++    from unittest.mock import patch
++except ImportError:
++    from mock import patch
+ from paver import git
+ 
+ import os
+ 
++
+ @patch('paver.git.sh')
+ def test_simple_clone(sh):
+     git.clone("git://foo/foo.git", "bar")
+     assert sh.called
+     assert sh.call_args[0][0] == "git clone git://foo/foo.git bar"
+ 
++
+ @patch('paver.git.sh')
+ def test_simple_pull(sh):
+     git.pull("repo_path", "origin_remote", "master_branch")
+     assert sh.called
+     assert sh.call_args[0][0] == "cd repo_path; git pull origin_remote master_branch"
+ 
++
+ @patch('paver.git.sh')
+ def test_simple_branch_checkout(sh):
+     git.branch_checkout("my_branch", path="repo_path")
+     assert sh.called
+     assert sh.call_args[0][0] == "cd repo_path; git checkout my_branch"
+-    
++
++
+ @patch('paver.git.sh')
+ def test_branch_chekout_cwd(sh):
+     """it should get the CWD and assume that is the repo"""
+-    
++
+     git.branch_checkout("my_branch")
+     assert sh.called
+     assert sh.call_args[0][0] == "cd %(current_path)s; git checkout my_branch" % dict(
+         current_path=os.getcwd()
+     )
+-    
++
++
+ @patch('paver.git.sh')
+ def test_branch_list_correctly_parses_git_output(sh):
+     output = git.branch_list(path="repo_path", __override__="""
+@@ -38,27 +46,29 @@ def test_branch_list_correctly_parses_gi
+   master
+   virtualenv_in_folder
+     """)
+-    
++
+     assert output == ("git_support", ["git_support", "master", "virtualenv_in_folder"])
+-    
++
++
+ @patch('paver.git.sh')
+ def test_branch_list_correctly_parses_remote_branch_output(sh):
+-    output = git.branch_list(path="repo_path", 
++    output = git.branch_list(path="repo_path",
+         remote_branches_only = True,
+         __override__="""
+     github/gh-pages
+     github/git_support
+     github/master""")
+-    
++
+     assert output == ('',
+         ["github/gh-pages", "github/git_support", "github/master"])
+ 
++
+ @patch('paver.git.sh')
+ def test_branch_track_remote(sh):
+     git.branch_track_remote("origin/alpha_two", path="repo_path")
+-    
++
+     assert sh.called
+     assert sh.call_args[0][0] == "cd %(current_path)s; git checkout -b alpha_two --track origin/alpha_two" % dict(
+         current_path="repo_path"
+     )
+-     
++
+--- a/paver/tests/test_hg.py
++++ b/paver/tests/test_hg.py
+@@ -1,4 +1,7 @@
+-from mock import patch
++try:
++    from unittest.mock import patch
++except ImportError:
++    from mock import patch
+ from paver import hg
+ 
+ 
+@@ -79,4 +82,3 @@ def test_branches_with_closed(sh):
+ 
+     assert current_branch == 'tag1'
+     assert branches == ['branch1', 'branch2']
+-
+--- a/paver/tests/test_shell.py
++++ b/paver/tests/test_shell.py
+@@ -1,6 +1,9 @@
+ import sys
+ from six import b
+-from mock import patch, Mock
++try:
++    from unittest.mock import patch
++except ImportError:
++    from mock import patch
+ from paver import easy
+ from subprocess import PIPE, STDOUT
+ 
+--- a/paver/tests/test_svn.py
++++ b/paver/tests/test_svn.py
+@@ -1,4 +1,7 @@
+-from mock import patch
++try:
++    from unittest.mock import patch
++except ImportError:
++    from mock import patch
+ from paver import svn
+ 
+ @patch('paver.svn.sh')
+@@ -59,4 +62,4 @@ Last Changed Date: 2008-04-10 11:44:52 -
+     assert output.path == "dojotoolkit/dojo"
+     assert output.url == "http://svn.dojotoolkit.org/src/dojo/trunk"
+     assert output.last_changed_date == "2008-04-10 11:44:52 -0400 (Thu, 10 Apr 2008)"
+-    
++
