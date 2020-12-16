@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# upstream dropped python 2
-%define skip_python2 1
+%{?!python_module:%define python_module() python3-%{**}}
+# depending on openstack packages: stay on primary python interpreter only
+%define pythons python3
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -%{flavor}
