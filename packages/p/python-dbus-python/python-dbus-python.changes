@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec 11 17:44:15 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Support builds with more than one python3 flavor
+  gh#openSUSE/python-rpm-macros#66
+- Remove shebang from examples (rpmlint warning, is in common doc)
+- Clean duplicate python flavor variables for configure
+- Update the provides/obsoletes tags for old-style dbus-1-$python 
+
+-------------------------------------------------------------------
 Wed Jan  8 01:19:38 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Version update to version 1.2.14: 

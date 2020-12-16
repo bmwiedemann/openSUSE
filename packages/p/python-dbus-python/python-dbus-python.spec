@@ -1,7 +1,7 @@
 #
 # spec file for package python-dbus-python
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,15 +39,20 @@ BuildRequires:  pkgconfig(dbus-glib-1)
 Requires:       python-gobject
 Requires:       python-xml
 %requires_ge    dbus-1
-%ifpython2
+Provides:       dbus-1-%{python_flavor} = %{version}
+Obsoletes:      dbus-1-%{python_flavor} < %{version}
+# expand separate from Provides/Obsoletes tags, because these are later duplicated by the python_subpackages macro
+%define python_add_provides %{python_provides}
+%if "%{?python_provides}" != ""
+# additional provider for python2 --> python and python38 --> python3
+Provides:       dbus-1-%{python_add_provides} = %{version}
+Obsoletes:      dbus-1-%{python_add_provides} < %{version}
+%else
+# shim for distros with python2 and where python_provides is not yet available
+%if "%{python_flavor}" == "python2"
 Provides:       dbus-1-python = %{version}
-Provides:       dbus-1-python2 = %{version}
 Obsoletes:      dbus-1-python < %{version}
-Obsoletes:      dbus-1-python2 < %{version}
 %endif
-%ifpython3
-Provides:       dbus-1-python3 = %{version}
-Obsoletes:      dbus-1-python3 < %{version}
 %endif
 %python_subpackages
 
@@ -62,15 +67,18 @@ Requires:       %{name}-common-devel = %{version}
 %requires_ge    dbus-1
 %requires_ge    dbus-1-devel
 Requires:       python-devel
-%ifpython2
+Provides:       dbus-1-%{python_flavor}-devel = %{version}
+Obsoletes:      dbus-1-%{python_flavor}-devel < %{version}
+%if "%{?python_provides}" != ""
+# additional provider for python2 --> python and python38 --> python3
+Provides:       dbus-1-%{python_add_provides}-devel = %{version}
+Obsoletes:      dbus-1-%{python_add_provides}-devel < %{version}
+%else
+# shim for distros with python2 and where python_provides is not yet available
+%if "%{python_flavor}" == "python2"
 Provides:       dbus-1-python-devel = %{version}
-Provides:       dbus-1-python2-devel = %{version}
 Obsoletes:      dbus-1-python-devel < %{version}
-Obsoletes:      dbus-1-python2-devel < %{version}
 %endif
-%ifpython3
-Provides:       dbus-1-python3-devel = %{version}
-Obsoletes:      dbus-1-python3-devel < %{version}
 %endif
 
 %description devel
@@ -97,6 +105,8 @@ the Python2 and Python3 versions of the bindings.
 %setup -q -n dbus-python-%{version}
 # Remove Makefile* (fix rpmlint warning "makefile-junk")
 rm -f examples/Makefile*
+# Remove shebang from examples
+sed -i '1 {\|^#!/usr/bin/env| d}' examples/*.py
 
 %build
 export CFLAGS="%{optflags} -fstack-protector -fno-strict-aliasing -fPIC"
@@ -105,9 +115,7 @@ export CFLAGS="%{optflags} -fstack-protector -fno-strict-aliasing -fPIC"
 %{python_expand mkdir build_%{$python_bin_suffix}
 pushd build_%{$python_bin_suffix}
 
-export PYTHON=$python
-export pythondir=%{$python_sitearch}
-%configure PYTHON="/usr/bin/$python"
+%configure PYTHON=%{_bindir}/$python
 make %{?_smp_mflags}
 
 popd
@@ -124,29 +132,27 @@ popd
 # Remove libtool config files
 rm -f %{buildroot}%{$python_sitearch}/*.la
 
-#avoid conflicts with py2
-mv %{buildroot}%{_includedir}/dbus-1.0/dbus/dbus-python.h \
+#avoid conflicts with multiple Python flavors
+cp %{buildroot}%{_includedir}/dbus-1.0/dbus/dbus-python.h \
    %{buildroot}%{_includedir}/dbus-1.0/dbus/dbus-python-%{$python_bin_suffix}.h
-mv %{buildroot}%{_libdir}/pkgconfig/dbus-python.pc \
+cp %{buildroot}%{_libdir}/pkgconfig/dbus-python.pc \
    %{buildroot}%{_libdir}/pkgconfig/dbus-python-%{$python_bin_suffix}.pc
 }
 
-%if 0%{?have_python2} && 0%{?have_python3}
-# Check to make sure Python2 and Python3 versions of the header file and pkgconfig file are the same
-if [ ! cmp --silent %{buildroot}%{_includedir}/dbus-1.0/dbus/dbus-python-%{python2_bin_suffix}.h  %{buildroot}%{_includedir}/dbus-1.0/dbus/dbus-python-%{python3_bin_suffix}.h ] ; then
-    echo "pkgconfig files are different between python 2 and python 3"
+%{python_expand # Check to make sure all Python flavor versions of the header file and pkgconfig file are the same
+if [ ! cmp --silent %{buildroot}%{_includedir}/dbus-1.0/dbus/dbus-python{,-%{$python_bin_suffix}}.h ] ; then
+    echo "pkgconfig files are different between python flavors"
     exit 1
 fi
-if [ ! cmp --silent %{buildroot}%{_libdir}/pkgconfig/dbus-python-%{python2_bin_suffix}.pc  %{buildroot}%{_libdir}/pkgconfig/dbus-python-%{python3_bin_suffix}.pc ] ; then
-    echo "pkgconfig files are different between python 2 and python 3"
+if [ ! cmp --silent %{buildroot}%{_libdir}/pkgconfig/dbus-python{,-%{$python_bin_suffix}}.pc ] ; then
+    echo "pkgconfig files are different between python flavors"
     exit 1
 fi
-%endif
+}
 
-%{python_expand mv %{buildroot}%{_includedir}/dbus-1.0/dbus/dbus-python-%{$python_bin_suffix}.h \
-   %{buildroot}%{_includedir}/dbus-1.0/dbus/dbus-python.h
-mv %{buildroot}%{_libdir}/pkgconfig/dbus-python-%{$python_bin_suffix}.pc \
-   %{buildroot}%{_libdir}/pkgconfig/dbus-python.pc
+%{python_expand # link all to the same file
+mv %{buildroot}%{_includedir}/dbus-1.0/dbus/dbus-python{-%{$python_bin_suffix},}.h
+mv %{buildroot}%{_libdir}/pkgconfig/dbus-python{-%{$python_bin_suffix},}.pc
 
 ln -s %{_includedir}/dbus-1.0/dbus/dbus-python.h \
       %{buildroot}%{_includedir}/dbus-1.0/dbus/dbus-python-%{$python_bin_suffix}.h
