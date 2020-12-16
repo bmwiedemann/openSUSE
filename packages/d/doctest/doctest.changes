@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec 15 19:25:49 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.2
+  Closed issues:
+  * DOCTEST_CHECK_THROWS_WITH_AS fails to work with dependant
+    exception type #447
+  * log contexts for failures in JUnit reporter #441
+  * Test runner thread initialization #435
+  * CHECK_EQ with enum values #276
+  Merged pull requests:
+  * Add MAIN_PROJECT check for test option #445
+  * log contexts for failures in JUnit reporter #442
+
+-------------------------------------------------------------------
 Wed Nov  4 18:51:51 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.1
