@@ -1,7 +1,7 @@
 #
 # spec file for package icingaweb2-module-ipl
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define basedir	%{_datadir}/icingaweb2
 %define module_name ipl
 Name:           icingaweb2-module-%{module_name}
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        Business Processes Icinga Web 2 module
 License:        MIT
@@ -45,7 +45,9 @@ in a tree or list overview.
 %install
 mkdir -p %{buildroot}%{basedir}/modules/%{module_name}
 mkdir -p %{buildroot}%{basedir}/modules/%{module_name}/vendor
+mkdir -p %{buildroot}%{basedir}/modules/%{module_name}/asset
 cp -prv vendor %{buildroot}%{basedir}/modules/%{module_name}
+cp -prv asset %{buildroot}%{basedir}/modules/%{module_name}
 cp -pv *.md *.php *.info %{buildroot}%{basedir}/modules/%{module_name}
 
 %files
