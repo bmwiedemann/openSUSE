@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec 12 02:02:13 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.2.6:
+  * Fix bug in SMB1 store file implmentation which generates
+    SMB_COM_WRITE_ANDX packets larger than the allowed max buffer
+    size (gh#miketeo/pysmb#175).
+
+-------------------------------------------------------------------
 Sun Oct 25 07:57:42 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.2.5:

@@ -17,7 +17,7 @@
 
 
 Name:           python-pysmb
-Version:        1.2.5
+Version:        1.2.6
 Release:        0
 Summary:        SMB/CIFS library to support file sharing between Windows and Linux machines
 License:        Zlib
