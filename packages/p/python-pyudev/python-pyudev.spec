@@ -28,6 +28,8 @@ Source0:        https://files.pythonhosted.org/packages/source/p/pyudev/pyudev-%
 # PATCH-FIX-UPSTREAM pytest_register_mark.patch gh#pyudev/pyudev#404 mcepl@suse.com
 # Add missing mark registration and register and use another mark
 Patch0:         pytest_register_mark.patch
+# PATCH-FEATURE_UPSTREAM remove_mock.patch gh#pyudev/pyudev#409
+Patch1:         remove_mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
@@ -41,11 +43,12 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pylint}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module yapf}
+%if 0%{?suse_version} < 1550
+BuildRequires:  python-mock
+%endif
 %ifpython2
 # pyudev was last used in KDE:Unstable:Playground (pyudev-0.8)
 Provides:       pyudev = %{version}
