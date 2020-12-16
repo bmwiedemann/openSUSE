@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec 15 19:07:03 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add missing patches from Fedora package
+  (https://src.fedoraproject.org/rpms/python-nss/tree/master):
+  - 0001-Rename-DSA-RSA-PublicKey-to-Py-DSA-RSA-PublicKey.patch
+    (bmo#1474274)
+  - sphinx.patch
+- Add generated documentation to -doc subpackage.
+
+-------------------------------------------------------------------
 Fri Mar  1 20:01:07 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Enable tests.

@@ -28,4 +28,18 @@
     <comment>- Enable tests.</comment>
     <requestid>680645</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>f8bc67b36e2d4d6b777e442b138e8555</srcmd5>
+    <version>1.0.1</version>
+    <time>1608112891</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing patches from Fedora package
+  (https://src.fedoraproject.org/rpms/python-nss/tree/master):
+  - 0001-Rename-DSA-RSA-PublicKey-to-Py-DSA-RSA-PublicKey.patch
+    (bmo#1474274)
+  - sphinx.patch
+- Add generated documentation to -doc subpackage.
+</comment>
+    <requestid>856065</requestid>
+  </revision>
 </revisionlist>
