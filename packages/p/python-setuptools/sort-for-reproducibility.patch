@@ -1,8 +1,6 @@
-Index: setuptools-41.4.0/setuptools/command/easy_install.py
-===================================================================
---- setuptools-41.4.0.orig/setuptools/command/easy_install.py
-+++ setuptools-41.4.0/setuptools/command/easy_install.py
-@@ -417,7 +417,7 @@ class easy_install(Command):
+--- a/setuptools/command/easy_install.py
++++ b/setuptools/command/easy_install.py
+@@ -423,7 +423,7 @@ class easy_install(Command):
              for spec in self.args:
                  self.easy_install(spec, not self.no_deps)
              if self.record:
@@ -11,10 +9,8 @@ Index: setuptools-41.4.0/setuptools/command/easy_install.py
                  if self.root:  # strip any package prefix
                      root_len = len(self.root)
                      for counter in range(len(outputs)):
-Index: setuptools-41.4.0/setuptools/command/egg_info.py
-===================================================================
---- setuptools-41.4.0.orig/setuptools/command/egg_info.py
-+++ setuptools-41.4.0/setuptools/command/egg_info.py
+--- a/setuptools/command/egg_info.py
++++ b/setuptools/command/egg_info.py
 @@ -638,7 +638,7 @@ def warn_depends_obsolete(cmd, basename,
  def _write_requirements(stream, reqs):
      lines = yield_lines(reqs or ())
@@ -24,10 +20,8 @@ Index: setuptools-41.4.0/setuptools/command/egg_info.py
      stream.writelines(lines)
  
  
-Index: setuptools-41.4.0/setuptools/dist.py
-===================================================================
---- setuptools-41.4.0.orig/setuptools/dist.py
-+++ setuptools-41.4.0/setuptools/dist.py
+--- a/setuptools/dist.py
++++ b/setuptools/dist.py
 @@ -195,7 +195,7 @@ def write_pkg_file(self, file):
              self.long_description_content_type
          )
@@ -37,10 +31,8 @@ Index: setuptools-41.4.0/setuptools/dist.py
              write_field('Provides-Extra', extra)
  
  
-Index: setuptools-41.4.0/setuptools/tests/test_egg_info.py
-===================================================================
---- setuptools-41.4.0.orig/setuptools/tests/test_egg_info.py
-+++ setuptools-41.4.0/setuptools/tests/test_egg_info.py
+--- a/setuptools/tests/test_egg_info.py
++++ b/setuptools/tests/test_egg_info.py
 @@ -291,8 +291,8 @@ class TestEggInfo:
              wheel>=0.5
              pytest

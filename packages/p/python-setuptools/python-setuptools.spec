@@ -44,6 +44,9 @@ Source:         https://files.pythonhosted.org/packages/source/s/setuptools/setu
 Source3:        testdata.tar.gz
 Patch0:         sort-for-reproducibility.patch
 Patch1:         importlib.patch
+# PATCH-FIX-UPSTREAM remove_mock.patch bsc#[0-9]+ mcepl@suse.com
+# we don't need stinking mock
+Patch2:         remove_mock.patch
 BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module ordered-set}
 BuildRequires:  %{python_module packaging}
@@ -69,7 +72,6 @@ Requires:       python
 %if %{with test}
 BuildRequires:  %{python_module Paver}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-fixture-config}
 BuildRequires:  %{python_module pytest-virtualenv}
@@ -99,9 +101,10 @@ especially ones that have dependencies on other packages.
 
 %prep
 %setup -q -n setuptools-%{version}
+
 tar -xzvf %{SOURCE3}
-%patch0 -p1
-%patch1 -p1
+%autopatch -p1
+
 find . -type f -name "*.orig" -delete
 
 # fix rpmlint spurious-executable-perm

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  8 02:15:26 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add remove_mock.patch to remove dependency on the external mock
+  package.
+
+-------------------------------------------------------------------
 Mon Nov 16 14:02:34 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Avoid duplicite wheel name in the generated package, and we actually

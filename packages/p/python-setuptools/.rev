@@ -752,4 +752,13 @@
 </comment>
     <requestid>848902</requestid>
   </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>2773e967c7640282d6e49ac52a0ed8be</srcmd5>
+    <version>44.1.1</version>
+    <time>1608112752</time>
+    <user>dimstar_suse</user>
+    <comment>- Add remove_mock.patch to remove dependency on the external mock
+  package. (forwarded request 855342 from mcepl)</comment>
+    <requestid>855355</requestid>
+  </revision>
 </revisionlist>

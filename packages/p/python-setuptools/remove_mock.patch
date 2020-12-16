@@ -1,0 +1,157 @@
+---
+ pkg_resources/tests/test_markers.py       |    2 +-
+ pkg_resources/tests/test_pkg_resources.py |    5 +----
+ setuptools/tests/__init__.py              |    4 ++++
+ setuptools/tests/test_build_clib.py       |    2 +-
+ setuptools/tests/test_easy_install.py     |    2 +-
+ setuptools/tests/test_msvc.py             |    2 +-
+ setuptools/tests/test_packageindex.py     |    2 +-
+ setuptools/tests/test_register.py         |    5 +----
+ setuptools/tests/test_test.py             |    2 +-
+ setuptools/tests/test_upload.py           |    5 +----
+ 10 files changed, 13 insertions(+), 18 deletions(-)
+
+--- a/pkg_resources/tests/test_markers.py
++++ b/pkg_resources/tests/test_markers.py
+@@ -1,4 +1,4 @@
+-import mock
++from . import mock
+ 
+ from pkg_resources import evaluate_marker
+ 
+--- a/pkg_resources/tests/test_pkg_resources.py
++++ b/pkg_resources/tests/test_pkg_resources.py
+@@ -12,10 +12,7 @@ import stat
+ import distutils.dist
+ import distutils.command.install_egg_info
+ 
+-try:
+-    from unittest import mock
+-except ImportError:
+-    import mock
++from . import mock
+ 
+ from pkg_resources import DistInfoDistribution, Distribution, EggInfoDistribution
+ from setuptools.extern import six
+--- a/setuptools/tests/__init__.py
++++ b/setuptools/tests/__init__.py
+@@ -4,6 +4,10 @@ import pytest
+ 
+ from setuptools.extern.six import PY2, PY3
+ 
++try:
++    import mock
++except ImportError:
++    from unittest import mock
+ 
+ __all__ = [
+   'fail_on_ascii', 'py2_only', 'py3_only'
+--- a/setuptools/tests/test_build_clib.py
++++ b/setuptools/tests/test_build_clib.py
+@@ -1,6 +1,6 @@
+ import pytest
+ 
+-import mock
++from . import mock
+ from distutils.errors import DistutilsSetupError
+ from setuptools.command.build_clib import build_clib
+ from setuptools.dist import Distribution
+--- a/setuptools/tests/test_easy_install.py
++++ b/setuptools/tests/test_easy_install.py
+@@ -14,7 +14,7 @@ import itertools
+ import distutils.errors
+ import io
+ import zipfile
+-import mock
++from . import mock
+ import time
+ 
+ from setuptools.extern import six
+--- a/setuptools/tests/test_msvc.py
++++ b/setuptools/tests/test_msvc.py
+@@ -5,7 +5,7 @@ Tests for msvc support module.
+ import os
+ import contextlib
+ import distutils.errors
+-import mock
++from . import mock
+ 
+ import pytest
+ 
+--- a/setuptools/tests/test_packageindex.py
++++ b/setuptools/tests/test_packageindex.py
+@@ -6,7 +6,7 @@ import distutils.errors
+ 
+ from setuptools.extern import six
+ from setuptools.extern.six.moves import urllib, http_client
+-import mock
++from . import mock
+ import pytest
+ 
+ import pkg_resources
+--- a/setuptools/tests/test_register.py
++++ b/setuptools/tests/test_register.py
+@@ -2,10 +2,7 @@ from setuptools.command.register import
+ from setuptools.dist import Distribution
+ from setuptools.errors import RemovedCommandError
+ 
+-try:
+-    from unittest import mock
+-except ImportError:
+-    import mock
++from . import mock
+ 
+ import pytest
+ 
+--- a/setuptools/tests/test_test.py
++++ b/setuptools/tests/test_test.py
+@@ -2,7 +2,7 @@
+ 
+ from __future__ import unicode_literals
+ 
+-import mock
++from . import mock
+ from distutils import log
+ import os
+ 
+--- a/setuptools/tests/test_upload.py
++++ b/setuptools/tests/test_upload.py
+@@ -2,10 +2,7 @@ from setuptools.command.upload import up
+ from setuptools.dist import Distribution
+ from setuptools.errors import RemovedCommandError
+ 
+-try:
+-    from unittest import mock
+-except ImportError:
+-    import mock
++from . import mock
+ 
+ import pytest
+ 
+--- a/setuptools/tests/test_config.py
++++ b/setuptools/tests/test_config.py
+@@ -5,7 +5,7 @@ import contextlib
+ import pytest
+ 
+ from distutils.errors import DistutilsOptionError, DistutilsFileError
+-from mock import patch
++from setuptools.tests import mock
+ from setuptools.dist import Distribution, _Distribution
+ from setuptools.config import ConfigHandler, read_configuration
+ from setuptools.extern.six.moves import configparser
+@@ -880,7 +880,7 @@ class TestExternalSetters:
+         })
+         return None
+ 
+-    @patch.object(_Distribution, '__init__', autospec=True)
++    @mock.patch.object(_Distribution, '__init__', autospec=True)
+     def test_external_setters(self,  mock_parent_init, tmpdir):
+         mock_parent_init.side_effect = self._fake_distribution_init
+ 
+--- /dev/null
++++ b/pkg_resources/tests/__init__.py
+@@ -0,0 +1,4 @@
++try:
++    import mock
++except ImportError:
++    from unittest import mock
