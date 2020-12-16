@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 19 09:30:13 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 1.18.3
+  * Fix a denial of service vulnerability when decoding Kerberos
+    protocol messages.
+  * Fix a locking issue with the LMDB KDB module which could cause
+    KDC and kadmind processes to lose access to the database.
+  * Fix an assertion failure when libgssapi_krb5 is repeatedly loaded
+    and unloaded while libkrb5support remains loaded.
+
+-------------------------------------------------------------------
 Tue Jul  7 17:38:11 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Don't fail if %{_lto_cflags} is empty
