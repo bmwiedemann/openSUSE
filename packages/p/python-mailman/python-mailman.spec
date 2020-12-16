@@ -26,6 +26,8 @@
 %define mailman_rundir   %{_rundir}/%{mailman_name}
 %define mailman_lockdir  %{_rundir}/lock/%{mailman_name}
 
+%global mailman_services %{mailman_name}.service %{mailman_name}-digest.service %{mailman_name}-digest.timer
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -209,20 +211,20 @@ getent passwd %{mailman_user} >/dev/null || \
     %{_sbindir}/useradd -r -g %{mailman_group} -s /sbin/nologin \
     -c "mailman daemon user" -d %{mailman_homedir} %{mailman_user}
 %{_sbindir}/usermod -g %{mailman_group} %{mailman_user} >/dev/null
-%service_add_pre %{mailman_name}.service
+%service_add_pre %{mailman_services}
 
 %post
 %python_install_alternative master
 %python_install_alternative mailman
 %python_install_alternative runner
 %tmpfiles_create %{_tmpfilesdir}/%{mailman_name}.conf
-%service_add_post %{mailman_name}.service
+%service_add_post %{mailman_services}
 
 %preun
-%service_del_preun %{mailman_name}.service
+%service_del_preun %{mailman_services}
 
 %postun
-%service_del_postun %{mailman_name}.service
+%service_del_postun %{mailman_services}
 %python_uninstall_alternative master
 %python_uninstall_alternative mailman
 %python_uninstall_alternative runner

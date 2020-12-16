@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec 15 09:19:44 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix systemd services
+
+-------------------------------------------------------------------
+Tue Dec 15 08:57:37 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Add missing services and timers to systemd
+
+-------------------------------------------------------------------
 Sat Nov 28 17:49:08 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Update to 3.3.2:

@@ -57,4 +57,14 @@
     <comment></comment>
     <requestid>851640</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>3d1debdb025856258218880aa122a57b</srcmd5>
+    <version>3.3.2</version>
+    <time>1608112836</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix systemd services
+- Add missing services and timers to systemd
+</comment>
+    <requestid>856057</requestid>
+  </revision>
 </revisionlist>
