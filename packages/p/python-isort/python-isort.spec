@@ -93,24 +93,26 @@ chmod -x LICENSE
 ORIGPATH=$PATH
 %{python_expand # install isort and required example projects into custom root
 mkdir isort-test-%{$python_bin_suffix}
-for proj in isort*.whl ./example_shared_isort_profile ./example_isort_formatting_plugin; do
+export PATH="$(pwd)/isort-test-%{$python_bin_suffix}/usr/bin:$ORIGPATH"
+export PYTHONPATH="$(pwd)/isort-test-%{$python_bin_suffix}%{$python_sitelib}"
+export PYTHONDONTWRITEBYTECODE=1
+
+for proj in isort-%{version}-py3-none-any.whl ./example_shared_isort_profile ./example_isort_formatting_plugin; do
   $python -m pip install --verbose \
                          --no-index \
                          --root $(pwd)/isort-test-%{$python_bin_suffix} \
                          --no-deps \
                          --use-pep517 \
+                         --no-cache-dir\
                          --no-build-isolation \
                          --progress-bar off \
                          --disable-pip-version-check \
                          ${proj}
 done
 
-export PATH="$(pwd)/isort-test-%{$python_bin_suffix}/usr/bin:$ORIGPATH"
-export PYTHONPATH="$(pwd)/isort-test-%{$python_bin_suffix}%{$python_sitelib}"
-export PYTHONDONTWRITEBYTECODE=1
 # test_projects_using_isort.py: these tests try to clone from
 # online git repositories.
-# test_settung_combinations.py::test_isort_is_idempotent
+# test_setting_combinations.py::test_isort_is_idempotent
 # is flaky https://github.com/PyCQA/isort/issues/1466
 pytest-%{$python_bin_suffix} -v \
          -W "ignore::UserWarning" \
@@ -118,6 +120,7 @@ pytest-%{$python_bin_suffix} -v \
          --ignore tests/integration/test_projects_using_isort.py \
          -k "not (test_setting_combinations and test_isort_is_idempotent)"
 }
+
 %endif
 
 %if !%{with test}
