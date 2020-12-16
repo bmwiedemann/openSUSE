@@ -1,7 +1,7 @@
 #
 # spec file for package pveclib
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,19 +22,25 @@ Release:        0
 Summary:        Power Vector Library
 License:        Apache-2.0
 
-Url:            https://github.com/open-power-sdk/pveclib
+URL:            https://github.com/open-power-sdk/pveclib
 Source:         https://github.com/open-power-sdk/pveclib/archive/v%{version}.tar.gz
 ExclusiveArch:  ppc64le
-BuildRequires:  glibc-devel doxygen graphviz fdupes
+BuildRequires:  doxygen
+BuildRequires:  fdupes
+BuildRequires:  glibc-devel
+BuildRequires:  graphviz
 
 # Link the tests against the shared library.
-Patch1: test-shared-library.diff
+Patch1:         test-shared-library.diff
+
+# Fix for build error with newer toolchain.
+Patch2:         fix-build-with-newer-toolchain.diff
 
 %description
 See description for libpvec1
 
 %package -n libpvec1
-Summary: Power Vector Library
+Summary:        Power Vector Library
 
 %description -n libpvec1
 Functions leveraging the PowerISA Vector Facilities: Vector Multimedia
@@ -43,8 +49,8 @@ Extension (VMX aka Altivec) and Vector Scalar Extension (VSX).
 This package contains the runtime files for pveclib.
 
 %package -n libpvec-devel
-Summary: Development files for pveclib
-Requires: libpvec1 = %{version}
+Summary:        Development files for pveclib
+Requires:       libpvec1 = %{version}
 
 %description -n libpvec-devel
 This package contains the development files for pveclib.
@@ -97,4 +103,3 @@ mv %{buildroot}/%{_datadir}/licenses/pveclib %{buildroot}/%{_datadir}/licenses/l
 %license LICENSE
 
 %changelog
-
