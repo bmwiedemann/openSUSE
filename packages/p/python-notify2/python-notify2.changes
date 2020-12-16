@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 11 16:00:15 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix Requires of dbus-python so that the macros can work out the
+  correct flavor for multiple python3 flavors
+  gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Mon Dec 10 12:53:58 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix fdupes call

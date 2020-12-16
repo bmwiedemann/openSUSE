@@ -30,11 +30,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-%ifpython3
-Requires:       dbus-1-python3
-%else
-Requires:       dbus-1-python
-%endif
+Requires:       python-dbus-python
 %python_subpackages
 
 %description
@@ -55,6 +51,8 @@ applications.
 
 %files %{python_files}
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/notify2.py*
+%pycache_only %{python_sitelib}/__pycache__/notify2*
+%{python_sitelib}/notify2-%{version}-*info
 
 %changelog
