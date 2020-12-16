@@ -63,6 +63,8 @@ unsorted:
   - HepMC2-devel 
   - Herwig-devel: [x86_64] 
   - Herwig-libs: [x86_64] 
+  - HyperKitty-web 
+  - HyperKitty-web-uwsgi 
   - IccXML 
   - ImageMagick-config-7-upstream 
   - ImageMagick-devel 
@@ -1023,6 +1025,7 @@ unsorted:
   - awesome-freedesktop 
   - awesome-shifty 
   - awesome-vicious 
+  - awkward-devel 
   - aws-cli 
   - aws-efs-utils 
   - aws-sdk-java 
@@ -21110,7 +21113,6 @@ unsorted:
   - python-ktoblzcheck 
   - python-lammps 
   - python-libcomps-doc 
-  - python-lmiwbem 
   - python-logutils-doc 
   - python-logzero-doc 
   - python-lxml-doc 
@@ -21131,6 +21133,7 @@ unsorted:
   - python-nlopt 
   - python-notmuch-doc 
   - python-novaclient-doc 
+  - python-nss-doc 
   - python-octaviaclient-doc 
   - python-onionshare-data 
   - python-openstackclient-doc 
@@ -21573,6 +21576,7 @@ unsorted:
   - python3-avocado-plugins-varianter-yaml-to-mux 
   - python3-avocado-plugins-vt 
   - python3-avro 
+  - python3-awkward 
   - python3-awpa 
   - python3-aws-sam-translator 
   - python3-aws-xray-sdk 
@@ -26692,7 +26696,6 @@ unsorted:
   - system-config-printer-common: [i586] 
   - system-config-printer-common-lang: [i586] 
   - system-config-printer-dbus-service: [i586] 
-  - system-group-kvm 
   - system-group-obsolete 
   - system-user-flatpak: [i586] 
   - system-user-grafana 

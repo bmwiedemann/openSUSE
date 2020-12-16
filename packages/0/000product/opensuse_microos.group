@@ -128,6 +128,7 @@
     <package name="shadow" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="suse-module-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="system-group-hardware" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="system-group-kvm" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="system-user-nobody" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="system-user-root" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="systemd" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->

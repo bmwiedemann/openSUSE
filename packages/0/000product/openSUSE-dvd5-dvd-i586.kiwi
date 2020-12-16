@@ -3556,6 +3556,7 @@
       <repopackage name="syslinux"/>
       <repopackage name="syslog-service"/>
       <repopackage name="system-group-hardware"/>
+      <repopackage name="system-group-kvm"/>
       <repopackage name="system-group-libvirt"/>
       <repopackage name="system-group-wheel"/>
       <repopackage name="system-tuning-common-SUSE"/>

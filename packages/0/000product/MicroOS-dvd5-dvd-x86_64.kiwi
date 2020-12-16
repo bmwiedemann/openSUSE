@@ -1403,6 +1403,7 @@
       <repopackage name="sysconfig-netconfig" arch="x86_64"/>
       <repopackage name="sysfsutils" arch="x86_64"/>
       <repopackage name="system-group-hardware"/>
+      <repopackage name="system-group-kvm"/>
       <repopackage name="system-user-flatpak" arch="x86_64"/>
       <repopackage name="system-user-lp" arch="x86_64"/>
       <repopackage name="system-user-nobody"/>
