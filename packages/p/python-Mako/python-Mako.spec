@@ -41,13 +41,11 @@ BuildArch:      noarch
 %if 0%{?suse_version} >= 1000 || 0%{?fedora_version} >= 24
 Recommends:     python-Beaker >= 1.1
 %endif
+Provides:       python-mako = %{version}
+Obsoletes:      python-mako < %{version}
 %ifpython2
 Provides:       %{oldpython}-mako = %{version}
 Obsoletes:      %{oldpython}-mako < %{version}
-%endif
-%ifpython3
-Provides:       python3-mako = %{version}
-Obsoletes:      python3-mako < %{version}
 %endif
 %python_subpackages
 

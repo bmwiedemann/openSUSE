@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 11 23:26:38 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Let the python-rpm-macros do their job for the correct provides
+  and obsoletes tags for multiple python3 flavors
+  gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Mon Jun  8 08:54:52 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 1.1.3
