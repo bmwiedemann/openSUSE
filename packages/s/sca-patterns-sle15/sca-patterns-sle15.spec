@@ -1,7 +1,7 @@
 #
 # spec file for package sca-patterns-sle15
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,12 +25,12 @@
 %define category SLE
 
 Name:           sca-patterns-sle15
-Version:        1.0
+Version:        1.0.1
 Release:        0
 Summary:        Supportconfig Analysis Patterns for SLE15
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/Monitoring
-Url:            https://github.com/g23guy/sca-patterns-sle15
+URL:            https://github.com/g23guy/sca-patterns-sle15
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 Requires:       sca-patterns-base
@@ -81,9 +81,6 @@ install -m %{mode} patterns/%{category}/sle15sp4/* %{buildroot}/%{patdir}/%{cate
 %attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle15sp2/*
 %attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle15sp3/*
 %attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle15sp4/*
-%attr(444,%{patuser},%{patgrp}) %{patdir}/%{category}/sle15sp0/README
-%attr(444,%{patuser},%{patgrp}) %{patdir}/%{category}/sle15sp1/README
-%attr(444,%{patuser},%{patgrp}) %{patdir}/%{category}/sle15sp2/README
 %attr(444,%{patuser},%{patgrp}) %{patdir}/%{category}/sle15sp3/README
 %attr(444,%{patuser},%{patgrp}) %{patdir}/%{category}/sle15sp4/README
 
