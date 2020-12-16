@@ -16,8 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global skip_python2 1
+%{?!python_module:%define python_module() python3-%{**}}
+# depends on other openstack packages: only primary python3 provider
+%define pythons python3
 Name:           python-mox3
 Version:        1.1.0
 Release:        0
