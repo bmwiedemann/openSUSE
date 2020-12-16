@@ -1,7 +1,7 @@
 #
 # spec file for package vit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,41 +17,58 @@
 
 
 Name:           vit
-Version:        1.3~20190107.g96134b3
+Version:        2.0.0
 Release:        0
-Summary:        Curses-based front end to Taskwarrior
-License:        GPL-3.0-only
+Summary:        Visual Interactive Taskwarrior full-screen terminal interface
+License:        MIT
 Group:          Productivity/Office/Organizers
-Url:            https://github.com/scottkosty/vit
-Source0:        %{name}-%{version}.tar.xz
-BuildRequires:  taskwarrior
-BuildRequires:  perl(Curses)
+URL:            https://github.com/scottkosty/vit
+Source:         https://files.pythonhosted.org/packages/source/v/vit/vit-%{version}.tar.gz
+BuildRequires:  bash-completion
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-tasklib
+BuildRequires:  python3-tzlocal
+BuildRequires:  python3-urwid
+Requires:       python3-tasklib
+Requires:       python3-tzlocal
+Requires:       python3-urwid
 Requires:       taskwarrior
-Requires:       perl(Curses)
-Requires:       perl(Text::CharWidth)
 BuildArch:      noarch
 
 %description
-VIT - a minimalistic Taskwarrior full-screen terminal interface with Vim key
-bindings
+Visual Interactive Taskwarrior full-screen terminal interface.
+Features:
+ * Fully-customizable key bindings (default Vim-like)
+ * Uncluttered display
+ * No mouse
+ * Speed
+ * Per-column colorization
+ * Advanced tab completion
+ * Multiple/customizable themes
+ * Override/customize column formatters
+ * Intelligent sub-project indenting
 
 %prep
-%setup -q
-echo %{version} > VERSION
+%setup -q -n vit-%{version}
 
 %build
-%configure
-make %{?_smp_mflags}
+%python3_build
 
 %install
-%make_install
+%python3_install
+install -Dm644 scripts/bash/vit.bash_completion %{buildroot}%{_datadir}/bash-completion/completions/vit
+%fdupes %{buildroot}%{python3_sitelib}
+
+%check
+python3 -m unittest
 
 %files
+%doc COLOR.md CUSTOMIZE.md README.md
 %license LICENSE
-%doc AUTHORS CHANGES README
 %{_bindir}/vit
-%{_datadir}/vit
-%{_mandir}/man1/vit.1%{ext_man}
-%{_mandir}/man5/vitrc.5%{ext_man}
+%{_datadir}/bash-completion/completions/vit
+%{python3_sitelib}/*
 
 %changelog
