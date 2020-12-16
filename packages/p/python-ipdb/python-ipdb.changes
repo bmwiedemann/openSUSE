@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 15 12:52:40 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 0.13.4
+  * Add '-m' option [mrmino]
+- Switch to pyunittest macro to avoid external mock package
+- Upstream calls the entrypoint ipdb3, no reason to be different,
+  call proper python_clone for it.
+- Provide the old jupyter package name only for the primary
+  Python3 interpreter -- gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Mon Jun 29 13:31:09 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.13.3

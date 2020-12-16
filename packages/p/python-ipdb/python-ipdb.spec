@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-ipdb
-Version:        0.13.3
+Version:        0.13.4
 Release:        0
 Summary:        IPython-enabled pdb
 License:        BSD-3-Clause
@@ -36,7 +36,7 @@ Requires(postun): update-alternatives
 Provides:       python-jupyter_ipdb = %{version}
 Obsoletes:      python-jupyter_ipdb < %{version}
 BuildArch:      noarch
-%ifpython3
+%if "%{python_flavor}" == "python3" || "%{?python_provides}"  == "python3"
 Provides:       jupyter-ipdb = %{version}
 %endif
 %python_subpackages
@@ -54,28 +54,22 @@ introspection with the same interface as the `pdb` module.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/ipdb3
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%if 0%{?have_python2} && ! 0%{?skip_python2}
-mv -v %{buildroot}%{_bindir}/ipdb{,-%{python2_bin_suffix}}
-%endif
-%if 0%{?have_python3} && ! 0%{?skip_python3}
-mv -v %{buildroot}%{_bindir}/ipdb{3,-%{python3_bin_suffix}}
-%endif
-%prepare_alternative ipdb
 
 %post
-%python_install_alternative ipdb
+%python_install_alternative ipdb3
 
 %postun
-%python_uninstall_alternative ipdb
+%python_uninstall_alternative ipdb3
 
 %check
-%python_exec setup.py test
+%pyunittest -v
 
 %files %{python_files}
 %doc AUTHORS HISTORY.txt README.rst
 %license COPYING.txt
-%python_alternative %{_bindir}/ipdb
+%python_alternative %{_bindir}/ipdb3
 %{python_sitelib}/*
 
 %changelog
