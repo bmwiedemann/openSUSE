@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  4 09:16:03 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
+
+- Remove kvm group from hardware subpackage, since kvm is in its
+  own subpackage (jsc#SLE-11629).
+
+-------------------------------------------------------------------
 Fri Nov 13 16:25:12 UTC 2020 - James Fehlig <jfehlig@suse.com>
 
 - Add qemu user to kvm group
