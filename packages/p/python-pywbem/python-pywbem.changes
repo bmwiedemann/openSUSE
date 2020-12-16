@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 14 17:02:26 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix fail because of urllib3 deprecation warnings
+  * gh#pywbem/pywbem#2533
+  * pywbem-pr2533-fix-urllib3-warnings.patch 
+
+-------------------------------------------------------------------
 Tue Oct 13 12:17:03 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to Version 1.1.1

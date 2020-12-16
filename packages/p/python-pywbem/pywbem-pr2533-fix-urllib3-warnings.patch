@@ -1,0 +1,80 @@
+From fa3363bb06f8ac80bb6f74a3e52cce7cd4527cb0 Mon Sep 17 00:00:00 2001
+From: Andreas Maier <andreas.r.maier@gmx.de>
+Date: Sat, 14 Nov 2020 08:10:50 +0100
+Subject: [PATCH] Fixed DeprecationWarning issued by urllib3
+
+Details:
+
+* Version 1.26.0 of urllib3 started issuing a DeprecationWarning about the
+  use of the 'method_whitelist' init parameter in Retry. The replacement
+  parameter is 'allowed_methods', which was introduced also in 1.26.0.
+  In addition, the DeprecationWarning states that the 'method_whitelist'
+  paremeter will be removed in urllib3 version 2.0.
+
+  Fixed that by determining at the module level of _cim_operations.py
+  which parameter to use and preparing the init kwargs, using
+  'allowed_methods' when the DeprecationWarning is issued or TypeError
+  to cover for the future removal.
+
+Signed-off-by: Andreas Maier <andreas.r.maier@gmx.de>
+---
+ (docs/changes.rst          |  3 +++)
+ pywbem/_cim_operations.py | 31 ++++++++++++++++++++++++-------
+ 2 files changed, 27 insertions(+), 7 deletions(-)
+
+diff --git a/pywbem/_cim_operations.py b/pywbem/_cim_operations.py
+index 79e54ae84..bd2d9f81a 100644
+--- a/pywbem/_cim_operations.py
++++ b/pywbem/_cim_operations.py
+@@ -138,6 +138,7 @@
+ from xml.dom import minidom
+ from collections import namedtuple
+ import logging
++import warnings
+ 
+ import requests
+ from requests.packages import urllib3
+@@ -170,6 +171,28 @@
+ HTTP_RETRY_BACKOFF_FACTOR = 0.1  # Backoff factor for retries
+ HTTP_MAX_REDIRECTS = 5           # Max number of HTTP redirects
+ 
++# urllib3 1.26.0 started issuing a DeprecationWarning for using the
++# 'method_whitelist' init parameter of Retry and announced its removal in
++# version 2.0. The replacement parameter is 'allowed_methods'.
++# Find out which init parameter to use:
++with warnings.catch_warnings():
++    warnings.filterwarnings('error')
++    try:
++        urllib3.Retry(method_whitelist={})
++    except (DeprecationWarning, TypeError):
++        RETRY_METHODS_PARM = 'allowed_methods'
++    else:
++        RETRY_METHODS_PARM = 'method_whitelist'
++
++RETRY_KWARGS = dict(
++    total=HTTP_TOTAL_RETRIES,
++    connect=HTTP_CONNECT_RETRIES,
++    read=HTTP_READ_RETRIES,
++    redirect=HTTP_MAX_REDIRECTS,
++    backoff_factor=HTTP_RETRY_BACKOFF_FACTOR
++)
++RETRY_KWARGS[RETRY_METHODS_PARM] = {'POST'}
++
+ # Global named tuples. Used by the pull operation responses to return
+ # (entities, end_of_sequence, and enumeration_context) to the caller.
+ 
+@@ -770,13 +793,7 @@ def __init__(self, url, creds=None, default_namespace=None,
+                         type(self.ca_certs)))
+         self.session.verify = verify
+ 
+-        retry = urllib3.Retry(
+-            total=HTTP_TOTAL_RETRIES,
+-            connect=HTTP_CONNECT_RETRIES,
+-            read=HTTP_READ_RETRIES,
+-            method_whitelist={'POST'},
+-            redirect=HTTP_MAX_REDIRECTS,
+-            backoff_factor=HTTP_RETRY_BACKOFF_FACTOR)
++        retry = urllib3.Retry(**RETRY_KWARGS)
+ 
+         # While it would be technically sufficient to set a retry transport
+         # adapter only for the scheme specified in the input URL, we are

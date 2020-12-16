@@ -26,6 +26,8 @@ License:        LGPL-2.1-or-later
 Group:          System/Management
 URL:            https://pywbem.github.io/
 Source0:        https://github.com/pywbem/pywbem/archive/%{version}.tar.gz#/pywbem-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM pywbem-pr2533-fix-urllib3-warnings.patch -- gh#pywbem/pywbem#2533
+Patch0:         pywbem-pr2533-fix-urllib3-warnings.patch
 BuildRequires:  %{python_module FormEncode}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module base}
