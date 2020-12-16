@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 11 23:39:19 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 0.29
+  * Drawable & XInput: Avoid using array.array.tostring() which 
+    will be removed in Python 3.9 (thanks @t-wissmann).
+- Changelog for version 0.28
+  * DPMS: Display Power Management Signaling (by @thiagokokada)
+- Add remove-mock.patch gh#python-xlib/python-xlib#186
+- Let the python-rpm-macros do their job for correct provides and
+  obsoletes tag for all python3 flavors 
+  gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Sun Aug 16 21:12:28 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Replace nose with pytest

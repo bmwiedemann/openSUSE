@@ -19,31 +19,33 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         oldpython python
 Name:           python-python-xlib
-Version:        0.27
+Version:        0.29
 Release:        0
 Summary:        Python X11 interface
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Python
 URL:            https://github.com/python-xlib/python-xlib
-Source:         https://files.pythonhosted.org/packages/source/p/python-xlib/python-xlib-%{version}.tar.bz2
-BuildRequires:  %{python_module mock}
+Source:         https://files.pythonhosted.org/packages/source/p/python-xlib/python-xlib-%{version}.tar.gz
+# PATCH-FEATURE-UPSTREAM remove-mock.patch -- gh#python-xlib/python-xlib#186
+Patch0:         remove-mock.patch
+BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.10.0}
+%if 0%{suse_version} < 1550
+BuildRequires:  python-mock
+%endif
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  xvfb-run
 Requires:       python-six >= 1.10.0
 BuildArch:      noarch
+Provides:       python-xlib = %{version}
+Obsoletes:      python-xlib < %{version}
 %ifpython2
 Provides:       %{oldpython}-xlib = %{version}
 Obsoletes:      %{oldpython}-xlib < %{version}
-%endif
-%ifpython3
-Provides:       python3-xlib = %{version}
-Obsoletes:      python3-xlib < %{version}
 %endif
 %python_subpackages
 
@@ -53,7 +55,9 @@ library for Python programs.
 
 %prep
 %setup -q -n python-xlib-%{version}
-dos2unix CHANGELOG.md README.rst TODO
+dos2unix CHANGELOG.md README.rst TODO dev-requirements.txt test/*
+# patch only applies to unix endings
+%patch0 -p1
 
 %build
 %python_build
@@ -63,7 +67,7 @@ dos2unix CHANGELOG.md README.rst TODO
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand xvfb-run --server-args "-screen 0 1920x1080x24" $python -m pytest -rs
+%pytest -rs
 
 %files %{python_files}
 %license LICENSE
