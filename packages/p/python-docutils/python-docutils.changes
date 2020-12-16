@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 12 00:33:13 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- In a world with more than one python 3 flavor, provide "docutils"
+  with the default python3 provider.
+  gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Tue Apr  7 09:31:55 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix the condition to really generate the direct binaries

@@ -272,4 +272,12 @@ this resolves build failure for python3-Sphinx (forwarded request 139388 from Hi
   * pygments25.patch</comment>
     <requestid>791944</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>a124ffb9f4fa23947adf7f663f6a2df8</srcmd5>
+    <version>0.16</version>
+    <time>1608112765</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>855611</requestid>
+  </revision>
 </revisionlist>

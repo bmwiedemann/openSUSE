@@ -50,7 +50,7 @@ BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module roman}
 %endif
-%ifpython3
+%if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
 Provides:       docutils = %{version}
 Obsoletes:      docutils < %{version}
 %endif
