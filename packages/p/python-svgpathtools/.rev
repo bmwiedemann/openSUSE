@@ -7,4 +7,37 @@
     <comment> </comment>
     <requestid>822548</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>01334de8aebfc3e8a5bb6e2b6dd9a7b3</srcmd5>
+    <version>1.4.1</version>
+    <time>1608112894</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.1
+  * Added clipping to work around floating point error in
+    Arc._parameterize
+  * Support flattening SVG groups and handling transforms
+  * save() now requires filename
+  * Better implementation of Arc.intersect(Line)
+  * Fixed issue with viewbox being written as tuple
+  * Added paths2Drawing functionality
+  * Update Path.area to work with Arc segments
+  * When cx and cy attributes are not defined either in ellipse
+    or circle tag, consider both to be 0
+  * Fix Arc.sweep when transform scale flips it around
+  * Relative path support
+  * Fixed crash in line2paths()
+  * Support flattening paths of only nested groups
+  * Add Path.is_contained_by() to check if one path is inside
+    another
+  * Fix Arc/Arch intersections
+  * Add Path.attributes and Path.meta attributes
+  * Fix polyline and polygon conversion
+  * Document now stores element and transform in path
+  * Renamed Document.flatten_all_paths to flattened_paths
+  * Added vectorized points() method for bezier segments
+  * Sped up randialrange for Line objects
+  * Fix paths-data-12-t.svg from the SVG 1.1 test suite
+</comment>
+    <requestid>856265</requestid>
+  </revision>
 </revisionlist>
