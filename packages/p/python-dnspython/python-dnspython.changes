@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 11 14:05:18 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Remove skipping tests which are acutally passing.
+
+-------------------------------------------------------------------
+Fri Dec 11 07:52:30 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Python < 3.7 requires external contextvars
+
+-------------------------------------------------------------------
 Thu Aug  6 13:46:23 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Disable four tests which fail on openssl 1.1.0i and lower

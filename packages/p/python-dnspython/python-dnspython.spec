@@ -26,8 +26,8 @@ License:        ISC
 Group:          Development/Languages/Python
 URL:            https://github.com/rthalley/dnspython
 Source:         https://files.pythonhosted.org/packages/source/d/dnspython/dnspython-%{version}.zip
+BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  python3-base >= 3.6
 # SECTION tests
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module ecdsa}
@@ -36,14 +36,20 @@ BuildRequires:  %{python_module pycryptodome}
 BuildRequires:  %{python_module requests-toolbelt}
 BuildRequires:  %{python_module trio >= 0.14.0}
 BuildRequires:  %{python_module typing}
-# /SECTION tests
 BuildRequires:  fdupes
-BuildRequires:  netcfg
 BuildRequires:  python-rpm-macros
+# /SECTION tests
+BuildRequires:  %{python_module pytest}
+BuildRequires:  netcfg
 BuildRequires:  unzip
+BuildRequires:  (python3-contextvars if python3-base < 3.7)
+BuildRequires:  (python36-contextvars if python36-base)
 Requires:       python-ecdsa
 Requires:       python-pycryptodome
 Requires:       python-requests-toolbelt
+%if %{python_version_nodots} < 37
+Requires:       python-contextvars
+%endif
 BuildArch:      noarch
 Recommends:     python-cryptography
 Recommends:     python-idna >= 2.1
@@ -65,8 +71,6 @@ manipulation of DNS zones, messages, names, and records.
 %prep
 %setup -q -n dnspython-%{version}
 chmod -x examples/*
-# Two sets of fail which fail on openssl 1.1.0i and lower
-sed -Ei 's/def (testAbsoluteED)(448|25519)/def _\1\2/' tests/test_dnssec.py
 
 %build
 %python_build
@@ -76,10 +80,7 @@ sed -Ei 's/def (testAbsoluteED)(448|25519)/def _\1\2/' tests/test_dnssec.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/
 
 %check
-%if  %python3_version_nodots  < 37
-rm tests/nanonameserver.py
-%endif
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %license LICENSE

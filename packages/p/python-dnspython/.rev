@@ -252,4 +252,14 @@
     <comment></comment>
     <requestid>824769</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>b8dbea239976ff3a9574fe499fc3d00d</srcmd5>
+    <version>2.0.0</version>
+    <time>1608112746</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove skipping tests which are acutally passing.
+
+- Python &amp;lt; 3.7 requires external contextvars (forwarded request 855332 from mcepl)</comment>
+    <requestid>855345</requestid>
+  </revision>
 </revisionlist>
