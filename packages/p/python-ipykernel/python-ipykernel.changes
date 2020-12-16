@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Dec 14 22:47:01 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- update to version 5.4.2
+  * Revert "Fix stop_on_error_timeout blocking other messages in
+    queue" 
+- changes in 5.4.1
+  * Invalid syntax in ipykernel/log.py.
+- changes in 5.4.0
+  5.4.0 is generally focused on code quality improvements and
+  tornado asyncio compatibility.
+  * Add github actions, bail on asyncio patch for tornado 6.1. 
+  * Start testing on Python 3.9.
+  * Fix stack levels for ipykernel's deprecation warnings and stop
+    using some deprecated APIs.
+  * Add env parameter to kernel installation
+  * Fix stop_on_error_timeout blocking other messages in queue.
+  * Remove most of the python 2 compat code.
+  * Remove u-prefix from strings.
+
+-------------------------------------------------------------------
 Sat Jul 25 15:31:23 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 5.3.4:
