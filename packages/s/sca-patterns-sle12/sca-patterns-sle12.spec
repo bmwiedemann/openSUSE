@@ -1,7 +1,7 @@
 #
 # spec file for package sca-patterns-sle12
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,12 +25,12 @@
 %define category SLE
 
 Name:           sca-patterns-sle12
-Version:        1.0
+Version:        1.0.1
 Release:        0
 Summary:        Supportconfig Analysis Patterns for SLE12
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/Monitoring
-Url:            https://github.com/g23guy/sca-patterns-sle12
+URL:            https://github.com/g23guy/sca-patterns-sle12
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 Requires:       sca-patterns-base
@@ -56,12 +56,14 @@ install -d %{buildroot}/%{patdir}/%{category}/sle12sp1
 install -d %{buildroot}/%{patdir}/%{category}/sle12sp2
 install -d %{buildroot}/%{patdir}/%{category}/sle12sp3
 install -d %{buildroot}/%{patdir}/%{category}/sle12sp4
+install -d %{buildroot}/%{patdir}/%{category}/sle12sp5
 install -m %{mode} patterns/%{category}/sle12all/* %{buildroot}/%{patdir}/%{category}/sle12all
 install -m %{mode} patterns/%{category}/sle12sp0/* %{buildroot}/%{patdir}/%{category}/sle12sp0
 install -m %{mode} patterns/%{category}/sle12sp1/* %{buildroot}/%{patdir}/%{category}/sle12sp1
 install -m %{mode} patterns/%{category}/sle12sp2/* %{buildroot}/%{patdir}/%{category}/sle12sp2
 install -m %{mode} patterns/%{category}/sle12sp3/* %{buildroot}/%{patdir}/%{category}/sle12sp3
 install -m %{mode} patterns/%{category}/sle12sp4/* %{buildroot}/%{patdir}/%{category}/sle12sp4
+install -m %{mode} patterns/%{category}/sle12sp5/* %{buildroot}/%{patdir}/%{category}/sle12sp5
 %fdupes 
 
 %files
@@ -75,11 +77,13 @@ install -m %{mode} patterns/%{category}/sle12sp4/* %{buildroot}/%{patdir}/%{cate
 %dir %{patdir}/%{category}/sle12sp2
 %dir %{patdir}/%{category}/sle12sp3
 %dir %{patdir}/%{category}/sle12sp4
+%dir %{patdir}/%{category}/sle12sp5
 %attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle12all/*
 %attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle12sp0/*
 %attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle12sp1/*
 %attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle12sp2/*
 %attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle12sp3/*
 %attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle12sp4/*
+%attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle12sp5/*
 
 %changelog
