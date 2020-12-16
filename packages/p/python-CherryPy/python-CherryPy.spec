@@ -51,6 +51,7 @@ BuildRequires:  %{python_module portend >= 2.1.1}
 BuildRequires:  %{python_module pytest-services}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-toolbelt}
+BuildRequires:  %{python_module simplejson}
 BuildRequires:  %{python_module zc.lockfile}
 # /SECTION
 %python_subpackages

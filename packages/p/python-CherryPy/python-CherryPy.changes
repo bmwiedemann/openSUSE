@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 14 20:43:05 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- BuildRequire the already recommended simplejson to fix test suite
+  failures with Python 3.6
+  * for TW python36 flavor -- gh#openSUSE/python-rpm-macros#66
+  * for Leap
+
+-------------------------------------------------------------------
 Mon May  4 06:56:30 UTC 2020 - Johannes Grassler <johannes.grassler@suse.com>
 
 - update to 18.6.0
