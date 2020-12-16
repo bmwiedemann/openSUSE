@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec 15 15:24:30 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Replace %__python3 with %python_exec
+
+-------------------------------------------------------------------
+Mon Dec 14 20:09:13 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Adopt spec file from Fedora and enable testing.
+
+-------------------------------------------------------------------
 Fri Dec 11 13:34:16 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 1.9.12.

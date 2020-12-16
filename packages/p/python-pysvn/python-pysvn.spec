@@ -16,6 +16,7 @@
 #
 
 
+%define packagename pysvn
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pysvn
 Version:        1.9.12
@@ -24,7 +25,7 @@ Summary:        Highlevel Subversion Python Bindings
 License:        Apache-1.1
 Group:          Development/Libraries/Python
 URL:            https://pysvn.sourceforge.io/
-Source0:        https://sourceforge.net/projects/pysvn/files/pysvn/V1.9.12/pysvn-%{version}.tar.gz
+Source0:        https://sourceforge.net/projects/pysvn/files/pysvn/V%{version}/pysvn-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pycxx-devel}
 BuildRequires:  %{python_module xml}
@@ -54,41 +55,39 @@ Features:
  * No need to understand the Subversion C API
 
 %prep
-%setup -q -n pysvn-%{version}
+%setup -q -n %{packagename}-%{version}
+
+# Remove bundled libs
+rm -rf Import
 
 %build
 export CFLAGS="%{optflags}"
-%{python_expand cp -r Source Source-%{$python_bin_suffix}
-pushd Source-%{$python_bin_suffix}
-$python setup.py backport
-$python setup.py configure \
-    --enable-debug --verbose --fixed-module-name --norpath \
-    --pycxx-dir=%{$python_sysconfig_path include}/ --pycxx-src-dir=%{_datadir}/python%{$python_bin_suffix}/CXX
+pushd Source
+%python_exec setup.py configure --enable-debug --verbose --fixed-module-name --norpath
+
 sed -i -e 's@-Wall -fPIC -fexceptions -frtti@%{optflags} -fPIC -frtti@' Makefile
 make %{?_smp_mflags}
-popd
-}
 
 %install
-%{python_expand mkdir -p %{buildroot}/%{$python_sitearch}/pysvn
-pushd Source-%{$python_bin_suffix}
-cp pysvn/{__init__.py,_pysvn*.so} %{buildroot}/%{$python_sitearch}/pysvn
-$python -m compileall -d %{$python_sitearch} %{buildroot}/%{$python_sitearch}/pysvn
-$python -O -m compileall -d %{$python_sitearch} %{buildroot}/%{$python_sitearch}/pysvn
-popd
-}
-rm -f Docs/generate_cpp_docs_from_html_docs.py
+install -d -m 755 %{buildroot}%{python_sitearch}/%{packagename}
+install -p -m 644 Source/%{packagename}/__init__.py %{buildroot}%{python_sitearch}/%{packagename}
+install -p -m 755 Source/%{packagename}/_pysvn.so %{buildroot}%{python_sitearch}/%{packagename}
 
-%fdupes %{buildroot}%{python_sitearch}/pysvn/__pycache__
+%fdupes %{buildroot}%{python_sitearch}/%{packagename}/__pycache__
 
 %check
-# Disabled test because there are errors. Bug report: https://sourceforge.net/p/pysvn/tickets/8/
-# cd Tests
-# %%python_expand PYTHONPATH=%%{buildroot}%%{$python_sitearch} PYTHON=$python make %%{?_smp_mflags} || :
+pushd Tests
+# the tests expect a valid answer from locale.getdefaultlocale()
+# C.UTF-8 does not work. Use en_US.utf-8.
+# The test have not been test in parallel, use one core for now.
+export LC_ALL=en_US.UTF-8
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} PYTHON=$python make -j1
+popd
 
 %files %{python_files}
 %license LICENSE.txt
 %doc Docs Examples
-%{python_sitearch}/pysvn
+%dir %{python_sitearch}/%{packagename}
+%{python_sitearch}/%{packagename}/*
 
 %changelog

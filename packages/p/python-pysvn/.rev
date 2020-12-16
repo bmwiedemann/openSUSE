@@ -224,4 +224,14 @@
     <comment></comment>
     <requestid>855617</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>75a6e883274217c705e59775c2bc0f05</srcmd5>
+    <version>1.9.12</version>
+    <time>1608112824</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace %__python3 with %python_exec
+- Adopt spec file from Fedora and enable testing.
+</comment>
+    <requestid>856055</requestid>
+  </revision>
 </revisionlist>
