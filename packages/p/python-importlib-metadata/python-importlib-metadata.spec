@@ -25,15 +25,18 @@
 %bcond_with test
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-importlib-metadata%{psuffix}
-Version:        2.0.0
+Version:        3.1.1
 Release:        0
 Summary:        Read metadata from Python packages
 License:        Apache-2.0
 URL:            http://importlib-metadata.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/i/importlib_metadata/importlib_metadata-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-zipp >= 0.5
@@ -45,19 +48,10 @@ BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pep517}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyfakefs}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zipp >= 0.5}
-%if %{?suse_version} <= 1500
-BuildRequires:  python2-configparser >= 3.5
-BuildRequires:  python2-contextlib2
-BuildRequires:  python2-pathlib2
-%endif
-%endif
-%ifpython2
-Requires:       python-configparser >= 3.5
-Requires:       python-contextlib2
-Requires:       python-pathlib2
 %endif
 %python_subpackages
 
@@ -79,7 +73,8 @@ documentation.
 
 %prep
 %setup -q -n importlib_metadata-%{version}
-rm -r importlib_metadata/docs
+# don't import from sourcedir during testing
+sed -i -e 's/norecursedirs.*/& importlib_metadata/' pytest.ini
 
 %build
 %python_build
@@ -92,7 +87,7 @@ rm -r importlib_metadata/docs
 
 %check
 %if %{with test}
-%pyunittest -v
+%pytest
 %endif
 
 %if !%{with test}

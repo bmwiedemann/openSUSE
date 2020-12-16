@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Dec  7 17:50:51 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 3.1.1
+  * no changelog, probably just the merge of 2.1.1
+- Update in v2.1.1
+  * #261: Restored compatibility for package discovery for metadata
+    without version in the name and for legacy eggs.
+- Update in v3.1.0
+  * Merge with 2.1.0.
+- Update in v2.1.0
+  * #253: When querying for package metadata, the lookup now honors
+    package normalization rules.
+- Update in v3.0.0
+  * Require Python 3.6 or later.
+- Upstream switched to pytest, so do we
+- Revert last change: The condition for **BuildRequires** does not
+  make any sense, as that would also prevent the install of 
+  python36-importlib_resources into the build environment.
+
+-------------------------------------------------------------------
+Wed Dec  2 18:11:11 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Make requirement of importlib_resources only for particular
+  versions of Python (< 3.9).
+
+-------------------------------------------------------------------
 Thu Nov 19 19:43:05 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Reintroduce into Tumbleweed for python36 flavor

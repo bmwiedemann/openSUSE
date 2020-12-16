@@ -9,4 +9,12 @@
 It does NOT conflict with python38 standard library (see upstream description)</comment>
     <requestid>850139</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>37d994c86a0c2473e4283d7638b7fdca</srcmd5>
+    <version>3.1.1</version>
+    <time>1608112732</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853675</requestid>
+  </revision>
 </revisionlist>
