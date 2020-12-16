@@ -7,4 +7,12 @@
     <comment>round 2 nintendo 3ds emulator.</comment>
     <requestid>844709</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c66d8dd3278008c64acb7f737514b99e</srcmd5>
+    <version>nightly1659</version>
+    <time>1608112844</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>856019</requestid>
+  </revision>
 </revisionlist>

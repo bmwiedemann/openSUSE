@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Tue Dec 08 13:15:44 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version nightly1659:
+  * cubeb_sink: Use static_cast instead of reinterpret_cast in DataCallback() (#5573)
+  * codec: Make lookup table static constexpr (#5572)
+  * Port yuzu-emu/yuzu#4700: "game_list: Eliminate redundant argument copies" (#5571)
+  * microprofile: Don't memset through std::atomic types (#5528)
+  * Make UNIMPLEMENTED_MSG consistent with UNIMPLEMENTED (#5631)
+
+-------------------------------------------------------------------
+Sun Dec 06 00:32:10 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version nightly1654:
+  * UDS: implement GetApplicationData (#5533)
+  * tests: Fix warning about comparison between signed and unsigned (#5632)
+  * Update dynarmic to last compatible version (#5618)
+  * Fixes to "hide mouse on inactivity" (#5476)
+  * service/apt: Fix deliver arg hmac size
+
+-------------------------------------------------------------------
+Wed Nov 25 11:19:34 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version nightly1649:
+  * Update inih (#5615)
+
+-------------------------------------------------------------------
+Tue Nov 24 19:33:30 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version nightly1648:
+  * service/apt: Implement Deliver Args (#5611)
+
+-------------------------------------------------------------------
+Mon Nov 23 23:07:05 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version nightly1647:
+  * APT: implement Set and GetWirelessRebootInfo (#5328)
+
+-------------------------------------------------------------------
+Mon Nov 23 11:27:53 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version nightly1646:
+  * Fix fmt crash from deprecated percent specifier (#5616)
+
+-------------------------------------------------------------------
+Sun Nov 22 20:53:26 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version nightly1645:
+  * Fix telemetry-related exit crash from use-after-free (#5617)
+
+-------------------------------------------------------------------
+Sun Nov 22 00:39:01 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version nightly1644:
+  * CI: fix the tag fetching command
+
+-------------------------------------------------------------------
+Wed Nov 18 11:43:16 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version nightly1643:
+  * Fix Transifex Synchronization (#5605)
+  * Initial implementation of partial_embedded_buffer_dirty handling (#5548)
+  * microprofile: Silence warning in headers
+  * externals: Update fmt to 7.1.2
+  * layered_fs: Make LoadFile and LoadDirectory less recursive
+
+-------------------------------------------------------------------
+Tue Nov 17 11:04:50 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version nightly1638:
+  * Add reverse_interlaced uniform flag
+  * Update cubeb and request a persistent stream session
+  * Implement Reverse Interlaced 3D
+
+-------------------------------------------------------------------
+Mon Nov 16 19:01:20 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version nightly1636:
+  * change result back to std::optional
+  * Update src/video_core/renderer_opengl/gl_shader_manager.cpp
+  * make result not optional
+
+-------------------------------------------------------------------
+Sun Nov 15 15:25:36 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version nightly1635:
+  * kernel/thread: Change owner_process to std::weak_ptr (#5325)
+  * Keep keyboard state independent of acquired buttons (#5255)
+
+-------------------------------------------------------------------
+Fri Nov 13 14:04:38 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version nightly1633:
+  * ci: fix mingw folder name (#5607)
+  * Use GitHub Actions as CI service (#5602)
+  * Update translations (2020-11-01)
+
+-------------------------------------------------------------------
+Sat Nov 07 18:14:48 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version nightly1630:
+  * Band-aid solution for 'Disk Shader Cache' (#5188)
+
+-------------------------------------------------------------------
 Tue Oct 27 08:07:24 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add constraints to make sure we have enough memory to compile
