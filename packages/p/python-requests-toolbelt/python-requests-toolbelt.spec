@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests-toolbelt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/requests/toolbelt
 Source:         https://files.pythonhosted.org/packages/source/r/requests-toolbelt/requests-toolbelt-%{version}.tar.gz
 Patch0:         fix-tests.patch
+# PATCH-FIX-UPSTREAM remove_mock.patch bsc#[0-9]+ mcepl@suse.com
+# remove dependency on the external mock package
+Patch1:         remove_mock.patch
 BuildRequires:  %{python_module requests >= 2.12.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -34,9 +37,12 @@ Requires:       python-requests >= 2.12.2
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module betamax >= 0.5.0}
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pyOpenSSL}
+# gh#pyca/cryptography#5606
+BuildRequires:  %{python_module pyOpenSSL >= 19.1.0}
 BuildRequires:  %{python_module pytest}
+%if 0%{suse_version} <= 1500
+BuildRequires:  python-mock
+%endif
 # /SECTION
 %python_subpackages
 
@@ -47,8 +53,8 @@ really belong in ``requests`` proper. The minimum tested requests version is
 some idiosyncracies prevent effective or sane testing on that version.
 
 %prep
-%setup -q -n requests-toolbelt-%{version}
-%patch0 -p1
+%autosetup -p1 -n requests-toolbelt-%{version}
+
 rm -rf requests_toolbelt.egg-info
 # requires network access
 rm -v tests/test_multipart_encoder.py
