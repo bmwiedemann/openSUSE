@@ -753,4 +753,41 @@
     - deprecated LLVM SKIPSINGLEBLOCK env environment (forwarded request 832521 from msmeissn)</comment>
     <requestid>832522</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>7721aeac5ea266c415b704bdd11ad916</srcmd5>
+    <version>3.0c</version>
+    <time>1608112838</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 3.0c
+  - llvm_mode/ and gcc_plugin/ moved to instrumentation/
+  - examples/ renamed to utils/
+  - moved libdislocator, libtokencap and qdbi_mode to utils/
+  - all compilers combined to afl-cc which emulates the previous ones
+  - afl-llvm/gcc-rt.o merged into afl-compiler-rt.o
+  - afl-fuzz
+    - not specifying -M or -S will now auto-set &quot;-S default&quot;
+    - deterministic fuzzing is now disabled by default and can be enabled with
+      -D. It is still enabled by default for -M.
+    - a new seed selection was implemented that uses weighted randoms based on
+      a schedule performance score, which is much better that the previous
+      walk the whole queue approach. Select the old mode with -Z (auto enabled
+      with -M)
+    - Marcel Boehme submitted a patch that improves all AFFast schedules :)
+    - the default schedule is now FAST
+    - memory limits are now disabled by default, set them with -m if required
+    - rpc.statsd support, for stats and charts, by Edznux, thanks a lot!
+    - reading testcases from -i now descends into subdirectories
+    - allow the -x command line option up to 4 times
+    - loaded extras now have a duplication protection
+    - If test cases are too large we do a partial read on the maximum
+      supported size
+    - longer seeds with the same trace information will now be ignored
+      for fuzzing but still be used for splicing
+    - crashing seeds are now not prohibiting a run anymore but are
+      skipped - they are used for splicing, though
+    - update MOpt for expanded havoc modes
+    - setting the env var AFL_NO_AUTODICT will not load an LTO autodictionary
+    - added NO_SPLICING compile option and makefile define (forwarded request 855999 from msmeissn)</comment>
+    <requestid>856003</requestid>
+  </revision>
 </revisionlist>

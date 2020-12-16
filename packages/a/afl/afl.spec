@@ -17,15 +17,16 @@
 
 
 Name:           afl
-Version:        2.68c
+Version:        3.0c
 Release:        0
 Summary:        American fuzzy lop is a security-oriented fuzzer
 License:        Apache-2.0
 URL:            http://lcamtuf.coredump.cx/afl/
 Source:         https://github.com/vanhauser-thc/AFLplusplus/archive/%{version}.tar.gz
 Source1:        afl-rpmlintrc
-Patch1:         afl-2.63c-fix-paths.patch
+Patch1:         afl-3.0c-fix-paths.patch
 BuildRequires:  gcc-c++
+BuildRequires:  python3-devel
 
 %description
 American fuzzy lop is a security-oriented fuzzer that employs a novel type
@@ -52,7 +53,7 @@ export CFLAGS="$CFLAGS %{optflags}"
 %ifnarch %{ix86} x86_64
 export AFL_NO_X86=1
 %endif
-make %{?_smp_mflags} PREFIX=%{_prefix} LIBEXEC_DIR=%{_libexecdir} DOC_DIR=%{_docdir}
+make %{?_smp_mflags} PREFIX=%{_prefix} LIBEXEC_DIR=%{_libexecdir} DOC_DIR=%{_docdir} 
 # make radamsa
 
 %install
@@ -68,9 +69,17 @@ make %{?_smp_mflags} PREFIX=%{_prefix} LIBEXEC_DIR=%{_libexecdir} DOC_DIR=%{_doc
 %dir %{_libexecdir}/%{name}
 %{_libexecdir}/%{name}/%{name}-as
 %{_libexecdir}/%{name}/as
-#{_libexecdir}/%{name}/argvfuzz*.so
-#{_libexecdir}/%{name}/socketfuzz*.so
-#{_libexecdir}/%{name}/libradamsa.so
+%ifarch x86_64 ppc64 ppc64le s390x
+%{_libexecdir}/%{name}/afl-compiler-rt-64.o
+%{_libexecdir}/%{name}/afl-llvm-rt-64.o
+%endif
+%ifarch %ix86
+%{_libexecdir}/%{name}/afl-compiler-rt-32.o
+%{_libexecdir}/%{name}/afl-llvm-rt-32.o
+%endif
+%{_libexecdir}/%{name}/afl-compiler-rt.o
+%{_libexecdir}/%{name}/afl-llvm-rt.o
+%{_libexecdir}/%{name}/dynamic_list.txt
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/testcases
 %{_datadir}/%{name}/testcases/*
