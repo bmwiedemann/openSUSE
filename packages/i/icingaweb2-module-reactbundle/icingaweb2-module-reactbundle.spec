@@ -1,7 +1,7 @@
 #
 # spec file for package icingaweb2-module-reactbundle
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define basedir	%{_datadir}/icingaweb2
 %define module_name reactbundle
 Name:           icingaweb2-module-%{module_name}
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        ReactPHP-based 3rd party libraries
 License:        MIT
