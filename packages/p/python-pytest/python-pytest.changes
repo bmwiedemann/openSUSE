@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec 13 00:56:12 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- fix version in egg-info for Leap gh#pytest-dev/pytest#7891
+- fix some python flavor macro misusage
+
+-------------------------------------------------------------------
+Fri Dec 11 22:31:03 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- mock dependency was actually not needed at all
+
+-------------------------------------------------------------------
 Tue Nov 10 17:41:51 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix boo#1178547: include transition for pytest py.test

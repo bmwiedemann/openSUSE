@@ -59,7 +59,6 @@ BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module hypothesis >= 3.56}
 BuildRequires:  %{python_module importlib-metadata >= 0.12}
 BuildRequires:  %{python_module iniconfig}
-BuildRequires:  %{python_module mock}
 # nose is really not REQUIRED, the test suite skips over particular
 # tests, when the package is not available.
 # BuildRequires:  %%{python_module nose}
@@ -73,7 +72,7 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module xmlschema}
 BuildRequires:  lsof
 %endif
-%if %{python3_version_nodots} < 36
+%if %{python_version_nodots} < 36
 Requires:       python-pathlib2 >= 2.2.0
 %endif
 %python_subpackages
@@ -84,6 +83,8 @@ complex functional testing for applications and libraries.
 
 %prep
 %setup -q -n pytest-%{version}
+# fix gh#pytest-dev/pytest#7891 still happening for Leap
+sed -i '/^\[metadata\]/ a version = %{version}' setup.cfg
 
 %build
 %python_build
