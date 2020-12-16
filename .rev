@@ -21,4 +21,20 @@ Switched to tar_scm to pass auto review.</comment>
 - Simplify BuildRequires</comment>
     <requestid>854654</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1035720788dae24450cde0e91416a191</srcmd5>
+    <version>1.4.0</version>
+    <time>1608112885</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.0
+  * Add ability to view issue and pull request comment threads
+  * Add management of GitHub Actions secrets
+  * Set up git credentials when logging in to GitHub CLI
+  * Add make install and make uninstall for POSIX systems when building from source
+  * pr merge: attempt the merge even if mergeability status could not be determined
+  * repo clone: enable cloning repository wikis
+  * Recognize Include directives when parsing ssh config files
+  * Display the new release notice only once per 24 hours</comment>
+    <requestid>856060</requestid>
+  </revision>
 </revisionlist>

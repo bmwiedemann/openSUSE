@@ -17,7 +17,7 @@
 
 
 Name:           gh
-Version:        1.3.1
+Version:        1.4.0
 Release:        0
 Summary:        The official CLI for GitHub
 License:        MIT
@@ -37,7 +37,7 @@ Official CLI client for GitHub written in Go
 
 %build
 export GOFLAGS="-buildmode=pie -trimpath -mod=vendor -modcacherw -ldflags=-linkmode=external"
-make GH_VERSION="v%{version}" bin/gh manpages
+%make_build GH_VERSION="v%{version}" bin/gh manpages
 
 %install
 install -D -m 0755 bin/gh %{buildroot}%{_bindir}/gh

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 15 19:32:00 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Update to version 1.4.0
+  * Add ability to view issue and pull request comment threads
+  * Add management of GitHub Actions secrets
+  * Set up git credentials when logging in to GitHub CLI
+  * Add make install and make uninstall for POSIX systems when building from source
+  * pr merge: attempt the merge even if mergeability status could not be determined
+  * repo clone: enable cloning repository wikis
+  * Recognize Include directives when parsing ssh config files
+  * Display the new release notice only once per 24 hours
+
+-------------------------------------------------------------------
 Thu Dec 10 09:26:16 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
 
 - Fix app not showing the correct version
