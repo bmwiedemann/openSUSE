@@ -20,8 +20,10 @@
 %define assaycommit 23c18c2457c035996057144e1fe74cd6e19b44eb
 %define assayver    256.23c18c2
 %define skip_python2 1
+# current astropy in TW requires python >= 3.7
+%define skip_python36 1
 Name:           python-skyfield
-Version:        1.33
+Version:        1.34
 Release:        0
 Summary:        Elegant astronomy for Python
 License:        MIT
@@ -35,6 +37,7 @@ Source4:        ftp://ssd.jpl.nasa.gov/pub/eph/planets/bsp/de405.bsp
 Source5:        ftp://ssd.jpl.nasa.gov/pub/eph/planets/bsp/de421.bsp
 # use generate-hipparcos.sh to download and truncate the test data
 Source6:        hip_main.dat.gz
+Source7:        https://datacenter.iers.org/data/9/finals2000A.all
 Source97:       generate-hipparcos.sh
 # upstreams custom test runner assay: gh#skyfielders/python-skyfield#405
 Source98:       https://github.com/brandon-rhodes/assay/archive/%{assaycommit}.tar.gz#/assay-master-%{assayver}.tar.gz
@@ -73,7 +76,7 @@ research-grade positions for planets and Earth satellites.
 %prep
 %setup -q -n skyfield-%{version} -b 98
 # copy all test data files into the rootdir from where the tests are run
-cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} ./
+cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} %{SOURCE7} ./
 
 %build
 %python_build

@@ -138,4 +138,41 @@ research-grade positions for planets and Earth satellites.</comment>
     <comment></comment>
     <requestid>849995</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3359d4a0ceaecfd49ce6271ac01d706b</srcmd5>
+    <version>1.34</version>
+    <time>1608112878</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.34
+  * The position classes have gained methods frame_xyz(), 
+    frame_xyz_and_velocity(), frame_latlon(), and 
+    from_time_and_frame_vectors() that work with a new 
+    library skyfield.framelib to offer a number of familiar 
+    reference frames. These replace the existing ad-hoc 
+    position methods for ecliptic and galactic coordinates, 
+    which are now deprecated (but will continue to be 
+    supported). See Coordinates in other reference frames.
+  * Added support for IERS Polar Motion 𝑥 and 𝑦.
+  * Added a method lst_hours_at() that computes Local 
+    Sidereal Time.
+  * A new almanac routine moon_phase() returns the Moon 
+    phase as an angle where 0° is New Moon, 90° is First 
+    Quarter, 180° is Full, and 270° is Last Quarter. #282
+  * Almanac search routines that previously returned a 
+    Boolean true/false array now return an integer 0/1 
+    array instead, to work around a new deprecation warning 
+    in NumPy which, for example, would have outlawed using 
+    the Boolean array from moon_nodes() to index into the 
+    MOON_NODES list that provides a name for each node. #486
+  * The undocumented columns magnitude_H and magnitude_G 
+    in the Minor Planet Center comets dataframe have been 
+    renamed magnitude_g and magnitude_k following further 
+    research on the file format (which does not itself 
+    document which magnitude model is intended). #416
+- add finals2000A.all to testdata
+- Define skip_python36 for TW, because current astropy needs
+  Python &gt;=3.7
+</comment>
+    <requestid>856058</requestid>
+  </revision>
 </revisionlist>
