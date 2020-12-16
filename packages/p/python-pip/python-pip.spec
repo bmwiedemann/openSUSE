@@ -42,6 +42,9 @@ URL:            http://www.pip-installer.org
 Source:         https://github.com/pypa/pip/archive/%{version}.tar.gz#/pip-%{version}-gh.tar.gz
 # PATCH-FIX-OPENSUSE pip-shipped-requests-cabundle.patch -- adapted patch from python-certifi package
 Patch0:         pip-shipped-requests-cabundle.patch
+# PATCH-FIX-UPSTREAM remove_mock.patch gh#pypa/pip#9266 mcepl@suse.com
+# remove dependency on the external module mock
+Patch1:         remove_mock.patch
 BuildRequires:  %{python_module setuptools >= 40.8.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -61,13 +64,15 @@ BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module csv23}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module freezegun}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scripttest}
 BuildRequires:  %{python_module setuptools-wheel}
 BuildRequires:  %{python_module virtualenv >= 1.10}
 BuildRequires:  %{python_module wheel}
+%if 0%{?suse_version} <= 1500
+BuildRequires:  %{python_module mock}
+%endif
 BuildRequires:  ca-certificates
 BuildRequires:  git
 BuildRequires:  subversion
@@ -83,10 +88,10 @@ finding packages, so packages that were made easy_installable should be
 pip-installable as well.
 
 %prep
-%setup -q -n pip-%{version}
 # Unbundling is not advised by upstream. See src/pip/_vendor/README.rst
 # Exception: Use our own cabundle. Adapted patch from python-certifi package
-%patch0 -p1
+%autosetup -p1 -n pip-%{version}
+
 rm src/pip/_vendor/certifi/cacert.pem
 
 %if %{with test}

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec 14 00:14:23 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix the condition to really not break Python 2.7 in Leap
+
+-------------------------------------------------------------------
+Sun Dec 13 21:23:26 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- We don't need to break Python 2.7
+
+-------------------------------------------------------------------
+Fri Dec 11 22:13:56 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add remove_mock.patch to remove dependency on the external mock
+  package (gh#pypa/pip#9266).
+
+-------------------------------------------------------------------
 Mon Nov 16 16:37:45 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Actually, test the new structure of package. :$

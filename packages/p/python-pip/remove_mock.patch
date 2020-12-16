@@ -1,0 +1,601 @@
+---
+ tests/functional/test_help.py                     |    5 +
+ tests/lib/server.py                               |    5 +
+ tests/unit/resolution_resolvelib/test_resolver.py |    5 +
+ tests/unit/test_base_command.py                   |    5 +
+ tests/unit/test_check.py                          |    5 +
+ tests/unit/test_collector.py                      |   66 +++++++++++-----------
+ tests/unit/test_command_install.py                |    5 +
+ tests/unit/test_commands.py                       |    5 +
+ tests/unit/test_configuration.py                  |    5 +
+ tests/unit/test_direct_url_helpers.py             |    5 +
+ tests/unit/test_finder.py                         |    5 +
+ tests/unit/test_locations.py                      |    5 +
+ tests/unit/test_logging.py                        |    5 +
+ tests/unit/test_network_cache.py                  |    5 +
+ tests/unit/test_operations_prepare.py             |    5 +
+ tests/unit/test_req.py                            |    5 +
+ tests/unit/test_req_file.py                       |    5 +
+ tests/unit/test_req_uninstall.py                  |    5 +
+ tests/unit/test_resolution_legacy_resolver.py     |    5 +
+ tests/unit/test_target_python.py                  |    5 +
+ tests/unit/test_utils.py                          |    5 +
+ tests/unit/test_utils_compatibility_tags.py       |    5 +
+ tests/unit/test_vcs.py                            |    5 +
+ tests/unit/test_wheel.py                          |    5 +
+ tests/unit/test_wheel_builder.py                  |    5 +
+ 25 files changed, 130 insertions(+), 56 deletions(-)
+
+--- a/tests/lib/server.py
++++ b/tests/lib/server.py
+@@ -5,7 +5,10 @@ import threading
+ from contextlib import contextmanager
+ from textwrap import dedent
+ 
+-from mock import Mock
++try:
++    from unittest.mock import Mock
++except ImportError:
++    from mock import Mock
+ from pip._vendor.contextlib2 import nullcontext
+ from werkzeug.serving import WSGIRequestHandler
+ from werkzeug.serving import make_server as _make_server
+--- a/tests/unit/test_base_command.py
++++ b/tests/unit/test_base_command.py
+@@ -3,7 +3,10 @@ import os
+ import time
+ 
+ import pytest
+-from mock import Mock, patch
++try:
++    from unittest.mock import Mock, patch
++except ImportError:
++    from mock import Mock, patch
+ 
+ from pip._internal.cli.base_command import Command
+ from pip._internal.cli.status_codes import SUCCESS
+--- a/tests/unit/test_commands.py
++++ b/tests/unit/test_commands.py
+@@ -1,5 +1,8 @@
+ import pytest
+-from mock import patch
++try:
++    from unittest.mock import patch
++except ImportError:
++    from mock import patch
+ 
+ from pip._internal.cli.req_command import (
+     IndexGroupCommand,
+--- a/tests/unit/test_network_cache.py
++++ b/tests/unit/test_network_cache.py
+@@ -1,7 +1,10 @@
+ import os
+ 
+ import pytest
+-from mock import Mock
++try:
++    from unittest.mock import Mock
++except ImportError:
++    from mock import Mock
+ from pip._vendor.cachecontrol.caches import FileCache
+ 
+ from pip._internal.network.cache import SafeFileCache
+--- a/tests/unit/test_req_file.py
++++ b/tests/unit/test_req_file.py
+@@ -5,7 +5,10 @@ import subprocess
+ import textwrap
+ 
+ import pytest
+-from mock import patch
++try:
++    from unittest.mock import patch
++except ImportError:
++    from mock import patch
+ from pip._vendor.six import PY2
+ from pretend import stub
+ 
+--- a/tests/unit/test_resolution_legacy_resolver.py
++++ b/tests/unit/test_resolution_legacy_resolver.py
+@@ -1,6 +1,9 @@
+ import logging
+ 
+-import mock
++try:
++    from unittest.mock import Mock
++except ImportError:
++    from mock import Mock
+ import pytest
+ from pip._vendor import pkg_resources
+ 
+@@ -189,7 +192,7 @@ class TestYankedWarning(object):
+ 
+         return Resolver(
+             finder=finder,
+-            preparer=mock.Mock(),  # Not used.
++            preparer=Mock(),  # Not used.
+             make_install_req=install_req_from_line,
+             wheel_cache=None,
+             use_user_site=False,
+--- a/tests/unit/test_target_python.py
++++ b/tests/unit/test_target_python.py
+@@ -1,5 +1,8 @@
+ import pytest
+-from mock import patch
++try:
++    from unittest.mock import patch
++except ImportError:
++    from mock import patch
+ 
+ from pip._internal.models.target_python import TargetPython
+ from tests.lib import CURRENT_PY_VERSION_INFO, pyversion
+--- a/tests/unit/test_utils.py
++++ b/tests/unit/test_utils.py
+@@ -14,7 +14,10 @@ import time
+ from io import BytesIO
+ 
+ import pytest
+-from mock import Mock, patch
++try:
++    from unittest.mock import Mock, patch
++except ImportError:
++    from mock import Mock, patch
+ 
+ from pip._internal.exceptions import (
+     HashMismatch,
+--- a/tests/unit/test_utils_compatibility_tags.py
++++ b/tests/unit/test_utils_compatibility_tags.py
+@@ -1,7 +1,10 @@
+ import sysconfig
+ 
+ import pytest
+-from mock import patch
++try:
++    from unittest.mock import patch
++except ImportError:
++    from mock import patch
+ 
+ from pip._internal.utils import compatibility_tags
+ 
+--- a/tests/unit/test_vcs.py
++++ b/tests/unit/test_vcs.py
+@@ -2,7 +2,10 @@ import os
+ from unittest import TestCase
+ 
+ import pytest
+-from mock import patch
++try:
++    from unittest.mock import patch
++except ImportError:
++    from mock import patch
+ from pip._vendor.packaging.version import parse as parse_version
+ 
+ from pip._internal.exceptions import BadCommand, InstallationError
+--- a/tests/unit/test_wheel.py
++++ b/tests/unit/test_wheel.py
+@@ -8,7 +8,10 @@ import textwrap
+ from email import message_from_string
+ 
+ import pytest
+-from mock import patch
++try:
++    from unittest.mock import patch
++except ImportError:
++    from mock import patch
+ from pip._vendor.packaging.requirements import Requirement
+ 
+ from pip._internal.exceptions import InstallationError
+--- a/tests/unit/test_wheel_builder.py
++++ b/tests/unit/test_wheel_builder.py
+@@ -1,7 +1,10 @@
+ import logging
+ 
+ import pytest
+-from mock import patch
++try:
++    from unittest.mock import patch
++except ImportError:
++    from mock import patch
+ 
+ from pip._internal import wheel_builder
+ from pip._internal.models.link import Link
+--- a/tests/functional/test_help.py
++++ b/tests/functional/test_help.py
+@@ -1,5 +1,8 @@
+ import pytest
+-from mock import Mock
++try:
++    from unittest.mock import Mock
++except ImportError:
++    from mock import Mock
+ 
+ from pip._internal.cli.status_codes import ERROR, SUCCESS
+ from pip._internal.commands import commands_dict, create_command
+--- a/tests/unit/resolution_resolvelib/test_resolver.py
++++ b/tests/unit/resolution_resolvelib/test_resolver.py
+@@ -1,4 +1,7 @@
+-import mock
++try:
++    from unittest.mock import Mock
++except ImportError:
++    from mock import Mock
+ import pytest
+ from pip._vendor.packaging.utils import canonicalize_name
+ from pip._vendor.resolvelib.resolvers import Result
+@@ -18,7 +21,7 @@ def resolver(preparer, finder):
+         preparer=preparer,
+         finder=finder,
+         wheel_cache=None,
+-        make_install_req=mock.Mock(),
++        make_install_req=Mock(),
+         use_user_site="not-used",
+         ignore_dependencies="not-used",
+         ignore_installed="not-used",
+--- a/tests/unit/test_check.py
++++ b/tests/unit/test_check.py
+@@ -1,7 +1,10 @@
+ """Unit Tests for pip's dependency checking logic
+ """
+ 
+-import mock
++try:
++    from unittest.mock import MagicMock
++except ImportError:
++    from mock import MagicMock
+ 
+ from pip._internal.operations import check
+ 
+@@ -9,7 +12,7 @@ from pip._internal.operations import che
+ class TestInstalledDistributionsCall(object):
+ 
+     def test_passes_correct_default_kwargs(self, monkeypatch):
+-        my_mock = mock.MagicMock(return_value=[])
++        my_mock = MagicMock(return_value=[])
+         monkeypatch.setattr(check, "get_installed_distributions", my_mock)
+ 
+         check.create_package_set_from_installed()
+@@ -17,7 +20,7 @@ class TestInstalledDistributionsCall(obj
+         my_mock.assert_called_with(local_only=False, skip=())
+ 
+     def test_passes_any_given_kwargs(self, monkeypatch):
+-        my_mock = mock.MagicMock(return_value=[])
++        my_mock = MagicMock(return_value=[])
+         monkeypatch.setattr(check, "get_installed_distributions", my_mock)
+ 
+         obj = object()
+--- a/tests/unit/test_collector.py
++++ b/tests/unit/test_collector.py
+@@ -4,10 +4,12 @@ import re
+ import uuid
+ from textwrap import dedent
+ 
+-import mock
++try:
++    from unittest.mock import Mock, call, patch
++except ImportError:
++    from mock import Mock, call, patch
+ import pretend
+ import pytest
+-from mock import Mock, patch
+ from pip._vendor import html5lib, requests
+ from pip._vendor.six.moves.urllib import request as urllib_request
+ 
+@@ -46,7 +48,7 @@ def test_get_html_response_archive_to_na
+     does not allow "poking" without getting data.
+     """
+     with pytest.raises(_NotHTTP):
+-        _get_html_response(url, session=mock.Mock(PipSession))
++        _get_html_response(url, session=Mock(PipSession))
+ 
+ 
+ @pytest.mark.parametrize(
+@@ -56,15 +58,15 @@ def test_get_html_response_archive_to_na
+         ("https://pypi.org/pip-18.0.tar.gz", "application/gzip"),
+     ],
+ )
+-@mock.patch("pip._internal.index.collector.raise_for_status")
++@patch("pip._internal.index.collector.raise_for_status")
+ def test_get_html_response_archive_to_http_scheme(mock_raise_for_status, url,
+                                                   content_type):
+     """
+     `_get_html_response()` should send a HEAD request on an archive-like URL
+     if the scheme supports it, and raise `_NotHTML` if the response isn't HTML.
+     """
+-    session = mock.Mock(PipSession)
+-    session.head.return_value = mock.Mock(**{
++    session = Mock(PipSession)
++    session.head.return_value = Mock(**{
+         "request.method": "HEAD",
+         "headers": {"Content-Type": content_type},
+     })
+@@ -73,7 +75,7 @@ def test_get_html_response_archive_to_ht
+         _get_html_response(url, session=session)
+ 
+     session.assert_has_calls([
+-        mock.call.head(url, allow_redirects=True),
++        call.head(url, allow_redirects=True),
+     ])
+     mock_raise_for_status.assert_called_once_with(session.head.return_value)
+     assert ctx.value.args == (content_type, "HEAD")
+@@ -93,7 +95,7 @@ def test_get_html_page_invalid_content_t
+     caplog.set_level(logging.WARNING)
+     link = Link(url)
+ 
+-    session = mock.Mock(PipSession)
++    session = Mock(PipSession)
+ 
+     assert _get_html_page(link, session=session) is None
+     assert ('pip._internal.index.collector',
+@@ -111,7 +113,7 @@ def test_get_html_page_invalid_content_t
+         "https://pypi.org/pip-18.0.tar.gz",
+     ],
+ )
+-@mock.patch("pip._internal.index.collector.raise_for_status")
++@patch("pip._internal.index.collector.raise_for_status")
+ def test_get_html_response_archive_to_http_scheme_is_html(
+     mock_raise_for_status, url
+ ):
+@@ -119,25 +121,25 @@ def test_get_html_response_archive_to_ht
+     `_get_html_response()` should work with archive-like URLs if the HEAD
+     request is responded with text/html.
+     """
+-    session = mock.Mock(PipSession)
+-    session.head.return_value = mock.Mock(**{
++    session = Mock(PipSession)
++    session.head.return_value = Mock(**{
+         "request.method": "HEAD",
+         "headers": {"Content-Type": "text/html"},
+     })
+-    session.get.return_value = mock.Mock(headers={"Content-Type": "text/html"})
++    session.get.return_value = Mock(headers={"Content-Type": "text/html"})
+ 
+     resp = _get_html_response(url, session=session)
+ 
+     assert resp is not None
+     assert session.mock_calls == [
+-        mock.call.head(url, allow_redirects=True),
+-        mock.call.get(url, headers={
++        call.head(url, allow_redirects=True),
++        call.get(url, headers={
+             "Accept": "text/html", "Cache-Control": "max-age=0",
+         }),
+     ]
+     assert mock_raise_for_status.mock_calls == [
+-        mock.call(session.head.return_value),
+-        mock.call(resp)
++        call(session.head.return_value),
++        call(resp)
+     ]
+ 
+ 
+@@ -149,16 +151,16 @@ def test_get_html_response_archive_to_ht
+         "https://python.org/sitemap.xml",
+     ],
+ )
+-@mock.patch("pip._internal.index.collector.raise_for_status")
++@patch("pip._internal.index.collector.raise_for_status")
+ def test_get_html_response_no_head(mock_raise_for_status, url):
+     """
+     `_get_html_response()` shouldn't send a HEAD request if the URL does not
+     look like an archive, only the GET request that retrieves data.
+     """
+-    session = mock.Mock(PipSession)
++    session = Mock(PipSession)
+ 
+     # Mock the headers dict to ensure it is accessed.
+-    session.get.return_value = mock.Mock(headers=mock.Mock(**{
++    session.get.return_value = Mock(headers=Mock(**{
+         "get.return_value": "text/html",
+     }))
+ 
+@@ -167,25 +169,25 @@ def test_get_html_response_no_head(mock_
+     assert resp is not None
+     assert session.head.call_count == 0
+     assert session.get.mock_calls == [
+-        mock.call(url, headers={
++        call(url, headers={
+             "Accept": "text/html", "Cache-Control": "max-age=0",
+         }),
+-        mock.call().headers.get("Content-Type", ""),
++        call().headers.get("Content-Type", ""),
+     ]
+     mock_raise_for_status.assert_called_once_with(resp)
+ 
+ 
+-@mock.patch("pip._internal.index.collector.raise_for_status")
++@patch("pip._internal.index.collector.raise_for_status")
+ def test_get_html_response_dont_log_clear_text_password(mock_raise_for_status,
+                                                         caplog):
+     """
+     `_get_html_response()` should redact the password from the index URL
+     in its DEBUG log message.
+     """
+-    session = mock.Mock(PipSession)
++    session = Mock(PipSession)
+ 
+     # Mock the headers dict to ensure it is accessed.
+-    session.get.return_value = mock.Mock(headers=mock.Mock(**{
++    session.get.return_value = Mock(headers=Mock(**{
+         "get.return_value": "text/html",
+     }))
+ 
+@@ -451,7 +453,7 @@ def test_parse_links_caches_same_page_by
+     assert 'pkg2' in parsed_links_3[0].url
+ 
+ 
+-@mock.patch("pip._internal.index.collector.raise_for_status")
++@patch("pip._internal.index.collector.raise_for_status")
+ def test_request_http_error(mock_raise_for_status, caplog):
+     caplog.set_level(logging.DEBUG)
+     link = Link('http://localhost')
+@@ -504,7 +506,7 @@ def test_get_html_page_invalid_scheme(ca
+     Only file:, http:, https:, and ftp: are allowed.
+     """
+     with caplog.at_level(logging.WARNING):
+-        page = _get_html_page(Link(url), session=mock.Mock(PipSession))
++        page = _get_html_page(Link(url), session=Mock(PipSession))
+ 
+     assert page is None
+     assert caplog.record_tuples == [
+@@ -524,7 +526,7 @@ def test_get_html_page_invalid_scheme(ca
+         "application/json",
+     ],
+ )
+-@mock.patch("pip._internal.index.collector.raise_for_status")
++@patch("pip._internal.index.collector.raise_for_status")
+ def test_get_html_page_invalid_content_type(mock_raise_for_status,
+                                             caplog, content_type):
+     """`_get_html_page()` should warn if an invalid content-type is given.
+@@ -534,8 +536,8 @@ def test_get_html_page_invalid_content_t
+     url = 'https://pypi.org/simple/pip'
+     link = Link(url)
+ 
+-    session = mock.Mock(PipSession)
+-    session.get.return_value = mock.Mock(**{
++    session = Mock(PipSession)
++    session.get.return_value = Mock(**{
+         "request.method": "GET",
+         "headers": {"Content-Type": content_type},
+     })
+@@ -573,14 +575,14 @@ def test_get_html_page_directory_append_
+     )
+     expected_url = "{}/index.html".format(dir_url.rstrip("/"))
+ 
+-    session = mock.Mock(PipSession)
++    session = Mock(PipSession)
+     fake_response = make_fake_html_response(expected_url)
+-    mock_func = mock.patch("pip._internal.index.collector._get_html_response")
++    mock_func = patch("pip._internal.index.collector._get_html_response")
+     with mock_func as mock_func:
+         mock_func.return_value = fake_response
+         actual = _get_html_page(Link(dir_url), session=session)
+         assert mock_func.mock_calls == [
+-            mock.call(expected_url, session=session),
++            call(expected_url, session=session),
+         ], 'actual calls: {}'.format(mock_func.mock_calls)
+ 
+         assert actual.content == fake_response.content
+--- a/tests/unit/test_command_install.py
++++ b/tests/unit/test_command_install.py
+@@ -1,7 +1,10 @@
+ import errno
+ 
+ import pytest
+-from mock import patch
++try:
++    from unittest.mock import patch
++except ImportError:
++    from mock import patch
+ from pip._vendor.packaging.requirements import Requirement
+ 
+ from pip._internal.commands.install import (
+--- a/tests/unit/test_configuration.py
++++ b/tests/unit/test_configuration.py
+@@ -4,7 +4,10 @@
+ import os
+ 
+ import pytest
+-from mock import MagicMock
++try:
++    from unittest.mock import MagicMock
++except ImportError:
++    from mock import MagicMock
+ 
+ from pip._internal.configuration import get_configuration_files, kinds
+ from pip._internal.exceptions import ConfigurationError
+--- a/tests/unit/test_direct_url_helpers.py
++++ b/tests/unit/test_direct_url_helpers.py
+@@ -1,6 +1,9 @@
+ from functools import partial
+ 
+-from mock import MagicMock, patch
++try:
++    from unittest.mock import MagicMock, patch
++except ImportError:
++    from mock import MagicMock, patch
+ 
+ from pip._internal.models.direct_url import (
+     DIRECT_URL_METADATA_NAME,
+--- a/tests/unit/test_finder.py
++++ b/tests/unit/test_finder.py
+@@ -2,7 +2,10 @@ import logging
+ import sys
+ 
+ import pytest
+-from mock import Mock, patch
++try:
++    from unittest.mock import Mock, patch
++except ImportError:
++    from mock import Mock, patch
+ from pip._vendor.packaging.specifiers import SpecifierSet
+ from pip._vendor.packaging.tags import Tag
+ from pkg_resources import parse_version
+--- a/tests/unit/test_locations.py
++++ b/tests/unit/test_locations.py
+@@ -9,7 +9,10 @@ import sys
+ import tempfile
+ 
+ import pytest
+-from mock import Mock
++try:
++    from unittest.mock import Mock
++except ImportError:
++    from mock import Mock
+ 
+ from pip._internal.locations import distutils_scheme
+ 
+--- a/tests/unit/test_logging.py
++++ b/tests/unit/test_logging.py
+@@ -5,7 +5,10 @@ import time
+ from threading import Thread
+ 
+ import pytest
+-from mock import patch
++try:
++    from unittest.mock import patch
++except ImportError:
++    from mock import patch
+ from pip._vendor.six import PY2
+ 
+ from pip._internal.utils.logging import (
+--- a/tests/unit/test_operations_prepare.py
++++ b/tests/unit/test_operations_prepare.py
+@@ -4,7 +4,10 @@ from shutil import rmtree
+ from tempfile import mkdtemp
+ 
+ import pytest
+-from mock import Mock, patch
++try:
++    from unittest.mock import Mock, patch
++except ImportError:
++    from mock import Mock, patch
+ 
+ from pip._internal.exceptions import HashMismatch
+ from pip._internal.models.link import Link
+--- a/tests/unit/test_req.py
++++ b/tests/unit/test_req.py
+@@ -6,7 +6,10 @@ import tempfile
+ from functools import partial
+ 
+ import pytest
+-from mock import patch
++try:
++    from unittest.mock import patch
++except ImportError:
++    from mock import patch
+ from pip._vendor import pkg_resources
+ from pip._vendor.packaging.markers import Marker
+ from pip._vendor.packaging.requirements import Requirement
+--- a/tests/unit/test_req_uninstall.py
++++ b/tests/unit/test_req_uninstall.py
+@@ -2,7 +2,10 @@ import os
+ import sys
+ 
+ import pytest
+-from mock import Mock
++try:
++    from unittest.mock import Mock
++except ImportError:
++    from mock import Mock
+ 
+ import pip._internal.req.req_uninstall
+ from pip._internal.req.req_uninstall import (
