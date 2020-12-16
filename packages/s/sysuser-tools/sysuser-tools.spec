@@ -38,7 +38,9 @@ Generate auto provides for system users.
 %package -n sysuser-shadow
 Summary:        Tool to execute sysusers.d with shadow utilities
 Group:          System/Packages
-Requires:       useradd_or_adduser_dep
+PreReq:         useradd_or_adduser_dep
+# prefer original shadow over busybox by default
+Suggests:       shadow
 
 %description -n sysuser-shadow
 This package contians a tool, which expects as input a sysusers.d

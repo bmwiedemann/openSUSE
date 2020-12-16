@@ -13,8 +13,7 @@
 #
 ###
 
-%sysusers_requires	Requires(pre): sysuser-shadow \
-Suggests:        shadow
+%sysusers_requires	Requires(pre): sysuser-shadow
 
 %sysusers_generate_pre()	\
 %{_prefix}/lib/rpm/sysusers-generate-pre  "%1" > "%2".pre

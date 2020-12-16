@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  4 10:54:00 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- useradd_or_adduser_dep must be PreReq so ordering makes sure it gets
+  installed before.
+- suggest shadow where useradd_or_adduser_dep is actually required
+
+-------------------------------------------------------------------
 Fri Sep 18 10:32:53 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Avoid useless use of cat
