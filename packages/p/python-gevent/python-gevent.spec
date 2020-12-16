@@ -45,7 +45,6 @@ BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module dnspython}
 BuildRequires:  %{python_module greenlet >= 0.4.17}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module objgraph}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module requests}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 11 23:52:16 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- mock dependency was actually not needed at all
+
+-------------------------------------------------------------------
 Thu Oct  8 10:03:45 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Disable more tests failing for Python 3.6
