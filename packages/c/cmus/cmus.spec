@@ -19,7 +19,7 @@
 
 %bcond_without sndio
 Name:           cmus
-Version:        2.8.0~20200120.gd1290d5
+Version:        2.8.0~20201215.gba1c3f0
 Release:        0
 Summary:        Text-mode music player
 License:        GPL-2.0-only

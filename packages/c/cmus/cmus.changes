@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Dec 16 02:26:12 UTC 2020 - 9@cirno.systems
+
+- Update to version 2.8.0~20201215.gba1c3f0:
+  * Implement mouse events for status bar (#1013)
+  * Add tree width options (#1018)
+  * Stop after queue (resolves #696) (#1006)
+  * play pregaps of songs by adding them at the end of the previous song (#983)
+  * properly calculate size of print string (#987)
+  * Support R128_TRACK_GAIN / R128_ALBUM_GAIN tags (#994)
+  * Adding "--server SOCKET --passwd PASSWORD" section (#958)
+  * Add -n option to win-add-{l,p,Q,q} to prevent selecting the next item (#1017)
+  * Add support for 'DISCNUMBER' REM-field in CUE-sheets (#982)
+  * Add -f, --file to cmus-remote (#984)
+  * Add gruvbox-warm.theme (#1014)
+  * Update zsh completion (#985) (#1019)
+  * Make mouse behavior on playlist window consistent with library (#1011)
+  * Fix type of MPRIS2 fields title and album (#972)
+  * docs: fix simple typo, speacial -> special (#1002)
+
+-------------------------------------------------------------------
 Fri Apr 10 17:57:41 UTC 2020 - 9@cirno.systems
 
 - Update to version 2.8.0~20200120.gd1290d5:
