@@ -1,7 +1,7 @@
 #
 # spec file for package python-pypsexec
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pypsexec
-Version:        0.1.0
+Version:        0.2.0
 Release:        0
-Summary:        Python library to run commands on a remote Windows host using SMB/RPC
+Summary:        Run commands on a remote Windows host using SMB/RPC
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jborean93/pypsexec
-#Source:         https://files.pythonhosted.org/packages/source/p/pypsexec/pypsexec-%%{version}.tar.gz
 Source:         https://github.com/jborean93/pypsexec/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -55,7 +53,7 @@ executable commands in a similar fashion to the popular PsExec tool.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_version}
+%pytest
 
 %files %{python_files}
 %license LICENSE
