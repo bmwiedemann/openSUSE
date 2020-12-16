@@ -40,6 +40,12 @@ Patch1:         pycurl-libssh.patch
 # PATCH-FIX-OPENSUSE python-pycurl-7.43.0-tls-backend.patch -- do not run runtime tests to compare linked libs
 Patch2:         python-pycurl-7.43.0-tls-backend.patch
 Patch3:         disable_randomly_failing_tests.patch
+# PATCH-FEATURE-UPSTREAM remove_nose.patch gh#pycurl/pycurl#655 mcepl@suse.com
+# remove dependency on nose
+Patch4:         remove_nose.patch
+# PATCH-FIX-OPENSUSE make-leap15-compat.patch mcepl@suse.com
+# Make tests passing with Leap 15.2
+Patch5:         make-leap15-compat.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -50,7 +56,7 @@ BuildRequires:  pkgconfig(openssl)
 %if %{with test}
 BuildRequires:  %{python_module bottle}
 BuildRequires:  %{python_module flaky}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 %endif
 %ifpython2
 Provides:       %{oldpython}-curl = %{version}
@@ -103,19 +109,18 @@ rm -f *.so
 make %{?_smp_mflags}
 popd
 # exclude certain tests
-test_flags='!online,!occasionally_failing'
+test_flags='online or occasionally_failing'
 if ! pkg-config --variable=supported_features libcurl|grep -qw HTTP2; then
-    test_flags="$test_flags,\!http2"
+    test_flags="$test_flags or http2"
 fi
 if ! pkg-config --variable=supported_protocols libcurl|grep -qw SCP; then
-    test_flags="$test_flags,\!ssh"
+    test_flags="$test_flags or ssh"
 fi
 # test_getinfo are failing with new bottle
-%{python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} \
-nosetests-%{$python_bin_suffix} -v --with-flaky -a "$test_flags" -e 'test_getinfo'
-}
+%pytest_arch -s -k "not ($test_flags or test_getinfo)"
 rm -rf %{buildroot}%{_prefix}/lib/debug %{buildroot}%{_libdir}/python*
-%endif # test
+# test
+%endif
 
 %if ! %{with test}
 %files %{python_files}

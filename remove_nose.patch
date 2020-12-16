@@ -1,0 +1,933 @@
+From 67d656ab89a3056eb91cecadd521cc028129a794 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Mon, 14 Sep 2020 15:42:16 +1000
+Subject: [PATCH 1/2] Switch from nose to pytest
+
+With nose being unmaintained for a long while, switch to pytest to run
+the test suite.
+---
+ Makefile                       |  2 +-
+ README.rst                     |  4 ++--
+ appveyor.yml                   |  2 +-
+ pytest.ini                     |  9 ++++++++
+ requirements-dev.txt           |  7 ++-----
+ tests/certinfo_test.py         |  5 ++---
+ tests/curl_object_test.py      | 22 ++++++++------------
+ tests/global_init_test.py      |  9 ++++----
+ tests/header_test.py           | 10 ++++-----
+ tests/multi_test.py            | 10 ++++-----
+ tests/option_constants_test.py | 25 +++++++++++-----------
+ tests/procmgr.py               |  6 +++---
+ tests/reload_test.py           |  4 ++--
+ tests/resolve_test.py          |  3 +--
+ tests/run.sh                   |  5 ++---
+ tests/setopt_string_test.py    |  6 +++---
+ tests/setopt_test.py           | 14 ++++++-------
+ tests/setopt_unicode_test.py   |  6 +++---
+ tests/setup_test.py            |  3 +--
+ tests/share_test.py            | 10 ++++-----
+ tests/ssh_key_cb_test.py       |  8 +++----
+ tests/util.py                  | 38 +++++++++++-----------------------
+ 22 files changed, 95 insertions(+), 113 deletions(-)
+ create mode 100644 pytest.ini
+
+--- a/Makefile
++++ b/Makefile
+@@ -6,7 +6,7 @@
+ SHELL = /bin/sh
+ 
+ PYTHON = python
+-NOSETESTS = nosetests
++PYTEST = pytest
+ PYFLAKES = pyflakes
+ 
+ # -c on linux
+--- a/README.rst
++++ b/README.rst
+@@ -93,7 +93,7 @@ PycURL comes with an automated test suit
+ 
+     make test
+ 
+-The suite depends on packages `nose`_ and `bottle`_, as well as `vsftpd`_.
++The suite depends on packages `pytest`_ and `bottle`_, as well as `vsftpd`_.
+ 
+ Some tests use vsftpd configured to accept anonymous uploads. These tests
+ are not run by default. As configured, vsftpd will allow reads and writes to
+@@ -106,7 +106,7 @@ vsftpd tests you must explicitly set PYC
+     # specify full path to vsftpd
+     export PYCURL_VSFTPD_PATH=/usr/local/libexec/vsftpd
+ 
+-.. _nose: https://nose.readthedocs.org/
++.. _pytest: https://pytest.org/
+ .. _bottle: http://bottlepy.org/
+ .. _vsftpd: http://vsftpd.beasts.org/
+ 
+--- /dev/null
++++ b/pytest.ini
+@@ -0,0 +1,10 @@
++[pytest]
++python_files = tests/*.py
++norecursedirs = examples win
++markers =
++    ssh: mark a test as requiring ssh
++    online: mark a test as requiring internet access
++    gssapi: mark a test as requiring GSSAPI
++    http2: mark a test as requiring HTTP/2
++    standalone: mark a test as being standalone
++    occasionally_failing: mark a test as unstable
+--- a/requirements-dev.txt
++++ b/requirements-dev.txt
+@@ -1,10 +1,7 @@
+ # bottle 0.12.17 changed behavior
+ # https://github.com/pycurl/pycurl/issues/573
+ bottle==0.12.16
+-# nose 1.3.1 is broken on python 3:
+-# https://github.com/nose-devs/nose/issues/780
+-nose>=1.3.2
+ flaky
+ pyflakes
+-nose-show-skipped
+-sphinx
+\ No newline at end of file
++pytest>=5
++sphinx
+--- a/tests/certinfo_test.py
++++ b/tests/certinfo_test.py
+@@ -4,7 +4,6 @@
+ 
+ import pycurl
+ import unittest
+-import nose.plugins.skip
+ 
+ from . import appmanager
+ from . import util
+@@ -44,7 +43,7 @@ class CertinfoTest(unittest.TestCase):
+     def test_request_with_certinfo(self):
+         # CURLOPT_CERTINFO only works with OpenSSL
+         if 'openssl' not in pycurl.version.lower():
+-            raise nose.plugins.skip.SkipTest('libcurl does not use openssl')
++            raise unittest.SkipTest('libcurl does not use openssl')
+ 
+         self.curl.setopt(pycurl.URL, 'https://localhost:8383/success')
+         sio = util.BytesIO()
+@@ -72,7 +71,7 @@ class CertinfoTest(unittest.TestCase):
+     def test_getinfo_raw_certinfo(self):
+         # CURLOPT_CERTINFO only works with OpenSSL
+         if 'openssl' not in pycurl.version.lower():
+-            raise nose.plugins.skip.SkipTest('libcurl does not use openssl')
++            raise unittest.SkipTest('libcurl does not use openssl')
+ 
+         self.curl.setopt(pycurl.URL, 'https://localhost:8383/success')
+         sio = util.BytesIO()
+--- a/tests/curl_object_test.py
++++ b/tests/curl_object_test.py
+@@ -3,8 +3,8 @@
+ # vi:ts=4:et
+ 
+ import pycurl
++import pytest
+ import unittest
+-import nose.tools
+ 
+ class ExplicitConstructionCurlObjectTest(unittest.TestCase):
+     def test_close(self):
+@@ -17,14 +17,14 @@ class ExplicitConstructionCurlObjectTest
+         c.close()
+ 
+     # positional arguments are rejected
+-    @nose.tools.raises(TypeError)
+     def test_positional_arguments(self):
+-        pycurl.Curl(1)
++        with pytest.raises(TypeError):
++           pycurl.Curl(1)
+ 
+     # keyword arguments are rejected
+-    @nose.tools.raises(TypeError)
+     def test_keyword_arguments(self):
+-        pycurl.Curl(a=1)
++        with pytest.raises(TypeError):
++            pycurl.Curl(a=1)
+ 
+ class CurlObjectTest(unittest.TestCase):
+     def setUp(self):
+@@ -144,14 +144,10 @@ class CurlObjectTest(unittest.TestCase):
+         obj3 = cls()
+         self.assertEqual(old_value, getattr(obj3, name))
+         
+-    # I would have liked to assert on the message of the exception,
+-    # but it appears nose has no support for this.
+-    @nose.tools.raises(AttributeError)
+     def test_bogus_attribute_access(self):
+-        self.curl.foo
++        with pytest.raises(AttributeError, match='trying to obtain.*'):
++           self.curl.foo
+         
+-    # I would have liked to assert on the message of the exception,
+-    # but it appears nose has no support for this.
+-    @nose.tools.raises(AttributeError)
+     def test_bogus_attribute_delete(self):
+-        del self.curl.foo
++        with pytest.raises(AttributeError, match='trying to delete.*'):
++            del self.curl.foo
+--- a/tests/global_init_test.py
++++ b/tests/global_init_test.py
+@@ -3,9 +3,8 @@
+ # vi:ts=4:et
+ 
+ import pycurl
++import pytest
+ import unittest
+-import nose.tools
+-import nose.plugins.skip
+ 
+ from . import util
+ 
+@@ -19,13 +18,13 @@ class GlobalInitTest(unittest.TestCase):
+         # the GLOBAL_ACK_EINTR flag was introduced in libcurl-7.30, but can also
+         # be backported for older versions of libcurl at the distribution level
+         if util.pycurl_version_less_than(7, 30) and not hasattr(pycurl, 'GLOBAL_ACK_EINTR'):
+-            raise nose.plugins.skip.SkipTest('libcurl < 7.30.0 or no GLOBAL_ACK_EINTR')
++            raise unittest.SkipTest('libcurl < 7.30.0 or no GLOBAL_ACK_EINTR')
+         
+         # initialize libcurl with the GLOBAL_ACK_EINTR flag
+         pycurl.global_init(pycurl.GLOBAL_ACK_EINTR)
+         pycurl.global_cleanup()
+     
+-    @nose.tools.raises(ValueError)
+     def test_global_init_bogus(self):
+         # initialize libcurl with bogus flags
+-        pycurl.global_init(0xffff)
++        with pytest.raises(ValueError):
++            pycurl.global_init(0xffff)
+--- a/tests/header_test.py
++++ b/tests/header_test.py
+@@ -3,9 +3,9 @@
+ # vi:ts=4:et
+ 
+ from . import localhost
++import pytest
+ import pycurl
+ import unittest
+-import nose.tools
+ 
+ from . import appmanager
+ from . import util
+@@ -30,13 +30,13 @@ class HeaderTest(unittest.TestCase):
+ 
+     # on python 2 unicode is accepted in strings because strings are byte strings
+     @util.only_python3
+-    @nose.tools.raises(UnicodeEncodeError)
+     def test_unicode_string_header(self):
+-        self.check('x-test-header: Москва', 'Москва')
++        with pytest.raises(UnicodeEncodeError):
++            self.check('x-test-header: Москва', 'Москва')
+ 
+-    @nose.tools.raises(UnicodeEncodeError)
+     def test_unicode_unicode_header(self):
+-        self.check(util.u('x-test-header: Москва'), util.u('Москва'))
++        with pytest.raises(UnicodeEncodeError):
++            self.check(util.u('x-test-header: Москва'), util.u('Москва'))
+ 
+     def test_encoded_unicode_header(self):
+         self.check(util.u('x-test-header: Москва').encode('utf-8'), util.u('Москва'))
+--- a/tests/multi_test.py
++++ b/tests/multi_test.py
+@@ -4,8 +4,8 @@
+ 
+ from . import localhost
+ import pycurl
++import pytest
+ import unittest
+-import nose.tools
+ import select
+ 
+ from . import appmanager
+@@ -370,11 +370,11 @@ class MultiTest(unittest.TestCase):
+         m.close()
+ 
+     # positional arguments are rejected
+-    @nose.tools.raises(TypeError)
+     def test_positional_arguments(self):
+-        pycurl.CurlMulti(1)
++        with pytest.raises(TypeError):
++            pycurl.CurlMulti(1)
+ 
+     # keyword arguments are rejected
+-    @nose.tools.raises(TypeError)
+     def test_keyword_arguments(self):
+-        pycurl.CurlMulti(a=1)
++        with pytest.raises(TypeError):
++            pycurl.CurlMulti(a=1)
+--- a/tests/option_constants_test.py
++++ b/tests/option_constants_test.py
+@@ -4,9 +4,8 @@
+ 
+ from . import localhost
+ import pycurl
++import pytest
+ import unittest
+-import nose.plugins.attrib
+-import nose.plugins.skip
+ 
+ from . import util
+ 
+@@ -100,7 +99,7 @@ class OptionConstantsTest(unittest.TestC
+ 
+     # CURLOPT_SOCKS5_GSSAPI_SERVICE was introduced in libcurl-7.19.4
+     @util.min_libcurl(7, 19, 4)
+-    @nose.plugins.attrib.attr('gssapi')
++    @pytest.mark.gssapi
+     def test_socks5_gssapi_service_setopt(self):
+         curl = pycurl.Curl()
+         curl.setopt(curl.SOCKS5_GSSAPI_SERVICE, 'helloworld')
+@@ -108,7 +107,7 @@ class OptionConstantsTest(unittest.TestC
+ 
+     # CURLOPT_SOCKS5_GSSAPI_NEC was introduced in libcurl-7.19.4
+     @util.min_libcurl(7, 19, 4)
+-    @nose.plugins.attrib.attr('gssapi')
++    @pytest.mark.gssapi
+     def test_socks5_gssapi_nec_setopt(self):
+         curl = pycurl.Curl()
+         curl.setopt(curl.SOCKS5_GSSAPI_NEC, True)
+@@ -151,7 +150,7 @@ class OptionConstantsTest(unittest.TestC
+         curl.close()
+ 
+     @util.min_libcurl(7, 22, 0)
+-    @nose.plugins.attrib.attr('gssapi')
++    @pytest.mark.gssapi
+     def test_gssapi_delegation_options(self):
+         curl = pycurl.Curl()
+         curl.setopt(curl.GSSAPI_DELEGATION, curl.GSSAPI_DELEGATION_FLAG)
+@@ -187,14 +186,14 @@ class OptionConstantsTest(unittest.TestC
+         curl.close()
+ 
+     @util.min_libcurl(7, 43, 0)
+-    @nose.plugins.attrib.attr('gssapi')
++    @pytest.mark.gssapi
+     def test_proxy_service_name(self):
+         curl = pycurl.Curl()
+         curl.setopt(curl.PROXY_SERVICE_NAME, 'fakehttp')
+         curl.close()
+ 
+     @util.min_libcurl(7, 43, 0)
+-    @nose.plugins.attrib.attr('gssapi')
++    @pytest.mark.gssapi
+     def test_service_name(self):
+         curl = pycurl.Curl()
+         curl.setopt(curl.SERVICE_NAME, 'fakehttp')
+@@ -220,15 +219,15 @@ class OptionConstantsTest(unittest.TestC
+         curl.setopt(curl.UNIX_SOCKET_PATH, '/tmp/socket.sock')
+         curl.close()
+ 
+-    @nose.plugins.attrib.attr('http2')
+     @util.min_libcurl(7, 36, 0)
++    @pytest.mark.http2
+     def test_ssl_enable_alpn(self):
+         curl = pycurl.Curl()
+         curl.setopt(curl.SSL_ENABLE_ALPN, 1)
+         curl.close()
+ 
+-    @nose.plugins.attrib.attr('http2')
+     @util.min_libcurl(7, 36, 0)
++    @pytest.mark.http2
+     def test_ssl_enable_npn(self):
+         curl = pycurl.Curl()
+         curl.setopt(curl.SSL_ENABLE_NPN, 1)
+@@ -449,23 +448,23 @@ class OptionConstantsSettingTest(unittes
+         self.curl.setopt(self.curl.HTTP_VERSION, self.curl.CURL_HTTP_VERSION_1_0)
+         self.curl.setopt(self.curl.HTTP_VERSION, self.curl.CURL_HTTP_VERSION_1_1)
+ 
+-    @nose.plugins.attrib.attr('http2')
+     @util.min_libcurl(7, 33, 0)
++    @pytest.mark.http2
+     def test_http_version_2_0(self):
+         self.curl.setopt(self.curl.HTTP_VERSION, self.curl.CURL_HTTP_VERSION_2_0)
+ 
+-    @nose.plugins.attrib.attr('http2')
+     @util.min_libcurl(7, 43, 0)
++    @pytest.mark.http2
+     def test_http_version_2(self):
+         self.curl.setopt(self.curl.HTTP_VERSION, self.curl.CURL_HTTP_VERSION_2)
+ 
+-    @nose.plugins.attrib.attr('http2')
+     @util.min_libcurl(7, 47, 0)
++    @pytest.mark.http2
+     def test_http_version_2tls(self):
+         self.curl.setopt(self.curl.HTTP_VERSION, self.curl.CURL_HTTP_VERSION_2TLS)
+ 
+-    @nose.plugins.attrib.attr('http2')
+     @util.min_libcurl(7, 49, 0)
++    @pytest.mark.http2
+     def test_http_version_2prior_knowledge(self):
+         self.curl.setopt(self.curl.HTTP_VERSION, self.curl.CURL_HTTP_VERSION_2_PRIOR_KNOWLEDGE)
+ 
+--- a/tests/procmgr.py
++++ b/tests/procmgr.py
+@@ -3,7 +3,7 @@ import subprocess
+ import os
+ import sys
+ import signal
+-import nose.plugins.skip
++import unittest
+ 
+ from . import util, localhost
+ 
+@@ -47,7 +47,7 @@ def start_setup(cmd):
+     return do_start
+ 
+ # Example on FreeBSD:
+-# PYCURL_VSFTPD_PATH=/usr/local/libexec/vsftpd nosetests
++# PYCURL_VSFTPD_PATH=/usr/local/libexec/vsftpd pytest
+ 
+ if 'PYCURL_VSFTPD_PATH' in os.environ:
+     vsftpd_path = os.environ['PYCURL_VSFTPD_PATH']
+@@ -76,7 +76,7 @@ def vsftpd_setup():
+     setup_module = start_setup(cmd)
+     def do_setup_module():
+         if vsftpd_path is None:
+-            raise nose.plugins.skip.SkipTest('PYCURL_VSFTPD_PATH environment variable not set')
++            raise unittest.SkipTest('PYCURL_VSFTPD_PATH environment variable not set')
+         try:
+             setup_module()
+         except OSError:
+--- a/tests/reload_test.py
++++ b/tests/reload_test.py
+@@ -3,11 +3,11 @@
+ # vi:ts=4:et
+ 
+ import pycurl
++import pytest
+ import unittest
+-import nose.plugins.attrib
+ 
+ class ReloadTest(unittest.TestCase):
+-    @nose.plugins.attrib.attr('standalone')
++    @pytest.mark.standalone
+     def test_reloading(self):
+         try:
+             # python 2
+--- a/tests/resolve_test.py
++++ b/tests/resolve_test.py
+@@ -2,7 +2,6 @@
+ 
+ import pycurl
+ import unittest
+-import nose.plugins.skip
+ 
+ from . import appmanager
+ from . import util
+@@ -18,7 +17,7 @@ class ResolveTest(unittest.TestCase):
+ 
+     def test_resolve(self):
+         if util.pycurl_version_less_than(7, 21, 3) and not hasattr(pycurl, 'RESOLVE'):
+-            raise nose.plugins.skip.SkipTest('libcurl < 7.21.3 or no RESOLVE')
++            raise unittest.SkipTest('libcurl < 7.21.3 or no RESOLVE')
+ 
+         self.curl.setopt(pycurl.URL, 'http://p.localhost:8380/success')
+         self.curl.setopt(pycurl.RESOLVE, ['p.localhost:8380:127.0.0.1'])
+--- a/tests/run.sh
++++ b/tests/run.sh
+@@ -4,7 +4,7 @@ set -e
+ set -x
+ 
+ test -n "$PYTHON" || PYTHON=python
+-test -n "$NOSETESTS" || NOSETESTS=nosetests
++test -n "$PYTEST" || PYTEST=pytest
+ 
+ mkdir -p tests/tmp
+ export PYTHONSUFFIX=$($PYTHON -V 2>&1 |awk '{print $2}' |awk -F. '{print $1 "." $2}')
+@@ -25,5 +25,4 @@ if test "$CI" = true; then
+ fi
+ 
+ $PYTHON -c 'import pycurl; print(pycurl.version)'
+-$NOSETESTS -a \!standalone"$extra_attrs" --with-flaky --show-skipped "$@"
+-$NOSETESTS -a standalone --with-flaky --show-skipped "$@"
++$PYTEST
+--- a/tests/setopt_string_test.py
++++ b/tests/setopt_string_test.py
+@@ -3,9 +3,9 @@
+ # vi:ts=4:et
+ 
+ import pycurl
++import pytest
+ from . import localhost
+ import unittest
+-import nose.tools
+ 
+ from . import appmanager
+ from . import util
+@@ -26,6 +26,6 @@ class SetoptTest(unittest.TestCase):
+         self.curl.perform()
+         self.assertEqual('success', sio.getvalue().decode())
+ 
+-    @nose.tools.raises(TypeError)
+     def test_setopt_string_integer(self):
+-        self.curl.setopt_string(pycurl.VERBOSE, True)
++        with pytest.raises(TypeError):
++            self.curl.setopt_string(pycurl.VERBOSE, True)
+--- a/tests/setopt_test.py
++++ b/tests/setopt_test.py
+@@ -4,8 +4,8 @@
+ 
+ from . import localhost
+ import pycurl
++import pytest
+ import unittest
+-import nose.tools
+ 
+ from . import appmanager
+ from . import util
+@@ -27,21 +27,21 @@ class SetoptTest(unittest.TestCase):
+         # expect no exceptions raised
+         self.curl.setopt(pycurl.VERBOSE, 1)
+ 
+-    @nose.tools.raises(TypeError)
+     def test_string_value_for_integer_option(self):
+-        self.curl.setopt(pycurl.VERBOSE, "Hello, world!")
++        with pytest.raises(TypeError):
++            self.curl.setopt(pycurl.VERBOSE, "Hello, world!")
+ 
+     def test_string_value(self):
+         # expect no exceptions raised
+         self.curl.setopt(pycurl.URL, 'http://hello.world')
+ 
+-    @nose.tools.raises(TypeError)
+     def test_integer_value_for_string_option(self):
+-        self.curl.setopt(pycurl.URL, 1)
++        with pytest.raises(TypeError):
++            self.curl.setopt(pycurl.URL, 1)
+ 
+-    @nose.tools.raises(TypeError)
+     def test_float_value_for_integer_option(self):
+-        self.curl.setopt(pycurl.VERBOSE, 1.0)
++        with pytest.raises(TypeError):
++            self.curl.setopt(pycurl.VERBOSE, 1.0)
+ 
+     def test_httpheader_list(self):
+         self.curl.setopt(self.curl.HTTPHEADER, ['Accept:'])
+--- a/tests/setopt_unicode_test.py
++++ b/tests/setopt_unicode_test.py
+@@ -4,8 +4,8 @@
+ 
+ from . import localhost
+ import pycurl
++import pytest
+ import unittest
+-import nose.tools
+ 
+ from . import appmanager
+ from . import util
+@@ -22,9 +22,9 @@ class SetoptUnicodeTest(unittest.TestCas
+     def test_ascii_string(self):
+         self.check('p=test', 'test')
+ 
+-    @nose.tools.raises(UnicodeEncodeError)
+     def test_unicode_string(self):
+-        self.check(util.u('p=Москва'), util.u('Москва'))
++        with pytest.raises(UnicodeEncodeError):
++            self.check(util.u('p=Москва'), util.u('Москва'))
+ 
+     def test_unicode_encoded(self):
+         self.check(util.u('p=Москва').encode('utf8'), util.u('Москва'))
+--- a/tests/setup_test.py
++++ b/tests/setup_test.py
+@@ -6,7 +6,6 @@ from . import util
+ import setup as pycurl_setup
+ import unittest
+ import os, os.path, sys
+-import nose.plugins.skip
+ import functools
+ try:
+     # Python 2
+@@ -54,7 +53,7 @@ def min_python_version(*spec):
+         @functools.wraps(fn)
+         def decorated(*args, **kwargs):
+             if sys.version_info < spec:
+-                raise nose.plugins.skip.SkipTest('Minimum Python version %s required' % spec.join('.'))
++                raise unittest.SkipTest('Minimum Python version %s required' % spec.join('.'))
+ 
+             return fn(*args, **kwargs)
+         return decorated
+--- a/tests/share_test.py
++++ b/tests/share_test.py
+@@ -5,8 +5,8 @@
+ from . import localhost
+ import threading
+ import pycurl
++import pytest
+ import unittest
+-import nose.tools
+ 
+ from . import appmanager
+ from . import util
+@@ -58,11 +58,11 @@ class ShareTest(unittest.TestCase):
+         s.close()
+ 
+     # positional arguments are rejected
+-    @nose.tools.raises(TypeError)
+     def test_positional_arguments(self):
+-        pycurl.CurlShare(1)
++        with pytest.raises(TypeError):
++            pycurl.CurlShare(1)
+ 
+     # keyword arguments are rejected
+-    @nose.tools.raises(TypeError)
+     def test_keyword_arguments(self):
+-        pycurl.CurlShare(a=1)
++        with pytest.raises(TypeError):
++            pycurl.CurlShare(a=1)
+--- a/tests/ssh_key_cb_test.py
++++ b/tests/ssh_key_cb_test.py
+@@ -2,16 +2,16 @@
+ # -*- coding: utf-8 -*-
+ # vi:ts=4:et
+ 
+-import nose
+ import unittest
+ import pycurl
++import pytest
+ 
+ from . import util
+ 
+ sftp_server = 'sftp://web.sourceforge.net'
+ 
+-@nose.plugins.attrib.attr('online')
+-@nose.plugins.attrib.attr('ssh')
++@pytest.mark.online
++@pytest.mark.ssh
+ class SshKeyCbTest(unittest.TestCase):
+     '''This test requires Internet access.'''
+ 
+@@ -81,7 +81,7 @@ class SshKeyCbTest(unittest.TestCase):
+             self.assertEqual(pycurl.E_PEER_FAILED_VERIFICATION, e.args[0])
+ 
+ 
+-@nose.plugins.attrib.attr('ssh')
++@pytest.mark.ssh
+ class SshKeyCbUnsetTest(unittest.TestCase):
+     def setUp(self):
+         self.curl = util.DefaultCurl()
+--- a/tests/util.py
++++ b/tests/util.py
+@@ -5,6 +5,7 @@ import tempfile
+ import os, sys, socket
+ import time as _time
+ import functools
++import unittest
+ 
+ py3 = sys.version_info[0] == 3
+ 
+@@ -69,37 +70,31 @@ def pycurl_version_less_than(*spec):
+     return version_less_than_spec(version, spec)
+ 
+ def only_python2(fn):
+-    import nose.plugins.skip
+-
+     @functools.wraps(fn)
+     def decorated(*args, **kwargs):
+         if sys.version_info[0] >= 3:
+-            raise nose.plugins.skip.SkipTest('python >= 3')
++            raise unittest.SkipTest('python >= 3')
+ 
+         return fn(*args, **kwargs)
+ 
+     return decorated
+ 
+ def only_python3(fn):
+-    import nose.plugins.skip
+-
+     @functools.wraps(fn)
+     def decorated(*args, **kwargs):
+         if sys.version_info[0] < 3:
+-            raise nose.plugins.skip.SkipTest('python < 3')
++            raise unittest.SkipTest('python < 3')
+ 
+         return fn(*args, **kwargs)
+ 
+     return decorated
+ 
+ def min_python(major, minor):
+-    import nose.plugins.skip
+-
+     def decorator(fn):
+         @functools.wraps(fn)
+         def decorated(*args, **kwargs):
+             if sys.version_info[0:2] < (major, minor):
+-                raise nose.plugins.skip.SkipTest('python < %d.%d' % (major, minor))
++                raise unittest.SkipTest('python < %d.%d' % (major, minor))
+ 
+             return fn(*args, **kwargs)
+ 
+@@ -108,13 +103,11 @@ def min_python(major, minor):
+     return decorator
+ 
+ def min_libcurl(major, minor, patch):
+-    import nose.plugins.skip
+-
+     def decorator(fn):
+         @functools.wraps(fn)
+         def decorated(*args, **kwargs):
+             if pycurl_version_less_than(major, minor, patch):
+-                raise nose.plugins.skip.SkipTest('libcurl < %d.%d.%d' % (major, minor, patch))
++                raise unittest.SkipTest('libcurl < %d.%d.%d' % (major, minor, patch))
+ 
+             return fn(*args, **kwargs)
+ 
+@@ -123,7 +116,6 @@ def min_libcurl(major, minor, patch):
+     return decorator
+ 
+ def only_ssl(fn):
+-    import nose.plugins.skip
+     import pycurl
+ 
+     @functools.wraps(fn)
+@@ -132,7 +124,7 @@ def only_ssl(fn):
+         # theoretically it is not the same test.
+         # pycurl.version_info()[8] is a tuple of protocols supported by libcurl
+         if 'https' not in pycurl.version_info()[8]:
+-            raise nose.plugins.skip.SkipTest('libcurl does not support ssl')
++            raise unittest.SkipTest('libcurl does not support ssl')
+ 
+         return fn(*args, **kwargs)
+ 
+@@ -140,7 +132,6 @@ def only_ssl(fn):
+ 
+ def only_ssl_backends(*backends):
+     def decorator(fn):
+-        import nose.plugins.skip
+         import pycurl
+ 
+         @functools.wraps(fn)
+@@ -149,7 +140,7 @@ def only_ssl_backends(*backends):
+             # theoretically it is not the same test.
+             # pycurl.version_info()[8] is a tuple of protocols supported by libcurl
+             if 'https' not in pycurl.version_info()[8]:
+-                raise nose.plugins.skip.SkipTest('libcurl does not support ssl')
++                raise unittest.SkipTest('libcurl does not support ssl')
+ 
+             # XXX move to pycurl library
+             if 'OpenSSL/' in pycurl.version:
+@@ -161,7 +152,7 @@ def only_ssl_backends(*backends):
+             else:
+                 current_backend = 'none'
+             if current_backend not in backends:
+-                raise nose.plugins.skip.SkipTest('SSL backend is %s' % current_backend)
++                raise unittest.SkipTest('SSL backend is %s' % current_backend)
+ 
+             return fn(*args, **kwargs)
+ 
+@@ -169,25 +160,22 @@ def only_ssl_backends(*backends):
+     return decorator
+ 
+ def only_ipv6(fn):
+-    import nose.plugins.skip
+     import pycurl
+ 
+     @functools.wraps(fn)
+     def decorated(*args, **kwargs):
+         if not pycurl.version_info()[4] & pycurl.VERSION_IPV6:
+-            raise nose.plugins.skip.SkipTest('libcurl does not support ipv6')
++            raise unittest.SkipTest('libcurl does not support ipv6')
+ 
+         return fn(*args, **kwargs)
+ 
+     return decorated
+ 
+ def only_unix(fn):
+-    import nose.plugins.skip
+-
+     @functools.wraps(fn)
+     def decorated(*args, **kwargs):
+         if sys.platform == 'win32':
+-            raise nose.plugins.skip.SkipTest('Unix only')
++            raise unittest.SkipTest('Unix only')
+ 
+         return fn(*args, **kwargs)
+ 
+@@ -200,7 +188,6 @@ def guard_unknown_libcurl_option(fn):
+     where libcurl does not provide a way of detecting whether the
+     required libraries were compiled against.'''
+ 
+-    import nose.plugins.skip
+     import pycurl
+ 
+     @functools.wraps(fn)
+@@ -211,7 +198,7 @@ def guard_unknown_libcurl_option(fn):
+             exc = sys.exc_info()[1]
+             # E_UNKNOWN_OPTION is available as of libcurl 7.21.5
+             if hasattr(pycurl, 'E_UNKNOWN_OPTION') and exc.args[0] == pycurl.E_UNKNOWN_OPTION:
+-                raise nose.plugins.skip.SkipTest('CURLE_UNKNOWN_OPTION, skipping test')
++                raise unittest.SkipTest('CURLE_UNKNOWN_OPTION, skipping test')
+ 
+     return decorated
+ 
+@@ -286,12 +273,12 @@ def DefaultCurlLocalhost(port):
+     '''This is a default curl with localhost -> 127.0.0.1 name mapping
+     on windows systems, because they don't have it in the hosts file.
+     '''
+-    
++
+     curl = DefaultCurl()
+-    
++
+     if sys.platform == 'win32':
+         curl.setopt(curl.RESOLVE, ['localhost:%d:127.0.0.1' % port])
+-    
++
+     return curl
+ 
+ def with_real_write_file(fn):
+--- a/tests/memory_mgmt_test.py
++++ b/tests/memory_mgmt_test.py
+@@ -9,7 +9,7 @@ import unittest
+ import gc
+ import flaky
+ from . import util
+-import nose
++import pytest
+ 
+ debug = False
+ 
+@@ -18,7 +18,7 @@ if sys.platform == 'win32':
+ else:
+     devnull = '/dev/null'
+ 
+-@nose.plugins.attrib.attr('occasionally_failing')
++@pytest.mark.occasionally_failing
+ @flaky.flaky(max_runs=3)
+ class MemoryMgmtTest(unittest.TestCase):
+     def maybe_enable_debug(self):
+@@ -227,7 +227,7 @@ class MemoryMgmtTest(unittest.TestCase):
+             iters = 10000
+         else:
+             iters = 100000
+-            
++
+         try:
+             range_generator = xrange
+         except NameError:
+@@ -284,7 +284,7 @@ class MemoryMgmtTest(unittest.TestCase):
+         new_object_count = len(gc.get_objects())
+         # it seems that GC sometimes collects something that existed
+         # before this test ran, GH issues #273/#274
+-        self.assertTrue(new_object_count in (object_count, object_count-1))
++        self.assertIn(new_object_count, (object_count, object_count-1))
+ 
+     def test_postfields_unicode_memory_leak_gh252(self):
+         # this test passed even before the memory leak was fixed,
+@@ -330,13 +330,13 @@ class MemoryMgmtTest(unittest.TestCase):
+         del f
+         gc.collect()
+         assert ref()
+-        
++
+         for i in range(100):
+             assert ref()
+             c.setopt(option, ref())
+         gc.collect()
+         assert ref()
+-        
++
+         c.close()
+         gc.collect()
+         assert ref() is None
+@@ -361,13 +361,13 @@ class MemoryMgmtTest(unittest.TestCase):
+         del f, fn
+         gc.collect()
+         assert ref()
+-        
++
+         for i in range(100):
+             assert ref()
+             c.setopt(option, ref())
+         gc.collect()
+         assert ref()
+-        
++
+         c.close()
+         gc.collect()
+         assert ref() is None
+--- a/tests/multi_memory_mgmt_test.py
++++ b/tests/multi_memory_mgmt_test.py
+@@ -7,21 +7,21 @@ import unittest
+ import gc
+ import flaky
+ import weakref
+-import nose
++import pytest
+ 
+ from . import util
+ 
+ debug = False
+ 
+-@nose.plugins.attrib.attr('occasionally_failing')
++@pytest.mark.occasionally_failing
+ @flaky.flaky(max_runs=3)
+ class MultiMemoryMgmtTest(unittest.TestCase):
+     def test_opensocketfunction_collection(self):
+         self.check_callback(pycurl.M_SOCKETFUNCTION)
+-    
++
+     def test_seekfunction_collection(self):
+         self.check_callback(pycurl.M_TIMERFUNCTION)
+-    
++
+     def check_callback(self, callback):
+         # Note: extracting a context manager seems to result in
+         # everything being garbage collected even if the C code
+@@ -32,29 +32,29 @@ class MultiMemoryMgmtTest(unittest.TestC
+         # settles tracked object count for the actual test below
+         gc.collect()
+         object_count = len(gc.get_objects())
+-        
++
+         c = pycurl.CurlMulti()
+         c.setopt(callback, lambda x: True)
+         del c
+-        
++
+         gc.collect()
+         new_object_count = len(gc.get_objects())
+         # it seems that GC sometimes collects something that existed
+         # before this test ran, GH issues #273/#274
+-        self.assertTrue(new_object_count in (object_count, object_count-1))
++        self.assertIn(new_object_count, (object_count, object_count-1))
+ 
+     def test_curl_ref(self):
+         c = util.DefaultCurl()
+         m = pycurl.CurlMulti()
+-        
++
+         ref = weakref.ref(c)
+         m.add_handle(c)
+         del c
+-        
++
+         assert ref()
+         gc.collect()
+         assert ref()
+-        
++
+         m.remove_handle(ref())
+         gc.collect()
+         assert ref() is None
+--- a/tests/multi_timer_test.py
++++ b/tests/multi_timer_test.py
+@@ -5,7 +5,7 @@
+ from . import localhost
+ import pycurl
+ import unittest
+-import nose
++import pytest
+ 
+ from . import appmanager
+ from . import util
+@@ -24,7 +24,7 @@ def teardown_module(mod):
+     teardown_module_2(mod)
+     teardown_module_1(mod)
+ 
+-@nose.plugins.attrib.attr('occasionally_failing')
++@pytest.mark.occasionally_failing
+ class MultiSocketTest(unittest.TestCase):
+     def test_multi_timer(self):
+         urls = [
