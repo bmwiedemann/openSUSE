@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  6 22:35:01 UTC 2020 - jason.record@suse.com
+
+- Additions to version 1.3.1
+  + SUSE.getHostInfo doesn't use /etc/os-release (bsc#1178523)
+  + SUSE.py missing initial kernel version constants (bsc#1178524)
+
+-------------------------------------------------------------------
 Tue Jan  2 19:29:45 UTC 2018 - jason.record@suse.com
 
 - Removed unnecessary %clean from spec
