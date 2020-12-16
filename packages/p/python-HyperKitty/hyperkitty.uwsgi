@@ -1,0 +1,17 @@
+[uwsgi]
+#plugin = apparmor
+#apparmor-hat = hyperkitty
+
+uid = hyperkitty
+gid = hyperkitty
+
+processes = 1
+threads = 25
+
+socket = /run/uwsgi/uwsgi-hyperkitty.sock
+chmod-socket = 660
+chown-socket = wwwrun:www
+
+plugin = python3
+chdir = /srv/www/webapps/mailman/hyperkitty
+module = wsgi

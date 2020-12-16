@@ -16,6 +16,21 @@
 #
 
 
+%global webapps_dir /srv/www/webapps
+
+%global hyperkitty_pkgname   HyperKitty
+
+%global hyperkitty_basedir   %{webapps_dir}/mailman/hyperkitty
+%global hyperkitty_localedir %{hyperkitty_basedir}/locale
+%global hyperkitty_staticdir %{hyperkitty_basedir}/static
+
+%global hyperkitty_etcdir    %{_sysconfdir}/hyperkitty
+%global hyperkitty_libdir    %{_localstatedir}/lib/hyperkitty
+%global hyperkitty_logdir    %{_localstatedir}/log/hyperkitty
+%global hyperkitty_datadir   %{hyperkitty_libdir}/data
+
+%global hyperkitty_services hyperkitty-qcluster.service hyperkitty-runjob-daily.service hyperkitty-runjob-daily.timer hyperkitty-runjob-hourly.service hyperkitty-runjob-hourly.timer hyperkitty-runjob-minutely.service hyperkitty-runjob-minutely.timer hyperkitty-runjob-monthly.service hyperkitty-runjob-monthly.timer hyperkitty-runjob-quarter-hourly.service hyperkitty-runjob-quarter-hourly.timer hyperkitty-runjob-weekly.service hyperkitty-runjob-weekly.timer hyperkitty-runjob-yearly.service hyperkitty-runjob-yearly.timer
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-HyperKitty
@@ -24,13 +39,37 @@ Release:        0
 Summary:        A web interface to access GNU Mailman v3 archives
 License:        GPL-3.0-only
 URL:            https://gitlab.com/mailman/hyperkitty
-Source:         https://files.pythonhosted.org/packages/source/H/HyperKitty/HyperKitty-%{version}.tar.gz
+#
+Source0:        https://files.pythonhosted.org/packages/source/H/HyperKitty/HyperKitty-%{version}.tar.gz
+Source1:        python-HyperKitty-rpmlintrc
+#
+Source10:       hyperkitty-manage.sh
+Source11:       hyperkitty-permissions.sh
+Source12:       hyperkitty.uwsgi
+#
+Source20:       hyperkitty-qcluster.service
+Source21:       hyperkitty-runjob.service
+Source22:       hyperkitty-runjob.timer
+#
+Source30:       README.SUSE.md
+#
+Patch0:         hyperkitty-settings.patch
+# Make migration compatible with django >= 3.1
+# https://gitlab.com/mailman/hyperkitty/-/commit/0e46371f0f2aab8618aa2852ea6f63c245e16927.patch
+Patch1:         hyperkitty-fix-tests.patch
+#
+BuildRequires:  %{python_module django-debug-toolbar >= 2.2}
 BuildRequires:  %{python_module isort}
+BuildRequires:  %{python_module libsass}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  acl
 BuildRequires:  fdupes
+BuildRequires:  openssl
 BuildRequires:  python-rpm-macros
+BuildRequires:  sudo
 Requires:       python-Django >= 1.11
 Requires:       python-django-compressor >= 1.3
+Requires:       python-django-debug-toolbar >= 2.2
 Requires:       python-django-extensions >= 1.3.7
 Requires:       python-django-gravatar2 >= 1.0.6
 Requires:       python-django-haystack >= 2.8.0
@@ -44,6 +83,7 @@ Requires:       python-networkx >= 1.9.1
 Requires:       python-python-dateutil >= 2.0
 Requires:       python-pytz >= 2012
 Requires:       python-robot-detection >= 0.3
+Requires:       python-xapian-haystack >= 2.1.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 1.11}
@@ -72,24 +112,182 @@ BuildRequires:  %{python_module robot-detection >= 0.3}
 %description
 A web interface to access GNU Mailman v3 archives.
 
+%package -n %{hyperkitty_pkgname}-web
+Summary:        The webroot for GNU Mailman
+Requires:       acl
+Requires:       openssl
+Requires:       python3-HyperKitty
+Requires:       sudo
+
+%description -n %{hyperkitty_pkgname}-web
+A web user interface for GNU Mailman.
+
+This package holds the web interface.
+
+%package -n %{hyperkitty_pkgname}-web-uwsgi
+Summary:        HyperKitty - uwsgi configuration
+Requires:       %{hyperkitty_pkgname}-web
+Requires:       uwsgi
+
+%description -n %{hyperkitty_pkgname}-web-uwsgi
+A web user interface for GNU Mailman.
+
+This package holds the uwsgi configuration.
+
 %prep
-%setup -q -n HyperKitty-%{version}
+%autosetup -p1 -n HyperKitty-%{version}
+cp %{SOURCE30} .
+touch settings_local.py
 
 %build
+sed -i 's|^#!/usr/bin/env.*|#!%{_bindir}/python3|' \
+    example_project/manage.py
+
 %python_build
 
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+install -d -m 0750 \
+    %{buildroot}%{hyperkitty_etcdir} \
+    %{buildroot}%{hyperkitty_libdir} \
+    %{buildroot}%{hyperkitty_datadir} \
+    %{buildroot}%{hyperkitty_datadir}/attachments \
+    %{buildroot}%{hyperkitty_logdir}
+
+install -d -m 0755 \
+    %{buildroot}%{hyperkitty_basedir} \
+    %{buildroot}%{hyperkitty_localedir} \
+    %{buildroot}%{hyperkitty_staticdir} \
+    %{buildroot}%{_unitdir}
+
+cp -a example_project/* %{buildroot}%{hyperkitty_basedir}
+chmod -x %{buildroot}%{hyperkitty_basedir}/wsgi.py
+
+for f in \
+         README.rst \
+         apache.conf \
+         crontab \
+         qcluster.service \
+    ; do
+    rm -f %{buildroot}%{hyperkitty_basedir}/$f
+done
+%python_expand rm -rf %{buildroot}%{$python_sitelib}/example_project
+
+# Create an empty settings_local.py. This will be filled with a SECRET_KEY in post
+install -m 0644 settings_local.py %{buildroot}%{hyperkitty_etcdir}/settings_local.py
+
+ln -svf %{hyperkitty_etcdir}/settings_local.py \
+    %{buildroot}/%{hyperkitty_basedir}/settings_local.py
+
+%fdupes %{buildroot}%{hyperkitty_basedir}
+
+# Manage script
+install -d -m 0755 %{buildroot}%{_sbindir}
+install -m 0750 %{SOURCE10} %{buildroot}%{_sbindir}/hyperkitty-manage
+install -m 0750 %{SOURCE11} %{buildroot}%{_sbindir}/hyperkitty-fix-permissions
+
+install -d -m 0755 %{buildroot}%{_sysconfdir}/uwsgi/vassals
+install -m 0644 %{SOURCE12} %{buildroot}%{_sysconfdir}/uwsgi/vassals/hyperkitty.ini
+
+install -m 0644 %{SOURCE20} %{buildroot}%{_unitdir}/hyperkitty-qcluster.service
+ln -s /sbin/service %{buildroot}%{_sbindir}/rchyperkitty-qcluster
+
+for job in \
+           minutely \
+           quarter-hourly \
+           hourly \
+           daily \
+           weekly \
+           monthly \
+           yearly \
+           ; do
+    install -m 0644 %{SOURCE21} %{buildroot}%{_unitdir}/hyperkitty-runjob-${job}.service
+    sed -i "s/@HYPERKITTY_RUNJOB@/${job}/g" %{buildroot}%{_unitdir}/hyperkitty-runjob-${job}.service
+    ln -s /sbin/service %{buildroot}%{_sbindir}/rchyperkitty-runjob-${job}
+
+    install -m 0644 %{SOURCE22} %{buildroot}%{_unitdir}/hyperkitty-runjob-${job}.timer
+
+    hyperkitty_runjob_calendar="OnCalendar=${job}"
+    hyperkitty_runjob_delay="RandomizedDelaySec=15m"
+    hyperkitty_runjob_name="${job}"
+
+    if [ "${job}" = "minutely" ]; then
+        hyperkitty_runjob_delay="RandomizedDelaySec=15s"
+    elif [ "${job}" = "quarter-hourly" ]; then
+        hyperkitty_runjob_timer="OnCalendar=quaterly"
+        hyperkitty_runjob_delay="RandomizedDelaySec=2m"
+        # The real jobname is with an underscore
+        hyperkitty_runjob_name="quarter_hourly"
+    fi
+    sed -i "s/@HYPERKITTY_RUNJOB_CALENDAR@/${hyperkitty_runjob_calendar}/g" %{buildroot}%{_unitdir}/hyperkitty-runjob-${job}.timer
+    sed -i "s/@HYPERKITTY_RUNJOB_DELAY@/${hyperkitty_runjob_delay}/g" %{buildroot}%{_unitdir}/hyperkitty-runjob-${job}.timer
+    sed -i "s/@HYPERKITTY_RUNJOB@/${hyperkitty_runjob_name}/g" %{buildroot}%{_unitdir}/hyperkitty-runjob-${job}.timer
+done
+
 %check
 export DJANGO_SETTINGS_MODULE="hyperkitty.tests.settings_test"
 export PYTHONPATH='.'
 %python_exec example_project/manage.py test
 
+%pre -n %{hyperkitty_pkgname}-web
+/usr/sbin/groupadd -r hyperkitty &>/dev/null || :
+/usr/sbin/useradd  -g hyperkitty -s /bin/false -r -c "HyperKitty" -d %{hyperkitty_basedir} hyperkitty &>/dev/null || :
+
+/usr/sbin/groupadd -r hyperkitty-admin &>/dev/null || :
+/usr/sbin/useradd  -g hyperkitty-admin -s /bin/bash  -r -c "HyperKitty Admin" -d %{hyperkitty_basedir} hyperkitty-admin &>/dev/null || :
+
+%service_add_pre %{hyperkitty_services}
+
+%post -n %{hyperkitty_pkgname}-web
+%{_sbindir}/hyperkitty-fix-permissions
+# We need a SECRET_KEY for manage to work
+if ! grep -q "^SECRET_KEY.*" %{hyperkitty_etcdir}/settings_local.py; then
+    echo "SECRET_KEY='$(openssl rand -base64 48)'" >> %{hyperkitty_etcdir}/settings_local.py
+fi
+%{_sbindir}/hyperkitty-manage migrate --pythonpath /srv/www/webapps/mailman/hyperkitty/ --settings settings
+%{_sbindir}/hyperkitty-manage collectstatic --pythonpath /srv/www/webapps/mailman/hyperkitty/ --settings settings --clear --noinput
+%{_sbindir}/hyperkitty-manage compress --pythonpath /srv/www/webapps/mailman/hyperkitty/ --settings settings --force
+
+%service_add_post %{hyperkitty_services}
+
+%preun -n %{hyperkitty_pkgname}-web
+%service_del_preun %{hyperkitty_services}
+
+%postun -n %{hyperkitty_pkgname}-web
+%service_del_postun %{hyperkitty_services}
+
 %files %{python_files}
 %doc AUTHORS.txt README.rst example_project doc/*.rst
 %license COPYING.txt
-%{python_sitelib}/*
+%{python_sitelib}/hyperkitty
+%{python_sitelib}/HyperKitty*.egg-info
+
+%files -n %{hyperkitty_pkgname}-web
+%doc README.SUSE.md
+%{_sbindir}/hyperkitty-manage
+%{_sbindir}/hyperkitty-fix-permissions
+%{_sbindir}/rchyperkitty-qcluster
+%{_sbindir}/rchyperkitty-runjob-*
+%dir %{webapps_dir}
+%dir %{webapps_dir}/mailman
+%{_unitdir}/hyperkitty-qcluster.service
+%{_unitdir}/hyperkitty-runjob-*.service
+%{_unitdir}/hyperkitty-runjob-*.timer
+
+%defattr(-,hyperkitty-admin,hyperkitty)
+%{hyperkitty_basedir}
+
+%attr(750,hyperkitty-admin,hyperkitty) %dir %{hyperkitty_etcdir}
+%attr(640,hyperkitty-admin,hyperkitty) %config(noreplace) %{hyperkitty_etcdir}/settings_local.py
+%attr(750,hyperkitty-admin,hyperkitty) %dir %{hyperkitty_libdir}
+%attr(750,hyperkitty-admin,hyperkitty) %dir %{hyperkitty_datadir}
+%attr(750,hyperkitty-admin,hyperkitty) %dir %{hyperkitty_logdir}
+
+%files -n %{hyperkitty_pkgname}-web-uwsgi
+%dir %{_sysconfdir}/uwsgi
+%dir %{_sysconfdir}/uwsgi/vassals
+%config (noreplace) %{_sysconfdir}/uwsgi/vassals/hyperkitty.ini
 
 %changelog

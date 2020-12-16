@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Dec 13 11:16:18 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Added hyperkitty-qcluster.service
+- Added hyperkitty-runjob.service and hyperkitty-runjob.timer
+
+-------------------------------------------------------------------
+Sat Dec 12 19:43:44 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Create a HyperKitty-web package with webroot files
+- Create a HyperKitty-web-uwsgi with uwsgi configuration
+- Added hyperkitty-settings.patch
+  * Sets the FHS default paths
+- Added hyperkitty-fix-tests.patch
+  * Make migration compatible with django >= 3.1
+- Added rpmlint config
+
+-------------------------------------------------------------------
 Tue Aug  4 01:35:17 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>
 
 - Version update to 1.3.3

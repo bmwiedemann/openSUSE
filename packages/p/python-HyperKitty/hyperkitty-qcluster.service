@@ -1,0 +1,12 @@
+[Unit]
+Description=HyperKitty async tasks runner
+After=network.target remote-fs.target
+
+[Service]
+ExecStart=/usr/bin/python3 /srv/www/webapps/mailman/hyperkitty/manage.py qcluster --pythonpath /srv/www/webapps/mailman/hyperkitty/ --settings settings
+User=hyperkitty
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

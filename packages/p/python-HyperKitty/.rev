@@ -49,4 +49,21 @@
 </comment>
     <requestid>824265</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>34d013256419930f1631df2a6895e664</srcmd5>
+    <version>1.3.3</version>
+    <time>1608112857</time>
+    <user>dimstar_suse</user>
+    <comment>- Added hyperkitty-qcluster.service
+- Added hyperkitty-runjob.service and hyperkitty-runjob.timer
+- Create a HyperKitty-web package with webroot files
+- Create a HyperKitty-web-uwsgi with uwsgi configuration
+- Added hyperkitty-settings.patch
+  * Sets the FHS default paths
+- Added hyperkitty-fix-tests.patch
+  * Make migration compatible with django &gt;= 3.1
+- Added rpmlint config
+</comment>
+    <requestid>856030</requestid>
+  </revision>
 </revisionlist>
