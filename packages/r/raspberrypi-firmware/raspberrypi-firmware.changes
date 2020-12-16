@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 16 10:19:43 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 8a5549c (2020-12-15):
+  * firmware: dmalib: Allow sdcard to borrow channel 6
+    See: #1511
+    See: Hexxeh/rpi-firmware#251
+    See: https://www.raspberrypi.org/forums/viewtopic.php?f=63&t=294932
+
+-------------------------------------------------------------------
 Tue Dec 15 08:29:09 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 8cd7665 (2020-12-14):
