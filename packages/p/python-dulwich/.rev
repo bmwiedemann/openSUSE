@@ -406,4 +406,12 @@
  * Fix ACK/NACK handling in archive command handling in dulwich.client.</comment>
     <requestid>847411</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>293125906c35e5d7e1b6c12e3283a88e</srcmd5>
+    <version>0.20.11</version>
+    <time>1608112772</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>855662</requestid>
+  </revision>
 </revisionlist>

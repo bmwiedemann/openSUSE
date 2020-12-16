@@ -27,15 +27,20 @@ License:        GPL-2.0-or-later OR Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://www.dulwich.io
 Source0:        https://files.pythonhosted.org/packages/source/d/dulwich/dulwich-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM remove_mock.patch gh#dulwich/dulwich#820 mcepl@suse.com
+# remove dependency on the external module mock
+Patch0:         remove_mock.patch
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module fastimport}
 BuildRequires:  %{python_module geventhttpclient}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module gpg}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module setuptools >= 17.1}
 BuildRequires:  %{python_module urllib3 >= 1.24.1}
+%if 0%{?suse_version} <= 1500
+BuildRequires:  python-mock
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
@@ -55,7 +60,7 @@ Simple Pure-Python implementation of the Git file formats and protocols. Dulwich
 is the place where Mr. and Mrs. Git live in one of the Monty Python sketches.
 
 %prep
-%setup -q -n dulwich-%{version}
+%autosetup -p1 -n dulwich-%{version}
 
 %build
 export CFLAGS="%{optflags}"
