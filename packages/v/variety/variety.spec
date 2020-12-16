@@ -19,7 +19,7 @@
 
 %global __requires_exclude typelib\\(AyatanaAppIndicator3\\)
 Name:           variety
-Version:        0.8.3
+Version:        0.8.5
 Release:        0
 Summary:        Wallpaper changer
 License:        GPL-3.0-only
@@ -54,7 +54,6 @@ Requires:       python3-lxml
 Requires:       python3-pycurl
 Requires:       yelp
 # MANUAL END
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description

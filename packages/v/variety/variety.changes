@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Dec 16 01:30:32 UTC 2020 - malcolmlewis@opensuse.org
+
+- Updated to version 0.8.5:
+  * Fixes for Python 3.9 support.
+  * Cleanup of wallpaper folder now cleans all image types,
+    (gh#varietywalls/variety#388).
+  * Fix GH-363: We were almost never triggering purging downloads,
+    (gh#varietywalls/variety#363).
+  * Enable support for Qtile-venv, (gh#varietywalls/variety#386).
+  * Translation updates.
+- Changes from version 0.8.4:
+  * Properly verify TLS certificates when downloading images,
+    (GH-(gh#varietywalls/variety#326).
+  * Fix banning images when using Delete to Trash option,
+    (GH-(gh#varietywalls/variety#304).
+  * Preserve file extensions when copying wallpapers to another
+    folder, (gh#varietywalls/variety#240).
+  * Fix crash in indicator code when image origin is not available,
+    (gh#varietywalls/variety#287).
+  * Remove spurious "No such schema
+    “org.cinnamon.desktop.background” errors",
+    (gh#varietywalls/variety#329).
+  * Update Unsplash rate limit, (gh#varietywalls/variety#332).
+  * Better detection for AwesomeWM, (gh#varietywalls/variety#282).
+- Rebase variety-fix-data-path.patch.
+
+-------------------------------------------------------------------
 Mon Jun 29 07:44:57 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Exclude dependency to AyatanaAppIndicator3: this is no longer
