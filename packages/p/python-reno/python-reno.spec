@@ -17,7 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+# uses openstack packages: build and depend on default python3 provider only
+%define pythons python3
 Name:           python-reno
 Version:        3.1.0
 Release:        0

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 14 21:23:33 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- This package depends on packages from openstack, which are only
+  available for the default python3 flavor. As a consequence,
+  also only build for the primary python3-flavor.
+  gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Fri Jun  5 19:31:53 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update 3.1.0
