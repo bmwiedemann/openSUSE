@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-virtualenv
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,21 +25,29 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/manahl/pytest-plugins
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-virtualenv/pytest-virtualenv-%{version}.tar.gz
-BuildRequires:  %{python_module mock}
+# PATCH-FIX-UPSTREAM remove_mock.patch gh#man-group/pytest-plugins#168 mcepl@suse.com
+# remove dependency on the external module mock
+Patch0:         remove_mock.patch
+# PATCH-FIX-UPSTREAM remove_mock.patch gh#man-group/pytest-plugins#168 mcepl@suse.com
+# and while at it, we can remove dependency on the external module
+# virtualenv as well
+Patch1:         remove_virtualenv.patch
 BuildRequires:  %{python_module path.py}
 BuildRequires:  %{python_module pytest-fixture-config}
 BuildRequires:  %{python_module pytest-shutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
+%if 0%{?suse_version} <= 1500
+BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module virtualenv}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-path.py
 Requires:       python-pytest-fixture-config
 Requires:       python-pytest-shutil
 Requires:       python-setuptools
-Requires:       python-virtualenv
 BuildArch:      noarch
 %python_subpackages
 
@@ -49,7 +57,7 @@ teardown. The fixture has utility methods to install packages and list
 what's installed.
 
 %prep
-%setup -q -n pytest-virtualenv-%{version}
+%autosetup -p1 -n pytest-virtualenv-%{version}
 
 %build
 %python_build
@@ -59,7 +67,8 @@ what's installed.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# Requires network access
+%pytest -k 'not test_installed_packages'
 
 %files %{python_files}
 %doc CHANGES.md README.md

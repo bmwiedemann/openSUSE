@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Dec 13 21:55:46 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- We don't need to break Python 2.7
+
+-------------------------------------------------------------------
+Fri Dec 11 22:44:02 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add remove_mock.patch to remove dependency on the external mock
+  package (gh#man-group/pytest-plugins#168). Also add
+  remove_virtualenv.patch to remove dependency on external
+  virtualenv package.
+
+-------------------------------------------------------------------
 Mon Jun  3 08:53:22 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.7.0:
