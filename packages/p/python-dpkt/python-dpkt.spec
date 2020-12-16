@@ -1,7 +1,7 @@
 #
 # spec file for package python-dpkt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dpkt
-Version:        1.9.2
+Version:        1.9.4
 Release:        0
 Summary:        Packet creation and parsing module for Python
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            https://github.com/kbandla/dpkt
 Source:         https://github.com/kbandla/dpkt/archive/v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM skip_s390x_tests.patch gh#kbandla/dpkt#505 mcepl@suse.com
+# Skip failing tests on s390x arch
+Patch0:         skip_s390x_tests.patch
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -39,6 +42,8 @@ the basic TCP/IP protocols.
 
 %prep
 %setup -q -n dpkt-%{version}
+%autopatch -p1
+
 # do not add extra pytest argumetns
 sed -i -e '/addopts=/d' setup.cfg
 
@@ -50,7 +55,8 @@ sed -i -e '/addopts=/d' setup.cfg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v dpkt
+# gh#kbandla/dpkt#505
+%pytest -s dpkt
 
 %files %{python_files}
 %license LICENSE

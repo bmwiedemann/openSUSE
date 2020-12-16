@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Dec 14 22:51:23 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add skip_s390x_tests.patch to skip failing tests on s390x
+  (gh#kbandla/dpkt#505).
+
+-------------------------------------------------------------------
+Mon Dec 14 22:07:23 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.9.4:
+  - drop python 2.6 support
+  - add python 3.7, 3.8 support
+  - fix netbios name encoding and decoding
+  - properly set type of last vlan tag to type of eth.data layer
+  - fix QinQ vlan tag parsing with miscellaneous data
+  - add explicit iter to dpkt.Packet so dict() maps the fields nicely
+  - fix ipv6 packet so that it can be used for generating IPv6 data
+  - handle zero Eth type
+  - python 3 compatibility fixes
+
+-------------------------------------------------------------------
 Mon Mar 18 20:00:32 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in descriptions.
