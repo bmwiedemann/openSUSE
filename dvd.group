@@ -3504,6 +3504,7 @@
     <package name="syslinux" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="syslog-service" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
     <package name="system-group-hardware" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="system-group-kvm" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="system-group-libvirt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="system-group-wheel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="system-tuning-common-SUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

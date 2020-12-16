@@ -4878,6 +4878,7 @@
       <repopackage name="system-config-printer-common-lang" arch="x86_64"/>
       <repopackage name="system-config-printer-dbus-service" arch="x86_64"/>
       <repopackage name="system-group-hardware"/>
+      <repopackage name="system-group-kvm"/>
       <repopackage name="system-group-libvirt"/>
       <repopackage name="system-group-wheel"/>
       <repopackage name="system-tuning-common-SUSE"/>
