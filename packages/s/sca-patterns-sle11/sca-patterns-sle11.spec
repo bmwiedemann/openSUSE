@@ -1,7 +1,7 @@
 #
 # spec file for package sca-patterns-sle11
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,12 +25,12 @@
 %define category SLE
 
 Name:           sca-patterns-sle11
-Version:        1.3
+Version:        1.3.1
 Release:        0
 Summary:        Supportconfig Analysis Patterns for SLE11
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/Monitoring
-Url:            https://github.com/g23guy/sca-patterns-sle11
+URL:            https://github.com/g23guy/sca-patterns-sle11
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 Requires:       sca-patterns-base
