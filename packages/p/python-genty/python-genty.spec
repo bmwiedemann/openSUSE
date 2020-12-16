@@ -31,6 +31,9 @@ Patch0:         remove_mock.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+%if 0%{?suse_version} <= 1500
+BuildRequires:  python-mock
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six
