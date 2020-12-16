@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Dec 14 00:48:47 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix condition around BuildRequirement
+
+-------------------------------------------------------------------
+Sun Dec 13 20:27:15 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- We don't need to break Python 2.7
+
+-------------------------------------------------------------------
+Fri Dec 11 15:14:53 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add remove_mock.patch to remove dependency on the external mock package.
+
+-------------------------------------------------------------------
+Fri Dec 11 14:24:39 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add remove_nose.patch to remove dependency on nose.
+
+-------------------------------------------------------------------
 Wed Jul 29 05:39:42 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.7.0:

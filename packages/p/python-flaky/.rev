@@ -62,4 +62,12 @@
   * Flaky now retries tests which fail during setup.</comment>
     <requestid>823295</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f32cc78d564edc13b301bf31bb2c4783</srcmd5>
+    <version>3.7.0</version>
+    <time>1608112775</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>855665</requestid>
+  </revision>
 </revisionlist>
