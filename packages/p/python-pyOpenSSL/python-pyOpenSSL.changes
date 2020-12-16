@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Dec 11 13:21:19 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- According to gh#pyca/pyopenssl#684 tests must run with TZ=UTC, also
+  skip test_verify_with_time on %ix86.
+
+-------------------------------------------------------------------
+Wed Dec  9 16:41:15 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to v20.0.0
+  - Backward-incompatible changes:
+    - The minimum cryptography version is now 3.2.
+    - Remove deprecated OpenSSL.tsafe module.
+    - Removed deprecated
+      OpenSSL.SSL.Context.set_npn_advertise_callback,
+      OpenSSL.SSL.Context.set_npn_select_callback, and
+      OpenSSL.SSL.Connection.get_next_proto_negotiated.
+    - Drop support for Python 3.4
+    - Drop support for OpenSSL 1.0.1 and 1.0.2
+  - Deprecations:
+    - Deprecated OpenSSL.crypto.loads_pkcs7 and
+      OpenSSL.crypto.loads_pkcs12.
+  - Changes:
+    - Added a new optional chain parameter to
+      OpenSSL.crypto.X509StoreContext() where additional untrusted
+      certificates can be specified to help chain building. #948
+    - Added OpenSSL.crypto.X509Store.load_locations to set trusted
+      certificate file bundles and/or directories for verification.
+      #943
+    - Added Context.set_keylog_callback to log key material. #910
+    - Added OpenSSL.SSL.Connection.get_verified_chain to retrieve
+      the verified certificate chain of the peer. #894.
+    - Make verification callback optional in Context.set_verify. If
+      omitted, OpenSSL’s default verification is used. #933
+    - Fixed a bug that could truncate or cause a zero-length key
+      error due to a null byte in private key passphrase in
+      OpenSSL.crypto.load_privatekey and
+      OpenSSL.crypto.dump_privatekey. #947
+- drop patch fix-compilation-2020.patch: no longer needed
+- refreshed patch skip-networked-test.patch
+
+-------------------------------------------------------------------
 Tue Feb 18 16:49:55 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v19.1

@@ -19,14 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-pyOpenSSL
-Version:        19.1.0
+Version:        20.0.0
 Release:        0
 Summary:        Python wrapper module around the OpenSSL library
 License:        Apache-2.0
 URL:            https://github.com/pyca/pyopenssl
 Source:         https://files.pythonhosted.org/packages/source/p/pyOpenSSL/pyOpenSSL-%{version}.tar.gz
 Patch1:         skip-networked-test.patch
-Patch2:         fix-compilation-2020.patch
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module cryptography >= 2.8}
 BuildRequires:  %{python_module flaky}
@@ -70,8 +69,12 @@ other things) a cffi-based interface to OpenSSL.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+SKIPPED_TESTS="network"
+%if %{__isa_bits} == 32
+SKIPPED_TESTS="$SKIPPED_TESTS or test_verify_with_time"
+%endif
 export LC_ALL=en_US.UTF-8
-%pytest -m 'not network'
+%pytest -k "not ($SKIPPED_TESTS)"
 
 %files %{python_files}
 %license LICENSE
