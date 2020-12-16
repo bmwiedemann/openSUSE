@@ -125,12 +125,12 @@ export QT_QPA_PLATFORM="offscreen"
 
 %files %{python_files}
 %license LICENSE
+%python_alternative %{_bindir}/jupyter-qtconsole
 %{python_sitelib}/qtconsole-%{version}-py*.egg-info
 %{python_sitelib}/qtconsole/
 
 %files -n jupyter-qtconsole
 %license LICENSE
-%python_alternative %{_bindir}/jupyter-qtconsole
 %{_datadir}/applications/jupyter-qtconsole.desktop
 %{_datadir}/icons/hicolor/scalable/apps/JupyterQtConsole.svg
 
