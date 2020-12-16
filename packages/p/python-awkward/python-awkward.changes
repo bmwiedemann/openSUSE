@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Tue Dec 15 00:31:07 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable tests making use of 64 bit data types on i586
+  (gh#scikit-hep#awkward-1.0#600).
+
+-------------------------------------------------------------------
+Mon Dec 14 23:23:12 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Move header files to standard header dir and package them plus
+  symlink to shared lib as part of awkward-devel package (for use
+  by C/C++ coders).
+
+-------------------------------------------------------------------
+Sun Dec 13 19:06:50 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add awkward-correct-includedir.patch: Make awkward.config return
+  the correct includedir (/usr/include/awkward) where we move the
+  header files to (default installation is to
+  python_sitearch/awkward/include, which is non-std).
+- Add awkward-cmake-build-with-RelWithDebInfo.patch: Set
+  CMAKE_BUILD_TYPE to RelWithDebInfo by default instead of
+  Release.
+
+-------------------------------------------------------------------
+Sun Dec 13 14:33:55 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.

@@ -1,0 +1,13 @@
+Index: awkward-1.0.0/src/awkward/config.py
+===================================================================
+--- awkward-1.0.0.orig/src/awkward/config.py
++++ awkward-1.0.0/src/awkward/config.py
+@@ -55,7 +55,7 @@ if __name__ == "__main__":
+     args = argparser.parse_args()
+ 
+     output = []
+-    incdir = pkg_resources.resource_filename("awkward", "include")
++    incdir = "/usr/include/awkward"
+     libdir = pkg_resources.resource_filename("awkward", "")
+     cpu_kernels = "awkward-cpu-kernels"
+     libawkward = "awkward"
