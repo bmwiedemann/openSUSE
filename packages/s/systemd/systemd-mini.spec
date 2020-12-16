@@ -269,6 +269,7 @@ License:        GPL-2.0-only
 Group:          System/Kernel
 URL:            http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html
 Requires:       system-group-hardware
+Requires:       group(kvm)
 Requires(post): sed
 Requires(post): coreutils
 Requires(postun): coreutils

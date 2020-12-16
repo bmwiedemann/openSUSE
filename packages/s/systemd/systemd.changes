@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 14 07:55:03 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Explicitly require group(kvm) by udev: the group used to be
+  created by system-users-hardware, but has been split/moved to
+  qemu/kvm, where it is more logical. The file
+  /usr/lib/udev/rules.d/50-udev-default.rules references this
+  group, thus we should make sure the group exists. Otherwise there
+  are errors in the journal in the form of:
+  /usr/lib/udev/rules.d/50-udev-default.rules:86 Unknown group 'kvm', ignoring
+
+-------------------------------------------------------------------
 Wed Dec  9 16:08:26 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Import commit d5e7958d35dc7758fe2e87e0a8193b93ce1a1b15 (merge of v246.7)

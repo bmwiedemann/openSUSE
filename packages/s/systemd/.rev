@@ -5222,4 +5222,18 @@ handle manual pages that consist only of a .so directive such as
     <comment></comment>
     <requestid>854320</requestid>
   </revision>
+  <revision rev="322" vrev="2">
+    <srcmd5>bccdd67928767af57671c3909db0e738</srcmd5>
+    <version>246.7</version>
+    <time>1608112734</time>
+    <user>dimstar_suse</user>
+    <comment>- Explicitly require group(kvm) by udev: the group used to be
+  created by system-users-hardware, but has been split/moved to
+  qemu/kvm, where it is more logical. The file
+  /usr/lib/udev/rules.d/50-udev-default.rules references this
+  group, thus we should make sure the group exists. Otherwise there
+  are errors in the journal in the form of:
+  /usr/lib/udev/rules.d/50-udev-default.rules:86 Unknown group 'kvm', ignoring</comment>
+    <requestid>855788</requestid>
+  </revision>
 </revisionlist>
