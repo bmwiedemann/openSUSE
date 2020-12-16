@@ -86,6 +86,7 @@ Patch47:        openssl-unknown_dgst.patch
 # PATCH-FIX-UPSTREAM jsc#SLE-7403 Support for CPACF enhancements - part 2 (crypto)
 Patch50:        openssl-s390x-assembly-pack-accelerate-X25519-X448-Ed25519-and-Ed448.patch
 Patch51:        openssl-s390x-fix-x448-and-x448-test-vector-ctime-for-x25519-and-x448.patch
+Patch52:        openssl-1.1.1-system-cipherlist.patch
 BuildRequires:  pkgconfig
 Conflicts:      ssl
 Provides:       ssl
@@ -197,7 +198,8 @@ export MACHINE=armv6l
     -DOPENSSL_NO_BUF_FREELISTS \
     $(getconf LFS_CFLAGS) \
     -Wall \
-    --with-rand-seed=getrandom
+    --with-rand-seed=getrandom \
+    --system-ciphers-file=%{_sysconfdir}/crypto-policies/back-ends/openssl.config
 
 # Show build configuration
 perl configdata.pm --dump

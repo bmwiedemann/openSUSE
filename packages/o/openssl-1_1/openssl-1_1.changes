@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 19 10:54:53 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Use the centralized crypto policy profile (jsc#SLE-15832)
+  * add openssl-1.1.1-system-cipherlist.patch from Fedora
+
+-------------------------------------------------------------------
 Mon Oct 12 15:22:54 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Escape rpm command %%expand when used in comment.
