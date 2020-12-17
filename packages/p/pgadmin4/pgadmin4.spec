@@ -16,6 +16,49 @@
 #
 
 
+%global python3_babel_min_version 1.3
+%global python3_beautifulsoup4_min_version 4.4.1
+%global python3_blinker_min_version 1.4
+%global python3_extras_min_version 1.0.0
+%global python3_fixtures_min_version 3.0.0
+%global python3_flask_babel_min_version 0.11.1
+%global python3_flask_compress_min_version 1.4.0
+%global python3_flask_gravatar_min_version 0.5.0
+%global python3_flask_htmlmin_min_version 1.3.2
+%global python3_flask_login_min_version 0.4.1
+%global python3_flask_mail_min_version 0.9.1
+%global python3_flask_migrate_min_version 2.4.0
+%global python3_flask_min_version 1.0.2
+%global python3_flask_paranoid_min_version 0.2.0
+%global python3_flask_principal_min_version 0.4.0
+%global python3_flask_security_too_min_version 3.0.0
+%global python3_flask_sqlalchemy_min_version 2.4.1
+%global python3_flask_wtf_min_version 0.14.3
+%global python3_html5lib_min_version 1.0.1
+%global python3_htmlmin_min_version 0.1.12
+%global python3_itsdangerous_min_version 0.24
+%global python3_jinja2_min_version 2.7.3
+%global python3_ldap3_min_version 2.5.1
+%global python3_linecache2_min_version 1.0.0
+%global python3_markupsafe_min_version 0.23
+%global python3_passlib_min_version 1.7.2
+%global python3_pbr_min_version 3.1.1
+%global python3_psutil_min_version 5.7.0
+%global python3_psycopg2_min_version 2.8
+%global python3_pycrypto_min_version 2.6.1
+%global python3_pyrsistent_min_version 0.14.2
+%global python3_python_dateutil_min_version 2.8.0
+%global python3_python_mimeparse_min_version 1.6.0
+%global python3_pytz_min_version 2020.1
+%global python3_simplejson_min_version 3.16.0
+%global python3_six_min_version 1.12.0
+%global python3_speaklater_min_version 1.3
+%global python3_sqlalchemy_min_version 1.3.13
+%global python3_sqlparse_min_version 0.3.0
+%global python3_sshtunnel_min_version 0.1.5
+%global python3_werkzeug_min_version 0.15.0
+%global python3_wtforms_min_version 2.2.1
+
 %global	pgadmin4instdir %{_libdir}/pgadmin4-%{version}
 %global	pgadmin4homedir /var/lib/pgadmin
 %global user_group_name pgadmin
@@ -48,7 +91,50 @@ BuildRequires:  gcc-c++
 BuildRequires:  libQt5Core-devel
 BuildRequires:  libQt5Network-devel
 BuildRequires:  libQt5Widgets-devel
+BuildRequires:  python3-Babel >= %{python3_babel_min_version}
+BuildRequires:  python3-Flask >= %{python3_flask_min_version}
+BuildRequires:  python3-Flask-Babel >= %{python3_flask_babel_min_version}
+BuildRequires:  python3-Flask-Compress >= %{python3_flask_compress_min_version}
+BuildRequires:  python3-Flask-Gravatar >= %{python3_flask_gravatar_min_version}
+BuildRequires:  python3-Flask-HTMLmin >= %{python3_flask_htmlmin_min_version}
+BuildRequires:  python3-Flask-Login >= %{python3_flask_login_min_version}
+BuildRequires:  python3-Flask-Mail >= %{python3_flask_mail_min_version}
+BuildRequires:  python3-Flask-Migrate >= %{python3_flask_migrate_min_version}
+BuildRequires:  python3-Flask-Paranoid >= %{python3_flask_paranoid_min_version}
+BuildRequires:  python3-Flask-Principal >= %{python3_flask_principal_min_version}
+BuildRequires:  python3-Flask-SQLAlchemy >= %{python3_flask_sqlalchemy_min_version}
+BuildRequires:  python3-Flask-Security-Too >= %{python3_flask_security_too_min_version}
+BuildRequires:  python3-Flask-WTF >= %{python3_flask_wtf_min_version}
+BuildRequires:  python3-Jinja2 >= %{python3_jinja2_min_version}
+BuildRequires:  python3-MarkupSafe >= %{python3_markupsafe_min_version}
+BuildRequires:  python3-SQLAlchemy >= %{python3_sqlalchemy_min_version}
+BuildRequires:  python3-WTForms >= %{python3_wtforms_min_version}
+BuildRequires:  python3-Werkzeug >= %{python3_werkzeug_min_version}
+BuildRequires:  python3-beautifulsoup4 >= %{python3_beautifulsoup4_min_version}
+BuildRequires:  python3-blinker >= %{python3_blinker_min_version}
+BuildRequires:  python3-click
 BuildRequires:  python3-devel
+BuildRequires:  python3-extras >= %{python3_extras_min_version}
+BuildRequires:  python3-fixtures >= %{python3_fixtures_min_version}
+BuildRequires:  python3-html5lib >= %{python3_html5lib_min_version}
+BuildRequires:  python3-htmlmin >= %{python3_htmlmin_min_version}
+BuildRequires:  python3-itsdangerous >= %{python3_itsdangerous_min_version}
+BuildRequires:  python3-ldap3 >= %{python3_ldap3_min_version}
+BuildRequires:  python3-linecache2 >= %{python3_linecache2_min_version}
+BuildRequires:  python3-passlib >= %{python3_passlib_min_version}
+BuildRequires:  python3-pbr >= %{python3_pbr_min_version}
+BuildRequires:  python3-psutil >= %{python3_psutil_min_version}
+BuildRequires:  python3-psycopg2 >= %{python3_psycopg2_min_version}
+BuildRequires:  python3-pycrypto >= %{python3_pycrypto_min_version}
+BuildRequires:  python3-pyrsistent >= %{python3_pyrsistent_min_version}
+BuildRequires:  python3-python-dateutil >= %{python3_python_dateutil_min_version}
+BuildRequires:  python3-python-mimeparse >= %{python3_python_mimeparse_min_version}
+BuildRequires:  python3-pytz >= %{python3_pytz_min_version}
+BuildRequires:  python3-simplejson >= %{python3_simplejson_min_version}
+BuildRequires:  python3-six >= %{python3_six_min_version}
+BuildRequires:  python3-speaklater >= %{python3_speaklater_min_version}
+BuildRequires:  python3-sqlparse >= %{python3_sqlparse_min_version}
+BuildRequires:  python3-sshtunnel >= %{python3_sshtunnel_min_version}
 BuildRequires:  systemd-rpm-macros
 Requires:       %{name}-web = %{version}
 Requires:       python3 >= 3.3
@@ -69,49 +155,49 @@ application.
 %package web
 Summary:        Web package for pgAdmin4
 Group:          Productivity/Databases/Tools
-Requires:       python3-Babel >= 1.3
-Requires:       python3-Flask >= 1.0.2
-Requires:       python3-Flask-Babel >= 0.11.1
-Requires:       python3-Flask-Compress >= 1.4.0
-Requires:       python3-Flask-Gravatar >= 0.5.0
-Requires:       python3-Flask-HTMLmin >= 1.3.2
-Requires:       python3-Flask-Login >= 0.4.1
-Requires:       python3-Flask-Mail >= 0.9.1
-Requires:       python3-Flask-Migrate >= 2.4.0
-Requires:       python3-Flask-Paranoid >= 0.2.0
-Requires:       python3-Flask-Principal >= 0.4.0
-Requires:       python3-Flask-SQLAlchemy >= 2.4.1
-Requires:       python3-Flask-Security-Too >= 3.0.0
-Requires:       python3-Flask-WTF >= 0.14.3
-Requires:       python3-Jinja2 >= 2.7.3
-Requires:       python3-MarkupSafe >= 0.23
-Requires:       python3-SQLAlchemy >= 1.3.13
-Requires:       python3-WTForms >= 2.2.1
-Requires:       python3-Werkzeug >= 0.15.0
-Requires:       python3-beautifulsoup4 >= 4.4.1
-Requires:       python3-blinker >= 1.4
+Requires:       python3-Babel >= %{python3_babel_min_version}
+Requires:       python3-Flask >= %{python3_flask_min_version}
+Requires:       python3-Flask-Babel >= %{python3_flask_babel_min_version}
+Requires:       python3-Flask-Compress >= %{python3_flask_compress_min_version}
+Requires:       python3-Flask-Gravatar >= %{python3_flask_gravatar_min_version}
+Requires:       python3-Flask-HTMLmin >= %{python3_flask_htmlmin_min_version}
+Requires:       python3-Flask-Login >= %{python3_flask_login_min_version}
+Requires:       python3-Flask-Mail >= %{python3_flask_mail_min_version}
+Requires:       python3-Flask-Migrate >= %{python3_flask_migrate_min_version}
+Requires:       python3-Flask-Paranoid >= %{python3_flask_paranoid_min_version}
+Requires:       python3-Flask-Principal >= %{python3_flask_principal_min_version}
+Requires:       python3-Flask-SQLAlchemy >= %{python3_flask_sqlalchemy_min_version}
+Requires:       python3-Flask-Security-Too >= %{python3_flask_security_too_min_version}
+Requires:       python3-Flask-WTF >= %{python3_flask_wtf_min_version}
+Requires:       python3-Jinja2 >= %{python3_jinja2_min_version}
+Requires:       python3-MarkupSafe >= %{python3_markupsafe_min_version}
+Requires:       python3-SQLAlchemy >= %{python3_sqlalchemy_min_version}
+Requires:       python3-WTForms >= %{python3_wtforms_min_version}
+Requires:       python3-Werkzeug >= %{python3_werkzeug_min_version}
+Requires:       python3-beautifulsoup4 >= %{python3_beautifulsoup4_min_version}
+Requires:       python3-blinker >= %{python3_blinker_min_version}
 Requires:       python3-click
-Requires:       python3-extras >= 1.0.0
-Requires:       python3-fixtures >= 3.0.0
-Requires:       python3-html5lib >= 1.0.1
-Requires:       python3-htmlmin >= 0.1.12
-Requires:       python3-itsdangerous >= 0.24
-Requires:       python3-ldap3 >= 2.5.1
-Requires:       python3-linecache2 >= 1.0.0
-Requires:       python3-passlib >= 1.7.2
-Requires:       python3-pbr >= 3.1.1
-Requires:       python3-psutil >= 5.7.0
-Requires:       python3-psycopg2 >= 2.8
-Requires:       python3-pycrypto >= 2.6.1
-Requires:       python3-pyrsistent >= 0.14.2
-Requires:       python3-python-dateutil >= 2.8.0
-Requires:       python3-python-mimeparse >= 1.6.0
-Requires:       python3-pytz >= 2020.1
-Requires:       python3-simplejson >= 3.16.0
-Requires:       python3-six >= 1.12.0
-Requires:       python3-speaklater >= 1.3
-Requires:       python3-sqlparse >= 0.3.0
-Requires:       python3-sshtunnel >= 0.1.5
+Requires:       python3-extras >= %{python3_extras_min_version}
+Requires:       python3-fixtures >= %{python3_fixtures_min_version}
+Requires:       python3-html5lib >= %{python3_html5lib_min_version}
+Requires:       python3-htmlmin >= %{python3_htmlmin_min_version}
+Requires:       python3-itsdangerous >= %{python3_itsdangerous_min_version}
+Requires:       python3-ldap3 >= %{python3_ldap3_min_version}
+Requires:       python3-linecache2 >= %{python3_linecache2_min_version}
+Requires:       python3-passlib >= %{python3_passlib_min_version}
+Requires:       python3-pbr >= %{python3_pbr_min_version}
+Requires:       python3-psutil >= %{python3_psutil_min_version}
+Requires:       python3-psycopg2 >= %{python3_psycopg2_min_version}
+Requires:       python3-pycrypto >= %{python3_pycrypto_min_version}
+Requires:       python3-pyrsistent >= %{python3_pyrsistent_min_version}
+Requires:       python3-python-dateutil >= %{python3_python_dateutil_min_version}
+Requires:       python3-python-mimeparse >= %{python3_python_mimeparse_min_version}
+Requires:       python3-pytz >= %{python3_pytz_min_version}
+Requires:       python3-simplejson >= %{python3_simplejson_min_version}
+Requires:       python3-six >= %{python3_six_min_version}
+Requires:       python3-speaklater >= %{python3_speaklater_min_version}
+Requires:       python3-sqlparse >= %{python3_sqlparse_min_version}
+Requires:       python3-sshtunnel >= %{python3_sshtunnel_min_version}
 Recommends:     python3-mod_wsgi
 Suggests:       %{name}-doc
 BuildArch:      noarch
