@@ -25,7 +25,10 @@ License:        MIT
 Group:          Development/Tools/Other
 URL:            https://github.com/%{pname}/%{pname}/
 Source:         https://github.com/%{pname}/%{pname}/archive/v%{version}.tar.gz
+# FIX-UPSTREAM: Backport of https://github.com/bats-core/bats-core/pull/344. bsc#1180135
+Patch1:         bsc1180135-0001-fix-dont-use-unbound-variables-in-setup-methods.patch
 BuildRequires:  ncurses-utils
+Requires:       gnu_parallel
 BuildArch:      noarch
 
 %description
@@ -41,6 +44,8 @@ to test any UNIX program.
 
 %prep
 %setup -q -n %{pname}-%{version}
+# bsc#1180135
+%patch1 -p1
 
 sed -i '1s|#!%{_bindir}/env bash|#!/bin/bash|' ./lib{,exec}/%{pname}/* ./bin/bats
 %if 0%{?suse_version} <= 1500

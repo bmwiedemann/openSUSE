@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 17 00:43:18 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Backport <https://github.com/bats-core/bats-core/pull/344>. bsc#1180135
+  + bsc1180135-0001-fix-dont-use-unbound-variables-in-setup-methods.patch
+
+-------------------------------------------------------------------
 Wed Nov 18 22:44:45 UTC 2020 - Olav Reinert <seroton10@gmail.com>
 
 - update to 1.2.1:
@@ -16,6 +22,12 @@ Wed Nov 18 22:44:45 UTC 2020 - Olav Reinert <seroton10@gmail.com>
 Wed Nov 18 21:32:54 UTC 2020 - Olav Reinert <seroton10@gmail.com>
 
 - Install to /usr/libexec on Tumbleweed
+
+-------------------------------------------------------------------
+Fri Jul  3 01:08:46 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Require gnu_parallel so that 'bats --jobs' works out of the box and is tested
+  as part of the integration tests of the package.
 
 -------------------------------------------------------------------
 Wed May 20 12:04:49 UTC 2020 - Olav Reinert <seroton10@gmail.com>
