@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbsmoke
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,7 +51,7 @@ BuildRequires:  %{python_module pyflakes}
 BuildRequires:  %{python_module pytest >= 3.1.1}
 BuildRequires:  %{python_module requests}
 # /SECTION
-%ifpython3
+%if "%{python_flavor}" == "python3" || "%{?python_provides}"  == "python3"
 Provides:       jupyter-nbsmoke = %{version}
 %endif
 %python_subpackages
