@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kpat
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Patience card game
 License:        GPL-2.0-or-later
@@ -30,6 +30,9 @@ URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:  extra-cmake-modules
 BuildRequires:  freecell-solver-devel
+%if 0%{?suse_version} > 1500
+BuildRequires:  pkgconfig(libblack-hole-solver)
+%endif
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
@@ -57,8 +60,6 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Requires:       kdegames-carddecks-default
-Requires(post): shared-mime-info
-Requires(postun): shared-mime-info
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 %if %{with lang}
@@ -78,7 +79,11 @@ more. The game has nice graphics and many different carddecks.
 %setup -q
 
 %build
+%if 0%{?suse_version} > 1500
   %cmake_kf5 -d build
+%else
+  %cmake_kf5 -d build -- -DWITH_BH_SOLVER=OFF
+%endif
   %cmake_build
 
 %install
@@ -91,8 +96,8 @@ more. The game has nice graphics and many different carddecks.
 
 %files
 %license COPYING COPYING.DOC
-%config %{_kf5_configdir}/kcardtheme.knsrc
-%config %{_kf5_configdir}/kpat.knsrc
+%{_kf5_knsrcfilesdir}/kcardtheme.knsrc
+%{_kf5_knsrcfilesdir}/kpat.knsrc
 %dir %{_kf5_configkcfgdir}
 %dir %{_kf5_iconsdir}/hicolor/24x24
 %dir %{_kf5_iconsdir}/hicolor/24x24/apps
