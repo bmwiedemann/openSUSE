@@ -16,12 +16,12 @@
 #
 
 
-%define kf5_version 5.60.0
+%define kf5_version 5.75.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-calendar-tools
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Console applications and utilities for managing calendars
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -71,7 +71,7 @@ Console applications and utilities for managing calendars in Akonadi.
 %endif
 
 %files
-%license COPYING*
+%license LICENSES/*
 %{_kf5_debugdir}/console.categories
 %{_kf5_debugdir}/console.renamecategories
 %doc %lang(en) %{_kf5_htmldir}/en/konsolekalendar/
@@ -82,7 +82,7 @@ Console applications and utilities for managing calendars in Akonadi.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
