@@ -31,4 +31,12 @@
     <comment>- Don't use %python3_only command, but properly use alternatives.</comment>
     <requestid>807042</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>b9514876aa175bf29c9ed1d3a0e0efcd</srcmd5>
+    <version>20.2.26</version>
+    <time>1608221055</time>
+    <user>dimstar_suse</user>
+    <comment>- Make tests working again.</comment>
+    <requestid>856324</requestid>
+  </revision>
 </revisionlist>
