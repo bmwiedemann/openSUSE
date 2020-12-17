@@ -21,9 +21,8 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
-%define serverroot %(/usr/sbin/apxs2 -q datadir 2>/dev/null || /usr/sbin/apxs2 -q PREFIX)
-%define cgi_dir %{serverroot}/cgi-bin
-%define css_dir %{serverroot}/htdocs/css
+%define cgi_dir %{apache_serverroot}/cgi-bin
+%define css_dir %{apache_serverroot}/htdocs/css
 
 Name:           mailgraph
 Version:        1.14
@@ -54,6 +53,7 @@ Patch5:         mailgraph-1.14-add_postgrey_and_greylisting_support.patch
 Patch6:         mailgraph-1.14-add_postscreen_support.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
+BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
 Requires(pre):  %fillup_prereq
 Requires:       logrotate
