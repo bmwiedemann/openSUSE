@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kontact
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Personal Information Manager
 License:        GPL-2.0-or-later
@@ -28,7 +28,6 @@ Group:          Productivity/Other
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kdepim-apps-libs-devel
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
@@ -90,7 +89,7 @@ KOrganizer as views in one window.
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING COPYING.LIB COPYING.DOC
+%license LICENSES/*
 %{_kf5_debugdir}/kontact.categories
 %{_kf5_debugdir}/kontact.renamecategories
 %dir %{_kf5_appstreamdir}/
@@ -111,7 +110,7 @@ KOrganizer as views in one window.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
