@@ -29,6 +29,8 @@ Source:         https://files.pythonhosted.org/packages/source/a/awkward/awkward
 Patch0:         awkward-cmake-build-with-RelWithDebInfo.patch
 # PATCH-FEATURE-OPENSUSE awkward-correct-includedir.patch badshah400#gmail.com -- Make awkward.config return the correct includedir where we move the header files to
 Patch1:         awkward-correct-includedir.patch
+# PATCH-FIX-UPSTREAM awkward-tests-on-32bit.patch gh#scikit-hep/awkward-1.0#600 -- Fix tests on 32 bit systems; patch taken from upstream PR
+Patch2:         awkward-tests-on-32bit.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -95,13 +97,7 @@ fi
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# Disable tests failing on 32-bit due to use of 64 data types
-# https://github.com/scikit-hep/awkward-1.0/issues/600
-%ifarch %ix86
-%pytest_arch -k "not (test_0056-partitioned-array.py or test_0080-flatpandas-multiindex-rows-and-columns.py or test_0166-0167-0170-random-issues.py or test_0331-pandas-indexedarray.py)"
-%else
 %pytest_arch
-%endif
 
 %files %{python_files}
 %doc README.md
