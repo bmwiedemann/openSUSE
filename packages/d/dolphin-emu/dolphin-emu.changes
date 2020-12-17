@@ -1,4 +1,152 @@
 -------------------------------------------------------------------
+Sun Dec 13 12:35:43 UTC 2020 - seil0@mosad.xyz
+
+- Update to version 5.0+git.20201213T035539.3634508e46:
+  * HW/WiimoteReal: Drop stale data reports to prevent read queue from filling up and causing input delays.
+  * Add caching to Config::Info
+  * GameSettings: Add patch for Monster High: Ghoul Spirit (SAOE78/SAOEVZ)
+  * Store pointers in Config::SYSCONF_SETTINGS
+  * Turn Config::Info into a class with getters
+  * Core: Don't copy default _Enabled sections to user INIs
+  * GameSettings: Enable compatibility patches by default
+  * Core: Save the disabling of default enabled codes
+  * Core: Allow overriding the enabling of a code
+  * Add File::Delete and File::DeleteDir tests
+  * Android: Expand WiimoteProfileSetting to more setting types
+  * JitArm64: Properly set m_stack_pointer
+  * JitArm64: Call dispatcher_no_check after CompileExceptionCheck
+  * WiiUtils: Check hashes to determine if a title is installed and up-to-date
+  * Add warning flags to File deletion functions
+  * InputCommon: fix dynamic input textures being not generated when the key or device isn't mapped
+  * Turn format string issues into compile-time errors
+  * Change File::DeleteDir return value
+  * DiscIO: Fix recursive directory extraction
+  * Exclude Discord RPC lib from installation
+  * General: Convert PanicAlerts over to fmt equivalent
+  * Translation resources sync with Transifex
+  * Android: Add "Generate a New Statistics Identity"
+  * Qt: Add missing tr calls for tooltip descriptions
+  * Android: Add "Disable Fastmem" debug setting
+  * JitArm64: Do downcount immediately before jumping to dispatcher
+  * Android: Clear Log file
+  * Movie: Fix 83b9fef regressions
+  * JitArm64: Add a workaround for issue 12327
+  * Add Fallback Region to configuration menu
+  * Core: Fix an assertion that mistakenly uses a fmt format string
+  * Core / DolphinQt: Add ini only option to force low-contrast tooltips
+  * DolphinQt: Add tooltip support to Software Renderer Graphics tab
+  * DolphinQt: Add tooltip support to Hacks Graphics tab
+  * DolphinQt: Add tooltip support to Advanced Graphics tab
+  * DolphinQt: Add tooltip support to Enhancements Graphics tab
+  * DolphinQt: Add tooltip support to General Graphics tab
+  * DolphinQt: Add the ability to show a tooltip for custom graphics controls
+  * DolphinQt: Add generic tooltip controls
+  * DolphinQt: Remove description box handling from graphics widget and window
+  * DolphinQt: Add BalloonTip which is built off of an internal Qt class.  It gives the ability to show a tooltip with an arrow!
+  * Fix liblzma config on macOS
+  * FrameDump: Start timing at 0 ticks when starting from boot
+  * IP/Top: Add Android network interface
+  * AudioCommon: Convert alerts over to fmt-based variants
+  * VideoCommon: Use Common::SavePNG() to write textures.
+  * InputCommon: Use Common::SavePNG() to write images.
+  * Common: Add SavePNG() function that writes PNGs using the simplified libpng API.
+  * Core: Remove commented out logs
+  * Frontends: Migrate logs over to fmt
+  * Fix file rename errors on Windows
+  * Qt/IOWindow: Remove Apply button.
+  * Qt/IOWindow: Show the current value of the expression.
+  * Qt/IOWindow: Apply expressions immediately so we can query the current value of the expression.
+  * IOFile: Replace all fprintf string writing with calls to WriteString.
+  * Core: Convert logging over to fmt pt.5
+  * Common: Optimize Config::Get
+  * IOFile: Add WriteString() method to replace fprintf string writing.
+  * Fix bounding box incorrectly disabled on OpenGL ES 3.1, 3.2
+  * Add Rock Band 3 MIDI PRO Adapter to known Wii peripherals
+  * Core: Convert missed log calls over to fmt
+  * Core: Convert logging over to fmt pt.4
+  * Fix vertex ubershader GLES compile errors
+  * IP/Top: Fix fallback IP address
+  * FrameDump: Re-add call to av_register_all
+  * CMake: Pass various /Zc flags to MSVC for consistency with Base.props
+  * Core: Convert logging over to fmt pt.3
+  * Fix variable shadowing warnings
+  * Silence "missing switch cases" warnings
+  * Fix -Wmaybe-uninitialized warnings
+  * Fix -Wsign-compare warnings
+  * Disable -Wstringop-truncation warnings
+  * Core/Movie: Fix a likely out-of-bounds read for PanicAlertT
+  * Enable extra warnings in Source CMakeLists, not in root CMakeLists
+  * Software: Use same logic for colors as hardware backends
+  * LightingShaderGen: Always calculate lighting for both color channels
+  * Android: Fix default values for GC/Wii controller 1
+  * Android: Remove "Reset Paths to Default Settings"
+  * Android: Long press a setting to reset it
+  * Common: Assert that translatable strings use positional arguments
+  * Fix translatable strings which contain non-positional arguments
+  * EXI_DeviceMemoryCard: Use std::array
+  * EXI_DeviceMemoryCard: Use enum class for Command
+  * EXI_DeviceMemoryCard: Fix member variable names
+  * EXI_DeviceMemoryCard: Use override rather than virtual
+  * EXI_DeviceMemoryCard: Use more efficient overload of find_last_of
+  * EXI_DeviceMemoryCard: Clean up casts and implicit conversions
+  * EXI_DeviceMemoryCard: Remove unused include
+  * EXI_DeviceMemoryCard: Rename variables to follow our naming conventions
+  * Android: Fix IllegalStateException on startup
+  * Core: Fix invalid lambda captures
+  * DSP: Fix one DEBUG_LOG call
+  * Core: Convert logging over to fmt pt.2
+  * Vulkan: fix validation error in bSupportsGeometryShaders=false case
+  * DolphinQt: Add Show/Hide All options to gamelist region menu
+  * Core: Convert logging over to fmt pt. 1
+  * Common/MsgHandler: Add compile-time format string checks
+  * Common: Validate the number of {} fields in format strings
+  * Common/Log: Check format strings
+  * WiiUtils: Create Wii Shop log files when installing a WAD.
+  * Fixed non-UTF8 chars in PeakFinder.cpp
+  * Translation resources sync with Transifex
+  * VideoCommon: Migrate over to fmt
+  * Remove a redundant i18n comment
+  * Android: Add @Keep annotation to things accessed using JNI
+  * Use positional arguments in all translatable fmt strings
+  * CMake: Bump fmt version requirement to 7.1.0
+  * Fix updater not always cleaning up temp directory
+  * DolphinQt: Don't return 0x04 bytes from tr
+  * InputCommon: Migrate over to fmt-capable panic alerts
+  * Android: Warn when path in config is unavailable
+  * DiscIO: Make use of fmt-capable panic alerts
+  * FrameDump Logging: Separate log type and migrate to fmt
+  * Remove Android-specific settings from UISettings.cpp
+  * Android: Move orientation setting to main settings screen
+  * Vulkan: Migrate logging over to fmt
+  * Software: Migrate logging over to fmt
+  * OpenGL: Migrate logging over to fmt
+  * D3DCommon: Migrate logging over to fmt
+  * D3D: Migrate logging over to fmt
+  * D3D12: Migrate logging over to fmt
+  * Android: Catch SecurityException in ContentHandler
+  * Android: Call notifyItemChanged after file picker
+  * Android: Show warning after picking file with wrong extension
+  * Android: Use storage access framework for custom SD card paths
+  * InputCommon: Return error, if any, from ControlReference::SetExpression().
+  * Android: Make the handling of SAF open modes more robust
+  * IP/Top: Add missing sockopt
+  * WiimoteEmu: Implement extension encryption edge case.
+  * Dragon Quest 25th Anniversary Collection INI changes
+  * Game INI Changes
+  * Add a Skip EFB Access from CPU Hotkey
+  * modify file export to create folder in OS when explicitly extracting a directory
+  * Android: Update WiimoteNew.ini preferences instead of deleting
+  * Android: Re-add motionControlsEnabled to clearWiimoteNewIniLinkedPreferences
+  * Android: Remove hacks for Wii Remote extension setting, round 2
+  * Improved responsiveness when refreshing game list.
+  * **Refresh** and **Purge Game List Cache** now correctly enabled/disabled as notified by GameListRefreshRequested and GameListRefreshCompleted.
+  * Avoid using unnecessary RunOnObject() calls in GameTracker's worker thread to prevent deadlocks on shutdown.
+  * Ensured that GameTracker's internal worker thread is flushed on exit to avoid crashes when accessing stale, already-destroyed data, and to favor responsiveness.
+  * Extended WorkQueueThread class with Clear(), Cancel() and IsCancelled().
+  * GameListModel instance ownership transferred back to the GameList instance. The GameListModel instance will be passed as a constructor parameter where needed.
+  * Removed all references to GameListModel from the Settings component.
+
+-------------------------------------------------------------------
 Fri Nov 13 09:07:12 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Add minizip.patch to revert back to minizip 1.x which is also

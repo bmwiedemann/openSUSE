@@ -274,4 +274,12 @@
   * Android/InputOverlayPointer: Don't assume surface covers whole screen</comment>
     <requestid>848307</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fa1d2c0c17b093ebc0a8e050060323c0</srcmd5>
+    <version>5.0+git.20201213T035539.3634508e46</version>
+    <time>1608221088</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856503</requestid>
+  </revision>
 </revisionlist>
