@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           yakuake
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Terminal for KDE
 License:        GPL-2.0-or-later
@@ -82,7 +82,7 @@ Yakuake is a retractable KDE Terminal Emulator.
 %{_kf5_applicationsdir}/org.kde.yakuake.desktop
 %{_kf5_appstreamdir}/org.kde.yakuake.appdata.xml
 %{_kf5_bindir}/yakuake
-%config %{_kf5_configdir}/yakuake.knsrc
+%{_kf5_knsrcfilesdir}/yakuake.knsrc
 %dir %{_kf5_iconsdir}/hicolor/256x256
 %dir %{_kf5_iconsdir}/hicolor/256x256/apps
 %{_kf5_iconsdir}/hicolor/*/*/*.*
