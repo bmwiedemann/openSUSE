@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:06:42 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 0.8
+  * Don't overwrite Pygments background in notebook code 
+    cells. To get rid of those ugly greenish code blocks, 
+    remove pygments_style = 'sphinx' from your conf.py.
+  * Switch documentation to insipid theme by default
+  * Require Python 3.6+ 
+- The only test upstream does is to import the module and run
+  sphinx on their own docs. We can't do the latter because
+  we don't have all the requirements
+
+-------------------------------------------------------------------
+Tue Dec 15 12:52:44 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Provide the old jupyter package name only for the primary
+  Python3 interpreter -- gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Wed Jul  1 08:45:30 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.7.1

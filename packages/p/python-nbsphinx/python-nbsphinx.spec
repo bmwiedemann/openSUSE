@@ -19,15 +19,20 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-nbsphinx
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        Jupyter Notebook Tools for Sphinx
 License:        MIT
 URL:            https://github.com/spatialaudio/nbsphinx/
 Source:         https://files.pythonhosted.org/packages/source/n/nbsphinx/nbsphinx-%{version}.tar.gz
+BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module Sphinx >= 1.8}
+BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module docutils}
+BuildRequires:  %{python_module nbconvert}
+BuildRequires:  %{python_module nbformat}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module sphinx_rtd_theme}
 BuildRequires:  %{python_module traitlets}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -43,7 +48,7 @@ Recommends:     pandoc
 Provides:       python-jupyter_nbsphinx = %{version}
 Obsoletes:      python-jupyter_nbsphinx < %{version}
 BuildArch:      noarch
-%ifpython3
+%if "%{python_flavor}" == "python3" || "%{?python_provides}"  == "python3"
 Provides:       jupyter-nbsphinx = %{version}
 %endif
 %python_subpackages
@@ -66,7 +71,15 @@ build process.
 %python_install
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%fdupes %{buildroot}%{_jupyter_prefix}
+
+%check
+%{python_expand # no other unit tests provided
+# import the module.
+export PYTHONPATH=%{buildroot}%{$python_sitelib}
+$python -m nbsphinx
+# We cannot test it on our own doc/ because we lack the right Sphinx packages
+#$python -m sphinx doc/ _build/ -Dsuppress_warnings=git.too_shallow -b html
+}
 
 %files %{python_files}
 %doc NEWS.rst README.rst
