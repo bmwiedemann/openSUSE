@@ -20,13 +20,13 @@
 %define kf5_version 5.64.0
 %bcond_without lang
 Name:           elisa
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Music player and collection organizer
 License:        LGPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://community.kde.org/Elisa
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Baloo) >= %{kf5_version}
@@ -61,7 +61,7 @@ Requires:       kirigami2 >= %{kf5_version}
 Requires:       libqt5-qtquickcontrols >= %{qt5_version}
 Requires:       libqt5-qtquickcontrols2 >= %{qt5_version}
 %if %{with lang}
-Source1:        %{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 Recommends:     %{name}-lang
