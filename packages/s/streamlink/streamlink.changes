@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Dec  5 21:23:03 UTC 2020 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to 1.7.0:
+  * Added: new plugins for micous.com, tv999.bg and cbsnews.com
+  * Added: new embedded ad detection for Twitch streams (#3213)
+  * Fixed: a few broken plugins and minor plugin issues (see changelog down below)
+  * Fixed: arguments in config files were read too late before taking effect (#3255)
+  * Fixed: Arte plugin returning too many streams and overriding primary ones (#3228)
+  * Fixed: Twitch plugin error when stream metadata API response is empty (#3223)
+  * Fixed: Zattoo login issues (#3202)
+  * Changed: plugin request and submission guidelines (#3244)
+  * Changed: refactored and cleaned up Twitch plugin (#3227)
+  * Removed: platform=_ stream token request parameter from Twitch plugin (again) (#3220)
+  * Removed: plugins for itvplayer, aljazeeraen, srgssr and dingittv
+- Update to 1.6.0:
+  * Fixed: lots of broken plugins and minor plugin issues (see changelog down below)
+  * Fixed: embedded ads on Twitch with an ads workaround, removing pre-roll and mid-stream ads (#3173)
+  * Fixed: read timeout error when filtering out HLS segments (#3187)
+  * Fixed: twitch plugin logging incorrect low-latency status when pre-roll ads exist (#3169)
+  * Fixed: crunchyroll auth logic (#3150)
+  * Added: the --hls-playlist-reload-time parameter for customizing HLS playlist reload times (#2925)
+  * Added: python -m streamlink invocation style support (#3174)
+  * Added: plugin for mrt.com.mk (#3097)
+  * Changed: yupptv plugin and replaced email+pass with id+token authentication (#3116)
+  * Removed: plugins for vaughnlive, pandatv, douyutv, cybergame, europaplus and startv
+
+-------------------------------------------------------------------
 Fri Aug 21 20:18:43 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.5.0:

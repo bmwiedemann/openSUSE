@@ -1,7 +1,7 @@
 #
 # spec file for package streamlink
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,32 +12,34 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           streamlink
-Version:        1.5.0
+Version:        1.7.0
 Release:        0
 Summary:        Program to pipe streams from services into a video player
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-Url:            https://streamlink.github.io/
+URL:            https://streamlink.github.io/
 Source:         https://github.com/%{name}/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Recommends:     mpv
-BuildArch:      noarch
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-devel >= 3.4
-BuildRequires:  python3-setuptools
 BuildRequires:  python3-requests >= 1.0
-BuildRequires:  fdupes
+BuildRequires:  python3-setuptools
+Requires:       python3-PySocks
+Requires:       python3-isodate
 Requires:       python3-pycountry
 Requires:       python3-pycryptodome
 Requires:       python3-requests >= 1.0
 Requires:       python3-websocket-client
-Requires:       python3-isodate
-Requires:       python3-PySocks
+Recommends:     vlc
+Suggests:       ffmpeg
+Suggests:       rtmpdump
+BuildArch:      noarch
 
 %description
 Streamlink is a CLI utility that pipes flash videos
