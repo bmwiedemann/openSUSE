@@ -1,3 +1,11 @@
+Wed Dec 16 16:37:44 UTC 2020 - Simon Vogl <simon.vogl@gmx.net>
+
+- Removed 0002-fix-youtube-offset.patch as it is merged upstream
+- Update to version 20.12.16
+   * fix playback of some network streams,
+   * change CDDB server to gnudb.org.
+
+-------------------------------------------------------------------
 Thu Dec 10 17:06:11 UTC 2020 - Simon Vogl <simon.vogl@gmx.net>
 
 - Added 0002-fix-youtube-offset.patch to fix wrong YouTube video playback offset

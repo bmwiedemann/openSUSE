@@ -19,7 +19,7 @@
 %define __builder Ninja
 
 Name:           QMPlay2
-Version:        20.12.07
+Version:        20.12.16
 Release:        0
 Summary:        A Qt based media player, streamer and downloader
 License:        LGPL-3.0-or-later
@@ -28,8 +28,6 @@ URL:            https://github.com/zaps166/QMPlay2
 Source:         https://github.com/zaps166/QMPlay2/releases/download/%{version}/QMPlay2-src-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-fix-broken-python-detection.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0002-fix-youtube-offset.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
