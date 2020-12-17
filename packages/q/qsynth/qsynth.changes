@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:50:56 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.9.0
+  * Early fixing to build for Qt >= 6.0.0 and comply with C++17
+    standard.
+- Add qsynth-0.9.0_Qt512.patch
+
+-------------------------------------------------------------------
 Fri Jul 31 10:57:55 UTC 2020 - aloisio@gmx.com
 
 - Update to version 0.6.3

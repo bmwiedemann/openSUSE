@@ -18,7 +18,7 @@
 
 
 Name:           qsynth
-Version:        0.6.3
+Version:        0.9.0
 Release:        0
 Summary:        Graphical User Interface for fluidsynth
 License:        GPL-2.0-or-later
@@ -26,6 +26,8 @@ Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://qsynth.sourceforge.net/qsynth-index.html
 Source:         https://sourceforge.net/projects/qsynth/files/qsynth/%{version}/qsynth-%{version}.tar.gz
 Patch1:         qsynth-fix_desktop_file.patch
+# PATCH-FIX-OPENSUSE qsynth-0.9.0_Qt512.patch # use qt5 macros when generic not available -- aloisio@gmx.com
+Patch2:         qsynth-0.9.0_Qt512.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -46,8 +48,7 @@ toolkit using Qt Designer.
 %lang_package
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 %cmake
