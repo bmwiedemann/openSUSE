@@ -16,12 +16,12 @@
 #
 
 
-%define kf5_version 5.60.0
+%define kf5_version 5.75.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           eventviews
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Eventviews Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -100,13 +100,13 @@ Requires:       cmake(KF5CalendarUtils)
 The development package for the eventviews libraries
 
 %files
-%license COPYING*
+%license LICENSES/*
 %{_kf5_debugdir}/eventviews.categories
 %{_kf5_debugdir}/eventviews.renamecategories
 %{_kf5_servicetypesdir}/calendardecoration.desktop
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %{_kf5_cmakedir}/KF5EventViews/
 %{_kf5_includedir}/EventViews/
 %{_kf5_includedir}/eventviews/
@@ -119,7 +119,7 @@ The development package for the eventviews libraries
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
