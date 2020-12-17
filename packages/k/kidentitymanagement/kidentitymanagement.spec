@@ -16,12 +16,12 @@
 #
 
 
-%define kf5_version 5.60.0
+%define kf5_version 5.75.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kidentitymanagement
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        KDE PIM Libraries: Identity Management
 License:        LGPL-2.1-or-later
@@ -91,13 +91,13 @@ to develop applications that make use of multiple email identities.
 %postun -n libKF5IdentityManagement5 -p /sbin/ldconfig
 
 %files -n libKF5IdentityManagement5
-%license COPYING.LIB
+%license LICENSES/*
 %{_kf5_libdir}/libKF5IdentityManagement.so.*
 %{_kf5_debugdir}/*.categories
 %{_kf5_debugdir}/*.renamecategories
 
 %files devel
-%license COPYING.LIB
+%license LICENSES/*
 %{_kf5_cmakedir}/KF5IdentityManagement/
 %{_kf5_dbusinterfacesdir}/kf5_org.kde.pim.IdentityManager.xml
 %{_kf5_includedir}/KIdentityManagement/
@@ -107,7 +107,7 @@ to develop applications that make use of multiple email identities.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
