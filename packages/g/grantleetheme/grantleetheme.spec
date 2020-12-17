@@ -16,12 +16,12 @@
 #
 
 
-%define kf5_version 5.60.0
+%define kf5_version 5.75.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           grantleetheme
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Grantlee theme support
 License:        GPL-2.0-only
@@ -90,7 +90,7 @@ Requires:       libKF5GrantleeTheme5 = %{version}
 The development package for the grantleetheme library
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %{_kf5_cmakedir}/KF5GrantleeTheme/
 %{_kf5_includedir}/GrantleeTheme/
 %{_kf5_includedir}/grantleetheme/
@@ -99,7 +99,7 @@ The development package for the grantleetheme library
 %{_kf5_mkspecsdir}/qt_GrantleeTheme.pri
 
 %files
-%license COPYING*
+%license LICENSES/*
 %{_kf5_debugdir}/grantleetheme.categories
 %{_kf5_debugdir}/grantleetheme.renamecategories
 %{_kf5_libdir}/grantlee/
@@ -109,7 +109,7 @@ The development package for the grantleetheme library
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING
+%license LICENSES/*
 %endif
 
 %changelog
