@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbindex-jupyter
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -20,17 +21,17 @@
 Name:           python-nbindex-jupyter
 Version:        0.2.25
 Release:        0
-License:        BSD-3-Clause
 Summary:        Jupyter Notebook additions
-Url:            https://github.com/l-althueser/nbindex-jupyter
+License:        BSD-3-Clause
 Group:          Development/Languages/Python
+URL:            https://github.com/l-althueser/nbindex-jupyter
 Source:         https://files.pythonhosted.org/packages/source/n/nbindex-jupyter/nbindex-jupyter-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-ipython
-%ifpython3
+%if "%{python_flavor}" == "python3" || "%{?python_provides}"  == "python3"
 Provides:       jupyter-nbindex-jupyter = %{version}
 %endif
 BuildArch:      noarch
