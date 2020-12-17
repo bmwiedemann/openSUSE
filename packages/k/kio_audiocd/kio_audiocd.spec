@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kio_audiocd
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        KDE I/O Slave for Audio CDs
 License:        GPL-2.0-or-later
@@ -91,6 +91,7 @@ This package contains the development files for the audiocd kio slave
 %{_kf5_appstreamdir}/org.kde.kio_audiocd.metainfo.xml
 %{_kf5_configkcfgdir}/audiocd_*_encoder.kcfg
 %{_kf5_debugdir}/kio_audiocd.categories
+%{_kf5_debugdir}/kio_audiocd.renamecategories
 %{_kf5_libdir}/libaudiocdplugins.so.*
 %{_kf5_plugindir}/kcm_audiocd.so
 %{_kf5_plugindir}/kf5/kio/audiocd.so
