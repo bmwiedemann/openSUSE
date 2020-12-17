@@ -33,6 +33,15 @@ BuildRequires:  cmake >= 3.6
 BuildRequires:  gcc-c++
 BuildRequires:  libnest2d-devel
 BuildRequires:  python3-sip-devel < 5
+%if 0%{?suse_version} >= 1550
+# The PyQt5.sip module. NOT a dependency on (Py)Qt5
+BuildRequires:  python3-qt5-sip
+Requires:       python3-qt5-sip
+%else
+# Older distributions provide PyQt5.sip through python3-sip
+BuildRequires:  python3-sip < 5
+Requires:       python3-sip < 5
+%endif
 
 %description
 Binding allowing libnest2d to be called from Python using Numpy.
@@ -42,7 +51,6 @@ Binding allowing libnest2d to be called from Python using Numpy.
 
 %build
 %cmake
-
 %cmake_build
 
 %install
