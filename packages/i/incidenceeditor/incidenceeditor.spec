@@ -16,12 +16,12 @@
 #
 
 
-%define kf5_version 5.60.0
+%define kf5_version 5.75.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           incidenceeditor
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Incidenceeditor library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -30,7 +30,6 @@ URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  kdepim-apps-libs-devel
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KChart)
 BuildRequires:  cmake(KF5Akonadi)
@@ -108,7 +107,7 @@ Requires:       cmake(KF5Mime)
 The development package for the incidenceeditor libraries
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %{_kf5_includedir}/IncidenceEditor/
 %{_kf5_includedir}/incidenceeditor/
 %{_kf5_includedir}/incidenceeditor_version.h
@@ -117,17 +116,17 @@ The development package for the incidenceeditor libraries
 %{_kf5_mkspecsdir}/qt_IncidenceEditor.pri
 
 %files -n libKF5IncidenceEditor5
-%license COPYING*
+%license LICENSES/*
 %{_libdir}/libKF5IncidenceEditor.so.*
 
 %files
-%license COPYING*
+%license LICENSES/*
 %{_kf5_debugdir}/incidenceeditor.categories
 %{_kf5_debugdir}/incidenceeditor.renamecategories
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
