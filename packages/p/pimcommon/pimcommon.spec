@@ -16,12 +16,12 @@
 #
 
 
-%define kf5_version 5.66.0
+%define kf5_version 5.75.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           pimcommon
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Base package of KDE PIM PimCommon library
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -133,7 +133,7 @@ The PimCommon Akonadi library
 %{_kf5_debugdir}/pimcommon.renamecategories
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %{_kf5_cmakedir}/KF5PimCommon/
 %{_kf5_cmakedir}/KF5PimCommonAkonadi/
 %{_kf5_includedir}/PimCommon/
@@ -149,16 +149,16 @@ The PimCommon Akonadi library
 %{_kf5_plugindir}/designer/
 
 %files -n libKF5PimCommon5
-%license COPYING*
+%license LICENSES/*
 %{_libdir}/libKF5PimCommon.so.*
 
 %files -n libKF5PimCommonAkonadi5
-%license COPYING*
+%license LICENSES/*
 %{_libdir}/libKF5PimCommonAkonadi.so.*
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
