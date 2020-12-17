@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>59aa84dee7292be266e4e162c19a801d</srcmd5>
+    <version>1.0.0</version>
+    <time>1608221156</time>
+    <user>dimstar_suse</user>
+    <comment>New Tumbleweed images with (micro)dnf instead of zypper</comment>
+    <requestid>856678</requestid>
+  </revision>
+</revisionlist>

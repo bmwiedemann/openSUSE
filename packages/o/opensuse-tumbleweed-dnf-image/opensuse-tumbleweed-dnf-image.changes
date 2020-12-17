@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Tue Dec  1 14:53:25 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Merge dnf and microdnf image flavors into one, using more profiles
+
+-------------------------------------------------------------------
+Thu Nov 12 13:16:01 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Initial container based on opensuse-tumbleweed-image
+
