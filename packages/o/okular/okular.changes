@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Dec  5 23:17:55 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-12-apps-update
+- Changes since 20.11.90:
+  * handle <subtitle> inside <cite> in FictionBook documents
+
+-------------------------------------------------------------------
+Fri Nov 27 15:18:08 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.90
+  * New feature release
+- Changes since 20.11.80:
+  * add support for <subtitle> tag in FictionBook
+  * Rework how we open urls that have a # (kde#426976)
+  * Show annotation tip when selecting the tool in continuous mode (kde#426782)
+  * More fine tuning of the mime of the opened file
+  * Fix QScroller crash on Qt < 5.14 and certain screen arrangements (kde#425188)
+  * Avoid unintentional accelerating flicks by reducing maximum flick time
+  * New part/ directory for okularpart sources from /, ui/, conf/
+- Rebase 0001-Inform-users-about-the-okular-spectre-package-in-the.patch
+
+-------------------------------------------------------------------
+Sat Nov 14 00:03:10 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Thu Nov  5 22:47:55 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.08.3

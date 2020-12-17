@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           okular
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Document Viewer
 # GPL-3.0+ license used by a runtime plugin
@@ -120,12 +120,17 @@ Document viewing program; supports document in various formats
 %prep
 %autosetup -p1 -n okular-%{version}
 
+# okular doesn't really need CMake 3.16.
+# Leap 15.1 only has 3.10, that's more than enough
+sed -i 's#3.16#3.10#' CMakeLists.txt
+
 %build
 %cmake_kf5 -d build -- -DBUILD_TESTING=ON -DOKULAR_UI=desktop
 %cmake_build
 
 %install
-%make_install -C build
+%kf5_makeinstall -C build
+
 %if %{with lang}
   %find_lang %{name} --with-man --all-name
   %{kf5_find_htmldocs}
@@ -153,7 +158,6 @@ rm -rfv %{buildroot}/%{_kf5_applicationsdir}/org.kde.mobile*
 %{_kf5_applicationsdir}/okularApplication_kimgio.desktop
 %{_kf5_applicationsdir}/okularApplication_md.desktop
 %{_kf5_applicationsdir}/okularApplication_mobi.desktop
-%{_kf5_applicationsdir}/okularApplication_ooo.desktop
 %{_kf5_applicationsdir}/okularApplication_pdf.desktop
 %{_kf5_applicationsdir}/okularApplication_plucker.desktop
 %{_kf5_applicationsdir}/okularApplication_tiff.desktop
@@ -170,7 +174,6 @@ rm -rfv %{buildroot}/%{_kf5_applicationsdir}/org.kde.mobile*
 %{_kf5_appstreamdir}/org.kde.okular-kimgio.metainfo.xml
 %{_kf5_appstreamdir}/org.kde.okular-md.metainfo.xml
 %{_kf5_appstreamdir}/org.kde.okular-mobipocket.metainfo.xml
-%{_kf5_appstreamdir}/org.kde.okular-ooo.metainfo.xml
 %{_kf5_appstreamdir}/org.kde.okular-plucker.metainfo.xml
 %{_kf5_appstreamdir}/org.kde.okular-poppler.metainfo.xml
 %{_kf5_appstreamdir}/org.kde.okular-tiff.metainfo.xml
@@ -196,7 +199,6 @@ rm -rfv %{buildroot}/%{_kf5_applicationsdir}/org.kde.mobile*
 %{_kf5_plugindir}/okular/generators/okularGenerator_kimgio.so
 %{_kf5_plugindir}/okular/generators/okularGenerator_md.so
 %{_kf5_plugindir}/okular/generators/okularGenerator_mobi.so
-%{_kf5_plugindir}/okular/generators/okularGenerator_ooo.so
 %{_kf5_plugindir}/okular/generators/okularGenerator_plucker.so
 %{_kf5_plugindir}/okular/generators/okularGenerator_poppler.so
 %{_kf5_plugindir}/okular/generators/okularGenerator_tiff.so
@@ -212,7 +214,6 @@ rm -rfv %{buildroot}/%{_kf5_applicationsdir}/org.kde.mobile*
 %{_kf5_servicesdir}/okularKimgio.desktop
 %{_kf5_servicesdir}/okularMd.desktop
 %{_kf5_servicesdir}/okularMobi.desktop
-%{_kf5_servicesdir}/okularOoo.desktop
 %{_kf5_servicesdir}/okularPlucker.desktop
 %{_kf5_servicesdir}/okularPoppler.desktop
 %{_kf5_servicesdir}/okularTiff.desktop
