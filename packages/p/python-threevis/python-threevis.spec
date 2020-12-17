@@ -1,7 +1,7 @@
 #
 # spec file for package python-threevis
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -20,14 +21,14 @@
 Name:           python-threevis
 Version:        0.1.0.post25
 Release:        0
-License:        BSD-3-Clause
 Summary:        Plugin for visualizing meshes, point clouds, and other geometry in a Jupyter Notebook
-Url:            https://graphics.rwth-aachen.de:9000/threevis/threevis
+License:        BSD-3-Clause
 Group:          Development/Languages/Python
+URL:            https://graphics.rwth-aachen.de:9000/threevis/threevis
 Source:         https://files.pythonhosted.org/packages/source/t/threevis/threevis-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module openmesh}
@@ -37,7 +38,7 @@ BuildRequires:  fdupes
 Requires:       python-numpy
 Requires:       python-openmesh
 Requires:       python-pythreejs >= 1.0.0
-%ifpython3
+%if "%{python_flavor}" == "python3" || "%{?python_provides}"  == "python3"
 Provides:       jupyter-threevis = %{version}
 %endif
 BuildArch:      noarch
