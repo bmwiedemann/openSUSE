@@ -16,16 +16,18 @@
 #
 
 
-%define ktor_ver 5.2.0
 %define sonum   6
+# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
+%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
+%bcond_without lang
 Name:           libktorrent
-Version:        2.2.0
+Version:        20.12.0
 Release:        0
 Summary:        Torrent Downloading Library
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/File-Sharing
 URL:            https://kde.org/applications/internet/org.kde.ktorrent/
-Source0:        https://download.kde.org/stable/ktorrent/%{ktor_ver}/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:  doxygen
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gmp-devel >= 6.0.0
@@ -37,10 +39,14 @@ BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Solid)
 BuildRequires:  cmake(Qca-qt5)
-BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Core) >= 5.14.0
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Xml)
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 
 %description
 libktorrent is a torrent downloading library.
@@ -79,26 +85,30 @@ libktorrent is a torrent downloading library.
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
 
+%if %{with lang}
 %find_lang libktorrent5 %{name}.lang
+%endif
 
 %post -n libKF5Torrent%{sonum} -p /sbin/ldconfig
 %postun -n libKF5Torrent%{sonum} -p /sbin/ldconfig
 
 %files devel
+%{_kf5_cmakedir}/KF5Torrent/
 %{_kf5_includedir}/libktorrent/
 %{_kf5_libdir}/libKF5Torrent.so
-%{_kf5_cmakedir}/KF5Torrent/
 
 %files -n libKF5Torrent%{sonum}
 %license COPYING
 %doc ChangeLog RoadMap
-%{_kf5_libdir}/libKF5Torrent.so.%{sonum}*
+%{_kf5_libdir}/libKF5Torrent.so.*
 
+%if %{with lang}
 %files lang -f %{name}.lang
+%endif
 
 %changelog
