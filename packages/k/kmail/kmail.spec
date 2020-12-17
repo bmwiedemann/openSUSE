@@ -16,12 +16,12 @@
 #
 
 
-%define kf5_version 5.60.0
+%define kf5_version 5.75.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kmail
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Mail Client
 License:        GPL-2.0-only
@@ -46,6 +46,7 @@ BuildRequires:  cmake(KF5Contacts)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5GrantleeTheme)
 BuildRequires:  cmake(KF5Gravatar)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
@@ -140,7 +141,7 @@ KTNEF is a viewer for email attachments in the TNEF format.
 %lang_package
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
 %cmake_kf5 -d build
@@ -163,7 +164,7 @@ KTNEF is a viewer for email attachments in the TNEF format.
 %{_kf5_iconsdir}/*/*/*/ktnef*.png
 
 %files
-%license COPYING*
+%license LICENSES/*
 %{_kf5_debugdir}/kmail.categories
 %{_kf5_debugdir}/kmail.renamecategories
 %dir %{_kf5_appstreamdir}/
@@ -211,7 +212,7 @@ KTNEF is a viewer for email attachments in the TNEF format.
 %{_kf5_sharedir}/kontact/
 
 %files application-icons
-%license COPYING COPYING.LIB COPYING.DOC
+%license LICENSES/*
 %dir %{_kf5_iconsdir}/hicolor/16x16/emblems
 %dir %{_kf5_iconsdir}/hicolor/22x22/emblems
 %dir %{_kf5_iconsdir}/hicolor/8x8
@@ -230,7 +231,7 @@ KTNEF is a viewer for email attachments in the TNEF format.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog

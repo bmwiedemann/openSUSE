@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Dec  5 23:16:38 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-12-apps-update
+- No code change since 20.11.90
+
+-------------------------------------------------------------------
+Fri Nov 27 15:16:52 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.90
+  * New feature release
+- No code change since 20.11.80
+
+-------------------------------------------------------------------
+Sat Nov 14 00:01:50 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.80
+  * New feature release
+- Too many changes since 20.08.3, only listing bugfixes:
+  * Fix Bug 426943 - Composer settings dialog: Word wrap at column is limited to 78 (kde#426943)
+  * Fix Bug 427916 - User Feedback string about "Account configured in KMail" is misleading (kde#427916)
+
+-------------------------------------------------------------------
 Thu Nov  5 22:46:41 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.08.3
