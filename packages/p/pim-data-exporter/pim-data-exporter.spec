@@ -16,12 +16,12 @@
 #
 
 
-%define kf5_version 5.66.0
+%define kf5_version 5.75.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           pim-data-exporter
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Data exporter for KDE PIM
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -89,7 +89,7 @@ This package contains utlities needed by KDE PIM to export data for backup and a
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING*
+%license LICENSES/*
 %{_kf5_debugdir}/pimdataexporter.categories
 %{_kf5_debugdir}/pimdataexporter.renamecategories
 %doc %lang(en) %{_kf5_htmldir}/en/pimdataexporter/
@@ -103,7 +103,7 @@ This package contains utlities needed by KDE PIM to export data for backup and a
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
