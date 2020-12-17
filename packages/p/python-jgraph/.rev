@@ -20,4 +20,15 @@
     <comment></comment>
     <requestid>748436</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0efd49ff02e7f4564f16b44421096590</srcmd5>
+    <version>0.2.1</version>
+    <time>1608221102</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide the old jupyter package name only for the primary
+  Python3 interpreter -- gh#openSUSE/python-rpm-macros#66
+- There are no tests
+</comment>
+    <requestid>856459</requestid>
+  </revision>
 </revisionlist>
