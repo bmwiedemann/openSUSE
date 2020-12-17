@@ -16,12 +16,12 @@
 #
 
 
-%define kf5_version 5.66.0
+%define kf5_version 5.75.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           mailimporter
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Mail import functionality for KDE PIM
 License:        GPL-2.0-or-later
@@ -110,7 +110,7 @@ used by KDE PIM applications to import data from other mail formats
 %postun -n libKF5MailImporterAkonadi5 -p /sbin/ldconfig
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %{_kf5_cmakedir}/KF5MailImporter/
 %{_kf5_cmakedir}/KF5MailImporterAkonadi/
 %{_kf5_includedir}/MailImporter/
@@ -125,21 +125,21 @@ used by KDE PIM applications to import data from other mail formats
 %{_kf5_mkspecsdir}/qt_MailImporterAkonadi.pri
 
 %files -n libKF5MailImporter5
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libKF5MailImporter.so.*
 
 %files -n libKF5MailImporterAkonadi5
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libKF5MailImporterAkonadi.so.*
 
 %files
-%license COPYING*
+%license LICENSES/*
 %{_kf5_debugdir}/mailimporter.categories
 %{_kf5_debugdir}/mailimporter.renamecategories
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
