@@ -16,12 +16,12 @@
 #
 
 
-%define kf5_version 5.60.0
+%define kf5_version 5.75.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkleo
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Base package of Kleopatra, a KDE key manager
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -91,7 +91,7 @@ The development package for the libkleo libraries
 %postun -n libKF5Libkleo5 -p /sbin/ldconfig
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %{_kf5_includedir}/Libkleo/
 %{_kf5_includedir}/libkleo/
 %{_kf5_includedir}/libkleo_version.h
@@ -106,11 +106,12 @@ The development package for the libkleo libraries
 %{_kf5_sharedir}/libkleopatra/
 
 %files -n libKF5Libkleo5
+%license LICENSES/*
 %{_kf5_libdir}/libKF5Libkleo.so.*
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
