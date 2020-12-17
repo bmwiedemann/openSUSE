@@ -1151,8 +1151,6 @@
       <repopackage name="kdenetwork-filesharing-lang" arch="x86_64"/>
       <repopackage name="kdepim-addons" arch="x86_64"/>
       <repopackage name="kdepim-addons-lang" arch="x86_64"/>
-      <repopackage name="kdepim-apps-libs" arch="x86_64"/>
-      <repopackage name="kdepim-apps-libs-lang" arch="x86_64"/>
       <repopackage name="kdepim-runtime" arch="x86_64"/>
       <repopackage name="kdepim-runtime-lang" arch="x86_64"/>
       <repopackage name="kdevelop5" arch="x86_64"/>
@@ -1501,6 +1499,7 @@
       <repopackage name="libbd_swap2" arch="x86_64"/>
       <repopackage name="libbd_utils2" arch="x86_64"/>
       <repopackage name="libbind9-1600"/>
+      <repopackage name="libblack_hole_solver1"/>
       <repopackage name="libblas3"/>
       <repopackage name="libblkid1"/>
       <repopackage name="libblkid1-32bit" arch="x86_64"/>
@@ -2066,6 +2065,7 @@
       <repopackage name="libkcddb-lang"/>
       <repopackage name="libkchart-lang" arch="x86_64"/>
       <repopackage name="libKChart2" arch="x86_64"/>
+      <repopackage name="libkColorPicker0_1_4" arch="x86_64"/>
       <repopackage name="libkcompactdisc-lang"/>
       <repopackage name="libkdecorations2-5" arch="x86_64"/>
       <repopackage name="libkdecorations2-5-lang" arch="x86_64"/>
@@ -2133,7 +2133,7 @@
       <repopackage name="libKF5DNSSD5"/>
       <repopackage name="libKF5DNSSD5-lang"/>
       <repopackage name="libKF5DocTools5"/>
-      <repopackage name="libKF5Emoticons5"/>
+      <repopackage name="libKF5Emoticons5" arch="x86_64"/>
       <repopackage name="libKF5EventViews5" arch="x86_64"/>
       <repopackage name="libKF5GlobalAccel5"/>
       <repopackage name="libKF5GlobalAccel5-lang"/>
@@ -2235,6 +2235,7 @@
       <repopackage name="libkgantt-lang" arch="x86_64"/>
       <repopackage name="libKGantt2" arch="x86_64"/>
       <repopackage name="libkgapi-lang" arch="x86_64"/>
+      <repopackage name="libkImageAnnotator0_3_2" arch="x86_64"/>
       <repopackage name="libkioarchive5" arch="x86_64"/>
       <repopackage name="libkipi-data" arch="x86_64"/>
       <repopackage name="libkleo" arch="x86_64"/>
@@ -2242,10 +2243,10 @@
       <repopackage name="libkmahjongg"/>
       <repopackage name="libkmahjongg-lang"/>
       <repopackage name="libkmod2"/>
-      <repopackage name="libkolabxml1" arch="x86_64"/>
       <repopackage name="libkomparediff2-5"/>
       <repopackage name="libkomparediff2-lang"/>
       <repopackage name="libkpathsea6" arch="x86_64"/>
+      <repopackage name="libKPimAddressbookImportExport5" arch="x86_64"/>
       <repopackage name="libKPimGAPICalendar5" arch="x86_64"/>
       <repopackage name="libKPimGAPIContacts5" arch="x86_64"/>
       <repopackage name="libKPimGAPICore5" arch="x86_64"/>
@@ -3091,7 +3092,6 @@
       <repopackage name="libXdamage1-32bit" arch="x86_64"/>
       <repopackage name="libXdmcp-devel"/>
       <repopackage name="libXdmcp6"/>
-      <repopackage name="libxerces-c-3_2" arch="x86_64"/>
       <repopackage name="libXext-devel"/>
       <repopackage name="libXext6"/>
       <repopackage name="libXext6-32bit" arch="x86_64"/>
