@@ -102,6 +102,7 @@ Substitute: netcfg netcfg libnss_usrfiles2
 
 # Enable ccache for a selection of packages:
 BuildFlags: useccache:NetworkManager
+BuildFlags: useccache:bitcoin
 BuildFlags: useccache:glib2
 BuildFlags: useccache:gtk3
 BuildFlags: useccache:gtk3:doc
