@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Dec  2 12:59:07 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.5.0:
+  * Refactored the SUNDIALS CMake build system to improve build
+    times by as much as 35%.
+  * CMake 3.12.0 or newer is now required.
+  * Users will likely see CMake deprecation warnings, and
+    potentially new errors when incompatible CMake options have
+    been set (previously, these would fail silently).
+  * SUNDIALS now exports CMake targets and installs a
+    SUNDIALSConfig.cmake file.
+  * Added support for SuperLU DIST 6.3.0+.
+- Add sundials-link-pthread.patch: Link against pthread explicitly
+  to fix linking errors when `-Wl,--no-undefined` is added to the
+  linker flags; patch sent upstream.
+- Add BuildRequires: suitesparse-devel and enable KLU solver; pass
+  appropriate options to cmake to make sure the klu library and
+  header is correctly found.
+- Use cmake macros instead of manual cmake commands.
+- Split out new libsundials_generic package with the
+  libsundials_generic shared library.
+- Enable openmpi4 flavour.
+- Run tests except for tests that fail due to floating point
+  errors in the tests themselves.
+- Drop Group tags.
+
+-------------------------------------------------------------------
 Fri Sep 11 07:55:15 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.3.0:

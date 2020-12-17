@@ -24,9 +24,11 @@
 %undefine DisOMPI1
 %undefine DisOMPI2
 %undefine DisOMPI3
+%undefine DisOMPI4
 %else
 %define DisOMPI1 ExclusiveArch:  do_not_build
 %define DisOMPI3 ExclusiveArch:  do_not_build
+%define DisOMPI4 ExclusiveArch:  do_not_build
 %undefine DisOMPI2
 %endif
 
@@ -61,6 +63,12 @@ ExclusiveArch:  do_not_build
 %{?DisOMPI3}
 %endif
 
+%if "%{flavor}" == "openmpi4"
+%global mpi_flavor openmpi
+%define mpi_vers 4
+%{?DisOMPI4}
+%endif
+
 %{?mpi_flavor:%{bcond_without mpi}}%{!?mpi_flavor:%{bcond_with mpi}}
 %{?with_mpi:%{!?mpi_flavor:error "No MPI family specified!"}}
 
@@ -90,26 +98,29 @@ ExclusiveArch:  do_not_build
 %define shlib_arkode libsundials_arkode4%{?my_suffix}
 %define shlib_cvode libsundials_cvode5%{?my_suffix}
 %define shlib_cvodes libsundials_cvodes5%{?my_suffix}
+%define shlib_generic libsundials_generic5%{?my_suffix}
 %define shlib_ida libsundials_ida5%{?my_suffix}
 %define shlib_idas libsundials_idas4%{?my_suffix}
 %define shlib_kinsol libsundials_kinsol5%{?my_suffix}
 %define shlib_nvec libsundials_nvec5%{?my_suffix}
 
 Name:           %{package_name}
-Version:        5.3.0
+Version:        5.5.0
 Release:        0
 Summary:        Suite of nonlinear solvers
 # SUNDIALS is licensed under BSD with some additional (but unrestrictive) clauses.
 # Check the file 'LICENSE' for details.
 License:        BSD-3-Clause
-Group:          System/Libraries
 URL:            https://computation.llnl.gov/projects/sundials/
 Source0:        https://computation.llnl.gov/projects/sundials/download/%{pname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM sundials-link-pthread.patch badshah400@gmail.com -- Explicitly link against pthread to fix linking errors when `-Wl,--no-undefined` is added to the linker flags
+Patch0:         sundials-link-pthread.patch
 BuildRequires:  blas-devel
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.12
 BuildRequires:  fdupes
 BuildRequires:  gcc-fortran
 BuildRequires:  lapack-devel
+BuildRequires:  suitesparse-devel
 %if %{with mpi}
 BuildRequires:  %{mpi_flavor}%{?mpi_ext}-devel
 %if 0%{?suse_version} >= 1550 && %{flavor} != "mvapich2"
@@ -131,10 +142,10 @@ preconditioners.
 
 %package devel
 Summary:        Suite of nonlinear solvers (developer files)
-Group:          Development/Libraries/C and C++
 Requires:       %{shlib_arkode} = %{version}
 Requires:       %{shlib_cvodes} = %{version}
 Requires:       %{shlib_cvode} = %{version}
+Requires:       %{shlib_generic} = %{version}
 Requires:       %{shlib_idas} = %{version}
 Requires:       %{shlib_ida} = %{version}
 Requires:       %{shlib_kinsol} = %{version}
@@ -149,7 +160,6 @@ This package contains the developer files (.so file, header files)
 
 %package doc
 Summary:        Suite of nonlinear solvers (documentation)
-Group:          Documentation/Other
 
 %description doc
 SUNDIALS is a SUite of Non-linear DIfferential/ALgebraic equation Solvers
@@ -159,7 +169,6 @@ This package contains the documentation files
 
 %package -n %{shlib_main}
 Summary:        Suite of nonlinear solvers - main shared libraries
-Group:          Productivity/Scientific/Math
 
 %description -n %{shlib_main}
 SUNDIALS is a SUite of Non-linear DIfferential/ALgebraic equation Solvers
@@ -169,7 +178,6 @@ This package provides the main shared libraries for SUNDIALS.
 
 %package -n %{shlib_arkode}
 Summary:        Suite of nonlinear solvers - arkode shared libraries
-Group:          Productivity/Scientific/Math
 
 %description -n %{shlib_arkode}
 SUNDIALS is a SUite of Non-linear DIfferential/ALgebraic equation Solvers
@@ -179,7 +187,6 @@ This package provides the shared libraries for SUNDIALS' arkode solver.
 
 %package -n %{shlib_cvode}
 Summary:        Suite of nonlinear solvers - cvode shared libraries
-Group:          Productivity/Scientific/Math
 
 %description -n %{shlib_cvode}
 SUNDIALS is a SUite of Non-linear DIfferential/ALgebraic equation Solvers
@@ -189,7 +196,6 @@ This package provides the shared libraries for SUNDIALS' cvode solver.
 
 %package -n %{shlib_cvodes}
 Summary:        Suite of nonlinear solvers - cvodes shared libraries
-Group:          Productivity/Scientific/Math
 
 %description -n %{shlib_cvodes}
 SUNDIALS is a SUite of Non-linear DIfferential/ALgebraic equation Solvers
@@ -197,9 +203,17 @@ for use in writing mathematical software.
 
 This package provides the shared libraries for SUNDIALS' cvodes solver.
 
+%package -n %{shlib_generic}
+Summary:        Suite of nonlinear solvers - generic shared libraries
+
+%description -n %{shlib_generic}
+SUNDIALS is a SUite of Non-linear DIfferential/ALgebraic equation Solvers
+for use in writing mathematical software.
+
+This package provides the shared libraries for SUNDIALS' generic solver.
+
 %package -n %{shlib_ida}
 Summary:        Suite of nonlinear solvers - ida shared libraries
-Group:          Productivity/Scientific/Math
 
 %description -n %{shlib_ida}
 SUNDIALS is a SUite of Non-linear DIfferential/ALgebraic equation Solvers
@@ -209,7 +223,6 @@ This package provides the shared libraries for SUNDIALS' ida solver.
 
 %package -n %{shlib_idas}
 Summary:        Suite of nonlinear solvers - idas shared libraries
-Group:          Productivity/Scientific/Math
 
 %description -n %{shlib_idas}
 SUNDIALS is a SUite of Non-linear DIfferential/ALgebraic equation Solvers
@@ -219,7 +232,6 @@ This package provides the shared libraries for SUNDIALS' idas solver.
 
 %package -n %{shlib_kinsol}
 Summary:        Suite of nonlinear solvers - kinsol shared libraries
-Group:          Productivity/Scientific/Math
 
 %description -n %{shlib_kinsol}
 SUNDIALS is a SUite of Non-linear DIfferential/ALgebraic equation Solvers
@@ -229,7 +241,6 @@ This package provides the shared libraries for SUNDIALS' kinsol solver.
 
 %package -n %{shlib_nvec}
 Summary:        Suite of nonlinear solvers - nvec shared libraries
-Group:          Productivity/Scientific/Math
 
 %description -n %{shlib_nvec}
 SUNDIALS is a SUite of Non-linear DIfferential/ALgebraic equation Solvers
@@ -238,40 +249,29 @@ for use in writing mathematical software.
 This package provides the shared libraries for SUNDIALS' nvec solvers.
 
 %prep
-%setup -q -n %{pname}-%{version}
+%autosetup -p1 -n %{pname}-%{version}
 
 %build
-# CAN'T DIRECTLY USE %%cmake MACRO SINCE CUSTOM CMAKE_INSTALL_PREFIX IS NEEDED
-mkdir -p build
-pushd build
-cmake .. \
+%cmake \
        -DCMAKE_INSTALL_PREFIX=%{my_prefix} \
-       -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-       -DCMAKE_C_FLAGS="${CFLAGS:-%optflags} -DNDEBUG" \
-       -DCMAKE_CXX_FLAGS="${CXXFLAGS:-%optflags} -DNDEBUG" \
-       -DCMAKE_Fortran_FLAGS="${FFLAGS:-%optflags%{?_fmoddir: -I%_fmoddir}} -DNDEBUG" \
-       -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-undefined -Wl,-z,now" \
-       -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed" \
-       -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-undefined -Wl,-z,now" \
+       -DCMAKE_INSTALL_LIBDIR=%{my_libdir} \
 %if "%{?_lib}" == "lib64"
        -DLIB_SUFFIX=64 \
 %endif
-       -DCMAKE_SKIP_RPATH:BOOL=ON \
-       -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
-       -DBUILD_SHARED_LIBS:BOOL=ON \
-       -DBUILD_STATIC_LIBS:BOOL=OFF \
-       -DCMAKE_COLOR_MAKEFILE:BOOL=OFF \
-       -DCMAKE_INSTALL_DO_STRIP:BOOL=OFF \
-       -DBLAS_ENABLE:BOOL=ON \
-       -DLAPACK_ENABLE:BOOL=ON \
-       -DPTHREAD_ENABLE:BOOL=ON \
+       -DCMAKE_SKIP_RPATH:BOOL=OFF \
+       -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
+       -DENABLE_LAPACK:BOOL=ON \
+       -DENABLE_PTHREAD:BOOL=ON \
+       -DENABLE_KLU:BOOL=ON \
+       -DKLU_INCLUDE_DIR:PATH=%{_includedir}/suitesparse \
+       -DKLU_LIBRARY_DIR:PATH=%{_libdir} \
        -DSUNDIALS_BUILD_WITH_MONITORING:BOOL=ON \
 %if %{without mpi}
        -DEXAMPLES_INSTALL_PATH=%{_docdir}/%{name}/examples \
-       -DMPI_ENABLE:BOOL=OFF
+       -DENABLE_MPI:BOOL=OFF
 %else
        -DEXAMPLES_INSTALL:BOOL=OFF \
-       -DMPI_ENABLE:BOOL=ON \
+       -DENABLE_MPI:BOOL=ON \
        -DMPI_C_COMPILER=%{my_bindir}/mpicc \
        -DMPI_CXX_COMPILER=%{my_bindir}/mpicxx \
        -DMPI_Fortran_COMPILER=%{my_bindir}/mpif90 \
@@ -279,15 +279,24 @@ cmake .. \
 %endif
 
 %cmake_build
-popd
 
 %install
-# SUNDIALS does not support the 'DESTDIR' method, hence:
 %cmake_install
 
 rm %{buildroot}%{my_incdir}/sundials/{NOTICE,LICENSE}
 
 %fdupes %{buildroot}
+
+%check
+# Send extremely verbose output to a log file instead of printing to screen to avoid build log bloat
+# Disable the sunlinsol tests which fail apparently due to minor floating pt issues
+# On 32-bit, also disable the sunmatrix tests which fail due to minor floating pt issues
+export LD_LIBRARY_PATH=%{my_libdir}
+%ifarch %ix86
+%ctest --quiet --output-log test-output.log --exclude-regex "test_(sunlinsol_lapack|sunmatrix_sparse)*" || ( grep "Fail" test-output.log; exit 1 )
+%else
+%ctest --quiet --output-log test-output.log --exclude-regex "test_sunlinsol_lapack*" || ( grep "Fail" test-output.log; exit 1; )
+%endif
 
 %post -n %{shlib_main} -p /sbin/ldconfig
 %postun -n %{shlib_main} -p /sbin/ldconfig
@@ -300,6 +309,9 @@ rm %{buildroot}%{my_incdir}/sundials/{NOTICE,LICENSE}
 
 %post -n %{shlib_cvodes} -p /sbin/ldconfig
 %postun -n %{shlib_cvodes} -p /sbin/ldconfig
+
+%post -n %{shlib_generic} -p /sbin/ldconfig
+%postun -n %{shlib_generic} -p /sbin/ldconfig
 
 %post -n %{shlib_ida} -p /sbin/ldconfig
 %postun -n %{shlib_ida} -p /sbin/ldconfig
@@ -331,6 +343,10 @@ rm %{buildroot}%{my_incdir}/sundials/{NOTICE,LICENSE}
 %doc README.md CONTRIBUTING.md NOTICE
 %{my_libdir}/*.so
 %{my_incdir}/*
+%if %{with mpi}
+%dir %{my_libdir}/cmake
+%endif
+%{my_libdir}/cmake/sundials/
 
 %files -n %{shlib_main}
 %{my_libdir}/libsundials_sun*.so.*
@@ -345,6 +361,9 @@ rm %{buildroot}%{my_incdir}/sundials/{NOTICE,LICENSE}
 
 %files -n %{shlib_cvodes}
 %{my_libdir}/libsundials_cvodes.so.*
+
+%files -n %{shlib_generic}
+%{my_libdir}/libsundials_generic.so.*
 
 %files -n %{shlib_ida}
 %{my_libdir}/libsundials_ida.so.*
