@@ -21,9 +21,9 @@ Name:           orthanc-mysql
 Summary:        Database plugin for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Databases/Tools
-Version:        2.0
+Version:        3.0
 Release:        0
-URL:            https://orthanc-server.com
+URL:            http://orthanc-server.com
 Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-mysql/OrthancMySQL-%{version}.tar.gz
 Source1:        orthanc-mysql-readme.SUSE
 Source2:        mysql.json
@@ -34,6 +34,7 @@ BuildRequires:  googletest-devel
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_date_time-devel >= 1.66
 BuildRequires:  libboost_filesystem-devel >= 1.66
+BuildRequires:  libboost_iostreams-devel >= 1.66
 BuildRequires:  libboost_locale-devel >= 1.66
 BuildRequires:  libboost_regex-devel >= 1.66
 BuildRequires:  libboost_system-devel >= 1.66
@@ -41,16 +42,14 @@ BuildRequires:  libboost_thread-devel >= 1.66
 BuildRequires:  libcurl-devel
 BuildRequires:  libmysqld-devel
 BuildRequires:  openssl-devel
-BuildRequires:  orthanc-framework-devel
-BuildRequires:  orthanc-framework-source
+BuildRequires:  orthanc-devel
+BuildRequires:  orthanc-source
 BuildRequires:  unzip
 BuildRequires:  uuid-devel
 BuildRequires:  zlib-devel
 
 Requires:       mariadb
 Requires:       orthanc
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 MySQL/mariadb Database plugin for Orthanc, replaces SQLite database
@@ -65,7 +64,7 @@ MySQL/mariadb Database plugin for Orthanc, replaces SQLite database
        -DUSE_SYSTEM_GOOGLE_TEST=ON \
        -DUSE_SYSTEM_ORTHANC_SDK=ON \
        -DORTHANC_FRAMEWORK_SOURCE=path \
-       -DORTHANC_FRAMEWORK_ROOT=/usr/src/orthanc/ \
+       -DORTHANC_FRAMEWORK_ROOT=/usr/src/orthanc/OrthancFramework/Sources \
        -DBoost_NO_BOOST_CMAKE=ON \
        -DLIB_INSTALL_DIR=%{_libdir}/share/orthanc/plugins/
 

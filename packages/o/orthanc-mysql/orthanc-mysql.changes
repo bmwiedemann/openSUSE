@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Dec 16 19:30:07 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- version 3.0
+* Report issue/solution and prevent the start of Orthanc if the MySQL user is
+  not allowed to run the "CREATE TRIGGER" command (missing "SUPER" privilege)
+* Implementation of new extensions: LookupResourceAndParent and GetAllMetadata
+* Added an advisory lock to avoid race conditions during database setup
+* Added "MaximumConnectionRetries" & "ConnectionRetryInterval" to configure 
+  the retries when connecting to the DB at startup
+* Support of dynamic linking against the system-wide Orthanc framework library
+* Added support for TLS connections: 3 new options:
+  - "EnableSsl" (false by default)
+  - "SslVerifyServerCertificates" (true by default - inactive if EnableSsl if false)
+  - "SslCACertificates" (default value is "HttpsCACertificates" from global
+    Orthanc configuration)
+* Uses Orthanc Framework 1.8.1
+
+-------------------------------------------------------------------
 Thu Oct 22 08:13:50 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - switch build system to orthanc-framework (static)
