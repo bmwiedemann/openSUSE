@@ -21,7 +21,7 @@ Name:           orthanc-webviewer
 Summary:        Web Viewer plugin for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        2.6
+Version:        2.7
 Release:        0
 URL:            https://orthanc-server.com
 Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-webviewer/OrthancWebViewer-%{version}.tar.gz
@@ -38,14 +38,15 @@ BuildRequires:  googletest-devel
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_date_time-devel >= 1.66
 BuildRequires:  libboost_filesystem-devel >= 1.66
+BuildRequires:  libboost_iostreams-devel >= 1.66
 BuildRequires:  libboost_locale-devel >= 1.66
 BuildRequires:  libboost_regex-devel >= 1.66
 BuildRequires:  libboost_system-devel >= 1.66
 BuildRequires:  libboost_thread-devel >= 1.66
 BuildRequires:  libuuid-devel
-BuildRequires:  orthanc-framework-devel
-BuildRequires:  orthanc-framework-source
+BuildRequires:  orthanc-devel
 BuildRequires:  orthanc-gdcm
+BuildRequires:  orthanc-source
 BuildRequires:  sqlite3-devel
 BuildRequires:  unzip
 
@@ -73,7 +74,7 @@ cp %{S:1} %{S:2} %{S:3} %{S:4} %{S:5} .
        -DUSE_SYSTEM_ORTHANC_SDK=ON \
        -DORTHANC_FRAMEWORK_SOURCE=path \
        -DBoost_NO_BOOST_CMAKE=ON \
-       -DORTHANC_FRAMEWORK_ROOT=/usr/src/orthanc/ \
+       -DORTHANC_FRAMEWORK_ROOT=/usr/src/orthanc/OrthancFramework/Sources \
        -DLIB_INSTALL_DIR=%{_libdir}/share/orthanc/plugins/
 
 %cmake_build %{?_smp_mflags}

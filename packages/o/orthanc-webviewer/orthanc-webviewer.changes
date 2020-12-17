@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 15 16:51:24 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- Version 2.7 
+* Support of dynamic linking against the system-wide Orthanc framework library
+* Upgrade to Orthanc framework 1.8.1
+
+-------------------------------------------------------------------
 Thu Oct 22 08:58:42 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - switched to orthanc-framework (static orthanc version)
