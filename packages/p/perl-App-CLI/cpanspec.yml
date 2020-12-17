@@ -25,4 +25,4 @@
 #./Build build flags=%{?_smp_mflags} --myflag
 #custom_test: |-
 #startserver && make test
-#ignore_requires: Bizarre::Module
+ignore_requires: Test::Kwalitee

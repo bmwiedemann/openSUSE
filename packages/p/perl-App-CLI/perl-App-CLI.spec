@@ -1,7 +1,7 @@
 #
 # spec file for package perl-App-CLI
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           perl-App-CLI
-Version:        0.50
+Version:        0.52
 Release:        0
 %define cpan_name App-CLI
 Summary:        Dispatcher module for command line interface programs
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PT/PTC/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -34,7 +34,6 @@ BuildRequires:  perl(Capture::Tiny)
 BuildRequires:  perl(Class::Load)
 BuildRequires:  perl(Locale::Maketext::Simple)
 BuildRequires:  perl(Pod::Simple::Text)
-# Works also without this!
 #BuildRequires:  perl(Test::Kwalitee)
 BuildRequires:  perl(Test::Pod)
 Requires:       perl(Capture::Tiny)
@@ -51,11 +50,11 @@ command classes. It also supports subcommand and per-command options.
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
