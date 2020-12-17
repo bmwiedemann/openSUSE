@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec 12 22:13:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.59
+  * Highlight last high score
+  * Change qualification for high score when in B-type
+  * Enhance desktop entry file
+  * Remove explicit ownership for installed files
+  * Add runtime library search path
+- Drop patch:
+  * vitetris-no-need-for-root-to-install.patch
+
+-------------------------------------------------------------------
 Sun Mar 10 16:32:02 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.58

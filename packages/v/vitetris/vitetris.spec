@@ -1,8 +1,8 @@
 #
 # spec file for package vitetris
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2019-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 # build with support for allegro - disabled by default
 %bcond_with allegro
 Name:           vitetris
-Version:        0.58.0
+Version:        0.59.0
 Release:        0
 Summary:        Terminal-based Tetris clone
 License:        BSD-2-Clause
@@ -30,7 +30,6 @@ URL:            http://victornils.net/tetris/
 #Git-Clone:     https://github.com/vicgeralds/vitetris.git
 Source:         https://github.com/vicgeralds/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vitetris.6
-Patch5:         vitetris-no-need-for-root-to-install.patch
 Patch6:         vitetris-fix-font-path.patch
 %if 0%{with allegro}
 BuildRequires:  liballeg-devel
@@ -55,7 +54,6 @@ resets.)
 
 %prep
 %setup -q
-%patch5 -p1
 %patch6 -p1
 sed -i 's|Exec=tetris|Exec=vitetris|' vitetris.desktop
 
