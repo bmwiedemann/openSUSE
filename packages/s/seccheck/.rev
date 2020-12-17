@@ -315,4 +315,14 @@
     <comment></comment>
     <requestid>759886</requestid>
   </revision>
+  <revision rev="39" vrev="18">
+    <srcmd5>fb2285032fdfd1323257ea16b00f085a</srcmd5>
+    <version>3.0</version>
+    <time>1608221116</time>
+    <user>dimstar_suse</user>
+    <comment>- libexec_move_1178617.patch: update paths after move to /usr/libexec
+- security_announce_url_1178617.patch: update url for security
+  announcements to suse (boo#1178617)</comment>
+    <requestid>856475</requestid>
+  </revision>
 </revisionlist>

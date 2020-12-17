@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 13 20:10:59 UTC 2020 - <d_werner@gmx.net>
+
+- libexec_move_1178617.patch: update paths after move to /usr/libexec
+- security_announce_url_1178617.patch: update url for security
+  announcements to suse (boo#1178617)
+
+-------------------------------------------------------------------
 Sun Dec 29 10:40:47 UTC 2019 - d_werner@gmx.net
 
 - update package description: no longer started by cron

@@ -1,0 +1,59 @@
+diff -ubr a/basic.inc b/basic.inc
+--- a/basic.inc	2019-03-07 09:37:00.000000000 +0100
++++ b/basic.inc	2020-12-13 20:53:56.844000000 +0100
+@@ -7,6 +7,6 @@
+ PATH="/usr/bin:/bin:/usr/sbin:/sbin"
+ umask 077
+ 
+-test -z "$SEC_BIN" && SEC_BIN="/usr/lib/secchk"
++test -z "$SEC_BIN" && SEC_BIN="/usr/libexec/secchk"
+ test -z "$SEC_VAR" && SEC_VAR="/var/lib/secchk"
+ SEC_DATA="$SEC_VAR/data"
+diff -ubr a/seccheck-autologout.service b/seccheck-autologout.service
+--- a/seccheck-autologout.service	2019-03-07 09:37:00.000000000 +0100
++++ b/seccheck-autologout.service	2020-12-13 20:54:19.468000000 +0100
+@@ -4,7 +4,7 @@
+ 
+ [Service]
+ Type=oneshot
+-ExecStart=/usr/lib/secchk/autologout.sh -c /etc/security/autologout.conf 
++ExecStart=/usr/libexec/secchk/autologout.sh -c /etc/security/autologout.conf 
+ Nice=19
+ IOSchedulingClass=best-effort
+ IOSchedulingPriority=7
+diff -ubr a/seccheck-daily.service b/seccheck-daily.service
+--- a/seccheck-daily.service	2019-03-07 09:37:00.000000000 +0100
++++ b/seccheck-daily.service	2020-12-13 20:54:33.380000000 +0100
+@@ -4,7 +4,7 @@
+ 
+ [Service]
+ Type=oneshot
+-ExecStart=/usr/lib/secchk/security-control.sh daily
++ExecStart=/usr/libexec/secchk/security-control.sh daily
+ Nice=19
+ IOSchedulingClass=best-effort
+ IOSchedulingPriority=7
+diff -ubr a/seccheck-monthly.service b/seccheck-monthly.service
+--- a/seccheck-monthly.service	2019-03-07 09:37:00.000000000 +0100
++++ b/seccheck-monthly.service	2020-12-13 20:54:43.824000000 +0100
+@@ -4,7 +4,7 @@
+ 
+ [Service]
+ Type=oneshot
+-ExecStart=/usr/lib/secchk/security-control.sh monthly
++ExecStart=/usr/libexec/secchk/security-control.sh monthly
+ Nice=19
+ IOSchedulingClass=best-effort
+ IOSchedulingPriority=7
+diff -ubr a/seccheck-weekly.service b/seccheck-weekly.service
+--- a/seccheck-weekly.service	2019-03-07 09:37:00.000000000 +0100
++++ b/seccheck-weekly.service	2020-12-13 20:54:54.432000000 +0100
+@@ -4,7 +4,7 @@
+ 
+ [Service]
+ Type=oneshot
+-ExecStart=/usr/lib/secchk/security-control.sh weekly
++ExecStart=/usr/libexec/secchk/security-control.sh weekly
+ Nice=19
+ IOSchedulingClass=best-effort
+ IOSchedulingPriority=7

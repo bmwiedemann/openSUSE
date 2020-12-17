@@ -1,7 +1,7 @@
 #
 # spec file for package seccheck
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,11 +27,13 @@ Release:        0
 Summary:        Security-Check Scripts
 License:        GPL-2.0-or-later
 Group:          Productivity/Security
-Url:            https://github.com/openSUSE/seccheck
+URL:            https://github.com/openSUSE/seccheck
 Source0:        https://github.com/openSUSE/seccheck/archive/master.zip
 Source1:        sysconfig.seccheck
 Patch1:         mail_headerlines_985802.patch
 Patch2:         timers_wanted_by_1132919.patch
+Patch3:         libexec_move_1178617.patch
+Patch4:         security_announce_url_1178617.patch
 BuildRequires:  unzip
 Requires:       bash
 # FIXME: use proper Requires(pre/post/preun/...)
