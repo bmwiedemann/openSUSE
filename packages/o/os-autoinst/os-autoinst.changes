@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Dec 16 20:17:30 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1608149831.eea793d2:
+  * Update tidy version to 20201207
+  * Delete travis CI config to completely disable
+  * t: Catch output in t/29-backend-generalhw.t
+  * t: Catch output in t/19-isotovideo-command-processing.t
+  * Makefile: Fix call of make without argument on already existing build dir
+  * Separate developer-centric tests into "xt/" for faster coverage analysis runs
+  * t: Catch output in t/14-isotovideo.t
+  * t: Catch output in t/10-virtio_terminal.t
+  * t: Catch output in t/10-terminal.t
+  * t: Add OpenQA::Test::Timelimit to all modules where useful
+  * tools/tidy: Allow to run on mismatching tidy version
+  * t: Catch all output in 03-testapi.t
+  * docker_run_ci: Add command line parsing with getopt
+  * Add support for 'Codecovbash' to upload results in GHA
+  * Fix qemu test timeouts based on coverage runs
+  * .github: Enable codecov report uploading with "action"
+  * tools: docker_run_ci: Bump timeout for github actions behaviour
+  * Add github actions CI definitions
+  * t: Add 'external' to search path of tests
+  * t: Output gathered stdout on error in 27-update-deps
+  * Update perltidy to 20201202
+  * Move dev container base to Leap 15.2
+  * backend: ipmi: Bring back proper return code for module
+  * backend: ipmi: Add quoting for ping command
+  * t: Add test for backend::ipmi
+  * backend: ipmi: Make "mc reset" parameters configurable
+  * Use other log functions from bmwqemu as well according to severity
+
+-------------------------------------------------------------------
 Mon Dec 07 15:59:30 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1607343404.748c0f7c:
