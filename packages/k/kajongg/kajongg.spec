@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kajongg
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        4 Player Mahjongg game
 License:        GPL-2.0-or-later
@@ -61,19 +61,20 @@ Kajongg is a version of the four player Mahjongg tile game.
 %setup -q -n kajongg-%{version}
 
 %build
-  # Workaround for kde#376303
-  export PYTHONDONTWRITEBYTECODE=1
-  export DESTDIR=%{buildroot}
-  %cmake_kf5 -d build
-  %cmake_build
+# Workaround for kde#376303
+export PYTHONDONTWRITEBYTECODE=1
+export DESTDIR=%{buildroot}
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %make_install -C build
-  %if %{with lang}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
-  %suse_update_desktop_file -r org.kde.kajongg         Game BoardGame
+%kf5_makeinstall -C build
+
+%if %{with lang}
+  %find_lang %{name} --with-man --all-name
+  %{kf5_find_htmldocs}
+%endif
+%suse_update_desktop_file -r org.kde.kajongg         Game BoardGame
 
 %files
 %license COPYING*
@@ -86,6 +87,7 @@ Kajongg is a version of the four player Mahjongg tile game.
 %{_kf5_bindir}/kajonggserver
 %{_kf5_iconsdir}/hicolor/*/actions/games-kajongg-law.*
 %{_kf5_iconsdir}/hicolor/*/apps/kajongg.*
+
 %if %{with lang}
 %files lang -f %{name}.lang
 %license COPYING*
