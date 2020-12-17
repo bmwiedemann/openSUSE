@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kaccounts-providers
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        KDE Accounts Providers
 License:        GPL-2.0-or-later
@@ -29,6 +29,7 @@ Group:          System/GUI/KDE
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KAccounts)
@@ -54,19 +55,20 @@ KDE Accounts Providers.
 %setup -q
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %make_install -C build
-  %if %{with lang}
-    %find_lang %{name} --with-man --all-name
-  %endif
+%kf5_makeinstall -C build
+%if %{with lang}
+  %find_lang %{name} --with-man --all-name
+%endif
 
 %files
-%license COPYING*
-#{_kf5_iconsdir}/hicolor/*/*/*.png
+%license LICENSES/*
 %{_kf5_appstreamdir}/
+%{_kf5_iconsdir}/hicolor/*/apps/kaccounts-nextcloud.*
+%{_kf5_iconsdir}/hicolor/*/apps/kaccounts-owncloud.*
 %{_kf5_plugindir}/kaccounts/
 %{_kf5_sharedir}/accounts/
 %{_kf5_sharedir}/kpackage/
@@ -74,7 +76,7 @@ KDE Accounts Providers.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
