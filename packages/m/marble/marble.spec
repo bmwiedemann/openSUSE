@@ -23,7 +23,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           marble
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Generic map viewer
 # License note: the tools directory contains GPL-3 tools, but they are neither built nor installed by the package
@@ -191,7 +191,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %files
 %license COPYING* LICENSE*
 %doc CREDITS ChangeLog MANIFESTO.txt
-%config %{_kf5_configdir}/marble.knsrc
+%{_kf5_knsrcfilesdir}/marble.knsrc
 %exclude %{_datadir}/marble/data
 %{_kf5_applicationsdir}/marble_geo.desktop
 %{_kf5_applicationsdir}/marble_geojson.desktop
@@ -209,6 +209,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_plugindir}/designer/
 %{_kf5_plugindir}/libmarble*so
 %{_kf5_plugindir}/plasma_runner_marble.so
+%{_kf5_plugindir}/marblethumbnail.so
 %{_kf5_qmldir}/org/kde/marble/
 %{_kf5_servicesdir}/*desktop
 %{_kf5_sharedir}/marble/

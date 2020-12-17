@@ -1073,4 +1073,12 @@ touch version is still build but no desktop file installed. (forwarded request 2
     <comment>KDE Applications 20.08.3 (forwarded request 846547 from luca_b)</comment>
     <requestid>846791</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>2ba78ec2a041d91eee871e1e6b7d2711</srcmd5>
+    <version>20.12.0</version>
+    <time>1608220993</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 20.12.0</comment>
+    <requestid>855284</requestid>
+  </revision>
 </revisionlist>
