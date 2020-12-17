@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  2 17:29:46 2020 UTC - shap-staff@suse.de
+
+- Release 1.2.1
+
+  ## Fixed
+  - Remove Pacemaker dependency from systemd unit (#180)
+
+-------------------------------------------------------------------
 Fri Sep 11 13:41:08 2020 UTC - shap-staff@suse.de
 
 - Release 1.2.0

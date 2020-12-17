@@ -18,7 +18,7 @@
 
 Name:           prometheus-ha_cluster_exporter
 # Version will be processed via set_version source service
-Version:        1.2.0+git.1599131770.8912739
+Version:        1.2.1+git.1606912430.4fceb77
 Release:        0
 Summary:        Prometheus exporter for Pacemaker HA clusters metrics
 License:        Apache-2.0
