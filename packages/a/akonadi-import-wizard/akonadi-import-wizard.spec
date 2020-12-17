@@ -17,12 +17,12 @@
 
 
 %define lname libKPimImportWizard5
-%define kf5_version 5.60.0
+%define kf5_version 5.75.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-import-wizard
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Assistant to import PIM data
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -42,6 +42,7 @@ BuildRequires:  cmake(KF5Contacts)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5GrantleeTheme)
 BuildRequires:  cmake(KF5IdentityManagement)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Libkdepim)
@@ -104,7 +105,7 @@ rm -rf %{buildroot}%{_libdir}/libimportwizard.so
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files
-%license COPYING COPYING.LIB COPYING.DOC
+%license LICENSES/*
 %{_kf5_debugdir}/importwizard.categories
 %{_kf5_debugdir}/importwizard.renamecategories
 %dir %{_kf5_iconsdir}/hicolor/256x256
@@ -136,7 +137,7 @@ rm -rf %{buildroot}%{_libdir}/libimportwizard.so
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
