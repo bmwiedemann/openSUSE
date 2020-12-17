@@ -21,7 +21,7 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kio-gdrive
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Google Drive KIO slave for KDE applications
 License:        GPL-2.0-or-later
@@ -60,15 +60,16 @@ This can be Dolphin or Gwenview or Konqueror.
 %setup -q
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with lang}
-  %find_lang kio5_gdrive %{name}.lang
-  %kf5_find_htmldocs
-  %endif
+%kf5_makeinstall -C build
+
+%if %{with lang}
+%find_lang kio5_gdrive %{name}.lang
+%kf5_find_htmldocs
+%endif
 
 %files
 %license COPYING
