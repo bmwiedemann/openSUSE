@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Dec 13 14:30:41 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Drop obsolete build requirements
+
+-------------------------------------------------------------------
+Sat Dec  5 23:17:54 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-12-apps-update
+- No code change since 20.11.90
+
+-------------------------------------------------------------------
+Fri Nov 27 15:18:06 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.90
+  * New feature release
+- Changes since 20.11.80:
+  * Fix assert when deleting a folder in kmail
+  * Fix compilation with recent Qt 5.15
+  * Fix Bug 429224 - Enabling undo send results in empty return path breaking DKIM (kde#429224)
+  * Start to fix print to pdf
+
+-------------------------------------------------------------------
+Sat Nov 14 00:03:08 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Thu Nov  5 22:47:53 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.08.3
