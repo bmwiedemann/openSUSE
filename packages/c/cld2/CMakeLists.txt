@@ -55,7 +55,8 @@ set_target_properties(cld2 PROPERTIES
   VERSION 0.0.194
   SOVERSION 0
   )
-add_library(cld2_full SHARED ${cld2_full_SOURCE_FILES})
+
+add_library(cld2_full SHARED ${common_SOURCE_FILES} ${cld2_full_SOURCE_FILES})
 set_target_properties(cld2_full PROPERTIES
   ENABLE_EXPORTS On
   OUTPUT_NAME cld2_full
@@ -71,9 +72,7 @@ set_target_properties(cld2_dynamic PROPERTIES
   SOVERSION 0
   COMPILE_FLAGS "-DCLD2_DYNAMIC_MODE"
   )
-#install(TARGETS cld2 DESTINATION lib/${CMAKE_LIBRARY_ARCHITECTURE})
-#install(TARGETS cld2_full DESTINATION lib/${CMAKE_LIBRARY_ARCHITECTURE})
-#install(TARGETS cld2_dynamic DESTINATION lib/${CMAKE_LIBRARY_ARCHITECTURE})
+
 install(TARGETS cld2 DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(TARGETS cld2_full DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(TARGETS cld2_dynamic DESTINATION ${CMAKE_INSTALL_LIBDIR})
