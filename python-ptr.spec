@@ -25,7 +25,6 @@ Summary:        Parallel asyncio Python setup(cfg|py) test runner
 License:        MIT
 URL:            https://github.com/facebookincubator/ptr
 Source:         https://files.pythonhosted.org/packages/source/p/ptr/ptr-%{version}.tar.gz
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -53,8 +52,7 @@ sed -i '1{/^#!/d}' *.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python %{buildroot}%{_bindir}/ptr --help
-%python_exec setup.py test
+%pyunittest -v ptr_tests
 
 %post
 %python_install_alternative ptr
