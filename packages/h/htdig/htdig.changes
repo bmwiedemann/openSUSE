@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec  1 16:48:41 UTC 2020 - pgajdos@suse.com
+
+- use system apche rpm macros
+
+-------------------------------------------------------------------
 Tue Apr  4 16:38:08 UTC 2017 - crrodriguez@opensuse.org
 
 -  htdig-gcc7.patch: FIx build failure with gcc7 

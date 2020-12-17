@@ -1,7 +1,7 @@
 #
 # spec file for package htdig
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define apache_serverroot %(%{_sbindir}/apxs2 -q datadir 2>/dev/null || %{_sbindir}/apxs2 -q PREFIX)
 Name:           htdig
 Version:        3.2.0b6
 Release:        0
 Summary:        WWW Index and Search System
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Utilities
-Url:            http://www.htdig.org
+URL:            http://www.htdig.org
 Source:         http://switch.dl.sourceforge.net/sourceforge/htdig/htdig-%{version}.tar.bz2
 Source1:        %{name}-README.SUSE
 Patch1:         %{name}-google-style.patch
@@ -41,6 +40,7 @@ Patch15:        %{name}-gmtime-lastday.patch
 # PATCH-FIX-UPSTREAM htdig-unsigned-char.patch dimstar@opensuse.org -- use unsigned char to be sure we can store values up to (int)255
 Patch16:        %{name}-unsigned-char.patch
 Patch17:        htdig-gcc7.patch
+BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
