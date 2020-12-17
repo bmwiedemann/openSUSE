@@ -16,13 +16,13 @@
 #
 
 
-%global libMAJOR 27
+%global libMAJOR 28
 %define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           cantor
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Worksheet GUI for mathematical software
 License:        GPL-2.0-or-later
@@ -148,7 +148,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %files
 %doc README.md DESIGN .doc/*
 %license COPYING*
-%(config) %{_kf5_configdir}/*.knsrc
+%{_kf5_knsrcfilesdir}/*.knsrc
 %doc %lang(en) %{_kf5_htmldir}/en/*/
 %{_kf5_applicationsdir}/org.kde.cantor.desktop
 %{_kf5_appstreamdir}/
@@ -189,6 +189,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_plugindir}/cantor/panels/cantor_helppanelplugin.so
 %{_kf5_plugindir}/cantor/panels/cantor_variablemanagerplugin.so
 %{_kf5_plugindir}/cantor/panels/cantor_filebrowserpanelplugin.so
+%{_kf5_plugindir}/cantor/panels/cantor_tocpanelplugin.so
 %{_kf5_plugindir}/libcantorpart.so
 %{_kf5_sharedir}/cantor/
 
