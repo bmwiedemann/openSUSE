@@ -16,11 +16,13 @@
 #
 
 
-%define sover_maj 32
-%define libname libKF5Kipi
+%define _soversion 32_0_0
+%define kf5_version 5.60.0
+# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
+%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkipi
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        KDE Image Plugin Interface
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
@@ -45,13 +47,13 @@ This package provides a generic KDE Image Plug-in Interface used by
 some KDE image applications. Plug-ins for this interface are in the
 kipi-plugins package.
 
-%package -n %{libname}%{sover_maj}_0_0
+%package -n libKF5Kipi%{_soversion}
 Summary:        KDE Image Plug-In Interface
 Group:          System/Libraries
 Requires:       libkipi-data >= %{version}
 Recommends:     kipi-plugins
 
-%description -n %{libname}%{sover_maj}_0_0
+%description -n libKF5Kipi%{_soversion}
 This package provides a generic KDE image plug-in interface used by
 some KDE image applications. Plug-ins for this interface are in the
 kipi-plugins package.
@@ -59,7 +61,7 @@ kipi-plugins package.
 %package data
 Summary:        KDE Image Plug-In Interface - data files
 Group:          System/Libraries
-Conflicts:      %{libname}30_0_0
+Conflicts:      libKF5Kipi30_0_0
 
 %description data
 This package contains data files needed by the KDE image plug-in library.
@@ -67,7 +69,7 @@ This package contains data files needed by the KDE image plug-in library.
 %package devel
 Summary:        KDE Image Plugin Interface
 Group:          Development/Libraries/KDE
-Requires:       %{libname}%{sover_maj}_0_0 = %{version}
+Requires:       libKF5Kipi%{_soversion} = %{version}
 Requires:       cmake(KF5Config)
 Requires:       cmake(KF5I18n)
 Requires:       cmake(KF5Service)
@@ -87,18 +89,17 @@ kipi-plugins package.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
+%kf5_makeinstall -C build
 
-%post -n %{libname}%{sover_maj}_0_0 -p /sbin/ldconfig
-%postun -n %{libname}%{sover_maj}_0_0 -p /sbin/ldconfig
+%post -n libKF5Kipi%{_soversion} -p /sbin/ldconfig
+%postun -n libKF5Kipi%{_soversion} -p /sbin/ldconfig
 
-%files -n %{libname}%{sover_maj}_0_0
-%{_kf5_libdir}/%{libname}.so.5.2.0
-%{_kf5_libdir}/%{libname}.so.%{sover_maj}.0.0
+%files -n libKF5Kipi%{_soversion}
+%{_kf5_libdir}/libKF5Kipi.so.*
 
 %files data
 %{_kf5_iconsdir}/hicolor/*/apps/kipi.png
@@ -110,6 +111,6 @@ kipi-plugins package.
 %{_kf5_cmakedir}/KF5Kipi/
 %{_kf5_includedir}/KIPI/
 %{_kf5_includedir}/libkipi_version.h
-%{_kf5_libdir}/%{libname}.so
+%{_kf5_libdir}/libKF5Kipi.so
 
 %changelog
