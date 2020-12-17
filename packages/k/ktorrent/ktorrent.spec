@@ -16,20 +16,25 @@
 #
 
 
+# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
+%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
+%bcond_without lang
 Name:           ktorrent
-Version:        5.2.0
+Version:        20.12.0
 Release:        0
 Summary:        KDE BitTorrent Client
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/File-Sharing
 URL:            https://kde.org/applications/internet/org.kde.ktorrent/
-Source0:        https://download.kde.org/stable/ktorrent/%{version}/%{name}-%{version}.tar.xz
-Source2:        ktorrent.1
-Source3:        ktupnptest.1
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
+Source3:        ktorrent.1
+Source4:        ktupnptest.1
 # PATCH-FIX-OPENSUSE initial-preference.diff cmorve69@yahoo.es -- InitialPreference to set it as the default torrent downloader
 Patch0:         initial-preference.diff
-# PATCH-FIX-UPSTREAM
-Patch1:         Update-FindTaglib-from-ECM.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  libboost_headers-devel
@@ -57,13 +62,13 @@ BuildRequires:  cmake(KF5Plotting)
 BuildRequires:  cmake(KF5Solid)
 BuildRequires:  cmake(KF5Syndication)
 BuildRequires:  cmake(KF5TextWidgets)
-BuildRequires:  cmake(KF5Torrent) >= 2.2
+BuildRequires:  cmake(KF5Torrent)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(LibKWorkspace)
 BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Core) >= 5.14
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Script)
@@ -83,31 +88,35 @@ for BitTorrent.
 %lang_package
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
 
 # Add man pages from help2man edited.
 mkdir -p %{buildroot}%{_mandir}/man1
-cp -a %{SOURCE2} %{buildroot}%{_mandir}/man1
 cp -a %{SOURCE3} %{buildroot}%{_mandir}/man1
+cp -a %{SOURCE4} %{buildroot}%{_mandir}/man1
 
 # Fix any .py files with shebangs and wrong permissions.
 find %{buildroot} -name "*.py" -perm 0644 -exec grep -l '#!' {} + | \
 	xargs -rd'\n' chmod -f a+x
 
+# E: env-script-interpreter
+find %{buildroot}%{_kf5_sharedir}/ktorrent/scripts -name "*.py" -exec sed -i 's#env kf5kross#kf5kross#' {} \;
+
 %suse_update_desktop_file -r org.kde.ktorrent Qt KDE Network P2P
 
 %fdupes -s %{buildroot}
 
+%if %{with lang}
 %find_lang %{name}
-%kf5_find_htmldocs
+%{kf5_find_htmldocs}
+%endif
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -115,11 +124,11 @@ find %{buildroot} -name "*.py" -perm 0644 -exec grep -l '#!' {} + | \
 %files
 %license COPYING
 %doc ChangeLog RoadMap
+%{_kf5_applicationsdir}/org.kde.ktorrent.desktop
+%{_kf5_appstreamdir}/org.kde.ktorrent.appdata.xml
 %{_kf5_bindir}/ktmagnetdownloader
 %{_kf5_bindir}/ktorrent
 %{_kf5_bindir}/ktupnptest
-%{_kf5_applicationsdir}/org.kde.ktorrent.desktop
-%{_kf5_appstreamdir}/org.kde.ktorrent.appdata.xml
 %{_kf5_htmldir}/en/ktorrent/
 %{_kf5_iconsdir}/hicolor/*/*/*.png
 %{_kf5_iconsdir}/hicolor/*/*/*.svgz
@@ -131,6 +140,8 @@ find %{buildroot} -name "*.py" -perm 0644 -exec grep -l '#!' {} + | \
 %{_kf5_plugindir}/
 %{_kf5_sharedir}/ktorrent/
 
+%if %{with lang}
 %files lang -f %{name}.lang
+%endif
 
 %changelog

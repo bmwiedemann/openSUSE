@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Dec  5 23:17:18 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-12-apps-update
+- No code change since 20.11.90
+
+-------------------------------------------------------------------
+Fri Nov 27 15:17:32 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.90
+  * New feature release
+- No code change since 20.11.80
+
+-------------------------------------------------------------------
+Sat Nov 14 09:33:21 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.80.
+  * New feature release
+- ktorrent is now released using the KDE release service.
+- Drop Update-FindTaglib-from-ECM.patch. No longer needed.
+
+-------------------------------------------------------------------
+Thu Aug 27 13:20:31 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Spec cleanup
+
+-------------------------------------------------------------------
 Sat Jul 11 13:51:11 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add Update-FindTaglib-from-ECM.patch to fix build with KDE
