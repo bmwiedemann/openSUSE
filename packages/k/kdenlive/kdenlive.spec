@@ -24,7 +24,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdenlive
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Non-linear video editor
 License:        GPL-3.0-or-later
@@ -38,7 +38,6 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libmlt-devel
 BuildRequires:  pkgconfig
 BuildRequires:  rttr-devel
-BuildRequires:  shared-mime-info
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
@@ -135,7 +134,7 @@ rm -fr %{buildroot}%{_datadir}/doc/Kdenlive
 %attr(0755,-,-) %{_bindir}/%{name}_render
 %license COPYING
 %doc AUTHORS README.md
-%{_kf5_knsrcfilesdir}/kdenlive*.knsrc
+%{_kf5_knsrcfilesdir}/*.knsrc
 %dir %{_kf5_configkcfgdir}
 %doc %lang(en) %{_kf5_htmldir}/en/kdenlive/
 %{_kf5_applicationsdir}/org.kde.kdenlive.desktop

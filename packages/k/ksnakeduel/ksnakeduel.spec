@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ksnakeduel
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Simple snake duel game
 License:        GPL-2.0-or-later
@@ -72,7 +72,7 @@ KSnakeDuel is a simple snake duel game
 
 %files
 %license COPYING COPYING.DOC
-%config %{_kf5_configdir}/ksnakeduel.knsrc
+%{_kf5_knsrcfilesdir}/ksnakeduel.knsrc
 %dir %{_kf5_configkcfgdir}
 %dir %{_kf5_iconsdir}/hicolor/256x256
 %dir %{_kf5_iconsdir}/hicolor/256x256/*

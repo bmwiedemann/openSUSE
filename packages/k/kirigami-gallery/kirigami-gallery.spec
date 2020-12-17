@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kirigami-gallery
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Gallery application built using Kirigami
 License:        LGPL-2.0-or-later

@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kblocks
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        A classic falling blocks game
 License:        GPL-2.0-or-later
@@ -85,7 +85,7 @@ KBlocks is the KDE version of the classic falling blocks game.
 %{_kf5_appsdir}/kblocks/
 %{_kf5_appstreamdir}/org.kde.kblocks.appdata.xml
 %{_kf5_bindir}/kblocks
-%config %{_kf5_configdir}/kblocks.knsrc
+%{_kf5_knsrcfilesdir}//kblocks.knsrc
 %{_kf5_configkcfgdir}/kblocks.kcfg
 %doc %lang(en) %{_kf5_htmldir}/en/kblocks/
 %{_kf5_iconsdir}/hicolor/*/*/kblocks.*

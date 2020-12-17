@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without	lang
 Name:           ksirk
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Risk-like game by KDE
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -41,7 +41,6 @@ BuildRequires:  cmake(KF5Declarative)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5ItemViews)
 BuildRequires:  cmake(KF5KDEGames)
 BuildRequires:  cmake(KF5KIO)
@@ -91,7 +90,7 @@ KsirK is a computerized version of a well known strategy game.
 
 %files
 %license COPYING COPYING.DOC COPYING.LIB
-%config %{_kf5_configdir}/ksirk.knsrc
+%{_kf5_knsrcfilesdir}/ksirk.knsrc
 %dir %{_kf5_configkcfgdir}
 %doc %lang(en) %{_kf5_htmldir}/en/ksirk/
 %doc %lang(en) %{_kf5_htmldir}/en/ksirkskineditor/

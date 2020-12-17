@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           katomic
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Sokoban-like logic game
 License:        GPL-2.0-or-later
@@ -86,7 +86,7 @@ can move each atom in a labyrinth.
 %{_kf5_appsdir}/kconf_update/katomic-levelset*
 %{_kf5_appstreamdir}/org.kde.katomic.appdata.xml
 %{_kf5_bindir}/katomic
-%config %{_kf5_configdir}/katomic.knsrc
+%{_kf5_knsrcfilesdir}/katomic.knsrc
 %{_kf5_debugdir}/katomic.categories
 %doc %lang(en) %{_kf5_htmldir}/en/katomic/
 %{_kf5_iconsdir}/hicolor/*/apps/katomic.*

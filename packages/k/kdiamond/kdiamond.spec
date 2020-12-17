@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdiamond
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Single player puzzle game
 License:        GPL-2.0-or-later
@@ -74,7 +74,7 @@ The objective of the game is to build lines of three similar diamonds.
 
 %files
 %license COPYING*
-%config %{_kf5_configdir}/kdiamond.knsrc
+%{_kf5_knsrcfilesdir}/kdiamond.knsrc
 %doc %lang(en) %{_kf5_htmldir}/en/kdiamond/
 %{_kf5_applicationsdir}/org.kde.kdiamond.desktop
 %{_kf5_appstreamdir}/org.kde.kdiamond.appdata.xml

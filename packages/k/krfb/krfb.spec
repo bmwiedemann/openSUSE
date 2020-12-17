@@ -21,16 +21,12 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           krfb
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Screen sharing using the VNC/RFB protocol
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Declare-and-use-logging-categories.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Replace-KLineEdit-with-QLineEdit.patch
 BuildRequires:  LibVNCServer-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  pipewire-devel
@@ -70,23 +66,23 @@ VNC-compatible server to share KDE desktops.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 %ifarch ppc ppc64
 export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %endif
-  %cmake_kf5 -d build --
-  %cmake_build
+
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %make_install -C build
-  %if %{with lang}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
-  %suse_update_desktop_file -r org.kde.krfb         System   RemoteAccess
+%kf5_makeinstall -C build
+%if %{with lang}
+  %find_lang %{name} --with-man --all-name
+  %{kf5_find_htmldocs}
+%endif
+
+%suse_update_desktop_file -r org.kde.krfb         System   RemoteAccess
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -97,13 +93,13 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_applicationsdir}/org.kde.krfb.desktop
 %{_kf5_appstreamdir}/
 %{_kf5_bindir}/krfb
+%{_kf5_debugdir}/krfb.categories
 %{_kf5_iconsdir}/hicolor/*/apps/krfb.*
 %{_kf5_libdir}/libkrfbprivate.so*
 %{_kf5_plugindir}/krfb/
 %{_kf5_servicetypesdir}/krfb-framebuffer*.desktop
 %{_kf5_servicetypesdir}/krfb-events.desktop
 %{_kf5_sharedir}/krfb/
-%{_kf5_debugdir}/krfb.categories
 
 %if %{with lang}
 %files lang -f %{name}.lang

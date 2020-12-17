@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           konqueror
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        KDE File Manager and Browser
 # Note for legal: konqueror-17.04.2/webenginepart/autotests/webengine_testutils.h is Qt commercial OR GPL-3.0
@@ -181,6 +181,7 @@ Development package for the konqueror libraries.
 %{_kf5_sharedir}/kcontrol/pics/onlyone.png
 %{_kf5_sharedir}/kcontrol/pics/overlapping.png
 %{_kf5_sharedir}/konqueror/
+%{_kf5_sharedir}/kconf_update/webenginepart.upd
 
 %files -n webenginepart
 %license COPYING*
@@ -194,8 +195,10 @@ Development package for the konqueror libraries.
 
 %files -n konqueror-plugins
 %license COPYING*
+%{_kf5_bindir}/kcreatewebarchive
 %{_kf5_bindir}/fsview
 %config %{_kf5_configdir}/konqsidebartngrc
+%{_kf5_configkcfgdir}/kcreatewebarchive.kcfg
 %{_kf5_debugdir}/akregatorplugin.categories
 %{_kf5_debugdir}/fsview.categories
 %{_kf5_plugindir}/fsviewpart.so
@@ -213,11 +216,14 @@ Development package for the konqueror libraries.
 %{_kf5_plugindir}/konqsidebar_places.so
 %{_kf5_plugindir}/konqsidebar_tree.so
 %{_kf5_plugindir}/konq_shellcmdplugin.so
+%{_kf5_plugindir}/webarchiverplugin.so
+%{_kf5_plugindir}/webarchivethumbnail.so
 %{_kf5_plugindir}/autorefresh.so
 %{_kf5_plugindir}/kimgallery.so
 %{_kf5_plugindir}/searchbarplugin.so
 %{_kf5_plugindir}/uachangerplugin.so
 %{_kf5_iconsdir}/*/*/actions/imagegallery.png
+%{_kf5_iconsdir}/*/*/actions/webarchiver.*
 %{_kf5_iconsdir}/*/*/actions/babelfish.*
 %{_kf5_sharedir}/akregator/
 %{_kf5_sharedir}/konqsidebartng/entries/bookmarks.desktop
@@ -239,9 +245,11 @@ Development package for the konqueror libraries.
 %{_kf5_sharedir}/khtml/kpartplugins/autorefresh.*
 %{_kf5_sharedir}/khtml/kpartplugins/khtmlsettingsplugin.*
 %{_kf5_sharedir}/khtml/kpartplugins/uachangerplugin.*
+%{_kf5_sharedir}/khtml/kpartplugins/plugin_webarchiver.*
 %{_kf5_sharedir}/kwebkitpart/kpartplugins/akregator_konqfeedicon.*
 %{_kf5_sharedir}/kwebkitpart/kpartplugins/plugin_babelfish.*
 %{_kf5_sharedir}/kwebkitpart/kpartplugins/plugin_translator.*
+%{_kf5_sharedir}/kwebkitpart/kpartplugins/plugin_webarchiver.*
 %{_kf5_sharedir}/kwebkitpart/kpartplugins/autorefresh.*
 %{_kf5_sharedir}/kwebkitpart/kpartplugins/khtmlsettingsplugin.*
 %{_kf5_sharedir}/kwebkitpart/kpartplugins/uachangerplugin.*
@@ -254,9 +262,11 @@ Development package for the konqueror libraries.
 %{_kf5_sharedir}/webenginepart/kpartplugins/plugin_babelfish.rc
 %{_kf5_sharedir}/webenginepart/kpartplugins/plugin_translator.desktop
 %{_kf5_sharedir}/webenginepart/kpartplugins/uachangerplugin.*
+%{_kf5_sharedir}/webenginepart/kpartplugins/plugin_webarchiver.*
 %{_kf5_servicesdir}/akregator_konqplugin.desktop
 %{_kf5_servicesdir}/kcmhistory.desktop
 %{_kf5_servicesdir}/konq_sidebartng.desktop
+%{_kf5_servicesdir}/webarchivethumbnail.desktop
 %dir %{_kf5_kxmlguidir}/fsview
 %{_kf5_kxmlguidir}/fsview/fsview_part.rc
 %config %{_kf5_configdir}/translaterc

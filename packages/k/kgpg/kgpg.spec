@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kgpg
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Encryption Tool
 License:        GPL-2.0-or-later
@@ -39,6 +39,7 @@ BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5CalendarCore)
 BuildRequires:  cmake(KF5Codecs)
 BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5GrantleeTheme)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5KDELibs4Support)

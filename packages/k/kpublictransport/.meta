@@ -1,0 +1,9 @@
+<package name="kpublictransport" project="openSUSE:Factory">
+  <title>QML imports for querying public transport data</title>
+  <description>A library for access realtime public transport data and for performing public
+ransport journey queries. QML imports.
+
+</description>
+  <devel project="KDE:Applications" package="kpublictransport"/>
+  <url>https://www.kde.org</url>
+</package>

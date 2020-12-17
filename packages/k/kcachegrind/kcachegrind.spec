@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcachegrind
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Frontend for Cachegrind
 License:        GPL-2.0-only AND BSD-4-Clause AND GFDL-1.2-only
@@ -68,16 +68,19 @@ export CFLAGS="%{optflags} -fPIC"
 %cmake_build
 
 %install
-  %make_install -C build
-  %if %{with lang}
-    %find_lang %{name} --with-man --all-name --with-qt
-    %{kf5_find_htmldocs}
-  %endif
-  %suse_update_desktop_file    org.kde.kcachegrind    Development Profiling
+%kf5_makeinstall -C build
+
+%if %{with lang}
+  %find_lang %{name} --with-man --all-name --with-qt
+  %{kf5_find_htmldocs}
+%endif
+
+%suse_update_desktop_file    org.kde.kcachegrind    Development Profiling
 
 %files
 %license COPYING COPYING.DOC
 %doc README
+%doc %lang(en) %{_kf5_htmldir}/en/kcachegrind/
 %{_kf5_applicationsdir}/org.kde.kcachegrind.desktop
 %{_kf5_bindir}/dprof2calltree
 %{_kf5_bindir}/hotshot2calltree
@@ -85,7 +88,6 @@ export CFLAGS="%{optflags} -fPIC"
 %{_kf5_bindir}/memprof2calltree
 %{_kf5_bindir}/op2calltree
 %{_kf5_bindir}/pprof2calltree
-%doc %lang(en) %{_kf5_htmldir}/en/kcachegrind/
 %{_kf5_iconsdir}/hicolor/*/*/*
 %{_kf5_sharedir}/kcachegrind/
 %{_kf5_appstreamdir}/org.kde.kcachegrind.appdata.xml

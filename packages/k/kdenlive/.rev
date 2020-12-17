@@ -730,4 +730,12 @@ I would be grateful.
     <comment>KDE Applications 20.08.3 (forwarded request 846547 from luca_b)</comment>
     <requestid>846664</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>ed37a7cad61301a2bd832063c5b8ac03</srcmd5>
+    <version>20.12.0</version>
+    <time>1608220833</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 20.12.0</comment>
+    <requestid>855153</requestid>
+  </revision>
 </revisionlist>

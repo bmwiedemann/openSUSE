@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kolourpaint
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 # See bnc#717722 for license details
 Summary:        Paint Program
@@ -75,7 +75,7 @@ Paint program for KDE
 
 %files
 %license COPYING
-%doc README
+%doc README*
 %dir %{_kf5_appstreamdir}
 %dir %{_kf5_htmldir}
 %dir %{_kf5_htmldir}/en

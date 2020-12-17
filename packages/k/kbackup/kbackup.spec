@@ -20,7 +20,7 @@
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 Name:           kbackup
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Backup program based on KDE Frameworks 5
 License:        GPL-2.0-only
@@ -29,7 +29,6 @@ URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:  extra-cmake-modules >= 1.0.0
 BuildRequires:  kf5-filesystem
-BuildRequires:  shared-mime-info
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
@@ -63,6 +62,7 @@ Although GUI based, it also offers an automated, GUI-less mode.
 
 %install
 %kf5_makeinstall -C build
+
 %if %{with lang}
   %find_lang %{name} --with-man --with-qt --all-name
   %{kf5_find_htmldocs}
@@ -71,14 +71,15 @@ Although GUI based, it also offers an automated, GUI-less mode.
 %files
 %license COPYING
 %doc README
-%{_kf5_bindir}/kbackup
-%{_kf5_applicationsdir}/org.kde.kbackup.desktop
-%dir %{_kf5_kxmlguidir}/kbackup
-%{_kf5_kxmlguidir}/kbackup/kbackupui.rc
-%{_kf5_appstreamdir}/org.kde.kbackup.appdata.xml
-%{_kf5_iconsdir}/hicolor/*/*/
-%{_datadir}/mime/packages/kbackup.xml
 %doc %lang(en) %{_kf5_htmldir}/en/kbackup
+%dir %{_kf5_kxmlguidir}/kbackup
+%{_datadir}/mime/packages/kbackup.xml
+%{_kf5_applicationsdir}/org.kde.kbackup.desktop
+%{_kf5_appstreamdir}/org.kde.kbackup.appdata.xml
+%{_kf5_bindir}/kbackup
+%{_kf5_iconsdir}/hicolor/*/*/
+%{_kf5_kxmlguidir}/kbackup/kbackupui.rc
+%{_mandir}/man1/kbackup.1.gz
 
 %if %{with lang}
 %files lang -f %{name}.lang

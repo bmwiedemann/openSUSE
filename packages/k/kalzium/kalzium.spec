@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kalzium
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Periodic Table of Elements
 License:        GPL-2.0-or-later
@@ -108,7 +108,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_applicationsdir}/org.kde.kalzium_cml.desktop
 %{_kf5_appstreamdir}/org.kde.kalzium.appdata.xml
 %{_kf5_bindir}/kalzium
-%config %{_kf5_configdir}/kalzium.knsrc
 %{_kf5_configkcfgdir}/
 %{_kf5_iconsdir}/hicolor/*/apps/kalzium.*
 %{_kf5_kxmlguidir}/kalzium/

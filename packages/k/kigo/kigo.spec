@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kigo
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Traditional Chinese Boardgame for KDE
 License:        GPL-2.0-or-later
@@ -78,7 +78,7 @@ Traditional Chinese Boardgame
 %{_kf5_applicationsdir}/org.kde.kigo.desktop
 %{_kf5_iconsdir}/hicolor/*/apps/kigo.*
 %{_kf5_appsdir}/kigo/
-%config %{_kf5_configdir}/kigo*.knsrc
+%{_kf5_knsrcfilesdir}/kigo*.knsrc
 %dir %{_kf5_configkcfgdir}
 %{_kf5_configkcfgdir}/kigo.kcfg
 %{_kf5_debugdir}/kigo.categories

@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kamoso
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Application to take pictures and videos using a webcam
 License:        GPL-2.0-or-later
@@ -82,7 +82,7 @@ YouTube.
 
 %files
 %license COPYING
-%doc AUTHORS README TODO
+%doc AUTHORS
 %{_kf5_applicationsdir}/org.kde.kamoso.desktop
 %{_kf5_bindir}/kamoso
 %{_kf5_iconsdir}/hicolor/*/actions/*.*

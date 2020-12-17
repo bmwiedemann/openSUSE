@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kdesdk-kioslaves
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        KDE SDK KIO slaves
 License:        GPL-2.0-only

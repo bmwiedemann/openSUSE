@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           knights
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        A simple chess board
 License:        GPL-2.0-or-later
@@ -89,7 +89,7 @@ against each other.
 %{_kf5_applicationsdir}/org.kde.knights.desktop
 %{_kf5_appstreamdir}/org.kde.knights.appdata.xml
 %{_kf5_bindir}/knights
-%{_kf5_configdir}/knights.knsrc
+%{_kf5_knsrcfilesdir}/knights.knsrc
 %dir %{_kf5_configkcfgdir}
 %{_kf5_configkcfgdir}/knights.kcfg
 %{_kf5_dbusinterfacesdir}/org.kde.Knights.xml
