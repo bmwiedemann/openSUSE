@@ -18,13 +18,14 @@
 
 # Common info
 Name:           geoipupdate
-Version:        4.5.0
+Version:        4.6.0
 Release:        0
 Summary:        GeoIP update client code
 License:        Apache-2.0 OR MIT
 Group:          Productivity/Networking/Other
 URL:            https://github.com/maxmind/geoipupdate
 Source0:        %{name}-%{version}.tar.gz
+# go mod vendor && tar cf vendor.tar.gz vendor/
 Source1:        vendor.tar.gz
 Source2:        geoipupdate.timer
 Source3:        geoipupdate.service

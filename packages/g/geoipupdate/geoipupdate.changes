@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 16 12:19:29 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.6.0
+  * Show version number in verbose output.
+  * Retry downloads in more scenarios. Previously we would not retry
+    failures occurring when reading the response body, but now we do.
+
+-------------------------------------------------------------------
 Wed Nov  4 15:54:26 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 4.5.0:
