@@ -16,12 +16,12 @@
 #
 
 
-%define kf5_version 5.60.0
+%define kf5_version 5.75.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           messagelib
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        KDE PIM library for e-mail message parsing and display
 License:        GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-or-later
@@ -29,7 +29,6 @@ Group:          System/Libraries
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kdepim-apps-libs-devel
 BuildRequires:  kf5-filesystem
 BuildRequires:  libQt5Sql-private-headers-devel
 BuildRequires:  libgpgme-devel
@@ -47,6 +46,7 @@ BuildRequires:  cmake(KF5Contacts)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5GrantleeTheme)
 BuildRequires:  cmake(KF5Gravatar)
+BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IMAP)
 BuildRequires:  cmake(KF5IconThemes)
