@@ -16,12 +16,12 @@
 #
 
 
-%define kf5_version 5.60.0
+%define kf5_version 5.75.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdepim-addons
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Addons for KDEPIM applications
 License:        GPL-2.0-only
@@ -32,10 +32,10 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Patch0:         0001-Enable-the-expert-plugin-by-default.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  kdepim-apps-libs-devel
 BuildRequires:  kf5-filesystem
 BuildRequires:  libmarkdown-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(Grantlee5)
 BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5AkonadiCalendar)
 BuildRequires:  cmake(KF5AkonadiNotes)
@@ -62,6 +62,7 @@ BuildRequires:  cmake(KF5PimCommon)
 BuildRequires:  cmake(KF5Prison)
 BuildRequires:  cmake(KF5Tnef)
 BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(KPimAddressbookImportExport)
 BuildRequires:  cmake(KPimGAPI)
 BuildRequires:  cmake(KPimImportWizard)
 BuildRequires:  cmake(KPimItinerary)
@@ -76,8 +77,6 @@ BuildRequires:  cmake(Qt5WebEngineWidgets) >= 5.6.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.6.0
 BuildRequires:  cmake(Qt5X11Extras) >= 5.6.0
 BuildRequires:  cmake(Qt5XmlPatterns) >= 5.6.0
-Requires(post): shared-mime-info
-Requires(postun): shared-mime-info
 Recommends:     %{name}-lang
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
@@ -111,44 +110,50 @@ themes, and plugins providing extra or advanced functionality.
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING*
-%{_kf5_debugdir}/kdepim-addons.categories
-%{_kf5_debugdir}/kdepim-addons.renamecategories
-%{_kf5_configdir}/kmail.antispamrc
-%{_kf5_configdir}/kmail.antivirusrc
-%dir %{_kf5_plugindir}
-%dir %{_kf5_plugindir}/akonadi
+%license LICENSES/*
 %dir %{_kf5_libdir}/contacteditor
 %dir %{_kf5_libdir}/contacteditor/editorpageplugins
+%dir %{_kf5_plugindir}/akonadi
 %dir %{_kf5_plugindir}/messageviewer
 %dir %{_kf5_plugindir}/messageviewer/bodypartformatter
 %dir %{_kf5_plugindir}/messageviewer/configuresettings
+%dir %{_kf5_plugindir}/messageviewer/grantlee
+%dir %{_kf5_plugindir}/messageviewer/grantlee/5.0
 %dir %{_kf5_plugindir}/messageviewer/headerstyle
 %dir %{_kf5_plugindir}/messageviewer/viewercommonplugin
 %dir %{_kf5_plugindir}/messageviewer/viewerplugin
-%dir %{_kf5_plugindir}/messageviewer/grantlee
-%dir %{_kf5_plugindir}/messageviewer/grantlee/5.0
 %dir %{_kf5_qmldir}/org/kde/plasma
+%dir %{_kf5_sharedir}/qtcreator
+%dir %{_kf5_sharedir}/qtcreator/templates/
+%dir %{_kf5_sharedir}/qtcreator/templates/kmaileditorconvertertextplugins/
+%dir %{_kf5_sharedir}/qtcreator/templates/kmaileditorplugins/
 %{_kf5_bindir}/kmail_antivir.sh
 %{_kf5_bindir}/kmail_clamav.sh
 %{_kf5_bindir}/kmail_fprot.sh
 %{_kf5_bindir}/kmail_sav.sh
+%{_kf5_configdir}/kmail.antispamrc
+%{_kf5_configdir}/kmail.antivirusrc
+%{_kf5_debugdir}/kdepim-addons.categories
+%{_kf5_debugdir}/kdepim-addons.renamecategories
 %{_kf5_libdir}/contacteditor/editorpageplugins/cryptopageplugin.so
 %{_kf5_libdir}/libadblocklibprivate.so.*
 %{_kf5_libdir}/libdkimverifyconfigure.so.*
-%{_kf5_libdir}/libkaddressbookimportexportlibprivate.so.*
-%{_kf5_libdir}/libkaddressbookmergelibprivate.so.*
-%{_kf5_libdir}/libshorturlpluginprivate.so.*
-%{_kf5_libdir}/libkmailgrammalecte.so.5.*
-%{_kf5_libdir}/libkmailgrammalecte.so.5
 %{_kf5_libdir}/libgrammarcommon.so.5
 %{_kf5_libdir}/libgrammarcommon.so.5.*
+%{_kf5_libdir}/libkaddressbookmergelibprivate.so.*
+%{_kf5_libdir}/libkmailgrammalecte.so.5
+%{_kf5_libdir}/libkmailgrammalecte.so.5.*
 %{_kf5_libdir}/libkmaillanguagetool.so.5
 %{_kf5_libdir}/libkmaillanguagetool.so.5.*
-%{_kf5_libdir}/libkmailquicktextpluginprivate.so.5
-%{_kf5_libdir}/libkmailquicktextpluginprivate.so.5.*
 %{_kf5_libdir}/libkmailmarkdown.so.5
 %{_kf5_libdir}/libkmailmarkdown.so.5.*
+%{_kf5_libdir}/libkmailquicktextpluginprivate.so.5
+%{_kf5_libdir}/libkmailquicktextpluginprivate.so.5.*
+%{_kf5_libdir}/libshorturlpluginprivate.so.*
+%{_kf5_libdir}/libfolderconfiguresettings.so.5
+%{_kf5_libdir}/libfolderconfiguresettings.so.5.*
+%{_kf5_libdir}/libexpireaccounttrashfolderconfig.so.5
+%{_kf5_libdir}/libexpireaccounttrashfolderconfig.so.5.*
 %{_kf5_plugindir}/akonadi/emailaddressselectionldapdialogplugin.so
 %{_kf5_plugindir}/importwizard/
 %{_kf5_plugindir}/kaddressbook/
@@ -158,14 +163,12 @@ themes, and plugins providing extra or advanced functionality.
 %{_kf5_plugindir}/korg_thisdayinhistory.so
 %{_kf5_plugindir}/libksieve/
 %{_kf5_plugindir}/mailtransport/
-%{_kf5_plugindir}/pimcommon/
-%{_kf5_plugindir}/plasmacalendarplugins/
-%{_kf5_plugindir}/templateparser/
-%{_kf5_plugindir}/webengineviewer/
 %{_kf5_plugindir}/messageviewer/bodypartformatter/messageviewer_bodypartformatter*.so
-%{_kf5_plugindir}/messageviewer/grantlee/5.0/kitinerary_grantlee_extension.so
 %{_kf5_plugindir}/messageviewer/configuresettings/messageviewer_dkimconfigplugin.so
+%{_kf5_plugindir}/messageviewer/configuresettings/messageviewer_expireaccounttrashfolderconfigplugin.so
+%{_kf5_plugindir}/messageviewer/configuresettings/messageviewer_folderconfiguresettingsplugin.so
 %{_kf5_plugindir}/messageviewer/configuresettings/messageviewer_gravatarconfigplugin.so
+%{_kf5_plugindir}/messageviewer/grantlee/5.0/kitinerary_grantlee_extension.so
 %{_kf5_plugindir}/messageviewer/headerstyle/messageviewer_briefheaderstyleplugin.so
 %{_kf5_plugindir}/messageviewer/headerstyle/messageviewer_fancyheaderstyleplugin.so
 %{_kf5_plugindir}/messageviewer/headerstyle/messageviewer_grantleeheaderstyleplugin.so
@@ -177,19 +180,14 @@ themes, and plugins providing extra or advanced functionality.
 %{_kf5_plugindir}/messageviewer/viewerplugin/messageviewer_createnoteplugin.so
 %{_kf5_plugindir}/messageviewer/viewerplugin/messageviewer_createtodoplugin.so
 %{_kf5_plugindir}/messageviewer/viewerplugin/messageviewer_externalscriptplugin.so
+%{_kf5_plugindir}/pimcommon/
+%{_kf5_plugindir}/plasmacalendarplugins/
+%{_kf5_plugindir}/templateparser/
+%{_kf5_plugindir}/webengineviewer/
 %{_kf5_qmldir}/org/kde/plasma/PimCalendars/
 %{_kf5_servicesdir}/korganizer/
-%{_kf5_sharedir}/kconf_update/webengineurlinterceptoradblock.upd
 %{_kf5_sharedir}/kconf_update/languagetool_kmail.upd
-%dir %{_kf5_sharedir}/qtcreator
-%dir %{_kf5_sharedir}/qtcreator/templates/
-%dir %{_kf5_sharedir}/qtcreator/templates/kmaileditorplugins/
-%dir %{_kf5_sharedir}/qtcreator/templates/kmaileditorconvertertextplugins/
-%{_kf5_sharedir}/qtcreator/templates/kmaileditorplugins/CMakeLists.txt
-%{_kf5_sharedir}/qtcreator/templates/kmaileditorplugins/plugineditor.*
-%{_kf5_sharedir}/qtcreator/templates/kmaileditorplugins/plugineditorinterface.*
-%{_kf5_sharedir}/qtcreator/templates/kmaileditorplugins/*.json
-%{_kf5_sharedir}/qtcreator/templates/kmaileditorplugins/plugin.json.impl
+%{_kf5_sharedir}/kconf_update/webengineurlinterceptoradblock.upd
 %{_kf5_sharedir}/qtcreator/templates/kmaileditorconvertertextplugins/CMakeLists.txt
 %{_kf5_sharedir}/qtcreator/templates/kmaileditorconvertertextplugins/plugin.json.impl
 %{_kf5_sharedir}/qtcreator/templates/kmaileditorconvertertextplugins/plugineditor.cpp
@@ -197,10 +195,15 @@ themes, and plugins providing extra or advanced functionality.
 %{_kf5_sharedir}/qtcreator/templates/kmaileditorconvertertextplugins/plugineditorinterface.cpp
 %{_kf5_sharedir}/qtcreator/templates/kmaileditorconvertertextplugins/plugineditorinterface.h
 %{_kf5_sharedir}/qtcreator/templates/kmaileditorconvertertextplugins/wizard.json
+%{_kf5_sharedir}/qtcreator/templates/kmaileditorplugins/*.json
+%{_kf5_sharedir}/qtcreator/templates/kmaileditorplugins/CMakeLists.txt
+%{_kf5_sharedir}/qtcreator/templates/kmaileditorplugins/plugin.json.impl
+%{_kf5_sharedir}/qtcreator/templates/kmaileditorplugins/plugineditor.*
+%{_kf5_sharedir}/qtcreator/templates/kmaileditorplugins/plugineditorinterface.*
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
