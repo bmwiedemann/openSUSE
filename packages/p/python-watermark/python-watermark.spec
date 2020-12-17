@@ -1,7 +1,7 @@
 #
 # spec file for package python-watermark
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@ Requires:       python-ipython
 Provides:       python-jupyter_watermark = %{version}
 Obsoletes:      python-jupyter_watermark < %{version}
 BuildArch:      noarch
-%ifpython3
+%if "%{python_flavor}" == "python3" || "%{?python_provides}"  == "python3"
 Provides:       jupyter-watermark = %{version}
 %endif
 %python_subpackages
