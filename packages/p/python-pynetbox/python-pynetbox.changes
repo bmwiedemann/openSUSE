@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 15 21:31:08 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.1.1
+  * Fixes bug with where URL was mangled calling .save()
+
+-------------------------------------------------------------------
 Thu Sep 24 18:40:51 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.1.0
