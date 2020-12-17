@@ -43,7 +43,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  coreutils-doc
 BuildRequires:  man
 # /SECTION
-%ifpython3
+%if "%{python_flavor}" == "python3" || "%{?python_provides}"  == "python3"
 Provides:       jupyter-metakernel = %{version}
 %endif
 %python_subpackages

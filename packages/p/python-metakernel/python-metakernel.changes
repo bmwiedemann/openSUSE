@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 15 12:52:42 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Provide the old jupyter package name only for the primary
+  Python3 interpreter -- gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Sun Apr 26 19:36:56 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:
