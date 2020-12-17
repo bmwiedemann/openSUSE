@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 17 13:55:35 CET 2020 - tiwai@suse.de
+
+- Update to version 1.6 final:
+  * New platform JSL and EHL is added
+- Use the bundled go.sh for installation
+- Dropped jsl.ri that is wrongly symlinked for now
+
+-------------------------------------------------------------------
 Thu Nov 26 13:53:53 CET 2020 - tiwai@suse.de
 
 - Fix build with older distros without %_firmwaredir

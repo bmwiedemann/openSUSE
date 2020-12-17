@@ -17,7 +17,7 @@
 
 
 %define repo_version 1.6
-%define package_version	1.6-rc3
+%define package_version	1.6
 
 %if 0%{?suse_version} < 1550
 %define _firmwaredir /lib/firmware
@@ -27,7 +27,7 @@ Name:           sof-firmware
 Summary:        Firmware Data Files for SOF Drivers
 License:        BSD-3-Clause
 Group:          Hardware/Other
-Version:        1.6~rc3
+Version:        1.6
 Release:        0
 URL:            https://github.com/thesofproject/sof-bin
 BuildRequires:  fdupes
@@ -71,34 +71,14 @@ Various firmware data files for SOF drivers.
 
 %prep
 %setup -q -n sof-bin
-# drop version number from sof-tplg directory
-mv lib/firmware/intel/sof-tplg-v%{repo_version} lib/firmware/intel/sof-tplg
 
 %build
 
 %install
-mkdir -p %{buildroot}%{_firmwaredir}/intel/
-cp -a lib/firmware/intel/* %{buildroot}%{_firmwaredir}/intel/
-# create symlinks
-(cd %{buildroot}%{_firmwaredir}/intel/sof
-for i in v%{repo_version}/intel-signed/*.ri v%{repo_version}/*.ri; do
-    f=${i%%-v%{repo_version}.ri}
-    f=${f##*/}
-    ln -s $i $f.ri
-done
-
-# fix up the missing firmware for Commet Lake and Coffee Lake
-test -f sof-cml.ri || ln -s sof-cnl.ri sof-cml.ri
-test -f sof-cfl.ri || ln -s sof-cnl.ri sof-cfl.ri
-
-mkdir -p debug
-cd debug
-for i in ../v%{repo_version}/*.ldc; do
-    f=${i%%-v%{repo_version}.ldc}
-    f=${f##*/}
-    ln -s $i $f.ldc
-done
-)
+mkdir -p %{buildroot}%{_firmwaredir}
+ROOT=%{buildroot} SOF_VERSION=v%{repo_version} sh ./go.sh
+# drop broken link
+rm -f %{buildroot}%{_firmwaredir}/intel/sof/sof-jsl.ri
 %fdupes -s %{buildroot}
 
 %files
