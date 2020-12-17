@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without	lang
 Name:           palapeli
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Jigsaw puzzle game
 License:        GPL-2.0-or-later
@@ -29,6 +29,7 @@ Group:          Amusements/Games/Board/Puzzle
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:  extra-cmake-modules
+BuildRequires:  shared-mime-info
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Config)
@@ -49,8 +50,6 @@ BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 Requires:       palapeli-data = %{version}
-Requires(post): shared-mime-info
-Requires(postun): shared-mime-info
 %if %{with lang}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
@@ -86,23 +85,28 @@ This package contains the development files for Palapeli.
 %setup -q
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
+%kf5_makeinstall -C build
+
 %if %{with lang}
   %find_lang %{name} --with-man --all-name
   %{kf5_find_htmldocs}
 %endif
-  %suse_update_desktop_file -r org.kde.palapeli          Game BoardGame
+
+%suse_update_desktop_file -r org.kde.palapeli          Game BoardGame
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files
 %license COPYING*
+%doc %lang(en) %{_kf5_htmldir}/en/palapeli/
+%dir %{_kf5_iconsdir}/hicolor/128x128/
+%dir %{_kf5_iconsdir}/hicolor/128x128/apps
+%dir %{_kf5_iconsdir}/hicolor/128x128/mimetypes/
 %dir %{_kf5_iconsdir}/hicolor/16x16
 %dir %{_kf5_iconsdir}/hicolor/16x16/apps
 %dir %{_kf5_iconsdir}/hicolor/16x16/mimetypes
@@ -115,16 +119,13 @@ This package contains the development files for Palapeli.
 %dir %{_kf5_iconsdir}/hicolor/64x64
 %dir %{_kf5_iconsdir}/hicolor/64x64/apps
 %dir %{_kf5_iconsdir}/hicolor/64x64/mimetypes
-%dir %{_kf5_iconsdir}/hicolor/128x128/
-%dir %{_kf5_iconsdir}/hicolor/128x128/apps
-%dir %{_kf5_iconsdir}/hicolor/128x128/mimetypes/
-%{_kf5_iconsdir}/hicolor/*/apps/palapeli.png
-%{_kf5_iconsdir}/hicolor/*/mimetypes/application-x-palapeli.png
 %dir %{_kf5_servicesdir}/ServiceMenus
-%doc %lang(en) %{_kf5_htmldir}/en/palapeli/
 %{_kf5_applicationsdir}/org.kde.palapeli.desktop
 %{_kf5_appstreamdir}/org.kde.palapeli.appdata.xml
 %{_kf5_bindir}/palapeli
+%{_kf5_debugdir}/palapeli.categories
+%{_kf5_iconsdir}/hicolor/*/apps/palapeli.png
+%{_kf5_iconsdir}/hicolor/*/mimetypes/application-x-palapeli.png
 %{_kf5_kxmlguidir}/palapeli/
 %{_kf5_libdir}/libpala.so.*
 %{_kf5_notifydir}/palapeli.notifyrc
@@ -136,7 +137,6 @@ This package contains the development files for Palapeli.
 %{_kf5_servicesdir}/palathumbcreator.desktop
 %{_kf5_servicetypesdir}/libpala-slicerplugin.desktop
 %{_kf5_sharedir}/mime/packages/palapeli-mimetypes.xml
-%{_kf5_debugdir}/palapeli.categories
 
 %files data
 %license COPYING*
