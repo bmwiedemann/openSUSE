@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           parley
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Vocabulary Trainer
 License:        GPL-2.0-or-later
@@ -89,13 +89,13 @@ Parley is a vocabulary trainer for KDE.
 %files
 %license COPYING*
 %doc AUTHORS README.md
-%config %{_kf5_configdir}/parley*.knsrc
 %doc %lang(en) %{_kf5_htmldir}/en/parley/
 %{_kf5_applicationsdir}/org.kde.parley.desktop
 %{_kf5_appstreamdir}/
 %{_kf5_bindir}/parley
 %{_kf5_configkcfgdir}/
 %{_kf5_iconsdir}/*/*/*/*
+%{_kf5_knsrcfilesdir}/*.knsrc
 %{_kf5_sharedir}/parley/
 %{_kf5_kxmlguidir}/
 
