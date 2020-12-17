@@ -18,13 +18,17 @@
 
 %bcond_without lang
 Name:           kitinerary
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Data model and extraction system for travel reservations
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  libopenssl-devel
@@ -40,10 +44,6 @@ BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Test)
 Requires:       libKPimItinerary5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 %if 0%{?suse_version} > 1500
 BuildRequires:  libphonenumber-devel
 BuildRequires:  cmake(ZXing)
@@ -84,29 +84,33 @@ to build programs that use the kitinerary library.
 %setup -q
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build -- -DBUILD_TESTING=ON
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with lang}
-    %find_lang %{name} --with-man --with-qt --all-name
-  %endif
+%kf5_makeinstall -C build
+
+%if %{with lang}
+  %find_lang %{name} --with-man --with-qt --all-name
+%endif
+
+%check
+%ctest
 
 %post -n libKPimItinerary5 -p /sbin/ldconfig
 %postun -n libKPimItinerary5 -p /sbin/ldconfig
 
 %files
 %license LICENSES/*
-%{_kf5_libexecdir}/kitinerary-extractor
 %dir %{_kf5_sharedir}/mime
 %dir %{_kf5_sharedir}/mime/packages
+%{_kf5_libexecdir}/kitinerary-extractor
 %{_kf5_sharedir}/mime/packages/application-vnd-kde-itinerary.xml
 
 %files -n libKPimItinerary5
 %license LICENSES/*
-%{_kf5_libdir}/libKPimItinerary.so.*
 %{_kf5_debugdir}/*.categories
+%{_kf5_libdir}/libKPimItinerary.so.*
 
 %files devel
 %license LICENSES/*
