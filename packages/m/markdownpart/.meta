@@ -1,0 +1,11 @@
+<package name="markdownpart" project="openSUSE:Factory">
+  <title>KPart for rendering Markdown content</title>
+  <description>A(nother) Markdown viewer KParts plugin, which allows
+KParts-using applications to display files in
+Markdown format in the rendered target format.
+Examples are Ark, Krusader, Kate's preview plugin &amp; Konqueror.
+
+</description>
+  <devel project="KDE:Applications" package="markdownpart"/>
+  <url>https://www.kde.org</url>
+</package>
