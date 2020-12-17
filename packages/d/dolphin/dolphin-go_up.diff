@@ -1,8 +1,8 @@
-Index: dolphin-19.03.60git.20191013T183353~0caab3c0a/src/dolphinui.rc
+Index: dolphin-19.03.60git.20201029T150039~bf11c835e/src/dolphinui.rc
 ===================================================================
---- dolphin-19.03.60git.20191013T183353~0caab3c0a.orig/src/dolphinui.rc	2019-10-13 18:33:53.000000000 +0200
-+++ dolphin-19.03.60git.20191013T183353~0caab3c0a/src/dolphinui.rc	2019-10-14 07:14:11.449801577 +0200
-@@ -99,6 +99,7 @@
+--- dolphin-19.03.60git.20201029T150039~bf11c835e.orig/src/dolphinui.rc	2020-10-29 22:00:39.000000000 +0100
++++ dolphin-19.03.60git.20201029T150039~bf11c835e/src/dolphinui.rc	2020-10-31 09:57:20.003032608 +0100
+@@ -115,6 +115,7 @@
          <text context="@title:menu">Main Toolbar</text>
          <Action name="go_back" />
          <Action name="go_forward" />

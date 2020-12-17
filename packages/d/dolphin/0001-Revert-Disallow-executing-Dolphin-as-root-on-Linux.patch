@@ -10,13 +10,13 @@ desktop. So this patch is absolutely pointless for us.
  src/main.cpp | 13 -------------
  1 file changed, 13 deletions(-)
 
-Index: dolphin-19.03.60git.20191013T183353~0caab3c0a/src/main.cpp
+Index: dolphin-19.03.60git.20201029T150039~bf11c835e/src/main.cpp
 ===================================================================
---- dolphin-19.03.60git.20191013T183353~0caab3c0a.orig/src/main.cpp	2019-10-13 18:33:53.000000000 +0200
-+++ dolphin-19.03.60git.20191013T183353~0caab3c0a/src/main.cpp	2019-10-14 07:14:20.922172281 +0200
-@@ -39,25 +39,8 @@
- #include <QDBusAbstractInterface>
+--- dolphin-19.03.60git.20201029T150039~bf11c835e.orig/src/main.cpp	2020-10-29 22:00:39.000000000 +0100
++++ dolphin-19.03.60git.20201029T150039~bf11c835e/src/main.cpp	2020-10-31 09:57:30.827192500 +0100
+@@ -28,25 +28,8 @@
  #include <QDBusConnectionInterface>
+ #include <QSessionManager>
  
 -#ifndef Q_OS_WIN
 -#include <unistd.h>

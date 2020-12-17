@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Dec 10 19:14:25 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix appearance on the first start (kde#429447):
+  * 0001-Update-cached-viewContainer-geometry-every-time-they.patch
+
+-------------------------------------------------------------------
+Sat Dec  5 23:15:24 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-12-apps-update
+- Changes since 20.11.90:
+  * Fix PlacesItemModelTest, 2nd try
+  * Re-allow to paste files via context menu (kde#429762)
+
+-------------------------------------------------------------------
+Fri Nov 27 15:15:41 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.90
+  * New feature release
+- Too many changes since 20.11.80, only listing bugfixes:
+  * Allow the openURLJob to run executables (kde#429603)
+  * Places panel: highlight place only when it is displayed (kde#156678)
+  * Select last visited folder when going up/back (kde#429097)
+  * Re-allow icons that are not theme icon (kde#429113)
+
+-------------------------------------------------------------------
+Sat Nov 14 00:00:33 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Thu Nov  5 22:45:25 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.08.3

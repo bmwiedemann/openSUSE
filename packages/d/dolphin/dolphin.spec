@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           dolphin
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        KDE File Manager
 License:        GPL-2.0-or-later
@@ -30,9 +30,12 @@ URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 Source3:        dolphinsu.desktop
 Patch0:         dolphin-go_up.diff
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Update-cached-viewContainer-geometry-every-time-they.patch
 # PATCH-FIX-OPENSUSE
-Patch1:         0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch
+Patch100:       0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch
 BuildRequires:  extra-cmake-modules >= 1.6.0
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Activities) >= 5.7.0
 BuildRequires:  cmake(KF5Baloo)
@@ -145,11 +148,11 @@ Provides translations for the "%{name}" package.
 %files
 %license COPYING*
 %doc README.md
+%doc %lang(en) %{_kf5_htmldir}/en/dolphin/
 %dir %{_kf5_appstreamdir}
 %dir %{_kf5_htmldir}
 %dir %{_kf5_htmldir}/en
 %dir %{_kf5_sharedir}/kglobalaccel/
-%doc %lang(en) %{_kf5_htmldir}/en/dolphin/
 %{_kf5_applicationsdir}/org.kde.dolphin.desktop
 %{_kf5_applicationsdir}/org.kde.dolphinsu.desktop
 %{_kf5_appstreamdir}/org.kde.dolphin.appdata.xml
