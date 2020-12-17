@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           filelight
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Graphical disk usage viewer
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -42,6 +42,7 @@ BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Script)
+BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
