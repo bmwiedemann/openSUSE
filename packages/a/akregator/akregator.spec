@@ -16,12 +16,12 @@
 #
 
 
-%define kf5_version 5.60.0
+%define kf5_version 5.75.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akregator
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        RSS Feed Reader
 License:        GPL-2.0-or-later
@@ -102,7 +102,7 @@ rm %{buildroot}%{_kf5_libdir}/*.so
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING COPYING.LIB COPYING.DOC
+%license LICENSES/*
 %doc README
 %dir %{_kf5_appstreamdir}/
 %{_kf5_debugdir}/akregator.categories
@@ -131,7 +131,7 @@ rm %{buildroot}%{_kf5_libdir}/*.so
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
