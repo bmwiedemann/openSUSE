@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Dec  5 23:15:36 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-12-apps-update
+- No code change since 20.11.90
+
+-------------------------------------------------------------------
+Fri Nov 27 15:15:52 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.90
+  * New feature release
+- No code change since 20.11.80
+
+-------------------------------------------------------------------
+Sat Nov 14 00:00:45 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.80
+  * New feature release
+- Changes since 20.08.3:
+  * Warn when trying to add folders that contain unsupported filenames (kde#428115)
+  * Avoid creating KCModuleInfo
+  * Port away from KRandom
+  * Fix -Wimplicit-fallthrough warnings
+
+-------------------------------------------------------------------
 Thu Nov  5 22:45:36 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.08.3
