@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  9 19:12:52 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.1
+  * rewritten the OpenIPMI SoL code so I could make it stable
+    under adverse circumstances, and lots of fixes in the gensio
+    code, it's stable and holds up well under duress.
+
+-------------------------------------------------------------------
 Thu Oct 29 19:28:22 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.0
