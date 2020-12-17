@@ -16,12 +16,12 @@
 #
 
 
-%define kf5_version 5.60.0
+%define kf5_version 5.75.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kpimtextedit
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        KDE PIM Libraries: Text edit functionality
 License:        LGPL-2.1-or-later
@@ -98,11 +98,11 @@ to develop KDE PIM applications.
 %{_kf5_debugdir}/kpimtextedit.categories
 
 %files -n libKF5PimTextEdit5
-%license COPYING.LIB
+%license LICENSES/*
 %{_kf5_libdir}/libKF5PimTextEdit.so.*
 
 %files devel
-%license COPYING.LIB
+%license LICENSES/*
 %{_kf5_cmakedir}/KF5PimTextEdit/
 %{_kf5_includedir}/KPIMTextEdit/
 %{_kf5_includedir}/kpimtextedit_version.h
@@ -112,7 +112,7 @@ to develop KDE PIM applications.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
