@@ -529,4 +529,12 @@ Needs KF 5.59 and SR 710707</comment>
     <comment>KDE Applications 20.08.3 (forwarded request 846547 from luca_b)</comment>
     <requestid>846768</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>f9de13f030129bc54d790bb99b77f6aa</srcmd5>
+    <version>20.12.0</version>
+    <time>1608220581</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 20.12.0</comment>
+    <requestid>855261</requestid>
+  </revision>
 </revisionlist>
