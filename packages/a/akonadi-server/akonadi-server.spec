@@ -17,12 +17,12 @@
 
 
 %define rname   akonadi
-%define kf5_version 5.63.0
+%define kf5_version 5.75.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-server
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        PIM Storage Service
 License:        LGPL-2.1-or-later
@@ -66,8 +66,6 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 Requires:       libqt5-sql-mysql
 Requires:       mysql
-Requires(post): shared-mime-info
-Requires(postun): shared-mime-info
 # FIXME: Check if it's worth it
 Recommends:     kaccounts-integration
 Recommends:     kaccounts-providers
@@ -179,7 +177,6 @@ service.
   %endif
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %post -n libKF5AkonadiWidgets5 -p /sbin/ldconfig

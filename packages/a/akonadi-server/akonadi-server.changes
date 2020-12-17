@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Dec  5 23:15:07 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-12-apps-update
+- No code change since 20.11.90
+
+-------------------------------------------------------------------
+Fri Nov 27 15:15:25 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.90
+  * New feature release
+- Changes since 20.11.80:
+  * Check if external library is needed to have atomic support.
+  * CMake: Don't use the LZMA imported targets
+  * Revert "Fix building akonadiprivate_obj with out of system lzma libs on macOS"  * Install compressionstream private header
+  * Introduce Config class, disable payload comp. by default
+- Drop obsolete patches:
+  * 0001-Revert-Fix-building-akonadiprivate_obj-with-out-of-s.patch
+  * 0002-CMake-Don-t-use-the-LZMA-imported-targets.patch
+
+-------------------------------------------------------------------
+Mon Nov 23 12:54:23 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patches to fix build with older CMake versions:
+  * 0001-Revert-Fix-building-akonadiprivate_obj-with-out-of-s.patch
+  * 0002-CMake-Don-t-use-the-LZMA-imported-targets.patch
+
+-------------------------------------------------------------------
+Sat Nov 14 00:00:13 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Thu Nov  5 22:45:08 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.08.3
