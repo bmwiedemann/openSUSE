@@ -16,19 +16,24 @@
 #
 
 
-%define kf5_version 5.25.0
+%define kf5_version 5.71.0
+# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
+%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
+%bcond_without lang
 Name:           konversation
-Version:        1.7.7
+Version:        20.12.0
 Release:        0
 Summary:        A graphical IRC client by KDE
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/IRC
 URL:            https://konversation.kde.org/
-Source0:        https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
 BuildRequires:  libqca-qt5-devel
-BuildRequires:  xz
 BuildRequires:  cmake(KF5Archive) >= %{kf5_version}
 BuildRequires:  cmake(KF5Bookmarks) >= %{kf5_version}
 BuildRequires:  cmake(KF5Config) >= %{kf5_version}
@@ -44,6 +49,7 @@ BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
 BuildRequires:  cmake(KF5IdleTime) >= %{kf5_version}
 BuildRequires:  cmake(KF5ItemViews) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
+BuildRequires:  cmake(KF5NewStuff) >= %{kf5_version}
 BuildRequires:  cmake(KF5Notifications) >= %{kf5_version}
 BuildRequires:  cmake(KF5NotifyConfig) >= %{kf5_version}
 BuildRequires:  cmake(KF5Parts) >= %{kf5_version}
@@ -52,9 +58,9 @@ BuildRequires:  cmake(KF5Wallet) >= %{kf5_version}
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
 BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  cmake(Qt5Core) >= 5.5.0
-BuildRequires:  cmake(Qt5Gui) >= 5.5.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.5.0
+BuildRequires:  cmake(Qt5Core) >= 5.12.0
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang = %{version}
 
 %description
@@ -86,27 +92,32 @@ Features:
 %install
 %kf5_makeinstall -C build
 
+%if %{with lang}
 %find_lang %{name}
+%endif
 
 %files
-%license COPYING
-%doc AUTHORS COPYING-DOCS ChangeLog NEWS README
+%license LICENSES/*
+%doc AUTHORS ChangeLog NEWS README
 %doc %{_kf5_htmldir}/en/konversation/
 %dir %{_kf5_appstreamdir}
 %dir %{_kf5_sharedir}/kconf_update/
 %{_kf5_applicationsdir}/org.kde.konversation.desktop
 %{_kf5_appstreamdir}/org.kde.konversation.appdata.xml
 %{_kf5_bindir}/konversation
+%{_kf5_debugdir}/konversation.categories
 %{_kf5_iconsdir}/hicolor/*/actions/konv_message.*
 %{_kf5_iconsdir}/hicolor/*/apps/konversation.*
-%{_kf5_kxmlguidir}/konversation/
+%{_kf5_knsrcfilesdir}/konversation_nicklist_theme.knsrc
 %{_kf5_notifydir}/konversation.notifyrc
 %{_kf5_sharedir}/kconf_update/konversation*
 %{_kf5_sharedir}/konversation/
 
+%if %{with lang}
 %files lang -f %{name}.lang
 %dir %{_kf5_htmldir}/pt_BR/
 %doc %{_kf5_htmldir}/*/konversation/
 %exclude %{_kf5_htmldir}/en/konversation
+%endif
 
 %changelog
