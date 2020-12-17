@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-nbval
-Version:        0.9.5
+Version:        0.9.6
 Release:        0
 Summary:        A pytest plugin to validate Jupyter notebooks
 License:        BSD-3-Clause
@@ -60,7 +60,7 @@ BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module sympy}
 # /SECTION
-%ifpython3
+%if "%{python_flavor}" == "python3" || "%{?python_provides}"  == "python3"
 Provides:       jupyter-nbval = %{version}
 %endif
 %python_subpackages
@@ -90,6 +90,10 @@ export LANG=en_US.UTF-8
 export LANG=en_US.UTF-8
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+# see dodo.py
+%pytest tests/ --nbval --current-env --sanitize-with tests/sanitize_defaults.cfg --ignore tests/ipynb-test-samples
 
 %files %{python_files}
 %doc README.md

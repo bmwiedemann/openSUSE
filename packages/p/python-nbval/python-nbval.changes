@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:12:35 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 0.9.6
+  * fix compatibility with pytest >= 6 and python 3.8 
+- enable tests
+
+-------------------------------------------------------------------
+Tue Dec 15 12:52:44 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Provide the old jupyter package name only for the primary
+  Python3 interpreter -- gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Mon Feb 24 15:50:14 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.9.5
