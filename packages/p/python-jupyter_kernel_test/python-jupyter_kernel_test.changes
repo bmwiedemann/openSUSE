@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 17 11:17:27 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Provide the old jupyter package name only for the primary
+  Python3 interpreter -- gh#openSUSE/python-rpm-macros#66
+- Build wheel from source via flit
+- Add jupyter_kernel_test-pr37-usejsonschema.patch to remove
+  dependency on nose gh#jupyter/jupyter_kernel_test#37
+- Run tests with ipykernel
+
+-------------------------------------------------------------------
 Sat Jan 11 14:44:25 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use pyproject_install macro (boo#1094323)
