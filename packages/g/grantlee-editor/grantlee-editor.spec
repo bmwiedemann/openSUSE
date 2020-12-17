@@ -16,12 +16,12 @@
 #
 
 
-%define kf5_version 5.59.0
+%define kf5_version 5.75.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           grantlee-editor
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Messageviewer header theme editor based on Grantlee
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -40,7 +40,6 @@ BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5GrantleeTheme)
 BuildRequires:  cmake(KF5IMAP)
-BuildRequires:  cmake(KF5KaddressbookGrantlee)
 BuildRequires:  cmake(KF5MessageCore)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5PimCommon)
@@ -85,7 +84,7 @@ rm %{buildroot}%{_kf5_libdir}/*.so
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING COPYING.LIB COPYING.DOC
+%license LICENSES/*
 %{_kf5_debugdir}/grantleeditor.categories
 %{_kf5_debugdir}/grantleeditor.renamecategories
 %{_kf5_bindir}/contactprintthemeeditor
@@ -101,7 +100,7 @@ rm %{buildroot}%{_kf5_libdir}/*.so
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
