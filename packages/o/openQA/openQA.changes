@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Dec 17 00:13:25 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1608163990.9004bc4cf:
+  * t: Refactor and mark multiple test modules for 100% statement coverage
+  * t: Use more concise one-line Selenium WDKeys init as well
+  * t: Use more concise one-line Selenium driver initialization (2nd)
+  * Refine check for error message about immediately pruned assets
+  * Improve logging of availability error to show retry interval
+  * Dependency cron 2020-12-16
+  * Ignore openqa-worker-cacheservice-minion ignoring invalid args
+  * Workaround broken top-level help in Mojolicious 8.67
+  * Avoid using deprecated Mojolicious functions
+  * Avoid worker from appearing stuck (e.g. not reacting to SIGTERM) on cache check
+  * Add openqa-worker-auto-restart@.service to apply worker updates automatically
+  * Combine sed commands used to install openqa-worker-no-cleanup@.service
+  * Allow configuring the worker to terminate after all jobs have been processed
+  * t: Fix coverage of separate process in 25-cache-service.t
+  * t: Increase statement coverage ratio in 25-cache-service.t
+  * t: Delete unused function _port in 25-cache-client.t
+  * Document configuring automatic cloning of incomplete jobs
+  * Clone incompletes caused by cache service errors automatically
+  * docs: Explain the concept of "carry-over" better
+
+-------------------------------------------------------------------
 Mon Dec 07 21:24:32 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1607368100.ab9d59cad:
