@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kate
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Advanced Text Editor
 License:        GPL-3.0-or-later
@@ -110,7 +110,7 @@ plugins and data files for Kate and KWrite editors.
   %endif
 
 %files
-%license COPYING*
+%license LICENSES/*
 %doc README*
 %dir %{_kf5_appstreamdir}
 %dir %{_kf5_htmldir}
@@ -134,7 +134,7 @@ plugins and data files for Kate and KWrite editors.
 %{_kf5_iconsdir}/hicolor/*/apps/kate.*
 
 %files -n kwrite
-%license COPYING*
+%license LICENSES/*
 %doc README*
 %dir %{_kf5_htmldir}
 %dir %{_kf5_htmldir}/en
@@ -145,7 +145,7 @@ plugins and data files for Kate and KWrite editors.
 %{_kf5_iconsdir}/hicolor/*/apps/kwrite.*
 
 %files plugins
-%license COPYING*
+%license LICENSES/*
 %doc README*
 %if 0%{?_appstreamkpackage}
 %{_kf5_appstreamdir}/org.kde.plasma.katesessions.appdata.xml
@@ -158,7 +158,7 @@ plugins and data files for Kate and KWrite editors.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
