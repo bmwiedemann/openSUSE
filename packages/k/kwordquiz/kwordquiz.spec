@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kwordquiz
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Vocabulary Trainer
 License:        GPL-2.0-or-later
@@ -83,7 +83,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %dir %{_kf5_appstreamdir}
 %license COPYING*
 %doc AUTHORS README
-%config %{_kf5_configdir}/kwordquiz.knsrc
+%{_kf5_knsrcfilesdir}/kwordquiz.knsrc
 %doc %lang(en) %{_kf5_htmldir}/en/kwordquiz/
 %{_kf5_applicationsdir}/org.kde.kwordquiz.desktop
 %{_kf5_appsdir}/kwordquiz/
