@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Dec 13 14:28:05 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Drop obsolete build requirements
+
+-------------------------------------------------------------------
+Sat Dec  5 23:15:31 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-12-apps-update
+- No code change since 20.11.90
+
+-------------------------------------------------------------------
+Fri Nov 27 15:15:48 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.90
+  * New feature release
+- No code change since 20.11.80
+
+-------------------------------------------------------------------
+Sat Nov 14 00:00:40 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.80
+  * New feature release
+- Changes since 20.08.3:
+  * Time to increase version
+  * Adapt to kdepim-apps-libs removal
+  * Adapt to KAddressbookGrantlee being moved into AkonadiContacts
+  * Modernize code
+  * Convert license headers to SPDX format
+
+-------------------------------------------------------------------
 Thu Nov  5 22:45:32 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.08.3
