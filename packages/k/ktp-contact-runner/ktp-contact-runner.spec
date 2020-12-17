@@ -21,7 +21,7 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktp-contact-runner
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Telepathy Krunner plugin
 License:        LGPL-2.1-or-later
@@ -74,7 +74,6 @@ A KRunner plugin to find your Telepathy contacts.
 %files
 %license COPYING*
 %{_kf5_plugindir}/
-%{_kf5_servicesdir}/
 
 %if %{with lang}
 %files lang -f %{name}.lang
