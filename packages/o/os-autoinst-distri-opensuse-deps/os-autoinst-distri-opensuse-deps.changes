@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Dec 17 01:36:26 UTC 2020 - Dominik Heidler <dheidler@suse.de>
+
+- Removed dependency perl(constant)
+- Added dependency perl(LWP::Simple)
+- Removed dependency perl(LWP::Simple)
+- Removed dependency perl(parent)
+- Removed dependency perl(Perl::Critic::Freenode)
+- Added dependency perl(Perl::Critic::Freenode)
+- Removed dependency perl(strict)
+- Removed dependency perl(utf8)
+- Removed dependency perl(version)
+- Removed dependency perl(warnings)
+- Added dependency perl(constant)
+- Added dependency perl(parent)
+- Added dependency perl(strict)
+- Added dependency perl(utf8)
+- Added dependency perl(version)
+- Added dependency perl(warnings)
+
+-------------------------------------------------------------------
 Mon Dec  7 23:00:16 UTC 2020 - Dominik Heidler <dheidler@suse.de>
 
 - Removed dependency perl(Archive::Tar)
