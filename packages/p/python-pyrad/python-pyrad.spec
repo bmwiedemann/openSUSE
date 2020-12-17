@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyrad
-Version:        2.3
+Version:        2.4
 Release:        0
 Summary:        RADIUS tools
 License:        BSD-3-Clause
@@ -49,7 +49,7 @@ them and decoding responses.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -v -s pyrad/tests/*.py
+%pytest -v -s tests/test*.py
 
 %files %{python_files}
 %license LICENSE.txt

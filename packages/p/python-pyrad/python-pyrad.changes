@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Dec 16 10:46:08 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Fixed glob-pattern for tests
+- Update to version 2.4
+  * Support poetry for building this project
+  * Use secrets.SysRandom instead of random.SystemRandom if possible
+  * .get on Packets has an optional default parameter (to mimic dict.get())
+  * Fix: digestmod is not optional in python3.8 anymore
+  * Fix: authenticator was refreshed before the packet was generated
+  * Fix bug causing Message-Authenticator verification to fail if
+    multiple instances of an attribute do not appear sequentially in
+    the attributes list
+  * Fixed #140 VerifyReply broken when multiple instances of same attribute are
+    not adjacent on reply
+  * Fixed #135 Missing send_packet for async Client
+  * Fixed #126 python3 support for SaltCrypt (was previously broken)
+
+-------------------------------------------------------------------
 Wed Jun 17 12:57:21 UTC 2020 - pgajdos@suse.com
 
 - nose -> pytest
