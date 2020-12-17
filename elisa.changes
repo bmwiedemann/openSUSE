@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sat Dec  5 23:15:27 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-12-apps-update
+- Changes since 20.11.90:
+  * Don't look for translated version of "Play-Pause" shortcut (kde#410110)
+  * in grid view, do not try to open music files but enqueue them (kde#429460)
+  * Allow to restore entries in play list from local or remote URLs
+  * call Q_EMIT Seeked less frequently to reduce MPRIS spamming
+  * Don't show "Show Playlist" button in Party Mode (kde#429729)
+
+-------------------------------------------------------------------
+Fri Nov 27 15:15:44 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.90
+  * New feature release
+- Too many changes since 20.11.80, only listing bugfixes:
+  * Remove unneeded margins around list browser view (kde#429330)
+  * prevent crash by stopping play before freeing libvlc resources (kde#424891)
+  * forget the saved position withing a track when switching to another one (kde#408295)
+  * use a role of the model to also choose the correct delegate for metadata (kde#429039)
+  * fix modification of tracks with embedded covers (kde#429041)
+
+-------------------------------------------------------------------
+Sat Nov 14 00:00:35 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.80
+  * New feature release
+- Too many changes since 20.08.3, only listing bugfixes:
+  * make MediaTrackMetadataView able to modify metadata for tracks (kde#406472)
+  * Replace homemade ScrollHelper with standard ScrollViews to hold view items (kde#417859)
+  * Add feature to show files in file manager (kde#406471)
+  * Accept files named "albumart.jpg" for album art (kde#424661)
+  * Don't allow view's loading indicator and placeholder message to overlap (kde#424918)
+  * Set StartupWMClass in .desktop file to make the app show up in GNOME properly (kde#428032)
+  * Fix "Nothing played" message when a file only with a title tag is played (kde#427289)
+  * Don't show unnecessary global shortcuts columns in keyboard shortcuts window (kde#427072)
+  * Add appropriate side margins for content in Now Playing view (kde#425834)
+  * fix open now playing (kde#425601)
+
+-------------------------------------------------------------------
 Thu Nov  5 22:45:28 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.08.3
