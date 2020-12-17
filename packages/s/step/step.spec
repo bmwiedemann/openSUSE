@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           step
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        An interactive physics simulator
 License:        GPL-2.0-or-later
@@ -87,7 +87,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %license COPYING*
 %doc AUTHORS ChangeLog README
 %doc %lang(en) %{_kf5_htmldir}/en/step/
-%config %{_kf5_configdir}/step.knsrc
+%{_kf5_knsrcfilesdir}/step.knsrc
 %dir %{_kf5_appstreamdir}
 %dir %{_kf5_configkcfgdir}
 %dir %{_kf5_kxmlguidir}/step/
