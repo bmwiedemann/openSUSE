@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Dec  5 23:18:05 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-12-apps-update
+- Changes since 20.11.90:
+  * PlatformKWinWayland: avoid recursion in readData (kde#428636)
+
+-------------------------------------------------------------------
+Fri Nov 27 15:18:16 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.90
+  * New feature release
+- Changes since 20.11.80:
+  * Support Wayland rectangular selection HiDpi (kde#409762)
+  * fix autoincrement of %d for templates with subdirs
+  * Set pixmap device pixel ratio before sending it to kimageannotator
+
+-------------------------------------------------------------------
+Sat Nov 14 00:03:20 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.80
+  * New feature release
+- Too many changes since 20.08.3, only listing bugfixes:
+  * Unhide window if it is hidden (kde#428635)
+  * Separate messages for a failed and canceled screenshot (kde#427645)
+  * Use default value for including decorations and pointer in background mode (kde#425995)
+  * Improve settings logic and layout (kde#420477)
+  * Respect settings and cli parameters (kde#425573)
+  * Add CLI options for including pointer/decorations (kde#425995)
+  * Fix wrong file name when --output option is used (kde#424380)
+- Drop upstream patch:
+  * 0001-Fix-wrong-file-name-when-output-option-is-used.patch
+
+-------------------------------------------------------------------
 Thu Nov  5 22:48:04 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.08.3

@@ -21,18 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           spectacle
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Screen Capture Program
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-#PATCH-FIX-UPSTREAM
-Patch:          0001-Fix-wrong-file-name-when-output-option-is-used.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  libqt5-qtdeclarative-private-headers-devel
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
 BuildRequires:  xcb-util-cursor-devel
 BuildRequires:  xcb-util-devel
@@ -60,8 +59,11 @@ BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5QuickWidgets)
+BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
+BuildRequires:  cmake(kColorPicker)
+BuildRequires:  cmake(kImageAnnotator)
 Recommends:     %{name}-lang
 Obsoletes:      kscreengenie < %{version}
 Provides:       kscreengenie = %{version}
@@ -106,6 +108,15 @@ screenshot capture program by KDE.
   %endif
   %suse_update_desktop_file -r org.kde.spectacle     Utility DesktopUtility
 
+%post
+%systemd_user_post
+
+%preun
+%systemd_user_preun
+
+%postun
+%systemd_user_postun
+
 %files
 %dir %{_kf5_appstreamdir}
 %dir %{_kf5_libdir}/kconf_update_bin
@@ -123,6 +134,7 @@ screenshot capture program by KDE.
 %{_kf5_sharedir}/kconf_update/spectacle_newConfig.upd
 %{_kf5_sharedir}/kglobalaccel/org.kde.spectacle.desktop
 %{_kf5_debugdir}/spectacle.categories
+%{_userunitdir}/app-org.kde.spectacle.service
 
 %files doc
 %license COPYING.DOC
