@@ -1,7 +1,7 @@
 #
 # spec file for package icingaweb2-module-incubator
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define basedir	%{_datadir}/icingaweb2
 %define module_name incubator
 Name:           icingaweb2-module-%{module_name}
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        Bleeding edge Icinga Web 2 libraries
 License:        MIT
@@ -28,6 +28,8 @@ Group:          System/Monitoring
 URL:            https://www.icinga.org
 Source0:        https://github.com/Icinga/icingaweb2-module-%{module_name}/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildArch:      noarch
+Requires:       icingaweb2-module-ipl >= 0.5.0
+Requires:       icingaweb2-module-reactbundle >= 0.8.0
 Requires:       php >= 5.6.3
 Requires:       php-ctype
 
@@ -42,7 +44,9 @@ Icinga Web 2 - ReactPHP-based 3rd party libraries
 %install
 mkdir -p %{buildroot}%{basedir}/modules/%{module_name}
 mkdir -p %{buildroot}%{basedir}/modules/%{module_name}/vendor
+mkdir -p %{buildroot}%{basedir}/modules/%{module_name}/public
 cp -prv vendor %{buildroot}%{basedir}/modules/%{module_name}
+cp -prv public %{buildroot}%{basedir}/modules/%{module_name}
 cp -pv *.md *.php *.info %{buildroot}%{basedir}/modules/%{module_name}
 
 %files
