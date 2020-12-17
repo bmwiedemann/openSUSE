@@ -1,7 +1,7 @@
 #
 # spec file for package python-altair-widgets
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+# The test suite is not packaged in the PyPI package. The tests available on
+# GitHub require pytest-ipynb which is not available on openSUSE and was
+# abandoned upstream
 %bcond_with     test
 Name:           python-altair-widgets
 Version:        0.2.2
@@ -43,10 +46,11 @@ BuildRequires:  %{python_module altair >= 2.0.0}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module ipywidgets >= 7.0.0}
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pytest-ipynb}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module vega >= 0.4.4}
 %endif
-%ifpython3
+%if "%{python_flavor}" == "python3" || "%{?python_provides}"  == "python3"
 Provides:       jupyter-altair-widgets = %{version}
 %endif
 %python_subpackages
