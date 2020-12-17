@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           ksmtp
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Job-based library to send email through an SMTP server
 License:        LGPL-2.1-or-later
@@ -85,15 +85,15 @@ to build programs that use the KSMTP library.
 %postun -n libKPimSMTP5 -p /sbin/ldconfig
 
 %files -n libKPimSMTP5
-%license COPYING.LIB
+%license LICENSES/*
 %{_kf5_libdir}/libKPimSMTP.so.*
 
 %files
-%license COPYING.LIB
+%license LICENSES/*
 %{_kf5_debugdir}/ksmtp.categories
 
 %files devel
-%license COPYING.LIB
+%license LICENSES/*
 %{_includedir}/KPim/
 %{_kf5_cmakedir}/KPimSMTP/
 %{_kf5_libdir}/libKPimSMTP.so
@@ -101,7 +101,7 @@ to build programs that use the KSMTP library.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING.LIB
+%license LICENSES/*
 %endif
 
 %changelog
