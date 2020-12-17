@@ -33,7 +33,6 @@ License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
-Source1:        baselibs.conf
 BuildRequires:  fdupes
 BuildRequires:  libQt5Bootstrap-devel-static >= %{version}
 BuildRequires:  libQt5Concurrent-devel >= %{version}
@@ -419,8 +418,8 @@ rm -f %{buildroot}%{_libqt5_libdir}/lib*.la
 mkdir -p %{buildroot}%{_bindir}
 pushd %{buildroot}%{_libqt5_bindir}
 for i in * ; do
-      ln -s %{libqt5_bindir}/$i %{buildroot}%{_bindir}/${i}-qt5
-      ln -s %{libqt5_bindir}/$i %{buildroot}%{_bindir}/${i}
+      ln -s %{_libqt5_bindir}/$i %{buildroot}%{_bindir}/${i}-qt5
+      ln -s %{_libqt5_bindir}/$i %{buildroot}%{_bindir}/${i}
 done
 popd
 %endif

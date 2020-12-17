@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 15 08:15:38 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Drop baselibs.conf, -32bit packages are not used anywhere and due
+  to system assimp not providing -32bit packages broken anyway
+- Fix links in %{_bindir}
+
+-------------------------------------------------------------------
 Fri Nov 20 12:08:42 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.15.2:
