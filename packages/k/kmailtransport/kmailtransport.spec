@@ -16,12 +16,12 @@
 #
 
 
-%define kf5_version 5.60.0
+%define kf5_version 5.75.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kmailtransport
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        KDE PIM Libraries: Mailtransport layer
 License:        LGPL-2.1-or-later
