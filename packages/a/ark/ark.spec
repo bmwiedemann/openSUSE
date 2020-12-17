@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ark
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        KDE Archiver Tool
 License:        GPL-2.0-or-later
@@ -56,7 +56,6 @@ BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(bzip2)
-Requires:       shared-mime-info
 # Recommend the most used compression programs (bnc#872010)
 Recommends:     xz
 # unrar is non-free. Avoid installing it automatically.
