@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipydatawidgets
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,18 +51,6 @@ Provides:       python-jupyter_ipydatawidgets = %{mainver}
 Obsoletes:      python-jupyter_ipydatawidgets < %{mainver}
 Recommends:     python-ipyscales >= 0.1.1
 BuildArch:      noarch
-%ifpython3
-Requires(post): python3-ipywidgets >= 7.0.0
-Requires(post): python3-notebook
-Requires(post): python3-numpy
-Requires(post): python3-six
-Requires(post): python3-traittypes >= 0.2.0
-Requires(preun): python3-ipywidgets >= 7.0.0
-Requires(preun): python3-notebook
-Requires(preun): python3-numpy
-Requires(preun): python3-six
-Requires(preun): python3-traittypes >= 0.2.0
-%endif
 %python_subpackages
 
 %description
@@ -73,6 +61,7 @@ This package provides the python interface.
 
 %package     -n jupyter-ipydatawidgets
 Summary:        Jupyter widgets to help facilitate reuse of large datasets
+Group:          Development/Languages/Python
 Requires:       jupyter-notebook
 Requires:       python3-ipydatawidgets = %{mainver}
 
@@ -84,9 +73,11 @@ This package provides the jupyter notebook extension.
 
 %package     -n jupyter-ipydatawidgets-jupyterlab
 Version:        %{labver}
+Release:        0
 Summary:        JupyterLab Widgets to help facilitate reuse of large datasets
-Requires:       jupyter-jupyterlab
+Group:          Development/Languages/Python
 Requires:       jupyter-ipydatawidgets = %{mainver}
+Requires:       jupyter-jupyterlab
 Provides:       jupyter_ipydatawidgets_jupyterlab = %{labver}
 Obsoletes:      jupyter_ipydatawidgets_jupyterlab < %{labver}
 
