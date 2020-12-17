@@ -2164,4 +2164,12 @@ http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html
 </comment>
     <requestid>853646</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>d78039490ba9ae4e629578f1ebc3b1de</srcmd5>
+    <version>3.6.12</version>
+    <time>1608220493</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>856652</requestid>
+  </revision>
 </revisionlist>
