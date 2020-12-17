@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec 16 18:11:03 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.64.2:
+  * Release v3.64.2
+  * Add support for changing environments on the "script" integration
+  * Default to the primary route in the route:get interactive choices
+  * Release v3.64.1
+  * Fix box composer.json to install dependencies on on PHP 8
+  * Fix build to include a .php8 file in symfony/polyfill-mbstring
+
+-------------------------------------------------------------------
 Tue Dec 15 03:49:04 UTC 2020 - jimmy@boombatower.com
 
 - Update to version 3.64.0:
