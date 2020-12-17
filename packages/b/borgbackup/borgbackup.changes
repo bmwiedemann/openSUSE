@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Dec 16 14:52:17 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.1.14:
+  Compatibility notes:
+  * changes return codes due to a bug fix: In case you have scripts \
+    expecting rc == 2 for a signal exit, you need to update them
+    to check for >= 128 (as documented since long).
+  Fixes:
+  * check --repair: fix potential data loss when interrupting it, #5325
+  * exit with 128 + signal number (as documented) when borg is killed by a signal, #5161
+  * fix hardlinked CACHEDIR.TAG processing, #4911
+  * create --read-special: .part files also should be regular files, #5217
+  Other changes:
+  * upgrade bundled xxhash to 0.7.4
+  * prettier error message when archive gets too big
+  * check/recreate are not "experimental" any more
+    (but still potentially dangerous)
+  * use "allow/deny list" instead of "white/black list" wording
+  * update docs
+
+-------------------------------------------------------------------
 Mon Jun  8 08:41:12 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 1.1.13:

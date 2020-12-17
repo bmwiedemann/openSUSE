@@ -38,7 +38,7 @@
 %endif
 
 Name:           borgbackup
-Version:        1.1.13
+Version:        1.1.14
 Release:        0
 Summary:        Deduplicating backup program with compression and authenticated encryption
 License:        BSD-3-Clause
