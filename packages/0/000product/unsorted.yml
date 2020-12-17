@@ -6631,7 +6631,7 @@ unsorted:
   - heapster 
   - heaptrack: [i586] 
   - heaptrack-devel 
-  - heaptrack-gui: [i586] # suggested by dvd:suggested:patterns-kde-kde_ide 
+  - heaptrack-gui: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - heaptrack-lang: [i586] 
   - hedgewars 
   - hedgewars-data 
@@ -7113,6 +7113,8 @@ unsorted:
   - itext-parent 
   - itextpdf 
   - itextpdf-javadoc 
+  - itinerary 
+  - itinerary-lang 
   - itk 
   - itpp-devel 
   - itpp-doc 
@@ -7817,9 +7819,6 @@ unsorted:
   - kdenlive-lang 
   - kdepim-addons: [i586] 
   - kdepim-addons-lang: [i586] 
-  - kdepim-apps-libs: [i586] 
-  - kdepim-apps-libs-devel 
-  - kdepim-apps-libs-lang: [i586] 
   - kdepim-runtime: [i586] 
   - kdepim-runtime-lang: [i586] 
   - kdesdk-scripts 
@@ -8165,6 +8164,8 @@ unsorted:
   - kontact-lang: [i586] 
   - kontactinterface-devel 
   - kontactinterface-lang: [i586] 
+  - kontrast 
+  - kontrast-lang 
   - kopano-archiver 
   - kopano-backup 
   - kopano-bash-completion 
@@ -8201,6 +8202,9 @@ unsorted:
   - kopete-lang: [i586] 
   - korganizer: [i586] # suggested by dvd:suggested:patterns-kde-kde 
   - korganizer-lang: [i586] 
+  - kosmindoormap 
+  - kosmindoormap-devel 
+  - kosmindoormap-lang 
   - kpackage-32bit: [x86_64] 
   - kpackage-devel 
   - kpackage-devel-32bit: [x86_64] 
@@ -8232,6 +8236,8 @@ unsorted:
   - kproperty-lang 
   - kpty-devel 
   - kpty-devel-32bit: [x86_64] 
+  - kpublictransport 
+  - kpublictransport-devel 
   - kqtquickcharts: [i586] 
   - kquickcharts: [i586] 
   - kquickcharts-devel 
@@ -8895,6 +8901,7 @@ unsorted:
   - libKF5DNSSD5-32bit: [x86_64] 
   - libKF5Declarative5-32bit: [x86_64] 
   - libKF5DocTools5-32bit: [x86_64] 
+  - libKF5Emoticons5: [i586] 
   - libKF5Emoticons5-32bit: [x86_64] 
   - libKF5EventViews5: [i586] 
   - libKF5GlobalAccel5-32bit: [x86_64] 
@@ -9000,6 +9007,10 @@ unsorted:
   - libKF5XmlRpcClient5-32bit: [x86_64] 
   - libKF5XmlRpcClient5-lang 
   - libKGantt2: [i586] 
+  - libKOSM1 
+  - libKOSMIndoorMap1 
+  - libKPimAddressbookImportExport5: [i586] 
+  - libKPimAddressbookImportExport5-devel 
   - libKPimGAPIBlogger5 
   - libKPimGAPICalendar5: [i586] 
   - libKPimGAPIContacts5: [i586] 
@@ -9015,6 +9026,7 @@ unsorted:
   - libKPimSMTP5: [i586] 
   - libKPropertyCore3-4 
   - libKPropertyWidgets3-4 
+  - libKPublicTransport1 
   - libKReport3-4 
   - libKScreenLocker5: [i586] 
   - libKWaylandServer5: [i586] 
@@ -9120,40 +9132,28 @@ unsorted:
   - libQgpsmm27 
   - libQt53DAnimation-devel 
   - libQt53DAnimation5 
-  - libQt53DAnimation5-32bit: [x86_64] 
   - libQt53DCore-devel 
   - libQt53DCore5 
-  - libQt53DCore5-32bit: [x86_64] 
   - libQt53DExtras-devel 
   - libQt53DExtras5 
-  - libQt53DExtras5-32bit: [x86_64] 
   - libQt53DInput-devel 
   - libQt53DInput5 
-  - libQt53DInput5-32bit: [x86_64] 
   - libQt53DLogic-devel 
   - libQt53DLogic5 
-  - libQt53DLogic5-32bit: [x86_64] 
   - libQt53DQuick-devel 
   - libQt53DQuick5 
-  - libQt53DQuick5-32bit: [x86_64] 
   - libQt53DQuickAnimation-devel 
   - libQt53DQuickAnimation5 
-  - libQt53DQuickAnimation5-32bit: [x86_64] 
   - libQt53DQuickExtras-devel 
   - libQt53DQuickExtras5 
-  - libQt53DQuickExtras5-32bit: [x86_64] 
   - libQt53DQuickInput-devel 
   - libQt53DQuickInput5 
-  - libQt53DQuickInput5-32bit: [x86_64] 
   - libQt53DQuickRender-devel 
   - libQt53DQuickRender5 
-  - libQt53DQuickRender5-32bit: [x86_64] 
   - libQt53DQuickScene2D-devel 
   - libQt53DQuickScene2D5 
-  - libQt53DQuickScene2D5-32bit: [x86_64] 
   - libQt53DRender-devel 
   - libQt53DRender5 
-  - libQt53DRender5-32bit: [x86_64] 
   - libQt5Bluetooth5-32bit: [x86_64] 
   - libQt5Bodymovin-devel 
   - libQt5Bodymovin-private-headers-devel 
@@ -9808,7 +9808,6 @@ unsorted:
   - libbitmask-devel 
   - libbitmask1 
   - libbitstream1: [x86_64] 
-  - libblack_hole_solver1 
   - libblacs2-mvapich2 
   - libblacs2-mvapich2-devel 
   - libblacs2-mvapich2-devel-static 
@@ -10040,7 +10039,7 @@ unsorted:
   - libcangjie-devel 
   - libcangjie-tools 
   - libcangjie2 
-  - libcantorlibs27 
+  - libcantorlibs28 
   - libcap-devel 
   - libcap-ng-devel 
   - libcap-ng-utils 
@@ -11693,8 +11692,8 @@ unsorted:
   - libjte-devel 
   - libjthread1_3_3 
   - libjxrglue0 
-  - libkColorPicker0_1_4 
-  - libkImageAnnotator0_3_2 
+  - libkColorPicker0_1_4: [i586] 
+  - libkImageAnnotator0_3_2: [i586] 
   - libkaccounts2: [i586] 
   - libkaccounts2-32bit: [x86_64] 
   - libkasten-lang: [i586] 
@@ -11808,7 +11807,7 @@ unsorted:
   - libknet1-plugins-all 
   - libkokkos3: [x86_64] 
   - libkolabxml-devel 
-  - libkolabxml1: [i586] 
+  - libkolabxml1 
   - libkomparediff2-devel 
   - libkonkretcmpi0 
   - libkpathsea6: [i586] 
@@ -13998,41 +13997,55 @@ unsorted:
   - libsundials3-openmpi1 
   - libsundials3-openmpi2 
   - libsundials3-openmpi3 
+  - libsundials3-openmpi4 
   - libsundials_arkode4 
   - libsundials_arkode4-mvapich2 
   - libsundials_arkode4-openmpi1 
   - libsundials_arkode4-openmpi2 
   - libsundials_arkode4-openmpi3 
+  - libsundials_arkode4-openmpi4 
   - libsundials_cvode5 
   - libsundials_cvode5-mvapich2 
   - libsundials_cvode5-openmpi1 
   - libsundials_cvode5-openmpi2 
   - libsundials_cvode5-openmpi3 
+  - libsundials_cvode5-openmpi4 
   - libsundials_cvodes5 
   - libsundials_cvodes5-mvapich2 
   - libsundials_cvodes5-openmpi1 
   - libsundials_cvodes5-openmpi2 
   - libsundials_cvodes5-openmpi3 
+  - libsundials_cvodes5-openmpi4 
+  - libsundials_generic5 
+  - libsundials_generic5-mvapich2 
+  - libsundials_generic5-openmpi1 
+  - libsundials_generic5-openmpi2 
+  - libsundials_generic5-openmpi3 
+  - libsundials_generic5-openmpi4 
   - libsundials_ida5 
   - libsundials_ida5-mvapich2 
   - libsundials_ida5-openmpi1 
   - libsundials_ida5-openmpi2 
   - libsundials_ida5-openmpi3 
+  - libsundials_ida5-openmpi4 
   - libsundials_idas4 
   - libsundials_idas4-mvapich2 
   - libsundials_idas4-openmpi1 
   - libsundials_idas4-openmpi2 
   - libsundials_idas4-openmpi3 
+  - libsundials_idas4-openmpi4 
   - libsundials_kinsol5 
   - libsundials_kinsol5-mvapich2 
   - libsundials_kinsol5-openmpi1 
   - libsundials_kinsol5-openmpi2 
   - libsundials_kinsol5-openmpi3 
+  - libsundials_kinsol5-openmpi4 
   - libsundials_nvec5 
   - libsundials_nvec5-mvapich2 
   - libsundials_nvec5-openmpi1 
   - libsundials_nvec5-openmpi2 
   - libsundials_nvec5-openmpi3 
+  - libsundials_nvec5-openmpi4 
   - libsuperlu-gnu-hpc 
   - libsuperlu5 
   - libsuperlu5-32bit: [x86_64] 
@@ -14571,7 +14584,7 @@ unsorted:
   - libwebrtc_audio_processing-devel-static 
   - libwebrtc_audio_processing1-32bit: [x86_64] 
   - libwebsockets-devel 
-  - libwebsockets16 
+  - libwebsockets17 
   - libwebvfx1 
   - libweston-9 
   - libweston-9-0 
@@ -14793,7 +14806,7 @@ unsorted:
   - libxcrypt-devel-static 
   - libxdg-basedir-devel 
   - libxdg-basedir1 
-  - libxerces-c-3_2: [i586] 
+  - libxerces-c-3_2 
   - libxerces-c-3_2-32bit: [x86_64] 
   - libxerces-c-devel 
   - libxfce4panel-1_0-4: [i586] 
@@ -15629,6 +15642,8 @@ unsorted:
   - mariadb-tools 
   - marisa 
   - marisa-devel 
+  - markdownpart 
+  - markdownpart-lang 
   - mate-applet-appmenu 
   - mate-applet-dock 
   - mate-applet-indicator 
@@ -26568,6 +26583,7 @@ unsorted:
   - sundials-openmpi1-devel 
   - sundials-openmpi2-devel 
   - sundials-openmpi3-devel 
+  - sundials-openmpi4-devel 
   - sunpinyin-devel 
   - sunpinyin-tools 
   - sunwait 

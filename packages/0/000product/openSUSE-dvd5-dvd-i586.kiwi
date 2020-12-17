@@ -992,6 +992,7 @@
       <repopackage name="libBasicUsageEnvironment1"/>
       <repopackage name="libbcg729-0"/>
       <repopackage name="libbind9-1600"/>
+      <repopackage name="libblack_hole_solver1"/>
       <repopackage name="libblas3"/>
       <repopackage name="libblkid1"/>
       <repopackage name="libblogger2"/>
@@ -1439,7 +1440,6 @@
       <repopackage name="libKF5DNSSD5"/>
       <repopackage name="libKF5DNSSD5-lang"/>
       <repopackage name="libKF5DocTools5"/>
-      <repopackage name="libKF5Emoticons5"/>
       <repopackage name="libKF5GlobalAccel5"/>
       <repopackage name="libKF5GlobalAccel5-lang"/>
       <repopackage name="libKF5GlobalAccelPrivate5"/>
