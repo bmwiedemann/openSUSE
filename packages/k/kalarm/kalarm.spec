@@ -16,12 +16,12 @@
 #
 
 
-%define kf5_version 5.60.0
+%define kf5_version 5.75.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kalarm
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Personal Alarm Scheduler
 License:        GPL-2.0-only
@@ -52,6 +52,7 @@ BuildRequires:  cmake(KF5Holidays)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5IdentityManagement)
+BuildRequires:  cmake(KF5IdleTime)
 BuildRequires:  cmake(KF5JobWidgets)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KDELibs4Support)
@@ -61,6 +62,7 @@ BuildRequires:  cmake(KF5MailCommon)
 BuildRequires:  cmake(KF5MailTransport)
 BuildRequires:  cmake(KF5Mime)
 BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5NotifyConfig)
 BuildRequires:  cmake(KF5PimCommon)
 BuildRequires:  cmake(KF5PimTextEdit)
 BuildRequires:  cmake(KF5Service)
@@ -105,7 +107,7 @@ Personal alarm message, command and email scheduler for KDE
 %suse_update_desktop_file org.kde.kalarm          Utility  TimeUtility
 
 %files
-%license COPYING COPYING.LIB COPYING.DOC
+%license LICENSES/*
 %doc README
 %{_kf5_debugdir}/kalarm.categories
 %{_kf5_debugdir}/kalarm.renamecategories
@@ -121,6 +123,7 @@ Personal alarm message, command and email scheduler for KDE
 %{_kf5_iconsdir}/hicolor/*/apps/kalarm.png
 %{_kf5_libdir}/libexec/kauth/kalarm_helper
 %{_kf5_kxmlguidir}/kalarm/
+%{_kf5_notifydir}/kalarm.notifyrc
 %{_kf5_sharedir}/dbus-1/system-services/org.kde.kalarm.rtcwake.service
 %{_kf5_sharedir}/kalarm/
 %{_kf5_sharedir}/kconf_update/
@@ -128,7 +131,7 @@ Personal alarm message, command and email scheduler for KDE
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
