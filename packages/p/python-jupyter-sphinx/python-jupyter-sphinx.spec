@@ -45,7 +45,7 @@ BuildRequires:  %{python_module nbconvert >= 5.5}
 BuildRequires:  %{python_module nbformat}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-%ifpython3
+%if "%{python_flavor}" == "python3" || "%{?python_provides}"  == "python3"
 Provides:       jupyter-jupyter-sphinx = %{version}
 %endif
 %ifpython2

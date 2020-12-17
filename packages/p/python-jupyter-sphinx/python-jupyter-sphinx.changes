@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 15 12:52:42 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Provide the old jupyter package name only for the primary
+  Python3 interpreter -- gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Tue Jun  9 09:15:29 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.2.4:
