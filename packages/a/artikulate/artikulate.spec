@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           artikulate
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Pronunciation Self-Teaching
 License:        LGPL-3.0-or-later AND GPL-2.0-only AND BSD-3-Clause
@@ -88,7 +88,7 @@ Improve your pronunciation by listening to native speakers.
 %{_kf5_appstreamdir}/
 %{_kf5_bindir}/artikulate
 %{_kf5_bindir}/artikulate_editor
-%config %{_kf5_configdir}/artikulate.knsrc
+%{_kf5_knsrcfilesdir}/artikulate.knsrc
 %{_kf5_configkcfgdir}/artikulate.kcfg
 %doc %lang(en) %{_kf5_htmldir}/en/artikulate/
 %{_kf5_iconsdir}/hicolor/*/*/artikulate*.*
