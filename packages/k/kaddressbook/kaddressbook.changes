@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Dec 13 14:28:55 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Drop obsolete build requirements
+
+-------------------------------------------------------------------
+Sat Dec  5 23:15:38 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-12-apps-update
+- No code change since 20.11.90
+
+-------------------------------------------------------------------
+Fri Nov 27 15:15:55 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.90
+  * New feature release
+- Changes since 20.11.80:
+  * Fix order of cmake imports
+
+-------------------------------------------------------------------
+Tue Nov 24 10:55:21 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.80
+  * New feature release
+- Too many changes to list here.
+- Drop 0001-Compile-with-recent-Qt-5.15.patch.
+
+-------------------------------------------------------------------
 Tue Nov 24 09:29:00 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix build with Qt 5.15.2:

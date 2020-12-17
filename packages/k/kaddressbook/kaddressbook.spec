@@ -16,20 +16,18 @@
 #
 
 
-%define kf5_version 5.60.0
+%define kf5_version 5.75.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kaddressbook
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Address book application to manage contacts
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Utilities
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Compile-with-recent-Qt-5.15.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  pkgconfig
@@ -41,7 +39,6 @@ BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5GrantleeTheme)
 BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5KaddressbookGrantlee)
 BuildRequires:  cmake(KF5KontactInterface)
 BuildRequires:  cmake(KF5Libkdepim)
 BuildRequires:  cmake(KF5Libkleo)
@@ -54,6 +51,7 @@ BuildRequires:  cmake(Qt5PrintSupport) >= 5.2.0
 BuildRequires:  cmake(Qt5Test) >= 5.2.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.2.0
 Requires:       kdepim-runtime
+Requires:       libKPimAddressbookImportExport5 = %{version}
 Recommends:     %{name}-doc
 Recommends:     %{name}-lang
 Provides:       kaddressbook5 = %{version}
@@ -68,6 +66,14 @@ Source2:        applications.keyring
 %description
 KAddressbook is an application by KDE to manage contacts.
 
+%package -n libKPimAddressbookImportExport5
+Summary:        Library which provides import/export functionality for KAddressbook
+Group:          System/Libraries
+Obsoletes:      kdepim-apps-libs <= 20.08.3
+
+%description -n libKPimAddressbookImportExport5
+This library provides an interface to implement import/export plugins for KAddressbook.
+
 %package doc
 Summary:        Documentation for kaddressbook
 Group:          Documentation/HTML
@@ -75,6 +81,15 @@ BuildArch:      noarch
 
 %description doc
 This package includes the user guide for KAddressbook in HTML format.
+
+%package -n libKPimAddressbookImportExport5-devel
+Summary:        Development headers for libKPimAddressbookImportExport
+Group:          Productivity/Networking/Email/Utilities
+Requires:       libKPimAddressbookImportExport5 = %{version}
+
+%description -n libKPimAddressbookImportExport5-devel
+This package includes development headers needed to develop and build import/export plugins
+for KAddressbook.
 
 %lang_package
 
@@ -95,12 +110,15 @@ This package includes the user guide for KAddressbook in HTML format.
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
+%post -n libKPimAddressbookImportExport5 -p /sbin/ldconfig
+%postun -n libKPimAddressbookImportExport5 -p /sbin/ldconfig
+
 %files doc
-%license COPYING COPYING.LIB COPYING.DOC
+%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/kaddressbook/
 
 %files
-%license COPYING COPYING.LIB COPYING.DOC
+%license LICENSES/*
 %dir %{_kf5_appstreamdir}/
 %dir %{_kf5_plugindir}/kontact5/
 %{_kf5_applicationsdir}/kaddressbook-importer.desktop
@@ -122,9 +140,24 @@ This package includes the user guide for KAddressbook in HTML format.
 %{_kf5_sharedir}/kconf_update/
 %{_kf5_sharedir}/kontact/
 
+%files -n libKPimAddressbookImportExport5
+%license LICENSES/*
+%{_kf5_libdir}/libKPimAddressbookImportExport.so.5
+%{_kf5_libdir}/libKPimAddressbookImportExport.so.5.*
+
+%files -n libKPimAddressbookImportExport5-devel
+%license LICENSES/*
+%dir %{_includedir}/KPim
+%{_includedir}/KPim/kaddressbookimportexport_version.h
+%{_includedir}/KPim/KAddressBookImportExport/
+%{_includedir}/KPim/kaddressbookimportexport/
+%{_kf5_cmakedir}/KPimAddressbookImportExport/
+%{_kf5_libdir}/libKPimAddressbookImportExport.so
+%{_kf5_mkspecsdir}/qt_KAddressbookImportExport.pri
+
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
