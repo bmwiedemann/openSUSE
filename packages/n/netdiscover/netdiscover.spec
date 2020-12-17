@@ -28,7 +28,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  dos2unix
 BuildRequires:  hwdata
-BuildRequires:  libnet-devel
+BuildRequires:  libnet-devel >= 1.1.2
 BuildRequires:  libpcap-devel
 
 %description
@@ -47,7 +47,7 @@ mode, which will scan for common local networks.
 %build
 autoreconf -fiv
 %configure
-cp %{_datadir}/hwdata/oui.txt ./
+cp %{_datadir}/hwdata/oui.txt ./oui.txt-$(date +%Y%m%d)
 sh update-oui-database.sh --no-download
 %make_build
 

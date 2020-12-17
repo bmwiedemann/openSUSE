@@ -57,4 +57,13 @@
   * Updated OUI table.</comment>
     <requestid>826270</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>9a3c9ed460b063b66683a1053a2c52b4</srcmd5>
+    <version>0.7</version>
+    <time>1608221154</time>
+    <user>dimstar_suse</user>
+    <comment>- Update minimal requirement for libnet
+- Fix usage of hwdata oui</comment>
+    <requestid>856631</requestid>
+  </revision>
 </revisionlist>

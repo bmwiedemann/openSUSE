@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 17 07:09:55 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update minimal requirement for libnet
+- Fix usage of hwdata oui
+
+-------------------------------------------------------------------
 Thu Aug 13 12:01:50 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.7:
