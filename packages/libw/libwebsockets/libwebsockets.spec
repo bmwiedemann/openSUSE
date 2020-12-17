@@ -16,9 +16,9 @@
 #
 
 
-%define sover 16
+%define sover 17
 Name:           libwebsockets
-Version:        4.0.20
+Version:        4.1.6
 Release:        0
 Summary:        A WebSockets library written in C
 # base64-decode.c and ssl-http2.c is under MIT license with FPC exception.
@@ -28,7 +28,6 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            http://libwebsockets.org
 Source:         https://github.com/warmcat/libwebsockets/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         %{name}-norpmtools.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  openssl-devel
@@ -41,7 +40,7 @@ HTTP/WebSocket servers or clients.
 
 %package -n %{name}%{sover}
 Summary:        A WebSockets library written in C
-Group:          System/Libraries
+Group:          Development/Libraries/C and C++
 
 %description -n %{name}%{sover}
 Libwebsockets covers some features for people making embedded
@@ -68,7 +67,6 @@ applications that want to make use of the WebSockets library.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %cmake \
@@ -99,6 +97,6 @@ rm -rf %{buildroot}%{_datadir}/libwebsockets-test-server/
 %{_libdir}/libwebsockets.so
 %{_libdir}/pkgconfig/libwebsockets.pc
 %dir %{_libdir}/cmake/%{name}
-%{_libdir}/cmake/%{name}/Libwebsockets*.cmake
+%{_libdir}/cmake/%{name}/*.cmake
 
 %changelog

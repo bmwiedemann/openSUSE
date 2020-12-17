@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Dec  4 21:06:07 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.6
+  - NEW: CMakeLists.txt has been refactored and modernized into
+    smaller CMakeLists.txt
+  - NEW: event lib support on Unix is now built into dynamically
+    loaded plugins and brought in at runtime, allowing all of the
+    support to be built in isolation without conflicts, and
+    separately packaged with individual dependencies.
+    See ./READMEs/event-libs.md for details and how to force the
+    old static build into lws method.
+  - NEW: Captive Portal Detection.  Lws can determine if the
+    active default route is able to connect to the internet, or
+    is in a captive portal type situation, by trying to connect
+    to a remote server that will respond in an unusual way, like
+    provide a 204.
+  - NEW: Secure streams: Support system trust store if it exists
+  - NEW: lws_struct: BLOB support
+  - NEW: lws_sul: Now provides two sorted timer domains, a
+    default one as before, and another whose scheduled events are
+    capable to wake the system from suspend
+  - NEW: System Message Distribution: lws_smd provides a very
+    lightweight way to pass short messages between subsystems both
+    in RTOS type case where the subsystems are all on the lws
+    event loop, and in the case participants are in different
+    processes, using Secure Streams proxying. Participants
+    register a bitmap of message classes they care about; if no
+    particpant cares about a particular message, it is rejected
+    at allocation time for the sender, making it cheap to provide
+    messages speculatively.
+    See lib/system/smd/README.md for full details.
+  - NEW: lws_drivers: wrappers for SDK driver abstractions (or
+    actual drivers) See lib/drivers/README.md.
+  - NEW: Security-aware JWS JWT (JSON Web Tokens) apis are
+    provided on top of the existing JOSE / JWS apis. All the
+    common algorithms are available along with some high level
+    apis like lws http cookie -> JWT struct -> lws http cookie.
+  - REMOVED: esp32-helper and friends used by esp32-factory now
+    lws_drivers exists
+  - REMOVED: generic sessions and friends now JWT is provided
+- Drop not longer needed patch:
+  * libwebsockets-norpmtools.patch
+
+-------------------------------------------------------------------
 Sat Nov 21 04:33:55 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Require openssl-devel in libwebsockets-devel
