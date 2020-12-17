@@ -750,4 +750,12 @@
   * 0001-Portaway-from-Obsolete-methods-of-QPrinter.patch</comment>
     <requestid>850474</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>d1cc0a7e90d54ae1e02a52fc8eda3e04</srcmd5>
+    <version>20.12.0</version>
+    <time>1608220561</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 20.12.0</comment>
+    <requestid>855213</requestid>
+  </revision>
 </revisionlist>

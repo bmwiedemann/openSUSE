@@ -21,15 +21,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kompare
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        File Comparator
 License:        GPL-2.0-only AND GFDL-1.2-only
 Group:          Development/Tools/Other
 URL:            https://www.kde.org/
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Portaway-from-Obsolete-methods-of-QPrinter.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
