@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kio-extras5
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Additional KIO slaves for KDE applications
 License:        GPL-2.0-or-later
@@ -62,7 +62,7 @@ BuildRequires:  cmake(Qt5DBus) >= 5.11.0
 BuildRequires:  cmake(Qt5Network) >= 5.11.0
 BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Svg) >= 5.11.0
-BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Test) >= 5.11.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(smbclient)
@@ -142,6 +142,7 @@ sed -i '/^add_subdirectory( doc )/d' CMakeLists.txt
 %{_kf5_sharedir}/remoteview/
 %{_kf5_sharedir}/solid/
 %{_kf5_debugdir}/kio-extras.categories
+%{_kf5_libexecdir}/smbnotifier
 
 %files -n libkioarchive-devel
 %{_kf5_includedir}/kio_archivebase.h

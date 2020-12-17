@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Dec  5 23:16:25 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-12-apps-update
+- No code change since 20.11.90
+
+-------------------------------------------------------------------
+Fri Nov 27 15:16:40 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.90
+  * New feature release
+- Changes since 20.11.80:
+  * Add PowerPoint slideshow mime types
+
+-------------------------------------------------------------------
+Sat Nov 14 00:01:38 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.80
+  * New feature release
+- Too many changes since 20.08.3, only listing bugfixes:
+  * [DjvuThumbnailer] Replace open coded ddjvu invocation with QProcess (kde#420074)
+  * Remove Mimetype overlay icon blending (kde#425789)
+
+-------------------------------------------------------------------
 Thu Nov  5 22:46:28 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.08.3
