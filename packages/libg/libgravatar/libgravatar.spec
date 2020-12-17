@@ -16,12 +16,12 @@
 #
 
 
-%define kf5_version 5.66.0
+%define kf5_version 5.75.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libgravatar
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Library to download and display gravatars
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -87,7 +87,7 @@ Requires:       libKF5Gravatar5 = %{version}
 The development package for the libgravatar library
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %{_kf5_cmakedir}/KF5Gravatar/
 %{_kf5_includedir}/Gravatar/
 %{_kf5_includedir}/gravatar/
@@ -96,17 +96,17 @@ The development package for the libgravatar library
 %{_kf5_mkspecsdir}/qt_Gravatar.pri
 
 %files
-%license COPYING*
+%license LICENSES/*
 %{_kf5_debugdir}/libgravatar.categories
 %{_kf5_debugdir}/libgravatar.renamecategories
 
 %files -n libKF5Gravatar5
-%license COPYING*
+%license LICENSES/*
 %{_libdir}/libKF5Gravatar.so.*
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
