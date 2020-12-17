@@ -17,7 +17,7 @@
 
 
 Name:           sipsak
-Version:        0.9.7
+Version:        0.9.8
 Release:        0
 Summary:        SIP Swiss Army Knife
 License:        GPL-2.0-only
@@ -40,7 +40,6 @@ user location test, flooding test, etc
 %setup -q
 
 %build
-export CFLAGS="%optflags -fcommon"
 %configure
 %make_build
 

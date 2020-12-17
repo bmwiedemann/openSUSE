@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  7 18:41:16 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.8
+  * Bugfix release only
+- Drop not longer needed "CFLAGS+=-fcommon"
+
+-------------------------------------------------------------------
 Sun Jun  7 19:25:18 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Set CFLAGS+=-fcommon
