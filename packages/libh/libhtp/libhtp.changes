@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  4 17:09:01 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.36
+  * fix a http pipelining issue
+
+-------------------------------------------------------------------
 Fri Oct  9 18:36:44 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.5.35
