@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Sat Dec 12 15:28:36 UTC 2020 - Milan Savić <milsav92@outlook.com>
+
+- Update to version 2.3
+
+  Improved C++ parser:
+  * types
+  * wrong operands in ast
+  * better simplification of templates
+  Improved clang import, various fixes.
+  Improved value flow analysis
+  Fixed false positives
+  Improved configuration in library files
+  * boost.cfg
+  * googletest.cfg
+  * qt.cfg
+  * windows.cfg
+  * wxwidgets.cfg
+  Added several Misra rules:
+  * 6.1
+  * 6.2
+  * 7.2
+  * 7.4
+  * 9.2
+  * 10.2
+  * 15.4
+  Added platforms:
+  * elbrus e1c+
+  * pic
+  * pic8
+  * mips
+
+- Update to version 2.2
+
+  New checks:
+  * incorrect usage of mutexes and lock guards
+  * Dereference end iterator
+  * Iterating a known empty container
+  * outOfBounds check for iterators to containers
+  Removed 'operator=' check that ensures reference to self is returned. That is not about safety.
+  Improved parser
+  * various ast fixes
+  Clang parser
+  * The Clang import feature in Cppcheck should be considered to be experimental for now. There are problems.
+  Improved bug hunting
+  * variable constraints
+  * handling of multidimension arrays
+  * function calls, execute functions that are in same TU
+  * improved handling of containers
+  * several improvements for uninitialized variables check
+  * improved analysis of for loops
+  * added a hash value for warnings that can be used for suppressions
+  Improved data flow
+  * one more heuristic for ternary operators
+  * improved data flow for containers
+  CLI:
+  * Fixed some addon execution problems when there are spaces etc
+  GUI:
+  * Fix handling of tags
+  * Exclude files
+  cppcheck-htmlreport:
+  * several result files can be combined into 1 output
+  Suppressions:
+  * comments can be added at end of suppression in suppressions file 
+
+-------------------------------------------------------------------
 Mon Jul 13 21:16:05 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 2.1

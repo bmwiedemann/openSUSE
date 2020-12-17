@@ -17,7 +17,7 @@
 
 
 Name:           cppcheck
-Version:        2.1
+Version:        2.3
 Release:        0
 Summary:        A tool for static C/C++ code analysis
 License:        GPL-3.0-or-later
@@ -33,6 +33,7 @@ BuildRequires:  xsltproc
 BuildRequires:  z3-devel
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Help)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(libpcre)
