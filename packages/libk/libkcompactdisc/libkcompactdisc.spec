@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkcompactdisc
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        CD drive library for KDE Platform
 License:        GPL-2.0-or-later
@@ -31,13 +31,12 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 BuildRequires:  alsa-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  xz
-BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  cmake(KF5Solid)
 BuildRequires:  cmake(Phonon4Qt5)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Widgets)
 %if %{with lang}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
