@@ -17,22 +17,19 @@
 
 
 %define lname libKF5CalendarSupport5
-%define kf5_version 5.60.0
+%define kf5_version 5.75.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           calendarsupport
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        KDE PIM calendaring support library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Port-away-from-deprecated-QPrinter-functions.patch
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
-BuildRequires:  kdepim-apps-libs-devel
 BuildRequires:  kf5-filesystem
 BuildRequires:  libboost_headers-devel
 BuildRequires:  cmake(KF5Akonadi)
@@ -90,7 +87,7 @@ The development package for the calendarsupport libraries
 %lang_package
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
 %cmake_kf5 -d build
@@ -112,7 +109,7 @@ The development package for the calendarsupport libraries
 %{_kf5_servicetypesdir}/calendarplugin.desktop
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %{_kf5_cmakedir}/KF5CalendarSupport/
 %{_kf5_includedir}/CalendarSupport/
 %{_kf5_includedir}/calendarsupport/
@@ -125,7 +122,7 @@ The development package for the calendarsupport libraries
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog

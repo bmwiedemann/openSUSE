@@ -464,4 +464,12 @@
   * 0001-Port-away-from-deprecated-QPrinter-functions.patch</comment>
     <requestid>850459</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>aaca8202c145b45e92275c7e22543c98</srcmd5>
+    <version>20.12.0</version>
+    <time>1608220611</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 20.12.02</comment>
+    <requestid>855574</requestid>
+  </revision>
 </revisionlist>
