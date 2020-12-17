@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 15 23:29:47 CET 2020 - tumic@cbox.cz
+
+- Update to version 7.38
+  * Maps can now be opened like data files (program parameter,
+    drag&drop, ...) and with overviews.
+  * Added support for BSB nautical charts.
+  * Added support for polyconic projections.
+
+-------------------------------------------------------------------
 Tue Nov 24 23:12:22 CET 2020 - tumic@cbox.cz
 
 - Update to version 7.37

@@ -1,3 +1,12 @@
+gpxsee (7.38) stable; urgency=low
+
+  * Maps can now be opened like data files (program parameter,
+    drag&drop, ...) and with overviews.
+  * Added support for BSB nautical charts.
+  * Added support for polyconic projections.
+
+ -- Martin Tuma <tumic@cbox.cz>  Tue, 15 Dec 2020 23:35:47 +0100
+
 gpxsee (7.37) stable; urgency=low
 
   * Added "copy coordinates to clipboard" feature.
