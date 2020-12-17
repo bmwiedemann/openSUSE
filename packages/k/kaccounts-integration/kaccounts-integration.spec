@@ -17,12 +17,12 @@
 
 
 %define kf5_version 5.60.0
-%global sover 2
+%define sover 2
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kaccounts-integration
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        KDE Accounts Providers
 License:        GPL-2.0-or-later
@@ -109,7 +109,7 @@ Facebook, Owncloud, IMAP, Jabber and others. Devel files.
 %postun -n libkaccounts%{sover} -p /sbin/ldconfig
 
 %files
-%license COPYING*
+%license LICENSES/*
 %dir %{_kf5_sharedir}/kpackage
 %dir %{_kf5_sharedir}/kpackage/kcms
 %{_kf5_sharedir}/kpackage/kcms/kcm_kaccounts/
@@ -118,19 +118,18 @@ Facebook, Owncloud, IMAP, Jabber and others. Devel files.
 %{_kf5_servicesdir}/
 
 %files -n libkaccounts%{sover}
-%license COPYING*
-%{_kf5_libdir}/libkaccounts.so.%{sover}
+%license LICENSES/*
 %{_kf5_libdir}/libkaccounts.so.*
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %{_kf5_cmakedir}/KAccounts/
 %{_kf5_libdir}/libkaccounts.so
 %{_kf5_prefix}/include/KAccounts/
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
