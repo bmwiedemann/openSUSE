@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:21:37 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Fixes for building with kiwi outside of OBS:
+  * Include ca-certificates-mozilla during bootstrap
+  * Add several packages to bootstrap to force zypper to pick the
+    right alternative
+  * Drop use of namedCollection, it's redundant anyway
+  * Drop udev from bootstrap, not needed
+
+-------------------------------------------------------------------
+Fri Dec 11 15:45:58 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Restore DHCLIENT_SET_HOSTNAME=yes from Apr 2019 as we no longer
+  have cloud-init taking care of the hostname 
+
+-------------------------------------------------------------------
 Thu Dec 10 10:16:57 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Re-enable compress=lzo for Raspberry Pi 

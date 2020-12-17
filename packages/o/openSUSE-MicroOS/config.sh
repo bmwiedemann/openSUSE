@@ -54,6 +54,11 @@ baseSetRunlevel multi-user.target
 suseImportBuildKey
 
 #======================================
+# Set hostname by DHCP
+#--------------------------------------
+baseUpdateSysConfig /etc/sysconfig/network/dhcp DHCLIENT_SET_HOSTNAME yes
+
+#======================================
 # Enable DHCP on eth0
 #--------------------------------------
 cat >/etc/sysconfig/network/ifcfg-eth0 <<EOF

@@ -554,17 +554,12 @@
     </repository>
     <packages type="image">
         <package name="live-add-yast-repos"/>
-
-        <namedCollection name="basesystem"/>
+        <!-- Apparently zypper (?) doesn't like having multiple patterns with the same name,
+             so avoid using namedCollection at least for basesystem -->
         <package name="patterns-microos-basesystem"/>
-
-        <namedCollection name="bootloader"/>
         <package name="patterns-base-bootloader"/>
-
-        <package name="kernel-default"/>
-
-        <namedCollection name="microos_defaults"/>
         <package name="patterns-microos-defaults"/>
+        <package name="kernel-default"/>
     </packages>
     <packages type="image" profiles="kvm-and-xen,kvm-and-xen_x86_64,kvm-and-xen_aarch64,VMware,MS-HyperV,VirtualBox,Pine64,RaspberryPi,RaspberryPi2,Vagrant_x86_64,Vagrant_aarch64">
         <!-- Needed for initial configuration, except on OpenStack-Cloud, where cloud-init is used -->
@@ -647,10 +642,17 @@
         <package name="kernel-firmware-all"/> <!-- Fix choice between kernel-firmware and kernel-firmware-all -->
     </packages>
     <packages type="bootstrap">
-        <package name="udev"/>
+        <!-- Avoid that zypper picks the busybox-foo variant for those, that would fail later -->
+        <package name="coreutils"/>
+        <package name="gzip"/>
+        <package name="gawk"/>
+        <!-- Avoid libressl -->
+        <package name="openssl"/>
+
         <package name="filesystem"/>
         <package name="glibc-locale-base"/>
-        <package name="ca-certificates"/>
+        <!-- So that https repos work for image package downloads -->
+        <package name="ca-certificates-mozilla"/>
         <!-- TODO: Use the proper flavors once available -->
         <package name="MicroOS-release-dvd"/>
     </packages>
