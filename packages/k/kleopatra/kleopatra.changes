@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Dec  5 23:16:33 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-12-apps-update
+- No code change since 20.11.90
+
+-------------------------------------------------------------------
+Fri Nov 27 15:16:47 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.90
+  * New feature release
+- Changes since 20.11.80:
+  * Make it compile with libgpg-error < 1.36
+- Drop upstream patch:
+  * 0001-Make-it-compile-with-libgpg-error-1.36.patch
+
+-------------------------------------------------------------------
+Mon Nov 23 16:04:03 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with older libgpg-error versions:
+  * 0001-Make-it-compile-with-libgpg-error-1.36.patch
+
+-------------------------------------------------------------------
+Sat Nov 14 00:01:45 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Thu Nov  5 22:46:35 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.08.3
