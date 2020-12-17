@@ -20,7 +20,7 @@
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 Name:           kdeconnect-kde
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Integration of Android with Linux desktops
 License:        GPL-2.0-or-later
@@ -141,9 +141,9 @@ install -D -m 0644 %{SOURCE101} \
 %dir %{_datadir}/deepin/dde-file-manager/oem-menuextensions
 %dir %{_datadir}/nautilus-python
 %dir %{_kf5_appstreamdir}
+%dir %{_kf5_sharedir}/kdeconnect
 %dir %{_prefix}/lib/firewalld
 %dir %{_prefix}/lib/firewalld/services
-%{_prefix}/lib/firewalld/services/%{name}.xml
 %{_datadir}/Thunar/sendto/
 %{_datadir}/contractor/kdeconnect.contract
 %{_datadir}/deepin/dde-file-manager/oem-menuextensions/kdeconnect-dde.desktop
@@ -169,7 +169,13 @@ install -D -m 0644 %{SOURCE101} \
 %{_kf5_servicesdir}/
 %{_kf5_servicetypesdir}/
 %{_kf5_sharedir}/dbus-1/services/org.kde.kdeconnect.service
+%{_kf5_sharedir}/kdeconnect/kdeconnect_findthisdevice_config.qml
+%{_kf5_sharedir}/kdeconnect/kdeconnect_pausemusic_config.qml
+%{_kf5_sharedir}/kdeconnect/kdeconnect_runcommand_config.qml
+%{_kf5_sharedir}/kdeconnect/kdeconnect_sendnotifications_config.qml
+%{_kf5_sharedir}/kdeconnect/kdeconnect_share_config.qml
 %{_kf5_sharedir}/plasma/
+%{_prefix}/lib/firewalld/services/%{name}.xml
 
 %if %{with lang}
 %files lang -f %{name}.lang

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Dec  5 23:16:00 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-12-apps-update
+- Changes since 20.11.90:
+  * [SMS App] Disable sending attachments until we have Android support
+  * Fix build with bluetooth enabled
+
+-------------------------------------------------------------------
+Fri Nov 27 15:16:15 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.90
+  * New feature release
+- Changes since 20.11.80:
+  * Add a verification key that's displayed when pairing
+
+-------------------------------------------------------------------
+Sat Nov 14 00:01:10 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Thu Nov  5 22:46:01 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.08.3
@@ -7,7 +33,6 @@ Thu Nov  5 22:46:01 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
   * https://kde.org/announcements/releases/2020-11-apps-update
 - Changes since 20.08.2:
   * Set window icons for GUI executables
-  * [sms] Restore compatibility with current Android release (kde#427266)
   * Work around SMS not being sent from cli
   * Update kdeconnect-cli send-sms interface. (kde#425731)
   * Fix missing kcm dependency for runcommand module
