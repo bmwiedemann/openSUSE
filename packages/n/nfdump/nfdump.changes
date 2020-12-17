@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Nov 29 11:36:41 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.22
+  * Fix nfreplay v5 time shift bug
+  * add support for >=, <= comparators.
+  * Fix yacc/bison warnings. Cleanup unused tokens
+  * Fix syntax error 'flags AS' as AS is a reserved word.
+  * Add element 139 for ICMP type/code in IPv6.
+  * Fix IPv4/IPv6 statistics representation.
+  * Cleanup nip/xip filter syntax. Add filter syntax 'nip in
+    [ <iplist>]'.
+  * Add nfversion to nfpcapd
+  * Add collected netflow/sflow version in nfdump record.
+  * Fix GuessDir bug.
+  * Re-address issue #231 - remove strict rule rfc 7011.
+
+-------------------------------------------------------------------
 Sun Aug  2 10:01:01 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.6.21
