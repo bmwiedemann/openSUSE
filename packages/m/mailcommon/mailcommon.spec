@@ -16,12 +16,12 @@
 #
 
 
-%define kf5_version 5.66.0
+%define kf5_version 5.75.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           mailcommon
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Base KDE PIM library for mail-handling applications
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -39,6 +39,7 @@ BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5ItemModels)
@@ -119,12 +120,12 @@ Requires:       cmake(KF5PimCommon)
 This package contains the development headers for the mailcommon library.
 
 %files
-%license COPYING*
+%license LICENSES/*
 %{_kf5_debugdir}/mailcommon.categories
 %{_kf5_debugdir}/mailcommon.renamecategories
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %dir %{_kf5_plugindir}/designer
 %{_kf5_includedir}/MailCommon/
 %{_kf5_includedir}/mailcommon/
@@ -135,12 +136,12 @@ This package contains the development headers for the mailcommon library.
 %{_kf5_plugindir}/designer/mailcommonwidgets.so
 
 %files -n libKF5MailCommon5
-%license COPYING*
+%license LICENSES/*
 %{_libdir}/libKF5MailCommon.so.*
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
