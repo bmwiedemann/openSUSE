@@ -16,12 +16,12 @@
 #
 
 
-%define kf5_version 5.60.0
+%define kf5_version 5.75.0
 # Latest stable Applications (e.g. 16.08 in KA, but 16.11.90 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           mbox-importer
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Tool for importing mbox archives into akonadi
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -67,13 +67,13 @@ into akonadi.
 %endif
 
 %files
-%license COPYING*
+%license LICENSES/*
 %{_kf5_applicationsdir}/org.kde.mboximporter.desktop
 %{_kf5_bindir}/mboximporter
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
