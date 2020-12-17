@@ -407,4 +407,12 @@
     <comment>KDE Applications 20.08.3 (forwarded request 846547 from luca_b)</comment>
     <requestid>846708</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>ee764b7755123be9ecc5f463bc1be3b0</srcmd5>
+    <version>20.12.0</version>
+    <time>1608220551</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 20.12.0</comment>
+    <requestid>855197</requestid>
+  </revision>
 </revisionlist>
