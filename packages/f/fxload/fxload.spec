@@ -1,7 +1,7 @@
 #
 # spec file for package fxload
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2014 B1 Systems GmbH, Vohburg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Name:           fxload
 Version:        2008_10_13
 Release:        0
 Summary:        Download Firmware into USB FX and FX2 Devices
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          System/Kernel
-Url:            http://linux-hotplug.sf.net/
+URL:            http://linux-hotplug.sf.net/
 Source0:        http://mesh.dl.sourceforge.net/sourceforge/linux-hotplug/fxload-%{version}.tar.bz2
 Source1:        %{name}.changes
 Patch0:         fxload-2002_04_11.patch
@@ -54,16 +54,16 @@ make %{?_smp_mflags} CC="gcc" CFLAGS="%{optflags} -Wall -g -DFXLOAD_VERSION=\"\\
 
 %install
 %make_install
-#UsrMerge
+%if !0%{?usrmerged}
 mkdir %{buildroot}/sbin
 ln -sf %{_sbindir}/fxload %{buildroot}/sbin
-#EndUsrMere
+%endif
 
 %files
 %defattr(-,root,root)
-#UsrMerge
+%if !0%{?usrmerged}
 /sbin/*
-#EndUsrMerge
+%endif
 %attr(755,root,root) %{_sbindir}/fxload
 %{_mandir}/man?/*
 %dir %{_datadir}/usb
