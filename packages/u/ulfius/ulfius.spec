@@ -64,6 +64,7 @@ Requires:       libmicrohttpd-devel
 Requires:       libulfius%{sover} = %{version}
 Requires:       orcania-devel
 Requires:       yder-devel
+Requires:       zlib-devel
 
 %description devel
 Development and header files for libulfius.

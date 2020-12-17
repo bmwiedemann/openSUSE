@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  8 17:58:52 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Add missing "Requires: zlib-devel" to ulfius-devel as
+  ulfius.h includes zlib.h
+
+-------------------------------------------------------------------
 Mon Dec  7 08:10:35 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.7.0
