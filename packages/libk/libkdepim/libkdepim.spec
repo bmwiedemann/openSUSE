@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           libkdepim
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Base package of kdepim
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -38,8 +38,6 @@ BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5ItemViews)
 BuildRequires:  cmake(KF5JobWidgets)
-BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Ldap)
 BuildRequires:  cmake(KF5Wallet)
 BuildRequires:  cmake(KF5WidgetsAddons)
@@ -108,7 +106,7 @@ Requires:       cmake(KF5AkonadiContact)
 The development package for the libkdepim libraries
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %{_kf5_cmakedir}/KF5Libkdepim/
 %{_kf5_cmakedir}/MailTransportDBusService/
 %{_kf5_includedir}/Libkdepim/
@@ -118,7 +116,7 @@ The development package for the libkdepim libraries
 %{_kf5_mkspecsdir}/qt_Libkdepim.pri
 
 %files
-%license COPYING*
+%license LICENSES/*
 %{_kf5_debugdir}/libkdepim.categories
 %{_kf5_debugdir}/libkdepim.renamecategories
 %{_kf5_dbusinterfacesdir}/org.kde.addressbook.service.xml
@@ -126,12 +124,12 @@ The development package for the libkdepim libraries
 %{_kf5_plugindir}/designer/
 
 %files -n libKF5Libkdepim5
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libKF5Libkdepim.so.*
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
