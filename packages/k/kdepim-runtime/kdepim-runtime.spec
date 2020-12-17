@@ -16,12 +16,12 @@
 #
 
 
-%define kf5_version 5.63.0
+%define kf5_version 5.75.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdepim-runtime
-Version:        20.08.3
+Version:        20.12.0
 Release:        0
 Summary:        Akonadi resources for PIM applications
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -31,6 +31,7 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
+BuildRequires:  libboost_atomic-devel
 BuildRequires:  libkolabxml-devel >= 1.1
 BuildRequires:  libxslt-devel
 BuildRequires:  shared-mime-info
@@ -115,11 +116,10 @@ use PIM applications.
   rm -rvf %{buildroot}%{_kf5_libdir}/*.so
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING*
+%license LICENSES/*
 %{_kf5_debugdir}/kdepim-runtime.categories
 %{_kf5_debugdir}/kdepim-runtime.renamecategories
 %doc %lang(en) %{_kf5_htmldir}/en/kioslave5/
@@ -142,7 +142,7 @@ use PIM applications.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
