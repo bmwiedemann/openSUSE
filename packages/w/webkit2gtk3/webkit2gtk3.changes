@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 15 14:06:42 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.30.4:
+  + Fix text data sent with WebSockets when using libsoup < 2.68.
+  + Fix the rendering on Raspberry Pi 3 using the proprietary video
+    driver.
+  + Fix clipping of descedant layers of a mask layer.
+  + Fix the build with ICU 68.1.
+- Drop upstream merged patch:
+  + 0001-ICU-68.1-no-longer-exposes-FALSE-and-TRUE-macros-by-.patch
+
+-------------------------------------------------------------------
 Thu Dec  3 22:23:20 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Add old-wayland-scanner.patch for 15.0/15.1: support older

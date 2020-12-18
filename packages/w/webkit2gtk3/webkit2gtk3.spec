@@ -31,7 +31,7 @@
 %define _gold_linker 0
 %endif
 Name:           webkit2gtk3
-Version:        2.30.3
+Version:        2.30.4
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        LGPL-2.0-or-later AND BSD-3-Clause
@@ -43,8 +43,6 @@ Source98:       baselibs.conf
 Source99:       webkit2gtk3.keyring
 # PATCH-FIX-OPENSUSE no-forced-sse.patch jengelh@iani.de -- cure execution of illegal instruction in i586 firefox.
 Patch0:         no-forced-sse.patch
-# PATCH-FIX-UPSTREAM 0001-ICU-68.1-no-longer-exposes-FALSE-and-TRUE-macros-by-.patch dimstar@opensuse.org -- ICU 68.1 no longer exposes FALSE and TRUE macros by default
-Patch1:         http://git.yoctoproject.org/cgit/cgit.cgi/poky/plain/meta/recipes-sato/webkit/webkitgtk/0001-ICU-68.1-no-longer-exposes-FALSE-and-TRUE-macros-by-.patch
 # Below patches are for 15.0/15.1 only
 # PATCH-FIX-OPENSUSE webkit-process.patch boo#1159329 mgorse@suse.com -- use single web process for evolution and geary.
 Patch100:       webkit-process.patch
@@ -277,7 +275,6 @@ A small test browswer from webkit, useful for testing features.
 %prep
 %setup -n webkitgtk-%{version}
 %patch0 -p1
-%patch1 -p1
 %if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150200
 %patch100 -p1
 %patch101 -p1
