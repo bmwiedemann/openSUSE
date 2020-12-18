@@ -1,7 +1,7 @@
 #
 # spec file for package libsmraw
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 Name:           libsmraw
 %define lname	libsmraw1
-%define timestamp 20181227
+%define timestamp 20201210
 Version:        0~%timestamp
 Release:        0
 Summary:        Library and tools to access the (split) RAW image format
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
-Url:            https://github.com/libyal/libsmraw/wiki
+URL:            https://github.com/libyal/libsmraw/wiki
 Source:         https://github.com/libyal/libsmraw/releases/download/%timestamp/%name-alpha-%timestamp.tar.gz
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(fuse) >= 2.6
