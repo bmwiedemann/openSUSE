@@ -469,7 +469,11 @@ chmod 755 %winedir/my-find-requires.sh
 %endif
 %endif
 %ifnarch %arm aarch64
+%if 0%{?suse_version} > 1500
 %{_libdir}/wine/*.tlb
+%else
+%{_libdir}/wine/*.tlb.so
+%endif
 %endif
 %dir %{_libdir}/wine
 %dir %{_libdir}/wine/fakedlls
