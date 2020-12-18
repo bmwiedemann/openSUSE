@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 19 19:18:40 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Upgrade to version 1.0 20 years birthday edition
+  + new major feature: the addition of the Activity Settings menu 
+    with Dataset selection for more than 50 activities.
+  + 4 new activities:
+    - Analog Electricity activity
+    - Learn digits and two subactivities to learn additions and subtractions.
+    - Baby keyboard
+    - Gravity
+
+-------------------------------------------------------------------
 Sat Jun 27 14:07:48 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Upgrade to version 0.97.1

@@ -18,7 +18,7 @@
 
 
 Name:           gcompris-qt
-Version:        0.97.1
+Version:        1.0
 Release:        0
 Summary:        Multiactivity educational software for children aged 2–10 (Qt version)
 License:        GPL-3.0-or-later
@@ -36,29 +36,29 @@ BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
 BuildRequires:  qml-box2d
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.6.0
+BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.7.0
 # We don't want the Administrative documentation
 # BuildRequires:  kdoctools-devel
-BuildRequires:  pkgconfig(Qt5Core) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5Multimedia) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5Network) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5OpenGL) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5PrintSupport) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5Quick) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5Script) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5Sensors) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5Svg) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5Test) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5Xml) >= 5.6.0
-BuildRequires:  pkgconfig(Qt5XmlPatterns) >= 5.6.0
+BuildRequires:  pkgconfig(Qt5Core) >= 5.7.0
+BuildRequires:  pkgconfig(Qt5Multimedia) >= 5.7.0
+BuildRequires:  pkgconfig(Qt5Network) >= 5.7.0
+BuildRequires:  pkgconfig(Qt5OpenGL) >= 5.7.0
+BuildRequires:  pkgconfig(Qt5PrintSupport) >= 5.7.0
+BuildRequires:  pkgconfig(Qt5Quick) >= 5.7.0
+BuildRequires:  pkgconfig(Qt5Script) >= 5.7.0
+BuildRequires:  pkgconfig(Qt5Sensors) >= 5.7.0
+BuildRequires:  pkgconfig(Qt5Svg) >= 5.7.0
+BuildRequires:  pkgconfig(Qt5Test) >= 5.7.0
+BuildRequires:  pkgconfig(Qt5Widgets) >= 5.7.0
+BuildRequires:  pkgconfig(Qt5Xml) >= 5.7.0
+BuildRequires:  pkgconfig(Qt5XmlPatterns) >= 5.7.0
 BuildRequires:  pkgconfig(openssl)
 # Runtime requirements, it doesn't start without them (boo#1011125)
 Requires:       %{name}-activities = %{version}
-Requires:       libQt5Multimedia5 >= 5.6.0
-Requires:       libQt5Svg5 >= 5.6.0
-Requires:       libqt5-qtgraphicaleffects >= 5.6.0
-Requires:       libqt5-qtquickcontrols >= 5.6.0
+Requires:       libQt5Multimedia5 >= 5.7.0
+Requires:       libQt5Svg5 >= 5.7.0
+Requires:       libqt5-qtgraphicaleffects >= 5.7.0
+Requires:       libqt5-qtquickcontrols >= 5.7.0
 Requires:       qml-box2d
 Recommends:     %{name}-lang = %{version}
 Recommends:     %{name}-voices = %{version}
@@ -131,7 +131,7 @@ install -m 644 images/sc-apps-gcompris-qt.svg %{buildroot}/%{_datadir}/icons/hic
 
 %files
 %license COPYING
-%doc README.rst
+%doc README.md
 %{_bindir}/%{name}
 %{_datadir}/icons/hicolor/256x256/
 %{_datadir}/icons/hicolor/256x256/apps
@@ -142,7 +142,7 @@ install -m 644 images/sc-apps-gcompris-qt.svg %{buildroot}/%{_datadir}/icons/hic
 
 %files activities
 %license COPYING
-%doc README.rst
+%doc README.md
 #Activities
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/rcc
@@ -150,7 +150,7 @@ install -m 644 images/sc-apps-gcompris-qt.svg %{buildroot}/%{_datadir}/icons/hic
 
 %files lang
 %license COPYING
-%doc README.rst
+%doc README.md
 %dir %{_datadir}/%{name}/translations
 %{_datadir}/%{name}/translations/*.qm
 

@@ -133,4 +133,19 @@
     <comment></comment>
     <requestid>817431</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0f9721f1987d82e401f8810363432b38</srcmd5>
+    <version>1.0</version>
+    <time>1608317902</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 1.0 20 years birthday edition
+  + new major feature: the addition of the Activity Settings menu 
+    with Dataset selection for more than 50 activities.
+  + 4 new activities:
+    - Analog Electricity activity
+    - Learn digits and two subactivities to learn additions and subtractions.
+    - Baby keyboard
+    - Gravity (forwarded request 849562 from bruno_friedmann)</comment>
+    <requestid>849966</requestid>
+  </revision>
 </revisionlist>
