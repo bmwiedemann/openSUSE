@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Dec 10 08:03:55 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 2.3.0
+  * No changelog provided by upstream
+- Update patch to make scidavis build on openSUSE:
+  * 0001-Adapt-scidavis-for-openSUSE.patch
+
+- Update to 2.1.0
+  * Qt4 support was dropped
+
+- Update to 1.26
+  * Added simplified and traditional Chinese translations, courtesy of Anbang Li and Wen Li
+  * Updated Czech translation from Pavel Fric
+  * some bugs were fixed
+
+-------------------------------------------------------------------
 Tue Jan 28 21:55:24 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use python3 Qt5 bindings instead of python2.

@@ -18,20 +18,25 @@
 
 
 Name:           scidavis
-Version:        1.25
+Version:        2.3.0
 Release:        0
 Summary:        An application for Scientific Data Analysis and Visualization
 License:        GPL-2.0-only AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            http://scidavis.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/project/scidavis/SciDAVis/%{version}/%{name}-%{version}.tar.gz
+# Source0:        http://downloads.sourceforge.net/project/scidavis/SciDAVis/%%{version}/%%{name}-%%{version}.tar.gz
+Source0:        https://github.com/highperformancecoder/scidavis/archive/2.3.0.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        scidavis-rpmlintrc
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Adapt-scidavis-for-openSUSE.patch
+BuildRequires:  glu-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  liborigin-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python3-devel
 BuildRequires:  python3-qt5-devel
+BuildRequires:  python3-sip4
+BuildRequires:  python3-sip4-devel
 BuildRequires:  qwt-devel
 BuildRequires:  qwtplot3d-devel
 BuildRequires:  zlib-devel
@@ -43,7 +48,6 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(muparser)
-BuildRequires:  glu-devel
 Recommends:     %{name}-lang = %{version}
 
 %description
