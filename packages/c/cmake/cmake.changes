@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 15 15:58:39 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 5556.patch: export: Do not fail generation for separate
+  namelink only case. Fixes regression, blocking other packages
+  from build,
+
+-------------------------------------------------------------------
 Tue Nov 24 23:13:21 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cmake 3.19.1:
@@ -12,7 +19,7 @@ Thu Nov 19 12:51:09 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 - cmake 3.19.0:
   * cmake(1) and cmake-gui(1) now recognize CMakePresets.json and
     CMakeUserPresets.json files
-  * support for ISPC 
+  * support for ISPC
   * exctend CUDA language support for Clang
   * extend cmake-file-ap "codemodel"
   * cli --install supports --default-directory-permissions

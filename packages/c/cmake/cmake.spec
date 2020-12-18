@@ -55,6 +55,8 @@ Patch0:         cmake-fix-ruby-test.patch
 # Search for python interpreters from newest to oldest rather then picking up /usr/bin/python as first choice
 Patch1:         feature-suse-python-interp-search-order.patch
 Patch2:         cmake-fix-png-include-dir.patch
+# PATCH-FIX-UPSTREAM 5556.patch dimstar@opensuse.org -- export: Do not fail generation for separate namelink only case
+Patch3:         https://gitlab.kitware.com/cmake/cmake/-/merge_requests/5556.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
