@@ -18,7 +18,7 @@
 
 Name:           libbfio
 %define lname	libbfio1
-%define timestamp 20200409
+%define timestamp 20201127
 Version:        0~%timestamp
 Release:        0
 Summary:        Library to provide basic file input/output abstraction
