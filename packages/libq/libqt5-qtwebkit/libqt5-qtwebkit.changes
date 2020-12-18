@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 14 16:33:45 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add icu-68.patch: fix build with ICU 68
+
+-------------------------------------------------------------------
 Thu Sep 24 08:33:23 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Add upstream patch qtwebkit-5.212.0_pre20200309-bison-3.7.patch
