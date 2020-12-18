@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 16 03:08:54 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.30
+   see /usr/share/doc/packages/perl-DateTime-Locale/Changes
+
+  1.30     2020-12-15
+  - The previous release included some locale data for locales that had been
+    deleted from CLDR 38.0.0.
+  1.29     2020-12-14
+  - Rebuilt all locale data with the data from CLDR 38.0.0 and glibc 2.32.
+
+-------------------------------------------------------------------
 Sat Aug 29 03:10:10 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.28
