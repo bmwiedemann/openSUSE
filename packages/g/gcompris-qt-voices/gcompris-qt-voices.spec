@@ -17,17 +17,17 @@
 
 
 Name:           gcompris-qt-voices
-Version:        0~20206270
+Version:        1.0~20201120
 Release:        0
 Summary:        Voice files for gcompris-qt
 License:        GPL-2.0-or-later AND GPL-3.0-or-later AND CC-BY-SA-1.0+ AND GFDL-1.1-or-later AND SUSE-Public-Domain AND SUSE-Free-Art-1.3
 Group:          Amusements/Teaching/Other
-URL:            http://gcompris.net
+URL:            https://gcompris.net
 Source:         gcompris-qt-voices.tar.xz
 Source2:        fetch_voices.sh
 Source3:        LICENSE
-Requires:       gcompris-qt = 0.97.1
-Provides:       gcompris-voices = 0.97.1
+Requires:       gcompris-qt = 1.0
+Provides:       gcompris-voices = 1.0
 Provides:       locale(gcompris:en)
 BuildArch:      noarch
 
