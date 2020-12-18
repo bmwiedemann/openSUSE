@@ -1,5 +1,5 @@
 #
-# spec file for package kubernetes1.19
+# spec file for package kubernetes1.20
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -169,6 +169,7 @@ Group:          System/Management
 Requires:       kubernetes%{baseversion}-client
 Provides:       kubernetes-client-common = %{version}
 Conflicts:      kubernetes-client-common
+Obsoletes:      kubernetes%{baseversionminus1}-client-common
 Recommends:     bash-completion
 
 %description client-common

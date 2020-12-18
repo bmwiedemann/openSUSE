@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 16 10:20:21 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Add obsoletes to -client-common to facilitate smooth upgrades from older versions 
+
+-------------------------------------------------------------------
 Wed Dec 09 11:49:56 UTC 2020 - rbrown@suse.com
 
 - Rebase opensuse-version-checks.patch
