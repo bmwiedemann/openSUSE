@@ -18,7 +18,7 @@
 
 Name:           libclocale
 %define lname	libclocale1
-%define timestamp 20180721
+%define timestamp 20200913
 Version:        0~%timestamp
 Release:        0
 Summary:        Library for cross-platform C locale functions
