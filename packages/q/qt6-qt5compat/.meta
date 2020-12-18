@@ -1,0 +1,8 @@
+<package name="qt6-qt5compat" project="openSUSE:Factory">
+  <title>Qt 6 Qt5 Compat</title>
+  <description>The Qt 6 Compat library to help porting Qt 5 code
+
+</description>
+  <devel project="KDE:Qt:6.0" package="qt6-qt5compat"/>
+  <url>https://www.qt.io</url>
+</package>
