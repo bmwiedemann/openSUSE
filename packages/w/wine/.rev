@@ -3788,4 +3788,14 @@
     <comment>- Fix build for Leap. (forwarded request 856715 from Maliku)</comment>
     <requestid>856717</requestid>
   </revision>
+  <revision rev="326" vrev="1">
+    <srcmd5>4fcb21350c77eeb10e9bfc8f8c82f54c</srcmd5>
+    <version>6.0~rc3</version>
+    <time>1608542624</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 6.0rc3 development release
+  - Bug fixes only, we are in code freeze.
+- update staging to 6.0rc3 release</comment>
+    <requestid>857001</requestid>
+  </revision>
 </revisionlist>

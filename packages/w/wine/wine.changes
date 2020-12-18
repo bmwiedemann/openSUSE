@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 19 08:36:48 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 6.0rc3 development release
+  - Bug fixes only, we are in code freeze.
+- update staging to 6.0rc3 release
+
+-------------------------------------------------------------------
 Thu Dec 17 01:56:06 UTC 2020 - Cameron Rapp <camspam@redhyena.net>
 
 - Fix build for Leap.
