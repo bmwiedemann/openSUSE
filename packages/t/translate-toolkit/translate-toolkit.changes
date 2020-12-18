@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 15 10:11:00 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Only the primary Python 3 flavor shall provide unflavored
+  capability translate-toolkit. gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Sun Dec  6 15:12:39 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 3.2.0

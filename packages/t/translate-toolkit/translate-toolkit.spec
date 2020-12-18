@@ -92,8 +92,10 @@ Recommends:     python-phply >= 1.2.5
 Recommends:     python-pyparsing >= 2.4.7
 Recommends:     python-ruamel.yaml >= 0.16.10
 Recommends:     python-vobject >= 0.9.6.1
+%if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
 Provides:       translate-toolkit = %{version}-%{release}
 Obsoletes:      translate-toolkit < %{version}-%{release}
+%endif
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module aeidon >= 1.7.0}
