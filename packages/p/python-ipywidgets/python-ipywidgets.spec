@@ -53,7 +53,7 @@ BuildRequires:  %{python_module recommonmark}
 BuildRequires:  %{python_module traitlets >= 4.3.1}
 # /SECTION
 Recommends:     jupyter-widgetsnbextension >= 3.5.0
-%ifpython3
+%if "%{python_flavor}" == "python3" || "%{?python_provides}"  == "python3"
 Provides:       jupyter-ipywidgets = %{version}
 %endif
 %python_subpackages

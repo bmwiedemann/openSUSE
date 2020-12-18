@@ -35,4 +35,12 @@
 - Disable python2 build temporarily to get everything working.</comment>
     <requestid>789223</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>52dd49b2ddb7da641b0be9f267c68484</srcmd5>
+    <version>7.5.1</version>
+    <time>1608317534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856333</requestid>
+  </revision>
 </revisionlist>

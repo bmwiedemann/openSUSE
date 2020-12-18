@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 15 12:52:41 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Provide the old jupyter package name only for the primary
+  Python3 interpreter -- gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Sat Mar 28 07:37:07 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Drop left over python-mock dep that is not present on
