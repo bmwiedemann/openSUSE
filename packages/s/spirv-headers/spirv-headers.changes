@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 25 17:08:48 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to 1.5.4.g8 / 1.5.4.raytracing (104ecc35)
+  * Added SPV_KHR_fragment_shading_rate
+  * Add SPV_EXT_shader_image_int64
+  * Raytracing and Rayquery updates for final
+
+-------------------------------------------------------------------
 Mon Oct  5 17:57:34 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to 1.5.3.g22 / 1.5.3.reservations1 (3fdabd0d)

@@ -167,4 +167,12 @@
     <comment>- Update to 1.5.3.g22 / 1.5.3.reservations1 (3fdabd0d)</comment>
     <requestid>840050</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7e1fd96c5f144e0537697de0d5390487</srcmd5>
+    <version>1.5.4.g8</version>
+    <time>1608317526</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.4.g8 / 1.5.4.raytracing (104ecc35)</comment>
+    <requestid>856064</requestid>
+  </revision>
 </revisionlist>

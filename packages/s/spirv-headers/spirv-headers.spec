@@ -17,7 +17,7 @@
 
 
 Name:           spirv-headers
-Version:        1.5.3.g22
+Version:        1.5.4.g8
 Release:        0
 Summary:        Machine-readable files from the SPIR-V registry
 License:        MIT
