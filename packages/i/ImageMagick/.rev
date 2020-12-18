@@ -2852,4 +2852,23 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * correct rotation parameter for SVG transform.</comment>
     <requestid>852887</requestid>
   </revision>
+  <revision rev="220" vrev="1">
+    <srcmd5>98a64411378ab989e0ddfa8814258bde</srcmd5>
+    <version>7.0.10.49</version>
+    <time>1608317805</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.10.49
+  * correct previous patch to read planar RGB TIFF images.
+  * Repair unit test failures (reference
+    https://github.com/ImageMagick/ImageMagick/issues/2959).
+  * support YAML image format.
+  * use generic TIFF read method for LZW-compressed strips (reference
+    https://github.com/ImageMagick/ImageMagick/discussions/2935).
+  * possible TIFF related-heap buffer overflow (alert &amp; POC by Hardik Shah).
+  * set default system font in policy.xml configuration file.
+  * support portable float map format 16-bit half.
+- modified patches
+  % ImageMagick-configuration-SUSE.patch (refreshed)</comment>
+    <requestid>855962</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec 15 09:27:11 UTC 2020 - pgajdos@suse.com
+
+- version update to 7.0.10.49
+  * correct previous patch to read planar RGB TIFF images.
+  * Repair unit test failures (reference
+    https://github.com/ImageMagick/ImageMagick/issues/2959).
+  * support YAML image format.
+  * use generic TIFF read method for LZW-compressed strips (reference
+    https://github.com/ImageMagick/ImageMagick/discussions/2935).
+  * possible TIFF related-heap buffer overflow (alert & POC by Hardik Shah).
+  * set default system font in policy.xml configuration file.
+  * support portable float map format 16-bit half.
+- modified patches
+  % ImageMagick-configuration-SUSE.patch (refreshed)
+
+-------------------------------------------------------------------
 Thu Dec  3 11:16:30 UTC 2020 - pgajdos@suse.com
 
 - version update to 7.0.10.45
