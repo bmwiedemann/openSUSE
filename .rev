@@ -122,4 +122,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>855939</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>5e79816044ffcbfe5e074cab7690eb45</srcmd5>
+    <version>0.6.1</version>
+    <time>1608317987</time>
+    <user>dimstar_suse</user>
+    <comment>- add 0001-lift-requests-version-requirement.patch</comment>
+    <requestid>856840</requestid>
+  </revision>
 </revisionlist>

@@ -26,6 +26,7 @@ License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://git.kernel.org/pub/scm/utils/b4/b4.git
 Source0:        %{name}-%{version}.tar.xz
+Patch0:         0001-lift-requests-version-requirement.patch
 BuildArch:      noarch
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
