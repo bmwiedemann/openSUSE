@@ -58,7 +58,6 @@ individual NUMA policy in applications.
 %patch2 -p1
 
 %build
-%define _lto_cflags %{nil}
 %configure \
   --disable-static
 make %{?_smp_mflags} CFLAGS="%{optflags}" V=1

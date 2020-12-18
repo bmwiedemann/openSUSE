@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 15 11:17:35 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Enable LTO (boo#1133098) as it works now.
+
+-------------------------------------------------------------------
 Sat Oct  3 12:11:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.0.14:

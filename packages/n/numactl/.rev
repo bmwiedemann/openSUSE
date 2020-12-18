@@ -537,4 +537,12 @@
   * use symvers attribute for symbol versioning</comment>
     <requestid>839315</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>0810ed18716e6638cf9f6f1de5dd0214</srcmd5>
+    <version>2.0.14</version>
+    <time>1608317539</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856423</requestid>
+  </revision>
 </revisionlist>
