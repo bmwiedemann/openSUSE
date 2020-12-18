@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Dec 18 10:01:53 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Upgrade to version 2.0.6
+
+  * Add <error> element to XML output
+
+  * Fix the extraneous padding of HTTP responses in XML
+  * Update the HTTP request to HTTP/1.1
+  * More robust checking the HTTP response is valid
+  * Display "No response" when no HTTP response is returned
+
+  * Remove the broken HTTP request scanning option (--http)
+
+  * Fix --targets not working properly
+
+  * Flag certificates in red if CN is the same as issuer
+
+-------------------------------------------------------------------
 Mon Sep 28 10:16:55 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Upgrade to version 2.0.1
