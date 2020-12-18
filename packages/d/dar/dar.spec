@@ -18,7 +18,7 @@
 
 %define sover   6000
 Name:           dar
-Version:        2.6.12
+Version:        2.6.13
 Release:        0
 Summary:        Backup and Restore Application
 License:        SUSE-GPL-2.0+-with-openssl-exception
@@ -28,6 +28,7 @@ Source1:        http://dar.linux.free.fr/sign/v%{version}/%{name}-%{version}.tar
 Source2:        %{name}.keyring
 Source3:        %{name}.changes
 BuildRequires:  automake
+BuildRequires:  curl-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-tools
@@ -35,11 +36,12 @@ BuildRequires:  groff
 BuildRequires:  libattr-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libgpg-error-devel
-BuildRequires:  libgpgme-devel
+BuildRequires:  librsync-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(ext2fs)
+BuildRequires:  pkgconfig(gpgme)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(lzo2)
 BuildRequires:  pkgconfig(openssl)

@@ -336,4 +336,30 @@ The developers of dar included a special exception to link against openSSL (forw
     <comment></comment>
     <requestid>835088</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>f95679f4a2ccbf23d2e631f313e19d97</srcmd5>
+    <version>2.6.13</version>
+    <time>1608317982</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable curl and rsync support
+
+- update to 2.6.13: 
+  - fixed compilation warning in testing routine (outside libdar and dar)
+  - due to change in autoconf, the --sysconfdir path (which defaults to
+    ${prefix}/etc) was read as an empty string, leading dar to look for
+    darrc system file at the root of the filesystem (/darrc)
+  - fixed bug that should occur in extremely rare conditions (it has been
+    discover during 2.7.0 validation process): compression must be used,
+    no ciphering, no hashing, file changed at backup time or had a poor
+    compression ratio, was not saved at slice boundary, the previous
+    entry had an EA saved but no FSA or an unchanged FSA. In such
+    conditions are all met, dar tries to resave the file in place, but
+    partially or totally overwites the EAs of the previous entry leading
+    to archive testing to fail for these EA (though the archive could be
+    finished without error).
+  - fixed bug met when case insensitive mask is requested (-an option)
+    and locale of file to restore or backup is not the one the dar binary
+    is run with.</comment>
+    <requestid>856829</requestid>
+  </revision>
 </revisionlist>
