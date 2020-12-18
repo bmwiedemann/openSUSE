@@ -1710,4 +1710,12 @@
     <comment>Fix for bsc#1179236 and boo#1178141</comment>
     <requestid>851950</requestid>
   </revision>
+  <revision rev="217" vrev="3">
+    <srcmd5>9c99cfc54b37dd6b683f01d16c4e5305</srcmd5>
+    <version>3.2.0</version>
+    <time>1608317555</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>856508</requestid>
+  </revision>
 </revisionlist>

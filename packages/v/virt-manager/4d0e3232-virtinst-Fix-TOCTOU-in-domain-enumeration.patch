@@ -1,0 +1,36 @@
+Subject: virtinst: Fix TOCTOU in domain enumeration
+From: Martin Pitt martin@piware.de Tue Nov 24 14:24:06 2020 +0100
+Date: Tue Dec 1 13:56:30 2020 -0500:
+Git: 4d0e323227f18e58283c45be4d240b506faacb22
+
+Similar to commit 49a01b5482, _fetch_all_domains_raw() has a race
+condition where a domain may disappear (from parallel libvirt
+operations) in between enumerating and inspecting the objects.
+
+Ignore these missing domains instead of crashing.
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1901081
+
+diff --git a/virtinst/connection.py b/virtinst/connection.py
+index fec273b7..06bc60ad 100644
+--- a/virtinst/connection.py
++++ b/virtinst/connection.py
+@@ -182,8 +182,16 @@ class VirtinstConnection(object):
+     def _fetch_all_domains_raw(self):
+         dummy1, dummy2, ret = pollhelpers.fetch_vms(
+             self, {}, lambda obj, ignore: obj)
+-        return [Guest(weakref.proxy(self), parsexml=obj.XMLDesc(0))
+-                for obj in ret]
++        domains = []
++        for obj in ret:
++            # TOCTOU race: a domain may go away in between enumeration and inspection
++            try:
++                xml = obj.XMLDesc(0)
++            except libvirt.libvirtError as e:  # pragma: no cover
++                log.debug("Fetching domain XML failed: %s", e)
++                continue
++            domains.append(Guest(weakref.proxy(self), parsexml=xml))
++        return domains
+ 
+     def _build_pool_raw(self, poolobj):
+         return StoragePool(weakref.proxy(self),

@@ -32,6 +32,8 @@ Source1:        virt-install.rb
 Source2:        virt-install.desktop
 Source3:        virt-manager-supportconfig
 # Upstream Patches
+Patch1:         e7222b50-addstorage-Dont-pass-None-to-widget.set_active.patch
+Patch2:         4d0e3232-virtinst-Fix-TOCTOU-in-domain-enumeration.patch
 # SUSE Only
 Patch70:        virtman-desktop.patch
 Patch71:        virtman-kvm.patch
@@ -157,6 +159,8 @@ machine).
 %prep
 %setup -q
 # Upstream Patches
+%patch1 -p1
+%patch2 -p1
 # SUSE Only
 %patch70 -p1
 %patch71 -p1
