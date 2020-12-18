@@ -1,7 +1,7 @@
 #
 # spec file for package OpenLP
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,11 +21,10 @@ Version:        2.4.6
 Release:        0
 Summary:        Open source Church presentation and lyrics projection application
 License:        GPL-2.0-only
-Url:            http://openlp.org
+URL:            https://openlp.org
 Source0:        https://get.openlp.org/%{version}/%{name}-%{version}.tar.gz
 Source1:        OpenLP-rpmlintrc
 Patch0:         suse_corrections.patch
-
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  libqt5-linguist
@@ -40,14 +39,12 @@ Requires:       python3-alembic
 Requires:       python3-beautifulsoup4
 Requires:       python3-chardet
 Requires:       python3-lxml
-Requires:       python3-nose
 Requires:       python3-pyenchant
 Requires:       python3-qt5
 Requires:       python3-xdg
-Recommends:     libreoffice-pyuno
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(post): shared-mime-info
 Requires(postun): shared-mime-info
+Recommends:     libreoffice-pyuno
 BuildArch:      noarch
 
 %description
@@ -104,8 +101,8 @@ update-mime-database %{_datadir}/mime > /dev/null 2>&1 ||:
 update-desktop-database > /dev/null 2>&1 ||:
 
 %files
-%defattr(-,root,root)
-%doc copyright.txt LICENSE
+%license LICENSE
+%doc copyright.txt
 %{_bindir}/openlp
 %{_datadir}/mime/packages/openlp.xml
 %{_datadir}/applications/openlp.desktop

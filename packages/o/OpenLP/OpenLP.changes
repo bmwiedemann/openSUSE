@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 21:10:16 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- nose dependency was actually not needed at all
+
+-------------------------------------------------------------------
 Thu Oct 17 12:29:41 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Remove obsolete Groups tag (fate#326485)
