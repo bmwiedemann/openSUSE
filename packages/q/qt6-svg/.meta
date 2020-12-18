@@ -1,0 +1,9 @@
+<package name="qt6-svg" project="openSUSE:Factory">
+  <title>Qt 6 SVG Library</title>
+  <description>The Qt SVG module provides functionality for displaying SVG images
+as a widget, and to create SVG files using drawing commands.
+
+</description>
+  <devel project="KDE:Qt:6.0" package="qt6-svg"/>
+  <url>https://www.qt.io</url>
+</package>
