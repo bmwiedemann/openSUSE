@@ -33,7 +33,8 @@ Fri Nov 27 15:59:09 UTC 2020 - Markéta Machová <mmachova@suse.com>
 -------------------------------------------------------------------
 Wed Nov 25 17:16:15 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
-- Change setuptools and pip version numbers according to new wheels
+- Change setuptools and pip version numbers according to new
+  wheels (bsc#1179756).
 - Add ignore_pip_deprec_warn.patch to switch of persistently
   failing test.
 

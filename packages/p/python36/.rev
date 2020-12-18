@@ -2172,4 +2172,728 @@ http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>856652</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>b6310f6d27c409e0a50f4f74ceafd0d8</srcmd5>
+    <version>3.6.12</version>
+    <time>1608317801</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust sphinx-update-removed-function.patch
+- (bsc#1179630) Update sphinx-update-removed-function.patch to
+  work with all versions of Sphinx (not binding the Python
+  documentation build to the latest verison of Sphinx). Updated
+  version mentioned on gh#python/cpython#13236.
+- Add CVE-2020-27619-no-eval-http-content.patch fixing
+  CVE-2020-27619 (bsc#1178009), where Lib/test/multibytecodec_support
+  calls eval() on content retrieved via HTTP.
+- Add patch sphinx-update-removed-function.patch to no longer call
+  a now removed function (gh#python/cpython#13236). As
+  a consequence, no longer pin Sphinx version.
+- Pin Sphinx version to fix doc subpackage
+- Change setuptools and pip version numbers according to new
+  wheels (bsc#1179756).
+- Add ignore_pip_deprec_warn.patch to switch of persistently
+  failing test.
+- Replace bundled wheels for pip and setuptools with the updated ones
+  (bsc#1176262 CVE-2019-20916).
+- Handful of changes to make python36 compatible with SLE15 and SLE12
+  (jsc#ECO-2799, jsc#SLE-13738)
+- Rebase bpo23395-PyErr_SetInterrupt-signal.patch
+- Fix build with RPM 4.16: error: bare words are no longer
+  supported, please use &quot;...&quot;:  x86 == ppc.
+- Fix installing .desktop file
+- Buildrequire timezone only for general flavor. It's used in this
+  flavor for the test suite.
+- Add faulthandler_stack_overflow_on_GCC10.patch to make build
+  working even with GCC10 (bpo#38965).
+- Just cleanup and reordering items to synchronize with python38
+- Format with spec-cleaner
+- riscv64-support.patch: bpo-33377: add triplets for mips-r6 and riscv
+  (#6655)
+- riscv64-ctypes.patch: bpo-35847: RISC-V needs CTYPES_PASS_BY_REF_HACK
+  (GH-11694)
+- Update list of tests to exclude under qemu linux-user
+- Update the python keyring
+- Correct libpython name
+- Drop patches which are not mentioned in spec:
+  * CVE-2019-5010-null-defer-x509-cert-DOS.patch
+  * F00102-lib64.patch
+  * F00251-change-user-install-location.patch
+  * OBS_dev-shm.patch
+  * SUSE-FEDORA-multilib.patch
+  * bpo-31046_ensurepip_honours_prefix.patch
+  * bpo34022-stop_hash-based_invalidation_w_SOURCE_DATE_EPOCH.patch
+  * bpo36302-sort-module-sources.patch
+  * bpo40784-Fix-sqlite3-deterministic-test.patch
+  * bsc1167501-invalid-alignment.patch
+  * python3-imp-returntype.patch
+- Working around missing python-packaging dependency in
+  python-Sphinx (bsc#1174571) is not necessary anymore.
+- Update to 3.6.12 (bsc#1179193)
+  * Ensure python3.dll is loaded from correct locations when Python is embedded
+  * The __hash__() methods of ipaddress.IPv4Interface and ipaddress.IPv6Interface 
+    incorrectly generated constant hash values of 32 and 128 respectively. This 
+    resulted in always causing hash collisions. The fix uses hash() to generate 
+    hash values for the tuple of (address, mask length, network address).
+  * Prevent http header injection by rejecting control characters in 
+    http.client.putrequest(…).
+  * Unpickling invalid NEWOBJ_EX opcode with the C implementation raises now 
+    UnpicklingError instead of crashing.
+  * Avoid infinite loop when reading specially crafted TAR files using the tarfile 
+    module
+- Drop merged fixtures:
+  * CVE-2020-14422-ipaddress-hash-collision.patch
+  * CVE-2019-20907_tarfile-inf-loop.patch
+  * recursion.tar
+- This release also fixes CVE-2020-26116 (bsc#1177211) and CVE-2019-20907 (bsc#1174091).
+- Add CVE-2019-20907_tarfile-inf-loop.patch fixing bsc#1174091
+  (CVE-2019-20907, bpo#39017) avoiding possible infinite loop
+  in specifically crafted tarball.
+  Add recursion.tar as a testing tarball for the patch.
+- Make library names internally consistent
+- Disable profile optimalizations as they deadlock in test_faulthandler
+- Disable lto as it causes mess and works with 3.7 onwards only
+- Sync the test disablements from the python3 in sle15
+- Update to 3.6.11:
+  - bpo-39073: Disallow CR or LF in email.headerregistry. Address
+    arguments to guard against header injection attacks.
+  - bpo-38576 (bsc#1155094): Disallow control characters in
+    hostnames in http.client, addressing CVE-2019-18348. Such
+    potentially malicious header injection URLs now cause
+    a InvalidURL to be raised.
+  - bpo-39503: CVE-2020-8492: The AbstractBasicAuthHandler class
+    of the urllib.request module uses an inefficient regular
+    expression which can be exploited by an attacker to cause
+    a denial of service. Fix the regex to prevent the
+    catastrophic backtracking. Vulnerability reported by Ben
+    Caller and Matt Schwager.
+  - bpo-39401: Avoid unsafe load of
+    api-ms-win-core-path-l1-1-0.dll at startup on Windows 7.
+- Remove merged patch CVE-2020-8492-urllib-ReDoS.patch
+- Fix minor issues found in the staging.
+- Do not set ourselves as a primary interpreter
+- Add CVE-2020-14422-ipaddress-hash-collision.patch fixing
+  CVE-2020-14422 (bsc#1173274, bpo#41004), where hash collisions
+  in IPv4Interface and IPv6Interface could lead to DOS.
+- Change name of idle3 icons to idle3.png
+  to avoid collision with Python 2 version (bsc#1165894).
+- Add CVE-2019-9674-zip-bomb.patch to improve documentation
+  warning about dangers of zip-bombs and other security problems
+  with zipfile library. (bsc#1162825 CVE-2019-9674)
+- Add CVE-2020-8492-urllib-ReDoS.patch fixing the security bug
+  &quot;Python urrlib allowed an HTTP server to conduct Regular
+  Expression Denial of Service (ReDoS)&quot; (bsc#1162367)
+- Add Requires: libpython%{so_version} == %{version}-%{release}
+  to python3-base to keep both packages always synchronized
+  (bsc#1162224).
+- Reame idle icons to idle3 in order to not conflict with python2
+  variant of the package bsc#1165894
+  * renamed the icons
+  * renamed icon load in desktop file
+- Add pep538_coerce_legacy_c_locale.patch to coerce locale to
+  C.UTF-8 always (bsc#1162423).
+- Update to 3.6.10 (still in line with jsc#SLE-9426,
+  jsc#SLE-9427, bsc#1159035):
+  - Security:
+    - bpo-38945: Newline characters have been escaped when
+      performing uu encoding to prevent them from overflowing
+      into to content section of the encoded file. This prevents
+      malicious or accidental modification of data during the
+      decoding process.
+    - bpo-37228: Due to significant security concerns, the
+      reuse_address parameter of
+      asyncio.loop.create_datagram_endpoint() is no longer
+      supported. This is because of the behavior of SO_REUSEADDR
+      in UDP. For more details, see the documentation for
+      loop.create_datagram_endpoint(). (Contributed by Kyle
+      Stanley, Antoine Pitrou, and Yury Selivanov in bpo-37228.)
+    - bpo-38804: Fixes a ReDoS vulnerability in http.cookiejar.
+      Patch by Ben Caller.
+    - bpo-38243: Escape the server title of
+      xmlrpc.server.DocXMLRPCServer when rendering the document
+      page as HTML. (Contributed by Dong-hee Na in bpo-38243.)
+    - bpo-38174: Update vendorized expat library version to
+      2.2.8, which resolves CVE-2019-15903.
+    - bpo-37461: Fix an infinite loop when parsing specially
+      crafted email headers. Patch by Abhilash Raj.
+    - bpo-34155: Fix parsing of invalid email addresses with more
+      than one @ (e.g. a@b@c.com.) to not return the part before
+      2nd @ as valid email address. Patch by maxking &amp; jpic.
+  - Library:
+    - bpo-38216: Allow the rare code that wants to send invalid
+      http requests from the http.client library a way to do so.
+      The fixes for bpo-30458 led to breakage for some projects
+      that were relying on this ability to test their own
+      behavior in the face of bad requests.
+    - bpo-36564: Fix infinite loop in email header folding logic
+      that would be triggered when an email policy’s
+      max_line_length is not long enough to include the required
+      markup and any values in the message. Patch by Paul Ganssle
+- Remove patches included in the upstream tarball:
+  - CVE-2019-16935-xmlrpc-doc-server_title.patch (and also
+    bpo37614-race_test_docxmlrpc_srv_setup.patch, which was
+    resolving bsc#1174701).
+  - CVE-2019-16056-email-parse-addr.patch
+- Move idle subpackage build from python3-base to python3 (bsc#1159622).
+  appstream-glib required for packaging introduces considerable
+  extra dependencies and a build loop via rust/librsvg.
+- Correct installation of idle IDE icons:
+  + idle.png is not the target directory
+  + non-GNOME-specific icons belong into icons/hicolor
+- Add required Name key to idle3 desktop file
+- Unify all Python 3.6* SLE packages into one (jsc#SLE-9426,
+  jsc#SLE-9427, bsc#1159035)
+  - Patches which were already included upstream:
+    - CVE-2018-1061-DOS-via-regexp-difflib.patch
+    - CVE-2018-14647_XML_SetHashSalt-in_elementtree.patch
+- Add CVE-2019-16935-xmlrpc-doc-server_title.patch fixing
+  bsc#1153238 (aka CVE-2019-16935) fixing a reflected XSS in
+  python/Lib/DocXMLRPCServer.py
+- Add bpo-36576-skip_tests_for_OpenSSL-111.patch (originally from
+  bpo#36576) skipping tests failing with OpenSSL 1.1.1. Fixes
+  bsc#1149792
+- Add bpo36263-Fix_hashlib_scrypt.patch which works around
+  bsc#1151490
+- Add CVE-2019-16056-email-parse-addr.patch fixing the email
+  module wrongly parses email addresses [bsc#1149955,
+  bnc#1149955, CVE-2019-16056]
+- jsc#PM-1350 bsc#1149121 Update python3 to the last version of
+  the 3.6 line. This is just a bugfix release with no changes in
+  functionality.
+- The following patches were included in the upstream release as
+  so they can be removed in the package:
+  - CVE-2018-20852-cookie-domain-check.patch
+  - CVE-2019-5010-null-defer-x509-cert-DOS.patch
+  - CVE-2019-10160-netloc-port-regression.patch
+  - CVE-2019-9636-urlsplit-NFKC-norm.patch
+  - CVE-2019-9947-no-ctrl-char-http.patch
+- Patch bpo23395-PyErr_SetInterrupt-signal.patch has been
+  reapplied on the upstream base without changing any
+  functionality.
+- Add patch aarch64-prolong-timeout.patch to fix failing
+  test_utime_current_old test.
+- FAKE RECORD FROM SLE-12 CHANNEL Apply
+  &quot;CVE-2018-1000802-shutil_use_subprocess_no_spawn.patch&quot; which
+  converts shutil._call_external_zip to use subprocess rather
+  than distutils.spawn. [bsc#1109663, CVE-2018-1000802]
+- FAKE RECORD FROM SLE-12 CHANNEL bsc#1109847: add
+  CVE-2018-14647_XML_SetHashSalt-in_elementtree.patch fixing bpo#34623.
+- boo#1141853 (CVE-2018-20852) add
+  CVE-2018-20852-cookie-domain-check.patch fixing
+  http.cookiejar.DefaultPolicy.domain_return_ok which did not
+  correctly validate the domain: it could be tricked into sending
+  cookies to the wrong server.
+- bsc#1138459: add CVE-2019-10160-netloc-port-regression.patch
+  which fixes regression introduced by the previous patch.
+  (CVE-2019-10160)
+  Upstream gh#python/cpython#13812
+- FAKE RECORD FROM SLE-12 CHANNEL bsc#1137942: Avoid duplicate
+  files with python3* packages (https://fate.suse.com/327309)
+- bsc#1094814: Add bpo23395-PyErr_SetInterrupt-signal.patch to
+  handle situation when the SIGINT signal is ignored or not handled
+- Update to 3.6.8:
+  - bugfixes only
+  - removed patches (subsumed in the upstream tarball):
+    - CVE-2018-20406-pickle_LONG_BINPUT.patch
+  - refreshed patches:
+    - CVE-2019-5010-null-defer-x509-cert-DOS.patch
+    - CVE-2019-9636-urlsplit-NFKC-norm.patch
+    - Python-3.0b1-record-rpm.patch
+    - python-3.3.0b1-fix_date_time_compiler.patch
+    - python-3.3.0b1-test-posix_fadvise.patch
+    - python-3.3.3-skip-distutils-test_sysconfig_module.patch
+    - python-3.6.0-multilib-new.patch
+    - python3-sorted_tar.patch
+    - subprocess-raise-timeout.patch
+  - switch off LTO and PGO optimization (bsc#1133452)
+- bsc#1130840 (CVE-2019-9947): add CVE-2019-9947-no-ctrl-char-http.patch
+  Address the issue by disallowing URL paths with embedded
+  whitespace or control characters through into the underlying
+  http client request. Such potentially malicious header
+  injection URLs now cause a ValueError to be raised.
+- bsc#1129346: add CVE-2019-9636-urlsplit-NFKC-norm.patch
+  Characters in the netloc attribute that decompose under NFKC
+  normalization (as used by the IDNA encoding) into any of ``/``,
+  ``?``, ``#``, ``@``, or ``:`` will raise a ValueError. If the
+  URL is decomposed before parsing, or is not a Unicode string,
+  no error will be raised. (CVE-2019-9636)
+  Upstream gh#python/cpython#12224
+- bsc#1120644 add CVE-2018-20406-pickle_LONG_BINPUT.patch fixing bpo#34656
+  Modules/_pickle.c in Python before 3.7.1 has an integer overflow via
+  a large LONG_BINPUT value that is mishandled during a &quot;resize to twice
+  the size&quot; attempt. This issue might cause memory exhaustion, but is
+  only relevant if the pickle format is used for serializing tens or
+  hundreds of gigabytes of data.
+- bsc#1122191: add CVE-2019-5010-null-defer-x509-cert-DOS.patch
+  fixing bpo-35746.
+  An exploitable denial-of-service vulnerability exists in the
+  X509 certificate parser of Python.org Python 2.7.11 / 3.7.2.
+  A specially crafted X509 certificate can cause a NULL pointer
+  dereference, resulting in a denial of service. An attacker can
+  initiate or accept TLS connections using crafted certificates
+  to trigger this vulnerability.
+- Add -fwrapv to OPTS, which is default for python3 anyway
+  See for example https://github.com/zopefoundation/persistent/issues/86
+  for bugs which are caused by avoiding it. (bsc#1107030)
+- Apply &quot;CVE-2018-1061-DOS-via-regexp-difflib.patch&quot; to prevent
+  low-grade poplib REDOS (CVE-2018-1060) and to prevent difflib REDOS
+  (CVE-2018-1061). Prior to this patch mail server's timestamp was
+  susceptible to catastrophic backtracking on long evil response from
+  the server. Also, it was susceptible to catastrophic backtracking,
+  which was a potential DOS vector.
+  [bsc#1088004 and bsc#1088009, CVE-2018-1061 and CVE-2018-1060]
+- As we run in main python package do not generate the pre_checkin
+  from both now
+- Move the tests from base to generic package wrt bsc#1088573
+  * We still fail the whole distro if python3 is not build
+  * The other archs than x86_64 took couple of hours to unblock
+    build of other software, this way we work around the issue
+- Some tests are still run in -base for the LTO tweaking, but at
+  least it is not run twice
+-
+- update to 3.6.5
+  * bugfix release
+  * see Misc/NEWS for details
+- drop ctypes-pass-by-value.patch
+- drop fix-localeconv-encoding-for-LC_NUMERIC.patch
+- refresh python-3.6.0-multilib-new.patch
+- Apply &quot;python-3.6-CVE-2017-18207.patch&quot; to add a check to
+  Lib/wave.py that verifies that at least one channel is provided.
+  Prior to this check, attackers could cause a denial of service
+  (divide-by-zero error and application crash) via a crafted wav
+  format audio file. [bsc#1083507, CVE-2017-18207]
+------------------------------------------------------------------
+- Created %so_major and %so_minor macros
+- Put Tools/gdb/libpython.py script into proper place and ship it with devel
+  subpackage.
+- ctypes-pass-by-value.patch: Fix pass by value for structs on aarch64
+- Add python3-sorted_tar.patch (boo#1081750, bsc#1086001)
+- Add patch to fix glibc 2.27 fail bsc#1079761:
+  * fix-localeconv-encoding-for-LC_NUMERIC.patch
+- move XML modules and python3-xml provide to python3-base
+  (fixes bsc#1077230)
+- move ensurepip to base
+- Add skip_random_failing_tests.patch only for PowerPC
+- update to 3.6.4
+  * bugfix release, over a hundred bugs fixed
+  * see Misc/NEWS for details
+- drop upstreamed python3-ncurses-6.0-accessors.patch
+- drop PYTHONSTARTUP hooks that cause spurious startup errors
+  * fixes bsc#1070738
+  * the relevant feature (REPL history) is now built into Python itself
+- Install 2to3-%{python_version} executable (override defattr of
+  the -tools package). 2to3 (unversioned) is a symlink and does not
+  carry permissions (bsc#1070853).
+- move 2to3 to python3-tools package
+- update to 3.6.3
+  * bugfix release, over a hundred bugs fixed
+  * see Misc/NEWS for details
+- drop upstreamed 0001-3.6-bpo-30714-ALPN-changes-for-OpenSSL-1.1.0f-3093.patch
+- drop python-2.7-libffi-aarch64.patch: this patches the intree
+  copy of libffi which is unused/deleted in the line afterwards
+- fix build against system libffi: include flags weren't set
+  so it actually used the in-tree libffi headers.
+- Fix test broken with OpenSSL 1.1 (bsc#1042670)
+  * add 0001-3.6-bpo-30714-ALPN-changes-for-OpenSSL-1.1.0f-3093.patch
+- fix missing %{?armsuffix}
+- distutils-reproducible-compile.patch: ensure distutils order files
+  before compiling, which works around bsc#1049186
+- Add libnsl-devel build requires for glibc obsoleting libnsl
+-
+- update to 3.6.2
+  * bugfix release, over a hundred bugs fixed
+  * see Misc/NEWS for details
+- drop upstreamed test-socket-aead-kernel49.patch
+- add Provides: python3-typing (fixes bsc#1050653)
+- drop duplicate Provides: python3
+- Add missing link to python library in config dir (bsc#1040164)
+- update to 3.6.1
+  * bugfix release, over a hundred bugs fixed
+  * never add import location's parent directory to sys.path
+  * switch to git for version control, build changes related to that
+  * fix &quot;failed to get random numbers&quot; on old kernels (bsc#1029902)
+  * several crashes and memory leaks corrected
+  * f-string are no longer accepted as docstrings
+- prevent regenerating AST at build-time more robustly
+- add &quot;--without profileopt&quot; and &quot;--without testsuite&quot; options to python3-base
+  to allow short circuiting when working on the package
+- FAKE RECORD FROM SLE-12 CHANNEL update to 3.4.6 (bsc#1027282):
+  * fixed potential crash in PyUnicode_AsDecodedObject() in debug build
+  * fixed possible DoS and arbitrary execution in gettext plurals
+  * fix possible use of uninitialized memory in operator.methodcaller
+  * fix possible Py_DECREF on unowned object in _sre
+  * fix possible integer overflow in _csv module
+  * prevent HTTPoxy attack (CVE-2016-1000110)
+  * fix selectors incorrectly retaining invalid fds
+- drop upstreamed python-3.4-CVE-2016-1000110-fix.patch
+- move _elementtree to python3.rpm to match its pyexpat dependency
+  (bsc#1029377)
+- Add 0001-allow-for-reproducible-builds-of-python-packages.patch
+  upstream https://github.com/python/cpython/pull/296 
+- reenable test_socket with AEAD patch (test-socket-aead-kernel49.patch)
+- reintroduce %py3_soflags macro (and better named %cpython3_soabi equivalent)
+- update to 3.6.0
+  * PEP 498 Formated string literals
+  * PEP 515 Underscores in numeric literals
+  * PEP 526 Syntax for variable annotations
+  * PEP 525 Asynchronous generators
+  * PEP 530 Asynchronous comprehensions
+  * PEP 506 New &quot;secrets&quot; module for safe key generation
+  * less memory consumed by dicts
+  * dtrace and systemtap support
+  * improved asyncio module
+  * better defaults for ssl
+  * new hashing algorithms in hashlib
+  * bytecode format changed to allow more optimizations
+  * &quot;async&quot; and &quot;await&quot; are on track to be reserved words
+  * StopIteration from generators is deprecated
+  * support for openssl &lt; 1.0.2 is deprecated
+  * os.urandom now blocks when getrandom() blocks
+  * huge number of new features, bugfixes and optimizations
+  * see https://docs.python.org/3.6/whatsnew/3.6.html for details
+- rework multilib patch: drop Python-3.5.0-multilib.patch, implement
+  upstreamable python-3.6.0-multilib-new.patch
+- refresh python-3.3.0b1-localpath.patch, subprocess-raise-timeout.patch
+- drop upstreamed Python-3.5.1-fix_lru_cache_copying.patch
+- finally drop python-2.6b1-canonicalize2.patch that was not applied in source
+  and only kept around in case we needed it in the future. (which we don't, as it seems)
+- update import_failed map and baselibs
+- build ctypes against system libffi
+  (buildrequire libffi-devel in python3-base)
+- add new key to keyring (signed by keys already in keyring)
+- introduced common configure section between python3 and python3-base
+- moved pyconfig.h and Makefile to devel subpackage as distutils no longer
+  need it at runtime
+- added python-rpm-macros dependency, regenerated macros file, drop macros.python3.py
+  because it is not used now
+- improve summaries and descriptions (fixes bsc#917607)
+- enabled Link-Time Optimization, see what happens
+- including skipped_tests.py in pre_checkin.sh run
+- run specs through spec-cleaner, rearrange sections
+- FAKE RECORD FROM SLE-12 CHANNEL apply fix for CVE-2016-1000110
+  - CGIHandler: sets environmental variable based on user
+    supplied Proxy request header:
+    python-3.4-CVE-2016-1000110-fix.patch (fixes bsc#989523,
+    CVE-2016-1000110)
+- refresh python3-urllib-prefer-lowercase-proxies.patch
+- FAKE RECORD FROM SLE-12 CHANNEL update to 3.4.5
+  check: https://docs.python.org/3.4/whatsnew/changelog.html
+  (fixes bsc#984751, CVE-2016-0772)
+  (fixes bsc#985177, CVE-2016-5636)
+  (fixes bsc#985348, CVE-2016-5699)
+- drop upstreamed werror-declaration-after-statement.patch
+- FAKE RECORD FROM SLE-12 CHANNEL Due to being fixed upstream
+  (differently), removed outdated patch
+  CVE-2014-4650-CGIHTTPServer-traversal.patch (bsc#983582)
+- move _hashlib and _ssl modules and tests to python3-base
+- recommend python3
+- Add  Python-3.5.1-fix_lru_cache_copying.patch
+  Fix copying the lru_cache() wrapper object.
+  Fixes deep-copying lru_cache regression, which worked on 
+  previous versions of python but fails on python 3.5.
+  This fixes a bunch of packages in devel:languages:python3.
+  See: https://bugs.python.org/issue25447
+- update to 3.5.1
+  * bugfix-only release, dozens of bugs fixed
+- Drop upstreamed Python-3.5.0-_Py_atomic_xxx-symbols.patch
+- &quot;Python3&quot; to &quot;Python 3&quot; in summary
+  * This seems cleaner and fixes and rpmlint warning
+- FAKE RECORD FROM SLE-12 CHANNEL Issue #21121: Don't force 3rd
+  party C extensions to be built with -Werror=declaration-after-statement.
+  (werror-declaration-after-statement.patch, bsc#951166)
+- Add Python-3.5.0-_Py_atomic_xxx-symbols.patch
+  This fixes a build error for many packages that use the Python,
+  C-API.
+  This patch is already accepted upstream and is slated to appear in
+  python 3.5.1.
+- update to 3.5.0
+  * coroutines with async/await syntax
+  * matrix multiplication operator `@`
+  * unpacking generalizations
+  * new modules `typing` and `zipapp`
+  * type annotations
+  * .pyo files replaced by custom suffixes for optimization levels in __pycache__
+  * support for memory BIO in ssl module
+  * performance improvements in several modules
+  * and many more
+- removals and behavior changes
+  * deprecated `__version__` is removed
+  * support for .pyo files was removed
+  * system calls are auto-retried on EINTR
+  * bare generator expressions in function calls now cause SyntaxError
+    (change &quot;f(x for x in i)&quot; to &quot;f((x for x in i))&quot; to fix)
+  * removed undocumented `format` member of private `PyMemoryViewObject` struct
+  * renamed `PyMemAllocator` to `PyMemAllocatorEx`
+- redefine %dynlib macro to reflect that modules now have arch+os as part of name
+- module `time` is now built-in
+- dropped upstreamed patches:
+  python-3.4.1-fix-faulthandler.patch
+  python-3.4.3-test-conditional-ssl.patch
+  python-fix-short-dh.patch (also dropped dh2048.pem required for this patch)
+- updated patch Python-3.3.0b2-multilib.patch to Python-3.5.0-multilib.patch
+- python-ncurses-6.0-accessors.patch taken from python 2 to fix build failure
+  with new gcc + ncurses
+- Add python3-ncurses-6.0-accessors.patch: Fix build with
+  NCurses 6.0 and OPAQUE_WINDOW set to 1.
+- improve import_failed hook to do the right thing when invoking
+  missing modules with &quot;python3 -m modulename&quot; (boo#942751)
+- Build with --enable-loadable-sqlite-extensions to make it works
+  as geospatial database.
+- dh2048.pem: added generated 2048 dh parameter set to fix
+  ssl test (bsc#935856)
+- python-fix-short-dh.patch: replace the 512 bits dh parameter set
+  by 2048 bits to fix build with new openssl 1.0.2c (bsc#935856)
+- ctypes-libffi-aarch64.patch: remove upstreamed patch
+- python-2.7-libffi-aarch64.patch: Fix argument passing in libffi for
+  aarch64
+- python-3.4.3-test-conditional-ssl.patch - restore tests failing because
+  test_urllib was unconditionally importing ssl (without really needing it)
+- restore functionality of multilib patch
+- drop libffi-ppc64le.diff because upstream completely changed everything
+  yet again (sorry ppc64 folks :| )
+- Update to version 3.4.3
+- Drop upstreamed CVE-2014-4650-CGIHTTPServer-traversal.patch
+  (bpo#21766)
+- Add python-3.4.1-fix-faulthandler.patch, upstream patch for bogus
+  faulthandler which fails with GCC 5.
+- asyncio has been merged in python3 main package; provide and
+  obsolete it
+- Remove obsolete AUTHORS section
+- Remove redundant %clean section
+- add %python3_version rpm macro for Fedora compatibility
+- add missing argument in import_failed, rename Novell Bugzilla
+  to SUSE Bugzilla
+- Rename rpmlintrc to %{name}-rpmlintrc.
+  Follow the packaging guidelines.
+- CVE-2014-4650-CGIHTTPServer-traversal.patch: CGIHTTPServer file
+  disclosure and directory traversal through URL-encoded characters
+  (CVE-2014-4650, bnc#885882)
+- drop python-3.4.1-SUSE-ensurepip.patch for compatibility reasons,
+  reinstate bundled copies of pip and setuptools
+  (fixes bnc#885662)
+- add more files as sources to silence the validator
+- update to 3.4.1
+    * bugfix-only release, over 300 bugs fixed
+- drop upstreamed python-3.4.0rc2-sqlite-3.8.4-tests.patch
+- drop upstreamed CVE-2014-2667-mkdir.patch
+- include Python release manager keyring and signature file
+  for the source archive (thus renumbering of source files)
+  (see https://www.python.org/download/#openpgp-public-keys )
+- move ensurepip to python3, because it transitively requires ssl
+- CVE-2014-2667-mkdir.patch: race condition with reseting umask
+  in os.makedirs
+  (CVE-2014-2667, bnc#871152)
+- updated multilib patch to include ~/.local/lib64 (bnc#637176)
+- raise timeout value for test_subprocess to 10s (might fix
+  intermittent build failures in OBS)
+- remove blacklisting of test_posix on aarch64: qemu bug is fixed 
+- update to 3.4.0 final
+- drop upstreamed python-3.4rc2-importlib.patch
+- Only build with profile-opt if profiling is enabled
+- Update test exclusion lists:
+  * test_ctypes no longer fails on arm
+  * test_io no longer fails on ppc*
+  * test_multiprocessing has been split in multiple tests
+  * test_posix and test_signal fail due to qemu bugs
+- Fix build with SQLite 3.8.4 [bnc#867887], fixing SQLite tests,
+  adding python-2.7.6-sqlite-3.8.4-tests.patch
+- update to 3.4.0 rc2
+   * pre-release bugfixes
+   * improvements to asyncio library
+- drop upstreamed tracemalloc_gcov.patch
+- python-3.4rc2-importlib.patch fixes backwards-incompatibility
+  in the reworked importlib module that blocks build of vim
+- initial commit of 3.4.0 beta 3
+    * new stdlib modules: pathlib, enum, statistics, tracemalloc
+    * asynchronous IO with new asyncio module
+    * introspection data for builtins
+    * subprocesses no longer inherit open file descriptors
+    * standardized metadata for packages
+    * internal hashing changed to SipHash
+    * new pickle protocol
+    * improved handling of codecs
+    * TLS 1.2 support
+    * major speed improvements for internal unicode handling
+    * many bugfixes and optimizations
+- see porting guide at:
+  http://docs.python.org/3.4/whatsnew/3.4.html#porting-to-python-3-4
+- moved several modules to -testsuite subpackage
+- updated list of binary extensions, refreshed patches
+- tracemalloc_gcov.patch fixes profile-based optimization build
+- updated packages and pre_checkin.sh to use ~-version notation
+  for prereleases
+- fix-shebangs part of build process moved to common %prep
+- drop python-3.3.2-no-REUSEPORT.patch (upstreamed)
+- update baselibs for new soname
+- TODOs:
+    * require python-pip, make ensurepip work with zypper
+- add ppc64le (ELFv2) support for libffi copy for ctypes module
+- Adjust Python-3.3.0b2-multilib.patch for ppc64le (make sys.lib be
+  &quot;lib64&quot;).
+- added patches:
+  * libffi-ppc64le.diff
+- add ppc64le rules
+- Add python-3.3.3-skip-distutils-test_sysconfig_module.patch:
+  + Disable global and distutils sysconfig comparison test, we deviate
+    from the default depending on optflags
+- update to 3.3.3
+  * bugfix-only release
+  * many SSL-related fixes
+  * upstream fix for CVE-2013-4238 (bnc#834601)
+  * upstream fixes for CVE-2013-1752
+- move example module xxlimited to python3-testsuite
+- remove --with-wide-unicode config option, it is now the default
+  (and only) choice
+- don't touch anything between make and makeinstall
+- drop python-3.2b2-buildtime-generate.patch - the issue was caused
+  by touching things between make and makeinstall
+- link pycache entries for import_failed hooks properly
+- Exclue test_faulthandler from tests on powerpc due to bnc#831629 
+- update to 3.3.2
+  * bugfix-only release
+  * fixes several regressions introduced in 3.3.1
+- switch to xz compression
+- remove README.txt (bnc#709442)
+- move _lzma module to python3-base
+- python-3.3.2-no-REUSEPORT.patch to fix build on kernels without SO_REUSEPORT
+- Readd missing bits from ctypes-libffi-aarch64.patch
+- Update to version 3.3.1
+  * Fix the –enable-profiling configure switch.
+  * In IDLE, close the replace dialog after it is used.
+- Too many bugfixes to list here,
+  see See http://hg.python.org/cpython/file/v3.3.0/Misc/NEWS
+- Refresh Python-3.3.0b2-multilib.patch
+- Refresh python-3.2b2-buildtime-generate.patch
+- Drop upstream patches: ctypes-libffi-aarch64.patch,
+  python-3.2.3rc2-pypirc-secure.patch, python-3.3.0-getdents64.patch
+- Add Source URL, see https://en.opensuse.org/title=SourceUrls
+- remove spurious modification of python-3.3.0b1-localpath.patch
+  that would force installation into /usr/local.
+  this fixes bnc#809831
+- replace broken movetogetdents64.diff patch with a correct one
+  from upstream repo (python-3.3.0-getdents64.patch)
+- add ctypes-libffi-aarch64.patch:
+  * import aarch64 support for libffi in _ctypes module
+- add aarch64 to the list of lib64 based archs 
+- add movetogetdents64.diff:
+  * port to getdents64, as SYS_getdents is not implemented everywhere
+- /etc/rpm/macros.python3 is no %config, it is not meant to be changed
+  by users.
+- Add rpmlintrc with some obvious filters
+- update baselibs for new version of libpython3
+- fix include path in macros (bnc#787526)
+- implement failed import handlers for modules that live in
+  subpackages - e.g. &quot;import ssl&quot; will now throw a sensible error
+  message telling you to install &quot;python3&quot;
+- merge python3-xml into python3
+- merge python3-2to3 library into python3-base
+  and the 2to3 binary into python3-devel
+  (python3-devel is now in conflict with python-2to3, which
+  will be dropped)
+- enable --with-system-expat for python3, making the xml modules
+  (and thus python3) depend on expat
+- reconfigure tests to disable network and GUI resources, which
+  the upstream apparently thought is a good idea to enable by default.
+  this fixes build failures in Factory
+- add lzma-devel to build the _lzma module
+- moved %dynlib macro definition to common section
+- buildrequire timezone for the test suite
+- disable more checks for qemu builds as they use syscalls not
+  implemented yet
+- exclude test_math for SLE 11; math library fails on negative 
+  gamma function values close to integers and 0, probably
+  due to imprecision in -lm on SLE_11_SP2. 
+- buildrequire libbz2-devel explicitly
+- remove distutils.cfg (bnc#658604)
+  * this changes default prefix for distutils to /usr
+  * see ML for details:
+http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html
+- Update to final 3.3.0 release
+  * See http://hg.python.org/cpython/file/v3.3.0/Misc/NEWS
+- Correct dependency for python3-testsuite, 
+  python3-tkinter -&gt; python3-tk
+- update to 3.3.0 RC1
+- update to 3.3.0 beta 1
+    * flexible string representation, no longer distinguishing
+      between wide and narrow Unicode builds
+    * importlib-based import system
+    * virtualenv support in core
+    * namespace packages
+    * explicit Unicode literals for easier porting
+    * key-sharing dict implementation reduces memory footprint
+      of OO code
+    * hash randomization on by default
+    * many other new bugfixes and features, check NEWS for details
+- pre_checkin.sh now autofills various version strings in specs
+- ship hashlib's fallback modules - those uselessly take up space
+  when real _hashlib.so from python3 is present, but the space wasted
+  is only 114kB and it provides python3-base with a working hashlib
+  module.
+  (also, this fixes bnc#743787)
+- skip test_io on ppc 
+- drop test_io ppc patch
+- Satisfy source_validator by uncommenting an otherwise unused &quot;Patch&quot;
+  line
+- update to 3.2.3
+  * No changes since rc2
+- update to 3.2.3rc2
+  * fixes several security issues:
+  * CVE-2012-0845, bnc#747125
+  * CVE-2012-1150, bnc#751718
+  * CVE-2011-4944, bnc#754447
+  * CVE-2011-3389, bnc#754677
+- fix for insecure .pypirc (CVE-2011-4944, bnc#754447)
+- disable test_gdb because it is broken by our gdb
+- skip broken test_io test on ppc
+- update to 3.2.2
+  * bugfix-only release
+  * reports &quot;linux2&quot; as sys.platform regardless of Linux kernel
+- added pre_checkin.sh to copy common spec sections to python3.spec
+- added PACKAGING-NOTES with some helpful info for packagers
+- Use system ffi, included one is broken see 
+  http://bugs.python.org/issue11729 and 
+  http://bugs.python.org/issue12081
+- license.opensuse.org-compatible license headers
+- add automake as buildrequire to avoid implicit dependency
+- fix ARM build (exclude some test cases which break for us)
+- use sysconfig module to get py3_incdir, py3_abiflags,
+  py3_soflags, python3_sitelib and python3_sitearch
+- update to 3.2.1
+    * bugfix-only release, no major changes
+- fix build on linux3 platform
+- remove upstreamed pybench patch
+- install /usr/lib directories in all cases to prevent spurious
+  &quot;directory not owned&quot; in dependent packages
+- replaced dynamic so version with manual so version, because
+  autobuild does not support autogeneration
+- generate macros.python3 at compile-time with fixed values
+- don't include bogus values in pyconfig.h, as they can break
+  third-party packages (bnc#673071)
+- added Obsoletes: python3 &lt; 3.1 so that the transition from
+  non-split to split packages goes smoothly
+- fixed RPM macros to use python3 instead of python
+- updated to build --with-wide-unicode (for compatibility with
+  fedora and our own python 2.x series)
+- fix python3-base build failure due to pybench.py crash by
+  python-3.2-pybench.patch
+- move pyconfig.h from python3-devel to python3-base package to
+  make python3-base functional again
+- update to python 3.2
+    * stable ABI, ABI-tagged .so files
+    * concurrent.futures and many other new or upgraded modules
+    * PYC repository directories ( __pycache__ )
+    * python WSGI 1.0.1
+    * Unicode 6.0.0 support
+    * a great number of bugfixes and assorted improvements
+- update to python 3.2 RC2
+- renamed python3-demo to python3-tools, because the demo part
+  became much smaller than the tools part
+- added rpm macros
+- update to python 3.2 beta 2, see NEWS for details
+- split off -base package with less dependencies, and a shlib-policy
+  compliant libpython3 package
+- mostly rewritten the spec file with more detailed comments
+- cleaned up lists of patches
+</comment>
+    <requestid>856737</requestid>
+  </revision>
 </revisionlist>
