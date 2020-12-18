@@ -133,4 +133,14 @@
     <comment></comment>
     <requestid>855599</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5a680056d14be5ec34cfcd92e3a079e3</srcmd5>
+    <version>2.7.3</version>
+    <time>1608318005</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.7.3
+  * Smarter Game store. Catalogue entries can be read later at
+    runtime and in the background (forwarded request 856879 from mnhauke)</comment>
+    <requestid>856880</requestid>
+  </revision>
 </revisionlist>
