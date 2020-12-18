@@ -18,14 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-hpack
-Version:        3.0.0
+Version:        4.0.0
 Release:        0
 Summary:        Pure-Python HPACK header compression
 License:        MIT
 URL:            https://github.com/python-hyper/hpack
-Source:         https://files.pythonhosted.org/packages/source/h/hpack/hpack-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/h/hpack/hpack-%{version}.tar.gz
+# Content of https://github.com/python-hyper/hpack/tree/master/test/test_fixtures
+Source1:        test_fixtures.tar.xz
 Patch0:         healthcheck.patch
-Patch1:         pytest5.patch
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -40,8 +41,7 @@ Python programs that implement HTTP/2. It also contains a compatibility layer th
 automatically enables the use of nghttp2 if it’s available.
 
 %prep
-%setup -q -n hpack-%{version}
-%autopatch -p1
+%autosetup -p1 -a1 -n hpack-%{version}
 
 %build
 export LC_ALL="en_US.UTF-8"
@@ -57,7 +57,7 @@ export LC_ALL="en_US.UTF-8"
 
 %files %{python_files}
 %license LICENSE
-%doc HISTORY.rst CONTRIBUTORS.rst README.rst
+%doc CHANGELOG.rst CONTRIBUTORS.rst README.rst
 %{python_sitelib}/hpack
 %{python_sitelib}/hpack-%{version}-py%{python_version}.egg-info
 
