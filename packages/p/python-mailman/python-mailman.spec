@@ -26,7 +26,7 @@
 %define mailman_rundir   %{_rundir}/%{mailman_name}
 %define mailman_lockdir  %{_rundir}/lock/%{mailman_name}
 
-%global mailman_services %{mailman_name}.service %{mailman_name}-digest.service %{mailman_name}-digest.timer
+%global mailman_services %{mailman_name}.service %{mailman_name}-digests.service %{mailman_name}-digests.timer %{mailman_name}-notify.service %{mailman_name}-notify.timer
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -53,6 +53,8 @@ Source13:       mailman.logrotate
 #
 Source20:       mailman-digests.service
 Source21:       mailman-digests.timer
+Source22:       mailman-notify.service
+Source23:       mailman-notify.timer
 #
 Source30:       README.SUSE.md
 #
@@ -63,6 +65,7 @@ Patch0:         python-mailman-test_interact_default_banner.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       logrotate
 Requires:       python-SQLAlchemy >= 1.2.3
 Requires:       python-aiosmtpd >= 1.1
 Requires:       python-alembic
@@ -160,6 +163,7 @@ install -d -m 0755 \
             %{buildroot}%{_sysconfdir}/logrotate.d \
             %{buildroot}%{_sysconfdir}/%{mailman_name}.d \
             %{buildroot}%{_tmpfilesdir} \
+            %{buildroot}%{_sbindir} \
             %{buildroot}%{_unitdir} \
             %{buildroot}%{mailman_homedir} \
             %{buildroot}%{mailman_homedir}/data \
@@ -177,6 +181,12 @@ sed -i 's,@LOGDIR@,%{mailman_logdir},g;s,@BINDIR@,%{_bindir},g' \
 
 install -m 0644 %{SOURCE20} %{buildroot}%{_unitdir}/%{mailman_name}-digests.service
 install -m 0644 %{SOURCE21} %{buildroot}%{_unitdir}/%{mailman_name}-digests.timer
+install -m 0644 %{SOURCE22} %{buildroot}%{_unitdir}/%{mailman_name}-notify.service
+install -m 0644 %{SOURCE23} %{buildroot}%{_unitdir}/%{mailman_name}-notify.timer
+
+ln -s /sbin/service %{buildroot}%{_sbindir}/rc%{mailman_name}
+ln -s /sbin/service %{buildroot}%{_sbindir}/rc%{mailman_name}-digests
+ln -s /sbin/service %{buildroot}%{_sbindir}/rc%{mailman_name}-notify
 %endif
 
 %check
@@ -232,6 +242,8 @@ getent passwd %{mailman_user} >/dev/null || \
 %files %{python_files}
 %doc README.rst README.SUSE.md
 %license COPYING
+%{_sbindir}/rc%{mailman_name}*
+
 %python_alternative %{_bindir}/runner
 %python_alternative %{_bindir}/mailman
 %python_alternative %{_bindir}/master
@@ -240,6 +252,8 @@ getent passwd %{mailman_user} >/dev/null || \
 %{_unitdir}/%{mailman_name}.service
 %{_unitdir}/%{mailman_name}-digests.service
 %{_unitdir}/%{mailman_name}-digests.timer
+%{_unitdir}/%{mailman_name}-notify.service
+%{_unitdir}/%{mailman_name}-notify.timer
 %{_tmpfilesdir}/%{mailman_name}.conf
 
 %config(noreplace) %attr(640,root,mailman) %{_sysconfdir}/mailman.cfg

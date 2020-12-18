@@ -1,0 +1,10 @@
+[Unit]
+Description=Run mailman-notify.service every day
+
+[Timer]
+OnCalendar=*-*-* 08:00:00
+RandomizedDelaySec=15m
+Persistent=true
+
+[Install]
+WantedBy=basic.target

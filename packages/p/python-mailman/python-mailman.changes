@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 15 19:28:48 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Added mailman-notify.service and mailman-notify.timer
+- Added rcmailman* service symlinks
+- Added missing logrotate requirement
+
+-------------------------------------------------------------------
 Tue Dec 15 09:19:44 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fix systemd services
