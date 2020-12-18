@@ -17,7 +17,7 @@
 
 
 %define modname	libewf
-%define timestamp 20140808
+%define timestamp 20140811
 %define sosuffix 2
 %bcond_with python2
 
@@ -27,9 +27,9 @@ Release:        0
 Summary:        Library for the Expert Witness Compression Format (EWF)
 License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          Productivity/File utilities
-URL:            https://github.com/libyal/lib
-Source:         https://github.com/libyal/libewf-legacy/releases/download/20140808/%{name}-%{timestamp}.tar.gz
-Source1:        https://github.com/libyal/libewf-legacy/releases/download/20140808/%{name}-%{timestamp}.tar.gz.asc
+URL:            https://github.com/libyal/libewf-legacy
+Source:         https://github.com/libyal/libewf-legacy/releases/download/%{timestamp}/%{name}-%{timestamp}.tar.gz
+Source1:        https://github.com/libyal/libewf-legacy/releases/download/%{timestamp}/%{name}-%{timestamp}.tar.gz.asc
 Source2:        http://downloads.sf.net/libewf/mount_ewf-20090113.py
 Source3:        Expert_Witness_Compression_Format_EWF.pdf
 Source4:        Expert_Witness_Compression_Format_2_EWF2.pdf
@@ -68,7 +68,7 @@ BuildRequires:  pkgconfig(uuid) >= 2.20
 BuildRequires:  pkgconfig(zlib) >= 1.2.5
 # build fails if libyal package from OBS is used
 # verified 1/25/2020
-BuildRequires:  pkgconfig(libbfio) >= 20120426
+BuildRequires:  pkgconfig(libbfio) >= 20201127
 BuildRequires:  pkgconfig(libcdata) >= 20120425
 BuildRequires:  pkgconfig(libcerror) >= 20120425
 BuildRequires:  pkgconfig(libcpath) >= 20120701
@@ -104,7 +104,7 @@ Summary:        Utilities for the Expert Witness Compression Format (EWF)
 License:        LGPL-3.0-or-later
 Group:          System/Filesystems
 Requires:       fuse
-Requires:       python-fuse >= 0.2
+Requires:       python3-fuse >= 0.2
 #Don't use obsoletes because new 0~yyyymmdd version is less than old 0.0.0+yyyymmdd version
 #zypper dup should "downgrade" ewftools to ewftools in factory regardless, so this should work
 #Obsoletes:      ewftools <= 0.0.0+20130128

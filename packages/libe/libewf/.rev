@@ -137,4 +137,18 @@ part of summer 2013 libyal refresh for opensuse 13.1</comment>
 Replace python 2 with python 3</comment>
     <requestid>767317</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c3286a249266ddd5f1d37127d1d42de6</srcmd5>
+    <version>0~20140811</version>
+    <time>1608317957</time>
+    <user>dimstar_suse</user>
+    <comment>- update to libewf-20140811
+	* address errors in retries in ewfacquire
+	* changes to libmfdata
+	* changes to ewfwrite
+- change Requires python-fuse to python3-fuse
+- requires libbfio v20201127 or newer
+</comment>
+    <requestid>856722</requestid>
+  </revision>
 </revisionlist>

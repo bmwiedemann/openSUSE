@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec 12 23:39:53 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to libewf-20140811
+	* address errors in retries in ewfacquire
+	* changes to libmfdata
+	* changes to ewfwrite
+- change Requires python-fuse to python3-fuse
+- requires libbfio v20201127 or newer
+
+-------------------------------------------------------------------
 Sun Jan 26 04:11:53 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
 - update to libewf-20140808
         * 2014 is the stable branch. 20140808 was released Dec 25, 2019
