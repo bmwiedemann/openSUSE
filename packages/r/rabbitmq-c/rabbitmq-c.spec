@@ -95,21 +95,29 @@ grep @ %{buildroot}%{_libdir}/pkgconfig/librabbitmq.pc && exit 1
 # rabbitmq-server needs to run only for test_basic,
 # which can be skipped in case this will bring some
 # issues
-export RABBITMQ_PID_FILE=/home/abuild/rabbitmq/rabbitmq.pid
+exit_code=0
+echo "### Starting RabbitMQ server .."
+pid_file="/home/abuild/rabbitmq/rabbitmq.pid"
+export RABBITMQ_PID_FILE=$pid_file
 export RABBITMQ_LOG_BASE=/home/abuild/rabbitmq/log
 export RABBITMQ_MNESIA_BASE=/home/abuild/rabbitmq/mnesia
 %if 0%{?suse_version} <= 1500
 export RABBITMQ_SCHEMA_DIR=/home/abuild/rabbitmq/schema
 export RABBITMQ_GENERATED_CONFIG_DIR=/home/abuild/rabbitmq/config
 %endif
-%{_libdir}/rabbitmq/lib/rabbitmq_server-*/sbin/rabbitmq-server&
-# wait for server start
-sleep 20
-%ctest
-kill `cat /home/abuild/rabbitmq/rabbitmq.pid`
+sbin_base=%{_libdir}/rabbitmq/lib/rabbitmq_server-*/sbin
+$sbin_base/rabbitmq-server&
+sleep 5
+$sbin_base/rabbitmqctl await_startup
+echo "### Done, running tests"
+%ctest || exit_code=1
+echo "### Stopping RabbitMQ server .."
+$sbin_base/rabbitmqctl stop
 # needs to wait: Killing not allowed - living nodes in database.
 sleep 5
 epmd -kill
+echo "### Done"
+exit $exit_code
 
 %post -n %{libname}%{majsonum} -p /sbin/ldconfig
 %postun -n %{libname}%{majsonum} -p /sbin/ldconfig

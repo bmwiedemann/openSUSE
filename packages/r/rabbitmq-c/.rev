@@ -15,4 +15,14 @@
     <comment>- fix tests for SLE15</comment>
     <requestid>844990</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4f49b940ba718cea0c17044553bf8c94</srcmd5>
+    <version>0.10.0</version>
+    <time>1608317993</time>
+    <user>dimstar_suse</user>
+    <comment>- %check: use rabbitmqctl await_startup to wait for RabbitMQ
+  server start and rabbitmqctl stop for stopping the server
+  [bsc#1180096] (forwarded request 856660 from pgajdos)</comment>
+    <requestid>856831</requestid>
+  </revision>
 </revisionlist>

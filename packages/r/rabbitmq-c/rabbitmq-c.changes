@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 17 11:31:22 UTC 2020 - pgajdos@suse.com
+
+- %check: use rabbitmqctl await_startup to wait for RabbitMQ
+  server start and rabbitmqctl stop for stopping the server
+  [bsc#1180096]
+
+-------------------------------------------------------------------
 Fri Oct 30 09:12:17 UTC 2020 - pgajdos@suse.com
 
 - fix tests for SLE15
