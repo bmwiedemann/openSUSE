@@ -1182,4 +1182,12 @@ fixes build in packman, evergreen and all that. (forwarded request 230247 from o
     <comment></comment>
     <requestid>847296</requestid>
   </revision>
+  <revision rev="112" vrev="4">
+    <srcmd5>5d0fc1f7c3671ad02296f3dbaad23c02</srcmd5>
+    <version>3.0.11.1</version>
+    <time>1608317540</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856427</requestid>
+  </revision>
 </revisionlist>

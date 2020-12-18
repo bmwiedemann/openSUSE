@@ -418,7 +418,7 @@ fi
 rm -rf contrib
 
 %build
-%define _lto_cflags %{nil}
+%global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 %if 0%{?suse_version} < 1500
 export CC=%{_bindir}/gcc-7
 export CXX=%{_bindir}/g++-7
