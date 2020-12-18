@@ -1,0 +1,8 @@
+<package name="qt6-declarative" project="openSUSE:Factory">
+  <title>Qt 6 Declarative Libraries and tools</title>
+  <description>Qt 6 Declarative Libraries and tools
+
+</description>
+  <devel project="KDE:Qt:6.0" package="qt6-declarative"/>
+  <url>https://www.qt.io</url>
+</package>
