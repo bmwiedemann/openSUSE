@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 17 19:27:58 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 2.8.1.
+  * Convert parse_mimetypes from returning g_char** to void
+  * l10n: Update translations
+- Remove fix_no_return_statement_ev-application.c.patch, fixed.
+- Fix RPMLINT warning W: obsolete-not-provided.
+
+-------------------------------------------------------------------
 Sun Dec  6 19:34:42 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 2.8.0.

@@ -20,15 +20,13 @@
 %define typelib1 typelib-1_0-XreaderDocument-1_5
 %define typelib2 typelib-1_0-XreaderView-1_5
 Name:           xreader
-Version:        2.8.0
+Version:        2.8.1
 Release:        0
 Summary:        Document viewer for documents like PDF/PostScript
 License:        GPL-2.0-only AND LGPL-2.0-only
 Group:          Productivity/Office/Other
 URL:            https://github.com/linuxmint/xreader
 Source:         https://github.com/linuxmint/xreader/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix_no_return_statement_ev-application.c.patch andythe_great@pm.me -- Fix /shell/ev-application.c error no return statement in function returning non-void.
-Patch0:         fix_no_return_statement_ev-application.c.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gnome-common
@@ -57,6 +55,9 @@ BuildRequires:  pkgconfig(zlib)
 # Only require pdf backend subpackage to make application more lightweight for Live media
 Requires:       %{name}-plugin-pdfdocument
 Recommends:     %{name}-lang
+Provides:       %{name}-backends = %{version}
+Provides:       caja-extension-%{name} = %{version}
+Provides:       nemo-extension-%{name} = %{version}
 Obsoletes:      %{name}-backends < %{version}
 Obsoletes:      caja-extension-%{name} < %{version}
 Obsoletes:      nemo-extension-%{name} < %{version}
