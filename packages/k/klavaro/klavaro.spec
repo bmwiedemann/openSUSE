@@ -1,7 +1,7 @@
 #
 # spec file for package klavaro
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define espeak    espeak
 %endif
 Name:           klavaro
-Version:        3.09
+Version:        3.11
 Release:        0
 Summary:        Typing tutor
 License:        GPL-3.0-or-later
@@ -58,15 +58,6 @@ layouts.
 
 %lang_package
 
-%package devel
-Summary:        Development files for klavaro
-Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
-
-%description devel
-This package contains the header files needed to develop other
-software based on klavaro.
-
 %prep
 %setup -q
 
@@ -89,13 +80,11 @@ make %{?_smp_mflags}
 %suse_update_desktop_file -r klavaro Education Teaching
 %endif
 
-%if 0%{?suse_version} > 1130
+%if 0%{?suse_version} > 1130 && 0%{?suse_version} < 1500
 %post
 %icon_theme_cache_post
 %desktop_database_post
-%endif
 
-%if 0%{?suse_version} > 1130
 %postun
 %icon_theme_cache_postun
 %desktop_database_postun
@@ -113,8 +102,5 @@ make %{?_smp_mflags}
 %{_datadir}/icons/hicolor/*/apps/klavaro.png
 # Remove static lib processing when libgtkdatabox gtk3 apppears
 %exclude %{_libdir}/libgtkdataboks.*
-
-%files devel
-%{_includedir}/*.h
 
 %changelog

@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Nov 16 17:05:05 UTC 2020 - Elisei Roca <eroca@suse.com> - 3.11
+
+- add _service file
+- remove klavaro-devel package because the header files are gone
+- update to 3.11
+  2020-08-18  Felipe Castro (-) <fefcas@gmail.com>;
+  * Release 3.11
+  * Fixed:
+    - Dutch typos correction on paragraphs.
+  * Added:
+    - keyboard: dvorak_de_bone
+  * Updated translations:
+    - Esperanto.
+    - French.
+    - Portuguese (BR).
+    - Portuguese (PT).
+    - Russian.
+    - Serbian.
+    - Ukrainian.
+    - Vietnamese.
+  * Added translations:
+    - Romanian (very partial).
+  2020-05-30  Felipe Castro (-) <fefcas@gmail.com>;
+  * Release 3.10
+  * Added:
+    - Support for Tibetan.
+  * Changed:
+    - Checking for Werror=format-security at src/Makefile.am
+    - Applying Debian patches 02, 03, 04 and 05.
+    - Not installing GtkDataBox's include headers anymore.
+    - dvorak_fr_bepo.kbd: apostrophe now is typographic.
+  * Updated translations:
+    - Basque.
+    - Croatian.
+    - Hungarian.
+    - Italian.
+    - Serbian.
+
+-------------------------------------------------------------------
 Tue Sep 24 10:00:46 UTC 2019 - lars@linux-schulserver.de - 3.09
 
 - update to 3.09
