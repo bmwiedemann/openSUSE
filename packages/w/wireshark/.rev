@@ -1445,4 +1445,12 @@ Use capabilities for capture. bsc#957624</comment>
     <comment>update wireshark to new major version: 3.4.0</comment>
     <requestid>846275</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>b610cd8a8749693e730c4dfed4ec1cf3</srcmd5>
+    <version>3.4.1</version>
+    <time>1608317547</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856469</requestid>
+  </revision>
 </revisionlist>

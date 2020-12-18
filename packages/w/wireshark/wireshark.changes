@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 11 14:44:07 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Wireshark 3.4.1:
+  * CVE-2020-26418: Kafka dissector memory leak (wnpa-sec-2020-16, boo#1179930)
+  * CVE-2020-26419: Multiple dissector memory leaks (wnpa-sec-2020-19, boo#1179931)
+  * CVE-2020-26420: RTPS dissector memory leak (wnpa-sec-2020-18, boo#1179932) 
+  * CVE-2020-26421: USB HID dissector crash (wnpa-sec-2020-17, boo#1179933)
+  * Fix IETF QUIC TLS decryption errors
+  * Fix failures or crashes in various dissectors
+
+-------------------------------------------------------------------
 Fri Oct 30 20:40:13 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Wireshark 3.4.0:
