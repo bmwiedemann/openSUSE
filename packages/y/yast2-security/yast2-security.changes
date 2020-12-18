@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 15 12:33:52 UTC 2020 - schubi <schubi@localhost>
+
+- Removed old code for sysvinit configuration (bsc#1175494).
+- 4.3.7
+
+-------------------------------------------------------------------
 Mon Dec 14 14:49:26 UTC 2020 - schubi <schubi@intern>
 
 - Removed obsolete setting DISPLAYMANAGER_SHUTDOWN from
