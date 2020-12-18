@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 13 03:52:44 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20200216
+        * changes for block aligned read
+        * Added O_CLOEXEC to open file IO flags
+
+-------------------------------------------------------------------
 Sat Apr 13 19:50:25 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to v0~20190314

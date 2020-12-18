@@ -18,7 +18,7 @@
 
 Name:           libcfile
 %define lname	libcfile1
-%define timestamp 20190314
+%define timestamp 20200216
 Version:        0~%timestamp
 Release:        0
 Summary:        Library for cross-platform C file functions
