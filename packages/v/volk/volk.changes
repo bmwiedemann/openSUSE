@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 17 21:06:38 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.1
+  Build
+  * cpu_features CMake option
+  * Add cpu_features to static library build.
+  * Use static liborc-0.4 library for static library build.
+  * cmake: Detect if cpu_features submodule is present.
+  Install
+  * Check for lib64 versus lib and set LIB_SUFFIX accordingly.
+- Switch back to the release github tarballs
+- Verify source signature
+
+-------------------------------------------------------------------
 Mon Nov 30 11:31:35 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.0
