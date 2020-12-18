@@ -1,0 +1,124 @@
+From 15b43b5ded62ad76776d69bc64ce2679ddfa8eb8 Mon Sep 17 00:00:00 2001
+From: Mårten Nordheim <marten.nordheim@qt.io>
+Date: Tue, 08 Dec 2020 15:47:47 +0100
+Subject: [PATCH] QCache: fix updating entries breaking the internal chain
+
+After f08492c6fd9818c7d80b1725355453e179b4d85b was
+merged this bug would manifest as an entry appearing twice
+in the chain when a updating an existing entry (insert with
+an existing key). This could sometimes result in crashes later
+as the list filled up and the list was used in trim() to remove
+various entries.
+
+Fixes: QTBUG-89176
+Pick-to: 6.0
+Change-Id: Ide80160fb4317dc0aefe79eec5dce7ec6813e790
+---
+
+diff --git a/src/corelib/tools/qcache.h b/src/corelib/tools/qcache.h
+index 74784af..41cf9ab 100644
+--- a/src/corelib/tools/qcache.h
++++ b/src/corelib/tools/qcache.h
+@@ -247,14 +247,15 @@
+         if (result.initialized) {
+             cost -= n->value.cost;
+             result.it.node()->emplace(object, cost);
++            relink(key);
+         } else {
+             Node::createInPlace(n, key, object, cost);
++            n->prev = &chain;
++            n->next = chain.next;
++            chain.next->prev = n;
++            chain.next = n;
+         }
+         total += cost;
+-        n->prev = &chain;
+-        n->next = chain.next;
+-        chain.next->prev = n;
+-        chain.next = n;
+         return true;
+     }
+     T *object(const Key &key) const noexcept
+diff --git a/src/network/kernel/qhostinfo.cpp b/src/network/kernel/qhostinfo.cpp
+index b3d6844..8361470 100644
+--- a/src/network/kernel/qhostinfo.cpp
++++ b/src/network/kernel/qhostinfo.cpp
+@@ -916,7 +916,7 @@
+     QObject::connect(QCoreApplication::instance(), &QObject::destroyed,
+                      &threadPool, [&](QObject *) { threadPool.waitForDone(); },
+                      Qt::DirectConnection);
+-    threadPool.setMaxThreadCount(20); // do up to 20 DNS lookups in parallel
++    threadPool.setMaxThreadCount(100); // do up to 20 DNS lookups in parallel
+ #endif
+ }
+ 
+diff --git a/tests/auto/corelib/tools/qcache/tst_qcache.cpp b/tests/auto/corelib/tools/qcache/tst_qcache.cpp
+index f122e45..2d1ca0a 100644
+--- a/tests/auto/corelib/tools/qcache/tst_qcache.cpp
++++ b/tests/auto/corelib/tools/qcache/tst_qcache.cpp
+@@ -48,6 +48,7 @@
+     void take();
+     void axioms_on_key_type();
+     void largeCache();
++    void internalChainHasFullOrder();
+ };
+ 
+ 
+@@ -414,5 +415,18 @@
+     QVERIFY(cache.size() == 0);
+ }
+ 
++// The internal chain could lose track of some objects.
++// Make sure it doesn't happen again.
++void tst_QCache::internalChainHasFullOrder()
++{
++    QCache<QString, int> cache;
++    cache.setMaxCost(20);
++    cache.insert(QString::number(1), new int, 1);
++    cache.insert(QString::number(2), new int, 1);
++    cache.insert(QString::number(1), new int, 1);
++    cache.setMaxCost(0);
++    QCOMPARE(cache.size(), 0);
++}
++
+ QTEST_APPLESS_MAIN(tst_QCache)
+ #include "tst_qcache.moc"
+diff --git a/tests/auto/network/kernel/qhostinfo/tst_qhostinfo.cpp b/tests/auto/network/kernel/qhostinfo/tst_qhostinfo.cpp
+index 5390433..e895e94 100644
+--- a/tests/auto/network/kernel/qhostinfo/tst_qhostinfo.cpp
++++ b/tests/auto/network/kernel/qhostinfo/tst_qhostinfo.cpp
+@@ -106,6 +106,8 @@
+     void cache();
+ 
+     void abortHostLookup();
++
++    void manylookup();
+ protected slots:
+     void resultsReady(const QHostInfo &);
+ 
+@@ -731,5 +733,25 @@
+     int id;
+ };
+ 
++#include <QNetworkReply>
++void tst_QHostInfo::manylookup()
++{
++    QNetworkAccessManager manager;
++    auto reply = manager.get(QNetworkRequest(QUrl("https://raw.githubusercontent.com/opendns/public-domain-lists/master/opendns-top-domains.txt")));
++    QTRY_VERIFY(reply->isFinished());
++    auto domains = reply->readAll().split('\n');
++    QTestEventLoop loop;
++    int done = 0;
++    for (int i = 0; i < domains.length(); ++i) {
++        QHostInfo::lookupHost(QString::fromLatin1(domains[i]), &loop,
++                              [&done, &loop](const QHostInfo &h) {
++                                  if (++done == 100)
++                                      loop.exitLoop();
++                              });
++    }
++    loop.enterLoop(5000);
++    QVERIFY(!loop.timeout());
++}
++
+ QTEST_MAIN(tst_QHostInfo)
+ #include "tst_qhostinfo.moc"

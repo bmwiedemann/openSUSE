@@ -1,0 +1,103 @@
+From 0189d88d3472fd32deaeeb53359716086afea679 Mon Sep 17 00:00:00 2001
+From: Alexandru Croitor <alexandru.croitor@qt.io>
+Date: Mon, 30 Nov 2020 16:54:17 +0100
+Subject: [PATCH] CMake: Fix conditions for some subarch features
+
+The AES and SHA features were checking for the wrong TEST_subarch_foo
+variables.
+
+Pick-to: 6.0
+Task-number: QTBUG-87376
+Change-Id: I46cd14d98832529aebac22cfcb01180330c5e091
+---
+ .prev_configure.cmake             | 6 +++---
+ configure.cmake                   | 6 +++---
+ util/cmake/configurejson2cmake.py | 6 +++---
+ 3 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/.prev_configure.cmake b/.prev_configure.cmake
+index 3390c85588..0e476eea01 100644
+--- a/.prev_configure.cmake
++++ b/.prev_configure.cmake
+@@ -761,13 +761,13 @@ qt_feature_definition("avx512vbmi" "QT_COMPILER_SUPPORTS_AVX512VBMI" VALUE "1")
+ qt_feature_config("avx512vbmi" QMAKE_PRIVATE_CONFIG)
+ qt_feature("aesni"
+     LABEL "AES"
+-    CONDITION QT_FEATURE_sse2 AND TEST_subarch_aes
++    CONDITION QT_FEATURE_sse2 AND TEST_subarch_aesni
+ )
+ qt_feature_definition("aesni" "QT_COMPILER_SUPPORTS_AES" VALUE "1")
+ qt_feature_config("aesni" QMAKE_PRIVATE_CONFIG)
+ qt_feature("rdrnd"
+     LABEL "RDRAND"
+-    CONDITION TEST_subarch_rdseed
++    CONDITION TEST_subarch_rdrnd
+ )
+ qt_feature_definition("rdrnd" "QT_COMPILER_SUPPORTS_RDRND" VALUE "1")
+ qt_feature_config("rdrnd" QMAKE_PRIVATE_CONFIG)
+@@ -779,7 +779,7 @@ qt_feature_definition("rdseed" "QT_COMPILER_SUPPORTS_RDSEED" VALUE "1")
+ qt_feature_config("rdseed" QMAKE_PRIVATE_CONFIG)
+ qt_feature("shani"
+     LABEL "SHA"
+-    CONDITION QT_FEATURE_sse2 AND TEST_subarch_sha
++    CONDITION QT_FEATURE_sse2 AND TEST_subarch_shani
+ )
+ qt_feature_definition("shani" "QT_COMPILER_SUPPORTS_SHA" VALUE "1")
+ qt_feature_config("shani" QMAKE_PRIVATE_CONFIG)
+diff --git a/configure.cmake b/configure.cmake
+index 0aceaaf905..d65341aa1a 100644
+--- a/configure.cmake
++++ b/configure.cmake
+@@ -774,13 +774,13 @@ qt_feature_definition("avx512vbmi" "QT_COMPILER_SUPPORTS_AVX512VBMI" VALUE "1")
+ qt_feature_config("avx512vbmi" QMAKE_PRIVATE_CONFIG)
+ qt_feature("aesni"
+     LABEL "AES"
+-    CONDITION QT_FEATURE_sse2 AND TEST_subarch_aes
++    CONDITION QT_FEATURE_sse2 AND TEST_subarch_aesni
+ )
+ qt_feature_definition("aesni" "QT_COMPILER_SUPPORTS_AES" VALUE "1")
+ qt_feature_config("aesni" QMAKE_PRIVATE_CONFIG)
+ qt_feature("rdrnd"
+     LABEL "RDRAND"
+-    CONDITION TEST_subarch_rdseed
++    CONDITION TEST_subarch_rdrnd
+ )
+ qt_feature_definition("rdrnd" "QT_COMPILER_SUPPORTS_RDRND" VALUE "1")
+ qt_feature_config("rdrnd" QMAKE_PRIVATE_CONFIG)
+@@ -792,7 +792,7 @@ qt_feature_definition("rdseed" "QT_COMPILER_SUPPORTS_RDSEED" VALUE "1")
+ qt_feature_config("rdseed" QMAKE_PRIVATE_CONFIG)
+ qt_feature("shani"
+     LABEL "SHA"
+-    CONDITION QT_FEATURE_sse2 AND TEST_subarch_sha
++    CONDITION QT_FEATURE_sse2 AND TEST_subarch_shani
+ )
+ qt_feature_definition("shani" "QT_COMPILER_SUPPORTS_SHA" VALUE "1")
+ qt_feature_config("shani" QMAKE_PRIVATE_CONFIG)
+diff --git a/util/cmake/configurejson2cmake.py b/util/cmake/configurejson2cmake.py
+index 7d7984b574..15dc067f26 100755
+--- a/util/cmake/configurejson2cmake.py
++++ b/util/cmake/configurejson2cmake.py
+@@ -60,7 +60,7 @@ def map_tests(test: str) -> Optional[str]:
+         "c99": "c_std_99 IN_LIST CMAKE_C_COMPILE_FEATURES",
+         "c11": "c_std_11 IN_LIST CMAKE_C_COMPILE_FEATURES",
+         "x86SimdAlways": "ON",  # FIXME: Make this actually do a compile test.
+-        "aesni": "TEST_subarch_aes",
++        "aesni": "TEST_subarch_aesni",
+         "avx": "TEST_subarch_avx",
+         "avx2": "TEST_subarch_avx2",
+         "avx512f": "TEST_subarch_avx512f",
+@@ -99,9 +99,9 @@ def map_tests(test: str) -> Optional[str]:
+         "pdpid": "TEST_subarch_rdpid",
+         "rdpid": "TEST_subarch_rdpid",
+         "rdseed": "TEST_subarch_rdseed",
+-        "rdrnd": "TEST_subarch_rdseed",  # FIXME: Is this the right thing?
++        "rdrnd": "TEST_subarch_rdrnd",
+         "rtm": "TEST_subarch_rtm",
+-        "shani": "TEST_subarch_sha",
++        "shani": "TEST_subarch_shani",
+         "shstk": "TEST_subarch_shstk",
+         "sse2": "TEST_subarch_sse2",
+         "sse3": "TEST_subarch_sse3",
+-- 
+2.29.2
+

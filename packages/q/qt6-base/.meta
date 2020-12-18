@@ -1,0 +1,11 @@
+<package name="qt6-base" project="openSUSE:Factory">
+  <title>C++ program library, core components</title>
+  <description>Qt is a set of libraries for developing applications.
+
+This package contains base tools, like string, xml, and network
+handling.
+
+</description>
+  <devel project="KDE:Qt:6.0" package="qt6-base"/>
+  <url>https://www.qt.io</url>
+</package>

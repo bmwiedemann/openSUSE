@@ -1,0 +1,36 @@
+From 72eee71d1693fc971fa4114e7df7642e5ea9c50f Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Mon, 30 Nov 2020 10:01:51 +0100
+Subject: [PATCH] CMake: strip the executable bit from
+ qt-cmake-private-install.cmake
+
+Despite being installed in the the binary directory, this
+CMake snippet cannot be executed.
+
+Pick-to: 6.0
+Change-Id: Ibfd31e51184f0688d19ac063804cc200c95555a7
+---
+ bin/qt-cmake-standalone-test.in    | 0
+ cmake/QtWrapperScriptHelpers.cmake | 2 +-
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+ mode change 100755 => 100644 bin/qt-cmake-standalone-test.in
+
+diff --git a/bin/qt-cmake-standalone-test.in b/bin/qt-cmake-standalone-test.in
+old mode 100755
+new mode 100644
+diff --git a/cmake/QtWrapperScriptHelpers.cmake b/cmake/QtWrapperScriptHelpers.cmake
+index 63cb770131..803ed676ad 100644
+--- a/cmake/QtWrapperScriptHelpers.cmake
++++ b/cmake/QtWrapperScriptHelpers.cmake
+@@ -121,7 +121,7 @@ function(qt_internal_create_wrapper_scripts)
+     endif()
+     configure_file("${CMAKE_CURRENT_SOURCE_DIR}/bin/${__qt_cmake_install_script_name}.in"
+                    "${QT_BUILD_DIR}/${INSTALL_BINDIR}/${__qt_cmake_install_script_name}" @ONLY)
+-    qt_install(PROGRAMS "${QT_BUILD_DIR}/${INSTALL_BINDIR}/${__qt_cmake_install_script_name}"
++    qt_install(FILES "${QT_BUILD_DIR}/${INSTALL_BINDIR}/${__qt_cmake_install_script_name}"
+                DESTINATION "${INSTALL_BINDIR}")
+ 
+     qt_internal_create_qt_configure_tests_wrapper_script()
+-- 
+2.29.2
+

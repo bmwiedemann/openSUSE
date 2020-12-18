@@ -1,0 +1,117 @@
+-------------------------------------------------------------------
+Wed Dec 16 11:26:03 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use a different 'Name' when building the docs flavor.
+
+-------------------------------------------------------------------
+Fri Dec 11 15:56:51 UTC 2020 - Jonas Kvinge <jonas@jkvinge.net>
+
+- Add patch for critical bug: QCache related crashes.
+  * 0001-Fix-QCache-Crash.patch
+
+-------------------------------------------------------------------
+Tue Dec  8 14:09:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.0.0:
+  * https://www.qt.io/blog/qt-6.0-released
+
+-------------------------------------------------------------------
+Mon Dec  7 18:42:26 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- libQt6Core6 now owns most of runtime folders and
+  qt6-base-common-devel owns development ones.
+
+-------------------------------------------------------------------
+Thu Dec  3 17:59:47 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Disable the reduce_relocations option. (boo#1175278, QTBUG-86173)
+
+-------------------------------------------------------------------
+Wed Dec  2 12:08:58 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Qt 6.0.0 RC2
+
+-------------------------------------------------------------------
+Wed Dec  2 11:06:59 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add the missing openssl dependency for qt6-network-private-devel
+
+-------------------------------------------------------------------
+Mon Nov 30 16:55:57 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patches:
+  * 0001-CMake-strip-the-executable-bit-from-qt-cmake-private.patch
+  * 0001-CMake-Fix-conditions-for-some-subarch-features.patch
+
+-------------------------------------------------------------------
+Wed Nov 25 14:19:54 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.0.0~rc1
+
+-------------------------------------------------------------------
+Tue Nov 17 07:26:23 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.0.0~beta5
+- Drop upstream patches:
+  * 0001-CMake-Potentially-use-INSTALL_LIBDIR-in-qt6_extract_.patch
+  * 0001-CMake-Allow-using-DESTDIR-when-installing-documentat.patch
+  * 0001-CMake-Make-zstd-config-based-lookup-quiet.patch
+
+-------------------------------------------------------------------
+Tue Nov 10 18:40:31 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.0.0~beta4
+- Replace patches:
+  * 0001-CMake-Allow-using-DESTDIR-when-installing-documentat.patch
+    (replaces 0001-cmake-Fix-doc-installation.patch)
+  * 0001-CMake-Potentially-use-INSTALL_LIBDIR-in-qt6_extract_.patch
+    (replaces 0001-cmake-Don-t-hardcode-the-library-directory-name.patch)
+- Add upstream patch:
+  * 0001-CMake-Locate-zstd-using-CONFIG.patch
+
+-------------------------------------------------------------------
+Tue Oct 20 07:47:07 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.0.0beta1
+  https://www.qt.io/blog/qt-6.0-beta-released
+
+-------------------------------------------------------------------
+Wed Oct  7 12:24:40 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Turn more options on:
+  * link to openSSL
+  * libproxy usage
+
+-------------------------------------------------------------------
+Tue Oct  6 19:41:23 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.0.0-alpha
+  https://www.qt.io/blog/qt-6.0-alpha-released
+- Import fix-fixqt4headers.patch from libqt5-qtbase
+- Add patches:
+  * 0001-cmake-Fix-doc-installation.patch
+  * 0001-cmake-Don-t-hardcode-the-library-directory-name.patch
+  
+-------------------------------------------------------------------
+Sun Sep 20 08:25:20 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Resurrect 0001-Tell-the-truth-about-private-API.patch from
+  libqt5-qtbase
+
+-------------------------------------------------------------------
+Tue Jan 21 22:38:13 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add a qt6-printsupport-cups package for the cups plugin
+- Add the journald option back
+
+-------------------------------------------------------------------
+Tue Jan 21 22:19:11 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Split the changes into smaller commits
+- Fixed the wrong paths in CMake config files
+- Fixed the mkspecs install dir. Everything is in qt6_mkspecsdir now.
+
+-------------------------------------------------------------------
+Tue Dec 31 09:06:08 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Experimental qt6-qtbase package
