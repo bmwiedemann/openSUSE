@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 17 17:58:44 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
+
+- update to version 3.9.1
+- drop gcc10-fix.patch
+- enable JSON_MultipleHeaders for backwards compatibility
+- disable tests which download data from the internet
+
+-------------------------------------------------------------------
 Fri Aug 28 07:43:37 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Fix typo in summary: headeri -> header

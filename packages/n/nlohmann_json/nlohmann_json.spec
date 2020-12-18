@@ -18,16 +18,15 @@
 
 
 Name:           nlohmann_json
-Version:        3.7.3
+Version:        3.9.1
 Release:        0
-Summary:        C++ header-only JSON library
+Summary:        JSON for Modern C++
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://nlohmann.github.io/json/
-#Git-Clone:     https://github.com/nlohmann/json.git
 Source:         https://github.com/nlohmann/json/archive/v%{version}.tar.gz#/json-%{version}.tar.gz
-Patch0:         gcc10-fix.patch
 BuildRequires:  cmake >= 3.1
+BuildRequires:  pkgconfig
 %if 0%{?suse_version} < 1500
 BuildRequires:  gcc7-c++
 %else
@@ -38,16 +37,16 @@ BuildRequires:  gcc-c++
 C++11 header-only JSON class
 
 %package devel
-Summary:        C++11 header-only JSON class
+Summary:        JSON for Modern C++
 Group:          Development/Libraries/C and C++
 Requires:       libstdc++-devel
 
 %description devel
-JSON for Modern C++, a C++11 header-only JSON library.
+Development files for a header-only library
+to make JSON a first-class datatype for C++11
 
 %prep
 %setup -q -n json-%{version}
-%autopatch -p1
 
 %build
 %if 0%{?suse_version} < 1500
@@ -55,7 +54,8 @@ export CC="gcc-7"
 export CXX="g++-7"
 %endif
 %cmake \
-  -DJSON_BuildTests:BOOL=ON \
+  -DJSON_BuildTests:BOOL=OFF \
+  -DJSON_MultipleHeaders=ON \
   -DNLOHMANN_JSON_CONFIG_INSTALL_DIR="%{_libdir}/cmake/nlohmann_json"
 # require 2GB mem per thread
 %make_jobs
@@ -80,11 +80,11 @@ export CXXFLAGS=$FLAGS
 %files devel
 %license LICENSE.MIT
 %doc README.md
-%dir %{_includedir}/nlohmann
-%{_includedir}/nlohmann/json.hpp
+%{_includedir}/nlohmann
 %dir %{_libdir}/cmake/nlohmann_json
 %{_libdir}/cmake/nlohmann_json/nlohmann_jsonConfig.cmake
 %{_libdir}/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake
 %{_libdir}/cmake/nlohmann_json/nlohmann_jsonTargets.cmake
+%{_libdir}/pkgconfig/nlohmann_json.pc
 
 %changelog
