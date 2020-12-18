@@ -443,7 +443,7 @@ Prefer: tensorflow
 Prefer: -python3-sip4 -python3-sip4-devel
 
 # There is python[23]-prompt_toolkit and also python3-prompt_toolkit1 for compat. Use the unversioned one by default
-Prefer: python3-prompt_toolkit
+Prefer: python3-prompt_toolkit python38-prompt_toolkit python36-prompt_toolkit
 
 # When perl provides a module that is also in a different package, but the consumer specifies no version, we go with perl/perl-base
 Prefer: perl-base perl

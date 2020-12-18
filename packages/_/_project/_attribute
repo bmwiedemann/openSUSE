@@ -431,6 +431,24 @@ products:
 #    - x86_64
   - opensuse-toolbox-image:
     - x86_64
+  - opensuse-tumbleweed-dnf-image:docker-dnf:
+    - i586
+    - x86_64
+  - opensuse-tumbleweed-dnf-image:docker-microdnf:
+    - i586
+    - x86_64
+  - opensuse-tumbleweed-dnf-image:lxc-dnf:
+    - i586
+    - x86_64
+  - opensuse-tumbleweed-dnf-image:lxc-microdnf:
+    - i586
+    - x86_64
+  - opensuse-tumbleweed-dnf-image:networkd-dnf:
+    - i586
+    - x86_64
+  - opensuse-tumbleweed-dnf-image:networkd-microdnf:
+    - i586
+    - x86_64
   - opensuse-tumbleweed-image:docker:
     - i586
     - x86_64
@@ -525,10 +543,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20201217'
 published: '20201216'
 publishing: '20201216'
-testing: '20201216'
+testing: '20201217'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
