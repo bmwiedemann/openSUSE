@@ -36,7 +36,7 @@
 %bcond_without librdmacm
 %endif
 Name:           fio
-Version:        3.23
+Version:        3.25
 Release:        0
 Summary:        Flexible I/O tester
 License:        GPL-2.0-only
@@ -116,6 +116,9 @@ make \
 
 # Drop py2 only tool
 rm %{buildroot}%{_bindir}/fio-histo-log-pctiles.py
+
+# fix rpmlint
+sed -i 's/\/usr\/bin\/env python3/\/usr\/bin\/python3/' %{buildroot}%{_bindir}/fio*
 
 %check
 make %{?_smp_mflags} test

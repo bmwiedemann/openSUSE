@@ -461,4 +461,12 @@ This is the first openSUSE version to include gfio. gfio is in it's own package.
     <comment>- Update to 3.23, with upstream tar</comment>
     <requestid>834536</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>97ed082f63145bbbd65e81e66683e1b3</srcmd5>
+    <version>3.25</version>
+    <time>1608317968</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856727</requestid>
+  </revision>
 </revisionlist>
