@@ -18,7 +18,7 @@
 
 Name:           libcnotify
 %define lname	libcnotify1
-%define timestamp 20180102
+%define timestamp 20200913
 Version:        0~%timestamp
 Release:        0
 Summary:        Library for cross-platform C notify functions
