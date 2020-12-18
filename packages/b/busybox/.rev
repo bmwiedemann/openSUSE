@@ -661,4 +661,12 @@
     <comment>- cpio-long-opt.patch: add more long options to cpio for IBS/unrpm</comment>
     <requestid>853557</requestid>
   </revision>
+  <revision rev="64" vrev="7">
+    <srcmd5>44e3a78a2a7f044d297d2eaf054f5355</srcmd5>
+    <version>1.32.0</version>
+    <time>1608317552</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>856498</requestid>
+  </revision>
 </revisionlist>

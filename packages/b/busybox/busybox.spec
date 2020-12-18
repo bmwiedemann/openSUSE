@@ -36,7 +36,6 @@ BuildRequires:  glibc-devel-static
 BuildRequires:  pkgconfig(libselinux)
 # for test suite
 BuildRequires:  zip
-Requires:       group(nogroup)
 
 %description
 BusyBox combines tiny versions of many common UNIX utilities into a

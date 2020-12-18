@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  9 14:40:27 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Don't require nogroup for adduser command, as this can lead to
+  a dependency cycle with sysusers-tools.
+
+-------------------------------------------------------------------
 Mon Dec  7 10:25:00 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - cpio-long-opt.patch: add more long options to cpio for IBS/unrpm
