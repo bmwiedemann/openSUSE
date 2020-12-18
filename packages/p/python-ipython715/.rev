@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7209b7df12ed3eb26536bcd566143a9e</srcmd5>
+    <version>7.15.0</version>
+    <time>1608317959</time>
+    <user>dimstar_suse</user>
+    <comment>- Copy python-ipython rev45 to python-ipython715 for the last
+  version which officially supports Python 3.6.
+  This avoids adding skip_python36 in TW for the many packages
+  depending on ipython gh#openSUSE/python-rpm-macros#66</comment>
+    <requestid>856016</requestid>
+  </revision>
+</revisionlist>
