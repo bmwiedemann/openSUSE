@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec 18 12:47:57 UTC 2020 - aloisio@gmx.com
+
+- Update to version 1.4.3
+  * fixed possible crash on general plugin restart
+  * fixed dithering
+  * fixed memory leak
+  * fixed ignored files checking
+  * fixed cue tracks support in the converter plugin
+  * fixed issue with missing disc number in the mpeg plugin
+  * fixed possible freezing on playback resume
+  * updated Finnish translation
+  * updated Bulgarian translation
+
+-------------------------------------------------------------------
 Sun Sep 20 08:14:11 UTC 2020 - aloisio@gmx.com
 
 - Update to version 1.4.2
