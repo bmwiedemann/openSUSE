@@ -1,0 +1,12 @@
+<package name="python-uproot" project="openSUSE:Factory">
+  <title>ROOT I/O in pure Python and Numpy</title>
+  <description>Uproot is a reader and a writer of the ROOT file format using only Python and
+Numpy. Unlike the standard C++ ROOT implementation, Uproot is only an I/O
+library, primarily intended to stream data into machine learning libraries in
+Python. It uses Numpy to cast blocks of data from the ROOT file as Numpy
+arrays.
+
+</description>
+  <devel project="devel:languages:python:numeric" package="python-uproot"/>
+  <url>https://github.com/scikit-hep/uproot4</url>
+</package>
