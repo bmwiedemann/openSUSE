@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 11 08:36:20 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build as modular jar, since it is only used by Java 8
+- Force building with Java 8 in order to avoid incompatible classes
+  merged into our different modular Javas.
+
+-------------------------------------------------------------------
 Mon Nov  9 08:08:22 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 3.38.0

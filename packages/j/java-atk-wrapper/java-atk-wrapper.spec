@@ -29,7 +29,7 @@ Source1:        HOWTO
 Source2:        https://gitlab.gnome.org/GNOME/%{name}/-/raw/%{version}/autogen.sh
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  java-devel >= 1.7
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  xprop
@@ -43,7 +43,8 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gthread-2.0)
-Requires:       java >= 1.7
+BuildConflicts: java-devel >= 9
+Requires:       java >= 1.8
 Requires:       xprop
 
 %description
@@ -64,8 +65,8 @@ rm -f wrapper/org/GNOME/Accessibility/AtkWrapper.java
 %build
 chmod +x autogen.sh
 ./autogen.sh
-%configure --libdir=%{_libdir}/%{name}
-make %{?_smp_mflags}
+%configure --libdir=%{_libdir}/%{name} --disable-modular-jar JAVACFLAGS="-source 8 -target 8"
+make %{?_smp_mflags} -j1
 
 %install
 make -C jni install DESTDIR=%{buildroot}
