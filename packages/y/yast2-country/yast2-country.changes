@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 15 14:49:46 UTC 2020 - Stefan Schubert <schubi@suse.de>
+
+- Removed old code for sysvinit configuration (bsc#1175494).
+- 4.3.11
+
+-------------------------------------------------------------------
 Thu Oct 15 07:49:20 UTC 2020 - Steffen Winterfeldt <snwint@suse.de>
 
 - adjust keyboard client layout to also fit the firstboot workflow
