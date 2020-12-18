@@ -1,0 +1,8 @@
+<package name="qt6-shadertools" project="openSUSE:Factory">
+  <title>Qt 6 ShaderTools library</title>
+  <description>The Qt 6 ShaderTools library and tools.
+
+</description>
+  <devel project="KDE:Qt:6.0" package="qt6-shadertools"/>
+  <url>https://www.qt.io</url>
+</package>
