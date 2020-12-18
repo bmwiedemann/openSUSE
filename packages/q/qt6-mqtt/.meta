@@ -1,0 +1,8 @@
+<package name="qt6-mqtt" project="openSUSE:Factory">
+  <title>Qt 6 MQTT library</title>
+  <description>Qt library to implement MQTT protocol version 3.1 and 3.1.1
+
+</description>
+  <devel project="KDE:Qt:6.0" package="qt6-mqtt"/>
+  <url>https://www.qt.io</url>
+</package>
