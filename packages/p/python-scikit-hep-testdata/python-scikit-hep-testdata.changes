@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Sun Dec 13 16:08:44 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package
+- Add scikit-hep-testdata-no-pep8.patch: Drop pep8 requrements for
+  pytest to avoid depending on outdated, unavailable pytest-pep8
+  module.

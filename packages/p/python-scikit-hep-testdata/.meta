@@ -1,0 +1,14 @@
+<package name="python-scikit-hep-testdata" project="openSUSE:Factory">
+  <title>Example HEP files for testing and demonstrating</title>
+  <description>A common package to provide example files (*e.g*. ROOT) for testing and
+developing packages against.  The sample of files is representative of typical
+files found &quot;in the wild&quot;.
+
+In addition to including some root files directly, this package adds some
+simple helper methods to get larger files from common open-access data
+repositories.
+
+</description>
+  <devel project="devel:languages:python:numeric" package="python-scikit-hep-testdata"/>
+  <url>https://github.com/scikit-hep/scikit-hep-testdata</url>
+</package>
