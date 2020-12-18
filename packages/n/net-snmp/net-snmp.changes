@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 13 12:58:00 UTC 2020 - <d_werner@gmx.net>
+
+- Update the tmpfiles.d/ drop-in file - remove legacy directory
+  Fixes boo#1137761 and boo#1176997
+
+-------------------------------------------------------------------
 Sun Nov 22 00:19:34 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix the python subpackage generation

@@ -90,7 +90,6 @@ BuildRequires:  libsensors4-devel
 %define python_sitearch %{python3_sitearch}
 %endif
 
-
 %description
 Net-SNMP is a suite of applications used to implement SNMP v1, SNMP v2c
 and SNMP v3 using both IPv4 and IPv6. The suite includes:
