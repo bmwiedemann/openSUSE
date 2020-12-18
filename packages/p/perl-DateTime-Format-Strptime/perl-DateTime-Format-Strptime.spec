@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DateTime-Format-Strptime
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           perl-DateTime-Format-Strptime
-Version:        1.77
+Version:        1.78
 Release:        0
 %define cpan_name DateTime-Format-Strptime
 Summary:        Parse and format strp and strf time patterns
 License:        Artistic-2.0
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -31,7 +31,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(DateTime) >= 1.00
-BuildRequires:  perl(DateTime::Locale) >= 1.230000
+BuildRequires:  perl(DateTime::Locale) >= 1.300000
 BuildRequires:  perl(DateTime::Locale::Base)
 BuildRequires:  perl(DateTime::Locale::FromData)
 BuildRequires:  perl(DateTime::TimeZone) >= 2.09
@@ -47,7 +47,7 @@ BuildRequires:  perl(Test::Warnings)
 BuildRequires:  perl(Try::Tiny)
 BuildRequires:  perl(parent)
 Requires:       perl(DateTime) >= 1.00
-Requires:       perl(DateTime::Locale) >= 1.230000
+Requires:       perl(DateTime::Locale) >= 1.300000
 Requires:       perl(DateTime::Locale::Base)
 Requires:       perl(DateTime::Locale::FromData)
 Requires:       perl(DateTime::TimeZone) >= 2.09

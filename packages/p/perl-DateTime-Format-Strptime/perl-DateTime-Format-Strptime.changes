@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec 16 03:07:36 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.78
+   see /usr/share/doc/packages/perl-DateTime-Format-Strptime/Changes
+
+  1.78     2020-12-15
+
+  * Fix tests for new failure caused by locale data changes in DateTime::Locale
+    1.29. Reported by cthulhu8zombie. GH #28.
+
+  * Added a warning about using locale-specific patterns. Some of these patterns
+    can change quite a bit as the locale data is updated, so using them for
+    parsing does not produce stable results across time. This is what caused the
+    test failures that this release fixes.
+
+-------------------------------------------------------------------
 Sun Mar  1 03:14:01 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.77
