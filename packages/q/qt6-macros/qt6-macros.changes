@@ -1,0 +1,104 @@
+-------------------------------------------------------------------
+Sat Dec 12 18:09:56 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Doc update.
+
+-------------------------------------------------------------------
+Thu Dec 10 21:41:56 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Handle _multibuild for documentation packages.
+  It is now possible to replace -docs spec files with a
+  _multibuild file and the new macros:
+    * %qt6_flavor <flavor> in the spec header
+    * '%if %qt6_docs_flavor' and '%if !%qt6_docs_flavor' to
+      enable/disable spec file blocks.
+
+-------------------------------------------------------------------
+Tue Dec  8 08:06:45 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Change the executable symlinks suffix from '-qt6' to '6'
+  To allow coinstallation, upstream plans to append '6' to user
+  facing programs and move the other ones into %_qt6_libexecdir
+  (QTBUG-89170)
+
+-------------------------------------------------------------------
+Mon Dec  7 18:40:26 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Transfer folders ownership to qt6-base, qt6-declarative
+  and -docs subpackages.
+- Require cmake
+
+-------------------------------------------------------------------
+Thu Dec  3 22:21:48 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Rename a __builddir, __sourcedir and __builder to avoid
+  conflicts with the other RPM macros.
+- Add default linker flags to the %cmake_qt6 macro
+- Allow using extra parameters to the CMake and QMake build and
+  installation macros.
+
+-------------------------------------------------------------------
+Mon Nov 23 19:28:38 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update the translations install location.
+
+-------------------------------------------------------------------
+Fri Nov 13 08:31:21 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use Ninja by default.
+  Only Ninja will be the supported upstream for Qt 6. Generating
+  makefiles is still possible with the %qt6_use_make command.
+
+-------------------------------------------------------------------
+Tue Oct 13 08:53:52 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Enable QT_DISABLE_RPATH.
+  Random build failures were observed when installing some binaries.
+
+-------------------------------------------------------------------
+Tue Oct  6 07:02:21 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Create a variable for the metatypes folder.
+
+-------------------------------------------------------------------
+Sat Aug 15 12:02:56 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Make qt6-macros 'own' a couple more directories used in almost
+  every module.
+
+-------------------------------------------------------------------
+Wed Jul  8 14:30:25 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use dashes instead of underscores for documentation package names.
+
+-------------------------------------------------------------------
+Tue May 12 08:23:43 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Don't use the verbose flag when building docs.
+
+-------------------------------------------------------------------
+Wed May  6 08:52:47 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Don't mention multibuild usage for docs generation. This wasn't such
+  a good idea. multibuild is powerful when only minor changes between
+  flavors are needed. For Qt packages, that implied commenting out
+  large chunks of code in the spec, which makes the maintenance
+  harder and affects the spec file clarity.
+
+-------------------------------------------------------------------
+Mon Feb 10 20:09:41 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Change the %_qt6_docdir path. Installing the developer documentation
+  in a folder meant to be used for package documentation doesn't
+  make sense.
+
+-------------------------------------------------------------------
+Sun Feb  9 16:43:39 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Export QT_QPA_PLUGIN_PATH and QT_PLUGIN_PATH for qch docs creation
+- Create a %_qt6_cmakedir variable
+
+-------------------------------------------------------------------
+Mon Feb  3 08:27:51 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add qt6-macros.

@@ -1,0 +1,336 @@
+#
+# Macros for Qt6 packages
+#
+# SPDX-License-Identifier: MIT
+#
+####################################################################
+# Provides the following macros:
+#
+# %%cmake_qt6
+#   Runs CMake using the default paths for Qt6 packages
+#
+# %%qt6_build
+#   Builds the project with the selected build tool
+#
+# %%qt6_install
+#   Installs the project once built
+#
+# %%qt6_use_make
+#   Use 'make' instead of 'ninja' for building
+#
+#   Alternatively, you can add the following line in your spec file:
+#   %%global %%__qt6_build_tool make
+#
+# %%qt6_build_docs
+#   Build the documentation for the package
+#
+# %%qt6_install_docs
+#   Install the generated documentation
+#
+# %%qt6_doc_packages
+#   Creates documentation packages.
+#   When using this macro, two subpackages will be defined for
+#   qch and html docs.
+#
+# See below for details about documentation packages
+#
+# %%qt6_examples_package
+#   If the package you're building contains examples, this macro
+#   will create a -examples subpackages and handle the installed
+#   files.
+#
+# %%qt6_link_executables
+#   Executables are installed in %%{_qt6_bindir}.
+#   To avoid conflicts with older versions, symlinks are created
+#   in %%{_bindir} with the '6' suffix.
+#   You may call this macro in your %install section to create the
+#   links.
+#
+# %%qmake6
+#   Configure a project using qmake
+#
+# %%qmake6_build
+#   Builds a project configured using the %%qmake6 macro
+#
+# %%qmake6_install
+#   Installs a project configured using the %%qmake6 macro
+#
+####################################################################
+
+####################################################################
+# Notes about documentation packages:
+#
+# There are different ways to create documentation packages.
+#
+# NOTE: all methods described below need a 'BuildRequires: qt6-tools'
+# line.
+#
+# Method #1: Build flavors (recommended)
+#   The build service allows building different packages with a
+#   single spec file.
+#
+#   Create a _multibuild file containing:
+#       <multibuild>
+#         <flavor>docs</flavor>
+#       </multibuild>
+#
+#   Add this to the spec file header, add:
+#
+#       %global qt6_flavor @BUILD_FLAVOR@%{nil}
+#
+#   The following code shall be added after the other build requirements:
+#
+#       %if "%qt6_flavor" == "docs"
+#       BuildRequires:  qt6-tools
+#       %{qt6_doc_packages}
+#       %endif
+#
+#   This will ensure the 'qt6-tools' package is installed for building
+#   documentation and also define and populate the two documentation
+#   subpackages.
+#
+#   Two commands are available to disable parts of the spec file that are
+#   not needed when building the 'docs' flavor:
+#       %if %{qt6_docs_flavor}  : true if the docs flavor is built
+#       %if !%{qt6_docs_flavor} : true if the docs flavor is not built
+#       (note the position of the '!' sign)
+#
+#   They shall be used to ignore: 
+#     - non-docs packages descriptions
+#     - post-install actions
+#     - %files sections
+#
+#
+# Method #2: doc subpackage
+#   Create a spec file for the documentation package.
+#   The %%qt6_doc_packages macro will create the %%package and
+#   %%files sections for both the QCH and HTML documentation
+#   packages.
+#
+#   The %%qt6_build_docs and %%qt6_install_docs macros will
+#   respectively replace the %%qt6_build and %%qt6_install
+#   invokations.
+#
+#   When using a documentation subpackage, it is recommended to copy
+#   the 'BuildRequires' and '%%bcond' lines from the main package
+#   spec file.
+#
+#   Example:
+#   In qt6-svg-docs.spec, use %%qt6_doc_packages, %%qt6_build_docs
+#   and %%qt6_install_docs.
+#   2 subpackages will be defined (qt6-svg-docs-html and qt6-svg-docs-qch)
+#   and the respective %files sections will be populated automatically.
+#
+####################################################################
+
+#--------------------------------------------------------------
+
+%qt6_docs_flavor ("%qt6_flavor" == "docs")
+
+#--------------------------------------------------------------
+
+# Default paths
+%__qt6_sourcedir .
+%__qt6_builddir build
+
+# Use 'ninja' by default.
+# Alternative: Use the %%qt6_use_make macro
+%__qt6_build_tool %__ninja
+
+# Default build type
+%__qt6_build_type RelWithDebInfo
+
+# Module name (without the 'qt6-' prefix)
+%__qt6_module_name %(echo %{name} | cut -d'-' -f2)
+
+# _qt6_<variable> shall be used in files sections
+%_qt6_prefix          %{_prefix}
+%_qt6_libdir          %{_libdir}
+%_qt6_includedir      %{_includedir}/qt6
+%_qt6_sharedir        %{_datadir}
+%_qt6_archdatadir     %{_qt6_libdir}/qt6
+%_qt6_bindir          %{_qt6_archdatadir}/bin
+%_qt6_examplesdir     %{_qt6_archdatadir}/examples
+%_qt6_importsdir      %{_qt6_archdatadir}/imports
+%_qt6_libexecdir      %{_qt6_archdatadir}/libexec
+%_qt6_mkspecsdir      %{_qt6_archdatadir}/mkspecs
+%_qt6_pluginsdir      %{_qt6_archdatadir}/plugins
+%_qt6_qmldir          %{_qt6_archdatadir}/qml
+%_qt6_testsdir        %{_qt6_archdatadir}/tests
+%_qt6_datadir         %{_qt6_sharedir}/qt6
+%_qt6_docdir          %{_qt6_sharedir}/doc/qt6
+%_qt6_descriptionsdir %{_qt6_datadir}/modules
+%_qt6_translationsdir %{_qt6_datadir}/translations
+
+# Use %%{_sysconfdir}/xdg if %%{_distconfdir} is undefined
+%_qt6_sysconfdir %{?_distconfdir:%{_distconfdir}/xdg}%{!?_distconfdir:%{_sysconfdir}/xdg}
+
+# Variables only used for packaging
+%_qt6_cmakedir        %{_qt6_libdir}/cmake
+%_qt6_metatypesdir    %{_qt6_libdir}/metatypes
+
+#--------------------------------------------------------------
+
+%qt6_use_make %global __qt6_build_tool %__make
+
+#--------------------------------------------------------------
+%cmake_qt6 \
+  cmake -DCMAKE_BUILD_TYPE=%{__qt6_build_type} \\\
+        -DCMAKE_INSTALL_PREFIX=%{_qt6_prefix} \\\
+        -S %__qt6_sourcedir \\\
+        -B %__qt6_builddir \\\
+%if "%__qt6_build_tool" == "%__ninja" \
+        -GNinja \\\
+%else \
+        -G"Unix Makefiles" \\\
+%endif \
+        -DINSTALL_ARCHDATADIR=%{_qt6_archdatadir} \\\
+        -DINSTALL_BINDIR=%{_qt6_bindir} \\\
+        -DINSTALL_DATADIR=%{_qt6_datadir} \\\
+        -DINSTALL_DESCRIPTIONSDIR=%{_qt6_descriptionsdir} \\\
+        -DINSTALL_DOCDIR=%{_qt6_docdir} \\\
+        -DINSTALL_EXAMPLESDIR=%{_qt6_examplesdir} \\\
+        -DINSTALL_INCLUDEDIR=%{_qt6_includedir} \\\
+        -DINSTALL_LIBDIR=%{_qt6_libdir} \\\
+        -DINSTALL_LIBEXECDIR=%{_qt6_libexecdir} \\\
+        -DINSTALL_MKSPECSDIR=%{_qt6_mkspecsdir} \\\
+        -DINSTALL_PLUGINSDIR=%{_qt6_pluginsdir} \\\
+        -DINSTALL_QMLDIR=%{_qt6_qmldir} \\\
+        -DINSTALL_SYSCONFDIR=%{_qt6_sysconfdir} \\\
+        -DINSTALL_TESTSDIR=%{_qt6_testsdir} \\\
+        -DINSTALL_TRANSLATIONSDIR=%{_qt6_translationsdir} \\\
+        -DBUILD_WITH_PCH=FALSE \\\
+        -DQT_BUILD_EXAMPLES=TRUE \\\
+        -DQT_BUILD_TESTS=FALSE \\\
+        -DQT_DISABLE_RPATH=TRUE \\\
+        -DCMAKE_C_FLAGS="%{optflags}" \\\
+        -DCMAKE_CXX_FLAGS="%{optflags}" \\\
+        -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-undefined" \\\
+        -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-undefined" \\\
+        -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-undefined"
+
+#--------------------------------------------------------------
+
+%__qt6_build_options %__qt6_builddir %{?_smp_mflags}
+
+#--------------------------------------------------------------
+
+%qt6_build \
+%if %{qt6_docs_flavor} \
+    %{qt6_build_docs} \
+%else \
+    cmake --build \\%{__qt6_build_options} -v \
+%endif
+
+#--------------------------------------------------------------
+
+# NOTE:
+# The tools used to build building qch docs need to find
+# the 'minimal' QPA plugin and the path to the sqlite plugin location
+%qt6_build_docs \
+  export QT_QPA_PLUGIN_PATH="%{_qt6_pluginsdir}/platforms" \
+  export QT_PLUGIN_PATH="%{_qt6_pluginsdir}" \
+  cmake --build \\%{__qt6_build_options} -t docs_qt%{__qt6_module_name} \
+%{nil}
+
+#--------------------------------------------------------------
+
+# Note: The 'ninja' generator doesn't create 'install/fast' targets.
+%qt6_install \
+%if %{qt6_docs_flavor} \
+    %{qt6_install_docs} \
+%else \
+    DESTDIR=%{buildroot} cmake --build \\%{__qt6_build_options} -v \\\
+%if "%__qt6_build_tool" == "%__make" \
+  -t install/fast \
+%else \
+  -t install \
+%endif \
+%endif
+
+#--------------------------------------------------------------
+
+%qt6_install_docs \
+  DESTDIR=%{buildroot} cmake --build \\%{__qt6_build_options} -t install_docs_qt%{__qt6_module_name} \
+%{nil}
+
+#--------------------------------------------------------------
+
+%qt6_link_executables \
+  mkdir -p %{buildroot}%{_bindir} \
+  pushd %{buildroot}%{_qt6_bindir} \
+  for i in * ; do \
+    ln -s %{_qt6_bindir}/$i %{buildroot}%{_bindir}/${i}6 \
+  done \
+  popd \
+%{nil}
+
+#--------------------------------------------------------------
+
+# The %%qt6_doc_packages macro shall produce packages with
+# correct names if invoked in qt6-foo-docs.spec but also if
+# called from qt6-foo.spec
+%__qt6_doc_package_name qt6-%{__qt6_module_name}-docs
+
+%qt6_doc_packages \
+%package     -n %{__qt6_doc_package_name}-html \
+Summary:     Documentation for %{name} in HTML format \
+License:     GFDL-1.3-or-later \
+\
+%description -n %{__qt6_doc_package_name}-html \
+This package contains documentation for %{name} in HTML format. \
+\
+%package     -n %{__qt6_doc_package_name}-qch \
+Summary:     Documentation for %{name} in QCH format \
+License:     GFDL-1.3-or-later \
+\
+%description -n %{__qt6_doc_package_name}-qch \
+This package contains documentation for %{name} in QCH format. \
+\
+%files -n %{__qt6_doc_package_name}-html \
+%dir %{_qt6_docdir} \
+%{_qt6_docdir}/* \
+%exclude %{_qt6_docdir}/*.qch \
+\
+%files -n %{__qt6_doc_package_name}-qch \
+%dir %{_qt6_docdir} \
+%{_qt6_docdir}/*.qch \
+%{nil}
+
+#--------------------------------------------------------------
+
+%qt6_examples_package \
+%package examples \
+Summary:        Examples for the %{name} modules \
+\
+%description examples \
+Examples for the %{name} modules. \
+\
+%files examples \
+%{_qt6_examplesdir}/* \
+%{nil}
+
+#--------------------------------------------------------------
+
+# qmake still exists in Qt6
+%__qt6_qmake %{_qt6_bindir}/qmake
+
+#--------------------------------------------------------------
+
+%qmake6 \
+  %__qt6_qmake \\\
+  QMAKE_CXXFLAGS="$CXXFLAGS %{optflags}" \\\
+  QMAKE_CFLAGS="$CFLAGS %{optflags}" \\\
+  QMAKE_LFLAGS="$LDFLAGS -Wl,--as-needed -Wl,--no-undefined"
+
+#--------------------------------------------------------------
+
+%qmake6_build \
+  %{__make} %{?_smp_mflags} VERBOSE=1
+
+#--------------------------------------------------------------
+
+%qmake6_install \
+  %{__make} INSTALL_ROOT=%{buildroot} install
+
+#--------------------------------------------------------------
