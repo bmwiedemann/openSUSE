@@ -18,7 +18,7 @@
 
 Name:           libcerror
 %define lname	libcerror1
-%define timestamp 20181117
+%define timestamp 20201121
 Version:        0~%timestamp
 Release:        0
 Summary:        Library for cross-platform C error functions
@@ -26,7 +26,7 @@ License:        LGPL-3.0+
 Group:          Development/Libraries/C and C++
 Url:            https://github.com/libyal/libcerror/wiki
 Source:         https://github.com/libyal/%name/releases/download/%timestamp/%name-beta-%timestamp.tar.gz
-BuildRequires:  pkg-config
+# BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcstring) >= 20150101
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
