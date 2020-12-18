@@ -1,0 +1,8 @@
+<package name="qt6-translations" project="openSUSE:Factory">
+  <title>Qt 6 Translations</title>
+  <description>Translations for Qt6 libraries and tools.
+
+</description>
+  <devel project="KDE:Qt:6.0" package="qt6-translations"/>
+  <url>https://www.qt.io</url>
+</package>
