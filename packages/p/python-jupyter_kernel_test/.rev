@@ -32,4 +32,16 @@
     <comment></comment>
     <requestid>856666</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>db145fa6277042b76c11f2884cf0c2b0</srcmd5>
+    <version>0.3</version>
+    <time>1608318001</time>
+    <user>dimstar_suse</user>
+    <comment>- pip acutally needs flit in the current flavor for building the
+  wheel
+- adjust jupyter_kernel_test-pr37-usejsonschema.patch so that
+  jupyter-octave-kernel does not fail to test itself.
+</comment>
+    <requestid>856868</requestid>
+  </revision>
 </revisionlist>

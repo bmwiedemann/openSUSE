@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 17 23:07:14 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- pip acutally needs flit in the current flavor for building the
+  wheel
+- adjust jupyter_kernel_test-pr37-usejsonschema.patch so that
+  jupyter-octave-kernel does not fail to test itself.
+
+-------------------------------------------------------------------
 Thu Dec 17 11:17:27 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Provide the old jupyter package name only for the primary

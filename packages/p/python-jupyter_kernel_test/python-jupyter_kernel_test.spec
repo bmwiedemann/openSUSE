@@ -28,13 +28,13 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/jupyter_kernel_test
 Source:         %{url}/archive/%{version}.tar.gz#/%{mname}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gh#github.com/jupyter/jupyter_kernel_test#37 -- use jsonschema to validate messages, removes nose
-Patch0:         %{url}/pull/37.patch#/%{mname}-pr37-usejsonschema.patch
+Patch0:         %{mname}-pr37-usejsonschema.patch
+BuildRequires:  %{python_module flit}
 BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module jupyter_client}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-flit
 Requires:       python-jsonschema
 Requires:       python-jupyter_client
 Requires:       python-traitlets

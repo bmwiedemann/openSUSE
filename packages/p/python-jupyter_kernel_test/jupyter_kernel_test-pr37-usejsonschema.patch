@@ -516,7 +516,7 @@ index 0000000..e60e991
 +    "cursor_start": {"type": "number"},
 +    "cursor_end": {"type": "number"},
 +    "metadata": {"type": "object"},
-+}}
++}, "required": ["status", "matches", "cursor_start", "cursor_end"]}
 +
 +schema_fragments['history_request'] = {"properties": {
 +    'output' : {"type": "boolean"},
@@ -574,7 +574,7 @@ index 0000000..e60e991
 +    "status": {"const": "ok"},
 +    "protocol_version": {"type": "string"},
 +    "implementation": {"type": "string"},
-+    "implementation_version": {"type": "string"},
++    "implementation_version": {"type": ["string", "array"]},
 +    "language_info": {"type": "object"},
 +    "banner": {"type": "string"},
 +    "help_links": {"type": "array", "items": {"type": "object", "properties": {
