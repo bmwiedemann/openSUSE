@@ -16,10 +16,11 @@
 #
 
 
-%define lname libSPIRV-Tools-suse18
+%define _lto_cflags %nil
+%define lname libSPIRV-Tools-suse19
 
 Name:           spirv-tools
-Version:        2020.4
+Version:        2020.6
 Release:        0
 Summary:        API and commands for processing SPIR-V modules
 License:        Apache-2.0
@@ -36,7 +37,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
-BuildRequires:  spirv-headers >= 1.5.3.g18
+BuildRequires:  spirv-headers >= 1.5.3.g22
 
 %description
 The package includes an assembler, binary module parser,
@@ -64,12 +65,12 @@ validator, and is used in the standalone tools whilst also enabling
 integration into other code bases directly.
 
 %prep
-%setup -qn SPIRV-Tools-%version
-%autopatch -p1
+%autosetup -p1 -n SPIRV-Tools-%version
 
 %build
-%cmake -D"SPIRV-Headers_SOURCE_DIR=%_prefix"
-make %{?_smp_mflags}
+%cmake -DSPIRV-Headers_SOURCE_DIR="%_prefix" \
+	-DSPIRV_TOOLS_BUILD_STATIC:BOOL=OFF -DBUILD_SHARED_LIBS:BOOL=ON
+%cmake_build
 
 %install
 %cmake_install

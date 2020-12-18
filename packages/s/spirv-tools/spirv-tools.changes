@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec  8 12:30:46 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.6
+  * Take new (raytracing) termination instructions into account.
+  * Do run DCE if SPV_KHR_ray_query is used.
+  * Support SPV_KHR_fragment_shading_rate.
+  * Add validation support for the ray tracing built-in variables.
+
+-------------------------------------------------------------------
 Tue Aug 11 22:43:40 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.4

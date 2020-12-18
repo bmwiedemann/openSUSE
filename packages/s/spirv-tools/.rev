@@ -175,4 +175,12 @@
     <comment>- Update to release 2020.4</comment>
     <requestid>826223</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>25b7263922932700cea50e9c4486faf3</srcmd5>
+    <version>2020.6</version>
+    <time>1608317524</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>856020</requestid>
+  </revision>
 </revisionlist>
