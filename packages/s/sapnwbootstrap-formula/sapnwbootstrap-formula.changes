@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  3 16:12:08 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
+
+- Add requisites of netweaver installation to subsequent salt states 
+
+-------------------------------------------------------------------
 Wed Dec  2 18:41:35 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
 
 - Start the saptune systemd service 
