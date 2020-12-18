@@ -156,4 +156,12 @@ Not source compatible. Installable in parallel with all packages.</comment>
     <comment></comment>
     <requestid>806245</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f7cae02eded19314b091851bea43aff7</srcmd5>
+    <version>10.36</version>
+    <time>1608317550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856473</requestid>
+  </revision>
 </revisionlist>

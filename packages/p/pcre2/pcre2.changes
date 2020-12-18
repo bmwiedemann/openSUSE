@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec  5 12:41:55 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- pcre2 10.36:
+  * add GNU grep's -m (aka --max-count) option to pcre2grep
+  * unify the handling of substitution strings for both -O and
+    callouts in pcre2grep, with the addition of $x{...} and
+    $o{...} to allow for characters whose code points are greater
+    than 255 in Unicode mode
+
+-------------------------------------------------------------------
 Wed May 13 22:24:30 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Refresh spec-file via spec-cleaner.
