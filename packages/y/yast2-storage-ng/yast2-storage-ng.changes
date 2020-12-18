@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Dec 18 12:35:39 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- AutoYaST: setting the 'quotas' element to 'false' disables
+  subvolumes quotas, no matter whether the 'referenced_limit'
+  was specified or not (related to jsc#SLE-7742).
+- 4.3.33
+
+-------------------------------------------------------------------
+Thu Dec 17 11:31:34 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Fixed deletion of dependant devicegraph nodes (bsc#1179590)
+- 4.3.32
+
+-------------------------------------------------------------------
+Tue Dec 15 15:56:44 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- AutoYaST: added management of tmpfs file systems (jsc#SLE-11308).
+- 4.3.31
+
+-------------------------------------------------------------------
+Tue Dec 15 13:34:29 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Do not enforce installation of packages that are not strictly
+  needed (bsc#1065588).
+- Partitioner: improved calculation of which packages need to be
+  installed in the running system (bsc#1168077).
+
+-------------------------------------------------------------------
 Thu Dec 10 16:45:41 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - AutoYaST: add support for Btrfs quotas (jsc#SLE-7742).
