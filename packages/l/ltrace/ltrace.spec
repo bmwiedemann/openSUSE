@@ -32,6 +32,7 @@ Patch4:         arm-trace.patch
 Patch5:         gcc9-printf-s-null-argument.patch
 Patch6:         lens-double-free.patch
 Patch7:         gcc9-Wlto-type-mismatch.patch
+Patch8:         s390x-ptrace.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  binutils-devel
@@ -41,7 +42,7 @@ BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libtool
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  %ix86 s390 s390x ppc ppc64 ppc64le %arm x86_64 alpha ia64 m68k aarch64
+ExclusiveArch:  %ix86 s390x ppc ppc64 ppc64le %arm x86_64 alpha ia64 m68k aarch64
 # bug437293
 %ifarch ppc64
 Obsoletes:      ltrace-64bit
@@ -67,6 +68,7 @@ child processes may fail or some things may not work as expected.
 %patch5
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 %build
 ./autogen.sh

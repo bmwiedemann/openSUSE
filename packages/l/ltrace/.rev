@@ -380,4 +380,12 @@
   by moving check code to %check section. (forwarded request 847823 from jengelh)</comment>
     <requestid>847887</requestid>
   </revision>
+  <revision rev="45" vrev="12">
+    <srcmd5>c5e96d2788d7c88ad7443fe0279356aa</srcmd5>
+    <version>0.7.91</version>
+    <time>1608317803</time>
+    <user>dimstar_suse</user>
+    <comment>- Added s390x-ptrace.patch and remove 2 unused functions to fix 'expr_clone' error from latest release (forwarded request 855816 from skriesch)</comment>
+    <requestid>855835</requestid>
+  </revision>
 </revisionlist>
