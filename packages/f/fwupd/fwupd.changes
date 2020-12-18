@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 14 09:58:47 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fwupd-bsc1179790-disable-hintsystem.patch to remove
+  Block.HintSystem from ESP filtering (bsc#1179790)
+
+-------------------------------------------------------------------
 Wed Dec 09 07:53:07 UTC 2020 - glin@suse.com
 
 - Update to version 1.5.3:

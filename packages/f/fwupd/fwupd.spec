@@ -44,6 +44,8 @@ Source:         %{name}-%{version}.tar.xz
 Patch1:         fwupd-bsc1130056-change-shim-path.patch
 # PATCH-FIX-OPENSUSE fwupd-jscSLE-11766-close-efidir-leap-gap.patch jsc#SLE-11766 qkzhu@suse.com -- Set SLE and openSUSE esp os dir at runtime
 Patch2:         fwupd-jscSLE-11766-close-efidir-leap-gap.patch
+# PATCH-FIX-UPSTREAM fwupd-bsc1179790-disable-hintsystem.patch bsc#1179790 glin@suse.com Do not use the Block.HintSystem boolean for ESP filtering
+Patch3:         fwupd-bsc1179790-disable-hintsystem.patch
 
 BuildRequires:  dejavu-fonts
 %if %{with fish_support}

@@ -1,0 +1,21 @@
+commit c60e58b2cfa277950cce80c3a4d33a0faaa90f20
+Author: Richard Hughes <richard@hughsie.com>
+Date:   Mon Dec 14 09:36:46 2020 +0000
+
+    Do not use the Block.HintSystem boolean for ESP filtering
+    
+    Fixes https://github.com/fwupd/fwupd/issues/2676
+
+diff --git a/libfwupdplugin/fu-common.c b/libfwupdplugin/fu-common.c
+index a3cc2d82..2e25095f 100644
+--- a/libfwupdplugin/fu-common.c
++++ b/libfwupdplugin/fu-common.c
+@@ -2463,8 +2463,6 @@ fu_common_get_esp_default (GError **error)
+ 		g_autofree gchar *type = fu_volume_get_id_type (vol);
+ 		if (type == NULL)
+ 			continue;
+-		if (!fu_volume_is_internal (vol))
+-			continue;
+ 		if (g_strcmp0 (type, "vfat") == 0)
+ 			g_ptr_array_add (volumes_vfat, vol);
+ 	}

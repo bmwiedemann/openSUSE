@@ -327,4 +327,12 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
     <comment></comment>
     <requestid>854569</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>11cd81c3468d295ed1af0d52905d7675</srcmd5>
+    <version>1.5.3</version>
+    <time>1608317804</time>
+    <user>dimstar_suse</user>
+    <comment>remove Block.HintSystem from ESP filtering (bsc#1179790) (forwarded request 855909 from gary_lin)</comment>
+    <requestid>855933</requestid>
+  </revision>
 </revisionlist>
