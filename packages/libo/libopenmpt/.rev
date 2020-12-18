@@ -427,4 +427,41 @@
     <comment></comment>
     <requestid>812414</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>8aa6c2600db828e5e874f315c760aad1</srcmd5>
+    <version>0.5.4</version>
+    <time>1608317528</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.4:
+  * AMS: An upper bound for uncompressed sample size is now
+    established to avoid memory exhaustion from malformed files.
+  * DMF: Support early format beta versions (in particular versions
+    1-4).
+  * MED: Also use octave wrapping in 8-channel mode for MMD0/MMD1
+    modules.
+  * MED: If 8-channel mode is activated, ignore BPM mode.
+  * MED: Emulate tempo commands F01 and F02 quirk.
+  * MED: Tempo commands below 32 BPM were interpreted as tempo
+    slides.
+  * IMF: Instrument sample mapping was off by one octave, notable
+    in the guitar part of Astaris by Karsten Koch.
+Changes in 0.5.3:
+  * [Sec] Possible hang if a MED file claimed to contain 256 songs.
+  * [Bug] libopenmpt: openmpt::is_extension_supported2() exported
+    symbol was missing (C++).
+  * [Bug] openmpt::module::set_position_seconds sometimes behaved
+    as if the song end was reached when seeking into a pattern loop
+    and in some other corner cases.
+  * Increase threshold for ignoring panning commands from 820 to
+    830.
+  * Subsong names now fall back to the first pattern’s name if
+    empty.
+  * MO3: Avoid certain ModPlug hacks from being fixed up twice,
+    which could lead to e.g. very narrow pan swing range for old
+    OpenMPT IT files saved with a recent MO3 encoder version.
+  * MO3: Some files with corrupted envelope data could be rejected
+    completely (normally libopenmpt should fix up the envelope
+    data).</comment>
+    <requestid>856261</requestid>
+  </revision>
 </revisionlist>
