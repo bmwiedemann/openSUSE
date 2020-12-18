@@ -39,7 +39,7 @@
 %define _sysdir usr/lib
 
 Name:           multipath-tools
-Version:        0.8.4+192+suse.1bc10ad
+Version:        0.8.5+12+suse.3b0e9ca
 Release:        0
 Summary:        Tools to Manage Multipathed Devices with the device-mapper
 License:        GPL-2.0-only
@@ -214,10 +214,6 @@ exit 0
 %files
 %defattr(-,root,root)
 %doc README README.alua
-# SLE12-SP2 and earlier: dracut filesystem not own /usr/share/licenses
-%if 0%{?sle_version} && 0%{?sle_version} < 120300
-%dir %{_defaultlicensedir}
-%endif
 %license LICENSES/GPL-2.0
 %{_udevrulesdir}/11-dm-mpath.rules
 %{_udevrulesdir}/56-multipath.rules
@@ -267,12 +263,6 @@ exit 0
 %{_udevrulesdir}/66-kpartx.rules
 %{_udevrulesdir}/68-del-part-nodes.rules
 /%{_sysdir}/udev/kpartx_id
-# SLE12-SP1 and earlier: dracut does not own /usr/lib/dracut/dracut.conf.d
-%if 0%{?sle_version}
-%if 0%{?sle_version} <= 120100
-%dir /%{_sysdir}/dracut/dracut.conf.d
-%endif
-%endif
 /%{_sysdir}/dracut/dracut.conf.d/dm-parts.conf
 %{_mandir}/man8/kpartx.8*
 

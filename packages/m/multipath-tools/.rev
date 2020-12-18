@@ -1383,4 +1383,18 @@ I am resubmitting this one as that by accident I rejected the previous submit fr
 - Added README.alua (forwarded request 835293 from mwilck)</comment>
     <requestid>835294</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>71aedbad09ac9d810e00730aceb32d36</srcmd5>
+    <version>0.8.5+12+suse.3b0e9ca</version>
+    <time>1608317541</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to versioni 0.8.5+12+suse.3b0e9ca
+  * libmultipath: force map reload if udev incomplete 
+  (bsc#1178662, bsc#1172157, bsc#1175454, bsc#1176406)
+- Fixes from upstream 0.8.5
+  * multipath-tools: add MacroSAN arrays to hwtable
+  * libmultipath: Allow discovery of USB devices
+  (add configuration option &quot;allow_usb_devices&quot;) (forwarded request 856456 from mwilck)</comment>
+    <requestid>856457</requestid>
+  </revision>
 </revisionlist>

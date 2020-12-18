@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec 16 12:11:07 UTC 2020 - mwilck@suse.com
+
+- Update to versioni 0.8.5+12+suse.3b0e9ca
+  * libmultipath: force map reload if udev incomplete 
+  (bsc#1178662, bsc#1172157, bsc#1175454, bsc#1176406)
+- Fixes from upstream 0.8.5
+  * multipath-tools: add MacroSAN arrays to hwtable
+  * libmultipath: Allow discovery of USB devices
+  (add configuration option "allow_usb_devices")
+
+-------------------------------------------------------------------
+Fri Dec  4 11:27:54 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- Remove compatibility code for SLE <= 12-SP2 from spec file 
+
+-------------------------------------------------------------------
 Thu Sep 17 16:18:54 UTC 2020 - Martin Wilck <mwilck@suse.com>
 
 - Bugref for all minor fixes since SLE15-SP2 release (bsc#1176670)
@@ -66,7 +82,7 @@ Thu Aug 20 19:20:59 UTC 2020 - mwilck@suse.com
     (bsc#1172157)
   * multipathd: uev_trigger(): handle incomplete ADD events (bsc#1172157)
   * improve logging for failure to set dev_loss_tmo (bsc#1173060, bsc#1173064)
-  * libmultipath: add device to hwtable.c (bsc#1174026)
+  * libmultipath: add device to hwtable.c (bsc#1174026) (ETERNUS AHB)
 - New features
   * multipath: add -D option to skip multipathd delegation
   * multipath: delegate flushing maps to multipathd
@@ -154,6 +170,8 @@ Fri May 08 16:13:36 UTC 2020 - mwilck@suse.com
   (bsc#1165786)
 - Update upstream version to 0.8.4
   * drop nr_active field, always count active paths (bsc#1125043)
+  * kpartx: fix detection of dasd partition tables on loop devices
+    (bsc#1139775)
   * directio path checker fixes
   * lots of fixes for compiler warnings, and cleanups
   * nvme: update to nvme-cli 1.9
