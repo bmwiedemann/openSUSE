@@ -1,7 +1,7 @@
 #
 # spec file for package libuna
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 Name:           libuna
 %define lname	libuna1
-%define timestamp 20190102
+%define timestamp 20201204
 Version:        0~%timestamp
 Release:        0
 Summary:        Library to support Unicode and ASCII (byte string) conversions
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/libyal/libuna/wiki
+URL:            https://github.com/libyal/libuna/wiki
 Source:         https://github.com/libyal/libuna/releases/download/%timestamp/%{name}-alpha-%timestamp.tar.gz
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcdatetime)
@@ -84,7 +84,8 @@ rm -f "%{buildroot}/%{_libdir}"/*.la
 
 %files -n %lname
 %defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog ABOUT-NLS
+%license COPYING
+%doc AUTHORS ChangeLog ABOUT-NLS
 %{_libdir}/libuna.so.1*
 
 %files tools

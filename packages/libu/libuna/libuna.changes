@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 13 03:29:21 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20201204
+	* changes to handle high range surrogates
+	* added SCSU support
+
+-------------------------------------------------------------------
 Mon Mar 25 01:43:50 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to v0~20190102
