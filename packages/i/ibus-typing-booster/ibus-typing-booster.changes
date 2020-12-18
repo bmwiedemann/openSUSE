@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 17 20:47:16 UTC 2020 - maiku.fabian@gmail.com
+
+- Update to 2.10.2
+- Add vi-telex to the default input methods for vi_VN locale
+- Enable Unicode 13.1 Emoji in emoji-picker by default
+- Update emoji data to Unicode 13.1
+- Translation update from Weblate for zh_CN
+
+-------------------------------------------------------------------
 Tue Nov 10 12:21:28 UTC 2020 - maiku.fabian@gmail.com
 
 - Update to 2.10.1
