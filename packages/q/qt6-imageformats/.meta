@@ -1,0 +1,8 @@
+<package name="qt6-imageformats" project="openSUSE:Factory">
+  <title>Qt 6 ImageFormat Plugins</title>
+  <description>Plugins for additional image formats: TIFF, MNG, TGA, WEBP, WBMP
+
+</description>
+  <devel project="KDE:Qt:6.0" package="qt6-imageformats"/>
+  <url>https://www.qt.io</url>
+</package>
