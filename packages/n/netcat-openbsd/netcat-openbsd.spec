@@ -40,6 +40,7 @@ Patch11:        destination-port-list.patch
 Patch12:        use-flags-to-specify-listen-address.patch
 Patch13:        misc-failures-and-features.patch
 Patch14:        port-select-on-connect.patch
+Patch15:        enable-udp-ip_recverr.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libbsd)
 Provides:       nc6 = %{version}
@@ -65,7 +66,7 @@ for IPv6, proxies, and Unix sockets.
 
 %build
 make %{?_smp_mflags} \
-  CFLAGS="%{optflags}"
+  CFLAGS="%{optflags} -fvisibility=hidden"
 
 %install
 install -D -m0755 nc %{buildroot}%{_bindir}/nc

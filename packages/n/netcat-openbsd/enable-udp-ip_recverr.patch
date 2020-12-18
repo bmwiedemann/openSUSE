@@ -1,0 +1,35 @@
+Index: netcat-openbsd-1.203/netcat.c
+===================================================================
+--- netcat-openbsd-1.203.orig/netcat.c
++++ netcat-openbsd-1.203/netcat.c
+@@ -1889,6 +1889,21 @@ udptest(int s)
+ 	return 1;
+ }
+ 
++static int
++enable_icmp_errors (int family, int fd)
++{
++  int one = 1;
++  switch (family)
++    {
++    case AF_INET:
++      return setsockopt (fd, SOL_IP, IP_RECVERR, &one, sizeof (one));
++    case AF_INET6:
++      return setsockopt (fd, SOL_IPV6, IPV6_RECVERR, &one, sizeof (one));
++    default:
++      return -1;
++    }
++}
++
+ void
+ set_common_sockopts(int s, const struct sockaddr* sa)
+ {
+@@ -1982,6 +1997,8 @@ set_common_sockopts(int s, const struct
+ 			errx(1, "can't set IPv6 min hop count (unavailable)");
+ #endif
+ 	}
++	if(uflag)
++		enable_icmp_errors(af,s);
+ }
+ 
+ int

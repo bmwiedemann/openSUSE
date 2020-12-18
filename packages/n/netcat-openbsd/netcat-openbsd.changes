@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 15 13:15:37 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Build with hidden visibility since no symbols should be exported 
+
+-------------------------------------------------------------------
+Tue Dec 15 13:05:05 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- enable-udp-ip_recverr.patch: Enable IP_RECVERR on UDP sockets
+  to match *bsd behaviour and avoid long timeouts if an error
+  ocurrs.
+
+-------------------------------------------------------------------
 Mon Dec  7 13:09:09 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Add port-select-on-connect.patch: if -s is given but not -p
