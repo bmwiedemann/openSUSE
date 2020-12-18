@@ -33,8 +33,13 @@ Patch2:         7551_7550.diff
 Patch3:         0001-Fix-tests-with-newer-dulwich.patch
 # PATCH-FIX-UPSTREAM 0002-Fix-more-tests.patch lp#1890354 alarrosa@suse.com
 Patch4:         0002-Fix-more-tests.patch
+# PATCH-FIX-OPENSUSE skip_resource.setrlimit.patch lp#1883125 mcepl@suse.com
+# Don't run resource.setrlimit, which is not allowed in OBS
+Patch0:         skip_resource.setrlimit.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# full stdlib for sqlite3
+BuildRequires:  python3
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 Requires:       python3-configobj

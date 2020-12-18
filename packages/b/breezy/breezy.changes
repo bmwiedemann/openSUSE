@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Dec  6 21:26:25 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Require the full python3 stdlib for sqlite3 import
+  gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
+Fri Dec  4 19:25:44 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add skip_resource.setrlimit.patch to avoid tests failing in the limit
+  environment of osc build, where resource.setrlimit() doesn't work
+  (lp#1883125).
+
+-------------------------------------------------------------------
 Thu Aug 27 11:42:03 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Patches from upstream to build with Dulwich 0.20.5:

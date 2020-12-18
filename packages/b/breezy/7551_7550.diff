@@ -1,7 +1,7 @@
 === modified file 'breezy/git/branch.py'
---- a/breezy/git/branch.py	2020-05-06 00:45:15 +0000
-+++ b/breezy/git/branch.py	2020-06-21 02:49:35 +0000
-@@ -137,6 +137,7 @@
+--- a/breezy/git/branch.py
++++ b/breezy/git/branch.py
+@@ -137,6 +137,7 @@ class InterTagsFromGitToRemoteGit(InterT
          updates = {}
          conflicts = []
          source_tag_refs = self.source.branch.get_tag_refs()
@@ -9,7 +9,7 @@
  
          def get_changed_refs(old_refs):
              ret = dict(old_refs)
-@@ -150,6 +151,7 @@
+@@ -150,6 +151,7 @@ class InterTagsFromGitToRemoteGit(InterT
                      ret[ref_name] = unpeeled
                      updates[tag_name] = self.target.branch.repository.lookup_foreign_revision_id(
                          peeled)
@@ -17,7 +17,7 @@
                      self.target.branch._tag_refs = None
                  else:
                      conflicts.append(
-@@ -158,8 +160,14 @@
+@@ -158,8 +160,14 @@ class InterTagsFromGitToRemoteGit(InterT
                           self.target.branch.repository.lookup_foreign_revision_id(
                               old_refs[ref_name])))
              return ret
@@ -33,7 +33,7 @@
          return updates, set(conflicts)
  
  
-@@ -1170,6 +1178,7 @@
+@@ -1170,6 +1178,7 @@ class InterLocalGitRemoteGitBranch(Inter
                  isinstance(target, RemoteGitBranch))
  
      def _basic_push(self, overwrite, stop_revision, tag_selector=None):
@@ -41,7 +41,7 @@
          result = GitBranchPushResult()
          result.source_branch = self.source
          result.target_branch = self.target
-@@ -1201,9 +1210,17 @@
+@@ -1201,9 +1210,17 @@ class InterLocalGitRemoteGitBranch(Inter
                      continue
                  refs[tag_name_to_ref(name)] = sha
              return refs
@@ -60,11 +60,9 @@
          return result
  
  
-
-=== modified file 'breezy/git/interrepo.py'
---- a/breezy/git/interrepo.py	2020-02-18 03:11:01 +0000
-+++ b/breezy/git/interrepo.py	2020-06-21 02:49:35 +0000
-@@ -90,6 +90,7 @@
+--- a/breezy/git/interrepo.py
++++ b/breezy/git/interrepo.py
+@@ -90,6 +90,7 @@ from .repository import (
      )
  from .remote import (
      RemoteGitRepository,
@@ -72,7 +70,7 @@
      )
  from .unpeel_map import (
      UnpeelMap,
-@@ -377,8 +378,16 @@
+@@ -377,8 +378,16 @@ class InterToRemoteGitRepository(InterTo
              return ret
          self._warn_slow()
          with self.source_store.lock_read():
@@ -90,50 +88,48 @@
          # FIXME: revidmap?
          return revidmap, self.old_refs, new_refs
  
-
-=== modified file 'breezy/git/remote.py'
---- a/breezy/git/remote.py	2020-06-12 17:44:18 +0000
-+++ b/breezy/git/remote.py	2020-06-21 02:49:35 +0000
-@@ -441,10 +441,10 @@
+--- a/breezy/git/remote.py
++++ b/breezy/git/remote.py
+@@ -436,10 +436,10 @@ class RemoteGitDir(GitDir):
                  format=(format.encode('ascii') if format else None),
                  subdirs=subdirs,
                  prefix=(prefix.encode('utf-8') if prefix else None))
-+        except HangupException as e:
-+            raise parse_git_hangup(self.transport.external_url(), e)
-         except GitProtocolError as e:
-             raise parse_git_error(self.transport.external_url(), e)
--        except HangupException as e:
--            raise parse_git_hangup(self.transport.external_url(), e)
+-        except GitProtocolError as e:
+-            raise parse_git_error(self.transport.external_url(), e)
+         except HangupException as e:
+             raise parse_git_hangup(self.transport.external_url(), e)
++        except GitProtocolError as e:
++            raise parse_git_error(self.transport.external_url(), e)
          finally:
              if pb is not None:
                  pb.finished()
-@@ -465,10 +465,10 @@
+@@ -460,10 +460,10 @@ class RemoteGitDir(GitDir):
              self._refs = remote_refs_dict_to_container(
                  result.refs, result.symrefs)
              return result
-+        except HangupException as e:
-+            raise parse_git_hangup(self.transport.external_url(), e)
-         except GitProtocolError as e:
-             raise parse_git_error(self.transport.external_url(), e)
--        except HangupException as e:
--            raise parse_git_hangup(self.transport.external_url(), e)
+-        except GitProtocolError as e:
+-            raise parse_git_error(self.transport.external_url(), e)
+         except HangupException as e:
+             raise parse_git_hangup(self.transport.external_url(), e)
++        except GitProtocolError as e:
++            raise parse_git_error(self.transport.external_url(), e)
          finally:
              if pb is not None:
                  pb.finished()
-@@ -488,10 +488,10 @@
+@@ -483,10 +483,10 @@ class RemoteGitDir(GitDir):
              return self._client.send_pack(
                  self._client_path, get_changed_refs_wrapper,
                  generate_pack_data, progress)
-+        except HangupException as e:
-+            raise parse_git_hangup(self.transport.external_url(), e)
-         except GitProtocolError as e:
-             raise parse_git_error(self.transport.external_url(), e)
--        except HangupException as e:
--            raise parse_git_hangup(self.transport.external_url(), e)
+-        except GitProtocolError as e:
+-            raise parse_git_error(self.transport.external_url(), e)
+         except HangupException as e:
+             raise parse_git_hangup(self.transport.external_url(), e)
++        except GitProtocolError as e:
++            raise parse_git_error(self.transport.external_url(), e)
          finally:
              if pb is not None:
                  pb.finished()
-@@ -520,7 +520,11 @@
+@@ -515,7 +515,11 @@ class RemoteGitDir(GitDir):
  
          def generate_pack_data(have, want, ofs_delta=False):
              return pack_objects_to_data([])
@@ -146,7 +142,7 @@
  
      @property
      def user_url(self):
-@@ -663,7 +667,18 @@
+@@ -658,7 +662,18 @@ class RemoteGitDir(GitDir):
                  else:
                      return source_store.generate_pack_data(
                          have, want, progress=progress, ofs_delta=ofs_delta)
@@ -166,7 +162,7 @@
          push_result.new_revid = repo.lookup_foreign_revision_id(
              new_refs[actual_refname])
          if old_sha is not None:
-@@ -982,7 +997,12 @@
+@@ -977,7 +992,12 @@ class RemoteGitTagDict(GitTags):
  
          def generate_pack_data(have, want, ofs_delta=False):
              return pack_objects_to_data([])
@@ -180,7 +176,7 @@
  
  
  class RemoteGitBranch(GitBranch):
-@@ -1066,7 +1086,12 @@
+@@ -1061,7 +1081,12 @@ class RemoteGitBranch(GitBranch):
              return {self.ref: sha}
          def generate_pack_data(have, want, ofs_delta=False):
              return pack_objects_to_data([])
@@ -194,4 +190,3 @@
          self._sha = sha
  
  
-
