@@ -129,7 +129,6 @@
     <package name="suse-module-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="system-group-hardware" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="system-group-kvm" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="system-user-nobody" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="system-user-root" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="systemd" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="systemd-default-settings" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
@@ -1376,6 +1375,7 @@
     <package name="sysfsutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="system-user-flatpak" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="system-user-lp" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
+    <package name="system-user-nobody" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="system-user-srvGeoClue" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="systemd-default-settings-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="systemd-logger" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-defaults -->
