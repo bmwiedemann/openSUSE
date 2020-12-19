@@ -1406,7 +1406,7 @@
       <repopackage name="system-group-kvm"/>
       <repopackage name="system-user-flatpak" arch="x86_64"/>
       <repopackage name="system-user-lp" arch="x86_64"/>
-      <repopackage name="system-user-nobody"/>
+      <repopackage name="system-user-nobody" arch="x86_64"/>
       <repopackage name="system-user-root"/>
       <repopackage name="system-user-srvGeoClue" arch="x86_64"/>
       <repopackage name="systemd"/>

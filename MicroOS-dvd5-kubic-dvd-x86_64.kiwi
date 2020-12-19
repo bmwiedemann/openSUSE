@@ -624,7 +624,7 @@
       <repopackage name="sysfsutils" arch="x86_64"/>
       <repopackage name="system-group-hardware"/>
       <repopackage name="system-group-kvm"/>
-      <repopackage name="system-user-nobody"/>
+      <repopackage name="system-user-nobody" arch="x86_64"/>
       <repopackage name="system-user-root"/>
       <repopackage name="systemd"/>
       <repopackage name="systemd-default-settings"/>

@@ -1896,6 +1896,7 @@
     <package name="librscg1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="librsvg-2-2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="librsvg-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="librsync2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="librtlsdr0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="librubberband2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libruby2_7-2_7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3516,7 +3517,7 @@
     <package name="system-user-mail" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="system-user-man" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="system-user-news" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="system-user-nobody" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="system-user-nobody" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="system-user-qemu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="system-user-root" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="system-user-tftp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
