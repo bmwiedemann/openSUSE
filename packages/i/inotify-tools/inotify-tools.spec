@@ -17,20 +17,19 @@
 
 
 Name:           inotify-tools
-Version:        3.20.2.2
+Version:        3.20.11.0
 Release:        0
 Summary:        Tools for inotify
 License:        GPL-2.0-only
 Group:          System/Monitoring
-URL:            https://github.com/rvoicilas/inotify-tools/wiki/
-Source:         http://github.com/rvoicilas/inotify-tools/archive/%{version}.tar.gz
+URL:            https://github.com/inotify-tools/inotify-tools
+Source:         https://github.com/inotify-tools/inotify-tools/archive/%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  glibc-devel
 BuildRequires:  libtool
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 inotify is a kernel facility to watch file system changes. This
@@ -73,39 +72,34 @@ utilities for the kernel facility inotify.
 %configure --disable-static \
     --docdir=%{_docdir}/%{name} \
     --enable-doxygen
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 %fdupes %{buildroot}/%{_docdir}
 rm %{buildroot}/%{_libdir}/libinotifytools.la
 
 %post -n libinotifytools0 -p /sbin/ldconfig
-
 %postun -n libinotifytools0 -p /sbin/ldconfig
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %files
-%defattr(-,root,root)
 %{_bindir}/inotifywait
 %{_bindir}/inotifywatch
-%{_mandir}/man1/inotifywait.1.gz
-%{_mandir}/man1/inotifywatch.1.gz
+%{_mandir}/man1/inotifywait.1%{?ext_man}
+%{_mandir}/man1/inotifywatch.1%{?ext_man}
 
 %files -n libinotifytools0
-%defattr(-,root,root)
 %license COPYING
 %{_libdir}/libinotifytools.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/libinotifytools.so
 %{_includedir}/inotifytools/
 
 %files doc
-%defattr(-,root,root)
 %doc %{_docdir}/%{name}
 
 %changelog
