@@ -17,13 +17,13 @@
 
 
 Name:           imapfilter
-Version:        2.7.4
+Version:        2.7.5
 Release:        0
 Summary:        A mail filtering utility
 License:        MIT
 Group:          Productivity/Networking/Email/Utilities
 URL:            https://github.com/lefcha/imapfilter
-Source:         %{name}-%{version}.tar.gz
+Source:         https://github.com/lefcha/imapfilter/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  lua-devel >= 5.1
 BuildRequires:  openssl-devel
 BuildRequires:  pcre2-devel
@@ -44,7 +44,7 @@ extension language.
 %setup -q
 
 %build
-make PREFIX="%{_prefix}" MANDIR="%{_mandir}" MYCFLAGS="%{optflags} -I%{lua_incdir}" %{?_smp_mflags}
+%make_build PREFIX="%{_prefix}" MANDIR="%{_mandir}" MYCFLAGS="%{optflags} -I%{lua_incdir}"
 
 %install
 %make_install PREFIX="%{_prefix}" MANDIR="%{_mandir}"

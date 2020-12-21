@@ -343,4 +343,14 @@ It now only builds for &gt;12.2, not sure if there is a simple fix to get it to 
     <comment></comment>
     <requestid>851277</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>31102a1d56bfcf5c9abc2658f3e174a1</srcmd5>
+    <version>2.7.5</version>
+    <time>1608542682</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.7.5:
+  * New &quot;hostnames&quot; option can be used to disable hostname validation.
+  * Bug fix; &quot;certificates&quot; option incorrectly controlled hostname validation.</comment>
+    <requestid>857149</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 20 12:51:29 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.5:
+  * New "hostnames" option can be used to disable hostname validation.
+  * Bug fix; "certificates" option incorrectly controlled hostname validation. 
+
+-------------------------------------------------------------------
 Thu Nov 26 18:03:20 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.7.4:
