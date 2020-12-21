@@ -28,4 +28,12 @@
   - Fixed an off by one issue in ``utils.make_fitswcs_transform``. [#290]</comment>
     <requestid>812612</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>10514f090433db0cad9f55c861d337c5</srcmd5>
+    <version>0.16.0</version>
+    <time>1608542636</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>857035</requestid>
+  </revision>
 </revisionlist>
