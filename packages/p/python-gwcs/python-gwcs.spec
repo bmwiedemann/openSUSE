@@ -19,29 +19,30 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-gwcs
-Version:        0.13.0
+Version:        0.16.0
 Release:        0
 Summary:        Generalized World Coordinate System
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Astronomy
 URL:            https://gwcs.readthedocs.io/en/latest/
 Source:         https://files.pythonhosted.org/packages/source/g/gwcs/gwcs-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module asdf}
+BuildRequires:  %{python_module astropy >= 4.1}
+BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-asdf
-Requires:       python-astropy >= 4.0
-Recommends:     python-scipy
-Recommends:     python-matplotlib
+Requires:       python-astropy >= 4.1
+Requires:       python-numpy
+Requires:       python-scipy
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module asdf}
-BuildRequires:  %{python_module astropy >= 4.0}
-BuildRequires:  %{python_module pytest-astropy}
+BuildRequires:  %{python_module pytest-doctestplus}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy}
 # /SECTION
 %python_subpackages
 
