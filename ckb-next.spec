@@ -17,7 +17,7 @@
 
 
 Name:           ckb-next
-Version:        0.4.2
+Version:        0.4.3
 Release:        0
 Summary:        RGB driver for Corsair keyboard and mice
 License:        GPL-2.0-only AND BSD-3-Clause
@@ -34,8 +34,6 @@ Patch3:         ckb-next-no-cmake-modules.patch
 Patch4:         ckb-next-udev.patch
 # PATCH-FIX-UPSTREAM 422.patch boo#1135528
 Patch5:         422.patch
-# PATCH-FIX-UPSTREAM ckb-next-gcc10.patch
-Patch6:         ckb-next-gcc10.patch
 BuildRequires:  ImageMagick
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
@@ -43,12 +41,19 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  quazip-qt5-devel
 %endif
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Widgets) >= 5.2
+BuildRequires:  cmake(Qt5X11Extras)
+BuildRequires:  cmake(dbusmenu-qt5)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libpulse-simple)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(xcb)
+BuildRequires:  pkgconfig(xcb-ewmh)
+BuildRequires:  pkgconfig(xcb-screensaver)
 BuildRequires:  pkgconfig(zlib)
 Obsoletes:      ckb < %{version}
 Provides:       ckb = %{version}
@@ -100,7 +105,7 @@ ln -sf service %{buildroot}%{_sbindir}/rc%{name}-daemon
 %{_bindir}/%{name}
 %{_bindir}/%{name}-dev-detect
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/*/apps/%{name}.png
+%{_datadir}/icons/hicolor/*/apps/%{name}*.png
 %{_sbindir}/rc%{name}-daemon
 %{_libexecdir}/%{name}-daemon
 %{_libexecdir}/%{name}-animations

@@ -1,8 +1,8 @@
-Index: ckb-next-0.4.1/src/daemon/CMakeLists.txt
+Index: ckb-next-0.4.3/src/daemon/CMakeLists.txt
 ===================================================================
---- ckb-next-0.4.1.orig/src/daemon/CMakeLists.txt
-+++ ckb-next-0.4.1/src/daemon/CMakeLists.txt
-@@ -294,7 +294,7 @@ elseif (LINUX)
+--- ckb-next-0.4.3.orig/src/daemon/CMakeLists.txt
++++ ckb-next-0.4.3/src/daemon/CMakeLists.txt
+@@ -302,7 +302,7 @@ elseif (LINUX)
      endif ()
  
      # A way to check for systemd
@@ -10,8 +10,8 @@ Index: ckb-next-0.4.1/src/daemon/CMakeLists.txt
 +    if (EXISTS "/usr/lib/systemd/system" OR "systemd" IN_LIST FORCE_INIT_SYSTEM)
          message(STATUS "systemd detected")
          set(CKB_NEXT_INIT_SYSTEM "systemd" CACHE INTERNAL "")
-         set(DISALLOW_SYSVINIT TRUE)
-@@ -406,7 +406,7 @@ if (MACOS)
+         set(SYSTEMD_UNIT_INSTALL_DIR "/usr/lib/systemd/system" CACHE STRING "Where to install systemd unit files.")
+@@ -415,7 +415,7 @@ if (MACOS)
  elseif (LINUX)
      install(
          TARGETS ckb-next-daemon
@@ -20,10 +20,10 @@ Index: ckb-next-0.4.1/src/daemon/CMakeLists.txt
  endif ()
  
  # Declare target's auxiliary files installation paths
-Index: ckb-next-0.4.1/linux/systemd/ckb-next-daemon.service.in
+Index: ckb-next-0.4.3/linux/systemd/ckb-next-daemon.service.in
 ===================================================================
---- ckb-next-0.4.1.orig/linux/systemd/ckb-next-daemon.service.in
-+++ ckb-next-0.4.1/linux/systemd/ckb-next-daemon.service.in
+--- ckb-next-0.4.3.orig/linux/systemd/ckb-next-daemon.service.in
++++ ckb-next-0.4.3/linux/systemd/ckb-next-daemon.service.in
 @@ -5,7 +5,7 @@
  Description=Corsair Keyboards and Mice Daemon
  
