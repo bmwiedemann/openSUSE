@@ -1,0 +1,108 @@
+References: bsc#1178736
+
+Allow restart of xenwatchdogd in case it terminated unexpectetly.
+Index: xen-4.14.0-testing/tools/misc/xenwatchdogd.c
+===================================================================
+--- xen-4.14.0-testing.orig/tools/misc/xenwatchdogd.c
++++ xen-4.14.0-testing/tools/misc/xenwatchdogd.c
+@@ -9,12 +9,16 @@
+ #include <unistd.h>
+ #include <signal.h>
+ #include <stdio.h>
++#include <libgen.h>
++#include <syslog.h>
+ 
+ xc_interface *h;
+ int id = 0;
++static const char id_file[] = "/run/xenwatchdog_id.txt";
+ 
+-void daemonize(void)
++static void daemonize(const char *str)
+ {
++    const char *err_str = "";
+     switch (fork()) {
+     case -1:
+ 	err(1, "fork");
+@@ -23,7 +27,9 @@ void daemonize(void)
+     default:
+ 	exit(0);
+     }
+-    umask(0);
++#define err(x,s) do { err_str = (s); goto out; } while (0)
++    openlog(str, LOG_CONS, LOG_DAEMON);
++    umask(~(S_IRUSR|S_IWUSR));
+     if (setsid() < 0)
+ 	err(1, "setsid");
+     if (chdir("/") < 0)
+@@ -34,6 +40,10 @@ void daemonize(void)
+         err(1, "reopen stdout");
+     if(freopen("/dev/null", "w", stderr) == NULL)
+         err(1, "reopen stderr");
++    return;
++out:
++    syslog(LOG_ERR, "%s: %m", err_str);
++    exit(1);
+ }
+ 
+ void catch_exit(int sig)
+@@ -47,18 +57,21 @@ void catch_usr1(int sig)
+ {
+     if (id)
+         xc_watchdog(h, id, 0);
++    unlink(id_file);
+     exit(0);
+ }
+ 
+ int main(int argc, char **argv)
+ {
++    FILE *f;
+     int t, s;
+     int ret;
++    const char *err_str = "";
+ 
+     if (argc < 2)
+ 	errx(1, "usage: %s <timeout> <sleep>", argv[0]);
+ 
+-    daemonize();
++    daemonize(basename(argv[0]));
+ 
+     h = xc_interface_open(NULL, NULL, 0);
+     if (h == NULL)
+@@ -86,9 +99,25 @@ int main(int argc, char **argv)
+     if (signal(SIGUSR1, &catch_usr1) == SIG_ERR)
+ 	err(1, "signal");
+ 
+-    id = xc_watchdog(h, 0, t);
+-    if (id <= 0)
+-        err(1, "xc_watchdog setup");
++    f = fopen(id_file, "r");
++    if (f) {
++        if (fscanf(f, "%d", &id) != 1)
++            id = -1;
++        if (id <= 0)
++            err(1, "xc_watchdog setup");
++        syslog(LOG_INFO, "reusing id %d", id);
++        fclose(f);
++    } else {
++        id = xc_watchdog(h, 0, t);
++        syslog(LOG_INFO, "obtained id %d", id);
++        if (id <= 0)
++            err(1, "xc_watchdog setup");
++        f = fopen(id_file, "w");
++        if (f) {
++            fprintf(f, "%d\n", id);
++            fclose(f);
++        }
++    }
+ 
+     for (;;) {
+         sleep(s);
+@@ -96,4 +125,8 @@ int main(int argc, char **argv)
+         if (ret != 0)
+             err(1, "xc_watchdog");
+     }
++
++out:
++    syslog(LOG_ERR, "%s: %m", err_str);
++    exit(1);
+ }

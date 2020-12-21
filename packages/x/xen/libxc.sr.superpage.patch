@@ -149,7 +149,7 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_common.h
  
              /* Sender has invoked verify mode on the stream. */
              bool verify;
-@@ -426,6 +443,12 @@ struct xc_sr_context
+@@ -426,6 +443,14 @@ struct xc_sr_context
                      {
                          /* HVM context blob. */
                          struct xc_sr_blob context;
@@ -158,11 +158,13 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_common.h
 +                        struct xc_sr_bitmap attempted_1g;
 +                        struct xc_sr_bitmap attempted_2m;
 +                        struct xc_sr_bitmap allocated_pfns;
-+                        xen_pfn_t idx1G_prev, idx2M_prev;
++                        xen_pfn_t prev_populated_pfn;
++                        xen_pfn_t iteration_tracker_pfn;
++                        unsigned long iteration;
                      } restore;
                  };
              } hvm;
-@@ -440,6 +463,69 @@ extern struct xc_sr_save_ops save_ops_x8
+@@ -440,6 +465,78 @@ extern struct xc_sr_save_ops save_ops_x8
  extern struct xc_sr_restore_ops restore_ops_x86_pv;
  extern struct xc_sr_restore_ops restore_ops_x86_hvm;
  
@@ -187,6 +189,15 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_common.h
 +        return false;
 +
 +    set_bit(bit, bm->p);
++    return true;
++}
++
++static inline bool xc_sr_set_long_bit(unsigned long base_bit, struct xc_sr_bitmap *bm)
++{
++    if (!xc_sr_bitmap_resize(bm, base_bit + BITS_PER_LONG))
++        return false;
++
++    set_bit_long(base_bit, bm->p);
 +    return true;
 +}
 +
@@ -232,7 +243,7 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_common.h
  struct xc_sr_record
  {
      uint32_t type;
-@@ -490,14 +576,6 @@ int read_record_header(struct xc_sr_cont
+@@ -490,14 +587,6 @@ int read_record_header(struct xc_sr_cont
  int read_record_data(struct xc_sr_context *ctx, int fd, struct xc_sr_rhdr *rhdr,
                       struct xc_sr_record *rec);
  
@@ -471,7 +482,7 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_restore_x86_hvm.c
  
      free(ctx->x86.restore.cpuid.ptr);
      free(ctx->x86.restore.msr.ptr);
-@@ -249,6 +277,322 @@ static int x86_hvm_cleanup(struct xc_sr_
+@@ -249,6 +277,372 @@ static int x86_hvm_cleanup(struct xc_sr_
      return 0;
  }
  
@@ -483,6 +494,22 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_restore_x86_hvm.c
 +    xc_interface *xch = ctx->xch;
 +
 +    if ( !xc_sr_set_bit(pfn, &ctx->x86.hvm.restore.allocated_pfns) )
++    {
++        ERROR("Failed to realloc allocated_pfns bitmap");
++        errno = ENOMEM;
++        return -1;
++    }
++    return 0;
++}
++
++/*
++ * Set a range of pfns as allocated, expanding the tracking structures if needed.
++ */
++static int pfn_set_long_allocated(struct xc_sr_context *ctx, xen_pfn_t base_pfn)
++{
++    xc_interface *xch = ctx->xch;
++
++    if ( !xc_sr_set_long_bit(base_pfn, &ctx->x86.hvm.restore.allocated_pfns) )
 +    {
 +        ERROR("Failed to realloc allocated_pfns bitmap");
 +        errno = ENOMEM;
@@ -506,7 +533,7 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_restore_x86_hvm.c
 +{
 +    xc_interface *xch = ctx->xch;
 +    struct xc_sr_bitmap *bm;
-+    unsigned int order, shift;
++    unsigned int order;
 +    int i, done;
 +    xen_pfn_t extent;
 +
@@ -517,7 +544,7 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_restore_x86_hvm.c
 +        return false;
 +
 +    order = SUPERPAGE_1GB_SHIFT;
-+    sp->count = 1ULL << order;
++    sp->count = SUPERPAGE_1GB_NR_PFNS;
 +
 +    /* Allocate only if there is room for another superpage */
 +    if ( ctx->restore.tot_pages + sp->count > ctx->restore.max_pages )
@@ -532,12 +559,11 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_restore_x86_hvm.c
 +    if ( done == 0 )
 +        return false;
 +
-+    DPRINTF("1G base_pfn %" PRI_xen_pfn "\n", sp->base_pfn);
++    DPRINTF("1G %" PRI_xen_pfn "\n", sp->base_pfn);
 +
 +    /* Mark all 2MB pages as done to avoid overlapping allocation */
 +    bm = &ctx->x86.hvm.restore.attempted_2m;
-+    shift = SUPERPAGE_1GB_SHIFT - SUPERPAGE_2MB_SHIFT;
-+    for ( i = 0; i < (sp->count >> shift); i++ )
++    for ( i = 0; i < (SUPERPAGE_1GB_NR_PFNS/SUPERPAGE_2MB_NR_PFNS); i++ )
 +        xc_sr_set_bit((sp->base_pfn >> SUPERPAGE_2MB_SHIFT) + i, bm);
 +
 +    return true;
@@ -559,7 +585,7 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_restore_x86_hvm.c
 +        return false;
 +
 +    order = SUPERPAGE_2MB_SHIFT;
-+    sp->count = 1ULL << order;
++    sp->count = SUPERPAGE_2MB_NR_PFNS;
 +
 +    /* Allocate only if there is room for another superpage */
 +    if ( ctx->restore.tot_pages + sp->count > ctx->restore.max_pages )
@@ -574,7 +600,7 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_restore_x86_hvm.c
 +    if ( done == 0 )
 +        return false;
 +
-+    DPRINTF("2M base_pfn %" PRI_xen_pfn "\n", sp->base_pfn);
++    DPRINTF("2M %" PRI_xen_pfn "\n", sp->base_pfn);
 +    return true;
 +}
 +
@@ -587,7 +613,7 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_restore_x86_hvm.c
 +    xen_pfn_t extent;
 +
 +    order = 0;
-+    sp->count = 1ULL << order;
++    sp->count = 1UL;
 +
 +    /* Allocate only if there is room for another page */
 +    if ( ctx->restore.tot_pages + sp->count > ctx->restore.max_pages ) {
@@ -606,7 +632,7 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_restore_x86_hvm.c
 +        return false;
 +    }
 +
-+    DPRINTF("4K base_pfn %" PRI_xen_pfn "\n", sp->base_pfn);
++    DPRINTF("4K %" PRI_xen_pfn "\n", sp->base_pfn);
 +    return true;
 +}
 +/*
@@ -651,50 +677,61 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_restore_x86_hvm.c
 +        success = x86_hvm_alloc_4k(ctx, &sp);
 +    }
 +
-+    if ( success == true ) {
-+        do {
++    if ( success == false )
++        return -1;
++
++    do {
++        if ( sp.count >= BITS_PER_LONG ) {
++            sp.count -= BITS_PER_LONG;
++            ctx->restore.tot_pages += BITS_PER_LONG;
++            rc = pfn_set_long_allocated(ctx, sp.base_pfn + sp.count);
++        } else {
 +            sp.count--;
 +            ctx->restore.tot_pages++;
 +            rc = pfn_set_allocated(ctx, sp.base_pfn + sp.count);
-+            if ( rc )
-+                break;
-+        } while ( sp.count );
-+    }
++        }
++        if ( rc )
++            break;
++    } while ( sp.count );
++
 +    return rc;
 +}
 +
-+static bool x86_hvm_punch_hole(struct xc_sr_context *ctx, xen_pfn_t max_pfn)
++/*
++ * Deallocate memory.
++ * There was likely an optimistic superpage allocation.
++ * This means more pages may have been allocated past gap_end.
++ * This range is not freed now. Incoming higher pfns will release it.
++ */
++static int x86_hvm_punch_hole(struct xc_sr_context *ctx,
++                               xen_pfn_t gap_start, xen_pfn_t gap_end)
 +{
 +    xc_interface *xch = ctx->xch;
 +    struct xc_sr_bitmap *bm;
-+    xen_pfn_t _pfn, pfn, min_pfn;
-+    uint32_t domid, freed = 0, order;
-+    int rc = -1;
++    xen_pfn_t _pfn, pfn;
++    uint32_t domid, freed = 0;
++    int rc;
 +
-+    /*
-+     * Scan the entire superpage because several batches will fit into
-+     * a superpage, and it is unknown which pfn triggered the allocation.
-+     */
-+    order = SUPERPAGE_1GB_SHIFT;
-+    pfn = min_pfn = (max_pfn >> order) << order;
-+
-+    while ( pfn <= max_pfn )
++    bm = &ctx->x86.hvm.restore.allocated_pfns;
++    if ( !xc_sr_bitmap_resize(bm, gap_end) )
 +    {
-+        bm = &ctx->x86.hvm.restore.allocated_pfns;
-+        if ( !xc_sr_bitmap_resize(bm, pfn) )
++        PERROR("Failed to realloc allocated_pfns %" PRI_xen_pfn, gap_end);
++        return -1;
++    }
++
++    pfn = gap_start;
++
++    while ( pfn <= gap_end )
++    {
++        if ( xc_sr_test_and_clear_bit(pfn, bm) )
 +        {
-+            PERROR("Failed to realloc allocated_pfns %" PRI_xen_pfn, pfn);
-+            return false;
-+        }
-+        if ( !pfn_is_populated(ctx, pfn) &&
-+            xc_sr_test_and_clear_bit(pfn, bm) ) {
 +            domid = ctx->domid;
 +            _pfn = pfn;
 +            rc = xc_domain_decrease_reservation_exact(xch, domid, 1, 0, &_pfn);
 +            if ( rc )
 +            {
 +                PERROR("Failed to release pfn %" PRI_xen_pfn, pfn);
-+                return false;
++                return -1;
 +            }
 +            ctx->restore.tot_pages--;
 +            freed++;
@@ -703,90 +740,114 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_restore_x86_hvm.c
 +    }
 +    if ( freed )
 +        DPRINTF("freed %u between %" PRI_xen_pfn " %" PRI_xen_pfn "\n",
-+                freed, min_pfn, max_pfn);
-+    return true;
++                freed, gap_start, gap_end);
++    return 0;
++}
++
++static int x86_hvm_unpopulate_page(struct xc_sr_context *ctx, xen_pfn_t pfn)
++{
++    xc_sr_test_and_clear_bit(pfn, &ctx->restore.populated_pfns);
++    return x86_hvm_punch_hole(ctx, pfn, pfn);
++}
++
++static int x86_hvm_populate_page(struct xc_sr_context *ctx, xen_pfn_t pfn)
++{
++    xen_pfn_t gap_start, gap_end;
++    bool has_gap, first_iteration;
++    int rc;
++
++    /*
++     * Check for a gap between the previous populated pfn and this pfn.
++     * In case a gap exists, it is required to punch a hole to release memory,
++     * starting after the previous pfn and before this pfn.
++     *
++     * But: this can be done only during the first iteration, which is the
++     * only place there superpage allocations are attempted. All following
++     * iterations lack the info to properly maintain prev_populated_pfn.
++     */
++    has_gap = ctx->x86.hvm.restore.prev_populated_pfn + 1 < pfn;
++    first_iteration = ctx->x86.hvm.restore.iteration == 0;
++    if ( has_gap && first_iteration )
++    {
++        gap_start = ctx->x86.hvm.restore.prev_populated_pfn + 1;
++        gap_end = pfn - 1;
++
++        rc = x86_hvm_punch_hole(ctx, gap_start, gap_end);
++        if ( rc )
++            goto err;
++    }
++
++    rc = x86_hvm_allocate_pfn(ctx, pfn);
++    if ( rc )
++        goto err;
++    rc = pfn_set_populated(ctx, pfn);
++    if ( rc )
++        goto err;
++    ctx->x86.hvm.restore.prev_populated_pfn = pfn;
++
++    rc = 0;
++err:
++    return rc;
 +}
 +
 +/*
 + * Try to allocate superpages.
-+ * This works without memory map only if the pfns arrive in incremental order.
++ * This works without memory map because the pfns arrive in incremental order.
++ * All pfn numbers and their type are submitted.
++ * Only pfns with data will have also pfn content transmitted.
 + */
 +static int x86_hvm_populate_pfns(struct xc_sr_context *ctx, unsigned count,
 +                                 const xen_pfn_t *original_pfns,
 +                                 const uint32_t *types)
 +{
 +    xc_interface *xch = ctx->xch;
-+    xen_pfn_t pfn, min_pfn = original_pfns[0], max_pfn = original_pfns[0];
-+    xen_pfn_t idx1G, idx2M;
-+    unsigned i, order;
-+    int rc = -1;
++    xen_pfn_t pfn, min_pfn, max_pfn;
++    bool has_data, populated;
++    unsigned i = count;
++    int rc = 0;
 +
-+    /* Loop once over the array to show statistics */
-+    for ( i = 0; i < count; ++i )
-+    {
-+        if ( original_pfns[i] < min_pfn )
-+            min_pfn = original_pfns[i];
-+        if ( original_pfns[i] > max_pfn )
-+            max_pfn = original_pfns[i];
-+    }
++    min_pfn = count ? original_pfns[0] : 0;
++    max_pfn = count ? original_pfns[count - 1] : 0;
 +    DPRINTF("batch of %u pfns between %" PRI_xen_pfn " %" PRI_xen_pfn "\n",
 +            count, min_pfn, max_pfn);
++
++    /*
++     * There is no indicator for a new iteration.
++     * Simulate it by checking if a lower pfn is coming in.
++     * In the end it matters only to know if this iteration is the first one.
++     */
++    if ( min_pfn < ctx->x86.hvm.restore.iteration_tracker_pfn )
++    {
++        ctx->x86.hvm.restore.iteration++;
++        errno = 0;
++        ERROR("%s: iteration %lu", __func__, ctx->x86.hvm.restore.iteration + 1);
++    }
++    ctx->x86.hvm.restore.iteration_tracker_pfn = min_pfn;
 +
 +    for ( i = 0; i < count; ++i )
 +    {
 +        pfn = original_pfns[i];
-+        idx1G = pfn >> SUPERPAGE_1GB_SHIFT;
-+        idx2M = pfn >> SUPERPAGE_2MB_SHIFT;
++
++        has_data = page_type_has_stream_data(types[i]);
++        populated = pfn_is_populated(ctx, pfn);
 +
 +        /*
-+         * If this pfn is in another 2MB superpage it is required to punch holes
-+         * to release memory, starting from the 1GB boundary up to the highest
-+         * pfn within the previous 2MB superpage.
++         * page has data, pfn populated: nothing to do
++         * page has data, pfn not populated: likely never seen before
++         * page has no data, pfn populated: likely ballooned out during migration
++         * page has no data, pfn not populated: nothing to do
 +         */
-+        if ( ctx->x86.hvm.restore.idx1G_prev == idx1G &&
-+             ctx->x86.hvm.restore.idx2M_prev == idx2M )
++        if ( has_data && !populated )
 +        {
-+            /* Same 2MB superpage, nothing to do */
-+            ;
-+        } else {
-+            /*
-+             * If this next pfn is within another 1GB or 2MB superpage it is
-+             * required to scan the entire previous superpage because there
-+             * might be holes between the last pfn and the end of the superpage.
-+             */
-+            if ( ctx->x86.hvm.restore.idx1G_prev != idx1G )
-+            {
-+                order = SUPERPAGE_1GB_SHIFT;
-+                max_pfn = ((ctx->x86.hvm.restore.idx1G_prev + 1) << order) - 1;
-+            }
-+            else
-+            {
-+                order = SUPERPAGE_2MB_SHIFT;
-+                max_pfn = ((ctx->x86.hvm.restore.idx2M_prev + 1) << order) - 1;
-+            }
-+
-+            if ( x86_hvm_punch_hole(ctx, max_pfn) == false )
-+                goto err;
-+        }
-+
-+        if ( (types[i] != XEN_DOMCTL_PFINFO_XTAB &&
-+              types[i] != XEN_DOMCTL_PFINFO_BROKEN) &&
-+             !pfn_is_populated(ctx, pfn) )
++            rc = x86_hvm_populate_page(ctx, pfn);
++        } else if ( !has_data && populated )
 +        {
-+            rc = x86_hvm_allocate_pfn(ctx, pfn);
-+            if ( rc )
-+                goto err;
-+            rc = pfn_set_populated(ctx, pfn);
-+            if ( rc )
-+                goto err;
++            rc = x86_hvm_unpopulate_page(ctx, pfn);
 +        }
-+        ctx->x86.hvm.restore.idx1G_prev = idx1G;
-+        ctx->x86.hvm.restore.idx2M_prev = idx2M;
++        if ( rc )
++            break;
 +    }
 +
-+    rc = 0;
-+
-+ err:
 +    return rc;
 +}
 +
@@ -794,7 +855,7 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_restore_x86_hvm.c
  struct xc_sr_restore_ops restore_ops_x86_hvm =
  {
      .pfn_is_valid    = x86_hvm_pfn_is_valid,
-@@ -257,6 +601,7 @@ struct xc_sr_restore_ops restore_ops_x86
+@@ -257,6 +651,7 @@ struct xc_sr_restore_ops restore_ops_x86
      .set_page_type   = x86_hvm_set_page_type,
      .localise_page   = x86_hvm_localise_page,
      .setup           = x86_hvm_setup,

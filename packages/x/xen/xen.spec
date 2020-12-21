@@ -25,7 +25,7 @@
 Name:           xen
 ExclusiveArch:  %ix86 x86_64 aarch64
 %define changeset 41121
-%define xen_build_dir xen-4.14.0-testing
+%define xen_build_dir xen-4.14.1-testing
 #
 %define with_gdbsx 0
 %define with_dom0_support 0
@@ -125,12 +125,12 @@ BuildRequires:  makeinfo
 BuildRequires:  pesign-obs-integration
 %endif
 
-Version:        4.14.0_12
+Version:        4.14.1_02
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
 Group:          System/Kernel
-Source0:        xen-4.14.0-testing-src.tar.bz2
+Source0:        xen-4.14.1-testing-src.tar.bz2
 Source1:        stubdom.tar.bz2
 Source5:        ipxe.tar.bz2
 Source6:        mini-os.tar.bz2
@@ -163,54 +163,8 @@ Source10183:    xen_maskcalc.py
 # For xen-libs
 Source99:       baselibs.conf
 # Upstream patches
-Patch1:         5f1a9916-x86-S3-put-data-sregs-into-known-state.patch
-Patch2:         5f21b9fd-x86-cpuid-APIC-bit-clearing.patch
-Patch3:         5f479d9e-x86-begin-to-support-MSR_ARCH_CAPS.patch
-Patch4:         5f4cf06e-x86-Dom0-expose-MSR_ARCH_CAPS.patch
-Patch5:         5f4cf96a-x86-PV-fix-SEGBASE_GS_USER_SEL.patch
-Patch6:         5f560c42-x86-PV-64bit-segbase-consistency.patch
-Patch7:         5f560c42-x86-PV-rewrite-segment-ctxt-switch.patch
-Patch8:         5f5b6b7a-hypfs-fix-custom-param-writes.patch
-Patch9:         5f607915-x86-HVM-more-consistent-IO-completion.patch
-Patch10:        5f6a002d-x86-PV-handle-MSR_MISC_ENABLE-correctly.patch
-Patch11:        5f6a0049-memory-dont-skip-RCU-unlock-in-acquire_resource.patch
-Patch12:        5f6a0067-x86-vPT-fix-race-when-migrating-timers.patch
-Patch13:        5f6a008e-x86-MSI-drop-read_msi_msg.patch
-Patch14:        5f6a00aa-x86-MSI-X-restrict-reading-of-PBA-bases.patch
-Patch15:        5f6a00c4-evtchn-relax-port_is_valid.patch
-Patch16:        5f6a00df-x86-PV-avoid-double-exception-injection.patch
-Patch17:        5f6a00f4-evtchn-add-missing-barriers.patch
-Patch18:        5f6a0111-evtchn-x86-enforce-correct-upper-limit.patch
-Patch19:        5f6a013f-evtchn_reset-shouldnt-succeed-with.patch
-Patch20:        5f6a0160-evtchn-IRQ-safe-per-channel-lock.patch
-Patch21:        5f6a0178-evtchn-address-races-with-evtchn_reset.patch
-Patch22:        5f6a01a4-evtchn-preempt-in-evtchn_destroy.patch
-Patch23:        5f6a01c6-evtchn-preempt-in-evtchn_reset.patch
-Patch24:        5f6cfb5b-x86-PV-dont-clobber-NT-on-return-to-guest.patch
-Patch25:        5f6cfb5b-x86-PV-dont-GP-for-SYSENTER-with-NT-set.patch
-Patch26:        5f71a21e-x86-S3-fix-shadow-stack-resume.patch
-Patch27:        5f76ca65-evtchn-Flask-prealloc-for-send.patch
-Patch28:        5f76caaf-evtchn-FIFO-use-stable-fields.patch
-Patch29:        5f897c25-x86-traps-fix-read_registers-for-DF.patch
-Patch30:        5f897c7b-x86-smpboot-restrict-memguard_guard_stack.patch
-Patch31:        5f8ed5d3-x86-mm-map_pages_to_xen-single-exit-path.patch
-Patch32:        5f8ed5eb-x86-mm-modify_xen_mappings-one-exit-path.patch
-Patch33:        5f8ed603-x86-mm-prevent-races-in-mapping-updates.patch
-Patch34:        5f8ed635-IOMMU-suppress-iommu_dont_flush_iotlb-when.patch
-Patch35:        5f8ed64c-IOMMU-hold-page-ref-until-TLB-flush.patch
-Patch36:        5f8ed682-AMD-IOMMU-convert-amd_iommu_pte.patch
-Patch37:        5f8ed69c-AMD-IOMMU-update-live-PTEs-atomically.patch
-Patch38:        5f8ed6b0-AMD-IOMMU-suitably-order-DTE-mods.patch
-Patch28601:     xsa286-1.patch
-Patch28602:     xsa286-2.patch
-Patch28603:     xsa286-3.patch
-Patch28604:     xsa286-4.patch
-Patch28605:     xsa286-5.patch
-Patch28606:     xsa286-6.patch
-Patch35101:     xsa351-1.patch
-Patch35102:     xsa351-2.patch
-Patch35103:     xsa351-3.patch
-#
+Patch1:         5fca3b32-tools-libs-ctrl-fix-dumping-of-ballooned-guest.patch
+# libxc
 Patch300:       libxc-sr-3cccdae45242dab27198b8e150be0c85acd5d3c9.patch
 Patch301:       libxc-sr-readv_exact.patch
 Patch302:       libxc-sr-add-xc_is_known_page_type.patch
@@ -235,6 +189,9 @@ Patch320:       libxc-sr-restore-populate_pfns-pfns.patch
 Patch321:       libxc-sr-restore-read_record.patch
 Patch322:       libxc-sr-restore-handle_buffered_page_data.patch
 Patch323:       libxc-sr-restore-handle_incoming_page_data.patch
+Patch324:       libxc-bitmap-50a5215f30e964a6f16165ab57925ca39f31a849.patch
+Patch325:       libxc-bitmap-longs.patch
+Patch326:       libxc-bitmap-long.patch
 # Our platform specific patches
 Patch400:       xen-destdir.patch
 Patch401:       vif-bridge-no-iptables.patch
@@ -268,7 +225,7 @@ Patch464:       libxl.pvscsi.patch
 Patch465:       xen.libxl.dmmd.patch
 Patch466:       libxl.set-migration-constraints-from-cmdline.patch
 Patch467:       xenstore-run-in-studomain.patch
-Patch468:       libxl.libxl__domain_pvcontrol.patch
+Patch468:       libxl.fix-libacpi-dependency.patch
 Patch469:       libxl.helper_done-crash.patch
 Patch470:       libxl.LIBXL_HOTPLUG_TIMEOUT.patch
 Patch471:       libxc.migrate_tracking.patch
@@ -280,12 +237,13 @@ Patch502:       bin-python3-conversion.patch
 Patch600:       xen.bug1026236.suse_vtsc_tolerance.patch
 Patch601:       x86-ioapic-ack-default.patch
 Patch602:       x86-cpufreq-report.patch
+Patch603:       xenwatchdogd-options.patch
+Patch604:       xenwatchdogd-restart.patch
 Patch621:       xen.build-compare.doc_html.patch
 Patch623:       ipxe-no-error-logical-not-parentheses.patch
 Patch624:       ipxe-use-rpm-opt-flags.patch
 # Build patches
 Patch99996:     xen.stubdom.newlib.patch
-Patch99998:     tmp_build.patch
 Patch99999:     reproducible.patch
 URL:            http://www.cl.cam.ac.uk/Research/SRG/netos/xen/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -463,53 +421,7 @@ Authors:
 %setup -q -n %xen_build_dir -a 1 -a 5 -a 6 -a 57
 # Upstream patches
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
-%patch19 -p1
-%patch20 -p1
-%patch21 -p1
-%patch22 -p1
-%patch23 -p1
-%patch24 -p1
-%patch25 -p1
-%patch26 -p1
-%patch27 -p1
-%patch28 -p1
-%patch29 -p1
-%patch30 -p1
-%patch31 -p1
-%patch32 -p1
-%patch33 -p1
-%patch34 -p1
-%patch35 -p1
-%patch36 -p1
-%patch37 -p1
-%patch38 -p1
-%patch28601 -p1
-%patch28602 -p1
-%patch28603 -p1
-%patch28604 -p1
-%patch28605 -p1
-%patch28606 -p1
-%patch35101 -p1
-%patch35102 -p1
-%patch35103 -p1
-#
+# libxc
 %patch300 -p1
 %patch301 -p1
 %patch302 -p1
@@ -534,6 +446,9 @@ Authors:
 %patch321 -p1
 %patch322 -p1
 %patch323 -p1
+%patch324 -p1
+%patch325 -p1
+%patch326 -p1
 # Our platform specific patches
 %patch400 -p1
 %patch401 -p1
@@ -579,12 +494,13 @@ Authors:
 %patch600 -p1
 %patch601 -p1
 %patch602 -p1
+%patch603 -p1
+%patch604 -p1
 %patch621 -p1
 %patch623 -p1
 %patch624 -p1
 # Build patches
 %patch99996 -p1
-%patch99998 -p1
 %patch99999 -p1
 
 %build
@@ -1109,7 +1025,6 @@ rm -f  %{buildroot}/%{_bindir}/vchan-socket-proxy
 rm -f  %{buildroot}/%{_bindir}/xenalyze*
 rm -f  %{buildroot}/%{_bindir}/xenco*
 rm -f  %{buildroot}/%{_bindir}/xen-cpuid
-rm -f  %{buildroot}/%{_bindir}/xenstore*
 rm -f  %{buildroot}/%{_bindir}/pygrub
 rm -f  %{buildroot}/%{_bindir}/remus
 rm -f  %{buildroot}/usr/etc/qemu/target-x86_64.conf
@@ -1314,9 +1229,9 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 %defattr(-,root,root)
 %ifarch %ix86 x86_64
 /usr/bin/xen-detect
+%exclude /usr/bin/xenstore-control
 %endif
-/bin/domu-xenstore*
-/bin/xenstore-*
+/usr/bin/xenstore*
 %if %{?with_dom0_support}0
 %config %{_unitdir}/%{name}-vcpu-watch.service
 %endif

@@ -2515,4 +2515,12 @@
     <comment>Security and Maintenance update for Tumbleweed</comment>
     <requestid>847616</requestid>
   </revision>
+  <revision rev="294" vrev="1">
+    <srcmd5>ec5f55b15d61df776d68502fced1d50b</srcmd5>
+    <version>4.14.1_02</version>
+    <time>1608542533</time>
+    <user>dimstar_suse</user>
+    <comment>Update to Xen 4.14.1 with several security fixes</comment>
+    <requestid>856892</requestid>
+  </revision>
 </revisionlist>
