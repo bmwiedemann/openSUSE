@@ -279,4 +279,12 @@
     <comment></comment>
     <requestid>817029</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>ad284132a058e404d47f3df77c6d9a0d</srcmd5>
+    <version>1.14.1</version>
+    <time>1608550528</time>
+    <user>dimstar_suse</user>
+    <comment>update (forwarded request 857106 from mschnitzer)</comment>
+    <requestid>857109</requestid>
+  </revision>
 </revisionlist>
