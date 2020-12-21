@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 18 21:11:57 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fix error caused by uninitialized DEBUG variable
+
+-------------------------------------------------------------------
+Thu Dec 17 16:00:16 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Don't create CA certificates if certs are provided
+
+-------------------------------------------------------------------
 Fri Nov 20 14:57:58 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add sieve support

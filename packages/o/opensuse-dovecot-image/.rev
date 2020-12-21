@@ -7,4 +7,14 @@
     <comment>Initial dovecot image, should be released on registry.opensuse.org</comment>
     <requestid>850100</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9ef1398478bddde8cce09067cbfc084a</srcmd5>
+    <version>1.0.0</version>
+    <time>1608542639</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix error caused by uninitialized DEBUG variable
+
+- Don't create CA certificates if certs are provided</comment>
+    <requestid>857092</requestid>
+  </revision>
 </revisionlist>
