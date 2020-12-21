@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 15 08:59:07 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
+
+- Fix build with ICU 68:
+  * Added icu-68.patch
+  * Added icu-68-2.patch
+
+-------------------------------------------------------------------
 Fri Nov 20 12:10:08 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.15.2:

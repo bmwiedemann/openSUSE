@@ -57,6 +57,9 @@ Patch2:         disable-gpu-when-using-nouveau-boo-1005323.diff
 Patch7:         fix1163766.patch
 # PATCH-FIX-OPENSUSE
 Patch9:         rtc-dont-use-h264.patch
+# PATCH-FIX-UPSTREAM
+Patch10:        icu-68.patch
+Patch11:        icu-68-2.patch
 # http://www.chromium.org/blink not ported to PowerPC
 ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 # Try to fix i586 MemoryErrors with rpmlint

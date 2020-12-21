@@ -612,4 +612,14 @@
     <comment>Qt 5.15.2</comment>
     <requestid>850041</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>0d2a1400be5f7130d63ca4b4fe62facf</srcmd5>
+    <version>5.15.2</version>
+    <time>1608550498</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with ICU 68:
+  * Added icu-68.patch
+  * Added icu-68-2.patch</comment>
+    <requestid>856760</requestid>
+  </revision>
 </revisionlist>
