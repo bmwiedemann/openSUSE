@@ -16,10 +16,10 @@
 #
 
 
-%define gitlabhash 52058c1ea0c3bd0eeb6e10c81af98aa687227f7f
+%define gitlabhash 7d22a2b5b9d323638bb213aefb8627d897c8e482
 
 Name:           fprintd
-Version:        1.90.6
+Version:        1.90.8
 Release:        0
 Summary:        D-Bus service for Fingerprint reader access
 License:        GPL-2.0-or-later

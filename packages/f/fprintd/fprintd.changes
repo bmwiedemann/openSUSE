@@ -1,7 +1,30 @@
 -------------------------------------------------------------------
+Sat Dec 12 21:51:37 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.90.8
+  It seems that we are finally reaching the end of the tunnel with
+  regard to regressions. One more issue that cropped up was that a
+  pam_fprintd fix to avoid a possible authentication bypass caused
+  issues when fprintd was just started on demand.
+  Highlights:
+  * pam: Only listen to NameOwnerChanged after fprintd is known to
+    run.
+  * Place new ObjectManager DBus API at /net/reactivated/Fprint
+
+-------------------------------------------------------------------
+Wed Dec  9 19:22:16 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.90.7
+  While 1.90.6 fixed a number of issues, we did have a bad
+  regression due causing pam_fprintd to crash when there are no
+  fingerprint devices installed.
+  Highlights:
+   * pam: Guard strdup calls against NULL pointers
+
+-------------------------------------------------------------------
 Mon Dec  7 21:13:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
-- Update to version 1.90.5
+- Update to version 1.90.6
   The 1.90.5 release was unusable due to a number of inter-related
   issues with the DBus interface and authorization. We also found
   a number of problems with possible security implications.
