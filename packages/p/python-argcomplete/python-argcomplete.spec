@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-argcomplete
-Version:        1.11.1
+Version:        1.12.2
 Release:        0
 Summary:        Bash tab completion for argparse
 License:        Apache-2.0
@@ -28,7 +28,6 @@ URL:            https://github.com/kislyuk/argcomplete
 Source:         https://files.pythonhosted.org/packages/source/a/argcomplete/argcomplete-%{version}.tar.gz
 Patch0:         skip_tcsh_tests.patch
 Patch1:         trim-test-deps.patch
-Patch2:         0001-Remove-expected-test-failure-for-new-versions-of-fish.patch
 BuildRequires:  %{python_module importlib-metadata >= 0.23}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pip}

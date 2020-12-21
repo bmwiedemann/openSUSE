@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec 20 09:17:00 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.2:
+  -  Update importlib-metadata dependency pin (#332)
+  -  Add change log project URL (#312)
+  -  Replace Travis CI with GitHub Actions (#323)
+  -  Update importlib-metadata dependency version range
+  -  Bash nounset mode fixes (#313)
+- remove 0001-Remove-expected-test-failure-for-new-versions-of-fish.patch (upstream)
+
+-------------------------------------------------------------------
 Wed May 27 13:01:18 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

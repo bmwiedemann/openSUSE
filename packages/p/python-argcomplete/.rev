@@ -132,4 +132,18 @@
     <comment></comment>
     <requestid>809816</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>aa351925660072a6aefab074b05575e5</srcmd5>
+    <version>1.12.2</version>
+    <time>1608542648</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.12.2:
+  -  Update importlib-metadata dependency pin (#332)
+  -  Add change log project URL (#312)
+  -  Replace Travis CI with GitHub Actions (#323)
+  -  Update importlib-metadata dependency version range
+  -  Bash nounset mode fixes (#313)
+- remove 0001-Remove-expected-test-failure-for-new-versions-of-fish.patch (upstream)</comment>
+    <requestid>857103</requestid>
+  </revision>
 </revisionlist>
