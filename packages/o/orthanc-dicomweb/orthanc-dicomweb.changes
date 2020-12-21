@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec 18 14:27:16 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.4 
+* "Extrapolate" mode doesn't fail if no consensus is found in WADO-RS Retrieve Metadata.
+  This is necessary for proper behavior of the Stone Web viewer on very small series.
+* Fix issue #190 (STOW-RS fails is multipart boundary is surrounded by quotes in headers)
+* patches_logging.patch removed (included in source)
+
+-------------------------------------------------------------------
+Thu Dec 10 13:49:00 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- patches_logging.patch added to fix issue with orthanc 1.8.1
+
+-------------------------------------------------------------------
 Thu Oct 22 08:02:43 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.3
