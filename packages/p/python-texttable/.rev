@@ -48,4 +48,13 @@ https://build.opensuse.org/request/show/318310</comment>
   * Fix auto-formatting NaN</comment>
     <requestid>717574</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d9adf0bc689b40dd1240bf587d769012</srcmd5>
+    <version>1.6.3</version>
+    <time>1608542650</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.3:
+  * Improve int conversion</comment>
+    <requestid>857117</requestid>
+  </revision>
 </revisionlist>
