@@ -2,7 +2,7 @@
 # spec file for package python-librouteros
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2017-2019, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2017-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-librouteros
-Version:        3.0.2
+Version:        3.1.0
 Release:        0
 Summary:        Python implementation of MikroTik RouterOS API
 License:        GPL-2.0-or-later
