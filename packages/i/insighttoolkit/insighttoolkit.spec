@@ -23,7 +23,7 @@
 %define libname lib%{name}5
 
 Name:           insighttoolkit
-Version:        5.1.1
+Version:        5.1.2
 Release:        0
 Summary:        Toolkit for scientific image processing, segmentation, and registration
 License:        Apache-2.0
