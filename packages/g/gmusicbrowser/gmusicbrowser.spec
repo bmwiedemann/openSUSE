@@ -1,7 +1,7 @@
 #
 # spec file for package gmusicbrowser
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 # gmusicbrowser has no external API.
 %define __provides_exclude perl\\(.*\\)
 Name:           gmusicbrowser
-Version:        1.1.15
+Version:        1.1.16
 Release:        0
 Summary:        Gtk2 jukebox for large music collections
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
-Url:            http://gmusicbrowser.org/
-Source:         http://gmusicbrowser.org/download/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gmusicbrowser-1.1.15-fix-perl-5.24.patch -- Fix an error with perl 5.24 (commit 853840e).
-Patch0:         %{name}-1.1.15-fix-perl-5.24.patch
+URL:            https://gmusicbrowser.org/
+Source:         https://gmusicbrowser.org/download/%{name}-%{version}.tar.gz
+BuildRequires:  discount
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  perl
@@ -80,7 +79,6 @@ Main features:
 
 %prep
 %setup -q
-%patch0 -p1
 
 # Trim Unity actions.
 lines=$(( $(grep -m1 -no '^Actions=' %{name}.desktop | sed 's/^\([[:digit:]]*\):.*$/\1/') - 1 ))
@@ -108,7 +106,6 @@ rm -f %{buildroot}%{_docdir}/%{name}/INSTALL
 %icon_theme_cache_postun
 
 %files
-%defattr(-,root,root)
 %doc %{_docdir}/%{name}/
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
@@ -117,10 +114,9 @@ rm -f %{buildroot}%{_docdir}/%{name}/INSTALL
 %dir %{_datadir}/icons/hicolor/20x20/apps/
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
 %{_mandir}/man?/%{name}.?%{?ext_man}
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/%{name}.appdata.xml
+%dir %{_datadir}/metainfo/
+%{_datadir}/metainfo/org.%{name}.metainfo.xml
 
 %files lang -f %{name}.lang
-%defattr(-,root,root)
 
 %changelog
