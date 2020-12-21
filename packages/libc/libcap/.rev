@@ -291,4 +291,12 @@
   * Fix a deadlock in libpsx that surfaced with a set of compiler optimizations by removing the psx wrapping harder.</comment>
     <requestid>831514</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>5db95baf1d2511db1a051dedc1e111d3</srcmd5>
+    <version>2.44</version>
+    <time>1608542506</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853758</requestid>
+  </revision>
 </revisionlist>

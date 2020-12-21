@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 14 10:26:54 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.44:
+  Generally, this is a release to help package builders: no functional change
+  to any of the generated code just documentation and make related fixes.
+
+-------------------------------------------------------------------
 Wed Sep  2 17:03:06 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.43
