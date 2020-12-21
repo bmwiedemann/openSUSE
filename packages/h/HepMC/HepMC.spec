@@ -21,7 +21,7 @@
 
 Name:           HepMC
 %define lname	libHepMC3-1
-Version:        3.2.2
+Version:        3.2.3
 Release:        0
 Summary:        An event record for High Energy Physics Monte Carlo Generators in C++
 # Python bindings are BSD-3-Clause, packaged separately
@@ -112,8 +112,10 @@ This package provides the python module for coding with HepMC.
        -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
        -DHEPMC3_BUILD_STATIC_LIBS:BOOL=OFF \
        -DHEPMC3_PYTHON_VERSIONS:STRING="%{py3_ver}" \
+       -DCMAKE_SKIP_RPATH:BOOL=OFF \
        -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
-       -DHEPMC3_BUILD_EXAMPLES:BOOL=ON
+       -DHEPMC3_BUILD_EXAMPLES:BOOL=ON \
+       -DHEPMC3_ENABLE_TEST:BOOL=ON        
 
 %cmake_build
 
@@ -121,6 +123,9 @@ This package provides the python module for coding with HepMC.
 %cmake_install
 
 %fdupes %{buildroot}%{_docdir}/%{name}/
+
+%check
+%ctest
 
 %post   -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
@@ -131,7 +136,7 @@ This package provides the python module for coding with HepMC.
 
 %files devel
 %license LICENCE COPYING
-%doc README* ChangeLog DESIGN
+%doc README* ChangeLog
 %{_bindir}/HepMC3-config
 %{_libdir}/libHepMC3.so
 %{_libdir}/libHepMC3search.so
