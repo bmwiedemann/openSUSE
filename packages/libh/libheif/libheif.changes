@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Dec 17 16:54:31 UTC 2020 - malcolmlewis@opensuse.org
+
+- Re-download tarball and check with osc service runall
+  download_files, all ok.
+
+-------------------------------------------------------------------
+Wed Dec 16 14:16:35 UTC 2020 - malcolmlewis@opensuse.org
+
+- Updated to version 1.10.0:
+  * New API: may access all (vendor-dependent) auxiliary images
+    (e.g. hdrgainmap, semanticskinmatte, ...).
+  * When ICC profile is present, will now write two color boxes
+   (nclx and ICC) into AVIF files. Also reads files with two color
+   boxes.
+  * Alpha image is now saved as monochrome.
+  * Loading of 16bit greyscale PNGs in heif_enc.
+  * Deprecated heif_enc option "-E".
+  * Remove dependency on alloca().
+  * Bug fixes.
+
+-------------------------------------------------------------------
 Sun Nov  1 15:21:34 UTC 2020 - malcolmlewis@opensuse.org
 
 - Add build condition to enable additional options, codecs and
