@@ -20,7 +20,7 @@
 %define modname aniso8601
 %bcond_without python2
 Name:           python-%{modname}
-Version:        8.0.0
+Version:        8.1.0
 Release:        0
 Summary:        A library for parsing ISO 8601 strings
 License:        BSD-3-Clause

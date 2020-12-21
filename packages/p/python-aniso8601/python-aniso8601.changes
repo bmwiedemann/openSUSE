@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Dec 20 09:47:26 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.1.0:
+  * Empty string arguments to get_date_resolution and parse_date now raise ISOFormatError, fixes 26
+  * None and non-string arguments to get_date_resolution and parse_date now raise ValueError
+  * Empty string arguments to parse_duration now raise ISOFormatError
+  * None and non-string arguments to parse_duration now raise ValueError
+  * Empty string arguments to parse_interval and parse_repeating_interval now raise ISOFormatError
+  * None and non-string arguments to parse_interval and parse_repeating_internval now raise ValueError
+  * Empty string arguments to get_time_resolution and parse_time now raise ISOFormatError
+  * None and non-string arguments to parse_time now raise ValueError
+  * None and non-string arguments to parse_timezone now raise ValueError
+  * Empty string arguments to parse_datetime now raise ISOFormatError
+  * None and non-string arguments to parse_datetime now raise ValueError
+  * Missing delimiter in datetime strings when calling parse_datetime now raises ISOFormatError
+  * Missing delimiter in regular and repeating interval strings when calling parse_interval and parse_repeating_interval now raises ISOFormatError
+  * get_time_resolution now correctly throws ISOFormatError when a time component has too many characters in a time using ":" as a separator
+  
+-------------------------------------------------------------------
 Thu Apr 23 04:38:25 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Only BuildRequire python-mock with Python 2. 

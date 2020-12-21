@@ -61,4 +61,26 @@
     <comment>- Only BuildRequire python-mock with Python 2.</comment>
     <requestid>796375</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a5e0e692ccca2aa2c2521db3c3672949</srcmd5>
+    <version>8.1.0</version>
+    <time>1608542651</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.1.0:
+  * Empty string arguments to get_date_resolution and parse_date now raise ISOFormatError, fixes 26
+  * None and non-string arguments to get_date_resolution and parse_date now raise ValueError
+  * Empty string arguments to parse_duration now raise ISOFormatError
+  * None and non-string arguments to parse_duration now raise ValueError
+  * Empty string arguments to parse_interval and parse_repeating_interval now raise ISOFormatError
+  * None and non-string arguments to parse_interval and parse_repeating_internval now raise ValueError
+  * Empty string arguments to get_time_resolution and parse_time now raise ISOFormatError
+  * None and non-string arguments to parse_time now raise ValueError
+  * None and non-string arguments to parse_timezone now raise ValueError
+  * Empty string arguments to parse_datetime now raise ISOFormatError
+  * None and non-string arguments to parse_datetime now raise ValueError
+  * Missing delimiter in datetime strings when calling parse_datetime now raises ISOFormatError
+  * Missing delimiter in regular and repeating interval strings when calling parse_interval and parse_repeating_interval now raises ISOFormatError
+  * get_time_resolution now correctly throws ISOFormatError when a time component has too many characters in a time using &quot;:&quot; as a separator</comment>
+    <requestid>857119</requestid>
+  </revision>
 </revisionlist>
