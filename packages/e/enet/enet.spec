@@ -18,7 +18,7 @@
 
 %define sover 7
 Name:           enet
-Version:        1.3.16
+Version:        1.3.17
 Release:        0
 Summary:        Network Communication Layer on Top of UDP
 License:        MIT
