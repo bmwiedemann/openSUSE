@@ -45,6 +45,10 @@ Python library for multi-byte character string decoding.
 # Remove build alias
 sed -i '/build =/d' setup.cfg
 
+# Remove chardet v4 block
+# Effectively the same as https://github.com/thombashi/mbstrdecoder/pull/4
+sed -i 's/,<4.0.0//' setup.py
+
 %build
 %python_build
 
