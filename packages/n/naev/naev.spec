@@ -1,7 +1,7 @@
 #
 # spec file for package naev
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,32 +12,31 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           naev
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        2D action RPG space game
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Amusements/Games/Action/Other
-Url:            http://naev.org/
-Source0:        http://downloads.sourceforge.net/naev/%{name}-%{version}/%{name}-%{version}.tar.bz2
-Source1:        http://downloads.sourceforge.net/naev/%{name}-%{version}/%{name}-%{version}-ndata.zip
+URL:            http://naev.org/
+Source0:        %{name}-%{version}-source.tar.gz
 BuildRequires:  SDL2-devel
+BuildRequires:  fdupes
 BuildRequires:  freetype2-devel
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  intltool
 BuildRequires:  libSDL2_mixer-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libvorbis-devel
 BuildRequires:  libxml2-devel
-BuildRequires:  libzip-devel
 BuildRequires:  lua51-devel
 BuildRequires:  openal-soft-devel
 BuildRequires:  readline-devel
 BuildRequires:  update-desktop-files
-Requires:       %{name}-data = %{version}
 
 %description
 Naev is a 2D space trading and combat game, in a similar vein to Escape Velocity.
@@ -46,20 +45,11 @@ Naev is played from a top-down perspective, featuring fast-paced combat, many sh
 a large variety of equipment and a large galaxy to explore. The game is
 open-ended, letting you proceed at your own pace.
 
-%package data
-Summary:        Data files for Naev
-Group:          Amusements/Games/Action/Other
-Requires:       %{name} = %{version}
-BuildArch:      noarch
-
-%description data
-This package contains the universal data for Naev, a 2D action RPG space game.
-
 %prep
 %setup -q
 
 %build
-%configure --with-ndata-path=%{_datadir}/%{name}/ndata-%{version}.zip --enable-lua=shared --disable-shave --enable-debug=no
+%configure --enable-lua=shared --enable-debug=no
 
 make %{?_smp_mflags}
 
@@ -71,36 +61,33 @@ install -D -m 0644 extras/logos/logo32.png %{buildroot}%{_datadir}/icons/hicolor
 install -D -m 0644 extras/logos/logo64.png %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/naev.png
 install -D -m 0644 extras/logos/logo128.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/naev.png
 
-%suse_update_desktop_file %{name}
+# Don't know how to handle locale files yet...
+rm -rf %{buildroot}%{_datadir}/locale/
 
-mkdir -p %{buildroot}%{_datadir}/naev
-install -D -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/naev/ndata-%{version}.zip
+# Already handle doc files
+rm -rf %{buildroot}%{_datadir}/doc/%{name}
+rm -f %{buildroot}%{_datadir}/%{name}/dat/AUTHORS
+rm -f %{buildroot}%{_datadir}/%{name}/dat/LICENSE
 
-# Already packaged by the doc macro
-rm -fr %{buildroot}%{_datadir}/doc
+# Clean up some scripts
+find %{buildroot}%{_datadir}/%{name} -name '*.sh' -exec rm {} \;
 
-%post
-%desktop_database_post
-%icon_theme_cache_post
+%suse_update_desktop_file org.naev.naev
 
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
+%fdupes %{buildroot}%{_datadir}/%{name}
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS LICENSE README TODO
+%doc LICENSE README TODO dat/AUTHORS
 %doc %{_mandir}/man6/*
 %{_bindir}/%{name}
 %{_datadir}/applications/*.desktop
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/*.appdata.xml
-%{_datadir}/pixmaps/*.png
+%{_datadir}/metainfo/*.xml
 %{_datadir}/icons/hicolor/*x*/apps/naev.png
-
-%files data
-%defattr(-,root,root)
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/*
+%lang(de) %{_datadir}/%{name}/dat/gettext/de/LC_MESSAGES/naev.mo
+%lang(ja) %{_datadir}/%{name}/dat/gettext/ja/LC_MESSAGES/naev.mo
+%lang(ko) %{_datadir}/%{name}/dat/gettext/ko/LC_MESSAGES/naev.mo
 
 %changelog
