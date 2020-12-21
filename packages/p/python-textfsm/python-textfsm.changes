@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 20 10:50:25 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Remove Conflicts: python-texttable because it should fixed since 
+  version 1.0.0. https://github.com/google/textfsm/issues/77
+  texttable.py is now in subdir textfsm.
+
+-------------------------------------------------------------------
 Tue Nov 26 19:25:18 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.1.1

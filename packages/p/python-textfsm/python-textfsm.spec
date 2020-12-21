@@ -1,7 +1,7 @@
 #
 # spec file for package python-textfsm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,11 +38,7 @@ Requires:       python-six
 %ifpython2
 Requires:       python-future
 %endif
-Conflicts:      python-texttable
 BuildArch:      noarch
-%ifpython2
-Conflicts:      %{oldpython}-texttable
-%endif
 %python_subpackages
 
 %description
