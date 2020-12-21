@@ -17,7 +17,7 @@
 
 
 Name:           yast2-schema
-Version:        4.3.15
+Version:        4.3.16
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -34,8 +34,8 @@ BuildRequires:  yast2-devtools
 # All packages providing RNG files for AutoYaST
 # in /usr/share/YaST2/schema/autoyast/rng/*.rng
 
-# set 't' element in 'backup' and 'upgrade' elements
-BuildRequires:  autoyast2 >= 4.3.61
+# 'quotas' and 'referenced_limit' elements (jsc#SLE-7742)
+BuildRequires:  autoyast2 >= 4.3.64
 BuildRequires:  yast2
 # add_on_products and add_on_others types
 BuildRequires:  yast2-add-on >= 4.3.3

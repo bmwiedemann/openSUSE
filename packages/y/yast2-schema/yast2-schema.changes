@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 14 10:21:57 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add support for Btrfs quotas (jsc#SLE-7742).
+- 4.3.16
+
+-------------------------------------------------------------------
 Tue Oct 20 16:15:12 CEST 2020 - schubi@suse.de
 
 - Registration/Addons: Architecture and version are optional.

@@ -471,4 +471,12 @@
 - 4.3.15</comment>
     <requestid>844134</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>44ec239ae6322fb1d3f4631711826350</srcmd5>
+    <version>4.3.16</version>
+    <time>1608550516</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.3.16</comment>
+    <requestid>856846</requestid>
+  </revision>
 </revisionlist>
