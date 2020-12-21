@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 17 21:20:22 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.66.4:
+  + Fix some issues in parsing floating point seconds in
+    `GDateTime`
+  + Fix some issues in handling invalid UTF-8 when parsing for
+    `GDate`
+  + Bugs fixed: glgo#GNOME/GLib#2264, glgo#GNOME/GLib!1774,
+    glgo#GNOME/GLib!1790, glgo#GNOME/GLib!1793,
+    glgo#GNOME/GLib!1799, glgo#GNOME/GLib!1805.
+
+-------------------------------------------------------------------
 Mon Nov 16 14:34:46 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add requires(post) libgio-2_0-0 to glib2-tools: ensures

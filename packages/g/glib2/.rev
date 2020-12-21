@@ -1808,4 +1808,12 @@ WANTED for 13.1 (forwarded request 202421 from RBrownCCB)</comment>
 - rename -tests to -tests-devel (forwarded request 849384 from yecril71pl)</comment>
     <requestid>851016</requestid>
   </revision>
+  <revision rev="231" vrev="1">
+    <srcmd5>b877bb731b5cf5d9d1d6a2791d4a9671</srcmd5>
+    <version>2.66.4</version>
+    <time>1608542541</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856943</requestid>
+  </revision>
 </revisionlist>

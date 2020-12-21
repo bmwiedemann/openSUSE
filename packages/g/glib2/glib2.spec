@@ -19,7 +19,7 @@
 %bcond_without     systemtap
 %bcond_without gtk_doc
 Name:           glib2
-Version:        2.66.3
+Version:        2.66.4
 Release:        0
 Summary:        General-Purpose Utility Library
 License:        LGPL-2.1-or-later
@@ -245,8 +245,8 @@ The GObject library provides an object-oriented framework for C.
 Summary:        Tests for the glib2 package
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
-Provides: 	glib2-tests = %version-%release
-Obsoletes: 	glib2-tests < %version-%release
+Provides:       glib2-tests = %version-%release
+Obsoletes:      glib2-tests < %version-%release
 
 %description tests-devel
 The glib2-tests-devel package contains tests that can be used to verify
