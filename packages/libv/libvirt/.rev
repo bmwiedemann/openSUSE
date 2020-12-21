@@ -3747,4 +3747,14 @@ StandardGroups in rpmlint package.
   bsc#1179735</comment>
     <requestid>854168</requestid>
   </revision>
+  <revision rev="320" vrev="3">
+    <srcmd5>c64b3832943d10d9c89a7a622ca8820c</srcmd5>
+    <version>6.10.0</version>
+    <time>1608550501</time>
+    <user>dimstar_suse</user>
+    <comment>- qemu: Fix logic bug in inactive snapshot deletion
+  0ddebdb4-qemu-snapshot-deletion.patch
+  boo#1180049</comment>
+    <requestid>856765</requestid>
+  </revision>
 </revisionlist>

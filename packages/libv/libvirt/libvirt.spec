@@ -293,6 +293,7 @@ Source100:      %{name}-rpmlintrc
 # Upstream patches
 Patch0:         0d05d51b-apparmor-lxc-fix.patch
 Patch1:         cf4e7e62-lxc-def-secmodel.patch
+Patch2:         0ddebdb4-qemu-snapshot-deletion.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch

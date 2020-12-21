@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 17 04:20:58 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- qemu: Fix logic bug in inactive snapshot deletion
+  0ddebdb4-qemu-snapshot-deletion.patch
+  boo#1180049
+
+-------------------------------------------------------------------
 Wed Dec  9 00:07:16 UTC 2020 - James Fehlig <jfehlig@suse.com>
 
 - spec: Enable mdevctl support in the nodedev driver for SLE15 SP3
