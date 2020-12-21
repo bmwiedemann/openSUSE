@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec 19 07:59:40 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1608301075.2287dabd:
+  * Add unit test for sshSerial
+  * t: Prevent sporadic timeout failure in 10-virtio_terminal.t
+  * Implement SSH serial terminal
+  * Implement ssh_screen::type_string()
+  * ssh_screen::read(): Allow direct logging into file
+  * t: Bump timeout in 10-virtio_terminal.t due to fail in OBS
+  * Filter out carriage returns Jobs running on hyperv or vmware usually contain LF and CR. In our particular case `0d  0d  0a` seems to be present in each line of SUTs output.
+
+-------------------------------------------------------------------
 Wed Dec 16 20:17:30 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1608149831.eea793d2:
