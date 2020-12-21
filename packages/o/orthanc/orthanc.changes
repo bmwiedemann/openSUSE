@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sat Dec 19 12:53:48 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.8.2
+* ZIP archives containing DICOM files can be uploaded using WebDAV
+* New config option "MallocArenaMax" to control memory usage on GNU/Linux
+* Explicit error log if trying to load a 32bit (resp. 64bit) plugin into
+  a 64bit (resp. 32bit) version of Orthanc
+* New configuration options contributed by Varian Medical Systems:
+  - "DeidentifyLogs" to remove patient identification from the logs (C-GET, C-MOVE, C-FIND)
+  - "DeidentifyLogsDicomVersion" to specify the deidentification rules for the logs
+  - "OrthancExplorerEnabled" to enable/disable the Orthanc Explorer Web user interface
+  - "SslMinimumProtocolVersion" to set the minimal SSL protocol version (now defaults to SSL 1.2)
+  - "SslCiphersAccepted" to set the accepted ciphers over SSL (now defaults to FIPS 140-2)
+* New configuration options related to ingest transcoding:
+  - "IngestTranscodingOfUncompressed" to control whether uncompressed transfer syntaxes are transcoded
+  - "IngestTranscodingOfCompressed" to control whether compressed transfer syntaxes are transcoded
+* "/instances" can be used to import ZIP archives provided in the POST body
+* Allow concurrency on the OrthancPluginRegisterIncomingHttpRequestFilter() callbacks
+* Allow empty request body in "/modalities/{id}/echo"
+* If meta-header is missing, best-effort to extract "TransferSyntax" in "/instances/{id}/metadata"
+
+-------------------------------------------------------------------
+Tue Dec  8 06:35:51 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.8.1
+* adaption to new systemd-macros (OBS)
+* New sample tool "OrthancImport.py" to easily import compressed archives (ZIP) into Orthanc
+* Logging categories (cf. command-line options starting with "--verbose-" and "--trace=")
+* New command-line option "--trace-dicom" to access full debug information from DCMTK
+* New config option "DicomEchoChecksFind" to automatically complement C-GET SCU with C-FIND SCU
+* API version upgraded to 9
+* "/tools/dicom-echo": Execute C-Echo SCU to a modality that is not registered in "/modalities"
+* "/tools/log-level-*": Dynamically access and/or change the verbosity of logging categories
+* "/peers/{id}/configuration": Get the configuration of one peer (cf. "/peers?expand")
+* "/modalities/{id}/configuration": Get the configuration of one modality (cf. "/modalities?expand")
+* "/tools/dicom-echo" and "/modalities/{id}/echo" now accept the field "CheckFind" in their JSON
+  body to complement C-GET SCU with C-FIND SCU ("DicomEchoChecksFind" on a per-connection basis)
+* Archive/media jobs report the size of the created ZIP file in content field "ArchiveSizeMB"
+* New function in the SDK: OrthancPluginGenerateRestApiAuthorizationToken()
+* C-GET SCP: Fix responses and handling of cancel
+* Fix decoding sequence if "BuiltinDecoderTranscoderOrder" is "Before"
+* Fix keep-alive in the embedded HTTP server by setting the "Keep-Alive" HTTP header
+* Fix access to videos as a single raw frame (feature broken since Orthanc 1.6.0)
+* REST API now returns 404 error if deleting an inexistent peer or modality
+* Improved forward ABI compatibility of Orthanc Framework (notably, no inline methods anymore)
+* Upgraded dependencies for static builds (notably on Windows and LSB):
+  - civetweb 1.13
+
+-------------------------------------------------------------------
 Fri Oct 16 10:46:46 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.8.0

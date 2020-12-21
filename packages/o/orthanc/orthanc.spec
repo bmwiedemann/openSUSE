@@ -18,7 +18,7 @@
 
 
 Name:           orthanc
-Version:        1.8.0
+Version:        1.8.2
 Release:        0
 Summary:        RESTful DICOM server for healthcare and medical research
 License:        GPL-3.0-or-later
@@ -67,14 +67,14 @@ BuildRequires:  sqlite3-devel
 BuildRequires:  tcpd-devel
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(icu-uc)
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(lua5.1)
-BuildRequires:  pkgconfig(systemd)
 
 Requires:       dcmtk
 Requires(pre): 	/usr/sbin/groupadd
 Requires(pre): 	/usr/sbin/useradd
 
-%{?systemd_requires}
+%{?systemd_ordering}
 
 %description
 Orthanc aims at providing a simple, yet powerful standalone DICOM server. 
@@ -107,7 +107,8 @@ BuildArch:      noarch
 %description -n %{name}-doc
 This package includes the documentation and the sample codes available 
 for Orthanc. 
-It also includes the documentation to develop C/C++ plugins for Orthanc.
+It also includes the Python and LUA Scripts, and the documentation to develop 
+C/C++ plugins for Orthanc.
 
 %package    source
 Summary:        This package includes the source files for Orthanc
@@ -121,12 +122,10 @@ This package includes the source files for Orthanc. Use it in conjunction with t
 
 cp %{S:1} %{S:2} .	
 
-##cp %{S:6} UnitTestsSources/.
-
 #slight change in standard configuration for OrthancStorage
 cp %{S:8} OrthancServer/Resources/.
 
-#OrthanPlugins may ask for additional files to be loaded
+#OrthancPlugins may ask for additional files to be loaded
 #Putting them into this folder prevents download of sources from the web
 mkdir -p OrthancServer/Plugins/Samples/ConnectivityChecks/ThirdPartyDownloads
 cp %{S:10} %{S:11} %{S:12} %{S:13} OrthancServer/Plugins/Samples/ConnectivityChecks/ThirdPartyDownloads/.
