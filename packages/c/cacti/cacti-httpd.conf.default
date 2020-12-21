@@ -64,7 +64,7 @@
         <Files config.php>
             Require all denied
         </Files>
-    </Directory>
+    </DirectoryMatch>
 
     <Directory __CACTIDIR__/*/>
         Require all denied

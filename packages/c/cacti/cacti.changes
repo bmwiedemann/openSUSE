@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 18 17:35:23 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix httpd startup errors due to mismatched configuration
+  directives boo#1175314
+
+-------------------------------------------------------------------
 Thu Dec  3 14:08:39 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - cacti 1.2.16:

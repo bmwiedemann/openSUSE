@@ -296,4 +296,14 @@
     <comment></comment>
     <requestid>853622</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>9097f28d9a02ce4ab77d07219da12ee9</srcmd5>
+    <version>1.2.16</version>
+    <time>1608542592</time>
+    <user>dimstar_suse</user>
+    <comment>- fix httpd startup errors due to mismatched configuration
+  directives boo#1175314
+</comment>
+    <requestid>856911</requestid>
+  </revision>
 </revisionlist>
