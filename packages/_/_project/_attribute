@@ -427,6 +427,8 @@ products:
     - x86_64
   - opensuse-rstudio-server:
     - x86_64
+  - opensuse-spamassassin-image:
+    - x86_64
   - opensuse-squid-image:
     - x86_64
 #  - opensuse-tensorflow2-image:
