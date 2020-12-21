@@ -33,7 +33,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #BuildRequires:  libtool
 
 # libewf - Newer versions are plain BSD (older are BSD with advertising)
-BuildRequires:  libewf-devel = 0~20140808
+BuildRequires:  libewf-devel = 0~20140811
 
 Requires:       file
 Requires:       libtsk%sosuffix = %{version}
