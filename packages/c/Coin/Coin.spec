@@ -1,7 +1,7 @@
 #
 # spec file for package Coin
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,14 +22,19 @@ Name:           Coin
 Version:        3.1.3
 Release:        0
 Summary:        Scene-graph based retain-mode 3D graphics library
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Development/Libraries/C and C++
-Url:            http://www.coin3d.org/lib/coin/
-Source0:        https://bitbucket.org/Coin3D/coin/downloads/%{name}-%{version}.tar.gz
+URL:            https://github.com/coin3d/coin/wiki
+# The bitbucket site is no longer functional, and the github repo only provides
+# tarballs for 3.1.0 and 4.0.0 (and no 3.1.3 tag either).
+# Source0:        https://bitbucket.org/Coin3D/coin/downloads/%%{name}-%%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Patch0:         0012-memhandler-initialization.patch
 # X-OPENSUSE-PATCH: Coin60.patch -- hack around library policy names
 Patch1:         Coin60.patch
 Patch2:         Coin.patch
+# PATCH-FIX-OPENSUSE -- https://github.com/coin3d/coin/issues/436, fixed with CMake build available with 4.0.0
+Patch3:         0001-Actually-link-to-system-expat.patch
 BuildRequires:  c++_compiler
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -45,7 +50,6 @@ BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xt)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Coin is a scene-graph based, retain-mode, rendering and model
@@ -95,6 +99,7 @@ sound, GLSL shaders, and additional file formats like VRML97.
 %patch0 -p1
 %patch1 -p0
 %patch2 -p1
+%patch3 -p1
 sed -i '/^#include "fonts\/freetype.h"$/i #include <cstdlib>\n#include <cmath>' src/fonts/freetype.cpp
 sed -i '/^#include <Inventor\/C\/basic.h>$/i #include <Inventor/C/errors/debugerror.h>' include/Inventor/SbBasic.h
 
@@ -112,6 +117,7 @@ export CXXFLAGS="%{optflags}"
     --enable-threadsafe \
     --enable-html \
     --enable-man \
+    --enable-system-expat \
     --disable-dl-openal \
     --disable-dl-fontconfig \
     --disable-dl-freetype \
@@ -120,10 +126,10 @@ export CXXFLAGS="%{optflags}"
     --disable-dl-glu \
     --with-freetype=%{_prefix}
 
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install
+%make_install
 
 # avoid conflicting man page
 rm %{buildroot}/usr/share/man/man3/deprecated.*
@@ -144,14 +150,13 @@ rm -f %{buildroot}%{_libdir}/*.la
 %postun -n libCoin%{soname} -p /sbin/ldconfig
 
 %files -n libCoin%{soname}
-%defattr(-,root,root,-)
-%doc LICENSE.GPL
+%license LICENSE.GPL
 %{_datadir}/Coin%{soname}/
 %{_libdir}/libCoin.so.%{soname}*
 
 %files devel
-%defattr(-,root,root,-)
-%doc AUTHORS COPYING ChangeLog FAQ FAQ.legal LICENSE.GPL NEWS README RELNOTES THANKS
+%doc AUTHORS ChangeLog FAQ NEWS README RELNOTES THANKS
+%license COPYING FAQ.legal LICENSE.GPL
 %{_bindir}/coin-config
 %{_includedir}/Inventor/
 %{_includedir}/SoDebug.h

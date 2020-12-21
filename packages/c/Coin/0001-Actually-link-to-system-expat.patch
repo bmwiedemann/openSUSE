@@ -1,0 +1,49 @@
+From 7aa9771a15fe561155740fadccf161ed174d997e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Mon, 14 Dec 2020 23:42:09 +0100
+Subject: [PATCH] Actually link to system expat
+
+The config variable is HAVE_SYSTEM_EXPAT, USE_SYSTEM_EXPAT is the
+Makefile variable.
+---
+ src/Makefile.in             | 4 +++-
+ src/xml/expat/all-expat-c.c | 2 +-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/Makefile.in b/src/Makefile.in
+index 1d53733..e39b214 100644
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -662,6 +662,8 @@ ExtraIncludeDirs = -I$(top_srcdir)/include/Inventor/annex -I$(top_builddir)
+ @MAC_FRAMEWORK_FALSE@	3ds collision hardcopy shadows geo threads shaders profiler \
+ @MAC_FRAMEWORK_FALSE@	vrml97 foreignfiles scxml doc .
+ 
++@USE_SYSTEM_EXPAT_TRUE@EXPATLIBADD = -lexpat
++@USE_SYSTEM_EXPAT_FALSE@EXPATLIBADD = 
+ 
+ # **************************************************************************
+ @MAC_FRAMEWORK_TRUE@SUBDIRS = 
+@@ -686,7 +688,7 @@ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_bui
+ @HACKING_DYNAMIC_MODULES_FALSE@@MAC_FRAMEWORK_FALSE@	3ds/libformat3ds.la collision/libcollision.la hardcopy/libhardcopy.la \
+ @HACKING_DYNAMIC_MODULES_FALSE@@MAC_FRAMEWORK_FALSE@	threads/libthreads.la shaders/libshaders.la \
+ @HACKING_DYNAMIC_MODULES_FALSE@@MAC_FRAMEWORK_FALSE@	shadows/libshadows.la geo/libgeo.la foreignfiles/libforeignfiles.la \
+-@HACKING_DYNAMIC_MODULES_FALSE@@MAC_FRAMEWORK_FALSE@	xml/libxml.la xml/expat/libexpat.la profiler/libprofiler.la \
++@HACKING_DYNAMIC_MODULES_FALSE@@MAC_FRAMEWORK_FALSE@	xml/libxml.la xml/expat/libexpat.la $(EXPATLIBADD) profiler/libprofiler.la \
+ @HACKING_DYNAMIC_MODULES_FALSE@@MAC_FRAMEWORK_FALSE@	vrml97/libvrml97.la scxml/libscxml.la $(SUPERGLULIBADD)
+ 
+ @HACKING_DYNAMIC_MODULES_TRUE@@MAC_FRAMEWORK_FALSE@libCoin@SUFFIX@_la_LIBADD = 
+diff --git a/src/xml/expat/all-expat-c.c b/src/xml/expat/all-expat-c.c
+index 34a1b01..6eb72e2 100755
+--- a/src/xml/expat/all-expat-c.c
++++ b/src/xml/expat/all-expat-c.c
+@@ -1,6 +1,6 @@
+ #include "config.h"
+ 
+-#ifndef USE_SYSTEM_EXPAT
++#ifndef HAVE_SYSTEM_EXPAT
+ #include "xmltok.c"
+ #include "xmlparse.c"
+ #include "xmlrole.c"
+-- 
+2.29.2
+

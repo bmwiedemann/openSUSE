@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 15 00:12:48 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Explicitly request system libexpat. The bundled expat 2.0.1 has
+  known vulnerabilities, and also causes crashes in e.g. FreeCADs
+  SVG import due to using incompatible expat versions in use at
+  the same time (https://tracker.freecadweb.org/view.php?id=3307).
+  * 0001-Actually-link-to-system-expat.patch
+- Cleanup spec file:
+  * Update Homepage URL
+  * Remove Source URL, bitbucket download is no longer functional
+  * Use %license, %make_build, %make_install macros
+
+-------------------------------------------------------------------
 Sun Jul 23 19:29:55 UTC 2017 - olaf@aepfle.de
 
 - Fix invalid C++ with Coin.patch
