@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 17 16:04:32 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
+
+- remove elevator settings (bsc#1178797)
+- 4.3.1
+
+-------------------------------------------------------------------
+Thu Dec 17 15:13:33 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
+
+- add I/O device autoconfig checkbox on s390 (bsc#1168036)
+- 4.3.0
+
+-------------------------------------------------------------------
 Mon Feb 24 15:10:14 CET 2020 - schubi@suse.de
 
 - Using SysctlConfig class: Handle sysctl entries in different
