@@ -929,4 +929,12 @@
     with getgrouplist where it is available</comment>
     <requestid>851278</requestid>
   </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>909abbd6c8d6e082dad6b06f6f36c492</srcmd5>
+    <version>1.5.1</version>
+    <time>1608542521</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856633</requestid>
+  </revision>
 </revisionlist>

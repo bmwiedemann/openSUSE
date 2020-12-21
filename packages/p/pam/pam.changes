@@ -9,6 +9,11 @@ Fri Nov 27 09:10:28 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
     with getgrouplist where it is available
 
 -------------------------------------------------------------------
+Thu Nov 26 13:31:52 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- add macros.pam to abstract directory for pam modules 
+
+-------------------------------------------------------------------
 Thu Nov 19 15:43:33 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to 1.5.0
@@ -58,6 +63,11 @@ Fri Nov 13 09:13:18 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
 Tue Nov 10 11:09:39 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Enable pam_faillock [bnc#1171562]
+
+-------------------------------------------------------------------
+Thu Oct 29 10:10:23 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961, pam-usrmerge.diff)
 
 -------------------------------------------------------------------
 Wed Oct  8 13:31:39 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
