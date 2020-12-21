@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 19 08:32:10 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1608227660.f87d0124e:
+  * Override TERMINATE_AFTER_JOBS_DONE setting from environment variable
+  * Consider sleep in `unstable_worker` uncoverable
+  * Remove unused test helper 'standard_worker'
+  * Test case when setting up pool directory during availability check fails
+
+-------------------------------------------------------------------
 Thu Dec 17 00:13:25 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1608163990.9004bc4cf:
