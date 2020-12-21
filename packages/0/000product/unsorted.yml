@@ -683,7 +683,6 @@ unsorted:
   - apache2-devel 
   - apache2-event 
   - apache2-icons-oxygen 
-  - apache2-manual 
   - apache2-mod_apparmor 
   - apache2-mod_auth_gssapi 
   - apache2-mod_auth_mellon 
@@ -3708,6 +3707,7 @@ unsorted:
   - fprintd-doc 
   - fprintd-lang: [i586] 
   - fprintd-pam: [i586] 
+  - fprintd-pam-32bit: [x86_64] 
   - fractal 
   - fractal-lang 
   - frame 
@@ -16953,7 +16953,6 @@ unsorted:
   - mythes-devel 
   - mytop 
   - naev 
-  - naev-data 
   - nagios-contrib 
   - nagios-devel 
   - nagios-rpm-macros 
@@ -20894,6 +20893,8 @@ unsorted:
   - profanity 
   - profanity-mini 
   - profanity-standard 
+  - profile-sync-daemon 
+  - profile-sync-daemon-zsh-completion 
   - proftpd 
   - proftpd-devel 
   - proftpd-doc 
@@ -21585,6 +21586,7 @@ unsorted:
   - python3-argh 
   - python3-argparse-manpage: [i586] 
   - python3-args 
+  - python3-arpack-ng: [x86_64] 
   - python3-arrow 
   - python3-asciimatics 
   - python3-asciitree 
@@ -26913,6 +26915,9 @@ unsorted:
   - sympol 
   - sympol-devel 
   - sympow 
+  - syncplay-client 
+  - syncplay-common 
+  - syncplay-server 
   - syncthing 
   - syncthing-relaysrv 
   - syndication-devel 

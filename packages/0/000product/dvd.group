@@ -73,6 +73,7 @@
     <package name="analitza-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="apache-commons-logging" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="apache2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
+    <package name="apache2-manual" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="apache2-mod_php7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="apache2-prefork" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="apache2-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
@@ -4182,7 +4183,6 @@
     <package name="fprintd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="fprintd-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="fprintd-pam" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="fprintd-pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="frameworkintegration-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="freerdp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="fwupd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
