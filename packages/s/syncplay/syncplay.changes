@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Fri Dec 18 09:19:09 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Cleanup .spec file
+ * Remove obsolete macros
+ * Use spec-cleaner
+ * Correct dependencies for subpackages
+
+-------------------------------------------------------------------
+Fri Dec 18 08:45:15 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Attempt to fix desktop file categories
+- Add license and readme for all packages
+
+-------------------------------------------------------------------
+Fri Dec 18 06:08:04 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Initial package build

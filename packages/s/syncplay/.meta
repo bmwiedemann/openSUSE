@@ -1,0 +1,6 @@
+<package name="syncplay" project="openSUSE:Factory">
+  <title>Syncplay</title>
+  <description>Free software that synchronises media players so that faraway friends can watch videos together.</description>
+  <devel project="multimedia:apps" package="syncplay"/>
+  <url>https://syncplay.pl</url>
+</package>
