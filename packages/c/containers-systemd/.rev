@@ -186,4 +186,24 @@
   * Add LMTP variable</comment>
     <requestid>854067</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9ab71a55656fa194f5f71b0554cde0da</srcmd5>
+    <version>0.0+git20201220.ed8a6b2</version>
+    <time>1608550524</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20201220.ed8a6b2:
+  * Add default for FETCHMAILRC
+
+- Update to version 0.0+git20201220.0fae7ba:
+  * Add service for fetchmail container
+
+- Update to version 0.0+git20201220.69a11d7:
+  * Document spamassassin support
+  * Add support for a spamassassin container
+
+- LDAP_MAIL_READER_PASSWORD was renamed to LDAP_BIND_PASSWORD
+- Update to version 0.0+git20201217.a84253d:
+  * Allow to overwrite TLS key location</comment>
+    <requestid>857743</requestid>
+  </revision>
 </revisionlist>

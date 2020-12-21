@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Dec 20 17:20:42 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20201220.ed8a6b2:
+  * Add default for FETCHMAILRC
+
+-------------------------------------------------------------------
+Sun Dec 20 15:35:17 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20201220.0fae7ba:
+  * Add service for fetchmail container
+
+-------------------------------------------------------------------
+Sun Dec 20 07:41:26 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20201220.69a11d7:
+  * Document spamassassin support
+  * Add support for a spamassassin container
+
+-------------------------------------------------------------------
+Thu Dec 17 14:50:53 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- LDAP_MAIL_READER_PASSWORD was renamed to LDAP_BIND_PASSWORD
+- Update to version 0.0+git20201217.a84253d:
+  * Allow to overwrite TLS key location
+
+-------------------------------------------------------------------
 Tue Dec 08 15:35:19 UTC 2020 - kukuk@suse.com
 
 - Update to version 0.0+git20201208.1b4413e:

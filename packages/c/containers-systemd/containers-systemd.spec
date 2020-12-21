@@ -16,8 +16,8 @@
 #
 
 
-%define containers bind dhcp-server dovecot haproxy mariadb minidlna nginx openldap postfix squid
-%define container_services container-bind.service container-dhcp-server.service container-dhcp6-server.service container-dovecot.service container-haproxy.service container-mariadb.service container-minidlna.service container-nginx.service container-openldap.service container-postfix.service container-squid.service container-image-prune.service container-image-prune.timer
+%define containers bind dhcp-server dovecot fetchmail haproxy mariadb minidlna nginx openldap postfix spamassassin squid
+%define container_services container-bind.service container-dhcp-server.service container-dhcp6-server.service container-dovecot.service container-fetchmail.service container-haproxy.service container-mariadb.service container-minidlna.service container-nginx.service container-openldap.service container-postfix.service container-spamassassin.service container-squid.service container-image-prune.service container-image-prune.timer
 
 %if %{undefined service_del_postun_without_restart}
 %define service_del_postun_without_restart() \
@@ -26,7 +26,7 @@ DISABLE_RESTART_ON_UPDATE=1 \
 %endif
 
 Name:           containers-systemd
-Version:        0.0+git20201208.1b4413e
+Version:        0.0+git20201220.ed8a6b2
 Release:        0
 Summary:        Systemd service files and config files for openSUSE container
 License:        MIT
@@ -38,7 +38,8 @@ BuildArch:      noarch
 %description
 This package contains the configuration files and systemd units
 to run the openSUSE containers via podman managed by systemd.
-Currently supported are bind, dhcp-server, mariadb, nginx and squid.
+Currently supported are bind, dhcp-server, dovecot, fetchmail, haproxy,
+mariadb, minidlna, nginx, openldap, postfix, spamassassin and squid.
 Additional, there is a timer to cleanup dangling container images.
 
 %prep
@@ -70,7 +71,7 @@ for i in LDAP_ADMIN_PASSWORD LDAP_CONFIG_PASSWORD; do
   touch %{buildroot}%{_sysconfdir}/openldap-secrets/$i
 done
 mkdir -p %{buildroot}%{_sysconfdir}/postfix-secrets
-for i in SMTP_PASSWORD LDAP_MAIL_READER_PASSWORD; do
+for i in SMTP_PASSWORD LDAP_BIND_PASSWORD; do
   touch %{buildroot}%{_sysconfdir}/postfix-secrets/$i
 done
 
@@ -104,6 +105,9 @@ done
 %{_distconfdir}/default/container-dovecot
 %{_sbindir}/rccontainer-dovecot
 %ghost %dir /srv/dovecot
+%{_unitdir}/container-fetchmail.service
+%{_distconfdir}/default/container-fetchmail
+%{_sbindir}/rccontainer-fetchmail
 %{_unitdir}/container-haproxy.service
 %{_distconfdir}/default/container-haproxy
 %{_sbindir}/rccontainer-haproxy
@@ -138,7 +142,10 @@ done
 %ghost %dir /srv/postfix
 %dir %attr(0700,root,root) %{_sysconfdir}/postfix-secrets
 %config(noreplace) %attr(0600,root,root) %{_sysconfdir}/postfix-secrets/SMTP_PASSWORD
-%config(noreplace) %attr(0600,root,root) %{_sysconfdir}/postfix-secrets/LDAP_MAIL_READER_PASSWORD
+%config(noreplace) %attr(0600,root,root) %{_sysconfdir}/postfix-secrets/LDAP_BIND_PASSWORD
+%{_unitdir}/container-spamassassin.service
+%{_distconfdir}/default/container-spamassassin
+%{_sbindir}/rccontainer-spamassassin
 %{_unitdir}/container-squid.service
 %{_distconfdir}/default/container-squid
 %{_sbindir}/rccontainer-squid
