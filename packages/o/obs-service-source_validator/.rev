@@ -451,4 +451,14 @@ last submission had wrong tar ball for unknown reason</comment>
   * Add missing dependency to the debian/control file</comment>
     <requestid>754613</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>c77d292bf33f80f071bfb2a29d9e1516</srcmd5>
+    <version>0.20</version>
+    <time>1608550482</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.20:
+  * One .changes file per package is enough
+</comment>
+    <requestid>854915</requestid>
+  </revision>
 </revisionlist>
