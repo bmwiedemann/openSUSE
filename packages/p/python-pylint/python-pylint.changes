@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 17 21:43:53 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Skip the failing test for unused imports on python36 flavor
+  gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Fri Aug 21 10:28:41 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Update to 2.6.0
