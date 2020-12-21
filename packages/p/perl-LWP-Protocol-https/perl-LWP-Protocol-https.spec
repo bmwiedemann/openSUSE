@@ -17,7 +17,7 @@
 
 
 Name:           perl-LWP-Protocol-https
-Version:        6.09
+Version:        6.10
 Release:        0
 %define cpan_name LWP-Protocol-https
 Summary:        Provide https support for LWP::UserAgent
@@ -38,6 +38,7 @@ BuildRequires:  perl(LWP::Protocol::http)
 BuildRequires:  perl(LWP::UserAgent) >= 6.06
 #BuildRequires:  perl(Mozilla::CA) >= 20180117
 BuildRequires:  perl(Net::HTTPS) >= 6
+BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::RequiresInternet)
 Requires:       perl(IO::Socket::SSL) >= 1.54
 Requires:       perl(LWP::Protocol::http)

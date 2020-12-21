@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec 18 03:07:41 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.10
+   see /usr/share/doc/packages/perl-LWP-Protocol-https/Changes
+
+  6.10      2020-12-17 15:42:06Z
+      - Fix #39 - prevent user env from breaking the test (GH#63) (Gianni
+        Ceccarelli)
+      - Include Net::SSLeay in reported prereqs (GH#60) (Olaf Alders)
+      - Use GitHub as a bug tracker (GH#59) (Olaf Alders)
+
+-------------------------------------------------------------------
 Thu Oct 15 13:58:08 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - updated to 6.09
