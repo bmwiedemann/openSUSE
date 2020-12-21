@@ -703,4 +703,12 @@ https://blog.powerdns.com/2017/06/23/powerdns-authoritative-server-4-0-4-release
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>855745</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>427bfb65d2251734b21b8f41c40e8ef2</srcmd5>
+    <version>4.4.0</version>
+    <time>1608542610</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856917</requestid>
+  </revision>
 </revisionlist>

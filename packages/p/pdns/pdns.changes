@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec 18 18:10:17 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Update to 4.4.0
+  * the LMDB backend now supports long record content, making it
+    production ready for everybody
+  * the SVCB and HTTPS record types are supported, with limited
+    additional processing
+  * transaction handling in the 2136 handler and the HTTP API was again
+    improved a lot, avoiding various spurious issues users may have noticed
+    if they do a lot of changes
+  * a new setting (consistent-backends) offers a roughly 30% speedup,
+    subject to conditions
+  * we finally emit Prometheus metrics!
+- removed 9070.patch
+
+-------------------------------------------------------------------
 Mon Dec  7 11:43:15 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Drop GSS-TSIG support in the spec file as it's a removed from the
