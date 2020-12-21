@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 18 13:44:58 UTC 2020 - Stefan Schubert <schubi@suse.de>
+
+- Updating warning popup if the user has skipped the registration.
+  Added media information while online installation (bsc#1177504).
+- 4.3.17 
+
+-------------------------------------------------------------------
 Tue Dec  8 09:16:16 UTC 2020 - schubi <schubi@intern>
 
 - Updating warning popup if the user has skipped the registration.
