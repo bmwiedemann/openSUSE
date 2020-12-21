@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- OBS-ExcludeArch: i586 s390 -->
+
+<image schemaversion="6.9" name="opensuse-spamassassin-image" xmlns:suse_label_helper="com.suse.label_helper">
+  <description type="system">
+    <author>Thorsten Kukuk</author>
+    <contact>kukuk@suse.com</contact>
+    <specification>Container running spamassassin daemon</specification>
+  </description>
+  <preferences>
+    <type
+      image="docker"
+      derived_from="obsrepositories:/opensuse/busybox#latest">
+      <containerconfig
+        name="opensuse/spamassassin"
+        tag="latest"
+        additionaltags="%PKG_VERSION%,%PKG_VERSION%-%RELEASE%"
+        maintainer="Thorsten Kukuk &lt;kukuk@suse.com&gt;">
+	<entrypoint execute="/entrypoint/entrypoint.sh"/>
+        <subcommand execute="/usr/sbin/spamd">
+          <argument name="-L"/>
+          <argument name="-s"/>
+          <argument name="stderr"/>
+          <argument name="--listen"/>
+          <argument name="*"/>
+          <argument name="-A"/>
+          <argument name="10.0.0.0/8,192.168.0.0/16,::1,127.0.0.0/8"/>
+        </subcommand>
+        <expose>
+          <port number='783'/>
+        </expose>
+        <volumes>
+          <volume name="/var/lib/spamassassin"/>
+        </volumes>
+        <labels>
+          <suse_label_helper:add_prefix prefix="org.opensuse.spamassassin">
+            <label name="org.opencontainers.image.title" value="spamassassin container"/>
+            <label name="org.opencontainers.image.description" value="Image containing spamassassin daemon."/>
+            <label name="org.opencontainers.image.version" value="%PKG_VERSION%-%RELEASE%"/>
+            <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
+            <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/spamassassin:%PKG_VERSION%-%RELEASE%"/>
+            <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
+          </suse_label_helper:add_prefix>
+        </labels>
+        <history author="Thorsten Kukuk &lt;kukuk@suse.com&gt;">spamassassin container</history>
+      </containerconfig>
+    </type>
+    <version>1.0.0</version>
+    <packagemanager>zypper</packagemanager>
+    <rpm-excludedocs>false</rpm-excludedocs>
+  </preferences>
+  <repository>
+    <source path="obsrepositories:/"/>
+  </repository>
+  <packages type="bootstrap">
+    <package name="bash"/>
+    <package name="spamassassin"/>
+    <package name="gpg2"/>
+    <package name="mandoc"/>
+    <package name="-busybox-adduser"/>
+    <package name="-busybox-man"/>
+    <archive name="entrypoint.tar.gz"/>
+  </packages>
+</image>
