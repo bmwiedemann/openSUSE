@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 17 15:05:54 UTC 2020 - Jens K. <jens@karatek.net>
+
+- Change .desktop file so module launches with xdg-su (bsc#1180173).
+- 4.3.1
+
+-------------------------------------------------------------------
 Wed Nov 18 22:10:43 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Handle properly help command for alternatives client
