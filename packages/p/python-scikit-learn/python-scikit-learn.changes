@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 13 01:16:34 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- provide "sklearn" only for primary python3 flavor
+  gh#openSUSE/python-rpm-macros#66
+- clean test setup
+
+-------------------------------------------------------------------
 Tue Oct 13 22:49:47 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add assert_allclose-for-FP-comparison.patch to overcome

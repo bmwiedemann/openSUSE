@@ -46,7 +46,9 @@ Requires:       python-scipy >= 0.19.1
 Requires:       python-threadpoolctl >= 2.0.0
 Requires:       python-xml
 Provides:       python-sklearn
+%if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
 Provides:       sklearn
+%endif
 # SECTION test requirements
 BuildRequires:  %{python_module joblib}
 BuildRequires:  %{python_module matplotlib}
@@ -83,25 +85,20 @@ done }
 %ifarch %{ix86} x86_64
 %check
 export SKLEARN_SKIP_NETWORK_TESTS=1
-# export PYTHONDONTWRITEBYTECODE=1
 NO_TESTS="test_feature_importance_regression or test_minibatch_with_many_reassignments"
-NO_TESTS="$NO_TESTS or test_sparse_coder_parallel_mmap or test_explained_variances"
+NO_TESTS+=" or test_sparse_coder_parallel_mmap or test_explained_variances"
 # test_negative_sample_weights_mask_all_samples[weights-are-zero-NuSVC] Fatal Python error: Aborted
-NO_TESTS="$NO_TESTS or test_negative_sample_weights_mask_all_samples"
-export NO_TESTS
-mv sklearn sklearn_temp
-rm -rf build _build.*
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-rm -rf build _build.*
-py.test-%{$python_bin_suffix} -p no:cacheprovider -v -k "not ($NO_TESTS)" %{buildroot}%{$python_sitearch}/sklearn
-}
-mv sklearn_temp sklearn
+NO_TESTS+=" or test_negative_sample_weights_mask_all_samples"
+mkdir test_dir
+pushd test_dir
+%pytest_arch -p no:cacheprovider -v -k "not ($NO_TESTS)" %{buildroot}%{$python_sitearch}/sklearn
+popd
 %endif
 
 %files %{python_files}
 %license COPYING
 %doc README.rst
 %{python_sitearch}/sklearn/
-%{python_sitearch}/scikit_learn-%{version}-py*.egg-info
+%{python_sitearch}/scikit_learn-%{version}*-info
 
 %changelog
