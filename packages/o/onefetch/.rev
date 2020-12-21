@@ -119,4 +119,20 @@
   * Colon is white by default</comment>
     <requestid>850113</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>807bc2f87bf56b68d90f7751690ed6bd</srcmd5>
+    <version>2.8.0</version>
+    <time>1608542594</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.8.0:
+  * [language] added support for VimScript
+  * [language] added support for Vala
+  * [language] added support for Processing
+  * [misc] new CLI flag to hide logo if terminal size is too narrow
+  * [misc] new CLI flag to output in JSON format
+  * [misc] exclude .git folder when computing repo size
+  * [info] replace git sys calls with git2-rs calls
+  * [info] added pub as another package manager for dart projects</comment>
+    <requestid>856896</requestid>
+  </revision>
 </revisionlist>

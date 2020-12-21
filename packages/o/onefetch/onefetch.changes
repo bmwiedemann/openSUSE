@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 18 14:23:27 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.8.0:
+  * [language] added support for VimScript
+  * [language] added support for Vala
+  * [language] added support for Processing
+  * [misc] new CLI flag to hide logo if terminal size is too narrow
+  * [misc] new CLI flag to output in JSON format
+  * [misc] exclude .git folder when computing repo size
+  * [info] replace git sys calls with git2-rs calls
+  * [info] added pub as another package manager for dart projects
+
+-------------------------------------------------------------------
 Mon Nov 23 08:42:30 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.7.3:

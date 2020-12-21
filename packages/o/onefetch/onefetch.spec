@@ -17,7 +17,7 @@
 
 
 Name:           onefetch
-Version:        2.7.3
+Version:        2.8.0
 Release:        0
 Summary:        Git repository summary on your terminal
 License:        MIT AND GPL-2.0-only
@@ -66,7 +66,7 @@ install -Dm0755 target/release/onefetch %{buildroot}%{_bindir}/onefetch
 
 %files
 %license LICENSE.md
-%doc CHANGELOG.md README.md
+%doc README.md
 %{_bindir}/onefetch
 
 %changelog
