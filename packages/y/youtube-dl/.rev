@@ -1393,4 +1393,12 @@
     <comment>- Update to release 2020.12.12</comment>
     <requestid>855005</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>6f3cdcec3d2c14cfea52c8fd4d230557</srcmd5>
+    <version>2020.12.14</version>
+    <time>1608542671</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>857759</requestid>
+  </revision>
 </revisionlist>

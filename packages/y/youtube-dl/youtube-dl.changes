@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec 13 19:35:10 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.12.14
+  * youtube: Add some invidious instances
+  * itv: clean description from HTML tags
+  * linuxacademy] Fix authentication and extraction
+  * downloader/hls] delegate manifests with media initialization
+    to ffmpeg
+
+-------------------------------------------------------------------
 Sat Dec 12 00:31:56 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.12.12
