@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Dec 10 07:36:26 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.15.0:
+  * Automatic and dual approximation and fractions mode in qalc
+    and Gnome shell search provider
+  * Do not ask before overwriting temporary variables in qalc
+  * Add keyboard shortcuts for approximation (Ctrl+E), fraction
+    mode (Ctrl+F), and save variable (Ctrl+R) in qalc
+  * Add "precalculate expression" argument (default false) to
+    save() function (this also changes the behaviour of ":=")
+  * Support multiple equivalent custom digits, separated by
+    semicolon (e.g. "0;aA1;bB2;cC3"), and phoneword digit set
+    in base() function
+  * Always place unit with prefix first (fixes kWh)
+  * Fix local time zone on Windows
+  * Fix matrix/vector multiplication with approximate
+    matrix/vector variable
+  * Fix parsing of expression with multiple degree signs
+  * Minor bug fixes and feature improvements
+
+-------------------------------------------------------------------
 Thu Nov  5 22:45:37 UTC 2020 - Matthew Trescott <matthewtrescott@gmail.com>
 
 - Update to 3.14.0:
