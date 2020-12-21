@@ -803,4 +803,12 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
     <comment>- Mention elfutils-rpmlintrc as a Source. (forwarded request 851817 from marxin)</comment>
     <requestid>851824</requestid>
   </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>ff307d12039d52d2b5834ff2d39495c1</srcmd5>
+    <version>0.182</version>
+    <time>1608542516</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856471</requestid>
+  </revision>
 </revisionlist>

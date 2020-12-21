@@ -19,7 +19,7 @@
 Name:           elfutils-debuginfod
 Version:        0.182
 Release:        0
-Summary:        debuginfod part of elfutils
+Summary:        Debuginfod server provided by elfutils
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Building
 URL:            https://sourceware.org/elfutils/
@@ -31,7 +31,7 @@ Source3:        elfutils.keyring
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
-# For the run-debuginfod-find.sh test case in %check for /usr/sbin/ss
+# For the run-debuginfod-find.sh test case in %%check for /usr/sbin/ss
 BuildRequires:  curl
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -164,8 +164,6 @@ export XFAIL_TESTS="dwfl-proc-attach run-backtrace-dwarf.sh run-backtrace-native
 %{_unitdir}/debuginfod.service
 %{_mandir}/man8/debuginfod.8*
 %{_fillupdir}/sysconfig.debuginfod
-%config %{_sysconfdir}/profile.d/debuginfod.sh
-%config %{_sysconfdir}/profile.d/debuginfod.csh
 
 %dir %attr(0700,debuginfod,debuginfod) %{_localstatedir}/cache/debuginfod
 %verify(not md5 size mtime) %attr(0600,debuginfod,debuginfod) %{_localstatedir}/cache/debuginfod/debuginfod.sqlite
@@ -173,6 +171,8 @@ export XFAIL_TESTS="dwfl-proc-attach run-backtrace-dwarf.sh run-backtrace-native
 %files -n libdebuginfod1
 %{_libdir}/libdebuginfod.so.*
 %{_libdir}/libdebuginfod-%{version}.so
+%config %{_sysconfdir}/profile.d/debuginfod.sh
+%config %{_sysconfdir}/profile.d/debuginfod.csh
 
 %files -n libdebuginfod-devel
 %{_libdir}/pkgconfig/libdebuginfod.pc
