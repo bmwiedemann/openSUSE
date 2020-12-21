@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 18 18:17:39 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ugrep 3.1.0:
+  * New --bool option to specify a Boolean search query pattern
+  * New --and and --not options
+  * --format not supports -v
+
+-------------------------------------------------------------------
 Mon Dec  7 14:40:18 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - ugrep 3.0.6:
