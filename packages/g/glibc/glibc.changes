@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec 15 16:41:29 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- aarch64-static-pie.patch: fix static PIE start code for BTI
+  (bsc#1179450, BZ #27068)
+- iconv-redundant-shift.patch: iconv: Accept redundant shift sequences in
+  IBM1364 (CVE-2020-27618, bsc#1178386, BZ #26224)
+- iconv-ucs4-loop-bounds.patch: iconv: Fix incorrect UCS4 inner loop
+  bounds (CVE-2020-29562, bsc#1179694, BZ #26923)
+- printf-long-double-non-normal.patch: x86: Harden printf against
+  non-normal long double values (CVE-2020-29573, bsc#1179721, BZ #26649)
+- get-nprocs-cpu-online-parsing.patch: Fix parsing of
+  /sys/devices/system/cpu/online (bsc#1180038, BZ #25859)
+
+-------------------------------------------------------------------
 Tue Nov 10 15:36:40 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - intl-codeset-suffixes.patch: intl: Handle translation output codesets
@@ -13,7 +27,7 @@ Mon Oct 26 07:07:38 UTC 2020 - Richard Biener <rguenther@suse.com>
 
 - Use --enable-cet on x86_64 to instrument glibc for indirect branch
   tracking and shadow stack use.  Enable indirect branch tracking
-  and shadow stack in the dynamic loader.  [jsc#PM-2110] [bsc#1175154]
+  and shadow stack in the dynamic loader (jsc#PM-2110, bsc#1175154)
 
 -------------------------------------------------------------------
 Tue Sep  8 08:00:33 UTC 2020 - Andreas Schwab <schwab@suse.de>

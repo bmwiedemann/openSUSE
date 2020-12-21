@@ -269,6 +269,16 @@ Patch1002:      intl-codeset-suffixes.patch
 Patch1003:      strerrorname-np.patch
 # PATCH-FIX-UPSTREAM sysvipc: Fix SEM_STAT_ANY kernel argument pass (BZ #26637, BZ #26639, BZ #26636)
 Patch1004:      sysvipc.patch
+# PATCH-FIX-UPSTREAM aarch64: fix static PIE start code for BTI (BZ #27068)
+Patch1005:      aarch64-static-pie.patch
+# PATCH-FIX-UPSTREAM iconv: Accept redundant shift sequences in IBM1364 (CVE-2020-27618, BZ #26224)
+Patch1006:      iconv-redundant-shift.patch
+# PATCH-FIX-UPSTREAM iconv: Fix incorrect UCS4 inner loop bounds (CVE-2020-29562, BZ#26923)
+Patch1007:      iconv-ucs4-loop-bounds.patch
+# PATCH-FIX-UPSTREAM x86: Harden printf against non-normal long double values (CVE-2020-29573, BZ #26649)
+Patch1008:      printf-long-double-non-normal.patch
+# PATCH-FIX-UPSTREAM Fix parsing of /sys/devices/system/cpu/online (BZ #25859)
+Patch1009:      get-nprocs-cpu-online-parsing.patch
 
 ### 
 # Patches awaiting upstream approval
@@ -486,6 +496,11 @@ makedb: A program to create a database for nss
 %patch1002 -p1
 %patch1003 -p1
 %patch1004 -p1
+%patch1005 -p1
+%patch1006 -p1
+%patch1007 -p1
+%patch1008 -p1
+%patch1009 -p1
 
 %patch2000 -p1
 %patch2001 -p1

@@ -2362,4 +2362,21 @@ for more fun options (forwarded request 147495 from coolo)</comment>
   #26637, BZ #26639, BZ #26636) (forwarded request 847890 from Andreas_Schwab)</comment>
     <requestid>847891</requestid>
   </revision>
+  <revision rev="243" vrev="4">
+    <srcmd5>0428db4be5237264a663cf79f053441d</srcmd5>
+    <version>2.32</version>
+    <time>1608542517</time>
+    <user>dimstar_suse</user>
+    <comment>- aarch64-static-pie.patch: fix static PIE start code for BTI
+  (bsc#1179450, BZ #27068)
+- iconv-redundant-shift.patch: iconv: Accept redundant shift sequences in
+  IBM1364 (CVE-2020-27618, bsc#1178386, BZ #26224)
+- iconv-ucs4-loop-bounds.patch: iconv: Fix incorrect UCS4 inner loop
+  bounds (CVE-2020-29562, bsc#1179694, BZ #26923)
+- printf-long-double-non-normal.patch: x86: Harden printf against
+  non-normal long double values (CVE-2020-29573, bsc#1179721, BZ #26649)
+- get-nprocs-cpu-online-parsing.patch: Fix parsing of
+  /sys/devices/system/cpu/online (bsc#1180038, BZ #25859) (forwarded request 856525 from Andreas_Schwab)</comment>
+    <requestid>856526</requestid>
+  </revision>
 </revisionlist>
