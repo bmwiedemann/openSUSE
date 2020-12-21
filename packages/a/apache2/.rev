@@ -1840,4 +1840,13 @@ In apache2-vhost.template, we recommend users to create custom logs like `/var/l
     <comment>- only include BuildRequires: apache2-{prefork,worker,event} used in test target (forwarded request 855763 from adkorte)</comment>
     <requestid>855764</requestid>
   </revision>
+  <revision rev="179" vrev="11">
+    <srcmd5>36a81d9e51d57f88cfb98413880f45a4</srcmd5>
+    <version>2.4.46</version>
+    <time>1608550494</time>
+    <user>dimstar_suse</user>
+    <comment>- obsolete apache2-example-page and obsolete/provide apache2-doc
+  [bsc#180075]</comment>
+    <requestid>856752</requestid>
+  </revision>
 </revisionlist>

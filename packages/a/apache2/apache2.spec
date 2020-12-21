@@ -281,6 +281,7 @@ Requires:       logrotate
 Provides:       %{apache_mmn}
 Provides:       httpd
 Provides:       suse_maintenance_mmn_%{suse_maintenance_mmn}
+Obsoletes:      apache2-example-pages
 Requires(pre):  group(www)
 Requires(pre):  user(wwwrun)
 %{?systemd_ordering}
@@ -295,6 +296,10 @@ Requires:       apr-devel
 Requires:       apr-util-devel
 Requires:       gcc
 Provides:       httpd-devel = %{version}
+%endif
+%if "%{flavor}" == "manual"
+Provides:       apache2-doc = %{version}
+Obsoletes:      apache2-doc <= %{version}
 %endif
 %if "%{mpm}" != ""
 Requires(pre):  permissions
@@ -909,7 +914,7 @@ exit 0
 %{manualdir}
 %dir %{sysconfdir}
 %dir %{sysconfdir}/conf.d/
-%{sysconfdir}/conf.d/manual.conf
+%config %{sysconfdir}/conf.d/manual.conf
 %endif
 
 #
