@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Dec  7 07:53:25 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20201205
+  + amend build-fixes for gnat 10 to work with certain systems lacking
+    gprbuild (cf: 20200627).
+  + eliminate an additional strlen and wsclen.
+  + eliminate an unnecessary strlen in waddnstr() (suggested by Benjamin
+    Abendroth).
+  + modify inopts manpage, separating the items for nodelay and notimeout
+    (patch by Benno Schulenberg).
+  + correct mlterm3 kf1-kf4 (Debian #975322) -TD
+  + add flash to mlterm3 -TD
+
+-------------------------------------------------------------------
+Mon Nov 30 08:39:29 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20201128
+  + add Smulx to alacritty (Christian Duerr).
+  + add rep to PuTTY -TD
+  + add putty+keypad -TD
+  + add another fflush(stdout) in _nc_flush() to handle time-delays in
+    the middle of strings such as flash when the application uses
+    low-level calls rather than curses (cf: 20161217).
+  + modify configure check for c89/c99 aliases of clang to use its
+    -std option instead, because some platforms, in particular macOS,
+    do not provide workable c89/c99 aliases.
+
+-------------------------------------------------------------------
+Mon Nov 23 07:24:57 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20201121
+  + fix some compiler-warnings in experimental Windows-10 driver.
+  + add the definitions needed in recent configure-check for clang
+    (report by Steven Pitman).
+
+-------------------------------------------------------------------
+Mon Nov 16 11:06:57 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20201114
+  + fix some compiler-warnings in experimental Windows-10 driver.
+  + modify a check for parameters in terminfo capabilities to handle the
+    special case where short extended capability strings were not
+    converted from terminfo to termcap format.
+  + modify CF_MIXEDCASE_FILENAMES macro, adding darwin as special case
+    when cross-compiling (report by Eli Rykoff).
+
+-------------------------------------------------------------------
+Mon Nov  9 10:48:44 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20201107
+  + update kitty+common -TD
+  + add putty+screen and putty-screen (suggested by Alexandre Montaron).
+  + explain in ncurses.3x that functions in the tinfo library do not rely
+    upon wide-characters (prompted by discussion with Reuben Thomas).
+
+-------------------------------------------------------------------
 Mon Nov  2 07:43:02 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20201031
@@ -11,6 +67,11 @@ Mon Nov  2 07:43:02 UTC 2020 - Dr. Werner Fink <werner@suse.de>
   + modify configure-check for clang to verify that -Qunused-arguments
     is supported.  IBM's xlclang does not support it (report by Steven
     Pitman).
+
+-------------------------------------------------------------------
+Wed Oct 28 14:42:54 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- install to /usr (boo#1029961)
 
 -------------------------------------------------------------------
 Mon Oct 26 12:31:53 UTC 2020 - Dr. Werner Fink <werner@suse.de>

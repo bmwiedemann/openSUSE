@@ -878,14 +878,13 @@ includedir5=%{_incdir}/ncurses5' "$pc"
     PATH=$PWD/gzip:$PATH
     (cd %{root}/; tar -cpSf - *)|tar -xpsSf - -C %{buildroot}/
     rm -rf %{root}
-    mkdir %{buildroot}/%{_lib}
     for model in libncurses libncursest libncursesw libncursestw libtinfo libtinfow libtic libticw
     do
 	for lib in %{buildroot}%{_libdir}/${model}.so.* ; do
 	    test   -e "${lib}" || continue
-	    mv "${lib}" %{buildroot}/%{_lib}/ || continue
+	    mv "${lib}" %{buildroot}%{_libdir}/ || continue
 	done
-	for lib in %{buildroot}/%{_lib}/${model}.so.6 ; do
+	for lib in %{buildroot}%{_libdir}/${model}.so.6 ; do
 	    test -e "${lib}" || continue
 	    test -L "${lib}" || continue
 	    lib=${lib#%{buildroot}}
@@ -905,21 +904,21 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 	    esac
 	done
     done
-    /sbin/ldconfig -r %{buildroot}/ -n -v /%{_lib}
+    /sbin/ldconfig -r %{buildroot}/ -n -v %{_libdir}
 %if 0
     lnk=%{buildroot}%{_libdir}/libtermcap.so
     echo '/* GNU ld script */'		>  ${lnk}
     echo "INPUT(AS_NEEDED(-ltinfo))"	>> ${lnk}
 %endif
-    chmod 0755 %{buildroot}/%{_lib}/lib*.so.*
-    chmod 0755 %{buildroot}/%{_libdir}/lib*.so.*
-    chmod a-x  %{buildroot}/%{_libdir}/lib*.a
+    chmod 0755 %{buildroot}%{_libdir}/lib*.so.*
+    chmod 0755 %{buildroot}%{_libdir}/lib*.so.*
+    chmod a-x  %{buildroot}%{_libdir}/lib*.a
     if test -d %{buildroot}%{_libdir}/ncurses5 ; then
 	mv %{buildroot}%{_libdir}/ncurses5/*.so.5*   %{buildroot}%{_libdir}/
 	for lib in %{buildroot}%{_libdir}/ncurses5/*.so
 	do
 	    lnk=$lib
-	    lib=/%{_lib}/${lib##*/}.5
+	    lib=%{_libdir}/${lib##*/}.5
 	    case "${lib##*/}" in
 	    libncursesw*)
 		rm -f "${lnk}"
@@ -944,9 +943,9 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 	do
 	    for lib in %{buildroot}%{_libdir}/${model}.so.* ; do
 		test   -e "${lib}" || continue
-		mv "${lib}" %{buildroot}/%{_lib}/ || continue
+		mv "${lib}" %{buildroot}%{_libdir}/ || continue
 	    done
-	    for lib in %{buildroot}/%{_lib}/${model}.so.5 ; do
+	    for lib in %{buildroot}%{_libdir}/${model}.so.5 ; do
 		test -e "${lib}" || continue
 		test -L "${lib}" || continue
 		lib=${lib#%{buildroot}}
@@ -968,9 +967,9 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 	    esac
 	    done
 	done
-	chmod 0755 %{buildroot}/%{_lib}/lib*.so.5*
-	chmod 0755 %{buildroot}/%{_libdir}/lib*.so.5*
-	chmod a-x  %{buildroot}/%{_libdir}/ncurses5/lib*.a
+	chmod 0755 %{buildroot}%{_libdir}/lib*.so.5*
+	chmod 0755 %{buildroot}%{_libdir}/lib*.so.5*
+	chmod a-x  %{buildroot}%{_libdir}/ncurses5/lib*.a
     fi
     test -n "%{buildroot}" || ldconfig -N
     mkdir -p %{buildroot}%{_defaultdocdir}/ncurses
@@ -1093,11 +1092,11 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 # No test here
 %else
 %check
-LD_LIBRARY_PATH=%{buildroot}/%{_lib}:%{buildroot}%{_libdir}
+LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 export LD_LIBRARY_PATH
-nm -D %{buildroot}/%{_lib}/libncursesw.so.%{basevers} | grep -q in_wch
+nm -D %{buildroot}%{_libdir}/libncursesw.so.%{basevers} | grep -q in_wch
 %if %{with onlytinfo}
-nm -D %{buildroot}/%{_lib}/libtinfo.so.%{basevers} | grep -q _nc_read_entry2
+nm -D %{buildroot}%{_libdir}/libtinfo.so.%{basevers} | grep -q _nc_read_entry2
 %endif
 %if 0%{?suse_version} > 1500
 pushd test
@@ -1177,12 +1176,10 @@ popd
 
 %files -n libncurses5
 %defattr(-,root,root)
-/%{_lib}/lib*.so.5*
 %{_libdir}/lib*.so.5*
 
 %files -n libncurses6
 %defattr(-,root,root)
-/%{_lib}/lib*.so.6*
 %{_libdir}/lib*.so.6*
 
 %files -n ncurses-devel
