@@ -39,4 +39,12 @@
     <comment>- Update to version 3.14.0:</comment>
     <requestid>846500</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3f1eff9887646b0a86271c51cb6a4c79</srcmd5>
+    <version>3.15.0</version>
+    <time>1608542673</time>
+    <user>dimstar_suse</user>
+    <comment>new upstream release</comment>
+    <requestid>857100</requestid>
+  </revision>
 </revisionlist>

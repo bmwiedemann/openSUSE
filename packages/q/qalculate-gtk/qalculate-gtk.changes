@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 10 07:38:05 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 3.15.0:
+  * Replace equals button with a clickable icon in the upper right
+    corner of the expression entry
+  * Optional extra column of customizable keypad buttons
+  * Use icons for "Value", "Text", and "Copy" in history view and
+    hide all buttons when keypad is shown simultaneously
+  * Add "Exact" menu item to result popup menu when appropriate
+  * Fix segfault in unit manager
+
+-------------------------------------------------------------------
 Thu Nov  5 22:54:01 UTC 2020 - Matthew Trescott <matthewtrescott@gmail.com>
 
 - Update to version 3.14.0:
