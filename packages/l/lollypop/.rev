@@ -1499,4 +1499,16 @@
     (glgo#World/lollypop#2590).</comment>
     <requestid>843878</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>8bdfb1c28a5a58150191e5605d2e0089</srcmd5>
+    <version>1.4.7</version>
+    <time>1608542606</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.7:
+  * Update translations.
+
+- Update to version 1.4.6:
+  * Bug fixes.</comment>
+    <requestid>856974</requestid>
+  </revision>
 </revisionlist>
