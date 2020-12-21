@@ -18,7 +18,7 @@
 
 
 Name:           kokkos
-Version:        3.2.00
+Version:        3.3.00
 Release:        0
 %define         sover 3
 Summary:        A C++ Performance Portability Programming 
@@ -29,8 +29,6 @@ ExcludeArch:    %ix86 %arm
 
 URL:            https://github.com/kokkos/kokkos
 Source0:        https://github.com/kokkos/kokkos/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 3308.patch - fix naming of printer-tool 
-Patch0:         https://github.com/kokkos/kokkos/pull/3308.patch
 
 BuildRequires:  cmake >= 3.0
 BuildRequires:  gcc-c++
@@ -70,7 +68,6 @@ This package contains the development files of %{name}.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{cmake} \
@@ -103,5 +100,7 @@ LD_LIBRARY_PATH="%{buildroot}/%{_libdir}:$PWD/build/core/unit_test:${LD_LIBRARY_
 %{_libdir}/cmake/Kokkos
 %{_includedir}/kokkos
 %{_bindir}/nvcc_wrapper
+%{_bindir}/hpcbind
+%{_bindir}/kokkos_launch_compiler
 
 %changelog
