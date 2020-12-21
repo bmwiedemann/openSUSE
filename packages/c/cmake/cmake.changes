@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec 19 09:33:17 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.19.2:
+  * various Apple-Silicon support fixes
+  * The CMAKE_ISPC_HEADER_SUFFIX variable and corresponding ISPC_HEADER_SUFFIX
+  target property were added to control the header suffix used by ISPC
+  compiler generated headers. 
+- remove 5556.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Dec 15 15:58:39 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 5556.patch: export: Do not fail generation for separate

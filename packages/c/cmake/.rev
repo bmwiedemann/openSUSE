@@ -1619,4 +1619,17 @@ Adjust cmake-gui.spec so it uses 2.8.12.1 (forwarded request 208241 from sumski)
     <comment></comment>
     <requestid>856062</requestid>
   </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>1a81618099c03f4522bb3560eb90fb34</srcmd5>
+    <version>3.19.2</version>
+    <time>1608542547</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.19.2:
+  * various Apple-Silicon support fixes
+  * The CMAKE_ISPC_HEADER_SUFFIX variable and corresponding ISPC_HEADER_SUFFIX
+  target property were added to control the header suffix used by ISPC
+  compiler generated headers. 
+- remove 5556.patch (upstream)</comment>
+    <requestid>856962</requestid>
+  </revision>
 </revisionlist>
