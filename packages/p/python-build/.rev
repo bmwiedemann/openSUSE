@@ -7,4 +7,12 @@
     <comment>dependency of python-check-manifest, and general replacement for most tasks python-pep517 was doing</comment>
     <requestid>850551</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>48fe27ac39d275a93ed28532f06fedfb</srcmd5>
+    <version>0.1.0</version>
+    <time>1608550506</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856769</requestid>
+  </revision>
 </revisionlist>

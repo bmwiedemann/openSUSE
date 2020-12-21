@@ -1,0 +1,20 @@
+Index: build-0.1.0/tests/test_projectbuilder.py
+===================================================================
+--- build-0.1.0.orig/tests/test_projectbuilder.py
++++ build-0.1.0/tests/test_projectbuilder.py
+@@ -13,15 +13,10 @@ import pytest
+ import build
+ 
+ if sys.version_info >= (3, 8):  # pragma: no cover
+-    import email
+     from importlib import metadata as importlib_metadata
+-
+-    email_message_from_string = email.message_from_string
+ else:  # pragma: no cover
+     import importlib_metadata
+ 
+-    email_message_from_string = importlib_metadata._compat.email_message_from_string
+-
+ if sys.version_info >= (3,):  # pragma: no cover
+     build_open_owner = 'builtins'
+ else:  # pragma: no cover

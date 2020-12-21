@@ -17,6 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# TW defined --without python2
+%bcond_without python2
 Name:           python-build
 Version:        0.1.0
 Release:        0
@@ -25,25 +27,36 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pypa/build
 Source:         https://github.com/pypa/build/archive/%{version}.tar.gz#/build-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM remove-unused-import.patch -- remove unused import https://github.com/pypa/build/commit/efa3710
+Patch0:         remove-unused-import.patch
+BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pep517 >= 0.9}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with python2}
+BuildRequires:  python-typing
+BuildRequires:  python-virtualenv >= 20.0.35
+%endif
+BuildRequires:  (python3-importlib_metadata if python3-base < 3.8)
+BuildRequires:  (python36-importlib_metadata if python36-base)
 Requires:       python-packaging
 Requires:       python-pep517 >= 0.9
 Requires:       python-toml
+Requires:       (python-importlib_metadata if python-base < 3.8)
+%ifpython2
 Requires:       python-typing
+Requires:       python-virtualenv >= 20.0.35
+%endif
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module filelock}
-BuildRequires:  %{python_module packaging}
-BuildRequires:  %{python_module pep517 >= 0.9}
 BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module toml}
-BuildRequires:  %{python_module typing}
-BuildRequires:  %{python_module virtualenv}
 # /SECTION
 %python_subpackages
 
@@ -51,7 +64,7 @@ BuildRequires:  %{python_module virtualenv}
 Simple PEP517 package builder.
 
 %prep
-%setup -q -n build-%{version}
+%autosetup -p1 -n build-%{version}
 
 %build
 %python_build

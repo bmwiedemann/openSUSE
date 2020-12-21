@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 14:52:54 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Add remove-unused-import.patch to work with importlib_metadata 
+
+-------------------------------------------------------------------
 Fri Nov 13 11:14:24 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v0.1.0
