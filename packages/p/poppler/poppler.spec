@@ -24,7 +24,7 @@
 %endif
 
 Name:           poppler%{?psuffix}
-Version:        20.12.0
+Version:        20.12.1
 Release:        0
 # Actual version of poppler-data:
 %define poppler_data_version 0.4.9
