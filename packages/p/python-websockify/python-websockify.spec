@@ -17,7 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+# depends on openstack package mox3: only for primary python3 provider
+%define pythons python3
 Name:           python-websockify
 Version:        0.9.0
 Release:        0
