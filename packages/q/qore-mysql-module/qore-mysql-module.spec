@@ -45,7 +45,7 @@ stored procedure execution.
 %setup -q
 
 %build
-%ifarch x86_64 aarch64 ppc64 ppc64le x390x
+%ifarch x86_64 aarch64 ppc64 ppc64le s390x
 c64=--enable-64bit
 %endif
 CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" ./configure RPM_OPT_FLAGS="%{optflags}" --prefix=/usr --disable-debug $c64
