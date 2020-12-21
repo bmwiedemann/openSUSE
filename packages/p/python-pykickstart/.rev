@@ -7,4 +7,12 @@
     <comment>Initial packaging for openSUSE</comment>
     <requestid>807724</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>baa265c1c9b946ab57ecd307d17be658</srcmd5>
+    <version>3.30</version>
+    <time>1608542663</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>857755</requestid>
+  </revision>
 </revisionlist>

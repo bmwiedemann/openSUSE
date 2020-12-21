@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 20 17:45:46 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to version 3.30
+  + Add new timesource command
+  + Deprecate the --ntpservers and --nontp options of the timezone command
+  + Remove --biospart argument from harddrive command, it was never implemented or used.
+  + Add Fedora 34 handler
+
+-------------------------------------------------------------------
 Wed May 20 12:38:46 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Drop unused nose and coverage test dependencies

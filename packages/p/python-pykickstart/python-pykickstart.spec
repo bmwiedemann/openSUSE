@@ -23,7 +23,7 @@
 
 
 Name:           python-%{mod_name}
-Version:        3.25
+Version:        3.30
 Release:        0
 Summary:        Python module for parsing and writing kickstart files
 Group:          Development/Libraries/Python
@@ -36,12 +36,10 @@ BuildArch:      noarch
 BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module ordered-set}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 
-Requires:       python-ordered-set
 Requires:       python-requests
 Requires:       python-six
 
