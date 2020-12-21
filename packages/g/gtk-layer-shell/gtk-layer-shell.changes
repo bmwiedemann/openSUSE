@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Dec 13 10:12:12 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.2:
+  * Fix: normalize keyboard interactivity boolean to TRUE or FALSE
+  * Fix: Set layer windows to mapped (removes warning on tooltip
+    creation and fixes subsurfaces created as a GTK_WINDOW_POPUP
+    window, fixes #38)
+  * Examples: Rename gtk-layer-example -> simple-example-c
+  * Examples: merge simple-example-c and gtk-layer-demo into
+    examples directory
+  * Examples: add Vala example (not built with rest of project,
+    does not add dependency)
+  * Examples: add Python example
+  * Meson: change GTK dependency gtk+-wayland-3.0 -> gtk+-3.0
+  * Meson: drop .types file in docs
+  * Tests: change "test client" terminology to "integration test"
+  * Tests: colored output
+  * Tests: check that all tests are added to meson
+  * Compat: bump supported GTK to v3.24.24
+
+-------------------------------------------------------------------
 Mon Nov  2 06:52:59 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.1:
