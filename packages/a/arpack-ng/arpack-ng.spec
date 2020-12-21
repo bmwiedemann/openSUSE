@@ -56,6 +56,12 @@ ExclusiveArch:  do_not_build
 %{bcond_with hpc}
 %endif
 
+%if "%flavor" == "openmpi4"
+%define mpi_family openmpi
+%define mpi_ver 4
+%{bcond_with hpc}
+%endif
+
 # openmpi 1 was called just "openmpi" in Leap 15.x/SLE15
 %if 0%{?suse_version} >= 1550 || "%{mpi_family}" != "openmpi"  || "%{mpi_ver}" != "1"
 %define mpi_ext %{?mpi_ver}
@@ -77,27 +83,54 @@ ExclusiveArch:  do_not_build
 %global my_incdir %{_includedir}
 %endif
 
+# 3. OOM on i586: https://github.com/opencollab/arpack-ng/issues/289
+%ifarch i586
+%bcond_with pyarpack
+%else
+# 2. Boost too old for 15.2 and earlier
+%if 0%{?suse_version} < 1550
+%bcond_with pyarpack
+%else
+# 1. Build python module once: for serial flavor only
+%if %{with mpi}
+%bcond_with pyarpack
+%else
+%bcond_without pyarpack
+%endif
+# /1
+%endif
+# /2
+%endif
+# /3
+
 Name:           %{pkgname}
-Version:        3.7.0
+Version:        3.8.0
 Release:        0
 Summary:        Fortran77 subroutines for solving large scale eigenvalue problems
 License:        BSD-3-Clause
 Group:          System/Libraries
 URL:            https://github.com/opencollab/arpack-ng
-Source0:        https://github.com/opencollab/arpack-ng/archive/%{version}.tar.gz
-# PATCH-FIX-UPSTREAM arpack-ng-gcc10.patch gh#opencollab/arpack-ng#239 gh#opencollab/arpack-ng#245 badshah400@gmail.com -- Fix building against GCC 10, patches taken from upstream commits
-Patch0:         arpack-ng-gcc10.patch
-# PATCH-FIX-UPSTREAM arpack-ng-double-comparison.patch gh#opencollab/arpack-ng#269 badshah400@gmail.com -- Compare difference to zerop to test float equivalence in TESTS/bug_79_double_complex.f; fixes build failure for i586
-Patch1:         arpack-ng-double-comparison.patch
+Source0:        https://github.com/opencollab/arpack-ng/archive/%{version}.tar.gz#/arpack-ng-%{version}.tar.gz
+# PATCH-FEATURE-OPENSUSE arpack-ng-python-module-installdir.patch badshah400@gmail.com -- Install python module to standard python sitearch instead of libdir
+Patch0:         arpack-ng-python-module-installdir.patch
 %if %{with mpi}
 BuildRequires:  %{mpi_family}%{?mpi_ext}-devel
 %endif
-BuildRequires:  autoconf
 BuildRequires:  blas-devel
+BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  lapack-devel
+BuildRequires:  libopenblas_pthreads-devel
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(eigen3)
+%if %{with pyarpack}
+BuildRequires:  libboost_numpy3-devel
+BuildRequires:  libboost_python3-devel
+BuildRequires:  python3-devel
+BuildRequires:  python3-numpy
+%endif
 
 %description
 ARPACK is a collection of Fortran77 subroutines designed to solve
@@ -139,10 +172,17 @@ ARPACK is a collection of Fortran77 subroutines designed to solve
 large scale eigenvalue problems. This package contains the so
 library links used for building arpack based applications.
 
+%package -n python3-%{name}
+Summary:        Python bindings for ARPACK
+Group:          Development/Libraries/Python
+
+%description -n python3-%{name}
+ARPACK is a collection of Fortran77 subroutines designed to solve
+large scale eigenvalue problems. This package provides the python
+bindings for ARPACK.
+
 %prep
-%setup -q -n arpack-ng-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n arpack-ng-%{version}
 
 # create baselibs.conf based on flavor
 cat >  %{_sourcedir}/baselibs.conf <<EOF
@@ -161,22 +201,26 @@ export CFLAGS="%{optflags} -fPIC"
 export CXXFLAGS="%{optflags} -fPIC"
 
 %if %{with mpi}
+source %{my_prefix}/bin/mpivars.sh
+export CC=%{my_prefix}/bin/mpicc
+export CXX=%{my_prefix}/bin/mpic++
 export F77=%{my_prefix}/bin/mpif77
 export MPIF77=%{my_prefix}/bin/mpif77
 export LD_LIBRARY_PATH=%{my_prefix}/%{_lib}
 %endif
 
-%global orig_prefix %{_prefix}
-%define _prefix %{my_prefix}
-sh bootstrap
-%configure --disable-static \
-	   %{?with_mpi: --enable-mpi} \
-	   %{nil}
-%define _prefix %{orig_prefix}
-make %{?_smp_mflags}
+%cmake \
+  -DCMAKE_INSTALL_PREFIX:PATH=%{my_prefix} \
+  -DCMAKE_INSTALL_LIBDIR:PATH=%{my_libdir} \
+  -DCMAKE_SKIP_RPATH:BOOL=OFF \
+  -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
+  -DCMAKE_CXX_COMPILER_VERSION=$(gcc -dumpfullversion) \
+  -DMPI:BOOL=%{?with_mpi:ON}%{!?with_mpi:OFF} \
+  -DPYTHON3:BOOL=%{?with_pyarpack:ON}%{!?with_pyarpack:OFF}
+%cmake_build
 
 %install
-%make_install
+%cmake_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 # Remove sequential version files
@@ -189,9 +233,9 @@ ln -s EXAMPLES examples
 
 %check
 %if %{with mpi}
-export PATH="%{my_prefix}/bin/:$PATH"
+source %{my_prefix}/bin/mpivars.sh
 %endif
-%make_build check
+%ctest
 
 %post   -n %{libname}           -p /sbin/ldconfig
 %postun -n %{libname}           -p /sbin/ldconfig
@@ -208,6 +252,14 @@ export PATH="%{my_prefix}/bin/:$PATH"
 %if %{without mpi}
 %dir %{_libdir}/pkgconfig
 %{_libdir}/pkgconfig/*.pc
+%else
+%dir %{my_libdir}/cmake
+%endif
+%{my_libdir}/cmake/arpack-ng/
+
+%if %{with pyarpack}
+%files -n python3-%{name}
+%{python3_sitearch}/*.so
 %endif
 
 %changelog
