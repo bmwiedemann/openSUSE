@@ -202,4 +202,15 @@ I have fixed the issues from the previous submit requests.</comment>
     <comment></comment>
     <requestid>830250</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bcbbfbbb25c2eeab527d9d135f760d74</srcmd5>
+    <version>1.20.1</version>
+    <time>1608550510</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.20.1 boo#1179914 CVE-2020-29367:
+  * More saftey checks have been implemented so that potential flaws discovered by new fuzzers in OSS-Fuzzer are fixed now
+  * BloscLZ updated to 2.3.0. Expect better compression ratios for faster codecs. For details, see our new blog post: https://blosc.org/posts/beast-release/
+  * Fixed the _xgetbv() collision. Thanks to Michał Górny (@mgorny).</comment>
+    <requestid>856832</requestid>
+  </revision>
 </revisionlist>

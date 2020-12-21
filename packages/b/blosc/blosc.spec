@@ -19,7 +19,7 @@
 %define major   1
 %define libname lib%{name}%{major}
 Name:           blosc
-Version:        1.19.0
+Version:        1.20.1
 Release:        0
 Summary:        A blocking, shuffling and lossless compression library
 License:        MIT AND BSD-3-Clause AND BSD-2-Clause
@@ -28,10 +28,10 @@ URL:            https://www.blosc.org/
 Source:         https://github.com/Blosc/c-blosc/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  libzstd-devel
 BuildRequires:  pkgconfig
 BuildRequires:  snappy-devel
 BuildRequires:  pkgconfig(liblz4)
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -100,12 +100,11 @@ export LD_PRELOAD="$LD_PRELOAD  %{buildroot}%{_libdir}/libblosc.so  %{buildroot}
 
 %files -n %{libname}
 %doc LICENSES/*.txt
-%doc ANNOUNCE.rst README.md README_THREADED.rst RELEASE_NOTES.rst THANKS.rst
+%doc ANNOUNCE.rst README.md RELEASE_NOTES.rst THANKS.rst
 %{_libdir}/libblosc.so.%{major}
 %{_libdir}/libblosc.so.%{version}
 
 %files devel
-%doc README_HEADER.rst
 %doc examples/
 %{_includedir}/blosc.h
 %{_includedir}/blosc-export.h

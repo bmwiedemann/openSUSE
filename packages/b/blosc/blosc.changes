@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 18 08:06:48 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.20.1 boo#1179914 CVE-2020-29367:
+  * More saftey checks have been implemented so that potential flaws discovered by new fuzzers in OSS-Fuzzer are fixed now
+  * BloscLZ updated to 2.3.0. Expect better compression ratios for faster codecs. For details, see our new blog post: https://blosc.org/posts/beast-release/
+  * Fixed the _xgetbv() collision. Thanks to Michał Górny (@mgorny).
+
+-------------------------------------------------------------------
 Fri Aug 28 09:56:53 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Stop assuming that %{_libexecdir} == /usr/lib (boo#1174075).
