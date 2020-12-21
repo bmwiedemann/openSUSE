@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec  9 07:24:19 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Add gmp-6.2.1-arm64-invert_limb.patch [bsc#1179751]
+
+-------------------------------------------------------------------
 Thu Dec  3 12:54:56 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GMP 6.2.1:

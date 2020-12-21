@@ -27,6 +27,8 @@ Source0:        https://gmplib.org/download/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://gmplib.org/download/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
+# revert change causing bsc#1179751
+Patch1:         gmp-6.2.1-arm64-invert_limb.patch
 BuildRequires:  gcc-c++
 BuildRequires:  m4
 BuildRequires:  pkgconfig
@@ -73,6 +75,7 @@ huge numbers (integer and floating point).
 
 %prep
 %setup -q
+%patch1 -p0
 
 %build
 export CFLAGS="%{optflags} -fexceptions"

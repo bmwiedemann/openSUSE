@@ -514,4 +514,13 @@ discover that breaks ...
     <comment>GMP 6.2.1 (forwarded request 852909 from AndreasStieger)</comment>
     <requestid>853086</requestid>
   </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>6ded1142baaa4ccb0cdfeb85a11fefdc</srcmd5>
+    <version>6.2.1</version>
+    <time>1608542513</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gmp-6.2.1-arm64-invert_limb.patch [bsc#1179751]
+</comment>
+    <requestid>855709</requestid>
+  </revision>
 </revisionlist>
