@@ -17,7 +17,7 @@
 
 
 Name:           linux-glibc-devel
-Version:        5.9
+Version:        5.10
 Release:        0
 Summary:        Linux headers for userspace development
 License:        GPL-2.0-only
@@ -120,8 +120,6 @@ cat version.h
 cd %{kernel_arch}
 cp -a usr %{buildroot}/
 cp -a version.h %{buildroot}%{_includedir}/linux/
-# resolve file conflict with glibc for now
-rm -fv   %{buildroot}/%{_includedir}/scsi/scsi.h
 %fdupes %{buildroot}%{_includedir}
 
 %pre
