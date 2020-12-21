@@ -55,7 +55,7 @@ yaml module.
 find examples -type f|xargs chmod 644
 
 %build
-%ifarch x86_64 ppc64 ppc64le x390x
+%ifarch x86_64 ppc64 ppc64le s390x
 c64=--enable-64bit
 %endif
 # FIXME: you should use the %%configure macro
