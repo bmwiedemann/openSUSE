@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Fri Dec 18 19:46:52 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 9.5.1
+  * Fixed hex number highlighting
+- Update to version 9.5.0
+  Changed
+  * If file is not specified on Console then the Console.file will
+    return the current sys.stdout. Prior to 9.5.0 sys.stdout was
+    cached on the Console, which could break code that wrapped
+    sys.stdout after the Console was constructed.
+  * Changed Color.__str__ to not include ansi codes
+  * Changed Console.size to get the terminal dimensions via
+    sys.stdin. This means that if you set file to be an
+    io.StringIO file (for example) then the width will be set to
+    the current terminal dimensions and not a default of 80.
+  Added
+  * Added stderr parameter to Console
+  * Added rich.reconfigure
+  * Added Color.__rich__
+  * Added Console.style parameter
+  * Added Table.highlight parameter to enable highlighting ofcells
+  * Added Panel.highlight parameter to enable highlighting of panel
+    title
+  * Added highlight to ConsoleOptions
+  Fixed
+  * Fixed double output in rich.live #485
+  * Fixed Console.out highlighting not reflecting defaults #827
+  * FileProxy now raises TypeError for empty non-str arguments #828
+- Update to version 9.5.0
+  Added
+  * Added rich.live #382
+  * Added algin parameter to Rule and Console.rule
+  * Added rich.Status class and Console.status
+  * Added getitem to Text
+  * Added style parameter to Console.log
+  * Added rich.diagnose command
+  Changed
+  * Table.add_row style argument now applies to entire line and not
+    just cells
+  * Added end_section parameter to Table.add_row to force a line
+    underneath row
+  Fixed
+  * Fixed suppressed traceback context #468
+- Update to version 9.3.0
+  Added
+  * Added get_datetime parameter to Console, to allow for
+    repeatable tests
+  * Added get_time parameter to Console
+  * Added rich.abc.RichRenderable
+  * Added expand_all to rich.pretty.install()
+  * Added locals_max_length, and locals_max_string to Traceback and
+    logging.RichHandler
+  * Set defaults of max_length and max_string for Traceback to 10
+    and 80
+  * Added disable argument to Progress
+  Changed
+  * Reformatted test card (python -m rich)
+  Fixed
+  * Fixed redirecting of stderr in Progress
+  * Fixed broken expanded tuple of one #445
+  * Fixed justify argument not working in console.log #460
+- Update to version 9.2.0
+  Added
+  * Added tracebacks_show_locals parameter to RichHandler
+  * Added max_string to Pretty
+  * Added rich.ansi.AnsiDecoder
+  * Added decoding of ansi codes to captured stdout in Progress
+  * Added expand_all to rich.pretty.pprint
+  Changed
+  * Applied dim=True to indent guide styles
+  * Factored out RichHandler.get_style_and_level to allow for
+    overriding in subclasses
+  * Hid progress bars from html export
+  * rich.pretty.pprint now soft wraps
+
+-------------------------------------------------------------------
 Tue Oct 27 00:12:00 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Kill dephell dependency 

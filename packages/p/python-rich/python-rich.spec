@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-rich
-Version:        9.1.0
+Version:        9.5.1
 Release:        0
 Summary:        A Python library for rich text and beautiful formatting in the terminal
 License:        MIT
@@ -31,15 +31,15 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module colorama >= 0.4.0}
-BuildRequires:  %{python_module commonmark >= 0.9.0}
+BuildRequires:  %{python_module colorama >= 0.4.3}
+BuildRequires:  %{python_module commonmark >= 0.9.1}
 BuildRequires:  %{python_module pygments >= 2.6.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module typing_extensions >= 3.7.4}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-colorama >= 0.4.0
-Requires:       python-commonmark >= 0.9.0
+Requires:       python-colorama >= 0.4.3
+Requires:       python-commonmark >= 0.9.1
 Requires:       python-pygments >= 2.6.0
 Requires:       python-typing_extensions >= 3.7.4
 %if %{python_version_nodots} < 37
