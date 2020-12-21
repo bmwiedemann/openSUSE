@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Dec 20 10:04:41 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.3.1:
+  - Fix extraction of RegistrationInfo when no information is available
+  - Fix http_info struct to include status-code
+  - Allow to specify policy configurations based on the registration authority.
+  - Add new configuration option `logout_responses_signed` to sign logout responses.
+  - When available and appropriate return the ResponseLocation along with the Location
+    attribute.
+  - Always use base64.encodebytes; base64.encodestring has been dropped.
+  - Examples: fix IdP example that was outputing debug statements on stdout that became
+    part of its metadata.
+  - CI/CD: Use Ubuntu bionic as the host to run the CI/CD process.
+  - CI/CD: Pre-releases are now available on [test.pypi.org][pypi.test.pysaml2]. Each
+    commit/merge on the master branch autotically creates a new pre-release. To install a
+    prelease, run:
+  - Fix the generated xsd:ID format for EncryptedData and EncryptedKey elements
+  - Set the default value for the NameFormat attribute to unspecified when parsing
+  - Support arbitrary entity attributes
+  - Replace all asserts with proper checks
+  - Allow request signing in artifact2message
+  - Support logging configuration through the python logger
+  - Fix wrong identifiers for ecdsa algos
+  - Fix automatic inversion of attribute map files
+  - Factor out common codepaths in attribute_converter
+  - Remove uneeded exception logging
+  - Docs: Update configuration options documentation
+  - Examples: Support both str and bytes in SAML requests on the example idp
+  - Examples: Update to key generation to 2048 bits
+
+-------------------------------------------------------------------
 Sat Jul 11 18:07:25 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - update to 6.1.0:

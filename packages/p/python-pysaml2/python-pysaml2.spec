@@ -20,7 +20,7 @@
 %global modname pysaml2
 %global skip_python2 1
 Name:           python-pysaml2
-Version:        6.1.0
+Version:        6.3.1
 Release:        0
 Summary:        Python implementation of SAML Version 2 to be used in a WSGI environment
 License:        Apache-2.0
