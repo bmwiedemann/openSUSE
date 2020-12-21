@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-mocket%{psuffix}
-Version:        3.9.3
+Version:        3.9.4
 Release:        0
 Summary:        Python socket mock framework
 License:        BSD-3-Clause
@@ -53,7 +53,12 @@ BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module http-parser >= 0.9.0}
 BuildRequires:  %{python_module mock}
+%if 0%{suse_version} >= 1550
+# Optional pook is only available for Python 3, but in TW we will have more than one flavor
 BuildRequires:  %{python_module pook}
+%else
+BuildRequires:  python3-pook
+%endif
 BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-magic}
@@ -96,8 +101,12 @@ export LANG=en_US.UTF-8
 %if %{with test}
 export LANG=en_US.UTF-8
 export SKIP_TRUE_HTTP=1
-%define pytest_ignore_python2 --ignore tests/tests35 --ignore tests/tests38
-%pytest -k 'not RedisTestCase' %{?pytest_ignore%{$python_version}}
+pytest_python2_ignore="--ignore tests/tests35 --ignore tests/tests38 --ignore tests/main/test_pook.py"
+pytest_python36_ignore="--ignore tests/tests38"
+%if %{python3_version_nodots} < 38
+pytest_python3_ignore="--ignore tests/tests38"
+%endif
+%pytest -k 'not RedisTestCase' ${pytest_$python_ignore}
 %endif
 
 %if !%{with test}

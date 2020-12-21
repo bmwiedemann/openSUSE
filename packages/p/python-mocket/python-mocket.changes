@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 17 17:09:52 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Do not require and test with pook on Python2
+
+-------------------------------------------------------------------
+Thu Dec 17 15:10:50 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 3.9.4
+  * fix for new version of pip resolver
+- Skip python38 only tests in python36 flavor and python3 flavor
+  if python3 <= 3.8 (Leap)
+
+-------------------------------------------------------------------
 Thu Dec 10 01:45:45 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Relax pinned setup.py requires so that the installed egg-info
