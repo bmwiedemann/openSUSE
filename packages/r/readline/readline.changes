@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 28 14:04:30 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- get rid of /lib hack and install readline in /usr. Bash is already there
+  anyways (boo#1029961)
+- remove deprecated %install_info
+
+-------------------------------------------------------------------
 Thu Jul 16 19:13:54 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - add upstream keyring and verify source signature

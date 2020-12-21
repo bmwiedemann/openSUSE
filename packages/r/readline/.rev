@@ -113,4 +113,12 @@
   and verify signatures on official patches (forwarded request 821348 from AndreasStieger)</comment>
     <requestid>821442</requestid>
   </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>fa33050d2c31de1746f9a526758f4b29</srcmd5>
+    <version>8.0</version>
+    <time>1608542508</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853761</requestid>
+  </revision>
 </revisionlist>

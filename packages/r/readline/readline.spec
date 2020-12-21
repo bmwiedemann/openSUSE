@@ -98,8 +98,6 @@ This package contains the static library for the readline library.
 %package doc
 Summary:        Documentation how to Use and Program with the Readline Library
 Group:          Documentation/Other
-Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
 Supplements:    (libreadline%{rl_major} and patterns-base-documentation)
 Provides:       readline:%{_infodir}/readline.info.gz
 BuildArch:      noarch
@@ -213,41 +211,17 @@ export CC_FOR_BUILD CFLAGS_FOR_BUILD LDFLAGS_FOR_BUILD CFLAGS LDFLAGS CC
 %make_build documentation
 
 %install
-%make_install htmldir=%{_docdir}/%{name} installdir=%{_docdir}/%{name}/examples \
-	      libdir=/%{_lib} linkagedir=%{_libdir}
-chmod 0755 %{buildroot}/%{_lib}/libhistory.so.%{version}
-chmod 0755 %{buildroot}/%{_lib}/libreadline.so.%{version}
-rm -vf %{buildroot}/%{_lib}/libhistory.so.%{version}*old
-rm -vf %{buildroot}/%{_lib}/libreadline.so.%{version}*old
-rm -vf %{buildroot}/%{_lib}/libhistory.so
-rm -vf %{buildroot}/%{_lib}/libreadline.so
-mkdir -p %{buildroot}/%{_libdir}/pkgconfig
-ln -sf /%{_lib}/libhistory.so.%{version}  %{buildroot}/%{_libdir}/libhistory.so
-ln -sf /%{_lib}/libreadline.so.%{version} %{buildroot}/%{_libdir}/libreadline.so
-mv -vf %{buildroot}/%{_lib}/libhistory.a  %{buildroot}/%{_libdir}/libhistory.a
-mv -vf %{buildroot}/%{_lib}/libreadline.a %{buildroot}/%{_libdir}/libreadline.a
-mv -vf %{buildroot}/%{_lib}/pkgconfig/readline.pc \
-					  %{buildroot}/%{_libdir}/pkgconfig/readline.pc
-rm -vrf %{buildroot}%{_datadir}/readline/
+%make_install htmldir=%{_docdir}/%{name} installdir=%{_docdir}/%{name}/examples
 
 %post -n libreadline%{rl_major} -p /sbin/ldconfig
 %postun -n libreadline%{rl_major} -p /sbin/ldconfig
-%post doc
-%install_info --info-dir=%{_infodir} %{_infodir}/history.info.gz
-%install_info --info-dir=%{_infodir} %{_infodir}/readline.info.gz
-%install_info --info-dir=%{_infodir} %{_infodir}/rluserman.info.gz
-
-%preun doc
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/history.info.gz
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/readline.info.gz
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/rluserman.info.gz
 
 %files -n libreadline%{rl_major}
 %license COPYING
-/%{_lib}/libhistory.so.%{rl_major}
-/%{_lib}/libhistory.so.%{version}
-/%{_lib}/libreadline.so.%{rl_major}
-/%{_lib}/libreadline.so.%{version}
+%{_libdir}/libhistory.so.%{rl_major}
+%{_libdir}/libhistory.so.%{version}
+%{_libdir}/libreadline.so.%{rl_major}
+%{_libdir}/libreadline.so.%{version}
 
 %files devel
 %{_includedir}/readline/
