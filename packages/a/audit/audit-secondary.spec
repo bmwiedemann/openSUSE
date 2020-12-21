@@ -135,6 +135,9 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
 	--with-apparmor \
 	--with-libwrap \
 	--with-libcap-ng=yes \
+%ifarch aarch64
+	--with-aarch64 \
+%endif
 	--disable-static
 make %{?_smp_mflags}
 

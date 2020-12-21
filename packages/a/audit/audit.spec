@@ -89,6 +89,9 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
 	--without-libcap-ng \
 	--disable-static \
 	--without-python \
+%ifarch aarch64
+       --with-aarch64 \
+%endif
 	--disable-zos-remote
 make %{?_smp_mflags} -C lib
 make %{?_smp_mflags} -C auparse
