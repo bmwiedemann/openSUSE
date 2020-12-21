@@ -15,4 +15,13 @@
     <comment>- Add Requires on python-setuptools</comment>
     <requestid>805338</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>231dc9481b4382b2301c87b840fb2903</srcmd5>
+    <version>1.17.6</version>
+    <time>1608542613</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.6
+  * No changelog upstream</comment>
+    <requestid>856960</requestid>
+  </revision>
 </revisionlist>
