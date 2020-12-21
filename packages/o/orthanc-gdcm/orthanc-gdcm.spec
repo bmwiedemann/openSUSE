@@ -25,6 +25,10 @@ Release:        0
 URL:            http://orthanc-server.com
 Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-gdcm/OrthancGdcm-%{version}.tar.gz
 Source11:       orthanc-gdcm-readme.SUSE
+
+#  patch for orthanc 1.8.1
+Patch0:         patches_logging.patch
+
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gdcm-devel
@@ -52,6 +56,8 @@ GDCM for Orthanc
 
 %prep
 %setup -q -n OrthancGdcm-%{version}
+
+%patch0 -p1
 
 %build
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 10 13:53:47 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- patches_logging.patch added to fix build error w. orthanc 1.8.1
+
+-------------------------------------------------------------------
 Sat Oct 17 12:38:10 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.1
