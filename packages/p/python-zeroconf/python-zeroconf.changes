@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec 19 10:34:17 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.28.7:
+  * Fixed the IPv6 address rendering in the browser example, thanks to Alexey Vazhnov.
+  * Fixed a crash happening when a service is added or removed during handle_response
+  and improved exception handling, thanks to J. Nick Koston.
+
+-------------------------------------------------------------------
 Thu Nov 26 08:50:58 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.28.6:
