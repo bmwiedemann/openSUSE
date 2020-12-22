@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Dec  8 09:22:52 UTC 2020 - psimons@suse.com
+
+- Update hledger-interest to version 1.6.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Fri Sep  4 02:01:38 UTC 2020 - psimons@suse.com
 
 - Update hledger-interest to version 1.6.0.

@@ -23,6 +23,7 @@ Summary:        Computes interest for a given account
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/1.cabal#/%{name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Decimal-devel
 BuildRequires:  ghc-hledger-lib-devel
@@ -30,6 +31,7 @@ BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-time-devel
+ExcludeArch:    %{ix86}
 
 %description
 Hledger-interest is a small command-line utility based on Simon Michael's
@@ -87,6 +89,7 @@ German BGB288.
 
 %prep
 %autosetup
+cp -p %{SOURCE1} %{name}.cabal
 
 %build
 %ghc_bin_build
