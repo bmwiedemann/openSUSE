@@ -31,4 +31,12 @@
     <comment>automatic update</comment>
     <requestid>849168</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>775e366c76e06f5670b0f7be3970387a</srcmd5>
+    <version>0.8.10.2</version>
+    <time>1608634215</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUSE</comment>
+    <requestid>857700</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Tue Nov 17 13:35:50 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update _constraints to current requirements to avoid OOM seen
