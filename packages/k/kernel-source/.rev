@@ -5303,4 +5303,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>2 tty CVEs &amp; 5.9.14 &amp; 5.9.13 &amp; disable DEBUG_SECTION_MISMATCH</comment>
     <requestid>855307</requestid>
   </revision>
+  <revision rev="568" vrev="1">
+    <srcmd5>f1c8bdde4c7de7a9a1a484bd5b707a9f</srcmd5>
+    <version>5.10.1</version>
+    <time>1608632771</time>
+    <user>dimstar_suse</user>
+    <comment>amdgpu boot oops fix &amp; 5.10.1 (md+dm fixes) &amp; armv7 fix &amp; 5.10</comment>
+    <requestid>857095</requestid>
+  </revision>
 </revisionlist>

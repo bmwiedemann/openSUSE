@@ -38,19 +38,19 @@ Index: libs/python/src/long.cpp
 +++ libs/python/src/long.cpp
 @@ -8,16 +8,16 @@ namespace boost { namespace python { nam
  
- new_non_null_reference long_base::call(object const& arg_)
+ new_reference long_base::call(object const& arg_)
  {
 +    union { PyTypeObject *ptop; PyObject *pop; }pun = { &PyLong_Type };
-     return (detail::new_non_null_reference)PyObject_CallFunction(
+     return (detail::new_reference)PyObject_CallFunction(
 -        (PyObject*)&PyLong_Type, const_cast<char*>("(O)"), 
 -        arg_.ptr());
 +        pun.pop, const_cast<char*>("(O)"), arg_.ptr());
  }
  
- new_non_null_reference long_base::call(object const& arg_, object const& base)
+ new_reference long_base::call(object const& arg_, object const& base)
  {
 +    union { PyTypeObject *ptop; PyObject *pop; }pun = { &PyLong_Type };
-     return (detail::new_non_null_reference)PyObject_CallFunction(
+     return (detail::new_reference)PyObject_CallFunction(
 -        (PyObject*)&PyLong_Type, const_cast<char*>("(OO)"), 
 -        arg_.ptr(), base.ptr());
 +        pun.pop, const_cast<char*>("(OO)"), arg_.ptr(), base.ptr());

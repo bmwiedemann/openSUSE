@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Fri Dec 18 08:54:20 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Import commit 520e53b6d85087b05892ee637ae93f1b269e7e52 (merge of v246.9)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/2401461e5f0e32922823d954c56106f96344070e...520e53b6d85087b05892ee637ae93f1b269e7e52
+
+-------------------------------------------------------------------
+Fri Dec 18 08:41:04 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Import commit 2401461e5f0e32922823d954c56106f96344070e
+
+  6131548b0f udev: link_update() should fail if the entry in symlink dir couldn't have been created
+  f6cb8c7d79 udev: make algorithm that selects highest priority devlink less susceptible to race conditions (bsc#1084748)
+  fc64e47291 basic/stat-util: make mtime check stricter and use entire timestamp
+  ae91d45d3d test/sys-script.py: add missing DEVNAME entries to uevents
+  09e3473a7a test/udev_test.pl: add "expected good" count
+  fc89379b5b test/udev-test.pl: suppress umount error message at startup
+  d9e114f10d test/sd-script.py: new helper script for udev testing
+  f2672eae66 test/udev-test.pl: generator for large list of block devices
+  42b68e43e2 test/udev-test.pl: add repeat count
+  eec8ec375a tests/udev-test.pl: add multiple device test
+  73b8f3cf93 test/udev-test.pl: count "good" results
+  ee04d70bb6 test/udev-test.pl: merge import parent tests into one
+  03942c8fbc test/udev-test.pl: merge "space and var with space" tests
+  ec95546189 test/udev-test.pl: remove bogus rules from magic subsys test
+  f704429217 test/udev-test.pl: Make some tests a little harder
+  ce1a877dc0 test/udev-test.pl: last_rule is unsupported
+  913c72ff2d test/udev-test.pl: fix wrong test descriptions
+  eeb25a1be6 test/udev-test.pl: allow checking multiple symlinks
+  00ab4292da test/udev-test.pl: test correctness of symlink targets
+  5b71ee2911 test/udev-test.pl: use computed devnode name
+  2e04bb9ae8 test/udev-test.pl: allow concurrent additions and removals
+  8816dd593c test/udev-test.pl: create rules only once
+  214418632d test/udev-test.pl: allow multiple devices per test
+  1eb6b23f27 udev-test: do not rely on "mail" group being defined
+  4a0a4dcf10 udev: Fix sound.target dependency (bsc#1179363)
+
+-------------------------------------------------------------------
+Wed Dec 16 10:40:48 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Enable support for zstd compression
+
+  systemd-journald will now use zstd for compressing large fields in
+  journal files. systemd-coredump will also use this algorithm to
+  compress coredump files.
+
+  Please note that systemd older than v246 won't be able to read new
+  journal files as zstd algorithm is not supported by these versions.
+
+  This incompatible change was actually not the only one introduced by
+  v246 since the hash tables in journal files have been hardened
+  against hash collisions too in an incompatible way with older
+  versions.
+
+-------------------------------------------------------------------
 Mon Dec 14 07:55:03 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Explicitly require group(kvm) by udev: the group used to be

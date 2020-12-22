@@ -27,33 +27,32 @@ MPI module needs to reference correct python
 ~         <library>boost_mpi_python
 ~         <library>boost_mpi
 ~         <library>/mpi//mpi [ mpi.extra-requirements ]
-Index: boost_1_74_0/libs/python/Jamfile
+Index: boost_1_75_0/boostcpp.jam
 ===================================================================
---- boost_1_74_0.orig/libs/python/Jamfile
-+++ boost_1_74_0/libs/python/Jamfile
-@@ -36,9 +36,10 @@ local rule split-version ( version )
- # For example, Boost.Python built for Python 2.7 uses the suffix "27"
- rule version-suffix ( version )
- {
--    local major-minor = [ split-version $(version) ] ;
--    local suffix = $(major-minor:J="") ;
--    return $(suffix) ;
-+    # local major-minor = [ split-version $(version) ] ;
-+    # local suffix = $(major-minor:J="") ;
-+    # return $(suffix) ;
-+    return "" ;
- }
+--- boost_1_75_0.orig/boostcpp.jam
++++ boost_1_75_0/boostcpp.jam
+@@ -227,15 +227,15 @@ rule python-tag ( name : type ? : proper
+     {
+         # Add Python version suffix
  
+-        local version = [ $(property-set).get <python> ] ;
+-
+-        local major-minor = [ MATCH "^([0-9]+)\.([0-9]+)" : $(version) ] ;
+-        local suffix = $(major-minor:J="") ;
+-
+-        if $(suffix)
+-        {
+-            result = $(result)$(suffix) ;
+-        }
++        # local version = [ $(property-set).get <python> ] ;
++        #
++        # local major-minor = [ MATCH "^([0-9]+)\.([0-9]+)" : $(version) ] ;
++        # local suffix = $(major-minor:J="") ;
++        #
++        # if $(suffix)
++        # {
++        #     result = $(result)$(suffix) ;
++        # }
  
-Index: boost_1_74_0/tools/build/src/tools/python.jam
-===================================================================
---- boost_1_74_0.orig/tools/build/src/tools/python.jam
-+++ boost_1_74_0/tools/build/src/tools/python.jam
-@@ -664,6 +664,7 @@ local rule system-library-dependencies (
- # For example, Boost.Python built for Python 2.7 uses the suffix "27"
- rule version-suffix ( version )
- {
-+    return "" ;
-     local major-minor = [ split-version $(version) ] ;
-     local suffix = $(major-minor:J="") ;
-     return $(suffix) ;
+         # Add PYTHON_ID if supplied
+ 

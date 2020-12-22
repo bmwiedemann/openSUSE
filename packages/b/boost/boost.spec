@@ -16,14 +16,13 @@
 #
 
 
-%define ver 1.74.0
-%define _ver 1_74_0
-%define package_version 1_74_0
+%define ver 1.75.0
+%define _ver 1_75_0
+%define package_version 1_75_0
 %define file_version %_ver
 %define lib_appendix %_ver
 %define docs_version 1.56.0
 %define short_version 1_56
-%define python3X python38
 %define pname boost
 %bcond_with    build_docs
 %bcond_without package_pdf
@@ -154,6 +153,7 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %define package_libdir %{hpc_libdir}
 %define package_bindir %{hpc_bindir}
 %define package_includedir %{hpc_includedir}
+%define package_datadir %{hpc_datadir}
 %define base_name %{hpc_package_name %_ver}
 %define package_name %{hpc_package_name %_ver}
 %define package_python3_sitearch %{_hpc_python_sysconfig_path /usr/bin/python3 platlib %{?hpc_prefix}}
@@ -162,6 +162,7 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %define package_bindir %{_bindir}
 %define package_libdir %{_libdir}
 %define package_includedir %{_includedir}
+%define package_datadir %{_datadir}
 %define base_name boost%{name_suffix}
 %define package_python3_sitearch %python3_sitearch
 %endif
@@ -174,9 +175,9 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %endif
 
 Name:           %{base_name}
-Version:        1.74.0
+Version:        1.75.0
 Release:        0
-%define library_version 1_74_0
+%define library_version 1_75_0
 
 Summary:        Boost C++ Libraries
 License:        BSL-1.0
@@ -205,7 +206,6 @@ Patch17:        python_mpi.patch
 Patch18:        dynamic_linking.patch
 Patch20:        python_library_name.patch
 Patch21:        boost-remove-cmakedir.patch
-Patch22:        serialization_missing_includes.patch
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
 BuildRequires:  libbz2-devel
@@ -270,6 +270,7 @@ Requires:       libstdc++-devel
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_headers-devel < %{version}
 Conflicts:      libboost_headers-devel-impl
+Conflicts:      libboost_headers1_66_0-devel
 Provides:       libboost_headers-devel-impl = %{version}
 
 %description -n libboost_headers%{library_version}-devel
@@ -401,6 +402,7 @@ Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libstdc++-devel
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_atomic-devel-impl
+Conflicts:      libboost_atomic1_66_0-devel
 Provides:       libboost_atomic-devel-impl = %{version}
 
 %description -n libboost_atomic%{library_version}-devel
@@ -425,6 +427,7 @@ Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libstdc++-devel
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_container-devel-impl
+Conflicts:      libboost_container1_66_0-devel
 Provides:       libboost_container-devel-impl = %{version}
 
 %description -n libboost_container%{library_version}-devel
@@ -452,6 +455,7 @@ Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libstdc++-devel
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_context-devel-impl
+Conflicts:      libboost_context1_66_0-devel
 Provides:       libboost_context-devel-impl = %{version}
 
 %description -n libboost_context%{library_version}-devel
@@ -475,6 +479,7 @@ Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_system%{library_version}-devel = %{version}
 Requires:       libstdc++-devel
 Conflicts:      libboost_contract-devel-impl
+Conflicts:      libboost_contract1_66_0-devel
 Provides:       libboost_contract-devel-impl = %{version}
 
 %description -n libboost_contract%{library_version}-devel
@@ -500,6 +505,7 @@ Requires:       libboost_thread%{library_version}-devel = %{version}
 Requires:       libstdc++-devel
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_coroutine-devel-impl
+Conflicts:      libboost_coroutine1_66_0-devel
 Provides:       libboost_coroutine-devel-impl = %{version}
 
 %description -n libboost_coroutine%{library_version}-devel
@@ -523,6 +529,7 @@ Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libstdc++-devel
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_date_time-devel-impl
+Conflicts:      libboost_date_time1_66_0-devel
 Provides:       libboost_date_time-devel-impl = %{version}
 
 %description -n libboost_date_time%{library_version}-devel
@@ -547,6 +554,7 @@ Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libstdc++-devel
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_fiber-devel-impl
+Conflicts:      libboost_fiber1_66_0-devel
 Provides:       libboost_fiber-devel-impl = %{version}
 
 %description -n libboost_fiber%{library_version}-devel
@@ -570,6 +578,7 @@ Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libstdc++-devel
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_filesystem-devel-impl
+Conflicts:      libboost_filesystem1_66_0-devel
 Provides:       libboost_filesystem-devel-impl = %{version}
 
 %description -n libboost_filesystem%{library_version}-devel
@@ -594,6 +603,7 @@ Requires:       libboost_regex%{library_version}-devel = %{version}
 Requires:       libstdc++-devel
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_graph-devel-impl
+Conflicts:      libboost_graph1_66_0-devel
 Provides:       libboost_graph-devel-impl = %{version}
 
 %description -n libboost_graph%{library_version}-devel
@@ -617,6 +627,7 @@ Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_iostreams%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_iostreams-devel-impl
+Conflicts:      libboost_iostreams1_66_0-devel
 Provides:       libboost_iostreams-devel-impl = %{version}
 
 %description -n libboost_iostreams%{library_version}-devel
@@ -644,6 +655,7 @@ Requires:       libboost_regex%{library_version}-devel = %{version}
 Requires:       libboost_thread%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_log-devel-impl
+Conflicts:      libboost_log1_66_0-devel
 Provides:       libboost_log-devel-impl = %{version}
 
 %description -n libboost_log%{library_version}-devel
@@ -667,6 +679,7 @@ Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_math%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_math-devel-impl
+Conflicts:      libboost_math1_66_0-devel
 Provides:       libboost_math-devel-impl = %{version}
 
 %description -n libboost_math%{library_version}-devel
@@ -692,6 +705,7 @@ Requires:       libboost_mpi%{library_version} = %{version}
 Requires:       libboost_serialization%{library_version}-devel
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_mpi-devel-impl
+Conflicts:      libboost_mpi1_66_0-devel
 Provides:       libboost_mpi-devel-impl = %{version}
 %if %{with python3}
 Requires:       libboost_python-py3-%{library_version}-devel
@@ -716,6 +730,7 @@ Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_mpi%{library_version}-devel = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_graph_parallel-devel-impl
+Conflicts:      libboost_graph_parallel1_66_0-devel
 Provides:       libboost_graph_parallel-devel-impl = %{version}
 
 %description -n libboost_graph_parallel%{library_version}-devel
@@ -738,26 +753,27 @@ Obsoletes:      boost-nowide-devel < 10.0.2.1
 %description -n libboost_nowide%{library_version}-devel
 Development headers for Boost.Nowide* boost libraries.
 
-%package     -n libboost_mpi_%{python3X}-py3-%{library_version}
+%package     -n libboost_mpi_python-py3-%{library_version}
 Summary:        Boost.MPI Python 3.x serialization library
 Group:          System/Libraries
 Requires:       boost-license%{library_version}
 
-%description -n libboost_mpi_%{python3X}-py3-%{library_version}
+%description -n libboost_mpi_python-py3-%{library_version}
 This package contains the Boost.MPI Python 3.x serialization
 inteface.
 
-%package     -n libboost_mpi_%{python3X}-py3-%{library_version}-devel
+%package     -n libboost_mpi_python-py3-%{library_version}-devel
 Summary:        Development library for Boost.MPI Python 3.x serialization
 Group:          Development/Libraries/C and C++
 Requires:       libboost_mpi%{library_version}-devel = %{version}
-Requires:       libboost_mpi_%{python3X}-py3-%{library_version} = %{version}
+Requires:       libboost_mpi_python-py3-%{library_version} = %{version}
 Requires:       libboost_python-py3-%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_mpi_python3-devel-impl
+Conflicts:      libboost_mpi_python-py3-1_66_0-devel
 Provides:       libboost_mpi_python3-devel-impl = %{version}
 
-%description -n libboost_mpi_%{python3X}-py3-%{library_version}-devel
+%description -n libboost_mpi_python-py3-%{library_version}-devel
 This package contains the Boost.MPI development library for Python 3.x
 serialization interface
 
@@ -785,6 +801,7 @@ Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_test%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_test-devel-impl
+Conflicts:      libboost_test1_66_0-devel
 Provides:       libboost_test-devel-impl = %{version}
 
 %description -n libboost_test%{library_version}-devel
@@ -807,6 +824,7 @@ Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_program_options%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_program_options-devel-impl
+Conflicts:      libboost_program_options1_66_0-devel
 Provides:       libboost_program_options-devel-impl = %{version}
 
 %description -n libboost_program_options%{library_version}-devel
@@ -829,6 +847,7 @@ Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_python-py3-%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_python3-devel-impl
+Conflicts:      libboost_python-py3-1_66_0-devel
 Provides:       libboost_python3-devel-impl = %{version}
 
 %description -n libboost_python-py3-%{library_version}-devel
@@ -851,6 +870,7 @@ Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_numpy-py3-%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_numpy3-devel-impl
+Conflicts:      libboost_numpy-py3-1_66_0-devel
 Provides:       libboost_numpy3-devel-impl = %{version}
 
 %description -n libboost_numpy-py3-%{library_version}-devel
@@ -872,6 +892,7 @@ Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_serialization%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_serialization-devel-impl
+Conflicts:      libboost_serialization1_66_0-devel
 Provides:       libboost_serialization-devel-impl = %{version}
 
 %description -n libboost_serialization%{library_version}-devel
@@ -892,6 +913,7 @@ Group:          Development/Libraries/C and C++
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_stacktrace%{library_version} = %{version}
 Conflicts:      libboost_stacktrace-devel-impl
+Conflicts:      libboost_stacktrace1_66_0-devel
 Provides:       libboost_stacktrace-devel-impl = %{version}
 
 %description -n libboost_stacktrace%{library_version}-devel
@@ -914,6 +936,7 @@ Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_system%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_system-devel-impl
+Conflicts:      libboost_system1_66_0-devel
 Provides:       libboost_system-devel-impl = %{version}
 
 %description -n libboost_system%{library_version}-devel
@@ -937,6 +960,7 @@ Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_thread%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_thread-devel-impl
+Conflicts:      libboost_thread1_66_0-devel
 Provides:       libboost_thread-devel-impl = %{version}
 
 %description -n libboost_thread%{library_version}-devel
@@ -962,6 +986,7 @@ Requires:       libboost_thread%{library_version}-devel = %{version}
 Requires:       libboost_wave%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_wave-devel-impl
+Conflicts:      libboost_wave1_66_0-devel
 Provides:       libboost_wave-devel-impl = %{version}
 
 %description -n libboost_wave%{library_version}-devel
@@ -980,8 +1005,10 @@ Summary:        Development headers for Boost.Regex library
 Group:          Development/Libraries/C and C++
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_regex%{library_version} = %{version}
+Requires:       libicu-devel
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_regex-devel-impl
+Conflicts:      libboost_regex1_66_0-devel
 Provides:       libboost_regex-devel-impl = %{version}
 
 %description -n libboost_regex%{library_version}-devel
@@ -1003,6 +1030,7 @@ Requires:       libboost_random%{library_version} = %{version}
 Requires:       libboost_system%{library_version}-devel = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_random-devel-impl
+Conflicts:      libboost_random1_66_0-devel
 Provides:       libboost_random-devel-impl = %{version}
 
 %description -n libboost_random%{library_version}-devel
@@ -1023,6 +1051,7 @@ Requires:       libboost_chrono%{library_version} = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_chrono-devel-impl
+Conflicts:      libboost_chrono1_66_0-devel
 Provides:       libboost_chrono-devel-impl = %{version}
 
 %description -n libboost_chrono%{library_version}-devel
@@ -1044,8 +1073,10 @@ Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_locale%{library_version} = %{version}
 Requires:       libboost_system%{library_version}-devel = %{version}
 Requires:       libboost_thread%{library_version}-devel = %{version}
+Requires:       libicu-devel
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_locale-devel-impl
+Conflicts:      libboost_locale1_66_0-devel
 Provides:       libboost_locale-devel-impl = %{version}
 
 %description -n libboost_locale%{library_version}-devel
@@ -1067,6 +1098,7 @@ Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_timer%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_timer-devel-impl
+Conflicts:      libboost_timer1_66_0-devel
 Provides:       libboost_timer-devel-impl = %{version}
 
 %description -n libboost_timer%{library_version}-devel
@@ -1090,10 +1122,29 @@ Requires:       libboost_thread%{library_version}-devel = %{version}
 Requires:       libboost_type_erasure%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_type_erasure-devel-impl
+Conflicts:      libboost_type_erasuse1_66_0-devel
 Provides:       libboost_type_erasure-devel-impl = %{version}
 
 %description -n libboost_type_erasure%{library_version}-devel
 This package contains development headers for Boost.TypeErasure library.
+
+%package     -n libboost_json%{library_version}
+Summary:        Boost.JSON runtime library
+Group:          System/Libraries
+Requires:       boost-license%{library_version}
+
+%description -n libboost_json%{library_version}
+This package contains Boost::JSON runtime library.
+
+%package     -n libboost_json%{library_version}-devel
+Summary:        Development headers for Boost.JSON library
+Group:          Development/Libraries/C and C++
+Requires:       libboost_json%{library_version} = %{version}
+Conflicts:      libboost_json-devel-impl
+Provides:       libboost_json-devel-impl = %{version}
+
+%description -n libboost_json%{library_version}-devel
+This package contains development headers for Boost.JSON library.
 
 %package -n %{package_name}-quickbook
 Summary:        Documentation tool geared towards C++
@@ -1133,7 +1184,6 @@ find -type f ! \( -name \*.sh -o -name \*.py -o -name \*.pl \) -exec chmod -x {}
 %patch18 -p1
 %patch20 -p1
 %patch21 -p1
-%patch22 -p1
 
 %build
 find . -type f -exec chmod u+w {} +
@@ -1338,7 +1388,7 @@ module load gnu %mpi_flavor
 
 %if %{with python3}
 ! $(ldd %{buildroot}%{package_libdir}/*.so* | grep python3-\\.)
-ln -s libboost_python-py3.so       %{buildroot}%{package_libdir}/libboost_python3.so
+ln -s libboost_python-py3.so %{buildroot}%{package_libdir}/libboost_python3.so
 %endif
 
 %if %{with python3}
@@ -1347,8 +1397,8 @@ install -m 0644 libs/mpi/build/__init__.py %{buildroot}%{package_python3_sitearc
 install -m 0644 %{SOURCE11} %{buildroot}%{package_python3_sitearch}/boost/parallel
 install -m 0644 %{SOURCE11} %{buildroot}%{package_python3_sitearch}/boost
 %if ! %{with hpc}
-mv %{buildroot}%{_libdir}/boost-python3.8/mpi.%{py3_soflags}.so %{buildroot}%{package_python3_sitearch}/mpi.%{py3_soflags}.so
-rmdir %{buildroot}%{_libdir}/boost-python3.8
+mv %{buildroot}%{_libdir}/boost-python3.*/mpi.%{py3_soflags}.so %{buildroot}%{package_python3_sitearch}/mpi.%{py3_soflags}.so
+rmdir %{buildroot}%{_libdir}/boost-python3.*
 %endif
 %endif
 
@@ -1374,14 +1424,21 @@ install -m 0755 dist/bin/quickbook %{buildroot}%{package_bindir}/quickbook
 %endif
 %endif
 
-%if %{build_base} || %{with hpc}
-mkdir -p %{buildroot}%{package_bindir}
+%if %{build_base} 
+
 %if %{without hpc}
+mkdir -p %{buildroot}%{package_bindir}
 install -m 755 b2 %{buildroot}%{package_bindir}/bjam
 ln -s bjam %{buildroot}%{package_bindir}/jam
+
+# install boost-build jam files
+mkdir -p %{buildroot}%{package_datadir}/boost-build/
+cp -r tools/build/src/* %{buildroot}%{package_datadir}/boost-build/
+rm -r %{buildroot}%{package_datadir}/boost-build/engine
+find %{buildroot}%{package_datadir}/boost-build/ -type f \! -name \*.py \! -name \*.jam -delete
+find %{buildroot}%{package_datadir}/boost-build/ -type f -exec chmod 644 {} +
 %endif
 
-%if %{build_base}
 # Remove exception library, but only if the symbols are not
 # actually used. For now, the only symbol that is linked is
 # should never be used as it's only available on Windows. So,
@@ -1397,7 +1454,6 @@ rm %{buildroot}%{package_libdir}/libboost_exception.so.%{version}
 rm -r %{buildroot}%{package_libdir}/cmake/boost_stacktrace_{backtrace,windbg}*
 rm -r %{buildroot}%{package_libdir}/cmake/boost_exception-*
 rm -r %{buildroot}%{package_libdir}/cmake/boost_graph_parallel-%{version}
-%endif
 
 %fdupes %{buildroot}%{package_includedir}/boost
 mkdir -p %{buildroot}%{my_docdir}
@@ -1477,6 +1533,7 @@ EOF
 %post -n libboost_serialization%{library_version} -p /sbin/ldconfig
 %post -n libboost_thread%{library_version} -p /sbin/ldconfig
 %post -n libboost_type_erasure%{library_version} -p /sbin/ldconfig
+%post -n libboost_json%{library_version} -p /sbin/ldconfig
 %post -n libboost_math%{library_version} -p /sbin/ldconfig
 %post -n libboost_nowide%{library_version} -p /sbin/ldconfig
 %post -n libboost_graph%{library_version} -p /sbin/ldconfig
@@ -1501,7 +1558,7 @@ EOF
 %post -n libboost_graph_parallel%{library_version} -p /sbin/ldconfig
 
 %if %{with python3}
-%post -n libboost_mpi_%{python3X}-py3-%{library_version} -p /sbin/ldconfig
+%post -n libboost_mpi_python-py3-%{library_version} -p /sbin/ldconfig
 %endif
 %endif
 
@@ -1527,6 +1584,7 @@ EOF
 %postun -n libboost_serialization%{library_version} -p /sbin/ldconfig
 %postun -n libboost_thread%{library_version} -p /sbin/ldconfig
 %postun -n libboost_type_erasure%{library_version} -p /sbin/ldconfig
+%postun -n libboost_json%{library_version} -p /sbin/ldconfig
 %postun -n libboost_math%{library_version} -p /sbin/ldconfig
 %postun -n libboost_nowide%{library_version} -p /sbin/ldconfig
 %postun -n libboost_graph%{library_version} -p /sbin/ldconfig
@@ -1551,7 +1609,7 @@ EOF
 %postun -n libboost_graph_parallel%{library_version} -p /sbin/ldconfig
 
 %if %{with python3}
-%postun -n libboost_mpi_%{python3X}-py3-%{library_version} -p /sbin/ldconfig
+%postun -n libboost_mpi_python-py3-%{library_version} -p /sbin/ldconfig
 %endif
 %endif
 
@@ -1587,6 +1645,8 @@ EOF
 %files -n boost%{library_version}-jam
 %{package_bindir}/bjam
 %{package_bindir}/jam
+%dir %{package_datadir}/boost-build
+%{package_datadir}/boost-build/*
 
 %files -n libboost_atomic%{library_version}
 %{package_libdir}/libboost_atomic.so.%{version}
@@ -1765,14 +1825,14 @@ EOF
 %{package_libdir}/libboost_graph_parallel.so
 
 %if %{with python3}
-%files -n libboost_mpi_%{python3X}-py3-%{library_version}
-%{package_libdir}/libboost_mpi_%{python3X}-py3.so.%{version}
+%files -n libboost_mpi_python-py3-%{library_version}
+%{package_libdir}/libboost_mpi_python-py3.so.%{version}
 
-%files -n libboost_mpi_%{python3X}-py3-%{library_version}-devel
+%files -n libboost_mpi_python-py3-%{library_version}-devel
 %dir %{package_libdir}/cmake/boost_mpi_python-%{version}
 %{package_libdir}/cmake/boost_mpi_python-%{version}/*
 %endif
-%{package_libdir}/libboost_mpi_%{python3X}-py3.so
+%{package_libdir}/libboost_mpi_python-py3.so
 
 %files -n python3-boost_parallel_mpi%{library_version}
 %dir %{package_python3_sitearch}/boost
@@ -1909,6 +1969,15 @@ EOF
 %dir %{package_libdir}/cmake/boost_type_erasure-%{version}
 %{package_libdir}/cmake/boost_type_erasure-%{version}/*
 %{package_libdir}/libboost_type_erasure.so
+
+%files -n libboost_json%{library_version}
+%{package_libdir}/libboost_json.so.%{version}
+
+%files -n libboost_json%{library_version}-devel
+%dir %{package_libdir}/cmake/boost_json-%{version}
+%{package_libdir}/cmake/boost_json-%{version}/*
+%{package_libdir}/libboost_json.so
+
 %endif
 
 %if ! %{build_base}

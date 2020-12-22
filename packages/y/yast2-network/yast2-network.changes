@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec 21 13:56:55 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- When the static hostname is modified, propose the hostname to be
+  used by the affected connection (bsc#1174431)
+- 4.3.36
+
+-------------------------------------------------------------------
+Wed Dec 16 10:38:07 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix prefix length assignation when the alias netmask uses
+  dot notation (bsc#1174766).
+- 4.3.35
+
+-------------------------------------------------------------------
 Mon Dec 14 09:36:40 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Write also connections in case that the hostname mapped to a

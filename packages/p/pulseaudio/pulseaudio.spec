@@ -347,7 +347,6 @@ Optional dependency offering zsh completion for various PulseAudio utilities
 %endif
 
 %build
-%define _lto_cflags %{nil}
 NOCONFIGURE=1 ./bootstrap.sh
 echo 'HTML_TIMESTAMP=NO' >> doxygen/doxygen.conf.in
 export LDFLAGS="-pie"

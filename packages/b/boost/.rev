@@ -1296,4 +1296,30 @@ Boost Software License 1.0 is available in SPDX format on http://www.spdx.org/li
     <comment></comment>
     <requestid>838553</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>6cb82b9f97417a7937c8d46b14549b22</srcmd5>
+    <version>1.75.0</version>
+    <time>1608632728</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace hardcoded python3.8 path in the spec file
+- Add Conflicts with Boost 1.66 version in SLE15 since that version
+  uses different Provides.
+
+- update to 1.75.0:
+  * new library: 
+    + Boost.JSON - JSON parsing library
+    + Boost.LEAF - error handling library
+    + Boost.PFR  - basic reflection without macros or boilderplate code
+  * for details on all changes see,
+    https://www.boost.org/users/history/version_1_75_0.html
+- package boost's jam files so the Boost.Build is more usable
+- python_library_name.patch: update it to remove python version
+  suffix and keep old sonames. We only support one python3 version
+  at a time.
+- refreshed patches: boost-no_type_punning.patch
+  boost-strict_aliasing.patch python_library_name.patch
+- serialization_missing_includes.patch: upstreamed
+- baselibs.conf: updated to new version</comment>
+    <requestid>856655</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Dec 17 10:42:56 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Replace hardcoded python3.8 path in the spec file
+- Add Conflicts with Boost 1.66 version in SLE15 since that version
+  uses different Provides.
+
+-------------------------------------------------------------------
+Mon Dec 14 15:14:58 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- update to 1.75.0:
+  * new library: 
+    + Boost.JSON - JSON parsing library
+    + Boost.LEAF - error handling library
+    + Boost.PFR  - basic reflection without macros or boilderplate code
+  * for details on all changes see,
+    https://www.boost.org/users/history/version_1_75_0.html
+
+- package boost's jam files so the Boost.Build is more usable
+- python_library_name.patch: update it to remove python version
+  suffix and keep old sonames. We only support one python3 version
+  at a time.
+
+- refreshed patches: boost-no_type_punning.patch
+  boost-strict_aliasing.patch python_library_name.patch
+- serialization_missing_includes.patch: upstreamed
+- baselibs.conf: updated to new version
+
+-------------------------------------------------------------------
 Tue Sep 29 12:20:56 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - serialization_missing_includes.patch: Add additional missing

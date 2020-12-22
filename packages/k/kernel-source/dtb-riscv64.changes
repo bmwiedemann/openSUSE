@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Dec 18 17:51:20 CET 2020 - tiwai@suse.de
+
+- drm/amdgpu: only set DP subconnector type on DP and eDP
+  connectors (bsc#1180227).
+- commit 74c3250
+
+-------------------------------------------------------------------
+Fri Dec 18 10:16:39 CET 2020 - jslaby@suse.cz
+
+- Update config files.
+  Just to match my env.
+- commit 588066a
+
+-------------------------------------------------------------------
+Mon Dec 14 23:10:27 CET 2020 - mkubecek@suse.cz
+
+- Linux 5.10.1 (bsc#1012628).
+- Revert "dm raid: fix discard limits for raid1 and raid10"
+  (bsc#1012628).
+- Revert "md: change mddev 'chunk_sectors' from int to unsigned"
+  (bsc#1012628).
+- commit bc79fb6
+
+-------------------------------------------------------------------
+Mon Dec 14 14:52:17 CET 2020 - guillaume.gardet@arm.com
+
+- lpae: disable CONFIG_QCOM_PIL_INFO to fix build on armv7
+- commit 0c08c2e
+
+-------------------------------------------------------------------
+Mon Dec 14 00:14:11 CET 2020 - mkubecek@suse.cz
+
+- Update to 5.10 final
+- eliminated 1 patch
+  - patches.suse/revert-mm-filemap-add-static-for-function-__add_to_p.patch
+- update configs
+  - NFS_V4_2_READ_PLUS=n (recommended default, unsafe feature)
+- commit ff9060b
+
+-------------------------------------------------------------------
+Sun Dec 13 18:14:34 CET 2020 - dmueller@suse.com
+
+- config.conf: Reenable armv6hl/armv7hl/arm64
+- Update config files:
+  * Settings copied from x86_64 update
+  * arm specific options are =m except if debug or test, =y otherwise
+- commit cc424ba
+
+-------------------------------------------------------------------
 Sat Dec 12 07:57:32 CET 2020 - jslaby@suse.cz
 
 - drm/i915/gt: Declare gen9 has 64 mocs entries! (git-fixes).
@@ -147,10 +196,36 @@ Fri Dec 11 07:22:27 CET 2020 - jslaby@suse.cz
 - commit 1329f77
 
 -------------------------------------------------------------------
+Thu Dec 10 19:13:26 CET 2020 - ohering@suse.de
+
+- config: disable IP_PNP
+  The kernel IP autoconfiguration can only be used in practice when driver of
+  the network device to be configured is also built into vmlinux. As we build
+  all network device drivers as modules, there is no point keeping IP_PNP
+  enabled.
+- commit 7e286c2
+
+-------------------------------------------------------------------
+Thu Dec 10 12:52:13 CET 2020 - mkubecek@suse.cz
+
+- config: refresh
+- only update CC_VERSION_TEXT after gcc update
+- commit 012c071
+
+-------------------------------------------------------------------
 Thu Dec 10 11:03:39 CET 2020 - mgorman@suse.de
 
 - Update config files to disable CONFIG_DEBUG_SECTION_MISMATCH (bsc#1177403)
 - commit a0a476d
+
+-------------------------------------------------------------------
+Tue Dec  8 17:17:27 CET 2020 - mkubecek@suse.cz
+
+- revert "mm/filemap: add static for
+  function __add_to_page_cache_locked"
+  (http://lkml.kernel.org/r/20201207081556.pwxmhgdxayzbofpi@lion.mk-sys.cz).
+- fix build on ppc64, ppc64le and riscv64
+- commit 9688120
 
 -------------------------------------------------------------------
 Tue Dec  8 12:18:06 CET 2020 - jslaby@suse.cz
@@ -246,6 +321,15 @@ Mon Dec  7 16:57:41 CET 2020 - mkubecek@suse.cz
 
 - net/x25: prevent a couple of overflows (bsc#1178590).
 - commit 2a06597
+
+-------------------------------------------------------------------
+Mon Dec  7 00:02:21 CET 2020 - mkubecek@suse.cz
+
+- Update to 5.10-rc7
+- refresh
+  - patches.rpmify/Kconfig-make-CONFIG_CC_CAN_LINK-always-true.patch
+- refresh configs
+- commit baa1207
 
 -------------------------------------------------------------------
 Wed Dec  2 10:24:35 CET 2020 - jslaby@suse.cz
@@ -524,7 +608,17 @@ Mon Nov 30 11:39:07 CET 2020 - tiwai@suse.de
 
 - Update config files: make CONFIG_SOUNDWIRE=m (bsc#1179201)
   Also turned it off for unrelated platforms
-- commit afd1f81
+- commit a60b1c2
+
+-------------------------------------------------------------------
+Mon Nov 30 06:53:17 CET 2020 - mkubecek@suse.cz
+
+- Update to 5.10-rc6
+- eliminated 1 patch
+  - patches.suse/btrfs-qgroup-don-t-commit-transaction-when-we-have-a.patch
+- refresh configs
+  - headers only (Factory updated gcc and binutils)
+- commit 248e2b4
 
 -------------------------------------------------------------------
 Thu Nov 26 16:02:20 CET 2020 - jslaby@suse.cz
@@ -547,6 +641,27 @@ Thu Nov 26 14:07:00 CET 2020 - nsaenzjulienne@suse.de
 -  - pwm: Add Raspberry Pi Firmware based PWM bus (jsc#SLE-16543).
    - Update configs: Enable pwm driver on arm64/arm32
    - supported.conf: Enable pwm driver
+- dt-bindings: pwm: Add binding for RPi firmware PWM bus
+  (jsc#SLE-16543).
+- staging: vchiq: Release firmware handle on unbind
+  (jsc#SLE-16543).
+- soc: bcm: raspberrypi-power: Release firmware handle on unbind
+  (jsc#SLE-16543).
+- reset: raspberrypi: Release firmware handle on unbind
+  (jsc#SLE-16543).
+-  - pwm: Add Raspberry Pi Firmware based PWM bus (jsc#SLE-16543).
+   - Update configs: Enable pwm driver on arm64
+   - supported.conf: Enable pwm driver
+- input: raspberrypi-ts: Release firmware handle when not needed
+  (jsc#SLE-16543).
+- gpio: raspberrypi-exp: Release firmware handle on unbind
+  (jsc#SLE-16543).
+- firmware: raspberrypi: Keep count of all consumers
+  (jsc#SLE-16543).
+- firmware: raspberrypi: Introduce devm_rpi_firmware_get()
+  (jsc#SLE-16543).
+- clk: bcm: rpi: Release firmware handle on unbind
+  (jsc#SLE-16543).
 - input: raspberrypi-ts: Release firmware handle when not needed
   (jsc#SLE-16543).
 - gpio: raspberrypi-exp: Release firmware handle on unbind
@@ -1031,6 +1146,14 @@ Mon Nov 23 08:04:01 CET 2020 - jslaby@suse.cz
 - rpm/kernel-binary.spec.in: avoid using more barewords (bsc#1179014)
   %split_extra still contained two.
 - commit d9b4c40
+
+-------------------------------------------------------------------
+Mon Nov 23 06:50:49 CET 2020 - mkubecek@suse.cz
+
+- Update to 5.10-rc5
+- refresh configs
+  - DMA_VIRT_OPS and dependecies dropped on i386
+- commit 8ebabda
 
 -------------------------------------------------------------------
 Sun Nov 22 14:01:07 CET 2020 - jslaby@suse.cz
@@ -1543,14 +1666,20 @@ Wed Nov 18 10:26:23 CET 2020 - jslaby@suse.cz
 - btrfs: qgroup: don't commit transaction when we already hold
   the handle (bsc#1178634).
   Update upstream status and take the upstream version.
-- commit 60a737e
+- commit 5d64ed9
+
+-------------------------------------------------------------------
+Mon Nov 16 07:32:18 CET 2020 - mkubecek@suse.cz
+
+- Update to 5.10-rc4
+- commit ea0f69f
 
 -------------------------------------------------------------------
 Thu Nov 12 08:43:32 CET 2020 - jslaby@suse.cz
 
 - btrfs: qgroup: don't commit transaction when we have already
   hold a transaction handler (bsc#1178634).
-- commit ea93937
+- commit 646ed4a
 
 -------------------------------------------------------------------
 Wed Nov 11 08:04:31 CET 2020 - jslaby@suse.cz
@@ -1804,6 +1933,26 @@ Wed Nov 11 07:19:22 CET 2020 - jslaby@suse.cz
 - net: core: use list_del_init() instead of list_del() in
   netdev_run_todo() (bsc#1012628).
 - commit 35036d7
+
+-------------------------------------------------------------------
+Tue Nov 10 22:37:15 CET 2020 - dmueller@suse.com
+
+- ARM64: Enable CONFIG_ARM64_SW_TTBR0_PAN
+  This can help prevent use-after-free bugs becoming an exploitable
+  privilege escalation by ensuring that magic values (such as LIST_POISON)
+  will always fault when dereferenced
+- commit 5a3f5b3
+
+-------------------------------------------------------------------
+Mon Nov  9 07:36:18 CET 2020 - mkubecek@suse.cz
+
+- Update to 5.10-rc3
+- eliminated 1 patch
+  - patches.suse/tty-make-FONTX-ioctl-use-the-tty-pointer-they-were-a.patch
+- refresh configs
+  - update headers after Factory binutils update
+  - drop options no longer available
+- commit e72caa5
 
 -------------------------------------------------------------------
 Thu Nov  5 17:53:32 CET 2020 - jslaby@suse.cz
@@ -2480,6 +2629,13 @@ Wed Nov  4 13:15:35 CET 2020 - jslaby@suse.cz
 - commit 639997d
 
 -------------------------------------------------------------------
+Wed Nov  4 13:10:52 CET 2020 - jslaby@suse.cz
+
+- tty: make FONTX ioctl use the tty pointer they were actually
+  passed (bsc#1178123 CVE-2020-25668).
+- commit 3b8edfa
+
+-------------------------------------------------------------------
 Wed Nov  4 10:27:51 CET 2020 - tiwai@suse.de
 
 - Updated Copyright line in rpm templates with SUSE LLC
@@ -2528,6 +2684,21 @@ Mon Nov  2 07:00:56 CET 2020 - jslaby@suse.cz
 - Refresh patches.suse/vt_ioctl-fix-GIO_UNIMAP-regression.patch.
   Update upstream status.
 - commit a2dec54
+
+-------------------------------------------------------------------
+Mon Nov  2 00:11:24 CET 2020 - mkubecek@suse.cz
+
+- Update to 5.10-rc2
+- eliminated 5 patches
+  - patches.rpmify/s390-correct-__bootdata-__bootdata_preserved-macros.patch
+  - patches.suse/drm-amd-display-Don-t-invoke-kgdb_breakpoint-uncondi.patch
+  - patches.suse/drm-amd-display-Fix-kernel-panic-by-dal_gpio_open-er.patch
+  - patches.suse/vt_ioctl-fix-GIO_UNIMAP-regression.patch
+  - patches.suse/x86-unwind-orc-Fix-inactive-tasks-with-stack-pointer.patch
+- refresh configs
+  - CPU_FREQ_DEFAULT_GOV_ONDEMAND -> CPU_FREQ_DEFAULT_GOV_SCHEDUTIL (x86)
+  - Intel MIC drivers dropped
+- commit a51c4bb
 
 -------------------------------------------------------------------
 Sun Nov  1 14:05:40 CET 2020 - jslaby@suse.cz
@@ -3942,10 +4113,186 @@ Thu Oct 29 07:33:16 CET 2020 - tiwai@suse.de
 - commit 552ec97
 
 -------------------------------------------------------------------
+Mon Oct 26 14:41:38 CET 2020 - mkubecek@suse.cz
+
+- s390: correct __bootdata / __bootdata_preserved macros
+  (http://lkml.kernel.org/r/20201026104811.22ta4pby2chmz4pv@lion.mk-sys.cz).
+- commit e4bed42
+
+-------------------------------------------------------------------
 Mon Oct 26 07:04:45 CET 2020 - jslaby@suse.cz
 
 - vt_ioctl: fix GIO_UNIMAP regression (5.9 GIO_UNIMAP regression).
 - commit 15946ea
+
+-------------------------------------------------------------------
+Mon Oct 26 01:11:01 CET 2020 - mkubecek@suse.cz
+
+- Update to 5.10-rc1
+- eliminated 17 patches (16 stable, 1 other)
+  - patches.kernel.org/*
+  - patches.suse/coresight-fix-offset-by-one-error-in-counting-ports.patch
+- disable ARM architectures (need config update)
+- refresh
+  - patches.suse/apparmor-compatibility-with-v2.x-net.patch
+  - patches.suse/btrfs-btrfs-use-the-new-VFS-super_block_dev.patch
+  - patches.suse/btrfs-fs-super.c-add-new-super-block-devices-super_block_d.patch
+  - patches.suse/readahead-request-tunables.patch
+- new config options:
+  - General setup
+    - CONFIG_BPF_PRELOAD=n
+  - Power management and ACPI options
+    - CONFIG_ACPI_DPTF=y
+    - CONFIG_DPTF_PCH_FIVR=m
+  - General architecture-dependent options
+    - CONFIG_STATIC_CALL_SELFTEST=n
+  - Networking support
+    - CONFIG_XFRM_USER_COMPAT=m
+    - CONFIG_CAN_ISOTP=m
+    - CONFIG_CAN_MCP251XFD=m
+    - CONFIG_CAN_MCP251XFD_SANITY=n
+  - File systems
+    - CONFIG_XFS_SUPPORT_V4=y
+    - CONFIG_FUSE_DAX=y
+    - CONFIG_NFSD_V4_2_INTER_SSC=y
+  - Cryptographic API
+    - CONFIG_CRYPTO_SM2=m
+    - CONFIG_CRYPTO_USER_API_RNG_CAVP=n
+    - CONFIG_CRYPTO_USER_API_ENABLE_OBSOLETE=y
+  - Library routines
+    - CONFIG_FONT_6x8=y
+  - Kernel hacking
+    - CONFIG_KGDB_HONOUR_BLOCKLIST=y
+    - CONFIG_SCF_TORTURE_TEST=n
+    - CONFIG_CSD_LOCK_WAIT_DEBUG=n
+    - CONFIG_RCU_SCALE_TEST=m
+    - CONFIG_FAULT_INJECTION_USERCOPY=n
+    - CONFIG_TEST_FREE_PAGES=n
+  - PCI support
+    - CONFIG_PCIE_BUS_TUNE_OFF=n
+    - CONFIG_PCIE_BUS_DEFAULT=y
+    - CONFIG_PCIE_BUS_SAFE=n
+    - CONFIG_PCIE_BUS_PERFORMANCE=n
+    - CONFIG_PCIE_BUS_PEER2PEER=n
+  - Network device support
+    - CONFIG_NET_DSA_MSCC_SEVILLE=m
+    - CONFIG_CHELSIO_INLINE_CRYPTO=y
+    - CONFIG_PRESTERA=m
+    - CONFIG_PRESTERA_PCI=m
+    - CONFIG_ATH11K=m
+    - CONFIG_ATH11K_PCI=m
+    - CONFIG_ATH11K_DEBUG=n
+    - CONFIG_ATH11K_DEBUGFS=n
+    - CONFIG_ATH11K_TRACING=n
+    - CONFIG_USB_LGM_PHY=m
+    - CONFIG_PHY_INTEL_LGM_EMMC=m
+  - Input device support
+    - CONFIG_JOYSTICK_ADC=m
+    - CONFIG_TOUCHSCREEN_ZINITIX=m
+    - CONFIG_RMI4_F3A=y
+    - CONFIG_HID_VIVALDI=m
+  - Character devices
+    - CONFIG_HW_RANDOM_XIPHERA=m
+  - GPIO Support
+    - CONFIG_GPIO_CDEV=y
+    - CONFIG_GPIO_CDEV_V1=y
+  - Power management
+    - CONFIG_CHARGER_BQ25980=m
+    - CONFIG_SENSORS_MR75203=m
+    - CONFIG_SENSORS_ADM1266=m
+    - CONFIG_SENSORS_MP2975=m
+  - ACPI INT340X thermal drivers
+    - CONFIG_REGULATOR_RASPBERRYPI_TOUCHSCREEN_ATTINY=m
+    - CONFIG_REGULATOR_RT4801=m
+    - CONFIG_REGULATOR_RTMV20=m
+  - Multifunction device drivers
+    - CONFIG_MFD_SL28CPLD=n
+    - CONFIG_MFD_INTEL_M10_BMC=n
+  - Graphics support
+    - CONFIG_DRM_AMD_DC_SI=y
+    - CONFIG_BACKLIGHT_KTD253=m
+    - CONFIG_VIDEO_ZORAN=m
+    - CONFIG_VIDEO_ZORAN_DC30=m
+    - CONFIG_VIDEO_ZORAN_ZR36060=m
+    - CONFIG_VIDEO_ZORAN_BUZ=m
+    - CONFIG_VIDEO_ZORAN_DC10=m
+    - CONFIG_VIDEO_ZORAN_LML33=m
+    - CONFIG_VIDEO_ZORAN_LML33R10=m
+    - CONFIG_VIDEO_ZORAN_AVS6EYES=m
+  - Sound card support
+    - CONFIG_SND_SOC_INTEL_CATPT=m
+    - CONFIG_SND_SOC_SOF_BROADWELL_SUPPORT=y
+    - CONFIG_SND_SOC_SOF_INTEL_SOUNDWIRE_LINK=y
+    - CONFIG_SND_SOC_INTEL_SOUNDWIRE_SOF_MACH=m
+    - CONFIG_SND_SOC_CS4234=n
+    - CONFIG_SND_SOC_TAS2764=n
+    - CONFIG_SOUNDWIRE_QCOM=m
+  - USB support
+    - CONFIG_USB_FEW_INIT_RETRIES=n
+    - CONFIG_TYPEC_TCPCI_MAXIM=m
+    - CONFIG_TYPEC_STUSB160X=m
+    - CONFIG_USB4_DEBUGFS_WRITE=n
+  - Virtualization
+    - CONFIG_NITRO_ENCLAVES=m
+  - Industrial I/O support
+    - CONFIG_IIO_BUFFER_DMA=m
+    - CONFIG_IIO_BUFFER_DMAENGINE=m
+    - CONFIG_ADXRS290=n
+    - CONFIG_HDC2010=n
+    - CONFIG_AS73211=n
+  - Misc drivers
+    - CONFIG_MHI_BUS_DEBUG=y
+    - CONFIG_INTEL_MEI_VIRTIO=m
+    - CONFIG_RTC_DRV_RV3032=m
+    - CONFIG_LEDS_LP50XX=m
+    - CONFIG_SPMI_HISI3670=n
+    - CONFIG_MST_IRQ=y
+  - OF dependent drivers (i386, ppc64/ppc64le, riscv64)
+    - HISI_HIKEY_USB=m
+    - DRM_PANEL_MANTIX_MLAF057WE51=n
+    - DRM_PANEL_SAMSUNG_S6E63M0_SPI=n
+    - DRM_PANEL_SAMSUNG_S6E63M0_DSI=n
+    - DRM_LONTIUM_LT9611=n
+    - DRM_TOSHIBA_TC358762=n
+    - DRM_TOSHIBA_TC358775=n
+    - DRM_CDNS_MHDP8546=n
+    - MFD_HI6421_SPMI=m
+    - REGULATOR_HI6421V600=m
+  - i386
+    - DRM_PANEL_SAMSUNG_S6E63M0_SPI=m
+    - DRM_PANEL_SAMSUNG_S6E63M0_DSI=m
+    - PHY_INTEL_LGM_COMBO=y
+  - ppc64 / ppc64le
+    - PPC_RTAS_FILTER=y
+    - I2C_SLAVE_TESTUNIT=n
+  - s390x
+    - PCS_XPCS=m
+    - VFIO_PCI_ZDEV=y
+    - ZCRYPT_DEBUG=n
+    - DEBUG_WX=n
+    - PTDUMP_DEBUGFS=n
+  - riscv64
+    - EFI=y
+    - FIRMWARE_MEMMAP=y
+    - GOOGLE_FIRMWARE=n
+    - EFI_VARS_PSTORE=m
+    - EFI_VARS_PSTORE_DEFAULT_DISABLE=n
+    - EFI_BOOTLOADER_CONTROL=m
+    - EFI_CAPSULE_LOADER=m
+    - EFI_TEST=n
+    - RESET_ATTACK_MITIGATION=n
+    - EFI_DISABLE_PCI_DMA=n
+    - FB_EFI=y
+    - MMC_DW=m
+    - MMC_DW_PLTFM=m
+    - MMC_DW_BLUEFIELD=m
+    - MMC_DW_EXYNOS=m
+    - MMC_DW_HI3798CV200=m
+    - MMC_DW_K3=m
+    - MMC_DW_PCI=m
+    - RTC_DRV_EFI=m
+    - EFIVAR_FS=m
+- commit 3c50825
 
 -------------------------------------------------------------------
 Sun Oct 25 12:34:16 CET 2020 - mkubecek@suse.cz
@@ -30380,6 +30727,12 @@ Tue Jul  9 16:47:26 CEST 2019 - rgoldwyn@suse.com
 
 - Disable CONFIG_OVERLAY_FS_REDIRECT_ALWAYS_FOLLOW in config (bsc#1140494)
 - commit 8d950e4
+
+-------------------------------------------------------------------
+Tue Jul  9 16:03:03 CEST 2019 - schwab@suse.de
+
+- Build against openSUSE:Factory:RISCV for riscv64
+- commit 74d6e96
 
 -------------------------------------------------------------------
 Tue Jul  9 08:40:27 CEST 2019 - jslaby@suse.cz
@@ -61116,4 +61469,10 @@ Tue Dec 20 22:04:04 CET 2016 - xxxxxmichl@googlemail.com
 
 - added De0-Nanos-SoC board support (and others based on Altera SOC).
 - commit 9278339
+
+-------------------------------------------------------------------
+Tue Apr 26 17:28:19 CEST 2016 - mmarek@suse.cz
+
+- Drop sysctl files for dropped archs, add ppc64le and arm (bsc#1178838).
+- commit 87cd715
 

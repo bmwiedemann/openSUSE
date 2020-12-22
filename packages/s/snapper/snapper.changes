@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:59 CET 2020 - aschnell@suse.com
+
+- added option to abbreviate columns in table (see
+  gh#openSUSE/snapper#268)
+- version 0.8.15
+
+-------------------------------------------------------------------
+Fri Dec 04 10:05:05 CET 2020 - aschnell@suse.com
+
+- in systemd-helper continue with other configs if one config is
+  broken (gh#openSUSE/snapper#495)
+
+-------------------------------------------------------------------
+Thu Dec 03 10:12:04 CET 2020 - aschnell@suse.com
+
+- fixed compilation with --disable-btrfs (gh#openSUSE/snapper#505)
+
+-------------------------------------------------------------------
 Tue Nov 24 11:58:44 CET 2020 - aschnell@suse.com
 
 - do not override passwd after getpwuid_r et.al. calls

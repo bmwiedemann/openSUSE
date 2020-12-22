@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 15 10:40:40 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Enable LTO (boo#1133278) as it works now.
+
+-------------------------------------------------------------------
 Wed Nov 25 17:10:35 CET 2020 - tiwai@suse.de
 
 - Update to pulseaudio 14.0:

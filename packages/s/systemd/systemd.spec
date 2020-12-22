@@ -24,7 +24,7 @@
 %define bootstrap 0
 %define mini %nil
 %define min_kernel_version 4.5
-%define suse_version +suse.50.gd5e7958d35
+%define suse_version +suse.78.g520e53b6d8
 
 %bcond_with     gnuefi
 %if 0%{?bootstrap}
@@ -53,7 +53,7 @@
 
 Name:           systemd
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        246.7
+Version:        246.9
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -77,6 +77,7 @@ BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libqrencode)
 BuildRequires:  pkgconfig(libselinux) >= 2.1.9
+BuildRequires:  pkgconfig(libzstd)
 %ifarch aarch64 %ix86 x86_64 x32 %arm ppc64le s390x
 BuildRequires:  pkgconfig(libseccomp) >= 2.3.1
 %endif
