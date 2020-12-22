@@ -32,6 +32,7 @@ BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-safe-devel
 BuildRequires:  ghc-statistics-devel
 BuildRequires:  ghc-vector-devel
+ExcludeArch:    %{ix86}
 
 %description
 Provides functions to perform a linear regression between 2 samples, see the
