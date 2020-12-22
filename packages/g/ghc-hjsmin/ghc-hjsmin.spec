@@ -31,6 +31,7 @@ BuildRequires:  ghc-language-javascript-devel
 BuildRequires:  ghc-optparse-applicative-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-extra-devel
