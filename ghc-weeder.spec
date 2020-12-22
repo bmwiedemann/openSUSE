@@ -18,7 +18,7 @@
 
 %global pkg_name weeder
 Name:           ghc-%{pkg_name}
-Version:        2.1.2
+Version:        2.1.3
 Release:        0
 Summary:        Detect dead code
 License:        BSD-3-Clause
@@ -41,6 +41,7 @@ BuildRequires:  ghc-regex-tdfa-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 
 %description
 Find declarations.
