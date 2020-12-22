@@ -32,6 +32,7 @@ BuildRequires:  ghc-haskeline-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 
 %description
 Haskeline wrapper for GHCi-like REPL interfaces. Composable with normal mtl
