@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Mon Aug 31 09:34:30 UTC 2020 - psimons@suse.com
 
 - Update timeit to version 2.0 revision 1.
