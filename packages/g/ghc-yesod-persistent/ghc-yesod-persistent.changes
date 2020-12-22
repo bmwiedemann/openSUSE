@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Sat Nov  7 15:35:56 UTC 2020 - psimons@suse.com
 
 - Update yesod-persistent to version 1.6.0.5.
