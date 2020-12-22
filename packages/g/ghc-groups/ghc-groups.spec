@@ -18,7 +18,7 @@
 
 %global pkg_name groups
 Name:           ghc-%{pkg_name}
-Version:        0.5
+Version:        0.5.2
 Release:        0
 Summary:        Groups
 License:        BSD-3-Clause
@@ -26,6 +26,7 @@ URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 
 %description
 A group is a monoid with invertibility.
