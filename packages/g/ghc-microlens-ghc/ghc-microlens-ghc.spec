@@ -31,6 +31,7 @@ BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-microlens-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 
 %description
 Use this package instead of <http://hackage.haskell.org/package/microlens
