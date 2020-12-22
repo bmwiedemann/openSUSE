@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Dec 22 12:57:42 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix dependency of -devel package when built without qhull
+  support: libcsironn0 does not exist in this case.
+
+-------------------------------------------------------------------
+Sat Nov 28 19:03:52 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable csironn library since it does not build against recent
+  qhull (libqhull_r).
+- Disable ada bindings: does not build with fPIC.
+- BuildRequires: python3-sip4-devel for openSUSE >= 1550 to enable
+  pyqt5 bindings.
+- Pass `-DCMAKE_SKIP_RPATH:BOOL=OFF
+  -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON` to cmake to fix build issues
+  caused by Leap 15.2's incorrect cmake macros (doesn't hurt for
+  other distros anyway).
+
+-------------------------------------------------------------------
 Tue Jul 21 11:36:26 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Disable octave bindings for openSUSE < 1550 where they fail to

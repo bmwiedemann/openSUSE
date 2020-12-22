@@ -13,3 +13,4 @@ Index: plplot-5.15.0/bindings/ada/CMakeLists.txt
    # Specification files containing, e.g., variables, types, and subprogramme (subprocedure) declarations.
    set(SPEC_SOURCE_LIST
      plplot.ads
+

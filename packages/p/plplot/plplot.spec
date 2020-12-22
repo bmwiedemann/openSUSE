@@ -33,6 +33,13 @@
 %endif
 # /SECTION
 
+# SECTION Does not build against qhull_r
+%bcond_with qhull
+# /SECTION
+
+# FIXME Doesn't build with fPIC (it seems)
+%bcond_with ada
+
 %define X_display ":98"
 
 %define ada_shlib libplplotada4
@@ -65,7 +72,9 @@ ExclusiveArch:  %ix86 x86_64 ppc ppc64 ppc64le s390 s390x ia64 aarch64 riscv64
 BuildRequires:  cmake >= 3.13.2
 BuildRequires:  fdupes
 BuildRequires:  freefont
+%if %{with ada}
 BuildRequires:  gcc-ada
+%endif
 BuildRequires:  gcc-fortran >= 6
 BuildRequires:  itcl-devel
 BuildRequires:  itk
@@ -83,7 +92,12 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-qt5-devel
+%if 0%{?suse_version} >= 1550
+BuildRequires:  python3-sip4-devel
+%endif
+%if %{with qhull}
 BuildRequires:  qhull-devel
+%endif
 BuildRequires:  swig
 BuildRequires:  tcl-devel
 BuildRequires:  tk-devel
@@ -182,7 +196,9 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{c_shlib} = %{version}
 Requires:       %{csirocsa_shlib} = %{version}
+%if %{with qhull}
 Requires:       %{csironn_shlib} = %{version}
+%endif
 Requires:       %{qsastime_shlib} = %{version}
 Requires:       gcc-c++
 Requires:       pkgconfig
@@ -223,9 +239,11 @@ in C.
 %dir %{_libdir}/cmake/plplot
 %{_libdir}/cmake/plplot/export_csirocsa.cmake
 %{_libdir}/cmake/plplot/export_csirocsa-release.cmake
+%if %{with qhull}
 %{_libdir}/libcsironn.so
 %{_libdir}/cmake/plplot/export_csironn.cmake
 %{_libdir}/cmake/plplot/export_csironn-release.cmake
+%endif
 %{_libdir}/cmake/plplot/export_mem.cmake
 %{_libdir}/cmake/plplot/export_mem-release.cmake
 %{_libdir}/cmake/plplot/export_null.cmake
@@ -293,6 +311,7 @@ modules.
 %{_docdir}/%{name}-doc/*
 ##########################################################################
 
+%if %{with ada}
 %package -n %{ada_shlib}
 ##########################################################################
 Summary:        Shared libraries for PLplot's Ada bindings
@@ -346,6 +365,7 @@ This package provides the files necessary for using PLplot in Ada.
 %{_datadir}/plplot%{version}/examples/ada/
 %{_datadir}/plplot%{version}/examples/test_ada.sh
 ##########################################################################
+%endif
 
 %package -n %{fort_shlib}
 ##########################################################################
@@ -789,6 +809,7 @@ This package provides the shared lib for PLplot's csirocsa.
 %{_libdir}/libcsirocsa.so.*
 ##########################################################################
 
+%if %{with qhull}
 %package -n %{csironn_shlib}
 ##########################################################################
 Summary:        PLplot csironn component
@@ -807,6 +828,7 @@ This package provides the shared lib for PLplot's csironn.
 
 %files -n %{csironn_shlib}
 %{_libdir}/libcsironn.so.*
+%endif
 ##########################################################################
 
 %package -n %{qsastime_shlib}
@@ -1010,60 +1032,54 @@ export CXXFLAGS="%{optflags} -fno-strict-aliasing"
 export FFLAGS="%{optflags}"
 export LDFLAGS="-fPIC"
 
-mkdir builddir && pushd builddir
-
 # X-server and $DISPLAY required to enable tk bindings
 export DISPLAY=%{X_display}
 Xvfb -noreset %{X_display} >& Xvfb.log &
 trap "kill $! || true" EXIT
 sleep 5
-cmake \
-        -DCMAKE_INSTALL_LIBDIR=%{_libdir} \\\
-        -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \\\
-        -DCMAKE_BUILD_TYPE:STRING=Release \\\
-        -DENABLE_compiler_diagnostics=ON \\\
-        -DPL_FREETYPE_FONT_PATH:PATH="%{_datadir}/fonts/truetype" \\\
-        -DUSE_RPATH:BOOL=OFF \\\
-        -DENABLE_ada:BOOL=ON \\\
+%cmake \
+        -DCMAKE_BUILD_TYPE:STRING=Release \
+        -DENABLE_compiler_diagnostics=ON \
+        -DPL_FREETYPE_FONT_PATH:PATH="%{_datadir}/fonts/truetype" \
+        -DUSE_RPATH:BOOL=OFF \
+        -DCMAKE_SKIP_RPATH:BOOL=OFF \
+        -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
+        -DENABLE_ada:BOOL=%{?with_ada:ON}%{!?with_ada:OFF} \
 %if 0%{?octave_enabled}
-        -DENABLE_octave:BOOL=ON \\\
-        -DTRY_OCTAVE4=ON \\\
+        -DENABLE_octave:BOOL=ON \
+        -DTRY_OCTAVE4=ON \
 %else
-        -DENABLE_octave:BOOL=OFF \\\
+        -DENABLE_octave:BOOL=OFF \
 %endif
-        -DENABLE_d:BOOL=ON \\\
-        -DENABLE_itcl:BOOL=ON \\\
+        -DENABLE_d:BOOL=ON \
+        -DENABLE_itcl:BOOL=ON \
 %if 0%{?tk_enabled} > 1320
-        -DENABLE_itk:BOOL=OFF \\\
-        -DENABLE_tk:BOOL=OFF \\\
+        -DENABLE_itk:BOOL=OFF \
+        -DENABLE_tk:BOOL=OFF \
 %else
-        -DENABLE_itk:BOOL=ON \\\
-        -DENABLE_tk:BOOL=ON \\\
+        -DENABLE_itk:BOOL=ON \
+        -DENABLE_tk:BOOL=ON \
 %endif
 %if %{with ocaml_camlidl}
         -DENABLE_ocaml:BOOL=ON \
 %else
         -DENABLE_ocaml:BOOL=OFF \
 %endif
-        -DPLD_aqt:BOOL=ON \\\
-        -DPLD_plmeta:BOOL=OFF \\\
-        -DPLD_svg:BOOL=ON \\\
-        -DPLD_wxwidgets:BOOL=ON \\\
-        -DBUILD_DOC:BOOL=OFF \\\
-        -DPREBUILT_DOC:BOOL=ON \\\
-        -DJAVAWRAPPER_DIR:PATH="%{_libdir}/plplot%{version}" \\\
-        -DBUILD_TEST:BOOL=ON  \\\
-        -DENABLE_lua:BOOL=ON \\\
-        -DPLPLOT_USE_QT5:BOOL=ON \\\
-        ..
+        -DPLD_aqt:BOOL=ON \
+        -DPLD_plmeta:BOOL=OFF \
+        -DPLD_svg:BOOL=ON \
+        -DPLD_wxwidgets:BOOL=ON \
+        -DBUILD_DOC:BOOL=OFF \
+        -DPREBUILT_DOC:BOOL=ON \
+        -DJAVAWRAPPER_DIR:PATH="%{_libdir}/plplot%{version}" \
+        -DBUILD_TEST:BOOL=ON  \
+        -DENABLE_lua:BOOL=ON \
+        -DPLPLOT_USE_QT5:BOOL=ON
 
-make %{?_smp_mflags} VERBOSE=1
-popd
+%cmake_build
 
 %install
-pushd builddir
-%make_install DESTDIR=%{buildroot}
-popd
+%cmake_install
 > %{name}.filelist.ocaml
 %if %{with ocaml_camlidl}
 : creating '%{name}.files' and '%{name}.files.devel'
@@ -1111,7 +1127,7 @@ sed -i "1{s/\/usr\/bin\/env python/\/usr\/bin\/python/;}" %{buildroot}%{_datadir
 %fdupes %{buildroot}%{_datadir}/
 
 %check
-pushd builddir
+pushd %__builddir
 export DISPLAY=%{X_display}
 Xvfb %{X_display} >& Xvfb.log &
 sleep 5
