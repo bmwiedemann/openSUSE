@@ -29,6 +29,7 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
+ExcludeArch:    %{ix86}
 
 %description
 API docs and the README are available at
