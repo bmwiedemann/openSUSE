@@ -33,6 +33,7 @@ BuildRequires:  ghc-io-streams-devel
 BuildRequires:  ghc-network-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-test-framework-devel
