@@ -33,6 +33,7 @@ BuildRequires:  ghc-shakespeare-devel
 BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-xml-conduit-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-hspec-devel
