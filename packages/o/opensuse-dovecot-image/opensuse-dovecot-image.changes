@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 21 09:02:17 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Set virtual home directory
+- Rework description
+
+-------------------------------------------------------------------
 Fri Dec 18 21:11:57 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Fix error caused by uninitialized DEBUG variable
