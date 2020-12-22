@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Tue Sep  8 10:22:41 UTC 2020 - psimons@suse.com
 
 - Add aeson-yaml at version 1.1.0.0.

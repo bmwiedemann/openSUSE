@@ -32,6 +32,7 @@ BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-vector-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-string-qq-devel
 BuildRequires:  ghc-tasty-devel
