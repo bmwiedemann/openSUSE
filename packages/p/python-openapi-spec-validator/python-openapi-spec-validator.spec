@@ -19,19 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-openapi-spec-validator
-Version:        0.2.8
+Version:        0.2.9
 Release:        0
 Summary:        Python module for validating OpenAPI Specs against Swagger and OAS3
 License:        Apache-2.0
 URL:            https://github.com/p1c2u/openapi-spec-validator
 Source:         https://github.com/p1c2u/openapi-spec-validator/archive/%{version}.tar.gz
 Patch0:         openapi-spec-validator-skip-urls.patch
-BuildRequires:  %{python_module PyYAML >= 5.1}
-BuildRequires:  %{python_module jsonschema}
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 5.1
@@ -41,6 +36,13 @@ Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module PyYAML >= 5.1}
+BuildRequires:  %{python_module jsonschema}
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module six}
+# /SECTION
 %if %{with python2}
 BuildRequires:  python-pathlib2
 %endif
@@ -74,7 +76,7 @@ for full compliance with the Specification.
 %python_uninstall_alternative openapi-spec-validator
 
 %check
-%pytest
+%pytest -rs
 
 %files %{python_files}
 %doc README.md
