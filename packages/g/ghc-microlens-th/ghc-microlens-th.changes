@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Thu Nov 19 19:49:21 UTC 2020 - psimons@suse.com
 
 - Update microlens-th to version 0.4.3.8.
