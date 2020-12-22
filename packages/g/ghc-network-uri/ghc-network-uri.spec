@@ -30,6 +30,7 @@ BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-template-haskell-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-criterion-devel
