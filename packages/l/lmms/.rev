@@ -344,4 +344,14 @@ Require: filesystem</comment>
     <comment></comment>
     <requestid>821636</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>51176942295cf237a3014db937a54a65</srcmd5>
+    <version>1.2.2</version>
+    <time>1608634273</time>
+    <user>dimstar_suse</user>
+    <comment>- Add workaround for wine 6's lack of libwine.so symlink see:
+  boo#1179734
+</comment>
+    <requestid>857143</requestid>
+  </revision>
 </revisionlist>

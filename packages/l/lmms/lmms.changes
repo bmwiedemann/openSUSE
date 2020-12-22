@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 20 10:07:34 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Add workaround for wine 6's lack of libwine.so symlink see:
+  boo#1179734
+
+-------------------------------------------------------------------
 Sat Jul 18 07:37:04 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Update to version 1.2.2

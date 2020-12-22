@@ -116,8 +116,8 @@ Suggests:       %{name}-vst = %{version}
 ExclusiveArch:  x86_64
 %if %{with carla}
 # also needed (contains libcarla_standalone2 library)
-BuildRequires:  carla
 # to enable internal Carla plugin host
+BuildRequires:  carla
 BuildRequires:  pkgconfig(carla-standalone)
 Requires:       carla = %carlavers
 %endif
@@ -165,10 +165,23 @@ cd rpmalloc && rm -rf rpmalloc && tar -xf %{S:1} && mv rpmalloc-%{rpmallocrev} r
 popd
 
 %build
+export PATHBU=$PATH
 %if %{with wine}
 #Remove -m64 from CFLAGS, it causes VST build failure.
 export CFLAGS="-O2 -g -fmessage-length=0 -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables"
 %define optflags $CFLAGS
+#Add workaround for boo#1179734 to create the missing libwine.so symlink
+if ! test -e %{_libdir}/libwine.so
+then
+mkdir -p $HOME/%{_lib}/wine
+mkdir -p $HOME/lib/wine
+pushd $HOME/%{_lib}/wine
+ln -sf `ls -1 %{_libdir}/libwine.so.?` libwine.so
+cd ../../lib/wine
+ln -sf `ls -1 %{_prefix}/lib/libwine.so.?` libwine.so
+export PATH="$PATH:$HOME/%{_lib}/:$HOME/lib"
+popd
+fi
 %endif
 export CFLAGS="$CFLAGS -fPIC"
 %cmake \
@@ -182,7 +195,7 @@ export CFLAGS="$CFLAGS -fPIC"
   -DCMAKE_EXE_LINKER_FLAGS:STRING="$LDFLAGS -pie" \
   -DCMAKE_SKIP_RPATH=OFF \
   -Wno-dev
-
+export PATH=$PATHBU
 %make_jobs
 
 %install
