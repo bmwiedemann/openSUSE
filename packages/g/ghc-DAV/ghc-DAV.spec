@@ -46,6 +46,7 @@ BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-utf8-string-devel
 BuildRequires:  ghc-xml-conduit-devel
 BuildRequires:  ghc-xml-hamlet-devel
+ExcludeArch:    %{ix86}
 
 %description
 This is a library for the Web Distributed Authoring and Versioning (WebDAV)
