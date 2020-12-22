@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Tue Sep 22 09:33:18 UTC 2020 - psimons@suse.com
 
 - Update attoparsec to version 0.13.2.4 revision 1.

@@ -179,4 +179,12 @@ See http://lists.opensuse.org/opensuse-factory/2013-07/msg00409.html</comment>
     <comment>version update</comment>
     <requestid>838486</requestid>
   </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>bab1d514b07ce34e7ee4a41214ccf80c</srcmd5>
+    <version>0.13.2.4</version>
+    <time>1608633301</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857235</requestid>
+  </revision>
 </revisionlist>

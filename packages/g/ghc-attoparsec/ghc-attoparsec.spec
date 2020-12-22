@@ -35,6 +35,7 @@ BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-scientific-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-quickcheck-unicode-devel
