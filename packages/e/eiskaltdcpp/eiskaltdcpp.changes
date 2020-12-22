@@ -1,11 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 17 15:27:07 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Add subpackages: common, libeiskaltdcpp2_4, daemon, cli.
+- Add separete lang subpackeges: common-lang, qt-lang.
+- Change all descriptions.
+
+-------------------------------------------------------------------
 Mon Dec 14 10:16:58 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Update to 2.4.0.
   * Remove _service.
   * Refresh BuildRequires and using pkgconfig where is possible.
   * Migration from boost to C++14 standard.
-  * Add support ipv6.
 
 -------------------------------------------------------------------
 Mon Oct 12 15:41:01 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>

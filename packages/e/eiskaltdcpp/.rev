@@ -48,4 +48,14 @@
     <comment></comment>
     <requestid>855708</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>177405e5535c3bc4b997b24e913a1445</srcmd5>
+    <version>2.4.0</version>
+    <time>1608632969</time>
+    <user>dimstar_suse</user>
+    <comment>- Add subpackages: common, libeiskaltdcpp2_4, daemon, cli.
+- Add separete lang subpackeges: common-lang, qt-lang.
+- Change all descriptions.</comment>
+    <requestid>856708</requestid>
+  </revision>
 </revisionlist>

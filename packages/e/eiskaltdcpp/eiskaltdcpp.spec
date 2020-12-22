@@ -16,6 +16,7 @@
 #
 
 
+%define sover   2_4
 Name:           eiskaltdcpp
 Version:        2.4.0
 Release:        0
@@ -53,31 +54,76 @@ BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
 
 %description
-EiskaltDC++ is a cross-platform program that uses the Direct Connect and ADC
-protocol. It is compatible with other DC clients, such as the original DC from
-Neomodus, DC++ and derivatives. EiskaltDC++ also interoperates with all common
-DC hub software. The minimum number of our patches to original DC++ kernel
-makes it easy to upgrade to new versions and ensures compatibility with other
-clients.
+This package contains EiskaltDC++ program with GUI based on Qt. This is the most stable,
+flexible and convenient GUI for EiskaltDC++.
+EiskaltDC++ is a cross-platform program that uses the Direct Connect and
+Advanced Direct Connect protocols. It is compatible with DC++, AirDC++, FlylinkDC++
+and other DC clients. EiskaltDC++ also interoperates with all common DC hub software.
+
+%package common
+Summary:        Shared data for %{name}
+Requires:       lib%{name}%{sover} = %{version}
+BuildArch:      noarch
+
+%description common
+This package contains shared data for EiskaltDC++.
+
+%package -n lib%{name}%{sover}
+Summary:        Shared library for %{name}
+
+%description -n lib%{name}%{sover}
+This package contains Shared library for EiskaltDC++.
 
 %package qt
 Summary:        Qt frontend for %{name}
+Requires:       %{name}-common = %{version}
 Requires:       aspell
+Recommends:     %{name}-qt-lang
 
 %description qt
-EiskaltDC++ is a cross-platform program that uses the Direct Connect and ADC
-protocol. It is compatible with other DC clients, such as the original DC from
-Neomodus, DC++ and derivatives. EiskaltDC++ also interoperates with all common
-DC hub software. The minimum number of our patches to original DC++ kernel
-makes it easy to upgrade to new versions and ensures compatibility with other
-clients. This is the Qt frontend.
+This package contains EiskaltDC++ program with GUI based on Qt. This is the most stable,
+flexible and convenient GUI for EiskaltDC++.
+EiskaltDC++ is a cross-platform program that uses the Direct Connect and
+Advanced Direct Connect protocols. It is compatible with DC++, AirDC++, FlylinkDC++
+and other DC clients. EiskaltDC++ also interoperates with all common DC hub software.
+
+%package daemon
+Summary:        Daemon for %{name}
+Requires:       %{name}-common = %{version}
+Suggests:       %{name}-cli = %{version}
+
+%description daemon
+This package installs only EiskaltDC++ daemon (without any GUI).
+Support of control via JSON-RPC is enabled. Look at EiskaltDC++ CLI and Web UI programs for controlling it.
+EiskaltDC++ Qt and GTK+ UI may be used for configuring of EiskaltDC++ daemon
+(they use the same settings from core library), but they should not be launched simultaneously.
+EiskaltDC++ is a cross-platform program that uses the Direct Connect and Advanced Direct Connect protocols.
+It is compatible with DC++, AirDC++, FlylinkDC++ and other DC clients.
+EiskaltDC++ also interoperates with all common DC hub software.
+
+%package cli
+Summary:        CLI frontend for %{name}
+Requires:       %{name}-common = %{version}
+Requires:       perl(JSON::RPC)
+Suggests:       %{name}-daemon = %{version}
+
+%description cli
+This package installs EiskaltDC++ CLI (command-line interface) written in perl.
+This program is used to control EiskaltDC++ daemon via JSON-RPC protocol.
+EiskaltDC++ is a cross-platform program that uses the Direct Connect and Advanced Direct Connect protocols.
+It is compatible with DC++, AirDC++, FlylinkDC++ and other DC clients.
+EiskaltDC++ also interoperates with all common DC hub software.
+
+%lang_package -n %{name}-common
+%lang_package -n %{name}-qt
 
 %prep
 %autosetup -p1
 
 %build
 %cmake -LA \
-       -DJSONRPC_DAEMON=OFF \
+       -DNO_UI_DAEMON=ON \
+       -DUSE_CLI_JSONRPC=ON \
        -DWITH_EXAMPLES=OFF
 %cmake_build
 
@@ -85,32 +131,51 @@ clients. This is the Qt frontend.
 %cmake_install
 install -Dpm0644 %{SOURCE1} %{buildroot}%{_prefix}/lib/firewalld/services/%{name}.xml
 %fdupes %{buildroot}
+%find_lang lib%{name} %{name}-common.lang
+%find_lang %{name} %{name}-qt.lang --with-qt --without-mo --all-name
 
-%find_lang --with-qt lib%{name} %{name}.lang
+%post   -n lib%{name}%{sover} -p /sbin/ldconfig
+%postun -n lib%{name}%{sover} -p /sbin/ldconfig
 
-%post qt -p /sbin/ldconfig
-%postun qt -p /sbin/ldconfig
-
-%files -f %{name}.lang qt
+%files common
 %license COPYING LICENSE
 %doc AUTHORS ChangeLog.txt README.md TODO
-%{_bindir}/%{name}-qt
-%{_libdir}/lib%{name}.so.*
-%{_mandir}/man?/%{name}-qt.?%{ext_man}
-%{_datadir}/applications/%{name}-qt.desktop
-%{_datadir}/pixmaps/%{name}.png
-%{_datadir}/icons/hicolor/*/apps/%{name}.png
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/emoticons
 %{_datadir}/%{name}/luascripts
 %{_datadir}/%{name}/sounds
+%{_datadir}/pixmaps/%{name}.png
+%{_datadir}/icons/hicolor/*/apps/%{name}.png
+%dir %{_prefix}/lib/firewalld
+%dir %{_prefix}/lib/firewalld/services
+%{_prefix}/lib/firewalld/services/%{name}.xml
+
+%files common-lang -f %{name}-common.lang
+
+%files -n lib%{name}%{sover}
+%{_libdir}/lib%{name}.so.*
+
+%files qt
+%{_bindir}/%{name}-qt
+%{_mandir}/man?/%{name}-qt.?%{ext_man}
+%{_datadir}/applications/%{name}-qt.desktop
+%dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/qt
 %dir %{_datadir}/%{name}/qt/client-res
 %{_datadir}/%{name}/qt/client-res/default.rcc
 %{_datadir}/%{name}/qt/icons
-%{_datadir}/%{name}/qt/translations
-%dir %{_prefix}/lib/firewalld
-%dir %{_prefix}/lib/firewalld/services
-%{_prefix}/lib/firewalld/services/%{name}.xml
+
+%files qt-lang -f %{name}-qt.lang
+%dir %{_datadir}/%{name}/qt/translations
+
+%files daemon
+%{_bindir}/%{name}-daemon
+%{_mandir}/man?/%{name}-daemon.?%{ext_man}
+
+%files cli
+%{_bindir}/%{name}-cli-jsonrpc
+%dir %{_datadir}/%{name}/cli
+%{_datadir}/%{name}/cli/cli-jsonrpc-config.pl
+%{_mandir}/man?/%{name}-cli-jsonrpc.?%{ext_man}
 
 %changelog
