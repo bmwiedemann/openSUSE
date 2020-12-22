@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Dec 21 15:52:20 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 0.0.4a.
+  * range of bug fixes
+  * greatly expanded tests
+  * added ore docstrings
+  * simplified imports and removed unnecessary functions
+  * compatibility with single core machines
+  * changes to write_simple_attrs method, to now include ability to write enum objects
+  * changes to minimum dimension size
+
+-------------------------------------------------------------------
+Mon Nov 23 14:05:29 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 0.0.3.
+  * sidpy.Dataset extend dask.array
+  * sidpy.Dimension extends numpy.ndarray
+  * Improved unit testing for core functions
+
+-------------------------------------------------------------------
 Fri Sep 18 21:08:25 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Remove fix_tests_dir_in_site_package.patch, fix in sidpy 0.0.2.

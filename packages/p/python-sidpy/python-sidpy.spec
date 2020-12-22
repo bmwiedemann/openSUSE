@@ -19,11 +19,10 @@
 %define packagename sidpy
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sidpy
-Version:        0.0.2
+Version:        0.0.4a
 Release:        0
 Summary:        Utilities for processing Spectroscopic and Imaging Data
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://pycroscopy.github.io/sidpy/about.html
 Source:         https://github.com/pycroscopy/sidpy/archive/%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
 BuildRequires:  %{python_module cytoolz}
