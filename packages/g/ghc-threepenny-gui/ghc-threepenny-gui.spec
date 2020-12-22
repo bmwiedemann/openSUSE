@@ -49,6 +49,7 @@ BuildRequires:  ghc-vault-devel
 BuildRequires:  ghc-vector-devel
 BuildRequires:  ghc-websockets-devel
 BuildRequires:  ghc-websockets-snap-devel
+ExcludeArch:    %{ix86}
 
 %description
 Threepenny-GUI is a GUI framework that uses the web browser as a display.
