@@ -19,7 +19,7 @@
 %global pkg_name hedgehog
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 Summary:        Release with confidence
 License:        BSD-3-Clause
@@ -35,7 +35,6 @@ BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-erf-devel
 BuildRequires:  ghc-exceptions-devel
-BuildRequires:  ghc-fail-devel
 BuildRequires:  ghc-lifted-async-devel
 BuildRequires:  ghc-mmorph-devel
 BuildRequires:  ghc-monad-control-devel
@@ -45,7 +44,6 @@ BuildRequires:  ghc-primitive-devel
 BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-resourcet-devel
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  ghc-semigroups-devel
 BuildRequires:  ghc-stm-devel
 BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-text-devel
@@ -53,6 +51,7 @@ BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-transformers-base-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-wl-pprint-annotated-devel
+ExcludeArch:    %{ix86}
 
 %description
 <http://hedgehog.qa/ Hedgehog> automatically generates a comprehensive array of
@@ -78,7 +77,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver ansi-terminal '< 0.11' '<1'
 
 %build
 %ghc_lib_build
