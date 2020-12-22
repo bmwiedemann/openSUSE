@@ -43,6 +43,7 @@ BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-typed-process-devel
 BuildRequires:  ghc-unliftio-core-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-bytestring-builder-devel
