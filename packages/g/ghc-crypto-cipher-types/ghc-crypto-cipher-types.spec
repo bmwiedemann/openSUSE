@@ -29,6 +29,7 @@ BuildRequires:  ghc-byteable-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-securemem-devel
+ExcludeArch:    %{ix86}
 
 %description
 Generic cryptography cipher types.
