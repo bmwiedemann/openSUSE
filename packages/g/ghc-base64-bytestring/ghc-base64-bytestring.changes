@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Sun Nov 15 22:12:13 UTC 2020 - psimons@suse.com
 
 - Update base64-bytestring to version 1.2.0.1.

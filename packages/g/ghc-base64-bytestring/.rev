@@ -110,4 +110,12 @@ This fixes gh-4.</comment>
     <comment>automatic update</comment>
     <requestid>849154</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>030707638b388604880c93a72ac7467c</srcmd5>
+    <version>1.2.0.1</version>
+    <time>1608633332</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857247</requestid>
+  </revision>
 </revisionlist>
