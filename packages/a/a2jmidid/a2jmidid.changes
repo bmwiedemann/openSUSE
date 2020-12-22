@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Thu Dec  3 07:30:51 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- Fix source to use full URL
+- Fix use of env
+
+-------------------------------------------------------------------
+Thu Nov 26 00:44:02 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- Don't need to export cflags
+
+-------------------------------------------------------------------
+Tue Oct 27 04:17:41 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- Update to version 9
+  * Switch to meson
+- Run spec cleaner
+
+-------------------------------------------------------------------
+Tue Sep 12 14:09:39 UTC 2017 - krysanto@gmail.com
+
+- Initial Version
+  - Checkout from master branch to avoid carrying patches
