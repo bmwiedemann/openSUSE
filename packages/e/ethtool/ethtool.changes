@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Dec 16 16:44:23 UTC 2020 - Michal Kubecek <mkubecek@suse.cz>
+
+- update to new upstream release 5.10
+  * infrastructure for JSON output
+  * separate FLAGS in -h output
+  * use policy dumps to check flags support
+  * show pause stats (-a)
+  * pretty printing of policy dumps
+  * improve error message when SFP module is missing
+  * fix use after free in netlink_run_handler()
+  * fix leaked instances of struct nl_socket
+  * improve compatibility between netlink and ioctl (-s)
+- drop patches present in 5.10 release:
+  * ethtool-Improve-compatibility-between-netlink-and-io.patch
+  * netlink-do-not-send-messages-and-process-replies-in-.patch
+  * netlink-fix-leaked-instances-of-struct-nl_socket.patch
+  * netlink-fix-use-after-free-in-netlink_run_handler.patch
+
+-------------------------------------------------------------------
 Wed Nov 11 16:57:07 UTC 2020 - Michal Kubecek <mkubecek@suse.cz>
 
 - backport post-5.9 fixes
