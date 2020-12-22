@@ -34,6 +34,7 @@ BuildRequires:  ghc-resourcet-devel
 BuildRequires:  ghc-rio-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-base-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-hspec-devel
 %endif
