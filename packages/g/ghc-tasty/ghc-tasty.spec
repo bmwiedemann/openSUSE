@@ -37,6 +37,7 @@ BuildRequires:  ghc-tagged-devel
 BuildRequires:  ghc-unbounded-delays-devel
 BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-wcwidth-devel
+ExcludeArch:    %{ix86}
 
 %description
 Tasty is a modern testing framework for Haskell. It lets you combine your unit
