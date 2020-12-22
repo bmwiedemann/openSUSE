@@ -36,6 +36,7 @@ BuildRequires:  ghc-scientific-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-vector-devel
+ExcludeArch:    %{ix86}
 
 %description
 The [YAML 1.2](https://yaml.org/spec/1.2/spec.html) format provides a much
