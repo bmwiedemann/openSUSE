@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 22 07:53:04 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Use "Requires user(tss)" for the "tss" user and group
+
+-------------------------------------------------------------------
+Tue Dec 22 04:06:10 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Create /var/lib/swtpm-localca to store the keys created by
+  swtpm-localca (bsc#1179811)
+- Replace net-tools-deprecated with iproute2 since the scripts in
+  swtpm now can use 'ss' instead of 'netstat'
+
+-------------------------------------------------------------------
 Sun Nov 22 03:16:13 UTC 2020 - Kai Liu <kai.liu@suse.com>
 
 - Update to version 0.5.1

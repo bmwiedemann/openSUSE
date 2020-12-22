@@ -33,6 +33,7 @@ BuildRequires:  expect
 BuildRequires:  fuse-devel
 BuildRequires:  glib2-devel
 BuildRequires:  gnutls
+BuildRequires:  iproute2
 BuildRequires:  libgnutls-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libseccomp-devel
@@ -41,14 +42,10 @@ BuildRequires:  libtool
 BuildRequires:  libtpms-devel
 BuildRequires:  python3-cryptography
 BuildRequires:  socat
-%if 0%{?suse_version} >= 1500 
-BuildRequires:  net-tools-deprecated
-%endif
-Requires:       trousers
-%if 0%{?suse_version} >= 1500 
-Requires:       net-tools-deprecated
-%endif
+Requires:       iproute2
 Requires:       python3-cryptography
+Requires:       trousers
+Requires:       user(tss)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -91,6 +88,8 @@ make %{?_smp_mflags}
 %install
 %make_install
 
+mkdir -p %{buildroot}%{_localstatedir}/lib/swtpm-localca
+
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
@@ -113,6 +112,7 @@ make %{?_smp_mflags}
 %{python_sitelib}/py_swtpm_setup/*.py
 %{python_sitelib}/swtpm_localca*
 %{python_sitelib}/swtpm_setup*
+%dir %attr(0750,tss,root) %{_localstatedir}/lib/swtpm-localca
 
 %files devel
 %{_libdir}/swtpm/*.so
