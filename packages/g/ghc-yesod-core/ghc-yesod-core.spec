@@ -19,7 +19,7 @@
 %global pkg_name yesod-core
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.6.18.7
+Version:        1.6.18.8
 Release:        0
 Summary:        Creation of type-safe, RESTful web applications
 License:        MIT
@@ -64,6 +64,7 @@ BuildRequires:  ghc-wai-extra-devel
 BuildRequires:  ghc-wai-logger-devel
 BuildRequires:  ghc-warp-devel
 BuildRequires:  ghc-word8-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-async-devel

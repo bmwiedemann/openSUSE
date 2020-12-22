@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Mon Dec 14 13:07:07 UTC 2020 - psimons@suse.com
+
+- Update yesod-core to version 1.6.18.8.
+  ## 1.6.18.8
+
+  * Fix test suite for wai-extra change around vary header
+
+-------------------------------------------------------------------
 Thu Nov 19 19:50:20 UTC 2020 - psimons@suse.com
 
 - Update yesod-core to version 1.6.18.7.
