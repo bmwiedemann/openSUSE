@@ -31,7 +31,7 @@ Name:           gstreamer-plugins-bad
 Version:        1.18.2
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
 # Disable tarball source url, use _service
