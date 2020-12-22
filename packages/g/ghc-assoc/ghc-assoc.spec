@@ -28,6 +28,7 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-bifunctors-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-tagged-devel
+ExcludeArch:    %{ix86}
 
 %description
 Provides generalisations of 'swap :: (a,b) -> (b,a)' and 'assoc :: ((a,b),c) ->
