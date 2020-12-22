@@ -34,6 +34,7 @@ BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  libxml2
 BuildRequires:  libxslt
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-process-devel
 %endif
@@ -51,8 +52,7 @@ find . -type f -exec chmod -x {} +
 %ghc_bin_build
 cd doc
 autoreconf
-# FIXME: you should use the %%configure macro
-./configure
+%configure
 %make_build html
 
 %install
