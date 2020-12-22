@@ -33,6 +33,7 @@ BuildRequires:  ghc-network-bsd-devel
 BuildRequires:  ghc-network-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-utf8-string-devel
+ExcludeArch:    %{ix86}
 
 %description
 Addition to the http-client and http-client-tls libraries, that restricts the
