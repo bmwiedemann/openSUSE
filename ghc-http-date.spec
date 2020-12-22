@@ -31,6 +31,7 @@ BuildRequires:  ghc-attoparsec-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-time-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-doctest-devel
 BuildRequires:  ghc-hspec-devel
