@@ -39,6 +39,7 @@ BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-unix-compat-devel
 BuildRequires:  ghc-unix-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-tasty-devel
