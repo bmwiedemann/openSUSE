@@ -107,7 +107,7 @@ This package contains the static library variants of libfuse.
 %autosetup -p1
 
 %build
-%define _lto_cflags %{nil}
+%global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 export CFLAGS="%{optflags} -g -fno-strict-aliasing"
 export MOUNT_FUSE_PATH=%{_sbindir}
 autoreconf -fi

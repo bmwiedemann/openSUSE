@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 15 11:00:03 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Enable LTO (boo#1133101) and use -ffat-lto-objects.
+
+-------------------------------------------------------------------
 Fri Nov 20 10:10:06 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Modernize some older specfile constructs. Rediff patch4 as -p1.
