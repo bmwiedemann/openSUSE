@@ -30,6 +30,7 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-hslua-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-hunit-devel

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Sat Oct 17 02:01:39 UTC 2020 - psimons@suse.com
 
 - Update hslua-module-text to version 0.3.0.1.
