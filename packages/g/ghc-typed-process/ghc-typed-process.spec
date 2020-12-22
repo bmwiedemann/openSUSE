@@ -33,6 +33,7 @@ BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-stm-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unliftio-core-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-base64-bytestring-devel
 BuildRequires:  ghc-hspec-devel
