@@ -30,6 +30,7 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-zlib-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-hspec-devel
