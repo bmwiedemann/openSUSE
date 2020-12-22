@@ -46,6 +46,7 @@ BuildRequires:  ghc-transformers-base-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unix-compat-devel
 BuildRequires:  ghc-unix-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-hspec-contrib-devel
