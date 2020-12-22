@@ -30,6 +30,7 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-hspec-meta-devel
