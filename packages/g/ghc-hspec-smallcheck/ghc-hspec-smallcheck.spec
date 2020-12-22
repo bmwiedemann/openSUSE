@@ -31,6 +31,7 @@ BuildRequires:  ghc-call-stack-devel
 BuildRequires:  ghc-hspec-core-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-smallcheck-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-base-orphans-devel
