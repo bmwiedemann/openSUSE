@@ -27,9 +27,6 @@ Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-data-default-devel
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  libX11-devel
-BuildRequires:  libXext-devel
-BuildRequires:  libXrandr-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
@@ -37,6 +34,7 @@ BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xscrnsaver)
+ExcludeArch:    %{ix86}
 
 %description
 A Haskell binding to the X11 graphics library. The binding is a direct
@@ -47,11 +45,12 @@ Xlib Programming Manual", available online at <http://tronche.com/gui/x/xlib/>.
 Summary:        Haskell %{pkg_name} library development files
 Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
-Requires:       libX11-devel
-Requires:       libXext-devel
-Requires:       libXinerama-devel
-Requires:       libXrandr-devel
-Requires:       libXss-devel
+Requires:       pkgconfig(x11)
+Requires:       pkgconfig(x11-xcb)
+Requires:       pkgconfig(xext)
+Requires:       pkgconfig(xinerama)
+Requires:       pkgconfig(xrandr)
+Requires:       pkgconfig(xscrnsaver)
 Requires(post): ghc-compiler = %{ghc_version}
 Requires(postun): ghc-compiler = %{ghc_version}
 
