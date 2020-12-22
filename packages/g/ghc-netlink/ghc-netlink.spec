@@ -33,6 +33,7 @@ BuildRequires:  ghc-monad-loops-devel
 BuildRequires:  ghc-pretty-hex-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-unix-devel
+ExcludeArch:    %{ix86}
 
 %description
 Library to comminicate with Linux kernel via Netlink.
