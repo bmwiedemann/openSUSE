@@ -39,6 +39,7 @@ BuildRequires:  ghc-time-locale-compat-devel
 BuildRequires:  ghc-utf8-string-devel
 BuildRequires:  ghc-xml-conduit-devel
 BuildRequires:  ghc-xml-types-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-syb-devel
