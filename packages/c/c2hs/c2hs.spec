@@ -18,7 +18,7 @@
 
 %bcond_with tests
 Name:           c2hs
-Version:        0.28.6
+Version:        0.28.7
 Release:        0
 Summary:        C->Haskell FFI tool that gives some cross-language type safety
 License:        GPL-2.0-or-later
@@ -35,6 +35,7 @@ BuildRequires:  ghc-language-c-devel
 BuildRequires:  ghc-pretty-devel
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-shelly-devel
@@ -54,6 +55,7 @@ correct Haskell types.
 %prep
 %autosetup
 cabal-tweak-dep-ver language-c '< 0.9' '< 1'
+chmod a-x {README,AUTHORS,ChangeLog,ChangeLog.old}
 
 %build
 %ghc_bin_build
