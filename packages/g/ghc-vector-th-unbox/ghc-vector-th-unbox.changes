@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Mon Aug 31 09:34:32 UTC 2020 - psimons@suse.com
 
 - Update vector-th-unbox to version 0.2.1.7 revision 1.
