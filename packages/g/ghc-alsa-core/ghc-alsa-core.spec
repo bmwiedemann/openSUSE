@@ -29,6 +29,7 @@ BuildRequires:  ghc-extensible-exceptions-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
+ExcludeArch:    %{ix86}
 
 %description
 This package provides access to ALSA infrastructure, that is needed by both
