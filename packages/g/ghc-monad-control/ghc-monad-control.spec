@@ -30,6 +30,7 @@ BuildRequires:  ghc-stm-devel
 BuildRequires:  ghc-transformers-base-devel
 BuildRequires:  ghc-transformers-compat-devel
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 
 %description
 This package defines the type class 'MonadBaseControl', a subset of 'MonadBase'
