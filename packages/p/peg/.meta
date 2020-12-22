@@ -1,0 +1,5 @@
+<package name="peg" project="openSUSE:Factory">
+  <title>Recursive-Descent parser generators for C</title>
+  <description>peg(1) and leg(1) are tools for generating recursive-descent parsers: programs that perform pattern matching on text. They processes a Parsing Expression Grammar (PEG) to produce a program that recognises legal sentences of that grammar. peg(1) processes PEGs written using the original syntax described by Ford while leg(1) processes PEGs written using slightly different syntax and conventions that are intended to make it an attractive replacement for parsers built with lex(1) and yacc(1). Unlike lex(1) and yacc(1), peg(1) and leg(1) support unlimited backtracking, provide ordered choice as a means for disambiguation, and can combine scanning (lexical analysis) and parsing (syntactic analysis) into a single activity.</description>
+  <devel project="devel:tools" package="peg"/>
+</package>

@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Tue Dec 22 10:01:27 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.1.8:
+  * Add @{...} actions that are performed during matching.
+  * Emit #line directives for header and trailer in the
+    generated source file.
+  * Add -P option to disable #line directives. Emit #line
+    directives for all actions.
+
+-------------------------------------------------------------------
+Wed Jun  4 06:54:42 UTC 2014 - kkaempf@suse.com
+
+- Update to 0.1.15
+  * Calls to YY_FREE fixed (thanks to Andrew Dunham).
+  * Documentation typos fixed (thanks to Giulio Paci).
+
+-------------------------------------------------------------------
+Wed Sep 25 00:00:00 UTC 2013 - Huaren Zhong <huaren.zhong@gmail.com>
+
+- Initial package for 0.1.13
+- Rebuild for Fedora
