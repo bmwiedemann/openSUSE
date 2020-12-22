@@ -30,6 +30,7 @@ BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-syb-devel
 BuildRequires:  ghc-unordered-containers-devel
+ExcludeArch:    %{ix86}
 
 %description
 Uniplate is library for writing simple and concise generic operations.
