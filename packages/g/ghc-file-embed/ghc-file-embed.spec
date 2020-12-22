@@ -31,6 +31,7 @@ BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-template-haskell-devel
+ExcludeArch:    %{ix86}
 
 %description
 Use Template Haskell to read a file or all the files in a directory, and turn
