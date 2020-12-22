@@ -28,6 +28,7 @@ BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 
 %description
 Open a web browser from Haskell. Currently BSD, Linux, OS X and Windows are
