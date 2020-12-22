@@ -1,0 +1,5 @@
+<package name="python-compileall2" project="openSUSE:Factory">
+  <title></title>
+  <description>Enhanced Python `compileall` module</description>
+  <devel project="devel:languages:python" package="python-compileall2"/>
+</package>
