@@ -15,4 +15,12 @@
     <comment>version update</comment>
     <requestid>829453</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a90d59d8347d652ad4ac00aec9de7549</srcmd5>
+    <version>0.0.0</version>
+    <time>1608634066</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857613</requestid>
+  </revision>
 </revisionlist>
