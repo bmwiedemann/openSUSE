@@ -34,6 +34,7 @@ BuildRequires:  ghc-optics-extra-devel
 BuildRequires:  ghc-optics-th-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-indexed-profunctors-devel
