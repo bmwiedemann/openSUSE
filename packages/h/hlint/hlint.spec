@@ -53,6 +53,7 @@ BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-utf8-string-devel
 BuildRequires:  ghc-vector-devel
 BuildRequires:  ghc-yaml-devel
+ExcludeArch:    %{ix86}
 
 %description
 HLint gives suggestions on how to improve your source code.
