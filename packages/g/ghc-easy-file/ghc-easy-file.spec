@@ -30,6 +30,7 @@ BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-unix-devel
+ExcludeArch:    %{ix86}
 
 %description
 Cross-platform File handling for Unix/Mac/Windows.
