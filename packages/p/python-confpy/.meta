@@ -1,0 +1,5 @@
+<package name="python-confpy" project="openSUSE:Factory">
+  <title></title>
+  <description>Config file parsing and option management</description>
+  <devel project="devel:languages:python" package="python-confpy"/>
+</package>
