@@ -33,6 +33,7 @@ BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-unordered-containers-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-aeson-diff-devel
 BuildRequires:  ghc-directory-devel
