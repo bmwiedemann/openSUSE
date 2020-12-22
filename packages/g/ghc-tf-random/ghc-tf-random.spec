@@ -29,6 +29,7 @@ BuildRequires:  ghc-primitive-devel
 BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-time-devel
+ExcludeArch:    %{ix86}
 
 %description
 This package contains an implementation of a high-quality splittable
