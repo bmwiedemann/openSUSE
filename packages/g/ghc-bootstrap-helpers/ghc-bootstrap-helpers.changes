@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Tue Sep  8 09:28:13 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 1.1 - update happy to 1.9.20 

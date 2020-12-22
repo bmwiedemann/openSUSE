@@ -27,6 +27,7 @@ URL:            https://build.opensuse.org/project/show/devel:languages:haskell
 Source:         alex-%{alex_ver}.tar.gz
 Source1:        happy-%{happy_ver}.tar.gz
 BuildRequires:  ghc-bootstrap
+ExcludeArch:    %{ix86}
 # This package is not meant to be used outside OBS
 Requires:       this-is-only-for-build-envs
 
