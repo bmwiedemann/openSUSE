@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 16 21:47:34 UTC 2020 - Adam Majer <amajer@suse.com>
+
+- Add libboost_json-devel for Boost.JSON
+
+-------------------------------------------------------------------
+Fri Nov 13 17:14:54 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Update for Boost 1.75.0
+
+-------------------------------------------------------------------
 Tue Nov 10 11:15:03 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Add devel subpackage for Boost.Nowide

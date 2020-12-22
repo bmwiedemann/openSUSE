@@ -17,10 +17,9 @@
 
 
 Name:           boost-defaults
-Version:        1.74.0
+Version:        1.75.0
 Release:        0
-%define python3X python38
-%define boost_version 1_74_0
+%define boost_version 1_75_0
 Summary:        Default Boost C++ Libraries
 License:        MIT
 Group:          Development/Libraries/C and C++
@@ -237,7 +236,7 @@ This package installs the default Boost version of the library.
 %package     -n libboost_mpi_python3-devel
 Summary:        Development library for Boost.MPI Python 3.x serialization
 Group:          Development/Libraries/C and C++
-Requires:       libboost_mpi_%{python3X}-py3-%{boost_version}-devel
+Requires:       libboost_mpi_python-py3-%{boost_version}-devel
 
 %description -n libboost_mpi_python3-devel
 This package contains the Boost.MPI development library for Python 3.x
@@ -350,6 +349,16 @@ Requires:       libboost_thread%{boost_version}-devel
 
 %description -n libboost_thread-devel
 This package contains development headers for Boost.Thread library.
+
+This package installs the default Boost version of the library.
+
+%package     -n libboost_json-devel
+Summary:        Development headers for Boost.JSON library
+Group:          Development/Libraries/C and C++
+Requires:       libboost_json%{boost_version}-devel
+
+%description -n libboost_json-devel
+This package contains development headers for Boost.JSON library.
 
 This package installs the default Boost version of the library.
 
