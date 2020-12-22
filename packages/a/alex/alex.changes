@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Dec 15 16:30:27 UTC 2020 - psimons@suse.com
+
+- Update alex to version 3.2.6.
+  ## Changes in 3.2.6:
+
+   * Support for the GHC 9.2.
+
+     The array access primops now use the fixed-sized numeric types
+     corresponding to the width of the data accessed. Additionally, the
+     primops to convert to and from fixed-sized numeric types have been
+     given new names.
+
+     9.2 isn't cut yet, so these changes are somewhat speculative.
+     Unfortunately, GHC must used a released version of Alex (and Happy)
+     at all times until further changes have been made, so we must make
+     the release to actually implement these changes in GHC.
+
+     If the final GHC 9.2 ends up being different, this release will be
+     marked broken to make it less likely people use it by accident.
+
+-------------------------------------------------------------------
 Wed Oct 21 12:51:40 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Add memory constraints for riscv64
