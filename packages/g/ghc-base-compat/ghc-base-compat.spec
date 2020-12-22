@@ -27,6 +27,7 @@ Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-unix-devel
+ExcludeArch:    %{ix86}
 
 %description
 Provides functions available in later versions of 'base' to a wider range of
