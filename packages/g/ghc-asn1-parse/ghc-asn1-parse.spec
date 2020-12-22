@@ -29,6 +29,7 @@ BuildRequires:  ghc-asn1-encoding-devel
 BuildRequires:  ghc-asn1-types-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 
 %description
 Simple monadic parser for ASN1 stream types, when ASN1 pattern matching is not
