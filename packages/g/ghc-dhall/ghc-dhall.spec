@@ -19,7 +19,7 @@
 %global pkg_name dhall
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.36.0
+Version:        1.37.1
 Release:        0
 Summary:        A configuration language guaranteed to terminate
 License:        BSD-3-Clause
@@ -78,6 +78,7 @@ BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-uri-encode-devel
 BuildRequires:  ghc-vector-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-doctest-devel
