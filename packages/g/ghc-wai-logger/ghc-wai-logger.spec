@@ -34,6 +34,7 @@ BuildRequires:  ghc-http-types-devel
 BuildRequires:  ghc-network-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-wai-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-doctest-devel
 %endif
