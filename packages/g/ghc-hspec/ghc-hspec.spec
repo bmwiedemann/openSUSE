@@ -30,6 +30,7 @@ BuildRequires:  ghc-hspec-core-devel
 BuildRequires:  ghc-hspec-discover-devel
 BuildRequires:  ghc-hspec-expectations-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 
 %description
 Hspec is a testing framework for Haskell. Some of Hspec's distinctive features
