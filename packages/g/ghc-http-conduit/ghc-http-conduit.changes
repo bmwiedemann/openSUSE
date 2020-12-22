@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Fri Dec  4 10:52:00 UTC 2020 - psimons@suse.com
+
+- Update http-conduit to version 2.3.7.4.
+  ## 2.3.7.4
+
+  * Introduces the `aeson` cabal file [#448](https://github.com/snoyberg/http-client/issues/448)
+
+-------------------------------------------------------------------
 Mon Aug 31 09:34:32 UTC 2020 - psimons@suse.com
 
 - Update http-conduit to version 2.3.7.3 revision 1.

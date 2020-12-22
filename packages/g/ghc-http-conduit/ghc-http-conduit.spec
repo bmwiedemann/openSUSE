@@ -19,13 +19,12 @@
 %global pkg_name http-conduit
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.3.7.3
+Version:        2.3.7.4
 Release:        0
 Summary:        HTTP client package with conduit interface and HTTPS support
 License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-attoparsec-devel
@@ -40,6 +39,7 @@ BuildRequires:  ghc-resourcet-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unliftio-core-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-blaze-builder-devel
@@ -53,6 +53,7 @@ BuildRequires:  ghc-streaming-commons-devel
 BuildRequires:  ghc-temporary-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-time-devel
+BuildRequires:  ghc-tls-devel
 BuildRequires:  ghc-unliftio-devel
 BuildRequires:  ghc-utf8-string-devel
 BuildRequires:  ghc-wai-conduit-devel
@@ -77,7 +78,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
