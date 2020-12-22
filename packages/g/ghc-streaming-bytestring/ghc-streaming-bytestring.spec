@@ -36,6 +36,7 @@ BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-streaming-devel
 BuildRequires:  ghc-transformers-base-devel
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-smallcheck-devel
 BuildRequires:  ghc-tasty-devel
