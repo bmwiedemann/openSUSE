@@ -32,6 +32,7 @@ BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-syb-devel
+ExcludeArch:    %{ix86}
 
 %description
 BitTorrent file parser and generater.
