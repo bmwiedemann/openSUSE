@@ -31,6 +31,7 @@ BuildRequires:  ghc-safe-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-transformers-compat-devel
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 
 %description
 The one-stop shop for all your error-handling needs! Just import
