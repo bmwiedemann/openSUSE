@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-python-language-server
-Version:        0.36.1
+Version:        0.36.2
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
