@@ -29,6 +29,7 @@ BuildRequires:  ghc-exceptions-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 
 %description
 Extra pieces for working with Except.
