@@ -342,4 +342,12 @@ See: http://lists.opensuse.org/archive/opensuse-factory/2014-03/msg00332.html</c
     <comment>version update</comment>
     <requestid>842736</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>2f9b5bf30047094fc493ddd84bf88bd2</srcmd5>
+    <version>1.5.4.1</version>
+    <time>1608633252</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857215</requestid>
+  </revision>
 </revisionlist>
