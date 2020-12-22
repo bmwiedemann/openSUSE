@@ -19,7 +19,7 @@
 %global pkg_name time-compat
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.9.4
+Version:        1.9.5
 Release:        0
 Summary:        Compatibility package for time
 License:        BSD-3-Clause
@@ -30,6 +30,7 @@ BuildRequires:  ghc-base-orphans-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-time-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-QuickCheck-devel
