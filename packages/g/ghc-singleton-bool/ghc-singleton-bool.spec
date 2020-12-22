@@ -28,6 +28,7 @@ Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revis
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-dec-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 
 %description
 Type level booleans.
