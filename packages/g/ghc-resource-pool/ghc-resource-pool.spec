@@ -33,6 +33,7 @@ BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-transformers-base-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-vector-devel
+ExcludeArch:    %{ix86}
 
 %description
 A high-performance striped pooling abstraction for managing flexibly-sized
