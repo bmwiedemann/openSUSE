@@ -31,6 +31,7 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 BuildRequires:  libstdc++-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-test-framework-devel
