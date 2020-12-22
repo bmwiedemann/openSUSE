@@ -34,6 +34,7 @@ BuildRequires:  ghc-these-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-vector-devel
+ExcludeArch:    %{ix86}
 
 %description
 The major use of 'These' of this is provided by the 'align' member of
