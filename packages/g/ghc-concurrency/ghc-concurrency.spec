@@ -33,6 +33,7 @@ BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-stm-devel
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 
 %description
 A typeclass abstraction over much of Control.Concurrent (and some extras!).
