@@ -33,6 +33,7 @@ BuildRequires:  ghc-distributive-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-tagged-devel
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 
 %description
 Profunctors.
