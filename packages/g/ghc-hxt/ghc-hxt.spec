@@ -38,6 +38,7 @@ BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-network-uri-devel
 BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 
 %description
 The Haskell XML Toolbox bases on the ideas of HaXml and HXML, but introduces a
