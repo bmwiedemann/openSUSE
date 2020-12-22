@@ -1,0 +1,5 @@
+<package name="ghc-servant-server" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:haskell" package="ghc-servant-server"/>
+</package>
