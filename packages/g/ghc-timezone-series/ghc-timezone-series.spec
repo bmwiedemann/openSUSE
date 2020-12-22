@@ -28,6 +28,7 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-time-devel
+ExcludeArch:    %{ix86}
 
 %description
 This package endows Data.Time, from the time package, with several data types
