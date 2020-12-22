@@ -29,6 +29,7 @@ BuildRequires:  ghc-byteable-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-memory-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 
 %description
 SecureMem is similar to ByteString, except that it provides a memory chunk that
