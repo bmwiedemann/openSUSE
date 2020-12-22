@@ -37,6 +37,7 @@ BuildRequires:  ghc-semigroups-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unordered-containers-devel
+ExcludeArch:    %{ix86}
 
 %description
 Semigroups, specialized containers and a general map/reduce framework.
