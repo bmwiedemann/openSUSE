@@ -16,9 +16,6 @@
 #
 
 
-%ifarch %{ix86}
-%define longarch i386
-%endif
 %ifarch ppc
 %define longarch powerpc
 %endif
@@ -62,11 +59,9 @@ Name:           ghc-bootstrap
 Release:        0
 Summary:        Binary distributions of The Glorious Glasgow Haskell Compiler
 License:        BSD-3-Clause
-Group:          Development/Languages/Other
 URL:            https://build.opensuse.org/package/view_file/devel:languages:haskell:bootstrap
 Source1:        README.openSUSE
 Source2:        LICENSE
-Source10:       ghc-8.10.1-i386-unknown-linux.tar.xz
 Source12:       ghc-8.10.1-powerpc64-unknown-linux.tar.xz
 Source13:       ghc-8.10.1-powerpc64le-unknown-linux.tar.xz
 Source14:       ghc-8.10.1-x86_64-unknown-linux.tar.xz
@@ -84,7 +79,7 @@ Requires:       pkgconfig(libffi)
 # This package is not meant to be used outside OBS
 Requires:       this-is-only-for-build-envs
 Provides:       ghc-bootstrap-devel
-ExclusiveArch:  %{ix86} ppc64 ppc64le x86_64 s390x aarch64 %{arm} riscv64
+ExclusiveArch:  ppc64 ppc64le x86_64 s390x aarch64 %{arm} riscv64
 AutoReq:        off
 %ifnarch s390 s390x
 Version:        8.10.1
@@ -114,7 +109,6 @@ Do not install this package! Install 'ghc' instead.
 %prep
 cp %{SOURCE1} .
 cp %{SOURCE2} .
-cp %{SOURCE10} .
 cp %{SOURCE12} .
 cp %{SOURCE13} .
 cp %{SOURCE14} .
