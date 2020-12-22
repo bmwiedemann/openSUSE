@@ -31,6 +31,7 @@ BuildRequires:  ghc-ekg-core-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-unordered-containers-devel
+ExcludeArch:    %{ix86}
 
 %description
 Encodes ekg metrics as JSON, using the same encoding as used by the ekg
