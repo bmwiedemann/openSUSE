@@ -29,6 +29,7 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-monad-control-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-base-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-test-framework-devel
