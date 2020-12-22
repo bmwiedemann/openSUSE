@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Thu Dec 17 10:46:40 UTC 2020 - psimons@suse.com
+
+- Update doctemplates to version 0.9.
+  ## 0.9
+
+    * Add BoolVal constructor to Val.  This gives a smoother
+      interface with JSON and YAML.  [API change]
+
+    * Remove overlapping instances by generalizing
+      `ToContext String String` and `FromContext String String`
+      to `TemplateTarget [a] => ToContext [a] [a]` and
+      `TemplateTarget [a] => FromContext [a] [a]`.
+      Remove the instance `ToContext String (Doc String)`.
+      Remove redundant constraints.  (#9, favonia) [API change]
+
+-------------------------------------------------------------------
+Tue Dec  1 08:09:40 UTC 2020 - psimons@suse.com
+
+- Update doctemplates to version 0.8.3.
+  ## 0.8.3
+
+    * Properly handle nested loops (#15).  Previously "it" was
+      always used for the variable in a loop, and in a nested loop
+      there was no way to distinguish the value of the inner
+      iteration from the value of the outer one.  Now we assign
+      the iterated value to both "it" and to the original variable
+      name (e.g. "foo.bar").  This probably has a small negative
+      performance impact.  Note that this change also affects
+      the output of the template parser:  original variable
+      names are now retained instead of being replaced by "it".
+
+    * Remove duplicate IsString constraint (#14, Mario Lang).
+
+    * Update haddocks from README (#10).
+
+    * Minor code clean-ups (#7, favonia).
+
+    * Add hsyaml >= 0.2 constraint (#6).
+
+-------------------------------------------------------------------
 Tue Aug 18 10:44:41 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.
