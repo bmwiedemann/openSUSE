@@ -18,7 +18,7 @@
 
 %global pkg_name monad-logger
 Name:           ghc-%{pkg_name}
-Version:        0.3.35
+Version:        0.3.36
 Release:        0
 Summary:        A class of monads which can log messages
 License:        MIT
@@ -44,6 +44,7 @@ BuildRequires:  ghc-transformers-base-devel
 BuildRequires:  ghc-transformers-compat-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unliftio-core-devel
+ExcludeArch:    %{ix86}
 
 %description
 A class of monads which can log messages.

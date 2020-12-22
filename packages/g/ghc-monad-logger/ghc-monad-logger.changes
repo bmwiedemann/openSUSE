@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Wed Nov 25 16:30:02 UTC 2020 - psimons@suse.com
+
+- Update monad-logger to version 0.3.36.
+  ## 0.3.36
+
+  * Export the `defaultOutput` function, useful for defining custom instances of `MonadLogger`. [#29](https://github.com/snoyberg/monad-logger/pull/29)
+
+-------------------------------------------------------------------
 Tue Aug 18 10:45:29 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.
