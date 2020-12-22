@@ -181,4 +181,12 @@
     <comment>Automated update of haskell pckages</comment>
     <requestid>847876</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>017f90d00a990bc1c877176dfc51f23f</srcmd5>
+    <version>2.11.0.2</version>
+    <time>1608633854</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857501</requestid>
+  </revision>
 </revisionlist>

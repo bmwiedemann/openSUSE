@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Sat Dec 12 17:48:28 UTC 2020 - psimons@suse.com
+
+- Update persistent to version 2.11.0.2.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/persistent-2.11.0.2/src/ChangeLog.md
+
+-------------------------------------------------------------------
 Sat Nov  7 15:34:17 UTC 2020 - psimons@suse.com
 
 - Update persistent to version 2.11.0.1.

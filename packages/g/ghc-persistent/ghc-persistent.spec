@@ -19,7 +19,7 @@
 %global pkg_name persistent
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.11.0.1
+Version:        2.11.0.2
 Release:        0
 Summary:        Type-safe, multi-backend data serialization
 License:        MIT
@@ -50,8 +50,10 @@ BuildRequires:  ghc-unliftio-core-devel
 BuildRequires:  ghc-unliftio-devel
 BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-vector-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-hspec-devel
+BuildRequires:  ghc-shakespeare-devel
 %endif
 
 %description
