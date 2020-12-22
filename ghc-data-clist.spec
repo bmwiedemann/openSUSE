@@ -29,6 +29,7 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 
 %description
 Simple functional bidirectional ring type. Given that the ring terminiology
