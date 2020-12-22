@@ -32,6 +32,7 @@ BuildRequires:  ghc-monad-control-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-base-devel
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-async-devel
