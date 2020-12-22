@@ -30,6 +30,7 @@ BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-vector-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-hspec-devel
