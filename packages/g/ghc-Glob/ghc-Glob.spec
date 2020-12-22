@@ -33,6 +33,7 @@ BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-compat-devel
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-QuickCheck-devel
