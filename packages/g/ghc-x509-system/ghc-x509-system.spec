@@ -35,6 +35,7 @@ BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-x509-devel
 BuildRequires:  ghc-x509-store-devel
+ExcludeArch:    %{ix86}
 
 %description
 System X.509 handling.
