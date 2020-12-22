@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Thu Dec 10 09:07:57 UTC 2020 - psimons@suse.com
+
+- Update base-orphans to version 0.8.4.
+  ## Changes in 0.8.4 [2020.12.09]
+   - Backport the `Ord` instances for `TyCon` and `TypeRep` to be available on
+     GHC 7.0.
+
+-------------------------------------------------------------------
 Tue Oct  6 08:55:53 UTC 2020 - psimons@suse.com
 
 - Update base-orphans to version 0.8.3.

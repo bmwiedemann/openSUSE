@@ -19,7 +19,7 @@
 %global pkg_name base-orphans
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.8.3
+Version:        0.8.4
 Release:        0
 Summary:        Backwards-compatible orphan instances for base
 License:        MIT
@@ -27,6 +27,7 @@ URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-hspec-devel
