@@ -65,6 +65,7 @@ BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-utf8-string-devel
 BuildRequires:  ghc-vector-devel
 BuildRequires:  ghc-xml-conduit-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-errors-devel
@@ -94,6 +95,7 @@ This package provides the Haskell %{pkg_name} library development files.
 %prep
 %autosetup -n %{pkg_name}-%{version}
 cabal-tweak-dep-ver base64-bytestring '== 1.0.*' '< 2'
+cabal-tweak-dep-ver base16-bytestring '== 0.1.*' '< 2'
 
 %build
 %ghc_lib_build
