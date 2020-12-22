@@ -37,6 +37,7 @@ BuildRequires:  ghc-regex-posix-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-xml-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-QuickCheck-devel
