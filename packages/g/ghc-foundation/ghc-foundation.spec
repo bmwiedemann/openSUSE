@@ -29,6 +29,7 @@ Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revis
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-basement-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 
 %description
 A custom prelude with no dependencies apart from base.
