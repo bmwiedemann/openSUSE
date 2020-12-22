@@ -31,6 +31,7 @@ BuildRequires:  ghc-extra-devel
 BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-unordered-containers-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-hspec-devel
