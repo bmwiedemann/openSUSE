@@ -41,6 +41,7 @@ BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-zlib-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-process-devel
