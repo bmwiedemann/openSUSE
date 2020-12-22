@@ -31,6 +31,7 @@ BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-unordered-containers-devel
+ExcludeArch:    %{ix86}
 
 %description
 Efficient hash-consing for arbitrary data types.
