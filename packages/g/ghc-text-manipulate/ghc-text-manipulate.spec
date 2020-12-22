@@ -19,7 +19,7 @@
 %global pkg_name text-manipulate
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.0.1
+Version:        0.3.0.0
 Release:        0
 Summary:        Case conversion, word boundary manipulation, and textual subjugation
 License:        MPL-2.0
@@ -28,6 +28,7 @@ Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-hunit-devel
