@@ -7,4 +7,12 @@
     <comment>nothunks package</comment>
     <requestid>842272</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bf5d0f916d2695dc63fe9303ff1290cf</srcmd5>
+    <version>0.1.2</version>
+    <time>1608633809</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857478</requestid>
+  </revision>
 </revisionlist>

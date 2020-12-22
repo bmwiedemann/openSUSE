@@ -19,7 +19,7 @@
 %global pkg_name nothunks
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.1.0
+Version:        0.1.2
 Release:        0
 Summary:        Examine values for unexpected thunks
 License:        MIT
@@ -30,9 +30,11 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-ghc-heap-devel
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-stm-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-vector-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-hedgehog-devel
 BuildRequires:  ghc-random-devel

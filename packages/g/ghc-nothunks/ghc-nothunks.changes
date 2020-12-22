@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Fri Dec  4 10:52:27 UTC 2020 - psimons@suse.com
+
+- Update nothunks to version 0.1.2.
+  ## 0.1.2
+
+  * Add IORef, MVar and TVar instances.
+    Oleg Grenrus <oleg.grenrus@iki.fi>
+
+-------------------------------------------------------------------
 Fri Oct 16 14:02:46 UTC 2020 - psimons@suse.com
 
 - Add nothunks at version 0.1.1.0.
