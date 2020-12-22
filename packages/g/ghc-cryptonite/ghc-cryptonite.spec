@@ -32,6 +32,7 @@ BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-memory-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  glibc-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-hunit-devel
