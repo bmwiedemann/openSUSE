@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Sat Nov  7 15:35:27 UTC 2020 - psimons@suse.com
 
 - Update commonmark-extensions to version 0.2.0.4.
