@@ -33,6 +33,7 @@ BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-quickcheck-instances-devel
 BuildRequires:  ghc-tasty-devel
