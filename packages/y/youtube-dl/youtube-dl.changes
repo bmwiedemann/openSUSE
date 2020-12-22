@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 22 09:39:57 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.12.22
+  * nhk: Add support for NHK video programs, audio programs and
+    program clips
+  * Add support for music.yandex.com, more.tv
+
+-------------------------------------------------------------------
 Sun Dec 13 19:35:10 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.12.14
