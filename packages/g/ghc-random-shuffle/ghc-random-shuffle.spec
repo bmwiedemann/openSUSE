@@ -28,6 +28,7 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-MonadRandom-devel
 BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 
 %description
 Random shuffle implementation, on immutable lists. Based on `perfect shuffle'
