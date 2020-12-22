@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Sun Nov 29 15:47:42 UTC 2020 - psimons@suse.com
+
+- Update th-utilities to version 0.2.4.1.
+  ## 0.2.4.1
+
+  * Fixes generated Storable instances to have a `sizeOf` definition
+    which works with `-XStrict`. See [#13][]
+
+  [#13]: https://github.com/fpco/th-utilities/issues/1
+
+-------------------------------------------------------------------
 Tue Aug 25 10:19:13 UTC 2020 - psimons@suse.com
 
 - Add th-utilities at version 0.2.4.0.
