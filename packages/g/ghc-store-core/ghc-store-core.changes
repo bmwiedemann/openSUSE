@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Sun Nov 29 15:47:35 UTC 2020 - psimons@suse.com
+
+- Update store-core to version 0.4.4.4.
+  ## 0.4.4.4
+
+  * Fixes build of `store-core` with `ghc-prim-0.7.0`
+    (`ghc-9.0.0-alpha1`). See [#155][].
+
+  [#155]: https://github.com/mgsloan/store/issues/155
+
+-------------------------------------------------------------------
 Tue Aug 25 10:19:04 UTC 2020 - psimons@suse.com
 
 - Add store-core at version 0.4.4.3.

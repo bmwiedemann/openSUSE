@@ -18,7 +18,7 @@
 
 %global pkg_name store-core
 Name:           ghc-%{pkg_name}
-Version:        0.4.4.3
+Version:        0.4.4.4
 Release:        0
 Summary:        Fast and lightweight binary serialization
 License:        MIT
@@ -30,6 +30,7 @@ BuildRequires:  ghc-primitive-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 
 %description
 Fast and lightweight binary serialization.
