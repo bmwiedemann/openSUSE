@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Tue Nov 17 16:17:32 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 -  relax overspecified constraints on microlens
