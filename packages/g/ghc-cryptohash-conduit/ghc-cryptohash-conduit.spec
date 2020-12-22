@@ -32,6 +32,7 @@ BuildRequires:  ghc-cryptohash-devel
 BuildRequires:  ghc-resourcet-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 
 %description
 Support all the 'cryptohash' package using conduits from the 'conduit' package.
