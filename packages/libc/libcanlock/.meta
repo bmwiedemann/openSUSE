@@ -1,0 +1,14 @@
+<package name="libcanlock" project="openSUSE:Factory">
+  <title>Library for creating and verifying Usenet cancel locks</title>
+  <description>Cancel locks are used by Usenet article posters to authenticate their
+authorship of an article. It may then by used by servers to prevent
+cancel and supersede abuse. The use of this feature remains the
+newsmaster's decision.
+
+This library may be used for both the generation and the verification
+of cancel locks.
+
+</description>
+  <devel project="server:mail" package="libcanlock"/>
+  <url>https://micha.freeshell.org/libcanlock/</url>
+</package>

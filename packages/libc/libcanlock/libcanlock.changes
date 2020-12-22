@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Sun Nov 29 14:32:30 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.2.1
+  * Bugfix: off-by-one heap buffer overflow fixed in canlock-mhp
+  * Bugfix: canlock-mhp end of header detection fixed
+- Drop patch:
+  * libcanlock-fix-testsuite.patch (fixed by upstream)
+
+-------------------------------------------------------------------
+Sat Nov 28 11:23:59 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Run testsuite
+- Add patch:
+  * libcanlock-fix-testsuite.patch
+
+-------------------------------------------------------------------
+Fri Nov 27 20:19:44 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 3.2.0
