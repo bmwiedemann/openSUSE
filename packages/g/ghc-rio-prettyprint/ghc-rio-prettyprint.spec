@@ -35,6 +35,7 @@ BuildRequires:  ghc-path-devel
 BuildRequires:  ghc-rio-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
+ExcludeArch:    %{ix86}
 
 %description
 Combine RIO's log capabilities with pretty printing.
