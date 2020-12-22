@@ -20,7 +20,7 @@
 %define srcname scikit-hep-testdata
 %define modname %( echo %{srcname} | tr '-' '_' )
 Name:           python-scikit-hep-testdata
-Version:        0.3.9
+Version:        0.3.10
 Release:        0
 Summary:        Example HEP files for testing and demonstrating
 License:        BSD-3-Clause
@@ -30,16 +30,16 @@ Source:         https://github.com/scikit-hep/scikit-hep-testdata/archive/v0.3.9
 # PATCH-FEATURE-OPENSUSE scikit-hep-testdata-no-pep8.patch badshah400@gmail.com -- Drop pep8 requrements for pytest to avoid depending on outdated, unavailable pytest-pep8 module
 Patch0:         scikit-hep-testdata-no-pep8.patch
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION Test requirements
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module importlib-resources}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildArch:      noarch
 %python_subpackages
@@ -54,7 +54,8 @@ simple helper methods to get larger files from common open-access data
 repositories.
 
 %prep
-%autosetup -p1 -n %{srcname}-%{version}
+# dir in tarball incorrectly still carries the old 0.3.9 version
+%autosetup -p1 -n %{srcname}-0.3.9
 
 %build
 # GH source doesn't allow proper detection of version: https://github.com/scikit-hep/scikit-hep-testdata/issues/40
