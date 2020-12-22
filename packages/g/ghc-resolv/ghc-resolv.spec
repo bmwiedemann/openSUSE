@@ -25,12 +25,14 @@ Summary:        Domain Name Service (DNS) lookup via the libresolv standard libr
 License:        GPL-2.0-or-later
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Patch0:         new_bytestring.patch
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base16-bytestring-devel
 BuildRequires:  ghc-binary-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-filepath-devel
@@ -82,7 +84,8 @@ Requires(postun): ghc-compiler = %{ghc_version}
 This package provides the Haskell %{pkg_name} library development files.
 
 %prep
-%autosetup -n %{pkg_name}-%{version}
+%autosetup -p1 -n %{pkg_name}-%{version}
+cabal-tweak-dep-ver base '<4.15' '< 5'
 
 %build
 %ghc_lib_build
