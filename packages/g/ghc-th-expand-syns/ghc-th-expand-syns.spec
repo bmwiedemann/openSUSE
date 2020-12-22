@@ -30,6 +30,7 @@ BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-syb-devel
 BuildRequires:  ghc-template-haskell-devel
+ExcludeArch:    %{ix86}
 
 %description
 Expands type synonyms in Template Haskell ASTs.
