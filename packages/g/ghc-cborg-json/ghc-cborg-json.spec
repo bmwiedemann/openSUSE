@@ -34,6 +34,7 @@ BuildRequires:  ghc-scientific-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-vector-devel
+ExcludeArch:    %{ix86}
 
 %description
 This package implements the bijection between JSON and CBOR defined in the CBOR
