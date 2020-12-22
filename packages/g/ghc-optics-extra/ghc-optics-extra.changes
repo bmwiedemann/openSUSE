@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Tue Sep  1 10:38:21 UTC 2020 - psimons@suse.com
 
 - Add optics-extra at version 0.3.

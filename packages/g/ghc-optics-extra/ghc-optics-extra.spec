@@ -37,6 +37,7 @@ BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-vector-devel
+ExcludeArch:    %{ix86}
 
 %description
 This package provides extra definitions and instances that extend the
