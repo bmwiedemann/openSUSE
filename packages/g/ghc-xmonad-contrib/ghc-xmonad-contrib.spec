@@ -42,6 +42,7 @@ BuildRequires:  ghc-semigroups-devel
 BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-utf8-string-devel
 BuildRequires:  ghc-xmonad-devel
+ExcludeArch:    %{ix86}
 
 %description
 Third party tiling algorithms, configurations and scripts to xmonad, a tiling
