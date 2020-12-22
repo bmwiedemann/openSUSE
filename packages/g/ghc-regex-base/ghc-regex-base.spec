@@ -32,6 +32,7 @@ BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
+ExcludeArch:    %{ix86}
 
 %description
 This package doesn't provide the ability to do regex matching, but instead
