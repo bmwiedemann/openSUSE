@@ -30,6 +30,7 @@ BuildRequires:  ghc-binary-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-old-time-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-hspec-devel
