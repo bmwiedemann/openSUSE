@@ -31,6 +31,7 @@ BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-securemem-devel
 BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-vector-devel
+ExcludeArch:    %{ix86}
 
 %description
 Simple cryptographic random related types.
