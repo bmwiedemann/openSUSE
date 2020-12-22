@@ -19,7 +19,7 @@
 %global pkg_name hpack
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.34.2
+Version:        0.34.3
 Release:        0
 Summary:        A modern format for Haskell packages
 License:        MIT
@@ -48,6 +48,7 @@ BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-vector-devel
 BuildRequires:  ghc-yaml-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-QuickCheck-devel

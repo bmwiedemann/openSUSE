@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Dec  8 09:36:47 UTC 2020 - psimons@suse.com
+
+- Update hpack to version 0.34.3.
+  ## Changes in 0.34.3
+    - Ignore duplicate source directories (see #356)
+    - Do not infer duplicate modules (see  #408, #406, #353)
+    - Reject empty `then` / `else` sections (see #362)
+    - Omit conditionals that are always `false` from generated `.cabal` file
+      (see #404)
+    - Infer correct `cabal-version` when `Path_` is used with `RebindableSyntax`
+      and `OverloadedStrings` or `OverloadedLists` (see #400)
+    - Do not use indentation from any existing `.cabal` file if it is invalid
+      (e.g. `0`) (fixes #252)
+    - Accept lists for `tested-with` (see #407)
+    - Render current directory as `./` instead of `./.` for forward compatibility
+      with future version of Cabal
+
+-------------------------------------------------------------------
 Tue Sep 29 09:33:30 UTC 2020 - psimons@suse.com
 
 - Update hpack to version 0.34.2.
