@@ -19,7 +19,7 @@
 %global pkg_name websockets
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.12.7.1
+Version:        0.12.7.2
 Release:        0
 Summary:        A sensible and clean way to write WebSocket-capable servers in Haskell
 License:        BSD-3-Clause
@@ -42,6 +42,7 @@ BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-streaming-commons-devel
 BuildRequires:  ghc-text-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-QuickCheck-devel
@@ -79,7 +80,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver base64-bytestring '< 1.2' '< 2'
 
 %build
 %ghc_lib_build
