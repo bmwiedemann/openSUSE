@@ -33,6 +33,7 @@ BuildRequires:  ghc-memory-devel
 BuildRequires:  ghc-psqueues-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-tls-devel
+ExcludeArch:    %{ix86}
 
 %description
 TLS session manager with limitation, automatic pruning, energy saving and
