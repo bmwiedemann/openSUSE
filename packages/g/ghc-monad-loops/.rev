@@ -74,4 +74,12 @@ I am sorry, I apparently missed that change in my previous submission sr#623812.
     <comment>version update</comment>
     <requestid>829354</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>cba66a64d393c5a42960a4efcf3d6269</srcmd5>
+    <version>0.4.3</version>
+    <time>1608633773</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857462</requestid>
+  </revision>
 </revisionlist>
