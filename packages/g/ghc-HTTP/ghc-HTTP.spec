@@ -35,6 +35,7 @@ BuildRequires:  ghc-network-uri-devel
 BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-time-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-deepseq-devel
