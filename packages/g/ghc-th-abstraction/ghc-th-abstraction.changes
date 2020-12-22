@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Thu Dec 10 09:07:33 UTC 2020 - psimons@suse.com
+
+- Update th-abstraction to version 0.4.1.0.
+  ## 0.4.1.0 -- 2020-12-09
+  * Fix a bug in which `normalizeDec` would give incorrect kind annotations to
+    type variables in quoted `Dec`s. `normalizeDec` now leaves the kinds of
+    type variable binders alone.
+
+-------------------------------------------------------------------
 Wed Sep 30 08:36:12 UTC 2020 - psimons@suse.com
 
 - Update th-abstraction to version 0.4.0.0.

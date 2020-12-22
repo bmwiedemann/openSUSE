@@ -19,7 +19,7 @@
 %global pkg_name th-abstraction
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.4.0.0
+Version:        0.4.1.0
 Release:        0
 Summary:        Nicer interface for reified information about data types
 License:        ISC
@@ -29,6 +29,7 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-template-haskell-devel
+ExcludeArch:    %{ix86}
 
 %description
 This package normalizes variations in the interface for inspecting datatype
