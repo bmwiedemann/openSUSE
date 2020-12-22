@@ -28,6 +28,7 @@ Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revis
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-stm-devel
+ExcludeArch:    %{ix86}
 
 %description
 Additional types of channels for STM.
