@@ -447,4 +447,13 @@
 - Remove geany-avoid-segfault-on-quit.patch (forwarded request 844555 from polslinux)</comment>
     <requestid>844558</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>745b318cbe6b83bf82a4eddfcb297eeb</srcmd5>
+    <version>1.37.1</version>
+    <time>1608634284</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.37.1:
+  * Fix crash on first startup (forwarded request 856700 from polslinux)</comment>
+    <requestid>857831</requestid>
+  </revision>
 </revisionlist>

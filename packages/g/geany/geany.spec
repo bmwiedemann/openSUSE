@@ -17,7 +17,7 @@
 
 
 Name:           geany
-Version:        1.37
+Version:        1.37.1
 Release:        0
 Summary:        GTK-based integrated development environment
 License:        GPL-2.0-or-later
