@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Fri Sep  4 13:27:45 UTC 2020 - psimons@suse.com
 
 - Update annotated-wl-pprint to version 0.7.0 revision 1.
