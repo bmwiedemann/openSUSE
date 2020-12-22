@@ -30,6 +30,7 @@ BuildRequires:  ghc-network-uri-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-utf8-string-devel
+ExcludeArch:    %{ix86}
 
 %description
 This package allows you to uri encode and uri decode Strings, Texts and
