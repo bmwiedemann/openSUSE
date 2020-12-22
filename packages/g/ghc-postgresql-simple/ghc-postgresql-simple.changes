@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Sun Nov 15 22:11:18 UTC 2020 - psimons@suse.com
 
 - Update postgresql-simple to version 0.6.3.
