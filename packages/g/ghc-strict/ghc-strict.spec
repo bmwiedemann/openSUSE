@@ -18,7 +18,7 @@
 
 %global pkg_name strict
 Name:           ghc-%{pkg_name}
-Version:        0.4
+Version:        0.4.0.1
 Release:        0
 Summary:        Strict data types and String IO
 License:        BSD-3-Clause
@@ -34,6 +34,7 @@ BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-these-devel
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 
 %description
 This package provides strict versions of some standard Haskell data types
