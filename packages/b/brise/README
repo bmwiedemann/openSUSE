@@ -1,9 +1,10 @@
-brise is deprecated since plum comes out.
+brise is deprecated by plum.
 
-the standard [plum](https://github.com/rime/plum) is developed in bash. openSUSE uses [rime-plum-go](https://github.com/marguerite/rime-plum-go).
+the standard [plum](https://github.com/rime/plum) is developed in bash. openSUSE uses [rime-plum-go](https://github.com/marguerite/rime-plum-go). the golang version is 100% compatible with the bash version, and respects https_proxy environment variable for those behind firewall.
 
 brise in openSUSE is just a checkout of :all
 
-    mkdir brise-0.38
+    mkdir brise
+    export GO111MODULE=on
     go build rime-plum-go/plum.go
     rime-plum-go/plum -d brise -b -r :all
