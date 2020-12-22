@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Tue Oct  6 08:55:55 UTC 2020 - psimons@suse.com
 
 - Update transformers-compat to version 0.6.6.
