@@ -29,6 +29,7 @@ BuildRequires:  ghc-logict-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-pretty-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 
 %description
 SmallCheck is a testing library that allows to verify properties for all test
