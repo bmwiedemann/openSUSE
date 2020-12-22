@@ -27,6 +27,7 @@ Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-colour-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 
 %description
 ANSI terminal support for Haskell: allows cursor movement, screen clearing,
