@@ -32,6 +32,7 @@ BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-safe-devel
 BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-th-expand-syns-devel
+ExcludeArch:    %{ix86}
 
 %description
 'th-reify-many' provides functions for recursively reifying top level
