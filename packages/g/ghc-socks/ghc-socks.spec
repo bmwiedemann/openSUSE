@@ -30,6 +30,7 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-cereal-devel
 BuildRequires:  ghc-network-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 
 %description
 Socks proxy (version 5) implementation.
