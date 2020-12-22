@@ -28,6 +28,7 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-data-default-class-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 
 %description
 Default instances for types in containers.
