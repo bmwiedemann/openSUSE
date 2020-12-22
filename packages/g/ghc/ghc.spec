@@ -23,10 +23,10 @@
 %endif
 
 %global unregisterised_archs s390 s390x riscv64
-%define full_version 8.10.2
+%define full_version 8.10.3
 
 Name:           ghc
-Version:        8.10.2
+Version:        8.10.3
 Release:        0
 URL:            https://www.haskell.org/ghc/
 Source:         https://downloads.haskell.org/~ghc/%{full_version}/ghc-%{version}-src.tar.xz
@@ -35,7 +35,7 @@ Source2:        ghc-rpmlintrc
 Summary:        The Glorious Glasgow Haskell Compiler
 License:        BSD-3-Clause
 Group:          Development/Languages/Other
-ExclusiveArch:  aarch64 %{arm} %{ix86} x86_64 ppc64 ppc64le riscv64 s390x
+ExclusiveArch:  aarch64 %{arm} x86_64 ppc64 ppc64le riscv64 s390x
 BuildRequires:  binutils-devel
 BuildRequires:  gcc
 BuildRequires:  ghc-bootstrap >= 8.6
@@ -67,13 +67,11 @@ BuildRequires:  clang
 %if %{undefined without_manual}
 BuildRequires:  python3-Sphinx
 %endif
-
 %if %with_libnuma
 BuildRequires:  libnuma-devel
 %endif
-
-
 BuildRequires:  ghc-bootstrap-helpers
+
 PreReq:         update-alternatives
 
 Requires:       ghc-compiler = %{version}-%{release}
@@ -153,11 +151,11 @@ To install all of GHC install package ghc.
 
 %if %{defined ghclibdir}
 #!ForceMultiversion
-%ghc_lib_subpackage -d Cabal-3.2.0.0
+%ghc_lib_subpackage -d Cabal-3.2.1.0
 %ghc_lib_subpackage -d array-0.5.4.0
 %ghc_lib_subpackage -d -c gmp-devel,libffi-devel,libdw-devel,libelf-devel%{libnuma_dep} base-4.14.1.0
 %ghc_lib_subpackage -d binary-0.8.8.0
-%ghc_lib_subpackage -d bytestring-0.10.10.0
+%ghc_lib_subpackage -d bytestring-0.10.12.0
 %ghc_lib_subpackage -d containers-0.6.2.1
 %ghc_lib_subpackage -d deepseq-1.4.4.0
 %ghc_lib_subpackage -d directory-1.3.6.0
@@ -179,10 +177,9 @@ To install all of GHC install package ghc.
 %ghc_lib_subpackage -d stm-2.5.0.0
 %ghc_lib_subpackage -d template-haskell-2.16.0.0
 %ghc_lib_subpackage -d -c ncurses-devel terminfo-0.4.1.4
-%ghc_lib_subpackage -d text-1.2.3.2
+%ghc_lib_subpackage -d text-1.2.4.1
 %ghc_lib_subpackage -d time-1.9.3
 %ghc_lib_subpackage -d transformers-0.5.6.2
-# 2.8.0.0
 %ghc_lib_subpackage -d unix-2.7.2.2
 %ghc_lib_subpackage -d xhtml-3000.2.2.1
 %endif

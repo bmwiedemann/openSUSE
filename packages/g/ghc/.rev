@@ -850,4 +850,12 @@ Please wait for SR #249835 (ghc-bootstrap).</comment>
     <comment>version update</comment>
     <requestid>842735</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>b2a00e39bb98fa1babbcbc90f6cf4b4c</srcmd5>
+    <version>8.10.3</version>
+    <time>1608633183</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857188</requestid>
+  </revision>
 </revisionlist>
