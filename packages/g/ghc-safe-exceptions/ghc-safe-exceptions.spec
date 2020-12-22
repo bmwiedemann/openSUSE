@@ -30,6 +30,7 @@ BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-exceptions-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-hspec-devel
 BuildRequires:  ghc-void-devel
