@@ -7,4 +7,12 @@
     <comment>initial submission</comment>
     <requestid>832221</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1e26220a1afe279da9f525496eaaf38c</srcmd5>
+    <version>0.8.10.2</version>
+    <time>1608633738</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857443</requestid>
+  </revision>
 </revisionlist>

@@ -54,6 +54,7 @@ BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-format-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unordered-containers-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-stm-devel
 BuildRequires:  ghc-tasty-ant-xml-devel
