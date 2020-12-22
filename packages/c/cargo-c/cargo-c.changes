@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 18 13:21:10 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.6.15
+  * https://github.com/lu-zero/cargo-c/releases/tag/v0.6.15
+  * https://github.com/lu-zero/cargo-c/releases/tag/v0.6.14
+- Removed 123.patch
+
+-------------------------------------------------------------------
 Tue Oct 13 11:53:19 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 
 - Added 123.patch
