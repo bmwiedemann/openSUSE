@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Mon Nov 23 09:59:18 UTC 2020 - psimons@suse.com
 
 - Update optparse-applicative to version 0.16.1.0.
