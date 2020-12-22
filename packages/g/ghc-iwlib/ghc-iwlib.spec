@@ -27,6 +27,7 @@ Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  libiw-devel
+ExcludeArch:    %{ix86}
 
 %description
 A binding to the iw library for getting info about the current WiFi connection.
