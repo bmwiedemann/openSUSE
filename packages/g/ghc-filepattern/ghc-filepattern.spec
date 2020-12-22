@@ -30,6 +30,7 @@ BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-extra-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 %endif
