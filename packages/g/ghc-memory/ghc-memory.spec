@@ -31,6 +31,7 @@ BuildRequires:  ghc-basement-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-foundation-devel
 %endif
