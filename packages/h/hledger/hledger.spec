@@ -19,7 +19,7 @@
 %global pkg_name hledger
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        1.19.1
+Version:        1.20.1
 Release:        0
 Summary:        Command-line interface for the hledger accounting system
 License:        GPL-3.0-or-later
@@ -48,7 +48,6 @@ BuildRequires:  ghc-megaparsec-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-old-time-devel
 BuildRequires:  ghc-parsec-devel
-BuildRequires:  ghc-pretty-show-devel
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-regex-tdfa-devel
 BuildRequires:  ghc-rpm-macros
@@ -67,6 +66,7 @@ BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-utf8-string-devel
 BuildRequires:  ghc-utility-ht-devel
 BuildRequires:  ghc-wizards-devel
+ExcludeArch:    %{ix86}
 
 %description
 The command-line interface for the hledger accounting system. Its basic
