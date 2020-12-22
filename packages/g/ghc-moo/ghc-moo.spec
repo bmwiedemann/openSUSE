@@ -38,6 +38,7 @@ BuildRequires:  ghc-random-shuffle-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-vector-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 %endif
