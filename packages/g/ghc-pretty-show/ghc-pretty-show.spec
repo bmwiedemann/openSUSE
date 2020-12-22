@@ -33,6 +33,7 @@ BuildRequires:  ghc-pretty-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 BuildRequires:  happy
+ExcludeArch:    %{ix86}
 
 %description
 We provide a library and an executable for working with derived 'Show'
