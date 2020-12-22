@@ -16,11 +16,11 @@
 #
 
 
-%define _build 455
-%define _buildreleases 455
-%define _tag V_2_8_6_BUILD_%{_build}
+%define _build 480
+%define _buildreleases 479
+%define _tag V_2_10_0_BUILD_%{_build}
 Name:           jameica
-Version:        2.8.6
+Version:        2.10.0
 Release:        0
 Summary:        Runtime environment for Java applications like Hibiscus
 License:        GPL-2.0-only AND LGPL-2.0-only AND Apache-2.0 AND CPL-1.0 AND Zlib AND MPL-1.0 AND EPL-1.0
@@ -31,7 +31,7 @@ BuildRequires:  ant
 BuildRequires:  dos2unix
 #BuildRequires:  eclipse-swt
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.6
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  jpackage-utils
 BuildRequires:  nanoxml = 2.2.3
 BuildRequires:  paperclips = 1.0.4
@@ -115,7 +115,7 @@ ln -sf %{_javadir}/velocity.jar lib/velocity/velocity-1.7.jar
 
 # unbundle eclipse-swt
 ##rm -fr lib/swt/linux*/swt.jar
-##%%if %{bits} > 32
+##%%if %%{bits} > 32
 ##mkdir -p lib/swt/linux64
 ##ln -sf $(find-jar swt) lib/swt/linux64/
 ##%%else
