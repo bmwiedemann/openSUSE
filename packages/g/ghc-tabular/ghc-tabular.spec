@@ -29,6 +29,7 @@ BuildRequires:  ghc-csv-devel
 BuildRequires:  ghc-html-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 
 %description
 Tabular provides a Haskell representation of two-dimensional data tables, the
