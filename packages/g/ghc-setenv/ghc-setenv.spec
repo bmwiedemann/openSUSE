@@ -28,6 +28,7 @@ Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revis
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-unix-devel
+ExcludeArch:    %{ix86}
 
 %description
 A cross-platform library for setting environment variables
