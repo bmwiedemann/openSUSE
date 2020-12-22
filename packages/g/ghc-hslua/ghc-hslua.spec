@@ -32,6 +32,7 @@ BuildRequires:  ghc-exceptions-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-quickcheck-instances-devel
