@@ -37,6 +37,7 @@ BuildRequires:  ghc-semigroupoids-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-vector-algorithms-devel
 BuildRequires:  ghc-vector-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-doctest-devel
 BuildRequires:  ghc-semigroups-devel
