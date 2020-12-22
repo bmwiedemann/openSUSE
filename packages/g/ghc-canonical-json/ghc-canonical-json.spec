@@ -33,6 +33,7 @@ BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-pretty-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-aeson-devel

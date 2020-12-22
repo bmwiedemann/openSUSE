@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Fri Oct 16 14:02:56 UTC 2020 - psimons@suse.com
 
 - Add canonical-json at version 0.6.0.0 revision 1.
