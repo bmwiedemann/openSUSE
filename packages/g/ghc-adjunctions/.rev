@@ -55,4 +55,12 @@
     <comment>cosmetic changelog update</comment>
     <requestid>832239</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>51c489623d0416efd67fd525abf8b169</srcmd5>
+    <version>4.4</version>
+    <time>1608633249</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857214</requestid>
+  </revision>
 </revisionlist>

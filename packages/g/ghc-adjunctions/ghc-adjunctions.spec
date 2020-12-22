@@ -42,6 +42,7 @@ BuildRequires:  ghc-tagged-devel
 BuildRequires:  ghc-transformers-compat-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-void-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-generic-deriving-devel
 BuildRequires:  ghc-hspec-devel
