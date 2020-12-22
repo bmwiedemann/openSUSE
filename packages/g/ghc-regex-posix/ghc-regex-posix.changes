@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Mon Aug 31 09:34:40 UTC 2020 - psimons@suse.com
 
 - Update regex-posix to version 0.96.0.0 revision 1.

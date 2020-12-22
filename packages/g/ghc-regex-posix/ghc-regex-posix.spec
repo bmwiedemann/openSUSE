@@ -31,6 +31,7 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-regex-base-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 
 %description
 The POSIX regex backend for <//hackage.haskell.org/package/regex-base
