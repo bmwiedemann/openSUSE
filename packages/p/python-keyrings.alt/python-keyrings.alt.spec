@@ -17,36 +17,28 @@
 
 
 %define keyring_ver 18.0.0
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-keyrings.alt
-Version:        3.4.0
+Version:        4.0.2
 Release:        0
 Summary:        Alternate keyring implementations
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/keyrings.alt
 Source:         https://files.pythonhosted.org/packages/source/k/keyrings.alt/keyrings.alt-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools_scm >= 1.15.0}
+BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-keyring >= 10.3.1
-Requires:       python-pycrypto
-Requires:       python-six
-Recommends:     python-fs >= 0.5
-Recommends:     python-gdata
-Recommends:     python-keyczar
-Recommends:     python-pycrypto
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module fs >= 0.5}
 BuildRequires:  %{python_module gobject}
-BuildRequires:  %{python_module keyczar}
-BuildRequires:  %{python_module keyring >= 10.3.1}
-BuildRequires:  %{python_module pycrypto}
+BuildRequires:  %{python_module keyring >= 20}
+BuildRequires:  %{python_module pycryptodomex}
 BuildRequires:  %{python_module pytest >= 3.5}
-BuildRequires:  %{python_module six}
-BuildRequires:  python-backports.unittest_mock
 BuildRequires:  typelib(GnomeKeyring)
 # /SECTION
 %python_subpackages

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Dec 17 22:46:39 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 4.0.2
+  * #43: Tests are no longer included in the install.
+- 4.0.1
+  * Package refresh and minor cleanup.
+- 4.0.0
+  * #41: Instead of PyCrypto or PyCryptodome, the encrypting
+    backend now relies on PyCryptodomex.
+- 3.5.2
+  * 39: Replace use of deprecated base64.encode/decodestring with
+     encode/decodebytes.
+- 3.5.1
+  * #38: Fixed test suite to work with pytest-based fixtures.
+  * Refresh package metadata.
+- 3.5.0
+  * #33: Rely on keyring.testing (keyring 20) for tests.
+- Python 2 is not supported since 3.3.0, skip and remove
+  unresolvable backports requirement
+
+-------------------------------------------------------------------
 Thu Apr 16 08:17:23 UTC 2020 - pgajdos@suse.com
 
 - version update to 3.4.0
