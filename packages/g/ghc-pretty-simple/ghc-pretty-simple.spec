@@ -34,6 +34,7 @@ BuildRequires:  ghc-prettyprinter-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-Glob-devel
 BuildRequires:  ghc-QuickCheck-devel
