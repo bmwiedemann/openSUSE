@@ -30,6 +30,7 @@ BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-indexed-profunctors-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 
 %description
 This package makes it possible to define and use Lenses, Traversals, Prisms and
