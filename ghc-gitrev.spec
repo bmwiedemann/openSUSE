@@ -31,6 +31,7 @@ BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-template-haskell-devel
+ExcludeArch:    %{ix86}
 
 %description
 Some handy Template Haskell splices for including the current git hash and
