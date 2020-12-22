@@ -38,6 +38,7 @@ BuildRequires:  ghc-memory-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-pem-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-quickcheck-devel
