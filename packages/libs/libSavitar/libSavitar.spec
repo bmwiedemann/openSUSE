@@ -35,6 +35,11 @@ BuildRequires:  gmock
 BuildRequires:  gtest
 BuildRequires:  pugixml-devel >= 1.8
 BuildRequires:  python3-sip-devel < 5
+%if 0%{?suse_version} >= 1550
+BuildRequires:  python3-qt5-sip
+%else
+BuildRequires:  python3-sip
+%endif
 
 %description
 libSavitar is a C++ implementation of 3mf loading with SIP python bindings.
@@ -43,6 +48,13 @@ libSavitar is a C++ implementation of 3mf loading with SIP python bindings.
 Summary:        3D printer control software
 Group:          System/Libraries
 Provides:       python3-Savitar = %version
+%if 0%{?suse_version} >= 1550
+# The PyQt5.sip module. NOT a requirement on (Py)Qt5
+Requires:       python3-qt5-sip
+%else
+# python3-sip provides PyQt5.sip in older distributions only
+Requires:       python3-sip
+%endif
 
 %description -n %{name}%{sover}
 libSavitar is a C++ implementation of 3mf loading with SIP python bindings.
@@ -51,7 +63,7 @@ libSavitar is a C++ implementation of 3mf loading with SIP python bindings.
 Summary:        Header files for libSavitar
 Group:          Development/Libraries/C and C++
 Requires:       %{name}%{sover} = %{version}
-Requires:       python3-sip-devel
+Requires:       python3-sip-devel < 5
 
 %description devel
 Development package for libSavitar.

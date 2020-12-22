@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 22 18:51:01 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Depend on the PyQt5.sip module (see sr#849990 for libArcus)
+- Refresh libSavitar-3.5.1-PyQt5.sip.patch to query correct moudle 
+  for version
+
+-------------------------------------------------------------------
 Sat Nov 21 00:38:15 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Depend on python3-sip < 5, as libSavitar build is incompatible
