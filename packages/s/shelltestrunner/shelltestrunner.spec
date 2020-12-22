@@ -39,6 +39,7 @@ BuildRequires:  ghc-safe-devel
 BuildRequires:  ghc-test-framework-devel
 BuildRequires:  ghc-test-framework-hunit-devel
 BuildRequires:  ghc-utf8-string-devel
+ExcludeArch:    %{ix86}
 
 %description
 Shelltestrunner (executable: shelltest) is a portable command-line tool for
