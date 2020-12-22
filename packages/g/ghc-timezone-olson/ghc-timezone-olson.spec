@@ -31,6 +31,7 @@ BuildRequires:  ghc-extensible-exceptions-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-timezone-series-devel
+ExcludeArch:    %{ix86}
 
 %description
 A parser and renderer for binary Olson timezone files whose format is specified
