@@ -30,6 +30,7 @@ BuildRequires:  ghc-ansi-terminal-devel
 BuildRequires:  ghc-prettyprinter-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-doctest-devel
 %endif
