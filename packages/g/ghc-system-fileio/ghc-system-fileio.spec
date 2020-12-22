@@ -32,6 +32,7 @@ BuildRequires:  ghc-system-filepath-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-unix-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-chell-devel
 BuildRequires:  ghc-temporary-devel
