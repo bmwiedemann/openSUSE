@@ -32,6 +32,7 @@ BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-semigroups-devel
 BuildRequires:  ghc-unordered-containers-devel
+ExcludeArch:    %{ix86}
 
 %description
 Fast unicode character sets based on complemented PATRICIA tries.
