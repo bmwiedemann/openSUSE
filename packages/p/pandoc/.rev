@@ -501,4 +501,12 @@
     <comment>Automatic update</comment>
     <requestid>850501</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>1e8de7a30368dc81c267b9dc1bdc8aa4</srcmd5>
+    <version>2.11.3.1</version>
+    <time>1608634204</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857693</requestid>
+  </revision>
 </revisionlist>

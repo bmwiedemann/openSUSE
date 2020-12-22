@@ -19,7 +19,7 @@
 %global pkg_name pandoc
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        2.11.2
+Version:        2.11.3.1
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
@@ -92,6 +92,7 @@ BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-xml-devel
 BuildRequires:  ghc-zip-archive-devel
 BuildRequires:  ghc-zlib-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-Diff-devel
 BuildRequires:  ghc-QuickCheck-devel
@@ -287,6 +288,7 @@ cabal-tweak-dep-ver base64-bytestring '< 1.2' '< 1.3'
 %{_datadir}/%{name}-%{version}/data/pptx/ppt/theme/theme2.xml
 %{_datadir}/%{name}-%{version}/data/pptx/ppt/viewProps.xml
 %{_datadir}/%{name}-%{version}/data/sample.lua
+%{_datadir}/%{name}-%{version}/data/templates/affiliations.jats
 %{_datadir}/%{name}-%{version}/data/templates/article.jats_publishing
 %{_datadir}/%{name}-%{version}/data/templates/default.asciidoc
 %{_datadir}/%{name}-%{version}/data/templates/default.asciidoctor
