@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec 22 02:59:31 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.7.16 fixed might be unitialized in ags_audio.c
+  with older gcc versions.
+
+-------------------------------------------------------------------
+Mon Dec 21 15:16:03 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.7.15 improved htmlhelp to have navigation and
+  custom css.
+- new since v3.7.9 deprecated ags/audio/recall/* and
+  ags/audio/ags_recall_{ladspa,dssi,lv2}*, because replaced by
+  ags/audio/fx/*.
+- minor improvements and fixes.
+
+-------------------------------------------------------------------
 Mon Dec  7 20:26:40 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.7.6 fixed meson build and functional integration
