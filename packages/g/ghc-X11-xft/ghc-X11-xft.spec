@@ -31,6 +31,7 @@ BuildRequires:  ghc-utf8-string-devel
 BuildRequires:  libXinerama-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(xft)
+ExcludeArch:    %{ix86}
 
 %description
 Bindings to the Xft, X Free Type interface library, and some Xrender parts.
