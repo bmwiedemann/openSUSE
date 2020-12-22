@@ -53,6 +53,7 @@ BuildRequires:  ghc-wai-devel
 BuildRequires:  ghc-wai-extra-devel
 BuildRequires:  ghc-warp-devel
 BuildRequires:  ghc-zlib-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-hspec-devel
 BuildRequires:  ghc-mockery-devel
