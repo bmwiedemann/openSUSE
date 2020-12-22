@@ -269,4 +269,12 @@ are simple additions, filling out missing functionality.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>835598</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>7c9056b3e77a5b6885b385b7cd912952</srcmd5>
+    <version>1.7.9</version>
+    <time>1608633552</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857348</requestid>
+  </revision>
 </revisionlist>
