@@ -7,4 +7,12 @@
     <comment>formatting package</comment>
     <requestid>842275</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e7b5f6f5b1d73224061bad59c5d7bac5</srcmd5>
+    <version>7.1.1</version>
+    <time>1608633577</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857362</requestid>
+  </revision>
 </revisionlist>
