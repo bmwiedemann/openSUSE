@@ -35,6 +35,7 @@ BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-vector-devel
 BuildRequires:  ghc-zlib-devel
+ExcludeArch:    %{ix86}
 
 %description
 This library can load and store images in PNG,Bitmap, Jpeg, Radiance, Tiff and
