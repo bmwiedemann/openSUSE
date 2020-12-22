@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Mon Aug 31 02:02:51 UTC 2020 - psimons@suse.com
 
 - Update filtrable to version 0.1.6.0.
