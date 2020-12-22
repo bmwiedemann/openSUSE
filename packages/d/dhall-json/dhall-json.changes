@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Mon Dec  7 06:53:58 UTC 2020 - psimons@suse.com
+
+- Update dhall-json to version 1.7.4.
+  1.7.4
+
+  * Build against `dhall-1.37.0`
+
+-------------------------------------------------------------------
 Thu Oct 22 02:01:06 UTC 2020 - psimons@suse.com
 
 - Update dhall-json to version 1.7.3.

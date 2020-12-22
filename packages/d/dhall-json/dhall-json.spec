@@ -19,7 +19,7 @@
 %global pkg_name dhall-json
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        1.7.3
+Version:        1.7.4
 Release:        0
 Summary:        Convert between Dhall and JSON or YAML
 License:        BSD-3-Clause
@@ -45,6 +45,7 @@ BuildRequires:  ghc-scientific-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-vector-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-hunit-devel
