@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Fri Oct 23 02:03:35 UTC 2020 - psimons@suse.com
 
 - Update splitmix to version 0.1.0.3.
