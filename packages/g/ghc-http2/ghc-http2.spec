@@ -37,6 +37,7 @@ BuildRequires:  ghc-psqueues-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-stm-devel
 BuildRequires:  ghc-time-manager-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-Glob-devel
 BuildRequires:  ghc-aeson-devel
