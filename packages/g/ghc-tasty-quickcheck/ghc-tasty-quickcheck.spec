@@ -19,7 +19,7 @@
 %global pkg_name tasty-quickcheck
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.10.1.1
+Version:        0.10.1.2
 Release:        0
 Summary:        QuickCheck support for the Tasty test framework
 License:        MIT
@@ -32,6 +32,7 @@ BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-tagged-devel
 BuildRequires:  ghc-tasty-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-pcre-light-devel
 BuildRequires:  ghc-tasty-hunit-devel
