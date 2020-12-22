@@ -19,7 +19,7 @@
 %global pkg_name conduit
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.3.3
+Version:        1.3.4
 Release:        0
 Summary:        Streaming data processing library
 License:        MIT
@@ -40,6 +40,7 @@ BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-unliftio-core-devel
 BuildRequires:  ghc-vector-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-containers-devel
