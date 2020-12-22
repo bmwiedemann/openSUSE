@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Convert-UUlib
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           perl-Convert-UUlib
-Version:        1.71
+Version:        1.8
 Release:        0
 #Upstream: CHECK(Artistic-1.0 or GPL-1.0-or-later)
 %define cpan_name Convert-UUlib
-Summary:        Perl interface to the uulib library (a.k.a. uudeview/uuenview)
+Summary:        Decode uu/xx/b64/mime/yenc/etc-encoded data from a massive number of files
 License:        GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -40,6 +40,16 @@ Obsoletes:      p_conulb
 # MANUAL END
 
 %description
+This module started as an interface to the uulib/uudeview library by Frank
+Pilhofer that can be used to decode all kinds of usenet (and other) binary
+messages.
+
+After upstream abondoned the project, th library was continuously bugfixed
+and improved in this module, with major focuses on security fixes,
+correctness and speed (that does not mean that this library is considered
+safe with untrusted data, but it surely is safer than the poriginal
+uudeview).
+
 Read the file doc/library.pdf from the distribution for in-depth
 information about the C-library used in this interface, and the rest of
 this document and especially the non-trivial decoder program at the end.

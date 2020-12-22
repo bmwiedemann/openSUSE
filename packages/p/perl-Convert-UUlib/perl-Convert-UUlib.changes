@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Dec 17 03:06:11 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.8
+   see /usr/share/doc/packages/perl-Convert-UUlib/Changes
+
+  TODO: biggest timesinks: FP_fgets/getc_unlocked overall, UUInsertPartToList dominates large loads due to O(n**2) search
+
+  1.8  Thu Dec 17 02:23:53 CET 2020
+  	- no bugfixes in this release due to lack of known bugs, but the major changes
+            in this release might have introduced new bugs, so watch out.
+  	- update large decoder example to disable OPT_AUTOCHK and use Smerge -1.
+  	- some micro-optimisations.
+          - avoid costly string comparisons by comparing hashes when isnerting items,
+            which speeds up insertion by a constant factor.
+          - improve uulist (and other) structure layout and size.
+          - reverse the order of file list items, which heuristically improves
+            match speed with large usenet file lists.
+          - use getc instead of fgetc, which makes no difference on gnu/linux.
+          - clean up _FP symbol names toi not start with an underscore.
+          - use feof_unlocked and ferror_unlocked.
+          - implement a faster ascii-only strnicmp.
+  	- misc very minor code improvements.
+          - remove quite a bit of pre-posix/dos/etc. cruft.
+          - use flockfile, if available, for a potential but small
+            speed gain.
+          - speed up inner yenc decoder loop.
+          - kentnl said that this module should no longer claim to be a simple
+            interface to uulib, as the bunndled copy is now better maintained
+            than the original upstream library.
+
+-------------------------------------------------------------------
 Tue Mar 17 03:10:13 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.71
