@@ -31,6 +31,7 @@ BuildRequires:  ghc-cereal-devel
 BuildRequires:  ghc-crypto-api-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-tagged-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-hspec-devel
