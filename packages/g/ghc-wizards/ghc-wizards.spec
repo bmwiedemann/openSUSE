@@ -32,6 +32,7 @@ BuildRequires:  ghc-haskeline-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 
 %description
 'wizards' is a package designed for the quick and painless development of
