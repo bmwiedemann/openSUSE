@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 21 16:29:32 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1608562438.b02a47dac:
+  * t: Prevent unreliable coverage report on sleep line
+  * worker: Fix clearing current error on status updates when idling
+
+-------------------------------------------------------------------
 Sat Dec 19 08:32:10 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1608227660.f87d0124e:
