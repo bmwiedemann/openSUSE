@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Thu Oct 29 03:01:15 UTC 2020 - psimons@suse.com
 
 - Update tasty-rerun to version 1.1.18.

@@ -34,6 +34,7 @@ BuildRequires:  ghc-stm-devel
 BuildRequires:  ghc-tagged-devel
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 
 %description
 This ingredient for the <https://hackage.haskell.org/package/tasty tasty>
