@@ -43,6 +43,7 @@ BuildRequires:  ghc-unliftio-core-devel
 BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  glibc-devel
 BuildRequires:  sqlite3-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-QuickCheck-devel
