@@ -32,6 +32,7 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-errors-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-hspec-devel
 %endif
