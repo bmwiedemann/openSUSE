@@ -27,6 +27,7 @@ Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  libSDL-devel
+ExcludeArch:    %{ix86}
 
 %description
 Simple DirectMedia Layer (libSDL) is a cross-platform multimedia library
