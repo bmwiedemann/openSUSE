@@ -19,7 +19,7 @@
 %global pkg_name language-c
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.9
+Version:        0.9.0.1
 Release:        0
 Summary:        Analysis and generation of C code
 License:        BSD-3-Clause
@@ -37,8 +37,8 @@ BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-pretty-devel
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  ghc-syb-devel
 BuildRequires:  happy
+ExcludeArch:    %{ix86}
 
 %description
 Language C is a haskell library for the analysis and generation of C code.
