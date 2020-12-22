@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Dec 20 13:15:08 UTC 2020 - psimons@suse.com
+
+- Update language-c to version 0.9.0.1.
+  ## 0.9.0.1
+
+  	- Scrap dependency on syb
+
+  Thanks to @vmchale
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Fri Sep  4 17:21:42 UTC 2020 - psimons@suse.com
 
 - Update language-c to version 0.9.
