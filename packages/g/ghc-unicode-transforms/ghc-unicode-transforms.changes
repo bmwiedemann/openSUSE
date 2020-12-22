@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Tue Oct 13 07:00:26 UTC 2020 - psimons@suse.com
 
 - Update unicode-transforms to version 0.3.7.1.
