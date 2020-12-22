@@ -30,6 +30,7 @@ BuildRequires:  ghc-data-default-instances-containers-devel
 BuildRequires:  ghc-data-default-instances-dlist-devel
 BuildRequires:  ghc-data-default-instances-old-locale-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 
 %description
 A class for types with a default value.
