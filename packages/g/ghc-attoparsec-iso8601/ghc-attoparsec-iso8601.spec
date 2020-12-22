@@ -31,6 +31,7 @@ BuildRequires:  ghc-base-compat-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-time-devel
+ExcludeArch:    %{ix86}
 
 %description
 Parsing of ISO 8601 dates, originally from aeson.
