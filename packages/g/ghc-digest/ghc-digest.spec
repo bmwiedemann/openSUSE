@@ -28,6 +28,7 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  zlib-devel
+ExcludeArch:    %{ix86}
 
 %description
 This package provides efficient cryptographic hash implementations for strict
