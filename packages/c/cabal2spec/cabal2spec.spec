@@ -32,6 +32,7 @@ BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-optparse-applicative-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-time-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-golden-devel
