@@ -29,6 +29,7 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
+ExcludeArch:    %{ix86}
 
 %description
 This library implements 'i;unicode-casemap', the simple, non locale-sensitive
