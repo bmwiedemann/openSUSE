@@ -26,6 +26,7 @@ unsorted:
   - Box2D-doc 
   - CSXCAD-devel 
   - CSXCAD-matlab 
+  - Cadence 
   - CastXML-devel 
   - Catch2-devel 
   - CharLS-devel 
@@ -268,7 +269,7 @@ unsorted:
   - SUSEConnect: [x86_64] 
   - SampleICC 
   - ServiceReport 
-  - ShellCheck 
+  - ShellCheck: [x86_64] 
   - SimGear-devel 
   - SoQt-devel 
   - SoQt-doc 
@@ -292,6 +293,7 @@ unsorted:
   - WoeUSB 
   - XyGrib 
   - YODA-devel 
+  - a2jmidid 
   - a2ps-devel 
   - a2ps-h 
   - a52dec 
@@ -468,7 +470,7 @@ unsorted:
   - alembic-devel 
   - alevt 
   - alevtd 
-  - alex 
+  - alex: [x86_64] 
   - alkimia 
   - alkimia-lang 
   - allegro44 
@@ -1385,24 +1387,24 @@ unsorted:
   - boost-gnu-openmpi3-hpc-devel: [x86_64] 
   - boost-gnu-openmpi3-hpc-python3: [x86_64] 
   - boost-jam 
-  - boost1_74_0-doc-html 
-  - boost1_74_0-doc-pdf 
-  - boost1_74_0-jam 
-  - boost1_74_0-quickbook 
-  - boost_1_74_0-gnu-hpc: [x86_64] 
-  - boost_1_74_0-gnu-hpc-devel: [x86_64] 
-  - boost_1_74_0-gnu-mpich-hpc: [x86_64] 
-  - boost_1_74_0-gnu-mpich-hpc-devel: [x86_64] 
-  - boost_1_74_0-gnu-mpich-hpc-python3: [x86_64] 
-  - boost_1_74_0-gnu-mvapich2-hpc: [x86_64] 
-  - boost_1_74_0-gnu-mvapich2-hpc-devel: [x86_64] 
-  - boost_1_74_0-gnu-mvapich2-hpc-python3: [x86_64] 
-  - boost_1_74_0-gnu-openmpi2-hpc: [x86_64] 
-  - boost_1_74_0-gnu-openmpi2-hpc-devel: [x86_64] 
-  - boost_1_74_0-gnu-openmpi2-hpc-python3: [x86_64] 
-  - boost_1_74_0-gnu-openmpi3-hpc: [x86_64] 
-  - boost_1_74_0-gnu-openmpi3-hpc-devel: [x86_64] 
-  - boost_1_74_0-gnu-openmpi3-hpc-python3: [x86_64] 
+  - boost1_75_0-doc-html 
+  - boost1_75_0-doc-pdf 
+  - boost1_75_0-jam 
+  - boost1_75_0-quickbook 
+  - boost_1_75_0-gnu-hpc: [x86_64] 
+  - boost_1_75_0-gnu-hpc-devel: [x86_64] 
+  - boost_1_75_0-gnu-mpich-hpc: [x86_64] 
+  - boost_1_75_0-gnu-mpich-hpc-devel: [x86_64] 
+  - boost_1_75_0-gnu-mpich-hpc-python3: [x86_64] 
+  - boost_1_75_0-gnu-mvapich2-hpc: [x86_64] 
+  - boost_1_75_0-gnu-mvapich2-hpc-devel: [x86_64] 
+  - boost_1_75_0-gnu-mvapich2-hpc-python3: [x86_64] 
+  - boost_1_75_0-gnu-openmpi2-hpc: [x86_64] 
+  - boost_1_75_0-gnu-openmpi2-hpc-devel: [x86_64] 
+  - boost_1_75_0-gnu-openmpi2-hpc-python3: [x86_64] 
+  - boost_1_75_0-gnu-openmpi3-hpc: [x86_64] 
+  - boost_1_75_0-gnu-openmpi3-hpc-devel: [x86_64] 
+  - boost_1_75_0-gnu-openmpi3-hpc-python3: [x86_64] 
   - booth 
   - booth-test 
   - bootsplash-branding-KDE 
@@ -1448,7 +1450,6 @@ unsorted:
   - bridge-utils 
   - bridge-utils-devel 
   - brightnessctl 
-  - brise 
   - brisk-menu 
   - brisk-menu-lang 
   - brlapi-devel 
@@ -1639,7 +1640,7 @@ unsorted:
   - c-toxcore 
   - c-toxcore-daemon 
   - c-toxcore-devel 
-  - c2hs 
+  - c2hs: [x86_64] 
   - c3p0 
   - c3p0-javadoc 
   - cJSON-devel 
@@ -1647,9 +1648,9 @@ unsorted:
   - ca-certificates-cacert 
   - ca-certificates-steamtricks 
   - caasp-cli 
-  - cabal-install 
-  - cabal-plan 
-  - cabal2spec 
+  - cabal-install: [x86_64] 
+  - cabal-plan: [x86_64] 
+  - cabal2spec: [x86_64] 
   - caca-utils 
   - cachefilesd 
   - cacti 
@@ -1745,6 +1746,7 @@ unsorted:
   - camsource 
   - camsource-devel 
   - canberra-gtk-play-gnome 
+  - canlock 
   - canna 
   - canna-devel 
   - canna-libs: [i586] 
@@ -2315,7 +2317,7 @@ unsorted:
   - cpp9 
   - cppcheck: [i586] 
   - cppcheck-gui 
-  - cpphs 
+  - cpphs: [x86_64] 
   - cppi 
   - cppi-lang 
   - cppreference-doc 
@@ -2746,8 +2748,8 @@ unsorted:
   - dfu-tool 
   - dh-autoreconf 
   - dh-make 
-  - dhall-json 
-  - dhall-yaml 
+  - dhall-json: [x86_64] 
+  - dhall-yaml: [x86_64] 
   - dhcp-devel 
   - dhcp-doc: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - dhcpd-pools 
@@ -3091,7 +3093,12 @@ unsorted:
   - eid-viewer 
   - eigen3-devel 
   - eigen3-doc 
+  - eiskaltdcpp-cli 
+  - eiskaltdcpp-common 
+  - eiskaltdcpp-common-lang 
+  - eiskaltdcpp-daemon 
   - eiskaltdcpp-qt 
+  - eiskaltdcpp-qt-lang 
   - elektra 
   - elektra-qt-gui 
   - elementary-cmake-modules 
@@ -3707,7 +3714,6 @@ unsorted:
   - fprintd-doc 
   - fprintd-lang: [i586] 
   - fprintd-pam: [i586] 
-  - fprintd-pam-32bit: [x86_64] 
   - fractal 
   - fractal-lang 
   - frame 
@@ -4254,1120 +4260,1170 @@ unsorted:
   - gfxboot-branding-upstream 
   - gfxboot-devel 
   - gh 
-  - ghc 
-  - ghc-Cabal 
-  - ghc-Cabal-devel 
-  - ghc-DAV 
-  - ghc-DAV-devel 
-  - ghc-Decimal 
-  - ghc-Decimal-devel 
-  - ghc-Diff 
-  - ghc-Diff-devel 
-  - ghc-Glob 
-  - ghc-Glob-devel 
-  - ghc-HTTP 
-  - ghc-HTTP-devel 
-  - ghc-HUnit 
-  - ghc-HUnit-devel 
-  - ghc-HsYAML 
-  - ghc-HsYAML-aeson 
-  - ghc-HsYAML-aeson-devel 
-  - ghc-HsYAML-devel 
-  - ghc-IfElse 
-  - ghc-IfElse-devel 
-  - ghc-JuicyPixels 
-  - ghc-JuicyPixels-devel 
-  - ghc-MonadRandom 
-  - ghc-MonadRandom-devel 
-  - ghc-Only 
-  - ghc-Only-devel 
-  - ghc-QuickCheck 
-  - ghc-QuickCheck-devel 
-  - ghc-SDL 
-  - ghc-SDL-devel 
-  - ghc-SDL-image 
-  - ghc-SDL-image-devel 
-  - ghc-SDL-mixer 
-  - ghc-SDL-mixer-devel 
-  - ghc-SHA 
-  - ghc-SHA-devel 
-  - ghc-SafeSemaphore 
-  - ghc-SafeSemaphore-devel 
-  - ghc-ShellCheck 
-  - ghc-ShellCheck-devel 
-  - ghc-StateVar 
-  - ghc-StateVar-devel 
-  - ghc-Unique 
-  - ghc-Unique-devel 
-  - ghc-X11 
-  - ghc-X11-devel 
-  - ghc-X11-xft 
-  - ghc-X11-xft-devel 
-  - ghc-abstract-deque 
-  - ghc-abstract-deque-devel 
-  - ghc-abstract-par 
-  - ghc-abstract-par-devel 
-  - ghc-adjunctions 
-  - ghc-adjunctions-devel 
-  - ghc-aeson 
-  - ghc-aeson-devel 
-  - ghc-aeson-pretty 
-  - ghc-aeson-pretty-devel 
-  - ghc-aeson-yaml 
-  - ghc-aeson-yaml-devel 
-  - ghc-algebraic-graphs 
-  - ghc-algebraic-graphs-devel 
-  - ghc-alsa-core 
-  - ghc-alsa-core-devel 
-  - ghc-alsa-mixer 
-  - ghc-alsa-mixer-devel 
-  - ghc-annotated-wl-pprint 
-  - ghc-annotated-wl-pprint-devel 
-  - ghc-ansi-terminal 
-  - ghc-ansi-terminal-devel 
-  - ghc-ansi-wl-pprint 
-  - ghc-ansi-wl-pprint-devel 
-  - ghc-ap-normalize 
-  - ghc-ap-normalize-devel 
-  - ghc-appar 
-  - ghc-appar-devel 
-  - ghc-array 
-  - ghc-array-devel 
-  - ghc-ascii-progress 
-  - ghc-ascii-progress-devel 
-  - ghc-asn1-encoding 
-  - ghc-asn1-encoding-devel 
-  - ghc-asn1-parse 
-  - ghc-asn1-parse-devel 
-  - ghc-asn1-types 
-  - ghc-asn1-types-devel 
-  - ghc-assoc 
-  - ghc-assoc-devel 
-  - ghc-async 
-  - ghc-async-devel 
-  - ghc-async-timer 
-  - ghc-async-timer-devel 
-  - ghc-atomic-primops 
-  - ghc-atomic-primops-devel 
-  - ghc-atomic-write 
-  - ghc-atomic-write-devel 
-  - ghc-attoparsec 
-  - ghc-attoparsec-devel 
-  - ghc-attoparsec-iso8601 
-  - ghc-attoparsec-iso8601-devel 
-  - ghc-auto-update 
-  - ghc-auto-update-devel 
-  - ghc-aws 
-  - ghc-aws-devel 
-  - ghc-base 
-  - ghc-base-compat 
-  - ghc-base-compat-batteries 
-  - ghc-base-compat-batteries-devel 
-  - ghc-base-compat-devel 
-  - ghc-base-devel 
-  - ghc-base-noprelude 
-  - ghc-base-noprelude-devel 
-  - ghc-base-orphans 
-  - ghc-base-orphans-devel 
-  - ghc-base-prelude 
-  - ghc-base-prelude-devel 
-  - ghc-base16-bytestring 
-  - ghc-base16-bytestring-devel 
-  - ghc-base58-bytestring 
-  - ghc-base58-bytestring-devel 
-  - ghc-base64 
-  - ghc-base64-bytestring 
-  - ghc-base64-bytestring-devel 
-  - ghc-base64-bytestring-type 
-  - ghc-base64-bytestring-type-devel 
-  - ghc-base64-devel 
-  - ghc-basement 
-  - ghc-basement-devel 
-  - ghc-bech32 
-  - ghc-bech32-devel 
-  - ghc-bencode 
-  - ghc-bencode-devel 
-  - ghc-bifunctors 
-  - ghc-bifunctors-devel 
-  - ghc-bimap 
-  - ghc-bimap-devel 
-  - ghc-binary 
-  - ghc-binary-devel 
-  - ghc-bindings-uname 
-  - ghc-bindings-uname-devel 
-  - ghc-bitarray 
-  - ghc-bitarray-devel 
-  - ghc-bitmap 
-  - ghc-bitmap-devel 
-  - ghc-blaze-builder 
-  - ghc-blaze-builder-devel 
-  - ghc-blaze-html 
-  - ghc-blaze-html-devel 
-  - ghc-blaze-markup 
-  - ghc-blaze-markup-devel 
-  - ghc-bloomfilter 
-  - ghc-bloomfilter-devel 
-  - ghc-bootstrap 
-  - ghc-bootstrap-helpers 
-  - ghc-boxes 
-  - ghc-boxes-devel 
-  - ghc-brick 
-  - ghc-brick-devel 
-  - ghc-bsb-http-chunked 
-  - ghc-bsb-http-chunked-devel 
-  - ghc-byteable 
-  - ghc-byteable-devel 
-  - ghc-byteorder 
-  - ghc-byteorder-devel 
-  - ghc-bytestring 
-  - ghc-bytestring-builder 
-  - ghc-bytestring-builder-devel 
-  - ghc-bytestring-devel 
-  - ghc-cabal-doctest 
-  - ghc-cabal-doctest-devel 
-  - ghc-cabal-plan 
-  - ghc-cabal-plan-devel 
-  - ghc-cabal2spec 
-  - ghc-cabal2spec-devel 
-  - ghc-call-stack 
-  - ghc-call-stack-devel 
-  - ghc-canonical-json 
-  - ghc-canonical-json-devel 
-  - ghc-case-insensitive 
-  - ghc-case-insensitive-devel 
-  - ghc-cassava 
-  - ghc-cassava-devel 
-  - ghc-cassava-megaparsec 
-  - ghc-cassava-megaparsec-devel 
-  - ghc-cborg 
-  - ghc-cborg-devel 
-  - ghc-cborg-json 
-  - ghc-cborg-json-devel 
-  - ghc-cereal 
-  - ghc-cereal-devel 
-  - ghc-charset 
-  - ghc-charset-devel 
-  - ghc-cipher-aes 
-  - ghc-cipher-aes-devel 
-  - ghc-citeproc 
-  - ghc-citeproc-devel 
-  - ghc-clay 
-  - ghc-clay-devel 
-  - ghc-clientsession 
-  - ghc-clientsession-devel 
-  - ghc-clock 
-  - ghc-clock-devel 
-  - ghc-cmark-gfm 
-  - ghc-cmark-gfm-devel 
-  - ghc-cmdargs 
-  - ghc-cmdargs-devel 
-  - ghc-colour 
-  - ghc-colour-devel 
-  - ghc-commonmark 
-  - ghc-commonmark-devel 
-  - ghc-commonmark-extensions 
-  - ghc-commonmark-extensions-devel 
-  - ghc-commonmark-pandoc 
-  - ghc-commonmark-pandoc-devel 
-  - ghc-comonad 
-  - ghc-comonad-devel 
-  - ghc-compiler 
-  - ghc-concurrency 
-  - ghc-concurrency-devel 
-  - ghc-concurrent-output 
-  - ghc-concurrent-output-devel 
-  - ghc-conduit 
-  - ghc-conduit-combinators 
-  - ghc-conduit-combinators-devel 
-  - ghc-conduit-devel 
-  - ghc-conduit-extra 
-  - ghc-conduit-extra-devel 
-  - ghc-config-ini 
-  - ghc-config-ini-devel 
-  - ghc-connection 
-  - ghc-connection-devel 
-  - ghc-constraints 
-  - ghc-constraints-devel 
-  - ghc-containers 
-  - ghc-containers-devel 
-  - ghc-contravariant 
-  - ghc-contravariant-devel 
-  - ghc-control-monad-free 
-  - ghc-control-monad-free-devel 
-  - ghc-cookie 
-  - ghc-cookie-devel 
-  - ghc-cpphs 
-  - ghc-cpphs-devel 
-  - ghc-cprng-aes 
-  - ghc-cprng-aes-devel 
-  - ghc-crypto-api 
-  - ghc-crypto-api-devel 
-  - ghc-crypto-cipher-types 
-  - ghc-crypto-cipher-types-devel 
-  - ghc-crypto-random 
-  - ghc-crypto-random-devel 
-  - ghc-cryptohash 
-  - ghc-cryptohash-conduit 
-  - ghc-cryptohash-conduit-devel 
-  - ghc-cryptohash-devel 
-  - ghc-cryptohash-md5 
-  - ghc-cryptohash-md5-devel 
-  - ghc-cryptohash-sha1 
-  - ghc-cryptohash-sha1-devel 
-  - ghc-cryptohash-sha256 
-  - ghc-cryptohash-sha256-devel 
-  - ghc-cryptonite 
-  - ghc-cryptonite-conduit 
-  - ghc-cryptonite-conduit-devel 
-  - ghc-cryptonite-devel 
-  - ghc-css-text 
-  - ghc-css-text-devel 
-  - ghc-csv 
-  - ghc-csv-devel 
-  - ghc-data-clist 
-  - ghc-data-clist-devel 
-  - ghc-data-default 
-  - ghc-data-default-class 
-  - ghc-data-default-class-devel 
-  - ghc-data-default-devel 
-  - ghc-data-default-instances-containers 
-  - ghc-data-default-instances-containers-devel 
-  - ghc-data-default-instances-dlist 
-  - ghc-data-default-instances-dlist-devel 
-  - ghc-data-default-instances-old-locale 
-  - ghc-data-default-instances-old-locale-devel 
-  - ghc-data-fix 
-  - ghc-data-fix-devel 
-  - ghc-dbus 
-  - ghc-dbus-devel 
-  - ghc-dec 
-  - ghc-dec-devel 
-  - ghc-deepseq 
-  - ghc-deepseq-devel 
-  - ghc-dense-linear-algebra 
-  - ghc-dense-linear-algebra-devel 
-  - ghc-dhall 
-  - ghc-dhall-devel 
-  - ghc-dhall-json 
-  - ghc-dhall-json-devel 
-  - ghc-dhall-yaml 
-  - ghc-dhall-yaml-devel 
-  - ghc-digest 
-  - ghc-digest-devel 
-  - ghc-directory 
-  - ghc-directory-devel 
-  - ghc-disk-free-space 
-  - ghc-disk-free-space-devel 
-  - ghc-distribution-opensuse 
-  - ghc-distribution-opensuse-devel 
-  - ghc-distributive 
-  - ghc-distributive-devel 
-  - ghc-dlist 
-  - ghc-dlist-devel 
-  - ghc-dns 
-  - ghc-dns-devel 
-  - ghc-doclayout 
-  - ghc-doclayout-devel 
-  - ghc-doctemplates 
-  - ghc-doctemplates-devel 
-  - ghc-dotgen 
-  - ghc-dotgen-devel 
-  - ghc-double-conversion 
-  - ghc-double-conversion-devel 
-  - ghc-easy-file 
-  - ghc-easy-file-devel 
-  - ghc-echo 
-  - ghc-echo-devel 
-  - ghc-ed25519 
-  - ghc-ed25519-devel 
-  - ghc-edit-distance 
-  - ghc-edit-distance-devel 
-  - ghc-either 
-  - ghc-either-devel 
-  - ghc-ekg 
-  - ghc-ekg-core 
-  - ghc-ekg-core-devel 
-  - ghc-ekg-devel 
-  - ghc-ekg-json 
-  - ghc-ekg-json-devel 
-  - ghc-email-validate 
-  - ghc-email-validate-devel 
-  - ghc-emojis 
-  - ghc-emojis-devel 
-  - ghc-enclosed-exceptions 
-  - ghc-enclosed-exceptions-devel 
-  - ghc-entropy 
-  - ghc-entropy-devel 
-  - ghc-erf 
-  - ghc-erf-devel 
-  - ghc-errors 
-  - ghc-errors-devel 
-  - ghc-exceptions 
-  - ghc-exceptions-devel 
-  - ghc-extensible-exceptions 
-  - ghc-extensible-exceptions-devel 
-  - ghc-extra 
-  - ghc-extra-devel 
-  - ghc-fail 
-  - ghc-fail-devel 
-  - ghc-fast-logger 
-  - ghc-fast-logger-devel 
-  - ghc-fdo-notify 
-  - ghc-fdo-notify-devel 
-  - ghc-feed 
-  - ghc-feed-devel 
-  - ghc-fgl 
-  - ghc-fgl-devel 
-  - ghc-file-embed 
-  - ghc-file-embed-devel 
-  - ghc-filelock 
-  - ghc-filelock-devel 
-  - ghc-filemanip 
-  - ghc-filemanip-devel 
-  - ghc-filepath 
-  - ghc-filepath-bytestring 
-  - ghc-filepath-bytestring-devel 
-  - ghc-filepath-devel 
-  - ghc-filepattern 
-  - ghc-filepattern-devel 
-  - ghc-filtrable 
-  - ghc-filtrable-devel 
-  - ghc-fingertree 
-  - ghc-fingertree-devel 
-  - ghc-foldl 
-  - ghc-foldl-devel 
-  - ghc-formatting 
-  - ghc-formatting-devel 
-  - ghc-foundation 
-  - ghc-foundation-devel 
-  - ghc-free 
-  - ghc-free-devel 
-  - ghc-fsnotify 
-  - ghc-fsnotify-devel 
-  - ghc-generic-data 
-  - ghc-generic-data-devel 
-  - ghc-generic-deriving 
-  - ghc-generic-deriving-devel 
-  - ghc-generic-lens 
-  - ghc-generic-lens-core 
-  - ghc-generic-lens-core-devel 
-  - ghc-generic-lens-devel 
-  - ghc-ghc 
-  - ghc-ghc-boot 
-  - ghc-ghc-boot-devel 
-  - ghc-ghc-boot-th 
-  - ghc-ghc-boot-th-devel 
-  - ghc-ghc-byteorder 
-  - ghc-ghc-byteorder-devel 
-  - ghc-ghc-compact 
-  - ghc-ghc-compact-devel 
-  - ghc-ghc-devel 
-  - ghc-ghc-heap 
-  - ghc-ghc-heap-devel 
-  - ghc-ghc-lib-parser-ex 
-  - ghc-ghc-lib-parser-ex-devel 
-  - ghc-ghc-paths 
-  - ghc-ghc-paths-devel 
-  - ghc-ghci 
-  - ghc-ghci-devel 
-  - ghc-ghcid 
-  - ghc-ghcid-devel 
-  - ghc-git-lfs 
-  - ghc-git-lfs-devel 
-  - ghc-githash 
-  - ghc-githash-devel 
-  - ghc-gitrev 
-  - ghc-gitrev-devel 
-  - ghc-gray-code 
-  - ghc-gray-code-devel 
-  - ghc-groups 
-  - ghc-groups-devel 
-  - ghc-hackage-security 
-  - ghc-hackage-security-devel 
-  - ghc-haddock-library 
-  - ghc-haddock-library-devel 
-  - ghc-half 
-  - ghc-half-devel 
-  - ghc-hashable 
-  - ghc-hashable-devel 
-  - ghc-hashtables 
-  - ghc-hashtables-devel 
-  - ghc-haskeline 
-  - ghc-haskeline-devel 
-  - ghc-haskell-lexer 
-  - ghc-haskell-lexer-devel 
-  - ghc-heaps 
-  - ghc-heaps-devel 
-  - ghc-hedgehog 
-  - ghc-hedgehog-devel 
-  - ghc-hi-file-parser 
-  - ghc-hi-file-parser-devel 
-  - ghc-hinotify 
-  - ghc-hinotify-devel 
-  - ghc-hjsmin 
-  - ghc-hjsmin-devel 
-  - ghc-hledger 
-  - ghc-hledger-devel 
-  - ghc-hledger-lib 
-  - ghc-hledger-lib-devel 
-  - ghc-hlint 
-  - ghc-hlint-devel 
-  - ghc-hostname 
-  - ghc-hostname-devel 
-  - ghc-hourglass 
-  - ghc-hourglass-devel 
-  - ghc-hpack 
-  - ghc-hpack-devel 
-  - ghc-hpc 
-  - ghc-hpc-devel 
-  - ghc-hs-bibutils 
-  - ghc-hs-bibutils-devel 
-  - ghc-hscolour 
-  - ghc-hscolour-devel 
-  - ghc-hsemail 
-  - ghc-hsemail-devel 
-  - ghc-hslogger 
-  - ghc-hslogger-devel 
-  - ghc-hslua 
-  - ghc-hslua-devel 
-  - ghc-hslua-module-system 
-  - ghc-hslua-module-system-devel 
-  - ghc-hslua-module-text 
-  - ghc-hslua-module-text-devel 
-  - ghc-hspec 
-  - ghc-hspec-core 
-  - ghc-hspec-core-devel 
-  - ghc-hspec-devel 
-  - ghc-hspec-discover 
-  - ghc-hspec-discover-devel 
-  - ghc-hspec-expectations 
-  - ghc-hspec-expectations-devel 
-  - ghc-hspec-smallcheck 
-  - ghc-hspec-smallcheck-devel 
-  - ghc-hsyslog 
-  - ghc-hsyslog-devel 
-  - ghc-html 
-  - ghc-html-devel 
-  - ghc-http-api-data 
-  - ghc-http-api-data-devel 
-  - ghc-http-client 
-  - ghc-http-client-devel 
-  - ghc-http-client-restricted 
-  - ghc-http-client-restricted-devel 
-  - ghc-http-client-tls 
-  - ghc-http-client-tls-devel 
-  - ghc-http-conduit 
-  - ghc-http-conduit-devel 
-  - ghc-http-date 
-  - ghc-http-date-devel 
-  - ghc-http-types 
-  - ghc-http-types-devel 
-  - ghc-http2 
-  - ghc-http2-devel 
-  - ghc-hxt 
-  - ghc-hxt-charproperties 
-  - ghc-hxt-charproperties-devel 
-  - ghc-hxt-devel 
-  - ghc-hxt-regex-xmlschema 
-  - ghc-hxt-regex-xmlschema-devel 
-  - ghc-hxt-unicode 
-  - ghc-hxt-unicode-devel 
-  - ghc-indexed-profunctors 
-  - ghc-indexed-profunctors-devel 
-  - ghc-infer-license 
-  - ghc-infer-license-devel 
-  - ghc-integer-logarithms 
-  - ghc-integer-logarithms-devel 
-  - ghc-intern 
-  - ghc-intern-devel 
-  - ghc-invariant 
-  - ghc-invariant-devel 
-  - ghc-io-streams 
-  - ghc-io-streams-devel 
-  - ghc-io-streams-haproxy 
-  - ghc-io-streams-haproxy-devel 
-  - ghc-iproute 
-  - ghc-iproute-devel 
-  - ghc-ipynb 
-  - ghc-ipynb-devel 
-  - ghc-iso8601-time 
-  - ghc-iso8601-time-devel 
-  - ghc-iwlib 
-  - ghc-iwlib-devel 
-  - ghc-jira-wiki-markup 
-  - ghc-jira-wiki-markup-devel 
-  - ghc-js-dgtable 
-  - ghc-js-dgtable-devel 
-  - ghc-js-flot 
-  - ghc-js-flot-devel 
-  - ghc-js-jquery 
-  - ghc-js-jquery-devel 
-  - ghc-kan-extensions 
-  - ghc-kan-extensions-devel 
-  - ghc-katip 
-  - ghc-katip-devel 
-  - ghc-language-c 
-  - ghc-language-c-devel 
-  - ghc-language-javascript 
-  - ghc-language-javascript-devel 
-  - ghc-lens 
-  - ghc-lens-devel 
-  - ghc-lens-family-core 
-  - ghc-lens-family-core-devel 
-  - ghc-libiserv 
-  - ghc-libiserv-devel 
-  - ghc-libmpd 
-  - ghc-libmpd-devel 
-  - ghc-libraries 
-  - ghc-libsystemd-journal 
-  - ghc-libsystemd-journal-devel 
-  - ghc-libxml-sax 
-  - ghc-libxml-sax-devel 
-  - ghc-libyaml 
-  - ghc-libyaml-devel 
-  - ghc-lifted-async 
-  - ghc-lifted-async-devel 
-  - ghc-lifted-base 
-  - ghc-lifted-base-devel 
-  - ghc-liquid-fixpoint 
-  - ghc-liquid-fixpoint-devel 
-  - ghc-liquidhaskell 
-  - ghc-liquidhaskell-devel 
-  - ghc-logict 
-  - ghc-logict-devel 
-  - ghc-lucid 
-  - ghc-lucid-devel 
-  - ghc-lukko 
-  - ghc-lukko-devel 
-  - ghc-magic 
-  - ghc-magic-devel 
-  - ghc-managed 
-  - ghc-managed-devel 
-  - ghc-math-functions 
-  - ghc-math-functions-devel 
-  - ghc-megaparsec 
-  - ghc-megaparsec-devel 
-  - ghc-memory 
-  - ghc-memory-devel 
-  - ghc-mersenne-random-pure64 
-  - ghc-mersenne-random-pure64-devel 
-  - ghc-microlens 
-  - ghc-microlens-devel 
-  - ghc-microlens-ghc 
-  - ghc-microlens-ghc-devel 
-  - ghc-microlens-mtl 
-  - ghc-microlens-mtl-devel 
-  - ghc-microlens-platform 
-  - ghc-microlens-platform-devel 
-  - ghc-microlens-th 
-  - ghc-microlens-th-devel 
-  - ghc-mime-types 
-  - ghc-mime-types-devel 
-  - ghc-mintty 
-  - ghc-mintty-devel 
-  - ghc-mmorph 
-  - ghc-mmorph-devel 
-  - ghc-monad-control 
-  - ghc-monad-control-devel 
-  - ghc-monad-logger 
-  - ghc-monad-logger-devel 
-  - ghc-monad-loops 
-  - ghc-monad-loops-devel 
-  - ghc-monad-par 
-  - ghc-monad-par-devel 
-  - ghc-monad-par-extras 
-  - ghc-monad-par-extras-devel 
-  - ghc-mono-traversable 
-  - ghc-mono-traversable-devel 
-  - ghc-moo 
-  - ghc-moo-devel 
-  - ghc-mountpoints 
-  - ghc-mountpoints-devel 
-  - ghc-mtl 
-  - ghc-mtl-compat 
-  - ghc-mtl-compat-devel 
-  - ghc-mtl-devel 
-  - ghc-mustache 
-  - ghc-mustache-devel 
-  - ghc-mwc-random 
-  - ghc-mwc-random-devel 
-  - ghc-neat-interpolation 
-  - ghc-neat-interpolation-devel 
-  - ghc-netlink 
-  - ghc-netlink-devel 
-  - ghc-network 
-  - ghc-network-bsd 
-  - ghc-network-bsd-devel 
-  - ghc-network-byte-order 
-  - ghc-network-byte-order-devel 
-  - ghc-network-devel 
-  - ghc-network-info 
-  - ghc-network-info-devel 
-  - ghc-network-multicast 
-  - ghc-network-multicast-devel 
-  - ghc-network-uri 
-  - ghc-network-uri-devel 
-  - ghc-nothunks 
-  - ghc-nothunks-devel 
-  - ghc-old-locale 
-  - ghc-old-locale-devel 
-  - ghc-old-time 
-  - ghc-old-time-devel 
-  - ghc-open-browser 
-  - ghc-open-browser-devel 
-  - ghc-optics 
-  - ghc-optics-core 
-  - ghc-optics-core-devel 
-  - ghc-optics-devel 
-  - ghc-optics-extra 
-  - ghc-optics-extra-devel 
-  - ghc-optics-th 
-  - ghc-optics-th-devel 
-  - ghc-optional-args 
-  - ghc-optional-args-devel 
-  - ghc-optparse-applicative 
-  - ghc-optparse-applicative-devel 
-  - ghc-optparse-generic 
-  - ghc-optparse-generic-devel 
-  - ghc-optparse-simple 
-  - ghc-optparse-simple-devel 
-  - ghc-pandoc 
-  - ghc-pandoc-devel 
-  - ghc-pandoc-types 
-  - ghc-pandoc-types-devel 
-  - ghc-parallel 
-  - ghc-parallel-devel 
-  - ghc-parsec 
-  - ghc-parsec-class 
-  - ghc-parsec-class-devel 
-  - ghc-parsec-devel 
-  - ghc-parsec-numbers 
-  - ghc-parsec-numbers-devel 
-  - ghc-parser-combinators 
-  - ghc-parser-combinators-devel 
-  - ghc-parsers 
-  - ghc-parsers-devel 
-  - ghc-partial-order 
-  - ghc-partial-order-devel 
-  - ghc-path 
-  - ghc-path-devel 
-  - ghc-path-io 
-  - ghc-path-io-devel 
-  - ghc-path-pieces 
-  - ghc-path-pieces-devel 
-  - ghc-pem 
-  - ghc-pem-devel 
-  - ghc-persistent 
-  - ghc-persistent-devel 
-  - ghc-persistent-sqlite 
-  - ghc-persistent-sqlite-devel 
-  - ghc-persistent-template 
-  - ghc-persistent-template-devel 
-  - ghc-pipes 
-  - ghc-pipes-devel 
-  - ghc-pipes-safe 
-  - ghc-pipes-safe-devel 
-  - ghc-polyparse 
-  - ghc-polyparse-devel 
-  - ghc-postgresql-libpq 
-  - ghc-postgresql-libpq-devel 
-  - ghc-postgresql-simple 
-  - ghc-postgresql-simple-devel 
-  - ghc-pretty 
-  - ghc-pretty-devel 
-  - ghc-pretty-hex 
-  - ghc-pretty-hex-devel 
-  - ghc-pretty-show 
-  - ghc-pretty-show-devel 
-  - ghc-pretty-simple 
-  - ghc-pretty-simple-devel 
-  - ghc-prettyprinter 
-  - ghc-prettyprinter-ansi-terminal 
-  - ghc-prettyprinter-ansi-terminal-devel 
-  - ghc-prettyprinter-devel 
-  - ghc-primitive 
-  - ghc-primitive-devel 
-  - ghc-process 
-  - ghc-process-devel 
-  - ghc-profunctors 
-  - ghc-profunctors-devel 
-  - ghc-protolude 
-  - ghc-protolude-devel 
-  - ghc-psqueues 
-  - ghc-psqueues-devel 
-  - ghc-quickcheck-io 
-  - ghc-quickcheck-io-devel 
-  - ghc-quiet 
-  - ghc-quiet-devel 
-  - ghc-random 
-  - ghc-random-devel 
-  - ghc-random-shuffle 
-  - ghc-random-shuffle-devel 
-  - ghc-readable 
-  - ghc-readable-devel 
-  - ghc-recursion-schemes 
-  - ghc-recursion-schemes-devel 
-  - ghc-reducers 
-  - ghc-reducers-devel 
-  - ghc-refact 
-  - ghc-refact-devel 
-  - ghc-reflection 
-  - ghc-reflection-devel 
-  - ghc-regex-applicative 
-  - ghc-regex-applicative-devel 
-  - ghc-regex-applicative-text 
-  - ghc-regex-applicative-text-devel 
-  - ghc-regex-base 
-  - ghc-regex-base-devel 
-  - ghc-regex-compat 
-  - ghc-regex-compat-devel 
-  - ghc-regex-pcre-builtin 
-  - ghc-regex-pcre-builtin-devel 
-  - ghc-regex-posix 
-  - ghc-regex-posix-devel 
-  - ghc-regex-tdfa 
-  - ghc-regex-tdfa-devel 
-  - ghc-repline 
-  - ghc-repline-devel 
-  - ghc-resolv 
-  - ghc-resolv-devel 
-  - ghc-resource-pool 
-  - ghc-resource-pool-devel 
-  - ghc-resourcet 
-  - ghc-resourcet-devel 
-  - ghc-retry 
-  - ghc-retry-devel 
-  - ghc-rfc5051 
-  - ghc-rfc5051-devel 
-  - ghc-rio 
-  - ghc-rio-devel 
-  - ghc-rio-orphans 
-  - ghc-rio-orphans-devel 
-  - ghc-rio-prettyprint 
-  - ghc-rio-prettyprint-devel 
+  - ghc: [x86_64] 
+  - ghc-Cabal: [x86_64] 
+  - ghc-Cabal-devel: [x86_64] 
+  - ghc-DAV: [x86_64] 
+  - ghc-DAV-devel: [x86_64] 
+  - ghc-Decimal: [x86_64] 
+  - ghc-Decimal-devel: [x86_64] 
+  - ghc-Diff: [x86_64] 
+  - ghc-Diff-devel: [x86_64] 
+  - ghc-Glob: [x86_64] 
+  - ghc-Glob-devel: [x86_64] 
+  - ghc-HTTP: [x86_64] 
+  - ghc-HTTP-devel: [x86_64] 
+  - ghc-HUnit: [x86_64] 
+  - ghc-HUnit-devel: [x86_64] 
+  - ghc-HsYAML: [x86_64] 
+  - ghc-HsYAML-aeson: [x86_64] 
+  - ghc-HsYAML-aeson-devel: [x86_64] 
+  - ghc-HsYAML-devel: [x86_64] 
+  - ghc-IfElse: [x86_64] 
+  - ghc-IfElse-devel: [x86_64] 
+  - ghc-JuicyPixels: [x86_64] 
+  - ghc-JuicyPixels-devel: [x86_64] 
+  - ghc-MonadRandom: [x86_64] 
+  - ghc-MonadRandom-devel: [x86_64] 
+  - ghc-OddWord: [x86_64] 
+  - ghc-OddWord-devel: [x86_64] 
+  - ghc-Only: [x86_64] 
+  - ghc-Only-devel: [x86_64] 
+  - ghc-QuickCheck: [x86_64] 
+  - ghc-QuickCheck-devel: [x86_64] 
+  - ghc-RSA: [x86_64] 
+  - ghc-RSA-devel: [x86_64] 
+  - ghc-SDL: [x86_64] 
+  - ghc-SDL-devel: [x86_64] 
+  - ghc-SDL-image: [x86_64] 
+  - ghc-SDL-image-devel: [x86_64] 
+  - ghc-SDL-mixer: [x86_64] 
+  - ghc-SDL-mixer-devel: [x86_64] 
+  - ghc-SHA: [x86_64] 
+  - ghc-SHA-devel: [x86_64] 
+  - ghc-SafeSemaphore: [x86_64] 
+  - ghc-SafeSemaphore-devel: [x86_64] 
+  - ghc-ShellCheck: [x86_64] 
+  - ghc-ShellCheck-devel: [x86_64] 
+  - ghc-StateVar: [x86_64] 
+  - ghc-StateVar-devel: [x86_64] 
+  - ghc-Unique: [x86_64] 
+  - ghc-Unique-devel: [x86_64] 
+  - ghc-X11: [x86_64] 
+  - ghc-X11-devel: [x86_64] 
+  - ghc-X11-xft: [x86_64] 
+  - ghc-X11-xft-devel: [x86_64] 
+  - ghc-abstract-deque: [x86_64] 
+  - ghc-abstract-deque-devel: [x86_64] 
+  - ghc-abstract-par: [x86_64] 
+  - ghc-abstract-par-devel: [x86_64] 
+  - ghc-adjunctions: [x86_64] 
+  - ghc-adjunctions-devel: [x86_64] 
+  - ghc-aeson: [x86_64] 
+  - ghc-aeson-devel: [x86_64] 
+  - ghc-aeson-pretty: [x86_64] 
+  - ghc-aeson-pretty-devel: [x86_64] 
+  - ghc-aeson-yaml: [x86_64] 
+  - ghc-aeson-yaml-devel: [x86_64] 
+  - ghc-algebraic-graphs: [x86_64] 
+  - ghc-algebraic-graphs-devel: [x86_64] 
+  - ghc-alsa-core: [x86_64] 
+  - ghc-alsa-core-devel: [x86_64] 
+  - ghc-alsa-mixer: [x86_64] 
+  - ghc-alsa-mixer-devel: [x86_64] 
+  - ghc-annotated-wl-pprint: [x86_64] 
+  - ghc-annotated-wl-pprint-devel: [x86_64] 
+  - ghc-ansi-terminal: [x86_64] 
+  - ghc-ansi-terminal-devel: [x86_64] 
+  - ghc-ansi-wl-pprint: [x86_64] 
+  - ghc-ansi-wl-pprint-devel: [x86_64] 
+  - ghc-ap-normalize: [x86_64] 
+  - ghc-ap-normalize-devel: [x86_64] 
+  - ghc-appar: [x86_64] 
+  - ghc-appar-devel: [x86_64] 
+  - ghc-array: [x86_64] 
+  - ghc-array-devel: [x86_64] 
+  - ghc-ascii-progress: [x86_64] 
+  - ghc-ascii-progress-devel: [x86_64] 
+  - ghc-asn1-encoding: [x86_64] 
+  - ghc-asn1-encoding-devel: [x86_64] 
+  - ghc-asn1-parse: [x86_64] 
+  - ghc-asn1-parse-devel: [x86_64] 
+  - ghc-asn1-types: [x86_64] 
+  - ghc-asn1-types-devel: [x86_64] 
+  - ghc-assoc: [x86_64] 
+  - ghc-assoc-devel: [x86_64] 
+  - ghc-async: [x86_64] 
+  - ghc-async-devel: [x86_64] 
+  - ghc-async-timer: [x86_64] 
+  - ghc-async-timer-devel: [x86_64] 
+  - ghc-atomic-primops: [x86_64] 
+  - ghc-atomic-primops-devel: [x86_64] 
+  - ghc-atomic-write: [x86_64] 
+  - ghc-atomic-write-devel: [x86_64] 
+  - ghc-attoparsec: [x86_64] 
+  - ghc-attoparsec-devel: [x86_64] 
+  - ghc-attoparsec-iso8601: [x86_64] 
+  - ghc-attoparsec-iso8601-devel: [x86_64] 
+  - ghc-authenticate-oauth: [x86_64] 
+  - ghc-authenticate-oauth-devel: [x86_64] 
+  - ghc-auto-update: [x86_64] 
+  - ghc-auto-update-devel: [x86_64] 
+  - ghc-aws: [x86_64] 
+  - ghc-aws-devel: [x86_64] 
+  - ghc-base: [x86_64] 
+  - ghc-base-compat: [x86_64] 
+  - ghc-base-compat-batteries: [x86_64] 
+  - ghc-base-compat-batteries-devel: [x86_64] 
+  - ghc-base-compat-devel: [x86_64] 
+  - ghc-base-devel: [x86_64] 
+  - ghc-base-noprelude: [x86_64] 
+  - ghc-base-noprelude-devel: [x86_64] 
+  - ghc-base-orphans: [x86_64] 
+  - ghc-base-orphans-devel: [x86_64] 
+  - ghc-base-prelude: [x86_64] 
+  - ghc-base-prelude-devel: [x86_64] 
+  - ghc-base16-bytestring: [x86_64] 
+  - ghc-base16-bytestring-devel: [x86_64] 
+  - ghc-base58-bytestring: [x86_64] 
+  - ghc-base58-bytestring-devel: [x86_64] 
+  - ghc-base64: [x86_64] 
+  - ghc-base64-bytestring: [x86_64] 
+  - ghc-base64-bytestring-devel: [x86_64] 
+  - ghc-base64-bytestring-type: [x86_64] 
+  - ghc-base64-bytestring-type-devel: [x86_64] 
+  - ghc-base64-devel: [x86_64] 
+  - ghc-basement: [x86_64] 
+  - ghc-basement-devel: [x86_64] 
+  - ghc-bech32: [x86_64] 
+  - ghc-bech32-devel: [x86_64] 
+  - ghc-bech32-th: [x86_64] 
+  - ghc-bech32-th-devel: [x86_64] 
+  - ghc-bencode: [x86_64] 
+  - ghc-bencode-devel: [x86_64] 
+  - ghc-bifunctors: [x86_64] 
+  - ghc-bifunctors-devel: [x86_64] 
+  - ghc-bimap: [x86_64] 
+  - ghc-bimap-devel: [x86_64] 
+  - ghc-binary: [x86_64] 
+  - ghc-binary-devel: [x86_64] 
+  - ghc-bindings-DSL: [x86_64] 
+  - ghc-bindings-DSL-devel: [x86_64] 
+  - ghc-bindings-uname: [x86_64] 
+  - ghc-bindings-uname-devel: [x86_64] 
+  - ghc-bitarray: [x86_64] 
+  - ghc-bitarray-devel: [x86_64] 
+  - ghc-bitmap: [x86_64] 
+  - ghc-bitmap-devel: [x86_64] 
+  - ghc-blaze-builder: [x86_64] 
+  - ghc-blaze-builder-devel: [x86_64] 
+  - ghc-blaze-html: [x86_64] 
+  - ghc-blaze-html-devel: [x86_64] 
+  - ghc-blaze-markup: [x86_64] 
+  - ghc-blaze-markup-devel: [x86_64] 
+  - ghc-bloomfilter: [x86_64] 
+  - ghc-bloomfilter-devel: [x86_64] 
+  - ghc-bootstrap: [x86_64] 
+  - ghc-bootstrap-helpers: [x86_64] 
+  - ghc-boxes: [x86_64] 
+  - ghc-boxes-devel: [x86_64] 
+  - ghc-brick: [x86_64] 
+  - ghc-brick-devel: [x86_64] 
+  - ghc-bsb-http-chunked: [x86_64] 
+  - ghc-bsb-http-chunked-devel: [x86_64] 
+  - ghc-byteable: [x86_64] 
+  - ghc-byteable-devel: [x86_64] 
+  - ghc-byteorder: [x86_64] 
+  - ghc-byteorder-devel: [x86_64] 
+  - ghc-bytestring: [x86_64] 
+  - ghc-bytestring-builder: [x86_64] 
+  - ghc-bytestring-builder-devel: [x86_64] 
+  - ghc-bytestring-devel: [x86_64] 
+  - ghc-bzlib-conduit: [x86_64] 
+  - ghc-bzlib-conduit-devel: [x86_64] 
+  - ghc-cabal-doctest: [x86_64] 
+  - ghc-cabal-doctest-devel: [x86_64] 
+  - ghc-cabal-plan: [x86_64] 
+  - ghc-cabal-plan-devel: [x86_64] 
+  - ghc-cabal2spec: [x86_64] 
+  - ghc-cabal2spec-devel: [x86_64] 
+  - ghc-call-stack: [x86_64] 
+  - ghc-call-stack-devel: [x86_64] 
+  - ghc-canonical-json: [x86_64] 
+  - ghc-canonical-json-devel: [x86_64] 
+  - ghc-case-insensitive: [x86_64] 
+  - ghc-case-insensitive-devel: [x86_64] 
+  - ghc-casing: [x86_64] 
+  - ghc-casing-devel: [x86_64] 
+  - ghc-cassava: [x86_64] 
+  - ghc-cassava-devel: [x86_64] 
+  - ghc-cassava-megaparsec: [x86_64] 
+  - ghc-cassava-megaparsec-devel: [x86_64] 
+  - ghc-cborg: [x86_64] 
+  - ghc-cborg-devel: [x86_64] 
+  - ghc-cborg-json: [x86_64] 
+  - ghc-cborg-json-devel: [x86_64] 
+  - ghc-cereal: [x86_64] 
+  - ghc-cereal-devel: [x86_64] 
+  - ghc-charset: [x86_64] 
+  - ghc-charset-devel: [x86_64] 
+  - ghc-cipher-aes: [x86_64] 
+  - ghc-cipher-aes-devel: [x86_64] 
+  - ghc-citeproc: [x86_64] 
+  - ghc-citeproc-devel: [x86_64] 
+  - ghc-clay: [x86_64] 
+  - ghc-clay-devel: [x86_64] 
+  - ghc-clientsession: [x86_64] 
+  - ghc-clientsession-devel: [x86_64] 
+  - ghc-clock: [x86_64] 
+  - ghc-clock-devel: [x86_64] 
+  - ghc-cmark-gfm: [x86_64] 
+  - ghc-cmark-gfm-devel: [x86_64] 
+  - ghc-cmdargs: [x86_64] 
+  - ghc-cmdargs-devel: [x86_64] 
+  - ghc-colour: [x86_64] 
+  - ghc-colour-devel: [x86_64] 
+  - ghc-commonmark: [x86_64] 
+  - ghc-commonmark-devel: [x86_64] 
+  - ghc-commonmark-extensions: [x86_64] 
+  - ghc-commonmark-extensions-devel: [x86_64] 
+  - ghc-commonmark-pandoc: [x86_64] 
+  - ghc-commonmark-pandoc-devel: [x86_64] 
+  - ghc-comonad: [x86_64] 
+  - ghc-comonad-devel: [x86_64] 
+  - ghc-compiler: [x86_64] 
+  - ghc-concurrency: [x86_64] 
+  - ghc-concurrency-devel: [x86_64] 
+  - ghc-concurrent-output: [x86_64] 
+  - ghc-concurrent-output-devel: [x86_64] 
+  - ghc-conduit: [x86_64] 
+  - ghc-conduit-combinators: [x86_64] 
+  - ghc-conduit-combinators-devel: [x86_64] 
+  - ghc-conduit-devel: [x86_64] 
+  - ghc-conduit-extra: [x86_64] 
+  - ghc-conduit-extra-devel: [x86_64] 
+  - ghc-conduit-zstd: [x86_64] 
+  - ghc-conduit-zstd-devel: [x86_64] 
+  - ghc-config-ini: [x86_64] 
+  - ghc-config-ini-devel: [x86_64] 
+  - ghc-connection: [x86_64] 
+  - ghc-connection-devel: [x86_64] 
+  - ghc-constraints: [x86_64] 
+  - ghc-constraints-devel: [x86_64] 
+  - ghc-containers: [x86_64] 
+  - ghc-containers-devel: [x86_64] 
+  - ghc-contravariant: [x86_64] 
+  - ghc-contravariant-devel: [x86_64] 
+  - ghc-control-monad-free: [x86_64] 
+  - ghc-control-monad-free-devel: [x86_64] 
+  - ghc-cookie: [x86_64] 
+  - ghc-cookie-devel: [x86_64] 
+  - ghc-cpphs: [x86_64] 
+  - ghc-cpphs-devel: [x86_64] 
+  - ghc-cprng-aes: [x86_64] 
+  - ghc-cprng-aes-devel: [x86_64] 
+  - ghc-crypto-api: [x86_64] 
+  - ghc-crypto-api-devel: [x86_64] 
+  - ghc-crypto-cipher-types: [x86_64] 
+  - ghc-crypto-cipher-types-devel: [x86_64] 
+  - ghc-crypto-pubkey-types: [x86_64] 
+  - ghc-crypto-pubkey-types-devel: [x86_64] 
+  - ghc-crypto-random: [x86_64] 
+  - ghc-crypto-random-devel: [x86_64] 
+  - ghc-cryptohash: [x86_64] 
+  - ghc-cryptohash-conduit: [x86_64] 
+  - ghc-cryptohash-conduit-devel: [x86_64] 
+  - ghc-cryptohash-devel: [x86_64] 
+  - ghc-cryptohash-md5: [x86_64] 
+  - ghc-cryptohash-md5-devel: [x86_64] 
+  - ghc-cryptohash-sha1: [x86_64] 
+  - ghc-cryptohash-sha1-devel: [x86_64] 
+  - ghc-cryptohash-sha256: [x86_64] 
+  - ghc-cryptohash-sha256-devel: [x86_64] 
+  - ghc-cryptonite: [x86_64] 
+  - ghc-cryptonite-conduit: [x86_64] 
+  - ghc-cryptonite-conduit-devel: [x86_64] 
+  - ghc-cryptonite-devel: [x86_64] 
+  - ghc-css-text: [x86_64] 
+  - ghc-css-text-devel: [x86_64] 
+  - ghc-csv: [x86_64] 
+  - ghc-csv-devel: [x86_64] 
+  - ghc-data-clist: [x86_64] 
+  - ghc-data-clist-devel: [x86_64] 
+  - ghc-data-default: [x86_64] 
+  - ghc-data-default-class: [x86_64] 
+  - ghc-data-default-class-devel: [x86_64] 
+  - ghc-data-default-devel: [x86_64] 
+  - ghc-data-default-instances-containers: [x86_64] 
+  - ghc-data-default-instances-containers-devel: [x86_64] 
+  - ghc-data-default-instances-dlist: [x86_64] 
+  - ghc-data-default-instances-dlist-devel: [x86_64] 
+  - ghc-data-default-instances-old-locale: [x86_64] 
+  - ghc-data-default-instances-old-locale-devel: [x86_64] 
+  - ghc-data-fix: [x86_64] 
+  - ghc-data-fix-devel: [x86_64] 
+  - ghc-dbus: [x86_64] 
+  - ghc-dbus-devel: [x86_64] 
+  - ghc-dec: [x86_64] 
+  - ghc-dec-devel: [x86_64] 
+  - ghc-deepseq: [x86_64] 
+  - ghc-deepseq-devel: [x86_64] 
+  - ghc-dense-linear-algebra: [x86_64] 
+  - ghc-dense-linear-algebra-devel: [x86_64] 
+  - ghc-dhall: [x86_64] 
+  - ghc-dhall-devel: [x86_64] 
+  - ghc-dhall-json: [x86_64] 
+  - ghc-dhall-json-devel: [x86_64] 
+  - ghc-dhall-yaml: [x86_64] 
+  - ghc-dhall-yaml-devel: [x86_64] 
+  - ghc-digest: [x86_64] 
+  - ghc-digest-devel: [x86_64] 
+  - ghc-directory: [x86_64] 
+  - ghc-directory-devel: [x86_64] 
+  - ghc-disk-free-space: [x86_64] 
+  - ghc-disk-free-space-devel: [x86_64] 
+  - ghc-distribution-opensuse: [x86_64] 
+  - ghc-distribution-opensuse-devel: [x86_64] 
+  - ghc-distributive: [x86_64] 
+  - ghc-distributive-devel: [x86_64] 
+  - ghc-dlist: [x86_64] 
+  - ghc-dlist-devel: [x86_64] 
+  - ghc-dns: [x86_64] 
+  - ghc-dns-devel: [x86_64] 
+  - ghc-doclayout: [x86_64] 
+  - ghc-doclayout-devel: [x86_64] 
+  - ghc-doctemplates: [x86_64] 
+  - ghc-doctemplates-devel: [x86_64] 
+  - ghc-dotgen: [x86_64] 
+  - ghc-dotgen-devel: [x86_64] 
+  - ghc-double-conversion: [x86_64] 
+  - ghc-double-conversion-devel: [x86_64] 
+  - ghc-easy-file: [x86_64] 
+  - ghc-easy-file-devel: [x86_64] 
+  - ghc-echo: [x86_64] 
+  - ghc-echo-devel: [x86_64] 
+  - ghc-ed25519: [x86_64] 
+  - ghc-ed25519-devel: [x86_64] 
+  - ghc-edit-distance: [x86_64] 
+  - ghc-edit-distance-devel: [x86_64] 
+  - ghc-either: [x86_64] 
+  - ghc-either-devel: [x86_64] 
+  - ghc-ekg: [x86_64] 
+  - ghc-ekg-core: [x86_64] 
+  - ghc-ekg-core-devel: [x86_64] 
+  - ghc-ekg-devel: [x86_64] 
+  - ghc-ekg-json: [x86_64] 
+  - ghc-ekg-json-devel: [x86_64] 
+  - ghc-email-validate: [x86_64] 
+  - ghc-email-validate-devel: [x86_64] 
+  - ghc-emojis: [x86_64] 
+  - ghc-emojis-devel: [x86_64] 
+  - ghc-enclosed-exceptions: [x86_64] 
+  - ghc-enclosed-exceptions-devel: [x86_64] 
+  - ghc-entropy: [x86_64] 
+  - ghc-entropy-devel: [x86_64] 
+  - ghc-erf: [x86_64] 
+  - ghc-erf-devel: [x86_64] 
+  - ghc-errors: [x86_64] 
+  - ghc-errors-devel: [x86_64] 
+  - ghc-exceptions: [x86_64] 
+  - ghc-exceptions-devel: [x86_64] 
+  - ghc-extensible-exceptions: [x86_64] 
+  - ghc-extensible-exceptions-devel: [x86_64] 
+  - ghc-extra: [x86_64] 
+  - ghc-extra-devel: [x86_64] 
+  - ghc-fail: [x86_64] 
+  - ghc-fail-devel: [x86_64] 
+  - ghc-fast-logger: [x86_64] 
+  - ghc-fast-logger-devel: [x86_64] 
+  - ghc-fdo-notify: [x86_64] 
+  - ghc-fdo-notify-devel: [x86_64] 
+  - ghc-feed: [x86_64] 
+  - ghc-feed-devel: [x86_64] 
+  - ghc-fgl: [x86_64] 
+  - ghc-fgl-devel: [x86_64] 
+  - ghc-file-embed: [x86_64] 
+  - ghc-file-embed-devel: [x86_64] 
+  - ghc-filelock: [x86_64] 
+  - ghc-filelock-devel: [x86_64] 
+  - ghc-filemanip: [x86_64] 
+  - ghc-filemanip-devel: [x86_64] 
+  - ghc-filepath: [x86_64] 
+  - ghc-filepath-bytestring: [x86_64] 
+  - ghc-filepath-bytestring-devel: [x86_64] 
+  - ghc-filepath-devel: [x86_64] 
+  - ghc-filepattern: [x86_64] 
+  - ghc-filepattern-devel: [x86_64] 
+  - ghc-filtrable: [x86_64] 
+  - ghc-filtrable-devel: [x86_64] 
+  - ghc-fingertree: [x86_64] 
+  - ghc-fingertree-devel: [x86_64] 
+  - ghc-fmt: [x86_64] 
+  - ghc-fmt-devel: [x86_64] 
+  - ghc-foldl: [x86_64] 
+  - ghc-foldl-devel: [x86_64] 
+  - ghc-formatting: [x86_64] 
+  - ghc-formatting-devel: [x86_64] 
+  - ghc-foundation: [x86_64] 
+  - ghc-foundation-devel: [x86_64] 
+  - ghc-free: [x86_64] 
+  - ghc-free-devel: [x86_64] 
+  - ghc-fsnotify: [x86_64] 
+  - ghc-fsnotify-devel: [x86_64] 
+  - ghc-generic-data: [x86_64] 
+  - ghc-generic-data-devel: [x86_64] 
+  - ghc-generic-deriving: [x86_64] 
+  - ghc-generic-deriving-devel: [x86_64] 
+  - ghc-generic-lens: [x86_64] 
+  - ghc-generic-lens-core: [x86_64] 
+  - ghc-generic-lens-core-devel: [x86_64] 
+  - ghc-generic-lens-devel: [x86_64] 
+  - ghc-ghc: [x86_64] 
+  - ghc-ghc-boot: [x86_64] 
+  - ghc-ghc-boot-devel: [x86_64] 
+  - ghc-ghc-boot-th: [x86_64] 
+  - ghc-ghc-boot-th-devel: [x86_64] 
+  - ghc-ghc-byteorder: [x86_64] 
+  - ghc-ghc-byteorder-devel: [x86_64] 
+  - ghc-ghc-compact: [x86_64] 
+  - ghc-ghc-compact-devel: [x86_64] 
+  - ghc-ghc-devel: [x86_64] 
+  - ghc-ghc-heap: [x86_64] 
+  - ghc-ghc-heap-devel: [x86_64] 
+  - ghc-ghc-lib-parser-ex: [x86_64] 
+  - ghc-ghc-lib-parser-ex-devel: [x86_64] 
+  - ghc-ghc-paths: [x86_64] 
+  - ghc-ghc-paths-devel: [x86_64] 
+  - ghc-ghci: [x86_64] 
+  - ghc-ghci-devel: [x86_64] 
+  - ghc-ghcid: [x86_64] 
+  - ghc-ghcid-devel: [x86_64] 
+  - ghc-git-lfs: [x86_64] 
+  - ghc-git-lfs-devel: [x86_64] 
+  - ghc-githash: [x86_64] 
+  - ghc-githash-devel: [x86_64] 
+  - ghc-gitrev: [x86_64] 
+  - ghc-gitrev-devel: [x86_64] 
+  - ghc-gray-code: [x86_64] 
+  - ghc-gray-code-devel: [x86_64] 
+  - ghc-groups: [x86_64] 
+  - ghc-groups-devel: [x86_64] 
+  - ghc-hackage-security: [x86_64] 
+  - ghc-hackage-security-devel: [x86_64] 
+  - ghc-haddock-library: [x86_64] 
+  - ghc-haddock-library-devel: [x86_64] 
+  - ghc-half: [x86_64] 
+  - ghc-half-devel: [x86_64] 
+  - ghc-hashable: [x86_64] 
+  - ghc-hashable-devel: [x86_64] 
+  - ghc-hashtables: [x86_64] 
+  - ghc-hashtables-devel: [x86_64] 
+  - ghc-haskeline: [x86_64] 
+  - ghc-haskeline-devel: [x86_64] 
+  - ghc-haskell-lexer: [x86_64] 
+  - ghc-haskell-lexer-devel: [x86_64] 
+  - ghc-heaps: [x86_64] 
+  - ghc-heaps-devel: [x86_64] 
+  - ghc-hedgehog: [x86_64] 
+  - ghc-hedgehog-devel: [x86_64] 
+  - ghc-hi-file-parser: [x86_64] 
+  - ghc-hi-file-parser-devel: [x86_64] 
+  - ghc-hinotify: [x86_64] 
+  - ghc-hinotify-devel: [x86_64] 
+  - ghc-hjsmin: [x86_64] 
+  - ghc-hjsmin-devel: [x86_64] 
+  - ghc-hledger: [x86_64] 
+  - ghc-hledger-devel: [x86_64] 
+  - ghc-hledger-lib: [x86_64] 
+  - ghc-hledger-lib-devel: [x86_64] 
+  - ghc-hlint: [x86_64] 
+  - ghc-hlint-devel: [x86_64] 
+  - ghc-hostname: [x86_64] 
+  - ghc-hostname-devel: [x86_64] 
+  - ghc-hourglass: [x86_64] 
+  - ghc-hourglass-devel: [x86_64] 
+  - ghc-hpack: [x86_64] 
+  - ghc-hpack-devel: [x86_64] 
+  - ghc-hpc: [x86_64] 
+  - ghc-hpc-devel: [x86_64] 
+  - ghc-hs-bibutils: [x86_64] 
+  - ghc-hs-bibutils-devel: [x86_64] 
+  - ghc-hscolour: [x86_64] 
+  - ghc-hscolour-devel: [x86_64] 
+  - ghc-hsemail: [x86_64] 
+  - ghc-hsemail-devel: [x86_64] 
+  - ghc-hslogger: [x86_64] 
+  - ghc-hslogger-devel: [x86_64] 
+  - ghc-hslua: [x86_64] 
+  - ghc-hslua-devel: [x86_64] 
+  - ghc-hslua-module-system: [x86_64] 
+  - ghc-hslua-module-system-devel: [x86_64] 
+  - ghc-hslua-module-text: [x86_64] 
+  - ghc-hslua-module-text-devel: [x86_64] 
+  - ghc-hspec: [x86_64] 
+  - ghc-hspec-core: [x86_64] 
+  - ghc-hspec-core-devel: [x86_64] 
+  - ghc-hspec-devel: [x86_64] 
+  - ghc-hspec-discover: [x86_64] 
+  - ghc-hspec-discover-devel: [x86_64] 
+  - ghc-hspec-expectations: [x86_64] 
+  - ghc-hspec-expectations-devel: [x86_64] 
+  - ghc-hspec-golden-aeson: [x86_64] 
+  - ghc-hspec-golden-aeson-devel: [x86_64] 
+  - ghc-hspec-smallcheck: [x86_64] 
+  - ghc-hspec-smallcheck-devel: [x86_64] 
+  - ghc-hsyslog: [x86_64] 
+  - ghc-hsyslog-devel: [x86_64] 
+  - ghc-html: [x86_64] 
+  - ghc-html-devel: [x86_64] 
+  - ghc-http-api-data: [x86_64] 
+  - ghc-http-api-data-devel: [x86_64] 
+  - ghc-http-client: [x86_64] 
+  - ghc-http-client-devel: [x86_64] 
+  - ghc-http-client-restricted: [x86_64] 
+  - ghc-http-client-restricted-devel: [x86_64] 
+  - ghc-http-client-tls: [x86_64] 
+  - ghc-http-client-tls-devel: [x86_64] 
+  - ghc-http-conduit: [x86_64] 
+  - ghc-http-conduit-devel: [x86_64] 
+  - ghc-http-date: [x86_64] 
+  - ghc-http-date-devel: [x86_64] 
+  - ghc-http-media: [x86_64] 
+  - ghc-http-media-devel: [x86_64] 
+  - ghc-http-types: [x86_64] 
+  - ghc-http-types-devel: [x86_64] 
+  - ghc-http2: [x86_64] 
+  - ghc-http2-devel: [x86_64] 
+  - ghc-hxt: [x86_64] 
+  - ghc-hxt-charproperties: [x86_64] 
+  - ghc-hxt-charproperties-devel: [x86_64] 
+  - ghc-hxt-devel: [x86_64] 
+  - ghc-hxt-regex-xmlschema: [x86_64] 
+  - ghc-hxt-regex-xmlschema-devel: [x86_64] 
+  - ghc-hxt-unicode: [x86_64] 
+  - ghc-hxt-unicode-devel: [x86_64] 
+  - ghc-indexed-profunctors: [x86_64] 
+  - ghc-indexed-profunctors-devel: [x86_64] 
+  - ghc-indexed-traversable: [x86_64] 
+  - ghc-indexed-traversable-devel: [x86_64] 
+  - ghc-infer-license: [x86_64] 
+  - ghc-infer-license-devel: [x86_64] 
+  - ghc-integer-logarithms: [x86_64] 
+  - ghc-integer-logarithms-devel: [x86_64] 
+  - ghc-intern: [x86_64] 
+  - ghc-intern-devel: [x86_64] 
+  - ghc-invariant: [x86_64] 
+  - ghc-invariant-devel: [x86_64] 
+  - ghc-io-streams: [x86_64] 
+  - ghc-io-streams-devel: [x86_64] 
+  - ghc-io-streams-haproxy: [x86_64] 
+  - ghc-io-streams-haproxy-devel: [x86_64] 
+  - ghc-iproute: [x86_64] 
+  - ghc-iproute-devel: [x86_64] 
+  - ghc-ipynb: [x86_64] 
+  - ghc-ipynb-devel: [x86_64] 
+  - ghc-iso8601-time: [x86_64] 
+  - ghc-iso8601-time-devel: [x86_64] 
+  - ghc-iwlib: [x86_64] 
+  - ghc-iwlib-devel: [x86_64] 
+  - ghc-jira-wiki-markup: [x86_64] 
+  - ghc-jira-wiki-markup-devel: [x86_64] 
+  - ghc-js-dgtable: [x86_64] 
+  - ghc-js-dgtable-devel: [x86_64] 
+  - ghc-js-flot: [x86_64] 
+  - ghc-js-flot-devel: [x86_64] 
+  - ghc-js-jquery: [x86_64] 
+  - ghc-js-jquery-devel: [x86_64] 
+  - ghc-kan-extensions: [x86_64] 
+  - ghc-kan-extensions-devel: [x86_64] 
+  - ghc-katip: [x86_64] 
+  - ghc-katip-devel: [x86_64] 
+  - ghc-language-c: [x86_64] 
+  - ghc-language-c-devel: [x86_64] 
+  - ghc-language-javascript: [x86_64] 
+  - ghc-language-javascript-devel: [x86_64] 
+  - ghc-lens: [x86_64] 
+  - ghc-lens-aeson: [x86_64] 
+  - ghc-lens-aeson-devel: [x86_64] 
+  - ghc-lens-devel: [x86_64] 
+  - ghc-lens-family-core: [x86_64] 
+  - ghc-lens-family-core-devel: [x86_64] 
+  - ghc-libiserv: [x86_64] 
+  - ghc-libiserv-devel: [x86_64] 
+  - ghc-libmpd: [x86_64] 
+  - ghc-libmpd-devel: [x86_64] 
+  - ghc-libraries: [x86_64] 
+  - ghc-libsystemd-journal: [x86_64] 
+  - ghc-libsystemd-journal-devel: [x86_64] 
+  - ghc-libxml-sax: [x86_64] 
+  - ghc-libxml-sax-devel: [x86_64] 
+  - ghc-libyaml: [x86_64] 
+  - ghc-libyaml-devel: [x86_64] 
+  - ghc-lifted-async: [x86_64] 
+  - ghc-lifted-async-devel: [x86_64] 
+  - ghc-lifted-base: [x86_64] 
+  - ghc-lifted-base-devel: [x86_64] 
+  - ghc-liquid-fixpoint: [x86_64] 
+  - ghc-liquid-fixpoint-devel: [x86_64] 
+  - ghc-liquidhaskell: [x86_64] 
+  - ghc-liquidhaskell-devel: [x86_64] 
+  - ghc-logict: [x86_64] 
+  - ghc-logict-devel: [x86_64] 
+  - ghc-lucid: [x86_64] 
+  - ghc-lucid-devel: [x86_64] 
+  - ghc-lukko: [x86_64] 
+  - ghc-lukko-devel: [x86_64] 
+  - ghc-magic: [x86_64] 
+  - ghc-magic-devel: [x86_64] 
+  - ghc-managed: [x86_64] 
+  - ghc-managed-devel: [x86_64] 
+  - ghc-math-functions: [x86_64] 
+  - ghc-math-functions-devel: [x86_64] 
+  - ghc-megaparsec: [x86_64] 
+  - ghc-megaparsec-devel: [x86_64] 
+  - ghc-memory: [x86_64] 
+  - ghc-memory-devel: [x86_64] 
+  - ghc-mersenne-random-pure64: [x86_64] 
+  - ghc-mersenne-random-pure64-devel: [x86_64] 
+  - ghc-microlens: [x86_64] 
+  - ghc-microlens-devel: [x86_64] 
+  - ghc-microlens-ghc: [x86_64] 
+  - ghc-microlens-ghc-devel: [x86_64] 
+  - ghc-microlens-mtl: [x86_64] 
+  - ghc-microlens-mtl-devel: [x86_64] 
+  - ghc-microlens-platform: [x86_64] 
+  - ghc-microlens-platform-devel: [x86_64] 
+  - ghc-microlens-th: [x86_64] 
+  - ghc-microlens-th-devel: [x86_64] 
+  - ghc-mime-types: [x86_64] 
+  - ghc-mime-types-devel: [x86_64] 
+  - ghc-mintty: [x86_64] 
+  - ghc-mintty-devel: [x86_64] 
+  - ghc-mmorph: [x86_64] 
+  - ghc-mmorph-devel: [x86_64] 
+  - ghc-monad-control: [x86_64] 
+  - ghc-monad-control-devel: [x86_64] 
+  - ghc-monad-logger: [x86_64] 
+  - ghc-monad-logger-devel: [x86_64] 
+  - ghc-monad-loops: [x86_64] 
+  - ghc-monad-loops-devel: [x86_64] 
+  - ghc-monad-par: [x86_64] 
+  - ghc-monad-par-devel: [x86_64] 
+  - ghc-monad-par-extras: [x86_64] 
+  - ghc-monad-par-extras-devel: [x86_64] 
+  - ghc-mono-traversable: [x86_64] 
+  - ghc-mono-traversable-devel: [x86_64] 
+  - ghc-moo: [x86_64] 
+  - ghc-moo-devel: [x86_64] 
+  - ghc-mountpoints: [x86_64] 
+  - ghc-mountpoints-devel: [x86_64] 
+  - ghc-mtl: [x86_64] 
+  - ghc-mtl-compat: [x86_64] 
+  - ghc-mtl-compat-devel: [x86_64] 
+  - ghc-mtl-devel: [x86_64] 
+  - ghc-mustache: [x86_64] 
+  - ghc-mustache-devel: [x86_64] 
+  - ghc-mwc-random: [x86_64] 
+  - ghc-mwc-random-devel: [x86_64] 
+  - ghc-neat-interpolation: [x86_64] 
+  - ghc-neat-interpolation-devel: [x86_64] 
+  - ghc-netlink: [x86_64] 
+  - ghc-netlink-devel: [x86_64] 
+  - ghc-network: [x86_64] 
+  - ghc-network-bsd: [x86_64] 
+  - ghc-network-bsd-devel: [x86_64] 
+  - ghc-network-byte-order: [x86_64] 
+  - ghc-network-byte-order-devel: [x86_64] 
+  - ghc-network-devel: [x86_64] 
+  - ghc-network-info: [x86_64] 
+  - ghc-network-info-devel: [x86_64] 
+  - ghc-network-multicast: [x86_64] 
+  - ghc-network-multicast-devel: [x86_64] 
+  - ghc-network-uri: [x86_64] 
+  - ghc-network-uri-devel: [x86_64] 
+  - ghc-nothunks: [x86_64] 
+  - ghc-nothunks-devel: [x86_64] 
+  - ghc-old-locale: [x86_64] 
+  - ghc-old-locale-devel: [x86_64] 
+  - ghc-old-time: [x86_64] 
+  - ghc-old-time-devel: [x86_64] 
+  - ghc-open-browser: [x86_64] 
+  - ghc-open-browser-devel: [x86_64] 
+  - ghc-optics: [x86_64] 
+  - ghc-optics-core: [x86_64] 
+  - ghc-optics-core-devel: [x86_64] 
+  - ghc-optics-devel: [x86_64] 
+  - ghc-optics-extra: [x86_64] 
+  - ghc-optics-extra-devel: [x86_64] 
+  - ghc-optics-th: [x86_64] 
+  - ghc-optics-th-devel: [x86_64] 
+  - ghc-optional-args: [x86_64] 
+  - ghc-optional-args-devel: [x86_64] 
+  - ghc-optparse-applicative: [x86_64] 
+  - ghc-optparse-applicative-devel: [x86_64] 
+  - ghc-optparse-generic: [x86_64] 
+  - ghc-optparse-generic-devel: [x86_64] 
+  - ghc-optparse-simple: [x86_64] 
+  - ghc-optparse-simple-devel: [x86_64] 
+  - ghc-pandoc: [x86_64] 
+  - ghc-pandoc-devel: [x86_64] 
+  - ghc-pandoc-types: [x86_64] 
+  - ghc-pandoc-types-devel: [x86_64] 
+  - ghc-parallel: [x86_64] 
+  - ghc-parallel-devel: [x86_64] 
+  - ghc-parsec: [x86_64] 
+  - ghc-parsec-class: [x86_64] 
+  - ghc-parsec-class-devel: [x86_64] 
+  - ghc-parsec-devel: [x86_64] 
+  - ghc-parsec-numbers: [x86_64] 
+  - ghc-parsec-numbers-devel: [x86_64] 
+  - ghc-parser-combinators: [x86_64] 
+  - ghc-parser-combinators-devel: [x86_64] 
+  - ghc-parsers: [x86_64] 
+  - ghc-parsers-devel: [x86_64] 
+  - ghc-partial-order: [x86_64] 
+  - ghc-partial-order-devel: [x86_64] 
+  - ghc-path: [x86_64] 
+  - ghc-path-devel: [x86_64] 
+  - ghc-path-io: [x86_64] 
+  - ghc-path-io-devel: [x86_64] 
+  - ghc-path-pieces: [x86_64] 
+  - ghc-path-pieces-devel: [x86_64] 
+  - ghc-pem: [x86_64] 
+  - ghc-pem-devel: [x86_64] 
+  - ghc-persistent: [x86_64] 
+  - ghc-persistent-devel: [x86_64] 
+  - ghc-persistent-sqlite: [x86_64] 
+  - ghc-persistent-sqlite-devel: [x86_64] 
+  - ghc-persistent-template: [x86_64] 
+  - ghc-persistent-template-devel: [x86_64] 
+  - ghc-pipes: [x86_64] 
+  - ghc-pipes-devel: [x86_64] 
+  - ghc-pipes-safe: [x86_64] 
+  - ghc-pipes-safe-devel: [x86_64] 
+  - ghc-polyparse: [x86_64] 
+  - ghc-polyparse-devel: [x86_64] 
+  - ghc-postgresql-libpq: [x86_64] 
+  - ghc-postgresql-libpq-devel: [x86_64] 
+  - ghc-postgresql-simple: [x86_64] 
+  - ghc-postgresql-simple-devel: [x86_64] 
+  - ghc-pretty: [x86_64] 
+  - ghc-pretty-devel: [x86_64] 
+  - ghc-pretty-hex: [x86_64] 
+  - ghc-pretty-hex-devel: [x86_64] 
+  - ghc-pretty-show: [x86_64] 
+  - ghc-pretty-show-devel: [x86_64] 
+  - ghc-pretty-simple: [x86_64] 
+  - ghc-pretty-simple-devel: [x86_64] 
+  - ghc-prettyprinter: [x86_64] 
+  - ghc-prettyprinter-ansi-terminal: [x86_64] 
+  - ghc-prettyprinter-ansi-terminal-devel: [x86_64] 
+  - ghc-prettyprinter-devel: [x86_64] 
+  - ghc-primitive: [x86_64] 
+  - ghc-primitive-devel: [x86_64] 
+  - ghc-process: [x86_64] 
+  - ghc-process-devel: [x86_64] 
+  - ghc-profunctors: [x86_64] 
+  - ghc-profunctors-devel: [x86_64] 
+  - ghc-protolude: [x86_64] 
+  - ghc-protolude-devel: [x86_64] 
+  - ghc-psqueues: [x86_64] 
+  - ghc-psqueues-devel: [x86_64] 
+  - ghc-quickcheck-arbitrary-adt: [x86_64] 
+  - ghc-quickcheck-arbitrary-adt-devel: [x86_64] 
+  - ghc-quickcheck-io: [x86_64] 
+  - ghc-quickcheck-io-devel: [x86_64] 
+  - ghc-quiet: [x86_64] 
+  - ghc-quiet-devel: [x86_64] 
+  - ghc-random: [x86_64] 
+  - ghc-random-devel: [x86_64] 
+  - ghc-random-shuffle: [x86_64] 
+  - ghc-random-shuffle-devel: [x86_64] 
+  - ghc-readable: [x86_64] 
+  - ghc-readable-devel: [x86_64] 
+  - ghc-recursion-schemes: [x86_64] 
+  - ghc-recursion-schemes-devel: [x86_64] 
+  - ghc-reducers: [x86_64] 
+  - ghc-reducers-devel: [x86_64] 
+  - ghc-refact: [x86_64] 
+  - ghc-refact-devel: [x86_64] 
+  - ghc-reflection: [x86_64] 
+  - ghc-reflection-devel: [x86_64] 
+  - ghc-regex-applicative: [x86_64] 
+  - ghc-regex-applicative-devel: [x86_64] 
+  - ghc-regex-applicative-text: [x86_64] 
+  - ghc-regex-applicative-text-devel: [x86_64] 
+  - ghc-regex-base: [x86_64] 
+  - ghc-regex-base-devel: [x86_64] 
+  - ghc-regex-compat: [x86_64] 
+  - ghc-regex-compat-devel: [x86_64] 
+  - ghc-regex-pcre-builtin: [x86_64] 
+  - ghc-regex-pcre-builtin-devel: [x86_64] 
+  - ghc-regex-posix: [x86_64] 
+  - ghc-regex-posix-devel: [x86_64] 
+  - ghc-regex-tdfa: [x86_64] 
+  - ghc-regex-tdfa-devel: [x86_64] 
+  - ghc-repline: [x86_64] 
+  - ghc-repline-devel: [x86_64] 
+  - ghc-resolv: [x86_64] 
+  - ghc-resolv-devel: [x86_64] 
+  - ghc-resource-pool: [x86_64] 
+  - ghc-resource-pool-devel: [x86_64] 
+  - ghc-resourcet: [x86_64] 
+  - ghc-resourcet-devel: [x86_64] 
+  - ghc-retry: [x86_64] 
+  - ghc-retry-devel: [x86_64] 
+  - ghc-rfc5051: [x86_64] 
+  - ghc-rfc5051-devel: [x86_64] 
+  - ghc-rio: [x86_64] 
+  - ghc-rio-devel: [x86_64] 
+  - ghc-rio-orphans: [x86_64] 
+  - ghc-rio-orphans-devel: [x86_64] 
+  - ghc-rio-prettyprint: [x86_64] 
+  - ghc-rio-prettyprint-devel: [x86_64] 
   - ghc-rpm-macros 
   - ghc-rpm-macros-extra 
-  - ghc-safe 
-  - ghc-safe-devel 
-  - ghc-safe-exceptions 
-  - ghc-safe-exceptions-devel 
-  - ghc-sandi 
-  - ghc-sandi-devel 
-  - ghc-scientific 
-  - ghc-scientific-devel 
-  - ghc-securemem 
-  - ghc-securemem-devel 
-  - ghc-semialign 
-  - ghc-semialign-devel 
-  - ghc-semigroupoids 
-  - ghc-semigroupoids-devel 
-  - ghc-semigroups 
-  - ghc-semigroups-devel 
-  - ghc-serialise 
-  - ghc-serialise-devel 
-  - ghc-setenv 
-  - ghc-setenv-devel 
-  - ghc-setlocale 
-  - ghc-setlocale-devel 
-  - ghc-shake 
-  - ghc-shake-devel 
-  - ghc-shakespeare 
-  - ghc-shakespeare-devel 
-  - ghc-shelly 
-  - ghc-shelly-devel 
-  - ghc-show-combinators 
-  - ghc-show-combinators-devel 
-  - ghc-silently 
-  - ghc-silently-devel 
-  - ghc-simple-sendfile 
-  - ghc-simple-sendfile-devel 
-  - ghc-singleton-bool 
-  - ghc-singleton-bool-devel 
-  - ghc-skein 
-  - ghc-skein-devel 
-  - ghc-skylighting 
-  - ghc-skylighting-core 
-  - ghc-skylighting-core-devel 
-  - ghc-skylighting-devel 
-  - ghc-smallcheck 
-  - ghc-smallcheck-devel 
-  - ghc-snap-core 
-  - ghc-snap-core-devel 
-  - ghc-snap-server 
-  - ghc-snap-server-devel 
-  - ghc-socks 
-  - ghc-socks-devel 
-  - ghc-sop-core 
-  - ghc-sop-core-devel 
-  - ghc-split 
-  - ghc-split-devel 
-  - ghc-splitmix 
-  - ghc-splitmix-devel 
-  - ghc-statistics 
-  - ghc-statistics-devel 
-  - ghc-statistics-linreg 
-  - ghc-statistics-linreg-devel 
-  - ghc-stm 
-  - ghc-stm-chans 
-  - ghc-stm-chans-devel 
-  - ghc-stm-devel 
-  - ghc-store-core 
-  - ghc-store-core-devel 
-  - ghc-streaming 
-  - ghc-streaming-binary 
-  - ghc-streaming-binary-devel 
-  - ghc-streaming-bytestring 
-  - ghc-streaming-bytestring-devel 
-  - ghc-streaming-commons 
-  - ghc-streaming-commons-devel 
-  - ghc-streaming-devel 
-  - ghc-strict 
-  - ghc-strict-concurrency 
-  - ghc-strict-concurrency-devel 
-  - ghc-strict-devel 
-  - ghc-string-conv 
-  - ghc-string-conv-devel 
-  - ghc-syb 
-  - ghc-syb-devel 
-  - ghc-system-fileio 
-  - ghc-system-fileio-devel 
-  - ghc-system-filepath 
-  - ghc-system-filepath-devel 
-  - ghc-systemd 
-  - ghc-systemd-devel 
-  - ghc-tabular 
-  - ghc-tabular-devel 
-  - ghc-tagged 
-  - ghc-tagged-devel 
-  - ghc-tagsoup 
-  - ghc-tagsoup-devel 
-  - ghc-tar 
-  - ghc-tar-conduit 
-  - ghc-tar-conduit-devel 
-  - ghc-tar-devel 
-  - ghc-tasty 
-  - ghc-tasty-devel 
-  - ghc-tasty-hunit 
-  - ghc-tasty-hunit-devel 
-  - ghc-tasty-quickcheck 
-  - ghc-tasty-quickcheck-devel 
-  - ghc-tasty-rerun 
-  - ghc-tasty-rerun-devel 
-  - ghc-tdigest 
-  - ghc-tdigest-devel 
-  - ghc-template-haskell 
-  - ghc-template-haskell-devel 
-  - ghc-temporary 
-  - ghc-temporary-devel 
-  - ghc-terminal-size 
-  - ghc-terminal-size-devel 
-  - ghc-terminfo 
-  - ghc-terminfo-devel 
-  - ghc-test-framework 
-  - ghc-test-framework-devel 
-  - ghc-test-framework-hunit 
-  - ghc-test-framework-hunit-devel 
-  - ghc-texmath 
-  - ghc-texmath-devel 
-  - ghc-text 
-  - ghc-text-conversions 
-  - ghc-text-conversions-devel 
-  - ghc-text-devel 
-  - ghc-text-format 
-  - ghc-text-format-devel 
-  - ghc-text-manipulate 
-  - ghc-text-manipulate-devel 
-  - ghc-text-metrics 
-  - ghc-text-metrics-devel 
-  - ghc-text-short 
-  - ghc-text-short-devel 
-  - ghc-text-zipper 
-  - ghc-text-zipper-devel 
-  - ghc-tf-random 
-  - ghc-tf-random-devel 
-  - ghc-th-abstraction 
-  - ghc-th-abstraction-devel 
-  - ghc-th-compat 
-  - ghc-th-compat-devel 
-  - ghc-th-expand-syns 
-  - ghc-th-expand-syns-devel 
-  - ghc-th-lift 
-  - ghc-th-lift-devel 
-  - ghc-th-lift-instances 
-  - ghc-th-lift-instances-devel 
-  - ghc-th-orphans 
-  - ghc-th-orphans-devel 
-  - ghc-th-reify-many 
-  - ghc-th-reify-many-devel 
-  - ghc-th-utilities 
-  - ghc-th-utilities-devel 
-  - ghc-these 
-  - ghc-these-devel 
-  - ghc-threepenny-gui 
-  - ghc-threepenny-gui-devel 
-  - ghc-time 
-  - ghc-time-compat 
-  - ghc-time-compat-devel 
-  - ghc-time-devel 
-  - ghc-time-locale-compat 
-  - ghc-time-locale-compat-devel 
-  - ghc-time-manager 
-  - ghc-time-manager-devel 
-  - ghc-time-units 
-  - ghc-time-units-devel 
-  - ghc-timeit 
-  - ghc-timeit-devel 
-  - ghc-timezone-olson 
-  - ghc-timezone-olson-devel 
-  - ghc-timezone-series 
-  - ghc-timezone-series-devel 
-  - ghc-tls 
-  - ghc-tls-devel 
-  - ghc-tls-session-manager 
-  - ghc-tls-session-manager-devel 
-  - ghc-topograph 
-  - ghc-topograph-devel 
-  - ghc-torrent 
-  - ghc-torrent-devel 
-  - ghc-transformers 
-  - ghc-transformers-base 
-  - ghc-transformers-base-devel 
-  - ghc-transformers-compat 
-  - ghc-transformers-compat-devel 
-  - ghc-transformers-devel 
-  - ghc-transformers-except 
-  - ghc-transformers-except-devel 
-  - ghc-tree-diff 
-  - ghc-tree-diff-devel 
-  - ghc-turtle 
-  - ghc-turtle-devel 
-  - ghc-type-equality 
-  - ghc-type-equality-devel 
-  - ghc-typed-process 
-  - ghc-typed-process-devel 
-  - ghc-typerep-map 
-  - ghc-typerep-map-devel 
-  - ghc-uglymemo 
-  - ghc-uglymemo-devel 
-  - ghc-unbounded-delays 
-  - ghc-unbounded-delays-devel 
-  - ghc-unicode-transforms 
-  - ghc-unicode-transforms-devel 
-  - ghc-uniplate 
-  - ghc-uniplate-devel 
-  - ghc-unix 
-  - ghc-unix-bytestring 
-  - ghc-unix-bytestring-devel 
-  - ghc-unix-compat 
-  - ghc-unix-compat-devel 
-  - ghc-unix-devel 
-  - ghc-unix-time 
-  - ghc-unix-time-devel 
-  - ghc-unliftio 
-  - ghc-unliftio-core 
-  - ghc-unliftio-core-devel 
-  - ghc-unliftio-devel 
-  - ghc-unordered-containers 
-  - ghc-unordered-containers-devel 
-  - ghc-uri-encode 
-  - ghc-uri-encode-devel 
-  - ghc-utf8-string 
-  - ghc-utf8-string-devel 
-  - ghc-utility-ht 
-  - ghc-utility-ht-devel 
-  - ghc-uuid 
-  - ghc-uuid-devel 
-  - ghc-uuid-types 
-  - ghc-uuid-types-devel 
-  - ghc-vault 
-  - ghc-vault-devel 
-  - ghc-vector 
-  - ghc-vector-algorithms 
-  - ghc-vector-algorithms-devel 
-  - ghc-vector-binary-instances 
-  - ghc-vector-binary-instances-devel 
-  - ghc-vector-builder 
-  - ghc-vector-builder-devel 
-  - ghc-vector-devel 
-  - ghc-vector-th-unbox 
-  - ghc-vector-th-unbox-devel 
-  - ghc-void 
-  - ghc-void-devel 
-  - ghc-vty 
-  - ghc-vty-devel 
-  - ghc-wai 
-  - ghc-wai-app-static 
-  - ghc-wai-app-static-devel 
-  - ghc-wai-devel 
-  - ghc-wai-extra 
-  - ghc-wai-extra-devel 
-  - ghc-wai-logger 
-  - ghc-wai-logger-devel 
-  - ghc-warp 
-  - ghc-warp-devel 
-  - ghc-warp-tls 
-  - ghc-warp-tls-devel 
-  - ghc-wcwidth 
-  - ghc-wcwidth-devel 
-  - ghc-websockets 
-  - ghc-websockets-devel 
-  - ghc-websockets-snap 
-  - ghc-websockets-snap-devel 
-  - ghc-weeder 
-  - ghc-weeder-devel 
-  - ghc-wizards 
-  - ghc-wizards-devel 
-  - ghc-wl-pprint-annotated 
-  - ghc-wl-pprint-annotated-devel 
-  - ghc-word-wrap 
-  - ghc-word-wrap-devel 
-  - ghc-word8 
-  - ghc-word8-devel 
-  - ghc-x509 
-  - ghc-x509-devel 
-  - ghc-x509-store 
-  - ghc-x509-store-devel 
-  - ghc-x509-system 
-  - ghc-x509-system-devel 
-  - ghc-x509-validation 
-  - ghc-x509-validation-devel 
-  - ghc-xhtml 
-  - ghc-xhtml-devel 
-  - ghc-xml 
-  - ghc-xml-conduit 
-  - ghc-xml-conduit-devel 
-  - ghc-xml-devel 
-  - ghc-xml-hamlet 
-  - ghc-xml-hamlet-devel 
-  - ghc-xml-types 
-  - ghc-xml-types-devel 
-  - ghc-xmobar 
-  - ghc-xmobar-devel 
-  - ghc-xmonad 
-  - ghc-xmonad-contrib 
-  - ghc-xmonad-contrib-devel 
-  - ghc-xmonad-devel 
-  - ghc-xss-sanitize 
-  - ghc-xss-sanitize-devel 
-  - ghc-yaml 
-  - ghc-yaml-devel 
-  - ghc-yesod 
-  - ghc-yesod-core 
-  - ghc-yesod-core-devel 
-  - ghc-yesod-devel 
-  - ghc-yesod-form 
-  - ghc-yesod-form-devel 
-  - ghc-yesod-persistent 
-  - ghc-yesod-persistent-devel 
-  - ghc-yesod-static 
-  - ghc-yesod-static-devel 
-  - ghc-zip-archive 
-  - ghc-zip-archive-devel 
-  - ghc-zlib 
-  - ghc-zlib-bindings 
-  - ghc-zlib-bindings-devel 
-  - ghc-zlib-devel 
-  - ghcid 
+  - ghc-safe: [x86_64] 
+  - ghc-safe-devel: [x86_64] 
+  - ghc-safe-exceptions: [x86_64] 
+  - ghc-safe-exceptions-devel: [x86_64] 
+  - ghc-sandi: [x86_64] 
+  - ghc-sandi-devel: [x86_64] 
+  - ghc-scientific: [x86_64] 
+  - ghc-scientific-devel: [x86_64] 
+  - ghc-scrypt: [x86_64] 
+  - ghc-scrypt-devel: [x86_64] 
+  - ghc-securemem: [x86_64] 
+  - ghc-securemem-devel: [x86_64] 
+  - ghc-semialign: [x86_64] 
+  - ghc-semialign-devel: [x86_64] 
+  - ghc-semigroupoids: [x86_64] 
+  - ghc-semigroupoids-devel: [x86_64] 
+  - ghc-semigroups: [x86_64] 
+  - ghc-semigroups-devel: [x86_64] 
+  - ghc-serialise: [x86_64] 
+  - ghc-serialise-devel: [x86_64] 
+  - ghc-servant: [x86_64] 
+  - ghc-servant-client: [x86_64] 
+  - ghc-servant-client-core: [x86_64] 
+  - ghc-servant-client-core-devel: [x86_64] 
+  - ghc-servant-client-devel: [x86_64] 
+  - ghc-servant-devel: [x86_64] 
+  - ghc-servant-server: [x86_64] 
+  - ghc-servant-server-devel: [x86_64] 
+  - ghc-setenv: [x86_64] 
+  - ghc-setenv-devel: [x86_64] 
+  - ghc-setlocale: [x86_64] 
+  - ghc-setlocale-devel: [x86_64] 
+  - ghc-shake: [x86_64] 
+  - ghc-shake-devel: [x86_64] 
+  - ghc-shakespeare: [x86_64] 
+  - ghc-shakespeare-devel: [x86_64] 
+  - ghc-shelly: [x86_64] 
+  - ghc-shelly-devel: [x86_64] 
+  - ghc-show-combinators: [x86_64] 
+  - ghc-show-combinators-devel: [x86_64] 
+  - ghc-silently: [x86_64] 
+  - ghc-silently-devel: [x86_64] 
+  - ghc-simple-sendfile: [x86_64] 
+  - ghc-simple-sendfile-devel: [x86_64] 
+  - ghc-singleton-bool: [x86_64] 
+  - ghc-singleton-bool-devel: [x86_64] 
+  - ghc-skein: [x86_64] 
+  - ghc-skein-devel: [x86_64] 
+  - ghc-skylighting: [x86_64] 
+  - ghc-skylighting-core: [x86_64] 
+  - ghc-skylighting-core-devel: [x86_64] 
+  - ghc-skylighting-devel: [x86_64] 
+  - ghc-smallcheck: [x86_64] 
+  - ghc-smallcheck-devel: [x86_64] 
+  - ghc-snap-core: [x86_64] 
+  - ghc-snap-core-devel: [x86_64] 
+  - ghc-snap-server: [x86_64] 
+  - ghc-snap-server-devel: [x86_64] 
+  - ghc-socks: [x86_64] 
+  - ghc-socks-devel: [x86_64] 
+  - ghc-sop-core: [x86_64] 
+  - ghc-sop-core-devel: [x86_64] 
+  - ghc-split: [x86_64] 
+  - ghc-split-devel: [x86_64] 
+  - ghc-splitmix: [x86_64] 
+  - ghc-splitmix-devel: [x86_64] 
+  - ghc-statistics: [x86_64] 
+  - ghc-statistics-devel: [x86_64] 
+  - ghc-statistics-linreg: [x86_64] 
+  - ghc-statistics-linreg-devel: [x86_64] 
+  - ghc-stm: [x86_64] 
+  - ghc-stm-chans: [x86_64] 
+  - ghc-stm-chans-devel: [x86_64] 
+  - ghc-stm-devel: [x86_64] 
+  - ghc-store-core: [x86_64] 
+  - ghc-store-core-devel: [x86_64] 
+  - ghc-streaming: [x86_64] 
+  - ghc-streaming-binary: [x86_64] 
+  - ghc-streaming-binary-devel: [x86_64] 
+  - ghc-streaming-bytestring: [x86_64] 
+  - ghc-streaming-bytestring-devel: [x86_64] 
+  - ghc-streaming-commons: [x86_64] 
+  - ghc-streaming-commons-devel: [x86_64] 
+  - ghc-streaming-devel: [x86_64] 
+  - ghc-strict: [x86_64] 
+  - ghc-strict-concurrency: [x86_64] 
+  - ghc-strict-concurrency-devel: [x86_64] 
+  - ghc-strict-devel: [x86_64] 
+  - ghc-string-conv: [x86_64] 
+  - ghc-string-conv-devel: [x86_64] 
+  - ghc-string-conversions: [x86_64] 
+  - ghc-string-conversions-devel: [x86_64] 
+  - ghc-string-qq: [x86_64] 
+  - ghc-string-qq-devel: [x86_64] 
+  - ghc-syb: [x86_64] 
+  - ghc-syb-devel: [x86_64] 
+  - ghc-system-fileio: [x86_64] 
+  - ghc-system-fileio-devel: [x86_64] 
+  - ghc-system-filepath: [x86_64] 
+  - ghc-system-filepath-devel: [x86_64] 
+  - ghc-systemd: [x86_64] 
+  - ghc-systemd-devel: [x86_64] 
+  - ghc-tabular: [x86_64] 
+  - ghc-tabular-devel: [x86_64] 
+  - ghc-tagged: [x86_64] 
+  - ghc-tagged-devel: [x86_64] 
+  - ghc-tagsoup: [x86_64] 
+  - ghc-tagsoup-devel: [x86_64] 
+  - ghc-tar: [x86_64] 
+  - ghc-tar-conduit: [x86_64] 
+  - ghc-tar-conduit-devel: [x86_64] 
+  - ghc-tar-devel: [x86_64] 
+  - ghc-tasty: [x86_64] 
+  - ghc-tasty-devel: [x86_64] 
+  - ghc-tasty-hunit: [x86_64] 
+  - ghc-tasty-hunit-devel: [x86_64] 
+  - ghc-tasty-quickcheck: [x86_64] 
+  - ghc-tasty-quickcheck-devel: [x86_64] 
+  - ghc-tasty-rerun: [x86_64] 
+  - ghc-tasty-rerun-devel: [x86_64] 
+  - ghc-tdigest: [x86_64] 
+  - ghc-tdigest-devel: [x86_64] 
+  - ghc-template-haskell: [x86_64] 
+  - ghc-template-haskell-devel: [x86_64] 
+  - ghc-temporary: [x86_64] 
+  - ghc-temporary-devel: [x86_64] 
+  - ghc-terminal-size: [x86_64] 
+  - ghc-terminal-size-devel: [x86_64] 
+  - ghc-terminfo: [x86_64] 
+  - ghc-terminfo-devel: [x86_64] 
+  - ghc-test-framework: [x86_64] 
+  - ghc-test-framework-devel: [x86_64] 
+  - ghc-test-framework-hunit: [x86_64] 
+  - ghc-test-framework-hunit-devel: [x86_64] 
+  - ghc-texmath: [x86_64] 
+  - ghc-texmath-devel: [x86_64] 
+  - ghc-text: [x86_64] 
+  - ghc-text-conversions: [x86_64] 
+  - ghc-text-conversions-devel: [x86_64] 
+  - ghc-text-devel: [x86_64] 
+  - ghc-text-format: [x86_64] 
+  - ghc-text-format-devel: [x86_64] 
+  - ghc-text-manipulate: [x86_64] 
+  - ghc-text-manipulate-devel: [x86_64] 
+  - ghc-text-metrics: [x86_64] 
+  - ghc-text-metrics-devel: [x86_64] 
+  - ghc-text-short: [x86_64] 
+  - ghc-text-short-devel: [x86_64] 
+  - ghc-text-zipper: [x86_64] 
+  - ghc-text-zipper-devel: [x86_64] 
+  - ghc-tf-random: [x86_64] 
+  - ghc-tf-random-devel: [x86_64] 
+  - ghc-th-abstraction: [x86_64] 
+  - ghc-th-abstraction-devel: [x86_64] 
+  - ghc-th-compat: [x86_64] 
+  - ghc-th-compat-devel: [x86_64] 
+  - ghc-th-expand-syns: [x86_64] 
+  - ghc-th-expand-syns-devel: [x86_64] 
+  - ghc-th-lift: [x86_64] 
+  - ghc-th-lift-devel: [x86_64] 
+  - ghc-th-lift-instances: [x86_64] 
+  - ghc-th-lift-instances-devel: [x86_64] 
+  - ghc-th-orphans: [x86_64] 
+  - ghc-th-orphans-devel: [x86_64] 
+  - ghc-th-reify-many: [x86_64] 
+  - ghc-th-reify-many-devel: [x86_64] 
+  - ghc-th-utilities: [x86_64] 
+  - ghc-th-utilities-devel: [x86_64] 
+  - ghc-these: [x86_64] 
+  - ghc-these-devel: [x86_64] 
+  - ghc-threepenny-gui: [x86_64] 
+  - ghc-threepenny-gui-devel: [x86_64] 
+  - ghc-time: [x86_64] 
+  - ghc-time-compat: [x86_64] 
+  - ghc-time-compat-devel: [x86_64] 
+  - ghc-time-devel: [x86_64] 
+  - ghc-time-locale-compat: [x86_64] 
+  - ghc-time-locale-compat-devel: [x86_64] 
+  - ghc-time-manager: [x86_64] 
+  - ghc-time-manager-devel: [x86_64] 
+  - ghc-time-units: [x86_64] 
+  - ghc-time-units-devel: [x86_64] 
+  - ghc-timeit: [x86_64] 
+  - ghc-timeit-devel: [x86_64] 
+  - ghc-timezone-olson: [x86_64] 
+  - ghc-timezone-olson-devel: [x86_64] 
+  - ghc-timezone-series: [x86_64] 
+  - ghc-timezone-series-devel: [x86_64] 
+  - ghc-tls: [x86_64] 
+  - ghc-tls-devel: [x86_64] 
+  - ghc-tls-session-manager: [x86_64] 
+  - ghc-tls-session-manager-devel: [x86_64] 
+  - ghc-topograph: [x86_64] 
+  - ghc-topograph-devel: [x86_64] 
+  - ghc-torrent: [x86_64] 
+  - ghc-torrent-devel: [x86_64] 
+  - ghc-transformers: [x86_64] 
+  - ghc-transformers-base: [x86_64] 
+  - ghc-transformers-base-devel: [x86_64] 
+  - ghc-transformers-compat: [x86_64] 
+  - ghc-transformers-compat-devel: [x86_64] 
+  - ghc-transformers-devel: [x86_64] 
+  - ghc-transformers-except: [x86_64] 
+  - ghc-transformers-except-devel: [x86_64] 
+  - ghc-tree-diff: [x86_64] 
+  - ghc-tree-diff-devel: [x86_64] 
+  - ghc-turtle: [x86_64] 
+  - ghc-turtle-devel: [x86_64] 
+  - ghc-type-equality: [x86_64] 
+  - ghc-type-equality-devel: [x86_64] 
+  - ghc-typed-process: [x86_64] 
+  - ghc-typed-process-devel: [x86_64] 
+  - ghc-typerep-map: [x86_64] 
+  - ghc-typerep-map-devel: [x86_64] 
+  - ghc-uglymemo: [x86_64] 
+  - ghc-uglymemo-devel: [x86_64] 
+  - ghc-unbounded-delays: [x86_64] 
+  - ghc-unbounded-delays-devel: [x86_64] 
+  - ghc-unicode-transforms: [x86_64] 
+  - ghc-unicode-transforms-devel: [x86_64] 
+  - ghc-uniplate: [x86_64] 
+  - ghc-uniplate-devel: [x86_64] 
+  - ghc-unix: [x86_64] 
+  - ghc-unix-bytestring: [x86_64] 
+  - ghc-unix-bytestring-devel: [x86_64] 
+  - ghc-unix-compat: [x86_64] 
+  - ghc-unix-compat-devel: [x86_64] 
+  - ghc-unix-devel: [x86_64] 
+  - ghc-unix-time: [x86_64] 
+  - ghc-unix-time-devel: [x86_64] 
+  - ghc-unliftio: [x86_64] 
+  - ghc-unliftio-core: [x86_64] 
+  - ghc-unliftio-core-devel: [x86_64] 
+  - ghc-unliftio-devel: [x86_64] 
+  - ghc-unordered-containers: [x86_64] 
+  - ghc-unordered-containers-devel: [x86_64] 
+  - ghc-uri-encode: [x86_64] 
+  - ghc-uri-encode-devel: [x86_64] 
+  - ghc-utf8-string: [x86_64] 
+  - ghc-utf8-string-devel: [x86_64] 
+  - ghc-utility-ht: [x86_64] 
+  - ghc-utility-ht-devel: [x86_64] 
+  - ghc-uuid: [x86_64] 
+  - ghc-uuid-devel: [x86_64] 
+  - ghc-uuid-types: [x86_64] 
+  - ghc-uuid-types-devel: [x86_64] 
+  - ghc-vault: [x86_64] 
+  - ghc-vault-devel: [x86_64] 
+  - ghc-vector: [x86_64] 
+  - ghc-vector-algorithms: [x86_64] 
+  - ghc-vector-algorithms-devel: [x86_64] 
+  - ghc-vector-binary-instances: [x86_64] 
+  - ghc-vector-binary-instances-devel: [x86_64] 
+  - ghc-vector-builder: [x86_64] 
+  - ghc-vector-builder-devel: [x86_64] 
+  - ghc-vector-devel: [x86_64] 
+  - ghc-vector-th-unbox: [x86_64] 
+  - ghc-vector-th-unbox-devel: [x86_64] 
+  - ghc-void: [x86_64] 
+  - ghc-void-devel: [x86_64] 
+  - ghc-vty: [x86_64] 
+  - ghc-vty-devel: [x86_64] 
+  - ghc-wai: [x86_64] 
+  - ghc-wai-app-static: [x86_64] 
+  - ghc-wai-app-static-devel: [x86_64] 
+  - ghc-wai-devel: [x86_64] 
+  - ghc-wai-extra: [x86_64] 
+  - ghc-wai-extra-devel: [x86_64] 
+  - ghc-wai-logger: [x86_64] 
+  - ghc-wai-logger-devel: [x86_64] 
+  - ghc-warp: [x86_64] 
+  - ghc-warp-devel: [x86_64] 
+  - ghc-warp-tls: [x86_64] 
+  - ghc-warp-tls-devel: [x86_64] 
+  - ghc-wcwidth: [x86_64] 
+  - ghc-wcwidth-devel: [x86_64] 
+  - ghc-websockets: [x86_64] 
+  - ghc-websockets-devel: [x86_64] 
+  - ghc-websockets-snap: [x86_64] 
+  - ghc-websockets-snap-devel: [x86_64] 
+  - ghc-weeder: [x86_64] 
+  - ghc-weeder-devel: [x86_64] 
+  - ghc-wizards: [x86_64] 
+  - ghc-wizards-devel: [x86_64] 
+  - ghc-wl-pprint-annotated: [x86_64] 
+  - ghc-wl-pprint-annotated-devel: [x86_64] 
+  - ghc-word-wrap: [x86_64] 
+  - ghc-word-wrap-devel: [x86_64] 
+  - ghc-word8: [x86_64] 
+  - ghc-word8-devel: [x86_64] 
+  - ghc-wreq: [x86_64] 
+  - ghc-wreq-devel: [x86_64] 
+  - ghc-x509: [x86_64] 
+  - ghc-x509-devel: [x86_64] 
+  - ghc-x509-store: [x86_64] 
+  - ghc-x509-store-devel: [x86_64] 
+  - ghc-x509-system: [x86_64] 
+  - ghc-x509-system-devel: [x86_64] 
+  - ghc-x509-validation: [x86_64] 
+  - ghc-x509-validation-devel: [x86_64] 
+  - ghc-xhtml: [x86_64] 
+  - ghc-xhtml-devel: [x86_64] 
+  - ghc-xml: [x86_64] 
+  - ghc-xml-conduit: [x86_64] 
+  - ghc-xml-conduit-devel: [x86_64] 
+  - ghc-xml-devel: [x86_64] 
+  - ghc-xml-hamlet: [x86_64] 
+  - ghc-xml-hamlet-devel: [x86_64] 
+  - ghc-xml-types: [x86_64] 
+  - ghc-xml-types-devel: [x86_64] 
+  - ghc-xmobar: [x86_64] 
+  - ghc-xmobar-devel: [x86_64] 
+  - ghc-xmonad: [x86_64] 
+  - ghc-xmonad-contrib: [x86_64] 
+  - ghc-xmonad-contrib-devel: [x86_64] 
+  - ghc-xmonad-devel: [x86_64] 
+  - ghc-xss-sanitize: [x86_64] 
+  - ghc-xss-sanitize-devel: [x86_64] 
+  - ghc-yaml: [x86_64] 
+  - ghc-yaml-devel: [x86_64] 
+  - ghc-yesod: [x86_64] 
+  - ghc-yesod-core: [x86_64] 
+  - ghc-yesod-core-devel: [x86_64] 
+  - ghc-yesod-devel: [x86_64] 
+  - ghc-yesod-form: [x86_64] 
+  - ghc-yesod-form-devel: [x86_64] 
+  - ghc-yesod-persistent: [x86_64] 
+  - ghc-yesod-persistent-devel: [x86_64] 
+  - ghc-yesod-static: [x86_64] 
+  - ghc-yesod-static-devel: [x86_64] 
+  - ghc-zip: [x86_64] 
+  - ghc-zip-archive: [x86_64] 
+  - ghc-zip-archive-devel: [x86_64] 
+  - ghc-zip-devel: [x86_64] 
+  - ghc-zlib: [x86_64] 
+  - ghc-zlib-bindings: [x86_64] 
+  - ghc-zlib-bindings-devel: [x86_64] 
+  - ghc-zlib-devel: [x86_64] 
+  - ghc-zstd: [x86_64] 
+  - ghc-zstd-devel: [x86_64] 
+  - ghcid: [x86_64] 
   - ghex-devel 
   - ghostscript-devel 
   - ghostscript-mini 
@@ -5432,8 +5488,8 @@ unsorted:
   - gio-sharp3 
   - gio-sharp3-devel 
   - girara-devel 
-  - git-annex 
-  - git-annex-bash-completion 
+  - git-annex: [x86_64] 
+  - git-annex-bash-completion: [x86_64] 
   - git-arch 
   - git-bz 
   - git-cola 
@@ -6419,7 +6475,7 @@ unsorted:
   - gucharmap-lang: [i586] 
   - gudev-sharp 
   - gudev-sharp-devel 
-  - guess-changelog 
+  - guess-changelog: [x86_64] 
   - guestfs-tools: [x86_64] 
   - guestfsd: [x86_64] 
   - guice-assistedinject 
@@ -6501,7 +6557,7 @@ unsorted:
   - hamster-time-tracker 
   - hamster-time-tracker-lang 
   - handedict 
-  - happy 
+  - happy: [x86_64] 
   - haproxy: [i586] 
   - hardening-check 
   - hardinfo 
@@ -6537,13 +6593,6 @@ unsorted:
   - hda-verb 
   - hdajackretask 
   - hdajacksensetest 
-  - hdf 
-  - hdf-devel 
-  - hdf-devel-data 
-  - hdf-devel-static 
-  - hdf-openmpi 
-  - hdf-openmpi-devel 
-  - hdf-openmpi-devel-static 
   - hdf5 
   - hdf5-devel 
   - hdf5-devel-32bit: [x86_64] 
@@ -6629,10 +6678,10 @@ unsorted:
   - health-checker-plugins-kubic: [i586] 
   - health-checker-testing 
   - heapster 
-  - heaptrack: [i586] 
+  - heaptrack 
   - heaptrack-devel 
-  - heaptrack-gui: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
-  - heaptrack-lang: [i586] 
+  - heaptrack-gui 
+  - heaptrack-lang 
   - hedgewars 
   - hedgewars-data 
   - heimdall 
@@ -6683,10 +6732,10 @@ unsorted:
   - hivex 
   - hivex-devel 
   - hivex-lang 
-  - hledger 
-  - hledger-interest 
-  - hledger-ui 
-  - hlint 
+  - hledger: [x86_64] 
+  - hledger-interest: [x86_64] 
+  - hledger-ui: [x86_64] 
+  - hlint: [x86_64] 
   - hmaccalc 
   - hmcfgusb 
   - hmconv 
@@ -6706,7 +6755,7 @@ unsorted:
   - hourglass-lang 
   - howl 
   - hp-drive-guard 
-  - hpack 
+  - hpack: [x86_64] 
   - hplip-devel 
   - hplip-scan-utils 
   - hppc 
@@ -6714,8 +6763,8 @@ unsorted:
   - hppc-templateprocessor 
   - hpx 
   - hpx-devel 
-  - hscolour 
-  - hspec-discover 
+  - hscolour: [x86_64] 
+  - hspec-discover: [x86_64] 
   - hsqldb 
   - hsqldb-demo 
   - hsqldb-javadoc 
@@ -8463,6 +8512,7 @@ unsorted:
   - kyotocabinet 
   - labplot-kf5 
   - labplot-kf5-lang 
+  - ladish 
   - ladspa 
   - ladspa-32bit: [x86_64] 
   - ladspa-AMB 
@@ -8852,7 +8902,7 @@ unsorted:
   - libImath-2_5-25-32bit: [x86_64] 
   - libImlib2-1 
   - libIrrlicht1_8 
-  - libKChart2: [i586] 
+  - libKChart2 
   - libKDb3-4 
   - libKF5Activities5-32bit: [x86_64] 
   - libKF5ActivitiesStats1-32bit: [x86_64] 
@@ -9896,117 +9946,120 @@ unsorted:
   - libboinc-devel 
   - libboinc7 
   - libboost_atomic-devel 
-  - libboost_atomic1_74_0 
-  - libboost_atomic1_74_0-32bit: [x86_64] 
-  - libboost_atomic1_74_0-devel 
+  - libboost_atomic1_75_0 
+  - libboost_atomic1_75_0-32bit: [x86_64] 
+  - libboost_atomic1_75_0-devel 
   - libboost_chrono-devel 
-  - libboost_chrono1_74_0 
-  - libboost_chrono1_74_0-devel 
+  - libboost_chrono1_75_0 
+  - libboost_chrono1_75_0-devel 
   - libboost_container-devel 
-  - libboost_container1_74_0 
-  - libboost_container1_74_0-32bit: [x86_64] 
-  - libboost_container1_74_0-devel 
+  - libboost_container1_75_0 
+  - libboost_container1_75_0-32bit: [x86_64] 
+  - libboost_container1_75_0-devel 
   - libboost_context-devel 
-  - libboost_context1_74_0 
-  - libboost_context1_74_0-32bit: [x86_64] 
-  - libboost_context1_74_0-devel 
+  - libboost_context1_75_0 
+  - libboost_context1_75_0-32bit: [x86_64] 
+  - libboost_context1_75_0-devel 
   - libboost_contract-devel 
-  - libboost_contract1_74_0 
-  - libboost_contract1_74_0-devel 
+  - libboost_contract1_75_0 
+  - libboost_contract1_75_0-devel 
   - libboost_coroutine-devel 
-  - libboost_coroutine1_74_0 
-  - libboost_coroutine1_74_0-32bit: [x86_64] 
-  - libboost_coroutine1_74_0-devel 
+  - libboost_coroutine1_75_0 
+  - libboost_coroutine1_75_0-32bit: [x86_64] 
+  - libboost_coroutine1_75_0-devel 
   - libboost_date_time-devel 
-  - libboost_date_time1_74_0-32bit: [x86_64] 
-  - libboost_date_time1_74_0-devel 
+  - libboost_date_time1_75_0-32bit: [x86_64] 
+  - libboost_date_time1_75_0-devel 
   - libboost_fiber-devel 
-  - libboost_fiber1_74_0 
-  - libboost_fiber1_74_0-32bit: [x86_64] 
-  - libboost_fiber1_74_0-devel 
+  - libboost_fiber1_75_0 
+  - libboost_fiber1_75_0-32bit: [x86_64] 
+  - libboost_fiber1_75_0-devel 
   - libboost_filesystem-devel 
-  - libboost_filesystem1_74_0-32bit: [x86_64] 
-  - libboost_filesystem1_74_0-devel 
+  - libboost_filesystem1_75_0-32bit: [x86_64] 
+  - libboost_filesystem1_75_0-devel 
   - libboost_graph-devel 
-  - libboost_graph1_74_0 
-  - libboost_graph1_74_0-32bit: [x86_64] 
-  - libboost_graph1_74_0-devel 
+  - libboost_graph1_75_0 
+  - libboost_graph1_75_0-32bit: [x86_64] 
+  - libboost_graph1_75_0-devel 
   - libboost_graph_parallel-devel 
-  - libboost_graph_parallel1_74_0 
-  - libboost_graph_parallel1_74_0-32bit: [x86_64] 
-  - libboost_graph_parallel1_74_0-devel 
+  - libboost_graph_parallel1_75_0 
+  - libboost_graph_parallel1_75_0-32bit: [x86_64] 
+  - libboost_graph_parallel1_75_0-devel 
   - libboost_headers-devel 
-  - libboost_headers1_74_0-devel 
+  - libboost_headers1_75_0-devel 
   - libboost_iostreams-devel 
-  - libboost_iostreams1_74_0-32bit: [x86_64] 
-  - libboost_iostreams1_74_0-devel 
+  - libboost_iostreams1_75_0-32bit: [x86_64] 
+  - libboost_iostreams1_75_0-devel 
+  - libboost_json1_75_0 
+  - libboost_json1_75_0-32bit: [x86_64] 
+  - libboost_json1_75_0-devel 
   - libboost_locale-devel 
-  - libboost_locale1_74_0-32bit: [x86_64] 
-  - libboost_locale1_74_0-devel 
+  - libboost_locale1_75_0-32bit: [x86_64] 
+  - libboost_locale1_75_0-devel 
   - libboost_log-devel 
-  - libboost_log1_74_0 
-  - libboost_log1_74_0-devel 
+  - libboost_log1_75_0 
+  - libboost_log1_75_0-devel 
   - libboost_math-devel 
-  - libboost_math1_74_0 
-  - libboost_math1_74_0-32bit: [x86_64] 
-  - libboost_math1_74_0-devel 
+  - libboost_math1_75_0 
+  - libboost_math1_75_0-32bit: [x86_64] 
+  - libboost_math1_75_0-devel 
   - libboost_mpi-devel 
-  - libboost_mpi1_74_0 
-  - libboost_mpi1_74_0-32bit: [x86_64] 
-  - libboost_mpi1_74_0-devel 
+  - libboost_mpi1_75_0 
+  - libboost_mpi1_75_0-32bit: [x86_64] 
+  - libboost_mpi1_75_0-devel 
+  - libboost_mpi_python-py3-1_75_0 
+  - libboost_mpi_python-py3-1_75_0-devel 
   - libboost_mpi_python3-devel 
-  - libboost_mpi_python38-py3-1_74_0 
-  - libboost_mpi_python38-py3-1_74_0-devel 
-  - libboost_nowide1_74_0 
-  - libboost_nowide1_74_0-32bit: [x86_64] 
-  - libboost_nowide1_74_0-devel 
-  - libboost_numpy-py3-1_74_0 
-  - libboost_numpy-py3-1_74_0-devel 
+  - libboost_nowide1_75_0 
+  - libboost_nowide1_75_0-32bit: [x86_64] 
+  - libboost_nowide1_75_0-devel 
+  - libboost_numpy-py3-1_75_0 
+  - libboost_numpy-py3-1_75_0-devel 
   - libboost_numpy3-devel 
   - libboost_program_options-devel 
-  - libboost_program_options1_74_0: [i586] 
-  - libboost_program_options1_74_0-32bit: [x86_64] 
-  - libboost_program_options1_74_0-devel 
-  - libboost_python-py3-1_74_0-32bit: [x86_64] 
-  - libboost_python-py3-1_74_0-devel 
+  - libboost_program_options1_75_0 
+  - libboost_program_options1_75_0-32bit: [x86_64] 
+  - libboost_program_options1_75_0-devel 
+  - libboost_python-py3-1_75_0-32bit: [x86_64] 
+  - libboost_python-py3-1_75_0-devel 
   - libboost_python3-devel 
   - libboost_random-devel 
-  - libboost_random1_74_0 
-  - libboost_random1_74_0-32bit: [x86_64] 
-  - libboost_random1_74_0-devel 
+  - libboost_random1_75_0 
+  - libboost_random1_75_0-32bit: [x86_64] 
+  - libboost_random1_75_0-devel 
   - libboost_regex-devel 
-  - libboost_regex1_74_0-32bit: [x86_64] 
-  - libboost_regex1_74_0-devel 
+  - libboost_regex1_75_0-32bit: [x86_64] 
+  - libboost_regex1_75_0-devel 
   - libboost_serialization-devel 
-  - libboost_serialization1_74_0 
-  - libboost_serialization1_74_0-32bit: [x86_64] 
-  - libboost_serialization1_74_0-devel 
+  - libboost_serialization1_75_0 
+  - libboost_serialization1_75_0-32bit: [x86_64] 
+  - libboost_serialization1_75_0-devel 
   - libboost_stacktrace-devel 
-  - libboost_stacktrace1_74_0 
-  - libboost_stacktrace1_74_0-32bit: [x86_64] 
-  - libboost_stacktrace1_74_0-devel 
+  - libboost_stacktrace1_75_0 
+  - libboost_stacktrace1_75_0-32bit: [x86_64] 
+  - libboost_stacktrace1_75_0-devel 
   - libboost_system-devel 
-  - libboost_system1_74_0 
-  - libboost_system1_74_0-32bit: [x86_64] 
-  - libboost_system1_74_0-devel 
+  - libboost_system1_75_0 
+  - libboost_system1_75_0-32bit: [x86_64] 
+  - libboost_system1_75_0-devel 
   - libboost_test-devel 
-  - libboost_test1_74_0 
-  - libboost_test1_74_0-32bit: [x86_64] 
-  - libboost_test1_74_0-devel 
+  - libboost_test1_75_0 
+  - libboost_test1_75_0-32bit: [x86_64] 
+  - libboost_test1_75_0-devel 
   - libboost_thread-devel 
-  - libboost_thread1_74_0-32bit: [x86_64] 
-  - libboost_thread1_74_0-devel 
+  - libboost_thread1_75_0-32bit: [x86_64] 
+  - libboost_thread1_75_0-devel 
   - libboost_timer-devel 
-  - libboost_timer1_74_0 
-  - libboost_timer1_74_0-devel 
+  - libboost_timer1_75_0 
+  - libboost_timer1_75_0-devel 
   - libboost_type_erasure-devel 
-  - libboost_type_erasure1_74_0 
-  - libboost_type_erasure1_74_0-32bit: [x86_64] 
-  - libboost_type_erasure1_74_0-devel 
+  - libboost_type_erasure1_75_0 
+  - libboost_type_erasure1_75_0-32bit: [x86_64] 
+  - libboost_type_erasure1_75_0-devel 
   - libboost_wave-devel 
-  - libboost_wave1_74_0 
-  - libboost_wave1_74_0-32bit: [x86_64] 
-  - libboost_wave1_74_0-devel 
+  - libboost_wave1_75_0 
+  - libboost_wave1_75_0-32bit: [x86_64] 
+  - libboost_wave1_75_0-devel 
   - libboringssl1 
   - libbotan-2-17 
   - libbotan-2-17-32bit: [x86_64] 
@@ -10090,6 +10143,8 @@ unsorted:
   - libcangjie-devel 
   - libcangjie-tools 
   - libcangjie2 
+  - libcanlock-devel 
+  - libcanlock3 
   - libcantorlibs28 
   - libcap-devel 
   - libcap-ng-devel 
@@ -10350,7 +10405,6 @@ unsorted:
   - libcrystalhd3 
   - libcrystalhd3-32bit: [x86_64] 
   - libcsirocsa0 
-  - libcsironn0 
   - libcsnd6-6_0 
   - libcsound64-6_0 
   - libcsparse3 
@@ -10615,6 +10669,7 @@ unsorted:
   - libefivar1: [i586] 
   - libei-devel 
   - libei-suse0 
+  - libeiskaltdcpp2_4 
   - libelektra-augeas 
   - libelektra-devel 
   - libelektra-devel-doc 
@@ -10877,6 +10932,12 @@ unsorted:
   - libfsapfs 
   - libfsapfs-devel 
   - libfsapfs1 
+  - libfsext-devel 
+  - libfsext-tools 
+  - libfsext1 
+  - libfshfs-devel 
+  - libfshfs-tools 
+  - libfshfs1 
   - libfsm0 
   - libfsntfs-devel 
   - libfsntfs-tools 
@@ -11356,10 +11417,6 @@ unsorted:
   - libharminv3 
   - libharu-devel 
   - libhashcat6_1_1 
-  - libhdf4 
-  - libhdf4-32bit: [x86_64] 
-  - libhdf4-openmpi 
-  - libhdf4-openmpi-32bit: [x86_64] 
   - libhdf5-103 
   - libhdf5-103-32bit: [x86_64] 
   - libhdf5-103-mvapich2 
@@ -11757,7 +11814,7 @@ unsorted:
   - libkcarchiver0 
   - libkcddb-devel 
   - libkcfreebusy0 
-  - libkchart-lang: [i586] 
+  - libkchart-lang 
   - libkcicalmapi0 
   - libkcindex0 
   - libkcinetmapi0 
@@ -12970,7 +13027,6 @@ unsorted:
   - libplot2 
   - libplotter2 
   - libplplot17 
-  - libplplotada4 
   - libplplotcxx15 
   - libplplotfortran0 
   - libplplotqt2 
@@ -12995,10 +13051,6 @@ unsorted:
   - libpnetcdf-gnu-openmpi2-hpc: [x86_64] 
   - libpnetcdf-gnu-openmpi3-hpc: [x86_64] 
   - libpnetcdf-gnu-openmpi4-hpc: [x86_64] 
-  - libpnetcdf1-mvapich2 
-  - libpnetcdf1-openmpi1 
-  - libpnetcdf1-openmpi2 
-  - libpnetcdf1-openmpi3 
   - libpnetcdf4-mpich: [x86_64] 
   - libpnetcdf4-mvapich2: [x86_64] 
   - libpnetcdf4-openmpi1: [x86_64] 
@@ -15149,7 +15201,7 @@ unsorted:
   - linuxptp 
   - linuxrc 
   - linuxrc-devtools 
-  - liquidhaskell 
+  - liquidhaskell: [x86_64] 
   - lirc-config 
   - lirc-core 
   - lirc-devel 
@@ -15337,6 +15389,7 @@ unsorted:
   - ltrace 
   - ltrace-32bit: [x86_64] 
   - lttng-modules 
+  - lttng-modules-kmp-default 
   - lttng-modules-kmp-pae: [i586] 
   - lttng-tools 
   - lttng-tools-devel 
@@ -18538,7 +18591,7 @@ unsorted:
   - pamixer 
   - pan 
   - pan-lang 
-  - pandoc 
+  - pandoc: [x86_64] 
   - pango-devel 
   - pango-devel-32bit: [x86_64] 
   - pango-tools 
@@ -18570,19 +18623,6 @@ unsorted:
   - par2cmdline 
   - par_text 
   - paradise 
-  - parallel-netcdf-devel-data 
-  - parallel-netcdf-mvapich2 
-  - parallel-netcdf-mvapich2-devel 
-  - parallel-netcdf-mvapich2-devel-static 
-  - parallel-netcdf-openmpi1 
-  - parallel-netcdf-openmpi1-devel 
-  - parallel-netcdf-openmpi1-devel-static 
-  - parallel-netcdf-openmpi2 
-  - parallel-netcdf-openmpi2-devel 
-  - parallel-netcdf-openmpi2-devel-static 
-  - parallel-netcdf-openmpi3 
-  - parallel-netcdf-openmpi3-devel 
-  - parallel-netcdf-openmpi3-devel-static 
   - paranamer 
   - paranamer-ant 
   - paranamer-generator 
@@ -18918,6 +18958,7 @@ unsorted:
   - peazip-kf5 
   - peek 
   - peek-lang 
+  - peg 
   - pegdown 
   - pegdown-javadoc 
   - pegtl-devel 
@@ -20548,7 +20589,6 @@ unsorted:
   - plplot-tcltk-devel 
   - plplot-tcltk-libs 
   - plplot-wxwidgets 
-  - plplotada-devel 
   - plplotcxx-devel 
   - plplotfortran-devel 
   - plplotqt-devel 
@@ -21279,7 +21319,6 @@ unsorted:
   - python-zope.i18nmessageid-doc 
   - python2-aexpect 
   - python2-appindicator 
-  - python2-keyrings.alt 
   - python2-libfwsi 
   - python2-libguestfs: [x86_64] 
   - python2-opencensus-ext-threading 
@@ -21297,6 +21336,7 @@ unsorted:
   - python3-BitVector 
   - python3-Bottleneck 
   - python3-Brotli 
+  - python3-CCColUtils 
   - python3-CacheControl 
   - python3-CairoSVG 
   - python3-Cerberus 
@@ -21904,7 +21944,7 @@ unsorted:
   - python3-boolean.py 
   - python3-booleanOperations 
   - python3-boost_parallel_mpi 
-  - python3-boost_parallel_mpi1_74_0 
+  - python3-boost_parallel_mpi1_75_0 
   - python3-botan 
   - python3-boto 
   - python3-boto3 
@@ -22045,12 +22085,14 @@ unsorted:
   - python3-combi 
   - python3-commentjson 
   - python3-compat-patcher-core 
+  - python3-compileall2 
   - python3-compizconfig 
   - python3-concurrentloghandler 
   - python3-configargparse 
   - python3-configobj: [i586] 
   - python3-configshell-fb 
   - python3-confluent-kafka 
+  - python3-confpy 
   - python3-confusable-homoglyphs 
   - python3-congressclient 
   - python3-construct 
@@ -22061,6 +22103,8 @@ unsorted:
   - python3-convertdate 
   - python3-cookies 
   - python3-cooldict 
+  - python3-copr 
+  - python3-copr-cli 
   - python3-coreapi 
   - python3-coreapi-cli 
   - python3-coreschema 
@@ -22869,6 +22913,8 @@ unsorted:
   - python3-libexe 
   - python3-libfdt 
   - python3-libfsapfs 
+  - python3-libfsext 
+  - python3-libfshfs 
   - python3-libfsntfs 
   - python3-libftdi1 
   - python3-libfvde 
@@ -25058,6 +25104,31 @@ unsorted:
   - rhythmbox-lang 
   - rime 
   - rime-plum 
+  - rime-schema-all 
+  - rime-schema-array 
+  - rime-schema-bopomofo 
+  - rime-schema-cangjie 
+  - rime-schema-cantonese 
+  - rime-schema-combo-pinyin 
+  - rime-schema-default 
+  - rime-schema-double-pinyin 
+  - rime-schema-emoji 
+  - rime-schema-essay 
+  - rime-schema-extra 
+  - rime-schema-ipa 
+  - rime-schema-jyutping 
+  - rime-schema-luna-pinyin 
+  - rime-schema-middle-chinese 
+  - rime-schema-pinyin-simp 
+  - rime-schema-prelude 
+  - rime-schema-quick 
+  - rime-schema-scj 
+  - rime-schema-soutzoe 
+  - rime-schema-stenotype 
+  - rime-schema-stroke 
+  - rime-schema-terra-pinyin 
+  - rime-schema-wubi 
+  - rime-schema-wugniu 
   - rinetd 
   - rinutils-devel 
   - ripgrep 
@@ -25169,6 +25240,7 @@ unsorted:
   - rtkit: [i586] 
   - rtl-sdr-devel 
   - rtl8812au 
+  - rtl8812au-kmp-default 
   - rtl8812au-kmp-pae: [i586] 
   - rtl_433-devel 
   - rtmidi-devel 
@@ -26316,13 +26388,13 @@ unsorted:
   - shadowsocks-libev-doc 
   - shadowsocks-v2ray-plugin 
   - shairport-sync 
-  - shake 
+  - shake: [x86_64] 
   - shapelib 
   - shared-color-targets 
   - sharpfont 
   - sharpfont-devel 
   - shellementary 
-  - shelltestrunner 
+  - shelltestrunner: [x86_64] 
   - shepherd 
   - shepherd-bins 
   - shibboleth-sp 
@@ -34929,7 +35001,7 @@ unsorted:
   - texlive-zxjatype 
   - texlive-zxjatype-doc 
   - texmaker 
-  - texmath 
+  - texmath: [x86_64] 
   - texstudio 
   - texworks 
   - texworks-plugin-lua 
@@ -36541,8 +36613,8 @@ unsorted:
   - xmltooling-schemas 
   - xmlunit 
   - xmlunit-javadoc 
-  - xmobar 
-  - xmonad 
+  - xmobar: [x86_64] 
+  - xmonad: [x86_64] 
   - xmoontool 
   - xmore 
   - xmorph 
