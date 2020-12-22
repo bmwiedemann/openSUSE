@@ -30,6 +30,7 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-alsa-core-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-unix-devel
+ExcludeArch:    %{ix86}
 
 %description
 This package provides bindings to the ALSA simple mixer API.
