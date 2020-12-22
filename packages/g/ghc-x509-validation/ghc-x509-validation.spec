@@ -39,6 +39,7 @@ BuildRequires:  ghc-pem-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-x509-devel
 BuildRequires:  ghc-x509-store-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-hunit-devel
