@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec 21 13:33:21 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Install misc.schema by default (ldap mail alias)
+
+-------------------------------------------------------------------
+Fri Dec 18 21:11:07 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fix error caused by uninitialized DEBUG variable 
+
+-------------------------------------------------------------------
 Wed Nov  4 17:52:32 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add common scripts tar archive now containing ssl-helper

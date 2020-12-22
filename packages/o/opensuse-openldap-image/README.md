@@ -97,6 +97,20 @@ podman run -v /srv/openldap/certs:/etc/openldap/certs:Z \
        -d registry.opensuse.org/opensuse/openldap:latest
 ```
 
+The variables `LDAP_TLS_CA_CRT`, `LDAP_TLS_CRT` and `LDAP_TLS_KEY` are stored
+during the first start of the container in the LDAP configuration. Changes to
+the variables on further starts will have no affect.
+
+An example with certificates from `Let's Encrypt`:
+
+```sh
+podman run -v /etc/letsencrypt:/etc/letsencrypt \
+       -e LDAP_TLS_CRT=/etc/letsencrypt/live/example.org/cert.pem \
+       -e LDAP_TLS_KEY=/etc/letsencrypt/live/example.org/privkey.pem \
+       -e LDAP_TLS_CA_CRT=/etc/letsencrypt/live/example.org/fullchain.pem \
+       -d registry.opensuse.org/opensuse/openldap:latest
+```
+
 ### Disable TLS
 
 Add --env LDAP_TLS=0 to the run command: `podman run -e LDAP_TLS=0 ...`

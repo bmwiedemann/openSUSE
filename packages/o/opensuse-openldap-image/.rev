@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>847721</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c847076deccead87e168adaee7217503</srcmd5>
+    <version>1.0.0</version>
+    <time>1608634296</time>
+    <user>dimstar_suse</user>
+    <comment>- Install misc.schema by default (ldap mail alias)
+
+- Fix error caused by uninitialized DEBUG variable (forwarded request 857864 from kukuk)</comment>
+    <requestid>857865</requestid>
+  </revision>
 </revisionlist>

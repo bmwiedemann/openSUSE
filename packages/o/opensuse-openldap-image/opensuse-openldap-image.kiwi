@@ -6,7 +6,7 @@
   <description type="system">
     <author>Thorsten Kukuk</author>
     <contact>kukuk@suse.com</contact>
-    <specification>openSUSE image containing OpenLDAP as ldap server.</specification>
+    <specification>OpenLDAP stand-alone LDAP daemon</specification>
   </description>
   <preferences>
     <type
@@ -31,7 +31,7 @@
         </volumes>
         <labels>
           <suse_label_helper:add_prefix prefix="org.opensuse.openldap">
-            <label name="org.opencontainers.image.title" value="openSUSE OpenLDAP container"/>
+            <label name="org.opencontainers.image.title" value="OpenLDAP stand-alone LDAPv3 daemon."/>
             <label name="org.opencontainers.image.description" value="Image containing OpenLDAP daemon."/>
             <label name="org.opencontainers.image.version" value="%PKG_VERSION%-%RELEASE%"/>
             <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
@@ -39,7 +39,7 @@
             <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
           </suse_label_helper:add_prefix>
         </labels>
-        <history author="Thorsten Kukuk &lt;kukuk@suse.com&gt;">openSUSE OpenLDAP container</history>
+        <history author="Thorsten Kukuk &lt;kukuk@suse.com&gt;">OpenLDAP container</history>
       </containerconfig>
     </type>
     <version>1.0.0</version>
