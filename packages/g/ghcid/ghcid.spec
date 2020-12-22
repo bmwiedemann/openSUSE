@@ -38,6 +38,7 @@ BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-terminal-size-devel
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-unix-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-hunit-devel
