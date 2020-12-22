@@ -42,6 +42,7 @@ BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-regex-tdfa-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  pandoc
+ExcludeArch:    %{ix86}
 
 %description
 The goals of ShellCheck are:
