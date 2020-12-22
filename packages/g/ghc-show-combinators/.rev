@@ -7,4 +7,12 @@
     <comment>new package for cardano support</comment>
     <requestid>847859</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>91556468b6c3db1db35e274520e56ace</srcmd5>
+    <version>0.2.0.0</version>
+    <time>1608633964</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857556</requestid>
+  </revision>
 </revisionlist>
