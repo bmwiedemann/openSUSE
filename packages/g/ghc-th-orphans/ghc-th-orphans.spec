@@ -33,6 +33,7 @@ BuildRequires:  ghc-th-compat-devel
 BuildRequires:  ghc-th-lift-devel
 BuildRequires:  ghc-th-lift-instances-devel
 BuildRequires:  ghc-th-reify-many-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-hspec-devel
