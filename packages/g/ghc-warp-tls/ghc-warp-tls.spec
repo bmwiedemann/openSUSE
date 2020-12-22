@@ -35,6 +35,7 @@ BuildRequires:  ghc-tls-devel
 BuildRequires:  ghc-tls-session-manager-devel
 BuildRequires:  ghc-wai-devel
 BuildRequires:  ghc-warp-devel
+ExcludeArch:    %{ix86}
 
 %description
 SSLv1 and SSLv2 are obsoleted by IETF. We should use TLS 1.2 (or TLS 1.1 or TLS
