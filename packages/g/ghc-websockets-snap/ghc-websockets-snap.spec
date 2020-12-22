@@ -33,6 +33,7 @@ BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-snap-core-devel
 BuildRequires:  ghc-snap-server-devel
 BuildRequires:  ghc-websockets-devel
+ExcludeArch:    %{ix86}
 
 %description
 Snap integration for the websockets library.
