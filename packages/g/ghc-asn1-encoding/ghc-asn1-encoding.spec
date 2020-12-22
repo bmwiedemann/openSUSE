@@ -31,6 +31,7 @@ BuildRequires:  ghc-asn1-types-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-hourglass-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-tasty-devel
