@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Tue Sep 22 09:33:48 UTC 2020 - psimons@suse.com
 
 - Update blaze-builder to version 0.4.1.0 revision 1.
