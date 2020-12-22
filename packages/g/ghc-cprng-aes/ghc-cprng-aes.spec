@@ -30,6 +30,7 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-cipher-aes-devel
 BuildRequires:  ghc-crypto-random-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 
 %description
 Simple crypto pseudo-random-number-generator with really good randomness
