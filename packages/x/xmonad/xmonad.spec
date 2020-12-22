@@ -48,6 +48,7 @@ Suggests:       ghc-xmonad-devel
 # windowmanager is a generic provides for every WM - there are things (like Xvnc)
 # That rely on the prsence of 'a WM', but do not care which one it is
 Provides:       windowmanager
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 %endif
