@@ -78,4 +78,12 @@ dep of pandoc</comment>
     <comment>version update</comment>
     <requestid>829159</requestid>
   </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>ccd59f0a584fffd6aec3a72f67914ae6</srcmd5>
+    <version>1.6.4.4</version>
+    <time>1608633229</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857206</requestid>
+  </revision>
 </revisionlist>
