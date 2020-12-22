@@ -40,6 +40,7 @@ BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-setenv-devel
 BuildRequires:  ghc-skein-devel
 BuildRequires:  ghc-tagged-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-QuickCheck-devel
