@@ -44,6 +44,7 @@ BuildRequires:  ghc-th-lift-devel
 BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-vector-devel
 BuildRequires:  ghc-yaml-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-base-unicode-symbols-devel
 BuildRequires:  ghc-hspec-devel
