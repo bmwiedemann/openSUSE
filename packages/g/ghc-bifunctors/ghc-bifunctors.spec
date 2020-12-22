@@ -34,6 +34,7 @@ BuildRequires:  ghc-tagged-devel
 BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-th-abstraction-devel
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-hspec-devel
