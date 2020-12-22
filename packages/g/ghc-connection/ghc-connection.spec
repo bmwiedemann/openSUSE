@@ -38,6 +38,7 @@ BuildRequires:  ghc-x509-devel
 BuildRequires:  ghc-x509-store-devel
 BuildRequires:  ghc-x509-system-devel
 BuildRequires:  ghc-x509-validation-devel
+ExcludeArch:    %{ix86}
 
 %description
 Simple network library for all your connection need.
