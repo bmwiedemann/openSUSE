@@ -19,16 +19,23 @@
 %global pkg_name base16-bytestring
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.1.7
+Version:        1.0.1.0
 Release:        0
-Summary:        Fast base16 (hex) encoding and decoding for ByteStrings
+Summary:        RFC 4648-compliant Base16 encodings for ByteStrings
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/3.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
+%if %{with tests}
+BuildRequires:  ghc-HUnit-devel
+BuildRequires:  ghc-QuickCheck-devel
+BuildRequires:  ghc-test-framework-devel
+BuildRequires:  ghc-test-framework-hunit-devel
+BuildRequires:  ghc-test-framework-quickcheck2-devel
+%endif
 
 %description
 This package provides support for encoding and decoding binary data according
@@ -36,9 +43,12 @@ to 'base16' (see also <https://tools.ietf.org/html/rfc4648 RFC 4648>) for
 strict (see "Data.ByteString.Base16") and lazy 'ByteString's (see
 "Data.ByteString.Base16.Lazy").
 
-See also the <https://hackage.haskell.org/package/base-encoding base-encoding>
-package which provides an uniform API providing conversion paths between more
-binary and textual types.
+See the <https://hackage.haskell.org/package/base16 base16> package which
+provides superior encoding and decoding performance as well as support for
+lazy, short, and strict variants of 'Text' and 'ByteString' values.
+Additionally, see the <https://hackage.haskell.org/package/base-encoding
+base-encoding> package which provides an uniform API providing conversion paths
+between more binary and textual types.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -53,7 +63,6 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
