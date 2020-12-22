@@ -19,7 +19,7 @@
 %global pkg_name network
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.1.2.0
+Version:        3.1.2.1
 Release:        0
 Summary:        Low-level networking interface
 License:        BSD-3-Clause
@@ -31,6 +31,7 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-QuickCheck-devel

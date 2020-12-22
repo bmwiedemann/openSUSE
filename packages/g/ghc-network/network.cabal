@@ -1,6 +1,6 @@
 cabal-version:  1.18
 name:           network
-version:        3.1.2.0
+version:        3.1.2.1
 x-revision: 1
 license:        BSD3
 license-file:   LICENSE
@@ -85,10 +85,11 @@ library
     Network.Socket.SockAddr
     Network.Socket.Syscall
     Network.Socket.Types
+    Network.Socket.Unix
 
   build-depends:
     base >= 4.9 && < 5,
-    bytestring == 0.10.*,
+    bytestring >= 0.10 && < 0.12,
     deepseq,
     directory
 
@@ -108,7 +109,6 @@ library
       Network.Socket.Posix.CmsgHdr
       Network.Socket.Posix.IOVec
       Network.Socket.Posix.MsgHdr
-      Network.Socket.Unix
 
   if os(solaris)
     extra-libraries: nsl, socket
