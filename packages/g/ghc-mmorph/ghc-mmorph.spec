@@ -29,6 +29,7 @@ BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-compat-devel
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 
 %description
 This library provides monad morphism utilities, most commonly used for
