@@ -1,0 +1,5 @@
+<package name="ladish" project="openSUSE:Factory">
+  <title>LADI Session Handler</title>
+  <description>LADI Session Handler or simply ladish is a session management system for JACK applications on GNU/Linux.</description>
+  <devel project="multimedia:apps" package="ladish"/>
+</package>

@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>38daa94b75ee746e0fcf3541d25f4841</srcmd5>
+    <version>0.3.150.g27e38d3f</version>
+    <time>1608649082</time>
+    <user>dimstar_suse</user>
+    <comment>Libraries are required by Cadence which will provide a much better UI</comment>
+    <requestid>846357</requestid>
+  </revision>
+</revisionlist>

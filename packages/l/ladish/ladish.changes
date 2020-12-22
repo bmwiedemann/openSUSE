@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Tue Oct 20 04:09:08 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- Update to ladish-0.3-150-g27e38d3f with some build fixes
+- Fix /usr/libexec changes
+- Drop ladish.compile2.patch not needed
+- Drop pylash - don't feel like porting it to python3 atm.
+- Add ladish-python3.patch to build with python3
+- Bundle newer version of waf that works with python
+
+-------------------------------------------------------------------
+Wed Aug 29 05:05:10 UTC 2018 - sflees@suse.de
+
+- Only suggest laditools, its no longer maintained and shouldn't
+  be needed when the package is used with Cadence.
+
+-------------------------------------------------------------------
+Tue Jul 10 05:40:28 UTC 2018 - sflees@suse.de
+
+- Disable gui parts, they use long depreciated gnome libs I recommend
+  using cadence as a gui front end instead.
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Jun 28 05:40:28 UTC 2016 - sflees@suse.de
+
+- add ladish.compile2.patch to hack around build with -werror failing
