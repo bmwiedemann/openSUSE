@@ -29,6 +29,7 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-nanospec-devel
 BuildRequires:  ghc-temporary-devel
