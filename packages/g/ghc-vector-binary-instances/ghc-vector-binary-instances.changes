@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Fri Sep  4 13:48:36 UTC 2020 - psimons@suse.com
 
 - Update vector-binary-instances to version 0.2.5.1 revision 2.
