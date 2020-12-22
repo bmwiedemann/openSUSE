@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Fri Sep  4 17:21:39 UTC 2020 - psimons@suse.com
 
 - Update neat-interpolation to version 0.5.1.2.

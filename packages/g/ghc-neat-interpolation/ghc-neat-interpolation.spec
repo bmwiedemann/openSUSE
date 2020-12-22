@@ -30,6 +30,7 @@ BuildRequires:  ghc-megaparsec-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-text-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-quickcheck-instances-devel
