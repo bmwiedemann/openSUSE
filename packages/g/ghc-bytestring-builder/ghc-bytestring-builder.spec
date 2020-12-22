@@ -28,6 +28,7 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 
 %description
 This is the bytestring builder that is debuting in bytestring-0.10.4.0, which
