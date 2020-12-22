@@ -31,6 +31,7 @@ BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-unix-compat-devel
+ExcludeArch:    %{ix86}
 
 %description
 A Haskell library for working with files and directories. Includes code for
