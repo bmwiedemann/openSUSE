@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 21 15:59:43 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1608558896.743495da:
+  * Support relative path when loading test modules specified by SCHEDULE
+
+-------------------------------------------------------------------
 Sat Dec 19 07:59:40 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1608301075.2287dabd:
