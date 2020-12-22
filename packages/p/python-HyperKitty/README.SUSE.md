@@ -21,24 +21,24 @@ is included by the default configuration in
 
        DEBUG = False
 
-3. Add a valid email configuration
+3. The valid hosts or domain names for the application need to be defined:
 
-   `/etc/postorius/settings_local.py`:
+   `/etc/hyperkitty/settings_local.py`:
+
+        ALLOWED_HOSTS = [
+            'localhost',
+            'lists.example.com'
+        ]
+
+4. Add a valid email configuration
+
+   `/etc/hyperkitty/settings_local.py`:
 
         EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
         EMAIL_HOST = 'localhost'
         EMAIL_PORT = 25
         EMAIL_HOST_USER = <username>
         EMAIL_HOST_PASSWORD = <password>
-
-4. The valid hosts or domain names for the application need to be defined:
-
-   `/srv/www/webapps/mailman/postorius/settings_local.py`:
-
-        ALLOWED_HOSTS = [
-            'localhost',
-            'lists.example.com'
-        ]
 
 5. To connect with a running mailman instance's REST API, configuration options
    have to be added to hyperkitty's configuration.
@@ -58,32 +58,33 @@ is included by the default configuration in
         MAILMAN_ARCHIVER_KEY = 'SecretArchiverAPIKey'
         MAILMAN_ARCHIVER_FROM = ('127.0.0.1', '::1')
 
-7. Setup the database (optionally configure e.g. postgres first,
-   default: sqlite3)
+7. Optional: Configure postgres or another database (default: sqlite3)
 
-    hyperkitty-manage migrate
+8. Create and setup the database
 
-8. Populate the database with default data (when setting up for the first time):
+        hyperkitty-manage migrate
 
-    hyperkitty-manage loaddata
+9. Populate the database with default data (when setting up for the first time):
 
-9. Create admin user
+        hyperkitty-manage loaddata first_start
 
-    hyperkitty-manage createsuperuser
+10. Create admin user
 
-10. Enable HyperKitty async tasks runner
+       hyperkitty-manage createsuperuser
 
-        systemctl enable --now hyperkitty-qcluster.service
+11. Enable HyperKitty async tasks runner
 
-11. Enable HyperKitty runjob timers
+       systemctl enable --now hyperkitty-qcluster.service
 
-        systemctl enable hyperkitty-runjob-minutely.service
-        systemctl enable hyperkitty-runjob-quarter-hourly.service
-        systemctl enable hyperkitty-runjob-hourly.service
-        systemctl enable hyperkitty-runjob-daily.service
-        systemctl enable hyperkitty-runjob-weekly.service
-        systemctl enable hyperkitty-runjob-monthly.service
-        systemctl enable hyperkitty-runjob-yearly.service
+12. Enable HyperKitty runjob timers
+
+       systemctl enable hyperkitty-runjob-minutely.timer
+       systemctl enable hyperkitty-runjob-quarter-hourly.timer
+       systemctl enable hyperkitty-runjob-hourly.timer
+       systemctl enable hyperkitty-runjob-daily.timer
+       systemctl enable hyperkitty-runjob-weekly.timer
+       systemctl enable hyperkitty-runjob-monthly.timer
+       systemctl enable hyperkitty-runjob-yearly.timer
 
 ## Apache2
 

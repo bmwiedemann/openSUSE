@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 20 14:37:27 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix access to CACHE dir
+- Improve documentation (README.SUSE.md)
+- Fix quaterly timer and service
+
+-------------------------------------------------------------------
 Sun Dec 13 11:16:18 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 
 - Added hyperkitty-qcluster.service

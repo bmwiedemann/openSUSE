@@ -1,7 +1,9 @@
 #!/bin/sh
 LOG_DIR="/var/log/hyperkitty"
 LIB_DIR="/var/lib/hyperkitty"
-DATA_DIR="$LIB_DIR/data/"
+DATA_DIR="${LIB_DIR}/data"
+WEBAPPS_DIR="/srv/www/webapps/mailman/hyperkitty"
+CACHE_DIR="${WEBAPPS_DIR}/static/CACHE"
 
 setfacl -R    --no-mask -m u:hyperkitty-admin:rwX  ${DATA_DIR}
 setfacl -R -d --no-mask -m u:hyperkitty-admin:rwX  ${DATA_DIR}
@@ -29,3 +31,12 @@ setfacl -R    --no-mask -m u:hyperkitty:rwX        ${LOG_DIR}
 setfacl -R -d --no-mask -m u:hyperkitty:rwX        ${LOG_DIR}
 setfacl -R    --no-mask -m u:hyperkitty-admin:rwX  ${LOG_DIR}
 setfacl -R -d --no-mask -m u:hyperkitty-admin:rwX  ${LOG_DIR}
+
+# The wsgi needs to write to static/CACHE
+chown   -R hyperkitty:hyperkitty                   ${CACHE_DIR}
+chmod   -R u=rwX,g=rwX,o=rX                        ${CACHE_DIR}
+
+setfacl -R    --no-mask -m u:hyperkitty:rwX        ${CACHE_DIR}
+setfacl -R -d --no-mask -m u:hyperkitty:rwX        ${CACHE_DIR}
+setfacl -R    --no-mask -m u:hyperkitty-admin:rwX  ${CACHE_DIR}
+setfacl -R -d --no-mask -m u:hyperkitty-admin:rwX  ${CACHE_DIR}

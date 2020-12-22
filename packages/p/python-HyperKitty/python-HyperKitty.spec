@@ -160,6 +160,7 @@ install -d -m 0755 \
     %{buildroot}%{hyperkitty_basedir} \
     %{buildroot}%{hyperkitty_localedir} \
     %{buildroot}%{hyperkitty_staticdir} \
+    %{buildroot}%{hyperkitty_staticdir}/CACHE \
     %{buildroot}%{_unitdir}
 
 cp -a example_project/* %{buildroot}%{hyperkitty_basedir}
@@ -173,6 +174,9 @@ for f in \
     ; do
     rm -f %{buildroot}%{hyperkitty_basedir}/$f
 done
+rm -f %{buildroot}%{hyperkitty_localedir}/.keep
+rm -f %{buildroot}%{hyperkitty_basedir}/logs/.keep
+
 %python_expand rm -rf %{buildroot}%{$python_sitelib}/example_project
 
 # Create an empty settings_local.py. This will be filled with a SECRET_KEY in post
@@ -216,7 +220,7 @@ for job in \
     if [ "${job}" = "minutely" ]; then
         hyperkitty_runjob_delay="RandomizedDelaySec=15s"
     elif [ "${job}" = "quarter-hourly" ]; then
-        hyperkitty_runjob_timer="OnCalendar=quaterly"
+        hyperkitty_runjob_calendar="OnCalendar=quarterly"
         hyperkitty_runjob_delay="RandomizedDelaySec=2m"
         # The real jobname is with an underscore
         hyperkitty_runjob_name="quarter_hourly"
@@ -249,6 +253,8 @@ fi
 %{_sbindir}/hyperkitty-manage migrate --pythonpath /srv/www/webapps/mailman/hyperkitty/ --settings settings
 %{_sbindir}/hyperkitty-manage collectstatic --pythonpath /srv/www/webapps/mailman/hyperkitty/ --settings settings --clear --noinput
 %{_sbindir}/hyperkitty-manage compress --pythonpath /srv/www/webapps/mailman/hyperkitty/ --settings settings --force
+# Run hyperkitty-fix-permissions again for cache dir permissions
+%{_sbindir}/hyperkitty-fix-permissions
 
 %service_add_post %{hyperkitty_services}
 
@@ -277,7 +283,18 @@ fi
 %{_unitdir}/hyperkitty-runjob-*.timer
 
 %defattr(-,hyperkitty-admin,hyperkitty)
-%{hyperkitty_basedir}
+%dir %{hyperkitty_basedir}
+%{hyperkitty_basedir}/__init__.py
+%{hyperkitty_basedir}/manage.py
+%{hyperkitty_basedir}/settings.py
+%{hyperkitty_basedir}/settings_local.py
+%{hyperkitty_basedir}/urls.py
+%{hyperkitty_basedir}/wsgi.py
+
+%dir %{hyperkitty_localedir}
+
+%dir %{hyperkitty_staticdir}
+%dir %{hyperkitty_staticdir}/CACHE
 
 %attr(750,hyperkitty-admin,hyperkitty) %dir %{hyperkitty_etcdir}
 %attr(640,hyperkitty-admin,hyperkitty) %config(noreplace) %{hyperkitty_etcdir}/settings_local.py
