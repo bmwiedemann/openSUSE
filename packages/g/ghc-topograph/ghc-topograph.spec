@@ -30,6 +30,7 @@ BuildRequires:  ghc-base-orphans-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-vector-devel
+ExcludeArch:    %{ix86}
 
 %description
 Directed acyclic graphs can be sorted topographically. Existence of topographic
