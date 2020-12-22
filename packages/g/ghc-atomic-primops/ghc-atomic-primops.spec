@@ -27,7 +27,8 @@ Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-primitive-devel
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  ghc-template-haskell-devel
+BuildRequires:  ghc-template-haskell
+ExcludeArch:    %{ix86}
 
 %description
 After GHC 7.4 a new `casMutVar#` primop became available, but it's difficult to
