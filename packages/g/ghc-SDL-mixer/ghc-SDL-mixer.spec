@@ -28,6 +28,7 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-SDL-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  libSDL_mixer-devel
+ExcludeArch:    %{ix86}
 
 %description
 SDL_mixer is a sample multi-channel audio mixer library. It supports any number
