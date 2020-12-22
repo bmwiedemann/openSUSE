@@ -28,6 +28,7 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-network-bsd-devel
 BuildRequires:  ghc-network-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 
 %description
 The "Network.Multicast" module is for sending UDP datagrams over multicast
