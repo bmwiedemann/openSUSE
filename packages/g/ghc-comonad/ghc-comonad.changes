@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Wed Dec 16 17:25:51 UTC 2020 - psimons@suse.com
+
+- Update comonad to version 5.0.7.
+  5.0.7 [2020.12.15]
+  ------------------
+  * Move `FunctorWithIndex (TracedT m w)` instance from `lens`.
+    This instance depends on the `indexed-traversable` package. This can be disabled using the flag of the same name.
+
+-------------------------------------------------------------------
 Mon Aug 31 09:34:36 UTC 2020 - psimons@suse.com
 
 - Update comonad to version 5.0.6 revision 1.
