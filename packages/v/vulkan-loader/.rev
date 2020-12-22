@@ -243,4 +243,14 @@
     <comment>- Update to release 1.2.154.1</comment>
     <requestid>844987</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>a9ef6170ac090d905ae264d4a21bc3b3</srcmd5>
+    <version>1.2.162.0</version>
+    <time>1608632724</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.2.162 (sdk)
+  * Add GGP WSI platform support to Vulkan-Loader
+- fix vulkan64 suse bug</comment>
+    <requestid>856645</requestid>
+  </revision>
 </revisionlist>

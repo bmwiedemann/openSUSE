@@ -18,9 +18,8 @@
 
 # Only pick versions released as /^sdk-.*/ tags
 %define lname	libvulkan1
-%define hdrreq	1.2.154
 Name:           vulkan-loader
-Version:        1.2.154.1
+Version:        1.2.162.0
 Release:        0
 Summary:        Reference ICD loader for Vulkan
 License:        Apache-2.0
@@ -32,7 +31,7 @@ BuildRequires:  cmake >= 3.4
 BuildRequires:  gcc-c++ >= 4.8
 BuildRequires:  pkgconfig
 BuildRequires:  python3-xml
-BuildRequires:  vulkan-headers >= %hdrreq
+BuildRequires:  vulkan-headers >= %version
 BuildRequires:  pkgconfig(pciaccess)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
@@ -57,7 +56,7 @@ graphics applications such as games and interactive media.
 Summary:        Vulkan development package
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version-%release
-Requires:       vulkan-headers >= %hdrreq
+Requires:       vulkan-headers >= %version
 
 %description -n vulkan-devel
 Vulkan is a 3D graphics and compute API providing cross-platform
@@ -73,7 +72,9 @@ to make use of Vulkan.
 %build
 %cmake \
 	-DVulkanHeaders_INCLUDE_DIR:PATH="%_includedir" \
-	-DVulkanRegistry_DIR:PATH="%_datadir/vulkan/registry"
+	-DVulkanRegistry_DIR:PATH="%_datadir/vulkan/registry" \
+	-DLIB_SUFFIX:STRING=""
+
 %cmake_build
 
 %install
