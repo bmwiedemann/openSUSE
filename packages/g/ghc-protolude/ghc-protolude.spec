@@ -38,6 +38,7 @@ BuildRequires:  ghc-stm-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-transformers-compat-devel
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 
 %description
 A sensible set of defaults for writing custom Preludes.
