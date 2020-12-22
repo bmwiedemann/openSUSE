@@ -30,6 +30,7 @@ BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 
 %description
 This package provides a library for parallel programming.
