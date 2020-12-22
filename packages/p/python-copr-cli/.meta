@@ -1,0 +1,5 @@
+<package name="python-copr-cli" project="openSUSE:Factory">
+  <title></title>
+  <description>Copr cli</description>
+  <devel project="devel:languages:python" package="python-copr-cli"/>
+</package>
