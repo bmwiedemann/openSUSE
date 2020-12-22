@@ -30,6 +30,7 @@ BuildRequires:  ghc-generic-lens-core-devel
 BuildRequires:  ghc-profunctors-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-doctest-devel
