@@ -24,6 +24,7 @@ License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
 Patch01:        ghc-8.10-support-for-3.2.patch
+Patch02:        base16-bytestring.patch
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-HTTP-devel
 BuildRequires:  ghc-array-devel
@@ -57,6 +58,7 @@ BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-zlib-devel
+ExcludeArch:    %{ix86}
 
 %description
 The 'cabal' command-line program simplifies the process of managing Haskell
