@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Dec 19 09:52:39 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 6.4.14:
+  * sr:    Мирослав Николић (Miroslav Nikolić) [Serbian]
+  * Errors about lock file (= pidfile) creation could be lost in daemon 
+  configurations (-d option, or set daemon) when using syslog. Now they are also 
+  logged to syslog.  Found verifying a pidfile creation issue on 6.4.12 that was 
+  previously reported by Alex Hall of Automatic Distributors.
+  * If the lock file cannot be removed (no write permission on directory), try
+  to truncate it, and if that fails, report error.
+  * If the pidfile was non-default, fetchmail -q or --quit would malfunction and
+  claim no other fetchmail were running, because it did not read the 
+  configuration files or merge the command line options, thus it would look for 
+  the PID in the wrong file.
+
+-------------------------------------------------------------------
+Fri Dec 18 09:39:19 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Don't require systemd
+- Use tmpfiles for all files
+- Use systemd macro for tmpfiles
+- Don't delete home directory if the user stays
+- Use sysusers config to create system user
+
+-------------------------------------------------------------------
 Fri Sep  4 20:22:16 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 6.4.12:

@@ -1,1 +1,2 @@
-d /run/fetchmail 700 fetchmail nobody
+d /run/fetchmail 700 fetchmail fetchmail
+f /var/log/fetchmail 600 fetchmail root

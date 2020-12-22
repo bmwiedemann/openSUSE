@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           fetchmail
-Version:        6.4.12
+Version:        6.4.14
 Release:        0
 Summary:        Full-Featured POP and IMAP Mail Retrieval Daemon
 License:        GPL-2.0-or-later
@@ -34,6 +34,7 @@ Source5:        %{name}.keyring
 Source6:        %{name}.service
 Source7:        %{name}.tmpfiles
 Source8:        %{name}.exec
+Source9:        %{name}.sysusers
 Patch0:         fetchmail-6.3.8-smtp_errors.patch
 BuildRequires:  automake
 BuildRequires:  krb5-devel
@@ -44,14 +45,13 @@ BuildRequires:  procmail
 BuildRequires:  python3-base
 BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-shadow
+BuildRequires:  sysuser-tools
 BuildRequires:  xz
 Requires:       logrotate
 Requires(pre):  %fillup_prereq
-Requires(pre):  coreutils
-Requires(pre):  group(daemon)
-Requires(pre):  shadow
 Suggests:       smtp_daemon
-%{?systemd_requires}
+%sysusers_requires
 
 %description
 Fetchmail is a robust and well-documented remote mail retrieval and
@@ -94,6 +94,7 @@ export CFLAGS="%{optflags} -fPIE"
         --with-gssapi \
 	--with-ssl=%{_prefix}
 %make_build LDFLAGS="-pie"
+%sysusers_generate_pre %{SOURCE9} fetchmail
 
 %install
 %make_install
@@ -103,9 +104,11 @@ cp fetchmail.logrotate %{buildroot}%{_sysconfdir}/logrotate.d/fetchmail
 mkdir -p %{buildroot}/sbin
 mkdir -p %{buildroot}%{_unitdir}
 mkdir -p %{buildroot}%{_tmpfilesdir}
+mkdir -p %{buildroot}%{_sysusersdir}
 sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{SOURCE6}
 install -m 0644 %{SOURCE6} %{buildroot}%{_unitdir}/%{name}.service
 install -m 0644 %{SOURCE7} %{buildroot}%{_tmpfilesdir}/%{name}.conf
+install -m 0644 %{SOURCE9} %{buildroot}%{_sysusersdir}/%{name}.conf
 mkdir -p %{buildroot}%{_libexecdir}
 install -m 0755 %{SOURCE8} %{buildroot}%{_libexecdir}/%{name}-systemd-exec
 mkdir -p %{buildroot}%{_sbindir}
@@ -121,31 +124,19 @@ mkdir -p %{buildroot}%{_localstatedir}/lib/fetchmail
 rm -r contrib/gai*
 %find_lang %{name}
 
-%pre
-%{_bindir}/getent passwd fetchmail >/dev/null || \
-  %{_sbindir}/useradd -r -g daemon -s /bin/false \
-  -c "mail retrieval daemon" -d %{_localstatedir}/lib/fetchmail fetchmail || :
+%pre -f fetchmail.pre
 %service_add_pre %{name}.service
 
 %post
 %fillup_only
+%tmpfiles_create %{name}.conf
 %service_add_post %{name}.service
-if [ -x %{_bindir}/systemd-tmpfiles ]; then
-	systemd-tmpfiles --create %{name}.conf || :
-fi
-# Ensure that all files are readable by fetchmail with non-root UID.
-touch var/log/fetchmail
-chown fetchmail var/log/fetchmail
-chmod 0600 var/log/fetchmail
 
 %preun
 %service_del_preun %{name}.service
 
 %postun
 %service_del_postun %{name}.service
-if [ $1 = 0 ]; then
-    rm -rf var/lib/fetchmail
-fi
 
 %check
 %make_build check
@@ -154,7 +145,7 @@ fi
 %license COPYING
 %doc FAQ FEATURES NEWS NOTES OLDNEWS README README.NTLM README.SSL README.SSL-SERVER TODO contrib *.html *.txt *.pdf
 %{_bindir}/fetchmail
-%dir %attr(0700, fetchmail, root) %{_localstatedir}/lib/fetchmail
+%dir %attr(0700, fetchmail, fetchmail) %{_localstatedir}/lib/fetchmail
 %ghost %attr(0600, fetchmail, root) %{_localstatedir}/log/fetchmail
 %{_mandir}/man1/fetchmail.1%{?ext_man}
 %ghost %config(noreplace) %attr(0600, fetchmail, root) %{_sysconfdir}/fetchmailrc
@@ -163,6 +154,7 @@ fi
 %{_sbindir}/rc%{name}
 %{_libexecdir}/%{name}-systemd-exec
 %{_tmpfilesdir}/%{name}.conf
+%{_sysusersdir}/%{name}.conf
 %{_fillupdir}/sysconfig.%{name}
 
 %files -n fetchmailconf
