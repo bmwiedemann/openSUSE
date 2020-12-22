@@ -959,4 +959,12 @@
     <comment>- updated to latest repository</comment>
     <requestid>852580</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>0a4c8988d8070b8f64f7f8690b6f408e</srcmd5>
+    <version>0.8.15</version>
+    <time>1608632769</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 0.8.15</comment>
+    <requestid>857859</requestid>
+  </revision>
 </revisionlist>

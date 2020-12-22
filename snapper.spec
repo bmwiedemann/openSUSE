@@ -25,7 +25,7 @@
 %bcond_with coverage
 
 Name:           snapper
-Version:        0.8.14
+Version:        0.8.15
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         snapper-%{version}.tar.bz2
@@ -41,6 +41,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libacl-devel
 BuildRequires:  libtool
 BuildRequires:  libxml2-devel
+BuildRequires:  ncurses-devel
 %if 0%{?suse_version} > 1230
 BuildRequires:  libbtrfs-devel
 %endif
