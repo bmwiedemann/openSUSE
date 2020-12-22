@@ -32,6 +32,7 @@ BuildRequires:  ghc-cabal-doctest-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-tagged-devel
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-doctest-devel
 BuildRequires:  ghc-generic-deriving-devel
