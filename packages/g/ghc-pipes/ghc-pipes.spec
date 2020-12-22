@@ -32,6 +32,7 @@ BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-void-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-test-framework-devel
