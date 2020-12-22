@@ -34,6 +34,7 @@ BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-void-devel
+ExcludeArch:    %{ix86}
 
 %description
 This library auto-generates an 'optparse-applicative'-compatible 'Parser' from
