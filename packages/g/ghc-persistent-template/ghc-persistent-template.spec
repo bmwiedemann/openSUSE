@@ -40,6 +40,7 @@ BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-th-lift-instances-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unordered-containers-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-hspec-devel
