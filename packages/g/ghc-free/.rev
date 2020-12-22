@@ -138,4 +138,12 @@ languages.</comment>
     <comment>version update</comment>
     <requestid>842744</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b5dc8b89b465abf6150659837acba2ff</srcmd5>
+    <version>5.1.5</version>
+    <time>1608633580</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857364</requestid>
+  </revision>
 </revisionlist>

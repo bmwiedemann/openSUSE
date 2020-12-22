@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Wed Dec 16 17:14:45 UTC 2020 - psimons@suse.com
+
+- Update free to version 5.1.5.
+  5.1.5 [2020.12.16]
+  ------------------
+  * Move `indexed-traversable` (`FunctorWithIndex` etc) instances from `lens`.
+
+-------------------------------------------------------------------
 Tue Oct  6 08:56:01 UTC 2020 - psimons@suse.com
 
 - Update free to version 5.1.4.

@@ -18,7 +18,7 @@
 
 %global pkg_name free
 Name:           ghc-%{pkg_name}
-Version:        5.1.4
+Version:        5.1.5
 Release:        0
 Summary:        Monads for free
 License:        BSD-3-Clause
@@ -29,6 +29,7 @@ BuildRequires:  ghc-comonad-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-distributive-devel
 BuildRequires:  ghc-exceptions-devel
+BuildRequires:  ghc-indexed-traversable-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-profunctors-devel
 BuildRequires:  ghc-rpm-macros
@@ -37,6 +38,7 @@ BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-th-abstraction-devel
 BuildRequires:  ghc-transformers-base-devel
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 
 %description
 Free monads are useful for many tree-like structures and domain specific
