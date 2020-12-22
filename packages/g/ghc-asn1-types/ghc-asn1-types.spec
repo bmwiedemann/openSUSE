@@ -29,6 +29,7 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-hourglass-devel
 BuildRequires:  ghc-memory-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 
 %description
 ASN.1 standard types.
