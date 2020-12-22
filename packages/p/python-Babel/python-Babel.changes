@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Dec 16 23:03:10 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- removed obsolete patches
+  * python383.patch
+  * pytest6.patch
+- update to 2.9.0
+  * Improvements
+    - CLDR: Use CLDR 37 – Aarni Koskela (#734)
+    - Dates: Handle ZoneInfo objects in get_timezone_location, get_timezone_name - Alessio Bogon (#741)
+    - Numbers: Add group_separator feature in number formatting - Abdullah Javed Nesar (#726)
+  * Bugfixes
+    - Dates: Correct default Format().timedelta format to 'long' to mute deprecation warnings – Aarni Koskela
+    - Import: Simplify iteration code in "import_cldr.py" – Felix Schwarz
+    - Import: Stop using deprecated ElementTree methods "getchildren()" and "getiterator()" – Felix Schwarz
+    - Messages: Fix unicode printing error on Python 2 without TTY. – Niklas Hambüchen
+    - Messages: Introduce invariant that _invalid_pofile() takes unicode line. – Niklas Hambüchen
+    - Tests: fix tests when using Python 3.9 – Felix Schwarz
+    - Tests: Remove deprecated 'sudo: false' from Travis configuration – Jon Dufresne
+    - Tests: Support Py.test 6.x – Aarni Koskela
+    - Utilities: LazyProxy: Handle AttributeError in specified func – Nikiforov Konstantin (#724)
+    - Utilities: Replace usage of parser.suite with ast.parse – Miro Hrončok
+    - Support Py.test 6 - Aarni Koskela (#747, #750, #752)
+  * Documentation
+    - Update parse_number comments – Brad Martin (#708)
+    - Add __iter__ to Catalog documentation – @CyanNani123
+
+-------------------------------------------------------------------
 Thu Aug 27 12:38:55 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Add patch to fix building with new pytest 6.0.1:
