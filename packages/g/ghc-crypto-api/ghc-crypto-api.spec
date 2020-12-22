@@ -32,6 +32,7 @@ BuildRequires:  ghc-entropy-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-tagged-devel
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 
 %description
 A generic interface for cryptographic operations (hashes, ciphers, randomness).
