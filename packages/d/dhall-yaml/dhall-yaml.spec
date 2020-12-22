@@ -19,7 +19,7 @@
 %global pkg_name dhall-yaml
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        1.2.3
+Version:        1.2.4
 Release:        0
 Summary:        Convert between Dhall and YAML
 License:        GPL-3.0-or-later
@@ -41,6 +41,7 @@ BuildRequires:  ghc-prettyprinter-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-vector-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-expected-failure-devel
