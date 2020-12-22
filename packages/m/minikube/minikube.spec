@@ -17,7 +17,7 @@
 
 
 Name:           minikube
-Version:        1.15.1
+Version:        1.16.0
 Release:        0
 Summary:        Tool to run Kubernetes locally
 License:        Apache-2.0
@@ -89,7 +89,8 @@ git init
 echo '*' > .gitignore
 touch .dummy
 git add -f .dummy .gitignore
-git commit -m "trick hack/get_k8s_version.py"
+d=$(date "-d@${SOURCE_DATE_EPOCH:-$(date +%%s)}" +"%%Y-%%m-%%d %%H:%%M:%%S")
+GIT_COMMITTER_DATE="$d" git commit --date="$d" -m "trick hack/get_k8s_version.py"
 %make_build out/minikube
 %ifnarch i586
 %ifarch aarch64
