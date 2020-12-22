@@ -30,6 +30,7 @@ BuildRequires:  ghc-base-prelude-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-semigroups-devel
 BuildRequires:  ghc-vector-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-attoparsec-devel
