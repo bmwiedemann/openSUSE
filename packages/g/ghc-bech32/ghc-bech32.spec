@@ -36,6 +36,7 @@ BuildRequires:  ghc-memory-devel
 BuildRequires:  ghc-optparse-applicative-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-deepseq-devel
