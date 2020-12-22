@@ -38,6 +38,7 @@ BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-syb-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-xml-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-filepath-devel

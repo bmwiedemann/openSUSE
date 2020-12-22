@@ -382,4 +382,12 @@ texmath changes:
     <comment>version update</comment>
     <requestid>838502</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>5647ed21bd8d28699d1d96cc278eaae7</srcmd5>
+    <version>0.12.0.3</version>
+    <time>1608634208</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857696</requestid>
+  </revision>
 </revisionlist>
