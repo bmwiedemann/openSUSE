@@ -48,6 +48,7 @@ BuildRequires:  ghc-yaml-devel
 BuildRequires:  ghc-yesod-core-devel
 BuildRequires:  ghc-yesod-form-devel
 BuildRequires:  ghc-yesod-persistent-devel
+ExcludeArch:    %{ix86}
 
 %description
 API docs and the README are available at
