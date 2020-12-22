@@ -28,6 +28,7 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-SDL-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  libSDL_image-devel
+ExcludeArch:    %{ix86}
 
 %description
 SDL_image is an image file loading library. It loads images as SDL surfaces,
