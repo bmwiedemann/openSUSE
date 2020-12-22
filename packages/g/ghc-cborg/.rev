@@ -23,4 +23,12 @@
     <comment>- relax dep constraints</comment>
     <requestid>849247</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>daf49bf30c46cbbf315a9f24dbd84ba4</srcmd5>
+    <version>0.2.4.0</version>
+    <time>1608633431</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857275</requestid>
+  </revision>
 </revisionlist>
