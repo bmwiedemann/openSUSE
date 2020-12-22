@@ -30,6 +30,7 @@ BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-regex-base-devel
 BuildRequires:  ghc-regex-posix-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 
 %description
 One module compat layer over <//hackage.haskell.org/package/regex-posix
