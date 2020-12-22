@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 21 19:08:37 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 10.5.2+3d2b8998:
+  * Fix regression in Budgie Desktop Settings icon handling (#2082)
+
+-------------------------------------------------------------------
 Wed Dec 09 15:21:08 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
 
 - Removed budgie-desktop-nemo-autostart.desktop

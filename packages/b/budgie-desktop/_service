@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://github.com/solus-project/budgie-desktop.git</param>
-    <param name="revision">5a56d6dd36f42ca6da1eb753f5f0cb44f1abab26</param>
+    <param name="revision">3d2b899847aeaea69cce574aa3f489ec1d591a1f</param>
     <param name="versionformat">@PARENT_TAG@+%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
