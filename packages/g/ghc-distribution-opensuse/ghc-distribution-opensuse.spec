@@ -44,6 +44,7 @@ BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-turtle-devel
 BuildRequires:  pandoc
+ExcludeArch:    %{ix86}
 
 %description
 This library is a loose collection of types, functions, and tools that users
