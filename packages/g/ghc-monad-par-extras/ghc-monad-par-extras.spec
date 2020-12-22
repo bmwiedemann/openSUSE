@@ -32,6 +32,7 @@ BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 
 %description
 The modules below provide additional data structures, and other added
