@@ -33,6 +33,7 @@ BuildRequires:  ghc-contravariant-devel
 BuildRequires:  ghc-ghc-boot-th-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-show-combinators-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-doctest-devel
