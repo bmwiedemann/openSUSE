@@ -48,6 +48,7 @@ BuildRequires:  ghc-these-devel
 BuildRequires:  ghc-topograph-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-vector-devel
+ExcludeArch:    %{ix86}
 
 %description
 This package provides a library (see "Cabal.Plan") for decoding 'plan.json'
