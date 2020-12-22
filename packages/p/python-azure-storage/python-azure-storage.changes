@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 26 11:07:08 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Only build Python3 flavors for distributions 15 and greater
+
+-------------------------------------------------------------------
 Thu Sep  6 12:19:34 UTC 2018 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Move LICENSE.txt from %doc to %license section
