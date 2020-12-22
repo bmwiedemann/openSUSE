@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Sun Nov 29 18:29:31 UTC 2020 - psimons@suse.com
+
+- Add authenticate-oauth at version 1.6.0.1 revision 2.
+
