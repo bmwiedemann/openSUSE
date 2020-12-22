@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Dec 14 19:56:37 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.162.0 (sdk)
+  * Add GGP (Stadia) WSI platform support to vk_icd.h
+
+-------------------------------------------------------------------
+Wed Nov 25 16:30:32 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.161
+  * No changelog provided
+
+-------------------------------------------------------------------
+Mon Oct 19 06:45:55 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.2.158:
+  * Update to match Vulkan-Docs 1.2.158
+
+-------------------------------------------------------------------
 Mon Sep 28 21:44:32 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.154

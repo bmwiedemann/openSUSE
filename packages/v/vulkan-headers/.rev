@@ -199,4 +199,12 @@
     <comment>- Update to release 1.2.154</comment>
     <requestid>840306</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3750092680fdf827132897ba49d0e2cf</srcmd5>
+    <version>1.2.162.0</version>
+    <time>1608632702</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.2.162.0 (sdk)</comment>
+    <requestid>856047</requestid>
+  </revision>
 </revisionlist>
