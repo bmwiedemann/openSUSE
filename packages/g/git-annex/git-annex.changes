@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Sun Nov 29 15:48:14 UTC 2020 - psimons@suse.com
+
+- Update git-annex to version 8.20201127.
+  git-annex (8.20201127) upstream; urgency=medium
+
+    * adjust: New --unlock-present mode which locks files whose content is not
+      present (so the broken symlink is visible), while unlocking files whose
+      content is present.
+    * Added annex.adjustedbranchrefresh git config to update adjusted
+      branches set up by git-annex adjust --unlock-present/--hide-missing.
+    * Fix hang when an external special remote program exited but
+      the stderr pipe to it was left open, due to a daemon having inherited
+      the file descriptor.
+    * Fix a bug that could make resuming a download from the web fail
+      when the entire content of the file is actually already present
+      locally.
+    * examinekey: Added a "file" format variable for consistency with find,
+      and for easier scripting.
+    * init: When writing hook scripts, set all execute bits, not only
+      the user execute bit.
+    * upgrade: Support an edge case upgrading a v5 direct mode repo
+      where nothing had ever been committed to the head branch.
+    * Made the test suite significantly less noisy, only displaying command
+      output when something failed.
+    * Fix building without the torrent library.
+      Thanks, Kyle Meyer.
+    * Fix build on Windows.
+    * Prevent windows assistant from trying (and failing) to upgrade
+      itself, which has never been supported on windows.
+
+   -- Joey Hess <id@joeyh.name>  Fri, 27 Nov 2020 12:54:11 -0400
+
+-------------------------------------------------------------------
 Tue Nov 17 15:41:20 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - drop 0001-enable-extensions-needed-by-new-version-of-persistent.patch

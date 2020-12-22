@@ -17,7 +17,7 @@
 
 
 Name:           git-annex
-Version:        8.20201116
+Version:        8.20201127
 Release:        0
 Summary:        Manage files with git, without checking their contents into git
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND BSD-2-Clause AND MIT AND GPL-2.0-only
@@ -127,7 +127,6 @@ BuildRequires:  git-core
 BuildRequires:  gpg2
 BuildRequires:  lsof
 BuildRequires:  rsync
-Requires:       git-core
 Requires(post): desktop-file-utils
 Requires(post): hicolor-icon-theme
 Requires(postun): desktop-file-utils
@@ -138,6 +137,7 @@ Recommends:     lsof
 Recommends:     rsync
 Recommends:     ssh
 Suggests:       %{name}-bash-completion
+ExcludeArch:    %{ix86}
 
 %description
 Git-annex allows managing files with git, without checking the file contents
@@ -159,7 +159,6 @@ up and use git-annex this way.
 
 %package bash-completion
 Summary:        Bash completion for git-annex
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
@@ -182,14 +181,6 @@ Optional dependency offering bash completion for git-annex
 make DESTDIR=%{buildroot} BUILDER=./Setup install-mans install-completions install-desktop
 rm %{buildroot}%{_datadir}/fish/vendor_completions.d/git-annex.fish
 rm %{buildroot}%{_datadir}/zsh/site-functions/_git-annex
-
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
 
 %files
 %license COPYRIGHT
