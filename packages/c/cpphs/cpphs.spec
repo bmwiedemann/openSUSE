@@ -29,6 +29,7 @@ BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-polyparse-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-time-devel
+ExcludeArch:    %{ix86}
 
 %description
 Cpphs is a re-implementation of the C pre-processor that is both more
