@@ -36,6 +36,7 @@ BuildRequires:  ghc-memory-devel
 BuildRequires:  ghc-resourcet-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-conduit-combinators-devel
 BuildRequires:  ghc-tasty-devel
