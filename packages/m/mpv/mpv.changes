@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Dec 21 11:58:34 UTC 2020 - idonmez@suse.com
+
+- Update to version 0.33.0+git.20201220T105748.1ba5dc84ca:
+  * wayland: support multiple modifiers
+  * mac: fix type mismatch Int instead of Int32
+  * mac: use visible frame rectangle for window geometry calculation
+  * mac: fix a window positioning bug when exiting fullscreen
+  * appveyor: use MSYS2 shaderc package
+  * vo_wlshm: support presentation time
+  * wayland: unify frame/presentation callback code
+  * x11: update geometry/autofit opts on runtime
+  * wayland: update geometry/autofit opts on runtime
+  * console: use wl-paste on Wayland
+  * wayland: remove unused function declaration
+  * auto_profiles: fix compile_cond on lua 5.1
+  * build: recognize Lua 5.1 on Arch Linux
+  * manpage: document background transparency
+  * manpage: clarify that you can prefetch m3u8 urls
+  * wayland: handle multiple outputs more correctly
+  * vo_gpu: revert 8a09299 and conditionally clear framebuffer again
+  * mac: support screen-name and fs-screen-name opts
+  * wayland: support fs-screen-name option
+  * x11: support screen-name and fs-screen-name opts
+  * player: add --screen-name and --fs-screen-name
+  * manpage: clarify profile-cond requires underscores
+  * build: restore support for non-pkgconfig zlib
+  * build: use pkg-config for zlib
+  * vo_gpu: placebo: update for upstream API changes
+  * vo_sixel: don't divide by zero on small terminal
+  * vo_sixel: re-fit image on terminal resize
+  * vo_sixel: refactor of resize, reconfig (no-op)
+  * vo_sixel: Update description string of vo driver
+  * csputils: add MP_CHROMA_TOPLEFT
+
+-------------------------------------------------------------------
 Mon Nov 30 12:19:41 UTC 2020 - idonmez@suse.com
 
 - Update to version 0.33.0+git.20201129T160245.f16c6472a1:
