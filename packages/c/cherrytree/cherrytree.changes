@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Dec 21 13:36:22 UTC 2020 - malcolmlewis@opensuse.org
+
+- Update to version 0.99.26+2:
+  * Fix select text with keyboard not working,
+    (gh#giuspen/cherrytree#1441).
+  * Fix crash when trying to paste invalid image in clipboard,
+    (gh#giuspen/cherrytree#1440).
+  * Fix open folder link not working when non ASCII path,
+    (gh#giuspen/cherrytree#1423).
+  * Fix recent documents list does't show undescores,
+    (gh#giuspen/cherrytree#1435).
+  * Keyboard shortcut to delete a node becomes Ctrl+Delete since
+    this action now works also with focus on the text/while editing
+    text, (gh#giuspen/cherrytree#1412).
+  * Icon theme fixes/improvements, (gh#giuspen/cherrytree#1426,
+    gh#giuspen/cherrytree#1414
+  * Fix find function adds empty lines to blank nodes,
+    (gh#giuspen/cherrytree#1428).
+  * Removed code duplications for open file and folder link,
+    (gh#giuspen/cherrytree#1423).
+  * Fix crash trying to open a bookmarked node that was deleted,
+    (gh#giuspen/cherrytree#1430).
+  * Fix wrongly detecting being run from the sorces directory build
+    folder, (gh#giuspen/cherrytree#1422).
+  * Fix non working keyboard shorcuts Alt+Left/Right to go to
+    previous/next visited nodes, (gh#giuspen/cherrytree#1412).
+  * Fix tree drag n drop freezing issue,
+    (gh#giuspen/cherrytree#1377).
+  * Fix table keyboard shortcut Ctrl+comma (add row) and
+    Ctrl+Alt+comma (delete row), (gh#giuspen/cherrytree#1417).
+  * When (re)generating TOC do not remove anchors created from the
+    user, (gh#giuspen/cherrytree#1382).
+  * Translation updates.
+  
+-------------------------------------------------------------------
 Wed Dec 09 14:24:52 UTC 2020 - malcolmlewis@opensuse.org
 
 - Update to version 0.99.25:
