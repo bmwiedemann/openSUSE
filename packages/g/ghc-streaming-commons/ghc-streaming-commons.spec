@@ -39,6 +39,7 @@ BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-zlib-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-deepseq-devel
