@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Mon Dec 14 13:07:29 UTC 2020 - psimons@suse.com
+
+- Update wai-extra to version 3.1.4.1.
+  ## 3.1.4.1
+
+  * `Network.Wai.Middleware.Gzip`: Add `Vary: Accept-Encoding` header to responses [#829](https://github.com/yesodweb/wai/pull/829)
+
+-------------------------------------------------------------------
+Sun Dec  6 13:36:19 UTC 2020 - psimons@suse.com
+
+- Update wai-extra to version 3.1.4.
+  ## 3.1.4
+
+  * Export `Network.Wai.Middleware.RequestLogger.JSON.requestToJSON` [#827](https://github.com/yesodweb/wai/pull/827)
+
+-------------------------------------------------------------------
+Fri Nov 27 09:25:27 UTC 2020 - psimons@suse.com
+
+- Update wai-extra to version 3.1.3.
+  ## 3.1.3
+
+  * Add a `DetailedWithSettings` output format for `RequestLogger` that allows to hide requests and modify query parameters [#826](https://github.com/yesodweb/wai/pull/826)
+
+-------------------------------------------------------------------
 Sat Nov  7 15:34:15 UTC 2020 - psimons@suse.com
 
 - Update wai-extra to version 3.1.2.

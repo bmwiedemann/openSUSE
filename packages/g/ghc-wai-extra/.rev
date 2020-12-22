@@ -39,4 +39,12 @@
     <comment>Automated update of haskell pckages</comment>
     <requestid>847880</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cbc8e9ace72f3e03bd1d5c6ee13f75c5</srcmd5>
+    <version>3.1.4.1</version>
+    <time>1608634218</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUSE</comment>
+    <requestid>857702</requestid>
+  </revision>
 </revisionlist>

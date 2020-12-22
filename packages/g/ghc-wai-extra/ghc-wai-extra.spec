@@ -19,7 +19,7 @@
 %global pkg_name wai-extra
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.1.2
+Version:        3.1.4.1
 Release:        0
 Summary:        Provides some basic WAI handlers and middleware
 License:        MIT
@@ -58,6 +58,7 @@ BuildRequires:  ghc-wai-devel
 BuildRequires:  ghc-wai-logger-devel
 BuildRequires:  ghc-word8-devel
 BuildRequires:  ghc-zlib-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-hspec-devel
 %endif
