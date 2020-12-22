@@ -41,6 +41,7 @@ URL:            https://www.frrouting.org
 #Git-Clone:     https://github.com/FRRouting/frr.git
 Source:         https://github.com/FRRouting/frr/archive/%{name}-%{version}.tar.gz
 Source1:        %{name}-tmpfiles.d
+Patch1:         0001-disable-zmq-test.patch
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
@@ -180,6 +181,7 @@ developing OSPF-API and frr applications.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
+%patch1 -p1
 
 %build
 # GCC LTO objects must be "fat" to avoid assembly errors

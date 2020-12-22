@@ -1,0 +1,24 @@
+From a19581f960db4c5f4f3b759e2d7ecf3e9ac73381 Mon Sep 17 00:00:00 2001
+From: Ruben Torrero Marijnissen <rtorreromarijnissen@suse.com>
+Date: Mon, 21 Dec 2020 18:36:43 +0000
+Subject: [PATCH] tests: disable zeromq tests due to build service timeouts
+References: bsc#1180217
+---
+ tests/lib/test_zmq.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/tests/lib/test_zmq.py b/tests/lib/test_zmq.py
+index 1f8ee5416..b298fe7b5 100644
+--- a/tests/lib/test_zmq.py
++++ b/tests/lib/test_zmq.py
+@@ -5,7 +5,6 @@ import os
+ class TestZMQ(frrtest.TestRefOut):
+     program = './test_zmq'
+ 
+-    @pytest.mark.skipif('S["ZEROMQ_TRUE"]=""\n' not in open('../config.status').readlines(),
+-                        reason='ZEROMQ not enabled')
++    @pytest.mark.xfail(reason="Test disabled due to intermittent build service timeouts")
+     def test_refout(self):
+         return super(TestZMQ, self).test_refout()
+-- 
+2.29.2

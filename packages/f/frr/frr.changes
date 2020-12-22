@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 22 10:54:56 UTC 2020 - Rubén Torrero Marijnissen <rtorreromarijnissen@suse.com>
+
+- Disable ZeroMQ tests due to sporadic timeouts during package builds (bsc#1180217)
+  [+ 0001-disable-zmq-test.patch] 
+
+-------------------------------------------------------------------
 Wed Nov  4 19:17:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 7.5
