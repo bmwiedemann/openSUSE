@@ -63,4 +63,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>847472</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>0f5f21b2816fa477735a7d4200e12bfc</srcmd5>
+    <version>2.2.1</version>
+    <time>1608633633</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857393</requestid>
+  </revision>
 </revisionlist>
