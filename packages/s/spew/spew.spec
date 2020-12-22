@@ -1,7 +1,7 @@
 #
 # spec file for package spew
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,9 @@ Patch2:         fix-ncurses-tinfo.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
-BuildRequires:  ncurses-devel
-BuildRequires:  popt-devel
+BuildRequires:  pkgconfig >= 0.9.0
+BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  pkgconfig(popt)
 
 %description
 Spew is used to measure I/O performance of character devices, block devices,
@@ -44,15 +45,12 @@ patterns that are designed to make it easy to find and debug data integrity
 problems.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 autoreconf -fiv
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
