@@ -35,6 +35,7 @@ BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-time-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-bytestring-handle-devel
