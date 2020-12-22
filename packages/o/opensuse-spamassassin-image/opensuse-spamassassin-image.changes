@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec 20 16:21:20 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Pre-Install wget for spamassassin
+
+-------------------------------------------------------------------
+Sun Dec 20 10:11:06 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Print informative message about updating spamassassin rules
+
+-------------------------------------------------------------------
 Fri Dec 18 13:43:13 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Initial version
