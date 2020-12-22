@@ -43,6 +43,7 @@ BuildRequires:  ghc-setenv-devel
 BuildRequires:  ghc-stm-devel
 BuildRequires:  ghc-tf-random-devel
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-hspec-meta-devel
 BuildRequires:  ghc-process-devel
