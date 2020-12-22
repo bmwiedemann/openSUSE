@@ -35,6 +35,7 @@ BuildRequires:  ghc-integer-logarithms-devel
 BuildRequires:  ghc-primitive-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-smallcheck-devel
