@@ -37,6 +37,7 @@ BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-mwc-random-devel
 BuildRequires:  ghc-parallel-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-QuickCheck-devel
