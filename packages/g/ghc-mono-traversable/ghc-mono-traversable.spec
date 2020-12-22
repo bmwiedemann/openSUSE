@@ -36,6 +36,7 @@ BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-vector-algorithms-devel
 BuildRequires:  ghc-vector-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-QuickCheck-devel
