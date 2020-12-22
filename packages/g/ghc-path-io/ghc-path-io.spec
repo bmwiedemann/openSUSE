@@ -37,6 +37,7 @@ BuildRequires:  ghc-temporary-devel
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unix-compat-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-hspec-devel
 %endif
