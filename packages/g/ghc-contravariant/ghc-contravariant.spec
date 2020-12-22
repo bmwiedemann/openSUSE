@@ -28,6 +28,7 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-StateVar-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 
 %description
 Contravariant functors.
