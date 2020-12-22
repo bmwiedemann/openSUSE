@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Tue Nov  3 10:08:50 UTC 2020 - psimons@suse.com
 
 - Update postgresql-libpq to version 0.9.4.3.

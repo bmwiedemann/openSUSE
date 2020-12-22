@@ -30,6 +30,7 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-unix-devel
 BuildRequires:  postgresql-server-devel
+ExcludeArch:    %{ix86}
 
 %description
 This is a binding to libpq: the C application programmer's interface to
