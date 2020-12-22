@@ -1,4 +1,142 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Wed Dec 16 17:26:09 UTC 2020 - psimons@suse.com
+
+- Update hledger-lib to version 1.20.1.
+  # 1.20.1 2020-12-15
+
+  - renamed: updateReportSpecFromOpts -> updateReportSpec[With]
+
+-------------------------------------------------------------------
+Sun Dec  6 13:33:45 UTC 2020 - psimons@suse.com
+
+- Update hledger-lib to version 1.20.
+  # 1.20 2020-12-05
+
+  - added: journalApplyAliases, transactionApplyAliases, postingApplyAliases
+
+  - a new more robust price lookup implementation, fgl library dropped (#1402)
+
+  - Reverted a stripAnsi change in 1.19.1 that caused a 3x slowdown of amount rendering
+    in terminal reports. (#1350)
+
+  - Amount and table rendering has been improved, so that stripAnsi is no longer needed.
+    This speeds up amount rendering in the terminal, speeding up some reports by 10% or more since 1.19.
+    (Stephen Morgan)
+
+  - global commodity display styles can now be set in InputOpts or Journal,
+    overriding all others (declared or inferred). This is used by the import
+    command and probably command-line options in future.
+
+  - Journal keeps a new piece of parsing state, a decimal mark character,
+    which can optionally be set to force the number format expected by all
+    amount parsers.
+
+  - Remove Empty Query constructor, which does nothing and has done so for a very long time. (Stephen Morgan)
+
+  - In ReportOpts, store query terms term-by-term in a list in querystring_. (Stephen Morgan)
+    This helps deal with tricky quoting issues, as we no longer have to make
+    sure everything is quoted properly before merging it into a string.
+
+  - Implement concat(Top|Bottom)Padded in terms of renderRow, allowing them to be width aware. (Stephen Morgan)
+
+  - Expand Tabular.AsciiWide to allow multiline, custom-width,
+    vertically/horizontally-aligned cells, and optional table borders.
+    (Stephen Morgan)
+
+  - Introduce showMixed*Unnormalised, eliminate most direct calls of strWidth. (Stephen Morgan)
+
+  - showMixedAmountElided now makes better use of space, showing as many
+    Amounts possible as long as they and the elision string fit within
+    32 characters. (Stephen Morgan)
+
+  - Add Functor instance for CompoundPeriodicReport. (Stephen Morgan)
+
+  - Generalise CBCSubreportSpec to allow more subreport control. (Stephen Morgan)
+
+  - Export some MultiBalanceReport helper functions. (Stephen Morgan)
+
+  - Make Default instances clearer, remove Default instance for Bool. (Stephen Morgan)
+
+  - Many ReportOpts-related changes, such as the addition of ReportSpec, aimed
+    at preventing runtime errors (from parsing: regexps, dates, format strings;
+    from not having today's date set; etc.)
+    ReportSpec holds a ReportOpts, the day of the report, and the Query generated from these.
+
+  - StringFormat now takes an optional overline width, which is
+    currently only used by defaultBalanceLineFormat. (Stephen Morgan)
+
+  - quoteIfNeeded should not escape the backslashes in unicode code points. (Stephen Morgan)
+
+  - Export OrdPlus and constructors. (Stephen Morgan)
+
+  - Debug output now uses pretty-simple instead pretty-show.
+    This hopefully gives overall nicer debug output (eg in colour),
+    including for values which don't have Read-able Show output.
+    This means that we can start removing custom Show instances
+    that were a workaround for pretty-show. Eg account names
+    in debug output no longer show their colons as underscores.
+
+    Here's some old pretty-show output:
+
+     CsvRules
+       { rdirectives = [ ( "skip" , "1" ) ]
+       , rcsvfieldindexes = [ ( "date" , 1 ) , ( "amount" , 2 ) ]
+       , rassignments = [ ( "amount" , "%2" ) , ( "date" , "%1" ) ]
+       , rconditionalblocks = []
+       }
+
+    And the new pretty-simple output:
+
+     CsvRules
+       { rdirectives=
+         [ ( "skip", "1" ) ]
+       , rcsvfieldindexes=
+         [ ( "date", 1 ), ( "amount", 2 ) ]
+       , rassignments=
+         [ ( "amount", "%2" ), ( "date", "%1" ) ]
+       , rconditionalblocks= []
+       }
+
+    We require pretty-simple 4.0.0.0 to get this compact output.
+    It's a little less compact than pretty-show, but not too bad.
+    Non-compact pretty-simple output would be:
+
+     CsvRules
+         { rdirectives=
+             [
+                 ( "skip"
+                 , "1B"
+                 )
+             ]
+         , rcsvfieldindexes=
+             [
+                 ( "date"
+                 , 1
+                 )
+             ,
+                 ( "amount"
+                 , 2
+                 )
+             ]
+         , rassignments=
+             [
+                 ( "amount"
+                 , "%2"
+                 )
+             ,
+                 ( "date"
+                 , "%1"
+                 )
+             ]
+         , rconditionalblocks=[]
+         }
+
+-------------------------------------------------------------------
 Tue Sep  8 02:00:51 UTC 2020 - psimons@suse.com
 
 - Update hledger-lib to version 1.19.1.

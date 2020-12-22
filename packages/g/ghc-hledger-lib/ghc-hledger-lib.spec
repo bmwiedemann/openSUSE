@@ -19,7 +19,7 @@
 %global pkg_name hledger-lib
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.19.1
+Version:        1.20.1
 Release:        0
 Summary:        A reusable library providing the core functionality of hledger
 License:        GPL-3.0-or-later
@@ -43,7 +43,6 @@ BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-data-default-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-extra-devel
-BuildRequires:  ghc-fgl-devel
 BuildRequires:  ghc-file-embed-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-hashtables-devel
@@ -52,7 +51,7 @@ BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-old-time-devel
 BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-parser-combinators-devel
-BuildRequires:  ghc-pretty-show-devel
+BuildRequires:  ghc-pretty-simple-devel
 BuildRequires:  ghc-regex-tdfa-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-safe-devel
@@ -68,6 +67,7 @@ BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-uglymemo-devel
 BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-utf8-string-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-doctest-devel
 %endif
