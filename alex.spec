@@ -23,7 +23,7 @@
 %bcond_without tests
 %endif
 Name:           alex
-Version:        3.2.5
+Version:        3.2.6
 Release:        0
 Summary:        Alex is a tool for generating lexical analysers in Haskell
 License:        BSD-3-Clause
@@ -35,6 +35,7 @@ BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-process-devel
 %endif
