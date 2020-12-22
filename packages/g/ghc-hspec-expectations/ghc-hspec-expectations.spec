@@ -29,6 +29,7 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-call-stack-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-nanospec-devel
 %endif
