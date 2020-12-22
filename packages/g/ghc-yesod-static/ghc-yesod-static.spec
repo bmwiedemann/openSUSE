@@ -55,6 +55,7 @@ BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-wai-app-static-devel
 BuildRequires:  ghc-wai-devel
 BuildRequires:  ghc-yesod-core-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-hspec-devel
