@@ -33,6 +33,7 @@ BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unix-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-base-compat-devel
 BuildRequires:  ghc-tasty-devel
