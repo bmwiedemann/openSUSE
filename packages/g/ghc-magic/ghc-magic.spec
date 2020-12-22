@@ -27,6 +27,7 @@ Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg
 BuildRequires:  file-devel
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 
 %description
 This package provides a Haskell interface to the C libmagic library.
