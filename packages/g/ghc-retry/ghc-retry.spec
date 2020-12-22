@@ -30,6 +30,7 @@ BuildRequires:  ghc-exceptions-devel
 BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-hedgehog-devel
