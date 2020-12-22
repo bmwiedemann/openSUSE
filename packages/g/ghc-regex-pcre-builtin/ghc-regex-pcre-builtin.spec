@@ -31,6 +31,7 @@ BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-regex-base-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
+ExcludeArch:    %{ix86}
 
 %description
 This package provides a <http://pcre.org/ PCRE> backend for the
