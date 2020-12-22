@@ -30,6 +30,7 @@ BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-filtrable-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-smallcheck-devel
 BuildRequires:  ghc-tasty-devel
