@@ -42,6 +42,7 @@ BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-x509-devel
 BuildRequires:  ghc-x509-store-devel
 BuildRequires:  ghc-x509-validation-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-tasty-devel
