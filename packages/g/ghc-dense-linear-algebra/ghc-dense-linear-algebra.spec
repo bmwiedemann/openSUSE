@@ -34,6 +34,7 @@ BuildRequires:  ghc-vector-algorithms-devel
 BuildRequires:  ghc-vector-binary-instances-devel
 BuildRequires:  ghc-vector-devel
 BuildRequires:  ghc-vector-th-unbox-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-hspec-devel
