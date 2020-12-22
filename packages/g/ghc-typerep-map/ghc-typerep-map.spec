@@ -32,6 +32,7 @@ BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-primitive-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-vector-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-ghc-typelits-knownnat-devel
 BuildRequires:  ghc-hedgehog-devel
