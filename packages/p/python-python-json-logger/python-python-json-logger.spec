@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-json-logger
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-python-json-logger
-Version:        0.1.11
+Version:        2.0.1
 Release:        0
 Summary:        A python library adding a json log formatter
 License:        BSD-2-Clause
@@ -47,6 +48,7 @@ A python library adding a json log formatter.
 %python_exec setup.py test
 
 %files %{python_files}
+%doc README.md
 %license LICENSE
 %{python_sitelib}/*
 

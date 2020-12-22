@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec 21 14:29:29 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Disable Python 2 builds
+- Add %doc README.md
+- Update to v2.0.1
+  * Support Pypi long descripton
+  * rename output fields
+- from v2.0.0
+  * New Changelog
+  * Added timezone support to timestamps - @lalten
+  * Refactored log record to function - @georgysavva
+  * Add python 3.8 support - @tommilligan
+  * Removed support for Python 2.7
+  * Removed Debian directory
+
+-------------------------------------------------------------------
 Thu May  9 08:26:21 UTC 2019 - pgajdos@suse.com
 
 - version update to 0.1.11
