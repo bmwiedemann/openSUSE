@@ -29,6 +29,7 @@ Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revis
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-base16-bytestring-devel
 BuildRequires:  ghc-pureMD5-devel
