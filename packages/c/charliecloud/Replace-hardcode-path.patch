@@ -73,9 +73,9 @@ diff -Nrua charliecloud-0.19/bin/ch-fromhost charliecloud-0.19/bin/ch-fromhost
  . "${lib}/base.sh"
  
  set -e
-diff -Nrua charliecloud-0.19/bin/ch-grow.py.in charliecloud-0.19/bin/ch-grow.py.in
---- charliecloud-0.19/bin/ch-grow.py.in
-+++ charliecloud-0.19/bin/ch-grow.py.in
+diff-Nrua charliecloud-0.21/bin/ch-image.py.in  charliecloud-0.21/bin/ch-image.py.in
+--- charliecloud-0.21/bin/ch-image.py.in
++++ charliecloud-0.21/bin/ch-image.py.in
 @@ -6,7 +6,7 @@
  import sys
  

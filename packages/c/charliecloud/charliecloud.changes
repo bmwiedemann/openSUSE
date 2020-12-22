@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Dec 21 11:54:45 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to version 0.21.
+  - renamed the internal builder ch-grow to ch-image to reflect 
+    its broader functionality. ch-grow still works but will be 
+    deprecated in 0.23
+  - ch-image unprivileged build workarounds using fakeroot
+    now default to off and must be requested with --force; 
+    the option --no-fakeroot has been removed. ch-image will 
+    by default print a warning if it thinks --force might fix 
+    a build failure.
+  - ch-image pull now works with registries that use HTTP basic auth 
+    and with images that use manifest schema version 1.
+  - ch-image build has a new option --bind to bind-mount directories
+    during build and COPY: improve symlink and directory handling 
+  - miscellaneous bug fixes and improvements
+  - Full changelog at https://groups.io/g/charliecloud/message/108
+- Update patch
+ * Replace-hardcode-path.patch
+ 
+-------------------------------------------------------------------
 Wed Oct 21 08:14:06 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Update to version 0.20. 

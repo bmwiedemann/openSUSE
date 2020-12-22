@@ -17,7 +17,7 @@
 
 
 Name:           charliecloud
-Version:        0.20
+Version:        0.21
 Release:        0
 Summary:        User-defined software stacks (UDSS) for HPC centers
 License:        Apache-2.0
@@ -116,6 +116,7 @@ rm -rf %{buildroot}%{_bindir}/ch-test %{buildroot}%{_libdir}/charliecloud/contri
 
 %if !(0%{?sle_version} <= 120400 && 0%{?is_backports})
 %{_mandir}/man1/*
+%{_mandir}/man7/*
 
 %files doc
 %license LICENSE
