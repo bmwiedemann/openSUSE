@@ -7,4 +7,12 @@
     <comment>- parallel-netcdf -&gt; pnetcdf</comment>
     <requestid>834288</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>da1e4cfd4a1a402943b5a45ba9318682</srcmd5>
+    <version>1.12.1</version>
+    <time>1608641560</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable openmpi4 builds for SLE &gt;= 15-SP2.</comment>
+    <requestid>847289</requestid>
+  </revision>
 </revisionlist>

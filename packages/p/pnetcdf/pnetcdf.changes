@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  9 13:21:32 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Enable openmpi4 builds for SLE >= 15-SP2. 
+
+-------------------------------------------------------------------
 Sat Jul 18 20:06:20 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Update to version 1.12.1:

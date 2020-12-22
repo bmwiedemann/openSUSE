@@ -1,5 +1,5 @@
 #
-# spec file for package parallel
+# spec file for package pnetcdf
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -32,7 +32,7 @@ ExcludeArch:    s390 s390x i586
  %if 0%{?sle_version} < 150100
   %define DisOMPI3 ExclusiveArch:  do_not_build
  %endif
- %if 0%{?sle_version} < 150300
+ %if 0%{?sle_version} < 150200
   %define DisOMPI4 ExclusiveArch:  do_not_build
  %endif
 %endif
