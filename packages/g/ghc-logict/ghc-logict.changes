@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Thu Aug 27 02:04:15 UTC 2020 - psimons@suse.com
 
 - Update logict to version 0.7.0.3.
