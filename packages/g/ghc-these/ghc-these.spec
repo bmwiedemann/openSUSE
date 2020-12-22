@@ -30,6 +30,7 @@ BuildRequires:  ghc-binary-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-rpm-macros
+ExcludeArch:    %{ix86}
 
 %description
 This package provides a data type 'These a b' which can hold a value of either
