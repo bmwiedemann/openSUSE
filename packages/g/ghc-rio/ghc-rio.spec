@@ -47,6 +47,7 @@ BuildRequires:  ghc-unliftio-core-devel
 BuildRequires:  ghc-unliftio-devel
 BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-vector-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-hspec-devel
