@@ -50,6 +50,7 @@ BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-vector-devel
 BuildRequires:  ghc-vty-devel
 BuildRequires:  ghc-word-wrap-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 %endif

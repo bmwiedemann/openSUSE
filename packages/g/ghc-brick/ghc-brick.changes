@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Sun Nov 15 22:16:04 UTC 2020 - psimons@suse.com
 
 - Update brick to version 0.57.1 revision 1.
