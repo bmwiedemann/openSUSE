@@ -40,6 +40,7 @@ BuildRequires:  ghc-http-api-data-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-serialise-devel
 BuildRequires:  ghc-text-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-quickcheck-devel
