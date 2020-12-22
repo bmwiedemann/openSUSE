@@ -30,6 +30,7 @@ BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-time-devel
+ExcludeArch:    %{ix86}
 
 %description
 An abstract interface to highly-parameterizable queues/deques.
