@@ -19,7 +19,7 @@
 %global pkg_name vector-algorithms
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.8.0.3
+Version:        0.8.0.4
 Release:        0
 Summary:        Efficient algorithms for vector arrays
 License:        BSD-3-Clause
@@ -30,6 +30,7 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-primitive-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-vector-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-containers-devel

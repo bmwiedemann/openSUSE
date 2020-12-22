@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Sun Dec  6 23:30:50 UTC 2020 - psimons@suse.com
+
+- Update vector-algorithms to version 0.8.0.4.
+  ## Version 0.8.0.4 (2020-12-06)
+
+  - Fix out of range access in Intro.partialSort.
+  - Update QuickCheck dependency bounds.
+
+-------------------------------------------------------------------
 Tue Aug 18 10:46:32 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.
