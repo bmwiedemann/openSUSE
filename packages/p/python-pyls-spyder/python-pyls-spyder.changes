@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Dec 19 22:55:22 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 0.3.0
+  * PR 15 - PR: Add support for textDocument/foldingRange call for
+    code cells, by @andfoy (7846) 
+- Change in version 0.2.1
+  * PR 13 - PR: Pin minimum Python version to 3.6
+- Changes in version 0.2.0
+  * Issue 9 - Some cell patterns are not detected in the Outline 
+    explorer (PR 10 by @andfoy)
+  * Issue 8 - Some issues with special comments in the outline
+    explorer (PR 10 by @andfoy)
+  * PR 11 - Remove dependency on separate mock package, by
+    @bnavigator
+  * PR 10 - PR: Add additional cases for code cells and block
+    comments, by @andfoy (9, 8)
+
+-------------------------------------------------------------------
 Thu Nov 12 15:59:25 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Initial specfile for version 0.1.1 

@@ -17,16 +17,18 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-pyls-spyder
-Version:        0.1.1
+Version:        0.3.0
 Release:        0
 Summary:        Spyder extensions for the python-language-server
 License:        MIT
 URL:            https://github.com/spyder-ide/pyls-spyder
 # Use Github archive instead of PyPI sdist because of test files
 Source:         %{url}/archive/v%{version}.tar.gz#/pyls-spyder-%{version}-gh.tar.gz
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-language-server}
@@ -41,8 +43,6 @@ Spyder extensions for the python-language-server
 
 %prep
 %setup -q -n pyls-spyder-%{version}
-# https://github.com/spyder-ide/pyls-spyder/pull/11
-sed -i 's/from mock/from unittest.mock/' pyls_spyder/tests/test_plugin.py
 
 %build
 %python_build
