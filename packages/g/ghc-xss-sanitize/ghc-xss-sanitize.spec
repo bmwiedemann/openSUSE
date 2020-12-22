@@ -34,6 +34,7 @@ BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-tagsoup-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-utf8-string-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-hspec-devel
