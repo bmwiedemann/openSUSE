@@ -47,6 +47,7 @@ BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-utf8-string-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 %endif
