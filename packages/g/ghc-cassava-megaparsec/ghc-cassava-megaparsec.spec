@@ -32,6 +32,7 @@ BuildRequires:  ghc-megaparsec-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-vector-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-hspec-devel
 BuildRequires:  ghc-hspec-megaparsec-devel
