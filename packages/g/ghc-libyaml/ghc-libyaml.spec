@@ -30,6 +30,7 @@ BuildRequires:  ghc-conduit-devel
 BuildRequires:  ghc-resourcet-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  libyaml-devel
+ExcludeArch:    %{ix86}
 
 %description
 README and API documentation are available at
