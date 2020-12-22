@@ -36,6 +36,7 @@ BuildRequires:  ghc-terminal-size-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unix-devel
+ExcludeArch:    %{ix86}
 
 %description
 Lets multiple threads and external processes concurrently output to the
