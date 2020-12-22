@@ -49,6 +49,7 @@ BuildRequires:  ghc-wai-devel
 BuildRequires:  ghc-xss-sanitize-devel
 BuildRequires:  ghc-yesod-core-devel
 BuildRequires:  ghc-yesod-persistent-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-hspec-devel
 %endif
