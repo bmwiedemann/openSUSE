@@ -33,6 +33,7 @@ BuildRequires:  ghc-ghc-boot-th-devel
 BuildRequires:  ghc-ghc-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-uniplate-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-extra-devel
