@@ -18,7 +18,7 @@
 
 %global pkg_name tasty-hunit
 Name:           ghc-%{pkg_name}
-Version:        0.10.0.2
+Version:        0.10.0.3
 Release:        0
 Summary:        HUnit support for the Tasty test framework
 License:        MIT
@@ -28,6 +28,7 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-call-stack-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-tasty-devel
+ExcludeArch:    %{ix86}
 
 %description
 HUnit support for the Tasty test framework.
