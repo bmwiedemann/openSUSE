@@ -21,14 +21,12 @@
 %define skip_python2 1
 %define modname iminuit
 Name:           python-%{modname}
-Version:        2.0.0
+Version:        2.2.0
 Release:        0
 Summary:        Python bindings for MINUIT2
 License:        MIT
 URL:            https://github.com/scikit-hep/iminuit
-# No tests in pypi tarball
 Source0:        https://files.pythonhosted.org/packages/source/i/iminuit/%{modname}-%{version}.tar.gz
-Source1:        tests.tar.xz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy >= 1.11.3}
@@ -57,7 +55,6 @@ and to get model parameter error estimates from likelihood profile analysis.
 
 %prep
 %setup -q -n %{modname}-%{version}
-%setup -q -D -T -a 1 -n %{modname}-%{version}
 
 %build
 export CFLAGS="%{optflags}"

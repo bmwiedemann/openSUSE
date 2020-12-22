@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec 21 15:12:23 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.2.0:
+  * New features:
+    - Cost functions in iminuit.cost are now additive, creating a
+      new cost function with the union of parameters that returns
+      the sum of the results of the individual cost functions.
+    - iminuit.cost.NormalConstraint was added as a means to add
+      soft constraints on a parameter, can also be used to set up
+      a covariance matrix between several parameters.
+  * Other: Documentation improvements, started transition to numpydoc
+- Drop _service file and tests.tar.xz source, since tests are now
+  included in the iminuit source tarball.
+
+-------------------------------------------------------------------
 Sat Dec 12 02:08:39 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.0.0:
