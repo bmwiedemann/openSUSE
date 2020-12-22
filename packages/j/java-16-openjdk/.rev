@@ -15,4 +15,12 @@
     <comment>jdk-16+27</comment>
     <requestid>853270</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c72dcff922fa70510eaf5900b80ecde7</srcmd5>
+    <version>16.0.0.0~28</version>
+    <time>1608634276</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>857817</requestid>
+  </revision>
 </revisionlist>

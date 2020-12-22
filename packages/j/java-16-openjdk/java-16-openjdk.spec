@@ -35,10 +35,10 @@
 %global updatever       0
 %global patchver        0
 %global datever         2021-03-16
-%global buildver        27
-%global openjdk_repo    jdk
-%global openjdk_tag     jdk-16+27
-%global openjdk_dir     jdk-jdk-16-27
+%global buildver        28
+%global openjdk_repo    jdk16
+%global openjdk_tag     jdk-16+28
+%global openjdk_dir     jdk16-jdk-16-28
 %global icedtea_sound_version 1.0.1
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2

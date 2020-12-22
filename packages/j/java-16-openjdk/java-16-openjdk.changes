@@ -1,4 +1,304 @@
 -------------------------------------------------------------------
+Mon Dec 14 08:38:05 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream tag jdk-16+28
+  * Fixes:
+    + JDK-6508941: java.awt.Desktop.open causes VM to crash with
+      video files sporadically
+    + JDK-6882207: Convert javap to use diamond operator internally
+    + JDK-8026976: ECParameters, Point does not match field size
+    + JDK-8052260: Reference.isEnqueued() spec does not match the
+      long-standing behavior returning true iff it's in the ref
+      queue
+    + JDK-8075778: Add javadoc tag to avoid duplication of return
+      information in simple situations.
+    + JDK-8166596: TLS support for the EdDSA signature algorithm
+    + JDK-8198390: Test
+      MultiResolutionDrawImageWithTransformTest.java fails when
+      -esa is passed
+    + JDK-8200102: NativeLibraryTest.java fails intermittently,
+      unloaded count is not same as expected
+    + JDK-8228615: Optional.empty doc should suggest using isEmpty
+    + JDK-8229862: NPE in
+      jdk.compiler/com.sun.tools.javac.jvm.Code.emitop0
+      (Code.java:570)
+    + JDK-8235784: java/lang/invoke/VarHandles/
+      /VarHandleTestByteArrayAsInt.java fails due to timeout with
+      fastdebug bits
+    + JDK-8236413: AbstractConnectTimeout should tolerate both
+      NoRouteToHostException and UnresolvedAddressException
+    + JDK-8238781: [macos] jpackage tests failed due to "hdiutil:
+      convert failed" in various ways
+    + JDK-8242258: (jrtfs) Path::toUri throws AssertionError for
+      malformed input
+    + JDK-8242332: Add SHA3 support to SunPKCS11 provider
+    + JDK-8243614: Typo in ReentrantLock's Javadoc
+    + JDK-8244847: Linux/PPC: runtime/CompressedOops/
+      /CompressedClassPointers: smallHeapTest fails
+    + JDK-8245107: Use Unified Logging in trace_method_handle_stub()
+    + JDK-8245956: JavaCompiler still uses File API instead of Path
+      API in a specific case
+    + JDK-8246778: Compiler implementation for Sealed Classes
+      (Second Preview)
+    + JDK-8251267: CDS tests should use CDSTestUtils.getOutputDir
+      instead of System.getProperty("user.dir")
+    + JDK-8251843: jfr/tool/TestPrintJSON.java fails intermittently
+    + JDK-8252049: Native memory leak in ciMethodData ctor
+    + JDK-8252505: C1/C2 compiler support for blackholes
+    + JDK-8252797: Non-PCH build fails on Ubuntu 16.4 when building
+      with gtests
+    + JDK-8252807: The jdk.jfr.Recording.getStream does not work
+      when toDisk is disabled
+    + JDK-8253644: C2: assert(skeleton_predicate_has_opaque(iff))
+      failed: unexpected
+    + JDK-8253762: JFR: getField(String) should be able to access
+      subfields
+    + JDK-8253821: Improve ByteBuffer performance with GCM
+    + JDK-8254699: Suboptimal PreTouchParallelChunkSize defaults
+      and limits
+    + JDK-8254733: HotSpot Style Guide should permit using
+      range-based for loops
+    + JDK-8254784: javac should reject records with @SafeVarargs
+      applied to varargs record component
+    + JDK-8254802: ThrowingPushPromisesAsStringCustom.java fails in
+      "try throwing in GET_BODY"
+    + JDK-8254939: macOS: unused function 'replicate4_imm'
+    + JDK-8254996: make jdk.net.UnixDomainPrincipal a record class
+    + JDK-8255387: Japanese characters were printed upside down on
+      AIX
+    + JDK-8255542: Attribute length of Module, ModulePackages and
+      other attributes is ignored
+    + JDK-8255560: Class::isRecord should check that the current
+      class is final and not abstract
+    + JDK-8255619: Localized WinResources.properties have
+      MsiInstallerStrings_en.wxl resource
+    + JDK-8255742: PrintInlining as compiler directive doesn't
+      print virtual calls
+    + JDK-8255845: Memory leak in imageFile.cpp
+    + JDK-8255918: XMLStreamFilterImpl constructor consumes
+      XMLStreamException
+    + JDK-8255959: Timeouts in VectorConversion tests
+    + JDK-8255987: JDI tests fail with
+      com.sun.jdi.ObjectCollectedException
+    + JDK-8256149: Weird AST structure for incomplete member select
+    + JDK-8256167: Convert JDK use of 'Reference::get' to
+      'Reference::refersTo'
+    + JDK-8256264: Printed GlyphVector outline with low DPI has bad
+      quality on Windows
+    + JDK-8256299: Implement JEP 396: Strongly Encapsulate JDK
+      Internals by Default
+    + JDK-8256411: Based anonymous classes have a weird end position
+    + JDK-8256459: java/net/httpclient/ManyRequests.java and
+      java/net/httpclient/LineBodyHandlerTest.java fail infrequently
+      with java.net.ConnectException: Connection timed out: no
+      further information
+    + JDK-8256515: javax.xml.XMLEventReader produces incorrect
+      START_DOCUMENT event
+    + JDK-8256580: Fault in new grid display
+    + JDK-8256657: Add cross-compiled build for Windows+Arm64 to
+      submit workflow
+    + JDK-8256679: Update serialization javadoc once JOSS changes
+      for records are complete
+    + JDK-8256718: Obsolete the long term deprecated and aliased
+      Trace flags
+    + JDK-8256730: Code that uses Object.checkIndex() range checks
+      doesn't optimize well
+    + JDK-8256808: com/sun/jdi/CatchAllTest.java failed with
+      "NullPointerException: Cannot invoke "lib.jdb.Jdb.log(String)"
+      because "this.jdb" is null"
+    + JDK-8256864: [windows] Improve tracing for mapping errors
+    + JDK-8256867: Classes with empty PermittedSubclasses attribute
+      cannot be extended
+    + JDK-8256888: Client manual test problem list update
+    + JDK-8256917: Use combo @returns tag in java.compiler javadoc
+    + JDK-8256950: Add record attribute support to symbol generator
+      CreateSymbols
+    + JDK-8257020: [JVMCI] enable a JVMCICompiler to specify which
+      GCs it supports
+    + JDK-8257037: No javac warning when calling deprecated
+      constructor with diamond
+    + JDK-8257143: Enable JVMCI code installation tests on AArch64
+    + JDK-8257164: Share LambdaForms for VH linkers/invokers
+    + JDK-8257182: JCK test failures in integer / long rotation
+      tests
+    + JDK-8257184: Upstream 8252504: Add a method to MemoryLayout
+      which returns a offset-computing method handle
+    + JDK-8257186: Size of heap segments is not computed
+      correctlyFix overflow in size computation for heap segments
+    + JDK-8257194: Add 'foreign linker API' in
+      'jdk.incubator.foreign' module desc/summary
+    + JDK-8257211: C2: Enable call devirtualization during
+      post-parse phase
+    + JDK-8257230: assert(InitialHeapSize >= MinHeapSize) failed:
+      Ergonomics decided on incompatible initial and minimum heap
+      sizes
+    + JDK-8257241: CDS should not handle disableEagerInitialization
+      for archived lambda proxy classes
+    + JDK-8257401: Use switch expressions in jdk.internal.net.http
+      and java.net.http
+    + JDK-8257423: [PPC64] Support -XX:-UseInlineCaches
+    + JDK-8257436: [aarch64] Regressions in
+      ArrayCopyUnalignedDst.testByte/testChar for 65-78 bytes when
+      UseSIMDForMemoryOps is on
+    + JDK-8257438: Avoid adding duplicate values into
+      extendedKeyCodesSet
+    + JDK-8257466: Improve enum iteration
+    + JDK-8257483: C2: Split immediate vector rotate from
+      RotateLeftV and RotateRightV nodes
+    + JDK-8257509: Strengthen requirements to call
+      G1HeapVerifier::verify(VerifyOption)
+    + JDK-8257514: Fix the issues in jdk.jpackage identified by
+      SpotBugs
+    + JDK-8257516: define test group for manual tests
+    + JDK-8257517: LogCompilation: Add -z to the help messages
+    + JDK-8257518: LogCompilation: java.lang.InternalError with JFR
+      turned on
+    + JDK-8257531: Super word not applied to a loop of simple
+      Buffer operations
+    + JDK-8257539: tools/jpackage/windows/WinL10nTest.java
+      unpack.bat failed with Exit code: 1618
+    + JDK-8257547: Handle multiple prereqs on the same line in deps
+      files
+    + JDK-8257561: Some code is not vectorized after 8251925 and
+      8250607
+    + JDK-8257563: Remove excessive include of klass.inline.hpp
+    + JDK-8257572: Deprecate the archaic signal-chaining
+      interfaces: sigset and signal
+    + JDK-8257574: C2: "failed: parsing found no loops but there
+      are some" assert failure
+    + JDK-8257575: C2: "failed: only phis" assert failure in loop
+      strip mining verification
+    + JDK-8257588: Make os::_page_sizes a bitmask
+    + JDK-8257591: Remove suppression of record preview related
+      warnings in java.lang
+    + JDK-8257594: C2 compiled checkcast of non-null object
+      triggers endless deoptimization/recompilation cycle
+    + JDK-8257602: Introduce JFR Event Throttling and new
+      jdk.ObjectAllocationSample event (enabled by default)
+    + JDK-8257604: JNI_ArgumentPusherVaArg leaks valist
+    + JDK-8257617: TestLinkPlatform fails with new Java source
+      version
+    + JDK-8257622: MemoryAccess methods are missing @ForceInline
+      annotations
+    + JDK-8257623: vmTestbase/nsk/jvmti/ResourceExhausted/
+      /resexhausted001/TestDescription.java shouldn't use timeout
+    + JDK-8257624: C2: PhaseMacroExpand::eliminate_macro_nodes()
+      crashes on out-of-bounds access into macro node array
+    + JDK-8257625: C2: Harden input checks in vector intrinsics
+    + JDK-8257630: C2: ReplacedNodes doesn't handle non-CFG multi
+      nodes
+    + JDK-8257631: C2: Assertion failure in
+      ArrayCopyNode::get_count() during late inlining
+    + JDK-8257632: C2: Late inlining attempt on a call with a dead
+      memory crashes
+    + JDK-8257633: Missing -mmacosx-version-min=X flag when linking
+      libjvm
+    + JDK-8257634: C2: Introduce IncrementalInliningForceCleanup
+      diagnostic flag
+    + JDK-8257638: Update usage of "type" terminology in
+      javax.lang.model
+    + JDK-8257639: Update usage of "type" terminology in
+      java.lang.Enum & java.lang.Record
+    + JDK-8257641: Shenandoah: Query is_at_shenandoah_safepoint()
+      from control thread should return false
+    + JDK-8257642: CipherByteBufferOverwriteTest copyright issue
+    + JDK-8257651: LambdaEagerInit.java test failed in 2 different
+      ways
+    + JDK-8257668: SA JMap - skip non-java thread stack dump for
+      heap dump
+    + JDK-8257670: sun/security/ssl/SSLSocketImpl/SSLSocketLeak.java
+       reports leaks
+    + JDK-8257673: Build fails without shenandoahgc after
+      JDK-8257563
+    + JDK-8257679: Improved unix compatibility layer in Windows
+      build (winenv)
+    + JDK-8257701: Shenandoah: objArrayKlass metadata is not marked
+      with chunked arrays
+    + JDK-8257707: Fix incorrect format string in Http1HeaderParser
+    + JDK-8257708: Remove redundant unmodifiableSet wrapper from
+      already immutable set returned by Collections.singleton
+    + JDK-8257718: LogCompilation: late_inline doesnt work right
+      for JDK 8 logs
+    + JDK-8257724: Incorrect package of the linked class in
+      BaseSSLSocketImpl
+    + JDK-8257725: No throws of SSLHandshakeException
+    + JDK-8257732: Problem list TestJFRWithJMX for OL 8.2 until the
+      issue is resolved
+    + JDK-8257734: Extraneous output in HmacSHA3_512 constructor
+    + JDK-8257743: Minimal build on AArch64 failed with
+      --disable-precompiled-headers
+    + JDK-8257750: writeBuffer field of java.io.DataOutputStream
+      should be final
+    + JDK-8257769: Cipher.getParameters() throws NPE for
+      ChaCha20-Poly1305
+    + JDK-8257788: Class fields could be local in the SunJSSE
+      provider
+    + JDK-8257789: Fix incremental build of test-image and bundles
+    + JDK-8257793: Shenandoah: SATB barrier should only filter out
+      already strongly marked oops
+    + JDK-8257794: Zero: assert(istate->_stack_limit ==
+      istate->_thread->last_Java_sp() + 1) failed: wrong on
+      Linux/x86_32
+    + JDK-8257796: [TESTBUG]
+      TestUseSHA512IntrinsicsOptionOnSupportedCPU.java fails on
+      x86_32
+    + JDK-8257798: [PPC64] undefined reference to
+      Klass::vtable_start_offset()
+    + JDK-8257799: Update JLS cross-references in java.compiler
+    + JDK-8257803: Add -Xbatch to compiler/blackhole tests
+    + JDK-8257805: Add compiler/blackhole tests to tier1
+    + JDK-8257806: Optimize x86 allTrue and anyTrue vector mask
+      operations of Vector API
+    + JDK-8257813: [redo] C2: Filter type in PhiNode::Value() for
+      induction variables of trip-counted integer loops
+    + JDK-8257817: Shenandoah: Don't race with
+      conc-weak-in-progress flag in weak-LRB
+    + JDK-8257820: Remove gc/ergonomics/TestMinHeapSize.java as it
+      is too brittle
+    + JDK-8257837: Performance regression in heap byte buffer views
+    + JDK-8257845: Integrate JEP 390 8254047: [JEP 390] Revise
+      "value-based class" & apply to wrappers
+    + JDK-8252181: [JEP 390] Define & apply annotation
+      jdk.internal.ValueBased
+    + JDK-8252183: [JEP 390] Add 'lint' warning for @ValueBased
+      classes
+    + JDK-8257027: [JEP 390] Diagnose synchronization on
+      @ValueBased classes
+    + JDK-8252180: [JEP 390] Deprecate wrapper class constructors
+      for removal
+    + JDK-8257847: Tiered should publish MDO data pointer for
+      interpreter after profile start
+    + JDK-8257848: -XX:CompileCommand=blackhole,* should be
+      diagnostic
+    + JDK-8257855: Example
+      SafeVarargsNotApplicableToRecordAccessors breaks test
+      tools/javac/diags/CheckExamples.java
+    + JDK-8257872: UL: -Xlog does not check number of options
+    + JDK-8257876: Avoid Reference.isEnqueued in tests
+    + JDK-8257884: Re-enable sun/security/ssl/SSLSocketImpl/
+      /SSLSocketLeak.java as automatic test
+    + JDK-8257887: java/foreign/TestSegments.java test fails on
+      32-bit after JDK-8257186
+    + JDK-8257901: ZGC: Take virtual memory usage into account when
+      sizing heap
+    + JDK-8257905: Make fixpath.sh more liberal in accepting paths
+      embedded in arguments
+    + JDK-8257917: [JVMCI] crash when materializing boxed values
+      under -Xcomp
+    + JDK-8257924: Use full path when running external executable
+      from jpackage
+    + JDK-8257973: UTIL_LOOKUP_PROGS should only find executable
+      files
+    + JDK-8257986: [JVMCI] ProblemList 2 reprofile JVMCI tests
+    + JDK-8257989: Error in gtest os_page_size_for_region_unaligned
+      after 8257588
+    + JDK-8257993: vmTestbase/nsk/jvmti/RedefineClasses/
+      /StressRedefine/TestDescription.java crash intermittently
+    + JDK-8257997: sun/security/ssl/SSLSocketImpl/SSLSocketLeak.java
+      again reports leaks after JDK-8257884
+    + JDK-8258005: JDK build fails with incorrect fixpath script
+
+-------------------------------------------------------------------
 Fri Dec  4 12:56:02 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-16+27
