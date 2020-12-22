@@ -31,6 +31,7 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-crypto-cipher-types-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-securemem-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-crypto-cipher-tests-devel
