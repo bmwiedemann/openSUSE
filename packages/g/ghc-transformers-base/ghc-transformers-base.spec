@@ -30,6 +30,7 @@ BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-stm-devel
 BuildRequires:  ghc-transformers-compat-devel
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 
 %description
 This package provides a straightforward port of 'monadLib''s BaseM typeclass to
