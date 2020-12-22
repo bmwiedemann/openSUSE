@@ -35,9 +35,9 @@ Group:          Productivity/Networking/LDAP/Servers
 Version:        %{version_main}
 Release:        0
 URL:            https://www.openldap.org
-Source:         https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-%{version_main}.tgz
-Source1:        slapd.conf
-Source2:        slapd.conf.olctemplate
+Source0:        https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-%{version_main}.tgz
+Source1:        https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-%{version_main}.tgz.asc
+Source2:        openldap2.keyring
 Source4:        sasl-slapd.conf
 Source5:        README.module-loading
 Source6:        schema2ldif
@@ -52,6 +52,8 @@ Source19:       ldap-user.conf
 Source20:       fixup-modulepath.sh
 Source21:       slapd-ldif-update-crc.sh
 Source22:       update-crc.sh
+Source23:       slapd.conf
+Source24:       slapd.conf.olctemplate
 Patch1:         0001-ITS-8866-slapo-unique-to-return-filter-used-in-diagn.patch
 Patch3:         0003-LDAPI-socket-location.dif
 Patch5:         0005-pie-compile.dif
@@ -387,8 +389,8 @@ install -m 644 %{SOURCE16} %{buildroot}%{_fillupdir}/sysconfig.openldap
 install -m 644 *.ldif %{buildroot}%{_sysconfdir}/openldap/schema
 install -m 644 *.schema %{buildroot}%{_sysconfdir}/openldap/schema
 # Install default and sample configuration files
-install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/openldap
-install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/openldap
+install -m 644 %{SOURCE23} %{buildroot}%{_sysconfdir}/openldap
+install -m 644 %{SOURCE24} %{buildroot}%{_sysconfdir}/openldap
 install -m 644 %{SOURCE12} %{buildroot}%{_sysconfdir}/openldap
 find doc/guide '(' ! -name *.html -a ! -name *.gif -a ! -name *.png -a ! -type d ')' -delete
 rm -rf doc/guide/release

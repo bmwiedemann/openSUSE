@@ -1384,4 +1384,12 @@ Removal of SuSEfirewall2 service.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>854039</requestid>
   </revision>
+  <revision rev="164" vrev="64">
+    <srcmd5>d2aa78eeff73a050d7a177e5e46d73e9</srcmd5>
+    <version>unknown</version>
+    <time>1608632713</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856590</requestid>
+  </revision>
 </revisionlist>
