@@ -145,7 +145,7 @@
     <package name="bluez-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="bogofilter-common" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="bogofilter-db" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="boost-license1_74_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="boost-license1_75_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="bovo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="bovo-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1172,13 +1172,13 @@
     <package name="libblogger2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbluetooth3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbluray2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libboost_date_time1_74_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libboost_filesystem1_74_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libboost_iostreams1_74_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libboost_locale1_74_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libboost_python-py3-1_74_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
-    <package name="libboost_regex1_74_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libboost_thread1_74_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libboost_date_time1_75_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libboost_filesystem1_75_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libboost_iostreams1_75_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libboost_locale1_75_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libboost_python-py3-1_75_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
+    <package name="libboost_regex1_75_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libboost_thread1_75_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libbrlapi0_8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbrotli-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libbrotlicommon1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2204,7 +2204,6 @@
     <package name="lskat-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="lsof" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="lsscsi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="lttng-modules-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="lua53" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="lua53-luasocket" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="luit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2928,7 +2927,6 @@
     <package name="rt2860" supportstatus="unsupported"/> <!-- reason: dvd:rt2860 -->
     <package name="rtl-sdr" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rtl-sdr-udev" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="rtl8812au-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rtl_433" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ruby-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4183,6 +4181,7 @@
     <package name="fprintd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="fprintd-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="fprintd-pam" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="fprintd-pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="frameworkintegration-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="freerdp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="fwupd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4318,9 +4317,6 @@
     <package name="gwenview5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="gwenview5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="hack-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="heaptrack" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="heaptrack-gui" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="heaptrack-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="ibus-gtk-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="icedtea-web" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="icedtea-web-javadoc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4488,7 +4484,6 @@
     <package name="libFLAC++6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libHX32-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libICE6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libKChart2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libKF5AkonadiAgentBase5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5AkonadiCalendar5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5AkonadiContact5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -4628,7 +4623,6 @@
     <package name="libblkid1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libblockdev" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libblockdev2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libboost_program_options1_74_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libbrasero-burn3-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbrasero-media3-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbrasero-utils3-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4772,7 +4766,6 @@
     <package name="libkImageAnnotator0_3_2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkaccounts2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkasten-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libkchart-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libkdecorations2-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdecorations2-5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdecorations2private7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -4995,7 +4988,7 @@
     <package name="libz1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libz3-4_8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libzapojit-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libzstd1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libzstd1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libzypp-plugin-appdata" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="lightdm-gtk-greeter-settings" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="lightdm-gtk-greeter-settings-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
