@@ -34,6 +34,7 @@ BuildRequires:  ghc-http-types-devel
 BuildRequires:  ghc-network-uri-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
+ExcludeArch:    %{ix86}
 
 %description
 An implementation of the git-lfs protocol.
