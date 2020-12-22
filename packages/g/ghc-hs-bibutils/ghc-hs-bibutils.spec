@@ -27,6 +27,7 @@ Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-syb-devel
+ExcludeArch:    %{ix86}
 
 %description
 Haskell bindings to Chris Putnam's bibutils, a library that interconverts
