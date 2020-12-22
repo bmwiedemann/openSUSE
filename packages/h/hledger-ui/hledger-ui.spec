@@ -17,7 +17,7 @@
 
 
 Name:           hledger-ui
-Version:        1.19.1
+Version:        1.20.1
 Release:        0
 Summary:        Curses-style terminal interface for the hledger accounting system
 License:        GPL-3.0-or-later
@@ -40,7 +40,6 @@ BuildRequires:  ghc-hledger-lib-devel
 BuildRequires:  ghc-megaparsec-devel
 BuildRequires:  ghc-microlens-devel
 BuildRequires:  ghc-microlens-platform-devel
-BuildRequires:  ghc-pretty-show-devel
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-safe-devel
@@ -52,6 +51,7 @@ BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-vector-devel
 BuildRequires:  ghc-vty-devel
+ExcludeArch:    %{ix86}
 
 %description
 A simple curses-style terminal user interface for the hledger accounting

@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Wed Dec 16 17:26:00 UTC 2020 - psimons@suse.com
+
+- Update hledger-ui to version 1.20.1.
+  # 1.20.1 2020-12-15
+
+  - Fix the F key (toggle future/forecast transactions), which in 1.20
+    would only work twice. (#1411)
+
+  - Fix loss of forecasted transactions when the journal was reloaded
+    while they were hidden. (#1204)
+
+-------------------------------------------------------------------
+Sun Dec  6 13:36:35 UTC 2020 - psimons@suse.com
+
+- Update hledger-ui to version 1.20.
+  # 1.20 2020-12-05
+
+  - When entering a query with `/`, malformed queries/regular expressions
+    no longer cause the program to exit. (Stephen Morgan)
+
+  - Eliding of multicommodity amounts now makes better use of available space. (Stephen Morgan)
+
+  - `E` now parses the `HLEDGER_UI_EDITOR` or `EDITOR` environment variable
+    correctly on Windows (ignoring the file extension), so if you have that set
+    it should be better at opening your editor at the correct line.
+
+  - `E` now supports positioning when `HLEDGER_UI_EDITOR` or `EDITOR`
+    is VS Code ("`code`") (#1359)
+
+  - hledger-ui now has a (human-powered) test suite.
+
+-------------------------------------------------------------------
 Tue Sep  8 02:00:43 UTC 2020 - psimons@suse.com
 
 - Update hledger-ui to version 1.19.1.
