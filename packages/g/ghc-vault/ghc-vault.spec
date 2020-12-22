@@ -30,6 +30,7 @@ BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-semigroups-devel
 BuildRequires:  ghc-unordered-containers-devel
+ExcludeArch:    %{ix86}
 
 %description
 A /vault/ is a persistent store for values of arbitrary types. It's like having
