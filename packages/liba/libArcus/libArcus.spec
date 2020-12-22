@@ -34,14 +34,19 @@ BuildRequires:  cmake >= 3.6
 BuildRequires:  gcc-c++
 BuildRequires:  protobuf-devel >= 3.0.0
 BuildRequires:  python3-sip-devel < 5
+%if 0%{?suse_version} >= 1550
+BuildRequires:  python3-qt5-sip
+%else
+BuildRequires:  python3-sip
+%endif
 
 %description
 Communication library between internal components for Ultimaker software
 
 %package -n %name%{sover}
 Summary:        3D printer control software
-Group:          System/Libraries
 # The forked libArcus-lulzbot uses the same SONAME ...
+Group:          System/Libraries
 Provides:       libArcus-Ultimaker
 
 %description -n %name%{sover}
@@ -62,6 +67,11 @@ tools necessary for compiling and linking programs which use %{name}.
 Summary:        Python bindings for libArcus
 Group:          Development/Languages/Python
 Requires:       libArcus-Ultimaker
+%if 0%{?suse_version} >= 1550
+Requires:       python3-qt5-sip
+%else
+Requires:       python3-sip
+%endif
 
 %description -n python3-Arcus
 Python bindings for the Arcus communication library.

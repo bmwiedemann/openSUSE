@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov 22 18:25:26 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Require the sip module (under PyQt5.sip namespace as per patch) 
+
+-------------------------------------------------------------------
 Sat Nov 21 00:38:15 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Depend on python3-sip < 5, as libArcus build is incompatible with
