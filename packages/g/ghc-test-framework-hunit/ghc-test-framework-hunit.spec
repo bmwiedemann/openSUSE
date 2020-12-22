@@ -30,6 +30,7 @@ BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-extensible-exceptions-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-test-framework-devel
+ExcludeArch:    %{ix86}
 
 %description
 HUnit support for the test-framework package.
