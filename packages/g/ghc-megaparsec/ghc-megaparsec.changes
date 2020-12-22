@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Thu Dec 17 10:46:36 UTC 2020 - psimons@suse.com
+
+- Update megaparsec to version 9.0.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Fri Oct 30 13:44:20 UTC 2020 - psimons@suse.com
 
 - Update megaparsec to version 9.0.1.
