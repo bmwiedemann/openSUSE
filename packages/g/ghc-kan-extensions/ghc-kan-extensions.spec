@@ -40,6 +40,7 @@ BuildRequires:  ghc-semigroupoids-devel
 BuildRequires:  ghc-tagged-devel
 BuildRequires:  ghc-transformers-compat-devel
 BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
 
 %description
 Kan extensions, Kan lifts, various forms of the Yoneda lemma, and (co)density

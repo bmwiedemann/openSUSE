@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
 Tue Oct  6 08:56:17 UTC 2020 - psimons@suse.com
 
 - Update kan-extensions to version 5.2.1.
