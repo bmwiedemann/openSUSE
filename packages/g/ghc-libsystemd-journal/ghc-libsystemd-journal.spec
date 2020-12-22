@@ -41,6 +41,7 @@ BuildRequires:  ghc-uuid-devel
 BuildRequires:  ghc-vector-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libsystemd)
+ExcludeArch:    %{ix86}
 
 %description
 Haskell bindings to libsystemd-journal.
