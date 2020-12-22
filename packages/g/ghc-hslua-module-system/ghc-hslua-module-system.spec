@@ -32,6 +32,7 @@ BuildRequires:  ghc-exceptions-devel
 BuildRequires:  ghc-hslua-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-temporary-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-hunit-devel
