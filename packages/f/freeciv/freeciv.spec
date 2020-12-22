@@ -17,7 +17,7 @@
 
 
 Name:           freeciv
-Version:        2.6.2
+Version:        2.6.2.1
 Release:        0
 Summary:        Free Civilization Clone
 License:        GPL-2.0-or-later
@@ -31,7 +31,6 @@ Source4:        freeciv-manual
 Source5:        freeciv-manual.desktop
 Source6:        freeciv-manual.png
 Patch0:         freeciv-appdata-desktop-references.patch
-Patch1:         freeciv-qt-5.15.patch
 BuildRequires:  audiofile-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -47,6 +46,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  xz-devel
+BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(sdl2)
 Requires:       freeciv_client-%{version}
@@ -72,6 +72,7 @@ Provides:       freeciv_client-%{version}
 Freeciv executable using Qt library
 
 %package lang
+# FIXME: consider using %%lang_package macro
 Summary:        Translation files for freeciv
 Group:          Amusements/Games/Strategy/Turn Based
 Requires:       freeciv = %{version}
@@ -91,7 +92,6 @@ Freeciv executable using Gtk3 library
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 export MOCCMD="moc-qt5"
@@ -101,7 +101,7 @@ autoreconf -fi
   --with-readline \
   --disable-static \
   --docdir=%{_docdir}/freeciv
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

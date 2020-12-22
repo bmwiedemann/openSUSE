@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 22 09:03:17 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.2.1:
+  * Fixed server crash when unit with zero move_rate is transformed
+  * Fixed crashes when using Direction objects in lua scripts 
+  * Fixed crash when chatline text had opening tag without closing tag
+  * Fixes to the Qt client
+  * Updated translations
+  * Fixed Qt-client build against Qt-5.15 (removes freeciv-qt-5.15.patch )
+  * Documentation updates 
+
+-------------------------------------------------------------------
 Thu Jun  4 15:47:41 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add freeciv-qt-5.15.patch: Fix build with Qt 5.15.

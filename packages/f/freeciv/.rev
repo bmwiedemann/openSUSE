@@ -76,4 +76,12 @@
     <comment>Fix build with Qt 5.15 and without ggz</comment>
     <requestid>811554</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c95c72c10933349a35b6559b39cf4739</srcmd5>
+    <version>2.6.2.1</version>
+    <time>1608640549</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858123</requestid>
+  </revision>
 </revisionlist>
