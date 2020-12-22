@@ -39,6 +39,7 @@ BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unordered-containers-devel
+ExcludeArch:    %{ix86}
 
 %description
 This library lets you remotely monitor a running process over HTTP. It provides
