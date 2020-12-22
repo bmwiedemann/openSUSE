@@ -34,6 +34,7 @@ BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-th-lift-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-vector-devel
+ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 %endif
