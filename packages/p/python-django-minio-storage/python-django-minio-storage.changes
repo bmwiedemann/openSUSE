@@ -1,8 +1,24 @@
 -------------------------------------------------------------------
+Tue Dec 22 01:55:23 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Fix disabled test invocation
+- Update to v0.3.10
+  * Pin minio version to < 7
+- from v0.3.9
+  * The minio client is now deconstructable by Django, fixes migrations.
+- from v0.3.8
+  * Improved presigned urls with non standard base urls
+
+-------------------------------------------------------------------
 Sun Apr  5 07:50:49 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.3.7:
-  * no changelog
+  * Removed accidentally left over debug print from previous release
+- from v0.3.6
+  * support adding default meta data
+  * Also new settings: MINIO_STORAGE_MEDIA_OBJECT_METADATA and
+    MINIO_STORAGE_STATIC_OBJECT_METADATA
+  * fix issue with directory listing names
 
 -------------------------------------------------------------------
 Thu Jan  9 08:37:15 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>

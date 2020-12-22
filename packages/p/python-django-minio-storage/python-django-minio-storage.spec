@@ -20,7 +20,7 @@
 %bcond_with test
 %define skip_python2 1
 Name:           python-django-minio-storage
-Version:        0.3.7
+Version:        0.3.10
 Release:        0
 Summary:        Django file storage using minio
 License:        MIT OR Apache-2.0
@@ -35,6 +35,7 @@ Requires:       python-minio >= 4.0.21
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Django >= 1.11}
+BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module minio >= 4.0.21}
 BuildRequires:  %{python_module pytest-django >= 3.5.1}
 BuildRequires:  %{python_module pytest-pythonpath}
@@ -62,12 +63,12 @@ export MINIO_ACCESS_KEY=weak_access_key
 export MINIO_SECRET_KEY=weak_secret_key
 rm -rf $HOME/minio_export
 mkdir $HOME/minio_export
-minio server $HOME/minio_export &
+/usr/sbin/minio server $HOME/minio_export &
 
 export MINIO_STORAGE_ENDPOINT=localhost:9000
 export MINIO_STORAGE_ACCESS_KEY=$MINIO_ACCESS_KEY
 export MINIO_STORAGE_SECRET_KEY=$MINIO_SECRET_KEY
-%pytest
+%pytest -rs
 %endif
 
 %files %{python_files}
