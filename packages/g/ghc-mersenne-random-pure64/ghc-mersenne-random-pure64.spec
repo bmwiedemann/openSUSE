@@ -29,6 +29,7 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-time-devel
+ExcludeArch:    %{ix86}
 
 %description
 The Mersenne twister is a pseudorandom number generator developed by Makoto
