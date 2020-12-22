@@ -31,6 +31,7 @@ BuildRequires:  ghc-network-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unix-devel
+ExcludeArch:    %{ix86}
 
 %description
 A module for Systemd facilities.
