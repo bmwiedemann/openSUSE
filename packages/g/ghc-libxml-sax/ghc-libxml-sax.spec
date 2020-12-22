@@ -32,6 +32,7 @@ BuildRequires:  ghc-xml-types-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libxml-2.0)
+ExcludeArch:    %{ix86}
 
 %description
 Bindings for the libXML2 SAX interface.
