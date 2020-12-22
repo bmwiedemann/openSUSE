@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Mon Nov 30 15:27:04 UTC 2020 - psimons@suse.com
+
+- Update xmobar to version 0.37.
+  ## Version 0.37 (November, 2020)
+
+  _New features_
+
+    - New command line option `--add-font` (Ivan Brennan)
+    - New monitor `MPDX` that extends `MPD` with the ability of having a
+      custom alias.  Useful for connecting with multiple servers.
+    - New plugin `NotmuchMail` to monitor mail indexed by `notmuch`.
+
+  _Bug fixes_
+
+    - Fix date plugin not picking up DST and timezone changes (refresh
+      timezone once a minute to preserve the optimized performace of 0.34).
+
+-------------------------------------------------------------------
 Sun Aug 23 02:00:52 UTC 2020 - psimons@suse.com
 
 - Update xmobar to version 0.36.
