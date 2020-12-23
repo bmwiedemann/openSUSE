@@ -733,4 +733,12 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>857005</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>41c9d61b86bba0a385f9190ed990d970</srcmd5>
+    <version>0.8.5</version>
+    <time>1608729729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858312</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 23 08:16:18 UTC 2020 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Use cmake_build macro
+- Use Qt 6 on tumbleweed
+
+-------------------------------------------------------------------
 Sat Dec 19 16:50:36 UTC 2020 - Jonas Kvinge <jonas@jkvinge.net>
 
 - Update to version 0.8.5:

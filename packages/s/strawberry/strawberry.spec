@@ -36,16 +36,28 @@ BuildRequires:  libboost_headers-devel
 BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+%if 0%{?suse_version} > 1530
+BuildRequires:  cmake(Qt6Concurrent)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6Sql)
+BuildRequires:  cmake(Qt6Test)
+BuildRequires:  cmake(Qt6Widgets)
+%else
+BuildRequires:  cmake(Qt5Concurrent)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Sql)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5X11Extras)
+%endif
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gio-2.0)
@@ -70,7 +82,11 @@ BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(sqlite3) >= 3.9
 BuildRequires:  pkgconfig(taglib) >= 1.11.1
 
+%if 0%{?suse_version} > 1530
+Requires:       qt6-sql-sqlite
+%else
 Requires:       libQt5Sql5-sqlite
+%endif
 
 %description
 Strawberry is a music player and music collection organizer.
@@ -101,8 +117,13 @@ Features:
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export CXXFLAGS="$CFLAGS"
-%cmake -DBUILD_WERROR=OFF -DUSE_SYSTEM_TAGLIB=ON
-make %{?_smp_mflags}
+%cmake -DBUILD_WERROR=OFF -DUSE_SYSTEM_TAGLIB=ON \
+%if 0%{?suse_version} > 1530
+       -DQT_MAJOR_VERSION=6
+%else
+       -DQT_MAJOR_VERSION=5
+%endif
+%cmake_build
 
 %install
 %cmake_install
