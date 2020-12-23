@@ -180,4 +180,14 @@
   * bugfixes (reject invalid json patches)</comment>
     <requestid>824356</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bf3cee87b04e5b63393172165b0c7612</srcmd5>
+    <version>1.28</version>
+    <time>1608729557</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.28:
+  * Make it possible for from_diff to support custom types (issue #107) 
+  * Python 3.9 support</comment>
+    <requestid>857120</requestid>
+  </revision>
 </revisionlist>

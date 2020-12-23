@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 20 09:52:04 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.28:
+  * Make it possible for from_diff to support custom types (issue #107) 
+  * Python 3.9 support
+
+-------------------------------------------------------------------
 Tue Aug  4 16:19:12 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.26:
