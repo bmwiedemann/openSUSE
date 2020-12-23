@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Dec 18 19:00:24 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.42.2:
+  + Build:
+    - Use __declspec(dllexport) when building with Visual Studio
+    - Meson build: Avoid some recompilations
+    - Meson build: Better error message if trying to build with
+      maintainer-mode=false when true is necessary
+    - Meson build: Set default value of the 'warnings' option to
+      'min'
+    - Improve NMake support
+    - 
+    - Improve Visual Studio support
+    - docs/reference/: Update for Doxygen >= 1.8.16
+    - Meson build: Fix versioning on macOS
+- Add meson BuildRequires and macros following upstreams port.
+- Add doxygen, graphviz and xsltproc  BuildRequires, needed now for
+  building documentation.
+- Replace gcc-c++ with generic c++_compiler BuildRequires.
+- Tweak setup macro and fdupes call.
+
+-------------------------------------------------------------------
 Sat Mar 21 15:08:18 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.42.1:

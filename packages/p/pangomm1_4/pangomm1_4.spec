@@ -19,8 +19,9 @@
 # Update baselibs.conf when changing this
 %define so_ver -1_4-1
 %define _name   pangomm
+
 Name:           pangomm1_4
-Version:        2.42.1
+Version:        2.42.2
 Release:        0
 Summary:        C++ interface for pango
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -29,9 +30,13 @@ URL:            http://www.gtkmm.org
 Source0:        https://download.gnome.org/sources/pangomm/2.42/%{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
+BuildRequires:  c++_compiler
+BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  graphviz
+BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(cairomm-1.0) >= 1.2.2
 BuildRequires:  pkgconfig(glibmm-2.4) >= 2.48.0
 BuildRequires:  pkgconfig(pangocairo) >= 1.41.0
@@ -62,19 +67,19 @@ Group:          Documentation/HTML
 pangomm provides a C++ interface to the pango library.
 
 %prep
-%setup -q -n %{_name}-%{version}
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
-%configure --disable-static
-make %{?_smp_mflags}
+%meson \
+	-Dbuild-documentation=true \
+	%{nil}
+%meson_build
 
 %install
-%make_install
-rm %{buildroot}%{_libdir}/*.la
-%fdupes %{buildroot}
+%meson_install
+%fdupes %{buildroot}/%{prefix}
 
 %post -n libpangomm%{so_ver} -p /sbin/ldconfig
-
 %postun -n libpangomm%{so_ver} -p /sbin/ldconfig
 
 %files -n libpangomm%{so_ver}
@@ -91,8 +96,5 @@ rm %{buildroot}%{_libdir}/*.la
 %files doc
 %{_datadir}/devhelp/books/pangomm-1.4/
 %{_datadir}/doc/pangomm-1.4/
-# Avoid BuildRequires on devhelp
-%dir %{_datadir}/devhelp
-%dir %{_datadir}/devhelp/books
 
 %changelog
