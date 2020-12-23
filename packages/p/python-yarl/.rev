@@ -127,4 +127,24 @@
     `#504 &lt;https://github.com/aio-libs/yarl/issues/504&gt;`_</comment>
     <requestid>838272</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5f47d0b5a44212f75533f100f2fbbcca</srcmd5>
+    <version>1.6.3</version>
+    <time>1608729528</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.3:
+  - No longer loose characters when decoding incorrect percent-sequences (like
+    ``%e2%82%f8``). All non-decodable percent-sequences are now preserved.
+  - Provide generated ``.c`` files in TarBall distribution.
+  - ``human_repr()`` now always produces valid representation equivalent to the
+    original URL (if the original URL is valid).
+  - Fixed  requoting a single percent followed by a percent-encoded character
+    in the Cython implementation.
+  - Fix ValueError when decoding ``%`` which is not followed by two hexadecimal
+    digits.
+  - Fix decoding ``%`` followed by a space and hexadecimal digit.
+  - Fix annotation of ``with_query()``/``update_query()`` methods for
+    ``key=[val1, val2]`` case.</comment>
+    <requestid>856968</requestid>
+  </revision>
 </revisionlist>
