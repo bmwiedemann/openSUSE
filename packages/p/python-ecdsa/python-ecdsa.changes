@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec 20 09:21:59 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to to 0.16.1:
+  * `VerifyingKey.precompute()` supports `lazy` argument to delay
+  precomputation to the first time the key is used to verify a signature.
+  * Make created signatures correct when the hash used is bigger than the curve
+  order bit size and the curve order is not a multiple of 8 
+  * Speed up library load time by calculating the generator point multiplication
+  tables the first time the points are used, not when they are initialised.
+
+-------------------------------------------------------------------
 Thu Sep 17 11:14:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.16.0:
