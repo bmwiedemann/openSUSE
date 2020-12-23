@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 23 09:20:07 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Botan 2.17.3:
+  * Harden against side-channels from decoding secret values by
+    changing the base64, base58, base32, and hex encoding and
+    decoding opearations to run in constant time
+
+-------------------------------------------------------------------
 Fri Nov 13 20:42:02 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Botan 2.17.2:
