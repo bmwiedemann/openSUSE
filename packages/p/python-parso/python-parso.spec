@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-parso
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        An autocompletion tool for Python
 License:        MIT AND Python-2.0
