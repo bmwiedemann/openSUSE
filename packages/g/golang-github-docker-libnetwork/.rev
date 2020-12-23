@@ -222,4 +222,13 @@ the Docker 17.07.0_ce update. This SR is in conjunction with:
     <comment></comment>
     <requestid>850093</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ec052b93ac45237d5a1c8a8c105f6e39</srcmd5>
+    <version>0.7.0.1+gitr2908_55e924b8a842</version>
+    <time>1608729627</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to libnetwork 55e924b8a842, which is required for Docker 19.03.14-ce.
+  bsc#1180243</comment>
+    <requestid>857814</requestid>
+  </revision>
 </revisionlist>

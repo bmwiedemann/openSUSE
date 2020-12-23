@@ -29,10 +29,10 @@
 %endif
 
 # MANUAL: Update the git_version and git_revision
-%define git_version 026aabaa659832804b01754aaadd2c0f420c68b6
-%define git_short   026aabaa6598
+%define git_version 55e924b8a84231a065879156c0de95aefc5f5435
+%define git_short   55e924b8a842
 # git_revision=r$(git rev-list $COMMIT_ID | wc -l)
-%define git_revision r2906
+%define git_revision r2908
 
 %global provider        github
 %global provider_tld    com

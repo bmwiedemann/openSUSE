@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 21 07:02:09 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to libnetwork 55e924b8a842, which is required for Docker 19.03.14-ce.
+  bsc#1180243
+
+-------------------------------------------------------------------
 Thu Nov 12 18:34:03 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
 
 - Add patch which makes libnetwork compatible with firewalld with
