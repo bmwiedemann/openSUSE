@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 22 10:16:33 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.2:
+   * Revise to use MHD function for url decode
+   * Update travis distribution testing
+   * Eliminate compiler warnings on unsigned comparisons
+   * Eliminate compiler warnings on MHD return codes 
+
+-------------------------------------------------------------------
 Thu Jul  9 10:29:34 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 4.3.1

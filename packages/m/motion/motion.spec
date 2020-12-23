@@ -19,7 +19,7 @@
 %define spooldir /var/spool/motion
 
 Name:           motion
-Version:        4.3.1
+Version:        4.3.2
 Release:        0
 Summary:        A motion detection system
 License:        GPL-2.0-or-later

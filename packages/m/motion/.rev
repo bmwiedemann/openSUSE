@@ -122,4 +122,16 @@
 - Cleanup spec file (forwarded request 821160 from StefanBruens)</comment>
     <requestid>821181</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>49b2e2ccf0d4d138c7d1e27ea9bae8d5</srcmd5>
+    <version>4.3.2</version>
+    <time>1608729708</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.3.2:
+   * Revise to use MHD function for url decode
+   * Update travis distribution testing
+   * Eliminate compiler warnings on unsigned comparisons
+   * Eliminate compiler warnings on MHD return codes (forwarded request 858119 from dirkmueller)</comment>
+    <requestid>858122</requestid>
+  </revision>
 </revisionlist>
