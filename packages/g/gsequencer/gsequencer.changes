@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 22 22:31:25 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.7.17 fixed string pointer comparision.
+
+-------------------------------------------------------------------
 Tue Dec 22 02:59:31 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.7.16 fixed might be unitialized in ags_audio.c
