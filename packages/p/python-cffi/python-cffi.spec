@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cffi
-Version:        1.14.3
+Version:        1.14.4
 Release:        0
 Summary:        Foreign Function Interface for Python calling C code
 License:        MIT
