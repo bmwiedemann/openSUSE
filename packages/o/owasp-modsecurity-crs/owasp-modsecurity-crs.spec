@@ -19,6 +19,7 @@
 
 Name:           owasp-modsecurity-crs
 
+BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
 BuildRequires:  gcc-c++
 BuildRequires:  rpm-devel
@@ -39,14 +40,6 @@ Group:          Productivity/Networking/Security
 Requires:       apache2-mod_security2
 
 %define rule_sets base_rules experimental_rules optional_rules slr_rules
-%define apxs2 %{_sbindir}/apxs2
-%define apache2 apache2
-%define apache2_mm %(MMN=$(%{apxs2} -q LIBEXECDIR)_MMN; test -x $MMN && $MMN)
-%define apache2_libexecdir %(%{apxs2} -q LIBEXECDIR)
-%define apache2_sysconfdir %(%{apxs2} -q SYSCONFDIR)
-%define apache2_includedir %(%{apxs2} -q INCLUDEDIR)
-%define apache2_serverroot %(%{apxs2} -q PREFIX)
-%define apache2_localstatedir %(%{apxs2} -q LOCALSTATEDIR)
 
 %description
 ModSecurity™ is a web application firewall engine that provides very little protection on its own. In order to become useful, ModSecurity™ must be configured with rules. In order to enable users to take full advantage of ModSecurity™ out of the box, Trustwave's SpiderLabs is providing a free certified rule set for ModSecurity™ 2.x. Unlike intrusion detection and prevention systems, which rely on signatures specific to known vulnerabilities, the Core Rules provide generic protection from unknown vulnerabilities often found in web applications, which are in most cases custom coded. The Core Rules are heavily commented to allow it to be used as a step-by-step deployment guide for ModSecurity™. 
@@ -90,11 +83,11 @@ do
 done
 echo "Include \"%{_datadir}/%{name}/modsecurity_crs_10_setup.conf.example\"" > .%{_sysconfdir}/%{name}/modsecurity_crs_10_setup.conf
 # Create Apache2 include
-mkdir -p .%{apache2_sysconfdir}/conf.d
-echo "<IfModule mod_security2.c>" > .%{apache2_sysconfdir}/conf.d/%{name}.conf
-echo -e "\tInclude \"%{_sysconfdir}/%{name}/modsecurity_crs_10_setup.conf\"" >> .%{apache2_sysconfdir}/conf.d/%{name}.conf
-echo -e "\tInclude \"%{_sysconfdir}/%{name}/rules.d/*\"" >> .%{apache2_sysconfdir}/conf.d/%{name}.conf
-echo "</IfModule>" >> .%{apache2_sysconfdir}/conf.d/%{name}.conf
+mkdir -p .%{apache_sysconfdir}/conf.d
+echo "<IfModule mod_security2.c>" > .%{apache_sysconfdir}/conf.d/%{name}.conf
+echo -e "\tInclude \"%{_sysconfdir}/%{name}/modsecurity_crs_10_setup.conf\"" >> .%{apache_sysconfdir}/conf.d/%{name}.conf
+echo -e "\tInclude \"%{_sysconfdir}/%{name}/rules.d/*\"" >> .%{apache_sysconfdir}/conf.d/%{name}.conf
+echo "</IfModule>" >> .%{apache_sysconfdir}/conf.d/%{name}.conf
 
 %install
 # CRS data
@@ -118,7 +111,7 @@ cp -dr .%{_sysconfdir}/* %{buildroot}%{_sysconfdir}/
 %{_datadir}/%{name}/lua
 %{_datadir}/%{name}/util
 %{_datadir}/%{name}/*.conf*
-%config(noreplace) %{apache2_sysconfdir}/conf.d/%{name}.conf
+%config(noreplace) %{apache_sysconfdir}/conf.d/%{name}.conf
 %dir %{_sysconfdir}/%{name}
 %dir %{_sysconfdir}/%{name}/rules.d
 %config(noreplace) %{_sysconfdir}/%{name}/modsecurity_crs_10_setup.conf
