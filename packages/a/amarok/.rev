@@ -1109,4 +1109,12 @@ https://git.reviewboard.kde.org/r/104878/ (forwarded request 116659 from StefanB
 - Update translations</comment>
     <requestid>838840</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>6c140094d7e044c2751955c1e6bb65dc</srcmd5>
+    <version>2.9.70git.20201222T022603~89d13c15ad</version>
+    <time>1608729678</time>
+    <user>dimstar_suse</user>
+    <comment>new snapshot</comment>
+    <requestid>858096</requestid>
+  </revision>
 </revisionlist>

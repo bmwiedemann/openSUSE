@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 22 09:12:56 UTC 2020 - christophe@krop.fr
+
+- Update to version 2.9.70git.20201222T022603~89d13c15ad:
+  * Fix last context applet missing from toolbar on program startup
+  * Changing KStatusNotifier's ToolTipTitle to 'Now playing'
+    and the rich text track details to ToolTipSubTitle instead
+  * Update org.kde.amarok.appdata.xml
+  * Remove button to move to the system sound settings
+- Update translations
+
+-------------------------------------------------------------------
 Wed Sep 30 14:37:15 UTC 2020 - christophe@krop.fr
 
 - Update to version 2.9.70git.20200930T124856~3973278a68:

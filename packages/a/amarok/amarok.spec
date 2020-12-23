@@ -19,7 +19,7 @@
 # Leap 15.1 compatibility
 %{!?_kf5_knsrcfilesdir: %global _kf5_knsrcfilesdir %{_kf5_configdir}}
 Name:           amarok
-Version:        2.9.70git.20200930T124856~3973278a68
+Version:        2.9.70git.20201222T022603~89d13c15ad
 Release:        0
 Summary:        Media Player
 License:        GPL-2.0-or-later
