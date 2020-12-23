@@ -16,13 +16,13 @@
 #
 
 
-%define ap_docroot_old %{apache_serverroot}/htdocs
-%define ap_docroot %{_datadir}
-%define ap_tmpdir %{_localstatedir}/cache/%{name}
-%define pma_config %{_sysconfdir}/%{name}/config.inc.php
+%define ap_docroot_old  /srv/www/htdocs
+%define ap_docroot      %{_datadir}
+%define ap_tmpdir       %{_localstatedir}/cache/%{name}
+%define pma_config      %{_sysconfdir}/%{name}/config.inc.php
 %if !0%{?suse_version}
-%define apache_user nobody
-%define apache_group nogroup
+%define apache_user     nobody
+%define apache_group    nogroup
 %endif
 Name:           phpMyAdmin
 Version:        5.0.4
@@ -55,12 +55,6 @@ Requires:       php-mbstring
 Requires:       php-mysql
 Requires:       php-openssl
 Requires:       php-session
-%if 0%{?is_opensuse}
-Requires(post): pwgen
-%else
-Requires(post): openssl
-%endif
-Recommends:     mod_php_any >= 7.4
 Recommends:     php-curl
 Recommends:     php-zip
 BuildArch:      noarch
@@ -106,10 +100,12 @@ Group:          Productivity/Networking/Web/Utilities
 BuildRequires:  apache-rpm-macros-control
 BuildRequires:  apache2
 Requires:       apache2
+Requires:       %{name}
 Requires(post): %{_sbindir}/a2enmod
 Requires(post): %{_sbindir}/a2enflag
 Requires(post): php
 Requires(postun): %{_sbindir}/a2enflag
+Recommends:     mod_php_any >= 7.4
 Supplements:    packageand(apache2:%name)
 
 %description apache
@@ -174,81 +170,86 @@ sed -i -e "s,@ap_docroot@,%{ap_docroot},g" -e "s,@name@,%{name},g" \
 # find language files
 %find_lang %{name} --all-name
 
-%pre
-# removing tmp/twig before ap_docroot change
-# a new one will be created anyway in new ap_docroot (like after a clean install)
-if [ -d "%{ap_docroot_old}/%{name}/tmp" ]; then
-  echo "info: removing %{ap_docroot_old}/%{name}/tmp for ap_docroot change"
-  rm -rf "%{ap_docroot_old}/%{name}/tmp" || :
-fi
-# removing tmp/twig before ap_tmpdir change
-# a new one will be created anyway in new ap_docroot (like after a clean install)
-if [ -d "%{ap_docroot}/%{name}/tmp" ]; then
-  echo "info: removing %{ap_docroot}/%{name}/tmp for ap_tmpdir change"
-  rm -rf "%{ap_docroot}/%{name}/tmp" || :
+%post
+# generate blowfish secret only on install, not on upgrade
+if [ $1 -eq 1 ]; then
+  sed -i -e "s|^\(\$cfg\['blowfish_secret'\] = '\)\(';\).*|\1$(head -c 32 /dev/urandom | base64)\2|" %{pma_config}
 fi
 
 %preun
+# only on uninstall, not on upgrade
 if [ $1 -eq 0 ]; then
-  if [ -d "%{ap_docroot}/%{name}/tmp" ]; then
-    echo "info: removing %{ap_docroot}/%{name}/tmp for clean uninstall"
-    rm -rf "%{ap_docroot}/%{name}/tmp" || :
-  fi
-  # Now the new tmpdir must also delete.
-  if [ -d "%{ap_tmpdir}" ]; then
-    echo "info: removing %{ap_tmpdir} for clean uninstall"
-    rm -rf "%{ap_tmpdir}" || :
-  fi
+  echo "info: empty %{ap_tmpdir}/* for clean uninstall"
+  rm -rf %{ap_tmpdir}/* || :
 fi
 
-%post
-# FIRST_ARG values on
-# uninstall:    0
-# install:      1
-# update:       2
-# set PmaAbsoluteUri ### generate blowfish secret
-%if 0%{?is_opensuse}
-sed -i -e "s|^\(\$cfg\['blowfish_secret'\] = '\)\(';\).*|\1$(pwgen -s -1 46)\2|" %{pma_config}
-%else
-sed -i -e "s|^\(\$cfg\['blowfish_secret'\] = '\)\(';\).*|\1$(openssl rand -base64 32)\2|" %{pma_config}
-%endif
+%postun
+# only on upgrade, not on install
+if [ $1 -ge 1 ]; then
+  echo "info: empty %{ap_tmpdir}/* for clean upgrade"
+  rm -rf %{ap_tmpdir}/* || :
+fi
 
 %post apache
-# enable required apache modules
-a2enmod -q version || a2enmod version
-if start_apache2 -V | grep -q prefork; then
-  php_version=$(php -r "echo 'php' . PHP_MAJOR_VERSION;")
-  echo "info: adding ${php_version} to APACHE_MODULES"
-  a2enmod -q ${php_version} || a2enmod ${php_version}
-fi
-# enable phpMyAdmin flag
-flag_find=$(grep -cw /etc/sysconfig/apache2 -e "^APACHE_SERVER_FLAGS=.*%{name}.*")
-if [ $flag_find -eq 0 ]; then
+# only do on install, not on upgrade
+if [ $1 -eq 1 ]; then
+  # enable required apache modules
+  a2enmod version >/dev/null || :
+
+  # enable mod_php if preform MPM is used
+  if start_apache2 -V | grep -q prefork; then
+    mod_php=$(php -r "echo 'php' . PHP_MAJOR_VERSION;")
+    echo "info: adding ${mod_php} to APACHE_MODULES"
+    a2enmod ${mod_php} >/dev/null || :
+  fi
+
+  # enable phpMyAdmin flag
   echo "info: adding %{name} to APACHE_SERVER_FLAGS"
-  a2enflag %{name}
+  a2enflag %{name} >/dev/null || :
 fi
-# We changed ap_docroot from %%{ap_docroot_old} to %%{ap_docroot} (/srv/www/htdocs to /usr/share)
-# If someone did 'manually' change the config file it won't be replaced by rpm
-# Hence we backup the existing and place the new one
-find=0
-find=$(grep -cw %{apache_sysconfdir}/conf.d/%{name}.conf -e "%{ap_docroot_old}/%{name}") || :
-if [ $find -gt 0 ]; then
-  ap_date="$(date '+%Y%m%d-%H%M')"
-  echo "creating backup of %{apache_sysconfdir}/conf.d/%{name}.conf to %{apache_sysconfdir}/conf.d/%{name}.conf.backup-${ap_date}"
-  cp -a %{apache_sysconfdir}/conf.d/%{name}.conf %{apache_sysconfdir}/conf.d/%{name}.conf.backup-${ap_date}
-  echo "copying %{apache_sysconfdir}/conf.d/%{name}.conf.rpmnew to %{apache_sysconfdir}/conf.d/%{name}.conf"
-  cp -a %{apache_sysconfdir}/conf.d/%{name}.conf.rpmnew %{apache_sysconfdir}/conf.d/%{name}.conf
+# on upgrade, check if new cache directory is in config
+if [ $1 -gt 1 ] && ! grep -q %{ap_tmpdir} %{apache_sysconfdir}/conf.d/%{name}.conf; then
+  # not found, create backup first
+  cp --backup=t --preserve %{apache_sysconfdir}/conf.d/%{name}.conf{,.bak}
+
+  # add cache directory /var/cache/phpMyAdmin
+  echo "info: new cache directory added to %{apache_sysconfdir}/conf.d/%{name}.conf"
+  sed -i "s|\(php_admin_value open_basedir[^:]*\)|\1:%{ap_tmpdir}|" %{apache_sysconfdir}/conf.d/%{name}.conf
+  cat >> %{apache_sysconfdir}/conf.d/%{name}.conf << EOF
+
+<Directory %{ap_tmpdir}>
+
+    <IfVersion < 2.4>
+        Order allow,deny
+        Deny from all
+    </IfVersion>
+
+    <IfVersion >= 2.4>
+        <IfModule !mod_access_compat.c>
+            Require all denied
+        </IfModule>
+        <IfModule mod_access_compat.c>
+            Order deny,allow
+            Deny from all
+        </IfModule>
+    </IfVersion>
+
+</Directory>
+EOF
+
+  # boo#1092345: change ap_docroot from /srv/www/htdocs to /usr/share
+  if grep -q %{ap_docroot_old} %{apache_sysconfdir}/conf.d/%{name}.conf; then
+    echo "info: changed %{ap_docroot_old} to %{ap_docroot} in %{apache_sysconfdir}/conf.d/%{name}.conf"
+    sed -i "s|%{ap_docroot_old}|%{ap_docroot}|g" %{apache_sysconfdir}/conf.d/%{name}.conf
+  fi
 fi
 
 %postun apache
-# only do on uninstall, not on update
+# only do on uninstall, not on upgrade
 if [ $1 -eq 0 ]; then
   # disable phpMyAdmin flag
-  flag_find=$(grep -cw /etc/sysconfig/apache2 -e "^APACHE_SERVER_FLAGS=.*%{name}.*")
-  if [ $flag_find -eq 1 ]; then
-    echo "info: removing %{name} from APACHE_SERVER_FLAGS"
-    a2enflag -d %{name}
-  fi
+  echo "info: removing %{name} from APACHE_SERVER_FLAGS"
+  a2enflag -d %{name} >/dev/null || :
 fi
 %apache_request_restart
 
@@ -267,7 +268,9 @@ fi
 %config(noreplace) %{_sysconfdir}/%{name}/config.inc.php
 %dir %{ap_docroot}/%{name}
 %exclude %{ap_docroot}/%{name}/locale/*/LC_MESSAGES/phpmyadmin.mo
+%exclude %{ap_docroot}/%{name}/vendor/paragonie/random_compat/build-phar.sh
 %exclude %{ap_docroot}/%{name}/vendor/phpmyadmin/sql-parser/locale/*/LC_MESSAGES/sqlparser.mo
+%exclude %{ap_docroot}/%{name}/vendor/twig/twig/drupal_test.sh
 %attr (755,root,root) %{ap_docroot}/%{name}/vendor/phpmyadmin/sql-parser/bin/*-query
 
 %files apache
