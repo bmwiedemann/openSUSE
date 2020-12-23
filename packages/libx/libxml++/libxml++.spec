@@ -17,17 +17,18 @@
 
 
 Name:           libxml++
-Version:        3.2.0
+Version:        3.2.2
 Release:        0
 Summary:        C++ Interface for XML Files
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-URL:            https://sourceforge.net/projects/libxmlplusplus/
+URL:            https://libxmlplusplus.github.io/libxmlplusplus
 Source0:        https://download.gnome.org/sources/libxml++/3.2/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 
+BuildRequires:  c++_compiler
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glibmm-2.4) >= 2.32.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.7
@@ -60,16 +61,13 @@ to develop applications that require these.
 %autosetup -p1
 
 %build
-%configure \
-	--disable-static \
-	--with-pic \
+%meson \
 	%{nil}
-%make_build
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
-%fdupes %{buildroot}
+%meson_install
+%fdupes %{buildroot}/%{_prefix}
 
 %post -n libxml++-3_0-1 -p /sbin/ldconfig
 %postun -n libxml++-3_0-1 -p /sbin/ldconfig
@@ -86,10 +84,5 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libxml++-3.0/include/*.h
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/*.so
-%{_datadir}/devhelp/books/libxml++-3.0/
-%{_datadir}/doc/libxml++-3.0/
-# Avoid BuildRequires on devhelp
-%dir %{_datadir}/devhelp
-%dir %{_datadir}/devhelp/books
 
 %changelog
