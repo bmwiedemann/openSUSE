@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec 18 19:30:17 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.28.1:
+  + Build:
+    - Improve NMake support
+    - Use __declspec(dllexport) when building with Visual Studio
+    - Add Meson support
+    - doc/reference/: Update for Doxygen >= 1.8.16
+- Add meson BuildRequires and macros following upstreams port.
+- Add doxygen, graphviz and xsltproc  BuildRequires, needed now for
+  building documentation.
+- Replace gcc-c++ with generic c++_compiler BuildRequires.
+- Tweak setup macro and fdupes call.
+
+-------------------------------------------------------------------
 Sun Dec  2 12:00:46 UTC 2018 - bjorn.lie@gmail.com
 
 - Update to version 2.28.0:

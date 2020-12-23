@@ -1,7 +1,7 @@
 #
 # spec file for package atkmm1_6
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,8 @@
 
 %define _name   atkmm
 Name:           atkmm1_6
-Version:        2.28.0
+
+Version:        2.28.1
 Release:        0
 Summary:        C++ Binding for the ATK library
 License:        LGPL-2.1-or-later
@@ -26,9 +27,14 @@ Group:          Development/Libraries/C and C++
 URL:            http://www.gtkmm.org/
 Source:         https://download.gnome.org/sources/atkmm/2.28/%{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
+
+BuildRequires:  c++_compiler
+BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  graphviz
+BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(atk) >= 1.18
 BuildRequires:  pkgconfig(glibmm-2.4) >= 2.46.2
 
@@ -67,29 +73,27 @@ atkmm is the C++ binding for the ATK library.
 This module is part of the GNOME C++ bindings effort.
 
 %prep
-%setup -q -n %{_name}-%{version}
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
-%configure --disable-static
-make %{?_smp_mflags}
+%meson \
+	-Dbuild-documentation=true \
+	%{nil}
+%meson_build
 
 %install
-%makeinstall
-find %{buildroot} -type f -name "*.la" -delete -print
-%fdupes %{buildroot}
+%meson_install
+%fdupes %{buildroot}/%{prefix}
 
 %post -n libatkmm-1_6-1 -p /sbin/ldconfig
-
 %postun -n libatkmm-1_6-1 -p /sbin/ldconfig
 
 %files -n libatkmm-1_6-1
-%defattr (-, root, root)
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README
 %{_libdir}/libatkmm-1.6.so.*
 
 %files devel
-%defattr (-, root, root)
 %{_includedir}/atkmm-1.6/
 %{_libdir}/libatkmm-1.6.so
 %{_libdir}/pkgconfig/atkmm-1.6.pc
@@ -99,11 +103,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/atkmm-1.6/proc/m4/
 
 %files doc
-%defattr (-, root, root)
 %{_datadir}/devhelp/books/atkmm-1.6/
 %{_datadir}/doc/atkmm-1.6/
-# Avoid BuildRequires on devhelp
-%dir %{_datadir}/devhelp
-%dir %{_datadir}/devhelp/books
 
 %changelog
