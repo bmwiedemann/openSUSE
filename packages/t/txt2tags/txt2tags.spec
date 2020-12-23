@@ -1,7 +1,7 @@
 #
 # spec file for package txt2tags
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2013,2019 Christoph Junghans <junghans@votca.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,30 +13,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           txt2tags
-Version:        3.3
+Version:        3.7
 Release:        0
 Summary:        Converts text files to HTML, XHTML, sgml, LaTeX, man and others
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Text/Convertors
-Url:            http://txt2tags.sourceforge.net
-Source:         https://github.com/jendrikseipp/txt2tags/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/txt2tags/txt2tags/commit/49b0808
-Patch0:         reproducible.patch
+URL:            https://txt2tags.org/
+Source:         https://github.com/txt2tags/txt2tags/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
-BuildArch:      noarch
+Requires:       %{python_module setuptools}
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Obsoletes:      txt2tags < %{version}
 Provides:       txt2tags = %{version}
-Requires:       %{python_module setuptools}
-
-Requires(post):    update-alternatives
-Requires(postun):  update-alternatives
-
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -46,10 +43,9 @@ LaTeX, Lout, man, Magic Point (mgp), MoinMoin and Adobe PageMaker. Supports
 heading, font beautifiers, verbatim, quote, link, lists, table and image.
 There are GUI, Web and cmdline interfaces. It's a single Python script and
 no external commands or libraries are needed.
- 
+
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %python_build
@@ -70,7 +66,7 @@ chmod +x %{buildroot}%{python2_sitelib}/txt2tags.py
 %postun
 %python_uninstall_alternative txt2tags
 
-%files %python_files
+%files %{python_files}
 %doc CHANGELOG.md README.md
 %license COPYING
 %python_alternative %{_bindir}/txt2tags

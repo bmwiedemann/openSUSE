@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 20 11:21:52 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.7:
+  * use new upstream location
+  * huge list of changes, see https://github.com/txt2tags/txt2tags/compare/3.3...3.7
+- remove reproducible.patch (obsolete)
+
+-------------------------------------------------------------------
 Sat Dec  7 14:40:37 UTC 2019 - Christoph Junghans <junghans@votca.org>
 
 - Switch to jendrikseipp version to support python3
