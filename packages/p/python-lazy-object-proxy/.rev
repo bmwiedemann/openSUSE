@@ -61,4 +61,14 @@
   * Dropped support for Python 3.4.</comment>
     <requestid>835176</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>eda9597bc7fb44c1f67283b1a923b6e3</srcmd5>
+    <version>1.5.2</version>
+    <time>1608729549</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.2:
+  * Added Python 3.9 wheels.
+  * Removed Python 2.7 Windows wheels</comment>
+    <requestid>857112</requestid>
+  </revision>
 </revisionlist>
