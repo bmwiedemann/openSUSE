@@ -26,6 +26,7 @@ License:        LGPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/World/libcloudproviders
 Source0:        https://download.gnome.org/sources/libcloudproviders/0.3/%{name}-%{version}.tar.xz
+Source98:       baselibs.conf
 Source99:       %{name}-rpmlintrc
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.42.0

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 22 13:01:58 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add baselibs.conf: gtk4 for one depends on this.
+  + Create libcloudproviders0-32bit.
+
+-------------------------------------------------------------------
 Tue Jun  9 09:07:41 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.3.1:
