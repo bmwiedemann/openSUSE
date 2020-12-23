@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 16 12:55:04 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- add -autoload subpackages that provides the configuration files
+  to autoload the driver on startup
+
+-------------------------------------------------------------------
 Fri Jul 10 18:44:42 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fixup util dependencies: pull in required vl42-ctl for

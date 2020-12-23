@@ -105,4 +105,14 @@
     <comment></comment>
     <requestid>820045</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>aaf7b3b0ae2325947a1990628ae3b417</srcmd5>
+    <version>0.12.5</version>
+    <time>1608733689</time>
+    <user>dimstar_suse</user>
+    <comment>- add -autoload subpackages that provides the configuration files
+  to autoload the driver on startup
+</comment>
+    <requestid>856499</requestid>
+  </revision>
 </revisionlist>
