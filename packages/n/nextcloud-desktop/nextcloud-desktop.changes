@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 23 09:44:24 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.1.1
+  - desktop#2709 [stable-3.1] Have the new account wizard open again
+  - desktop#2715 [stable-3.1] UserModel: check indices are inside the user list
+  - desktop#2716 [stable-3.1] Use the icon color property to color the icons in the tray window header.
+  - desktop#2717 [stable-3.1] Ensure a sync happens after a conflict resolution
+  - desktop#2730 [stable-3.1] Make monochrome icons the default on Linux and Mac OS.
+  - desktop#2753 [stable-3.1] Fixed the autostart for AppImages. See #2504.
+  - desktop#2761 Bump release to 3.1.1
+
+-------------------------------------------------------------------
 Mon Dec 14 13:29:11 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.1.0
