@@ -1,7 +1,7 @@
 #
 # spec file for package python-roman
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,16 @@
 #
 
 
+%define packagename roman
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-roman
-Version:        3.2
+Version:        3.3
 Release:        0
 Summary:        Integer to Roman numerals converter
 License:        Python-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/zopefoundation/roman
-Source:         https://files.pythonhosted.org/packages/source/r/roman/roman-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/r/roman/%{packagename}-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -36,20 +37,35 @@ This module converts from and to Roman numerals. It can convert numbers from
 1 to 4999 and understands the common shortcuts (IX == 9), but not illegal ones (MIM == 1999).
 
 %prep
-%setup -q -n roman-%{version}
+%setup -q -n %{packagename}-%{version}
 
 %build
 %python_build
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/%{packagename}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%prepare_alternative %{packagename}
+
+%post
+%python_install_alternative %{packagename}
+
+%postun
+%python_uninstall_alternative %{packagename}
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v src
 
 %files %{python_files}
 %doc CHANGES.txt
-%{python_sitelib}/*
+%pycache_only %{python_sitelib}/__pycache__/%{packagename}*
+%{python_sitelib}/*egg-info/
+%{python_sitelib}/%{packagename}.py
+%python_alternative %{_bindir}/roman
+
+%if 0%{?sle_version} > 0 && 0%{?sle_version} <= 150200
+%{_prefix}/lib/python2.7/site-packages/%{packagename}.py*
+%endif
 
 %changelog

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec 22 08:53:53 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Fix using %pyunittest macro
+
+-------------------------------------------------------------------
+Sun Dec 20 14:28:03 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 3.3.
+  * added support for Python 3.9
+  * added CLI command ``roman`` with ``-r/--reverse`` to convert back from Roman
+  * added simple usage instructions
+- Clean up spec file a bit.
+
+-------------------------------------------------------------------
 Wed Apr 17 07:44:28 UTC 2019 - pgajdos@suse.com
 
 - version update to 3.2

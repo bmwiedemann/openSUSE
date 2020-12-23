@@ -85,4 +85,18 @@
     <comment></comment>
     <requestid>695026</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ef96b7904050ef9f2f70d977c101320b</srcmd5>
+    <version>3.3</version>
+    <time>1608729580</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix using %pyunittest macro
+- Update to version 3.3.
+  * added support for Python 3.9
+  * added CLI command ``roman`` with ``-r/--reverse`` to convert back from Roman
+  * added simple usage instructions
+- Clean up spec file a bit.
+</comment>
+    <requestid>858111</requestid>
+  </revision>
 </revisionlist>
