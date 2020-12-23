@@ -16,33 +16,29 @@
 #
 
 
-%define base_ver 2.30
+%define base_ver 2.36
 # Update baselibs.conf when changing the version here
-%define libname  lib%{name}-2_30-1
+%define libname  lib%{name}-2_36-1
 
 Name:           atkmm
-Version:        2.29.1
+Version:        2.36.0
 Release:        0
 Summary:        C++ Binding for the ATK library
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later AND GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://www.gtkmm.org/
-Source0:        https://download.gnome.org/sources/%{name}/2.29/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/%{name}/%{base_ver}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM atkmm-use-glibmm-262.patch -- Forward port to use new glibmm2
-Patch0:         atkmm-use-glibmm-262.patch
-# PATCH-FIX-UPSTREAM atkmm-use-glibmm-264.patch -- Forward port to use new glibmm2
-Patch1:         atkmm-use-glibmm-264.patch
-# PATCH-FIX-UPSTREAM atkmm-use-glibmm-264.patch -- Forward port to use new glibmm2
-Patch2:         atkmm-use-glibmm-266.patch
 
+BuildRequires:  c++_compiler
+BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
-BuildRequires:  libtool
-BuildRequires:  mm-common
+BuildRequires:  graphviz
+BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(atk) >= 1.18
-BuildRequires:  pkgconfig(glibmm-2.66)
+BuildRequires:  pkgconfig(glibmm-2.68)
 Recommends:     %{name}-doc = %{version}
 
 %description
@@ -91,15 +87,13 @@ C++ bindings.
 %autosetup -p1
 
 %build
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-	--disable-static \
+%meson \
+	-Dbuild-documentation=true \
 	%{nil}
-%make_build
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 %fdupes %{buildroot}%{_datadir}
 
 %post -n %{libname} -p /sbin/ldconfig

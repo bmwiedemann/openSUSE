@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Dec 19 09:44:53 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.36.0:
+  + Object: Add get_object_locale(), get/set_accessible_id(),
+    property_accessible_table_caption_object() and
+    property_accessible_hypertext_nlinks().
+  + Text: Add signal_text_insert() and signal_text_remove().
+  + Value: Add signal_value_changed().
+  + Hyperlink, Object: Remove deprecated properties
+  + Build:
+    - Use glibmm-2.68 instead of glibmm-2.60
+    - Improve NMake support
+    - Use __declspec(dllexport) when building with Visual Studio
+      Drop gendef.exe
+    - Add Meson support
+    - doc/reference/: Update for Doxygen >= 1.8.16
+    - Change the ABI to atkmm-2.36
+- Drop patches fixed upstream:
+  + atkmm-use-glibmm-262.patch
+  + atkmm-use-glibmm-264.patch
+  + atkmm-use-glibmm-266.patch
+- Add meson BuildRequires and macros following upstreams port.
+- Bump base_ver and libname (and in baselibs.conf) following
+  upstream changes.
+- Replace gcc-c++ with generic c++_compiler BuildRequires.
+- Replace pkgconfig(glibmm-2.66) with pkgconfig(glibmm-2.68)
+  BuildRequires.
+- Add doxygen, graphviz and xsltproc BuildRequires, needed now to
+  build documentation.
+- Drop libtool and mm-common BuildRequires.
+
+-------------------------------------------------------------------
 Sun Mar 22 13:10:44 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add atkmm-use-glibmm-266.patch: Forward port to use new glibmm2.
