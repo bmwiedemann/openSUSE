@@ -19,6 +19,7 @@
 %define somajor 0
 %define libudisks lib%{name}-%{somajor}
 %define libblockdev_version 2.19
+
 Name:           udisks2
 Version:        2.9.1
 Release:        0
@@ -26,7 +27,10 @@ Summary:        Disk Manager
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          System/Daemons
 URL:            https://github.com/storaged-project/udisks
-Source0:        https://github.com/storaged-project/udisks/releases/download/udisks-%{version}/udisks-%{version}.tar.bz2
+Source0:        %{url}/releases/download/udisks-%{version}/udisks-%{version}.tar.bz2
+Patch0:         udisks2-Fix-memory-leaks.patch
+Patch1:         udisks2-lvm2-Fix-leaking-BDLVMVDOPooldata.patch
+
 BuildRequires:  chrpath
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gobject-introspection-devel >= 0.6.2

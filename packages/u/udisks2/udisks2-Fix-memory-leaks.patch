@@ -1,0 +1,76 @@
+From 7c23020e3b6931395f85a08f6ab2b764a5625e43 Mon Sep 17 00:00:00 2001
+From: Vojtech Trefny <vtrefny@redhat.com>
+Date: Tue, 29 Sep 2020 13:00:53 +0200
+Subject: [PATCH] Memory leak fixes
+
+Fixes for leaks found by new version of coverity.
+---
+ modules/zram/udiskszramutil.c | 3 +++
+ src/udiskslinuxdriveata.c     | 1 +
+ src/udiskslinuxfilesystem.c   | 2 +-
+ tools/udisksctl.c             | 2 ++
+ 4 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/modules/zram/udiskszramutil.c b/modules/zram/udiskszramutil.c
+index 96b2d66ad..2c64eb9d3 100644
+--- a/modules/zram/udiskszramutil.c
++++ b/modules/zram/udiskszramutil.c
+@@ -95,8 +95,11 @@ set_conf_property (char *filename,
+   if (rename (tmpfname, filename))
+   {
+     g_set_error (error, G_IO_ERROR, g_io_error_from_errno (errno),"%m");
++    g_free (tmpfname);
+     return FALSE;
+   }
+ 
++  g_free (tmpfname);
++
+   return TRUE;
+ }
+diff --git a/src/udiskslinuxdriveata.c b/src/udiskslinuxdriveata.c
+index 4ba66d09a..f4e848c52 100644
+--- a/src/udiskslinuxdriveata.c
++++ b/src/udiskslinuxdriveata.c
+@@ -582,6 +582,7 @@ udisks_linux_drive_ata_refresh_smart_sync (UDisksLinuxDriveAta  *drive,
+                        UDISKS_ERROR,
+                        UDISKS_ERROR_FAILED,
+                        "sk_disk_open: %m");
++          g_free (blob);
+           goto out;
+         }
+ 
+diff --git a/src/udiskslinuxfilesystem.c b/src/udiskslinuxfilesystem.c
+index 3ae11c329..279d952b6 100644
+--- a/src/udiskslinuxfilesystem.c
++++ b/src/udiskslinuxfilesystem.c
+@@ -697,9 +697,9 @@ calculate_mount_point (UDisksDaemon  *daemon,
+         }
+     }
+   g_free (orig_mount_point);
+-  g_free (mount_dir);
+ 
+  out:
++  g_free (mount_dir);
+   g_clear_object (&object);
+   g_free (escaped_user_name);
+   return mount_point;
+diff --git a/tools/udisksctl.c b/tools/udisksctl.c
+index 3b0a48e56..7a5de65d2 100644
+--- a/tools/udisksctl.c
++++ b/tools/udisksctl.c
+@@ -1282,6 +1282,7 @@ handle_command_unlock_lock (gint        *argc,
+         g_printerr ("Error unlocking %s: %s\n",
+                     udisks_block_get_device (block),
+                     error->message);
++        g_clear_error (&error);
+         goto out;
+       }
+       g_variant_builder_add (&builder,
+@@ -3103,6 +3104,7 @@ handle_command_status (gint        *argc,
+                serial,
+                block);
+       g_free (block);
++      g_free (vendor_model);
+     }
+ 
+ 

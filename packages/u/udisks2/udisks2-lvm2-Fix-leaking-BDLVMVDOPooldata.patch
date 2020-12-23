@@ -1,0 +1,23 @@
+From f8ff05687c8163ee361d170b5e1f344d9e79d10e Mon Sep 17 00:00:00 2001
+From: Tomas Bzatek <tbzatek@redhat.com>
+Date: Mon, 23 Nov 2020 16:58:17 +0100
+Subject: [PATCH] lvm2: Fix leaking BDLVMVDOPooldata
+
+---
+ modules/lvm2/udiskslinuxvolumegroupobject.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/modules/lvm2/udiskslinuxvolumegroupobject.c b/modules/lvm2/udiskslinuxvolumegroupobject.c
+index e3bc8dfc0..ce941cb25 100644
+--- a/modules/lvm2/udiskslinuxvolumegroupobject.c
++++ b/modules/lvm2/udiskslinuxvolumegroupobject.c
+@@ -652,6 +652,9 @@ update_vg (GObject      *source_obj,
+       else
+         udisks_linux_logical_volume_object_update (volume, lv_info, meta_lv_info, vdo_info, &needs_polling);
+ 
++      if (vdo_info)
++        bd_lvm_vdopooldata_free (vdo_info);
++
+       g_hash_table_insert (new_lvs, (gchar *)lv_name, volume);
+     }
+ 

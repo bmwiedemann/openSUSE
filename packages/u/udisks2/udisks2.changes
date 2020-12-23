@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 19 16:16:59 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add upstream bugfix patches:
+  + udisks2-Fix-memory-leaks.patch
+  + udisks2-lvm2-Fix-leaking-BDLVMVDOPooldata.patch
+
+-------------------------------------------------------------------
 Sun Sep  6 07:24:30 UTC 2020 - Milan Savić <milsav92@outlook.com>
 
 - Update to version 2.9.1:
