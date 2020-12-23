@@ -114,8 +114,6 @@ Patch9:         link-clang-shared.patch
 Patch10:        link-clang-tools-extra-shared.patch
 # PATCH-FIX-OPENSUSE lldb-cmake.patch -- Fix ncurses include path.
 Patch11:        lldb-cmake.patch
-# PATCH-FIX-OPENSUSE polly-pthread.patch -- Make sure -lpthread is linked after libPolly (related to GCC#55394)
-Patch12:        polly-pthread.patch
 Patch13:        llvm-normally-versioned-libllvm.patch
 Patch14:        llvm-do-not-install-static-libraries.patch
 # PATCH-FIX-UPSTREAM tablegen-test-link-static.patch -- https://reviews.llvm.org/D74588
@@ -269,8 +267,8 @@ This package contains tools and scripts for using Clang, including:
 
 %package -n libclang%{_sonum}
 Summary:        Library files needed for clang
-# Avoid multiple provider errors
 Group:          System/Libraries
+# Avoid multiple provider errors
 Requires:       libLLVM%{_sonum}
 
 %description -n libclang%{_sonum}
@@ -305,8 +303,8 @@ This package contains documentation for the Clang compiler.
 
 %package -n libLTO%{_sonum}
 Summary:        Link-time optimizer for LLVM
-# Avoid multiple provider errors
 Group:          System/Libraries
+# Avoid multiple provider errors
 Requires:       libLLVM%{_sonum}
 
 %description -n libLTO%{_sonum}
@@ -314,8 +312,8 @@ This package contains the link-time optimizer for LLVM.
 
 %package LTO-devel
 Summary:        Link-time optimizer for LLVM (devel package)
-# Avoid multiple provider errors
 Group:          Development/Libraries/C and C++
+# Avoid multiple provider errors
 Requires:       %{name}-devel = %{version}
 Requires:       libLTO%{_sonum}
 Conflicts:      libLTO.so < %{version}
@@ -327,8 +325,8 @@ This package contains the link-time optimizer for LLVM.
 
 %package gold
 Summary:        Gold linker plugin for LLVM
-# Avoid multiple provider errors
 Group:          Development/Tools/Building
+# Avoid multiple provider errors
 Requires:       libLLVM%{_sonum}
 Conflicts:      llvm-gold-provider < %{version}
 Provides:       llvm-gold-provider = %{version}
@@ -339,8 +337,8 @@ This package contains the Gold linker plugin for LLVM.
 
 %package -n libomp%{_sonum}-devel
 Summary:        MPI plugin for LLVM
-# Avoid multiple provider errors
 Group:          Development/Libraries/C and C++
+# Avoid multiple provider errors
 Requires:       libLLVM%{_sonum}
 Conflicts:      libomp-devel < %{version}
 Provides:       libomp-devel = %{version}
@@ -361,8 +359,8 @@ standard library, targeting C++11.
 
 %package -n libc++-devel
 Summary:        C++ standard library implementation (devel package)
-# Avoid multiple provider errors
 Group:          Development/Libraries/C and C++
+# Avoid multiple provider errors
 Requires:       libc++%{_socxx} = %{version}
 Requires:       libc++abi-devel = %{version}
 Conflicts:      libc++.so < %{version}
@@ -470,8 +468,8 @@ disassembler.
 
 %package -n liblldb%{_sonum}
 Summary:        LLDB software debugger runtime library
-# Avoid multiple provider errors
 Group:          System/Libraries
+# Avoid multiple provider errors
 Requires:       libLLVM%{_sonum}
 Requires:       libclang%{_sonum}
 
@@ -480,8 +478,8 @@ This subpackage contains the main LLDB component.
 
 %package -n lldb%{_sonum}-devel
 Summary:        Development files for LLDB
-# Avoid multiple provider errors
 Group:          Development/Libraries/C and C++
+# Avoid multiple provider errors
 Requires:       clang%{_sonum}-devel = %{version}
 Requires:       liblldb%{_sonum} = %{version}
 Requires:       llvm%{_sonum}-devel = %{version}
@@ -593,10 +591,6 @@ rm test/std/localization/locale.categories/category.time/locale.time.get.byname/
 rm -rf test/std/thread/
 popd
 %endif
-
-pushd polly-%{_version}.src
-%patch12 -p2
-popd
 
 # Move into right place
 mv clang-%{_version}.src tools/clang

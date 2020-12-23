@@ -19,4 +19,12 @@
   managed by update-alternatives. (boo#1178513)</comment>
     <requestid>850277</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4335a43dec6316e53cbc85678a6fc74d</srcmd5>
+    <version>11.0.0</version>
+    <time>1608729653</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>857863</requestid>
+  </revision>
 </revisionlist>
