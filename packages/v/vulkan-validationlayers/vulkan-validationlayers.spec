@@ -17,15 +17,15 @@
 
 
 Name:           vulkan-validationlayers
-Version:        1.2.154
+Version:        1.2.162.0
 Release:        0
-%define lname libVkLayer_utils-1_2_154
+%define lname libVkLayer_utils-1_2_162_0
 Summary:        Validation layers for Vulkan
 License:        Apache-2.0
 Group:          Development/Tools/Other
 URL:            https://github.com/KhronosGroup/Vulkan-ValidationLayers
 
-Source:         https://github.com/KhronosGroup/Vulkan-ValidationLayers/archive/v%version.tar.gz
+Source:         https://github.com/KhronosGroup/Vulkan-ValidationLayers/archive/sdk-%version.tar.gz
 Source9:        %name-rpmlintrc
 Patch1:         ver.diff
 Patch2:         xxhash.diff
@@ -69,14 +69,14 @@ Vulkan is a 3D graphics and compute API.
 This package contains support files for the VkLayer utility library.
 
 %prep
-%autosetup -n Vulkan-ValidationLayers-%version -p1
+%autosetup -n Vulkan-ValidationLayers-sdk-%version -p1
 perl -i -pe 's{\@PACKAGE_VERSION\@}{%version}' CMakeLists.txt
 
 %build
 %cmake -DGLSLANG_INSTALL_DIR="%_bindir" \
 	-DSPIRV_HEADERS_INSTALL_DIR="%_includedir" \
 	-DBUILD_LAYER_SUPPORT_FILES=ON
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install

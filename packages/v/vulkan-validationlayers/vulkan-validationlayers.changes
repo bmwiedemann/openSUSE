@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Dec 15 16:27:19 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.162.0 (sdk)
+  * gpu: Add buffer out of bounds access validation
+  * gpu: Add buffer OOB validation of texel buffers
+- Drop prov.diff (merged)
+
+-------------------------------------------------------------------
+Wed Nov 25 17:04:17 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.161
+  * syncval: Add multi subpass dep support
+  * layers: Allow for sampler with null image view
+  * layers: Add support for KHR_copy_commands2
+  * layers: Add missing 1.2 overload functions
+  * layers: Add VK_EXT_4444_formats support
+  * layers: Check nullDescriptor when validating vertex attributes
+- Add prov.diff
+
+-------------------------------------------------------------------
 Mon Sep 28 22:12:38 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.154

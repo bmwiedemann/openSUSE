@@ -10,10 +10,10 @@ xxhash as well, so that the ABI matches.
  layers/CMakeLists.txt |    6 ++----
  1 file changed, 2 insertions(+), 4 deletions(-)
 
-Index: Vulkan-ValidationLayers/layers/CMakeLists.txt
+Index: Vulkan-ValidationLayers-sdk-1.2.162.0/layers/CMakeLists.txt
 ===================================================================
---- Vulkan-ValidationLayers.orig/layers/CMakeLists.txt
-+++ Vulkan-ValidationLayers/layers/CMakeLists.txt
+--- Vulkan-ValidationLayers-sdk-1.2.162.0.orig/layers/CMakeLists.txt
++++ Vulkan-ValidationLayers-sdk-1.2.162.0/layers/CMakeLists.txt
 @@ -61,8 +61,6 @@ if(BUILD_LAYER_SUPPORT_FILES)
          vk_layer_utils.h
          vk_layer_utils.cpp
@@ -39,5 +39,5 @@ Index: Vulkan-ValidationLayers/layers/CMakeLists.txt
 -    target_link_libraries(VkLayer_khronos_validation PRIVATE ${SPIRV_TOOLS_LIBRARIES})
 +    target_link_libraries(VkLayer_khronos_validation PRIVATE ${SPIRV_TOOLS_LIBRARIES} -lxxhash)
  
-     # The output file needs Unix "/" separators or Windows "\" separators On top of that, Windows separators actually need to be doubled
-     # because the json format uses backslash escapes
+     # Force generation of the PDB file for Release builds.
+     # Note that CMake reduces optimization levels for RelWithDebInfo builds.
