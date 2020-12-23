@@ -85,4 +85,14 @@
     <comment></comment>
     <requestid>790161</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>14f38fcc6b4ddb3c6cc96bd139ffd756</srcmd5>
+    <version>1.0.2</version>
+    <time>1608729570</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.2:
+  * Python 3.9 support
+  * bugfixes</comment>
+    <requestid>857153</requestid>
+  </revision>
 </revisionlist>
