@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 20 09:26:43 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.20.14:
+ * Fix some stash functions on Python 3. 
+ * Fix handling of relative paths in alternates files on Python 3.
+ * Add py.typed to allow type checking.
+ * Add tests demonstrating a bug in the walker code.
+
+-------------------------------------------------------------------
 Mon Dec 14 00:50:05 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix condition around BuildRequirement
