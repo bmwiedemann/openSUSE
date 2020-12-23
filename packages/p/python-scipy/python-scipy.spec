@@ -18,7 +18,7 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define _ver 1_5_2
+%define _ver 1_5_4
 %define shortname scipy
 %define pname python-%{shortname}
 
@@ -86,7 +86,7 @@ ExclusiveArch:  do_not_build
 
 %define         skip_python2 1
 Name:           %{package_name}
-Version:        1.5.2
+Version:        1.5.4
 Release:        0
 Summary:        Scientific Tools for Python
 License:        BSD-3-Clause AND LGPL-2.0-or-later
@@ -96,8 +96,8 @@ Source0:        https://files.pythonhosted.org/packages/source/s/scipy/scipy-%{v
 Source100:      python-scipy-rpmlintrc
 BuildRequires:  %{python_module Cython >= 0.19}
 BuildRequires:  %{python_module devel >= 3.5}
-BuildRequires:  %{python_module pybind11 >= 2.2.4}
-BuildRequires:  %{python_module pybind11-devel >= 2.2.4}
+BuildRequires:  %{python_module pybind11 >= 2.4.3}
+BuildRequires:  %{python_module pybind11-devel >= 2.4.3}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -111,9 +111,9 @@ BuildRequires:  openblas-devel
 BuildRequires:  blas-devel
 BuildRequires:  lapack-devel
  %endif
-BuildRequires:  %{python_module numpy-devel >= 1.5.1}
-Requires:       python-numpy >= 1.5.1
-Requires:       python-pybind11 >= 2.2.4
+BuildRequires:  %{python_module numpy-devel >= 1.14.5}
+Requires:       python-numpy >= 1.14.5
+Requires:       python-pybind11 >= 2.4.3
 %else
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel >= 1.3
 BuildRequires:  %{python_module numpy%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel}
@@ -121,7 +121,7 @@ BuildRequires:  libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel
 BuildRequires:  lua-lmod
 BuildRequires:  suse-hpc >= 0.3
 Requires:       libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc
-Requires:       python-numpy%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc >= 1.5.1
+Requires:       python-numpy%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc >= 1.14.5
 %endif
 %{?with_hpc:%{hpc_requires}}
 %python_subpackages
