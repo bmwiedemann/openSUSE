@@ -16,18 +16,32 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+# the test suite builds platform specific libraries, failing on some
+ExcludeArch:  %arm ppc64le
+%define configureargs --enable-tests
+%else
+%define psuffix %{nil}
+%bcond_with test
+# the resulting python library is pure
+BuildArch:      noarch
+%endif
+
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define _name   pyatspi
-Name:           python-atspi
+Name:           python-atspi%{psuffix}
 Version:        2.38.0
 Release:        0
 Summary:        Python bindings for the Assistive Technology Service Provider Interface
 License:        LGPL-2.0-only
 Group:          Development/Libraries/Python
-URL:            http://www.gnome.org/
+URL:            https://gitlab.gnome.org/GNOME/pyatspi2
 Source0:        https://download.gnome.org/sources/pyatspi/2.38/%{_name}-%{version}.tar.xz
-
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module dbus-python}
 BuildRequires:  %{python_module gobject >= 2.90.1}
 BuildRequires:  %{python_module gobject-devel >= 2.90.1}
 BuildRequires:  %{python_module setuptools}
@@ -37,26 +51,29 @@ BuildRequires:  gobject-introspection
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-2to3
 BuildRequires:  pkgconfig(gtk+-3.0)
+%if %{with test}
+BuildRequires:  at-spi2-atk-gtk2
+BuildRequires:  at-spi2-core
+BuildRequires:  atk-devel
+BuildRequires:  glib2-devel
+BuildRequires:  libxml2-devel
+%endif
+Requires:       python-dbus-python
 Requires:       python-gobject >= 2.90.1
 # The bindings are really useful only if the at-spi registry is running. But
 # it's not a strict runtime dependency.
 Recommends:     at-spi2-core
 # Old versions of at-spi 1.x provided the same files
 Conflicts:      at-spi < 1.29.3
-BuildArch:      noarch
-%ifpython2
-Requires:       dbus-1-python
-%endif
-%ifpython3
-Requires:       dbus-1-python3
-%endif
 # Virtual package, so that apps can depend on it, without having to know which
 # at-spi stack is used. Only the default at-spi stack should define it.
+# DEPRECATED: For python packages, use Requires: python-pyatspi and let the
+# python_subpackages macro figure out the correct package.
 %ifpython2
 Provides:       py2atspi
 Provides:       pyatspi
 %endif
-%ifpython3
+%if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
 Provides:       py3atspi
 %endif
 %python_subpackages
@@ -76,23 +93,35 @@ This package contains the python bindings for AT-SPI.
 
 %{python_expand mkdir build_%{$python_bin_suffix}
 pushd build_%{$python_bin_suffix}
-export PYTHON=$python
-%configure
+export PYTHON=%_bindir/$python
+%configure %{?configureargs}
 make %{?_smp_mflags}
 popd
 }
 
+
 %install
+%if ! %{with test}
 %{python_expand pushd build_%{$python_bin_suffix}
 %make_install
 popd
 }
-
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
+%check
+%{python_expand pushd build_%{$python_bin_suffix}/tests
+dbus-run-session make %{?_smp_mflags} check CFLAGS="-Wno-return-type" || (cat pyatspi/test-suite.log && exit 1)
+popd
+}
+%endif
+
+%if ! %{with test}
 %files %{python_files}
 %license COPYING
 %doc AUTHORS NEWS README
 %{python_sitelib}/pyatspi/
+%endif
 
 %changelog

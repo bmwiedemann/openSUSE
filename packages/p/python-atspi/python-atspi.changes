@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec 14 12:42:27 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Support future multiple python3 flavors 
+  * fix py*atspi provides
+  * remove %ifpython3 -- it will break
+  * gh#openSUSE/python-rpm-macros#66
+- Enable testsuite. General rule for python packages: must run if
+  they are available. And it revealed a problem with the
+  (not given) path to the python interpreter.
+  * The test suite compiles test libraries which do not work for
+    armv7l and ppc64le. Skip there.
+
+-------------------------------------------------------------------
 Mon Sep 14 12:53:33 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 2.38.0:

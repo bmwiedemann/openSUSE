@@ -503,4 +503,20 @@
     <comment>Push GNOME 3.38</comment>
     <requestid>847258</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>90a8f93f33b33f290f828f6df1f21dba</srcmd5>
+    <version>2.38.0</version>
+    <time>1608729631</time>
+    <user>dimstar_suse</user>
+    <comment>- Support future multiple python3 flavors 
+  * fix py*atspi provides
+  * remove %ifpython3 -- it will break
+  * gh#openSUSE/python-rpm-macros#66
+- Enable testsuite. General rule for python packages: must run if
+  they are available. And it revealed a problem with the
+  (not given) path to the python interpreter.
+  * The test suite compiles test libraries which do not work for
+    armv7l and ppc64le. Skip there. (forwarded request 855753 from bnavigator)</comment>
+    <requestid>857822</requestid>
+  </revision>
 </revisionlist>
