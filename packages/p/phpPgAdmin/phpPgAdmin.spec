@@ -26,9 +26,9 @@ Name:           phpPgAdmin
 Summary:        Administration of PostgreSQL over the web
 License:        GPL-2.0-or-later
 Group:          Productivity/Databases/Tools
-Version:        7.12.1
+Version:        7.13.0
 Release:        0
-%define rel_version REL_7-12-1
+%define rel_version REL_7-13-0
 URL:            http://phppgadmin.sourceforge.net
 Source0:        https://github.com/%{lc_name}/%{lc_name}/releases/download/%{rel_version}/%{name}-%{version}.tar.bz2
 Source1:        %{name}.http
@@ -37,10 +37,8 @@ Patch0:         %{name}-config.inc.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  apache-rpm-macros
-BuildRequires:  apache2
 BuildRequires:  fdupes
-Requires:       mod_php_any
-Requires:       php >= 7.1
+Requires:       php >= 7.2
 Requires:       php-pgsql
 
 %description
@@ -70,6 +68,17 @@ Features
 	o Available in 27 languages
 	o No encoding conflicts. Edit Russian data using a Japanese interface!
 * Easy to install and configure
+
+%package apache
+Summary:        Apache configuration for %{name}
+Group:          Productivity/Networking/Web/Utilities
+BuildRequires:  apache2
+Requires:       apache2
+Requires:       mod_php_any
+Supplements:    packageand(apache2:%name)
+
+%description apache
+This subpackage contains the Apache configuration files
 
 %prep
 %setup -q
@@ -106,7 +115,7 @@ find %{buildroot}%{ap_docroot}/%{name} -maxdepth 1 -type f | grep -v 'config.inc
 # rpmlint stuff
 %fdupes %{buildroot}%{ap_docroot}/%{name}
 
-%post
+%post apache
 # enable phpPgAdmin flag
 if [ -x %{_sbindir}/a2enflag ]; then
   flag_find=$(grep -cw /etc/sysconfig/apache2 -e "^APACHE_SERVER_FLAGS=.*%{name}.*")
@@ -129,7 +138,7 @@ if [ $find -gt 0 ]; then
 fi
 %restart_on_update apache2
 
-%postun
+%postun apache
 # only do on uninstall, not on update
 if [ $1 -eq 0 ]; then
   # disable phpPgAdmin flag
@@ -148,9 +157,11 @@ fi
 %doc CREDITS DEVELOPERS FAQ HISTORY TODO TRANSLATORS
 %license LICENSE
 %dir %{ap_docroot}/%{name}
-%config(noreplace) %{apache_sysconfdir}/conf.d/%{name}.conf
-%config(noreplace) %{apache_sysconfdir}/conf.d/%{name}.inc
 %dir %attr(0750,wwwrun,root) %{_sysconfdir}/%{name}
 %config(noreplace) %attr(0640,root,www) %{ppa_config}
+
+%files apache
+%config(noreplace) %{apache_sysconfdir}/conf.d/%{name}.conf
+%config(noreplace) %{apache_sysconfdir}/conf.d/%{name}.inc
 
 %changelog

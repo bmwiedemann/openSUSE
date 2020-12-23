@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec 14 12:13:12 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 7.13.0
+  - Add support for Postgres 13
+  - Add provisional support for Postgres 14
+  - Upgrade Jquery library to 3.4.1
+  - Allow users to see group owned databases when using "owned only"
+  - Fix bug where sorting on selects dumped you to the table screen
+  - This release drops support for PHP 7.1
+  - This will be the last release to support PHP 7.2
+- Put apache configuration files in separate subpackage.
+
+-------------------------------------------------------------------
 Tue Dec  1 15:04:30 UTC 2020 - pgajdos@suse.com
 
 - use system apache rpm macros
