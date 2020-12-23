@@ -104,4 +104,33 @@
     <comment></comment>
     <requestid>813482</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>abf2fd3b4d5bab8e6fa7b26eeaffc81f</srcmd5>
+    <version>3.0.8</version>
+    <time>1608729552</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.8:
+  - Added `validator` parameter to `input_dialog`.
+  - New &quot;placeholder&quot; parameter added to `PromptSession`.
+  - Fixes
+  - The SSH/Telnet adaptors have been refactored and improved in several ways.
+    See issues #876 and PR #1150 and #1184 on GitHub.
+    * Handle terminal types for both telnet and SSH sessions.
+    * Added pipe input abstraction. (base class for `PosixPipeInput` and
+      `Win32PipeInput`).
+    * The color depth logic has been refactored and moved to the `Output`
+      implementations. Added `get_default_color_depth` method to `Output`
+      objects.
+    * All line feets are now preceded by a carriage return in the telnet
+      connection stdout.
+  - Introduce `REPLACE_SINGLE` input mode for Vi key bindings.
+  - Improvements to the checkbox implementation:
+      * Hide the scrollbar for a single checkbox.
+      * Added a &quot;checked&quot; setter to the checkbox.
+  - Expose `KeyPressEvent` in key_binding/__init__.py (often used in type
+    annotations).
+  - The renderer has been optimized so that no trailing spaces are generated
+    (this improves copying in some terminals).</comment>
+    <requestid>857115</requestid>
+  </revision>
 </revisionlist>
