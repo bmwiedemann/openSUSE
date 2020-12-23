@@ -50,4 +50,17 @@
   * Improved documentation, including API docs.</comment>
     <requestid>850954</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8be7b625f41bc0f76be88e25da6318d3</srcmd5>
+    <version>0.6.0</version>
+    <time>1608729558</time>
+    <user>dimstar_suse</user>
+    <comment>- uppate to 0.6.0:
+  * New method :meth:`~.blocking.DBusConnection.recv_until_filtered` in the
+    blocking I/O integration to receive messages until one is filtered into a
+    queue.
+  * More efficient buffering of received data waiting to be parsed into D-Bus
+    messages.</comment>
+    <requestid>857121</requestid>
+  </revision>
 </revisionlist>

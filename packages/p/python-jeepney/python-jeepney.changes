@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec 20 09:53:53 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- uppate to 0.6.0:
+  * New method :meth:`~.blocking.DBusConnection.recv_until_filtered` in the
+    blocking I/O integration to receive messages until one is filtered into a
+    queue.
+  * More efficient buffering of received data waiting to be parsed into D-Bus
+    messages.
+
+-------------------------------------------------------------------
 Thu Nov 26 09:34:46 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.5.0:
