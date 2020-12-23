@@ -134,6 +134,8 @@ Patch7:         manual_configure.patch
 Patch11:        valgrind_fixes.patch
 Patch13:        openssl_binary_detection.patch
 
+Patch41:        icu68.patch
+
 ## Patches specific to SUSE and openSUSE
 # PATCH-FIX-OPENSUSE -- set correct path for dtrace if it is built
 Patch101:       nodejs-libpath.patch
@@ -777,6 +779,7 @@ tar Jxf %{SOURCE11}
 %patch11 -p1
 %endif
 %patch13 -p1
+%patch41 -p1
 %patch101 -p1
 %patch102 -p1
 # Add check_output to configure script (not part of Python 2.6 in SLE11).

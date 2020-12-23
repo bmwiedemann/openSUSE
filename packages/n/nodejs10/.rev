@@ -409,4 +409,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>855765</requestid>
   </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>03003e0444725e8460a73221dba12f17</srcmd5>
+    <version>10.23.0</version>
+    <time>1608729673</time>
+    <user>dimstar_suse</user>
+    <comment>- Add icu68.patch: fix build with ICU 68</comment>
+    <requestid>858072</requestid>
+  </revision>
 </revisionlist>
