@@ -99,6 +99,10 @@ HTML documentation on the API and examples for %{name}.
 # Prevent building with vendor version
 rm vendor/http-parser/*.c
 
+# Allow use with chardet v4
+# https://github.com/aio-libs/aiohttp/pull/5333
+sed -i 's/chardet>=2.0,<4.0/chardet>=2.0/' setup.py
+
 %build
 export CFLAGS="%{optflags}"
 %python_build
