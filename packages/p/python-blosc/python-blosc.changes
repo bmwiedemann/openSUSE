@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Dec 20 18:35:01 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 1.9.2.
+  * Internal C-Blosc updated to 1.20.1.  This fixes
+    https://github.com/Blosc/python-blosc/issues/229, and also 
+    brings many new updates in internal codecs, providing 
+    interesting bumps in performance in some cases.
+  * Due to recent addition of more cores in new CPUs, the number of
+    internal threads to be used by default has been increased from
+    4 to 8.
+  * Allow zero-copy decompression by allowing bytes-like input. 
+  * Fix DeprecationWarning due to invalid escape sequence and use
+    array.tobytes for Python 3.9.
+
+-------------------------------------------------------------------
 Thu Aug 20 18:37:32 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Disable AVX2 to avoid compile-time CPU-detection (boo#1100677)
