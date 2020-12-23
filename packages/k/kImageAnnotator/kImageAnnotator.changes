@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Dec  7 15:55:50 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.4.0
+  New:  
+  * Add Pixelate image area tool.
+  * Zoom in and out.
+  * Add interface for adding custom tab context menu actions.
+  * Add drop shadow to captured images.
+  * Add grayscale image effect.
+  * Add numeric pointer with arrow annotation item.
+  * Add text pointer annotation item.
+  * Add text pointer with arrow annotation item.
+  * Add option to automatically switching to select tool after
+    drawing item.
+  * Edit Text box with double click.
+  * Resize elements while keeping aspect ratio.
+   Changed:
+  * Draw point when clicking and releasing without moving cursor.
+  * Zoom out less than 100%.
+  * Change to select tool after adding new annotation item.
+  * Move current zoom text to left side config panel.
+  Fixed:
+  * Blur radius not updated when changing current items settings.
+  * Text tool opens many unix sockets.
+  * Text No Border and No Fill shows shadow beneath text.
+  * Item properties remain displayed after item is removed or
+    deselected.
+  * Changing text box through editing text doesn't update resize
+    handles.
+- Drop not longer needed patches:
+  * 0001-Make-link-against-X11-private.patch
+  * 0002-Make-kcolorpicker-link-private.patch
+- Add patch:
+  * 0001-Fix-compiler-warning.patch
+
+-------------------------------------------------------------------
 Sun Sep 13 09:04:04 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patches to mark private link target as such:
