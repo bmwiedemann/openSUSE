@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Dec 20 21:58:36 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.42.0:
+  + Element: Remove redundant null check
+  + Element::remove_attribute(): Fix a memory leak
+  + Document, DomParser: Improve XInclude processing:
+    - Document: Add process_xinclude() overload that takes a
+      fixup_base_uris parameter
+    - DomParser: Add set/get_xinclude_options() and add optional
+      XInclude processing to the parse methods
+  + Parser: Replace deprecated Glib::Threads::Mutex with std::mutex
+  + Build:
+    - Fix silent builds
+    - Require mm-common >= 0.9.10 (for Autotools build)
+    - Require mm-common >= 1.0.0 (for Meson build)
+    - Add NMake Makefiles. Remove Visual Studio 2010 projects
+    - Add support for building with Meson
+    - Use __declspec(dllexport) when building on Visual Studio
+      Stop using gendef.exe
+- Add meson BuildRequires and macros.
+- Replace gcc-c++ with generic c++_compiler BuildRequires.
+- Update URL to new home.
+
+-------------------------------------------------------------------
 Wed Feb 28 16:36:51 UTC 2018 - dimstar@opensuse.org
 
 - Modernize spec-file by calling spec-cleaner
