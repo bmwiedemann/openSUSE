@@ -1,7 +1,7 @@
 #
 # spec file for package gtkmm3
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,8 +19,9 @@
 # Update baselibs.conf when changing this
 %define so_ver -3_0-1
 %define _name gtkmm
+
 Name:           gtkmm3
-Version:        3.24.2
+Version:        3.24.3
 Release:        0
 Summary:        C++ Interface for GTK3 (a GUI Library for X)
 License:        LGPL-2.1-or-later
@@ -29,9 +30,11 @@ URL:            https://www.gtkmm.org/
 Source0:        https://download.gnome.org/sources/gtkmm/3.24/%{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
+BuildRequires:  c++_compiler
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  graphviz
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(atkmm-1.6) >= 2.24.2
@@ -85,23 +88,24 @@ inheritance, and a comprehensive set of widget classes that can be
 freely combined to quickly create complex user interfaces.
 
 %prep
-%setup -q -n %{_name}-%{version}
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
-%configure --disable-static
-%make_build
+%meson \
+	-Dbuild-documentation=true \
+	%{nil}
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
-%fdupes %{buildroot}
+%meson_install
+%fdupes %{buildroot}/%{_prefix}
 
 %post -n libgtkmm%{so_ver} -p /sbin/ldconfig
 %postun -n libgtkmm%{so_ver} -p /sbin/ldconfig
 
 %files -n libgtkmm%{so_ver}
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README
+%doc NEWS
 %{_libdir}/libgdkmm-3.0.so.*
 %{_libdir}/libgtkmm-3.0.so.*
 
@@ -115,6 +119,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gtkmm-3.0/
 
 %files doc
+%doc AUTHORS ChangeLog README
 %{_datadir}/devhelp/books/gtkmm-3.0/
 %{_datadir}/doc/gtkmm-3.0/
 # Avoid BuildRequires on devhelp

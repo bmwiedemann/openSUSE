@@ -372,4 +372,12 @@
     <comment></comment>
     <requestid>758110</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>10ad6247a75005c6c5e36e8c8345442e</srcmd5>
+    <version>3.24.3</version>
+    <time>1608729637</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 856990 from iznogood)</comment>
+    <requestid>857825</requestid>
+  </revision>
 </revisionlist>
