@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Dec 22 22:30:22 UTC 2020 - jimmy@boombatower.com
+
+- Update to version 3.64.4:
+  * Release v3.64.4
+  * Add "offline" commands test to Travis
+  * Fix error about a non-existent service "input" for some commands (including 'list')
+  * Release v3.64.3
+  * Slight improvements to git/SSH setup
+  * Fix archive/extract test by removing property dependency of getTreeId()
+  * Avoid checking SSH identities when not logged in
+  * Use "main" in Git service test
+  * Fix local builds, unable to depend on the Ssh service
+  * Refactor Git service to include SSH options automatically
+  * Fix property formatter returning empty
+  * Fix loading backups choices in backup:restore command
+  * Clean up some unused code
+  * Fix drush alias command for Enterprise projects
+  * Unused import
+
+-------------------------------------------------------------------
 Wed Dec 16 18:11:03 UTC 2020 - jimmy@boombatower.com
 
 - Update to version 3.64.2:
