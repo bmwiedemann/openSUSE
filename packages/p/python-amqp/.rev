@@ -319,4 +319,16 @@
 - Add vine-no-double-equals-deps.patch that loosens the vine requirement</comment>
     <requestid>847375</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>3595e76685cd2fd52200eac9bbcefed2</srcmd5>
+    <version>5.0.2</version>
+    <time>1608729554</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.2:
+  - Whhels are no longer universal.
+  - Added debug representation to Connection and *Transport classes
+  - Reintroduce ca_certs and ciphers parameters of SSLTransport._wrap_socket_sni()
+  - Fix infinite wait when using confirm_publish</comment>
+    <requestid>857118</requestid>
+  </revision>
 </revisionlist>

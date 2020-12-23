@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 20 09:46:14 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.2:
+  - Whhels are no longer universal.
+  - Added debug representation to Connection and *Transport classes
+  - Reintroduce ca_certs and ciphers parameters of SSLTransport._wrap_socket_sni()
+  - Fix infinite wait when using confirm_publish
+
+-------------------------------------------------------------------
 Tue Nov 10 03:55:27 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 5.0.1:
