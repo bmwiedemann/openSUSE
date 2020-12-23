@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 20 15:37:21 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.10
+  * Fix shift-out-of-bounds in htable_bits()
+
+-------------------------------------------------------------------
 Thu Nov 19 23:30:50 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.9

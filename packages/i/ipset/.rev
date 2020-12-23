@@ -331,4 +331,12 @@
     <comment>- Update to release 7.9</comment>
     <requestid>849521</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>1f0578fa9cfc8ae178bb52f15d3088a7</srcmd5>
+    <version>7.10</version>
+    <time>1608729681</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 7.10</comment>
+    <requestid>858098</requestid>
+  </revision>
 </revisionlist>
