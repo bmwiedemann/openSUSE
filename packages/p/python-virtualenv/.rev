@@ -504,4 +504,13 @@ ers toes by using a lock while creating the base images. By :user:`gaborbernat`.
     is used to create the virtual environment</comment>
     <requestid>853600</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>acb340573b6adccce3bc2720e7917e95</srcmd5>
+    <version>20.2.2</version>
+    <time>1608729522</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20.2.0:
+  - Bump pip to ``20.3.1``, setuptools to ``51.0.0`` and wheel to ``0.36.1``</comment>
+    <requestid>856965</requestid>
+  </revision>
 </revisionlist>

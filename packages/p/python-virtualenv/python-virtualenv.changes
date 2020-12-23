@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec 19 10:01:08 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 20.2.0:
+  - Bump pip to ``20.3.1``, setuptools to ``51.0.0`` and wheel to ``0.36.1``
+
+-------------------------------------------------------------------
 Sun Dec  6 23:22:34 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Require xonsh for testing of all Python 3 flavors in Tumbleweed
