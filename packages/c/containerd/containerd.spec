@@ -34,11 +34,11 @@
 %endif
 
 # MANUAL: Update the git_version.
-%define git_version 7ad184331fa3e55e52b890ea95e65ba581ae3429
-%define git_short   7ad184331fa3
+%define git_version ea765aba0d05254012b0b9e595e995c09186427f
+%define git_short   ea765aba0d05
 
 Name:           %{realname}%{name_suffix}
-Version:        1.2.13
+Version:        1.3.9
 Release:        0
 Summary:        Standalone OCI Container Daemon
 License:        Apache-2.0
@@ -127,7 +127,8 @@ make -C $PROJECT \
 	BUILDTAGS="$BUILDTAGS" \
 	VERSION="v%{version}" \
 	REVISION="%{git_version}"
-make man
+# TODO: Fix man-page generation.
+#make man
 
 cp $PROJECT/bin/ctr ctr-%{version}
 cp $PROJECT/bin/containerd containerd-%{version}
@@ -157,12 +158,13 @@ install -d -m755 %{buildroot}/%{_sysconfdir}/%{realname}
 echo "# See containerd-config.toml(5) for documentation." >%{buildroot}/%{_sysconfdir}/%{realname}/config.toml
 
 # Man pages.
-for file in man/*
-do
-	section="${file##*.}"
-	install -D -m644 "$file" "%{buildroot}/%{_mandir}/man$section/$(basename "$file")"
-done
-ln -s ctr.1 %{buildroot}/%{_mandir}/man1/%{realname}-ctr.1
+# TODO: Fix man page generation.
+#for file in man/*
+#do
+#	section="${file##*.}"
+#	install -D -m644 "$file" "%{buildroot}/%{_mandir}/man$section/$(basename "$file")"
+#done
+#ln -s ctr.1 %{buildroot}/%{_mandir}/man1/%{realname}-ctr.1
 
 %fdupes %{buildroot}
 
@@ -176,11 +178,13 @@ ln -s ctr.1 %{buildroot}/%{_mandir}/man1/%{realname}-ctr.1
 %{_sbindir}/docker-%{realname}
 %{_sbindir}/%{realname}-shim
 %{_sbindir}/docker-%{realname}-shim
-%{_mandir}/man*/%{realname}*
-%exclude %{_mandir}/man1/*ctr.1*
+# TODO: Fix man page generation.
+#%{_mandir}/man*/%{realname}*
+#%exclude %{_mandir}/man1/*ctr.1*
 
 %files ctr
 %{_sbindir}/%{realname}-ctr
-%{_mandir}/man1/*ctr.1*
+# TODO: Fix man page generation.
+#%{_mandir}/man1/*ctr.1*
 
 %changelog

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec 21 06:53:15 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to containerd v1.3.9, which is needed for Docker v19.03.14-ce and
+  fixes CVE-2020-15257. bsc#1178969 bsc#1180243
+
+-------------------------------------------------------------------
+Fri Sep 18 08:16:20 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to containerd v1.3.7, which is required for Docker 19.03.13-ce.
+  boo#1176708
+- Refresh patches:
+  * 0001-makefile-remove-emoji.patch
+
+-------------------------------------------------------------------
 Thu Jun 25 22:32:08 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Use Go 1.13 for build.
