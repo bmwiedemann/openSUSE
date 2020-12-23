@@ -3669,6 +3669,7 @@
     <package name="v4l-conf" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="v4l-utils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="v4l-utils-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="v4l2loopback-autoload" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="v4l2loopback-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="v4l2loopback-utils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="vacation" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -4763,7 +4764,7 @@
     <package name="libjson-c5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libjsonrpc-glib-1_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="libkColorPicker0_1_4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libkImageAnnotator0_3_2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libkImageAnnotator0_4_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkaccounts2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkasten-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libkdecorations2-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
