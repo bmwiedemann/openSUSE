@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 20 17:27:47 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use main URLs instead of redirects in master preferences
+- Remove useless %post and %postun
+
+-------------------------------------------------------------------
 Fri Dec  4 15:24:58 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
 
 - Added patches:

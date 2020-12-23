@@ -794,13 +794,7 @@ sed -i "s|@@MENUNAME@@|Chromium|g" %{buildroot}%{_mandir}/man1/chromium.1
 
 %fdupes %{buildroot}
 
-%post
-%icon_theme_cache_post
-%desktop_database_post
 
-%postun
-%icon_theme_cache_postun
-%desktop_database_postun
 
 %files
 %license LICENSE

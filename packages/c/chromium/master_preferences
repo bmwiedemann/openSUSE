@@ -23,9 +23,9 @@
      "show_on_all_tabs": true
   },
   "first_run_tabs": [
-     "https://www.opensuse.org/searchPage/",
-     "https://www.google.com/chrome/browser/welcome.html"
+     "https://search.opensuse.org/",
+     "https://www.google.com/chrome/"
   ],
-  "homepage": "https://www.opensuse.org/searchPage/",
+  "homepage": "https://search.opensuse.org/",
   "homepage_is_newtabpage": false
 }

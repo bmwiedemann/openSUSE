@@ -3378,4 +3378,12 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
   - CVE-2020-16042: Uninitialized Use in V8 (forwarded request 853182 from gmbr3)</comment>
     <requestid>853253</requestid>
   </revision>
+  <revision rev="278" vrev="2">
+    <srcmd5>976c1b0b342aea8a18cf0ce7687844c9</srcmd5>
+    <version>87.0.4280.88</version>
+    <time>1608729592</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>857747</requestid>
+  </revision>
 </revisionlist>
