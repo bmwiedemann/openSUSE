@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 19 09:57:04 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.25.1:
+  - Requests now treats `application/json` as `utf8` by default. Resolving
+  inconsistencies between `r.text` and `r.json` output. (#5673)
+
+-------------------------------------------------------------------
 Thu Nov 26 12:37:34 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.25.0:

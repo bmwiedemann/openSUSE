@@ -706,4 +706,14 @@
 - refreshed requests-no-hardcoded-version.patch</comment>
     <requestid>851065</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>69d00a7c71971a082c60c3f7756e96f4</srcmd5>
+    <version>2.25.1</version>
+    <time>1608729521</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.25.1:
+  - Requests now treats `application/json` as `utf8` by default. Resolving
+  inconsistencies between `r.text` and `r.json` output. (#5673)</comment>
+    <requestid>856964</requestid>
+  </revision>
 </revisionlist>

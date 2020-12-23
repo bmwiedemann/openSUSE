@@ -26,7 +26,7 @@
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-requests%{psuffix}
-Version:        2.25.0
+Version:        2.25.1
 Release:        0
 Summary:        Python HTTP Library
 License:        Apache-2.0
