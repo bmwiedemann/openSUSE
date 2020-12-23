@@ -26,41 +26,43 @@
 %bcond_with test
 %endif
 Name:           python-pbr%{psuffix}
-Version:        5.4.5
+Version:        5.5.1
 Release:        0
 Summary:        Python Build Reasonableness
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            http://pypi.python.org/pypi/pbr
+URL:            https://docs.openstack.org/pbr/latest/
 Source:         https://files.pythonhosted.org/packages/source/p/pbr/pbr-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM remove_mock.patch -- https://review.opendev.org/c/openstack/pbr/+/767972 remove explicit mock
+Patch0:         remove_mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Recommends:     git-core
-Recommends:     python-reno >= 2.5.0
 Suggests:       python-nose
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Obsoletes:      python-pbr-doc
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module fixtures >= 3.0.0}
-BuildRequires:  %{python_module mock >= 2.0}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyparsing >= 2.0.2}
-BuildRequires:  %{python_module reno >= 2.5.0}
-BuildRequires:  %{python_module six >= 1.10.0}
-BuildRequires:  %{python_module stestr >= 2.1.0}
-BuildRequires:  %{python_module testrepository >= 0.0.18}
-BuildRequires:  %{python_module testresources >= 2.0.0}
-BuildRequires:  %{python_module testscenarios >= 0.4}
-BuildRequires:  %{python_module testtools >= 2.2.0}
-BuildRequires:  %{python_module virtualenv >= 14.0.6}
-BuildRequires:  %{python_module wheel >= 0.32.0}
 BuildRequires:  git-core
 BuildRequires:  gpg2
+# Package originates from OpenStack and depends on other OpenStack packages for testing.
+# These are only available for the primary python3 interpreter in TW, but optional.
+# --> Only test in default python3 flavor.  gh#openSUSE/python-rpm-macros#66
+# Python 2 packages on Leap are too outdated to test, either (stestr, subunit).
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-devel
+BuildRequires:  python3-fixtures >= 3.0.0
+BuildRequires:  python3-six >= 1.12.0
+BuildRequires:  python3-stestr >= 2.1.0
+BuildRequires:  python3-testrepository >= 0.0.18
+BuildRequires:  python3-testresources >= 2.0.0
+BuildRequires:  python3-testscenarios >= 0.4
+BuildRequires:  python3-testtools >= 2.2.0
+BuildRequires:  python3-virtualenv >= 20.0.3
+BuildRequires:  python3-wheel >= 0.32.0
 %endif
 %python_subpackages
 
@@ -72,7 +74,7 @@ files and generate AUTHORS and ChangeLog file all from git
 information.
 
 %prep
-%setup -q -n pbr-%{version}
+%autosetup -p1 -n pbr-%{version}
 
 sed -i '/coverage/d;/hacking/d' test-requirements.txt
 
@@ -82,8 +84,7 @@ sed -i '/coverage/d;/hacking/d' test-requirements.txt
 %if %{with test}
 %check
 export OS_TEST_TIMEOUT=60
-# test_requirement_parsing - syntax based on old virtualenv
-%python_exec -m stestr run --black-regex 'test_requirement_parsing'
+python3 -m stestr run --suppress-attachments
 %endif
 
 %if !%{with test}
