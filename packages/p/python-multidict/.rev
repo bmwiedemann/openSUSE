@@ -125,4 +125,14 @@
     <comment></comment>
     <requestid>850140</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7dbe5152e87cb000fcee8217490a975a</srcmd5>
+    <version>5.1.0</version>
+    <time>1608729550</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.1.0:
+  - Support ``GenericAliases`` (``MultiDict[str]``) for Python 3.9+
+  `#553 &lt;https://github.com/aio-libs/multidict/issues/553&gt;`_</comment>
+    <requestid>857113</requestid>
+  </revision>
 </revisionlist>
