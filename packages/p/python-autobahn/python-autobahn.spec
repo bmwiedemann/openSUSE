@@ -61,25 +61,25 @@ BuildRequires:  %{python_module zope.interface >= 3.6.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs >= 19.2.0
-Requires:       python3-PyNaCl >= 1.0.1
-Requires:       python3-PyQRCode >= 1.1
-Requires:       python3-Twisted >= 20.3.0
-Requires:       python3-argon2-cffi >= 18.1.0
-Requires:       python3-cbor >= 1.0.0
-Requires:       python3-cbor2 >= 4.1.2
-Requires:       python3-cffi >= 1.11.5
-Requires:       python3-flatbuffers >= 1.10
-Requires:       python3-lz4 >= 0.7.0
-Requires:       python3-msgpack >= 0.6.1
-Requires:       python3-passlib >= 1.7.1
-Requires:       python3-py-ubjson >= 0.8.4
-Requires:       python3-pyOpenSSL >= 16.2.0
-Requires:       python3-pytrie >= 0.2
-Requires:       python3-service_identity >= 16.0.0
-Requires:       python3-txaio >= 18.8.1
-Requires:       python3-ujson >= 1.35
-Requires:       python3-wsaccel >= 0.6.2
-Requires:       python3-zope.interface >= 3.6.0
+Requires:       python-PyNaCl >= 1.0.1
+Requires:       python-PyQRCode >= 1.1
+Requires:       python-Twisted >= 20.3.0
+Requires:       python-argon2-cffi >= 18.1.0
+Requires:       python-cbor >= 1.0.0
+Requires:       python-cbor2 >= 4.1.2
+Requires:       python-cffi >= 1.11.5
+Requires:       python-flatbuffers >= 1.10
+Requires:       python-lz4 >= 0.7.0
+Requires:       python-msgpack >= 0.6.1
+Requires:       python-passlib >= 1.7.1
+Requires:       python-py-ubjson >= 0.8.4
+Requires:       python-pyOpenSSL >= 16.2.0
+Requires:       python-pytrie >= 0.2
+Requires:       python-service_identity >= 16.0.0
+Requires:       python-txaio >= 18.8.1
+Requires:       python-ujson >= 1.35
+Requires:       python-wsaccel >= 0.6.2
+Requires:       python-zope.interface >= 3.6.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %python_subpackages

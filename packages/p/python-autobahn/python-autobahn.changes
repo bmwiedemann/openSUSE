@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 21 21:50:35 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix flavored requires -- gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Mon Aug 31 10:06:55 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix installation path when NVX is not used (fix aarch64)
