@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec 18 09:50:52 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- update to v6.17.0
+  * Add simpler flag support to `StringComparison`.
+  * Fix deprecation warning about invalid escape sequence.
+- from v6.16.0
+  * Clarify the documentation of timezones when using `test_datetime`
+  * :doc:`api` has been re-arranged to make it easier to browse.
+  * The strict parameter to `Comparison` has been deprecated
+    in favour of partial.
+  * Add `SequenceComparison`, `Subset` and `Permutation` objects.
+  * Add `MappingComparison` objects.
+  * Officially support Python 3.9.
+
+-------------------------------------------------------------------
 Sun Nov 29 18:59:58 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - update to 6.15.0:
