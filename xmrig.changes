@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Tue Dec 22 10:32:48 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.7.0:
+  * v6.7.0
+  * Update CHANGELOG.md
+  * Update CHANGELOG.md
+  * Fixed broken Dero solo mining
+  * Fix GCC warning
+  * Another dataset AVX2 init speedup (+3.8% faster on Zen3)
+  * Added config option for AVX2 dataset init
+  * Auto-detect the fastest code for dataset init
+  * Fixed Windows scripts
+  * Dataset initialization with AVX2 (WIP)
+  * Huge pages not supported by macOS ARM.
+  * Fixed Xcode generator.
+  * Fix build on GCC 11
+  * Don't use team 'x64' for '64-bit'
+  * Reduce JIT memory for ARM.
+  * Fix alignment for Linux
+  * Fix: secure JIT and huge pages are incompatible on Windows
+  * Update hwloc for MSVC to 2.4.0.
+  * Update build scripts.
+  * Hardcode L2 cache size for Apple M1.
+  * Update user agent for macOS and fix compile warnings
+  * More correct CPU affinity support for macOS.
+  * Fixed JIT on macOS.
+  * Fixed macOS build.
+  * Alternative secure JIT for macOS.
+  * Fixed secure JIT on Linux and code cleanup.
+  * Remove duplicated code.
+  * Added generic secure JIT support for RandomX.
+  * More static analysis fixes
+  * Fixed errors found by static analysis
+  * Added virtual machine detection
+  * Removed libcpuid support.
+  * v6.7.0-dev
+  * Restore Hashrate class interface.
+  * Added GpuWorker class.
+  * Cleanup
+  * Move Profiler and more cleanup.
+  * Fixed Linux build.
+  * Cleanup
+  * Update Json.
+  * Update Signals and Console.
+  * Update HTTP
+  * Added Cvt class.
+  * Update net
+  * Update log.
+  * v6.6.3-dev
+- Drop xmrig user and switch service to run as root - its needed for
+  optimal performance anyways
+
+-------------------------------------------------------------------
 Mon Dec 14 08:56:14 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Build only on supported architectures

@@ -17,14 +17,13 @@
 
 
 Name:           xmrig
-Version:        6.6.2
+Version:        6.7.0
 Release:        0
 Summary:        XMR mining application
 License:        GPL-3.0-only
 URL:            https://xmrig.com/
 Source0:        %{name}-%{version}.tar.gz
 Source1:        xmrig.service
-Source2:        xmrig-user.conf
 #PATCH-FEATURE-SUSE disable-forced-donation.patch nopeinomicon@posteo.net -- Removes forced donation to developers
 Patch0:         disable-forced-donation.patch
 #PATCH-FIX-SUSE correct-opencl-file.patch nopeinomicon@posteo.net -- Sets correct location/name for libOpenCL.so.1 used for OpenCL mode
@@ -40,7 +39,6 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 Recommends:     libOpenCL1
 ExclusiveArch:  aarch64 %{ix86} x86_64
-%sysusers_requires
 %{?systemd_ordering}
 
 %description
@@ -57,7 +55,6 @@ Open source CPU/GPU XMR cryptocurrency miner.
 install -D -m 0755 build/xmrig %{buildroot}%{_bindir}/xmrig
 install -D -m 0644 src/config.json %{buildroot}%{_sysconfdir}/xmrig/xmrig.conf
 install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/xmrig@.service
-install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/xmrig-user.conf
 
 %files
 %doc README.md CHANGELOG.md scripts
@@ -66,6 +63,5 @@ install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/xmrig-user.conf
 %config %{_sysconfdir}/xmrig/xmrig.conf
 %{_bindir}/xmrig
 %{_unitdir}/xmrig@.service
-%{_sysusersdir}/%{name}-user.conf
 
 %changelog

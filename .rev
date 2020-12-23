@@ -21,4 +21,12 @@
 - Add recommended package libOpenCL1 for OpenCL support</comment>
     <requestid>855806</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>febe97682ccc4d7f87b30d276a095e95</srcmd5>
+    <version>6.7.0</version>
+    <time>1608729717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858217</requestid>
+  </revision>
 </revisionlist>
