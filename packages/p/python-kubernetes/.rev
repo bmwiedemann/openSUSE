@@ -127,4 +127,41 @@
     <comment></comment>
     <requestid>794512</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7a1010e11b4a64f3e17fb9edfbb9eb37</srcmd5>
+    <version>12.0.1</version>
+    <time>1608729563</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 12.0.1:
+ * Kubernetes API version 1.16.15
+  - Resolve regression in metadata.managedFields handling in update/patch requests submitted by older API clients ([#91748](https://github.com/kubernetes/k
+  ubernetes/pull/91748), [@apelisse](https://github.com/apelisse)) [SIG API Machinery and Testing]
+  - Fix bug where sending a status update completely wipes managedFields for some types. ([#90033](https://github.com/kubernetes/kubernetes/pull/90033), [@
+  apelisse](https://github.com/apelisse)) [SIG API Machinery and Testing]
+  - The `MutatingWebhookConfiguration` and `ValidatingWebhookConfiguration` APIs have been promoted to `admissionregistration.k8s.io/v1`:
+    - `failurePolicy` default changed from `Ignore` to `Fail` for v1
+    - `matchPolicy` default changed from `Exact` to `Equivalent` for v1
+    - `timeout` default changed from `30s` to `10s` for v1
+    - `sideEffects` default value is removed, and the field made required, and only `None` and `NoneOnDryRun` are permitted for v1
+    - `admissionReviewVersions` default value is removed and the field made required for v1 (supported versions for AdmissionReview are `v1` and `v1beta1`)
+    - The `name` field for specified webhooks must be unique for `MutatingWebhookConfiguration` and `ValidatingWebhookConfiguration` objects created via `a
+  dmissionregistration.k8s.io/v1`
+  - The `AdmissionReview` API sent to and received from admission webhooks has been promoted to `admission.k8s.io/v1`. Webhooks can specify a preference fo
+  r receiving `v1` AdmissionReview objects with `admissionReviewVersions: [&quot;v1&quot;,&quot;v1beta1&quot;]`, and must respond with an API object in the same `apiVersion` t
+  hey are sent. When webhooks use `admission.k8s.io/v1`, the following additional validation is performed on their responses:
+    - `response.patch` and `response.patchType` are not permitted from validating admission webhooks
+    - `apiVersion: &quot;admission.k8s.io/v1&quot;` is required
+    - `kind: &quot;AdmissionReview&quot;` is required
+    - `response.uid: &quot;&lt;value of request.uid&gt;&quot;` is required
+    - `response.patchType: &quot;JSONPatch&quot;` is required (if `response.patch` is set) ([#80231](https://github.com/kubernetes/kubernetes/pull/80231), [@liggitt]
+  (https://github.com/liggitt))
+  - The `CustomResourceDefinition` API type is promoted to `apiextensions.k8s.io/v1` with the following changes:
+    - Use of the new `default` feature in validation schemas is limited to v1
+    - `spec.scope` is no longer defaulted to `Namespaced` and must be explicitly specified
+    - `spec.version` is removed in v1; use `spec.versions` instead
+    - `spec.validation` is removed in v1; use `spec.versions[*].schema` instead
+    - `spec.subresources` is removed in v1; use `spec.versions[*].subresources` instead
+    - `spec.additionalPrinterColumns` is removed in v1; use `spec.versions[*].additionalPrinterColumns` instead</comment>
+    <requestid>857126</requestid>
+  </revision>
 </revisionlist>

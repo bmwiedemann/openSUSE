@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-kubernetes
-Version:        11.0.0
+Version:        12.0.1
 Release:        0
 Summary:        Kubernetes python client
 License:        Apache-2.0
