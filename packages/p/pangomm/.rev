@@ -317,4 +317,42 @@
     <comment>Scripted push of project GNOME:Next (forwarded request 795098 from iznogood)</comment>
     <requestid>795243</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>e13e2369ee39e92cd4e4b2f39baaa77f</srcmd5>
+    <version>2.48.0</version>
+    <time>1608740525</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.48.0:
+  + FontFamily, FontMap: Implement the Gio::ListModel interface
+    CairoFontMap: Add get_default()
+  + Attribute: Add Overline and ShowFlags enums and some create*()
+    methods Renderer: Add vfuncs
+  + Font, FontFace, FontFamily, FontMetrics: Add new methods
+  + LayoutRun: Rename to GlyphItem
+  + LayoutIter: Fix get_run() and get_line()
+  + GlyphString, Item: Wrap pango_shape_with_flags()
+  + Layout: Add set/get_line_spacing()
+  + Build:
+    - Depend on giomm (not just glibmm)
+    - Use __declspec(dllexport) when building with Visual Studio
+    - Meson build: Avoid some recompilations
+    - Meson build: Better error message if trying to build with
+      maintainer-mode=false when true is necessary
+    - Meson build: Set default value of the 'warnings' option to
+      'min'
+    - Improve NMake support
+    - Improve Visual Studio support
+    - docs/reference/: Update for Doxygen &amp;gt;= 1.8.16
+    - Meson build: Fix versioning on macOS
+    - Change the ABI to pangomm-2.48
+- Add meson BuildRequires and macros following upstreams port.
+- Bump base_ver and libname (and in baselibs.conf) following
+  upstream changes.
+- Add doxygen, graphviz and xsltproc BuildRequires, needed to build
+  documentation now.
+- Replace pkgconfig(glibmm-2.66) with pkgconfig(giomm-2.68) and
+  pkgconfig(glibmm-2.68) BuildRequires following upstream changes.
+- Drop libtool and mm-common BuildRequires, no longer needed. (forwarded request 856993 from iznogood)</comment>
+    <requestid>857826</requestid>
+  </revision>
 </revisionlist>

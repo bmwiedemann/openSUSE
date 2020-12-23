@@ -16,27 +16,30 @@
 #
 
 
-%define base_ver 2.44
+%define base_ver 2.48
 # Update baselibs.conf when changing the version here
-%define libname  lib%{name}-2_44-1
+%define libname  lib%{name}-2_48-1
 
 Name:           pangomm
-Version:        2.43.2
+Version:        2.48.0
 Release:        0
 Summary:        C++ interface for pango
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later AND GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://www.gtkmm.org
-Source0:        https://download.gnome.org/sources/%{name}/2.43/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/%{name}/%{base_ver}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  c++_compiler
+BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  libtool
-BuildRequires:  mm-common
+BuildRequires:  graphviz
+BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(cairomm-1.16) >= 1.2.2
-BuildRequires:  pkgconfig(glibmm-2.66)
+BuildRequires:  pkgconfig(giomm-2.68)
+BuildRequires:  pkgconfig(glibmm-2.68)
 BuildRequires:  pkgconfig(pangocairo) >= 1.31.0
 Recommends:     %{name}-doc = %{version}
 
@@ -73,15 +76,13 @@ This package contains the developer documentation.
 %autosetup -p1
 
 %build
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-	--disable-static \
+%meson \
+	-Dbuild-documentation=true \
 	%{nil}
-%make_build
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 %fdupes %{buildroot}/%{_prefix}
 
 %post -n %{libname} -p /sbin/ldconfig
