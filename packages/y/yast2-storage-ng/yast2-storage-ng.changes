@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 22 13:09:47 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Partitioner: do not allow to modify the path of Btrfs subvolumes
+  (bsc#1180182)
+- 4.3.35
+
+-------------------------------------------------------------------
+Mon Dec 21 12:29:43 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- Storage: pre-generates an UUID for every swap device the
+  installer plans to create (related to jsc#SLE-17081, bsc#1169874,
+  and bsc#1177926).
+- 4.3.34
+
+-------------------------------------------------------------------
 Fri Dec 18 12:35:39 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - AutoYaST: setting the 'quotas' element to 'false' disables
