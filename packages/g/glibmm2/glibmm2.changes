@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Dec 18 17:36:43 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.68.0:
+  + Glib:
+    - PropertyProxyConnectionNode::connect_changed(): Fix using
+      without property name
+    - Remove BalancedTree
+  + Gio:
+    - ListStore: Accept interfaces
+    - MenuModel: Make MenuAttribute and MenuLink enum class
+    - Add TlsClientConnectionImpl and TlsServerConnectionImpl
+    - SocketClient::signal_event(): Fix wrapping of 'connection'
+      parameter
+  + gmmproc:
+    - Add optional decl_prefix parameter to
+      _WRAP_GERROR and _WRAP_ENUM. Used for adding GLIBMM_API or
+      similar for MS Visual C++
+    - Allow decorating comparison operators (for Visual Studio
+      builds)
+    - _CLASS_BOXEDTYPE, _CLASS_OPAQUE_COPYABLE: Fix move assignment
+    - Decorate private generated classes with __declspec when
+      building with Visual Studio
+    - generate_wrap_init.pl.in:
+      Use g_type_ensure(SomeClass::get_type()) to ensure that
+      get_type() is called
+  + Build:
+    - Use __declspec(dllexport) consistently when building glibmm
+      with Visual Studio
+    - Meson build: Set default value of the 'warnings' option to
+      'min'
+    - Improve NMake support
+    - Improve Visual Studio support
+    - docs/reference/: Update for Doxygen >= 1.8.16
+    - Meson build: Fix versioning on macOS
+    - Meson build: Fix detection of macOS
+    - Change the ABI to glibmm-2.68
+  + Documentation: Meson build: Add missing Glib::Value and Variant
+    documentation
+- Bump so_ver, base_ver and in baselibs following upstream changes.
+- Add meson BuildRequires and macros following upstreams port to
+  meson build system.
+- No longer package documentation, not built by default on meson.
+
+-------------------------------------------------------------------
 Sun Mar 22 17:55:48 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.65.3:

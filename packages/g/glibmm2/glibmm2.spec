@@ -17,24 +17,25 @@
 
 
 # Update baselibs.conf when changing this
-%define so_ver -2_66-1
+%define so_ver -2_68-1
 # Define a baseversion to ease updates
-%define base_ver 2.66
+%define base_ver 2.68
 # Define upstream name
 %define _name glibmm
 
 Name:           glibmm2
-Version:        2.65.3
+Version:        2.68.0
 Release:        0
 Summary:        C++ Interface for Glib
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.gtkmm.org/
-Source0:        https://download.gnome.org/sources/glibmm/2.65/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/glibmm/%{base_ver}/%{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
+BuildRequires:  c++_compiler
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.61.2
@@ -79,17 +80,15 @@ library Glib. It provides non-UI API that is not available in standard
 C++ and makes it possible for gtkmm to wrap GObject-based APIs.
 
 %prep
-%setup -q -n %{_name}-%{version}
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
-%configure \
-	--disable-static \
+%meson \
 	%{nil}
-%make_build
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 %fdupes %{buildroot}/%{_prefix}
 
 %post -n libglibmm%{so_ver} -p /sbin/ldconfig
@@ -112,10 +111,5 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_includedir}/*
 %{_libdir}/glibmm-%{base_ver}
 %{_libdir}/giomm-%{base_ver}
-%{_datadir}/devhelp/books/%{_name}-%{base_ver}
-%{_datadir}/doc/%{_name}-%{base_ver}
-# Avoid BuildRequires on devhelp
-%dir %{_datadir}/devhelp
-%dir %{_datadir}/devhelp/books
 
 %changelog
