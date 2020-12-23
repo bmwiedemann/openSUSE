@@ -59,6 +59,9 @@ BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libfakekey)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xtst)
+Requires:       kirigami2
+Requires:       libqt5-qtquickcontrols2
+Requires:       plasma-framework-components
 Requires:       sshfs
 Recommends:     %{name}-lang = %{version}
 Recommends:     kpeoplevcard
