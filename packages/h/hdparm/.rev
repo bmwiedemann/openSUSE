@@ -546,4 +546,19 @@
     <comment></comment>
     <requestid>851933</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>186dfd55a5f420d493014204bf4ad4ce</srcmd5>
+    <version>9.60</version>
+    <time>1608729669</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 9.60:
+  - support for ioSafe Solo with jMicron bridge, courtesy Matthias-Christian Ott.
+  - decode more bits from id[69], courtesy Adrián Kálazi.
+  - allow passing of custom LDFLAGS from the environment.
+  - add new &quot;static&quot; target.
+  - fix --dco-identify max sectors, courtesy of Paul Sultana.
+  - get rid of leftover &quot;unknown&quot; variables from identify.c
+  - fixed return values from get_log_page_data().</comment>
+    <requestid>857921</requestid>
+  </revision>
 </revisionlist>

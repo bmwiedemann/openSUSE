@@ -17,13 +17,13 @@
 
 
 Name:           hdparm
-Version:        9.58
+Version:        9.60
 Release:        0
 Summary:        A Program to get and set hard disk parameters
 License:        SUSE-Permissive
 Group:          Hardware/Other
-URL:            http://sourceforge.net/projects/hdparm/
-Source:         http://downloads.sf.net/hdparm/%{name}-%{version}.tar.gz
+URL:            https://sourceforge.net/projects/hdparm/
+Source:         https://downloads.sourceforge.net/project/hdparm/hdparm/hdparm-%{version}.tar.gz
 Patch1:         hdparm-nostrip.patch
 Patch2:         hdparm-wiper-warn.patch
 Patch3:         hdparm-leak-fix.patch
@@ -45,7 +45,7 @@ driver and IDE drives.
 %patch4 -p1
 
 %build
-make %{?_smp_mflags} CFLAGS="%{optflags} -Wall -Wstrict-prototypes" LDFLAGS= CC="gcc"
+%make_build CFLAGS="%{optflags} -Wall -Wstrict-prototypes" LDFLAGS= CC="gcc"
 cp -p wiper/README.txt README.wiper
 
 %install

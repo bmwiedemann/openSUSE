@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec 20 12:46:21 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.60:
+  - support for ioSafe Solo with jMicron bridge, courtesy Matthias-Christian Ott.
+  - decode more bits from id[69], courtesy Adrián Kálazi.
+  - allow passing of custom LDFLAGS from the environment.
+  - add new "static" target.
+  - fix --dco-identify max sectors, courtesy of Paul Sultana.
+  - get rid of leftover "unknown" variables from identify.c
+  - fixed return values from get_log_page_data().
+
+-------------------------------------------------------------------
 Thu Nov 26 09:41:02 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)

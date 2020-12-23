@@ -1,8 +1,8 @@
-Index: hdparm-9.28/wiper/wiper.sh
+Index: hdparm-9.60/wiper/wiper.sh
 ===================================================================
---- hdparm-9.28.orig/wiper/wiper.sh
-+++ hdparm-9.28/wiper/wiper.sh
-@@ -41,6 +41,9 @@ function usage_error(){
+--- hdparm-9.60.orig/wiper/wiper.sh
++++ hdparm-9.60/wiper/wiper.sh
+@@ -48,6 +48,9 @@ function usage_error(){
  
  echo
  echo "${0##*/}: Linux SATA SSD TRIM utility, version $VERSION, by Mark Lord."
