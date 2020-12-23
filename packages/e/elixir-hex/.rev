@@ -7,4 +7,12 @@
     <comment>New dependency for rabbitmq-server update SR 656762</comment>
     <requestid>656779</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9c6d1ffd266e79ebb21ddd921b287355</srcmd5>
+    <version>0.20.5</version>
+    <time>1608729726</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858308</requestid>
+  </revision>
 </revisionlist>

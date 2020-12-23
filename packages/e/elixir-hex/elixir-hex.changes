@@ -1,4 +1,202 @@
 -------------------------------------------------------------------
+Tue Dec 15 13:12:05 UTC 2020 - jbreuer@suse.de
+
+- Update to version v0.20.5:
+  * Release v0.20.5
+  * Missing outer checksum is not a mismatch
+  * Handle missing outer checksum when formatting lock
+  * Warn if fetching registry without outer checksum
+  * Optionally encode outer checksum in manifest
+  * Bump registry cache version
+  * Add timestamps to registry cache
+  * Bump to v0.20.5-dev
+  * Release v0.20.4
+  * Add Elixir 1.10.0 to CI (#746)
+  * Vendor hex_core v0.6.8 (#745)
+  * Bump to v0.20.4-dev
+  * Release v0.20.3
+  * Handle old manifest files (#743)
+  * Format
+  * Fix deprecated warning
+  * Fetch latest (#742)
+  * Remove Travis CI
+  * Uncomment upload
+  * Bump to v0.20.3-dev
+  * Release v0.20.2
+  * Format
+  * Add new Elixir versions to release script
+  * Fix deprecation warning
+  * Fix compatibility with OTP 17 and 18
+  * Vendor hex_core v0.6.6
+  * Explain red colors in hex.outdated
+  * Add GitHub CI
+  * Add logging to Hex.Parallel
+  * Fix tests on Elixir 1.10
+  * Fix ANSI encoding in test
+  * Fix Hex.debug?() on old Elixirs
+  * Change publish docs message on non-default api_url (#730)
+  * Change publish package message on non-default api_url (#729)
+  * Add `cacerts_path` config option (#727)
+  * Raises when the metadata files list is empty (#728)
+  * Fix reproducible checksum (#726)
+  * Include :files meta in tests
+  * Add outer checksum (#708)
+  * mix format
+  * Fix HTTP timeout config
+  * Add --output option to mix hex.package fetch (#703)
+  * Sets ansi_enabled? based on setting in IO for non-test envs (#712)
+  * Use Elixir 1.9 and OTP 22 on CI
+  * Backtrack parents first
+  * Backtrack yourself before parents
+  * Fix code block in docs
+  * Update RELEASE.md
+  * Bump to v0.20.2-dev
+  * Release v0.20.1
+  * Do not print transfer message when not transferring
+  * Revert "Do not print ownership transfer message when not transferring"
+  * Do not print ownership transfer message when not transferring
+  * Update lib/mix/tasks/hex.package.ex
+  * Fix release.sh
+  * Bump to v0.20.1-dev
+  * Release v0.20.0
+  * Update v0.20 changelog (#700)
+  * Verify fetched tarballs (#701)
+  * Add --organization option to `mix hex.package` (#699)
+  * Add `mix hex.package diff VERSION1..VERSION2` (#698)
+  * Print error message on invalid config (#685)
+  * Add mix hex.owner transfer task
+  * Fix hex.config to use public keys instead of internal
+  * Fix Hex.State to use config spec
+  * Map.size/1 => map_size/1
+  * Hex outdated app for umbrella (#689)
+  * Supersimple/allow hex api config (#663)
+  * Documents the maximum package and documentation size (#688)
+  * Test on Elixir 1.8.1
+  * Remove broken error handling
+  * Add mix hex.package task  (#684)
+  * Remove the tarball on errors (#681)
+  * Show subtasks in mix hex task (#679)
+  * Bring back listing Hex tasks in `mix hex` (#666)
+  * show a message when dependencies may contain breaking changes (#677)
+  * Add saved to location after build (#673)
+  * Fix old-style mix.lock support (#668)
+  * Suggest `runtime: false` for ex_doc dependency [ci skip] (#671)
+  * Improve revert docs (#670)
+  * Add per-project Hex configuration (#665)
+  * Adds support for mirror_url config (#658)
+  * Bump to v0.19.1-dev
+  * Release v0.19.0
+  * Update changelog (#655)
+  * Fix repo name check for organizations
+  * Update to hex_core v0.4.0 (#651)
+  * Format
+  * Adds organization to config when passing org flag into hex.info (#654)
+  * Format code
+  * Fix resolver backtrack performance
+  * Filter pre-releases before merging backtracked versions
+  * Clarify cache message
+  * Remove honor_cipher_order
+  * Fix registry record deprecation error message (#652)
+  * Error when fetching outdated registry record (#650)
+  * Fix fetching :repos_key, closes #649
+  * Print publisher in `mix hex.info PACKAGE VERSION` (#647)
+  * Warn when fetching outdated registry record (#648)
+  * Verify authenticity of signed payload (#646)
+  * Make it explicit wer're running hex_core v0.2.1
+  * Update `mix hex.config` moduledoc (#645)
+  * Changes hex.config to output all config settings and where they are derived from (#644)
+  * Store source of value in Hex.State (#643)
+  * Update hex_core
+  * Error with a descriptive msg when building a package with git deps (#636)
+  * Don't follow symlinks when adding files to tarballs (#634)
+  * Update hex_core
+  * Refactor create docs function to use  :mix_hex_tarball.create_docs (#620)
+  * Bump to 0.18.3-dev
+  * Release v0.18.2 (#626)
+  * Add recommendation when retiring and require --message flag (#623)
+  * Consider :organization in build deps
+  * Update hex.pm link on `mix hex`
+  * Remove `mix run scripts/task_docs.exs` from release instructions
+  * Ignore /doc
+  * Most of Hex is private API (#625)
+  * Format code
+  * Remove "v" prefix version cleaning
+  * System.cwd!/0 => File.cwd!/0 (#622)
+  * Check :repo for dep equality in SCM
+  * Add c_src and Makefile to default package files
+  * Validate hex config keys (#618)
+  * Color upgrade/downgrade messages (#616)
+  * Changes the email or username arg to a single string
+  * Updates hex.owner documentation
+  * Update hex_core (#609)
+  * Mention `mix hex.build --unpack` option (#610)
+  * Adds dry run option to publish tasks (#608)
+  * Hexpm.Repo -> Hexpm.RepoBase
+  * Update links in register message (#602)
+  * Fix issue saving write key when reseting local password (#603)
+  * Fix deps warnings (#600)
+  * Use hexdocs organization URLs
+  * Fix hex.outdated deps check
+  * Fix top_level_deps for older Elixir versions
+  * Vendor Mix.Project.apps_paths for older Elixir versions
+  * Update Elixir and OTP on travis
+  * Do not list tasks in mix hex task
+  * Transfer copyright to Six Colors AB
+  * Use less private Mix API
+  * Format with () for nullary function calls
+  * Use https on travis
+  * Update hex_erl
+  * Always filter and sort solutions
+  * Sort SSL ciphers
+  * Rename new => publish
+  * Raise errors when top-level file in package matches semver pattern (#593)
+  * Bump to v0.18.2-dev
+  * Release v0.18.1
+  * Fix organization url normalization
+  * Run hex.install task without starting hex
+  * Bump to v0.18.1-dev
+  * Release v0.18.0
+  * Add v0.18 changelog (#585)
+  * Use v1.6.6 instead of master on travis
+  * Change hex.publish --no-confirm to --yes
+  * Improve interface for hex.user and hex.organization key tasks
+  * Add organization owned keys
+  * Deprecate maintainers field (#582)
+  * Bump to v0.18.0-dev
+  * Update release instructions
+  * Bump to v0.17.9-dev
+  * Use - instead of : in paths on Windows (#583)
+  * Remove usages of Collectable with a non-empty list collectable (#578)
+  * Reverting missing docs is not an error
+  * Clarify that package can be removed by hex.publish --revert
+  * Improve formatting of multi-line validation errors
+  * Fix headings in hex.user docs
+  * Format credo config
+  * No need to parse args in hex.install
+  * Try all backtrack branches and select best solution (#572)
+  * Raises an error if the arg passed is not a version (#575)
+  * Add ownership level options to hex.owner (#569)
+  * Do not rely on 204 responses
+  * Fix docs code indentation
+  * Remove unneccesary API.User.test/2
+  * Split API key into a write and read pair (#560)
+  * Adds non-zero exit code when one or more dependencies is outdated (#563)
+  * Add single key for all organizations (#559)
+  * Rename vendored_hex_* to mix_hex_* (#558)
+  * Update hex.pm task docs on release
+  * Add HEX_RESOLVE_VERBOSE mode for always printing backtracks
+  * Clarify difference between encrypted and unencrypted API keys
+  * Remove repo from deps map
+  * Add support for unencrypted API keys (#553)
+  * Remove unused offline? field
+  * Use maps for tracking dependencies
+  * Remove regex usage (#556)
+  * Change confusing negation in resolver
+  * Update release instructions
+  * Documents the --no-confirm flag (#555)
+  * Bump to v0.17.8-dev
+
+-------------------------------------------------------------------
 Wed Nov 14 22:29:09 UTC 2018 - g.santomaggio@gmail.com
 
 - Update to version v0.18.2:
