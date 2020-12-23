@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Dec 20 09:24:09 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.1:
+  - When using ``--source`` on a large source tree, v5.x was slower than previous
+    versions.  This performance regression is now fixed, closing `issue 1037`_.
+  - Mysterious SQLite errors can happen on PyPy, as reported in `issue 1010`_. An
+    immediate retry seems to fix the problem, although it is an unsatisfying
+    solution.
+  - The HTML report now saves the sort order in a more widely supported way,
+    fixing `issue 986`_.  Thanks, Sebastián Ramírez (`pull request 1066`_).
+  - The HTML report pages now have a :ref:`Sleepy Snake <sleepy>` favicon.
+  - Wheels are now provided for manylinux2010, and for PyPy3 (pp36 and pp37).
+
+-------------------------------------------------------------------
 Thu Dec 10 18:42:00 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Fix alternatives

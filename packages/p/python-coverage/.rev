@@ -387,4 +387,21 @@ __init__.py is the only file with a definitive license statement (BSD-2-Clause).
 </comment>
     <requestid>854657</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>0070359a64d6c5230623f3399f2422de</srcmd5>
+    <version>5.3.1</version>
+    <time>1608729544</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.3.1:
+  - When using ``--source`` on a large source tree, v5.x was slower than previous
+    versions.  This performance regression is now fixed, closing `issue 1037`_.
+  - Mysterious SQLite errors can happen on PyPy, as reported in `issue 1010`_. An
+    immediate retry seems to fix the problem, although it is an unsatisfying
+    solution.
+  - The HTML report now saves the sort order in a more widely supported way,
+    fixing `issue 986`_.  Thanks, Sebastián Ramírez (`pull request 1066`_).
+  - The HTML report pages now have a :ref:`Sleepy Snake &lt;sleepy&gt;` favicon.
+  - Wheels are now provided for manylinux2010, and for PyPy3 (pp36 and pp37).</comment>
+    <requestid>857108</requestid>
+  </revision>
 </revisionlist>
