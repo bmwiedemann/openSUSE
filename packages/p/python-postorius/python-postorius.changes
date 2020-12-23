@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Dec 20 14:35:33 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Improve documentation (README.SUSE.md)
+
+-------------------------------------------------------------------
 Sat Dec 12 19:19:35 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fix chdir path in uwsgi config

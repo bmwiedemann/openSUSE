@@ -13,7 +13,7 @@ is included by the default configuration in
 
    `/etc/postorius/settings_local.py`:
 
-      SECRET_KEY = 'something-very-secret'
+       SECRET_KEY = 'something-very-secret'
 
 2. Make sure to disable debugging when running in production:
 
@@ -21,7 +21,16 @@ is included by the default configuration in
 
        DEBUG = False
 
-3. To be able to configure a running mailman instance configuration options for
+3. The valid hosts or domain names for the application need to be defined:
+
+   `/etc/postorius/settings_local.py`:
+
+        ALLOWED_HOSTS = [
+            'localhost',
+            'lists.example.com'
+        ]
+
+4. To be able to configure a running mailman instance configuration options for
    its REST API have to be added to postorius' configuration.
 
    `/etc/postorius/settings_local.py`
@@ -31,7 +40,7 @@ is included by the default configuration in
        MAILMAN_REST_API_PASS = 'rest_admin_password'
 
 
-4. Add a valid email configuration
+5. Add a valid email configuration
 
    `/etc/postorius/settings_local.py`:
 
@@ -41,17 +50,9 @@ is included by the default configuration in
         EMAIL_HOST_USER = <username>
         EMAIL_HOST_PASSWORD = <password>
 
-5. The valid hosts or domain names for the application need to be defined:
+7. Optional: Configure postgres or another database (default: sqlite3)
 
-   `/srv/www/webapps/mailman/postorius/settings_local.py`:
-
-        ALLOWED_HOSTS = [
-            'localhost',
-            'lists.example.com'
-        ]
-
-6. Setup the database (optionally configure e.g. postgres first,
-   default: sqlite3)
+6. Create and setup the database
 
     postorius-manage migrate
 
@@ -63,6 +64,7 @@ is included by the default configuration in
 
 To configure postorius with Apache and uwsgi, just add the follwing lines to a vhost:
 
+    ProxyPass /.well-known/acme-challenge !
     ProxyPassMatch ^/static !
     ProxyPass / unix:/run/uwsgi/uwsgi-postorius.sock|uwsgi://localhost/
     <Directory /srv/www/webapps/mailman/postorius>
