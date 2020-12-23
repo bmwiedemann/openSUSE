@@ -170,7 +170,7 @@ BuildRequires:  liburing-devel
 %else
 %define	build_make_smp_mflags %{?jobs:-j%jobs}
 %endif
-Version:        4.13.2+git.176.0a5e55b510c
+Version:        4.13.3+git.181.fc4672a5b81
 Release:        0
 Url:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}

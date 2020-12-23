@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Dec 16 11:30:25 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 4.13.3
+  + libcli: smb2: Never print length if smb2_signing_key_valid() fails for
+    crypto blob; (bso#14210);
+  + s3: modules: gluster. Fix the error I made in preventing talloc leaks
+    from a function; (bso#14486);
+  + s3: smbd: Don't overwrite contents of fsp->aio_requests[0] with NULL
+    via TALLOC_FREE(); (bso#14515);
+  + s3: spoolss: Make parameters in call to user_ok_token() match all other
+    uses; (bso#14568);
+  + s3: smbd: Quiet log messages from usershares for an unknown share;
+    (bso#14590);
+  + samba process does not honor max log size; (bso#14248);
+  + vfs_zfsacl: Add missing inherited flag on hidden "magic" everyone@ ACE;
+    (bso#14587);
+  + s3-libads: Pass timeout to open_socket_out in ms; (bso#13124);
+  + s3-vfs_glusterfs: Always disable write-behind translator; (bso#14486);
+  + smbclient: Fix recursive mget; (bso#14517);
+  + clitar: Use do_list()'s recursion in clitar.c; (bso#14581);
+  + manpages/vfs_glusterfs: Mention silent skipping of write-behind
+    translator; (bso#14486);
+  + vfs_shadow_copy2: Preserve all open flags assuming ROFS; (bso#14573);
+  + interface: Fix if_index is not parsed correctly; (bso#14514);
+
+-------------------------------------------------------------------
 Mon Nov 16 09:30:52 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 4.13.2
