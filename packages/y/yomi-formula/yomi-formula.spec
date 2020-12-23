@@ -18,18 +18,20 @@
 
 %define fname yomi
 %define fdir  %{_datadir}/salt-formulas
-
 Name:           yomi-formula
 Version:        0.0.1+git.1604593202.a2c22bf
 Release:        0
 Summary:        Yomi - Yet one more installer
 License:        Apache-2.0
 Group:          System/Packages
-Requires:       python3-base
-BuildArch:      noarch
 URL:            https://github.com/openSUSE/yomi
 Source0:        %{fname}-%{version}.tar.xz
-
+# Workaround for this OBS error:
+#     conflict for providers of libudev1 needed by python3-pyudev
+#             (provider libudev1 is in conflict with libudev-mini1)
+BuildRequires:  libudev1
+Requires:       python3-base
+BuildArch:      noarch
 # On SLE/Leap 15-SP1 and TW requires the new salt-formula
 # configuration location.
 %if ! (0%{?sle_version:1} && 0%{?sle_version} < 150100)
@@ -79,11 +81,11 @@ cat <<EOF > %{buildroot}%{_datadir}/%{fname}/pillar.conf
 pillar_roots:
   base:
     - /srv/pillar
-    - /usr/share/yomi/pillar
+    - %{_datadir}/yomi/pillar
 EOF
 
 # Configuration and UUIDs for autosign
-echo "autosign_grains_dir: /usr/share/yomi/autosign_grains" > %{buildroot}%{_datadir}/%{fname}/autosign.conf
+echo "autosign_grains_dir: %{_datadir}/yomi/autosign_grains" > %{buildroot}%{_datadir}/%{fname}/autosign.conf
 mkdir -p %{buildroot}%{_datadir}/%{fname}/autosign_grains/
 for i in $(seq 0 9); do
     echo $(uuidgen --md5 --namespace @dns --name http://opensuse.org/$i)
@@ -95,15 +97,15 @@ rest_cherrypy:
   port: 8000
   debug: no
   disable_ssl: yes
-  # ssl_crt: /etc/ssl/server.crt
-  # ssl_key: /etc/ssl/server.key
+  # ssl_crt: %{_sysconfdir}/ssl/server.crt
+  # ssl_key: %{_sysconfdir}/ssl/server.key
 EOF
 
 # Eauth configuration and example user-list.txt
 cat <<EOF > %{buildroot}%{_datadir}/%{fname}/eauth.conf
 external_auth:
   file:
-    ^filename: /usr/share/yomi/user-list.txt
+    ^filename: %{_datadir}/yomi/user-list.txt
     salt:
       - .*
       - '@wheel'
@@ -117,9 +119,9 @@ cp -a docs/examples/* %{buildroot}%{_datadir}/%{fname}
 cat <<EOF > %{buildroot}%{_datadir}/%{fname}/kubic-file.conf
 file_roots:
   base:
-    - /usr/share/yomi/kubic
+    - %{_datadir}/yomi/kubic
     - %{_prefix}/lib/%{fname}
-    - /usr/share/salt-formulas/states
+    - %{_datadir}/salt-formulas/states
     - /srv/salt
 EOF
 
@@ -131,8 +133,8 @@ for form in metadata/*form*.yml; do
     cp -a $form %{buildroot}%{fdir}/metadata/$form_name/form.yml
     cp metadata/metadata.yml %{buildroot}%{fdir}/metadata/$form_name/
     if [ ! -f %{buildroot}%{fdir}/states/$form_name/init.sls ]; then
-        mkdir -p %{buildroot}%{fdir}/states/$form_name/
-        touch %{buildroot}%{fdir}/states/$form_name/init.sls
+	mkdir -p %{buildroot}%{fdir}/states/$form_name/
+	touch %{buildroot}%{fdir}/states/$form_name/init.sls
     fi
     # Add the 'after' section to ordering the forms
     sed -i "s/#AFTER/$after/g" %{buildroot}%{fdir}/metadata/$form_name/metadata.yml
@@ -151,7 +153,6 @@ file_roots:
 EOF
 
 %files
-%defattr(-,root,root,-)
 %license LICENSE
 %doc README.md docs/*
 %dir %attr(0755, root, salt) %{fdir}/

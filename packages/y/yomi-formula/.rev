@@ -214,4 +214,13 @@
   * partitioned: fix parted call and tests</comment>
     <requestid>847445</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>e204cd9ab8bc7dd1181fe2a7ad3c196e</srcmd5>
+    <version>0.0.1+git.1604593202.a2c22bf</version>
+    <time>1608729644</time>
+    <user>dimstar_suse</user>
+    <comment>- Run spec-cleaner
+- Add temporary and explicit dependency to libudev1</comment>
+    <requestid>857834</requestid>
+  </revision>
 </revisionlist>
