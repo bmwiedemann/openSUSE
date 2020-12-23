@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Mon Dec 21 09:59:15 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 6.1.5
+  * Fix open redirect vulnerability GHSA-c7vm-f5p4-8fqh
+    (CVE to be assigned) 
+- Changes for 6.1.4
+  * Fix broken links to jupyter documentation
+  * Add additional entries to troubleshooting section
+  * Revert change in page alignment
+  * Bug fix: remove double encoding in download files
+  * Fix typo for Check in zh_CN
+  * Require a file name in the "Save As" dialog
+- Changes for 6.1.3
+  * Title new buttons with label if action undefined
+- Changes for 6.1.2
+  * Fix russian message format for delete/duplicate actions 
+  * Remove unnecessary import of bind_unix_socket 
+  * Tooltip style scope fix 
+- Changes for 6.1.1
+  * Prevent inclusion of requests_unixsocket on Windows 
+- Changes for 6.1.0
+  Please note that this repository is currently maintained by a 
+  skeleton crew of maintainers from the Jupyter community. For our 
+  approach moving forward, please see this notice from the README. 
+  Thank you.
+  * Remove deprecated encoding parameter for Python 3.9 
+    compatibility. 
+  * Add support for async kernel management 
+  * Fix typo in password_required help message 
+  * Gateway only: Ensure launch and request timeouts are in sync 
+  * Update Markdown Cells example to HTML5 video tag 
+  * Integrated LoginWidget into edit to enable users to logout 
+    from the t… 
+  * Update message about minimum Tornado version 
+  * Logged notebook type 
+  * Added nl language 
+  * Add UNIX socket support to notebook server. 
+  * Update CodeMirror dependency 
+  * Tree added download multiple files 
+  * Toolbar buttons tooltip: show help instead of label 
+  * Remove unnecessary import of requests_unixsocket 
+  * Add ability to cull terminals and track last activity 
+  * Code refactoring notebook.js 
+  * Install terminado for docs build 
+  * Convert notifications JS test to selenium 
+  * Add cell attachments to markdown example 
+  * Add Japanese document 
+  * Migrate Move multiselection test to selenium 
+  * Use cmdtrl-enter to run a cell 
+  * Fix broken "Raw cell MIME type" dialog 
+  * Make a notebook writable after successful save-as 
+  * Add actual watch script 
+  * Added --autoreload flag to NotebookApp 
+  * Enable check_origin on gateway websocket communication 
+  * Restore detection of missing terminado package 
+  * Culling: ensure last_activity attr exists before use 
+  * Added functionality to allow filter kernels by Jupyter     
+    Enterprise Gat… 
+  * 'Play' icon for run-cell toolbar button 
+  * Bump minimum version of jQuery to 3.5.0 
+  * Remove old JS markdown tests, add a new one in selenium 
+  * Add support for more RTL languages 
+  * Make markdown cells stay RTL in edit mode 
+  * Unforce RTL output display 
+  * Fixed multicursor backspacing 
+  * Implemented Split Cell for multicursor 
+  * Alignment issue [FIXED] 
+  * MathJax: Support for \gdef 
+  * Another (Minor) Duplicate Code Reduction 
+  * Update readme regarding maintenance 
+  * Document contents chunks 
+  * Backspace deletes empty line 
+  * The dropdown submenu at notebook page is not keyboard 
+    accessible 
+  * Tooltips visible through keyboard navigation for specified 
+    buttons 
+  * Fix for recursive symlink 
+  * Fix for the terminal shutdown issue 
+  * Add japanese translation files 
+  * Workaround for socket permission errors on Cygwin 
+  * Implement optional markdown header and footer files 
+  * Remove double link when using custom_display_url 
+  * Respect cell.is_editable during find-and-replace 
+  * Fix exception causes all over the codebase (:ghpull:`5556`
+  * Improve login shell heuristics 
+  * Added support for JUPYTER_TOKEN_FILE 
+  * Kill notebook itself when server cull idle kernel 
+  * Implement password hashing with bcrypt 
+  * Fix broken links 
+  * Russian internationalization support 
+  * Add a metadata tag to override notebook direction (ltr/rtl) 
+  * Paste two images from clipboard in markdown cell 
+  * Add keyboard shortcuts to menu dropdowns 
+  * Update codemirror to 5.56.0+components1 
+- refresh remove_nose.patch based on gh#jupyter/notebook#5826
+- move the entrypoints to the flavored python package and make them
+  alternatives
+- tag language files
+
+-------------------------------------------------------------------
 Thu Oct 22 18:44:45 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add remove_nose.patch to remove dependency on nose

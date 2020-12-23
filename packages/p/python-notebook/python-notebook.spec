@@ -27,7 +27,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-notebook%{psuffix}
-Version:        6.0.3
+Version:        6.1.5
 Release:        0
 Summary:        Jupyter Notebook interface
 License:        BSD-3-Clause
@@ -35,8 +35,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/notebook
 Source0:        https://files.pythonhosted.org/packages/source/n/notebook/notebook-%{version}.tar.gz
 Source100:      python-notebook-rpmlintrc
-# PATCH-FIX-UPSTREAM remove_nose.patch gh#jupyter/notebook#4753 mcepl@suse.com
-# Port the test suite to pytest from nose
+# PATCH-FIX-UPSTREAM remove_nose.patch gh#jupyter/notebook#5826 -- Port the test suite to pytest from nose
 Patch0:         remove_nose.patch
 BuildRequires:  %{python_module jupyter-core >= 4.4.0}
 BuildRequires:  %{python_module setuptools}
@@ -44,15 +43,16 @@ BuildRequires:  python-rpm-macros
 Requires:       jupyter-notebook = %{version}
 Requires:       python-Jinja2
 Requires:       python-Send2Trash
+Requires:       python-argon2-cffi
 Requires:       python-ipykernel
 Requires:       python-ipython_genutils
-Requires:       python-jupyter-client >= 5.3.1
-Requires:       python-jupyter-core >= 4.4.0
+Requires:       python-jupyter-client >= 5.3.4
+Requires:       python-jupyter-core >= 4.6.1
 Requires:       python-nbconvert
 Requires:       python-nbformat
 Requires:       python-prometheus_client
 Requires:       python-pyzmq >= 17
-Requires:       python-terminado >= 0.8.1
+Requires:       python-terminado >= 0.8.3
 Requires:       python-tornado >= 5
 Requires:       python-traitlets >= 4.2.1
 Recommends:     python-ipywidgets
@@ -68,18 +68,23 @@ BuildRequires:  jupyter-notebook-filesystem
 %if %{with test}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module Send2Trash}
+BuildRequires:  %{python_module argon2-cffi}
 BuildRequires:  %{python_module attrs >= 17.4.0}
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module ipython_genutils}
-BuildRequires:  %{python_module jupyter-client >= 5.3.1}
-BuildRequires:  %{python_module jupyter-core >= 4.4.0}
+BuildRequires:  %{python_module jupyter-client >= 5.3.4}
+BuildRequires:  %{python_module jupyter-core >= 4.6.1}
 BuildRequires:  %{python_module nbconvert}
 BuildRequires:  %{python_module nbformat}
+BuildRequires:  %{python_module nbval}
+# Some dependency loop involving the jupyter-notebook subpackage could pull in an old version otherwise!
+BuildRequires:  %{python_module notebook = %{version}}
 BuildRequires:  %{python_module prometheus_client}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyzmq >= 17}
+BuildRequires:  %{python_module requests-unixsocket}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module terminado >= 0.8.1}
+BuildRequires:  %{python_module terminado >= 0.8.3}
 BuildRequires:  %{python_module tornado >= 5}
 BuildRequires:  %{python_module traitlets >= 4.2.1}
 BuildRequires:  pandoc
@@ -93,10 +98,8 @@ interactive computing.
 This package provides the python interface.
 
 %package        lang
-# FIXME: consider using %%lang_package macro
 Summary:        Translations for the Jupyter Notebook
 Group:          System/Localization
-Requires:       jupyter-notebook-lang = %{version}
 Requires:       python-notebook = %{version}
 Provides:       python-jupyter_notebook-lang = %{version}
 Provides:       python-notebook-lang-all = %{version}
@@ -111,8 +114,8 @@ This package provides the Python module translations.
 Summary:        Jupyter Notebook interface
 Group:          Development/Languages/Python
 Requires:       jupyter-ipykernel
-Requires:       jupyter-jupyter-client >= 5.2.0
-Requires:       jupyter-jupyter-core >= 4.4.0
+Requires:       jupyter-jupyter-client >= 5.3.4
+Requires:       jupyter-jupyter-core >= 4.6.1
 Requires:       jupyter-nbconvert
 Requires:       jupyter-nbformat
 Requires:       jupyter-notebook-filesystem
@@ -128,7 +131,6 @@ interactive computing.
 This package provides the jupyter components.
 
 %package     -n jupyter-notebook-lang
-# FIXME: consider using %%lang_package macro
 Summary:        Translations for the Jupyter Notebook
 Group:          System/Localization
 Requires:       jupyter-notebook = %{version}
@@ -178,33 +180,71 @@ for x in 16 24 32 48 64 128 256 512 ; do
     mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${x}x${x}/apps/
     cp docs/resources/ipynb.iconset/icon_${x}x${x}.png %{buildroot}%{_datadir}/icons/hicolor/${x}x${x}/apps/JupyterNotebook.png
 done
+
+%{python_expand # the structure is not compatible with (python_)find_lang. Roll our own.
+find %{buildroot}%{$python_sitelib}/notebook/i18n -type f -o -type l | grep -v '__init__' > lang-files
+sed -E '
+    s:%{buildroot}::
+    s:(.*/notebook/i18n/)([^/_]+)(.*(mo|po|json)$):%lang(\2) \1\2\3:
+' > %{$python_prefix}-notebook.lang < lang-files
+sed -E '
+    s:%{buildroot}::
+    s:(.*/notebook/i18n/)([^/_]+)(.*(mo|po|json)$):%exclude \1\2\3:
+' > %{$python_prefix}-notebook.lang-exclude < lang-files
+find %{buildroot}%{$python_sitelib}/notebook/i18n -type d -mindepth 1 | grep -v '__pycache__' > lang-dirs
+sed -E '
+    s:%{buildroot}::
+    s:(.*):%dir \1:
+' >> %{$python_prefix}-notebook.lang < lang-dirs
+sed -E '
+    s:%{buildroot}::
+    s:(.*):%exclude %dir \1:
+' >> %{$python_prefix}-notebook.lang-exclude < lang-dirs
+}
+
+%python_clone -a %{buildroot}%{_bindir}/jupyter-bundlerextension
+%python_clone -a %{buildroot}%{_bindir}/jupyter-nbextension
+%python_clone -a %{buildroot}%{_bindir}/jupyter-notebook
+%python_clone -a %{buildroot}%{_bindir}/jupyter-serverextension
+
 %endif
 
 %if %{with test}
 %check
 export LANG=en_US.UTF-8
-%pytest
+# test_launch_socket_collision: fails because there are still servers listening
+pythonall_donttest="test_launch_socket_collision"
+%{python_expand # these tests call the wrong interpreter somewhere deep in the stack
+if [ "$python_" != "python3_" -a "%{$python_provides}" != "python3" ]; then
+  python_$python_donttest+=" or (test_kernels_api and (test_connection or test_culling))"
+fi
+}
+%pytest -v -k "not (${pythonall_donttest} ${python_$python_donttest})"
 %endif
 
 %if !%{with test}
-%files %{python_files}
+
+%post
+%python_install_alternative jupyter-notebook jupyter-bundlerextension jupyter-nbextension jupyter-serverextension
+
+%postun
+%python_uninstall_alternative jupyter-notebook
+
+%files %{python_files} -f %{python_prefix}-notebook.lang-exclude
 %doc README.md
 %license LICENSE
 %{python_sitelib}/notebook-*-py*.egg-info
 %{python_sitelib}/notebook/
-%exclude %{python_sitelib}/notebook/i18n/*/
+%python_alternative %{_bindir}/jupyter-bundlerextension
+%python_alternative %{_bindir}/jupyter-nbextension
+%python_alternative %{_bindir}/jupyter-notebook
+%python_alternative %{_bindir}/jupyter-serverextension
 
-%files %{python_files lang}
+%files %{python_files lang} -f %{python_prefix}-notebook.lang
 %license LICENSE
-%lang(fr_FR) %{python_sitelib}/notebook/i18n/fr_FR/
-%lang(zh_CN) %{python_sitelib}/notebook/i18n/zh_CN/
 
 %files -n jupyter-notebook
 %license LICENSE
-%{_bindir}/jupyter-bundlerextension
-%{_bindir}/jupyter-nbextension
-%{_bindir}/jupyter-notebook
-%{_bindir}/jupyter-serverextension
 %{_datadir}/icons/hicolor/*/apps/JupyterNotebook.*
 
 %files -n jupyter-notebook-lang
