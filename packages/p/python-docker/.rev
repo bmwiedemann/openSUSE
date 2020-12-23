@@ -164,4 +164,26 @@
   - Fix context load for non-docker endpoints</comment>
     <requestid>819986</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2013f79bebfccb8804e88cb2226bf107</srcmd5>
+    <version>4.4.0</version>
+    <time>1608729561</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.4.0:
+  - Add an alternative SSH connection to the paramiko one, based on shelling out to the SSh client. Similar to the behaviour of Docker cli
+  - Default image tag to `latest` on `pull`
+  - Fix plugin model upgrade
+  - Fix examples URL in ulimits
+  - Improve exception messages for server and client errors
+  - Bump cryptography from 2.3 to 3.2
+  - Set default API version to `auto`
+  - Fix conversion to bytes for `float`
+  - Support OpenSSH `identityfile` option
+  - Add `DeviceRequest` type to expose host resources such as GPUs
+  - Add support for `DriverOpts` in EndpointConfig
+  - Disable compression by default when using container.get_archive method
+  - Update default API version to v1.39
+  - Update test engine version to 19.03.12</comment>
+    <requestid>857122</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Dec 20 09:56:10 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.0:
+  - Add an alternative SSH connection to the paramiko one, based on shelling out to the SSh client. Similar to the behaviour of Docker cli
+  - Default image tag to `latest` on `pull`
+  - Fix plugin model upgrade
+  - Fix examples URL in ulimits
+  - Improve exception messages for server and client errors
+  - Bump cryptography from 2.3 to 3.2
+  - Set default API version to `auto`
+  - Fix conversion to bytes for `float`
+  - Support OpenSSH `identityfile` option
+  - Add `DeviceRequest` type to expose host resources such as GPUs
+  - Add support for `DriverOpts` in EndpointConfig
+  - Disable compression by default when using container.get_archive method
+  - Update default API version to v1.39
+  - Update test engine version to 19.03.12
+
+-------------------------------------------------------------------
 Fri Jul 10 12:15:50 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 4.2.2:
