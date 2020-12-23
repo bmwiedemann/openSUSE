@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Dec 19 19:26:05 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 2020.12.8.
+    Fix corrupted ImageDescription in multi shaped series if buffer too small.
+    Fix libtiff warning that ImageDescription contains null byte in value.
+    Fix reading invalid files using JPEG compression with palette colorspace.
+- Updates for 2020.12.4
+    Fix reading some JPEG compressed CFA images.
+    Make index of SubIFDs a tuple.
+    Pass through FileSequence.imread arguments in imread.
+    Do not apply regex flags to FileSequence axes patterns (breaking).
+- Updates for 2020.11.26
+    Add option to pass axes metadata to ImageJ writer.
+    Pad incomplete tiles passed to TiffWriter.write (#38).
+    Split TiffTag constructor (breaking).
+    Change TiffTag.dtype to TIFF.DATATYPES (breaking).
+    Add TiffTag.overwrite method.
+    Add script to change ImageDescription in files.
+    Add TiffWriter.overwrite_description method (WIP).
+- Updates for 2020.11.18
+    Support writing SEPARATED color space (#37).
+    Use imagecodecs.deflate codec if available.
+    Fix SCN and NDPI series with Z dimensions.
+    Add TiffReader alias for TiffFile.
+    TiffPage.is_volumetric returns True if ImageDepth > 1.
+    Zarr store getitem returns numpy arrays instead of bytes.
+
+-------------------------------------------------------------------
 Tue Nov 17 13:48:44 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add _constraints file to avoid OOM 
