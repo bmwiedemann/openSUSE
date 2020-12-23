@@ -62,6 +62,8 @@ Patch6:         libxml2-CVE-2019-19956.patch
 Patch7:         libxml2-CVE-2020-24977.patch
 # PATCH-FIX-SUSE bsc#1178823 Avoid quadratic checking of identity-constraints
 Patch8:         libxml2-Avoid-quadratic-checking-of-identity-constraints.patch
+# PATCH-FIX-UPSTREAM bsc#1161521 CVE-2019-20388 Memory leak in xmlSchemaPreRun
+Patch9:         libxml2-CVE-2019-20388.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -166,6 +168,7 @@ or manipulate any kind of XML files.
 %patch6 -p1 -R
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 %build
 %if !%{with python}

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 17 10:19:33 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Security fix: [bsc#1161521, CVE-2019-20388]
+  * Memory leak in xmlSchemaPreRun in xmlschemas.c
+- Add libxml2-CVE-2019-20388.patch
+
+-------------------------------------------------------------------
 Wed Nov 25 09:07:36 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 
 - Avoid quadratic checking of identity-constraints: [bsc#1178823]
