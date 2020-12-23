@@ -20,6 +20,12 @@
 %global pkgname eigen3
 %global srcname eigen
 
+# The OpenGL support test fails
+%bcond_with opengl_test
+
+# Tests fail for different reasons within the test-suite itself; disable for now
+# See e.g. https://gitlab.com/libeigen/eigen/-/issues/2088, https://gitlab.com/libeigen/eigen/-/issues/2092
+# Also balloons the resources required: > 32 GiB disk space + >= 12 GiB memory
 %bcond_with tests
 
 %if "%{flavor}" == "docs"
@@ -27,7 +33,7 @@
 %endif
 
 Name:           eigen3%{?pkgsuffix}
-Version:        3.3.8
+Version:        3.3.9
 Release:        0
 Summary:        C++ Template Library for Linear Algebra
 License:        MPL-2.0 AND LGPL-2.1-only AND LGPL-2.1-or-later AND BSD-3-Clause
@@ -41,8 +47,18 @@ Patch3:         01_install_FindEigen3.patch
 Patch4:         eigen3-3.3.1-fixcmake.patch
 # PATCH-FIX-UPSTREAM eigen3-CastXML-support-for-aarch64.patch badshah400@gmail.com -- Add CastXML support for ARM aarch64 [https://gitlab.com/libeigen/eigen/-/issues/1979]
 Patch5:         eigen3-CastXML-support-for-aarch64.patch
-# PATCH-FIX-UPSTREAM -- https://gitlab.com/libeigen/eigen/-/merge_requests/232
-Patch6:         Remove-error-counting-in-OpenMP-parallelize_gemm.patch
+%if %{with tests}
+# SECTION Patches to fix tests
+# PATCH-FIX-UPSTREAM https://gitlab.com/libeigen/eigen/-/commit/72c0bbe2bd1c49c75b6efdb81d0558f8b62578d1
+Patch7:         eigen3-failtests-handling.patch
+# PATCH-FIX-UPSTREAM eigen3-make-sparseqr-unit-test-stable.patch https://gitlab.com/libeigen/eigen/-/issues/899 badshah400@gmail.com -- Make sparseqr test more stable to prevent random failures; patch taken from upstream commit
+Patch8:         eigen3-make-sparseqr-unit-test-stable.patch
+# PATCH-FIX-UPSTREAM eigen3-googlehash-detection.patch badshah400@gmail.com -- GoogleHash needs C++11 std to compile test code and be succesfully detected
+Patch9:         eigen3-googlehash-detection.patch
+# PATCH-FIX-UPSTREAM eigen3-fix-forward_adolc-unit-test.patch badshah400@gmail -- Prevent conflict of std::min/max with eigen's macros by importing eigen test-suite's main.h header only after all system headers have been included
+Patch10:        eigen3-fix-forward_adolc-unit-test.patch
+# /SECTION
+%endif
 BuildRequires:  adolc-devel
 BuildRequires:  cmake
 BuildRequires:  fftw3-devel
@@ -66,7 +82,7 @@ BuildRequires:  texlive-dvips
 BuildRequires:  texlive-latex
 BuildRequires:  tex(newunicodechar.sty)
 %endif
-%if %{with tests}
+%if %{with opengl_test}
 BuildRequires:  freeglut-devel
 BuildRequires:  glew-devel
 BuildRequires:  pkgconfig(gl)
@@ -106,12 +122,14 @@ echo "HTML_TIMESTAMP = NO" >> doc/Doxyfile.in
 
 %build
 %cmake \
- -DCMAKE_BUILD_TYPE=Release \
  -DINCLUDE_INSTALL_DIR=include/eigen3 \
- -DGOOGLEHASH_INCLUDES=%{_includedir}
+ -DCMAKE_SKIP_RPATH:BOOL=OFF \
+ -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
+ -DEIGEN_TEST_CXX11:Bool=%{?with_tests:ON}%{!?with_tests:OFF} \
+ -DEIGEN_TEST_OPENMP:Bool=%{?with_tests:ON}%{!?with_tests:OFF}
 
 %if "%{flavor}" == ""
-make %{?_smp_mflags} all
+make %{?_smp_mflags} all %{?with_tests:buildtests}
 %else
 make %{?_smp_mflags} doc
 %endif
@@ -124,6 +142,17 @@ find doc -name _formulas.log -print -delete
 %cmake_install
 %else
 %fdupes -s build/doc/html/
+%endif
+
+%if "%{flavor}" == ""
+%if %{with tests}
+%check
+# Run with a fixed seed to prevent random failures: https://gitlab.com/libeigen/eigen/-/issues/2088
+export EIGEN_SEED=100
+# Repeat each test once to reduce time spent, since we use a fixed seed anyway
+export EIGEN_REPEAT=1
+%ctest
+%endif
 %endif
 
 %if "%{flavor}" == "docs"

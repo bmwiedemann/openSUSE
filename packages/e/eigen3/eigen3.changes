@@ -1,9 +1,63 @@
 -------------------------------------------------------------------
+Tue Dec  8 19:27:09 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.3.9:
+  * Introduce rendering Doxygen math formulas with MathJax and the
+    option EIGEN_DOC_USE_MATHJAX to control this.
+  * Issue 1746: Removed implementation of standard
+    copy-constructor and standard copy-assign-operator from
+    PermutationMatrix and Transpositions to allow malloc-less
+    std::move.
+  * Issue 2036: Make sure the
+    find_standard_math_library_test_program compiles and doesn't
+    optimize away functions we try to test for.
+  * Issue 2046: Rename test/array.cpp to test/array_cwise.cpp to
+    fix an issue with the C++ standard library header "array"
+  * Issue 2040: Fix an issue in test/ctorleak that occured when
+    disabling exceptions.
+  * Issue 2011: Remove error counting in OpenMP parallel section
+    in Eigen's GEMM parallelizing logic.
+  * Issue 2012: Define coeff-wise binary array operators for base
+    class to fix an issue when using Eigen with C++20
+  * Fix an issue with Intel® MKL PARDISO support.
+- Drop Remove-error-counting-in-OpenMP-parallelize_gemm.patch:
+  incorporated upstream.
+- Add patches to fix building and running tests:
+  * eigen3-failtests-handling.patch: Simplify handling of tests
+    that must fail to compile; upstream commit: 72c0bbe.
+  * eigen3-make-sparseqr-unit-test-stable.patch: Make sparseqr
+    test more stable to prevent random failures; patch taken from
+    upstream commit
+    [https://gitlab.com/libeigen/eigen/-/issues/899].
+  * eigen3-googlehash-detection.patch: GoogleHash needs C++11 std
+    to compile test code and be succesfully detected.
+  * eigen3-fix-forward_adolc-unit-test.patch: Prevent conflict of
+    std::min/max with eigen's macros by importing eigen
+    test-suite's main.h header only after all system headers have
+    been included.
+- Setup but don't run tests due to random errors in test-suite
+  itself
+  * Pass EIGEN_TEST_CXX11:Bool=ON and EIGEN_TEST_OPENMP:Bool=ON to
+    cmake to enable building c++11 and openmp tests.
+  * export EIGEN_SEED=100 to build with fixed seed (see
+    https://gitlab.com/libeigen/eigen/-/issues/2088).
+  * export EIGEN_REPEAT=1 to run each test only once (default 10)
+    to save time and since we use a fixed seed anyway.
+  * Disable for non-86_64 archs as some unsupported tests fail for
+    the others (for i586 some supported tests too, see
+    https://gitlab.com/libeigen/eigen/-/issues/2092).
+- Pass CMAKE_SKIP_RPATH:BOOL=OFF and
+  CMAKE_SKIP_INSTALL_RPATH:BOOL=ON to cmake to fix rpath handling
+  in Leap 15.2's cmake macros (doesn't hurt generally).
+- Change CMAKE_BUILD_TYPE from Release to RelWithDebInfo (openSUSE
+  default).
+
+-------------------------------------------------------------------
 Wed Nov  4 13:27:10 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop eigen_pkgconfig.patch: the includedir now needs to be
   specified relative to CMAKE_INSTALL_PREFIX, so this patch causes
-  the includedir in the pkgconfig file to be erroneousi
+  the includedir in the pkgconfig file to be erroneous
   (boo#1178139).
 - Use %autosetup to automatically run through patches.
 

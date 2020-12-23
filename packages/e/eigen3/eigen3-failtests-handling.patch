@@ -1,0 +1,132 @@
+From 72c0bbe2bd1c49c75b6efdb81d0558f8b62578d1 Mon Sep 17 00:00:00 2001
+From: Gael Guennebaud <g.gael@free.fr>
+Date: Wed, 12 Dec 2018 15:48:36 +0100
+Subject: [PATCH] Simplify handling of tests that must fail to compile. Each
+ test is now a normal ctest target, and build properties (compiler+flags) are
+ preserved (instead of starting a new build-dir from scratch).
+
+---
+ CMakeLists.txt           |  5 +----
+ cmake/EigenTesting.cmake | 45 ++++++++++++++++++----------------------
+ failtest/CMakeLists.txt  | 10 ---------
+ test/CMakeLists.txt      |  5 -----
+ 4 files changed, 21 insertions(+), 44 deletions(-)
+
+Index: eigen-3.3.8/CMakeLists.txt
+===================================================================
+--- eigen-3.3.8.orig/CMakeLists.txt
++++ eigen-3.3.8/CMakeLists.txt
+@@ -497,10 +497,7 @@ message(STATUS "")
+ message(STATUS "Configured Eigen ${EIGEN_VERSION_NUMBER}")
+ message(STATUS "")
+ 
+-option(EIGEN_FAILTEST "Enable failtests." OFF)
+-if(EIGEN_FAILTEST)
+-  add_subdirectory(failtest)
+-endif()
++add_subdirectory(failtest)
+ 
+ string(TOLOWER "${CMAKE_GENERATOR}" cmake_generator_tolower)
+ if(cmake_generator_tolower MATCHES "makefile")
+Index: eigen-3.3.8/cmake/EigenTesting.cmake
+===================================================================
+--- eigen-3.3.8.orig/cmake/EigenTesting.cmake
++++ eigen-3.3.8/cmake/EigenTesting.cmake
+@@ -320,37 +320,32 @@ endmacro(ei_add_test_sycl)
+ # note that the test runner for these is CMake itself, when passed -DEIGEN_FAILTEST=ON
+ # so here we're just running CMake commands immediately, we're not adding any targets.
+ macro(ei_add_failtest testname)
+-  get_property(EIGEN_FAILTEST_FAILURE_COUNT GLOBAL PROPERTY EIGEN_FAILTEST_FAILURE_COUNT)
+-  get_property(EIGEN_FAILTEST_COUNT GLOBAL PROPERTY EIGEN_FAILTEST_COUNT)
+ 
+-  message(STATUS "Checking failtest: ${testname}")
+-  set(filename "${testname}.cpp")
+-  file(READ "${filename}" test_source)
+-
+-  try_compile(succeeds_when_it_should_fail
+-              "${CMAKE_CURRENT_BINARY_DIR}"
+-              "${CMAKE_CURRENT_SOURCE_DIR}/${filename}"
+-              COMPILE_DEFINITIONS "-DEIGEN_SHOULD_FAIL_TO_BUILD")
+-  if (succeeds_when_it_should_fail)
+-    message(STATUS "FAILED: ${testname} build succeeded when it should have failed")
+-  endif()
+-
+-  try_compile(succeeds_when_it_should_succeed
+-              "${CMAKE_CURRENT_BINARY_DIR}"
+-              "${CMAKE_CURRENT_SOURCE_DIR}/${filename}"
+-              COMPILE_DEFINITIONS)
+-  if (NOT succeeds_when_it_should_succeed)
+-    message(STATUS "FAILED: ${testname} build failed when it should have succeeded")
+-  endif()
+-
+-  if (succeeds_when_it_should_fail OR NOT succeeds_when_it_should_succeed)
+-    math(EXPR EIGEN_FAILTEST_FAILURE_COUNT ${EIGEN_FAILTEST_FAILURE_COUNT}+1)
+-  endif()
++  set(test_target_ok ${testname}_ok)
++  set(test_target_ko ${testname}_ko)
+ 
+-  math(EXPR EIGEN_FAILTEST_COUNT ${EIGEN_FAILTEST_COUNT}+1)
++  # Add executables
++  add_executable(${test_target_ok} ${testname}.cpp)
++  add_executable(${test_target_ko} ${testname}.cpp)
++
++  # Remove them from the normal build process
++  set_target_properties(${test_target_ok} ${test_target_ko} PROPERTIES
++                        EXCLUDE_FROM_ALL TRUE
++                        EXCLUDE_FROM_DEFAULT_BUILD TRUE)
++
++  # Configure the failing test
++  target_compile_definitions(${test_target_ko} PRIVATE EIGEN_SHOULD_FAIL_TO_BUILD)
++
++  # Add the tests to ctest.
++  add_test(NAME ${test_target_ok}
++          COMMAND ${CMAKE_COMMAND} --build . --target ${test_target_ok} --config $<CONFIGURATION>
++          WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
++  add_test(NAME ${test_target_ko}
++          COMMAND ${CMAKE_COMMAND} --build . --target ${test_target_ko} --config $<CONFIGURATION>
++          WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
+ 
+-  set_property(GLOBAL PROPERTY EIGEN_FAILTEST_FAILURE_COUNT ${EIGEN_FAILTEST_FAILURE_COUNT})
+-  set_property(GLOBAL PROPERTY EIGEN_FAILTEST_COUNT ${EIGEN_FAILTEST_COUNT})
++  # Expect the second test to fail
++  set_tests_properties(${test_target_ko} PROPERTIES WILL_FAIL TRUE)
+ endmacro(ei_add_failtest)
+ 
+ # print a summary of the different options
+Index: eigen-3.3.8/failtest/CMakeLists.txt
+===================================================================
+--- eigen-3.3.8.orig/failtest/CMakeLists.txt
++++ eigen-3.3.8/failtest/CMakeLists.txt
+@@ -1,4 +1,3 @@
+-message(STATUS "Running the failtests")
+ 
+ ei_add_failtest("failtest_sanity_check")
+ 
+@@ -64,12 +63,3 @@ ei_add_failtest("bdcsvd_int")
+ ei_add_failtest("eigensolver_int")
+ ei_add_failtest("eigensolver_cplx")
+ 
+-if (EIGEN_FAILTEST_FAILURE_COUNT)
+-  message(FATAL_ERROR
+-          "${EIGEN_FAILTEST_FAILURE_COUNT} out of ${EIGEN_FAILTEST_COUNT} failtests FAILED. "
+-          "To debug these failures, manually compile these programs in ${CMAKE_CURRENT_SOURCE_DIR}, "
+-          "with and without #define EIGEN_SHOULD_FAIL_TO_BUILD.")
+-else()
+-  message(STATUS "Failtest SUCCESS: all ${EIGEN_FAILTEST_COUNT} failtests passed.")
+-  message(STATUS "")
+-endif()
+Index: eigen-3.3.8/test/CMakeLists.txt
+===================================================================
+--- eigen-3.3.8.orig/test/CMakeLists.txt
++++ eigen-3.3.8/test/CMakeLists.txt
+@@ -380,10 +380,6 @@ endif(CUDA_FOUND)
+ 
+ endif(EIGEN_TEST_CUDA)
+ 
+-
+-file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/failtests)    
+-add_test(NAME failtests WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/failtests COMMAND ${CMAKE_COMMAND} ${Eigen_SOURCE_DIR} -G "${CMAKE_GENERATOR}" -DEIGEN_FAILTEST=ON)
+-
+ option(EIGEN_TEST_BUILD_DOCUMENTATION "Test building the doxygen documentation" OFF)
+ IF(EIGEN_TEST_BUILD_DOCUMENTATION)
+   add_dependencies(buildtests doc)
