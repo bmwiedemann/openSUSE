@@ -25,6 +25,8 @@ Summary:        Framework for processing scientific data (USID)
 License:        MIT
 URL:            https://pycroscopy.github.io/pyUSID/
 Source0:        https://github.com/pycroscopy/pyUSID/archive/%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix_tests_h5py-3.0.patch andythe_great@pm.me -- Fix broken tests due to h5py 3.0, should be fix in next release.
+Patch0:         fix_tests_h5py-3.0.patch
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module cytoolz}
 BuildRequires:  %{python_module dask >= 0.10}
@@ -38,7 +40,7 @@ BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module sidpy}
+BuildRequires:  %{python_module sidpy >= 0.0.1}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module toolz}
 BuildRequires:  fdupes
@@ -53,7 +55,7 @@ Requires:       python-joblib >= 0.11.0
 Requires:       python-matplotlib >= 2.0.0
 Requires:       python-numpy >= 1.10
 Requires:       python-psutil
-Requires:       python-sidpy
+Requires:       python-sidpy >= 0.0.1
 Requires:       python-six
 Requires:       python-toolz
 BuildArch:      noarch
@@ -65,6 +67,7 @@ and Imaging Data (USID).
 
 %prep
 %setup -q -n %{packagename}-%{version}
+%patch0 -p1
 
 %build
 %python_build

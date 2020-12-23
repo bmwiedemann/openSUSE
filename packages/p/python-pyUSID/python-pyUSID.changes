@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 10 15:21:25 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Add fix_tests_h5py-3.0.patch to fix broken test from h5py 3.0.
+
+-------------------------------------------------------------------
 Tue Aug 18 06:54:31 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 0.0.9.
