@@ -1,7 +1,7 @@
 #
 # spec file for package python-chardet
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,14 +26,12 @@
 %bcond_with test
 %endif
 Name:           python-chardet%{psuffix}
-Version:        3.0.4
+Version:        4.0.0
 Release:        0
 Summary:        Universal encoding detector
 License:        LGPL-2.1-or-later
 URL:            https://github.com/chardet/chardet
 Source0:        https://files.pythonhosted.org/packages/source/c/chardet/chardet-%{version}.tar.gz
-Source1:        python-chardet-rpmlintrc
-Patch0:         pytest4.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -77,7 +75,7 @@ or more files::
 
 %prep
 %setup -q -n chardet-%{version}
-%patch0 -p1
+sed -i '1{/^#!/d}' chardet/lang*model.py chardet/metadata/languages.py
 
 %build
 %python_build

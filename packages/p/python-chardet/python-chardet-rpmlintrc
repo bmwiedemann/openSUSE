@@ -1,3 +1,0 @@
-# remove warnings about modules not being executable
-addFilter("non-executable-script")
-
