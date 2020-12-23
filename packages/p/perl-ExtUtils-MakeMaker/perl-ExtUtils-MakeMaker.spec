@@ -17,7 +17,7 @@
 
 
 Name:           perl-ExtUtils-MakeMaker
-Version:        7.56
+Version:        7.58
 Release:        0
 %define cpan_name ExtUtils-MakeMaker
 Summary:        Create a module Makefile
