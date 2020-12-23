@@ -1,7 +1,7 @@
 #
 # spec file for package python-Unidecode
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Unidecode
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        ASCII transliterations of Unicode text
 License:        GPL-2.0-or-later
@@ -85,7 +85,7 @@ Sean M. Burke <sburke@cpan.org>.
 
 %check
 export LANG=en_US.UTF-8
-%python_exec setup.py test
+%pyunittest -v
 
 %post
 %python_install_alternative unidecode

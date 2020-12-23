@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 21 17:47:10 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.1.2:
+  * Add some missing replacements in the U+23xx page.
+  * Fix U+204A "TIRONIAN SIGN ET" replacement.
+- run the tests with pyunitest macro
+
+-------------------------------------------------------------------
 Wed Sep 11 12:35:09 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.1.1:
