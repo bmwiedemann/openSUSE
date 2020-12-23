@@ -400,7 +400,7 @@ Prefer: postfix
 # Python3 exists in multiple versions - we currently favor 3.8 (our default):
 Prefer: -python36 -python39
 Prefer: -python36-hotdoc
-Prefer: -python3-ipython715
+Prefer: -python3-ipython715 -python38-ipython715
 
 # prefer the PHP5 variants over PHP7
 Prefer: php5-ctype
