@@ -68,12 +68,14 @@ Index: curl-7.69.0/lib/connect.c
 ===================================================================
 --- curl-7.69.0.orig/lib/connect.c
 +++ curl-7.69.0/lib/connect.c
-@@ -1529,7 +1529,7 @@ CURLcode Curl_socket(struct connectdata
+@@ -1529,7 +1529,9 @@ CURLcode Curl_socket(struct connectdata
    }
    else
      /* opensocket callback not set, so simply create the socket now */
 -    *sockfd = socket(addr->family, addr->socktype, addr->protocol);
-+    *sockfd = socket(addr->family, addr->socktype | SOCK_CLOEXEC, addr->protocol);
++    *sockfd = socket(addr->family,
++                     addr->socktype | SOCK_CLOEXEC,
++                     addr->protocol);
  
    if(*sockfd == CURL_SOCKET_BAD)
      /* no socket, no connection */

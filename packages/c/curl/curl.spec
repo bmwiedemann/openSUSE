@@ -21,21 +21,20 @@
 # need ssl always for python-pycurl
 %bcond_without openssl
 Name:           curl
-Version:        7.73.0
+Version:        7.74.0
 Release:        0
 Summary:        A Tool for Transferring Data from URLs
 License:        curl
-URL:            https://curl.haxx.se/
-Source:         https://curl.haxx.se/download/curl-%{version}.tar.xz
-Source2:        https://curl.haxx.se/download/curl-%{version}.tar.xz.asc
+URL:            https://curl.se
+Source:         https://curl.se/download/curl-%{version}.tar.xz
+Source2:        https://curl.se/download/curl-%{version}.tar.xz.asc
 Source3:        baselibs.conf
 Source4:        https://daniel.haxx.se/mykey.asc#/curl.keyring
 Patch0:         libcurl-ocloexec.patch
 Patch1:         dont-mess-with-rpmoptflags.diff
 Patch2:         curl-secure-getenv.patch
 # PATCH-FIX-OPENSUSE bsc#1076446 protocol redirection not supported or disabled
-Patch4:         curl-disabled-redirect-protocol-message.patch
-Patch5:         curl-use_OPENSSL_config.patch
+Patch3:         curl-disabled-redirect-protocol-message.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 Requires:       libcurl4 = %{version}
@@ -43,11 +42,13 @@ BuildRequires:  groff
 BuildRequires:  lzma
 BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig(krb5)
+BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(libidn2)
 BuildRequires:  pkgconfig(libmetalink)
 BuildRequires:  pkgconfig(libnghttp2)
 BuildRequires:  pkgconfig(libpsl)
 BuildRequires:  pkgconfig(libssh)
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
 %if %{with openssl}
 BuildRequires:  pkgconfig(libssl)
@@ -92,18 +93,14 @@ user interaction or any kind of interactivity.
 %patch0 -p1
 %patch1
 %patch2
-%patch4 -p1
-%patch5 -p1
-
-# disable new failing test 1165
-echo "1165" >> tests/data/DISABLED
+%patch3 -p1
 
 %build
 # curl complains if macro definition is contained in CFLAGS
 # see m4/xc-val-flgs.m4
 CPPFLAGS="-D_FORTIFY_SOURCE=2"
 CFLAGS=$(echo "%{optflags}" | sed -e 's/-D_FORTIFY_SOURCE=2//')
-export CPPFLAGS CFLAGS
+export CPPFLAGS
 export CFLAGS="$CFLAGS -fPIE"
 export LDFLAGS="$LDFLAGS -pie"
 autoreconf -fiv
@@ -135,25 +132,17 @@ sed -i 's/\(link_all_deplibs=\)unknown/\1no/' configure
 # if this fails, the above sed hack did not work
 ./libtool --config | grep -q link_all_deplibs=no
 # enable-hidden-symbols needs gcc4 and causes that curl exports only its API
-make %{?_smp_mflags} V=1
+%make_build
 
 %if %{with testsuite}
 %check
 pushd tests
-make %{?_smp_mflags} V=1
-# make sure the testsuite runs don't race on MP machines in autobuild
-if test -z "$BUILD_INCARNATION" -a -r /.buildenv; then
-	. /.buildenv
-fi
-if test -z "$BUILD_INCARNATION"; then
-	BUILD_INCARNATION=0
-fi
+%make_build
 
-base=$((8990 + $BUILD_INCARNATION * 20))
-# bug940009 do not run flaky tests for any architecture
-# at least test 1510 do fail for i586 and ppc64le
-perl ./runtests.pl -a -v -p -b$base '!flaky' || exit
+find -type f -name "*.pl" -exec sed -i 's|#!.*/usr/bin/env perl|#!/usr/bin/perl|' "{}" +
+find -type f -name "*.py" -exec sed -i 's|#!.*/usr/bin/env python.*|#!/usr/bin/python3|' "{}" +
 
+perl ./runtests.pl -a -v -p '!flaky' || exit
 popd
 %endif
 
@@ -170,7 +159,7 @@ popd
 
 %files
 %doc README RELEASE-NOTES CHANGES
-%doc docs/{BUGS.md,FAQ,FEATURES,TODO,TheArtOfHttpScripting.md}
+%doc docs/{BUGS.md,FAQ,FEATURES.md,TODO,TheArtOfHttpScripting.md}
 %{_bindir}/curl
 %{_datadir}/zsh/site-functions/_curl
 %{_mandir}/man1/curl.1%{?ext_man}

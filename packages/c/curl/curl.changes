@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Fri Dec 18 20:04:33 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Enable zstd and brotli support 
+
+-------------------------------------------------------------------
+Mon Dec 14 15:25:07 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 7.74.0 
+  * Changes:
+    hsts: add experimental support for Strict-Transport-Security
+  * Bugfixes:
+    - Inferior OCSP verification  [bsc#1179593, CVE-2020-8286]
+    - FTP wildcard stack overflow [bsc#1179399, CVE-2020-8285]
+    - trusting FTP PASV responses [bsc#1179398, CVE-2020-8284]
+    - Revert "multi: implement wait using winsock events"
+    - openssl: free mem_buf in error path
+    - ntlm: avoid malloc(0) on zero length user and domain
+    - ngtcp2: use the minimal version of QUIC supported by ngtcp2
+    - ngtcp2: advertise h3 ALPN unconditionally
+    - file: avoid duplicated code sequence
+    - openssl: guard against OOM on context creation
+    - docs: document the 8MB input string limit for curl_easy_escape
+      and curl_easy_setopt()
+    - hsts: add read/write callbacks
+    - hsts: add support for Strict-Transport-Security
+    - alt-svc: enable by default
+    - checksrc: warn on empty line before open brace
+    - connect: repair build without ipv6 availability
+    - curl.se: new home
+    - ftp: retry getpeername for FTP with TCP_FASTOPEN
+    - gnutls: fix memory leaks (certfields memory wasn't released)
+    - http: pass correct header size to debug callback for chunked post
+    - libssh2: fix transport over HTTPS proxy
+    - openssl: guard against OOM on context creation
+    - openssl: use OPENSSL_init_ssl() with >= 1.1.0
+    - Revert "multi: implement wait using winsock events"
+    - socks: check for DNS entries with the right port number
+    - tool_operate: --retry for HTTP 408 responses too
+    - tool_operate: bail out proper on errors during parallel transfers
+    - urlapi: don't accept blank port number field without scheme
+    - urlapi: URL encode a '+' in the query part
+    - vquic/ngtcp2.h: define local_addr as sockaddr_storage
+- Update check section:
+  * runtests now supports dynamically base64 encoded sections in tests
+  * Replace env interpreter for perl and python3
+- Remove curl-use_OPENSSL_config.patch since the OpenSSL initialization
+  has been updated to use OPENSSL_init_ssl() with >= 1.1.0
+
+-------------------------------------------------------------------
+Tue Oct 20 10:33:34 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Update patches to fix compiling warnings:
+  * curl-disabled-redirect-protocol-message.patch
+  * libcurl-ocloexec.patch
+- Enable test 1165
+
+-------------------------------------------------------------------
 Wed Oct 14 21:29:48 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 7.73.0

@@ -10,8 +10,8 @@ Index: curl-7.63.0/lib/url.c
 +       !(data->set.redir_protocols & p->protocol)) {
        /* nope, get out */
 -      ;
-+       failf(data, "Redirect to protocol \"%s\" not supported or disabled in " LIBCURL_NAME,
-+	     protostr);
++       failf(data, "Redirect to protocol \"%s\" not supported or disabled in "
++             LIBCURL_NAME, protostr);
 +
 +       return CURLE_UNSUPPORTED_PROTOCOL;
 +    }
