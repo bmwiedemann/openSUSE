@@ -91,7 +91,10 @@ Nations University, International Institute for Global Health, for
 the implementations and trainings.
 
 This is the server component of GNU Health. 
-You would need the GNU Health Client as well, on the same or a different machine. You may use the Tryton Client either
+You would need the GNU Health Client as well, on the same or a different machine. 
+You may use the Tryton Client either
+See https://en.opensuse.org/GNUHealth_on_openSUSE for instructions
+
 
 %package -n %{name}-orthanc
 Summary:        Integration module for Orthanc
