@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec 22 03:08:12 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.45
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.45    2020-12-21
+
+  - Fixed handling of Etc/GMT[+-]XX zones. Confusingly, the POSIX interpretation
+    is that Etc/GMT+1 is 1 hour _behind_ UTC, and Etc/GMT-1 is 1 hour
+    ahead. This is the opposite of what this module started doing in the 2.38
+    release when it added support for these zones. Reportd by Matthew Horsfall
+    (#47). Changes are based on his PR #48.
+
+-------------------------------------------------------------------
 Mon Nov  9 20:18:17 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - updated to 2.44
