@@ -17,13 +17,13 @@
 
 
 Name:           liberation-fonts
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        Liberation Fonts
 License:        SUSE-Liberation
 Group:          System/X11/Fonts
 URL:            https://fedorahosted.org/liberation-fonts/
-Source:         https://github.com/liberationfonts/liberation-fonts/files/4743886/liberation-fonts-ttf-2.1.1.tar.gz
+Source:         https://github.com/liberationfonts/liberation-fonts/files/5722233/liberation-fonts-ttf-2.1.2.tar.gz
 Source100:      %{name}-rpmlintrc
 BuildRequires:  fontpackages-devel
 Provides:       locale(bg;el;ru;bg)
