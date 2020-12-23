@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 22 09:26:30 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.3:
+ * Fix a use-after-free crash when certain coordinator requests were retried.
+ * Consumer would not filter out messages for aborted transactions
+   if the messages were compressed (#3020).
+ * Consumer destroy without prior `close()` could hang in certain
+   cgrp states (@gridaphobe, #3127).
+ * Fix possible null dereference in `Message::errstr()` (#3140).
+ * The `roundrobin` partition assignment strategy could get stuck in an
+   endless loop or generate uneven assignments in case the group members
+   had asymmetric subscriptions (e.g., c1 subscribes to t1,t2 while c2
+   subscribes to t2,t3).  (#3159)
+
+-------------------------------------------------------------------
 Mon Oct 26 08:08:55 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.5.2:

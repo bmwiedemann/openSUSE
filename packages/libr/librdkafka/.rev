@@ -122,4 +122,22 @@
     <comment></comment>
     <requestid>845629</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d57b1a7734283f7bff1afff7dd90468f</srcmd5>
+    <version>1.5.3</version>
+    <time>1608729677</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.3:
+ * Fix a use-after-free crash when certain coordinator requests were retried.
+ * Consumer would not filter out messages for aborted transactions
+   if the messages were compressed (#3020).
+ * Consumer destroy without prior `close()` could hang in certain
+   cgrp states (@gridaphobe, #3127).
+ * Fix possible null dereference in `Message::errstr()` (#3140).
+ * The `roundrobin` partition assignment strategy could get stuck in an
+   endless loop or generate uneven assignments in case the group members
+   had asymmetric subscriptions (e.g., c1 subscribes to t1,t2 while c2
+   subscribes to t2,t3).  (#3159)</comment>
+    <requestid>858094</requestid>
+  </revision>
 </revisionlist>
