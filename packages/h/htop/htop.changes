@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec 23 08:42:18 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- htop 3.0.4:
+  * Separate tree and list sort orders
+  * PSI Meter: constant width and only print ten-duration as bar
+  * Sort in paused mode after inverting sort order
+  * Handle absence of package CPU temperature
+  * Document dynamic bindings and assumed external configuration
+  * Update key mapping documentation for sorting
+
+-------------------------------------------------------------------
 Mon Dec  7 09:19:09 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Update to version 3.0.3

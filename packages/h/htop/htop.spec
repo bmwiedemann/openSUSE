@@ -17,14 +17,13 @@
 
 
 Name:           htop
-Version:        3.0.3
+Version:        3.0.4
 Release:        0
 Summary:        An Interactive text-mode Process Viewer for Linux
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            https://htop.dev
 Source0:        https://dl.bintray.com/%{name}/source/%{name}-%{version}.tar.gz
-Source2:        %{name}.keyring
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libnl-3.0)
