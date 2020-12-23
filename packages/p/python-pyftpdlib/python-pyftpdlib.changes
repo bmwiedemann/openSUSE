@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 18 16:29:52 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- add ignore _build directories to pytest args to fix builds for
+  multiple pytest flavors gh#openSUSE/python-rpm-macros#66
+- fix tests failing locally because of gh#giampaolo/pyftpdlib#478
+
+-------------------------------------------------------------------
 Sun Aug 16 04:20:40 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Re-activate test suite, replacing nose with pytest

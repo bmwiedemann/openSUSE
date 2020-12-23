@@ -69,10 +69,27 @@ write very asynchronous FTP servers with Python.
 # https://github.com/giampaolo/pyftpdlib/issues/386
 # If they re-occur, please update the issue with backtraces,
 # and disable only related tests.
-export PYTHONPATH=$PWD
-printf '[pytest]\naddopts = -rs -v -k "not (TestFtpStoreDataTLSMixin and test_rest_on_stor) and not (TestFtpStoreDataTLSMixin and test_stor_ascii)"' > pytest.ini
-# %%pytest des not work. The tests parse CLI args and fail if there are any unknown program args
-%python_exec -m pytest
+donttest="(TestFtpStoreDataTLSMixin and test_rest_on_stor)"
+donttest+=" or (TestFtpStoreDataTLSMixin and test_stor_ascii)"
+ignorebuild="--ignore build"
+%{python_expand # expand to python flavor, not to the binary name, then strip the trailing _
+builddir=_build.$python_
+ignorebuild+=" --ignore ${builddir%_}"
+}
+cat > pytest.ini <<EOF
+[pytest]
+addopts = 
+  -rs -v 
+  -k "not ($donttest)"
+  $ignorebuild
+EOF
+%{python_expand # pytest macro does not work. The tests parse CLI args and fail if there are any unknown program args
+export PYTHONPATH=%{buildroot}%{$python_sitelib}
+export PYTHONDONTWRITEBYTECODE=1
+# https://github.com/giampaolo/pyftpdlib/issues/478
+export TZ=GMT+1
+$python -m pytest
+}
 
 %post
 %python_install_alternative ftpbench
