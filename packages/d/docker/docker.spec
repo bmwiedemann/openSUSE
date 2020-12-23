@@ -42,17 +42,17 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define git_version 48a66213fe17
-%define git_commit_epoch 1592522265
+%define git_version 5eb3275d4006
+%define git_commit_epoch 1606849828
 
 # These are the git commits required. We verify them against the source to make
 # sure we didn't miss anything important when doing upgrades.
-%define required_containerd 7ad184331fa3e55e52b890ea95e65ba581ae3429
+%define required_containerd ea765aba0d05254012b0b9e595e995c09186427f
 %define required_dockerrunc dc9208a3303feef5b3839f4323d9beb36df0a9dd
-%define required_libnetwork 026aabaa659832804b01754aaadd2c0f420c68b6
+%define required_libnetwork 55e924b8a84231a065879156c0de95aefc5f5435
 
 Name:           %{realname}%{name_suffix}
-Version:        19.03.12_ce
+Version:        19.03.14_ce
 Release:        0
 Summary:        The Moby-project Linux container runtime
 License:        Apache-2.0
@@ -83,11 +83,11 @@ Patch300:       packaging-0001-revert-Remove-docker-prefix-for-containerd-and-ru
 Patch401:       bsc1073877-0001-apparmor-clobber-docker-default-profile-on-start.patch
 # SUSE-BACKPORT: Backport of https://github.com/docker/docker/pull/39121. bsc#1122469
 Patch402:       bsc1122469-0001-apparmor-allow-readby-and-tracedby.patch
+# SUSE-BACKPORT: Backport of https://github.com/moby/libnetwork/pull/2548. boo#1178801, SLE-16460
+Patch403:       boo1178801-0001-Add-docker-interfaces-to-firewalld-docker-zone.patch
 # SUSE-FEATURE: Add support to mirror inofficial/private registries
 #               (https://github.com/docker/docker/pull/34319)
 Patch500:       private-registry-0001-Add-private-registry-mirror-support.patch
-# SUSE-BACKPORT: Backport of https://github.com/moby/libnetwork/pull/2548. boo#1178801, SLE-16460
-Patch600:       boo1178801-0001-Add-docker-interfaces-to-firewalld-docker-zone.patch
 BuildRequires:  audit
 BuildRequires:  bash-completion
 BuildRequires:  ca-certificates
@@ -100,6 +100,7 @@ BuildRequires:  libtool
 BuildRequires:  procps
 BuildRequires:  sqlite3-devel
 BuildRequires:  zsh
+BuildRequires:  fish
 BuildRequires:  pkgconfig(libsystemd)
 Requires:       apparmor-parser
 Requires:       ca-certificates-mozilla
@@ -216,6 +217,21 @@ Provides:       %{realname}-zsh-completion = %{version}
 %description zsh-completion
 Zsh command line completion support for %{name}.
 
+%package fish-completion
+Summary:        Fish completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    packageand(%{name}:fish)
+BuildArch:      noarch
+%if "%flavour" == "kubic"
+# Conflict with non-kubic package, and provide equivalent
+Conflicts:      %{realname}-fish-completion
+Provides:       %{realname}-fish-completion = %{version}
+%endif
+
+%description fish-completion
+Fish command line completion support for %{name}.
+
 %package test
 %global __requires_exclude ^libgo.so.*$
 Summary:        Test package for docker
@@ -270,11 +286,12 @@ docker container runtime configuration for kubeadm
 %patch401 -p1
 # bsc#1122469
 %patch402 -p1
+# boo#1178801, SLE-16460
+%patch403 -p1
 %if "%flavour" == "kubic"
 # PATCH-SUSE: Mirror patch.
 %patch500 -p1
 %endif
-%patch600 -p1
 
 cp %{SOURCE7} .
 
@@ -372,6 +389,7 @@ install -Dd -m 0755 \
 
 install -D -m0644 components/cli/contrib/completion/bash/docker "%{buildroot}%{_datarootdir}/bash-completion/completions/%{realname}"
 install -D -m0644 components/cli/contrib/completion/zsh/_docker "%{buildroot}%{_sysconfdir}/zsh_completion.d/_%{realname}"
+install -D -m0644 components/cli/contrib/completion/fish/docker.fish "%{buildroot}/%{_datadir}/fish/vendor_completions.d/%{realname}.fish"
 
 #
 # systemd service
@@ -499,6 +517,10 @@ grep -q '^dockremap:' /etc/subgid || \
 %files zsh-completion
 %defattr(-,root,root)
 %{_sysconfdir}/zsh_completion.d/_%{realname}
+
+%files fish-completion
+%defattr(-,root,root)
+%{_datadir}/fish/vendor_completions.d/%{realname}.fish
 
 %files test
 %defattr(-,root,root)

@@ -1,10 +1,34 @@
 -------------------------------------------------------------------
+Wed Dec 23 06:40:46 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Add Conflicts and Provides for kubic flavour of docker-fish-completion.
+
+-------------------------------------------------------------------
+Mon Dec 21 07:06:53 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 19.03.14-ce. See upstream changelog in the packaged
+  /usr/share/doc/packages/docker/CHANGELOG.md. CVE-2020-15257 bsc#1180243
+
+  https://github.com/docker/docker-ce/releases/tag/v19.03.14
+
+-------------------------------------------------------------------
+Mon Dec 14 13:45:56 UTC 2020 - Robert Munteanu <rombert@apache.org>
+
+- Enable fish-completion
+
+-------------------------------------------------------------------
 Thu Nov 12 18:36:26 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
 
 - Add a patch which makes Docker compatible with firewalld with
   nftables backend. Backport of https://github.com/moby/libnetwork/pull/2548
   (boo#1178801, SLE-16460)
   * boo1178801-0001-Add-docker-interfaces-to-firewalld-docker-zone.patch
+
+-------------------------------------------------------------------
+Fri Sep 18 08:20:04 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 19.03.13-ce. See upstream changelog in the packaged
+  /usr/share/doc/packages/docker/CHANGELOG.md. bsc#1176708
 
 -------------------------------------------------------------------
 Mon Aug  3 16:58:07 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>

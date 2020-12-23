@@ -1042,4 +1042,16 @@ delete request for docker-image-migrator was submitted in parallel.</comment>
   * boo1178801-0001-Add-docker-interfaces-to-firewalld-docker-zone.patch</comment>
     <requestid>851816</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>914be0653f1a6359e228016bcb9857cb</srcmd5>
+    <version>19.03.14_ce</version>
+    <time>1608729666</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Docker 19.03.14-ce. See upstream changelog in the packaged
+  /usr/share/doc/packages/docker/CHANGELOG.md. CVE-2020-15257 bsc#1180243
+  https://github.com/docker/docker-ce/releases/tag/v19.03.14
+- Enable fish-completion
+- Add Conflicts and Provides for kubic flavour of docker-fish-completion.</comment>
+    <requestid>858295</requestid>
+  </revision>
 </revisionlist>
