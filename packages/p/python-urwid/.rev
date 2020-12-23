@@ -143,4 +143,23 @@ Should fix problem with non-downloadable source file.</comment>
   * Make options a static method where applicable (by Philip Matura)</comment>
     <requestid>835016</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1b66154296d9cd513d5d24afbb434711</srcmd5>
+    <version>2.1.2</version>
+    <time>1608729525</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.2:
+ * Add pack method to LineBox. Fixes: #346 (by Miguel de Dios)
+ * Add a test to check the linebox.pack is good. (by Miguel de Dios)
+ * Add bin/release.sh script to partially automate releases. (by Tony Cebzanov)
+ * Add workaround for #386 (by Tony Cebzanov)
+ * Fix curses_display python3 ord() (by Ya-Liang Chang (Allen))
+ * Fix bumping to dev version in release.sh script (by Tony Cebzanov)
+ * Fix focus_end on a collapsed tree (by Anonymous Maarten)
+ * Fix crash with &quot;ellipsis&quot; clipping for py2 tour.py works with py2 now Typo in
+   tour.py (by akorb)
+ * Ignore resetting to invalid locale (Closes: #377) (by Jochen Sprickerhof)
+ * Use ord2 for python2/3 compatibility (by Ya-Liang Chang (Allen))</comment>
+    <requestid>856967</requestid>
+  </revision>
 </revisionlist>
