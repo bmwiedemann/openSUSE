@@ -1,0 +1,45 @@
+Index: pbr-5.5.1/pbr/tests/test_packaging.py
+===================================================================
+--- pbr-5.5.1.orig/pbr/tests/test_packaging.py
++++ pbr-5.5.1/pbr/tests/test_packaging.py
+@@ -48,7 +48,10 @@ import tempfile
+ import textwrap
+ 
+ import fixtures
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ import pkg_resources
+ import six
+ import testscenarios
+Index: pbr-5.5.1/pbr/tests/test_pbr_json.py
+===================================================================
+--- pbr-5.5.1.orig/pbr/tests/test_pbr_json.py
++++ pbr-5.5.1/pbr/tests/test_pbr_json.py
+@@ -10,7 +10,10 @@
+ # License for the specific language governing permissions and limitations
+ # under the License.
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from pbr import pbr_json
+ from pbr.tests import base
+Index: pbr-5.5.1/test-requirements.txt
+===================================================================
+--- pbr-5.5.1.orig/test-requirements.txt
++++ pbr-5.5.1/test-requirements.txt
+@@ -5,7 +5,7 @@
+ wheel>=0.32.0 # MIT
+ fixtures>=3.0.0 # Apache-2.0/BSD
+ hacking>=1.1.0,<4.0.0 # Apache-2.0
+-mock>=2.0.0 # BSD
++mock>=2.0.0;python_version<='3.3' # BSD
+ six>=1.12.0 # MIT
+ stestr>=2.1.0,<3.0;python_version=='2.7' # Apache-2.0
+ stestr>=2.1.0;python_version>='3.0' # Apache-2.0

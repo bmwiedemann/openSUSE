@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Dec 19 15:41:35 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 5.5.1
+  * Run tempest-full for stable/train
+  * Remove use_2to3 backward compat for Setuptools
+  * More easy_install.ScriptWriter.get_header()
+- Changes for 5.5.0
+  * Remove bdist_wininst support
+  * Increase integration test timeout
+  * Add Release Notes to documentation
+  * Cleanup old legacy devstack-gate jobs
+  * Begin work to modernize pbr’s integration testing
+  * Re-add ChangeLog
+  * Update some url to use opendev.org
+  * Support newer openstackdocstheme
+  * Use easy_install.ScriptWriter.get_header()
+  * Remove neutron-fwaas from the jobs’ required project
+  * Update python requires packaging metadata for package
+  * trivial: Improve logging of run commands
+  + Map requires-python to python-requires
+  * Update hacking
+  * Add support for virtualenv 20.x
+- Only test the primary python3 interpreter because some test
+  dependencies from OpenStack (which are not hard required by the
+  package itself) only provide that one.
+  gh#openSUSE/python-rpm-macros#66
+- Add remove_mock.patch
+  https://review.opendev.org/c/openstack/pbr/+/767972
+
+-------------------------------------------------------------------
 Tue Jun  2 16:28:54 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 5.4.5:

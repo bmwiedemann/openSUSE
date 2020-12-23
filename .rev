@@ -603,4 +603,12 @@
   * Switch to Ussuri jobs</comment>
     <requestid>810899</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>af14875495b3ae5562b1e55ec59b94f9</srcmd5>
+    <version>5.5.1</version>
+    <time>1608729538</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>857034</requestid>
+  </revision>
 </revisionlist>
