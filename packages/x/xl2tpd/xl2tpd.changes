@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Dec 19 11:19:06 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.16:
+  * Re-add braces for if-else that have only statement [Samir Hussain]
+  * xl2tpd-control refactoring [Alexander Naumov]
+  * fix travis 'script' syntax [Alexander Naumov]
+  * adding xl2tpd-control tests to travis [Alexander Naumov]
+  * Re-adding text giving more inofrmation about using ipsec with xl2tpd [Samir Hussain]
+  * Update README: typo, links to RFC, link to travis [Alexander Naumov]
+  * Travis will test different compiler on linux distro [Samir Hussain]
+  * Update travis for proper matrix [Samir Hussain]
+  * Add Focal to travis testing [Samir Hussain]
+  * yet another man-page update [Alexander Naumov]
+  * update man-pages, fix typo [Alexander Naumov]
+  * set_flow: result of operation is garbage or undefined [Alexander Naumov]
+  * Update README [Alexander Naumov]
+  * adding xl2tpd.init.patch [Alexander Naumov]
+  * adding Makefile.patch [Alexander Naumov]
+  * moving changes to separate file [Alexander Naumov]
+  * sync/update spec file with official SUSE version [Alexander Naumov]
+  * Set IP_PKTINFO even if setting of IPPROTO_IP fails (as it was in 1.3.9) [shadyhh]
+  * Update .gitignore vim swap file [Samir Hussain]
+  * Travis will test supported Ubuntu LTS distros [Samir Hussain]
+  * Updating COMPATABILITY_ISSUES with info on Miktrotik servers [Samir Hussain]
+  * Add work around for Android 10 maxium retries in COMPATIBILITY_ISSUES [Samir Hussain]
+  * Add compatability issues with Ciso ASA [Samir Hussain]
+
+-------------------------------------------------------------------
 Sun Oct 13 18:22:24 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.3.15
