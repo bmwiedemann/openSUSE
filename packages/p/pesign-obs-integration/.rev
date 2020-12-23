@@ -361,4 +361,13 @@ Otherwise, &quot;modsign-verify&quot; will be missing.
 - add parallel-compression.patch</comment>
     <requestid>843222</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>b7956ce3ae67a3817db02ab29b6345d2</srcmd5>
+    <version>10.2</version>
+    <time>1608729664</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 10.2: Fix the wrongly created noarch subpackages (issue#22, bsc#1180242)
+- tag bsc#1180279</comment>
+    <requestid>858093</requestid>
+  </revision>
 </revisionlist>

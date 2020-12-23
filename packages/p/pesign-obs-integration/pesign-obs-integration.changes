@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 21 03:50:35 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 10.2:
+  * Fix the wrongly created noarch subpackages
+    (issue#22, bsc#1180242)
+
+-------------------------------------------------------------------
 Wed Oct 21 12:44:19 UTC 2020 - dmueller@suse.com
 
 - Update to version 10.1+1602850462:
@@ -30,7 +37,8 @@ Wed Sep  2 03:39:46 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 -------------------------------------------------------------------
 Fri Jul 17 07:25:34 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
-- Add 0001-Enable-find_provides-and-requires.patch (bsc#1114605)
+- Add 0001-Enable-find_provides-and-requires.patch
+  (bsc#1114605, bsc#1180279)
   + Enable this patch again since virtualbox-kmp is split from
     the main package so the customized %find_provides for
     virtualbox-x11-guest won't be affected anymore.
@@ -90,7 +98,7 @@ Tue Apr 16 03:53:05 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
 -------------------------------------------------------------------
 Thu Apr 11 03:45:03 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
 
-- rpm: forward the missing rpm bits (bsc#1114605)
+- rpm: forward the missing rpm bits (bsc#1114605, bsc#1180279)
   + 0001-Passthrough-license-tag.patch
   + 0002-Enable-find_provides-and-requires.patch
 
