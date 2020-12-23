@@ -2865,8 +2865,10 @@ unsorted:
   - docker-client-java 
   - docker-client-java-javadoc 
   - docker-distribution-registry: [x86_64] 
+  - docker-fish-completion 
   - docker-kubic: [x86_64] 
   - docker-kubic-bash-completion: [x86_64] 
+  - docker-kubic-fish-completion: [x86_64] 
   - docker-kubic-kubeadm-criconfig: [x86_64] 
   - docker-kubic-test: [x86_64] 
   - docker-kubic-zsh-completion: [x86_64] 
@@ -9469,7 +9471,7 @@ unsorted:
   - libUil4-32bit: [x86_64] 
   - libUnitTest++-2_0_0 
   - libVFlib3-5 
-  - libVkLayer_utils-1_2_154 
+  - libVkLayer_utils-1_2_162_0 
   - libWN3 
   - libWPEBackend-fdo-1_0-1-32bit: [x86_64] 
   - libWildMidi2 
@@ -9763,8 +9765,8 @@ unsorted:
   - libathemecore1 
   - libatk-bridge-2_0-0-32bit: [x86_64] 
   - libatkmm-1_6-1-32bit: [x86_64] 
-  - libatkmm-2_30-1 
-  - libatkmm-2_30-1-32bit: [x86_64] 
+  - libatkmm-2_36-1 
+  - libatkmm-2_36-1-32bit: [x86_64] 
   - libatlascpp-0_6-1 
   - libatomic1-32bit: [x86_64] 
   - libatomic1-gcc7 
@@ -10290,6 +10292,7 @@ unsorted:
   - libclocale1 
   - libcloudproviders-devel 
   - libcloudproviders0 
+  - libcloudproviders0-32bit: [x86_64] 
   - libclthreads2 
   - libclucene-core1-32bit: [x86_64] 
   - libclucene-shared1-32bit: [x86_64] 
@@ -11095,8 +11098,8 @@ unsorted:
   - libgio-fam 
   - libgio-fam-32bit: [x86_64] 
   - libgiomm-2_4-1-32bit: [x86_64] 
-  - libgiomm-2_66-1 
-  - libgiomm-2_66-1-32bit: [x86_64] 
+  - libgiomm-2_68-1 
+  - libgiomm-2_68-1-32bit: [x86_64] 
   - libgirara-gtk3-3 
   - libgirepository-1_0-1-32bit: [x86_64] 
   - libgit2-1_1-32bit: [x86_64] 
@@ -11118,8 +11121,8 @@ unsorted:
   - libglib-testing-0-0 
   - libglib-testing-devel 
   - libglibmm-2_4-1-32bit: [x86_64] 
-  - libglibmm-2_66-1 
-  - libglibmm-2_66-1-32bit: [x86_64] 
+  - libglibmm-2_68-1 
+  - libglibmm-2_68-1-32bit: [x86_64] 
   - libglog0 
   - libglom-1_32-0 
   - libglom-devel 
@@ -11801,7 +11804,7 @@ unsorted:
   - libjthread1_3_3 
   - libjxrglue0 
   - libkColorPicker0_1_4: [i586] 
-  - libkImageAnnotator0_3_2: [i586] 
+  - libkImageAnnotator0_4_0: [i586] 
   - libkaccounts2: [i586] 
   - libkaccounts2-32bit: [x86_64] 
   - libkasten-lang: [i586] 
@@ -12196,8 +12199,8 @@ unsorted:
   - libmatroska7-32bit: [x86_64] 
   - libmaxminddb-devel 
   - libmaxminddb0-32bit: [x86_64] 
-  - libmbedcrypto5 
-  - libmbedcrypto5-32bit: [x86_64] 
+  - libmbedcrypto6 
+  - libmbedcrypto6-32bit: [x86_64] 
   - libmbedtls13 
   - libmbedtls13-32bit: [x86_64] 
   - libmbedx509-1 
@@ -12895,8 +12898,8 @@ unsorted:
   - libpamtest-devel-doc 
   - libpamtest0 
   - libpangomm-1_4-1-32bit: [x86_64] 
-  - libpangomm-2_44-1 
-  - libpangomm-2_44-1-32bit: [x86_64] 
+  - libpangomm-2_48-1 
+  - libpangomm-2_48-1-32bit: [x86_64] 
   - libpano-devel 
   - libpano-utils 
   - libpano13-3 
@@ -20357,6 +20360,7 @@ unsorted:
   - phpMyAdmin-apache 
   - phpMyAdmin-lang 
   - phpPgAdmin 
+  - phpPgAdmin-apache 
   - physlock 
   - pianobar 
   - picard 
@@ -24012,7 +24016,7 @@ unsorted:
   - python3-scikit-umfpack 
   - python3-scipy: [i586] 
   - python3-scipy-gnu-hpc: [x86_64] 
-  - python3-scipy_1_5_2-gnu-hpc: [x86_64] 
+  - python3-scipy_1_5_4-gnu-hpc: [x86_64] 
   - python3-scp 
   - python3-screeninfo 
   - python3-screenplain 
@@ -24234,6 +24238,7 @@ unsorted:
   - python3-tevent-32bit: [x86_64] 
   - python3-text-unidecode 
   - python3-textX 
+  - python3-textdistance: [x86_64] 
   - python3-textfsm 
   - python3-textile 
   - python3-texttable 
