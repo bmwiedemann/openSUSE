@@ -610,4 +610,19 @@
   of highlight-gui icon.</comment>
     <requestid>848512</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>de628fb426dfe26ff3ee552c697b639c</srcmd5>
+    <version>3.60</version>
+    <time>1608729668</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.60:
+  * Improved PHP 8 syntax support.
+  * Added Emacs Org-Mode support (gl#saalen/highlight#174).
+  * Fixed single argument and truecolor output of mark_lines.lua
+    plug-in (gl#saalen/highlight#164).
+  * Added lineno and column parameters to Decorate hook.
+  * LIB: Moved CodeGenerator::readUserStyleDef and
+    getStyleDefinition to public (gl#saalen/highlight#173).</comment>
+    <requestid>857903</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 21 18:53:47 UTC 2020 - antoine.belvire@opensuse.org
+
+- Update to version 3.60:
+  * Improved PHP 8 syntax support.
+  * Added Emacs Org-Mode support (gl#saalen/highlight#174).
+  * Fixed single argument and truecolor output of mark_lines.lua
+    plug-in (gl#saalen/highlight#164).
+  * Added lineno and column parameters to Decorate hook.
+  * LIB: Moved CodeGenerator::readUserStyleDef and
+    getStyleDefinition to public (gl#saalen/highlight#173).
+
+-------------------------------------------------------------------
 Sat Nov 14 14:48:10 UTC 2020 - antoine.belvire@opensuse.org
 
 - Update to version 3.59:
