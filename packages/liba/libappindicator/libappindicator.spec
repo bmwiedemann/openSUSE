@@ -100,6 +100,7 @@ This package contains the Python 2 bindings for the appindicator library.
 %package -n libappindicator%{sover}
 Summary:        Application indicators library
 Group:          System/Libraries
+Provides:       libappindicator = %{version}
 
 %description -n libappindicator%{sover}
 A library to allow applications to export a menu into the Unity Menu bar. Based

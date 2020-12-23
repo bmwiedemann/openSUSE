@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 20 16:34:27 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
+
+- Provide RH used libappindicator symbol, so third party rpms
+  like Mailspring won't complain about missing dependencies
+
+-------------------------------------------------------------------
 Fri Aug  7 10:14:02 UTC 2020 - Michal Vyskocil <mvyskocil@opensuse.org>
 
 - Provide RH used libappindicator-gtk3 symbol, so third party rpms

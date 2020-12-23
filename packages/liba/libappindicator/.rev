@@ -148,4 +148,12 @@
     <comment>Fix compatibility with applications targeting RedHat dependencies.</comment>
     <requestid>824991</requestid>
   </revision>
+  <revision rev="18" vrev="12">
+    <srcmd5>609f1a56aaf6bffb3da1cabd4ed6ceec</srcmd5>
+    <version>12.10.1+bzr20170215</version>
+    <time>1608729625</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>857771</requestid>
+  </revision>
 </revisionlist>
