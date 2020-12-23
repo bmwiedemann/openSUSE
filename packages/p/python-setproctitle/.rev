@@ -229,4 +229,13 @@
     <comment></comment>
     <requestid>853085</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>8ea45be5e0001681613e3fbbcef9780d</srcmd5>
+    <version>1.2.1</version>
+    <time>1608729524</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.1
+  - Fixed segfault after ``os.environ.clear()`` (issue #88).</comment>
+    <requestid>856966</requestid>
+  </revision>
 </revisionlist>
