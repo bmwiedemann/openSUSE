@@ -206,4 +206,12 @@
   patches (gh#certifi/python-certifi#137).</comment>
     <requestid>850940</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4af8bb78c7201a24f96c7daaccc01fcc</srcmd5>
+    <version>2020.12.5</version>
+    <time>1608729531</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2020.12.5</comment>
+    <requestid>856972</requestid>
+  </revision>
 </revisionlist>
