@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="revision">master</param>
-    <param name="versionformat">10.1+%ct</param>
+    <param name="versionformat">10.2</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="disabled">
