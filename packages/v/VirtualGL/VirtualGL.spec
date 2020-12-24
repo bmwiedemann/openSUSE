@@ -17,7 +17,7 @@
 
 
 Name:           VirtualGL
-Version:        2.6.4
+Version:        2.6.5
 Release:        0
 Summary:        A toolkit for displaying OpenGL applications to thin clients
 License:        LGPL-2.1-only AND SUSE-wxWidgets-3.1

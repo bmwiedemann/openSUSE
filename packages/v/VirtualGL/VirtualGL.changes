@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sat Dec 19 11:08:04 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.5:
+  1. Fixed a race condition that sometimes caused various fatal errors in the
+  interposed `glXMakeContextCurrent()` function if both GLX drawable IDs passed
+  to that function were the same window handle and the corresponding X window was
+  simultaneously resized in another thread.
+
+  2. Fixed an oversight whereby the addresses of the interposed
+  `glDrawBuffers()`, `glGetString()`, and `glGetStringi()` functions introduced
+  in 2.6.3[2] and 2.6.4[1] were not returned from the interposed
+  `glXGetProcAddress()` and `glXGetProcAddressARB()` functions.
+
+  3. VirtualGL now works properly with 3D applications that use the
+  `glNamedFramebufferDrawBuffer()` and `glNamedFramebufferDrawBuffers()`
+  functions (OpenGL 4.5) or the `glFramebufferDrawBufferEXT()` and
+  `glFramebufferDrawBuffersEXT()` functions (`GL_EXT_direct_state_access`) and
+  render to the front buffer.
+
+  4. Fixed a BadRequest X11 error that occurred when attempting to use the X11
+  Transport with a remote X connection.
+
+  5. Worked around an issue with certain GLX implementations that list
+  10-bit-per-component FB configs ahead of 8-bit-per-component FB configs and
+  incorrectly set `GLX_DRAWABLE_TYPE|=GLX_PIXMAP_BIT` for those 10-bpc FB
+  configs, even though they have no X visuals attached.  This caused VirtualGL's
+  interposed `glXChooseVisual()` function to choose one of the 10-bpc FB configs
+  behind the scenes, which made it impossible to use the VGL Transport.
+
+  6. Fixed an issue whereby, when using the X11 Transport, a vertically flipped
+  image of a previously-rendered frame was sometimes displayed if the 3D
+  application called `glFlush()` while the front buffer was the active drawing
+  buffer and the render mode was `GL_FEEDBACK` or `GL_SELECT`.
+
+  7. `vglserver_config` now works properly if invoked with a relative path
+  (for example, `cd /opt/VirtualGL/bin; sudo ./vglserver_config`.)
+
+  8. Worked around a limitation in the AMDGPU drivers that prevented recent
+  versions of Google Chrome from enabling GPU acceleration when used with
+  VirtualGL.
+
+-------------------------------------------------------------------
 Mon Jul  6 22:39:50 UTC 2020 - Ákos Szőts <szotsaki@gmail.com>
 
 - update to 2.6.4
