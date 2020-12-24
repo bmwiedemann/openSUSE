@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Dec 21 17:13:59 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- Update to 1.9.4p2
+  * Fixed a bug introduced in sudo 1.9.4p1 which could lead to a crash
+    if the sudoers file contains a runas user-specific Defaults entry.
+    Bug #951.
+
+- News in 1.9.4p1
+  * Fixed a regression introduced in version 1.9.4 where sudo would
+    not build when configured using the --without-sendmail option.
+    Bug #947.
+  * Fixed a problem where if I/O logging was disabled and sudo was
+    unable to connect to sudo_logsrvd, the command would still be
+    allowed to run even when the "ignore_logfile_errors" sudoers
+    option was enabled.
+  * Fixed a crash introduced in version 1.9.4 when attempting to run
+    a command as a non-existent user.  Bug #948.
+  * The installed sudo.conf file now has the default sudoers Plugin
+    lines commented out.  This fixes a potential conflict when there
+    is both a system-installed version of sudo and a user-installed
+    version.  GitHub issue #75.
+  * Fixed a regression introduced in sudo 1.9.4 where sudo would run
+    the command as a child process even when a pseudo-terminal was
+    not in use and the "pam_session" and "pam_setcred" options were
+    disabled.  GitHub issue #76.
+  * Fixed a regression introduced in sudo 1.8.9 where the "closefrom"
+    sudoers option could not be set to a value of 3.  Bug #950.
+
+-------------------------------------------------------------------
 Mon Nov 30 17:36:19 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - Update to 1.9.4
