@@ -22,15 +22,18 @@
 %define tar_suffix %{nil}
 #
 %global qt6_flavor @BUILD_FLAVOR@%{nil}
+%if "%{qt6_flavor}" == "docs"
+%define pkg_suffix -docs
+%endif
 #
-Name:           qt6-svg
+Name:           qt6-svg%{?pkg_suffix}
 Version:        6.0.0
 Release:        0
 Summary:        Qt 6 SVG Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
-Source99:       %{name}-rpmlintrc
+Source99:       qt6-svg-rpmlintrc
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-gui-private-devel

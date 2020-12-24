@@ -7,4 +7,12 @@
     <comment>Qt 6.0</comment>
     <requestid>855734</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bb947cf17d76c83117285d0ea950b211</srcmd5>
+    <version>6.0.0</version>
+    <time>1608835113</time>
+    <user>dimstar_suse</user>
+    <comment>- Use a different 'Name' when building the docs flavor.</comment>
+    <requestid>858362</requestid>
+  </revision>
 </revisionlist>
