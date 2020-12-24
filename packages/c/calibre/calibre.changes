@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Dec 24 13:25:25 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.8.1
+  - Fixes a couple of regressions that broke the Save to disk 
+    function and changing Page layout settings in the viewer.
+
+-------------------------------------------------------------------
+Thu Dec 24 07:31:03 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.8.0
+  * New Features
+    - Happy holidays to all calibre users!
+    - E-book Viewer: Add a mode to follow links with only the 
+      keyboard (triggered by Alt+f)
+    - Edit book: A new option to show a configurable number lines 
+      above the current line when syncing the position of the
+      preview panel to the current position in the code editor 
+      (under Preview settings in the Editor preferences).
+    - Windows: Automatically resolve shortcuts (.lnk files) when 
+      adding books to calibre.
+    - Content server viewer: Don't enter fullscreen mode 
+      automatically when reading on desktop like devices (this can
+      be controlled via a setting in in the viewer preferences 
+      under Page layout)
+    - E-book Viewer tool bar: Add a select all action and a Read 
+      aloud action (can be added by right clicking the tool bar and
+      configuring it)
+    - Template/formatter enhancements: Add a 'for' statement and 
+      add the ability for a developer to pass extra information to
+      a template.
+    - Rules editors for icon/coloring rules: Add a button to 
+      duplicate rules and to convert a rule to advanced template
+      mode
+  * Bug Fixes
+    - Content server viewer: Fix regression in 5.0 that broke 
+      scrolling on iOS
+    - E-book viewer: Fix error when scrolling to some search 
+      results in flow mode
+    - AZW3 Input: Fix rare AID based links not working.
+    - E-book viewer: Fix clock in header/footer not using system 
+      time format
+    - Windows: Fix Read aloud not working with books that have
+      a single large internal text file, such as MOBI or DOCX books
+    - PDF Output: Fix a regression causing conversion to fail when
+      typesetting Chinese text
+    - Amazon metadata download: Fix no results being found when
+      using the auto or google server because of a change in the 
+      markup of the Google search results page.
+
+-------------------------------------------------------------------
 Sat Dec 12 10:51:19 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.7.2
