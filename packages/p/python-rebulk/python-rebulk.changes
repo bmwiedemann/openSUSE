@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 24 09:55:48 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.0.0
+  * feat(regex): replace REGEX_DISABLED environment variable with
+    REBULK_…
+  * feat: add python 3.8/3.9 support, drop python 2.7/3.4 support
+
+-------------------------------------------------------------------
 Sat May  2 07:49:27 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.0.1
