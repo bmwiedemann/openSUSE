@@ -2220,4 +2220,36 @@
     <comment></comment>
     <requestid>851799</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>97df7a5c360cbf01b6f88b21ce3ce45b</srcmd5>
+    <version>3.59</version>
+    <time>1608835196</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.59
+  Notable changes
+  * Exported two existing functions from libnss:
+    CERT_AddCertToListHeadWithData and CERT_AddCertToListTailWithData
+  Bugfixes
+  * bmo#1607449 - Lock cert-&gt;nssCertificate to prevent a potential data race
+  * bmo#1672823 - Add Wycheproof test cases for HMAC, HKDF, and DSA
+  * bmo#1663661 - Guard against NULL token in nssSlot_IsTokenPresent
+  * bmo#1670835 - Support enabling and disabling signatures via Crypto Policy
+  * bmo#1672291 - Resolve libpkix OCSP failures on SHA1 self-signed
+                  root certs when SHA1 signatures are disabled.
+  * bmo#1644209 - Fix broken SelectedCipherSuiteReplacer filter to
+                  solve some test intermittents
+  * bmo#1672703 - Tolerate the first CCS in TLS 1.3 to fix a regression in
+                  our CVE-2020-25648 fix that broke purple-discord
+                  (boo#1179382)
+  * bmo#1666891 - Support key wrap/unwrap with RSA-OAEP
+  * bmo#1667989 - Fix gyp linking on Solaris
+  * bmo#1668123 - Export CERT_AddCertToListHeadWithData and
+                  CERT_AddCertToListTailWithData from libnss
+  * bmo#1634584 - Set CKA_NSS_SERVER_DISTRUST_AFTER for Trustis FPS Root CA
+  * bmo#1663091 - Remove unnecessary assertions in the streaming
+                  ASN.1 decoder that affected decoding certain PKCS8
+                  private keys when using NSS debug builds
+  *  bmo#670839 - Use ARM crypto extension for AES, SHA1 and SHA2 on MacOS.</comment>
+    <requestid>852633</requestid>
+  </revision>
 </revisionlist>
