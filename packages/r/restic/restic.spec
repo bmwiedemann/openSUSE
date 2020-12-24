@@ -20,7 +20,7 @@
 %define import_path github.com/restic/restic
 
 Name:           restic
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        Backup program with deduplication and encryption
 License:        BSD-2-Clause
@@ -84,7 +84,7 @@ install -Dm0644 doc/zsh-completion.zsh %{buildroot}%{_sysconfdir}/zsh_completion
 
 %files
 %defattr(-,root,root)
-%doc *.md *.rst
+%doc *.md
 %doc doc/
 %license LICENSE
 %{_bindir}/restic

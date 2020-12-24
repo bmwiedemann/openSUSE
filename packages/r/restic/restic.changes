@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Dec 21 10:48:03 UTC 2020 - Gordon Schulz <gordon@gordonschulz.de>
+
+- Update to 0.11.0
+  https://github.com/restic/restic/releases/tag/v0.11.0
+  See installed /usr/share/doc/packages/restic/CHANGELOG.md.
+
+  Fixes:
+  * #1212: Restore timestamps and permissions on intermediate directories
+  * #1756: Mark repository files as read-only when using the local backend
+  * #2241: Hide password in REST backend repository URLs
+  * #2319: Correctly dump directories into tar files
+  * #2491: Don't require self-update --output placeholder file
+  * #2834: Fix rare cases of backup command hanging forever
+  * #2938: Fix manpage formatting
+  * #2942: Make --exclude-larger-than handle disappearing files
+  * #2951: Restic generate, help and self-update no longer check passwords
+  * #2979: Make snapshots --json output [] instead of null when no snapshots
+
+  Enhancements:
+  * #2969: Optimize check for unchanged files during backup
+  * #340: Add support for Volume Shadow Copy Service (VSS) on Windows
+  * #2849: Authenticate to Google Cloud Storage with access token
+  * #1458: New option --repository-file
+  * #2978: Warn if parent snapshot cannot be loaded during backup
+
+-------------------------------------------------------------------
 Tue Sep 22 21:22:18 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.10.0.
