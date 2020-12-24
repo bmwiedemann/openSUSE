@@ -248,4 +248,12 @@
     <comment>- Restore libSDL2main.a, patching it out was not easily possible.</comment>
     <requestid>794506</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>febaa3e9ef9854b1a26314a0de5d9090</srcmd5>
+    <version>2.0.14</version>
+    <time>1608835083</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858339</requestid>
+  </revision>
 </revisionlist>

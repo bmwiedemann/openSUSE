@@ -19,13 +19,12 @@
 %define sle_version 0
 Name:           SDL2
 %define lname   libSDL2-2_0-0
-Version:        2.0.12
+Version:        2.0.14
 Release:        0
 Summary:        Simple DirectMedia Layer Library
 License:        Zlib
 Group:          Development/Libraries/X11
 URL:            http://libsdl.org/
-
 #DL-URL:        http://libsdl.org/download-2.0.php
 Source:         http://libsdl.org/release/%name-%version.tar.gz
 Source2:        http://libsdl.org/release/%name-%version.tar.gz.sig

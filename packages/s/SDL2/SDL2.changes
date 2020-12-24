@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 23 10:47:09 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.14:
+  * Added support for PS5 DualSense and Xbox Series X controllers to the HIDAPI controller driver
+  * Vulkan support to the KMSDRM video driver
+  * see details on https://discourse.libsdl.org/t/sdl-2-0-14-released/28470
+
+-------------------------------------------------------------------
 Thu Apr 16 08:32:06 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Restore libSDL2main.a, patching it out was not easily possible.
