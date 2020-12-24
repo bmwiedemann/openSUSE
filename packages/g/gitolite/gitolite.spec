@@ -1,7 +1,7 @@
 #
 # spec file for package gitolite
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define         gitolite_homedir    /srv/gitolite
 %define         git_user            git
 Name:           gitolite
-Version:        3.6.11
+Version:        3.6.12
 Release:        0
 Summary:        Server for git directory version tracker
 License:        GPL-2.0-or-later
