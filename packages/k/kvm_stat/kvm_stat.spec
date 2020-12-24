@@ -60,14 +60,14 @@ simple text.
 
 %patch00 -p1
 # Patches present upstream, since 5.7
-%if "%{version}" < "5.7.0"
+%if "%(echo `echo -e "%{version}\\n5.7.0" | sort -V | head -n1 2> /dev/null`)" != "5.7.0"
 %patch01 -p1
 %patch02 -p1
 %patch03 -p1
 %patch04 -p1
 %endif
-%if "%{version}" < "5.8.0"
 # Patches present upstream, since 5.8
+%if "%(echo `echo -e "%{version}\\n5.8.0" | sort -V | head -n1 2> /dev/null`)" != "5.8.0"
 %patch05 -p1
 %patch06 -p1
 %patch07 -p1

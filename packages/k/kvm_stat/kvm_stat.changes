@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 23 13:45:24 UTC 2020 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fix kernel version comparison for selectively applying patches
+  * so that it won't break when, e.g., 5.10.0 hits Factory
+
+-------------------------------------------------------------------
 Fri Dec  4 17:40:20 UTC 2020 - Dario Faggioli <dfaggioli@suse.com>
 
 - Include the example service file in the package
