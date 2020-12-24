@@ -1322,4 +1322,15 @@ Boost Software License 1.0 is available in SPDX format on http://www.spdx.org/li
 - baselibs.conf: updated to new version</comment>
     <requestid>856655</requestid>
   </revision>
+  <revision rev="143" vrev="2">
+    <srcmd5>4d630182ce918503b760ce2a42ce2a4f</srcmd5>
+    <version>1.75.0</version>
+    <time>1608835086</time>
+    <user>dimstar_suse</user>
+    <comment>- libboost_nowide now uses same pattern of Provides/Conflicts
+  and version numbers as other Boost libraries
+- Add missing conflicts for Boost 1.66
+- Boost.Build (jam) implementation is now obsoletes older versions</comment>
+    <requestid>858341</requestid>
+  </revision>
 </revisionlist>

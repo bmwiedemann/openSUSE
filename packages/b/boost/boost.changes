@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 23 11:04:47 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- libboost_nowide now uses same pattern of Provides/Conflicts
+  and version numbers as other Boost libraries
+- Add missing conflicts for Boost 1.66
+- Boost.Build (jam) implementation is now obsoletes older versions
+
+-------------------------------------------------------------------
 Thu Dec 17 10:42:56 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Replace hardcoded python3.8 path in the spec file

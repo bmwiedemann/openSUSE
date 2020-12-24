@@ -349,6 +349,10 @@ inteface.
 %package     -n boost%{library_version}-jam
 Summary:        A Boost Make Replacement
 Group:          Development/Tools/Building
+Conflicts:      boost_1_66-jam
+Obsoletes:      boost-jam-impl < %{version}
+Obsoletes:      boost_1_66-jam
+Provides:       boost_1_66-jam = %{version}
 Conflicts:      boost-jam-impl
 Provides:       boost-jam-impl = %{version}
 
@@ -747,8 +751,8 @@ This package contains the Boost.Math Runtime libraries.
 %package     -n libboost_nowide%{library_version}-devel
 Summary:        Development headers for Boost.Nowide libraries
 Group:          Development/Libraries/C and C++
-Provides:       boost-nowide-devel = 10.0.2.1
-Obsoletes:      boost-nowide-devel < 10.0.2.1
+Conflicts:      boost-nowide-devel-impl
+Provides:       boost-nowide-devel-impl = %{version}
 
 %description -n libboost_nowide%{library_version}-devel
 Development headers for Boost.Nowide* boost libraries.
@@ -781,6 +785,7 @@ serialization interface
 Summary:        Python 3.x bindings for Boost.Parallel.MPI library
 Group:          Development/Languages/Python
 Conflicts:      python3-boost_parallel_mpi-impl
+Conflicts:      python3-boost_parallel_mpi1_66_0
 Provides:       python3-boost_parallel_mpi-impl = %{version}
 
 %description -n python3-boost_parallel_mpi%{library_version}
@@ -1122,7 +1127,7 @@ Requires:       libboost_thread%{library_version}-devel = %{version}
 Requires:       libboost_type_erasure%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_type_erasure-devel-impl
-Conflicts:      libboost_type_erasuse1_66_0-devel
+Conflicts:      libboost_type_erasure1_66_0-devel
 Provides:       libboost_type_erasure-devel-impl = %{version}
 
 %description -n libboost_type_erasure%{library_version}-devel
