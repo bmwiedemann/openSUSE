@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 22 17:02:47 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.38.2:
+  + Don't treat unknown coordinates as definitely off-screen.
+    Should fix the problem seen with flat review resulting from a
+    change in Gtk+ 3.24.24.
+
+-------------------------------------------------------------------
 Thu Dec  3 18:50:31 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.1:
