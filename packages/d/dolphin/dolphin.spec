@@ -32,6 +32,7 @@ Source3:        dolphinsu.desktop
 Patch0:         dolphin-go_up.diff
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-Update-cached-viewContainer-geometry-every-time-they.patch
+Patch2:         0001-Fix-access-url-navigator-while-creating-new-tab-in-f.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch
 BuildRequires:  extra-cmake-modules >= 1.6.0

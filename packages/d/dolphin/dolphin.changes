@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 22 21:59:29 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Add upstream patch to fix crash on launch (kde#429628,
+  kde#430434):
+  * 0001-Fix-access-url-navigator-while-creating-new-tab-in-f.patch
+
+-------------------------------------------------------------------
 Thu Dec 10 19:14:25 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix appearance on the first start (kde#429447):
