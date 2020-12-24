@@ -26,8 +26,8 @@
 # major 69
 # mainver %major.99
 %define major          78
-%define mainver        %major.5.1
-%define orig_version   78.5.1
+%define mainver        %major.6.0
+%define orig_version   78.6.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define source_prefix  thunderbird-%{orig_version}
@@ -477,7 +477,6 @@ xvfb-run --server-args="-screen 0 1920x1080x24" \
 
 # build additional locales
 %if %localize
-mkdir -p %{buildroot}%{progdir}/extensions/
 truncate -s 0 %{_tmppath}/translations.{common,other}
 # langpack-build can not be done in parallel easily (see https://bugzilla.mozilla.org/show_bug.cgi?id=1660943)
 # Therefore, we have to have a separate obj-dir for each language
@@ -495,7 +494,7 @@ ac_add_options --with-l10n-base=$RPM_BUILD_DIR/l10n
 ac_add_options --disable-updater
 ac_add_options --enable-official-branding
 EOF
-
+mkdir -p $RPM_BUILD_DIR/langpacks_artifacts/
 sed -r '/^(ja-JP-mac|en-US|$)/d;s/ .*$//' $RPM_BUILD_DIR/%{source_prefix}/comm/mail/locales/shipped-locales \
     | xargs -n 1 %{?jobs:-P %jobs} -I {} /bin/sh -c '
         locale=$1
@@ -505,10 +504,9 @@ sed -r '/^(ja-JP-mac|en-US|$)/d;s/ .*$//' $RPM_BUILD_DIR/%{source_prefix}/comm/m
         # nsinstall is needed for langpack-build. It is already built by `./mach build`, but building it again is very fast
         ./mach build config/nsinstall langpack-$locale
         cp -rL ../obj_$locale/dist/xpi-stage/locale-$locale \
-           %{buildroot}%{progdir}/extensions/langpack-$locale@thunderbird.mozilla.org
-        # remove prefs, profile defaults, and hyphenation from langpack
-        rm -rf %{buildroot}%{progdir}/extensions/langpack-$locale@thunderbird.mozilla.org/defaults
-        rm -rf %{buildroot}%{progdir}/extensions/langpack-$locale@thunderbird.mozilla.org/hyphenation
+          $RPM_BUILD_DIR/langpacks_artifacts/langpack-$locale@thunderbird.mozilla.org
+        rm -rf $RPM_BUILD_DIR/langpacks_artifacts/langpack-$locale@thunderbird.mozilla.org/defaults
+        rm -rf $RPM_BUILD_DIR/langpacks_artifacts/langpack-$locale@thunderbird.mozilla.org/hyphenation
         # Build systems like to run out of disc-space, so we delete the build-dir here (we copied already all relevant files)
         rm -rf ../obj_$locale/
         # check against the fixed common list and sort into the right filelist
@@ -534,6 +532,8 @@ make -C comm/mail/installer STRIP=/bin/true MOZ_PKG_FATAL_WARNINGS=0
 # copy tree into RPM_BUILD_ROOT
 mkdir -p %{buildroot}%{progdir}
 cp -rf $RPM_BUILD_DIR/obj/dist/%{progname}/* %{buildroot}%{progdir}
+mkdir -p %{buildroot}%{progdir}/extensions
+cp -rf $RPM_BUILD_DIR/langpacks_artifacts/* %{buildroot}%{progdir}/extensions/
 
 # remove some executable permissions
 find %{buildroot}%{progdir} \

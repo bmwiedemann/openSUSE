@@ -3424,4 +3424,36 @@ I cannot test locally unfortunately.
     Stack overflow due to incorrect parsing of SMTP server response codes</comment>
     <requestid>852686</requestid>
   </revision>
+  <revision rev="245" vrev="1">
+    <srcmd5>9ae7eac9699771f600dce2e3686cfb71</srcmd5>
+    <version>78.6.0</version>
+    <time>1608835201</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 78.6.0
+  * changes and additions in MailExtensions
+  * several bugfixes
+  * https://www.thunderbird.net/en-US/thunderbird/78.6.0/releasenotes/
+  MFSA 2020-56 (bsc#1180039))
+  * CVE-2020-16042 (bmo#1679003)
+    Operations on a BigInt could have caused uninitialized memory
+    to be exposed
+  * CVE-2020-26971 (bmo#1663466)
+    Heap buffer overflow in WebGL
+  * CVE-2020-26973 (bmo#1680084)
+    CSS Sanitizer performed incorrect sanitization
+  * CVE-2020-26974 (bmo#1681022)
+    Incorrect cast of StyleGenericFlexBasis resulted in a heap
+    use-after-free
+  * CVE-2020-26978 (bmo#1677047)
+    Internal network hosts could have been probed by a malicious
+    webpage
+  * CVE-2020-35111 (bmo#1657916)
+    The proxy.onRequest API did not catch view-source URLs
+  * CVE-2020-35112 (bmo#1661365)
+    Opening an extension-less download may have inadvertently
+    launched an executable instead
+  * CVE-2020-35113 (bmo#1664831, bmo#1673589)
+    Memory safety bugs fixed in Thunderbird 78.6</comment>
+    <requestid>856497</requestid>
+  </revision>
 </revisionlist>
