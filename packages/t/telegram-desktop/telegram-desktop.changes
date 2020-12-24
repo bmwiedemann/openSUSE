@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Dec 23 14:42:21 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.5.1
+  * Turn any of your group chats into a hop-on, hop-off conference call.
+  * Get up to several thousand participants in each voice chat.
+  * Control the number of speakers with flexible admin tools.
+  * Fix crash in voice calls.
+
+-------------------------------------------------------------------
+Sat Dec 19 20:22:56 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.4.15 (beta)
+  * Improve design of voice chats.
+  * Fix sending of voice messages as replies.
+  * Fix 'Open With' menu position in macOS.
+  * Fix freeze on secondary screen disconnect.
+- Update tg_owt
+
+-------------------------------------------------------------------
+Tue Dec 15 09:28:33 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.4.14 (beta)
+  * Create voice chats in legacy groups.
+  * Fix sticker pack opening.
+  * Fix group status display.
+  * Fix group members display.
+
+-------------------------------------------------------------------
+Wed Dec  9 11:21:21 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.4.13 (beta)
+  * Voice chats in groups.
+  * Fix voice messages sending.
+  * Fix crash in voice calls.
+- Update tg_owt
+
+-------------------------------------------------------------------
+Sun Nov 22 14:51:50 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.4.11 (beta)
+  * Upgrade Qt to version 5.15.1.
+  * Upgrade FFmpeg to version 4.2.
+  * Upgrade OpenAL to version 1.20.1.
+  * Fix crash in tray icon removing.
+  * Use inline bots and sticker by emoji suggestions in
+    channel comments.
+  * Lock voice message recording, listen to your voice message
+    before sending.
+  * Improve locked voice message recording.
+  * Fix main window closing to tray on Windows.
+  * Fix crash in bot command sending.
+  * Fix adding additional photos when sending an album to a group
+    with enabled slow mode.
+- Update tg_owt
+- Remove explicit Requires: for ffmpeg and openssl
+
+-------------------------------------------------------------------
 Thu Nov  5 16:53:45 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 2.4.7

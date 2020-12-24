@@ -31,14 +31,14 @@
 %define __builder ninja
 
 Name:           telegram-desktop
-Version:        2.4.7
+Version:        2.5.1
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://github.com/telegramdesktop/tdesktop
 Source0:        https://github.com/telegramdesktop/tdesktop/releases/download/v%{version}/tdesktop-%{version}-full.tar.gz
-# tg_owt: https://github.com/desktop-app/tg_owt/archive/master.zip
+# git clone --recurse-submodules https://github.com/desktop-app/tg_owt.git tg_owt-master
 Source1:        tg_owt-master.zip
 # PATCH-FIX-OPENSUSE
 Patch0:         0000-gtk2-default.patch
@@ -123,6 +123,7 @@ BuildRequires:  pkgconfig(xcb-ewmh)
 BuildRequires:  pkgconfig(xcb-icccm)
 BuildRequires:  pkgconfig(xcb-image)
 BuildRequires:  pkgconfig(xcb-keysyms)
+BuildRequires:  pkgconfig(xcb-record)
 BuildRequires:  pkgconfig(xcb-renderutil)
 BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xfixes)
@@ -130,10 +131,8 @@ BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xkbcommon-x11)
 BuildRequires:  pkgconfig(zlib)
 # Runtime requirements
-Requires:       ffmpeg
 Requires:       hicolor-icon-theme
 Requires:       icu
-Requires:       openssl
 # TDesktop can fall back to a simple GTK file picker but prefers the portal
 Recommends:     xdg-desktop-portal
 Recommends:     libqt5-qtwayland
