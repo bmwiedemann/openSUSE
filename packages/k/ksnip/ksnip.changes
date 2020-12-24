@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Dec 14 20:57:39 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Run testsuite
+
+-------------------------------------------------------------------
+Mon Dec 14 20:28:18 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8.0
+  New:
+  * Pin screenshots in frameless windows that stay in foreground.
+  * Support for unit tests.
+  * Add brew cask package for ksnip.
+  * Allow setting image quality when saving images.
+  * Add support for cross-platform wayland screenshots using
+    xdg-desktop-portal.
+  * Add save and save as tab contextMenu items.
+  * Add open directory context menu item on capture tabs.
+  * Add copy path to clipboard context menu item on capture tabs.
+  * Add option to delete saved images.
+  * Add support for loading image from stdin.
+  * Add screenshot options as application actions to desktop file.
+  * Allow renaming existing images.
+  * Make hiding main window during screenshot optional.
+  * Open several files at once in tabs.
+  * Allow modifying selected rectangle before making screenshot.
+  * Option to keep main window hidden after a taking screenshot.
+  Changed:
+  * Show all Screenshot options in System Tray.
+  * Upload multiple stickers at once.
+  * Follow pattern for monochromatic systray icon.
+  * Pin window shows default cursor when mouse over it.
+  * Cancel snipping area if no selection made after 60 sec.
+  * Allow removing imgur account.
+  Fixed:
+  * zh_Hans translation won't load.
+  * Ksnip only saves the upper right part of the screenshot with
+    HiDPI.
+  * Main window not resized with new captures.
+  * Brazilian Portuguese translation not loaded.
+
+-------------------------------------------------------------------
 Fri Jul 31 19:37:07 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7.3

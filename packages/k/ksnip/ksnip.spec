@@ -17,7 +17,7 @@
 
 
 Name:           ksnip
-Version:        1.7.3
+Version:        1.8.0
 Release:        0
 Summary:        Screenshot tool
 License:        GPL-2.0-or-later
@@ -29,15 +29,17 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  kColorPicker-devel
-BuildRequires:  kImageAnnotator-devel >= 0.3.2
+BuildRequires:  kImageAnnotator-devel >= 0.4.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  xvfb-run
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Xml)
@@ -54,7 +56,7 @@ annotation features for your screenshots.
 %autosetup -p1
 
 %build
-%cmake
+%cmake -DBUILD_TESTS=ON
 %cmake_build
 
 %install
@@ -62,6 +64,9 @@ annotation features for your screenshots.
 %suse_update_desktop_file -r org.ksnip.ksnip Utility DesktopUtility
 
 %find_lang %{name} --with-qt
+
+%check
+xvfb-run make -C build test
 
 %files
 %license LICENSE
