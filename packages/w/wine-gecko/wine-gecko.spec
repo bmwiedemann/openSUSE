@@ -24,6 +24,8 @@ Version:        2.47.2
 Release:        0
 Source0:        http://dl.winehq.org/wine/wine-gecko/%{version}/wine-gecko-%{version}-x86.msi
 Source1:        http://dl.winehq.org/wine/wine-gecko/%{version}/wine-gecko-%{version}-x86_64.msi
+Source2:        http://dl.winehq.org/wine/wine-gecko/%{version}/wine-gecko-%{version}-x86.tar.xz
+Source3:        http://dl.winehq.org/wine/wine-gecko/%{version}/wine-gecko-%{version}-x86_64.tar.xz
 BuildArch:      noarch
 # Source of this CAB is at:
 # http://wine.git.sourceforge.net/git/gitweb.cgi?p=wine/wine-gecko;a=summary
@@ -41,6 +43,9 @@ mkdir -p $RPM_BUILD_ROOT/usr/share/wine/gecko
 cp %{SOURCE0} $RPM_BUILD_ROOT/usr/share/wine/gecko
 cp %{SOURCE1} $RPM_BUILD_ROOT/usr/share/wine/gecko
 
+tar xf %{SOURCE2} -C $RPM_BUILD_ROOT/usr/share/wine/gecko
+tar xf %{SOURCE3} -C $RPM_BUILD_ROOT/usr/share/wine/gecko
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -48,6 +53,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-, root, root)
 %dir /usr/share/wine
 %dir /usr/share/wine/gecko
-/usr/share/wine/gecko/*msi
+/usr/share/wine/gecko/*
 
 %changelog
