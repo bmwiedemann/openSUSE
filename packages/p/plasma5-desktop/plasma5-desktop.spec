@@ -38,6 +38,8 @@ Source:         https://download.kde.org/stable/plasma/%{version}/plasma-desktop
 Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         Reparse-the-key-repeat-rate-config-when-we-try-to-load-it.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Use-themed-user-face-icon-in-kickoff.patch
 BuildRequires:  extra-cmake-modules >= %{kf5_version}

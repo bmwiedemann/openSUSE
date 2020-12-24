@@ -1,0 +1,39 @@
+From 35c2ec86680f0feedaaeecb3b54bf2b9ddce6541 Mon Sep 17 00:00:00 2001
+From: Weng Xuetian <wengxt@gmail.com>
+Date: Thu, 17 Dec 2020 22:06:56 -0800
+Subject: [PATCH] Reparse the key repeat rate config when we try to load it.
+
+Right now due to the fact that it is a shared config, we may load the
+old value from memory.
+
+BUG: 418175
+FIXED-IN: 5.21
+(cherry picked from commit 27a64b96f224b510234c76c22bcc6407a86ea4b8)
+---
+ kcms/keyboard/keyboard_hardware.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/kcms/keyboard/keyboard_hardware.cpp b/kcms/keyboard/keyboard_hardware.cpp
+index 95a97e898..7a8656b72 100644
+--- a/kcms/keyboard/keyboard_hardware.cpp
++++ b/kcms/keyboard/keyboard_hardware.cpp
+@@ -76,7 +76,9 @@ int set_repeat_mode(TriState keyboardRepeatMode)
+ 
+ void init_keyboard_hardware()
+ {
+-    KConfigGroup config(KSharedConfig::openConfig( QStringLiteral("kcminputrc") ), "Keyboard");
++	auto inputConfig = KSharedConfig::openConfig( QStringLiteral("kcminputrc") );
++	inputConfig->reparseConfiguration();
++	KConfigGroup config(inputConfig, "Keyboard");
+ 
+ 	QString keyRepeatStr = config.readEntry("KeyboardRepeating", TriStateHelper::getString(STATE_ON));
+ 	TriState keyRepeat = STATE_UNCHANGED;
+@@ -100,4 +102,5 @@ void init_keyboard_hardware()
+         KModifierKeyInfo keyInfo;
+         keyInfo.setKeyLocked(Qt::Key_NumLock, numlockState == STATE_ON);
+ 	}
++	XFlush(QX11Info::display());
+ }
+-- 
+GitLab
+

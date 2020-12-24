@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 23 08:14:41 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add upstream patch to fix keyboard repeat settings not being
+  applied immediately (boo#1164739, kde#418175):
+  * Reparse-the-key-repeat-rate-config-when-we-try-to-load-it.patch
+
+-------------------------------------------------------------------
 Tue Dec  1 15:22:17 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.4
