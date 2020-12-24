@@ -20,7 +20,7 @@
 %define namever 1-0
 %define libver  1
 Name:           retro-gtk
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Toolkit to write Gtk+3-based frontends to libretro
 License:        GPL-3.0-only
