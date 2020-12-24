@@ -380,4 +380,14 @@
     <comment></comment>
     <requestid>854963</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>92537e640e50512127dec12bb1b4cbde</srcmd5>
+    <version>20.0.0</version>
+    <time>1608835046</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust metadata for skip-networked-test.patch and refer to the proper
+  upstream ticket gh#pyca/pyopenssl#68.
+</comment>
+    <requestid>858225</requestid>
+  </revision>
 </revisionlist>

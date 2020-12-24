@@ -25,7 +25,9 @@ Summary:        Python wrapper module around the OpenSSL library
 License:        Apache-2.0
 URL:            https://github.com/pyca/pyopenssl
 Source:         https://files.pythonhosted.org/packages/source/p/pyOpenSSL/pyOpenSSL-%{version}.tar.gz
-Patch1:         skip-networked-test.patch
+# PATCH-FIX-UPSTREAM skip-networked-test.patch gh#pyca/pyopenssl#68 mcepl@suse.com
+# Mark tests requiring network access
+Patch0:         skip-networked-test.patch
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module cryptography >= 2.8}
 BuildRequires:  %{python_module flaky}
@@ -71,10 +73,10 @@ other things) a cffi-based interface to OpenSSL.
 %check
 SKIPPED_TESTS="network"
 %if %{__isa_bits} == 32
-SKIPPED_TESTS="$SKIPPED_TESTS or test_verify_with_time"
+SKIPPED_TESTS="(network or test_verify_with_time)"
 %endif
 export LC_ALL=en_US.UTF-8
-%pytest -k "not ($SKIPPED_TESTS)"
+%pytest -k "not $SKIPPED_TESTS"
 
 %files %{python_files}
 %license LICENSE
