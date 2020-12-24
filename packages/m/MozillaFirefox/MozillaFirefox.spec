@@ -29,15 +29,15 @@
 # orig_suffix b3
 # major 69
 # mainver %major.99
-%define major          83
+%define major          84
 %define mainver        %major.0
-%define orig_version   83.0
+%define orig_version   84.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
 %define devpkg         1
 
-# PGO builds do not work in TW currently (bmo#1642410)
+# PGO builds do not work in TW currently (bmo#1680306)
 %define do_profiling   0
 
 # upstream default is clang (to use gcc for large parts set to 0)
@@ -92,7 +92,7 @@ BuildRequires:  gcc9-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  cargo >= 1.43
+BuildRequires:  cargo >= 1.44
 BuildRequires:  ccache
 BuildRequires:  libXcomposite-devel
 BuildRequires:  libcurl-devel
@@ -101,7 +101,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.29
-BuildRequires:  mozilla-nss-devel >= 3.58
+BuildRequires:  mozilla-nss-devel >= 3.59
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs10 >= 10.22.1
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -111,8 +111,8 @@ BuildRequires:  python36
 BuildRequires:  python3 >= 3.5
 BuildRequires:  python3-devel
 %endif
-BuildRequires:  rust >= 1.43
-BuildRequires:  rust-cbindgen >= 0.14.3
+BuildRequires:  rust >= 1.44
+BuildRequires:  rust-cbindgen >= 0.15.0
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-libXt-devel
@@ -178,6 +178,7 @@ Source13:       spellcheck.js
 Source14:       https://github.com/openSUSE/firefox-scripts/raw/5e54f4a/create-tar.sh
 Source15:       firefox-appdata.xml
 Source16:       %{name}.changes
+Source17:       firefox-search-provider.ini
 # Set up API keys, see http://www.chromium.org/developers/how-tos/api-keys
 # Note: these are for the openSUSE Firefox builds ONLY. For your own distribution,
 # please get your own set of keys.
@@ -194,6 +195,7 @@ Patch6:         mozilla-sandbox-fips.patch
 Patch7:         mozilla-fix-aarch64-libopus.patch
 Patch8:         mozilla-disable-wasm-emulate-arm-unaligned-fp-access.patch
 Patch9:         mozilla-s390-context.patch
+Patch10:        mozilla-pgo.patch
 Patch11:        mozilla-reduce-rust-debuginfo.patch
 Patch13:        mozilla-bmo1005535.patch
 Patch14:        mozilla-bmo1568145.patch
@@ -211,7 +213,6 @@ Patch25:        mozilla-bmo998749.patch
 Patch26:        mozilla-bmo1626236.patch
 Patch27:        mozilla-s390x-skia-gradient.patch
 Patch28:        mozilla-libavcodec58_91.patch
-Patch29:        revert-795c8762b16b.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
@@ -334,6 +335,7 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
 %patch11 -p1
 %patch13 -p1
 %patch14 -p1
@@ -353,7 +355,6 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %patch26 -p1
 %patch27 -p1
 %patch28 -p1
-%patch29 -p1 -R
 # Firefox
 %patch101 -p1
 %patch102 -p1
@@ -508,8 +509,7 @@ ac_add_options --enable-optimize="-O1"
 %endif
 %ifarch x86_64
 # LTO needs newer toolchain stack only (at least GCC 8.2.1 (r268506)
-# TW's gcc is currently also broken with LTO https://gcc.gnu.org/bugzilla/show_bug.cgi?id=93951
-%if 0%{?suse_version} > 1500 && 0%{?suse_version} < 1550
+%if 0%{?suse_version} > 1500
 ac_add_options --enable-lto
 %if 0%{?do_profiling}
 ac_add_options MOZ_PGO=1
@@ -536,7 +536,6 @@ xvfb-run --server-args="-screen 0 1920x1080x24" \
 
 # build additional locales
 %if %localize
-mkdir -p %{buildroot}%{progdir}/browser/extensions
 truncate -s 0 %{_tmppath}/translations.{common,other}
 # langpack-build can not be done in parallel easily (see https://bugzilla.mozilla.org/show_bug.cgi?id=1660943)
 # Therefore, we have to have a separate obj-dir for each language
@@ -562,6 +561,7 @@ EOF
 %else
 %define njobs 0%{?jobs:%jobs}
 %endif
+mkdir -p $RPM_BUILD_DIR/langpacks_artifacts/
 sed -r '/^(ja-JP-mac|ga-IE|en-US|)$/d;s/ .*$//' $RPM_BUILD_DIR/%{srcname}-%{orig_version}/browser/locales/shipped-locales \
     | xargs -n 1 %{?njobs:-P %njobs} -I {} /bin/sh -c '
         locale=$1
@@ -571,10 +571,7 @@ sed -r '/^(ja-JP-mac|ga-IE|en-US|)$/d;s/ .*$//' $RPM_BUILD_DIR/%{srcname}-%{orig
         # nsinstall is needed for langpack-build. It is already built by `./mach build`, but building it again is very fast
         ./mach build config/nsinstall langpack-$locale
         cp -L ../obj_$locale/dist/linux-*/xpi/firefox-%{orig_version}.$locale.langpack.xpi \
-            %{buildroot}%{progdir}/browser/extensions/langpack-$locale@firefox.mozilla.org.xpi
-        # remove prefs, profile defaults, and hyphenation from langpack
-        #rm -rf %{buildroot}%{progdir}/browser/extensions/langpack-$locale@firefox.mozilla.org/defaults
-        #rm -rf %{buildroot}%{progdir}/browser/extensions/langpack-$locale@firefox.mozilla.org/hyphenation
+            $RPM_BUILD_DIR/langpacks_artifacts/langpack-$locale@firefox.mozilla.org.xpi
         # check against the fixed common list and sort into the right filelist
         _matched=0
         for _match in ar ca cs da de el en-GB es-AR es-CL es-ES fi fr hu it ja ko nb-NO nl pl pt-BR pt-PT ru sv-SE zh-CN zh-TW; do
@@ -604,6 +601,8 @@ grep amazondotcom dist/firefox/browser/omni.ja
 # copy tree into RPM_BUILD_ROOT
 mkdir -p %{buildroot}%{progdir}
 cp -rf $RPM_BUILD_DIR/obj/dist/%{srcname}/* %{buildroot}%{progdir}
+mkdir -p %{buildroot}%{progdir}/browser/extensions
+cp -rf $RPM_BUILD_DIR/langpacks_artifacts/* %{buildroot}%{progdir}/browser/extensions/
 mkdir -p %{buildroot}%{progdir}/distribution/extensions
 mkdir -p %{buildroot}%{progdir}/browser/defaults/preferences/
 # renaming executables (for regular vs. ESR)
@@ -655,6 +654,9 @@ sed "s:firefox.desktop:%{desktop_file_name}:g" \
 # install man-page
 mkdir -p %{buildroot}%{_mandir}/man1/
 cp %{SOURCE11} %{buildroot}%{_mandir}/man1/%{progname}.1
+# install GNOME Shell search provider
+mkdir -p %{buildroot}%{_datadir}/gnome-shell/search-providers
+cp %{SOURCE17} %{buildroot}%{_datadir}/gnome-shell/search-providers
 ##########
 # ADDONS
 #
@@ -775,6 +777,9 @@ exit 0
 %endif
 %{_datadir}/applications/%{desktop_file_name}.desktop
 %{_datadir}/mime/packages/%{progname}.xml
+%dir %{_datadir}/gnome-shell
+%dir %{_datadir}/gnome-shell/search-providers
+%{_datadir}/gnome-shell/search-providers/*.ini
 %dir %{_datadir}/mozilla
 %dir %{_datadir}/mozilla/extensions
 %dir %{_datadir}/mozilla/extensions/%{firefox_appid}

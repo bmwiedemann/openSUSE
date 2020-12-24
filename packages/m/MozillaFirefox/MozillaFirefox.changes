@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sun Dec 13 18:18:58 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 84.0
+  * Firefox 84 is the final release to support Adobe Flash
+  * WebRender is enabled by default when run on GNOME-based X11
+    Linux desktops
+  MFSA 2020-54 (bsc#1180039))
+  * CVE-2020-16042 (bmo#1679003)
+    Operations on a BigInt could have caused uninitialized memory
+    to be exposed
+  * CVE-2020-26971 (bmo#1663466)
+    Heap buffer overflow in WebGL
+  * CVE-2020-26972 (bmo#1671382)
+    Use-After-Free in WebGL
+  * CVE-2020-26973 (bmo#1680084)
+    CSS Sanitizer performed incorrect sanitization
+  * CVE-2020-26974 (bmo#1681022)
+    Incorrect cast of StyleGenericFlexBasis resulted in a heap
+    use-after-free
+  * CVE-2020-26975 (bmo#1661071)
+    Malicious applications on Android could have induced Firefox
+    for Android into sending arbitrary attacker-specified headers
+  * CVE-2020-26976 (bmo#1674343)
+    HTTPS pages could have been intercepted by a registered
+    service worker when they should not have been
+  * CVE-2020-26977 (bmo#1676311)
+    URL spoofing via unresponsive port in Firefox for Android
+  * CVE-2020-26978 (bmo#1677047)
+    Internal network hosts could have been probed by a malicious
+    webpage
+  * CVE-2020-26979 (bmo#1641287, bmo#1673299)
+    When entering an address in the address or search bars, a
+    website could have redirected the user before they were
+    navigated to the intended url
+  * CVE-2020-35111 (bmo#1657916)
+    The proxy.onRequest API did not catch view-source URLs
+  * CVE-2020-35112 (bmo#1661365)
+    Opening an extension-less download may have inadvertently
+    launched an executable instead
+  * CVE-2020-35113 (bmo#1664831, bmo#1673589)
+    Memory safety bugs fixed in Firefox 84 and Firefox ESR 78.6
+  * CVE-2020-35114 (bmo#1607449, bmo#1640416, bmo#1656459,
+    bmo#1669914, bmo#1673567)
+    Memory safety bugs fixed in Firefox 84
+- requires
+  NSS >= 3.59
+  rust >= 1.44
+  rust-cbindgen >= 0.15.0
+- remove revert-795c8762b16b.patch and replace with mozilla-pgo.patch
+
+-------------------------------------------------------------------
+Sat Nov 21 08:12:17 UTC 2020 - Kirill Kirillov <kkirill@opensuse.org>
+
+- Add/Enable GNOME search provider
+
+-------------------------------------------------------------------
 Sun Nov 15 12:16:53 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 83.0
@@ -81,6 +137,11 @@ Mon Nov  2 09:00:13 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 82.0.2
   * few bugfixes for introduced regressions
+
+-------------------------------------------------------------------
+Sun Nov  1 20:15:17 UTC 2020 - Kirill Kirillov <kkirill@opensuse.org>
+
+- Enable GNOME search provider
 
 -------------------------------------------------------------------
 Thu Oct 15 20:44:47 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
