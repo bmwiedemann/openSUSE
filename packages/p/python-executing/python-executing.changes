@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Wed Dec  2 20:23:30 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.5.3
+  - Handle pypy saying the current instruction is an extended arg
+- Changes from 0.5.2
+  - Convert path to string before checking filename cache
+- Changes from 0.5.1
+  - Get top level statement containing IPython node
+- Changes from 0.5.0
+  - Also cache Source objects by contents (lines)
+- Changes from 0.4.4
+  - Move packaging metadata into setup.cfg
+- Changes from 0.4.3
+  - Bump to 0.4.3
+
+-------------------------------------------------------------------
+Wed Mar 11 09:51:32 PM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v0.4.2
