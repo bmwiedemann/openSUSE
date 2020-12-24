@@ -27,7 +27,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-importlib-metadata%{psuffix}
-Version:        3.1.1
+Version:        3.3.0
 Release:        0
 Summary:        Read metadata from Python packages
 License:        Apache-2.0
@@ -40,6 +40,9 @@ BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-zipp >= 0.5
+%if %{python_version_nodots} < 38
+Requires:       python-typing_extensions >= 3.6.4
+%endif
 Provides:       python-importlib_metadata = %{version}
 BuildArch:      noarch
 %if %{with test}
@@ -52,6 +55,8 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zipp >= 0.5}
+BuildRequires:  (python3-typing_extensions  >= 3.6.4 if python3-base < 3.8)
+BuildRequires:  (python36-typing_extensions  >= 3.6.4 if python36-base)
 %endif
 %python_subpackages
 

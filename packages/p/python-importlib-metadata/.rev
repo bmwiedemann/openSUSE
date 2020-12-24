@@ -17,4 +17,12 @@ It does NOT conflict with python38 standard library (see upstream description)</
     <comment></comment>
     <requestid>853675</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b110019cf5101a108893cae83b3ff379</srcmd5>
+    <version>3.3.0</version>
+    <time>1608835246</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>857124</requestid>
+  </revision>
 </revisionlist>

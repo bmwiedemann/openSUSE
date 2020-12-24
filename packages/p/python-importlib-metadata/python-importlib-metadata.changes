@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Dec 19 23:29:59 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- New version requires typing_extensions for Python < 3.8
+  (Leap and TW python36 flavor)
+
+-------------------------------------------------------------------
+Sat Dec 19 17:48:18 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.0:
+  * * #265: ``EntryPoint`` objects now expose a ``.dist`` object
+    referencing the ``Distribution`` when constructed from a
+    Distribution.
+  * The object returned by ``metadata()`` now has a
+    formally-defined protocol called ``PackageMetadata``
+    with declared support for the ``.get_all()`` method.
+    Fixes #126.
+- add typing-extensions dependency for older python versions
+
+-------------------------------------------------------------------
 Mon Dec  7 17:50:51 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 3.1.1
