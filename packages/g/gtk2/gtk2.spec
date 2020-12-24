@@ -20,7 +20,7 @@
 %define gtk_binary_version 2.10.0
 %define _name gtk
 Name:           gtk2
-Version:        2.24.32+70
+Version:        2.24.33
 Release:        0
 # FIXME: when updating to next version, check whether we can remove the workaround for bgo#596977 below (removing -fomit-frame-pointer)
 Summary:        The GTK+ toolkit library (version 2)

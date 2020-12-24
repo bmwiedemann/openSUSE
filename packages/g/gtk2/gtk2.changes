@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec 22 16:59:43 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.24.33:
+  + This is the final GTK 2.x release. There will be no more
+    updates to GTK 2. All users are encouraged to update to GTK 3
+    or 4.
+  + Make the output of gtk-query-immodules deterministic.
+  + GtkCalendar: Use %OB if supported.
+  + GtkIconTheme: prefer exact matches.
+  + build:
+    - Support automake 1.16.
+    - Fix compiler warnings with newer gcc.
+
+-------------------------------------------------------------------
 Sun Jul 12 12:26:32 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 2.24.32+70:
