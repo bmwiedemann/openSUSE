@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 24 12:51:24 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20201222
+  * --pipe engine changed making --pipe alpha quality.
+  * --results -.json outputs results as JSON objects on stdout
+    (standard output).
+  * --delay 123auto will auto-adjust --delay. If jobs fail due to
+    being spawned too quickly, --delay will exponentially
+    increase.
+  * --plus sets {hgrp} that gives the intersection of the
+    hostgroups of the job and the sshlogin that the job is run
+    on.
+
+-------------------------------------------------------------------
 Sun Dec 20 13:20:06 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 20201122:
