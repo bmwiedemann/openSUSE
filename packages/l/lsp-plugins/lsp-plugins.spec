@@ -20,13 +20,13 @@
 %define _lto_cflags %{nil}
 %endif
 Name:           lsp-plugins
-Version:        1.1.26
+Version:        1.1.28
 Release:        0
 Summary:        Linux Studio Plugins Project (Stand-alone)
 License:        LGPL-3.0-or-later AND Zlib
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://lsp-plug.in/
-Source0:        https://github.com/sadko4u/lsp-plugins/archive/%{name}-%{version}.tar.gz#/%{name}-%{name}-%{version}.tar.gz
+Source0:        https://github.com/sadko4u/lsp-plugins/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ladspa
@@ -106,7 +106,7 @@ the GNU/Linux platform.
 This is the LADSPA version of the plugins.
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
+%setup -q
 
 %build
 export PREFIX="%{_prefix}" DOC_PATH="%{_docdir}" LIB_PATH="%{_libdir}"
