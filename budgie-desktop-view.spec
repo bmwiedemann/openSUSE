@@ -16,7 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 Name:           budgie-desktop-view
-Version:        1.0.2
+Version:        1.1
 Release:        0
 Summary:        Official Budgie Desktop icons application / implementation
 License:        Apache-2.0
