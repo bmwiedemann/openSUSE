@@ -25,7 +25,7 @@ Summary:        Time Zone Descriptions
 # COMMON-BEGIN
 License:        BSD-3-Clause AND SUSE-Public-Domain
 Group:          System/Base
-Version:        2020d
+Version:        2020e
 Release:        0
 Source:         https://www.iana.org/time-zones/repository/releases/tzdata%{version}.tar.gz
 Source1:        https://www.iana.org/time-zones/repository/releases/tzcode%{version}.tar.gz

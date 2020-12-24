@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 23 06:55:02 UTC 2020 - Markéta Machová <mmachova@suse.com>
+
+- timezone update 2020e (bsc#1177460)
+  * Volgograd switches to Moscow time on 2020-12-27 at 02:00.
+
+-------------------------------------------------------------------
 Fri Oct 30 11:43:21 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Add fat.patch to generate "fat" timezone files (was default before 2020b).

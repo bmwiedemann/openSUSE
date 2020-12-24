@@ -1288,4 +1288,12 @@ bsc#1024677</comment>
   * Palestine ends DST earlier than predicted, on 2020-10-24.</comment>
     <requestid>845019</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>573f0cd567526e1d418f2c578ea3f0d2</srcmd5>
+    <version>2020e</version>
+    <time>1608835059</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858297</requestid>
+  </revision>
 </revisionlist>
