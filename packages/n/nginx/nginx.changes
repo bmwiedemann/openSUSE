@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 23 07:18:28 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.19.6
+  * https://nginx.org/en/CHANGES
+  * Fix "no live upstreams" errors if a "server" inside "upstream"
+    block was marked as "down".
+  * Fix a segmentation fault might occur in a worker process if HTTPS
+    was used; the bug had appeared in 1.19.5.
+  * Fix nginx returned the 400 response on requests like
+    "GET http://example.com?args HTTP/1.0".
+  * Fix in the ngx_http_flv_module and ngx_http_mp4_module.
+
+-------------------------------------------------------------------
 Tue Nov 24 19:30:01 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Update to 1.19.5
