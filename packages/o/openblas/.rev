@@ -417,4 +417,41 @@
 - Drop fix-build.patch, merged upstream.</comment>
     <requestid>843798</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>3a157ff3cf88f4eb1e58e1fc0b6e1f80</srcmd5>
+    <version>0.3.13</version>
+    <time>1608835217</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.13
+  common:
+  * Added a generic bfloat16 SBGEMV kernel
+  * Fixed a potentially severe memory leak after fork in OpenMP builds
+    that was introduced in 0.3.12
+  * Added detection of the Fujitsu Fortran compiler
+  * Added detection of the (e)gfortran compiler on OpenBSD
+  * Added support for overriding the default name of the library independently
+    from symbol suffixing in the gmake builds (already supported in cmake)
+  
+  RISC V:
+  * Added a RISC V port optimized for C910V
+  POWER:
+  * Added optimized POWER10 kernels for SAXPY, CAXPY, SDOT, DDOT and DGEMV_N
+  * Improved DGEMM performance on POWER10
+  * Improved STRSM and DTRSM performance on POWER9 and POWER10
+  * Fixed segmemtation faults in DYNAMIC_ARCH builds
+  * Fixed compilation with the PGI compiler
+  x86:
+  * Fixed compilation of kernels that require SSE2 intrinsics since 0.3.12
+  x86_64:
+  * Added an optimized bfloat16 SBGEMV kernel for SkylakeX and Cooperlake
+  * Improved the performance of SASUM and DASUM kernels through parallelization
+  * Improved the performance of SROT and DROT kernels
+  * Improved the performance of multithreaded xSYRK
+  * Fixed OpenMP builds that use the LLVM Clang compiler together with GNU gfortran
+    (where linking of both the LLVM libomp and GNU libgomp could lead to lockups or
+     wrong results)
+  * Fixed miscompilations by old gcc 4.6
+  * Fixed misdetection of AVX2 capability in some Sandybridge cpus</comment>
+    <requestid>856635</requestid>
+  </revision>
 </revisionlist>

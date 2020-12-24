@@ -18,8 +18,8 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define _vers 0_3_12
-%define vers 0.3.12
+%define _vers 0_3_13
+%define vers 0.3.13
 %define pname openblas
 
 %bcond_with ringdisabled
@@ -211,6 +211,12 @@ Obsoletes:      lib%{pname}o0
 %hpc_requires
 %endif
 
+%if %{without hpc}
+%define libname %name
+%else
+%define libname %pname
+%endif
+
 %description -n lib%{name}%{?so_v}
 OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
 
@@ -370,7 +376,7 @@ rm -fr %{buildroot}%{p_libdir}/pkgconfig/
 
 # Dummy target for update-alternatives
 install -d %{buildroot}/%{_sysconfdir}/alternatives
-ln -s lib%{pname}.so.0 %{buildroot}/%{p_libdir}/lib%{pname}.so.0
+ln -s lib%{libname}.so.0 %{buildroot}/%{p_libdir}/lib%{pname}.so.0
 ln -s lib%{pname}.so.0 %{buildroot}/%{_sysconfdir}/alternatives/lib%{pname}.so.0
 ln -s lib%{pname}.so.0 %{buildroot}/%{p_libdir}/libblas.so.3
 ln -s lib%{pname}.so.0 %{buildroot}/%{p_libdir}/libcblas.so.3
@@ -466,12 +472,6 @@ fi
 %postun -n lib%{name}
 %hpc_module_delete_if_default
 
-%endif
-
-%if %{without hpc}
-%define libname %name
-%else
-%define libname %pname
 %endif
 
 %files -n lib%{name}%{?so_v}
