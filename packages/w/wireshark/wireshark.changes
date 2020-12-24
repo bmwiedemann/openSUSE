@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec 19 04:24:30 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Wireshark 3.4.2
+  * CVE-2020-26422: QUIC dissector crash (boo#1180232)
+  * Fix IETF QUIC TLS decryption errors when packets are coalesced
+    with random data
+  * QUIC: missing dissection of some coalesced SH packets
+  * Fix false expect error seen on FCoE frames
+  * Updated Protocol Support
+    DOCSIS, FC-dNS, FC-SWILS, FCoE, QUIC, SNMP, and USBHID
+
+-------------------------------------------------------------------
 Fri Dec 11 14:44:07 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Wireshark 3.4.1:
