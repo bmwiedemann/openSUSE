@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 23 06:59:24 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Obsolete kdepim-apps-libs-lang as well to avoid update problems
+
+-------------------------------------------------------------------
 Sun Dec 13 14:28:55 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Drop obsolete build requirements

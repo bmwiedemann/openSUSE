@@ -70,6 +70,7 @@ KAddressbook is an application by KDE to manage contacts.
 Summary:        Library which provides import/export functionality for KAddressbook
 Group:          System/Libraries
 Obsoletes:      kdepim-apps-libs <= 20.08.3
+Obsoletes:      kdepim-apps-libs-lang <= 20.08.3
 
 %description -n libKPimAddressbookImportExport5
 This library provides an interface to implement import/export plugins for KAddressbook.
