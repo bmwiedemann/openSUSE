@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-guessit
-Version:        3.1.1
+Version:        3.2.0
 Release:        0
 Summary:        A library for guessing information from video files
 License:        LGPL-3.0-only
@@ -53,13 +53,13 @@ and TV shows episodes.
 %autosetup -n guessit-%{version}
 # Remove shebang from non-executable files
 for i in {'audio_codec','bit_rate','bonus','cds','container','country','crc','date','edition','episodes','episode_title','film','__init__','language','mimetype','other','part','release_group','screen_size','size','source','streaming_service','title','type','video_codec','website'}; do
-sed -i -e "1d" "guessit/rules/properties/$i.py"
+  sed -i -e "1d" "guessit/rules/properties/$i.py"
 done
 for i in {'common/comparators','common/date','common/expected','common/formatters','common/__init__','common/numeral','common/pattern','common/quantity','common/validators','common/words','__init__','markers/groups','markers/__init__','markers/path','processors'}; do
-sed -i -e "1d" "guessit/rules/$i.py"
+  sed -i -e "1d" "guessit/rules/$i.py"
 done
-for i in {'api','backports','__init__','jsonutils','__main__','monkeypatch','options','reutils','test/__init__','test/rules/__init__','test/rules/processors_test','test/test_api','test/test_api_unicode_literals','test/test_benchmark','test/test_main','test/test_options','test/test_yml','__version__','yamlutils'}; do
-sed -i -e "1d" "guessit/$i.py"
+for i in {'api','__init__','jsonutils','__main__','monkeypatch','options','reutils','test/__init__','test/rules/__init__','test/rules/processors_test','test/test_api','test/test_api_unicode_literals','test/test_benchmark','test/test_main','test/test_options','test/test_yml','__version__','yamlutils'}; do
+  sed -i -e "1d" "guessit/$i.py"
 done
 
 %build
@@ -71,8 +71,6 @@ done
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export LANG='en_US.UTF8'
-export PYTHONDONTWRITEBYTECODE=1
 %pytest
 
 %post
@@ -82,7 +80,7 @@ export PYTHONDONTWRITEBYTECODE=1
 %python_uninstall_alternative guessit
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/guessit
 %{python_sitelib}/guessit
