@@ -22,7 +22,7 @@
 %global libgnutls  libxmlsec1-gnutls1
 %global libnss     libxmlsec1-nss1
 Name:           xmlsec1
-Version:        1.2.30
+Version:        1.2.31
 Release:        0
 Summary:        Library providing support for "XML Signature" and "XML Encryption" standards
 License:        MIT
@@ -137,12 +137,13 @@ Requires:       mozilla-nss-devel >= 3.2
 Libraries, includes, etc. for developing XML Security applications with NSS.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
     --disable-static \
-    --disable-silent-rules
+    --disable-silent-rules \
+    --disable-md5
 %make_build
 
 %install

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 17 09:16:49 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.31:
+  + Unload error strings in OpenSSL shutdown.
+  + Make userData available when executing preExecCallback
+    function.
+  + Add an option to use secure memset.
+- Pass --disable-md5 to configure: The cryptographic strength of
+  the MD5 algorithm is sufficiently doubtful that its use is
+  discouraged at this time. It is not listed as an algorithm in
+  [XMLDSIG-CORE1]
+  https://www.w3.org/TR/xmlsec-algorithms/#bib-XMLDSIG-CORE1
+
+-------------------------------------------------------------------
 Thu Jun 18 12:10:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.2.30:
