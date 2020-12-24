@@ -12688,10 +12688,10 @@ unsorted:
   - libopenblas-gnu-hpc-devel 
   - libopenblas-pthreads-gnu-hpc 
   - libopenblas-pthreads-gnu-hpc-devel 
-  - libopenblas-pthreads_0_3_12-gnu-hpc 
-  - libopenblas-pthreads_0_3_12-gnu-hpc-devel 
-  - libopenblas_0_3_12-gnu-hpc 
-  - libopenblas_0_3_12-gnu-hpc-devel 
+  - libopenblas-pthreads_0_3_13-gnu-hpc 
+  - libopenblas-pthreads_0_3_13-gnu-hpc-devel 
+  - libopenblas_0_3_13-gnu-hpc 
+  - libopenblas_0_3_13-gnu-hpc-devel 
   - libopenblas_openmp-devel 
   - libopenblas_openmp0 
   - libopenblas_pthreads-devel 
@@ -18105,8 +18105,8 @@ unsorted:
   - openbabel-devel 
   - openblas-devel 
   - openblas-devel-headers 
-  - openblas-pthreads_0_3_12-gnu-hpc-devel-static 
-  - openblas_0_3_12-gnu-hpc-devel-static 
+  - openblas-pthreads_0_3_13-gnu-hpc-devel-static 
+  - openblas_0_3_13-gnu-hpc-devel-static 
   - openblas_openmp-devel-static 
   - openblas_pthreads-devel-static 
   - openblas_serial-devel-static 
@@ -22425,6 +22425,7 @@ unsorted:
   - python3-evtx 
   - python3-exam 
   - python3-execnet 
+  - python3-executing 
   - python3-exiv2 
   - python3-expects 
   - python3-exrex 
