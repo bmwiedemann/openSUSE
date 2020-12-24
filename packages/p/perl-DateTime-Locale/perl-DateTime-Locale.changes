@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 23 03:07:34 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.31
+   see /usr/share/doc/packages/perl-DateTime-Locale/Changes
+
+  1.31     2020-12-22
+
+  - The docs for each locale now show examples of its strftime patterns as well.
+
+-------------------------------------------------------------------
 Wed Dec 16 03:08:54 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.30
