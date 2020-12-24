@@ -73,6 +73,7 @@ Requires:       akonadi-contact >= %{version}
 Obsoletes:      akonadi-socialutils
 Obsoletes:      akonadi-socialutils-devel
 Obsoletes:      kdepim-apps-libs <= 20.08.3
+Obsoletes:      kdepim-apps-libs-lang <= 20.08.3
 
 %description -n libKF5AkonadiContact5
 This package provides a library used for handling personal contacts,
