@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec 19 10:51:38 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.6.0:
+  * :func:`all_unique` (thanks to brianmaissy)
+  * :func:`nth_product` and :func:`nth_permutation` (thanks to N8Brooks)
+  * :func:`chunked` and :func:`sliced` now accept a ``strict`` parameter (thanks to shlomif and jtwool)
+  * Python 3.5 has reached its end of life and is no longer supported.
+  * Python 3.9 is officially supported.
+
+-------------------------------------------------------------------
 Wed Sep 16 11:13:30 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 8.5.0:
