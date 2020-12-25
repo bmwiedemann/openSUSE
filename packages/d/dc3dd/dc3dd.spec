@@ -34,7 +34,7 @@ BuildRequires:  gettext-devel
 BuildRequires:  glibc-devel
 BuildRequires:  make
 BuildRequires:  perl(Locale::gettext)
-%if 0%{?suse_version} < 1510
+%if 0%{?suse_version} < 1510 && 0%{?sle_version} < 150200
 BuildRequires:  p7zip
 %else
 BuildRequires:  p7zip-full

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 24 17:21:37 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- BuildRequires p7zip for Leap <= 15.1 only
+
+-------------------------------------------------------------------
+Tue Dec 22 08:02:14 UTC 2020 - Max Lin <mlin@suse.com>
+
+- BuildRequires p7zip for Leap <= 15.2 only
+
+-------------------------------------------------------------------
 Mon Feb 24 03:09:42 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - add /usr/share/local to the lang package.
