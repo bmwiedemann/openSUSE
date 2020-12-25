@@ -58,4 +58,12 @@ Required by recent python-dfVFS release</comment>
 </comment>
     <requestid>799062</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3f2c6b6afc328ad064997ecb76cae855</srcmd5>
+    <version>0~20201117</version>
+    <time>1608918664</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858554</requestid>
+  </revision>
 </revisionlist>

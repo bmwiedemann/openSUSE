@@ -17,7 +17,7 @@
 
 
 %define lname	libsigscan1
-%define timestamp 20191221
+%define timestamp 20201117
 %define experimental_tag experimental-
 Name:           libsigscan
 Version:        0~%{timestamp}
