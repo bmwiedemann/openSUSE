@@ -17,9 +17,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%if 0%{?suse_version} >= 1550
+%global __requires_exclude ^typelib\\(Unity\\).*$
+%endif
 
 Name:           rapid-photo-downloader
-Version:        0.9.24
+Version:        0.9.26
 Release:        0
 Summary:        Parallel downloader for camera and smartphone photos
 License:        GPL-3.0-or-later
@@ -35,7 +38,7 @@ BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
-BuildRequires:  python3-devel
+BuildRequires:  python3-devel >= 3.5
 BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 Requires:       exiftool
@@ -47,24 +50,26 @@ BuildRequires:  python3-cairo >= 1.11.1
 Requires:       python3-cairo >= 1.11.1
 BuildRequires:  python3-Babel
 Requires:       python3-Babel
-BuildRequires:  python3-colorlog
-Requires:       python3-colorlog
+BuildRequires:  python3-colorlog >= 2.6
+Requires:       python3-colorlog >= 2.6
 BuildRequires:  python3-colour
 Requires:       python3-colour
-BuildRequires:  python3-easygui
-Requires:       python3-easygui
+BuildRequires:  python3-easygui >= 0.98.1
+Requires:       python3-easygui >= 0.98.1
 BuildRequires:  python3-gobject2
 Requires:       python3-gobject2
 BuildRequires:  python3-gobject-Gdk
 Requires:       python3-gobject-Gdk
-BuildRequires:  python3-gphoto2 >= 1.4.0
-Requires:       python3-gphoto2 >= 1.4.0
+BuildRequires:  python3-gphoto2 >= 1.8.0
+Requires:       python3-gphoto2 >= 1.8.0
 BuildRequires:  python3-psutil >= 3.4.2
 Requires:       python3-psutil >= 3.4.2
 BuildRequires:  python3-pymediainfo >= 2.2.0
 Requires:       python3-pymediainfo >= 2.2.0
-BuildRequires:  python3-python-dateutil >= 2.2
-Requires:       python3-python-dateutil >= 2.2
+BuildRequires:  python3-python-dateutil >= 2.7
+Requires:       python3-python-dateutil >= 2.7
+BuildRequires:  python3-PyPrind >= 2.9.4
+Requires:       python3-PyPrind >= 2.9.4
 BuildRequires:  python3-pyxdg >= 0.25
 Requires:       python3-pyxdg >= 0.25
 BuildRequires:  python3-pyzmq >=  16.0.2
@@ -94,6 +99,7 @@ Requires:       python3-typing
 %endif
 # For heif support. we can not package the libraries in the distro but if e.g. packman provides the package we should pull it.
 Recommends:     python3-pyheif
+Recommends:     python3-Pillow >= 5.1.0
 
 %description
 Rapid Photo Downloader downloads images in parallel from multiple devices,

@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Fri Dec 25 02:22:57 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- according to upstream pillow is only required for thumbnails for
+  heif files. downgrade the requires to recommends.
+
+-------------------------------------------------------------------
+Fri Dec 25 01:08:05 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- add back requires filter for the unity typelib on TW. The library
+  got dropped.
+
+-------------------------------------------------------------------
+Fri Dec 25 00:56:03 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- sync package BuildRequires/Requires with requirements.txt
+
+-------------------------------------------------------------------
+Fri Dec 25 00:44:19 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.9.26 
+  - Fix bug #1909252: crash against undefined unity launcher entry. Thanks to
+    Guy Delamarter for the patch.
+  - Ensure in-program upgrade feature continues to function on systems with
+    Python 3.5.
+  - Move translators credits into separate button in the About dialog window, and
+    associate recent translators with their language.
+  - Update Brazilian Portuguese, Danish, Dutch, French, Japanese, Norwegian
+    Bokmal, Russian, Serbian, Spanish and Turkish translations. Thank you to new
+    translator Rubens Stuginski Jr for the work done on the Brazilian Portuguese
+    translation.
+- changes from 0.9.25
+  - When a new Job Code is entered before a download and no files are selected,
+    the Job Code is automatically saved. When entering a Job Code, "Remember this
+    Choice" is now labelled as "Remember this Job Code".
+  - Fix bug #1889770: Fails to run - Could not load the Qt platform plugin
+    "xcb".
+  - Fix bug #1906272: Exception while displaying tooltip for thumbnail of file
+    downloaded from a removed device.
+  - Fix bug #1891659: Exception when encountering invalid block device.
+  - Fix bug #1881255: Unhandled exception when system file manager entry is
+    malformed. The AppImages for RawTherapee and ART can have an unfortunate bug
+    in which they wrongly sets themselves to be the path to the desktop's
+    default file manger. Rapid Photo Downloader no longer crashes when trying to
+    work with that incorrect setting.
+  - Bump up minimum Python version supported to Python 3.5.
+  - Don't install support library libunity on Fedora. Libunity has a serious
+    bug on Fedora 33. Libunity provides emblems and progress bars on launchers on
+    desktops like KDE and Ubuntu's flavor of Gnome.
+  - Fedora 32 is now the minimum supported version of Fedora. Please note Fedora
+    33 is not recommended for now, because of an issue with Python 3.9 and
+    Python threads seen when running Rapid Photo Downloader in Fedora 33. In
+    contrast to Fedora 33, Ubuntu 21.04 with Python 3.9 works as expected.
+  - When installing on Debian using the install.py script, ignore any version
+    number information (or lack thereof) in /etc/os-release.
+  - When using the install.py script, don't install PyQt5 and python3-gphoto2
+    from PyPi when the Linux distribution's package is relatively recent. Also:
+    don't default to installing the PyPi Python tools pip, setuptools, and wheel
+    using pip when the system packages are relatively recent, and don't install
+    unsupported versions these same packages on Python 3.5.
+  - Bump up minimum version of python package easygui to 0.98.1.
+  - Bump up minimum version of python-dateutil to allow recent versions of
+    arrow to function. When using the install.py script, don't install
+    unsupported versions of arrow or pymediainfo on Python 3.5.
+  - When using the install.py script, don't install the unmaintained python
+    package rawkit on systems that do not contain libraw 0.16 or 0.17.
+  - Update Danish, Dutch, French, German, Hungarian, Russian, Serbian, and
+    Spanish translations. Add partially translated Albanian translation.
+
+-------------------------------------------------------------------
 Mon May 11 10:56:05 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 0.9.24

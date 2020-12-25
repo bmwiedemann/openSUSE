@@ -598,4 +598,17 @@
     https://discuss.pixls.us/c/software/rapid-photo-downloader (forwarded request 802655 from darix)</comment>
     <requestid>802660</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>86410e93d75b7af674f62fae15b51a4b</srcmd5>
+    <version>0.9.26</version>
+    <time>1608918645</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.26 
+- according to upstream pillow is only required for thumbnails for
+  heif files. downgrade the requires to recommends.
+- add back requires filter for the unity typelib on TW. The library
+  got dropped.
+- sync package BuildRequires/Requires with requirements.txt</comment>
+    <requestid>858582</requestid>
+  </revision>
 </revisionlist>
