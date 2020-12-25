@@ -1,7 +1,7 @@
 #
 # spec file for package libcthreads
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 Name:           libcthreads
 %define lname	libcthreads1
-%define timestamp 20180724
+%define timestamp 20200508
 Version:        0~%timestamp
 Release:        0
 Summary:        Library for cross-platform C threads functions 
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/libyal/libcthreads/wiki
+URL:            https://github.com/libyal/libcthreads/wiki
 Source:         https://github.com/libyal/libcthreads/releases/download/%timestamp/%name-alpha-%timestamp.tar.gz
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcerror) >= 20130904
