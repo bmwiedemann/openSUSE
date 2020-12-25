@@ -1,0 +1,116 @@
+From 8cc51dc21c710f48692ba6fa1b51f9da3f7de9ca Mon Sep 17 00:00:00 2001
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Date: Tue, 15 Dec 2020 13:51:16 +0100
+Subject: [PATCH] dm: test: Add test case for dev_get_dma_ranges()
+
+Introduce some new nodes in sandbox's test device-tree and dm tests in
+order to validate dev_get_dma_range().
+
+Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Reviewed-by: Simon Glass <sjg@chromium.org>
+
+---
+Changes since v3:
+ - Use ut_assertok() instead of ut_assert(!func())
+---
+ arch/sandbox/dts/test.dts | 17 ++++++++++++++
+ test/dm/Makefile          |  1 +
+ test/dm/read.c            | 49 +++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 67 insertions(+)
+ create mode 100644 test/dm/read.c
+
+diff --git a/arch/sandbox/dts/test.dts b/arch/sandbox/dts/test.dts
+index 9f45c48e4e..c0ac4a793c 100644
+--- a/arch/sandbox/dts/test.dts
++++ b/arch/sandbox/dts/test.dts
+@@ -270,6 +270,23 @@
+ 		compatible = "denx,u-boot-devres-test";
+ 	};
+ 
++	mmio-bus@0 {
++		#address-cells = <1>;
++		#size-cells = <1>;
++		compatible = "denx,u-boot-test-bus";
++		dma-ranges = <0x10000000 0x00000000 0x00040000>;
++
++		subnode@0 {
++			compatible = "denx,u-boot-fdt-test";
++		};
++	};
++
++	mmio-bus@1 {
++		#address-cells = <1>;
++		#size-cells = <1>;
++		compatible = "denx,u-boot-test-bus";
++	};
++
+ 	acpi_test1: acpi-test {
+ 		compatible = "denx,u-boot-acpi-test";
+ 		acpi-ssdt-test-data = "ab";
+diff --git a/test/dm/Makefile b/test/dm/Makefile
+index 864c8d0b4c..3cf5c0f2ca 100644
+--- a/test/dm/Makefile
++++ b/test/dm/Makefile
+@@ -12,6 +12,7 @@ obj-$(CONFIG_UT_DM) += test-uclass.o
+ # Tests for particular subsystems - when enabling driver model for a new
+ # subsystem you must add sandbox tests here.
+ obj-$(CONFIG_UT_DM) += core.o
++obj-$(CONFIG_UT_DM) += read.o
+ ifneq ($(CONFIG_SANDBOX),)
+ obj-$(CONFIG_ACPIGEN) += acpi.o
+ obj-$(CONFIG_ACPIGEN) += acpigen.o
+diff --git a/test/dm/read.c b/test/dm/read.c
+new file mode 100644
+index 0000000000..7768aa2968
+--- /dev/null
++++ b/test/dm/read.c
+@@ -0,0 +1,49 @@
++// SPDX-License-Identifier: GPL-2.0+
++/*
++ * Copyright (c) 2020 Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
++ */
++
++#include <common.h>
++#include <dm.h>
++#include <dm/device.h>
++#include <dm/ofnode.h>
++#include <dm/root.h>
++#include <dm/test.h>
++#include <dm/uclass-internal.h>
++#include <test/ut.h>
++
++static int dm_test_dma_ranges(struct unit_test_state *uts)
++{
++	struct udevice *dev;
++	phys_addr_t cpu;
++	dma_addr_t bus;
++	ofnode node;
++	u64 size;
++
++	/* dma-ranges are on the device's node */
++	node = ofnode_path("/mmio-bus@0");
++	ut_assert(ofnode_valid(node));
++	ut_assertok(uclass_get_device_by_ofnode(UCLASS_TEST_BUS, node, &dev));
++	ut_assertok(dev_get_dma_range(dev, &cpu, &bus, &size));
++	ut_asserteq_64(0x40000, size);
++	ut_asserteq_64(0x0, cpu);
++	ut_asserteq_64(0x10000000, bus);
++
++	/* dma-ranges are on the bus' node */
++	node = ofnode_path("/mmio-bus@0/subnode@0");
++	ut_assert(ofnode_valid(node));
++	ut_assertok(uclass_get_device_by_ofnode(UCLASS_TEST_FDT, node, &dev));
++	ut_assertok(dev_get_dma_range(dev, &cpu, &bus, &size));
++	ut_asserteq_64(0x40000, size);
++	ut_asserteq_64(0x0, cpu);
++	ut_asserteq_64(0x10000000, bus);
++
++	/* No dma-ranges available */
++	node = ofnode_path("/mmio-bus@1");
++	ut_assert(ofnode_valid(node));
++	ut_assertok(uclass_get_device_by_ofnode(UCLASS_TEST_BUS, node, &dev));
++	ut_asserteq(-ENOENT, dev_get_dma_range(dev, &cpu, &bus, &size));
++
++	return 0;
++}
++DM_TEST(dm_test_dma_ranges, UT_TESTF_SCAN_PDATA | UT_TESTF_SCAN_FDT);

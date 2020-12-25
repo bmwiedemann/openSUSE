@@ -1,0 +1,36 @@
+From 2fc18b303627de11d9c397a9cc3f6c678dc063a8 Mon Sep 17 00:00:00 2001
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Date: Mon, 16 Nov 2020 11:25:11 +0100
+Subject: [PATCH] rpi: Add identifier for the new RPi400
+
+The Raspberry Pi Foundation released the new RPi400 which we want to
+detect, so we can enable Ethernet on it and know the correct device tree
+file name.
+
+Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+
+---
+
+Changes since v1:
+ - The RPi Foundation introduced a RPi400 specific device tree, so use
+   that file name instead of the fallback (RPi4b).
+---
+ board/raspberrypi/rpi/rpi.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/board/raspberrypi/rpi/rpi.c b/board/raspberrypi/rpi/rpi.c
+index 6b1fa5fc14..b66698e4a9 100644
+--- a/board/raspberrypi/rpi/rpi.c
++++ b/board/raspberrypi/rpi/rpi.c
+@@ -157,6 +157,11 @@ static const struct rpi_model rpi_models_new_scheme[] = {
+ 		DTB_DIR "bcm2711-rpi-4-b.dtb",
+ 		true,
+ 	},
++	[0x13] = {
++		"400",
++		DTB_DIR "bcm2711-rpi-400.dtb",
++		true,
++	},
+ };
+ 
+ static const struct rpi_model rpi_models_old_scheme[] = {

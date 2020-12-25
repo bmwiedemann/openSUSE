@@ -229,6 +229,20 @@ Patch0011:      0011-sunxi-dts-OrangePi-Zero-Add-SPI-ali.patch
 Patch0012:      0012-sunxi-dts-OrangePi-Zero-Enable-SPI-.patch
 Patch0013:      0013-sunxi-Enable-SPI-support-on-Orange-.patch
 Patch0014:      0014-Disable-CONFIG_CMD_BTRFS-in-xilinx_.patch
+Patch0015:      0015-rpi-Add-identifier-for-the-new-RPi4.patch
+Patch0016:      0016-rpi-Add-identifier-for-the-new-CM4.patch
+Patch0017:      0017-pci-pcie-brcmstb-Fix-inbound-window.patch
+Patch0018:      0018-dm-Introduce-xxx_get_dma_range.patch
+Patch0019:      0019-dm-test-Add-test-case-for-dev_get_d.patch
+Patch0020:      0020-dm-Introduce-DMA-constraints-into-t.patch
+Patch0021:      0021-dm-test-Add-test-case-for-dev-dma_o.patch
+Patch0022:      0022-dm-Introduce-dev_phys_to_bus-dev_bu.patch
+Patch0023:      0023-dm-test-Add-test-case-for-dev_phys_.patch
+Patch0024:      0024-xhci-translate-virtual-addresses-in.patch
+Patch0025:      0025-mmc-Introduce-mmc_phys_to_bus-mmc_b.patch
+Patch0026:      0026-configs-rpi4-Enable-DM_DMA-across-a.patch
+Patch0027:      0027-video-arm-rpi-Add-brcm-bcm2711-hdmi.patch
+Patch0028:      0028-usb-xhci-xhci_bulk_tx-Don-t-BUG-whe.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison

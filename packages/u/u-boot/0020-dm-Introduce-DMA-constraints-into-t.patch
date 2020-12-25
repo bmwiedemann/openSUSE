@@ -1,0 +1,156 @@
+From 8d35d23d658c1a50b591f67951a5c24890687fea Mon Sep 17 00:00:00 2001
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Date: Thu, 19 Nov 2020 17:17:24 +0100
+Subject: [PATCH] dm: Introduce DMA constraints into the core device model
+
+Calculating the DMA offset between a bus address space and CPU's every
+time we call phys_to_bus() and bus_to_phys() isn't ideal performance
+wise, as it implies traversing the device tree from the device's node up
+to the root. Since this information is static and available before the
+device's initialization, parse it before the probe call an provide the
+DMA offset in 'struct udevice' for the address translation code to use
+it.
+
+Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Reviewed-by: Simon Glass <sjg@chromium.org>
+
+---
+Changes since v4:
+ - Use macros to access dma_offset
+
+Changes since v3:
+ - Comment functions and struct variables
+ - Correct typos
+
+Changes since v2:
+ - Return/Fail on error
+ - Add config option
+ - use ulong instead for u64 for dev->dma_offset
+
+Changes since v1:
+ - Update commit message so as to explain better the reasoning behind
+   this
+---
+ drivers/core/Kconfig  | 10 ++++++++++
+ drivers/core/device.c | 41 +++++++++++++++++++++++++++++++++++++++++
+ include/dm/device.h   | 13 +++++++++++++
+ 3 files changed, 64 insertions(+)
+
+diff --git a/drivers/core/Kconfig b/drivers/core/Kconfig
+index 00d1d80dc3..ea90cecc86 100644
+--- a/drivers/core/Kconfig
++++ b/drivers/core/Kconfig
+@@ -99,6 +99,16 @@ config SPL_DM_SEQ_ALIAS
+ 	  numbered devices (e.g. serial0 = &serial0). This feature can be
+ 	  disabled if it is not required, to save code space in SPL.
+ 
++config DM_DMA
++	bool "Support per-device DMA constraints"
++	depends on DM
++	default n
++	help
++	  Enable this to extract per-device DMA constraints, only supported on
++	  device-tree systems for now. This is needed in order translate
++	  addresses on systems where different buses have different views of
++	  the physical address space.
++
+ config REGMAP
+ 	bool "Support register maps"
+ 	depends on DM
+diff --git a/drivers/core/device.c b/drivers/core/device.c
+index 355dbd147a..d41dab88da 100644
+--- a/drivers/core/device.c
++++ b/drivers/core/device.c
+@@ -402,6 +402,43 @@ fail:
+ 	return ret;
+ }
+ 
++/**
++ * device_get_dma_constraints() - Populate device's DMA constraints
++ *
++ * Gets a device's DMA constraints from firmware. This information is later
++ * used by drivers to translate physcal addresses to the device's bus address
++ * space. For now only device-tree is supported.
++ *
++ * @dev: Pointer to target device
++ * Return: 0 if OK or if no DMA constraints were found, error otherwise
++ */
++static int device_get_dma_constraints(struct udevice *dev)
++{
++	struct udevice *parent = dev->parent;
++	phys_addr_t cpu = 0;
++	dma_addr_t bus = 0;
++	u64 size = 0;
++	int ret;
++
++	if (!CONFIG_IS_ENABLED(DM_DMA) || !parent || !dev_of_valid(parent))
++		return 0;
++
++	/*
++	 * We start parsing for dma-ranges from the device's bus node. This is
++	 * specially important on nested buses.
++	 */
++	ret = dev_get_dma_range(parent, &cpu, &bus, &size);
++	/* Don't return an error if no 'dma-ranges' were found */
++	if (ret && ret != -ENOENT) {
++		dm_warn("%s: failed to get DMA range, %d\n", dev->name, ret);
++		return ret;
++	}
++
++	dev_set_dma_offset(dev, cpu - bus);
++
++	return 0;
++}
++
+ int device_probe(struct udevice *dev)
+ {
+ 	const struct driver *drv;
+@@ -463,6 +500,10 @@ int device_probe(struct udevice *dev)
+ 			goto fail;
+ 	}
+ 
++	ret = device_get_dma_constraints(dev);
++	if (ret)
++		goto fail;
++
+ 	ret = uclass_pre_probe_device(dev);
+ 	if (ret)
+ 		goto fail;
+diff --git a/include/dm/device.h b/include/dm/device.h
+index 953706cf52..9d4670424b 100644
+--- a/include/dm/device.h
++++ b/include/dm/device.h
+@@ -138,6 +138,8 @@ enum {
+  *		When CONFIG_DEVRES is enabled, devm_kmalloc() and friends will
+  *		add to this list. Memory so-allocated will be freed
+  *		automatically when the device is removed / unbound
++ * @dma_offset: Offset between the physical address space (CPU's) and the
++ *		device's bus address space
+  */
+ struct udevice {
+ 	const struct driver *driver;
+@@ -161,6 +163,9 @@ struct udevice {
+ #ifdef CONFIG_DEVRES
+ 	struct list_head devres_head;
+ #endif
++#if CONFIG_IS_ENABLED(DM_DMA)
++	ulong dma_offset;
++#endif
+ };
+ 
+ /* Maximum sequence number supported */
+@@ -172,6 +177,14 @@ struct udevice {
+ /* Returns non-zero if the device is active (probed and not removed) */
+ #define device_active(dev)	((dev)->flags & DM_FLAG_ACTIVATED)
+ 
++#if CONFIG_IS_ENABLED(DM_DMA)
++#define dev_set_dma_offset(_dev, _offset)	_dev->dma_offset = _offset
++#define dev_get_dma_offset(_dev)		_dev->dma_offset
++#else
++#define dev_set_dma_offset(_dev, _offset)
++#define dev_get_dma_offset(_dev)		0
++#endif
++
+ static inline int dev_of_offset(const struct udevice *dev)
+ {
+ 	return ofnode_to_offset(dev->node);

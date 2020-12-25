@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Dec 24 16:17:08 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
+
+Enable RPi 4 Compute Module (jsc#SLE-16895).
+Fix problems with DMA offset after FW update (bsc#1180338)
+
+Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2020.10
+* Patches added:
+  0015-rpi-Add-identifier-for-the-new-RPi4.patch
+  0016-rpi-Add-identifier-for-the-new-CM4.patch
+  0017-pci-pcie-brcmstb-Fix-inbound-window.patch
+  0018-dm-Introduce-xxx_get_dma_range.patch
+  0019-dm-test-Add-test-case-for-dev_get_d.patch
+  0020-dm-Introduce-DMA-constraints-into-t.patch
+  0021-dm-test-Add-test-case-for-dev-dma_o.patch
+  0022-dm-Introduce-dev_phys_to_bus-dev_bu.patch
+  0023-dm-test-Add-test-case-for-dev_phys_.patch
+  0024-xhci-translate-virtual-addresses-in.patch
+  0025-mmc-Introduce-mmc_phys_to_bus-mmc_b.patch
+  0026-configs-rpi4-Enable-DM_DMA-across-a.patch
+  0027-video-arm-rpi-Add-brcm-bcm2711-hdmi.patch
+  0028-usb-xhci-xhci_bulk_tx-Don-t-BUG-whe.patch
+
+-------------------------------------------------------------------
 Fri Dec 11 13:18:00 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add bananapim2zero flavor

@@ -1,0 +1,52 @@
+From b8247b786c889b0141854d8a745409b7dd131d81 Mon Sep 17 00:00:00 2001
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Date: Tue, 15 Dec 2020 13:35:34 +0100
+Subject: [PATCH] configs: rpi4: Enable DM_DMA across all RPi4 configurations
+
+The DM_DMA option is needed in order to translate physical address into
+bus addresses on a per-device basis.
+
+Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Reviewed-by: Simon Glass <sjg@chromium.org>
+---
+ configs/rpi_4_32b_defconfig | 1 +
+ configs/rpi_4_defconfig     | 1 +
+ configs/rpi_arm64_defconfig | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/configs/rpi_4_32b_defconfig b/configs/rpi_4_32b_defconfig
+index 4a88448e9d..e6c038e750 100644
+--- a/configs/rpi_4_32b_defconfig
++++ b/configs/rpi_4_32b_defconfig
+@@ -22,6 +22,7 @@ CONFIG_OF_BOARD=y
+ CONFIG_ENV_FAT_DEVICE_AND_PART="0:1"
+ CONFIG_SYS_RELOC_GD_ENV_ADDR=y
+ CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG=y
++CONFIG_DM_DMA=y
+ CONFIG_DFU_MMC=y
+ CONFIG_DM_KEYBOARD=y
+ CONFIG_DM_MMC=y
+diff --git a/configs/rpi_4_defconfig b/configs/rpi_4_defconfig
+index 71f95ed8f7..e8d6fb7e85 100644
+--- a/configs/rpi_4_defconfig
++++ b/configs/rpi_4_defconfig
+@@ -22,6 +22,7 @@ CONFIG_OF_BOARD=y
+ CONFIG_ENV_FAT_DEVICE_AND_PART="0:1"
+ CONFIG_SYS_RELOC_GD_ENV_ADDR=y
+ CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG=y
++CONFIG_DM_DMA=y
+ CONFIG_DFU_MMC=y
+ CONFIG_DM_KEYBOARD=y
+ CONFIG_DM_MMC=y
+diff --git a/configs/rpi_arm64_defconfig b/configs/rpi_arm64_defconfig
+index 4ce8469f43..7d837a9e93 100644
+--- a/configs/rpi_arm64_defconfig
++++ b/configs/rpi_arm64_defconfig
+@@ -20,6 +20,7 @@ CONFIG_CMD_FS_UUID=y
+ CONFIG_OF_BOARD=y
+ CONFIG_ENV_FAT_DEVICE_AND_PART="0:1"
+ CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG=y
++CONFIG_DM_DMA=y
+ CONFIG_DM_KEYBOARD=y
+ CONFIG_DM_MMC=y
+ CONFIG_MMC_SDHCI=y

@@ -1,0 +1,31 @@
+From 83e81b4e04c3ef65402f161283a4b3faa50748c7 Mon Sep 17 00:00:00 2001
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Date: Mon, 21 Dec 2020 13:41:08 +0100
+Subject: [PATCH] video: arm: rpi: Add brcm,bcm2711-hdmi0 compatible
+
+The 'brcm,bcm2711-hdmi0' compatible string is used on RPi4 instead of
+'brcm,bcm2835-hdmi' since the IP core was upgraded (now called VC6
+instead of VC4). This has no functional change as far as u-boot driver
+is concerned. So simply add the compatible string.
+
+Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+
+---
+Changes since v3:
+ - Add this patch
+---
+ drivers/video/bcm2835.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/video/bcm2835.c b/drivers/video/bcm2835.c
+index 0888cb0019..51941c4f53 100644
+--- a/drivers/video/bcm2835.c
++++ b/drivers/video/bcm2835.c
+@@ -52,6 +52,7 @@ static int bcm2835_video_probe(struct udevice *dev)
+ 
+ static const struct udevice_id bcm2835_video_ids[] = {
+ 	{ .compatible = "brcm,bcm2835-hdmi" },
++	{ .compatible = "brcm,bcm2711-hdmi0" },
+ 	{ .compatible = "brcm,bcm2708-fb" },
+ 	{ }
+ };

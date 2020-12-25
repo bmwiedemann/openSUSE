@@ -1,0 +1,123 @@
+From 612c8faa01d20895eff45b9681c6406b6daf7035 Mon Sep 17 00:00:00 2001
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Date: Mon, 14 Dec 2020 20:45:19 +0100
+Subject: [PATCH] dm: test: Add test case for dev->dma_offset
+
+Add test to validate dev->dma_offset is properly set on devices.
+
+Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Reviewed-by: Simon Glass <sjg@chromium.org>
+
+---
+Changes since v3:
+ - Use ut_assertok() instead of ut_assert(!func())
+---
+ arch/sandbox/dts/test.dts          |  4 ++++
+ configs/sandbox64_defconfig        |  1 +
+ configs/sandbox_defconfig          |  1 +
+ configs/sandbox_flattree_defconfig |  1 +
+ configs/sandbox_spl_defconfig      |  1 +
+ test/dm/core.c                     | 30 ++++++++++++++++++++++++++++++
+ 6 files changed, 38 insertions(+)
+
+diff --git a/arch/sandbox/dts/test.dts b/arch/sandbox/dts/test.dts
+index c0ac4a793c..ff5d65a522 100644
+--- a/arch/sandbox/dts/test.dts
++++ b/arch/sandbox/dts/test.dts
+@@ -285,6 +285,10 @@
+ 		#address-cells = <1>;
+ 		#size-cells = <1>;
+ 		compatible = "denx,u-boot-test-bus";
++
++		subnode@0 {
++			compatible = "denx,u-boot-fdt-test";
++		};
+ 	};
+ 
+ 	acpi_test1: acpi-test {
+diff --git a/configs/sandbox64_defconfig b/configs/sandbox64_defconfig
+index 9c102948c0..6cd0c3b19e 100644
+--- a/configs/sandbox64_defconfig
++++ b/configs/sandbox64_defconfig
+@@ -91,6 +91,7 @@ CONFIG_ENV_EXT4_DEVICE_AND_PART="0:0"
+ CONFIG_BOOTP_SEND_HOSTNAME=y
+ CONFIG_NETCONSOLE=y
+ CONFIG_IP_DEFRAG=y
++CONFIG_DM_DMA=y
+ CONFIG_REGMAP=y
+ CONFIG_SYSCON=y
+ CONFIG_DEVRES=y
+diff --git a/configs/sandbox_defconfig b/configs/sandbox_defconfig
+index 92ffe48432..10132088c6 100644
+--- a/configs/sandbox_defconfig
++++ b/configs/sandbox_defconfig
+@@ -104,6 +104,7 @@ CONFIG_ENV_EXT4_DEVICE_AND_PART="0:0"
+ CONFIG_BOOTP_SEND_HOSTNAME=y
+ CONFIG_NETCONSOLE=y
+ CONFIG_IP_DEFRAG=y
++CONFIG_DM_DMA=y
+ CONFIG_REGMAP=y
+ CONFIG_SYSCON=y
+ CONFIG_DEVRES=y
+diff --git a/configs/sandbox_flattree_defconfig b/configs/sandbox_flattree_defconfig
+index dd93167e1b..528e6d4ff0 100644
+--- a/configs/sandbox_flattree_defconfig
++++ b/configs/sandbox_flattree_defconfig
+@@ -75,6 +75,7 @@ CONFIG_ENV_EXT4_DEVICE_AND_PART="0:0"
+ CONFIG_BOOTP_SEND_HOSTNAME=y
+ CONFIG_NETCONSOLE=y
+ CONFIG_IP_DEFRAG=y
++CONFIG_DM_DMA=y
+ CONFIG_REGMAP=y
+ CONFIG_SYSCON=y
+ CONFIG_DEVRES=y
+diff --git a/configs/sandbox_spl_defconfig b/configs/sandbox_spl_defconfig
+index 6d8e827aeb..c8b62eba21 100644
+--- a/configs/sandbox_spl_defconfig
++++ b/configs/sandbox_spl_defconfig
+@@ -93,6 +93,7 @@ CONFIG_BOOTP_SEND_HOSTNAME=y
+ CONFIG_NETCONSOLE=y
+ CONFIG_IP_DEFRAG=y
+ CONFIG_SPL_DM=y
++CONFIG_DM_DMA=y
+ CONFIG_REGMAP=y
+ CONFIG_SPL_REGMAP=y
+ CONFIG_SYSCON=y
+diff --git a/test/dm/core.c b/test/dm/core.c
+index 8ed5bf7370..c079655b4d 100644
+--- a/test/dm/core.c
++++ b/test/dm/core.c
+@@ -906,3 +906,33 @@ static int dm_test_inactive_child(struct unit_test_state *uts)
+ 	return 0;
+ }
+ DM_TEST(dm_test_inactive_child, UT_TESTF_SCAN_PDATA);
++
++static int dm_test_dma_offset(struct unit_test_state *uts)
++{
++       struct udevice *dev;
++       ofnode node;
++
++       /* Make sure the bus's dma-ranges aren't taken into account here */
++       node = ofnode_path("/mmio-bus@0");
++       ut_assert(ofnode_valid(node));
++       ut_assertok(uclass_get_device_by_ofnode(UCLASS_TEST_BUS, node, &dev));
++       ut_asserteq_64(0, dev->dma_offset);
++
++       /* Device behind a bus with dma-ranges */
++       node = ofnode_path("/mmio-bus@0/subnode@0");
++       ut_assert(ofnode_valid(node));
++       ut_assertok(uclass_get_device_by_ofnode(UCLASS_TEST_FDT, node, &dev));
++       ut_asserteq_64(-0x10000000ULL, dev->dma_offset);
++
++       /* This one has no dma-ranges */
++       node = ofnode_path("/mmio-bus@1");
++       ut_assert(ofnode_valid(node));
++       ut_assertok(uclass_get_device_by_ofnode(UCLASS_TEST_BUS, node, &dev));
++       node = ofnode_path("/mmio-bus@1/subnode@0");
++       ut_assert(ofnode_valid(node));
++       ut_assertok(uclass_get_device_by_ofnode(UCLASS_TEST_FDT, node, &dev));
++       ut_asserteq_64(0, dev->dma_offset);
++
++       return 0;
++}
++DM_TEST(dm_test_dma_offset, UT_TESTF_SCAN_PDATA | UT_TESTF_SCAN_FDT);

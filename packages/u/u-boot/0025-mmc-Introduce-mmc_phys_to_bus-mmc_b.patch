@@ -1,0 +1,89 @@
+From 9d5e73021a5778a29855140e50aa5309e7611618 Mon Sep 17 00:00:00 2001
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Date: Thu, 19 Nov 2020 16:39:00 +0100
+Subject: [PATCH] mmc: Introduce mmc_phys_to_bus()/mmc_bus_to_phys()
+
+This will allow us to use DM variants of phys_to_bus()/bus_to_phys()
+when relevant.
+
+Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Reviewed-by: Simon Glass <sjg@chromium.org>
+
+---
+Changes since v4:
+ - Introduce mmc->dev access macros to avoid ifdefs
+ - No need to create mmc_phys_to_bus()
+
+Changes since v3:
+ - Don't call phys_to_bus()/bus_to_phys(), we only support DM
+---
+ drivers/mmc/sdhci.c | 12 +++++++-----
+ include/mmc.h       |  6 ++++++
+ 2 files changed, 13 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/mmc/sdhci.c b/drivers/mmc/sdhci.c
+index 7673219fb3..874b686750 100644
+--- a/drivers/mmc/sdhci.c
++++ b/drivers/mmc/sdhci.c
+@@ -14,12 +14,12 @@
+ #include <log.h>
+ #include <malloc.h>
+ #include <mmc.h>
++#include <phys2bus.h>
+ #include <sdhci.h>
+ #include <asm/cache.h>
+ #include <linux/bitops.h>
+ #include <linux/delay.h>
+ #include <linux/dma-mapping.h>
+-#include <phys2bus.h>
+ 
+ static void sdhci_reset(struct sdhci_host *host, u8 mask)
+ {
+@@ -124,6 +124,7 @@ static void sdhci_prepare_adma_table(struct sdhci_host *host,
+ static void sdhci_prepare_dma(struct sdhci_host *host, struct mmc_data *data,
+ 			      int *is_aligned, int trans_bytes)
+ {
++	dma_addr_t dma_addr;
+ 	unsigned char ctrl;
+ 	void *buf;
+ 
+@@ -154,8 +155,8 @@ static void sdhci_prepare_dma(struct sdhci_host *host, struct mmc_data *data,
+ 					  mmc_get_dma_dir(data));
+ 
+ 	if (host->flags & USE_SDMA) {
+-		sdhci_writel(host, phys_to_bus((ulong)host->start_addr),
+-				SDHCI_DMA_ADDRESS);
++		dma_addr = dev_phys_to_bus(mmc_to_dev(host->mmc), host->start_addr);
++		sdhci_writel(host, dma_addr, SDHCI_DMA_ADDRESS);
+ 	} else if (host->flags & (USE_ADMA | USE_ADMA64)) {
+ 		sdhci_prepare_adma_table(host, data);
+ 
+@@ -209,8 +210,9 @@ static int sdhci_transfer_data(struct sdhci_host *host, struct mmc_data *data)
+ 				start_addr &=
+ 				~(SDHCI_DEFAULT_BOUNDARY_SIZE - 1);
+ 				start_addr += SDHCI_DEFAULT_BOUNDARY_SIZE;
+-				sdhci_writel(host, phys_to_bus((ulong)start_addr),
+-					     SDHCI_DMA_ADDRESS);
++				start_addr = dev_phys_to_bus(mmc_to_dev(host->mmc),
++							     start_addr);
++				sdhci_writel(host, start_addr, SDHCI_DMA_ADDRESS);
+ 			}
+ 		}
+ 		if (timeout-- > 0)
+diff --git a/include/mmc.h b/include/mmc.h
+index 82562193cc..d3f6c955d6 100644
+--- a/include/mmc.h
++++ b/include/mmc.h
+@@ -699,6 +699,12 @@ struct mmc {
+ 	u32 quirks;
+ };
+ 
++#if CONFIG_IS_ENABLED(DM_MMC)
++#define mmc_to_dev(_mmc)	_mmc->dev
++#else
++#define mmc_to_dev(_mmc)	NULL
++#endif
++
+ struct mmc_hwpart_conf {
+ 	struct {
+ 		uint enh_start;	/* in 512-byte sectors */
