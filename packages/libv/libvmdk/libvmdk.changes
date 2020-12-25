@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 24 19:50:21 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- Update to 20200926
+        * Added Big5 as an alias for CP950
+        * Added GBK as an alias for CP936
+
+-------------------------------------------------------------------
 Thu Apr 30 02:12:02 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - remove python2 submodule 

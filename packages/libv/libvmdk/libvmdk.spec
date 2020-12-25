@@ -1,7 +1,7 @@
 #
 # spec file for package libvmdk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 %define lname	libvmdk1
-%define timestamp 20181227
+%define timestamp 20200926
 Name:           libvmdk
 Version:        0~%{timestamp}
 Release:        0
 Summary:        Library to access the VMware Virtual Disk (VMDK) format
 License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          Productivity/File utilities
-Url:            https://github.com/libyal/libvmdk/
+URL:            https://github.com/libyal/libvmdk/
 Source:         https://github.com/libyal/libvmdk/releases/download/%{timestamp}/libvmdk-alpha-%{timestamp}.tar.gz
 Source2:        VMWare_Virtual_Disk_Format_VMDK.pdf
 BuildRequires:  pkg-config
