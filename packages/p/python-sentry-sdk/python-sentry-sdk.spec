@@ -20,29 +20,29 @@
 # nothing provides python2-venusian >= 1.0 needed by python2-pyramid
 %define skip_python2 1
 Name:           python-sentry-sdk
-Version:        0.14.4
+Version:        0.19.5
 Release:        0
 Summary:        Python SDK for Sentry.io
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/getsentry/sentry-python
-Source0:        https://github.com/getsentry/sentry-python/archive/%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module Flask >= 0.8}
+Source0:        https://github.com/getsentry/sentry-python/archive/%{version}/sentry-python-%{version}.tar.gz
+BuildRequires:  %{python_module Flask >= 0.11}
+BuildRequires:  %{python_module SQLAlchemy >= 1.2}
+BuildRequires:  %{python_module aiohttp >= 3.5}
 BuildRequires:  %{python_module blinker >= 1.1}
 BuildRequires:  %{python_module bottle >= 0.12.13}
+BuildRequires:  %{python_module celery >= 3}
 BuildRequires:  %{python_module certifi}
+BuildRequires:  %{python_module executing}
 BuildRequires:  %{python_module falcon >= 1.4}
+BuildRequires:  %{python_module jsonschema}
+BuildRequires:  %{python_module rq >= 0.6}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module tornado >= 5}
 BuildRequires:  %{python_module urllib3}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Flask >= 0.8
-Requires:       python-blinker >= 1.1
-Requires:       python-bottle >= 0.12.13
-Requires:       python-certifi
-Requires:       python-falcon >= 1.4
-Requires:       python-urllib3
-BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module eventlet}
@@ -51,10 +51,40 @@ BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pyramid}
 BuildRequires:  %{python_module pytest-localserver}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module rq}
-BuildRequires:  %{python_module tornado}
 BuildRequires:  %{python_module tox}
 # /SECTION
+# SECTION extra requirements - which rise up buildtime error or missing in openSUSE
+#BuildRequires:  %%{python_module Django >= 1.8}
+#BuildRequires:  %%{python_module sanic >= 0.8}
+#BuildRequires:  %%{python_module apache-beam >= 2.12}
+#BuildRequires:  %%{python_module pyspark >= 2.4.4}
+#BuildRequires:  %%{python_module pure_eval}
+#BuildRequires:  %%{python_module asttokens}
+#BuildRequires:  %%{python_module chalice >= 1.16.0}
+# /SECTION
+Requires:       python-Flask >= 0.11
+Requires:       python-SQLAlchemy >= 1.2
+Requires:       python-aiohttp >= 3.5
+Requires:       python-blinker >= 1.1
+Requires:       python-bottle >= 0.12.13
+Requires:       python-celery >= 3
+Requires:       python-certifi
+Requires:       python-executing
+Requires:       python-falcon >= 1.4
+Requires:       python-jsonschema
+Requires:       python-rq >= 0.6
+Requires:       python-tornado >= 5
+Requires:       python-urllib3
+# SECTION extra requirements - which rise up buildtime error or missing in openSUSE
+#Requires:       python-Django >= 1.8
+#Requires:       python-sanic >= 0.8
+#Requires:       python-apache-beam >= 2.12
+#Requires:       python-pyspark >= 2.4.4
+#Requires:       python-pure_eval
+#Requires:       python-asttokens
+#Requires:       python-chalice >= 1.16.0
+# /SECTION
+BuildArch:      noarch
 %python_subpackages
 
 %description
