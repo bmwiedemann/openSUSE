@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-HeapDict
 Version:        1.0.1
 Release:        0
@@ -30,8 +31,13 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # These packages contain module test from stdlib,
 # it has nothing to do with this package being noarch
+%if ! %{with python2}
+# TW has without python2 defined and will have multiple python3 flavors
+BuildRequires:  %{python_module testsuite}
+%else
 BuildRequires:  python2-devel
 BuildRequires:  python3-testsuite
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -61,6 +67,8 @@ important for many algorithms such as Dijkstra's Algorithm and A*.
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/heapdict.py*
+%pycache_only %{python_sitelib}/__pycache__/heapdict*
+%{python_sitelib}/HeapDict-%{version}*-info
 
 %changelog
