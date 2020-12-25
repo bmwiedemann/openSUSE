@@ -1,7 +1,7 @@
 #
 # spec file for package libvshadow
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 Name:           libvshadow
 %define lname	libvshadow1
-%define timestamp	20190323
+%define timestamp	20201222
 Version:        0~%{timestamp}
 Release:        0
 Summary:        Library to access the Volume Shadow Snapshot (VSS) format
 License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          System/Filesystems
-Url:            https://github.com/libyal/libvshadow/wiki
+URL:            https://github.com/libyal/libvshadow/wiki
 Source:         https://github.com/libyal/libvshadow/releases/download/%{timestamp}/libvshadow-alpha-%{timestamp}.tar.gz
 Source1:        Paper_-_Windowless_Shadow_Snapshots.pdf
 Source2:        Slides_-_Windowless_Shadow_Snapshots.pdf

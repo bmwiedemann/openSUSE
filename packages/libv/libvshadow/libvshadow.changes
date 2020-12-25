@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 24 20:29:21 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20201222
+        * Changes for large amount of block descriptors
+        * Worked on format support
+        * Worked on Python bindings
+        * Code clean up
+
+-------------------------------------------------------------------
 Thu Apr 30 02:14:36 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - remove python2 submodule 
