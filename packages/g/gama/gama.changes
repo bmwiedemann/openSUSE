@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 25 08:54:06 UTC 2020 - Wang Jun <jgwang@suse.de>
+
+- Update to version 2.12
+  * Alternative support of input data based on YAML format. YAML
+    support was added for gama-local as an alternative to the existing
+    XML input format. The YAML support is currently limited only to a
+    conversion program gama-local-yaml2gkf but it may be fully
+    integrated in gama-local program later.
+
+-------------------------------------------------------------------
 Wed Oct 28 12:40:38 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.11:
