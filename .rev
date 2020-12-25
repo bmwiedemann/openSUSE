@@ -27,4 +27,12 @@
   * no upstream changelog</comment>
     <requestid>732884</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>789e502e597c6e809711c1a29a0f2823</srcmd5>
+    <version>1.0.1</version>
+    <time>1608918639</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858536</requestid>
+  </revision>
 </revisionlist>

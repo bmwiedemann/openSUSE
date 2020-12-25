@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 24 00:35:44 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Support multiple python3 flavors
+  gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Tue Sep 24 09:15:23 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.0.1:
