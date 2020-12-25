@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-lzmaffi
 Version:        0.3.0
 Release:        0
@@ -31,7 +32,12 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if ! %{with python2}
+# TW defines without python2 but will have multiple python3 flavors
+BuildRequires:  %{python_module testsuite}
+%else
 BuildRequires:  python3-testsuite
+%endif
 BuildRequires:  xz-devel
 Requires:       python-cffi >= 0.6
 %python_subpackages

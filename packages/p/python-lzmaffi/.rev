@@ -7,4 +7,12 @@
     <comment>Needed by python-dask</comment>
     <requestid>668253</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f7743f4572962fbc8f35b6db052a4a2c</srcmd5>
+    <version>0.3.0</version>
+    <time>1608918636</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858535</requestid>
+  </revision>
 </revisionlist>
