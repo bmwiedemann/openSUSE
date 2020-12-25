@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Fri Dec 18 15:20:06 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20201218.7cd9d749:
+  * rebuild-trigger: run project-installcheck on SLE15-SP3 Backports
+
+-------------------------------------------------------------------
+Fri Dec 18 08:01:55 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20201217.06e44bca:
+  * Fix typo in the source checker
+
+-------------------------------------------------------------------
+Wed Dec 16 08:39:30 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20201216.b9ce7bf1:
+  * Also add required checks to adi stagings after adding architectures
+
+-------------------------------------------------------------------
+Wed Dec 16 08:22:55 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20201216.bb412fe4:
+  * Fix staging-installcheck.py being ignored if i586 is present
+
+-------------------------------------------------------------------
+Tue Dec 15 13:41:17 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20201215.76b63b74:
+  * Enable TTM for openSUSE:Leap:15.3:Images
+
+-------------------------------------------------------------------
+Fri Dec 11 13:32:27 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20201211.df53c462:
+  * check_source: mode='manual' is permitted in _service files
+  * check_source.pl: One .changes file per package is enough
+  * check_source: Advertise the usage of 'osc service runall $FOO'
+  * Don't produce directory conflicts of ghost files
+
+-------------------------------------------------------------------
+Thu Dec 10 09:47:30 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20201210.049f70f7:
+  * Add 'kernel-64kb' to the list of kernel packages to reduce kernel spam
+
+-------------------------------------------------------------------
+Wed Dec 09 13:44:47 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20201209.32338511:
+  * Add bot for Camerleon project
+
+-------------------------------------------------------------------
+Wed Dec 02 17:48:51 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20201202.0bafe324:
+  * Add schedule for Leap 15.1, 15.2 and 15.3
+
+-------------------------------------------------------------------
+Wed Dec 02 04:39:35 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20201202.7103cd65:
+  * Use string instead of byte stream for configparser
+  * Rename ConfigParser to configparser
+  * Replace sys.maxint with sys.maxsize
+
+-------------------------------------------------------------------
+Fri Nov 27 18:51:10 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20201127.8335cbff:
+  * SLE15SP3: Release images-ndb to :TEST
+
+-------------------------------------------------------------------
+Mon Nov 23 22:03:00 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20201123.5ffdcc9e:
+  * Also release sles15-image to :ToTest in SLE15.SP3.ImagesManual
+  * Don't publish sles15-image as part of Release.Images.To.Publish
+
+-------------------------------------------------------------------
+Mon Nov 23 12:32:20 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20201123.10a2268e:
+  * Release and publish SUSE:SLE-15-SP3:Update:CR/sles15-image as well
+
+-------------------------------------------------------------------
 Thu Nov 12 16:26:12 UTC 2020 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20201112.4a3abc91:
