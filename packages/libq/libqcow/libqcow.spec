@@ -17,7 +17,7 @@
 
 
 %define lname	libqcow1
-%define timestamp 20191221
+%define timestamp 20201213
 Name:           libqcow
 Version:        0~%{timestamp}
 Release:        0
