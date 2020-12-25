@@ -17,7 +17,7 @@
 
 
 %define lname   libvslvm1
-%define timestamp 20200102
+%define timestamp 20200817
 Name:           libvslvm
 Version:        0~%{timestamp}
 Release:        0
