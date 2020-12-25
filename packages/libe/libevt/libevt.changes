@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 24 20:16:37 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to 0~20200926
+        * Changes to ensure record data can wrap only once in a record scan
+        * Code clean up 
+
+-------------------------------------------------------------------
 Tue May  5 11:07:37 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Allow distros to disable py2 support (bcond_without). Tumbleweed
