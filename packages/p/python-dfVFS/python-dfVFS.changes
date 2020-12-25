@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Nov  8 01:57:43 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- Update to 20200920
+  - Changes to make fsntfs the preferred NTFS back-end
+  - Changes to make OS backend more error tollerant 
+  - Changes to make NTFS backend more error tollerant 
+  - Changes to OS file entry for creation time #440 and ns timestamps 
+  - Added XZ compressed stream analyzer 
+  - Added VHDX storage media image support 
+  - Changes to expose HFS+ creation time
+  - Added fshfs back-end
+- examples is no longer installed into the site folder. Remove the rename statement.
+- add requires for libfsext, libfshfs, libluksde
+- updated %fdupes line to eliminate RPM warnings
+
+-------------------------------------------------------------------
 Sun Apr  5 21:20:22 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - Update to 20200211

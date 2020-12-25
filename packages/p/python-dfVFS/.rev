@@ -125,4 +125,24 @@ Move from python 2 to python 3</comment>
 </comment>
     <requestid>792003</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>dd66b157b22ea14ecf5ff4d72d4c4577</srcmd5>
+    <version>0~20200920</version>
+    <time>1608918659</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20200920
+  - Changes to make fsntfs the preferred NTFS back-end
+  - Changes to make OS backend more error tollerant 
+  - Changes to make NTFS backend more error tollerant 
+  - Changes to OS file entry for creation time #440 and ns timestamps 
+  - Added XZ compressed stream analyzer 
+  - Added VHDX storage media image support 
+  - Changes to expose HFS+ creation time
+  - Added fshfs back-end
+- examples is no longer installed into the site folder. Remove the rename statement.
+- add requires for libfsext, libfshfs, libluksde
+- updated %fdupes line to eliminate RPM warnings
+</comment>
+    <requestid>858552</requestid>
+  </revision>
 </revisionlist>

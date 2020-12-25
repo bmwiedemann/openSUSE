@@ -17,7 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define timestamp 20200211
+%define timestamp 20200920
 %define skip_python2 1
 Name:           python-dfVFS
 Version:        0~%{timestamp}
@@ -37,6 +37,8 @@ BuildRequires:  %{python_module idna}
 BuildRequires:  %{python_module libbde}
 BuildRequires:  %{python_module libewf}
 BuildRequires:  %{python_module libfsapfs}
+BuildRequires:  %{python_module libfsext}
+BuildRequires:  %{python_module libfshfs}
 BuildRequires:  %{python_module libfsntfs}
 BuildRequires:  %{python_module libfvde}
 BuildRequires:  %{python_module libfwnt}
@@ -61,9 +63,12 @@ Requires:       python-dtfabric
 Requires:       python-libbde
 Requires:       python-libewf
 Requires:       python-libfsapfs
+Requires:       python-libfsext
+Requires:       python-libfshfs
 Requires:       python-libfsntfs >= 0~20160418
 Requires:       python-libfvde
 Requires:       python-libfwnt
+Requires:       python-libluksde
 Requires:       python-libqcow
 Requires:       python-libsigscan
 Requires:       python-libsmdev
@@ -106,13 +111,11 @@ chmod -x run_tests.py
 
 %install
 %python_install
-%{python_expand mv %{buildroot}%{$python_sitelib}/{examples,dfvfs}
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%fdupes %{buildroot}
 
 %check
 # APFS parsing errors are being detected.  Skip for now (April 5, 2020)
-# %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
+# %%{python_expand export PYTHONPATH=%%{buildroot}%%{$python_sitearch}
 # $python ./run_tests.py
 # }
 
