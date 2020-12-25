@@ -21,14 +21,14 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fanficfare
-Version:        3.25.0
+Version:        3.27.0
 Release:        0
 Summary:        Tool for making eBooks from stories on fanfiction and other web sites
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/JimmXinu/FanFicFare
 Source:         https://github.com/JimmXinu/%{modname}/archive/v%{version}/%{modname}-%{version}.tar.gz
-# Source:         %%{modname}-%%{version}.tar.xz
+# Source:         %%{modname}-%%{version}.tar.gz
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module html2text}
@@ -39,6 +39,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-beautifulsoup4
 Requires:       python-chardet
+Requires:       python-cloudscraper
 Requires:       python-html2text
 Requires:       python-html5lib
 Requires:       python-setuptools
@@ -59,7 +60,10 @@ Main Features of FanFicFare:
     - Ability to update already downloaded book
 
 %prep
-%setup -q -n %{modname}-%{version}
+%autosetup -p1 -n %{modname}-%{version}
+
+rm -rf included_dependencies/
+
 sed -i -e '/^#!\/usr\/bin\/python/d' fanficfare/mobi{,html}.py
 dos2unix DESCRIPTION.rst README.md
 
