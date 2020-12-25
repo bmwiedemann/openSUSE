@@ -480,4 +480,55 @@
 </comment>
     <requestid>847350</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>69169a5c81fab88856b9b2df60cbd329</srcmd5>
+    <version>3.27.0</version>
+    <time>1608918640</time>
+    <user>dimstar_suse</user>
+    <comment>- Add use_cloudscraper code to use with CloudFlare sites, like
+  fanfiction.net now does.
+- Changes to allow email chapter update URLs to work in
+  adapter_wattpadcom
+- Updates for many included dependencies
+- Update to 3.26.0:
+  - Clear user_agent for literotica.com
+  - Fix finding imgs in existing epubs. Closes #608 Many thanks to
+    Epicpkmn11 for finding this before I released.
+  - Fixes for adapter_fictionlive, thanks HazelSh
+  - Make default CSS for fiction.live and royalroad.com use em instead
+    of pt, thanks HazelSh
+  - Fix for genre change in adapter_royalroadcom
+  - Fix for adapter_storiesonlinenet 'access' issue.
+  - Don't error on w/o class in replace_failed_smilies_with_alt_text
+  - Allow tab to leave edit boxes.
+  - Revert(ish) 'fix' for ffnet covers--they fixed it.
+  - Change convert_inline_images default to false.
+  - Fix http/https matching in identifiers:url search.
+  - Allow tags without src attr in epub to update
+  - Fix for ffnet cover images changed? Or broken?
+  - Warn, not crash on when cover_min_size fails.
+  - Add 2nd dup-story URL check after fetching metadata for when story
+    URL changes.
+  - Fix adapter_thesietchcom for site change
+  - Add (optional, default on) convert support for data:image in-line s.
+  - Adding pass-through support for data:image in-line s.
+  - XenForo: Fixes for extra /s in normalized URLs.
+  - Set default cover_min_size: 10,10 to avoid spacer images as covers.
+  - New Site: squidgeworld.org - shares code with AO3.
+  - adapter_wuxiaworldco: added status #592 from Rikkitp
+  - Don't use polyglot, not included until Calibre3. Remove some debug
+    output.
+  - adapter_scribblehubcom: Accept chapter URLs.
+  - adapter_wwwnovelallcom: Accept chapter URLs, must change to true
+    storyId/URL after.
+  - Make adapter_novelupdatescc share code with adapter_wuxiaworldco
+  - adapter_literotica: Keep language domains &amp; use for language
+    metadata. #588
+  - adapter_alternatehistorycom now uses same thread group HTML as
+    XenForo2. Closes #590
+  - adapter_wuxiaworldco/adapter_novelupdatescc: Re-add Don't include
+    grayed out 'In preparation' chapters
+</comment>
+    <requestid>858537</requestid>
+  </revision>
 </revisionlist>
