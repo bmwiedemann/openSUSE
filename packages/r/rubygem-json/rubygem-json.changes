@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 25 19:38:39 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.5.1
+
+  * Restore the compatibility for constants of JSON class.
+
+-------------------------------------------------------------------
 Mon Jul 13 16:27:47 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 2.3.1
