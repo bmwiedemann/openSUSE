@@ -17,7 +17,7 @@
 
 
 Name:           fd
-Version:        8.1.1
+Version:        8.2.1
 Release:        0
 Summary:        An alternative to the "find" utility
 License:        MIT AND Apache-2.0
@@ -93,7 +93,8 @@ install -Dm0755 build/bin/fd %{buildroot}%{_bindir}/fd
 # install man page and completions
 install -Dm644 target/release/build/fd-find-*/out/fd.bash %{buildroot}%{_datadir}/bash-completion/completions/fd
 install -Dm644 target/release/build/fd-find-*/out/fd.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/fd.fish
-install -Dm644 target/release/build/fd-find-*/out/_fd %{buildroot}%{_datadir}/zsh/site-functions/_fd
+## install -Dm644 target/release/build/fd-find-*/out/_fd %{buildroot}%{_datadir}/zsh/site-functions/_fd
+install -Dm644 contrib/completion/_fd %{buildroot}%{_datadir}/zsh/site-functions/_fd
 install -Dm644 doc/fd.1 %{buildroot}%{_mandir}/man1/fd.1
 
 %files
