@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Dec 23 12:50:03 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix sed call to fixup libtirpc.pc.in: as we want our tirpc to be
+  a transparent drop-in-replacement for rpc, we move the files
+  from /usr/include/tirpc to /usr/include. Due to an upstream
+  change in libtirpc.pc.in, though, the existing sed call no longer
+  matched and no longer corrected the information according to our
+  package.
+
+-------------------------------------------------------------------
+Wed Dec  2 17:29:03 UTC 2020 - Petr Vorel <pvorel@suse.cz>
+
+- Update to libtirpc 1.3.1
+  - Remove AUTH_DES interfaces from auth_des.h
+    The unsupported  AUTH_DES authentication has be
+    compiled out since commit d918e41d889 (Wed Oct 9 2019)
+    replaced by API routines that return errors.
+  - svc_dg: Free xp_netid during destroy
+  - Fix memory management issues of fd locks
+  - libtirpc: replace array with list for per-fd locks
+  - __svc_vc_dodestroy: fix double free of xp_ltaddr.buf
+  - __rpc_dtbsize: rlim_cur instead of rlim_max
+  - pkg-config: use the correct replacements for libdir/includedir
+
+-------------------------------------------------------------------
 Thu Oct 29 10:45:54 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - install libraries to %{_libdir} (boo#1029961)

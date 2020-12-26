@@ -16,20 +16,19 @@
 #
 
 
+%define debug_package_requires libtirpc3 = %{version}-%{release}
 Name:           libtirpc
 # src/crypt_client.c and tirpc/rpcsvc/crypt.x have the BSD advertising clause
-Version:        1.2.6
+Version:        1.3.1
 Release:        0
 Summary:        Transport Independent RPC Library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(krb5)
 URL:            https://sourceforge.net/projects/libtirpc/
 Source:         %{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%define debug_package_requires libtirpc3 = %{version}-%{release}
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(krb5)
 
 %description
 The Transport Independent RPC library (TI-RPC) is a replacement for the
@@ -71,12 +70,12 @@ This implementation allows the support of other transports than UDP and
 TCP over IPv4.
 
 %prep
-%setup -q -n %name-%version
+%setup -q
 
 %build
-sed -i -e 's|@includedir@/tirpc|@includedir@|g' libtirpc.pc.in
+sed -i -e 's|${includedir}/tirpc|${includedir}|g' libtirpc.pc.in
 %configure --disable-static
-%make_build %{?_smp_mflags}
+%make_build
 
 %install
 # Don't strip .symtab to allow debugging
@@ -91,26 +90,22 @@ rm -v %{buildroot}%{_libdir}/%{name}.la
 # they are now default
 mv -v %{buildroot}%{_includedir}/tirpc/* %{buildroot}%{_includedir}
 rmdir %{buildroot}%{_includedir}/tirpc
-rm -v %{buildroot}/etc/bindresvport.blacklist
+rm -v %{buildroot}%{_sysconfdir}/bindresvport.blacklist
 
 %post -n libtirpc3 -p /sbin/ldconfig
-
 %postun -n libtirpc3 -p /sbin/ldconfig
 
 %files -n libtirpc3
-%defattr(-,root,root)
 %license COPYING
 %{_libdir}/libtirpc.so.3*
 
 %files netconfig
-%defattr(-,root,root)
 %config %{_sysconfdir}/netconfig
-%{_mandir}/man5/netconfig.5.gz
+%{_mandir}/man5/netconfig.5%{?ext_man}
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/libtirpc.so
-/usr/include/*
+%{_includedir}/*
 %{_libdir}/pkgconfig/*
 %{_mandir}/man3/*
 
