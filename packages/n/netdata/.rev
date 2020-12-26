@@ -2610,4 +2610,148 @@ Bug Fixes
     <comment></comment>
     <requestid>853374</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c30283425d36b8bcb04d74f1b2d4a5bf</srcmd5>
+    <version>1.27.0</version>
+    <time>1609013501</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable additional dependencies (gprc, json, libcurl, libelf,
+  libwebsockets, protobuf, snappy, xenstat, yajl)
+- Update to v1.28.0 (go.d.plugin 0.26.2)
+Release v1.28.0 is a hotfix release to address a deadlock in the
+Netdata Agent. If the Agent-Cloud link (ACLK) connection drops and
+the Agent fails to queue an on_connect message, it also fails to
+properly release a lock in the web server thread.
+- Changes in v1.27.0:
+The v1.27.0 release of the Netdata Agent brings dramatic
+improvements to long-term metrics storage via the database engine,
+and new dashboard features like a time &amp; date picker for
+visualizing precise timeframes. Two new collectors bring incredible
+new value to existing features, including a bit of machine learning
+magic.
+This release contains 8 new collectors, 1 new notification method
+(2 others enhanced), 54 improvements, 41 documentation updates, and
+58 bug fixes.
+Improvements
+  * Add labels for Kubernetes pods and containers.
+  * Add plugin and module health entities.
+  * Migrate the metadata log to SQLite.
+  * Add an extent cache to the database engine.
+  * Added new data query option allow_past.
+Netdata Cloud
+  * Add the ability to query child nodes by their GUID.
+  * Add child availability messages to the ACLK.
+  * Add a metric showing how long a query spent in the queue.
+  * Completely hide the SSO iframe.
+Collectors
+  * Add alarms obsoletion and disable alarms collector by default.
+  * Add calls for tcp_sendmsg, tcp_retransmit_skb, tcp_cleanup_rcv,
+    udp_sendmsg, udp_recvmsg functions charts to the eBPF
+    collector.
+  * Add two more insignificant warnings to suppress in anomalies
+    collector.
+  * Add the number of allocated/stored objects within each storage
+    to the varnish collector.
+  * Add a wireless statistics collector.
+  * Add support for MSE (Massive Storage Engine) to the varnish
+    collector.
+  * Remove remove crit from unmatched alarms in the web_log
+    collector.
+  * Add GPU key metrics (nvidia_smi collector) to
+    dashboard_info.js.
+  * Add allocated space metrics to the oracledb collector.
+  * Restructure the eBPF collector to improve usability.
+  * Add an anomaly detection collector.
+  * Add a Netdata alarms collector.
+  * Add a configuration option to exclude users with zero memory
+    allocated to the nvidia_smi collector.
+  * Add per queue charts to the rabbitmq collector.
+  * Add support for HBA drives to the hpssa collector.
+  * Update the cgroups collector default filtering by adding pod
+    level cgroups.
+  * Add a Go version of the CouchDB collector (couchdb).
+  * Add collecting HTTP method per URL pattern (url_pattern option)
+    to the web_log collector.
+  * Add custom time fields feature to the web_log collector.
+  * Add a Go version of the PowerDNS Authoritative Nameserver
+    collector (powerdns).
+  * Add a Go version of the PowerDNS Recursor collector
+    (powerdns_recursor).
+  * Add a Go version of the PowerDNS DNSdist collector (dnsdist).
+  * Add a Dnsmasq DNS Forwarder collector (dnsmasq).
+  * Add collecting directories size to the filecheck collector.
+  * Add old systemd versions support to the systemdunits collector.
+  * Add unmatched lines logging to the web_log collector.
+Notifications
+  * Add API V2 support to the PagerDuty health integration.
+  * Add threads support to the Google Hangouts health integration.
+  * Add a Opsgenie health integration.
+Exporting
+  * Add HTTP and HTTPS support to the simple exporting connector.
+Packaging/installation
+  * Update React dashboard v2.11.
+  * Update go.d.plugin version to v0.26.2.
+  * Update eBPF collector to 0.4.9.
+  * Add ability to use system libwebsockets instead of bundled
+    version.
+  * Update the version of libJudy that we bundle to 1.0.5-netdata2.
+Bug fixes
+  * Fix crash in the eBPF plugin by initializing variables.
+  * Fix sending chart definition on every data collection in alarms
+    collector.
+  * Fix a lock check.
+  * Fix issue with chart metadata sent multiple times over ACLK.
+  * Fix a buffer overflow when extracting information from a
+    streaming connection.
+  * Fix hostname configuration in the exporting engine.
+  * Fix units and data source exporting options.
+  * Fix exporting config.
+  * Fix health by disabling used_file_descriptors alarm.
+  * Fix GPU data filtering in the nvidia_smi collector.
+  * Fix username resolution in the nvidia_smi collector.
+  * Fix compilation with HTTPS disabled.
+  * Fix hostname when syslog is used in syslog health integration.
+  * Fix streaming buffer size.
+  * Fix database endless loop when cleaning obsolete charts.
+  * Disable chart obsoletion code for archived chart creation.
+  * Fix Prometheus remote write exporter so that it doesn't stop
+    when data is not available for dimension formatting.
+  * Fix memory calculation by moving shared from cached to used
+    dimension.
+  * Fix parsing in the libreswan collector.
+  * Fix an infinite loop in the statsd plugin
+  * Disregard host tags configuration pointer.
+  * Fix platform dependent printf format.
+  * Fix cgroups collector resolving container names in k8s.
+  * Fix python.d plugin runtime chart creation.
+  * Fix race condition in rrdset_first_entry_t() and
+    rrdset_last_entry_t().
+  * Fix the data endpoint so that the context param is correctly
+    applied to children.
+  * Fix Coverity errors (CID 364045,364046).
+  * Fix the elasticsearch_last_collected alarm.
+  * Fix spelling error in xenstat.plugin.
+  * Fix chart filtering.
+  * Fix libnetdata headers to be compatible with C++.
+  * Fix registry responses to remove caching.
+  * Fix eBPF memory management.
+  * Fix overlapping memory issue.
+  * Fix response and upstream response time histogram charts in the
+    web_log collector.
+  * Fix logs timestamps always in UTC issue in the go.d.plugin
+  * Fix collecting slave status for MariaDB v10.2.0- in the mysql
+    collector
+  * Fix cumulative_stats configuration option in the unbound
+    collector
+  * Fix parsing configuration file (respect 'include-toplevel'
+    directive) in unbound collector
+  * Fix handling charts with type.id &gt;= 200 (netdata limit) in
+    go.d.plugin
+  * Fix parsing version query response in the mysql collector
+  * Fix Netsplits chart dimensions algorithm in the the vernemq
+    collector.
+  * Fix a typo in dashboard_info.js for VerneMQ.
+</comment>
+    <requestid>858645</requestid>
+  </revision>
 </revisionlist>

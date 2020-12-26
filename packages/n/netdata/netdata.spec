@@ -18,9 +18,9 @@
 
 %define netdata_user    netdata
 %define netdata_group   netdata
-%define godplugin_version 0.23.0
+%define godplugin_version 0.26.2
 Name:           netdata
-Version:        1.26.0
+Version:        1.27.0
 Release:        0
 Summary:        A system for distributed real-time performance and health monitoring
 # netdata is GPL-3.0+, other licenses refer to included third-party software (see REDISTRIBUTED.md)
@@ -37,6 +37,33 @@ BuildRequires:  cups-devel
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  git-core
+BuildRequires:  judy-devel
+BuildRequires:  pkgconfig
+BuildRequires:  snappy-devel
+BuildRequires:  pkgconfig(grpc)
+BuildRequires:  pkgconfig(json)
+BuildRequires:  pkgconfig(libcap)
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libelf)
+BuildRequires:  pkgconfig(liblz4)
+BuildRequires:  pkgconfig(libmnl)
+BuildRequires:  pkgconfig(libnetfilter_acct)
+BuildRequires:  pkgconfig(libuv)
+BuildRequires:  pkgconfig(libwebsockets)
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(protobuf)
+BuildRequires:  pkgconfig(uuid)
+BuildRequires:  pkgconfig(yajl)
+BuildRequires:  pkgconfig(zlib)
+Requires(pre):  shadow
+Recommends:     PyYAML
+Recommends:     curl
+Recommends:     iproute-tc
+Recommends:     lm_sensors
+Recommends:     nmap-ncat
+Recommends:     openssl(cli)
+Suggests:       logrotate
+Suggests:       nodejs
 # suse_version is set to 1500 even for 15.2
 %if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
 BuildRequires:  go >= 1.13
@@ -44,22 +71,9 @@ BuildRequires:  python3
 %else
 BuildRequires:  python2
 %endif
-BuildRequires:  judy-devel
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libcap)
-BuildRequires:  pkgconfig(liblz4)
-BuildRequires:  pkgconfig(libmnl)
-BuildRequires:  pkgconfig(libnetfilter_acct)
-BuildRequires:  pkgconfig(libuv)
-BuildRequires:  pkgconfig(openssl)
-BuildRequires:  pkgconfig(uuid)
-BuildRequires:  pkgconfig(zlib)
-Requires(pre):  shadow
-Recommends:     PyYAML
-Recommends:     curl
-Recommends:     iproute-tc
-Recommends:     lm_sensors
-Recommends:     nmap-ncat curl openssl(cli)
+%ifnarch ppc64 ppc64le armv7l
+BuildRequires:  pkgconfig(xenstat)
+%endif
 %if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
 Recommends:     python3
 Recommends:     python3-PyMySQL
@@ -69,8 +83,6 @@ Recommends:     python
 Recommends:     python2-PyMySQL
 Recommends:     python2-psycopg2
 %endif
-Suggests:       logrotate
-Suggests:       nodejs
 %ifarch i586 x86_64
 BuildRequires:  pkgconfig(libipmimonitoring)
 %endif
@@ -85,14 +97,14 @@ using interactive web dashboards.
 %setup -q -n %{name}-v%{version}
 %patch0
 %patch2 -p1
-sed -i 's,/usr/bin/env bash,/bin/bash,' claim/%{name}-claim.sh.in
+sed -i 's,%{_bindir}/env bash,/bin/bash,' claim/%{name}-claim.sh.in
 
 %if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
-sed -i 's,^pybinary=.*,pybinary=/usr/bin/python3,' collectors/python.d.plugin/python.d.plugin.in
+sed -i 's,^pybinary=.*,pybinary=%{_bindir}/python3,' collectors/python.d.plugin/python.d.plugin.in
 
-tar xf %{S:1}
+tar xf %{SOURCE1}
 cd go.d.plugin-%{godplugin_version}
-tar xf %{S:2}
+tar xf %{SOURCE2}
 %endif
 
 %build
@@ -136,7 +148,7 @@ sed -i 's,^#!%{_bindir}/env bash,#!/bin/bash,;s,^#!%{_bindir}/env sh,#!/bin/sh,'
 
 # Respect FHS
 mv %{buildroot}%{_sysconfdir}/%{name}/edit-config %{buildroot}%{_libexecdir}/%{name}
-sed -i 's|/usr/lib|%{_libdir}|' %{buildroot}%{_libexecdir}/%{name}/edit-config
+sed -i 's|%{_prefix}/lib|%{_libdir}|' %{buildroot}%{_libexecdir}/%{name}/edit-config
 
 # This should be opt-in, not opt-out. I do not believe most users would agree
 # with sending usage data to Google Analytics, whether anonymized or not.
