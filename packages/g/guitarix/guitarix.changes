@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Dec 25 05:14:04 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 0.42.1
+  * Make new Output Limiter less conservative
+  * Add Indicator Widget for the Limiter to show limiting levels
+  * Increase range for Volume controls on the Power Amp plugin
+  * Fix MultiBandDistortion introduce sonic noise
+  * Add Limiter to the Ladspa plugin
+  * Add configure option to build and link libgxw(mm) statically
+
+-------------------------------------------------------------------
+Fri Dec 25 01:54:24 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Delete obsolete patches: fpexception.patch, guitarix-boost69.patch
+  and  guitarix-fix-cannot-select-non-users-preset.patch
+- Update to 0.42.0
+  * For this release Damien Zammit from ZamAudio has reworked our
+    tube emulation. This improved beside the overall sound, the
+    dynamic responses of the different tube simulations.
+    Be aware please, that this may break your existing presets, but,
+    we believe that the improvement in sound is it worse to force
+    you to readjust your presets to match the new tube sims.
+
+  * Reworked French translation by Olivier Humbert
+  * Add DC-Blocker on the Input
+  * Add Output Limiter
+  * Add Volume controls for the Power Amp plugin
+  * Fix version checks for needed packages
+  * Fix several small Bugs and hopefully don't introduce to much new ones
+
+-------------------------------------------------------------------
 Fri Dec  4 05:46:10 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Add guitarix-fix-cannot-select-non-users-preset.patch fixes #21

@@ -20,16 +20,13 @@
 %bcond_without ladspa
 
 Name:           guitarix
-Version:        0.41.0
+Version:        0.42.1
 Release:        0
 Summary:        Simple Linux amplifier for jack
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            http://guitarix.sourceforge.net/
 Source:         http://downloads.sourceforge.net/project/guitarix/guitarix/guitarix2-%{version}.tar.xz
-Patch0:         fpexception.patch
-Patch1:         guitarix-boost69.patch
-Patch2:         guitarix-fix-cannot-select-non-users-preset.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gperf
@@ -59,6 +56,7 @@ BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(fftw3f)
 BuildRequires:  pkgconfig(fftw3l)
 BuildRequires:  pkgconfig(gail)
+BuildRequires:  pkgconfig(glibmm-2.4) >= 2.56
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk+-unix-print-3.0)
 BuildRequires:  pkgconfig(gtk+-x11-3.0)
@@ -148,9 +146,6 @@ Bestplugins Mega Pack 1+3 contains dozens of guitar sounds from famous bands.
 
 %prep
 %setup -q -n guitarix-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p2
 
 %build
 #todo: add faust package to openSUSE
