@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Dec 21 07:06:48 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 5.1.1
+- Bugs fixed:
+  * Minus sign is missing for negative numbers (kde#426406)
+  * Merge of Payees Deletes all Payees when an error occurs
+    (kde#427519)
+  * New account details window is not sized correctly (kde#405204)
+  * QIF Im-/Exporter do not have default profile in dropdown after
+    initial installation (kde#419275)
+  * Spelling mistakes in German "Ausgabe" categories (kde#420016)
+  * Can't reposition the currency symbol (kde#421915)
+  * Faulty icons display (kde#423259)
+  * kmymoney : decimal separator not supported anymore (kde#423509)
+  * Report 'Transactions by Category' converts all records to base
+    currency even if this option is not selected (kde#423870)
+  * Closed Accounts not hidden on Home view (kde#424098)
+  * Account names only display partially on Home View (kde#424188)
+  * Dates in "All dates" reports title not displayed (kde#424302)
+  * Reload home page failed (kde#424305)
+  * "Find transaction" does not respect filter (kde#424321)
+  * Accounts combobox in export wizard (kde#424344)
+  * Budget plugin and date format (kde#424424)
+  * Loan will not calculate and does (kde#424511)
+  * Transaction report is missing splits in certain circumstances
+    (kde#424674)
+  * The word "Principal" is misspelled as "Principle" in KMyMoney's
+    categories (kde#424745)
+  * KMM adds an extra "/" to the institution url (kde#425280)
+  * KMyMoney Missing currency - Zambia Kwacha (ZMW) (kde#425530)
+  * Price information to old currencies not added when adding
+    successor (kde#425533)
+  * Cannot rename new currency (kde#425934)
+  * No way of changing smallest cash/money unit size (kde#425935)
+  * Remove not implemented settings option "Insert transaction type
+    into No. field for new transactions" (kde#426151)
+  * "New Institution" edits instead of creating institution
+    (kde#426217)
+  * Chip-TAN widget is not completely visible (kde#426243)
+  * Adding new category from menu bar (kde#428164)
+  * Do not expose KCMs in application launchers (kde#428776)
+  * xea2kmt fails to parse gnucash templates (kde#429237)
+  * Calculator button not working for individual budget fields
+    (kde#429436)
+  * Make Searching Categories case insensitive (kde#429489)
+  * Newly created institution is not displayed in institutions view
+    (kde#429491)
+  * App freezes when toggling currency in investment performance
+    report (kde#430178)
+  * Can't cancel Schedule Details dialog presented on startup
+    (kde#430409)
+  * Values of date picker runs out of control for scheduled
+    payments and transactions (kde#424378)
+  * Column not deleted on update of a forecast with different cycle
+    duration (kde#428434)
+  * Import opening balance flag from gnucash templates (kde#429229)
+
+-------------------------------------------------------------------
 Tue Sep 15 10:55:38 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints with 4GB min disk space
