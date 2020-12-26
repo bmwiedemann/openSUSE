@@ -210,4 +210,12 @@
     <comment>- Update to release 8.3</comment>
     <requestid>854872</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c4857d94c3c48d5079ba27c923799df4</srcmd5>
+    <version>9.0</version>
+    <time>1609013511</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>858744</requestid>
+  </revision>
 </revisionlist>

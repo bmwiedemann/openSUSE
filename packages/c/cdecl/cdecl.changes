@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Dec 19 09:09:37 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.0
+  * The `show` command can now alternatively show types as
+    `using` declarations.
+  * For `predefined` or `user`, the `show` command now shows only
+    types that are valid in the current language.
+  * When printing `enum`, `struct`, `class`, or `union` types,
+    they are shown differently depending on what language the
+    type was defined in and whether the current language is C or
+    C++.
+
+-------------------------------------------------------------------
 Fri Dec 11 12:21:21 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.3
