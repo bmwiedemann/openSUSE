@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 16 13:30:49 UTC 2020 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
+
+- Update to 3.7.8
+  + Improvements to the build system.
+  + Fix man page generation, and document that help2man must be built with
+    gettext.
+  + Updates to nl, pt, sv translations (thanks, translators!).
+
+-------------------------------------------------------------------
 Sat Aug 15 20:56:49 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.7.7
