@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec 26 18:09:24 UTC 2020 - antoine.belvire@opensuse.org
+
+- Add some build dependencies (used to be implicitly pulled):
+  * pkgconfig(bzip2)
+  * pkgconfig(zlib)
+- Remove obsolete conditionals.
+
+-------------------------------------------------------------------
 Wed Feb  1 14:51:41 UTC 2017 - adam.majer@suse.de
 
 - use individual libboost-*-devel packages instead of boost-devel
