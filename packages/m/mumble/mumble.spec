@@ -296,13 +296,9 @@ for i in log lib run; do
 done
 #
 install -d %{buildroot}/%{_datadir}/applications
-%if 0%{?suse_version}
-sed 's/^Categories.*/Categories=X-SuSE-Core-Game;/' \
-        < scripts/mumble.desktop \
-        > %{buildroot}/%{_datadir}/applications/mumble.desktop
-%suse_update_desktop_file mumble
-%else
 install -m 644 scripts/mumble.desktop %{buildroot}/%{_datadir}/applications/mumble.desktop
+%if 0%{?suse_version}
+%suse_update_desktop_file mumble
 %endif
 
 mkdir -p %{buildroot}%{_docdir}/%{name}

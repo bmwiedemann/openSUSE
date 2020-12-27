@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 25 15:00:00 UTC 2020 - Yaroslav Kurlaev <yaroslav.kurlaev@gmail.com>
+
+- Don't edit categories of .desktop files.
+  * Fixes boo#1180068
+
+-------------------------------------------------------------------
 Sat Oct 24 02:05:14 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - update apparmor profiles to get warning free again on 15.2
