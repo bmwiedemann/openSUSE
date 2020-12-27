@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec 27 21:43:41 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to 1.23.0 
+  * Added architecture x86_omf for windows-dmd
+  * dub remove --non-interactive will now remove all packages by default
+  * Running dub upgrade on a package-less folder is now a no-op
+  * Support dependencies as git url with exact commit
+  * All commands now support package[@<version-spec>], --version is deprecated
+
+-------------------------------------------------------------------
 Tue May  5 11:50:57 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.20.0 (no changelog) 

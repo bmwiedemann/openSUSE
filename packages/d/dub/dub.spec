@@ -23,7 +23,7 @@
 %bcond_with dcompiler_dmd
 %endif
 Name:           dub
-Version:        1.20.0
+Version:        1.23.0
 Release:        0
 Summary:        Package manager and meta build tool for the D programming language
 License:        MIT
