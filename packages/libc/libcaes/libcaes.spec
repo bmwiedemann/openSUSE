@@ -1,7 +1,7 @@
 #
 # spec file for package libcaes
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 Name:           libcaes
 %define lname	libcaes1
-%define timestamp 20190102
+%define timestamp 20201012
 Version:        0~%timestamp
 Release:        0
 Summary:        Library for cross-platform AES encryption
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/libyal/libcaes/wiki
+URL:            https://github.com/libyal/libcaes/wiki
 Source:         https://github.com/libyal/libcaes/releases/download/%timestamp/%name-alpha-%timestamp.tar.gz
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcerror) >= 20130609
