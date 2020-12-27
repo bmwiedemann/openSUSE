@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-rebulk
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        Library for defining bulk search patterns to perform advanced string matching
 License:        MIT
@@ -43,7 +43,6 @@ allow building a custom and complex string matcher.
 
 %prep
 %autosetup -n rebulk-%{version}
-touch CHANGELOG.md
 
 # Remove shebang from non-executable files
 for i in {'builder','chain','debug','formatters','__init__','introspector','loose','match','pattern','processors','rebulk','remodule','rules','toposort','utils','validators','__version__'}; do
@@ -64,7 +63,7 @@ done
 %pytest rebulk/test/
 
 %files %{python_files}
-%doc README.md
+%doc CHANGELOG.md README.md
 %license LICENSE
 %{python_sitelib}/rebulk
 %{python_sitelib}/rebulk-%{version}-py%{python_version}.egg-info

@@ -1,10 +1,20 @@
 -------------------------------------------------------------------
+Sat Dec 26 10:13:50 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.0.1
+  * Fix broken package No such file or directory: 'CHANGELOG.md'
+
+-------------------------------------------------------------------
 Thu Dec 24 09:55:48 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.0.0
-  * feat(regex): replace REGEX_DISABLED environment variable with
-    REBULK_…
-  * feat: add python 3.8/3.9 support, drop python 2.7/3.4 support
+  * regex: Replace REGEX_DISABLED environment variable with
+    REBULK_REGEX_ENABLED
+  * Add python 3.8/3.9 support, drop python 2.7/3.4 support
+  * regex module is now disabled by default, even if it's
+    available in the python interpreter. You have to set
+    REBULK_REGEX_ENABLED=1 in your environment to enable it,
+    as this module may cause some issues.
 
 -------------------------------------------------------------------
 Sat May  2 07:49:27 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
