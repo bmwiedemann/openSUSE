@@ -1,7 +1,7 @@
 #
 # spec file for package libcdatetime
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 %define lname	libcdatetime1
-%define timestamp 20181004
+%define timestamp 20200510
 Name:           libcdatetime
 Version:        0~%{timestamp}
 Release:        0
 Summary:        Library for cross-platform C date and time functions
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
-Url:            https://github.com/libyal/libcdatetime/wiki
+URL:            https://github.com/libyal/libcdatetime/wiki
 Source:         https://github.com/libyal/libcdatetime/releases/download/%timestamp/%{name}-alpha-%{timestamp}.tar.gz
 BuildRequires:  pkg-config
 BuildRequires:  python-devel
