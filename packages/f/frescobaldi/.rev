@@ -160,4 +160,15 @@
     <comment></comment>
     <requestid>848842</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>172df4294b88013bfec783148db17b05</srcmd5>
+    <version>3.1.3</version>
+    <time>1609111735</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.3:
+  * This release contains several bug fixes, a few improvements and
+    updated translations
+- Update python-ly to version 0.9.7: no upstream changelog</comment>
+    <requestid>858867</requestid>
+  </revision>
 </revisionlist>

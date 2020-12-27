@@ -20,7 +20,7 @@ Name:           frescobaldi
 Summary:        Lilypond editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
-Version:        3.1.2
+Version:        3.1.3
 Release:        0
 URL:            http://www.frescobaldi.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -28,7 +28,7 @@ Source0:        https://github.com/frescobaldi/frescobaldi/archive/v%{version}/%
 # New package, was before part of frescobaldi
 # Url: https://pypi.python.org/pypi/python-ly
 # Keep in this package, because frescobaldi is the only one using it.
-Source1:        https://files.pythonhosted.org/packages/6f/2a/879b2e46a5e7968eb974831ae67c208ab437e067f92e3031abcab729674f/python-ly-0.9.6.tar.gz
+Source1:        https://files.pythonhosted.org/packages/9b/ed/e277509bb9f9376efe391f2f5a27da9840366d12a62bef30f44e5a24e0d9/python-ly-0.9.7.tar.gz
 BuildRequires:  appstream-glib-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python3-devel
@@ -64,7 +64,7 @@ make -C linux
 
 %install
 # first install python-ly
-cd python-ly-0.9.6
+cd python-ly-0.9.7
 python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 cd ..
 python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
