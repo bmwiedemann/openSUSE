@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Dec 27 21:29:54 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 2.094.2
+  - Runtime changes:
+	* Support time64 changes for CRuntime_Musl
+  - DMD Compiler regressions:
+	* Delegate covariance broken between 2.092 and 2.094 (git master).
+	* False deprecation raised for templated overloaded struct method
+  - DMD Compiler bugs:
+    * Calling __traits(getUnitTests) on a template causes compiler segfault
+	* __traits(getUnitTests) should include unittests from anonymous mixins
+	* 'With()' statement ignores symbol visibility in some cases.
+	* Name clash between import and method triggers a segfault
+  - Phobos bugs:
+    * Segfault with Appender!string.init.toString()
+	* join can iterates ranges multiple times
+	* std.random.uniform!T(urng) when T is dchar disregards urng and always uses a thread-local random
+	* std.random.uniform!T() and std.random.uniform!T(urng) when T is dchar with any qualifiers can exceed dchar.max
+  - Druntime bugs:
+    * core.stdcpp.string.basic_string does not implement opEquals
+	* core.stdcpp.vector.vector does not implement opEquals
+	* TypeInfo.swap must not allow reachable memory to be freed if interrupted by a garbage collection pass
+- refresh dmd_use_tarball_bootstrap.diff patch
+
+-------------------------------------------------------------------
 Wed Aug 14 13:12:57 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 2.087.1 

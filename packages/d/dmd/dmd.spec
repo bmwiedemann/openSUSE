@@ -1,7 +1,7 @@
 #
 # spec file for package dmd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 %define bootstrap_version 2.078.0
-%define sover	0_87
+%define sover	0_94
 %define auto_bootstrap 1
 Name:           dmd
-Version:        2.087.1
+Version:        2.094.2
 Release:        0
 Summary:        D Programming Language 2.0
 License:        BSL-1.0
@@ -92,7 +92,7 @@ this, unless you link statically, which is highly discouraged.
 %setup -q
 %setup -q -T -D -a 1
 %setup -q -T -D -a 2
-%patch0
+%patch0 -p1
 echo %{version} > phobos-%{version}/VERSION
 cd %{_builddir}
 ln -s dmd-%{version} dmd
@@ -108,6 +108,7 @@ pushd dmd
 	make %{?_smp_mflags} -f posix.mak \
 	%if %{auto_bootstrap}
 		AUTO_BOOTSTRAP=1 \
+		HOST_DMD_VER=%{bootstrap_version} \
 	%endif
 		BUILD=release \
 		PIC=1 \

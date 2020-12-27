@@ -299,4 +299,12 @@ Improved the spec file (forwarded request 542681 from worldcitizen)</comment>
     <comment></comment>
     <requestid>723308</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>cc9a9965100837be80ed7a03ab8ecf4c</srcmd5>
+    <version>2.094.2</version>
+    <time>1609111719</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858893</requestid>
+  </revision>
 </revisionlist>
