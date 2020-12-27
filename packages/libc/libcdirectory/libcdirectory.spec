@@ -1,7 +1,7 @@
 #
 # spec file for package libcdirectory
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define lname	libcdirectory1
-%define timestamp 20170104
+%define timestamp 20200702
 Name:           libcdirectory
 Version:        0~%{timestamp}
 Release:        0
 Summary:        Library for Windows NT data types
-License:        LGPL-3.0+ and GFDL-1.3+
+License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          Productivity/File utilities
-Url:            https://github.com/libyal/libcdirectory/wiki
+URL:            https://github.com/libyal/libcdirectory/wiki
 Source:         https://github.com/libyal/libcdirectory/releases/download/%timestamp/%{name}-experimental-%{timestamp}.tar.gz
 BuildRequires:  pkg-config
 BuildRequires:  python-devel
@@ -40,7 +40,7 @@ libyal is typically used in digital forensic tools.
 
 %package -n %{lname}
 Summary:        Library for Windows NT data types
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
 %description -n %{lname}
@@ -49,7 +49,7 @@ libyal is typically used in digital forensic tools.
 
 %package devel
 Summary:        Development files for libcdirectory
-License:        LGPL-3.0+ and GFDL-1.3+
+License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
