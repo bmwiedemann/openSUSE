@@ -19,7 +19,7 @@
 %bcond_without python2
 Name:           libevtx
 %define lname	libevtx1
-%define timestamp	20191221
+%define timestamp	20200709
 Version:        0~%timestamp
 Release:        0
 Summary:        Library and tools to access the Windows XML Event Log (EVTX) format

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec 26 23:59:25 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20200709
+	* worked on python bindings
+
+-------------------------------------------------------------------
 Tue May  5 11:09:56 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Allow distros to disable python2 bindings (bcond_without):
