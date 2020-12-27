@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pytools
-Version:        2020.3.1
+Version:        2020.4.4
 Release:        0
 Summary:        A collection of tools for Python
 License:        MIT
@@ -32,13 +32,16 @@ BuildRequires:  %{python_module decorator >= 3.2.0}
 BuildRequires:  %{python_module numpy >= 1.6.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.8.0}
+BuildRequires:  ( python3-dataclasses >= 0.7 if python3-base <= 3.6 )
+BuildRequires:  ( python36-dataclasses >= 0.7 if python36-base )
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-appdirs >= 1.4.0
 Requires:       python-decorator >= 3.2.0
 Requires:       python-numpy >= 1.6.0
-Requires:       python-six >= 1.8.0
+%if %{python_version_nodots} <= 36
+Requires:       python-dataclasses >= 0.7
+%endif
 BuildArch:      noarch
 %python_subpackages
 
