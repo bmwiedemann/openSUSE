@@ -20,7 +20,7 @@
 
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 Name:           i3lock
-Version:        2.12
+Version:        2.13
 Release:        0
 Summary:        Screen Locker for the i3 Window Manager
 License:        BSD-3-Clause
@@ -29,8 +29,6 @@ Source:         https://i3wm.org/i3lock/%{name}-%{version}.tar.bz2
 # borrowed from gnome-icon-theme
 Source2:        i3lock-icon.png
 Source3:        xlock.sh
-# PATCH-FIX-UPSTREAM 0001-unlock_indicator.c-fix-build-failure-against-gcc-10.patch gh#i3/i3lock#259
-Patch0:         0001-unlock_indicator.c-fix-build-failure-against-gcc-10.patch
 BuildRequires:  gcc
 BuildRequires:  glibc-devel
 BuildRequires:  make
