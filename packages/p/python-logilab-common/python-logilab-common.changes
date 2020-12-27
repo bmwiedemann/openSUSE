@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sat Dec 19 13:21:12 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- updadate to 1.8.0:
+    * deprecation: add types annotations
+    * declare that logilab.common ships type annotations (py.typed file)
+    * various bug fixes
+    * type: declare that logilab-common ship type annotations
+    * make the build reproducible
+    * fix(deprecation): stacked decorators breaks getting the real callable
+      __name__ attribute
+    * fix: in some situation (using several deprecation functions), renaming
+      deprecation utils failed to point to the correct new name and used random
+      internal names of the module
+    * fix(deprecation): rollback to old class_deprecation being a class behavior
+    * logilab-common requires python 3.6 now
+    * greatly improve our CI and migrate it to heptapod/gitlab-ci
+    * black the whole code base
+    * move test suit to pytest
+    * use check-manifest and fix related bugs in MANIFEST.in
+    * integrates flake8 and please the flake8 gods
+    * various fixes
+    * class_deprecation is not a class anymore
+    * pytest 5.4.2 breaks tests, pin to 5.4.1 for now
+    * fix: rollback to old class_deprecation being a class behavior
+    * fix: @functools.wraps broke callable_renamed, write a @lazy_wraps and
+      use it everywhere in logilab.common.deprecation
+    * add docstring to LazyObject
+    * fix: metaclass conflict in class_deprecated
+    * fix: explicitly requires python 3.6 in setup.py
+    * bug fix, bad usage of callable_renamed
+    * logilab-common requires python >= 3.6 now
+    * use pyannotates to introduces types in all the modules
+    * introduce a list of new functions in logilab.common.deprecation: callable_renamed, attribute_renamed, argument_renamed, argument_remove
+    * renamed "renamed" to "callable_renamed", "deprecated" to
+      "callable_deprecated", "moved" to "callable_moved" for coherence
+    * refactor the whole logilab.common.deprecation to simplify its code
+    * automatically detect from which modules a deprecated utils is called
+    * correctly display the line where a deprecated utils is used
+    * various small fixes, thx mypy
+    * documentation is now available at https://logilab-common.readthedocs.io/
+    * drop python2 support, python >= 3.3 is the new required version
+    * therefor, drop dependency on six
+    * drop rpm packaging
+    * registry: add a Registry.add_select_best_listener method to subscribe to
+      the result of a _select_best of a Registry.
+    * shellutils: deprecate 'input' as argument of RawInput in favor of
+      'input_function'
+
+-------------------------------------------------------------------
 Tue Dec  4 12:50:08 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

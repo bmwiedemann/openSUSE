@@ -1,7 +1,7 @@
 #
 # spec file for package python-logilab-common
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-logilab-common
-Version:        1.4.1
+Version:        1.8.0
 Release:        0
 Summary:        Python lowlevel functionality shared by logilab projects
 License:        LGPL-2.1-or-later
@@ -53,7 +53,7 @@ rm -f %{buildroot}%{_bindir}/logilab-pytest
 
 %files %{python_files}
 %license COPYING COPYING.LESSER
-%doc ChangeLog README
+%doc ChangeLog README.rst
 %{python_sitelib}/*
 
 %changelog
