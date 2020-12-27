@@ -28,7 +28,9 @@ BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SDL2_mixer)
+BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 Julius is an open source re-implementation of Caesar III.
