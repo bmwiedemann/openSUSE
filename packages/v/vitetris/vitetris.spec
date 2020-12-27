@@ -21,7 +21,7 @@
 # build with support for allegro - disabled by default
 %bcond_with allegro
 Name:           vitetris
-Version:        0.59.0
+Version:        0.59.1
 Release:        0
 Summary:        Terminal-based Tetris clone
 License:        BSD-2-Clause
