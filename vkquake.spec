@@ -18,7 +18,7 @@
 
 
 Name:           vkquake
-Version:        1.04.1
+Version:        1.05.1
 Release:        0
 Summary:        Quake 1 port using Vulkan instead of OpenGL for rendering
 License:        GPL-2.0-or-later
@@ -28,8 +28,6 @@ Source:         https://github.com/Novum/vkQuake/archive/%{version}/vkQuake-%{ve
 Source99:       %{name}.changes
 Source100:      appdata.xml
 Source101:      %{name}.desktop
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Remove-use-of-VK_DYNAMIC_STATE_RANGE_SIZE.patch
 BuildRequires:  pkgconfig
 BuildRequires:  vulkan-devel
 BuildRequires:  pkgconfig(flac)
