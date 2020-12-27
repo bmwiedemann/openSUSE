@@ -17,7 +17,7 @@
 
 
 Name:           wavemon
-Version:        0.9.2
+Version:        0.9.3
 Release:        0
 Summary:        An ncurses monitoring application for wireless network devices
 License:        GPL-2.0-or-later
@@ -53,7 +53,7 @@ mkdir -p %{buildroot}%{_docdir}
 mv %{buildroot}%{_datadir}/%{name} %{buildroot}%{_docdir}/
 
 %files
-%license COPYING
+%license LICENSE
 %doc README.md
 %{_bindir}/wavemon
 %{_mandir}/man1/wavemon.1%{?ext_man}
