@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 26 16:48:04 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to 20200805
+        * Changes to handle multi-string corruption scenario
+        * Worked on Python Bindings
+
+-------------------------------------------------------------------
 Tue May  5 11:21:40 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Allow distros to disable python2 build (bcond_without python2):

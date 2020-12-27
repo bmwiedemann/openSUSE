@@ -19,7 +19,7 @@
 %bcond_without python2
 Name:           libregf
 %define lname	libregf1
-%define timestamp	20191221
+%define timestamp	20200805
 Version:        0~%timestamp
 Release:        0
 Summary:        Library to access Windows REGF-type Registry files
