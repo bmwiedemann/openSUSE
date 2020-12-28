@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 24 11:58:03 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.41.4
+  * Support for newer clang; no user-visible changes.
+
+-------------------------------------------------------------------
 Sat Sep 12 14:45:31 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Initial package (version 0.41.3) for build.opensuse.org

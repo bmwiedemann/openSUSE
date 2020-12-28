@@ -18,7 +18,7 @@
 
 %define lname	libbarvinok23
 Name:           barvinok
-Version:        0.41.3
+Version:        0.41.4
 Release:        0
 Summary:        Library for computing homotopy continuation of roots
 License:        GPL-2.0-or-later
