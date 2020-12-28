@@ -1,0 +1,656 @@
+-------------------------------------------------------------------
+Sun Dec 20 10:55:50 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.0.0:
+  + Gdk:
+    - Event: Removed subclasses. Add PopupLayout, DragSurface,
+      Popup, Toplevel, ToplevelLayout
+    - Add ToplevelSize, DragSurfaceImpl, PopupSurfaceImpl,
+      ToplevelSurfaceImpl
+    - Remove Point
+    - Add MemoryTexture
+  + Gtk:
+    - Add DropControllerMotion, EventControllerFocus, DragIcon,
+      DropTargetAsync, namespace Accelerator. Remove SelectionData,
+      AccelGroup, namespace AccelMap ScaleButton inherits from
+      Widget
+    - Remove Bin and Container. Affects all classes that inherited
+      from those classes. Remove Dialog::run(). Affects how modal
+      dialogs are made. Application: Remove application menu
+      methods
+    - Add WindowControls, WindowHandle, EditableLabel, Bitset,
+      BitsetConstIter, MultiSelection
+    - Add ShortcutController, ShortcutManager, Shortcut,
+      ShortcutAction, ShortcutTrigger
+    - Add BuilderScope and BuilderCScope
+    - Remove Main. Replace Gtk::Main::init_gtkmm_internals() by
+      Gtk::init_gtkmm_internals()
+    - Add DropDown
+    - Add ListView
+    - Add ColumnView
+    - Add the Accessible interface, and make Widget implement it.
+      It's a replacement for atk/atkmm.
+    - Remove AccelLabel
+    - Add TreeListModel and TreeListRow
+    - Add SortListModel and FilterListModel
+    - Remove Native vfuncs as interface is now private
+    - Actionable::get_action_target_value(): Fix ref count
+    - Remove RadioButton and RadioButtonGroup
+    - Add GridView
+    - Add FlattenListModel and SliceListModel
+    - Add Expression
+    - Add BoolFilter and MultiSorter
+    - Add MultiFilter, AnyFilter, EveryFilter,
+      SelectionFilterModel, DirectoryList, NumericSorter
+    - Application: Add make_window_and_run() and remove the run()
+      overloads that take a Window&.
+    - Remove FileChooserButton
+    - Add TreeExpander
+  + Documentation:
+    - README: Add instructions for building gtkmm
+    - ListView: Fix the class description
+    - Explain key values
+  + Demos:
+    - Add listview application launcher demo
+    - Add DropDown demo
+  + Tests: Add bitset_iterator test
+  + Build:
+    - Use glibmm-2.68 instead of glibmm-2.64
+      Use pangomm-2.48 instead of pangomm-2.44
+    - Require glibmm >= 2.68.0, pangomm >= 2.48.0 and gtk4 >= 4.0.0
+    - Drop dependency on Atkmm
+    - Improve NMake support
+    - Use __declspec(dllexport) when building with Visual Studio
+      Drop gendef.exe
+    - Add support for building gtkmm with Meson
+    - docs/reference/: Update for Doxygen >= 1.8.16
+- Add meson BuildRequires and macros following upstreams port.
+- Add doxygen, graphviz and xsltproc BuildRequires: Needed for
+  building documentation.
+- Drop pkgconfig(atkmm-2.30), no longer needed.
+- Replace pkgconfig(giomm-2.64), pkgconfig(glibmm-2.64) and
+  pkgconfig(pangomm-2.44) with pkgconfig(giomm-2.68),
+  pkgconfig(glibmm-2.68) and pkgconfig(pangomm-2.48) BuildRequires.
+- Change so_ver (and in baselibs) following upstream changes.
+
+-------------------------------------------------------------------
+Thu Feb 20 12:32:01 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.97.1:
+  + Sync up with changes in GTK 3.98.0.
+- Replace pkgconfig(glibmm-2.62) and pkgconfig(giomm-2.62)
+  BuildRequires with pkgconfig(glibmm-2.64) and
+  pkgconfig(giobmm-2.64).
+
+-------------------------------------------------------------------
+Tue Sep 10 11:27:50 CEST 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.95.1:
+  + Gtkmm 3.95.1 is a C++ binding of gtk 3.96.0.
+  + Gdk:
+    - Add GLTexture, Paintable, Snapshot Texture implements the
+      Paintable interface
+    - Gdk::Window has been renamed to Surface
+    - Remove Gdk::Cairo::create_surface_from_pixbuf().
+      DrawingContext: Remove get_surface(), is_valid() and
+      get_drawing_context_from_cairo_context(). Surface: Remove
+      create_similar_image_surface().
+    - Add CairoContext. Remove DrawingContext. DrawContext:
+      Add begin_frame(), end_frame(), is_in_frame() and
+      get_frame_region(). GLContext: Remove get_damage(). Surface:
+      Remove begin_draw_frame() and end_draw_frame(). They have
+      been moved to DrawContext. Add queue_expose() and
+      create_cairo_context().
+    - Remove DragContext::drop_reply().
+    - DragContext: Add enum DragCancelReason. Add drag_drop_done(),
+      get_drag_surface(), get_display(). Add properties and
+      signals. Mnitor: Add signal_invalidate(). Texture: Add
+      save_to_png().
+    - Add Drop and move some methods there from DragContext.
+      Replace EventDND::get_drag_context() by EventDND::get_drop().
+      Surface: Remove get/set_events() and get/set_device_events()
+    - Clipboard, Drop: Add read_async() and read_finish()
+    - Rename DragContext to Drag
+    - Drag: Remove get_suggested_action() and
+      signal_action_changed(). Add property_selected_action(),
+      property_actions(), property_surface(). Remove EventExpose.
+      Surface: Remove withdraw(). Add move_to_rect(),
+      signal_move_to_rect(), signal_size_changed(),
+      signal_render(), property_mapped().
+    - Drag: Move set_icon_name() and set_icon() to the new Gtk::DnD
+      namespace.
+    - RGBA: Add a constructor RGBA(double r, g, b, a)
+    - RGBA::set_hsv(): Properly interpret hue 360° as red.
+    - Add DevicePad and DeviceWithPad
+    - Device: Remove warp(), get_position(int& x, int& y),
+      get_surface_at_position(int& x, int& y). Add
+      get_surface_at_position(double& x, double& y).Surface: Remove
+      set_role(), get_device_position(..., int& x, int& y, ...),
+      set/get_group(), invalidate_rect(), invalidate(),
+      invalidate_region(), set_skip_taskbar_hint(),
+      set_skip_pager_hint(), set_urgency_hint(). Add
+      property_frame_clock().
+  + Gtk:
+    - Object::_release_c_instance(): Don't release if in a
+      container
+    - Entry: Remove set/get_cursor_hadjustment()
+    - Expander: Remove get/set/property_label_fill().
+    - Overlay: Add get/set_measure_overlay() and
+      child_property_measure().
+    - Settings: Remove property_gtk_modules().
+    - Widget: Add two drag_source_set_icon() overloads
+    - Remove WidgetCustomDraw and WidgetCustomSnapshot. Snapshot:
+      Add clips_rect(const graphene_rect_t*). Widget: Remove
+      queue_draw_area(), queue_draw_region(), get_clip(), draw()
+      and set_realized().
+    - Snapshot: Remove push() and clips_rect(). Add create() and
+      push_debug(). Add append_texture() and append_cairo().Only
+      push_debug() has a 'name' parameter.
+    - Remove Scrollbar::get_wheel_delta().
+    - Add EventControllerKey, EventControllerMotion and
+      EventControllerScroll. Widget: Remove
+      signal_key_[press|release]_event(). Widget: Add
+      add_controller() and remove_controller().
+    - Image: Add more constructors
+    - Container: Add signal_set_focus_child(). FontChooser: Add
+      set_language(). Printer: Add get_hard_margins(const
+      PaperSize& ...). SearchBar: Add
+      set/unset/get_key_capture_widget(). SearchEntry: Add
+      set/unset/get_key_capture_widget().
+    - Image: Remove set/get/property_keep_aspect_ratio() and
+      set/get/property_can_shrink().
+    - Add Picture and WidgetPaintable
+    - StackSwitcher: Remove property_icon_size(). StyleContext]:
+      Remove set/get/property_frame_clock().
+    - Add MediaControls, MediaFile, MediaStream and Video
+    - StyleContext: Remove render_slider().
+    - Add Gtk::GestureStylus
+    - CssProvider: Remove get_default(). Menu: Remove 3 popup()
+      overloads. StyleContext: Remove render_frame_gap().
+    - Add namespace Gtk::DnD. Widget: Move drag_get_source_widget()
+      and drag_set_as_icon() to Gtk::DnD. Add
+      drag_dest_[set|get]_track_motion() and
+      drag_source_[set|get]_target_list().
+    - Container: Remove has/get/set/unset_focus_chain()
+    - Window: Move to a proper get_accel_groups()
+    - Add Gtk::make_managed<T>(args...)
+    - Application: Add property_screensaver_active(). Widget: Add
+      observe_children(), observe_controllers(). Remove
+      signal_event(), intersect(). Window: Add get_toplevels().
+    - ModelButton: Fix property_icon(). Add property_use_markup().
+      Tooltip: Remove trigger_tooltip_query()
+    - ActionBar: Remove child_property_position(). Box: Remove
+      pack_start(), pack_end(), reorder_child(). Add
+      insert_child_after(), insert_child_at_start(),
+      reorder_child_after(), reorder_child_at_start(). ComboBox:
+      Remove set/get/property_wrap_width(),
+      set/get/property_row_span_column(),
+      set/get/property_column_span_column(). Menu: Remove attach().
+      Widget: Replace the insert_before/after() overloads without a
+      sibling parameter with insert_at_start() and insert_at_end().
+      Add set_expand().
+    - Remove all child properties.
+    - Remove ButtonBox, Invisible, Layout. Add AssistantPage,
+      StackPage, NotebookPage, Root, SelectionModel,
+      SingleSelection, PadController, PadActionEntry,
+      PasswordEntry, LayoutManager, LayoutChild, BinLayout,
+      BoxLayout, GridLayout, GridLayoutChild, CssLocation
+    - Assistant: Remove set/get_has_padding(). Container: Remove
+      check_resize() and signal_check_resize().
+    - Entry: Remove signal_activate(). Add
+      property_enable_emoji_completion().
+    - Entry, SpinButton: Remove set/get_text(),
+      set/get_width_chars() and set/get_max_width_chars().
+    - Add the GTKMM_CHECK_VERSION() preprocessor macro and remove
+      macros that check the GTK version.
+    - EventControllerKey: Add get_focus_origin/target(),
+      property_is_focus(), property_contains_focus().
+      EventControllerMotion: Add get_pointer_origin/target(),
+      property_is_pointer_focus(),
+      property_contains_pointer_focus(). Widget: Add
+      get_focus_child(). Remove signal_focus(). Window: Remove
+      signal_set_focus().
+    - Application: Add signal_query_end(). SearchEntry.hg: Add
+      property_placeholder_text(), property_actives_default().
+      ToolItem: Add property_expand_item(), property_homogeneous().
+      Window: Remove set/get/property_role(),
+      set/get/property_gravity(), move(), get_position().
+    - CssProvider: Replace CssProviderError by CssParserError and
+      CssParserWarning. Replace get_named() by load_named().
+      CssSection: Remove enum CssSection::Type. Add create() and
+      to_string(). Replace get_[start|ned]_[line|position]() by
+      get_[start|end]_location(). ListBox: Add
+      set/get/property_show_separators(). MenuBar.hg: Remove enum
+      PackDirection. Remove set/get/property_pack_direction(),
+      set/get/property_child_pack_direction(). Widget: Replace
+      set/get/property_can_pick() by set/get/property_can_target().
+      Remove set/get_parent_surface(). Window: Remove
+      set/get/property_skip_taskbar_hint(),
+      set/get/property_skip_pager_hint(),
+      set/get/property_urgency_hint().
+    - Menu: Remove set_display(). Popover.hg: Add
+      property_default_widget(). Widget: Remove
+      set/get/property_can_default(), grab_default(),
+      signal_display_changed(). Add activate_action(),
+      activate_default(). Window: Remove activate_focus(),
+      activate_default(). Add property_default_widget(). Rename
+      set_default() to set_default_widget(), unset_default() to
+      unset_default_widget().
+  + Demos: Update many demo programs.
+  + Documentation:
+    - Use libsigc++-3.0.tag for libsigc++ documentation
+    - Many improvements.
+  + Build:
+    - Require C++17
+    - Replace the Visual Studio project files with MSVC NMake
+      project files.
+    - Use glibmm-2.62 instead of glibmm-2.56, atkmm-2.30 instead of
+      atkmm-2.28, pangomm-2.44 instead of pangomm-2.42, gtk4
+      instead of gtk+-4.0. Require gtk4 >= 3.96.0
+- Drop gtkmm4-glibmm-2.58.patch: Fixed upstream.
+- Update/replace BuildRequires following upstreams changes.
+- Drop libtool and mm-common BuildRequires, no longer needed as we
+  do not carry any patches.
+- Replace gcc-c++ with generic c++_compiler.
+- Use modern macros.
+
+-------------------------------------------------------------------
+Tue Apr 17 13:10:48 UTC 2018 - dimstar@opensuse.org
+
+- Add gtkmm4-glibmm-2.58.patch: build against glibmm 2.58.
+- Call autoreconf, as above patch touches the build system.
+- Add libtool and mm-common BuildRequires: needed in order to be
+  able to bootstrap.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:32:44 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Tue Feb 27 14:49:35 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.93.0:
+  + Sync up with GTK+ 3.39.0.
+  + Updated documentation.
+- Replace pkgconfig(atkmm-3.26) BuildRequires with
+  pkgconfig(atkmm-3.28), following upstream changes.
+
+-------------------------------------------------------------------
+Fri Aug 25 23:18:06 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.91.2:
+  + Gtk:
+    - Use Gdk::Event instead of GdkEvent (bgo#135978).
+    - Gtk::[App|File|Font|Recent]ChooserWidget: Inherit from
+      Widget.
+    - AccelLabel:
+      . Inherit from Widget.
+      . Add set/get/property_label() and
+        set/get/property_use_underline().
+      . Make get_accel() const.
+    - ActionBar: Inherit from Container, ad child properties and
+      set/get/property_revealed().
+    - AspectFrame: set(): Remove default value of obey_child.
+    - Add CenterBox.
+    - Box: pack_end(): Don't call a pack_start() method.
+    - CellRenderer:
+      . get_aligned_area(): Return value instead of using an output
+        parameter.
+      . Add implementation of the get_state() overload without a
+        Widget parameter.
+    - CheckMenuItem: Remove snapshot_indicator_vfunc().
+    - ColorButton, Statusbar: Inherit from Widget.
+    - ComboBox and Scale: Fix signals that return a gchar*
+      (bgo#783360).
+    - Container: Remove propagate_draw().
+    - Expander: Inherit from Container.
+    - Editable and RecentChooser: Plug memory leaks in vfuncs.
+    - FileChooserButton, FontButton: Inherit from Widget.
+    - FileFilter, RecentFilter, TextTagTable, TreeViewColumn:
+      Implement Buildable.
+    - Remove EventBox. GtkEventBox has been removed from gtk+. All
+      widgets can now receive events.
+    - Gesture: Remove get/set/unset_window() and property.
+    - IconView: Remove convert_widget_to_bin_window_coords().
+    - Layout: remove get_bin_window().
+    - Add NativeDialog and FileChooserNative (bgo#783801).
+    - PaperSize: Throw exception from a constructor.
+    - PaperSizeTraits: Implement release_c_type() to fix memory
+      leak.
+    - Paned: Remove get_handle_window().
+    - PrintJob: Fix a call to Glib::throw_exception().
+    - Range: Remove get/set/property_lower_stepper_sensitivity()
+      and get/set/property_upper_stepper_sensitivity().
+    - Range, ScaleButton: Use RefPtr<Adjustment> consistently.
+    - ResponseType enum: Make this implicitly convertible to int.
+    - Scale:
+      . Remove calc_digits_().
+      . Remove draw_value_vfunc().
+    - Scrollbar:
+      . Inherit from Widget.
+      . Implement the Orientable interface.
+      . Add set/unset/get/property_adjustment() and
+        get_wheel_delta().
+    - Settings: Implement StyleProvider.
+    - Spinbutton:
+      . Inherit from Widget.
+      . Implement the Orientable and Editable interfaces.
+      . Add set/get/property_text(), set/get/property_width_chars()
+        and set/get/property_max_width_chars().
+      . Make a constructor explicit and add documentation.
+      . signal_input: Pass double&, not double* (bgo#783136).
+    - Remove StyleProperty.
+    - StyleContext: Remove get_style_property() and
+      get_style_property_value().
+    - ToolItem: Remove set/get_use_drag_window().
+    - TreeModelFilter, TreeModelSort: Implement TreeDragSource.
+    -  Widget:
+       . Remove set_redraw_on_allocate().
+       . Remove set_allocation(), set_clip(), get_style_property(),
+         transform_cairo_context_to_window(),
+         queue_draw_region_vfunc() and queue_draw_child_vfunc().
+       . Add new parameters to size_allocate() and
+         signal_size_allocate() handlers.
+       . Add insert_before() and insert_after().
+       . Remove property_events().
+       . Remove get/set/add events()/device_events().
+  + Gdk:
+    - Cursor: Make get_image() and get_surface() const-correct.
+    - Pixbuf: Implement Gio::LoadableIcon
+    - Point: Fix copy assignment.
+    - Rectangle: Add contains_point().
+    - Screen: Remove get_root_window().
+    - Window: Remove get_default_root_window() and create_input().
+  + Build:
+    - Use glibmm-2.56 instead of glibmm-2.54. We changed the ABI
+      name in glibmm.
+    - enums: Shadow DELETE macro. Like in event.hg, the DELETE
+      macro from winnt.h interferes with an enumerator
+      (bgo#135978).
+
+-------------------------------------------------------------------
+Tue May 30 21:25:32 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.91.0:
+  + Gdk:
+    - Improve Gdk::Event, creating a class hierarchy (bgo#135978).
+    - Cursor: Change CursorType to Cursor::Type.
+    - Device: Change DeviceType to Cursor::Type.
+    - Pixbuf:
+      . Remove AlphaMode enum.
+      . Change PixbufRotation to Pixbuf::Rotation.
+    - Seat: Change SeatCapabilities to Seat::Capabilities.
+    -  Visual: Change VisualType to Visual::Type.
+    - Window:
+      . Change WindowHints to Window::Hints.
+      . Change WindowTypeHint to Window::TypeHint.
+      . Change WindowType to Window::Type.
+      . Change WindowState to Window::State.
+  + Gtk:
+    - Assistant: Change AssistantPageType to Assistant::PageType.
+    - Box: pack_start/pack_end(): Reimplement with new GTK+ API.
+      (GtkWidget halign and hexpand properties.
+      The gtk_box_pack_start() and gtk_box_pack_end() functions no
+      longer have the expand and fill arguments. We might remove
+      these parameters later too. Be careful that the default
+      behaviour of pack_start/pack_end() has now changed.
+    - Make PackOptions an enum class, for stricter type checking.
+    - Builder::get_widget_derived(): Make this static. To avoid the
+      need to create a shared_ptr to this (bgo#755037).
+    - ButtonBox: Remove apparently-useless
+      BUTTONBOX_DEFAULT_SPACING.
+    - Application: Change ApplicationInhibitFlags to
+      Application::InhibitFlags.
+    - Calendar: Change CalendarDisplayOptions to
+      Calendar::Display::Options.
+    - CellRendererAccel: Change CellRendererAccelMode to
+      CellRendererAccel::Mode.
+    - CssSection: Change CssSectionType to CssSection::Typewq.
+    - Container:
+      . forall_vfunc(): Remove include_internals parameter.
+      . Remove set_focus_child(), get_focus_child(), etc.
+    - Entry: Change EntryIconPosition to Entry::IconPosition.
+    - FileFilter: Change FileFilterFlags to FileFilter::Flags.
+    - FileChooser:
+      . Change FileChooserConfirmation to
+        FileChooser::Confirmation.
+      . Change FileChooserAction to FileChooser::Action.
+    - IconView: change IconViewDropPosition to
+      IconView::DropPosition.
+    - Image: Change ImageType to Image::Type.
+    - Label: Remove get/set_angle() and property.
+    - LevelBar: Change LevelBarMode to LevelBar::Mode.
+    - Notebook: Remove NotebookTab enum.
+    - Popover: Change PopoverConstraint to Popover::Constraint.
+    - PrintOperation:
+      . Change PrintOperationAction to PrintOperation::Action.
+      . Change PrintOperationResult to PrintOperation::Result.
+    - Range: Derive from (and implement) Orientable (bgo#781655).
+    - RecentFilter: Change RecentFilterFlags to
+      RecentFilter::Flags.
+    - Scrollable: Change ScrollablePolicy to Scrollable::Policy.
+    - ShortcutsShortcut: Derive directly from Widget.
+    - SizeGroup: Rename SizeGroupMode enum to SizeGroup::Mode.
+    - SpinButton:
+      . Change SpinButtonUpdatePolicy to SpinButton::UpdatePolicy.
+      . Move INPUT_ERROR constant into class.
+    - TextConstIter (TextModel::const_iterator): Add a default
+      constructor.
+    - TextMark: Avoid creating a RefPtr to this. By adding a
+      private TextBuffer::get_iter_at_mark() (bgo#755037).
+    - TreeModel: Change TreeModelFlags to TreeModel::Flags.
+    - TreeView:
+      . Change TreeViewGridLines to GridLines.
+      . Change TreeViewDropPosition to TreeView::DropPosition.
+    - TreeViewColumn: Change TreeViewColumnSizing to
+      TreeViewColumn::Sizing.
+    - Widget:
+      . Remove get_preferred_width() etc.
+      . Remove get/set_center_widget().
+    - Window:
+      . Remove get/set_hide_titlebar_when_maximized().
+      . Remove has_toplevel_focus() and property.
+  + Documentation:
+    - Gtk::CellLayout: Improve docs of get_first_cell() funcs.
+    - Gtk::TreeModel: Improve docs of foreach*() functions.
+    - Gdk, Gtk: Update documentation of in-class enums.
+    - Demos:
+      . Fix make check after changes in
+        Glib::SignalProxy::connect() (bgo#126213).
+      . Adapt to changed Box::pack_start/pack_end() behaviour. For
+        instance: Specify EXPAND_WIDGET, where we previously used
+        the default value.
+    - Builder demo: Remove "expand" child property from the .ui
+      file. Because it has been removed from GtkBox. Expand the
+      ScrolledWindow.
+  + Build:
+    - Adapt to cairomm and glibmm enum changes.
+    - Adapt dynamic casts for RefPtr as std::shared_ptr.
+    - Visual Studio builds: Update glibmm ABI version.
+
+-------------------------------------------------------------------
+Sat May 20 20:09:17 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.89.5.1:
+  + Gdk: Pixbuf: get_pixels(): Const corrections.
+  + Gtk: FileChooserDialog:
+    - Allow constructing with use-header-bar.
+    - Remove constructors that take a backend parameter
+      (bgo#780004).
+  + TreeView: More use of TreeModel::const_iterator instead of
+    iterator, where appropriate.
+  + Build: Use glibmm-2.54 instead of glibmm-2.52.
+- Replace pkgconfig(giomm-2.52) with pkgconfig(giomm-2.54)
+  BuildRequires following upstream changes.
+- Add explicit pkgconfig(glibmm-2.54) BuildRequires: Configure
+  checks for it.
+
+-------------------------------------------------------------------
+Sat Mar 18 10:46:22 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.89.5:
+  + Gtk:
+    - AboutDialog: Add a constructor with a use_header_bar
+      parameter(bgo#780004).
+    - AccelMap: Change accel_path method paramters from std::string
+      to Glib::ustring, because there are always UTF-8.
+    - Assistant: Add child properties and a constructor with
+      use_header_bar.
+    - Dialog: Simplify the constructors: Remove constructors that
+      take DialogFlags. Add an optional use_header_bar parameter to
+      the other constuctors. There is now no way to specify the
+      GTK_DIALOG_DESTROY_WITH_PARENT flag, but hopefully this is
+      not used much anyway (bgo#780004).
+    - ScaleButton: Let get_[plus,minus]_button() return Button*.
+    - Move PageRange out of PageSettings.
+    - RecentManager: Remove unused SlotChanged.
+    - TreeIter<> (TreeModel::iterator/const-iterator): Fix
+      operator==() and operator!=() comparisons of const and
+      non-const iterators (bgo#134520).
+    - TreeModel: Use const_iterator for some vfunc parameters.
+    - TreeModel::Path::get_from_selection_data(): Make the
+      TreeModel parameter const.
+    - Tree*, ComboBox*: Change some parameters to const_iterator.
+    - Widget: Remove get_valign_with_baseline().
+  + Gdk:
+    - Pixbuf:
+      . Throw exception from ctor instead of creating invalid
+        object.
+      . Add get_pixels().
+    - RGBA: Add alpha parameter to set_hsv() and set_hsl().
+    - Window: constrain_size(): change the flags parameter from
+      guint to WindowHints.
+  + Build: Visual Studio builds: Require Visual Studio 2017.
+
+-------------------------------------------------------------------
+Thu Feb 23 17:41:21 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.89.4:
+  + Gtk:
+    - Add Gtk::WidgetCustomDraw and WidgetCustomSnapshot. These
+      make it possible to use signal_draw() and snapshot_vfunc() in
+      gtkmm without modification of gtk+ (bgo#775348, bgo#774778).
+    - Add Gtk::Snapshot.
+    - Application: Remove create() method with argc,argv arguments.
+    - CellArea: Add snapshot() and snapshot_vfunc().
+    - CellRenderer: Add snapshot() and snapshot_vfunc().
+    - CellArea: Remove property_cell_area() and the constructor
+      that takes a CellArea parameter.
+    - CheckButton: Remove draw_indicator_vfunc().
+    - CheckMenuItem: Add snapshot_indicator_vfunc().
+    - Container: Remove show_all_children(). (Widgets are now
+      visible by default, unlike in gtkmm 3).
+    - Main:
+      . Remove constructors that take (argc,argv) parameters.
+      . Remove add_gtk_option_group().
+    - ToggleButton:
+      . Move set/get_inconsistent() to CheckButton.
+      . Move set/get_mode() to CheckButton, renaming it to
+        set/get_draw_indicator().
+    - Widget:
+      . Add get_first_child(), get_last_child(),
+        get_next_sibling(), get_prev_sibling(), snapshot_child().
+      . Add property_css_name().
+      . Add compute_expand_vfunc(), queue_draw_region_vfunc(),
+        queue_draw_child_vfunc().
+      . Remove show_all(), set/get_no_show_all(), show_all_vfunc(),
+        property_no_show_all(). (Widgets are now visible by
+        default, unlike in gtkmm 3).
+    - Adapt various implementation code to changed GTK+ API.
+
+-------------------------------------------------------------------
+Thu Jan 19 13:55:48 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.89.3:
+  + Gtk:
+    - Grid: attach(): Add default values.
+    - TextIter:
+      . Make a real const_iterator (bgo#142126).
+      . forward/backward_find_char(): Take a sigc::slot instead of
+        a function pointer.
+  + Documentation: Demos: Remove obsolete text from the TextView
+    demo.
+- Add pkgconfig(cairomm-1.16) BuildRequires: New explicit
+  dependency so it can be versioned.
+
+-------------------------------------------------------------------
+Wed Jan 11 13:25:50 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.89.2:
+  + Gtk:
+    - Application: Set the global locale (bgo#661588).
+    - CellArea, CellRenderer, CheckMenuItem: Remove render
+      functions.
+    - CellView: Remove Remove property_background(),
+      property_background_rgba() and property_background_set(),
+      and set_background_rgba().
+    - Container:
+      . forall_vfunc(): Take a sigc::slot instead of a function
+        pointer.
+      . get_child_property_vfunc() and set_child_property_vfunc():
+        Take Gtk::Widget* and Glib::ValueBase& instead of
+        GtkWidget* and GValue*.
+      . Add get_path_for_child_vfunc() (bgo#670204).
+    - IconInfo: Rename load_symbolic(context) to
+      load_symbolic_for_context().
+    - LevelBar: Implement the Orientable interface.
+    - PlacesSidebar: signal_populate_popup(): Change Menu*
+      parameter to Container*.
+    - RecentChooser: get_recent_manager_vfunc(): Fix refcounting.
+    - Scrollable: Add get_border_vfunc().
+    - ToolBar: Implement the Orientable interface.
+    - ToolShell: Add some vfuncs and make most others const.
+    - StyleContext:
+      . Remove set/get_junction_sides().
+      . Remove get_background_color() and get_border_color().
+    - TextView: signal_populate_popup(): Change Menu* parameter
+      to Container*.
+    - TreeIter: Make a real const_iterator (bgo#134520).
+    - TreeModelFilter, TreeModelSort: Add const method overloads
+      (bgo#134520).
+    - TreeSelection: Add const versions of get_selected()
+      (bgo#94742).
+    - TreeView: Remove get_bin_window().
+    - TreeRow, TreeNodeChilren: Make real const versions
+      (bgo#134520).
+    - ViewPort: Remove get_bin_window() and get_view_window().
+    - Widget:
+      . Remove get_style_property_value().
+      . Add set_margin().
+      . Remove get_preferred_height_for_width() that takes a
+        baseline.
+  + Gdk:
+    - Device: Remove grab() and ungrab().
+    - DeviceManager: Remove list_devices().
+    - Display:
+      . Add is_composited() and is_rgba().
+      . Remove get_device_manager().
+    - Add DrawContext.
+    - DrawingContext: Add get_paint_context() and
+      property_paint_context().
+    - GLContext:
+      . Derive from DrawContext.
+      . Add get_damage().
+      . Remove property_display() and property_window(), which are
+        moved to DrawContext.
+    - Pixbuf: Remove create_from_inline(). Remove non-const
+      versions of save() and save_to_buffer().
+    - Window:
+      . begin_draw_frame(): Add (optional) context.
+      . Remove ensure_native() and reparent().
+  + General:
+    - Fix some cppcheck issues.
+    - Use Cairo::make_refptr_for_instance().
+
+-------------------------------------------------------------------
+Mon Dec  5 14:01:23 UTC 2016 - jengelh@inai.de
+
+- Rectify RPM groups and replace old macros.
+
+-------------------------------------------------------------------
+Mon Dec  5 11:50:09 UTC 2016 - dimstar@opensuse.org
+
+- Initial package, gtkmm4, version 3.89.1. Spec file based on
+  gtkmm3.
+
