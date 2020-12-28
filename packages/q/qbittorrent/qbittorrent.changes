@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Dec 28 08:12:32 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.3.2
+  New features:
+  * Allow to add root folder to torrent content
+  * "HTTPS tracker validation" option is available on all
+    platforms with latest libtorrent
+  * Option for supporting internationalized domain names
+  Bugfixes:
+  * Fix broken sorting on some columns
+  * Fix availability per file value
+  * Fix status of torrents without metadata
+  * Don't try to remove folders for a torrent without metadata
+  * Lift upper limit of "Max concurrent HTTP announces" option
+  * Add links to libtorrent documentation
+  * Move "embedded tracker" options to qbt section
+  * Properly handle "Append extension" option changing
+  * Correctly save paused torrent state
+  * Fix bug of "move storage job" can be performed multiple times
+  WebUI:
+  * Add ability to use 'shift+delete' to delete torrents
+  * Allow to attach tags while adding torrents
+  * Bump version to 2.6.2
+  * Remove unnecessary restriction on input length
+  Other:
+  * Drop support for building with libtorrent < 1.2.11
+
+-------------------------------------------------------------------
 Wed Nov 25 13:44:52 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.3.1
