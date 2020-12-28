@@ -1,7 +1,7 @@
 #
 # spec file for package hsqldb
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -27,7 +27,7 @@ Release:        0
 Summary:        HyperSQL Database Engine
 License:        BSD-3-Clause
 Group:          Productivity/Databases/Servers
-Url:            http://hsqldb.sourceforge.net/
+URL:            http://hsqldb.org/
 Source0:        http://downloads.sourceforge.net/hsqldb/%{name}-%{version}.zip
 Source1:        hsqldb-1.8.0-standard.cfg
 Source2:        hsqldb-1.8.0-standard-server.properties
@@ -48,14 +48,15 @@ Patch1:         %{name}-cmdline.patch
 Patch2:         hsqldb-2.4.1-javadoc10.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
+BuildRequires:  glassfish-servlet-api
 BuildRequires:  java-devel >= 1.8
 # Needed for maven conversions
 BuildRequires:  javapackages-local
 BuildRequires:  javapackages-tools
 BuildRequires:  junit
 BuildRequires:  servletapi5
-BuildRequires:  pkgconfig(systemd)
 BuildRequires:  unzip
+BuildRequires:  pkgconfig(systemd)
 Requires:       java >= 1.8
 Requires:       servletapi5
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -116,6 +117,7 @@ find . -name _notes -exec rm -rf {} +
 find . -name "*.jar" -exec rm -f {} +
 find . -name "*.class" -exec rm -f {} +
 find . -name "*.war" -exec rm -f {} +
+find . -name "*.zip" -exec rm -f {} +
 
 # correct silly permissions
 chmod -R go=u-w *
@@ -129,11 +131,9 @@ sed -i -e 's|doc/apidocs|%{_javadocdir}/%{name}|g' index.html
 %patch2 -p2
 
 %build
-export CLASSPATH=$(build-classpath servletapi5 junit)
-
 pushd build
 export JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF8 -Dant.build.javac.source=1.7 -Dant.build.javac.target=1.7"
-ant hsqldb javadoc
+ant hsqldb javadoc -Dservletapi.lib=$(build-classpath glassfish-servlet-api)
 popd
 
 %install
@@ -154,8 +154,6 @@ install -d -m 0755 %{buildroot}/%{_sbindir}/
 ln -sf service %{buildroot}/%{_sbindir}/rc%{name}
 
 # sysconfig
-#install -d -m 0755 %{buildroot}%{_fillupdir}
-#install -m 700 %{SOURCE1} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 install -d -m 0755 %{buildroot}/%{_sysconfdir}
 install -m 0644 %{SOURCE1} %{buildroot}/%{_sysconfdir}/%{name}.conf
 
@@ -194,7 +192,7 @@ pushd %{buildroot}%{_localstatedir}/lib/%{name}/lib
     # build-classpath can not be used as the jar is not
     # yet present during the build
     ln -s %{_javadir}/hsqldb.jar hsqldb.jar
-    ln -s $(build-classpath servletapi5) servletapi5.jar
+    ln -s $(build-classpath glassfish-servlet-api) servletapi5.jar
 popd
 
 %fdupes -s %{buildroot}
