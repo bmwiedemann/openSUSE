@@ -1,7 +1,7 @@
 #
 # spec file for package source-highlight
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,21 +21,18 @@ Name:           source-highlight
 Version:        3.1.9
 Release:        0
 Summary:        Source Code Highlighter with Support for Many Languages
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Productivity/Publishing/Other
-Url:            http://www.gnu.org/software/src-highlite
+URL:            https://www.gnu.org/software/src-highlite
 Source0:        ftp://ftp.gnu.org/gnu/src-highlite/source-highlight-%{version}.tar.gz
+#Source1:        ftp://ftp.gnu.org/gnu/src-highlite/source-highlight-%{version}.tar.gz.sig
+#Source2:        %{name}.keyring
 Source3:        baselibs.conf
 Source4:        source-highlight-apache2.conf
 Patch2:         source-highlight-doxygen_disable_timestamp_in_footer.patch
 # PATCH-FIX-OPENSUSE use-lessopen.patch boo#1016309 fcrozat@suse.com -- use lessopen, not lesspipe
 Patch3:         use-lessopen.patch
 BuildRequires:  bison
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_regex-devel
-%else
-BuildRequires:  boost-devel
-%endif
 BuildRequires:  ctags
 BuildRequires:  doxygen
 BuildRequires:  flex
@@ -45,14 +42,12 @@ BuildRequires:  help2man
 BuildRequires:  libicu-devel
 BuildRequires:  libstdc++-devel
 BuildRequires:  libtool
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  texinfo
-Requires(preun): %{install_info_prereq}
 Requires(post): %{install_info_prereq}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if 0%{?suse_version} >= 1030
+Requires(preun): %{install_info_prereq}
+BuildRequires:  libboost_regex-devel
 BuildRequires:  fdupes
-%endif
 
 %description
 Source-highlight reads source language specifications dynamically, thus it can
@@ -82,8 +77,8 @@ Source-highlight.
 Summary:        Source Code Highlighting C++ Library
 Group:          Development/Libraries/C and C++
 Requires:       libsource-highlight%{soname} = %{version}-%{release}
+Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
-Requires(post):	%{install_info_prereq}
 
 %description -n libsource-highlight-devel
 Source-highlight reads source language specifications dynamically, thus it can
@@ -130,17 +125,15 @@ else
 fi
 
 %configure \
-        "$BOOST_REGEX_PARAM" \
-        --with-bash-completion="%{_sysconfdir}/bash_completion.d" \
-	--with-doxygen \
-	--enable-static=no
-
-make %{?_smp_mflags}
-
-make %{?_smp_mflags} -C src source-highlight-cgi
+  "$BOOST_REGEX_PARAM" \
+  --with-bash-completion="%{_sysconfdir}/bash_completion.d" \
+  --with-doxygen \
+  --enable-static=no
+%make_build
+%make_build -C src source-highlight-cgi
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 
 install -d "%{buildroot}/srv/source-highlight"
 libtool --mode=install install -m 0755 src/source-highlight-cgi "%{buildroot}/srv/source-highlight/source-highlight.cgi"
@@ -170,32 +163,28 @@ chmod 0644 AUTHORS ChangeLog COPYING CREDITS NEWS README THANKS TODO.txt
 %install_info_delete --info-dir="%{_infodir}" "%{_infodir}/source-highlight-lib".info%{ext_info}
 
 %post   -n libsource-highlight%{soname} -p /sbin/ldconfig
-
 %postun -n libsource-highlight%{soname} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING CREDITS NEWS README THANKS TODO.txt
+%license COPYING
+%doc AUTHORS ChangeLog CREDITS NEWS README THANKS TODO.txt
 %config %{_sysconfdir}/bash_completion.d/source-highlight
 %{_bindir}/*
 %{_datadir}/source-highlight
-%doc %{_mandir}/man1/*.1%{ext_man}
-%doc %{_infodir}/source-highlight.info%{ext_man}
+%{_mandir}/man1/*.1%{?ext_man}
+%{_infodir}/source-highlight.info%{ext_man}
 
 %files -n libsource-highlight%{soname}
-%defattr(-,root,root)
 %{_libdir}/libsource-highlight.so.%{soname}
 %{_libdir}/libsource-highlight.so.%{soname}.*.*
 
 %files -n libsource-highlight-devel
-%defattr(-,root,root)
 %{_includedir}/srchilite
 %{_libdir}/libsource-highlight.so
 %{_libdir}/pkgconfig/source-highlight.pc
-%doc %{_infodir}/source-highlight-lib.info%{ext_info}
+%{_infodir}/source-highlight-lib.info%{?ext_info}
 
 %files cgi
-%defattr(-,root,root)
 %config(noreplace) %{_sysconfdir}/apache2/conf.d/source-highlight.conf
 %dir %{_sysconfdir}/apache2
 %dir %{_sysconfdir}/apache2/conf.d

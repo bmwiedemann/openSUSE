@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 28 08:02:57 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Do not use keyring for now as key signing key is not properly
+  published
+- Modernise spec-file and simplify depenency conditionals
+
+-------------------------------------------------------------------
+Tue Dec 22 08:16:54 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- restore keyring as sig is available from upstream
+
+-------------------------------------------------------------------
 Thu Aug 20 19:31:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.1.9:
