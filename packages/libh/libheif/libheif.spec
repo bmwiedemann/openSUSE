@@ -29,20 +29,23 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/strukturag/libheif
 #
-Source0:        https://github.com/strukturag/libheif/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 #
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(aom)
+BuildRequires:  pkgconfig(dav1d)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
+%if 0%{?suse_version} > 1500
+BuildRequires:  pkgconfig(rav1e)
+%endif
 %if %{with x265}
 BuildRequires:  pkgconfig(libde265)
 BuildRequires:  pkgconfig(x265)
 %endif
-Recommends:     %{name}-lang
 
 %description
 libheif is an ISO/IEC 23008-12:2017 HEIF and AVIF (AV1 Image File Format) file
