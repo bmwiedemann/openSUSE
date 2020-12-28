@@ -18,15 +18,14 @@
 
 Name:           antic
 %define lname	libantic0
-Version:        0.2.2
+Version:        0.2.3
 Release:        0
 Summary:        Algebraic Number Theory library in C
 License:        LGPL-2.1-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://github.com/wbhart/antic/
-Source:         https://github.com/wbhart/antic/archive/%version.tar.gz
-BuildRequires:  flint-devel >= 2.6.3
-BuildRequires:  flint-devel < 2.7
+Source:         https://github.com/wbhart/antic/archive/v%version.tar.gz
+BuildRequires:  flint-devel >= 2.7
 BuildRequires:  gmp-devel
 BuildRequires:  mpfr-devel
 
