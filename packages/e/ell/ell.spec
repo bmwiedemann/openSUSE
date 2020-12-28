@@ -18,7 +18,7 @@
 
 Name:           ell
 %define lname   libell0
-Version:        0.33
+Version:        0.35
 Release:        0
 Summary:        Wireless setup and cryptography library
 License:        LGPL-2.1-or-later
@@ -61,15 +61,19 @@ applications that want to make use of ell.
 %autosetup -p1
 
 %build
+# This project does not implement proper SONAMing, let alone symbol versioning.
+# Force systems into lockstep updates to remedy this.
+perl -i -lpe 's{^ELL_0.10}{ELL_%version}' ell/ell.sym
+
 %configure
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
 
 %check
-make %{?_smp_mflags} V=1 check || :
+%make_build check || :
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
