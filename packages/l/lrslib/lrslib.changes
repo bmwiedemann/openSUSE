@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 24 12:30:51 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.1a
+  * Fixed memory leak in countonly option for mplrs/lrs.
+
+-------------------------------------------------------------------
 Sat Jun  6 23:40:11 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.1

@@ -16,11 +16,11 @@
 #
 
 
-%define dullver	071
+%define dullver	071a
 %define dullver2 071
 %define lname   liblrs1
 Name:           lrslib
-Version:        7.1
+Version:        7.1a
 Release:        0
 Summary:        Reverse Search Vertex Enumeration program
 License:        GPL-2.0-or-later
@@ -70,11 +70,11 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of lrslib.
 
 %prep
-%autosetup -n %name-%dullver2 -p1
+%autosetup -n %name-%dullver -p1
 
 %build
 make CFLAGS="%optflags" CXXFLAGS="%optflags" \
-	PACKAGE_VERSION="%version" all-shared
+	PACKAGE_VERSION="%version" all-shared %{?_smp_mflags}
 
 %install
 %make_install prefix="%_prefix" PACKAGE_VERSION="%version"
@@ -90,7 +90,8 @@ chmod a-x COPYING README "%buildroot/%_includedir/lrslib"/*.h
 
 %files
 %_bindir/*
-%doc COPYING README
+%license COPYING
+%doc README
 
 %files -n %lname
 %_libdir/liblrs.so.1*
