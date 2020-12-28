@@ -1,7 +1,7 @@
 #
 # spec file for package plata-theme
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %define         _name               plata
-%define         asc_link_uid        707967e2abe63d5f3366d79a428a8be3
+%define         asc_link_uid        95a8f67038e7465259ce85b80e2a1cf3
 %define         _theme              Plata
 %define         gtk3_min_version    3.20.0
 %define         gtk2_min_version    2.24.30
 Name:           plata-theme
-Version:        0.8.9
+Version:        0.9.9
 Release:        0
 Summary:        A Gtk+ theme based on Material Design Refresh
 License:        GPL-2.0-only AND CC-BY-SA-4.0
