@@ -23,4 +23,12 @@
     <comment>- Update to release 3.0.3</comment>
     <requestid>757416</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>28c2561e2a62856ad7343dc897719932</srcmd5>
+    <version>3.0.3</version>
+    <time>1609147829</time>
+    <user>dimstar_suse</user>
+    <comment>- Specfile modernization</comment>
+    <requestid>858487</requestid>
+  </revision>
 </revisionlist>

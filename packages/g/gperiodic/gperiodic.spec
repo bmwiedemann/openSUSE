@@ -1,7 +1,7 @@
 #
 # spec file for package gperiodic
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ Group:          Productivity/Scientific/Chemistry
 URL:            http://gperiodic.sf.net/
 
 Source:         http://download.sf.net/gperiodic/%name-%version.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig(gtk+-2.0)
@@ -37,10 +36,10 @@ periodic table. This program also features a non-graphical interface.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-make %{?_smp_mflags} CFLAGS="%optflags"
+%make_build CFLAGS="%optflags"
 
 %install
 %make_install
@@ -48,15 +47,13 @@ make %{?_smp_mflags} CFLAGS="%optflags"
 %fdupes %buildroot/%_prefix
 
 %files
-%defattr(-,root,root)
 %_bindir/gperiodic
 %_mandir/man1/gperiodic*
 %_datadir/applications/gperiodic*
 %_datadir/icons/*
 %_datadir/pixmaps/gperiodic*
-%doc gpl.txt
+%license gpl.txt
 
 %files lang -f %name.lang
-%defattr(-,root,root)
 
 %changelog
