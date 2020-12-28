@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Dec 25 11:02:13 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.3:
+  + Fix build warnings with newer GCC.
+  + HdyActionRow: Clarify hdy_action_row_get_icon_name()
+    documentation.
+  + HdyCarousel: Fix drawing cache invalidation on resize.
+  + HdyComboRow: Use the right checkmark icon.
+  + HdyLeaflet and HdyDeck: Increase the edge swipe area size.
+  + HdyKeypad: Fix typing the '+' symbol.
+  + HdyPreferencesGroup:
+    - Fix a memory leak when destroying the widget.
+    - Don't show empty title and description when using
+      gtk_widget_show_all().
+  + HdySwipeTracker:
+    - Correctly transform widget coordinates for touchpad swipes.
+    - Fix a memory leak.
+
+-------------------------------------------------------------------
 Thu Nov 12 16:13:48 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.0.2:
