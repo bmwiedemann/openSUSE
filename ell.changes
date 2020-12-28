@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 23 18:35:10 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.35
+  * Add support for DHCP v6 Rapid Commit.
+  * Add support for ICMP v6 implementation.
+  * Add support for PKCS#1 formatted private keys.
+
+-------------------------------------------------------------------
 Sat Sep  5 22:05:44 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.33
