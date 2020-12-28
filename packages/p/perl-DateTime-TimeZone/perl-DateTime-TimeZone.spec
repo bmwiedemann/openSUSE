@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-DateTime-TimeZone
-Version:        2.45
-Release:        0
 %define cpan_name DateTime-TimeZone
+Name:           perl-DateTime-TimeZone
+Version:        2.46
+Release:        0
 Summary:        Time zone object base class and factory
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Class::Singleton) >= 1.03
@@ -63,12 +61,12 @@ primary interface is through a DateTime object, and most users will not
 need to directly use 'DateTime::TimeZone' methods.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -79,7 +77,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md
 %license LICENSE
 

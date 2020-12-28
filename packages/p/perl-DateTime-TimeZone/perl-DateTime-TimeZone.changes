@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 24 03:06:50 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.46
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.46    2020-12-22
+
+  - This release is based on version 2020e of the Olson database. This release
+    includes contemporary changes for Russia (Volograd).
+
+-------------------------------------------------------------------
 Tue Dec 22 03:08:12 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.45
