@@ -35,8 +35,10 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-RenameDialog-Add-missing-nullptr-initialization.patch
 # PATCH-FIX-OPENSUSE kio_help-fallback-to-kde4-docs.patch -- allow kio_help to see into kde4 documentation, needed especially for khelpcenter5
-Patch0:         kio_help-fallback-to-kde4-docs.patch
+Patch100:       kio_help-fallback-to-kde4-docs.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem

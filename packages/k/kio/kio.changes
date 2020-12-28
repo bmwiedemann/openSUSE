@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 22 22:11:18 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Add upstream patch to prevent crashing when using "apply to all"
+  in the move/copy/overwrite dialog (kde#430374):
+  * 0001-RenameDialog-Add-missing-nullptr-initialization.patch
+
+-------------------------------------------------------------------
 Sat Dec  5 18:56:41 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.77.0
@@ -289,16 +296,16 @@ Wed Aug  7 17:51:31 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
   * For more details please see:
   * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
 - Changes since 5.60.0:
-  * Remove explicit use of ECM_KDE_MODULE_DIR, is part of ECM_MODULE_PATH 
+  * Remove explicit use of ECM_KDE_MODULE_DIR, is part of ECM_MODULE_PATH
   * Use identical internet-services icon.
-  * Stabilize test KFileWidgetTest::testDropFile 
-  * Add missing KIOWIDGETS_NO_DEPRECTAED check 
-  * Deprecate suggestName 
-  * Replace implementation of suggestName with KFileUtils::suggestName 
-  * Port internal usage of KIO::suggestName 
-  * Fix can't enter directory error on some FTP servers with Turkish locale (kde#409740) 
-  * Port from KRun::runService to KRun::runApplication 
-  * Fix compiler warnings about initialization order. 
+  * Stabilize test KFileWidgetTest::testDropFile
+  * Add missing KIOWIDGETS_NO_DEPRECTAED check
+  * Deprecate suggestName
+  * Replace implementation of suggestName with KFileUtils::suggestName
+  * Port internal usage of KIO::suggestName
+  * Fix can't enter directory error on some FTP servers with Turkish locale (kde#409740)
+  * Port from KRun::runService to KRun::runApplication
+  * Fix compiler warnings about initialization order.
   * Look for protocols in the bin dir too, to fix the autotests
 
 -------------------------------------------------------------------
