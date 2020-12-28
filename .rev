@@ -459,4 +459,41 @@
     <comment></comment>
     <requestid>848800</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0290553203e3008b55e49ac3b75a9855</srcmd5>
+    <version>0.19.3</version>
+    <time>1609160510</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.19.3:
+  * A new broadcast kitten to type in all kitty windows
+    simultaneously (#1569)
+  * Add a new mappable select_tab action to choose a tab to switch
+    to even when the tab bar is hidden (#3115)
+  * Allow specifying text formatting in tab_title_template (#3146)
+  * Linux: Read font_features from the FontConfig database as well,
+    so that they can be configured in a single, central location (#3174)
+  * Graphics protocol: Add support for giving individual image
+    placements their own ids and for asking the terminal emulator to
+    assign ids for images. Also allow suppressing responses from the
+    terminal to commands. These are backwards compatible protocol
+    extensions. (#3133, #3163)
+  * Distribute extra pixels among all eight-blocks rather than adding
+    them all to the last block (#3097)
+  * Fix drawing of a few sextant characters incorrect (#3105)
+  * Preserve lines in the scrollback if a scrolling region is defined
+    that is contiguous with the top of the screen (#3113)
+  * Wayland: Fix key repeat being stopped by the release of an
+    unrelated key (#2191)
+  * Add an option, detect_urls to control whether kitty will detect
+    URLs when the mouse moves over them (#3118)
+  * Graphics protocol: Dont return filename in the error message when
+    opening file fails, since filenames can contain control characters (#3128)
+  * Fix one ANSI formatting escape code not being removed from the
+    pager history buffer when piping it as plain text (#3132)
+  * Match the save/restore cursor behavior of other terminals, for the
+    sake of interoperability. This means that doing a DECRC without a
+    prior DECSC is now undefined (#1264)
+  * Fix mapping remote_control send-text not working (#3147)</comment>
+    <requestid>859010</requestid>
+  </revision>
 </revisionlist>
