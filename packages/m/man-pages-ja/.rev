@@ -257,4 +257,13 @@
   *  added and improved manual pages (forwarded request 855008 from ribbon)</comment>
     <requestid>855682</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>57553c432f75a8f0319091388489ef67</srcmd5>
+    <version>20201215</version>
+    <time>1609160162</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 20201215
+  * added and improved manual pages</comment>
+    <requestid>859002</requestid>
+  </revision>
 </revisionlist>
