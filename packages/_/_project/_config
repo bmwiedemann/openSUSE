@@ -397,6 +397,12 @@ Prefer: -suse-build-key
 Prefer: postfix
 # Give the worker any default apache2-MPM for apache2- chosing 'prefork' (alternatives are -event and -worker, dep-wise they are equal)
 
+# cyrus-sasl and postfix both bring a -bdb flavor. De-prefer this flavor
+Prefer: -cyrus-sasl-bdb-devel
+
+# Spamassassin requires wget or curl - we prefer curl, as its build dep chain seems cheaper
+Prefer: spamassassin:curl
+
 # Python3 exists in multiple versions - we currently favor 3.8 (our default):
 Prefer: -python36 -python39
 Prefer: -python36-hotdoc
@@ -1449,22 +1455,24 @@ Macros:
 %rb_default_ruby_suffix ruby2.7
 %rb_default_ruby_abi    ruby:2.7.0
 
-%rb_build_ruby_abis     ruby:2.7.0
-%rb_build_versions      ruby27
+%rb_build_ruby_abis     ruby:2.7.0 ruby:3.0.0
+%rb_build_versions      ruby27 ruby30
 :Macros
 
 Macros:
 %_with_ruby27               1
+%_with_ruby30               1
 :Macros
 
 %define _with_ruby27         1
+%define _with_ruby30         1
 
 %define rb_default_ruby        ruby27
 %define rb_default_ruby_suffix ruby2.7
 %define rb_default_ruby_abi    ruby:2.7.0
 
-%define rb_build_ruby_abis     ruby:2.7.0
-%define rb_build_versions      ruby27
+%define rb_build_ruby_abis     ruby:2.7.0 ruby:3.0.0
+%define rb_build_versions      ruby27 ruby30
 
 Prefer: -ruby-stdlib
 Prefer: %{rb_default_ruby_suffix}-rubygem-asciidoctor
