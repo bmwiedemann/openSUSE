@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Dec 24 11:22:05 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.19.0
+  * Significant improvements to the implementation of Platt's
+    algorithm for computing Riemann zeta function zeros at large
+    height.
+  * Better criterion for selecting asymptotic expansion of
+    incomplete gamma function (contributed by p15-git-acc).
+  * Multithreaded acb_dft for power-of-two lengths.
+  * Added acb_csc_pi, arb_csc_pi.
+  * Fixed segfault in acb_mat_eig_simple_rump when called with L
+    non-NULL and R NULL.
+  * Fixed bug in acb_real_abs.
+  * Changed several functions to more consistently return
+    infinities instead of NaNs where reasonable.
+  * Added Fransen-Robinson as an integral example.
+
+-------------------------------------------------------------------
 Sun Aug 30 01:16:20 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.18.1

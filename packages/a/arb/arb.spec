@@ -18,7 +18,7 @@
 
 Name:           arb
 %define lname   libarb2
-Version:        2.18.1
+Version:        2.19.0
 Release:        0
 Summary:        Arbitrary-precision floating-point ball arithmetic library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
