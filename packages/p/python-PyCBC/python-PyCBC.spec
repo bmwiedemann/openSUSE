@@ -16,14 +16,19 @@
 #
 
 
+# Some tests broken
+%bcond_with tests
+
 Name:           python-PyCBC
-Version:        1.16.11
+Version:        1.17.0
 Release:        0
 Summary:        Core library to analyze gravitational-wave data
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            http://www.pycbc.org/
-Source:         https://files.pythonhosted.org/packages/source/P/PyCBC/PyCBC-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/P/PyCBC/PyCBC-%{version}.tar.gz
+# Add a file missed in PyPI tarball
+Source1:        https://raw.githubusercontent.com/gwastro/pycbc/v%{version}/test/utils.py
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy >= 1.16.0}
@@ -47,6 +52,27 @@ Recommends:     python-lalframe
 Recommends:     python-lalsimulation
 Recommends:     python-ligo-segments
 ExclusiveArch:  %{ix86} x86_64
+%if %{with tests}
+# SECTION Test Requirements
+BuildRequires:  %{python_module Mako}
+BuildRequires:  %{python_module astropy}
+BuildRequires:  %{python_module beautifulsoup4}
+BuildRequires:  %{python_module decorator}
+BuildRequires:  %{python_module emcee}
+BuildRequires:  %{python_module gwdatafind}
+BuildRequires:  %{python_module h5py}
+BuildRequires:  %{python_module lalframe}
+BuildRequires:  %{python_module lalsimulation}
+BuildRequires:  %{python_module lal}
+BuildRequires:  %{python_module ligo-segments}
+BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module mpld3}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module testsuite}
+BuildRequires:  %{python_module tqdm}
+# /SECTION
+%endif
 %python_subpackages
 
 %description
@@ -58,6 +84,9 @@ of detected sources.
 
 %prep
 %setup -q -n PyCBC-%{version}
+cp %{SOURCE1} ./test/
+sed -i "/emcee==/d" setup.py
+sed -i "s/,<1.19//" setup.py
 
 # FOR REAL BINARIES SET HASHBANG TO PYTHON3 DIRECTLY
 sed -E -i "1{s|^#\!\s*/usr/bin/env python|#\!%{_bindir}/python3|}" \
@@ -82,6 +111,17 @@ sed -E -i "1 s|^#\!\s*/usr/bin/env\s*bash|#\!/bin/bash|" %{buildroot}%{_bindir}/
 %python_expand chmod -x %{buildroot}%{$python_sitearch}/pycbc/results/static/js/fancybox/2.1.5/jquery.fancybox.pack.js
 
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+
+%if %{with tests}
+%check
+# Delete tests requiring network
+rm test/test_dq.py examples/workflow/data_checker/daily_test.py
+#test/test_fftw_openmp.py test/test_fftw_pthreads.py pycbc/workflow/configparser_test.py
+%python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
+pushd test
+%python_exec -m unittest
+popd
+%endif
 
 %files %{python_files}
 %python3_only %{_bindir}/*
