@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 17 12:27:02 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Disable purge-kernels to not block zypper on first boot
+
+-------------------------------------------------------------------
 Thu Aug 13 07:33:45 UTC 2020 - Marco Varlese <marco.varlese@suse.com>
 
 - Added package "command-not-found" to offer an easy way to users

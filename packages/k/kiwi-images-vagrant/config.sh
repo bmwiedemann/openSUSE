@@ -3,7 +3,7 @@
 # FILE          : config.sh
 #----------------
 # PROJECT       : openSUSE KIWI Image System
-# COPYRIGHT     : (c) 2019 SUSE LINUX Products GmbH. All rights reserved
+# COPYRIGHT     : (c) 2020 SUSE LLC
 #               :
 # AUTHOR        : Marcus Schaefer <ms@suse.de>
 #               : Dan Čermák <dcermak@suse.com>
@@ -20,6 +20,12 @@
 set -euo pipefail
 
 #======================================
+# necessary for running with "set -u"
+# until kiwi 9.22.3
+#======================================
+export DEBUG=1
+
+#======================================
 # Functions...
 #--------------------------------------
 test -f /.kconfig && . /.kconfig
@@ -29,11 +35,6 @@ test -f /.profile && . /.profile
 # Greeting...
 #--------------------------------------
 echo "Configure image: [$kiwi_iname]..."
-
-#======================================
-# Mount system filesystems
-#--------------------------------------
-baseMount
 
 #======================================
 # Setup baseproduct link
@@ -121,7 +122,7 @@ function vagrantSetup {
     baseInsertService sshd
 
     # start vboxsf service only if the guest tools are present
-    if rpm -q virtualbox-guest-tools 2> /dev/null; then
+    if Rpm -q virtualbox-guest-tools 2> /dev/null; then
         echo vboxsf > /etc/modules-load.d/vboxsf.conf
     fi
 
@@ -130,7 +131,7 @@ function vagrantSetup {
     # this is not required for Virtualbox as it handles networking differently
     # and doesn't need this hack
     if [ "${kiwi_profiles}" != "virtualbox" ]; then
-        rm -f /etc/udev/rules.d/*-net.rules
+        Rm -f /etc/udev/rules.d/*-net.rules
     fi
 
     # setup DHCP on eth0 properly
@@ -141,6 +142,12 @@ EOF
 }
 
 vagrantSetup
+
+#=================================================
+# "Disable" purge-kernels so that the process is not
+# blocking zypper pointlessly during the first boot
+#=================================================
+Rm -f /boot/do_purge_kernels
 
 #=================================================
 # enable haveged to get enough entropy in a VM
