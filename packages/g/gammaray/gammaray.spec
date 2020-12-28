@@ -21,7 +21,7 @@
 
 %define tarname GammaRay
 Name:           gammaray
-Version:        2.11.1
+Version:        2.11.2
 Release:        0
 Summary:        Introspection/Debugging Tool for Qt Applications
 License:        GPL-2.0-or-later
@@ -31,8 +31,6 @@ Source:         https://github.com/KDAB/GammaRay/releases/download/v%{version}/%
 # PATCH-FIX-UPSTREAM Fix_icons_installation.patch -- Don't try to install multiple copies in exotic subdirs
 Patch0:         Fix_icons_installation.patch
 # PATCH-FIX-UPSTREAM
-Patch2:         0001-Fix-build-with-Qt-5.15.patch
-Patch3:         fix-build-with-qt-5.15-again.patch
 BuildRequires:  binutils-devel
 BuildRequires:  cmake >= 3.1
 BuildRequires:  doxygen

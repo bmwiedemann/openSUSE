@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 28 02:50:33 UTC 2020 - Wang Jun <jgwang@suse.com>
+
+- Update to version 2.11.2 
+  * Prefer picking QtQuick items in fully visible parent-child chains.
+  * Fix deadlock with Qt 5.15 on high DPI screens.
+  * Fix QtQuick detection on older macOS versions.
+  * Support for Qt 5.15.
+- Drop patches, now upstream:
+  * 0001-Fix-build-with-Qt-5.15.patch
+  * fix-build-with-qt-5.15-again.patch 
+
+-------------------------------------------------------------------
 Tue Jun  2 09:58:03 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Add another patch to fix build against Qt 5.15:
