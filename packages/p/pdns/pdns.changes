@@ -12,7 +12,8 @@ Fri Dec 18 18:10:17 UTC 2020 - Michael Ströder <michael@stroeder.com>
   * a new setting (consistent-backends) offers a roughly 30% speedup,
     subject to conditions
   * we finally emit Prometheus metrics!
-- removed 9070.patch
+
+- 9070.patch: upstreamed and removed
 
 -------------------------------------------------------------------
 Mon Dec  7 11:43:15 UTC 2020 - Adam Majer <adam.majer@suse.de>
