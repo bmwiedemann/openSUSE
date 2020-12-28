@@ -17,7 +17,7 @@
 
 
 Name:           tvbrowser
-Version:        4.2
+Version:        4.2.2
 Release:        0
 Summary:        Digital TV guide
 License:        GPL-3.0-or-later
@@ -48,6 +48,8 @@ the download function of TV-Browser.
 %prep
 cp -p %{SOURCE2} .
 %setup -q
+# needed to apply patch
+dos2unix build.xml
 %patch0 -p1
 dos2unix src/LICENSE.txt
 find -name "*.png" | while read a; do
