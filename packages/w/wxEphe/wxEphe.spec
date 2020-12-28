@@ -1,7 +1,7 @@
 #
 # spec file for package wxEphe
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Astronomical ephemeris for the Sun, Moon and solar system planets
 License:        GPL-3.0-only
 Group:          Productivity/Scientific/Astronomy
-Url:            http://www.jpmr.org/
+URL:            http://www.jpmr.org/
 #Freshcode-URL:	https://freshcode.club/projects/wxephe
 Source:         https://downloads.sf.net/wxephe/wxEphe-%version.tar.xz
 BuildRequires:  gcc-c++
@@ -34,19 +34,18 @@ wxEphe displays astronomical ephemeris for the Sun, the Moon and
 solar system planets, given the date and observer's location.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 autoreconf -fi
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 %find_lang %name
 
 %files -f %name.lang
-%defattr(-,root,root)
 %license COPYING
 %_bindir/wxEphe
 %_datadir/applications/*
