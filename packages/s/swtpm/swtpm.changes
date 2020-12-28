@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Dec 27 11:42:50 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Update to version 0.5.2
+  - swtpm:
+    - Fix potential buffer overflow related to largely unused data hashing
+      function in control channel
+    - swtpm: Unconditionally close fd if writing of pidfile fails (coverity)
+  - swtpm_setup:
+    - Increase timeout from 10s to 30s for slower machines
+  - Travis:
+    - Not building on OS X anymore due to additional costs
+
+-------------------------------------------------------------------
 Tue Dec 22 07:53:04 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Use "Requires user(tss)" for the "tss" user and group

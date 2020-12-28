@@ -20,7 +20,7 @@
 %define skip_python2 1
 
 Name:           swtpm
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 Summary:        Software TPM emulator
 License:        BSD-3-Clause
