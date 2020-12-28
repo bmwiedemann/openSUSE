@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 24 15:14:56 UTC 2020 - aloisio@gmx.com
+
+- Update to version 1.26.4
+  * Clarify seeking documentation regarding samples and PCM
+    frames.
+  * Fix cmake build to install fmt123.h.
+  * Some cmake build fixes, tinyalsa addition by Maarten.
+  * libmpg123: explicitly handle some irrelevant corner cases in
+    tabinit
+
+-------------------------------------------------------------------
 Fri Jul 17 07:19:43 UTC 2020 - aloisio@gmx.com
 
 - Update to version 1.26.3
