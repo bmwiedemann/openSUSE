@@ -39,10 +39,10 @@
 %define roslyn no
 %endif
 
-%define version_suffix 105
+%define version_suffix 107
 
 Name:           mono-core
-Version:        6.8.0
+Version:        6.12.0
 Release:        0
 Summary:        Cross-platform, Open Source, .NET development framework
 License:        LGPL-2.1-only AND MIT AND MS-PL
@@ -60,12 +60,8 @@ ExcludeArch:    ppc
 Patch14:        find-deps-fix.patch
 # PATCH-FIX-OPENSUSE revert Microsoft.Build.Tasks library to use old mcs compiler. This will make xbuild to use old mcs instead of csc - patch is used when roslyn is unavailable for current platform (big-endian systems).
 Patch15:        xbuild-revert-to-mcs.patch
-# PATCH-FIX-OPENSUSE add missing internal headers to distribution, this is necessary for mono-debugger package. (Seems this bug is caused by this upstream commit: https://github.com/mono/mono/commit/e71a7f33ef30a5bbd0047b37a95533d06c860846)
-Patch16:        fix-dbg-headers.patch
 # PATCH-FIX-OPENSUSE make xbuild to use roslyn-vbc on roslyn-enabled builds, in order to fix vbnc's VBNC99999 failures on such builds
 Patch20:        xbuild-use-roslyn-vbc.patch
-# PATCH-FIX-OPENSUSE fix 64bit-portability-issue at exceptions-ppc.c:799
-Patch21:        fix-ppc-64bit-portability-issue.patch
 # PATCH-FIX-UPSTREAM fix-s390x-ucontext.patch bsc#1171934 mgorse@suse.com -- fix s390x build on glibc 2.26.
 Patch22:        fix-s390x-ucontext.patch
 BuildRequires:  autoconf
@@ -185,6 +181,7 @@ Provides:       mono(System.Xml.XmlSerializer) = 4.0.0.0
 Provides:       mono(mscorlib) = 1.0.5000.0
 Provides:       mono(mscorlib) = 2.0.0.0
 Provides:       mono(mscorlib) = 4.0.0.0
+Provides:       mono(System.Runtime.CompilerServices.Unsafe) = 4.0.4.1
 # mono-core provides System.DateTime functions, which rely on timezone information
 Requires:       timezone
 
@@ -210,22 +207,15 @@ technologies that have been submitted to the ECMA for standardization.
 %prep
 %setup -q -n mono-%{version}.%{version_suffix}
 %patch14 -p1
-%patch16 -p1
 %if "%roslyn" == "no"
 %patch15 -p1
 %else
 %patch20 -p1
 %endif
-%patch21 -p1
 %patch22 -p1
 
 %build
 %define _lto_cflags %{nil}
-# TODO: re-check on next release, already fixed in master branch
-# remove accidentally packaged build artifacts that lead to build failures on non x86_64 platforms
-# see https://github.com/mono/mono/issues/11619, https://github.com/mono/mono/issues/11501 for more info
-find . \( -name ".libs" -o -name ".deps" \) -type d -prune -exec rm -rv {} \;
-find . \( -name "*.o" -o -name "*.lo" -o -name ".dirstamp" \) -exec rm -v {} \;
 # autogen.sh seems broken: it is not processing libgs subdirectory leaving old stuff there untouched.
 # so, remove gnu-build-system files manually
 find . \( \
