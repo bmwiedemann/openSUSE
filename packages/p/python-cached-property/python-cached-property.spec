@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cached-property
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        A decorator for caching properties in classes
 License:        BSD-3-Clause

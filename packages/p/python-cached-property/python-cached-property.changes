@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 19 17:50:16 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.2:
+  * Add formal support for Python 3.8
+  * Remove formal support for Python 3.4
+  * Switch from Travis to GitHub actions
+  * Made tests pass flake8 for Python 2.7
+
+-------------------------------------------------------------------
 Sun Aug 16 12:33:16 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Replace nose with pytest
