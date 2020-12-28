@@ -252,4 +252,14 @@
     <comment>extend build requires rsvg-convert condition (forwarded request 777634 from mlin7442)</comment>
     <requestid>777638</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>97d10127a192432b0f41e49afaa6a8f9</srcmd5>
+    <version>4.12</version>
+    <time>1609163224</time>
+    <user>dimstar_suse</user>
+    <comment>* Update to version 4.12.
+* Run autogen.sh to generate configure script as source tarball no longer has one; BuildRequires: libtool.
+* Only run post(un) scriptlets for openSUSE &amp;lt; 1550; they are void for newer openSUSE and directly handled by file triggers. (forwarded request 857892 from badshah400)</comment>
+    <requestid>858978</requestid>
+  </revision>
 </revisionlist>

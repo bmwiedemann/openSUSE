@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec 21 17:35:02 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.12:
+  * Fixes for recent compilers.
+  * Fixes for Qt-5.15.
+  * Fixes in tiff2pdf.c.
+  * Updated documentation (most browsers no longer support
+    plugins).
+  * Updated translations.
+- Run autogen.sh to generate configure script as source tarball
+  no longer has one; BuildRequires: libtool.
+- Only run post(un) scriptlets for openSUSE < 1550; they are void
+  for newer openSUSE and directly handled by file triggers.
+
+-------------------------------------------------------------------
 Thu Feb 20 10:11:56 UTC 2020 - Max Lin <mlin@suse.com>
 
 - Leap 15.2 and SLE15 SP2 has newer librsvg, extend the conditional

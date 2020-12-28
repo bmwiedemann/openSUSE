@@ -17,7 +17,7 @@
 
 
 Name:           djvulibre-djview4
-Version:        4.10.6
+Version:        4.12
 Release:        0
 Summary:        Portable DjVu Qt4 Based Viewer and Browser Plugin
 License:        GPL-2.0-or-later
@@ -27,6 +27,8 @@ Source:         http://downloads.sourceforge.net/djvu/djview-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
 BuildRequires:  libqt5-linguist
+# Upstream does not supply a configure script; libtool needed to generated one (v 4.12)
+BuildRequires:  libtool
 BuildRequires:  pkg-config
 %if 0%{suse_version} >= 1550 || 0%{?sle_version} >= 150200
 BuildRequires:  rsvg-convert
@@ -45,8 +47,10 @@ BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xt)
 Requires:       djvulibre >= 3.5.18
+%if 0%{?suse_version} < 1550
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
+%endif
 Conflicts:      djvulibre-djview3
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -55,11 +59,12 @@ DjView4 is a viewer and browser plugin for DjVu documents,based on the
 DjVuLibre-3.5 library and the Qt4 toolkit.
 
 %prep
-%setup -q -n djview-%{version}
+%setup -q -n djview4-%{version}
 sed -i 's|PLUGINSDIR|%{_libdir}/browser-plugins|g' nsdejavu/nsdejavu.1.in 
 
 %build
 export QMAKE=/usr/bin/qmake-qt5
+NOCONFIGURE=1 ./autogen.sh
 %configure
 make %{?_smp_mflags}
 
@@ -68,11 +73,13 @@ make DESTDIR=%{buildroot} pluginsdir=%{_libdir}/browser-plugins install %{?_smp_
 ln -s %{_bindir}/djview %{buildroot}%{_bindir}/djview4
 %suse_update_desktop_file -i djvulibre-djview4 Qt Graphics Viewer
 
+%if 0%{?suse_version} < 1550
 %post
 %desktop_database_post
 
 %postun
 %desktop_database_postun
+%endif
 
 %files
 %defattr(-,root,root)
