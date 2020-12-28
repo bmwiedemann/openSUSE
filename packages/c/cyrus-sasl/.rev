@@ -517,4 +517,41 @@
   (see CVE-2019-19906 bsc#1159635)</comment>
     <requestid>760381</requestid>
   </revision>
+  <revision rev="60" vrev="4">
+    <srcmd5>f8649f58e82aba1d9f878b8627f0ca42</srcmd5>
+    <version>2.1.27</version>
+    <time>1609147779</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove Berkeley DB dependency (JIRA#SLE-12190)
+  The pacakges cyrus-sasl and cyrus-sasl-saslauthd are build
+  without Berkely DB support. gdbm will be used instead of BDB.
+  The pacakges cyrus-sasl-bdb and cyrus-sasl-saslauthd-bdb are build
+  with Berkely DB support.
+- Update to 2.1.27
+  * Added support for OpenSSL 1.1
+  * Added support for lmdb
+  * Lots of build fixes
+  * Treat SCRAM and DIGEST-MD5 as more secure than PLAIN when selecting client mech
+  * DIGEST-MD5 plugin:
+        Fixed memory leaks
+        Fixed a segfault when looking for non-existent reauth cache
+        Prevent client from going from step 3 back to step 2
+        Allow cmusaslsecretDIGEST-MD5 property to be disabled
+  * GSSAPI plugin:
+        Added support for retrieving negotiated SSF
+        Fixed GSS-SPNEGO to use flags negotiated by GSSAPI for SSF
+        Properly compute maxbufsize AFTER security layers have been set
+  * SCRAM plugin:
+        Added support for SCRAM-SHA-256
+  * LOGIN plugin:
+        Don’t prompt client for password until requested by server
+  * NTLM plugin:
+        Fixed crash due to uninitialized HMAC context
+- Replace references to /var/adm/fillup-templates with new
+  %_fillupdir macro (boo#1069468)
+- bsc#983938 `After=syslog.target` left-overs in several unit files
+- added patches:
+  fix_libpq-fe_include.diff  for fixing including libpq-fe.h</comment>
+    <requestid>858433</requestid>
+  </revision>
 </revisionlist>

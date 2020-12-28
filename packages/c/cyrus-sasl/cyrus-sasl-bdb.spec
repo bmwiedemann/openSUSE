@@ -1,5 +1,5 @@
 #
-# spec file for package cyrus-sasl
+# spec file for package cyrus-sasl-bdb
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -16,8 +16,8 @@
 #
 
 
-Name:           cyrus-sasl
-%define lname	libsasl2-3
+Name:           cyrus-sasl-bdb
+%define lname   libsasl2-3
 Version:        2.1.27
 Release:        0
 URL:            http://asg.web.cmu.edu/sasl/
@@ -25,7 +25,7 @@ Summary:        Implementation of Cyrus SASL API
 License:        BSD-4-Clause
 Group:          Productivity/Networking/Other
 
-Source:         %{name}-%{version}.tar.gz
+Source:         cyrus-sasl-%{version}.tar.gz
 Source1:        cyrus-sasl-rc.tar.bz2
 Source2:        README.Source
 Source3:        baselibs.conf
@@ -36,7 +36,7 @@ Patch5:         cyrus-sasl-no_rpath.patch
 Patch6:         cyrus-sasl-lfs.patch
 Patch7:         fix_libpq-fe_include.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  gdbm-devel
+BuildRequires:  db-devel
 BuildRequires:  krb5-mini-devel
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
@@ -47,55 +47,55 @@ BuildRequires:  pkg-config
 # bug437293
 Obsoletes:      cyrus-sasl-64bit
 %endif
-Conflicts:      cyrus-sasl-bdb
+Conflicts:      cyrus-sasl
 
 %package      gssapi
 Summary:        Plugin for the GSSAPI SASL mechanism
 Group:          Productivity/Networking/Other
-Requires:       %{name} = %{version}
-Conflicts:      cyrus-sasl-bdb-gssapi
+Requires:       cyrus-sasl = %{version}
+Conflicts:      cyrus-sasl-gssapi
 
 %package      crammd5
 Summary:        Plugin for the CRAMMD5 SASL mechanism
 Group:          Productivity/Networking/Other
-Requires:       %{name} = %{version}
-Conflicts:      cyrus-sasl-bdb-crammd5
+Requires:       cyrus-sasl = %{version}
+Conflicts:      cyrus-sasl-crammd5
 
 %package      digestmd5
 Summary:        Plugin for the DIGESTMD5 SASL mechanism
 Group:          Productivity/Networking/Other
-Requires:       %{name} = %{version}
-Conflicts:      cyrus-sasl-bdb-digestmd5
+Requires:       cyrus-sasl = %{version}
+Conflicts:      cyrus-sasl-digestmd5
 
 %package      otp
 Summary:        Plugin for the OTP SASL mechanism
 Group:          Productivity/Networking/Other
-Requires:       %{name} = %{version}
-Conflicts:      cyrus-sasl-bdb-otp
+Requires:       cyrus-sasl = %{version}
+Conflicts:      cyrus-sasl-otp
 
 %package      plain
 Summary:        Plugin for the PLAIN SASL mechanism
 Group:          Productivity/Networking/Other
-Requires:       %{name} = %{version}
-Conflicts:      cyrus-sasl-bdb-plain
+Requires:       cyrus-sasl = %{version}
+Conflicts:      cyrus-sasl-plain
 
 %package      ntlm
 Summary:        Plugin for the NTLM SASL mechanism
 Group:          Productivity/Networking/Other
-Requires:       %{name} = %{version}
-Conflicts:      cyrus-sasl-bdb-ntlm
+Requires:       cyrus-sasl = %{version}
+Conflicts:      cyrus-sasl-ntlm
 
 %package      gs2
 Summary:        Plugin for the GS2 SASL mechanism
 Group:          Productivity/Networking/Other
-Requires:       %{name} = %{version}
-Conflicts:      cyrus-sasl-bdb-ntlm
+Requires:       cyrus-sasl = %{version}
+Conflicts:      cyrus-sasl-gs2
 
 %package      scram
 Summary:        Plugin for the SCRAM SASL mechanism
 Group:          Productivity/Networking/Other
-Requires:       %{name} = %{version}
-Conflicts:      cyrus-sasl-bdb-scram
+Requires:       cyrus-sasl = %{version}
+Conflicts:      cyrus-sasl-scram
 
 %package      devel
 # bug437293
@@ -107,12 +107,7 @@ Summary:        Cyrus SASL API Implementation, Libraries and Header Files
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 Requires:       glibc-devel
-Conflicts:      cyrus-sasl-devel-bdb
-
-%package -n libsasl2-3
-Summary:        Simple Authentication and Security Layer (SASL) library
-Group:          System/Libraries
-Conflicts:      libsasl2-3-bdb
+Conflicts:      cyrus-sasl-devel
 
 %description
 This is the Cyrus SASL API. It can be used on the client or server side
@@ -161,20 +156,12 @@ This is the Cyrus SASL API implementation. It can be used on the client
 or server side to provide authentication. See RFC 5802 for more
 information.
 
-%description -n libsasl2-3
-Simple Authentication and Security Layer (SASL) is a framework for
-authentication and data security in Internet protocols.
-
-This is the Cyrus SASL API implementation. It can be used on the client
-or server side to provide authentication. See RFC 2222 for more
-information.
-
 %prep
 %setup -q -n cyrus-sasl-%{version} -a 1
-if [ -e %{_builddir}/%{name}-%{version}/dlcompat-*/ ]
+if [ -e %{_builddir}/cyrus-sasl-%{version}/dlcompat-*/ ]
 then
     echo "dlcompat contains potential legal risks."
-    rm -rf %{_builddir}/%{name}-%{version}/dlcompat-*
+    rm -rf %{_builddir}/cyrus-sasl-%{version}/dlcompat-*
 fi
 %patch
 %patch1 -p1
@@ -212,43 +199,8 @@ rm -f $RPM_BUILD_ROOT/%{_mandir}/cat?/*
 rm -f $RPM_BUILD_ROOT/%{_mandir}/man8/saslauthd*
 rm -f $RPM_BUILD_ROOT/usr/sbin/saslauthd
 rm -f $RPM_BUILD_ROOT/usr/sbin/testsaslauthd
+rm -r $RPM_BUILD_ROOT%{_libdir}/libsasl2.so.3*
 find "%buildroot" -type f -name "*.la" -print -delete
-
-%pre
-#Convert password file from berkely into gdbm
-#In %pre the existing file will be dumped out
-if [ -e /etc/sasldb2 ]; then
-cat <<EOF > /tmp/saslpw.awk
-{
-        split(\$0,b,/\\\00/)
-        if( b[3] == "userPassword" ) {
-                user=b[1]
-                domain=b[2]
-        } else {
-                if( user != "" ) {
-                        printf("echo '%s' | saslpasswd2 -p -u %s %s\n",substr(b[1],2),user,domain)
-                        user = ""
-                        domain = ""
-                }
-        }
-}
-EOF
-db_dump -p /etc/sasldb2 | gawk -f /tmp/saslpw.awk > /var/adm/update-scripts/saslpwd
-mv /etc/sasldb2 /etc/sasldb2-back
-fi
-
-%post
-if [ -e /var/adm/update-scripts/saslpwd ]; then
-        chmod 755 /var/adm/update-scripts/saslpwd
-        /var/adm/update-scripts/saslpwd
-fi
-
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
-
-%files -n %lname
-%defattr(-,root,root)
-%{_libdir}/libsasl2.so.3*
 
 %files
 %defattr(-,root,root)

@@ -1,21 +1,11 @@
 -------------------------------------------------------------------
-Thu Nov 28 20:07:43 UTC 2019 - Michael Ströder <michael@stroeder.com>
+Tue Dec  8 13:33:33 UTC 2020 - Peter Varkoly <varkoly@suse.com>
 
-- added backport-patch cyrus-sasl-bug587.patch which fixes
-  off-by-one error in _sasl_add_string function
-  (see CVE-2019-19906 bsc#1159635)
-
--------------------------------------------------------------------
-Sat Nov 17 10:14:14 UTC 2018 - Michael Ströder <michael@stroeder.com>
-
-- removed patches obsoleted by upstream changes:
-  * shared_link_on_ppc.patch
-  * fix-sasl-header.diff
-  * cyrus-sasl-revert_gssapi_flags.patch
-  * cyrus-sasl-issue-402.patch
-  * cyrus-sasl-2.1.27-openssl-1.1.0.patch
-- replaced cumlocal/ with m4/ in patches
-- added fix_libpq-fe_include.diff for fixing including libpq-fe.h
+- Remove Berkeley DB dependency (JIRA#SLE-12190)
+  The pacakges cyrus-sasl and cyrus-sasl-saslauthd are build
+  without Berkely DB support. gdbm will be used instead of BDB.
+  The pacakges cyrus-sasl-bdb and cyrus-sasl-saslauthd-bdb are build
+  with Berkely DB support.
 - Update to 2.1.27
   * Added support for OpenSSL 1.1
   * Added support for lmdb
@@ -36,17 +26,46 @@ Sat Nov 17 10:14:14 UTC 2018 - Michael Ströder <michael@stroeder.com>
         Don’t prompt client for password until requested by server
   * NTLM plugin:
         Fixed crash due to uninitialized HMAC context
-
--------------------------------------------------------------------
-Tue Feb 13 08:59:21 UTC 2018 - varkoly@suse.com
-
-- bsc#983938 `After=syslog.target` left-overs in several unit files
-
--------------------------------------------------------------------
-Thu Nov 23 13:38:18 UTC 2017 - rbrown@suse.com
-
 - Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
+- bsc#983938 `After=syslog.target` left-overs in several unit files
+- added patches:
+  fix_libpq-fe_include.diff  for fixing including libpq-fe.h
+  
+- removed patches obsoleted by upstream changes:
+  * shared_link_on_ppc.patch
+  * cyrus-sasl-2.1.27-openssl-1.1.0.patch
+  * 0002-Drop-unused-parameter-from-gssapi_spnego_ssf.patch
+  * 0003-Check-return-error-from-gss_wrap_size_limit.patch
+  * 0004-Add-support-for-retrieving-the-mech_ssf.patch
+  * 0001-Fix-GSS-SPNEGO-mechanism-s-incompatible-behavior.patch
+  * cyrus-sasl-fix-logging-in-gssapi.patch
+
+-------------------------------------------------------------------
+Thu Feb  6 17:50:21 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
+
+- Added support for retrieving negotiated SSF in gssapi plugin (bsc#1162518)
+  * Add 0002-Drop-unused-parameter-from-gssapi_spnego_ssf.patch
+  * Add 0003-Check-return-error-from-gss_wrap_size_limit.patch
+  * Add 0004-Add-support-for-retrieving-the-mech_ssf.patch
+- Fixed GSS-SPNEGO to use flags negotiated by GSSAPI for SSF (bsc#1162518)
+  * Add 0001-Fix-GSS-SPNEGO-mechanism-s-incompatible-behavior.patch
+
+-------------------------------------------------------------------
+Thu Nov 28 20:07:43 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- added backport-patch cyrus-sasl-bug587.patch which fixes
+  off-by-one error in _sasl_add_string function
+  (see CVE-2019-19906 bsc#1159635)
+
+-------------------------------------------------------------------
+Mon Feb  4 15:13:25 UTC 2019 - Peter Varkoly <varkoly@suse.com>
+
+- bnc#1044840 syslog is polluted with messages "GSSAPI client step 1"
+  By server context the connection will be sent to the log function.
+  Client content does not have log level information. I.e. there is no
+  way to stop DEBUG level logs nece I've removed it.
+  * add cyrus-sasl-fix-logging-in-gssapi.patch
 
 -------------------------------------------------------------------
 Mon Sep  4 10:01:17 UTC 2017 - vcizek@suse.com

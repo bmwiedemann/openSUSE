@@ -1,5 +1,5 @@
 #
-# spec file for package cyrus-sasl-saslauthd
+# spec file for package cyrus-sasl-saslauthd-bdb
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -21,7 +21,7 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
-Name:           cyrus-sasl-saslauthd
+Name:           cyrus-sasl-saslauthd-bdb
 Version:        2.1.27
 Release:        0
 Summary:        The SASL Authentication Server
@@ -43,7 +43,7 @@ Patch6:         cyrus-sasl-lfs.patch
 Patch7:         fix_libpq-fe_include.diff
 PreReq:         %fillup_prereq
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  gdbm-devel
+BuildRequires:  db-devel
 BuildRequires:  krb5-devel
 BuildRequires:  libtool
 BuildRequires:  mysql-devel
@@ -53,29 +53,29 @@ BuildRequires:  pam-devel
 BuildRequires:  postgresql-devel
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
-Conflicts:      cyrus-sasl-saslauthd-bdb
+Conflicts:      cyrus-sasl-saslauthd
 
 %description
 This daemon is required when using cyrus-sasl in server software that
 should authenticate with PAM, for example.
 
-%package -n     cyrus-sasl-ldap-auxprop
+%package -n     cyrus-sasl-ldap-auxprop-bdb
 Summary:        The cyrus-sasl LDAP auxprop plugin
 Group:          Productivity/Networking/Other
-Requires:       cyrus-sasl = %{version}
-Conflicts:      cyrus-sasl-ldap-auxprop-bdb
+Requires:       cyrus-sasl-bdb = %{version}
+Conflicts:      cyrus-sasl-ldap-auxprop
 
-%description -n cyrus-sasl-ldap-auxprop
+%description -n cyrus-sasl-ldap-auxprop-bdb
 The LDAP auxprop plugin allows for tighter application/directory
 integration.
 
-%package -n     cyrus-sasl-sqlauxprop
+%package -n     cyrus-sasl-sqlauxprop-bdb
 Summary:        SQL auxprop plugin for cyrus-sasl
 Group:          Development/Libraries/C and C++
-Requires:       cyrus-sasl = %{version}
-Conflicts:      cyrus-sasl-sqlauxprop-bdb
+Requires:       cyrus-sasl-bdb = %{version}
+Conflicts:      cyrus-sasl-sqlauxprop
 
-%description -n cyrus-sasl-sqlauxprop
+%description -n cyrus-sasl-sqlauxprop-bdb
 The SQL auxprop plugin supports PostgreSQL and MySQL
 
 %prep
@@ -164,12 +164,12 @@ install -m 644 %{SOURCE4} $RPM_BUILD_ROOT/%{_unitdir}
 %doc %{_mandir}/man8/*.gz
 %doc saslauthd/COPYING saslauthd/ChangeLog saslauthd/LDAP_SASLAUTHD
 
-%files -n cyrus-sasl-sqlauxprop
+%files -n cyrus-sasl-sqlauxprop-bdb
 %defattr(-,root,root)
 %dir %_libdir/sasl2/
 %{_libdir}/sasl2/libsql.so*
 
-%files -n cyrus-sasl-ldap-auxprop
+%files -n cyrus-sasl-ldap-auxprop-bdb
 %defattr(-,root,root)
 %dir %_libdir/sasl2/
 %{_libdir}/sasl2/libldapdb.so*
