@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 24 12:33:02 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.0.9
+  * Fixed: rsb_mtx_rndr(..RSB_MARF_EPS) and
+    rsb_file_mtx_rndr(..RSB_MARF_EPS): could crash on
+    uniform-values matrix input.
+  * Fixed: rsb_spmsp was crashing if result matrix has nnz<=rows
+  * Fixed: BLAS_zusaxpy and BLAS_cusaxpy in C were crashing
+  * Fixed: rsb_sppsp() was ignoring transB and could crash on
+    transA
+
+-------------------------------------------------------------------
 Thu Mar  5 16:24:51 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.0.8

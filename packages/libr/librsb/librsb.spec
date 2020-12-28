@@ -18,7 +18,7 @@
 
 Name:           librsb
 %define lname	librsb0
-Version:        1.2.0.8
+Version:        1.2.0.9
 Release:        0
 Summary:        Shared memory parallel sparse matrix and sparse BLAS library
 License:        LGPL-3.0-or-later
@@ -73,9 +73,10 @@ applications that want to make use of librsb.
 
 %build
 autoreconf -fi
+# meminfo chosen for smaller machines too
 %configure --docdir="%_docdir/%name" --disable-static CFLAGS="%optflags -Wno-unused" \
     --with-memhinfo=L3:16/64/8192K,L2:16/64/2048K,L1:8/64/16K
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
