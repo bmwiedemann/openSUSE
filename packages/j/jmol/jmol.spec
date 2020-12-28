@@ -1,7 +1,7 @@
 #
 # spec file for package jmol
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jmol
-Version:        14.30.1
+Version:        14.31.20
 Release:        0
 Summary:        3D Viewer for chemical structures
 License:        LGPL-2.1-only
@@ -33,20 +33,18 @@ Source4:        %name.desktop
 Source9:        sanitize_binpkg.sh
 Patch1:         datadir.diff
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  desktop-file-utils
 BuildRequires:  dos2unix
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
-Requires:       java
+Requires:       java >= 7
 
 %description
 Jmol is a Java-based viewer for chemical structures in 3D with
 features for chemicals, crystals, materials and biomolecules.
 
 %prep
-%setup -q
-%patch -P 1 -p1
+%autosetup -p1
 cp %{S:2} .
 
 %build
@@ -74,8 +72,8 @@ desktop-file-install --dir %buildroot%_datadir/applications %{S:4}
 %suse_update_desktop_file %name
 
 %files
-%defattr(-,root,root)
-%doc README.txt LICENSE.txt COPYRIGHT.txt CHANGES.txt
+%license LICENSE.txt COPYRIGHT.txt
+%doc README.txt CHANGES.txt
 %_bindir/%name
 %_datadir/%name
 %_datadir/applications/%name.desktop

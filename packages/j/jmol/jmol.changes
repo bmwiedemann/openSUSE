@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 24 12:19:31 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 14.31.20
+  * Topology CIF reading of _topol_xxx records
+  * GenNBOReader supports older NBO 3.0 output.properties
+    rather than missing .46 labels file
+  * NBO command expanded to allow named orbitals
+
+-------------------------------------------------------------------
 Thu Dec 19 22:25:59 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 14.30.1

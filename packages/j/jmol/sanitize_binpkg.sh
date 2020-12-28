@@ -1,6 +1,6 @@
 #!/bin/bash
 
-v=14.30.1
+v=14.31.20
 if [ ! -e "Jmol-$v-binary.tar.gz" ]; then
 	wget -c http://downloads.sf.net/jmol/Jmol-$v-binary.tar.gz
 fi
