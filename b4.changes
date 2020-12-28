@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 21 10:26:12 UTC 2020 - jslaby@suse.cz
+
+- Update to version 0.6.2:
+  * Prepare 0.6.2 release
+  * Convert mboxrd to mboxo
+  * DKIM: remove extra public-inbox headers
+  * Only check allow-list of trailers in follow-ups
+  * Add BugLink to non-person trailers
+  * Create stable-0.6.y and increment version
+
+-------------------------------------------------------------------
 Fri Dec 18 09:05:49 UTC 2020 - Jiri Slaby <jslaby@suse.cz>
 
 - add 0001-lift-requests-version-requirement.patch

@@ -17,9 +17,9 @@
 
 
 %define skip_python2 1
-%define version_unconverted 0.6.1
+%define version_unconverted 0.6.2
 Name:           b4
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        Helper scripts for kernel.org patches
 License:        GPL-2.0-or-later
