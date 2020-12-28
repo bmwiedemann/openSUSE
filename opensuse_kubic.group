@@ -320,7 +320,6 @@
     <package name="libcontainers-common" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libcrack2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="libcrypto46" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
-    <package name="libdb-4_8" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
     <package name="libdevmapper-event1_03" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libdhash1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
     <package name="libebtc0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
@@ -333,6 +332,8 @@
     <package name="libfreetype6" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libfuse2" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libfuse3-3" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-container_runtime -->
+    <package name="libgdbm6" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
+    <package name="libgdbm_compat4" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
     <package name="libgio-2_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="libgirepository-1_0-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="libglib-2_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
