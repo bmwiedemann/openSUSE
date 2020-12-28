@@ -1901,6 +1901,7 @@
     <package name="librtlsdr0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="librubberband2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libruby2_7-2_7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libruby3_0-3_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libsamba-credentials0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libsamba-errors0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libsamba-hostconfig0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3418,6 +3419,28 @@
     <package name="ruby2.7-rubygem-yard" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-yast-rake" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-zeitwerk" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-activesupport-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-bootsnap" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-byebug" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-concurrent-ruby" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-ffi" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-i18n" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-jbuilder" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-listen-3_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-msgpack" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-nio4r" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-puma" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-rb-fsevent" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-rb-inotify" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-spring" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-spring-watcher-listen" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-sqlite3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-thread_safe" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-turbolinks" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-turbolinks-source" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-tzinfo-1.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-zeitwerk" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rubygem-passenger" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rubygem-passenger-apache2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rzsz" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
