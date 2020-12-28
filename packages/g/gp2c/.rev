@@ -47,4 +47,12 @@
     <comment>- Update to release 0.0.11pl4</comment>
     <requestid>811833</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>182d6501ebf56db39c87ed2fb2ba60bf</srcmd5>
+    <version>0.0.12</version>
+    <time>1609147827</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.0.12</comment>
+    <requestid>858486</requestid>
+  </revision>
 </revisionlist>

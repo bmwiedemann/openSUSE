@@ -17,7 +17,7 @@
 
 
 Name:           gp2c
-Version:        0.0.11pl4
+Version:        0.0.12
 Release:        0
 Summary:        GP script to PARI C program compiler
 License:        GPL-2.0-only
@@ -41,11 +41,11 @@ your own routines within the preexisting GP ones. It may also find bugs in GP
 scripts.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --docdir="%_docdir/%name" CFLAGS="%optflags -fno-common"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -56,6 +56,6 @@ make %{?_smp_mflags}
 %_docdir/%name/
 %_datadir/%name/
 %_mandir/man1/gp2c*
-%doc COPYING
+%license COPYING
 
 %changelog
