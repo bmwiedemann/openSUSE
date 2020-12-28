@@ -1,7 +1,7 @@
 #
 # spec file for package iml
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,6 @@ BuildRequires:  openblas-devel
 BuildRequires:  blas-devel
 BuildRequires:  cblas-devel
 %endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 IML package provides routines to solve nonsingular systems of linear
@@ -78,11 +77,11 @@ developing against the IML library.
 %else
 	   --with-cblas="-lcblas -lblas" \
 %endif
-	   %{nil}
-make %{?_smp_mflags}
+	   %nil
+%make_build
 
 %check
-make check %{?_smp_mflags}
+%make_build check
 
 %install
 b="%buildroot"
