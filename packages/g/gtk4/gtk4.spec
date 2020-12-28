@@ -20,15 +20,16 @@
 # When updating the binary version, do not forget to also update baselibs.conf
 %define gtk_binary_version 4.0.0
 %define _name gtk
+
 Name:           gtk4
-Version:        3.99.4
+Version:        4.0.0+107
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/X11
 URL:            https://www.gtk.org/
 
-Source:         https://download.gnome.org/sources/gtk/3.99/%{_name}-%{version}.tar.xz
+Source:         %{_name}-%{version}.tar.xz
 Source2:        settings.ini
 Source3:        macros.gtk4
 Source98:       gtk4-rpmlintrc

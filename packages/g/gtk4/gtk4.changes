@@ -1,4 +1,172 @@
 -------------------------------------------------------------------
+Sat Dec 26 19:18:54 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 4.0.0+107:
+  + Remove unused static inline function
+  + Fix some of gtk4-demo’s transitions example on OpenGL ES
+  + Fix gtk4-demo’s gears demo on OpenGL ES
+  + gdkarray: Add a "stolen" boolean to splice()
+  + listview: Use the correct scroll policy
+  + docs:
+    - Put render nodes in their own sections
+    - Add examples for GtkDropTarget
+    - Add examples of GtkDragSource use
+    - Fix typo and whitespace
+    - backtick fixes
+    - Fix list of kinds of shortcuts in Keyboard input
+    - Add missing GTK types
+    - Note the caveat on GtkEditable signals with delegates
+  + roundedbox: Remove unused API
+  + picture: Fix copy/paste error in docs
+  + video: When autoplaying, start playing once the video is
+    prepared
+  + window: Release application in destroy
+  + Fix warnings with Vulkan < 162
+  + modelbutton: Remove an unused field
+  + Fix buffer overruns in 'gtk-builder-tool simplify'
+  + Fix the value for the print-backends setting
+  + inspector: Show glyphs as in node files
+  + gsk:
+    - Export the glyph serialization privately
+    - Improve glyph serialization
+    - Fix serialization of glyphs
+  + box: improve documentation
+  + gskpango:
+    - Don't copy fg color
+    - Correct a comment
+    - Remove bounds rect
+    - Fix a potential cairo_t leak
+  + label:
+    - Refactor get_layout_location()
+    - Refactor snapshot()
+  + textlayout: Remove dead offset_y code
+  + rendernode:
+    - Different uniformity in border nodes
+    - Sort diff() requirements by complexity
+  + renderborder: Avoid 0 width outline color nodes
+  + layoutoverlay:
+    - Avoid adding transparent color nodes
+    - Avoid adding 0 sized color nodes
+  + gl renderer:
+    - Check for pointer equality in rounded_rect_equal
+    - Proper state tracking for color matrix ops
+    - Add missing debug output for repeat ops
+    - Create shader-global uniform ops on draw()
+    - Unify new clip/viewport rects in blur_texture()
+    - Avoid setting modelview to identical values
+    - Take a out graphene_rect in blur_node()
+    - Render too big textures to the clipped area
+    - Unify viewport setting in add_offscreen_ops()
+  + GskTransform:
+    - Add nullable annotations to _equals()
+    - Fix identity transform class name
+    - Avoid a ref+unref pair
+  + icontheme:
+    - Make some constant values const
+    - Make icon_paintable_ensure_texture() return an unowned value
+  + pixbufutils: Only convert icon size to string once
+  + main: Add & use gdk_event_dup_axes()
+  + Call the newly installed gtk4-update-icon-cache
+  + Pass the bindir to the post-install script
+  + Revert "gl renderer: Render too big textures to the clipped
+    area"
+  + Revert "gl renderer: Take a out graphene_rect in blur_node()"
+  + 3to4:
+    - Add test for GtkCheckButton:draw-indicator removal
+    - Remove GtkCheckButton:draw-indicator
+  + Do not build gdk-pixbuf's man page
+  + a11y: Fix removing mnemonic widgets
+  + Notify properties on deletion in PasswordEntryBuffer
+  + Fix URLs for the download.gnome.org locations
+  + Adwaita: flat button adjustments
+  + vulkancontext: Remove usage of
+    VK_ERROR_INCOMPATIBLE_VERSION_KHR
+  + Updated translations.
+- Switch to source service, upstream is not moving fast enough, and
+  we need this to fix a buildfail due to updated vulkan.
+
+-------------------------------------------------------------------
+Wed Dec 16 19:28:03 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.0.0:
+  + Fix problems with synthetic motion events affecting frame rates
+  + Fix problems with implicit grabs affecting widget states
+  + Fix problems with zoom mode on scales getting stuck
+  + Fix submenu closing by outside clicks
+  + Rename GtkWindow:fullscreen to :fullscreened to help language
+    bindings
+  + Bump the soname. Stable GTK 4 releases use
+    libgtk-4.0.so.1.xxxx.y
+  + Adwaita:
+    - Reduce hover transition effects in lists
+    - Special-case header buttons
+  + Demos:
+    - Remove NoDisplay from desktop files
+    - Autoplay the video in widget-factory
+  + Updated translations.
+- Changes from version 3.99.5:
+  + Accessibility:
+    - Map presentation role according to Core-AAM
+    - Use presentation role for spacers in list views
+    - Set proper roles, relations and descriptions on more widgets
+    - Expand the documentation
+    - Use a single GTK_A11Y environment variable and document it
+    - Serveral memory leak and crash fixes
+    - Initialize AT contexts lazily
+    - Improve the API for storing lists in relations
+    - Implement more of the Component interface
+    - Implement the Cache interface
+    - Implement ScrollSubstringTo for GtkTextView
+  + Introspection:
+    - Add many missing annotations to APIs
+    - In particular, nullability annotation fixes for rust
+  + Touch support:
+    - Fix issues with text handles
+    - Fix interaction between touch scrolling and focus
+    - Fix active state updates for touch events
+    - Allow pressing buttons with multiple fingers
+  + GtkScrolledWindow: Accumulate velocity with kinetic scrolling
+  + GtkSearchEntry: Use a better clear icon
+  + GtkTreeView: Remove the deprecated
+    GtkCellRendererClass.get_size vfunc
+  + GtkBuilder:
+    - Be stricter about <requires>
+    - Make gtk-builder-tool simplify update <requires>
+  + GtkFileChooser: Remove GtkFileChooserButton
+  + GtkWindow:
+    - Replace gtk_window_get_size with gtk_window_get_default_size
+    - Add maximized and fullscreen properties
+  + Make the inspector available in non-debug builds
+  + CSS: Support conic gradients
+  + Adwaita:
+    - Round all window corners
+    - Round submenus
+    - Remove the 'chin' on menus
+    - Industrial style menuitems
+    - Improved tooltip styling
+    - Unified sidebar styles
+    - Dark prelight
+    - Don't backdrop labels
+  + GSK: Rename render node apis from peek to get
+  + Make GLES work in the absence of GL_ARB_timer_query
+  + Rework the way size allocation is integrated in the frame cycle
+  + Wayland:
+    - Support gtk_shell1 version 3 (startup notification and
+      activation)
+    - Implmement minimization
+  + Documentation:
+    - Add missing enumerations, symbols and types
+    - Lots of smaller fixes
+  + Demos:
+    - Make the constraints demo more useful
+    - Make search more obvious
+    - Add a suggestion entry demo
+    - Consistency improvements
+    - Use native file choosers
+    - Drop 'devel' styling
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Nov 10 09:34:37 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.99.4:
