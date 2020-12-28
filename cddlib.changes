@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec  8 16:22:28 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.94m
+  * Fix and error, where a non-redundant linearity could be
+    considered redundant.
+  * Fix an optimization error in ViaShooting code so that the linear
+    programs are now much smaller.
+  * Fixed memory leaks in the redundancy code.
+
+-------------------------------------------------------------------
 Sun Sep 20 06:38:16 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.94l

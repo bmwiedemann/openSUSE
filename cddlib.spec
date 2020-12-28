@@ -18,7 +18,7 @@
 
 Name:           cddlib
 %define lname   libcdd0
-Version:        0.94l
+Version:        0.94m
 Release:        0
 Summary:        Library for finding vertices of convex polytopes
 License:        GPL-2.0-or-later
