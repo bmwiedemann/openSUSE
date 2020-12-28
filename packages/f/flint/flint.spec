@@ -16,11 +16,9 @@
 #
 
 
-%define version_unconverted 2.6.3
-
 Name:           flint
-%define lname	libflint14
-Version:        2.6.3
+%define lname	libflint15
+Version:        2.7.0
 Release:        0
 Summary:        C library for doing number theory
 License:        LGPL-2.1-or-later
@@ -28,7 +26,7 @@ Group:          Productivity/Scientific/Math
 URL:            http://flintlib.org/
 
 #Git-Clone:     https://github.com/wbhart/flint2
-Source:         %name-%version.tar.xz
+Source:         https://github.com/wbhart/flint2/archive/v%version.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -73,12 +71,12 @@ This subpackage contains the include files and library links for
 developing against the FLINT library.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n flint2-%version
 
 %build
 ./configure --prefix="%_prefix" --disable-static --reentrant --with-ntl \
 	CFLAGS="%optflags" CXXFLAGS="%optflags"
-make %{?_smp_mflags} VERBOSE=1
+%make_build
 
 %install
 %make_install LIBDIR="%_lib"
@@ -89,7 +87,7 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%_libdir/libflint.so.14*
+%_libdir/libflint.so.15*
 %license LICENSE
 
 %files devel

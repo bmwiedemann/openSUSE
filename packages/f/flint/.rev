@@ -80,4 +80,12 @@
     <comment>- Add header file dependencies to flint-devel</comment>
     <requestid>836085</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>289c5d2966a316a5405e2ed837c828a3</srcmd5>
+    <version>2.7.0</version>
+    <time>1609147815</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.7.0</comment>
+    <requestid>858469</requestid>
+  </revision>
 </revisionlist>
