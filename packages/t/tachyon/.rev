@@ -52,4 +52,12 @@
     <comment>- Remove old SLES BuildRequires.</comment>
     <requestid>574286</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>95cbdb60f0793d8181eece1707b8664c</srcmd5>
+    <version>0.99~b6</version>
+    <time>1609147839</time>
+    <user>dimstar_suse</user>
+    <comment>- Specfile modernizations. Remove conjecture from descriptions.</comment>
+    <requestid>858494</requestid>
+  </revision>
 </revisionlist>

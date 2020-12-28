@@ -1,7 +1,7 @@
 #
 # spec file for package tachyon
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,11 +23,10 @@ Release:        0
 Summary:        Parallel ray tracing system
 License:        BSD-3-Clause
 Group:          Productivity/Graphics/Visualization/Raytracers
-Url:            http://jedi.ks.uiuc.edu/~johns/raytracer/
+URL:            http://jedi.ks.uiuc.edu/~johns/raytracer/
 
 Source:         http://jedi.ks.uiuc.edu/~johns/raytracer/files/0.99b6/tachyon-0.99b6.tar.gz
 Patch1:         tachyon-automake.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake >= 1.10
 BuildRequires:  libjpeg-devel
@@ -37,32 +36,24 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(x11)
 
 %description
-A high performance parallel ray tracing system supporting MPI and
-multithreaded implementations.
+A parallel ray tracing system supporting MPI and multithreaded
+implementations.
 
-Tachyon implements all of the basic geometric primitives such as
-triangles, planes, spheres, cylinders, etc. Some of the goals in
-developing Tachyon were to make it fast and for it to parallelize
-well. These are what set it apart from more full-featured programs
-like POV-Ray, Rayshade, and others. Tachyon supports enough features
-to be an excellent alternative to slower programs for demanding
-animation and scientific visualization tasks.
+Tachyon implements the basic geometric primitives such as triangles,
+planes, spheres, cylinders, etc. Tachyon parallelizes unlike POV-Ray
+and Rayshade.
 
 %package -n %lname
 Summary:        Core library for the Tachyon Parallel Ray Tracing System
 Group:          System/Libraries
 
 %description -n %lname
-A high performance parallel ray tracing system supporting MPI and
-multithreaded implementations.
+A parallel ray tracing system supporting MPI and multithreaded
+implementations.
 
-Tachyon implements all of the basic geometric primitives such as
-triangles, planes, spheres, cylinders, etc. Some of the goals in
-developing Tachyon were to make it fast and for it to parallelize
-well. These are what set it apart from more full-featured programs
-like POV-Ray, Rayshade, and others. Tachyon supports enough features
-to be an excellent alternative to slower programs for demanding
-animation and scientific visualization tasks.
+Tachyon implements the basic geometric primitives such as triangles,
+planes, spheres, cylinders, etc. Tachyon parallelizes unlike POV-Ray
+and Rayshade.
 
 %package -n libtachyon-devel
 Summary:        Development files for the Tachyon Ray Tracing System
@@ -70,25 +61,18 @@ Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 
 %description -n libtachyon-devel
-A high performance parallel ray tracing system supporting MPI and
-multithreaded implementations.
+A parallel ray tracing system supporting MPI and multithreaded
+implementations.
 
-Tachyon implements all of the basic geometric primitives such as
-triangles, planes, spheres, cylinders, etc. Some of the goals in
-developing Tachyon were to make it fast and for it to parallelize
-well. These are what set it apart from more full-featured programs
-like POV-Ray, Rayshade, and others. Tachyon supports enough features
-to be an excellent alternative to slower programs for demanding
-animation and scientific visualization tasks.
+This package contains the headers for the Tachyon library.
 
 %prep
-%setup -qn %name
-%patch -P 1 -p1
+%autosetup -p1 -n %name
 
 %build
 autoreconf -fi
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 b="%buildroot"
@@ -100,15 +84,13 @@ done
 rm -f "$b/%_libdir"/*.la
 
 %files
-%defattr(-,root,root)
 %_bindir/tachyon
+%license Copyright
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libtachyon-*.so
 
 %files -n libtachyon-devel
-%defattr(-,root,root)
 %_libdir/libtachyon.so
 %_includedir/tachyon/
 
