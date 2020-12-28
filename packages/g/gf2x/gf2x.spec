@@ -1,7 +1,7 @@
 #
 # spec file for package gf2x
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,10 +23,8 @@ Release:        0
 Summary:        Library for multiplication over the GF(2) field
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            https://gforge.inria.fr/projects/gf2x/
-
-# Caution: the filename does not matter - the ID (38243) determines which source you get.
-Source:         https://gforge.inria.fr/frs/download.php/file/38243/gf2x-1.3.0.tar.gz
+URL:            https://gitlab.inria.fr/gf2x/gf2x
+Source:         https://gitlab.inria.fr/gf2x/gf2x/uploads/c46b1047ba841c20d1225ae73ad6e4cd/gf2x-1.3.0.tar.gz
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkg-config
@@ -67,10 +65,10 @@ autoreconf -fi
 %endif
 	--disable-pclmul \
 	--enable-fft-interface
-make %{?_smp_mflags}
+%make_build
 
 %check
-make check %{?_smp_mflags}
+%make_build check
 
 %install
 %make_install
