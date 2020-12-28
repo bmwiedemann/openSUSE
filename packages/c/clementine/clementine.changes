@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 14 10:49:45 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Clementine only needs taglib newer than 1.11.1 so it contains
+  a fix for a bug which we have patched in SLE/Leap 15 (check
+  CMakeLists.txt and boo#1179817 for more information). So we
+  can allow taglib 1.11.1 too.
+
+-------------------------------------------------------------------
 Wed Sep 30 06:49:13 UTC 2020 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 1.3.99 (tagged as 1.4.0rc1-343-gb49afcc5b)

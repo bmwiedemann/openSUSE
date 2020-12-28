@@ -106,7 +106,7 @@ BuildRequires:  pkgconfig(libsparsehash)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(sqlite3)
-BuildRequires:  pkgconfig(taglib) > 1.11.1
+BuildRequires:  pkgconfig(taglib) >= 1.11.1
 Requires:       libtag1 >= 1.8
 %if %{without qt5}
 Recommends:     sni-qt
