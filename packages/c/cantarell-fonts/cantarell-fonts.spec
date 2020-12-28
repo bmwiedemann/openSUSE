@@ -17,7 +17,7 @@
 
 
 Name:           cantarell-fonts
-Version:        0.201
+Version:        0.301
 Release:        0
 Summary:        Contemporary Humanist Sans Serif Font
 License:        OFL-1.1

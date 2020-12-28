@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Dec 23 13:35:54 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.301:
+  + Oopsie-release: The last one was missing PostScript names for
+    the new glyphs. Only relevant for when extracting text from
+    PDFs where the generator omitted the text stream.
+  + Rounded coordinates of macronbelowcomb.narrow and
+    macroncomb.narrow.case. Leftovers from when they were scaled
+    components.
+  + Internal: Removed stale layers and data, added normalization
+    script to prune unnecessary data. import-glyphs.py also imports
+    PostScript names now.
+
+-------------------------------------------------------------------
+Tue Dec 22 20:45:33 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.300:
+  + Import Greek glyph set designed by Florian Fecher for GSoC
+    2018. No kerning, might need a slight respacing. Imported
+    anyway because someting is better than nothing.
+  + Correct positioning of dotaccentcomb.case.
+  + Correct mark positioning in caroncomb.case.
+  + Correct appearance of ustraightstroke in variable font, the
+    overlap became visible at smaller, autohinted sizes.
+  + Correct bar positioning in Ustraightstroke and
+    ustraightstroke.
+  + Correct anchor positioning in Y.
+  + Internal: Consolidate various anchors in composites into the
+    base outline glyphs, to reduce the chance they get out sync.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Jan  9 23:17:05 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.201:
