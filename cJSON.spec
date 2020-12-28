@@ -1,6 +1,7 @@
 #
 # spec file for package cJSON
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -66,6 +67,7 @@ applications that want to make use of libcjson.
 %postun -n %{libname} -p /sbin/ldconfig
 
 %check
+export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 %ctest
 
 %files -n %{libname}
