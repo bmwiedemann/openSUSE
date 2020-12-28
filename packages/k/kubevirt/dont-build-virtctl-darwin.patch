@@ -12,10 +12,10 @@ Remove the builds for these OSes.
 
 Signed-off-by: Jim Fehlig <jfehlig@suse.com>
 
-Index: kubevirt-0.35.0/hack/build-go.sh
+Index: kubevirt-0.36.0/hack/build-go.sh
 ===================================================================
---- kubevirt-0.35.0.orig/hack/build-go.sh
-+++ kubevirt-0.35.0/hack/build-go.sh
+--- kubevirt-0.36.0.orig/hack/build-go.sh
++++ kubevirt-0.36.0/hack/build-go.sh
 @@ -114,15 +114,6 @@ for arg in $args; do
  
              kubevirt::version::get_version_vars

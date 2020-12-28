@@ -2,10 +2,10 @@ Don't overwrite user-provided GOFLAGS
 
 Signed-off-by: Jim Fehlig <jfehlig@suse.com>
 
-Index: kubevirt-0.35.0/hack/common.sh
+Index: kubevirt-0.36.0/hack/common.sh
 ===================================================================
---- kubevirt-0.35.0.orig/hack/common.sh
-+++ kubevirt-0.35.0/hack/common.sh
+--- kubevirt-0.36.0.orig/hack/common.sh
++++ kubevirt-0.36.0/hack/common.sh
 @@ -4,7 +4,7 @@ if [ -f cluster-up/hack/common.sh ]; the
      source cluster-up/hack/common.sh
  fi

@@ -1,4 +1,252 @@
 -------------------------------------------------------------------
+Mon Dec 21 04:31:30 UTC 2020 - jfehlig@suse.com
+
+- Update to version 0.36.0:
+  * Functional test to verify vmis are migratable after update to from latest KubeVirt official release
+  * update libvirt base container to rhel-av 8.3
+  * dev guide, networking: net_raw cap is not required by virt-launcher
+  * Revert "dev guide, networking: no capabilities are required"
+  * Revert "linux capabilities: remove CAP_NET_ADMIN"
+  * Revert "libvirt, mtu: do not perform any network config on the launcher"
+  * Fail detection and handling when EFI without SB is not available
+  * Add unit test covering GetDomainSpec fallback behavior
+  * Fix failing unit tests for new GetDomain logic
+  * Remove race condition from GetDomain check
+  * Fix timed domain resync
+  * Update ADOPTERS.md
+  * tests, utils: shorten name of random VMs
+  * Move some datavolume tests to the ceph lane
+  * Old kubevirt released don't support CDIs WaitForFirstCustomer
+  * Let virtiofs consider WaitForFirstCustomer setting of CDI
+  * Use Immediate bind on negative PVC Datavolume tests
+  * Enable WaitForCustomer CDI feature gate by default
+  * Generate v1beta1 client for CDI
+  * Don't try to hotplug waitForFirstCustomer PVCs
+  * Fix access credential unit tests
+  * Ensure that our service accounts can always update the VMI status
+  * Update to a libvirt image with a newer seabios.
+  * adjust pci address tests to consider the new virtio-iscsi controller
+  * Remove AfterEach cleanup so we can capture VM/VMI state in overal aftereach cleanup instead of losing it.
+  * Disable complex tests for now.
+  * HotplugVolumes feature gate
+  * Set grace period on attachment pod to 0 to have faster removal of the volumes when not removed by the controller. Added functional test to ensure the VMI goes into failed state when attachment pod is deleted. Added functional test to ensure the VMI is no longer migrateable after a volume is hotplugged.
+  * Added functional tests with block volumes. Fixed functional attachment logic.
+  * Added VMI attach/detach functional tests. Increased timeout on tests. Fixed typo in reason message
+  * Fixed bug in how device names were calculated. Added functional test that adds a bunch of volumes, removes one, add a different one, and expects the device name to be the one just removed. Then adds the removed one back and expects the device name to be a new one. Added unit tests.
+  * Improve error messaging during hotplug subresource add/removew
+  * Fixes issue with VolumeRequests validation on the VM
+  * Fix some issues pointed out in review. Fixed functional test with 5 adds and deletes. Added new functional test to test various adds and deletes.
+  * Addes abilty to watch for libvirt device add/remove events for hotplug volumes
+  * Updated and added functional tests. Added storage directory for storage related functional tests similar to networking. Fixed various issues found by the functional tests.
+  * Attach disk to VM
+  * VM controller unit tests for volume hotplug
+  * Ensure we only add/remove volume operations are only performed if needed
+  * Volume add/remove subresource unit tests
+  * VolumeRequest validation unit tests
+  * Validation logic for VM VolumeRequests
+  * Hotplug VM Functional Tests
+  * Add VM controller logic for handling volume add/remove requests
+  * Add hotplug subresource api endpoints
+  * Implemented virt-handler changes: Bind mount File System PV into virtlauncher pod. Expose block PV in virtlauncher pod. Added volume mounter struct to keep track of mounts. Added unit tests for volume mounter
+  * Change phase/message/reason from hotplug struct to main VolumeStatus struct. Address some review comments
+  * Automatically add virtio-scsi controller to all VMIs.
+  * Updated vmi controller to separate sync and status update to follow KubeVirt guidelines. Updated unit test tests to match and added some extra unit tests for the new status update function.
+  * Updated update-admission webhook to include verifying the structure of disks and volumes as well as call the create admission verifier to ensure nothing else slips through.
+  * Added attachment pod life cycle functions to vmi-controller. Added unit tests for new functions
+  * Attachment POD life-cycle code, including updating VMI status.
+  * Update VMI admission webhook to allow modification of the disks and volumes section of the VMI Spec. This modification is needed to allow for disk hotplugging to happen. Only internal KubeVirt Service Accounts are eligible to modify the spec. Once we have the appropriate sub resources, users can call those to have it modify the spec on their behalf
+  * macvtap, migration, tests: add a test w/ traffic
+  * tests, network: Remove vmi Status ip normalization
+  * tests, sriov: Use cloud-init to set IPv6 by MAC
+  * tests, multus: Use network-data at bridge-cni test
+  * tests, libnet: Add Match feature and expression builder to networkData
+  * Update feature gate setup to new CDI version (now on CDI CR)
+  * Reuse datavolumes already found in listMatchingDataVolumes for increased consistency between sync and updateStatus
+  * Update test_id:5252 to run with WFFC enabled
+  * check PVC if it waits for first consumer
+  * Remove API phase "Provisioning"
+  * Handle the DV in WaitForFirstConsumer phase by starting the "consumer-pod".
+  * Remove sysctl binary dependency
+  * Bump atlassian/bazel-tools
+  * tests, network: Fix race condition GA test
+  * virt-handler, status: Do not include the IP prefix consistently
+  * Allow to run subset of rules for gosec
+  * tests, dual stack: split probes tests to test per IP-Family
+  * bump kubevirtci
+  * Add ADOPTERS
+  * make generate && make deps-update
+  * bump cdi to 1.26.1 (from 1.25.0)
+  * dev guide, networking: no capabilities are required
+  * Increase CDI deployment timeout
+  * expose, tests: fix early shutdown of `nc` TCP connections
+  * Fix misspellings
+  * Fixes race condition in func test
+  * Properly handle failures when starting the qemu agent access credential watcher
+  * Ignore warnings during vmi startup in access cred functests
+  * Update access credential documentation and openapi markers
+  * access credential sync events
+  * Remove authorized_key file merging.
+  * Report access credential status as a condition on the VMI
+  * Revise access credential authorized_key file merging
+  * Provide list of users for ssh auth instead of files
+  * Make the authorized keys files list required for qemu guest agent propagation
+  * Add unit tests to validate secret propagation watching
+  * UserPassword access credential webhook validation and unit tests
+  * unit tests for agent access credential injection
+  * functional test for user/password credentials
+  * Addition of UserPassword access credentials
+  * Functional tests for access credential ssh key propagation
+  * Reload dynamic access credentials based on secrets using fsnotify
+  * Introducing the accessCredentials api for dynamic ssh public key injection
+  * virt-launcher, agent-poller: Start poller with short intervals
+  * virt-launcher, agent-poller: Refactor the Poll method
+  * tests, login: Remove tests/login.go
+  * test, login: Remove LoginToAlpine from login.go
+  * tests, ipv6: Configure VMI IPv6 through console only when needed
+  * test, login: Move loggedin expecter to console package
+  * virt-launcher: Improve libvirtd debug log filters
+  * tests, login: Move login.go to console/login.go
+  * virt-handler, sriov: Add network name in VMI interface status
+  * fix gosec issue of g204: subprocess launched with function call as argument or cmd arguments
+  * Fix for flake CI test
+  * Use the correct emulator prefix for qemu cleanup steps
+  * Fix hardcoded qemu-kvm occurance in a migration test
+  * Remove in some tests the assumption  of hardcoded qemu emulators
+  * Explicitly set virtio-scsi on the scsi controller
+  * WORKSPACE: Update libvirt container
+  * Switch to use anew  global close() function in pkg/util Fix typos and remove extra comments
+  * tests, console: Remove VMIExpecterFactory
+  * Fix double migration during node drain
+  * test, network: Add bridge binding + ga test
+  * networking, tests: also check the MTU of the tap device
+  * tests, libvmi: Remove interface,network config from NewFedora
+  * linux capabilities: remove CAP_NET_ADMIN
+  * libvirt, tap: create the tap device w/ the same user as libvirt
+  * mtu, tuntap: set link MTU when creating the tap device
+  * libvirt, mtu: do not perform any network config on the launcher
+  * net admin: disabling tx checksum offloading on virt-handler
+  * Add a log message if we pick up a new CA bundle
+  * Increase rotate intervall
+  * tests, multus, sriov: Refactor tests
+  * Update bazel files
+  * Switch to use named return errors to allow updating the error from defered function
+  * Fix gosec issue: Deferring unsafe close() When deferring a close() we don't have a chance to check the error returned from the close() call itself. For RW files we treat the error similar to a write() error , for RO files we only log an error message
+  * Mirror PVC struct
+  * Add function test to validate IO mode settings
+  * Set IO to native also for pre-allocated file disks
+  * Switch to use a common function GetImage and remove GetImage from manager.go
+  * Use qemu-img in order to identify sparse files and get image info
+  * Set the IO mode to 'native' when possible for better performance
+  * test, cloudinit: Use "json" annotation instead of "yaml"
+  * tests, multus, sriov: Fix flakiness due to race between ga and test
+  * tests, multus, sriov: Add validatePodKubevirtResourceName
+  * tests, multus, sriov: Add missing error check
+  * tests, multus, sriov: Fix checking for the same network twice
+  * image-upload: wait up to 5 min for PVC and Pod
+  * Remove domain label from kubevirt_vmi_memory_unused_bytes
+  * gosec - fix CWE 326
+  * virt-launcher: drop CAP_NET_RAW from compute container
+  * virt-launcher, dhcp: Avoid using SO_BINDTODEVICE on the dhcp server
+  * agent-poller, test: Extract AsyncAgentStore tests to new file
+  * agent-poller, test: Rename agent poller test
+  * tests, console: Require at least two batchers for the safe expector
+  * tests, console: Introduce SafeExpectBatchWithResponse
+  * tests, console: Replace some NewExpecter usages
+  * tests, console: Change NetBootExpecter to not return an expecter
+  * tests, login: Replace the Alpine login helper
+  * tests, login: Replace the Cirros login helper
+  * tests, login: Check privileged console prompt
+  * tests, login: Replace the Fedora login helper
+  * tests: Use LoginTo* helpers in waitUntilVMIReady
+  * updated the technical description
+  * Add enp0s3 to approvers list
+  * Change file permissions on binary directory
+  * docs: Fix documentation for useEmulation flag
+  * virt-config: Fix tests for KubeVirt CR
+  * virt-config: Drop stopChan
+  * removed the word place-holder
+  * fix gosec sha1 week cryptographic issues
+  * Fix gosec md5 weak cryptographic primitive
+  * Fix shell formatting, fix entrypoint path
+  * Disable Virtio-FS Metadata Cache
+  * Add Igor Bezukh to test approvers
+  * Fix permissions tests for VMs
+  * lock device plugings maps during device controller shutdown
+  * dp: verify that host devices topology is being correctly reported
+  * update the API fields so it be complient with API rules.
+  * testutils: remove unnecessary changes to the config mock
+  * tests: move the soundcard test out of the GPU module
+  * Add a "GPU" passthrough functional test
+  * update unittests to use kubevirt CR and remove remove hostDevConfigMapInformer
+  * remove the hostDevConfigMapInformer, get host devices from KubeVirt CRD
+  * request host devices on vmiPod as well
+  * make sure that permitted host device config is working as expected
+  * add unit tests to veriy host devices assignment
+  * device-manager: clear permitted device list before parsing
+  * device-manager: added mdev tests + misc fixes
+  * device-manager: improve the PCI tests
+  * device-manager: misc post-rebase fixes
+  * add GetInitialized to pci and mdev device plugings
+  * add HostDevices feature gate
+  * device-manager: add static tests for PCI device discovery functions
+  * device-manager: few cosmetic fixes
+  * make sure that vmis can request only permitted gpus
+  * tests: return hostDevConfigMapInformer as part of the NewFakeClusterConfig
+  * device-manager: mock PCI device info getters for tests
+  * Fix device controller static tests to match the new API
+  * Move the check for permanent device plugins to list creation Instead of always adding them to the list and then ignoring   them later
+  * Add a lock to ensure device plugins won't be started/stopped multiple times in parallel Also fix some typos and avoid an active loop
+  * close device plugin channel is a safe manner
+  * introduce a ControlledDevice struct for the device controller to keep dpi stop chan
+  * Fix ignored static DPs, fix typos and remove defer Stop() in Start()
+  * Refactor permanent device plugin code
+  * dynamically start and start device plugings for permitted/banned devices
+  * propagate hostDevConfigMapInformer to device controller
+  * virt-launcher: handle allocated host devices using a single map
+  * reject specs with non-permitted HostDevice and GPU resources
+  * convert HostDevices and GPUs to libvirt hostdev for pci and mdevs
+  * collect PCI and MDEVs made available for assignement by the device plugins
+  * add alias to libvirt hostdev struct
+  * separate ResourceNameToEnvvar to utils
+  * add device plugings for permitted devices which are present on the nodes
+  * add a device plugin for mediated devices
+  * add a device plugin for pci devices
+  * add virt-config to device controller
+  * add a HostDevices api schema
+  * add TopologyInfo to out device plugin api
+  * rename the device manager controller for kvm controller
+  * introduce a new hostDevConfigMapInformer
+  * handle the kubevirt-host-device-plugin-config config map
+  * Add PermittedHostDevices type to support a new kubevirt-host-device-plugin-config configmap
+  * Revert "Merge pull request #4470 from oshoval/fix_sriov"
+  * tests, Fix CDIInsecureRegistryConfig logic
+  * tests: LoggedInCirrosExpecter can return a nil expecter in case of error, with these changes we call Close on the returned expecter if the error is nil.
+  * tests, sriov: Do not mount /sys/devices/ for SRIOV devices
+  * virt-launcher: remove redundant cidr from dhcp server address
+  * tests, sriov: Fix the helper that waits for a vmi to start
+  * tests, Fix SRIOV UpdateCDIConfigMap panic
+  * add unit test
+  * Enhancement #4365 [virt-controller] Remove redundant initcontainer when there is no ContainerDisk defined in VM
+  * Consolidate shell script files into functions
+  * Create main shell scripts to call from the ci-config
+  * Fix comment typos
+  * Add scripts for nightly master deploy
+  * Move code for downloads and test execution into scripts
+  * ensure the virt-handler killer pod has gone
+  * audit the usage of unsafe pointers
+  * Set leader metric after controller is functional Add a unit test for this
+  * Define side effects class on our webhooks
+  * Improved the Technical Overview description
+  * changed: VM has only one VMI
+  * Included a figure to illustrate the components architecture
+  * Included a little bit more details in the virt-launcher description
+  * Included a little bit more details in the virt-handler description
+  * Included a little bit more details in the virt-controller description
+  * Make the name of components bold
+  * Improved the Technical Overview description
+  * Fixed typo
+
+-------------------------------------------------------------------
 Fri Nov 13 23:32:52 UTC 2020 - James Fehlig <jfehlig@suse.com>
 
 - Fix -buildmode=pie
