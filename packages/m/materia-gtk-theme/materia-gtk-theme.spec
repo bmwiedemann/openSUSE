@@ -18,14 +18,15 @@
 
 %define         _name    materia-theme
 Name:           materia-gtk-theme
-Version:        20200320
+Version:        20200916
 Release:        0
 Summary:        A Material Design theme for GNOME/GTK+ based desktop environments
 License:        GPL-2.0-only
 URL:            https://github.com/nana-4/materia-theme
 Source:         https://github.com/nana-4/%{_name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  bc
 BuildRequires:  fdupes
+BuildRequires:  meson
+BuildRequires:  sassc
 Requires:       gnome-themes-extras
 Recommends:     gtk2-engine-murrine
 BuildArch:      noarch
@@ -38,9 +39,11 @@ It supports GTK+ 3, GTK+ 2, GNOME Shell, Budgie, Cinnamon, MATE, Unity, LightDM,
 %autosetup -n %{_name}-%{version}
 
 %build
+%meson
+%meson_build
 
 %install
-./install.sh --dest %{buildroot}%{_datadir}/themes
+%meson_install
 
 %fdupes %{buildroot}
 

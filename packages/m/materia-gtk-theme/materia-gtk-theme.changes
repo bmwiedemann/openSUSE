@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Dec 27 22:17:40 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 20200916
+  * Add Meson build system
+  * Drop pre-generated CSS files
+  * Add sassc dependency
+  * Drop bc dependency
+  * Improve source file structure
+  * gtk: Add initial support for libhandy
+  * gnome-shell: Add support for version 3.38
+  * gnome-shell: Update calendar style to match Material Design guideline
+  * metacity/unity/xfwm: Update title bars to match the last GTK changes
+  * chrome theme: Improve and simplify
+  * Other various improvements and fixes
+
+-------------------------------------------------------------------
 Fri May 29 19:00:15 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 20200320
