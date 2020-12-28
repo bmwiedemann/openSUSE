@@ -25,6 +25,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/bebraw/pypandoc
 Source:         https://pypi.org/packages/source/p/pypandoc/pypandoc-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-test.patch -- ATX-style headings are default for
+# markdown, see https://pandoc.org/MANUAL#option--markdown-headings
+Patch1:         fix-test.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -46,6 +49,7 @@ pypandoc provides a thin wrapper for pandoc, a universal document converter.
 
 %prep
 %setup -q -n pypandoc-%{version}
+%autopatch -p1
 # Disable test that requires internet
 sed -i 's/\(test_basic_conversion_from_http_url\)/_\1/' tests.py
 

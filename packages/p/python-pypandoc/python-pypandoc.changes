@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 27 03:51:58 UTC 2020 - Jason Craig <os-dev@jacraig.com>
+
+- Add fix-test.patch to fix test: according to Pandoc documentation,
+  ATX-style headings are the default. See
+  https://pandoc.org/MANUAL#option--markdown-headings
+
+-------------------------------------------------------------------
 Sun Nov 22 13:21:43 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Replace ghc-pandoc-citeproc, removed as obsolete, with ghc-citeproc

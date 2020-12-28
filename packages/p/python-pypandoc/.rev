@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>849970</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a06dc70e468b3bb37c0efddc5d505dd9</srcmd5>
+    <version>1.5</version>
+    <time>1609147847</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-test.patch to fix test: according to Pandoc documentation,
+  ATX-style headings are the default. See
+  https://pandoc.org/MANUAL#option--markdown-headings
+</comment>
+    <requestid>858910</requestid>
+  </revision>
 </revisionlist>

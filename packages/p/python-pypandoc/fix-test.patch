@@ -1,0 +1,21 @@
+diff -ur pypandoc-1.5/tests.py pypandoc-1.5b/tests.py
+--- pypandoc-1.5/tests.py	2020-04-12 18:41:24.000000000 -0600
++++ pypandoc-1.5b/tests.py	2020-12-26 20:43:28.293871252 -0700
+@@ -293,7 +293,7 @@
+ 
+     def test_unicode_input(self):
+         # make sure that pandoc always returns unicode and does not mishandle it
+-        expected = u'üäöîôû{0}======{0}{0}'.format(os.linesep)
++        expected = u'# üäöîôû{0}{0}'.format(os.linesep)
+         written = pypandoc.convert_text(u'<h1>üäöîôû</h1>', 'md', format='html')
+         self.assertTrue(isinstance(written, unicode_type))
+         self.assertEqualExceptForNewlineEnd(expected, written)
+@@ -303,7 +303,7 @@
+         self.assertTrue(isinstance(written, unicode_type))
+ 
+         # Only use german umlauts in th next test, as iso-8859-15 covers that
+-        expected = u'üäö€{0}===={0}{0}'.format(os.linesep)
++        expected = u'# üäö€{0}{0}'.format(os.linesep)
+         bytes = u'<h1>üäö€</h1>'.encode("iso-8859-15")
+ 
+         # Without encoding, this fails as we expect utf-8 per default
