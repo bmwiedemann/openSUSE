@@ -7,4 +7,20 @@
     <comment>Add polybar, a status bar generating program typically used with X11 based window managers.</comment>
     <requestid>839254</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5ce906f041220b5e20236aca1d326b04</srcmd5>
+    <version>3.5.2</version>
+    <time>1609147857</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix previous changelog entry
+- Re-fetch correct sources
+
+- Bump to version 3.5.2
+- Removed 0%{?suse_version}
+- Removed deprecated packages and add new one
+- Removed i3-gaps, add offical package i3
+- Add new patch to compile with old version of python3-sphinx (openSUSE 15.1 &amp; openSUSE 15.2)  
+  * sphinx.patch</comment>
+    <requestid>858969</requestid>
+  </revision>
 </revisionlist>

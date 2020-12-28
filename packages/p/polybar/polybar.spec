@@ -17,24 +17,26 @@
 
 
 Name:           polybar
-Version:        3.4.3
+Version:        3.5.2
 Release:        0
 Summary:        A fast and easy-to-use status bar
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/polybar/polybar
-Source:         https://github.com/polybar/polybar/releases/download/%{version}/%{name}-%{version}.tar
+Source:         https://github.com/polybar/polybar/releases/download/%{version}/%{name}-%{version}.tar.gz
+Patch0:         sphinx.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.1
+BuildRequires:  i3
+BuildRequires:  i3-devel
+BuildRequires:  libnl3-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-xml
 BuildRequires:  xcb-util-image-devel
 BuildRequires:  xcb-util-wm-devel
 BuildRequires:  xcb-util-xrm-devel
-# optional dependency
 BuildRequires:  pkgconfig(alsa)
-# main dependency
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(jsoncpp)
 BuildRequires:  pkgconfig(libcurl)
@@ -44,22 +46,13 @@ BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-proto)
 BuildRequires:  pkgconfig(xcb-util)
 DocDir:         %{_datadir}/doc
-%if 0%{?suse_version} <= 1315
-BuildRequires:  i3-devel
-%else
-BuildRequires:  i3-gaps-devel
-%endif
-%if 0%{?suse_version}
-BuildRequires:  libiw-devel
-%else
-BuildRequires:  wireless-tools-devel
-%endif
 
 %description
 A fast and easy-to-use status bar for tilling WM
 
 %prep
-%setup -n %{name}
+%setup -q
+%patch0
 
 %build
 %cmake
@@ -77,6 +70,7 @@ rm -rf %{buildroot}/%{_docdir}/%{name}/.buildinfo
 %{_bindir}/%{name}
 %{_bindir}/%{name}-msg
 %{_mandir}/man1/%{name}.1%?ext_man
+%{_mandir}/man5/%{name}.5%?ext_man
 %{_docdir}/%{name}/*
 %{_datadir}/bash-completion/completions/%{name}
 %{_datadir}/zsh/site-functions/_%{name}

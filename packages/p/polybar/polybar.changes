@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec 28 08:33:45 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix previous changelog entry
+- Re-fetch correct sources
+
+-------------------------------------------------------------------
+Tue Dec 22 10:11:01 UTC 2020 - Mateusz Mielczarek <mateusz.mielczarek2@gmail.com>
+
+- Bump to version 3.5.2
+- Removed 0%{?suse_version}
+- Removed deprecated packages and add new one
+- Removed i3-gaps, add offical package i3
+- Add new patch to compile with old version of python3-sphinx (openSUSE 15.1 & openSUSE 15.2)  
+  * sphinx.patch
+
+-------------------------------------------------------------------
 Thu Aug 20 18:42:49 UTC 2020 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Update to version 3.4.3
