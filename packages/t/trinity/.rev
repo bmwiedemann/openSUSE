@@ -645,4 +645,12 @@
 - Small package cleanup</comment>
     <requestid>783355</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>0fba09681b9ba2be4e66651e100046ae</srcmd5>
+    <version>1.9+git.20200228</version>
+    <time>1609160153</time>
+    <user>dimstar_suse</user>
+    <comment>- Update project url</comment>
+    <requestid>858971</requestid>
+  </revision>
 </revisionlist>

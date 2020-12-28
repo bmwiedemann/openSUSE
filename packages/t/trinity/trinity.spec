@@ -21,7 +21,7 @@ Version:        1.9+git.20200228
 Release:        0
 Summary:        A Linux System call fuzz tester
 License:        GPL-2.0-only
-URL:            http://codemonkey.org.uk/projects/trinity/
+URL:            https://github.com/kernelslacker/trinity
 Source0:        %{name}-%{version}.tar.gz
 
 %description
