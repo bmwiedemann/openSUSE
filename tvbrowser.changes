@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sun Dec 27 10:09:16 UTC 2020 - wbauer@tmo.at
+
+- update to version 4.2.2
+  * ProgramList contains unneeded gaps
+  * On air status of program not refreshed under certain conditions
+  * Add free text filter to plugin settings tab
+  * Add option to prefilter showing of Reminders
+  * Add option to pause reminder for time range
+  * Already removed reminders reappear after data update
+  * Add history to settings dialog
+  * Allow highlighting with gradient colors
+  * Add auto update option only for prime time
+  * TV-Browser doesn't start with _JAVA_OPTIONS set
+  * Allow easy exclusion of programs from Favorite based on
+    duration
+  * Crash under macOS
+  * flexibilize parameter handler
+  * Possible NPE if filter files are broken
+  * Add default filter for live programs
+  * Add free text filter to plugin download dialog
+  * Show exclusions to user when newly created favorite doesn't
+    find program it was based on
+  * Add option to select/handle type of send programs to plugins
+  * Provide menu to delete all reminders with certain conditions
+  * Allow plugins to inject ActionMenu into context menu for
+    programs requested by plugin
+  * Ask user periodically for deletion of old versions settings files
+  * Ask user for import directory if more than one was recently
+    used
+  * Plugins cannot delete own filters
+  * Allow more highlighting colors
+  * High CPU usage under certain conditions
+  * Settings export goes to wrong directory with Linux OS
+- Update NewsPlugin to 3.1.7.0
+
+-------------------------------------------------------------------
+Tue Dec 15 18:01:41 UTC 2020 - wbauer@tmo.at
+
+- update to version 4.2.1
+  * Make sure plugins are informed about TV-Browser started event
+    before starting auto update
+  * Registry values can not be set under Windows
+  * Allow copying of removed/added channels to clipboard
+  * Tray popup at wrong location on scaled displays
+  * Allow plugins to get context menu item of single plugin
+  * multiple mark priority settings only return mark priority of
+    first item
+  * follow XDG Base Directory Specification on Linux systems
+  * TV-Browser is not starting up in some cases
+  * Program count missing in plugin tree
+
+-------------------------------------------------------------------
 Mon Sep 30 10:33:38 UTC 2019 - munix9@googlemail.com
 
 - update to version 4.2
