@@ -94,4 +94,12 @@
 - Split command-line programs to new package cddlib-tools.</comment>
     <requestid>835656</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>475f89be6233e3436d5583cd7d0674ac</srcmd5>
+    <version>0.94m</version>
+    <time>1609147821</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.94m</comment>
+    <requestid>858479</requestid>
+  </revision>
 </revisionlist>
