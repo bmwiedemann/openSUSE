@@ -1,0 +1,28 @@
+--- totem-3.38.0-orig/src/backend/bacon-video-widget.c	2020-09-10 11:42:05.811370000 +0200
++++ totem-3.38.0/src/backend/bacon-video-widget.c	2020-12-25 01:38:57.698239184 +0100
+@@ -1055,25 +1055,11 @@
+ }
+ 
+ static void
+-disable_vaapi (void)
+-{
+-  GstRegistry *registry;
+-  GstPlugin *plugin;
+-
+-  registry = gst_registry_get ();
+-  plugin = gst_registry_find_plugin (registry, "vaapi");
+-  if (!plugin)
+-    return;
+-  gst_registry_remove_plugin (registry, plugin);
+-}
+-
+-static void
+ bacon_video_widget_class_init (BaconVideoWidgetClass * klass)
+ {
+   GObjectClass *object_class;
+   GtkWidgetClass *widget_class;
+ 
+-  disable_vaapi ();
+   clutter_gst_init (NULL, NULL);
+ 
+   object_class = (GObjectClass *) klass;

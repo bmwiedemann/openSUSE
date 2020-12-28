@@ -25,6 +25,9 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            https://wiki.gnome.org/Apps/Videos
 Source0:        https://download.gnome.org/sources/totem/3.38/%{name}-%{version}.tar.xz
+# PATCH-FEATURE-OPENSUSE totem-enable-vaapi.patch -- Enable vaapi support again.
+Patch0:         totem-enable-vaapi.patch
+
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
