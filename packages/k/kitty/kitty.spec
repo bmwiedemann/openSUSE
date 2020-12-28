@@ -17,7 +17,7 @@
 
 
 Name:           kitty
-Version:        0.19.2
+Version:        0.19.3
 Release:        0
 Summary:        A GPU-based terminal emulator
 License:        GPL-3.0-only
