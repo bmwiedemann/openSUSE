@@ -15,10 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define shlib libfastjetcontribfragile
 
+%define shlib libfastjetcontribfragile
 Name:           fastjet-contrib
-Version:        1.042
+Version:        1.045
 Release:        0
 Summary:        A library of 3rd-party add-ons to FastJet
 License:        GPL-2.0-only
@@ -57,7 +57,7 @@ This package provides the static libraries for fastjet-contrib to link against.
 # %%configure does not work as a few of the args passed to it isn't recognised by the configure script
 ./configure --fastjet-config=%{_bindir}/fastjet-config --prefix=%{buildroot}%{_prefix}
 
-make %{?_smp_mflags} fragile-shared
+%make_build fragile-shared
 
 %install
 %make_install

@@ -7,4 +7,12 @@
     <comment>New package: A library of 3rd-party add-ons to FastJet, needed for the new Rivet update</comment>
     <requestid>764142</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3f8f784f1b85d410eeb0b1910fa4eba9</srcmd5>
+    <version>1.045</version>
+    <time>1609147813</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858400</requestid>
+  </revision>
 </revisionlist>
