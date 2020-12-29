@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 28 18:44:32 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20200708
+	* Changes to set cache value function
+	* Added clear functionality
+- add COPYING.LESSER to the %license line
+
+-------------------------------------------------------------------
 Mon Apr 15 19:34:08 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to v0~20181011

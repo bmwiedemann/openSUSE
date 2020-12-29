@@ -1,7 +1,7 @@
 #
 # spec file for package libfcache
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 Name:           libfcache
 %define lname	libfcache1
-%define timestamp 20181011
+%define timestamp 20200708
 Version:        0~%{timestamp}
 Release:        0
 Summary:        Library to provide generic file data cache functions
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
-Url:            https://github.com/libyal/libfcache/wiki
+URL:            https://github.com/libyal/libfcache/wiki
 Source:         https://github.com/libyal/libfcache/releases/download/%timestamp/%{name}-alpha-%{timestamp}.tar.gz
 BuildRequires:  pkg-config
 BuildRequires:  python-devel
@@ -72,13 +72,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n %{lname}
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog
-%license COPYING 
+%license COPYING COPYING.LESSER
 %{_libdir}/libfcache.so.*
 
 %files devel
 %defattr(-,root,root)
 %doc AUTHORS README ChangeLog
-%license COPYING 
+%license COPYING COPYING.LESSER
 %{_includedir}/libfcache.h
 %{_includedir}/libfcache/
 %{_libdir}/libfcache.so
