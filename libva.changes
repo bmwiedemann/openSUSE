@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Dec 16 00:26:25 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
+
+- update to 2.10.0:
+  * add: Pass offset and size of pred_weight_table
+  * add: add vaCopy interface to copy surface and buffer
+  * add: add definition for different execution
+  * add: New parameters for transport controlled BRC were added
+  * add: add FreeBSD support
+  * add: add a bufer type to adjust context priority dynamically
+  * fix: correct the api version in meson.build
+  * fix: remove deprecated variable from va_trace.c
+  * fix: Use va_deprecated for the deprecate variable
+  * fix: Mark chroma_sample_position as deprecated
+  * doc: va_dec_av1: clarifies CDEF syntax element packing
+  * doc: [AV1] Update documented ranges for loop filter and quantization params.
+  * doc: Update va.h for multi-threaded usages
+  * trace: va/va_trace: ignore system gettid() on Linux
+    
+-------------------------------------------------------------------
 Thu Nov 26 13:35:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.9.1:
