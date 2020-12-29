@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 28 00:32:02 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
+
+- update to 20.12:
+  Added an x64 configuration to visualc
+  CMake project now generates a pkgconfig file
+  Fix compatibility with CMake 2.8.12
+  GStreamer builds now explicitly check for >=1.9.2
+  Initialize the subformat for GetDeviceFormat, fixes a ton of Ubisoft games
+  Don't assert when FAudio_Initialize Flags includes FAUDIO_DEBUG_ENGINE
+  
+-------------------------------------------------------------------
 Wed Oct  7 22:53:36 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
 
 - update to 20.10:
