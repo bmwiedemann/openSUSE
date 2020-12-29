@@ -18,14 +18,15 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-# disable lto for ppc64/ppc64le
-# as not enough resources today in OBS
-%ifarch ppc64 ppc64le
+# disable lto for some archs
+%ifarch aarch64 %arm ppc64 ppc64le
 %define _lto_cflags %{nil}
 %endif
 
 %if %{__isa_bits} == 64
+%ifnarch aarch64
 %define is_64bit 1
+%endif
 %endif
 
 %if "%{flavor}" == ""
