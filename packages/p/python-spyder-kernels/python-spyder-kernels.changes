@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Sat Dec 19 22:43:01 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 1.10.1
+  Issues Closed
+  * Issue 269 - Mark Windows intaller pkgs path as a library to
+    prevent reloading modules (PR 270 by @dalthviz)
+  * Issue 256 - ImportError: cannot import name
+    'leading_empty_lines' (PR 264 by @ccordoba12)
+  Pull Requests Merged
+  * PR 270 - PR: Treat 'pkgs' path as a library, by @dalthviz (269)
+  * PR 267 - PR: Remove handlers that require direct code
+    execution, by @ccordoba12
+  * PR 266 - PR: Add exception for quit and exit in SpyderPdb, 
+    by @impact27
+  * PR 265 - PR: Add space after dot in a message, by @impact27
+  * PR 264 - PR: Add explicit requirement on IPython and require
+    version 7.6.0+, by @ccordoba12 (256)
+  * PR 263 - PR: Add extra validation to is_module_installed, by
+    @ccordoba12
+  * PR 262 - PR: Avoid infinite hang when quitting external 
+    kernels, by @impact27
+  * PR 261 - PR: Fix get_cwd permission errors, by @steff456
+  * PR 260 - PR: Fix Github actions, by @ccordoba12
+- Remove unused mock dependency
+ 
+-------------------------------------------------------------------
+Thu Nov 12 22:04:31 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 1.10.0
+  New features
+  * Use '!' to prefix Pdb commands.
+  * Show length of all iterables.
+  Issues Closed
+  * Issue 247 - Remove from warning that future versions of 
+    Spyder will give an error when using non-Python syntax 
+    (PR 243 by @impact27)
+  * Issue 245 - Display size of string in variable editor
+  Pull Requests Merged
+  * PR 255 - PR: Fix warning for '!' Pdb option, by @impact27
+
+  * PR 253 - PR: Extend sys.path with paths that come from 
+    Spyder, by @ccordoba12
+  * PR 252 - PR: Use frame locals when evaluating code in 
+    Pdb, by @impact27
+  * PR 251 - PR: Catch errors when trying to get the len of 
+    an object, by @impact27
+  * PR 250 - PR: Show size of objects correctly, if they 
+    implement len(), by @skjerns
+  * PR 246 - PR: Allow sorting with custom sorting key, by 
+    @skjerns
+  * PR 244 - PR: Set multiprocessing ORIGINAL_DIR at startup, 
+    by @impact27 (13632)
+  * PR 243 - PR: Allow leading indents in cells, by 
+    @impact27 (247)
+  * PR 242 - PR: Display error if required, by @impact27
+  * PR 240 - PR: Hide runcell and runfile frames using a new
+    IPython feature, by @impact27
+  * PR 239 - PR: Improve Pdb input handling, by @impact27
+  * PR 232 - PR: Make do_where go to the current file, by @impact27
+  * PR 223 - PR: Add methods to handle IPython console config on
+    the fly, by @dalthviz
+  * PR 214 - PR: Use '!' for Pdb commands, by @impact27
+
+-------------------------------------------------------------------
 Wed Sep  2 13:42:33 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 1.9.4

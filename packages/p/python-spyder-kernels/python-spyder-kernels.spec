@@ -19,37 +19,42 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-spyder-kernels
-Version:        1.9.4
+Version:        1.10.1
 Release:        0
 Summary:        Jupyter kernels for Spyder's console
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/spyder-ide/spyder-kernels
 # PyPI tarballs do not include the tests: https://github.com/spyder-ide/spyder-kernels/issues/66
-Source:         https://github.com/spyder-ide/spyder-kernels/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
+# despite listed upstream (introduced by us in gh#spyder-ide/spyder-kernels#119) mock is not used anymore
+BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module cloudpickle}
 BuildRequires:  %{python_module dask-distributed}
 BuildRequires:  %{python_module flaky}
-BuildRequires:  %{python_module ipykernel >= 4.8.2}
-BuildRequires:  %{python_module jupyter_client >= 5.2.3}
+BuildRequires:  %{python_module ipykernel >= 5.1.3}
+BuildRequires:  %{python_module ipython >= 7.6.0}
+BuildRequires:  %{python_module jupyter_client >= 5.3.4}
 BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyzmq >= 17}
 BuildRequires:  %{python_module scipy}
-BuildRequires:  %{python_module wurlitzer}
+BuildRequires:  %{python_module wurlitzer >= 1.0.3}
 BuildRequires:  %{python_module xarray}
 # /SECTION
 Requires:       python-cloudpickle
-Requires:       python-ipykernel >= 4.8.2
-Requires:       python-jupyter_client >= 5.2.3
+Requires:       python-ipykernel >= 5.1.3
+Requires:       python-ipython >= 7.6.0
+Requires:       python-jupyter_client >= 5.3.4
 Requires:       python-pyzmq >= 17
-Requires:       python-wurlitzer
+Requires:       python-wurlitzer >= 1.0.3
 BuildArch:      noarch
 
 %python_subpackages
@@ -75,11 +80,12 @@ all inside the IDE.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -v
+%pytest
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/spyder_kernels
+%{python_sitelib}/spyder_kernels-%{version}*-info
 
 %changelog
