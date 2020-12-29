@@ -1,25 +1,28 @@
+From f6ab670d750fd1cb2a48e2c4cd829c6b532e7952 Mon Sep 17 00:00:00 2001
 From: Javier Llorente <javier@opensuse.org>
-Subject: Fix application output
-References: N/A
+Date: Tue, 8 Dec 2020 14:08:11 +0100
+Subject: [PATCH] Fix application output
 
 There is no application output on Qt Creator because logging goes to journald.
 Workaround: set QT_LOGGING_TO_CONSOLE and QT_FORCE_STDERR_LOGGING
+---
+ src/app/main.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
 
-Index: qt-creator-opensource-src-4.8.0-rc1/src/app/main.cpp
-===================================================================
---- qt-creator-opensource-src-4.8.0-rc1.orig/src/app/main.cpp
-+++ qt-creator-opensource-src-4.8.0-rc1/src/app/main.cpp
-@@ -412,6 +412,13 @@ int main(int argc, char **argv)
+diff --git a/src/app/main.cpp b/src/app/main.cpp
+index d18502e1..1406332f 100644
+--- a/src/app/main.cpp
++++ b/src/app/main.cpp
+@@ -490,6 +490,9 @@ int main(int argc, char **argv)
          QApplication::setAttribute(Qt::AA_DontUseNativeMenuBar);
      }
  
 +    // Force Qt to log to stderr
 +    qputenv("QT_FORCE_STDERR_LOGGING", "1");
-+#if QT_VERSION < QT_VERSION_CHECK(5, 11, 0)
-+    // Qt < 5.11 needs this, but Qt >= 5.11.0 prints a warning if set.
-+    qputenv("QT_LOGGING_TO_CONSOLE", "1");
-+#endif
 +
      Utils::TemporaryDirectory::setMasterTemporaryDirectory(QDir::tempPath() + "/" + Core::Constants::IDE_CASED_ID + "-XXXXXX");
  
  #ifdef Q_OS_MAC
+-- 
+2.29.2
+

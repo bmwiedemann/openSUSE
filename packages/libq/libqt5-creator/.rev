@@ -813,4 +813,12 @@ No hurry to checkin ;-) but it is needed for QtLocation</comment>
     <comment>Update to 4.13.3 (forwarded request 850200 from cgiboudeaux)</comment>
     <requestid>850202</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>5615ab81886877659ffdc11c249254de</srcmd5>
+    <version>4.14.0</version>
+    <time>1609253341</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>857144</requestid>
+  </revision>
 </revisionlist>

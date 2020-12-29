@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Dec 17 14:24:27 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 4.14.0:
+  https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/dist/changes-4.14.0.md
+- Enable the new CLANGTOOLING_LINK_CLANG_DYLIB option.
+- Use %_libexecdir when possible
+- Rebase patches:
+  * Update fix-application-output.path
+  * 0001-Don-t-rely-on-clang-include-and-binary-copies.patch
+  * 0001-Disable-some-plugins.patch
+- Drop 0001-Fix-build-with-openSUSE-clang9-package.patch. no
+  longer needed.
+- Add upstream patches:
+  * 0001-cmake-build-Don-t-install-highlighting-files-when-us.patch
+  * 0001-Fix-compilation-of-ClangFormat-plugin-against-LLVM-w.patch
+- Add patch:
+  * 0001-Fix-a-link-error-when-building-the-qmldesigner-plugi.patch
+
+-------------------------------------------------------------------
 Mon Nov 23 12:04:36 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 4.13.3

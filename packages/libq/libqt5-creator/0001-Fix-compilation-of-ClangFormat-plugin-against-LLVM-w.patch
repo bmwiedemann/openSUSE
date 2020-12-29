@@ -1,0 +1,47 @@
+From f74b31759867e8872bf151ac7dc8160ba31eeac1 Mon Sep 17 00:00:00 2001
+From: Eike Ziller <eike.ziller@qt.io>
+Date: Fri, 18 Dec 2020 14:38:34 +0100
+Subject: [PATCH] Fix compilation of ClangFormat plugin against LLVM with
+ clang-cpp
+
+The ClangFormat plugin needs to link against clang-cpp in that
+case as well.
+
+Fixes: QTCREATORBUG-25138
+Change-Id: I84b1784b291d8944a9dee66ec14db32ad72ff8b5
+Reviewed-by: Cristian Adam <cristian.adam@qt.io>
+---
+ cmake/FindClang.cmake                  | 2 ++
+ src/plugins/clangformat/CMakeLists.txt | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/cmake/FindClang.cmake b/cmake/FindClang.cmake
+index b515820be1..c745174ca1 100644
+--- a/cmake/FindClang.cmake
++++ b/cmake/FindClang.cmake
+@@ -9,8 +9,10 @@ option(CLANGTOOLING_LINK_CLANG_DYLIB "Force linking of Clang tooling against cla
+ 
+ if (TARGET clangTooling AND NOT CLANGTOOLING_LINK_CLANG_DYLIB)
+   set(CLANG_TOOLING_LIBS libclang clangTooling clangQuery clangIndex)
++  set(CLANG_FORMAT_LIB clangFormat)
+ elseif (TARGET clang-cpp)
+   set(CLANG_TOOLING_LIBS libclang clang-cpp)
++  set(CLANG_FORMAT_LIB clang-cpp)
+ endif()
+ 
+ 
+diff --git a/src/plugins/clangformat/CMakeLists.txt b/src/plugins/clangformat/CMakeLists.txt
+index 8359306426..641343239c 100644
+--- a/src/plugins/clangformat/CMakeLists.txt
++++ b/src/plugins/clangformat/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ add_qtc_plugin(ClangFormat
+   CONDITION TARGET libclang AND LLVM_PACKAGE_VERSION VERSION_GREATER_EQUAL 10.0.0 AND QTC_CLANG_BUILDMODE_MATCH
+-  DEPENDS Utils Qt5::Widgets clangFormat
++  DEPENDS Utils Qt5::Widgets ${CLANG_FORMAT_LIB}
+   INCLUDES "${CLANG_INCLUDE_DIRS}"
+   PLUGIN_DEPENDS Core TextEditor CppEditor CppTools ProjectExplorer
+   SOURCES
+-- 
+2.29.2
+

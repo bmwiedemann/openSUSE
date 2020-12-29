@@ -1,4 +1,4 @@
-From 9c60785e8aa4d38174a5bbdb071d40658b4b6027 Mon Sep 17 00:00:00 2001
+From 17ccc945fbdff51a7e9415fef0c1a2bf509319e1 Mon Sep 17 00:00:00 2001
 From: Christophe Giboudeaux <christophe@krop.fr>
 Date: Wed, 15 Jul 2020 10:09:31 +0200
 Subject: [PATCH] Disable some plugins
@@ -20,7 +20,7 @@ either QtWebEngine or QTextBrowser.
  2 files changed, 11 deletions(-)
 
 diff --git a/src/plugins/CMakeLists.txt b/src/plugins/CMakeLists.txt
-index 70f8f420..300b1bc9 100644
+index 871f999b..e6d82385 100644
 --- a/src/plugins/CMakeLists.txt
 +++ b/src/plugins/CMakeLists.txt
 @@ -7,7 +7,6 @@ add_subdirectory(serialterminal)
@@ -38,12 +38,12 @@ index 70f8f420..300b1bc9 100644
 -add_subdirectory(clangformat)
  add_subdirectory(clangrefactoring)
  add_subdirectory(clearcase)
- add_subdirectory(cmakeprojectmanager)
+ add_subdirectory(cvs)
 diff --git a/src/plugins/help/CMakeLists.txt b/src/plugins/help/CMakeLists.txt
-index 4d5fd232..64f8bd4e 100644
+index 2063293d..4f836c93 100644
 --- a/src/plugins/help/CMakeLists.txt
 +++ b/src/plugins/help/CMakeLists.txt
-@@ -52,15 +52,6 @@ extend_qtc_plugin(Help
+@@ -60,15 +60,6 @@ extend_qtc_plugin(Help
      webenginehelpviewer.h
  )
  
@@ -60,5 +60,5 @@ index 4d5fd232..64f8bd4e 100644
    CONDITION TARGET litehtml AND TARGET qlitehtml
    FEATURE_INFO "litehtml help viewer"
 -- 
-2.27.0
+2.29.2
 

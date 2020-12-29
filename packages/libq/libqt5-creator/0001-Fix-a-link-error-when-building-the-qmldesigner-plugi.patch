@@ -1,0 +1,27 @@
+From 2282035674bdf85bd5f8362f4723196772f377d9 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Sat, 19 Dec 2020 11:13:25 +0100
+Subject: [PATCH] Fix a link error when building the qmldesigner plugin
+
+Fixes: QTCREATORBUG-25152
+Pick-to: 4.14
+---
+ src/plugins/qmldesigner/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/plugins/qmldesigner/CMakeLists.txt b/src/plugins/qmldesigner/CMakeLists.txt
+index 89ddbed9d9..ac18149f32 100644
+--- a/src/plugins/qmldesigner/CMakeLists.txt
++++ b/src/plugins/qmldesigner/CMakeLists.txt
+@@ -6,7 +6,7 @@ endif()
+ add_qtc_plugin(QmlDesigner
+   DEPENDS
+     QmlJS LanguageUtils QmlEditorWidgets AdvancedDockingSystem
+-    Qt5::QuickWidgets Qt5::CorePrivate Sqlite
++    Qt5::QuickWidgets Qt5::CorePrivate Sqlite Threads::Threads
+   DEFINES
+     DESIGNER_CORE_LIBRARY
+     IDE_LIBRARY_BASENAME=\"${IDE_LIBRARY_BASE_PATH}\"
+-- 
+2.29.2
+
