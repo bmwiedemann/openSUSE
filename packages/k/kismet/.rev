@@ -457,4 +457,15 @@ better packaging for distros, and various other quirks.
     <comment></comment>
     <requestid>840196</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>cda533219782e5fce71a3dffacf5a972</srcmd5>
+    <version>2020_12_R3</version>
+    <time>1609253309</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2020-12-R3
+  * A bugfix release which solves a possible infinite loop until
+    crash due to how GCC handles C++ templates differently than
+    Clang. (forwarded request 853617 from mnhauke)</comment>
+    <requestid>853621</requestid>
+  </revision>
 </revisionlist>

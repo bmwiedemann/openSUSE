@@ -20,9 +20,9 @@
 %bcond_with ubertooth
 %endif
 
-%define realver 2020-09-R4
+%define realver 2020-12-R3
 Name:           kismet
-Version:        2020_09_R4
+Version:        2020_12_R3
 Release:        0
 Summary:        An 802.11 Wireless Network Sniffer
 License:        GPL-2.0-or-later
@@ -41,12 +41,12 @@ BuildRequires:  pkgconfig
 BuildRequires:  protobuf-c
 BuildRequires:  python3
 BuildRequires:  python3-setuptools
-BuildRequires:  pkgconfig(libmicrohttpd)
 BuildRequires:  pkgconfig(libnl-3.0) >= 3.0
 BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(libprotobuf-c)
 BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(libwebsockets) >= 3.2.0
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(systemd)

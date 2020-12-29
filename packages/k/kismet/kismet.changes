@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Dec  7 15:27:47 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2020-12-R3
+  * A bugfix release which solves a possible infinite loop until
+    crash due to how GCC handles C++ templates differently than
+    Clang.
+
+-------------------------------------------------------------------
+Sat Dec  5 10:47:42 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2020-12-R2
+  * Fix improper assignment of system endpoints to the logon
+    role instead of read-only
+  * Fix broken implementation of legacy TCP remote capture on
+    python-based sources
+
+-------------------------------------------------------------------
+Fri Dec  4 17:40:38 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2020-12-R1
+  Release Highlights:
+  * All new ASIO networking model
+    + Kismet now uses the C++ ASIO networking library.
+  * All new web server implementation (drop libmicrohttpdd)
+  * New role based REST API
+  * Remote capture over websockets
+  * Huge RAM savings
+  * Stability improvements
+  * Higher performance web UI
+  * New websocket APIs
+  * Better location averaging
+  * Improved channel and signal mapping
+  * Improved 802.11 WDS handling
+  * General improvements and changes to the REST API
+  See https://www.kismetwireless.net/release/kismet-2020-12-R1/ for
+  the full changelog.
+
+-------------------------------------------------------------------
 Sat Sep 26 09:42:03 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2020-09-R4
