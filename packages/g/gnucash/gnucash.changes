@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Mon Dec 28 12:32:24 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.3:
+  * In Mort. Repay. druid, creating New acct should also select it.
+  * Account Help Button does not work
+  * When unable to obtain a lock, no option to open another database.
+  * Financial Calculator resets payment period to zero if automatic
+    decimal places used
+  * [rfe] save tab/report location
+  * RFE: don't disable "OK" button after using "Apply" to modify
+    chart options
+  * Mark placeholder accounts in account tree window visibly.
+  * When there is only one result from a 'Find', select it.
+  * Transaction Status in Since Last Run needs to look clickable.
+  * Window Panning Oddity.
+  * When duplicating a transaction, any non-numeric value entered in
+    the "Number" field is discarded.
+  * Support image-based TAN methods QR, photoTAN, and chipTAN
+    optical "Flicker code"
+  * Implements the display of flashing optical TAN challenges
+    (aka flicker) in the "Enter TAN" dialog box.
+  * Help button not working when editing style sheets.
+  * Search in General Ledger cannot be cleared.
+  * Calendar widget current month shown as (null).
+  * List of Recently Used Files not updated until GnuCash
+    is closed and reopened.
+  * Crash on use of File-Open
+  * RFE: provide access to filter-by on right-mouse-click
+    in Accounts register.
+  * dialog-report-style-sheet.c stylesheet editor does not
+    set transient_for correctly.
+  * "Exception" when value greater than one million with commas
+    and periods is pasted to register.
+  * minor ui niggles - some dialogs don't respond to GDK_KEY_Escape
+  * odd cursor behaviour in register Description.
+  * Crash on export report CSV
+  * exchange rates' decimal places (bis)
+  * v4.2 report numbers change over gnucash restarts; Price Database
+    dropping user:price-editor entries.
+  * Infinite loop while Check&Repair AR and AP accounts
+  * Sorting columns by alphabet with non-ASCII characters
+  * Reverse balance option does not apply to an Account Report
+  * Account type-ahead search doesn't match accented characters.
+  * Import of QIF file sets expenses to zero, deposits are fine
+  * Option '--log' cannot be specified more than once.
+  * cash flow numerical-overflow
+  * Date goes to prior year with mm/dd entry to transaction duplicate.
+  * Transaction Report should offer price source
+  * Incorrect spelling in german account templates 'common' and 'full'
+  * Using 'Consolidate Transactions' option on Consolidate
+    Transaction Report returns Error
+  * Open invoices in new window.
+  * Crash on delete account.
+  * error using Reports->Experimental->Income Statement (Multicolumn)
+  * Add custom unbound-variable exception reporter in guile that
+    identifies what module provides the missing symbol.
+  * Balsheet-pnl report: show most recent period first by default
+  * Change register page icon to a padlock if read only
+  * When a resister is read only make whole sheet insensitive.
+  * Add account name to the read-only-register dialog box because
+    under some circumstances it may be unclear to which
+    register the message applies.
+  * Strictly use use-modules to import Scheme symbol
+  * Don't try to reload report if the first attempt raised an html error.
+  * Barcharts: Limit account drill-down depth to 6.
+  * I18N:glossary: add mortgage terms ARM, APR, FRM
+  * Change the icons used for the file locked dialog box.
+  * Add support for the opening balance accounts flag
+
+-------------------------------------------------------------------
 Sat Oct 31 20:55:28 UTC 2020 - Johannes Engel <jcnengel@gmail.com>
 
 - Update to 4.2
