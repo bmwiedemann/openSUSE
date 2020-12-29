@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Dec 27 20:43:46 UTC 2020 - malcolmlewis@opensuse.org
+
+- Update to version 0.99.27+13:
+  * Fix using fmt always unbundled from spdlog,
+    (gh#giuspen/cherrytree#1458).
+  * Using fmt always unbundled from spdlog,
+    (gh#giuspen/cherrytree#1458).
+  * Fix time filter for find in nodes names and tags,
+    (gh#giuspen/cherrytree#1453).
+  * Fix color for selected item in tree not consistent with
+    selected item in menu, (gh#giuspen/cherrytree#1456).
+  * Do not bundle spdlog but use as external library,
+    (gh#giuspen/cherrytree#1199 and gh#giuspen/cherrytree#1433).
+  * Fix failed zim import, (gh#giuspen/cherrytree#1273).
+  * Changed GPG signature to detached,
+    (gh#giuspen/cherrytree#1433).
+  * Icon theme new save and other improvements.
+  * More GCC11 fixes. (gh#giuspen/cherrytree#1450).
+  * Translation updates.
+- Add pkgconfig(spdlog) and pkgconfig(fmt) to build requires
+  since no longer bundled.
+
+-------------------------------------------------------------------
 Mon Dec 21 13:36:22 UTC 2020 - malcolmlewis@opensuse.org
 
 - Update to version 0.99.26+2:
@@ -14,7 +37,7 @@ Mon Dec 21 13:36:22 UTC 2020 - malcolmlewis@opensuse.org
     this action now works also with focus on the text/while editing
     text, (gh#giuspen/cherrytree#1412).
   * Icon theme fixes/improvements, (gh#giuspen/cherrytree#1426,
-    gh#giuspen/cherrytree#1414
+    gh#giuspen/cherrytree#1414).
   * Fix find function adds empty lines to blank nodes,
     (gh#giuspen/cherrytree#1428).
   * Removed code duplications for open file and folder link,
