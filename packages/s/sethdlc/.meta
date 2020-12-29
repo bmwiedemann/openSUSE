@@ -1,0 +1,11 @@
+<package name="sethdlc" project="openSUSE:Factory">
+  <title>Utility for the Generic HDLC layer</title>
+  <description>The sethdlc utility is used to set physical interface, clock rate,
+used HDLC mode, and can add any required PVCs if using Frame Relay.
+
+https://www.kernel.org/doc/Documentation/networking/generic-hdlc.txt
+
+</description>
+  <devel project="network:utilities" package="sethdlc"/>
+  <url>https://www.kernel.org/doc/Documentation/networking/generic-hdlc.txt</url>
+</package>
