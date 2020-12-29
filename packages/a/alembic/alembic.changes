@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 29 12:41:37 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- update to 1.7.16:
+  GitHub:
+  * Add a Github Action to create a python 2.7 wheel. (PR 310)
+  AbcCoreHDF5:
+  * Specify char signedness when setting the HDF5 data type as some architectures,
+    like ARM, default to unsigned. (PR 316)
+  AbcCoreOgawa:
+  * Fuzzer issue 25695: Fix leak that can occur when reading meta data, but the file
+    is maliciously cut short.  (PR 315)
+  * Fuzzer issue 26125:  Add a check and throw an excpetion for an obviously
+    recursive group. (PR 321)
+
+-------------------------------------------------------------------
 Fri Sep 11 14:15:44 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.7.15:
