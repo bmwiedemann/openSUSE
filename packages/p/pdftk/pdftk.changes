@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 28 14:07:38 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
+
+- Pass arguments to pdftk individually quoted (replaced $* with
+  "$@")
+
+-------------------------------------------------------------------
 Tue Oct 27 07:05:52 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.2.1:
