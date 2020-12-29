@@ -1,7 +1,7 @@
 #
 # spec file for package monitoring-plugins-bonding
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Nagios Network Bonding Check
 License:        GPL-2.0-or-later OR Artistic-1.0
 Group:          System/Monitoring
-Url:            http://www.monitoringexchange.org/inventory/Check-Plugins/Operating-Systems/Linux/Network-Bonding
+URL:            http://www.monitoringexchange.org/inventory/Check-Plugins/Operating-Systems/Linux/Network-Bonding
 Source0:        check_bonding.pl
 Source1:        usr.lib.nagios.plugins.check_bonding
 Source2:        nrpe-check_bonding

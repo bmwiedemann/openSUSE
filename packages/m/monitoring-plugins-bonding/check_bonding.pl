@@ -54,6 +54,7 @@ sub read_proc_bond {
 				$data->{'slaves'}->{$slave}->{'failure-count'} = $1 if /^Link Failure Count: (.+)$/;
 				$data->{'slaves'}->{$slave}->{'actor-churn'} = $1 if /^Actor Churn State: (.+)$/;
 				$data->{'slaves'}->{$slave}->{'partner-churn'} = $1 if /^Partner Churn State: (.+)$/;
+				$data->{'slaves'}->{$slave}->{'speed'} = $1 if /^Speed: (.+) Mbps$/;
 				}
 			}
 		}
@@ -71,6 +72,18 @@ sub check_bond {
 	my $config_str;
 	my $status = $data->{'status'};
 	if (defined $data->{'slaves'}) {
+		my $max_speed = 0;
+		foreach (keys %{$data->{'slaves'}}) {
+			$max_speed = $data->{'slaves'}->{$_}->{'speed'} if $data->{'slaves'}->{$_}->{'speed'} && $data->{'slaves'}->{$_}->{'speed'} > $max_speed;
+		}
+		if (defined $data->{'active'}) {
+			my $active_int = $data->{'active'};
+			$error = 1 if $data->{'slaves'}->{$active_int}->{'speed'} && $data->{'slaves'}->{$active_int}->{'speed'} ne $max_speed;
+		} else {
+			foreach (keys %{$data->{'slaves'}}) {
+				$error = 1 if $data->{'slaves'}->{$_}->{'speed'} && $data->{'slaves'}->{$_}->{'speed'} ne $max_speed;
+			}
+		}
 		foreach (keys %{$data->{'slaves'}}) {
 			$status = "warn" if $data->{'slaves'}->{$_}->{'actor-churn'}
 						&& $data->{'slaves'}->{$_}->{'actor-churn'} eq "churned";
@@ -86,8 +99,9 @@ sub check_bond {
 		$config_str = sprintf "$interface_name %s has no physical devices", $data->{'status'};
 		$error = 1;
 	}
-	foreach (keys %{$data->{'slaves'}}) {
+	foreach (sort(keys %{$data->{'slaves'}})) {
 		my $result = $data->{'slaves'}->{$_}->{'mii'};
+		$result .= ", ".$data->{'slaves'}->{$_}->{'speed'}."Mbps" if $data->{'slaves'}->{$_}->{'speed'};
 		$result = "churned" if $data->{'slaves'}->{$_}->{'actor-churn'}
 	       				&& $data->{'slaves'}->{$_}->{'actor-churn'} ne 'none';
 		$result = "churned" if $data->{'slaves'}->{$_}->{'partner-churn'}

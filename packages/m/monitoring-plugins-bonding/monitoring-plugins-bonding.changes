@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 21 17:57:46 CET 2020 - ro@suse.de
+
+- also check the speed
+  - in active/failover warn if active interface does not
+    have the maximum speed
+  - in multi-active (rr,lacp) warn unless all interfaces
+    run in maximum speed
+
+-------------------------------------------------------------------
 Wed Oct  3 14:00:38 UTC 2018 - lars@linux-schulserver.de
 
 - add nrpe config snipplet: /etc/nrpe.d/check_bonding.cfg
