@@ -17,9 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define tarver  3.33.0-r1
+%define tarver  3.34.0-r1
 Name:           python-apsw
-Version:        3.33.0_r1
+Version:        3.34.0_r1
 Release:        0
 Summary:        Another Python SQLite Wrapper
 License:        Zlib

@@ -86,4 +86,15 @@
 - Fix source URL</comment>
     <requestid>836079</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>aecd914b0cabcfcc5e9355cc728b66f5</srcmd5>
+    <version>3.34.0_r1</version>
+    <time>1609253627</time>
+    <user>dimstar_suse</user>
+    <comment>- udpate to 3.34.0-r1:
+  * Windows MSI installer files are now provided
+  * Added Connection.txn_state()
+  * Added constants: SQLITE_IOERR_CORRUPTFS</comment>
+    <requestid>859232</requestid>
+  </revision>
 </revisionlist>

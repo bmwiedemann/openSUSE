@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 29 13:46:03 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- udpate to 3.34.0-r1:
+  * Windows MSI installer files are now provided
+  * Added Connection.txn_state()
+  * Added constants: SQLITE_IOERR_CORRUPTFS 
+
+-------------------------------------------------------------------
 Tue Sep 22 11:54:56 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix the source url to really match reality
