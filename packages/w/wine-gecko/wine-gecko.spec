@@ -22,8 +22,10 @@ License:        MPL-1.1+
 Group:          Development/Tools/Other
 Version:        2.47.2
 Release:        0
-Source0:        http://dl.winehq.org/wine/wine-gecko/%{version}/wine-gecko-%{version}-x86.msi
-Source1:        http://dl.winehq.org/wine/wine-gecko/%{version}/wine-gecko-%{version}-x86_64.msi
+# not needed with unpacked tree.
+#Source0:        http://dl.winehq.org/wine/wine-gecko/%{version}/wine-gecko-%{version}-x86.msi
+#Source1:        http://dl.winehq.org/wine/wine-gecko/%{version}/wine-gecko-%{version}-x86_64.msi
+
 Source2:        http://dl.winehq.org/wine/wine-gecko/%{version}/wine-gecko-%{version}-x86.tar.xz
 Source3:        http://dl.winehq.org/wine/wine-gecko/%{version}/wine-gecko-%{version}-x86_64.tar.xz
 BuildArch:      noarch
@@ -40,8 +42,9 @@ This package contains the prepackaged Win32 Gecko rendering engine for use by Wi
 
 %install
 mkdir -p $RPM_BUILD_ROOT/usr/share/wine/gecko
-cp %{SOURCE0} $RPM_BUILD_ROOT/usr/share/wine/gecko
-cp %{SOURCE1} $RPM_BUILD_ROOT/usr/share/wine/gecko
+# the MSI files are not needed
+#cp %{SOURCE0} $RPM_BUILD_ROOT/usr/share/wine/gecko
+#cp %{SOURCE1} $RPM_BUILD_ROOT/usr/share/wine/gecko
 
 tar xf %{SOURCE2} -C $RPM_BUILD_ROOT/usr/share/wine/gecko
 tar xf %{SOURCE3} -C $RPM_BUILD_ROOT/usr/share/wine/gecko

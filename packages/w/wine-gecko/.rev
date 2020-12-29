@@ -276,4 +276,13 @@
     <comment>- also provide unpacked shared gecko x86 and x86_64.</comment>
     <requestid>858373</requestid>
   </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>37b2ce39dd50f1bfa562cc9d629c522f</srcmd5>
+    <version>2.47.2</version>
+    <time>1609253602</time>
+    <user>dimstar_suse</user>
+    <comment>- the MSI files are not needed if we have the unpacked tree, save
+  diskspace...</comment>
+    <requestid>859185</requestid>
+  </revision>
 </revisionlist>

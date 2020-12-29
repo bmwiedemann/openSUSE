@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 28 15:48:29 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- the MSI files are not needed if we have the unpacked tree, save
+  diskspace...
+
+-------------------------------------------------------------------
 Wed Dec 23 17:00:29 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - also provide unpacked shared gecko x86 and x86_64.
