@@ -19,7 +19,7 @@
 %define guile	guile-2.0.9.tar.xz
 %define guix_builder_group	guixbuild
 Name:           guix
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        GNU Package manager
 License:        GPL-3.0-only
@@ -51,8 +51,10 @@ BuildRequires:  guile-devel >= 2.2
 BuildRequires:  guile-gcrypt
 BuildRequires:  guile-git
 BuildRequires:  guile-json
+BuildRequires:  guile-lzlib
 BuildRequires:  guile-sqlite3
 BuildRequires:  guile-ssh-devel
+BuildRequires:  guile-zlib
 # this is actually just to make guile-git working
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libgit2-devel
@@ -68,14 +70,17 @@ Requires:       guile
 Requires:       guile-gcrypt
 Requires:       guile-git
 Requires:       guile-json
+Requires:       guile-lzlib
 Requires:       guile-sqlite3
 Requires:       guile-ssh-devel
+Requires:       guile-zlib
 Requires:       gzip
 Requires:       libgcrypt-devel
-Requires:       libguile-ssh12
+Requires:       libguile-ssh13
 Requires(pre):  %{install_info_prereq}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 armv7hl aarch64
+Provides:       %{_libexecdir}/guix/guile
 
 %description
 Purely functional package manager and a distribution thereof.
@@ -161,8 +166,12 @@ done
 %{_infodir}/guix*
 %{_infodir}/images
 %{_libdir}/guile/*
+# Guile wrapper shipped by Guix to silence locale warnings
+%dir %{_libexecdir}/guix
+%{_libexecdir}/guix/guile
 %{_mandir}/man1/guix*
 %{_unitdir}/guix*.service
+%{_unitdir}/gnu-store.mount
 %attr(755,root,root) %dir /gnu
 %attr(775,root,%{guix_builder_group}) %dir /gnu/store
 

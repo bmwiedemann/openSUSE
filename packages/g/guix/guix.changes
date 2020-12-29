@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Tue Dec 15 11:21:39 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Require on libguile-ssh13
+
+-------------------------------------------------------------------
+Wed Nov 25 19:46:42 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Provide guile wrappe in libexecdir
+
+-------------------------------------------------------------------
+Tue Nov 24 16:23:10 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 1.2.0:
+  * Package management
+  ** ‘guix pull’ now crytographically authenticates channels
+  ** ‘guix describe -f channels’ now shows “channel introductions”
+  ** ‘guix describe -f channels-sans-intro’ omits channel introductions
+  ** New ‘guix git authenticate’ command, to authenticate Git checkouts
+  ** ‘guix pull’ and ‘guix system reconfigure’ detect attempts to downgrade
+  ** New ‘--allow-downgrades’ option for ‘guix pull’ and ‘guix system’
+  ** Guix build time reduced thanks to Guile 3.0.4’s “baseline compiler”
+  ** New ‘--with-debug-info’ package transformation option
+  ** New ‘--with-c-toolchain’ package transformation option
+  ** New ‘--without-tests’ package transformation option
+  ** ‘--with-input’ & co. now also apply to implicit dependencies
+  ** Package transformation options are now recorded in profiles
+  ** New fakechroot “execution engine” for packs produced by ‘guix pack -RR’
+  ** New ‘--cache-bypass-threshold’ option for ‘guix publish’
+  ** New ‘--diff’ option for ‘guix challenge’, to compare substitutes
+  ** New ‘--exclude’ option for ‘guix lint’, to exclude checkers
+  ** New ‘check-for-collisions’ checker in ‘guix lint’
+  ** All of Guix and Guix System now runs on Guile 3.0
+  ** ‘guix pull’ and ‘--with-git-url’ now support authenticated SSH repos
+  ** ‘guix pull’ now honors $http_proxy and $https_proxy
+  ** New ‘--path’ option for ‘guix graph’, showing the shortest path
+  ** ‘guix repl’ can now be passed a script to execute
+  ** ‘guix help’ finally shows command descriptions
+  ** ‘guix install’ etc. no longer list items to download by default
+  ** ‘guix search’ etc. now automatically invoke the pager
+  ** New ‘--hash’ option for ‘guix hash’
+  ** New ‘--list-formats’ option for ‘guix describe’
+  ** New “Getting Started” section in the manual
+  * 1999 new packages
+  * 3652 package updates
+  * Updated translations for the manual and the package
+  * New dependencies: guile-zlib and guile-lzlib (moved out of core)
+- Add Require/BuildRequire for guile-zlib and guile-lzlib
+- Ship guile wrapper for guix in libexecdir (only for guix!)
+- Ship mount service for the gnu store
+- Update keyring
+- Adapt guix-rpmlintrc for guile 3.0
+- Silence warning about guile shipped in libexecdir
+
+-------------------------------------------------------------------
 Thu Aug 13 15:10:34 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Do not build in parallel for reproducible results (boo#1170378)

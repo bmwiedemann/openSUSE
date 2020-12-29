@@ -212,4 +212,13 @@ Will fail to build until all programms requiring guile will be rebuild, due to t
     <comment></comment>
     <requestid>828959</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7b1b506f090fa98f5f16890565b63ba0</srcmd5>
+    <version>1.2.0</version>
+    <time>1609253293</time>
+    <user>dimstar_suse</user>
+    <comment>I forgot to update the require to libguile-ssh13. Don't know why I didn't catch that when installing Guix...
+</comment>
+    <requestid>855986</requestid>
+  </revision>
 </revisionlist>
