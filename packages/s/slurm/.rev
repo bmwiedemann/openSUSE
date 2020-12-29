@@ -663,4 +663,12 @@
   https://github.com/SchedMD/slurm/blob/slurm-20-11-0-1/RELEASE_NOTES (forwarded request 852039 from eeich)</comment>
     <requestid>853268</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>5b457453c04126a1268d0152180d5346</srcmd5>
+    <version>20.11.2</version>
+    <time>1609253578</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859115</requestid>
+  </revision>
 </revisionlist>
