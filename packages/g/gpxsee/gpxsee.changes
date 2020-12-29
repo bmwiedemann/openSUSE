@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 28 23:33:36 CET 2020 - tumic@cbox.cz
+
+- Update to version 8.0
+  * Added support for KMZ maps.
+  * Added Qt6 support, dropped Qt4 support.
+
+-------------------------------------------------------------------
 Tue Dec 15 23:29:47 CET 2020 - tumic@cbox.cz
 
 - Update to version 7.38

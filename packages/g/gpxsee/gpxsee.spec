@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           gpxsee
-Version:        7.38
+Version:        8.0
 Release:        1
 Summary:        GPS log file visualization and analysis tool
 License:        GPL-3.0-only
@@ -36,6 +36,7 @@ BuildRequires:  gdb-headless
 BuildRequires:  qt5-qtbase
 BuildRequires:  qt5-qtbase-gui
 BuildRequires:  qt5-qtbase-devel
+BuildRequires:  qt5-qtbase-private-devel
 BuildRequires:  qt5-linguist
 Recommends: qt5-qtimageformats
 Recommends: qt5-qtpbfimageformat
@@ -44,6 +45,7 @@ Recommends: qt5-qtpbfimageformat
 BuildRequires:  libQt5Core-devel
 BuildRequires:  libQt5Concurrent-devel
 BuildRequires:  libQt5Gui-devel
+BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libQt5Widgets-devel
 BuildRequires:  libQt5Network-devel
 BuildRequires:  libQt5PrintSupport-devel
@@ -53,9 +55,6 @@ BuildRequires:  libqt5-linguist
 Recommends: libQt5Sql5-sqlite
 Recommends: libqt5-qtimageformats
 Recommends: libqt5-qtpbfimageformat
-%else
-%if (0%{?rhel_version} && 0%{?rhel_version} < 800) || (0%{?centos_version} && 0%{?centos_version} < 800)
-BuildRequires:  libqt4-devel
 %else
 # Mageia
 BuildRequires:  libqt5core-devel
@@ -70,7 +69,6 @@ BuildRequires:  qttools5
 Recommends: qtimageformats5
 Recommends: libqt5-database-plugin-sqlite
 Recommends: libqt5-qtpbfimageformat
-%endif
 %endif
 %endif
 
@@ -91,13 +89,8 @@ lrelease-qt5 gpxsee.pro
 lrelease-qt5 gpxsee.pro
 %{qmake_qt5} gpxsee.pro
 %else
-%if (0%{?rhel_version} && 0%{?rhel_version} < 800) || (0%{?centos_version} && 0%{?centos_version} < 800)
-lrelease-qt4 gpxsee.pro
-qmake-qt4 PREFIX=/usr gpxsee.pro
-%else
 lrelease gpxsee.pro
 %{qmake_qt5} gpxsee.pro
-%endif
 %endif
 %endif
 make %{?_smp_mflags}

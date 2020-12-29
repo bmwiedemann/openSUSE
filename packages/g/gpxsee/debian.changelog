@@ -1,3 +1,10 @@
+gpxsee (8.0) stable; urgency=low
+
+  * Added support for KMZ maps.
+  * Added Qt6 support, dropped Qt4 support.
+
+ -- Martin Tuma <tumic@cbox.cz>  Mon, 28 Dec 2020 23:37:55 +0100
+
 gpxsee (7.38) stable; urgency=low
 
   * Maps can now be opened like data files (program parameter,
