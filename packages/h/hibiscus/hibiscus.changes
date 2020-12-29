@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sun Nov 29 12:22:14 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.10.0
+  - NEW: 0917 Empfänger-Name 2 bei Umsätzen anzeigen
+  - NEW: 0916 Bei PDF-Auswertung und Anzeige der Summe ganz am Ende
+    noch eine Gesamtsumme über alle Konten/Kategorien anzeigen.
+    Ausserdem Option zur Saldo-Anzeige invertiert (nicht mehr 
+    „Saldo ausblenden“ sondern „Saldo anzeigen“)
+  - NEW: 0915 Auswertungen→Einnahmen/Ausgaben→Grafische Auswertung
+    - Beschriftung der Balken in Schwarz, damit sie vor weissem
+      Hintergrund lesbar sind, wenn die Balken zu schmal fuer die
+      Zahlen sind
+  - NEW: 0914 Neue obantoo-Version mit aktualisierter BLZ-Datei
+    gültig ab 07.12.2020
+  - NEW: 0913 Bei Kategorie-Zuordnung auch in Kundenreferenz suchen
+  - BUG: 0912 Update auf HBCI4Java 3.1.49 
+    - https://github.com/hbci4j/hbci4java/releases/tag/hbci4j-core-3.1.49 
+    - neues Feature-Flag PINTAN_SEGCODE_STRICT 
+    - siehe https://homebanking-hilfe.de/forum/topic.php?p=157546#real157546
+  - BUG: 0911 Update auf HBCI4Java 3.1.47 
+    - https://github.com/hbci4j/hbci4java/releases/tag/hbci4j-core-3.1.47
+    - neues Feature-Flag PINTAN_INITANON_SKIPNOTLASTTAN
+    - siehe https://homebanking-hilfe.de/forum/topic.php?p=157481#real157481
+  - NEW: 0910 Neue Möglichkeit, Umsatz-Kategorien auf einzelne 
+    Konten oder Konto-Gruppen zu limitieren
+  - NEW: 0909 Neue Option „In Auswertungen ignorieren“ in
+    Umsatz-Kategorie
+  - NEW: 0908 Neue Option „Nur aktive Konten“ jetzt auch bei
+    „Saldo im Verlauf“
+  - BUG: 0907 Update auf HBCI4Java 3.1.46
+    - https://github.com/hbci4j/hbci4java/releases/tag/hbci4j-core-3.1.46
+  - BUG: 0906 Update auf HBCI4Java 3.1.45
+    - https://github.com/hbci4j/hbci4java/releases/tag/hbci4j-core-3.1.45
+  - BUG: 0905 Update auf HBCI4Java 3.1.44
+    - https://github.com/hbci4j/hbci4java/releases/tag/hbci4j-core-3.1.44
+  - NEW: 0904 Neue obantoo-Version mit aktualisierter BLZ-Datei 
+    gültig ab 03.09.2020
+  - NEW: 0903 Neue Option „Alle als gelesen markieren“ im 
+    Kontextmenü der Umsatzliste
+  - BUG: 0902 Update auf HBCI4Java 3.1.43
+    - https://github.com/hbci4j/hbci4java/releases/tag/hbci4j-core-3.1.43
+    - HKTAN: Das 7. DE „Weitere TAN folgt“ darf nur bei 
+      Prozess-Variante 1 und 2 belegt werden
+  - NEW: 0901 Rewrappen der Zeilenumbrüche beim CSV-Import von 
+    Umsätzen entfernt, da die erste Zeile inzwischen 255 Zeichen
+    fassen kann
+  - NEW: 0900 Konfigurierbare Auswahl der Zeitrum-Presets
+    - siehe https://github.com/willuhn/hibiscus/pull/64
+  - NEW: 0899 Umsätze nach ID suchbar
+    - siehe https://homebanking-hilfe.de/forum/topic.php?t=24095
+  - NEW: 0898 Versionsinformationen auch beim Testen des
+    Bankzugangs mit loggen
+    - siehe https://homebanking-hilfe.de/forum/topic.php?p=156239#real156239
+
+-------------------------------------------------------------------
 Mon Jul 13 19:21:45 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.8.24
@@ -87,7 +142,7 @@ Tue May 12 07:18:39 UTC 2020 - ecsos <ecsos@opensuse.org>
 - Remove unbundle swtchart in spec and use swtchart from hibiscus 
   source, because extern package rise up build errors.
 - Remove unbundle obantoo in spec, because extern package is to old
-  and upstrean seems no more mantained.
+  and upstream seems no more mantained.
   Obantoo in hibiscus source is newer.
 
 -------------------------------------------------------------------

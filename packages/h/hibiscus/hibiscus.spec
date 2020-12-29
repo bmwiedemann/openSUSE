@@ -16,14 +16,14 @@
 #
 
 
-%define _build 388
-%define tag V_2_8_24_BUILD_%{_build}
+%define _build 361
+%define tag V_2_10_0_BUILD_%{_build}
 
 Name:           hibiscus
 Summary:        Java online banking client using the HBCI standard
 License:        GPL-2.0-only AND LGPL-2.0-only AND Apache-2.0 AND CPL-1.0 AND Zlib AND MPL-1.0 AND EPL-1.0
 Group:          Productivity/Office/Finance
-Version:        2.8.24
+Version:        2.10.0
 Release:        0
 URL:            https://www.willuhn.de/products/hibiscus/
 Source:         https://github.com/willuhn/hibiscus/archive/%{tag}.tar.gz
@@ -32,11 +32,11 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  ant
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  jameica-devel >= 2.8.0
-BuildRequires:  java-devel >= 1.6
+BuildRequires:  jameica-devel >= 2.10.0
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  jpackage-utils
 BuildRequires:  xml-commons-apis
-Requires:       jameica >= 2.8.0
+Requires:       jameica >= 2.10.0
 #BuildRequires:  swtchart = 0.10.0
 #Requires:       swtchart = 0.10.0
 BuildRequires:  pcsc-towitoko-devel
