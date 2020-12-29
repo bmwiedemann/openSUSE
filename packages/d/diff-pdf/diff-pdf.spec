@@ -1,7 +1,7 @@
 #
 # spec file for package diff-pdf
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,49 +12,52 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           diff-pdf
-Version:        0.2
+Version:        0.4.1
 Release:        0
 Summary:        Simple PDF comparison tool
-License:        GPL-2.0 and LGPL-2.0
+License:        GPL-2.0-only AND LGPL-2.0-only
 Group:          Productivity/Publishing/PDF
-Url:            https://github.com/vslavik/diff-pdf
-Source0:        https://github.com/vslavik/diff-pdf/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://vslavik.github.io/diff-pdf/
+Source0:        https://github.com/vslavik/diff-pdf/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch0:         fix-find-poppler.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
+BuildRequires:  help2man
 BuildRequires:  pkgconfig
-BuildRequires:  wxWidgets-3_0-devel
+BuildRequires:  wxWidgets-devel
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(cairo-pdf)
 BuildRequires:  pkgconfig(poppler)
-BuildRequires:  pkgconfig(poppler-cairo)
 BuildRequires:  pkgconfig(poppler-glib)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 diff-pdf is a simple tool for comparing two PDF files.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-export CXXFLAGS="%{optflags} -fpermissive"
-export LDFLAGS='-Wl,--as-needed -Wl,--no-undefined -Wl,-z,now'
 ./bootstrap
 %configure
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
 
+install -d -m 0755 %{buildroot}%{_mandir}/man1
+help2man -N -n "%{summary}" --version-string="%{version}" --no-discard-stderr \
+	 -o %{buildroot}%{_mandir}/man1/%{name}.1 %{buildroot}%{_bindir}/%{name}
+
 %files
-%defattr(-,root,root,-)
-%doc AUTHORS COPYING COPYING.icons README
-%{_bindir}/diff-pdf
+%license COPYING COPYING.icons
+%doc AUTHORS README.md
+%{_bindir}/%{name}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog

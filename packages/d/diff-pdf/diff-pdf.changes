@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Dec 29 12:15:14 UTC 2020 - munix9@googlemail.com
+
+- Update to version 0.4.1
+  Fixes some bugs (#64, #65) that crept into 0.4.
+  All users of 0.4 should update.
+
+- Update to version 0.4
+  Added new useful options contributed by @fatalmind:
+  --skip-identical    only outputs pages with actual differences
+  --channel-tolerance makes it easy to ignore tiny differences
+  --mark-differences  adds visual markers to the margin to
+                      highlight where small changes are
+
+- Add fix-find-poppler.patch
+- Add man page with help2man
+- Clean up spec file
+
+-------------------------------------------------------------------
 Sat Jun 18 10:27:21 UTC 2016 - mpluskal@suse.com
 
 - Fix building with gcc6 (boo#985353)
