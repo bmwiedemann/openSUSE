@@ -33,4 +33,22 @@
     <comment>update to 3.99.2 to work with latest pykeepass (forwarded request 821767 from kkirill)</comment>
     <requestid>822965</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>71b72a0934cd1bf0c005ae70fa1b244f</srcmd5>
+    <version>4.0</version>
+    <time>1609253620</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0:
+  * Improved compatibility with Linux phones (Librem 5 and PinePhone)
+  * Search was improved and settings has been moved into global Settings dialog
+  * Password Generator has it's own persistent configuration
+  * Many performance optimizations, especially for large databases
+  * Some visual polishing has been done
+  * Multiple crashes has been fixed
+  * added new shortcut CTRL-Q which quits application
+  * when quiting application, dialog now allow cancel
+  * fix crashes when using clipboard
+  * improved settings dialog (forwarded request 858366 from polslinux)</comment>
+    <requestid>859194</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %define appname PasswordSafe
 %define appid   org.gnome.PasswordSafe
 Name:           gnome-passwordsafe
-Version:        3.99.2
+Version:        4.0
 Release:        0
 Summary:        A password manager for GNOME
 License:        GPL-3.0-or-later
@@ -30,11 +30,11 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  python3-construct
-BuildRequires:  python3-pykeepass
+BuildRequires:  python3-pykeepass >= 3.2.1
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(libhandy-0.0)
+BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(pwquality)
 Requires:       python3-argon2-cffi
 Requires:       python3-construct
