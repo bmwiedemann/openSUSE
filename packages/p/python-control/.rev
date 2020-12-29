@@ -87,4 +87,12 @@
 - Skip a test family on Leap because of segfaults in numpy</comment>
     <requestid>841078</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b755258f7f36685a45205e3219dabb5e</srcmd5>
+    <version>0.8.4</version>
+    <time>1609253576</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859109</requestid>
+  </revision>
 </revisionlist>

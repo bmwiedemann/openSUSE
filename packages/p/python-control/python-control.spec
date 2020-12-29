@@ -19,17 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-control
-Version:        0.8.3
+Version:        0.8.4
 Release:        0
 Summary:        Python control systems library
 License:        BSD-3-Clause
 URL:            http://python-control.sourceforge.net
 Source:         https://files.pythonhosted.org/packages/source/c/control/control-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-Patch0:         pr365-copy-PR-320-for-robust_array_test.patch
-Patch1:         pr366-ease-precision-tolerance.patch
-Patch2:         pr380-fix-pytest-discovery.patch
-Patch3:         pr430-numpy119delete.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,9 +42,7 @@ BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module slycot}
-%ifarch %ix86
 BuildRequires:  libjemalloc2
-%endif
 # /SECTION
 %python_subpackages
 
@@ -60,7 +54,7 @@ operations for analysis and design of feedback control systems.
 %setup -q -n control-%{version}
 %autopatch -p1
 #remove shebang
-sed -i '1{\@^#!/usr/bin/env python@ d}' control/tests/*.py
+sed -i '1{\@^#!/usr/bin/env@ d}' control/tests/*.py
 
 %build
 %python_build
@@ -73,19 +67,13 @@ sed -i '1{\@^#!/usr/bin/env python@ d}' control/tests/*.py
 # The default Agg backend does not define the toolbar attribute in the Figure
 # Manager used by some tests, so we run the tests with the Qt5 backend
 export MPLBACKEND="Qt5Agg"
-%if %{_arch} == i386
-    # preload malloc library to avoid free() error on i586 architecture
-    export LD_PRELOAD="%{_libdir}/libjemalloc.so.2"
-%endif
-cat >> setup.cfg <<EOL
-[tool:pytest]
-filterwarnings =
-    ignore:.*matrix subclass:PendingDeprecationWarning
-    ignore:.*scipy:DeprecationWarning
-EOL
+# preload malloc library to avoid free() error on i586 architecture
+if [[ $(getconf LONG_BIT) == 32 ]]; then
+export LD_PRELOAD="%{_libdir}/libjemalloc.so.2"
+fi
 %if 0%{?suse_version} < 1550
 # segfault: free() error in Leap numpy library
-%define donttest -k "not test_clean_part"
+%define donttest -k "not (test_clean_part or test_pzmap)"
 %endif
 %pytest %{?donttest}
 

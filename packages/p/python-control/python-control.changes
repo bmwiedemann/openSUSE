@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Dec 28 20:31:00 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 0.8.4 
+  * Improved default time vector for time response 
+    functions (bnavigator, sawyerbfuller)
+  * New use_legacy_defaults function to allow compatibility 
+    with previous versions (sawyerbfuller)
+  * Allow creation of non-proper transfer functions 
+    (bnavigator, rlegnain) 
+  * Added ability to set arrow head length and width option 
+    in nyquist_plot (geekonloose)
+  * Added ability to 'prewarp' the conversion of continuous to 
+    discrete-time systems (sawyerbfuller)
+  * Added rlocus capability for discrete-time systems 
+    (sawyerbfuller)
+  * Updated pzmap grid to be compatible with matplotlib updates 
+    (bnavigator)
+  * Implement loadable string representation (repr) for tf, ss, 
+    and frd (repagh)
+  * Fixed margin computation for discrete time systems 
+    (bnavigator)
+  * Fixed indexing bug in bdalg.connect (sawyerbfuller)
+  * Fixed InterconnectedSystem naming bugs, improved 
+    conventions (samlaf)
+  * Fixed LinearIOSystem output bug in output function 
+    (francescoseccamonte)
+  * Fixed bug in forced_response that overrode squeeze 
+    parameter (bnavigator)
+  * Use rad/sec for Bode plot in MATLAB bode (was erroneously 
+    defaulting to Hertz) (paulvicioso)
+  * Removed deprecated scipy calls and updated to latest numpy 
+    (bnavigator)
+  * Multiple documentation updates (bnavigator, laurensvalk)
+  * New and improved examples for sisotool, pvtol (repagh, samlaf)
+  * The rlocus function no longer automatically creates a new
+    figure
+  * Updated unit tests + switch to pytest (bnavigator, 
+    sawyerbfuller)
+  * Return type for eigenvalues in lqe changed to 1D array 
+    (matches lqr)
+  * Small fixes + documentation updates to markov
+- Remove forbidden arch macros in noarch package
+- Drop patches merged upstream
+  * pr365-copy-PR-320-for-robust_array_test.patch
+  * pr366-ease-precision-tolerance.patch
+  * pr380-fix-pytest-discovery.patch
+  * pr430-numpy119delete.patch
+
+-------------------------------------------------------------------
 Sun Oct 11 18:39:38 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Skip a test family on Leap because of segfaults in numpy 
