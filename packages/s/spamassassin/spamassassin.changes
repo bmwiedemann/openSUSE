@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Dec 23 16:05:26 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Require perl(Mail::SpamAssassin) instead of perl-spamassassin
+- Don't use BerkeleyDB (not even for unit test)
+- Don't use is_opensuse conditional
+
+-------------------------------------------------------------------
+Sat Dec 19 16:16:05 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Move spamc into an own sub-package to avoid the full spamassassin
+  installation on every client if there is a spamd server
+
+-------------------------------------------------------------------
+Thu Dec 17 20:21:29 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Compile rules in %post if Perl and/or spamassassin version changed
+  and SPAM_SA_COMPILE=yes
+- Enable test (add basic-lint-without-sandbox.patch)
+- Ignore known warnings (add spamassassin-rpmlintrc)
+
+-------------------------------------------------------------------
 Wed Jan 29 19:26:21 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - update spamassassin to 3.4.4
