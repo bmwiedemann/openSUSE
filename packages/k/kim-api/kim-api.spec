@@ -16,7 +16,7 @@
 #
 
 Name:           kim-api
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        Open Knowledgebase of Interatomic Models KIM API
 License:        CDDL-1.0
@@ -26,7 +26,7 @@ Source0:        https://s3.openkim.org/kim-api/kim-api-%{version}.txz
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  pkg-config
-BuildRequires:  cmake >= 3.4
+BuildRequires:  cmake >= 3.10
 BuildRequires:  vim
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       libkim-api2 = %{version}

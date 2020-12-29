@@ -32,4 +32,14 @@
     <comment></comment>
     <requestid>849487</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cc8f3026e0a1a4729a90ec0457dba340</srcmd5>
+    <version>2.2.1</version>
+    <time>1609253582</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v2.2.1
+  * update to cmake 3.10 requirement
+</comment>
+    <requestid>859097</requestid>
+  </revision>
 </revisionlist>
