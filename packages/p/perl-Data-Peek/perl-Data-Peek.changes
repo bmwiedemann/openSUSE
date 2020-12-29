@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 22 03:06:55 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.50
+   see /usr/share/doc/packages/perl-Data-Peek/ChangeLog
+
+  0.50	- 2020-12-21, H.Merijn Brand   <h.m.brand@xs4all.nl>
+      * Update to Devel::PPPort-3.58
+      * Prevent false negative CPANTESTERS fail reports
+      * Prepare for perl7
+      * Move to XSLoader
+      * Update to Devel::PPPort-3.61
+      * Update to Devel::PPPort-3.62
+      * Fix META for bugtracker
+
+-------------------------------------------------------------------
 Sat Feb  1 03:12:43 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.49
