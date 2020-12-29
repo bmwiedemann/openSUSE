@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Sat Nov 28 23:25:15 UTC 2020 - Manfred Schwarb <manfred99@gmx.ch>
+
+- split off library package libudunits2-0
+- enable unit tests for non-openSUSE targets
+- configure with --disable-static and do no longer manually remove
+    static libraries
+- use %make_build and %make_install to build package  
+- add "BuildRequires: info"
+
+-------------------------------------------------------------------
+Fri Dec  6 15:39:44 UTC 2019 - manfred99@gmx.ch
+
+- drop static libraries
+
+-------------------------------------------------------------------
+Thu Dec 28 11:53:55 UTC 2017 - manfred99@gmx.ch
+
+- Updated to 2.2.26:
+  * CMake build changes
+  * Fixed problem with the definition of "(mm2 day-2)/(mm2 day-2)"
+  * Fixed bug in the parsing of the have-unit of udunits2
+
+-------------------------------------------------------------------
+Sat May 20 00:37:54 CEST 2017 - manfred99@gmx.ch
+
+- Updated to 2.2.25:
+  * Corrected temporal decomposition algorithm in ut_decode_time().
+  * Added missing UDUNITS-1 files to the distribution ("lib/udunits.h" and
+    "lib/udunits-1.c").
+
+-------------------------------------------------------------------
+Fri Mar 17 10:18:28 CET 2017 - manfred99@gmx.ch
+
+- Updated to 2.2.24:
+  * Added unit "ppv"
+  * Fixed utCalendar() in the UDUNITS-1 interface returning 60 seconds.
+- Updated to 2.2.23:
+  * Added missing comma to snprintf() call under Windows.
+- Updated to 2.2.22:
+  * Added missing files to distribution for building on Windows.
+- Updated to 2.2.21:
+  * Corrected construction of the pathname of an imported database file
+    under Windows.
+
+-------------------------------------------------------------------
+Mon Nov 28 00:27:48 CET 2016 - manfred99@gmx.ch
+
+- Updated to 2.2.20
+  * modifications for better portability
+  * Replaced use of deprecated atof() with strtod()
+  * Changed definition and symbol of "astronomical_unit"
+  * added tsearch.[ch] for building on Windows
+- spec file cleanup
+- provide compat packages for API v1 users (udunits)
+
+-------------------------------------------------------------------
+Thu Apr  2 12:54:50 UTC 2015 - ocefpaf@gmail.com
+
+- Updated to 2.2.18
+  * Eliminated the use of unistd.h on Windows.
+  * Improved support for static builds (i.e., builds that don't produce a
+    sharable library).
+  * Units Database:
+    - Corrected the definition of "dram" and added "fluid_dram".
+    - Changed the definition of "molecule" to "1/avogadro_constant".
+    - Added comments and human-readable definitions.
+  * Program:
+    - Removed latent bug on Windows in determining the name of the program.
+  * Misc:
+    - Removed lint discovered by Coverity.
+
+-------------------------------------------------------------------
+Thu Dec 11 18:02:58 UTC 2014 - ocefpaf@gmail.com
+
+- Updated to 2.2.17
+  * Modified the lexical scanner to accept the use of "ref" in an offset
+    time-unit specification (e.g., "seconds ref 1970-01-01") in order to be
+    compatible with version 2.1. Added concomitant test to unit-tests.
+
+-------------------------------------------------------------------
+Mon Jul 14 20:28:09 UTC 2014 - ocefpaf@gmail.com
+
+- Updated to 2.2.16
+  * Added units "molecule" (for conversion with "mole") and "bit".
+  * Added "-H have" and "-W want" options.
+  * Added "nucleon" (alias "nuc") to database as "mole/(avogadro's number)" to
+    support units like "Mev/nucleon".
+  * Added "octet" and "byte" to common units as aliases for the dimensionless
+    unit "8". (The unit "bit" was already defined).
+

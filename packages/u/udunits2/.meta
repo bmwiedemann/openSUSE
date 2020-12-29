@@ -1,0 +1,5 @@
+<package name="udunits2" project="openSUSE:Factory">
+  <title>Unidata units utility</title>
+  <description>A library for manipulating units of physical quantities</description>
+  <devel project="science" package="udunits2"/>
+</package>
