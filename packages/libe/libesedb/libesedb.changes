@@ -1,3 +1,11 @@
+-------------------------------------------------------------------
+Mon Dec 28 18:24:59 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20200418
+	* worked on format support
+	* changes to make esedbexport more tolerant for empty long values
+	* worked on python bindings
+
 Sun Oct 11 12:33:40 UTC 2020 - Christopher Yeleighton <giecrilj@stegny.2a.pl>
 
 - add LGPL text

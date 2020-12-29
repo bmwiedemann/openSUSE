@@ -19,7 +19,7 @@
 %bcond_without python2
 
 %define lname	libesedb1
-%define timestamp 20191220
+%define timestamp 20200418
 Name:           libesedb
 Version:        0~%{timestamp}
 Release:        0
