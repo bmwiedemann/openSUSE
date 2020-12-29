@@ -1,0 +1,13 @@
+# Fully intentional
+addFilter("hidden-file-or-dir /etc/skel/.spack")
+# These files are patches and not to be run directly
+addFilter("script-without-shebang")
+# These files are installed as part of the spack recipes
+# and shouldn't be in a devel package
+addFilter("devel-file-in-non-devel-package*")
+# The spack group needs to be added to the list of known groups
+addFilter("non-standard-group Unspecified")
+addFilter("non-standard-gid .* spack")
+# Spurious self-applying patches from an upstream source.
+# These are part of recipes and not intended to run as scripts.
+addFilter("non-executable-script /var/lib/spack/repos.*")

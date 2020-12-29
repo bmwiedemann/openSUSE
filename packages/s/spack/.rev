@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>689e0e830a7acbea2a7b7ea5aade746c</srcmd5>
+    <version>0.16.0</version>
+    <time>1609253319</time>
+    <user>dimstar_suse</user>
+    <comment>more reproduceable output in the doc file as relevant spack command called during documentation build now have an explicit `target` and `os`</comment>
+    <requestid>854933</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Fri Dec 11 15:09:07 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- added patch for more reproduceable output for the doc package
+  * added file: added-target-and-os-calls-to-output-of-spack-spec-co.patch
+
+-------------------------------------------------------------------
+Tue Dec  8 14:19:00 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- added test for /etc/spack/no_rpm_trigger 
+
+-------------------------------------------------------------------
+Wed Dec  2 12:33:44 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- added %triggerin and %triggerpostun for the packages which 
+  can be detected by spack
+
+-------------------------------------------------------------------
+Wed Nov 25 10:58:48 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- updated to 0.16.0
+- added find for external packages
+- added dockerfile for leap
+  * added patchfile added-dockerfile-for-opensuse-leap-15.patch
+
+-------------------------------------------------------------------
+Tue Nov 24 13:45:24 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Add documentation (man and info pages, pdf doesn't build
+  currently).
+  * Do not ship documentation sources.
+- Do not distribute Dockerfiles and other container related
+  material, yet. This needs to be fixed so that the samples
+  work with SUSE.
+- Fully integrate spack into SUSE directory structure, fix
+  paths where required.
+  * Fix setup scripts to work correctly in above environment.
+
+-------------------------------------------------------------------
+Mon Nov 16 14:42:32 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- added profile file for csh 
+- enabled projections 
+- updated README.SUSE
+
+-------------------------------------------------------------------
+Wed Nov 11 19:56:11 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- added patches to be more on the traditional file system hierarchy 
+  and avoid explicit version in tumbleweed.
+  * added file Make-spack-paths-compliant-to-distro-installation.patch
+  * added file fix-tumbleweed-naming.patch
+
+
+-------------------------------------------------------------------
+Fri Sep 11 07:50:30 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Initial release. Version 0.15.4 
+  * Make-spack-paths-compliant-to-distro-installation.patch
+    Make spack paths compliant to distro installation.

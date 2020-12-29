@@ -1,0 +1,68 @@
+From f0ccc0fee51e272776af8b4f85f4b4d2d2854bf7 Mon Sep 17 00:00:00 2001
+From: Egbert Eich <eich@suse.com>
+Date: Tue, 22 Sep 2020 09:42:40 +0200
+Subject: [PATCH 2/4] Make spack paths compliant to distro installation
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ etc/spack/defaults/config.yaml | 8 ++++----
+ etc/spack/defaults/repos.yaml  | 2 +-
+ lib/spack/spack/paths.py       | 2 +-
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/etc/spack/defaults/config.yaml b/etc/spack/defaults/config.yaml
+index d1a7f35a6..4813a8a0a 100644
+--- a/etc/spack/defaults/config.yaml
++++ b/etc/spack/defaults/config.yaml
+@@ -31,13 +31,13 @@ config:
+ 
+   # Locations where templates should be found
+   template_dirs:
+-    - $spack/share/spack/templates
++    - /usr/share/spack/templates
+ 
+ 
+   # Locations where different types of modules should be installed.
+   module_roots:
+-    tcl:    $spack/share/spack/modules
+-    lmod:   $spack/share/spack/lmod
++    tcl:    /usr/share/spack/modules
++    lmod:   /usr/share/spack/lmod
+ 
+ 
+   # Temporary locations Spack can try to use for builds.
+@@ -77,7 +77,7 @@ config:
+ 
+   # Cache directory for already downloaded source tarballs and archived
+   # repositories. This can be purged with `spack clean --downloads`.
+-  source_cache: $spack/var/spack/cache
++  source_cache: /var/spack/cache
+ 
+ 
+   # Cache directory for miscellaneous files, like the package index.
+diff --git a/etc/spack/defaults/repos.yaml b/etc/spack/defaults/repos.yaml
+index f3e00653e..246919425 100644
+--- a/etc/spack/defaults/repos.yaml
++++ b/etc/spack/defaults/repos.yaml
+@@ -11,4 +11,4 @@
+ #   ~/.spack/repos.yaml
+ # -------------------------------------------------------------------------
+ repos:
+-  - $spack/var/spack/repos/builtin
++  - /var/lib/spack/repos/builtin
+diff --git a/lib/spack/spack/paths.py b/lib/spack/spack/paths.py
+index 9c803cba7..f16e8ca54 100644
+--- a/lib/spack/spack/paths.py
++++ b/lib/spack/spack/paths.py
+@@ -39,7 +39,7 @@
+ operating_system_path = os.path.join(module_path, 'operating_systems')
+ test_path             = os.path.join(module_path, "test")
+ hooks_path            = os.path.join(module_path, "hooks")
+-var_path              = os.path.join(prefix, "var", "spack")
++var_path              = os.path.join("/", "var", "lib", "spack")
+ repos_path            = os.path.join(var_path, "repos")
+ tests_path            = os.path.join(var_path, "tests")
+ share_path            = os.path.join(prefix, "share", "spack")
+-- 
+2.26.2
+

@@ -1,0 +1,143 @@
+From fbbddf93f0715830a6ae9842c91f89ae40973619 Mon Sep 17 00:00:00 2001
+From: Egbert Eich <eich@suse.com>
+Date: Sat, 21 Nov 2020 21:46:02 +0100
+Subject: [PATCH 4/4] Adapt shell scripts that set up the environment for
+ different shells
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ share/spack/setup-env.csh  |  5 +++-
+ share/spack/setup-env.fish | 15 +---------
+ share/spack/setup-env.sh   | 57 +++-----------------------------------
+ 3 files changed, 9 insertions(+), 68 deletions(-)
+
+diff --git a/share/spack/setup-env.csh b/share/spack/setup-env.csh
+index b70036456..ab3d941ef 100755
+--- a/share/spack/setup-env.csh
++++ b/share/spack/setup-env.csh
+@@ -12,6 +12,10 @@
+ #
+ 
+ # prevent infinite recursion when spack shells out (e.g., on cray for modules)
++if ($?SPACK_ROOT == 0) then
++    setenv SPACK_ROOT = @@_prefix@@
++endif
++
+ if ($?_sp_initializing) then
+     exit 0
+ endif
+@@ -59,7 +63,6 @@ alias spacktivate    'spack env activate'
+ alias _spack_pathadd 'set _pa_args = (\!*) && source $_spack_share_dir/csh/pathadd.csh'
+ 
+ # Set variables needed by this script
+-_spack_pathadd PATH "$SPACK_ROOT/bin"
+ eval `spack --print-shell-vars csh`
+ 
+ # Set up module search paths in the user environment
+diff --git a/share/spack/setup-env.fish b/share/spack/setup-env.fish
+index b74eae34d..decb718e1 100755
+--- a/share/spack/setup-env.fish
++++ b/share/spack/setup-env.fish
+@@ -660,20 +660,7 @@ end
+ 
+ 
+ 
+-#
+-# Figure out where this file is. Below code only needs to work in fish
+-#
+-set -l sp_source_file (status -f)  # name of current file
+-
+-
+-
+-#
+-# Find root directory and add bin to path.
+-#
+-set -l sp_share_dir (realpath (dirname $sp_source_file))
+-set -l sp_prefix (realpath (dirname (dirname $sp_share_dir)))
+-spack_pathadd PATH "$sp_prefix/bin"
+-set -xg SPACK_ROOT $sp_prefix
++set -xg SPACK_ROOT @@_prefix@@
+ 
+ 
+ 
+diff --git a/share/spack/setup-env.sh b/share/spack/setup-env.sh
+index 5761d1636..768866abe 100755
+--- a/share/spack/setup-env.sh
++++ b/share/spack/setup-env.sh
+@@ -246,58 +246,6 @@ _sp_shell=$(_spack_determine_shell)
+ 
+ alias spacktivate="spack env activate"
+ 
+-#
+-# Figure out where this file is.
+-#
+-if [ "$_sp_shell" = bash ]; then
+-    _sp_source_file="${BASH_SOURCE[0]:-}"
+-elif [ "$_sp_shell" = zsh ]; then
+-    _sp_source_file="${(%):-%N}"
+-else
+-    # Try to read the /proc filesystem (works on linux without lsof)
+-    # In dash, the sourced file is the last one opened (and it's kept open)
+-    _sp_source_file_fd="$(\ls /proc/$$/fd 2>/dev/null | sort -n | tail -1)"
+-    if ! _sp_source_file="$(readlink /proc/$$/fd/$_sp_source_file_fd)"; then
+-        # Last resort: try lsof. This works in dash on macos -- same reason.
+-        # macos has lsof installed by default; some linux containers don't.
+-        _sp_lsof_output="$(lsof -p $$ -Fn0 | tail -1)"
+-        _sp_source_file="${_sp_lsof_output#*n}"
+-    fi
+-
+-    # If we can't find this script's path after all that, bail out with
+-    # plain old $0, which WILL NOT work if this is sourced indirectly.
+-    if [ ! -f "$_sp_source_file" ]; then
+-        _sp_source_file="$0"
+-    fi
+-fi
+-
+-#
+-# Find root directory and add bin to path.
+-#
+-# We send cd output to /dev/null to avoid because a lot of users set up
+-# their shell so that cd prints things out to the tty.
+-_sp_share_dir="$(cd "$(dirname $_sp_source_file)" > /dev/null && pwd)"
+-_sp_prefix="$(cd "$(dirname $(dirname $_sp_share_dir))" > /dev/null && pwd)"
+-if [ -x "$_sp_prefix/bin/spack" ]; then
+-    export SPACK_ROOT="${_sp_prefix}"
+-else
+-    # If the shell couldn't find the sourced script, fall back to
+-    # whatever the user set SPACK_ROOT to.
+-    if [ -n "$SPACK_ROOT" ]; then
+-        _sp_prefix="$SPACK_ROOT"
+-        _sp_share_dir="$_sp_prefix/share/spack"
+-    fi
+-
+-    # If SPACK_ROOT didn't work, fail.  We should need this rarely, as
+-    # the tricks above for finding the sourced file are pretty robust.
+-    if [ ! -x "$_sp_prefix/bin/spack" ]; then
+-        echo "==> Error: SPACK_ROOT must point to spack's prefix when using $_sp_shell"
+-        echo "Run this with the correct prefix before sourcing setup-env.sh:"
+-        echo "    export SPACK_ROOT=</path/to/spack>"
+-        return 1
+-    fi
+-fi
+-_spack_pathadd PATH "${_sp_prefix%/}/bin"
+ 
+ #
+ # Check whether a function of the given name is defined
+@@ -369,10 +317,13 @@ _sp_multi_pathadd() {
+ }
+ _sp_multi_pathadd MODULEPATH "$_sp_tcl_roots"
+ 
+++export SPACK_ROOT=@@_prefix@@
++
++
+ # Add programmable tab completion for Bash
+ #
+ if [ "$_sp_shell" = bash ]; then
+-    source $_sp_share_dir/spack-completion.bash
++  source $SPACK_ROOT/share/spack/spack-completion.bash
+ fi
+ 
+ # done: unset sentinel variable as we're no longer initializing
+-- 
+2.26.2
+

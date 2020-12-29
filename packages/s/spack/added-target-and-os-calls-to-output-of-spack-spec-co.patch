@@ -1,0 +1,84 @@
+From 239be0609302d296e6d4d275e800e505466011ab Mon Sep 17 00:00:00 2001
+From: Christian Goll <cgoll@suse.de>
+Date: Fri, 11 Dec 2020 15:37:48 +0100
+Subject: [PATCH 2/2] added target and os calls to output of spack spec
+ commands
+
+---
+ lib/spack/docs/developer_guide.rst | 2 +-
+ lib/spack/docs/getting_started.rst | 2 +-
+ lib/spack/docs/packaging_guide.rst | 6 +++---
+ lib/spack/docs/workflows.rst       | 2 +-
+ 4 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/lib/spack/docs/developer_guide.rst b/lib/spack/docs/developer_guide.rst
+index 7fd4d1ec6..e2c7689ad 100644
+--- a/lib/spack/docs/developer_guide.rst
++++ b/lib/spack/docs/developer_guide.rst
+@@ -488,7 +488,7 @@ supply ``--profile`` to Spack on the command line, before any subcommands.
+ 
+ ``spack --profile`` output looks like this:
+ 
+-.. command-output:: spack --profile graph hdf5
++.. command-output:: spack --profile graph hdf5 os=SUSE target=x86_64
+    :ellipsis: 25
+ 
+ The bottom of the output shows the top most time consuming functions,
+diff --git a/lib/spack/docs/getting_started.rst b/lib/spack/docs/getting_started.rst
+index f1df0343b..b32d82c37 100644
+--- a/lib/spack/docs/getting_started.rst
++++ b/lib/spack/docs/getting_started.rst
+@@ -83,7 +83,7 @@ Check Installation
+ With Spack installed, you should be able to run some basic Spack
+ commands.  For example:
+ 
+-.. command-output:: spack spec netcdf-c
++.. command-output:: spack spec netcdf-c target=x86_64 os=SUSE
+ 
+ In theory, Spack doesn't need any additional installation; just
+ download and run!  But in real life, additional steps are usually
+diff --git a/lib/spack/docs/packaging_guide.rst b/lib/spack/docs/packaging_guide.rst
+index 66caddeb0..20bffef35 100644
+--- a/lib/spack/docs/packaging_guide.rst
++++ b/lib/spack/docs/packaging_guide.rst
+@@ -4540,13 +4540,13 @@ Spack provides the ``spack graph`` command for graphing dependencies.
+ The command by default generates an ASCII rendering of a spec's
+ dependency graph.  For example:
+ 
+-.. command-output:: spack graph hdf5
++.. command-output:: spack graph hdf5 target=x86_64 os=SUSE
+ 
+ At the top is the root package in the DAG, with dependency edges emerging
+ from it.  On a color terminal, the edges are colored by which dependency
+ they lead to.
+ 
+-.. command-output:: spack graph --deptype=link hdf5
++.. command-output:: spack graph --deptype=link hdf5 target=x86_64 os=SUSE
+ 
+ The ``deptype`` argument tells Spack what types of dependencies to graph.
+ By default it includes link and run dependencies but not build
+@@ -4561,7 +4561,7 @@ dependencies.  The default is ``--deptype=all``, which is equivalent to
+ You can also use ``spack graph`` to generate graphs in the widely used
+ `Dot <http://www.graphviz.org/doc/info/lang.html>`_ format.  For example:
+ 
+-.. command-output:: spack graph --dot hdf5
++.. command-output:: spack graph --dot hdf5 target=x86_64 os=SUSE
+ 
+ This graph can be provided as input to other graphing tools, such as
+ those in `Graphviz <http://www.graphviz.org>`_.  If you have graphviz
+diff --git a/lib/spack/docs/workflows.rst b/lib/spack/docs/workflows.rst
+index 4d3a97012..dbeb0df2c 100644
+--- a/lib/spack/docs/workflows.rst
++++ b/lib/spack/docs/workflows.rst
+@@ -38,7 +38,7 @@ possible realization of a particular package, out of combinatorially
+ many other realizations.  For example, here is a concrete spec
+ instantiated from ``curl``:
+ 
+-.. command-output:: spack spec curl
++.. command-output:: spack spec curl target=x86_64 os=SUSE
+ 
+ Spack's core concretization algorithm generates concrete specs by
+ instantiating packages from its repo, based on a set of "hints",
+-- 
+2.26.2
+
