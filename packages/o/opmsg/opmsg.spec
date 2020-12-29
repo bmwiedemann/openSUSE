@@ -1,7 +1,7 @@
 #
 # spec file for package opmsg
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           opmsg
-Version:        1.77s
+Version:        1.78s
 Release:        0
 Summary:        File encryption, sign and verify utility
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Security
-Url:            https://github.com/stealth/opmsg
+URL:            https://github.com/stealth/opmsg
 Source0:        https://github.com/stealth/opmsg/archive/rel-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 #BuildRequires:  help2man
@@ -50,7 +50,7 @@ output looks similar, the concept is entirely different.
 
 %build
 pushd src
-make %{?_smp_mflags} all contrib
+%make_build all contrib
 
 %install
 pushd src
@@ -62,7 +62,8 @@ install opcoin %{buildroot}/%{_bindir}/opcoin
 #help2man ./%{name} --no-info --output %{buildroot}/%{_mandir}/man1/%{name}.1
 
 %files
-%doc README.md LICENSE sample.config GPL3
+%license LICENSE
+%doc README.md sample.config GPL3
 %{_bindir}/%{name}
 %{_bindir}/opmux
 %{_bindir}/opcoin
