@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Dec 21 15:43:34 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2020.0.0:
+  * Fixes fast preview on HiDPI screens under GTK+3 and MacOS.
+  * Make fast preview screen zoomable with mouse wheel.
+  * Make hugin_hdrmerge aware of cropped intermediate images.
+  * Several improvements for command line tools (pto_var,
+    pto_move, pto_gen, autooptimiser).
+  * More checks in GUI for strange user input.
+  * Fixes for several bugs.
+- Rebase hugin.appdata.patch to apply cleanly against updated
+  version.
+- Drop pushd-popd sequence bracketing %cmake_install: no longer
+  needed.
+- Adapt file list for appdata -> metainfo change in appdata
+  location.
+- Adapt mv of mimetype icon for change of file name.
+- Pass USE_GDKBACKEND_X11=ON to cmake to enable a workaround to
+  launch on Wayland using the X11 Gdk backend; does not work on
+  Wayland otherwise (see Known issues in Changes.txt).
+- Fix EOL encodings on Changes.txt.
+
+-------------------------------------------------------------------
 Thu Aug 20 13:03:26 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use wxGTK3 instead of wxWidgets (GTK2), for better HiDPI support.

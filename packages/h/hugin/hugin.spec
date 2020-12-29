@@ -53,8 +53,8 @@ BuildRequires:  sqlite3-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  vigra-devel
 BuildRequires:  wxGTK3-devel >= 3
-%define mversion 2019.2
-Version:        2019.2.0
+%define mversion 2020.0
+Version:        2020.0.0
 Release:        0
 Summary:        Toolchain for Stitching of Images and Creating Panoramas
 License:        GPL-2.0-or-later
@@ -83,6 +83,8 @@ detection and extraction of key points.
 
 chmod -x AUTHORS authors.txt Changes.txt README COPYING.txt
 
+sed -i "s/\r$//" Changes.txt
+
 # Rename Czech in Czech Republic to Czech.
 mv src/translations/cs_CZ.po src/translations/cs.po
 #sed -i "s/ca_ES/ca/;s/cs_CZ/cs/" src/hugin/po/LINGUAS
@@ -92,15 +94,13 @@ mv src/translations/cs_CZ.po src/translations/cs.po
 	-DENABLE_LAPACK=%{?with_lapack:ON}%{!?with_lapack:OFF} \
 	-DBUILD_HSI=%{?with_hsi:ON}%{!?with_hsi:OFF} \
 	-DCMAKE_SKIP_RPATH:BOOL=OFF \
-	..
+        -DUSE_GDKBACKEND_X11:BOOL=ON
 
 %cmake_build
 
 %install
-pushd .
 %cmake_install
 
-popd
 %suse_update_desktop_file hugin 2DGraphics
 %suse_update_desktop_file PTBatcherGUI 2DGraphics
 %suse_update_desktop_file calibrate_lens_gui 2DGraphics
@@ -109,7 +109,7 @@ popd
 
 # Use better place for MIME icon.
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/48x48/mimetypes
-mv -f %{buildroot}%{_datadir}/icons/{gnome/48x48/mimetypes/gnome-mime-,hicolor/48x48/mimetypes/}application-x-ptoptimizer-script.png
+mv -f %{buildroot}%{_datadir}/icons/{gnome,hicolor}/48x48/mimetypes/application-x-ptoptimizer-script.png
 rmdir -p --ignore-fail-on-non-empty %{buildroot}%{_datadir}/icons/gnome/48x48/mimetypes
 
 # Install manually so it can be dedup'ed with the one in the program resources
@@ -126,8 +126,8 @@ install -m644 -D -t %{buildroot}%{_licensedir}/hugin/ COPYING.txt
 %{_datadir}/icons/hicolor/*/apps/*.png
 %{_datadir}/icons/hicolor/scalable/apps/*.svg
 %{_datadir}/mime/packages/*.xml
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/*xml
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/*xml
 %dir %{_libdir}/hugin
 %{_libdir}/hugin/*.so.*
 %doc %{_mandir}/man?/*.*

@@ -2,10 +2,10 @@ Index: platforms/linux/appdata/PTBatcherGUI.appdata.xml
 ===================================================================
 --- platforms/linux/appdata/PTBatcherGUI.appdata.xml.orig
 +++ platforms/linux/appdata/PTBatcherGUI.appdata.xml
-@@ -3,7 +3,7 @@
- <application>
-  <id type="desktop">PTBatcherGUI.desktop</id>
-  <licence>GFDL</licence>
+@@ -13,7 +13,7 @@
+  <metadata_license>GFDL</metadata_license>
+  <project_license>GPL-2.0-or-later</project_license>
+  <content_rating type="oars-1.1" />
 - <name>Hugin batch processor</name>
 + <name>Hugin Batch Processor</name>
   <summary>A GUI queue manager for stitching multiple hugin projects</summary>
@@ -15,10 +15,10 @@ Index: platforms/linux/appdata/calibrate_lens_gui.appdata.xml
 ===================================================================
 --- platforms/linux/appdata/calibrate_lens_gui.appdata.xml.orig
 +++ platforms/linux/appdata/calibrate_lens_gui.appdata.xml
-@@ -3,7 +3,7 @@
- <application>
-  <id type="desktop">calibrate_lens_gui.desktop</id>
-  <licence>GFDL</licence>
+@@ -13,7 +13,7 @@
+  <metadata_license>GFDL</metadata_license>
+  <project_license>GPL-2.0-or-later</project_license>
+  <content_rating type="oars-1.1" />
 - <name>Hugin calibrate lens</name>
 + <name>Hugin Calibrate Lens</name>
   <summary>Automatic lens calibration</summary>
@@ -28,10 +28,10 @@ Index: platforms/linux/appdata/hugin.appdata.xml
 ===================================================================
 --- platforms/linux/appdata/hugin.appdata.xml.orig
 +++ platforms/linux/appdata/hugin.appdata.xml
-@@ -3,7 +3,7 @@
- <application>
-  <id type="desktop">hugin.desktop</id>
-  <licence>GFDL</licence>
+@@ -13,7 +13,7 @@
+  <metadata_license>GFDL</metadata_license>
+  <project_license>GPL-2.0-or-later</project_license>
+  <content_rating type="oars-1.1" />
 - <name>hugin</name>
 + <name>Hugin Panorama Creator</name>
   <summary>A panoramic photo stitcher and more</summary>
