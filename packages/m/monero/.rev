@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>966e8f7b116099ce81a5a3fa907720f4</srcmd5>
+    <version>0.17.1.7</version>
+    <time>1609253339</time>
+    <user>dimstar_suse</user>
+    <comment>Updated .spec file to simplify version checking, as recommended by @dimstar</comment>
+    <requestid>856780</requestid>
+  </revision>
+</revisionlist>
