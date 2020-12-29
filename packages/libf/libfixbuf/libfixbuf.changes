@@ -1,0 +1,147 @@
+-------------------------------------------------------------------
+Sun Nov 29 19:06:50 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.0
+  * Enhanced the output of ipfixDump by (1) including the
+    template's name with its list of elements, (2) adding the
+    templates' names to the stats output, (3) marking scope
+    elements in templates and their corresponding values in data
+    records, and (4) including the name for list semantics.
+  * Changed how the information model handles the re-insertion an
+    existing element to reuse the existing element instead of
+    using new memory.
+  * Added stricter checking of the elements lengths' specified in
+    a template. Currently a log message is written for an invalid
+    length; in the future, this may cause the template to be
+    rejected.
+
+-------------------------------------------------------------------
+Thu Apr 18 21:05:07 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.1
+  * Fixed a double-freeing of memory and memory leaks in some of
+    the error handling code.
+
+-------------------------------------------------------------------
+Wed Mar 20 21:22:39 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.0
+  * Added the ipfixDump application which used to be included with
+    YAF, and made many changes to the application.
+    Use configure --disable-tools to prevent building and installing
+    ipfixDump.
+  * Fixed bugs in reading and writing information elements whose
+    type was list and elementId was a value other than 291, 292, or 293.
+  * information element type information and exporting template
+    metadata.
+- Update to version 2.2.0
+  * Added functions to return the buffer size required to read a
+    template and the maximum buffer size to process all known
+    templates in a session.
+  * Modified library to return an error when a user attempts to use
+    a reserved template ID.
+  * Fixed a potential use-after-free bug triggered by pyfixbuf.
+
+-------------------------------------------------------------------
+Sat Jul 14 18:44:34 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.1.0
+  * Add functions to update the Information Model with Information
+    Elements read from a file or a string containing XML data
+  * Set an element's endian flag when incorporating elements from
+    options records
+  * GLib 2.18 or later is now required
+
+-------------------------------------------------------------------
+Thu May  3 18:08:48 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.0.0
+  * This version is not backwards-compatible with fixbuf 1.x.
+  * Change source for infomodel to the IANA XML version of the
+    IPFIX Information Elements.
+  * Require information element specifications for internal records to
+    have non-defaulted (non-zero) sizes.
+  * Simplify new template callbacks, subsuming the three variants with
+    one: fbSessionAddNewTemplateCallback().
+  * The default is now to consider the source port when separating
+    incoming UDP streams.  The function fbCollectorManageUDPStreamByPort()
+    has been removed.
+  * Change fbInfoElementWriteOptionsRecord() to take both the internal and
+    external template id.
+  * Update to LGPL 3.
+
+- Update to version 1.8.0
+  * The ability to add template metadata to exported templates
+  * Macro to check fixbuf version number
+  * Minor bug fixes
+
+-------------------------------------------------------------------
+Sun Oct 22 14:56:42 UTC 2017 - mardnh@gmx.de
+
+- Update to version 1.7.1:
+  + Bug Fix for NetFlow v9 devices that implement
+    Reverse Information Elements
+
+-------------------------------------------------------------------
+Sat Jul  4 19:36:29 UTC 2015 - mardnh@gmx.de
+
+- Version 1.7.0: 2015-07-01
+  + Update IPFIX Information Elements to be compatible with IANA registry
+  + Add recursive freeing function fBufListFree() to free structured data
+    elements
+  + Ignore extra filling bytes in sFlow records
+  + Bug Fix for NetFlow v9 Options Template Parsing
+  + Other Bug Fixes
+
+-------------------------------------------------------------------
+Sun Dec 28 11:15:13 UTC 2014 - mardnh@gmx.de
+
+- Version 1.6.2: 2014-12-03
+  + Bug Fix for NetFlow v9 collectors with multiple streams
+  + Other Bug Fixes
+
+- Version 1.6.1: 2014-10-14
+  + Bug Fix for UDP connections that timeout frequently
+
+- Version 1.6.0: 2014-09-29
+  + New Support for sFlow
+  + Added support for decoding basicLists with unknown information elements
+  + New Template Callback Function
+  + Updated IPFIX Information Elements to be compatible with IANA registry
+
+- Version 1.5.0: 2014-06-18
+  + Updated IPFIX Information Elements to be compatible with IANA registry
+  + Added the ability to decode IPFIX from application's own data buffer
+  + Replaced select() with poll() for fbListeners.
+    Applications will now bind to all addresses returned by getaddrinfo
+  + Added an InfoModel Iterator
+  + Removed fbListenerGroupWaitAcceptCallback() API function
+  + Removed fbListenerWaitAcceptCallback() API function
+  + Renamed IPFIX Structured Data Type Semantic #defines
+  + Bug Fix for NetFlow v9 Options Templates
+  + Other Bug Fixes
+
+- Version 1.4.0: 2013-12-02
+  + pyfixbuf, a python API for libfixbuf, is included as a separate package
+    within the tarball (optional install)
+  + UDP IPFIX Listeners now reject IPFIX messages with invalid version numbers
+  + Added Environment Variable, FB_SUPPRESS_LOGS, to suppress NetFlow v9
+    log messages
+  + NetFlow v9 Options Templates and Records are now collected and translated
+    to IPFIX.
+  + An fbInfoElement_st now contains all of the properties listed in RFC 5610.
+  + Added a macro, FB_IE_INIT_FULL, to define an Information Element with
+    additional properties
+  + New API functions to create Options Templates/Records for encoding
+    Information Element type information.
+  + New API functions to collect Information Element type records.
+  + New Template Callback for application to provide context to an incoming
+    Template.
+  + IPFIX Elements updated to be compatible with IANA registry.
+  + NetFlow v9 compatible elements added to default Information Model.
+
+-------------------------------------------------------------------
+Sat Sep  7 20:01:40 UTC 2013 - mardnh@gmx.de
+
+- initial package written from scratch
+
