@@ -17,55 +17,35 @@
 
 
 %define chroot %{_localstatedir}/lib/privoxy
-%if 0%{?suse_version} > 1210
-%define with_systemd 1
-%else
-%define with_systemd 0
-%endif
 Name:           privoxy
-Version:        3.0.28
+Version:        3.0.29
 Release:        0
 Summary:        The Internet Junkbuster - HTTP Proxy Server
-License:        GPL-2.0-or-later
+License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Proxy
-URL:            http://www.privoxy.org/
-Source:         http://sourceforge.net/projects/ijbswa/files/Sources/%{version}%%20%%28stable%%29/%{name}-%{version}-stable-src.tar.gz
-Source2:        %{name}-3.0.16-init.suse
+URL:            https://www.privoxy.org/
+Source:         https://www.privoxy.org/sf-download-mirror/Sources/%{version}%%20%%28stable%%29/%{name}-%{version}-stable-src.tar.gz
+Source2:        https://www.privoxy.org/sf-download-mirror/Sources/%{version}%%20%%28stable%%29/%{name}-%{version}-stable-src.tar.gz.asc
 Source3:        %{name}.service
+Source4:        %{name}.logrotate.systemd
+Source5:        https://www.fabiankeil.de/gpg-keys/fk-8BA2371C.asc#/%{name}.keyring
 Patch1:         %{name}-3.0.21-config.patch
 Patch2:         %{name}-3.0.17-utf8.patch
-BuildRequires:  automake
-BuildRequires:  pcre-devel
-BuildRequires:  w3m
-BuildRequires:  zlib-devel
-Requires:       cron
-Requires:       logrotate
-Provides:       ijb = %{version}
-Obsoletes:      ijb < %{version}
-Provides:       junkbuster = %{version}
-Obsoletes:      junkbuster < %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if %{with_systemd}
-BuildRequires:  pkgconfig(systemd)
-%endif
-%if %{with_systemd}
-# FIXME: use proper Requires(pre/post/preun/...)
-PreReq:         %{_sbindir}/useradd %{_sbindir}/groupadd
-%{?systemd_ordering}
-%else
-# FIXME: use proper Requires(pre/post/preun/...)
-PreReq:         %fillup_prereq %insserv_prereq %{_sbindir}/useradd %{_sbindir}/groupadd
-%endif
-%if %{with_systemd}
-Source1:        %{name}.logrotate.systemd
-%else
-Source1:        %{name}.logrotate
-%endif
-%if %{with_systemd}
 Patch3:         %{name}-3.0.16-networkmanager.systemd.patch
-%else
-Patch3:         %{name}-3.0.16-networkmanager.patch
-%endif
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  pkgconfig
+BuildRequires:  w3m
+BuildRequires:  pkgconfig(libbrotlicommon)
+BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(libpcre)
+BuildRequires:  pkgconfig(libssl)
+BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(zlib)
+Requires:       logrotate
+Requires(pre):  %{_sbindir}/groupadd
+Requires(pre):  %{_sbindir}/useradd
+%{?systemd_ordering}
 
 %description
 The Internet Junkbuster - HTTP Proxy Server: A non-caching HTTP proxy
@@ -92,134 +72,63 @@ configuration files.
 
 %build
 autoreconf -fiv
-%configure --enable-zlib
-make %{?_smp_mflags}
+%configure \
+	--enable-compression \
+	--with-openssl\
+	--with-brotli \
+	--enable-extended-statistics \
+	--enable-pcre-host-patterns
+
+%make_build
 
 %install
-%if %{with_systemd}
 mkdir -p %{buildroot}/%{_unitdir}
-%else
-mkdir -p %{buildroot}%{_sysconfdir}/init.d
-%endif
 mkdir -p %{buildroot}%{_sysconfdir}/logrotate.d
-mkdir -p %{buildroot}/%{chroot}/etc
-mkdir -p %{buildroot}%{_prefix}/sbin
+mkdir -p %{buildroot}/%{chroot}%{_sysconfdir}
+mkdir -p %{buildroot}%{_sbindir}
 mkdir -p %{buildroot}/%{chroot}/log
 mkdir -p %{buildroot}/%{chroot}%{_localstatedir}/log
 mkdir -p %{buildroot}/%{chroot}%{_localstatedir}/run
 mkdir -p %{buildroot}/%{chroot}/%{_lib}
 mkdir -p %{buildroot}%{_mandir}/man1
 mkdir -p %{buildroot}%{_sysconfdir}/NetworkManager/dispatcher.d
-cp -a templates %{buildroot}/%{chroot}/etc
-install -m 644 config *.action *.filter trust %{buildroot}/%{chroot}/etc
-%if %{with_systemd}
+cp -a templates %{buildroot}/%{chroot}%{_sysconfdir}
+install -m 644 config *.action *.filter trust %{buildroot}/%{chroot}%{_sysconfdir}
 sed -e 's/@lib@/%{_lib}/g' %{SOURCE3} > %{buildroot}/%{_unitdir}/%{name}.service
-%if 0%{?suse_version} >= 1310
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
-%else
-ln -sf /sbin/service %{buildroot}%{_sbindir}/rc%{name}
-%endif
-%else
-install -m 755 %{SOURCE2} %{buildroot}%{_initddir}/privoxyd
-ln -sf ../..%{_initddir}/privoxyd %{buildroot}%{_sbindir}/rcprivoxyd
-ln -sf ../..%{_initddir}/privoxyd %{buildroot}%{_sbindir}/rcprivoxy
-%endif
-install -m 755 privoxy %{buildroot}%{_prefix}/sbin
+install -m 755 privoxy %{buildroot}%{_sbindir}
 install -m 755 privoxy_nm %{buildroot}%{_sysconfdir}/NetworkManager/dispatcher.d/privoxyd
 install -m 644 privoxy.1 %{buildroot}%{_mandir}/man1
-install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/logrotate.d/privoxy
+install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/logrotate.d/privoxy
 ln -s ../../log %{buildroot}/%{chroot}%{_localstatedir}/log/privoxy
 ln -sf %{chroot}%{_sysconfdir}/ %{buildroot}%{_sysconfdir}/privoxy
 
 %pre
-%if %{with_systemd}
-mkdir -p %{_localstatedir}/lib/systemd/migrated || :
-if test $1 -eq 1; then
-  touch %{_localstatedir}/lib/systemd/migrated/%{name} || :
-else
-  if test ! -e %{_localstatedir}/lib/systemd/migrated/%{name}; then
-    # %{_sbindir}/systemd-sysv-convert --save privoxy{d}
-    find_service() {
-      local runlevel
-      runlevel=$1
-      priority=-1
-      for l in %{_sysconfdir}/rc.d/rc$runlevel.d/*; do
-	test -f "$l" || continue
-	initscript=$(basename $l)
-	case "$initscript" in
-	  S??privoxyd) ;;
-	  *) continue ;;
-	esac
-	n="$(echo "$initscript" | cut -b2,3)"
-	if [ $n -ge 0 -a $n -le 99 ] &&
-	   [ $n -ge $priority ]; then
-	  if [ ${n%%?} = 0 ]; then
-	    priority=${n#?}
-	  else
-	    priority=$n
-	  fi
-	fi
-      done
-      if test $priority -ge 0; then
-	return $priority
-      else
-	return 255
-      fi
-    }
-    if test -r %{_initddir}/privoxyd; then
-      for runlevel in 2 3 4 5; do
-	find_service $runlevel
-	priority=$?
-	if test $priority -lt 255; then
-	  printf "%%s\t%%s\t%%s\n" %{name} $runlevel $priority >> %{_localstatedir}/lib/systemd/sysv-convert/database
-	fi
-      done
-    fi
-  fi
-fi
-%endif
+%service_add_pre %{name}.service
 %{_sbindir}/groupadd -r privoxy 2> /dev/null ||:
 %{_sbindir}/useradd -r -g privoxy -s /bin/false -c "Daemon user for privoxy" \
  -d %{_localstatedir}/lib/privoxy privoxy 2> /dev/null ||:
 exit 0
 
 %post
-%if %{with_systemd}
 %service_add_post %{name}.service
-%else
-%{fillup_and_insserv privoxyd}
-%endif
-# create logfiles if missing
-for i in ./%{chroot}/log/logfile ./%{chroot}/log/jarfile; do
-	if ! test -e $i; then touch $i; chown privoxy: $i; chmod 640 $i ; fi
-done
-exit 0
 
 %preun
-%if %{with_systemd}
 %service_del_preun %{name}.service
-%else
-%stop_on_removal privoxyd
-%endif
 
 %postun
-%if %{with_systemd}
 %service_del_postun %{name}.service
-%else
-%restart_on_update privoxyd
-%insserv_cleanup
-%endif
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS LICENSE README ChangeLog
+%license LICENSE
+%doc AUTHORS README ChangeLog
 %{_sbindir}/privoxy
 %{_sysconfdir}/NetworkManager/dispatcher.d/privoxyd
 %dir %{_sysconfdir}/NetworkManager
 %dir %{_sysconfdir}/NetworkManager/dispatcher.d
-%{_mandir}/man1/privoxy.1.gz
+%{_mandir}/man1/privoxy.1%{?ext_man}
 %config(noreplace) %{_sysconfdir}/logrotate.d/privoxy
-%dir /%{chroot}/etc
+%dir /%{chroot}%{_sysconfdir}
 %config(noreplace) /%{chroot}%{_sysconfdir}/config
 %config(noreplace) /%{chroot}%{_sysconfdir}/trust
 %config /%{chroot}%{_sysconfdir}/match-all.action
@@ -229,20 +138,15 @@ exit 0
 %dir %{chroot}
 %{chroot}%{_sysconfdir}/templates
 %dir %attr(770,root,privoxy) %{chroot}/log
-%{chroot}/var
+%{chroot}%{_localstatedir}
 %{chroot}/%{_lib}
 %{chroot}%{_sysconfdir}/regression-tests.action
-%if %{with_systemd}
 %{_unitdir}/%{name}.service
-%else
-%config %{_initddir}/privoxyd
-%{_sbindir}/rcprivoxyd
-%endif
 %{_sbindir}/rcprivoxy
 %{_sysconfdir}/privoxy
 
 %files doc
-%defattr(-,root,root)
+%license LICENSE
 %doc doc/source
 
 %changelog

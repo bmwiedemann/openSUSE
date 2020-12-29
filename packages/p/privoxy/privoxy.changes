@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Sun Dec  6 19:51:59 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- privoxy 3.0.29:
+  * Fixed memory leaks when a response is buffered and the buffer
+    limit is reached or Privoxy is running out of memory.
+    OVE-20201118-0001
+  * Fixed a memory leak in the show-status CGI handler when
+    no action files are configured
+    OVE-20201118-0002
+  * Fixed a memory leak in the show-status CGI handler when
+    no filter files are configured
+    OVE-20201118-0003
+  * Fixes a memory leak when client tags are active
+    OVE-20201118-0004
+  * Fixed a memory leak if multiple filters are executed
+    and the last one is skipped due to a pcre error
+    OVE-20201118-0005
+  * Prevent an unlikely dereference of a NULL-pointer that
+    could result in a crash if accept-intercepted-requests
+    was enabled, Privoxy failed to get the request destination
+    from the Host header and a memory allocation failed.
+    OVE-20201118-0006
+  * Fixed memory leaks in the client-tags CGI handler when
+    client tags are configured and memory allocations fail.
+    OVE-20201118-0007
+  * Fixed memory leaks in the show-status CGI handler when memory
+    allocations fail
+    OVE-20201118-0008
+  * Add experimental https inspection support
+  * Use JIT compilation for static filtering for speedup
+  * Add support for Brotli decompression, add
+    'no-brotli-accepted' filter which prevents the use of 
+    Brotli compression
+  * Add feature to gather exended statistics
+  * Use IP_FREEBIND socket option to help with failover
+  * Allow to use extended host patterns and vanilla host patterns
+    at the same time by prefixing extended host patterns with
+    "PCRE-HOST-PATTERN:"
+  * Added "Cross-origin resource sharing" (CORS) support
+  * Add SOCKS5 username/password support
+  * Bump the maximum number of action and filter files
+    to 100 each
+  * Fixed handling of filters with "split-large-forms 1"
+    when using the CGI editor.
+  * Better detect a mismatch of connection details when
+    figuring out whether or not a connection can be reused
+  * Don't send a "Connection failure" message instead of the
+    "DNS failure" message
+  * Let LOG_LEVEL_REQUEST log all requests
+  * Improvements to default Action file
+- license changed to GPLv3
+- remove packaging vulnerability boo#1157449
+- remove packaging for distributions without systemd
+  drops privoxy-3.0.16-networkmanager.patch
+
+-------------------------------------------------------------------
+Sun Dec  6 11:55:41 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- add upstream signing key and verify source signature
+
+-------------------------------------------------------------------
 Wed Aug 19 10:03:07 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Stop trying to mangle _unitdir: this is defined in all supported
