@@ -19,7 +19,7 @@
 %global qt_version %(qtpaths --qt-version | awk -F. '{ printf "%02d%02d%02d", $1, $2, $3 }')
 
 Name:           stellarium
-Version:        0.20.3
+Version:        0.20.4
 Release:        0
 Summary:        Astronomical Sky Simulator
 License:        GPL-2.0-or-later
@@ -66,13 +66,13 @@ binoculars or a small telescope.
 %build
 export QT_HASH_SEED=0
 %cmake -DBUILD_SHARED_LIBS=OFF -DCMAKE_POLICY_DEFAULT_CMP0063=NEW \
-%if %{qt_version} >= 051500 && %{qt_version} < 051502
+%if %{qt_version} >= 051500 && %{qt_version} < 051503
 %ifarch i586
        -DENABLE_NLS=OFF \
 %endif
 %endif
        -DCMAKE_CXX_VISIBILITY_PRESET=hidden -DCMAKE_VISIBILITY_INLINES_HIDDEN=1
-%if %{qt_version} >= 051500 && %{qt_version} < 051502
+%if %{qt_version} >= 051500 && %{qt_version} < 051503
 %make_jobs -j1
 %else
 %make_jobs
@@ -80,10 +80,6 @@ export QT_HASH_SEED=0
 
 %install
 %cmake_install
-
-# Remove .xpm icon from /usr/share/pixmaps as we already
-# install appropriate icons in the hicolor directory
-rm %{buildroot}%{_datadir}/pixmaps/%{name}.xpm
 
 %suse_update_desktop_file -c stellarium Stellarium "Planetarium in your computer" stellarium stellarium Science Astronomy
 mkdir -p %{buildroot}%{_datadir}/%{name}/data/script_internet_update
@@ -112,8 +108,8 @@ mkdir -p %{buildroot}%{_datadir}/%{name}/data/script_internet_update
 %{_bindir}/%{name}
 %{_datadir}/%{name}
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/stellarium.appdata.xml
-%{_datadir}/applications/%{name}*.desktop
+%{_datadir}/metainfo/*.appdata.xml
+%{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
 %{_datadir}/mime/packages/%{name}.xml
 %{_mandir}/man1/%{name}.1%{?ext_man}

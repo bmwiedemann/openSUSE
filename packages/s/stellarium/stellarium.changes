@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 28 12:46:17 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 0.20.4
+  * Added Calendars plugin
+  * Many changes in AstroCalc tool and core of Stellarium
+  * Many changes in plugins
+  * Updated DSO catalog
+- Qt 5.15.2 also needs the workarounds for excessive memory use (fix
+  has not been included in this release)
+
+-------------------------------------------------------------------
 Mon Oct 19 13:55:12 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - Enable workarounds for excessive memory use by lconvert in Qt 5.15.0
