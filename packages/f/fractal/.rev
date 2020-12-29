@@ -117,4 +117,12 @@
     <comment></comment>
     <requestid>828465</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ac56c5f1a4a62940341443e9bd523d1a</srcmd5>
+    <version>4.4.0</version>
+    <time>1609253315</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 853752 from iznogood)</comment>
+    <requestid>853786</requestid>
+  </revision>
 </revisionlist>

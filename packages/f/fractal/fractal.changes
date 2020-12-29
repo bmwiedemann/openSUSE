@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Dec  7 21:02:36 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.4.0:
+  + New features:
+    - Videos now have a preview directly in history
+    - New videos player: click on a preview to open it
+    - Improved audio file support, with a nicer presentation and
+      seeking
+    - Redacted messages are removed from history
+    - Edited messages are replaced with their new content and show
+      a small icon
+    - Spellcheck language is saved per room
+    - New swipe-back gesture to go back from room to room list in
+      narrow view
+    - New swipe left and right gesture to navigate through media in
+      media view
+    - SOCKS proxy are now also supported
+  + Bugfixes:
+    - Thumbnail for pasted images have been fixed
+    - File type detection for uploads is more reliable
+    - Typing notifications are now only sent when text is actually
+      typed in the message input
+  + Under the hood:
+    - Code refactor is still going
+    - Some improvements to logging, including access token removal
+      for privacy
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Aug 21 06:29:49 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints min 4GB  disk space

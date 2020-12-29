@@ -17,13 +17,13 @@
 
 
 Name:           fractal
-Version:        4.2.2
+Version:        4.4.0
 Release:        0
 Summary:        Matrix group messaging app
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://wiki.gnome.org/Apps/Fractal
-Source0:        https://gitlab.gnome.org/GNOME/fractal/uploads/9f2b34d98cfe3c002f3afbfcbf14bc7c/fractal-%{version}.tar.xz
+Source0:        https://gitlab.gnome.org/GNOME/fractal/uploads/d4168ac40fd681240964705e000dd353/%{name}-%{version}.tar.xz
 BuildRequires:  cargo
 BuildRequires:  gmp-devel
 BuildRequires:  meson
@@ -90,7 +90,7 @@ fi
 %license LICENSE.txt
 %doc README.md
 %{_bindir}/%{name}
-%{_datadir}/metainfo/org.gnome.Fractal.appdata.xml
+%{_datadir}/metainfo/org.gnome.Fractal.metainfo.xml
 %{_datadir}/applications/org.gnome.Fractal.desktop
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Fractal*.*
 %{_datadir}/glib-2.0/schemas/org.gnome.Fractal.gschema.xml
