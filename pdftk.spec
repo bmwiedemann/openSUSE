@@ -70,7 +70,7 @@ install -m0644 pdftk.1 -t %{buildroot}%{_mandir}/man1
 # startscript
 cat >%{buildroot}%{_bindir}/%{name} << EOF
 #!/bin/sh
-exec %{_bindir}/java -cp %{_javadir}/%{name}.jar:%{_javadir}/bcprov.jar:%{_javadir}/commons-lang3.jar com.gitlab.pdftk_java.pdftk \$*
+exec %{_bindir}/java -cp %{_javadir}/%{name}.jar:%{_javadir}/bcprov.jar:%{_javadir}/commons-lang3.jar com.gitlab.pdftk_java.pdftk "\$@"
 EOF
 chmod 0755 %{buildroot}%{_bindir}/%{name}
 
