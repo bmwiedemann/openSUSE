@@ -16,8 +16,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-geopy
-Version:        1.18.1
+Version:        2.1.0
 Release:        0
 License:        MIT
 Summary:        Python Geocoding Toolbox
@@ -27,14 +28,13 @@ Source:         https://github.com/geopy/geopy/archive/%{version}.tar.gz#/geopy-
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 # SECTION test requirements
+BuildRequires:  %{python_module async_generator}
 BuildRequires:  %{python_module geographiclib >= 1.49}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest >= 3.10}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module xml}
-BuildRequires:  (python2-contextlib2 if python)
-BuildRequires:  (python2-statistics if python)
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-geographiclib >= 1.49
@@ -52,7 +52,7 @@ BuildArch:      noarch
 Geopy can determine the coordinates of addresses, cities, countries,
 and landmarks using third-party geocoders and other data sources such
 as wikis.
- 
+
 Geopy currently includes support for six geocoders: Google Maps, Yahoo! Maps, Windows
 Local Live (Virtual Earth), geocoder.us, GeoNames, MediaWiki pages (with the GIS
 extension), and Semantic MediaWiki pages.
@@ -60,9 +60,6 @@ extension), and Semantic MediaWiki pages.
 %prep
 %setup -q -n geopy-%{version}
 
-# Proxy to live service will not work, resulting in unexpected exceptions
-# that do not match test cases
-rm test/test_proxy.py
 
 # Online services are not available
 rm \
@@ -72,6 +69,7 @@ rm \
   test/geocoders/geocodefarm.py \
   test/geocoders/geonames.py \
   test/geocoders/googlev3.py \
+  test/geocoders/ignfrance.py \
   test/geocoders/nominatim.py \
   test/geocoders/openmapquest.py \
   test/geocoders/photon.py \

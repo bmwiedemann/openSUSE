@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Dec 27 19:13:13 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to 2.1.0 version
+  + New Features
+    - Add support for leading plus sign in the .Point constructor.
+    - Contributed by Azimjon Pulatov. (#448)
+  + Breaking Changes
+    - .GoogleV3: change missing api_key warning to an error. (#450)
+  + Bugfixes
+    - Fixed an undocumented breaking change in geopy 2.0.0, where
+    the .Distance class has become abstract, thus it could
+    no longer be used for unit conversions. (#435)
+    - .Photon incorrectly treated 0.0 coordinate as an empty response.
+    Contributed by Mateusz Konieczny. (#439)
+    - .Nominatim: fix TypeError on empty reverse result. (#455)
+  + Docs Improvements
+    - Add Python 3.9 to the list of supported versions.
+    - .Bing: change postalcode to postalCode.
+      Contributed by zhongjun-ma. (#424)
+    - .Nominatim: better describe what is returned in addressdetails.
+      Contributed by Mateusz Konieczny. (#429)
+    - .Nominatim: better describe viewbox param behavior.
+     Contributed by Hannes. (#454)
+    - .Yandex: remove attention block about requiring an API key.
+- Update to 2.0.0 version
+  geopy 2.0 is a major release with lots of cleanup and inner refactorings.
+  The public interface of the library is mostly the same, and the set
+  of supported geocoders didn't change.
+  If you have checked your code on the latest 1.x release with enabled
+  warnings (i.e. with -Wd key of the python command) and fixed
+  all of them, then it should be safe to upgrade.
+  see all changes at https://github.com/geopy/geopy/releases/tag/2.0.0
+- Changes from previous version
+  1.23.0 https://github.com/geopy/geopy/releases/tag/1.23.0
+  1.22.0 https://github.com/geopy/geopy/releases/tag/1.22.0
+  1.21.0 https://github.com/geopy/geopy/releases/tag/1.21.0
+  1.20.0 https://github.com/geopy/geopy/releases/tag/1.20.0
+  1.19.0 https://github.com/geopy/geopy/releases/tag/1.19.0
+- Packaging changes dropped support for Python 2.7 and 3.4. as version
+  2.x has remove it.
+
+-------------------------------------------------------------------
 Tue Oct 13 16:34:02 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Only buildRequire python2-* when also using python, aka python2.
