@@ -143,4 +143,12 @@
     runtime and in the background (forwarded request 856879 from mnhauke)</comment>
     <requestid>856880</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6c140400afe34980eab0310de88e11d9</srcmd5>
+    <version>2.7.4</version>
+    <time>1609253542</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859058</requestid>
+  </revision>
 </revisionlist>
