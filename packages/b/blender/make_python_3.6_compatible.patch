@@ -1,8 +1,8 @@
-Index: blender-2.90.0/CMakeLists.txt
+Index: blender-2.91.0/CMakeLists.txt
 ===================================================================
---- blender-2.90.0.orig/CMakeLists.txt
-+++ blender-2.90.0/CMakeLists.txt
-@@ -760,8 +760,8 @@ if(WITH_PYTHON)
+--- blender-2.91.0.orig/CMakeLists.txt
++++ blender-2.91.0/CMakeLists.txt
+@@ -807,8 +807,8 @@ if(WITH_PYTHON)
    # Do this before main 'platform_*' checks,
    # because UNIX will search for the old Python paths which may not exist.
    # giving errors about missing paths before this case is met.
@@ -13,11 +13,11 @@ Index: blender-2.90.0/CMakeLists.txt
    endif()
  
    file(GLOB RESULT "${CMAKE_SOURCE_DIR}/release/scripts/addons")
-Index: blender-2.90.0/source/blender/python/intern/bpy_rna.c
+Index: blender-2.91.0/source/blender/python/intern/bpy_rna.c
 ===================================================================
---- blender-2.90.0.orig/source/blender/python/intern/bpy_rna.c
-+++ blender-2.90.0/source/blender/python/intern/bpy_rna.c
-@@ -8863,8 +8863,9 @@ static PyObject *pyrna_register_class(Py
+--- blender-2.91.0.orig/source/blender/python/intern/bpy_rna.c
++++ blender-2.91.0/source/blender/python/intern/bpy_rna.c
+@@ -8853,8 +8853,9 @@ static PyObject *pyrna_register_class(Py
  
    /* Call classed register method.
     * Note that zero falls through, no attribute, no error. */
@@ -28,7 +28,7 @@ Index: blender-2.90.0/source/blender/python/intern/bpy_rna.c
        PyObject *ret = PyObject_CallObject(py_cls_meth, NULL);
        Py_DECREF(py_cls_meth);
        if (ret) {
-@@ -8875,8 +8876,8 @@ static PyObject *pyrna_register_class(Py
+@@ -8865,8 +8866,8 @@ static PyObject *pyrna_register_class(Py
        }
        break;
      }
@@ -39,7 +39,7 @@ Index: blender-2.90.0/source/blender/python/intern/bpy_rna.c
      }
    }
  
-@@ -8971,7 +8972,8 @@ static PyObject *pyrna_unregister_class(
+@@ -8961,7 +8962,8 @@ static PyObject *pyrna_unregister_class(
  
    /* Call classed unregister method.
     * Note that zero falls through, no attribute, no error. */
@@ -49,7 +49,7 @@ Index: blender-2.90.0/source/blender/python/intern/bpy_rna.c
      case 1: {
        PyObject *ret = PyObject_CallObject(py_cls_meth, NULL);
        Py_DECREF(py_cls_meth);
-@@ -8983,8 +8985,8 @@ static PyObject *pyrna_unregister_class(
+@@ -8973,8 +8975,8 @@ static PyObject *pyrna_unregister_class(
        }
        break;
      }
@@ -60,10 +60,10 @@ Index: blender-2.90.0/source/blender/python/intern/bpy_rna.c
      }
    }
  
-Index: blender-2.90.0/source/blender/python/intern/bpy_capi_utils.h
+Index: blender-2.91.0/source/blender/python/intern/bpy_capi_utils.h
 ===================================================================
---- blender-2.90.0.orig/source/blender/python/intern/bpy_capi_utils.h
-+++ blender-2.90.0/source/blender/python/intern/bpy_capi_utils.h
+--- blender-2.91.0.orig/source/blender/python/intern/bpy_capi_utils.h
++++ blender-2.91.0/source/blender/python/intern/bpy_capi_utils.h
 @@ -20,8 +20,8 @@
  
  #pragma once

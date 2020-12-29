@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Dec  9 18:24:21 UTC 2020 - Jason Craig <os-dev@jacraig.com>
+
+- Fix grammatical error in SUSE-NVIDIA-GPU-rendering.txt
+
+-------------------------------------------------------------------
+Fri Nov 27 17:55:31 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable lto for the clang based build
+- always build with SUSE_ASNEEDED=0
+  building with clang and gcc fails during linking of bin/blender
+- make it easier to force a new GCC version throughout the spec
+  file: we just need one define now force_gcc_version and all parts
+  of the spec file will follow
+- bump memory size for LTO linking
+
+-------------------------------------------------------------------
+Fri Nov 27 17:39:31 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- enable Cycles OPENCL support
+
+-------------------------------------------------------------------
+Thu Nov 26 23:58:21 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- use clang for systems with gcc older than 10. actually gets a
+  working build. using clang on TW would require fixing the lto
+  support first. clang complains about -flto=auto not supported.
+
+-------------------------------------------------------------------
+Thu Nov 26 23:30:34 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- drop unneeded %post(un) scriptlets. they are handled via trigger
+  now. fixes the warning about empty scriplets
+
+-------------------------------------------------------------------
+Thu Nov 26 22:14:43 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- disable system audaspace:
+  the intree copy is patched now so the API no longer match
+- disable SUSE_ASNEEDED for now as it leads undefined references
+  while linking blender
+- add potrace-devel to enable the tracing feature
+- add gmpxx buildrequire to fix warning about missing library
+- disable buildinfo option as it relies on git
+- pass numpy path so it actually finds the includes
+- refreshed patches:
+  reproducible.patch
+  make_python_3.6_compatible.patch
+- update naming of the cuda/cubin options to the new schema
+
+-------------------------------------------------------------------
+Wed Nov 25 23:53:27 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.91.0 
+  https://www.blender.org/download/releases/2-91/
+  https://wiki.blender.org/wiki/Reference/Release_Notes/2.91
+
+-------------------------------------------------------------------
 Tue Oct 13 23:38:02 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Explicitly disable embree on PPC*.

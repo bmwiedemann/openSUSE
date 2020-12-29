@@ -11,7 +11,7 @@ $ sudo hwinfo --gfxcard
 Look up the model of your card (the part in square brackets of the Model: line
 at https://developer.nvidia.com/cuda-gpus.
 
-If the "Compute Capability" level for your GPU is 3.0 at least, your set.
+If the "Compute Capability" level for your GPU is 3.0 at least, you're set.
 
 Install the x11-video-nvidiaG0x driver. 
 

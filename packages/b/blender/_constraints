@@ -18,7 +18,7 @@
     <hardware>
       <!-- have some additional features like embree ... -->
       <memory>
-        <size unit="M">5500</size>
+        <size unit="M">16000</size>
       </memory>
     </hardware>
   </overwrite>

@@ -26,10 +26,11 @@
 %bcond_with embree
 %bcond_with oidn
 %endif
+%bcond_without opencl
 %bcond_without opensubdiv
 %bcond_without openvdb
 %bcond_without osl
-%bcond_without system_audaspace
+%bcond_with    system_audaspace
 
 # TBD
 %bcond_with usd
@@ -37,6 +38,18 @@
 
 %if 0%{?suse_version} < 1550
 %bcond_without python_36
+%endif
+
+%if 0%{?gcc_version} < 10
+#global force_gcc_version 9
+%bcond_without clang
+%if 0%{?suse_version} >= 1550
+%bcond_without lld
+%else
+%bcond_with    lld
+%endif
+%else
+%bcond_with    clang
 %endif
 
 # Set this to 1 for fixing bugs.
@@ -52,7 +65,7 @@
 %define _suffix %(echo %{_version} | tr -d '.')
 
 Name:           blender
-Version:        2.90.1
+Version:        2.91.0
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -80,17 +93,23 @@ BuildRequires:  OpenEXR-devel
 BuildRequires:  OpenImageIO
 BuildRequires:  OpenImageIO-devel
 BuildRequires:  SDL2-devel
-BuildRequires:  binutils-gold
 BuildRequires:  clang-devel
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  distribution-release
 BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
-%if 0%{?gcc_version} < 10
-BuildRequires:  gcc9-c++
+%if %{with clang}
+BuildRequires:  clang
+BuildRequires:  libomp-devel
+%if %{with lld}
+#!BuildIgnore:  gcc-c++
+#!BuildIgnore:  binutils-gold
+BuildRequires:  lld
+%endif
 %else
-BuildRequires:  gcc-c++
+BuildRequires:  binutils-gold
+BuildRequires:  gcc%{?force_gcc_version}-c++
 %endif
 BuildRequires:  gettext-tools
 BuildRequires:  graphviz
@@ -102,6 +121,7 @@ BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_locale-devel
+BuildRequires:  libboost_numpy3-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_python3-devel
 BuildRequires:  libboost_regex-devel
@@ -119,6 +139,7 @@ BuildRequires:  openal-soft-devel
 BuildRequires:  pcre-devel
 BuildRequires:  perl-Text-Iconv
 BuildRequires:  pkg-config
+BuildRequires:  potrace-devel
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-requests
 BuildRequires:  shared-mime-info
@@ -132,6 +153,11 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(glw)
+%if 0%{?suse_version} > 1500
+BuildRequires:  pkgconfig(gmpxx)
+%else
+BuildRequires:  gmp-devel
+%endif
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
@@ -171,6 +197,9 @@ BuildRequires:  embree-devel-static
 %if %{with oidn}
 BuildRequires:  OpenImageDenoise-devel
 %endif
+%if %{with opencl}
+BuildRequires:  opencl-headers
+%endif
 %if %{with opensubdiv}
 BuildRequires:  OpenSubdiv-devel
 %endif
@@ -196,7 +225,6 @@ Requires:       python3-xml
 Requires(post):    hicolor-icon-theme
 Requires(postun):  hicolor-icon-theme
 Provides:       %{name}-%{_suffix} = %{version}
-Conflicts:      %{name}-%{_suffix} < %{version}
 # current locale handling doesn't create locale(..) provides correctly
 Recommends:     %name-lang = %version
 
@@ -251,6 +279,18 @@ rm -rf extern/libopenjpeg
 for i in `grep -rl "/usr/bin/env python3"`;do sed -i '1s@^#!.*@#!/usr/bin/python3@' ${i} ;done
 
 %build
+export SUSE_ASNEEDED=0
+%if %{with clang}
+export CC="clang"
+export CXX="clang++"
+%define _lto_cflags -flto=full
+%else
+%if 0%{?force_gcc_version}
+export CC="gcc-%{?force_gcc_version}"
+export CXX="g++-%{?force_gcc_version}"
+%endif
+%endif
+
 echo "optflags: " %{optflags}
 # Find python3 version and abiflags
 export psver=$(pkg-config python3 --modversion)
@@ -285,7 +325,7 @@ cmake ../ \
 %if %{with alembic}
       -DWITH_ALEMBIC:BOOL=ON \
 %endif
-      -DWITH_BUILDINFO:BOOL=ON \
+      -DWITH_BUILDINFO:BOOL=OFF \
       -DWITH_BULLET:BOOL=ON \
       -DWITH_CODEC_AVI:BOOL=ON \
       -DWITH_CODEC_FFMPEG:BOOL=ON \
@@ -363,6 +403,7 @@ cmake ../ \
       -DPYTHON_LIBRARY=python$pver \
       -DPYTHON_INCLUDE_DIRS=%{_includedir}/python$pver \
       -DWITH_PYTHON_INSTALL_NUMPY=OFF \
+      -DPYTHON_NUMPY_PATH:PATH=%{python3_sitearch} \
       -DWITH_QUADRIFLOW:BOOL=ON \
       -DWITH_SDL:BOOL=ON \
       -DWITH_TBB:BOOL=ON \
@@ -381,8 +422,11 @@ cmake ../ \
 %if %{with openxr}
       -DWITH_XR_OPENXR:BOOL=ON \
 %endif
-      -DCYCLES_CUDA_BINARIES:BOOL=ON \
-      -DCYCLES_CUBIN_COMPILER:BOOL=OFF \
+%if %{with opencl}
+      -DWITH_CYCLES_DEVICE_OPENCL:BOOL=ON \
+%endif
+      -DWITH_CYCLES_CUDA_BINARIES:BOOL=ON \
+      -DWITH_CYCLES_CUBIN_COMPILER:BOOL=OFF \
       -DCYCLES_CUDA_BINARIES_ARCH="sm_30;sm_35;sm_37;sm_50;sm_52;sm_60;sm_61;sm_70;sm_75;compute_75" \
       -DWITH_CYCLES_DEVICE_OPTIX:BOOL=ON \
       -DOPTIX_ROOT_DIR:PATH=/opt/nvidia/optix
@@ -435,16 +479,6 @@ rm %{buildroot}%{_bindir}/%{name}-thumbnailer.py
 # Validate blender.desktop
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %endif
-
-%post
-%mime_database_post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%mime_database_postun
-%desktop_database_postun
-%icon_theme_cache_post
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/%{name}/%{_version}/datafiles/locale
