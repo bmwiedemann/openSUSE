@@ -27,6 +27,8 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/alanxz/rabbitmq-c
 Source0:        https://github.com/alanxz/rabbitmq-c/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/alanxz/rabbitmq-c/pull/638 
+Patch0:         reproducible.patch
 BuildRequires:  cmake > 2.8
 BuildRequires:  gcc
 BuildRequires:  openssl-devel
@@ -74,6 +76,7 @@ amqp-publish        Publish a message on an AMQP server
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 # static lib required for tests
