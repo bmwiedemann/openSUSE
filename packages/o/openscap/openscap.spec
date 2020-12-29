@@ -40,6 +40,7 @@ Source5:        oscap-scan.service
 Source6:        oscap-scan.sh
 Patch0:         openscap-new-suse.patch
 Patch1:         openscap-leap-cpe-15.12.patch
+Patch2:         0001-Fix-memory-allocation.patch
 URL:            https://www.open-scap.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  asciidoc
@@ -175,6 +176,7 @@ This package contains the Script Checking Engine Library (SCE) for OpenSCAP.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %if 0%{?with_bindings}

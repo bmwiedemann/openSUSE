@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 14 08:55:03 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- 0001-Fix-memory-allocation.patch: fixed a crash during oscap oval eval
+
+-------------------------------------------------------------------
 Mon Nov  9 13:10:09 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - openscap-leap-cpe-15.12.patch: add CPE dict entries for openSUSE
