@@ -1,0 +1,11 @@
+<package name="qmodbus" project="openSUSE:Factory">
+  <title>QT ModBus tools</title>
+  <description>QModBus is an implementation of a ModBus master application.
+A graphical user interface allows easy communication with ModBus
+slaves over serial line interface. QModBus also includes a bus
+monitor for sniffing all traffic on the bus.
+
+</description>
+  <devel project="hardware" package="qmodbus"/>
+  <url>http://qmodbus.sourceforge.net/</url>
+</package>
