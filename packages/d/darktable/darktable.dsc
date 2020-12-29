@@ -4,7 +4,7 @@ Section: graphics
 Priority: optional
 Binary: darktable darktable-tools-basecurve darktable-tools-noise
 Architecture: any-amd64 any-arm64
-Version: 3.2.1-1.1
+Version: 3.4.0-1.1
 Homepage: http://www.darktable.org/
 Build-Depends: cmake,
                debhelper (>= 10),

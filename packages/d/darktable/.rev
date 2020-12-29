@@ -1377,4 +1377,18 @@ Togan
     <comment></comment>
     <requestid>828145</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>76ebe7f7d59d18ff30067ff393b929c1</srcmd5>
+    <version>3.4.0</version>
+    <time>1609253350</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.4.0
+  * https://github.com/darktable-org/darktable/releases/tag/release-3.4.0
+- Use URL for source tarball and signature
+- Added darktable-rpmlintrc
+- Added missing lua-api pdf
+- Removed trailing spaces from changes file
+- Fixed building on Fedora</comment>
+    <requestid>858627</requestid>
+  </revision>
 </revisionlist>

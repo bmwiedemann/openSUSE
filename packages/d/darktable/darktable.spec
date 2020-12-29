@@ -18,6 +18,12 @@
 
 %bcond_with clang
 
+%if 0%{?suse_version} || 0%{?fedora_version} >= 33
+%bcond_without cmake_macros
+%else
+%bcond_with    cmake_macros
+%endif
+
 %if 0%{?is_opensuse} || 0%{?fedora_version} >= 26
 %bcond_without osmgpsmap
 %bcond_without flickcurl
@@ -26,6 +32,18 @@
 %bcond_with    osmgpsmap
 %bcond_with    flickcurl
 %bcond_with    translated_manpages
+%endif
+
+%if 0%{?suse_version} >= 1550 || 0%{?fedora_version} >= 33
+%bcond_without avif
+%else
+%bcond_with    avif
+%endif
+
+%if 0%{?suse_version} >= 1550
+%bcond_without gmic
+%else
+%bcond_with    gmic
 %endif
 
 %ifarch ppc64le
@@ -50,27 +68,44 @@
 %global _use_opencl "OFF"
 %endif
 
+%if %{with gmic}
+%global _use_gmic "ON"
+%else
+%global _use_gmic "OFF"
+%endif
+
+%if %{with avif}
+%global _use_avif "ON"
+%else
+%global _use_avif "OFF"
+%endif
+
 %if 0%{?suse_version} && 0%{?suse_version} < 1550
 %define force_gcc_version 7
 %endif
 
 Name:           darktable
-Version:        3.2.1
+Version:        3.4.0
 Release:        0
 %define pkg_name darktable
-%define pkg_version 3.2.1
+%define pkg_version %{version}
 URL:            http://www.darktable.org/
-Source0:        %{pkg_name}-%{pkg_version}.tar.xz
-Source1:        https://github.com/darktable-org/darktable/releases/download/release-3.0.0/darktable-usermanual.pdf
-Source2:        https://github.com/darktable-org/darktable/releases/download/release-3.0.0/darktable-usermanual-de.pdf
-Source3:        https://github.com/darktable-org/darktable/releases/download/release-3.0.0/darktable-usermanual-it.pdf
-Source4:        https://github.com/darktable-org/darktable/releases/download/release-3.0.0/darktable-usermanual-fr.pdf
-Source5:        https://github.com/darktable-org/darktable/releases/download/release-2.0.0/darktable-lua-api.pdf
-Source96:       %{pkg_name}-%{pkg_version}.tar.xz.asc
+Source0:        https://github.com/darktable-org/darktable/releases/download/release-%{version}/%{pkg_name}-%{version}.tar.xz
+Source1:        https://github.com/darktable-org/darktable/releases/download/release-%{version}/%{pkg_name}-%{version}.tar.xz.asc
+Source2:        %{pkg_name}-rpmlintrc
+#
+Source10:       https://github.com/darktable-org/darktable/releases/download/release-3.4.0/darktable-usermanual.pdf
+Source11:       https://github.com/darktable-org/darktable/releases/download/release-3.0.0/darktable-usermanual-de.pdf
+Source12:       https://github.com/darktable-org/darktable/releases/download/release-3.0.0/darktable-usermanual-it.pdf
+Source13:       https://github.com/darktable-org/darktable/releases/download/release-3.0.0/darktable-usermanual-fr.pdf
+# This is not online yet?
+Source14:       darktable-lua-api.pdf
+#
 Source97:       darktable.dsc
 Source98:       debian.tar.xz
 Source99:       README.openSUSE
-Patch:          darktable-old-glib.patch
+#
+Patch0:         darktable-old-glib.patch
 
 ExclusiveArch:  x86_64 aarch64 ppc64le
 # build time tools
@@ -139,6 +174,18 @@ BuildRequires:  pkgconfig(sqlite3)
 %if %{with opencl}
 BuildRequires:  opencl-headers
 %endif
+%if %{with gmic}
+%if 0%{?is_opensuse}
+BuildRequires:  libgmic-devel
+%else
+BuildRequires:  gmic-devel
+%endif
+# /gmic
+%endif
+%if %{with avif}
+BuildRequires:  libavif-devel
+%endif
+
 # for the sake of simplicity we do not enforce the version here
 # the package is small enough that installing it doesnt hurt
 Requires:       iso-codes
@@ -205,8 +252,8 @@ This package provides the user manual in PDF format.
 %prep
 %autosetup -p1 -n %{pkg_name}-%{version}
 
-cp %{S:1} %{S:2} %{S:3} %{S:4} %{S:5} .
-cp %{S:99} .
+cp %{SOURCE10} %{SOURCE11} %{SOURCE12} %{SOURCE13} %{SOURCE14} .
+cp %{SOURCE99} .
 
 # Remove bundled OpenCL headers.
 rm -rf src/external/CL src/external/OpenCL
@@ -216,7 +263,7 @@ sed -i -e 's, \"external/CL/\*\.h\" , ,' src/CMakeLists.txt
 rm -rf src/external/lua/
 
 %build
-%define cmake_options \\\
+%global cmake_options \\\
    -DCMAKE_INSTALL_LIBDIR=%{_lib} \\\
    -DCMAKE_SKIP_RPATH:BOOL=OFF \\\
    -DCMAKE_INSTALL_DATAROOTDIR="share" \\\
@@ -226,6 +273,8 @@ rm -rf src/external/lua/
    -DRAWSPEED_ENABLE_LTO=ON \\\
    -DUSE_OPENCL="%{_use_opencl}" \\\
    -DUSE_OPENMP="%{_use_openmp}" \\\
+   -DUSE_GMIC="%{_use_gmic}" \\\
+   -DUSE_AVIF="%{_use_avif}" \\\
    -DBUILD_NOISE_TOOLS=ON \\\
    -DBUILD_CURVE_TOOLS=ON
 
@@ -238,7 +287,8 @@ export CC="/usr/bin/clang"
 export CXX="/usr/bin/clang++"
 %endif
 export _OPENCL_INCLUDE_DIR=$(clang -print-search-dirs | awk -F= '/^libra/ {print $2}' | awk -F: '{print $1 "/include"}')
-%if 0%{?suse_version}
+
+%if %{with cmake_macros}
 #suse branch
 %cmake \
   -DCLANG_OPENCL_INCLUDE_DIR=${_OPENCL_INCLUDE_DIR} \
@@ -247,9 +297,11 @@ export _OPENCL_INCLUDE_DIR=$(clang -print-search-dirs | awk -F= '/^libra/ {print
   -DTESTBUILD_OPENCL_PROGRAMS=OFF \
   %endif
   %{cmake_options} \
+%if "%{optimization_architecture}" == "asan"
+  -DCMAKE_EXE_LINKER_FLAGS="" -DCMAKE_MODULE_LINKER_FLAGS="" -DCMAKE_SHARED_LINKER_FLAGS="" -DCMAKE_BUILD_TYPE=RELWITHDEBINFO \
+%endif
    || cat CMakeFiles/CMakeError.log
 %cmake_build
-
 #/ suse branch
 %else
 #fedora branch
@@ -263,14 +315,17 @@ pushd %{_target_platform}
   %{cmake_options} ..
 make %{_smp_mflags} VERBOSE=1
 
+#/ with cmake_macros
 %endif
 
 %install
-%if 0%{?suse_version}
-# suse branch
+%if %{with cmake_macros}
 %cmake_install
+
+%if 0%{?suse_version}
 %suse_update_desktop_file darktable
-#/ suse branch
+%endif
+#/ cmake macros branch
 %else
 # fedora branch
 %make_install -C %{_target_platform}
@@ -279,7 +334,7 @@ make %{_smp_mflags} VERBOSE=1
 
 %find_lang darktable
 
-cp -av %{S:1} %{S:2} %{S:3} %{S:4} doc/TODO \
+cp -av %{SOURCE10} %{SOURCE11} %{SOURCE12} %{SOURCE13} %{SOURCE14} doc/TODO \
   %{buildroot}%{_defaultdocdir}/%{pkg_name}
 rm %{buildroot}%{_defaultdocdir}/%{pkg_name}/LICENSE
 
