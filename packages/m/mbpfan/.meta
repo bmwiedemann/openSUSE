@@ -1,0 +1,16 @@
+<package name="mbpfan" project="openSUSE:Factory">
+  <title>mbpfan</title>
+  <description>This is an enhanced version of Allan McRae mbpfan
+
+mbpfan is a daemon that uses input from coretemp module and sets the
+fan speed using the applesmc module. This enhanced version assumes any
+number of processors and fans (max. 10).
+
+* It only uses the temperatures from the processors as input.
+* It requires coretemp and applesmc kernel modules to be loaded.
+* It requires root use
+* It daemonizes or stays in foreground
+* Verbose mode for both syslog and stdout
+* Users can configure it using the file /etc/mbpfan.conf</description>
+  <devel project="hardware" package="mbpfan"/>
+</package>
