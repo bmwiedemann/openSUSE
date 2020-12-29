@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Dec 28 16:07:13 UTC 2020 - pgajdos@suse.com
+
+- version update to 3.0.0
+  * 20070709 GRR: tweaked color definitions slightly to work better on terminals
+  *               with white/light backgrounds
+  * 20070712 GRR: added Makefile.mingw32
+  * 20100504 GRR: fixed DHDR (pre-MNG-1.0) bug identified by Winfried <szukw000@arcor.de>
+  * 20170713 GRP: added eXIf support (GRR: added check for II/MM/unknown format)
+  * 20201012 BB:  converted static const help/usage-related strings to macros so
+  *               -Werror=format-security doesn't trigger (Ben Beasley)
+  * 20201015 BB:  added (help2man-generated) man pages for all three utils
+  * 20201017 GRR: added top-level LICENSE file; fixed various compiler warnings
+  * 20201031 GRR: replaced gpl/COPYING (outdated address, references to Library
+  *               GPL) with https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt
+  *               (thanks to Ben Beasley for catching that)
+  * 20201113 BB:  fixed buffer-overflow vulnerability discovered by "giantbranch
+  *               of NSFOCUS Security Team"
+  *               https://bugzilla.redhat.com/show_bug.cgi?id=1897485
+  * 20201128 BB:  found and fixed four additional vulnerabilities (null-pointer
+  *               dereference and three buffer overruns)
+  * 20201209 LP:  fixed an off-by-one bug in check_magic() (Lucy Phipps)
+  * 20201209 LL:  converted two zlib-version warnings/errors to go to stderr
+  *               (Lemures Lemniscati, actually from 20180318; forwarded by LP)
+  * 20201210 BB:  fixed another buffer-overflow vulnerability discovered by
+  *               "giantbranch of NSFOCUS Security Team"
+  *               https://bugzilla.redhat.com/show_bug.cgi?id=1905775
+  * 20201212 GRR: removed -f ("force") option due to multiple security issues
+- modified patches
+  % fixbuild.diff (refreshed)
+- deleted patches
+  - pngcheck-CVE-2020-27818.patch (upstreamed)
+
+-------------------------------------------------------------------
 Thu Dec  3 11:45:40 UTC 2020 - pgajdos@suse.com
 
 - security update

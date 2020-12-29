@@ -40,4 +40,40 @@
   + pngcheck-CVE-2020-27818.patch</comment>
     <requestid>852889</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>288638121abdbf85849c53dfce96e427</srcmd5>
+    <version>3.0.0</version>
+    <time>1609253547</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 3.0.0
+  * 20070709 GRR: tweaked color definitions slightly to work better on terminals
+  *               with white/light backgrounds
+  * 20070712 GRR: added Makefile.mingw32
+  * 20100504 GRR: fixed DHDR (pre-MNG-1.0) bug identified by Winfried &lt;szukw000@arcor.de&gt;
+  * 20170713 GRP: added eXIf support (GRR: added check for II/MM/unknown format)
+  * 20201012 BB:  converted static const help/usage-related strings to macros so
+  *               -Werror=format-security doesn't trigger (Ben Beasley)
+  * 20201015 BB:  added (help2man-generated) man pages for all three utils
+  * 20201017 GRR: added top-level LICENSE file; fixed various compiler warnings
+  * 20201031 GRR: replaced gpl/COPYING (outdated address, references to Library
+  *               GPL) with https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt
+  *               (thanks to Ben Beasley for catching that)
+  * 20201113 BB:  fixed buffer-overflow vulnerability discovered by &quot;giantbranch
+  *               of NSFOCUS Security Team&quot;
+  *               https://bugzilla.redhat.com/show_bug.cgi?id=1897485
+  * 20201128 BB:  found and fixed four additional vulnerabilities (null-pointer
+  *               dereference and three buffer overruns)
+  * 20201209 LP:  fixed an off-by-one bug in check_magic() (Lucy Phipps)
+  * 20201209 LL:  converted two zlib-version warnings/errors to go to stderr
+  *               (Lemures Lemniscati, actually from 20180318; forwarded by LP)
+  * 20201210 BB:  fixed another buffer-overflow vulnerability discovered by
+  *               &quot;giantbranch of NSFOCUS Security Team&quot;
+  *               https://bugzilla.redhat.com/show_bug.cgi?id=1905775
+  * 20201212 GRR: removed -f (&quot;force&quot;) option due to multiple security issues
+- modified patches
+  % fixbuild.diff (refreshed)
+- deleted patches
+  - pngcheck-CVE-2020-27818.patch (upstreamed)</comment>
+    <requestid>859052</requestid>
+  </revision>
 </revisionlist>

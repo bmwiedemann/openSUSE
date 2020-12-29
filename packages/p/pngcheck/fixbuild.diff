@@ -1,14 +1,15 @@
-diff -ur pngcheck-2.3.0/Makefile.unx pngcheck-2.3.0_fix//Makefile.unx
---- pngcheck-2.3.0/Makefile.unx	2006-06-18 00:47:35.000000000 +0200
-+++ pngcheck-2.3.0_fix//Makefile.unx	2009-08-30 12:26:49.000000000 +0200
+Index: pngcheck-3.0.0/Makefile.unx
+===================================================================
+--- pngcheck-3.0.0.orig/Makefile.unx	2020-12-28 16:45:09.240554797 +0100
++++ pngcheck-3.0.0/Makefile.unx	2020-12-28 16:59:51.906204244 +0100
 @@ -18,18 +18,12 @@
  
  # macros --------------------------------------------------------------------
  
 -ZPATH = ../zlib
 -ZINC = -I$(ZPATH)
--#ZLIB = -L$(ZPATH) -lz
--ZLIB = $(ZPATH)/libz.a
+-ZLIB = -L$(ZPATH) -lz
+-#ZLIB = $(ZPATH)/libz.a
 -
 -INCS = $(ZINC)
 -LIBS = $(ZLIB)
@@ -22,4 +23,3 @@ diff -ur pngcheck-2.3.0/Makefile.unx pngcheck-2.3.0_fix//Makefile.unx
  # [note that -Wall is a gcc-specific compilation flag ("all warnings on")]
  O = .o
  E =
-Nur in pngcheck-2.3.0_fix/: Makefile.unx~.

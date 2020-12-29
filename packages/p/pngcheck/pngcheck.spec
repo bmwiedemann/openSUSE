@@ -17,17 +17,15 @@
 
 
 Name:           pngcheck
-Version:        2.3.0
+Version:        3.0.0
 Release:        0
 Summary:        PNG file format checker
 License:        HPND AND GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            http://www.libpng.org/pub/png/apps/pngcheck.html
-Source:         http://prdownloads.sourceforge.net/png-mng/%{name}-%{version}.tar.gz
+Source:         http://www.libpng.org/pub/png/src/pngcheck-%{version}.tar.gz
 Source2:        %{name}.1.gz
 Patch0:         fixbuild.diff
-# CVE-2020-27818 [bsc#1179528], global buffer overflow was discovered in check_chunk_name function via crafted pngfile
-Patch1:         pngcheck-CVE-2020-27818.patch
 BuildRequires:  zlib-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -45,7 +43,6 @@ ORDR). This is a command-line program with batch capabilities (e.g.,
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 make %{?_smp_mflags} -f Makefile.unx
