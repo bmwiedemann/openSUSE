@@ -212,4 +212,28 @@
   * Python 3.7 tested and explicitly supported</comment>
     <requestid>624707</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>27d5dff25dd05e3ba0bb333e588d09ba</srcmd5>
+    <version>6.2.9</version>
+    <time>1609253625</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.2.9:
+  * For some reason, 6.2.8 release was incomplete. Let's try again.
+  * In Python 3.9, &quot;find_unused_port&quot; has been moved to
+    &quot;test.support.socket_helper&quot;. Reported by Michał Górny.
+  * If we use &quot;set_get_returns_none()&quot; in the environment,
+    the value could not be correctly inherited by the child
+    databases. Reported by Patrick Laimbock and modern GCC
+    warnings.
+  * If you install this library under Python 3 &gt;= 3.6, let
+    you know this is a legacy library and urges you to
+    migrate to &quot;berkeleydb&quot; library.
+  * Update copyright notices.
+  * https links.
+  * Fix Python 3 deprecation warning.
+    Notified by Arthur Gautier.
+  * Fix compilation Python 3.8 deprecation warnings.
+  * Fix compilation Python 3.9 deprecation warnings.</comment>
+    <requestid>859228</requestid>
+  </revision>
 </revisionlist>
