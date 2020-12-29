@@ -18,15 +18,17 @@
 
 %define shlib lib%{name}0
 Name:           o2scl
-Version:        0.924
+Version:        0.925
 Release:        0
 Summary:        Object-oriented Scientific Computing Library
 License:        GPL-3.0-only
 Group:          Productivity/Scientific/Math
 URL:            https://isospin.roam.utk.edu/static/code/o2scl/
 Source:         https://github.com/awsteiner/o2scl/releases/download/v%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM o2scl-disable-failing-eos-test.patch gh#wsteiner/o2scl#10 badshah400@gmail.com -- Disable a failing test for eos which fails due to minor float error in the test file
-Patch0:         o2scl-disable-failing-eos-test.patch
+# PATCH-FEATURE-OPENSUSE o2scl-disable-slow-hdf-test.patch badshah400@gmail.com -- Disable an hdf5 test that takes too long causing OBS workers to time out and build to fail
+Patch0:         o2scl-disable-slow-hdf-test.patch
+# PATCH-FIX-UPSTREAM o2scl-exp-overflow.patch gh#awsteiner/o2scl#16 badshah400@gmail.com -- Fix for overflows from GSL exp.c; patch taken from upstream git commit
+Patch1:         o2scl-exp-overflow.patch
 BuildRequires:  armadillo-devel
 BuildRequires:  eigen3-devel
 BuildRequires:  fdupes
@@ -88,13 +90,12 @@ O2scl is a C++ library for object-oriented numerical programming.
 This package provides the documentation for %{name}.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf -fvi
-# NEED TO PASS ADDITIONAL CXXFLAG TO FIX USED hdf5 HEADER LOCATION
-export CXXFLAGS+=" -DO2SCL_PLAIN_HDF5_HEADER"
+# NEED TO PASS ADDITIONAL CXXFLAG TO FIX USED hdf5 HEADER LOCATION AND INDICATE HDF5 < 1.12
+export CXXFLAGS+=" -DO2SCL_PLAIN_HDF5_HEADER -DO2SCL_HDF5_PRE_1_12"
 %configure \
 %if 0%{?suse_version} >= 1500
   --enable-gsl2 \

@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Nov 10 01:03:25 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.925:
+  * Fixed interpolation bug and log grid bug in
+    tensor_grid::rearrange_and_copy().
+  * Improved acol docs everywhere. Created acol table3d
+    to-tensor-grid, acol table3d to-hist-2d, acol table3d
+    get-grid, acol create table-mv, acol table3d slice-hist, acol
+    table3d select, acol h5-copy, acol table correl, acol
+    constant, acol binary, acol docs, and acol wdocs.
+  * The integration routines for semi-infinite intervals have been
+    refactored to use \ref integ_iu(), \ref integ_il() and \ref
+    integ_i().
+  * Improved error handling and documentation in cloud_file.
+  * Several updates to eos_sn, nstar_rot, eos_had_rmf,
+    eos_had_rmf_hyp_ts, and ex_eos_gibbs.
+  * Created new beta-equilibrium functions in some EOS classes.
+  * Created new function nucmass_fit::fit_covar() to fit nuclear
+    masses with a covariance matrix.
+  * Reworked documentation in sphinx/breathe.
+  * Fixed spacing bug in rewrap_keep_endlines().
+  * Updated strings_spec(), vector_spec(), mult_vector_spec() and
+    value_spec().
+  * Added OpenMP support to some table functions. Updated
+    table::swap().
+  * Created experimental new convert_units::convert_calc()
+    function and created find_constants class. Updated solar
+    system constants.
+  * Improvements to the vec_index class.
+  * Updated the vector_acor() function. Created vectors_equal()
+    and vectors_equal_tol().
+  * Fixed hidden virtual function warnings.
+  * Created columnify::add_spaces().
+  * Worked on multiprecision support for several particle classes.
+  * Cleaned up polylogs and created bessel_K_exp class.
+  * Fixed HDF5 1.12-related deprecation warnings.
+  * Renamed integration classes for infinite or semi-infinite
+    limits.
+  * Created a new experimental auto_format class.
+  * Created new vt100 string functions and moved them into a new
+    terminal class.
+  * Added quadratic and cubic discriminants.
+  * Added experimental part_pdg.
+- Add o2scl-disable-slow-hdf-test.patch: Disable a slow hdf test
+  that causes OBS workers to time out.
+- Add o2scl-exp-overflow.patch: Fix for overflows from GSL exp.c;
+  patch taken from upstream git commit [gh#awsteiner/o2scl#16].
+- Drop o2scl-disable-failing-eos-test.patch: Fixed upstream.
+- Pass "-DO2SCL_HDF5_PRE_1_12" to CXXFLAGS to use HDF5 1.10.x
+  specific definitions.
+
+-------------------------------------------------------------------
 Sat Jan  4 23:22:23 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.924:
