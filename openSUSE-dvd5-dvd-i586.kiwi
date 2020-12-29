@@ -1553,7 +1553,6 @@
       <repopackage name="libmemcached11"/>
       <repopackage name="libmetalink3"/>
       <repopackage name="libmetis5"/>
-      <repopackage name="libmicrohttpd12"/>
       <repopackage name="libmikmod3"/>
       <repopackage name="libmilter1_0"/>
       <repopackage name="libminiupnpc17"/>
@@ -2072,6 +2071,7 @@
       <repopackage name="libwebpdemux2"/>
       <repopackage name="libwebpmux3"/>
       <repopackage name="libwebrtc_audio_processing1"/>
+      <repopackage name="libwebsockets17"/>
       <repopackage name="libwinpr2"/>
       <repopackage name="libwireshark14"/>
       <repopackage name="libwiretap11"/>
@@ -2547,6 +2547,7 @@
       <repopackage name="perl-base"/>
       <repopackage name="perl-BerkeleyDB"/>
       <repopackage name="perl-Bootloader"/>
+      <repopackage name="perl-BSD-Resource"/>
       <repopackage name="perl-CDDB_get"/>
       <repopackage name="perl-CGI"/>
       <repopackage name="perl-Class-XSAccessor"/>
@@ -2563,6 +2564,7 @@
       <repopackage name="perl-Crypt-Rijndael"/>
       <repopackage name="perl-Crypt-SmbHash"/>
       <repopackage name="perl-Date-Manip"/>
+      <repopackage name="perl-DBD-mysql"/>
       <repopackage name="perl-DBD-SQLite"/>
       <repopackage name="perl-DBI"/>
       <repopackage name="perl-Digest-HMAC"/>
@@ -2578,6 +2580,7 @@
       <repopackage name="perl-File-RandomAccess"/>
       <repopackage name="perl-FileHandle-Unget"/>
       <repopackage name="perl-GD"/>
+      <repopackage name="perl-Geography-Countries"/>
       <repopackage name="perl-gettext"/>
       <repopackage name="perl-HTML-Parser"/>
       <repopackage name="perl-HTML-Tagset"/>
@@ -2590,8 +2593,10 @@
       <repopackage name="perl-IO-HTML"/>
       <repopackage name="perl-IO-Socket-INET6"/>
       <repopackage name="perl-IO-Socket-SSL"/>
+      <repopackage name="perl-IO-String"/>
       <repopackage name="perl-IO-stringy"/>
       <repopackage name="perl-IO-Tty"/>
+      <repopackage name="perl-IP-Country"/>
       <repopackage name="perl-IPC-Run3"/>
       <repopackage name="perl-JSON"/>
       <repopackage name="perl-JSON-XS"/>
@@ -2614,6 +2619,7 @@
       <repopackage name="perl-Net-DBus"/>
       <repopackage name="perl-Net-DNS"/>
       <repopackage name="perl-Net-HTTP"/>
+      <repopackage name="perl-Net-Ident"/>
       <repopackage name="perl-Net-LibIDN"/>
       <repopackage name="perl-Net-Patricia"/>
       <repopackage name="perl-Net-Server"/>
@@ -3546,6 +3552,7 @@
       <repopackage name="sound-theme-freedesktop"/>
       <repopackage name="spacenavd"/>
       <repopackage name="spamassassin"/>
+      <repopackage name="spamassassin-spamc"/>
       <repopackage name="spax"/>
       <repopackage name="speedcrunch"/>
       <repopackage name="splix"/>
