@@ -18,7 +18,7 @@
 
 Name:           libcpath
 %define lname	libcpath1
-%define timestamp 20181228
+%define timestamp 20200623
 Version:        0~%timestamp
 Release:        0
 Summary:        Library for cross-platform C path functions
@@ -26,7 +26,7 @@ License:        LGPL-3.0+
 Group:          Development/Libraries/C and C++
 Url:            https://github.com/libyal/libcpath/wiki
 Source:         https://github.com/libyal/libcpath/releases/download/%timestamp/%name-alpha-%timestamp.tar.gz
-BuildRequires:  pkg-config
+#BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcerror)  >= 20120425
 BuildRequires:  pkgconfig(libclocale) >= 20120425
 BuildRequires:  pkgconfig(libcsplit)  >= 20120701
