@@ -19,20 +19,50 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-fsspec
-Version:        0.8.0
+Version:        0.8.5
 Release:        0
 Summary:        Filesystem specification package
 License:        BSD-3-Clause
 URL:            https://github.com/intake/filesystem_spec
-Source:         https://github.com/intake/filesystem_spec/archive/%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/f/fsspec/fsspec-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Suggests:       python-adlfs
+Suggests:       python-aiohttp
+Suggests:       python-pyarrow
+Suggests:       python-pygit2
+Suggests:       python-dropboxdrivefs
+Suggests:       python-dropbox
+Suggests:       python-dask
+Suggests:       python-distributed
+Suggests:       python-gcsfs
+Suggests:       python-paramiko
+Suggests:       python-requests
+Suggests:       python-s3fs
+Suggests:       python-smbprotocol
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module aiohttp}
+BuildRequires:  %{python_module cloudpickle}
+BuildRequires:  %{python_module distributed}
 BuildRequires:  %{python_module fusepy}
+BuildRequires:  %{python_module gcsfs}
+BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module panel}
+BuildRequires:  %{python_module paramiko}
+BuildRequires:  %{python_module pyftpdlib}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-snappy}
+BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module s3fs}
+BuildRequires:  %{python_module smbprotocol}
+BuildRequires:  %{python_module zstandard}
+# cannot test git and http in the same installation (?)
+# BuildRequires:  %%{python_module pygit2}
+# BuildRequires:  git-core
 # /SECTION
 %python_subpackages
 
@@ -40,7 +70,7 @@ BuildRequires:  %{python_module pytest}
 A specification for pythonic filesystems.
 
 %prep
-%setup -q -n filesystem_spec-%{version}
+%setup -q -n fsspec-%{version}
 
 %build
 %python_build
@@ -52,7 +82,7 @@ A specification for pythonic filesystems.
 %check
 # test_basic relies on speed of FS and timeouts in OBS
 # test_not_cached needs sockets
-%pytest -k 'not test_basic and not test_not_cached'
+%pytest -rfEs  -k 'not test_basic and not test_not_cached'
 
 %files %{python_files}
 %doc README.md

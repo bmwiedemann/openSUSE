@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Mon Dec 28 15:19:45 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 0.8.5
+  Features:
+  * config system
+  * libarchive implementation
+  * add reference file system implementation
+- Changes in version 0.8.4
+  Features:
+  * function can_be_local to see whether URL is compatible with
+    open_local
+  * concurrent cat with filecaches, if backend supports it
+  * jupyter FS
+  Fixes:
+  * dircache expiry after transaction
+  * blockcache garbage collection
+  * close for HDFS
+  * windows tests
+  * glob depth with "**"
+- Changes in version 0.8.3
+  Features:
+  * error options for cat
+  * memory fs created time in detailed ls
+  Fixes:
+  * duplicate directories could appear in MemoryFileSystem
+  * Added support for hat dollar lbrace rbrace regex character
+    escapes in glob
+  * Fix blockcache (was doing unnecessary work)
+  * handle multibyte dtypes in readinto
+  * Fix missing kwargs in call to _copy in asyn
+  Other:
+  * Stop inheriting from pyarrow.filesystem for pyarrow>=2.0
+  * Raise low-level program friendly OSError.
+  * Guard against instance reuse in new processes
+  * Make hash_name a method on CachingFileSystem to make it easier
+    to change.
+  * Use get_event_loop for py3.6 compatibility
+ - Changes in version 0.8.2
+  Fixes:
+  * More careful strip for caching
+  * Version 0.8.1
+  Features:
+  * add sign to base class
+  * Allow calling of coroutines from normal code when running async
+  * Implement writing for cached many files
+  * Allow concurrent caching of remote files
+  * Add gdrive:// protocol
+  Fixes:
+  * Fix memfs with exact ls
+  * HTTPFileSystem requires requests and aiohttp in registry
+  Other:
+  * Allow http kwargs to clientSession
+  * Use extras_require in setup.py for optional dependencies
+  * Replacing md5 with sha256 for hash (CVE req)
+  * Test against Python 3.8, drop 3.5 testing
+  * add az alias for abfs 
+- Get source tarball from PyPI instead of GitHub
+- BuildRequires and Suggests extra stuff and test it, where 
+  possible
+
+-------------------------------------------------------------------
 Mon Sep  7 13:23:31 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.8.0:

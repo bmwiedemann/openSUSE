@@ -84,4 +84,12 @@ Required by the latest version of python-gcsfs</comment>
     <comment></comment>
     <requestid>832844</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a6c83cef62a3ea97c501eaad53dc8493</srcmd5>
+    <version>0.8.5</version>
+    <time>1609344767</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859278</requestid>
+  </revision>
 </revisionlist>
