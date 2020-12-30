@@ -616,4 +616,13 @@ Fix for CVE-2013-4288 (forwarded request 199675 from sumski)</comment>
     <comment></comment>
     <requestid>844237</requestid>
   </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>95177ca98a073dd5888a5f47e76f6ee7</srcmd5>
+    <version>0.118</version>
+    <time>1609344714</time>
+    <user>dimstar_suse</user>
+    <comment>- also set libprivdir during build, otherwhise systemd and D-Bus service files
+  contain the wrong path and we'll get runtime errors. (forwarded request 859146 from mgerstner)</comment>
+    <requestid>859155</requestid>
+  </revision>
 </revisionlist>
