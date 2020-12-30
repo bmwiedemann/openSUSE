@@ -18,9 +18,12 @@
 
 %define so_ver 2
 
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_with python2
 %bcond_without python3
-
+%if ! %{with python2}
+%define skip_python2 1
+%endif
 Name:           tbb
 Version:        2020.3
 Release:        0
@@ -36,15 +39,23 @@ Patch2:         reproducible.patch
 # PATCH-FIX-OPENSUSE disable-irml.patch -- Don't try to link to irml
 Patch3:         disable-irml.patch
 Patch4:         cmake-remove-include-path.patch
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-%if %{with python2}
-BuildRequires:  python2-devel
-%endif
-%if %{with python3}
-BuildRequires:  python3-devel
-%endif
+BuildRequires:  python-rpm-macros
 BuildRequires:  swig >= 3.0.6
+%if 0%{?python38_version_nodots}
+# if python multiflavor is in place yet, use it to generate subpackages
+%define python_subpackage_only 1
+%python_subpackages
+%else
+# unified defaults for the package file list
+%define pycache_only %{nil}
+%define python_sitearch %{python3_sitearch}
+%define python_files() -n python3-%{**}
+%endif
 
 %description
 Threading Building Blocks (TBB) offers a rich and complete approach to
@@ -81,6 +92,16 @@ templates, scalable_allocator<T> and cache_aligned_allocator<T>,
 address critical issues in parallel programming: scalability and
 false sharing.
 
+%if 0%{?python_subpackage_only}
+%package -n python-%{name}
+Summary:        Python %{python_version} support for Threading Building Blocks (TBB)
+Group:          Development/Languages/Python
+
+%description -n python-%{name}
+This package contains python %{python_version} bindings for Threading Building Blocks
+(TBB).
+
+%else
 %package -n python2-%{name}
 Summary:        Python 2 support for Threading Building Blocks (TBB)
 Group:          Development/Languages/Python
@@ -94,8 +115,9 @@ Summary:        Python 3 support for Threading Building Blocks (TBB)
 Group:          Development/Languages/Python
 
 %description -n python3-%{name}
-This package contains python 2 bindings for Threading Building Blocks
+This package contains python 3 bindings for Threading Building Blocks
 (TBB).
+%endif
 
 %package devel
 Summary:        Development Files for Threading Building Blocks (TBB)
@@ -118,6 +140,9 @@ This package contains the header files needed for development with tbb.
 %setup -q -n oneTBB-%{version}
 %autopatch -p1
 
+sed -i 's/version\s*="0.1"/version = "%{version}"/' python/setup.py
+sed -i '1{/^#!.*env python/ d}' python/TBB.py python/tbb/*.py
+
 %build
 make OPTFLAGS="%{optflags}" %{?_smp_mflags} tbb_build_prefix=obj
 
@@ -125,19 +150,15 @@ mkdir lib; pushd lib
 ln -s ../build/obj_release/*.so* .
 popd
 
-cp -r python python3
-
 export TBBROOT=$PWD
 . build/obj_release/tbbvars.sh
-%if %{with python2}
+%if %{with python2} || %{with python3}
 pushd python
-%python2_build
+%python_build
+# only needed for testing? Linking is patched out, not installing.
+pushd rml
+make
 popd
-%endif
-
-%if %{with python3}
-pushd python3
-%python3_build
 popd
 %endif
 
@@ -166,15 +187,22 @@ cmake -DINSTALL_DIR=%{buildroot}%{_libdir}/cmake/TBB \
       -DLIB_REL_PATH="../../" \
       -P cmake/tbb_config_installer.cmake
 
-%if %{with python2}
+export TBBROOT=$PWD
+. build/obj_release/tbbvars.sh
+%if %{with python2} || %{with python3}
 pushd python
-%python2_install
+%python_install
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 popd
 %endif
 
-%if %{with python3}
-pushd python3
-%python3_install
+%if %{with python2} || %{with python3}
+%check
+# avoid shuffling the existing build dir
+mkdir python-test
+pushd python-test
+export LD_LIBRARY_PATH="%{buildroot}%{_libdir}:../python/rml"
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m tbb test -v
 popd
 %endif
 
@@ -186,14 +214,19 @@ popd
 %files -n libtbb%{so_ver}
 %{_libdir}/libtbb.so.%{so_ver}*
 
-%if %{with python2}
+%if %{with python2} && ! 0%{?python_subpackage_only}
 %files -n python2-%{name}
-%{python_sitearch}/*
+%{python2_sitearch}/tbb
+%{python2_sitearch}/TBB.py*
+%{python2_sitearch}/TBB-%{version}*-info
 %endif
 
-%if %{with python3}
-%files -n python3-%{name}
-%{python3_sitearch}/*
+%if %{with python3} || ( %{with python2} && 0%{?python_subpackage_only} )
+%files %{python_files %{name}}
+%{python_sitearch}/tbb
+%{python_sitearch}/TBB.py*
+%{python_sitearch}/TBB-%{version}*-info
+%pycache_only %{python_sitearch}/__pycache__/TBB*
 %endif
 
 %files -n libtbbmalloc%{so_ver}

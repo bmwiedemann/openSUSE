@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 25 11:10:11 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Rework the building of python bindings
+  * Fix egg info version
+  * Remove shebang lines
+  * fix lining issue by setting TBBROOT and tbbvars in install phase
+  * Run python tests with irml library built (but not installed)
+  * Build bindings packages for all existing python3 flavors
+    gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Mon Aug  3 05:52:53 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 2020.3

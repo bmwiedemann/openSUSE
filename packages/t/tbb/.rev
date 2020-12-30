@@ -327,4 +327,12 @@
     to fail (https://github.com/oneapi-src/oneTBB/pull/233)</comment>
     <requestid>824033</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>016b50ff31c1985aeaee375db89795bf</srcmd5>
+    <version>2020.3</version>
+    <time>1609344716</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859175</requestid>
+  </revision>
 </revisionlist>
