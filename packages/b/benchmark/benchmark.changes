@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 29 15:45:59 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.5.2:
+  * Timestamps in output are now rfc3339-formatted #965
+  * overflow warnings with timers fixed #980
+  * Python dependencies are now covered by a requirements.txt #994
+  * JSON output cleaned up when no CPU scaling is present (#1008)
+  * CartesianProduct added for easier settings of multiple ranges (#1029)
+  * Python bindings improvements:
+    + Custom main functions (#993)
+    + A rename to google_benchmark (#199
+    + More state methods bound (#1037) with a builder interface (#1040)
+  * Workflow additions in github include pylint (#1039) and bindings runs (#1041)
+
+-------------------------------------------------------------------
 Mon Nov 18 23:15:31 UTC 2019 - Simon Lees <sflees@suse.de>
 
 - %make_jobs is depricated replaced by %cmake_build

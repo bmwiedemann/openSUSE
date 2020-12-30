@@ -1,7 +1,7 @@
 #
 # spec file for package benchmark
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define soname  lib%{name}
 %define sover   0
 Name:           benchmark
-Version:        1.5.0
+Version:        1.5.2
 Release:        0
 Summary:        A microbenchmark support library
 License:        Apache-2.0
@@ -49,7 +49,7 @@ Requires:       %{soname}%{sover} = %{version}
 Development files for google benchmark library
 
 %prep
-%setup -q
+%autosetup
 
 %build
 sed -e 's|lib_install_dir "lib/"|lib_install_dir "%{_libdir}/"|g' \

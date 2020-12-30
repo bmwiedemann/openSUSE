@@ -126,4 +126,22 @@
     <comment></comment>
     <requestid>749315</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>10353a8aec02aeaaffee14fd63d553b2</srcmd5>
+    <version>1.5.2</version>
+    <time>1609344742</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.2:
+  * Timestamps in output are now rfc3339-formatted #965
+  * overflow warnings with timers fixed #980
+  * Python dependencies are now covered by a requirements.txt #994
+  * JSON output cleaned up when no CPU scaling is present (#1008)
+  * CartesianProduct added for easier settings of multiple ranges (#1029)
+  * Python bindings improvements:
+    + Custom main functions (#993)
+    + A rename to google_benchmark (#199
+    + More state methods bound (#1037) with a builder interface (#1040)
+  * Workflow additions in github include pylint (#1039) and bindings runs (#1041)</comment>
+    <requestid>859259</requestid>
+  </revision>
 </revisionlist>
