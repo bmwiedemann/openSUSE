@@ -23,10 +23,10 @@
 %endif
 
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20201130
+%define version_unconverted 20201218
 
 Name:           kernel-firmware
-Version:        20201130
+Version:        20201218
 Release:        0
 Summary:        Linux kernel firmware files
 License:        SUSE-Firmware AND GPL-2.0-only AND GPL-2.0-or-later AND MIT
@@ -2100,11 +2100,17 @@ Supplements:    modalias(pci:v00008086d00002723sv*sd00004080bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002723sv*sd00004088bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002723sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002725sv*sd00000020bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00002725sv*sd00000024bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002725sv*sd00000090bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002725sv*sd000000B0bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002725sv*sd00000310bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002725sv*sd00000510bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002725sv*sd00000A10bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00002725sv*sd00004020bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00002725sv*sd00006020bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00002725sv*sd00006024bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00002725sv*sd0000E020bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00002725sv*sd0000E024bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002726sv*sd00000070bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002726sv*sd00000074bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002726sv*sd00000078bc*sc*i*)
@@ -2581,6 +2587,8 @@ Supplements:    modalias(of:N*T*Csamsung,mfc-v7)
 Supplements:    modalias(of:N*T*Csamsung,mfc-v7C*)
 Supplements:    modalias(of:N*T*Csamsung,mfc-v8)
 Supplements:    modalias(of:N*T*Csamsung,mfc-v8C*)
+Supplements:    modalias(of:N*T*Cti,dra7-vpe)
+Supplements:    modalias(of:N*T*Cti,dra7-vpeC*)
 Supplements:    modalias(pci:v00001131d00007146sv0000110Asd00000000bc*sc*i*)
 Supplements:    modalias(pci:v00001131d00007146sv000013C2sd00000000bc*sc*i*)
 Supplements:    modalias(pci:v00001131d00007146sv000013C2sd00000001bc*sc*i*)
@@ -2749,6 +2757,8 @@ Supplements:    modalias(of:N*T*Cmediatek,mt7668u-bluetooth)
 Supplements:    modalias(of:N*T*Cmediatek,mt7668u-bluetoothC*)
 Supplements:    modalias(of:N*T*Cmediatek,mt8183-scp)
 Supplements:    modalias(of:N*T*Cmediatek,mt8183-scpC*)
+Supplements:    modalias(of:N*T*Cmediatek,mt8192-scp)
+Supplements:    modalias(of:N*T*Cmediatek,mt8192-scpC*)
 Supplements:    modalias(pci:v000014C3d00007602sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007610sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007611sv*sd*bc*sc*i*)

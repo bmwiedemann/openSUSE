@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec 28 11:22:43 UTC 2020 - tiwai@suse.com
+
+- Update to version 20201218 (git commit 646f159690e2):
+  * make AP6212 in bananpi m2 plus/zero work
+  * linux-firmware: Update firmware file for Intel Bluetooth AX210
+  * linux-firmware: Update firmware file for Intel Bluetooth AX200
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth 9260
+  * linux-firmware: add firmware for Lontium LT9611UXC DSI to HDMI bridge
+  * mediatek: update MT8173 VPU firmware to v1.1.6
+  * QCA : Updated firmware files for WCN3991
+- Remove the already upstreamed extrawhence entry
+- Update topic entry for lt9611uxc
+- Update aliases from 5.10.x kernels
+
+-------------------------------------------------------------------
 Tue Dec 15 16:32:25 UTC 2020 - seife+obs@b1-systems.com
 
 - add banana pi brcm wireless symlinks to extrawhence

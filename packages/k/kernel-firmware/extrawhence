@@ -14,10 +14,3 @@ File: ql2600_fw.bin
 File: ql2700_fw.bin
 File: ql8300_fw.bin
 
---------------------------------------------------------------------------
-
-Driver: brcmfmac - Broadcom 802.11n fullmac wireless LAN driver.
-
-Link: brcm/brcmfmac43430-sdio.sinovoip,bpi-m2-plus.txt -> brcmfmac43430-sdio.AP6212.txt
-Link: brcm/brcmfmac43430-sdio.sinovoip,bpi-m2-zero.txt -> brcmfmac43430-sdio.AP6212.txt
-
