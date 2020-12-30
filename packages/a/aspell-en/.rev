@@ -216,4 +216,15 @@ Use SPDX format (using same license form as Fedora for this package) (forwarded 
   by the aspell library [bsc#1177523]</comment>
     <requestid>841264</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>f6fcb0f796b750fdead16fbfdfd5f4f7</srcmd5>
+    <version>2020.12.07</version>
+    <time>1609344690</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 2020.12.07
+  * Various new words.
+  * Variant cleanups.
+  * Bump irregardless, froward (+ derivatives) and perpend to level 70.</comment>
+    <requestid>859012</requestid>
+  </revision>
 </revisionlist>

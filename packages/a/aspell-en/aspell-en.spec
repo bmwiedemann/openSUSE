@@ -20,7 +20,7 @@
 %define aspell_data_dir %(aspell dump config data-dir)
 
 Name:           aspell-en
-Version:        2019.10.06
+Version:        2020.12.07
 Release:        0
 Summary:        English Dictionaries for ASpell
 License:        MIT AND BSD-3-Clause
