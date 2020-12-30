@@ -39,6 +39,7 @@ Source5:        %{name}.sysconfig
 Source6:        %{name}.firewalld
 Source7:        README.SUSE
 Source8:        %{name}-apparmor-usr.bin.turnserver
+Source9:        %{name}@.service
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros
 BuildRequires:  libevent-devel >= 2.0.0
@@ -115,6 +116,7 @@ This package contains the TURN development headers.
 %make_install
 mkdir -p %{buildroot}{%{_sysconfdir}/pki/coturn/{public,private},{%{_rundir},%{_localstatedir}/{lib,log}}/%{name},%{_unitdir},%{_sysusersdir},%{_sbindir},%{_sysconfdir}/apparmor.d/local}
 install -Dpm 0644 %{SOURCE1} %{buildroot}%{_unitdir}/
+install -Dpm 0644 %{SOURCE9} %{buildroot}%{_unitdir}/
 install -Dpm 0644 %{SOURCE2} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 install -Dpm 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 install -Dpm 0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/
@@ -160,9 +162,11 @@ done
 
 %pre -f %{name}.pre
 %service_add_pre %{name}.service
+%service_add_pre %{name}@.service
 
 %post
 %service_add_post %{name}.service
+%service_add_post %{name}@.service
 systemd-tmpfiles --create %{_prefix}/lib/tmpfiles.d/%{name}.conf
 %{fillup_only -n %{name}}
 %firewalld_reload
@@ -172,9 +176,11 @@ systemd-tmpfiles --create %{_prefix}/lib/tmpfiles.d/%{name}.conf
 
 %preun
 %service_del_preun %{name}.service
+%service_del_preun %{name}@.service
 
 %postun
 %service_del_postun %{name}.service
+%service_del_postun %{name}@.service
 
 %files
 %license LICENSE
@@ -218,6 +224,7 @@ systemd-tmpfiles --create %{_prefix}/lib/tmpfiles.d/%{name}.conf
 %dir %{_sysconfdir}/pki/%{name}/public
 %dir %attr(0750,root,%{name}) %{_sysconfdir}/pki/%{name}/private
 %{_unitdir}/coturn.service
+%{_unitdir}/coturn@.service
 %{_tmpfilesdir}/coturn.conf
 %dir %ghost %attr(0750,%{name},%{name}) %{_rundir}/%{name}
 %dir %attr(0750,%{name},%{name}) %{_localstatedir}/lib/%{name}

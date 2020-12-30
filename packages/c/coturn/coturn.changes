@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec 27 15:42:09 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- AppArmor profile has ABI 3.0 and some minor changes
+- Modified systemd unit:
+  * do not use daemon mode
+  * Type=simple
+  * added security settings
+- added multi-instance systemd unit
+
+-------------------------------------------------------------------
 Wed Aug 19 10:48:41 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)

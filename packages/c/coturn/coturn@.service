@@ -1,5 +1,5 @@
 [Unit]
-Description=STUN and TURN relay server for VoIP and WebRTC
+Description=STUN and TURN relay server for VoIP and WebRTC %i
 Documentation=man:coturn(1) man:turnadmin(1) man:turnserver(1)
 After=syslog.target network.target
 
@@ -7,9 +7,9 @@ After=syslog.target network.target
 User=coturn
 Group=coturn
 Type=simple
-EnvironmentFile=-/etc/sysconfig/coturn
+EnvironmentFile=-/etc/sysconfig/coturn-%i
 PIDFile=/run/coturn/turnserver.pid
-ExecStart=/usr/bin/turnserver -c /etc/coturn/turnserver.conf --pidfile /run/coturn/turnserver.pid $EXTRA_OPTIONS
+ExecStart=/usr/bin/turnserver -c /etc/coturn/%i.conf --pidfile /run/coturn/turnserver-%i.pid $EXTRA_OPTIONS
 Restart=on-abort
 ExecReload=/bin/kill -HUP $MAINPID
 
