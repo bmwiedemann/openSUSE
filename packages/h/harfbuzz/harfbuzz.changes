@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Dec 27 15:55:30 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- harfbuzz 2.7.4:
+  - Fix missing --enable-introspection configure option
+- includes changes from 2.7.3:
+  - Update USE shaper to 2020-08-13 specification, and other improvements
+  - Don’t disable liga feature in myanmar shaper, to match Uniscribe
+  - Improvements to language and script tags handling.
+  - Update language system tag registry to OpenType 1.8.4
+  - Support for serializing and deserializing Unicode buffers
+  - Increase buffer work limits to handle fonts with many complex lookups
+  - Handle more shaping operations in trace output
+  - Memory access fixes
+  - More OOM fixes
+  - Improved documentation
+
+-------------------------------------------------------------------
 Thu Sep 17 11:54:35 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.7.2:

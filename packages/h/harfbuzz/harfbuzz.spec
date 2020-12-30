@@ -17,7 +17,7 @@
 
 
 Name:           harfbuzz
-Version:        2.7.2
+Version:        2.7.4
 Release:        0
 Summary:        An OpenType text shaping engine
 License:        MIT
@@ -25,7 +25,7 @@ URL:            https://www.freedesktop.org/wiki/Software/HarfBuzz
 Source0:        https://github.com/harfbuzz/harfbuzz/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig >= 0.28
 BuildRequires:  pkgconfig(cairo) >= 1.8.0
 BuildRequires:  pkgconfig(cairo-ft)
 BuildRequires:  pkgconfig(freetype2) >= 12.0.6

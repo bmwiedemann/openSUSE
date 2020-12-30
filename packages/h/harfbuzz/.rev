@@ -712,4 +712,12 @@
     `git+https://github.com/harfbuzz/harfbuzz#commit=$commit` (forwarded request 835277 from dirkmueller)</comment>
     <requestid>836037</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>8d75e62d09058127be6b2df40fd7b689</srcmd5>
+    <version>2.7.4</version>
+    <time>1609344724</time>
+    <user>dimstar_suse</user>
+    <comment>harfbuzz 2.7.4 (forwarded request 858861 from AndreasStieger)</comment>
+    <requestid>859195</requestid>
+  </revision>
 </revisionlist>
