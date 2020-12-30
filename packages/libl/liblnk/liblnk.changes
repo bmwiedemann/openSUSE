@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 29 23:23:13 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20200810
+        * worked on python bindings
+- added COPYING* to %license line
+- removed      BuildRequires:  pkg-config
+
+-------------------------------------------------------------------
 Tue May  5 11:17:04 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Allow distros to disable python2 builds (bcond_without python2):
