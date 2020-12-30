@@ -87,6 +87,8 @@ URL:            https://www.dealii.org/
 Source0:        https://github.com/dealii/dealii/releases/download/v%{version}/%{srcname}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM dealii-build-with-muparser-2.3.2.patch gh#dealii/dealii#10548 badshah400@gmail.com -- Fix muparser 2.3.2 version detection
 Patch0:         dealii-build-with-muparser-2.3.2.patch
+# PATCH-FIX-UPSTREAM dealii-boost-1_75.patch gh#dealii/dealii#11379 badshah400@gmail.com Fix build with boost 1.75; patch taken from upstream git
+Patch1:         dealii-boost-1_75.patch
 # NOTE: serial arpack-ng even if parpack is available (see gh#dealii/dealii#10197)
 BuildRequires:  arpack-ng-devel
 BuildRequires:  blas-devel

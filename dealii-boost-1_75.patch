@@ -1,0 +1,119 @@
+From c0aa1399014f70f7fe7fbc2ceefba2c6f80f3462 Mon Sep 17 00:00:00 2001
+From: David Wells <drwells@email.unc.edu>
+Date: Thu, 8 Oct 2020 20:58:44 -0400
+Subject: [PATCH] Add a quick check for matching boost versions.
+
+This addresses a problem a user had recently with inscrutable crashes caused by
+mixed boost versions. Credit goes to Daniel Jodlbauer for reporting the issue.
+---
+ cmake/configure/configure_2_boost.cmake | 14 ++++++++++++++
+ include/deal.II/base/config.h.in        | 23 +++++++++++++++++++++++
+ 2 files changed, 37 insertions(+)
+
+diff --git a/cmake/configure/configure_2_boost.cmake b/cmake/configure/configure_2_boost.cmake
+index 24463063bce..9386f2f5974 100644
+--- a/cmake/configure/configure_2_boost.cmake
++++ b/cmake/configure/configure_2_boost.cmake
+@@ -92,6 +92,20 @@ MACRO(FEATURE_BOOST_CONFIGURE_BUNDLED)
+   # We need to set this path before calling the configure function
+   # to be able to use the include paths in the checks.
+   SET(BOOST_BUNDLED_INCLUDE_DIRS ${BOOST_FOLDER}/include)
++  #
++  # We still need the version information, which is set up in the FindBoost
++  # module in the non-bundled case:
++  #
++  FILE(STRINGS "${BOOST_BUNDLED_INCLUDE_DIRS}/boost/version.hpp"
++    BOOST_VERSION_STRING
++    REGEX "#define.*BOOST_VERSION")
++
++  STRING(REGEX REPLACE "^.*BOOST_VERSION.* ([0-9]+).*" "\\1"
++    BOOST_VERSION_NUMBER "${BOOST_VERSION_STRING}"
++    )
++  MATH(EXPR Boost_MAJOR_VERSION "${BOOST_VERSION_NUMBER} / 100000")
++  MATH(EXPR Boost_MINOR_VERSION "${BOOST_VERSION_NUMBER} / 100 % 1000")
++  MATH(EXPR Boost_SUBMINOR_VERSION "${BOOST_VERSION_NUMBER} % 100")
+ 
+   FEATURE_BOOST_CONFIGURE_COMMON()
+ 
+diff --git a/include/deal.II/base/config.h.in b/include/deal.II/base/config.h.in
+index 48d4bf1a832..0c9a16b9f90 100644
+--- a/include/deal.II/base/config.h.in
++++ b/include/deal.II/base/config.h.in
+@@ -230,6 +230,12 @@
+     >=  \
+     (major)*10000 + (minor)*100 + (subminor))
+ 
++/*
++ * boost:
++ */
++#define DEAL_II_BOOST_VERSION_MAJOR @Boost_MAJOR_VERSION@
++#define DEAL_II_BOOST_VERSION_MINOR @Boost_MINOR_VERSION@
++#define DEAL_II_BOOST_VERSION_SUBMINOR @Boost_SUBMINOR_VERSION@
+ 
+ /*
+  * Gmsh:
+@@ -453,4 +459,21 @@ DEAL_II_ENABLE_EXTRA_DIAGNOSTICS
+ #include <deal.II/base/numbers.h>
+ #include <deal.II/base/types.h>
+ 
++/*
++ * Include the boost version header to do a quick version check in case, by
++ * accident, we have configured with one version of boost but are compiling
++ * either the library or an external application with a different version of
++ * boost.
++ */
++#include <boost/version.hpp>
++static_assert(
++  BOOST_VERSION == 100000 * DEAL_II_BOOST_VERSION_MAJOR +
++                     100 * DEAL_II_BOOST_VERSION_MINOR +
++                     DEAL_II_BOOST_VERSION_SUBMINOR,
++  "The version number of boost that you are compiling with does not match the "
++  "version number of boost found during deal.II's configuration step. This "
++  "leads to difficult to understand bugs and is not supported. Please check "
++  "that you have set up your application with the same version of boost as "
++  "deal.II.");
++
+ #endif
+--
+From 13bc2f8a021316d38be0c0fcaa93aa177e214d86 Mon Sep 17 00:00:00 2001
+From: Marc Fehling <mafehling.git@gmail.com>
+Date: Wed, 16 Dec 2020 18:59:51 -0700
+Subject: [PATCH] Added missing header for boost 1.75.0.
+
+---
+ include/deal.II/base/bounding_box.h | 3 +++
+ include/deal.II/base/config.h.in    | 7 +++++++
+ 2 files changed, 10 insertions(+)
+
+Index: dealii-9.2.0/include/deal.II/base/bounding_box.h
+===================================================================
+--- dealii-9.2.0.orig/include/deal.II/base/bounding_box.h
++++ dealii-9.2.0/include/deal.II/base/bounding_box.h
+@@ -26,6 +26,9 @@
+ DEAL_II_DISABLE_EXTRA_DIAGNOSTICS
+ #include <boost/geometry/algorithms/envelope.hpp>
+ #include <boost/geometry/geometries/multi_point.hpp>
++#if DEAL_II_BOOST_VERSION_GTE(1, 75, 0)
++#  include <boost/geometry/strategies/envelope/cartesian.hpp>
++#endif
+ DEAL_II_ENABLE_EXTRA_DIAGNOSTICS
+ 
+ DEAL_II_NAMESPACE_OPEN
+Index: dealii-9.2.0/include/deal.II/base/config.h.in
+===================================================================
+--- dealii-9.2.0.orig/include/deal.II/base/config.h.in
++++ dealii-9.2.0/include/deal.II/base/config.h.in
+@@ -234,6 +234,13 @@
+ #  define DEAL_II_GMSH_EXECUTABLE_PATH "@GMSH_EXECUTABLE@"
+ #endif
+ 
++#define DEAL_II_BOOST_VERSION_GTE(major,minor,subminor) \
++ ((DEAL_II_BOOST_VERSION_MAJOR * 100000 + \
++    DEAL_II_BOOST_VERSION_MINOR * 100 + \
++     DEAL_II_BOOST_VERSION_SUBMINOR) \
++    >= \
++    (major)*100000 + (minor)*100 + (subminor))
++
+ /*
+  * p4est:
+  */
