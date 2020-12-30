@@ -1,7 +1,7 @@
 #
 # spec file for package libodraw
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,16 @@
 
 Name:           libodraw
 %define lname	libodraw1
-%define timestamp 20190118
+%define timestamp 20201003
 Version:        0~%timestamp
 Release:        0
 Summary:        Library and tools to access to optical disc (split) RAW image files
 License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          Productivity/File utilities
-Url:            https://github.com/libyal/libodraw/wiki 
+URL:            https://github.com/libyal/libodraw/wiki 
 Source:         https://github.com/libyal/libodraw/releases/download/%timestamp/%name-alpha-%timestamp.tar.gz
 Source2:        CUE_sheet_format.pdf
-BuildRequires:  pkg-config
+#BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libbfio) >= 20120426
 BuildRequires:  pkgconfig(libcdata) >= 20120425
 BuildRequires:  pkgconfig(libcfile) >= 20120526
@@ -99,13 +99,13 @@ rm -f "%buildroot/%_libdir"/*.la
 %files -n %lname
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog
-%license COPYING 
+%license COPYING*
 %_libdir/libodraw.so.1*
 
 %files devel
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog
-%license COPYING 
+%license COPYING*
 %doc CUE_*.pdf
 %_includedir/libodraw*
 %_libdir/libodraw.so
@@ -115,7 +115,7 @@ rm -f "%buildroot/%_libdir"/*.la
 %files tools
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog
-%license COPYING 
+%license COPYING*
 %_bindir/odrawverify
 %_bindir/odrawinfo
 %_mandir/man1/odrawinfo.1*
