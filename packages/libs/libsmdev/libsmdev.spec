@@ -1,7 +1,7 @@
 #
 # spec file for package libsmdev
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 %define lname	libsmdev1
-%define timestamp 20190315
+%define timestamp 20201204
 Name:           libsmdev
 Version:        0~%{timestamp}
 Release:        0
 Summary:        Library to access storage media devices
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
-Url:            https://github.com/libyal/libsmdev/wiki
+URL:            https://github.com/libyal/libsmdev/wiki
 Source:         https://github.com/libyal/libsmdev/releases/download/%timestamp/%{name}-alpha-%{timestamp}.tar.gz
-BuildRequires:  pkg-config
+#BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcdata) >= 20120425
 BuildRequires:  pkgconfig(libcerror) >= 20170101
 BuildRequires:  pkgconfig(libcfile) >= 20130609
@@ -94,13 +94,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n %{lname}
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog
-%license COPYING
+%license COPYING*
 %{_libdir}/libsmdev.so.1*
 
 %files devel
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog
-%license COPYING
+%license COPYING*
 %{_includedir}/libsmdev*
 %{_libdir}/libsmdev.so
 %{_libdir}/pkgconfig/libsmdev.pc
@@ -109,14 +109,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files tools
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog
-%license COPYING
+%license COPYING*
 %{_bindir}/smdevinfo
 %{_mandir}/man1/smdevinfo.1*
 
 %files -n python3-%{name}
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog
-%license COPYING
+%license COPYING*
 %{python3_sitearch}/pysmdev.so
 
 %changelog
