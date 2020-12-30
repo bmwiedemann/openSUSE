@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 27 20:31:35 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Add system-user-vscan subpackage with vscan user and group and
+  /var/spool/amavis as home directory
+
+-------------------------------------------------------------------
 Fri Dec  4 09:16:03 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
 
 - Remove kvm group from hardware subpackage, since kvm is in its

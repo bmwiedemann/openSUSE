@@ -165,4 +165,15 @@
     <comment></comment>
     <requestid>853579</requestid>
   </revision>
+  <revision rev="20" vrev="15">
+    <srcmd5>08e56674b4e10ff478103abacbf2d413</srcmd5>
+    <version>20170617</version>
+    <time>1609344658</time>
+    <user>dimstar_suse</user>
+    <comment>- Add system-user-vscan subpackage with vscan user and group and
+  /var/spool/amavis as home directory
+
+The vscan user is currently used by the amavisd-new and clamav packages, but there are other packages that might benefit from running daemons as non-privileged user (looking at you, spamassassin) (forwarded request 858972 from adkorte)</comment>
+    <requestid>859003</requestid>
+  </revision>
 </revisionlist>

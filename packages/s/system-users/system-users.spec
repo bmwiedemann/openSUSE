@@ -43,6 +43,7 @@ Source20:       system-user-tss.conf
 Source21:       system-group-kvm.conf
 Source22:       system-user-qemu.conf
 Source23:       system-group-libvirt.conf
+Source24:       system-user-vscan.conf
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildArch:      noarch
@@ -233,6 +234,14 @@ Group:          System/Fhs
 %description -n system-group-libvirt
 This package provides the system group 'libvirt'.
 
+%package -n system-user-vscan
+Summary:        System user vscan
+Group:          System/Fhs
+%{sysusers_requires}
+
+%description -n system-user-vscan
+This package provides the system user 'vscan'.
+
 %prep
 %setup -q -c -T
 
@@ -258,6 +267,7 @@ This package provides the system group 'libvirt'.
 %sysusers_generate_pre %{SOURCE21} kvm
 %sysusers_generate_pre %{SOURCE22} qemu
 %sysusers_generate_pre %{SOURCE23} libvirt
+%sysusers_generate_pre %{SOURCE24} vscan
 
 %install
 mkdir -p %{buildroot}%{_sysusersdir}
@@ -265,6 +275,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/uucp
 mkdir -p %{buildroot}%{_sysconfdir}/news
 mkdir -p %{buildroot}%{_localstatedir}/games
 mkdir -p %{buildroot}%{_localstatedir}/lib/wwwrun
+mkdir -p %{buildroot}%{_localstatedir}/spool/amavis
 mkdir -p %{buildroot}%{_localstatedir}/spool/clientmqueue
 mkdir -p %{buildroot}%{_localstatedir}/spool/lpd
 mkdir -p %{buildroot}%{_localstatedir}/run/uuidd
@@ -293,6 +304,7 @@ install -m 644 %{SOURCE20} %{buildroot}%{_sysusersdir}/system-user-tss.conf
 install -m 644 %{SOURCE21} %{buildroot}%{_sysusersdir}/system-group-kvm.conf
 install -m 644 %{SOURCE22} %{buildroot}%{_sysusersdir}/system-user-qemu.conf
 install -m 644 %{SOURCE23} %{buildroot}%{_sysusersdir}/system-group-libvirt.conf
+install -m 644 %{SOURCE24} %{buildroot}%{_sysusersdir}/system-user-vscan.conf
 
 %pre -n system-user-uucp -f uucp.pre
 %pre -n system-user-games -f games.pre
@@ -318,6 +330,7 @@ test -x /usr/sbin/usermod && /usr/sbin/usermod -s /bin/bash nobody ||:
 %pre -n system-group-kvm -f kvm.pre
 %pre -n system-user-qemu -f qemu.pre
 %pre -n system-group-libvirt -f libvirt.pre
+%pre -n system-user-vscan -f vscan.pre
 
 %files -n system-user-uucp
 %defattr(-,root,root)
@@ -412,5 +425,10 @@ test -x /usr/sbin/usermod && /usr/sbin/usermod -s /bin/bash nobody ||:
 %files -n system-group-libvirt
 %defattr(-,root,root)
 %{_sysusersdir}/system-group-libvirt.conf
+
+%files -n system-user-vscan
+%defattr(-,root,root)
+%dir %attr(0750,vscan,vscan) %{_localstatedir}/spool/amavis
+%{_sysusersdir}/system-user-vscan.conf
 
 %changelog
