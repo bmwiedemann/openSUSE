@@ -26,10 +26,14 @@ License:        BSD-3-Clause
 URL:            https://github.com/PyTables/PyTables
 Source0:        https://files.pythonhosted.org/packages/source/t/tables/tables-%{version}.tar.gz
 Patch0:         Never-use-the-msse2-flag-explicitly.patch
+# PATCH-FIX-UPSTREAM PyTables-pr810-tostring.patch -- gh#PyTables/PyTables#810
+Patch1:         https://github.com/PyTables/PyTables/pull/810.patch#/PyTables-pr810-tostring.patch
+# PATCH-FIX-UPSTREAM PyTables-compat-numpy119.patch -- https://github.com/PyTables/PyTables/commit/fdd87f + typo fix.
+Patch2:         PyTables-compat-numpy119.patch
+# PATCH-FIX-UPSTREAM PyTables-skip-test_vlarray.patch -- gh#PyTables/PyTablse#845
+Patch3:         PyTables-skip-test_vlarray.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
-# Python 3 version needs mock too for some reason
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module numexpr >= 2.6.2}
 BuildRequires:  %{python_module numpy-devel >= 1.9.3}
 BuildRequires:  %{python_module setuptools}
@@ -69,8 +73,7 @@ Provides:       %{python_module tables-doc = %{version}}
 Documentation and help files for %{name}
 
 %prep
-%setup -q -n tables-%{version}
-%patch0 -p1
+%autosetup -p1 -n tables-%{version}
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"

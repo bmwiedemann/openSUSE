@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 24 13:47:31 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- remove mock requirement
+- add PyTables-compat-numpy119.patch for compatibility with numpy
+  1.19
+- add PyTables-pr810-tostring.patch in order to avoid numerous
+  deprecation warnings -- gh#PyTables/PyTables#810
+- add PyTables-skip-test_vlarray.patch in order to skip failing
+  tests -- gh#PyTables/PyTables#845 
+
+-------------------------------------------------------------------
 Tue May 19 08:03:09 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
