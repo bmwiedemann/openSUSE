@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 30 00:05:22 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add dealii-boost-1_75.patch: Fix build with boost 1.75; patch
+  taken from upstream git commits (gh#dealii/dealii#11379).
+
+-------------------------------------------------------------------
 Mon Aug 17 08:50:56 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - for ppc64 (BE) increase memlim from 2k to 3k in spec file
