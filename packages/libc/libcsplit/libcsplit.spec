@@ -18,7 +18,7 @@
 
 Name:           libcsplit
 %define lname	libcsplit1
-%define timestamp 20190102
+%define timestamp 20200703
 Version:        0~%timestamp
 Release:        0
 Summary:        Library for cross-platform C split string functions
@@ -26,7 +26,7 @@ License:        LGPL-3.0+
 Group:          Development/Libraries/C and C++
 Url:            https://github.com/libyal/libcsplit/wiki
 Source:         https://github.com/libyal/libcsplit/releases/download/%timestamp/%{name}-beta-%timestamp.tar.gz
-BuildRequires:  pkg-config
+#BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcerror) >= 20130904
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -82,11 +82,14 @@ rm -f "%{buildroot}/%{_libdir}"/*.la
 
 %files -n %lname
 %defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog
+%doc AUTHORS ChangeLog
+%license COPYING*
 %{_libdir}/libcsplit.so.1*
 
 %files devel
 %defattr(-,root,root)
+%doc AUTHORS ChangeLog
+%license COPYING*
 %{_includedir}/libcsplit*
 %{_libdir}/libcsplit.so
 %{_libdir}/pkgconfig/libcsplit.pc

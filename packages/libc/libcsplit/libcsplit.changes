@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 29 22:35:01 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20200703
+        * no documented changes
+- split off %license line from %doc
+- include COPYING* on %license line
+- remove BuildRequires:  pkg-config
+
+-------------------------------------------------------------------
 Wed Mar 27 22:43:36 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to v0~20190102
