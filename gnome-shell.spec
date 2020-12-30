@@ -99,6 +99,7 @@ BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.33.1
 BuildRequires:  pkgconfig(libgnome-menu-3.0) >= 3.5.3
 BuildRequires:  pkgconfig(libmutter-7) >= 3.38.0
 BuildRequires:  pkgconfig(libnm) >= 1.10.4
+BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse) >= 2.0
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
@@ -113,6 +114,7 @@ BuildRequires:  pkgconfig(polkit-agent-1) >= 0.100
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  python(abi) >= 3
 Requires:       gdk-pixbuf-loader-rsvg
+Requires:       gstreamer-plugin-pipewire
 # "System settings" menu item
 Requires:       gnome-control-center
 Requires:       gnome-session
@@ -290,6 +292,10 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %{_datadir}/gnome-shell/org.gnome.Shell.Extensions.src.gresource
 %{_datadir}/gnome-shell/org.gnome.Shell.Notifications
 %{_datadir}/gnome-shell/org.gnome.Shell.Notifications.src.gresource
+
+%{_datadir}/dbus-1/services/org.gnome.Shell.Screencast.service
+%{_datadir}/gnome-shell/org.gnome.Shell.Screencast
+%{_datadir}/gnome-shell/org.gnome.Shell.Screencast.src.gresource
 
 %files devel
 %doc HACKING.md
