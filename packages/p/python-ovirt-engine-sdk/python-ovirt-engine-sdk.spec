@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ovirt-engine-sdk
-Version:        4.3.0
+Version:    4.4.9
 Release:        0
 Summary:        Python SDK for oVirt Engine API
 License:        Apache-2.0
