@@ -19,7 +19,7 @@
 %define debug_package_requires libbabl-0_1-0 = %{version}-%{release}
 
 Name:           babl
-Version:        0.1.82
+Version:        0.1.84
 Release:        0
 Summary:        Dynamic Pixel Format Translation Library
 License:        LGPL-3.0-or-later AND GPL-3.0-or-later
