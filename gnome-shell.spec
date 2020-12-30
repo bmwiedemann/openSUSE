@@ -176,7 +176,7 @@ This package contains an optional extensions app for managing GNOME Shell extens
 
 %prep
 %setup -q
-#patch1 -p1
+%patch1 -p1
 %patch2 -p1
 %patch4 -p1
 #patch5 -p1
