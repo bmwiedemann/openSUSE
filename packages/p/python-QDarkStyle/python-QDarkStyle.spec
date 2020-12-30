@@ -46,10 +46,11 @@ BuildArch:      noarch
 BuildRequires:  %{python_module QDarkStyle = %{version}}
 BuildRequires:  %{python_module QtPy >= 1.9}
 BuildRequires:  %{python_module helpdev >= 0.6.10}
-BuildRequires:  %{python_module pyside2}
 BuildRequires:  %{python_module pytest-qt}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module qt5-devel}
+# pyside2 is for primary python3 flavor only
+BuildRequires:  python3-pyside2
 BuildRequires:  xvfb-run
 %endif
 %python_subpackages
@@ -73,23 +74,31 @@ export PYTHONDONTWRITEBYTECODE=1
 
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} xvfb-run $python example/example.py --qt_from=pyqt5 --test
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} xvfb-run $python example/example.py --qt_from=pyqt5 --test --no_dark
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} xvfb-run $python example/example.py --qt_from=pyside2 --test
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} xvfb-run $python example/example.py --qt_from=pyside2 --test --no_dark
+# pyside2 is for primary python3 flavor only
+PYTHONPATH=%{buildroot}%{python3_sitelib} xvfb-run python3 example/example.py --qt_from=pyside2 --test
+PYTHONPATH=%{buildroot}%{python3_sitelib} xvfb-run python3 example/example.py --qt_from=pyside2 --test --no_dark
 %endif
 
 %install
 %if !%{with test}
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/qdarkstyle
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
+
+%post
+%python_install_alternative qdarkstyle
+
+%postun
+%python_uninstall_alternative qdarkstyle
 
 %if !%{with test}
 %files %{python_files}
 %doc AUTHORS.rst CHANGES.rst README.rst
 %license LICENSE.rst
-%{_bindir}/qdarkstyle
+%python_alternative %{_bindir}/qdarkstyle
 %{python_sitelib}/qdarkstyle
-%{python_sitelib}/QDarkStyle-*.egg-info
+%{python_sitelib}/QDarkStyle-%{version}*-info
 %endif
 
 %changelog

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 23 22:53:30 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Support for multiple python3 flavors
+  * Put standalone command under update-alternatives control
+  * test pyside2 only with primary python3 flavor
+  * gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Mon May 18 13:43:58 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add _multibuild to run the test in a flavor and use xvfb-run
