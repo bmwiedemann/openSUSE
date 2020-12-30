@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec 28 20:25:38 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.0.0:
+  + Build:
+    - Add NMake Makefiles. Remove Visual Studio 2010 projects.
+    - Use __declspec(dllexport) when building on Visual Studio.
+      Stop using gendef.exe.
+    - Add support for building with Meson.
+- Replace pkgconfig(glibmm-2.4) with pkgconfig(glibmm-2.68)
+  BuildRequires following upstream changes.
+- Add define so_ver  5_0-1 and define base_ver 5.0, make future
+  updates easier.
+- Changes from version 4.0.0:
+  + Build: Use glibmm-2.68 instead of glibmm-2.64.
+
+-------------------------------------------------------------------
 Sun Dec 20 21:43:30 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.2.2:
