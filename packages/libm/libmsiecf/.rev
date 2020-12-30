@@ -107,4 +107,12 @@ part of summer 2013 libyal refresh for opensuse 2013</comment>
 </comment>
     <requestid>799056</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4be9b2ad432260e279df05b5be14a66f</srcmd5>
+    <version>0~20200710</version>
+    <time>1609344808</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859346</requestid>
+  </revision>
 </revisionlist>

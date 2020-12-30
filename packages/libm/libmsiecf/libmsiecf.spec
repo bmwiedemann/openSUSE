@@ -18,7 +18,7 @@
 
 Name:           libmsiecf
 %define lname	libmsiecf1
-%define timestamp	20191221
+%define timestamp	20200710
 Version:        0~%timestamp
 Release:        0
 Summary:        Library to parse MS Internet Explorer Cache Files
@@ -27,7 +27,7 @@ Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libmsiecf/wiki
 Source:         https://github.com/libyal/libmsiecf/releases/download/%timestamp/%name-alpha-%timestamp.tar.gz
 Source2:        MSIE_Cache_File_index.dat_format.pdf
-BuildRequires:  pkg-config
+#BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libbfio) >= 20120426
 BuildRequires:  pkgconfig(libcdata) >= 20190112
 BuildRequires:  pkgconfig(libcfile) >= 20120526
@@ -105,7 +105,7 @@ find %buildroot -name '*.la' -delete
 %files -n %lname
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog
-%license COPYING 
+%license COPYING*
 %_libdir/libmsiecf.so.*
 
 %files tools
@@ -125,7 +125,7 @@ find %buildroot -name '*.la' -delete
 %files -n python3-%name
 %defattr(-,root,root)
 %doc AUTHORS README
-%license COPYING 
+%license COPYING*
 %python3_sitearch/pymsiecf.so
 
 %changelog
