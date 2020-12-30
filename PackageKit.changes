@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 29 09:30:52 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add PackageKit-fix-crash-pre-dbus.patch: Do not crash when
+  calling pk_dbus_get_uid() before D-Bus is setup.
+
+-------------------------------------------------------------------
 Wed Dec  2 07:24:08 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add PackageKit-zypp-cleanup-tmp-files.patch: Revert "Revert

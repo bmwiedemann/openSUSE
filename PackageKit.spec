@@ -52,6 +52,8 @@ Patch2:         PackageKit-remove-polkit-rules.patch
 Patch3:         PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-cleanup-tmp-files.patch bsc#1169739 gh#hughsie/PackageKit/commit#cf73b01a sckang@suse.com -- Revert "Revert "zypp: Clean up temporary files when PK quits""
 Patch4:         PackageKit-zypp-cleanup-tmp-files.patch
+# PATCH-FIX-UPSTREAM PackageKit-fix-crash-pre-dbus.patch gh#hughsie/PackageKit!436 -- Do not crash when calling pk_dbus_get_uid() before D-Bus is  setup
+Patch5:         PackageKit-fix-crash-pre-dbus.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
