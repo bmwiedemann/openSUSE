@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-recommonmark
-Version:        0.6.0
+Version:        0.7.1
 Release:        0
 Summary:        Python docutils-compatibility bridge to CommonMark
 License:        MIT

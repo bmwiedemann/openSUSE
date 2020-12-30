@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 20 16:05:51 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.7.1:
+ - no changelog available
+- update to version 0.7.0:
+ - Bugfix: External links to 'supported' files lose their file extension ([\#181](https://github.com/readthedocs/recommonmark/pull/181))
+
+-------------------------------------------------------------------
 Tue May 12 23:17:48 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Switch to pytest and ignore failing tests
