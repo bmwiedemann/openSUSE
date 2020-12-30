@@ -24,6 +24,7 @@ License:        MPL-2.0
 Group:          Productivity/Publishing/Word
 Url:            https://sourceforge.net/projects/libebook/
 Source:         http://downloads.sourceforge.net/libebook/%{name}-%{version}.tar.xz
+Patch:          icu-68.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -89,6 +90,7 @@ Currently supported: XHTML, raw, text.
 
 %prep
 %setup -q
+%patch -p1
 
 %build
 export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"

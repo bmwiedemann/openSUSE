@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 14 16:29:28 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add icu-68.patch: fix build with ICU 68
+
+-------------------------------------------------------------------
 Tue Jan  9 00:07:35 UTC 2018 - jengelh@inai.de
 
 - Cure linguistic problem in descriptions.
