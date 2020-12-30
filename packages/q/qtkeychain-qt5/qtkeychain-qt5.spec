@@ -18,7 +18,7 @@
 
 %define lname   libqt5keychain1
 Name:           qtkeychain-qt5
-Version:        0.10.0
+Version:        0.12.0
 Release:        0
 Summary:        A password store library
 License:        BSD-2-Clause
@@ -58,11 +58,12 @@ This package contains development files for libqtkeychain.
 %autosetup -p1 -n qtkeychain-%{version}
 
 %build
-%cmake -DBUILD_WITH_QT4=OFF ..
+%cmake -DBUILD_TEST_APPLICATION=OFF ..
 %make_jobs
 
 %install
 %cmake_install
+%find_lang qtkeychain --with-qt
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
@@ -78,10 +79,9 @@ This package contains development files for libqtkeychain.
 %{_libdir}/libqt5keychain.so
 %{_libdir}/qt5/mkspecs/modules/qt_Qt5Keychain.pri
 
-%files -n %{lname}-lang
+%files -n %{lname}-lang -f qtkeychain.lang
 %license COPYING
-%dir %{_datadir}/qt5
-%dir %{_datadir}/qt5/translations
-%{_datadir}/qt5/translations/*keychain*.qm
+%dir %{_datadir}/qt5keychain
+%dir %{_datadir}/qt5keychain/translations
 
 %changelog
