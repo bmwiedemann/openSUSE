@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  2 17:27:43 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- switch to bcond_with to make it easier to enable galera support
+  via the prjconfig
+- fix non galera case for building
+
+-------------------------------------------------------------------
 Thu Nov 12 14:57:52 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - Update to 10.5.8

@@ -43,9 +43,9 @@
 %define with_rocksdb 0
 %endif
 %if 0%{?is_opensuse}
-%define with_galera 1
+%bcond_without galera
 %else
-%define with_galera 0
+%bcond_with    galera
 %endif
 # Define python interpreter version
 %if 0%{?suse_version} >= 1500
@@ -247,7 +247,7 @@ Obsoletes:      mysql-client < %{version}
 %description client
 This package contains the standard clients for MariaDB.
 
-%if 0%{with_galera} > 0
+%if %{with galera}
 %package galera
 Summary:        The configuration files and scripts for galera replication
 Group:          Productivity/Databases/Tools
@@ -454,7 +454,7 @@ export CXXFLAGS="$CFLAGS -felide-constructors"
        -DWITH_HANDLERSOCKET_STORAGE_ENGINE=1                        \
        -DWITH_INNODB_MEMCACHED=ON                                   \
        -DWITH_EMBEDDED_SERVER=true                                  \
-%if 0%{with_galera} > 0
+%if %{with galera}
        -DWITH_WSREP=ON                                              \
        -DWITH_INNODB_DISALLOW_WRITES=1                              \
 %endif
@@ -596,7 +596,7 @@ if [ -f scripts/mysqlaccess.conf ] ; then
     echo '%config(noreplace) %attr(0640, root, mysql) %{_sysconfdir}/mysqlaccess.conf' >> mariadb-client.files
 fi
 
-%if 0%{with_galera} > 0
+%if %{with galera}
 # mariadb-galera.files
 filelist galera_new_cluster galera_recovery wsrep_sst_common wsrep_sst_mariabackup wsrep_sst_mysqldump wsrep_sst_rsync wsrep_sst_rsync_wan >mariadb-galera.files
 %endif
@@ -684,7 +684,7 @@ ln -s mysqlcheck '%{buildroot}'%{_bindir}/mysqloptimize
 rm -rf '%{buildroot}'%{_sysconfdir}/my.cnf.d
 install -d -m 755 '%{buildroot}'%{_sysconfdir}/my.cnf.d
 
-%if 0%{with_galera} > 0
+%if %{with galera}
 # Install galera config file and script
 install -p -m 644 build/support-files/wsrep.cnf %{buildroot}%{_sysconfdir}/my.cnf.d/50-galera.cnf
 install -p -m 755 build/scripts/galera_new_cluster %{buildroot}%{_bindir}/galera_new_cluster
@@ -826,7 +826,9 @@ exit 0
 %config(noreplace) %attr(0644, root, mysql) %{_sysconfdir}/my.cnf
 %dir %attr(0755, root, mysql) %{_sysconfdir}/my.cnf.d
 %config(noreplace) %attr(0644, root, mysql) %{_sysconfdir}/my.cnf.d/*
+%if %{with galera}
 %exclude %{_sysconfdir}/my.cnf.d/50-galera.cnf
+%endif
 %config(noreplace) %{_sysconfdir}/security/user_map.conf
 %config %{_sysconfdir}/logrotate.d/%{name}
 %doc %{_defaultdocdir}/%{name}
@@ -897,7 +899,7 @@ exit 0
 %{_libdir}/mysql/plugin/dialog_examples.so
 %{_sysusersdir}/mysql-user.conf
 
-%if 0%{with_galera} > 0
+%if %{with galera}
 %files galera -f mariadb-galera.files
 %doc Docs/README.wsrep
 %config(noreplace) %{_sysconfdir}/my.cnf.d/50-galera.cnf
