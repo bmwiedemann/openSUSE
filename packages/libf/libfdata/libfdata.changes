@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 29 22:40:21 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20201129
+        * changes for libcdata
+        * small changes in vector
+        * removed no longer used B-tree support
+        * worked on stream
+        * worked on list
+        * changes for libfcache get/set value by identifier
+- remove BuildRequires pkg-config
+- add COPYING* to %license line
+
+-------------------------------------------------------------------
 Mon Apr 15 19:38:43 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to v0~20181124

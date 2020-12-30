@@ -1,7 +1,7 @@
 #
 # spec file for package libfdata
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 Name:           libfdata
 %define lname	libfdata1
-%define timestamp 20181124
+%define timestamp 20201129
 Version:        0~%{timestamp}
 Release:        0
 Summary:        Library to provide generic file data functions
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
-Url:            https://github.com/libyal/libfdata/wiki
+URL:            https://github.com/libyal/libfdata/wiki
 Source:         https://github.com/libyal/libfdata/releases/download/%timestamp/%{name}-alpha-%{timestamp}.tar.gz
-BuildRequires:  pkg-config
+#BuildRequires:  pkg-config
 BuildRequires:  python-devel
 BuildRequires:  pkgconfig(libcdata) >= 20140105
 BuildRequires:  pkgconfig(libcerror) >= 20140105
@@ -75,13 +75,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n %{lname}
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog
-%license COPYING 
+%license COPYING*
 %{_libdir}/libfdata.so.*
 
 %files devel
 %defattr(-,root,root)
 %doc AUTHORS README ChangeLog
-%license COPYING 
+%license COPYING*
 %{_includedir}/libfdata.h
 %{_includedir}/libfdata/
 %{_libdir}/libfdata.so
