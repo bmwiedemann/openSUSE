@@ -97,4 +97,18 @@
   - Replace ``float('inf')`` with ``math.inf``.</comment>
     <requestid>821426</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>68c8fd5f7477dbefa95f8d5307f3dee0</srcmd5>
+    <version>4.2.0</version>
+    <time>1609344737</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.2.0:
+  - Add FIFO cache implementation.
+  - Add MRU cache implementation.
+  - Improve behavior of decorators in case of race conditions.
+  - Improve documentation regarding mutability of caches values and use
+    of key functions with decorators.
+  - Officially support Python 3.9.</comment>
+    <requestid>859231</requestid>
+  </revision>
 </revisionlist>
