@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Dec 30 13:50:10 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.7:
+  - Update js
+  - Update media
+  - Better seeking
+  - Remove obsolete code
+  - Also parse hours
+  - Minor performance fix
+  - Remove deprecated sorting
+  - Minor cleanup
+  - Singlevideosource
+  - Emit error if there are no results
+  - consolidate yt stuff
+  - Fake more videos by loading videos related to the last one
+  - Fix crash
+  
+-------------------------------------------------------------------
 Tue Nov 24 19:45:58 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.6.6

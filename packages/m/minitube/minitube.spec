@@ -17,7 +17,7 @@
 
 
 Name:           minitube
-Version:        3.6.6
+Version:        3.7
 Release:        0
 Summary:        Native YouTube Client
 License:        GPL-3.0-or-later
