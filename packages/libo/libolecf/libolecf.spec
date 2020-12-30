@@ -19,7 +19,7 @@
 %bcond_without python2
 Name:           libolecf
 %define lname	libolecf1
-%define timestamp	20191221
+%define timestamp	20201004
 Version:        0~%timestamp
 Release:        0
 Summary:        Library and tools to access the OLE 2 Compound File (OLECF) format
@@ -28,7 +28,7 @@ Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libolecf/wiki
 Source:         https://github.com/libyal/libolecf/releases/download/%timestamp/%name-alpha-%timestamp.tar.gz
 Source2:        OLE_Compound_File_format.pdf
-BuildRequires:  pkg-config
+#BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libbfio)
 BuildRequires:  pkgconfig(libcdata) >= 20190112
 BuildRequires:  pkgconfig(libcerror) > 20160327
@@ -131,7 +131,7 @@ find %buildroot -name '*.la' -delete
 %files -n %lname
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog
-%license COPYING 
+%license COPYING*
 %_libdir/libolecf.so.*
 
 %files tools
@@ -152,14 +152,14 @@ find %buildroot -name '*.la' -delete
 %files -n python2-%name
 %defattr(-,root,root)
 %doc AUTHORS README
-%license COPYING 
+%license COPYING*
 %python2_sitearch/pyolecf.so
 %endif
 
 %files -n python3-%name
 %defattr(-,root,root)
 %doc AUTHORS README
-%license COPYING 
+%license COPYING*
 %python3_sitearch/pyolecf.so
 
 %changelog
