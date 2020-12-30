@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Dec 28 07:47:19 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 1.0.6.
+  * Updated Readstat to version 1.1.5, this fixes: reading sas7bdat
+    file labels, reading newer por files date-like columns, and few 
+    others.
+  * Corrected writing columns with numpy.float32 format.
+- Updates for 1.0.5
+  * fixed sharing permissions when reading files on windows, 
+    fixes #87
+- Updates for 1.0.4
+  * read_file_in_chunks can read chunks with multiprocessing.
+- Updates for 1.0.3
+  * Improved performance specially for big files.
+  * added a method to read files in parallel
+  * added license information to setup.py
+- Updates for 1.0.2 
+  * Updated default widths for DATE and DATETIME formats 
+    (from Readstat src). That make the files readable both in SPSS 
+    and PSPP, solves issue #69.
+  * added support for binary compressed sas7bdat files
+  * fixes writing XPT files v8 that can be read in SAS. Reading XPT v8 improved.
+  * fixes writing files with NaT values.
+  * fixes #72: variable display width with long strings.
+  * fixes #70: variable_measures not set when writing sav files
+- Updates for 1.0.1 
+  * fixes issue #67
+
+
+-------------------------------------------------------------------
 Tue Jul 14 12:27:48 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.0.0

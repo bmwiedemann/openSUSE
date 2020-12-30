@@ -18,15 +18,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyreadstat
-Version:        1.0.0
+Version:        1.0.6
 Release:        0
 Summary:        Package to read and write statistical data files into pandas
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/Roche/pyreadstat
-Source:         https://codeload.github.com/Roche/pyreadstat/tar.gz/v%{version}#/pyreadstat-%{version}.tar.gz
+Source:         https://github.com/Roche/pyreadstat/archive/v%{version}.tar.gz#/pyreadstat-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module pandas >= 0.24.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  glibc-devel
@@ -34,9 +35,6 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  zlib-devel
 Requires:       python-numpy
 Requires:       python-pandas >= 0.24.0
-# SECTION test requirements
-BuildRequires:  %{python_module pandas >= 0.24.0}
-# /SECTION
 %python_subpackages
 
 %description
@@ -66,6 +64,7 @@ mv pyreadstat_temp pyreadstat
 %files %{python_files}
 %doc README.md change_log.md
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/pyreadstat*.egg-info
+%{python_sitearch}/pyreadstat
 
 %changelog
