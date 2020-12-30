@@ -1,16 +1,8 @@
-Index: node-git.b82fc409ca/configure
+Index: node-git.4b315a551f/configure
 ===================================================================
---- node-git.b82fc409ca.orig/configure
-+++ node-git.b82fc409ca/configure
-@@ -10,6 +10,7 @@ command -v python3.8 >/dev/null && exec
- command -v python3.7 >/dev/null && exec python3.7 "$0" "$@"
- command -v python3.6 >/dev/null && exec python3.6 "$0" "$@"
- command -v python3.5 >/dev/null && exec python3.5 "$0" "$@"
-+command -v python3.4 >/dev/null && exec python3.4 "$0" "$@"
- command -v python2.7 >/dev/null && exec python2.7 "$0" "$@"
- exec python "$0" "$@"
- ''' "$0" "$@"
-@@ -20,7 +21,7 @@ import sys
+--- node-git.4b315a551f.orig/configure
++++ node-git.4b315a551f/configure
+@@ -21,7 +21,7 @@ import sys
  from distutils.spawn import find_executable
  
  print('Node.js configure: Found Python {0}.{1}.{2}...'.format(*sys.version_info))
@@ -19,10 +11,10 @@ Index: node-git.b82fc409ca/configure
  if sys.version_info[:2] in acceptable_pythons:
    import configure
  else:
-Index: node-git.b82fc409ca/deps/npm/node_modules/node-gyp/lib/find-python.js
+Index: node-git.4b315a551f/deps/npm/node_modules/node-gyp/lib/find-python.js
 ===================================================================
---- node-git.b82fc409ca.orig/deps/npm/node_modules/node-gyp/lib/find-python.js
-+++ node-git.b82fc409ca/deps/npm/node_modules/node-gyp/lib/find-python.js
+--- node-git.4b315a551f.orig/deps/npm/node_modules/node-gyp/lib/find-python.js
++++ node-git.4b315a551f/deps/npm/node_modules/node-gyp/lib/find-python.js
 @@ -18,7 +18,7 @@ PythonFinder.prototype = {
    log: logWithPrefix(log, 'find Python'),
    argsExecutable: ['-c', 'import sys; print(sys.executable);'],
