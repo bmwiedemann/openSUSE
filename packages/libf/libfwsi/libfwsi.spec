@@ -17,7 +17,7 @@
 
 
 %define lname	libfwsi1
-%define timestamp 20191221
+%define timestamp 20201204
 Name:           libfwsi
 Version:        0~%{timestamp}
 Release:        0
@@ -108,13 +108,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n %{lname}
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog
-%license COPYING
+%license COPYING*
 %{_libdir}/libfwsi.so.*
 
 %files devel
 %defattr(-,root,root)
 %doc AUTHORS README ChangeLog
-%license COPYING
+%license COPYING*
 %doc Windows_Shell_Item_format.pdf
 %{_includedir}/libfwsi.h
 %{_includedir}/libfwsi/
@@ -125,13 +125,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n python2-%name
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog
-%license COPYING
+%license COPYING*
 %python2_sitearch/pyfwsi.so
 
 %files -n python3-%name
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog
-%license COPYING
+%license COPYING*
 %python3_sitearch/pyfwsi.so
 
 %changelog
