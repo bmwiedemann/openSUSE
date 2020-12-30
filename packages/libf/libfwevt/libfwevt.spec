@@ -1,7 +1,7 @@
 #
 # spec file for package libfwevt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 %define lname	libfwevt1
-%define timestamp 20190102
+%define timestamp 20200709
 Name:           libfwevt
 Version:        0~%{timestamp}
 Release:        0
 Summary:        Library for Windows NT data types
 License:        LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          Productivity/File utilities
-Url:            https://github.com/libyal/libfwevt/wiki
+URL:            https://github.com/libyal/libfwevt/wiki
 Source:         https://github.com/libyal/libfwevt/releases/download/%timestamp/%{name}-experimental-%{timestamp}.tar.gz
-BuildRequires:  pkg-config
+#BuildRequires:  pkg-config
 BuildRequires:  python-devel
 BuildRequires:  pkgconfig(libcdata)
 BuildRequires:  pkgconfig(libcerror)
@@ -82,13 +82,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n %{lname}
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog
-%license COPYING 
+%license COPYING*
 %{_libdir}/libfwevt.so.*
 
 %files devel
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog
-%license COPYING 
+%license COPYING*
 %{_includedir}/libfwevt.h
 %{_includedir}/libfwevt/
 %{_libdir}/libfwevt.so
