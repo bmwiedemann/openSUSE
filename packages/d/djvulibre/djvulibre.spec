@@ -1,7 +1,7 @@
 #
 # spec file for package djvulibre
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,38 +20,21 @@
 
 %define	libname	lib%{name}21
 Name:           djvulibre
-Version:        3.5.27
+Version:        3.5.28
 Release:        0
 Summary:        An Implementation of DjVu
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
-Url:            http://djvu.sourceforge.net
+URL:            http://djvu.sourceforge.net
 Source:         http://downloads.sourceforge.net/djvu/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM -- https://sourceforge.net/p/djvu/djvulibre-git/ci/ff8e5b68f856a7fe17c9aa33d0f2220f4ba6b40c/
-Patch0:         reproducible.patch
-# CVE-2019-15143 [bsc#1146569]
-Patch1:         djvulibre-CVE-2019-15143.patch
-# CVE-2019-15144 [bsc#1146571]
-Patch2:         djvulibre-CVE-2019-15144.patch
-# CVE-2019-15145 [bsc#1146572]
-Patch3:         djvulibre-CVE-2019-15145.patch
-# CVE-2019-15142 [bsc#1146702]
-Patch4:         djvulibre-CVE-2019-15142.patch
-# do not segfault when libtiff encounters corrupted TIFF (upstream issue #295)
-Patch5:         djvulibre-invalid-tiff.patch
-# https://sourceforge.net/p/djvu/bugs/293/
-Patch6:         djvulibre-always-assume-that-cpuid-works-on-x86_64.patch
-# CVE-2019-18804 [bsc#1156188]
-Patch7:         djvulibre-CVE-2019-18804.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libjpeg-devel
+# libtool needed to regenerate missing configure script (v 3.5.28)
+BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libtiff-4)
-Requires(post):    shared-mime-info
-Requires(postun):  shared-mime-info
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 DjVu is a Web-centric format and software platform for distributing
@@ -96,16 +79,10 @@ This package contains the documentation.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
 
 %build
+# configure script missing; generate using autogen.sh
+NOCONFIGURE=1 ./autogen.sh
 %configure \
   --disable-silent-rules
 %if %{asan_build}
@@ -124,15 +101,15 @@ rm %{buildroot}%{_libdir}/libdjvulibre.la
 
 %fdupes %{buildroot}/%{_prefix}
 
+%if 0%{?suse_version} < 1550
 %post
-%mime_database_post
 %icon_theme_cache_post
 
-%post  -n  %{libname} -p /sbin/ldconfig
-
 %postun
-%mime_database_postun
 %icon_theme_cache_postun
+%endif
+
+%post  -n  %{libname} -p /sbin/ldconfig
 
 %postun -n  %{libname} -p /sbin/ldconfig
 
@@ -143,7 +120,6 @@ rm %{buildroot}%{_libdir}/libdjvulibre.la
 %{_datadir}/djvu
 %{_bindir}/*
 %{_datadir}/icons/hicolor/*
-%{_datadir}/mime/packages/djvulibre-mime.xml
 
 %files -n %{libname}
 %{_libdir}/libdjvulibre.so.*

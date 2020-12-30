@@ -303,4 +303,37 @@
   + djvulibre-CVE-2019-18804.patch</comment>
     <requestid>746558</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>f24a069ecd7d681d3fd3f6a0f5b9da09</srcmd5>
+    <version>3.5.28</version>
+    <time>1609344675</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.5.28
+  * ddjvu: tiff generation improvements
+  * djvumake: security checks on INCL chunks
+  * all: updated for modern compilers
+  * bugs: fixed several crashes on invalid inputs
+  * miniexp: fixed escape printout and macrochars
+  * djvudigital: can use poppler to find text
+  * csepdjvu: handle T comments for page titles
+  * bytestream: fixed 2GB limit
+  * gexception, gthread: cleanup obsolete code
+- Drop patches incorporated or otherwise fixed upstream:
+  * djvulibre-invalid-tiff.patch
+  * djvulibre-CVE-2019-15144.patch
+  * djvulibre-CVE-2019-15145.patch
+  * djvulibre-CVE-2019-18804.patch
+  * djvulibre-CVE-2019-15143.patch
+  * djvulibre-always-assume-that-cpuid-works-on-x86_64.patch
+  * djvulibre-CVE-2019-15142.patch
+  * reproducible.patch
+- Only run post(un) scriptlets for desktop database update for
+  openSUSE &lt; 1550, these are void otherwise.
+- Regenerate configure script as it is no longer supplied with
+  tarball; add BuildRequires: libtool.
+- Adapt file list for mime file no longer being installed (this is
+  intentional from upstream); accordingly drop shared-mime-info
+  BuildRequires and post(un) scripts.</comment>
+    <requestid>858983</requestid>
+  </revision>
 </revisionlist>

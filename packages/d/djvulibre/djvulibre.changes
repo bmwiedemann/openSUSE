@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Dec 21 16:26:45 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.5.28
+  * ddjvu: tiff generation improvements
+  * djvumake: security checks on INCL chunks
+  * all: updated for modern compilers
+  * bugs: fixed several crashes on invalid inputs
+  * miniexp: fixed escape printout and macrochars
+  * djvudigital: can use poppler to find text
+  * csepdjvu: handle T comments for page titles
+  * bytestream: fixed 2GB limit
+  * gexception, gthread: cleanup obsolete code
+- Drop patches incorporated or otherwise fixed upstream:
+  * djvulibre-invalid-tiff.patch
+  * djvulibre-CVE-2019-15144.patch
+  * djvulibre-CVE-2019-15145.patch
+  * djvulibre-CVE-2019-18804.patch
+  * djvulibre-CVE-2019-15143.patch
+  * djvulibre-always-assume-that-cpuid-works-on-x86_64.patch
+  * djvulibre-CVE-2019-15142.patch
+  * reproducible.patch
+- Only run post(un) scriptlets for desktop database update for
+  openSUSE < 1550, these are void otherwise.
+- Regenerate configure script as it is no longer supplied with
+  tarball; add BuildRequires: libtool.
+- Adapt file list for mime file no longer being installed (this is
+  intentional from upstream); accordingly drop shared-mime-info
+  BuildRequires and post(un) scripts. 
+
+-------------------------------------------------------------------
 Fri Nov  8 11:15:02 UTC 2019 - pgajdos@suse.com
 
 - security update
