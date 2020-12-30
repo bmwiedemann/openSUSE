@@ -708,4 +708,41 @@ Now with build cycle removed.</comment>
     <comment>publicsuffix 20201026</comment>
     <requestid>844252</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>fc50e7e8de0bc911fe899514cb601e8f</srcmd5>
+    <version>20201223</version>
+    <time>1609344692</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20201223:
+  * gTLD autopull: 2020-12-21 (#1172)
+  * Featherhead: Remove defunct project (#1171)
+  * Add needed suffixes for WPMU DEV hosting and CDNs (#1169)
+  * Add GünstigBestellen domains (#1170)
+  * add deno.dev (#1167)
+  * Update WoltLab Cloud Domains (#1168)
+  * gTLD autopull: 2020-12-11 (#1165)
+  * Update public_suffix_list.dat (#1162)
+  * Add lohmus.me to the private section (#1161)
+  * Add flap.id domain (#1160)
+  * UPDATE TO SLD ON HOSTBIP SECTION (#1130)
+  * Third level .рус domains for the PRIVATE section (#1159)
+  * Add orsites.com to the list of domains (#1157)
+  * Add webthings.io and krellian.net (#1154)
+  * gTLD autopull: 2020-12-10 (#1164)
+  * gTLD autopull: 2020-11-30 (#1155)
+  * The list of Jelastic public domains was extended. Addition to #1023 #1063 #1092 #1095 (#1151)
+  * gTLD autopull: 2020-11-21 (#1152)
+  * Add ondigitalocean.app to the list of domains (#1150)
+  * Add private domains for airy.host (#1149)
+  * gTLD autopull: 2020-11-11 (#1148)
+  * Update public_suffix_list.dat (#1147)
+  * Add of.je (#1131)
+  * Update the existing Names.of.London Public List (#1146)
+  * Del linkitools.space nxd from Private (#1145)
+  * Del ptplus.fit NXD from Private (#1144)
+  * Del cloudeity.net NXD from Private (#1143)
+  * Del uklugs.org NXD from Private section (#1142)
+  * Del xenapponazure.com from Private (#1141)</comment>
+    <requestid>859021</requestid>
+  </revision>
 </revisionlist>
