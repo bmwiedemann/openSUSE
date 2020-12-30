@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Dec 28 15:39:18 UTC 2020 - pgajdos@suse.com
+
+- version update to 2.0.6
+  1. Fixed "using JNI after critical get" errors that occurred on Android
+  platforms when using any of the YUV encoding/compression/decompression/decoding
+  methods in the TurboJPEG Java API.
+  2. Fixed or worked around multiple issues with `jpeg_skip_scanlines()`:
+       - Fixed segfaults or "Corrupt JPEG data: premature end of data segment"
+  errors in `jpeg_skip_scanlines()` that occurred when decompressing 4:2:2 or
+  4:2:0 JPEG images using merged (non-fancy) upsampling/color conversion (that
+  is, when setting `cinfo.do_fancy_upsampling` to `FALSE`.)  2.0.0[6] was a
+  similar fix, but it did not cover all cases.
+       - `jpeg_skip_scanlines()` now throws an error if two-pass color
+  quantization is enabled.  Two-pass color quantization never worked properly
+  with `jpeg_skip_scanlines()`, and the issues could not readily be fixed.
+       - Fixed an issue whereby `jpeg_skip_scanlines()` always returned 0 when
+  skipping past the end of an image.
+  3. The Arm 64-bit (Armv8) Neon SIMD extensions can now be built using MinGW
+  toolchains targetting Arm64 (AArch64) Windows binaries.
+  4. Fixed unexpected visual artifacts that occurred when using
+  `jpeg_crop_scanline()` and interblock smoothing while decompressing only the DC
+  scan of a progressive JPEG image.
+  5. Fixed an issue whereby libjpeg-turbo would not build if 12-bit-per-component
+  JPEG support (`WITH_12BIT`) was enabled along with libjpeg v7 or libjpeg v8
+  API/ABI emulation (`WITH_JPEG7` or `WITH_JPEG8`.)
+- modified sources
+  % libjpeg-turbo.keyring
+
+-------------------------------------------------------------------
 Wed Aug 12 21:24:44 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 2.0.5

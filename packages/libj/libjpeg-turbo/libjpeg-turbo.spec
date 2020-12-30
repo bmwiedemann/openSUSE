@@ -18,7 +18,7 @@
 
 %define asan_build 0
 %define debug_build 0
-%define srcver   2.0.5
+%define srcver   2.0.6
 %define major    8
 %define minor    2
 %define micro    2
