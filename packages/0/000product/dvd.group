@@ -1602,6 +1602,7 @@
     <package name="liblilv-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblirc_client0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libliveMedia81" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="liblmdb-0_9_24" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libloader" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="liblockdev1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="liblogging0" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
@@ -1642,7 +1643,6 @@
     <package name="libmms0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmng2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libmnl0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libmodman1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libmodplug1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libmodulemd2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmount1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2516,6 +2516,7 @@
     <package name="perl-Digest-HMAC" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Digest-MD4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Digest-SHA1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="perl-Encode" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Encode-Detect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Encode-Locale" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Error" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -3994,26 +3995,26 @@
     <package name="elinks" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
     <package name="nodejs10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="npm10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <!-- patterns-gnome-gnome uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
-    <!-- patterns-gnome-gnome_basis uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
-    <!-- patterns-gnome-gnome_imaging uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
-    <!-- patterns-gnome-gnome_office uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
-    <!-- patterns-gnome-gnome_utilities uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
-    <!-- patterns-kde-kde uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
-    <!-- patterns-kde-kde_imaging uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
-    <!-- patterns-kde-kde_plasma uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
-    <!-- patterns-media-rest_dvd uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
-    <!-- patterns-xfce-xfce uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
-    <!-- patterns-xfce-xfce_basis uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
-    <!-- patterns-xfce-xfce_laptop uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
-    <!-- patterns-xfce-xfce_office uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
-    <!-- pcsc-acr38 uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
-    <!-- pcsc-asedriveiiie-usb uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
-    <!-- pcsc-asekey uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
-    <!-- pcsc-cyberjack uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
-    <!-- pcsc-gempc uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
-    <!-- pcsc-towitoko uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
-    <!-- rng-tools uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-1.1.i586-->
+    <!-- patterns-gnome-gnome uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
+    <!-- patterns-gnome-gnome_basis uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
+    <!-- patterns-gnome-gnome_imaging uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
+    <!-- patterns-gnome-gnome_office uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
+    <!-- patterns-gnome-gnome_utilities uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
+    <!-- patterns-kde-kde uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
+    <!-- patterns-kde-kde_imaging uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
+    <!-- patterns-kde-kde_plasma uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
+    <!-- patterns-media-rest_dvd uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
+    <!-- patterns-xfce-xfce uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
+    <!-- patterns-xfce-xfce_basis uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
+    <!-- patterns-xfce-xfce_laptop uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
+    <!-- patterns-xfce-xfce_office uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
+    <!-- pcsc-acr38 uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
+    <!-- pcsc-asedriveiiie-usb uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
+    <!-- pcsc-asekey uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
+    <!-- pcsc-cyberjack uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
+    <!-- pcsc-gempc uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
+    <!-- pcsc-towitoko uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
+    <!-- rng-tools uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
   </packagelist>
 </group>
 <group name="dvd.x86_64">
@@ -4329,6 +4330,7 @@
     <package name="grub2-x86_64-efi" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
     <package name="grub2-x86_64-xen" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="gsf-office-thumbnailer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="gstreamer-plugin-pipewire" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gthumb" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gthumb-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gtk-vnc-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4829,7 +4831,6 @@
     <package name="libldm-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libldns3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="liblhasa0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="liblmdb-0_9_24" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="liblouis-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblouis20" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblsan0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->

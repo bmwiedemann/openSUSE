@@ -6291,7 +6291,7 @@ unsorted:
   - gstreamer-doc 
   - gstreamer-editing-services 
   - gstreamer-editing-services-devel 
-  - gstreamer-plugin-pipewire 
+  - gstreamer-plugin-pipewire: [i586] 
   - gstreamer-plugin-pocketsphinx 
   - gstreamer-plugin-python 
   - gstreamer-plugins-bad-32bit: [x86_64] 
@@ -12079,7 +12079,6 @@ unsorted:
   - liblldb9: [x86_64] 
   - liblldp_clif1: [i586] 
   - liblldpctl4 
-  - liblmdb-0_9_24: [i586] 
   - liblmdb-0_9_24-32bit: [x86_64] 
   - liblms7002m-devel 
   - liblms7compact0 
@@ -12325,6 +12324,7 @@ unsorted:
   - libmodbuspp-devel 
   - libmodbuspp1_0-0 
   - libmodman-devel 
+  - libmodman1 
   - libmodman1-32bit: [x86_64] 
   - libmodplug-devel 
   - libmodplug1-32bit: [x86_64] 
@@ -13174,6 +13174,7 @@ unsorted:
   - libproxy1-config-gnome3-32bit: [x86_64] 
   - libproxy1-config-kde: [i586] 
   - libproxy1-config-kde-32bit: [x86_64] 
+  - libproxy1-config-pacrunner 
   - libproxy1-networkmanager-32bit: [x86_64] 
   - libproxy1-pacrunner-webkit: [i586] 
   - libproxy1-pacrunner-webkit-32bit: [x86_64] 
@@ -14986,8 +14987,11 @@ unsorted:
   - libxml++-2_6-2-32bit: [x86_64] 
   - libxml++-3_0-1 
   - libxml++-3_0-1-32bit: [x86_64] 
+  - libxml++-5_0-1 
+  - libxml++-5_0-1-32bit: [x86_64] 
   - libxml++-devel 
   - libxml++26-devel 
+  - libxml++30-devel 
   - libxml-security-c-devel 
   - libxml-security-c20 
   - libxml2-devel 
@@ -18414,6 +18418,7 @@ unsorted:
   - orthanc-gdcm 
   - orthanc-mysql 
   - orthanc-postgresql 
+  - orthanc-python 
   - orthanc-source 
   - orthanc-webviewer 
   - orthanc-wsi 
@@ -19316,7 +19321,6 @@ unsorted:
   - perl-Email-Sender 
   - perl-Email-Simple 
   - perl-Email-Valid 
-  - perl-Encode 
   - perl-Encode-EUCJPASCII 
   - perl-Encode-HanExtra 
   - perl-Encode-JIS2K 
@@ -20749,10 +20753,11 @@ unsorted:
   - post-build-checks 
   - poster 
   - postfish 
+  - postfix-bdb 
+  - postfix-bdb-lmdb 
   - postfix-devel 
   - postfix-doc: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - postfix-ldap 
-  - postfix-lmdb 
   - postfix-mysql 
   - postfix-postgresql 
   - postfixadmin 
@@ -28228,6 +28233,7 @@ unsorted:
   - system-user-srvGeoClue: [i586] 
   - system-user-tss 
   - system-user-uuidd 
+  - system-user-vscan 
   - systemd-coredump 
   - systemd-default-settings-branding-upstream 
   - systemd-devel 
