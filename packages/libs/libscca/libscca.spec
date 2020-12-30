@@ -17,7 +17,7 @@
 
 
 %define lname	libscca1
-%define timestamp 	20191222
+%define timestamp 	20200717
 Name:           libscca
 Version:        0~%{timestamp}
 Release:        0
@@ -26,7 +26,7 @@ License:        LGPL-3.0-or-later AND GFDL-1.3-only
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libscca/wiki
 Source:         https://github.com/libyal/libscca/releases/download/%{timestamp}/%{name}-alpha-%{timestamp}.tar.gz
-BuildRequires:  pkgconfig
+#BuildRequires:  pkgconfig
 BuildRequires:  python-devel
 BuildRequires:  pkgconfig(libbfio) >= 20130721
 BuildRequires:  pkgconfig(libcdata) >= 20130904
@@ -109,7 +109,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%license COPYING
+%license COPYING*
 %doc AUTHORS ChangeLog
 %{_libdir}/libscca.so.*
 
@@ -125,7 +125,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man3/libscca.3%{?ext_man}
 
 %files -n python3-%{name}
-%license COPYING
+%license COPYING*
 %doc AUTHORS
 %{python3_sitearch}/pyscca.so
 

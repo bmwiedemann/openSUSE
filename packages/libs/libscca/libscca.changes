@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 30 03:05:01 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20200717
+	* worked on python bindings
+	* worked on format support
+	* code clean up
+- remove BuildRequires:  pkgconfig
+- add COPYING* to %license line
+
+-------------------------------------------------------------------
 Thu Apr 30 02:18:06 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - remove python2 submodule 
