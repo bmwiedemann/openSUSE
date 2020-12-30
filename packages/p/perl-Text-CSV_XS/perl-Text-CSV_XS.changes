@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Dec 25 03:07:37 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.45
+   see /usr/share/doc/packages/perl-Text-CSV_XS/ChangeLog
+
+  1.45	- 2020-12-24, H.Merijn Brand
+      * Update to Devel::PPPort-3.60 (3.59 was b0rked)
+      * Allow adding to existing data in csv (out => $ref)
+      * examples/csv2xlsx : -L   # to limit records to export
+      * examples/csv2xlsx : --de # for possible double-encoding fix
+      * Update to Devel::PPPort-3.61
+      * Update to Devel::PPPort-3.62
+      * Add examples/csv-split
+      * examples/csv2xlsx : Check if .xlsx is creatable before conversion
+      * Small doc additions
+      * Fix META issue for bugtracker
+
+-------------------------------------------------------------------
 Wed Jul 29 03:15:14 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.44

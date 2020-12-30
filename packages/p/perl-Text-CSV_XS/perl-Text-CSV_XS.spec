@@ -16,20 +16,18 @@
 #
 
 
-Name:           perl-Text-CSV_XS
-Version:        1.44
-Release:        0
 %define cpan_name Text-CSV_XS
+Name:           perl-Text-CSV_XS
+Version:        1.45
+Release:        0
 Summary:        Comma-separated values manipulation routines
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/%{cpan_name}-%{version}.tgz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-Recommends:     perl(Encode) >= 3.06
+Recommends:     perl(Encode) >= 3.08
 %{perl_requires}
 
 %description
@@ -41,7 +39,7 @@ The module accepts either strings or files as input and support the use of
 user-specified characters for delimiters, separators, and escapes.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 # MANUAL BEGIN
 sed -i -e 's,/pro/bin/perl,/usr/bin/perl,' examples/*
@@ -49,7 +47,7 @@ sed -i -e 's,/pro/bin/perl,/usr/bin/perl,' examples/*
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -60,7 +58,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc ChangeLog CONTRIBUTING.md examples README
 
 %changelog
