@@ -1,7 +1,7 @@
 #
 # spec file for package grsync
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           grsync
-Version:        1.2.8
+Version:        1.3.0
 Release:        0
 Summary:        GUI for rsync
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Archiving/Backup
-Url:            http://www.opbyte.it/grsync/
+URL:            http://www.opbyte.it/grsync/
 Source:         http://www.opbyte.it/release/%{name}-%{version}.tar.gz
-Patch0:         grsync.patch
 Patch1:         fix-invalid-lc-messages-dir.patch
 # PATCH-FIX-UPSTREAM grsync-appdata.patch badshah400@gmail.com -- Add, translate and install appdata file
 Patch2:         grsync-appdata.patch
@@ -34,7 +33,7 @@ BuildRequires:  dos2unix
 BuildRequires:  intltool
 BuildRequires:  pkg-config
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(gtk+-2.0) >= 2.16
+BuildRequires:  pkgconfig(gtk+-3.0)
 Requires:       rsync
 Recommends:     %{name}-lang
 

@@ -1,8 +1,7 @@
-Index: grsync-1.2.6/grsync.appdata.xml.in
-===================================================================
---- /dev/null
-+++ grsync-1.2.6/grsync.appdata.xml.in
-@@ -0,0 +1,25 @@
+diff -ruN a/grsync.appdata.xml.in b/grsync.appdata.xml.in
+--- a/grsync.appdata.xml.in	1970-01-01 01:00:00.000000000 +0100
++++ b/grsync.appdata.xml.in	2020-12-28 14:16:49.601084197 +0100
+@@ -0,0 +1,26 @@
 +<?xml version='1.0' encoding='UTF-8'?>
 +<component>
 +  <id type="desktop">grsync.desktop</id>
@@ -28,27 +27,26 @@ Index: grsync-1.2.6/grsync.appdata.xml.in
 +  <update_contact>info@opbyte.it</update_contact>
 +  <translation type="gettext">grsync</translation>
 +</component>
-Index: grsync-1.2.6/Makefile.am
-===================================================================
---- grsync-1.2.6.orig/Makefile.am
-+++ grsync-1.2.6/Makefile.am
-@@ -52,6 +52,12 @@ icon_scalable_DATA = maemo-icons/scalabl
- else
++
+diff -ruN a/Makefile.am b/Makefile.am
+--- a/Makefile.am	2020-05-28 10:18:54.000000000 +0200
++++ b/Makefile.am	2020-12-28 14:16:25.969016007 +0100
+@@ -26,6 +26,12 @@
  Applicationsdir = $(datadir)/applications
  Applications_DATA = grsync.desktop
-+
+ 
 +Appdatadir = $(datadir)/appdata
 +Appdata_in_files = grsync.appdata.xml.in
 +Appdata_DATA = $(Appdata_in_files:.appdata.xml.in=.appdata.xml)
 +@INTLTOOL_XML_RULE@
 +EXTRA_DIST += $(Appdata_in_files)
- endif
- 
++
  Gladedir = $(datadir)/grsync
-Index: grsync-1.2.6/po/POTFILES.in
-===================================================================
---- grsync-1.2.6.orig/po/POTFILES.in
-+++ grsync-1.2.6/po/POTFILES.in
+ Glade_DATA = $(XMLFILE)
+ 
+diff -ruN a/po/POTFILES.in b/po/POTFILES.in
+--- a/po/POTFILES.in	2013-04-30 13:48:54.000000000 +0200
++++ b/po/POTFILES.in	2020-12-28 14:16:08.608965915 +0100
 @@ -1,6 +1,7 @@
  # List of source files containing translatable strings.
  

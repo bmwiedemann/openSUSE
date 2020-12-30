@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 28 12:39:05 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.3.0: 
+  * Gtk3 compatibility (some compile warnings left)
+  * Removed Maemo support, platform is obsolete
+  * Added escaping of arguments containing spaces when printing
+    rsync command line output
+  * Updated Spanish translation 
+- Remove grsync.patch
+
+-------------------------------------------------------------------
 Sun Jun  7 10:10:10 UTC 2020 - olaf@aepfle.de
 
 - Update to 1.2.8
