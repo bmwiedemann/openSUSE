@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20201229" schemaversion="4.1">
+<image name="OBS__openSUSE___20201230" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20201229</productvar>
+      <productvar name="VERSION">20201230</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20201229,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20201230,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20201229/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20201230/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -826,6 +826,7 @@
       <repopackage name="gstreamer-lang"/>
       <repopackage name="gstreamer-libnice"/>
       <repopackage name="gstreamer-plugin-cluttergst3"/>
+      <repopackage name="gstreamer-plugin-pipewire" arch="x86_64"/>
       <repopackage name="gstreamer-plugins-bad"/>
       <repopackage name="gstreamer-plugins-bad-lang"/>
       <repopackage name="gstreamer-plugins-base"/>
@@ -2291,7 +2292,7 @@
       <repopackage name="liblirc_client0"/>
       <repopackage name="libliveMedia81"/>
       <repopackage name="libLLVM11"/>
-      <repopackage name="liblmdb-0_9_24" arch="x86_64"/>
+      <repopackage name="liblmdb-0_9_24"/>
       <repopackage name="libloader"/>
       <repopackage name="liblockdev1"/>
       <repopackage name="liblogging0"/>
@@ -2353,7 +2354,6 @@
       <repopackage name="libmms0"/>
       <repopackage name="libmng2"/>
       <repopackage name="libmnl0"/>
-      <repopackage name="libmodman1"/>
       <repopackage name="libmodplug1"/>
       <repopackage name="libmodulemd2"/>
       <repopackage name="libmount1"/>
@@ -3691,6 +3691,7 @@
       <repopackage name="perl-Digest-MD4"/>
       <repopackage name="perl-Digest-SHA1"/>
       <repopackage name="perl-doc"/>
+      <repopackage name="perl-Encode"/>
       <repopackage name="perl-Encode-Detect"/>
       <repopackage name="perl-Encode-Locale"/>
       <repopackage name="perl-Error"/>

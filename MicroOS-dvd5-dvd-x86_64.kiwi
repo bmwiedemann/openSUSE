@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20201229" schemaversion="4.1">
+<image name="OBS__MicroOS___20201230" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20201229</productvar>
+      <productvar name="VERSION">20201230</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20201229,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20201230,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20201229/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20201230/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -257,6 +257,7 @@
       <repopackage name="gsettings-desktop-schemas" arch="x86_64"/>
       <repopackage name="gsf-office-thumbnailer" arch="x86_64"/>
       <repopackage name="gstreamer" arch="x86_64"/>
+      <repopackage name="gstreamer-plugin-pipewire" arch="x86_64"/>
       <repopackage name="gstreamer-plugins-bad" arch="x86_64"/>
       <repopackage name="gstreamer-plugins-base" arch="x86_64"/>
       <repopackage name="gstreamer-plugins-good" arch="x86_64"/>
@@ -785,7 +786,6 @@
       <repopackage name="libmm-glib0" arch="x86_64"/>
       <repopackage name="libmms0" arch="x86_64"/>
       <repopackage name="libmnl0" arch="x86_64"/>
-      <repopackage name="libmodman1" arch="x86_64"/>
       <repopackage name="libmodulemd2" arch="x86_64"/>
       <repopackage name="libmount1"/>
       <repopackage name="libmozjs-78-0" arch="x86_64"/>
@@ -1450,6 +1450,7 @@
       <repopackage name="typelib-1_0-GnomeBluetooth-1_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-GnomeDesktop-3_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-Graphene-1_0" arch="x86_64"/>
+      <repopackage name="typelib-1_0-Gst-1_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-Gtk-3_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-GWeather-3_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-Handy-1_0" arch="x86_64"/>
