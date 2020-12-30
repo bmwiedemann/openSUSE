@@ -1872,4 +1872,17 @@
   % man-pages-openat2.h-location.patch (refreshed)</comment>
     <requestid>845372</requestid>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>3edf7e6a8bd95e7636734038f03e80f3</srcmd5>
+    <version>5.10</version>
+    <time>1609344671</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 5.10
+  * added documentation of the faccessat2() system call
+  * added a new subsection to the signal(7) manual page that provides
+    a &quot;big picture&quot; of what happens when a signal handler is executed
+- deleted patches
+  - man-pages-openat2.h-location.patch (upstreamed)</comment>
+    <requestid>858974</requestid>
+  </revision>
 </revisionlist>

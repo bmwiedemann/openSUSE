@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec 28 09:11:48 UTC 2020 - pgajdos@suse.com
+
+- version update to 5.10
+  * added documentation of the faccessat2() system call
+  * added a new subsection to the signal(7) manual page that provides
+    a "big picture" of what happens when a signal handler is executed
+- deleted patches
+  - man-pages-openat2.h-location.patch (upstreamed)
+
+-------------------------------------------------------------------
 Mon Nov  2 08:57:55 UTC 2020 - pgajdos@suse.com
 
 - version update to 5.09
