@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec 28 13:27:28 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.19
+  * Pre-read the memory mapped regions on systems that support it.
+  This speeds up operations on big databases.
+  * gdbmtool: tagged initialization of structured data
+  Initializers for structured data can be given in tagged form, e.g.:
+     store somekey { status=2, id={a,u,x}, name="foo" }
+  * Bugfixes:
+  ** Preserve locking type during database reorganization
+- modified patches
+  % gdbm-no-build-date.patch (refreshed)
+- deleted patches
+  - gdbm-no-common.patch (upstreamed)
+
+-------------------------------------------------------------------
 Sat Feb 22 19:23:10 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - No longer recommend -lang: supplements are in use. Also add a

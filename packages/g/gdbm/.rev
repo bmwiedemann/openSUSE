@@ -335,4 +335,23 @@ See the COPYING file (forwarded request 151441 from babelworx)</comment>
     <comment></comment>
     <requestid>786351</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>252619091f2d5371abd232b516fc9437</srcmd5>
+    <version>1.19</version>
+    <time>1609344660</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 1.19
+  * Pre-read the memory mapped regions on systems that support it.
+  This speeds up operations on big databases.
+  * gdbmtool: tagged initialization of structured data
+  Initializers for structured data can be given in tagged form, e.g.:
+     store somekey { status=2, id={a,u,x}, name=&quot;foo&quot; }
+  * Bugfixes:
+  ** Preserve locking type during database reorganization
+- modified patches
+  % gdbm-no-build-date.patch (refreshed)
+- deleted patches
+  - gdbm-no-common.patch (upstreamed)</comment>
+    <requestid>859028</requestid>
+  </revision>
 </revisionlist>

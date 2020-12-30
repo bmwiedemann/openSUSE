@@ -19,7 +19,7 @@
 %define lname	libgdbm6
 %define lcompat libgdbm_compat4
 Name:           gdbm
-Version:        1.18.1
+Version:        1.19
 Release:        0
 Summary:        GNU dbm key/data database
 License:        GPL-3.0-or-later
@@ -31,8 +31,6 @@ Source2:        baselibs.conf
 Source4:        %{name}.keyring
 # PATCH-FIX-SUSE: remove the build date from src/version.c
 Patch4:         gdbm-no-build-date.patch
-# Build with -no-common, [bsc#1160872] (mail to gray@gnu.org)
-Patch5:         gdbm-no-common.patch
 BuildRequires:  libtool
 BuildRequires:  makeinfo
 BuildRequires:  readline-devel
@@ -54,9 +52,9 @@ a database.
 
 %package -n %{lname}
 Summary:        GNU dbm key/data database
+# O/P added in 12.2
 License:        GPL-3.0-or-later
 Group:          System/Libraries
-# O/P added in 12.2
 Obsoletes:      gdbm < %{version}-%{release}
 Provides:       gdbm = %{version}-%{release}
 # For lang package
@@ -78,9 +76,9 @@ a database.
 
 %package -n %{lcompat}
 Summary:        GNU dbm key/data database compat wrapper
+# Was provided in older sonames
 License:        GPL-3.0-or-later
 Group:          System/Libraries
-# Was provided in older sonames
 Conflicts:      libgdbm3
 
 %description -n %{lcompat}
@@ -97,8 +95,10 @@ License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{lcompat} = %{version}
 Requires:       %{lname} = %{version}
+%if "%{install_info_prereq}" != ""
 Requires(pre):  %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
+%endif
 
 %description devel
 This package contains all necessary include files and libraries needed
@@ -107,7 +107,6 @@ to develop applications that require these.
 %prep
 %setup -q
 %patch4 -p1
-%patch5 -p1
 
 %build
 
