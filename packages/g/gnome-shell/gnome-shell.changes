@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 29 16:54:37 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Re-enable gnome-shell-private-connection.patch: it was rebased
+  back in October, but not enabled (boo#1180230).
+
+-------------------------------------------------------------------
 Tue Dec 29 07:53:25 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add missing pkgconfig(libpipewire-0.3) BuildRequires and
