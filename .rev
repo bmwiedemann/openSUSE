@@ -338,4 +338,25 @@ A    latex2html-share-dir.diff</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>759302</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>1555d56c34b7bb96b3d77f791e9662c0</srcmd5>
+    <version>2020.2</version>
+    <time>1609344673</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2020.2:
+  - gs 9.50: -dNOSAFER to write to tmp dir
+  - css fix: put caption below figure
+  - fix bug with gif with &amp;gt;256 colors
+  - fix eqnarray*
+  - fix &quot;make test&quot;
+  - fix false matches when reusing images for long environments.
+  - fork on \include, not on \input
+  - fix figure size with png
+  - allow verbatim in figure
+  - output height with displaymath, center displaymath
+  - enable -nouse_pdftex -image_type svg
+  - fall back to unicode combining characters for accents
+  - generate higher numbered UTF8 chars (forwarded request 858089 from dirkmueller)</comment>
+    <requestid>858977</requestid>
+  </revision>
 </revisionlist>

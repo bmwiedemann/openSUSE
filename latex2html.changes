@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Dec 22 09:24:14 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 2020.2:
+  - gs 9.50: -dNOSAFER to write to tmp dir
+  - css fix: put caption below figure
+  - fix bug with gif with >256 colors
+  - fix eqnarray*
+  - fix "make test"
+  - fix false matches when reusing images for long environments.
+  - fork on \include, not on \input
+  - fix figure size with png
+  - allow verbatim in figure
+  - output height with displaymath, center displaymath
+  - enable -nouse_pdftex -image_type svg
+  - fall back to unicode combining characters for accents
+  - generate higher numbered UTF8 chars 
+
+-------------------------------------------------------------------
 Thu Dec 19 11:35:47 UTC 2019 - pgajdos@suse.com
 
 - fix url

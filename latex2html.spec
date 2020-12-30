@@ -1,7 +1,7 @@
 #
 # spec file for package latex2html
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %define share_dir %{_datadir}/latex2html
+%define _texmfmaindir   %{_datadir}/texmf
 Name:           latex2html
-Version:        2019.2
+Version:        2020.2
 Release:        0
 Summary:        LaTeX to HTML Converter
 License:        GPL-2.0-or-later
@@ -46,7 +47,6 @@ Requires:       texlive-dvips
 Requires:       texlive-latex
 Requires:       texlive-preview
 BuildArch:      noarch
-%define _texmfmaindir   %{_datadir}/texmf
 
 %description
 LaTeX2HTML lets you convert basic LaTeX documents into the HTML
@@ -80,7 +80,7 @@ This subpackage contains the documentation for the Latex2HTML converter.
 %build
 # Not autotools based configure
 ./configure --prefix=%{_prefix}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -91,7 +91,7 @@ chmod 755 %{buildroot}%{_datadir}/%{name}/{cweb2html/makemake.pl,cweb2html/cweb2
 %fdupes -s %{buildroot}
 
 %check
-make %{?_smp_mflags} test
+%make_build test
 find manual tests \( -name \*.log -o -name \*.aux \) -delete
 
 %files
