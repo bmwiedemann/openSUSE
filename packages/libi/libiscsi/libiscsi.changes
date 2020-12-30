@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 28 15:13:31 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.19.0+git.20201217:
+  * Revert "specify number of blocks in write_same command"
+  * iser: fix segmentation fault when task management pdu is received
+  * iser: fix segmentation fault when async message pdu is received
+
+-------------------------------------------------------------------
 Thu Nov  5 10:50:08 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.19.0+git.20201023:

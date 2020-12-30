@@ -185,4 +185,15 @@
   * pdu: fix use after free during cancellation</comment>
     <requestid>846196</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1ee57c33caaf6a9bfb5e3517e3427d4f</srcmd5>
+    <version>1.19.0+git.20201217</version>
+    <time>1609344703</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.19.0+git.20201217:
+  * Revert &quot;specify number of blocks in write_same command&quot;
+  * iser: fix segmentation fault when task management pdu is received
+  * iser: fix segmentation fault when async message pdu is received</comment>
+    <requestid>859042</requestid>
+  </revision>
 </revisionlist>
