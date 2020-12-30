@@ -1,8 +1,8 @@
-Index: mraa-2.1.0/CMakeLists.txt
+Index: mraa-2.2.0/CMakeLists.txt
 ===================================================================
---- mraa-2.1.0.orig/CMakeLists.txt
-+++ mraa-2.1.0/CMakeLists.txt
-@@ -177,7 +177,7 @@ else ()
+--- mraa-2.2.0.orig/CMakeLists.txt
++++ mraa-2.2.0/CMakeLists.txt
+@@ -184,7 +184,7 @@ else ()
  endif()
  
  if (DETECTED_ARCH STREQUAL "i586" OR DETECTED_ARCH STREQUAL "x86_64"

@@ -18,7 +18,7 @@
 
 %define         sover 2
 Name:           mraa
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Low Level Skeleton Library for IO Communication
 License:        MIT
