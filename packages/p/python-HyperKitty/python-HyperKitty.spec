@@ -220,14 +220,14 @@ for job in \
     if [ "${job}" = "minutely" ]; then
         hyperkitty_runjob_delay="RandomizedDelaySec=15s"
     elif [ "${job}" = "quarter-hourly" ]; then
-        hyperkitty_runjob_calendar="OnCalendar=quarterly"
+        hyperkitty_runjob_calendar="OnCalendar=*:0/15"
         hyperkitty_runjob_delay="RandomizedDelaySec=2m"
         # The real jobname is with an underscore
         hyperkitty_runjob_name="quarter_hourly"
     fi
-    sed -i "s/@HYPERKITTY_RUNJOB_CALENDAR@/${hyperkitty_runjob_calendar}/g" %{buildroot}%{_unitdir}/hyperkitty-runjob-${job}.timer
-    sed -i "s/@HYPERKITTY_RUNJOB_DELAY@/${hyperkitty_runjob_delay}/g" %{buildroot}%{_unitdir}/hyperkitty-runjob-${job}.timer
-    sed -i "s/@HYPERKITTY_RUNJOB@/${hyperkitty_runjob_name}/g" %{buildroot}%{_unitdir}/hyperkitty-runjob-${job}.timer
+    sed -i "s#@HYPERKITTY_RUNJOB_CALENDAR@#${hyperkitty_runjob_calendar}#g" %{buildroot}%{_unitdir}/hyperkitty-runjob-${job}.timer
+    sed -i "s#@HYPERKITTY_RUNJOB_DELAY@#${hyperkitty_runjob_delay}#g" %{buildroot}%{_unitdir}/hyperkitty-runjob-${job}.timer
+    sed -i "s#@HYPERKITTY_RUNJOB@#${hyperkitty_runjob_name}#g" %{buildroot}%{_unitdir}/hyperkitty-runjob-${job}.timer
 done
 
 %check
