@@ -55,6 +55,8 @@ BuildRequires:  libboost_locale-devel >= 1.66
 BuildRequires:  libboost_regex-devel >= 1.66
 BuildRequires:  libboost_system-devel >= 1.66
 BuildRequires:  libboost_thread-devel >= 1.66
+#Workaround for boo#1180359
+BuildRequires:  libbz2-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
@@ -66,6 +68,8 @@ BuildRequires:  pugixml-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  tcpd-devel
 BuildRequires:  unzip
+#Workaround for boo#1180359
+BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(lua5.1)
