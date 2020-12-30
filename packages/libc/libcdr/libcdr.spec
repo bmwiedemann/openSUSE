@@ -26,6 +26,7 @@ Group:          Productivity/Publishing/Word
 URL:            http://www.freedesktop.org/wiki/Software/libcdr
 Source0:        http://dev-www.libreoffice.org/src/%{name}/%{name}-%{version}.tar.xz
 Patch0:         libcdr-0.1.1-pkgconfig.patch
+Patch1:         icu-68.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -82,6 +83,7 @@ Tools to work with documents in Corel Draw file format.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"
