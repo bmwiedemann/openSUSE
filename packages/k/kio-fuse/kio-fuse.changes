@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Dec 26 20:39:54 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.0.0:
+  * Symlinks with an absolute target path are "rewritten" to point to the
+    location inside the target instead of the host system
+  * Mounting a URL which includes symlinks now works
+  * Quite a bit of refactoring and cleanup, also for ^
+  * The DBus service can use systemd activation now
+
+-------------------------------------------------------------------
+Thu Aug 27 09:46:42 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Spec cleanup
+
+-------------------------------------------------------------------
 Tue May 26 17:57:40 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 4.95.0:

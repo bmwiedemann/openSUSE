@@ -18,26 +18,25 @@
 
 %bcond_without lang
 Name:           kio-fuse
-Version:        4.95.0
+Version:        5.0.0
 Release:        0
 Summary:        Access KIO over the regular filesystem
 License:        GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source0:        https://download.kde.org/unstable/%{name}/%{version}/%{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/unstable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
 Source2:        kio-fuse.keyring
 %endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5KIO) >= 5.66.0
 BuildRequires:  cmake(Qt5DBus) >= 5.12.0
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  pkgconfig(fuse3)
 Requires:       fuse3
-# For %check
+# For %%check
 BuildRequires:  kio-extras5
 
 %description
@@ -49,7 +48,7 @@ applications using FUSE.
 
 %build
 %cmake_kf5 -d build -- -DBUILD_TESTING=ON
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
@@ -62,8 +61,8 @@ applications using FUSE.
 ret=0
 fusermount3 || ret=$?
 if [ $ret -eq 126 ] ; then
-	# No permission to run fusermount3: boo#1159963
-	exit 0
+  # No permission to run fusermount3: boo#1159963
+  exit 0
 fi
 
 # Hack to make "fusermount3 -u" work in the OBS context
@@ -79,7 +78,8 @@ make %{?_smp_mflags} -C build VERBOSE=1 test
 %files
 %license LICENSES/*
 %{_kf5_libdir}/libexec/kio-fuse
-%{_tmpfilesdir}/kio-fuse-tmpfiles.conf
 %{_kf5_sharedir}/dbus-1/services/org.kde.KIOFuse.service
+%{_tmpfilesdir}/kio-fuse-tmpfiles.conf
+%{_userunitdir}/kio-fuse.service
 
 %changelog
