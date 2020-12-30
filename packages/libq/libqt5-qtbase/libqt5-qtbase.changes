@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 29 11:48:35 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Add patch to avoid excessive use of memory by lconvert:
+  * 0001-Fix-allocated-memory-of-QByteArray.patch
+
+-------------------------------------------------------------------
 Fri Nov 20 12:08:44 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.15.2:

@@ -2233,4 +2233,13 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.2</comment>
     <requestid>850011</requestid>
   </revision>
+  <revision rev="115" vrev="2">
+    <srcmd5>e9fcabe949e298f9ae3c934f844a270b</srcmd5>
+    <version>5.15.2</version>
+    <time>1609344731</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to avoid excessive use of memory by lconvert:
+  * 0001-Fix-allocated-memory-of-QByteArray.patch</comment>
+    <requestid>859203</requestid>
+  </revision>
 </revisionlist>
