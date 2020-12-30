@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec 27 18:24:08 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to version 3.1.7:
+  * Vendoring libglm headers to remove a dependency
+  * Subdirectory scanning for textures and presets
+  * Support for text drawing and feedback in pmSDL (may not be enabled by configuration)
+    macOS should support building with autotools now, not just xcode
+
+- Removed patch to reduce build dependencies, as it's no longer required:
+  * 0001-Reduce-dependencies.patch
+  
+-------------------------------------------------------------------
 Tue May 19 15:23:08 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Re-enable pulseaudio_qt on aarch64 and %arm

@@ -131,4 +131,18 @@
     <comment></comment>
     <requestid>807372</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c0afe2db7e2e401f1918985f2e39140d</srcmd5>
+    <version>3.1.7</version>
+    <time>1609344676</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1.7:
+  * Vendoring libglm headers to remove a dependency
+  * Subdirectory scanning for textures and presets
+  * Support for text drawing and feedback in pmSDL (may not be enabled by configuration)
+    macOS should support building with autotools now, not just xcode
+- Removed patch to reduce build dependencies, as it's no longer required:
+  * 0001-Reduce-dependencies.patch</comment>
+    <requestid>858997</requestid>
+  </revision>
 </revisionlist>

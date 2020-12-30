@@ -26,7 +26,7 @@
 %endif
 %bcond_without pulseaudio_qt
 Name:           projectM
-Version:        3.1.3
+Version:        3.1.7
 Release:        0
 Summary:        A Music Visualizer
 License:        LGPL-2.1-or-later
@@ -35,8 +35,6 @@ URL:            http://projectm.sourceforge.net
 Source0:        https://github.com/projectM-visualizer/projectm/archive/v%{version}.tar.gz#/projectm-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE projectM-disable_native_plugins.patch
 Patch0:         projectM-disable_native_plugins.patch
-# PATCH-FIX-UPSTREAM 0001-Reduce-dependencies.patch
-Patch1:         0001-Reduce-dependencies.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  glm-devel
@@ -110,7 +108,6 @@ This package contains its development files.
 %setup -q -n projectm-%{version}
 chmod -x LICENSE.txt
 %patch0 -p1
-%patch1 -p1
 
 %if %{with gles_flavor}
 # https://github.com/projectM-visualizer/projectm/issues/356

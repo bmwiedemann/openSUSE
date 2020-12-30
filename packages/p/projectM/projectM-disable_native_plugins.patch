@@ -14,7 +14,7 @@ diff --git a/src/Makefile.am b/src/Makefile.am
 index 6d5e6e7..1ecbe81 100644
 --- a/src/Makefile.am
 +++ b/src/Makefile.am
-@@ -22,4 +22,4 @@ endif
+@@ -22,4 +22,4 @@
  # for compatibility reasons here as nobase_include
  nobase_include_HEADERS = libprojectM/projectM.hpp libprojectM/Common.hpp libprojectM/dlldefs.h libprojectM/event.h libprojectM/fatal.h libprojectM/PCM.hpp
  
