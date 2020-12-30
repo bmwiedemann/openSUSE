@@ -16,18 +16,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           orthanc-gdcm
 Summary:        GDCM plugin for Orthanc
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        1.1
+Version:        1.2
 Release:        0
 URL:            http://orthanc-server.com
 Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-gdcm/OrthancGdcm-%{version}.tar.gz
 Source11:       orthanc-gdcm-readme.SUSE
-
-#  patch for orthanc 1.8.1
-Patch0:         patches_logging.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -42,10 +40,14 @@ BuildRequires:  libboost_locale-devel >= 1.66
 BuildRequires:  libboost_regex-devel >= 1.66
 BuildRequires:  libboost_system-devel >= 1.66
 BuildRequires:  libboost_thread-devel >= 1.66
+#Workaround for boo#1180359
+BuildRequires:  libbz2-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  orthanc-devel
 BuildRequires:  orthanc-source
 BuildRequires:  unzip
+#Workaround for boo#1180359
+BuildRequires:  zlib-devel
 
 Requires:       orthanc
 
@@ -56,8 +58,6 @@ GDCM for Orthanc
 
 %prep
 %setup -q -n OrthancGdcm-%{version}
-
-%patch0 -p1
 
 %build
 

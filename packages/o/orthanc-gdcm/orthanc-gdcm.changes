@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 30 13:35:47 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- Workaround for boo#1180359
+
+-------------------------------------------------------------------
+Mon Dec 21 17:46:03 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.2 
+* Temporarily prevent transcoding of 16bpp images to JPEG, as this might crash GDCM
+* Upgrade to GDCM 3.0.8 for static builds
+* patches_logging.patch removed (included in source)
+
+-------------------------------------------------------------------
 Thu Dec 10 13:53:47 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - patches_logging.patch added to fix build error w. orthanc 1.8.1
