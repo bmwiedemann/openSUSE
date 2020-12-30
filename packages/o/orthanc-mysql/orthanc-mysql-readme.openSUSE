@@ -5,7 +5,7 @@ Orthanc is a RESTful DICOM server for healthcare and medical research.
 
 This package provides the MySQL plugin for Orthanc.
 
-You need to have postgresql installed and running.
+You need to have MySQL/mariadb installed and running.
 
 You have to create a database dedicated to Orthanc. Please refer to the MySQL documentation.
 

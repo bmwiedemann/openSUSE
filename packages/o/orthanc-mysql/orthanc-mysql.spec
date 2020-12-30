@@ -25,7 +25,7 @@ Version:        3.0
 Release:        0
 URL:            http://orthanc-server.com
 Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-mysql/OrthancMySQL-%{version}.tar.gz
-Source1:        orthanc-mysql-readme.SUSE
+Source1:        orthanc-mysql-readme.openSUSE
 Source2:        mysql.json
 BuildRequires:  cmake
 BuildRequires:  e2fsprogs-devel
