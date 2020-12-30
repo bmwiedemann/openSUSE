@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Dec 29 11:35:09 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.4.17:
+  + python bindings: fix "TypeError: argtypes must be a sequence of
+    types".
+- Drop 147.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Dec 14 16:37:32 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 147.patch: python bindings: fix "TypeError: _argtypes_ must
+  be a sequence of types".
+
+-------------------------------------------------------------------
+Fri Dec  4 11:11:52 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.4.16:
+  + Port to, and require, SpiderMonkey 6.
+  + Use closesocket() instead of close() on Windows.
+  + Add symbol versions - be ready to introduce new APIs as needed.
+  + Add public px_proxy_factory_free_proxies function.
+  + Add PacRunner config backend (largely untested; feedback
+    welcome!).
+  + Small performance improvements.
+  + pxgsettings: use the correct syntax to connect to the changed
+    signal (silences annoying output on console).
+  + Support python3 up to version 3.9.
+  + Fix buffer overflow when PAC is enabled (CVE-2020-26154).
+  + Rewrite url::recvline to be nonrecursive (CVE-2020-25219).
+  + Remove nonfunctional and crashy pacrunner caching.
+  + Never use system libmodman (no other consumers, not
+    maintained).
+- Drop upstream merged patches:
+  + libproxy-python3.7.patch
+  + libproxy-pxgsettings.patch
+  + libproxy-CVE-2020-25219.patch
+  libproxy-fix-pac-buffer-overflow.patch
+- Create new sub-package libproxy1-config-pacrunner.
+
+-------------------------------------------------------------------
 Wed Sep 30 18:50:44 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Add libproxy-CVE-2020-25219.patch: Rewrite url::recvline to be

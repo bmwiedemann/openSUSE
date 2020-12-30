@@ -39,22 +39,14 @@
 %bcond_without python2
 %{!?_assemblies_dir: %global _assemblies_dir %(pkg-config cecil --variable=assemblies_dir)}
 Name:           libproxy%{?dash}%{?name_suffix}
-Version:        0.4.15
+Version:        0.4.17
 Release:        0
 Summary:        Automatic proxy configuration management for applications
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://libproxy.github.io/libproxy/
-Source:         https://github.com/libproxy/%{_name}/archive/%{version}.tar.gz
+Source:         https://github.com/libproxy/libproxy/releases/download/%{version}/%{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM libproxy-python3.7.patch dimstar@opensuse.org -- Add support for python 3.7 and 3.8, taken from upstream
-Patch0:         libproxy-python3.7.patch
-# PATCH-FIX-UPSTREAM libproxy-pxgsettings.patch dimstar@opensuse.org -- pxgsettings: use the correct syntax to connect to the changed signal
-Patch1:         libproxy-pxgsettings.patch
-# PATCH-FIX-UPSTREAM libproxy-CVE-2020-25219.patch boo#1176410 mgorse@suse.com -- Rewrite url::recvline to be nonrecursive.
-Patch2:         libproxy-CVE-2020-25219.patch
-# PATCH-FIX-UPSTREAM libproxy-fix-pac-buffer-overflow.patch boo#1177143 mgorse@suse.com -- fix buffer overflow when PAC is enabled.
-Patch3:         libproxy-fix-pac-buffer-overflow.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libmodman-devel
@@ -182,6 +174,16 @@ Requires:       libproxy1-pacrunner = %{version}
 A module to extend libproxy with capabilities to query KDE4 about proxy
 settings.
 
+%package -n libproxy1-config-pacrunner
+Summary:        Libproxy module for PacRunner configuration
+Group:          System/Libraries
+Requires:       libproxy1 = %{version}
+
+%description -n libproxy1-config-pacrunner
+
+A module to extend libproxy with capabilities to query PacRunner about
+proxy settings.
+
 %package -n libproxy1-pacrunner-mozjs
 Summary:        Libproxy module to support WPAD/PAC parsing via the Mozilla JavaScript Engine
 Group:          System/Libraries
@@ -274,14 +276,10 @@ management.
 
 This package contains the Mono/.NET for libproxy.
 
-%endif # build_core_not_modules
+%endif %dnl build_core_not_modules
 
 %prep
-%setup -q -n %{_sourcename}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -n %{_sourcename} -p1
 mkdir build
 
 %build
@@ -405,6 +403,9 @@ make test
 %defattr(-, root, root)
 %{_libdir}/libproxy-%{version}/modules/config_gnome3.so
 %{_libexecdir}/libproxy-%{version}/pxgsettings
+
+%files -n libproxy1-config-pacrunner
+%{_libdir}/libproxy-%{version}/modules/config_pacrunner.so
 
 %files -n libproxy1-networkmanager
 %defattr(-, root, root)
