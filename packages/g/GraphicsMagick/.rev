@@ -909,4 +909,41 @@
     <comment>- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075) (forwarded request 829123 from gmbr3)</comment>
     <requestid>830734</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>eed4893938da8eab003d135a30da1e49</srcmd5>
+    <version>1.3.36</version>
+    <time>1609344699</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 1.3.36
+  Security Fixes:
+    * fix issues found by oss-fuzz project
+    * WPG: Fixes for heap buffer overflow.
+  Bug fixes:
+    * ConstituteImage(): Set image depth appropriately based on the
+      storage size specified by StorageType and QuantumDepth.
+    * GetImageBoundingBox(): Fix problem that MagickTrimImage with extreme
+      fuzz values could produce an image with negative width.
+    * ImageToFile(): Improve error handling to avoid possible deferred
+      deletion of temporary files, causing unexpected excessive use of
+      temporary file space.
+    * JNG: Add validations for alpha compression method values and use
+      this information to enforce decoding using the appropriate
+      sub-format (rather than auto-detecting the format).  Also, address
+      memory leaks which may occur if the sub-decoder does something other
+      than was expected.
+    * MagickCondSignal(): Improvements to conditional signal handler
+      registration (which avoids over-riding signal handlers previously
+      registered by an API user).
+    * ModifyCache(): Fix memory leak.
+    * ReadCacheIndexes(): Don't blunder into accessing a null pointer if
+      the using code has ignored a previous error report bubled-up from
+      SetNexus().
+    * MNG: When doing image scaling and the image width or height is 1
+      then always use simple pixel replication as per the MNG
+      specification.
+    * MVG: Fixes to 'push clip-path foo' and 'pop clip-path foo' parsing
+      to eliminate a class of malign behavior.
+    * MVG: Place an aribrary limit on stroke dash polygon unit maximum</comment>
+    <requestid>859039</requestid>
+  </revision>
 </revisionlist>
