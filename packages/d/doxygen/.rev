@@ -945,4 +945,29 @@
   + doxygen-no-libclang-cpp.patch</comment>
     <requestid>841450</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>9513d36f295b1ccf97a692b346fbd940</srcmd5>
+    <version>1.9.0</version>
+    <time>1609344698</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 1.9.0
+  * Features
+    Show QT version in doxywizard [view]
+    Adding possibility to add command line options when running doxygen from doxygen wizard [view], [view]
+    Add param validation to typedef function pointers [view]
+    Allow building doxygen as a subproject [view]
+    Layout changes doxywizard [view]
+    Show configuration warnings unconditionally in the doxywizard [view]
+    Enable UML diagrams without member fields [view]
+    add variable for the fold length of UML diagrams (DOT_WRAP_THRESHOLD) [view]
+    use boolean to add or remove uml details (DOT_UML_DETAILS) [view] and [view]
+    add suggestion #7686 to show type and parameters [view]
+  * Bug fixes
+  * Refactoring, cleanup
+  * Documentation updates
+  * see https://www.doxygen.nl/manual/changelog.html for details
+- deleted patches
+  - 0001-issue-7979-C++-enums-being-defined-in-multiple-files.patch (upstreamed)</comment>
+    <requestid>859036</requestid>
+  </revision>
 </revisionlist>

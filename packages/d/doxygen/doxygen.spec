@@ -22,7 +22,7 @@
 %endif
 
 Name:           doxygen
-Version:        1.8.20
+Version:        1.9.0
 Release:        0
 Summary:        Automated C, C++, and Java Documentation Generator
 # qtools are used for building and they are GPL-3.0 licensed
@@ -37,8 +37,6 @@ Patch1:         %{name}-no-lowercase-man-names.patch
 # PATCH-FIX-UPSTREAM: add missing returns to non-void functions
 Patch3:         vhdlparser-no-return.patch
 Patch10:        doxygen-no-libclang-cpp.patch
-# PATCH-FIX-UPSTREAM
-Patch11:        0001-issue-7979-C++-enums-being-defined-in-multiple-files.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  flex
@@ -74,7 +72,6 @@ as well.
 %patch10 -p1
 %endif
 %endif
-%patch11 -p1
 
 %build
 %cmake \

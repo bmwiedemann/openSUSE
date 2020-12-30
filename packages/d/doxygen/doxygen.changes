@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Dec 28 13:47:36 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.9.0
+  * Features
+    Show QT version in doxywizard [view]
+    Adding possibility to add command line options when running doxygen from doxygen wizard [view], [view]
+    Add param validation to typedef function pointers [view]
+    Allow building doxygen as a subproject [view]
+    Layout changes doxywizard [view]
+    Show configuration warnings unconditionally in the doxywizard [view]
+    Enable UML diagrams without member fields [view]
+    add variable for the fold length of UML diagrams (DOT_WRAP_THRESHOLD) [view]
+    use boolean to add or remove uml details (DOT_UML_DETAILS) [view] and [view]
+    add suggestion #7686 to show type and parameters [view]
+  * Bug fixes
+  * Refactoring, cleanup
+  * Documentation updates
+  * see https://www.doxygen.nl/manual/changelog.html for details
+- deleted patches
+  - 0001-issue-7979-C++-enums-being-defined-in-multiple-files.patch (upstreamed)
+
+-------------------------------------------------------------------
 Mon Oct 12 15:55:24 UTC 2020 - Franz Sirl <franz.sirl-obs@lauterbach.com>
 
 - Use gcc9 for building on SLE_15 based distributions to workaround

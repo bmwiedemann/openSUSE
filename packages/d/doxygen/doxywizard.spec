@@ -17,7 +17,7 @@
 
 
 Name:           doxywizard
-Version:        1.8.20
+Version:        1.9.0
 Release:        0
 Summary:        Graphical User Interface for Doxygen
 # qtools are used for building and they are GPL-3.0 licensed
