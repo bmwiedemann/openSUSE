@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Dec 26 10:11:38 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 20201225:
+  * release: bump version to 20201225
+  * Add <name> to .doap file
+  * th: add new provider AIS (AWN)
+  * pl/nju mobile: Fix the balance check USSD code
+  * trivial: fix spurious whitespaces
+  * Add Polish MVNOs "nju mobile" and "Virgin Mobile"
+  * Remove defunct Polish MVNOs
+  * Update configuration for Polish operators
+  * pl: fix APN for Polish provider PLUS
+  * Rename Swiss provider Orange to Salt
+  * Add APN Information for Aliv Bahamas
+  * Add China Telecom as LTE carrier
+  * Add SpeedTalk Mobile MVNO
+  * Add gitltab-ci
+  * at: add balance check and top-up code for hot.at
+  * sg/Starhub: Add USSD command to fetch balance info
+  * Add Airtel Malawi settings
+  * Add a new provider: Yota (25011)
+  * Add eSwatini mobile provider info
+
+-------------------------------------------------------------------
 Tue Jun 18 18:50:26 UTC 2019 - bjorn.lie@gmail.com
 
 - Update to version 20190618:
