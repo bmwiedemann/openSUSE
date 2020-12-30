@@ -1,7 +1,7 @@
 #
 # spec file for package libhmac
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libhmac
 %define lname	libhmac1
-%define timestamp 20150104
+%define timestamp 20200104
 Version:        0~%timestamp
 Release:        0
 Summary:        Library to support various HMACs
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/libyal/libhmac/wiki
+URL:            https://github.com/libyal/libhmac/wiki
 Source:         https://github.com/libyal/libhmac/releases/download/%timestamp/%{name}-alpha-%timestamp.tar.gz
-BuildRequires:  pkg-config
+#BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcfile)   >= 20130609
 BuildRequires:  pkgconfig(libclocale) >= 20130609
 BuildRequires:  pkgconfig(libcnotify)  >= 20130609
@@ -85,7 +85,8 @@ rm -f "%{buildroot}/%{_libdir}"/*.la
 
 %files -n %lname
 %defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog
+%doc AUTHORS ChangeLog
+%license COPYING*
 %{_libdir}/libhmac.so.1*
 
 %files devel

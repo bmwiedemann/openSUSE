@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 29 23:12:59 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20200104
+        * changes for SHA-512 HMAC
+        * removed WinCrypt support
+- removed    BuildRequires:  pkg-config
+- added COPYING* to %license line
+
+-------------------------------------------------------------------
+Wed Mar 27 23:19:17 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20180731
+	* code cleanup
+
+-------------------------------------------------------------------
 Fri Jan  9 17:52:55 UTC 2015 - Greg.Freemyer@gmail.com
 
 - update to v0~20150104
