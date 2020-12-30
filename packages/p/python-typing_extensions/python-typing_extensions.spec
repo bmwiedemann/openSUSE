@@ -30,6 +30,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+Provides:       python-typing-extensions = %{version}
 %if %{with python2}
 BuildRequires:  python-typing >= 3.7.4
 %endif

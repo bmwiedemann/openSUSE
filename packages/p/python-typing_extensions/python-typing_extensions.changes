@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Dec 20 09:11:23 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- add transitional typing-extensions provides 
+
+-------------------------------------------------------------------
 Wed Nov  4 00:11:53 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Use python_module macro for BuildRequires when available.
