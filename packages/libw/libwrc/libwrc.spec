@@ -1,7 +1,7 @@
 #
 # spec file for package libwrc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 Name:           libwrc
 %define lname	libwrc1
-%define timestamp 20181203
+%define timestamp 20191221
 Version:        0~%timestamp
 Release:        0
 Summary:        Library to support the Windows Resource Compiler format
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
-Url:            https://github.com/libyal/libwrc/wiki
+URL:            https://github.com/libyal/libwrc/wiki
 Source:         https://github.com/libyal/libwrc/releases/download/%timestamp/%name-experimental-%timestamp.tar.gz
-BuildRequires:  pkg-config
+#BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libbfio) >= 20120426
 BuildRequires:  pkgconfig(libcdata) >= 20120425
 BuildRequires:  pkgconfig(libcfile) >= 20120526
@@ -95,7 +95,7 @@ rm -f "%buildroot/%_libdir"/*.la
 %files -n %lname
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog
-%license COPYING 
+%license COPYING*
 %_libdir/libwrc.so.1*
 
 %files devel
