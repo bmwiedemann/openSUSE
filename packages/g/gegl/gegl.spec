@@ -23,7 +23,7 @@
 %endif
 
 Name:           gegl
-Version:        0.4.26
+Version:        0.4.28
 Release:        0
 Summary:        Generic Graphics Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -41,12 +41,12 @@ BuildRequires:  libSDL2-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libspiro-devel
 BuildRequires:  libstdc++-devel
-BuildRequires:  meson >= 0.50.0
+BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
 BuildRequires:  ruby
 BuildRequires:  suitesparse-devel
 BuildRequires:  pkgconfig(OpenEXR) >= 1.6.1
-BuildRequires:  pkgconfig(babl) >= 0.1.78
+BuildRequires:  pkgconfig(babl) >= 0.1.84
 BuildRequires:  pkgconfig(cairo) >= 1.12.2
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gexiv2)
@@ -73,6 +73,7 @@ BuildRequires:  pkgconfig(libwebp) >= 0.5.0
 BuildRequires:  pkgconfig(luajit)
 %endif
 # TODO: BuildRequires:  pkgconfig(mrg)
+# TODO: BuildRequires:  pkgconfig(maxflow)
 BuildRequires:  pkgconfig(pango) >= 1.38.0
 BuildRequires:  pkgconfig(pangocairo) >= 1.38.0
 BuildRequires:  pkgconfig(poppler-glib) >= 0.71.0
@@ -160,6 +161,7 @@ export LD_PRELOAD="/usr/lib64/libgomp.so.1"
 %endif
 %meson \
 	-Dmrg=disabled \
+	-Dmaxflow=disabled \
 	%if ! %{with luajit}
 	-Dlua=disabled \
 	%endif
