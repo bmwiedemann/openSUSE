@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 29 10:03:44 UTC 2020 - Matthias Mailänder <matthias@mailaender.name>
+
+- Update to version 0.3.2
+- Note: this does now rely on the multi-header version of nlohmann-json
+  (already included in Tumbleweed)
+
+-------------------------------------------------------------------
 Thu Oct  1 16:08:23 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Update to version 0.3.1 (enhancements of the plugin API)
