@@ -1782,4 +1782,41 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment></comment>
     <requestid>846986</requestid>
   </revision>
+  <revision rev="192" vrev="2">
+    <srcmd5>a28e3c4f4304027be9ab38922f7242cc</srcmd5>
+    <version>3.5.8</version>
+    <time>1609344663</time>
+    <user>dimstar_suse</user>
+    <comment>- Set database type for address_verify_map and postscreen_cache_map
+  to lmdb (btree requires Berkeley DB)
+  o add postfix-no-btree.patch
+
+- Set default database type to lmdb and fix update_postmaps script
+
+- Use variable substition instead of sed to remove .db suffix and
+  substitute hash: for lmdb: in /etc/postfix/master.cf as well.
+  Check before substitution if there is something to do (to keep
+  rpmcheck happy).
+
+- bsc#1176650 L3: What is regularly triggering the &quot;fillup&quot; 
+  command and changing modify-time of /etc/sysconfig/postfix?
+  o Remove miss placed fillup_only call from %verifyscript
+
+- Remove Berkeley DB dependency (JIRA#SLE-12191)
+  The pacakges postfix is build without Berkely DB support.
+  lmdb will be used instead of BDB.
+  The pacakges postfix-bdb is build with Berkely DB support.
+  o add patch for main.cf for postfix-bdb package 
+    postfix-bdb-main.cf.patch
+
+
+- bsc#1176650 L3: What is regularly triggering the &quot;fillup&quot; 
+  command and changing modify-time of /etc/sysconfig/postfix?
+  o Remove miss placed fillup_only call from %verifyscript
+
+- Remove Berkeley DB dependency (JIRA#SLE-12191)
+  The pacakges postfix is build without Berkely DB support.
+  lmdb will be used instead of BDB.</comment>
+    <requestid>858771</requestid>
+  </revision>
 </revisionlist>

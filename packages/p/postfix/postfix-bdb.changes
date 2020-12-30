@@ -1,24 +1,4 @@
 -------------------------------------------------------------------
-Fri Dec 25 20:32:04 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
-
-- Set database type for address_verify_map and postscreen_cache_map
-  to lmdb (btree requires Berkeley DB)
-  o add postfix-no-btree.patch
-
--------------------------------------------------------------------
-Fri Dec 25 10:28:30 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
-
-- Set default database type to lmdb and fix update_postmaps script
-
--------------------------------------------------------------------
-Thu Dec 24 14:09:32 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
-
-- Use variable substition instead of sed to remove .db suffix and
-  substitute hash: for lmdb: in /etc/postfix/master.cf as well.
-  Check before substitution if there is something to do (to keep
-  rpmcheck happy).
-
--------------------------------------------------------------------
 Tue Dec  8 13:36:35 UTC 2020 - Peter Varkoly <varkoly@suse.com>
 
 - bsc#1176650 L3: What is regularly triggering the "fillup" 

@@ -1,46 +1,8 @@
---- conf/main.cf-orig	2020-11-26 19:22:10.273349060 +0100
-+++ conf/main.cf	2020-11-26 19:22:57.917974110 +0100
-@@ -278,7 +278,7 @@
- #
- #mynetworks = 168.100.189.0/28, 127.0.0.0/8
- #mynetworks = $config_directory/mynetworks
--#mynetworks = hash:/etc/postfix/network_table
-+#mynetworks = lmdb:/etc/postfix/network_table
- 
- # The relay_domains parameter restricts what destinations this system will
- # relay mail to.  See the smtpd_recipient_restrictions description in
-@@ -343,7 +343,7 @@
- # In the left-hand side, specify an @domain.tld wild-card, or specify
- # a user@domain.tld address.
- # 
--#relay_recipient_maps = hash:/etc/postfix/relay_recipients
-+#relay_recipient_maps = lmdb:/etc/postfix/relay_recipients
- 
- # INPUT RATE CONTROL
- #
-@@ -398,8 +398,8 @@
- # "postfix reload" to eliminate the delay.
- #
- #alias_maps = dbm:/etc/aliases
--#alias_maps = hash:/etc/aliases
--#alias_maps = hash:/etc/aliases, nis:mail.aliases
-+#alias_maps = lmdb:/etc/aliases
-+#alias_maps = lmdb:/etc/aliases, nis:mail.aliases
- #alias_maps = netinfo:/aliases
- 
- # The alias_database parameter specifies the alias database(s) that
-@@ -409,8 +409,8 @@
- #
- #alias_database = dbm:/etc/aliases
- #alias_database = dbm:/etc/mail/aliases
--#alias_database = hash:/etc/aliases
--#alias_database = hash:/etc/aliases, hash:/opt/majordomo/aliases
-+#alias_database = lmdb:/etc/aliases
-+#alias_database = lmdb:/etc/aliases, lmdb:/opt/majordomo/aliases
- 
- # ADDRESS EXTENSIONS (e.g., user+foo)
- #
-@@ -567,6 +567,7 @@
+Index: conf/main.cf
+===================================================================
+--- conf/main.cf.orig
++++ conf/main.cf
+@@ -567,6 +567,7 @@ unknown_local_recipient_reject_code = 55
  #
  #smtpd_banner = $myhostname ESMTP $mail_name
  #smtpd_banner = $myhostname ESMTP $mail_name ($mail_version)
@@ -48,7 +10,7 @@
  
  # PARALLEL DELIVERY TO THE SAME DESTINATION
  #
-@@ -673,4 +674,140 @@
+@@ -673,4 +674,140 @@ sample_directory =
  # readme_directory: The location of the Postfix README files.
  #
  readme_directory =
@@ -135,7 +97,7 @@
 +smtp_tls_CApath = 
 +smtp_tls_cert_file = 
 +smtp_tls_key_file = 
-+#smtp_tls_policy_maps = lmdb:/etc/postfix/tls_policy
++#smtp_tls_policy_maps = hash:/etc/postfix/tls_policy
 +#smtp_tls_session_cache_timeout = 3600s
 +smtp_tls_session_cache_database = 
 +
@@ -151,9 +113,9 @@
 +############################################################
 +# Start MySQL from postfixwiki.org
 +############################################################
-+relay_domains = $mydestination, lmdb:/etc/postfix/relay
++relay_domains = $mydestination, hash:/etc/postfix/relay
 +#virtual_alias_domains = 
-+#virtual_alias_maps = lmdb:/etc/postfix/virtual
++#virtual_alias_maps = hash:/etc/postfix/virtual
 +#virtual_uid_maps = static:303
 +#virtual_gid_maps = static:303
 +#virtual_minimum_uid = 303
@@ -169,9 +131,9 @@
 +#virtual_mailbox_limit_override = yes
 +### Needs Maildir++ compatible IMAP servers, like Courier-IMAP
 +#virtual_maildir_filter = yes
-+#virtual_maildir_filter_maps = lmdb:/etc/postfix/vfilter
++#virtual_maildir_filter_maps = hash:/etc/postfix/vfilter
 +#virtual_maildir_limit_message = Sorry, the user's maildir has overdrawn his diskspace quota, please try again later.
-+#virtual_maildir_limit_message_maps = lmdb:/etc/postfix/vmsg
++#virtual_maildir_limit_message_maps = hash:/etc/postfix/vmsg
 +#virtual_overquota_bounce = yes
 +#virtual_trash_count = yes
 +#virtual_trash_name = ".Trash"
