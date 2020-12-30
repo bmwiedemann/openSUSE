@@ -6,7 +6,7 @@
  
 -BINDIR		= /usr/local/bin
 -MANDIR		= /usr/local/man/man1
-+BINDIR		= /usr/lib/news/bin
++BINDIR		= @LIBEXECDIR@/news/bin
 +MANDIR		= /usr/man/man1
  
  
@@ -84,8 +84,8 @@
 +- add "newsgup: news" to /etc/aliases and don't forward "news"-postings
 +  to "root" (delete the line with "news: root")
 +  So "news" has no its own mail-folder and "newsgup" is an alias for it.
-+- "mkdir /usr/lib/news/Mail"
-+- create "/usr/lib/news/.procmailrc" with the followin lines:
++- "mkdir @LIBEXECDIR@/news/Mail"
++- create "@LIBEXECDIR@/news/.procmailrc" with the followin lines:
 +  (but do write the 2 last lines into one line...)
 +	MAILDIR=$HOME/Mail
 +	LOGFILE=$MAILDIR/from
@@ -93,14 +93,14 @@
 +
 +	:0
 +	* ^TO.*gup
-+	|/usr/lib/news/bin/gup -P -d /var/lib/news/gup -l log \
++	|@LIBEXECDIR@/news/bin/gup -P -d /var/lib/news/gup -l log \
 +		-m gup_headers -s sites
 +- Look at all files in /var/lib/news/gup/ and edit them to your taste.
 +  Don't forget to change "gup_headers" to have a Reply-To: with
 +  a complete hostname.
 +- You should run gupdate to update your newsfeeds file. Maybe use
 +  the following entry in /etc/crontab:
-+	49 */6 * * * news /usr/lib/news/bin/gupdate
++	49 */6 * * * news @LIBEXECDIR@/news/bin/gupdate
 +
 --- config/vanilla
 +++ config/vanilla
@@ -232,7 +232,7 @@
 +mailcmd=/bin/mail
 +# error mails go to this person
 +news_admin=postmaster
-+ctlinnd=/usr/lib/news/bin/ctlinnd
++ctlinnd=@LIBEXECDIR@/news/bin/ctlinnd
 +
 --- sample/gupdate
 +++ sample/gupdate
@@ -241,7 +241,7 @@
 +# A script to rebuild the newsfeed file after a gup run
 +
 +. /var/lib/news/gup/gupconfig
-+PATH=/usr/bin:/bin:/usr/lib/news/bin
++PATH=/usr/bin:/bin:@LIBEXECDIR@/news/bin
 +
 +########################### end of user-config stuff ##########################
 +
@@ -330,7 +330,7 @@
 +ME:*::
 +
 +# for NOV overview database
-+OVERVIEW!:*:Tc,WO:/usr/lib/news/bin/overchan
++OVERVIEW!:*:Tc,WO:@LIBEXECDIR@/news/bin/overchan
 +
 +# sample entry for UUCP
 +#hugo/hugo.suse.de:*,!junk,!control*:Tf,Wnb,B4096/1024:
@@ -338,9 +338,9 @@
 +# sample entry for NNTP
 +#hugo.suse.de:*,!junk,!control*:Tf,Wnm:hugo.suse.de
 +
-+uucp!:!*:Tx,Wnb*:/usr/lib/news/bin/buffchan -f 2
++uucp!:!*:Tx,Wnb*:@LIBEXECDIR@/news/bin/buffchan -f 2
 +
-+nntp!:!*:Tx,Wnm*:/usr/lib/news/bin/buffchan -f 2
++nntp!:!*:Tx,Wnm*:@LIBEXECDIR@/news/bin/buffchan -f 2
 +
 +# the upstream uucp news server
 +#server/server.com\

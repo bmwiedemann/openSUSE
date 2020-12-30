@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Dec 20 17:06:29 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
+
+- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+
+-------------------------------------------------------------------
 Tue May 16 21:07:23 UTC 2017 - dimstar@opensuse.org
 
 - Clean out AUTHORS from description.

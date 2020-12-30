@@ -39,6 +39,7 @@ INN and C-News.
 
 %prep
 %setup -n gup
+sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{PATCH0}
 %patch0
 %patch1
 
@@ -47,8 +48,8 @@ export RPM_OPT_FLAGS
 make all %{?_smp_mflags}
 
 %install
-mkdir -p $RPM_BUILD_ROOT/usr/lib/news/bin
-install gup sample/{gupdate,gupadd,gupverify} $RPM_BUILD_ROOT/usr/lib/news/bin/
+mkdir -p $RPM_BUILD_ROOT%{_libexecdir}/news/bin
+install gup sample/{gupdate,gupadd,gupverify} $RPM_BUILD_ROOT%{_libexecdir}/news/bin/
 mkdir -p $RPM_BUILD_ROOT%{_mandir}/man1
 install -m 644 gup.1 $RPM_BUILD_ROOT%{_mandir}/man1/
 var=/var/lib/news/gup
@@ -62,12 +63,12 @@ chmod 600 $RPM_BUILD_ROOT$var/log
 %files
 %defattr(-,root,root)
 %doc README README.linux
-%dir /usr/lib/news
-%dir /usr/lib/news/bin
-/usr/lib/news/bin/gup
-/usr/lib/news/bin/gupadd
-/usr/lib/news/bin/gupdate
-/usr/lib/news/bin/gupverify
+%dir %{_libexecdir}/news
+%dir %{_libexecdir}/news/bin
+%{_libexecdir}/news/bin/gup
+%{_libexecdir}/news/bin/gupadd
+%{_libexecdir}/news/bin/gupdate
+%{_libexecdir}/news/bin/gupverify
 %{_mandir}/man1/gup.1.gz
 %defattr(-,news,news)
 %dir /var/lib/news
