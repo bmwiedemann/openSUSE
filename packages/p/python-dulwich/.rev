@@ -426,4 +426,16 @@
  * Add tests demonstrating a bug in the walker code.</comment>
     <requestid>857110</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>f7e9caddb736c51ea91f2369c26aa427</srcmd5>
+    <version>0.20.15</version>
+    <time>1609344736</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.20.15:
+ * Add some functions for parsing and writing bundles.
+ * Add ``no_verify`` flag to ``porcelain.commit`` and ``Repo.do_commit``.
+ * Remove dependency on external mock module.
+- drop remove_mock.patch (upstream)</comment>
+    <requestid>859225</requestid>
+  </revision>
 </revisionlist>

@@ -20,16 +20,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-dulwich
-Version:        0.20.14
+Version:        0.20.15
 Release:        0
 Summary:        Pure-Python Git Library
 License:        GPL-2.0-or-later OR Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://www.dulwich.io
 Source0:        https://files.pythonhosted.org/packages/source/d/dulwich/dulwich-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM remove_mock.patch gh#dulwich/dulwich#820 mcepl@suse.com
-# remove dependency on the external module mock
-Patch0:         remove_mock.patch
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module fastimport}

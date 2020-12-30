@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 29 13:32:51 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.20.15:
+ * Add some functions for parsing and writing bundles.
+ * Add ``no_verify`` flag to ``porcelain.commit`` and ``Repo.do_commit``.
+ * Remove dependency on external mock module.
+- drop remove_mock.patch (upstream)
+
+-------------------------------------------------------------------
 Sun Dec 20 09:26:43 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.20.14:
