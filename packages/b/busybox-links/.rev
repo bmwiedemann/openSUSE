@@ -109,4 +109,12 @@
   no group specified.</comment>
     <requestid>854284</requestid>
   </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>152ad23453167bbe244a00327c5f5a37</srcmd5>
+    <version>MACRO</version>
+    <time>1609344688</time>
+    <user>dimstar_suse</user>
+    <comment>- busybox-sendmail also conflicts with the postfix-bdb flavor. (forwarded request 858968 from dimstar)</comment>
+    <requestid>859004</requestid>
+  </revision>
 </revisionlist>

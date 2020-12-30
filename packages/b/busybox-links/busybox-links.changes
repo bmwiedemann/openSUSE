@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 28 08:37:18 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- busybox-sendmail also conflicts with the postfix-bdb flavor.
+
+-------------------------------------------------------------------
 Wed Dec  9 14:41:57 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - busybox-adduser needs "nogroup" for system accounts, which have

@@ -407,6 +407,7 @@ Requires:       busybox = %{version}
 Provides:       smtp_daemon
 Conflicts:      sendmail
 Conflicts:      postfix
+Conflicts:      postfix-bdb
 Conflicts:      exim
 Conflicts:      msmtp-mta
 
