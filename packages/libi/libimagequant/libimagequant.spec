@@ -19,7 +19,7 @@
 %define sover   0
 %define libname %{name}%{sover}
 Name:           libimagequant
-Version:        2.12.6
+Version:        2.13.1
 Release:        0
 Summary:        Palette quantization library
 License:        GPL-3.0-or-later

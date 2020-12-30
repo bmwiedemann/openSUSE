@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 23 09:01:34 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.13.1:
+  * Support OpenMP in clang
+  * speed improvements
+
+-------------------------------------------------------------------
 Sat Aug 15 23:47:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.12.6:
