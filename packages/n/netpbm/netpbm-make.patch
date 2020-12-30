@@ -1,8 +1,8 @@
-Index: config.mk.in
+Index: netpbm-10.93.0/config.mk.in
 ===================================================================
---- config.mk.in.orig	2014-09-08 09:55:59.652026877 +0200
-+++ config.mk.in	2014-09-08 10:00:54.684021821 +0200
-@@ -120,7 +120,7 @@
+--- netpbm-10.93.0.orig/config.mk.in	2020-12-29 11:04:16.164846967 +0100
++++ netpbm-10.93.0/config.mk.in	2020-12-29 11:04:21.900882283 +0100
+@@ -124,7 +124,7 @@ INSTALL = $(SRCDIR)/buildtools/install.s
  #OSF1:
  #INSTALL = $(SRCDIR)/buildtools/installosf
  #Red Hat Linux:
@@ -11,7 +11,7 @@ Index: config.mk.in
  
  # STRIPFLAG is the option you pass to the above install program to make it
  # strip unnecessary information out of binaries.
-@@ -306,7 +306,7 @@
+@@ -316,7 +316,7 @@ LDRELOC = NONE
  CFLAGS_SHLIB = 
  # Gcc:
  #CFLAGS_SHLIB = -fpic
@@ -20,7 +20,7 @@ Index: config.mk.in
  # Sun compiler:
  #CFLAGS_SHLIB = -Kpic
  #CFLAGS_SHLIB = -KPIC
-@@ -373,7 +373,7 @@
+@@ -383,7 +383,7 @@ NETPBMLIB_RUNTIME_PATH =
  # The TIFF library.  See above.  If you want to build the tiff
  # converters, you must have the tiff library already installed.
  
@@ -29,7 +29,7 @@ Index: config.mk.in
  TIFFHDR_DIR =
  
  #TIFFLIB = libtiff.so
-@@ -404,7 +404,7 @@
+@@ -414,7 +414,7 @@ TIFFLIB_NEEDS_Z = Y
  # JPEG stuff statically linked in, in which case you won't need 
  # JPEGLIB in order to build the Tiff converters.
  
@@ -38,7 +38,7 @@ Index: config.mk.in
  JPEGHDR_DIR =
  #JPEGLIB = libjpeg.so
  #JPEGHDR_DIR = /usr/include/jpeg
-@@ -462,7 +462,7 @@
+@@ -472,7 +472,7 @@ PNGVER =
  #
  # If you have 'libpng-config' (see above), these are irrelevant.
  
@@ -47,7 +47,7 @@ Index: config.mk.in
  ZHDR_DIR = 
  #ZLIB = libz.so
  
-@@ -472,8 +472,8 @@
+@@ -482,8 +482,8 @@ JBIGLIB = $(INTERNAL_JBIGLIB)
  JBIGHDR_DIR = $(INTERNAL_JBIGHDR_DIR)
  
  # The Jasper JPEG-2000 image compression library (aka JasPer):

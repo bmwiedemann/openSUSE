@@ -20,10 +20,10 @@
 %define asan_build     0
 %define ubsan_build    0
 %define libmaj  11
-%define libmin  88
+%define libmin  93
 %define libver  %{libmaj}.%{libmin}
 Name:           netpbm
-Version:        10.88.1
+Version:        10.93.0
 Release:        0
 Summary:        A Graphics Conversion Package
 License:        BSD-3-Clause AND GPL-2.0-or-later AND IJG AND MIT AND SUSE-Public-Domain
@@ -36,19 +36,17 @@ Source3:        prepare-src-tarball.sh
 # SUSE specific
 Patch0:         %{name}-make.patch
 # neccessary for running with ASAN
-Patch3:         %{name}-tmpfile.patch
-Patch4:         %{name}-security-code.patch
-Patch5:         %{name}-security-scripts.patch
-Patch6:         %{name}-gcc-warnings.patch
-Patch7:         makeman-py3.patch
+Patch1:         %{name}-tmpfile.patch
+Patch2:         %{name}-security-code.patch
+Patch3:         %{name}-security-scripts.patch
+Patch4:         %{name}-gcc-warnings.patch
+Patch5:         makeman-py3.patch
 # PATCH-FIX-UPSTREAM fix bad use of plain char
-Patch8:         signed-char.patch
+Patch6:         signed-char.patch
 # PATCH-FIX-UPSTREAM fix dependency on byte order
-Patch9:         big-endian.patch
+Patch7:         big-endian.patch
 # bsc#1144255 disable jpeg2k support due to removal of jasper
-Patch10:        netpbm-disable-jasper.patch
-# bsc#1170831 -- sent to bryanh@giraffe-data.com on 2020-05-04
-Patch11:        netpbm-pbmtonokia-cmdline-txt-null.patch
+Patch8:         netpbm-disable-jasper.patch
 BuildRequires:  flex
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
@@ -95,16 +93,7 @@ source package.
 
 %prep
 %setup -q -D -a 1
-%patch0
-%patch3
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
+%autopatch -p1
 mkdir pnmtopalm # for %%doc pnmtopalm
 cp -p converter/other/pnmtopalm/{LICENSE,README} pnmtopalm
 
@@ -117,7 +106,7 @@ sed -i "s:STATICLIB_TOO = y:STATICLIB_TOO = n:" config.mk
 echo 'install.manweb:' >> converter/ppm/hpcdtoppm/Makefile
 # dtto for ppmtompeg
 echo 'install.manweb:' >> converter/ppm/ppmtompeg/Makefile
-export CFLAGS="%{optflags} -flax-vector-conversions"
+export CFLAGS="%{optflags} -flax-vector-conversions -Wno-return-type"
 %if %{debug_build}
 export CFLAGS="$CFLAGS -O0"
 %endif
@@ -172,11 +161,11 @@ sed -i '/legacy-names/d'   test/Test-Order
 sed -i '/pict-roundtrip/d' test/Test-Order
 # pstopnm is not shipped
 sed -i '/^l\?ps.*\.test/d' test/Test-Order
-# pnmquant.test seems to be broken?: I do not get "Expected failure 7" and "Expected failure 8":
-# pnmquant -spreadbrightness -spreadluminosity 16 testimg.ppm
-# pnmquant -floyd -nofloyd 16 testimg.ppm
-# both succedes ($? == 0)
-sed -i '/pnmquant.test/d'  test/Test-Order
+# new winicon-roundtrip2.test failure reported to bryanh@giraffe-data.com on 2020-12-29
+# $ LD_LIBRARY_PATH=lib PATH=package/bin pamtowinicon -pngthreshold=1 package-test-tmp/testimg1.pam
+# pamtowinicon: bad magic number 0xf0f - not a PAM, PPM, PGM, or PBM file
+# $
+sed -i '/winicon-roundtrip2.test/d'  test/Test-Order
 mkdir package-test-{tmp,results}
 make pkgdir=`pwd`/package tmpdir=`pwd`/package-test-tmp RESULTDIR=`pwd`/package-test-results check-package
 

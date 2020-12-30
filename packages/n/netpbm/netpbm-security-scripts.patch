@@ -1,7 +1,7 @@
-Index: netpbm-10.75.1/editor/ppmfade
+Index: netpbm-10.93.0/editor/ppmfade
 ===================================================================
---- netpbm-10.75.1.orig/editor/ppmfade	2016-08-22 11:03:30.561767005 +0200
-+++ netpbm-10.75.1/editor/ppmfade	2016-08-22 16:44:34.091984993 +0200
+--- netpbm-10.93.0.orig/editor/ppmfade	2020-12-29 11:04:15.768844529 +0100
++++ netpbm-10.93.0/editor/ppmfade	2020-12-29 11:06:05.909522666 +0100
 @@ -40,6 +40,7 @@ exec perl -w -x -S -- "$0" "$@"
  #
  ##############################################################################
@@ -265,11 +265,11 @@ Index: netpbm-10.75.1/editor/ppmfade
 +system("rm $tmpdir/junk*$$.ppm");
  
  exit(0);
-Index: netpbm-10.75.1/editor/ppmshadow
+Index: netpbm-10.93.0/editor/ppmshadow
 ===================================================================
---- netpbm-10.75.1.orig/editor/ppmshadow	2016-08-22 16:44:34.091984993 +0200
-+++ netpbm-10.75.1/editor/ppmshadow	2016-08-22 16:45:25.404862701 +0200
-@@ -170,9 +170,10 @@ my $tmpdir = $ENV{TMPDIR} || "/tmp";
+--- netpbm-10.93.0.orig/editor/ppmshadow	2020-12-29 11:04:15.768844529 +0100
++++ netpbm-10.93.0/editor/ppmshadow	2020-12-29 11:06:05.909522666 +0100
+@@ -194,9 +194,10 @@ my $tmpdir = $ENV{TMPDIR} || "/tmp";
  my $ourtmp;
  
  if ($keeptemp) {

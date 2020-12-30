@@ -802,4 +802,22 @@ trigered by: https://build.opensuse.org/request/show/312207 (forwarded request 3
 - Add ubsan_build and remove not needed patch netpbm-asan.patch.</comment>
     <requestid>800053</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>54143ddba7cf61415506d3c332544d82</srcmd5>
+    <version>10.93.0</version>
+    <time>1609344729</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 10.93.0
+  * lot of bug fixes and features, see HISTORY
+- modified patches
+  % netpbm-disable-jasper.patch (refreshed)
+  % netpbm-make.patch (refreshed)
+  % netpbm-security-code.patch (refreshed)
+  % netpbm-security-scripts.patch (refreshed)
+  % netpbm-tmpfile.patch (refreshed)
+  % signed-char.patch (refreshed)
+- deleted patches
+  - netpbm-pbmtonokia-cmdline-txt-null.patch (upstreamed)</comment>
+    <requestid>859197</requestid>
+  </revision>
 </revisionlist>

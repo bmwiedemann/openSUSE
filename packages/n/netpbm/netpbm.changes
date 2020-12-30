@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 29 11:49:55 UTC 2020 - pgajdos@suse.com
+
+- version update to 10.93.0
+  * lot of bug fixes and features, see HISTORY
+- modified patches
+  % netpbm-disable-jasper.patch (refreshed)
+  % netpbm-make.patch (refreshed)
+  % netpbm-security-code.patch (refreshed)
+  % netpbm-security-scripts.patch (refreshed)
+  % netpbm-tmpfile.patch (refreshed)
+  % signed-char.patch (refreshed)
+- deleted patches
+  - netpbm-pbmtonokia-cmdline-txt-null.patch (upstreamed)
+
+-------------------------------------------------------------------
 Mon May  4 12:42:15 UTC 2020 - pgajdos@suse.com
 
 - added patches
