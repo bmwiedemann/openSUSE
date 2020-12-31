@@ -16,9 +16,8 @@ PublishFlags: ympdist:openSUSE%20Tumbleweed
 
 # Use ext4 as FS in builder workers (instead of default ext3)
 BuildFlags: vmfstype:ext4
-# nodirindex enabled 2020-12-11 - https://github.com/openSUSE/obs-build/pull/634
-# and disabled again due to ARM issues
-# BuildFlags: vmfstype:ext4:nodirindex
+# nodirindex enabled 2020-12-31 - https://github.com/openSUSE/obs-build/pull/634
+BuildFlags: vmfsoptions:nodirindex
 
 # Help with the switch to the gcc7 provided libs
 #Prefer: -libstdc++6-gcc7 -libtsan0-gcc7 -libgomp1-gcc7 -libgcc_s1-gcc7 -libatomic1-gcc7 -libcilkrts5-gcc7 -libitm1-gcc7
