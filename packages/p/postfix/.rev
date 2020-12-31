@@ -1819,4 +1819,11 @@ successfully tested on Tumbleweed x86_64</comment>
   lmdb will be used instead of BDB.</comment>
     <requestid>858771</requestid>
   </revision>
+  <revision rev="193" vrev="3">
+    <srcmd5>330471e2a1d9434b0a142df4865babb1</srcmd5>
+    <version>3.5.8</version>
+    <time>1609404962</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1180473</comment>
+  </revision>
 </revisionlist>
