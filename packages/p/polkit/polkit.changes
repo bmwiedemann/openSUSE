@@ -1,18 +1,4 @@
 -------------------------------------------------------------------
-Tue Dec 29 08:39:01 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
-
-- also set libprivdir during build, otherwhise systemd and D-Bus service files
-  contain the wrong path and we'll get runtime errors.
-
--------------------------------------------------------------------
-Mon Dec 28 12:26:34 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
-
-- Install private binaries into libexec instead of into lib. For this an
-  override of the custom libprivdir variable is necessary, because upstream
-  explicitly moved away from libexecdir via upstram commit
-  6fbcc6cd839680fcefd81c4a43676e7c031c9859.
-
--------------------------------------------------------------------
 Fri Oct 23 08:19:06 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.118:

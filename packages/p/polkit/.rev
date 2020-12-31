@@ -625,4 +625,11 @@ Fix for CVE-2013-4288 (forwarded request 199675 from sumski)</comment>
   contain the wrong path and we'll get runtime errors. (forwarded request 859146 from mgerstner)</comment>
     <requestid>859155</requestid>
   </revision>
+  <revision rev="73" vrev="3">
+    <srcmd5>bccac7968a47e85ac170c1b8529be0f2</srcmd5>
+    <version>0.118</version>
+    <time>1609407081</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1180474</comment>
+  </revision>
 </revisionlist>

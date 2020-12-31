@@ -130,15 +130,10 @@ export SUID_LDFLAGS="-z now -pie"
 	--enable-examples \
 	--enable-libsystemd-login \
 	%{nil}
-%make_build libprivdir=%{_libexecdir}/polkit-1
+%make_build
 
 %install
-# install explicitly into libexec. upstream has some unflexible logic for
-# these executable at the moment, but there is a PR# open to fix this:
-#     https://gitlab.freedesktop.org/polkit/polkit/-/merge_requests/63
-# once this has been resolved upstream and we update to a new release we can
-# remove this.
-%make_install libprivdir=%{_libexecdir}/polkit-1
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 # create $HOME for polkit user
 install -d %{buildroot}%{_localstatedir}/lib/polkit
@@ -203,9 +198,9 @@ exit 0
 %{_bindir}/pkcheck
 %verify(not mode) %attr(4755,root,root) %{_bindir}/pkexec
 %{_bindir}/pkttyagent
-%dir %{_libexecdir}/polkit-1
-%{_libexecdir}/polkit-1/polkitd
-%verify(not mode) %attr(4755,root,root) %{_libexecdir}/polkit-1/polkit-agent-helper-1
+%dir %{_prefix}/lib/polkit-1
+%{_prefix}/lib/polkit-1/polkitd
+%verify(not mode) %attr(4755,root,root) %{_prefix}/lib/polkit-1/polkit-agent-helper-1
 # $HOME for polkit user
 %dir %{_localstatedir}/lib/polkit
 %{_unitdir}/polkit.service
