@@ -1,7 +1,7 @@
 #
 # spec file for package oath-toolkit
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           oath-toolkit
-Version:        2.6.2
+Version:        2.6.5
 Release:        0
 Summary:        Toolkit for one-time password authentication systems
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/Security
 URL:            http://www.nongnu.org/oath-toolkit/
-Source:         http://download.savannah.nongnu.org/releases/%{name}/%{name}-%{version}.tar.gz
-Patch1:         0001-Fix-no-return-in-nonvoid-function-errors-reported-by.patch
-Patch2:         0002-update_gnulibs_files.patch
-Patch3:         0003-pam_oath-assign-safe-default-to-alwaysok-config-memb.patch
-Patch4:         gnulib-libio.patch
+Source:         https://download-mirror.savannah.gnu.org/releases/%{name}/%{name}-%{version}.tar.gz
+Source1:        https://download-mirror.savannah.gnu.org/releases/%{name}/%{name}-%{version}.tar.gz.sig
+Source99:       %{name}.keyring
 BuildRequires:  bison
 BuildRequires:  gengetopt
 BuildRequires:  libgcrypt-devel
@@ -130,10 +128,6 @@ This subpackage contains the headers for this library.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 %build
 autoreconf -fiv
