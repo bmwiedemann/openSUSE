@@ -93,7 +93,6 @@ Source11:       virtualbox-60-vboxdrv.rules
 Source14:       vboxdrv.service
 Source15:       vboxadd-service.service
 Source16:       vboxconfig.sh
-Source17:       vboxguestconfig.sh
 Source18:       fix_usb_rules.sh
 Source19:       vboxdrv.sh
 Source20:       README.autostart
@@ -184,6 +183,7 @@ Patch138:       linux-5.10-r0drv-memobj-fix-r0.patch
 Patch139:       linux-5.10-address-space-fixes.patch
 Patch140:       linux-5.10-framebuffer-fixes.patch
 Patch141:       vb-6.1.16-modal-dialog-parent.patch
+Patch142:       fixes-for-5.11.patch
 Patch999:       virtualbox-fix-ui-background-color.patch
 #
 
@@ -414,21 +414,6 @@ Source files for %{name} host kernel modules
 These can be built for custom kernels using
 sudo /sbin/vboxconfig
 
-%package guest-source
-Summary:        Source files for %{name} guest kernel modules
-Group:          Development/Sources
-Requires:       gcc
-Requires:       kernel-devel
-Requires:       libelf-devel
-Requires:       make
-BuildArch:      noarch
-
-%description guest-source
-Source files for %{name} guest kernel modules
-These can be built for custom kernels using
-sudo /sbin/vboxguestconfig
-###########################################
-
 %package guest-desktop-icons
 Summary:        Icons for guest desktop files
 Group:          System/Emulators/PC
@@ -510,6 +495,7 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch139 -p1
 %patch140 -p1
 %patch141 -p1
+%patch142 -p1
 # make VB UI background colors look sane again
 %patch999 -p1
 
@@ -697,7 +683,6 @@ install -m 644 nls/*				%{buildroot}%{_datadir}/virtualbox/nls/
 # install kmp src
 mkdir -p %{buildroot}%{_usrsrc}/kernel-modules/virtualbox
 mkdir -p %{buildroot}%{_usrsrc}/kernel-modules/additions
-tar jcf %{buildroot}%{_usrsrc}/kernel-modules/additions/guest_src.tar.bz2 additions/src
 cp -a src %{buildroot}%{_usrsrc}/kernel-modules/virtualbox
 install -m 644 %{SOURCE11}			%{buildroot}%{_udevrulesdir}/60-vboxdrv.rules
 popd
@@ -724,7 +709,6 @@ install -m 0644 %{SOURCE14}                     %{buildroot}%{_unitdir}/vboxdrv.
 ln -s -f %{_sbindir}/service			%{buildroot}%{_sbindir}/rcvboxdrv
 install -m 0644 %{SOURCE15}                     %{buildroot}%{_unitdir}/vboxadd-service.service
 install -m 0755 %{SOURCE16}			%{buildroot}/sbin/vboxconfig
-install -m 0755 %{SOURCE17}			%{buildroot}/sbin/vboxguestconfig
 install -m 0755 %{SOURCE18}			%{buildroot}/sbin/vbox-fix-usb-rules.sh
 install -m 0755 %{SOURCE19}			%{buildroot}%{_vbox_instdir}/vboxdrv.sh
 install -m 0644 %{SOURCE21}			%{buildroot}%{_unitdir}/vboxweb-service.service
@@ -1043,7 +1027,6 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %defattr(-, root, root)
 %{_bindir}/VBoxControl
 %{_sbindir}/VBoxService
-/sbin/vboxguestconfig
 /sbin/mount.vboxsf
 %{_udevrulesdir}/60-vboxguest.rules
 %{_vbox_instdir}/vboxadd-service
@@ -1078,12 +1061,6 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %defattr(-,root, root)
 %dir %{_usrsrc}/kernel-modules
 %{_usrsrc}/kernel-modules/virtualbox
-
-%files guest-source
-%defattr(-,root, root)
-%dir %{_usrsrc}/kernel-modules
-%dir %{_usrsrc}/kernel-modules/additions
-%{_usrsrc}/kernel-modules/additions/guest_src.tar.bz2
 
 %files websrv
 %defattr(-,root, root)
@@ -1181,12 +1158,10 @@ COMMON_KMK_FLAGS+="
 %{_bindir}/kmk %_smp_mflags -C src/VBox/HostDrivers/ \
 	${COMMON_KMK_FLAGS}
 #
-# build kernel modules for guest and host (check novel-kmp package as example)
+# build kernel modules for host (check novel-kmp package as example)
 # host  modules : vboxdrv,vboxnetflt,vboxnetadp
-# guest modules : vboxguest,vboxsf vboxvideo (for Leap 15.1 and older)
 echo "build kernel modules"
-for vbox_module in out/linux.*/release/bin/src/vbox{drv,netflt,netadp} \
-           out/linux.*/release/bin/additions/src/vbox{guest,sf,video}; do
+for vbox_module in out/linux.*/release/bin/src/vbox{drv,netflt,netadp} ; do
     #get the module name from path
     module_name=$(basename "$vbox_module")
 
@@ -1195,8 +1170,7 @@ for vbox_module in out/linux.*/release/bin/src/vbox{drv,netflt,netadp} \
 	# delete old build dir for sure
 	rm -rf modules_build_dir/${module_name}_${flavor}
 
-       if [ "$module_name" = "vboxdrv" -o \
-            "$module_name" = "vboxguest" ] ; then
+       if [ "$module_name" = "vboxdrv" ] ; then
 	    SYMBOLS=""
 	fi
 	# create build directory for specific flavor
@@ -1212,13 +1186,6 @@ for vbox_module in out/linux.*/release/bin/src/vbox{drv,netflt,netadp} \
 		  $PWD/modules_build_dir/$flavor/$module_name
 	    SYMBOLS="$PWD/modules_build_dir/$flavor/vboxdrv/Module.symvers"
 	fi
-	# copy vboxguest (for guest) module symbols which are used by vboxsf km:
-       if [ "$module_name" = "vboxsf" -o \
-            "$module_name" = "vboxvideo" ] ; then
-           cp $PWD/modules_build_dir/$flavor/vboxguest/Module.symvers \
-	          $PWD/modules_build_dir/$flavor/$module_name
-	    SYMBOLS="$PWD/modules_build_dir/$flavor/vboxguest/Module.symvers"
-	fi
 	# build the module for the specific flavor
 	make -j2 -C %{_prefix}/src/linux-obj/%{_target_cpu}/$flavor %{?linux_make_arch} modules \
 		M=$PWD/modules_build_dir/$flavor/$module_name KBUILD_EXTRA_SYMBOLS="$SYMBOLS" V=1
@@ -1229,7 +1196,7 @@ done
 export INSTALL_MOD_PATH=%{buildroot}
 export INSTALL_MOD_DIR=extra
 #to install modules we use here similar steps like in build phase, go through all the modules :
-for module_name in vbox{drv,netflt,netadp,guest,sf,video}
+for module_name in vbox{drv,netflt,netadp}
 do
 	#and through the all flavors
 	for flavor in %{flavors_to_build}; do

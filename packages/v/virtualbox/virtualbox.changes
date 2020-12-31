@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 29 19:39:35 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
+
+- Fix build for kernel 5.11 - File "fixes-for-5.11.patch" is added.
+
+-------------------------------------------------------------------
+Sun Dec 20 19:31:27 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
+
+- Disable build of guest modules. These are included in recent kernels
+  and are not needed for Tumbleweed, Leap 15.1 and Leap 15.3.
+
+  File "vboxguestconfig.sh" is deleted.
+
+-------------------------------------------------------------------
 Sat Dec 12 19:10:34 UTC 2020 - Larry Finger <Larry.Finger@gmail.com>
 
 - Fix additional mouse control dialog issues.
