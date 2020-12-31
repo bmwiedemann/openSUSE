@@ -18,11 +18,11 @@
 
 # Ensure you update the tzdata_version for any minor version increase
 # otherwise the update python library has the incorrect timezone data.
-%define tzdata_version 2019c
+%define tzdata_version 2020e
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytz
-Version:        2020.4
+Version:        2020.5
 Release:        0
 Summary:        World timezone definitions, modern and historical
 License:        MIT
