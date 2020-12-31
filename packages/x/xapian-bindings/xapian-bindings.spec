@@ -28,6 +28,7 @@
 %endif
 %bcond_with php
 %bcond_with mono
+%define skip_python2 1
 Name:           xapian-bindings
 Version:        1.4.17
 Release:        0
@@ -40,6 +41,8 @@ Source1:        https://www.oligarchy.co.uk/xapian/%{version}/%{name}-%{version}
 Source2:        %{name}.keyring
 Patch0:         do-not-use-sphinx.diff
 Patch1:         fix-php7-directory.patch
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  java-devel
@@ -47,8 +50,7 @@ BuildRequires:  libtool
 BuildRequires:  libuuid-devel
 BuildRequires:  libxapian-devel = %{version}
 BuildRequires:  pkgconfig
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
+BuildRequires:  python-rpm-macros
 BuildRequires:  ruby-devel
 BuildRequires:  tcl-devel
 BuildRequires:  xz
@@ -61,12 +63,32 @@ BuildRequires:  %{phpver}-devel
 %if %{with sphinx}
 BuildRequires:  python3-Sphinx
 %endif
+%if 0%{?python38_version_nodots} == 38
+# If we have multiple python flavors, build bindings for all of them
+%define python_subpackage_only 1
+%python_subpackages
+%else
+%define python_files() -n python3-%{**}
+%define python_sitearch %python3_sitearch
+%endif
 
 %description
 Xapian is a probabilistic information retrieval library. It offers an
 adaptable toolkit that allows developers to add advanced indexing and
 search facilities to applications.
 
+%if 0%{?python_subpackage_only}
+%package -n python-xapian
+Summary:        Files needed for developing Python scripts which use Xapian
+Group:          Development/Libraries/Python
+
+%description -n python-xapian
+Xapian is a probabilistic information retrieval library. It offers an
+adaptable toolkit that allows developers to add advanced indexing and
+search facilities to applications.
+This package provides the files needed for developing Python 3 scripts
+which use Xapian.
+%else
 %package -n python3-xapian
 Summary:        Files needed for developing Python scripts which use Xapian
 Group:          Development/Libraries/Python
@@ -77,6 +99,7 @@ adaptable toolkit that allows developers to add advanced indexing and
 search facilities to applications.
 This package provides the files needed for developing Python 3 scripts
 which use Xapian.
+%endif
 
 %if %{with php}
 %package -n %{phppkg}-xapian
@@ -137,12 +160,23 @@ which use Xapian.
 %patch1 -p1
 %endif
 
+#remove shebang in python examples
+sed -i '1{/env python/ d}' python3/docs/examples/*.py
+
 %build
 
 autoreconf -vfi
-
+mv python3 python3_plain
+%{python_expand # configure different python flavors first
+cp -r python3_plain python3
+export PYTHON3=%{_bindir}/$python
+%configure --with-python3  --docdir=%{_docdir}/%{name}
+mv python3 python%{$python_bin_suffix}
+}
+mv python3_plain python3
 %configure        \
-    --with-python3 \
+    --without-python \
+    --without-python3 \
 %if %{with php}
     --with-%{phppkg} \
 %endif
@@ -155,19 +189,44 @@ autoreconf -vfi
 %endif
     --docdir=%{_docdir}/%{name}
 %make_build
+%{python_expand # make for each python flavor
+pushd python%{$python_bin_suffix}
+%make_build
+popd
+}
 
 %check
 %make_build check
+%{python_expand # check for each python flavor
+pushd python%{$python_bin_suffix}
+%make_build check
+popd
+}
 
 %install
 make install DESTDIR=%{?buildroot} %{?_smp_mflags}
+%{python_expand # make for each python flavor
+pushd python%{$python_bin_suffix}
+make install DESTDIR=%{?buildroot} %{?_smp_mflags}
+popd
+# packaged twice
+rm -r %{?buildroot}/%{_docdir}/%{name}/python3/examples
+mv %{?buildroot}/%{_docdir}/%{name}/python{3,%{$python_bin_suffix}}
+chmod a-x %{?buildroot}/%{_docdir}/%{name}/python%{$python_bin_suffix}/docs/examples/*.py
+chmod a-x %{?buildroot}/%{_docdir}/%{name}/python%{$python_bin_suffix}/docs/introduction.rst
+d=%{?buildroot}/%{$python_sitearch}
+find $d -name '*.pyc' -delete
+$python -m compileall $d
+$python -O -m compileall $d
+%fdupes %{?buildroot}/%{$python_sitearch}
+}
 
-%files -n python3-xapian
+%files %{python_files xapian}
 %doc AUTHORS ChangeLog HACKING NEWS README TODO
 %license COPYING
 %dir %{_defaultdocdir}/%{name}
-%doc %{_defaultdocdir}/%{name}/python3/
-%{python3_sitearch}/xapian/
+%doc %{_defaultdocdir}/%{name}/python%{python_bin_suffix}/
+%{python_sitearch}/xapian/
 
 %if %{with php}
 %files -n %{phppkg}-xapian

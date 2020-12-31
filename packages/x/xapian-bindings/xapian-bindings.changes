@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 17 19:15:22 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Build bindings for all possible python3 flavors in TW
+  gh#openSUSE/python-rpm-macros#66 
+- Fix python related rpmlint warnings
+
+-------------------------------------------------------------------
 Sat Nov  7 16:11:08 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fix build with RPM 4.16: error: bare words are no longer
