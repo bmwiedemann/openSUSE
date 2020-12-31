@@ -5311,4 +5311,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>amdgpu boot oops fix &amp; 5.10.1 (md+dm fixes) &amp; armv7 fix &amp; 5.10</comment>
     <requestid>857095</requestid>
   </revision>
+  <revision rev="569" vrev="1">
+    <srcmd5>fe075b689d08f40fec8a9008eb0a9b53</srcmd5>
+    <version>5.10.3</version>
+    <time>1609405103</time>
+    <user>dimstar_suse</user>
+    <comment>iwlwifi &amp;uvcvideo fixes &amp; 5.10.3 &amp; 5.10.2</comment>
+    <requestid>859041</requestid>
+  </revision>
 </revisionlist>

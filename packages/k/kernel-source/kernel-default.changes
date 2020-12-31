@@ -1,4 +1,155 @@
 -------------------------------------------------------------------
+Sun Dec 27 13:04:45 CET 2020 - tiwai@suse.de
+
+- media: uvcvideo: Accept invalid bFormatIndex and bFrameIndex
+  values (bsc#1180117).
+- commit b9a0c5f
+
+-------------------------------------------------------------------
+Sun Dec 27 12:59:33 CET 2020 - tiwai@suse.de
+
+- iwlwifi: dbg: Don't touch the tlv data (bsc#1180344).
+- commit cd8100a
+
+-------------------------------------------------------------------
+Sat Dec 26 17:00:45 CET 2020 - jslaby@suse.cz
+
+- Linux 5.10.3 (bsc#1012628).
+- md: fix a warning caused by a race between concurrent
+  md_ioctl()s (bsc#1012628).
+- nl80211: validate key indexes for cfg80211_registered_device
+  (bsc#1012628).
+- crypto: af_alg - avoid undefined behavior accessing salg_name
+  (bsc#1012628).
+- media: msi2500: assign SPI bus number dynamically (bsc#1012628).
+- fs: quota: fix array-index-out-of-bounds bug by passing correct
+  argument to vfs_cleanup_quota_inode() (bsc#1012628).
+- quota: Sanity-check quota file headers on load (bsc#1012628).
+- Bluetooth: Fix slab-out-of-bounds read in
+  hci_le_direct_adv_report_evt() (bsc#1012628).
+- f2fs: prevent creating duplicate encrypted filenames
+  (bsc#1012628).
+- ext4: prevent creating duplicate encrypted filenames
+  (bsc#1012628).
+- ubifs: prevent creating duplicate encrypted filenames
+  (bsc#1012628).
+- fscrypt: add fscrypt_is_nokey_name() (bsc#1012628).
+- fscrypt: remove kernel-internal constants from UAPI header
+  (bsc#1012628).
+- serial_core: Check for port state when tty is in error state
+  (bsc#1012628).
+- HID: i2c-hid: add Vero K147 to descriptor override
+  (bsc#1012628).
+- scsi: megaraid_sas: Check user-provided offsets (bsc#1012628).
+- f2fs: init dirty_secmap incorrectly (bsc#1012628).
+- f2fs: fix to seek incorrect data offset in inline data file
+  (bsc#1012628).
+- coresight: etm4x: Handle TRCVIPCSSCTLR accesses (bsc#1012628).
+- coresight: etm4x: Fix accesses to TRCPROCSELR (bsc#1012628).
+- coresight: etm4x: Fix accesses to TRCCIDCTLR1 (bsc#1012628).
+- coresight: etm4x: Fix accesses to TRCVMIDCTLR1 (bsc#1012628).
+- coresight: etm4x: Skip setting LPOVERRIDE bit for qcom,
+  skip-power-up (bsc#1012628).
+- coresight: etb10: Fix possible NULL ptr dereference in
+  etb_enable_perf() (bsc#1012628).
+- coresight: tmc-etr: Fix barrier packet insertion for perf buffer
+  (bsc#1012628).
+- coresight: tmc-etr: Check if page is valid before dma_map_page()
+  (bsc#1012628).
+- coresight: tmc-etf: Fix NULL ptr dereference in
+  tmc_enable_etf_sink_perf() (bsc#1012628).
+- ARM: dts: exynos: fix USB 3.0 pins supply being turned off on
+  Odroid XU (bsc#1012628).
+- ARM: dts: exynos: fix USB 3.0 VBUS control and over-current
+  pins on Exynos5410 (bsc#1012628).
+- ARM: dts: exynos: fix roles of USB 3.0 ports on Odroid XU
+  (bsc#1012628).
+- usb: chipidea: ci_hdrc_imx: Pass DISABLE_DEVICE_STREAMING flag
+  to imx6ul (bsc#1012628).
+- USB: gadget: f_rndis: fix bitrate for SuperSpeed and above
+  (bsc#1012628).
+- usb: gadget: f_fs: Re-use SS descriptors for SuperSpeedPlus
+  (bsc#1012628).
+- USB: gadget: f_midi: setup SuperSpeed Plus descriptors
+  (bsc#1012628).
+- USB: gadget: f_acm: add support for SuperSpeed Plus
+  (bsc#1012628).
+- USB: serial: option: add interface-number sanity check to flag
+  handling (bsc#1012628).
+- usb: mtu3: fix memory corruption in mtu3_debugfs_regset()
+  (bsc#1012628).
+- soc/tegra: fuse: Fix index bug in get_process_id (bsc#1012628).
+- exfat: Avoid allocating upcase table using kcalloc()
+  (bsc#1012628).
+- x86/split-lock: Avoid returning with interrupts enabled
+  (bsc#1012628).
+- net: ipconfig: Avoid spurious blank lines in boot log
+  (bsc#1012628).
+- commit 246b3e0
+
+-------------------------------------------------------------------
+Thu Dec 24 14:20:33 CET 2020 - nsaenzjulienne@suse.de
+
+- reset: raspberrypi: Don't reset USB if already up (bsc#1180336).
+- commit cbfc03c
+
+-------------------------------------------------------------------
+Tue Dec 22 09:23:41 CET 2020 - mkubecek@suse.cz
+
+- series.conf: cleanup
+- update upstream reference and move to "almost mainline" section:
+  patches.suse/clk-bcm-dvp-add-module_device_table.patch
+- commit 24deb54
+
+-------------------------------------------------------------------
+Mon Dec 21 15:55:44 CET 2020 - mkubecek@suse.cz
+
+- config: refresh
+- drop USB_SISUSBVGA_CON (no longer accessible)
+- commit c403c88
+
+-------------------------------------------------------------------
+Mon Dec 21 15:31:57 CET 2020 - jslaby@suse.cz
+
+- Linux 5.10.2 (bsc#1012628).
+- serial: 8250_omap: Avoid FIFO corruption caused by MDR1 access
+  (bsc#1012628).
+- ALSA: pcm: oss: Fix potential out-of-bounds shift (bsc#1012628).
+- USB: sisusbvga: Make console support depend on BROKEN
+  (bsc#1012628).
+- USB: UAS: introduce a quirk to set no_write_same (bsc#1012628).
+- xhci-pci: Allow host runtime PM as default for Intel Maple
+  Ridge xHCI (bsc#1012628).
+- xhci-pci: Allow host runtime PM as default for Intel Alpine
+  Ridge LP (bsc#1012628).
+- usb: xhci: Set quirk for XHCI_SG_TRB_CACHE_SIZE_QUIRK
+  (bsc#1012628).
+- xhci: Give USB2 ports time to enter U3 in bus suspend
+  (bsc#1012628).
+- ALSA: usb-audio: Fix control 'access overflow' errors from chmap
+  (bsc#1012628).
+- ALSA: usb-audio: Fix potential out-of-bounds shift
+  (bsc#1012628).
+- USB: add RESET_RESUME quirk for Snapscan 1212 (bsc#1012628).
+- USB: dummy-hcd: Fix uninitialized array use in init()
+  (bsc#1012628).
+- USB: legotower: fix logical error in recent commit
+  (bsc#1012628).
+- ktest.pl: Fix the logic for truncating the size of the log
+  file for email (bsc#1012628).
+- ktest.pl: If size of log is too big to email, email error
+  message (bsc#1012628).
+- ptrace: Prevent kernel-infoleak in ptrace_get_syscall_info()
+  (bsc#1012628).
+- commit 0c7d1c1
+
+-------------------------------------------------------------------
+Mon Dec 21 13:15:37 CET 2020 - nsaenzjulienne@suse.de
+
+- clk: bcm: dvp: Add MODULE_DEVICE_TABLE() (bsc#1180260).
+- commit fa7a177
+
+-------------------------------------------------------------------
 Fri Dec 18 17:51:20 CET 2020 - tiwai@suse.de
 
 - drm/amdgpu: only set DP subconnector type on DP and eDP
