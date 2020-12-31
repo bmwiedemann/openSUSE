@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 28 16:02:16 UTC 2020 - pgajdos@suse.com
+
+- version update to 4.2.0
+  Major changes:
+  * Optional support for using libdeflate is added.
+  * Many of the tools now support a memory usage limit.
+  See http://www.simplesystems.org/libtiff/v4.2.0.html for more.
+
+-------------------------------------------------------------------
 Wed Apr  1 06:48:35 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Drop webp support as it would introduce build cycle

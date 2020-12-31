@@ -19,7 +19,7 @@
 %define asan_build 0
 %define debug_build 0
 Name:           tiff
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        Tools for Converting from and to the Tagged Image File Format
 License:        HPND

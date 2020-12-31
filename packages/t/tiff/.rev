@@ -706,4 +706,16 @@ D    tiff-4.0.3-test-jpeg-turbo.patch</comment>
     <comment>- Drop webp support as it would introduce build cycle (forwarded request 790408 from pluskalm)</comment>
     <requestid>790472</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>641f69c4bde78243315c1a09474c1c7c</srcmd5>
+    <version>4.2.0</version>
+    <time>1609405105</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 4.2.0
+  Major changes:
+  * Optional support for using libdeflate is added.
+  * Many of the tools now support a memory usage limit.
+  See http://www.simplesystems.org/libtiff/v4.2.0.html for more.</comment>
+    <requestid>859053</requestid>
+  </revision>
 </revisionlist>
