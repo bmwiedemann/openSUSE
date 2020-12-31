@@ -8311,6 +8311,7 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
+  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -10403,6 +10404,9 @@ unsorted:
   - libcpuset-devel 
   - libcpuset1 
   - libcreaterepo_c-devel 
+  - libcreg-devel 
+  - libcreg-tools 
+  - libcreg1 
   - libcriu2: [x86_64] 
   - libcroco 
   - libcroco-0_6-3: [i586] 
@@ -12079,6 +12083,7 @@ unsorted:
   - liblldb9: [x86_64] 
   - liblldp_clif1: [i586] 
   - liblldpctl4 
+  - liblmdb-0_9_24: [i586] 
   - liblmdb-0_9_24-32bit: [x86_64] 
   - liblms7002m-devel 
   - liblms7compact0 
@@ -16965,15 +16970,18 @@ unsorted:
   - myspell-es_CU 
   - myspell-es_DO 
   - myspell-es_EC 
+  - myspell-es_GQ 
   - myspell-es_GT 
   - myspell-es_HN 
   - myspell-es_MX 
   - myspell-es_NI 
   - myspell-es_PA 
   - myspell-es_PE 
+  - myspell-es_PH 
   - myspell-es_PR 
   - myspell-es_PY 
   - myspell-es_SV 
+  - myspell-es_US 
   - myspell-es_UY 
   - myspell-es_VE 
   - myspell-et_EE 
@@ -16999,6 +17007,7 @@ unsorted:
   - myspell-kmr_Latn 
   - myspell-kmr_Latn_SY 
   - myspell-kmr_Latn_TR 
+  - myspell-ko_KR 
   - myspell-lo_LA 
   - myspell-lt_LT 
   - myspell-lv_LV 
@@ -17009,7 +17018,6 @@ unsorted:
   - myspell-nn_NO 
   - myspell-no 
   - myspell-oc_FR 
-  - myspell-pt_AO 
   - myspell-pt_PT 
   - myspell-ro 
   - myspell-ro_RO 
@@ -18117,11 +18125,14 @@ unsorted:
   - openSUSE-release-usb-x11 
   - openSUSE-xfce-icon-theme: [i586] 
   - openSUSEway 
+  - openafs: [i586] 
   - openafs-authlibs 
   - openafs-authlibs-devel 
+  - openafs-client: [i586] 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
+  - openafs-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -20753,11 +20764,10 @@ unsorted:
   - post-build-checks 
   - poster 
   - postfish 
-  - postfix-bdb 
-  - postfix-bdb-lmdb 
   - postfix-devel 
   - postfix-doc: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - postfix-ldap 
+  - postfix-lmdb 
   - postfix-mysql 
   - postfix-postgresql 
   - postfixadmin 
@@ -22935,6 +22945,7 @@ unsorted:
   - python3-libbytesize 
   - python3-libcec 
   - python3-libcomps 
+  - python3-libcreg 
   - python3-libcst 
   - python3-libdnf 
   - python3-libesedb 
@@ -23215,6 +23226,7 @@ unsorted:
   - python3-num2words 
   - python3-numba 
   - python3-numba-devel 
+  - python3-numcodecs 
   - python3-numericalunits 
   - python3-numexpr 
   - python3-numpy-devel 
@@ -23271,6 +23283,7 @@ unsorted:
   - python3-openstackdocstheme 
   - python3-openstacksdk 
   - python3-opentelemetry-api 
+  - python3-opentracing 
   - python3-openwrt-luci-rpc 
   - python3-openwsman 
   - python3-opt-einsum 
@@ -24526,6 +24539,7 @@ unsorted:
   - python3-yui 
   - python3-z3 
   - python3-zake 
+  - python3-zarr: [x86_64] 
   - python3-zc.buildout 
   - python3-zc.customdoctests 
   - python3-zc.lockfile 

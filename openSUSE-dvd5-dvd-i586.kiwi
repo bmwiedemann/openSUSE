@@ -898,7 +898,6 @@
       <repopackage name="kpat"/>
       <repopackage name="kpat-lang"/>
       <repopackage name="krb5"/>
-      <repopackage name="krb5-client"/>
       <repopackage name="kreversi"/>
       <repopackage name="kreversi-lang"/>
       <repopackage name="kross"/>
@@ -1521,7 +1520,6 @@
       <repopackage name="liblirc_client0"/>
       <repopackage name="libliveMedia81"/>
       <repopackage name="libLLVM11"/>
-      <repopackage name="liblmdb-0_9_24"/>
       <repopackage name="libloader"/>
       <repopackage name="liblockdev1"/>
       <repopackage name="liblogging0"/>
@@ -2438,9 +2436,6 @@
       <repopackage name="open-iscsi"/>
       <repopackage name="open-vm-tools"/>
       <repopackage name="open-vm-tools-desktop"/>
-      <repopackage name="openafs"/>
-      <repopackage name="openafs-client"/>
-      <repopackage name="openafs-kmp-default"/>
       <repopackage name="openal-soft-data"/>
       <repopackage name="opencc-data"/>
       <repopackage name="openconnect"/>
