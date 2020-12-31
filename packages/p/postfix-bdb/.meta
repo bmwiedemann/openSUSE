@@ -1,6 +1,0 @@
-<package name="postfix-bdb" project="openSUSE:Factory">
-  <title>A fast, secure, and flexible mailer</title>
-  <description>Postfix aims to be an alternative to the widely-used sendmail program.</description>
-  <devel project="openSUSE:Factory" package="postfix"/>
-  <bcntsynctag>postfix</bcntsynctag>
-</package>
