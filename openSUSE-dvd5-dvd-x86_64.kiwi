@@ -1166,7 +1166,6 @@
       <repopackage name="kdoctools-lang"/>
       <repopackage name="kdump"/>
       <repopackage name="kernel-default"/>
-      <repopackage name="kernel-default-base" arch="x86_64"/>
       <repopackage name="kernel-docs" arch="x86_64"/>
       <repopackage name="kernel-firmware-all"/>
       <repopackage name="kernel-firmware-amdgpu"/>
@@ -1341,7 +1340,7 @@
       <repopackage name="kquickcharts" arch="x86_64"/>
       <repopackage name="krb5"/>
       <repopackage name="krb5-32bit" arch="x86_64"/>
-      <repopackage name="krb5-client" arch="x86_64"/>
+      <repopackage name="krb5-client"/>
       <repopackage name="krdc" arch="x86_64"/>
       <repopackage name="krdc-lang" arch="x86_64"/>
       <repopackage name="krename" arch="x86_64"/>
@@ -3500,9 +3499,9 @@
       <repopackage name="open-iscsi"/>
       <repopackage name="open-vm-tools"/>
       <repopackage name="open-vm-tools-desktop"/>
-      <repopackage name="openafs" arch="x86_64"/>
-      <repopackage name="openafs-client" arch="x86_64"/>
-      <repopackage name="openafs-kmp-default" arch="x86_64"/>
+      <repopackage name="openafs"/>
+      <repopackage name="openafs-client"/>
+      <repopackage name="openafs-kmp-default"/>
       <repopackage name="openal-soft-data"/>
       <repopackage name="opencc-data"/>
       <repopackage name="openconnect"/>
