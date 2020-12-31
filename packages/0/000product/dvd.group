@@ -877,7 +877,6 @@
     <package name="kpat" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kpat-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="krb5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="krb5-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="kreversi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kreversi-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kross" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1602,7 +1601,6 @@
     <package name="liblilv-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblirc_client0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libliveMedia81" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="liblmdb-0_9_24" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libloader" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="liblockdev1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="liblogging0" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
@@ -2392,9 +2390,6 @@
     <package name="openSUSE-release" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="openSUSE-release-appliance-custom" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="openSUSE-release-dvd" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release-dvd -->
-    <package name="openafs" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
-    <package name="openafs-client" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
-    <package name="openafs-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
     <package name="openal-soft-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="opencc-data" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="openconnect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3995,26 +3990,27 @@
     <package name="elinks" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
     <package name="nodejs10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="npm10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <!-- patterns-gnome-gnome uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
-    <!-- patterns-gnome-gnome_basis uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
-    <!-- patterns-gnome-gnome_imaging uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
-    <!-- patterns-gnome-gnome_office uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
-    <!-- patterns-gnome-gnome_utilities uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
-    <!-- patterns-kde-kde uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
-    <!-- patterns-kde-kde_imaging uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
-    <!-- patterns-kde-kde_plasma uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
-    <!-- patterns-media-rest_dvd uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
-    <!-- patterns-xfce-xfce uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
-    <!-- patterns-xfce-xfce_basis uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
-    <!-- patterns-xfce-xfce_laptop uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
-    <!-- patterns-xfce-xfce_office uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
-    <!-- pcsc-acr38 uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
-    <!-- pcsc-asedriveiiie-usb uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
-    <!-- pcsc-asekey uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
-    <!-- pcsc-cyberjack uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
-    <!-- pcsc-gempc uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
-    <!-- pcsc-towitoko uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
-    <!-- rng-tools uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-2.1.i586-->
+    <!-- openafs-client uninstallable: nothing provides kernel-uname-r = 5.10.1-1-default needed by openafs-kmp-default-1.8.6.1_k5.10.1_1-3.6.i586-->
+    <!-- patterns-gnome-gnome uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
+    <!-- patterns-gnome-gnome_basis uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
+    <!-- patterns-gnome-gnome_imaging uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
+    <!-- patterns-gnome-gnome_office uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
+    <!-- patterns-gnome-gnome_utilities uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
+    <!-- patterns-kde-kde uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
+    <!-- patterns-kde-kde_imaging uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
+    <!-- patterns-kde-kde_plasma uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
+    <!-- patterns-media-rest_dvd uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
+    <!-- patterns-xfce-xfce uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
+    <!-- patterns-xfce-xfce_basis uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
+    <!-- patterns-xfce-xfce_laptop uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
+    <!-- patterns-xfce-xfce_office uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
+    <!-- pcsc-acr38 uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
+    <!-- pcsc-asedriveiiie-usb uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
+    <!-- pcsc-asekey uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
+    <!-- pcsc-cyberjack uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
+    <!-- pcsc-gempc uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
+    <!-- pcsc-towitoko uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
+    <!-- rng-tools uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
   </packagelist>
 </group>
 <group name="dvd.x86_64">
@@ -4413,6 +4409,7 @@
     <package name="kdevplatform-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="kdialog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kdialog-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kernel-default-base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="kernel-docs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="kf5-kcm-fcitx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kf5-kcm-fcitx-icons" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -4479,6 +4476,7 @@
     <package name="kqtquickcharts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kquickcharts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="krb5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="krb5-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="krdc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="krdc-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="krename" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4831,6 +4829,7 @@
     <package name="libldm-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libldns3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="liblhasa0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="liblmdb-0_9_24" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="liblouis-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblouis20" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblsan0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5092,6 +5091,9 @@
     <package name="okular-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="okular-spectre" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="openSUSE-xfce-icon-theme" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="openafs" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
+    <package name="openafs-client" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
+    <package name="openafs-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
     <package name="opensc" supportstatus="unsupported"/> <!-- reason: dvd:rng-tools -->
     <package name="openslp-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="openssl" supportstatus="unsupported"/> <!-- reason: dvd:mokutil -->
