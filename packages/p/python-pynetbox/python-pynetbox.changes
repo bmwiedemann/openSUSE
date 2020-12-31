@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Dec 30 16:14:45 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.2.1
+  * fix tests
+
+-------------------------------------------------------------------
+Wed Dec 30 08:10:49 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.2.0
+  * Adds support for the /dcim/interfaces/:id/trace endpoint via
+    the .trace() method on an interface record.
+  * Add support for /api/users/ endpoints in NetBox 2.9+.
+    Add Api.status() to be used with NetBox 2.10.0+.
+
+-------------------------------------------------------------------
 Sat Dec 26 21:03:56 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.1.2

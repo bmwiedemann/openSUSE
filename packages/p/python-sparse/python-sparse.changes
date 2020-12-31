@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Dec 28 11:56:48 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 0.11.2
+  * Fix TypingError on sparse.dot with complex dtypes. (Issue #403, 
+    PR #404) 
+- Changelog for 0.11.1
+  * Fix ValueError on sparse.dot with extremely small values.
+    (Issue #398, PR #399)
+- Changelog for 0.11.0
+  * Improve the performance of sparse.dot. (Issue #331, PR #389, 
+    thanks @daletovar)
+  * Added the COO.swapaxes method. (PR #344, thanks @lueckem)
+  * Added multi-axis 1-D indexing support. (PR #343, thanks 
+    @mikeymezher)
+  * Fix outer for arrays that weren’t one-dimensional. (Issue #346, 
+    PR #347)
+  * Add casting kwarg to COO.astype. (Issue #391, PR #392)
+  * Fix for COO constructor accepting invalid inputs. (Issue #385, 
+    PR #386)
+  - Changelog for 0.10.0
+  * Fixed a bug where converting an empty DOK array to COO leads to 
+    an incorrect dtype. (Issue #314, PR #315)
+  * Change code formatter to black. (PR #284)
+  * Add COO.flatten and sparse.outer. (Issue #316, PR #317).
+  * Remove broadcasting restriction between sparse arrays and dense 
+    arrays. (Issue #306, PR #318)
+  * Implement deterministic dask tokenization. (Issue #300, PR 
+    #320, thanks @danielballan)
+  * Improve testing around densification (PR #321, thanks 
+    @danielballan)
+  * Simplify Numba extension. (PR #324, thanks @eric-wieser).
+  * Respect copy=False in astype (PR #328, thanks @eric-wieser).
+  * Replace linear_loc with ravel_multi_index, which is 3x faster. 
+    (PR #330, thanks @eric-wieser).
+  * Add error msg to tensordot operation when ndim==0 (Issue #332, 
+    PR #333, thanks @guilhermeleobas).
+  * Maintainence fixes for Sphinx 3.0 and Numba 0.49, and dropping 
+    support for Python 3.5. (PR #337).
+  * Fixed signature for numpy.clip.
+- Changelog for 0.9.1
+  * Fixed a bug where indexing with an empty list could lead to 
+    issues. (Issue #281, PR #282)
+  * Change code formatter to black. (PR #284)
+  * Add the diagonal and diagonalize functions. (Issue #288, PR 
+    #289, thanks @pettni)
+  * Add HTML repr for notebooks. (PR #283, thanks @daletovar)
+  * Avoid making copy of coords when making a new COO array.
+  * Add stack and concatenate for GCXS. (Issue #301, PR #303, 
+    thanks @daletovar).
+  * Fix issue where functions dispatching to an attribute access 
+    wouldn’t work with __array_function__. (Issue #308, PR #309).
+  * Add partial support for constructing and mirroring COO objects 
+    to Numba.
+- add sparse-pr421-fix-cootype.patch
+  * gh#pydata/sparse#420
+  * gh#pydata/sparse#421
+
+-------------------------------------------------------------------
 Thu Sep  5 13:38:18 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.8.0

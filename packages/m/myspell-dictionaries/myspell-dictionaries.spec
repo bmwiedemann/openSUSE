@@ -21,7 +21,7 @@
 ## Generate: sh update.sh
 ###################################################################
 Name:           myspell-dictionaries
-Version:        20201005
+Version:        20201230
 Release:        0
 Summary:        A Source Package for Dictionaries Used by MySpell
 License:        AGPL-3.0-only AND BSD-2-Clause AND BSD-3-Clause AND BSD-4-Clause AND CC-BY-SA-1.0 AND CC-BY-SA-3.0 AND GFDL-1.1-only AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND GPL-3.0-or-later AND LGPL-2.0-only AND LGPL-2.1-only AND LGPL-2.1-or-later AND LGPL-3.0-only AND LGPL-3.0-or-later AND MPL-1.1
@@ -29,6 +29,10 @@ URL:            https://cgit.freedesktop.org/libreoffice/dictionaries/
 Source0:        dictionaries.tar.xz
 Source1:        update.sh
 Source2:        myspell-dictionaries.spec.in
+# es.{dic,aff} are declared to provide es_<LANG>, but es also
+# contains es_<LANG>.{aff,dic}, which provide them as well
+# workaround, applied in update.sh
+Source3:        es-remove-duplicate-locales.diff
 BuildRequires:  dos2unix
 BuildRequires:  xz
 Obsoletes:      libreoffice-hyphen
@@ -938,6 +942,18 @@ Requires:       myspell-en
 %description -n myspell-lightproof-en
 Lightproof grammar checker information for en.
 
+%package -n myspell-es_PH
+Summary:        MySpell es_PH Dictionary
+Requires:       myspell-dictionaries
+Requires:       myspell-es
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:es_PH)
+Provides:       locale(seamonkey-spellchecker:es_PH)
+BuildArch:      noarch
+
+%description -n myspell-es_PH
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
+
 %package -n myspell-es_CR
 Summary:        MySpell es_CR Dictionary
 Requires:       myspell-dictionaries
@@ -949,7 +965,7 @@ Provides:       locale(seamonkey-spellchecker:es_CR)
 BuildArch:      noarch
 
 %description -n myspell-es_CR
-Spanish spelling dictionary, hyphenation rules, and thesaurus for Spain and Latin America.
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
 
 %package -n myspell-es_CU
 Summary:        MySpell es_CU Dictionary
@@ -961,7 +977,7 @@ Provides:       locale(seamonkey-spellchecker:es_CU)
 BuildArch:      noarch
 
 %description -n myspell-es_CU
-Spanish spelling dictionary, hyphenation rules, and thesaurus for Spain and Latin America.
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
 
 %package -n myspell-es_MX
 Summary:        MySpell es_MX Dictionary
@@ -974,7 +990,7 @@ Provides:       locale(seamonkey-spellchecker:es_MX)
 BuildArch:      noarch
 
 %description -n myspell-es_MX
-Spanish spelling dictionary, hyphenation rules, and thesaurus for Spain and Latin America.
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
 
 %package -n myspell-es_PA
 Summary:        MySpell es_PA Dictionary
@@ -987,7 +1003,7 @@ Provides:       locale(seamonkey-spellchecker:es_PA)
 BuildArch:      noarch
 
 %description -n myspell-es_PA
-Spanish spelling dictionary, hyphenation rules, and thesaurus for Spain and Latin America.
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
 
 %package -n myspell-es_PE
 Summary:        MySpell es_PE Dictionary
@@ -1000,7 +1016,7 @@ Provides:       locale(seamonkey-spellchecker:es_PE)
 BuildArch:      noarch
 
 %description -n myspell-es_PE
-Spanish spelling dictionary, hyphenation rules, and thesaurus for Spain and Latin America.
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
 
 %package -n myspell-es_PY
 Summary:        MySpell es_PY Dictionary
@@ -1013,7 +1029,7 @@ Provides:       locale(seamonkey-spellchecker:es_PY)
 BuildArch:      noarch
 
 %description -n myspell-es_PY
-Spanish spelling dictionary, hyphenation rules, and thesaurus for Spain and Latin America.
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
 
 %package -n myspell-es_PR
 Summary:        MySpell es_PR Dictionary
@@ -1026,7 +1042,7 @@ Provides:       locale(seamonkey-spellchecker:es_PR)
 BuildArch:      noarch
 
 %description -n myspell-es_PR
-Spanish spelling dictionary, hyphenation rules, and thesaurus for Spain and Latin America.
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
 
 %package -n myspell-es_CL
 Summary:        MySpell es_CL Dictionary
@@ -1039,7 +1055,7 @@ Provides:       locale(seamonkey-spellchecker:es_CL)
 BuildArch:      noarch
 
 %description -n myspell-es_CL
-Spanish spelling dictionary, hyphenation rules, and thesaurus for Spain and Latin America.
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
 
 %package -n myspell-es_CO
 Summary:        MySpell es_CO Dictionary
@@ -1052,7 +1068,7 @@ Provides:       locale(seamonkey-spellchecker:es_CO)
 BuildArch:      noarch
 
 %description -n myspell-es_CO
-Spanish spelling dictionary, hyphenation rules, and thesaurus for Spain and Latin America.
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
 
 %package -n myspell-es_ES
 Summary:        MySpell es_ES Dictionary
@@ -1065,7 +1081,7 @@ Provides:       locale(seamonkey-spellchecker:es_ES)
 BuildArch:      noarch
 
 %description -n myspell-es_ES
-Spanish spelling dictionary, hyphenation rules, and thesaurus for Spain and Latin America.
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
 
 %package -n myspell-es_DO
 Summary:        MySpell es_DO Dictionary
@@ -1078,7 +1094,7 @@ Provides:       locale(seamonkey-spellchecker:es_DO)
 BuildArch:      noarch
 
 %description -n myspell-es_DO
-Spanish spelling dictionary, hyphenation rules, and thesaurus for Spain and Latin America.
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
 
 %package -n myspell-es_EC
 Summary:        MySpell es_EC Dictionary
@@ -1091,7 +1107,7 @@ Provides:       locale(seamonkey-spellchecker:es_EC)
 BuildArch:      noarch
 
 %description -n myspell-es_EC
-Spanish spelling dictionary, hyphenation rules, and thesaurus for Spain and Latin America.
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
 
 %package -n myspell-es_NI
 Summary:        MySpell es_NI Dictionary
@@ -1104,7 +1120,7 @@ Provides:       locale(seamonkey-spellchecker:es_NI)
 BuildArch:      noarch
 
 %description -n myspell-es_NI
-Spanish spelling dictionary, hyphenation rules, and thesaurus for Spain and Latin America.
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
 
 %package -n myspell-es_GT
 Summary:        MySpell es_GT Dictionary
@@ -1117,7 +1133,19 @@ Provides:       locale(seamonkey-spellchecker:es_GT)
 BuildArch:      noarch
 
 %description -n myspell-es_GT
-Spanish spelling dictionary, hyphenation rules, and thesaurus for Spain and Latin America.
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
+
+%package -n myspell-es_GQ
+Summary:        MySpell es_GQ Dictionary
+Requires:       myspell-dictionaries
+Requires:       myspell-es
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:es_GQ)
+Provides:       locale(seamonkey-spellchecker:es_GQ)
+BuildArch:      noarch
+
+%description -n myspell-es_GQ
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
 
 %package -n myspell-es_HN
 Summary:        MySpell es_HN Dictionary
@@ -1130,7 +1158,7 @@ Provides:       locale(seamonkey-spellchecker:es_HN)
 BuildArch:      noarch
 
 %description -n myspell-es_HN
-Spanish spelling dictionary, hyphenation rules, and thesaurus for Spain and Latin America.
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
 
 %package -n myspell-es_SV
 Summary:        MySpell es_SV Dictionary
@@ -1143,7 +1171,7 @@ Provides:       locale(seamonkey-spellchecker:es_SV)
 BuildArch:      noarch
 
 %description -n myspell-es_SV
-Spanish spelling dictionary, hyphenation rules, and thesaurus for Spain and Latin America.
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
 
 %package -n myspell-es_BO
 Summary:        MySpell es_BO Dictionary
@@ -1156,7 +1184,19 @@ Provides:       locale(seamonkey-spellchecker:es_BO)
 BuildArch:      noarch
 
 %description -n myspell-es_BO
-Spanish spelling dictionary, hyphenation rules, and thesaurus for Spain and Latin America.
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
+
+%package -n myspell-es_US
+Summary:        MySpell es_US Dictionary
+Requires:       myspell-dictionaries
+Requires:       myspell-es
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:es_US)
+Provides:       locale(seamonkey-spellchecker:es_US)
+BuildArch:      noarch
+
+%description -n myspell-es_US
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
 
 %package -n myspell-es_AR
 Summary:        MySpell es_AR Dictionary
@@ -1169,7 +1209,7 @@ Provides:       locale(seamonkey-spellchecker:es_AR)
 BuildArch:      noarch
 
 %description -n myspell-es_AR
-Spanish spelling dictionary, hyphenation rules, and thesaurus for Spain and Latin America.
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
 
 %package -n myspell-es
 Summary:        MySpell es Dictionary
@@ -1181,7 +1221,7 @@ Provides:       locale(seamonkey-spellchecker:es)
 BuildArch:      noarch
 
 %description -n myspell-es
-Spanish spelling dictionary, hyphenation rules, and thesaurus for Spain and Latin America.
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
 
 %package -n myspell-es_UY
 Summary:        MySpell es_UY Dictionary
@@ -1194,7 +1234,7 @@ Provides:       locale(seamonkey-spellchecker:es_UY)
 BuildArch:      noarch
 
 %description -n myspell-es_UY
-Spanish spelling dictionary, hyphenation rules, and thesaurus for Spain and Latin America.
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
 
 %package -n myspell-es_VE
 Summary:        MySpell es_VE Dictionary
@@ -1207,7 +1247,7 @@ Provides:       locale(seamonkey-spellchecker:es_VE)
 BuildArch:      noarch
 
 %description -n myspell-es_VE
-Spanish spelling dictionary, hyphenation rules, and thesaurus for Spain and Latin America.
+Spanish spelling dictionary, hyphenation rules, and thesaurus for all variants of Spanish.
 
 %package -n myspell-et_EE
 Summary:        MySpell et_EE Dictionary
@@ -1517,6 +1557,17 @@ BuildArch:      noarch
 %description -n myspell-kmr_Latn_SY
 Kurdish (Turkey) spelling dictionary.
 
+%package -n myspell-ko_KR
+Summary:        MySpell ko_KR Dictionary
+Requires:       myspell-dictionaries
+Provides:       myspell-dictionary
+Provides:       locale(libreoffice:ko_KR)
+Provides:       locale(seamonkey-spellchecker:ko_KR)
+BuildArch:      noarch
+
+%description -n myspell-ko_KR
+Korean spellcheck dictionary.
+
 %package -n myspell-lo_LA
 Summary:        MySpell lo_LA Dictionary
 Requires:       myspell-dictionaries
@@ -1681,19 +1732,7 @@ Provides:       locale(seamonkey-spellchecker:pt_PT)
 BuildArch:      noarch
 
 %description -n myspell-pt_PT
-European Portuguese spelling dictionary, hyphenation rules, and thesaurus.
-
-%package -n myspell-pt_AO
-Summary:        MySpell pt_AO Dictionary
-Requires:       myspell-dictionaries
-Requires:       myspell-pt_PT
-Provides:       myspell-dictionary
-Provides:       locale(libreoffice:pt_AO)
-Provides:       locale(seamonkey-spellchecker:pt_AO)
-BuildArch:      noarch
-
-%description -n myspell-pt_AO
-European Portuguese spelling dictionary, hyphenation rules, and thesaurus.
+Portuguese, Portugal spelling and hyphenation dictionaries and thesaurus.
 
 %package -n myspell-ro_RO
 Summary:        MySpell ro_RO Dictionary
@@ -2625,220 +2664,255 @@ cp -P en/description.xml %{buildroot}%{_docdir}/myspell-en/description.xml
 cp -P en/dictionaries.xcu %{buildroot}%{_docdir}/myspell-en/dictionaries.xcu
 cp -P en/license.txt %{buildroot}%{_docdir}/myspell-en/license.txt
 cp -P en/package-description.txt %{buildroot}%{_docdir}/myspell-en/package-description.txt
-ln -s %{_datadir}/hunspell/es_ANY.aff %{buildroot}%{_datadir}/hunspell/es_AR.aff
+cp -P es/es.aff %{buildroot}%{_datadir}/hunspell/es.aff
+ln -s %{_datadir}/hunspell/es.aff %{buildroot}%{_datadir}/myspell/es.aff
+cp -P es/es_AR.aff %{buildroot}%{_datadir}/hunspell/es_AR.aff
 ln -s %{_datadir}/hunspell/es_AR.aff %{buildroot}%{_datadir}/myspell/es_AR.aff
-ln -s %{_datadir}/hunspell/es_ANY.aff %{buildroot}%{_datadir}/hunspell/es_BO.aff
-ln -s %{_datadir}/hunspell/es_BO.aff %{buildroot}%{_datadir}/myspell/es_BO.aff
-ln -s %{_datadir}/hunspell/es_ANY.aff %{buildroot}%{_datadir}/hunspell/es_CL.aff
-ln -s %{_datadir}/hunspell/es_CL.aff %{buildroot}%{_datadir}/myspell/es_CL.aff
-ln -s %{_datadir}/hunspell/es_ANY.aff %{buildroot}%{_datadir}/hunspell/es_CO.aff
-ln -s %{_datadir}/hunspell/es_CO.aff %{buildroot}%{_datadir}/myspell/es_CO.aff
-ln -s %{_datadir}/hunspell/es_ANY.aff %{buildroot}%{_datadir}/hunspell/es_CR.aff
-ln -s %{_datadir}/hunspell/es_CR.aff %{buildroot}%{_datadir}/myspell/es_CR.aff
-ln -s %{_datadir}/hunspell/es_ANY.aff %{buildroot}%{_datadir}/hunspell/es_CU.aff
-ln -s %{_datadir}/hunspell/es_CU.aff %{buildroot}%{_datadir}/myspell/es_CU.aff
-ln -s %{_datadir}/hunspell/es_ANY.aff %{buildroot}%{_datadir}/hunspell/es_DO.aff
-ln -s %{_datadir}/hunspell/es_DO.aff %{buildroot}%{_datadir}/myspell/es_DO.aff
-ln -s %{_datadir}/hunspell/es_ANY.aff %{buildroot}%{_datadir}/hunspell/es_EC.aff
-ln -s %{_datadir}/hunspell/es_EC.aff %{buildroot}%{_datadir}/myspell/es_EC.aff
-ln -s %{_datadir}/hunspell/es_ANY.aff %{buildroot}%{_datadir}/hunspell/es_ES.aff
-ln -s %{_datadir}/hunspell/es_ES.aff %{buildroot}%{_datadir}/myspell/es_ES.aff
-ln -s %{_datadir}/hunspell/es_ANY.aff %{buildroot}%{_datadir}/hunspell/es_GT.aff
-ln -s %{_datadir}/hunspell/es_GT.aff %{buildroot}%{_datadir}/myspell/es_GT.aff
-ln -s %{_datadir}/hunspell/es_ANY.aff %{buildroot}%{_datadir}/hunspell/es_HN.aff
-ln -s %{_datadir}/hunspell/es_HN.aff %{buildroot}%{_datadir}/myspell/es_HN.aff
-ln -s %{_datadir}/hunspell/es_ANY.aff %{buildroot}%{_datadir}/hunspell/es_MX.aff
-ln -s %{_datadir}/hunspell/es_MX.aff %{buildroot}%{_datadir}/myspell/es_MX.aff
-ln -s %{_datadir}/hunspell/es_ANY.aff %{buildroot}%{_datadir}/hunspell/es_NI.aff
-ln -s %{_datadir}/hunspell/es_NI.aff %{buildroot}%{_datadir}/myspell/es_NI.aff
-ln -s %{_datadir}/hunspell/es_ANY.aff %{buildroot}%{_datadir}/hunspell/es_PA.aff
-ln -s %{_datadir}/hunspell/es_PA.aff %{buildroot}%{_datadir}/myspell/es_PA.aff
-ln -s %{_datadir}/hunspell/es_ANY.aff %{buildroot}%{_datadir}/hunspell/es_PE.aff
-ln -s %{_datadir}/hunspell/es_PE.aff %{buildroot}%{_datadir}/myspell/es_PE.aff
-ln -s %{_datadir}/hunspell/es_ANY.aff %{buildroot}%{_datadir}/hunspell/es_PR.aff
-ln -s %{_datadir}/hunspell/es_PR.aff %{buildroot}%{_datadir}/myspell/es_PR.aff
-ln -s %{_datadir}/hunspell/es_ANY.aff %{buildroot}%{_datadir}/hunspell/es_PY.aff
-ln -s %{_datadir}/hunspell/es_PY.aff %{buildroot}%{_datadir}/myspell/es_PY.aff
-ln -s %{_datadir}/hunspell/es_ANY.aff %{buildroot}%{_datadir}/hunspell/es_SV.aff
-ln -s %{_datadir}/hunspell/es_SV.aff %{buildroot}%{_datadir}/myspell/es_SV.aff
-ln -s %{_datadir}/hunspell/es_ANY.aff %{buildroot}%{_datadir}/hunspell/es_UY.aff
-ln -s %{_datadir}/hunspell/es_UY.aff %{buildroot}%{_datadir}/myspell/es_UY.aff
-ln -s %{_datadir}/hunspell/es_ANY.aff %{buildroot}%{_datadir}/hunspell/es_VE.aff
-ln -s %{_datadir}/hunspell/es_VE.aff %{buildroot}%{_datadir}/myspell/es_VE.aff
-cp -P es/es_ANY.aff %{buildroot}%{_datadir}/hunspell/es_ANY.aff
-ln -s %{_datadir}/hunspell/es_ANY.aff %{buildroot}%{_datadir}/myspell/es_ANY.aff
-ln -s %{_datadir}/hunspell/es_ANY.dic %{buildroot}%{_datadir}/hunspell/es_AR.dic
+cp -P es/es_AR.dic %{buildroot}%{_datadir}/hunspell/es_AR.dic
 ln -s %{_datadir}/hunspell/es_AR.dic %{buildroot}%{_datadir}/myspell/es_AR.dic
-ln -s %{_datadir}/hunspell/es_ANY.dic %{buildroot}%{_datadir}/hunspell/es_BO.dic
+cp -P es/es_BO.aff %{buildroot}%{_datadir}/hunspell/es_BO.aff
+ln -s %{_datadir}/hunspell/es_BO.aff %{buildroot}%{_datadir}/myspell/es_BO.aff
+cp -P es/es_BO.dic %{buildroot}%{_datadir}/hunspell/es_BO.dic
 ln -s %{_datadir}/hunspell/es_BO.dic %{buildroot}%{_datadir}/myspell/es_BO.dic
-ln -s %{_datadir}/hunspell/es_ANY.dic %{buildroot}%{_datadir}/hunspell/es_CL.dic
+cp -P es/es_CL.aff %{buildroot}%{_datadir}/hunspell/es_CL.aff
+ln -s %{_datadir}/hunspell/es_CL.aff %{buildroot}%{_datadir}/myspell/es_CL.aff
+cp -P es/es_CL.dic %{buildroot}%{_datadir}/hunspell/es_CL.dic
 ln -s %{_datadir}/hunspell/es_CL.dic %{buildroot}%{_datadir}/myspell/es_CL.dic
-ln -s %{_datadir}/hunspell/es_ANY.dic %{buildroot}%{_datadir}/hunspell/es_CO.dic
+cp -P es/es_CO.aff %{buildroot}%{_datadir}/hunspell/es_CO.aff
+ln -s %{_datadir}/hunspell/es_CO.aff %{buildroot}%{_datadir}/myspell/es_CO.aff
+cp -P es/es_CO.dic %{buildroot}%{_datadir}/hunspell/es_CO.dic
 ln -s %{_datadir}/hunspell/es_CO.dic %{buildroot}%{_datadir}/myspell/es_CO.dic
-ln -s %{_datadir}/hunspell/es_ANY.dic %{buildroot}%{_datadir}/hunspell/es_CR.dic
+cp -P es/es_CR.aff %{buildroot}%{_datadir}/hunspell/es_CR.aff
+ln -s %{_datadir}/hunspell/es_CR.aff %{buildroot}%{_datadir}/myspell/es_CR.aff
+cp -P es/es_CR.dic %{buildroot}%{_datadir}/hunspell/es_CR.dic
 ln -s %{_datadir}/hunspell/es_CR.dic %{buildroot}%{_datadir}/myspell/es_CR.dic
-ln -s %{_datadir}/hunspell/es_ANY.dic %{buildroot}%{_datadir}/hunspell/es_CU.dic
+cp -P es/es_CU.aff %{buildroot}%{_datadir}/hunspell/es_CU.aff
+ln -s %{_datadir}/hunspell/es_CU.aff %{buildroot}%{_datadir}/myspell/es_CU.aff
+cp -P es/es_CU.dic %{buildroot}%{_datadir}/hunspell/es_CU.dic
 ln -s %{_datadir}/hunspell/es_CU.dic %{buildroot}%{_datadir}/myspell/es_CU.dic
-ln -s %{_datadir}/hunspell/es_ANY.dic %{buildroot}%{_datadir}/hunspell/es_DO.dic
+cp -P es/es.dic %{buildroot}%{_datadir}/hunspell/es.dic
+ln -s %{_datadir}/hunspell/es.dic %{buildroot}%{_datadir}/myspell/es.dic
+cp -P es/es_DO.aff %{buildroot}%{_datadir}/hunspell/es_DO.aff
+ln -s %{_datadir}/hunspell/es_DO.aff %{buildroot}%{_datadir}/myspell/es_DO.aff
+cp -P es/es_DO.dic %{buildroot}%{_datadir}/hunspell/es_DO.dic
 ln -s %{_datadir}/hunspell/es_DO.dic %{buildroot}%{_datadir}/myspell/es_DO.dic
-ln -s %{_datadir}/hunspell/es_ANY.dic %{buildroot}%{_datadir}/hunspell/es_EC.dic
+cp -P es/es_EC.aff %{buildroot}%{_datadir}/hunspell/es_EC.aff
+ln -s %{_datadir}/hunspell/es_EC.aff %{buildroot}%{_datadir}/myspell/es_EC.aff
+cp -P es/es_EC.dic %{buildroot}%{_datadir}/hunspell/es_EC.dic
 ln -s %{_datadir}/hunspell/es_EC.dic %{buildroot}%{_datadir}/myspell/es_EC.dic
-ln -s %{_datadir}/hunspell/es_ANY.dic %{buildroot}%{_datadir}/hunspell/es_ES.dic
+cp -P es/es_ES.aff %{buildroot}%{_datadir}/hunspell/es_ES.aff
+ln -s %{_datadir}/hunspell/es_ES.aff %{buildroot}%{_datadir}/myspell/es_ES.aff
+cp -P es/es_ES.dic %{buildroot}%{_datadir}/hunspell/es_ES.dic
 ln -s %{_datadir}/hunspell/es_ES.dic %{buildroot}%{_datadir}/myspell/es_ES.dic
-ln -s %{_datadir}/hunspell/es_ANY.dic %{buildroot}%{_datadir}/hunspell/es_GT.dic
+cp -P es/es_GQ.aff %{buildroot}%{_datadir}/hunspell/es_GQ.aff
+ln -s %{_datadir}/hunspell/es_GQ.aff %{buildroot}%{_datadir}/myspell/es_GQ.aff
+cp -P es/es_GQ.dic %{buildroot}%{_datadir}/hunspell/es_GQ.dic
+ln -s %{_datadir}/hunspell/es_GQ.dic %{buildroot}%{_datadir}/myspell/es_GQ.dic
+cp -P es/es_GT.aff %{buildroot}%{_datadir}/hunspell/es_GT.aff
+ln -s %{_datadir}/hunspell/es_GT.aff %{buildroot}%{_datadir}/myspell/es_GT.aff
+cp -P es/es_GT.dic %{buildroot}%{_datadir}/hunspell/es_GT.dic
 ln -s %{_datadir}/hunspell/es_GT.dic %{buildroot}%{_datadir}/myspell/es_GT.dic
-ln -s %{_datadir}/hunspell/es_ANY.dic %{buildroot}%{_datadir}/hunspell/es_HN.dic
+cp -P es/es_HN.aff %{buildroot}%{_datadir}/hunspell/es_HN.aff
+ln -s %{_datadir}/hunspell/es_HN.aff %{buildroot}%{_datadir}/myspell/es_HN.aff
+cp -P es/es_HN.dic %{buildroot}%{_datadir}/hunspell/es_HN.dic
 ln -s %{_datadir}/hunspell/es_HN.dic %{buildroot}%{_datadir}/myspell/es_HN.dic
-ln -s %{_datadir}/hunspell/es_ANY.dic %{buildroot}%{_datadir}/hunspell/es_MX.dic
+cp -P es/es_MX.aff %{buildroot}%{_datadir}/hunspell/es_MX.aff
+ln -s %{_datadir}/hunspell/es_MX.aff %{buildroot}%{_datadir}/myspell/es_MX.aff
+cp -P es/es_MX.dic %{buildroot}%{_datadir}/hunspell/es_MX.dic
 ln -s %{_datadir}/hunspell/es_MX.dic %{buildroot}%{_datadir}/myspell/es_MX.dic
-ln -s %{_datadir}/hunspell/es_ANY.dic %{buildroot}%{_datadir}/hunspell/es_NI.dic
+cp -P es/es_NI.aff %{buildroot}%{_datadir}/hunspell/es_NI.aff
+ln -s %{_datadir}/hunspell/es_NI.aff %{buildroot}%{_datadir}/myspell/es_NI.aff
+cp -P es/es_NI.dic %{buildroot}%{_datadir}/hunspell/es_NI.dic
 ln -s %{_datadir}/hunspell/es_NI.dic %{buildroot}%{_datadir}/myspell/es_NI.dic
-ln -s %{_datadir}/hunspell/es_ANY.dic %{buildroot}%{_datadir}/hunspell/es_PA.dic
+cp -P es/es_PA.aff %{buildroot}%{_datadir}/hunspell/es_PA.aff
+ln -s %{_datadir}/hunspell/es_PA.aff %{buildroot}%{_datadir}/myspell/es_PA.aff
+cp -P es/es_PA.dic %{buildroot}%{_datadir}/hunspell/es_PA.dic
 ln -s %{_datadir}/hunspell/es_PA.dic %{buildroot}%{_datadir}/myspell/es_PA.dic
-ln -s %{_datadir}/hunspell/es_ANY.dic %{buildroot}%{_datadir}/hunspell/es_PE.dic
+cp -P es/es_PE.aff %{buildroot}%{_datadir}/hunspell/es_PE.aff
+ln -s %{_datadir}/hunspell/es_PE.aff %{buildroot}%{_datadir}/myspell/es_PE.aff
+cp -P es/es_PE.dic %{buildroot}%{_datadir}/hunspell/es_PE.dic
 ln -s %{_datadir}/hunspell/es_PE.dic %{buildroot}%{_datadir}/myspell/es_PE.dic
-ln -s %{_datadir}/hunspell/es_ANY.dic %{buildroot}%{_datadir}/hunspell/es_PR.dic
+cp -P es/es_PH.aff %{buildroot}%{_datadir}/hunspell/es_PH.aff
+ln -s %{_datadir}/hunspell/es_PH.aff %{buildroot}%{_datadir}/myspell/es_PH.aff
+cp -P es/es_PH.dic %{buildroot}%{_datadir}/hunspell/es_PH.dic
+ln -s %{_datadir}/hunspell/es_PH.dic %{buildroot}%{_datadir}/myspell/es_PH.dic
+cp -P es/es_PR.aff %{buildroot}%{_datadir}/hunspell/es_PR.aff
+ln -s %{_datadir}/hunspell/es_PR.aff %{buildroot}%{_datadir}/myspell/es_PR.aff
+cp -P es/es_PR.dic %{buildroot}%{_datadir}/hunspell/es_PR.dic
 ln -s %{_datadir}/hunspell/es_PR.dic %{buildroot}%{_datadir}/myspell/es_PR.dic
-ln -s %{_datadir}/hunspell/es_ANY.dic %{buildroot}%{_datadir}/hunspell/es_PY.dic
+cp -P es/es_PY.aff %{buildroot}%{_datadir}/hunspell/es_PY.aff
+ln -s %{_datadir}/hunspell/es_PY.aff %{buildroot}%{_datadir}/myspell/es_PY.aff
+cp -P es/es_PY.dic %{buildroot}%{_datadir}/hunspell/es_PY.dic
 ln -s %{_datadir}/hunspell/es_PY.dic %{buildroot}%{_datadir}/myspell/es_PY.dic
-ln -s %{_datadir}/hunspell/es_ANY.dic %{buildroot}%{_datadir}/hunspell/es_SV.dic
+cp -P es/es_SV.aff %{buildroot}%{_datadir}/hunspell/es_SV.aff
+ln -s %{_datadir}/hunspell/es_SV.aff %{buildroot}%{_datadir}/myspell/es_SV.aff
+cp -P es/es_SV.dic %{buildroot}%{_datadir}/hunspell/es_SV.dic
 ln -s %{_datadir}/hunspell/es_SV.dic %{buildroot}%{_datadir}/myspell/es_SV.dic
-ln -s %{_datadir}/hunspell/es_ANY.dic %{buildroot}%{_datadir}/hunspell/es_UY.dic
+cp -P es/es_US.aff %{buildroot}%{_datadir}/hunspell/es_US.aff
+ln -s %{_datadir}/hunspell/es_US.aff %{buildroot}%{_datadir}/myspell/es_US.aff
+cp -P es/es_US.dic %{buildroot}%{_datadir}/hunspell/es_US.dic
+ln -s %{_datadir}/hunspell/es_US.dic %{buildroot}%{_datadir}/myspell/es_US.dic
+cp -P es/es_UY.aff %{buildroot}%{_datadir}/hunspell/es_UY.aff
+ln -s %{_datadir}/hunspell/es_UY.aff %{buildroot}%{_datadir}/myspell/es_UY.aff
+cp -P es/es_UY.dic %{buildroot}%{_datadir}/hunspell/es_UY.dic
 ln -s %{_datadir}/hunspell/es_UY.dic %{buildroot}%{_datadir}/myspell/es_UY.dic
-ln -s %{_datadir}/hunspell/es_ANY.dic %{buildroot}%{_datadir}/hunspell/es_VE.dic
+cp -P es/es_VE.aff %{buildroot}%{_datadir}/hunspell/es_VE.aff
+ln -s %{_datadir}/hunspell/es_VE.aff %{buildroot}%{_datadir}/myspell/es_VE.aff
+cp -P es/es_VE.dic %{buildroot}%{_datadir}/hunspell/es_VE.dic
 ln -s %{_datadir}/hunspell/es_VE.dic %{buildroot}%{_datadir}/myspell/es_VE.dic
-cp -P es/es_ANY.dic %{buildroot}%{_datadir}/hunspell/es_ANY.dic
-ln -s %{_datadir}/hunspell/es_ANY.dic %{buildroot}%{_datadir}/myspell/es_ANY.dic
-ln -s %{_datadir}/hyphen/hyph_es_ANY.dic %{buildroot}%{_datadir}/hyphen/hyph_es_AR.dic
+ln -s %{_datadir}/hyphen/hyph_es.dic %{buildroot}%{_datadir}/hyphen/hyph_es_AR.dic
 ln -s %{_datadir}/hyphen/hyph_es_AR.dic %{buildroot}%{_datadir}/myspell/hyph_es_AR.dic
-ln -s %{_datadir}/hyphen/hyph_es_ANY.dic %{buildroot}%{_datadir}/hyphen/hyph_es_BO.dic
+ln -s %{_datadir}/hyphen/hyph_es.dic %{buildroot}%{_datadir}/hyphen/hyph_es_BO.dic
 ln -s %{_datadir}/hyphen/hyph_es_BO.dic %{buildroot}%{_datadir}/myspell/hyph_es_BO.dic
-ln -s %{_datadir}/hyphen/hyph_es_ANY.dic %{buildroot}%{_datadir}/hyphen/hyph_es_CL.dic
+ln -s %{_datadir}/hyphen/hyph_es.dic %{buildroot}%{_datadir}/hyphen/hyph_es_CL.dic
 ln -s %{_datadir}/hyphen/hyph_es_CL.dic %{buildroot}%{_datadir}/myspell/hyph_es_CL.dic
-ln -s %{_datadir}/hyphen/hyph_es_ANY.dic %{buildroot}%{_datadir}/hyphen/hyph_es_CO.dic
+ln -s %{_datadir}/hyphen/hyph_es.dic %{buildroot}%{_datadir}/hyphen/hyph_es_CO.dic
 ln -s %{_datadir}/hyphen/hyph_es_CO.dic %{buildroot}%{_datadir}/myspell/hyph_es_CO.dic
-ln -s %{_datadir}/hyphen/hyph_es_ANY.dic %{buildroot}%{_datadir}/hyphen/hyph_es_CR.dic
+ln -s %{_datadir}/hyphen/hyph_es.dic %{buildroot}%{_datadir}/hyphen/hyph_es_CR.dic
 ln -s %{_datadir}/hyphen/hyph_es_CR.dic %{buildroot}%{_datadir}/myspell/hyph_es_CR.dic
-ln -s %{_datadir}/hyphen/hyph_es_ANY.dic %{buildroot}%{_datadir}/hyphen/hyph_es_CU.dic
+ln -s %{_datadir}/hyphen/hyph_es.dic %{buildroot}%{_datadir}/hyphen/hyph_es_CU.dic
 ln -s %{_datadir}/hyphen/hyph_es_CU.dic %{buildroot}%{_datadir}/myspell/hyph_es_CU.dic
-ln -s %{_datadir}/hyphen/hyph_es_ANY.dic %{buildroot}%{_datadir}/hyphen/hyph_es_DO.dic
+ln -s %{_datadir}/hyphen/hyph_es.dic %{buildroot}%{_datadir}/hyphen/hyph_es_DO.dic
 ln -s %{_datadir}/hyphen/hyph_es_DO.dic %{buildroot}%{_datadir}/myspell/hyph_es_DO.dic
-ln -s %{_datadir}/hyphen/hyph_es_ANY.dic %{buildroot}%{_datadir}/hyphen/hyph_es_EC.dic
+ln -s %{_datadir}/hyphen/hyph_es.dic %{buildroot}%{_datadir}/hyphen/hyph_es_EC.dic
 ln -s %{_datadir}/hyphen/hyph_es_EC.dic %{buildroot}%{_datadir}/myspell/hyph_es_EC.dic
-ln -s %{_datadir}/hyphen/hyph_es_ANY.dic %{buildroot}%{_datadir}/hyphen/hyph_es_ES.dic
+ln -s %{_datadir}/hyphen/hyph_es.dic %{buildroot}%{_datadir}/hyphen/hyph_es_ES.dic
 ln -s %{_datadir}/hyphen/hyph_es_ES.dic %{buildroot}%{_datadir}/myspell/hyph_es_ES.dic
-ln -s %{_datadir}/hyphen/hyph_es_ANY.dic %{buildroot}%{_datadir}/hyphen/hyph_es_GT.dic
+ln -s %{_datadir}/hyphen/hyph_es.dic %{buildroot}%{_datadir}/hyphen/hyph_es_GQ.dic
+ln -s %{_datadir}/hyphen/hyph_es_GQ.dic %{buildroot}%{_datadir}/myspell/hyph_es_GQ.dic
+ln -s %{_datadir}/hyphen/hyph_es.dic %{buildroot}%{_datadir}/hyphen/hyph_es_GT.dic
 ln -s %{_datadir}/hyphen/hyph_es_GT.dic %{buildroot}%{_datadir}/myspell/hyph_es_GT.dic
-ln -s %{_datadir}/hyphen/hyph_es_ANY.dic %{buildroot}%{_datadir}/hyphen/hyph_es_HN.dic
+ln -s %{_datadir}/hyphen/hyph_es.dic %{buildroot}%{_datadir}/hyphen/hyph_es_HN.dic
 ln -s %{_datadir}/hyphen/hyph_es_HN.dic %{buildroot}%{_datadir}/myspell/hyph_es_HN.dic
-ln -s %{_datadir}/hyphen/hyph_es_ANY.dic %{buildroot}%{_datadir}/hyphen/hyph_es_MX.dic
+ln -s %{_datadir}/hyphen/hyph_es.dic %{buildroot}%{_datadir}/hyphen/hyph_es_MX.dic
 ln -s %{_datadir}/hyphen/hyph_es_MX.dic %{buildroot}%{_datadir}/myspell/hyph_es_MX.dic
-ln -s %{_datadir}/hyphen/hyph_es_ANY.dic %{buildroot}%{_datadir}/hyphen/hyph_es_NI.dic
+ln -s %{_datadir}/hyphen/hyph_es.dic %{buildroot}%{_datadir}/hyphen/hyph_es_NI.dic
 ln -s %{_datadir}/hyphen/hyph_es_NI.dic %{buildroot}%{_datadir}/myspell/hyph_es_NI.dic
-ln -s %{_datadir}/hyphen/hyph_es_ANY.dic %{buildroot}%{_datadir}/hyphen/hyph_es_PA.dic
+ln -s %{_datadir}/hyphen/hyph_es.dic %{buildroot}%{_datadir}/hyphen/hyph_es_PA.dic
 ln -s %{_datadir}/hyphen/hyph_es_PA.dic %{buildroot}%{_datadir}/myspell/hyph_es_PA.dic
-ln -s %{_datadir}/hyphen/hyph_es_ANY.dic %{buildroot}%{_datadir}/hyphen/hyph_es_PE.dic
+ln -s %{_datadir}/hyphen/hyph_es.dic %{buildroot}%{_datadir}/hyphen/hyph_es_PE.dic
 ln -s %{_datadir}/hyphen/hyph_es_PE.dic %{buildroot}%{_datadir}/myspell/hyph_es_PE.dic
-ln -s %{_datadir}/hyphen/hyph_es_ANY.dic %{buildroot}%{_datadir}/hyphen/hyph_es_PR.dic
+ln -s %{_datadir}/hyphen/hyph_es.dic %{buildroot}%{_datadir}/hyphen/hyph_es_PH.dic
+ln -s %{_datadir}/hyphen/hyph_es_PH.dic %{buildroot}%{_datadir}/myspell/hyph_es_PH.dic
+ln -s %{_datadir}/hyphen/hyph_es.dic %{buildroot}%{_datadir}/hyphen/hyph_es_PR.dic
 ln -s %{_datadir}/hyphen/hyph_es_PR.dic %{buildroot}%{_datadir}/myspell/hyph_es_PR.dic
-ln -s %{_datadir}/hyphen/hyph_es_ANY.dic %{buildroot}%{_datadir}/hyphen/hyph_es_PY.dic
+ln -s %{_datadir}/hyphen/hyph_es.dic %{buildroot}%{_datadir}/hyphen/hyph_es_PY.dic
 ln -s %{_datadir}/hyphen/hyph_es_PY.dic %{buildroot}%{_datadir}/myspell/hyph_es_PY.dic
-ln -s %{_datadir}/hyphen/hyph_es_ANY.dic %{buildroot}%{_datadir}/hyphen/hyph_es_SV.dic
+ln -s %{_datadir}/hyphen/hyph_es.dic %{buildroot}%{_datadir}/hyphen/hyph_es_SV.dic
 ln -s %{_datadir}/hyphen/hyph_es_SV.dic %{buildroot}%{_datadir}/myspell/hyph_es_SV.dic
-ln -s %{_datadir}/hyphen/hyph_es_ANY.dic %{buildroot}%{_datadir}/hyphen/hyph_es_UY.dic
+ln -s %{_datadir}/hyphen/hyph_es.dic %{buildroot}%{_datadir}/hyphen/hyph_es_US.dic
+ln -s %{_datadir}/hyphen/hyph_es_US.dic %{buildroot}%{_datadir}/myspell/hyph_es_US.dic
+ln -s %{_datadir}/hyphen/hyph_es.dic %{buildroot}%{_datadir}/hyphen/hyph_es_UY.dic
 ln -s %{_datadir}/hyphen/hyph_es_UY.dic %{buildroot}%{_datadir}/myspell/hyph_es_UY.dic
-ln -s %{_datadir}/hyphen/hyph_es_ANY.dic %{buildroot}%{_datadir}/hyphen/hyph_es_VE.dic
+ln -s %{_datadir}/hyphen/hyph_es.dic %{buildroot}%{_datadir}/hyphen/hyph_es_VE.dic
 ln -s %{_datadir}/hyphen/hyph_es_VE.dic %{buildroot}%{_datadir}/myspell/hyph_es_VE.dic
-cp -P es/hyph_es_ANY.dic %{buildroot}%{_datadir}/hyphen/hyph_es_ANY.dic
-ln -s %{_datadir}/hyphen/hyph_es_ANY.dic %{buildroot}%{_datadir}/myspell/hyph_es_ANY.dic
-ln -s %{_datadir}/mythes/th_es_ANY_v2.dat %{buildroot}%{_datadir}/mythes/th_es_AR_v2.dat
+cp -P es/hyph_es.dic %{buildroot}%{_datadir}/hyphen/hyph_es.dic
+ln -s %{_datadir}/hyphen/hyph_es.dic %{buildroot}%{_datadir}/myspell/hyph_es.dic
+ln -s %{_datadir}/mythes/th_es_v2.dat %{buildroot}%{_datadir}/mythes/th_es_AR_v2.dat
 ln -s %{_datadir}/mythes/th_es_AR_v2.dat %{buildroot}%{_datadir}/myspell/th_es_AR_v2.dat
-ln -s %{_datadir}/mythes/th_es_ANY_v2.dat %{buildroot}%{_datadir}/mythes/th_es_BO_v2.dat
+ln -s %{_datadir}/mythes/th_es_v2.dat %{buildroot}%{_datadir}/mythes/th_es_BO_v2.dat
 ln -s %{_datadir}/mythes/th_es_BO_v2.dat %{buildroot}%{_datadir}/myspell/th_es_BO_v2.dat
-ln -s %{_datadir}/mythes/th_es_ANY_v2.dat %{buildroot}%{_datadir}/mythes/th_es_CL_v2.dat
+ln -s %{_datadir}/mythes/th_es_v2.dat %{buildroot}%{_datadir}/mythes/th_es_CL_v2.dat
 ln -s %{_datadir}/mythes/th_es_CL_v2.dat %{buildroot}%{_datadir}/myspell/th_es_CL_v2.dat
-ln -s %{_datadir}/mythes/th_es_ANY_v2.dat %{buildroot}%{_datadir}/mythes/th_es_CO_v2.dat
+ln -s %{_datadir}/mythes/th_es_v2.dat %{buildroot}%{_datadir}/mythes/th_es_CO_v2.dat
 ln -s %{_datadir}/mythes/th_es_CO_v2.dat %{buildroot}%{_datadir}/myspell/th_es_CO_v2.dat
-ln -s %{_datadir}/mythes/th_es_ANY_v2.dat %{buildroot}%{_datadir}/mythes/th_es_CR_v2.dat
+ln -s %{_datadir}/mythes/th_es_v2.dat %{buildroot}%{_datadir}/mythes/th_es_CR_v2.dat
 ln -s %{_datadir}/mythes/th_es_CR_v2.dat %{buildroot}%{_datadir}/myspell/th_es_CR_v2.dat
-ln -s %{_datadir}/mythes/th_es_ANY_v2.dat %{buildroot}%{_datadir}/mythes/th_es_CU_v2.dat
+ln -s %{_datadir}/mythes/th_es_v2.dat %{buildroot}%{_datadir}/mythes/th_es_CU_v2.dat
 ln -s %{_datadir}/mythes/th_es_CU_v2.dat %{buildroot}%{_datadir}/myspell/th_es_CU_v2.dat
-ln -s %{_datadir}/mythes/th_es_ANY_v2.dat %{buildroot}%{_datadir}/mythes/th_es_DO_v2.dat
+ln -s %{_datadir}/mythes/th_es_v2.dat %{buildroot}%{_datadir}/mythes/th_es_DO_v2.dat
 ln -s %{_datadir}/mythes/th_es_DO_v2.dat %{buildroot}%{_datadir}/myspell/th_es_DO_v2.dat
-ln -s %{_datadir}/mythes/th_es_ANY_v2.dat %{buildroot}%{_datadir}/mythes/th_es_EC_v2.dat
+ln -s %{_datadir}/mythes/th_es_v2.dat %{buildroot}%{_datadir}/mythes/th_es_EC_v2.dat
 ln -s %{_datadir}/mythes/th_es_EC_v2.dat %{buildroot}%{_datadir}/myspell/th_es_EC_v2.dat
-ln -s %{_datadir}/mythes/th_es_ANY_v2.dat %{buildroot}%{_datadir}/mythes/th_es_ES_v2.dat
+ln -s %{_datadir}/mythes/th_es_v2.dat %{buildroot}%{_datadir}/mythes/th_es_ES_v2.dat
 ln -s %{_datadir}/mythes/th_es_ES_v2.dat %{buildroot}%{_datadir}/myspell/th_es_ES_v2.dat
-ln -s %{_datadir}/mythes/th_es_ANY_v2.dat %{buildroot}%{_datadir}/mythes/th_es_GT_v2.dat
+ln -s %{_datadir}/mythes/th_es_v2.dat %{buildroot}%{_datadir}/mythes/th_es_GQ_v2.dat
+ln -s %{_datadir}/mythes/th_es_GQ_v2.dat %{buildroot}%{_datadir}/myspell/th_es_GQ_v2.dat
+ln -s %{_datadir}/mythes/th_es_v2.dat %{buildroot}%{_datadir}/mythes/th_es_GT_v2.dat
 ln -s %{_datadir}/mythes/th_es_GT_v2.dat %{buildroot}%{_datadir}/myspell/th_es_GT_v2.dat
-ln -s %{_datadir}/mythes/th_es_ANY_v2.dat %{buildroot}%{_datadir}/mythes/th_es_HN_v2.dat
+ln -s %{_datadir}/mythes/th_es_v2.dat %{buildroot}%{_datadir}/mythes/th_es_HN_v2.dat
 ln -s %{_datadir}/mythes/th_es_HN_v2.dat %{buildroot}%{_datadir}/myspell/th_es_HN_v2.dat
-ln -s %{_datadir}/mythes/th_es_ANY_v2.dat %{buildroot}%{_datadir}/mythes/th_es_MX_v2.dat
+ln -s %{_datadir}/mythes/th_es_v2.dat %{buildroot}%{_datadir}/mythes/th_es_MX_v2.dat
 ln -s %{_datadir}/mythes/th_es_MX_v2.dat %{buildroot}%{_datadir}/myspell/th_es_MX_v2.dat
-ln -s %{_datadir}/mythes/th_es_ANY_v2.dat %{buildroot}%{_datadir}/mythes/th_es_NI_v2.dat
+ln -s %{_datadir}/mythes/th_es_v2.dat %{buildroot}%{_datadir}/mythes/th_es_NI_v2.dat
 ln -s %{_datadir}/mythes/th_es_NI_v2.dat %{buildroot}%{_datadir}/myspell/th_es_NI_v2.dat
-ln -s %{_datadir}/mythes/th_es_ANY_v2.dat %{buildroot}%{_datadir}/mythes/th_es_PA_v2.dat
+ln -s %{_datadir}/mythes/th_es_v2.dat %{buildroot}%{_datadir}/mythes/th_es_PA_v2.dat
 ln -s %{_datadir}/mythes/th_es_PA_v2.dat %{buildroot}%{_datadir}/myspell/th_es_PA_v2.dat
-ln -s %{_datadir}/mythes/th_es_ANY_v2.dat %{buildroot}%{_datadir}/mythes/th_es_PE_v2.dat
+ln -s %{_datadir}/mythes/th_es_v2.dat %{buildroot}%{_datadir}/mythes/th_es_PE_v2.dat
 ln -s %{_datadir}/mythes/th_es_PE_v2.dat %{buildroot}%{_datadir}/myspell/th_es_PE_v2.dat
-ln -s %{_datadir}/mythes/th_es_ANY_v2.dat %{buildroot}%{_datadir}/mythes/th_es_PR_v2.dat
+ln -s %{_datadir}/mythes/th_es_v2.dat %{buildroot}%{_datadir}/mythes/th_es_PH_v2.dat
+ln -s %{_datadir}/mythes/th_es_PH_v2.dat %{buildroot}%{_datadir}/myspell/th_es_PH_v2.dat
+ln -s %{_datadir}/mythes/th_es_v2.dat %{buildroot}%{_datadir}/mythes/th_es_PR_v2.dat
 ln -s %{_datadir}/mythes/th_es_PR_v2.dat %{buildroot}%{_datadir}/myspell/th_es_PR_v2.dat
-ln -s %{_datadir}/mythes/th_es_ANY_v2.dat %{buildroot}%{_datadir}/mythes/th_es_PY_v2.dat
+ln -s %{_datadir}/mythes/th_es_v2.dat %{buildroot}%{_datadir}/mythes/th_es_PY_v2.dat
 ln -s %{_datadir}/mythes/th_es_PY_v2.dat %{buildroot}%{_datadir}/myspell/th_es_PY_v2.dat
-ln -s %{_datadir}/mythes/th_es_ANY_v2.dat %{buildroot}%{_datadir}/mythes/th_es_SV_v2.dat
+ln -s %{_datadir}/mythes/th_es_v2.dat %{buildroot}%{_datadir}/mythes/th_es_SV_v2.dat
 ln -s %{_datadir}/mythes/th_es_SV_v2.dat %{buildroot}%{_datadir}/myspell/th_es_SV_v2.dat
-ln -s %{_datadir}/mythes/th_es_ANY_v2.dat %{buildroot}%{_datadir}/mythes/th_es_UY_v2.dat
+ln -s %{_datadir}/mythes/th_es_v2.dat %{buildroot}%{_datadir}/mythes/th_es_US_v2.dat
+ln -s %{_datadir}/mythes/th_es_US_v2.dat %{buildroot}%{_datadir}/myspell/th_es_US_v2.dat
+ln -s %{_datadir}/mythes/th_es_v2.dat %{buildroot}%{_datadir}/mythes/th_es_UY_v2.dat
 ln -s %{_datadir}/mythes/th_es_UY_v2.dat %{buildroot}%{_datadir}/myspell/th_es_UY_v2.dat
-ln -s %{_datadir}/mythes/th_es_ANY_v2.dat %{buildroot}%{_datadir}/mythes/th_es_VE_v2.dat
+ln -s %{_datadir}/mythes/th_es_v2.dat %{buildroot}%{_datadir}/mythes/th_es_VE_v2.dat
 ln -s %{_datadir}/mythes/th_es_VE_v2.dat %{buildroot}%{_datadir}/myspell/th_es_VE_v2.dat
-cp -P es/th_es_ANY_v2.dat %{buildroot}%{_datadir}/mythes/th_es_ANY_v2.dat
-ln -s %{_datadir}/mythes/th_es_ANY_v2.dat %{buildroot}%{_datadir}/myspell/th_es_ANY_v2.dat
-ln -s %{_datadir}/mythes/th_es_ANY_v2.idx %{buildroot}%{_datadir}/mythes/th_es_AR_v2.idx
+cp -P es/th_es_v2.dat %{buildroot}%{_datadir}/mythes/th_es_v2.dat
+ln -s %{_datadir}/mythes/th_es_v2.dat %{buildroot}%{_datadir}/myspell/th_es_v2.dat
+ln -s %{_datadir}/mythes/th_es_v2.idx %{buildroot}%{_datadir}/mythes/th_es_AR_v2.idx
 ln -s %{_datadir}/mythes/th_es_AR_v2.idx %{buildroot}%{_datadir}/myspell/th_es_AR_v2.idx
-ln -s %{_datadir}/mythes/th_es_ANY_v2.idx %{buildroot}%{_datadir}/mythes/th_es_BO_v2.idx
+ln -s %{_datadir}/mythes/th_es_v2.idx %{buildroot}%{_datadir}/mythes/th_es_BO_v2.idx
 ln -s %{_datadir}/mythes/th_es_BO_v2.idx %{buildroot}%{_datadir}/myspell/th_es_BO_v2.idx
-ln -s %{_datadir}/mythes/th_es_ANY_v2.idx %{buildroot}%{_datadir}/mythes/th_es_CL_v2.idx
+ln -s %{_datadir}/mythes/th_es_v2.idx %{buildroot}%{_datadir}/mythes/th_es_CL_v2.idx
 ln -s %{_datadir}/mythes/th_es_CL_v2.idx %{buildroot}%{_datadir}/myspell/th_es_CL_v2.idx
-ln -s %{_datadir}/mythes/th_es_ANY_v2.idx %{buildroot}%{_datadir}/mythes/th_es_CO_v2.idx
+ln -s %{_datadir}/mythes/th_es_v2.idx %{buildroot}%{_datadir}/mythes/th_es_CO_v2.idx
 ln -s %{_datadir}/mythes/th_es_CO_v2.idx %{buildroot}%{_datadir}/myspell/th_es_CO_v2.idx
-ln -s %{_datadir}/mythes/th_es_ANY_v2.idx %{buildroot}%{_datadir}/mythes/th_es_CR_v2.idx
+ln -s %{_datadir}/mythes/th_es_v2.idx %{buildroot}%{_datadir}/mythes/th_es_CR_v2.idx
 ln -s %{_datadir}/mythes/th_es_CR_v2.idx %{buildroot}%{_datadir}/myspell/th_es_CR_v2.idx
-ln -s %{_datadir}/mythes/th_es_ANY_v2.idx %{buildroot}%{_datadir}/mythes/th_es_CU_v2.idx
+ln -s %{_datadir}/mythes/th_es_v2.idx %{buildroot}%{_datadir}/mythes/th_es_CU_v2.idx
 ln -s %{_datadir}/mythes/th_es_CU_v2.idx %{buildroot}%{_datadir}/myspell/th_es_CU_v2.idx
-ln -s %{_datadir}/mythes/th_es_ANY_v2.idx %{buildroot}%{_datadir}/mythes/th_es_DO_v2.idx
+ln -s %{_datadir}/mythes/th_es_v2.idx %{buildroot}%{_datadir}/mythes/th_es_DO_v2.idx
 ln -s %{_datadir}/mythes/th_es_DO_v2.idx %{buildroot}%{_datadir}/myspell/th_es_DO_v2.idx
-ln -s %{_datadir}/mythes/th_es_ANY_v2.idx %{buildroot}%{_datadir}/mythes/th_es_EC_v2.idx
+ln -s %{_datadir}/mythes/th_es_v2.idx %{buildroot}%{_datadir}/mythes/th_es_EC_v2.idx
 ln -s %{_datadir}/mythes/th_es_EC_v2.idx %{buildroot}%{_datadir}/myspell/th_es_EC_v2.idx
-ln -s %{_datadir}/mythes/th_es_ANY_v2.idx %{buildroot}%{_datadir}/mythes/th_es_ES_v2.idx
+ln -s %{_datadir}/mythes/th_es_v2.idx %{buildroot}%{_datadir}/mythes/th_es_ES_v2.idx
 ln -s %{_datadir}/mythes/th_es_ES_v2.idx %{buildroot}%{_datadir}/myspell/th_es_ES_v2.idx
-ln -s %{_datadir}/mythes/th_es_ANY_v2.idx %{buildroot}%{_datadir}/mythes/th_es_GT_v2.idx
+ln -s %{_datadir}/mythes/th_es_v2.idx %{buildroot}%{_datadir}/mythes/th_es_GQ_v2.idx
+ln -s %{_datadir}/mythes/th_es_GQ_v2.idx %{buildroot}%{_datadir}/myspell/th_es_GQ_v2.idx
+ln -s %{_datadir}/mythes/th_es_v2.idx %{buildroot}%{_datadir}/mythes/th_es_GT_v2.idx
 ln -s %{_datadir}/mythes/th_es_GT_v2.idx %{buildroot}%{_datadir}/myspell/th_es_GT_v2.idx
-ln -s %{_datadir}/mythes/th_es_ANY_v2.idx %{buildroot}%{_datadir}/mythes/th_es_HN_v2.idx
+ln -s %{_datadir}/mythes/th_es_v2.idx %{buildroot}%{_datadir}/mythes/th_es_HN_v2.idx
 ln -s %{_datadir}/mythes/th_es_HN_v2.idx %{buildroot}%{_datadir}/myspell/th_es_HN_v2.idx
-ln -s %{_datadir}/mythes/th_es_ANY_v2.idx %{buildroot}%{_datadir}/mythes/th_es_MX_v2.idx
+ln -s %{_datadir}/mythes/th_es_v2.idx %{buildroot}%{_datadir}/mythes/th_es_MX_v2.idx
 ln -s %{_datadir}/mythes/th_es_MX_v2.idx %{buildroot}%{_datadir}/myspell/th_es_MX_v2.idx
-ln -s %{_datadir}/mythes/th_es_ANY_v2.idx %{buildroot}%{_datadir}/mythes/th_es_NI_v2.idx
+ln -s %{_datadir}/mythes/th_es_v2.idx %{buildroot}%{_datadir}/mythes/th_es_NI_v2.idx
 ln -s %{_datadir}/mythes/th_es_NI_v2.idx %{buildroot}%{_datadir}/myspell/th_es_NI_v2.idx
-ln -s %{_datadir}/mythes/th_es_ANY_v2.idx %{buildroot}%{_datadir}/mythes/th_es_PA_v2.idx
+ln -s %{_datadir}/mythes/th_es_v2.idx %{buildroot}%{_datadir}/mythes/th_es_PA_v2.idx
 ln -s %{_datadir}/mythes/th_es_PA_v2.idx %{buildroot}%{_datadir}/myspell/th_es_PA_v2.idx
-ln -s %{_datadir}/mythes/th_es_ANY_v2.idx %{buildroot}%{_datadir}/mythes/th_es_PE_v2.idx
+ln -s %{_datadir}/mythes/th_es_v2.idx %{buildroot}%{_datadir}/mythes/th_es_PE_v2.idx
 ln -s %{_datadir}/mythes/th_es_PE_v2.idx %{buildroot}%{_datadir}/myspell/th_es_PE_v2.idx
-ln -s %{_datadir}/mythes/th_es_ANY_v2.idx %{buildroot}%{_datadir}/mythes/th_es_PR_v2.idx
+ln -s %{_datadir}/mythes/th_es_v2.idx %{buildroot}%{_datadir}/mythes/th_es_PH_v2.idx
+ln -s %{_datadir}/mythes/th_es_PH_v2.idx %{buildroot}%{_datadir}/myspell/th_es_PH_v2.idx
+ln -s %{_datadir}/mythes/th_es_v2.idx %{buildroot}%{_datadir}/mythes/th_es_PR_v2.idx
 ln -s %{_datadir}/mythes/th_es_PR_v2.idx %{buildroot}%{_datadir}/myspell/th_es_PR_v2.idx
-ln -s %{_datadir}/mythes/th_es_ANY_v2.idx %{buildroot}%{_datadir}/mythes/th_es_PY_v2.idx
+ln -s %{_datadir}/mythes/th_es_v2.idx %{buildroot}%{_datadir}/mythes/th_es_PY_v2.idx
 ln -s %{_datadir}/mythes/th_es_PY_v2.idx %{buildroot}%{_datadir}/myspell/th_es_PY_v2.idx
-ln -s %{_datadir}/mythes/th_es_ANY_v2.idx %{buildroot}%{_datadir}/mythes/th_es_SV_v2.idx
+ln -s %{_datadir}/mythes/th_es_v2.idx %{buildroot}%{_datadir}/mythes/th_es_SV_v2.idx
 ln -s %{_datadir}/mythes/th_es_SV_v2.idx %{buildroot}%{_datadir}/myspell/th_es_SV_v2.idx
-ln -s %{_datadir}/mythes/th_es_ANY_v2.idx %{buildroot}%{_datadir}/mythes/th_es_UY_v2.idx
+ln -s %{_datadir}/mythes/th_es_v2.idx %{buildroot}%{_datadir}/mythes/th_es_US_v2.idx
+ln -s %{_datadir}/mythes/th_es_US_v2.idx %{buildroot}%{_datadir}/myspell/th_es_US_v2.idx
+ln -s %{_datadir}/mythes/th_es_v2.idx %{buildroot}%{_datadir}/mythes/th_es_UY_v2.idx
 ln -s %{_datadir}/mythes/th_es_UY_v2.idx %{buildroot}%{_datadir}/myspell/th_es_UY_v2.idx
-ln -s %{_datadir}/mythes/th_es_ANY_v2.idx %{buildroot}%{_datadir}/mythes/th_es_VE_v2.idx
+ln -s %{_datadir}/mythes/th_es_v2.idx %{buildroot}%{_datadir}/mythes/th_es_VE_v2.idx
 ln -s %{_datadir}/mythes/th_es_VE_v2.idx %{buildroot}%{_datadir}/myspell/th_es_VE_v2.idx
-cp -P es/th_es_ANY_v2.idx %{buildroot}%{_datadir}/mythes/th_es_ANY_v2.idx
-ln -s %{_datadir}/mythes/th_es_ANY_v2.idx %{buildroot}%{_datadir}/myspell/th_es_ANY_v2.idx
+cp -P es/th_es_v2.idx %{buildroot}%{_datadir}/mythes/th_es_v2.idx
+ln -s %{_datadir}/mythes/th_es_v2.idx %{buildroot}%{_datadir}/myspell/th_es_v2.idx
 mkdir -p %{buildroot}%{_docdir}/myspell-es
-cp -P es/README_es_ANY.txt %{buildroot}%{_docdir}/myspell-es/README_es_ANY.txt
-cp -P es/README_hyph_es_ANY.txt %{buildroot}%{_docdir}/myspell-es/README_hyph_es_ANY.txt
-cp -P es/README_th_es_ANY.txt %{buildroot}%{_docdir}/myspell-es/README_th_es_ANY.txt
+cp -P es/GPLv3.txt %{buildroot}%{_docdir}/myspell-es/GPLv3.txt
+cp -P es/LGPLv2.1.txt %{buildroot}%{_docdir}/myspell-es/LGPLv2.1.txt
+cp -P es/LGPLv3.txt %{buildroot}%{_docdir}/myspell-es/LGPLv3.txt
+cp -P es/MPL-1.1.txt %{buildroot}%{_docdir}/myspell-es/MPL-1.1.txt
+cp -P es/README_hunspell_es.txt %{buildroot}%{_docdir}/myspell-es/README_hunspell_es.txt
+cp -P es/README_hyph_es.txt %{buildroot}%{_docdir}/myspell-es/README_hyph_es.txt
+cp -P es/README_th_es.txt %{buildroot}%{_docdir}/myspell-es/README_th_es.txt
+cp -P es/RLA-ES.png %{buildroot}%{_docdir}/myspell-es/RLA-ES.png
 cp -P es/description.xml %{buildroot}%{_docdir}/myspell-es/description.xml
 cp -P es/dictionaries.xcu %{buildroot}%{_docdir}/myspell-es/dictionaries.xcu
 cp -P es/package-description.txt %{buildroot}%{_docdir}/myspell-es/package-description.txt
@@ -3143,6 +3217,14 @@ cp -P kmr_Latn/ferheng.org.png %{buildroot}%{_docdir}/myspell-kmr_Latn/ferheng.o
 cp -P kmr_Latn/gpl-3.0.txt %{buildroot}%{_docdir}/myspell-kmr_Latn/gpl-3.0.txt
 cp -P kmr_Latn/lgpl-2.1.txt %{buildroot}%{_docdir}/myspell-kmr_Latn/lgpl-2.1.txt
 cp -P kmr_Latn/license.txt %{buildroot}%{_docdir}/myspell-kmr_Latn/license.txt
+cp -P ko_KR/ko_KR.aff %{buildroot}%{_datadir}/hunspell/ko_KR.aff
+ln -s %{_datadir}/hunspell/ko_KR.aff %{buildroot}%{_datadir}/myspell/ko_KR.aff
+cp -P ko_KR/ko_KR.dic %{buildroot}%{_datadir}/hunspell/ko_KR.dic
+ln -s %{_datadir}/hunspell/ko_KR.dic %{buildroot}%{_datadir}/myspell/ko_KR.dic
+mkdir -p %{buildroot}%{_docdir}/myspell-ko_KR
+cp -P ko_KR/README_ko_KR.txt %{buildroot}%{_docdir}/myspell-ko_KR/README_ko_KR.txt
+cp -P ko_KR/description.xml %{buildroot}%{_docdir}/myspell-ko_KR/description.xml
+cp -P ko_KR/dictionaries.xcu %{buildroot}%{_docdir}/myspell-ko_KR/dictionaries.xcu
 cp -P lo_LA/lo_LA.aff %{buildroot}%{_datadir}/hunspell/lo_LA.aff
 ln -s %{_datadir}/hunspell/lo_LA.aff %{buildroot}%{_datadir}/myspell/lo_LA.aff
 cp -P lo_LA/lo_LA.dic %{buildroot}%{_datadir}/hunspell/lo_LA.dic
@@ -3297,31 +3379,25 @@ cp -P pt_BR/README_pt_BR.txt %{buildroot}%{_docdir}/myspell-pt_BR/README_pt_BR.t
 cp -P pt_BR/description.xml %{buildroot}%{_docdir}/myspell-pt_BR/description.xml
 cp -P pt_BR/dictionaries.xcu %{buildroot}%{_docdir}/myspell-pt_BR/dictionaries.xcu
 cp -P pt_BR/package-description.txt %{buildroot}%{_docdir}/myspell-pt_BR/package-description.txt
-ln -s %{_datadir}/hyphen/hyph_pt_PT.dic %{buildroot}%{_datadir}/hyphen/hyph_pt_AO.dic
-ln -s %{_datadir}/hyphen/hyph_pt_AO.dic %{buildroot}%{_datadir}/myspell/hyph_pt_AO.dic
 cp -P pt_PT/hyph_pt_PT.dic %{buildroot}%{_datadir}/hyphen/hyph_pt_PT.dic
 ln -s %{_datadir}/hyphen/hyph_pt_PT.dic %{buildroot}%{_datadir}/myspell/hyph_pt_PT.dic
-ln -s %{_datadir}/hunspell/pt_PT.aff %{buildroot}%{_datadir}/hunspell/pt_AO.aff
-ln -s %{_datadir}/hunspell/pt_AO.aff %{buildroot}%{_datadir}/myspell/pt_AO.aff
 cp -P pt_PT/pt_PT.aff %{buildroot}%{_datadir}/hunspell/pt_PT.aff
 ln -s %{_datadir}/hunspell/pt_PT.aff %{buildroot}%{_datadir}/myspell/pt_PT.aff
-ln -s %{_datadir}/hunspell/pt_PT.dic %{buildroot}%{_datadir}/hunspell/pt_AO.dic
-ln -s %{_datadir}/hunspell/pt_AO.dic %{buildroot}%{_datadir}/myspell/pt_AO.dic
 cp -P pt_PT/pt_PT.dic %{buildroot}%{_datadir}/hunspell/pt_PT.dic
 ln -s %{_datadir}/hunspell/pt_PT.dic %{buildroot}%{_datadir}/myspell/pt_PT.dic
-ln -s %{_datadir}/mythes/th_pt_PT_v2.dat %{buildroot}%{_datadir}/mythes/th_pt_AO_v2.dat
-ln -s %{_datadir}/mythes/th_pt_AO_v2.dat %{buildroot}%{_datadir}/myspell/th_pt_AO_v2.dat
-cp -P pt_PT/th_pt_PT_v2.dat %{buildroot}%{_datadir}/mythes/th_pt_PT_v2.dat
+ln -s %{_datadir}/mythes/th_pt_PT.dat %{buildroot}%{_datadir}/mythes/th_pt_PT_v2.dat
 ln -s %{_datadir}/mythes/th_pt_PT_v2.dat %{buildroot}%{_datadir}/myspell/th_pt_PT_v2.dat
-ln -s %{_datadir}/mythes/th_pt_PT_v2.idx %{buildroot}%{_datadir}/mythes/th_pt_AO_v2.idx
-ln -s %{_datadir}/mythes/th_pt_AO_v2.idx %{buildroot}%{_datadir}/myspell/th_pt_AO_v2.idx
-cp -P pt_PT/th_pt_PT_v2.idx %{buildroot}%{_datadir}/mythes/th_pt_PT_v2.idx
+cp -P pt_PT/th_pt_PT.dat %{buildroot}%{_datadir}/mythes/th_pt_PT.dat
+ln -s %{_datadir}/mythes/th_pt_PT.dat %{buildroot}%{_datadir}/myspell/th_pt_PT.dat
+ln -s %{_datadir}/mythes/th_pt_PT.idx %{buildroot}%{_datadir}/mythes/th_pt_PT_v2.idx
 ln -s %{_datadir}/mythes/th_pt_PT_v2.idx %{buildroot}%{_datadir}/myspell/th_pt_PT_v2.idx
+cp -P pt_PT/th_pt_PT.idx %{buildroot}%{_datadir}/mythes/th_pt_PT.idx
+ln -s %{_datadir}/mythes/th_pt_PT.idx %{buildroot}%{_datadir}/myspell/th_pt_PT.idx
 mkdir -p %{buildroot}%{_docdir}/myspell-pt_PT
 cp -P pt_PT/LICENSES.txt %{buildroot}%{_docdir}/myspell-pt_PT/LICENSES.txt
 cp -P pt_PT/README_hyph_pt_PT.txt %{buildroot}%{_docdir}/myspell-pt_PT/README_hyph_pt_PT.txt
 cp -P pt_PT/README_pt_PT.txt %{buildroot}%{_docdir}/myspell-pt_PT/README_pt_PT.txt
-cp -P pt_PT/README_th_pt_PT_v2.txt %{buildroot}%{_docdir}/myspell-pt_PT/README_th_pt_PT_v2.txt
+cp -P pt_PT/README_th_pt_PT.txt %{buildroot}%{_docdir}/myspell-pt_PT/README_th_pt_PT.txt
 cp -P pt_PT/description.xml %{buildroot}%{_docdir}/myspell-pt_PT/description.xml
 cp -P pt_PT/dictionaries.xcu %{buildroot}%{_docdir}/myspell-pt_PT/dictionaries.xcu
 cp -P pt_PT/icon.png %{buildroot}%{_docdir}/myspell-pt_PT/icon.png
@@ -4325,6 +4401,18 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_libdir}/libreoffice/share/extensions/lightproof-en/dialog
 %{_libdir}/libreoffice/share/extensions/lightproof-en/pythonpath
 
+%files -n myspell-es_PH
+%{_datadir}/hunspell/es_PH.aff
+%{_datadir}/myspell/es_PH.aff
+%{_datadir}/hunspell/es_PH.dic
+%{_datadir}/myspell/es_PH.dic
+%{_datadir}/hyphen/hyph_es_PH.dic
+%{_datadir}/myspell/hyph_es_PH.dic
+%{_datadir}/mythes/th_es_PH_v2.dat
+%{_datadir}/myspell/th_es_PH_v2.dat
+%{_datadir}/mythes/th_es_PH_v2.idx
+%{_datadir}/myspell/th_es_PH_v2.idx
+
 %files -n myspell-es_CR
 %{_datadir}/hunspell/es_CR.aff
 %{_datadir}/myspell/es_CR.aff
@@ -4493,6 +4581,18 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/mythes/th_es_GT_v2.idx
 %{_datadir}/myspell/th_es_GT_v2.idx
 
+%files -n myspell-es_GQ
+%{_datadir}/hunspell/es_GQ.aff
+%{_datadir}/myspell/es_GQ.aff
+%{_datadir}/hunspell/es_GQ.dic
+%{_datadir}/myspell/es_GQ.dic
+%{_datadir}/hyphen/hyph_es_GQ.dic
+%{_datadir}/myspell/hyph_es_GQ.dic
+%{_datadir}/mythes/th_es_GQ_v2.dat
+%{_datadir}/myspell/th_es_GQ_v2.dat
+%{_datadir}/mythes/th_es_GQ_v2.idx
+%{_datadir}/myspell/th_es_GQ_v2.idx
+
 %files -n myspell-es_HN
 %{_datadir}/hunspell/es_HN.aff
 %{_datadir}/myspell/es_HN.aff
@@ -4529,6 +4629,18 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/mythes/th_es_BO_v2.idx
 %{_datadir}/myspell/th_es_BO_v2.idx
 
+%files -n myspell-es_US
+%{_datadir}/hunspell/es_US.aff
+%{_datadir}/myspell/es_US.aff
+%{_datadir}/hunspell/es_US.dic
+%{_datadir}/myspell/es_US.dic
+%{_datadir}/hyphen/hyph_es_US.dic
+%{_datadir}/myspell/hyph_es_US.dic
+%{_datadir}/mythes/th_es_US_v2.dat
+%{_datadir}/myspell/th_es_US_v2.dat
+%{_datadir}/mythes/th_es_US_v2.idx
+%{_datadir}/myspell/th_es_US_v2.idx
+
 %files -n myspell-es_AR
 %{_datadir}/hunspell/es_AR.aff
 %{_datadir}/myspell/es_AR.aff
@@ -4542,20 +4654,25 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/myspell/th_es_AR_v2.idx
 
 %files -n myspell-es
-%{_datadir}/hunspell/es_ANY.aff
-%{_datadir}/myspell/es_ANY.aff
-%{_datadir}/hunspell/es_ANY.dic
-%{_datadir}/myspell/es_ANY.dic
-%{_datadir}/hyphen/hyph_es_ANY.dic
-%{_datadir}/myspell/hyph_es_ANY.dic
-%{_datadir}/mythes/th_es_ANY_v2.dat
-%{_datadir}/myspell/th_es_ANY_v2.dat
-%{_datadir}/mythes/th_es_ANY_v2.idx
-%{_datadir}/myspell/th_es_ANY_v2.idx
+%{_datadir}/hunspell/es.aff
+%{_datadir}/myspell/es.aff
+%{_datadir}/hunspell/es.dic
+%{_datadir}/myspell/es.dic
+%{_datadir}/hyphen/hyph_es.dic
+%{_datadir}/myspell/hyph_es.dic
+%{_datadir}/mythes/th_es_v2.dat
+%{_datadir}/myspell/th_es_v2.dat
+%{_datadir}/mythes/th_es_v2.idx
+%{_datadir}/myspell/th_es_v2.idx
 %dir %{_docdir}/myspell-es
-%{_docdir}/myspell-es/README_es_ANY.txt
-%{_docdir}/myspell-es/README_hyph_es_ANY.txt
-%{_docdir}/myspell-es/README_th_es_ANY.txt
+%{_docdir}/myspell-es/GPLv3.txt
+%{_docdir}/myspell-es/LGPLv2.1.txt
+%{_docdir}/myspell-es/LGPLv3.txt
+%{_docdir}/myspell-es/MPL-1.1.txt
+%{_docdir}/myspell-es/README_hunspell_es.txt
+%{_docdir}/myspell-es/README_hyph_es.txt
+%{_docdir}/myspell-es/README_th_es.txt
+%{_docdir}/myspell-es/RLA-ES.png
 %{_docdir}/myspell-es/description.xml
 %{_docdir}/myspell-es/dictionaries.xcu
 %{_docdir}/myspell-es/package-description.txt
@@ -4937,6 +5054,16 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/hunspell/kmr_Latn_SY.dic
 %{_datadir}/myspell/kmr_Latn_SY.dic
 
+%files -n myspell-ko_KR
+%{_datadir}/hunspell/ko_KR.aff
+%{_datadir}/myspell/ko_KR.aff
+%{_datadir}/hunspell/ko_KR.dic
+%{_datadir}/myspell/ko_KR.dic
+%dir %{_docdir}/myspell-ko_KR
+%{_docdir}/myspell-ko_KR/README_ko_KR.txt
+%{_docdir}/myspell-ko_KR/description.xml
+%{_docdir}/myspell-ko_KR/dictionaries.xcu
+
 %files -n myspell-lo_LA
 %{_datadir}/hunspell/lo_LA.aff
 %{_datadir}/myspell/lo_LA.aff
@@ -5126,28 +5253,20 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/myspell/pt_PT.dic
 %{_datadir}/mythes/th_pt_PT_v2.dat
 %{_datadir}/myspell/th_pt_PT_v2.dat
+%{_datadir}/mythes/th_pt_PT.dat
+%{_datadir}/myspell/th_pt_PT.dat
 %{_datadir}/mythes/th_pt_PT_v2.idx
 %{_datadir}/myspell/th_pt_PT_v2.idx
+%{_datadir}/mythes/th_pt_PT.idx
+%{_datadir}/myspell/th_pt_PT.idx
 %dir %{_docdir}/myspell-pt_PT
 %{_docdir}/myspell-pt_PT/LICENSES.txt
 %{_docdir}/myspell-pt_PT/README_hyph_pt_PT.txt
 %{_docdir}/myspell-pt_PT/README_pt_PT.txt
-%{_docdir}/myspell-pt_PT/README_th_pt_PT_v2.txt
+%{_docdir}/myspell-pt_PT/README_th_pt_PT.txt
 %{_docdir}/myspell-pt_PT/description.xml
 %{_docdir}/myspell-pt_PT/dictionaries.xcu
 %{_docdir}/myspell-pt_PT/icon.png
-
-%files -n myspell-pt_AO
-%{_datadir}/hyphen/hyph_pt_AO.dic
-%{_datadir}/myspell/hyph_pt_AO.dic
-%{_datadir}/hunspell/pt_AO.aff
-%{_datadir}/myspell/pt_AO.aff
-%{_datadir}/hunspell/pt_AO.dic
-%{_datadir}/myspell/pt_AO.dic
-%{_datadir}/mythes/th_pt_AO_v2.dat
-%{_datadir}/myspell/th_pt_AO_v2.dat
-%{_datadir}/mythes/th_pt_AO_v2.idx
-%{_datadir}/myspell/th_pt_AO_v2.idx
 
 %files -n myspell-ro_RO
 %{_datadir}/hyphen/hyph_ro_RO.dic

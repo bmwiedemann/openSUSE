@@ -155,7 +155,7 @@ function file_locales()
 function description()
 {
   dir=$1
-  grep  '<name lang="en.*">' dictionaries/$dir/description.xml | sed -e 's:.*<name lang="en.*">::' -e 's:</name>.*::' | tr '\n' ' ' | sed 's:[ \t]*$::'
+  grep  '<name lang="en.*">' dictionaries/$dir/description.xml | sed -e 's:.*<name lang="en.*">::' -e 's:</name>.*::' | tr '\n' ' ' | sed 's:[ \t]*$::' | sed 's:\.$::'
 }
 
 # all thesaurus dat files
@@ -367,6 +367,11 @@ if [ $DOWNLOAD == "yes" ]; then
       done
     popd
     # -------------------------
+    # es.{dic,aff} are declared to provide es_<LANG>, but es also
+    # contains es_<LANG>.{aff,dic}, which provide them as well
+    pushd es
+      patch < ../../es-remove-duplicate-locales.diff
+    popd
   popd
   # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   date=`date +%Y%m%d`
@@ -415,7 +420,6 @@ for d in $DATADIR/$DIC_DIR $DATADIR/$HYPH_DIR $DATADIR/$TH_DIR \
   install_dir $d
   dir_filelist="$dir_filelist %dir_$d"
 done
-echo $dir_filelist
 add_files "$dir_filelist"
 
 # install dictionary files
@@ -423,6 +427,7 @@ for dir in $dirs; do
   files=$(dir_files $dir)
   # clear and declare filelist associative array
   unset filelist
+  unset requires
   declare -A filelist
   declare -A requires
 
@@ -438,7 +443,7 @@ for dir in $dirs; do
       # It references file that doesn't exist.
       if [ ! -e "$GIT_DIR/$dir/$fname" ]; then
         [ "$VERBOSE" == "yes" ] && echo "WARNING: $GIT_DIR/$dir/$fname doesn't exist"
-        continue;
+        continue
       fi
 
       prefix=""

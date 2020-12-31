@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec 30 01:43:55 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
+
+- Update to verison 3.9.1
+  - Pin to api/v0.7.1 (--enableKyaml=true)
+  - Pin to api/v0.6.8
+  - Pin to cmd/confg v0.8.7
+  - Pin to kyaml v0.10.5
+  - Pin to gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c
+  - In module replacements, drop specific version numbers.
+  - Unpin kyaml
+  - Unpin api module.
+  - describe the format of image tag that is allowed
+  - Unpin api
+- Refresh vendor.tar.xz
+
+-------------------------------------------------------------------
 Fri Dec 11 05:43:08 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
 
 - Update to version 3.9.0

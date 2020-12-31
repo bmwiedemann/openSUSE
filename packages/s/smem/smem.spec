@@ -1,7 +1,8 @@
 #
 # spec file for package smem
 #
-# Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2018-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +18,16 @@
 
 
 Name:           smem
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        Application memory usage report tool
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            https://www.selenic.com/smem/
-Source:         https://www.selenic.com/smem/download/%{name}-%{version}.tar.gz
+#HG-Clone:      https://selenic.com/repo/smem
+Source:         https://selenic.com/repo/smem/archive/%{version}.tar.bz2#/%{name}-%{version}.tar.bz2
 Patch0:         smemcap-fix-build.patch
-Requires:       python2
+Requires:       python3
 
 %description
 smem is a tool that can give numerous reports on memory usage on Linux
@@ -42,7 +44,7 @@ a realistic measure.
 %prep
 %setup -q
 %patch0 -p1
-sed -i 's|%{_bindir}/env python|%{_bindir}/python2|g' smem
+sed -i 's|%{_bindir}/env python|%{_bindir}/python3|g' smem
 
 %build
 gcc %{optflags} -Wall smemcap.c -o smemcap

@@ -1,14 +1,18 @@
 -------------------------------------------------------------------
-Fri Dec 25 18:09:56 UTC 2020 - Mia Herkt <mia@0x0.st>
+Mon Dec 28 11:06:36 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
-- Enable additional dependencies (gprc, json, libcurl, libelf,
-  libwebsockets, protobuf, snappy, xenstat, yajl)
-- Update to v1.28.0 (go.d.plugin 0.26.2)
+- Update to v1.28
 Release v1.28.0 is a hotfix release to address a deadlock in the
 Netdata Agent. If the Agent-Cloud link (ACLK) connection drops and
 the Agent fails to queue an on_connect message, it also fails to
 properly release a lock in the web server thread.
-- Changes in v1.27.0:
+
+-------------------------------------------------------------------
+Fri Dec 25 18:09:56 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- Enable additional dependencies (gprc, json, libcurl, libelf,
+  libwebsockets, protobuf, snappy, xenstat, yajl)
+- Update to v1.27.0 (go.d.plugin 0.26.2)
 The v1.27.0 release of the Netdata Agent brings dramatic
 improvements to long-term metrics storage via the database engine,
 and new dashboard features like a time & date picker for

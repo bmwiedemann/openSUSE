@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct  3 01:22:11 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Version 0.17.0
+
+- Also, take care of widgets without interior SVG elements on a menu
+  that has a high contrast with the window (a possible scenario that
+  hasn't happened with any theme so far).
+- A workaround for a rare problem in QWidgetAction when menus have
+  a high contrast with windows.
+- Fixed the text color of thin progressbars inside stylable toolbars
+  of dark-and-light themes.
+- More accurate calculation of spinbox width under special
+  circumstances.
+- Distinguish popup indicators from other button indicators on
+  mouseover. 
+
+-------------------------------------------------------------------
 Mon Aug 10 22:29:39 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Version 0.16.1

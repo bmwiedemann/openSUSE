@@ -531,4 +531,14 @@
     https://cgit.freedesktop.org/libreoffice/dictionaries/log/</comment>
     <requestid>839534</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>5afbccc7d0c4fa313a52208c8209269c</srcmd5>
+    <version>20201230</version>
+    <time>1609405149</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 20201228
+  * several updated dictionaries, see
+    https://cgit.freedesktop.org/libreoffice/dictionaries/log/</comment>
+    <requestid>859435</requestid>
+  </revision>
 </revisionlist>

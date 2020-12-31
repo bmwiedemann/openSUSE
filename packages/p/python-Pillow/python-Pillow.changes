@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 30 11:04:46 UTC 2020 - pgajdos@suse.com
+
+- fix build with libtiff 4.2.0
+- added patches
+  fix https://github.com/python-pillow/Pillow/pull/5153
+  + python-Pillow-tiff-4.2.0.patch
+  fix https://github.com/python-pillow/Pillow/commit/416f12e772d2b3cb920b18b3625e8b1419d7519e
+  + python-Pillow-tiff-fix-oob-read.patch
+
+-------------------------------------------------------------------
 Sun Nov 15 18:03:48 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:

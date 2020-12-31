@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 30 13:12:07 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- RPM got fixed, so use %fdupes on TW again
+
+-------------------------------------------------------------------
 Tue Dec  1 15:22:18 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.4

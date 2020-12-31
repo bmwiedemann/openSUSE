@@ -24,6 +24,8 @@ License:        BSD-2-Clause
 Group:          Productivity/Graphics/Other
 URL:            http://micha.freeshell.org/flnews/
 Source:         http://micha.freeshell.org/flnews/src/%{name}-%{version}.tar.bz2
+# TODO: upstream
+Patch0:         reproducible.patch
 BuildRequires:  fltk-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -37,6 +39,7 @@ USENET newsgroups.
 
 %prep
 %setup -q
+%patch0 -p1
 sed -i 's|CFG_XDG_DISABLE=1|CFG_XDG_DISABLE=0|g' CONFIG
 sed -i 's|CFG_NLS_PATH="$CFG_PREFIX/lib/$CFG_NAME/nls"|CFG_NLS_PATH="$CFG_PREFIX/share/$CFG_NAME/nls"|g' CONFIG
 sed -i 's|CFG_REPRODUCIBLE=0|CFG_REPRODUCIBLE=1|g' CONFIG

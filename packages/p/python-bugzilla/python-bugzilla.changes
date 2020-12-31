@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Dec 30 13:25:13 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.0.2:
+  - Fix API key leaking into requests exceptions
+  - Skip man page generation to fix build on Windows (Alexander Todorov)
+  - Drop python2 support
+  - New option bugzilla modify --minor-update option
+  - requests: use PYTHONBUGZILLA_REQUESTS_TIMEOUT env variable
+  - xmlrpc: Don't add api key to passed in user dictionary
+  - cli: Add query --extrafield, --includefield, --excludefield
+  - Revive bugzilla.rhbugzilla.RHBugzilla import path
+  - Bugzilla REST API support
+  - Add --json command line output option
+  - Add APIs for Bugzilla Groups (Pierre-Yves Chibon)
+  - Add Bugzilla.get_requests_session() API to access raw requests
+    Session
+  - Add Bugzilla.get_xmlrpc_proxy() API to access raw ServerProxy
+  - Add Bugzilla requests_session= init parameter to pass in auth, etc.
+  - Add bugzilla attach --ignore-obsolete (Čestmír Kalina)
+  - Add bugzilla login --api-key for API key prompting (Danilo C. L. de
+    Paula)
+  - Add bugzilla new --private
+- Remove 106-basic-auth.diff, which is not necessary anymore.
+
+-------------------------------------------------------------------
 Wed Oct 16 12:51:01 UTC 2019 - Julio González Gil <jgonzalez@suse.com>
 
 - Backport from upstream: HTTP Basic authentication feature (as used

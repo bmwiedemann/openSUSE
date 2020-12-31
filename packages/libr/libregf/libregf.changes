@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 31 02:06:44 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to 20201007
+        * Changes to handle additional corruption scenarios
+- Add COPYING* to %license line
+- remove  BuildRequires: pkg-config
+
+-------------------------------------------------------------------
 Sat Dec 26 16:48:04 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to 20200805

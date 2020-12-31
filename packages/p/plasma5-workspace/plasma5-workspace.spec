@@ -339,10 +339,7 @@ Plasma 5 session with Wayland from a display manager.
   touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
   ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
 
-# To work around boo#1175025. Can't use symlinks either, kpackage doesn't like them.
-%if 0%{?suse_version} < 1550
   %fdupes %{buildroot}/%{_prefix}
-%endif
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig

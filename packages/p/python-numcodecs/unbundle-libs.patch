@@ -1,0 +1,28 @@
+Index: numcodecs-0.7.2/setup.py
+===================================================================
+--- numcodecs-0.7.2.orig/setup.py
++++ numcodecs-0.7.2/setup.py
+@@ -112,6 +112,7 @@ def blosc_extension():
+         Extension('numcodecs.blosc',
+                   sources=sources + blosc_sources,
+                   include_dirs=include_dirs,
++                  libraries=[] if blosc_sources else ['blosc'],
+                   define_macros=define_macros,
+                   extra_compile_args=extra_compile_args,
+                   ),
+@@ -152,6 +153,7 @@ def zstd_extension():
+         Extension('numcodecs.zstd',
+                   sources=sources + zstd_sources,
+                   include_dirs=include_dirs,
++                  libraries=[] if zstd_sources else ['zstd'],
+                   define_macros=define_macros,
+                   extra_compile_args=extra_compile_args,
+                   ),
+@@ -185,6 +187,7 @@ def lz4_extension():
+         Extension('numcodecs.lz4',
+                   sources=sources + lz4_sources,
+                   include_dirs=include_dirs,
++                  libraries=[] if lz4_sources else ['lz4'],
+                   define_macros=define_macros,
+                   extra_compile_args=extra_compile_args,
+                   ),

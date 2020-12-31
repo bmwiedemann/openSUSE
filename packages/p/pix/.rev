@@ -185,4 +185,16 @@
 </comment>
     <requestid>855381</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a69d62349d3ccbb71ec6bbca0b7619ad</srcmd5>
+    <version>2.6.2</version>
+    <time>1609405172</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6.2.
+  * l10n: Update translations
+- Updates for version 2.6.1.
+  * l10n: Update translations
+</comment>
+    <requestid>859472</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %bcond_without python2
 Name:           libregf
 %define lname	libregf1
-%define timestamp	20200805
+%define timestamp	20201007
 Version:        0~%timestamp
 Release:        0
 Summary:        Library to access Windows REGF-type Registry files
@@ -28,7 +28,7 @@ Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libregf/wiki
 Source:         https://github.com/libyal/libregf/releases/download/%timestamp/%name-alpha-%timestamp.tar.gz
 Source2:        Windows_NT_Registry_File_REGF_format.pdf
-BuildRequires:  pkg-config
+#BuildRequires:  pkg-config
 %if %{with python2}
 BuildRequires:  python-devel
 %endif
@@ -143,7 +143,7 @@ find %{buildroot} -name '*.la' -delete
 %files -n %lname
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog
-%license COPYING
+%license COPYING*
 %{_libdir}/libregf.so.*
 
 %files tools
@@ -164,14 +164,14 @@ find %{buildroot} -name '*.la' -delete
 %files -n python2-%{name}
 %defattr(-,root,root)
 %doc AUTHORS README
-%license COPYING
+%license COPYING*
 %{python2_sitearch}/pyregf.so
 %endif
 
 %files -n python3-%{name}
 %defattr(-,root,root)
 %doc AUTHORS README
-%license COPYING
+%license COPYING*
 %{python3_sitearch}/pyregf.so
 
 %changelog

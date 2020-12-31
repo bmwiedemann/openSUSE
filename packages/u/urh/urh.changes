@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 30 19:39:57 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.9.1
+  * use *.wav format for demodulated signal export.
+  * change separation colors to green and magenta.
+  * fix disappearing separation area in demod view.
+  * fix overflow in AutoInterpretation for certain signals.
+
+-------------------------------------------------------------------
 Sat Nov 28 15:40:08 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.9.0

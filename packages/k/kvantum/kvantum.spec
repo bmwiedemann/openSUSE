@@ -1,7 +1,7 @@
 #
 # spec file for package kvantum
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           kvantum
-Version:        0.16.1
-Release:        1
+Version:        0.17.0
+Release:        0
 Summary:        SVG-based theme engine for Qt5
 License:        GPL-3.0-or-later
 URL:            https://github.com/tsujan/Kvantum
@@ -29,12 +29,13 @@ BuildRequires:  fdupes
 BuildRequires:  kwindowsystem-devel
 BuildRequires:  libQt5PlatformHeaders-devel
 BuildRequires:  libqt5-linguist-devel
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5X11Extras)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5X11Extras)
+
 %description
 Kvantum is an SVG-based theme engine for Qt, tuned to Plasma and LXQt, with an emphasis on elegance, usability and practicality.
 Its homepage is https://github.com/tsujan/Kvantum.

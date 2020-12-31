@@ -293,7 +293,15 @@ popd
 }
 %endif
 
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%{python_expand #
+# mark the package as typed for mypy if the stubs have been installed deb#978586
+%if ! 0%{?build_nonring}
+if [ -e  %{buildroot}%{$python_sitearch}/PyQt5/QtCore.pyi ]; then
+  touch %{buildroot}%{$python_sitearch}/PyQt5/py.typed
+fi
+%endif
+%fdupes %{buildroot}%{$python_sitearch}
+}
 
 %if ! 0%{?build_nonring}
 %pre devel

@@ -26,6 +26,8 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/python/typed_ast
 Source0:        https://files.pythonhosted.org/packages/source/t/typed_ast/typed_ast-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM ast27-prefix-exported-symbols.patch -- based on https://github.com/python/typed_ast/pull/152.patch to fix ppc63 and s390x builds
+Patch0:         ast27-prefix-exported-symbols.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -45,6 +47,7 @@ based on the CPython 2.7 and 3.6 parsers.
 
 %prep
 %setup -q -n typed_ast-%{version}
+%patch0 -p1
 
 %build
 export CFLAGS="%{optflags}"
@@ -55,9 +58,7 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# disable tests 'test_ignores' and 'test_convert_strs' because of bsc#1171573, failing on ppc64.
-%pytest_arch -k 'not test_ignores and not test_convert_strs'
-
+%pytest_arch
 
 %files %{python_files}
 %license LICENSE

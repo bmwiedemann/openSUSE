@@ -2754,4 +2754,16 @@ Bug fixes
 </comment>
     <requestid>858645</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>84e4a5fc32a0fddca023abfc02c8c96f</srcmd5>
+    <version>1.28.0</version>
+    <time>1609405177</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.28
+
+- Enable additional dependencies (gprc, json, libcurl, libelf,
+  libwebsockets, protobuf, snappy, xenstat, yajl)
+- Update to v1.27.0 (go.d.plugin 0.26.2)</comment>
+    <requestid>859482</requestid>
+  </revision>
 </revisionlist>

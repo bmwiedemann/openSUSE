@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 30 16:46:29 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8.0
+  * Added SSE2 support for Resampler and VResampler.
+  * Cleanup and some minor bug fixes.
+- Update patch:
+  * fix-makefile.patch
+  * disable-sse.patch (apply conditionally)
+
+-------------------------------------------------------------------
 Thu Jul  2 14:30:30 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Override SUFFIX

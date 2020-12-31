@@ -29,8 +29,40 @@ URL:            https://cgit.freedesktop.org/libreoffice/dictionaries/
 Source0:        dictionaries.tar.xz
 Source1:        update.sh
 Source2:        myspell-dictionaries.spec.in
+# es.{dic,aff} are declared to provide es_<LANG>, but es also
+# contains es_<LANG>.{aff,dic}, which provide them as well
+# workaround, applied in update.sh
+Source3:        es-remove-duplicate-locales.diff
 BuildRequires:  dos2unix
 BuildRequires:  xz
+Obsoletes:      libreoffice-thesaurus-bg
+Obsoletes:      libreoffice-thesaurus-ca
+Obsoletes:      libreoffice-thesaurus-cs
+Obsoletes:      libreoffice-thesaurus-da
+Obsoletes:      libreoffice-thesaurus-de
+Obsoletes:      libreoffice-thesaurus-de-AT
+Obsoletes:      libreoffice-thesaurus-de-CH
+Obsoletes:      libreoffice-thesaurus-el
+Obsoletes:      libreoffice-thesaurus-en-AU
+Obsoletes:      libreoffice-thesaurus-en-GB
+Obsoletes:      libreoffice-thesaurus-en-US
+Obsoletes:      libreoffice-thesaurus-es
+Obsoletes:      libreoffice-thesaurus-es-AR
+Obsoletes:      libreoffice-thesaurus-es-VE
+Obsoletes:      libreoffice-thesaurus-fr
+Obsoletes:      libreoffice-thesaurus-ga
+Obsoletes:      libreoffice-thesaurus-hu
+Obsoletes:      libreoffice-thesaurus-it
+Obsoletes:      libreoffice-thesaurus-nb
+Obsoletes:      libreoffice-thesaurus-ne
+Obsoletes:      libreoffice-thesaurus-pl
+Obsoletes:      libreoffice-thesaurus-pt
+Obsoletes:      libreoffice-thesaurus-ro
+Obsoletes:      libreoffice-thesaurus-ru
+Obsoletes:      libreoffice-thesaurus-sk
+Obsoletes:      libreoffice-thesaurus-sl
+Obsoletes:      libreoffice-thesaurus-sv
+Obsoletes:      libreoffice-hyphen
 Obsoletes:      myspell-african
 Obsoletes:      myspell-albanian
 Obsoletes:      myspell-armenian
@@ -74,34 +106,6 @@ Obsoletes:      myspell-venda
 Obsoletes:      myspell-welsh
 Obsoletes:      myspell-xhosa
 Obsoletes:      myspell-yiddish
-Obsoletes:      libreoffice-thesaurus-bg
-Obsoletes:      libreoffice-thesaurus-ca
-Obsoletes:      libreoffice-thesaurus-cs
-Obsoletes:      libreoffice-thesaurus-da
-Obsoletes:      libreoffice-thesaurus-de
-Obsoletes:      libreoffice-thesaurus-de-AT
-Obsoletes:      libreoffice-thesaurus-de-CH
-Obsoletes:      libreoffice-thesaurus-el
-Obsoletes:      libreoffice-thesaurus-en-AU
-Obsoletes:      libreoffice-thesaurus-en-GB
-Obsoletes:      libreoffice-thesaurus-en-US
-Obsoletes:      libreoffice-thesaurus-es
-Obsoletes:      libreoffice-thesaurus-es-AR
-Obsoletes:      libreoffice-thesaurus-es-VE
-Obsoletes:      libreoffice-thesaurus-fr
-Obsoletes:      libreoffice-thesaurus-ga
-Obsoletes:      libreoffice-thesaurus-hu
-Obsoletes:      libreoffice-thesaurus-it
-Obsoletes:      libreoffice-thesaurus-nb
-Obsoletes:      libreoffice-thesaurus-ne
-Obsoletes:      libreoffice-thesaurus-pl
-Obsoletes:      libreoffice-thesaurus-pt
-Obsoletes:      libreoffice-thesaurus-ro
-Obsoletes:      libreoffice-thesaurus-ru
-Obsoletes:      libreoffice-thesaurus-sk
-Obsoletes:      libreoffice-thesaurus-sl
-Obsoletes:      libreoffice-thesaurus-sv
-Obsoletes:      libreoffice-hyphen
 
 %description
 This source package contains dictionaries for MySpell.

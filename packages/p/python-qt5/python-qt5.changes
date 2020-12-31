@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 29 14:32:12 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Mark the package as typed for mypy deb#978586
+
+-------------------------------------------------------------------
 Tue Nov 24 15:09:44 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 5.15.2

@@ -1,0 +1,70 @@
+From 847f3ff2871b5bb4aca6397022189a99c89d2de6 Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Fri, 25 Dec 2020 18:37:57 +0100
+Subject: [PATCH 1/3] use correct pointer type for coo shape (fix #420)
+
+---
+ sparse/_coo/numba_extension.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sparse/_coo/numba_extension.py b/sparse/_coo/numba_extension.py
+index 48f0af0..a2d7ea2 100644
+--- a/sparse/_coo/numba_extension.py
++++ b/sparse/_coo/numba_extension.py
+@@ -52,7 +52,7 @@ def coords_type(self):
+ 
+     @property
+     def shape_type(self):
+-        return types.UniTuple(types.int64, self.ndim)
++        return types.UniTuple(types.intp, self.ndim)
+ 
+     @property
+     def fill_value_type(self):
+
+From 304bf8d08c6f07b0f9a9d0f57586023e5622fb9e Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Fri, 25 Dec 2020 20:11:44 +0100
+Subject: [PATCH 2/3] Do not hardcode type
+
+Co-authored-by: Hameer Abbasi <einstein.edison@gmail.com>
+---
+ sparse/_coo/numba_extension.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/sparse/_coo/numba_extension.py b/sparse/_coo/numba_extension.py
+index a2d7ea2..cdd4683 100644
+--- a/sparse/_coo/numba_extension.py
++++ b/sparse/_coo/numba_extension.py
+@@ -52,7 +52,8 @@ def coords_type(self):
+ 
+     @property
+     def shape_type(self):
+-        return types.UniTuple(types.intp, self.ndim)
++        dt = numba.np.numpy_support.from_dtype(self.coords_dtype)
++        return types.UniTuple(at, self.ndim)
+ 
+     @property
+     def fill_value_type(self):
+
+From 919a2e8318f22570d05962fe2f658958d59800b5 Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Fri, 25 Dec 2020 20:12:27 +0100
+Subject: [PATCH 3/3] fix typo
+
+---
+ sparse/_coo/numba_extension.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sparse/_coo/numba_extension.py b/sparse/_coo/numba_extension.py
+index cdd4683..0fc79d5 100644
+--- a/sparse/_coo/numba_extension.py
++++ b/sparse/_coo/numba_extension.py
+@@ -53,7 +53,7 @@ def coords_type(self):
+     @property
+     def shape_type(self):
+         dt = numba.np.numpy_support.from_dtype(self.coords_dtype)
+-        return types.UniTuple(at, self.ndim)
++        return types.UniTuple(dt, self.ndim)
+ 
+     @property
+     def fill_value_type(self):

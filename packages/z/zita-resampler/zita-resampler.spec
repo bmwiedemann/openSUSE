@@ -20,7 +20,7 @@
 %define sover   1
 %define libname libzita-resampler%{sover}
 Name:           zita-resampler
-Version:        1.6.2
+Version:        1.8.0
 Release:        0
 Summary:        A C++ library for resampling audio signals
 License:        GPL-3.0-or-later
@@ -28,6 +28,7 @@ Group:          System/Libraries
 URL:            https://kokkinizita.linuxaudio.org/linuxaudio/zita-resampler/resampler.html
 Source:         https://kokkinizita.linuxaudio.org/linuxaudio/downloads/%{name}-%{version}.tar.bz2
 Patch0:         fix-makefile.patch
+Patch1:         disable-sse.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(sndfile)
@@ -76,6 +77,9 @@ AIFF or FLAC.
 %prep
 %setup -q
 %patch0 -p1
+%ifnarch x86_64
+%patch1 -p1
+%endif
 
 %build
 export CXXFLAGS="%{optflags}"

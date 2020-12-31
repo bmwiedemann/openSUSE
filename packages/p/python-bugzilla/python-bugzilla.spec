@@ -1,7 +1,7 @@
 #
 # spec file for package python-bugzilla
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-bugzilla
-Version:        2.3.0
+Version:        3.0.2
 Release:        0
 Summary:        Python library for Bugzilla
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/Python
 URL:            https://github.com/python-bugzilla/python-bugzilla
 Source:         https://files.pythonhosted.org/packages/source/p/python-bugzilla/python-bugzilla-%{version}.tar.gz
-Patch0:         106-basic-auth.diff
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
@@ -49,8 +48,8 @@ It also includes a 'bugzilla' commandline client which can be used for quick,
 ad-hoc bugzilla jiggery-pokery.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
+
 sed -i -e '1{/^#!\/usr\/bin\/env python/d}' bugzilla/_cli.py
 
 %build

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 29 01:40:52 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1609206039.6c302d51d:
+  * Catch unhandled output in `t/24-worker-overall.t`
+  * Move logging exit signals into worker module
+  * Allow stopping worker so it still finishes assigned jobs
+  * Skip all assigned jobs when worker receives SIGTERM
+
+-------------------------------------------------------------------
 Thu Dec 24 00:00:12 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1608723884.96c04b5b4:

@@ -128,4 +128,14 @@
     <comment></comment>
     <requestid>853096</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>84f6c103bfec3e5fd043c92aec33b87c</srcmd5>
+    <version>1.4.1</version>
+    <time>1609405135</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ast27-prefix-exported-symbols.patch from upstream PR#152 to fix ppc64 and
+  s390x builds/tests and run all tests again.
+</comment>
+    <requestid>859414</requestid>
+  </revision>
 </revisionlist>

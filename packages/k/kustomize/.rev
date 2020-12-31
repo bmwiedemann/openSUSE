@@ -90,4 +90,23 @@
     <comment></comment>
     <requestid>854842</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>86d7ad21b10e75f435361b4946bcd6e8</srcmd5>
+    <version>3.9.1</version>
+    <time>1609405130</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to verison 3.9.1
+  - Pin to api/v0.7.1 (--enableKyaml=true)
+  - Pin to api/v0.6.8
+  - Pin to cmd/confg v0.8.7
+  - Pin to kyaml v0.10.5
+  - Pin to gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c
+  - In module replacements, drop specific version numbers.
+  - Unpin kyaml
+  - Unpin api module.
+  - describe the format of image tag that is allowed
+  - Unpin api
+- Refresh vendor.tar.xz (forwarded request 859332 from jenting)</comment>
+    <requestid>859402</requestid>
+  </revision>
 </revisionlist>
