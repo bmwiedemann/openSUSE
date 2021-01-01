@@ -1,0 +1,6 @@
+<package name="python-pympv" project="openSUSE:Factory">
+  <title></title>
+  <description>A python wrapper for libmpv.</description>
+  <devel project="multimedia:apps" package="python-pympv"/>
+  <url>https://github.com/marcan/pympv</url>
+</package>
