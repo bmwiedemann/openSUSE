@@ -161,4 +161,12 @@ I have posted an introducing mail to the factory mailinglist. You can find it at
   * hdjmod_kernel_5.0.patch</comment>
     <requestid>686088</requestid>
   </revision>
+  <revision rev="21" vrev="26">
+    <srcmd5>d838e91baf7b6fcafd0fcb7290b2989d</srcmd5>
+    <version>1.28</version>
+    <time>1609532023</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>859585</requestid>
+  </revision>
 </revisionlist>

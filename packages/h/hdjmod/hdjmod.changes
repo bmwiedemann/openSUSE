@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 24 09:59:05 UTC 2020 - Matthias Bach <marix@marix.org>
+
+- Make package conform to spec-cleaner
+- Drop support for ancient openSUSE versions
+
+-------------------------------------------------------------------
 Mon Mar 18 10:41:55 UTC 2019 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix build with kernel 5.0:
