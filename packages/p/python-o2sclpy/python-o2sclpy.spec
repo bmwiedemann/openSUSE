@@ -19,13 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-o2sclpy
-Version:        0.924
+Version:        0.925
 Release:        0
 Summary:        Python extensions for O2scl
 License:        GPL-3.0-only
 URL:            https://neutronstars.utk.edu/code/o2sclpy
 Source0:        https://files.pythonhosted.org/packages/source/o/o2sclpy/o2sclpy-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/awsteiner/o2sclpy/master/LICENSE
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module matplotlib >= 3.1}
@@ -34,7 +33,7 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       o2scl-devel
+Requires:       o2scl-devel >= 0.925
 Requires:       python-h5py
 Requires:       python-matplotlib >= 3.1
 Requires:       python-numpy
@@ -46,11 +45,11 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Python extensions for O2scl
+A high-level plotting script, o2graph, for quick matplotlib or yt plots for use
+with the O2scl C++ library and a set of python classes for convenient plotting.
 
 %prep
 %setup -q -n o2sclpy-%{version}
-cp %{SOURCE1} ./
 
 %build
 %python_build

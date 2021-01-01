@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 31 14:34:56 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.925
+  * No release notes.
+- Drop additional source file LICENSE as it is now included in
+  o2sclpy source tarball.
+- Improve package description.
+- Bump o2scl-devel required version to 0.925.
+
+-------------------------------------------------------------------
 Thu May 21 06:55:34 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
