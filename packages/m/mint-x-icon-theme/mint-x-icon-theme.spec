@@ -18,7 +18,7 @@
 
 %define _name   Mint-X
 Name:           mint-x-icon-theme
-Version:        1.5.5
+Version:        1.5.8
 Release:        0
 Summary:        Mint-X icon theme
 License:        GPL-3.0-or-later
