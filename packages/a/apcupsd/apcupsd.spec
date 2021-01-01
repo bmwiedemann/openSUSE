@@ -119,7 +119,7 @@ cp -a %{SOURCE2} %{SOURCE4} .
 	--enable-usb \
 	--enable-modbus-usb \
 	--enable-test \
-	--with-cgi-bin=%{apache_datadir}/cgi-bin \
+	--with-cgi-bin=%{apache_serverroot}/cgi-bin \
 %if 0%{?suse_version}
 	--with-distname=suse \
 %endif
@@ -224,9 +224,9 @@ rm -f etc/init.d/apcupsd-early-powerdown
 %config(noreplace) %{_sysconfdir}/%{name}/%{name}.css
 %config(noreplace) %{_sysconfdir}/%{name}/hosts.conf
 %config(noreplace) %{_sysconfdir}/%{name}/multimon.conf
-%{apache_datadir}/cgi-bin/multimon.cgi
-%{apache_datadir}/cgi-bin/upsfstats.cgi
-%{apache_datadir}/cgi-bin/upsstats.cgi
-%{apache_datadir}/cgi-bin/upsimage.cgi
+%{apache_serverroot}/cgi-bin/multimon.cgi
+%{apache_serverroot}/cgi-bin/upsfstats.cgi
+%{apache_serverroot}/cgi-bin/upsstats.cgi
+%{apache_serverroot}/cgi-bin/upsimage.cgi
 
 %changelog

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 31 14:52:32 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use apache_serverroot instead of apache_datadir.
+
+-------------------------------------------------------------------
 Thu Aug 20 07:32:55 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build when /etc/os-release contains a LIST as ID_LIKE (which
