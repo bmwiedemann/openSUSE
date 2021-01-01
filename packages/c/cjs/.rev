@@ -119,4 +119,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>855372</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>46d0a5d669cbf081aa0ac77ae7af53cd</srcmd5>
+    <version>4.8.1</version>
+    <time>1609532012</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not add RPM dependencies for installed-tests: some tests there
+  are intentionally crafted to 'fail' with missing deps. The dep
+  scanner would not know though.
+- Update to version 4.8.1.
+  * No important changes.
+Thanks for the SR</comment>
+    <requestid>859606</requestid>
+  </revision>
 </revisionlist>

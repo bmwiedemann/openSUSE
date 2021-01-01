@@ -1,9 +1,22 @@
 -------------------------------------------------------------------
+Thu Dec 31 12:17:24 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not add RPM dependencies for installed-tests: some tests there
+  are intentionally crafted to 'fail' with missing deps. The dep
+  scanner would not know though.
+
+-------------------------------------------------------------------
+Sat Dec 26 16:34:03 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 4.8.1.
+  * No important changes.
+
+-------------------------------------------------------------------
 Sat Dec  5 15:01:03 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 4.8.0.
   * Rebase on GJS 1.66 and Mozjs78.
-  * deprecation.cpp: Add additional info to ByteArray deprecation 
+  * deprecation.cpp: Add additional info to ByteArray deprecation
     warning, and link to the xlet versioning tutorial page.
 - Add cjs-tests package.
 - Switch to meson.
@@ -11,7 +24,7 @@ Sat Dec  5 15:01:03 UTC 2020 - andy great <andythe_great@pm.me>
 -------------------------------------------------------------------
 Mon Sep 28 19:13:50 UTC 2020 - andy great <andythe_great@pm.me>
 
-- Build with mozjs68. 
+- Build with mozjs68.
 
 -------------------------------------------------------------------
 Sun Sep 27 13:55:38 UTC 2020 - andy great <andythe_great@pm.me>
