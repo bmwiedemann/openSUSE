@@ -318,4 +318,27 @@
 </comment>
     <requestid>855377</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>8951d122508343381e473a22d32ba33c</srcmd5>
+    <version>4.8.2</version>
+    <time>1609532011</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.8.2.
+  * Fix some leaks revealed by valgrind.
+  * nemo-directory-async.c: Fix an issue with the idle favorite 
+    check.
+  * nemo-places-sidebar.c: Remove favorites signal listener when 
+    the sidebar is destroyed.
+- Updates for version 4.8.1
+  * Removed unused variable
+  * nemo-window.c: Blocks operations while renaming. Fixes #1854
+  * build: Update some dependencies.
+  * change favorites icon
+  * Fixes 276. Remove type-ahead search on mouse click
+  * Remove Send by Email action
+  * Hide some menu items when running as root
+- Remove explicit-lib-dependency libcinnamon-desktop-data.
+</comment>
+    <requestid>859465</requestid>
+  </revision>
 </revisionlist>
