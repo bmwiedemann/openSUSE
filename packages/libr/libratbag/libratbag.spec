@@ -24,20 +24,18 @@ Summary:        Configuration library for gaming mice
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libratbag/libratbag
-Source:         %name-%version.tar.xz
+Source:         %{name}-%{version}.tar.xz
 Patch1:         shebang-env.diff
 Patch2:         install-daemon-into-sbindir.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  json-glib-devel
 BuildRequires:  libunistring-devel
 BuildRequires:  meson
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  python3-evdev
 BuildRequires:  python3-gobject
 BuildRequires:  swig
-BuildRequires:  systemd-rpm-macros
 BuildRequires:  valgrind
 BuildRequires:  pkgconfig(check) >= 0.9.10
 BuildRequires:  pkgconfig(glib-2.0)
@@ -63,8 +61,8 @@ to the "Unifying" wireless receiver.
 %package -n ratbagd
 Summary:        Service granting access to the configuration options of gaming mice
 Group:          Hardware/Other
-Recommends:     libratbag-tools
 Requires(pre):  group(games)
+Recommends:     libratbag-tools
 
 %description -n ratbagd
 libratbag is a configuration library for gaming mice. It provides a
@@ -76,7 +74,7 @@ This subpackage contains the daemon managing access to the hardware.
 %package devel
 Summary:        Development files for the libratbag game mouse config library
 Group:          Development/Libraries/C and C++
-Requires:       liblur3 = %version
+Requires:       liblur3 = %{version}
 
 %description devel
 libratbag is a configuration library for gaming mice. It provides a
@@ -106,7 +104,7 @@ mice.
 
 %build
 %meson -Ddocumentation=false -Ddbus-group=games \
-	--includedir="%_includedir/%name"
+	--includedir="%{_includedir}/%{name}"
 %meson_build
 
 %check
@@ -114,14 +112,13 @@ mice.
 
 %install
 %meson_install
-mkdir -p "%buildroot/%_sbindir"
-ln -s service "%buildroot/%_sbindir/rcratbagd"
-chmod -x "%buildroot/%_datadir/%name/logitech-g402.device"  # Fix this file for some reaseon being executable
-%fdupes %buildroot/%_prefix
+mkdir -p "%{buildroot}/%{_sbindir}"
+ln -s service "%{buildroot}/%{_sbindir}/rcratbagd"
+chmod -x "%{buildroot}/%{_datadir}/%{name}/logitech-g402.device"  # Fix this file for some reaseon being executable
+%fdupes %{buildroot}/%{_prefix}
 
 %post   -n liblur3 -p /sbin/ldconfig
 %postun -n liblur3 -p /sbin/ldconfig
-
 %pre -n ratbagd
 %service_add_pre ratbagd.service
 
@@ -135,28 +132,24 @@ chmod -x "%buildroot/%_datadir/%name/logitech-g402.device"  # Fix this file for 
 %service_del_postun ratbagd.service
 
 %files -n liblur3
-%defattr(-,root,root)
-%_libdir/liblur.so.3*
+%{_libdir}/liblur.so.3*
 
 %files devel
-%defattr(-,root,root)
-%_libdir/liblur.so
-%_libdir/pkgconfig/*.pc
-%_includedir/libratbag/
+%{_libdir}/liblur.so
+%{_libdir}/pkgconfig/*.pc
+%{_includedir}/libratbag/
 
 %files -n ratbagd
-%defattr(-,root,root)
-%_sbindir/ratbagd
-%_sbindir/rcratbagd
-%_unitdir/*.service
-%_datadir/dbus-1/
-%_datadir/%name/
-%_mandir/man8/*
+%{_sbindir}/ratbagd
+%{_sbindir}/rcratbagd
+%{_unitdir}/*.service
+%{_datadir}/dbus-1/
+%{_datadir}/%{name}/
+%{_mandir}/man8/*
 
 %files tools
-%defattr(-,root,root)
-%_bindir/lur-command
-%_bindir/ratbagctl
-%_mandir/man1/*
+%{_bindir}/lur-command
+%{_bindir}/ratbagctl
+%{_mandir}/man1/*
 
 %changelog
