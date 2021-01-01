@@ -24,11 +24,11 @@ License:        GPL-2.0-only AND LGPL-2.0-only
 Group:          Productivity/Publishing/PDF
 URL:            https://vslavik.github.io/diff-pdf/
 Source0:        https://github.com/vslavik/diff-pdf/archive/v%{version}/%{name}-%{version}.tar.gz
+Source1:        %{name}.1
 Patch0:         fix-find-poppler.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
-BuildRequires:  help2man
 BuildRequires:  pkgconfig
 BuildRequires:  wxWidgets-devel
 BuildRequires:  pkgconfig(cairo)
@@ -50,9 +50,9 @@ diff-pdf is a simple tool for comparing two PDF files.
 %install
 %make_install
 
-install -d -m 0755 %{buildroot}%{_mandir}/man1
-help2man -N -n "%{summary}" --version-string="%{version}" --no-discard-stderr \
-	 -o %{buildroot}%{_mandir}/man1/%{name}.1 %{buildroot}%{_bindir}/%{name}
+#help2man -N -n "%%{summary}" --version-string="%%{version}" --no-discard-stderr \
+#	  -o %%{buildroot}%%{_mandir}/man1/%%{name}.1 %%{buildroot}%%{_bindir}/%%{name}
+install -D -m 0644 -t %{buildroot}%{_mandir}/man1/ %{SOURCE1}
 
 %files
 %license COPYING COPYING.icons

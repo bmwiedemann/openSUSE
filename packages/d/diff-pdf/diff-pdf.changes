@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 31 07:21:17 UTC 2020 - munix9@googlemail.com
+
+- Pre-create diff-pdf.1 with help2man to work around GTK+ DISPLAY
+  errors (boo#1180471)
+
+-------------------------------------------------------------------
 Tue Dec 29 12:15:14 UTC 2020 - munix9@googlemail.com
 
 - Update to version 0.4.1
