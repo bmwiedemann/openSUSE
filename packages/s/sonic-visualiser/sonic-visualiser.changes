@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan  1 07:24:00 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Actually remove 0001-Fix-build-with-Qt-5.15.patch
+- Set correct download URL
+
+-------------------------------------------------------------------
+Thu Dec 31 22:19:56 UTC 2020 - Edgar Aichinger <edogawa@aon.at>
+
+- Update to 4.2
+- Remove 0001-Fix-build-with-Qt-5.15.patch (fixed upstream)
+-------------------------------------------------------------------
 Sat Jun  6 09:09:43 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix build with Qt 5.15:

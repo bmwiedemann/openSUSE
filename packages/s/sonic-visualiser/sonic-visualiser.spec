@@ -1,7 +1,7 @@
 #
 # spec file for package sonic-visualiser
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2016 Tom Mbrt <tom.mbrt@googlemail.com>
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 # Copyright (c) 2011 Evstifeev Roman <someuniquename@gmail.com>
@@ -20,19 +20,18 @@
 #
 
 
+%define urlcode 2755
 Name:           sonic-visualiser
-Version:        4.0.1
+Version:        4.2
 Release:        0
 Summary:        A program for viewing and analysing contents of audio files
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            http://www.sonicvisualiser.org/
-Source:         https://code.soundsoftware.ac.uk/attachments/download/2607/%{name}-%{version}.tar.gz
+Source:         https://code.soundsoftware.ac.uk/attachments/download/%{urlcode}/%{name}-%{version}.tar.gz
 Source1:        %{name}.xml
 # PATCH-FIX-OPENSUSE sonic-visualiser-system-dataquay.patch aloisio@gmx.com -- force use of system libdataquay
 Patch0:         sonic-visualiser-system-dataquay.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Fix-build-with-Qt-5.15.patch
 BuildRequires:  capnproto
 BuildRequires:  dssi
 BuildRequires:  flac
@@ -120,7 +119,6 @@ With Sonic Visualiser you can:
 %if 0%{?BUILD_ORIG}
 %patch0 -p1
 %endif
-%patch1 -p1
 
 # required with capnproto 0.7.0
 for x in *.pr* config* Makefile* ; do perl -i -p -e 's/c\+\+11/c++14/g' "$x" ; done
