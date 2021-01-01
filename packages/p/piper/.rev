@@ -121,4 +121,12 @@ changes incompatibly.</comment>
   * Use SPDX 3 license identifiers in the code</comment>
     <requestid>816455</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>6431392c1c97b6012e1898bebda09252</srcmd5>
+    <version>0.5.1</version>
+    <time>1609532027</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>859595</requestid>
+  </revision>
 </revisionlist>

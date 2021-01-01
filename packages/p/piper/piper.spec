@@ -24,10 +24,8 @@ Summary:        Configuration UI for gaming mice
 License:        GPL-2.0-only
 Group:          Hardware/Other
 URL:            https://github.com/libratbag/piper
-Source:         %name-%version.tar.xz
+Source:         %{name}-%{version}.tar.xz
 Patch1:         shebang-env.patch
-BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  python-rpm-macros
@@ -42,6 +40,7 @@ Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-lxml
 Requires:       ratbagd >= 0.10
+BuildArch:      noarch
 
 %description
 Piper is a GTK+ application to configure gaming mice. It is a graphical frontent
@@ -49,8 +48,7 @@ to the ratbagd DBUS daemon which provides the actual configuration support for t
 devices.
 
 %prep
-%setup -q
-%patch -P 1 -p1
+%autosetup -p1
 
 %build
 %meson
@@ -61,7 +59,7 @@ devices.
 
 %install
 %meson_install
-%fdupes %buildroot/%_prefix
+%fdupes %{buildroot}/%{_prefix}
 %suse_update_desktop_file -r org.freedesktop.Piper Settings HardwareSettings
 %find_lang %{name}
 
@@ -73,6 +71,6 @@ devices.
 %{_datadir}/metainfo/org.freedesktop.Piper.appdata.xml
 %{_datadir}/piper
 %{python3_sitelib}/*
-%doc %_mandir/man1/piper.1.gz
+%{_mandir}/man1/piper.1%{?ext_man}
 
 %changelog
