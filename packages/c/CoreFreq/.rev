@@ -36,4 +36,12 @@
 </comment>
     <requestid>844551</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>65780549834b543c0276796a26487d2b</srcmd5>
+    <version>1.82.2+git20201229</version>
+    <time>1609532032</time>
+    <user>dimstar_suse</user>
+    <comment>updated to git 20201229</comment>
+    <requestid>859617</requestid>
+  </revision>
 </revisionlist>

@@ -18,9 +18,9 @@
 
 # from coretypes.h
 %define corefreq_major  1
-%define corefreq_minor  81
-%define corefreq_rev    7
-%define gitdate 20201028
+%define corefreq_minor  82
+%define corefreq_rev    2
+%define gitdate 20201229
 Name:           CoreFreq
 Version:        %{corefreq_major}.%{corefreq_minor}.%{corefreq_rev}+git%{gitdate}
 Release:        0
