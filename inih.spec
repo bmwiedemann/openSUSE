@@ -74,13 +74,11 @@ bash -e cpptest.sh
 %postun -n libinih0 -p /sbin/ldconfig
 
 %files -n libinih0
-%defattr(-,root,root)
 %{_libdir}/libinih.so.*
 %{_libdir}/libINIReader.so.*
 %license LICENSE.txt
 
 %files -n libinih-devel
-%defattr(-,root,root)
 %{_includedir}/ini.h
 %{_includedir}/INIReader.h
 %{_libdir}/libinih.so
