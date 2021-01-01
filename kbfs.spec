@@ -17,8 +17,6 @@
 #
 
 
-%{go_nostrip}
-
 Name:           kbfs
 Version:        2.11.0
 Release:        0
@@ -36,11 +34,12 @@ BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  golang-packaging
 BuildRequires:  gzip
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(systemd)
-%{?systemd_requires}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       keybase-client
 Supplements:    keybase-client
+%{go_nostrip}
+%{?systemd_ordering}
 %{go_provides}
 
 %description
@@ -75,18 +74,17 @@ A thin command line utility for interacting with the Keybase Filesystem
 without using a filesystem mountpoint.
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch -P 1 -P 2 -p1
+%autosetup -p1
 
 %build
-%goprep github.com/keybase/%{name}
-%gobuild -tags production kbfsfuse
-%gobuild -tags production kbfstool
-%gobuild -tags production kbfsgit/git-remote-keybase
+%{goprep} github.com/keybase/%{name}
+%{gobuild} -tags production kbfsfuse
+%{gobuild} -tags production kbfstool
+%{gobuild} -tags production kbfsgit/git-remote-keybase
 
 %install
-%goinstall
-%gofilelist
+%{goinstall}
+%{gofilelist}
 install -D -m 644 packaging/linux/systemd/kbfs.service %{buildroot}%{_userunitdir}/kbfs.service
 install -D -m 644 -p %{SOURCE1} %{buildroot}/%{_docdir}/%{name}/README.SUSE
 install -D -m 644 -p %{SOURCE2} %{buildroot}/%{_docdir}/%{name}-git/README.SUSE
@@ -94,9 +92,9 @@ install -D -m 644 -p %{SOURCE3} %{buildroot}/%{_docdir}/%{name}-tool/README.SUSE
 %fdupes %{buildroot}/%{_prefix}
 
 %check
-%gotest github.com/keybase/%{name}/kbfsfuse
-%gotest github.com/keybase/%{name}/kbfstool
-%gotest github.com/keybase/%{name}/kbfsgit
+%{gotest} github.com/keybase/%{name}/kbfsfuse
+%{gotest} github.com/keybase/%{name}/kbfstool
+%{gotest} github.com/keybase/%{name}/kbfsgit
 
 %post
 %systemd_user_post kbfs.service
@@ -105,23 +103,20 @@ install -D -m 644 -p %{SOURCE3} %{buildroot}/%{_docdir}/%{name}-tool/README.SUSE
 %systemd_user_preun kbfs.service
 
 %files -f file.lst
-%defattr(-,root,root)
-/usr/bin/kbfsfuse
+%{_bindir}/kbfsfuse
 %{_userunitdir}/kbfs.service
 %{_docdir}/%{name}
 %{_docdir}/%{name}/README.SUSE
 %license LICENSE
 
 %files git
-%defattr(-,root,root)
-/usr/bin/git-remote-keybase
+%{_bindir}/git-remote-keybase
 %{_docdir}/%{name}-git
 %{_docdir}/%{name}-git/README.SUSE
 %license LICENSE
 
 %files tool
-%defattr(-,root,root)
-/usr/bin/kbfstool
+%{_bindir}/kbfstool
 %{_docdir}/%{name}-tool
 %{_docdir}/%{name}-tool/README.SUSE
 %license LICENSE
