@@ -22,4 +22,12 @@ war rightfully raised in my previous one.</comment>
   was fixed upstream.</comment>
     <requestid>841999</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>3281f1e12a806d3b961f326ac19dcf3d</srcmd5>
+    <version>52</version>
+    <time>1609532022</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>859584</requestid>
+  </revision>
 </revisionlist>
