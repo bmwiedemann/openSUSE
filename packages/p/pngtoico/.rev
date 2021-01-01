@@ -78,4 +78,12 @@ This is my first submit request to factory, so sorry if I somehow messed up the 
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="11" vrev="145">
+    <srcmd5>943cc798eea3ddcd61f52c32f2a118a8</srcmd5>
+    <version>1.0.1</version>
+    <time>1609532044</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>859632</requestid>
+  </revision>
 </revisionlist>

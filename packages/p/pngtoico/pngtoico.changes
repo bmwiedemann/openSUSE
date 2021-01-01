@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 24 18:00:20 UTC 2020 - Matthias Bach <marix@marix.org>
+
+- Modernise spec file
+
+-------------------------------------------------------------------
 Thu Jan  5 13:33:24 UTC 2012 - pgajdos@suse.com
 
-- build also with libpng15 
+- build also with libpng15
   * libpng15.patch
 
 -------------------------------------------------------------------
