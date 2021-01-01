@@ -18,7 +18,7 @@
 
 %define _version 4.0.0
 Name:           cinnamon
-Version:        4.8.0
+Version:        4.8.4
 Release:        0
 Summary:        GNU/Linux Desktop featuring a traditional layout
 License:        GPL-2.0-or-later AND LGPL-2.1-only
@@ -53,7 +53,7 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-xml
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cinnamon-desktop) >= %{_version}
-BuildRequires:  pkgconfig(cjs-1.0) >= %{version}
+BuildRequires:  pkgconfig(cjs-1.0) >= %{_version}
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gstreamer-1.0)
@@ -78,7 +78,6 @@ Requires:       iso-country-flags-png
 Requires:       libcinnamon-desktop-data >= %{_version}
 # gkbd-capplet / gkbd-keyboard-display.
 Requires:       gnomekbd-tools
-Requires:       libgnomekbd
 Requires:       muffin >= %{_version}
 Requires:       nemo
 Requires:       pkgconfig
@@ -149,8 +148,7 @@ Cinnamon Desktop Environment.
 Summary:        Upstream definitions of default settings and applications
 Group:          System/Libraries
 Requires:       %{name}-gschemas = %{version}
-Requires:       libgnomesu
-Supplements:    (%{name}-gschemas and branding-upstream)
+Supplements:    packageand(cinnamon-gschemas:branding-upstream)
 Conflicts:      %{name}-gschemas-branding
 Provides:       %{name}-gschemas-branding = %{version}
 # cinnamon-branding-upstream was last used in openSUSE Leap 42.2.
@@ -185,7 +183,7 @@ chmod a-x files%{_datadir}/%{name}/%{name}-settings/bin/__init__.py
 sed -i -e 's!imports.gi.NMClient!imports_gi_NMClient!g' js/ui/extension.js
 
 %build
-%meson
+%meson --libexecdir=%{_libdir}/%{name}
 %meson_build
 
 %install

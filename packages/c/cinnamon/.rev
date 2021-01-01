@@ -481,4 +481,68 @@
 </comment>
     <requestid>855396</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>fa561981e423b0c91899500dbd651ab0</srcmd5>
+    <version>4.8.4</version>
+    <time>1609532008</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.8.4.
+  * js/ui/settings.js: Return the default value of a setting if no
+    'value' field exists.
+  * meson: fix order-only dependency on generated headers for 
+    cinnamon-enum-types-h
+  * cinnamon-app.c: Never return NULL for the flatpak app id.
+  * Icons: Add cinnamon-virtual-keyboard.svg
+  * src/meson.build: Include the generated enum header in the other
+    build targets that use libcinnamon.
+- Updates for version 4.8.3
+  * menu applet: Don't destroy the favorite category when 
+    rebuilding the application list.
+  * cs_info: fix crash caused by missing key under getProcInfo
+  * Proper fix for builds with networkmanager disabled.
+  * l10n: Update POT
+  * Don't show a notification when a spice settings file is 
+    corrupt.
+  * favorites applet: remove debug line.
+  * favorites applet: Use the global XAppFavorites instance.
+- Updates for version 4.8.2
+  * Favorites applet: Fix papercuts
+- Updates for version 4.8.1
+  * cr-utils.c: Fix copy/paste error.
+  * debian/control: add cinnamon-desktop-dev back into the build 
+    deps.
+  * cinnamon-window-tracker.c: Remove window role check when 
+    identifying chromium web apps.
+  * meson: fix order-only dependency on generated headers
+  * Add muffin rpath to cinnamon executable
+  * Add libexecdir to meson
+  * meson: Fix build when network manager is disabled
+  * Grouped-Window-List: fix hoverMenu stuck after menu cycle 
+    (fix #9067); Continuation of PR #9710
+  * build: bump minimum version of glib.
+  * extension.js: remove superfluous line causing warnings
+  * Display entire stream name when its length &lt;= 20 characters
+  * sound applet: Listen for changes to certain properties on the 
+    org.mpris.MediaPlayer2 interface.
+  * cinnamon-window-tracker.c: Skip the browser-app check if 
+    wm_instance and wm_class are NULL.
+  * cinnamon-window-tracker.c: Revert unnecessary change in 
+    previous commit, do a better job explaining the desktop-less 
+    webapp check.
+  * src/meson.build: Fix log domain for cinnamon.
+  * sound applet: Fix displaying the tooltip when mouse-scrolling 
+    to change the volume.
+  * Include shift as magnifier shortcut
+  * menu-applet: change favorites category icon
+  * favorites applet: Use correct favorites icon.
+  * favorites applet: Hide on panel if there aren't any favorites, 
+    fix stuck visibility of the favorites category in the menu 
+    applet.
+  * menu applet: Follow-up to previous commit, the categoryId for 
+    favorites is actually 'favorite' for 'an individual favorite', 
+    so we should look for that, not the plural.
+- Remove explicit-lib-dependency libgnomekbd and libgnomesu.
+</comment>
+    <requestid>859464</requestid>
+  </revision>
 </revisionlist>
