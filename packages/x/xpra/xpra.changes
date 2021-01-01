@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Dec 31 19:17:12 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.0.6
+  * fix screen refresh performance issues, especially on jittery
+    links
+  * fix proxy instance control socket errors and process leak
+  * fix slow subcommands due to unnecessary calls to ldconfig
+  * fix server asynchronous packets getting delayed
+  * fix 'xpra _proxy' zombies getting left behind (ssh mode)
+  * fix failures to enable packet compression
+  * fix connection errors when a non interactive client is
+    already connected
+  * fix ssh connection errors with proxycommand or proxyhost
+    port numbers
+  * fix timeouts with paramiko ssh client
+  * fix ssh string escaping with MS Windows clients
+  * fix client rejecting printing requests
+  * fix duplicate / untimely audio-stop control packets with
+    HTML5 client
+  * fix console errors with Internet Explorer
+  * fix capslock regression on MacOS and MSWindows shadow servers
+  * fix errors accessing window handles on MS Windows (size
+    hints, opengl, etc)
+  * fix spurious refresh packets with mmap
+  * fix mmap not used with some non-video areas
+  * fix keyboard sub-layout detection with MS Windows clients
+  * fix clipboard cleanup errors on MS Windows
+  * fix clipboard with Wayland clients
+  * fix window repaint with Wayland clients
+  * fix printing diagnostic script
+  * fix Python 3.9 compatibility
+  * fix sysconfig path in systemd service file
+  * fix xdg-open override script error handling
+  * fix file-transfer failures with small files
+  * fix file-transfers with non-ascii filenames
+  * fix FIPS compatibility (no md5)
+  * better file transfer message format
+  * honour XPRA_XDG_EXPORT_ICONS=0 env var in all cases
+  * hide passwords from authentication debug logging
+  * make it possible to specify the socket type with systemd
+    socket activation
+  * re-add "~/.xpra" as socket-dir
+  * typo in man page
+- Refresh xpra-paths.patch
+
+-------------------------------------------------------------------
 Wed Nov 18 11:10:54 UTC 2020 - aloisio@gmx.com
 
 - Update to verison 4.0.5

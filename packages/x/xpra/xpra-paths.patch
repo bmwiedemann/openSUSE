@@ -1,8 +1,8 @@
-Index: xpra-4.0/setup.py
+Index: xpra-4.0.6/setup.py
 ===================================================================
---- xpra-4.0.orig/setup.py
-+++ xpra-4.0/setup.py
-@@ -1477,7 +1477,7 @@ else:
+--- xpra-4.0.6.orig/setup.py
++++ xpra-4.0.6/setup.py
+@@ -1485,7 +1485,7 @@ else:
          add_data_files("%s/man1" % man_path,  ["man/xpra.1", "man/xpra_launcher.1"])
          add_data_files("share/applications",  glob.glob("xdg/*.desktop"))
          add_data_files("share/mime/packages", ["xdg/application-x-xpraconfig.xml"])
@@ -11,7 +11,7 @@ Index: xpra-4.0/setup.py
          add_data_files("share/metainfo",      ["xdg/xpra.appdata.xml"])
  
      #here, we override build and install so we can
-@@ -1553,10 +1553,10 @@ else:
+@@ -1566,16 +1566,18 @@ else:
              if pam_ENABLED:
                  copytodir("etc/pam.d/xpra", "/etc/pam.d")
  
@@ -19,14 +19,7 @@ Index: xpra-4.0/setup.py
 +            systemd_dir = "__UNITDIR__"
              if service_ENABLED:
                  #Linux init service:
--                if os.path.exists("/bin/systemctl"):
-+                if os.path.exists("/usr/bin/systemctl"):
-                     if sd_listen_ENABLED:
-                         copytodir("service/xpra.service", systemd_dir)
-                     else:
-@@ -1564,7 +1564,9 @@ else:
-                 else:
-                     copytodir("service/xpra", "/etc/init.d")
+                 subs = {}
                  if os.path.exists("/etc/sysconfig"):
 -                    copytodir("etc/sysconfig/xpra", "/etc/sysconfig")
 +                    shutil.copy("etc/sysconfig/xpra", "etc/sysconfig/sysconfig.xpra")
@@ -34,8 +27,13 @@ Index: xpra-4.0/setup.py
 +                    copytodir("etc/sysconfig/sysconfig.xpra", "__FILLUPDIR__")
                  elif os.path.exists("/etc/default"):
                      copytodir("etc/sysconfig/xpra", "/etc/default")
-             if sd_listen_ENABLED:
-@@ -1676,7 +1678,6 @@ if scripts_ENABLED:
+                     subs[b"/etc/sysconfig"] = b"/etc/default"
+-                if os.path.exists("/bin/systemctl"):
++                if os.path.exists("/usr/bin/systemctl"):
+                     if sd_listen_ENABLED:
+                         copytodir("service/xpra.service", systemd_dir,
+                                   subs=subs)
+@@ -1695,7 +1697,6 @@ if scripts_ENABLED:
  toggle_modules(WIN32, "xpra/scripts/win32_service")
  
  if data_ENABLED:
