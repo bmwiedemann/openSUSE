@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 24 18:29:42 UTC 2020 - Matthias Bach <marix@marix.org> - 2.7.0
+
+- Modernise spec file
+
+-------------------------------------------------------------------
 Tue Apr 21 19:15:31 UTC 2020 - Matthias Bach <marix@marix.org>
 
 - Drop deprecated usage of %python3_only in favour of

@@ -18,9 +18,6 @@
 
 
 %define skip_python2 1
-
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-
 Name:           python-ntfy
 Version:        2.7.0
 Release:        0
@@ -30,32 +27,30 @@ Group:          Development/Languages/Python
 URL:            https://github.com/dschep/ntfy
 Source:         ntfy-%{version}.tar.xz
 BuildRequires:  %{python_module appdirs}
-BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module ruamel.yaml}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  python-rpm-macros
 # test requirements
 BuildRequires:  %{python_module emoji}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module ruamel.yaml}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sleekxmpp}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-appdirs
 Requires:       python-requests
 Requires:       python-ruamel.yaml
-Suggests:       python-sleekxmpp
-Suggests:       python-dnspython3
-Suggests:       python-slacker
-Suggests:       python-telegram-send
-Suggests:       python-psutil
-Suggests:       python-instapush
-Suggests:       python-rocketchat-API
-Suggests:       python-emoji
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Suggests:       python-dnspython3
+Suggests:       python-emoji
+Suggests:       python-instapush
+Suggests:       python-psutil
+Suggests:       python-rocketchat-API
+Suggests:       python-slacker
+Suggests:       python-sleekxmpp
+Suggests:       python-telegram-send
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -72,7 +67,7 @@ Quickstart
     $ ntfy done sleep 10
 
 %prep
-%setup -q -n ntfy-%{version}
+%autosetup -n ntfy-%{version}
 
 %build
 %python_build
@@ -92,7 +87,6 @@ Quickstart
 %python_uninstall_alternative ntfy
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/ntfy
