@@ -19,8 +19,9 @@
 %define soname  libcjs
 %define sover   0
 %define typelib typelib-1_0-CjsPrivate-1_0
+%define __requires_exclude_from ^.*installed-tests.*$
 Name:           cjs
-Version:        4.8.0
+Version:        4.8.1
 Release:        0
 Summary:        JavaScript module used by Cinnamon
 License:        MIT AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later)
@@ -86,7 +87,7 @@ This package contains development files for cjs.
 %package tests
 Summary:        Tests for the cjs package
 Group:          System/GUI/Other
-Requires:       %{name}%{?_isa} = %{?epoch}:%{version}-%{release}
+Requires:       %{name} = %{version}
 
 %description tests
 The cjs-tests package contains tests that can be used to verify
@@ -125,7 +126,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_includedir}/%{name}-1.0/
 %{_libdir}/%{soname}.so
 %{_libdir}/pkgconfig/%{name}*.pc
-%{_datadir}/cjs-1.0/
+%{_datadir}/%{name}-1.0/
 
 %files tests
 %{_libdir}/%{name}/installed-tests/
