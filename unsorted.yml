@@ -23627,6 +23627,7 @@ unsorted:
   - python3-pymisp 
   - python3-pymod2pkg 
   - python3-pymol 
+  - python3-pympv 
   - python3-pymssql 
   - python3-pynamodb 
   - python3-pynest2d 
@@ -25726,7 +25727,6 @@ unsorted:
   - ruby2.7-rubygem-mustermann-testsuite 
   - ruby2.7-rubygem-mysql2-doc 
   - ruby2.7-rubygem-net-ldap-doc 
-  - ruby2.7-rubygem-net-ldap-testsuite 
   - ruby2.7-rubygem-net-scp-doc 
   - ruby2.7-rubygem-net-scp-doc-1_1 
   - ruby2.7-rubygem-net-scp-doc-1_2 
@@ -26709,7 +26709,6 @@ unsorted:
   - ruby3.0-rubygem-mysql2-doc 
   - ruby3.0-rubygem-net-ldap 
   - ruby3.0-rubygem-net-ldap-doc 
-  - ruby3.0-rubygem-net-ldap-testsuite 
   - ruby3.0-rubygem-net-scp 
   - ruby3.0-rubygem-net-scp-1_1 
   - ruby3.0-rubygem-net-scp-1_2 
@@ -27209,6 +27208,9 @@ unsorted:
   - ruby3.0-rubygem-xdg-testsuite-2 
   - ruby3.0-rubygem-xml-simple 
   - ruby3.0-rubygem-xml-simple-doc 
+  - ruby3.0-rubygem-yajl-ruby 
+  - ruby3.0-rubygem-yajl-ruby-doc 
+  - ruby3.0-rubygem-yajl-ruby-testsuite 
   - ruby3.0-rubygem-zeitwerk-doc 
   - rubygem-builder-3_0 
   - rubygem-builder-3_0-doc 
