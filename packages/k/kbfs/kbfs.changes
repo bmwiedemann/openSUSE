@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 24 15:36:30 UTC 2020 - Matthias Bach <marix@marix.org>
+
+- Modernise spec file
+
+-------------------------------------------------------------------
 Mon Feb  3 14:04:03 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

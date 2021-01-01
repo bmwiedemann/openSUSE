@@ -44,4 +44,12 @@ should be accepted after, or in combination with that package.</comment>
     <comment></comment>
     <requestid>769871</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>9bd05e47ee4c469b2224bb1891f942ba</srcmd5>
+    <version>2.11.0</version>
+    <time>1609532040</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>859622</requestid>
+  </revision>
 </revisionlist>
