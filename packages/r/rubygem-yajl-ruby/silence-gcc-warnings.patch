@@ -1,0 +1,22 @@
+diff --git a/ext/yajl/yajl_ext.c b/ext/yajl/yajl_ext.c
+index 97a052c..18dca25 100644
+--- a/ext/yajl/yajl_ext.c
++++ b/ext/yajl/yajl_ext.c
+@@ -885,6 +885,8 @@ static VALUE rb_yajl_projector_build_simple_value(yajl_event_stream_t parser, ya
+ 
+         default:;
+             assert(0);
++            // silence gcc error handling
++            return Qnil;
+     }
+ }
+ 
+@@ -923,6 +925,8 @@ static VALUE rb_yajl_projector_build_string(yajl_event_stream_t parser, yajl_eve
+ 
+         default:; {
+             assert(0);
++            // silence gcc error handling
++            return Qnil;
+         }
+     }
+ }
