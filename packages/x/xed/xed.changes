@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec 26 20:12:22 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 2.8.3.
+  * Packaging: Add missing dependency on gir1.2-gtksource-4
+- Updates for version 2.8.2.
+  * l10n: Update translations
+
+-------------------------------------------------------------------
 Tue Dec  8 17:28:48 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 2.8.1.
