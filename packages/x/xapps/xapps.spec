@@ -20,17 +20,13 @@
 %define soname  libxapp
 %define sover   1
 Name:           xapps
-Version:        2.0.0
+Version:        2.0.4
 Release:        0
 Summary:        XApp library and common files
 License:        GPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/linuxmint/xapps
 Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/xapp-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE xapps-void-return-no-return.patch -- Satisfy rpmlint checks.
-Patch0:         xapps-void-return-no-return.patch
-# PATCH-FIX-UPSTREAM fix_sn-item_control_reaches_end_of_non-void_function.patch andythe_great@pm.me -- Fix control reaches end of non-void function in sn-item.c
-Patch1:         fix_sn-item_control_reaches_end_of_non-void_function.patch
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc
 BuildRequires:  hicolor-icon-theme
@@ -38,6 +34,7 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-gobject
 BuildRequires:  vala
+BuildRequires:  xinit
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.22.0
@@ -117,8 +114,6 @@ Mate status applet with HIDPI support
 
 %prep
 %setup -q -n xapp-%{version}
-%patch0 -p1
-%patch1 -p1
 
 %build
 python3 -c 'import gi;print(gi._overridesdir)'
@@ -151,7 +146,7 @@ rm %{buildroot}%{_bindir}/{pastebin,upload-system-info}
 %license debian/copyright
 %doc debian/changelog
 %{_libdir}/%{soname}.so.%{sover}*
-%{_libdir}/libxapp.so.2.0.0
+%{_libdir}/libxapp.so.%{version}
 
 %files -n %{typelib}
 %{_libdir}/girepository-1.0/XApp-1.0.typelib
@@ -173,15 +168,17 @@ rm %{buildroot}%{_bindir}/{pastebin,upload-system-info}
 %files common
 %license debian/copyright
 %doc debian/changelog
+%dir %{_sysconfdir}/X11/xinit/
+%dir %{_sysconfdir}/X11/xinit/xinitrc.d/
+%{_sysconfdir}/xdg/autostart/xapp-sn-watcher.desktop
+%{_sysconfdir}/X11/xinit/xinitrc.d/80xapp-gtk3-module.sh
 %{_bindir}/xfce4-set-wallpaper
 %{_datadir}/icons/hicolor/*/actions/*.*
 %{_datadir}/icons/hicolor/*/categories/*.*
 %{_datadir}/glib-2.0/schemas/org.x.apps.*.xml
-%dir %{_sysconfdir}/X11/Xsession.d
-%config %{_sysconfdir}/X11/Xsession.d/80xapp-gtk3-module
-%{_sysconfdir}/xdg/autostart/xapp-sn-watcher.desktop
 %{_datadir}/dbus-1/services/org.x.StatusNotifierWatcher.service
 %{_datadir}/icons/hicolor/scalable/emblems/emblem-xapp-favorite.svg
+%{_datadir}/icons/hicolor/scalable/*/xapp-*.svg
 
 %files mate
 %dir %{_datadir}/mate-panel/

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Dec 26 17:54:55 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 2.0.4.
+  * Change shebang path
+- Update to version 2.0.3
+  * fix "build/install: Make the favorite gtk module's xinit file 
+    executable."
+  * Add shebang to 80xapp-gtk3-module.sh
+  * l10n: Update translations
+- Update to version 2.0.2
+  * Add an extra icon for favorites
+- Update to version 2.0.1
+  * Update docs
+  * fix xorg-server startup variable
+  * favorites: Make sure initializing favorites also initializes 
+    the uri scheme.
+  * xapp-favorites.c: Add a note about the favorites uri in the 
+    class description.
+  * build/install: Make the favorite gtk module's xinit file 
+    executable.
+  * build: update some dependencies.
+  * xapp-gtk3-module.c: Override GObject's constructed vfunc to 
+    inject the favorites uri into GtkPlacesSidebars rather than 
+    hooking onto a signal.
+  * build: use buildtype=debugoptimized by default.
+  * sn-item.c: Fix typo.
+  * various: Fix some previously missed build warnings.
+  * xapp-gtk3-module.c: Don't add a favorites section if there 
+    aren't any favorites.
+  * favorite-vfs-file.c: Don't assume a GError was passed in for 
+    file_query_info.
+  * favorite-vfs-file-enumerator.c: Fix a couple more places where 
+    an error was assumed.
+  * change favorite icons
+  * favorite-vfs-file.c: Don't free priv->uri until finalize.
+  * favorites: Fix some leaks revealed by valgrind.
+- Remove fix_sn-item_control_reaches_end_of_non-void_function.patch
+  and xapps-void-return-no-return.patch, fixed
+
+-------------------------------------------------------------------
 Sun Dec  6 16:43:39 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 2.0.0.
