@@ -51,4 +51,20 @@ firehol (3.1.6) - 2018-08-13
 </comment>
     <requestid>655449</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cf8974e62ed2bd6fe462c9b27fe136ce</srcmd5>
+    <version>3.1.7</version>
+    <time>1609532052</time>
+    <user>dimstar_suse</user>
+    <comment>- firehol (3.1.7) - 2020-12-31
+  * FireHOL
+    - Fix dhcpv6 example to say dhcpv6 #438
+    - blacklist - add &quot;nolog&quot; option
+    - blacklist - reject with tcp-reset for outbound TCP connections
+    - firehol.service - Use `firehol start` for  ExecReload=
+    - Don't drop icmpv6 rules with FIREHOL_RULESET_MODE optimal #372
+  * FireQos
+    - workaround for cases where &quot;-ifb&quot; name gets truncated</comment>
+    <requestid>859646</requestid>
+  </revision>
 </revisionlist>

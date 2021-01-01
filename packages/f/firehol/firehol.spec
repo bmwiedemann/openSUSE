@@ -1,7 +1,7 @@
 #
 # spec file for package firehol
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           firehol
-Version:        3.1.6
+Version:        3.1.7
 Release:        0
 Summary:        Tools to build stateful firewalls and traffic shaping
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Security
-Url:            http://firehol.org/
+URL:            https://firehol.org/
 Source:         https://github.com/firehol/firehol/releases/download/v%{version}/firehol-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
 BuildRequires:  curl
@@ -88,13 +88,12 @@ BuildArch:      noarch
 %description doc
 Contains documentation and configuration examples for FireHOL.
 
-
 %prep
 %setup -q
 
 %build
 %configure --docdir=%{_docdir}/%{name}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -137,11 +136,11 @@ chmod -Rv o= %{buildroot}%{_sysconfdir}/firehol/
 %doc ChangeLog README THANKS
 %license COPYING
 %{_docdir}/%{name}
-%{_mandir}/man1/firehol.1%{ext_man}
-%{_mandir}/man1/fireqos.1%{ext_man}
-%{_mandir}/man1/vnetbuild.1%{ext_man}
-%{_mandir}/man5/firehol*.5%{ext_man}
-%{_mandir}/man5/fireqos*.5%{ext_man}
-%{_mandir}/man5/vnetbuild*.5%{ext_man}
+%{_mandir}/man1/firehol.1%{?ext_man}
+%{_mandir}/man1/fireqos.1%{?ext_man}
+%{_mandir}/man1/vnetbuild.1%{?ext_man}
+%{_mandir}/man5/firehol*.5%{?ext_man}
+%{_mandir}/man5/fireqos*.5%{?ext_man}
+%{_mandir}/man5/vnetbuild*.5%{?ext_man}
 
 %changelog
