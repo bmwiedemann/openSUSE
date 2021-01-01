@@ -17,8 +17,6 @@
 #
 
 
-%{go_nostrip}
-
 Name:           keybase-client
 Version:        5.5.2
 Release:        0
@@ -33,9 +31,10 @@ BuildRequires:  fdupes
 BuildRequires:  go1.14
 BuildRequires:  golang-packaging
 BuildRequires:  gzip
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(systemd)
+%{go_nostrip}
 %{?systemd_ordering}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{go_provides}
 
 %description
@@ -49,18 +48,18 @@ up keys for such accounts that people have created a proof for.
 %setup -q -n client-%{version}
 
 %build
-%goprep github.com/keybase/client/go
-%gobuild -tags production keybase
+%{goprep} github.com/keybase/client/go
+%{gobuild} -tags production keybase
 
 %install
-%goinstall
-%gofilelist
+%{goinstall}
+%{gofilelist}
 install -D -m 644 -p %{SOURCE2} %{buildroot}%{_userunitdir}/keybase.service
 install -D -m 644 -p %{SOURCE1} %{buildroot}/%{_docdir}/%{name}/README.SUSE
 %fdupes %{buildroot}/%{_prefix}
 
 %check
-%gotest github.com/keybase/client/go/keybase
+%{gotest} github.com/keybase/client/go/keybase
 
 %post
 %systemd_user_post keybase.service
@@ -69,8 +68,7 @@ install -D -m 644 -p %{SOURCE1} %{buildroot}/%{_docdir}/%{name}/README.SUSE
 %systemd_user_preun keybase.service
 
 %files -f file.lst
-%defattr(-,root,root)
-/usr/bin/keybase
+%{_bindir}/keybase
 %{_userunitdir}/keybase.service
 %{_docdir}/%{name}
 %{_docdir}/%{name}/README.SUSE
