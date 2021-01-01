@@ -34,4 +34,18 @@
 </comment>
     <requestid>855483</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4f427f2578b2ded4437d6d8176c08a70</srcmd5>
+    <version>1.4.8</version>
+    <time>1609532000</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.8.
+  * Add mate-system-log
+- Updates for version 1.4.7.
+  * Remove input-keyboard
+  * Remove links pointing to input-keyboard
+  * Add cinnamon-virtual-keyboard
+</comment>
+    <requestid>859456</requestid>
+  </revision>
 </revisionlist>

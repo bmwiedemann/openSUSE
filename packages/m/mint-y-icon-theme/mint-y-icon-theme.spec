@@ -18,7 +18,7 @@
 
 %define _name   Mint-Y
 Name:           mint-y-icon-theme
-Version:        1.4.6
+Version:        1.4.8
 Release:        0
 Summary:        Mint-Y icon theme
 License:        CC-BY-SA-4.0 AND GPL-3.0-or-later
