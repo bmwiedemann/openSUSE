@@ -16,4 +16,19 @@
 </comment>
     <requestid>854281</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3eb12ef4483a8ce4608d1a2a762347c3</srcmd5>
+    <version>1.5.7</version>
+    <time>1609532038</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.7:
+  * Fix timeout issue while in long pause
+    (&gt;60S, play transition started from other client was not detected)
+  * Fix ohinfo issue resulting in no cover art display in Kazoo &quot;currently playing&quot; screen.
+  * Fix a number of issues in radio metadata.
+  * The minimum effective volume adjustment was 5. Reset it to 1.
+  * Cache update issues in OH playlist resulted in incomplete metadata.
+</comment>
+    <requestid>859615</requestid>
+  </revision>
 </revisionlist>

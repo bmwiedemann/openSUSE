@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 31 14:38:34 UTC 2020 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to 1.5.7:
+  * Fix timeout issue while in long pause
+    (>60S, play transition started from other client was not detected)
+  * Fix ohinfo issue resulting in no cover art display in Kazoo "currently playing" screen.
+  * Fix a number of issues in radio metadata.
+  * The minimum effective volume adjustment was 5. Reset it to 1.
+  * Cache update issues in OH playlist resulted in incomplete metadata.
+
+-------------------------------------------------------------------
 Wed Dec  9 13:56:21 UTC 2020 - Michael Pujos <pujos.michael@gmail.com>
 
 - update to 1.5.5:
