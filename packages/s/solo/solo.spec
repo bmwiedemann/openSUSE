@@ -1,6 +1,7 @@
 #
 # spec file for package solo
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019 Matthias Bach <marix@marix.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,12 +21,11 @@ Name:           solo
 Version:        2.3.0
 Release:        0
 Summary:        Support for the Solo and Solo Tap security keys
-License:        Apache-2.0 or MIT
+License:        Apache-2.0 OR MIT
 Group:          Hardware/Other
-Url:            https://solokeys.com
+URL:            https://solokeys.com
 Source:         https://github.com/solokeys/solo/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        solo-rpmlintrc
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Miscellaneous tools and helpers to work with the Solo and Solo Tap security keys.
@@ -43,7 +43,7 @@ This package contains the udev rule file for the Solo and Solo Tap security keys
 These are required if local non-root users are supposed to be able to use the keys.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 
@@ -57,4 +57,3 @@ install -Dm 644 udev/70-%{name}keys-access.rules %{buildroot}%{_udevrulesdir}/70
 %{_udevrulesdir}/70-%{name}keys-access.rules
 
 %changelog
-
