@@ -1,7 +1,7 @@
 #
 # spec file for package python-evdev
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define modname evdev
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-evdev
 Version:        1.3.0
 Release:        0
@@ -46,7 +45,7 @@ input devices that can inject events directly into the input
 subsystem.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %python_build
@@ -56,7 +55,7 @@ subsystem.
 %python_expand %fdupes %{buildroot}/%{$python_sitearch}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} py.test-%{$python_version} tests -k 'not test_uinput'
+%pytest_arch tests -k 'not test_uinput'
 
 %files %{python_files}
 %{python_sitearch}/evdev*
