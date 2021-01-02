@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 29 14:26:15 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- The patch to fix the excessive memory use by lconvert was backported
+  to Qt 5.15.2 in Tumbleweed (remove mitigations for this version)
+
+-------------------------------------------------------------------
 Mon Dec 28 12:46:17 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to version 0.20.4
