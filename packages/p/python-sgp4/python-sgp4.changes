@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan  2 00:26:53 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to Version 2.14
+  * New data formats: added OMM message support for both XML and
+    CSV, and added support for the new Alpha-5 extension to TLE
+    files.
+- Drop sgp4-fix69-precision.patch merged upstream
+
+-------------------------------------------------------------------
 Fri Oct 16 17:49:47 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Apply upstreams sgp4-fix69-precision.patch instead of own fix

@@ -1,7 +1,7 @@
 #
 # spec file for package python-sgp4
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-sgp4
-Version:        2.13
+Version:        2.14
 Release:        0
 Summary:        Track earth satellite TLE orbits using up-to-date 2010 version of SGP4
 License:        MIT
 URL:            https://github.com/brandon-rhodes/python-sgp4
 Source:         https://files.pythonhosted.org/packages/source/s/sgp4/sgp4-%{version}.tar.gz
 Source99:       https://github.com/brandon-rhodes/python-sgp4/raw/master/LICENSE
-# PATCH-FIX-UPSTREAM sgp4-fix69-precision.patch -- relax precision on platforms gh#brandon-rhodes/python-sgp4#69
-Patch1:         https://github.com/brandon-rhodes/python-sgp4/commit/8d6da331aace3b9c78e9973273911bc269d21d7e.patch#/sgp4-fix69-precision.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
@@ -67,10 +65,13 @@ export CFLAGS="%{optflags}"
 %check
 # Upstreams custom tests.py does not exit with error code on import failures.
 # Use pytest instead.
-cd .. # SLE12 workaround
 %pytest_arch --pyargs sgp4.tests
 # Only the doctests acually import the compiled extension and fail if it is not present
+mkdir testdocs # SLE15 pytest 3 workaround
+cp sgp4/sample_omm.* testdocs
+pushd testdocs
 %pytest_arch --pyargs sgp4 --doctest-modules
+popd
 
 %files %{python_files}
 %license LICENSE
