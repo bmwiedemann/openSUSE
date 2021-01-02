@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 29 20:58:56 UTC 2020 - Markéta Machová <mmachova@suse.com>
+
+- timezone update 2020f (bsc#1177460)
+  * 'make rearguard_tarballs' no longer generates a bad rearguard.zi,
+    fixing a 2020e bug.
+
+-------------------------------------------------------------------
 Wed Dec 23 06:55:02 UTC 2020 - Markéta Machová <mmachova@suse.com>
 
 - timezone update 2020e (bsc#1177460)

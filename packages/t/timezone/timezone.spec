@@ -22,7 +22,7 @@ License:        BSD-3-Clause AND SUSE-Public-Domain
 Group:          System/Base
 URL:            http://www.iana.org/time-zones
 # COMMON-BEGIN
-Version:        2020e
+Version:        2020f
 Release:        0
 Source:         https://www.iana.org/time-zones/repository/releases/tzdata%{version}.tar.gz
 Source1:        https://www.iana.org/time-zones/repository/releases/tzcode%{version}.tar.gz
