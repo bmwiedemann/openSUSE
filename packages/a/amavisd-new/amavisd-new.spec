@@ -1,7 +1,7 @@
 #
 # spec file for package amavisd-new
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,9 @@
 %define avdb           %{_localstatedir}/spool/amavis/db
 %define avquarantine   %{_localstatedir}/spool/amavis/virusmails
 %define logmsg         logger -t %{name}/rpm
-%define avuser         vscan
-%define avgroup        vscan
+
 Name:           amavisd-new
-Version:        2.12.0
+Version:        2.12.1
 Release:        0
 Summary:        High-Performance E-Mail Virus Scanner
 License:        GPL-2.0-or-later
@@ -35,52 +34,64 @@ Source3:        amavisd-new-rpmlintrc
 Source4:        amavisd-milter-1.6.1.tar.gz
 Source5:        amavis.service
 Source6:        amavisd-milter.sh
+%if 0%{?suse_version} <= 1500
+Source10:       system-user-vscan.conf
+%endif
 Patch1:         activate_virus_scanner.diff
 # PATCH-FIX-UPSTREAM -- detect myhostname via Net::Domain::hostfqdn()
 Patch2:         amavisd-new-2.10.1-myhostname.patch
-BuildRequires:  sed
 BuildRequires:  sendmail
 BuildRequires:  sendmail-devel
-BuildRequires:  systemd-rpm-macros
-BuildRequires:  xz
-Requires:       bzip2
+%if 0%{?suse_version} > 1500
+BuildRequires:  group(vscan)
+BuildRequires:  user(vscan)
+%else
+BuildRequires:  sysuser-tools
+%endif
 Requires:       file
-Requires:       gzip
-Requires:       perl-Archive-Tar
-Requires:       perl-Archive-Zip
-Requires:       perl-BerkeleyDB
-Requires:       perl-Convert-BinHex
-Requires:       perl-Convert-TNEF
-Requires:       perl-IO-stringy
-Requires:       perl-MIME-tools
-Requires:       perl-Mail-DKIM
-Requires:       perl-MailTools
-Requires:       perl-Net-LibIDN
-Requires:       perl-Net-Server
-Requires:       perl-Unix-Syslog
-Requires:       perl-spamassassin
-Requires:       sharutils
 Requires:       smtp_daemon
-Requires:       spamassassin
-Requires:       zoo
+Requires:       perl(Archive::Zip) >= 1.14
+Requires:       perl(Compress::Raw::Zlib) >= 2.017
+Requires:       perl(Compress::Zlib) >= 1.35
+Requires:       perl(Digest::MD5) >= 2.22
+Requires:       perl(MIME::Base64)
+Requires:       perl(MIME::Parser)
+Requires:       perl(Mail::DKIM) >= 0.31
+Requires:       perl(Mail::Internet) >= 1.58
+Requires:       perl(Net::Domain)
+Requires:       perl(Net::Server) >= 2.0
+Requires:       perl(Time::HiRes) >= 1.49
+Requires:       perl(Unix::Syslog)
 Requires(post): %fillup_prereq
-Requires(post): grep
-Requires(post): util-linux-systemd
-Requires(pre):  shadow
-Requires(pre):  util-linux-systemd
+Requires(post): %{_bindir}/newaliases
+%if 0%{?suse_version} > 1500
+Requires(pre):  group(vscan)
+Requires(pre):  user(vscan)
+%else
+Requires(pre):  system-user-vscan
+%endif
 Recommends:     %{name}-docs = %{version}
-Recommends:     binutils
+Recommends:     arc
+Recommends:     arj
+Recommends:     bzip2
+Recommends:     cabextract
 Recommends:     clamav
+Recommends:     cpio
+Recommends:     gzip
+Recommends:     lhasa
+Recommends:     lzop
+Recommends:     ncompress
 Recommends:     p7zip
-Recommends:     perl-Authen-SASL
-Recommends:     perl-DBI
-Recommends:     perl-Mail-ClamAV
-Recommends:     perl-ldap
-Recommends:     perl-spamassassin
-Recommends:     unar
+Recommends:     spax
+Recommends:     tnef
+Recommends:     unrar
+Recommends:     zoo
+Recommends:     perl(Mail::SpamAssassin)
+Recommends:     perl(Net::LDAP)
+Suggests:       perl(DBD::mysql)
+Suggests:       perl(DBI)
 Provides:       amavisd-milter = 1.6.1
 Obsoletes:      amavisd-milter < 1.6.1
-OrderWithRequires(post): %{_bindir}/newaliases
 %{?systemd_ordering}
 
 %description
@@ -105,6 +116,16 @@ via (E)SMTP, LMTP.
 
 This package contains the documentation and Release-Notes.
 
+%if 0%{?suse_version} <= 1500
+%package -n system-user-vscan
+Summary:        System user and group vscan
+Group:          Productivity/Networking/Security
+%sysusers_requires
+
+%description -n system-user-vscan
+This package provides the system user 'vscan'.
+%endif
+
 %prep
 %setup -q -n amavis-v%{version} -a 4
 %patch1 -p1
@@ -115,9 +136,7 @@ for i in $(find -maxdepth 1 -name "amavisd*" | sed s#./##); do
     if [[ $i == *spec ]] ; then continue; fi
     if [[ $i == amavisd-milter* ]] ; then continue; fi
     echo "patching file $i"
-    sed -i "s|\$daemon_user  = 'vscan';|\$daemon_user  = '%{avuser}';|g; \
-            s|\$daemon_group = 'vscan';|\$daemon_group = '%{avgroup}';|g; \
-            s|^# \$MYHOME =.*|\$MYHOME = '%{avspool}';|g; \
+    sed -i "s|^# \$MYHOME =.*|\$MYHOME = '%{avspool}';|g; \
             s|/var/amavis/db|%{avdb}|g; \
             s|/var/virusmails|%{avquarantine}|g; \
             s|/var/amavis/amavisd.sock|%{avspool}/amavisd.sock|g" $i
@@ -126,6 +145,10 @@ done
 # ---------------------------------------------------------------------------
 
 %build
+%if 0%{?suse_version} <= 1500
+# Create vscan user
+%sysusers_generate_pre %{SOURCE10} vscan
+%endif
 cd amavisd-milter*
 %configure --localstatedir="%{avspool}"
 %make_build
@@ -133,6 +156,11 @@ cd amavisd-milter*
 # ---------------------------------------------------------------------------
 
 %install
+%if 0%{?suse_version} <= 1500
+mkdir -p %{buildroot}%{_sysusersdir}
+mkdir -p %{buildroot}%{avspool}
+install -m 644 %{SOURCE10} %{buildroot}%{_sysusersdir}/system-user-vscan.conf
+%endif
 mkdir -p %{buildroot}%{avquarantine}
 mkdir -p %{buildroot}%{avspool}/{tmp,var}
 mkdir -p %{buildroot}%{avdb}
@@ -156,40 +184,29 @@ install -m 755 %{SOURCE6} %{buildroot}%{_sbindir}/
 cd amavisd-milter*
 %make_install
 
+%if 0%{?suse_version} <= 1500
+%pre -n system-user-vscan -f vscan.pre
+%endif
+
 %pre
-getent group %{avgroup} >/dev/null || \
-	%{_sbindir}/groupadd -r %{avgroup}
-%{logmsg} "Added group %{avgroup} for package %{name}"
-getent passwd %{avuser} >/dev/null || \
-	%{_sbindir}/useradd -r -o -g %{avgroup} -u 65 -s /bin/false \
-	-c "Vscan account" -d %{avspool} %{avuser}
-%{_sbindir}/usermod %{avuser} -g %{avgroup} 2> /dev/null || :
-%{logmsg} "Added user %{avuser} for package %{name}"
 %service_add_pre amavis.service
 
 %preun
 %service_del_preun amavis.service
-exit 0
 
 %post
 %{fillup_only -n amavis}
-%service_add_post amavis.service
-# Update ?
-if [ ${1:-0} -gt 1 ]; then
- : OK currently nothing to do
-else
-  if [ -r etc/aliases ]; then
-    if ! grep -q "^virusalert:" etc/aliases; then
-      echo "virusalert:	root" >> etc/aliases
-      %{logmsg} "Added alias for user virusalert to %{_sysconfdir}/aliases"
-      if [ -x usr/bin/newaliases ]; then
-          usr/bin/newaliases >/dev/null 2>&1 || true
-      else
-          %{logmsg} "Cannot execute newaliases. Please run it manually."
-      fi
-    fi
+# Only on install
+if [ ${1:-0} -eq 1 ] && ! grep -q "^virusalert:" %{_sysconfdir}/aliases; then
+  echo "virusalert:	root" >> %{_sysconfdir}/aliases
+  %logmsg "Added alias for user virusalert to %{_sysconfdir}/aliases"
+  if [ -x %{_bindir}/newaliases ]; then
+    newaliases >/dev/null 2>&1 || :
+  else
+    %logmsg "Cannot execute newaliases. Please run it manually."
   fi
 fi
+%service_add_post amavis.service
 
 %postun
 %service_del_postun amavis.service
@@ -207,8 +224,7 @@ fi
 %{perl_vendorlib}/JpegTester.pm
 %{_unitdir}/amavis.service
 %{_sbindir}/amavisd-milter.sh
-%defattr(0750,%{avuser},%{avgroup}, 0750)
-%dir %{avspool}
+%defattr(0750,vscan,vscan,0750)
 %dir %{avspool}/tmp
 %dir %{avspool}/db
 %dir %{avspool}/var
@@ -223,5 +239,11 @@ fi
 %doc MANIFEST TODO
 %doc test-messages
 %{_mandir}/man8/amavisd-milter*
+
+%if 0%{?suse_version} <= 1500
+%files -n system-user-vscan
+%dir %attr(0750,vscan,vscan) %{avspool}
+%{_sysusersdir}/system-user-vscan.conf
+%endif
 
 %changelog
