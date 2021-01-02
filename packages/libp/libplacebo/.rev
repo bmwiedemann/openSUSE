@@ -574,4 +574,196 @@ Other changes:
   * improve several vulkan log messages by using friendly names of</comment>
     <requestid>849913</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>43ded406526b91a33f2ec98aa2ecfad6</srcmd5>
+    <version>3.104.0</version>
+    <time>1609619452</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.104.0
+This is a major release, introducing many new features and
+modifications. Most importantly, libplacebo now interoperates well
+with FFmpeg's libav* abstractions. This is primarily exposed via a
+new set of helpers, &lt;libplacebo/utils/libav.h&gt;, implemented as a
+single header library. In addition to this, a number of other
+supporting changes have been made to the API, most notably the
+unification of `pl_image` and `pl_render_target` into a single
+`pl_frame` concept, similar in spirit to AVFrame. As such,
+libplacebo now supports **rendering to planar targets**, including
+subsampled YCbCr.
+Besides the libav* compatibility changes, this release also brings
+with it a new feature for custom shaders: buffer blocks, and
+persistent storage. This can be used by third parties to implement
+stateful shaders (e.g. motion interpolation or temporal
+deinterlacing), or be leveraged to speed up some shaders by
+combining multiple passes into one.
+Finally, various import/export procedures have been expanded,
+including the ability to import host pointers and real-world
+DMABUFs.
+Additions:
+  * add `pl_memory_qualifiers`, plus a corresponding
+    `pl_shader_desc.memory`, to allow attaching GLSL memory
+    qualifiers (coherent, volatile etc.) to shader descriptors
+  * add functions `pl_dispatch_save` and `pl_dispatch_load` to
+    allow saving/restoring the contents of an entire
+    `pl_dispatch`'s cache
+  * add functions `pl_renderer_save` and `pl_renderer_load` to
+    allow saving/restoring the contents of an entire
+    `pl_renderer`'s cache
+  * add `pl_vulkan_swapchain_params.prefer_hdr`, which will cause
+    the surface format selection logic to try HDR output formats
+    first
+  * add `pl_buf_copy` to copy from one buffer to another
+  * add `pl_get_detected_peak`, to read back the result of peak
+    detection
+  * add `pl_primaries_superset` to test if one set of primaries is
+    fully enclosed by another
+  * add `pl_color_map_params.gamut_clipping`, which will
+    colorimetrically clip any out-of-gamut colors by desaturating
+    them towards neutral gray until they're in-gamut, rather than
+    clipping per channel as before
+  * add `PL_GPU_CAP_SUBGROUPS` and `pl_gpu_limits.subgroup_size`,
+    to expose GLSL subgroup functionality via the `pl_gpu`
+    interface
+  * add `pl_gpu_is_failed`, to query at a high level whether the
+    `pl_gpu` is in some internal failure state. GPUs in this state
+    should be recreated, using the appropriate mechanism
+  * add `pl_shader_custom`, to allow injecting arbitrary custom
+    GLSL code into a `pl_shader`.
+  * add `pl_buf_params.import_handle` to allow importing buffers
+  * add `PL_HANDLE_HOST_POTR`, to allow importing arbitrary host
+    pointers
+  * add `pl_pass_run_params.vertex_buf`, to allow drawing vertex
+    data directly from a `pl_buf`, guarded by
+    `pl_gpu_limits.max_vbo_size`
+  * add `_COUNT` members to all public enums, for consistency
+  * add `pl_shared_mem.drm_format_mod`, to allow communicating
+    DRM format modifiers when importing/exporting textures
+  * add support for importing DMABUFs via EGL, via the new fields
+    `pl_opengl_params.egl_display/context`
+  * add `pl_fmt.fourcc` to facilitate mapping between `pl_fmt` and
+    DRM
+  * add the missing `pl_var_*` helpers, for consistency
+  * add `pl_plane_data_align` to help with aligning
+    `pl_plane_data` structs to byte boundaries
+  * add support for STORAGE textures in user shaders, which can be
+    used to persist data across separate invocations of the shader
+  * add support for BUFFER blocks in user shaders, which can be
+    used to create UBOs or SSBOs for use inside shaders, the latter
+    of which can also persist across frames and be used to store
+    persistent state
+  * add PL_COLOR_PRIM_EBU_3213 and PL_COLOR_PRIM_FILM_C
+  * add a new header &lt;libplacebo/utils/libav.h&gt;, containing a
+    variety of helper functions for interoperating between libav*
+    and libplacebo
+  * add `demos/plplay.c` to serve as a demonstration of how to make
+    a trivial playback loop with libavcodec and libplacebo
+  * add `pl_sample_src.component_mask` to allow sampling an
+    arbitrary subset of the available components from a plane
+  * add `pl_frame_is_cropped` and `pl_frame_clear` to assist in
+    properly clearing frames before rendering to them
+  * add `pl_tex_poll` to assist in interoperating with some
+    external APIs
+  * add `pl_render_params.blend_params` to allow blending the final
+    output
+Changes:
+  * remove `pl_image.signature` and
+    `pl_render_params.skip_redraw_caching`
+  * change vulkan surface format selection to prioritize formats by
+    'score', preferring higher depth integer formats
+  * `pl_fmt` may now have PL_FMT_CAP_STORABLE even when
+    `glsl_format` is NULL, in which case formatless image storage
+    must be used
+  * `pl_buf_read` no longer requires `buf_offset` be a multiple of
+    4
+  * `pl_buf_*` commands are now synchronized internally:
+  * `pl_buf_write` and `pl_buf_read` now block while the buffer is
+    in use Note: for this reason, `pl_buf_write` should not be used
+    in loops
+  * `pl_tex_upload/download` may now be called on in-use buffers
+  * allow `pl_dispatch_compute` on shaders with outputs, including
+    the ability to automatically determine the number of work
+    groups based on the shader output resolution
+  * remove `pl_buf_params.type`, and the concept of buffer types in
+    general. `pl_buf` is now a generic catch-all for any type of
+    buffer, with individual capabilities in `pl_buf_params`
+    determinig what type of shader operations it can be used for
+  * relax the alignment requirements on `pl_tex_transfer_params`
+  * change `pl_opengl_wrap_params` to allow directly importing
+    framebuffers in addition to textures
+  * rename `pl_color_levels` members for clarity
+  * make `pl_opengl` ignore software rasterizers by default, unless
+    the new field `pl_opengl_params.allow_software` is set
+  * add `pl_av1_grain_params.luma_comp` to allow drawing the luma
+    component from a channel with nonzero index
+  * `pl_renderer` now supports rendering to planar targets,
+    including subsampled targets
+  * `pl_image` and `pl_render_target` have been removed and unified
+    into a single `pl_frame` concept
+  * remove `pl_tex_params.sample_mode/address_mode` and move them
+    to `pl_desc_binding` instead, to decouple them from texture
+    creation
+  * refactor the signature of `pl_tex_blit`
+Fixes and performance improvements:
+  * fix an oversight where `pl_buf_destroy` delayed some buffer
+    destructions unnecessarily
+  * fix a limitation where `pl_tex_destroy` sometimes delayed
+    destroying textures unnecessarily
+  * improve the performance of `pl_dispatch`'s code for assembling
+    UBOs
+  * improve the performance of `pl_shader_av1_grain` by switching
+    from SSBOs to texture LUTs, also improving compatibility with
+    older GL
+  * improve the performance of `pl_shader_detect_peak` on GPUs with
+    access to subgroups operations
+  * fix an issue where reinitializing shader state objects with
+    different settings sometimes resulted in undefined behaviour
+  * fix some GLSL backwards compatibility issues
+  * slightly cut down on unnecessary image layout transitions
+  * add some miscellaneous debug print-outs, and improve the
+    legibility of some existing log messages
+  * fix an issue where freeing buffer variables from shader
+    descriptors could result in use-after-free
+  * add support for vulkan memory imports requiring dedication
+    allocations
+  * slightly improve, and fix, the vulkan memory placement logic
+  * significantly improve the performance of `pl_tex_download` by
+    importing the target host pointer directly
+  * improve the performance of small LUTs, especially for the
+    non-compute polar fallback path
+  * prevent `pl_renderer` from unneccessarily applying a 3DLUT when
+    both the input and output frames have the same ICC profile
+  * fix the behaviour of partially specified `pl_bit_encoding`
+    structs
+  * fix the component ordering on some odd packed vulkan formats
+  * fix an issue where `pl_plane_data_from_mask` broke for high bit
+    depths
+  * make `pl_renderer` consult the dither bit depth from the
+    texture precision, if absent from `pl_bit_encoding`
+  * fix the behaviour of `pl_renderer` when sampling from textures
+    with swapped component orders
+  * fix the implementation of PL_COLOR_SYSTEM_BT_2100_HLG
+  * fix some issues relating to missing includes
+  * enforce legality of image usage parameters on `pl_vulkan_wrap`
+  * fix an undesired shader double-compilation when using
+    orthogonal scalers with subsampled chroma planes
+  * fix an issue where application of a 3DLUT cleared the alpha
+    channel
+  * add a missing extension to `pl_vulkan_recommended_extensions`
+  * fix the plane alignment code for oddly sized subsampled chroma
+  * fix the poor precision of `pl_shader_dither` for high bit
+    depths
+  * fix several possible overflows in the BT.2390 shader
+  * fix a bug where using a polar sampler to draw a scaled overlay
+    onto a non-storable target neglected to disable compute shaders
+  * fix a bug where the renderer could sometimes alias when
+    downscaling, in particular if both the upsampler and
+    downsampler are set to bicubic
+  * improve performance of scalers by avoiding bilinear filtering
+  * reduce verbosity of memory allocations
+  * fix missing PL_FMT_CAP_BLENDABLE on opengl fbos
+  * significantly improve precision of float literals in shaders
+  * add better error checking to gl_pass_create
+</comment>
+    <requestid>859747</requestid>
+  </revision>
 </revisionlist>
