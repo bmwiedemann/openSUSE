@@ -223,4 +223,12 @@
   on llvm8 and later only</comment>
     <requestid>850626</requestid>
   </revision>
+  <revision rev="27" vrev="20">
+    <srcmd5>e8a7e75dcb846083296265daa997a86b</srcmd5>
+    <version>7.0.1</version>
+    <time>1609619447</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859730</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan  1 13:12:17 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move BFD plugins to %{_libdir}
+
+-------------------------------------------------------------------
 Mon Nov 23 08:32:33 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Remove '-mbranch-protection=standard' option as it is supported
