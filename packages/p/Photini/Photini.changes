@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan  2 13:07:54 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2020.12.1
+  * Can now use PySide2 instead of PyQt5.
+  * Deprecated Python2 and PyQt4.
+  * No longer creates menu entries during installation. Run
+    photini-post-install after installation.
+  * Minor other fixes and improvements.
+- Add Photini-2020.12.1-desktop.patch
+
+-------------------------------------------------------------------
 Mon Nov 16 10:36:11 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Require the PyQt5.sip package instead of deprecated toplevel sip

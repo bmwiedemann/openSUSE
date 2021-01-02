@@ -147,4 +147,12 @@ Also see sr#741039 for missing runtime dependency.</comment>
     <comment></comment>
     <requestid>848849</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>1545fc436f9c4e4827acdef86efa5b1a</srcmd5>
+    <version>2020.12.1</version>
+    <time>1609619490</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859837</requestid>
+  </revision>
 </revisionlist>

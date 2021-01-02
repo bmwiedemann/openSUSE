@@ -1,7 +1,7 @@
 #
 # spec file for package Photini
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           Photini
-Version:        2020.11.0
+Version:        2020.12.1
 Release:        0
 Summary:        Digital photograph metadata (EXIF, IPTC, XMP) editing application
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/jim-easterbrook/Photini
 Source0:        https://github.com/jim-easterbrook/Photini/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Photini-2020.12.1-desktop.patch fix desktop file -- aloisio@gmx.com
+Patch0:         Photini-2020.12.1-desktop.patch
 BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -56,29 +58,31 @@ description of the scene or the date and time and the GPS coordinates of the
 camera's position when the picture was taken.
 
 %prep
-%setup -q
-sed -e 's/{exec_path}/photini/' -e 's/{icon_path}/photini/' -i src/linux/photini.desktop.template
+%autosetup -p1
 
 %build
 python3 setup.py build
 for s in 22 32 48 64 96 128 192 256 512; do
-    convert -strip src/misc/icon_master.png -resize ${s}x${s} ${s}.png
+    convert -strip utils/make_icons/icon_master.png -resize ${s}x${s} ${s}.png
 done
 
 %install
 python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 for s in 22 32 48 64 96 128 192 256 512; do
-mkdir -pv %{buildroot}%{_datadir}/icons//hicolor/${s}x${s}/apps
-install -m0644 ${s}.png -T \
-          %{buildroot}%{_datadir}/icons//hicolor/${s}x${s}/apps/photini.png
+   mkdir -pv %{buildroot}%{_datadir}/icons//hicolor/${s}x${s}/apps
+   install -m0644 ${s}.png -T \
+        %{buildroot}%{_datadir}/icons/hicolor/${s}x${s}/apps/photini.png
 done
+install -Dm0644 src/photini/data/linux/photini.desktop \
+   %{buildroot}%{_datadir}/applications/photini.desktop
+rm -f %{buildroot}/%{python3_sitelib}/photini/data/linux/photini.desktop
 %fdupes %{buildroot}
 
 %files
 %doc CHANGELOG.txt README.rst
 %license LICENSE.txt
 %{_bindir}/photini
-%{python3_sitelib}/%{name}-%{version}-py%{py3_ver}.egg-info
+%{python3_sitelib}/%{name}-2020.12.0-py%{py3_ver}.egg-info
 %{python3_sitelib}/photini
 %{_datadir}/applications/photini.desktop
 %{_datadir}/icons/hicolor/*/apps/photini.png
