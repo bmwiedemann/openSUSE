@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan  1 13:04:35 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move BFD plugins to %{_libdir}
+
+-------------------------------------------------------------------
 Mon Dec 14 14:18:19 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - polly-pthread.patch: Remove, std::call_once no longer needs libpthread

@@ -876,9 +876,9 @@ cp -r tests %{buildroot}%{_docdir}/python-clang
 popd
 %endif
 
-# Note that bfd-plugins is always in /usr/lib/bfd-plugins, no matter what _libdir is.
-mkdir -p %{buildroot}%{_prefix}/lib/bfd-plugins
-ln -s %{_libdir}/LLVMgold.so %{buildroot}%{_prefix}/lib/bfd-plugins/
+# Note that bfd-plugins is in /usr/lib/bfd-plugins before binutils 2.33.1
+mkdir -p %{buildroot}%{_libdir}/bfd-plugins
+ln -s %{_libdir}/LLVMgold.so %{buildroot}%{_libdir}/bfd-plugins/
 
 install -m 755 -d %{buildroot}%{_datadir}/vim/site/
 for i in ftdetect ftplugin indent syntax; do
@@ -1780,9 +1780,9 @@ fi
 %files gold
 %license CREDITS.TXT LICENSE.TXT
 %{_libdir}/LLVMgold.so
-# Note that bfd-plugins is always in /usr/lib/bfd-plugins, no matter what _libdir is.
-%dir %{_prefix}/lib/bfd-plugins/
-%{_prefix}/lib/bfd-plugins/LLVMgold.so
+# Note that bfd-plugins is in /usr/lib/bfd-plugins before binutils 2.33.1
+%dir %{_libdir}/bfd-plugins/
+%{_libdir}/bfd-plugins/LLVMgold.so
 
 %if %{with openmp}
 %files -n libomp%{_sonum}-devel
