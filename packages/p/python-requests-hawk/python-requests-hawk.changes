@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan  2 13:36:19 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 1.1.0:
+  * Allow to skip hashing request and response bodies with
+    `always_hash_content`.
+
+-------------------------------------------------------------------
 Wed Mar 18 08:29:29 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.0.1:

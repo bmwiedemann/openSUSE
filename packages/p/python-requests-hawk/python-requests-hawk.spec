@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests-hawk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2017 The openSUSE Project.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-requests-hawk
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        Hawk authentication strategy for the requests python library
 License:        Apache-2.0
