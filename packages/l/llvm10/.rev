@@ -1127,4 +1127,12 @@
   managed by update-alternatives. (boo#1178513)</comment>
     <requestid>848704</requestid>
   </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>0b21fa738fbb8cb410c834142d7791a4</srcmd5>
+    <version>10.0.1</version>
+    <time>1609619432</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859726</requestid>
+  </revision>
 </revisionlist>

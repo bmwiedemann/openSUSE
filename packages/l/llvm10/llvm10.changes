@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan  1 13:05:24 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move BFD plugins to %{_libdir}
+
+-------------------------------------------------------------------
 Sat Nov 14 22:09:41 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Let CMake files in {llvm,clang}X-devel refer to the versioned
