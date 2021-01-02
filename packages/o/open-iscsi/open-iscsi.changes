@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Dec 31 18:16:01 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Updated to upstream version 2.1.3 as 2.1.3-suse, for bsc#1179908,
+  including:
+  * uip: check for TCP urgent pointer past end of frame
+  * uip: check for u8 overflow when processing TCP options
+  * uip: check for header length underflow during checksum calculation
+  * fwparam_ppc: Fix memory leak in fwparam_ppc.c
+  * iscsiuio: Remove unused macro IFNAMSIZ defined in iscsid_ipc.c
+  * fwparam_ppc: Fix illegal memory access in fwparam_ppc.c
+  * sysfs: Verify parameter of sysfs_device_get()
+  * fwparam_ppc: Fix NULL pointer dereference in find_devtree()
+  * open-iscsi: Clean user_param list when process exit
+  * iscsi_net_util: Fix NULL pointer dereference in find_vlan_dev()
+  * open-iscsi: Fix NULL pointer dereference in mgmt_ipc_read_req()
+  * open-iscsi: Fix invalid pointer deference in find_initiator()
+  * iscsiuio: Fix invalid parameter when call fstat()
+  * iscsi-iname: Verify open() return value before calling read()
+  * iscsi_sysfs: Fix NULL pointer deference in iscsi_sysfs_read_iface
+
+-------------------------------------------------------------------
 Mon Nov 30 23:30:22 UTC 2020 - Lee Duncan <lduncan@suse.com>
 
 - Updatged to latest upstream, including:
