@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Jan  1 23:53:33 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 1.35
+  * Deprecated the old Topos class, which not only featured
+    a clunky interface but hid from users the fact that
+    Skyfield was generating IERS2010 positions from latitude
+    and longitude when in fact nearly all users want WGS84
+    positions. Users are now encouraged to supply latitude
+    and longitude to the
+    :meth:`~skyfield.toposlib.Geoid.latlon()` method of
+    either the :data:`~skyfield.toposlib.wgs84` object or the
+    :data:`~skyfield.toposlib.iers2010` object. Related
+    discussion: #372
+  * The two new geoid objects
+    :data:`~skyfield.toposlib.wgs84` and
+    :data:`~skyfield.toposlib.iers2010` have also provided a
+    happy new home for the
+    :meth:`~skyfield.toposlib.Geoid.subpoint()` method —
+    which was previously stranded over on the
+    :class:`~skyfield.positionlib.Geocentric` class, where it
+    couldn’t be used with positions of other classes that
+    might be centered at the geocenter. (The old method will
+    remain in place to support legacy code, but is
+    discouraged in new applications.)
+  * The effects of :ref:`Polar motion` — if configured —
+    are now included both when computing the position in
+    space of an Earth latitude and longitude, and when
+    determining the latitude and longitude beneath a
+    celestial position.
+  * Added :func:`~skyfield.api.load_constellation_names()`.
+  * The :meth:`~skyfield.timelib.Time.utc_jpl()` method now
+    correctly designates its return value as UTC instead of
+    the ambiguious UT. #515
+- Refreshed finals2000A.all 
+
+-------------------------------------------------------------------
 Tue Dec 15 17:59:15 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to v1.34

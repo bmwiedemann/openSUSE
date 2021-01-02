@@ -1,7 +1,7 @@
 #
 # spec file for package python-skyfield
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 # current astropy in TW requires python >= 3.7
 %define skip_python36 1
 Name:           python-skyfield
-Version:        1.34
+Version:        1.35
 Release:        0
 Summary:        Elegant astronomy for Python
 License:        MIT
