@@ -27,6 +27,9 @@ Summary:        Download Manager
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Initialize-Transfer-m_runningSeconds.patch
+Patch2:         0002-Don-t-create-dangling-iterators-in-TransferMultiSegK.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gpgme-devel
 BuildRequires:  libboost_headers-devel
@@ -72,7 +75,7 @@ An advanced download manager by KDE
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build

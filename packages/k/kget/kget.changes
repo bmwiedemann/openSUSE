@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan  2 14:52:43 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patches to fix issues reported by valgrind (boo#1180352):
+  * 0001-Initialize-Transfer-m_runningSeconds.patch
+  * 0002-Don-t-create-dangling-iterators-in-TransferMultiSegK.patch- 
+
+-------------------------------------------------------------------
 Sat Dec  5 23:16:16 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.0
