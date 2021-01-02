@@ -1,7 +1,7 @@
 #
 # spec file for package kawaii-player
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
-%define _over   4.2.0-1
-%define _bver   4.2.0
+%define _over   5.0.0-1
+%define _bver   5.0.0
 Name:           kawaii-player
-Version:        4.2.0.1
+Version:        5.0.0.1
 Release:        0
 Summary:        Multimedia player, library manager and media server
 License:        GPL-3.0-or-later
@@ -32,7 +32,6 @@ BuildRequires:  fdupes
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 Requires:       ffmpegthumbnailer
-Requires:       mpv
 Requires:       python3-Pillow
 Requires:       python3-base
 Requires:       python3-beautifulsoup4
@@ -42,6 +41,7 @@ Requires:       python3-lxml
 Requires:       python3-mutagen
 Requires:       python3-opengl
 Requires:       python3-pycurl
+Requires:       python3-pympv
 Requires:       python3-pytaglib
 Requires:       python3-qt5
 Requires:       python3-qtwebengine-qt5

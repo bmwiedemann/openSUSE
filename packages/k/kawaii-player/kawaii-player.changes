@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec 30 19:13:59 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 5.0.0-1
+  * Added support for libvlc as playback engine
+  * Added support for INPUT_IPC_SERVER for mpv binary
+  * One can change default config directory. Add new config
+    directory path to ~/.config/kawaii-player/new_home.txt and
+    restart application.
+  * Deprecating Slave mode for mpv binary. Users should use mpv
+    input ipc server. In other_options.txt set
+    MPV_INPUT_IPC_SERVER=True.
+  * opengl-cb api will be deprecated and no longer will be
+    supported from now on. Users need to install pympv to use
+    libmpv backend
+
+-------------------------------------------------------------------
 Sat Jul 13 07:32:46 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.2.0-1
