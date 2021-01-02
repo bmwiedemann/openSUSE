@@ -1,4 +1,158 @@
 -------------------------------------------------------------------
+Sat Jan  2 05:36:21 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20210101
+
+  - Highlights
+  
+    * Added new status colors (success: green, warning: orange, 
+      and error: red) to monochrome icons #2448
+  
+  - Added icons
+  
+    * 010 Editor #2454
+    * Alan Wake (Steam & Lutris)
+    * Alien Swarm (Steam & Lutris)
+    * Alien Swarm: Reactive Drop (Steam & Lutris)
+    * Alien: Isolation (Steam & Lutris)
+    * Amnesia: Rebirth (Steam & Lutris)
+    * Among Us (Steam & Lutris)
+    * Ardour 6.5.0
+    * Baldi's Basics (Steam & Lutris)
+    * Basilisk II (Flathub) #2007
+    * Beaker Browser
+    * BeamNG.drive (Steam & Lutris)
+    * Beat Hazard (Steam & Lutris)
+    * Beat Hazard 2 (Steam & Lutris)
+    * Beat Saber (Steam & Lutris)
+    * Beekeeper Studio
+    * Beneath a Steel Sky and Beyond a Steel Sky (Steam)
+    * Call of Duty (Steam & Lutris)
+    * Call of Duty 2 (Steam & Lutris)
+    * Child of Light (Steam)
+    * Chromium Web Browser (Flathub) #2007
+    * Counter-Strike: Condition Zero (Steam & Lutris)
+    * Diffuse (Flathub) #2007
+    * Discord Development/Canary (Flathub)
+    * Distributor logos for BSD systems #630
+         DragonFly BSD
+         GhostBSD
+         MidnightBSD
+         NetBSD
+         OpenBSD
+         TrueOS
+    * DJV View #2453
+    * DOOM Eternal (Steam & Lutris)
+    * DOSBox Staging
+    * DOSBox-X (Flathub) #2007
+    * EDuke32
+    * Epic Games
+    * Filmulator (Flathub) #2007
+    * Firmware Manager
+    * Flycast
+    * folder-snap #2305
+    * Font Downloader #2461
+    * GCstar #2440
+    * GooTool (app and mimetype icons)
+    * Gramps (Flathub) #2007
+    * Half-Life 2: Deathmatch/Lost Coast (Steam & Lutris)
+    * Half-Life: Alyx (Steam)
+    * hugin (Flathub) #2007
+    * IO Return to Castle Wolfenstein (Flathub) #2007
+    * JClic (Flathub) #2007
+    * Katawa Shoujo (Lutris)
+    * Kega Fusion
+    * Lens - The Kubernetes IDE #2469
+    * Lightcord (app and tray icons) #2463
+    * Lyrebird
+    * Machinarium (Steam & Lutris)
+    * Penumbra: Black Plague (Steam & Lutris)
+    * Penumbra: Necrologue (Community Mod) (Steam & Lutris)
+    * Penumbra: Overture (Steam & Lutris)
+    * Penumbra: Requiem (Steam & Lutris)
+    * Persona 4 Golden (Steam & Lutris)
+    * Phantompeer #2456
+    * Phantompeer #2456
+    * Polychromatic #2445
+    * PowerISO (Flatpak) #2007
+    * Prison Architect (Steam & Lutris)
+    * Ricochet (Steam & Lutris)
+    * Scania Truck Driving Simulator (Steam & Lutris)
+    * SciTE (Flathub) #2007
+    * Secret Maryo Chronicles (Lutris)
+    * SOMA (Steam & Lutris)
+    * Sonic Pi (Flathub) #2007
+    * SonoBus #2462
+    * SoundConverter (Flathub) #2007
+    * Space Engineers (Steam & Lutris)
+    * Sven Co-op (Steam & Lutris)
+    * Synergy (Steam & Lutris)
+    * System76 Driver
+    * TeXmacs (mimetype icon) #2446
+    * The Sims 3 (Steam & Lutris)
+    * The Sims 4 (Steam & Lutris)
+    * The Stanley Parable (Steam & Lutris)
+    * The Witcher (Steam & Lutris)
+    * Tomb Raider (Steam & Lutris)
+    * TrackMania Nations Forever (Steam & Lutris)
+    * Typora (Flathub) #2007
+    * ungoogled-chromium (Flathub) #2007
+    * Viking (Flathub) #2007
+    * Vorta (tray icons) #2459
+    * Warframe (Steam & Lutris)
+    * World of Goo (AUR)
+    * World of Goo Demo (Steam)
+    * Worms Reloaded Demo (Steam)
+    * wxLame
+    * X Rebirth (Steam & Lutris)
+    * X2: The Threat (Steam & Lutris)
+    * X3: Albion Prelude (Steam & Lutris)
+    * X3: Reunion (Steam & Lutris)
+    * X3: Terran Conflict (Steam & Lutris)
+    * X4: Foundations (Steam & Lutris)
+    * Xcfe Gigolo
+    * Xfce CPU Graph Plugin
+    * Xfce Sample Plugin
+    * Xfce StopWatch Plugin
+    * Xfce Tumbler
+    * Xfce Volman
+    * Zombie Panic! Source (Steam & Lutris)
+  
+  - Updated icons
+  
+    * Android Studio
+    * Audio muted icons
+    * audio-recorder-on #2448
+    * Batteries icons #2447 #2448
+    * Camera and mic on/ready/off icons #2448
+    * Dconf Editor #2439
+    * Discord (muted, connected, and speaking tray icons)
+    * Disk Usage Analyzer #2442
+    * GNOME LaTeX (ex Latexila) #881
+    * KDE Connect disconnected icons #2448
+    * Meld
+    * Mullvad VPN #1580
+    * Qt Assistant
+    * Qt Creator
+    * Qt Designer
+    * Qt Linguist
+    * Security tray icons #2448
+    * System Reboot, Shutdown, Suspend, Save Session, Hibernate,
+      Switch User icons
+    * Tangram #2441
+    * The Witcher 2
+    * update-{low,medium,high} panel icons #2448
+  
+  - Changes and fixes
+  
+    * Added a lot of symlinks for apps in Xfce 4.16 #2466
+    * Added missing symlink for Beholder 2 (Steam)
+    * Added missing symlink for Counter-Strike Source (Steam)
+    * Increased audio-volume icons for 22/24px sizes
+    * Moved mic-on icon to panel
+    * Removed camera/mic/audio status icons from actions
+
+-------------------------------------------------------------------
 Tue Dec  1 23:00:32 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 20201201
