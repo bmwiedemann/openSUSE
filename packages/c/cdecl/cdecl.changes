@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan  1 17:59:56 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.1
+  * Implicit int functions in K&R C are now supported ("set knrc",
+    "explain f(x)")
+
+-------------------------------------------------------------------
 Sat Dec 19 09:09:37 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 9.0
