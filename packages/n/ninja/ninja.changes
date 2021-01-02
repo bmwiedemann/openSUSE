@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 29 18:55:10 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10.2:
+  * The browse tool is now enabled when building with CMake
+  (so it's part of the official binaries again) 
+  * it should now work in all circumstances to run the restat tool
+  by the generator on Windows 
+
+-------------------------------------------------------------------
 Wed Nov  4 16:33:12 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - LFS fix for 32bit arch builds (gh#ninja-build/ninja#829)
