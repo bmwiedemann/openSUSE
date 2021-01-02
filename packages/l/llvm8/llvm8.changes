@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan  1 13:10:23 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move BFD plugins to %{_libdir}
+
+-------------------------------------------------------------------
 Wed Dec  2 09:12:39 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - '-mbranch-protection=standard' is broken on llvm8, so disable it
