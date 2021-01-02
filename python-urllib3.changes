@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan  1 13:20:04 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Skip test for RECENT_DATE. It is a test purely for developers.
+  To maintain reproducibility, keep upstreams possibly outdated
+  RECENT_DATE in the source code.
+
+-------------------------------------------------------------------
+Thu Dec 17 18:13:57 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add CI variable, which makes timeouts in the test suite longer
+  (gh#urllib3/urllib3#2109, bsc#1176389) and
+  test_timeout_errors_cause_retries should not fail.
+
+-------------------------------------------------------------------
 Mon Dec 14 15:21:26 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - If you skip_python2 you don't need mock.

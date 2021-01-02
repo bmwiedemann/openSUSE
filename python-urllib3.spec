@@ -1,7 +1,7 @@
 #
 # spec file for package python-urllib3
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -131,12 +131,16 @@ ln -sf %{python3_sitelib}/__pycache__/six.cpython-%{python3_version_nodots}.pyc 
 
 %if %{with test}
 %check
+# gh#urllib3/urllib3#2109
+export CI="true"
 # still broken with new ssl
 skiplist='test_import_urllib3'
 # skip some randomly failing tests (mostly on i586, but sometimes they fail on other architectures)
-skiplist="$skiplist or test_ssl_read_timeout or test_ssl_failed_fingerprint_verification or test_ssl_custom_validation_failure_terminates"
-# gh#urllib3/urllib3#2109
-skiplist="$skiplist or test_timeout_errors_cause_retries"
+skiplist+=" or test_ssl_read_timeout or test_ssl_failed_fingerprint_verification or test_ssl_custom_validation_failure_terminates"
+# gh#urllib3/urllib3#1752 and others: upstream's way of checking that the build
+# system has a correct system time breaks (re-)building the package after too
+# many months have passed since the last release.
+skiplist+=" or test_recent_date"
 %pytest -k "not (${skiplist})"
 %endif
 
