@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu Dec 31 17:15:30 UTC 2020 - jason.record@suse.com
+
+- Additions to version 3.1.13
+  + Added update-alternatives to etc.txt #82
+  + Collects rotated logs with different compression types (bsc#1180478)
+  + Added GPL-2.0-only license tag to spec file
+
+-------------------------------------------------------------------
+Tue Dec  8 21:19:11 UTC 2020 - jason.record@suse.com
+
+- Additions to version 3.1.12
+  + btrfs_info: add -pce argument to qgroup show #80
+  + docker: add /etc/docker/daemon.json contents #81
+
+-------------------------------------------------------------------
+Tue Nov 10 17:25:36 UTC 2020 - jason.record@suse.com
+
+- Additions to version 3.1.12
+  + Capture IBM Power bootlist (SLE-15557)
+  + Fix spelling typos in man pages #78
+  + Collect multipath wwids file #77
+  + Removed unnecessary appname parameter from HTTP upload URL
+  + added aa-status #74
+
+-------------------------------------------------------------------
+Thu Sep  3 14:51:50 UTC 2020 - jason.record@suse.com
+
+- Additions to version 3.1.12
+  + [powerpc] Collect logs for power specific components #72
+  + supportconfig: fs-btrfs: Add "btrfs device stats" output #73
+
+-------------------------------------------------------------------
+Wed Jul  1 15:22:30 UTC 2020 - jason.record@suse.com
+
+- Additions to version 3.1.11
+  + Changes affecting supportconfig
+    - disk_info: Show discard information in lsblk #70
+    - memory_info: Show VMware memory balloon infomation #71
+
+-------------------------------------------------------------------
+Mon Apr 27 18:04:24 UTC 2020 - jason.record@suse.com
+
+- Addition to version 3.1.10
+  + Changes affecting analyzevmcore
+    - Fixed typo in error message #67
+  + Changes affecting supportconfig
+    - Fixed btrfs errors (bsc#1168894)
+    - Large ntp.txt with binary data (bsc#1169122)
+    - Check btrfs balance status #69
+
+-------------------------------------------------------------------
 Fri Mar 13 20:45:16 UTC 2020 - jason.record@suse.com
 
 - Addition to version 3.1.9

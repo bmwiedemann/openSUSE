@@ -114,4 +114,12 @@
     <comment></comment>
     <requestid>784716</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c02086ea1abb123091c54c5c004f55fe</srcmd5>
+    <version>3.1.13</version>
+    <time>1609619418</time>
+    <user>dimstar_suse</user>
+    <comment>Added GPL-2.0-only license (forwarded request 859629 from jrecord)</comment>
+    <requestid>859631</requestid>
+  </revision>
 </revisionlist>
