@@ -1,7 +1,7 @@
 #
 # spec file for package fontobene-qt5
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           fontobene-qt5
-Version:        0.1.0
+Version:        0.2.0
 Release:        0
 Summary:        FontoBene parser for Qt5 (header-only)
 License:        Apache-2.0 OR MIT
 URL:            https://github.com/fontobene/fontobene-qt5
 Source0:        https://github.com/fontobene/fontobene-qt5/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE fontobene-qt5_no_build.patch do not actually build library or tests -- aloisio@gmx.com
-Patch0:         fontobene-qt5_no_build.patch
+BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Core)
 
@@ -41,25 +40,12 @@ A header-only library to parse FontoBene stroke fonts with C++/Qt5.
 %autosetup -p1
 
 %build
-%qmake5 PREFIX=%{_prefix}
-make %{?_smp_mflags}
+%cmake
+%cmake_build
 
 %install
-%qmake5_install
-
-# creates support file for pkg-config
-mkdir -p %{buildroot}/%{_libdir}/pkgconfig
-tee %{buildroot}/%{_libdir}/pkgconfig/%{name}.pc << "EOF"
-prefix=%{_prefix}
-includedir=${prefix}/include
-
-Name: %{name}
-Description: FontoBene parser for Qt5 (header-only)
-Version: %{version}
-Libs:
-Cflags: -I${includedir}/%{name}
-Requires: Qt5Core
-EOF
+%cmake_install
+install -Dm0755 fontobene-qt5.pc.example %{buildroot}%{_libdir}/pkgconfig/%{name}.pc
 
 %files devel
 %license LICENSE-APACHE LICENSE-MIT

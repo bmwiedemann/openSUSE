@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan  1 21:49:48 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.2.0
+   * Added upport for CMake.
+   * Fixed wrong include path in example pkg-config file.
+   * Don't pass "SkipEmptyParts" when splitting polylines.
+- Drop fontobene-qt5_no_build.patch (no longer useful)
+- Switch build to cmake
+
+-------------------------------------------------------------------
 Thu Oct  8 15:52:36 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Remove superfluous requirement.
