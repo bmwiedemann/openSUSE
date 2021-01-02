@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec 30 14:16:06 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to version 2.12.1
+  * Generate DKIM record comment line including the 's=' (selector) tag
+    instead of an 'i=' (identifier) tag when using "amavisd showkeys".
+  * Make sure generated Authentication-Results follow RFC specification.
+  * Prevent re-encoding of notification templates.
+  * Compare inode numbers as strings.
+  * Resolve MySQL invalid utf8mb4 clause.
+- cleanup spec
+  * align (Build)Requires and Recommends with upstream 
+  * rework creating vscan user (new system-user in Tumbleweed)
+
+-------------------------------------------------------------------
 Mon Oct 26 21:43:51 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to version 2.12.0
