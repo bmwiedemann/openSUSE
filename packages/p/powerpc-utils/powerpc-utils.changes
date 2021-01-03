@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 30 20:25:47 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
+
+- Fixes for hybrid network virtualization (jsc#SLE-13837 bsc#1180129 ltc#190387)
+   + 0001-HNV-fixes-for-qrydev-and-remove-lsdevinfo.patch
+   + 0002-Disable-vnic-as-backup-vdevice-for-migratable-SR_IOV.patch
+   + 0003-Clean-up-dead-network-config-interface-after-inactiv.patch
+
+-------------------------------------------------------------------
 Fri Sep 11 18:34:22 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
 
 - Update to upstream version 1.3.8 (jsc#SLE-13291, jsc#SLE-13292)

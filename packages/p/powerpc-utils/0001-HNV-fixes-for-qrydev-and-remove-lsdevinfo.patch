@@ -1,0 +1,103 @@
+From f1ec5f04fdac3e87c3c85c2d85f79339d916e864 Mon Sep 17 00:00:00 2001
+From: Mingming Cao <mmc@linux.vnet.ibm.com>
+Date: Thu, 19 Nov 2020 21:30:40 -0800
+Subject: [PATCH] HNV fixes for qrydev and remove lsdevinfo
+
+Upstream: queued (expocted 1.3.9)
+References: jsc#SLE-13837 bsc#1180129 ltc#190387
+Git-commit: f1ec5f04fdac3e87c3c85c2d85f79339d916e864
+
+This patch fixes a few issues found during testing:
+
+1) Fix qrydev checking for active interface error
+
+2) Skip collecting lsdevinfo right before migration
+When the LPARs has large number of devices, this can
+take quite a long time and flood the log message.
+
+3) Wait for OS ready to lookup device name for configure
+HNV device. We need give OS longer time to prepare pci
+device after DLPAR to show up for ofpathname(). We have
+run into several issues HNV issues the hcncfgdrc command
+to configure the vdevices before ofpathname able
+to find the device name yet.
+
+4) Currently the hybrid network virtualization is only
+supported on PowerVM LPAR. We should allow exit the hcnmgr
+gracefully on other power platform instead of return error.
+
+Signed-off-by: Mingming Cao <mmc@linux.vnet.ibm.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ scripts/hcnmgr | 17 +++++++++--------
+ 1 file changed, 9 insertions(+), 8 deletions(-)
+
+diff --git a/scripts/hcnmgr b/scripts/hcnmgr
+index e699c6a56887..1135a852a4e0 100644
+--- a/scripts/hcnmgr
++++ b/scripts/hcnmgr
+@@ -218,7 +218,7 @@ search_dev() {
+ # $1 path to device-tree device
+ #
+ get_dev_hcn() {
+-	local wait=30
++	local wait=12
+ 	local dev=$1
+ 
+ 	hcnlog DEBUG "get_dev_hcn: enter $1"
+@@ -235,7 +235,7 @@ get_dev_hcn() {
+ 		fi
+ 
+ 		hcnlog DEBUG "ofpathname return $?, devname is $DEVNAME rety counter $wait"
+-		sleep 1
++		sleep 15
+ 
+ 		((wait--))
+ 		if [[ $wait == 0 ]]; then
+@@ -393,7 +393,7 @@ qrydev() {
+ 	BOND_PATH=$BOND_BASEPATH/$BONDNAME/bonding
+ 
+ 	hcnlog DEBUG "check if the network interface for this SR_IOV is not up, return success"
+-	if ! nmcli -f DEVICE con show --active | grep -q "$BONDNAME-$DEVNAME"; then
++	if ! nmcli -f DEVICE con show --active | grep -q "$DEVNAME"; then
+ 		hcnlog DEBUG "network connection $BONDNAME-$DEVNAME is inactive or nonexist"
+ 		hcnlog DEBUG "HCNID $HCNID devname $DEVNAME mode $MODE physloc $PHYSLOC"
+ 		hcnlog DEBUG "qryhcn: exit"
+@@ -435,7 +435,6 @@ show_hcnstatus() {
+ 	nmcli connection show >>$LOG_FILE
+ 	nmcli device status >>$LOG_FILE
+ 	ip addr show >>$LOG_FILE
+-	lsdevinfo >>$LOG_FILE
+ }
+ 
+ #
+@@ -569,10 +568,15 @@ exec &> >(tee -a $LOG_FILE)
+ NOW=$(date +"%m-%d-%Y %T")
+ echo "=======================$NOW============================"
+ 
++HCNCMD=$(basename "$0")
++hcnlog DEBUG "$HCNCMD enter"
++
+ #Validate this tool is running on powerpc platform
+ . "$PSERIES_PLATFORM"
+ if [ "$platform" != "$PLATFORM_PSERIES_LPAR" ]; then
+-	err $E_EPERM
++	hcnlog INFO "HNV is only supported on PowerVM LPAR"
++	hcnlog INFO "$HCNCMD exit"
++	exit 0
+ fi
+ 
+ #Validate NMCLI packages is install to manage networking
+@@ -588,9 +592,6 @@ if ! lsmod | grep -q bonding; then
+ 	fi
+ fi
+ 
+-HCNCMD=$(basename "$0")
+-hcnlog DEBUG "$HCNCMD enter"
+-
+ #getops for help and version
+ while getopts "sVhd:" arg; do
+ 	case "$arg" in
+-- 
+2.26.2
+

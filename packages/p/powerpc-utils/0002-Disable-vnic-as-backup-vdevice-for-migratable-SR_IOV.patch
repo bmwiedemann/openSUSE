@@ -1,0 +1,171 @@
+From 4b2d10942e2d964ecc1fe58c9460c34993ff10be Mon Sep 17 00:00:00 2001
+From: Mingming Cao <mmc@linux.vnet.ibm.com>
+Date: Thu, 19 Nov 2020 21:38:24 -0800
+Subject: [PATCH] Disable vnic as backup vdevice for migratable SR_IOV
+
+Upstream: queued (expocted 1.3.9)
+References: jsc#SLE-13837 bsc#1180129 ltc#190387
+Git-commit: 4b2d10942e2d964ecc1fe58c9460c34993ff10be
+
+In version 1.0 we only allow configure ibmveth as
+migritable SR_IOV backup vdevice. When ibmvnic become
+more stablized we will enable vnic as backup.
+
+Signed-off-by: Mingming Cao <mmc@linux.vnet.ibm.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ scripts/hcnmgr | 57 +++++++++++++++++++++++++++++++++-----------------
+ 1 file changed, 38 insertions(+), 19 deletions(-)
+
+diff --git a/scripts/hcnmgr b/scripts/hcnmgr
+index 1135a852a4e0..0c09d8c4c6eb 100644
+--- a/scripts/hcnmgr
++++ b/scripts/hcnmgr
+@@ -37,6 +37,8 @@ DRC_INDEX=0
+ DEVNAME=""
+ MODE=""
+ PHYSLOC=""
++VIO_TYPE=""
++VNIC_SPT=""
+ 
+ # Usage statements
+ usage() {
+@@ -80,6 +82,7 @@ E_EPERM=1         # Platform not supported
+ E_BUSY=16         # Device busy
+ E_ENODEV=19       # Failed get device name
+ E_NOMODULE=5      # Failed to load bonding module
++E_INVAL_DEV=6     # Vdevice not supported
+ E_ENETUNREACH=101 # No network management command nmcli
+ 
+ #
+@@ -93,19 +96,22 @@ err() {
+ 
+ 	case $eno in
+ 	"$E_INVAL")
+-		e_mesg="$HCNCMD:error code $eno, hybrid network ID HCNID does not exist"
++		e_mesg="$HCNCMD:error code $eno, Hybrid network ID HCNID does not exist"
++		;;
++	"$E_INVAL_DEV")
++		e_mesg="$HCNCMD:error code $eno, Backing vdevice not supported"
+ 		;;
+ 	"$E_EPERM")
+-		e_mesg="$HCNCMD:error code $eno, platform is not supported"
++		e_mesg="$HCNCMD:error code $eno, Platform is not supported"
+ 		;;
+ 	"$E_BUSY")
+-		e_mesg="$HCNCMD:error code $eno, network device busy, no backup device"
++		e_mesg="$HCNCMD:error code $eno, Network device busy, no backup device"
+ 		;;
+ 	"$E_ENODEV")
+-		e_mesg="$HCNCMD:error code $eno, failed to find device or get device name"
++		e_mesg="$HCNCMD:error code $eno, Failed to find device or get device name"
+ 		;;
+ 	"$E_NOMODULE")
+-		e_mesg="$HCNCMD:error code $eno, failed to load bonding module"
++		e_mesg="$HCNCMD:error code $eno, Failed to load bonding module"
+ 		;;
+ 	"$E_ENETUNREACH")
+ 		e_mesg="$HCNCMD:error code $eno, nmcli command not installed"
+@@ -147,6 +153,7 @@ hcnlog() {
+ 	esac
+ 
+ }
++
+ # function search_dev:
+ #	Given DRX_INDEX, Search for device-tree, looking for migratable SR_IOV
+ #	backend vnic or ibmveth device to configure hybrid network
+@@ -171,6 +178,7 @@ search_dev() {
+ 			if [ -e "$dev"/ibm,hcn-id ] && get_dev_hcn "$dev"; then
+ 				hcnlog DEBUG "search_dev: found device "
+ 				hcnlog DEBUG "search_dev: exit"
++				VIO_TYPE="SRIOV"
+ 				return $E_SUCCESS
+ 			fi
+ 		done
+@@ -184,6 +192,7 @@ search_dev() {
+ 		if [[ $index == "$1" ]]; then
+ 			hcnlog DEBUG "found matching drc_index $index in $dev"
+ 			if [ -e "$dev"/ibm,hcn-id ] && get_dev_hcn "$dev"; then
++				VIO_TYPE="VNIC"
+ 				hcnlog DEBUG "search_dev: found device "
+ 				hcnlog DEBUG "search_dev: exit"
+ 				return $E_SUCCESS
+@@ -201,6 +210,7 @@ search_dev() {
+ 			if [ -e "$dev"/ibm,hcn-id ] && get_dev_hcn "$dev"; then
+ 				hcnlog DEBUG "search_dev: found device "
+ 				hcnlog DEBUG "search_dev: exit"
++				VIO_TYPE="L_LAN"
+ 				return $E_SUCCESS
+ 			fi
+ 		fi
+@@ -340,6 +350,10 @@ do_config_vdevice() {
+ cfghcn() {
+ 	hcnlog DEBUG "cfghcn: enter $1"
+ 	search_dev "$1"
++	if [[ $VIO_TYPE == "VNIC" && $VNIC_SPT == "OFF" ]]; then
++		hcnlog WARN "Backing device $VIO_TYPE for Migratable VF is not supported in hcnmgr version $VERSION"
++		err $E_INVAL_DEV
++	fi
+ 	do_config_vdevice
+ 	return $E_SUCCESS
+ }
+@@ -512,23 +526,10 @@ scanhcn() {
+ 		done
+ 	done
+ 
+-	hcnlog DEBUG "search vnic device with ibm,hcn-id propterty......"
++	hcnlog DEBUG "search ibmveth device with ibm,hcn-id propterty......"
+ 	# Look at every vNIC device with ibm,hcn-id propterty
+ 	# join or create bond for this hcnid if not exist, add vnic device as
+ 	# slave for this bond accosiated with hcnid, if not already to
+-	for dev in "$DT_PATH"/vdevice/vnic*; do
+-		[ -d "$dev" ] || continue
+-		if [ -e "$dev"/ibm,hcn-id ] && get_dev_hcn "$dev"; then
+-			hcnlog DEBUG "scanhcn found vnic device with hcnid "
+-			hcnlog INFO "scanhcn configure HCN and vnic device"
+-			do_config_vdevice
+-		fi
+-	done
+-
+-	# Look at every veth device with ibm,hcn-id propterty
+-	# join or create bond for this hcnid if not exist, add ibmveth device as
+-	# slave for this bond accosiated with hcnid, if not already to
+-	hcnlog DEBUG "search ibmveth device with ibm,hcn-id propterty......"
+ 	for dev in "$DT_PATH"/vdevice/l-lan*; do
+ 		[ -d "$dev" ] || continue
+ 		if [ -e "$dev"/ibm,hcn-id ] && get_dev_hcn "$dev"; then
+@@ -538,6 +539,21 @@ scanhcn() {
+ 		fi
+ 	done
+ 
++	if [[ $VNIC_SPT != "OFF" ]]; then
++		hcnlog DEBUG "search vnic device with ibm,hcn-id propterty......"
++		# Look at every vNIC device with ibm,hcn-id propterty
++		# join or create bond for this hcnid if not exist, add vnic device as
++		# slave for this bond accosiated with hcnid, if not already to
++		for dev in "$DT_PATH"/vdevice/vnic*; do
++			[ -d "$dev" ] || continue
++			if [ -e "$dev"/ibm,hcn-id ] && get_dev_hcn "$dev"; then
++				hcnlog DEBUG "scanhcn found vnic device with hcnid "
++				hcnlog INFO "scanhcn configure HCN and vnic device"
++				do_config_vdevice
++			fi
++		done
++	fi
++
+ 	# Next clean up dead connections left from orgitinal LPAR after inactive miration
+ 
+ 	# list of all HCN ids
+@@ -583,6 +599,9 @@ fi
+ if ! nmcli --version >/dev/null 2>&1; then
+ 	err $E_ENETUNREACH
+ fi
++if [[ $VERSION == "1.0" ]]; then
++	VNIC_SPT="OFF"
++fi
+ 
+ #Validate bonding module is loaded
+ if ! lsmod | grep -q bonding; then
+-- 
+2.26.2
+

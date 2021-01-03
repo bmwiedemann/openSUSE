@@ -1,0 +1,96 @@
+From e51995667279164a6c8ce4c3ba0217fffda22d6d Mon Sep 17 00:00:00 2001
+From: Mingming Cao <mmc@linux.vnet.ibm.com>
+Date: Thu, 19 Nov 2020 21:41:31 -0800
+Subject: [PATCH] Clean up dead network config interface after inactive
+ migration
+
+Upstream: queued (expocted 1.3.9)
+References: jsc#SLE-13837 bsc#1180129 ltc#190387
+Git-commit: e51995667279164a6c8ce4c3ba0217fffda22d6d
+
+With inactive parition migration, we found there are
+dead network interface asscoiated with the SR_IOV from
+source LPAR that still exist.
+
+We need to cleanup the old network interface
+related to this devname from source LPAR. Normally
+in the active parition migration case, this was done
+when HMC issue commands to OS remove the
+VF from hybrid network. Because of the inactive
+migration, the OS was not notified before migration
+that the VF was removed, thus leaves the dead network
+interface belongs on the original MVF on source lpar
+not cleaned up. This cause the confusion of the network
+manager to bring up the bondings with new MVFs at destination
+LPAR.
+
+After inactive parition migration the same devname
+could possiblily used at the destination LPAR.
+It can be assigned to a different hybrid
+network (different hcnid). At the OS boot time,
+the same devname but with different hcnid will
+be configured. However the old network work interface
+associated with the same devname from the source LPAR
+has not been cleaned up yet.
+
+This patch fix this by during the boot time scan and
+if found an VFs has more than two bonding interfaces,
+or has old VF ifcfg, removed the expired one.
+
+Signed-off-by: Mingming Cao <mmc@linux.vnet.ibm.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ scripts/hcnmgr | 26 +++++++++++++++++++++++---
+ 1 file changed, 23 insertions(+), 3 deletions(-)
+
+diff --git a/scripts/hcnmgr b/scripts/hcnmgr
+index 0c09d8c4c6eb..a76505e5dd6a 100644
+--- a/scripts/hcnmgr
++++ b/scripts/hcnmgr
+@@ -518,6 +518,27 @@ scanhcn() {
+ 			[ -d "$dev" ] || continue
+ 			if [ -e "$dev"/ibm,hcn-id ] && get_dev_hcn "$dev"; then
+ 				hcnlog DEBUG "scanhcn found sr-iov device with hcnid "
++
++				# After online from inactive migration, destination
++				# LPAR may have same mvf devname but associated with different
++				# bonding than from source LPAR
++				# clean up expired bonding SR_IOV connections
++
++				for cfg in $(ls $IFCONFIG_PATH | grep "$DEVNAME" | grep "bond"); do
++					hid=$(echo "$cfg" | sed -e 's/ifcfg-//' | cut -d '-' -f 1 | sed -e 's/bond//')
++					if [ -e "$IFCONFIG_PATH/ifcfg-$DEVNAME" ]; then
++						rm "$IFCONFIG_PATH/ifcfg-$DEVNAME"
++					fi
++					if [[ $hid != "" && $hid != "$HCNID" ]] ; then
++						hcnlog INFO "Delete dead bonding slave ifcfg file $IFCONFIG_PATH/$cfg"
++						rm $IFCONFIG_PATH/"$cfg"
++						if nmcli -f NAME con show | grep -q "bond$hid-$DEVNAME\s"; then
++							hcnlog INFO "Delete dead bonding connection $connection"
++							nmcli con delete "bond$hid-$DEVNAME"
++						fi
++					fi
++				done
++
+ 				hcnlog INFO "scanhcn configure HCN and sr-iov device"
+ 				do_config_vdevice
+ 				# Save found HCN ids in array HcnIds
+@@ -558,13 +579,12 @@ scanhcn() {
+ 
+ 	# list of all HCN ids
+ 	ids="${HcnIds[*]}"
+-
+ 	# After inactive migration, LPAR may have old bonding connections
+ 	# with network device on original LPAR
+-	# clean up dead bonding connections
++    # clean up dead bonding connections
+ 	for connection in $(nmcli -f NAME con show | grep "${ids// /\\|}"); do
+ 		dev=$(echo "$connection" | cut -d '-' -f 2)
+-		if [ ! -e /sys/class/net/"$dev" ]; then
++		if [[ $dev != "NAME" && ! -e /sys/class/net/"$dev" ]]; then
+ 			hcnlog INFO "Delete dead bonding connection $connection"
+ 			nmcli con delete "$connection"
+ 		fi
+-- 
+2.26.2
+
