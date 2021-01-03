@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Jan  3 09:57:17 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.136.0
+  * e5d982e (HEAD, tag: v0.136.0, origin/master, origin/HEAD, master)
+    Fix "No valid platforms to build for" build error on release
+  * c815d01 Bump helm versions in Dockerfile to deal with stable and
+    incubator repositories change
+  * 9569d73 Bump helm versions in CI to deal with stable and incubator
+    repositories change
+  * dd5bc46 Include kustomize binary in helm3-based Docker image (#1626)
+  * fc3567d Adding documentation for PR #6819 (#1623)
+  * 9b64d65 feat: Stabilize helmfile-diff output (#1622)
+  * 54eb73b Use ghodss/yaml for yaml marshaling & unmarshaling in
+    template (#1556)
+  * 4c0987a Don't append --tiller-namespace flag when running helm3 (#1594)
+  * 0637973 fix: allow helmfiles to be corrected marshalled to YAML
+    so they can be manipulated by other programs (#1604)
+  * 3690bde Add documentation on how to use the docker image (#1607)
+  * b92ff2b Fix selector syntax example (#1614)
+  * afe82f6 chore: suppress empty values on serializing several helmfile
+    values (#1616)
+  * 1c7b872 Stabilize helmfile-diff output (#1619)
+  * 28e7ebb fix: support arm64 images (#1612)
+  * 1ef9b29 Improve handling of releases being newly installed by
+    helmfile-apply (#1618)
+
+-------------------------------------------------------------------
 Mon Nov 23 10:17:01 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Add bash and zsh completion sub-packages
