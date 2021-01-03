@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 19 21:58:35 UTC 2020 - Andras Timar <andras.timar@collabora.com>
+
+- LO-L3: Shadow effect(s) for table completely missing - part 1 and 2
+  * bsc1178944.diff
+  * bsc1178943.diff
+
+-------------------------------------------------------------------
 Fri Nov 27 09:44:55 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Disable firebird integration for the time being (boo#1179203).

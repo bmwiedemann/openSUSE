@@ -99,6 +99,9 @@ Patch1:         scp2-user-config-suse.diff
 Patch2:         nlpsolver-no-broken-help.diff
 Patch3:         mediawiki-no-broken-help.diff
 Patch4:         0001-Upgrade-liborcus-to-0.16.0.patch
+# LO-L3: Shadow effect(s) for table completely missing - part 1 and 2
+Patch5:         bsc1178944.diff
+Patch6:         bsc1178943.diff
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
@@ -957,6 +960,8 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch2
 %patch3
 %patch4 -p1
+%patch5 -p1
+%patch6 -p1
 %patch990 -p1
 %patch991 -p1
 
