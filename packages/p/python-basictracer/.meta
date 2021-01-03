@@ -1,0 +1,5 @@
+<package name="python-basictracer" project="openSUSE:Factory">
+  <title></title>
+  <description>&quot;BasicTracer&quot; reference implementation for OpenTracing.</description>
+  <devel project="devel:languages:python" package="python-basictracer"/>
+</package>
