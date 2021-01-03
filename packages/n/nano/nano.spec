@@ -27,6 +27,7 @@ URL:            https://nano-editor.org/
 Source0:        https://nano-editor.org/dist/v%{_version}/%{name}-%{version}.tar.xz
 Source1:        https://nano-editor.org/dist/v%{_version}/%{name}-%{version}.tar.xz.asc
 Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=42085#/%{name}.keyring
+Source3:        nanorc
 BuildRequires:  file-devel
 BuildRequires:  groff-full
 BuildRequires:  makeinfo
@@ -51,12 +52,26 @@ the Pico text editor while also offering a few enhancements.
   --enable-utf8
 %make_build
 
+# generate default /etc/nanorc
+# - set hunspell as the default spell-checker
+# - enable syntax highlighting by default
+sed -e 's/^#.*set speller.*$/set speller "hunspell"/' \
+    -e 's|^# \(include "/usr/share/nano/\*.nanorc"\)|\1|' \
+    %{SOURCE3} doc/sample.nanorc > ./nanorc
+
 %install
 %make_install
 
 # Move documents to a proper directory.
 mkdir -p %{buildroot}%{_docdir}/
 mv -f %{buildroot}%{_datadir}/doc/%{name}/ %{buildroot}%{_docdir}/%{name}/
+
+# install default /etc/nanorc
+mkdir -p %{buildroot}%{_sysconfdir}
+install -m 0644 ./nanorc %{buildroot}%{_sysconfdir}/nanorc
+
+# enable useful extra syntax highlighting files by default
+mv %{buildroot}%{_datadir}/nano/extra/{ada,fortran,haskell,spec}.* %{buildroot}%{_datadir}/nano
 
 %find_lang %{name} --with-man --all-name
 
@@ -72,6 +87,7 @@ mv -f %{buildroot}%{_datadir}/doc/%{name}/ %{buildroot}%{_docdir}/%{name}/
 %doc %{_docdir}/nano/
 %{_bindir}/nano
 %{_bindir}/rnano
+%config(noreplace) %{_sysconfdir}/nanorc
 %{_datadir}/nano/
 %{_infodir}/nano.info%{?ext_info}
 %{_mandir}/man1/nano.1%{?ext_man}
