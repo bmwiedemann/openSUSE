@@ -629,6 +629,8 @@ Summary:        Development headers for Boost.IOStreans library
 Group:          Development/Libraries/C and C++
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_iostreams%{library_version} = %{version}
+Requires:       pkgconfig(bzip2)
+Requires:       pkgconfig(zlib)
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_iostreams-devel-impl
 Conflicts:      libboost_iostreams1_66_0-devel
@@ -1290,6 +1292,7 @@ using mpi ;
 EOF
 
 ./b2 -d+2 -q --user-config=./user-config-py3.jam \
+    --debug-configuration \
     --build-type=minimal --build-dir=./python3-build \
     --python-buildid=py3 \
     --stagedir=./python3-stage %{?_smp_mflags} \
@@ -1319,6 +1322,7 @@ echo 'using mpi ;' >> ./user-config.jam
 
 # This is run for both mini and non-mini build
 ./b2 -d+2 -q --user-config=./user-config.jam \
+    --debug-configuration \
     --build-type=minimal --build-dir=./build \
     --stagedir=./stage %{?_smp_mflags} \
     $LIBRARIES_FLAGS \
@@ -1335,13 +1339,13 @@ chmod +x symbol_diff.sh
 %if ! %{with hpc}
 %if %{with build_quickbook}
 pushd tools/quickbook
-../../b2 --user-config=../../user-config.jam --v2 dist-bin %{?_smp_mflags}
+../../b2 --debug-configuration --user-config=../../user-config.jam --v2 dist-bin %{?_smp_mflags}
 popd
 %endif
 
 %if %{with build_docs}
 cd doc
-./b2 --user-config=../user-config.jam --v2 man %{?_smp_mflags}
+./b2 --debug-configuration --user-config=../user-config.jam --v2 man %{?_smp_mflags}
 %endif
 %endif
 
@@ -1365,6 +1369,7 @@ module load gnu %mpi_flavor
 
 %if %{with python3}
 ./b2 -d+2 -q --user-config=./user-config-py3.jam \
+    --debug-configuration \
     --build-type=minimal --build-dir=./python3-build \
     --python-buildid=py3 \
     --prefix=%{buildroot}%{package_prefix} --exec-prefix=%{buildroot}%{package_bindir} \
@@ -1378,6 +1383,7 @@ module load gnu %mpi_flavor
 
 # Generic install
 ./b2 -d+2 -q \
+     --debug-configuration \
      --build-type=minimal --build-dir=./build --stagedir=./stage \
      --prefix=%{buildroot}%{package_prefix} --exec-prefix=%{buildroot}%{package_bindir} \
      --libdir=%{buildroot}%{package_libdir} --includedir=%{buildroot}%{package_includedir} \
@@ -1471,10 +1477,6 @@ rm %{buildroot}%{package_libdir}/cmake/BoostDetectToolset-%{version}.cmake
 rm -r %{buildroot}%{package_libdir}/cmake/Boost-%{version}
 rm -r %{buildroot}%{package_libdir}/cmake/boost_headers-%{version}
 rm -r %{buildroot}%{package_libdir}/cmake/boost_{w,}serialization-%{version}
-
-rm -rf %{buildroot}%{package_libdir}/libboost_numpy.so{,.%{version}}
-rm -rf %{buildroot}%{package_libdir}/libboost_mpi_python.so.%{version}
-rm -rf %{buildroot}%{package_libdir}/libboost_python.so.%{version}
 
 rm -r %{buildroot}%{package_includedir}/boost
 rm %{buildroot}%{package_libdir}/libboost_{w,}serialization*

@@ -1333,4 +1333,13 @@ Boost Software License 1.0 is available in SPDX format on http://www.spdx.org/li
 - Boost.Build (jam) implementation is now obsoletes older versions</comment>
     <requestid>858341</requestid>
   </revision>
+  <revision rev="144" vrev="3">
+    <srcmd5>1fd117ad8f36714e96ddcdd2c76aabba</srcmd5>
+    <version>1.75.0</version>
+    <time>1609705536</time>
+    <user>dimstar_suse</user>
+    <comment>- Log additional information during build
+- Add missing dependencies in libboost_iostream-devel (bsc#1180359) (forwarded request 859473 from adamm)</comment>
+    <requestid>859474</requestid>
+  </revision>
 </revisionlist>
