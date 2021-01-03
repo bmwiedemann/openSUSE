@@ -1,8 +1,8 @@
 #
 # spec file for package eric
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2019-2010 LISA GmbH, Bingen, Germany
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2010-2021 LISA GmbH, Bingen, Germany
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define distname eric6
 
 Name:           eric
-Version:        20.10
+Version:        21.1
 Release:        0
 Summary:        Python IDE based on Qt5
 License:        GPL-3.0-or-later
@@ -88,7 +88,7 @@ find . -name \*.py -exec sed -i -e '/^#!\/usr\/bin.*python/d' '{}' \;
 # nothing here
 
 %install
-python3 install.py -b %{_bindir} -d %{python3_sitelib} -i %{buildroot}
+python3 install.py -b %{_bindir} -d %{python3_sitelib} -i %{buildroot} --no-tools --no-info
 %fdupes %{buildroot}%{python3_sitelib}
 ln -sf eric6 %{buildroot}%{_bindir}/%{name}
 

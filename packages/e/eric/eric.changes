@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Jan  2 13:33:03 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 21.1
+  - bug fixes
+
+- Update to version 20.12.1
+  - bug fixes
+
+- Update to version 20.12
+  - bug fixes
+
+- Update to version 20.11
+  - bug fixes
+  - Editor
+    -- added support for TOML files
+  - Main Window
+    -- added a dialog showing information about the installation
+    process
+    (see Help menu)
+  - Mini Editor
+    -- added a status bar languages menu
+    -- added a status bar zoom slider
+    -- added zoom actions menu and toolbar
+  - Syntax Checker
+    -- added a syntax checker for TOML files
+  - Web Browser
+    -- added a SSL information page to the site info dialog
+    -- added a clickable SSL info label to the URL entry
+  - Various
+    -- changed code to not use deprecated 'QRegExp' anymore
+
+- Don't attempt to install/use pyqt5-tools/qt5-applications
+- Don't create install info file
+  rpmlint complains that this file contains buildroot
+
+-------------------------------------------------------------------
 Mon Oct  5 17:53:18 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to version 20.10
