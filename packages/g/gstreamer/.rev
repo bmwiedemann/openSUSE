@@ -575,4 +575,14 @@
     <comment></comment>
     <requestid>854556</requestid>
   </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>409b38531eceefab43666ce0802cb149</srcmd5>
+    <version>1.18.2</version>
+    <time>1609705574</time>
+    <user>dimstar_suse</user>
+    <comment>- Move gst-plugins-doc-cache-generator to devel subpackage
+  (remove python3 dependency on main gstreamer package).
+</comment>
+    <requestid>859476</requestid>
+  </revision>
 </revisionlist>

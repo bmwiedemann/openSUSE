@@ -211,7 +211,6 @@ install -m755 -D %{SOURCE2} %{buildroot}%{_rpmconfigdir}/gstreamer-provides
 %{_libexecdir}/gstreamer-%{gst_branch}/gst-completion-helper
 %{_libexecdir}/gstreamer-%{gst_branch}/gst-plugin-scanner-%{_target_cpu}
 %{_libexecdir}/gstreamer-%{gst_branch}/gst-hotdoc-plugins-scanner
-%{_libexecdir}/gstreamer-%{gst_branch}/gst-plugins-doc-cache-generator
 %verify(not mode caps) %{_libexecdir}/gstreamer-%{gst_branch}/gst-ptp-helper
 %{_datadir}/bash-completion/completions/
 %{_datadir}/bash-completion/helpers/
@@ -245,6 +244,7 @@ install -m755 -D %{SOURCE2} %{buildroot}%{_rpmconfigdir}/gstreamer-provides
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
+%{_libexecdir}/gstreamer-%{gst_branch}/gst-plugins-doc-cache-generator
 %{_rpmconfigdir}/gstreamer-provides
 %{_fileattrsdir}/gstreamer.attr
 %{_datadir}/gir-1.0/*.gir
