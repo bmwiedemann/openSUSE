@@ -18,7 +18,7 @@
 
 %define sover   0
 Name:           bzrtp
-Version:        4.4.13
+Version:        4.4.21
 Release:        0
 Summary:        ZRTP keys exchange protocol implementation
 License:        GPL-3.0-or-later

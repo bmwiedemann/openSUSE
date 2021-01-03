@@ -104,4 +104,13 @@
 </comment>
     <requestid>852643</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9073939be32a19784f37969e0c6502c1</srcmd5>
+    <version>4.4.21</version>
+    <time>1609705588</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.4.21 (no changelog) 
+</comment>
+    <requestid>859589</requestid>
+  </revision>
 </revisionlist>
