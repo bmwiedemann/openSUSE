@@ -1,7 +1,7 @@
 #
 # spec file for package python-fastparquet
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-fastparquet
-Version:        0.4.1
+Version:        0.5.0
 Release:        0
 Summary:        Python support for Parquet file format
 License:        Apache-2.0
@@ -29,26 +29,22 @@ BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module bson}
 BuildRequires:  %{python_module cffi >= 0.6}
-BuildRequires:  %{python_module lz4 >= 0.19.1 }
-BuildRequires:  %{python_module numba >= 0.28}
+BuildRequires:  %{python_module lz4 >= 0.19.1}
+BuildRequires:  %{python_module numba >= 0.49}
 BuildRequires:  %{python_module numpy-devel >= 1.11}
-BuildRequires:  %{python_module packaging}
-BuildRequires:  %{python_module pandas >= 0.19}
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pandas >= 1.1.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-lzo}
 BuildRequires:  %{python_module python-snappy}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module thrift >= 0.11.0}
 BuildRequires:  %{python_module zstandard}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numba >= 0.28
+Requires:       python-numba >= 0.49
 Requires:       python-numpy >= 1.11
-Requires:       python-packaging
-Requires:       python-pandas
-Requires:       python-six
+Requires:       python-pandas >= 1.1.0
 Requires:       python-thrift >= 0.11.0
 Recommends:     python-Brotli
 Recommends:     python-bson
@@ -64,6 +60,10 @@ for integrating it into python-based Big Data workflows.
 
 %prep
 %setup -q -n fastparquet-%{version}
+# remove pytest-runner from setup_requires
+sed -i "s/'pytest-runner',//" setup.py
+# the tests import the fastparquet.test module and we need to import from sitearch, so install it.
+sed -i -e "s/^\s*packages=\[/&'fastparquet.test', /" -e "/exclude_package_data/ d" setup.py
 
 %build
 export CFLAGS="%{optflags}"
@@ -75,26 +75,23 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-cp -r fastparquet/test .
-mv fastparquet temp
-rm -rf build _build*
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-export PYTHONDONTWRITEBYTECODE=1
-rm -rf build _build*
-# Test test_time_millis fails in i586
-# test_datetime_roundtrip fails due to a warning being accidentally caught by the test
-# test_import_without_warning fails due to being already imported
-pytest-%{$python_bin_suffix} -v test -k 'not test_time_millis and not test_datetime_roundtrip and not test_errors and not test_import_without_warning'
-}
-mv temp fastparquet
-rm -rf test
+# avoid that the process call of python inside the tests imports from source
+# directory fastparquet and don't read setup.cfg
+mkdir ../testdir
+cp -r test-data ../testdir/
+pushd ../testdir
+# Test test_time_millis has the wrong reference type for 32-bit
+%if 0%{?__isa_bits} != 64
+%define donttest  -k 'not test_time_millis'
+%endif
+%pytest_arch --pyargs fastparquet %{?donttest}
+popd
+rm -r ../testdir
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%dir %{python_sitearch}/fastparquet
-%{python_sitearch}/fastparquet/*
-%dir %{python_sitearch}/fastparquet-%{version}-py*.egg-info
-%{python_sitearch}/fastparquet-%{version}-py*.egg-info/*
+%{python_sitearch}/fastparquet
+%{python_sitearch}/fastparquet-%{version}*-info
 
 %changelog
