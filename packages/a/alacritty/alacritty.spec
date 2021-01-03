@@ -1,7 +1,7 @@
 #
 # spec file for package alacritty
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,17 @@
 #
 
 
-# Use hardening ldflags.
-%global rustflags "-Clink-arg=-Wl,-z,relro,-z,now"
 Name:           alacritty
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        A GPU-accelerated terminal emulator
 License:        Apache-2.0
-URL:            https://github.com/alacritty/alacritty/
-Source:         https://github.com/alacritty/alacritty/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/alacritty/alacritty
+Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source3:        README.suse-maint
+# cargo vendor supplement
+Source99:       revendor_source.sh
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  freetype-devel
@@ -68,7 +68,7 @@ BuildArch:      noarch
 The official zsh completion script for alacritty.
 
 %prep
-%setup -qa1
+%autosetup -a1
 %define cargo_registry $(pwd)/vendor
 %cargo_prep
 
@@ -79,6 +79,7 @@ sed -i 's#"expat/conftools/config.sub":"523cb028db907d1fbbcecdcac6737f9e2eeba48f
 %endif
 
 %build
+export CARGO_NET_OFFLINE=true
 %cargo_build
 
 %install

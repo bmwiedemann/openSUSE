@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sun Jan  3 07:43:09 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 0.7.0-rc2
+ + Support for ~/ at the beginning of configuration file imports
+ + New cursor.style.blinking option to set the default blinking state
+ + New cursor.blink_interval option to configure the blinking frequency
+ + Support for cursor blinking escapes (CSI ? 12 h, CSI ? 12 l and CSI Ps SP q)
+ + Customizable keybindings for search
+ + History for search mode, bound to ^P/^N/Up/Down by default
+ + Default binding to cancel search on Ctrl+C
+ + History position indicator for search and vi mode
+ * Nonexistent config imports are ignored instead of raising an error
+ * Value for disabling logging with config.log_level is Off instead of None
+ * Missing glyph symbols are no longer drawn for zerowidth characters
+ * Bug fixes
+   - Wide characters sometimes being cut off
+   - Preserve vi mode across terminal reset
+   - Escapes CSI Ps b and CSI Ps Z with large parameters locking up Alacritty
+   - Dimming colors which use the indexed CSI 38 : 5 : Ps m notation
+   - Slow rendering performance with a lot of cells with underline/strikeout attributes
+   - Performance of scrolling regions with offset from the bottom
+   - Compilation when targetting aarch64 on Apple
+   - Cursor position not reported to apps when mouse is moved with button held outside of window
+   - No live config update when starting Alacritty with a broken configuration file
+   - PTY not drained to the end with the --hold flag enabled
+   - Alacritty not discarding invalid escape sequences starting with ESC
+   - Underline cursor being obscured by underline
+   - Cursor not being rendered with a lot of unicode glyphs visible
+   - IME input swallowed after triggering a key binding
+ - Search without vi mode not jumping properly between all matches
+ * Several Wayland fixes:
+   - Extra mouse buttons are no longer ignored
+   - Numpad arrow keys are now properly recognized
+   - Crash due to clipboard not being properly released
+   - Crash due to non-standard fontconfig configuration
+ *  The following CLI arguments have been removed in favor of the --option flag:
+        --persistent-logging
+        --live-config-reload
+        --no-live-config-reload
+        --dimensions
+        --position
+    live-shader-reload feature
+ *  Config option dynamic_title, you should use window.dynamic_title instead
+ *  Config option scrolling.faux_multiplier, which was replaced by escape CSI ? 1007 h/l
+- Packaging optimizations
+ * pull sources with exclusions
+ * add revendor_source.sh to remove unecessary objects from vendor tarball
+
+-------------------------------------------------------------------
 Fri Dec  4 03:45:47 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Use rust-packaging macros for vendoring dependencies

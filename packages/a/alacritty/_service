@@ -1,4 +1,35 @@
+<!--
+# vim: set syntax=xml
+-->
+
 <services>
-  <service name="cargo_vendor" mode="disabled">
+  <service name="tar_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/alacritty/alacritty.git</param>
+    <param name="revision">08e111dfae15d2428d87c3a80c68d858b144d287</param>
+    <param name="version">0.7.0</param>
+
+    <param name="exclude">.builds</param>
+    <param name="exclude">.github</param>
+    <param name="exclude">.agignore</param>
+    <param name="exclude">.editorconfig</param>
+    <param name="exclude">.gitattributes</param>
+    <param name="exclude">Makefile</param>
+    <param name="exclude">rustfmt.toml</param>
+    <param name="exclude">alacritty/src/macos</param>
+    <param name="exclude">alacritty_terminal/src/tty/windows</param>
+    <param name="exclude">extra/windows</param>
+    <param name="exclude">extra/osx</param>
+    <!--
+     smell: logo is required for build
+    <param name="exclude">extra/logo</param>
+    -->
+    <param name="exclude">alacritty_terminal/tests</param>
+  </service>
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
   </service>
 </services>
+

@@ -1,4 +1,6 @@
-When a new tarball release is added you must run the obs service to
-update the vendored sources: obs service disabledrun
+To rebuild the source tarball, run:
 
-In future OBS may be able to do this.
+$ osc service manualrun tar_scm
+$ osc service manualrun recompress
+
+You must also vendor the cargo dependencies.
