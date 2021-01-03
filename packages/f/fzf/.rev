@@ -179,4 +179,39 @@
 </comment>
     <requestid>855603</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>58aee58b402a1a56ea6098235d5e7f67</srcmd5>
+    <version>0.25.0</version>
+    <time>1609705603</time>
+    <user>dimstar_suse</user>
+    <comment>- Text attributes set in --color are not reset when fzf sees another
+  --color option for the same element. This allows you to put custom
+  text attributes in your $FZF_DEFAULT_OPTS and still have those
+  attributes even when you override the colors.
+  # Default colors and attributes
+  fzf
+  # Apply custom text attributes
+  export FZF_DEFAULT_OPTS='--color fg+:italic,hl:-1:underline,hl+:-1:reverse:underline'
+  fzf
+  # Different colors but you still have the attributes
+  fzf --color hl:176,hl+:177
+  # Write &quot;regular&quot; if you want to clear the attributes
+  fzf --color hl:176:regular,hl+:177:regular
+- Renamed --phony to --disabled
+- You can dynamically enable and disable the search functionality using
+  the new enable-search, disable-search, and toggle-search actions
+- You can assign a different color to the query string for when search
+  is disabled
+  fzf --color query:#ffffff,disabled:#999999 --bind space:toggle-search
+- Added last action to move the cursor to the last match
+      The opposite action top is renamed to first, but top is still
+      recognized as a synonym for backward compatibility
+- Added preview-top and preview-bottom actions
+- Extended support for alt key chords: alt with any case-sensitive
+  single character
+  fzf --bind alt-,:first,alt-.:last
+- Generate tags for vim documentation
+</comment>
+    <requestid>859924</requestid>
+  </revision>
 </revisionlist>

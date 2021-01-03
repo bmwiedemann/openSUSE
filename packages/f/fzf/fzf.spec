@@ -1,7 +1,7 @@
 #
 # spec file for package fzf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fzf
-Version:        0.24.4
+Version:        0.25.0
 Release:        0
 Summary:        A command-line fuzzy finder
 License:        MIT
@@ -86,6 +86,7 @@ zsh shell completions for fzf
 Summary:        Vim plugin for fzf
 Group:          Productivity/File utilities
 BuildArch:      noarch
+Requires:       (vim or neovim)
 
 %description -n vim-fzf
 Plugin for vim allowing use of fzf.
