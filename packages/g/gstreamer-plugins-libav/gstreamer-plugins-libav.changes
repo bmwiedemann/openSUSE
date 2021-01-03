@@ -6,6 +6,11 @@ Wed Dec  9 19:48:58 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
     issue with aptX HD decoding.
 
 -------------------------------------------------------------------
+Wed Nov 25 11:02:26 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
+
+- Fix identifer of package name when building plugin.
+
+-------------------------------------------------------------------
 Wed Oct 28 10:30:41 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 1.18.1:

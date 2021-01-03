@@ -88,7 +88,7 @@ This plugin contains the documentation
 
 %build
 %meson \
-	-Dpackage-name='openSUSE GStreamer-plugins-good package' \
+	-Dpackage-name='openSUSE GStreamer-plugins-libav package' \
 	-Dpackage-origin='http://download.opensuse.org' \
         -Dgpl=enabled \
 	%{nil}
