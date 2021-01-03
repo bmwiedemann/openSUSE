@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 30 14:53:27 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
+
+- Remove yast2-qt requires on x11 pattern, there is already
+  an equivalent recommends in the pattern.
+
+-------------------------------------------------------------------
 Mon Nov  2 11:00:09 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add selinux pattern

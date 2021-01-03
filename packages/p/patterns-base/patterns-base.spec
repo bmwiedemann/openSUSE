@@ -751,7 +751,6 @@ Recommends:     pattern() = basic_desktop
 
 Requires:       xorg-x11-fonts-core
 Requires:       xorg-x11-server
-Requires:       yast2-qt
 Recommends:     dejavu-fonts
 Recommends:     libyui-qt
 Recommends:     libyui-qt-pkg
