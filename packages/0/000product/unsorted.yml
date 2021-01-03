@@ -748,7 +748,6 @@ unsorted:
   - arandr 
   - aranym 
   - arb-devel 
-  - arc 
   - arc-icon-theme 
   - arcanist 
   - archivemount 
@@ -767,7 +766,6 @@ unsorted:
   - aria2: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - aria2-devel 
   - aria2-lang: [i586] 
-  - arj 
   - ark: [i586] 
   - ark-lang: [i586] 
   - arm-ml-examples: [x86_64] 
@@ -8805,7 +8803,6 @@ unsorted:
   - leveldb-devel-static 
   - levmar-devel 
   - lha 
-  - lhasa: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - lhasa-devel 
   - lib3270-5_3 
   - lib3270-devel 
@@ -12048,7 +12045,6 @@ unsorted:
   - liblept5-32bit: [x86_64] 
   - libleveldb1 
   - liblevmar2 
-  - liblhasa0: [i586] 
   - liblightdm-qt5-3-0 
   - liblightgrep-devel 
   - liblightgrep0 
@@ -13044,7 +13040,7 @@ unsorted:
   - libpkcs11-helper1-32bit: [x86_64] 
   - libpkgconf-devel 
   - libplacebo-devel 
-  - libplacebo72 
+  - libplacebo104 
   - libplanarity0 
   - libplank1 
   - libplayerctl2 
@@ -17101,7 +17097,6 @@ unsorted:
   - ncat 
   - ncdu 
   - ncmpcpp 
-  - ncompress 
   - ncurses-devel 
   - ncurses-devel-32bit: [x86_64] 
   - ncurses-devel-static 
@@ -19075,6 +19070,7 @@ unsorted:
   - perl-B-Utils 
   - perl-BIND-Conf_Parser 
   - perl-Benchmark-Timer 
+  - perl-BerkeleyDB 
   - perl-Bit-Vector 
   - perl-Boost-Geometry-Utils 
   - perl-Bootloader-YAML 
@@ -19179,6 +19175,7 @@ unsorted:
   - perl-Context-Preserve 
   - perl-Contextual-Return 
   - perl-Convert-BER 
+  - perl-Convert-TNEF 
   - perl-Convert-UUlib 
   - perl-Cookie-Baker 
   - perl-Crypt-Blowfish 
@@ -19499,6 +19496,7 @@ unsorted:
   - perl-IO-Stty 
   - perl-IO-Tee 
   - perl-IO-TieCombine 
+  - perl-IO-stringy 
   - perl-IPC-Run 
   - perl-IPC-ShareLite 
   - perl-IPC-System-Simple 
@@ -19739,6 +19737,7 @@ unsorted:
   - perl-Net-IP 
   - perl-Net-IPv4Addr 
   - perl-Net-Jabber 
+  - perl-Net-LibIDN 
   - perl-Net-Libproxy 
   - perl-Net-Netmask 
   - perl-Net-OAuth 
@@ -24380,6 +24379,7 @@ unsorted:
   - python3-unittest-xml-reporting 
   - python3-unittest2pytest 
   - python3-unpaddedbase64 
+  - python3-unsync 
   - python3-untokenize 
   - python3-unyt 
   - python3-upm 
@@ -28245,7 +28245,6 @@ unsorted:
   - system-user-srvGeoClue: [i586] 
   - system-user-tss 
   - system-user-uuidd 
-  - system-user-vscan 
   - systemd-coredump 
   - systemd-default-settings-branding-upstream 
   - systemd-devel 
@@ -36309,7 +36308,6 @@ unsorted:
   - tmxtools 
   - tn5250 
   - tn5250-devel 
-  - tnef 
   - tntdb-doc 
   - tntdb-mysql 
   - tntdb-postgresql 
@@ -36901,7 +36899,6 @@ unsorted:
   - unmass 
   - unoconv 
   - unpaper 
-  - unrar_wrapper: [i586] # suggested by dvd:suggested:patterns-kde-kde 
   - unshield 
   - unshield-devel 
   - unzip-rcc 
