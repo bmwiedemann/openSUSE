@@ -17,7 +17,7 @@
 
 
 Name:           gscan2pdf
-Version:        2.8.1
+Version:        2.10.2
 Release:        0
 Summary:        Easy scan to PDF
 License:        GPL-3.0-only
