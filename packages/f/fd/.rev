@@ -88,4 +88,12 @@ Changes
     <comment></comment>
     <requestid>858643</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>133633699f120e4d73b7170dbf69abca</srcmd5>
+    <version>8.2.1</version>
+    <time>1609705598</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>859866</requestid>
+  </revision>
 </revisionlist>

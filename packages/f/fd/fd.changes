@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Dec 26 20:43:12 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Replace manual vendoring, build and install with rust-packaging macros
+
+-------------------------------------------------------------------
 Fri Dec 25 11:30:18 UTC 2020 - Wang Jun <jgwang@suse.com>
 
 - Update to 8.2.1

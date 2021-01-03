@@ -25,9 +25,7 @@ Group:          Productivity/File utilities
 URL:            https://github.com/sharkdp/fd
 Source:         https://github.com/sharkdp/fd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
-BuildRequires:  cargo
-BuildRequires:  rust
-BuildRequires:  rust-std
+BuildRequires:  rust-packaging
 
 %description
 fd is an alternative to GNU find. It features:
@@ -69,31 +67,19 @@ BuildArch:      noarch
 The official fish completion script for fd, generated during the build.
 
 %prep
-%setup -q
-%setup -q -D -T -a 1
-mkdir cargo-home
-cat >cargo-home/config <<EOF
-[source.crates-io]
-registry = 'https://github.com/rust-lang/crates.io-index'
-replace-with = 'vendored-sources'
-[source.vendored-sources]
-directory = './vendor'
-EOF
+%autosetup -a1
+%define cargo_registry $(pwd)/vendor
+%{cargo_prep}
 
 %build
-export CARGO_HOME=$PWD/cargo-home
-cargo build --release %{?_smp_mflags}
+%{cargo_build}
 
 %install
-export CARGO_HOME=$PWD/cargo-home
-cargo install --path . --root=build
-mkdir -p %{buildroot}%{_bindir}
-install -Dm0755 build/bin/fd %{buildroot}%{_bindir}/fd
+%{cargo_install}
 
-# install man page and completions
+# install shell completions and man page
 install -Dm644 target/release/build/fd-find-*/out/fd.bash %{buildroot}%{_datadir}/bash-completion/completions/fd
 install -Dm644 target/release/build/fd-find-*/out/fd.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/fd.fish
-## install -Dm644 target/release/build/fd-find-*/out/_fd %{buildroot}%{_datadir}/zsh/site-functions/_fd
 install -Dm644 contrib/completion/_fd %{buildroot}%{_datadir}/zsh/site-functions/_fd
 install -Dm644 doc/fd.1 %{buildroot}%{_mandir}/man1/fd.1
 
