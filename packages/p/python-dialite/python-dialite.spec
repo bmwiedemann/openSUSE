@@ -1,7 +1,7 @@
 #
 # spec file for package python-dialite
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dialite
-Version:        0.5.2
+Version:        0.5.3
 Release:        0
 Summary:        Python library to show simple dialogs
 License:        BSD-2-Clause
@@ -59,6 +59,7 @@ platform, or for SSH connections).
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/dialite
+%{python_sitelib}/dialite-%{version}*-info
 
 %changelog
