@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 31 14:00:54 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
+
+- Update to upstream v71 (jsc#SLE-14344).
+  - support for the new device-dax subdivision functionality added in Linux in
+    v5.10, including ways to create smaller devdax devices using
+    daxctl/libdaxctl, as well as creating, listing, and restoring from a config
+    dump, 'mappings' on these devices.
+  - miscellaneous bugfixes
+- Fix documentation and license packaging
+
+-------------------------------------------------------------------
 Wed Oct 21 07:27:20 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
 
 - Update to upstream v70.1 (jsc#SLE-13338).

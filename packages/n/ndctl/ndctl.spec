@@ -20,7 +20,7 @@
 %define lname libndctl6
 %define dname libndctl-devel
 Name:           ndctl
-Version:        70.1
+Version:        71
 Release:        0
 Summary:        Manage "libnvdimm" subsystem devices (Non-volatile Memory)
 License:        GPL-2.0-only
@@ -61,7 +61,7 @@ platform NVDIMM resources like those defined by the ACPI 6.0 NFIT
 
 %package -n %{dname}
 Summary:        Development files for libndctl
-License:        LGPL-2.1-or-later
+License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}-%{release}
 
@@ -76,7 +76,7 @@ developing applications that use %{name}.
 
 %package -n %{lname}
 Summary:        Management library for "libnvdimm" subsystem devices (Non-volatile Memory)
-License:        LGPL-2.1-or-later
+License:        LGPL-2.1-only
 Group:          System/Libraries
 
 %description -n %{lname}
@@ -126,7 +126,8 @@ ln -sf service %{buildroot}%{_sbindir}/rcndctl-monitor
 %service_del_postun ndctl-monitor.service
 
 %files
-%doc licenses/BSD-MIT licenses/CC0
+%license COPYING LICENSES/*/*
+%doc README.md CONTRIBUTING.md
 %{_bindir}/ndctl
 %{_bindir}/daxctl
 %{_sbindir}/rcndctl-monitor
@@ -145,14 +146,14 @@ ln -sf service %{buildroot}%{_sbindir}/rcndctl-monitor
 %{_datadir}/daxctl/daxctl.conf
 
 %files -n %{lname}
-%doc README.md
-%license COPYING
-%doc licenses/BSD-MIT licenses/CC0
+%license COPYING LICENSES/*/*
+%doc README.md CONTRIBUTING.md
 %{_libdir}/libndctl.so.*
 %{_libdir}/libdaxctl.so.*
 
 %files -n %{dname}
-%license COPYING
+%license COPYING LICENSES/*/*
+%doc README.md CONTRIBUTING.md
 %{_includedir}/ndctl/
 %{_libdir}/libndctl.so
 %{_libdir}/pkgconfig/libndctl.pc
