@@ -1,7 +1,7 @@
 #
 # spec file for package cmus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2007-2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %bcond_without sndio
 Name:           cmus
-Version:        2.8.0~20201215.gba1c3f0
+Version:        2.8.0~20210101.gcef5ea4
 Release:        0
 Summary:        Text-mode music player
 License:        GPL-2.0-only

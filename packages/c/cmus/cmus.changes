@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 03 01:08:17 UTC 2021 - 9@cirno.systems
+
+- Update to version 2.8.0~20210101.gcef5ea4:
+  * Switch to GitHub Actions (#1026)
+  * Shuffle first track (#893) (#1008)
+  * Implement mouse events for title bar (#1025)
+  * Fix whitespace issues (#1021)
+
+-------------------------------------------------------------------
 Wed Dec 16 02:26:12 UTC 2020 - 9@cirno.systems
 
 - Update to version 2.8.0~20201215.gba1c3f0:
