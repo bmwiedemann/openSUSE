@@ -1,0 +1,60 @@
+From 3f2b2d9df4ca74baa0d263c36dc70d95c149b221 Mon Sep 17 00:00:00 2001
+From: Weng Xuetian <wengxt@gmail.com>
+Date: Wed, 16 Dec 2020 20:45:39 -0800
+Subject: [PATCH] Only link konsoleprofile to konsoleprivate
+
+Using Object multiple times may cause the destructor handler called
+multiple times and leads to double free crash on exit.
+
+BUG: 430492
+(cherry picked from commit 3480514e706cb2d71014197fd61456fb19ab9329)
+---
+ src/CMakeLists.txt         | 2 --
+ src/profile/ProfileModel.h | 4 +++-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index c332e751..9cfe4098 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -261,7 +261,6 @@ ecm_add_app_icon(kdeinit_konsole ICONS ${ICONS_SRCS})
+ 
+ kf5_add_kdeinit_executable(konsole ${konsole_KDEINIT_SRCS})
+ target_link_libraries(kdeinit_konsole
+-  konsoleprofile
+   konsoleprivate
+   KF5::XmlGui
+   KF5::WindowSystem
+@@ -302,7 +301,6 @@ set_target_properties(konsolepart PROPERTIES DEFINE_SYMBOL KONSOLE_PART)
+ target_link_libraries(konsolepart
+     KF5::Parts
+     KF5::XmlGui
+-    konsoleprofile
+     konsoleprivate
+ )
+ install(TARGETS konsolepart  DESTINATION ${KDE_INSTALL_PLUGINDIR})
+diff --git a/src/profile/ProfileModel.h b/src/profile/ProfileModel.h
+index af499a8e..70912360 100644
+--- a/src/profile/ProfileModel.h
++++ b/src/profile/ProfileModel.h
+@@ -20,6 +20,8 @@
+ #ifndef PROFILE_MODEL_H
+ #define PROFILE_MODEL_H
+ 
++#include "konsoleprofile_export.h"
++
+ #include <QAbstractTableModel>
+ #include <QExplicitlySharedDataPointer>
+ #include <QList>
+@@ -27,7 +29,7 @@
+ namespace Konsole {
+ class Profile;
+ 
+-class ProfileModel : public QAbstractTableModel {
++class KONSOLEPROFILE_EXPORT ProfileModel : public QAbstractTableModel {
+     Q_OBJECT
+ public:
+     static ProfileModel* instance();
+-- 
+GitLab
+

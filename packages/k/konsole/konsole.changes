@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 30 19:29:46 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add Only-link-konsoleprofile-to-konsoleprivate.patch to fix
+  choosing a profile in the "New Tab" button's menu (boo#1180311,
+  kde#424986), and possible crashes on exit (kde#430492)
+
+-------------------------------------------------------------------
 Sat Dec  5 23:16:54 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.0
