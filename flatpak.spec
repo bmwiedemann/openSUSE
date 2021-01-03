@@ -146,7 +146,6 @@ more information.
 sed -i -e '1s,#!%{_bindir}/env python3,#!%{_bindir}/python3,' scripts/flatpak-*
 
 %build
-%define _lto_cflags %{nil}
 NOCONFIGURE=1 ./autogen.sh
 %configure \
 	--disable-silent-rules \
@@ -207,8 +206,6 @@ fi
 %files -f %{name}.lang
 %license COPYING
 %{_bindir}/flatpak
-%{_bindir}/flatpak-bisect
-%{_bindir}/flatpak-coredumpctl
 %{_libexecdir}/flatpak-portal
 %{_libexecdir}/flatpak-session-helper
 %{_libexecdir}/flatpak-system-helper
@@ -273,6 +270,8 @@ fi
 %{_datadir}/zsh/site-functions/_flatpak
 
 %files devel
+%{_bindir}/flatpak-bisect
+%{_bindir}/flatpak-coredumpctl
 %{_libdir}/pkgconfig/flatpak.pc
 %{_datadir}/gtk-doc/
 %{_includedir}/%{name}/
