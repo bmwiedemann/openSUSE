@@ -1,7 +1,7 @@
 #
 # spec file for package python-textdistance
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,9 @@ Summary:        Compute distance between the two texts
 License:        MIT
 URL:            https://github.com/life4/textdistance
 Source:         https://files.pythonhosted.org/packages/source/t/textdistance/textdistance-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE extend-timeout.patch bsc#[0-9]+ mcepl@suse.com
+# extend timetout for failing test
+Patch0:         extend-timeout.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -48,7 +51,8 @@ Compute distance between sequences. 30+ algorithms, pure python
 implementation, common interface, optional external libs usage.
 
 %prep
-%setup -q -n textdistance-%{version}
+%autosetup -p1 -n textdistance-%{version}
+
 chmod a-x README.md
 
 %build

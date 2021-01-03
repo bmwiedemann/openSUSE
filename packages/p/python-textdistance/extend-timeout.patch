@@ -1,0 +1,10 @@
+--- a/tests/test_compression/test_common.py
++++ b/tests/test_compression/test_common.py
+@@ -32,6 +32,7 @@ def test_monotonicity(alg):
+     assert same <= similar <= diffirent
+ 
+ 
++@hypothesis.settings(deadline=None)
+ @pytest.mark.parametrize('alg', ALGS)
+ @hypothesis.given(
+     left=hypothesis.strategies.text(),

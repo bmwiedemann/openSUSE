@@ -7,4 +7,13 @@
     <comment>requirement for spyder</comment>
     <requestid>858234</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>51a9d89ddc9f278392b3292da49575d9</srcmd5>
+    <version>4.2.0</version>
+    <time>1609705636</time>
+    <user>dimstar_suse</user>
+    <comment>- Add extend-timeout.patch switching off timeout on failing test.
+</comment>
+    <requestid>859964</requestid>
+  </revision>
 </revisionlist>
