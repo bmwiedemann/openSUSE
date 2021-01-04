@@ -1,7 +1,7 @@
 #
 # spec file for package jgmenu
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jgmenu
-Version:        4.2.1
+Version:        4.3.0
 Release:        0
 Summary:        Small X11 menu intended to be used with openbox and tint2
 License:        GPL-2.0-only

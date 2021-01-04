@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan  4 11:06:16 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.3.0:
+  * Add gradient support for menu window background. Use config options
+    menu_gradient_pos and color_menu_bg_to.
+  * Survive locales which are not supported by X11, for example en_HK.UTF-8
+  * Safely handle main event loop signals when X11 struggles to keep up
+    under extreme load or on very old machines
+  * obtheme: set color_title_border correctly (issue #142)
+  * obtheme: parse menu.overlap.x (issue #136)
+  * gtktheme: set title colours to match main menu.
+  * Add persistent mode config options and --persistent command line
+    option. When enabled, the menu does not exit or hide when it normally
+    would, for example on selecting an item or pressing escape.
+  * Add ^quit() markup. This simply exits and is designed to work with
+    the persistent mode.
+  * Add contib/ file jgmenu-unicode-icons.sh (PR #124)
+
+-------------------------------------------------------------------
 Wed May 20 06:09:56 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.2.1:
