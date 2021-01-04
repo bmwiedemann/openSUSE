@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Dec 28 18:33:03 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to 1.24.0:
+  Big news
+  * Frontend, druntime and Phobos are at version 2.094.1+, incl. new command-line options -cov=ctfe, -vtemplates=list-instances and -HC=<silent|verbose> . (#3560, #3582, #3588, #3593)
+  * Support for LLVM 11. The prebuilt packages use v11.0.0; x86 packages newly include the LLVM backend for AMD GPUs. (#3546, #3586)
+  * Experimental support for macOS on 64-bit ARM, thanks Guillaume! All druntime/Phobos unit tests pass. The macOS package includes prebuilt druntime/Phobos; adapt the SDK path in etc/ldc2.conf and then use -mtriple=arm64-apple-macos to cross-compile. If you know how to work around the countless linker warnings, please let us know. (dlang/druntime#3226, #3583)
+  Platform support
+  * Supports LLVM 6.0 - 11.0.
+  Bug fixes
+  * Fix potentially wrong context pointers when calling delegate literals. (#3553, #3554)
+  * Fix alignment issue when casting vector rvalue to static array. (c8889a9)
+  * Make sure lambdas in pragma(inline, true) functions are emitted into each referencing compilation unit. (#3570)
+  * Fix -Xcc=-Wl,... by dropping support for comma-separated list of cc options. (c61b135)
+  * Fix ThreadSanitizer support by not detaching main thread upon program termination. (#3572)
+  * Traverse full chain of nested aggregates when resolving a nested variable. (#3556, #3558)
+  Internals
+  * CI: Linux AArch64 is now also tested by a Travis job, because Shippable has sadly become unreliable. (#3469)
+  * Building LDC with an LDC host compiler might be somewhat faster now (requires -DLDC_LINK_MANUALLY=OFF in the CMake command-line on non-Windows hosts). (#3575)
+  Known issues
+  * When building LDC, old LDC 0.17.*/ltsmaster host compilers miscompile LDC ≥ 1.21, leading to potential segfaults of the built LDC. Ltsmaster can still be used to bootstrap a first compiler and then let that compiler compile itself. (#3354)
+  * Buggy older ld.bfd linker versions may wrongly strip out required symbols, e.g., ModuleInfos (so that e.g. no module ctors/dtors are run). LDC defaults to ld.gold on Linux.
+  * LDC does not zero the padding area of a real variable. This may lead to wrong results if the padding area is also considered. See #770. Does not apply to real members inside structs etc.
+
+-------------------------------------------------------------------
 Wed Nov 25 15:09:09 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix aarch64 build:  Drop '-mbranch-protection=standard' option
