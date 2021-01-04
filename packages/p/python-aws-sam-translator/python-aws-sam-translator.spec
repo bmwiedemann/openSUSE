@@ -28,7 +28,7 @@
 %define skip_python2 1
 %endif
 Name:           python-aws-sam-translator
-Version:        1.25.0
+Version:        1.27.0
 Release:        0
 Summary:        AWS SAM template to AWS CloudFormation template translator
 License:        Apache-2.0

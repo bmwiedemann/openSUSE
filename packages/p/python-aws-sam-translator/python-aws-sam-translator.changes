@@ -4,6 +4,19 @@ Thu Nov 26 11:07:08 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 - Only build Python3 flavors for distributions 15 and greater
 
 -------------------------------------------------------------------
+Thu Oct  8 11:40:09 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.27.0
+  + docs: fix link to all_policy_templates example file
+  + fix: Allow Ref in CompatibleRuntimes property of AWS::Serverless::LayerVersion
+  + Adding Tracing property to State Machine resource
+  + Add new arguments to allow vpc/vpce endpoints as intrinsics
+- from 1.26.0
+  + feat: Add support for VPCEndpointIds in EndpointConfiguration
+  + fix: Adding authorization scopes as list validation in ApiGatewayAuthorizer (v1 and v2)
+  + MSK event type support for AWS::Serverless::Function
+
+-------------------------------------------------------------------
 Wed Jul  1 12:55:50 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.25.0
