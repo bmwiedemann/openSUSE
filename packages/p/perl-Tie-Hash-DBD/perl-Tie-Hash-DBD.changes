@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 24 03:08:36 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.22
+   see /usr/share/doc/packages/perl-Tie-Hash-DBD/Changes
+
+  0.22	- 21 Dec 2020, H.Merijn Brand
+      * Try to make persist tests use more unique table names
+      * Fix META issue for bugtracker
+
+-------------------------------------------------------------------
 Fri Apr 10 03:16:39 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.21
