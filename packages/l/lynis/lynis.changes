@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Jan  4 09:13:29 UTC 2021 - Robert Frohl <rfrohl@suse.com>
+
+- Update to 3.0.2
+  * Added
+    - Scan for locked user accounts in /etc/passwd
+    - Loghost configuration
+    - Check for active Suricata daemon
+    - OS detection of Flatcar, IPFire, Mageia, NixOS, ROSA Linux, SLES (extended), Void Linux, Zorin OS
+    - OS detection of OpenIndiana (Hipster and Legacy), Shillix, SmartOS, Tribblix, and others
+    - EOL dates for Alpine, macOS, Mageia, OmniosCE, and Solaris 11
+    - Support for Solaris svcs (service manager)
+    - Enumeration of Solaris services
+  * Changed
+    - Detect sysstat systemd unit
+    - Only fail if both SHA_CRYPT_MIN_ROUNDS and SHA_CRYPT_MAX_ROUNDS are undefined
+    - Support for Solaris
+    - Improved reboot test by ignoring known bad values
+    - Ignore rescue kernel such as on CentOS systems
+    - Detection of Alpine Linux kernel
+    - Compatibility change for hostname check
+    - Support for Solaris
+    - Don't show exception if no kernels were found on the disk
+    - Supports now checking files at multiple locations (systemd)
+    - ParseNginx function: Support include on absolute paths
+    - ParseNginx function: Ignore empty included wildcards
+    - Set 'RHEL' as OS_NAME for Red Hat Enterprise Linux
+    - HostID: Use first e1000 interface and break after match
+    - Translations extended and updated
+    - Test if pgrep exists before using it
+    - Better support for busybox shell
+    - Small code enhancements
+
+-------------------------------------------------------------------
 Fri Nov 13 09:42:44 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
 
 - Add a Requires for net-tools-deprecated, as legacy binary binaries

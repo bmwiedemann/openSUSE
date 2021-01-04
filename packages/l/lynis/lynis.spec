@@ -1,7 +1,7 @@
 #
 # spec file for package lynis
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2009-2013 Sascha Manns <saigkill@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@
 %define _pluginsdir       %{_datadir}/lynis/plugins
 %define _dbdir            %{_datadir}/lynis/db
 Name:           lynis
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        Security and System auditing tool
 License:        GPL-3.0-only
