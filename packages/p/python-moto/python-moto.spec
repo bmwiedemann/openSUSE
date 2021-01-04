@@ -1,7 +1,7 @@
 #
 # spec file for package python-moto
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%if 0%{?suse_version} >= 1500
+%define skip_python2 1
+%endif
 Name:           python-moto
 Version:        1.3.16
 Release:        0
@@ -25,6 +27,22 @@ Summary:        Library to mock out the boto library
 License:        Apache-2.0
 URL:            https://github.com/spulec/moto
 Source:         https://files.pythonhosted.org/packages/source/m/moto/moto-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM moto-pr3273-escape-sequences.patch gh#spulec/moto#3273 fix escape sequences so that subsequent patches apply without rebase
+Patch0:         https://github.com/spulec/moto/pull/3273.patch#/moto-pr3273-escape-sequences.patch
+# PATCH-FIX-UPSTREAM moto-pr3308-fix-test_s3.patch gh#spulec/moto#3308 -- fix test failure
+Patch1:         https://github.com/spulec/moto/pull/3308.patch#/moto-pr3308-fix-test_s3.patch
+# PATCH-FEATURE-UPSTREAM remove_nose.patch gh#spulec/moto#3361 mcepl@suse.com
+# Port test suite from nose to pytest
+Patch2:         remove_nose.patch
+# PATCH-FEATURE-UPSTREAM denose_exceptions.patch gh#spulec/moto#3361 mcepl@suse.com
+# Continuation of the previous patch
+Patch3:         denose_exceptions.patch
+# PATCH-FIX-UPSTREAM moto-pr3412-fix-cfn-lint.patch -- gh#spulec/moto#3412 Fix failures with newer cfn-lint
+Patch4:         https://github.com/spulec/moto/pull/3412.patch#/moto-pr3412-fix-cfn-lint.patch
+# PATCH-FIX-UPSTREAM moto-pr3444-fix-docker.patch -- gh#spulec/moto#3444 Fix docker failure in test
+Patch5:         https://github.com/spulec/moto/pull/3444.patch#/moto-pr3444-fix-docker.patch
+# PATCH-FIX-UPSTREAM moto-pr3575-managedblockchain-botocore-api.patch -- gh#spulec/moto#3575 Support change botocore api
+Patch6:         https://github.com/spulec/moto/pull/3575.patch#/moto-pr3575-managedblockchain-botocore-api.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -49,6 +67,10 @@ Requires:       python-responses >= 0.9.0
 Requires:       python-six > 1.9
 Requires:       python-sshpubkeys >= 3.1.0
 Requires:       python-xmltodict
+%if %{python_version_nodots} < 37
+# gh#spulec/moto#3576
+Requires:       python-importlib-resources
+%endif
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
 Recommends:     python-Flask
@@ -67,11 +89,13 @@ BuildRequires:  %{python_module cryptography >= 2.3.0}
 BuildRequires:  %{python_module docker >= 2.5.1}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module idna >= 2.5}
+# For Python versions without importlib.resources, but it does not hurt to install the package for all flavors.
+BuildRequires:  %{python_module importlib-resources}
 BuildRequires:  %{python_module jsondiff >= 1.1.2}
 BuildRequires:  %{python_module jsonpickle}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module parameterized}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.1}
 BuildRequires:  %{python_module python-jose}
 BuildRequires:  %{python_module pytz}
@@ -98,11 +122,6 @@ library.
 %setup -q -n moto-%{version}
 %autopatch -p1
 
-# IOT is too flaky in 1.3.14 release, remove with next one
-rm -r tests/test_iot/
-# Lambda tests are flaky in 1.3.14 too, fixed in git master
-rm -r tests/test_awslambda/
-
 %build
 %python_build
 
@@ -115,9 +134,7 @@ rm -r tests/test_awslambda/
 %check
 # skipped tests require network connection
 export BOTO_CONFIG=/dev/null
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-nosetests-%{$python_bin_suffix} -sv ./tests/ -e "(test_invoke_requestresponse_function|test_context_manager|test_decorator_start_and_stop|test_invoke_function_from_sns|test_passthrough_requests|test_list_jobs|test_submit_job|test_put_subscription_filter_with_lambda)"
-}
+%pytest -k 'not network' tests/
 
 %post
 %python_install_alternative moto_server
