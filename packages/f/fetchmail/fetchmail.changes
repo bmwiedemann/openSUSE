@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  4 10:28:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.4.15:
+  * Fix a typo in the manual page reported by David McKelvie.
+  * Fix cross-compilation with openssl, by Fabrice Fontaine. Merge request !23.
+  * Fix truncation of SMTP PLAIN AUTH with ^ in credentials, by Earl Chew.
+
+-------------------------------------------------------------------
 Sat Dec 19 09:52:39 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 6.4.14:
