@@ -1,7 +1,7 @@
 #
 # spec file for package bam
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,12 +21,12 @@ Version:        0.5.1
 Release:        0
 Summary:        Lua-based build system
 License:        Zlib
-Url:            http://matricks.github.com/bam/
+URL:            http://matricks.github.com/bam/
 Source:         https://github.com/matricks/bam/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM bam-0.5.1-fix-compilation-order.patch -- https://github.com/matricks/bam/issues/116
 Patch0:         bam-0.5.1-fix-compilation-order.patch
 BuildRequires:  gcc-c++
-BuildRequires:  pandoc
+BuildRequires:  help2man
 BuildRequires:  pkgconfig
 BuildRequires:  python
 BuildRequires:  pkgconfig(lua5.3)
@@ -47,7 +47,7 @@ export CFLAGS="%{optflags}"
 %make_install
 
 mkdir -p %{buildroot}%{_mandir}/man1
-pandoc docs/bam.1.txt -s -t man > %{buildroot}%{_mandir}/man1/bam.1
+help2man --section=1 --name="fast and flexible build system" --version-string="VERSION_STRING" --no-info ./bam > %{buildroot}%{_mandir}/man1/bam.1
 
 %check
 make %{?_smp_mflags} test

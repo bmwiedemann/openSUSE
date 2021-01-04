@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  4 14:59:25 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace pandoc BuildRequires with help2man: this is sufficient to
+  convert docs/bam.1.txt into man page format.
+
+-------------------------------------------------------------------
 Thu Oct 17 14:20:48 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Remove obsolete Groups tag (fate#326485)
