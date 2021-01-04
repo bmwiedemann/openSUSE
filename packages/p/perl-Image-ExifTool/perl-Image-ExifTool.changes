@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Dec 29 14:12:31 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 12.13:
+  - Add time zone automatically to most string-based QuickTime date/time tags
+    when writing unless the PrintConv option is disabled
+  - Added -i HIDDEN option to ignore files with names that start with "."
+  - Added a few new Nikon ShutterMode values (thanks Jan Skoda)
+  - Added ability to write Google GCamera MicroVideo XMP tags
+  - Decode a new Sony tag (thanks LibRaw)
+  - Changed behaviour when writing only pseudo tags to return an error and avoid
+    writing any other tags if writing FileName fails
+  - Print "X image files read" message even if only 1 file is read when at least
+    one other file has failed the -if condition
+  - Added ability to geotag from DJI CSV log files
+  - Added a new CanonModelID
+  - Added a couple of new Sony LensType values (thanks LibRaw)
+  - Enhanced -csvDelim option to allow "\t", "\n", "\r" and "\\"
+  - Unescape "\b" and "\f" in imported JSON values
+  - Fixed bug introduced in 12.10 which generated a "Not an integer" warning
+    when attempting to shift some QuickTime date/time tags
+  - Fixed shared-write permission problem with -@ argfile when using -stay_open
+    and a filename containing special characters on Windows
+  - Added -csvDelim option
+  - Added new Canon and Olympus LensType values (thanks LibRaw)
+  - Added a warning if ICC_Profile is deleted from an image (github issue #63)
+  - EndDir() function for -if option now works when -fileOrder is used
+  - Changed FileSize conversion to use binary prefixes since that is how the
+    conversion is currently done (eg. MiB instead of MB)
+  - Patched -csv option so columns aren't resorted when using -G option and one
+    of the tags is missing from a file
+  - Fixed incompatiblity with Google Photos when writing UserData:GPSCoordinates
+    to MP4 videos
+  - Fixed problem where the tags available in a -p format string were limited to
+    the same as the -if[NUM] option when NUM was specified
+  - Fixed incorrect decoding of SourceFileIndex/SourceDirectoryIndex for Ricoh
+    models
+
+-------------------------------------------------------------------
 Mon Nov 16 06:43:22 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 12.10
