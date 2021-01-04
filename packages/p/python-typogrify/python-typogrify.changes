@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Mon Jan  4 07:37:25 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- spec-cleaner to pass the Factory checks
+
+-------------------------------------------------------------------
+Mon Nov 16 10:32:21 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Enable tests.
+
+-------------------------------------------------------------------
+Mon May  8 16:58:45 UTC 2017 - benoit.monin@gmx.fr
+
+- convert the package to singlespec
+- call fdupes to fix duplicated files
+
+-------------------------------------------------------------------
+Tue Sep 23 16:55:08 UTC 2014 - benoit.monin@gmx.fr
+
+- update to version 2.0.7:
+  * 2.0.4: moving titlecase into the project
+  * 2.0.2, 2.0.3: adding support for custom ignore tags
+- remove useless shebang on python files
+- add package documentation
+- add the requires as buildrequires to guarantee they are available
+
+-------------------------------------------------------------------
+Wed Jan  8 18:02:06 UTC 2014 - benoit.monin@gmx.fr
+
+- update to upstream version 2.0.1:
+  * add Python 3 compatibility
+  * rectify deprecated function calls
+
+-------------------------------------------------------------------
+Fri Dec 27 17:13:54 UTC 2013 - benoit.monin@gmx.fr
+
+- switch from distribute to setuptools
+- remove useless CFLAGS="%{optflags}"
+
+-------------------------------------------------------------------
+Wed Mar 27 21:29:59 UTC 2013 - benoit.monin@gmx.fr
+
+- initial package with version 2.0.0
+
