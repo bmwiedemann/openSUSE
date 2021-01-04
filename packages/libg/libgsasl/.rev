@@ -243,4 +243,12 @@ contains numerous GPL-3.0+ licensed test files (forwarded request 130704 from ba
     <comment></comment>
     <requestid>785710</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>ebfd6433fb4a2ee72cbf65ecf50e58d5</srcmd5>
+    <version>1.10.0</version>
+    <time>1609783631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859940</requestid>
+  </revision>
 </revisionlist>

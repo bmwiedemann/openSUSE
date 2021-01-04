@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jan  2 18:41:56 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.10.0:
+  * SCRAM-SHA-256 and SCRAM-SHA-256-PLUS (RFC 7677)
+  * New SCRAM crypto helper APIs
+  * SCRAM server: Support for password-less usage
+  * SCRAM: Sets SCRAM_ITER/SCRAM_SALT/SCRAM_SALTED_PASSWORD
+  * SCRAM, GS2, and GSSAPI no longer retrieve the TLS channel
+    binding data (property GSASL_CB_TLS_UNIQUE) during
+    gsasl_client_start() or gsasl_server_start()
+  * A number of legacy and less secure interfaces deprecated
+  * New APIs for hex encoding/decoding
+- add upstream signing key and validate source signature
+- refresh spec file
+- build with all warnings and treat them as errors
+
+-------------------------------------------------------------------
 Fri Mar 13 22:31:19 UTC 2020 - David Mulder <dmulder@suse.com>
 
 - Re-enable GSSAPI by explicitly choosing mit kerberos.

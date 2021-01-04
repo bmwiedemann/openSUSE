@@ -1,7 +1,7 @@
 #
 # spec file for package libgsasl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,22 @@
 
 
 Name:           libgsasl
-Version:        1.8.1
+Version:        1.10.0
 Release:        0
 Summary:        Implementation of the SASL framework and a few common SASL mechanisms
 License:        LGPL-2.1-or-later AND GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.gnu.org/software/gsasl/
-Source0:        ftp://ftp.gnu.org/gnu/gsasl/%{name}-%{version}.tar.gz
-
+Source0:        https://ftp.gnu.org/gnu/gsasl/%{name}-%{version}.tar.gz
+Source1:        https://ftp.gnu.org/gnu/gsasl/%{name}-%{version}.tar.gz.sig
+Source2:        https://josefsson.org/54265e8c.txt#/%{name}.keyring
 BuildRequires:  gcc-c++
-BuildRequires:  gettext-devel
-BuildRequires:  krb5-devel
-BuildRequires:  libgcrypt-devel
-BuildRequires:  libidn-devel
-BuildRequires:  libntlm-devel
+BuildRequires:  gettext-devel >= 0.19.8
 BuildRequires:  pkgconfig
-%if 0%{?suse_version}
-BuildRequires:  fdupes
-%endif
+BuildRequires:  pkgconfig(krb5-gssapi)
+BuildRequires:  pkgconfig(libgcrypt) >= 1.4.4
+BuildRequires:  pkgconfig(libidn)
+BuildRequires:  pkgconfig(libntlm) >= 0.3.5
 
 %description
 GNU SASL is an implementation of the Simple Authentication and
@@ -58,6 +56,10 @@ from clients, and in clients to authenticate against servers.
 Summary:        Implementation of the SASL framework and a few common SASL mechanisms
 Group:          Development/Libraries/C and C++
 Requires:       libgsasl7 = %{version}
+Requires:       pkgconfig(krb5-gssapi)
+Requires:       pkgconfig(libgcrypt)
+Requires:       pkgconfig(libidn)
+Requires:       pkgconfig(libntlm)
 
 %description devel
 GNU SASL is an implementation of the Simple Authentication and
@@ -71,33 +73,37 @@ from clients, and in clients to authenticate against servers.
 %setup -q
 
 %build
-%configure --disable-static --with-pic --with-gssapi-impl=mit
-make %{?_smp_mflags}
+%configure \
+	--disable-static \
+	--with-pic \
+	--with-gssapi-impl=mit \
+	--enable-gcc-warnings \
+#
+%make_build
 
 %install
 %make_install
 %find_lang %{name}
 find %{buildroot} -type f -name "*.la" -delete -print
-%if 0%{?fdupes:1}
-%fdupes %{buildroot}/%{_prefix}
-%endif
 
 %check
-make check
+%make_build check
 
 %post -n libgsasl7 -p /sbin/ldconfig
 %postun -n libgsasl7 -p /sbin/ldconfig
 
 %files -n libgsasl7
-%license COPYING.LIB
+%license COPYING*
 %doc AUTHORS NEWS README THANKS
 %{_libdir}/*.so.*
 
 %files devel
+%license COPYING*
 %{_includedir}/gsas*.h
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 
 %files lang -f %{name}.lang
+%license COPYING*
 
 %changelog
