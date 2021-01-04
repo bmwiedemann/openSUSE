@@ -1,7 +1,7 @@
 #
 # spec file for package python36
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -503,6 +503,7 @@ sed -e 's/-fprofile-correction//' -i Makefile.pre.in
     --docdir=%{_docdir}/python \
     --enable-ipv6 \
     --enable-shared \
+    --with-fpectl \
     --with-ensurepip=no \
     --with-system-ffi \
     --with-system-expat \

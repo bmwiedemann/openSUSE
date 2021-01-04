@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 28 15:13:40 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- readd --with-fpectl (bsc#1180377)
+
+-------------------------------------------------------------------
 Mon Dec  7 18:40:07 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Adjust sphinx-update-removed-function.patch

@@ -2896,4 +2896,13 @@ http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html
 </comment>
     <requestid>856737</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>9c2bcc851276bcc0c2a1587b74368acc</srcmd5>
+    <version>3.6.12</version>
+    <time>1609783760</time>
+    <user>dimstar_suse</user>
+    <comment>- readd --with-fpectl (bsc#1180377)
+</comment>
+    <requestid>860180</requestid>
+  </revision>
 </revisionlist>
