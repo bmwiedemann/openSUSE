@@ -7,4 +7,12 @@
     <comment>replacing the misspelled perl-TermReadline-Gnu</comment>
     <requestid>668903</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>807c998e4c8e175814904c130938a876</srcmd5>
+    <version>1.37</version>
+    <time>1609783807</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860223</requestid>
+  </revision>
 </revisionlist>

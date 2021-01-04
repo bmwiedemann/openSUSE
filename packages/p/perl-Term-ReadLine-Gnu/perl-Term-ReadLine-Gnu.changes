@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 28 03:08:44 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.37
+   see /usr/share/doc/packages/perl-Term-ReadLine-Gnu/Changes
+
+-------------------------------------------------------------------
 Sun Jan 27 10:58:30 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - add cpanspec.yml for autoupdates
