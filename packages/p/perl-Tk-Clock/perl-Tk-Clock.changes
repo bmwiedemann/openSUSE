@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 24 03:09:18 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.42
+   see /usr/share/doc/packages/perl-Tk-Clock/ChangeLog
+
+  0.42	- 23 Dec 2020, H.Merijn Brand
+      * Ignore leading dash in config
+      * Fix META issue for bugtracker
+
+-------------------------------------------------------------------
 Fri Apr 10 03:17:54 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.41
