@@ -1,7 +1,7 @@
 #
 # spec file for package u-boot
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2010 Texas Instruments Inc by Nishanth Menon
 # Copyright (c) 2007-2010 by Silvan Calarco <silvan.calarco@mambasoft.it>
 #
@@ -74,7 +74,7 @@
 %define rockchip_spl 1
 %define rkimages $()
 %endif
-%if "%target" == "pinebook-pro-rk3399" || "%target" == "puma-rk3399" || "%target" == "rock960-rk3399"
+%if "%target" == "pinebook-pro-rk3399" || "%target" == "puma-rk3399" || "%target" == "rock960-rk3399" || "%target" == "rockpro64-rk3399"
 %define is_rk3399 1
 %define is_armv8 1
 %define rockchip_idb 1
@@ -299,7 +299,7 @@ BuildRequires:  arm-trusted-firmware-sun50ia64
 BuildRequires:  arm-trusted-firmware-sun50ih6
 %endif
 %if %{with uboot_atf}
-%if "%{name}" == "u-boot-rock64-rk3328" || "%{name}" == "u-boot-evb-rk3399" || "%{name}" == "u-boot-firefly-rk3399" || "%{name}" == "u-boot-rock960-rk3399" || "${name}" == "u-boot-rock-pi-4-rk3399"
+%if "%{name}" == "u-boot-rock64-rk3328" || "%{name}" == "u-boot-evb-rk3399" || "%{name}" == "u-boot-firefly-rk3399" || "%{name}" == "u-boot-rock960-rk3399" || "${name}" == "u-boot-rock-pi-4-rk3399" || "%{name}" == "u-boot-pinebook-pro-rk3399" || "%target" == "rockpro64-rk3399"
 # make_fit_atf.py
 BuildRequires:  python3-pyelftools
 %endif
@@ -402,7 +402,7 @@ export OPENSBI=%{_datadir}/opensbi/opensbi-sifive-fu540.bin
 %if "%{name}" == "u-boot-rock64-rk3328"
 cp %{_datadir}/arm-trusted-firmware-rk3328/bl31.elf .
 %endif
-%if "%{name}" == "u-boot-evb-rk3399" || "%{name}" == "u-boot-firefly-rk3399" || "%{name}" == "u-boot-rock-pi-4-rk3399" || "%{name}" == "u-boot-pinebook-pro-rk3399"
+%if "%{name}" == "u-boot-evb-rk3399" || "%{name}" == "u-boot-firefly-rk3399" || "%{name}" == "u-boot-rock-pi-4-rk3399" || "%{name}" == "u-boot-pinebook-pro-rk3399" || "%target" == "rockpro64-rk3399"
 cp %{_datadir}/arm-trusted-firmware-rk3399/bl31.elf .
 %endif
 %endif
