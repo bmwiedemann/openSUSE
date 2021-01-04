@@ -1,7 +1,7 @@
 #
 # spec file for package wipe
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,11 +20,11 @@ Name:           wipe
 Version:        2.3.1
 Release:        0
 Summary:        Secure Erasure of Data
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
-Url:            http://wipe.sourceforge.net/
-Source0:        http://sourceforge.net/projects/wipe/files/wipe/%{version}/%{name}-%{version}.tar.bz2
-Source1:        http://sourceforge.net/projects/wipe/files/wipe/%{version}/%{name}-%{version}.tar.bz2.sig
+URL:            http://wipe.sourceforge.net/
+Source0:        https://sourceforge.net/projects/wipe/files/wipe/%{version}/%{name}-%{version}.tar.bz2
+Source1:        https://sourceforge.net/projects/wipe/files/wipe/%{version}/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
 # PATCH-FIX-OPENSUSE wipe-2.2.0-makefile.diff -- Fix for Makefile.in to correct the install permissions and to don't strip binaries
 Patch0:         %{name}-2.2.0-makefile.diff
@@ -33,7 +33,6 @@ Patch1:         %{name}-2.2.0-errno.diff
 # PATCH-FIX-OPENSUSE wipe-2.2.0-include.diff --
 Patch2:         %{name}-2.2.0-include.diff
 BuildRequires:  automake
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Wipe is a tool that attempts to effectively degauses the surface of
@@ -50,14 +49,14 @@ data that is erased from a hard drive is unrecoverable.
 %build
 autoreconf -fi
 %configure
-make CFLAGS="%{optflags} -Wall -I. -DLINUX $(DEFINES) -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64" %{?_smp_mflags}
+%make_build CFLAGS="%{optflags} -Wall -I. -DLINUX $(DEFINES) -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 
 %files
-%defattr(-,root,root,-)
-%doc CHANGES LICENSE README TODO copyright
+%license LICENSE
+%doc CHANGES README TODO copyright
 %{_mandir}/man?/*
 %{_bindir}/*
 
