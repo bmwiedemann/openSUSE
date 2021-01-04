@@ -1,7 +1,7 @@
 #
 # spec file for package bleachbit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 8/2011 by open-slx GmbH <Sascha.Manns@open-slx.de>
 # Copyright (c) 2010 - 7/2011 by Sascha Manns <saigkill@opensuse.org>
 #
@@ -21,7 +21,7 @@
 %define         _desktopname       org.bleachbit.BleachBit
 
 Name:           bleachbit
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        Tool for removing unnecessary files, freeing space, and maintaining privacy
 License:        GPL-3.0-only

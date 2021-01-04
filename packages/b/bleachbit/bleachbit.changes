@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan  4 09:43:06 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.2.0:
+  * Fix: dnf process was not closed (#1001)
+  * Update translations
+  * Add Slack cleaner
+  * Add new action for deleting firefox favicons
+  * Initial support for Microsoft Edge
+  * Clean Chromium installed as snap
+
+-------------------------------------------------------------------
 Mon Aug 31 08:16:20 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.1.0:
