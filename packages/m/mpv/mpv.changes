@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jan 03 20:06:44 UTC 2021 - idonmez@suse.com
+
+- Update to version 0.33.0+git.20210103T120530.1251f7bbf9:
+  * manpage: rename OS X references to macOS
+  * vo_gpu: don't segfault if 3DLUT texture fails uploading
+  * input.conf syntax: support custom quotes !XstringX!
+  * input.rst: fix typo commands -> arguments
+  * csputils: add mappings for DCI-P3 (ST.431-2) and P3-D65 (ST.432-1)
+  * vd_lavc: add VP8 to the default allowed hwdec codec list
+  * vo_gpu: cast bvecN to vecN for mix() on older GLSL
+  * bootstrap: log caught URLError
+  * Revert "build: recognize Lua 5.1 on Arch Linux"
+  * build: fail configure if --lua is specified and Lua isn't found
+
+-------------------------------------------------------------------
 Mon Dec 21 11:58:34 UTC 2020 - idonmez@suse.com
 
 - Update to version 0.33.0+git.20201220T105748.1ba5dc84ca:
