@@ -2817,7 +2817,6 @@ unsorted:
   - distribution-gpg-keys 
   - distribution-logos-openSUSE 
   - distribution-logos-openSUSE-Kubic 
-  - distribution-logos-openSUSE-Leap 
   - distribution-logos-openSUSE-MicroOS: [i586] 
   - dita 
   - diy-devel: [x86_64] 
@@ -10611,7 +10610,7 @@ unsorted:
   - libdrumstick-file1 
   - libdrumstick-rt-plugins 
   - libdrumstick-rt1 
-  - libdruntime-ldc93 
+  - libdruntime-ldc94 
   - libdtkcore2 
   - libdtkwidget2 
   - libdtkwm2 
@@ -10860,7 +10859,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla10 
+  - libfilezilla11 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -12019,7 +12018,7 @@ unsorted:
   - libldapcpp-devel 
   - libldastoolsal7 
   - libldb-devel 
-  - libldc-jit93 
+  - libldc-jit94 
   - libldl-doc 
   - libldl2 
   - libldm-1_0-0: [i586] 
@@ -13019,7 +13018,7 @@ unsorted:
   - libpgf7 
   - libpgm-5_2-0-32bit: [x86_64] 
   - libphobos2-0_94 
-  - libphobos2-ldc93 
+  - libphobos2-ldc94 
   - libphodav-2_0-0: [i586] 
   - libphonenumber-devel 
   - libphonenumber8: [i586] 
@@ -13489,7 +13488,7 @@ unsorted:
   - libraw1394-devel 
   - libraw1394-devel-32bit: [x86_64] 
   - libraw1394-tools 
-  - libraylib301 
+  - libraylib351 
   - librbd-devel: [x86_64] # devel package of dvd:librbd1 
   - librbio2 
   - librbl1 
@@ -14768,68 +14767,68 @@ unsorted:
   - libwv2-4 
   - libwx_base-suse-devel 
   - libwx_base-suse-nostl-devel 
-  - libwx_baseu-suse-nostl3_0_4 
+  - libwx_baseu-suse-nostl3_0_5 
   - libwx_baseu-suse-nostl4_0_0: [i586] 
-  - libwx_baseu-suse3_0_4 
-  - libwx_baseu-suse3_0_4-32bit: [x86_64] 
+  - libwx_baseu-suse3_0_5 
+  - libwx_baseu-suse3_0_5-32bit: [x86_64] 
   - libwx_baseu-suse4_0_0 
-  - libwx_baseu_net-suse-nostl3_0_4 
+  - libwx_baseu_net-suse-nostl3_0_5 
   - libwx_baseu_net-suse-nostl4_0_0: [i586] 
-  - libwx_baseu_net-suse3_0_4 
-  - libwx_baseu_net-suse3_0_4-32bit: [x86_64] 
+  - libwx_baseu_net-suse3_0_5 
+  - libwx_baseu_net-suse3_0_5-32bit: [x86_64] 
   - libwx_baseu_net-suse4_0_0 
-  - libwx_baseu_xml-suse-nostl3_0_4 
+  - libwx_baseu_xml-suse-nostl3_0_5 
   - libwx_baseu_xml-suse-nostl4_0_0: [i586] 
-  - libwx_baseu_xml-suse3_0_4 
-  - libwx_baseu_xml-suse3_0_4-32bit: [x86_64] 
+  - libwx_baseu_xml-suse3_0_5 
+  - libwx_baseu_xml-suse3_0_5-32bit: [x86_64] 
   - libwx_baseu_xml-suse4_0_0 
-  - libwx_gtk2u_adv-suse-nostl3_0_4 
-  - libwx_gtk2u_adv-suse3_0_4 
-  - libwx_gtk2u_adv-suse3_0_4-32bit: [x86_64] 
+  - libwx_gtk2u_adv-suse-nostl3_0_5 
+  - libwx_gtk2u_adv-suse3_0_5 
+  - libwx_gtk2u_adv-suse3_0_5-32bit: [x86_64] 
   - libwx_gtk2u_adv-suse4_0_0 
-  - libwx_gtk2u_aui-suse-nostl3_0_4 
-  - libwx_gtk2u_aui-suse3_0_4 
-  - libwx_gtk2u_aui-suse3_0_4-32bit: [x86_64] 
+  - libwx_gtk2u_aui-suse-nostl3_0_5 
+  - libwx_gtk2u_aui-suse3_0_5 
+  - libwx_gtk2u_aui-suse3_0_5-32bit: [x86_64] 
   - libwx_gtk2u_aui-suse4_0_0 
-  - libwx_gtk2u_core-suse-nostl3_0_4 
-  - libwx_gtk2u_core-suse3_0_4 
-  - libwx_gtk2u_core-suse3_0_4-32bit: [x86_64] 
+  - libwx_gtk2u_core-suse-nostl3_0_5 
+  - libwx_gtk2u_core-suse3_0_5 
+  - libwx_gtk2u_core-suse3_0_5-32bit: [x86_64] 
   - libwx_gtk2u_core-suse4_0_0 
-  - libwx_gtk2u_gl-suse-nostl3_0_4 
-  - libwx_gtk2u_gl-suse3_0_4 
-  - libwx_gtk2u_gl-suse3_0_4-32bit: [x86_64] 
+  - libwx_gtk2u_gl-suse-nostl3_0_5 
+  - libwx_gtk2u_gl-suse3_0_5 
+  - libwx_gtk2u_gl-suse3_0_5-32bit: [x86_64] 
   - libwx_gtk2u_gl-suse4_0_0 
-  - libwx_gtk2u_html-suse-nostl3_0_4 
-  - libwx_gtk2u_html-suse3_0_4 
-  - libwx_gtk2u_html-suse3_0_4-32bit: [x86_64] 
+  - libwx_gtk2u_html-suse-nostl3_0_5 
+  - libwx_gtk2u_html-suse3_0_5 
+  - libwx_gtk2u_html-suse3_0_5-32bit: [x86_64] 
   - libwx_gtk2u_html-suse4_0_0 
-  - libwx_gtk2u_media-suse-nostl3_0_4 
-  - libwx_gtk2u_media-suse3_0_4 
-  - libwx_gtk2u_media-suse3_0_4-32bit: [x86_64] 
+  - libwx_gtk2u_media-suse-nostl3_0_5 
+  - libwx_gtk2u_media-suse3_0_5 
+  - libwx_gtk2u_media-suse3_0_5-32bit: [x86_64] 
   - libwx_gtk2u_media-suse4_0_0 
-  - libwx_gtk2u_propgrid-suse-nostl3_0_4 
-  - libwx_gtk2u_propgrid-suse3_0_4 
-  - libwx_gtk2u_propgrid-suse3_0_4-32bit: [x86_64] 
+  - libwx_gtk2u_propgrid-suse-nostl3_0_5 
+  - libwx_gtk2u_propgrid-suse3_0_5 
+  - libwx_gtk2u_propgrid-suse3_0_5-32bit: [x86_64] 
   - libwx_gtk2u_propgrid-suse4_0_0 
-  - libwx_gtk2u_qa-suse-nostl3_0_4 
-  - libwx_gtk2u_qa-suse3_0_4 
-  - libwx_gtk2u_qa-suse3_0_4-32bit: [x86_64] 
+  - libwx_gtk2u_qa-suse-nostl3_0_5 
+  - libwx_gtk2u_qa-suse3_0_5 
+  - libwx_gtk2u_qa-suse3_0_5-32bit: [x86_64] 
   - libwx_gtk2u_qa-suse4_0_0 
-  - libwx_gtk2u_ribbon-suse-nostl3_0_4 
-  - libwx_gtk2u_ribbon-suse3_0_4 
-  - libwx_gtk2u_ribbon-suse3_0_4-32bit: [x86_64] 
+  - libwx_gtk2u_ribbon-suse-nostl3_0_5 
+  - libwx_gtk2u_ribbon-suse3_0_5 
+  - libwx_gtk2u_ribbon-suse3_0_5-32bit: [x86_64] 
   - libwx_gtk2u_ribbon-suse4_0_0 
-  - libwx_gtk2u_richtext-suse-nostl3_0_4 
-  - libwx_gtk2u_richtext-suse3_0_4 
-  - libwx_gtk2u_richtext-suse3_0_4-32bit: [x86_64] 
+  - libwx_gtk2u_richtext-suse-nostl3_0_5 
+  - libwx_gtk2u_richtext-suse3_0_5 
+  - libwx_gtk2u_richtext-suse3_0_5-32bit: [x86_64] 
   - libwx_gtk2u_richtext-suse4_0_0 
-  - libwx_gtk2u_stc-suse-nostl3_0_4 
-  - libwx_gtk2u_stc-suse3_0_4 
-  - libwx_gtk2u_stc-suse3_0_4-32bit: [x86_64] 
+  - libwx_gtk2u_stc-suse-nostl3_0_5 
+  - libwx_gtk2u_stc-suse3_0_5 
+  - libwx_gtk2u_stc-suse3_0_5-32bit: [x86_64] 
   - libwx_gtk2u_stc-suse4_0_0 
-  - libwx_gtk2u_xrc-suse-nostl3_0_4 
-  - libwx_gtk2u_xrc-suse3_0_4 
-  - libwx_gtk2u_xrc-suse3_0_4-32bit: [x86_64] 
+  - libwx_gtk2u_xrc-suse-nostl3_0_5 
+  - libwx_gtk2u_xrc-suse3_0_5 
+  - libwx_gtk2u_xrc-suse3_0_5-32bit: [x86_64] 
   - libwx_gtk2u_xrc-suse4_0_0 
   - libwx_gtk3u_adv-suse-nostl4_0_0 
   - libwx_gtk3u_adv-suse4_0_0 
@@ -16902,6 +16901,7 @@ unsorted:
   - mypaint-brushes1-devel 
   - mypaint-lang 
   - mypy 
+  - myquerytutor 
   - myspell-af_NA 
   - myspell-af_ZA 
   - myspell-an 
@@ -22324,6 +22324,7 @@ unsorted:
   - python3-django-oauth-toolkit 
   - python3-django-oidc-provider 
   - python3-django-parler 
+  - python3-django-perf-rec 
   - python3-django-pglocks 
   - python3-django-phonenumber-field 
   - python3-django-picklefield 
@@ -22537,7 +22538,7 @@ unsorted:
   - python3-fluent 
   - python3-flufl.testing 
   - python3-flup 
-  - python3-folium: [x86_64] 
+  - python3-folium 
   - python3-fontMath 
   - python3-fontParts 
   - python3-fontPens 
@@ -23337,7 +23338,7 @@ unsorted:
   - python3-pandas-datareader 
   - python3-pandas-ext 
   - python3-pandocfilters 
-  - python3-panel: [x86_64] 
+  - python3-panel 
   - python3-panflute 
   - python3-papermill 
   - python3-parallax 
@@ -24359,6 +24360,7 @@ unsorted:
   - python3-typeguard 
   - python3-typepy 
   - python3-typing-inspect 
+  - python3-typogrify 
   - python3-tzlocal 
   - python3-u-msgpack-python 
   - python3-ua-parser 
@@ -24537,7 +24539,7 @@ unsorted:
   - python3-yui 
   - python3-z3 
   - python3-zake 
-  - python3-zarr: [x86_64] 
+  - python3-zarr 
   - python3-zc.buildout 
   - python3-zc.customdoctests 
   - python3-zc.lockfile 
