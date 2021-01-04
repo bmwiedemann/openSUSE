@@ -1,7 +1,7 @@
 #
 # spec file for package pythia
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define ver 8244
+%define ver 8245
 %define soname lib%{name}8
 Name:           pythia
-Version:        8.244
+Version:        8.245
 Release:        0
 Summary:        A simulation program for particle collisions at very high energies
 License:        GPL-2.0-or-later
@@ -32,6 +32,10 @@ Patch0:         pythia-makefile-destdir-support.patch
 Patch1:         pythia-honour-env-cxxflags.patch
 # PATCH-FIX-UPSTREAM pythia-remove-rpaths.patch badshah400@gmail.com -- Delete rpath references when building libraries; patch sent upstream
 Patch2:         pythia-remove-rpaths.patch
+# PATCH-FIX-UPSTREAM pythia-example71-link-gmp.patch badshah400@gmail.com -- Fix building example 71 by adding -lgmp to the linker flag
+Patch3:         pythia-example71-link-gmp.patch
+# PATCH-FEATURE-OPENSUSE pythia-disable-example23-req-MixMax_h.patch badshah400@gmail.com -- Drop a test that requires non-free MixMax.h header
+Patch4:         pythia-disable-example23-req-MixMax_h.patch
 BuildRequires:  HepMC2-devel
 BuildRequires:  LHAPDF-devel
 BuildRequires:  fastjet-devel
@@ -105,13 +109,7 @@ incoming particles.
 This package provides documentation for development with %{name}.
 
 %prep
-%setup -q -n %{name}%{ver}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-
-# REMOVE UNNEEDED .orig FILES FROM THE examples DIR
-rm -f examples/Makefile.orig
+%autosetup -p1 -n %{name}%{ver}
 
 # REMOVE NON-FREE HEADER FILE NOT USED BY PYTHIA DIRECTLY
 rm include/Pythia8Plugins/MixMax.h

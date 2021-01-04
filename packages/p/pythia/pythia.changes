@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Sun Jan  3 17:56:27 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 8.245:
+  * Significant speedup of parton distribution handling.
+  * Several fixes to avoid out-of-bound evaluation of vectors in
+    the merging code.
+  * Several fixes to correctly handle CKKW-L merging of EWkino-
+    and higgsino-processes have been included.
+  * Include the functionality for MC@NLO-Delta matching with
+    aMC@NLO.
+  * Further bug fixes for the hard process name handling for
+    weak-boson-fusion-like processes, that led to an incorrect
+    counting of additional emissions.
+  * Small fixes to history construction in the presence of
+    multiple resonances.
+  * The primordial kT for LHE files is now set by the
+    BeamRemnants:primordialKThard average value, rather than the
+    LHE scale, since the latter may be quite low e.g. in the
+    POWHEG approach.
+  * The problem of "dangling" gluons causing changing color flows
+    in SimpleTimeShower for top decays is now fixed.
+  * Extra check added to SimpleSpaceShower for the case where a
+    small daughter PDF value can lead to an infinite loop if PDF
+    variations are switched on.
+  * Bug fixed in the new possibility to let particles with narrow
+    widths (such as onia states) obtain a simple Breit-Wigner
+    distribution, specifically for MPIs, introduced in 8.240.
+  * An indexing bug, for the scattering lepton in DIS events with
+    photon radiation allowed, has been fixed.
+  * Added a few copy constructors to match corresponding
+    assignment operators, to avoid warnings for some compilers.
+  * Small fix in cross section calculation of main89.cc.
+  * Fixes in configure and examples/Makefile to have ROOT examples
+    work again.
+  * main**.cmnd, ** = 81-84, 87-88 have been slightly modified
+    such that linking to LHAPDF6 is not required by default.
+  * A bug in the XML-to-HTML conversion has led to the
+    indiscriminate removal of "more" from the HTML manual, notably
+    in Pythia::moreDecays().
+- Add patches:
+  * pythia-example71-link-gmp.patch: Fix building example 71 by
+    adding -lgmp to the linker flag.
+  * pythia-disable-example23-req-MixMax_h.patch: Drop a test that
+    requires the non-free MixMax.h header (which we delete).
+- Use autopatch to setup source dir and apply patches
+  automatically.
+
+-------------------------------------------------------------------
 Sun Mar  1 11:10:02 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 8.244:
