@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 31 08:08:08 UTC 2020 - olaf@aepfle.de
+
+- update to 5.0.6:
+  * Add support for Python2.7 on Ubuntu 20.04
+  * Bump versions for Python 3.8.6 and 3.5.10
+  * `VERSION` -> `__version__` because Python prefers it that way
+- Fix issue#71 with python-xdis.patch
+
+-------------------------------------------------------------------
 Wed Sep 16 21:33:45 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - udpate to 5.0.4:
