@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  4 12:51:06 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- freeradius-server-radiusd-logrotate.patch: move logrotate
+  options into specific parts for each log as "global" options
+  will persist past and clobber global options in the
+  main logrotate config (bsc#1180525)
+
+-------------------------------------------------------------------
 Tue Dec  1 16:52:22 UTC 2020 - pgajdos@suse.com
 
 - remove redundant definitions of apache rpm macros

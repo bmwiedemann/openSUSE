@@ -2,16 +2,33 @@ Index: freeradius-server-3.0.21/suse/radiusd-logrotate
 ===================================================================
 --- freeradius-server-3.0.21.orig/suse/radiusd-logrotate
 +++ freeradius-server-3.0.21/suse/radiusd-logrotate
-@@ -11,19 +11,23 @@ missingok
- compress
- delaycompress
- notifempty
--su radiusd radiusd
+@@ -2,39 +2,33 @@
+ # it to /etc/logrotate.d/radiusd
  
  #
+-#    Global options for all files
+-#
+-dateext
+-maxage 365
+-rotate 99
+-missingok
+-compress
+-delaycompress
+-notifempty
+-su radiusd radiusd
+-
+-#
  #  The main server log
  #
  /var/log/radius/radius.log {
++	dateext
++	maxage 365
++	rotate 99
++	missingok
++	compress
++	delaycompress
++	notifempty
++
 +	su radiusd radiusd
  	copytruncate
 +	postrotate
@@ -22,23 +39,35 @@ Index: freeradius-server-3.0.21/suse/radiusd-logrotate
  #
  #  Session monitoring utilities
  #
- /var/log/radius/checkrad.log /var/log/radius/radwatch.log {
-+	su radiusd radiusd
- 	nocreate
- 	size=+1024k
- }
-@@ -32,6 +36,7 @@ su radiusd radiusd
+-/var/log/radius/checkrad.log /var/log/radius/radwatch.log {
+-	nocreate
+-	size=+1024k
+-}
++/var/log/radius/checkrad.log /var/log/radius/radwatch.log
+ 
+ #
  #  SQL log files
  #
- /var/log/radius/sqllog.sql {
-+	su radiusd radiusd
- 	nocreate
- 	size=+2048k
- }
-@@ -44,6 +49,7 @@ su radiusd radiusd
+-/var/log/radius/sqllog.sql {
+-	nocreate
+-	size=+2048k
+-}
++/var/log/radius/sqllog.sql
+ 
+ # There are different detail-rotating strategies you can use.  One is
+ # to write to a single detail file per IP and use the rotate config
+@@ -44,6 +38,15 @@ su radiusd radiusd
  # second technique, you will need another cron job that removes old
  # detail files.  You do not need to comment out the below for method #2.
  /var/log/radius/radacct/*/detail {
++	dateext
++	maxage 365
++	rotate 99
++	missingok
++	compress
++	delaycompress
++	notifempty
++	size 1M
 +	su radiusd radiusd
  	nocreate
  }
