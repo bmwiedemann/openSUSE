@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan  3 23:00:39 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.7.1
+  * Fix websocket protocol and extension management bug
+  * Add Makefile flag UWSCFLAG to disable uwsc build
+
+-------------------------------------------------------------------
 Tue Dec  8 17:58:52 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Add missing "Requires: zlib-devel" to ulfius-devel as

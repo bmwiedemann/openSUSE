@@ -1,8 +1,8 @@
 #
 # spec file for package ulfius
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2018-2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2018-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _lto_cflags %{nil}
 %define sover 2_7
 Name:           ulfius
-Version:        2.7.0
+Version:        2.7.1
 Release:        0
 Summary:        Web Framework for REST Applications in C
 License:        MIT
