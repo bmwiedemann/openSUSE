@@ -825,4 +825,16 @@
   is needed by LyX to be able to output footnotes in floating tables</comment>
     <requestid>852040</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>b8111e3c72c8deaf609ea5320b2ec205</srcmd5>
+    <version>2.3.6.1</version>
+    <time>1609783668</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.6.1:
+- The fix for https://www.lyx.org/trac/ticket/12056, which prevented
+  inclusion of TeX files
+- Remove 0001-Store-correctly-the-window-position-with-Wayland.patch
+  now part of release</comment>
+    <requestid>859999</requestid>
+  </revision>
 </revisionlist>

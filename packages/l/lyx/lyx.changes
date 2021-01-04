@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 29 20:00:24 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 2.3.6.1:
+- The fix for https://www.lyx.org/trac/ticket/12056, which prevented
+  inclusion of TeX files
+- Remove 0001-Store-correctly-the-window-position-with-Wayland.patch
+  now part of release
+
+-------------------------------------------------------------------
 Tue Dec  1 08:26:16 UTC 2020 - Cor Blom <cornelis@solcon.nl>
 
 - Add  0001-Store-correctly-the-window-position-with-Wayland.patch

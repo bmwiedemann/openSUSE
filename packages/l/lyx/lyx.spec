@@ -1,7 +1,7 @@
 #
 # spec file for package lyx
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lyx
-Version:        2.3.6
+Version:        2.3.6.1
 Release:        0
 Summary:        WYSIWYM (What You See Is What You Mean) document processor
 License:        GPL-2.0-or-later
@@ -36,8 +36,6 @@ Patch0:         correct-shebang.patch
 # PATCH-FIX-UPSTREAM remove_python_shebang.patch mcepl@suse.com
 # remove all instances of python2 shebang lines
 Patch1:         remove_python_shebang.patch
-# PATCH-FIX-UPSTREAM see https://www.lyx.org/trac/ticket/11746
-Patch2:         0001-Store-correctly-the-window-position-with-Wayland.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bc
@@ -143,7 +141,6 @@ A collection of Math symbol fonts for LyX.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p0
 
 %build
 #./autogen.sh
