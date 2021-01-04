@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  4 10:30:11 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.1:
+  * Fixed sorting of posts in blogc(1) when some post's DATE was
+    before Sun Sep 9 01:46:40 AM UTC 2001.
+  * Simplified utf-8 implementation.
+
+-------------------------------------------------------------------
 Wed Sep 16 06:54:58 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.20.0:

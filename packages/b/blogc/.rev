@@ -254,4 +254,15 @@
     source file. See blogc-toctree(7) for usage instructions.</comment>
     <requestid>834817</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e88dd9bce2463c4dc18eeec1684a07f2</srcmd5>
+    <version>0.20.1</version>
+    <time>1609783741</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.20.1:
+  * Fixed sorting of posts in blogc(1) when some post's DATE was
+    before Sun Sep 9 01:46:40 AM UTC 2001.
+  * Simplified utf-8 implementation.</comment>
+    <requestid>860128</requestid>
+  </revision>
 </revisionlist>
