@@ -1,7 +1,7 @@
 #
 # spec file for package python-folium
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ License:        MIT
 URL:            https://github.com/python-visualization/folium
 # PYPI TARBALLS DONT HAVE THE test DIR
 Source:         https://github.com/python-visualization/folium/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM 0001-assert-bounds-within-reasonable-machine-precision.patch -- gh#python-visualization/folium#1432 Fix float bounds assertion on 32bit platform
+Patch0:         0001-assert-bounds-within-reasonable-machine-precision.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -52,7 +54,7 @@ strengths of the Leaflet.js library. Manipulate your data in Python, then
 visualize it in a Leaflet map via folium.
 
 %prep
-%setup -q -n folium-%{version}
+%autosetup -p1 -n folium-%{version}
 
 %build
 %python_build
