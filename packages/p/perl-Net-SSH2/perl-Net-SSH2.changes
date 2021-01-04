@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 23 03:08:27 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.72
+   see /usr/share/doc/packages/perl-Net-SSH2/Changes
+
+  0.72  2020-12-22
+          - Add support for some new error codes in latest libssh2
+            versions.
+          - Improve error reporting on "auth" method.
+          - Fix crypto backend selection at build time.
+
+-------------------------------------------------------------------
 Sat Apr 11 03:11:50 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.71
