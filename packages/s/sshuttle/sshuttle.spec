@@ -1,7 +1,7 @@
 #
 # spec file for package sshuttle
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sshuttle
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 Summary:        VPN over an SSH tunnel
 License:        LGPL-2.1-only
@@ -26,6 +26,7 @@ URL:            https://github.com/sshuttle/sshuttle
 Source0:        https://files.pythonhosted.org/packages/source/s/sshuttle/sshuttle-%{version}.tar.gz
 Patch0:         fix-pytest.patch
 Patch1:         fix-shebang.patch
+BuildRequires:  fdupes
 BuildRequires:  python3-mock
 BuildRequires:  python3-pytest-runner
 BuildRequires:  python3-setuptools
@@ -74,6 +75,8 @@ sed -ri 's/(version = )get_version.*/\1 "%{version}"/g' conf.py
 mkdir -pm0755  %{buildroot}/%{_mandir}/man1/
 install -m0644 docs/_build/man/sshuttle.1 %{buildroot}/%{_mandir}/man1/
 %endif
+
+%fdupes %{buildroot}/%{python3_sitelib}/sshuttle/
 
 %check
 %pytest

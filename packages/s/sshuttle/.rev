@@ -85,4 +85,12 @@ Doesn't require admin. Works with Linux and MacOS. Supports DNS tunneling.</comm
     <comment></comment>
     <requestid>845613</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1e571f22df0db3055785163a8d4241b2</srcmd5>
+    <version>1.0.5</version>
+    <time>1609783784</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860196</requestid>
+  </revision>
 </revisionlist>
