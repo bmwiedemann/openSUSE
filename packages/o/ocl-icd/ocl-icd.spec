@@ -17,7 +17,7 @@
 
 
 Name:           ocl-icd
-Version:        2.2.13
+Version:        2.2.14
 Release:        0
 Summary:        OpenCL ICD Bindings
 License:        BSD-2-Clause
