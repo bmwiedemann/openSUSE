@@ -1,7 +1,7 @@
 #
 # spec file for package herbstluftwm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           herbstluftwm
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        A manual tiling window manager
 License:        BSD-2-Clause
