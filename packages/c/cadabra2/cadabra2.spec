@@ -19,7 +19,7 @@
 # Tests fails due to the way PYTHONPATH is set up for the test-suite [gh#kpeeters/cadabra2#211, gh#kpeeters/cadabra2#212]
 %bcond_without tests
 Name:           cadabra2
-Version:        2.3.5
+Version:        2.3.6.1
 Release:        0
 Summary:        A computer algebra system for solving problems in field theory
 License:        GPL-3.0-or-later
@@ -173,7 +173,10 @@ ln %{buildroot}%{_datadir}/cadabra2/latex/* %{buildroot}%{_datadir}/texmf/tex/la
 %check
 export PATH=${PATH}:%{buildroot}%{_bindir}
 export PYTHONDONTWRITEBYTECODE=1
-%ctest
+# Exclude tests that try to write config files to home dir; %%ctest does not accept additional options, go the manual way
+pushd %__builddir
+ctest %{?_smp_mflags} -E "packages|manip|modules|meld"
+popd
 %endif
 
 %files
