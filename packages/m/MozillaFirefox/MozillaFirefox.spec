@@ -1,7 +1,7 @@
 #
 # spec file for package MozillaFirefox
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #               2006-2020 Wolfgang Rosenauer <wr@rosenauer.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,8 +30,8 @@
 # major 69
 # mainver %major.99
 %define major          84
-%define mainver        %major.0
-%define orig_version   84.0
+%define mainver        %major.0.1
+%define orig_version   84.0.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -101,7 +101,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.29
-BuildRequires:  mozilla-nss-devel >= 3.59
+BuildRequires:  mozilla-nss-devel >= 3.59.1
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs10 >= 10.22.1
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000

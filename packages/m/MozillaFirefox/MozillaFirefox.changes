@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec 27 09:52:50 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 84.0.1
+  * Fixed problems loading secure websites and crashes for users
+    with certain third-party PKCS11 modules and smartcards installed
+    (bmo#1682881) (fixed in NSS 3.59.1)
+  * Fixed a bug causing some Unity JS games to not load on Apple
+    Silicon devices due to improper detection of the OS version
+    (bmo#1680516)
+- requires NSS 3.59.1
+
+-------------------------------------------------------------------
 Sun Dec 13 18:18:58 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 84.0

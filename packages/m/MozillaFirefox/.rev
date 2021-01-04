@@ -4752,4 +4752,19 @@
     When entering an address in the address or search bars, a</comment>
     <requestid>856849</requestid>
   </revision>
+  <revision rev="324" vrev="1">
+    <srcmd5>d59adf2566fb1b513bf31841605ca899</srcmd5>
+    <version>84.0.1</version>
+    <time>1609783603</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 84.0.1
+  * Fixed problems loading secure websites and crashes for users
+    with certain third-party PKCS11 modules and smartcards installed
+    (bmo#1682881) (fixed in NSS 3.59.1)
+  * Fixed a bug causing some Unity JS games to not load on Apple
+    Silicon devices due to improper detection of the OS version
+    (bmo#1680516)
+- requires NSS 3.59.1</comment>
+    <requestid>859835</requestid>
+  </revision>
 </revisionlist>
