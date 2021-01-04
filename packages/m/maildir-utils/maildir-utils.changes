@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan  4 10:13:27 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4.14:
+  * lib: fix mu-msg-json build
+  * mu4e-view: Use 'mu4e not "mu4e" when extracting
+  * Fix `mu help` doesn't show the `init` command
+  * mu4e: avoid calendar charset error
+  * Disable `mm-verify-option` let-bounded in `mu4e~view-gnus`
+
+-------------------------------------------------------------------
 Mon Aug 10 07:05:42 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.4.13:

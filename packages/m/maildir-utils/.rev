@@ -266,4 +266,17 @@
   * Bugfix release, no changes provided</comment>
     <requestid>825263</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b9a95590a4760dc2be807c9f30c5b736</srcmd5>
+    <version>1.4.14</version>
+    <time>1609783735</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.14:
+  * lib: fix mu-msg-json build
+  * mu4e-view: Use 'mu4e not &quot;mu4e&quot; when extracting
+  * Fix `mu help` doesn't show the `init` command
+  * mu4e: avoid calendar charset error
+  * Disable `mm-verify-option` let-bounded in `mu4e~view-gnus`</comment>
+    <requestid>860126</requestid>
+  </revision>
 </revisionlist>
