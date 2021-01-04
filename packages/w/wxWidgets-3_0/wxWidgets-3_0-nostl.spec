@@ -1,7 +1,7 @@
 #
 # spec file for package wxWidgets-3_0-nostl
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,9 +20,9 @@ Name:           wxWidgets-3_0-nostl
 %define base_name wxWidgets-3_0
 %define tarball_name wxWidgets
 %define variant suse-nostl
-%define psonum 3_0_4
-%define sonum 3.0.4
-Version:        3.0.4
+%define psonum 3_0_5
+%define sonum 3.0.5
+Version:        3.0.5.1
 Release:        0
 %define wx_minor 3.0
 # libdir for installing of all the stuff
@@ -35,7 +35,7 @@ Release:        0
 Summary:        C++ Library for Cross-Platform Development
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://www.wxwidgets.org/
+URL:            http://www.wxwidgets.org/
 
 #SVN-Clone:	https://svn.wxwidgets.org/svn/wx/wxWidgets/trunk
 Source:         https://github.com/wxWidgets/wxWidgets/releases/download/v%version/wxWidgets-%version.tar.bz2
@@ -47,7 +47,6 @@ Source6:        wxpython-mkdiff.sh
 Source50:       baselibs.conf
 Patch1:         soversion.diff
 Patch17:        relax-abi.diff
-Patch18:        0001-spinctrl.patch
 Patch19:        0002-spinctrl.patch
 Patch20:        0001-18034-stick-with-compile-settings-detected-at-config.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -259,7 +258,6 @@ echo "=== RPM build flags: WX_DEBUG=0%{?WX_DEBUG}"
 %setup -q -n %tarball_name-%version
 %patch -P 1 -p1
 %patch -P 17 -p1
-%patch -P 18 -p1
 %patch -P 19 -p1
 %patch -P 20 -p1
 cp %{S:2} .

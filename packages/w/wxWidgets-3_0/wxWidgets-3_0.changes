@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jan  3 17:02:56 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 3.0.5.1 (boo#1180492):
+  * Workaround for the problem with overflowing maximum command
+    line length in MinGW builds not using configure.
+  * Fix for a problem with wxSpinCtrl in wxGTK, see
+    https://trac.wxwidgets.org/ticket/18688.
+- Changes from version 3.0.5:
+  * Bug fixes, see
+    https://raw.githubusercontent.com/wxWidgets/wxWidgets/v3.0.5/docs/changes.txt.
+- Refresh soversion.diff.
+- Remove 0001-spinctrl.patch: Merged upstream.
+
+-------------------------------------------------------------------
 Mon Feb  3 07:24:39 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Build wxWidgets-3_0-nostl variant with LTO disabled to fix

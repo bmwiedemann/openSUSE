@@ -223,4 +223,12 @@ Ignore the build failure on x86_64 which was because of a worker failure.</comme
     <comment></comment>
     <requestid>769486</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0ad3ad2ec04fd3cfcf1a67c19bb548c4</srcmd5>
+    <version>3.0.5.1</version>
+    <time>1609783681</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.5.1 (boo#1180492):</comment>
+    <requestid>860015</requestid>
+  </revision>
 </revisionlist>
