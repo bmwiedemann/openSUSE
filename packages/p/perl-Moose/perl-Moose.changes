@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Dec 19 03:07:18 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.2014
+   see /usr/share/doc/packages/perl-Moose/Changes
+
+  2.2014   2020-12-19
+    [ENHANCEMENTS]
+    - Include details about expected values when Enum type checks fail (#174;
+      thanks sherrardb)
+    [DOCUMENTATION]
+    - fix misleading missing semicolon in exceptions example (#170; thanks
+      Perlover)
+    [OTHER]
+    - allow internal packages to be indexed by PAUSE. This avoids their
+      permissions being captured (possibly unintentionally) by others.
+    - Sub::Identify prerequisite removed, in favour of already-existing local
+      code.
+
+-------------------------------------------------------------------
 Tue Jul 28 09:49:03 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.2013
