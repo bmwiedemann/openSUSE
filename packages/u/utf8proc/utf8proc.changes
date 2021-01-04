@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec 29 14:07:32 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.1:
+ - Bugfix in `utf8proc_grapheme_break_stateful` for `NULL` state argument, which
+   also broke `utf8proc_grapheme_break`.
+ - New `utf8proc_islower` and `utf8proc_isupper` functions ([#196]).
+ - Bugfix for manual calls to `grapheme_break_extended` for initial characters ([#205]).
+ - Various build and portability improvements.
+
+-------------------------------------------------------------------
 Sat Mar 28 19:37:30 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - utf8proc 2.5.0:
