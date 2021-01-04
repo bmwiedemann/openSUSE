@@ -17,7 +17,7 @@
 
 
 Name:           perl-Mojolicious-Plugin-Webpack
-Version:        0.13
+Version:        0.14
 Release:        0
 %define cpan_name Mojolicious-Plugin-Webpack
 Summary:        Mojolicious ♥ Webpack

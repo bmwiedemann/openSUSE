@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 21 03:07:55 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.14
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Webpack/Changes
+
+  0.14 2020-12-21T09:42:41+0900
+   - Fix route warnings issued by latest Mojolicious
+   - Will install new node modules present in "dependencies"
+   - Migrated to webpack 5
+     Contributor: Daniel Mantovani
+
+-------------------------------------------------------------------
 Wed Sep  9 09:49:54 UTC 2020 - Tina Müller <tina.mueller@suse.com>
 
 - Limit description paragraphs
