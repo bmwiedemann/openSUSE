@@ -1,4 +1,119 @@
 -------------------------------------------------------------------
+Sat Jan  2 12:59:15 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 0.44.2
+  CloudFormation Specifications
+  * Expand Allowed Values for AWS::AmazonMQ::Broker.EngineVersion 
+    (pull ##1841)
+  * Update spec files as of 2012.12.30 (pull #1831)
+  * Update AWS::Lambda::EventSourceMapping.EventSourceArn to allow 
+    StreamARN and ConsumerARN (pull #1850)
+  Fixes
+  * Reinitialize E3022 on every template (pull #1848)
+  * Update rule E3008 to allow for lists in getatt allowed values 
+    (pull #1850)
+- Changes in 0.44.1
+  Fixes
+  * Reinitialize the limits in rule E3021 (pull #1834)
+  * Add registry_schemas to be supported in the .cfnlintrc (pull 
+    #1836)
+- Changes in 0.44.0
+  Features
+  * Cache all rules to speed up reloading rules when scanning 
+    multiple templates (pull #1789)
+  CloudFormation Specifications
+  * Update FSx Storage Capacity to a minimum of 32 (pull ##1827)
+  * Update spec files as of 2012.12.14 (pull #1821)
+  Fixes
+  * Loosen version requirements for python package six (pull #1825)
+- Changes in 0.43.0
+  Features
+  * Add support to validate private types from the CloudFormation 
+    Registry (pull #1732)
+  CloudFormation Specifications
+  * Update allowed values for AWS::DocDB::DBCluster.EngineVersion 
+    (pull #1810)
+  * Updated specs as of 2020.12.3 (pull #1804)
+  Fixes
+  * Fix an issue with RegexDict to return the longest matched value 
+    (pull #1815)
+  * Fix rule E3008 to not fail when using 
+    AWS::ServiceCatalog::CloudFormationProvisionedProduct Outputs 
+    (pull #1809)
+  * Loosen version constraints on importlib_resources (pull #1808)
+- Changes in 0.42.0
+  Features
+  * Add support for modules (pull #1800 and pull #1801)
+  * Colored Output and Pretty Formatting (pull #1742)
+  CloudFormation Specifications
+  * Update CloudFormation specs to 21.0.0 (pull #1799)
+  Fixes
+  * Patch AWS::EC2::CarrierGateway for Tags (pull #1790)
+  * Make sure types are strings before assuming they are (pull 
+    #1791)
+  * Add all for certain availability zone items (pull #1798)
+- Changes in 0.41.0
+  Features
+  * Remove rules W2509, E2004, E2505, E2510 and move logic to rules 
+    E3030, E3031, and E3008 (pull #1750)
+  * Remove rule E2530 and move logic to W2030 and E3030 (pull 
+    #1749)
+  * Remove rule E3028 and move logic to E3018 (pull #1769)
+  * Remove rule E3029 and move logic to E3018 (pull #1770)
+  * Remove rule E3024 and move logic to E3018 (pull #1771)
+  * Update rule E3002 to error when a singular function is used 
+    when a list is needed (pull #1773)
+  * Update dates for Python 2.7 Lambda runtime support (pull #1777)
+  * Update rule E2503 to include more attributes for application 
+    load balancers and protocols (pull #1783 and pull #1784)
+  CloudFormation Specifications
+  * Update CloudFormation specs to 20.3.0 (pull #1781)
+  * Expand Allowed Values for AWS::AmazonMQ::Broker EngineVersion 
+    (pull #1778)
+  Fixes
+  * Update rule E2529 to allow for two subscriptions per log group 
+    (pull #1767)
+  * Allow SAM translation for AutoPublishAlias in Globals (pull 
+    #1768)
+  * Allow numbers and booleans when doing a Fn::Sub parameter (pull 
+    #1774)
+- Changes in 0.40.0
+  Features
+  * Add rule E3017 to validate when properties are required based 
+    on a value of another property (pull #1746)
+  * Add rule E3018 to validate when properties are unwanted based 
+    on the value of another property (pull #1759)
+  * Remove rule E3040 and replace with rule E3031 (pull #1754)
+  * Remove rule E3023 and replace with rule E3017 (pull #1758)
+  CloudFormation Specifications
+  * Update CloudFormation specs to 20.0.0 (pull #1760)
+  * Add allowed values for AWS::Lambda::EventSourceMapping (pull 
+    #1748)
+- Changes in 0.39.0
+  Features
+  * Allow ignoring of E0000 and E0001 (pull #1580)
+  * Update rule E3005 to include resource based conditions (pull 
+    #1738)
+  * Update template limits to new standards (pull #1747)
+  CloudFormation Specifications
+  * Update CloudFormation specs to 19.0.0 (pull #1751)
+  * Add ap-northeast-2d to the list of approved Availibility Zones 
+    (pull #1739)
+  * Add AllowedValues to 
+    AWS::CloudFormation::StackSet.PermissionModel from botocore 
+    (pull #1741)
+- Changes in 0.38.0
+  Features
+  * Expand likely_stateful_resource_types for explicit 
+    UpdateReplacePolicy/DeletionPolicy rule I3011 to include 
+    AWS::SQS::Queue (pull #1736)
+  CloudFormation Specifications
+  * Update CloudFormation specs to 18.7.0 (pull #1734)
+  Fixes
+  * Fix an issue with rule E3003 to handle Ref: AWS::Novalue (pull 
+    #1720) 
+
+-------------------------------------------------------------------
 Thu Nov 26 11:07:08 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Only build Python3 flavors for distributions 15 and greater

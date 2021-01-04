@@ -1,7 +1,7 @@
 #
 # spec file for package python-cfn-lint
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-cfn-lint
-Version:        0.37.1
+Version:        0.44.2
 Release:        0
 Summary:        Tool to checks cloudformation for practices and behaviour
 License:        MIT
@@ -30,15 +30,26 @@ Source:         https://github.com/aws-cloudformation/cfn-python-lint/archive/v%
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       git-core
 Requires:       python-PyYAML
 Requires:       python-aws-sam-translator >= 1.25.0
-Requires:       python-importlib_resources >= 1.0.2
 Requires:       python-jsonpatch
 Requires:       python-jsonschema > 3.0
 Requires:       python-junit-xml >= 1.9
-Requires:       python-networkx >= 2.2
 Requires:       python-requests >= 2.15.0
 Requires:       python-six >= 1.11
+%if %{python_version_nodots} <= 34
+Requires:       python-importlib_resources >= 1.0.2
+Requires:       python-networkx >= 2.2
+Requires:       python-pathlib2 >= 2.3.0
+Requires:       python-pyrsistent <= 0.16.0
+%else
+Requires:       python-networkx >= 2.4
+%if %{python_version_nodots} < 37
+Requires:       python-importlib_resources >= 1.4
+%endif
+%endif
+
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-pydot
@@ -51,7 +62,6 @@ BuildRequires:  python
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module aws-sam-translator >= 1.25.0}
-BuildRequires:  %{python_module importlib_resources >= 1.0.2}
 BuildRequires:  %{python_module jsonpatch}
 BuildRequires:  %{python_module jsonschema > 3.0}
 BuildRequires:  %{python_module junit-xml >= 1.9}
@@ -61,13 +71,16 @@ BuildRequires:  %{python_module pydot}
 BuildRequires:  %{python_module requests >= 2.15.0}
 BuildRequires:  %{python_module six >= 1.11}
 BuildRequires:  bash
+BuildRequires:  git-core
 %if %{with python2}
+BuildRequires:  python-importlib-resources >= 1.0.2
 BuildRequires:  python-pathlib2 >= 2.3.0
 %endif
+BuildRequires:  (python3-importlib-resources >= 1.0.2 if python3-base == 3.4)
+BuildRequires:  (python3-importlib-resources >= 1.4 if (python3-base < 3.7 and python3-base > 3.4))
+BuildRequires:  (python3-pathlib2 >= 2.3.0 if python3-base <= 3.4)
+BuildRequires:  (python36-importlib-resources >= 1.4 if python36-base)
 # /SECTION
-%ifpython2
-Requires:       python-pathlib2 >= 2.3.0
-%endif
 %python_subpackages
 
 %description
@@ -98,19 +111,26 @@ sed -i -e 's:~=:>=:g' setup.py
 export LANG=en_US.UTF-8
 export AWS_DEFAULT_REGION=us-east-1
 
-# This is just faking as we use update-alternatives and don't have cfn-lint binary around during build
+# We use update-alternatives and don't have cfn-lint binary around during check
 mkdir bin
-pushd bin
-ln -s %{buildroot}%{_bindir}/cfn-lint-%{python3_bin_suffix} ./cfn-lint
-popd
-export PATH="./bin:$PATH"
+OPATH=$PATH
 
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m unittest discover -s test -v
+# the code calls git grep, need to be inside git repo
+git init
+git add src/cfnlint/rules
+
+%{python_expand #
+ln -sf %{buildroot}%{_bindir}/cfn-lint-%{$python_bin_suffix} bin/cfn-lint
+export PATH="./bin:$OPATH"
+export PYTHONPATH=%{buildroot}%{$python_sitelib}
+$python -B -m unittest discover -s test -v
+}
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
 %license LICENSE
-%{python_sitelib}/*
 %python_alternative %{_bindir}/cfn-lint
+%{python_sitelib}/cfnlint
+%{python_sitelib}/cfn_lint-%{version}*-info
 
 %changelog
