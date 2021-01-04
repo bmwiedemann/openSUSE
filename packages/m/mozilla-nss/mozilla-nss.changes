@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 27 10:46:57 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.59.1
+  * bmo#1679290 - Fix potential deadlock with certain third-party
+                  PKCS11 modules
+
+-------------------------------------------------------------------
 Tue Dec  1 12:22:57 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.59

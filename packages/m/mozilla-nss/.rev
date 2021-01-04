@@ -2252,4 +2252,12 @@
   *  bmo#670839 - Use ARM crypto extension for AES, SHA1 and SHA2 on MacOS.</comment>
     <requestid>852633</requestid>
   </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>8fc1d1090968b7d99bd0bc079f640d66</srcmd5>
+    <version>3.59.1</version>
+    <time>1609783637</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>859942</requestid>
+  </revision>
 </revisionlist>
