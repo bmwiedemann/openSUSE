@@ -70,4 +70,41 @@
     <comment></comment>
     <requestid>785923</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>08df0b2f6d6bb1d78e7fc08f479f888f</srcmd5>
+    <version>20.2.0</version>
+    <time>1609783745</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20.2.0:
+  Backward-incompatible changes:
+  * Python 2.7 and 3.5 aren't supported anymore. The package meta
+    data should ensure that you keep getting 20.1.0 on those versions. #244
+  * structlog is now fully type-annotated. This won't break your
+    applications, but if you use Mypy, it will most likely break your CI.
+  Deprecations:
+  * Accessing the _context attribute of a bound logger is now deprecated.
+    Please use the new structlog.get_context().
+  Changes:
+  * structlog has now type hints for all of its APIs! Since structlog
+    is highly dynamic and configurable, this led to a few concessions
+    like a specialized structlog.stdlib.get_logger() whose only difference
+    to structlog.get_logger() is that it has the correct type hints.
+    We consider them provisional for the time being – i.e. the backward
+    compatibility does not apply to them in its full strength until we
+    feel we got it right. Please feel free to provide feedback! #223, #282
+  * Added structlog.make_filtering_logger that can be used like
+    configure(wrapper_class=make_filtering_bound_logger(logging.INFO)).
+    It creates a highly optimized bound logger whose inactive methods
+    only consist of a return None. This is now also the default logger.
+  * As a complement, structlog.stdlib.add_log_level() can now
+    additionally be imported as structlog.processors.add_log_level
+    since it just adds the method name to the event dict.
+  * structlog.processors.add_log_level() is now part of the default configuration.
+  * structlog.stdlib.ProcessorFormatter no longer uses exceptions for
+    control flow, allowing foreign_pre_chain processors to use
+    sys.exc_info() to access the real exception.
+  * Added structlog.BytesLogger to avoid unnecessary encoding round trips.
+    Concretely this is useful with orjson which returns bytes. #271</comment>
+    <requestid>860146</requestid>
+  </revision>
 </revisionlist>

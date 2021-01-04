@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Jan  4 11:16:18 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 20.2.0:
+  Backward-incompatible changes:
+  * Python 2.7 and 3.5 aren't supported anymore. The package meta
+    data should ensure that you keep getting 20.1.0 on those versions. #244
+  * structlog is now fully type-annotated. This won't break your
+    applications, but if you use Mypy, it will most likely break your CI.
+  Deprecations:
+  * Accessing the _context attribute of a bound logger is now deprecated.
+    Please use the new structlog.get_context().
+  Changes:
+  * structlog has now type hints for all of its APIs! Since structlog
+    is highly dynamic and configurable, this led to a few concessions
+    like a specialized structlog.stdlib.get_logger() whose only difference
+    to structlog.get_logger() is that it has the correct type hints.
+    We consider them provisional for the time being – i.e. the backward
+    compatibility does not apply to them in its full strength until we
+    feel we got it right. Please feel free to provide feedback! #223, #282
+  * Added structlog.make_filtering_logger that can be used like
+    configure(wrapper_class=make_filtering_bound_logger(logging.INFO)).
+    It creates a highly optimized bound logger whose inactive methods
+    only consist of a return None. This is now also the default logger.
+  * As a complement, structlog.stdlib.add_log_level() can now
+    additionally be imported as structlog.processors.add_log_level
+    since it just adds the method name to the event dict.
+  * structlog.processors.add_log_level() is now part of the default configuration.
+  * structlog.stdlib.ProcessorFormatter no longer uses exceptions for
+    control flow, allowing foreign_pre_chain processors to use
+    sys.exc_info() to access the real exception.
+  * Added structlog.BytesLogger to avoid unnecessary encoding round trips.
+    Concretely this is useful with orjson which returns bytes. #271
+  * The final processor now also may return bytes that are passed
+    untouched to the wrapped logger.
+  * structlog.get_context() allows you to retrieve the original
+    context of a bound logger. #266,
+  * structlog.PrintLogger now supports copy.deepcopy(). #268
+  * Added structlog.testing.CapturingLogger for more unit testing goodness.
+  * Added structlog.stdlib.AsyncBoundLogger that executes logging
+    calls in a thread executor and therefore doesn't block. #245
+
+-------------------------------------------------------------------
 Tue Mar 17 11:33:05 UTC 2020 - pgajdos@suse.com
 
 - version update to 20.1.0
