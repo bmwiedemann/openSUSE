@@ -1,7 +1,7 @@
 #
 # spec file for package python-isort
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 %define skip_python2 1
 Name:           python-isort%{psuffix}
-Version:        5.6.4
+Version:        5.7.0
 Release:        0
 Summary:        A Python utility / library to sort Python imports
 License:        MIT
@@ -68,10 +68,10 @@ BuildRequires:  git
 %description
 isort your python imports for you so you don’t have to.
 
-isort is a Python utility / library to sort imports alphabetically, and 
-automatically separated into sections and by type. It provides a command line 
-utility, Python library and plugins for various editors to quickly sort all your 
-imports. It requires Python 3.6+ to run but supports formatting Python 2 code 
+isort is a Python utility / library to sort imports alphabetically, and
+automatically separated into sections and by type. It provides a command line
+utility, Python library and plugins for various editors to quickly sort all your
+imports. It requires Python 3.6+ to run but supports formatting Python 2 code
 too.
 
 %prep
@@ -85,6 +85,7 @@ chmod -x LICENSE
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/isort
+%python_clone -a %{buildroot}%{_bindir}/isort-identify-imports
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -125,7 +126,7 @@ pytest-%{$python_bin_suffix} -v \
 
 %if !%{with test}
 %post
-%python_install_alternative isort
+%python_install_alternative isort isort-identify-imports
 
 %postun
 %python_uninstall_alternative isort
@@ -134,6 +135,7 @@ pytest-%{$python_bin_suffix} -v \
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/isort
+%python_alternative %{_bindir}/isort-identify-imports
 %{python_sitelib}/isort
 %{python_sitelib}/isort-%{version}.dist-info
 %endif

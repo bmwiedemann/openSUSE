@@ -337,4 +337,29 @@ Let's see which package is missing in ringX for test flavor</comment>
     <comment></comment>
     <requestid>855002</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b0b97e083aacfb1bc6c93b90d94ec251</srcmd5>
+    <version>5.7.0</version>
+    <time>1609783583</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Version 5.7.0
+  * Fixed #1612: In rare circumstances an extra comma is added
+    after import and before comment.
+  * Fixed #1593: isort encounters bug in Python 3.6.0.
+  * Implemented #1596: Provide ways for extension formatting and
+    file paths to be specified when using streaming input from CLI.
+  * Implemented #1583: Ability to output and diff within a single
+    API call to isort.file.
+  * Implemented #1562, #1592 &amp; #1593: Better more useful fatal
+    error messages.
+  * Implemented #1575: Support for automatically fixing mixed
+    indentation of import sections.
+  * Implemented #1582: Added a CLI option for skipping symlinks.
+  * Implemented #1603: Support for disabling float_to_top from the
+    command line.
+  * Implemented #1604: Allow toggling section comments on and off
+    for indented import sections.
+</comment>
+    <requestid>859773</requestid>
+  </revision>
 </revisionlist>
