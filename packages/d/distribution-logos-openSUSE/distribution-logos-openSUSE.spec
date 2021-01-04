@@ -30,6 +30,8 @@ BuildArch:      noarch
 %description
 Logos for openSUSE Distributions
 
+%if 0%{?sle_version}
+
 %package Leap
 Summary:        Logos for openSUSE Leap
 
@@ -42,6 +44,8 @@ BuildArch:      noarch
 
 %description Leap
 Logos for openSUSE Leap
+
+%else
 
 %package Tumbleweed
 Summary:        Logos for openSUSE Tumbleweed
@@ -82,6 +86,8 @@ BuildArch:      noarch
 %description MicroOS
 Logos for openSUSE MicroOS
 
+%endif
+
 %prep
 %setup -qn distribution-logos-master
 
@@ -89,7 +95,11 @@ Logos for openSUSE MicroOS
 # Skip build
 
 %install
-for distro in Leap Tumbleweed Kubic MicroOS; do \
+%if 0%{?sle_version}
+for distro in Leap; do \
+%else
+for distro in Tumbleweed Kubic MicroOS; do \
+%endif
 mkdir -p %{buildroot}%{_datadir}/pixmaps/distribution-logos; \
 for file in `ls ${distro}`; do \
 cp -r ${distro}/${file} %{buildroot}%{_datadir}/pixmaps/distribution-logos/${file}.${distro}; \
@@ -99,8 +109,12 @@ done \
 %files
 %dir %{_datadir}/pixmaps/distribution-logos
 
+%if 0%{?sle_version}
+
 %files Leap
 %{_datadir}/pixmaps/distribution-logos/*.Leap
+
+%else
 
 %files Tumbleweed
 %{_datadir}/pixmaps/distribution-logos/*.Tumbleweed
@@ -110,5 +124,7 @@ done \
 
 %files MicroOS
 %{_datadir}/pixmaps/distribution-logos/*.MicroOS
+
+%endif
 
 %changelog
