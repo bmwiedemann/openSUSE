@@ -1,7 +1,7 @@
 #
 # spec file for package python-param
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Summary:        Declarative Python programming using Parameters
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            http://param.pyviz.org/
-Source0:        https://github.com/ioam/param/archive/v%{version}.tar.gz
+Source0:        https://github.com/holoviz/param/archive/v%{version}.tar.gz
 Source100:      python-param-rpmlintrc
 # PATCH-FEATURE-UPSTREAM denose.patch gh#holoviz/param#423 mcepl@suse.com
 # Remove nose dependency
@@ -53,6 +53,7 @@ as part of other projects.
 %autosetup -p1 -n param-%{version}
 
 sed -i -e 's:version=get_setup_version("param"):version="%{version}":g' setup.py
+sed -i -e 's:__version__ = "0.0.0+unknown":__version__ = "%{version}":' param/__init__.py
 echo '{"git_describe": "v%{version}", "version_string": "%{version}"}' > param/.version
 
 %build
@@ -66,6 +67,14 @@ echo '{"git_describe": "v%{version}", "version_string": "%{version}"}' > param/.
 %check
 # Exclusion documented in gh#holoviz/param#423
 %pytest -k 'not test_abstract_class' tests/*/*.py
+%{python_expand # make sure the correct version is reported. Other packages depend on it.
+PYTHONPATH=%{buildroot}%{$python_sitelib}
+$python -c '
+import param
+v = param.__version__
+assert v == "%{version}", "wrong version reported: {}".format(v)
+'
+}
 %endif
 
 %files %{python_files}
