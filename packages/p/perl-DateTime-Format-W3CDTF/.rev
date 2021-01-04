@@ -13,4 +13,12 @@ Apologies if this isnt the correct protocol for requesting addition of perl pack
 If it is ok, I'll keep requesting the missing dependencies from the bottom of the dep tree until I reach perl-WWW-OpenSearch.</comment>
     <requestid>694942</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0f17e20998ac0309cc10715a68ddbdd5</srcmd5>
+    <version>0.08</version>
+    <time>1609783790</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860213</requestid>
+  </revision>
 </revisionlist>

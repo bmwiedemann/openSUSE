@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Dec 20 03:07:21 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.08
+   see /usr/share/doc/packages/perl-DateTime-Format-W3CDTF/Changes
+
+  DateTime::Format::W3CDTF
+  ========================
+  Created:      2003-02-25
+  Home page:    <https://metacpan.org/release/DateTime-Format-W3CDTF/>
+  Bug tracker:  <https://github.com/kasei/datetime-format-w3cdtf/issues>
+  0.08  2020-12-18
+   - (Update) Add 'strict' option to require timezone in time components (PR
+     #3 from @timgimyee).
+   - (Update) Updated Makefile.PL with new metadata.
+
+-------------------------------------------------------------------
 Sat Apr  8 05:28:40 UTC 2017 - coolo@suse.com
 
 - updated to 0.07
