@@ -1,7 +1,7 @@
 #
 # spec file for package cpprest
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,17 +22,19 @@ Name:           cpprest
 Version:        2.10.16
 Release:        0
 Summary:        C++ REST library
+License:        MIT AND BSD-3-Clause AND Zlib
 # main: MIT (license.txt)
 # Websocket++: BSD-3-Clause (ThirdPartyNotices.txt)
 # base64/base64.hpp: Zlib (ThirdPartyNotices.txt)
 # sha1/sha1.hpp: BSD-3-Clause (ThirdPartyNotices.txt)
 # common/md5.hpp: Zlib (ThirdPartyNotices.txt)
 # utf8_validation.hpp: MIT (ThirdPartyNotices.txt)
-License:        MIT AND BSD-3-Clause AND Zlib
 URL:            https://github.com/Microsoft/cpprestsdk
 Source:         https://github.com/Microsoft/cpprestsdk/archive/v%{version}/cpprestsdk-%{version}.tar.gz
 # https://github.com/Microsoft/cpprestsdk/issues/576
 Patch1:         cpprest-2.10.9-disable-test-extract_floating_point.patch
+Patch2:         base64.patch
+Patch3:         filestream.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -78,9 +80,9 @@ Development files.
 
 %prep
 %setup -q -n cpprestsdk-%{version}
-%ifarch aarch64 ppc64 ppc64le
 %patch1 -p1
-%endif
+%patch2 -p1
+%patch3 -p1
 
 %build
 %cmake \

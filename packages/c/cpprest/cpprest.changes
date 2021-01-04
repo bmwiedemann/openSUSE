@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  4 11:02:30 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- cpprest-2.10.9-disable-test-extract_floating_point.patch: Only disable
+  the problematic test
+- base64.patch: Portable base64
+- filestream.patch: Fix type mismatch in basic_file_buffer
+
+-------------------------------------------------------------------
 Tue May 12 16:39:14 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to disable 'extract_floating_point' test failing on

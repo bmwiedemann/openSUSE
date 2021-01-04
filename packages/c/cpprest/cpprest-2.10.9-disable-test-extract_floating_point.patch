@@ -1,20 +1,13 @@
-diff --git a/Release/tests/functional/streams/istream_tests.cpp b/Release/tests/functional/streams/istream_tests.cpp
-index d1018e31..66b3f801 100644
---- a/Release/tests/functional/streams/istream_tests.cpp
-+++ b/Release/tests/functional/streams/istream_tests.cpp
-@@ -1297,6 +1297,7 @@ SUITE(istream_tests)
-     void compare_double(double expected, double actual) { compare_floating(expected, actual, DBL_EPSILON); }
-     void compare_float(float expected, float actual) { compare_floating(expected, actual, FLT_EPSILON); }
- 
-+/*
-     TEST(extract_floating_point)
-     {
-         std::string test_string;
-@@ -1343,6 +1344,7 @@ SUITE(istream_tests)
-             if (expected == 0) VERIFY_ARE_EQUAL(1 / expected, 1 / actual);
-         } while (!std_istream.eof());
-     }
-+*/
- 
-     TEST(extract_floating_point_with_exceptions)
-     {
+Index: cpprestsdk-2.10.16/Release/tests/functional/streams/istream_tests.cpp
+===================================================================
+--- cpprestsdk-2.10.16.orig/Release/tests/functional/streams/istream_tests.cpp
++++ cpprestsdk-2.10.16/Release/tests/functional/streams/istream_tests.cpp
+@@ -1305,7 +1305,7 @@ SUITE(istream_tests)
+         test_string.append(" 6E+4.5"); // two numbers merged in exponent
+         test_string.append(" 6E-4.5"); // two numbers merged in exponent
+         test_string.append(" 3.14 -10 +42.0 -1234.567 .01 +0 -0");
+-#ifndef __APPLE__
++#if FLT_EVAL_METHOD > 1
+         test_string.append(" 12345678901234567890123456789012345678901234567890"); // a big number
+ #endif
+         test_string.append(" 9.81E05 6.0221413e+23 1.6e-14"); // numbers with exponent
