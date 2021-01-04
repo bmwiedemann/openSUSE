@@ -1,7 +1,7 @@
 #
 # spec file for package acpid
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,8 @@ Release:        0
 Summary:        Daemon to execute actions on ACPI events
 License:        GPL-2.0-or-later
 Group:          System/Daemons
-URL:            http://sourceforge.net/projects/acpid2/
-Source:         http://downloads.sourceforge.net/project/acpid2/%{name}-%{version}.tar.xz
+URL:            https://sourceforge.net/projects/acpid2/
+Source:         https://downloads.sourceforge.net/project/acpid2/%{name}-%{version}.tar.xz
 Source3:        README.SUSE
 Source5:        events.power_button
 Source6:        thinkpad_handler
@@ -53,7 +53,7 @@ cp %{SOURCE3} %{SOURCE5} %{SOURCE6} %{SOURCE7} %{SOURCE9} %{SOURCE10} %{SOURCE11
 export CFLAGS="%{optflags}"
 export LDFLAGS="-Wl,-z,relro,-z,now"
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install BINDIR=%{_sbindir}
