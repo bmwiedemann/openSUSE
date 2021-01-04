@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan  3 14:00:47 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
+
+- update to 21.01:
+  Enforce SDL 2.0.9 or newer as a build requirement
+  Micro-optimize byte swapping for XACT file parsing
+
+-------------------------------------------------------------------
 Mon Dec 28 00:32:02 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
 
 - update to 20.12:
