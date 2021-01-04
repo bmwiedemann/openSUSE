@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan  2 20:07:17 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Build library for all parallel installable python3 flavors
+  gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Fri Mar  6 09:25:41 UTC 2020 - Nico Kruber <nico.kruber@gmail.com>
 
 - Update to 0.13.0
