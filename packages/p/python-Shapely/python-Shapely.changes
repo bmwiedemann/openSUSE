@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan  3 18:57:57 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Skip Python2 build. It is not supported by upstream anymore and
+  the unit tests in Leap fail because of it
+- Let the %python_subpackages macro take care of the correct
+  provides/obsoletes flavors. (gh#openSUSE/python-rpm-macros#66)
+
+-------------------------------------------------------------------
 Sun Sep 27 16:35:53 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - update to 1.7.1

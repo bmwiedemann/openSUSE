@@ -19,6 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 %bcond_without test
+%define skip_python2 1
 Name:           python-Shapely
 Version:        1.7.1
 Release:        0
@@ -34,21 +35,15 @@ BuildRequires:  fdupes
 BuildRequires:  geos-devel >= 3.3
 BuildRequires:  python-rpm-macros
 Requires:       geos >= 3.3
+Recommends:     python-numpy
 # SECTION test requirements
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 %if 0%{?suse_version} > 1320
 BuildRequires:  %{python_module matplotlib}
 %endif
 # /SECTION
-%ifpython2
-Obsoletes:      %{oldpython}-shapely < %{version}
-Provides:       %{oldpython}-shapely = %{version}
-%endif
-%ifpython3
-Obsoletes:      python3-shapely < %{version}
-Provides:       python3-shapely = %{version}
-%endif
+Provides:       python-shapely = %{version}
+Obsoletes:      python-shapely < %{version}
 %python_subpackages
 
 %description
@@ -76,13 +71,12 @@ rm -fv %{buildroot}%{_prefix}/shapely/_geos.pxi
 rm -frv %{buildroot}%{_prefix}/shapely
 
 %check
-mv shapely shapely_temp
 %pytest_arch
-mv shapely_temp shapely
 
 %files %{python_files}
 %license LICENSE.txt
 %doc CREDITS.txt README.rst docs/*
-%{python_sitearch}/*
+%{python_sitearch}/shapely
+%{python_sitearch}/Shapely-%{version}*-info
 
 %changelog
