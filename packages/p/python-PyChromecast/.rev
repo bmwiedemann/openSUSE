@@ -160,4 +160,17 @@
   * Misc spelling changes</comment>
     <requestid>838626</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>166587e2bcf71f23a0492c915789c3ef</srcmd5>
+    <version>7.7.1</version>
+    <time>1609783694</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.7.1:
+  * Don't throw if socket is already closed when cleaning up (#438)
+  * Update local http API, re-add get_multizone_status (#437)
+  * Spotify quick play (again) (#430)
+  * Fix next/previous track (#436)
+  * Add support for BubbleUPNP (#428)</comment>
+    <requestid>860029</requestid>
+  </revision>
 </revisionlist>
