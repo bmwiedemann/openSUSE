@@ -21937,6 +21937,7 @@ unsorted:
   - python3-baron 
   - python3-base58 
   - python3-bashate 
+  - python3-basictracer 
   - python3-bcc 
   - python3-bcolz 
   - python3-beautifulsoup4 
@@ -24274,7 +24275,7 @@ unsorted:
   - python3-tevent-32bit: [x86_64] 
   - python3-text-unidecode 
   - python3-textX 
-  - python3-textdistance: [x86_64] 
+  - python3-textdistance 
   - python3-textfsm 
   - python3-textile 
   - python3-texttable 
@@ -36609,7 +36610,7 @@ unsorted:
   - typelib-1_0-FPrint-2_0 
   - typelib-1_0-Farstream-0_2 
   - typelib-1_0-Fcitx-1_0 
-  - typelib-1_0-Flatpak-1_0: [i586] 
+  - typelib-1_0-Flatpak-1_0 
   - typelib-1_0-Folks-0_6 
   - typelib-1_0-FolksEds-0_6 
   - typelib-1_0-FolksTelepathy-0_6 
