@@ -1,7 +1,7 @@
 #
 # spec file for package python-dash-html-components
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,17 +26,19 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+# dash packagers do not regularly tag their releases on github due to some Julia bug
+%define commit 7209e0a2ed58815f183f2f2b55afab8b1c78974a
 Name:           python-dash-html-components%{psuffix}
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Vanilla HTML components for Dash
 License:        MIT
 URL:            https://github.com/plotly/dash-html-components
-Source:         https://github.com/plotly/dash-html-components/archive/v%{version}.tar.gz
+# only the github archive has the tests
+Source:         https://github.com/plotly/dash-html-components/archive/%{commit}.tar.gz#/dash-html-components-%{version}-gh.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-dash
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module dash}
@@ -51,7 +53,7 @@ BuildRequires:  %{python_module selenium}
 Vanilla HTML components for Dash
 
 %prep
-%setup -q -n dash-html-components-%{version}
+%setup -q -n dash-html-components-%{commit}
 
 %build
 %python_build
@@ -64,6 +66,7 @@ Vanilla HTML components for Dash
 
 %check
 %if %{with test}
+# full test suite needs working nodejs (npm with network), selenium, chromedriver...
 %pytest tests/test_dash_html_components.py
 %endif
 

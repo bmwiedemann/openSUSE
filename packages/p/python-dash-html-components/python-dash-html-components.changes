@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan  3 20:01:14 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Cleanup Andy's version for submission
+  * stay on (non-tagged) github archive
+  * drop requirement on dash (build cycle dependency)
+
+-------------------------------------------------------------------
+Mon Dec 21 12:29:55 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 1.1.1.
+  * Dash.jl Julia component generation
+
+-------------------------------------------------------------------
 Wed Nov 11 15:23:42 UTC 2020 - Marketa Machova <mmachova@suse.com>
 
 - Update to 1.1.0
