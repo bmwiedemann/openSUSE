@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 04 09:24:08 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1609752238.01857082:
+  * Add static checks for our container definitions
+  * external: Fix style issues in container files based on hadolint reports
+  * container: Fix style issues based on hadolint reports
+  * tools: Add prove arg --timer to be consistent with openQA
+  * Add test for our container definitions
+  * Use more general folder name "container" rather than docker
+
+-------------------------------------------------------------------
 Mon Dec 21 15:59:43 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1608558896.743495da:
