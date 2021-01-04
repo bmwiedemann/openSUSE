@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Jan  3 20:07:06 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Remove dependency on dash (build dependency cycle)
+
+-------------------------------------------------------------------
+Sun Jan  3 15:43:49 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to v4.11.1 (not tagged on GitHub, but released on PyPI)
+  * gh#plotly/dash-table#850
+  * #844 Fix a bug where the table is using classes that are styled
+    by Bootstrap
+- Changes in 4.11.0
+  * #841 Fix prop-types regression causing console errors in 
+    browser devtools
+  * Fix syntax highlighting regression for Markdown cells
+  * #842 Fix a regression introduced with #722 causing the 
+    tooltips to be misaligned with respect to their parent 
+    cell and incompletely addressed in #817
+  * #841 Add Julia syntax highlighting support for Markdown 
+    #cells
+  * #831 Add the tooltip_header prop and add nested prop 
+    use_with (with values: header, data, both) to the tooltip 
+    prop to configure header cell tooltips
+- Changes in 4.10.1
+  * Dash.jl Julia component generation
+
+-------------------------------------------------------------------
 Sat Apr 18 20:56:12 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:

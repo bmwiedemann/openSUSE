@@ -1,7 +1,7 @@
 #
 # spec file for package python-dash-table
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,17 +26,19 @@
 %bcond_with test
 %endif
 %define skip_python2 1
+# Upstream forgets to tag the release version, but we need the github archive for the test files
+# https://github.com/plotly/dash-table/issues/850
+%define commit 93e88cdef2d1764c3b19ff9bd45f565c70e6704a
 Name:           python-dash-table%{psuffix}
-Version:        4.6.2
+Version:        4.11.1
 Release:        0
 Summary:        Dash table
 License:        MIT
 URL:            https://github.com/plotly/dash-table
-Source:         https://github.com/plotly/dash-table/archive/v%{version}.tar.gz
+Source:         https://github.com/plotly/dash-table/archive/%{commit}.tar.gz#/dash-table-%{version}-gh.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-dash
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module dash}
@@ -48,7 +50,7 @@ BuildRequires:  %{python_module pytest}
 An interactive DataTable for Dash.
 
 %prep
-%setup -q -n dash-table-%{version}
+%setup -q -n dash-table-%{commit}
 
 %build
 %python_build
@@ -69,7 +71,7 @@ An interactive DataTable for Dash.
 %license LICENSE
 %doc README.md
 %{python_sitelib}/dash_table/
-%{python_sitelib}/dash_table-%{version}-py*.egg-info
+%{python_sitelib}/dash_table-%{version}*-info
 %endif
 
 %changelog
