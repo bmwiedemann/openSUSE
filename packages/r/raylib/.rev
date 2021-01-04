@@ -146,4 +146,41 @@
     implementations.</comment>
     <requestid>799028</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>39337fd78e8603df0f5cb21e772998a2</srcmd5>
+    <version>3.5.0</version>
+    <time>1609783818</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.5.0:
+  * Platform supported: Raspberry Pi 4 native mode (no X11 windows)
+    through DRM subsystem and GBM API. Actually this is a really
+    interesting improvement because it opens the door to raylib to
+	support other embedded platforms (Odroid, GameShell, NanoPi...).
+    Also worth mentioning the un-official homebrew ports of raylib
+    for PS4 and PSVita.
+  * NEW configuration options exposed: For custom raylib builds,
+    config.h now exposes more than 150 flags and defines to build
+    raylib with only the desired features, for example, it allows to
+    build a minimal raylib library in just some KB removing all
+    external data filetypes supported, very useful to generate small
+    executables or embedded devices.
+  * NEW automatic GIF recording feature: Actually, automatic GIF
+    recording (CTRL+F12) for any raylib application has been available
+    for some versions but this feature was really slow and low-performant
+    using an old gif library with many file-accesses. It has been replaced
+    by a high-performant alternative (msf_gif.h) that operates directly
+    on memory... and actually works very well! Try it out!
+  * NEW RenderBatch system: rlgl module has been redesigned to support
+    custom render batches to allow grouping draw calls as desired, previous
+    implementation just had one default render batch. This feature has not
+    been exposed to raylib API yet but it can be used by advance users dealing
+    with rlgl directly. For example, multiple RenderBatch can be created
+    for 2D sprites and 3D geometry independently.
+  * NEW Framebuffer system: rlgl module now exposes an API for custom Framebuffer
+    attachments (including cubemaps!). raylib RenderTexture is a basic
+    use-case, just allowing color and depth textures, but this new API allows
+    the creation of more advance Framebuffers with multiple attachments,
+    like the G-Buffers. GenTexture*() functions have been redesigned to use this new API.</comment>
+    <requestid>860228</requestid>
+  </revision>
 </revisionlist>

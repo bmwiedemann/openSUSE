@@ -1,7 +1,7 @@
 #
 # spec file for package raylib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           raylib
-Version:        3.0.0
+Version:        3.5.0
 Release:        0
 Summary:        C library for learning video game programming
 License:        Zlib
@@ -40,21 +40,21 @@ raylib is inspired by the Borland BGI graphics library and by the XNA framework.
 %package -n raylib-devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
-Requires:       libraylib301 = %{version}
+Requires:       libraylib351 = %{version}
 Requires:       openal-soft-devel
 
 %description -n raylib-devel
 Development files and headers for %{name}.
 
-%package -n libraylib301
+%package -n libraylib351
 Summary:        C library for learning video game programming
 Group:          System/Libraries
 
-%description -n libraylib301
+%description -n libraylib351
 A C library for learning video game programming.
 
 %prep
-%setup -q -n raylib-3.0.0
+%setup -q -n raylib-3.5.0
 %patch0 -p1
 
 %build
@@ -68,12 +68,11 @@ for f in build/src/*.h; do
     install -Dm 644 "$f" "$RPM_BUILD_ROOT/usr/include/$(basename $f)"
 done
 
-%post -n libraylib301 -p /sbin/ldconfig
-%postun -n libraylib301 -p /sbin/ldconfig
+%post -n libraylib351 -p /sbin/ldconfig
+%postun -n libraylib351 -p /sbin/ldconfig
 
-%files -n libraylib301
-%{_libdir}/libraylib.so.301
-%{_libdir}/libraylib.so.3.0.0
+%files -n libraylib351
+%{_libdir}/libraylib.so.*
 
 %files -n raylib-devel
 %license LICENSE
