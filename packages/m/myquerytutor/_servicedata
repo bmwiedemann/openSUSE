@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/tuxta/myquerytutor.git</param>
+              <param name="changesrevision">d418bbf3c415ba34a98628ccb994f8b5df00658a</param></service><service name="tar_scm">
+                <param name="url">https://gitlab.com/tuxta/myquerytutor.git</param>
+              <param name="changesrevision">0172df65879c01857fba692e35e112c245dd0cd6</param></service></servicedata>
