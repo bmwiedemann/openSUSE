@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-Mojolicious
-Version:        8.67
-Release:        0
 %define cpan_name Mojolicious
+Name:           perl-Mojolicious
+Version:        8.70
+Release:        0
 Summary:        Real-time web framework
 License:        Artistic-2.0
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SR/SRI/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(IO::Socket::IP) >= 0.37
@@ -46,12 +44,12 @@ first class Unicode support and much more for you to discover.
 Take a look at our excellent documentation in Mojolicious::Guides!
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -62,7 +60,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes examples README.md
 %license LICENSE
 
