@@ -269,4 +269,12 @@ their well-known cousins (e.g. dtest vs. test, or dgrep vs. grep).</comment>
   * drain prchunk if filled with many small lines</comment>
     <requestid>770385</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>aebb11d2c9088f881808a8ad6e6cd67a</srcmd5>
+    <version>0.4.7</version>
+    <time>1609783754</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860151</requestid>
+  </revision>
 </revisionlist>

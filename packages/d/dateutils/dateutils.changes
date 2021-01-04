@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec 19 00:28:09 UTC 2020 - malcolmlewis@opensuse.org
+
+- Add dateutils-remove-deprecated-header.patch: Remove deprecated
+  glibc sysctl.h header.
+
+-------------------------------------------------------------------
 Wed Feb  5 19:16:19 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.4.7:

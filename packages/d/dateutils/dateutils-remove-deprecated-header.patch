@@ -1,0 +1,11 @@
+diff -Naur a/build-aux/yuck.c b/build-aux/yuck.c
+--- a/build-aux/yuck.c	2020-02-03 06:52:59.000000000 -0600
++++ b/build-aux/yuck.c	2020-12-18 18:23:04.505541977 -0600
+@@ -65,7 +65,6 @@
+ #include <sys/wait.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
+-#include <sys/sysctl.h>
+ #include <time.h>
+ #if defined __APPLE__
+ # include <mach-o/dyld.h>

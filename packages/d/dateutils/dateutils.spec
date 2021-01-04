@@ -1,7 +1,7 @@
 #
 # spec file for package dateutils
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Group:          Productivity/Text/Utilities
 URL:            https://github.com/hroptatyr/dateutils/
 Source0:        https://github.com/hroptatyr/dateutils/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/hroptatyr/dateutils/releases/download/v%{version}/%{name}-%{version}.tar.asc
+#PATCH-FIX-OPENSUSE dateutils-remove-deprecated-header.patch malcolmlewis@opensuse.org -- Remove deprecated glibc sysctl.h header.
+Patch0:         dateutils-remove-deprecated-header.patch
 BuildRequires:  octave-devel
 BuildRequires:  pkgconfig
 BuildRequires:  timezone
@@ -49,7 +51,7 @@ Requires:       octave
 Dateutils can be used from within matlab or ocatave.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
