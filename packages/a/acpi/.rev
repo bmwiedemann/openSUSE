@@ -105,4 +105,12 @@
     <comment>1</comment>
     <requestid>291314</requestid>
   </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>fa76f0be4e0663923e879a77d34a7df1</srcmd5>
+    <version>1.7</version>
+    <time>1609783767</time>
+    <user>dimstar_suse</user>
+    <comment>- spec-cleaner</comment>
+    <requestid>860197</requestid>
+  </revision>
 </revisionlist>
