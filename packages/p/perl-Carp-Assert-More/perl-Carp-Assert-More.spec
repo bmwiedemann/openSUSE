@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-Carp-Assert-More
-Version:        1.24
-Release:        0
 %define cpan_name Carp-Assert-More
+Name:           perl-Carp-Assert-More
+Version:        1.26
+Release:        0
 Summary:        Convenience wrappers around Carp::Assert
 License:        Artistic-2.0
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Carp::Assert)
@@ -56,11 +54,11 @@ My intent here is to make common assertions easy so that we as programmers
 have no excuse to not use them.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -71,7 +69,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README.md
 
 %changelog
