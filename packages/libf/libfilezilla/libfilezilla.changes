@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan  4 09:22:01 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.26.0
+  * New features:
+    - Added fz::buffer::capacity()
+    - fz::buffer::append now also accepts single characters
+      and std::vector
+    - Added fz::nonowning_buffer
+    - MSW: Added fz::process::handle()
+    - *nix: Allow passing extra file descriptors to child processes
+    - fz::to_wstring_from_utf8 now accepts std::string_view
+      and fz::buffer
+    - fz::replace_substrings and fz::replaced_substrings now accept
+      string views and single characters
+  * Bugfixes and minor changes:
+    - Reset bucket data if it gets removed from a rate_limiter
+
+-------------------------------------------------------------------
 Wed Oct 21 10:37:04 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.25.0

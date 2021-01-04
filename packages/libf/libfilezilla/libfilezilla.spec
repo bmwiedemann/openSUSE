@@ -1,7 +1,7 @@
 #
 # spec file for package libfilezilla
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define major		10
+%define major		11
 %define libname		%{name}%{major}
 %define develname	%{name}-devel
 Name:           libfilezilla
-Version:        0.25.0
+Version:        0.26.0
 Release:        0
 Summary:        C++ library for filezilla
 License:        GPL-2.0-or-later
