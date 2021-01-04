@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  4 10:05:50 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.1:
+  * Fixed compilation error when LibreSSL is used
+  * Fixed crash when NULL is provided as password
+
+-------------------------------------------------------------------
 Wed Sep 16 06:52:02 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.10.0:

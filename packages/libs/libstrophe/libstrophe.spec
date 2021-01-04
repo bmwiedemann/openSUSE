@@ -1,7 +1,7 @@
 #
 # spec file for package libstrophe
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define c_lib   libstrophe0
 Name:           libstrophe
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        A XMPP library for C
 License:        GPL-3.0-or-later OR MIT
