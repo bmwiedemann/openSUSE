@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jan  2 18:33:17 UTC 2021 - aloisio@gmx.com
+
+- Update to version 0.8.1
+  * Keep references to buffers valid after dav1d_close().
+    Fixes a regression caused by the picture buffer pool added
+    in 0.8.0.
+  * ARM32 optimizations for 10bit bitdepth for SGR
+  * ARM32 optimizations for 16bit bitdepth for
+    blend/w_masl/emu_edge
+  * ARM64 optimizations for 10bit bitdepth for SGR
+  * x86 optimizations for wiener in SSE2/SSSE3/AVX2
+
+-------------------------------------------------------------------
 Tue Nov 24 10:03:21 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
  - Update to version 0.8.0
