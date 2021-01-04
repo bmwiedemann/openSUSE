@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan  3 21:41:22 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 0.12.1
+  * Bugfix release
+- Changelog for 0.12.0 (huge):
+  https://www.statsmodels.org/devel/release/version0.12.html 
+- fix test suite setup
+
+-------------------------------------------------------------------
 Mon Apr  6 09:30:02 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch to multibuild to not take ages on running tests and

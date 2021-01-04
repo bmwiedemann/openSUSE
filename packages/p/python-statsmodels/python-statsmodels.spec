@@ -1,7 +1,7 @@
 #
 # spec file for package python-statsmodels
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 %define skip_python2 1
 Name:           python-statsmodels%{psuffix}
-Version:        0.11.1
+Version:        0.12.1
 Release:        0
 Summary:        A Python module that allows users to explore data
 License:        BSD-3-Clause
@@ -35,16 +35,16 @@ URL:            https://github.com/statsmodels/statsmodels
 Source:         https://files.pythonhosted.org/packages/source/s/statsmodels/statsmodels-%{version}.tar.gz
 BuildRequires:  %{python_module Cython >= 0.29}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel >= 1.14}
-BuildRequires:  %{python_module scipy >= 1.0}
+BuildRequires:  %{python_module numpy-devel >= 1.15}
+BuildRequires:  %{python_module scipy >= 1.1}
 BuildRequires:  %{python_module setuptools >= 0.6}
 BuildRequires:  fdupes
 BuildRequires:  gcc-fortran
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.14
-Requires:       python-pandas >= 0.21
+Requires:       python-numpy >= 1.15
+Requires:       python-pandas >= 0.23
 Requires:       python-patsy >= 0.5.1
-Requires:       python-scipy >= 1.0
+Requires:       python-scipy >= 1.1
 Recommends:     python-matplotlib >= 2.2
 %if %{with test}
 BuildRequires:  %{python_module matplotlib >= 2.2}
@@ -109,11 +109,16 @@ rm -f %{buildroot}%{_prefix}/setup.cfg
 
 %check
 %if %{with test}
-export PYTHONDONTWRITEBYTECODE=1
-# tsa and discrete tests - take AGES to run all those tests in OBS, like 2h per the folder
-# statsmodels/stats/tests/test_dist_dependant_measures.py online tests
-# test_lazy_imports test_docstring_optimization_compat - fail due to dep updates
-%pytest_arch -n auto -v -p no:cacheprovider %{$python_sitearch}/statsmodels/ --ignore=%{$python_sitearch}/statsmodels/tsa --ignore=%{$python_sitearch}/statsmodels/discrete --ignore %{$python_sitearch}/statsmodels/stats/tests/test_dist_dependant_measures.py -k 'not (test_lazy_imports or test_docstring_optimization_compat)'
+# The tests expect an in-place built source tree. Work around conftest import conflicts
+# by directly discovering tests in installed sitearch.
+testdir=/tmp/%{name}-testdir
+mkdir $testdir
+cp setup.cfg $testdir
+pushd $testdir
+# not slow: some tests in tsa and discrete take AGES to run in OBS, like 2h per the folder
+%pytest_arch -n auto -p no:cacheprovider -m "not slow" %{$python_sitearch}/statsmodels
+popd
+rm -r $testdir
 %endif
 
 %if !%{with test}
