@@ -56,4 +56,16 @@
   * Fix CVE-2020-27828, heap-overflow in cp_create() in jpc_enc.c (#252)</comment>
     <requestid>853711</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>23ebff1682a46c202932770eff72946f</srcmd5>
+    <version>2.0.24</version>
+    <time>1609783724</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.24:
+  * Add JAS_VERSION_MAJOR, JAS_VERSION_MINOR, JAS_VERSION_PATCH
+    for easier access to the JasPer version.
+  * Fixes stack overflow bug on Windows, where variable-length
+    arrays are not available. (#256)</comment>
+    <requestid>860103</requestid>
+  </revision>
 </revisionlist>

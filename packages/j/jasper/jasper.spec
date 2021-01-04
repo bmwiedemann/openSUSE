@@ -1,7 +1,7 @@
 #
 # spec file for package jasper
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jasper
-Version:        2.0.23
+Version:        2.0.24
 Release:        0
 Summary:        An Implementation of the JPEG-2000 Standard, Part 1
 License:        SUSE-Public-Domain
