@@ -94,4 +94,12 @@
     <comment>enable testsuite on x86 and arm &amp;amp; adjust system defaults (forwarded request 835149 from dancermak)</comment>
     <requestid>835156</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>242bbfdbde6d1f05de0db00a793d3484</srcmd5>
+    <version>1.6.2</version>
+    <time>1609783816</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860247</requestid>
+  </revision>
 </revisionlist>

@@ -16,35 +16,28 @@
 #
 
 
-# the tests fail on i586 and ppc, see:
-# https://github.com/rfjakob/earlyoom/issues/221
-%ifarch x86_64 %arm aarch64
-%bcond_without tests
-%else
+# the tests are quite flaky in a VM
 %bcond_with tests
-%endif
-
 %if ! 0%{?_fillupdir:1}
 %global _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           earlyoom
-Version:        1.6.1
+Version:        1.6.2
 Release:        0
 Summary:        Early OOM Daemon for Linux
 License:        MIT
 Group:          System/Daemons
 URL:            https://github.com/rfjakob/%{name}
-Source0:        %{URL}/earlyoom/archive/v%{version}.tar.gz
+Source0:        %{URL}/archive/v%{version}.tar.gz
 Source11:       %{name}.sysconfig
 # pandoc only for `pandoc MANPAGE.md -s -t man > earlyoom.1`
 BuildRequires:  pandoc
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(systemd)
+Conflicts:      oomd
 %if %{with tests}
 BuildRequires:  go
 %endif
-Recommends:     libnotify%{?suse_version:-tools}
-Conflicts:      oomd
 
 %description
 earlyoom checks the amount of available memory and free swap, and if both are
@@ -59,8 +52,10 @@ sed -i 's|/default/|/sysconfig/|' earlyoom.service.in
 # remove calls to systemctl in install
 sed -e '/systemctl/d' -i Makefile
 
+%if %{with tests}
 # fix version test
 sed -i 's|stderrContains: "earlyoom v",|stderrContains: "earlyoom %{version}",|' testsuite_cli_test.go
+%endif
 
 %build
 CFLAGS='%{?build_cflags}%{!?build_cflags:%optflags} -DVERSION=\"%{version}\" -std=gnu99'
@@ -77,6 +72,9 @@ LDFLAGS="-lrt ${RPM_LD_FLAGS}"
 %make_install PREFIX=%{_prefix} SYSTEMDUNITDIR=%{_unitdir}
 install -D -m644 %{SOURCE11} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 
+mkdir -p %{buildroot}%{_sbindir}
+ln -sf service %{buildroot}%{_sbindir}/rc%{name}
+
 %files
 %license LICENSE
 %doc MANPAGE.md README.md
@@ -84,6 +82,7 @@ install -D -m644 %{SOURCE11} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 %{_unitdir}/%{name}.service
 %exclude %{_sysconfdir}/default/%{name}
 %{_fillupdir}/sysconfig.%{name}
+%{_sbindir}/rc%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 
 %pre
