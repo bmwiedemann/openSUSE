@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan  3 12:16:55 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.7.22 fixed AgsTurtle access after freeing string.
+- new since v3.7.20 fixed some reference count and minor
+  improvements.
+- improved developer's manual with a listing about
+  ags_fx_factory_create()
+- additional unit-tests
+
+-------------------------------------------------------------------
 Tue Dec 22 22:31:25 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.7.17 fixed string pointer comparision.
