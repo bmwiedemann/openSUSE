@@ -66,38 +66,38 @@ else
         -o BCM20702A1-0a5c-21e6.hcd
     hex2hcd BCM_DriverOnly/64/BCM20702A1_001.002.014.1443.1467.hex \
         -o BCM20702A1-050d-065a.hcd
-    mkdir -p /lib/firmware/brcm/
-    install -m644 BCM20702A1-0b05-17cb.hcd /lib/firmware/brcm/BCM20702A1-0b05-17cb.hcd
-    install -m644 BCM20702A1-0b05-17cf.hcd /lib/firmware/brcm/BCM20702A1-0b05-17cf.hcd
-    install -m644 BCM20702A1-05ac-21e1.hcd /lib/firmware/brcm/BCM20702A1-05ac-21e1.hcd
-    install -m644 BCM20702A1-0a5c-21e6.hcd /lib/firmware/brcm/BCM20702A1-0a5c-21e6.hcd
-    install -m644 BCM20702A1-050d-065a.hcd /lib/firmware/brcm/BCM20702A1-050d-065a.hcd
+    mkdir -p %{_firmwaredir}/brcm/
+    install -m644 BCM20702A1-0b05-17cb.hcd %{_firmwaredir}/brcm/BCM20702A1-0b05-17cb.hcd
+    install -m644 BCM20702A1-0b05-17cf.hcd %{_firmwaredir}/brcm/BCM20702A1-0b05-17cf.hcd
+    install -m644 BCM20702A1-05ac-21e1.hcd %{_firmwaredir}/brcm/BCM20702A1-05ac-21e1.hcd
+    install -m644 BCM20702A1-0a5c-21e6.hcd %{_firmwaredir}/brcm/BCM20702A1-0a5c-21e6.hcd
+    install -m644 BCM20702A1-050d-065a.hcd %{_firmwaredir}/brcm/BCM20702A1-050d-065a.hcd
 fi
 # Another variant: bsc#1087996
 wget -q https://s3.amazonaws.com/plugable/bin/fw-0a5c_21e8.hcd || :
 if [ ! -f fw-0a5c_21e8.hcd ]; then
     echo "Fatal error in obtaining the 0a5c:21e8 BT firmware"
 else
-    install -m644 fw-0a5c_21e8.hcd /lib/firmware/brcm/BCM20702A1-0a5c-21e8.hcd
+    install -m644 fw-0a5c_21e8.hcd %{_firmwaredir}/brcm/BCM20702A1-0a5c-21e8.hcd
 fi
 rm -rf "$OUT"
 exit 0
 
 %postun
-rm -f /lib/firmware/brcm/BCM20702A1-0b05-17cb.hcd
-rm -f /lib/firmware/brcm/BCM20702A1-0b05-17cf.hcd
-rm -f /lib/firmware/brcm/BCM20702A1-05ac-21e1.hcd
-rm -f /lib/firmware/brcm/BCM20702A1-0a5c-21e6.hcd
-rm -f /lib/firmware/brcm/BCM20702A1-0a5c-21e8.hcd
-rm -f /lib/firmware/brcm/BCM20702A1-050d-065a.hcd
+rm -f %{_firmwaredir}/brcm/BCM20702A1-0b05-17cb.hcd
+rm -f %{_firmwaredir}/brcm/BCM20702A1-0b05-17cf.hcd
+rm -f %{_firmwaredir}/brcm/BCM20702A1-05ac-21e1.hcd
+rm -f %{_firmwaredir}/brcm/BCM20702A1-0a5c-21e6.hcd
+rm -f %{_firmwaredir}/brcm/BCM20702A1-0a5c-21e8.hcd
+rm -f %{_firmwaredir}/brcm/BCM20702A1-050d-065a.hcd
 exit 0
 
 %files
-%ghost /lib/firmware/brcm/BCM20702A1-0b05-17cb.hcd
-%ghost /lib/firmware/brcm/BCM20702A1-0b05-17cf.hcd
-%ghost /lib/firmware/brcm/BCM20702A1-05ac-21e1.hcd
-%ghost /lib/firmware/brcm/BCM20702A1-0a5c-21e6.hcd
-%ghost /lib/firmware/brcm/BCM20702A1-0a5c-21e8.hcd
-%ghost /lib/firmware/brcm/BCM20702A1-050d-065a.hcd
+%ghost %{_firmwaredir}/brcm/BCM20702A1-0b05-17cb.hcd
+%ghost %{_firmwaredir}/brcm/BCM20702A1-0b05-17cf.hcd
+%ghost %{_firmwaredir}/brcm/BCM20702A1-05ac-21e1.hcd
+%ghost %{_firmwaredir}/brcm/BCM20702A1-0a5c-21e6.hcd
+%ghost %{_firmwaredir}/brcm/BCM20702A1-0a5c-21e8.hcd
+%ghost %{_firmwaredir}/brcm/BCM20702A1-050d-065a.hcd
 
 %changelog

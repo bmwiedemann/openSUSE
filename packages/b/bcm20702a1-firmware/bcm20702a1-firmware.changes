@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 19 12:53:24 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- use %_firmwaredir
+
+-------------------------------------------------------------------
 Sun Jun 21 09:48:45 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - add support for BCM20702A1-050d-065a.hcd
