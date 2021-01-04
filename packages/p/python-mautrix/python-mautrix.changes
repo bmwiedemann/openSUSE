@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jan  4 11:41:20 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.8.6:
+  * Switched to secrets.token_urlsafe for generating tokens 
+    (e.g. registration hs/as_tokens).
+  * Changed sync error logging to warning instead of exception.
+  * Allowed sending read receipts even if appservice user is not 
+    in room (#34).
+
+-------------------------------------------------------------------
+Tue Dec 29 15:21:33 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.8.5:
+  * Made SerializableEnum work with int value
+  * Added TraceLogger type hints to command handling classes 
+
+-------------------------------------------------------------------
+Thu Nov 19 04:21:19 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.8.3:
+  * Fixed typo in HTML reply fallback generation when target 
+    message is plaintext.
+  * Made CommandEvent.mark_read async instead of returning an 
+    awaitable, because sometimes it didn't return an awaitable.
+
+-------------------------------------------------------------------
 Wed Jun  3 15:29:31 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.5.0:
