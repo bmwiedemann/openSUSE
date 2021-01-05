@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan  5 00:23:16 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Add pyls-jedi-newer.patch to support newest jedi API change
+  gh#palantir/python-language-server#901 
+
+-------------------------------------------------------------------
 Sat Dec 19 21:58:11 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 0.36.2

@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-language-server
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/palantir/python-language-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-language-server/python-language-server-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM pyls-jedi-newer.patch gh#palantir/python-language-server#901 -- remove jedi upper version boundary
+Patch0:         pyls-jedi-newer.patch
 BuildRequires:  %{python_module PyQt5}
 BuildRequires:  %{python_module autopep8}
 BuildRequires:  %{python_module flake8 >= 3.8.0}
@@ -95,7 +97,11 @@ will be enabled:
 - YAPF for code formatting (preferred over autopep8)
 
 %prep
-%autosetup -n python-language-server-%{version}
+%autosetup -p1 -n python-language-server-%{version}
+#unpin jedi -- use this if we don't need a patch for the current version
+#sed -i 's/\(jedi>=[0-9\.]*\),<[0-9\.]*/\1/' setup.py
+# need to unpin from egg-info too: e.g. pyls-black checks it.
+#sed -i 's/\(jedi\)<[0-9\.]*,\(>=[0-9\.]*\)/\1\2/' python_language_server.egg-info/requires.txt
 
 %build
 %python_build
@@ -114,22 +120,15 @@ will be enabled:
 %check
 # Remove pytest addopts
 rm setup.cfg
-# define custom macros to skip tests in pytest
-%define pytest_addskiptest() \
-   for t in %{**}; do \
-     pytest_skippedtests+="${pytest_skippedtests:+ or }${t}"; \
-   done
-%define pytest_skiptests ${pytest_skippedtests:+-k "not (${pytest_skippedtests})"}
-%if 0%{?sle_version} == 150100 && 0%{?is_opensuse}
-  # Test failure on Leap 15.1 due to different pylint version
-  %pytest_addskiptest test_syntax_error_pylint_py
-%endif
 %if 0%{?sle_version} >= 150000 && 0%{?is_opensuse}
   # Test failure on Leap 15 due to mock hiccup
-  %pytest_addskiptest test_flake8_config_param
-  %pytest_addskiptest test_flake8_executable_param
+  donttest+=" or test_flake8_config_param or test_flake8_executable_param"
 %endif
-%pytest %{pytest_skiptests}
+%if 0%{?sle_version} == 150100 && 0%{?is_opensuse}
+  # Test failure on Leap 15.1 due to different pylint version
+  donttest+=" or test_syntax_error_pylint_py"
+%endif
+%pytest -rs ${donttest:+-k "not (${donttest:4})"}
 
 %files %{python_files}
 %doc README.rst
