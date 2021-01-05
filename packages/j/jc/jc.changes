@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan  1 21:53:26 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.14.0
+  * Add hashsum parser
+  * Add hash parser
+  * Add cksum parser
+  * Add wc parser
+  * Add printenv
+  * Add vdir support under ls parser
+
+-------------------------------------------------------------------
 Thu Aug 13 19:54:55 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.13.4
