@@ -1,7 +1,7 @@
 #
 # spec file for package budgie-desktop
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2013-2016 Ikey Doherty <ikey@solus-project.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 #
 Name:           budgie-desktop
-Version:        10.5.2+3d2b8998
+Version:        10.5.2+09d4afe9
 Release:        0
 Summary:        GTK3 Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

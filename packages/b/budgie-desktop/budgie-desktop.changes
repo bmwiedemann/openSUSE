@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 05 08:45:06 UTC 2021 - gmbr3@opensuse.org
+
+- Update to version 10.5.2+09d4afe9:
+  * Update copyright to 2021
+  * Prevent Budgie Desktop Settings from being pinned via drag-and-drop. Fixes #2085.
+  * Use standard mute/unmute methods (#2084)
+
+-------------------------------------------------------------------
 Mon Dec 21 19:08:37 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 10.5.2+3d2b8998:

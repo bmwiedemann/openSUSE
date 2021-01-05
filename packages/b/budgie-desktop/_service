@@ -1,8 +1,8 @@
 <services>
-  <service name="obs_scm" mode="disabled">
+  <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/solus-project/budgie-desktop.git</param>
-    <param name="revision">3d2b899847aeaea69cce574aa3f489ec1d591a1f</param>
+    <param name="revision">09d4afe966e5d1e15c8d9a1557e9cef86824a03d</param>
     <param name="versionformat">@PARENT_TAG@+%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
@@ -12,5 +12,5 @@
     <param name="compression">xz</param>
     <param name="file">*.tar</param>
   </service>
-  <service name="set_version" mode="disabled"/>
+  <service name="set_version" mode="manual"/>
 </services>
