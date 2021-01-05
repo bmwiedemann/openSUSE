@@ -33,7 +33,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 Name:           kicad-doc%{?pkg_suffix}
-Version:        5.1.8
+Version:        5.1.9
 Release:        0
 Summary:        Documentation and tutorials for KiCad
 License:        GPL-3.0-or-later AND CC-BY-SA-3.0
