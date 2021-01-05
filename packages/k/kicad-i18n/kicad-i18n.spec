@@ -17,7 +17,7 @@
 
 
 Name:           kicad-i18n
-Version:        5.1.8
+Version:        5.1.9
 Release:        0
 Summary:        Localization for KiCad
 # license same as KiCad package
