@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysaml2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -87,9 +87,9 @@ done
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Excluded tests for i586 gh#IdentityPython/pysaml2#682
+# Excluded tests for i586 gh#IdentityPython/pysaml2#682 and gh#IdentityPython/pysaml2#759
 %ifarch %{ix86}
-%pytest -k "not (test_assertion_consumer_service or test_swamid_sp or test_swamid_idp or test_other_response or test_mta or test_unknown_subject)" tests
+%pytest -k "not (test_assertion_consumer_service or test_swamid_sp or test_swamid_idp or test_other_response or test_mta or test_unknown_subject or test_filter_ava_registration_authority_1)" tests
 %else
 %pytest tests
 %endif

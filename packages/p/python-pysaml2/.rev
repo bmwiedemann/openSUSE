@@ -243,4 +243,14 @@
   - Examples: Update to key generation to 2048 bits</comment>
     <requestid>857125</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>064cd0085332f807aa2e6ac981eeb630</srcmd5>
+    <version>6.3.1</version>
+    <time>1609866827</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip test test_filter_ava_registration_authority_1
+  (gh#IdentityPython/pysaml2#759).
+</comment>
+    <requestid>860349</requestid>
+  </revision>
 </revisionlist>
