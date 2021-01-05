@@ -2144,6 +2144,7 @@ unsorted:
   - collectd-plugin-lua 
   - collectd-plugin-mcelog 
   - collectd-plugin-memcachec 
+  - collectd-plugin-mqtt 
   - collectd-plugin-mysql 
   - collectd-plugin-notify-desktop 
   - collectd-plugin-nut 
@@ -2757,6 +2758,7 @@ unsorted:
   - dfc-lang 
   - dfu-programmer 
   - dfu-tool 
+  - dfu-util 
   - dh-autoreconf 
   - dh-make 
   - dhall-json: [x86_64] 
@@ -13741,7 +13743,7 @@ unsorted:
   - librrd8 
   - librsb-devel 
   - librsb0 
-  - librssguard-3_8_3 
+  - librssguard-3_8_4 
   - librssguard-devel 
   - librsvg-2-2-32bit: [x86_64] 
   - librsvg-devel 
@@ -14086,6 +14088,7 @@ unsorted:
   - libstdc++6-gcc9-locale 
   - libstdc++6-pp-gcc9 
   - libstdc++6-pp-gcc9-32bit: [x86_64] 
+  - libstellarsolver1 
   - libstfl-devel 
   - libstfl0 
   - libstilview-devel 
@@ -27518,6 +27521,8 @@ unsorted:
   - sdlpop 
   - sdlscavenger 
   - sdparm 
+  - seadrive-fuse 
+  - seadrive-gui 
   - seafile 
   - seafile-client 
   - seafile-devel 
@@ -27758,7 +27763,7 @@ unsorted:
   - smictrl 
   - smillaenlarger 
   - smilutils 
-  - smlnj: [i586] 
+  - smlnj 
   - smooth 
   - smooth-devel 
   - smplayer 
@@ -28026,6 +28031,7 @@ unsorted:
   - steamtricks-data 
   - steinberg-bravura-fonts 
   - stellarium 
+  - stellarsolver-devel 
   - stgit 
   - stix-integrals-fonts 
   - stix-pua-fonts 
