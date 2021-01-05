@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0af2dcf1923d3c5ec29274c59155855f</srcmd5>
+    <version>2.0.10</version>
+    <time>1609866776</time>
+    <user>dimstar_suse</user>
+    <comment>An alternative to seafile-client which uses a network share, so files are not locally downloaded</comment>
+    <requestid>860263</requestid>
+  </revision>
+</revisionlist>
