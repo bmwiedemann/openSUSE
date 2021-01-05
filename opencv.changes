@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Sat Jan  2 16:30:59 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.5.1, highlights below, for details check
+  https://github.com/opencv/opencv/wiki/ChangeLog#version451
+  * Continued merging of GSoC 2020 results:
+    + Develop OpenCV.js DNN modules for promising web use cases
+      together with their tutorials
+    + OpenCV.js: WASM SIMD optimization 2.0
+    + High Level API and Samples for Scene Text Detection and
+      Recognition
+    + SIFT: SIMD optimization of GaussianBlur 16U
+  * DNN module:
+    + Improved layers / activations / supported more models:
+      - optimized: 1D convolution, 1D pool
+      - fixed: Resize, ReduceMean, Gather with multiple outputs,
+        importing of Faster RCNN ONNX model
+      - added support: INT32 ONNX tensors
+    + Intel® Inference Engine backend (OpenVINO):
+      - added support for OpenVINO 2021.2 release
+      - added preview support for HDDL
+    + Fixes and optimizations in DNN CUDA backend (thanks to
+      @YashasSamaga)
+  * G-API Framework:
+    + Introduced serialization for cv::RMat, including
+      serialization for user-defined memory adapters
+    + Introduced desync, a new Operation for in-graph asynchronous
+      execution - to allow different parts of the graph run with
+      a different latency
+    + Introduced a notion of "in-graph metadata", now various
+      media-related information can be accessed in graph directly
+      (currently only limited to timestamps and frame IDs)
+    + Introduced a new generic task-based executor, based on
+      Threading Building Blocks (TBB)
+    + Extended infer<>() API to accept a new cv::GFrame data
+      structure to allow handling of various media formats without
+      changes in the graph structure
+    + Made copy() an intrinsic where real copy may not happen
+      (optimized out) based on graph structure, extended it to
+      support cv::GFrame
+    + Various fixes, including addressig static analysis,
+      documentation, and test issues
+  * G-API Operations:
+    + Introduced new operations morphologyEx, boundingRect,
+      fitLine, kmeans, Background Subtractor, Kalman filter
+  * G-API Intel® Inference Engine backend (OpenVINO):
+    + Extended cv::gapi::ie::Params<> to import CNN networks (e.g.
+      pre-compiled ones) instead of passing .XML and .BIN files;
+      also enabled configuring Inference Engine plugins via
+      this structure
+    + Added a new overload to infer<>() to run inference over a
+      single region of interest
+    + Added support for cv::MediaFrame input data type (projected
+      from cv::GFrame) and handling for NV12 input image format
+  * G-API Python bindings:
+    + Exposed G-API's Inference and Streaming APIs in the OpenCV
+      Python bindings
+    + Added initial Python support for cv::GArray data structure
+  * Significant progress on RISC-V port.
+- Updated constraints, bump memory to 5 GB
+- Cleaned up spec file
+
+-------------------------------------------------------------------
 Mon Nov  2 20:16:43 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Split library package, move all libraries with external

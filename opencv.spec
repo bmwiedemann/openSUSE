@@ -1,7 +1,7 @@
 #
 # spec file for package opencv
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 # Build failure with LTO enabled on ppc64le boo#1146096
 %ifarch ppc64le
 %define _lto_cflags %{nil}
@@ -23,7 +24,7 @@
 %define libname lib%{name}
 %define soname 4_5
 # disabled by default as many fail
-%bcond_with tests
+%bcond_with    tests
 %bcond_without gapi
 %bcond_without ffmpeg
 %if %{suse_version} < 1550
@@ -34,7 +35,7 @@
 %bcond_without python3
 %bcond_without openblas
 Name:           opencv
-Version:        4.5.0
+Version:        4.5.1
 Release:        0
 Summary:        Collection of algorithms for computer vision
 # GPL-2.0 AND Apache-2.0 files are in 3rdparty/ittnotify which is not build
@@ -268,11 +269,15 @@ cp opencv_contrib-%{version}/LICENSE LICENSE.contrib
 rm -f doc/packaging.txt
 
 %build
+# openCV does not understand the standard RelWithDebinfo,
+#   but has a separate variable for it
 # Dynamic dispatch: https://github.com/opencv/opencv/wiki/CPU-optimizations-build-options
 # x86: disable SSE on 32bit, do not dispatch AVX and later - SSE3
 #      is the highest extension available on any non-64bit x86 CPU
 # ARM: ARMv6, e.g. RPi1, only has VFPv2
 %cmake \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DBUILD_WITH_DEBUG_INFO=ON \
 %if %{with tests}
       -DBUILD_TESTS=ON \
 %endif
@@ -314,22 +319,15 @@ rm -f doc/packaging.txt
       -DCPU_BASELINE=NEON \
       -DCPU_DISPATCH=FP16 \
 %endif
-%if 0%{?suse_version} >= 1500
       -DPYTHON_DEFAULT_EXECUTABLE=%{_bindir}/python3 \
-%endif
       -DOPENCV_SKIP_PYTHON_LOADER=ON \
       -DOPENCV_PYTHON2_INSTALL_PATH=%{python2_sitearch} \
       -DOPENCV_PYTHON3_INSTALL_PATH=%{python3_sitearch} \
       -DOPENCV_DOWNLOAD_TRIES_LIST:STRING="" \
       -DWITH_JASPER=OFF \
+      %{nil}
 
 %cmake_build
-
-%check
-%if %{with tests}
-export LD_LIBRARY_PATH=$(pwd)/build/lib:$LD_LIBRARY_PATH
-%ctest
-%endif
 
 %install
 %cmake_install
@@ -347,6 +345,17 @@ sed -i -e 's|//usr||g' %{buildroot}%{_libdir}/pkgconfig/opencv4.pc
 
 %fdupes -s %{buildroot}%{_docdir}/%{name}-doc/examples
 %fdupes -s %{buildroot}%{_includedir}
+
+%check
+%if %{with tests}
+export LD_LIBRARY_PATH=$(pwd)/build/lib:$LD_LIBRARY_PATH
+%ctest
+
+# Diagnostics:
+%{buildroot}%{_bindir}/opencv_version -v
+%{buildroot}%{_bindir}/opencv_version -hw
+grep -E 'model|stepping|flags' /proc/cpuinfo | head -n4
+%endif
 
 %post -n %{libname}%{soname} -p /sbin/ldconfig
 %postun -n %{libname}%{soname} -p /sbin/ldconfig

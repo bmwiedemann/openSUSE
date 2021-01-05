@@ -1320,4 +1320,12 @@
   objdetect and face (detect) libraries</comment>
     <requestid>845561</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>59ed5009ef521ed6db487c91c8d8f119</srcmd5>
+    <version>4.5.1</version>
+    <time>1609866814</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860324</requestid>
+  </revision>
 </revisionlist>
