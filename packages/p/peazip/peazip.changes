@@ -1,4 +1,172 @@
 -------------------------------------------------------------------
+Mon Jan  4 10:48:22 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 7.6.0
+  * BACKEND
+    - (Winodws, ReactOS) McMilk codecs in 7z\Codecs path are now 
+      automatically checked at PeaZip startup, in order to disable
+      them (moving in 7z\Codecs\bk) on systems not capable to run
+      them (as XP or ReactOS), and re-enable them on other systems;
+      this works for both Portable and installable packages without
+      requiring manual intervention
+  * CODE
+    - Various fixes
+  * FILE MANAGER
+    - (in left navigation panel) Archive treeview is now 
+      automaticaly updated accordingly to browsing in file manager
+      area
+      - This option can be fine tuned in Options > Settings > 
+        Archive manager
+    - Various usability improvements
+      - Can now set current path as default archiving or extraction
+        path
+      - Options > Settings > General, Advanced, and Archive manager
+        tabs reorganized
+      - Improved and updated themes, and simplified Theme tab
+  * EXTRACTION and ARCHIVING
+    - Improved handling ZIP files with code pages different than
+      local
+      - Can now customize code page for reading/writing filenames
+        in ZIP archives, from Options > Settings, 
+        Advanced tab it is possible to set:
+        - Local code page, then UTF-8 for sysmbols outside local
+          code page (default)
+        - Force UTF-8 for non-ASCII characters
+        - Force local code page
+        - Use a custom code page: an arbitrary code page can be
+          entered by user (the host machine needs to support the 
+          code page to run the tasks, otherwise tasks can be saved 
+          as scripts and run on different machines)
+      - Text encoding entry is now accessible also from application's
+        file browser context menu, and in Archiving and Extraction
+        screens context menus
+    - Within PeaZip file manager it is now possible to use 
+      copy/paste shortcuts Ctrl+C (or Ctrl+X) / Ctrl+V to extract
+      items from archives to filesystem
+      - If clipboard is set to keep multiple selection operations
+        at once:
+        - Copy/paste extraction is possible form multiple archives
+          at once
+        - It is also possibile to mix cut/paste and extraction
+          operations
+      - Extraction targets the file system, it is not currently 
+        possible i.e. to directly paste compressed items from 
+        archive A to archive B
+        
+- Changes from 7.5.0
+  * CODE
+    - Various fixes
+  * FILE MANAGER
+    - Create new folder is now also available for 7Z/p7Zip and RAR
+      supported archive types
+    - Improved file renaming routines
+      - added function to cutting file names at specified lengtt
+      - added function to replace / remove non-ASCII characters
+      - all quick rename functions (lowercase, replace string, 
+        etc...) are now also available when browsing 7Z/p7zip and 
+        RAR supported archive types
+    - Updated icons in embedded theme and added icons to 
+      distinguish common archive types
+    - Updated Ten theme
+  * EXTRACTION and ARCHIVING
+    - Added "Extract everything for special file types"
+      (to 7Z-supported archive types) to optionally extract the 
+      entire archive (or current path) to preview special filetypes
+      which usually needs external data to properly run, in example
+      .html, .bat, and .exe files
+      - From Options > Settings > Archive manager, Extract group is
+        possible to customize "Extract everything for..." behavior
+        - Never use special preview, Ask, Always (default)
+        - Extract entire archive (default) or Extract displayed 
+          items only (items in current path, or matching search 
+          filters) which can be faster than extracting the entire
+          archive
+    - Archive timestamp preservation directive is now also applied
+      to rename and delete operations 
+      (previously only for add / update)
+    - Options > Settings > Archive manager, Extract group: added 
+      option to auto close PeaZip after extraction if no browsing 
+    - actions took place (default off), useful in example if a 
+      downloaded file was opened for quick inspection before 
+      extraction
+   - Options > Settings > General (Windows): added options for
+     locking or hiding target window during drag and drop 
+     operations, by default target window is hidden and locked 
+     while the operation is running
+    - Out of the box default compression levels are set to fast for
+      ZIP and 7Z formats
+      - compared to previous ZIP normal default, ZIP fast is over 
+        400% faster providing 2% worse compression ratio, and 7Z 
+        fast is 25% faster providing 3% better compression ratio
+      - compared to previous 7Z normal default, 7Z fast is 500% 
+        faster providing 5% worse compression ratio
+      - please note compression levels and compression presets 
+        works as usual, the new settings are meant only to provide
+        novice users better performance balance for general purpose
+        tasks
+    - Modified existing preset scripts
+      - 10 from faster zip to fast zip
+      - 12 (Linux) from .tar.zst to .7z using Zstandard compression
+        (which requires single pass)
+    - Test mode always show details about single files in archive
+  * WINDOWS & LINUX INSTALLERS
+    - (Windows XP) additional 7z codecs introduced in 7.4 line, 
+      incompatible with Windows XP, are deactivated when installed
+      on XP machines, consequently the error messages are no longer
+      triggered when using 7z backend
+        
+-------------------------------------------------------------------
+Mon Oct  5 11:15:44 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 7.4.2
+  * BACKEND
+    - (Linux) p7zip 16.02 superseded by sznick/p7zip fork 17.02,
+      not available for legacy 32 bit platforms added support for
+      FLZMA2, LZ4, and Zstd compression algorithms in .7z format
+      algorithm selection dropdown is now common to all platforms,
+      unsupported algorithms for one platform are preceeded with / 
+      (currently unsupported /Brotli, /Lizard, and /LZ5 on linux)
+  * CODE
+    - Various fixes
+  * FILE MANAGER
+    - (Windows) File manager now displays icons for exe files for
+      better usability, using a separate thread; previously the
+      feature was enabled only if browser was set to show thumbnails
+      In-archive Extract and open with PeaZip and Preview with
+      PeaZip now forces trying to open file as archive, as in Open
+      as archive menu entry
+  * EXTRACTION and ARCHIVING
+    - (Windows) Drop target window is locked, as in WinRar, until
+      drag and drop operation is completed
+      If password contains characters that can be troublesome if 
+      used in scripts (i.e. quotes) it is now possible to 
+      interactively enter password in console to create / extract
+      archive types handled through 7z/p7zip, ARC, and RAR backends
+
+-------------------------------------------------------------------
+Wed Sep  26 18:19:14 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 7.4.1
+  * BACKEND
+    - Pea 0.74
+      Introduced PEA format revision 1.3, supporting multiple 
+      cascade authenticated encryption, each cipher with 256 bit key,
+      in EAX mode: AES+Twofish+Serpent, Twofish+Serpent+AES, Serpent+AES+Twofish
+      Fixed a bug preventing extraction of PEA archives in case of naming conflicts
+  * CODE
+    - Fixed Fast-LZMA2 dictionary sizes
+    - Fixed error 127 erroneously raised in some cases
+  * FILE MANAGER
+    - Improved directories smart sorting in file manager
+    - Improved tabs
+      - closing last tab collapses tab bar
+      - mouse middle button closes tab
+  * WINDOWS & LINUX INSTALLERS
+    (Windows) Fixed context menu entry "CRC, hash and file tools",
+    now pointing by default to "Checksum/hash (common algorithms)"
+    consistently to all other calls form PeaZip
+
+-------------------------------------------------------------------
 Fri Sep 25 15:00:58 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 7.4.0
