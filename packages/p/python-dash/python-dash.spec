@@ -1,7 +1,7 @@
 #
 # spec file for package python-dash
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,40 @@
 #
 
 
+# We can't test currenty, see below.
+%bcond_with test
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-dash
-Version:        1.11.0
+Version:        1.18.1
 Release:        0
 Summary:        Python framework for building reactive web-apps
 License:        MIT
 URL:            https://github.com/plotly/dash
+# PyPI package does not contain unit tests. GitHub does, but we don't test right now
 Source:         https://files.pythonhosted.org/packages/source/d/dash/dash-%{version}.tar.gz
+BuildRequires:  %{python_module Flask >= 1.0.4}
+BuildRequires:  %{python_module Flask-Compress}
+BuildRequires:  %{python_module beautifulsoup4}
+BuildRequires:  %{python_module dash-core-components >= 1.14.1}
+BuildRequires:  %{python_module dash-html-components >= 1.1.1}
+BuildRequires:  %{python_module dash-renderer >= 1.8.3}
+BuildRequires:  %{python_module dash-table >= 4.11.1}
+BuildRequires:  %{python_module future}
+BuildRequires:  %{python_module percy}
+BuildRequires:  %{python_module plotly}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Flask >= 1.0.2
+Requires:       python-Flask >= 1.0.4
 Requires:       python-Flask-Compress
 # dash/testing/dash_page.py
 Requires:       python-beautifulsoup4
-Requires:       python-dash-core-components >= 1.9.1
-Requires:       python-dash-html-components >= 1.0.3
-Requires:       python-dash-renderer >= 1.4.0
-Requires:       python-dash-table >= 4.6.2
+Requires:       python-dash-core-components >= 1.14.1
+Requires:       python-dash-html-components >= 1.1.1
+Requires:       python-dash-renderer >= 1.8.3
+Requires:       python-dash-table >= 4.11.1
 Requires:       python-future
 # needed for dash/testing/browser.py
 Requires:       python-percy
@@ -43,18 +57,16 @@ Requires:       python-plotly
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
-# SECTION test requirements
-BuildRequires:  %{python_module Flask >= 1.0.2}
-BuildRequires:  %{python_module Flask-Compress}
-BuildRequires:  %{python_module beautifulsoup4}
-BuildRequires:  %{python_module dash-core-components >= 1.9.1}
-BuildRequires:  %{python_module dash-html-components >= 1.0.3}
-BuildRequires:  %{python_module dash-renderer >= 1.4.0}
-BuildRequires:  %{python_module dash-table >= 4.6.2}
-BuildRequires:  %{python_module future}
-BuildRequires:  %{python_module percy}
-BuildRequires:  %{python_module plotly}
-# /SECTION
+%if %{with test}
+BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest-sugar}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module selenium}
+BuildRequires:  %{python_module waitress}
+BuildRequires:  nodejs
+%endif
 %python_subpackages
 
 %description
@@ -87,6 +99,12 @@ sed -i -e 's:==:>=:g' requires-*txt
 %postun
 %python_uninstall_alternative renderer
 %python_uninstall_alternative dash-generate-components
+
+%if %{with test}
+%check
+# Testing needs npm install from network and packages (e.g. flask_talisman) which we don't have.
+%pytest
+%endif
 
 %files %{python_files}
 %doc README.md
