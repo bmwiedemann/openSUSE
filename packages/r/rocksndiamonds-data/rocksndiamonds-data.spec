@@ -1,7 +1,7 @@
 #
 # spec file for package rocksndiamonds-data
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,25 @@
 
 
 %define oname   rocksndiamonds
-
 Name:           %{oname}-data
-Version:        20141005
+Version:        20210103
 Release:        0
 Summary:        Data files for Rocks'n'Diamonds
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Arcade
-Url:            http://www.artsoft.org/rocksndiamonds/
-Source0:        http://www.artsoft.org/RELEASES/%{oname}/levels/ZeldaII-1.0.0.zip
-Source1:        http://www.artsoft.org/RELEASES/%{oname}/levels/Zelda-1.0.0.zip
-Source2:        http://www.artsoft.org/RELEASES/%{oname}/levels/Emerald_Mine_Club-2.1.1.7z
-Source3:        http://www.artsoft.org/RELEASES/%{oname}/levels/Sokoban-1.0.0.zip
+URL:            https://www.artsoft.org/rocksndiamonds/
+Source0:        https://www.artsoft.org/RELEASES/%{oname}/levels/ZeldaII-1.0.0.zip
+Source1:        https://www.artsoft.org/RELEASES/%{oname}/levels/Zelda-1.0.0.zip
+Source2:        https://www.artsoft.org/RELEASES/%{oname}/levels/Emerald_Mine_Club-3.1.0.7z
+Source3:        https://www.artsoft.org/RELEASES/%{oname}/levels/Sokoban-1.0.0.zip
 # Use supplied tarbal, fixed with fdupes -l sym -r -m .
 # and packed than rockslevels, repacked as tar.bz2
 Source4:        Contributions-1.2.0.tar.bz2
-Source5:        http://www.artsoft.org/RELEASES/%{oname}/levels/Snake_Bite-1.0.0.zip
-Source6:        http://www.artsoft.org/RELEASES/%{oname}/levels/BD2K3-1.0.0.zip
-Source7:        http://www.artsoft.org/RELEASES/rocksndiamonds/levels/Boulder_Dash_Dream-1.0.0.zip
-Source8:        http://www.artsoft.org/RELEASES/unix/rocksndiamonds/levels/rockslevels-sp-1.0.tar.gz
-Source9:        http://www.artsoft.org/RELEASES/unix/rocksndiamonds/levels/rockslevels-dx-1.0.tar.gz
+Source5:        https://www.artsoft.org/RELEASES/%{oname}/levels/Snake_Bite-1.0.0.zip
+Source6:        https://www.artsoft.org/RELEASES/%{oname}/levels/BD2K3-1.0.0.zip
+Source7:        https://www.artsoft.org/RELEASES/%{oname}/levels/Boulder_Dash_Dream-1.0.0.zip
+Source8:        https://www.artsoft.org/RELEASES/unix/rocksndiamonds/levels/rockslevels-sp-1.0.tar.gz
+Source9:        https://www.artsoft.org/RELEASES/unix/%{oname}/levels/rockslevels-dx-1.0.tar.gz
 # Downloaded from http://www.jb-line.de/rnd/rnd_jue-3.3.0.0.tar.gz
 # Deleted directory rnd_jue/jue_sobigo and other which are not level
 # and packed than rockslevels, repacked as tar.gz
@@ -103,14 +102,14 @@ Source66:       Warparound_Murphy.zip
 # Repacked that is same than other rnd_tutorial_*
 Source67:       Tutorial_Alpha.zip
 BuildRequires:  fdupes
+BuildRequires:  unzip
+Requires:       %{oname}
+BuildArch:      noarch
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150100
 BuildRequires:  p7zip-full
 %else
 BuildRequires:  p7zip
 %endif
-BuildRequires:  unzip
-Requires:       %{oname}
-BuildArch:      noarch
 
 %description
 This is a nice little game with color graphics and sound for your Unix system
@@ -129,24 +128,24 @@ Data files (levels, tapes, graphics, music, sound) for Rocks'n'Diamonds.
 %install
 mkdir -p %{buildroot}%{_datadir}/%{oname}/levels
 
-tar -xjf %{S:4} -C %{buildroot}%{_datadir}/%{oname}
+tar -xjf %{SOURCE4} -C %{buildroot}%{_datadir}/%{oname}
 
-for l in %{S:8} %{S:9} %{S:10} ; do
+for l in %{SOURCE8} %{SOURCE9} %{SOURCE10} ; do
     tar xfvz $l -C %{buildroot}%{_datadir}/%{oname}
 done
 
-for l in %{S:0} %{S:1} %{S:3}  %{S:5} %{S:6} %{S:7} \
-         %{S:11} %{S:12} %{S:13} %{S:14} %{S:15} %{S:16} %{S:17} %{S:18} %{S:19} \
-         %{S:20} %{S:21} %{S:22} %{S:23} %{S:24} %{S:25} %{S:26} %{S:27} %{S:28} %{S:29} \
-         %{S:30} %{S:31} %{S:32} %{S:33} %{S:34} %{S:35} %{S:36} %{S:37} %{S:38} %{S:39} \
-         %{S:40} %{S:41} %{S:42} %{S:43} %{S:44} %{S:45} %{S:46} %{S:47} %{S:48} %{S:49} \
-         %{S:50} %{S:51} %{S:52} %{S:53} %{S:54} %{S:55} %{S:56} %{S:57} %{S:58} %{S:59} \
-         %{S:60} %{S:61} %{S:62} %{S:63} %{S:64} %{S:65} %{S:66} ; do
+for l in %{SOURCE0} %{SOURCE1} %{SOURCE3} %{SOURCE5} %{SOURCE6} %{SOURCE7} \
+         %{SOURCE11} %{SOURCE12} %{SOURCE13} %{SOURCE14} %{SOURCE15} %{SOURCE16} %{SOURCE17} %{SOURCE18} %{SOURCE19} \
+         %{SOURCE20} %{SOURCE21} %{SOURCE22} %{SOURCE23} %{SOURCE24} %{SOURCE25} %{SOURCE26} %{SOURCE27} %{SOURCE28} %{SOURCE29} \
+         %{SOURCE30} %{SOURCE31} %{SOURCE32} %{SOURCE33} %{SOURCE34} %{SOURCE35} %{SOURCE36} %{SOURCE37} %{SOURCE38} %{SOURCE39} \
+         %{SOURCE40} %{SOURCE41} %{SOURCE42} %{SOURCE43} %{SOURCE44} %{SOURCE45} %{SOURCE46} %{SOURCE47} %{SOURCE48} %{SOURCE49} \
+         %{SOURCE50} %{SOURCE51} %{SOURCE52} %{SOURCE53} %{SOURCE54} %{SOURCE55} %{SOURCE56} %{SOURCE57} %{SOURCE58} %{SOURCE59} \
+         %{SOURCE60} %{SOURCE61} %{SOURCE62} %{SOURCE63} %{SOURCE64} %{SOURCE65} %{SOURCE66} ; do
      unzip $l -d %{buildroot}%{_datadir}/%{oname}/levels -x Readme.txt
 done
-unzip %{S:67} -d %{buildroot}%{_datadir}/%{oname}/levels/Tutorials
+unzip %{SOURCE67} -d %{buildroot}%{_datadir}/%{oname}/levels/Tutorials
 
-7z x %{S:2} -o%{buildroot}%{_datadir}/%{oname}/levels
+7z x %{SOURCE2} -o%{buildroot}%{_datadir}/%{oname}/levels
 
 # Remove not needed files
 find %{buildroot}%{_datadir}/%{oname}/levels -name '*.broken' -delete \
@@ -157,14 +156,13 @@ find %{buildroot}%{_datadir}/%{oname}/levels -name '*.broken' -delete \
 # Remove duplicate level, same than BD2K3, but not complete
 rm -fr %{buildroot}%{_datadir}/%{oname}/levels/Contributions/Contributions_2004/rnd_rado_negundo_iii
 
-%fdupes -s %{buildroot}%{_prefix}
+%fdupes -s %{buildroot}%{_datadir}
 
 %post
 # Correct Permissions
 chmod 0664 -R %{_datadir}/%{oname}/levels/Contributions
 
 %files
-%defattr(-,root,root,-)
 %{_datadir}/%{oname}
 
 %changelog
