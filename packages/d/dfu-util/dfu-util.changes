@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Sun Dec 27 21:27:08 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.10
+  * New --wait option for devices to appear
+  * New --devnum option to filter devices
+  * Support DFU_STATE_dfuMANIFEST_WAIT_RST
+  * Support large files
+  * Quirks for Jabra devices
+  * Quirks for OpenPICC, SIMtrace
+  * Quirks for GD32VF103
+  * Fix numeric argument parsing
+  * Improve alternate interface index matching
+  * Improve libusb error messages
+  * Improve Stellaris firmware detection
+  * Improve warnings and debug output
+  * Update manual page
+  * Manual pages for dfu-suffix and dfu-prefix
+  * Usage text describes DfuSe modifiers
+- Drop not longer needed patch:
+  * 0001-Allow-building-against-older-libusb-without-bus-port.patch
+
+-------------------------------------------------------------------
+Tue Mar 29 20:29:56 UTC 2016 - wk@ire.pw.edu.pl
+
+- update to upstream version 0.9
+- added a patch:
+    0001-Allow-building-against-older-libusb-without-bus-port.patch
+    taken from dfu-util bug tracker, to build on openSUSE 13.1 (with libusb < 1.0.16)
+- some build warnings fixed
+
+-------------------------------------------------------------------
+Thu Feb 12 08:22:40 UTC 2015 - adrian@suse.de
+
+- update to upstream version 0.8
+- using _service file to create the tarball
+  * modify version and revision inside and run 
+    "osc service disabledrun" when updating it.
+
+-------------------------------------------------------------------
+Mon Aug  6 00:24:57 UTC 2012 - holger+suse@freyther.de
+
+- Upgrade to upstream version 0.6
+
+-------------------------------------------------------------------
+Wed Nov  2 11:15:57 UTC 2011 - holger+suse@freyther.de
+
+- Upgrade to upstream version 0.5
+
+-------------------------------------------------------------------
+Fri Jul 22 07:33:02 UTC 2011 - holger+suse@freyther.de
+
+- Initial version of dfu-util package
+
