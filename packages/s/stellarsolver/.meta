@@ -1,0 +1,5 @@
+<package name="stellarsolver" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Extra" package="stellarsolver"/>
+</package>
