@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan  5 04:57:37 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.6.0:
+  * Add support for Python 3.9 and remove deprecated members.
+
+-------------------------------------------------------------------
 Thu Aug 27 05:05:29 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.5.2:

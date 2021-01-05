@@ -40,4 +40,13 @@
   * clarify Unicode deprecation warning PR #102</comment>
     <requestid>829857</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>387bde9e6238c4cc4c0421a93ccce701</srcmd5>
+    <version>0.6.0</version>
+    <time>1609866898</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.0:
+  * Add support for Python 3.9 and remove deprecated members.</comment>
+    <requestid>860365</requestid>
+  </revision>
 </revisionlist>
