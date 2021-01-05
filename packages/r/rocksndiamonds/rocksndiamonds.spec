@@ -1,7 +1,7 @@
 #
 # spec file for package rocksndiamonds
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rocksndiamonds
-Version:        4.2.0.3
+Version:        4.2.2.0
 Release:        0
 Summary:        Colorful Boulderdash'n'Emerald Mine'n'Sokoban'n'Stuff
 License:        GPL-2.0-or-later
@@ -27,7 +27,7 @@ Source0:        https://www.artsoft.org/RELEASES/unix/%{name}/%{name}-%{version}
 Source1:        %{name}-icons.tar
 Source2:        %{name}.desktop
 # PATCH-FIX-UPSTREAM Permissions
-Patch0:         %{name}-3.3.1.2-src_libgame_setup.c-CVE-2011-4606.patch
+Patch0:         %{name}-src_libgame_setup.c-CVE-2011-4606.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig

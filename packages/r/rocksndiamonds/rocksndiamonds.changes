@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Jan  3 06:57:36 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 4.2.2.0
+  * added showing as many keys as possible in the default game panel
+  * added setup option to show dynamite and keys for the Emerald
+    Mine collection
+  * added support for improved display of keys for the Emerald
+    Mine collection
+  * added support for improved request dialog in Emerald Mine
+    collection
+  * fixed graphical glitch in some cases after request dialog if
+    game has ended
+  * fixed delayed processing of input event immediately after game
+    has started
+  * fixed “empty first move” in step pause mode with Emerald Mine
+    game engine
+  * Visit https://www.artsoft.org/rocksndiamonds/ for the complete
+    changelog.
+- Update to 4.2.1.0   
+  * added highlighting of drawing element to level editor when
+    pressing “Alt” key
+  * added support for using and switching between multiple players
+    or teams
+  * added player/team selection screen when clicking on player
+    name in main menu
+  * fixed bug with unnecessarily reloading custom artwork on
+    ECS/AGA change
+- Update to 4.2.0.5
+  * fixed handling of player at fake acid for EM engine
+  * fixed wrap-around with entering EM style doors for EM engine
+  * fixed activating robot wheel at wrap-around position for EM
+    engine
+  * fixed some elements and properties when reading native DC2
+    levels
+  * added Emscripten support for running R’n’D in a web browser
+  * fixed compiling on OS/2 (ArcaOS, in fact)
+  * fixed some compiler warnings for newer versions of GCC
+- Rebase und rename half-upstreamed from
+  rocksndiamonds-3.3.1.2-src_libgame_setup.c-CVE-2011-4606.patch
+  to rocksndiamonds-src_libgame_setup.c-CVE-2011-4606.patch
+
+-------------------------------------------------------------------
 Thu Nov  5 22:26:05 UTC 2020 - Markus Beth <markus.beth@web.de>
 
 - Update to 4.2.0.3
