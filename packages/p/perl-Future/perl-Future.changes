@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan  2 03:06:57 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.47
+   see /usr/share/doc/packages/perl-Future/Changes
+
+  0.47    2021-01-01
+          [BUGFIXES]
+           * Don't weaken() the waiting future in Future::Mutex as that causes
+             it to be dropped in some situations
+
+-------------------------------------------------------------------
 Tue Oct 20 03:08:38 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.46
