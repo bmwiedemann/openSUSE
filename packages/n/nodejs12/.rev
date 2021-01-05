@@ -405,4 +405,30 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>855766</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>8c3cd8698710e191587f88e764fce553</srcmd5>
+    <version>12.20.1</version>
+    <time>1609866968</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream LTS version 12.20.1:
+  * CVE-2020-8265: use-after-free in TLSWrap (High) bug in TLS
+    implementation. When writing to a TLS enabled socket,
+    node::StreamBase::Write calls node::TLSWrap::DoWrite with
+    a freshly allocated WriteWrap object as first argument.
+    If the DoWrite method does not return an error, this object is
+    passed back to the caller as part of a StreamWriteResult structure.
+    This may be exploited to corrupt memory leading to a
+    Denial of Service or potentially other exploits (bsc#1180553)
+  * CVE-2020-8287: HTTP Request Smuggling allow two copies of a
+    header field in a http request. For example, two Transfer-Encoding
+    header fields. In this case Node.js identifies the first header
+    field and ignores the second. This can lead to HTTP Request
+    Smuggling (https://cwe.mitre.org/data/definitions/444.html).
+    (bsc#1180554)
+  * CVE-2020-1971: OpenSSL - EDIPARTYNAME NULL pointer de-reference
+    (High) This is a vulnerability in OpenSSL which may be exploited
+    through Node.js. (bsc#1179491)
+- versioned.patch, nodejs-libpath.patch: refreshed</comment>
+    <requestid>860426</requestid>
+  </revision>
 </revisionlist>
