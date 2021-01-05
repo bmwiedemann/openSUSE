@@ -1,7 +1,7 @@
 #
 # spec file for package dolphin-emu
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 # revision needs to be the full output of 'git rev-parse HEAD'
 # (netplay version check relies on it)
-%define _revision 3634508e46d8db61b0c8dadb452f546f17ddd88e
-%define _revision_description 5.0-13225
+%define _revision e957ed0809c73417103010f91ba058dd7a96bf86
+%define _revision_description 5.0-13424
 
 Name:           dolphin-emu
-Version:        5.0+git.20201213T035539.3634508e46
+Version:        5.0+git.20210103T185325.e957ed0809
 Release:        0
 Summary:        Dolphin, a GameCube and Wii Emulator
 License:        GPL-2.0-or-later

@@ -282,4 +282,41 @@
     <comment></comment>
     <requestid>856503</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>689c796e4dc97bf79387d066e42271dc</srcmd5>
+    <version>5.0+git.20210103T185325.e957ed0809</version>
+    <time>1609866926</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0+git.20210103T185325.e957ed0809:
+  * BitUtils: __builtin_clz is undefined when value == 0
+  * JitArm64: Do not use offsetof on non-standard-layout types
+  * Fix Quartz cursor going to +infinite if the window size was 0
+  * Fix DInput cursor going to +infinite if the window size was 0
+  * Fix XInput2 cursor going to +infinite if the window size was 0
+  * Arm64Emitter: Remove unused OpType enum
+  * Arm64Emitter: Convert ArithOption enums into enum classes
+  * Translation resources sync with Transifex
+  * ArmCommon: Mark NO_COND as constexpr
+  * ArmCommon: Add missing header guard
+  * Arm64Emitter: Add shorthand member functions for hint instructions
+  * Arm64Emitter: Make ShiftAmount enum an enum class
+  * Arm64Emitter: Make RoundingMode enum an enum class
+  * Arm64Emitter: Make PStateField enum an enum class
+  * Arm64Emitter: Make BarrierType enum an enum class
+  * Arm64Emitter: Make SystemHint enum an enum class
+  * Arm64Emitter: Make type member of FixupBranch an enum class
+  * Arm64Emitter: Annotate switch fallthrough
+  * Arm64Emitter: Make use of std::optional
+  * JitArm64_Tables: Move Instruction alias to the JIT class
+  * JitArm64_Tables: Construct tables at compile-time
+  * JitArm64_LoadStore: Explicitly annotate switch fallthrough cases
+  * JitArm64_RegCache: Make RegType enum an enum class
+  * JitArm64_RegCache: Mark several member functions as const
+  * JitArm64_RegCache: Mark register constants as constexpr
+  * JitArm64_RegCache: Mark HostReg operator== as const
+  * JitArm64_RegCache: In-class initialize member variables where applicable
+  * JitArm64_RegCache: Make FlushMode an enum class
+  * IOS: Make use of insert_or_assign with AddDevice()</comment>
+    <requestid>860420</requestid>
+  </revision>
 </revisionlist>

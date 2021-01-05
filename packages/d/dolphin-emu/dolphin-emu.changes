@@ -1,4 +1,147 @@
 -------------------------------------------------------------------
+Tue Jan 05 09:30:11 UTC 2021 - idonmez@suse.com
+
+- Update to version 5.0+git.20210103T185325.e957ed0809:
+  * BitUtils: __builtin_clz is undefined when value == 0
+  * JitArm64: Do not use offsetof on non-standard-layout types
+  * Fix Quartz cursor going to +infinite if the window size was 0
+  * Fix DInput cursor going to +infinite if the window size was 0
+  * Fix XInput2 cursor going to +infinite if the window size was 0
+  * Arm64Emitter: Remove unused OpType enum
+  * Arm64Emitter: Convert ArithOption enums into enum classes
+  * Translation resources sync with Transifex
+  * ArmCommon: Mark NO_COND as constexpr
+  * ArmCommon: Add missing header guard
+  * Arm64Emitter: Add shorthand member functions for hint instructions
+  * Arm64Emitter: Make ShiftAmount enum an enum class
+  * Arm64Emitter: Make RoundingMode enum an enum class
+  * Arm64Emitter: Make PStateField enum an enum class
+  * Arm64Emitter: Make BarrierType enum an enum class
+  * Arm64Emitter: Make SystemHint enum an enum class
+  * Arm64Emitter: Make type member of FixupBranch an enum class
+  * Arm64Emitter: Annotate switch fallthrough
+  * Arm64Emitter: Make use of std::optional
+  * JitArm64_Tables: Move Instruction alias to the JIT class
+  * JitArm64_Tables: Construct tables at compile-time
+  * JitArm64_LoadStore: Explicitly annotate switch fallthrough cases
+  * JitArm64_RegCache: Make RegType enum an enum class
+  * JitArm64_RegCache: Mark several member functions as const
+  * JitArm64_RegCache: Mark register constants as constexpr
+  * JitArm64_RegCache: Mark HostReg operator== as const
+  * JitArm64_RegCache: In-class initialize member variables where applicable
+  * JitArm64_RegCache: Make FlushMode an enum class
+  * IOS: Make use of insert_or_assign with AddDevice()
+  * IOS: Allow for heterogenous name lookup
+  * SysConf: std::move name in Entry constructor
+  * SysConf: Return emplaced reference from AddEntry()
+  * SysConf: Make use of std::string_view
+  * Core: Use C++17 deduction guides with locked recursive mutexes
+  * Config: Fix cache not being invalidated when callbacks are suppressed
+  * Core: Make use of C++17 deduction guides with locks
+  * DSPCore: Make IRAM CRC and step counter private
+  * DSPCore: Make ifx registers private
+  * DSPCore: Make the accelerator private
+  * DSP: Make mailboxes use std::array
+  * DSP: Make mailboxes private
+  * DSP: Make Mailbox enum strongly typed
+  * DSPCore: Move PRECISE_BACKLOG define to the interpreter code
+  * DSP: Eliminate some magic values related to the CR register
+  * Fix Core.vcxproj.filters
+  * Fix latency field being initially enabled on audio backends not supporting it
+  * Android: Add specialized content provider implementation of DoFileSearch
+  * DSPAnalyzer: Separate instruction searching and idle skip finding
+  * DSPAnalyzer: Break tight coupling to SDSP
+  * DSPAnalyzer: Merge Analyzer namespace into DSP namespace
+  * DSPAnalyzer: Make CodeFlags private to the analyzer
+  * DSPAnalyzer: Add convenience functions over bit tests
+  * Android: Don't consider .dff files valid for game list
+  * Android: Show a message when adding a folder with no games
+  * DSPAnalyzer: Implement DSP analyzer skeleton and use it
+  * DSPAnalyzer: Add basic class skeleton
+  * BitUtils: Fix uint64_t gcc compile (Linux)
+  * Jit_Integer: Use Common::CountLeadingZeros in cntlzwx
+  * Interpreter_Integer: Use Common::CountLeadingZeros in cntlzwx
+  * BitUtils: Add CountLeadingZeros
+  * CMake: Update cmake_minimum_required calls using versions less than 2.8.12. CMake warns support will be removed in a future version.
+  * Jit_Integer: rlwinmx: Use BEXTR where possible
+  * Jit_Integer: rlwinmx: Generalize byte/word extract plus shift case
+  * Android: Only have one settings entrypoint in game properties
+  * DSP: Migrate code that modifies m_dsp into SDSP itself
+  * DSP: Eliminate most global state
+  * Jit_Integer: Add trivial AndWithMask cases
+  * Jit_Integer: Missed AndWithMask in rlwimix
+  * VideoCommon: Fix crash that occurs on loading a fifo log due to uninitialized Free Look control type
+  * Jit_Integer: Use RORX where possible
+  * Jit64: srawx - Handle constant zero input
+  * Jit64: slwx - Handle constant zero input
+  * Jit64: rlwnmx - Optimize rotate by constant
+  * Jit64: srawix - Handle constant input register
+  * Jit64: srawx - Handle constant input registers
+  * Jit64: srawx - Optimize shift by constant
+  * Jit64: slwx - Optimize shift by constant
+  * Jit64: srwx - Optimize shift by constant
+  * Jit64: subfic - Handle constants
+  * Split OSREPORT logging type
+  * Build the gdbstub by default
+  * PowerPC: Fix GDBStub build
+  * CMake: Apple Silicon detection
+  * VideoCommon: Update active config when we check for config changes, this ensures Free Look settings are copied at the start of the frame.  Also update the camera's controller type at this time
+  * Core: Refresh the Free Look configuration when Free Look is initialized, ensuring that the configuration updates appropriately with any changes
+  * Core: Only respond to Free Look controller buttons when the camera is active
+  * DolphinQt: Only trigger Free Look mouse movement when the Free Look camera is active
+  * VideoCommon: Add 'Active' state to FreelookCamera to future proof if we ever add multiple cameras
+  * VideoCommon: Update Free Look camera with settings change...
+  * Core: Update state to account for save system change
+  * DolphinQt: Update mapping window device to use expanding size policy
+  * DolphinQt: Move Free Look out of Graphics/Hotkey and into its own configuration window.  Launched from a new menu option - "Free Look Settings".  The HotKeyScheduler still calls the Free Look functionality to reduce the total number of threads
+  * Core: Add Free Look controllers that are initialized at boot
+  * Core: Add new Free Look settings and config
+  * Core / VideoCommon: Remove old Free Look config
+  * HotkeyManager: Remove Free Look functionality in preparation for replacement
+  * VideoCommon: Change 'Zoom' to 'MoveForward' since it really isn't a zoom
+  * VideoCommon: Add speed to Free Look camera
+  * Android: Only have one settings entrypoint per activity/dialog
+  * JitArm64: Call UpdatePerformanceMonitor
+  * Android: Correctly save in-game settings changes to disk
+  * Interpreter: Call UpdatePerformanceMonitor
+  * CachedInterpreter: Call UpdatePerformanceMonitor
+  * CoreTiming: Call UpdatePerformanceMonitor on idle
+  * Jit64: Fix FPURegCache::GetRegUtilization
+  * JitArm64: srawix - Fix undefined behavior
+  * JitArm64: srawx - Fix undefined behavior
+  * Analytics: Add rarer OSes to analytics
+  * MemoryUtil: Use HW_PHYSMEM64 sysctl in MemPhysical
+  * Android: Catch all exceptions in ContentHandler
+  * Android: Use storage access framework for game list
+  * Android: Add content provider support to File::ScanDirectoryTree
+  * Android: Fix opening games with extensionless URI
+  * Android: Use storage access framework for picking single games
+  * Android: Add content provider support to File::FileInfo
+  * Android: Add content provider support to File::OpenFStream
+  * Android: Convert ISOPaths to INI settings
+  * Core: Add initial System class
+  * Common: Write PNGs in two steps to allow Unicode target paths.
+  * Common/LinearDiskCache: Handle truncated shadercache files.
+  * Common/LinearDiskCache: Use unique_ptr instead of new/delete.
+  * DolphinQt: Fix all instances of <gameid> in AdvancedWidget to use the appropriate html code instead
+  * GameSettings: Set Safe Texture Cache for Pitfall: The Lost Expedition and Pitfall: The Big Adventure
+  * Translation resources sync with Transifex
+  * Core: Remove ImageWrite and get rid of -Wmissing-declarations warnings
+  * Fix -Wclass-memaccess warnings
+  * Qt: Fix deprecated use of MidButton
+  * Qt/Config: Remove unused includes
+  * EXI_Device: Always define EXIDEVICE_ETHTAPSERVER for consistency
+  * GameSettings: Disable "Store EFB Copies to Texture Only" for Final Fantasy Crystal Chronicles
+  * WiimoteEmu/DolphinQt: Fix tilt indicator for wrapped around angles.
+  * Add tap-like fake Ethernet network interface for macOS
+  * WiimoteEmu: Allow tilt to wrap around and simulate full 360 degree rotations.
+  * Add NetBSD support
+  * Core/AddressSpace: Return null accessors when no game is running to prevent out-of-bounds memory accesses.
+  * Update bundled libpng to version 1.6.37
+  * InputCommon: Fix callback dispatch deadlock
+  * DolphinQt: Fix crash after removing extra patch line
+
+-------------------------------------------------------------------
 Sun Dec 13 12:35:43 UTC 2020 - seil0@mosad.xyz
 
 - Update to version 5.0+git.20201213T035539.3634508e46:
