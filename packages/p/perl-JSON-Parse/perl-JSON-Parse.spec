@@ -1,7 +1,7 @@
 #
 # spec file for package perl-JSON-Parse
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,32 +16,30 @@
 #
 
 
-Name:           perl-JSON-Parse
-Version:        0.57
-Release:        0
 %define cpan_name JSON-Parse
-Summary:        Read JSON into a Perl variable
+Name:           perl-JSON-Parse
+Version:        0.59
+Release:        0
+Summary:        Parse JSON
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/B/BK/BKB/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 %{perl_requires}
 
 %description
 A module for parsing JSON. (JSON means "JavaScript Object Notation" and it
-is specified in RFC 7159.)
+is specified in RFC 8259.)
 
 JSON::Parse offers the function parse_json, which takes a string containing
 JSON, and returns an equivalent Perl structure. It also offers validation
 of JSON via valid_json, which returns true or false depending on whether
 the JSON is correct or not, and assert_valid_json, which produces a
-descriptive fatal error if the JSON is invalid. A function
-json_file_to_perl reads JSON from a file, and there is a safer version of
-parse_json called parse_json_safe which doesn't throw exceptions.
+descriptive fatal error if the JSON is invalid. A function read_json reads
+JSON from a file, and there is a safer version of parse_json called
+parse_json_safe which doesn't throw exceptions.
 
 For special cases of parsing, there are also methods new and run, which
 create a JSON parsing object and run it on text. See METHODS.
@@ -50,7 +48,7 @@ JSON::Parse accepts only UTF-8 as input. See UTF-8 only and Handling of
 Unicode.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 # MANUAL BEGIN
 for file in $(find . -type f); do
@@ -63,7 +61,7 @@ done
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -74,7 +72,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes examples README
+%doc Changes CONTRIBUTING.md examples README see-also-info.json
 
 %changelog

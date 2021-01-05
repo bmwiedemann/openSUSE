@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan  4 03:08:36 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.59
+   see /usr/share/doc/packages/perl-JSON-Parse/Changes
+
+  0.59 2021-01-04
+  * "json_file_to_perl" renamed "read_json"
+  * Documentation work
+   -- Benchmarks section updated with latest versions, add Cpanel::JSON::XS
+   -- Add Metacpan vote ratings to other CPAN modules section
+   -- Sections reordered to put methods above parsing details
+  0.58 2021-01-01
+  * Protect against stack overflows by having maximum parsing depth
+   -- set_max_depth, get_max_depth methods added
+  * Documentation updated
+   -- JSON RFC changed to 8259
+   -- Discussion of Unicode tests in JSON Test Suite
+
+-------------------------------------------------------------------
 Fri Jul 10 09:33:19 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.57
