@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 31 07:38:47 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.4.1
+  * allow user to specify an output folder in the CLI
+
+-------------------------------------------------------------------
+Wed Dec 30 15:33:31 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.4.0
+  * add export command to otpclient-cli
+
+-------------------------------------------------------------------
 Fri Jul 24 14:02:07 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.3.2

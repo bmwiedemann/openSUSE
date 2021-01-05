@@ -47,4 +47,16 @@
   * new icon (forwarded request 822663 from polslinux)</comment>
     <requestid>822967</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>730793cca9615e507ba57ae2a05f0822</srcmd5>
+    <version>2.4.1</version>
+    <time>1609866987</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.1
+  * allow user to specify an output folder in the CLI
+
+- Update to 2.4.0
+  * add export command to otpclient-cli (forwarded request 859574 from polslinux)</comment>
+    <requestid>860465</requestid>
+  </revision>
 </revisionlist>
