@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Jan  5 09:03:48 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU moe 1.11:
+  * Begin of text is now correctly defined as the position of the
+    first non-blank character in a line, instead of the first non-
+    whitespace character. This fixes the behavior of 'auto indent'
+    and 'smart home'.
+  * Add new option '-2, --two-spaces', that tells moe to put two
+    spaces after period when reformatting a paragraph, has been
+    added.
+  * Add new search sequence '\T' (trailing whitespace)
+  * UTF-8 codes are now shown as Uhhhh, not 0xhhhh.
+  * The command 'C-s g' (Show global status) now shows the number
+    of buffers being edited, not the number of buffer handles.
+  * Pressing <Tab> in the file menu now shows the list of matching
+    files even if there is only one, showing that a matching file
+    exists.
+  * Add new command 'C-s b' (toggle clock blinking)
+  * Recursive load now ignores some more non-text or non-source
+    files by extension; ".bmp", ".elf", ".obj", ".xcf", ".zip",
+    ".info", ".jpeg", ".class"
+  * The command 'F3' (load file) now shows feedback
+    ("loading...") and may be aborted with Control-C.
+  * The command Control-X (save and close) now updates the status
+    line before exiting if closing the last buffer handle.
+  * The command Alt-Z (scroll down) now scrolls until only two
+    lines are visible
+  * The command 'C-k w' (write the block to a file) now asks
+    before overwriting an existing file and works when writing
+    from an unnamed read-only buffer.
+  * The UTF-8 decoder now converts some more characters (mostly
+    Greek) and some alphabetic presentation forms
+  * It now also converts the 'latin capital letter sharp s
+    (german)' to "SS".
+  * The emergency save triggered by an abnormal event now only
+    saves non-empty buffers and only once even if any of them has
+    multiple handles.
+  * The commands needed to set the text console in the right mode
+    for moe have been documented in the manual.
+
+-------------------------------------------------------------------
 Fri Jan  4 10:45:01 UTC 2019 - astieger@suse.com
 
 - GNU moe 1.10:

@@ -1,7 +1,7 @@
 #
 # spec file for package moe
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           moe
-Version:        1.10
+Version:        1.11
 Release:        0
 Summary:        A Text Editor
 License:        GPL-2.0-or-later
@@ -32,8 +32,6 @@ BuildRequires:  libstdc++-devel
 BuildRequires:  lzip
 BuildRequires:  make
 BuildRequires:  ncurses-devel
-Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
 
 %description
 GNU Moe is an 8-bit clean, console text editor for ISO-8859 and ASCII
@@ -53,12 +51,6 @@ make %{?_smp_mflags} CXXFLAGS="%{optflags}"
 
 %install
 %make_install install-man
-
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/moe.info%{ext_info}
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/moe.info%{ext_info}
 
 %files
 %license COPYING
