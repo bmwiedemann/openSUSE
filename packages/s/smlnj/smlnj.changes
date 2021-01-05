@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Jan  1 02:41:21 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Correct typo in eXene source module extension
+
+-------------------------------------------------------------------
+Sun Dec 27 02:56:39 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- add SMLNJ_HOME env var profile
+  * fixes user-facing issue when importing code from std lib
+- update pack_new_version.sh
+  * use source structure from readme
+  * configure curl/script for re-use and speed
+  * switch to xz for compression (from bzip2)
+- explicitly list binaries in spec
+- format MLRISC.diff to match build directory
+- remove obsolete minmem file
+- add smlnj-rpmlintrc
+
+-------------------------------------------------------------------
+Fri Dec 25 06:29:21 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 110.99
+  * support for 64-bit architectures added
+  * many changes since 2017, see upstream:
+    https://www.smlnj.org/dist/working/110.99/HISTORY.html
+- update pack_new_version.sh
+  * add 64bit support tarball
+  * add asdl tarball
+  * remove non-linux platform docs
+- ran spec-cleaner
+
+-------------------------------------------------------------------
 Thu Jul  6 11:44:49 UTC 2017 - idonmez@suse.com
 
 - Update to version 110.81
