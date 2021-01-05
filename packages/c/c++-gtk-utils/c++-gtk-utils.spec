@@ -1,7 +1,7 @@
 #
 # spec file for package c++-gtk-utils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -55,15 +55,13 @@ ExclusiveArch:  do_not_build
 %define devname libcxx-gtk-utils-%{_gtk}-devel
 
 Name:           %{pkgname}
-Version:        2.2.19
+Version:        2.2.20
 Release:        0
 Summary:        Lightweight library for GTK+ programs using C++
 License:        LGPL-2.1-only
 Group:          System/Libraries
 URL:            http://cxx-gtk-utils.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/project/cxx-gtk-utils/cxx-gtk-utils/%{version}/%{srcname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM c++-gtk-utils-gtk4-3.98-fixes.patch badshah400@gmail.com -- Fix compilation against gtk4 >= 3.98; patch taken from upstream git commits
-Patch0:         c++-gtk-utils-gtk4-3.98-fixes.patch
 BuildRequires:  autoconf
 BuildRequires:  gcc-c++
 BuildRequires:  guile-devel

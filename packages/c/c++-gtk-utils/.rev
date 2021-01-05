@@ -247,4 +247,13 @@
 - Add c++-gtk-utils-gtk4-3.98-fixes.patch to fix compilation against gtk4 &amp;gt;= 3.98; combined from upstream git master commits 3589475, 687abc, 847e9b, and 97eb26 and rebased to apply cleanly using quilt. (forwarded request 799280 from badshah400)</comment>
     <requestid>799473</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>9a7825ad5cfa04854a5d8194bca74f33</srcmd5>
+    <version>2.2.20</version>
+    <time>1609867002</time>
+    <user>dimstar_suse</user>
+    <comment>* Update to version 2.2.20.
+* Drop c++-gtk-utils-gtk4-3.98-fixes.patch: incorporated upstream. (forwarded request 860449 from badshah400)</comment>
+    <requestid>860467</requestid>
+  </revision>
 </revisionlist>
