@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan  4 10:55:08 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- This package is x86-only
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-scrypt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ BuildRequires:  ghc-base64-bytestring-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-entropy-devel
 BuildRequires:  ghc-rpm-macros
-ExcludeArch:    %{ix86}
+ExclusiveArch:  x86_64
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-QuickCheck-devel
