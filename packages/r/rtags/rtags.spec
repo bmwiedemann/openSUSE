@@ -27,7 +27,7 @@ Source0:        https://github.com/Andersbakken/rtags/releases/download/v%{versi
 BuildRequires:  cmake
 BuildRequires:  emacs-nox
 BuildRequires:  gcc-c++
-BuildRequires:  llvm-clang-devel
+BuildRequires:  clang-devel
 BuildRequires:  llvm-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ncurses)

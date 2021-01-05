@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan  2 00:59:30 UTC 2021 - Cameron Rapp <camspam@redhyena.net>
+
+- Update obsolete BuildRequires: llvm-clang-devel -> clang-devel.
+
+-------------------------------------------------------------------
 Tue Sep 22 06:40:15 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Update to 2.38
