@@ -110,6 +110,7 @@ BuildRequires:  pkgconfig(libiptc)
 BuildRequires:  pkgconfig(libmemcached)
 BuildRequires:  pkgconfig(libmicrohttpd)
 BuildRequires:  pkgconfig(libmnl)
+BuildRequires:  pkgconfig(libmosquitto)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(liboping)
 BuildRequires:  pkgconfig(libpq)
@@ -294,6 +295,14 @@ Requires:       %{name} = %{version}-%{release}
 %description plugin-memcachec
 Optional %{name} plugin to sample memcached statistics.
 
+%package plugin-mqtt
+Summary:        MQTT Plugin for %{name}
+Group:          System/Monitoring
+Requires:       %{name} = %{version}-%{release}
+
+%description plugin-mqtt
+Optional %{name} plugin to send and receive MQTT messages.
+
 %package plugin-pinba
 Summary:        Pinba Collector Plugin for %{name}
 Group:          System/Monitoring
@@ -465,6 +474,7 @@ Requires:       %{name}-plugin-logparser = %{version}-%{release}
 Requires:       %{name}-plugin-lua = %{version}-%{release}
 Requires:       %{name}-plugin-mcelog = %{version}-%{release}
 Requires:       %{name}-plugin-memcachec = %{version}-%{release}
+Requires:       %{name}-plugin-mqtt = %{version}-%{release}
 Requires:       %{name}-plugin-mysql = %{version}-%{release}
 Requires:       %{name}-plugin-notify-desktop = %{version}-%{release}
 Requires:       %{name}-plugin-openldap = %{version}-%{release}
@@ -796,6 +806,10 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %files plugin-memcachec
 %{_libdir}/collectd/memcachec.so
 %{_libdir}/collectd/memcachec.la
+
+%files plugin-mqtt
+%{_libdir}/collectd/mqtt.so
+%{_libdir}/collectd/mqtt.la
 
 %if 0%{?sle_version} < 150000 || 0%{?is_opensuse}
 
