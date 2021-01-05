@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  4 08:36:46 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 3.12.0:
+  * Allow configurations to be marked as Deprecated and Acivtated
+  * Harden resolvconf lock detection
+
+-------------------------------------------------------------------
 Wed Aug 26 20:02:39 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.11.0:
