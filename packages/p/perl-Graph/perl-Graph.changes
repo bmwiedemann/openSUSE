@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Jan  2 03:07:46 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.9716
+   see /usr/share/doc/packages/perl-Graph/Changes
+
+  0.9716 2021-01-01
+  - use Set::Object
+  - {neighbours,successors,predecessors,reachable}_by_radius
+  0.9715 2020-12-31
+  - fix AdjacencyMap::Light attributes so delete when path deleted
+  - fix as_hashes undirected edges: now both directions
+  - subgraph_by_radius take multiple vertices
+  0.9714 2020-12-25
+  - remove "omni*" - hypergraphs are simply directed or undirected
+  - as_hashes works with undirected hypergraphs
+  - add_edge with != 2 vertices only for undirected hypergraph
+  - any_edge
+  - delete_*_attributes_by_id (and deleting last attribute) now don't destroy that entity
+  - AdjacencyMap::Light can have attributes, so no slowdown if use (eg APSP)
+  0.9713 2020-12-19
+  - fix edges_at on self-edges in scalar context
+  - fix refvertexed_stringified predicate
+  - remove "hypervertices": a collection of n vertices is a hyperedge
+  - AdjacencyMap.get_paths_by_ids
+  - transitive_closure et al no longer re-bless objects to Graph
+  - AdjacencyMap.get_ids_by_paths
+  - no more uniqedged configurability
+  - BitMatrix transpose option
+  - Transitive closure records path successor, not predecessor. Method name and docs updated.
+
+-------------------------------------------------------------------
 Sun Dec  6 03:06:57 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.9712
