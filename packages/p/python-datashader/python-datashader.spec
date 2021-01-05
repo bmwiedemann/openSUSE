@@ -1,7 +1,7 @@
 #
 # spec file for package python-datashader
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,23 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%ifarch x86_64
-%bcond_without  test
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+ExclusiveArch:  x86_64
+%bcond_without test
 %else
-%bcond_with     test
+%define psuffix %{nil}
+%bcond_with test
+BuildArch:      noarch
 %endif
 %define         skip_python2 1
-Name:           python-datashader
+Name:           python-datashader%{psuffix}
 Version:        0.11.1
 Release:        0
 Summary:        Data visualization toolchain based on aggregating into a grid
 License:        BSD-3-Clause
-URL:            https://github.com/bokeh/datashader
+URL:            https://github.com/holoviz/datashader
 Source0:        https://files.pythonhosted.org/packages/source/d/datashader/datashader-%{version}.tar.gz
 Source100:      python-datashader-rpmlintrc
 BuildRequires:  %{python_module devel}
@@ -56,7 +61,6 @@ Requires:       python-toolz >= 0.7.4
 Requires:       python-xarray >= 0.9.6
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module DataShape >= 0.5.1}
 BuildRequires:  %{python_module Pillow >= 3.1.1}
@@ -111,19 +115,21 @@ sed -i -e '/^#!\//, 1d' examples/*.py
 %python_build
 
 %install
+%if ! %{with test}
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/datashader
 %{python_expand %fdupes %{buildroot}%{$python_sitelib}
 chmod a-x %{buildroot}%{$python_sitelib}/datashader/examples/filetimes.py
 }
+%endif
 
 %if %{with test}
 %check
 export PYTHONPATH=examples
-# excluded tests are https://github.com/bokeh/datashader/issues/620
 %pytest datashader/tests --doctest-modules --doctest-ignore-import-errors
 %endif
 
+%if ! %{with test}
 %post
 %python_install_alternative datashader
 
@@ -134,6 +140,8 @@ export PYTHONPATH=examples
 %doc README.md
 %license LICENSE.txt
 %python_alternative %{_bindir}/datashader
-%{python_sitelib}/datashader*
+%{python_sitelib}/datashader
+%{python_sitelib}/datashader-%{version}*-info
+%endif
 
 %changelog

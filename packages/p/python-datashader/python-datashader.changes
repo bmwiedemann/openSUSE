@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan  2 23:30:04 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Test in _multibuild flavor in order to avoid build dependency
+  cycle with holoviews
+
+-------------------------------------------------------------------
 Sun Aug 16 20:55:28 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.11.1:
