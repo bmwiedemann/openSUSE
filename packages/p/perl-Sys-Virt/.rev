@@ -763,4 +763,23 @@ bindings we currently have in Factory.
   - jsc#SLE-13688</comment>
     <requestid>852457</requestid>
   </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>f1a6d9c5a93951d4c01ee59ee6573299</srcmd5>
+    <version>6.10.0</version>
+    <time>1609867022</time>
+    <user>dimstar_suse</user>
+    <comment>Updated libvirt perl bindings to go along with libvirt changes
+in req#860506.
+
+- Update suse-set-migration-constraints.patch
+  Remove code which handled --max_factor. The total amount of
+  transferred data is no indicator to trigger the final stop+copy.
+  This should have been removed during upgrade to Xen 4.7.
+  Reduce default value of --max_iters from 5 to 2.
+  The workload within domU will continue to produce dirty pages.
+  It is unreasonable to expect any slowdown during migration.
+  Now there is one initial copy of all memory, one instead of four
+  iteration for dirty memory, and a final copy iteration prior move.</comment>
+    <requestid>860507</requestid>
+  </revision>
 </revisionlist>

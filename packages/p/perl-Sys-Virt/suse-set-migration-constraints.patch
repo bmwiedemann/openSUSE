@@ -6,17 +6,13 @@ Index: Sys-Virt-6.10.0/lib/Sys/Virt/Domain.pm
 ===================================================================
 --- Sys-Virt-6.10.0.orig/lib/Sys/Virt/Domain.pm
 +++ Sys-Virt-6.10.0/lib/Sys/Virt/Domain.pm
-@@ -1172,6 +1172,22 @@ omitted libvirt will auto-generate suita
+@@ -1172,6 +1172,18 @@ omitted libvirt will auto-generate suita
  only necessary to specify this URI if the destination host has multiple
  interfaces and a specific interface is required to transmit storage data.
  
 +=item C<Sys::Virt::Domain::MIGRATE_PARAM_SUSE_MAX_ITERS>
 +
 +The the maximum number of iterations before final suspend
-+
-+=item C<Sys::Virt::Domain::MIGRATE_PARAM_SUSE_MAX_FACTOR>
-+
-+The maximum amount of memory to transfer before final suspend
 +
 +=item C<Sys::Virt::Domain::MIGRATE_PARAM_SUSE_MIN_REMAINING>
 +
@@ -38,11 +34,11 @@ Index: Sys-Virt-6.10.0/lib/Sys/Virt.xs
       int nparams;
      CODE:
 -     nparams = 19;
-+     nparams = 23;
++     nparams = 22;
       Newx(params, nparams, virTypedParameter);
  
       strncpy(params[0].field, VIR_MIGRATE_PARAM_URI,
-@@ -5537,6 +5537,22 @@ _migrate(dom, destcon, newparams, flags=
+@@ -5537,6 +5537,18 @@ _migrate(dom, destcon, newparams, flags=
               VIR_TYPED_PARAM_FIELD_LENGTH);
       params[18].type = VIR_TYPED_PARAM_STRING;
  
@@ -50,31 +46,27 @@ Index: Sys-Virt-6.10.0/lib/Sys/Virt.xs
 +             VIR_TYPED_PARAM_FIELD_LENGTH);
 +     params[19].type = VIR_TYPED_PARAM_UINT;
 +
-+     strncpy(params[20].field, VIR_MIGRATE_PARAM_SUSE_MAX_FACTOR,
++     strncpy(params[20].field, VIR_MIGRATE_PARAM_SUSE_MIN_REMAINING,
 +             VIR_TYPED_PARAM_FIELD_LENGTH);
 +     params[20].type = VIR_TYPED_PARAM_UINT;
 +
-+     strncpy(params[21].field, VIR_MIGRATE_PARAM_SUSE_MIN_REMAINING,
++     strncpy(params[21].field, VIR_MIGRATE_PARAM_SUSE_ABORT_IF_BUSY,
 +             VIR_TYPED_PARAM_FIELD_LENGTH);
 +     params[21].type = VIR_TYPED_PARAM_UINT;
-+
-+     strncpy(params[22].field, VIR_MIGRATE_PARAM_SUSE_ABORT_IF_BUSY,
-+             VIR_TYPED_PARAM_FIELD_LENGTH);
-+     params[22].type = VIR_TYPED_PARAM_UINT;
 +
       nparams = vir_typed_param_from_hv(newparams, params, nparams);
  
       vir_typed_param_add_string_list_from_hv(newparams, &params, &nparams,
-@@ -5565,7 +5581,7 @@ _migrate_to_uri(dom, desturi, newparams,
+@@ -5565,7 +5577,7 @@ _migrate_to_uri(dom, desturi, newparams,
       virTypedParameterPtr params;
       int nparams;
    PPCODE:
 -     nparams = 19;
-+     nparams = 23;
++     nparams = 22;
       Newx(params, nparams, virTypedParameter);
  
       strncpy(params[0].field, VIR_MIGRATE_PARAM_URI,
-@@ -5644,6 +5660,22 @@ _migrate_to_uri(dom, desturi, newparams,
+@@ -5644,6 +5656,18 @@ _migrate_to_uri(dom, desturi, newparams,
               VIR_TYPED_PARAM_FIELD_LENGTH);
       params[18].type = VIR_TYPED_PARAM_STRING;
  
@@ -82,27 +74,22 @@ Index: Sys-Virt-6.10.0/lib/Sys/Virt.xs
 +             VIR_TYPED_PARAM_FIELD_LENGTH);
 +     params[19].type = VIR_TYPED_PARAM_UINT;
 +
-+     strncpy(params[20].field, VIR_MIGRATE_PARAM_SUSE_MAX_FACTOR,
++     strncpy(params[20].field, VIR_MIGRATE_PARAM_SUSE_MIN_REMAINING,
 +             VIR_TYPED_PARAM_FIELD_LENGTH);
 +     params[20].type = VIR_TYPED_PARAM_UINT;
 +
-+     strncpy(params[21].field, VIR_MIGRATE_PARAM_SUSE_MIN_REMAINING,
++     strncpy(params[21].field, VIR_MIGRATE_PARAM_SUSE_ABORT_IF_BUSY,
 +             VIR_TYPED_PARAM_FIELD_LENGTH);
 +     params[21].type = VIR_TYPED_PARAM_UINT;
-+
-+     strncpy(params[22].field, VIR_MIGRATE_PARAM_SUSE_ABORT_IF_BUSY,
-+             VIR_TYPED_PARAM_FIELD_LENGTH);
-+     params[22].type = VIR_TYPED_PARAM_UINT;
 +
       nparams = vir_typed_param_from_hv(newparams, params, nparams);
  
       vir_typed_param_add_string_list_from_hv(newparams, &params, &nparams,
-@@ -9403,6 +9435,10 @@ BOOT:
+@@ -9403,6 +9427,9 @@ BOOT:
        REGISTER_CONSTANT_STR(VIR_MIGRATE_PARAM_DISKS_URI, MIGRATE_PARAM_DISKS_URI);
  
        REGISTER_CONSTANT(VIR_DOMAIN_MIGRATE_MAX_SPEED_POSTCOPY, MIGRATE_MAX_SPEED_POSTCOPY);
 +      REGISTER_CONSTANT_STR(VIR_MIGRATE_PARAM_SUSE_MAX_ITERS, MIGRATE_PARAM_SUSE_MAX_ITERS);
-+      REGISTER_CONSTANT_STR(VIR_MIGRATE_PARAM_SUSE_MAX_FACTOR, MIGRATE_PARAM_SUSE_MAX_FACTOR);
 +      REGISTER_CONSTANT_STR(VIR_MIGRATE_PARAM_SUSE_MIN_REMAINING, MIGRATE_PARAM_SUSE_MIN_REMAINING);
 +      REGISTER_CONSTANT_STR(VIR_MIGRATE_PARAM_SUSE_ABORT_IF_BUSY, MIGRATE_PARAM_SUSE_ABORT_IF_BUSY);
  
