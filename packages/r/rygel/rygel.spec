@@ -1,7 +1,7 @@
 #
 # spec file for package rygel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -198,7 +198,7 @@ Rygel is a home media server that allows sharing audio, video,
 pictures, and control of media player on your home network.
 
 This package provides a standalone MediaRenderer plugin, based on the
-GStreamer playbin2 element.
+GStreamer playbin3 element.
 
 %package plugin-tracker
 Summary:        Tracker plugin for the Rygel UPnP/DLNA media server
