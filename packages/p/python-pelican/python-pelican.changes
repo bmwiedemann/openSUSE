@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Jan  4 19:26:43 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 4.5.4:
+  * Replace plugin definitions in settings with string
+    representations after registering, so they can be cached
+    correctly (#2828).
+
+-------------------------------------------------------------------
+Tue Dec  1 21:24:21 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 4.5.3:
+  * Fix a mistake made in PR #2821
+
+-------------------------------------------------------------------
+Sun Nov 22 18:54:18 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 4.5.2:
+  * Improve logging of generators and writer loaders
+- drop removal of macos hidden temporary files: fixed upstream
+- get the source from github instead of pypi for the tests
+- add the build requirements for the tests:
+  * python-Markdown
+  * python-beautifulsoup4
+  * python-lxml
+  * python-pytest-xdist
+  * python-pytest
+  * python-typogrify
+  * git-core
+- run the tests
+
+-------------------------------------------------------------------
 Mon Nov  2 17:39:30 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 4.5.1:

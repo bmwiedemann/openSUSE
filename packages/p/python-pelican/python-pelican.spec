@@ -1,7 +1,7 @@
 #
 # spec file for package python-pelican
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,23 +19,31 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pelican
-Version:        4.5.1
+Version:        4.5.4
 Release:        0
 Summary:        A tool to generate a static blog from reStructuredText or Markdown input files
 License:        AGPL-3.0-only
 Group:          Development/Languages/Python
-URL:            http://getpelican.com/
-Source:         https://files.pythonhosted.org/packages/source/p/pelican/pelican-%{version}.tar.gz
+URL:            https://getpelican.com/
+# Use the source instead of the pypi release for the tests
+Source:         https://github.com/getpelican/pelican/archive/%{version}.tar.gz
 BuildRequires:  %{python_module Jinja2 >= 2.11}
+BuildRequires:  %{python_module Markdown >= 3.1.1}
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module Unidecode}
+BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module blinker}
 BuildRequires:  %{python_module docutils >= 0.15}
 BuildRequires:  %{python_module feedgenerator >= 1.9}
+BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz >= 0a}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typogrify}
 BuildRequires:  fdupes
+BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2 >= 2.11
 Requires:       python-Pygments
@@ -50,9 +58,7 @@ Requires(postun): update-alternatives
 Suggests:       asciidoc
 Suggests:       python-Markdown >= 3.1.1
 Suggests:       python-typogrify
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -100,16 +106,19 @@ for p in pelican pelican-import pelican-plugins pelican-quickstart pelican-theme
     %python_clone -a %{buildroot}%{_bindir}/$p
 done
 
+%check
+export LC_ALL=C.utf8
+%pytest
+
 %post
 %python_install_alternative pelican pelican-import pelican-plugins pelican-quickstart pelican-themes
 
 %postun
 %python_uninstall_alternative pelican
 
-%files %python_files
-%defattr(-,root,root,-)
+%files %{python_files}
 %license LICENSE
-%doc README.rst
+%doc CONTRIBUTING.rst README.rst THANKS docs/*
 %python_alternative %{_bindir}/pelican
 %python_alternative %{_bindir}/pelican-import
 %python_alternative %{_bindir}/pelican-plugins
