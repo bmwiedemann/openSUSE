@@ -42,7 +42,7 @@ Name:           crash
 %else
 %define build_gcore 0
 %endif
-URL:            http://people.redhat.com/anderson/
+URL:            https://crash-utility.github.io/
 Summary:        Crash utility for live systems; netdump, diskdump, LKCD or mcore dumpfiles
 License:        GPL-3.0-or-later AND GFDL-1.2-only
 Group:          Development/Tools/Debuggers
@@ -82,6 +82,7 @@ Patch27:        %{name}-Define-fallback-PN_XNUM.patch
 Patch28:        %{name}-fix-memory_driver-build-kernel-5.8.patch
 Patch29:        eppic-remove-duplicate-symbols.patch
 Patch30:        %{name}-verify-exception-frame-accessible-for-all-verify-requests.patch
+Patch31:        %{name}-update-whitepaper-URL.patch
 Patch90:        %{name}-sial-ps-2.6.29.diff
 # PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/e770735200c02ac2414c394ea6ec5f7f033efe64.patch
 Patch91:        %{name}-gdb-fix-aarch64.patch
@@ -281,6 +282,7 @@ Authors:
 %patch27 -p1
 %patch28 -p1
 %patch30 -p1
+%patch31 -p1
 %if %{have_snappy}
 %patch15 -p1
 %endif

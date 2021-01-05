@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Dec  7 18:00:32 UTC 2020 - David Mair <dmair@suse.com>
+
+- Corrected project URL in spec file to match the changed upstream
+  location as-of May 30th 2020.
+
+  Noted the project URL change in README.SUSE without removing the old URL
+  because it represents the location the project source was obtained from.
+  The next project source update is available from the new project URL. When
+  the package is updated with that source all URL project references will be
+  modified to only show the new URL.
+
+  Add crash-update-whitepaper-URL.patch
+  Note change of no longer valid old project whitepaper URL to current valid
+  project whitepaper URL in help output. Leave the old one reported because it
+  represents the location the project source was obtained from for this
+  package version.
+  (bsc#1179536)
+
+-------------------------------------------------------------------
 Fri Oct  9 13:05:30 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on aarch64:

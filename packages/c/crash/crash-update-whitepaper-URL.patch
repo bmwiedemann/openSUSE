@@ -1,0 +1,26 @@
+From: David Mair <dmair@suse.com>
+Date: 2020-12-08 12:16:57 +0700
+Subject: Report changed site for crash project
+References: bsc#1179536
+Upstream: not required
+
+Note change of no longer valid old project whitepaper URL to current valid
+project URL. Leave the old one reported because it represents the location
+the source material was obtained from for this package.
+
+---
+ help.c |    3 +++
+ 1 file changed, 3 insertions(+)
+
+--- a/help.c
++++ b/help.c
+@@ -9329,6 +9329,9 @@ char *README[] = {
+ " ",
+ "         http://people.redhat.com/anderson/crash_whitepaper",
+ " ",
++"   As-of May 30th 2020 the Crash Whitepaper has been moved to:",
++"         https://crash-utility.github.io/crash_whitepaper.html",
++" ",
+ "  These are the current prerequisites: ",
+ "",
+ "  o  At this point, x86, ia64, x86_64, ppc64, ppc, arm, arm64, alpha, mips,",

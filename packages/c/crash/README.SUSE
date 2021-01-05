@@ -5,6 +5,9 @@ Changes in the SUSE package
    command line or configuration file
  - added the Crash Whitepaper from
    http://people.redhat.com/anderson/.crash_whitepaper/
+
+   As-of May 30th 2020 the Crash Whitepaper has been moved to
+   https://crash-utility.github.io/crash_whitepaper.html
  - fix for LKCD header (SLES9 has another header format than SLES10) in IA64
 
 
