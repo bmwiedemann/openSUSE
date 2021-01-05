@@ -1,7 +1,7 @@
 #
 # spec file for package rssguard
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define libver  3_8_3
+%define libver  3_8_4
 Name:           rssguard
-Version:        3.8.3
+Version:        3.8.4
 Release:        0
 Summary:        RSS/ATOM/RDF feed reader
 License:        GPL-3.0-only AND AGPL-3.0-or-later
