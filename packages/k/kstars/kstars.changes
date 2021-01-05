@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov 27 10:31:26 UTC 2020 - wbauer@tmo.at
+
+- Update to 3.5.0
+  * https://knro.blogspot.com/2020/11/kstars-v350-is-released.html
+  * Integration of StellarSolver, the Cross Platform Sextractor and
+    Astrometry.net-Based Internal Astrometric Solver
+  * FITS viewer: added support to load JPG/PNG and RAW files from
+    DSLR cameras 
+  * New Ekos module to help analyze the imaging session in details
+  * Improvements to KStars testing framework
+
+-------------------------------------------------------------------
+Thu Aug 27 13:04:44 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Spec cleanup
+
+-------------------------------------------------------------------
 Sun Jul 19 17:56:14 UTC 2020 - wbauer@tmo.at
 
 - Update to 3.4.3

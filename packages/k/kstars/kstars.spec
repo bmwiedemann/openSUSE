@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kstars
-Version:        3.4.3
+Version:        3.5.0
 Release:        0
 Summary:        Desktop Planetarium
 # Note for legal: the Apache licensed files in the tarball are for the
@@ -35,16 +35,6 @@ BuildRequires:  eigen3-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  gsl-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kcrash-devel
-BuildRequires:  kdoctools-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kio-devel
-BuildRequires:  knewstuff-devel
-BuildRequires:  knotifications-devel
-BuildRequires:  kplotting-devel
-BuildRequires:  kwidgetsaddons-devel
-BuildRequires:  kxmlgui-devel
 BuildRequires:  libindi-devel
 BuildRequires:  libnova-devel
 BuildRequires:  libraw-devel
@@ -52,23 +42,34 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  wcslib-devel
 BuildRequires:  xplanet
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5NewStuff)
+BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5NotifyConfig)
+BuildRequires:  cmake(KF5Plotting)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Qt5Concurrent)
+BuildRequires:  cmake(Qt5DataVisualization)
+BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Keychain)
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5DataVisualization)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Qml)
-BuildRequires:  pkgconfig(Qt5Quick)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5WebSockets)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5Qml)
+BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5Sql)
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5WebSockets)
+BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  cmake(StellarSolver)
+Recommends:     %{name}-lang
 Recommends:     libindi
 Recommends:     xplanet
-Recommends:     %{name}-lang
 
 %description
 KStars is astronomy software. It provides an accurate graphical
@@ -84,13 +85,13 @@ simulation of the night sky, for any time and location on Earth.
 export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %endif
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
 %if %{with lang}
   %find_lang %{name} --with-man --all-name
-  %kf5_find_htmldocs
+  %{kf5_find_htmldocs}
 %endif
 
 # Remove static library
@@ -101,9 +102,9 @@ rm -f %{buildroot}%{_kf5_libdir}/libhtmesh.a
 %files
 %license COPYING COPYING.DOC
 %doc AUTHORS ChangeLog README.md README.customize README.ephemerides README.images
+%doc %{_kf5_htmldir}/en/kstars/
 %dir %{_kf5_appstreamdir}
 %dir %{_kf5_configkcfgdir}
-%doc %{_kf5_htmldir}/en/kstars/
 %{_datadir}/sounds/*.ogg
 %{_kf5_applicationsdir}/org.kde.kstars.desktop
 %{_kf5_appsdir}/kstars/
