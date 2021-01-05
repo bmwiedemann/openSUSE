@@ -1,7 +1,7 @@
 #
 # spec file for package python-dash-core-components
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,17 +26,19 @@
 %bcond_with test
 %endif
 %define skip_python2 1
+# Upstream cannot tag the release version, but we need the github archive for the test files
+# https://github.com/plotly/dash-core-components/issues/886
+%define commit 230997613c81ce927cf558720585a9632e3df192
 Name:           python-dash-core-components%{psuffix}
-Version:        1.9.1
+Version:        1.14.1
 Release:        0
 Summary:        Core component suite for Dash
 License:        MIT
 URL:            https://github.com/plotly/dash-core-components
-Source:         https://github.com/plotly/dash-core-components/archive/v%{version}.tar.gz
+Source:         https://github.com/plotly/dash-core-components/archive/%{commit}.tar.gz#/dash-core-components-%{version}-gh.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-dash
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module dash}
@@ -50,7 +52,7 @@ BuildRequires:  %{python_module selenium}
 Core component suite for Dash
 
 %prep
-%setup -q -n dash-core-components-%{version}
+%setup -q -n dash-core-components-%{commit}
 
 %build
 %python_build
@@ -63,7 +65,9 @@ Core component suite for Dash
 
 %check
 %if %{with test}
-# needs working selenium and chromedriver
+# simplest integration tests as run in .circleci/
+%pyunittest tests/test_dash_import.py -v
+# fulls suite needs working selenium and chromedriver
 # when fixed this should be enabled
 #%%pytest
 %endif
