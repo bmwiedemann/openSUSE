@@ -178,4 +178,16 @@
 - Replace shebangs which use env interpreter.</comment>
     <requestid>843877</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>75df2ddbe0b5070e6984b1673d1dd8bd</srcmd5>
+    <version>0.9.100</version>
+    <time>1609866820</time>
+    <user>dimstar_suse</user>
+    <comment>- Add eolie-0.9.100-fix-crash-on-ctrl-shift-p.patch
+  (glgo#World/eolie#381).
+- Add missing soft dependency on python3-hawkauthlib: For
+  authentification to Firefox Sync.
+</comment>
+    <requestid>860341</requestid>
+  </revision>
 </revisionlist>

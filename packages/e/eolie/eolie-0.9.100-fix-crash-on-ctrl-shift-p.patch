@@ -1,0 +1,29 @@
+From fc8d9227f20eca8df0bea785c731386d4caa3618 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?C=C3=A9dric=20Bellegarde?= <cedric.bellegarde@adishatz.org>
+Date: Sun, 3 Jan 2021 17:18:46 +0100
+Subject: [PATCH] Fix #381
+
+---
+ eolie/window.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/eolie/window.py b/eolie/window.py
+index 40d159de..987abc6b 100644
+--- a/eolie/window.py
++++ b/eolie/window.py
+@@ -439,9 +439,9 @@ class Window(Handy.ApplicationWindow, WindowState):
+         elif string == "print":
+             self.container.webview.print()
+         elif string == "private":
+-            self.container.add_webview(App().start_page,
+-                                       LoadingType.FOREGROUND,
+-                                       True)
++            self.container.add_webview_for_uri(App().start_page,
++                                               LoadingType.FOREGROUND,
++                                               True)
+         elif string == "last_page":
+             App().pages_menu.activate_last_action()
+         elif string == "zoom_in":
+-- 
+GitLab
+

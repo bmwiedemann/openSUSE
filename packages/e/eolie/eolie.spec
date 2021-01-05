@@ -1,7 +1,7 @@
 #
 # spec file for package eolie
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://wiki.gnome.org/Apps/Eolie
 Source:         %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM eolie-0.9.100-fix-crash-on-ctrl-shift-p.patch -- glgo#World/eolie#381
+Patch0:         eolie-0.9.100-fix-crash-on-ctrl-shift-p.patch
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
@@ -39,6 +41,7 @@ Requires:       python3-gobject
 Recommends:     python3-PyFxA
 Recommends:     python3-beautifulsoup4
 Recommends:     python3-cryptography
+Recommends:     python3-hawkauthlib
 Recommends:     python3-pycrypto
 Recommends:     python3-requests-hawk
 BuildArch:      noarch
@@ -63,7 +66,7 @@ search results from the Eolie Web browser.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 # Don't use env interpreter so that the rpm dependency detection works
 sed -i 's;/usr/bin/env python3;/usr/bin/python3;' eolie.in search-provider/eolie-sp.in
 

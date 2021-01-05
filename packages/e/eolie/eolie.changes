@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan  4 21:18:38 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Add eolie-0.9.100-fix-crash-on-ctrl-shift-p.patch
+  (glgo#World/eolie#381).
+
+-------------------------------------------------------------------
+Sat Jan  2 13:38:54 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Add missing soft dependency on python3-hawkauthlib: For
+  authentification to Firefox Sync.
+
+-------------------------------------------------------------------
 Sun Oct 25 09:56:52 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 0.9.100:
