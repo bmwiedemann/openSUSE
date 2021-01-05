@@ -20,7 +20,7 @@
 %define compatversion 5.0.0
 
 Name:           kicad-symbols
-Version:        5.1.8
+Version:        5.1.9
 Release:        0
 Summary:        Schematic symbol library for KiCad
 # License is CC-BY-SA-4.0 but there is an exception
