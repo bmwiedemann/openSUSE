@@ -1,7 +1,7 @@
 #
 # spec file for package dovecot23
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,11 @@
 %global _lto_cflags %{nil}
 
 Name:           dovecot23
-Version:        2.3.11.3
+Version:        2.3.13
 Release:        0
 %define pkg_name dovecot
-%define dovecot_version 2.3.11.3
-%define dovecot_pigeonhole_version 0.5.11
+%define dovecot_version 2.3.13
+%define dovecot_pigeonhole_version 0.5.13
 %define dovecot_branch  2.3
 %define dovecot_pigeonhole_source_dir %{pkg_name}-%{dovecot_branch}-pigeonhole-%{dovecot_pigeonhole_version}
 %define dovecot_pigeonhole_docdir     %{_docdir}/%{pkg_name}/dovecot-pigeonhole
@@ -149,11 +149,6 @@ Patch:          dovecot-2.3.0-dont_use_etc_ssl_certs.patch
 Patch1:         dovecot-2.3.0-better_ssl_defaults.patch
 #               https://github.com/dovecot/core/pull/126
 Patch2:         allow-tls1.3-only.patch
-#               https://github.com/dovecot/core/pull/133
-Patch3:         dovecot-2.3.11.3-gssapi-nul.patch
-# Fix 32-bit test - Similar to https://github.com/dovecot/core/pull/134
-Patch4:         dovecot-2.3.11.3-ftbfs1.patch
-Patch5:         dovecot-2.3.11.3-ftbfs2.patch
 Summary:        IMAP and POP3 Server Written Primarily with Security in Mind
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND MIT
 Group:          Productivity/Networking/Email/Servers
@@ -334,9 +329,6 @@ dovecot tree.
 %patch -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
 gzip -9v ChangeLog
 # Fix plugins dir.
 sed -i 's|#mail_plugin_dir = /usr/lib/dovecot|mail_plugin_dir = %{_libdir}/dovecot/modules|' doc/example-config/conf.d/10-mail.conf

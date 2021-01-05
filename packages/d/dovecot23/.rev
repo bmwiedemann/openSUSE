@@ -522,4 +522,41 @@
     <comment></comment>
     <requestid>850665</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>8d3d4760e80759c3e371512e2630cd79</srcmd5>
+    <version>2.3.13</version>
+    <time>1609866816</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.13 and pigeonhole to 0.5.13
+  Dovecot 2.3.13
+  * CVE-2020-24386: Specially crafted command can cause IMAP hibernate to
+    allow logged in user to access other people's emails and filesystem
+    information.
+  * Metric filter and global event filter variable syntax changed to a
+    SQL-like format. See
+    https://doc.dovecot.org/configuration_manual/event_filter/
+  * auth: Added new aliases for %{variables}. Usage of the old ones is
+    possible, but discouraged.
+  * auth: Removed RPA auth mechanism, SKEY auth mechanism, NTLM auth
+    mechanism and related password schemes.
+  * auth: Removed passdb-sia, passdb-vpopmail and userdb-vpopmail.
+  * auth: Removed postfix postmap socket
+  + auth: Added new fields for auth server events. These fields are now
+    also available for all auth events. See
+    https://doc.dovecot.org/admin_manual/list_of_events/#authentication-server
+    for details.
+  + imap-hibernate: Added imap_client_hibernated, imap_client_unhibernated
+    and imap_client_unhibernate_retried events. See
+    https://doc.dovecot.org/admin_manual/list_of_events/ for details.
+  + lib-index: Added new mail_index_recreated event. See
+    https://doc.dovecot.org/admin_manual/list_of_events/#mail-index-recreated
+  + lib-sql: Support TLS options for cassandra driver. This requires
+    cpp-driver v2.15 (or later) to work reliably.
+  + lib-storage: Missing $HasAttachment / $HasNoAttachment flags are now
+    added to existing mails if mail_attachment_detection_option=add-flags
+    and it can be done inexpensively.
+  + login proxy: Added login_proxy_max_reconnects setting (default 3) to
+    control how many reconnections are attempted.</comment>
+    <requestid>860321</requestid>
+  </revision>
 </revisionlist>
