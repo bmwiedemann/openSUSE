@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dash-renderer
-Version:        1.4.0
+Version:        1.8.3
 Release:        0
 Summary:        Front-end component renderer for Dash
 License:        MIT
