@@ -814,7 +814,7 @@ index fcd044b00f2..f54c24f8618 100644
            for (int i=0; i<npts; i++)
              {
 diff --git a/src/Mod/Fem/Gui/ViewProviderFemPostObject.cpp b/src/Mod/Fem/Gui/ViewProviderFemPostObject.cpp
-index 1fce4b64722..5294aeac021 100644
+index dde2bd824..3acfead65 100644
 --- a/src/Mod/Fem/Gui/ViewProviderFemPostObject.cpp
 +++ b/src/Mod/Fem/Gui/ViewProviderFemPostObject.cpp
 @@ -56,6 +56,11 @@

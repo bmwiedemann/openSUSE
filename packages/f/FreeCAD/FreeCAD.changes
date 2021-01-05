@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  4 22:02:50 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with latest GCC, add 0001-Gui-skip-ci-fix-Wodr.patch
+- Force-enable C++17, Boost 1.75 requires C++14 at least
+
+-------------------------------------------------------------------
 Sat Nov 28 14:08:01 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 0.18.5:

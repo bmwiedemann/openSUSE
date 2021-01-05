@@ -1,7 +1,7 @@
 #
 # spec file for package FreeCAD
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,6 +54,8 @@ Patch8:         0001-boost-1.73.0-The-practice-of-declaring-the-Bind-plac.patch
 Patch9:         fix-smesh-vtk9.patch
 # PATCH-FIX-UPSTREAM
 Patch10:        0001-Fix-ODR-violation-correct-Ui_TaskSketcherGeneral-nam.patch
+# PATCH-FIX-UPSTREAM -- https://github.com/FreeCAD/FreeCAD/commit/6bd39e8a90e65d81
+Patch11:        0001-Gui-skip-ci-fix-Wodr.patch
 
 # Test suite fails on 32bit and I don't want to debug that anymore
 ExcludeArch:    %ix86 %arm ppc s390 s390x
@@ -209,6 +211,7 @@ rm src/3rdparty/Pivy-0.5 -fr
   -DPYTHON_EXECUTABLE=/usr/bin/python3 \
   -DSHIBOKEN_INCLUDE_DIR=/usr/include/shiboken2/ \
   -DPYSIDE_INCLUDE_DIR=/usr/include/PySide2/ \
+  -DBUILD_ENABLE_CXX_STD:STRING="C++17" \
   -DBUILD_QT5=ON \
   -DFREECAD_USE_EXTERNAL_PIVY:BOOL=TRUE \
   -DBUILD_OPENSCAD:BOOL=ON \

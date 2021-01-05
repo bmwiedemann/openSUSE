@@ -1,0 +1,54 @@
+From 6bd39e8a90e65d81733e06d73bc627387808c772 Mon Sep 17 00:00:00 2001
+From: wmayer <wmayer@users.sourceforge.net>
+Date: Tue, 24 Nov 2020 15:46:46 +0100
+Subject: [PATCH] Gui: [skip ci] fix -Wodr The forward declarations of
+ QuantitySpinBox and Ui_TaskAppearance were done in the wrong namespace
+
+---
+ src/Gui/TaskCSysDragger.h         | 3 +--
+ src/Gui/TaskView/TaskAppearance.h | 5 +++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/Gui/TaskCSysDragger.h b/src/Gui/TaskCSysDragger.h
+index 721cc51c8d..b2dcad3b5e 100644
+--- a/src/Gui/TaskCSysDragger.h
++++ b/src/Gui/TaskCSysDragger.h
+@@ -26,10 +26,9 @@
+ #include <Gui/TaskView/TaskDialog.h>
+ #include <App/DocumentObserver.h>
+ 
+-class QuantitySpinBox;
+-
+ namespace Gui
+ {
++  class QuantitySpinBox;
+   class SoFCCSysDragger;
+   class ViewProviderDragger;
+   
+diff --git a/src/Gui/TaskView/TaskAppearance.h b/src/Gui/TaskView/TaskAppearance.h
+index 1e3de8a898..b637053f33 100644
+--- a/src/Gui/TaskView/TaskAppearance.h
++++ b/src/Gui/TaskView/TaskAppearance.h
+@@ -29,16 +29,17 @@
+ #include <boost/signals2.hpp>
+ 
+ 
+-class Ui_TaskAppearance;
+-
+ namespace App {
+ class Property;
+ }
+ 
+ namespace Gui {
+ class ViewProvider;
++
+ namespace TaskView {
++
+ typedef boost::signals2::connection TaskAppearance_Connection;
++class Ui_TaskAppearance;
+ 
+ class TaskAppearance : public TaskBox, public Gui::SelectionSingleton::ObserverType
+ {
+-- 
+2.29.2
+
