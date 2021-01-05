@@ -1,7 +1,7 @@
 #
 # spec file for package python-autobahn
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %ifarch %arm aarch64
 %bcond_with nvx_support
 %else
@@ -24,7 +25,7 @@
 %{?!python_module:%define python_module() python-%{**} %{!?skip_python3:python3-%{**}}}
 %define skip_python2 1
 Name:           python-autobahn
-Version:        20.7.1
+Version:        20.12.3
 Release:        0
 Summary:        WebSocket and WAMP in Python for Twisted and asyncio
 License:        MIT
@@ -60,11 +61,11 @@ BuildRequires:  %{python_module wsaccel >= 0.6.2}
 BuildRequires:  %{python_module zope.interface >= 3.6.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-attrs >= 19.2.0
 Requires:       python-PyNaCl >= 1.0.1
 Requires:       python-PyQRCode >= 1.1
 Requires:       python-Twisted >= 20.3.0
 Requires:       python-argon2-cffi >= 18.1.0
+Requires:       python-attrs >= 19.2.0
 Requires:       python-cbor >= 1.0.0
 Requires:       python-cbor2 >= 4.1.2
 Requires:       python-cffi >= 1.11.5

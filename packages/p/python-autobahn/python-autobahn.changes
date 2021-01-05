@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan  5 03:42:59 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 20.12.3:
+  * fix: URL must be re-encoded when doing redirect (#1439)
+  * new: minimum supported Python (language) version is now 3.6
+  * fix: derive_bip32childkey traceback (#1436)
+  * fix: update and adjust docker files to upstream changes
+  * new: CLI commands for WAMP IDL (xbrnetwork describe-schema / codegen-schema)
+  * new: add eth address helpers (#1413)
+  * new: cryptosign authextra allow arbitrary keys (#1411)
+  * fix: adapt to planet api prefix change (#1408)
+  * fix: Type check improve (#1405)
+
+-------------------------------------------------------------------
 Mon Dec 21 21:50:35 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix flavored requires -- gh#openSUSE/python-rpm-macros#66
