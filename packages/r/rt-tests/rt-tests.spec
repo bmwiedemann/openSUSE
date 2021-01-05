@@ -1,7 +1,7 @@
 #
 # spec file for package rt-tests
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           rt-tests
-Version:        1.6
+Version:        1.10
 Release:        0
 Summary:        Realtime Kernel Testsuite
 License:        GPL-2.0-only
 Group:          System/Benchmark
 URL:            https://git.kernel.org/pub/scm/utils/rt-tests/rt-tests.git
 Source0:        https://git.kernel.org/pub/scm/utils/rt-tests/rt-tests.git/snapshot/rt-tests-%{version}.tar.gz
-Patch1:         rt-tests-1.6-Makefile.patch
+Patch1:         rt-tests-1.10-Makefile.patch
 BuildRequires:  libnuma-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
@@ -54,6 +54,7 @@ rm -rf %{buildroot}%{_prefix}/src/backfire
 %doc MAINTAINERS README.markdown
 %{_bindir}/cyclicdeadline
 %{_bindir}/cyclictest
+%{_bindir}/get_cyclictest_snapshot
 %{_bindir}/deadline_test
 %{_bindir}/hackbench
 %{_bindir}/hwlatdetect
@@ -63,15 +64,14 @@ rm -rf %{buildroot}%{_prefix}/src/backfire
 %{_bindir}/ptsematest
 %{_bindir}/queuelat
 %{_bindir}/rt-migrate-test
-%{_bindir}/sendme
 %{_bindir}/signaltest
 %{_bindir}/sigwaittest
 %{_bindir}/svsematest
 %{_bindir}/ssdd
-%{_bindir}/get_cpuinfo_mhz.sh
+%{_bindir}/oslat
 %{_bindir}/determine_maximum_mpps.sh
 %{python3_sitelib}/hwlatdetect.py
-%{_mandir}/man4/backfire.4%{?ext_man}
+%{python3_sitelib}/get_cyclictest_snapshot.py
 %{_mandir}/man8/cyclictest.8%{?ext_man}
 %{_mandir}/man8/hackbench.8%{?ext_man}
 %{_mandir}/man8/hwlatdetect.8%{?ext_man}
@@ -79,7 +79,6 @@ rm -rf %{buildroot}%{_prefix}/src/backfire
 %{_mandir}/man8/pmqtest.8%{?ext_man}
 %{_mandir}/man8/ptsematest.8%{?ext_man}
 %{_mandir}/man8/rt-migrate-test.8%{?ext_man}
-%{_mandir}/man8/sendme.8%{?ext_man}
 %{_mandir}/man8/signaltest.8%{?ext_man}
 %{_mandir}/man8/sigwaittest.8%{?ext_man}
 %{_mandir}/man8/svsematest.8%{?ext_man}
@@ -87,5 +86,9 @@ rm -rf %{buildroot}%{_prefix}/src/backfire
 %{_mandir}/man8/queuelat.8%{?ext_man}
 %{_mandir}/man8/pip_stress.8%{?ext_man}
 %{_mandir}/man8/deadline_test.8%{?ext_man}
+%{_mandir}/man8/cyclicdeadline.8%{?ext_man}
+%{_mandir}/man8/get_cyclictest_snapshot.8%{?ext_man}
+%{_mandir}/man8/oslat.8%{?ext_man}
+%{_mandir}/man8/determine_maximum_mpps.8%{?ext_man}
 
 %changelog

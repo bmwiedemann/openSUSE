@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Jan  5 07:34:20 UTC 2021 - Jeffrey Cheung <jcheung@suse.com>
+
+- Update to upstream version 1.10 (SLE-12981)
+  * rt-tests: queuelat: Remove get_cpuinfo_mhz.sh and old Makefile
+  * rt-tests: determine_maximum_mpps.sh: Add a menu to get user settings.
+  * rt-numa: Introduce NUMA helpers
+  * cyclictest: Only report the first incident
+  * Streamline usage and man page
+
+- Add rt-tests-1.10-Makefile.patch and remove  rt-tests-1.6-Makefile.patch
+
+- Cleanup spec file
+
+- Changes from version 1.9
+  * signaltest: Only print from the first thread stats when quiet
+  * rt-tests: cyclictest: Move ftrace helpers into rt-utils.[ch]
+  * pi_stress: limit the number of inversion groups to the number of online cores
+  * rt-tests: Install new man page get_cyclictest_snapshot.8
+  * rt-tests: Add a man page for get_cyclictest_snapshot
+  * rt-tests: ptsematest.8: Update the ptsematest man page
+  * rt-tests: improvements to the python style in get_cyclictest_snapshot
+  * cyclictest: Fix setaffinity error on large NUMA machines
+
+- Changes from version 1.8
+  * cyclictest: Make the affinity mask apply to the main thread too
+  * Remove support for compiling without NUMA
+  * cyclictest: Only run on runtime affinity and user supplied affinity
+  * cyclictest: Only run on available cpus according to the affinity
+  * cyclictest: Report all errors from pthread_setaffinity_np
+
+- Changes from version 1.7
+  * Add get_cyclictest_snapshot to Makefile
+  * Add the get_cyclictest_snapshot.py utility
+  * determine_maximum_mpps.sh: Fix quoting and other shell issue
+  * queuelat: get_cpuinfo_mhz.sh highest value
+  * cyclicdeadline: Add a simple manpage for cyclicdeadline
+
+-------------------------------------------------------------------
 Tue Jun 16 13:29:29 UTC 2020 - Jeffrey Cheung <jcheung@suse.com>
 
 - Update to version 1.6:
