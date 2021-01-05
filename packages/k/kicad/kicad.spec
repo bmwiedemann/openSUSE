@@ -1,7 +1,7 @@
 #
 # spec file for package kicad
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 # symbol libraries from version 5.0.0
 %define compatversion 5.0.0
 Name:           kicad
-Version:        5.1.8
+Version:        5.1.9
 Release:        0
 Summary:        EDA software suite for the creation of schematics and PCB
 License:        GPL-3.0-or-later AND AGPL-3.0-or-later
@@ -75,14 +75,14 @@ BuildRequires:  hicolor-icon-theme
 # Dlopen'ed simulator library
 Requires:       libngspice0
 # The help function gives an error without the doc package
-Requires:       %{name}-doc = %{version}
+Requires:       kicad-doc = %{version}
 # You cannot build a schematic without symbols
-Requires:       %{name}-symbols = %{compatversion}
+Requires:       kicad-symbols = %{compatversion}
 # You cannot create a pcb layout without footprints
-Requires:       %{name}-footprints = %{compatversion}
+Requires:       kicad-footprints = %{compatversion}
 # KiCad functions without these packages
-Recommends:     %{name}-packages3D = %{compatversion}
-Recommends:     %{name}-templates = %{compatversion}
+Recommends:     kicad-packages3D = %{compatversion}
+Recommends:     kicad-templates = %{compatversion}
 Obsoletes:      kicad = 20140120
 Provides:       kicad = %{compatversion}
 
@@ -123,25 +123,26 @@ KiCad includes a project manager and four main independent software tools:
     -DPYTHON_SITE_PACKAGE_PATH=%{python_sitearch} \
     -DKICAD_SPICE=ON
 
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
 
+%if 0%{?suse_version} < 1550
 %suse_update_desktop_file -r bitmap2component "Education;Engineering"
 %suse_update_desktop_file -r eeschema "Education;Engineering"
 %suse_update_desktop_file -r gerbview "Education;Engineering"
 %suse_update_desktop_file -r kicad "Education;Engineering"
 %suse_update_desktop_file -r pcbcalculator "Education;Engineering"
 %suse_update_desktop_file -r pcbnew "Education;Engineering"
+%endif
 
 # Link to library libkicad_3dsg.so.2.0.0 has no use
 rm -rf %{buildroot}%{_libdir}/libkicad_3dsg.so
 
 # Delete packaging/maintenance scripts
-for f in test_kicad_plugin.py test_plugin.py ; do
-    rm "%{buildroot}%{_docdir}/kicad/scripts/$f"
-done
+rm "%{buildroot}%{_docdir}/kicad/scripts/"{test_kicad_plugin.py,test_plugin.py}
+
 # Move remaining standalone scripts to kicad directory
 mv %{buildroot}%{_docdir}/kicad/scripts %{buildroot}%{_datadir}/kicad/
 %if %{with python3}
@@ -168,13 +169,12 @@ cmp --quiet %{buildroot}%{_bindir}/_pcbnew.kiface %{buildroot}%{python_sitearch}
 %doc README.txt Documentation/changelogs
 %license LICENSE.GPLv3 LICENSE.AGPLv3 LICENSE.README
 %{_bindir}/*
-%exclude %{_bindir}/kicad-library-install.sh
 %{_libdir}/kicad/
 %{_datadir}/kicad/
 %{python_sitearch}/*
 %{_datadir}/appdata/kicad.appdata.xml
 %{_datadir}/applications/*.desktop
-%{_datadir}/mime/packages/%{name}-*.xml
+%{_datadir}/mime/packages/kicad-*.xml
 %{_datadir}/icons/hicolor/*/mimetypes/application-x-*
 %{_datadir}/icons/hicolor/*/apps/*.*
 %{_libdir}/libkicad_3dsg.so.2.0.0

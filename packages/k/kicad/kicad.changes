@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 30 18:28:50 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 5.1.9
+  See https://kicad.org/blog/2020/12/KiCad-5.1.9-Release/ for details.
+- On TW, disable XDG category mangling, keep new upstream category
+  Science;Electronics.
+
+-------------------------------------------------------------------
 Fri Nov  6 12:20:49 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 5.1.8
