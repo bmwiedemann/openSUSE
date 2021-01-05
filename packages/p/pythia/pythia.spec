@@ -36,6 +36,8 @@ Patch2:         pythia-remove-rpaths.patch
 Patch3:         pythia-example71-link-gmp.patch
 # PATCH-FEATURE-OPENSUSE pythia-disable-example23-req-MixMax_h.patch badshah400@gmail.com -- Drop a test that requires non-free MixMax.h header
 Patch4:         pythia-disable-example23-req-MixMax_h.patch
+# PATCH-FIX-OPENSUSE - a variant was sent via mail to phil...@cern.ch
+Patch5:         reproducible.patch
 BuildRequires:  HepMC2-devel
 BuildRequires:  LHAPDF-devel
 BuildRequires:  fastjet-devel
