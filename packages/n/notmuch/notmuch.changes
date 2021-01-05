@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jan  4 15:32:48 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.31.3
+
+  What's new in notmuch 0.31.3
+  =========================
+
+  Bindings
+  --------
+
+  Fix for exclude tags in notmuch2 bindings.
+
+  Build
+  -----
+
+  Portability update for T360-symbol-hiding
+
+  Library
+  -------
+
+  Fix for memory error in notmuch_database_get_config_list
+
+-------------------------------------------------------------------
 Mon Nov  9 08:33:41 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 0.31.2

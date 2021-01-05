@@ -1,7 +1,7 @@
 #
 # spec file for package notmuch
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libversion 5
 Name:           notmuch
-Version:        0.31.2
+Version:        0.31.3
 Release:        0
 Summary:        The mail indexer
 License:        GPL-3.0-or-later

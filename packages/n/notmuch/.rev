@@ -267,4 +267,12 @@ From the NEWS file, this version reports the following:
     <comment></comment>
     <requestid>847079</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>04f69388128f52e715ad852c3fcad775</srcmd5>
+    <version>0.31.3</version>
+    <time>1609866921</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860412</requestid>
+  </revision>
 </revisionlist>
