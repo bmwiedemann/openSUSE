@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  4 18:50:35 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to new upstream release 3.0.5:
+  * There is no separate changelog for the documentation part;
+    please see the changelog(s) for wxWidgets-3_0-devel for details
+    on library changes.
+- Clean spec file.
+
+-------------------------------------------------------------------
 Mon Apr 16 22:05:42 UTC 2018 - ecsos@opensuse.org
 
 - Update to new upstream release 3.0.4
