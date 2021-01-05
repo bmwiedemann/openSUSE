@@ -1,4 +1,160 @@
 -------------------------------------------------------------------
+Sun Jan  3 18:48:57 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Prepare Andy's work for submission
+  * update specfile with requirements and comment about tests 
+
+-------------------------------------------------------------------
+Mon Dec 21 11:31:03 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to 1.18.1.
+  * Bump plotly.js v1.58.2
+  * Updates for 1.18.0
+    * Fix a bug where the table is using classes that are styled by
+      Bootstrap
+    * Upgraded Plotly.js to 1.58.1
+  * Updates for 1.17.0
+    * Update from React 16.13.0 to 16.14.0 
+    * Fix #1432 for Julia to import non-core component packages 
+      without possible errors. 
+    * Provide a hint in the callback error when the user forgot to
+      make app.callback(...) a decorator. 
+  * Updates for 1.16.3
+    * Fix a regression caused by flask-compress==1.6.0 causing 
+      performance degradation on server requests 
+  * Updates for 1.16.2
+    * Fix a regression with some layouts callbacks involving 
+      dcc.Tabs, not yet loaded dash_table.DataTable and dcc.Graph 
+      to not be called
+    * Make callback graph more robust for complex apps and some 
+      specific props (width in particular) that previously caused 
+      errors. 
+  * Updates for 1.16.1
+    * Extends the getTransform logic in the renderer to handle 
+      persistenceTransforms for both nested and non-nested 
+      persisted props. This was used to to fix dcc#700 in 
+      conjunction with dcc#854 by using persistenceTransforms to 
+      strip the time part of the datetime so
+      that datepickers can persist when defined in callbacks. 
+      Fixes a bug where the callback graph layout would reset 
+      whenever a callback fired, losing user-initiated layout 
+      changes (#1402) or creating a new force layout (#1401) 
+  * Updates for 1.16.0
+    * You can now get CSP script-src hashes of all added inline 
+      scripts by calling app.csp_hashes() (both Dash internal 
+      inline scripts, and those added with 
+      app.clientside_callback). 
+    * Closes #1350 and fixes a previously undefined callback 
+      behavior when multiple elements are stacked on top of one 
+      another and their n_clicks props are used as inputs of the 
+      same callback. The callback will now trigger once with all 
+      the triggered n_clicks props changes.
+    * New and improved callback graph in the debug menu. Now based 
+      on Cytoscape for much more interactivity, plus callback 
+      profiling including number of calls, fine-grained time 
+      information, bytes sent and received, and more. You can even
+      add custom timing information on the server with 
+      callback_context.record_timing(name, seconds) 
+    * Fixed a bug introduced by #1180 breaking use of 
+      prevent_initial_call as a positional arg in callback 
+      definitions[1.15.0] - 2020-08-25 
+    * Removed redundant log message and consolidated logger 
+      initialization. You can now control the log level - for 
+      example suppress informational messages from Dash with 
+      app.logger.setLevel(logging.WARNING).
+    * #1253, #1377 Added experimental --jl-prefix option to 
+      dash-generate-components, optionally generates Julia version 
+      of components and corresponding Julia package 
+    * Input, Output, and State in callback definitions don’t need 
+      to be in lists. You still need to provide Output items first,
+      then Input items, then State, and the list form is still 
+      supported. In particular, if you want to return a single 
+      output item wrapped in a length-1 list, you should still wrap 
+      the Output in a list. This can be useful for 
+      procedurally-generated callbacks.
+    * Updated pytest to v6.0.1. To avoid deprecation warnings, this
+      also updated pytest-sugar to 0.9.4 and pytest-mock to 3.2.0. 
+      The pytest mock update only effects python >= 3.0. 
+      Pytest-mock remains pinned at 2.0.0 for python == 2.7. 
+  * Updates for 1.14.0
+    * Add title parameter to set the document title. This is the 
+      recommended alternative to setting app.title or overriding 
+      the index HTML.
+    * Add update_title parameter to set or disable the 
+      “Updating....” document title during updates. Closes #856 and
+      #732 
+  * Updates for 1.13.4
+    * Fix a regression since 1.13.0 preventing more than one 
+      loading state from being shown at a time. 
+  * Updates for 1.13.3
+  * Updates for 1.13.2
+    * Fix regression that causes crash when FLASK_ENV is modified 
+      during app execution
+    * Fix regression that caused tests using _wait_for_callbacks 
+      to fail 
+  * Updates for 1.13.0
+    * Supports DASH_PROXY env var to tell app.run_server to report
+      the correct URL to view your app, when it’s being proxied. 
+      Throws an error if the proxy is incompatible with the host 
+      and port you’ve given the server.
+    * Adds callback_context to clientside callbacks (e.g. 
+      dash_clientside.callback_context.triggered). 
+      Supports triggered, inputs, inputs_list, states, and 
+      states_list, all of which closely resemble their serverside 
+      cousins. 
+    * Closes #920: Converts hot reload fetch failures into a server
+      status indicator showing whether the latest fetch succeeded 
+      or failed.
+    * Callback fetch failures still appear as errors but have a 
+      clearer message.
+    * Modifies the callback chain implementation and improves 
+      performance for apps with a lot of components 
+    * Hard hot reload targets only the current window, not the top 
+      - so if your app is in an iframe you will only reload the app
+    * Fixes #919 so dash.testing is compatible with more pytest 
+      plugins, particularly pytest-flake8 and pytest-black.
+    * Fixes #1245, so you can use prop persistence with components
+      that have dict IDs, ie for pattern-matching callbacks.
+    * Sort asset directories, same as we sort files inside those 
+      directories. This way if you need your assets loaded in a 
+      certain order, you can add prefixes to subdirectory names and
+      enforce that order.#1288 Closes #1285: Debug=True should work
+      in the main module. 
+  * Updates for 1.12.0
+    * Adds control over firing callbacks on page (or layout chunk)
+      load. Individual callbacks can have their initial calls 
+      disabled in their definition 
+      @app.callback(..., prevent_initial_call=True) and similar 
+      for app.clientside_callback. The app-wide default can also be
+      changed with app=Dash(prevent_initial_callbacks=True), then 
+      individual callbacks may disable this behavior.
+    * New attribute app.validation_layout allows you to create a 
+      multi-page app without suppress_callback_exceptions=True
+      or layout function tricks. Set this to a component layout 
+      containing the superset of all IDs on all pages in your app.
+    * Permit usage of arbitrary file extensions for assets within 
+      component libraries 
+    * Fixes #1223, a very specific situation in which initial 
+      callbacks will not fire.
+    * Fixes #1216, a set of related issues about pattern-matching 
+      callbacks with ALL wildcards in their Output which would fail 
+      if no components matched the pattern.
+    * Fixes #1200 - prior to Dash 1.11, if none of the inputs to a
+      callback were on the page, it was not an error. This was, and 
+      is now again,treated as though the callback raised 
+      PreventUpdate. The one exception to this is with 
+      pattern-matching callbacks, when every Input uses a 
+      multi-value wildcard (ALL or ALLSMALLER), and every Output is
+      on the page. In that case the callback fires as usual.
+    * Fixes #1193 - prior to Dash 1.11, you could use 
+      flask.has_request_context() == False inside an app.layout 
+      function to provide a special layout containing all IDs for 
+      validation purposes in a multi-page app. Dash 1.11 broke this 
+      when we moved most of this validation into the renderer. This
+      change makes it work again. 
+
+
+-------------------------------------------------------------------
 Tue May 26 07:22:29 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
