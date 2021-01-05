@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec 28 19:44:49 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.49.1
+  * Fixed install-otb and uninstall-otb to use otbdir instead of
+    x11dir.
+
+-------------------------------------------------------------------
+Sat Dec 26 11:27:46 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.49
+   * Added Open Type Bitmap support.
+   * Altered ascii grave in some sizes to be more useful as a
+     back quote.
+   * Fixed 21B5, added 21B2 and 21B3.
+
+-------------------------------------------------------------------
 Sun Jul 28 18:32:19 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.48

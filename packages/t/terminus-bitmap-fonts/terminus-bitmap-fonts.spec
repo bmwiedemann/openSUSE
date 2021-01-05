@@ -1,7 +1,7 @@
 #
 # spec file for package terminus-bitmap-fonts
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 %define fontname terminus-font
-
+%define mainver 4.49
 Name:           terminus-bitmap-fonts
-Version:        4.48
+Version:        4.49.1
 Release:        0
 Summary:        Readable Fixed Width Fonts for X11 and the Linux Console
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            http://terminus-font.sf.net/
-Source:         https://sf.net/projects/terminus-font/files/terminus-font-%{version}/terminus-font-%{version}.tar.gz
+Source:         https://sf.net/projects/terminus-font/files/terminus-font-%{mainver}/terminus-font-%{version}.tar.gz
 BuildRequires:  bdftopcf
 BuildRequires:  dos2unix
 BuildRequires:  fontpackages-devel
