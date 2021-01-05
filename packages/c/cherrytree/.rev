@@ -1166,4 +1166,25 @@
 - Initial package (version 0.14) (forwarded request 858890 from malcolmlewis)</comment>
     <requestid>859192</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>23b9a468056fab48a694cdca6ca2cc2e</srcmd5>
+    <version>0.99.28</version>
+    <time>1609866991</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.99.28:
+  * Improved sanitisation from bad characters at xml parse time,
+    (gh#giuspen/cherrytree#1465).
+  * Fix config.cfg re-created when symlinked,
+    (gh#giuspen/cherrytree#1464).
+  * Found better workaround for visualisation glitches,
+    (gh#giuspen/cherrytree#1416, gh#giuspen/cherrytree#1427,
+    gh#giuspen/cherrytree#1446 and gh#giuspen/cherrytree#1447).
+  * Fix regression speeding up tables.
+  * Support for sqlite document generated with old version of
+    cherrytree, alter only at write time.
+  * Isolating and trying to find alternative to
+    WORKAROUND_ANCHORED_TEXT_VISUAL_GLITCHES.
+  * Working on tables poor performance. (forwarded request 859965 from malcolmlewis)</comment>
+    <requestid>860466</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jan 03 16:32:05 UTC 2021 - malcolmlewis@opensuse.org
+
+- Update to version 0.99.28:
+  * Improved sanitisation from bad characters at xml parse time,
+    (gh#giuspen/cherrytree#1465).
+  * Fix config.cfg re-created when symlinked,
+    (gh#giuspen/cherrytree#1464).
+  * Found better workaround for visualisation glitches,
+    (gh#giuspen/cherrytree#1416, gh#giuspen/cherrytree#1427,
+    gh#giuspen/cherrytree#1446 and gh#giuspen/cherrytree#1447).
+  * Fix regression speeding up tables.
+  * Support for sqlite document generated with old version of
+    cherrytree, alter only at write time.
+  * Isolating and trying to find alternative to
+    WORKAROUND_ANCHORED_TEXT_VISUAL_GLITCHES.
+  * Working on tables poor performance.
+
+-------------------------------------------------------------------
 Sun Dec 27 20:43:46 UTC 2020 - malcolmlewis@opensuse.org
 
 - Update to version 0.99.27+13:
