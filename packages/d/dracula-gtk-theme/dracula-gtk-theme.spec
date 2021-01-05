@@ -1,7 +1,7 @@
 #
 # spec file for package dracula-gtk-theme
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,16 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           dracula-gtk-theme
-Version:        2.0+git8.9dde49c
+Version:        2.0+git17.d3b3d53
 Release:        0
 Summary:        A dark theme for GTK
 License:        GPL-3.0-only
-Url:            https://github.com/dracula/gtk
+URL:            https://github.com/dracula/gtk
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildArch:      noarch
@@ -69,4 +69,3 @@ rm %{buildroot}%{_datadir}/themes/%{name}/LICENSE
 %{_datadir}/themes/%{name}/
 
 %changelog
-
