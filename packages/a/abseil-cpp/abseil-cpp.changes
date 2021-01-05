@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Dec 29 12:18:55 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 20200923.2
+  What's New:
+  * absl::StatusOr<T> has been released. See our blog
+    post for more information.
+  * Abseil Flags reflection interfaces have been released.
+  * Abseil Flags memory usage has been significantly optimized.
+  * Abseil now supports a "hardened" build mode. This build mode enables
+    runtime checks that guard against programming errors that may lead
+    to security vulnerabilities.
+  Notable Fixes:
+  * Sanitizer dynamic annotations like AnnotateRWLockCreate that are
+    also defined by the compiler sanitizer implementation are no longer
+    also defined by Abseil.
+  * Sanitizer macros are now prefixed with ABSL_ to avoid naming collisions.
+  * Sanitizer usage is now automatically detected and no longer requires
+    macros like ADDRESS_SANITIZER to be defined on the command line.
+  Breaking Changes:
+  * Abseil no longer contains a dynamic_annotations library. Users
+    using a supported build system (Bazel or CMake) are unaffected by
+    this, but users manually specifying link libraries may get an error
+    about a missing linker input.
+
+-------------------------------------------------------------------
 Fri Nov  6 08:31:58 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Drop source package, was only used by grpc which was switched

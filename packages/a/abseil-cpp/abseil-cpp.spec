@@ -17,7 +17,7 @@
 
 
 Name:           abseil-cpp
-Version:        20200225.2
+Version:        20200923.2
 Release:        0
 Summary:        C++11 libraries which augment the C++ stdlib
 License:        Apache-2.0
