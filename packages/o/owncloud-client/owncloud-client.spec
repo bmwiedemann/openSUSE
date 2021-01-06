@@ -1,7 +1,7 @@
 #
 # spec file for package owncloud-client
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,21 @@
 
 Name:           owncloud-client
 
-Version:        2.6.3.14058
+Version:        2.7.4
 Release:        0
 
 Summary:        The ownCloud synchronization client
 License:        GPL-2.0-only AND GPL-3.0-only
 Group:          Productivity/Networking/Other
 URL:            https://owncloud.org/download
-Source0:        https://download.owncloud.com/desktop/stable/owncloudclient-%{version}.tar.xz
-Source1:        https://download.owncloud.com/desktop/stable/owncloudclient-%{version}.tar.xz.asc
+Source0:        ownCloud_os-%{version}.tar.xz
 Source2:        101-sync-inotify.conf
 Source3:        README.source
+Source4:        ownCloud.conf
 
 # PATCH-FIX-UPSTREAM fix position of systray menu https://github.com/owncloud/client/issues/5968
 # for all except tumbleweed and ongoing, as the Qt bug is fixed in there.
 Patch0:         fix-systray-menu-pos.patch
-Patch1:         no_theme_icons.patch
-Patch2:         fix-qpainterpath.patch
 
 %define cmake_args -DSYSCONF_INSTALL_DIR=%{_sysconfdir}
 
@@ -205,19 +203,13 @@ Framework 5 based Dolphin filemanager to display overlay icons.
 %endif
 
 %prep
-%setup -q -n owncloudclient-%{version} 
+%setup -q -n ownCloud_os-%{version}
 
 %if 0%{?suse_version} <= 1500
 %patch0 -p1
 %endif
-%patch1 -p1
-%patch2 -p1
 
 %build
-# see README.source
-rm -rf src/3rdparty/libcrashreporter-qt
-rm -rf shell_integration/windows
-rm -rf shell_integration/MacOSX
 
 echo suse_version   0%{?suse_version}
 
@@ -263,6 +255,8 @@ test -f %{extdir}/ownCloud.pyc && mv %{extdir}/ownCloud.pyc %{extdir}/owncloud.p
 
 # https://github.com/owncloud/client/issues/4107
 install -m 0755 -D %{SOURCE2} %{buildroot}/etc/sysctl.d/101-sync-inotify.conf
+# do not allow to call home
+install -m 0755 -D %{SOURCE4} %{buildroot}/etc/ownCloud/
 
 %suse_update_desktop_file -n owncloud
 # workaround for https://github.com/owncloud/ownbrander/issues/322
@@ -291,15 +285,14 @@ done
 %{_datadir}/applications/owncloud.desktop
 %{_datadir}/icons/hicolor
 %{_datadir}/mime/packages/owncloud.xml
-%{_libdir}/ownCloud/plugins/owncloudsync_vfs_suffix.so
-%dir %{_libdir}/ownCloud/
-%dir %{_libdir}/ownCloud/plugins
-%doc CONTRIBUTING.md README.md 
+%{_libdir}/qt5/plugins/owncloudsync_vfs_suffix.so
+%doc CONTRIBUTING.md README.md
 %license COPYING COPYING.documentation
 
 %config /etc/ownCloud
 # https://github.com/owncloud/client/issues/4107
 %config /etc/sysctl.d/101-sync-inotify.conf
+%config /etc/ownCloud/ownCloud.conf
 
 %files -n %{name}-l10n
 %defattr(-,root,root,-)

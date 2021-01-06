@@ -1,0 +1,22 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="filename">ownCloud_os</param>
+    <param name="revision">v2.7.4</param>
+    <param name="scm">git</param>
+    <param name="url">https://github.com/owncloud/client.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <!-- tag is vX.Y.Z, we want X.Y.Z -->
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <!-- exclude some files due to license issues, see https://github.com/owncloud/client/issues/6005 -->
+    <param name="exclude">*src/3rdparty/libcrashreporter-qt*</param>
+    <param name="exclude">*shell_integration/windows*</param>
+    <param name="exclude">*shell_integration/MacOSX*</param>
+  </service>
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+</services>

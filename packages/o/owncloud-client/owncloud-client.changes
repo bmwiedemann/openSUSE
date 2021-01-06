@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue Jan  5 20:26:31 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Add and run _service file to create tarball on build time:
+  * Add ownCloud_os-2.7.4.obscpio.
+  * Add ownCloud_os.obsinfo.
+  * Remove ownCloud_os-2.7.4.tar.xz.
+
+-------------------------------------------------------------------
+Wed Dec 30 21:12:58 UTC 2020 - Klaas Freitag <opensuse@freisturz.de>
+
+- Removed previous used asc file. 
+
+-------------------------------------------------------------------
+Wed Dec 30 19:05:33 UTC 2020 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to the latest upstream version 2.7.4.
+  That is mainly crash fixes for the Windows platform.
+- Back to the special unpackaged tarball for openSUSE. See the 
+  README file for reasons.
+
+-------------------------------------------------------------------
+Sun Dec 20 15:36:15 UTC 2020 - Klaas Freitag <opensuse@freisturz.de>
+
+- Fix source link. 
+
+-------------------------------------------------------------------
+Wed Dec  9 16:10:08 UTC 2020 - Klaas Freitag <opensuse@freisturz.de>
+
+- Remove patch fix-qpainterpath.patch - fixed upstream. 
+
+-------------------------------------------------------------------
+Wed Dec  9 15:24:44 UTC 2020 - Klaas Freitag <opensuse@freisturz.de>
+
+- Fix Fix BOO#1179175 - add a config file to the package to not 
+  call home for version checks. 
+
+-------------------------------------------------------------------
+Wed Dec  9 14:55:21 UTC 2020 - Klaas Freitag <opensuse@freisturz.de>
+
+- Remove patch no_theme_icons.patch because the theme icons are now
+  cloud specific, no reason to ignore any more. 
+
+-------------------------------------------------------------------
+Wed Dec  9 09:22:37 UTC 2020 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to upstream version 2.7.2 
+  Compared to 2.7.1 little additional fixes to a severe bug. 
+
+-------------------------------------------------------------------
+Sat Nov 28 18:08:18 UTC 2020 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to upstream version 2.7.1
+  Many updates and bugfixes
+  Changelog https://github.com/owncloud/client/releases/tag/v2.7.1 
+
+-------------------------------------------------------------------
 Wed Jun 24 09:31:41 UTC 2020 - Klaas Freitag <opensuse@freisturz.de>
 
 - Fix BOO#1173252: Install the correct SOURCEs. 
