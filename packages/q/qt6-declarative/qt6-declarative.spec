@@ -90,16 +90,24 @@ BuildArch:      noarch
 This meta-package requires all the qt6-declarative development packages that do
 not have any ABI or API guarantees.
 
+%package imports
+Summary:        Qt 6 Declarative QML files and plugins
+
+%description imports
+QML files and plugins from the Qt 6 Declarative module
+
 %package tools
 Summary:        Qt 6 Declarative Tools
 License:        GPL-3.0-only
+Requires:       qt6-declarative-imports
 
 %description tools
-Additional tools for inspecting, testing, viewing... QML imports and files.
+Additional tools for inspecting, testing, viewing QML imports and files.
 
 %package -n libQt6Qml6
 Summary:        Qt 6 Qml library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+Requires:       qt6-declarative-imports
 
 %description -n libQt6Qml6
 The Qt 6 Qml library.
@@ -454,6 +462,13 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmldevtools_private.pri
 %files private-devel
 %doc meta_package
 
+%files imports
+%{_qt6_qmldir}/Qt/
+%{_qt6_qmldir}/QtQml/
+%{_qt6_qmldir}/QtQuick/
+%{_qt6_qmldir}/QtTest/
+%{_qt6_qmldir}/builtins.qmltypes
+
 %files tools
 %{_bindir}/qml6
 %{_bindir}/qmlcachegen6
@@ -481,7 +496,6 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmldevtools_private.pri
 %{_qt6_bindir}/qmltestrunner
 %{_qt6_bindir}/qmltime
 %{_qt6_bindir}/qmltyperegistrar
-%{_qt6_archdatadir}/qml/
 %{_qt6_pluginsdir}/qmltooling/
 
 %files -n libQt6Qml6
