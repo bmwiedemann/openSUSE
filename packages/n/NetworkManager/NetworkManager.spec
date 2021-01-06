@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -109,9 +109,9 @@ Recommends:     org.freedesktop.ModemManager
 # Recommend the rp-pppoe binary for PPP over Ethernet (common for ADSL) connections.
 Recommends:     rp-pppoe
 # Provides required by sysconfig. The latter is used by older versions.
+Provides:       dhcdbd = 1.14
 Provides:       service(network)
 Provides:       sysvinit(network)
-Provides:       dhcdbd = 1.14
 Obsoletes:      dhcdbd < 1.14
 Obsoletes:      libnm-glib-vpn1
 Obsoletes:      libnm-glib4

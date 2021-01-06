@@ -1760,4 +1760,13 @@ WANTED for 13.1 - BLUEZ5 FIX (forwarded request 203010 from Zaitor)</comment>
     <comment></comment>
     <requestid>853735</requestid>
   </revision>
+  <revision rev="220" vrev="2">
+    <srcmd5>e77497373f748c1bd133276b6a348740</srcmd5>
+    <version>1.28.0</version>
+    <time>1609959368</time>
+    <user>dimstar_suse</user>
+    <comment>- Second attempt to exclude systemd.automount from nfs processing:
+  fix boo#1116625 (forwarded request 860123 from frispete)</comment>
+    <requestid>860462</requestid>
+  </revision>
 </revisionlist>

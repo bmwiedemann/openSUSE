@@ -52,7 +52,7 @@ function other_reaches {
     fi
 }
 
-NET_MOUNTS=$(sed -e '/^.*#/d' -e '/^.*:/!d' -e 's/\t/ /g' -e '/x-systemd.automount/!d' /etc/fstab | tr -s " ")$'\n'
+NET_MOUNTS=$(sed -e '/^.*#/d' -e '/^.*:/!d' -e 's/\t/ /g' -e '/x-systemd.automount/d' /etc/fstab | tr -s " ")$'\n'
 
 case "$COMMAND" in
     up|dhcp4-change|dhcp6-change)
