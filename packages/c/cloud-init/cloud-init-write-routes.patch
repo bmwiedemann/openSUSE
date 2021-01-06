@@ -51,6 +51,8 @@ Index: cloudinit/distros/opensuse.py
 +                    dest = route.get('destination') or route.get('network')
 +                    if not dest or dest in default_nets:
 +                        dest = 'default'
++                        if not has_default_route:
++                            has_default_route = True
 +                    if dest != 'default':
 +                        netmask = route.get('netmask')
 +                        if netmask:
@@ -61,6 +63,12 @@ Index: cloudinit/distros/opensuse.py
 +                                'Skipping route; has no prefix "%s"', dest
 +                            )
 +                            continue
++                    gateway = route.get('gateway')
++                    if not gateway:
++                        LOG.warning(
++                            'Missing gateway for "%s", skipping', dest
++                        )
++                        continue
 +                    if (
 +                           dest == 'default' and
 +                           has_default_route and
@@ -72,14 +80,6 @@ Index: cloudinit/distros/opensuse.py
 +                        LOG.warning(
 +                            '%s already has default route, skipping "%s"',
 +                            if_name, dest_info
-+                        )
-+                        continue
-+                    if dest == 'default' and not has_default_route:
-+                        has_default_route = True
-+                    gateway = route.get('gateway')
-+                    if not gateway:
-+                        LOG.warning(
-+                            'Missing gateway for "%s", skipping', dest
 +                        )
 +                        continue
 +                    config_routes += ' '.join(

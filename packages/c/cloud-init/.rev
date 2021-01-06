@@ -928,4 +928,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>853763</requestid>
   </revision>
+  <revision rev="77" vrev="4">
+    <srcmd5>4da3bb7eea037ba4f8e1ae88022e7ec5</srcmd5>
+    <version>20.2</version>
+    <time>1609959371</time>
+    <user>dimstar_suse</user>
+    <comment>- Update cloud-init-write-routes.patch (bsc#1180176)
+  + Follow up to previous changes. Fix order of operations
+    error to make gateway comparison between subnet configuration and
+    route configuration valuable rather than self-comparing.
+
+- Add cloud-init-sle12-compat.patch (jsc#PM-2335)
+  - Python 3.4 compatibility in setup.py
+  - Disable some test for mock version compatibility</comment>
+    <requestid>860463</requestid>
+  </revision>
 </revisionlist>
