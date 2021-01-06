@@ -1,7 +1,7 @@
 #
 # spec file for package abi-dumper
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,12 @@
 
 
 Name:           abi-dumper
-Version:        1.1
+Version:        1.2
 Release:        0
 Summary:        Tool to dump ABI of an ELF object containing DWARF debug info
 License:        LGPL-2.1-or-later
-Url:            https://github.com/lvc/abi-dumper
+URL:            https://github.com/lvc/abi-dumper
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# FIXME: drop these patches on the next upstream release
-# the first two patches fix the license and are required for the *actually*
-# important patch (Patch2) to apply cleanly
-# PATCH-FIX-UPSTREAM 0001-Fixed-license-to-LGPL-2.1.patch
-Patch0:         0001-Fixed-license-to-LGPL-2.1.patch
-# PATCH-FIX-UPSTREAM 0002-Fixed-license-file.patch
-Patch1:         0002-Fixed-license-file.patch
-# PATCH-FIX-UPSTREAM 0003-Support-for-new-elfutils-Fedora-30.patch
-# This fixes incorrect debuginfo extraction with new elfutils
-Patch2:         0003-Support-for-new-elfutils-Fedora-30.patch
-
 BuildRequires:  help2man
 Requires:       binutils
 Requires:       elfutils
@@ -65,7 +54,7 @@ mkdir -p %{buildroot}%{_mandir}/man1
 install -m 0644 %{name}.1 %{buildroot}%{_mandir}/man1
 
 %files
-%doc README
+%doc README.md
 %license LICENSE
 %{_bindir}/%{name}
 %{_mandir}/man*/*
