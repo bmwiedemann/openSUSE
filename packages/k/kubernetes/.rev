@@ -688,4 +688,12 @@
     <comment>- Fix typo in *minus1 version definition</comment>
     <requestid>854870</requestid>
   </revision>
+  <revision rev="74" vrev="14">
+    <srcmd5>0344957e48afba67efd160c8b01a27d2</srcmd5>
+    <version>unknown</version>
+    <time>1609959357</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump kubernetes to 1.20.1 and 1.19.6</comment>
+    <requestid>860454</requestid>
+  </revision>
 </revisionlist>

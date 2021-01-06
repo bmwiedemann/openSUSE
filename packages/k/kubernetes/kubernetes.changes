@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan  5 12:08:37 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Bump kubernetes to 1.20.1 and 1.19.6 
+
+-------------------------------------------------------------------
 Fri Dec 11 12:25:53 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Fix typo in *minus1 version definition 
