@@ -1,7 +1,7 @@
 #
 # spec file for package isync
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Utility to synchronize IMAP mailboxes with local maildir folders
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Email/Utilities
-URL:            https://isync.sf.net/
+URL:            https://isync.sourceforge.io/
 Source:         https://prdownloads.sourceforge.net/isync/%{name}-%{version}.tar.gz
 Source1:        https://prdownloads.sourceforge.net/isync/%{name}-%{version}.tar.gz.asc
 # gpg2 --recv-keys 106457B8735659A4D40F56456F5447F95D001D85

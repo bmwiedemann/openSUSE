@@ -41,4 +41,12 @@ this time with COPYING, ChangeLog, AUTHORS and README</comment>
     <comment></comment>
     <requestid>825268</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>998243192f27ff76b3a7b4c5d696f2cb</srcmd5>
+    <version>1.3.3</version>
+    <time>1609959438</time>
+    <user>dimstar_suse</user>
+    <comment>- fix homepage url</comment>
+    <requestid>860760</requestid>
+  </revision>
 </revisionlist>
