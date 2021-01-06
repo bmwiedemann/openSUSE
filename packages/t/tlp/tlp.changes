@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  4 10:00:03 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use the same value for TLP_ULIB in the %build phase and the
+  %install phase (boo#1180495):
+  + BuildRequire pkgconfig(udev)
+  + Use pkg-config --variable udev_dir udev for the value of
+    TLP_ULIB.
+
+-------------------------------------------------------------------
 Fri Oct  9 08:58:46 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Properly install udev files to /usr/lib/udev, NOT /usr/libexec

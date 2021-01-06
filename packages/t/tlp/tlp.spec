@@ -1,7 +1,7 @@
 #
 # spec file for package tlp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %define _name   TLP
+%define _udevdir %(pkg-config --variable udev_dir udev)
 Name:           tlp
 Version:        1.3.1
 Release:        0
@@ -26,7 +27,7 @@ Group:          Hardware/Mobile
 URL:            http://linrunner.de/tlp
 Source:         https://github.com/linrunner/%{_name}/archive/%{version}.tar.gz#/%{_name}-%{version}.tar.gz
 BuildRequires:  gzip
-BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(udev)
 Requires:       hdparm
 Requires:       iw
 Requires:       pciutils
@@ -66,7 +67,7 @@ Switch radios upon network connect/disconnect and dock/undock.
 
 %build
 make %{?_smp_mflags} V=1 \
-  TLP_ULIB=%{_libexecdir}/udev \
+  TLP_ULIB=%{_udevdir} \
   TLP_SYSD=%{_unitdir}
 
 %install
@@ -74,7 +75,7 @@ make %{?_smp_mflags} V=1 \
   TLP_WITH_SYSTEMD=1           \
   TLP_WITH_ELOGIND=0           \
   TLP_NO_INIT=1                \
-  TLP_ULIB=%{_udevrulesdir}/.. \
+  TLP_ULIB=%{_udevdir} \
   TLP_SYSD=%{_unitdir} \
   TLP_SDSL=%{_unitdir}/system-sleep
 make install-man \
@@ -117,7 +118,7 @@ done
 %{_datadir}/%{name}/
 %dir %{_datadir}/metainfo/
 %{_datadir}/metainfo/*%{name}.metainfo.xml
-%{_udevrulesdir}/../%{name}-usb-udev
+%{_udevdir}/%{name}-usb-udev
 %{_udevrulesdir}/85-%{name}.rules
 %{_localstatedir}/lib/%{name}/
 %dir %{_datadir}/bash-completion/
@@ -133,7 +134,7 @@ done
 %{_sysconfdir}/NetworkManager/
 %{_bindir}/%{name}-rdw
 %{_udevrulesdir}/85-%{name}-rdw.rules
-%{_udevrulesdir}/../%{name}-rdw-udev
+%{_udevdir}/%{name}-rdw-udev
 %{_mandir}/man8/%{name}-rdw.8%{?ext_man}
 
 %changelog
