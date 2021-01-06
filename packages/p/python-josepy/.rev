@@ -60,4 +60,17 @@
   * Officially add support for Python 3.8.</comment>
     <requestid>789927</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a3de3312a8718108e5e2ffcc21d76d06</srcmd5>
+    <version>1.5.0</version>
+    <time>1609959430</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.0:
+  * Added support for Python 3.9.
+  * Dropped support for Python 3.5.
+  * Stopped supporting running tests with ``python setup.py test`` which is
+    deprecated in favor of ``python -m pytest``.
+  * Deprecated support for Python 3.5.</comment>
+    <requestid>860717</requestid>
+  </revision>
 </revisionlist>

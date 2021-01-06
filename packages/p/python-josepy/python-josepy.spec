@@ -1,7 +1,7 @@
 #
 # spec file for package python-josepy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define libname josepy
 Name:           python-%{libname}
-Version:        1.3.0
+Version:        1.5.0
 Release:        0
 Summary:        JOSE protocol implementation in Python
 License:        Apache-2.0
@@ -67,7 +67,7 @@ rm pytest.ini
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/%{libname}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} src/
+%pytest src/
 
 %files %{python_files}
 %license LICENSE.txt
