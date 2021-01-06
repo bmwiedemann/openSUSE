@@ -1,7 +1,7 @@
 #
 # spec file for package nodejs10
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs10
-Version:        10.23.0
+Version:        10.23.1
 Release:        0
 
 %define node_version_number 10
@@ -250,7 +250,7 @@ BuildRequires:  openssl-devel >= %{openssl_req_ver}
 
 %endif
 %else
-Provides:       bundled(openssl) = 1.1.1g
+Provides:       bundled(openssl) = 1.1.1i
 %endif
 
 %if ! 0%{with intree_cares}
@@ -306,7 +306,7 @@ ExclusiveArch:  %{ix86} x86_64 armv7hl aarch64 ppc ppc64 ppc64le s390 s390x
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 Provides:       bundled(brotli) = 1.0.7
-Provides:       bundled(http-parser) = 2.9.3
+Provides:       bundled(http-parser) = 2.9.4
 Provides:       bundled(libuv) = 1.34.2
 Provides:       bundled(v8) = 6.8.275.32
 
@@ -337,7 +337,7 @@ Requires:       nodejs10 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
 Provides:       npm = %{version}
-Provides:       npm(npm) = 6.14.8
+Provides:       npm(npm) = 6.14.10
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
 Requires:       group(nobody)
@@ -349,7 +349,7 @@ Provides:       bundled(node-abbrev) = 1.1.1
 Provides:       bundled(node-agent-base) = 4.2.1
 Provides:       bundled(node-agent-base) = 4.3.0
 Provides:       bundled(node-agentkeepalive) = 3.5.2
-Provides:       bundled(node-ajv) = 5.5.2
+Provides:       bundled(node-ajv) = 6.12.6
 Provides:       bundled(node-ansi-align) = 2.0.0
 Provides:       bundled(node-ansi-regex) = 2.1.1
 Provides:       bundled(node-ansi-regex) = 3.0.0
@@ -394,7 +394,6 @@ Provides:       bundled(node-cli-table3) = 0.5.1
 Provides:       bundled(node-cliui) = 5.0.0
 Provides:       bundled(node-clone) = 1.0.4
 Provides:       bundled(node-cmd-shim) = 3.0.3
-Provides:       bundled(node-co) = 4.6.0
 Provides:       bundled(node-code-point-at) = 1.1.0
 Provides:       bundled(node-color-convert) = 1.9.1
 Provides:       bundled(node-color-name) = 1.1.3
@@ -445,7 +444,7 @@ Provides:       bundled(node-escape-string-regexp) = 1.0.5
 Provides:       bundled(node-execa) = 0.7.0
 Provides:       bundled(node-extend) = 3.0.2
 Provides:       bundled(node-extsprintf) = 1.3.0
-Provides:       bundled(node-fast-deep-equal) = 1.1.0
+Provides:       bundled(node-fast-deep-equal) = 3.1.3
 Provides:       bundled(node-fast-json-stable-stringify) = 2.0.0
 Provides:       bundled(node-figgy-pudding) = 3.5.1
 Provides:       bundled(node-find-npm-prefix) = 1.0.2
@@ -472,7 +471,7 @@ Provides:       bundled(node-global-dirs) = 0.1.1
 Provides:       bundled(node-got) = 6.7.1
 Provides:       bundled(node-graceful-fs) = 4.2.4
 Provides:       bundled(node-har-schema) = 2.0.0
-Provides:       bundled(node-har-validator) = 5.1.0
+Provides:       bundled(node-har-validator) = 5.1.5
 Provides:       bundled(node-has) = 1.0.3
 Provides:       bundled(node-has-flag) = 3.0.0
 Provides:       bundled(node-has-symbols) = 1.0.0
@@ -519,7 +518,7 @@ Provides:       bundled(node-isstream) = 0.1.2
 Provides:       bundled(node-jsbn) = 0.1.1
 Provides:       bundled(node-json-parse-better-errors) = 1.0.2
 Provides:       bundled(node-json-schema) = 0.2.3
-Provides:       bundled(node-json-schema-traverse) = 0.3.1
+Provides:       bundled(node-json-schema-traverse) = 0.4.1
 Provides:       bundled(node-json-stringify-safe) = 5.0.1
 Provides:       bundled(node-jsonparse) = 1.3.1
 Provides:       bundled(node-jsprim) = 1.4.1
@@ -587,7 +586,7 @@ Provides:       bundled(node-npm-pick-manifest) = 3.0.2
 Provides:       bundled(node-npm-profile) = 4.0.4
 Provides:       bundled(node-npm-registry-fetch) = 4.0.7
 Provides:       bundled(node-npm-run-path) = 2.0.2
-Provides:       bundled(node-npm-user-validate) = 1.0.0
+Provides:       bundled(node-npm-user-validate) = 1.0.1
 Provides:       bundled(node-npmlog) = 4.1.2
 Provides:       bundled(node-number-is-nan) = 1.0.1
 Provides:       bundled(node-oauth-sign) = 0.9.0
@@ -595,7 +594,7 @@ Provides:       bundled(node-object-assign) = 4.1.1
 Provides:       bundled(node-object-keys) = 1.0.12
 Provides:       bundled(node-object.getownpropertydescriptors) = 2.0.3
 Provides:       bundled(node-once) = 1.4.0
-Provides:       bundled(node-opener) = 1.5.1
+Provides:       bundled(node-opener) = 1.5.2
 Provides:       bundled(node-os-homedir) = 1.0.2
 Provides:       bundled(node-os-tmpdir) = 1.0.2
 Provides:       bundled(node-osenv) = 0.1.5
@@ -628,6 +627,7 @@ Provides:       bundled(node-pump) = 2.0.1
 Provides:       bundled(node-pump) = 3.0.0
 Provides:       bundled(node-pumpify) = 1.5.1
 Provides:       bundled(node-punycode) = 1.4.1
+Provides:       bundled(node-punycode) = 2.1.1
 Provides:       bundled(node-qrcode-terminal) = 0.12.0
 Provides:       bundled(node-qs) = 6.5.2
 Provides:       bundled(node-query-string) = 6.8.2
@@ -713,6 +713,7 @@ Provides:       bundled(node-unique-string) = 1.0.0
 Provides:       bundled(node-unpipe) = 1.0.0
 Provides:       bundled(node-unzip-response) = 2.0.1
 Provides:       bundled(node-update-notifier) = 2.5.0
+Provides:       bundled(node-uri-js) = 4.4.0
 Provides:       bundled(node-url-parse-lax) = 1.0.0
 Provides:       bundled(node-util-deprecate) = 1.0.2
 Provides:       bundled(node-util-extend) = 1.0.3
@@ -796,7 +797,7 @@ tar Jxf %{SOURCE11}
 find -name \*~ -print0 -delete
 
 # abnormalities from patching
-find \( -name \*.js.orig -or -name \*.md.orig \) -delete
+find \( -name \*.js.orig -or -name \*.md.orig -or -name \*.1.orig \) -delete
 
 %build
 # normalize shebang

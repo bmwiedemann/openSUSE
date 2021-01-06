@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jan  4 19:14:43 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- New upstream LTS version 10.23.1:
+  * CVE-2020-8265: use-after-free in TLSWrap (High) bug in TLS
+    implementation. When writing to a TLS enabled socket,
+    node::StreamBase::Write calls node::TLSWrap::DoWrite with
+    a freshly allocated WriteWrap object as first argument.
+    If the DoWrite method does not return an error, this object is
+    passed back to the caller as part of a StreamWriteResult structure.
+    This may be exploited to corrupt memory leading to a
+    Denial of Service or potentially other exploits (bsc#1180553)
+  * CVE-2020-8287: HTTP Request Smuggling allow two copies of a
+    header field in a http request. For example, two Transfer-Encoding
+    header fields. In this case Node.js identifies the first header
+    field and ignores the second. This can lead to HTTP Request
+    Smuggling (https://cwe.mitre.org/data/definitions/444.html).
+    (bsc#1180554)
+  * CVE-2020-1971: OpenSSL - EDIPARTYNAME NULL pointer de-reference
+    (High) This is a vulnerability in OpenSSL which may be exploited
+    through Node.js. (bsc#1179491)
+
+- versioned.patch: refreshed
+
+-------------------------------------------------------------------
 Mon Dec 21 20:10:03 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add icu68.patch: fix build with ICU 68
