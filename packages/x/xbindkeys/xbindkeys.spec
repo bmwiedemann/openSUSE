@@ -1,7 +1,7 @@
 #
 # spec file for package xbindkeys
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,13 +25,13 @@
 # pass --with guile to rpmbuild.
 %bcond_with guile
 Name:           xbindkeys
-Version:        1.8.6
+Version:        1.8.7
 Release:        0
 Summary:        Events Grabbing Program for X-Window
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/X11/Utilities
-Url:            http://www.nongnu.org/xbindkeys/
-Source:         http://www.nongnu.org/%{name}/%{name}-%{version}.tar.gz
+URL:            https://www.nongnu.org/xbindkeys/
+Source:         https://www.nongnu.org/%{name}/%{name}-%{version}.tar.gz
 Requires:       tk
 %if %{with guile}
 BuildRequires:  guile-devel
@@ -64,20 +64,20 @@ to rpmbuild.
     --disable-guile
 %endif
 
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 
 %files
-%defattr(-,root,root,-)
-%doc AUTHORS BUGS COPYING ChangeLog README TODO xbindkeysrc
+%license COPYING
+%doc AUTHORS BUGS ChangeLog README TODO xbindkeysrc
 %if %{with guile}
 %doc xbindkeysrc-combo.scm xbindkeysrc.scm
 %endif
 %{_bindir}/%{name}
 %{_bindir}/%{name}_show
-%{_mandir}/man1/%{name}.1%{ext_man}
-%{_mandir}/man1/%{name}_show.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/man1/%{name}_show.1%{?ext_man}
 
 %changelog
