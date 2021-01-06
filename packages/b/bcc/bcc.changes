@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Jan  6 01:47:45 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.18.0
+  + Support for kernel up to 5.10
+  + add bpf kfunc/kretfunc C++ example
+  + add PT_REGS_PARMx_SYSCALL helper macro
+  + biolatency: allow json output
+  + biolatpcts: support measuring overall latencies between two events
+  + fix build when ENABLE_CLANG_JIT is disabled
+  + doc update and bug fixes
+- Update libbpf to 0.3
+  + kernel modules BTF support on all levels
+  + ring_buffer__epoll_fd() API
+  + xsk_socket__update_xskmap() and xsk_setup_xdp_prog() APIs
+  + New BPF helpers:    
+    - bpf_task_storage_get() and bpf_task_storage_delete();
+    - get_current_task_btf();
+    - bpf_bprm_opts_set();
+    - bpf_ktime_get_coarse_ns();
+    - bpf_ima_inode_hash();
+    - bpf_sock_from_file().
+  + ring_buffer__poll() returns number of consumed records
+    correctly
+  + handle corner-case case with unused sub-programs
+  + xsk_socket__delete() bug fixes
+
+-------------------------------------------------------------------
 Wed Nov  4 07:23:22 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to 0.17.0
