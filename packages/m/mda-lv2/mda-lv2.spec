@@ -1,7 +1,7 @@
 #
 # spec file for package mda-lv2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           mda-lv2
-Version:        1.2.2+git20190317
+Version:        1.2.4
 Release:        0
 Summary:        LV2 port of MDA plugins
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            http://drobilla.net/software/mda-lv2/
-Source:         mda.lv2-%{version}.tar.xz
+Source:         http://download.drobilla.net/%{name}-%{version}.tar.bz2
 BuildRequires:  gcc-c++
 BuildRequires:  lv2
 BuildRequires:  pkgconfig
@@ -40,7 +40,7 @@ only work in modern hosts which have implemented atom-based MIDI.
 The effects should work fine in any LV2 host.
 
 %prep
-%setup -q -n mda.lv2-%{version}
+%setup -q
 
 %build
 export CFLAGS="%{optflags}"
