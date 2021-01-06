@@ -1,0 +1,6 @@
+<package name="python-proto-plus" project="openSUSE:Factory">
+  <title>Python Proto Plus</title>
+  <description>This is a wrapper around protocol buffers. Protocol buffers is a specification format for APIs, such as those inside Google. This library provides protocol buffer message classes and objects that largely behave like native Python types.</description>
+  <devel project="devel:languages:python" package="python-proto-plus"/>
+  <url>https://github.com/googleapis/proto-plus-python</url>
+</package>
