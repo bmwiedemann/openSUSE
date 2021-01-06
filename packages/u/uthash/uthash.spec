@@ -1,7 +1,7 @@
 #
 # spec file for package uthash
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           uthash
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Inline hash table for C structures
 License:        BSD-3-Clause
@@ -28,7 +28,6 @@ Source:         https://github.com/troydhanson/uthash/archive/v%{version}/%{name
 Patch1:         uthash-proceed_with_tests_without_prompt.patch
 Patch2:         uthash-optflags.patch
 BuildRequires:  pkgconfig
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -50,9 +49,9 @@ implementation for C structures.
 %build
 
 %install
-b="%buildroot"
-mkdir -p "$b/%_includedir"
-cp -a src/*.h "$b/%_includedir/"
+b=%{buildroot}
+mkdir -p "$b/%{_includedir}"
+cp -a src/*.h "$b/%{_includedir}/"
 
 %check
 pushd tests
@@ -61,8 +60,8 @@ OPTFLAGS="%{optflags}" \
 popd
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/*.h
-%doc LICENSE README.md
+%license LICENSE
+%doc README.md
 
 %changelog

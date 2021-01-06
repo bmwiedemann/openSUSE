@@ -31,4 +31,18 @@
     <comment>- Update to release 2.1.0</comment>
     <requestid>740913</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c5f7af1bf92a56dbd296756c11638234</srcmd5>
+    <version>2.2.0</version>
+    <time>1609959432</time>
+    <user>dimstar_suse</user>
+    <comment>- udpate to 2.2.0:
+  * add HASH_NO_STDINT for platforms without C99 &lt;stdint.h&gt;
+  * silence many -Wcast-qual warnings (thanks, Olaf Bergmann!)
+  * skip hash computation when finding in an empty hash (thanks, Huansong Fu!)
+  * rename oom to utarray_oom, in utarray.h (thanks, Hong Xu!)
+  * rename oom to utstring_oom, in utstring.h (thanks, Hong Xu!)
+  * remove MurmurHash/HASH_MUR</comment>
+    <requestid>860747</requestid>
+  </revision>
 </revisionlist>
