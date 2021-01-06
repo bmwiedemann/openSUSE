@@ -1,7 +1,7 @@
 #
 # spec file for package libebml
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define soname 5
 Name:           libebml
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Library to parse EBML (Extensible Binary Markup Language) files
 License:        LGPL-2.1-or-later

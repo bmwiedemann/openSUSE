@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan  5 09:53:07 UTC 2021 - aloisio@gmx.com
+
+- Update to version 1.4.1
+  * Fixed a case EbmlMaster::Read where the element returned via
+    UpperEltFound and FountElt points to a just-deleted element,
+    causing callers to think the memory returned is valid,
+    potentially leading to use-after-free/double-free errors.
+    This can happen if the specific element's Read function
+    throws an exception when encountering certain invalid data
+    constellations.
+
+-------------------------------------------------------------------
 Sun Jun 28 06:07:14 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.4.0
