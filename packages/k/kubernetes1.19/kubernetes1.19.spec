@@ -1,7 +1,7 @@
 #
 # spec file for package kubernetes1.19
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define baseversionminus1 1.18
 
 Name:           kubernetes%{baseversion}
-Version:        1.19.4
+Version:        1.19.6
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0

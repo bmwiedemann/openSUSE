@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Tue Jan 05 12:02:26 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.19.6:
+  * volumebinding: report UnschedulableAndUnresolvable status instead of an error when PVC not found
+  * E2E stress test suite for VolumeSnapshots
+  * [go1.15] Use go-runner:buster-v2.2.2 image (built on go1.15.5)
+  * [go1.15] staging/publishing: Set default go version to go1.15.5
+  * [go1.15] Update to go1.15.5
+  * [go1.15] hack/tools: Update to k/repo-infra@v0.1.3 (supports go1.15.5)
+  * [go1.15] build: Update to k/repo-infra@v0.1.3 (supports go1.15.5)
+  * Flush FibreChannel devices before deleting
+  * Fix FibreChannel volume plugin corrupting filesystem on detach
+  * vendor: update cAdvisor to v0.37.3
+  * Update CHANGELOG/CHANGELOG-1.19.md for v1.19.5
+  * fix migration logic
+  * Add AcceleratorStats to cri_stats_provider
+  * coredns dep.Severity is newdefault, not newDefault
+  * Update ingress conformance test for finalizers
+  * bump cadvisor to 0.37.2
+  * Restore beta os/arch labels on initial node registration
+  * fix bug: concurrent map writes error
+  * range_allocator: Test (lack of) double counting
+  * cidrset: Add test for double counting
+  * Fix double counting of IP addresses
+  * Choosing the right source VIP for local endpoints
+  * Bump node-problem-detector to v0.8.5
+  * allow configuring ReadIdelTimeout and PingTimeout via env var
+  * Add a unit test testing the HTTP/2 health check help the REST client detects broken TCP connections.
+  * configure the ReadIdleTimeout and PingTimeout of the h2 transport
+  * update golang.org/x/net and golang.org/x/sys, equivalent of #96549
+  * fix: resize Azure disk issue when it's in attached state
+  * Remove ready directory which created in empty volumeMounter setUp func
+  * Updating to cadvisor v0.37.1
+  * Fix cacheWatcher leak when time jump to the future and jump back
+  * update e2e kubectl test
+  * prune type in preserve-unknown-fields objects
+  * apiextensions: prune array type without items in published OpenAPI
+  * fix pull image error from multiple ACRs using azure managed identity
+  * fix kube-proxy cleanup
+  * change GetFullQualifiedPluginNameForVolume to distinuish different drivers
+  * Fix a bug that DefaultPreemption plugin is disabled when using scheduler policy
+  * Update CHANGELOG/CHANGELOG-1.19.md for v1.19.4
+  * use patch instead of replace to test the dry-run option
+  * Fix --dry-run invocation in kubectl e2e
+  * Clean up remaining ns flag
+  * Use namespace flag passed to RunKubectl* methods
+  * Update max data disk count with new instance types
+  * fix the panic when kubelet registers if a node object already exists with no Status.Capacity or Status.Allocatable
+  * report UnschedulableAndUnresolvable status instead of an error when PVCs can't find bound persistent volumes
+  * do not allow inflight watermark histograms to fall too far behind
+  * Fix bug in JSON path parser where an error occurs when a range is empty
+  * Build files
+  * Allow priority to be set for kubelet process on Windows
+  * DelegatingAuthorizationOptions: exposes and sets a default timeout for SubjectAccessReview client
+  * Do not update managedFields timestamp when they don't change
+  * Mask bearer token in logs when logLevel >= 9
+
+-------------------------------------------------------------------
 Fri Nov 13 13:03:45 UTC 2020 - rbrown@suse.com
 
 - Update to version 1.19.4:

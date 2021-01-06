@@ -140,4 +140,41 @@
   * Don't create a new sandbox for pod with RestartPolicyOnFailure if all containers succeeded</comment>
     <requestid>848395</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>317bc8a8747580feb713cc019a252683</srcmd5>
+    <version>1.19.6</version>
+    <time>1609959359</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.19.6:
+  * volumebinding: report UnschedulableAndUnresolvable status instead of an error when PVC not found
+  * E2E stress test suite for VolumeSnapshots
+  * [go1.15] Use go-runner:buster-v2.2.2 image (built on go1.15.5)
+  * [go1.15] staging/publishing: Set default go version to go1.15.5
+  * [go1.15] Update to go1.15.5
+  * [go1.15] hack/tools: Update to k/repo-infra@v0.1.3 (supports go1.15.5)
+  * [go1.15] build: Update to k/repo-infra@v0.1.3 (supports go1.15.5)
+  * Flush FibreChannel devices before deleting
+  * Fix FibreChannel volume plugin corrupting filesystem on detach
+  * vendor: update cAdvisor to v0.37.3
+  * Update CHANGELOG/CHANGELOG-1.19.md for v1.19.5
+  * fix migration logic
+  * Add AcceleratorStats to cri_stats_provider
+  * coredns dep.Severity is newdefault, not newDefault
+  * Update ingress conformance test for finalizers
+  * bump cadvisor to 0.37.2
+  * Restore beta os/arch labels on initial node registration
+  * fix bug: concurrent map writes error
+  * range_allocator: Test (lack of) double counting
+  * cidrset: Add test for double counting
+  * Fix double counting of IP addresses
+  * Choosing the right source VIP for local endpoints
+  * Bump node-problem-detector to v0.8.5
+  * allow configuring ReadIdelTimeout and PingTimeout via env var
+  * Add a unit test testing the HTTP/2 health check help the REST client detects broken TCP connections.
+  * configure the ReadIdleTimeout and PingTimeout of the h2 transport
+  * update golang.org/x/net and golang.org/x/sys, equivalent of #96549
+  * fix: resize Azure disk issue when it's in attached state
+  * Remove ready directory which created in empty volumeMounter setUp func</comment>
+    <requestid>860455</requestid>
+  </revision>
 </revisionlist>
