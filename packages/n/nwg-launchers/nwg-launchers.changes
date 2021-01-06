@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan  6 08:33:22 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.3:
+  * use sway-ipc to connect to sway
+  * support for the foot terminal
+  * dmenu: use STDIN_FILENO instead of fileno(stdin)
+  * clean up pid file handling
+  * check for TERM_CMD when detecting term, support terminal
+    flags other than '-e' uniformly
+  * fixed keyboard-driven selection in dmenu #141
+
+-------------------------------------------------------------------
 Mon Nov  9 07:41:31 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.4.2:

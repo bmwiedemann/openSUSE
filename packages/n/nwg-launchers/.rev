@@ -69,4 +69,19 @@
   * [nwggrid] forgotten field initialization added #132</comment>
     <requestid>847057</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a61c3f8d84d4b00ce2a6c8d0fcb6717c</srcmd5>
+    <version>0.4.3</version>
+    <time>1609959413</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.3:
+  * use sway-ipc to connect to sway
+  * support for the foot terminal
+  * dmenu: use STDIN_FILENO instead of fileno(stdin)
+  * clean up pid file handling
+  * check for TERM_CMD when detecting term, support terminal
+    flags other than '-e' uniformly
+  * fixed keyboard-driven selection in dmenu #141</comment>
+    <requestid>860613</requestid>
+  </revision>
 </revisionlist>
