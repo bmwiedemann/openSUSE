@@ -1,7 +1,7 @@
 #
 # spec file for package virt-manager
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -123,6 +123,7 @@ Group:          System/Monitoring
 # This version not strictly required: virt-manager should work with older,
 # however varying amounts of functionality will not be enabled.
 Requires:       libosinfo >= 0.2.10
+Requires:       mkisofs
 Requires:       python3-gobject
 Requires:       python3-ipaddr
 Requires:       python3-libvirt-python >= 0.7.0

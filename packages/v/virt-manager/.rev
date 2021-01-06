@@ -1718,4 +1718,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>856508</requestid>
   </revision>
+  <revision rev="218" vrev="4">
+    <srcmd5>61e1ec46748b75a4366d90ef810e5761</srcmd5>
+    <version>3.2.0</version>
+    <time>1609959333</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1180062</comment>
+    <requestid>860328</requestid>
+  </revision>
 </revisionlist>
