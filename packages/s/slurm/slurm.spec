@@ -1,7 +1,7 @@
 #
 # spec file for package slurm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -607,6 +607,12 @@ install -D -m600 etc/slurmdbd.conf.example %{buildroot}%{_sysconfdir}/%{pname}/s
 install -D -m755 contribs/sjstat %{buildroot}%{_bindir}/sjstat
 install -D -m755 contribs/sgather/sgather %{buildroot}%{_bindir}/sgather
 
+cat <<EOF >%{buildroot}%{_sysconfdir}/%{pname}/plugstack.conf
+include %{_sysconfdir}/%{pname}/plugstack.conf.d/*.conf
+EOF
+
+mkdir -p %{buildroot}%{_sysconfdir}/%{pname}/plugstack.conf.d
+
 cp contribs/pam_slurm_adopt/README ../README.pam_slurm_adopt
 cp  contribs/pam/README ../README.pam_slurm
 # change slurm.conf for our needs
@@ -1043,6 +1049,8 @@ exit 0
 %files plugins
 %{?comp_at}
 %config %{_sysconfdir}/ld.so.conf.d/slurm.conf
+%config(noreplace) %{_sysconfdir}/%{pname}/plugstack.conf
+%dir %{_sysconfdir}/%{pname}/plugstack.conf.d
 %dir %{_libdir}/slurm
 %{_libdir}/slurm/libslurmfull.so
 %{_libdir}/slurm/accounting_storage_none.so

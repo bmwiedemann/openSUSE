@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan  5 08:02:02 UTC 2021 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Add support for configuration files from external plugins. 
+  While built-in plugins have their configuration added in slurm.conf,
+  external SPANK plugins add their configuration to plugstack.conf
+  To allow packaging easily spank plugins, their configuration files
+  should be added independently at /etc/spack/plugstack.conf.d and
+  plugstack.conf should be left with an oneliner including all the
+  files under /etc/spack/plugstack.conf.d
+
+-------------------------------------------------------------------
 Mon Dec 28 14:37:58 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Update to 20.11.02 
