@@ -290,10 +290,14 @@ export LDFLAGS CFLAGS CXXFLAGS CPPFLAGS
 
 %install
 %make_install
-
+%if %{defined _distconfdir}
+install -d -m 755 %{buildroot}%{_distconfdir}/pam.d
+install -m 644 %{SOURCE2} %{buildroot}%{_distconfdir}/pam.d/sshd
+%else
 install -d -m 755 %{buildroot}%{_sysconfdir}/pam.d
-install -d -m 755 %{buildroot}%{_localstatedir}/lib/sshd
 install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/sshd
+%endif
+install -d -m 755 %{buildroot}%{_localstatedir}/lib/sshd
 install -d -m 755 %{buildroot}%{_sysconfdir}/slp.reg.d/
 install -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/slp.reg.d/
 install -D -m 0644 %{SOURCE10} %{buildroot}%{_unitdir}/sshd.service
@@ -350,6 +354,11 @@ fi
 %pre server
 getent group sshd >/dev/null || %{_sbindir}/groupadd -r sshd
 getent passwd sshd >/dev/null || %{_sbindir}/useradd -r -g sshd -d %{_localstatedir}/lib/sshd -s /bin/false -c "SSH daemon" sshd
+%if %{defined _distconfdir}
+# move outdated pam.d/*.rpmsave file away
+test -f /etc/pam.d/sshd.rpmsave && mv -v /etc/pam.d/sshd.rpmsave /etc/pam.d/sshd.rpmsave.old ||:
+%endif
+
 
 # See %%pre.
 if [ -x %{_bindir}/systemctl ]; then
@@ -386,6 +395,13 @@ else
 %service_del_postun sshd.service
 fi
 
+%if %{defined _distconfdir}
+%posttrans server
+# Migration to /usr/etc.
+test -f /etc/pam.d/sshd.rpmsave && mv -v /etc/pam.d/sshd.rpmsave /etc/pam.d/sshd ||:
+%endif
+
+
 %triggerin -n openssh-fips -- %{name} = %{version}-%{release}
 %restart_on_update sshd
 
@@ -412,7 +428,11 @@ fi
 %attr(0755,root,root) %{_sbindir}/sshd-gen-keys-start
 %dir %attr(755,root,root) %{_localstatedir}/lib/sshd
 %verify(not mode) %attr(0640,root,root) %config(noreplace) %{_sysconfdir}/ssh/sshd_config
+%if %{defined _distconfdir}
+%attr(0644,root,root) %{_distconfdir}/pam.d/sshd
+%else
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/pam.d/sshd
+%endif
 %attr(0644,root,root) %{_unitdir}/sshd.service
 %attr(0444,root,root) %{_mandir}/man5/sshd_config*
 %attr(0444,root,root) %{_mandir}/man8/sftp-server.8*

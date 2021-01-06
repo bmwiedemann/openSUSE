@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 27 11:36:56 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Support /usr/etc/pam.d
+
+-------------------------------------------------------------------
 Wed Nov 11 20:05:27 UTC 2020 - Hans Petter Jansson <hpj@suse.com>
 
 - Fix build breakage caused by missing security key objects:
