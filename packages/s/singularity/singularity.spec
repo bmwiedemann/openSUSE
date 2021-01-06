@@ -1,7 +1,7 @@
 #
 # spec file for package singularity
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        Application and environment virtualization
 License:        BSD-3-Clause-LBNL
 Group:          Productivity/Clustering/Computing
 Name:           singularity
-Version:        3.6.4
+Version:        3.7.0
 Release:        0
 # https://spdx.org/licenses/BSD-3-Clause-LBNL.html
 URL:            https://github.com/hpcng/singularity
@@ -143,6 +143,7 @@ exit 0
 %config(noreplace) %{_sysconfdir}/singularity/capability.json
 %config(noreplace) %{_sysconfdir}/singularity/cgroups
 %config(noreplace) %{_sysconfdir}/singularity/ecl.toml
+%config(noreplace) %{_sysconfdir}/singularity/global-pgp-public
 %config(noreplace) %{_sysconfdir}/singularity/network
 %config(noreplace) %{_sysconfdir}/singularity/nvliblist.conf
 %config(noreplace) %{_sysconfdir}/singularity/seccomp-profiles
