@@ -1,7 +1,7 @@
 #
 # spec file for package clojure
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://clojure.org/
 Source0:        https://download.clojure.org/install/clojure-tools-%{version}.tar.gz
 BuildRequires:  fdupes
 Requires:       java >= 1.8.0
+Requires:       rlwrap
 BuildArch:      noarch
 
 %description
