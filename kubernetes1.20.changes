@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 05 12:02:26 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.20.1:
+  * Revert "Use host IP instead of localhost for control plane component kubeconfig files."
+  * etcd version for 1.19 is 3.4.13 for cve fixes
+  * Flush FibreChannel devices before deleting
+  * Fix FibreChannel volume plugin corrupting filesystem on detach
+  * vendor: update cAdvisor to v0.38.6
+  * Update CHANGELOG/CHANGELOG-1.20.md for v1.20.0
+  * Revert "iAdd host IP to etcd listen client URLs."
+  * fix migration logic
+  * Add AcceleratorStats to cri_stats_provider
+
+-------------------------------------------------------------------
 Wed Dec 16 10:20:21 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Add obsoletes to -client-common to facilitate smooth upgrades from older versions 
