@@ -272,4 +272,38 @@ sc
     <comment></comment>
     <requestid>850762</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a792f2c96e3b1f1c1400554da7cadc22</srcmd5>
+    <version>1.18.14</version>
+    <time>1609959362</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.18.14:
+  * Flush FibreChannel devices before deleting
+  * Fix FibreChannel volume plugin corrupting filesystem on detach
+  * Accept healthy instances in list of active instances
+  * Update CHANGELOG/CHANGELOG-1.18.md for v1.18.13
+  * Remove ready directory which created in empty volumeMounter setUp func
+  * Avoid unnecessary GCE API calls for IP-alias calls
+  * Lazy initialization of network urls for GCE provider
+  * Bump node-problem-detector to v0.8.5
+  * fix: resize Azure disk issue when it's in attached state
+  * Fix issue in evaluating symlink path for subpath
+  * Replace evalSymlink() with powershell command for subPath_windows.go
+  * Fix cacheWatcher leak when time jump to the future and jump back
+  * update e2e kubectl test
+  * prune type in preserve-unknown-fields objects
+  * apiextensions: prune array type without items in published OpenAPI
+  * fix pull image error from multiple ACRs using azure managed identity
+  * Update CHANGELOG/CHANGELOG-1.18.md for v1.18.12
+  * change GetFullQualifiedPluginNameForVolume to distinuish different drivers
+  * Update max data disk count with new instance types
+  * Build files
+  * Allow priority to be set for kubelet process on Windows
+  * volume binding: report UnschedulableAndUnresolvable status instead of an error when bound PVs not found
+  * DelegatingAuthorizationOptions: exposes and sets a default timeout for SubjectAccessReview client
+  * Do not update managedFields timestamp when they don't change
+  * Mask bearer token in logs when logLevel &gt;= 9
+  * Don't create a new sandbox for pod with RestartPolicyOnFailure if all containers succeeded</comment>
+    <requestid>860456</requestid>
+  </revision>
 </revisionlist>
