@@ -41,4 +41,20 @@
 - Write a description</comment>
     <requestid>778646</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4e9c3830f283db2c472cd4ed6dbe619f</srcmd5>
+    <version>0.4.0</version>
+    <time>1609959397</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0
+  * Check that sys.stdout object has isatty attribute in addition to it
+    being True
+    + If using a custom object that does not have the isatty attribute and
+      you would still like color, you can set the CLINT_FORCE_COLOR environment
+      variable
+  * Explicitly set incoming parameter to crayons to string (so that len, etc.
+    work as expected) 
+- Drop LICENSE as a separate source, now included in the upstream tarball.</comment>
+    <requestid>860570</requestid>
+  </revision>
 </revisionlist>

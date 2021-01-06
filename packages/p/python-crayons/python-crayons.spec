@@ -1,7 +1,7 @@
 #
 # spec file for package python-crayons
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-crayons
-Version:        0.3.0 
+Version:        0.4.0 
 Release:        0
 Summary:        Colored strings for terminal usage
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/MasterOdin/crayons
 Source:         https://files.pythonhosted.org/packages/source/c/crayons/crayons-%{version}.tar.gz
-Source1:        LICENSE
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 Requires:       python-colorama
@@ -39,7 +37,6 @@ and normal.
 
 %prep
 %setup -q -n crayons-%{version}
-cp %{SOURCE1} .
 
 %build
 %python_build

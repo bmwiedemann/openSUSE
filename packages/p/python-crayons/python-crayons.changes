@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan  6 04:58:19 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.4.0
+  * Check that sys.stdout object has isatty attribute in addition to it
+    being True
+    + If using a custom object that does not have the isatty attribute and
+      you would still like color, you can set the CLINT_FORCE_COLOR environment
+      variable
+  * Explicitly set incoming parameter to crayons to string (so that len, etc.
+    work as expected) 
+- Drop LICENSE as a separate source, now included in the upstream tarball.
+
+-------------------------------------------------------------------
 Mon Feb 24 05:03:28 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.3.0 
