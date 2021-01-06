@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 29 22:16:03 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.12.0
+  * candump: Enable zero relative timestamps to be used in
+    log files.
+  * "-tz" and "-ta" are now valid options for the logfile format.
+
+-------------------------------------------------------------------
 Mon Nov 30 12:46:23 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Add "can-utils" provides, add documentation.
