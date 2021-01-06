@@ -1,0 +1,76 @@
+diff -auNr med-4.1.0/src/MEDiterators.c med-4.1.0-new/src/MEDiterators.c
+--- med-4.1.0/src/MEDiterators.c	2020-03-11 17:36:37.000000000 +0800
++++ med-4.1.0-new/src/MEDiterators.c	2021-01-06 11:58:43.969522119 +0800
+@@ -203,6 +203,7 @@
+   case  MED_NODE_ELEMENT      : return 5; break;
+   case  MED_STRUCT_ELEMENT    : return 6; break;
+   /* case  MED_UNDEF_ENTITY_TYPE : return 7; break;  */
++  default : return 0; break;
+   }
+ };
+ 
+@@ -235,6 +236,7 @@
+   case MED_POLYGON2   : return 23; break;
+   case MED_POLYHEDRON : return 24; break;
+   /* case MED_NO_GEOTYPE : return 25; break; */
++  default : return 0; break;
+   }
+ };
+ 
+@@ -251,6 +253,7 @@
+   case MED_POLYGON    : return 7; break;
+   case MED_POLYGON2   : return 8; break;
+   /* case MED_NO_GEOTYPE : return 9; break; */
++  default : return 0; break;
+   }
+ };
+ 
+@@ -260,12 +263,14 @@
+   case MED_SEG2       : return 1; break;
+   case MED_SEG3       : return 2; break;
+   case MED_SEG4       : return 3; break;
++  default : return 0; break;  // MED_NO_GEOTYPE
+   }
+ };
+ 
+ int MEDgetNodeGeometryTypeIt(med_geometry_type geotype) {
+   switch( geotype ) {
+   case MED_NO_GEOTYPE : return 1; break;
++  default : return 1; break;  // MED_NO_GEOTYPE
+   }
+ };
+ 
+@@ -278,6 +283,7 @@
+   case  MED_NODE              : return MEDgetNodeGeometryTypeIt(geotype); break;
+   case  MED_NODE_ELEMENT      : return MEDgetCellGeometryTypeIt(geotype); break;
+   case  MED_STRUCT_ELEMENT    : return geotype%MED_STRUCT_GEO_INTERNAL  ; break;
++  default : return 0; break;  // MED_UNDEF_ENTITY_TYPE
+   }
+ };
+ 
+@@ -290,6 +296,7 @@
+     case  MED_NODE              : return "MED_NODE"             ; break;
+     case  MED_NODE_ELEMENT      : return "MED_NODE_ELEMENT"     ; break;
+     case  MED_STRUCT_ELEMENT    : return "MED_STRUCT_ELEMENT"   ; break;
++  default : return "MED_UNDEF_ENTITY_TYPE"; break;  // MED_UNDEF_ENTITY_TYPE
+   }
+ }
+ 
+diff -auNr med-4.1.0/src/misc/_MEDgetEntityListAttributeIName.c med-4.1.0-new/src/misc/_MEDgetEntityListAttributeIName.c
+--- med-4.1.0/src/misc/_MEDgetEntityListAttributeIName.c	2020-03-11 17:40:07.000000000 +0800
++++ med-4.1.0-new/src/misc/_MEDgetEntityListAttributeIName.c	2021-01-06 12:00:25.822276513 +0800
+@@ -30,6 +30,7 @@
+     case  MED_DESCENDING_EDGE   : return MED_NOM_LGE; break;
+     case  MED_NODE_ELEMENT      : return MED_NOM_LGT; break;
+     case  MED_STRUCT_ELEMENT    : return MED_NOM_LGS; break;
++  default: return MED_NOM_LEN; break; // MED_UNDEF_ENTITY_TYPE
+   }
+ }
+ /*ALL : Nombre d'étapes partageant la liste globale des types utilisés dans ttes les étapes .*/
+@@ -42,5 +43,6 @@
+     case  MED_DESCENDING_EDGE   : return MED_NOM_LEA; break;
+     case  MED_NODE_ELEMENT      : return MED_NOM_LTA; break;
+     case  MED_STRUCT_ELEMENT    : return MED_NOM_LSA; break;
++  default: return MED_NOM_LAA; break; // MED_UNDEF_ENTITY_TYPE
+   }
+ }

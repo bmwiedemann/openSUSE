@@ -1,7 +1,7 @@
 #
 # spec file for package med-tools
 #
-# Copyright (c) 2019 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define sover 11
 
 %bcond_without python_bindings
@@ -22,26 +23,20 @@
 
 Name:           med-tools
 Summary:        A library to store and exchange meshed data
-License:        LGPL-3.0
+License:        LGPL-3.0-only
 Group:          Productivity/Graphics/Other
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
-Url:            https://www.salome-platform.org/downloads/current-version
+URL:            https://www.salome-platform.org/downloads/current-version
 Source0:        https://files.salome-platform.org/Salome/other/med-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE
 Patch0:         fix-cmakefiles.patch
 # PATCH-FIX-OPENSUSE
-Patch1:         0001-Fix-error-message-concatenation.patch
+Patch1:         0003-Avoid-format-warnings-on-64-bit.patch
 # PATCH-FIX-OPENSUSE
-Patch2:         0002-Return-this-from-operator-in-medenum-python-wrapper.patch
+Patch2:         use_installed_python_modules_for_tests.patch
 # PATCH-FIX-OPENSUSE
-Patch3:         0003-Avoid-format-warnings-on-64-bit.patch
-# PATCH-FIX-OPENSUSE
-Patch4:         0004-Fix-allocation-for-MEDfileName-consider-trailing-nul.patch
-# PATCH-FIX-OPENSUSE
-Patch5:         0005-Respect-DESTDIR-when-byte-compiling-python-code.patch
-# PATCH-FIX-OPENSUSE
-Patch6:         use_installed_python_modules_for_tests.patch
+Patch3:         Fix-no_return_in_nonvoid_function.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -106,10 +101,10 @@ It uses the HDF5 file format to store the data.
 This package contains the python bindings
 
 %package -n libmed-devel
+Requires:       hdf5-devel >= 1.10.2
 Requires:       libmed%{sover} = %{version}
 Requires:       libmedC%{sover} = %{version}
 Requires:       libmedimport0 = %{version}
-Requires:       hdf5-devel >= 1.10.2
 Summary:        Libmed development files
 Group:          Development/Libraries/C and C++
 
@@ -143,14 +138,15 @@ It uses the HDF5 file format to store the data.
 
 %prep
 %setup -q -n med-%{version}
-%patch0 -p0
+%patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
 
+# Fix file not utf8
+iconv --from=ISO-8859-1 --to=UTF-8 ChangeLog > ChangeLog.new && \
+touch -r ChangeLog ChangeLog.new && \
+mv ChangeLog.new ChangeLog
 
 %build
 %cmake \
@@ -158,8 +154,7 @@ It uses the HDF5 file format to store the data.
  -DMEDFILE_USE_MPI:BOOL=%{?with_mpi:ON}%{!?with_mpi:OFF} \
  -DMEDFILE_INSTALL_DOC:BOOL=ON
 
-%make_jobs
-
+%make_build
 
 %install
 %cmake_install
@@ -177,7 +172,6 @@ mv %{buildroot}/%{_datadir}/doc/med* %{buildroot}/%{_datadir}/doc/packages/med-t
 # add missing symlinks, install tries to generate these outside the buildroot
 ln -sf mdump3 %{buildroot}/usr/bin/mdump
 ln -sf xmdump3 %{buildroot}/usr/bin/xmdump
-
 
 %check
 cd build
