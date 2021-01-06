@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Dec 30 15:51:27 UTC 2020 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Upgrade to release 1.6.1
+  + Fixed integer overflow bug setting "x-amz-meta-s3backer-filesize" (issue #141)
+
+-------------------------------------------------------------------
+Wed Dec 23 18:04:42 UTC 2020 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Upgrade to release 1.6.0
+  + Added `--sse-key-id' flag (issue #137)
+  + Log a more useful error message when IAM credentials not found (issue #136)
+  + Warn on startup if disk space is insufficient for disk cache (issue #138)
+  + Added zero block cache to better handle fstrim operations (issue #139)
+
+-------------------------------------------------------------------
 Fri Oct 30 17:03:54 UTC 2020 - Archie Cobbs <archie.cobbs@gmail.com>
 
 - Upgrade to release 1.5.6
