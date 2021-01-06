@@ -1,7 +1,7 @@
 #
 # spec file for package nodejs14
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs14
-Version:        14.15.3
+Version:        14.15.4
 Release:        0
 
 %define node_version_number 14
@@ -248,7 +248,7 @@ BuildRequires:  openssl-devel >= %{openssl_req_ver}
 
 %endif
 %else
-Provides:       bundled(openssl) = 1.1.1g
+Provides:       bundled(openssl) = 1.1.1i
 %endif
 
 %if ! 0%{with intree_cares}
@@ -343,7 +343,7 @@ Requires:       nodejs14 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
 Provides:       npm = %{version}
-Provides:       npm(npm) = 6.14.9
+Provides:       npm(npm) = 6.14.10
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
 Requires:       group(nobody)
@@ -600,7 +600,7 @@ Provides:       bundled(node-object-assign) = 4.1.1
 Provides:       bundled(node-object-keys) = 1.0.12
 Provides:       bundled(node-object.getownpropertydescriptors) = 2.0.3
 Provides:       bundled(node-once) = 1.4.0
-Provides:       bundled(node-opener) = 1.5.1
+Provides:       bundled(node-opener) = 1.5.2
 Provides:       bundled(node-os-homedir) = 1.0.2
 Provides:       bundled(node-os-tmpdir) = 1.0.2
 Provides:       bundled(node-osenv) = 0.1.5
@@ -802,7 +802,7 @@ tar Jxf %{SOURCE11}
 find -name \*~ -print0 -delete
 
 # abnormalities from patching
-find \( -name \*.js.orig -or -name \*.md.orig \) -delete
+find \( -name \*.js.orig -or -name \*.md.orig -or -name \*.1.orig \) -delete
 
 %build
 # normalize shebang

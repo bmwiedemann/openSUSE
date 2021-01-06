@@ -184,4 +184,28 @@ fixed unit tests</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>859023</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d90cbb48e671dd6979e3ab1e7442e45d</srcmd5>
+    <version>14.15.4</version>
+    <time>1609959347</time>
+    <user>dimstar_suse</user>
+    <comment>Only changelog from last sr
+
+- New upstream LTS version 14.15.4:
+  * CVE-2020-8265: use-after-free in TLSWrap (High) bug in TLS
+    implementation. When writing to a TLS enabled socket,
+    node::StreamBase::Write calls node::TLSWrap::DoWrite with
+    a freshly allocated WriteWrap object as first argument.
+    If the DoWrite method does not return an error, this object is
+    passed back to the caller as part of a StreamWriteResult structure.
+    This may be exploited to corrupt memory leading to a
+    Denial of Service or potentially other exploits (bsc#1180553)
+  * CVE-2020-8287: HTTP Request Smuggling allow two copies of a
+    header field in a http request. For example, two Transfer-Encoding
+    header fields. In this case Node.js identifies the first header
+    field and ignores the second. This can lead to HTTP Request
+    Smuggling (https://cwe.mitre.org/data/definitions/444.html).
+    (bsc#1180554)</comment>
+    <requestid>860436</requestid>
+  </revision>
 </revisionlist>
