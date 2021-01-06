@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan  6 16:43:45 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.5.6:
+  * Bugfixes:
+    - PICARD-2074 - Crash when trying to add new tags
+    - PICARD-2083 - Snap version: path to fpcalc gets invalid
+      after update
+    - PICARD-2087 - Adding new tags crashes Picard with Qt < 5.10
+
+-------------------------------------------------------------------
 Fri Dec 18 10:33:06 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 2.5.5:
