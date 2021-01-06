@@ -313,7 +313,6 @@ Python, and Macintosh Module Reference in format for devhelp.
 %package -n %{python_pkg_name}-base
 Summary:        Python 3 Interpreter and Stdlib Core
 Requires:       libpython%{so_version} = %{version}
-Requires:       python-rpm-macros
 Recommends:     %{python_pkg_name} = %{version}
 #Recommends:     python3-ensurepip
 # python 3.1 didn't have a separate python-base, so it is wrongly

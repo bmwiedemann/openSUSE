@@ -2905,4 +2905,14 @@ http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html
 </comment>
     <requestid>860180</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>dfa8c8cb57f49939afcc647a3db8a834</srcmd5>
+    <version>3.6.12</version>
+    <time>1609959455</time>
+    <user>dimstar_suse</user>
+    <comment>- (bsc#1180125) We really don't Require python-rpm-macros package.
+  Unnecessary dependency.
+</comment>
+    <requestid>860800</requestid>
+  </revision>
 </revisionlist>
