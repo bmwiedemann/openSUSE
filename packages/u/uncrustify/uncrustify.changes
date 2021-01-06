@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan  4 10:56:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.72.0:
+  * new command option: --debug-csv-format : Dump debug info to file in csv-delimited format.
+  * Added: nl_inside_empty_func
+  * Added: debug_timeout
+  * Added: sp_inside_square_empty
+  * Added: align_eigen_comma_init
+  * Added: pos_shift
+  * Added: donot_indent_func_def_close_paren
+  * Added: donot_add_nl_before_cpp_comment
+  * see https://github.com/uncrustify/uncrustify/blob/uncrustify-0.72.0/ChangeLog
+
+-------------------------------------------------------------------
 Thu May 14 07:25:59 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.71.0:

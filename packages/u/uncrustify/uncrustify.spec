@@ -1,7 +1,7 @@
 #
 # spec file for package uncrustify
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           uncrustify
-Version:        0.71.0
+Version:        0.72.0
 Release:        0
 Summary:        Source Code Beautifier for C, C++, C#, ObjectiveC, D
 License:        GPL-2.0-or-later
 Group:          Development/Languages/C and C++
-URL:            http://uncrustify.sourceforge.net/
-Source:         https://sourceforge.net/projects/uncrustify/files/uncrustify-%{version}/uncrustify-%{version}.tar.gz
+URL:            https://github.com/uncrustify/uncrustify
+Source:         https://github.com/uncrustify/uncrustify/archive/uncrustify-0.72.0.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 
@@ -44,7 +44,7 @@ Features:
   * Highly configurable - 454 configurable options as of version 0.60.
 
 %prep
-%setup -q -c
+%setup -q -n %{name}-%{name}-%{version}
 
 %build
 %cmake
