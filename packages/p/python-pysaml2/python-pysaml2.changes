@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  6 10:49:48 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add avoid-too-large-dates.patch to avoid test failures on i586
+  (Y38K bug; gh#IdentityPython/pysaml2#759)
+
+-------------------------------------------------------------------
 Mon Jan  4 21:25:04 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Skip test test_filter_ava_registration_authority_1

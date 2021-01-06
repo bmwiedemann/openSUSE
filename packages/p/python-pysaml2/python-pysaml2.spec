@@ -26,6 +26,9 @@ Summary:        Python implementation of SAML Version 2 to be used in a WSGI env
 License:        Apache-2.0
 URL:            https://github.com/IdentityPython/pysaml2
 Source:         https://github.com/IdentityPython/pysaml2/archive/v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM avoid-too-large-dates.patch gh#IdentityPython/pysaml2#759 mcepl@suse.com
+# avoid Y38K bug on 32bit machines.
+Patch0:         avoid-too-large-dates.patch
 BuildRequires:  %{python_module Paste}
 BuildRequires:  %{python_module cryptography >= 1.4}
 BuildRequires:  %{python_module dbm}
@@ -71,6 +74,10 @@ SAML2 service provider or an identity provider.
 
 %prep
 %setup -q -n %{modname}-%{version}
+%ifarch %{ix86}
+%patch0 -p1
+%endif
+
 # delete shebang of files not in executable path
 find src/ -name '*.py' -print0 | xargs -0 sed -i '1s/#!.*$//'
 # remove tests that poll internet

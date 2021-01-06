@@ -253,4 +253,14 @@
 </comment>
     <requestid>860349</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>6df9d37341e5255db891fea3aca80234</srcmd5>
+    <version>6.3.1</version>
+    <time>1609959422</time>
+    <user>dimstar_suse</user>
+    <comment>- Add avoid-too-large-dates.patch to avoid test failures on i586
+  (Y38K bug; gh#IdentityPython/pysaml2#759)
+</comment>
+    <requestid>860693</requestid>
+  </revision>
 </revisionlist>
