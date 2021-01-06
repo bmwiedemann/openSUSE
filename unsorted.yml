@@ -8436,14 +8436,6 @@ unsorted:
   - kubernetes-salt 
   - kubernetes-scheduler: [x86_64] 
   - kubernetes-scheduler-minus1: [x86_64] 
-  - kubernetes1.17-apiserver: [x86_64] 
-  - kubernetes1.17-client: [x86_64] 
-  - kubernetes1.17-controller-manager: [x86_64] 
-  - kubernetes1.17-kubeadm: [x86_64] 
-  - kubernetes1.17-kubelet: [x86_64] 
-  - kubernetes1.17-kubelet-common: [x86_64] 
-  - kubernetes1.17-proxy: [x86_64] 
-  - kubernetes1.17-scheduler: [x86_64] 
   - kubernetes1.18-apiserver: [x86_64] 
   - kubernetes1.18-client: [x86_64] 
   - kubernetes1.18-client-common: [x86_64] 
@@ -23487,6 +23479,7 @@ unsorted:
   - python3-prompt_toolkit 
   - python3-prompt_toolkit1 
   - python3-proselint 
+  - python3-proto-plus 
   - python3-psautohint 
   - python3-pscript 
   - python3-psychtoolbox 
@@ -24776,6 +24769,7 @@ unsorted:
   - qt6-declarative-docs-html 
   - qt6-declarative-docs-qch 
   - qt6-declarative-examples 
+  - qt6-declarative-imports 
   - qt6-declarative-private-devel 
   - qt6-declarative-tools 
   - qt6-designer-devel 
@@ -28018,6 +28012,7 @@ unsorted:
   - stardict-sounds-wyabdcrealpeopletts 
   - stardict-tools 
   - starfighter 
+  - starfighter-lang 
   - startup-notification-devel 
   - statgrab 
   - statserial 
