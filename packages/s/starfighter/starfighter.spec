@@ -16,16 +16,18 @@
 #
 
 
-%define baseversion 2.0
 Name:           starfighter
-Version:        2.0.0.3
+Version:        2.4
 Release:        0
 Summary:        Liberate the universe from the evil company WEAPCO
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Action/Arcade
 URL:            https://pr-starfighter.github.io/
-Source0:        https://github.com/pr-starfighter/%{name}/releases/download/v%{version}/starfighter-%{baseversion}-src.tar.gz
+Source0:        https://github.com/pr-starfighter/%{name}/releases/download/v%{version}/starfighter-%{version}-src.tar.gz
 Source1:        %{name}-icons.tar
+# PATCH-FEATURE-UPSTREAM https://github.com/pr-starfighter/starfighter/pull/24
+Patch0:         appdata.patch
+BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -47,10 +49,15 @@ craft known as "Firefly" and begins his mission to fight his way to Sol,
 freeing key systems along the way. The game opens with Chris attempting to
 escape a Weapco patrol that has intercepted him.
 
+%lang_package
+
 %prep
-%setup -q -a 1 -n %{name}-%{baseversion}-src
+%setup -q -a 1 -n %{name}-%{version}-src
+%patch0 -p1
+sed -i 's/\r$//' README.txt
 
 %build
+./autogen.sh
 %configure
 %make_build
 
@@ -67,6 +74,7 @@ rm -fr %{buildroot}%{_datadir}/doc/%{name}
 
 %suse_update_desktop_file %{name}
 %fdupes -s %{buildroot}%{_prefix}
+%find_lang pr-starfighter
 
 %files
 %license COPYING LICENSES
@@ -76,5 +84,13 @@ rm -fr %{buildroot}%{_datadir}/doc/%{name}
 %{_datadir}/icons/hicolor/
 %{_datadir}/pixmaps/%{name}.png
 %{_datadir}/%{name}
+%exclude %{_datadir}/%{name}/locale/*
+%{_mandir}/man6/starfighter.6%{?ext_man}
+%{_datadir}/metainfo/%{name}.appdata.xml
+
+%files lang -f pr-starfighter.lang
+%dir %{_datadir}/%{name}/locale/*
+%dir %{_datadir}/%{name}/locale/*/LC_MESSAGES
+
 
 %changelog

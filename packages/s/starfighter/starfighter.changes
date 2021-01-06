@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Wed Jan  6 00:24:26 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fixed spec file (language file directories)
+
+-------------------------------------------------------------------
+Tue Dec 29 14:44:42 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Update to version 2.4
+  * Added a Dutch translation contributed by Heimen Stoffels.
+  * Made it so that the player starts at the same part of the screen in Classic difficulty as in version 1.1 (which is in the top-left quadrant rather than in the center).
+  * Made it so that critical shield (that is, when you have only 1 shield left) causes more smoke particles to be generated.
+  * Fixed a bug where Kline could continue circling while running away, causing him to flee diagonally at a rather slow speed (and also allowing you to kill him pretty easily).
+  * Fixed a bug which caused music to not get installed properly (it was being installed in the sound directory instead of the music directory).
+  * Made the Venus mission start in the same way as version 1.1 in Classic difficulty (albeit with a shorter delay, since the dialog is shorter than it was in version 1.1).
+  * Made it so that the game doesn't go unresponsive to the OS when dying or after winning the Venus mission (meaning you don't have to wait for the game to proceed to the Game Over / Credits screen before you can quit the game normally, and also preventing weird bugs if you resize the window during that time).
+  * Made it so that resizing the window in the credits screen repositions the credits text to the new center.
+  * Simulated the smaller Kline health bars of version 1.1 in Classic difficulty. While Kline's health bar is still the larger size, its display is broken up into sections so that it now perfectly simulates version 1.1's Kline health bar behavior (a previous release already caused the portions of the health bar to be reduced in "steps", so they already behaved as if they were multiple health bars in Classic difficulty).
+  * Made it possible to switch to concentrate mode even with the Super Charge in Classic difficulty, as was the case in the original.
+  * Caused star position to be recalculated when you resize the window. This prevents weird gaps in the starfield when you make the window bigger in the middle of a mission, for instance.
+  * Added an option to compile a binary that will attempt to use the original music. We won't be distributing that music because that is a violation of copyright, but for those who have the music and want to mod it into the game (no pun intended), it is now possible to do this without changing the source code. Simply pass SF_OLD_MUSIC=1 as an option to the configure script and it will attempt to load the original music file names and use them exactly as version 1.1 did.
+  * Corrected the damage of micro rockets and triple-spread plasma bullets for Classic difficulty. These were both doubled at some point for balancing, so Classic difficulty now lowers the damage they inflict to their original values.
+- Add a language package.
+- Add appdata.patch for https://en.opensuse.org/openSUSE:AppStore
+
+-------------------------------------------------------------------
+Sat Sep 12 19:02:07 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.2
+  * Fixed some spelling errors.
+  * Replaced use of AUDIO_S16 with the correct AUDIO_S16SYS; the
+    effect of this is that the old definition could potentially
+    cause sound distortions depending on the platform which
+    shouldn't happen anymore.
+  * Replaced use of "stupid" in some dialog with "foolish", since
+    we've been trying to avoid careless sanist rhetoric in projects
+    we manage recently. "Foolish" is a more neutral term that
+    doesn't carry any negative connotations toward mentally
+    disabled people.
+  * Updated the starfighter.desktop file to be more complete.
+  * Fixed leftover links to the old website.
+  * Added a manfile, based on one written by a Debian contributor.
+- Update to version 2.3.1
+  * Adjusted in-mission dialogs to match the dialogs' timing (with
+    one exception, the first Kline encounter, so as not to mess
+    with music cues there).
+  * Made it so that, during the Kline fight in Classic difficulty,
+    Kline's health goes to the health levels of respective stages
+    when stage changes. This is done to simulate the behavior of
+    the original, where Kline actually had four separate health
+    bars that didn't bleed into each other.
+  * Fixed a bug in rendering of Unicode text which allowed
+    multi-byte Unicode characters to be split into multiple parts.
+- Update to version 2.3
+  * When someone I'm very close to played Project: Starfighter
+    recently, we noticed a major bugs in Project: Starfighter
+    pertaining to gamepad control. 
+- Update to version 2.2.1
+  * Full, proper analog control has been implemented both for
+    moving the cursor and for moving your ship. This release also
+    fixes a problem where controllers with analog triggers
+    wouldn't work correctly.
+- Update to version 2.2
+  * Added Super-Easy mode, which makes enemies weaker, allies
+    stronger, and does various other things to make the game much
+    easier.
+  * Changed the default difficulty mode from 'Normal" to "Easy".
+    Beginners should play Easy mode before Normal mode in my
+    opinion, and it's easier to go forward one than back one.
+  * Fixed the way spread works in Classic difficulty. It previously
+    was handled in a special manner because version 1.2 does it
+    that way, but it turns out that that was a change introduced
+    by version 1.2, and version 1.1 actually had spread just like
+    in every other difficulty mode.
+  * "Fixed" the way damage is done with the charge cannon in
+    Classic difficulty. It's absolutely ridiculous, but the result
+    is so staggeringly different I decided it isn't really a
+    genuine classic experience without it. Version 1.1's charge
+    cannon was so overpowered that some minibosses could be
+    one-shotted with a full blast, due to a quirk in how they
+    dissipate. This release restores that behavior in Classic
+    difficulty only.
+  * Added a difficulty indicator to the titles of save slots.
+- Update to version 2.1
+  * Improved colorblind accessibility by making friendly bolts
+    brighter than enemy bolts and by making the HUD's display of
+    powered-up status use brighter colors and textured coloring.
+    This change also makes it possible to see all information
+    through a heavily red-shifted display.
+  * Made it so that the Firefly's exhaust is still displayed when
+    low on shield, and halved the amount of explosions shown at
+    that time. Prior to this change, the explosions (indicating
+    low health) replaced the exhaust entirely, which I thought
+    was a bit odd.
+  * Except in Classic and Nightmare difficulties, the game now
+    waits to start the jump-out sequence until all worthwhile
+    powerups have been collected. This in particular ensures that
+    you always have a chance to collect all the money that bosses
+    drop; it was previously very easy to miss large amounts of it.
+  * Except in Classic difficulty, powerups now move outward from
+    their ships at only half the speed they used to. This is meant
+    to stop them from spreading out incredibly far from the source.
+  * Various fixes and improvements, including improvements to
+    Gettext translation support.
+
+-------------------------------------------------------------------
 Mon Mar 30 11:31:38 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 2.0:
