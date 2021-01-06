@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 06 08:09:16 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.0.0+git.20210106.01ea6c9:
+  * Preserve mode of test-cases.
+  * Add new option --start-with-pass.
+  * Handle using declarations declared with macros
+  * Move back removed testers.
+
+-------------------------------------------------------------------
 Fri Nov 20 06:09:41 UTC 2020 - mliska@suse.cz
 
 - Update to version 2.0.0+git.20201120.2b2ba30:

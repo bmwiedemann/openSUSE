@@ -1,7 +1,7 @@
 #
 # spec file for package cvise
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,13 @@
 
 
 Name:           cvise
-Version:        2.0.0+git.20201120.2b2ba30
+Version:        2.0.0+git.20210106.01ea6c9
 Release:        0
 Summary:        Super-parallel Python port of the C-Reduce
 License:        BSD-3-Clause
 URL:            https://github.com/marxin/cvise
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  astyle
-%if %{?suse_version} > 1500
-BuildRequires:  clang11-devel
-BuildRequires:  llvm11-devel
-%else
-BuildRequires:  clang9-devel
-BuildRequires:  llvm9-devel
-%endif
 BuildRequires:  cmake
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -43,6 +36,17 @@ BuildRequires:  python3-pytest
 BuildRequires:  python3-pytest-flake8
 BuildRequires:  unifdef
 Requires:       astyle
+Requires:       indent
+Requires:       python3-Pebble
+Requires:       python3-psutil
+Requires:       unifdef
+%if %{?suse_version} > 1500
+BuildRequires:  clang11-devel
+BuildRequires:  llvm11-devel
+%else
+BuildRequires:  clang9-devel
+BuildRequires:  llvm9-devel
+%endif
 %if %{?suse_version} > 1500
 Requires:       clang11
 Requires:       llvm11
@@ -50,10 +54,6 @@ Requires:       llvm11
 Requires:       clang9
 Requires:       llvm9
 %endif
-Requires:       indent
-Requires:       python3-Pebble
-Requires:       python3-psutil
-Requires:       unifdef
 
 %description
 

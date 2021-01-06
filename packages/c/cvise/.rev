@@ -411,4 +411,16 @@
   * Revert to use `env python3` shebang.</comment>
     <requestid>849556</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5480a08c2b41b8610b558700d70c1205</srcmd5>
+    <version>2.0.0+git.20210106.01ea6c9</version>
+    <time>1609959417</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.0+git.20210106.01ea6c9:
+  * Preserve mode of test-cases.
+  * Add new option --start-with-pass.
+  * Handle using declarations declared with macros
+  * Move back removed testers.</comment>
+    <requestid>860605</requestid>
+  </revision>
 </revisionlist>
