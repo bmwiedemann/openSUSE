@@ -1,7 +1,7 @@
 #
 # spec file for package arcanist
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,6 @@ Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE remove-arc-upgrade.patch -- Remove workflow/ArcanistUpgradeWorkflow.php
 Patch0:         remove-arc-upgrade.patch
 BuildRequires:  php7-curl
-BuildRequires:  php7-devel
 BuildRequires:  php7-json
 BuildRequires:  xz
 Requires:       php7

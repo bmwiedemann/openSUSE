@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan  5 14:50:54 UTC 2021 - pgajdos@suse.com
+
+- remove php7-devel from build dependencies
+
+-------------------------------------------------------------------
 Mon Oct 26 07:01:09 UTC 2020 - tuukka.pasanen@ilmi.fi
 
 - Update to version 0.0~git.20201026T090106~f713656a:
