@@ -1,7 +1,7 @@
 #
 # spec file for package powerpc-utils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Patch4:         libvirt-service-dep.patch
 Patch5:         0001-HNV-fixes-for-qrydev-and-remove-lsdevinfo.patch
 Patch6:         0002-Disable-vnic-as-backup-vdevice-for-migratable-SR_IOV.patch
 Patch7:         0003-Clean-up-dead-network-config-interface-after-inactiv.patch
+Patch8:         powerpc-utils-sys_ident-Skip-length-field-from-search.patch
 Patch14:        fix_kexec_service_name_for_suse.patch
 BuildRequires:  autoconf
 BuildRequires:  automake

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  4 17:27:33 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
+
+- sys_ident: Skip length field from search (bsc#1180540 ltc#190620).
+   + powerpc-utils-sys_ident-Skip-length-field-from-search.patch
+
+-------------------------------------------------------------------
 Wed Dec 30 20:25:47 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
 
 - Fixes for hybrid network virtualization (jsc#SLE-13837 bsc#1180129 ltc#190387)

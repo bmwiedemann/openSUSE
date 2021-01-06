@@ -1,0 +1,33 @@
+From 2d5ee16db487c0e4886c8ba9edc237242e5357fc Mon Sep 17 00:00:00 2001
+From: Vasant Hegde <hegdevasant@linux.vnet.ibm.com>
+Date: Mon, 5 Oct 2020 11:54:20 +0530
+Subject: [PATCH] sys_ident: Skip length field from search
+
+References: bsc#1180540 ltc#190620
+Upstream: queued (expected 1.3.9)
+Git-commit: 2d5ee16db487c0e4886c8ba9edc237242e5357fc
+
+Signed-off-by: Vasant Hegde <hegdevasant@linux.vnet.ibm.com>
+[tyreld: fixed up missing space after + operator]
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ src/sys_ident.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/sys_ident.c b/src/sys_ident.c
+index 45acb4d1b4c7..2c5c06b494b9 100644
+--- a/src/sys_ident.c
++++ b/src/sys_ident.c
+@@ -267,7 +267,8 @@ print_proc_sn_value(void)
+ 						"parameter from RTAS\n");
+ 				return 2;
+ 			}
+-			pos = strstr(buf, "uid=");
++			/* Ignore length field (first 2 bytes) */
++			pos = strstr(buf + 2, "uid=");
+ 			if (pos == NULL) {
+ 				fprintf(stderr, "Parameter from RTAS does "
+ 						"not contain uid\n");
+-- 
+2.26.2
+
