@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan  6 03:09:19 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.176.0
+   see /usr/share/doc/packages/perl-Test-MockModule/Changes
+
+  v0.176.0
+  - 3ba8bc7 lexically scoped strictness - David Cantrell
+  - e57fc5a Update ci with dockerhub auth - Geoff Franks
+  - bfe1e63 Update GitHub workflow with deprecated add-path - Nicolas R
+
+  vX.XXX.X
+  - XXXXXXX 'strict' mode is now lexically scoped
+
+-------------------------------------------------------------------
 Fri Sep 18 03:15:42 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.175.0

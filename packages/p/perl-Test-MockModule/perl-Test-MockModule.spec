@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-MockModule
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-Test-MockModule
-Version:        0.175.0
-Release:        0
 %define cpan_name Test-MockModule
+Name:           perl-Test-MockModule
+Version:        0.176.0
+Release:        0
 Summary:        Override subroutines in a module for unit testing
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/G/GF/GFRANKS/%{cpan_name}-v%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Module::Build) >= 0.380000
@@ -47,7 +45,7 @@ restored. This happens automatically when all MockModule objects for the
 given module go out of scope, or when you 'unmock()' the subroutine.
 
 %prep
-%setup -q -n %{cpan_name}-v%{version}
+%autosetup  -n %{cpan_name}-v%{version}
 
 %build
 perl Build.PL installdirs=vendor
@@ -61,7 +59,6 @@ perl Build.PL installdirs=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README.md
 %license LICENSE
 
