@@ -12,10 +12,8 @@ that is received. In case a pfn was not populated on the sending side it
 must be freed on the receiving side to avoid over-allocation.
 
 The existing code for x86_pv is moved unmodified into its own file.
-Index: xen-4.14.0-testing/tools/libxc/xc_dom_x86.c
-===================================================================
---- xen-4.14.0-testing.orig/tools/libxc/xc_dom_x86.c
-+++ xen-4.14.0-testing/tools/libxc/xc_dom_x86.c
+--- a/tools/libxc/xc_dom_x86.c
++++ b/tools/libxc/xc_dom_x86.c
 @@ -45,11 +45,6 @@
  
  #define SUPERPAGE_BATCH_SIZE 512
@@ -28,10 +26,8 @@ Index: xen-4.14.0-testing/tools/libxc/xc_dom_x86.c
  #define X86_CR0_PE 0x01
  #define X86_CR0_ET 0x10
  
-Index: xen-4.14.0-testing/tools/libxc/xc_private.h
-===================================================================
---- xen-4.14.0-testing.orig/tools/libxc/xc_private.h
-+++ xen-4.14.0-testing/tools/libxc/xc_private.h
+--- a/tools/libxc/xc_private.h
++++ b/tools/libxc/xc_private.h
 @@ -71,6 +71,11 @@ struct iovec {
  #define DECLARE_FLASK_OP struct xen_flask_op op
  #define DECLARE_PLATFORM_OP struct xen_platform_op platform_op
@@ -44,10 +40,8 @@ Index: xen-4.14.0-testing/tools/libxc/xc_private.h
  #undef PAGE_SHIFT
  #undef PAGE_SIZE
  #undef PAGE_MASK
-Index: xen-4.14.0-testing/tools/libxc/xc_sr_common.c
-===================================================================
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_common.c
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_common.c
+--- a/tools/libxc/xc_sr_common.c
++++ b/tools/libxc/xc_sr_common.c
 @@ -164,6 +164,47 @@ static void __attribute__((unused)) buil
  }
  
@@ -96,10 +90,8 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_common.c
   * Local variables:
   * mode: C
   * c-file-style: "BSD"
-Index: xen-4.14.0-testing/tools/libxc/xc_sr_common.h
-===================================================================
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_common.h
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_common.h
+--- a/tools/libxc/xc_sr_common.h
++++ b/tools/libxc/xc_sr_common.h
 @@ -19,6 +19,12 @@ const char *rec_type_to_str(uint32_t typ
  struct xc_sr_context;
  struct xc_sr_record;
@@ -258,10 +250,8 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_common.h
  /* Handle a STATIC_DATA_END record. */
  int handle_static_data_end(struct xc_sr_context *ctx);
  
-Index: xen-4.14.0-testing/tools/libxc/xc_sr_restore.c
-===================================================================
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_restore.c
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_restore.c
+--- a/tools/libxc/xc_sr_restore.c
++++ b/tools/libxc/xc_sr_restore.c
 @@ -71,121 +71,6 @@ static int read_headers(struct xc_sr_con
      return 0;
  }
@@ -428,10 +418,8 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_restore.c
      ctx.restore.ops = ctx.dominfo.hvm
          ? restore_ops_x86_hvm : restore_ops_x86_pv;
  
-Index: xen-4.14.0-testing/tools/libxc/xc_sr_restore_x86_hvm.c
-===================================================================
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_restore_x86_hvm.c
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_restore_x86_hvm.c
+--- a/tools/libxc/xc_sr_restore_x86_hvm.c
++++ b/tools/libxc/xc_sr_restore_x86_hvm.c
 @@ -136,6 +136,8 @@ static int x86_hvm_localise_page(struct
  static int x86_hvm_setup(struct xc_sr_context *ctx)
  {
@@ -482,7 +470,7 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_restore_x86_hvm.c
  
      free(ctx->x86.restore.cpuid.ptr);
      free(ctx->x86.restore.msr.ptr);
-@@ -249,6 +277,372 @@ static int x86_hvm_cleanup(struct xc_sr_
+@@ -249,6 +277,368 @@ static int x86_hvm_cleanup(struct xc_sr_
      return 0;
  }
  
@@ -817,11 +805,7 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_restore_x86_hvm.c
 +     * In the end it matters only to know if this iteration is the first one.
 +     */
 +    if ( min_pfn < ctx->x86.hvm.restore.iteration_tracker_pfn )
-+    {
 +        ctx->x86.hvm.restore.iteration++;
-+        errno = 0;
-+        ERROR("%s: iteration %lu", __func__, ctx->x86.hvm.restore.iteration + 1);
-+    }
 +    ctx->x86.hvm.restore.iteration_tracker_pfn = min_pfn;
 +
 +    for ( i = 0; i < count; ++i )
@@ -855,7 +839,7 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_restore_x86_hvm.c
  struct xc_sr_restore_ops restore_ops_x86_hvm =
  {
      .pfn_is_valid    = x86_hvm_pfn_is_valid,
-@@ -257,6 +651,7 @@ struct xc_sr_restore_ops restore_ops_x86
+@@ -257,6 +647,7 @@ struct xc_sr_restore_ops restore_ops_x86
      .set_page_type   = x86_hvm_set_page_type,
      .localise_page   = x86_hvm_localise_page,
      .setup           = x86_hvm_setup,
@@ -863,10 +847,8 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_restore_x86_hvm.c
      .process_record  = x86_hvm_process_record,
      .static_data_complete = x86_static_data_complete,
      .stream_complete = x86_hvm_stream_complete,
-Index: xen-4.14.0-testing/tools/libxc/xc_sr_restore_x86_pv.c
-===================================================================
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_restore_x86_pv.c
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_restore_x86_pv.c
+--- a/tools/libxc/xc_sr_restore_x86_pv.c
++++ b/tools/libxc/xc_sr_restore_x86_pv.c
 @@ -960,6 +960,64 @@ static void x86_pv_set_gfn(struct xc_sr_
  }
  

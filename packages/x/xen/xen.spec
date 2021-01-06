@@ -1,7 +1,7 @@
 #
 # spec file for package xen
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -125,7 +125,7 @@ BuildRequires:  makeinfo
 BuildRequires:  pesign-obs-integration
 %endif
 
-Version:        4.14.1_02
+Version:        4.14.1_05
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -593,6 +593,7 @@ configure_flags="${configure_flags} --disable-qemu-traditional"
         --includedir=%{_includedir} \
         --docdir=%{_defaultdocdir}/xen \
 	--with-initddir=%{_initddir} \
+	--with-rundir=%{_rundir} \
 %if %{?with_dom0_support}0
 %if %{with xen_oxenstored}
 	--with-xenstored=oxenstored \

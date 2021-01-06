@@ -89,21 +89,15 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  tools/libxl/xl_cmdtable.c        |   23 ++++++++++++++--------
  13 files changed, 156 insertions(+), 28 deletions(-)
 
-Index: xen-4.14.0-testing/docs/man/xl.1.pod.in
-===================================================================
---- xen-4.14.0-testing.orig/docs/man/xl.1.pod.in
-+++ xen-4.14.0-testing/docs/man/xl.1.pod.in
-@@ -497,6 +497,26 @@ such that it will be identical on the de
+--- a/docs/man/xl.1.pod.in
++++ b/docs/man/xl.1.pod.in
+@@ -497,6 +497,22 @@ such that it will be identical on the de
  configuration is overridden using the B<-C> option. Note that it is not
  possible to use this option for a 'localhost' migration.
  
 +=item B<--max_iters> I<number>
 +
 +Number of iterations before final suspend (default: 5)
-+
-+=item B<--max_factor> I<factor>
-+
-+Max amount of memory to transfer before final suspend (default: 3*RAM)
 +
 +=item B<--min_remaining>
 +
@@ -120,10 +114,8 @@ Index: xen-4.14.0-testing/docs/man/xl.1.pod.in
  =back
  
  =item B<remus> [I<OPTIONS>] I<domain-id> I<host>
-Index: xen-4.14.0-testing/tools/libxc/include/xenguest.h
-===================================================================
---- xen-4.14.0-testing.orig/tools/libxc/include/xenguest.h
-+++ xen-4.14.0-testing/tools/libxc/include/xenguest.h
+--- a/tools/libxc/include/xenguest.h
++++ b/tools/libxc/include/xenguest.h
 @@ -26,6 +26,7 @@
  
  #define XCFLAGS_LIVE      (1 << 0)
@@ -132,14 +124,15 @@ Index: xen-4.14.0-testing/tools/libxc/include/xenguest.h
  
  #define X86_64_B_SIZE   64 
  #define X86_32_B_SIZE   32
-@@ -133,9 +134,19 @@ typedef enum {
+@@ -133,9 +134,20 @@ typedef enum {
   *        the destination side.
   * @return 0 on success, -1 on failure
   */
-+int xc_domain_save_suse(xc_interface *xch, int io_fd, uint32_t dom, uint32_t max_iters,
-+                        uint32_t max_factor, uint32_t flags /* XCFLAGS_xxx */,
-+                        uint32_t min_remaining,
++int xc_domain_save_suse(xc_interface *xch, int io_fd, uint32_t dom,
++                        uint32_t flags /* XCFLAGS_xxx */,
 +                        struct save_callbacks* callbacks,
++                        uint32_t max_iters,
++                        uint32_t min_remaining,
 +                        xc_stream_type_t stream_type, int recv_fd);
 +static inline
  int xc_domain_save(xc_interface *xch, int io_fd, uint32_t dom,
@@ -147,73 +140,39 @@ Index: xen-4.14.0-testing/tools/libxc/include/xenguest.h
 -                   xc_stream_type_t stream_type, int recv_fd);
 +                   xc_stream_type_t stream_type, int recv_fd)
 +{
-+    return xc_domain_save_suse(xch,io_fd,dom,0,0,flags,0,callbacks,stream_type,recv_fd);
++    return xc_domain_save_suse(xch,io_fd,dom,flags,callbacks,0,0,stream_type,recv_fd);
 +}
 +
  
  /* callbacks provided by xc_domain_restore */
  struct restore_callbacks {
-Index: xen-4.14.0-testing/tools/libxc/xc_nomigrate.c
-===================================================================
---- xen-4.14.0-testing.orig/tools/libxc/xc_nomigrate.c
-+++ xen-4.14.0-testing/tools/libxc/xc_nomigrate.c
-@@ -20,9 +20,11 @@
+--- a/tools/libxc/xc_nomigrate.c
++++ b/tools/libxc/xc_nomigrate.c
+@@ -20,8 +20,10 @@
  #include <xenctrl.h>
  #include <xenguest.h>
  
 -int xc_domain_save(xc_interface *xch, int io_fd, uint32_t dom, uint32_t flags,
--                   struct save_callbacks *callbacks,
--                   xc_stream_type_t stream_type, int recv_fd)
-+int xc_domain_save_suse(xc_interface *xch, int io_fd, uint32_t dom, uint32_t max_iters,
-+                        uint32_t max_factor, uint32_t flags,
-+                        uint32_t min_remaining,
-+                        struct save_callbacks* callbacks,
-+                        xc_stream_type_t stream_type, int recv_fd)
++int xc_domain_save_suse(xc_interface *xch, int io_fd, uint32_t dom, uint32_t flags,
+                    struct save_callbacks *callbacks,
++                   uint32_t max_iters,
++                   uint32_t min_remaining,
+                    xc_stream_type_t stream_type, int recv_fd)
  {
      errno = ENOSYS;
-     return -1;
-Index: xen-4.14.0-testing/tools/libxc/xc_sr_save.c
-===================================================================
---- xen-4.14.0-testing.orig/tools/libxc/xc_sr_save.c
-+++ xen-4.14.0-testing/tools/libxc/xc_sr_save.c
-@@ -537,6 +537,11 @@ static int send_memory_live(struct xc_sr
-         policy_decision = precopy_policy(*policy_stats, data);
-         x++;
- 
-+        if ( policy_decision == XGS_POLICY_ABORT )
-+        {
-+            rc = -1;
-+            break;
-+        }
-         if ( stats.dirty_count > 0 && policy_decision != XGS_POLICY_ABORT )
-         {
-             rc = update_progress_string(ctx, &progress_str);
-@@ -557,6 +562,11 @@ static int send_memory_live(struct xc_sr
- 
-         policy_decision = precopy_policy(*policy_stats, data);
- 
-+        if ( policy_decision == XGS_POLICY_ABORT )
-+        {
-+            rc = -1;
-+            break;
-+        }
-         if ( policy_decision != XGS_POLICY_CONTINUE_PRECOPY )
-             break;
- 
-@@ -992,9 +1002,71 @@ static int save(struct xc_sr_context *ct
+--- a/tools/libxc/xc_sr_save.c
++++ b/tools/libxc/xc_sr_save.c
+@@ -992,8 +992,62 @@ static int save(struct xc_sr_context *ct
      return rc;
  };
  
 -int xc_domain_save(xc_interface *xch, int io_fd, uint32_t dom,
--                   uint32_t flags, struct save_callbacks *callbacks,
--                   xc_stream_type_t stream_type, int recv_fd)
 +static struct suse_flags {
 +    struct xc_sr_context *ctx;
 +    unsigned long cnt;
-+    uint32_t max_iters;
-+    unsigned long max_factor;
 +    long min_remaining;
 +    long dirty_count;
++    uint32_t max_iters;
 +    uint32_t abort_if_busy;
 +} suse_flags;
 +
@@ -230,7 +189,7 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_save.c
 +        suse_flags.dirty_count = stats.dirty_count;
 +
 +    /* Stop loop after N iterations */
-+    if ( stats.iteration > suse_flags.max_iters )
++    if ( stats.iteration >= suse_flags.max_iters )
 +    {
 +        IPRINTF("%s: domU %u, too many iterations (%u/%u)",
 +                __func__, suse_flags.ctx->domid, stats.iteration, suse_flags.max_iters);
@@ -242,13 +201,6 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_save.c
 +        IPRINTF("%s: domU %u, dirty_count reached (%ld/%ld)",
 +                __func__, suse_flags.ctx->domid, stats.dirty_count, suse_flags.min_remaining);
 +        goto suspend;
-+    }
-+    /* Stop loop if too much memory was transfered (formula incorrect for ballooned domU) */
-+    if ( stats.total_written > suse_flags.max_factor * suse_flags.ctx->save.p2m_size )
-+    {
-+        IPRINTF("%s: domU %u, too much memory transfered (%u/%lu)",
-+                __func__, suse_flags.ctx->domid, stats.total_written, suse_flags.max_factor * suse_flags.ctx->save.p2m_size);
-+        goto out;
 +    }
 +    /* Keep going */
 +    return XGS_POLICY_CONTINUE_PRECOPY;
@@ -268,14 +220,13 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_save.c
 +}
 +
 +int xc_domain_save_suse(xc_interface *xch, int io_fd, uint32_t dom,
-+                        uint32_t max_iters, uint32_t max_factor, uint32_t flags,
-+                        uint32_t min_remaining,
-+                        struct save_callbacks* callbacks,
-+                        xc_stream_type_t stream_type, int recv_fd)
+                    uint32_t flags, struct save_callbacks *callbacks,
++                   uint32_t max_iters,
++                   uint32_t min_remaining,
+                    xc_stream_type_t stream_type, int recv_fd)
  {
      struct xc_sr_context ctx = {
-         .xch = xch,
-@@ -1008,6 +1080,19 @@ int xc_domain_save(xc_interface *xch, in
+@@ -1008,6 +1062,18 @@ int xc_domain_save(xc_interface *xch, in
      ctx.save.debug = !!(flags & XCFLAGS_DEBUG);
      ctx.save.recv_fd = recv_fd;
  
@@ -287,18 +238,15 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_save.c
 +    }
 +    callbacks->precopy_policy = suse_precopy_policy;
 +    suse_flags.ctx = &ctx;
-+    suse_flags.max_iters = max_iters ? : 5;
-+    suse_flags.max_factor = max_factor ? : 3;
++    suse_flags.max_iters = max_iters ? : 2;
 +    suse_flags.min_remaining = min_remaining ? : 50;
 +    suse_flags.abort_if_busy = !!(flags & XCFLAGS_DOMSAVE_ABORT_IF_BUSY);
 +
      if ( xc_domain_getinfo(xch, dom, 1, &ctx.dominfo) != 1 )
      {
          PERROR("Failed to get domain info");
-Index: xen-4.14.0-testing/tools/libxl/libxl.h
-===================================================================
---- xen-4.14.0-testing.orig/tools/libxl/libxl.h
-+++ xen-4.14.0-testing/tools/libxl/libxl.h
+--- a/tools/libxl/libxl.h
++++ b/tools/libxl/libxl.h
 @@ -1667,8 +1667,23 @@ int libxl_domain_suspend(libxl_ctx *ctx,
                           int flags, /* LIBXL_SUSPEND_* */
                           const libxl_asyncop_how *ao_how)
@@ -307,7 +255,7 @@ Index: xen-4.14.0-testing/tools/libxl/libxl.h
 +typedef struct {
 +    int flags; /* LIBXL_SUSPEND_* */
 +    int max_iters;
-+    int max_factor;
++    int max_factor; /* Compatibility with libvirt */
 +    int min_remaining;
 +} libxl_domain_suspend_suse_properties;
 +
@@ -323,10 +271,8 @@ Index: xen-4.14.0-testing/tools/libxl/libxl.h
  
  /*
   * Only suspend domain, do not save its state to file, do not destroy it.
-Index: xen-4.14.0-testing/tools/libxl/libxl_dom_save.c
-===================================================================
---- xen-4.14.0-testing.orig/tools/libxl/libxl_dom_save.c
-+++ xen-4.14.0-testing/tools/libxl/libxl_dom_save.c
+--- a/tools/libxl/libxl_dom_save.c
++++ b/tools/libxl/libxl_dom_save.c
 @@ -409,7 +409,8 @@ void libxl__domain_save(libxl__egc *egc,
      if (rc) goto out;
  
@@ -337,10 +283,8 @@ Index: xen-4.14.0-testing/tools/libxl/libxl_dom_save.c
  
      /* Disallow saving a guest with vNUMA configured because migration
       * stream does not preserve node information.
-Index: xen-4.14.0-testing/tools/libxl/libxl_domain.c
-===================================================================
---- xen-4.14.0-testing.orig/tools/libxl/libxl_domain.c
-+++ xen-4.14.0-testing/tools/libxl/libxl_domain.c
+--- a/tools/libxl/libxl_domain.c
++++ b/tools/libxl/libxl_domain.c
 @@ -505,8 +505,9 @@ static void domain_suspend_cb(libxl__egc
  
  }
@@ -353,7 +297,7 @@ Index: xen-4.14.0-testing/tools/libxl/libxl_domain.c
  {
      AO_CREATE(ctx, domid, ao_how);
      int rc;
-@@ -526,9 +527,15 @@ int libxl_domain_suspend(libxl_ctx *ctx,
+@@ -526,9 +527,14 @@ int libxl_domain_suspend(libxl_ctx *ctx,
      dss->domid = domid;
      dss->fd = fd;
      dss->type = type;
@@ -364,14 +308,13 @@ Index: xen-4.14.0-testing/tools/libxl/libxl_domain.c
 +        dss->live = props->flags & LIBXL_SUSPEND_LIVE;
 +        dss->debug = props->flags & LIBXL_SUSPEND_DEBUG;
 +        dss->max_iters = props->max_iters;
-+        dss->max_factor = props->max_factor;
 +        dss->min_remaining = props->min_remaining;
 +        dss->xlflags = props->flags;
 +    }
  
      rc = libxl__fd_flags_modify_save(gc, dss->fd,
                                       ~(O_NONBLOCK|O_NDELAY), 0,
-@@ -576,6 +583,20 @@ int libxl_domain_suspend_only(libxl_ctx
+@@ -576,6 +582,20 @@ int libxl_domain_suspend_only(libxl_ctx
      return AO_CREATE_FAIL(rc);
  }
  
@@ -392,67 +335,53 @@ Index: xen-4.14.0-testing/tools/libxl/libxl_domain.c
  int libxl_domain_pause(libxl_ctx *ctx, uint32_t domid,
                         const libxl_asyncop_how *ao_how)
  {
-Index: xen-4.14.0-testing/tools/libxl/libxl_internal.h
-===================================================================
---- xen-4.14.0-testing.orig/tools/libxl/libxl_internal.h
-+++ xen-4.14.0-testing/tools/libxl/libxl_internal.h
-@@ -3641,6 +3641,10 @@ struct libxl__domain_save_state {
+--- a/tools/libxl/libxl_internal.h
++++ b/tools/libxl/libxl_internal.h
+@@ -3641,6 +3641,9 @@ struct libxl__domain_save_state {
      const libxl_domain_remus_info *remus;
      /* private */
      int rc;
 +    int max_iters;
-+    int max_factor;
 +    int min_remaining;
 +    int xlflags;
      int xcflags;
      libxl__domain_suspend_state dsps;
      union {
-Index: xen-4.14.0-testing/tools/libxl/libxl_save_callout.c
-===================================================================
---- xen-4.14.0-testing.orig/tools/libxl/libxl_save_callout.c
-+++ xen-4.14.0-testing/tools/libxl/libxl_save_callout.c
-@@ -87,7 +87,9 @@ void libxl__xc_domain_save(libxl__egc *e
-         libxl__srm_callout_enumcallbacks_save(&shs->callbacks.save.a);
+--- a/tools/libxl/libxl_save_callout.c
++++ b/tools/libxl/libxl_save_callout.c
+@@ -88,6 +88,7 @@ void libxl__xc_domain_save(libxl__egc *e
  
      const unsigned long argnums[] = {
--        dss->domid, dss->xcflags, cbflags,
-+        dss->domid,
-+        dss->max_iters, dss->max_factor, dss->min_remaining,
-+        dss->xcflags, cbflags,
+         dss->domid, dss->xcflags, cbflags,
++        dss->max_iters, dss->min_remaining,
          dss->checkpointed_stream,
      };
  
-Index: xen-4.14.0-testing/tools/libxl/libxl_save_helper.c
-===================================================================
---- xen-4.14.0-testing.orig/tools/libxl/libxl_save_helper.c
-+++ xen-4.14.0-testing/tools/libxl/libxl_save_helper.c
-@@ -248,6 +248,9 @@ int main(int argc, char **argv)
-         io_fd =                             atoi(NEXTARG);
-         recv_fd =                           atoi(NEXTARG);
+--- a/tools/libxl/libxl_save_helper.c
++++ b/tools/libxl/libxl_save_helper.c
+@@ -250,6 +250,8 @@ int main(int argc, char **argv)
          uint32_t dom =                      strtoul(NEXTARG,0,10);
-+        uint32_t max_iters =                strtoul(NEXTARG,0,10);
-+        uint32_t max_factor =               strtoul(NEXTARG,0,10);
-+        uint32_t min_remaining =            strtoul(NEXTARG,0,10);
          uint32_t flags =                    strtoul(NEXTARG,0,10);
          unsigned cbflags =                  strtoul(NEXTARG,0,10);
++        uint32_t max_iters =                strtoul(NEXTARG,0,10);
++        uint32_t min_remaining =            strtoul(NEXTARG,0,10);
          xc_stream_type_t stream_type =      strtoul(NEXTARG,0,10);
-@@ -258,7 +261,10 @@ int main(int argc, char **argv)
+         assert(!*++argv);
+ 
+@@ -258,7 +260,9 @@ int main(int argc, char **argv)
          startup("save");
          setup_signals(save_signal_handler);
  
 -        r = xc_domain_save(xch, io_fd, dom, flags, &cb, stream_type, recv_fd);
-+        r = xc_domain_save_suse(xch, io_fd, dom, max_iters, max_factor, flags,
-+                                min_remaining,
-+                                &cb, stream_type,
-+                                recv_fd);
++        r = xc_domain_save_suse(xch, io_fd, dom, flags, &cb,
++                                max_iters, min_remaining,
++                                stream_type, recv_fd);
          complete(r);
  
      } else if (!strcmp(mode,"--restore-domain")) {
-Index: xen-4.14.0-testing/tools/xl/xl_cmdtable.c
-===================================================================
---- xen-4.14.0-testing.orig/tools/xl/xl_cmdtable.c
-+++ xen-4.14.0-testing/tools/xl/xl_cmdtable.c
-@@ -160,16 +160,23 @@ struct cmd_spec cmd_table[] = {
+--- a/tools/xl/xl_cmdtable.c
++++ b/tools/xl/xl_cmdtable.c
+@@ -160,16 +160,22 @@ struct cmd_spec cmd_table[] = {
        &main_migrate, 0, 1,
        "Migrate a domain to another host",
        "[options] <Domain> <host>",
@@ -478,28 +407,24 @@ Index: xen-4.14.0-testing/tools/xl/xl_cmdtable.c
 +      "-D                      Preserve the domain id"
 +      "\n"
 +      "SUSE Linux specific options:\n"
-+      "--max_iters <number>    Number of iterations before final suspend (default: 5)\n"
-+      "--max_factor <factor>   Max amount of memory to transfer before final suspend (default: 3*RAM).\n"
++      "--max_iters <number>    Number of iterations before final suspend (default: 2)\n"
 +      "--min_remaining <pages> Number of remaining dirty pages before final suspend (default: 50).\n"
 +      "--abort_if_busy         Abort migration instead of doing final suspend, if number\n"
 +      "                        of iterations or amount of transfered memory is exceeded."
      },
      { "restore",
        &main_restore, 0, 1,
-Index: xen-4.14.0-testing/tools/xl/xl_migrate.c
-===================================================================
---- xen-4.14.0-testing.orig/tools/xl/xl_migrate.c
-+++ xen-4.14.0-testing/tools/xl/xl_migrate.c
-@@ -178,6 +178,8 @@ static void migrate_do_preamble(int send
+--- a/tools/xl/xl_migrate.c
++++ b/tools/xl/xl_migrate.c
+@@ -178,6 +178,7 @@ static void migrate_do_preamble(int send
  
  static void migrate_domain(uint32_t domid, int preserve_domid,
                             const char *rune, int debug,
-+                           int max_iters, int max_factor,
-+                           int min_remaining, int abort_if_busy,
++                           int max_iters, int min_remaining, int abort_if_busy,
                             const char *override_config_file)
  {
      pid_t child = -1;
-@@ -186,7 +188,13 @@ static void migrate_domain(uint32_t domi
+@@ -186,7 +187,12 @@ static void migrate_domain(uint32_t domi
      char *away_domname;
      char rc_buf;
      uint8_t *config_data;
@@ -508,13 +433,12 @@ Index: xen-4.14.0-testing/tools/xl/xl_migrate.c
 +    libxl_domain_suspend_suse_properties props = {
 +        .flags = LIBXL_SUSPEND_LIVE,
 +        .max_iters = max_iters,
-+        .max_factor = max_factor,
 +        .min_remaining = min_remaining,
 +    };
  
      save_domain_core_begin(domid, preserve_domid, override_config_file,
                             &config_data, &config_len);
-@@ -205,10 +213,12 @@ static void migrate_domain(uint32_t domi
+@@ -205,10 +211,12 @@ static void migrate_domain(uint32_t domi
      xtl_stdiostream_adjust_flags(logger, XTL_STDIOSTREAM_HIDE_PROGRESS, 0);
  
      if (debug)
@@ -530,17 +454,16 @@ Index: xen-4.14.0-testing/tools/xl/xl_migrate.c
                  " (rc=%d)\n", rc);
          if (rc == ERROR_GUEST_TIMEDOUT)
              goto failed_suspend;
-@@ -539,13 +549,18 @@ int main_migrate(int argc, char **argv)
+@@ -539,13 +547,17 @@ int main_migrate(int argc, char **argv)
      char *host;
      int opt, daemonize = 1, monitor = 1, debug = 0, pause_after_migration = 0;
      int preserve_domid = 0;
-+    int max_iters = 0, max_factor = 0, min_remaining = 0, abort_if_busy = 0;
++    int max_iters = 0, min_remaining = 0, abort_if_busy = 0;
      static struct option opts[] = {
          {"debug", 0, 0, 0x100},
-+ 	{"max_iters", 1, 0, 0x101},
-+ 	{"max_factor", 1, 0, 0x102},
-+ 	{"min_remaining", 1, 0, 0x103},
-+ 	{"abort_if_busy", 0, 0, 0x104},
++        {"max_iters", 1, 0, 0x101},
++        {"min_remaining", 1, 0, 0x102},
++        {"abort_if_busy", 0, 0, 0x103},
          {"live", 0, 0, 0x200},
          COMMON_LONG_OPTS
      };
@@ -550,7 +473,7 @@ Index: xen-4.14.0-testing/tools/xl/xl_migrate.c
      case 'C':
          config_filename = optarg;
          break;
-@@ -568,6 +583,18 @@ int main_migrate(int argc, char **argv)
+@@ -568,6 +580,15 @@ int main_migrate(int argc, char **argv)
      case 0x100: /* --debug */
          debug = 1;
          break;
@@ -558,23 +481,20 @@ Index: xen-4.14.0-testing/tools/xl/xl_migrate.c
 +        max_iters = atoi(optarg);
 +        break;
 +    case 0x102:
-+        max_factor = atoi(optarg);
-+        break;
-+    case 0x103:
 +        min_remaining = atoi(optarg);
 +        break;
-+    case 0x104:
++    case 0x103:
 +        abort_if_busy = 1;
 +        break;
      case 0x200: /* --live */
          /* ignored for compatibility with xm */
          break;
-@@ -601,7 +628,8 @@ int main_migrate(int argc, char **argv)
+@@ -601,7 +622,8 @@ int main_migrate(int argc, char **argv)
                    pause_after_migration ? " -p" : "");
      }
  
 -    migrate_domain(domid, preserve_domid, rune, debug, config_filename);
-+    migrate_domain(domid, preserve_domid, rune, debug, max_iters, max_factor, min_remaining,
++    migrate_domain(domid, preserve_domid, rune, debug, max_iters, min_remaining,
 +                    abort_if_busy, config_filename);
      return EXIT_SUCCESS;
  }

@@ -2523,4 +2523,23 @@
     <comment>Update to Xen 4.14.1 with several security fixes</comment>
     <requestid>856892</requestid>
   </revision>
+  <revision rev="295" vrev="1">
+    <srcmd5>8587c736f6544ceeb5d18c023b399dfe</srcmd5>
+    <version>4.14.1_05</version>
+    <time>1609959350</time>
+    <user>dimstar_suse</user>
+    <comment>- Update libxl.set-migration-constraints-from-cmdline.patch
+  Remove code which handled --max_factor. The total amount of
+  transferred data is no indicator to trigger the final stop+copy.
+  This should have been removed during upgrade to Xen 4.7.
+  Fix off-by-one in --max_iters, it caused one additional copy cycle.
+  Reduce default value of --max_iters from 5 to 2.
+  The workload within domU will continue to produce dirty pages.
+  It is unreasonable to expect any slowdown during migration.
+  Now there is one initial copy of all memory, one instead of four
+  iteration for dirty memory, and a final copy iteration prior move.
+
+- Pass --with-rundir to configure to get rid of /var/run</comment>
+    <requestid>860437</requestid>
+  </revision>
 </revisionlist>

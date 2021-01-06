@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan  4 19:19:19 UTC 2021 - ohering@suse.de
+
+- Update libxl.set-migration-constraints-from-cmdline.patch
+  Remove code which handled --max_factor. The total amount of
+  transferred data is no indicator to trigger the final stop+copy.
+  This should have been removed during upgrade to Xen 4.7.
+  Fix off-by-one in --max_iters, it caused one additional copy cycle.
+  Reduce default value of --max_iters from 5 to 2.
+  The workload within domU will continue to produce dirty pages.
+  It is unreasonable to expect any slowdown during migration.
+  Now there is one initial copy of all memory, one instead of four
+  iteration for dirty memory, and a final copy iteration prior move.
+
+-------------------------------------------------------------------
 Thu Dec 17 10:15:31 MST 2020 - carnold@suse.com
 
 - Update to Xen 4.14.1 bug fix release (bsc#1027519)
@@ -63,6 +77,11 @@ Thu Dec 17 10:15:31 MST 2020 - carnold@suse.com
   xsa351-2.patch
   xsa351-3.patch
   xsa355.patch
+
+-------------------------------------------------------------------
+Wed Dec 16 16:16:16 UTC 2020 - ohering@suse.de
+
+- Pass --with-rundir to configure to get rid of /var/run
 
 -------------------------------------------------------------------
 Tue Dec 15 15:15:15 UTC 2020 - ohering@suse.de
