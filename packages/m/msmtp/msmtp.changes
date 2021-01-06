@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 24 10:24:18 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.8.14:
+  * Added support for libtls as an alternative to GnuTLS
+
+-------------------------------------------------------------------
 Fri Nov 13 17:16:35 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.8.13:
