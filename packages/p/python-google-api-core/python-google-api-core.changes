@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jan  6 14:55:34 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Skip build on python2 as it is not supported anymore
+
+-------------------------------------------------------------------
+Wed Jan  6 14:48:36 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to 1.24.1
+  * support 'retry' for ops built from HTTP/gRPC responses
+    (gh#googleapis/python-api-core#115)
+- from version 1.24.0
+  * add support for Python 3.9, drop support for Python 3.5
+    (gh#googleapis/python-api-core#111)
+- from version 1.23.0
+  * api-core: pass retry from result() to done()
+    (gh#googleapis/python-api-core#9)
+  * map LRO errors to library exception types
+    (gh#googleapis/python-api-core#15)
+
+-------------------------------------------------------------------
 Wed Oct  7 06:13:07 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update URL to match PyPI: https://github.com/googleapis/python-api-core
