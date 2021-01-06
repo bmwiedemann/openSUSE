@@ -1,0 +1,12 @@
+diff -urN busybox-1.32.0.orig/mailutils/sendmail.c busybox-1.32.0/mailutils/sendmail.c
+--- busybox-1.32.0.orig/mailutils/sendmail.c	2020-06-26 20:47:44.000000000 +0200
++++ busybox-1.32.0/mailutils/sendmail.c	2021-01-05 09:04:05.973347132 +0100
+@@ -271,7 +271,7 @@
+ 	// -a is for ssmtp (http://downloads.openwrt.org/people/nico/man/man8/ssmtp.8.html) compatibility,
+ 	// it is still under development.
+ 	opts = getopt32(argv, "^"
+-			"tf:o:iw:+H:S:a:*:v"
++			"tf:o:iw:+H:S:a:*:vF:"
+ 			"\0"
+ 			// -v is a counter, -H and -S are mutually exclusive, -a is a list
+ 			"vv:H--S:S--H",

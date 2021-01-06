@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan  5 08:17:09 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.32.1
+  - fixes a case where in ash, "wait" never finishes. 
+
+-------------------------------------------------------------------
+Tue Jan  5 07:26:20 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- sendmail-ignore-F-option.patch: ignore -F option as used by
+  cron (workaround for [bbn#13426])
+
+-------------------------------------------------------------------
 Wed Dec  9 14:40:27 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Don't require nogroup for adduser command, as this can lead to

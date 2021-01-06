@@ -1,7 +1,7 @@
 #
 # spec file for package busybox
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           busybox
-Version:        1.32.0
+Version:        1.32.1
 Release:        0
 Summary:        Minimalist variant of UNIX utilities linked in a single executable
 License:        GPL-2.0-or-later
@@ -29,6 +29,7 @@ Source2:        busybox.config
 Source3:        busybox-static.config
 Source4:        man.conf
 Patch0:         cpio-long-opt.patch
+Patch1:         sendmail-ignore-F-option.patch
 # other patches
 Patch100:       busybox.install.patch
 Provides:       useradd_or_adduser_dep
@@ -72,6 +73,7 @@ PATH=/usr/share/busybox:$PATH SKIP_KNOWN_BUGS=1 ./runtest
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 %patch100 -p0
 cp -a %{SOURCE1} docs/
 find "(" -name CVS -o -name .cvsignore -o -name .svn -o -name .gitignore ")" \

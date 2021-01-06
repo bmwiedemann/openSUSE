@@ -669,4 +669,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>856498</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>89387dbeda8f04f06f98bf1531265ede</srcmd5>
+    <version>1.32.1</version>
+    <time>1609959340</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.32.1
+  - fixes a case where in ash, &quot;wait&quot; never finishes. 
+
+- sendmail-ignore-F-option.patch: ignore -F option as used by
+  cron (workaround for [bbn#13426]) (forwarded request 860408 from kukuk)</comment>
+    <requestid>860409</requestid>
+  </revision>
 </revisionlist>
