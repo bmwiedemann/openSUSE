@@ -20,11 +20,10 @@ Name:           canutils
 Summary:        Utilities for Controller Area Networks from the Linux-CAN project
 License:        GPL-2.0-only AND BSD-3-Clause
 Group:          Hardware/Other
-Version:        2020.11.0
+Version:        2020.12.0
 Release:        0
 URL:            https://github.com/linux-can/can-utils
-
-Source:         can-utils-%version.tar.xz
+Source:         https://github.com/linux-can/can-utils/archive/v%version.tar.gz
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  xz
@@ -47,7 +46,7 @@ SocketCAN subsystem.
 %autosetup -n can-utils-%version -p1
 
 %build
-./autogen.sh
+if test ! -e configure; then ./autogen.sh; fi
 %configure --disable-static
 %make_build
 
