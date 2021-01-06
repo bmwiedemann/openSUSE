@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # written by cunix in 2019
+# corrected by Bernhard Wiedemann in 2020 (pipe through sort)
+# updated by cunix in 2021
 #
 # Tries to find and prepare licenses from vendored packages for
 # installation as file or link to existing file.
@@ -35,6 +37,8 @@ if [[ -z "$vendor_licenses_dir" ]]
             rm $licenses_file
             find ./*/ -iname  "license*" | sort > $licenses_file
             find ./*/ -iname  "copying*" | sort >> $licenses_file
+            find ./*/ -iname  "notice*" | sort >> $licenses_file
+            find ./*/ -iname  "patents*" | sort >> $licenses_file
             goahead=1
           else
             echo "$vendor_licenses_dir" is not a directory.

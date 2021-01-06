@@ -1,7 +1,7 @@
 #
 # spec file for package dnscrypt-proxy
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define _buildshell /bin/bash
 %define user_group  dnscrypt
 %define config_dir  %{_sysconfdir}/%{name}
@@ -24,7 +25,7 @@
 %define vlic_dir  vendored
 
 Name:           dnscrypt-proxy
-Version:        2.0.44
+Version:        2.0.45
 Release:        0
 Summary:        A tool for securing communications between a client and a DNS resolver
 License:        ISC
@@ -43,11 +44,11 @@ Source5:        install_licenses.sh
 Source6:        README.openSUSE
 # Example how to override socket unit
 Source7:        %{name}.socket.conf
-BuildRequires:  golang(API) >= 1.14
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
 BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  golang(API) >= 1.15
 BuildRequires:  pkgconfig(libsystemd)
 # For systemd pidfile solution.
 Requires:       bash
@@ -82,7 +83,7 @@ cp ./%{name}.toml.default ./%{name}.toml
 sed -i "s/## This is an example configuration file./## This is a configuration file./" ./dnscrypt-proxy.toml
 
 # python path instead of env
-sed -i "1s/#! \/usr\/bin\/env python3/#! \/usr\/bin\/python3/" utils/generate-domains-blacklists/generate-domains-blacklist.py
+sed -i "1s/#! \/usr\/bin\/env python3/#! \/usr\/bin\/python3/" utils/generate-domains-blocklist/generate-domains-blocklist.py
 
 %build
 cd %{name}
@@ -100,26 +101,19 @@ install -D -d -m 0755 %{buildroot}%{_datadir}/%{name}/
 # Binary
 install -D -m 0755 %{name}/%{name} %{buildroot}%{_sbindir}/%{name}
 
-# blacklist generator
-cp -a utils/generate-domains-blacklists/ %{buildroot}%{_datadir}/%{name}/
-
-# Config file examples
-install -D -m 0644 ./%{name}/example-%{name}.toml %{buildroot}/%{_docdir}/%{name}/example-%{name}.toml
-install -D -m 0644 ./%{name}.toml.default %{buildroot}/%{_docdir}/%{name}/%{name}.toml.default
-install -D -m 0644 ./%{name}/example-blacklist.txt %{buildroot}/%{_docdir}/%{name}/example-blacklist.txt
-install -D -m 0644 ./%{name}/example-ip-blacklist.txt %{buildroot}/%{_docdir}/%{name}/example-ip-blacklist.txt
-install -D -m 0644 ./%{name}/example-cloaking-rules.txt %{buildroot}/%{_docdir}/%{name}/example-cloaking-rules.txt
-install -D -m 0644 ./%{name}/example-forwarding-rules.txt %{buildroot}/%{_docdir}/%{name}/example-forwarding-rules.txt
-install -D -m 0644 ./%{name}/example-whitelist.txt %{buildroot}/%{_docdir}/%{name}/example-whitelist.txt
+# blocklist generator
+cp -a utils/generate-domains-blocklist/ %{buildroot}%{_datadir}/%{name}/
 
 # Config files
 install -D -m 0640 ./%{name}.toml %{buildroot}/%{config_dir}/%{name}.toml
 install -D -m 0640 ./%{name}.toml.default %{buildroot}/%{config_dir}/%{name}.toml.default
-install -D -m 0640 ./%{name}/example-blacklist.txt %{buildroot}/%{config_dir}/blacklist.txt
-install -D -m 0640 ./%{name}/example-ip-blacklist.txt %{buildroot}/%{config_dir}/ip-blacklist.txt
+install -D -m 0640 ./%{name}/example-allowed-ips.txt %{buildroot}/%{config_dir}/allowed-ips.txt
+install -D -m 0640 ./%{name}/example-allowed-names.txt %{buildroot}/%{config_dir}/allowed-names.txt
+install -D -m 0640 ./%{name}/example-blocked-ips.txt %{buildroot}/%{config_dir}/blocked-ips.txt
+install -D -m 0640 ./%{name}/example-blocked-names.txt %{buildroot}/%{config_dir}/blocked-names.txt
+install -D -m 0640 ./%{name}/example-captive-portals.txt %{buildroot}/%{config_dir}/captive-portals.txt
 install -D -m 0640 ./%{name}/example-cloaking-rules.txt %{buildroot}/%{config_dir}/cloaking-rules.txt
 install -D -m 0640 ./%{name}/example-forwarding-rules.txt %{buildroot}/%{config_dir}/forwarding-rules.txt
-install -D -m 0640 ./%{name}/example-whitelist.txt %{buildroot}/%{config_dir}/whitelist.txt
 
 # Systemd
 install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{name}.service
@@ -156,13 +150,17 @@ getent passwd %{user_group} >/dev/null || %{_sbindir}/useradd -r -g %{user_group
 %service_del_postun %{services}
 
 %files
+%doc ChangeLog README.md README.openSUSE %{name}.socket.conf %{name}.toml.default
+%doc %{name}/example-*
 %config(noreplace) %attr(-,root,%{user_group}) %{config_dir}/%{name}.toml
-%config(noreplace) %attr(-,root,%{user_group}) %{config_dir}/blacklist.txt
-%config(noreplace) %attr(-,root,%{user_group}) %{config_dir}/ip-blacklist.txt
+%config %attr(-,root,%{user_group}) %{config_dir}/%{name}.toml.default
+%config(noreplace) %attr(-,root,%{user_group}) %{config_dir}/allowed-ips.txt
+%config(noreplace) %attr(-,root,%{user_group}) %{config_dir}/allowed-names.txt
+%config(noreplace) %attr(-,root,%{user_group}) %{config_dir}/blocked-ips.txt
+%config(noreplace) %attr(-,root,%{user_group}) %{config_dir}/blocked-names.txt
+%config(noreplace) %attr(-,root,%{user_group}) %{config_dir}/captive-portals.txt
 %config(noreplace) %attr(-,root,%{user_group}) %{config_dir}/cloaking-rules.txt
 %config(noreplace) %attr(-,root,%{user_group}) %{config_dir}/forwarding-rules.txt
-%config(noreplace) %attr(-,root,%{user_group}) %{config_dir}/whitelist.txt
-%config %attr(-,root,%{user_group}) %{config_dir}/%{name}.toml.default
 %{_sbindir}/%{name}
 %{_sbindir}/rc%{name}
 %{_unitdir}/%{name}.service
@@ -171,8 +169,6 @@ getent passwd %{user_group} >/dev/null || %{_sbindir}/useradd -r -g %{user_group
 %dir %attr(0750,root,%{user_group}) %{config_dir}
 %dir %attr(0750,%{user_group},%{user_group}) %{home_dir}
 %dir %attr(0750,%{user_group},%{user_group}) %{log_dir}
-%{_docdir}/%{name}/
-%doc ChangeLog README.md README.openSUSE %{name}.socket.conf
 %license LICENSE
 %{_licensedir}/%{name}/%{vlic_dir}/
 

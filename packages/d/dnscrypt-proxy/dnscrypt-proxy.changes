@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Mon Jan  4 20:00:00 UTC 2021 - cunix@mail.de
+
+- Minimum golang version now at 1.15
+
+- Include 'notice' and 'patents' files of vendored packages.
+
+- Paths and hints in configuration file adjusted and added.
+
+-------------------------------------------------------------------
+Mon Jan  4 11:45:57 UTC 2021 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 2.0.45
+  * Configuration changes (to be required in versions 2.1.x):
+    - [blacklist] has been renamed to [blocked_names]
+    - [ip_blacklist] has been renamed to [blocked_ips]
+    - [whitelist] has been renamed to [allowed_names]
+    - generate-domains-blacklist.py has been renamed to
+      generate-domains-blocklist.py, and the configuration files
+      have been renamed as well.
+  * dnscrypt-proxy -resolve has been completely revamped, and now
+    requires the configuration file to be accessible. It will send
+    a query to an IP address of the dnscrypt-proxy server by default.
+    Sending queries to arbitrary servers is also supported with the
+    new -resolve name,address syntax.
+  * Relay lists can be set to * for automatic relay selection.
+    When a wildcard is used, either for the list of servers or relays,
+    the proxy ensures that relays and servers are on distinct networks.
+  * Lying resolvers are detected and reported.
+  * New return code: NOT_READY for queries received before the proxy
+    has been initialized.
+  * Server lists can't be older than a week any more, even if directory
+    permissions are incorrect and cache files cannot be written.
+  * New feature: allowed_ips, to configure a set of IP addresses to never
+    block no matter what DNS name resolves to them.
+  * Hard-coded IP addresses can be immediately returned for test queries
+    sent by operating systems in order to check for connectivity and captive portals.
+    Such responses can be sent even before an interface is considered as enabled by the
+    operating system. This can be configured in a new section called [captive_portals].
+  * On Linux, OpenBSD and FreeBSD, listen_addresses can now include IP addresses
+    that haven't been assigned to an interface yet.
+  * generate-domains-blocklist.py: regular expressions are now ignored in time-based entries.
+  * Minor bug fixes and logging improvements.
+  * Cloaking plugin: if an entry has multiple IP addresses for a type, all the IP
+    addresses are now returned instead of a random one.
+  * Static entries can now include DNSCrypt relays.
+  * Name blocking: aliases relying on SVCB and HTTPS records can now be blocked in
+    addition to aliases via regular CNAME records.
+  * EDNS-Client-Subnet information can be added to outgoing queries. Instead of sending
+    the actual client IP, ECS information is user configurable, and IP addresses will be
+    randomly chosen for every query.
+  * Initial DoH queries are now checked using random names in order to properly measure
+    CDNs such as Tencent that ignore the padding.
+  * DoH: the max-stale cache control directive is now present in queries.
+  * Logs can now be sent to /dev/stdout instead of actual files.
+  * New download mirror (https://download.dnscrypt.net) for resolvers, relays and parental-control.
+
+-------------------------------------------------------------------
 Wed Jul 22 01:43:47 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Sort file lists to make package build reproducible
