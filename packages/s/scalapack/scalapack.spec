@@ -1,7 +1,7 @@
 #
 # spec file for package scalapack
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,11 +60,6 @@ ExclusiveArch:  do_not_build
 %define mpi_flavor openmpi
 %define mpi_vers 3
 %{bcond_with hpc}
-%{bcond_without blacs_devel_headers}
-%else
-# Only build header back on one multibuild for non-HPC.
-# Note: For HPC the headers need to be built always.
-%{bcond_with blacs_devel_headers}
 %endif
 
 %if "%flavor" == "openmpi4"
@@ -72,16 +67,16 @@ ExclusiveArch:  do_not_build
 %define mpi_flavor openmpi
 %define mpi_vers 4
 %{bcond_with hpc}
-%{bcond_without blacs_devel_headers}
-%else
-# Only build header back on one multibuild for non-HPC.
-# Note: For HPC the headers need to be built always.
-%{bcond_with blacs_devel_headers}
 %endif
 
 %if "%flavor" == "mvapich2"
 %define mpi_flavor mvapich2
 %{bcond_with hpc}
+%{bcond_without blacs_devel_headers}
+%else
+# Only build header back on one multibuild for non-HPC.
+# Note: For HPC the headers need to be built always.
+%{bcond_with blacs_devel_headers}
 %endif
 
 %if "%flavor" == "gnu-openmpi-hpc"

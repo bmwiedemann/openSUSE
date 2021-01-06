@@ -213,4 +213,13 @@
     <comment>- Add build support for gcc10 to HPC build (bsc#1174439). (forwarded request 833600 from eeich)</comment>
     <requestid>833715</requestid>
   </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>a42abce584a8dc6ac8549e21f76998f6</srcmd5>
+    <version>2.1.0</version>
+    <time>1609959383</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build for non-HPC packages: do not build BLACS headers for
+  multiple flavors (boo#1178116).</comment>
+    <requestid>860504</requestid>
+  </revision>
 </revisionlist>
