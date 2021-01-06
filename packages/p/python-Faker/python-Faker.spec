@@ -1,7 +1,7 @@
 #
 # spec file for package python-Faker
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define oldpython python
 %global skip_python2 1
 Name:           python-Faker
-Version:        4.14.2
+Version:        5.3.0
 Release:        0
 Summary:        Python package that generates fake data
 License:        MIT
@@ -81,7 +81,7 @@ sed -i -e 's:==:>=:g' setup.py
 
 %files %{python_files}
 %license LICENSE.txt
-%doc CHANGELOG.rst README.rst
+%doc CHANGELOG.md README.rst
 %python_alternative %{_bindir}/faker
 %{python_sitelib}/*
 
