@@ -1,7 +1,7 @@
 #
 # spec file for package waybar
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           waybar
-Version:        0.9.4
+Version:        0.9.5
 Release:        0
 Summary:        Customizable Wayland bar for Sway and Wlroots based compositors
 License:        MIT
@@ -26,13 +26,15 @@ URL:            https://github.com/Alexays/Waybar
 # use this to download tarball. then use `meson subprojects download`
 # to get the `date` dependency. and create own tarball
 #Source:         https://github.com/Alexays/Waybar/archive/%{version}.tar.gz
-Source:         %{version}.tar.gz
+Source:         %{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gtk-layer-shell-devel
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
+# wait for SR#860135
+#BuildRequires:  sndio-devel >= 1.7.0
 # optional: man pages
 BuildRequires:  scdoc
 # optional: tray module
@@ -82,7 +84,7 @@ This package provides the upstream look and feel for sway.
 %setup -q -n Waybar-%{version}
 
 %build
-%meson
+%meson -Dsndio=disabled
 %meson_build
 
 %install

@@ -360,4 +360,13 @@
   * Allow enabing pango markup in the taskbar string #814</comment>
     <requestid>835932</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4c2d039437f666d02c80658d2e218ac8</srcmd5>
+    <version>0.9.5</version>
+    <time>1609959460</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.5:
+  https://github.com/Alexays/Waybar/compare/0.9.4...0.9.5</comment>
+    <requestid>860803</requestid>
+  </revision>
 </revisionlist>
