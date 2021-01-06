@@ -1,7 +1,7 @@
 #
 # spec file for package lsp-plugins
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ladspa
 BuildRequires:  ladspa-devel
-BuildRequires:  php7-devel
+BuildRequires:  php7
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cairo)
