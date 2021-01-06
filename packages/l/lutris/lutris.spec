@@ -1,7 +1,7 @@
 #
 # spec file for package lutris
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global appid net.lutris.Lutris
 Name:           lutris
-Version:        0.5.8.1
+Version:        0.5.8.2
 Release:        0
 Summary:        Manager for game installation and execution
 License:        GPL-3.0-or-later
