@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  4 15:27:02 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Set the previous "distro_target" option when restarting the
+  package manager (bsc#1176275), fixes upgrade from SLE12 via SMT
+- 4.3.5 
+
+-------------------------------------------------------------------
 Tue Nov  3 08:53:18 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
 
 - Add a hint to the "locked" error message
