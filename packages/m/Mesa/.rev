@@ -4350,4 +4350,15 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   * fourth (second to last) bugfix release for the 20.2 branch</comment>
     <requestid>853562</requestid>
   </revision>
+  <revision rev="398" vrev="270">
+    <srcmd5>65b9445703e676bce05572d3f9758f6f</srcmd5>
+    <version>unknown</version>
+    <time>1609959335</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20.3.2
+  * third bugfix release for the 20.3 branch
+- drm and surfaceless are not specified as platforms anymore,
+  remove them from egl_platforms</comment>
+    <requestid>860330</requestid>
+  </revision>
 </revisionlist>
