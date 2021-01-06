@@ -1,8 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan  4 17:34:22 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to 3.2.1:
+  * Full changelog
+    https://github.com/OSGeo/gdal/blob/v3.2.1/gdal/NEWS
+- Packaging:
+  + Update copyright year
+
+-------------------------------------------------------------------
 Wed Nov  4 12:59:42 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to 3.2.0:
-  * Full changelog 
+  * Full changelog
     https://github.com/OSGeo/gdal/blob/v3.2.0/gdal/NEWS
 - Packaging:
   + Add python3-GDAL as require in gdal package
@@ -1125,3 +1134,4 @@ Mon Jun 19 00:00:00 UTC 2006 - Markus Neteler 1.3.2
 Wed Jan 25 00:00:00 UTC 2006 - Otto Dassau 1.3.1
 
 - adapted to SuSE 10.0
+
