@@ -1,7 +1,7 @@
 #
 # spec file for package bluebird-theme
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 Name:           bluebird-theme
 Version:        1.3
 Release:        0
-Url:            http://shimmerproject.org/project/bluebird/
+URL:            https://github.com/shimmerproject/Bluebird
 Summary:        A Clean Minimalistic Theme for GNOME, XFCE, GTK+ 2 and 3
 License:        GPL-2.0-or-later OR CC-BY-SA-3.0
 Group:          System/GUI/GNOME
