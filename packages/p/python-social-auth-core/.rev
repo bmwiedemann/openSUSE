@@ -122,4 +122,12 @@
   (gh#python-social-auth/social-core#500)</comment>
     <requestid>827286</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>78502aa453b0fefc2aec87521139384f</srcmd5>
+    <version>3.4.0</version>
+    <time>1610050922</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>859318</requestid>
+  </revision>
 </revisionlist>

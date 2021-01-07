@@ -19,14 +19,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
+%define modname social-core
 Name:           python-social-auth-core
-Version:        3.3.3
+Version:        3.4.0
 Release:        0
 Summary:        Python Social Auth Core
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            https://github.com/python-social-auth/social-core
-Source:         https://files.pythonhosted.org/packages/source/s/social-auth-core/social-auth-core-%{version}.tar.gz
+Source:         https://github.com/python-social-auth/%{modname}/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 # Missing test data https://github.com/python-social-auth/social-core/pull/351
 Source1:        https://raw.githubusercontent.com/python-social-auth/social-core/master/social_core/tests/backends/data/saml_config.json
 Patch0:         remove-unittest2.patch
@@ -85,7 +85,7 @@ third party services, implement integrations with web frameworks and
 storage solutions.
 
 %prep
-%autosetup -p1 -n social-auth-core-%{version}
+%autosetup -p1 -n %{modname}-%{version}
 
 cp %{SOURCE1} social_core/tests/backends/data/
 

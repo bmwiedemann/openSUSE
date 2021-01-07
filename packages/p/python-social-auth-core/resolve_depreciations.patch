@@ -34,18 +34,9 @@
  from calendar import timegm
 +import six
  
+ import six
  from jose import jwt
- from jose.jwk import RSAKey
-@@ -138,7 +139,7 @@ class OpenIdConnectTestMixin(object):
-         if tamper_message:
-             header, msg, sig = body['id_token'].split('.')
-             id_token['sub'] = '1235'
--            msg = base64.encodestring(json.dumps(id_token).encode()).decode()
-+            msg = base64.encodebytes(json.dumps(id_token).encode()).decode()
-             body['id_token'] = '.'.join([header, msg, sig])
- 
-         return json.dumps(body)
-@@ -147,7 +148,7 @@ class OpenIdConnectTestMixin(object):
+@@ -151,7 +152,7 @@ class OpenIdConnectTestMixin(object):
          self.access_token_body = self.prepare_access_token_body(
              **access_token_kwargs
          )
@@ -282,20 +273,9 @@
              self.strategy.storage.is_integrity_error(None)
  
      def test_random_string(self):
---- a/social_core/tests/backends/test_vk.py
-+++ b/social_core/tests/backends/test_vk.py
-@@ -21,7 +21,7 @@ class VKOAuth2Test(OAuth2Test):
-             'last_name': 'Дуров',
-             'screen_name': 'durov',
-             'nickname': '',
--            'photo': "http:\/\/cs7003.vk.me\/v7003815\/22a1\/xgG9fb-IJ3Y.jpg"
-+            'photo': "http:\\/\\/cs7003.vk.me\\/v7003815\\/22a1\\/xgG9fb-IJ3Y.jpg"
-         }]
-     })
- 
 --- a/social_core/tests/models.py
 +++ b/social_core/tests/models.py
-@@ -49,19 +49,19 @@ class User(BaseModel):
+@@ -51,19 +51,19 @@ class User(BaseModel):
          User.cache[self.username] = self
  
  
@@ -318,16 +298,7 @@
  
      def save(self):
          pass
-@@ -166,7 +166,7 @@ class TestAssociation(AssociationMixin,
-         if assoc is None:
-             assoc = TestAssociation(server_url=server_url,
-                                     handle=association.handle)
--        assoc.secret = base64.encodestring(association.secret)
-+        assoc.secret = base64.encodebytes(association.secret)
-         assoc.issued = association.issued
-         assoc.lifetime = association.lifetime
-         assoc.assoc_type = association.assoc_type
-@@ -219,7 +219,7 @@ class TestPartial(PartialMixin, BaseMode
+@@ -224,7 +224,7 @@ class TestPartial(PartialMixin, BaseMode
  
  
  class TestStorage(BaseStorage):
@@ -366,15 +337,7 @@
          return user
 --- a/social_core/utils.py
 +++ b/social_core/utils.py
-@@ -2,7 +2,6 @@ import re
- import sys
- import time
- import unicodedata
--import collections
- import functools
- import hmac
- import logging
-@@ -19,6 +18,10 @@ from requests.packages.urllib3.poolmanag
+@@ -18,6 +18,10 @@ from requests.packages.urllib3.poolmanag
  
  from .exceptions import AuthCanceled, AuthForbidden, AuthUnreachableProvider
  
@@ -385,24 +348,6 @@
  
  SETTING_PREFIX = 'SOCIAL_AUTH'
  
-@@ -111,7 +114,7 @@ def sanitize_redirect(hosts, redirect_to
- 
- def user_is_authenticated(user):
-     if user and hasattr(user, 'is_authenticated'):
--        if isinstance(user.is_authenticated, collections.Callable):
-+        if isinstance(user.is_authenticated, Callable):
-             authenticated = user.is_authenticated()
-         else:
-             authenticated = user.is_authenticated
-@@ -124,7 +127,7 @@ def user_is_authenticated(user):
- 
- def user_is_active(user):
-     if user and hasattr(user, 'is_active'):
--        if isinstance(user.is_active, collections.Callable):
-+        if isinstance(user.is_active, Callable):
-             is_active = user.is_active()
-         else:
-             is_active = user.is_active
 --- a/social_core/tests/actions/actions.py
 +++ b/social_core/tests/actions/actions.py
 @@ -8,9 +8,9 @@ from six.moves.urllib_parse import urlpa

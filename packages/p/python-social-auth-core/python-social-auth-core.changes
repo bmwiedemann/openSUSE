@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec 22 23:02:37 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.4.0:
+  - Added
+    - Zoom backend
+  - Changed
+    - Directly use access_token in Azure Tenant backend
+    - Support Apple JWT audience
+    - Update partial session cleanup to remove old token from session
+      too
+    - Fetch user email in Okta integration
+    - Improve Python 3.9 compatibility
+    - Send proxies in request
+    - Improve error handling in Apple backend
+
+-------------------------------------------------------------------
 Mon Aug 17 09:06:18 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add resolve_depreciations.patch to clean deprecation warnings
