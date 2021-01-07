@@ -1,21 +1,17 @@
-From 8784b0dadbf72d3ab15aa0bad7c419a0e7bd3c30 Mon Sep 17 00:00:00 2001
+From a759550b2480f9707886469ec781cf4f663328f7 Mon Sep 17 00:00:00 2001
 From: Christian Goll <cgoll@suse.de>
-Date: Thu, 23 Jan 2020 12:08:24 +0100
-Subject: [PATCH 5/5] fix lite
+Date: Thu, 17 Dec 2020 14:45:16 +0100
+Subject: [PATCH] fix lite
 
 ---
- tensorflow/lite/tools/make/Makefile | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ tensorflow/lite/tools/make/Makefile | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/tensorflow/lite/tools/make/Makefile b/tensorflow/lite/tools/make/Makefile
-index f67094f37b..bd52ccc8a6 100644
+index 9d90e9526be..8ba09b5940d 100644
 --- a/tensorflow/lite/tools/make/Makefile
 +++ b/tensorflow/lite/tools/make/Makefile
-@@ -38,15 +38,15 @@ INCLUDES := \
- -I$(MAKEFILE_DIR)/downloads/gemmlowp \
- -I$(MAKEFILE_DIR)/downloads/neon_2_sse \
- -I$(MAKEFILE_DIR)/downloads/farmhash/src \
---I$(MAKEFILE_DIR)/downloads/flatbuffers/include \
+@@ -48,11 +48,12 @@ INCLUDES := \
  -I$(OBJDIR)
  # This is at the end so any globally-installed frameworks like protobuf don't
  # override local versions in the source tree.
@@ -29,17 +25,16 @@ index f67094f37b..bd52ccc8a6 100644
  -lstdc++ \
  -lpthread \
  -lm \
-@@ -111,8 +111,8 @@ $(wildcard tensorflow/lite/kernels/internal/optimized/*.cc) \
- $(wildcard tensorflow/lite/kernels/internal/reference/*.cc) \
+@@ -159,8 +160,7 @@ $(wildcard tensorflow/lite/tools/optimize/sparsity/*.cc) \
  $(PROFILER_SRCS) \
  tensorflow/lite/tools/make/downloads/farmhash/src/farmhash.cc \
--tensorflow/lite/tools/make/downloads/fft2d/fftsg.c \
+ tensorflow/lite/tools/make/downloads/fft2d/fftsg.c \
+-tensorflow/lite/tools/make/downloads/fft2d/fftsg2d.c \
 -tensorflow/lite/tools/make/downloads/flatbuffers/src/util.cpp
-+tensorflow/lite/tools/make/downloads/fft2d/fftsg.c 
-+
++tensorflow/lite/tools/make/downloads/fft2d/fftsg2d.c
  CORE_CC_ALL_SRCS += \
  	$(shell find tensorflow/lite/tools/make/downloads/absl/absl/ \
- 	             -type f -name \*.cc | grep -v test | grep -v benchmark | grep -v synchronization | grep -v debugging)
+ 	             -type f -name \*.cc | grep -v test | grep -v benchmark | grep -v synchronization | grep -v debugging | grep -v hash | grep -v flags | grep -v random)
 -- 
-2.24.1
+2.26.2
 

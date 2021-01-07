@@ -1,45 +1,45 @@
-From db4ac9481d24126760589164afa06ef895b4a6a4 Mon Sep 17 00:00:00 2001
+From 9a259e881a006c936d0dce4cd5337838d32b6a23 Mon Sep 17 00:00:00 2001
 From: Christian Goll <cgoll@suse.de>
-Date: Mon, 20 Jan 2020 14:10:33 +0100
-Subject: [PATCH 4/4] remove weakref
+Date: Tue, 15 Dec 2020 17:38:40 +0100
+Subject: [PATCH] remove weakref
 
 ---
  tensorflow/python/BUILD             |  1 -
  tensorflow/tools/pip_package/BUILD  |  1 -
- tensorflow/workspace.bzl            | 11 -----------
+ tensorflow/workspace.bzl            | 10 ----------
  third_party/backports_weakref.BUILD | 22 ----------------------
- 4 files changed, 35 deletions(-)
+ 4 files changed, 34 deletions(-)
  delete mode 100644 third_party/backports_weakref.BUILD
 
 diff --git a/tensorflow/python/BUILD b/tensorflow/python/BUILD
-index f2ca67521f..bb6be88d63 100644
+index 191325ba2fe..9f089debb67 100644
 --- a/tensorflow/python/BUILD
 +++ b/tensorflow/python/BUILD
-@@ -4999,7 +4999,6 @@ py_library(
-     ],
-     deps = [
-         ":_tf_stack",
+@@ -5723,7 +5723,6 @@ py_library(
+         ":tf_decorator",
+         ":tf_export",
+         ":tf_stack",
 -        "@org_python_pypi_backports_weakref",
          "@com_google_protobuf//:protobuf_python",
          "//third_party/py/numpy",
          "@six_archive//:six",
 diff --git a/tensorflow/tools/pip_package/BUILD b/tensorflow/tools/pip_package/BUILD
-index 346752ecbf..3aee32f759 100644
+index f25a6446813..553312fb111 100644
 --- a/tensorflow/tools/pip_package/BUILD
 +++ b/tensorflow/tools/pip_package/BUILD
-@@ -167,7 +167,6 @@ filegroup(
-         "@swig//:LICENSE",
-         "@termcolor_archive//:COPYING.txt",
-         "@zlib_archive//:zlib.h",
+@@ -211,7 +211,6 @@ filegroup(
+         "@nasm//:LICENSE",
+         "@nsync//:LICENSE",
+         "@opt_einsum_archive//:LICENSE",
 -        "@org_python_pypi_backports_weakref//:LICENSE",
-     ] + select({
-         "//tensorflow:android": [],
-         "//tensorflow:ios": [],
+         "@pasta//:LICENSE",
+         "@png//:LICENSE",
+         "@six_archive//:LICENSE",
 diff --git a/tensorflow/workspace.bzl b/tensorflow/workspace.bzl
-index 77e605fe76..768458cc71 100755
+index 3397d1070d1..39e80e1d07f 100755
 --- a/tensorflow/workspace.bzl
 +++ b/tensorflow/workspace.bzl
-@@ -397,17 +397,6 @@ def tf_repositories(path_prefix = "", tf_repo_name = ""):
+@@ -531,16 +531,6 @@ def tf_repositories(path_prefix = "", tf_repo_name = ""):
          strip_prefix = "enum34-1.1.6/enum",
      )
  
@@ -53,13 +53,12 @@ index 77e605fe76..768458cc71 100755
 -            "https://pypi.python.org/packages/bc/cc/3cdb0a02e7e96f6c70bd971bc8a90b8463fda83e264fa9c5c1c98ceabd81/backports.weakref-1.0rc1.tar.gz",
 -        ],
 -    )
--
-     filegroup_external(
-         name = "org_python_license",
-         licenses = ["notice"],  # Python 2.0
+ 
+     tf_http_archive(
+         name = "dill_archive",
 diff --git a/third_party/backports_weakref.BUILD b/third_party/backports_weakref.BUILD
 deleted file mode 100644
-index 0adfc5f054..0000000000
+index 0adfc5f0541..00000000000
 --- a/third_party/backports_weakref.BUILD
 +++ /dev/null
 @@ -1,22 +0,0 @@
@@ -86,5 +85,5 @@ index 0adfc5f054..0000000000
 -    cmd = "cp $< $@",
 -)
 -- 
-2.24.1
+2.26.2
 

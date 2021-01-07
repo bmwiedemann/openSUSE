@@ -1,0 +1,52 @@
+From c570e6d5a3a284a758358a2c52c2edfdce6ed186 Mon Sep 17 00:00:00 2001
+From: Christian Goll <cgoll@suse.de>
+Date: Tue, 10 Nov 2020 11:27:52 +0100
+Subject: [PATCH] removed external toolchains
+
+---
+ WORKSPACE | 22 ----------------------
+ 1 file changed, 22 deletions(-)
+
+diff --git a/WORKSPACE b/WORKSPACE
+index 9db1d9b80eb..9f9e51b8b1b 100644
+--- a/WORKSPACE
++++ b/WORKSPACE
+@@ -47,11 +47,6 @@ swift_rules_dependencies()
+ load("//tensorflow:version_check.bzl", "check_bazel_version_at_least")
+ check_bazel_version_at_least("1.0.0")
+ 
+-load("//third_party/android:android_configure.bzl", "android_configure")
+-android_configure(name="local_config_android")
+-load("@local_config_android//:android.bzl", "android_workspace")
+-android_workspace()
+-
+ # If a target is bound twice, the later one wins, so we have to do tf bindings
+ # at the end of the WORKSPACE file.
+ load("//tensorflow:workspace.bzl", "tf_bind")
+@@ -66,23 +61,6 @@ http_archive(
+     ],
+ )
+ 
+-http_archive(
+-    name = "mobile_ssd",
+-    build_file = "//:models.BUILD",
+-    sha256 = "bddd81ea5c80a97adfac1c9f770e6f55cbafd7cce4d3bbe15fbeb041e6b8f3e8",
+-    urls = [
+-        "https://storage.googleapis.com/download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_android_export.zip",
+-    ],
+-)
+-
+-http_archive(
+-    name = "mobile_multibox",
+-    build_file = "//:models.BUILD",
+-    sha256 = "859edcddf84dddb974c36c36cfc1f74555148e9c9213dedacf1d6b613ad52b96",
+-    urls = [
+-        "https://storage.googleapis.com/download.tensorflow.org/models/mobile_multibox_v1a.zip",
+-    ],
+-)
+ 
+ http_archive(
+     name = "stylize",
+-- 
+2.26.2
+

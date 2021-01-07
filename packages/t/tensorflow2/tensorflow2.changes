@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Wed Jan  6 13:25:31 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on aarch64 and on hpc variants
+
+-------------------------------------------------------------------
+Wed Oct 21 13:48:26 UTC 2020 - Christian Goll <cgoll@suse.com>
+- Updated to version 2.4.0 which fixes several bugs (bsc#1173128)
+  (bsc#1173314)i, (bsc#1179455) and (bsc#1178287)
+- Security fixes for CVE-2020-26266, CVE-2020-26267, CVE-2020-26268,
+  CVE-2020-26270 and CVE-2020-26271
+- updated sources:
+  * abseil-cpp.tar.gz
+  * eigen.tar.gz
+  * gemmlowp.zip
+  * googleapis.zip
+  * llvm.tar.gz
+- added sources:
+  * DouraFFT.tar.gz
+  * cpuinfo.zip
+  * dill-0.3.1.1.tar.gz (aarch64 only)
+  * dlpack.tar.gz
+  * oneDNN.tar.gz
+  * openmp-10.0.1.src.tar.xz
+  * python-license-astunparse
+  * re2.tar.gz
+  * rules_android.zip
+  * rules_cc.tar.gz
+  * rules_docker-0.15.0.tar.gz
+  * ruy.zip
+  * sobol_data.tar.gz
+  * tblib-1.3.2.tar.gz (aarch64 only)
+  * typing_extensions-3.7.4.2.tar.gz (aarch64 only)
+- removed sources:
+  * boring_ssl.tar.gz
+  * cub_1.8.0.zip
+  * mkl-v0.21.2.tar.gz
+  * pybind11-v2.3.0.tar.gz
+  * right-json-location.patch
+  * rules_docker.tar.gz
+- removed patches:
+  * Provide-overload-to-cope-with-const-ness-change-of-N.patch
+  * fix-google-absl-memory.patch
+  * json-feature-name.patch
+  * libjpeg_turbo-name.patch
+  * removed-docker-tools.patch
+- added patches:
+  * removed-clog-build-as-included-in-cpuinfo.patch
+  * removed-external-toolchains.patch
+- Major changes are:
+  * tf.distribute introduces experimental support for asynchronous training of 
+    models via the tf.distribute.experimental.ParameterServerStrategy API.
+  * MultiWorkerMirroredStrategy is now a stable API and is no longer considered 
+    experimental.
+  * Introduces experimental support for a new module named tf.experimental.numpy 
+    which is a NumPy-compatible API for writing TF programs.
+  * A major refactoring of the internals of the Keras Functional API has been 
+    completed, that should improve the reliability, stability, and performance 
+    of constructing Functional models.
+  * Keras mixed precision API tf.keras.mixed_precision is no longer experimental 
+    and allows the use of 16-bit floating point formats during training, 
+    improving performance by up to 3x on GPUs and 60% on TPUs.
+  * TensorFlow Profiler now supports profiling MultiWorkerMirroredStrategy and 
+    tracing multiple workers using the sampling mode API.
+
+-------------------------------------------------------------------
+Tue Oct 13 10:02:55 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- fixed hpc flavor and Leap15.2 builds 
+
+-------------------------------------------------------------------
+Mon Sep 28 13:06:00 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- updated to 2.1.2 with following fixes (bsc#1177022):
+  * Fixes an undefined behavior causing a segfault in tf.raw_ops.Switch (CVE-2020-15190)
+  * Fixes three vulnerabilities in conversion to DLPack format 
+    (CVE-2020-15191, CVE-2020-15192, CVE-2020-15193)
+  * Fixes two vulnerabilities in SparseFillEmptyRowsGrad 
+    (CVE-2020-15194, CVE-2020-15195)
+  * Fixes an integer truncation vulnerability in code using the 
+    work sharder API (CVE-2020-15202)
+  * Fixes a format string vulnerability in tf.strings.as_string (CVE-2020-15203)
+  * Fixes segfault raised by calling session-only ops in eager mode (CVE-2020-15204)
+  * Fixes data leak and potential ASLR violation from tf.raw_ops.StringNGrams (CVE-2020-15205)
+  * Fixes segfaults caused by incomplete SavedModel validation (CVE-2020-15206)
+  * Fixes a data corruption due to a bug in negative indexing support in TFLite (CVE-2020-15207)
+  * Fixes a data corruption due to dimension mismatch in TFLite (CVE-2020-15208)
+  * Fixes several vulnerabilities in TFLite saved model format 
+    (CVE-2020-15209, CVE-2020-15210, CVE-2020-15211)
+- using fft2d.tgz instead of fft.tar.gz
+- removed fft.tar.gz
+
+-------------------------------------------------------------------
+Mon Sep 14 11:53:55 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- fixed json-feature-name.patch for leap15.2 builds  
+
+-------------------------------------------------------------------
+Thu Sep 10 09:04:46 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- updated disk constraints, as sometimes the build fails with too
+  low disk space
+
+-------------------------------------------------------------------
+Wed Sep  9 13:09:19 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- Package C-headers for standard tensorflow (boo#1175789)
+- fixed build gcc10.1 errors for Tumbleweed with following 
+  upstream patch:
+  * added file Provide-overload-to-cope-with-const-ness-change-of-N.patch
+
+-------------------------------------------------------------------
+Tue Sep  8 14:46:31 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- Package header files for Tensoflow2 Lite - boo#1175099 
+
+-------------------------------------------------------------------
+Thu Sep  3 15:37:56 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Revert memoryperjob constraint support and use again 
+  %limit_build macro to avoid OOM errors
+
+-------------------------------------------------------------------
 Thu Aug 20 15:06:34 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Lower memoryperjob to 1300 MB (as done for tensorflow)

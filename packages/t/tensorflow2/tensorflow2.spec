@@ -1,7 +1,7 @@
 #
 # spec file for package tensorflow2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,18 @@
 
 #
 %define pname tensorflow2
-%define vers 2.1.1
-%define _vers 2_1_1
+%define vers 2.4.0
+#%%define cand -rc4
+%define _vers 2_4_0
 %define libmaj 2
-%define libmin 1
-%define libref 1
+%define libmin 4
+%define libref 0
 %define python_ver_hack python3.[0-9]
+%ifarch aarch64
+%define mklconfig mkl_aarch64
+%else
+%define mklconfig mkl
+%endif
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
@@ -97,6 +103,7 @@
 %define package_prefix %hpc_prefix
 %define package_bindir %hpc_bindir
 %define package_libdir %hpc_libdir
+%define package_includedir %hpc_includedir
 %else
 %define package_name   %pname%{?package_suffix}
 %define package_name_conflict tensorflow%{?package_suffix}
@@ -105,6 +112,7 @@
 %define package_prefix %_prefix
 %define package_bindir %_bindir
 %define package_libdir %_libdir
+%define package_includedir %_includedir
 %define libname(l:s:)   lib%{pname}%{!-l:%{-s:-}}%{-l*}%{-s*}%{?package_suffix}
 %endif
 Name:           %{package_name}
@@ -114,7 +122,7 @@ Summary:        A framework used for deep learning
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND FSFUL AND MIT AND MPL-2.0 AND OpenSSL AND Python-2.0
 Group:          Development/Languages/Python
 URL:            https://www.tensorflow.org/
-Source0:        https://github.com/tensorflow/tensorflow/archive/v%{version}.tar.gz#/tensorflow-v%{version}.tar.gz
+Source0:        https://github.com/tensorflow/tensorflow/archive/v%{version}%{?cand}.tar.gz#/tensorflow-v%{version}.tar.gz
 Source1:        tensorflow2-rpmlintrc
 # IMPORTANT
 # although some of the following libraries are available in factory they could
@@ -126,66 +134,84 @@ Source10:       https://github.com/bazelbuild/rules_closure/archive/308b05b2419e
 # License15: MIT
 Source15:       https://github.com/google/farmhash/archive/816a4ae622e964763ca0862d9dbd19324a1eaf45.tar.gz#/farmhash.tar.gz
 # License17: Apache-2.0
-Source17:       https://github.com/google/gemmlowp/archive/12fed0cd7cfcd9e169bf1925bc3a7a58725fdcc3.zip#/gemmlowp.zip
+Source17:       https://github.com/google/gemmlowp/archive/fda83bdc38b118cc6b56753bd540caa49e570745.zip#/gemmlowp.zip
 # License18: BSD-3-Clause
 Source18:       https://github.com/hfp/libxsmm/archive/1.9.tar.gz#/libxsmm_1.9.tar.gz
 # License19: Apache-2.0
-Source19:       https://github.com/abseil/abseil-cpp/archive/43ef2148c0936ebf7cb4be6b19927a9d9d145b8f.tar.gz#/abseil-cpp.tar.gz
-# License20: OpenSSL and ISC and Intel
-Source20:       https://github.com/google/boringssl/archive/7f634429a04abc48e2eb041c81c5235816c96514.tar.gz#/boring_ssl.tar.gz
+Source19:       https://github.com/abseil/abseil-cpp/archive/df3ea785d8c30a9503321a3d35ee7d35808f190d.tar.gz#/abseil-cpp.tar.gz
 # License21: Apache-2.0
-Source21:       https://github.com/googleapis/googleapis/archive/f81082ea1e2f85c43649bee26e0d9871d4b41cdb.zip#/googleapis.zip
-# License23: BSD-3-Clause
-Source23:       https://github.com/NVlabs/cub/archive/1.8.0.zip#/cub_1.8.0.zip
+Source21:       https://github.com/googleapis/googleapis/archive/541b1ded4abadcc38e8178680b0677f65594ea6f.zip#/googleapis.zip
 # License24: Apache-2.0
 Source24:       https://github.com/google/highwayhash/archive/fd3d9af80465e4383162e4a7c5e2f406e82dd968.tar.gz#/highwayhash.tar.gz
 # License26: MPL-2.0
 # NOTE: tensorflow only uses MPL-2.0 part of eigen
-Source26:       https://gitlab.com/libeigen/eigen/-/archive/4e696901f873a2347f76d931cf2f701e31e15d05/eigen-4e696901f873a2347f76d931cf2f701e31e15d05.tar.gz#/eigen.tar.gz
+Source26:       https://gitlab.com/libeigen/eigen/-/archive/011e0db31d1bed8b7f73662be6d57d9f30fa457a/eigen-011e0db31d1bed8b7f73662be6d57d9f30fa457a.tar.gz#/eigen.tar.gz
 # License27: BSD-2-Clause
 Source27:       https://github.com/intel/ARM_NEON_2_x86_SSE/archive/1200fe90bb174a6224a525ee60148671a786a71f.tar.gz#/arm_neon_2_x86_sse.tar.gz
 Source28:       https://docs.python.org/2.7/_sources/license.rst.txt#/license.rst.txt
-# License30: FSFUL
-Source30:       http://www.kurims.kyoto-u.ac.jp/~ooura/fft.tgz#/fft.tar.gz
 # License34: BSD-3-Clause and Intel
 Source34:       https://github.com/edenhill/librdkafka/archive/v0.11.5.tar.gz#/kafka-v0.11.5.tar.gz
 # License35: Apache-2.0
 Source35:       https://github.com/GoogleCloudPlatform/google-cloud-cpp/archive/v0.4.0.tar.gz#/google-cloud-cpp.tar.gz
 # License37: Apache-2.0
-Source37:       https://github.com/bazelbuild/rules_docker/archive/a9bb1dab84cdf46e34d1b34b53a17bda129b5eba.tar.gz#/rules_docker.tar.gz
+Source37:       https://github.com/bazelbuild/rules_docker/archive/v0.15.0.tar.gz#/rules_docker-0.15.0.tar.gz
 # License44: BSD like
 Source44:       https://github.com/nanopb/nanopb/archive/f8ac463766281625ad710900479130c7fcb4d63b.tar.gz#/nanopb.tar.gz
 # License45: Python license itself, do need as sha256b have to match so could not use system one
 Source45:       https://storage.googleapis.com/mirror.tensorflow.org/docs.python.org/2.7/_sources/license.rst.txt#/python-license.txt
-# License52:
-Source52:       https://github.com/pybind/pybind11/archive/v2.3.0.tar.gz#/pybind11-v2.3.0.tar.gz
+# License46: Another python2 license:
+Source46:       https://raw.githubusercontent.com/simonpercivall/astunparse/v1.6.2/LICENSE#/python-license-astunparse
 # Deps sources for Tensorflow-Lite (use same eigen, gemmlowp and abseil_cpp packages as non lite version)
-# License53:
+# License53: BSD like
 Source53:       https://storage.googleapis.com/mirror.tensorflow.org/www.kurims.kyoto-u.ac.jp/~ooura/fft2d.tgz
-# License54:
-Source54:       https://github.com/llvm/llvm-project/archive/ecc999101aadc8dc7d4af9fd88be10fe42674aa0.tar.gz#/llvm.tar.gz
-# License56:
+# License54: Apache-2.0 WITH LLVM-exception OR NCSA
+Source54:       https://github.com/llvm/llvm-project/archive/f402e682d0ef5598eeffc9a21a691b03e602ff58.tar.gz#/llvm.tar.gz
+# License56:  BSD-3-Clause
 Source56:       https://github.com/mborgerding/kissfft/archive/36dbc057604f00aacfc0288ddad57e3b21cfc1b8.tar.gz#/kissfft.tar.gz
-# stable mkl version (bsc#1168839)
-# https://github.com/tensorflow/tensorflow/pull/36487
-# https://github.com/tensorflow/tensorflow/pull/36488
-Source57:       https://storage.googleapis.com/mirror.tensorflow.org/github.com/intel/mkl-dnn/archive/v0.21.2.tar.gz#/mkl-v0.21.2.tar.gz
+# Wrong rules package in Factory
+# License58:  Apache-2.0
+Source58:       https://github.com/bazelbuild/rules_cc/archive/01d4a48911d5e7591ecb1c06d3b8af47fe872371.zip#/rules_cc.tar.gz
+# Source59: Apache-2.0
+Source59:       https://github.com/bazelbuild/rules_android/archive/v0.1.1.zip#/rules_android.zip
+# License60: BSD 2-Clause
+Source60:       https://github.com/pytorch/cpuinfo/archive/6cecd15784fcb6c5c0aa7311c6248879ce2cb8b2.zip#/cpuinfo.zip
+# License23: BSD-3-Clause
+Source62:       https://github.com/joe-kuo/sobol_data/archive/835a7d7b1ee3bc83e575e302a985c66ec4b65249.tar.gz#/sobol_data.tar.gz
+# Source63: Apache-2.0
+Source63:       https://github.com/google/ruy/archive/5bb02fbf90824c2eb6cd7418f766c593106a332b.zip#/ruy.zip
+# License64: Apache-2.0
+Source64:       https://github.com/dmlc/dlpack/archive/3efc489b55385936531a06ff83425b719387ec63.tar.gz#/dlpack.tar.gz
+# License65: BSD like
+Source65:       https://github.com/petewarden/OouraFFT/archive/v1.0.tar.gz#/DouraFFT.tar.gz
+# License66: BSD-3-Clause
+# Factory version does not work
+Source66:       https://github.com/google/re2/archive/506cfa4bffd060c06ec338ce50ea3468daa6c814.tar.gz#/re2.tar.gz
+# License67: Apache-2.0 WITH LLVM-exception OR NCSA
+Source67:       https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.1/openmp-10.0.1.src.tar.xz
+# License68: Apache License 2.0
+Source68:       https://github.com/oneapi-src/oneDNN/archive/v1.6.4.tar.gz#/oneDNN.tar.gz
+# License69: BSD-2-Clause
+Source69:       https://files.pythonhosted.org/packages/ec/c4/8c651f3240a73c28a218194f3d527eb2be5a173d08501060cdee84ade33f/tblib-1.3.2.tar.gz
+# License70: BSD-3-Clause
+Source70:       https://files.pythonhosted.org/packages/c7/11/345f3173809cea7f1a193bfbf02403fff250a3360e0e118a1630985e547d/dill-0.3.1.1.tar.gz
+# License71: PSF
+Source71:       https://files.pythonhosted.org/packages/6a/28/d32852f2af6b5ead85d396249d5bdf450833f3a69896d76eb480d9c5e406/typing_extensions-3.7.4.2.tar.gz
 Source100:      https://github.com/google/googletest/archive/release-1.8.0.tar.gz
 
-Patch10:        removed-docker-tools.patch
+Patch10:        removed-external-toolchains.patch
 # see https://github.com/tensorflow/tensorflow/pull/35943
-Patch11:        libjpeg_turbo-name.patch
-Patch12:        right-json-location.patch
 Patch13:        remove-weakref.patch
 Patch14:        fix-lite.patch
-Patch17:        json-feature-name.patch
-Patch18:        fix-google-absl-memory.patch
+# Fix from upstream for gcc10.1
+Patch20:        removed-clog-build-as-included-in-cpuinfo.patch
 
 Requires:       python3
 Requires:       python3-Keras-Applications
 Requires:       python3-Keras-Preprocessing
 Requires:       python3-abseil
 Requires:       python3-astor
+Requires:       python3-astunparse
+Requires:       python3-flatbuffers
 Requires:       python3-gast
 Requires:       python3-opt-einsum
 Requires:       python3-protobuf
@@ -205,10 +231,19 @@ Provides:       python3-tensorflow
 %endif
 Provides:       tensorflow
 %endif
-BuildRequires:  bazel = 0.29.1
-BuildRequires:  bazel-rules-cc-source
+BuildRequires:  bazel == 3.4.1
+#BuildRequires:  bazel-rules-cc-source
+#BuildRequires:  bazel-apple-support-source
+#BuildRequires:  bazel-rules-apple-source
+BuildRequires:  bazel-rules-java-source
+BuildRequires:  bazel-rules-proto-source
+BuildRequires:  bazel-rules-python-source
+BuildRequires:  bazel-rules-swift-source
 BuildRequires:  bazel-skylib-source
 BuildRequires:  bazel-toolchains-source
+BuildRequires:  bazel-workspaces
+#BuildRequires:  bazel-rules-foreign-cc-source
+#BuildRequires:  bazel-rules-python-source
 BuildRequires:  curl
 %if %{with cuda}
 BuildRequires:  cuda-compiler-10-1
@@ -234,7 +269,7 @@ BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
 BuildRequires:  flatbuffers-devel
 BuildRequires:  giflib-devel
-BuildRequires:  grpc-devel >= 1.25.0
+BuildRequires:  git
 %if 0%{?suse_version} > 1500 
 %if %{with cuda}
 # use gcc-7 for build with cuda, as nvcc can not handle 
@@ -243,6 +278,7 @@ BuildRequires:  gcc7
 BuildRequires:  gcc7-c++
 %endif
 %endif
+BuildRequires:  grpc-devel
 BuildRequires:  jemalloc-devel
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libicu-devel
@@ -256,19 +292,23 @@ BuildRequires:  libjpeg62-devel
 BuildRequires:  libpng16-compat-devel
 BuildRequires:  libpng16-devel
 BuildRequires:  lmdb-devel
+BuildRequires:  memory-constraints
 BuildRequires:  nasm
 BuildRequires:  pcre-devel
 # Requiring 3.9.1 which is the actual one in Leap 15.2
 BuildRequires:  protobuf-devel >= 3.9.1
 BuildRequires:  protobuf-java
+BuildRequires:  python-pybind11-common-devel
 BuildRequires:  python3
 BuildRequires:  python3-Cython
-BuildRequires:  python3-Keras-Applications = 1.0.8
+BuildRequires:  python3-Keras-Applications
 BuildRequires:  python3-Keras-Preprocessing
 BuildRequires:  python3-abseil
 BuildRequires:  python3-astor
+BuildRequires:  python3-astunparse
 BuildRequires:  python3-base
 BuildRequires:  python3-devel
+BuildRequires:  python3-flatbuffers
 BuildRequires:  python3-gast
 BuildRequires:  python3-mock
 BuildRequires:  python3-numpy-devel
@@ -280,11 +320,11 @@ BuildRequires:  python3-six
 BuildRequires:  python3-termcolor
 BuildRequires:  python3-wheel
 BuildRequires:  python3-wrapt
-BuildRequires:  re2-devel
 BuildRequires:  snappy-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  swig
 BuildRequires:  unzip
+BuildRequires:  upb-devel
 BuildRequires:  zlib-devel
 %if %{with hpc}
 %hpc_requires
@@ -394,7 +434,16 @@ edges represent the multidimensional data arrays (tensors) that flow between
 them. This flexible architecture enables you to deploy computation to one or
 more CPUs in a desktop, server, or mobile device without rewriting code.
 
+%package -n libiomp5%{?hpc_package_name_tail}
+Summary:        Shared library for tensorflow
+Group:          Libraries
 
+%description  -n   libiomp5%{?hpc_package_name_tail}
+This open source software library for numerical computation is used for data
+flow graphs. The graph nodes represent mathematical operations, while the graph
+edges represent the multidimensional data arrays (tensors) that flow between
+them. This flexible architecture enables you to deploy computation to one or
+more CPUs in a desktop, server, or mobile device without rewriting code.
 
 %prep
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -415,36 +464,46 @@ mkdir -p %{bazeldir}
 %makebazelcache %{SOURCE17}
 %makebazelcache %{SOURCE18}
 %makebazelcache %{SOURCE19}
-%makebazelcache %{SOURCE20}
 %makebazelcache %{SOURCE21}
-%makebazelcache %{SOURCE23}
 %makebazelcache %{SOURCE24}
 %makebazelcache %{SOURCE26}
 %makebazelcache %{SOURCE27}
 %makebazelcache %{SOURCE28}
-%makebazelcache %{SOURCE30}
 %makebazelcache %{SOURCE34}
 %makebazelcache %{SOURCE35}
-%makebazelcache %{SOURCE37}
 %makebazelcache %{SOURCE44}
 %makebazelcache %{SOURCE45}
-%makebazelcache %{SOURCE52}
+%makebazelcache %{SOURCE46}
 %makebazelcache %{SOURCE53}
 %makebazelcache %{SOURCE54}
 %makebazelcache %{SOURCE56}
-%makebazelcache %{SOURCE57}
+%makebazelcache %{SOURCE58}
+%makebazelcache %{SOURCE59}
+%makebazelcache %{SOURCE60}
+%makebazelcache %{SOURCE62}
+%makebazelcache %{SOURCE63}
+%makebazelcache %{SOURCE64}
+%makebazelcache %{SOURCE65}
+%makebazelcache %{SOURCE66}
+%makebazelcache %{SOURCE67}
+%makebazelcache %{SOURCE68}
+%makebazelcache %{SOURCE69}
+%makebazelcache %{SOURCE70}
+%makebazelcache %{SOURCE71}
 
 # unpack tensorflow
-
 %setup -q -c -n %{pname}-%{version}
 %sanitize_dir
 %patch10 -p 1
-%patch11 -p 1
-%patch12 -p 1
 %patch13 -p 1
 %patch14 -p 1
-%patch17 -p 1
-%patch18 -p 1
+%patch20 -p 1
+
+%define make_depend_src() test -e $(basename %{1}| sed 's/-.*//') && rmdir %{?2}%{!?2:$(basename %{1}| sed 's/-.*//')}; test -e %{2} && rmdir %{2}; tar xzf %{1}; mv $(basename %{1} | sed 's/\.tar\.gz//' ) %{?2}%{!?2:$(basename %{1}| sed 's/-.*//')}
+# extract bazel rules
+cd %{bazeldir}
+%make_depend_src %{S:37}
+cd -
 
 %if %{is_lite}
 mkdir tensorflow/lite/tools/make/downloads/
@@ -456,11 +515,13 @@ tar xzf eigen.tar.gz -C tmp && mv tmp/* eigen
 unzip gemmlowp.zip -d tmp && mv tmp/* gemmlowp
 tar xzf %{SOURCE100} -C tmp && mv tmp/* fgoogletest
 tar xzf abseil-cpp.tar.gz -C tmp && mv tmp/* absl
+unzip %{SOURCE63} -d tmp && mv tmp/* ruy
+unzip %{SOURCE60} -d tmp && mv tmp/* cpuinfo
 tar xzf %{SOURCE27} 
 mv ARM_NEON_2_x86_SSE* neon_2_sse
 tar xzf %{SOURCE15} -C tmp && mv tmp/* farmhash
 # We use installed flatbuffers
-tar xzf %{SOURCE30} -C tmp && mv tmp/* fft2d
+tar xzf %{SOURCE53} -C tmp && mv tmp/* fft2d
 # sed fixes from tensorflow/lite/tools/make/download_dependencies.sh
 sed -i -e 's#static uint32x4_t p4ui_CONJ_XOR = vld1q_u32( conj_XOR_DATA );#static uint32x4_t p4ui_CONJ_XOR; // = vld1q_u32( conj_XOR_DATA ); - Removed by script#' \
   "./eigen/Eigen/src/Core/arch/NEON/Complex.h"
@@ -474,6 +535,7 @@ popd
 
 %build
 %if !%{is_lite}
+%limit_build -m 6000
 %endif
 
 %if %{is_lite}
@@ -491,7 +553,9 @@ module load %mpi_flavor
 export MPI_HOME=${MPI_HOME:-$MPI_DIR}
 %endif
 %endif
-#rm /home/abuild/rpmbuild/SOURCES/BAZEL/_bazel_abuild/bffdb097c5cf04768665f957f68c33f9/external/bazel_toolchains/repositories/repositories.bzl
+# remove external repos
+#rm /home/abuild/rpmbuild/SOURCES/BAZEL/_bazel_abuild/48d1e3f2f1a94ce79e8483f24416e037/external/bazel_toolchains/repositories/repositories.bzl
+cp  -r /usr/src/bazel-toolchains /home/abuild/rpmbuild/SOURCES/bazel-toolchains
 export TEST_TMPDIR=%{bazeldir}
 export PYTHON_LIB_PATH=%{python3_sitearch}
 export PYTHON_BIN_PATH=/usr/bin/python3
@@ -507,11 +571,12 @@ export TF_NEED_ROCM=0
 export TF_SYSTEM_LIBS="\
     absl_py,\
     astor_archive,\
+    astunparse_archive,\
     boringssl,\
     com_github_googleapis_googleapis,\
     com_github_googlecloudplatform_google_cloud_cpp,\
+    com_github_grpc_grpc,\
     com_google_protobuf,\
-    com_googlesource_code_re2,\
     curl,\
     cython,\
     double_conversion,\
@@ -520,12 +585,10 @@ export TF_SYSTEM_LIBS="\
     functools32_archive,\
     gast_archive,\
     gif,\
-    grpc,\
     hwloc,\
     icu,\
     libjpeg_turbo,\
     jsoncpp_git,\
-    keras_applications_archive,\
     lmdb,\
 		nasm,\
     nsync,\
@@ -534,13 +597,13 @@ export TF_SYSTEM_LIBS="\
     pasta,\
     pcre,\
     png,\
+    pybind11,\
     six_archive,\
     snappy,\
-    swig,\
     termcolor_archive,\
     wrapt,\
-    zlib_archive"
-
+    zlib"
+    #com_googlesource_code_re2,\
 %if %{with cuda}
 export PATH=PATH="/usr/local/cuda-10.1/bin/:${PATH}"
 export CUDA_HOME="/usr/local/cuda-10.1,/usr"
@@ -585,17 +648,22 @@ cd -
   --ignore_unsupported_sandboxing \\\
   --verbose_failures \\\
   --cxxopt="-D_GLIBCXX_USE_CXX11_ABI=1" \\\
-  --define=build_with_mkl_dnn_only=true \\\
-  --define=tensorflow_mkldnn_contraction_kernel=0 \\\
+  --config=%{mklconfig} \\\
   --config=v2 \\\
   --config=noaws \\\
   --incompatible_no_support_tools_in_action_inputs=false \\\
-  --override_repository="rules_cc=/usr/src/bazel-rules-cc" \\\
+  --override_repository="upb=/usr/share/bazel-workspaces/upb" \\\
   --override_repository="bazel_skylib=/usr/src/bazel-skylib"\\\
-  --override_repository="rules_toolchains=/usr/src/bazel-rules-toolchains" \\\
-  %{?copts} \\\
+  --override_repository="bazel_toolchains=/home/abuild/rpmbuild/SOURCES/bazel-toolchains" \\\
+  --override_repository="rules_java=/usr/src/bazel-rules-java" \\\
+  --override_repository="build_bazel_rules_swift=/usr/src/bazel-rules-swift" \\\
+  --override_repository="rules_python=/usr/src/bazel-rules-python" \\\
+  --override_repository="io_bazel_rules_docker=%{bazeldir}/rules_docker" \\\
   --jobs %{?jobs} \\\
 %{nil}
+#  --override_repository="build_bazel_rules_apple=/usr/src/bazel-rules-apple" \\\
+#  --override_repository="build_bazel_apple_support=/usr/src/bazel-apple-support" \\\
+#  --override_repository="rules_cc=/usr/src/bazel-rules-cc" \\\
 
 bazel build %{bazelopts} tensorflow/tools/pip_package:build_pip_package
 
@@ -622,7 +690,11 @@ bazel build \
 bazel build \
  %bazelopts \
  //tensorflow:libtensorflow_framework.so
-%endif # it_lite
+
+bazel build \
+ %bazelopts \
+ --config opt //tensorflow/tools/lib_package:libtensorflow
+%endif # is_lite
 
 %install
 
@@ -630,20 +702,36 @@ bazel build \
 pushd tensorflow/lite/tools/make/gen/linux_*/
 install -D bin/minimal %{buildroot}%{_bindir}/tflite_minimal
 install -D lib/libtensorflow-lite.a %{buildroot}%{_libdir}/libtensorflow-lite.a
+# Disable spurious-executable-perm
+chmod -x %{buildroot}%{_libdir}/libtensorflow-lite.a
 popd
 install -D tensorflow/lite/schema/schema_generated.h %{buildroot}%{_includedir}/tensorflow/lite/schema/schema_generated.h
 install -D tensorflow/lite/schema/schema.fbs %{buildroot}%{_includedir}/tensorflow/lite/schema/schema.fbs
+for file in `find tensorflow/lite -name \*.h`; do
+  # Package header files - boo#1175099
+  install -D $file %{buildroot}%{_includedir}/$file
+  # Disable spurious-executable-perm
+  chmod -x %{buildroot}%{_includedir}/$file
+done
 %else
 
 pip install %{_topdir}/%{name}-%{version}/*whl --root=%{buildroot}%{?hpc_prefix} \
 	--no-warn-script-location --no-index --no-deps --no-compile
+
+# install C-headers
+pushd .
+cd  %{buildroot}%{?hpc_prefix}/usr/
+tar -xzf  %{_topdir}/BUILD/%{pname}-%{version}/bazel-bin/tensorflow/tools/lib_package/libtensorflow.tar.gz
+mv lib/lib*.so* lib64/
+mv LICENSE THIRD_PARTY_TF_C_LICENSES %{_topdir}/BUILD/%{pname}-%{version}/
+popd
 # remove spurious executeable bits
 # for hpc build remove usr prefix dir
 %if %{with hpc} 
 cd %{buildroot}%{?hpc_prefix}
 mv usr/* .
 rmdir usr
-mv lib/%{python_ver_hack}/site-packages/tensorflow_core/include/* lib64/%{python_ver_hack}/site-packages/tensorflow_core/include/
+#mv lib/%{python_ver_hack}/site-packages/tensorflow_core/include/* lib64/%{python_ver_hack}/site-packages/tensorflow_core/include/
 rm -r lib
 cd -
 %endif
@@ -652,16 +740,12 @@ cd -
 %fdupes -s %{buildroot}%{?hpc_prefix}  
 # install after fdupes
 cp -vd  \
-  bazel-bin/tensorflow/libtensorflow.so \
-  bazel-bin/tensorflow/libtensorflow.so.%{libmaj} \
-  bazel-bin/tensorflow/libtensorflow.so.%{libmaj}.%{libmin}.%{libref} \
   bazel-bin/tensorflow/libtensorflow_cc.so \
   bazel-bin/tensorflow/libtensorflow_cc.so.%{libmaj} \
   bazel-bin/tensorflow/libtensorflow_cc.so.%{libmaj}.%{libmin}.%{libref} \
-  bazel-bin/tensorflow/libtensorflow_framework.so \
-  bazel-bin/tensorflow/libtensorflow_framework.so.%{libmaj} \
-  bazel-bin/tensorflow/libtensorflow_framework.so.%{libmaj}.%{libmin}.%{libref} \
  %{buildroot}%{package_libdir}/
+
+mv %{buildroot}/%{package_python_sitearch}/_solib_k8/_U_S_Sthird_Uparty_Smkl_Cmkl_Ulibs_Ulinux___Uexternal_Sllvm_Uopenmp/libiomp5.so %{buildroot}/%{package_libdir}/
 
 find %{buildroot} -name \*.h -type f -exec chmod 644 {} +
 find %{buildroot} -name LICENSE\* -type f -exec chmod 644 {} +
@@ -710,8 +794,9 @@ EOF
 %endif
 
 # Install generated protobuf
+mkdir -p  %{buildroot}/%{package_python_sitelib}/tensorflow_core/include/tensorflow/
 export OUTPUT_DIR=./pb/
-find -name *.pb.*
+#find -name *.pb.*
 cp -r $OUTPUT_DIR/tensorflow/* %{buildroot}/%{package_python_sitelib}/tensorflow_core/include/tensorflow/
 
 # %%{is_lite}
@@ -730,8 +815,8 @@ cp -r $OUTPUT_DIR/tensorflow/* %{buildroot}/%{package_python_sitelib}/tensorflow
 %{package_bindir}/*
 %files -n %{package_name}-devel
 %{package_libdir}/libtensorflow-lite.a
-%dir %{_includedir}/tensorflow/lite/schema/
-%{_includedir}/tensorflow/lite/schema/*
+%dir %{_includedir}/tensorflow/lite/
+%{_includedir}/tensorflow/lite/*
 %else # not lite build
 %files
 %defattr(-,root,root,-)
@@ -741,17 +826,21 @@ cp -r $OUTPUT_DIR/tensorflow/* %{buildroot}/%{package_python_sitelib}/tensorflow
 %{package_bindir}/tf_upgrade_v2
 %{package_bindir}/tflite_convert
 %{package_bindir}/toco*
-%{package_python_sitearch}/tensorflow_core/*
+%{package_bindir}/import_pb_to_tensorboard
+#%%{package_python_sitearch}/tensorflow_core/*
 %{package_python_sitearch}/tensorflow-%{version}*
 %{package_python_sitearch}/tensorflow
 #%%{package_python_sitelib}/tensorflow/
-%exclude %{package_python_sitearch}/tensorflow_core/include
+%exclude %{package_python_sitelib}/tensorflow_core/include
+%exclude %{package_python_sitelib}/tensorflow/include
+%exclude %{package_python_sitearch}/tensorflow/include
 %if %{with hpc}
 %hpc_modules_files
 %endif
 %files -n %{package_name}-devel
-%{package_python_sitelib}/tensorflow_core/include
-%{package_python_sitearch}/tensorflow_core/include
+#%%{package_python_sitelib}/tensorflow_core/include
+#%%{package_python_sitearch}/tensorflow_core/include
+%{package_includedir}/tensorflow/
 %{package_libdir}/libtensorflow.so
 %{package_libdir}/libtensorflow_cc.so
 %{package_libdir}/libtensorflow_framework.so
@@ -761,8 +850,11 @@ cp -r $OUTPUT_DIR/tensorflow/* %{buildroot}/%{package_python_sitelib}/tensorflow
 %{package_libdir}/libtensorflow_cc.so.%{libmaj}*
 %files -n libtensorflow%{libmaj}%{?hpc_package_name_tail}
 %{package_libdir}/libtensorflow.so.%{libmaj}*
+%files -n libiomp5%{?hpc_package_name_tail}
+%{package_libdir}/libiomp5.so
 %files -n %{package_name}-doc
 #%%{package_python_sitelib}/tensorflow/examples
+%license THIRD_PARTY_TF_C_LICENSES LICENSE
 
 %endif
 
