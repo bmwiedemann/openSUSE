@@ -278,4 +278,17 @@ This package is included in Debian.
     <comment></comment>
     <requestid>845972</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>6653ca7aebe6f7fd045cbead4100def4</srcmd5>
+    <version>7.2.1</version>
+    <time>1610051086</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 7.2.1
+  * Add metadata with the version number of the database layout (#2474)
+  * Split coordinateoperation.cpp and test_operation.cpp in several parts (#2484)
+  * Update to EPSG v10.008 (#2490)
+  * Added the NKG 2008 and 2020 transformations in proj.db (#2495)
+  * And several bugfixes - see provided NEWS for details</comment>
+    <requestid>860976</requestid>
+  </revision>
 </revisionlist>

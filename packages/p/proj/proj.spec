@@ -1,7 +1,7 @@
 #
 # spec file for package proj
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define sover   19
 %define libname lib%{name}%{sover}
 Name:           proj
-Version:        7.2.0
+Version:        7.2.1
 Release:        0
 Summary:        Cartographic projection software
 License:        MIT
@@ -32,13 +32,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  sqlite3
 BuildRequires:  unzip
+BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(sqlite3) >= 3.11
 Provides:       libproj = %{version}
-%if 0%{?suse_version} > 1500
-BuildRequires:  pkgconfig(gtest)
-%endif
 
 %description
 This package offers the commandline tools for performing respective
@@ -71,9 +69,7 @@ unzip -o %{SOURCE1}
 
 %build
 %configure \
-%if 0%{?suse_version} > 1500
   --with-external-gtest \
-%endif
   --disable-static \
   --enable-lto
 %make_build

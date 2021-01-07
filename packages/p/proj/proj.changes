@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan  7 08:23:17 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 7.2.1
+  * Add metadata with the version number of the database layout (#2474)
+  * Split coordinateoperation.cpp and test_operation.cpp in several parts (#2484)
+  * Update to EPSG v10.008 (#2490)
+  * Added the NKG 2008 and 2020 transformations in proj.db (#2495)
+  * And several bugfixes - see provided NEWS for details
+
+-------------------------------------------------------------------
 Wed Nov  4 08:32:39 UTC 2020 - Libor Pechacek <lpechacek@gmx.com>
 
 - Update to version 7.2.0:
