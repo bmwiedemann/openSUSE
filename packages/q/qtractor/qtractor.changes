@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Wed Jan  6 18:16:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.19:
+  - Session directory auto-name option added to the session properties
+    dialog, as convenience.
+  - Loading and saving a LV2 plugin's state has been vastly improved.
+    IMPORTANT CAVEAT: From this moment onwards, when loading any newer
+    saved sessions into older versions of the program, all LV2 plugins
+    won't get their state restored correctly.
+  - Track colors saturation introduced as yet another eye-candy option
+    (cf. View/Options.../Display/Track color saturation)
+  - Fixed VST3 number of channels query/report.
+  - Fixed immediate crash when loading untitled or unnamed Instrument
+    Definitions files (*.ins): base file-name is now taken as default
+    instrument definition name or title.
+  - Tempo (BPM) entry may now be specified with arbitrary precision, to
+    at most 3 decimal positions in fractional part, while integer whole
+    values are displayed with no decimal point.
+  - Added option to keep MIDI clip editor windows (aka. piano-roll)
+    always on top of the main window (cf. View/Options.../General/
+    Keep editor windows always on top).
+  - MIDI clip editor status-bar labels are not stretched to whole text
+    size anymore, most specially for the current file complete path.
+  - When under NSM, all top-level windows, main, mixer and connections,
+    will always start hidden.
+  - Plugin editors (GUIs) that are currently open on a track are now
+    brought up as top-level windows immediately when a track is made
+    current or highlighted (and Track / Auto Monitor is in effect).
+  - MIDI clip editor mouse hovering effect extended to whole current
+    note line on main view (piano-roll eye-candy++); also, the white
+    keys on MIDI clip editor's virtual piano keyboard, are now fully
+    highlighted.
+  - Plugin search paths (cf. View/Options.../Plugins/Paths) now showing
+    all the default and actual existing paths, instead of a blank list.
+  - Undimmed octave divider lines on the piano-roll.
+  - Fixed potential crash on changing audio output buses channel count.
+  - Note names display (inside note rectangles) are now an option on
+    the MIDI clip editor (aka. piano-roll; menu View > Note Names).
+  - Early fixing to build for Qt >= 6.0.0 and the C++17 standard.
+  - Fixed crash when changing an auto-monitored audio track's number
+    of channels due on switching its audio output bus.
+  - Avoid a complete track re-open when changing properties, unless
+    either input or output buses are changed.
+  - Fixed custom track icon selection when none is currently set.
+  - Experimental / High resolution plugin automation (14-bit) options
+    is now also removed from View > Options... > Plugins dialog.
+  - Audio Clip / Export... now takes into account custom fixed gain
+    property (shamefully missing for the whole last decade to date).
+  - Finally indulged on dummy LV2 plug-in CVPort support, just to
+    avoid certain immediate and sudden crashes when inserting those
+    kind of 'non-functional' plugins accidentally.
+  - Bring the Track Export dialog down to Clip Merge/Export as well,
+    for optional file type and format selection.
+  - When enabled, do auto-save upon adding or inserting a new plugin.
+  - Make sure LV2 plug-in UI GTK2 and X11 native support is selected
+    first by default on top to libsuil.
+  - Both out-of-process plugin inventory scan and LV2 Dynamic manifest
+    options have been removed from View > Options... > Plugins dialog.
+  - Fixed deprecated stuff on an early preparation for Qt6.
+  - Fixed MIDI tracks export that were missing the end-of-export tail
+    parameter and bailing out always with default SMF format anyway.
+  - Fixed VST3 component/controller inter-connection.
+  - LV2 Atom/Port-event host notification support has been retouched,
+    but still unofficial though.
+  - Fixed VST3 audio-processor initialization/activation when a plugin
+    has no inputs or outputs present.
+  - Let main window pseudo-asynchronous stabilization re. menus, tools
+    and status bars, just faster and immediate.
+  - Fixed MIDI track monitor reinstantiation and reset.
+
+-------------------------------------------------------------------
 Wed Jun  3 10:15:30 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Update to version 0.9.14 and fix factory build.

@@ -1,7 +1,7 @@
 #
 # spec file for package qtractor
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qtractor
-Version:        0.9.14
+Version:        0.9.19
 Release:        0
 Summary:        An Audio/MIDI multi-track sequencer
 License:        GPL-2.0-or-later
@@ -99,7 +99,7 @@ mv %{buildroot}%{_libdir}/qtractor/qtractor_plugin_scan %{buildroot}%{_bindir}
 %{_datadir}/icons/*/*/mimetypes/application-x-%{name}-*.*
 %{_datadir}/mime/packages/%{name}.xml
 %{_mandir}/man1/%{name}.1%{ext_man}
-%{_mandir}/man1/qtractor.fr.1%{ext_man}
+%{_mandir}/fr/man1/%{name}.1%{ext_man}
 %{_datadir}/%{name}/translations/*
 
 %changelog
