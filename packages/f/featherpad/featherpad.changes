@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jan  6 18:21:02 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.1:
+  * Avoided making the cursor busy from a separate thread
+
+-------------------------------------------------------------------
+Wed Jan  6 08:30:18 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.0:
+  Main changes:
+  * Now, FeatherPad can save as root without a root instance when
+    the user doesn't have the permission to write. Polkit's
+    pkexec is used (as a run-time dependency) for gaining the
+    root privilege.
+  * Printing is done in a separate thread, so that, if it takes
+    a long time, other windows of FeatherPad could still be used.
+  * Workarounds are added for bugs in Qt's default printing.
+    Qt can't handle dark color schemes and the reverse order
+    with printing; FeatherPad supports both.
+  Other changes:
+  * Made the warning bar more flexible for use with saving to
+    root as well as printing.
+  * Guarantee that the session dialog has focus after opening
+    a session.
+  * Added LaTex to the recognized syntaxes.
+  * Added simple support for gvfs' admin.
+  * Fixes to Perl syntax highlighting.
+  * Several fixes to various small issues.
+
+-------------------------------------------------------------------
 Mon Nov  2 15:10:48 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.16.0:
