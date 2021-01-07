@@ -1,6 +1,7 @@
 #
-# Spec file for package faba-icon-theme
+# spec file for package faba-icon-theme
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2016 Sam Hewitt
 #
 # All modifications and additions to the file contributed by third parties
@@ -11,20 +12,23 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           faba-icon-theme
-Version:        4.1.2
+Version:        4.3
 Release:        0
-License:        LGPL-3.0+ or CC-BY-SA-4.0
 Summary:        Faba Icon theme
-Url:            https://snwh.org/moka
+License:        LGPL-3.0-or-later OR CC-BY-SA-4.0
 Group:          System/GUI/Other
+URL:            https://snwh.org/moka
 Source:         https://github.com/moka-project/faba-icon-theme/archive/v%{version}.tar.gz
-BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  icon-naming-utils >= 0.8.7
+BuildRequires:  meson
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 Requires:       gnome-icon-theme
@@ -34,24 +38,30 @@ Faba is a modern icon theme with Tango influences.
 
 %prep
 %setup -q
-find -L . -type l -print -delete
-chmod +x autogen.sh
-chmod a-x AUTHORS README.md
+chmod a-x AUTHORS COPYING LICENSE_CC-BY-SA LICENSE_GPL README.md ./Faba/index.theme
+find -name '*.svg' -type f -exec chmod a-x {} \;
 
 %build
-./autogen.sh
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-make install DESTDIR=%{buildroot} %{?_smp_mflags}
+%meson_install
 rm -f %{buildroot}%{_datadir}/icons/Faba/AUTHORS
+%{icon_theme_cache_create_ghost Faba}
 %fdupes %{buildroot}%{_datadir}/icons/Faba
 
 %post
 %icon_theme_cache_post Faba
 
+%postun
+%icon_theme_cache_postun Faba
+
 %files
 %defattr(-,root,root)
-%doc AUTHORS COPYING LICENSE README.md
+%license COPYING LICENSE_CC-BY-SA LICENSE_GPL 
+%doc AUTHORS README.md
 %{_datadir}/icons/Faba
 %ghost %{_datadir}/icons/Faba/icon-theme.cache
+
+%changelog
