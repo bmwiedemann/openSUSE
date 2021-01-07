@@ -1,7 +1,7 @@
 #
 # spec file for package python-panel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,42 +16,68 @@
 #
 
 
-# Dependencies (e.g. bokeh) no longer support python2
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %define skip_python2 1
 %define modname panel
-Name:           python-panel
-Version:        0.10.1
+Name:           python-panel%{psuffix}
+Version:        0.10.2
 Release:        0
 Summary:        A high level app and dashboarding solution for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://panel.holoviz.org
 Source:         https://files.pythonhosted.org/packages/source/p/panel/panel-%{version}.tar.gz
+Source99:       python-panel-rpmlintrc
 BuildRequires:  %{python_module Markdown}
-BuildRequires:  %{python_module bokeh >= 2.0.0}
-BuildRequires:  %{python_module folium}
+BuildRequires:  %{python_module bokeh >= 2.2.2}
 BuildRequires:  %{python_module param >= 1.9.3}
 BuildRequires:  %{python_module pyct >= 0.4.4}
 BuildRequires:  %{python_module pyviz-comms >= 0.7.4}
-BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tqdm}
 BuildRequires:  fdupes
 BuildRequires:  nodejs
 BuildRequires:  python-rpm-macros
-# SECTION test requirements
+%if %{with test}
+BuildRequires:  %{python_module altair}
+BuildRequires:  %{python_module folium}
+BuildRequires:  %{python_module holoviews}
+BuildRequires:  %{python_module ipympl}
+BuildRequires:  %{python_module ipython >= 7.0}
 BuildRequires:  %{python_module nbsmoke >= 0.2.0}
+BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module parameterized}
+BuildRequires:  %{python_module plotly}
 BuildRequires:  %{python_module pytest}
-# /SECTION
+BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module streamz}
+BuildRequires:  %{python_module twine}
+# Tests segfault
+# BuildRequires:  %%{python_module vtk}
+%endif
 Requires:       python-Markdown
-Requires:       python-bokeh >= 2.0.0
+Requires:       python-bokeh >= 2.2.2
 Requires:       python-param >= 1.9.3
 Requires:       python-pyct >= 0.4.4
 Requires:       python-pyviz-comms >= 0.7.4
-Requires:       python-scipy
+Requires:       python-requests
 Requires:       python-tqdm
+Requires(post):   update-alternatives
+Requires(postun): update-alternatives
+Recommends:     python-plotly
+Recommends:     python-Pillow
 Recommends:     python-matplotlib
+Recommends:     python-notebook >= 5.4
+Recommends:     python-holoviews >= 1.13.2
 BuildArch:      noarch
 %python_subpackages
 
@@ -62,37 +88,50 @@ text.
 
 %prep
 %setup -q -n panel-%{version}
-# env-based hashbangs
-%python_expand sed -i "1{s|#!/usr/bin/env python|#!%{_bindir}/$python|}" \
-  examples/apps/django2/manage.py \
-  examples/apps/django_multi_apps/manage.py
+# Do not try to rebuild the bundled npm stuff. We don't have network. Just use the shipped bundle.
+sed -i '/def _build_paneljs/ a \    return' setup.py
 
 %build
 %python_build
 
+%if ! %{with test}
 %install
 %python_install
 
-# MOVE EXAMPLES TO DOC DIR
-mkdir -p %{buildroot}%{_docdir}/%{modname}
-%python_expand mv %{buildroot}%{$python_sitelib}/%{modname}/examples %{buildroot}/%{_docdir}/%{modname}/
+%{python_expand  # FIX HASHBANG AND LINK EXAMPLES INTO PACKAGE DOCS
+mkdir examples-%{$python_bin_suffix}
+ln -s %{$python_sitelib}/%{modname}/examples examples-%{$python_bin_suffix}/examples
+sed -i "1{s|#!/usr/bin/env python|#!%{__$python}|}" \
+  %{buildroot}%{$python_sitelib}/%{modname}/examples/apps/django2/manage.py \
+  %{buildroot}%{$python_sitelib}/%{modname}/examples/apps/django_multi_apps/manage.py
+}
 
-# UNNECESSARY HIDDEN FILE
-%python_expand rm %{buildroot}%{$python_sitelib}/%{modname}/.version
+%python_clone -a %{buildroot}%{_bindir}/panel
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%fdupes %{buildroot}%{_docdir}/%{modname}/
+%endif
 
+%if %{with test}
 %check
 # DISABLE TESTS REQUIRING NETWORK ACCESS
-%pytest -k 'not (test_loading_a_image_from_url or test_image_alt_text or test_image_link_url or test_vtk_pane_from_url or test_vtkjs_pane)'
+%pytest -rs -k 'not (test_loading_a_image_from_url or test_image_alt_text or test_image_link_url or test_vtk_pane_from_url or test_vtkjs_pane)'
+%endif
 
+%post
+%python_install_alternative panel
+
+%postun
+%python_uninstall_alternative panel
+
+%if ! %{with test}
 %files %{python_files}
 %license LICENSE.txt
 %doc README.md
-%doc %{_docdir}/%{modname}/
-%python3_only %{_bindir}/panel
+%doc examples-%{python_bin_suffix}/examples
+%docdir %{python_sitelib}/%{modname}/examples
+%python_alternative %{_bindir}/panel
 %{python_sitelib}/%{modname}/
 %{python_sitelib}/%{modname}-%{version}-py%{python_version}.egg-info/
+%endif
 
 %changelog

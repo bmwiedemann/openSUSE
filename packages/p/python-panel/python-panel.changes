@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jan  4 17:40:09 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 1.10.2:
+  * Fix various issues with Template CSS (#1663, #1742)
+  * Fix BytesIO/StringIO buffers as input to image xpanes (#1711)
+  * Fix out-of-bounds errors when assigning to GridSpec with
+    fixed ncols (#1721)
+  * Fix deserialization issues for Plotly.hover_data (#1722)
+  * Fixed updating of Alert parameters after initialization (#1725)
+  * Fix ordering of items added to Template areas (#1736)
+  * Fix interactivity for items in Card (#1750)
+  * Ensure onload callbacks are only run once (#1746)
+  * Allow overriding items in grid based templates (#1741)
+  * Ensure ECharts and ipywidget rerender when in Card (#1765)
+  * Ensure template dark theme persists on HoloViews plots (#1764)
+  * Fix responsive height in Plotly pane (#1770)
+  * Ensure image panes resize in width and height (#1777)
+  * Fix issues with Location.sync serialization (#1784)
+  * Add throttled argument to interact (#1259)
+  * ECharts pane now loads echarts-gl for 3D support (#1785)
+  * Ensure CheckBoxGroup and CheckButtonGroup support arbitrary
+    objects as options (#1793)
+  * Improved OAuth encryption key validation (#1762)
+  * Add progress option to .save method (#1776)
+- Fix conflict with parallel installable python3 flavors because
+  of incorrect python_expand usage with docs
+  gh#openSUSE/python-rpm-macros#66
+- Fix npm bundling errors during install
+- Make multibuild test flavor in order to avoid dependency cycle
+  with python-holoviews
+- The hidden .version file is actually necessary (e.g. holoviews
+  checks the version) -- add python-panel-rpmlintrc
+
+-------------------------------------------------------------------
 Sat Oct 31 20:38:23 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.10.1:
