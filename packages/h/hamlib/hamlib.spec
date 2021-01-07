@@ -1,7 +1,7 @@
 #
 # spec file for package hamlib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define sover   2
+%define sover   4
 Name:           hamlib
-Version:        3.3
+Version:        4.0
 Release:        0
 Summary:        Run-time library to control radio transcievers and receivers
 License:        LGPL-2.1-only
@@ -28,6 +28,7 @@ URL:            http://hamlib.sourceforge.net
 Source:         http://downloads.sourceforge.net/project/%{name}/%{name}/%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE hamlib-3.0-perl_install.patch -- patch from Fedora
 Patch0:         hamlib-3.0-perl_install.patch
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  makeinfo
@@ -40,7 +41,6 @@ BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(tcl)
-BuildRequires:  fdupes
 %if 0%{?suse_version} <= 1500
 BuildRequires:  pkgconfig(python2)
 %else
@@ -120,6 +120,7 @@ other shack hardware.
 %package -n perl-Hamlib
 Summary:        Perl bindings for Hamlib
 Group:          Development/Languages/Perl
+%requires_eq    perl-base
 
 %description -n perl-Hamlib
 Hamlib provide a programming interface for controlling radios and
@@ -152,9 +153,7 @@ rm %{buildroot}%{perl_vendorarch}/auto/Hamlib/.packlist
 mkdir -p %{buildroot}%{_docdir}
 mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}%{_docdir}
 
-%if 0%{?suse_version} <= 1500
 %fdupes %{buildroot}%{python_sitearch}
-%endif
 
 %check
 %make_build check
@@ -180,6 +179,9 @@ mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}%{_docdir}
 %{_bindir}/rigswr
 %{_bindir}/rotctl
 %{_bindir}/rotctld
+%{_bindir}/ampctl
+%{_bindir}/ampctld
+%{_bindir}/rigctlcom
 %{_mandir}/man1/rigctl.1%{?ext_man}
 %{_mandir}/man1/rigctld.1%{?ext_man}
 %{_mandir}/man1/rigmem.1%{?ext_man}
@@ -187,10 +189,12 @@ mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}%{_docdir}
 %{_mandir}/man1/rigswr.1%{?ext_man}
 %{_mandir}/man1/rotctl.1%{?ext_man}
 %{_mandir}/man1/rotctld.1%{?ext_man}
+%{_mandir}/man1/ampctl.1%{?ext_man}
+%{_mandir}/man1/ampctld.1%{?ext_man}
+%{_mandir}/man1/rigctlcom.1%{?ext_man}
 %{_mandir}/man7/hamlib-primer.7%{?ext_man}
 %{_mandir}/man7/hamlib-utilities.7%{?ext_man}
 %{_mandir}/man7/hamlib.7%{?ext_man}
-%{_infodir}/hamlib.info%{?ext_info}
 %{_docdir}/hamlib
 
 %files devel
