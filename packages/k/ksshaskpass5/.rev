@@ -832,4 +832,12 @@
     <comment>Plasma 5.20.4</comment>
     <requestid>852516</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>c5d13d0863761bf5688601276c8018e8</srcmd5>
+    <version>5.20.5</version>
+    <time>1610050838</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.20.5 (forwarded request 860522 from Vogtinator)</comment>
+    <requestid>860631</requestid>
+  </revision>
 </revisionlist>
