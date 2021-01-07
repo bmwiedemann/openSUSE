@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 24 09:23:23 UTC 2020 - Max Lin <mlin@suse.com>
+
+- Updated the conditional of quazip devel package for Leap 15.3
+
+-------------------------------------------------------------------
 Thu Nov 12 13:55:48 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Updated chessx-use_system_quazip.patch to search also
