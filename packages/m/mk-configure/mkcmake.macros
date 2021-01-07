@@ -20,5 +20,8 @@
     : ${MANDIR=%{_mandir}}; export MANDIR; \
     : ${PREFIX=%{_prefix}}; export PREFIX; \
     : ${SYSCONFDIR=%{_sysconfdir}}; export SYSCONFDIR; \
+    export HOME=%{_tmppath}/mkcmake-home; \
+    mkdir -p "$HOME"; \
+    export MKCOMPILERSETTINGS=yes; \
     %{_bindir}/mkcmake \\\
         %{?_smp_mflags}
