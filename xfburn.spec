@@ -22,7 +22,7 @@ Release:        0
 Summary:        Simple CD/DVD Burning Application
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/CD/Record
-URL:            https://docs.xfce.org/applications/xfburn
+URL:            https://docs.xfce.org/apps/xfburn/start
 Source:         https://archive.xfce.org/src/apps/xfburn/0.6/%{name}-%{version}.tar.bz2
 BuildRequires:  appstream-glib
 BuildRequires:  intltool
