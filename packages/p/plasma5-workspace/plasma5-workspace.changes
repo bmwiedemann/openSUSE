@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan  5 14:40:06 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.5
+- Changes since 5.20.4:
+  * Recent Documents Runner: Strip trailing slash in subtext
+  * [applets/systemtray] Fix missing expander arrow (kde#430569)
+  * [Notifications] Check popup being null
+  * move keyboard positioning in the keyboard itself (kde#427934)
+
+-------------------------------------------------------------------
 Wed Dec 30 13:12:07 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - RPM got fixed, so use %fdupes on TW again
