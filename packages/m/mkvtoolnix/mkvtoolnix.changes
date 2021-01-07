@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Jan  5 09:28:45 UTC 2021 - aloisio@gmx.com
+
+- Update to version 52.0.0
+  New features and enhancements:
+  * MKVToolNix GUI: job queue: the maximum number of jobs to run
+    concurrently can now be increased in the preferences. The
+    default remains at 1.
+  * MKVToolNix GUI: the GUI will now add a context-specific
+    default extension to file names selected for saving on
+    platforms that don't add one itself (e.g. GNOME). For
+    example, when saving multiplexer settings the extension
+    `.mtxcfg` will be added.
+  * MKVToolNix GUI: added an option to the preferences for the
+    window to stay on top of other windows.
+  Bug fixes:
+  * mkvextract: h.265/HEVC extraction: the code for skipping
+    extraction of prefix SEI NALUs in the first frame was
+    skipping two bytes too few, resulting in broken processing
+    of all following bytes.
+  * libEBML: the optional, bundled version of libEBML was
+    updated to v1.4.1.
+  Build system changes:
+  * libEBML v1.4.1 is now required due to a bug in libEBML that
+    caused pointers to just-freed memory being returned to the
+    caller under certain invalid data constellations, causing
+    use-after-free errors in all of MKVToolNix's programs.
+
+-------------------------------------------------------------------
 Sun Oct  4 13:09:56 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 51.0.0

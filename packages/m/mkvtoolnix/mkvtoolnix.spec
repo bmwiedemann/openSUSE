@@ -1,7 +1,7 @@
 #
 # spec file for package mkvtoolnix
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mkvtoolnix
-Version:        51.0.0
+Version:        52.0.0
 Release:        0
 Summary:        Tools to Create, Alter, and Inspect Matroska Files
 License:        GPL-2.0-or-later
@@ -57,7 +57,7 @@ BuildRequires:  pkgconfig(dvdread)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(fmt) >= 6.1.0
 BuildRequires:  pkgconfig(libcmark)
-BuildRequires:  pkgconfig(libebml) >= 1.4.0
+BuildRequires:  pkgconfig(libebml) >= 1.4.1
 BuildRequires:  pkgconfig(libmatroska) >= 1.6.1
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(ogg)
