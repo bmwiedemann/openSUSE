@@ -116,4 +116,41 @@
     <comment></comment>
     <requestid>834828</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8d6f2ec77b36c54f4c893ce8a7b5bd0e</srcmd5>
+    <version>1~20201223.ff2a7650b</version>
+    <time>1610050920</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1~20201223.ff2a7650b:
+  * rasterpos: Fix missing termination of program list.
+  * ati_fragment_shader: Test alpha channel with fog
+  * summary: Add -g/--fixes to console-mode output
+  * ati_fragment_shader: Add a test of all the ops and modifiers.
+  * arb_gl_spirv: Test using length on an runtime (unsized) array
+  * framework: corrected some typos
+  * framework/replay: add always the images information to the results
+  * framework/replay: rename dump image to include the checksum
+  * framework: remove forbidden XML chars for text in the JUnit backend
+  * Fix timeout in spec/arb_sync/repeat-wait
+  * glsl-1.50,tess: Test passing maximum count of varyings between stages
+  * shader_runner: reset glPolygonMode between tests without process isolation
+  * arb_framebuffer_object: Add a test for blit-based mipmap generation
+  * gen_builtin_packing_tests: Only fill a 10x10 window.
+  * fbo-pbo-readpixels-small: add check of depth and stencil data
+  * nv_primitive_restart: Add tests using display lists
+  * nv_primitive_restart: Add tests for error conditions
+  * nv_primitive_restart: Verify that NV_primitive_restart isn't advertised in Core
+  * nv_primitive_restart: Move existing NV_primitive_restart tests to a new dir
+  * glsl-1.50/execution: add primitive id tests for QUADS and QUAD_STRIP
+  * glsl-1.50/execution: add primitive id tests with point and line rasterization mode
+  * shader_draw_parameters: Test gl_DrawIDARB with non-MultiDraw and primitive restart
+  * shader_draw_parameters: Test gl_DrawIDARB with non-MultiDraw commands
+  * shader_draw_parameters: Reduce GLSL requirement back to 1.40
+  * shader_draw_parameters: Add missing extension requirements
+  * framework: add write method to the junit backend
+  * framework: add backends API to write a TestrunResult to a file
+  * framework: restore syserr output when loading a junit test result
+  * framework: fix loading time start/end in junit test results</comment>
+    <requestid>858980</requestid>
+  </revision>
 </revisionlist>

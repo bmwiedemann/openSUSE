@@ -26,7 +26,7 @@
 %bcond_without opengles
 %endif
 Name:           piglit
-Version:        1~20200721.5db8d7472
+Version:        1~20201223.ff2a7650b
 Release:        0
 Summary:        OpenGL driver testing framework
 License:        MIT
