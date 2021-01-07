@@ -6695,10 +6695,10 @@ unsorted:
   - health-checker-plugins-kubic: [i586] 
   - health-checker-testing 
   - heapster 
-  - heaptrack 
+  - heaptrack: [i586] 
   - heaptrack-devel 
-  - heaptrack-gui 
-  - heaptrack-lang 
+  - heaptrack-gui: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - heaptrack-lang: [i586] 
   - hedgewars 
   - hedgewars-data 
   - heimdall 
@@ -8911,7 +8911,7 @@ unsorted:
   - libImath-2_5-25-32bit: [x86_64] 
   - libImlib2-1 
   - libIrrlicht1_8 
-  - libKChart2 
+  - libKChart2: [i586] 
   - libKDb3-4 
   - libKF5Activities5-32bit: [x86_64] 
   - libKF5ActivitiesStats1-32bit: [x86_64] 
@@ -10026,7 +10026,7 @@ unsorted:
   - libboost_numpy-py3-1_75_0-devel 
   - libboost_numpy3-devel 
   - libboost_program_options-devel 
-  - libboost_program_options1_75_0 
+  - libboost_program_options1_75_0: [i586] 
   - libboost_program_options1_75_0-32bit: [x86_64] 
   - libboost_program_options1_75_0-devel 
   - libboost_python-py3-1_75_0-32bit: [x86_64] 
@@ -11832,7 +11832,7 @@ unsorted:
   - libkcarchiver0 
   - libkcddb-devel 
   - libkcfreebusy0 
-  - libkchart-lang 
+  - libkchart-lang: [i586] 
   - libkcicalmapi0 
   - libkcindex0 
   - libkcinetmapi0 

@@ -932,6 +932,9 @@
       <repopackage name="hdparm"/>
       <repopackage name="health-checker"/>
       <repopackage name="health-checker-plugins-MicroOS"/>
+      <repopackage name="heaptrack" arch="x86_64"/>
+      <repopackage name="heaptrack-gui" arch="x86_64"/>
+      <repopackage name="heaptrack-lang" arch="x86_64"/>
       <repopackage name="hexchat"/>
       <repopackage name="hexchat-lang"/>
       <repopackage name="hfsutils"/>
@@ -1513,6 +1516,7 @@
       <repopackage name="libboost_filesystem1_75_0"/>
       <repopackage name="libboost_iostreams1_75_0"/>
       <repopackage name="libboost_locale1_75_0"/>
+      <repopackage name="libboost_program_options1_75_0" arch="x86_64"/>
       <repopackage name="libboost_python-py3-1_75_0"/>
       <repopackage name="libboost_regex1_75_0"/>
       <repopackage name="libboost_thread1_75_0"/>
@@ -2063,6 +2067,8 @@
       <repopackage name="libkate1"/>
       <repopackage name="libkcddb"/>
       <repopackage name="libkcddb-lang"/>
+      <repopackage name="libkchart-lang" arch="x86_64"/>
+      <repopackage name="libKChart2" arch="x86_64"/>
       <repopackage name="libkColorPicker0_1_4" arch="x86_64"/>
       <repopackage name="libkcompactdisc-lang"/>
       <repopackage name="libkdecorations2-5" arch="x86_64"/>
