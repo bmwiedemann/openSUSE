@@ -1,7 +1,7 @@
 #
 # spec file for package libcryptopp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define major 8
-%define minor 2
+%define minor 4
 %define patch 0
 %define pkg_version %{major}%{minor}%{patch}
 # There is no upstream interface version information.
@@ -36,10 +36,7 @@ Source1:        precheckin_baselibs.sh
 Source2:        baselibs.conf
 # PATCH-FEATURE-OPENSUSE libcryptopp-shared.patch -- improve shared library creation
 Patch1:         libcryptopp-shared.patch
-# PATCH-UPSTREAM from git see https://github.com/weidai11/cryptopp/issues/865
-Patch4:         0001-Fix-TCXXFLAGS-using-openSUSE-standard-flags-GH-865.patch
-Patch5:         0001-Fix-missing-if-statement.patch
-Patch6:         cve-2019-14318.patch
+BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 
@@ -72,10 +69,7 @@ curve crypto. This package is used for crypto++ development.
 
 %prep
 %setup -q -n "cryptopp-CRYPTOPP_%{major}_%{minor}_%{patch}"
-%patch1 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6
+%autopatch -p1
 
 %build
 %ifarch %{arm} i586
@@ -104,6 +98,7 @@ CXXFLAGS="$CXXFLAGS -DCRYPTOPP_DISABLE_ALTIVEC"
 
 rm -rf "%{buildroot}%{_bindir}" %{buildroot}%{_datadir}/cryptopp
 rm -rf %{buildroot}%{_libdir}/*.a
+dos2unix Readme.txt
 # Install .pc file with correct version field.
 mkdir %{buildroot}%{_libdir}/pkgconfig/
 cat > %{buildroot}%{_libdir}/pkgconfig/cryptopp.pc <<EOF

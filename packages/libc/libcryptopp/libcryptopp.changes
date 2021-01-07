@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sat Jan  2 10:34:52 UTC 2021 - Dave Plater <davejplater@gmail.com>
+
+- Update to version 8.4.0 and remove obsolete patches:
+  0001-Fix-TCXXFLAGS-using-openSUSE-standard-flags-GH-865.patch,
+  0001-Fix-missing-if-statement.patch and cve-2019-14318.patch
+- Upstream changes:
+  *fix use of macro CRYPTOPP_ALIGN_DATA
+  *fix potential out-of-bounds read in ECDSA
+  *fix std::bad_alloc when using ByteQueue in pipeline
+  *fix missing CRYPTOPP_CXX17_EXCEPTIONS with Clang
+  *fix potential out-of-bounds read in GCM mode
+  *add configure.sh when preprocessor macros fail
+  *fix potential out-of-bounds read in SipHash
+  *fix compile error on POWER9 due to vec_xl_be
+  *fix K233 curve on POWER8
+  *add Cirrus CI testing
+  *fix broken encryption for some 64-bit ciphers
+  *disable RDRAND and RDSEED for some AMD processors
+  *fix BLAKE2 hash calculation using Salt and Personalization
+  *add XTS mode
+  *fix circular dependency between misc.h and secblock.h
+  *add Certificate interface
+  *fix recursion in AES::Encryption without AESNI
+  *add missing OID for ElGamal encryption
+  *fix missing override in KeyDerivationFunction-derived classes
+  *fix RDSEED assemble under MSVC
+  *fix elliptic curve timing leaks (CVE-2019-14318)
+  *add link-library variable to Makefiles
+  *fix SIZE_MAX definition in misc.h
+  *add GetWord64 and PutWord64 to BufferedTransformation
+  *use HKDF in AutoSeededX917RNG::Reseed
+  *fix Asan finding in VMAC on i686 in inline asm
+  *fix undeclared identifier _mm_roti_epi64 on Gentoo
+  *fix ECIES and GetSymmetricKeyLength
+  *fix possible divide by zero in PKCS5_PBKDF2_HMAC
+  *refine ASN.1 encoders and decoders
+  *disable BMI2 code paths in Integer class
+  *fix use of CRYPTOPP_CLANG_VERSION
+  *add NEON SHA1, SHA256 and SHA512 from Cryptogams
+  *add ARM SHA1, SHA256 and SHA512 from Cryptogams
+  *fix reference binding to misaligned address in xed25519
+  *clear asserts in TestDataNameValuePairs
+  *fix SIGILL on POWER8 when compiling with GCC 10
+  *fix potential out-of-bounds write in FixedSizeAllocatorWithCleanup
+  *revert changes for constant-time elliptic curve algorithms
+
+-------------------------------------------------------------------
 Thu Jul  2 11:40:59 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Simplify the baselibs creation
