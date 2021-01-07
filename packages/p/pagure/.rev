@@ -435,4 +435,68 @@
   + Patch: 0001-api-project-Fix-handling-of-false.patch</comment>
     <requestid>852786</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>39aa99e6b9e83f863fc6d3f89f68aab7</srcmd5>
+    <version>5.12</version>
+    <time>1610051113</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.12
+  + Display real line numbers on pull request's diff view
+  + Show the assignee's avatar on the board
+  + Allow setting a status as closing even if the project has no close_status
+  + Include the assignee in the list of people notified on a ticket/PR
+  + Add orphaning reason on the dist-git theme
+  + Adjust the way we generate humanized dates so we provide the humanized date
+    as well as the actual date when hovering over
+  + When a file a detected as a binary file, return the raw file
+  + Allow using the modifyacl API endpoint to remove groups from a project
+  + Add a note that repo_from* argument are mandatory in some situations when
+    opening a Pull-Request from the API
+  + Increase the list of running pagure instances in the documentation
+  + Remove fenced code block when checking mention
+  + Add support for using cchardet to detect files' encoding
+  + Show the default branch in the project overview page
+  + Send appropriate SMTP status codes and error messages in the milter.
+  + Report an error if a message ID isn't recognized by the milter.
+  + Add support for disabling user registration
+  + Add a way to make the stats view on more than one year (if you know how to)
+  + Encode the data passed onto the mail hook so it is of bytes type
+  + Reverse out of order instructions for new repos
+  + Split the list of branches into two lists active/inactive in dist-git
+  + Rework the &quot;My PR&quot; page so it does not pull so many info at once
+  + Include the date of the last mirroring process in the logs
+  + Forward the username when updating the pull-request
+  + Add pagination to group API
+  + When returning the commits flags in the API, returned them by update date
+  + Change the PR flag API endpoints to use commit flags
+  + Only show the subscribers list on demand
+  + Improve the message shown when a new mirrored project is created
+  + When editing the issue's description sent the html of it to the SSE server
+  + Add an update-acls action to pagure-admin
+  + Add support for AAA system sending SSH keys encoded in base64
+  + Allow deleting the master branch when it is not the default branch
+  + Allow people with a fork to have a working drop-down for opening new PRs
+  + Fix handling &quot;false&quot; when editing project's options via the API
+  + Ensure a fork project has the same default branch as its parent
+  + Allow to specify a default branch for all projects hosted on an instance
+  + Add a notification for when a group is removed from a project
+  + When checking if messages were sent via a rebase, do not run the git hooks
+  + Make the API endpoint to update project's options accept JSON
+  + Add a full_url to the JSON representation of our main objects
+  + Ensure the author in git commit notifications follow the expected format
+  + Add support for git branch aliases
+  + Allow updating the target branch when editing a PR
+- Drop upstreamed patches
+  + Patch: 0001-api-project-Fix-handling-of-false.patch
+  + Patch: 0001-Display-real-line-numbers-on-pull-request-s-diff-vie.patch
+  + Patch: 0002-Show-the-assignee-s-avatar-on-the-board.patch
+  + Patch: 0003-Allow-setting-a-status-as-closing-even-if-the-projec.patch
+  + Patch: 0004-Include-the-assignee-in-the-list-of-people-notified-.patch
+  + Patch: 0005-Introduce-the-collaborator_project_groups-mapping.patch
+  + Patch: 0006-When-a-file-a-detected-as-a-binary-file-return-the-r.patch
+  + Patch: 0007-Remove-fenced-code-block-when-checking-mention.patch
+  + Patch: 0008-Add-support-for-using-cchardet-to-detect-files-encod.patch
+  + Patch: 0009-Add-support-for-disabling-user-registration.patch</comment>
+    <requestid>861032</requestid>
+  </revision>
 </revisionlist>

@@ -23,7 +23,7 @@
 
 
 Name:               pagure
-Version:            5.11.3
+Version:            5.12
 Release:            0
 Summary:            A git-centered forge
 Group:              Development/Tools/Version Control
@@ -42,19 +42,7 @@ Source10:           pagure-README.SUSE
 
 
 # Backports from upstream
-Patch0001:          0001-Display-real-line-numbers-on-pull-request-s-diff-vie.patch
-Patch0002:          0002-Show-the-assignee-s-avatar-on-the-board.patch
-Patch0003:          0003-Allow-setting-a-status-as-closing-even-if-the-projec.patch
-Patch0004:          0004-Include-the-assignee-in-the-list-of-people-notified-.patch
-Patch0005:          0005-Introduce-the-collaborator_project_groups-mapping.patch
-Patch0006:          0006-When-a-file-a-detected-as-a-binary-file-return-the-r.patch
-Patch0007:          0007-Remove-fenced-code-block-when-checking-mention.patch
-Patch0008:          0008-Add-support-for-using-cchardet-to-detect-files-encod.patch
-Patch0009:          0009-Add-support-for-disabling-user-registration.patch
 
-# Fixes proposed upstream
-## From: https://pagure.io/pagure/pull-request/5056
-Patch0101:          0001-api-project-Fix-handling-of-false.patch
 
 # SUSE-specific fixes
 ## Change the defaults in the example config to match packaging
