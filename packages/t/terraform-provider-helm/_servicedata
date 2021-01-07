@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/terraform-providers/terraform-provider-helm</param>
+              <param name="changesrevision">bc19d9d1a451dc8c795e6cad0ca5f534743dcabc</param></service></servicedata>

@@ -1,0 +1,101 @@
+-------------------------------------------------------------------
+Wed Nov 11 11:26:00 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add symbolic link to comply with new filesystem layout for local provider copies
+- Define and use common Go spec file variables
+
+-------------------------------------------------------------------
+Mon Oct 19 14:20:21 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.3.2:
+  * Update pull request docs
+  * Create codeql-analysis.yml (#597)
+  * Update CHANGELOG
+  * Fix nil pointer crash when using plugins (#598)
+- from version 1.3.1
+  * Update CHANGELOG for v1.3.1
+  * Upgrade to helm 3.3.4 (#572)
+  * Fix website tests (#590)
+- from version 1.3.0
+  * Update CHANGELOG.md
+  * Update CHANGELOG.md
+  * Update pull_request_template.md
+  * Added app_version to metadata attribute block (#532)
+  * Fix nil path for dependency_update flag (#482)
+  * Update config.yml
+  * Update docs for verify and chart attributes in helm_release (#565)
+  * Update CONTRIBUTING.md
+  * Update README.md
+  * Extend staleness check to 365 days from 180 days
+  * Cleanup after v1.2.4 release
+
+-------------------------------------------------------------------
+Tue Aug 11 11:44:24 UTC 2020 - adrian.glaubitz@suse.com
+
+- Update to version 1.2.4:
+  * Update go-version for CVE-2020-14039 (#548)
+  * Add Q3 2020 roadmap (#545)
+  * Added note on NOTES.txt to FAQ (#518)
+  * Fix typo in helm_release documentation (#538)
+  * Update labeled_issues.yml
+  * Update 'helm_release' resource docs to have information about the optional type parameter configured within set and set_sensitive blocks. (#499)
+  * Fix: avoid concurrent read/write in metadata (#494) (#525)
+  * disable writing to stderr with klog (#505)
+  * Update README.md
+  * Replace all instances of the old org with the new one (#522)
+  * Cleanup after v0.10.5 release
+  * Update various links bots after migration (#521)
+  * Improve readme (#511)
+  * Put helm lint behind an attribute (#514)
+  * Add more meaningful deprecation warning to helm_repository (#491)
+  * Fix crash when chart fails linter (#487)
+  * Add go report card badge
+  * Add actions badge to README.md
+  * Move PR tests to GitHub Actions (#488)
+  * vendor: add package github.com/hashicorp/terraform-plugin-sdk/helper
+  * helm_release: cloak metadata.value and deprecate set_string
+  * Helm v3.2.0 (#477)
+  * Fix token name
+  * Add issue pruning tasks
+  * Add exec block documentation (#469)
+  * helm_repository: deprecated
+  * helm_release: chart lint when `terraform plan`
+  * Update issue templates
+  * Add github actions for issues+PRs
+  * Fix repo/chart path bug causing unexpected diff (#449)
+  * Use kind to run acceptance tests in travis-ci (#407)
+  * Example with chart not in repository (#442)
+  * Upgrade helm to v3.1.2 (#440)
+  * Helm v3 import release feature (#394)
+  * Helm v3.1.1 (#410)
+  * Fix install errors being swallowed when creating a helm_release (#406)
+  * Add timeout flag details (#421)
+  * Fix no HCL highlighting on helm_release docs
+  * Fix broken link in README.md
+  * Fix bullet points on provider configuration (#395)
+  * Upgrade to go v1.13 (#356)
+  * Fix typo in README.md
+  * Documentation updates for Helm 3 (#393)
+  * Updating plugin to use helm version 3 (#378)
+  * Fix test infra on GKE
+  * :book: Update Github issue template
+  * Update documentation additional description of CLI equivalent.
+  * Update documentation describing optional 'disabled_crd_hooks' flag.
+  * Change description as per @jakesyl suggestion
+  * set default timeout to 60 seconds instead of 5, which seems to be too low
+  * set connection_timeout parameter
+  * update website docs folder structure
+  * Cleanup after v0.10.4 release
+  * Add flag disable_crd_hooks which allows use to use the same --no-crd-hook offered via the command line helm.
+
+-------------------------------------------------------------------
+Wed Mar  4 13:23:51 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Spec clean up
+- Create required symlink
+
+-------------------------------------------------------------------
+Wed Feb  5 10:07:09 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 0.10.4
