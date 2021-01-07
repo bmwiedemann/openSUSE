@@ -131,6 +131,7 @@ BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xkbcommon-x11)
 BuildRequires:  pkgconfig(zlib)
 # Runtime requirements
+Requires:       libqt5-qtimageformats
 Requires:       hicolor-icon-theme
 Requires:       icu
 # TDesktop can fall back to a simple GTK file picker but prefers the portal

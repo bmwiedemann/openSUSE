@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 7 16:37:56 UTC 2021 - Andrés Barrantes Silman <andresbs@opensuse.org>
+
+- Adds a missing runtime dependency (libqt5-qtimageformats).
+
+-------------------------------------------------------------------
 Wed Dec 23 14:42:21 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 2.5.1
