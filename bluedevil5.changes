@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan  5 14:40:01 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.5
+- Changes since 5.20.4:
+  * Show only paired devices in KCM and applet (kde#422383,kde#416322)
+
+-------------------------------------------------------------------
 Tue Dec  1 15:22:13 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.4
