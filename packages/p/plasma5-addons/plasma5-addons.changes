@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan  5 14:40:04 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.5
+- Changes since 5.20.4:
+  * Fix weather widget crash when going to Units tab for the second time (kde#419709)
+  * Fix the comic applet to display icons in the tabbar
+
+-------------------------------------------------------------------
 Tue Dec  1 15:22:16 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.4
