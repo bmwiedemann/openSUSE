@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan  1 13:56:04 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Update to version 0.5.3
+- Drop python-pillow-version.patch
+- Drop 0001-Fix-52-time.clock-has-been-removed-in-python-3.8-53.patch
+
+-------------------------------------------------------------------
 Tue Mar 24 17:28:15 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch to fix the python 3.8 compatibility:
