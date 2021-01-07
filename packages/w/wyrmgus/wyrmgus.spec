@@ -1,7 +1,7 @@
 #
 # spec file for package wyrmgus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,26 @@
 
 
 Name:           wyrmgus
-Version:        3.5.4
+Version:        4.0.3
 Release:        0
 Summary:        Game engine for Wyrmsun
 License:        GPL-2.0-only
 Group:          Amusements/Games/Strategy/Real Time
 URL:            https://andrettin.github.io/
 Source:         https://github.com/Andrettin/Wyrmgus/archive/v%{version}/Wyrmgus-%{version}.tar.gz
-Patch0:         wyrmgus-fix-build.patch
-BuildRequires:  boost-devel
+BuildRequires:  boost-devel >= 1.69.0
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  libqt5-qtlocation-private-headers-devel
 BuildRequires:  lua51-devel
 BuildRequires:  oaml-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Location)
+BuildRequires:  pkgconfig(Qt5Multimedia)
+BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(bzip2)
-BuildRequires:  pkgconfig(fluidsynth)
-BuildRequires:  pkgconfig(libmikmod)
-BuildRequires:  pkgconfig(libmng)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(physfs)
@@ -42,7 +44,6 @@ BuildRequires:  pkgconfig(sdl)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(theora)
 BuildRequires:  pkgconfig(vorbis)
-BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} <= 1320
 BuildRequires:  pkgconfig(tolua++)
 %else
@@ -62,7 +63,6 @@ These are the development files for Wyrmsun which is based on the Stratagus engi
 
 %prep
 %setup -q -n Wyrmgus-%{version}
-%patch0 -p1
 
 %build
 %cmake \
@@ -76,7 +76,6 @@ These are the development files for Wyrmsun which is based on the Stratagus engi
 %cmake_install
 install -D -m 0644 doc/stratagus.6 %{buildroot}%{_mandir}/man6/wyrmgus.6
 install -D -m 0644 gameheaders/stratagus-game-launcher.h %{buildroot}%{_includedir}/wyrmgus-game-launcher.h
-mv %{buildroot}%{_bindir}/stratagus %{buildroot}%{_bindir}/wyrmgus
 
 %files
 %license COPYING

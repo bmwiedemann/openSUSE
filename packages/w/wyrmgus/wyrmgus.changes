@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Dec 27 11:18:05 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.3
+  * Bugfix release
+- Drop not longer needed patches:
+  * 0001-Fixed-erroneous-inline-for-number-to_formatted_strin.patch
+  * wyrmgus-fix-build.patch
+
+-------------------------------------------------------------------
+Thu Dec 24 10:33:03 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * 0001-Fixed-erroneous-inline-for-number-to_formatted_strin.patch
+
+-------------------------------------------------------------------
+Wed Dec 23 22:10:34 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.2
+  * Bugfix release
+
+-------------------------------------------------------------------
+Tue Dec 22 16:57:40 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.1
+  * Fixed to the map template world property definition
+- Update patch:
+  * wyrmgus-fix-build.patch
+
+-------------------------------------------------------------------
 Sun Mar  3 13:29:07 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.5.4
