@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 25 18:57:51 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to 0.10.7
+  * Minor release with mostly improvements to the glTF export.
+  * Sort the file list to make package build reproducible (boo#1041090)
+
+-------------------------------------------------------------------
 Tue Oct 27 08:09:31 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Remove %{set_build_flags} and manually set build flag because 
