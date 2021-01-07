@@ -87,4 +87,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>854006</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1c54386295f7b0f836346c52cd132358</srcmd5>
+    <version>12.7.0b1</version>
+    <time>1610051274</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.7.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 861362 from glaubitz)</comment>
+    <requestid>861444</requestid>
+  </revision>
 </revisionlist>
