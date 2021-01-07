@@ -1,7 +1,7 @@
 #
 # spec file for package kde-gtk-config5
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kde-gtk-config5
-Version:        5.20.4
+Version:        5.20.5
 Release:        0
 Summary:        Daemon for GTK2 and GTK3 Applications Appearance Under KDE
 License:        LGPL-3.0-or-later AND GPL-3.0-or-later
@@ -96,6 +96,7 @@ the GTK3 application style from within the application style KCM
 
 %dir %{_kf5_sharedir}/kconf_update/
 %{_kf5_sharedir}/kconf_update/gtkconfig.upd
+%{_kf5_sharedir}/kconf_update/remove_window_decorations_from_gtk_css.sh
 %dir %{_kf5_libdir}/kconf_update_bin/
 %{_kf5_libdir}/kconf_update_bin/gtk_theme
 
