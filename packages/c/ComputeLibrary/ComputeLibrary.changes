@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec  9 14:30:01 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 20.11:
+  * Public major release
+  * Deprecation notice:
+      Deprecated GLES functions and kernels
+      Deprecated Neon and OpenCL Computer Vision functions
+  * Documentation (API, changelogs, build guide,
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v20.11/
+
+-------------------------------------------------------------------
 Thu Sep  3 09:04:07 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 20.08:

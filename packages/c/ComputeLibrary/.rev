@@ -62,4 +62,20 @@
 </comment>
     <requestid>832532</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>de5361d6501dd5560ba4d4361f480904</srcmd5>
+    <version>20.11</version>
+    <time>1610050977</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20.11:
+  * Public major release
+  * Deprecation notice:
+      Deprecated GLES functions and kernels
+      Deprecated Neon and OpenCL Computer Vision functions
+  * Documentation (API, changelogs, build guide,
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v20.11/
+</comment>
+    <requestid>860735</requestid>
+  </revision>
 </revisionlist>
