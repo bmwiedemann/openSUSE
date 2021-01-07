@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan  7 15:55:52 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Compile with %optflags
+
+-------------------------------------------------------------------
 Mon Jan  4 13:59:33 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to drop build date (boo#1047218)

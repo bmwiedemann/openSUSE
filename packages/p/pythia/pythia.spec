@@ -125,6 +125,7 @@ sed -i 's/\r$//' examples/main29.cc
 
 # FOR oS > 1320, "-std=c++14" IS NEEDED FOR BUILDING EXAMPLES
 # WITH FASTJET3 (WHICH ALREADY USES THIS STD)
+CXXFLAGS="%optflags"
 %if 0%{?suse_version} > 1320
 export CXXFLAGS="$CXXFLAGS -std=c++14"
 %endif
