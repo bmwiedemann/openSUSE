@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>857867</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>832c5f9934aacc0e22917bf0e7dbe50e</srcmd5>
+    <version>1.0.0</version>
+    <time>1610051184</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename volume to /etc/spamassassin and merge provided
+  configuration files
+
+- Add /etc/mail/spamassassin as volume for configuration files (forwarded request 861361 from kukuk)</comment>
+    <requestid>861363</requestid>
+  </revision>
 </revisionlist>

@@ -32,6 +32,7 @@
         </expose>
         <volumes>
           <volume name="/var/lib/spamassassin"/>
+          <volume name="/etc/spamassassin"/>
         </volumes>
         <labels>
           <suse_label_helper:add_prefix prefix="org.opensuse.spamassassin">
