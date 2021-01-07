@@ -40,4 +40,12 @@ New upstream version</comment>
     <comment></comment>
     <requestid>811633</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7aabdc33aac6a17ee84e51cab67cc5b9</srcmd5>
+    <version>2.1.0</version>
+    <time>1610050935</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860559</requestid>
+  </revision>
 </revisionlist>
