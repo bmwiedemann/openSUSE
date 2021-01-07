@@ -1,7 +1,7 @@
 #
 # spec file for package cdogs-sdl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,14 @@
 
 
 Name:           cdogs-sdl
-Version:        0.10.1
+Version:        0.10.2
 Release:        0
 Summary:        Classic overhead run-and-gun game
 License:        GPL-2.0-only AND BSD-2-Clause AND CC-BY-3.0 AND CC-BY-SA-3.0
 Group:          Amusements/Games/Action/Shoot
 URL:            https://cxong.github.io/cdogs-sdl
 Source:         https://github.com/cxong/cdogs-sdl/archive/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE cdogs-sdl-fix-desktop-and-appdata.patch mardnh@gmx.de -- Fix desktop/appdata filenames.
-Patch0:         cdogs-sdl-fix-desktop-and-appdata.patch
-# PATCH-FIX-UPSTREAM nanopb.patch -- https://github.com/nanopb/nanopb/issues/521
-Patch1:         nanopb.patch
 BuildRequires:  cmake >= 3.12
-BuildRequires:  dos2unix
 BuildRequires:  enet-devel
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -51,18 +46,8 @@ from up to 11 weapons, and try over 100 user-created campaigns. Have fun!
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-
-sed -i 's|env python|python3|' src/proto/nanopb/generator/{protoc,nanopb_generator.py}
-
 # use system enet
 rm -rf src/cdogs/enet
-
-#dos2unix doc/original_readme.txt
-
-# disable -Werror (aborts build on mere warnings)
-#sed 's| -Werror||' -i CMakeLists.txt
 
 %build
 %cmake -DCDOGS_DATA_DIR=%{_datadir}/%{name}/ -DUSE_SHARED_ENET=ON
@@ -73,10 +58,12 @@ rm -rf src/cdogs/enet
 %fdupes %{buildroot}%{_datadir}
 
 %files
-%{_datadir}/applications/%{name}.desktop
+%license COPYING
+%doc README.md
+%{_datadir}/applications/*.desktop
 %{_bindir}/%{name}*
 %{_datadir}/%{name}/
-%{_datadir}/icons/hicolor/*/apps/%{name}.png
-%{_datadir}/metainfo/%{name}.appdata.xml
+%{_datadir}/icons/hicolor/*/apps/*.png
+%{_datadir}/metainfo/*.appdata.xml
 
 %changelog

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan  5 23:57:23 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 0.10.2:
+  * Fix loading classic campaigns
+  * Fix PVP rounds not ending
+  * Fix missing mouse cursor and trail
+  * Fix linux build
+  * Fix dogfight scores not updated properly
+  * Add peaked cap hat
+  * Add soldier body type
+  * Improve weapon equip menu, show available weapons, allow gun
+    swapping.
+  * Improve game startup by skipping mission briefing if it is empty
+- Drop not longer neede patches
+  * cdogs-sdl-fix-desktop-and-appdata.patch
+  * nanopb.patch
+- Package license file and readme
+
+-------------------------------------------------------------------
 Tue Dec  1 07:46:07 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 0.10.1:
