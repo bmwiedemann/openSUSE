@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jan  7 16:31:06 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.9.6
+  - surfacegdi.cpp
+    - fixed too high DPI values being reported
+  - surfacegdiplus.cpp
+    - fixed too high DPI values being reported
+  - windowcocoa.mm
+    - fixed glitches after closing tabs in tabbed mode
+  - menubar_cocoa.mm
+    - fixed possible crash after menubar contents change
+  - droptarget.cpp
+    - fixed rare crash related to drag & drop handling
+  - translator.cpp
+    - also look for translations in application data folder
+  - tree.cpp
+    - improved rendering of tree widget in scaled mode
+  - http.cpp
+    - include status code in response header fields
+  - implemented proper multi-monitor support for macOS
+  - added support for macOS 11.0 Big Sur
+  - added a separate error code for denied access to file IO drivers
+  - fixed wrong color space returned in BitmapBackend::GetPixel for multiple backends
+  - upgraded fribidi to version 1.0.10
+  
+-------------------------------------------------------------------
 Wed Jul 15 15:04:28 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Show feature list with bullet points. Trim conjecture.

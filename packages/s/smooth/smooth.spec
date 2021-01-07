@@ -1,7 +1,7 @@
 #
 # spec file for package smooth
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _lver   0.9
 %define sover   0
 Name:           smooth
-Version:        0.9.5
+Version:        0.9.6
 Release:        0
 Summary:        C++ class library for widgets, IO, XML and more
 License:        Artistic-2.0
@@ -32,8 +32,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(fribidi)
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libcpuid) >= 0.5
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libxml-2.0)
 
