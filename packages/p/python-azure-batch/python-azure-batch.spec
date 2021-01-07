@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-batch
-Version:        9.0.0
+Version:        10.0.0
 Release:        0
 Summary:        Microsoft Azure Batch Client Library
 License:        MIT
