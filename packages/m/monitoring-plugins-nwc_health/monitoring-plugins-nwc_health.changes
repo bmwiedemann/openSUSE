@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec 23 22:36:29 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 8.0
+  * broadcast traffic is now shown as percentage of the overall
+    traffic (...broadcast_in) and percentage of the available
+    bandwitdth (..._broadcast_usage_in).
+  * errors and discards are now calculated as percentage of all
+    received/sent packets.
+  * TenGig-VRF-MPLS-Dingsbums without errors and discard metrics
+    are no longer treated as StackSubs.
+- Update to version 7.13
+  * add Vormetric Appliance
+- Update to version 7.12.2
+  * add some exceptions to hrDeviceDiskStorage and hrDeviceNetwork
+
+-------------------------------------------------------------------
 Tue Sep  8 18:49:49 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 7.12.1.3
