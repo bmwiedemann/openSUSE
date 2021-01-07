@@ -1,0 +1,10 @@
+[Unit]
+Description=Run goaccess@%i.service every 15min
+
+[Timer]
+OnCalendar=*:0/15
+RandomizedDelaySec=1m
+Persistent=true
+
+[Install]
+WantedBy=multi-user.target

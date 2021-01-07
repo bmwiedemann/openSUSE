@@ -2,7 +2,7 @@
 #
 # spec file for package goaccess
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,6 +18,8 @@
 #
 
 
+%global goaccess_services goaccess@.service goaccess@.timer
+
 Name:           goaccess
 Version:        1.4.3
 Release:        0
@@ -25,13 +27,16 @@ Summary:        Apache Web Log Analyzer
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://goaccess.io/
-Source:         http://tar.goaccess.io/goaccess-%{version}.tar.gz
+Source0:        http://tar.goaccess.io/goaccess-%{version}.tar.gz
+Source10:       goaccess@.service
+Source11:       goaccess@.timer
+Source20:       README.SUSE.md
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc
-BuildRequires:  libmaxminddb-devel
 BuildRequires:  make
 BuildRequires:  ncurses-devel
+BuildRequires:  pkgconfig(libmaxminddb)
 Recommends:     %{name}-lang
 
 %description
@@ -41,27 +46,47 @@ for system administrators that require a visual report on the fly.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
+cp %{SOURCE20} .
 
 %build
 %configure \
-    --enable-utf8
+    --enable-utf8 \
+    --enable-geoip=mmdb
 
 %make_build
 
 %install
 %make_install
 
+install -d -m 0755 %{buildroot}%{_unitdir}
+install -m 0644 %{SOURCE10} %{buildroot}%{_unitdir}/goaccess@.service
+install -m 0644 %{SOURCE11} %{buildroot}%{_unitdir}/goaccess@.timer
+
 %find_lang %{name}
+
+%pre
+%service_add_pre %{goaccess_services}
+
+%post
+%service_add_post %{goaccess_services}
+
+%preun
+%service_del_preun %{goaccess_services}
+
+%postun
+%service_del_postun %{goaccess_services}
 
 %files -f %{name}.lang
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README TODO
+%doc AUTHORS ChangeLog NEWS README README.SUSE.md TODO
 %{_bindir}/goaccess
 %{_mandir}/man1/goaccess.1%{?ext_man}
 %dir %{_sysconfdir}/goaccess/
 %config %{_sysconfdir}/goaccess/browsers.list
 %config %{_sysconfdir}/goaccess/goaccess.conf
 %{_sysconfdir}/goaccess/podcast.list
+%{_unitdir}/goaccess@.service
+%{_unitdir}/goaccess@.timer
 
 %changelog

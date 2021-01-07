@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan  4 12:41:05 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix starting the timer on boot
+
+-------------------------------------------------------------------
+Mon Dec 28 08:38:17 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Enable geoip support
+- Added systemd service files
+- Added README.SUSE.md
+
+-------------------------------------------------------------------
 Fri Dec  4 08:53:27 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.4.3:

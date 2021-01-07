@@ -1,0 +1,6 @@
+[Unit]
+Description=goaccess instance: %i
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/goaccess --config-file=/etc/goaccess/%i.conf
