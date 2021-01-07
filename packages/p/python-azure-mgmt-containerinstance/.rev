@@ -84,4 +84,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>853907</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e96421c350426240a41433f19751cd1e</srcmd5>
+    <version>7.0.0</version>
+    <time>1610051157</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 861077 from glaubitz)</comment>
+    <requestid>861084</requestid>
+  </revision>
 </revisionlist>
