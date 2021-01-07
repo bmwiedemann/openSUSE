@@ -1,7 +1,7 @@
 #
 # spec file for package discover
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %global have_fwupd (!0%{?sle_version} || 0%{?sle_version} >= 150200)
 
 Name:           discover
-Version:        5.20.4
+Version:        5.20.5
 Release:        0
 Summary:        Software store for the KDE Plasma desktop
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later
