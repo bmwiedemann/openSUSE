@@ -39,7 +39,7 @@ BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(libnotify)
-BuildRequires:  pkgconfig(libxfce4panel-1.0)
+BuildRequires:  pkgconfig(libxfce4panel-2.0)
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.13.0
 BuildRequires:  pkgconfig(libxfce4util-1.0)
 BuildRequires:  pkgconfig(libxfconf-0) >= %{panel_version}
