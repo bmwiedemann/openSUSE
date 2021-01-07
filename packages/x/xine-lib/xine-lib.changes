@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Jan  6 18:52:25 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to version 1.2.11
+- Remove xine-lib-dec_info_real.patch, fixed upstream
+- Upstream changes:
+  * Add gopher input plugin.
+  * Add user settings for IPv6.
+  * Split a52 spdif output to separate decoder.
+  * Code cleanup.
+  * More engine optimization.
+  * Small optimizations (opengl2, dvb subtitles, png, mpeg-ts).
+  * Better A/V sync.
+  * Fix a few crashes.
+  * Fix bluray playback.
+  * Fix VAAPI picture jitter and green flashes.
+  * Fix Opus and EAC3 audio playback.
+  * Fix text subtitles.
+  * Fix mpeg-ts (hdmv mode, detection of cut TV recordings).
+  * Fix mpeg layer 1-4 audio timing.
+  * Fix some VDR issues.
+  * Fix HLS VOD mode.
+  * Many small fixes.
+  * Build fixes.
+  * BSD fixes.
+  * Update german translation.
+  * Update internal libdca to upstream 0.0.7.
+
+-------------------------------------------------------------------
 Fri Jun  5 20:20:20 UTC 2020 - olaf@aepfle.de
 
 - Remove xineplug_decode_qt to fix i386 build

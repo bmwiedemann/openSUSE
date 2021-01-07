@@ -93,9 +93,9 @@ BuildRequires:  SDL-devel
 BuildRequires:  libjack-devel
 %endif
 BuildRequires:  libmodplug-devel
-Version:        1.2.10
+Version:        1.2.11
 Release:        0
-%define abiversion 2.8
+%define abiversion 2.9
 Summary:        Video Player with Plug-Ins
 License:        GPL-2.0-or-later AND SUSE-Public-Domain
 Group:          Productivity/Multimedia/Video/Players
@@ -107,17 +107,8 @@ Source1:        baselibs.conf
 
 Patch0:         xine-lib-libdvdread_udf.diff
 Patch1:         xine-lib-v4l-2.6.38.patch
-Patch2:         xine-lib-dec_info_real.patch
 # Add theora FOURCC to libxine I found an avi container that xine wouldn't play.
 Patch4:         xine-lib-theora.patch
-# This should be fixed upstream, but this patch will not work for them.
-# wand/magick_wand.h is already deprecated even in ImageMagick-6; package should
-# include wand/MagickWand.h for ImageMagick-6 and MagickWand/MagickWand.h for
-# ImageMagick-7. Including wand/MagickWand.h will work for us also for
-# ImageMagick-7, because we package wand/ symlink to ./MagickWand/MagickWand.h
-#Patch8:         xine-lib-ImageMagick7.patch
-# PATCH-FIX-UPSTREAM xine-lib-a52dec.patch davejplater@gmail.com -- Change in a52dec api.
-#Patch6:         xine-lib-a52dec.patch
 
 %description
 <p>Great video and multimediaplayer, supports DVD, MPEG, AVI, DivX, VCD, Quicktime ...</p><p>You need a frontend for xine-lib like <a href=http://packman.links2linux.de/package/xine-ui>xine-ui</a>, <a href=http://packman.links2linux.de/package/gxine>gxine</a>, <a href=http://packman.links2linux.de/package/kaffeine>kaffeine</a> or <a href=http://packman.links2linux.de/package/totem>totem</a>.</p><p>Since 1-rc6 the package number is reduced, all you may miss, is in the base package</p><p>If you want to play css encrypted Video-DVD's, you need to install <a href=http://packman.links2linux.de/package/libdvdcss2>libdvdcss</a>.</p>
@@ -533,6 +524,7 @@ xineplug_vo_out_xcbxv
 xineplug_vo_out_raw
 xineplug_decode_mad
 xineplug_decode_a52
+xineplug_decode_to_spdif
 %if %{without distributable}
 xineplug_vo_out_vdpau
 xineplug_vo_gl_egl_wl
