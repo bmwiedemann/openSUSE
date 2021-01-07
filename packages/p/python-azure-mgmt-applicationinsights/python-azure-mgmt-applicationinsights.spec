@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-applicationinsights
-Version:        0.3.0
+Version:        1.0.0b1
 Release:        0
 Summary:        Microsoft Azure Application Insights Management Client Library
 License:        MIT
@@ -37,11 +37,11 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
+Requires:       python-azure-mgmt-core < 2.0.0
+Requires:       python-azure-mgmt-core >= 1.2.0
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-msrest >= 0.5.0
-Requires:       python-msrestazure < 2.0.0
-Requires:       python-msrestazure >= 0.4.20
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
