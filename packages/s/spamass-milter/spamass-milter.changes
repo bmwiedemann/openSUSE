@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Wed Jan  6 12:53:39 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Drop spamass-milter-0.4.0-pathnames.patch, the patched docu is
+  not used.
+
+-------------------------------------------------------------------
+Wed Dec 23 06:37:13 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- BuildRequire curl because of changed spamassassin dependencies
+
+-------------------------------------------------------------------
+Sat Dec 19 18:07:06 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Initial version based on fedora 33

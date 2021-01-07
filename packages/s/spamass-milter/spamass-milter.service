@@ -1,0 +1,21 @@
+# Note: this unit file runs spamass-milter as the unprivileged user sa-milter,
+# which is not compatible with the milter's -x option for performing
+# virtusertable and alias expansion.
+
+[Unit]
+Description = Mail filter for SpamAssassin
+After = local-fs.target
+After = network.target
+After = spamassassin.service
+Before = postfix.service
+
+[Service]
+UMask = 0022
+Environment = SOCKET=/run/spamass-milter/socket SOCKET_OPTIONS="-g postfix" EXTRA_FLAGS=
+EnvironmentFile = -/usr/etc/default/spamass-milter
+EnvironmentFile = -/etc/default/spamass-milter
+User = sa-milter
+ExecStart = /usr/sbin/spamass-milter $SOCKET_OPTIONS -p $SOCKET $EXTRA_FLAGS
+
+[Install]
+WantedBy = multi-user.target

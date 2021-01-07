@@ -1,0 +1,37 @@
+The spamass-milter package is designed to be more Postfix-friendly, i.e.:
+
+   The Unix-domain socket used for MTA communication 
+   /run/spamass-milter/sock is writable by the postfix group.
+
+To configure Postfix to use the milter, add to /etc/postfix/main.cf:
+
+  smtpd_milters = unix:/run/spamass-milter/socket
+
+In addition:
+
+  milter_connect_macros must include the j and _ macros
+  milter_rcpt_macros    must include the b, r, v, and Z macros
+
+Most of these are present by default and shouldn't need explicitly setting,
+except for the _ macro in milter_connect_macros. You can use:
+
+postconf -d milter_connect_macros
+
+to find the current setting, and add _ to the returned value, e.g.
+
+  milter_connect_macros = j {daemon_name} v _
+
+Note that Postfix users will see the following warning logged at the time of
+the first connection to the milter:
+
+  Could not retrieve sendmail macro "i"!.  Please add it to
+  confMILTER_MACROS_ENVFROM for better spamassassin results
+
+This is a consequence of different design decisions between Postfix and
+Sendmail (which spamass-milter is written for), where Postfix does not assign
+a Queue ID to an incoming message until later in an SMTP transaction compared
+with Sendmail. The milter wants to use the information before Postfix can
+provide it, hence the message. It is harmless and can be ignored.
+
+For further information, see:
+http://www.postfix.org/MILTER_README.html

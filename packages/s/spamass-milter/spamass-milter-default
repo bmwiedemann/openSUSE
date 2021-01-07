@@ -1,0 +1,6 @@
+### Override for your different local config if necessary
+#SOCKET=/run/spamass-milter/socket
+#SOCKET_OPTIONS="-g postfix"
+
+### You may add configuration parameters here, see spamass-milter(1)
+#EXTRA_FLAGS="-- -d spamd.host"
