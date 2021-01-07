@@ -1,7 +1,7 @@
 #
 # spec file for package libksysguard5
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           libksysguard5
-Version:        5.20.4
+Version:        5.20.5
 Release:        0
 Summary:        Task management and system monitoring library
 License:        GPL-2.0-or-later
