@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sun Nov 29 13:44:31 UTC 2020 - Gottfried Necker <gottfried.necker@gmx.de>
+
+- Update to 3.1.4
+  * Bug Fixes
+    - Fix an incompatibility with the new Python 3.9 version under Linux
+      or running from source.
+    - Avoid an error message when a window is closed with the focus on a
+      dialog box.
+    - Fix a problem recalculating root references in field equations.
+
+-------------------------------------------------------------------
+Fri Aug 28 18:25:01 UTC 2020 - Gottfried Necker <gottfried.necker@gmx.de>
+
+- Update to 3.1.3
+  * New Features:
+    - Add a more flexible tool for customizing GUI colors.
+    - Add an Insert Date command that adds a timestamp to text field edit boxes.
+    - Evaluate math expressions contained in fields that are referenced by math
+      field equations.
+    - Add support for German outline numbering using double letters in some
+      levels (thanks to Teresa M).
+
+  * Updates:
+    - Update math field equation restrictions to work with Python 3.8.
+    - References to a macOS port on MacPorts were added to the System
+      Requirements and Installation documentation.
+    - Update the libraries used to build the Windows binaries to Python 3.8
+      and Qt/PyQt 5.14.
+
+  * Bug Fixes:
+    - Make the Add Child command available after filtering has ended.
+    - Avoid an application error when a Find and Replace command causes
+      fields to contain invalid data.
+    - Perform a more complete recalculation of math fields after certain
+      operations.
+    - Fix problems opening files that contain circular reference errors in
+      math fields.
+    - Avoid problems with empty parameters in the font dialogs.
+    - Fix a bug in Data Edit views when no fields are visible due to hidden
+      numbering or math fields.
+    - Properly update multiple windows after drag and drop tree changes.
+    - Fix issues with restoring window geometry with multiple monitors and
+      changing configurations.
+    - Work around bugs when using files located on some types of Windows
+      network drives.
+    - Fix problems detecting existing TreeLine sessions when opening files
+      (mostly in Linux).
+
+-------------------------------------------------------------------
 Sun May 24 10:50:29 UTC 2020 - Gottfried Necker <gottfried.necker@gmx.de>
 
 - Update to 3.1.2
