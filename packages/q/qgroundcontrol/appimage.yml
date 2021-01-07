@@ -4,18 +4,15 @@ binpatch: true
 build:
   packages:
     - linuxdeployqt
-#    - libqt4-devel
+    - libqt5-qtbase-common-devel
 
 ingredients:
   packages:
-#    - libvtk1
-#    - libnetcdf13
-#    - libhdf5-101
-#    - netgen
     - qgroundcontrol
 
 script:
   - rpm -q --qf '%{VERSION}' qgroundcontrol > ../VERSION
+  - sed -i -e 's,^Exec=.*,Exec=QGroundControl,' usr/share/applications/qgroundcontrol.desktop
   - cp -v usr/share/applications/qgroundcontrol.desktop usr/share/pixmaps/qgroundcontrol.png .
 #  - rm $BUILD_APPDIR/usr/share/applications/qt4config.desktop
   - linuxdeployqt $BUILD_APPDIR/usr/share/applications/*.desktop -bundle-non-qt-libs -verbose=2

@@ -1,7 +1,7 @@
 #
 # spec file for package qgroundcontrol
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           qgroundcontrol
-Version:        4.0.8
+Version:        4.0.11
 Release:        0
 Summary:        An operator control unit / ground control software for micro air vehicles
 License:        GPL-3.0-only
@@ -100,6 +100,7 @@ mkdir -p %{buildroot}/usr/share/{applications,pixmaps}
 install -p -m 0644 ../deploy/qgroundcontrol.desktop %{buildroot}/usr/share/applications/
 install -p -m 0644 ../resources/icons/qgroundcontrol.png %{buildroot}/usr/share/pixmaps/
 sed -i -e 's/^Categories=.*/Categories=Development;Building;/' %{buildroot}/usr/share/applications/qgroundcontrol.desktop
+sed -i -e 's,^Exec=.*,Exec=QGroundControl,' %{buildroot}/usr/share/applications/qgroundcontrol.desktop
 %fdupes %{buildroot}%{_prefix}
 
 %files

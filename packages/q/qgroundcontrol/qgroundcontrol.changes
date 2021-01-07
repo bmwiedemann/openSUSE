@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan  6 15:27:04 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- update to version 4.0.11
+  * Fix battery id handling for multiple batteries
+  * Fix Google Play store upload which was preventing new Stables being updated correctly
+  * Fix crashes in UDPLink
+  * Don't auto-connect to second Cube Orange/Yellow composite port
+  * Plan: Fix bugs associated with mission commands which specify and altitude but no lat/lon
+  * Fix bug which could prevent view switching from working after altitude mode warning dialog would pop up
+
+-------------------------------------------------------------------
 Mon Jul 27 10:16:28 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 -  Add _constraints default min disk size & physicalmemory 4GB
