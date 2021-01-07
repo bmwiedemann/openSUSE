@@ -1,7 +1,7 @@
 #
 # spec file for package python39
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -142,6 +142,9 @@ Patch29:        bpo-31046_ensurepip_honours_prefix.patch
 Patch31:        bsc1167501-invalid-alignment.patch
 # PATCH-FIX-UPSTREAM stop calling removed Sphinx function gh#python/cpython#13236
 Patch32:        sphinx-update-removed-function.patch
+# PATCH-FIX-SLE no-skipif-doctests.patch jsc#SLE-13738 mcepl@suse.com
+# SLE-15 version of Sphinx doesn't know about skipif directive in doctests.
+Patch33:        no-skipif-doctests.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
@@ -164,9 +167,8 @@ BuildRequires:  pkgconfig(libtirpc)
 # Here we just run sphinx and we can use generic one, we don't need
 # the flavor variant
 BuildRequires:  python3-Sphinx < 3.0
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} >= 1500
 BuildRequires:  python3-python-docs-theme
-BuildRequires:  python3-sphinxcontrib-qthelp >= 1.0.2
 %endif
 %endif
 %if %{with general}
@@ -278,7 +280,6 @@ Python, and Macintosh Module Reference in format for devhelp.
 %package -n %{python_pkg_name}-base
 Summary:        Python 3 Interpreter and Stdlib Core
 Requires:       libpython%{so_version} = %{version}
-Requires:       python-rpm-macros
 Recommends:     %{python_pkg_name} = %{version}
 #Recommends:     python3-ensurepip
 # python 3.1 didn't have a separate python-base, so it is wrongly
@@ -390,6 +391,9 @@ other applications.
 %patch29 -p1
 %patch31 -p1
 %patch32 -p1
+%if 0%{?suse_version} <= 1500
+%patch33 -p1
+%endif
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

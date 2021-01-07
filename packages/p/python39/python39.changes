@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan  5 09:15:36 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- (bsc#1180125) We really don't Require python-rpm-macros package.
+  Unnecessary dependency.
+
+-------------------------------------------------------------------
+Wed Dec 16 16:08:42 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Make python39-doc building again
+- Add no-skipif-doctests.patch, because SLE-15 version of Sphinx
+  doesn't know about skipif directive in doctests.
+
+-------------------------------------------------------------------
 Sat Dec 12 14:29:33 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update sphinx-update-removed-function.patch patch to the latest
