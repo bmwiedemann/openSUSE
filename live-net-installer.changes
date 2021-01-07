@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan  6 16:49:53 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix EFI detection for non-x86 with kernel 5.10+ - boo#1180408
+
+-------------------------------------------------------------------
 Fri Dec 11 13:48:48 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Remove special handling for AArch64 on Leap > 15.2

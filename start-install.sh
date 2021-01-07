@@ -23,7 +23,7 @@ EOF
 # Remove rd.live.*, root and kiwi_hybrid keys and strip everything before splash=silent
 cmdline=$(sed -e 's,.*splash=silent,splash=silent,;s, rd.live\.[^ ]*,,g;s, root[^ ]*,,g;s, kiwi_hybrid=[^ ]*,,g' /proc/cmdline)
 echo "Cmdline: $cmdline" >> /etc/install.inf
-if [ -d /sys/firmware/efi/vars ]; then
+if [ -d /sys/firmware/efi ]; then
 	echo "EFI: 1" >> /etc/install.inf
 else
 	echo "EFI: 0" >> /etc/install.inf
