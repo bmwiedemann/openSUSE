@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jan  6 16:17:09 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.1:
+  * Fix excessive memory consumption when showing long-running slideshows
+    with thousands to tens of thousands of images and feh has been compiled
+    with exif=1 (see https://github.com/derf/feh/issues/553)
+  * Fix memory leak when showing long-running slideshows with relatively few
+    images and feh has been compiled with exif=1 (ibid.)
+  * Fix memory leak when reloading an image and feh has been compiled with
+    exif=1
+  * Fix memory leak in --draw-exif
+  * Fix memory leak when reloading HTTP files with --no-conversion-cache
+  * Add flip and rotate options to the menu
+  * Improve unloadable image detection time (e.g. for large video files) by
+    checking a file's header before passing it to Imlib2. For rarely used
+    image formats, there is a very small chance that an image which could be
+    loaded by feh 3.5 is reported as unloadable by feh 3.6 due to this
+    change. Set FEH_SKIP_MAGIC=1 to bypass the header check in this case. See
+    <https://phab.enlightenment.org/T8739> and
+    <https://github.com/derf/feh/issues/505> for details.
+
+-------------------------------------------------------------------
 Sat Sep 12 09:45:38 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.5:
