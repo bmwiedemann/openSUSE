@@ -1,7 +1,7 @@
 #
 # spec file for package plasma5-desktop
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 
 %bcond_without lang
 Name:           plasma5-desktop
-Version:        5.20.4
+Version:        5.20.5
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -38,8 +38,6 @@ Source:         https://download.kde.org/stable/plasma/%{version}/plasma-desktop
 Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         Reparse-the-key-repeat-rate-config-when-we-try-to-load-it.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Use-themed-user-face-icon-in-kickoff.patch
 BuildRequires:  extra-cmake-modules >= %{kf5_version}

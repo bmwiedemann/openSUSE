@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan  5 14:40:04 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.5
+- Changes since 5.20.4:
+  * revert: bf7d64b3 . Fixes panel height adjusting fails when the panel is on top / left (kde#430050)
+  * Reparse the key repeat rate config when we try to load it. (kde#418175)
+  * Fix the order of the actions of the emojier
+  * [kcms/users]: Make sure avatar grid doesn't escape bounds (kde#428899)
+  * Use Instantiator to create drawer actions to improve startup time
+  * [kcms/users] Avoid race condition on startup (kde#429314)
+- Drop patches, now upstream:
+  * Reparse-the-key-repeat-rate-config-when-we-try-to-load-it.patch
+
+-------------------------------------------------------------------
 Wed Dec 23 08:14:41 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add upstream patch to fix keyboard repeat settings not being
