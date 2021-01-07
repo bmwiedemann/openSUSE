@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Tue Dec 29 20:40:12 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Update to version 1.0 at new source code location
+- Now using https://en.opensuse.org/SourceUrls
+- Drop blobby-BotAPICalculations.diff
+- Add networkmessage.patch
+- Add icon.patch
+- Add data-dir.patch
+- Add support for https://en.opensuse.org/openSUSE:AppStore
+- Update icon and .desktop file (via FlatHub)
+- Use cmake macros
+
+-------------------------------------------------------------------
+Sun May  3 18:06:01 UTC 2015 - dap.darkness@gmail.com
+
+- Updated to rev#1593 to resolve openSUSE:Factory build failures.
+- Fixed License tag: "either version 2 … or … any later version".
+- Added blobby-BotAPICalculations.diff vs. missing source.
+
+-------------------------------------------------------------------
+Mon Jun  2 14:16:54 UTC 2014 - mailaender@opensuse.org
+
+- update to 1.0
+
+-------------------------------------------------------------------
+Tue Dec  3 22:32:27 UTC 2013 - mailaender@opensuse.org
+
+- update to 1.0 RC4
+
+-------------------------------------------------------------------
+Mon Nov 18 22:58:01 UTC 2013 - mailaender@opensuse.org
+
+- update to 1.0 RC3
+- patches are now included upstream
+- icon: black border to transparency
+
+-------------------------------------------------------------------
+Wed Jan  9 09:25:27 UTC 2013 - joop.boonen@opensuse.org
+
+- Added BuildRequires zlib-devel as it's not automatically
+  installed for openSUSE > 12.2
+
+-------------------------------------------------------------------
+Fri May 25 21:17:05 UTC 2012 - joop.boonen@opensuse.org
+
+- Updated to version 1.0rc1
+- Created a gcc 47 patch
+- Cleaned the spec file up
+
+-------------------------------------------------------------------
+Wed Mar 28 15:04:03 UTC 2012 - jengelh@medozas.de
+
+- Build in parallel with %_smp_mflags
+- Strip redundant sections/tags from specfile
+- Remove already automatically-determined runtime Requires on
+  SDL, physfs
+
+-------------------------------------------------------------------
+Wed Jul  8 15:34:41 CEST 2009 - dominique-obs@leuenberger.net
+
+- bnc#511268 fix undefined code
+- Add blobby-datadir patch (specifies where to look for the data)
+- Drop the shell script, as it's obsoleted with above patch
+- rename package to blobby, to be in line with other RPM based
+  distros, provide / osbolete blobbyvolley and blobby2
+  (previous used names in Factory in games repo)
+- Version 0.6.0.1: It's somewhere between 0.6 and 0.7.
+
+-------------------------------------------------------------------
+Mon Nov 24 10:19:54 CET 2008 - pzimmer@suse.de
+
+- bnc#442864 delete replaced by delete []
+
+-------------------------------------------------------------------
+Thu Nov 20 17:49:21 CET 2008 - ro@suse.de
+
+- buildrequire only boost-devel, not boost
+
+-------------------------------------------------------------------
+Wed Jul 23 08:23:11 CEST 2008 - pkirsch@suse.de
+
+- added ExclusiveArch Tag: x86, x86_64, ppc, ppc64
+
+-------------------------------------------------------------------
+Tue Jul 22 09:52:21 CEST 2008 - pkirsch@suse.de
+
+- added blobby bash script which checks for user configuration
+  data, if not present copied from /usr/share/games/blobbyvolley
+
+-------------------------------------------------------------------
+Wed Jul 16 17:44:21 CEST 2008 - pkirsch@suse.de
+
+- initial checkin
+- fixed the missing include <algorithm> in some cpp files
+
