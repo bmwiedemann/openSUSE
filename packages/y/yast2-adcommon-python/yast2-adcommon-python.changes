@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 07 15:12:29 UTC 2021 - dmulder@suse.com
+
+- Remove ad-dc dependency; (jsc#ECO-2527);
+- 1.6
+
+-------------------------------------------------------------------
 Mon Sep 28 11:10:58 UTC 2020 - dmulder@suse.com
 
 - Rev version for SLE update; (jsc#ECO-2527);
