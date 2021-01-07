@@ -1,7 +1,7 @@
 #
 # spec file for package libtorrent-rasterbar-1
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_with     examples
 %bcond_with     tests
 Name:           %{_oname}-%{_legacy}
-Version:        1.2.11
+Version:        1.2.12
 Release:        0
 Summary:        A C++ implementation of the BitTorrent protocol
 License:        BSD-3-Clause
@@ -112,6 +112,7 @@ Documentation for the libtorrent-rasterbar package.
 %build
 export CXXFLAGS="-std=c++14"
 %cmake \
+   -DCMAKE_INSTALL_LIBDIR=%{_lib} \
 %if %{with tests}
    -Dbuild_tests=ON \
 %endif
@@ -137,7 +138,6 @@ install -Dm0755 build/examples/dump_torrent build/examples/make_torrent \
 # remove pkgconfig conflict
 mv %{buildroot}%{_libdir}/pkgconfig/%{_oname}.pc \
    %{buildroot}%{_libdir}/pkgconfig/%{name}.pc
-
 %fdupes %{buildroot}%{python3_sitearch}
 
 %if %{with tests}
