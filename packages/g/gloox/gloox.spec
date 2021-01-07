@@ -1,7 +1,7 @@
 #
 # spec file for package gloox
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,15 @@
 #
 
 
-%define soname 17
+%define soname 18
 Name:           gloox
-Version:        1.0.23
+Version:        1.0.24
 Release:        0
 Summary:        High-level XMPP Library for C++
 License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
-URL:            http://camaya.net/gloox
-Source:         http://camaya.net/download/gloox-%{version}.tar.bz2
+URL:            https://camaya.net/gloox
+Source:         https://camaya.net/download/gloox-%{version}.tar.bz2
 Source200:      baselibs.conf
 BuildRequires:  autoconf
 BuildRequires:  automake
