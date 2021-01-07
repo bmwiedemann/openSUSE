@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan  6 17:31:50 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.1
+  * Added support for OpenSSL 1.1.0 and removed support for
+    versions prior to 1.0.2.
+  * Updated CERT IPFIX elements.
+
+-------------------------------------------------------------------
 Sun Nov 29 19:06:50 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.0
