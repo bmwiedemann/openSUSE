@@ -1,0 +1,3500 @@
+-------------------------------------------------------------------
+Wed Nov 11 11:08:00 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add symbolic link to comply with new filesystem layout for local provider copies
+
+-------------------------------------------------------------------
+Mon Oct 19 12:03:00 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Define and use common Go spec file variables
+- Update to version 2.32.0:
+  * Update CHANGELOG.md for #8735
+  * New Resource: `azurerm_eventgrid_system_topic` (#8735)
+  * update CHANGELOG.md for #8698
+  * update CHANGELOG.md for #8774
+  * Fix azurerm_mysql_server example
+  * Update changelog for #8787
+  * New data source: azurerm_mysql_server (#8787)
+  * Update changelog for #8783
+  * New resource: azurerm_security_center_setting (#8783)
+  * Fix error when creating security center contact
+  * Update CHANGELOG.md for #8826
+  * Update stamp_id of azurerm_dedicated_hardware_security_module as optional property (#8826)
+  * update
+  * Update changelog for #8859
+  * `azurerm_search_service` - `sku` now supports `storage_optimized_l1` and `storage_optimized_l2` (#8859)
+  * Update changelog for #8860
+  * `azurerm_cognitive_account` - `kind` now supports `Personalizer` #8860
+  * Update changelog for #8811
+  * `azurerm_storage_share` - set `metadata` to `Computed` and set `acl` `start` and `expiry` to `Optional` (#8811)
+  * typo in comment
+  * fix tests failing due to quota restrictions
+  * update
+  * update
+  * Update changelog for #8807
+- from version v2.31.1
+  * Update changelog for #8807
+  * `azurerm_storage_account`- add Computed to `large_file_share_enabled` #8807
+  * spelling
+  * log analytics data sources: should not have been merged comment
+  * Cleanup after v2.31.0 release
+- from version 2.31.0
+  * misc cleanup of CHANGELOG.md
+  * address pr comments
+  * updating the changelog
+  * r/windows_virtual_machine_scale_set: documenting the plan block
+  * Update error message
+  * Update changelog for #8666
+  * `azurerm_storage_share` allow large quotas to be specified.  (#8666)
+  * Update changelog for #8789
+  * `azurerm_storage_account` - add support for `large_file_share_enabled` (#8789)
+  * Update CHANGELOG.md for #8795
+  * Validate policy mode value (#8795)
+  * Update CHANGELOG.md for #8668
+  * Update `azurerm_policy_set_definition` - Fix #8663 (#8668)
+  * Add `plan` block argument to scale set
+  * update CHANGELOG>md for #8605
+  * Update azurerm/internal/services/desktopvirtualization/virtual_desktop_workspace_application_group_association_resource_test.go
+  * Update website/docs/r/virtual_desktop_workspace_application_group_association.html.markdown
+  * Update azurerm/internal/services/desktopvirtualization/virtual_desktop_workspace_resource_test.go
+  * Update azurerm/internal/services/desktopvirtualization/virtual_desktop_workspace_resource_test.go
+  * Update data_factory_dataset_http.html.markdown (#8784)
+  * Update CHANGELOG.md for #8765
+  * `azurerm_mssql_database` - add support for `long_term_retention_policy` and `short_term_retention_policy` (#8765)
+  * `azurerm_mssql_server` - update doc and test for sql server min tls (#8769)
+  * add `s` tk
+  * fix: Change serivce to service in private_endpoint.html.markdown
+  * fix failing tests for wvd resources
+  * Update application_gateway.html.markdown (#8759)
+  * Update CHANGELOG.md for #8549
+  * Update `azurerm_security_center_subscription_pricing` (#8549)
+  * Update changelog for #8300
+  * `azurerm_kubernetes_cluster_node_pool` - `node_count`, `min_node`, and `max_node` can now be set to `0` (#8300)
+  * some misc code cleanup and organization (#8750)
+  * recommit standard sku
+  * ACR formatting
+  * remove policies block
+  * sku block has been deprecated (#8747)
+  * Removed azuread dependency wherever applicable for AAD Diagnostic settings (#8580)
+  * Corrected the example given
+  * update CHANGELOG.md for #8308
+  * `azurerm_mssql_database` support 0 for  `min_capacity` (#8308)
+  * update CHANGELOG.md for #8682
+  * [azurerm_function_app] App Settings should be Computed (#8682)
+  * update CHANGELOG.md for #7898
+  * Update CHANGELOG-v2.md
+  * Update `azurerm_backup_policy_vm` -  check for <7 daily backups (#7898)
+  * CI fixes
+  * update/move function to utils. Change name of application_group_reference_id to application_group_id
+  * Update azurerm/internal/services/desktopvirtualization/virtual_desktop_host_pool_resource.go
+  * Update azurerm/internal/services/desktopvirtualization/virtual_desktop_application_group_resource.go
+  * Update azurerm/internal/services/desktopvirtualization/virtual_desktop_host_pool_resource_test.go
+  * Update azurerm/internal/services/desktopvirtualization/virtual_desktop_application_group_resource_test.go
+  * Update azurerm/internal/services/desktopvirtualization/virtual_desktop_workspace_resource_test.go
+  * Update azurerm/internal/services/desktopvirtualization/virtual_desktop_workspace_resource_test.go
+  * Update website/docs/r/virtual_desktop_workspace.html.markdown
+  * Example of AKS cluster with virtual nodes (Azure Container Instances) (#8722)
+  * Example for deploying a Python based Azure Functions App. (#8724)
+  * Documentation updates (#8734)
+  * switch to secondary location for tests
+  * Update changelog for #8623
+  * UPDATE azurerm_subnet documentation example (#8729)
+  * `azurerm_mssql_virtual_machine` - Add support for `storage_configuration_settings` (#8623)
+  * Update changelog for #8699
+  * `azurerm_appplication_insights` - Add support for `connection_string` #8699
+  * Update changelog for #8361
+  * mssql_server: add minimal_tls_version property (#8361)
+  * Update changelog for #6761
+  * New Resource: `azurerm_service_fabric_mesh_application` (#6761)
+  * Update changelog for #8586
+  * `azurerm_iothub` - Support for `public_network_access_enabled` (#8586)
+  * update CHANGELOG.md for #8599
+  * azurerm_app_service  - allow v6 IPs for the webapp ip_restriction property (#8599)
+  * [template_deployment] Documentation typo fix (#8732)
+  * make terrafmt
+  * hotfix documentation should be "Pooled" for host pool
+  * hotfix documentation should be "Pooled" for host pool
+  * cleanup + move to latest sdk api version + website build
+  * moving 2.30 - 2.21 into this file
+  * splitting the changelog
+  * updating to include #8642
+  * Update changelog for #8718
+  * `azurerm_dedicated_host` - add support for `DSv4-Type1` `sku_name` #8718
+  * Updated README.
+  * Updated README.
+  * Fixed variables file.
+  * Fixed example to actually use Calico Network policy.
+  * scaffold azurerm_data_factory data documentation
+  * Update changelog for #8687
+  * `azurerm_key_vault_certificate_issuer` - `org_id` is now optional #8687
+  * Cleanup after v2.30.0 release
+- from version 2.30.0
+  * update CHANGELOG.md for #8667
+  * Add waiting logic for azurerm_monitor_metric_alert (#8667)
+  * Doc Fix: `azurerm_postresql_virtual_network_rule`  replace Basic with GeneralPurpose for sku_name #8713
+  * updating to include #8672
+  * Update CHANGELOG.md for #8670
+  * `azurerm_key_vault` - add support for `enable_rbac_authorization` (#8670)
+  * updating to include #8707
+  * Update website/docs/r/resource_group_template_deployment.html.markdown
+  * Add two new SKUs to azurerm_analysis_services_server
+  * scaffold azurerm_app_service_environment data docs
+  * fmt container registry tests
+  * add support for container registry policies
+  * container registry update sku and sku-dependent attributes at the same time
+  * update changelog for #8556
+  * terrafmt
+  * updating to include #8688
+  * go mod tidy
+  * tests for the features block
+  * gosimple
+  * features: documenting the new template_deployment features block
+  * r/template_deployment: documenting that this resource has been superseded
+  * website: adding to the sidebar
+  * New Resource: `azurerm_subscription_template_deployment`
+  * New Resource:
+  * r/template_deployment: adding a common file containing common logic
+  * r/template_deployment: adding validation for the template deployment name
+  * r/template_deployment: adding ID Parsers/Formatters for Resource Group/Subscription ID's
+  * features: adding a toggle for purging nested items during deletion
+  * features: adding a feature toggle (and deprecation wrapper) for 3.0
+  * resources: updating to use API version 2020-06-01
+  * use API version 2020-03-01 instead 2019-03-22-preview
+  * Update changelog for #8627
+  * Update `azurerm_linux|windows_virtual_machine_scale_set` - Fix #8422 (#8627)
+  * update CHANGELOG.md for #8659
+  * storage_management_policy - support appendBlob for blob_types (#8659)
+  * update CHANGELOG.md for #8646
+  * azurerm_servicebus_subscription_rule - support `correlation_filter.properties` (#8646)
+  * Update CHANGELOG.md
+  * Inclusive language updates (#8638)
+  * Added vm role assignment example
+  * azurerm_container_group: change `nameservers` type to list to keep order (#8651)
+  * Typo fix (#8664)
+  * cleanup
+  * update CHANGELOG.md for #8078
+  * azurerm_hpc_cache: update API version to 2020-03-01 and support `mtu` and `root_squash_enabled` properties (#8078)
+  * Update azurerm/internal/services/desktopvirtualization/tests/virtual_desktop_workspace_resource_test.go
+  * Update azurerm/internal/services/desktopvirtualization/tests/virtual_desktop_host_pool_resource_test.go
+  * Update azurerm/internal/services/desktopvirtualization/tests/virtual_desktop_application_group_resource_test.go
+  * Update website/docs/r/virtual_desktop_application_group.html.markdown
+  * move test files and remove multiline comment
+  * Fix typo in cosmosdb_account.html.markdown
+  * Update `address_space` attribute description (#8641)
+  * `azurerm_subnet_network_security_group_association` error message update (#8644)
+  * update CHANGELOG.md for #8648
+  * Validate Service Bus Topic and Queue max_size_in_megabytes (#8648)
+  * fist => first typo correction (#8650)
+  * update CHANGELOG.md for #7912
+  * `azurerm_container_group` - Support of `dns_config` (#7912)
+  * upgrade sdk
+  * update CHANGELOG.md for #8639
+  * Add support for sku S for azurerm_cognitive_account (#8639)
+  * cosmosdb - move tests to cosmos_test package (#8637)
+  * update CHANGELOG.md for #6189
+  * New Resource `azurerm_cosmosdb_sql_storedprocedure` (#6189)
+  * update CHANGELOG.md for #8295
+  * Update `azurerm_cosmosdb_account` - support zone redundancy (#8295)
+  * Azurerm role assignment doc (#8621)
+  * update CHANGELOG.md for #8504
+  * azurerm_logic_app_workflow - support for integration_service_environment_id (#8504)
+  * Location was not described (#8635)
+  * Refactor IotHub RP (#8622)
+  * update CHANGELOG.md for #8602
+  * `azurerm_cosmosdb_mongo_collection` order of  compound `keys` in `index` matters (#8602)
+  * update CHANGELOG.md for #8601
+  * Update validation for scope of azurerm_lighthouse_assignment (#8601)
+  * doc: Add querystring caching behaviour precision (#8612)
+  * update CHANGELOG.md for #8556
+  * New resource: azurerm_ip_groups (#8556)
+  * azurerm_app_service_virtual_network_swift_connection - prevent a panic (#8616)
+  * Cleanup after v2.29.0 release
+- from version 2.29.0
+  * updating to include #8568
+  * updating to include #7601
+  * Fixed linting issues and documentation terraform code formatting. Still need to fix vendor issues
+  * fix documentation association
+  * Revert test package back to original
+  * updating to include #8592
+  * Revert "Update check-test-package.sh"
+  * Update check-test-package.sh
+  * Update network_interface_application_security_group_association_resource_test.go
+  * F/wvd (#1)
+  * Merge branch 'master' of github.com:terraform-providers/terraform-provider-azurerm
+  * update
+  * go mod tidy
+  * Update changelog for #8290
+  * vendoring the updated azure sdk
+  * dependencies: updating to v46.3.0 of github.com/Azure/azure-sdk-for-go
+  * update doc - azurerm_kubernetes_cluster
+  * update
+  * update doc - azurerm_role_definition and azurerm_role_assignment
+  * API Manager: Support for virtual network mode with additional locations
+  * support virtual network integration - azurerm_spring_cloud_service
+  * r/storage: fixing the clients to be pointers
+  * Update changelog for #8557
+  * `azurerm_search_service` - Add support for `allowed_ips` (#8557)
+  * go fmt
+  * update CHANGELOG.md for #8270
+  * Update `azurerm_policy_set_definition` - Support to use non-string typed parameter values in `policy_definition_reference` block (#8270)
+  * update CHANGELOG.md for #7390
+  * new resource: azurerm_firewall_policy (#7390)
+  * update CHANGELOG.md for #8477
+  * dependencies: update ACR client to 2019-05-01 (#8477)
+  * explicitly set the deprecated proerpties to false
+  * update CHANGELOg.md for #8125
+  * New resource `azurerm_mysql_server_key` - Add CMK support (#8125)
+  * update CHANGELOG.md for #8461
+  * azurerm_cosmosdb_sql_container - support for `indexing_policy` (#8461)
+  * update CHANGELOG.md for #8126
+  * New resource `azurerm_postgresql_server_key` - Add CMK support (#8126)
+  * update CHANGLOG.md for #8533
+  * azurerm_cosmosdb_account - support the `Serverless` value for the `capabilities` property (#8533)
+  * update CHANGELOG.md for #7917
+  * New data source `azurerm_mssql_server` and new block `restorable_dropped_databases` in `azuerrm_mssql_server` (#7917)
+  * updating to include #8541
+  * fixing the tests
+  * updating to include #8411
+  * updating to include #8542
+  * updating to include #8531
+  * r/windows_virtual_machine: adding a dif suppressfunc when 'licenceType' is set to 'none'
+  * updating to include #8503
+  * r/signalr_service: adding missing features
+  * windows_virtual_machine: Add test for updating license_type.
+  * r/signalr: support for delta updates
+  * r/api_management: sending an identity type of none on updates if unspecified
+  * windows_virtual_machine: Allow updating license_type without recreation.
+  * update CHANGEOG.md to include #8502
+  * New data source: `azurerm_databricks_workspace` (#8502)
+  * update CHANGELOG.md for #8464
+  * New resource/data source `azurerm_data_share_dataset_kusto_cluster` (#8464)
+  * address pr comments
+  * Terrafmt test
+  * Some test fixes
+  * Doc Fix: `azurerm_service_fabric_cluster` - `client_certificate_thumbprint` #8536
+  * Update changelog for #8521
+  * `azurerm_service_fabric_cluster` - Remove two block limit for `client_certificate_thumbprint` #8521
+  * gosimple
+  * r/api_management: removing the `none` option to be consistent with other resources
+  * Making notify set to false in apimanagement_user
+  * Doc Fix: `azurerm_private_endpoint` Updating documentation for `private_ip_address` #8495
+  * Example: `azurerm_kubernetes_cluster` with data source public ip #8499
+  * Update changelog for #8462
+  * New Resource/Datasource `azurerm_storage_sync_group` (#8462)
+  * Cleanup after v2.28.0 release
+- from version 2.28.0
+  * formatting
+  * Update kubernetes_cluster.html.markdown (#8505)
+  * add source control special case for ADO controlled apps
+  * Update CHANGELOG.md for #7836
+  * r/storage_account_customer_managed_key - support for key rotation (#7836)
+  * Update CHANGELOG.md for #8492
+  * `azurerm_role_definition` - expose `role_definition_resource_id` (#8492)
+  * find system node pool as a fallback
+  * Refresh vendor
+  * Fix for Type None
+  * New logic for no identity
+  * Fix create to have default identity type
+  * Update doc for the usage of storage share
+  * Update changelog for #8487
+  * `data.azurerm_app_service_environment` - Expose vip information of an app service environment  (#8487)
+  * Add fix for Identity = None
+  * Update CHANGELOG.md for #6560
+  * New resources: `azurerm_lighthouse_definition` and 'azurerm_lighthouse_assignment' (#6560)
+  * update CHANGELOG.md for #8438
+  * New Data Source: azurerm_servicebus_queue_authorization_rule (#8438)
+  * switch to developerportal per service team's suggestions
+  * Update changelog for #8447
+  * New resource `azurerm_mssql_server_extended_auditing_policy`  (#8447)
+  * Typo fix in postgresql_server_data_source_test.go (#8478)
+  * Update main.tf (#8451)
+  * azurerm_firewall_network_rule_collection: add doc/test to highlight dest addr service tag support (#8448)
+  * Update changelog for #8235
+  * azurerm_firewall: support management_ip_configuration block (#8235)
+  * Update changelog for #7773
+  * Support autoscaling Cosmos DB databases and containers  (#7773)
+  * Update waiting logic for azurerm_cognitive_account (#8386)
+  * correct the doco - the Self-hosted Integration Runtime resource is re… (#8444)
+  * update CHANGELOG.md for #8374
+  * azurerm_kubernetes_cluster - ensure OMS Agent log analytics workspace case is preserved after disabling/enabling (#8374)
+  * update CHANGELOG.md for #8388
+  * Adjust validation for EH consumer group datasource to accept $Default (#8388)
+  * update CHANGELOG.md for #8370
+  * support relay namespace in different resource group for "azurerm_app_service_hybrid_connection" (#8370)
+  * update CHANGELOG.md for #8386
+  * update CHANGELOG.md for #8389
+  * data.function_app - export the identity block (#8389)
+  * update CHANGELOG.md for #8024
+  * Fixed parsing of management group id (#8024)
+  * updating to include #8434
+  * follow up of PR #8095
+  * dependencies: updating automation to 2018-06-30-preview (#8400)
+  * Update CHANGELOG.md for #8167
+  * Update segment of resource id for network packet capture (#8167)
+  * update CHANGELOG.md for #8095
+  * new resource `azurerm_synapse_sql_pool` (#8095)
+  * update CHANGELOG.md for #7843
+  * New resource/data source `azurerm_storage_sync` (#7843)
+  * update CHANGELOG.md for #7907
+  * New resource/data source `azurerm_data_share_dataset_data_lake_gen2` (#7907)
+  * Update changelog for #8430
+  * data.azurerm_function_app_host_keys - Fix crash when no id is present (#8430)
+  * Delete ISSUE_TEMPLATE.md
+  * Cleanup after v2.27.0 release
+- from version 2.27.0
+  * Update CHANGELOG.md for #8357
+  * r/cognitive_account: fixing a crash & supporting AnomalyDetector / QnAMaker (#8357)
+  * Update CHANGELOG.md for #8384
+  * azurerm_network_security_group: add the new resource check back as is in a CreateOrUpdate callback (#8384)
+  * Fix GH link format for #8366
+  * Update to include #8366
+  * fixes #8341 #8168
+  * update CHANGELOG.md for #7793
+  * New resource `azurerm_mssql_database_extended_auditing_policy` (#7793)
+  * updating to include #8412
+  * Fixes #8402
+  * Update SDK to v46.1.0
+  * Update changelog for #8409
+  * `api_management_x.y.api_name` - validation fix #8409
+  * Update changelog for #8365
+  * New data source: azurerm_lb_rule (#8365)
+  * Update changelog for #8372
+  * azurerm_application_insights_webtests: .Kind turns to null after editing in Portal (#8372)
+  * Update CHANGELOG.md for #6107
+  * Fixing destroy when role scope is a Management Group (#6107)
+  * [Refactor] bring back the `SystemAssigned, UserAssigned` defined in go SDK to app service (#8404)
+  * Update CHANGELOG.md for #7873
+  * New Resource: `azurerm_api_management_api_diagnostic` (#7873)
+  * updating to include #8322
+  * Add support for `encryption_at_host_enabled` for `azurerm_windows_virtual_machine`, `azurerm_linux_virtual_machine`, `azurerm_windows_virtual_machine_scale_set` and `azurerm_linux_virtual_machine_scale_set` #8322
+  * Updating changelog to include #8349
+  * New Resource: `azurerm_data_factory_linked_service_azure_sql_database` (#8349)
+  * updating to include #8383
+  * Add delete WaitForState azurerm_windows_virtual_machine and azurerm_linux_virtual_machine #8383
+  * Update test config func name
+  * Change API to Api in tests
+  * Fix resource name, myssql => mysql
+  * update CHANGELOG.md for #7902
+  * New Data Source: `azurerm_function_app_host_keys` (#7902)
+  * r/cosmosdb_account: document example for capabilities block (#8369)
+  * ordering
+  * correct spelling and docs
+  * Fix format for changelog
+  * Move attestation to correct release v2.27
+  * updating to include #7885
+  * Add support for Azure Attestation Provider #7885
+  * updating to include #8336
+  * updating to include #8294
+  * updating to include #8335
+  * Cleanup after v2.26.0 release
+- from version 2.26.0
+  * Updating firewall_network_rule_collection docs
+  * Update changelog for #8253
+  * New Resource: `azurerm_log_analytics_saved_search` (#8253)
+  * ordering
+  * mentioning Function App in the description, rather than as a separate callout
+  * Update api_management.html.markdown
+  * update
+  * update
+  * update
+  * support managed identity for "azurerm_spring_cloud_app"
+  * Add AllowSelfServeUpgradeToMongo36 to cosmosdb_account's capabilities
+  * Update code
+  * Update doc for app_service_name of azurerm_app_service_custom_hostname_binding
+  * removing an unnecessary explicit depends_on
+  * Update function_app.html.markdown
+  * updating to include #7983
+  * updating to include #8237
+  * Updated CHANGELOG.md for #8222
+  * Support for VMSS in-line extensions behind feature flag (#8222)
+  * fix tests
+  * document azuread auth for data.virtual_network_gateway
+  * add virtual_network_gateway azuread auth tests
+  * updating to include #8304
+  * refactor: splitting Resource Providers out to their own package
+  * lint
+  * Remove deprecated ShouldResourcesBeImported
+  * r/key_vault_key: updating the latest version during updates
+  * r/key_vault_secret: updating the latest secret version during updates
+  * fixing the build
+  * sidebar: adding a link to the redis_linked_server resource
+  * Add azuread auth to vnet gateway vpn client
+  * rename param for `subscriptionId` to be consistent
+  * Update changelog for #8278
+  * `azurerm_application_gateway ` - Add support for `probe.properties.port` #8278
+  * Update changelog for #7969
+  * `azurerm_api_management_subscription` - Support `allow_tracing property` (#7969)
+  * `azurerm_log_analytics_workspace` - Fix default value for sku #8287
+  * updating to include #8272
+  * updating to include #8001
+  * linting
+  * notificationhub: removing the unnecessary feature toggle
+  * loganalytics: removing usage of the unused feature toggle
+  * servicebus: removing usage of the old feature toggle
+  * netapp: removing the unused feature toggle
+  * r/kusto_eventhub_data_connection: removing the unused feature toggle
+  * r/kusto_cluster: removing the unused feature toggle
+  * Add tests for updating allow_extensions_operations if provision_vm_agent is false.
+  * updating to include #8267
+  * Doc Fix: `data. azurerm_hdinsight_cluster` #8274
+  * Update changelog for #8234
+  * Update `loganalytics` to `/preview/operationalinsights/mgmt/2020-03-01-preview/operationalinsights` (#8234)
+  * Update code
+  * Cleanup after v2.25.0 release
+  * PIT C/P cdn profile schema & expand all function and remove validation in V0 schema
+  * Update sku as optional for azurerm_log_analytics_workspace
+- from version 2.25.0
+  * updating to include #7822
+  * ignore changes to deprecated attributes and set default for `internet_security_enabled`
+  * linting
+  * updating to include #8244
+  * r/network_interface_network_security_group_association: handling the nic being gone during a read
+  * r/network_interface_nat_rule_association_resource: handling the nic being gone during a read
+  * r/network_interface_backend_address_pool_association: handling the nic being gone during read
+  * r/network_interface_application_security_group_association: handling the nic being gone during read
+  * r/network_interface_application_gateway_association: handling the nic being gone during read
+  * Resolve comments
+  * update
+  * provide unique priority value for newly-created rule
+  * Update website/docs/r/subnet.html.markdown
+  * Update azurerm/internal/services/network/subnet_resource.go
+  * Update website/docs/d/key_vault_certificate.html.markdown
+  * updating the description for #8233
+  * updating to include #8015
+  * lint error
+  * PIT copy paste the v0 schema
+  * resolve review comment
+  * Fix wrong title
+  * Update CHANGELOG.md for #8067
+  * refactor: removing usages of the deprecated `features.ShouuldResourcesBeImported()`
+  * new resource `azurerm_spring_cloud_certificate` (#8067)
+  * fix bug
+  * introduce IDFormatter
+  * go mod vendor & tidy (after merging master)
+  * resolve review comment (except introducing IDFormtter)
+  * added new service_delegations
+  * Update changelog for #8233
+  * `azurerm_*.*.zone` - can no longer be passed in as empty (#8233)
+  * update docs
+  * allow SocketAddr to be used as a match_variable
+  * add source control special case for ADO controlled apps
+  * Add tests for ultra_ssd_enabled.
+  * fix build error...
+  * updating to include #8240
+  * remove migration from data source and resolve a self reference
+  * Update code
+  * add migration logic to cdn profile/endpoint, both managed and data resources
+  * Refactor and add id formatters for compute RP
+  * conform to the Formatter style
+  * Add example for storage container
+  * `azurerm_cnd_endpoint` - Standardize the resource ID to be case sensitive
+  * Update code
+  * Update doc for site property of azurerm_bot_channel_directline
+  * Update changelog for #6667
+  * `azurerm_*_virtual_machine_scale_set` - `upgrade_mode="Automatic"` no longer requires health probe (#6667)
+  * sorting alphabetically
+  * updating to include #8217
+  * updating to include #8151
+  * updating to include #8111
+  * updating to include #8221
+  * Update dedicated_host_resource.go
+  * locations: patching the india location names
+  * update
+  * updating to include #8210
+  * Omit redundant default attribute
+  * updating to include #8212
+  * Fix 'Invalid address to set' error with azurerm_app_service data source and subnet IP restriction (#8211)
+  * Allow empty ip_addresses list for azurerm_application_gateway (#8209)
+  * outline unit test possiblity to run with no azure acc
+  * reduced entry barrier for vs csharp people #8093
+  * Update code
+  * Update code
+  * removing bad example
+  * Adding FQDN documentation for destination_address rule_collection
+  * refactor: removing usages of the old feature toggle
+  * Update changelog for #8189
+  * Remove network configuration from update payload (#8189)
+  * Update changelog for #8124
+  * `azurerm_shared_image` - Support for `purchase_plan` #8124
+  * Cleanup after v2.24.0 release
+- from version 2.24.0
+  * updating to include #7976
+  * updating to include #8172
+  * fixing #7886
+  * Update azurerm/internal/services/network/lb_outbound_rule_resource.go
+  * Update azurerm/internal/services/network/lb_rule_resource.go
+  * Update azurerm/internal/services/network/lb_rule_resource.go
+  * updating to include #8173
+  * Update code
+  * docs: removing ambiguous usages of 'Resource ID'
+  * Update website/docs/r/cosmosdb_gremlin_graph.html.markdown
+  * Update cosmosdb_gremlin_graph.html.markdown
+  * update
+  * update
+  * Update website/docs/r/synapse_spark_pool.html.markdown
+  * Update website/docs/r/synapse_spark_pool.html.markdown
+  * Update website/docs/r/synapse_spark_pool.html.markdown
+  * refactor bigdatapoolclient to sparkpoolclient
+  * rename "azurerm_synapse_big_data_pool" to "azurerm_synapse_spark_pool"
+  * Make update of allow_extensions_operations independent from provision_vm_agent.
+  * Update code
+  * Add example for vmss with loadbalancer probe
+  * Update #7886
+  * Updating to include #7886
+  * part of #7406
+  * `azurerm_network_connection_monitor` add resource document (#8155)
+  * r/frontdoor_custom_https_configuration: setting `resource_group_name`
+  * refactor: adding import time validation
+  * refactor: adding validation it's a Load Balancer ID being passed in
+  * refactor: passing ctx/client into the retrieveLoadBalancerById method
+  * refactor: retrieveLoadBalancerById now takes the ID
+  * refactor: removing the legacy parseID method
+  * r/loadbalancer_rule: switching to use a consistent id parsing method
+  * r/loadbalancer_probe: parsing using a consistent method
+  * r/loadbalancer_outbound_rule: parsing using a consistent id func
+  * r/lb_nat_rule: switching to use specific ID parsers
+  * r/lb_nat_pool: switching to use specific ID parsers
+  * r/loadbalancer_backend_address_pool: using a consistent ID parser
+  * loadbalancers: adding an ID parser
+  * updating to include #8146
+  * updating to include #8006
+  * linting
+  * pr comments
+  * fixing the assertion
+  * frontdoor: moving the customizeDiff out
+  * r/frontdoor_https_configuration: ensuring the Frontend Endpoint ID is consistent
+  * typo
+  * r/frontdoor: ensuring the ID is consistent at import time
+  * r/frontdoor_custom_https_configuration: validating the ID is the correct case at import time
+  * frontdoor: tests for the ID Parsers
+  * r/frontdoor: rewriting the ID's to ensure they're consistent
+  * r/frontdoor_firewall_policy: moving the validation tests over
+  * docs: removing conflicting terms
+  * r/frontdoor_firewall_policy: location is computed
+  * r/frontdoor: renaming the test files to match the resources
+  * r/frontdoor: helps if you set the field
+  * WIP
+  * r/frontdoor: adding a state migration to fix the I
+  * r/frontdoor_firewall_policy: adding a state migration for the ID
+  * resource-group: deprecated shouldn't be forcenew
+  * r/frontdoor: exposing the correct resource id during a requires import error
+  * r/frontdoor: fixing a bug in the id formatters
+  * r/frontdoor_custom_https_configuration: adding a state migration to patch the ID
+  * r/frontdoor_custom_https_configuration: fixing the docs
+  * r/frontdoor_custom_https_configuration: ensuring CU calls Read and deprecating `resource_group_name`
+  * r/frontdoor_firewall_policy: refactoring
+  * r/frontdoor*: adding import-time validators to check the ID is in the correct format
+  * r/frontdoor_custom_https_configuration: fixing the id parsing
+  * firewall: placeholders to check the implementations are valid
+  * refactor: making the helper methods private now this is within the package
+  * r/frontdoor_firewall_policy: switching to use a consistent id formatter
+  * r/frontdoor: fixing an issue where the checkdestroy function was checking the wrong resource name
+  * r/frontdoor: switching to use the parser method for read/delete
+  * r/frontdoor: refactoring to use the ID parsers/formatters
+  * refactor: ditching the frontdoor prefix
+  * r/frontdoor: removing dead code
+  * r/frontdoor: refactoring the backend pool method
+  * refactor: moving the frontdoor helpers into the frontdoor package
+  * r/frontdoor: refactoring the backendpool flatten methods
+  * r/frontdoor: switching the frontendEndpoints to use the custom parsers
+  * r/frontdoor: adding parsing functions
+  * internal/resourceid: adding an interface for Resource ID Rewriting
+  * Update example for base64 of azurerm_automation_certificate
+  * moving 2.20 - 2.11 into this file
+  * moving 2.20 to the changelog-2 file
+  * updating to include #8110
+  * Fix rendering
+  * Update code
+  * updating to include #8152
+  * fixes regression related to #7879
+  * azurerm_lb: update document about `zones`
+  * Use d.Get to set PRIVATE_EMPTY of azurerm_container_group
+  * Update changelog for #8148
+  * `azurerm_storage_account` - switch logic to be if not public cloud instead of if us government cloud #8148
+  * Add example for vnet gateway
+  * Updated for #7617
+  * Add oauth2_authorization and openid_authentication (#7617)
+  * Update docs
+  * Add tests
+  * Update doc for fqdn_tags of azurerm_firewall_application_rule_collection
+  * Corrects placement of the `source_image_reference` argument block.
+  * fixing unnecessarily aliased imports
+  * Cleanup after v2.23.0 release
+- from version 2.23.0
+  * format
+  * add doc and test for function app slot swift virtual network connection
+  * updating to include #8092
+  * fixes #7812 and #8083
+  * update CHANGELOG.md for #8100
+  * Remove mariadb virtual network rule subnet endpoint check (#8100)
+  * `azurerm_servicebus_queue` - fix typo in documentation (#8098)
+  * Update api-version
+  * Update doc according to the latest documentation of azure
+  * update CHANGELOG.md for #7904
+  * new resource for `azurerm_synapse_firewall_rule` (#7904)
+  * Test fix `TestAccDataSourceAzureRMImage_basic` (#8087)
+  * update CHANGELOG.md for #7763
+  * New resource - azurerm_integration_service_environment (#7763)
+  * refactor: moving the automation validation functions into that package
+  * subscription: duplicating/removing the missing schema
+  * cosmosdb_account: switching to use the new method directly
+  * refactor: moving the datalake validation helpers into the datalake validation package
+  * kusto: refactoring the identity helpers
+  * refactor: moving the container group ports schema into containers
+  * refactor: moving the cors_settings into the web package
+  * fixing the build
+  * helpers/azure/hdinsight -> services/hdinsight
+  * helpers/kubernetes -> internal/services/containers/kubernetes since this is the only usage
+  * helpers/set: removing dead code
+  * helpers/common/arrays -> internal/locks - since this is the only usage
+  * Update CHANGELOG.md for #7945
+  * App Service refactor and feature alignment (#7945)
+  * Update code
+  * updating to include #7894
+  * Update code
+  * Add example for azurerm_network_interface_application_security_group_association and azurerm_virtual_machine
+  * Update additional capabilities.
+  * update CHANGELOG.md for #8059
+  * Update `azurerm_mysql_server` - Add `identity` support (#8059)
+  * update CHANGELOG.md for #8026
+  * New resource type: azurerm_redis_linked_server (#8026)
+  * update CHANGELOg.md for #8028
+  * Remove computed attribute for endpoint and route of azurerm_iothub (#8028)
+  * update CHANGELOG.md for #7995
+  * `azurerm_monitor_metric_alert_resource`: keep using SingleResourceMultiMetricCriteria for legacy metric alerts (#7995)
+  * update CHANGELOG.md for #7981
+  * `azurerm_mysql_server` `threat_detection_policy` refresh plan is not empty (#7981)
+  * update CHANGELOG.md for #7953
+  * `azurerm_data_factory_dataset_delimited_text` - fix issue with property `azure_blob_storage_account` (#7953)
+  * update CHANGELOG for #8044
+  * Update `azurerm_postgresql_server` - Add identity support (#8044)
+  * app_service: adding functions with RBAC role assignment example to docs (#8075)
+  * update CHANGELOG.md for #7846
+  * Update `azurerm_traffic_manager_profile` - Updating of the profile no longer destroys all the endpoints (#7846)
+  * update CHANGELOG.md for #8061
+  * Remove case diff suppress for property rule_type of azurerm_application_gateway (#8061)
+  * update CHANGELOG.md for #7821
+  * Update `azurerm_orchestrated_virtual_machine_scale_set` - Remove the validation for `single_placement_group` (#7821)
+  * updating to include #8065
+  * app_service: adding functions basic example to docs
+  * Fix SharedImage Tests
+  * Upgrading containerservice API to 2020-04-01 to support new features
+  * updating to include #8000
+  * updating to include #7975
+  * typo
+  * updating to include #8045
+  * features: moving the ShouldRequireResourcesToBeImported toggle into the deprecated file
+  * r/kubernetes_cluster: removing use of a deprecated feature toggle
+  * updating to include #8041
+  * authorization: removing use of the requiresimport toggle
+  * batch: removing usage of the requires-import toggle
+  * apimanagement: removing usage of the requiresimport toggle
+  * applicationinsights: removing the unused feature toggle
+  * appconfiguration: removing the unused feature toggle
+  * feature/require-imports: removing redundant feature-flags checks
+  * updating to include #8062
+  * Goimports
+  * Identity cannot be removed
+  * vhub creation wait for routing provision
+  * Add test cases and docs
+  * First implement of identity
+  * Fix location of delivery rules in cdn_endpoint resource
+  * Updates
+  * Updates after review
+  * Updated for #5688
+  * Allow setting target subnet and static IP on failover (#5688)
+  * updating to include #8042
+  * formatting
+  * allow "global" for enhanced location validation
+  * update code
+  * Add lock for iothub while operating iothub consumer group
+  * update CHANGELOG.md for #7890
+  * update CHANGELOG.md for #7890
+  * `azurerm_storage_account` - Support `static_website` for `BlockBlobStorage` account type (#7890)
+  * Cleanup after v2.22.0 release
+- from version 2.22.0
+  * update CHANGELOG.md for #8017
+  * azurerm_iothub_shared_access_policy - prevent primary_connection_string & seconday_connection_string from regenerating (#8017)
+  * update CHANGELOG.md for #8020
+  * Add signed_version attribute to azurerm_storage_account_sas (#8020)
+  * update CHANGELOG.md for #7990
+  * update CHANGELOG.md for #8016
+  * `azurerm_cosmosdb_account`  support `DisableRateLimitingResponses` for the `capabilities` property (#8016)
+  * updating to include #8029
+  * update CHANGELOG.md for #7879
+  * `azurerm_storage_account` - Support for `min_tls_version` (#7879)
+  * refactor flatten func for key vault certificate data source
+  * azurerm_servicebus_queue - reorder schema
+  * azurerm_servicebus_queue - format documentation
+  * azurerm_servicebus_queue - sync variables with argument names
+  * azurerm_servicebus_queue - add status argument
+  * azurerm_servicebus_queue - add enable_batched_operations argument
+  * azurerm_servicebus_queue - add forward arguments
+  * Changed: note regarding ip rules for Azure service from the same region as storage account is was added.
+  * Updatesdoc for resource_group_name property of azurerm_private_dns_a_record.
+  * `azurerm_mysql_server` Sku Tier `Basic` doesn't support `infrastructure_encryption_enabled` (#7997)
+  * Update doc for resource_group_name property of azurerm_private_dns_zone_virtual_network_link (#7998)
+  * Fix teamcity diff that shows up every time build the provider (#8013)
+  * Use API version 2020-03-01 for Loadbalancer
+  * Improve VM stopping/deallocating before updating.
+  * Update api-version from 2017-12-01 to 2020-01-01
+  * Make
+  * Change api-version from 2017-12-01 to 2020-01-01
+  * A workaround for issue #7253 and #7957
+  * Update doc for fqdn of azurerm_dns_a_record
+  * Mode can be changed in-place
+  * update CHANGELOG for #7933
+  * dependencies: updating to v44.2.0 of github.com/Azure/azure-sdk-for-go (#7933)
+  * Fix for #3967
+  * Cleanup after v2.21.0 release
+- from version 2.21.0
+  * Test Fix: `data.azurerm_monitor_diagnostic_categories_acctest` #7970
+  * azurerm_network_security_rule: adds a feature flag to disable locking (#7956)
+  * update CHANGELOG.md for #7727
+  * New resource: azurerm_dedicated_hardware_security_module (#7727)
+  * Documentation: `azurerm_app_service_hybrid_connection` - `send_key_name` #7961
+  * `azurerm_api_management_backend` fix acctest `TestAccAzureRMApiManagementBackend_serviceFabric` (#7939)
+  * `azurerm_cosmosdb_account` fix all acctests (#7915)
+  * update CHANGELOG.md to include #7916
+  * Use getOK to get qna_runtime_endpoint for azurerm_cognitive_account (#7916)
+  * `azurerm_advanced_threat_protection` fix acctests (#7919)
+  * Update doc for default_ttl_seconds of azurerm_cosmosdb_mongo_collection (#7942)
+  * Update all deprecated azurerm_subnet address_prefix examples (#7897)
+  * monitor_diagnostic_setting: fix acctest (#7959)
+  * Test Fix: `data.azurerm_batch_pool` #7940
+  * Test Fix: `azurerm_action_group` #7941
+  * Update changelog for #7943
+  * `azurerm_app_service_plan` - update the relation between `kind` and `reserved` (#7943)
+  * Doc fix: `azurerm_key_vault_access_policy` #7944
+  * Updated changelog for #7901
+  * `azurerm_api_management_identity_provider_aad` - Support for `signin_tenant` #7901
+  * Update changelog for #7874
+  * `azurerm_kubernetes_cluster` - Updates no longer fail when using managed AAD integration (#7874)
+  * Update CHANGELOG.md for #7927
+  * AKS - allow in-place upgrade from free to paid sku_tier (#7927)
+  * Data source `azurerm_backup_policy_vm` fix acctests (#7920)
+  * Update changelog for #7911
+  * Dependency: update go-azure-helpers to v0.11.2 (#7911)
+  * azurerm_virtual_network - update docs for address_space is no longer force new (#7893)
+  * example for azure monitoring (#7701)
+  * created securitygroup and  virtual network azure using terraform (#7884)
+  * update CHANGELOG.md for #7555
+  * `azurerm_automation_job_schedule` needs to be recreated after `azurerm_automation_runbook` is updated (#7555)
+  * update CHANGELOG.md for #7817
+  * Remove minItem for zone in firewall (#7817)
+  * `azurerm_api_management_user` fix test `complete` (#7866)
+  * Update doc for event_time_to_live property of azurerm_eventgrid_event_subscription (#7883)
+  * update CHANGELOG for #7840
+  * New data source `azurerm_data_share_dataset_data_lake_gen1` (#7840)
+  * update CHANGELOG.md for #7311
+  * `azurerm_app_service_slot`  - support `application_logs.file_system` (#7311)
+  * update CHANGELOG.md for #7824
+  * azurerm_automation_runbook  - allow invalid publish_content_links (#7824)
+  * update CHANGELOG.md to include #7871
+  * azurerm_eventgrid_event_subscription - deprecate topic_name (#7871)
+  * update CHANGELOG.md for #7859
+  * `azurerm_function_app_slot.site_config` - support for `auto_swap_slot_name` (#7859)
+  * Add basic azurerm_servicebus_subscription_rule sql_filter validation (#7855)
+  * update CHANGELOG.md to include #7852
+  * azurerm_servicebus_subscription - support status property (#7852)
+  * Update spacing for #7877 (#7878)
+  * update CHANGELOG.md to include #7819
+  * `azurerm_api_management_named_value` value to be sensitive (#7819)
+  * add notes about `skip_credentials_validation` (#7823)
+  * azurerm_web_application_firewall_policy  - Corrected exclusion "match_variable" (#7842)
+  * update CHANGELOG.md to include #7847
+  * Remove unsupported sku from iothub dps (#7847)
+  * `azurerm_api_management_product_api` fix test `requiresImport` (#7863)
+  * `azurerm_api_management_property` fix test `update` (#7864)
+  * Update `azurerm_linux|windows_virtual_machine` - fix validation of the data disk size (#7816)
+  * azurerm_storage_account_network_rules - Note regarding small /31 and /32 IP ranges in ip_rules was added. (#7869)
+  * azurerm_storage_share - added note to clarify valid permission order in share ACL (#7872)
+  * `azurerm_api_management_subscription` fix test `requiresImport` #7865
+  * Update changelog for #7867
+  * `azurerm_search_service` Add `publicNetworkAccess` and update api-version to `2020-03-13` #7867
+  * Update changelog for #7838
+  * `azurerm_monitor_scheduled_query_rules_alert` - Remove default from `action.0.custom_webhook_payload` (#7838)
+  * Cleanup after v2.20.0 release
+- from 2.20.0
+  * Update website/docs/r/container_registry.html.markdown
+  * Updated CHANGELOG.md for #7517
+  * update
+  * update
+  * Update doc for georeplication_locations property of container registry
+  * Make it clearer that request path is required for both http and https (#7860)
+  * Doc Fix: `azurerm_mysql_firewall_rule` Allow access to Azure services example (#7850)
+  * Update changelog for #7835
+  * `azurerm_monitor_autoscale_setting` - Fix crash in `notification` #7835
+  * updating to include #7511
+  * fixes #6480
+  * updating to include #7498
+  * fixes #6057
+  * update vendor
+  * update
+  * add `soft_delete_retention_days` support for `azurerm_key_vault`
+  * update
+  * update vendor
+  * add support for setting aad admin
+  * update based on Jeffrey's suggestion
+  * update
+  * update
+  * update
+  * new resource and data source for `azurerm_synapse_workspace`
+  * Update changelog for #7814
+  * `azurerm_cosmos_db_account` - add support for `enable_free_tier` (#7814)
+  * update CHANGELOG.md to include #7784
+  * azurerm_storage_account default allow_blob_public_access to false (#7784)
+  * go mod tidy && go mod vendor
+  * modify per review
+  * upgrade network to 2020-05-01 for vhub(conn) & vwan
+  * Copyediting: remove spurious aprostrophes in possessive "its" (#7806)
+  * update CHANGELOG.md to include #7597
+  * Update Azure Cosmos DB API to to 2020-04-01 from 2015-04-08 (#7597)
+  * Update changelog for #7520
+  * New Resource: `azurerm_kusto_cluster_customer_managed_key` (#7520)
+  * `azurerm_storage_share_directory` - Update error message for invalid storage share directory name #7791
+  * Update changelog for #7789
+  * `azurerm_application_gateway` Fix crash with `gateway_ip_configuration` #7789
+  * Updated CHANGELOG.md for #7774
+  * update changelog for #7783
+  * Fix crash in private dns zone data source (#7783)
+  * updating to include #7737
+  * Cleanup after v2.19.0 release
+- from version 2.19.0
+  * Updated CHANGELOG.md for #7754
+  * Update CHANGELOG.md for #7680
+  * correct tz string in update test
+  * restored validation with correct values from reference source
+  * Update CHANGELOG.md for #7753
+  * added nil and empty check for id
+  * Update for #7159
+  * Updated for #7776
+  * feedback updates
+  * Update azurerm/internal/services/network/express_route_circuit_peering_resource.go
+  * nil check route filter before set
+  * Update for #7725
+  * Fix for #2880
+  * update
+  * make goimports
+  * update policy assignment resource for PR #7725
+  * Update azurerm/internal/services/policy/policy_assignment_resource.go
+  * update changelog for #6341
+  * Support route filters for Microsoft peering (new resource azurerm_route_filter) (#6341)
+  * Update changelog for #7768
+  * provider: no longer auto register the Microsoft.StorageCache RP (#7768)
+  * Test Fix: Change `CdnEndPoint` host_name (#7755)
+  * Update doc for ip_rules of storage account (#7660)
+  * bump go version to 1.14.5
+  * drop back one point release for goenv support
+  * Update validation for timezone of azurerm_automation_schedule
+  * azurerm_express_route_circuit: fix acctest (actually a bug)
+  * typo
+  * Rename/complement test for application insight web test criteria
+  * update policy assignment test
+  * fix policy assignment markdown
+  * fixing linter errors for policy assignments
+  * minor code/doc change
+  * update
+  * Update changelog for #7745
+  * `azurerm_local_network_gateway`- `address_space` order can now be changed #7745
+  * Update changelog for #7749
+  * `azurerm_*_virtual_machine` - `allow_extensions_operations` can now be updated #7749
+  * go: bumping to 1.14.5 (#7746)
+  * update as per feedback from the PR
+  * updating to include #7740
+  * updating to include #7739
+  * provider: metadata_url -> metadata_host
+  * update
+  * fix consistent naming allow_blob_public_access
+  * updating to include #7703
+  * Add property allow_blob_public_access to azurerm_storage_account
+  * sas_token is not returned, ignore it in verify state test step
+  * feature/enhanced-validation: reusing the value
+  * docs: updating to say 2.20
+  * feature/enhanced-validation: enabling by default
+  * s/high_business_impact_workspace/high_business_impact/
+  * 1. fix TC bug 2. check whether two dns zone have the same name
+  * updating to include #7706
+  * updating to include #7734
+  * updating to include #7731
+  * refactor expand method. fix TC: `withoutAuth`
+  * update
+  * Update policy assignment for PR 7725
+  * Fix TC for NetApp (#7693)
+  * azurerm_private_link_service_endpoint_connections: fix acc test (#7728)
+  * azurerm_vpn_server_configuration: fix acctest (#7730)
+  * update CHANGELOG.md to include #7510
+  * Update `azurerm_orchestrated_virtual_machine_scale_set` - Add proximity placement group support (#7510)
+  * azurerm_virtual_hub_connection: fix acctest
+  * s/hbi_workspace/high_business_impact_workspace/
+  * Update Changelog for #7628
+  * `azurerm_mssql_database` `elastic_pool_id` remove forcenew (#7628)
+  * azurerm_network_interface_application_security_group_association fix documentation example (#7719)
+  * Add metadata_url support for acceptance testing (#7721)
+  * updating to include #7690
+  * updating to include #7713
+  * Fir message formatting
+  * update changelog for #6586
+  * Update iot_time_series_insights_access_policy.html.markdown (#7705)
+  * virtual_network_gateway_connection: add traffic_selector_policy block and tests (#6586)
+  * Fixed string interpolation syntax to new version (#7718)
+  * Update for #7179
+  * Deprecation doc
+  * Deprecation doc
+  * Deprecation doc
+  * Deprecation messages
+  * Deprecation messages
+  * Deprecation messages
+  * grouping changes
+  * updating to include #7714
+  * tweaked polling intervals for retry
+  * switch share create retry to custom poller
+  * switch containter create retry to custom poller
+  * Updated CHANGELOG.md for #7307
+  * disable Kubernetes Dashboard addon configuration in Azure China
+  * hbi_workspace with integration tests
+  * azurerm_virtual_hub: fix acc test and make the `address_prefix` as `ForceNew`
+  * updated policy_assignment test for metadata
+  * Make changes to compile
+  * Malr RServer and MLService as deprecated
+  * Mark Storm as deprecated. Fix  requireImports test
+  * Property for hbi_enabled with ML Workspace
+  * Move Spark tests to 4.0
+  * Move Kafka tests to 4.0
+  * modify per review
+  * update
+  * update import func
+  * Move Interactive Hive tests to 4.0
+  * update CHANGELOG.md for #7635
+  * `azurerm_machine_learning_workspace`: fix acctests (#7635)
+  * update CHANGELOG.md to include #7616
+  * dependencies: updating to v44.0.0 of github.com/Azure/azure-sdk-for-go (#7616)
+  * update CHANGELOG.md to for #7689
+  * azurerm_managed_disk - increase the maximum disk_size_gb to 65536 GB. (#7689)
+  * fix tests for DNS records (#7679)
+  * Data source `azurerm_shared_image_version` - Fix acc tests (#7684)
+  * Move HBase tests to 4.0
+  * `azurerm_api_management_openid_connect_provider` fix to pass all acctests (#7675)
+  * `azurerm_api_management_product_policy` fix to pass all acctests (#7674)
+  * Fix TC for TestAccAzureRMAutomationModule_multipleModules (#7678)
+  * `azurerm_api_management_authorization_server` fix acctest complete (#7683)
+  * update changelog for #7018
+  * azurerm_policy_set_definition: support `policy_definition_reference_id` (#7018)
+  * Move Hadoop tests to 4.0
+  * add validation for notification Hub Id
+  * updating to include #7612
+  * update tests
+  * azurerm_route: fix acctest
+  * lint fix in doc
+  * Fix CI
+  * update
+  * add metadata to policy assignment resource
+  * Fix managed disk data source tests
+  * update
+  * Cleanup after v2.18.0 release
+- from version 2.18.0
+  * Update automation_credential.html.markdown (#7671)
+  * update CHANGELOG.md for #6943
+  * Update `azurerm_policy_set_definition` - deprecate `management_group_id` in favour of `management_group_name` to align behaviour in `azurerm_policy_definition` (#6943)
+  * update CHANGELOG.md to inclue #7621
+  * new resource: azurerm_mysql_active_directory_administrator (#7621)
+  * update CHANGELOG.md for #7348
+  * azurerm_cosmosdb_account - support ignore_missing_vnet_service_endpoint (#7348)
+  * update CHANGELOG.md to include #7622
+  * r/eventhub_namespace_authorization_rule: adding a second state migration (#7622)
+  * Update changelog for #7664
+  * `metadata_url` can be used to obtain an environment from a specific url (#7664)
+  * Refactor - Update disk encryption set related tests on `azurerm_linux|windows_virtual_machine_scale_set` (#7552)
+  * Fix TC for TestAccDataSourceAzureRMManagedDisk_basic_withUltraSSD (#7624)
+  * azurerm_template_deployment: fix test (#7629)
+  * azurerm_loadbalancer_outbound_rule: fix acctest (#7630)
+  * azurerm_express_route_gateway: fix acctest (#7632)
+  * `azurerm_sql_database` fix to pass all acctests (#7633)
+  * azurerm_stream_analytics_job: fix data source test (#7634)
+  * Fix TC for Application Insights (#7631)
+  * azurerm_network_service_tag: fix acctest (#7649)
+  * Update doc for destination_address_prefix property of network security rule (#7659)
+  * `azurerm_image` - Fix acc tests (#7654)
+  * `azurerm_api_management_identity_provider_twitter` fix to pass all acctests (#7653)
+  * `azurerm_api_management_identity_provider_google` fix to pass all acctests (#7648)
+  * `azurerm_api_management_identity_provider_microsoft` fix to pass all acctests (#7647)
+  * `azurerm_api_management_identity_provider_facebook` fix to pass all acctests (#7646)
+  * `azurerm_virtual_machine_scale_set_extension` - Fix acc tests (#7644)
+  * Test Fix: `azurerm_application_gateway`: remove checks for set attributes #7627
+  * Resource `azurerm_shared_image_version` - Fix acc tests (#7643)
+  * fix the rest `requiresImport` test for RP: streamAnalytics (#7641)
+  * `azurerm_sql_virtual_network_rule` fix acctest `TestAccAzureRMSqlVirtualNetworkRule_multipleSubnets` (#7640)
+  * update CHANGELOG.md to include #7345
+  * `azurerm_api_management_api_operation_policy` fix to pass all acctests and fix raw xml issue (#7639)
+  * fix test for `azurerm_stream_analytics_stream_input_blob` (#7638)
+  * fix test for `azurerm_stream_analytics_reference_input_blob` (#7637)
+  * Fix requiresimport test for RP: stream analytics (#7636)
+  * Update doc for the reserved field of app service plan (#7661)
+  * update CHNGELOG.md to include #7650
+  * Fix TC for TestAccAzureRMApplicationInsightsAPIKey_requiresImport (#7650)
+  * Updated CHANGELOG.md for #7363
+  * Updated CHANGELOG.md for #7045
+  * Update CHANGELOG.md for #7484
+  * Update monitor_diagnostic_setting.html.markdown
+  * linting
+  * fix duplicate lines from rebase
+  * Added deprecation note to old version of resource
+  * Kusto Database Principal Assignment Support
+  * Update changelog for #7377
+  * New Resource: `azurerm_kusto_attached_database_configuration` (#7377)
+  * azurerm_application_security_group: fix import test (#7626)
+  * [Test Fix] azurerm_network_security_group: fix import test (#7625)
+  * Actually, former version of validation just worked
+  * Update changelog for #7374
+  * `azurerm_kusto_cluster` - Support `trusted_external_tenants` (#7374)
+  * Fix bad merbge and move extensionsClient
+  * Validation for log_analytics_workspace_id
+  * whitespace fixes
+  * post conflict rebase cleanup and catchup for hdinsight service
+  * Error messages
+  * Error messages
+  * Error messages
+  * Error messages
+  * Error messages
+  * Return error if disabling monitor fails
+  * Moved extensionsClient
+  * Fix typo in debug output
+  * Fixing linter errors
+  * Ensure that basic and monitor tests use the same roles
+  * Azure monitor doc  for all hdinsight resources
+  * Azure monitor for Storm
+  * Azure monitor for Spark
+  * Azure monitor for Kafka
+  * Azure Monitor for InteractiveQuery cluster
+  * Aze monioor HBase cluster
+  * A bit of refactoring
+  * Documentation for hadoop
+  * Error message clean up
+  * Implement monitor changes
+  * Enable monitor on create
+  * Update CHANGELOG.md for #6969
+  * deps
+  * merge conflict resolution and minor change for metastoreraw
+  * Get rid of GetOkExists in all hdinsight resources
+  * Fix typo in hbase
+  * Remove GetOkExists
+  * Documentation for external metastores
+  * Revert "External metastores for MLServices"
+  * Revert "External metastores for RServer"
+  * Revert "Fix for msservices / rserver"
+  * Fix for msservices / rserver
+  * External metastore for Storm
+  * Error message fixes
+  * EXternal metastores for Spark
+  * External metastores for RServer
+  * External metastores for MLServices
+  * External metastores for Kafka
+  * External metastores for Interactive Hive
+  * External metastores for HBase
+  * `make lint`
+  * r/postgresql_server: requiring the use of `ssl_enforcement` since `d.GetExistsOk` is going away
+  * Mark Application Gateway identity as not Computed (#7355)
+  * update CHANGELOG.md to include #6847
+  * new resource "azurerm_automation_connection", azurerm_automation_connection_certificate`,`azurerm_automation_connection_classic_certificate`and`azurerm_automation_connection_service_pricipal` (#6847)
+  * Updated for #7074
+  * update CHANGELOG.md to include #6366
+  * New Resource - azurerm_data_factory_linked_service_blob_[blob|storage|sfpt] (#6366)
+  * update CHANGELOG.md to include #7156
+  * azurerm_mysql_server - support for `threat_detection_policy` (#7156)
+  * Add example for the usage of creating eventhub with dedicated cluster (#7614)
+  * Fixup giovanni v0.11.0 update (#7610)
+  * Remove redundant ForceNew
+  * Fix the math in my head too
+  * Fix eventhub validations along the way
+  * Update docs
+  * go mod tidy
+  * Eventhub: force new resource on zone_redundant change
+  * Error messages
+  * Error messages
+  * Error messages
+  * Error messages
+  * Error messages
+  * Error messages
+  * update changelog for #7469
+  * New data source azurerm_web_application_firewall_policy (#7469)
+  * update changelog for #7529
+  * azurerm_api_management_identity_provider_aad: fix perpetual diff due to client_secret (#7529)
+  * updating to include #7608
+  * fix arg count in disappears test error message
+  * Update giovanni to v0.11.0
+  * update changelog for #7545
+  * azurerm_web_application_firewall_policy: `custom_rules.match_conditions` support `transforms` (#7545)
+  * Group OrganizationDetails data source Set()s
+  * Remove error return value from flattenKeyVaultCertificateIssuerAdmins
+  * Password will always be nil when read, so no use in setting it
+  * Also let flatten handle nil check in resource
+  * Apply suggestions from code review
+  * flattenKeyVaultCertificateIssuerAdmins handles nil check
+  * fixed disappears test
+  * refactor and rework for missing validation in API
+  * Introduce type KeyVaultCertificateIssuerID and add more nil checks
+  * Apply suggestions from code review
+  * Add acceptance test for azurerm_key_vault_certificate_issuer data source
+  * Remove unnecessary trailing newline
+  * Expand AdministratorDetails
+  * Use id from state except during create
+  * Nil checks
+  * Reword error messages
+  * Apply suggestions from code review
+  * Fix bad merge of datasources list
+  * Document account_id and org_id as Optional
+  * Mark account_id and org_id `Optional`
+  * Remove unused test method
+  * Fix Sprintf args in test case
+  * Add timeouts and clean up a bit
+  * Add basic acceptance test for azurerm_key_vault_certificate_issuer
+  * terrafmt docs
+  * Add missing side navigation links
+  * Add initial docs for azurerm_key_vault_certificate_issuer data source and resource
+  * Password is not read back, so exclude from data source
+  * Wait rather long on certificate issuance when not using self-signed certificates
+  * Make password Optional
+  * Add azurerm_key_vault_certificate_issuer
+  * updating to include #7600
+  * Update syntax for address_prefix (#7605)
+  * Further clarify docs
+  * Update CHANGELOG.md
+  * `azurerm_kusto_cluster` - Support for `optimized_auto_scale` (#7371)
+  * Clarify documentation
+  * Remove incorrect validatefunc
+  * update changelog for #7580
+  * azurerm_application_gateway: Associate WAF policy to Application Gateway listener (#7580)
+  * updating to include #7579
+  * Update doc for the usage of network_rule_set of container registry (#7258)
+  * dependencies: updating `github.com/hashicorp/terraform-plugin-sdk` to `v1.13.1`
+  * Docs - Scale set overprovision default is true (#7592)
+  * missing comma from settings list
+  * update changelog for #7559
+  * updating to include #7548
+  * Reverted back 1.0 and updated docs
+  * update
+  * updating to include #7585
+  * acctest: using the root/checkout, rather than working directory
+  * updated for #5916
+  * fix slot import test data
+  * fix slot import test config
+  * typo in test name prefix
+  * virtualwan related resource still uses 2020-03-01 version
+  * Docs fixes for AzureAD migration guide (#7576)
+  * virtualhub related resource still uses 2020-03-01 version
+  * acctest: specifying the full path to terraform
+  * Update eventgrid_event_subscription.html.markdown (#7575)
+  * testing: downloading terraform core prior to test runs
+  * Removed 1.0 version
+  * Added new 0.1 version to WAF managed_rule_set to support Microsoft_BotManagerRuleSet creation in tf
+  * update import path
+  * Fix typo in SlotVirtualNetworkSwiftConnectionId type's name
+  * update CHANGELOG>.md to include #7421
+  * azurerm_kusto_cluster  - support for language_extensions (#7421)
+  * update CHANGELOG.md to include #7378
+  * Fix #7376 - azurerm_storage_data_lake_gen2_filesystem crashes during plan if SA deleted (#7378)
+  * fix ci
+  * Cleanup after v2.17.0 release
+- from version 2.17.0
+  * tweaked slot example, updated arg order to alphabetical
+  * added validation to slot name
+  * fixup resources and tests
+  * update
+  * Return error if disabling monitor fails
+  * Moved extensionsClient
+  * Change eventhub limits validation and update docs
+  * updating to include #7513
+  * Typo in property name, remove unnecessary if
+  * Update website/docs/d/eventhub_namespace.html.markdown
+  * Update website/docs/r/eventhub_namespace.html.markdown
+  * Update azurerm/internal/services/eventhub/eventhub_namespace_data_source.go
+  * Update datasource, update docs
+  * Update azurerm_eventhub_namespace with optional dedicated_cluster_id property
+  * updating to include #7531
+  * Update changelog for #7533
+  * New Resource: `azurerm_kusto_cluster_principal_assignment` (#7533)
+  * updating to include #7534
+  * updating to include #7547
+  * Set property during read too
+  * updating to include #7546
+  * formatting
+  * clarifying where the enabled property lives
+  * updating to include #7387 & formatting the changelog
+  * fixes not waiting for createOrUpdate #7539
+  * dependencies: updating to v43.2.0 of github.com/Azure/azure-sdk-for-go
+  * Refined docs for shared image
+  * Update Migrating to AzureAD Provider guide for Terraform v0.12 (#7526)
+  * Fix typo in debug output
+  * Indentation.
+  * Update website/docs/r/web_application_firewall_policy.html.markdown
+  * Update website/docs/r/web_application_firewall_policy.html.markdown
+  * Removed settings values.
+  * Changed intervals for validation.
+  * Update code
+  * Update code
+  * update based on suggestion
+  * Add tests
+  * Update website/docs/r/eventhub_namespace.html.markdown
+  * Update website/docs/d/eventhub_namespace.html.markdown
+  * fmt
+  * Update eventhub_namespace for `ZoneRedundant` property
+  * update
+  * add doc and format test file
+  * add support for `sku_name` and `trace` for `azurerm_spring_cloud_service`
+  * update CHANGELOG.md to include #7277
+  * Update `azurerm_shared_image` - flip `generalized` to `specialized` (#7525)
+  * Update changelog for #7515
+  * `azurerm_marketplace_agreement` - fix issue around import #7515
+  * Improve example of the usage of network_profile_id of azurerm_container_group
+  * Improve doc for the description of requested_service_objective_name
+  * Update changelog for #7523
+  * `data.azurerm_postgresql_server` - expose `sku_name` (#7523)
+  * `azurerm_shared_image` & `azurerm_shared_image_version` - support for specialized images by setting generalized to false (#7277)
+  * update CHANGELOG.md to include #7111
+  * azurerm_hdinsight_*_cluster - fix broken updaten due to api not allowing cluster to be disabled (#7111)
+  * Update doc example for request_timeout of application gateway (#7512)
+  * Initial commit
+  * Update code
+  * update test case
+  * update CHANGELOG.md to include #7499
+  * refactor: cleanup some property names (#7499)
+  * tweak some examples (#7507)
+  * cleanup some example naming (#7500)
+  * Cleanup after v2.16.0 release
+- from version 2.16.0
+  * ordering
+  * removing #7408 since it's been reverted
+  * triggering travis one more time
+  * Replace underscores with hyphens in example service bus namespace names as underscores are not valid
+  * r/frontdoor: removing an unused param
+  * updating to include #7480
+  * Link to 'Microsoft Time Zone Index Values ' was changed to up to date one.
+  * updating to include #7473
+  * updating to include #7411
+  * updating to include #7478
+  * provider: adding a warning about bugs if the read timeout is over 5 minutes
+  * r/frontdoor: using a consistent read-timeout of 5 minutes
+  * updating to include #7458
+  * update CHANGELOG.md for #4885
+  * azurerm_api_management_api - support for `subscription_required` (#4885)
+  * fixes issue-3328
+  * Add test for api_management path validation
+  * Update path validation for api management api
+  * fixup comments
+  * add retry logic on managementgroup create for roleassignment consistency issue on read
+  * fix linted fmt errors
+  * fmt
+  * provide more fields to test
+  * updating to include #7433
+  * fix activity log alert for Recommendation category
+  * Update website/docs/r/web_application_firewall_policy.html.markdown
+  * update CHANGELOG.md to include #7373
+  * azurerm_kusto_cluster - supoport for zones (#7373)
+  * update CHANGELOG.md to include #7459
+  * `azurerm_network_interface_security_group_association` remove itself when NIC not found (#7459)
+  * update CHANGELOG.md to include #7456
+  * `azurerm_postgresql_server` - force new if `sku_name` changes tier (#7456)
+  * update CHANGELOG.md to include #7457
+  * azurerm_mssql_database - support min_capacity up to 5 (#7457)
+  * azurerm_monitor_activity_log_alert: support `properties.recommendationType` for recommendation alerts
+  * update CHANGELOG.md entry for #7346
+  * update CHANGELOG.md to include #7453
+  * azurerm_mssql_database - support `GP_S_Gen5` SKUs up to `GP_S_Gen5_40` (#7453)
+  * update CHANGELOG.md to include #7385
+  * make `ip_rules`, `virtual_network_subnet_ids` could become zero - `azurerm_storage_account_network_rules` (#7385)
+  * updateing CHANGELOG.md entry for #7430
+  * update CHANGELOG.md toinclue #7408
+  * `azurerm_frontdoor` - Fix timeout for read operation to match documentation (#7408)
+  * azurerm_marketplace_agreement: update doc for importing ID (#7438)
+  * Update dev_test_global_vm_shutdown_schedule.html.markdown (#7442)
+  * azurerm_frontdoor - Update documentation of redirect_type (#7449)
+  * updating to include #7437
+  * Updated for #7440
+  * Doc Fix: private_endpoint.html.markdown #7450
+  * Update changelog for #7369
+  * `azurerm_kusto_cluster` - Support for `virtual_network_configuration` #7369
+  * Updated for #7430
+  * Updated for #7346
+  * Removal of possible deprecation note, moving test definition to match code layout
+  * update doc
+  * firewall_resource: support `threat_intel_mode`
+  * Update code
+  * fix typo
+  * Added unit test for internal_load_balancing_mode attribute
+  * Update changelog for #7424
+  * `azurerm_role_definition` - terraform import now sets scope to prevent a force recreate #7424
+  * Update changelog for #7367
+  * `azurerm_kusto_cluster` - Support for `identity` (#7367)
+  * Added - ForceNew: true for internal_load_balancing_mode
+  * Bump autorest/azure/cli to 0.3.1 so AZURE_CONFIG_DIR is honoured
+  * Update doc for network_rules of storage account
+  * azurerm_hdinsights_*_cluster: loosen work node count validation
+  * private_endpoint: fix miswordings in private_dns_zone_group section
+  * mysql resources: update documentation
+  * docs(application_gateway): clarify use of PathBasedRouting
+  * Added three examples for AKS: egress with UDR with Azure CNI; egress with UDR with Kubenet; private API Server.
+  * serverAdministratorsClient added
+  * fix client name
+  * fix resource client name
+  * fix ServerAdministratorResource reference
+  * navigation link added
+  * add aad admin for azurerm_postgresql_server
+  * Formatted doc.
+  * Formatted files.
+  * typo
+  * Cleanup after v2.15.0 release
+- from version 2.15.0
+  * revert to Unreleased state
+  * v2.15.0
+  * update chANGELOG.md toinclude #7188
+  * Update CHANGELOG.md
+  * Doc Fix: Add note for Storage Documentation when Creating HNS Enabled (#7400)
+  * Update changelog for #7372
+  * `azurerm_kusto_cluster` - Support for extended Kusto Cluster SKUs #7372
+  * updating to include #7246
+  * fixes #6571
+  * Update the compute service api-version from 2019-07-01 to 2019-12-01 (#7101)
+  * Update changelog for #7375
+  * `azurerm_kusto_cluster` - Support for `enable_purge` #7375
+  * Doc Fix: use proper url for importing azure virtual machine #7399
+  * Updated for #7107
+  * Updated for #6713
+  * Support for certificate attributes
+  * Update for #6955
+  * update
+  * Update changelog for #7382
+  * `azurerm_storage_share_directory ` - `name` can now contain one nested directory #7382
+  * update CHANGELOG.md to include #6845
+  * Update data source `azurerm_management_group` - support get data source of mgmt group by using `display_name` (#6845)
+  * Update interpolation syntax (#7361)
+  * "state" only allows "Disabled" or "Enabled". (#7364)
+  * Updated the example SQL DB name to not say "mysql" (#7362)
+  * Rename to azurerm_app_service_slot_virtual_network_swift_connection
+  * Extract ID parsing into a function
+  * Fix acceptance test
+  * Retain correct slot name
+  * Rename Tests for TestAccAzureRMAppServiceVirtualNetworkSwiftConnectionSlot
+  * Add missing side navigation link
+  * Fix sprintf number of args
+  * Nicer examples
+  * Remove CHANGELOG entry
+  * Adds Resource azurerm_app_service_virtual_network_swift_connection_slot
+  * add retry and update some documents
+  * app_service_environment resource - allow  for the  argument
+  * Add link to `app_settings` values reference (#7304)
+  * Update changelog for #7331
+  * `azurerm_policy_assignment` - added support for `enforcement_mode`  (#7331)
+  * update CHANGELOG.md to include #7154
+  * `azurerm_network_watcher_flow_log` destroy fails (#7154)
+  * uppdate CHANGELOG/md to include #7324
+  * azurerm_app_service_environment - support for user_whitelisted_ip_ranges (#7324)
+  * update CHANGELOG.md to include #7087
+  * azurerm_app_service_certificate - support for hosting_environment_profile_id (#7087)
+  * Documentation Fix: `azurerm_virtual_network_peering` #7335
+  * Update changelog for #7306
+  * New Resource: `azurerm_eventhub_cluster` (#7306)
+  * update CHANGELOG.md to include #6535
+  * New resource - azurerm_data_factory_integration_runtime_self_hosted (#6535)
+  * update CHANGELOG.md to include #7272
+  * `azurerm_hdinsight_cluster` deprecate `min_instance_count` (#7272)
+  * update CHANGELOG.md to include #6838
+  * Upgrade Kusto SDK to 2020-02-15 from 2019-05-15 (#6838)
+  * Tabs2spaces.
+  * Indentation.
+  * Removed local build stuff.
+  * Added three attributes to waf_policy
+  * Merged build files.
+  * Update app service example main.tf (#7332)
+  * Update logic_app_action_http.html.markdown (#7330)
+  * Fix to one missed comment.
+  * Updates to comments
+  * split into two different resources
+  * update CHANGELOG.md to include #7296
+  * Declare azurerm_healthcare_service argument access_policy_object_ids as optional (#7296)
+  * Fix incorrect rendering of h2 after stray codeblock (#7323)
+  * Azure IoT Time Series Insights Reference Data Set  - Correct the title in the docs (#7322)
+  * update CHANGELOG.md to include #7263
+  * update CHANGELOG.md to include #7273
+  * `azurerm_api_management_api` createUpdate change (#7273)
+  * Add developer_portal_url attribute on azurerm_api_management (#7263)
+  * acctest: fixing the compilation issue
+  * acctest: dynamically updating the build directory
+  * azurerm_network_interface: change case in import
+  * clear code
+  * ri
+  * updating to include #7279
+  * updating to include #7188
+  * dependencies: updating to v43.1.0 of github.com/Azure/azure-sdk-for-go
+  * dependencies: updating to v43.0.0 of github.com/Azure/azure-sdk-for-go
+  * Cleanup after v2.14.0 release
+- from version 2.14.0
+  * updating to include #7294
+  * Typo in GH ref #7285
+  * Updated for #7825
+  * additional doc fixes
+  * updating to include #7207
+  * doc fixes
+  * when callingWebHook is empty, make the field be nil, not a pointer of empty string
+  * updated schema sets to lists
+  * update
+  * update CHANGELOG.md to include #7076
+  * azurerm_api_management_api``wsdl_selector` is required when content_format = "wsdl" (#7076)
+  * additional test for generated cert
+  * ignoring lockfiles
+  * kubernetes-cluster: removing the old examples
+  * kubernetes-cluster: adding an example for a cluster with monitoring enabled
+  * kubernetes-cluster: adding an example of using the network policy calico
+  * kubernetes-cluster: example for nodes on an internal network
+  * kubernetes-cluster: example for using a spot node pool
+  * kubernetes-cluster: updating the basic-cluster example
+  * adding a note covering Azure Policy
+  * updating to include #7233
+  * r/kubernetes_cluster_node_pool: making the CheckDestroy test support both the Data Source & Resource
+  * added kv cert ds, tests and docs
+  * d/kubernetes-cluster: removing the `version` field from the `azure_policy` block
+  * Documentation for app_service_environment resource was missing description of internal_load_balancing_mode argument
+  * update
+  * Update code
+  * Update code
+  * update
+  * add documentation for base_url
+  * Update azurerm/internal/services/bot/bot_connection_resource.go
+  * Update azurerm/internal/services/bot/bot_connection_resource.go
+  * add check for available service provider - `azurerm_bot_connection`
+  * Update azurerm_subnet_nat_gateway_association document example usage.
+  * Remove preview statement
+  * update
+  * Error creating the example. (#7266)
+  * context fixes for state migration test panics (#7264)
+  * Update changelog for #7217
+  * `azurerm_cosmosdb_account` modifying `geo_location` no longer triggers a recreation of the resource #7217
+  * Update changelog for #7202
+  * New Resource: `azurerm_iot_time_series_insights_access_policy` (#7202)
+  * updating to include #7248
+  * Updated for #6930
+  * gosimple
+  * review fixes and amendments
+  * r/kubernetes_cluster: conditionally nil-ing the load balancer profile
+  * Update doc for resource group property of traffic manager endpoint
+  * Updated for #7224
+  * Update changelog for #7112
+  * New Resource: `azurerm_iot_time_series_insights_reference_data_set` (#7112)
+  * update CHANGELOG.md #7211
+  * Azure policy rest version bump to 2019-09-01 (#7211)
+  * (d|r)/kubernetes_cluster: `version` is no longer applicable for `azure_policy`
+  * review comment changes
+  * r/kubernetes_cluster_node_pool: fixing the test `TestAccAzureRMKubernetesClusterNodePoolDataSource_basic`
+  * r/kubernetes_cluster: conditionally setting the `managed_outbound_ip_count`, `outbound_ip_address_ids` and `outbound_ip_prefix_ids` fields"
+  * linting
+  * r/kubernetes_cluster: supporting delta-updates for the `load_balancer_profile` block within the `network_profile` block
+  * r/kubernetes_cluster: fixing the key vault test
+  * r/kubernetes_cluster: fixing pr comments
+  * r/kubewrnetes_cluster: keeping the linter happy
+  * terrafmt
+  * cleanup
+  * New Data Source: `azurerm_kubernetes_cluster_node_pool`
+  * r/kubernetes_cluster: fixing the broken assertion
+  * r/kubernetes_cluster: fixing a test assertion
+  * r/kubernetes_cluster: only searching for system node pools
+  * d/kubernetes_cluster: fixing a test compilation issue
+  * r/kubernetes_cluster: always setting the `idle_timeout_in_minutes` field
+  * r/kubernetes_cluster: fixing the test TestAccAzureRMKubernetesCluster_diskEncryption
+  * r/kubernetes_cluster: updating the versions being used for testing
+  * r/kubernetes_cluster: fixing the test TestAccAzureRMKubernetesCluster_addonProfileAzurePolicy
+  * r/kubernetes_cluster: updating the field name to match the schema
+  * r/kubernetes_cluster: test for azure policy v1 to v2 is combined
+  * r/kubernetes_cluster: node_labels and node_taints within the default_node_pool are ForceNew
+  * r/kubernetes_cluster_node_pool: changing node_labels/node_taints forces a new resource
+  * r/kubernetes_cluster_node_pool: fixing the test
+  * validating the `spot_max_price` and `max_bid_price` fields
+  * r/kubernetes_cluster: support for spot node pools
+  * r/kubernetes_cluster: raising an error when trying to upgrade the kubernetes version for spot node pools
+  * r/kubernetes_cluster: azure policy is not supported in China
+  * r/kubernetes_cluster: `kubernetes_dashboard` is not supported in US Government
+  * r/kubernetes_cluster: support for v2 of the azure policy addon
+  * r/kubernetes_cluster_node_pool: allowing updating of the `mode` field
+  * Enable AKS AAD integration v2 + SDK version bump
+  * d|r/kubernetes_cluster: comments from the pr
+  * Add support for encrypted disks in aks
+  * r/kubernetes_cluster_node_pool: support for configuring `mode`
+  * r/kubernetes_cluster: exposing the `balance_similar_node_groups` field now it's available
+  * fixing broken tests from merge conflicts
+  * r/kubernetes_cluster: support for the Paid SKU (a.k.a. Uptime SLA)
+  * dependencies: updating to use 2020-03 of the containerservice api
+  * r/kubernetes_cluster: grouping optional fields
+  * r/kubernetes_cluster: fixing pr comments
+  * init kubernetes_cluster auto_scale_profile
+  * r/kubernetes_cluster: Azure Policy is not supported in US Government. Fixes #6702.
+  * r/kubernetes_cluster_(node_pool): adding a note covering the version constraints for AKS
+  * r/kubernetes_cluster: mapping `spot_max_price` for the default node pool
+  * r/kubernetes_cluster_(node_pool): validating the orchestrator version prior to deployment
+  * r/kubernetes_cluster: comments from PR review
+  * tests: splitting the test dictionaries amongst the files to reduce conflicts going forward
+  * Add Orchestrator version for Kubernetes Cluster and Node Pool
+  * d/kubernetes_cluster: making all read-only properties read-only
+  * r/kubernetes_cluster: support for load balancer settings
+  * updating to include #7095
+  * r/eventhub_namespace_authorization_rule: adding a state migration
+  * Update code
+  * Found two typos in the examle code.
+  * subnet_id can't take the subnet name.
+  * GH-7227 Fix the descriptions for the subnet ID parameters in the frontend_ip_configuration and gateway_ip_configuration for the application_gateway resource.
+  * Extended EventGrid webhook support
+  * Update changelog for #7181
+  * `azurerm_web_application_firewall_policy` - Add support for `GeoMatch` operator in request filter #7181
+  * Updated for #7230
+  * updating to include #6971
+  * Update doc for max_size_gb of sql elastic pool
+  * Fix Linux Consumption Function Apps
+  * updating to include #7216
+  * updating to include #7182
+  * updating to include #7222
+  * update doc for `azurerm_key_vault_certificate`
+  * tidied requiresImport test
+  * updated resource file name
+  * udpated docs, schema ordering
+  * remove useless
+  * use correction subscriptionId
+  * rework of PR 5330
+  * Cleanup after v2.13.0 release
+- from version 2.13.0
+  * Fix nil pointer refernce for subject_filter of eventgrid
+  * fixed test config
+  * fixed PR notes and optionals
+  * updating to include #7141
+  * updating to include #7204
+  * refactor, tests, linting, docs
+  * updating to include #7203
+  * updating to include #7205
+  * formatting
+  * r/role_assignment: support for assigning Preview roles
+  * r/key_vault_certificate: always setting the `certificate_data` and `thumbprint` fields
+  * remove useless
+  * r/eventgrid_event_subscription: setting the correct field
+  * kt's review
+  * update CHANGELOG.md to include
+  * new resource `azurerm_monitor_action_rule_action_group`, `azurerm_monitor_action_rule_suppression` (#6563)
+  * gofmt
+  * refactor for IDs
+  * logic fix
+  * fix error msg
+  * goimports lint fix
+  * SetId empty checks
+  * moved User MSI validation to msi package
+  * deps fix
+  * Added missing RP entry
+  * acctest cleanup
+  * lint fixes
+  * moved ua-msi parsing as per review
+  * tidy and fixes
+  * serialise assignment resource tests, fix datasource tests
+  * updated test for new artifacts
+  * updated test for new values in ds
+  * Added mg level test
+  * Update data source for consistent schema values to resource
+  * Subscription tests passing
+  * Added tests and docs
+  * updates
+  * commit for testing
+  * new DS, modules and some tests
+  * adding orchestrated vmss test
+  * Updated for #7189
+  * comment update
+  * alt sub for acctests client data
+  * re-added 500 Response workaround for CosmosDB CheckNameExists bug that has resurfaced
+  * Update web_application_firewall_policy.html.markdown
+  * Remove resource_group_name in storeage_container
+  * The title said "mssql" but this is sql page
+  * add retry if 409 && beingdeleted
+  * Update CHANGELOG.md
+  * `azurerm_cdn_endpoint` - `origin_host_header` can now be set to empty (#7164)
+  * `azurerm_role_assignment` - add notes for different id format #7166
+  * Update changelog for #7168
+  * `azurerm_virtual_network_gatway` - `vpn_client_protocols` is now also computed to prevent permanent diffs #7168
+  * fix var name
+  * typo in readme, check if id is null before setting
+  * Update changelog for #7099
+  * New resource/data source `azurerm_logic_app_integration_account`  (#7099)
+  * Updated for #7157
+  * Update changelog for #6224
+  * `azurerm_data_factory_pipeline`: Support for `activities` (#6224)
+  * Added example for linux function apps (#7146)
+  * update CHANGELOG.md to include #6861
+  * Update Resource: Add advanced filter support to `azurerm_eventgrid_event_subscription` (#6861)
+  * update docs
+  * Updates Changelog for #7094
+  * `r/signalr` - adds support for `EnableMessagingLogs` feature (#7094)
+  * Update Changelog for #7122
+  * `azurerm_eventhub_authorization_rule` - Fix intermittent 404 errors (#7122)
+  * Update for #7059
+  * fix scope of name availability check in ASE hosted app services
+  * resolve review comment
+  * Azure Function Support for Event Grid Subscription
+  * Fix CI
+  * `azurerm_monitor_metric_alert` supports multiple scopes and different criterias
+  * updaate CHANGELOG.md to include #7140
+  * azuerm_function_app - correctly set kind when os_type is `linux` (#7140)
+  * terrafmt markdown
+  * add to website.erb
+  * add scale set data source with identity
+  * Update docs for azurerm_disk_encryption_set
+  * r/dev_test_global_vm_shutdown_schedule fix doc example (#7126)
+  * Cleanup after v2.12.0 release
+- from version 2.12.0
+  * update CHANGELOG.md to include #7080
+  * `azurerm_storage_account` - Support RAGZRS and GZRS `account_replication_type` (#7080)
+  * azurerm_public_ip - update docs wrt zone redundant IPs (#7124)
+  * Update `azurerm_policy_assignment` - `location` should be required when `identity` is assigned (#7075)
+  * Update public_ip.html.markdown (#7119)
+  * fix duplicate underscore
+  * ci
+  * r/nat_gateway_public_ip_association: using a custom ID / support for delta updates in `azurerm_nat_gateway` (#7106)
+  * fmt
+  * docs: fix monitor_action_group azure_function_receiver function_app_resource_id typo (#7091)
+  * Update CHANGELOG.md
+  * `azurerm_shared_image_version` - `target_region.x.storage_account_type` is now defaulted and multiple `target_region`s can be added/removed (#6940)
+  * r1
+  * split blob
+  * acctests: fixing a missing `%`
+  * add 1.x and 2.x changelog files back into master
+  * update CHANGELOG.md to include #6450
+  * Add virtual resource association: azurerm_nat_gateway_public_ip (#6450)
+  * Fix typo in docs (#7096)
+  * versionless cert for agw
+  * Update changelog for #6858
+  * `azurerm_eventgrid_topic` - support for `input_schema`, `input_mapping_fields`, and `input_mapping_default_values` (#6858)
+  * Removes preview note
+  * update CHANGELOG.md to include #6867
+  * New data source: `azurerm_advisor_recommendations` (#6867)
+  * update CHANGELOG.md to include #7079
+  * azurerm_logic_app_action_http: add `run_after` (#7079)
+  * Updated import example for EventGrid Event Subscriptions (#7088)
+  * updating to include #7027
+  * acctest: moving off the built-in test parser for now
+  * acctest: using teamcity-go-test for service packages
+  * acctest: updating the build config definition to 2020.1
+  * Update code
+  * Update code
+  * Update doc for access_tier of storage account
+  * update CHANGELOG.md to include #6527
+  * d/azurerm_kubernetes_cluster extended with kubelet_identity and identity (#6527)
+  * update CHANGELOG.md to include #7071
+  * r/api_management_api_version_set: handling changes to the Azure Resource ID (#7071)
+  * Use address_prefixes in azurerm_application_gateway (#7072)
+  * updating to include #6979
+  * updating to include #6968
+  * updating to include #7056
+  * Update code
+  * Update code
+  * Update code
+  * Fixed 'Unknown' issuer not working
+  * update CHANGELO.md to include #5536
+  * New resource: azurerm_dev_test_global_shutdown_schedule (#5536)
+  * update CHANGELOG.md to include #6689
+  * azurerm_batch_pool - support `container_image_names` property (#6689)
+  * Update code
+  * Fix validation for serivce bus topic name
+  * update CHANGELOG.md to include #6860
+  * Update Resource: `azurerm_eventgrid_event_subscription` (#6860)
+  * update CHANGELOG.md to include #7057
+  * Fix `azurerm_orchestrated_virtual_machine_scale_set` - `azurerm_linux|windows_virtual_machine` should allow to assign `virtual_machine_scale_set_id` in non-zonal deployment (#7057)
+  * update CHANGELOG.md to include #7061
+  * azurern_[linux|windows]_virtual_machine - Correctly check the length of the rsa ssh `public_key` property (#7061)
+  * Clarify the content of the parameters_body argument (#7060)
+  * formatting
+  * make app_service ip_restriction priority default to 65000
+  * OMS Agent Identity Export
+  * Add note about certificate format (#7054)
+  * Cleanup after v2.11.0 release
+- from version 2.11.0
+  * update CHANGELOG.md to include #6789
+  * New resource/Data Source `azurerm_data_share` (#6789)
+  * Update changelog for #7012
+  * New Resource: `azurerm_time_series_insights_environment`  (#7012)
+  * update CHANGELOG.md to include #6626
+  * New resource: `azurerm_orchestrated_virtual_machine_scale_set` (#6626)
+  * Update storage account syntax for Azure Function App (#7040)
+  * Fix deprecated interpolation syntax in docs (#7038)
+  * Fixing linter errors
+  * mariadb_server: add missing 'public_network_access_enabled' argument (#7037)
+  * updating to include #7036
+  * update CHANGELOG.md to include #7015
+  * azurerm_postgresql_server - do not attempt to get the threat protection with the basic SKU (#7015)
+  * fixes #7035
+  * Ensure that basic and monitor tests use the same roles
+  * Updated for #6668
+  * test fixes, status-403 bug changes
+  * update CHANGELOG.md to include #7031
+  * azurerm_redis_cache: support new maxmemory policies `allkeys-lfu' & 'volatile-lfu` (#7031)
+  * update cHANGELOG.md to include #5526
+  * azurerm_netapp_volume - support mount_ip_addresses (#5526)
+  * Update for #6948
+  * `azurerm_platform_image` - support for `version` filter (#6948)
+  * updating to include #6958
+  * updating to include #7024
+  * fixing the type
+  * updating to include #7023
+  * tooling: raising an error when d.SetId('') is found in a data source
+  * d/maintenance_configuration: raising an error when not found
+  * healthcare: ensuring all blocks are set
+  * d/hdinsight_cluster: raising an error when not found
+  * d/data_share_account: raising an error when not found
+  * d/image: raising an error when not found
+  * d/shared_image_version: raising an error when not found
+  * d/shared_image_versions: erroring when not found
+  * d/api_management_group: raising an error when not found
+  * d/private_endpoint_connection: raising an error when not found
+  * d/firewall: erroring when not found
+  * d/user_assigned_identity: erroring on a 404
+  * Test cases added
+  * Resolve comments
+  * azurerm_public_ip  - Basic SKU in public ip does not support Availability Zone (#7017)
+  * Fix #6920
+  * update CHANGELOG.md to include #6967
+  * `azurerm_app_service` Added support for Action of Allow or Deny in ip_restriction. (#6967)
+  * move analysis server tests out of tests package
+  * update CHANGELOG.md to include #6938
+  * `azurerm_api_management_subscription` get Primary/Secondary Key (#6938)
+  * Azure monitor doc  for all hdinsight resources
+  * Azure monitor for Storm
+  * Azure monitor for Spark
+  * Azure monitor for Kafka
+  * Azure Monitor for InteractiveQuery cluster
+  * Aze monioor HBase cluster
+  * azurerm_mssql_server - add public network access todocs (#7011)
+  * Fix example in doc for firewall nat rule (#6941)
+  * Update doc for access policy of storage share (#6942)
+  * A bit of refactoring
+  * Documentation for hadoop
+  * Error message clean up
+  * Implement monitor changes
+  * Enable monitor on create
+  * Update code
+  * base_url->key_vault_id, documentation cleanup
+  * mariadb_database: fix deprecated warnings in example code
+  * Fix spelling of namespace
+  * Fix documentation storage_account_name + storage_account_access_key
+  * whitespace fix
+  * fixed constructor ordering
+  * updating to include #6927
+  * updated val ordering for ClientConfiguration
+  * Updating repositories for mvn / teamcity
+  * updating to include #6964
+  * Added alt subscription to tc config
+  * updating to include #6947
+  * truncating the changelog
+  * updating to include #6973
+  * Update dev_test_schedule.html.markdown
+  * Update code
+  * Update code
+  * Fix typo in eventgrid_event_subscription.html.markdown
+  * databricks workspace test workspaceurl with regex
+  * Update doc for rule_set_type of app gateway
+  * Update doc for rule_set_type of app gateway
+  * databricks add workspace_id and url
+  * Update api_management_logger_resource_test.go
+  * fmt
+  * update
+  * Update api_management_logger_resource_test.go
+  * mariadb_server: remove deprecated interpolation syntax in docs (#6970)
+  * update CHANGEOG.md to include #6727
+  * upgrade network to 2020-03-01 (#6727)
+  * New Feature: Data Factory Linked Service Key Vault Resource
+  * Test fix - name too short error returned for empty name
+  * update CHANGELOG.md to include #6725
+  * provider: upgrade azure-sdk-for-go to v42.1.0 & azuread to v0.9.0 (#6725)
+  * Update doc for custom_domain in storage_account (#6947)
+  * Update eventgrid_event_subscription.html.markdown (#6953)
+  * Update doc for cosmosdb account GlobalDocumentDB connection string (#6965)
+  * Fix typo in resource "azurerm_application_insights": application_type "Other" -> "other" (#6946)
+  * `azurerm_postgresql_server` - Update documentation per request from service team (#6963)
+  * minor test fixes
+  * Align azurerm_sql_virtual_network_rule name validation with azure validation
+  * Updates
+  * added functionality for scm_ip_restriction - allow or deny & added to data source.
+  * Support 'PATCH' method in corsRule with blob properties
+  * fix: eventgrid id parsers
+  * Added support for scm ip restrictions.
+  * Cleanup after v2.10.0 release
+- from version 2.10.0
+  * update CHANGELOG.md to include #6682
+  * `azurerm_api_management_diagnostic` - support required property `api_management_logger_id` (#6682)
+  * Address PR comments
+  * Fix duplicate provider configuration in storage tests (#6748)
+  * update CHANGEloG.md to include #6721
+  * azurerm_postgres_server - support for threat_detection_policy (#6721)
+  * azurerm_api_management - support key_vault_id's without a version (#6723)
+  * update CHANGELOG.md to include #6723
+  * updating to include #6917
+  * Update for #6925
+  * feature: optionally enhanced validation
+  * Update azurerm/internal/services/authorization/role_assignment_resource.go
+  * Added poller to check for consistency on role assignment creation
+  * Fix azurerm_subnet_nat_gateway_association documentation title
+  * updating to include #6580
+  * fixes #5758
+  * updating to include #6916
+  * Fixes #6741
+  * add documentation for the source_image_reference block
+  * update CHANGELOG.md to include #6833
+  * mysql_server: New attributes, flatten `storage_profile` block (#6833)
+  * update CHANGELOG.md to include #6865
+  * mariadb_server: New attributes, flatten `storage_profile` block (#6865)
+  * update CHANGELOG.md to include #6859
+  * New Resource: `azurerm_eventgrid_domain_topic` (#6859)
+  * update CHANGELOG.md to include #6911
+  * `azurerm_monitor_diagnostic_setting` - Fix crash around `retention_policy` (#6911)
+  * Update doc for validation of aks (#6884)
+  * update CHANGELOG.md to include #6783
+  * api_managment - support user assigned managed identities (#6783)
+  * update CHANGELOG.md to include #6850
+  * azurerm_api_management - Only set `hostname_configuration` properties if not empty (#6850)
+  * fixes #5864 and #6763
+  * update CHANGELOG.md to include #6601
+  * azurerm_express_route_circuit - de-provision and re-provision circuit when changing bandwidth reduction (#3983) (#6601)
+  * update CHANGELOG.md to include #6724
+  * Support the Developer Portal type of hostname_configuration in azurerm_api_management (#6724)
+  * update CHANGELOG.md to include #6105
+  * azurerm_application_gateway  - support WAF Policies (#6105)
+  * Update changelog for #6910
+  * `data.azurerm_security_group` - fixing crash where id is nil #6910
+  * size property must not be defined if source_uri is used (#6897)
+  * tool: adding a check for gradually deprecated functions
+  * Update for #6821
+  * update
+  * update doc for `azurerm_role_assignment`
+  * Update import command in eventhub ns doc
+  * update CHANGELOG.md to include #6834
+  * azurerm_api_management_named_value - fix the non empty plan when `secret` is true (#6834)
+  * Update doc for network profile of aks (#6810)
+  * Update changelog for #6844
+  * `azurerm_log_analytics_workspace` - Support `rentention_in_days` for Free Tier (#6844)
+  * update CHANGELOG.md to include #6534
+  * Bug: azurerm_kubernetes_cluster errors out with InvalidLoadbalancerProfile on changes (#6534)
+  * updating to include #6875
+  * Fix case on AuthorizationRules to match Azure API
+  * updating to include #6871
+  * align on versin 41.2 of SDK
+  * update
+  * Fix fmt flag
+  * Fix #6830
+  * add type PipelineReference in trigger res
+  * Update per review
+  * ordering
+  * updating to include #6862
+  * updating to include #6864
+  * Update doc for traffic manager endpoint
+  * `SchemaResourceGroupNameForDataSource` Add `ValidateFunc`
+  * update CHANGELOG.md to include #6846
+  * `azurerm_windows_virtual_machine` - Allow update of OS disk encryption settings (#6846)
+  * Update changelog for #6851
+  * `azurerm_application_insights` - `retention_in_days` defaults to 90 #6851
+  * fmt
+  * Fix typo in terraform state mv command (#6856)
+  * Fix crash
+  * update CHANGELOG.md to include #6837
+  * Upgrade EventGrid SDK to 2020-04-01-preview (#6837)
+  * Updates doc for aks node pool (#6825)
+  * updating to include #6841
+  * Update changelog for #6826
+  * `data.azurerm_virtual_machine` - export `identity` attribute (#6826)
+  * Changed partition_ids from TypeSet to TypeList
+  * updating to include #6848
+  * tf format in website docs
+  * Added azurerm_eventhub data source to website navigation
+  * Fixed tflint errors
+  * modify regexp: escape dot
+  * Removed space from Event Hub in docs
+  * New data source azurerm_eventhub
+  * Fix load-balancer example with new syntax for v2.0 (#6836)
+  * `azurerm_automation_account` DS set its own ID
+  * docs: added note to `infrastructure_encryption_enabled` property (#6831)
+  * Update for #6822
+  * `azurerm_mssql_server`  - Add support for `azuread_administrator` (#6822)
+  * Update express_route_circuit_peering.html.markdown (#6824)
+  * Cleanup after v2.9.0 release
+- from version 2.9.0
+  * update CHANGELOG.md to include #6819
+  * [BUG] azurerm_redis_cache backup requires connection string (#6819)
+  * update CHANGELOG.md to include #6813
+  * `azurerm_automation_runbook` - add support for create runbook as draft and then publish  (#6813)
+  * update CHANGELOG.md to include #6792
+  * update `azurerm_policy_assignment` - allow scopes of policy set definition without `subscription/<id>` (#6792)
+  * update doc for "azurerm_redis_cache" (#6807)
+  * updating to include #6817 / formatting
+  * update CHANGELOG.md to include #6708
+  * support alias connection strings for eventhub resources (#6708)
+  * builder: raising an error if environment is unintentionally set to "AZURESTACKCLOUD"
+  * Update for #6650
+  * New resource: `azurerm_sentinel_alert_rule_scheduled` #6650
+  * Update for #6705
+  * Update for #6661
+  * Note that App Service Health Check is in Preview
+  * Document health_check_path on azurerm_app_service
+  * Add acceptance test for health_check_path
+  * Add health_check_path to site_config
+  * added todo
+  * update validation for new value in remoteDebuggingVersion
+  * fixes some broken tests
+  * fix broken test param for remoteDebugging
+  * updating to include #6786
+  * add note that analysis services server is started and stopped during update
+  * Update doc for property sku of servicebus namespace
+  * Update website/docs/r/virtual_hub_connection.html.markdown
+  * formatting
+  * formatting
+  * formatting
+  * address review
+  * updates `privatedns`
+  * updates `powerbi`
+  * updates `postgres`
+  * updates `portal`
+  * updates `policy`
+  * updates `network`
+  * updates `notificationhub`
+  * updates `netapp`
+  * updates `mysql`
+  * updates `mssql`
+  * updates `msi`
+  * updates `monitor`
+  * updates `mixedreality`
+  * updates `media`
+  * updates `mariadb`
+  * updates `maps`
+  * updates `managementgroup`
+  * updates `maintenance`
+  * updates `machinelearning`
+  * updates `logic`
+  * updates `loganalytics`
+  * updates `kusto`
+  * Updates `keyvault`
+  * updates `iothub`
+  * updates `iotcentral`
+  * updates `healthcare`
+  * updates `hdinsight`
+  * updates `frontdoor`
+  * updates `eventhub`
+  * updates `eventgrid`
+  * Update for #6769
+  * `azurerm_monitor_diagnostic_setting` - `log_analytics_destination_type` supports `AzureDiagnostics` #6769
+  * update CHANGELOG.md to include #6701
+  * azurerm_eventhub_namespace_authorization_rule  - lock so multiple resource updates won't clash (#6701)
+  * fmts & builds
+  * Updates `dns`
+  * Updates `devtestlabs`
+  * Updates `devspace`
+  * Updates `datashare`
+  * Updates `datalake`
+  * updates `datafactory`
+  * Updates `databricks`
+  * Updates `databasemigration`
+  * Updates `customproviders`
+  * Updates `costmanagement`
+  * Updates `cosmos`
+  * Updates `containers`
+  * Updates `compute`
+  * Updates `cognitive`
+  * Updates `cdn`
+  * Updates `bot`
+  * Updates `batch`
+  * Updates `automation`
+  * Updates `authorization`
+  * Updates `appplatform`
+  * Updates `applicationinsights`
+  * Updates `apimanagement`
+  * add test for updating a paused analysis services server
+  * Update for #6435
+  * updating to include #6747
+  * Update for #6774
+  * fix PR recommendations
+  * Update for #6624
+  * Changed: notes regarding configuring 'TLS termination with Key Vault certificates' for App Gateway were added.
+  * Update doc for property default_action of eventhub namespace
+  * fix lintrest problem
+  * start server when it was stopped before updating it
+  * Update code
+  * add pre_warmed_instance_count
+  * fix comments 2nd round
+  * fix comments
+  * extra function version test
+  * rename filename
+  * init
+  * fix imports
+  * use custom hash function to not distinguish between upper- and lowercase name of a analysis services server ipv4 fw rule
+  * fixes panic on nil value for
+  * vhub_conn add doc note
+  * update CHANGELOG.md to include #6575
+  * New resource/Data source `azurerm_data_share_account` (#6575)
+  * Added reference to bug reported on azure-sdk-for-go.
+  * Update for #6145
+  * acctests: switching to use the native runner
+  * minor docs update
+  * updating to include #6742
+  * r/application_gateway: ignoring an import diff with cert data/password
+  * updating the changelog for #6716
+  * updating to include #6744
+  * updating to include #6734
+  * Update resource_arm_stream_analytics_function_javascript_udf_test.go
+  * make dfault explicit
+  * Workaround for strange response code in recovery services network mappings API. Fixes issue #6026
+  * terrafmt for tflint compliance
+  * Tests for custom DiffSuppressFuncs
+  * Custom DiffSuppressFunc for policy definition
+  * support create option
+  * fix gofmt
+  * Remove empty string password check
+  * Add test for cert with empty password
+  * update max allowed priority
+  * changes for review feedback
+  * Custom metadata DiffSuppressFunc - issue #5014
+  * Updated for #6716
+  * missed a fix
+  * fix purge_protection keyvault tests
+  * acctests: hooking up ARM_CLIENT_ID_ALT and ARM_CLIENT_SECRET_ALT
+  * acctest: updating to v0.2.0 of tombuildsstuff/teamcity-go-test-json
+  * acctests: boosting the default concurrency to 20
+  * Cleanup after v2.8.0 release
+- from version 2.8.0
+  * Update resource doc for postgresql server (#6711)
+  * Update for #6707
+  * `data.azurerm_shared_image_version` - `name` supports `latest` and `recent`  (#6707)
+  * Update CHANGELOG.md to include #6639
+  * VM and VMSS validation fixes (#6639)
+  * simplified recovery logic
+  * added certificate soft-delete recovery support
+  * added key soft-delete recovery support
+  * added recovery capabilty for secrets
+  * update parse function
+  * app_service_environment: explicit resource group
+  * make priority computed
+  * update CHANGELOG.md to include #6678
+  * azurerm_mssql_server -support `public_network_access_enabled` (#6678)
+  * Update changelog for #6700
+  * New DataSource: `azurerm_shared_image_versions` (#6700)
+  * managed app: managed_app_outputs -> outputs (#6704)
+  * add name and priority to ip_restriction for app_service
+  * update CHANGELOG.md to include #6386
+  * New resource: azurerm_managed_application (#6386)
+  * provider: removes the import feature flag [A-D] (#6643)
+  * update CHANGELOG.md to include #6260
+  * azurerm_key_vault - can now be created without subscription level permissions (fixes #6059) (#6260)
+  * update CHANGELOG.md to include #6677
+  * New Resource - azurerm_mssql_server (#6677)
+  * Add doc/test for `O+C` && `ConfigModeAttr` attr (#6651)
+  * update CHANGELOG.md to include #6635
+  * `azurerm_redis_cache` - correctly build connection strings when SSL is disabled (#6635)
+  * Update website/docs/r/postgresql_server.html.markdown
+  * fixing Argument reference in postgresql_server and Example Usage in postgresql_configuration and postgresql_database
+  * tooling: Provider Defined Builds
+  * updating to include #6604
+  * fixes #4558
+  * update CHANGELOG,md to include #6631
+  * mssql_elasticpool - support license_type (#6631)
+  * fixing example usage accodring to documentation and changes in version 3.0 of the provider
+  * Update doc of event namespace auth rule (#6640)
+  * azurerm_function_app - update example (#6653)
+  * Change response not found to response forbidden
+  * update
+  * healthcare: fixing TestAccAzureRMDataSourceHealthCareService_basic
+  * search: fixing TestAccAzureRMSearchService_complete
+  * signalr: fixing TestAccAzureRMSignalRService_serviceMode
+  * msi: fixing the broken test
+  * update
+  * update import doc for "azurerm_network_interface_security_group_association"
+  * new resource "azurerm_maintenance_assignment"
+  * Update resource_arm_mssql_database_test.go
+  * Update CHANGELOG.md
+  * New resource/data source: `azurerm_sentinel_alert_rule_ms_security_incident` (#6606)
+  * Update changelog for #6493
+  * `azurerm_subnet`: Support for multiple prefixes with `address_prefixes` #6493
+  * update CHANGELOG.md to include #6630
+  * azurerm_application_gateway  - support `host_names` property (#6630)
+  * Adding acctest for #3996 (#6600)
+  * update CHANGELOG.md to include #6603
+  * azurerm_monitor_diagnostic_setting  - mark retention_policy & retention_policy  as optional (#6603)
+  * update import resource id for `azurerm_network_interface_security_group_association` (#6625)
+  * update CHANGELOG.md to include #6596
+  * azurerm_express_route_circuit_peering  - support  customer_asn & routing_registry_name #1084 (#6596)
+  * update CHANGELOG.md to include #6565
+  * azurerm_virtual_network_gateway_connection  - shared_key is optional when type is IPSec (#6565)
+  * update CHANGELOG.md to include #6126
+  * azurerm_web_application_firewall_policy - support managed_rules (#6126)
+  * update CHANGELOG.md to include #6402
+  * Fix `azurerm_sql_database` blob auditing error under online secondary create mode (#6402)
+  * Update tests
+  * Update servicebus name validation (#6607)
+  * Update CHANGELOG.md
+  * `azurerm_api_management_api` - support for openapi v3 content formats #6618
+  * Added test for hive only and check in reading code
+  * provider: pinning to Go 1.14.2
+  * Fix typo
+  * ...
+  * ...
+  * Revert "CDN Endpoint: make origin_host_header required " (#6583)
+  * Updating instead of foo to example (#6591)
+  * updating to include #6574 and #6589
+  * `azurerm_public_ip_prefix`: Update `prefix_length` validation to accept all valid IPv4 address ranges (#6589)
+  * `azurerm_private_endpoint`: Add support for tags (#6574)
+  * update CHANGELOG.md to include #6479
+  * provider: upgrade API Management to 2019-12-01 (#6479)
+  * Update for #6569
+  * `azurerm_linux_virtual_machine_scale_set` - fixes crash with `boot_diagnositics` #6569
+  * Update for #6570
+  * `azurerm_iothub_dps` - fix crash when path isn't cased correctly #6570
+  * update for #6304
+  * `azurerm_function_app` - Added `storage_account_id` and `storage_account_access_key` (#6304)
+  * provider tests: removes the requires import feature flag [L-W] (#6573)
+  * provider: pin golangci to 1.24 (#6577)
+  * provider: update terrafmt checks with make terrafmt command (#6567)
+  * Update for #6602
+  * `azurerm_api_management` - `sku_name` supports Consumption  (#6602)
+  * Cleanup after v2.7.0 release
+- from version 2.7.0
+  * cleanup CHAGELOG.md prior to release
+  * update CHANGEOG.md to include #5769
+  * azurerm_api_management - support for  virtual network integrati… (#5769)
+  * update CHANGELOG.md to include #6576
+  * policy_assignment - allow scopes without `subscription/<id>` (#6576)
+  * update CHANGELOG.md to include #6590
+  * azurerm_mysql_server - support `public_network_access_enabled`… (#6590)
+  * Update `r/azurerm_(linux|windows)_virtual_machine_scale_set`: a… (#6346)
+  * update CHANGELOG.md to include #6346
+  * update CHANGELOG.md to include #6578
+  * azurerm_notification_[hub|hub_namespace] - support tags (#6578)
+  * Updated for #6055
+  * Updated for #6384
+  * minor PR fixups for merge
+  * Updated for #6476
+  * Update for #6511
+  * Use Terraform notation to improve visibility of this attribute
+  * Improve attribute description in docs
+  * Update code
+  * Support HyperVGeneration for shared images
+  * Revert "CDN Endpoint: make origin_host_header required " (#6583)
+  * Updating instead of foo to example (#6591)
+  * updating to include #6574 and #6589
+  * `azurerm_public_ip_prefix`: Update `prefix_length` validation to accept all valid IPv4 address ranges (#6589)
+  * `azurerm_private_endpoint`: Add support for tags (#6574)
+  * new resource `azurerm_spring_cloud_app`
+  * Fix update scenario for network interface
+  * update CHANGELOG.md to include #6479
+  * provider: upgrade API Management to 2019-12-01 (#6479)
+  * Update for #6569
+  * `azurerm_linux_virtual_machine_scale_set` - fixes crash with `boot_diagnositics` #6569
+  * Update for #6570
+  * `azurerm_iothub_dps` - fix crash when path isn't cased correctly #6570
+  * update for #6304
+  * `azurerm_function_app` - Added `storage_account_id` and `storage_account_access_key` (#6304)
+  * provider tests: removes the requires import feature flag [L-W] (#6573)
+  * Make request_routing_rule TypeSet
+  * Make redirect_configuration TypeSet
+  * provider: pin golangci to 1.24 (#6577)
+  * provider: update terrafmt checks with make terrafmt command (#6567)
+  * Fix #6452
+  * add #6548 back into CHANGELOG.md
+  * update CHANGELOG.md to include #6459
+  * Update to include #6548
+  * `azurerm_virtual_network_gateway` - per api requirements, `public_ip_address_id` is required  (#6548)
+  * azurerm_postgres_server - fix #2819, #5121, #5865, #6180, #6216 (#6459)
+  * New resource - `azurerm_servicebus_namespace_network_rule_set` (#6379)
+  * updating to include #6541
+  * updating to include #6550
+  * add missing request_header_condition flatten part
+  * updating to include #6512
+  * update CHANGELOG.md to include #6379
+  * update CHANGELOG.md to include #6538
+  * app_service_environment - support for `location` property (#6538)
+  * azurerm_image  - improve not found error message (#6515)
+  * provider tests: removes the requires import feature flag [A-K] (#6558)
+  * update cHANGELOG.md to include #6426
+  * cosmosdb_mongo_collection - support `index` & `system_index` (#6426)
+  * update readme.MD to include #6038
+  * New Resource `azurerm_maintenance_configuration` (#6038)
+  * Fix title for azurerm_bot_channel_* resources (#6553)
+  * update CHANGELOG.md to include #6549
+  * `resource_arm_application_gateway` - Fix crash in `backend_addr… (#6549)
+  * `azurerm.erb` - Add migrating to renamed resource guide to side… (#6552)
+  * `azurerm_virtual_network_gateway` - update docs around `sku` su… (#6556)
+  * make origin_host_header a required field. Validation is skipped as it is done by the API/backend
+  * tooling/website-scaffold: inlining the usage of tags
+  * tooling/website-scaffold: making the tooling self-contained
+  * tooling/website-scaffold: fixing the build
+  * Fixed data source managed_disk example
+  * updating to include #6509
+  * updating to include #6504
+  * updating to include #6431
+  * remove inner check
+  * go mod tidy
+  * Linting fixes
+  * nameservers not returned for private zones
+  * New data source azurerm_private_dns_zone
+  * nil check all properties
+  * dependencies: updating the fork of Azure/go-autorest
+  * Cleanup after v2.6.0 release
+- from version 2.6.0
+  * updating to include #6393
+  * updating to include #6496
+  * Update azurerm/internal/services/eventhub/data_source_eventhub_namespace_authorization_rule.go
+  * update nat documentation
+  * Update azurerm/internal/services/network/validate.go
+  * Update azurerm/internal/services/network/validate.go
+  * tests: ensuring that the assertions are valid/useful
+  * data sources: ensuring an ID is always set
+  * d/mariadb_server: ensuring the ID is always set
+  * spacing
+  * updating to include #5847
+  * updating to include #6163
+  * updating to include #4690
+  * formattting
+  * updating to include #6492
+  * ID not set when retreiving data factory fix #4827
+  * fix lintrest problems
+  * Update resource_arm_managed_disk.go
+  * r/cdn_endpoint: fixing up the docs
+  * r/cdn_endpoint: making the schema internal
+  * r/cdn_endpoint: ensuring the nested blocks are always set
+  * refactoring from PR / ensuring fields are always set
+  * r/cdn_endpoint: reusing the same ctx
+  * Fix test name conflict in resource_arm_hpc_cache_test.go (#6478)
+  * azurerm_mariadb_server - fix incorrect example code (#6475)
+  * provider: add terrafmt target to makefile to fix terraform blocks
+  * update CHANGELOG.md to include #6455
+  * azurerm_network_interface: expose internal_domain_name_suffix (#6455)
+  * Registering the Resource Provider `Microsoft.DBforMariaDB` (#6461)
+  * update CHANGELOG.md to include #6333
+  * `azurerm_function_app` - support for `pre_warmed_instance_count` (#6333)
+  * cdn: removing the profile
+  * azurerm_virtual_network - revert #6443 (#6446)
+  * Update data_source_api_management_test.go
+  * update CHANGELOG.md to include #6437
+  * azurerm_hdinsight_* - support for `tls_min_version ` (#6440)
+  * update CHANGELOG.md to include #6445
+  * 'azurerm_virtual_network' - add guid attribute (#2325) (#6445)
+  * update CHANGELOG.md to include #6437
+  * Update CHANGELOG.md to include #6443
+  * azurerm_virtual_network - make dns_servers TypeSet (#6443)
+  * mssql_database - support the `threat_detection_policy` property (#6437)
+  * fix based on suggestion
+  * update ChANGELOG.md to include #6442
+  * azurerm_function_app - prevent a panic from an empty IPSecurity… (#6442)
+  * Update CHANGELOG.md to include #6438
+  * azurerm_sql_server - support for `connection_policy` property (#6438)
+  * documentation: ensure all data sources and resources include th… (#6433)
+  * update CHANGELOG.md to include #6354
+  * azurerm_application_insights - add disable_ip_masking property (#6354)
+  * Fix: add document for Support for `azurerm_sql_database` audit… (#6434)
+  * update CHANGELOG.md to include #6305
+  * New data source: `azurerm_policy_set_definition` (#6305)
+  * provider: enable gocritic & unparam linters (#6432)
+  * Deprecation of private_link_enabled for enable_private_cluster
+  * update CHANGELOG.md to include #6397
+  * azurerm_machine_learning_workspace - fix: #6339 sku_name (#6397)
+  * tests: fix various failing tests from CI (#6420)
+  * update CHANGELOG.md to include #6275
+  * Update data source `azurerm_policy_definition`: Make `name` as… (#6275)
+  * Refactor - move the ID parsing function of VM, VM extension, VM… (#6405)
+  * update CHANGELOG.md to include #6419
+  * dependancies - upgrade `Azure/azure-sdk-for-go` to `v41.2.0` (#6419)
+  * Cleanup after v2.5.0 release
+- from version 2.5.0
+  * terrafmt service_principal_client_secret.html.markdown
+  * Apim example (#6414)
+  * Update service_principal_client_secret.html.markdown (#6408)
+  * Update CHANGELOG.md to include #6230
+  * [linux|windows]_virtual_machine - Allow update of OS disk encry… (#6230)
+  * Fixes title for azurerm_storage_account_network_rules
+  * remove identity_profile nest
+  * resolve comments
+  * updating to include #6309
+  * Add space between arguments in the import example
+  * r/kubernetes_cluster: fixing the build
+  * Mark identity required in the doc
+  * docs
+  * kubelet_profile added
+  * updating to include #6120
+  * small refactor of the tests
+  * linting
+  * Update sql_server.html.markdown
+  * r/kubernetes_cluster: fixing the userDefined test
+  * r/kubernetes_cluster: userDefinedRouting requires a Standard LB
+  * nil check for txt record values
+  * Add some missing `ImportStep()`s
+  * More thorough testing on resource update
+  * Improve error reporting
+  * Drop unnecessary var assignments
+  * Add navigation link for azurerm_private_dns_txt_record page
+  * Fix errant indent
+  * New resource: azurerm_private_dns_txt_record #5012
+  * r/kubernetes_cluster: adding a test/documentation covering `outbound_type`
+  * updating to include #6370
+  * Update data_source_subnet_test.go
+  * update CHANGELOG.md to include #6301
+  * azurerm_[linux|windows]_virtual_machine - if the `priority` pro… (#6301)
+  * Update docs for configuring an app registration/service principal with client certificate
+  * Update docs for configuring an app registration/service principal with client secret
+  * sidebar: fixing the frontmatter
+  * spelling
+  * remove check suppression
+  * Bare minimal go changes to add feature for AKS outboundType
+  * fixing the sidebar
+  * r/kubernetes_cluster: making the `aci_connector_linux` & `http_application_routing` blocks cloud specific
+  * clarifying #6095
+  * updating to include #6095
+  * linting
+  * r/kubernetes_cluster: moving the `service_principal` block with the other optional props
+  * r/network_interface: deprecation of network_security_group_id
+  * r/kubernetes_cluster(_node_pool): updating the docs to handle `min_count`/`max_count` being null
+  * r/kubernetes_cluster: fixing the docs for the `vnet_subnet_id` field
+  * r/kubernetes_cluster_node_pool: explicitly requiring `null` rather than `0`
+  * docs: update string to replace to make example correct
+  * r/kubernetes_cluster: raising a "you must update" only when an SP & MSI are used
+  * r/kubernetes_cluster(_node_pool): ensuring that tags are set on the default node pool
+  * r/kubernetes_cluster(_node_pool): documenting an api bug around node pool tags
+  * dependencies: updating to `2020-02-01` of the Containers API
+  * Cleanup after v2.4.0 release
+  * r/kubernetes_cluster: flattening `tags` for the `default_node_pool`
+  * r/kubernetes_cluster: messaging the behavioural differences in the AKS API
+  * Update README.md
+  * r/kubernetes_cluster(_node_pool): requiring that `min_count` and `max_count` are set to `null` not 0 when undefined
+  * test cleanup
+  * r/kubernetes_cluster: tests for updating the node count with it ignored
+  * r/kubernetes_cluster: fixing tests
+  * r/kubernetes_cluster: moving the rest of the functions into parse/validate since these now exist
+  * r/kubernetes_cluster_node_pool: moving the Node Pool ID to the parse package
+  * r/kubernetes_cluster: updating the docs
+  * r/kubernetes_cluster: updating the tests to use MSI by default
+  * r/kubernetes_cluster: conditionally specifying either the service_principal or MSI blocks
+  * Removing word error for error msgs
+  * Add validation check to destroy
+  * Moved CustomDiff add/fix test cases and docs
+  * Fix for #6235
+  * Update to fix 7 new test failures
+  * update lower bound in docs
+  * Added more tests
+  * Add test case to test list
+  * Updates due to API upgrade
+  * always set count
+  * Potential fix for #6020
+  * Modify per review
+  * go mod tidy && go mod vendor
+  * Argument block only treat argument with element of resource as block
+  * Fix doc
+  * Fix AzureRMHDInsightHadoopCluster_requiresImport
+  * Make metastores optional
+  * Support for Oozie and Ambari
+  * typo
+  * remove unnecessary changes
+  * cleanup
+  * Change of plans, improved solution
+  * Bonus: update of README
+  * Implementation of suggestions
+  * fix tflinter problems
+  * fix linter problems
+  * add test for delivery_rule
+  * add test for global_delivery_rule
+  * fix profile sku naming in error message
+  * prevent user from using delivery_rule oder global_delivery_rule in combination with a CDN profile sku other than Microsoft_Standard
+  * adjust documentation
+  * add documentation for delivery rule and global delivery rule; fix minor bugs
+  * Fix for terrafmt
+  * Add new test to aks combined tests
+  * Update of testcheck and linter problem
+  * Fix formatting
+  * add global delivery rule
+  * Support for external Hive metastore
+  * ad url path condition
+  * add url file name condition
+  * add url file extension condition
+  * add request uri condition
+  * add request method condition
+  * add request header condition
+  * add request body condition
+  * add remote address condition
+  * add query string condition
+  * convert operator to string
+  * add post arg condition
+  * allow transforms to be a list instead of single value
+  * add device condition
+  * allow multiple values for request scheme
+  * allow multiple values for cookies condition
+  * add HTTP version condition
+  * add cookies condition
+  * refactor/shorten ExpandArmCdnEndpointConditionRequestScheme function
+  * I hope nobody sees how I'm fiddling around here /o\
+  * Fixing test failures
+  * add URL Rewrite action
+  * Mistake in test fixed
+  * extract delivery rule actions and conditions into own function
+  * add modify response header action
+  * add modify request header action
+  * remove obsolete files
+  * add cache key query string action
+  * rename packages without underscores
+  * remove obsolete policy layer; make removing of rules working as well
+  * disable adding of duration when using BypassCache behavior
+  * fix not working build
+  * add cache expiration action to delivery_rule
+  * add cache expiration action
+  * shorten names of conditions and actions
+  * add method to test cache expiration duration
+  * fix rename of match_values to match_value; rename endpoint_delivery_policy.go
+  * fix problems in order to apply correctly
+  * fix basic issues in order to run `terraform plan`
+  * move actions and condition into own dir; add flatten functions for url redirect action and request scheme condition
+  * implement rad & update for delivery_policy
+  * rename delivery_rule to rule; allow max 4 rules (leave one spot for global rule)
+  * allow max 5 rules per delivery policy
+  * add endpoint delivery policy, rule, request schema condition and url redirect action
+  * add delivery policy rule name validation function
+  * bump CDN api version
+  * Optimize test
+  * changingLoadBalancerProfileConfig test added
+  * Adding validation function routing table name and route name (see #6053)
+  * Update CHANGELOG.md to include #5851
+  * azurerm_network_watcher_flow_log  - support for the`interval_in… (#5851)
+  * Update CHANGELOG.md to include #5036
+  * `azurerm_sql_server` - support for the `extended_auditing_polic… (#5036)
+  * tidying
+  * features: removing the unused "two point oh" feature
+  * tests: clarifying the features block is required going forward
+  * r/search_service: the fields `partition_count` and `replica_count` are no longer forcenew
+  * tools/website-scaffold: fixing a typo
+  * linting
+  * tools: fixing an issue when scaffolding the example for a data source
+  * r/search_service: updating the docs
+  * tooling: adding the scaffold-website tool to the makefile
+  * d|r/resource_group: generating updated documentation
+  * New Tool: website-scaffolder
+  * wip: adding a scaffolder for resources/data sources
+  * Updated virtual_hub.html.markdown (#6033)
+  * remove obsolete policy layer; make removing of rules working as well
+  * disable adding of duration when using BypassCache behavior
+  * fix not working build
+  * add cache expiration action to delivery_rule
+  * add cache expiration action
+  * shorten names of conditions and actions
+  * add method to test cache expiration duration
+  * fix rename of match_values to match_value; rename endpoint_delivery_policy.go
+  * fix problems in order to apply correctly
+  * fix basic issues in order to run `terraform plan`
+  * move actions and condition into own dir; add flatten functions for url redirect action and request scheme condition
+  * implement rad & update for delivery_policy
+  * rename delivery_rule to rule; allow max 4 rules (leave one spot for global rule)
+  * allow max 5 rules per delivery policy
+  * add endpoint delivery policy, rule, request schema condition and url redirect action
+  * add delivery policy rule name validation function
+  * bump CDN api version
+  * Computed: false removed as it is default
+  * Changing load_balancer_profile settings to computed=false
+
+-------------------------------------------------------------------
+Wed Apr 08 14:46:26 UTC 2020 - jmason@suse.com
+
+- Update to version 2.4.0 (bsc#1168921):
+  * v2.4.0
+  * Changelog for #6321
+  * New Resource: `azurerm_log_analytics_datasource_windows_event ` (#6321)
+  * tests: fix them (#6342)
+  * update CHANGELOG.md to include #4928
+  * New Resource: `azurerm_spring_cloud_service` (#4928)
+  * Update CHANGELOG.md to include #6175
+  * azurerm_application_gateway: can combine include_path with targ… (#6175)
+  * formatting
+  * Update CHANGELOG.md to include #6191
+  * New resource: azurerm_hpc_cache_nfs_target (#6191)
+  * 0.12: adding a tfproto5 file for releases
+  * miss one Name...
+  * lowercase name
+  * update CHANGELOG.md to include #6276
+  * azurerm_management_group - deprecated and rename `group_id` to… (#6276)
+  * Update changelog for #6274
+  * azurerm_mssql_virtual_machine appeared twice
+  * update CHANGELOG.m to include #6266
+  * Update `azurerm_policy_set_definition`: Make metadata Computed… (#6266)
+  * Update azurerm_lb resource output docs (#6290)
+  * Modify code per review
+  * update CHANGELOG,md to include #6289
+  * azurerm_network_interface - always send enable_accelerated_netw… (#6289)
+  * update CHANGELOG.md to include #6211
+  * New resource & data source: azurerm_managed_application_definit… (#6211)
+  * Remove api_server_authorized_ip_ranges note from kubernetes_cluster docs
+  * Cleanup after v2.3.0 release
+  * v2.3.0
+  * formatting
+  * Update CHANGELOG.md to include #5746
+  * New resource `azurerm_policy_remediation` (#5746)
+  * Update CHANGELOG.md to include #5263
+  * New Resource: `azurerm_mssql_virtual_machine` (#5263)
+  * update CHANGELOG.mc to include #6229
+  * New data source: azurerm_network_service_tags (#6229)
+  * updating to include #6250
+  * `mprop`->`props`
+  * validate func
+  * terrafmt
+  * new resource: azurerm_log_analytics_datasource_windows_performance_counter
+  * Support cluster client cert common name (#6263)
+  * update CHANGELOG.md to include #6083
+  * New resource/data source: `azurerm_mssql_database` (#6083)
+  * tests: fix some resourcegroup names (#6247)
+  * Changed management policy to only send set properties
+  * updating to include #6242
+  * Update iothub_dps.html.markdown
+  * Remove private_link preview warning from kubernetes_cluster docs
+  * location: removing the duplicate Location suffix
+  * r/resource_group: switching over to the new Location func
+  * location: moving to it's own package/making this strongly typed
+  * updating to include #6162
+  * updating to include #6225
+  * updating to include #6237
+  * Update Changelog for #6234
+  * update CHANGELOG.md to include #6097
+  * azurerm_service_fabric_cluster - support for Client Certificate… (#6097)
+  * Update CHANGELOG.md to include #5778
+  * azurerm_cognitive_account - support for the `qna_runtime_endpoi… (#5778)
+  * goimports
+  * Addressing review
+  * r/virtual_machine_data_disk_attachment: handling the VM being deleted
+  * Linting
+  * linting
+  * r/managed_disk: conditional shut-down if it's attached & fixing tests
+  * r/managed_disk: conditionally restarting the vm as needed
+  * Update website/docs/r/managed_disk.html.markdown
+  * reboot a VM only on managed disk resize
+  * Various fixes
+  * Custom Resource Provider
+  * update CHANGELOG,md to include #5696
+  * New Resource: azurerm_machine_learning_workspace (#5696)
+  * update CHANGELOG,md to include #6233
+  * azurerm_sql_database  - use the correct base URI for the Extend… (#6233)
+  * update CHANGELOG.md to include #6228
+  * netapp_volume: allow up to 102400 MB for the storage_quota_in_g… (#6228)
+  * updated git diff target for linting
+  * make azurerm_linux_virtual_machine custom_data sensitive
+  * updating to include #6207
+  * updating to include #6214
+  * Update website/docs/r/hpc_cache.html.markdown
+  * azurerm_sql_database: extended_auditing_policy is for azurerm_sql_server
+  * hpc export `mount_addresses`
+  * update CHANGELOG.md to include #5923
+  * azurerm_traffic_manager_profile  - support for custom_header (#… (#5923)
+  * add test for disk_encryption_set_id modification, update docs
+  * provider change some more tests to .12 syntax (#6208)
+  * azurerm_dns_zone doc example - You can't have 2 public zones of… (#6165)
+  * Private link is now in GA (#6192)
+  * Update CHANGELOG.md to include #6125
+  * azurerm_lb: Don't assume IPv4 IP addresses (#6125)
+  * tests: fix various issues found in CI (#6206)
+  * implement disk_encryption_set_id modification for resourceArmManagedDiskUpdate
+  * update CHANGELOG.md toinclude #6140
+  * arm_public_ip: public_ips can be dynamic for ipv6 addresses (#6140)
+  * remove ForceNew from disk_encryption_set_id schema
+  * fix typo in run-lint-rest.sh (#6197)
+  * travis: conditionally running the `make lintrest` step
+  * update CHANGELOG.md to include #6035
+  * new resource: azurerm_hpc_cache_blob_target (#6035)
+  * updating to include #6179
+  * Update versions of AKS in use for tests
+  * updating to include #6170
+  * use schema.TypeSet instead of schema.TypeList for ipv4_firewall_rule
+  * Update to reflect node pool management changes
+  * formatting
+  * updating to include #6064
+  * d/storage_container: using the right properties
+  * r/storage_share: exposing the `resource_manager_id` field
+  * r/storage_container: exposing the resource_manager_id field
+  * d/storage_container: exposing the resource manager id
+  * updating to include #6169
+  * removing the beta feedback issue now the beta has been completed
+  * go mod tidy
+  * travis: conditionally running the test, lint and tflint steps
+  * dependencies: updating to v0.10.0 of github.com/tombuildsstuff/giovanni
+  * updating to include #5759
+  * updating to include #5981
+  * update CHANGELOG.md to include #6134
+  * Updating the Azure SDK to v40.3.0 / AzureAD to v0.8.0 (#6134)
+  * Cleanup after v2.2.0 release
+  * v2.2.0
+  * azurerm_servicebus_subscription : Fixed default_message_ttl for… (#6127)
+  * update CHANGELOG.md to include #5862
+  * azurerm_logic_app_workflow  - expose computed field: `endpoint_… (#5862)
+  * update CHANGELOG.md to include #4366
+  * Application Gateway support for Key Vault SSL certificate ids (#4366)
+  * Update database resource firewall rule docs (#6159)
+  * ordering
+  * updating to include #6133
+  * Update CHANGELOG.md
+  * Update CHANGELOG.md to include #5761
+  * azurerm_function_app - Add WEBSITE_CONTENT & WEBSITE_CONTENTAZU… (#5761)
+  * Update Changelog for #6131
+  * Addressing review
+  * Fix provider "kubernetes" link documentation for azurerm_kubern… (#6136)
+  * test fixes for resources in configs that were affected by 2.0 c… (#6144)
+  * split CHANGELOG.md entry for #5391 into two lines
+  * update CHANGELOG,md to include #5152
+  * Add new resource & data source: azurerm_powerbi_embedded (#5152)
+  * Fix sidebar
+  * Updated for #5391
+  * Allowed subcategories
+  * The argument retention_daily is required
+  * lint
+  * Fix typo in the version of the Azure Provider
+  * probe_name is optional in backend_http_settings
+  * Remove resource_group_name from azurerm_storage_container
+  * sidebar: adding an entry for the new data source
+  * linting
+  * fixed imports post rebase
+  * removed deprected schema entry.  Added timezone string validation
+  * New Data Source: `azurerm_app_configuration`
+  * r/app_configuration: refactoring to the split-out package structure
+  * Updated for #5803
+  * updating to include #5966
+  * Finishing documentation
+  * Testing
+  * update CHANGELOG.md to include #5951
+  * New Resource: azurerm_virtual_hub_connection (#5951)
+  * Update CHANGELOG.md to include #5049
+  * `azurerm_sql_database` - support for the `extended_auditing_pol… (#5049)
+  * fixed rule actions behaviour and added sinngle action tests
+  * updating to include #6108
+  * updating to include #6100
+  * linting: updating to account for the gosimple linter
+  * Fix azurerm_iothub_dps_shared_access_policy 'primary_connection_string' and 'secondary_connection_string'
+  * Continuation
+  * Changes `database` to `container`
+  * Working basic test
+  * add daily_memory_time_quota option to azurerm_function_app
+  * Goimports
+  * Refine availability set
+  * Start of cost management
+  * Update servicebus.go
+  * Delete servicebus_namespace.go
+  *  Updates with TF 0.12 & Azure 2.0 requirement
+  * moves current namespace validation into new file
+  * Cleanup after v2.1.0 release
+  * v2.1.0
+  * Update CHANGELOG.md
+  * provider: registering the Microsoft.MixedReality RP (#6071)
+  * gofmt
+  * Add required features field to the azurerm provier
+  * align the validation rule with the portal
+  * updating to include #6050
+  * Fix typo in acc test
+  * dependencies: fixing broken Nested Go Modules
+  * removing dead vendor links
+  * storage: removing the unused accounts client
+  * r/storage_blob: fixing the AAD tests having a duplicated provider block
+  * storage: switching to use the SharedKeyForAccount implementation
+  * dependencies: updating to:
+  * Update CHANGELOG.md to include #5961
+  * azurerm_mariadb_server  - mark geo_redundant_backup as ForceNew (#5961)
+  * Update AKS network_policy documentation (#5826)
+  * Cannot set max_count and min_count to zero when autoscaling is… (#6020)
+  * Update CHANGELOG.md to include #5931
+  * Add tags to cluster node pools (#5931)
+  * Update changelog for #5531
+  * Update resource_arm_kubernetes_cluster_test.go
+  * Fix format of notes section
+  * Updated to include #6015
+  * `azurerm_frontdoor`: Upcoming RP change forces all new front door resources to be created in the `Global` location (#6015)
+  * Update CHANGELOG.md to include #5590
+  * azurerm_lb - support for the `private_ip_address_version` prope… (#5590)
+  * Update CHANGELOG.md to include #6017
+  * Added new data source `azurerm_servicebus_topic_authorization_r… (#6017)
+  * Update CHANGELOG.md to include #5851
+  * azurerm_network_watcher_flow_log  - support for the`interval_in… (#5851)
+  * Update CHANGELOG.md to include #5036
+  * `azurerm_sql_server` - support for the `extended_auditing_polic… (#5036)
+  * r/storage_account: casting to a string
+  * r/storage_account: handling an empty `static_website` block being defined
+  * r/storage_account: accessing the data plane api's using Giovanni
+  * tidying
+  * Fix tests
+  * features: removing the unused "two point oh" feature
+  * tests: clarifying the features block is required going forward
+  * r/search_service: the fields `partition_count` and `replica_count` are no longer forcenew
+  * tools/website-scaffold: fixing a typo
+  * linting
+  * tools: fixing an issue when scaffolding the example for a data source
+  * r/search_service: updating the docs
+  * tooling: adding the scaffold-website tool to the makefile
+  * d|r/resource_group: generating updated documentation
+  * New Tool: website-scaffolder
+  * wip: adding a scaffolder for resources/data sources
+  * Updated virtual_hub.html.markdown (#6033)
+  * Update Changelog for #6011
+  * Update CHANGELOG.md to include #5446
+  * New Resource: IoTCentralApplocation (#5446)
+  * Fix sidebar link
+  * docs: Updated `traffic_manager_profile` arguments (#6024)
+  * Address review
+  * Update CHANGELOG.md to include #5995
+  * `azurerm_netapp_*` - support for `tags` & add ID parsing functi… (#5995)
+  * provider: remove deprecated functions and other misc cleanup (#6009)
+  * docs: `Updates dev_test_windows_virtual_machine` example (#6013)
+  * Website and testing
+  * Start of spatial anchor accounts
+  * Update CHANGELOG.md to include #5993
+  * New Resource & Data Source: azurerm_database_migration_project (#5993)
+  * provider: remove unnecessary locals (#6008)
+  * Update CHANGELOG.md to include #5528
+  * New Resource: `azurerm_hpc_cache` (#5528)
+  * azurerm_network_interface_application_gateway_backend_address_p… (#5999)
+  * Adds a Missing Whitespace (#5997)
+  * azurerm_cosmosdb_mongo_collection: Remove deprecated and remove… (#5996)
+  * rename "Data Migration" into "Database Migration" (#5994)
+  * Update CHANGELOG.md
+  * azurerm_netapp_[pool|snapshot|volume] - fix import test (#5992)
+  * Update CHANGELOG.md to include #5485
+  * azurerm_netapp_volume  - support NFSv4.1, vol sizing issue (#5485)
+  * Update to reflect batch API version change in #5967
+  * Update resource_arm_kubernetes_cluster_node_pool_test.go
+  * Update CHANGELOG.mdto include #5258
+  * New Resource & Data Source: azurerm_data_migration_service (#5258)
+  * Update resource name for ASE in data docs (#5989)
+  * Update CHANGELOG.md to include #5958
+  * 'azurerm_redis_cache' - Support for 'primary_connection_string'… (#5958)
+  * Update CHANGELOG.md to include #5967
+  * support `public_ips` for resource `azurerm_batch_pool` (#5967)
+  * azurerm_managed_disk - DOC: Update disk encryption attribute (#5987)
+  * Refine doc of `azurerm_key_vault` (#5968)
+  * Update Changelog for #5053
+  * azurerm_api_management_product_group: fix import error resource… (#5978)
+  * azurerm_windows_virtual_machine - Add WinRM protocol to documen… (#5982)
+  * azurerm_linux_virtual_machine  - Fix broken link in documentati… (#5983)
+  * docs: Fixed Typo in `r/subnet` (#5980)
+  * Fixed regex to parse management groups correctly on import
+  * Update changelog for 5915
+  * Fix markdown formatting
+  * `azurerm_kubernetes_cluster` - Address documentation typo #5964
+  * example: `azurerm_application_insights` - Use location from resource group (#5970)
+  * Address review comments
+  * Update to include #5924 (fixes #5499 #5903)
+  * azurerm_frontdoor fixes #5499 #5903
+  * Some efforts to satify the linter
+  * Fix format
+  * Update validation rules for linux and windows vms
+  * updated text for #5906
+  * updating to include #5906
+  * azurerm_application_gateway - support 125 for V2 sku capacity (#5906)
+  * Update Changelog for #5941
+  * `azurerm_batch_pool` - `frontend_port_range ` is now set correctly. (#5941)
+  * Update CHANGELOG.md to include #5445
+  * Some update to conform 2.0
+  * Rebase to master and fix compiling error
+  * Refinement
+  * Update the doc a little bit
+  * Fix CI failure
+  * Add support for scale in policy and terminate notification
+  * Update CHANGELOG.md to include #5949
+  * Update CHANGELOG.md to include #5855
+  * export fqdn attribute in private dns record resource
+  * v0.12 changes
+  * Enable syntax highlighting
+  * Update CHANGELOG.md to include #5837
+  * Updating to include #5943
+  * Bug: `azurerm_frontdoor_firewall_policy` add validation for Frontdoor WAF Name Restrictions (#5943)
+  * Update CHANGELOG.md to include #5942
+  * Update CHANGELOG.md to include #5876
+  * Schema for data source on "tags"
+  * New Data Source: 'azurerm_kusto_cluster'
+  * Update CHANGELOG.md to include #5934
+  * allow proper key length
+  * Update CHANGELOG.md to include #5935
+  * updated for 5915
+  * azurerm_search_service - the properties replica_count & partition_count are no longer force new
+  * azurerm_storage_account - allow up to 50 tags
+  * fix travis build
+  * add addtional missing provider blocks
+  * add provider block to acc tests
+  * run upgrade012 on all acc tests
+  * Update vmss extension type_handler_version docs
+  * update
+  * apply changes from code review
+  * Updated for 5839
+  * linting: terrafmt doesn't depend on terraform anymore
+  * Update CHANGELOG.md to include #5827
+  * Update CHANGELOG.md to include #5877
+  * exclude app_service_environment_id from update when empty
+  * Correct typo
+  * Add tests for kubernetes cluster node labels
+  * Add support for node_labels in azurerm_kubernetes_cluster and azurerm_kubernetes_cluster_node_pool resources #4968
+  * Update CHANGELOG.md to include #5838
+  * Fixes #5622 #5208
+  * Update CHANGELOG>md to include #5901
+  * fix source_image_id for linux scalesets
+  * Improper import examples
+  * Update cosmosdb_mongo_collection.html.markdown
+  * remove reference to non-existing page
+  * Add Type to Virtual WAN properties
+  * remove duplicate set and undo changes from prettier
+  * Add network interface and security group association
+  * Cleanup after v2.0.0 release
+  * v2.0.0
+  * more fields support for `azurerm_kusto_cluster`
+  * updating to include #5853
+  * updating to include #5852
+  * typo
+  * add enable_disk_encryption to azurerm_kusto_cluster
+  * examples: adding the provider block to each example
+  * azurerm_cosmosdb_mongo_collection - remove deprecated property
+  * r/frontdoor: updating the default values within the `forwarding_configuration` block
+  * updating to include #5850
+  * r/storage_account_customer_managed_key: adding args to the error
+  * linting
+  * updating to include #5668
+  * updating to include #5773
+  * d/storage_account: removing removed fields
+  * d/key_vault_key: removing a dead field
+  * quotes
+  * removing `resource_group_name` from the storage_container resource
+  * r/template_deployment: removing the deprecated resource_group_name field from `azurerm_storage_container`
+  * r/network_interface_backend_address_pool_association - removing the deprecated location field
+  * r/mariadb: fixing the sku block
+  * r/maps_account: fixing the casing
+  * switching from `service_principal_application_id` to `client_id`
+  * switching from `service_principal_object_id` to `object_id`
+  * r/hdinsight*: removing the `resource_group_name` argument from the test configs
+  * changing storage account accout kind default to StorageV2
+  * r/storage_account_customer_managed_key: fixing the example
+  * r/key_vault_key: removing the unused `key_vault_access_policy_id` field
+  * updating to include #5844
+  * r/storage_account_customer_managed_key: adding validation
+  * r/storage_account_customer_managed_key: comments from code review
+  * updating to include #5842
+  * r/storage_account: locking on the correct key during update
+  * building: removing references to dead tests
+  * sidebar: removing a dead link
+  * updating to include #5508
+  * r/(monitor_)metric_alert_rule: removing since these are EOL
+  * r/app_service_environment: checking the ID's from the state
+  * Add MaxItems for cross-resource query
+  * Review updates
+  * Fix type assertions; simplify cross-resource query example
+  * r/app_service_plan: increasing the timeouts to 60m for ASE's
+  * updating to include #5816
+  * r/key_vault_key: formatting
+  * recoveryservices: renaming the files
+  * Updates to CMK
+  * removing deprecated resources
+  * Update domain regex to allow dash (-)
+  * Change dns to dns_servers
+  * deps: fixing the vendor file
+  * refactor: switching to the same client
+  * r/app_service_environment: fixing the plan test
+  * r/app_service_environment: converting from the display to actual sku
+  * r/app_service_environment: fixing the requires import test
+  * r/app_service_env: fixing the import test
+  * r/app_service_environment: fixing up linting
+  * tests: adding in missing checkdestroys for the data source tests
+  * r/app_service_environment: switching to use a custom update method/poller
+  * r/app_service_environment: fixing comments from code review
+  * d/app_service_environment: renaming the file to match the convention
+  * web: removing todos
+  * d/app_service_environment: fixing comments from code review
+  * network: moving the virtual network parse/validaters into those packages
+  * r/subnet: moving the subnet parser into the parse package
+  * r/app_service_environment: fixing up the build errors
+  * refactor validate to correct helper location
+  * fmt fix
+  * docs update
+  * refactor tests, fix tflint issues
+  * Refactor for 2.0
+  * Added forgotten requiresImport test
+  * Linter fixes
+  * Adds new resource and datasource for App Serice Environment (v2 support only)
+  * updating to include #5823
+  * fixing comments from code review
+  * updating to include #5831
+  * updating to include #5344
+  * linting
+  * r/keyvault: fixing the soft delete disabled test
+  * r/keyvault: removing dead code
+  * Added 5833
+  * adding gh marker for 5832
+  * Adding 5832
+  * Updated data source and docs
+  * updating to include #5825
+  * updated so os_type is always set
+  * r/key_vault: removing a superflurious if statement
+  * fix for linux function apps
+  * r/key_vault: updating the docs
+  * r/key_vault: outputting a warning rather than an error during the delete
+  * Doc updates, test fixes
+  * Updated validate to correct method for cidrs
+  * r/key_vault: fixing up the tests
+  * add support for long text record
+  * docs: Adds `id` to r/resource_group Fixes #5686
+  * add `tags` in doc
+  * docs: updates cdn_endpoint `origin` attr to required Fixes #5750
+  * Added Purge on Destroy back in
+  * dns - add parse ID and func (#5779)
+  * Add test case and txt to 2.0 guide
+  * Test for blank path
+  * allow_virtual_network_access defaults to true
+  * Fix for #4868
+  * Start adding purge on destroy back in
+  * minor: committing some lingering test files
+  * r/key_vault: updating the docs
+  * r/key_vault: handling conditionally updating the key vault resource
+  * More test fixes
+  * Removed another redundant test and config
+  * Removed redundant test and config
+  * nil pointer fix
+  * nil pointer fix and others
+  * missed ip to cidr change
+  * Missed removing virtual_network_name from function_app again
+  * Missed removing virtual_network_name from function_app
+  * r/key_vault: moving the migration code closer to the package
+  * Removed multipleAssignedIdentities test as ManagedServiceIdentityTypeSystemAssignedUserAssigned type removed
+  * excluded implicit Any rule from state for ipRestrictions
+  * test fixes. Unused virtual_network_name field removed
+  * (d|r)/key_vault: moving the name validation into that package
+  * validate: removing the bool validators
+  * add `tags` for resource `azurerm_automation_dsc_configuration`
+  * lint and goimports
+  * set tags in keyvault_certificate to ForceNewSchema as resource has no Update method
+  * Updated app_service SDK version
+  * Updated for 5817
+  * updating to include #5815
+  * r/network_interface_application_security_group_association: fixing the tests
+  * PR suggestion fix
+  * r/network_interface_application_security_group_association: missed the assertion
+  * r/recovery_services_vault: using the requested cloud rather than the default
+  * r/network_interface_application_security_group_association: fixing the tests
+  * r/firewall: upping the timeouts to 90m
+  * tooling: removing a panic
+  * updating the readme
+  * linting
+  * removing deadcode
+  * Final deprecations
+  * 2.0-compute (#5811)
+  * Update Changelog for #5775
+  * Move log_analytics to 2.0 (#5775)
+  * makefile: hooking up the categories generator
+  * categories: adding a generator to output the categories list from the provider registration
+  * website: moving FrontDoor into the Network category
+  * provider: adding a `WebsiteCategories` list to each registration
+  * Made application_type case sensitive.  Removed workaround for fixed SDK/API issue
+  * Docs updates
+  * r/network_interface_application_security_group_association: removing `ip_configuration_name`
+  * updating to include #5725
+  * removed deprecated recoveryservices resources. Updated datasource and docs
+  * updating to include #5772
+  * auth: using the correct authorizer for the service principals client
+  * updating to include #5808
+  * test fixes
+  * Update changelog for #5792
+  * Update the frontdoor package to 2.0 (#5792)
+  * Update Changelog for #5790
+  * Update iothub to 2.0 (#5790)
+  * address review
+  * Fix test case
+  * Update azurerm/internal/services/sql/resource_arm_sql_database.go
+  * Update azurerm/internal/services/sql/resource_arm_sql_database.go
+  * Update test cases
+  * updating to include #5781
+  * docs: adding to the upgrade guide
+  * r/storage_account: updating the default for `enable_https_traffic_only` to `true`
+  * r/api_management_api_operation: support for Requires Import
+  * updating to include #5801
+  * r/express_route_gateway: tweaking the timeouts
+  * updating to include #5805
+  * updating to include #5743
+  * updating to include #5794
+  * website: removing link to a dead link
+  * Linting
+  * config typo fix
+  * Test fixups
+  * Remove computed from required
+  * linting
+  * New data source: 'azurerm_eventhub_authorization_rule'
+  * r/express_route_gateway: fixes from #5523
+  * updating to include #5523
+  * linting
+  * r/mysqL_server: fixing assertions
+  * updating to include #5793
+  * r/mysql_server: fixing the tests
+  * updating to include #5795
+  * dns: updating the tests to match the fields always being set
+  * moving the bug fix to the bug fixes section
+  * updating to include #5784
+  * r/eventhub: updating the test config to account for the storage container no longer taking the rg name
+  * r/dns_ns_record: fixing a bug during update
+  * r/dns_zone: removing tests covering the deprecated fields
+  * r/devspace: switching to use `default_node_pool`
+  * r/api_management_api_(operation|schema): fixing the tests
+  * linting
+  * linting
+  * Fixup tests
+  * r/subnet: fixing the broken test
+  * fixing the linting
+  * linting
+  * r/subnet: removing the old network_security_group_id field from the docs
+  * r/route_table: removing an obsolete test
+  * r/subnet: removing the inline `route_table_id` and `network_security_group_id` fields
+  * updating to include #5797
+  * Remove deadcode
+  * 2.0-automation
+  * 2.0-cognitive
+  * 2.0-cosmos
+  * 2.0-cosmos
+  * 2.0-devspace
+  * 2.0-dns
+  * eventhub -> 2.0
+  * Update ACR docs SKU and GeoRepl Note
+  * Removed legacy tests no longer required
+  * Remove deadcode
+  * fix two more tests for attribute reference
+  * fixup tests for sku_name
+  * updating to include #5774
+  * linting
+  * r/keyvault: removing dead code
+  * r/keyvault: updating the remaining tests
+  * r/subnet: removing the `route_table_id` field from the examples/docs
+  * r/key_vault_*: handling the parent key vault not being available once it's deleted
+  * r/key_vault: removing the test expecting a complaint
+  * automation: fixing the tests to account for the field being removed
+  * Very minor consistency edits
+  * docs: adding the `azurerm_network_interface_security_group_association` to the sidebar
+  * updating to include #5693
+  * updating to include #5624
+  * d/network_interface: updating the tests
+  * r/key_vault_access_policy: removing the unused assignment
+  * linting
+  * docs account_name to automation_account_name update
+  * caught additional 2.0 todos
+  * updating to include #5777
+  * Update azurerm/internal/services/mariadb/resource_arm_mariadb_server.go
+  * r/network_interface_application_gateway_association: fixing the tests
+  * r/network_interface: conditionally updating the nics only for ipv4 configurations
+  * r/network_interface: updating the tests / rewriting the docs
+  * updating to include #5710
+  * spelling
+  * r/network_interface: applying properties managed in other resources to this resource
+  * New Resource: `azurerm_network_interface_security_group_association`
+  * updating to include #5764
+  * Fix for update
+  * updating to include #5753
+  * r/app_service_plan: fixing a merge conflict
+  * updating to include #5649
+  * updating to include #5776
+  * r/iothub_dps: fixing the test
+  * updating to include #5721
+  * Update azurerm/internal/services/storage/resource_arm_storage_account.go
+  * Upgrade keyvault to 2.0
+  * remove conflictswith
+  * upgrade maps to 2.0
+  * Update mariadb to 2.0
+  * On metric alert rule creation, the 'autoMitigate' property should be set to true by default
+  * updating to include #5744
+  * updating to include #5768
+  * Update website/docs/guides/2.0-upgrade-guide.html.markdown
+  * add zone_redundant to azurerm_sql_database
+  * Address review comments
+  * r/compute - adds support for additional dedicated host SKUs Validation added for two additional SKUs: DSv3-Type2 and ESv3-Type2 Fixes #5700
+  * Format doc hcl blocks
+  * Updated doc
+  * r/(linux|windows)_virtual_machine: using the Delete timeout during Deletion
+  * Tweaked boolean logic for checkForNonDefaultStorageAccountNetworkRule
+  * r/network_interface: loading the existing nic details during a delta update
+  * r/network_interface_nat_rule_association: commiting the missing method
+  * r/network_interface: removing the deprecated `load_balancer_backend_address_pools_ids` field
+  * r/network_interface: removing the deprecated `load_balancer_inbound_nat_rules_ids` field
+  * r/network_interface: removing the deprecated `application_security_group_ids` field
+  * r/network_interface: removing the `application_gateway_backend_address_pool_ids` field
+  * r/network_interface: introducing a separate update method
+  * removing dead code
+  * linting
+  * removed unintended carets
+  * Minor formatting update. Added azurerm_role_definition data source note
+  * updating to include #5754
+  * updating to include #5747
+  * updating to include #5752
+  * r/log_analytics_workspace_linked_service: removing the deprecated resource
+  * iothub: removing the deprecated `azurerm_iot_dps` and `azurerm_iot_dps_certificate` resources
+  * updating to include #5748
+  * r/application_gateway: updating the default value for the `body` field within the `match` block
+  * r/mssql_elasticpool: fixing the import tests
+  * updating to include #5733
+  * grouping the breaking changes together
+  * tweaked import acctests
+  * updating to include #5425
+  * removing the AzureAD resources since they've been split out
+  * d/batch_account: switching to use the azuread provider
+  * r/mysql_server: removing reference to the old field
+  * fixed clientconfig_basic test
+  * r/kubernetes_cluster: updating the default for load_balancer_sku to `Standard`
+  * updating to include #5737
+  * updating to include #5722
+  * updating to include #5719
+  * Test fixes
+  * Format private service connection
+  * Update subnets options and add details for endpoint
+  * update mssql to 2.0
+  * Update mysql to 2.0
+  * Updates
+  * Fixed import issue
+  * Fix whitespace
+  * remove synthentic delays
+  * Add SACMK doc to TOC
+  * Rename resource
+  * Correct typo
+  * r/signalr_service: updates ID to correct case fixes #5715
+  * Update main.tf
+  * r/postgresql_server: missed a failing test condition
+  * r/postgresql_server: fixing broken tests
+  * notificationhub: fixing docs
+  * r/app_service_plan: fixing a bad rebase
+  * r/storage_account_network_rules: switching to use the networkruleset from props
+  * r/storage: fixing broken tests
+  * Remove unused method
+  * Update resource_arm_app_service_plan.go
+  * Revert web changes
+  * Continue fixing tests
+  * fix up tests
+  * fix imports
+  * Removed additional deprecated fields
+  * Preparing the the storage package for 2.0
+  * notificationhub: fixing the tests
+  * r/notification_hub_namespace: making the `sku_name` field required
+  * notificationhub to 2.0
+  * r/relay_hybrid_connection: fixing the resource name
+  * postgres service to 2.0
+  * r/relay_hybrid_connection: fixing the import test
+  * Update upgrade guide
+  * moving relay_namepace to 2.0
+  * Removed legacy check and updated test
+  * Added Computed flag to TypeList resources with default values
+  * added optional bool defaults for diff
+  * 2.0 todos and associated tests
+  * provider: making the features block optional during testing
+  * provider: hooking into the test refresh to set default features
+  * updating to include #5662
+  * linting
+  * provider: making the `features` block required
+  * updating to include #5724
+  * updating to include #5661
+  * docs: continuing to remove references to the beta
+  * updating to include #5712
+  * updating to include #5709 and #5717
+  * docs: updating the upgrade guide with the default value change for Availability Sets
+  * r/availability_set: flipping the default value for `managed` to `true`
+  * docs: removing the Beta signifier from docs
+  * vendor: removing the scheduler package
+  * 2.0: removing Scheduler since this is no longer supported
+  * 2.0: Removing `azurerm_container_service`
+  * resolve review comments
+  * Fix lint newlint
+  * Update servicebus queue import test
+  * Remove properties from datasource tests
+  * Prepare servicebus for 2.0
+  * Updating web for 2.0
+  * Update error conditional
+  * Make error msg more user friendly
+  * Documentation changed based on observed terraform and Azure API behavior.
+  * Linking to the 1.44 release for older changelog entries
+  * updating to include #5705
+  * docs: removing the beta disclaimer for custom timeouts
+  * 2.0: enabling the Requires Import functionality by default
+  * 2.0: enabling the new resources feature toggle by default
+  * 2.0: removing the feature toggle for Custom Timeouts
+  * Cleanup after v1.44.0 release
+  * v1.44.0
+  * removing a duplicate section
+  * r/storage_account: ensuring the `blob_properties` fields always have a value set
+  * r/storage_account: ensuring default values are set when blob_properties is omited
+  * fmt fix
+  * updated Windows VM source_image_id validation
+  * updated sysprep step for reliability. Tweaked test config. removed comments
+  * Updated Windows image sysprep for image acctests
+  * add recommendation for scope parameter value
+  * minor changes
+  * Fix example usage
+  * Correct sidebar location
+  * Add express_route_gateway to website sidebar
+  * remove commented block
+  * Requested changes to error handling & structure Documentation fixes
+  * Update IP Prefix validation
+  * Progress
+  * format docs
+  * fix site attributes
+  * Format test TF code
+  * docs: updating the "how to migrate between deprecated resorces" guide
+  * 1.44 Doc Changes (#5684)
+  * r/app_service: documenting at which level the `backup` block exists
+  * Update kubernetes_service_versions.html.markdown
+  * Update website/docs/d/kubernetes_service_versions.html.markdown
+  * linter changes
+  * Remove redundant nil check
+  * Provide ability to set 'cors_rule' for blob properties
+  * updating to include #5516
+  * updating to include #5518
+  * Add documentation for `include_preview` argument
+  * Address PR comments
+  * Validate metric_trigger query; add example to docs
+  * adding notes for 1.44.0
+  * Add an option to filter out preview aks releases when fetching versions
+  * updating to include #5679
+  * updating to include #5680
+  * d/iot_hub_dps_shared_access_policy: fixing comments from code review
+  * Remove (Required) from Argument Reference section
+  * Fix formatting and update documentation
+  * New Data Source: 'azurerm_iothub_dps_shared_access_policy'
+  * Update documentation
+  * Check for nil
+  * Format files
+  * New Data Source: 'azurerm_eventhub_consumer_group'
+  * Add FormRecognizer account kind
+  * r/loadbalancer: fixing a crash during a dropped response
+  * Add form recognizer as a Cognitive account kind
+  * updating to include #5676
+  * r/function_app: grammar
+  * r/virtual_machine_scale_set: adding a notice about the superseding
+  * r/function_app: support for User Assigned Identities
+  * updating to include #5440
+  * r/function_app: ensuring the `ip_address` and `subnet_id` address fields are always set
+  * Revert a change back due to API problem
+  * updating to include #5430
+  * updating to include #5522
+  * completes parse ID func/files
+  * Update Changelog for #5604
+  * `azurerm_cognitive_account` - Add support for ImmersiveReader #5604
+  * Update Changelog for #5652
+  * `azurerm_databricks_workspace`: Doc Fix for Trial SKU #5652
+  * `azurerm_databricks_workspace`: Support for Trial SKU #5652
+  * adds parse ID functions/files
+  * fixes ID error
+  * tflint fix 2
+  * tflint fixes
+  * are -> is
+  * address code review suggestions
+  * Mostly working
+  * Corrected Prefix Length
+  * Apply suggestions from code review
+  * Fixing load balancer file names
+  * Got it to compile
+  * Fixing sidebar links
+  * Initial port to new code base
+  * completes parse ID func/files
+  * Update Changelog for #5593
+  * `azurerm_api_management` - Add http2 protocol support for API Management (#5593)
+  * completes parse ID func/files
+  * r/(linux|windows)_virtual_machine_scale_set: conditionally updating the instances
+  * Escape health probe when health probe is empty
+  * Add health probe back to update to prevent any potential errors from the service
+  * terrafmt
+  * Updated CHANGELOG.md for 5640
+  * updating to include #5614
+  * fixed tf upgrade todo
+  * Update website/docs/r/sql_database.html.markdown
+  * r/storage: switching then name of the authorizer field
+  * r/storage: authenticating to the Blob/Queues API's using AzureAD Auth
+  * documentation: change resources to .12 (P-Z)
+  * documentation: change resources to .12 (K-P)
+  * documentation: change resources to .12 (D-K)
+  * documentation: change resources to .12 (A-C)
+  * documentation: change guides to .12
+  * documentation: change datasources to .12
+  * First pass address latest review
+  * Add monitor helpers
+  * update storage account static website docs
+  * add support for static website to azurerm_storage_account
+  * fixes extra segment error
+  * fixes a few misses
+  * Fix test case lint issue
+  * Fixed two typos causing lint errors
+  * Fix basic test
+  * Remove depricated sku from tests
+  * Add code to skip purge if not soft deleted
+  * completes parse ID func/files
+  * Fix spelling mistakes
+  * creates parse func/files
+  * Update CHANGELOG.md
+  * `azurerm_key_vault_key` - support for `not_before_date` and `expiration_date` (#5619)
+  * azurerm_sql_database: Correction to service objective docs (#5644)
+  * Update Changelog for #5643
+  * Improvement: Data Source Documentation Cleanup (#5643)
+  * Update Changelog for #5642
+  * New Data Source: 'azurerm_function_app' (#5642)
+  * Update CHANGELOG.md to include #5565
+  * azurerm_storage_account - fix hanging destroy caused by multipl… (#5565)
+  * tflint whitespace fix
+  * fixed linux vm shared image tests. added support for shared_image_id variants
+  * Removed sku support  from datasource
+  * goimports-ed
+  * Fix features test cases
+  * Use custom parse function in acctest
+  * Custom disk encryption set parser and validation
+  * updated or to and
+  * Complete
+  * Correct example, and clarify what is output
+  * adds missing folder
+  * completes parse ID functions/files
+  * completes parse ID functions/files
+  * adds missing value to WrongCasing test
+  * adds missing value to WrongCasing test
+  * Update .gitignore for tfvars files
+  * removed tfvars file
+  * Update examples/virtual-machines/linux/load-balanced/main.tf
+  * Update examples/virtual-machines/linux/load-balanced/main.tf
+  * Update examples/virtual-machines/linux/public-ip/README.md
+  * Update examples/virtual-machines/linux/load-balanced/README.md
+  * Update examples/virtual-machines/windows/vm-joined-to-active-directory/modules/domain-member/main.tf
+  * Updated AD example to wait longer and more reliably for the domain to become available to join
+  * Removed unneeded provisioner block
+  * completes parse ID functions/files
+  * deletes unneeded comments
+  * completes parse ID functions/files
+  * Add name validation for azurerm_role_assignment
+  * Working soft delete and purge
+  * databricks - add ID parsing function (#5621)
+  * cognitive - add ID parsing function (#5620)
+  * adds parse ID functions/files
+  * Update CHANGELOG.md for 5610
+  * Error message tweaks in SSH Key validation
+  * Enhanced SSH key valiation
+  * Added windows AD domain attached VM example
+  * Update website/docs/r/virtual_machine.html.markdown
+  * Fix documentation error
+  * deletes commented code
+  * fixes ID error
+  * Update kubernetes_cluster documentation (#5406)
+  * provider tests: enable more tfproviderlint checks (#5603)
+  * adds parse func; need to fix subscription error
+  * updated simple ssh validation to exclude key comments in checks
+  * Added simple ssh public key validation
+  * Cleanup after v1.43.0 release
+  * Added linux_vm loadbalanced example
+  * Added examples for linux vm with public IP, linux vm with managed disk attachment.  Tidied some HCL1 -> HCL2
+  * Done except for purge on destroy
+  * fix acc test
+  * minor fix to directline tests
+  * review fixes
+  * Fix lint issues #3
+  * Fix lint issues #2
+  * Fix lint issues and minor typos
+  * Fix code review items
+  * WIP Get value from provider
+  * Rename action to alert in docs
+  * First pass at separating into two resources
+  * First pass update docs post-review
+  * Resize test to reasonable size
+  * Resolve PR feedback
+  * Extract `ip_restriction` expand and flatten methods
+  * Fix tflint error
+  * review feedback response
+  * tflint fixes
+  * Resolve linting errors
+  * Update document
+  * Remove `subnet_mask` property
+  * Add documentation
+  * gofmt changes
+  * Add ExpressRoute Gateway resource and tests
+  * Changed `virtual_network_subnet_id` property name
+  * Changed test case method name
+  * rename default transformation name from Transformation to main (like the portal does); enable import of not jobs which were not created in TF; keep backwards compatibility
+  * Update azurerm/internal/services/keyvault/resource_arm_key_vault.go
+  * Update website/docs/r/key_vault.html.markdown
+  * Update website/docs/r/key_vault.html.markdown
+  * Add sensitive flags to keys
+  * Fix linting errors
+  * fix tflint errors
+  * Add Directline
+  * Fix code formatting issue
+  * azurerm_function_app - support for ip_restriction
+  * fix lint errors
+  * Key Vault: support for soft delete
+  * Add moved tests to registration
+  * Update tests and docs to pass checks
+  * fix response import
+  * Remove heredoc in docs example
+  * Minor updates and bug fixes
+  * Fix linting errors; minor cleanup
+  * Acceptance tests passing
+  * New Resource: `azurerm_monitor_scheduled_query_rules`
+
+-------------------------------------------------------------------
+Wed Mar  4 13:27:01 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Spec clean up
+- Create required symlink
+
+-------------------------------------------------------------------
+Wed Feb  5 09:51:01 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.43.0
+  NOTES:
+  * **Opt-In Beta:** Version 1.43 of the Azure Provider introduces an opt-in Beta for
+    some of the new functionality coming in 2.0 - more information can be found
+    [in the Beta guide](https://terraform.io/docs/providers/azurerm/guides/2.0-beta.html).
+  * **Terraform 0.10/0.11:** The upcoming version 2.0 of the Azure Provider will not support
+    Terraform 0.10.x & Terraform 0.11.x - you will need to upgrade to Terraform 0.12 to
+    use version 2.0 (and above) of the Azure Provider.
+  FEATURES:
+  * **New Data Source:** `azurerm_eventhub_namespace_authorization_rule`
+    ([#5489](https://github.com/terraform-providers/terraform-provider-azurerm/issues/5489))
+  * **New Data Source:** `azurerm_mariadb_server`
+    ([#5506](https://github.com/terraform-providers/terraform-provider-azurerm/issues/5506))
+  IMPROVEMENTS:
+  * `azurerm_application_insights` - support for the `daily_data_cap_in_gb` &
+    `daily_data_cap_notifications_disabled` properties
+    ([#5480](https://github.com/terraform-providers/terraform-provider-azurerm/issues/5480))
+  * `azurerm_private_endpoint` - expose mapping between `group_id` and `subresource_names`
+    ([#5571](https://github.com/terraform-providers/terraform-provider-azurerm/issues/5571))
+  * `azurerm_recovery_services_vault` - support for the `soft_delete_enabled` property
+    ([#5586](https://github.com/terraform-providers/terraform-provider-azurerm/issues/5586))
+  BUGS:
+  * `azurerm_databricks_workspace` - allow underscores in `name`
+    ([#5548](https://github.com/terraform-providers/terraform-provider-azurerm/issues/5548))
+  * `azurerm_dns_aaaa_record` - normalize IPv6 addresses
+    ([#5459](https://github.com/terraform-providers/terraform-provider-azurerm/issues/5459))
+  * `azurerm_frontdoor` - including required `minimum_tls_version` to the `custom_https_configuration`
+    block ([#5539](https://github.com/terraform-providers/terraform-provider-azurerm/issues/5539))
+  * `azurerm_managed_disk` - correctly handles disk resizing when attached to a virtual machine
+    ([#5579](https://github.com/terraform-providers/terraform-provider-azurerm/issues/5579))
+  * `azurerm_marketplace_agreement` - recreate agreement if not accepted
+    ([#5582](https://github.com/terraform-providers/terraform-provider-azurerm/issues/5582))
+  * `azurerm_mysql_virtual_network_rule` - allow `subnet_id` to be in a different subscription
+    then the database ([#5568](https://github.com/terraform-providers/terraform-provider-azurerm/issues/5568))
+  * `azurerm_virtual_network_gateway_connection` - increase `routing_weight` maximum to `32000`
+    ([#5540](https://github.com/terraform-providers/terraform-provider-azurerm/issues/5540))
+- For the changes between 1.15.0 and 1.43.0, see CHANGELOG.md included in this package
+- Update _service file
+- Move LICENSE to %license section
+- Include CHANGELOG.md in %doc section
+- Increase golang API in BuildRequires to > 1.12
+- Increase terraform version dependency to > 0.12.0
+- Invoke %gobuild with -mod=vendor "" to disable network access
+
+-------------------------------------------------------------------
+Fri Sep 21 12:19:53 UTC 2018 - ldevulder@suse.de
+
+- Update to version 1.15.0:
+  * v1.15.0
+  * Updating to include #1627
+  * New Resources: `azurerm_firewall` & `azurerm_firewall_network_rule_collection` (#1627)
+  * Update CHANGELOG.md to include #1918
+  * test: logic app http trigger allows params in url
+  * Updating to include #1921
+  * Update TimeSpan documentation in Service Bus Queue/Topic (#1921)
+  * Log Analytics Solution: removing crash points/refactoring
+  * Update resource_arm_logic_app_trigger_http_request.go
+
+-------------------------------------------------------------------
+Thu Jul 05 09:01:46 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 1.8.0+git20180704.9c1edb08:
+  * Updating to include #1172
+  * Ensuring we always set the `vhd_containers` field (#1411)
+  * Updating to include #1411
+  * `azurerm_lb` - allow `private_ip_address` to be set to an empty value (#1481)
+  * Updating to include #1481
+  * fixed typo on vpn_client_protocols
+  * Application Security Groups now GA
+  *  Updating to v18.0.0 of Azure/azure-sdk-for-go / v10.12.0 of Azure/go-autorest (#1487)
+  * Updating to include #1487
+
+-------------------------------------------------------------------
+Thu Jul  5 08:59:03 UTC 2018 - ldevulder@suse.com
+
+- Initial release

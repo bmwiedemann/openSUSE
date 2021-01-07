@@ -1,0 +1,2 @@
+addFilter (".*W: no-manual-page-for-binary terraform-provider-azurerm")
+addFilter (".*W: filename-too-long-for-joliet terraform-provider-azurerm.*")
