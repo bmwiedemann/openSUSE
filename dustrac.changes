@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  1 01:22:15 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Update to version 2.1.0
+- Drop 0001-Include-stdexcept-for-std-runtime_error.patch
+
+-------------------------------------------------------------------
 Thu Jun  4 17:28:54 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch:

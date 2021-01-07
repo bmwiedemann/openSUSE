@@ -1,7 +1,7 @@
 #
 # spec file for package dustrac
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           dustrac
-Version:        2.0.5
+Version:        2.1.0
 Release:        0
 Summary:        Tile-based 2D Racing Game
 License:        GPL-3.0-only AND CC-BY-SA-3.0
 Group:          Amusements/Games/Action/Race
 URL:            https://juzzlin.github.io/DustRacing2D/
 Source:         https://github.com/juzzlin/DustRacing2D/archive/%{version}/dustrac-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Include-stdexcept-for-std-runtime_error.patch
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
@@ -34,6 +32,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5OpenGL)
+BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(glu)
@@ -48,7 +47,6 @@ creation. A separate engine, MiniCore, is used for physics modeling.
 
 %prep
 %setup -q -n DustRacing2D-%{version}
-%patch0 -p1
 
 %build
 %cmake \
