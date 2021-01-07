@@ -1,6 +1,6 @@
 From: Petr Tesarik <ptesarik@suse.cz>
 Subject: Apply custom patches to gdb
-Patch-mainline: never
+Upstream: never
 
 Enhance the crash specfile to allow applying custom patches.
 

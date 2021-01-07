@@ -1,0 +1,147 @@
+From 37d9a33dbc3cfd68265fccea551ed5be53da1acd Mon Sep 17 00:00:00 2001
+From: Kazuhito Hagio <k-hagio-ab@nec.com>
+Date: Mon, 17 Aug 2020 23:40:14 +0000
+Subject: [PATCH] Fix "kmem -i" option on Linux 5.9-rc1 and later kernels
+
+References: bsc#1179970 ltc#188981
+Upstream: 7.2.9
+Git-commit: 37d9a33dbc3cfd68265fccea551ed5be53da1acd
+
+On kernels that contain commit 1008fe6dc36d ("block: remove the all_bdevs
+list"), without the patch, the "kmem -i" option fails halfway with the
+error message 'kmem: cannot resolve: "all_bdevs"'.
+
+Signed-off-by: Kazuhito Hagio <k-hagio-ab@nec.com>
+---
+ defs.h    |  2 ++
+ memory.c  | 58 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ symbols.c |  4 ++++
+ 3 files changed, 64 insertions(+)
+
+diff --git a/defs.h b/defs.h
+--- a/defs.h
++++ b/defs.h
+@@ -2075,6 +2075,8 @@ struct offset_table {                    /* stash of commonly-used offsets */
+ 	long device_private_knode_class;
+ 	long timerqueue_head_rb_root;
+ 	long rb_root_cached_rb_leftmost;
++	long super_block_s_inodes;
++	long inode_i_sb_list;
+ };
+ 
+ struct size_table {         /* stash of commonly-used sizes */
+diff --git a/memory.c b/memory.c
+index 2bea1288251a..c951827162cb 100644
+--- a/memory.c
++++ b/memory.c
+@@ -252,6 +252,7 @@ static ulonglong get_vm_flags(char *);
+ static void PG_reserved_flag_init(void);
+ static void PG_slab_flag_init(void);
+ static ulong nr_blockdev_pages(void);
++static ulong nr_blockdev_pages_v2(void);
+ void sparse_mem_init(void);
+ void dump_mem_sections(int);
+ void dump_memory_blocks(int);
+@@ -501,6 +502,9 @@ vm_init(void)
+ 	if (INVALID_MEMBER(address_space_nrpages))
+ 		MEMBER_OFFSET_INIT(address_space_nrpages, "address_space", "__nrpages");
+ 
++	MEMBER_OFFSET_INIT(super_block_s_inodes, "super_block", "s_inodes");
++	MEMBER_OFFSET_INIT(inode_i_sb_list, "inode", "i_sb_list");
++
+ 	MEMBER_OFFSET_INIT(gendisk_major, "gendisk", "major");
+ 	MEMBER_OFFSET_INIT(gendisk_fops, "gendisk", "fops");
+ 	MEMBER_OFFSET_INIT(gendisk_disk_name, "gendisk", "disk_name");
+@@ -8608,6 +8612,9 @@ nr_blockdev_pages(void)
+ 	ulong nrpages;
+ 	char *block_device_buf, *inode_buf, *address_space_buf;
+ 
++	if (!kernel_symbol_exists("all_bdevs"))
++		return nr_blockdev_pages_v2();
++
+         ld = &list_data;
+         BZERO(ld, sizeof(struct list_data));
+ 	get_symbol_data("all_bdevs", sizeof(void *), &ld->start);
+@@ -8651,6 +8658,57 @@ nr_blockdev_pages(void)
+ 	return nrpages;
+ } 
+ 
++/*
++ *  Emulate 5.9 nr_blockdev_pages() function.
++ */
++static ulong
++nr_blockdev_pages_v2(void)
++{
++	struct list_data list_data, *ld;
++	ulong bd_sb, address_space;
++	ulong nrpages;
++	int i, inode_count;
++	char *inode_buf, *address_space_buf;
++
++	ld = &list_data;
++	BZERO(ld, sizeof(struct list_data));
++
++	get_symbol_data("blockdev_superblock", sizeof(void *), &bd_sb);
++	readmem(bd_sb + OFFSET(super_block_s_inodes), KVADDR, &ld->start,
++		sizeof(ulong), "blockdev_superblock.s_inodes", FAULT_ON_ERROR);
++
++	if (empty_list(ld->start))
++		return 0;
++	ld->flags |= LIST_ALLOCATE;
++	ld->end = bd_sb + OFFSET(super_block_s_inodes);
++	ld->list_head_offset = OFFSET(inode_i_sb_list);
++
++	inode_buf = GETBUF(SIZE(inode));
++	address_space_buf = GETBUF(SIZE(address_space));
++
++	inode_count = do_list(ld);
++
++	/*
++	 *  go through the s_inodes list, emulating:
++	 *
++	 *      ret += inode->i_mapping->nrpages;
++	 */
++	for (i = nrpages = 0; i < inode_count; i++) {
++		readmem(ld->list_ptr[i], KVADDR, inode_buf, SIZE(inode), "inode buffer",
++			FAULT_ON_ERROR);
++		address_space = ULONG(inode_buf + OFFSET(inode_i_mapping));
++		readmem(address_space, KVADDR, address_space_buf, SIZE(address_space),
++			"address_space buffer", FAULT_ON_ERROR);
++		nrpages += ULONG(address_space_buf + OFFSET(address_space_nrpages));
++	}
++
++	FREEBUF(ld->list_ptr);
++	FREEBUF(inode_buf);
++	FREEBUF(address_space_buf);
++
++	return nrpages;
++}
++
+ /*
+  *  dump_vmlist() displays information from the vmlist.
+  */
+diff --git a/symbols.c b/symbols.c
+index 311fdb7df29e..4babb50bea7f 100644
+--- a/symbols.c
++++ b/symbols.c
+@@ -9468,6 +9468,8 @@ dump_offset_table(char *spec, ulong makestruct)
+ 		OFFSET(inode_i_fop)); 
+ 	fprintf(fp, "               inode_i_mapping: %ld\n",
+ 		OFFSET(inode_i_mapping));
++	fprintf(fp, "               inode_i_sb_list: %ld\n",
++		OFFSET(inode_i_sb_list));
+ 
+         fprintf(fp, "             vfsmount_mnt_next: %ld\n", 
+ 		OFFSET(vfsmount_mnt_next));
+@@ -9504,6 +9506,8 @@ dump_offset_table(char *spec, ulong makestruct)
+ 		OFFSET(super_block_s_type));
+         fprintf(fp, "           super_block_s_files: %ld\n", 
+ 		OFFSET(super_block_s_files));
++	fprintf(fp, "          super_block_s_inodes: %ld\n",
++		OFFSET(super_block_s_inodes));
+ 
+ 	fprintf(fp, "               nlm_file_f_file: %ld\n",
+ 		OFFSET(nlm_file_f_file));
+-- 
+2.26.2
+

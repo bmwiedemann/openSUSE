@@ -1,0 +1,69 @@
+From 46cfe1f5aed3b1950df505d71553c13abab060a6 Mon Sep 17 00:00:00 2001
+From: Hari Bathini <hbathini@linux.ibm.com>
+Date: Sat, 14 Nov 2020 02:16:30 +0530
+Subject: [PATCH] task.c: avoid unnecessary cpu cycles in stkptr_to_task()
+
+References: bsc#1178827 ltc#189279
+Upstream: 7.2.9
+Git-commit: 46cfe1f5aed3b1950df505d71553c13abab060a6
+
+While stkptr_to_task does the job of trying to match a stack pointer
+to a task, it runs through each task's stack to find whether the given
+SP falls into its range. This can be a very expensive operation, if
+the vmcore is from a system running too many tasks. It can get even
+worse when the total number of CPUs on the system is in the order of
+thousands. Given the expensive nature of the operation, it must be
+optimized as much as possible. Possible options to optimize:
+
+  1) Get min & max of the stack range in first pass and use these
+     values against the given SP to decide whether or not to proceed
+     with stack lookup.
+  2) Use multithreading to parallely update irq_tasks.
+  3) Skip stkptr_to_task() when SP is 0
+
+Though option 3 is a low hanging fruit, it significantly improved the
+time taken between starting crash utility & reaching crash prompt.
+Implement option 3 to optimize while listing the other two options
+as TODO items for follow-up.
+
+Signed-off-by: Hari Bathini <hbathini@linux.ibm.com>
+---
+ task.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/task.c b/task.c
+index 8dd2b96d83fd..423cd454502b 100644
+--- a/task.c
++++ b/task.c
+@@ -713,6 +713,7 @@ irqstacks_init(void)
+ 	} else 
+ 		error(WARNING, "cannot determine hardirq_ctx addresses\n");
+ 
++	/* TODO: Use multithreading to parallely update irq_tasks. */
+ 	for (i = 0; i < NR_CPUS; i++) {
+ 		if (!(tt->hardirq_ctx[i]))
+ 			continue;
+@@ -5005,6 +5006,10 @@ pid_exists(ulong pid)
+ /*
+  *  Translate a stack pointer to a task, dealing with possible split.
+  *  If that doesn't work, check the hardirq_stack and softirq_stack.
++ *
++ * TODO: This function can be optimized by getting min & max of the
++ *       stack range in first pass and use these values against the
++ *       given SP to decide whether or not to proceed with stack lookup.
+  */
+ ulong
+ stkptr_to_task(ulong sp)
+@@ -5013,6 +5018,9 @@ stkptr_to_task(ulong sp)
+         struct task_context *tc;
+ 	struct bt_info bt_info, *bt;
+ 
++	if (!sp)
++		return NO_TASK;
++
+ 	bt = &bt_info;
+         tc = FIRST_CONTEXT();
+         for (i = 0; i < RUNNING_TASKS(); i++, tc++) {
+-- 
+2.26.2
+

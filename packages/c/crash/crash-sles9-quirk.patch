@@ -1,6 +1,6 @@
 From: Bernhard Walle <bwalle@suse.de>
 Subject: [PATCH] Add quirk for SLES9 LKCD header
-Patch-mainline: never
+Upstream: never
 
 On SLES9, we have a different header on IA64:
 

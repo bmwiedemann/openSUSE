@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan  6 12:00:52 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix "kmem -i" option on Linux 5.9-rc1 and later kernels (bsc#1179970 ltc#188981).
+  crash-Fix-kmem-i-option-on-Linux-5.9-rc1-and-later-kernels.patch
+
+- Fix crash utility is taking forever to initialize a vmcore from large config
+  system (bsc#1178827 ltc#189279).
+  crash-task.c-avoid-unnecessary-cpu-cycles-in-stkptr_to_tas.patch
+
+-------------------------------------------------------------------
 Mon Dec  7 18:00:32 UTC 2020 - David Mair <dmair@suse.com>
 
 - Corrected project URL in spec file to match the changed upstream

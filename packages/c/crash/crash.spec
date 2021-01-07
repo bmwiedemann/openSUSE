@@ -1,7 +1,7 @@
 #
 # spec file for package crash
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -83,6 +83,10 @@ Patch28:        %{name}-fix-memory_driver-build-kernel-5.8.patch
 Patch29:        eppic-remove-duplicate-symbols.patch
 Patch30:        %{name}-verify-exception-frame-accessible-for-all-verify-requests.patch
 Patch31:        %{name}-update-whitepaper-URL.patch
+# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/37d9a33dbc3cfd68265fccea551ed5be53da1acd.patch
+Patch32:        %{name}-Fix-kmem-i-option-on-Linux-5.9-rc1-and-later-kernels.patch
+# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/46cfe1f5aed3b1950df505d71553c13abab060a6.patch
+Patch33:        %{name}-task.c-avoid-unnecessary-cpu-cycles-in-stkptr_to_tas.patch
 Patch90:        %{name}-sial-ps-2.6.29.diff
 # PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/e770735200c02ac2414c394ea6ec5f7f033efe64.patch
 Patch91:        %{name}-gdb-fix-aarch64.patch
@@ -283,6 +287,8 @@ Authors:
 %patch28 -p1
 %patch30 -p1
 %patch31 -p1
+%patch32 -p1
+%patch33 -p1
 %if %{have_snappy}
 %patch15 -p1
 %endif
