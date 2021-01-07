@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-smartbookmark-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,17 @@
 #
 
 
-%define panel_version 4.12.0
+%define panel_version 4.14.0
 %define plugin smartbookmark
 %bcond_with git
 Name:           xfce4-smartbookmark-plugin
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 Summary:        Smart Bookmark Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
-URL:            https://goodies.xfce.org/projects/panel-plugins/xfce4-smartbookmark-plugin
+URL:            https://docs.xfce.org/panel-plugins/xfce4-smartbookmark-plugin
 Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/0.5/%{name}-%{version}.tar.bz2
-# PATCH-FEATURE-OPENSUSE xfce4-smartbookmark-plugin-0.5.0-defaults.patch gber@opensuse.org -- Replaces Debian defaults and hides the label on to of the entry widget by default
-Patch0:         xfce4-smartbookmark-plugin-0.5.0-defaults.patch
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
@@ -88,7 +86,7 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %fdupes %{buildroot}%{_datadir}
 
 %files
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS ChangeLog NEWS README.md
 %license COPYING
 %{_libdir}/xfce4/panel/plugins/libsmartbookmark.so
 %{_datadir}/xfce4/panel/plugins/smartbookmark.desktop
@@ -96,4 +94,3 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %files lang -f %{name}.lang
 
 %changelog
-

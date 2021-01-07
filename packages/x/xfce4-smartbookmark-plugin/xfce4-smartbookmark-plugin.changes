@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Dec 25 20:01:45 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.5.2
+  * Fix build with panel 4.15
+  * Fix ISO C90 forbids mixed declarations and code
+  * Update configure.ac.in syntax
+  * Create README.md. Update configure.ac.in
+  * Add basic GitLab pipeline
+  * Update URLs from goodies.x.o to docs.x.o (bxo#16176)
+  * Fix build with panel 4.15
+  * Make build less verbose
+  * s/http/https
+  * Translation Updates
+- Remove xfce4-smartbookmark-plugin-0.5.0-defaults.patch
+  * Xfce Bugzilla was replaced by Gitlab, the Patch no longer applies
+
+-------------------------------------------------------------------
 Fri Aug 16 12:15:59 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed sources in spec file
