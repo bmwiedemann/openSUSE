@@ -1,7 +1,7 @@
 #
 # spec file for package python-osc-tiny
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,17 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%define skip_python2 1
 Name:           python-osc-tiny
-Version:        0.2.4
+Version:        0.3.2
 Release:        0
 Summary:        Client API for openSUSE BuildService
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/crazyscientist/osc-tiny
 Source:         https://files.pythonhosted.org/packages/source/o/osc-tiny/osc-tiny-%{version}.tar.gz
+BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module cached-property}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pytest}
@@ -34,23 +36,15 @@ BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with python2}
-BuildRequires:  python2-mock
-BuildRequires:  python2-unittest2
-%endif
+Requires:       python-PyYAML
+Requires:       python-cached-property
 Requires:       python-lxml
 Requires:       python-python-dateutil
 Requires:       python-pytz
 Requires:       python-requests
-Requires:       python-responses
-Requires:       python-six
 BuildArch:      noarch
-%ifpython2
-Requires:       python-mock
-%endif
 %python_subpackages
 
 %description
