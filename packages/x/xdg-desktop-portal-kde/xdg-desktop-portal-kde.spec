@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-desktop-portal-kde
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 
 %define kf5_version 5.50.0
 Name:           xdg-desktop-portal-kde
-Version:        5.20.4
+Version:        5.20.5
 Release:        0
 Summary:        QT/KF5 backend for xdg-desktop-portal
 License:        LGPL-2.1-or-later
