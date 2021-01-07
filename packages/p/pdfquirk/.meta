@@ -1,0 +1,9 @@
+<package name="pdfquirk" project="openSUSE:Factory">
+  <title>App to create PDFs from images or scans</title>
+  <description>PDF Quirk helps to generate PDF files from images from storage
+or directly from the scanner.
+
+</description>
+  <devel project="KDE:Extra" package="pdfquirk"/>
+  <url>https://dragotin.github.io/quirksite</url>
+</package>

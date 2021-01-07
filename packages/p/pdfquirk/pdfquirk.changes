@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Wed Jan  6 12:48:01 UTC 2021 - Klaas Freitag <opensuse@freisturz.de>
+
+- Add the tarball again and set name properly. 
+
+-------------------------------------------------------------------
+Wed Jan  6 12:40:17 UTC 2021 - Klaas Freitag <opensuse@freisturz.de>
+
+- Use a proper source link to github. Use %autosetup. 
+
+-------------------------------------------------------------------
+Mon Jun 29 17:16:12 UTC 2020 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to upstream version 0.93
+  * Images can be reordered by drag and drop in the thumbnail view.
+  * A couple of useful image manipulation actions were added to a 
+    context menu in the thumbnail view: Images can be flipped, 
+    rotated or deleted.
+  * A few bug fixes and minor improvements make usage more easy and fun.
+
+-------------------------------------------------------------------
+Sun May 31 10:14:50 UTC 2020 - Klaas Freitag <opensuse@freisturz.de>
+
+- More cleanup of spec, removed rewrite of desktop file gen. name 
+
+-------------------------------------------------------------------
+Sat May 30 18:34:40 UTC 2020 - Klaas Freitag <opensuse@freisturz.de>
+
+- Cleanup of spec with spec-cleaner. Desktop file fixes. 
+
+-------------------------------------------------------------------
+Sun May 24 19:09:44 UTC 2020 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to version 0.91 with a few bug fixes and improvements. 
+
+-------------------------------------------------------------------
+Thu May 21 19:44:04 UTC 2020 - Klaas Freitag <opensuse@freisturz.de>
+
+- First package of the first version. 
