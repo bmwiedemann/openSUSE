@@ -1,7 +1,7 @@
 #
 # spec file for package shotcut
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %bcond_with    x264
 
 Name:           shotcut
-Version:        20.10.31
+Version:        20.11.28
 Release:        0
 # This package creates a build time version from the current date and uses it to check
 # for updates. See patch1 and prep/build section. For reproducible builds.
@@ -46,6 +46,7 @@ BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Quick)
+BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5UiTools)
 BuildRequires:  pkgconfig(Qt5WebKitWidgets)
 BuildRequires:  pkgconfig(Qt5WebSockets)
@@ -71,7 +72,7 @@ Requires:       %(rpm -qf $(readlink -qne %{_libdir}/libx264.so) --qf '%%{NAME} 
 # needed on runtime for the timeline to work see https://forums.opensuse.org/showthread.php/520592-shotcut-video-editor-timeline-blank/page3
 Requires:       libQt5Sql5-sqlite
 Requires:       libqt5-qtgraphicaleffects >= %{qt5version}
-Requires:       libqt5-qtquickcontrols >= %{qt5version}
+Requires:       libqt5-qtquickcontrols2 >= %{qt5version}
 
 %description
 Shotcut is an audio/video editor. It supports most audio, video and

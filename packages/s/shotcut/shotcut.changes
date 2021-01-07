@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jan  6 13:05:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 20.11.28:
+  * Improved behavior when press enter/return in the current position timecode field.
+  * Made it is easier to choose opaque black in the color chooser dialogs.
+  * Changed numeric fields in Size, Position & Rotate and Text
+  * Rich default size and postion to have a 10% margin inside the frame.
+  * Added a warning dialog when the computer is getting low on available memory.
+  * Added Properties > menu > Set Equirectangular….
+  * Added a Start Offset time parameter and Apply transform option to the 360:
+  Stabilize video filter.
+  * Added a Show Grid option to the 360: Transform video filter as a visual aid.
+  * Added a dialog to confirm trying to add or paste filters to Timeline > Output.
+  * Added Move Up, Move Down, and Deselect buttons to Filters.
+  * Added command line option --QT_SCALE_FACTOR_ROUNDING_POLICY
+  * Lots of bugfixes see https://shotcut.org/blog/new-release-201125/
+  
+-------------------------------------------------------------------
 Mon Nov  2 06:59:47 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 20.10.31:
