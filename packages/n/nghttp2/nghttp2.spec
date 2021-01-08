@@ -1,7 +1,7 @@
 #
 # spec file for package nghttp2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 %bcond_with python
 %endif
 Name:           nghttp2%{psuffix}
-Version:        1.41.0
+Version:        1.42.0
 Release:        0
 Summary:        Implementation of Hypertext Transfer Protocol version 2 in C
 License:        MIT
@@ -55,9 +55,9 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
 %if %{with python}
-BuildRequires:  pkgconfig(python3)
 BuildRequires:  python3-Cython
 BuildRequires:  python3-setuptools
+BuildRequires:  pkgconfig(python3)
 %endif
 %ifnarch ppc %{arm}
 %if 0%{?sle_version} >= 150000 && 0%{?is_opensuse}
