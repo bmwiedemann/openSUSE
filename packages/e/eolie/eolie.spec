@@ -20,16 +20,14 @@
 %global __requires_exclude typelib\\(Unity\\)
 
 Name:           eolie
-Version:        0.9.100
+Version:        0.9.101
 Release:        0
 Summary:        Web browser for GNOME
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://wiki.gnome.org/Apps/Eolie
 Source:         %{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM eolie-0.9.100-fix-crash-on-ctrl-shift-p.patch -- glgo#World/eolie#381
-Patch0:         eolie-0.9.100-fix-crash-on-ctrl-shift-p.patch
-BuildRequires:  meson
+BuildRequires:  meson >= 0.47
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.35.9

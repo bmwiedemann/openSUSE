@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan  7 18:50:25 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 0.9.101:
+  * New settings dialog.
+  * Fixed flatpak support.
+- Remove eolie-0.9.100-fix-crash-on-ctrl-shift-p.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
 Mon Jan  4 21:18:38 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Add eolie-0.9.100-fix-crash-on-ctrl-shift-p.patch
