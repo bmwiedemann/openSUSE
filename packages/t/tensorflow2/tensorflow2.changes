@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan  8 07:30:53 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- libiomp5 is x86_64 only
+
+-------------------------------------------------------------------
 Wed Jan  6 13:25:31 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on aarch64 and on hpc variants

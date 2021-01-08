@@ -434,6 +434,7 @@ edges represent the multidimensional data arrays (tensors) that flow between
 them. This flexible architecture enables you to deploy computation to one or
 more CPUs in a desktop, server, or mobile device without rewriting code.
 
+%ifarch x86_64
 %package -n libiomp5%{?hpc_package_name_tail}
 Summary:        Shared library for tensorflow
 Group:          Libraries
@@ -444,6 +445,7 @@ flow graphs. The graph nodes represent mathematical operations, while the graph
 edges represent the multidimensional data arrays (tensors) that flow between
 them. This flexible architecture enables you to deploy computation to one or
 more CPUs in a desktop, server, or mobile device without rewriting code.
+%endif
 
 %prep
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -745,7 +747,9 @@ cp -vd  \
   bazel-bin/tensorflow/libtensorflow_cc.so.%{libmaj}.%{libmin}.%{libref} \
  %{buildroot}%{package_libdir}/
 
+%ifarch x86_64
 mv %{buildroot}/%{package_python_sitearch}/_solib_k8/_U_S_Sthird_Uparty_Smkl_Cmkl_Ulibs_Ulinux___Uexternal_Sllvm_Uopenmp/libiomp5.so %{buildroot}/%{package_libdir}/
+%endif
 
 find %{buildroot} -name \*.h -type f -exec chmod 644 {} +
 find %{buildroot} -name LICENSE\* -type f -exec chmod 644 {} +
@@ -838,7 +842,7 @@ cp -r $OUTPUT_DIR/tensorflow/* %{buildroot}/%{package_python_sitelib}/tensorflow
 %hpc_modules_files
 %endif
 %files -n %{package_name}-devel
-#%%{package_python_sitelib}/tensorflow_core/include
+%{package_python_sitelib}/tensorflow_core/include
 #%%{package_python_sitearch}/tensorflow_core/include
 %{package_includedir}/tensorflow/
 %{package_libdir}/libtensorflow.so
@@ -850,8 +854,10 @@ cp -r $OUTPUT_DIR/tensorflow/* %{buildroot}/%{package_python_sitelib}/tensorflow
 %{package_libdir}/libtensorflow_cc.so.%{libmaj}*
 %files -n libtensorflow%{libmaj}%{?hpc_package_name_tail}
 %{package_libdir}/libtensorflow.so.%{libmaj}*
+%ifarch x86_64
 %files -n libiomp5%{?hpc_package_name_tail}
 %{package_libdir}/libiomp5.so
+%endif
 %files -n %{package_name}-doc
 #%%{package_python_sitelib}/tensorflow/examples
 %license THIRD_PARTY_TF_C_LICENSES LICENSE
