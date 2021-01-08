@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan  5 12:26:21 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-01-apps-update
+- Changes since 20.12.0:
+  * Recognize selection of different dates of a recurring incidence
+  * Use the same icons in the Actions menu as are used in the pop-up menu
+  * Do not double-delete
+  * collectionview: Show correct tooltip
+
+-------------------------------------------------------------------
 Sat Dec  5 23:17:00 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.0
