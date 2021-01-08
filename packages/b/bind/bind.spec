@@ -20,17 +20,17 @@
 # Note that the sonums are LIBINTERFACE - LIBAGE
 %define bind9_sonum 1600
 %define libbind9 libbind9-%{bind9_sonum}
-%define dns_sonum 1608
+%define dns_sonum 1610
 %define libdns libdns%{dns_sonum}
 %define irs_sonum 1601
 %define libirs libirs%{irs_sonum}
-%define isc_sonum 1607
+%define isc_sonum 1608
 %define libisc libisc%{isc_sonum}
 %define isccc_sonum 1600
 %define libisccc libisccc%{isccc_sonum}
-%define isccfg_sonum 1601
+%define isccfg_sonum 1602
 %define libisccfg libisccfg%{isccfg_sonum}
-%define ns_sonum 1605
+%define ns_sonum 1606
 %define libns libns%{ns_sonum}
 
 %define	VENDOR SUSE
@@ -61,7 +61,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           bind
-Version:        9.16.8
+Version:        9.16.10
 Release:        0
 Summary:        Domain Name System (DNS) Server (named)
 License:        MPL-2.0
