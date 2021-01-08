@@ -26,7 +26,7 @@ URL:            https://github.com/linuxaudio/a2jmidid
 Source0:        https://github.com/linuxaudio/a2jmidid/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-BuildRequires:  meson
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbus-1)
@@ -45,7 +45,7 @@ MIDI systems.
 
 %install
 %meson_install
-find %{buildroot}/%{_bindir} -name 'a2j_control' -exec sed -i "s|#! %{_bindir}/env python3$|#!/usr/bin/python3|" {} +
+find %{buildroot}/%{_bindir} -name 'a2j_control' -exec sed -i "s|#! %{_bindir}/env python3$|#!%{_bindir}/python3|" {} +
 
 %files
 %doc README.rst INSTALLATION.rst
