@@ -43,6 +43,9 @@ Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
 # Backports from upstream
 
+# Fixes proposed upstream
+## From: https://github.com/rpm-software-management/libdnf/pull/1112
+Patch0101:      0001-context-Sync-missing-arches-from-DNF.patch
 
 # openSUSE specific fixes
 ## Fix libdnf build with static libsolvext

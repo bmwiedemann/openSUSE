@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  4 11:40:21 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Add patch to support armv6hl and RISC-V architectures
+  + Patch: 0001-context-Sync-missing-arches-from-DNF.patch
+
+-------------------------------------------------------------------
 Sun Dec  6 15:12:12 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to version 0.55.2

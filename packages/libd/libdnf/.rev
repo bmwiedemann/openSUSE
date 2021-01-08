@@ -405,4 +405,13 @@
 - Use cmake_build and cmake_install macros</comment>
     <requestid>853401</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>b69d260b984a1857d951bf33c221fb8e</srcmd5>
+    <version>0.55.2</version>
+    <time>1610123541</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to support armv6hl and RISC-V architectures
+  + Patch: 0001-context-Sync-missing-arches-from-DNF.patch</comment>
+    <requestid>860158</requestid>
+  </revision>
 </revisionlist>
