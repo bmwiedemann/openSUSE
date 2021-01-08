@@ -194,4 +194,12 @@
   and improved exception handling, thanks to J. Nick Koston.</comment>
     <requestid>856970</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3a031bcbf905f6f5846aa46c486a8d81</srcmd5>
+    <version>0.28.8</version>
+    <time>1610123976</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>861753</requestid>
+  </revision>
 </revisionlist>
