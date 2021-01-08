@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  4 08:28:40 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.9.14:
+  * made enttest configurable
+  * havegecmd.c - new command added to close the communication socket
+- Drop haveged-conditional-enttest.patch
+
+-------------------------------------------------------------------
 Tue Jun 30 07:07:57 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.9.13:

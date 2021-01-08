@@ -535,4 +535,15 @@ Updated sample spec file and other documentation changes. (forwarded request 174
     <comment></comment>
     <requestid>817818</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>cf79cc0ae0c42b8c21bbc23284f0fa2a</srcmd5>
+    <version>1.9.14</version>
+    <time>1610123539</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.14:
+  * made enttest configurable
+  * havegecmd.c - new command added to close the communication socket
+- Drop haveged-conditional-enttest.patch (forwarded request 860091 from polslinux)</comment>
+    <requestid>860156</requestid>
+  </revision>
 </revisionlist>

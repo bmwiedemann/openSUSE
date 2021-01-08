@@ -1,7 +1,7 @@
 #
 # spec file for package haveged
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{!?_udevrulesdir: %global _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d }
 Name:           haveged
-Version:        1.9.13
+Version:        1.9.14
 Release:        0
 Summary:        Daemon for feeding entropy into the random pool
 License:        GPL-3.0-only
@@ -30,8 +30,6 @@ Source3:        90-haveged.rules
 Source4:        haveged-dracut.module
 Source5:        %{name}-switch-root.service
 Patch0:         ppc64le.patch
-# PATCH-FIX-UPSTREAM: ent tests randomly fail so make them conditional tchvatal@suse.cz bnc#876674
-Patch1:         haveged-conditional-enttest.patch
 # PATCH-FIX-UPSTREAM: don't write to syslog at startup to avoid deadlocks psimons@suse.com bnc#959237
 Patch2:         haveged-no-syslog.patch
 BuildRequires:  autoconf
