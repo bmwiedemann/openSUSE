@@ -1,8 +1,8 @@
-Index: wget-1.20/configure.ac
+Index: wget-1.21/configure.ac
 ===================================================================
---- wget-1.20.orig/configure.ac
-+++ wget-1.20/configure.ac
-@@ -493,6 +493,22 @@ else
+--- wget-1.21.orig/configure.ac
++++ wget-1.21/configure.ac
+@@ -657,6 +657,22 @@ else
    fi
  fi
  
@@ -25,23 +25,23 @@ Index: wget-1.20/configure.ac
  dnl **********************************************************************
  dnl Checks for IPv6
  dnl **********************************************************************
-Index: wget-1.20/src/Makefile.am
+Index: wget-1.21/src/Makefile.am
 ===================================================================
---- wget-1.20.orig/src/Makefile.am
-+++ wget-1.20/src/Makefile.am
-@@ -62,7 +62,7 @@ wget_SOURCES = connect.c convert.c cooki
+--- wget-1.21.orig/src/Makefile.am
++++ wget-1.21/src/Makefile.am
+@@ -63,7 +63,7 @@ wget_SOURCES = connect.c convert.c cooki
  nodist_wget_SOURCES = version.c
  EXTRA_wget_SOURCES = iri.c
- LDADD = $(LIBOBJS) ../lib/libgnu.a $(GETADDRINFO_LIB) $(HOSTENT_LIB)\
+ LDADD = $(CODE_COVERAGE_LIBS) $(LIBOBJS) ../lib/libgnu.a $(GETADDRINFO_LIB) $(HOSTENT_LIB)\
 - $(INET_NTOP_LIB) $(LIBSOCKET) $(LIB_CLOCK_GETTIME) $(LIB_CRYPTO)\
 + $(INET_NTOP_LIB) $(LIBSOCKET) $(libproxy_LIBS) $(LIB_CLOCK_GETTIME) $(LIB_CRYPTO)\
   $(LIB_NANOSLEEP) $(LIB_POSIX_SPAWN) $(LIB_SELECT) $(LIBICONV) $(LIBINTL)\
   $(LIBTHREAD) $(LIBUNISTRING) $(SERVENT_LIB)
- AM_CPPFLAGS = -I$(top_builddir)/lib -I$(top_srcdir)/lib
-Index: wget-1.20/src/retr.c
+ AM_CPPFLAGS = -I$(top_builddir)/lib -I$(top_srcdir)/lib $(CODE_COVERAGE_CPPFLAGS)
+Index: wget-1.21/src/retr.c
 ===================================================================
---- wget-1.20.orig/src/retr.c
-+++ wget-1.20/src/retr.c
+--- wget-1.21.orig/src/retr.c
++++ wget-1.21/src/retr.c
 @@ -61,6 +61,10 @@ as that of the covered work.  */
  #include "iri.h"
  #include "hsts.h"
@@ -53,7 +53,7 @@ Index: wget-1.20/src/retr.c
  /* Total size of downloaded files.  Used to enforce quota.  */
  SUM_SIZE_INT total_downloaded_bytes;
  
-@@ -1480,7 +1484,40 @@ getproxy (struct url *u)
+@@ -1493,7 +1497,40 @@ getproxy (struct url *u)
        break;
      }
    if (!proxy || !*proxy)
@@ -94,11 +94,11 @@ Index: wget-1.20/src/retr.c
  
    /* Handle shorthands.  `rewritten_storage' is a kludge to allow
       getproxy() to return static storage. */
-Index: wget-1.20/tests/Makefile.am
+Index: wget-1.21/tests/Makefile.am
 ===================================================================
---- wget-1.20.orig/tests/Makefile.am
-+++ wget-1.20/tests/Makefile.am
-@@ -30,6 +30,7 @@
+--- wget-1.21.orig/tests/Makefile.am
++++ wget-1.21/tests/Makefile.am
+@@ -31,6 +31,7 @@
  #
  # Version: @VERSION@
  #

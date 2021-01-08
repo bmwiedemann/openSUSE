@@ -1,7 +1,7 @@
 #
 # spec file for package wget
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with	regression_tests
 Name:           wget
-Version:        1.20.3
+Version:        1.21
 Release:        0
 Summary:        A Tool for Mirroring FTP and HTTP Servers
 License:        GPL-3.0-or-later
@@ -42,8 +42,6 @@ BuildRequires:  libpng-devel
 BuildRequires:  makeinfo
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig >= 0.9.0
-# FIXME: use proper Requires(pre/post/preun/...)
-PreReq:         %{install_info_prereq}
 %if %{?suse_version} > 1110
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libmetalink)
@@ -101,15 +99,9 @@ sed -i 's/\/usr\/bin\/env perl -w/\/usr\/bin\/perl -w/' util/rmold.pl
 
 %install
 %make_install
-%find_lang %{name} %{?no_lang_C}
+%find_lang %{name} --all-name %{?no_lang_C}
 
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
-
-%postun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
-
-%files 
+%files
 %license COPYING
 %doc AUTHORS NEWS README MAILING-LIST
 %doc doc/sample.wgetrc util/rmold.pl
