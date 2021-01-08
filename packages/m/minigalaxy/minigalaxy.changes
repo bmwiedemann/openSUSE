@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jan  8 09:42:16 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.0.1:
+  * Open maximized if the window was maximized when last closed
+  * Kept installers are now stored in ~/.cache/minigalaxy/download
+  * Fix about window displaying wrong version number
+  * Fix show store page button not showing anymore
+  * Fix the download manager crashing when an installer has been damaged
+    during downloading
+  * Fix games showing an update is available while the latest version is
+    installed
+  * Fix loading the library taking a long time when many games are installed
+  * Fix Gex not launching
+  * Add the following translations:
+    - Swedish
+  * Update the following translations:
+    - Polish
+    - Russian
+
+-------------------------------------------------------------------
 Mon Nov 30 08:44:02 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.0.0:
