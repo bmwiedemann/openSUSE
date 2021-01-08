@@ -19,22 +19,19 @@
 %global pkg_name distributive
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.6.2
+Version:        0.6.2.1
 Release:        0
 Summary:        Distributive functors -- Dual to Traversable
 License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-orphans-devel
-BuildRequires:  ghc-cabal-doctest-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-tagged-devel
 BuildRequires:  ghc-transformers-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
-BuildRequires:  ghc-doctest-devel
 BuildRequires:  ghc-generic-deriving-devel
 BuildRequires:  ghc-hspec-devel
 %endif
@@ -54,7 +51,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
