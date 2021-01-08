@@ -1313,6 +1313,7 @@ unsorted:
   - blktrace 
   - bloaty 
   - blobAndConquer 
+  - blobby 
   - blobwars 
   - blobwars-lang 
   - blockout 
@@ -9721,7 +9722,7 @@ unsorted:
   - libargtable2-0 
   - libargtable2-devel 
   - libaria2-0: [i586] 
-  - libarm_compute20: [x86_64] 
+  - libarm_compute21: [x86_64] 
   - libarmadillo10 
   - libarmadillo10-32bit: [x86_64] 
   - libarmnn22: [x86_64] 
@@ -10405,8 +10406,8 @@ unsorted:
   - libcryptmount-devel 
   - libcrypto46-32bit: [x86_64] 
   - libcryptopp-devel 
-  - libcryptopp8_2_0 
-  - libcryptopp8_2_0-32bit: [x86_64] 
+  - libcryptopp8_4_0 
+  - libcryptopp8_4_0-32bit: [x86_64] 
   - libcryptsetup-devel 
   - libcryptsetup12-hmac-32bit: [x86_64] 
   - libcryptui-data: [i586] 
@@ -11139,8 +11140,8 @@ unsorted:
   - libglog0 
   - libglom-1_32-0 
   - libglom-devel 
-  - libgloox17 
-  - libgloox17-32bit: [x86_64] 
+  - libgloox18 
+  - libgloox18-32bit: [x86_64] 
   - libglpk40 
   - libglslang10 
   - libgltf-0_1-1 
@@ -11420,8 +11421,8 @@ unsorted:
   - libgypsy0-32bit: [x86_64] 
   - libhackrf0 
   - libhal1 
-  - libhamlib++2 
-  - libhamlib2 
+  - libhamlib++4 
+  - libhamlib4 
   - libhandy-0_0-0: [i586] 
   - libhandy-devel 
   - libhandy0-devel 
@@ -11726,6 +11727,9 @@ unsorted:
   - libint2-2 
   - libiodbc-devel 
   - libiodbc3 
+  - libiomp5: [x86_64] 
+  - libiomp5-gnu-hpc: [x86_64] 
+  - libiomp5-gnu-openmpi2-hpc: [x86_64] 
   - libipa_hbac-devel 
   - libipa_hbac0 
   - libiperf0 
@@ -18964,6 +18968,7 @@ unsorted:
   - pdf2djvu-lang 
   - pdf2svg 
   - pdfgrep 
+  - pdfquirk 
   - pdftk 
   - pdns 
   - pdns-backend-geoip 
@@ -20520,6 +20525,8 @@ unsorted:
   - plasma5-nano-lang 
   - plasma5-pa: [i586] 
   - plasma5-pa-lang: [i586] 
+  - plasma5-phone-components 
+  - plasma5-phone-components-lang 
   - plasma5-pk-updates: [i586] 
   - plasma5-pk-updates-lang: [i586] 
   - plasma5-sdk 
@@ -21730,6 +21737,7 @@ unsorted:
   - python3-axolotl 
   - python3-axolotl-curve25519 
   - python3-azure-ai-anomalydetector 
+  - python3-azure-ai-formrecognizer 
   - python3-azure-ai-metricsadvisor 
   - python3-azure-ai-nspkg 
   - python3-azure-ai-textanalytics 
@@ -21799,6 +21807,7 @@ unsorted:
   - python3-azure-mgmt-authorization 
   - python3-azure-mgmt-automanage 
   - python3-azure-mgmt-automation 
+  - python3-azure-mgmt-azureadb2c 
   - python3-azure-mgmt-azurestack 
   - python3-azure-mgmt-azurestackhci 
   - python3-azure-mgmt-baremetalinfrastructure 
@@ -21811,6 +21820,7 @@ unsorted:
   - python3-azure-mgmt-commerce 
   - python3-azure-mgmt-communication 
   - python3-azure-mgmt-compute 
+  - python3-azure-mgmt-confluent 
   - python3-azure-mgmt-consumption 
   - python3-azure-mgmt-containerinstance 
   - python3-azure-mgmt-containerregistry 
@@ -21818,8 +21828,11 @@ unsorted:
   - python3-azure-mgmt-core 
   - python3-azure-mgmt-cosmosdb 
   - python3-azure-mgmt-costmanagement 
+  - python3-azure-mgmt-customproviders 
+  - python3-azure-mgmt-databox 
   - python3-azure-mgmt-databoxedge 
   - python3-azure-mgmt-databricks 
+  - python3-azure-mgmt-datadog 
   - python3-azure-mgmt-datafactory 
   - python3-azure-mgmt-datalake-analytics 
   - python3-azure-mgmt-datalake-nspkg 
@@ -21839,6 +21852,7 @@ unsorted:
   - python3-azure-mgmt-hdinsight 
   - python3-azure-mgmt-healthcareapis 
   - python3-azure-mgmt-hybridcompute 
+  - python3-azure-mgmt-hybridkubernetes 
   - python3-azure-mgmt-imagebuilder 
   - python3-azure-mgmt-iotcentral 
   - python3-azure-mgmt-iothub 
@@ -21851,6 +21865,7 @@ unsorted:
   - python3-azure-mgmt-logic 
   - python3-azure-mgmt-machinelearningcompute 
   - python3-azure-mgmt-machinelearningservices 
+  - python3-azure-mgmt-maintenance 
   - python3-azure-mgmt-managedservices 
   - python3-azure-mgmt-managementgroups 
   - python3-azure-mgmt-managementpartner 
@@ -21895,7 +21910,9 @@ unsorted:
   - python3-azure-mgmt-storagesync 
   - python3-azure-mgmt-streamanalytics 
   - python3-azure-mgmt-subscription 
+  - python3-azure-mgmt-support 
   - python3-azure-mgmt-synapse 
+  - python3-azure-mgmt-timeseriesinsights 
   - python3-azure-mgmt-trafficmanager 
   - python3-azure-mgmt-vmwarecloudsimple 
   - python3-azure-mgmt-web 
@@ -21918,8 +21935,11 @@ unsorted:
   - python3-azure-storage-queue 
   - python3-azure-synapse-accesscontrol 
   - python3-azure-synapse-artifacts 
+  - python3-azure-synapse-managedprivateendpoints 
+  - python3-azure-synapse-monitoring 
   - python3-azure-synapse-nspkg 
   - python3-azure-synapse-spark 
+  - python3-azure-template 
   - python3-azurectl 
   - python3-azuremetadata 
   - python3-babelfish 
@@ -23881,6 +23901,7 @@ unsorted:
   - python3-pyvips 
   - python3-pyviz-comms 
   - python3-pyvmomi 
+  - python3-pywal 
   - python3-pywbem 
   - python3-pywbemtools 
   - python3-pywebpush 
@@ -27883,6 +27904,7 @@ unsorted:
   - spack-info 
   - spack-man 
   - spack-recipes 
+  - spamass-milter 
   - spandsp-devel 
   - spandsp-doc 
   - sparse 
@@ -28397,12 +28419,12 @@ unsorted:
   - tensorflow2-gnu-openmpi2-hpc: [x86_64] 
   - tensorflow2-lite: [x86_64] 
   - tensorflow2-lite-devel: [x86_64] 
-  - tensorflow2_2_1_1-gnu-hpc: [x86_64] 
-  - tensorflow2_2_1_1-gnu-hpc-devel: [x86_64] 
-  - tensorflow2_2_1_1-gnu-hpc-doc: [x86_64] 
-  - tensorflow2_2_1_1-gnu-openmpi2-hpc: [x86_64] 
-  - tensorflow2_2_1_1-gnu-openmpi2-hpc-devel: [x86_64] 
-  - tensorflow2_2_1_1-gnu-openmpi2-hpc-doc: [x86_64] 
+  - tensorflow2_2_4_0-gnu-hpc: [x86_64] 
+  - tensorflow2_2_4_0-gnu-hpc-devel: [x86_64] 
+  - tensorflow2_2_4_0-gnu-hpc-doc: [x86_64] 
+  - tensorflow2_2_4_0-gnu-openmpi2-hpc: [x86_64] 
+  - tensorflow2_2_4_0-gnu-openmpi2-hpc-devel: [x86_64] 
+  - tensorflow2_2_4_0-gnu-openmpi2-hpc-doc: [x86_64] 
   - tensorflow_1_15_3-gnu-hpc: [x86_64] 
   - tensorflow_1_15_3-gnu-hpc-devel: [x86_64] 
   - tensorflow_1_15_3-gnu-openmpi2-hpc: [x86_64] 
@@ -28425,6 +28447,9 @@ unsorted:
   - termsyn-bitmap-fonts 
   - terraform: [x86_64] 
   - terraform-provider-aws 
+  - terraform-provider-azurerm 
+  - terraform-provider-helm 
+  - terraform-provider-libvirt: [x86_64] 
   - terraform-provider-null 
   - terraform-provider-openstack 
   - terraform-provider-template 
