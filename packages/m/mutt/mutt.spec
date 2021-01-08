@@ -20,7 +20,7 @@
 %bcond_with    mutt_openssl
 %bcond_without mutt_gnutls
 Name:           mutt
-Version:        2.0.3
+Version:        2.0.4
 Release:        0
 Summary:        Mail Program
 # ftp://ftp.mutt.org/mutt/devel/
@@ -41,7 +41,6 @@ Patch2:         %{name}-1.5.9i-pgpewrap.diff
 Patch3:         %{name}-1.5.20-sendgroupreplyto.diff
 Patch4:         %{name}-1.5.15-wrapcolumn.diff
 Patch7:         mutt-1.6.1-opennfs.dif
-Patch9:         bug-676388-largefile.patch
 # http://www.wolfermann.org/mutt.html
 Patch11:        aw.listreply.diff
 Patch12:        patch-1.5.24.vk.pgp_verbose_mime
@@ -154,7 +153,6 @@ Provides translations to the package mutt.
 %patch3  -b .sendgroupreplyto
 %patch4  -b .wrapcolumn
 %patch7  -b .opennfs
-%patch9  -b .largefile
 %patch11  -b .listreply
 %patch12  -b .pgp_verbose_mtime
 %patch15  -b .widechar.sidebar

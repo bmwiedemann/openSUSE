@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 31 08:26:40 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- mutt 2.0.4:
+  * Fix smtp debug segfault on invalid SmtpAuthenticators list
+  * Fix header cache BDB version checking
+  * Fix offset to use LOFF_T in a couple places
+  * Ensure idata->check_status is cleared on mailbox close
+  * Abort IMAP open if condstore/qresync updates fetch fails
+- drop upstreamed bug-676388-largefile.patch
+
+-------------------------------------------------------------------
 Sat Dec  5 17:42:33 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - mutt 2.0.3:

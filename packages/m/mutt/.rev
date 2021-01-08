@@ -1177,4 +1177,12 @@ with a run of spec-cleaner (forwarded request 826781 from AndreasStieger)</comme
     <comment>mutt 2.0.3 (forwarded request 853307 from AndreasStieger)</comment>
     <requestid>853609</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>49cd19421bd2c765f40d8b979f42e037</srcmd5>
+    <version>2.0.4</version>
+    <time>1610123868</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>861550</requestid>
+  </revision>
 </revisionlist>
