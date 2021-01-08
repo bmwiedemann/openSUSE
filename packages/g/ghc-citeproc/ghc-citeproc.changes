@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Dec 29 21:16:59 UTC 2020 - psimons@suse.com
+
+- Update citeproc to version 0.3.0.3.
+  ## 0.3.0.3
+
+    * Fix author-only citations (#43).  We got bad results with some
+      styles when a reference had both an author and a translator.
+
+  ## 0.3.0.2
+
+    * Don't use cite-group delimiter if ANY citation in group has
+      locator (#38).  This seems to be citeproc.js's behavior and it gives
+      better results for chicago-author-date:  we want both
+      `[@foo20; @foo21, p. 3]` and `[@foo20, p. 3; @foo21]` to produce
+      a semicolon separator, rather than a comma.
+
+-------------------------------------------------------------------
 Sat Dec 19 14:46:02 UTC 2020 - psimons@suse.com
 
 - Update citeproc to version 0.3.0.1.

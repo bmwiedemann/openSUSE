@@ -19,7 +19,7 @@
 %global pkg_name citeproc
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.0.1
+Version:        0.3.0.3
 Release:        0
 Summary:        Generates citations and bibliography from CSL styles
 License:        BSD-2-Clause
