@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan  8 10:19:34 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- update to version 1.11.0
+  + Fixed
+    * certbot-dns-google would sometimes crash with HTTP 409/412
+      errors when used with very large zones. See #6036.
+    * certbot-dns-google would sometimes crash with an HTTP 412
+      error if preexisting records had an unexpected TTL, i.e.:
+      different than Certbot's default TTL for this plugin.
+      See #8551.
+
+- update to version 1.10.1
+  * sync with the main certbot package
+
+- update to version 1.10.0
+  * Support for Python 3.9 was added to Certbot and all of its
+    components.
+
+-------------------------------------------------------------------
 Wed Oct  7 08:44:31 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 1.9.0
