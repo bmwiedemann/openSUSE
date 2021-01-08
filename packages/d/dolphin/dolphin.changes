@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan  5 12:24:43 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-01-apps-update
+- Changes since 20.12.0:
+  * Fix vertical scroll with horizontal component not being recognized properly (kde#430532)
+  * DolphinContextMenu: drop wrong assert
+  * Fix crash when device with capacitybar is dragged (kde#430441)
+  * Use setShowOpenOrExecuteDialog(true) with OpenUrlJob
+  * Fix access url navigator while creating new tab in filename search view (kde#429628, kde#430434)
+  * Fix KIO warning when URL is empty
+  * servicemenuinstaller: Remove file if it already exists
+  * Fix PlacesItemModelTest, 2nd try
+- Dropped patches, now upstream:
+  * 0001-Fix-access-url-navigator-while-creating-new-tab-in-f.patch
+
+-------------------------------------------------------------------
 Tue Dec 22 21:59:29 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Add upstream patch to fix crash on launch (kde#429628,

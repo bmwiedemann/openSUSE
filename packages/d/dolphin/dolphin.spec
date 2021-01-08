@@ -1,7 +1,7 @@
 #
 # spec file for package dolphin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           dolphin
-Version:        20.12.0
+Version:        20.12.1
 Release:        0
 Summary:        KDE File Manager
 License:        GPL-2.0-or-later
@@ -32,7 +32,6 @@ Source3:        dolphinsu.desktop
 Patch0:         dolphin-go_up.diff
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-Update-cached-viewContainer-geometry-every-time-they.patch
-Patch2:         0001-Fix-access-url-navigator-while-creating-new-tab-in-f.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch
 BuildRequires:  extra-cmake-modules >= 1.6.0
