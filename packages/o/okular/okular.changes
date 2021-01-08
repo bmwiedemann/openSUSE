@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan  5 12:27:19 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-01-apps-update
+- Changes since 20.12.0:
+  * Fix opening markdown files (kde#430538)
+  * Make search work on documents that describe Å as A + ◌̊ (kde#430243)
+  * Fix crash with some broken PDF files
+  * pdf: Fix small memory leak
+  * clang-tidy: Disable performance-no-automatic-move
+  * Make the CI pass with new clang-tidy
+  * Document::openRelativeFile: Double check the url changed when we asked to (kde#429924)
+
+-------------------------------------------------------------------
 Sat Dec  5 23:17:55 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.0
