@@ -188,4 +188,12 @@
     <comment>certbot version bump</comment>
     <requestid>839992</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ba065692eab7cebc6c0d35c1a70f1db9</srcmd5>
+    <version>1.11.0</version>
+    <time>1610123951</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>861649</requestid>
+  </revision>
 </revisionlist>
