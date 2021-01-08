@@ -1,7 +1,7 @@
 #
 # spec file for package sord
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 0
 Name:           sord
-Version:        0.16.4
+Version:        0.16.6
 Release:        0
 Summary:        Utilities to work with RDF data
 License:        ISC
