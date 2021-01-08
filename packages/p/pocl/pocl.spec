@@ -17,9 +17,9 @@
 #
 
 
-%define sover  2.5.0
+%define sover  2.6.0
 Name:           pocl
-Version:        1.5
+Version:        1.6
 Release:        0
 Summary:        Portable Computing Language - an OpenCL implementation
 # The whole code is under MIT
@@ -31,7 +31,7 @@ URL:            http://portablecl.org/
 Source0:        https://github.com/pocl/pocl/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       pocl-rpmlintrc
 Patch0:         link_against_libclang-cpp_so.patch
-BuildConflicts: clang-devel >= 11
+BuildConflicts: clang-devel >= 12
 BuildRequires:  clang-devel >= 6
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -76,7 +76,7 @@ Summary:        Development files for the Portable Computing Language
 Group:          Development/Languages/Other
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 Requires:       libpocl2 = %{version}-%{release}
-Requires:       opencl-headers
+Requires:       opencl-headers >= 2.2
 
 %description devel
 Portable Computing Language (pocl) is an implementation of the OpenCL standard
@@ -132,6 +132,8 @@ sed -i 's|%{_prefix}%{_prefix}/|%{_prefix}/|g' %{buildroot}%{_datadir}/OpenCL/ve
 %{_bindir}/poclcc
 %dir %{_libdir}/pocl/
 %{_libdir}/pocl/libllvmopencl.so
+%{_libdir}/pocl/libpocl-devices-basic.so
+%{_libdir}/pocl/libpocl-devices-pthread.so
 %{_datadir}/pocl/
 
 %files -n libpocl2

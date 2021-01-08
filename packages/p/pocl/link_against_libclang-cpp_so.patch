@@ -1,12 +1,13 @@
-diff -u -r pocl-1.5.orig/cmake/LLVM.cmake pocl-1.5/cmake/LLVM.cmake
---- pocl-1.5.orig/cmake/LLVM.cmake	2020-06-25 12:22:37.500539000 +0200
-+++ pocl-1.5/cmake/LLVM.cmake	2020-06-25 12:23:23.091551000 +0200
-@@ -219,7 +219,7 @@
- string(REGEX REPLACE "-W[^ ]*" "" LLVM_CXXFLAGS "${LLVM_CXXFLAGS}")
+diff --git a/cmake/LLVM.cmake b/cmake/LLVM.cmake
+index 2827d64..e186bc1 100644
+--- a/cmake/LLVM.cmake
++++ b/cmake/LLVM.cmake
+@@ -239,7 +239,7 @@ string(STRIP "${LLVM_SYSLIBS}" LLVM_SYSLIBS)
+ ####################################################################
  
- # Llvm-config does not include clang libs
--if((9 LESS LLVM_MAJOR) AND (LLVM_LIB_IS_SHARED MATCHES "shared"))
-+if((8 LESS LLVM_MAJOR) AND (LLVM_LIB_IS_SHARED MATCHES "shared"))
-   # Link against a single shared library instead of multiple component shared
+ # llvm-config does not include clang libs
+-if((9 LESS LLVM_MAJOR) AND (NOT STATIC_LLVM))
++if((8 LESS LLVM_MAJOR) AND (NOT STATIC_LLVM))
+   # For Clang 10+, link against a single shared library instead of multiple component shared
    # libraries.
-   set(CLANG_LIBNAMES clang-cpp)
+   if("${LLVM_LIBNAMES}" MATCHES "LLVMTCE")

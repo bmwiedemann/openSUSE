@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Dec 25 14:30:16 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6
+  * Support for LLVM 11.
+  * CUDA kernels using constant __local blocks are now ABI
+    incompatible with previous release. Users need to delete their
+    pocl cache.
+  * Improved debugging of OpenCL code with CPU driver.
+  * Improved the PTX code generation for __local blocks.
+  * Improved handling of command queue barriers
+  * Fix LLVM loop vectorizing remarks printing
+    (POCL_VECTORIZER_REMARKS=1).
+  * Fix an issue in which the loop vectorizer produced code with
+    invalid memory reads (issue #757).
+  * Fix compilation error when CMake option SINGLE_LLVM_LIB is
+    set to OFF.
+  * Fix wrongly output dlerror (Undefined symbol) after dlopen,
+    caused by a previous libdl call in an ICD loader
+  * [CPU] safety margin of pocl's CPU driver local memory
+    allocation has been reduced to a much more reasonable value
+  * [CPU] buffer size for OpenCL printf is now configurable with
+    PRINTF_BUFFER_SIZE CMake variable
+  * [CPU] local memory size reported is now the size of last level
+    of non-shared data cache (usually L1 or L2 depending on CPU),
+    if hwloc can determine it.
+- Update patch link_against_libclang-cpp_so.patch
+
+-------------------------------------------------------------------
 Fri Oct 23 22:46:28 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - remove broken installation workaround 
