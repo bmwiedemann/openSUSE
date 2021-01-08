@@ -3386,4 +3386,25 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
     <comment></comment>
     <requestid>857747</requestid>
   </revision>
+  <revision rev="279" vrev="1">
+    <srcmd5>7e30d6ee8901699fb70ea881bb7fb554</srcmd5>
+    <version>87.0.4280.141</version>
+    <time>1610123606</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 87.0.4280.141 bsc#1180645
+  - CVE-2021-21106: Use after free in autofill
+  - CVE-2021-21107: Use after free in drag and drop
+  - CVE-2021-21108: Use after free in media
+  - CVE-2021-21109: Use after free in payments
+  - CVE-2021-21110: Use after free in safe browsing
+  - CVE-2021-21111: Insufficient policy enforcement in WebUI
+  - CVE-2021-21112: Use after free in Blink
+  - CVE-2021-21113: Heap buffer overflow in Skia
+  - CVE-2020-16043: Insufficient data validation in networking
+  - CVE-2021-21114: Use after free in audio
+  - CVE-2020-15995: Out of bounds write in V8
+  - CVE-2021-21115: Use after free in safe browsing
+  - CVE-2021-21116: Heap buffer overflow in audio (forwarded request 860986 from gmbr3)</comment>
+    <requestid>860987</requestid>
+  </revision>
 </revisionlist>

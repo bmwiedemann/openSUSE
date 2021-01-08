@@ -1,7 +1,7 @@
 #
 # spec file for package chromium
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,7 @@
 %endif
 %bcond_with clang
 Name:           chromium
-Version:        87.0.4280.88
+Version:        87.0.4280.141
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -793,8 +793,6 @@ sed -i "s|@@PACKAGE@@|chromium|g" %{buildroot}%{_mandir}/man1/chromium.1
 sed -i "s|@@MENUNAME@@|Chromium|g" %{buildroot}%{_mandir}/man1/chromium.1
 
 %fdupes %{buildroot}
-
-
 
 %files
 %license LICENSE

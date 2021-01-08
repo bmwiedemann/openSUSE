@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jan  7 08:59:35 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to 87.0.4280.141 bsc#1180645
+  - CVE-2021-21106: Use after free in autofill
+  - CVE-2021-21107: Use after free in drag and drop
+  - CVE-2021-21108: Use after free in media
+  - CVE-2021-21109: Use after free in payments
+  - CVE-2021-21110: Use after free in safe browsing
+  - CVE-2021-21111: Insufficient policy enforcement in WebUI
+  - CVE-2021-21112: Use after free in Blink
+  - CVE-2021-21113: Heap buffer overflow in Skia
+  - CVE-2020-16043: Insufficient data validation in networking
+  - CVE-2021-21114: Use after free in audio
+  - CVE-2020-15995: Out of bounds write in V8
+  - CVE-2021-21115: Use after free in safe browsing
+  - CVE-2021-21116: Heap buffer overflow in audio 
+
+-------------------------------------------------------------------
 Sun Dec 20 17:27:47 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use main URLs instead of redirects in master preferences
