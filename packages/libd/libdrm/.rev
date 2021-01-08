@@ -1454,4 +1454,12 @@ Man pages are disabled for this build, upstream disabled them for this release. 
     <comment>- version 2.4.102 needed for jira#SLE/SLE-12880, jira#SLE/SLE-12882</comment>
     <requestid>831317</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>c60296d3d18edbb48c101a34fc1cea24</srcmd5>
+    <version>2.4.103</version>
+    <time>1610123598</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860829</requestid>
+  </revision>
 </revisionlist>

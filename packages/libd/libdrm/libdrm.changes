@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jan  6 16:03:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.103:
+  * xf86drm.c: Use integer logarithm. 
+  * amdgpu: only enable security tests on raven family
+  * amdgpu: sync up amdgpu_drm.h with latest from kernel
+  * amdgpu: add marketing names from 20.40
+  * intel: add INTEL_DG1_IDS to the pciids list
+  * amdgpu: add device IDs for Raven, Picasso and Renoir
+  * intel: sync i915_pciids.h with kernel
+  * amdgpu: Add Device IDs for Embedded Raven2 platforms
+  * intel: sync i915_pciids.h with kernel
+  * xf86drm.c: fix build failure
+  * core: use `O_RDONLY` instead of ambiguous `0` flag
+  * lots of tests/amdgpu updates
+
+-------------------------------------------------------------------
 Mon Aug 31 17:30:37 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - version 2.4.102 needed for jira#SLE/SLE-12880, jira#SLE/SLE-12882
