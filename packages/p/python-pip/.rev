@@ -638,4 +638,12 @@
   package (gh#pypa/pip#9266).</comment>
     <requestid>855625</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>e56062ada8ad974425511e2b2e538d8d</srcmd5>
+    <version>20.2.4</version>
+    <time>1610123537</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860150</requestid>
+  </revision>
 </revisionlist>

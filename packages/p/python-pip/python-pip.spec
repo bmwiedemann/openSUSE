@@ -1,7 +1,7 @@
 #
 # spec file for package python-pip
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@
 %endif
 %endif
 Name:           python-pip%{psuffix}
-Version:        20.2.3
+Version:        20.2.4
 Release:        0
 Summary:        A Python package management system
 License:        MIT
