@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan  5 09:48:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.24.10:
+  * Fix memory leaks in lv2bench
+  * Fix various minor warnings and other code quality issues
+  * Make lilv_world_get() use translations
+  * Split and clean up test suite
+  * Allow passing strings for URIs in Python API when unambiguous
+  * Fix cases where incorrect translation is used
+  * Fix deleting state bundles loaded from the model
+  * Fix memory leak when dyn-manifest has no plugins (thanks Michael Fisher)
+  * Implement state:freePath feature
+
+-------------------------------------------------------------------
 Wed Dec 11 11:53:07 UTC 2019 - Dave Plater <davejplater@gmail.com>
 
 - Add specific version requirement for libserd see boo#1158728

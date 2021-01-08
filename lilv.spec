@@ -1,7 +1,7 @@
 #
 # spec file for package lilv
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %define sordversion %(pkg-config --modversion sord-0)
 %define serdversion %(pkg-config --modversion serd-0)
 Name:           lilv
-Version:        0.24.6
+Version:        0.24.10
 Release:        0
 Summary:        C library to make use of LV2 plugins
 License:        ISC
 Group:          Development/Libraries/C and C++
-URL:            http://drobilla.net/software/lilv/
-Source0:        http://download.drobilla.net/lilv-%{version}.tar.bz2
+URL:            https://drobilla.net/software/lilv
+Source0:        https://download.drobilla.net/lilv-%{version}.tar.bz2
 Source98:       baselibs.conf
 Source99:       lilv-rpmlintrc
 BuildRequires:  doxygen
