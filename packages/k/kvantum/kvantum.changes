@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jan  5 09:34:13 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Version 0.18.0
+
+- The main feature of this release is a better window dragging
+  with Qt ≥ 5.15. It works under X11 and Wayland alike by calling
+  the window manager correctly. It also allows dragging from
+  buttons (with an option in Kvantum Manager).
+
+- Some other changes:
+
+- Fixed the centered form layouts.
+- Made toolbars unmovable by default.
+- Better widths for push buttons, tabs and menus.
+- Draw the icon of a menubar item instead of its text if it's
+  given.
+- A new theme is added (KvMojaveMixed1, a variant of KvMojaveMixed)
+  and some themes are polished.
+- Removed the scroll jump workaround. It interfered with 
+  animations and cluttered the code to partially compensate for
+  a Qt bug.
+
+-------------------------------------------------------------------
 Sat Oct  3 01:22:11 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Version 0.17.0
