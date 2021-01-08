@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Jan  7 16:07:56 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.2
+  Major bug fix and feature release. Support for static routes and
+  improved configuration support for IGMP.
+  Changes
+  * Support for controlling IGMP Last Member Query Count using
+    the igmp-robustness setting in mrouted.conf, default 2.
+  * Support for tuning the IGMP Last Member Query Interval using
+    a new setting igmp-query-last-member-interval <1-1024>.
+  * Support for static multicast routing (*,G), similar to SMCRoute
+  * New phyint static-group GROUP setting in mrouted.conf
+  * multiplestatements supported, but no ranges (yet).
+  * Proper tracking of lower-version host members (IGMP), when a
+    lower version host is detected for a group, a timer is set
+    according to RFC3376, and while in this compat mode
+    higher-version IGMP is not allowed to change state. E.g., in
+    IGMPv1 compat, IGMPv2 LEAVE is * ignored for the group,
+    similar to the phyint being in igmpv1 mode.
+  * Allow IGMP reports from source address 0.0.0.0, required as
+    per RFC3376, sec. 4.2.13, not supported until now. This
+    should greatly improve interop with IGMP snooping switches and
+    DHCP clients that have not yet received a lease
+  * Improved support for running mroutectl under watch(1). No more
+    artifacts due to unknown ANSI escape sequences to probe width
+  * Delayed PID file creation until after initial startup delay,
+    there is nobody home until after that delay, so no point in
+    announcing availability until after that
+  Fixes
+  *IGMPv3 membership reports were parsed incorrectly.
+    The problem affects users that use source specific multicast
+    join, i.e., (S,G) join/leave using IGMPv3. Support for
+    IGMPv3 was introduced in mrouted v4.0
+  * Malformed group-specific IGMP query. The IGMP header no longer
+    had the group field set, despite the query being addressed to
+    a specific group. Regression introduced in v4.0
+  * The optional phyint flag igmpv3 did not work.
+  * Fix buffer overrun in descriptor poll() handling
+  * Fix double-close on SIGHUP, Linux systems only
+  * Various non-critical memory leak fixes, critical for no-MMU
+    systems
+
+-------------------------------------------------------------------
 Fri Oct  2 15:47:42 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.1
