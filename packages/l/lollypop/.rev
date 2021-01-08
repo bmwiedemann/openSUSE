@@ -1511,4 +1511,22 @@
   * Bug fixes.</comment>
     <requestid>856974</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>aa1831652c182fe3ada2255d4833456f</srcmd5>
+    <version>1.4.8</version>
+    <time>1610123834</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.8:
+  * Fix reading stars from tags (glgo#World/lollypop#2654).
+  * Fix a crash in Information View (glgo#World/lollypop#2660).
+  * Fix a crash in Album view (glgo#World/lollypop#2645).
+  * Fix Flatpak issues: Credentials, MTP sync, ...
+  * Rework the way we blacklist tracks/albums.
+  * Enhanced queue manager (glgo#World/lollypop#2617).
+  * Less memory usage (glgo#World/lollypop#2111).
+  * Allow to select tracks with Ctrl and Shift
+    (glgo#World/lollypop#2487).
+- Take into account new icons in installed file list.</comment>
+    <requestid>861461</requestid>
+  </revision>
 </revisionlist>

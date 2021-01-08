@@ -1,7 +1,7 @@
 #
 # spec file for package lollypop
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lollypop
-Version:        1.4.7
+Version:        1.4.8
 Release:        0
 Summary:        GNOME music playing application
 License:        GPL-3.0-or-later
@@ -110,7 +110,7 @@ sed -i 's;/usr/bin/env python3;/usr/bin/python3;' lollypop.in search-provider/lo
 %{_datadir}/metainfo/org.gnome.Lollypop.appdata.xml
 %{_datadir}/applications/org.gnome.Lollypop.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.Lollypop.gschema.xml
-%{_datadir}/icons/hicolor/*/apps/org.gnome.Lollypop*
+%{_datadir}/icons/hicolor/*/*/org.gnome.Lollypop*
 %{_mandir}/man1/lollypop.1%{?ext_man}
 %{python3_sitelib}/lollypop/
 
