@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan  4 12:21:38 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Add source signature and keyring
+
+-------------------------------------------------------------------
+Wed Dec 23 12:00:50 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 2.0.22:
+  * See https://downloads.apache.org/pdfbox/2.0.22/RELEASE-NOTES.txt
+- Remove provided binaries
+
+-------------------------------------------------------------------
 Thu Jun  4 05:06:54 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 2.0.19:

@@ -1,7 +1,7 @@
 #
 # spec file for package apache-pdfbox
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,16 @@
 
 # Only fontbox and jempbox are built as pdfbox itself depends on Adobe's pcif.
 Name:           apache-pdfbox
-Version:        2.0.19
+Version:        2.0.22
 Release:        0
 Summary:        Java PDF Library
 License:        Apache-2.0 AND OFL-1.1
 Group:          Development/Libraries/Java
 URL:            https://pdfbox.apache.org/
-Source0:        http://archive.apache.org/dist/pdfbox/%{version}/pdfbox-%{version}-src.zip
-Source1:        pdfbox-%{version}-build.tar.xz
+Source0:        https://archive.apache.org/dist/pdfbox/%{version}/pdfbox-%{version}-src.zip
+Source1:        https://archive.apache.org/dist/pdfbox/%{version}/pdfbox-%{version}-src.zip.asc
+Source2:        pdfbox-%{version}-build.tar.xz
+Source3:        https://www.apache.org/dist/pdfbox/KEYS#/pdfbox.keyring
 BuildRequires:  ant
 BuildRequires:  apache-commons-logging
 BuildRequires:  bouncycastle
@@ -54,7 +56,12 @@ Requires:       %{name} = %{version}-%{release}
 JavaDoc documentation for %{name}
 
 %prep
-%setup -q -n pdfbox-%{version} -a1
+%setup -q -n pdfbox-%{version} -a2
+
+# Remove provided binaries
+find -name '*.class' -delete
+find -name '*.jar' -delete
+
 %pom_change_dep :junit :::test fontbox
 
 %build
