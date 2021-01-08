@@ -1220,4 +1220,12 @@ See https://bugs.kde.org/show_bug.cgi?id=290719 (forwarded request 115750 from w
     <comment>- update to 3.16.1 (jsc#SLE-13769):</comment>
     <requestid>838585</requestid>
   </revision>
+  <revision rev="129" vrev="3">
+    <srcmd5>a2e2b5af4b5d57bf560987b6a42acdec</srcmd5>
+    <version>3.16.1</version>
+    <time>1610123532</time>
+    <user>dimstar_suse</user>
+    <comment>- add s390x-z14-vector-support.patch (bsc#1180511)</comment>
+    <requestid>860136</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package valgrind
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,8 @@ Source0:        ftp://sourceware.org/pub/valgrind/valgrind-%{version}.tar.bz2
 # https://github.com/olafhering/valgrind/compare/olh-base-master...olh-fixes-master
 Patch0:         valgrind.xen.patch
 Patch2:         armv6-support.diff
+# PATCH-FIX-UPSTREAM: https://sourceware.org/git/?p=valgrind.git;a=patch;h=159f132289160ab1a5a5cf4da14fb57ecdb248ca
+Patch3:         s390x-z14-vector-support.patch
 Patch9:         parallel-lto.patch
 Patch10:        dhat-use-datadir.patch
 %if "%{flavor}" == ""

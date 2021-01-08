@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan  4 10:55:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add s390x-z14-vector-support.patch (bsc#1180511) 
+
+-------------------------------------------------------------------
 Sun Aug 16 01:22:44 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.16.1 (jsc#SLE-13769):
