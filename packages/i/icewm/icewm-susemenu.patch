@@ -1,8 +1,7 @@
-diff --git a/lib/menu.in b/lib/menu.in
-index f200514..3118471 100644
---- a/lib/menu.in
-+++ b/lib/menu.in
-@@ -12,5 +12,6 @@ prog Firefox mozilla firefox
+diff -Nru icewm-2.0.0.orig/lib/menu.in icewm-2.0.0/lib/menu.in
+--- icewm-2.0.0.orig/lib/menu.in	2020-12-14 02:14:27.000000000 +0100
++++ icewm-2.0.0/lib/menu.in	2020-12-20 18:55:09.026453502 +0100
+@@ -11,5 +11,6 @@
  prog Hexchat xchat hexchat
  prog Gimp gimp gimp
  includeprog icewm-menu-fdo --sep-before --no-sep-others
@@ -10,11 +9,10 @@ index f200514..3118471 100644
 +#menufile Programs folder programs
  menufile Tool_bar folder toolbar
 +menuprog SUSE folder xdg_menu --format icewm
-diff --git a/src/wmmenu.cc b/src/wmmenu.cc
-index ccee25e..ec2ff81 100644
---- a/src/wmmenu.cc
-+++ b/src/wmmenu.cc
-@@ -297,6 +297,45 @@ char* MenuLoader::parseMenuProg(char *p, ObjectContainer *container)
+diff -Nru icewm-2.0.0.orig/src/wmmenu.cc icewm-2.0.0/src/wmmenu.cc
+--- icewm-2.0.0.orig/src/wmmenu.cc	2020-12-14 02:14:27.000000000 +0100
++++ icewm-2.0.0/src/wmmenu.cc	2020-12-20 18:59:54.401885022 +0100
+@@ -294,6 +294,46 @@
      return p;
  }
  
@@ -23,19 +21,19 @@ index ccee25e..ec2ff81 100644
 +    Argument name;
 +
 +    p = YConfig::getArgument(&name, p);
-+    if (p == 0) return p;
++    if (p == nullptr) return p;
 +
 +    Argument icons;
 +
 +    p = YConfig::getArgument(&icons, p);
-+    if (p == 0) return p;
++    if (p == nullptr) return p;
 +
 +    Argument command;
 +    YStringArray args;
 +
 +    p = getCommandArgs(p, &command, args);
-+    if (p == 0) {
-+        msg(_("Error at prog %s"), name.cstr());
++    if (p == nullptr) {
++        msg(_("Error at menuprog '%s'"), name.cstr());
 +        return p;
 +    }
 +
@@ -46,21 +44,22 @@ index ccee25e..ec2ff81 100644
 +#endif
 +    MSG(("suseprog %s %s", name.cstr(), command.cstr()));
 +
-+    upath fullPath = findPath(getenv("PATH"), X_OK, command.cstr());
-+    if (fullPath != null) {
++    csmart path(path_lookup(command.cstr()));
++    if (path) {
 +        ObjectMenu *progmenu = new MenuProgMenu(
 +                app, smActionListener, wmActionListener,
-+                name.cstr(), command.cstr(), args, 0);
++                name.cstr(), command.cstr(), args);
 +        if (progmenu)
-+           container->addContainer(name.cstr(), icon, progmenu);
-+    }    
++            container->addContainer(name.cstr(), icon, progmenu);
++    }
++
 +    return p;
 +}
 +
  char* MenuLoader::parseMenuProgReload(char *p, ObjectContainer *container)
  {
      Argument name;
-@@ -398,6 +437,9 @@ char* MenuLoader::parseWord(char *word, char *p, ObjectContainer *container)
+@@ -395,6 +435,9 @@
          else if (!strcmp(word, "menuprogreload")) {
              p = parseMenuProgReload(p, container);
          }
@@ -70,20 +69,14 @@ index ccee25e..ec2ff81 100644
          else if (!strcmp(word, "include")) {
              p = parseIncludeStatement(p, container);
          }
-diff --git a/src/wmprog.h b/src/wmprog.h
-index 4e9bd1f..d5b9827 100644
---- a/src/wmprog.h
-+++ b/src/wmprog.h
-@@ -31,10 +31,12 @@ private:
+diff -Nru icewm-2.0.0.orig/src/wmprog.h icewm-2.0.0/src/wmprog.h
+--- icewm-2.0.0.orig/src/wmprog.h	2020-12-14 02:14:27.000000000 +0100
++++ icewm-2.0.0/src/wmprog.h	2020-12-20 19:01:08.201727478 +0100
+@@ -30,6 +30,7 @@
+     char* parseAMenu(char *data, ObjectContainer *container);
      char* parseMenuFile(char *data, ObjectContainer *container);
      char* parseMenuProg(char *data, ObjectContainer *container);
-     char* parseMenuProgReload(char *data, ObjectContainer *container);
 +    char* parseSuseProg(char *p, ObjectContainer *container);
+     char* parseMenuProgReload(char *data, ObjectContainer *container);
      char* parseKey(char *word, char *p);
      char* parseProgram(char *word, char *p, ObjectContainer *container);
-     char* parseWord(char *word, char *p, ObjectContainer *container);
- 
-+
-     IApp *app;
-     YSMListener *smActionListener;
-     YActionListener *wmActionListener;

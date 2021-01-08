@@ -1,7 +1,7 @@
 #
 # spec file for package icewm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global lites icewm icewmhint icewmbg icesh icewm-session
 Name:           icewm
-Version:        1.6.5
+Version:        2.0.0
 Release:        0
 Summary:        Window Manager with a Taskbar
 License:        LGPL-2.1-or-later
@@ -50,6 +50,7 @@ BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(fribidi)
 BuildRequires:  pkgconfig(gdk-pixbuf-xlib-2.0)
 BuildRequires:  pkgconfig(ice)
+BuildRequires:  pkgconfig(imlib2)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(x11)
@@ -69,6 +70,7 @@ Requires:       icewm-configuration-files
 %else
 Requires:       icewm-theme-branding
 %endif
+Requires:       imlib2-loaders
 Requires:       xdg-menu
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -282,8 +284,8 @@ fi
 %{_datadir}/xsessions/icewm-session.desktop
 %{_datadir}/xsessions/icewm.desktop
 %{_datadir}/xsessions/default.desktop
-%{_mandir}/man1/
-%{_mandir}/man5/
+%{_mandir}/man1/*
+%{_mandir}/man5/*
 
 %files config-upstream
 %dir %{_sysconfdir}/icewm/

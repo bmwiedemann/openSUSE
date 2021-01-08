@@ -1,8 +1,8 @@
-diff --git a/lib/icewm.desktop b/lib/icewm.desktop
-index d6e5a04..02618b5 100644
---- a/lib/icewm.desktop
-+++ b/lib/icewm.desktop
-@@ -11,7 +11,7 @@ Comment[da]=Simpel og hurtig vindueshåndtering
+Index: icewm-2.0.0/lib/icewm.desktop
+===================================================================
+--- icewm-2.0.0.orig/lib/icewm.desktop
++++ icewm-2.0.0/lib/icewm.desktop
+@@ -18,7 +18,7 @@ GenericName[pt_BR]=Gerencidador simples
  Icon=icewm
  TryExec=/usr/bin/icewm
  Exec=icewm

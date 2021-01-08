@@ -1,4 +1,215 @@
 -------------------------------------------------------------------
+Sun Jan  3 22:44:50 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add missing imlib2-loaders to Requires
+
+-------------------------------------------------------------------
+Sun Dec 20 18:23:34 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.0.0
+  * Remove support for the old and obsolete _WIN_PROTOCOL properties.
+  * Add support for the Imlib2 image rendering engine as an alternative
+    for the gdk-pixbuf-xlib rendering engine. The Imlib2 image rendering
+    engine is now the default, but this can be set at configure time.
+  * Center the window list window if it got offscreen.
+  * Fix horizontal scrolling in icehelp.
+  * Use _NET_WM_STATE_HIDDEN instead of IconicState for minimize in icesh.
+  * Icewm now supports ICCCM icon_pixmap and icon_window.
+  * Don't unroll rolled up windows on left button press for issue #525.
+  * Fix for drawing title pixmaps when they are gradients for issue #523.
+  * Remove unwanted separator in taskbar for empty toolbar for issue #524.
+    support BR_Portuguese language in 2 desktop files for issue #522.
+  * Add support for WM_HINTS icon_window in MiniIcons.
+  * Check if WM_HINTS update actually changes anything.
+  * Don't attempt to draw Unicode in non-UTF-8 environment for issue #519
+  * Icewm now supports the icon_pixmaps from WM_HINTS to correctly
+    show the icon for NEdit, xmgrace, xv, timidity and fontforge.
+  * Don't resize when trying to move when dragging at y=0 for issue #520.
+  * Report errors if enabled packages are missing for issue #516.
+  * Instead of render.h include Xrender.h for dependency checking for issue #516.
+  * Fix the positioning of the window list title for non-standard SmallIconSize
+    settings for issue #514.
+- from version 1.9.2
+  * Fix for correctly restoring xterm from fullscreen in issue #28.
+  * Prevent inadvertent growing of windows in issue #512.
+- from version 1.9.1
+  * Fix for NEdit, which delays setting WM_NORMAL_HINTS, to fix issue #510.
+  * Fix for changing layers when ABOVE or BELOW bit is set.
+  * Use a minimum delay of 10 ms for auto taskbar delays for issue #508.
+  * Note in preferences which timing delays are in milliseconds.
+  * Ignore applications with _NET_WM_STATE_SKIP_PAGER set in PagerShowPreview.
+  * Update XDND protocol version from 3 to 5.
+- from version 1.9.0
+  * Properly handle name lookup failure for mailboxes for issue #493.
+  * Add --valgrind and --catchsegv options to icewm-session to support debugging.
+  * Add support for _NET_WM_WINDOW_TYPE to icesh.
+  * Always send one synthetic ConfigureNotify on initial window map for issue #492.
+  * Remove resize indicators from the frame window when unneeded.
+  * Reduce the number of redraws in title bar.
+  * Support incomplete _MOTIF_WM_HINTS property for mlterm.
+  * Add missing getProtocols to message dialog to fix issue #494.
+  * Drop support for ISDN network devices in the network monitor.
+  * Update the Catalan, Japanese, Portugeuese, Slovak translations.
+  * Update the Czech, Dutch, Indonesian, and Hindi translations.
+  * Optimizations to handling of Motif hints to avoid unneeded resizing.
+  * Several fixes for correct PagerShowPreview updates for #496.
+  * Fix desktop mini icon positioning for fullscreen windows.
+  * Don't activate a fullscreen window on startup when it is unmapped.
+  * Fixes for TaskBarAutoHide.
+  * Improve drawing of ellipsis in titles.
+  * Optimize the loading of configuration files.
+  * Workaround for non-standard behavior of xnec2c in issue #503.
+  * When fullscreen then record resize requests for later restoration.
+  * Allow width_inc and height_inc to be zero to disable maximization.
+  * Fix handling of WM_CLIENT_LEADER property for Motif applications in #506.
+- from version 1.8.3
+  * Check if filedescriptor is valid and fix off-by-one allocation error.
+  * When icewm starts, reduce the number of workarea updates for taskbar to one.
+  * The taskbar only has struts if it is exactly at the top or bottom of the screen.
+  * Fix for autohide taskbar not wanting to hide.
+  * Support TaskBarAutoHide for TaskBarKeepBelow.
+  * Postpone taskbar app status updates until idle, for faster event response.
+  * Don't send synthetic ConfigureNotify events for resizing unless required.
+  * Do send synthetic ConfigureNotify events for positioning when required.
+  * Only send window position updates to the client if it really has moved.
+  * Send at most one synthetic ConfigureNotify message per resize.
+  * Add proper support for EWMH _NET_RESTACK_WINDOW requests to raise a window.
+  * Reflect layer changes in the _NET_WM_STATE ABOVE and BELOW flags.
+  * Add WinStateFullscreen to the visible _WIN_STATE bits.
+  * Make switch icons opaque for 32-bit visuals.
+  * Fix for "icesh -last".
+  * Fix issue bbidulock/icewm#491 for F11 fullscreen key on GTK terminals.
+  * Support "icesh toggleState Fullscreen"
+  * Support icesh "iconic" and "normal" commands for WM_CHANGE_STATE.
+  * Use wmHide or wmShow to hide or show the taskbar to fix issue bbidulock/icewm#489.
+- from version 1.8.2
+  * Fixes for using the proper icon sizes for issue #483.
+  * Fixes for reading from pipes in "menuprog" and "menuprogreload" for issue #487.
+  * CMake support was extended to the FreeBSD, OpenBSD and Solaris platforms.
+  * In "menuprog" and "menuprogreload" do dollar expansion and tilde expansion.
+  * New Portuguese (pt) translations.
+- from version 1.8.1
+  * Fix path_lookup strtok_r for non-Glibc BSD systems for #23.
+  * Fix topSideVerticalOffset for fully opaque frame borders for #482.
+  * Fix the FreeBSD case where icewm-session is started
+  * in the root directory by the display manager.
+  * Prevent premature workarea changes when collapsing
+  * taskbar to avoid repositioning MiniIcons.
+  * Fix the default KeySysArrangeIcons key binding to Alt+Shift+F8.
+  * Only define KeySysArrangeIcons if preference MinimizeToDesktop=1.
+  * Add KeyWinSmartPlace to preferences.
+  * Remove undocumented KeyWinSnapMove.
+  * Portability changes for OpenBSD.
+  * Prevent cyclic dependencies for transient windows.
+  * Also let icesh spy on ClientMessages.
+- from version 1.8.0
+  * Let workspacebutton use the workspace button fonts when drawing text.
+  * Don't switch focus on a FocusOut event on the root window.
+  * Prevent the pingponging of focus between windows when one window loses focus.
+  * Improved support of applications with transient windows.
+  * In the window list window, improve the Show command to
+    consider work area and screen boundaries.
+  * Give message buttons some padding and a minimum size.
+  * Fix the saving of modified options to preferences.
+  * Fix opacity in titlebar and task buttons when using gradients.
+  * Fix status of logout entry in the logout menu.
+  * New theme option MenuButtonIconVertOffset to adjust the position
+    of the menu button icon in case ShowMenuButtonIcon=1.
+  * Improved ICCCM conformance for restack requests of transient windows.
+  * Several improvements to the CrystalBlue theme.
+  * Update theme NanoBlue.
+  * Change xterm.icon into xterm.XTerm.icon in the default winoptions.
+  * More beautiful MiniIcons show just a large shaped icon if MinimizeToDesktop=1.
+  * Improved positioning of MiniIcons when the work area grows or shrinks.
+  * Enable Arrange Icons in taskbar menu to rearrange all desktop MiniIcons.
+  * Add a tooltip to MiniIcons which reflects the window title.
+  * Enable dragging MiniIcons with the left mouse button.
+  * Ensure icons of irregular sizes are always scaled or loaded.
+  * Fix the --logevents option.
+  * Update the frame status in the move menu and the layer menu before showing them.
+  * Improved Chinese translation by WhiredPlanck.
+  * Rename comments from APM monitor to battery monitor by DieSpinne.
+  * Efficiency improvements to the relocation of frames when the workarea changes.
+  * Better positioning of collapse button to avoid a white line at the bottom of the taskbar.
+  * A completely rewritten icon locator by Eduard Bloch which finds many more icons.
+  * A new option IconThemes by Eduard Bloch to set your icon theme preferences.
+  * Handle more detail in configure request messages.
+  * Avoid focusing a random client when a request to stack a client below is received.
+  * Update _NET_CLIENT_LIST_STACKING on a configure request to restack a window.
+  * Detect when the top side of the title bar border is partially
+    transparent for improved positioning.
+  * More updated translations.
+  * Exclude the collapsed taskbar button from workarea calculations.
+  * Update workspace buttons when workspace names change.
+  * Show a sticky window just once on all PagerShowPreview workspace buttons.
+  * Make button hover work after a click-cancel for issue #448.
+  * Fix for correctly computing the X shape mask of shaped titlebars.
+  * Fix for updating titlebar shape when title changes.
+  * Prevent the delayed focus timer or autoraise timer from interfering
+    when a frame is minimized, iconified or rolled up.
+  * Don't set the _NET_WM_STATE_FOCUSED flag when mimimized, hidden or rolledup.
+  * Set the WM_ICON_SIZE root window property according to theme icon sizes.
+  * Add sys/resource.h include for FreeBSD for issue #445.
+  * Add definition of ACPIDEV to fix compilation for FreeBSD.
+- from version 1.7.0
+  * New preference KeyboardLayouts for switching of keyboards layouts.
+  * Fix move menu and layer menu for selections in window list window.
+  * Don't take away focus from an application when icewm exits.
+  * On startup check _NET_ACTIVE_WINDOW and use it to preserve focus over restarts.
+  * Set _NET_ACTIVE_WINDOW to None when no window has focus.
+  * Better restore focus to window in Above layer when some other window closes.
+  * New winoption ignoreActivationMessages to ignore programmatic focus requests.
+  * Fix for taskBarWidthPercentage in case screen is not at (0, 0).
+  * Use wordexp to avoid a /bin/sh.
+  * Fix #21 "Problem with dosbox and re-maximize the screen".
+  * Add Maximize Horizontal to window list window.
+  * Refresh frames and buttons after screen resize to prevent artefacts.
+  * Add detailed tracing of systray activity.
+  * Slightly better conformance to XEMBED standard.
+  * Reorder systray operations for better test results.
+  * Only refocus in setWorkspace if workspace really changes.
+  * Reset workspace focused frame if focused frame changes workspace.
+  * Fix for negative geometry positions in winoptions.
+  * Fix icesh runonce.
+  * Fix for icewm --replace.
+  * Fix icewm hint processing and make icewmhint geometry work.
+  * Let icehelp be quiet when parsing html.
+  * Update theme NanoBlue from Nano_Blu-1.3 to evade a bug in Glamor.
+- from version 1.6.6
+  * Permit deleting entire input line in address bar.
+  * Fix for TaskBarShowWindows=0 if TaskBarAutoHide=1 for issue #434.
+  * Accept requests for clipboard selection as UTF-8.
+  * Request selection as UTF-8 string in addressbar.
+  * Add support for setting icewm options in env for icewm-session.
+  * New option PagerShowLabels for issue #19.
+  * Prevent possible division by zero when calculating battery capacity.
+  * Make CPU temperature centered.
+  * Fix to make window list icons fit their rows in issue #433.
+  * Fix scaled icons in menu for issue #429
+  * Fix for systray background filling in issue #430.
+  * Fix for CPUStatusShowAcpiTempInGraph=1 in issue #431.
+  * Make title buttons behave the same as title bar for Button2.
+  * Pass mouse presses on object buttons on to the taskbar for issue #424.
+  * Add new -xembed selector for icesh in issue #423.
+  * Fix for icesh -window.
+  * Add icewm-session --output=FILE option.
+  * Repaint frame border immediately for issue #417.
+  * Fix TaskBarAutoHide for TaskBarDoubleHeight for issue #415.
+  * Port to Solaris.
+  * Slightly larger tray app icons.
+  * Limit resize band to 3 pixels wide.
+  * Better support for RGBA colors.
+  * Add support for urxvt -borderless.
+  * Fuzzy matching of desktop categories for icewm-menu-fdo.
+  * A number of updated translations.
+- Add pkgconfig(imlib2) to BuildRequires
+- Fix file pattern for manpages in %files section
+- Refresh patches for new version
+  - icewm-desktop-nodisplay.patch
+  - icewm-preferences.patch
+  - icewm-susemenu.patch
+
+-------------------------------------------------------------------
 Sat May 16 12:10:39 UTC 2020 - Namor Barcode <z1trus@gmx.com>
 
 - Update to 1.6.5
