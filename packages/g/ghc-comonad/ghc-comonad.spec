@@ -17,16 +17,14 @@
 
 
 %global pkg_name comonad
-%bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        5.0.7
+Version:        5.0.8
 Release:        0
 Summary:        Comonads
 License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-cabal-doctest-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-distributive-devel
 BuildRequires:  ghc-indexed-traversable-devel
@@ -35,9 +33,6 @@ BuildRequires:  ghc-tagged-devel
 BuildRequires:  ghc-transformers-compat-devel
 BuildRequires:  ghc-transformers-devel
 ExcludeArch:    %{ix86}
-%if %{with tests}
-BuildRequires:  ghc-doctest-devel
-%endif
 
 %description
 Comonads.
@@ -60,9 +55,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %install
 %ghc_lib_install
-
-%check
-%cabal_test
 
 %post devel
 %ghc_pkg_recache
