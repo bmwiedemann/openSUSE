@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Sun Jan  3 00:13:35 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to v1.14.0
+  This release brings a number of major features including a
+  new IbisInterface, new Plotly Dash support and greatly
+  improved Plotly support, and greatly improved interaction
+  and integration with Datashader. Many thanks to the many
+  contributors to this release, whether directly by submitting
+  PRs or by reporting issues and making suggestions.
+  Specifically, we would like to thank @philippjfr,
+  @jonmmease, and @tonyfast for their work on the
+  IbisInterface and @jonmmease for improving Plotly support,
+  as well as @kcpevey, @Hoxbro, @marckassay, @mcepl, and
+  @ceball for various other enhancements, improvements to
+  documentation and testing infrastructure. In addition,
+  thanks to the maintainers @jbednar, @jlstevens and
+  @philippjfr for contributing to this release. This version
+  includes a large number of new features, enhancements, and
+  bug fixes.
+
+  It is important to note that version 1.14 will be the last
+  HoloViews release supporting Python 2.
+
+  Major features:
+  * New Plotly Dash support (#4605)
+  * New Plotly support for Tiles element (#4686)
+  * New IbisInterface (#4517)
+  * Greatly improved Datashader rasterize() (#4567). Previously,
+    many of the features of Datashader were available only
+    through datashade, which rendered data all the way to RGB
+    pixels and thus prevented many client-side Bokeh features
+    like hover, colorbars, dynamic colormaps, etc. rasterize now
+    supports all these Bokeh features along with nearly all the
+    Datashader features previously only available through
+    datashade, including (now client-side) histogram
+    equalization with cnorm='eq_hist' and easy control of
+    transparency via a new Dimension.nodata parameter. See the
+    Large Data User Guide for more information.
+  Enhancements:
+  * Implemented datashader aggregation of Rectangles (#4701)
+  * New support for robust color limits (clim_percentile) (#4712)
+  * Support for dynamic overlays in link_selections (#4683)
+  * Allow clashing Param stream contents (#4677)
+  * Ensured pandas does not convert times to UTC (#4711)
+  + Removed all use of cyordereddict (#4620)
+  * Testing infrastructure moved to GH Actions (#4592)
+  Bug fixes:
+  * Ensure RangeXY returns x/y ranges in correct order (#4665)
+    (#4665)
+  * Fix datashader instability with Plotly by disabling padding
+    for RGB elements (#4705)
+  * Various Dask and cuDF histogram fixes (#4691)
+  * Fix handling of custom matplotlib and bokeh colormaps (#4693)
+  * Fix cuDF values implementation (#4687)
+  * Fixed range calculation on HexTiles (#4689)
+  * Use PIL for RGB.load_image (#4639)
+  Documentation:
+   * Clarified data types accepted by Points (#4430)
+   * Updated Introduction notebook (#4682)
+   * Fixed releases urls (#4672)
+  Compatibility:
+  * Warning when there are multiple kdims on Chart elements
+    (#4710)
+  * Set histogram normed option to False by default (#4258)
+  * The default colormap in holoviews is now 'kbc_r' instead of
+    'fire'; see issue #3500 for details. This change was made
+    mainly because the highest value of the fire colormap is
+    white, which meant data was often not visible against a
+    white background. To restore the old behavior you can set
+    hv.config.default_cmap='fire', which you can do via the
+    extension e.g. hv.extension('bokeh',
+    config=dict(default_cmap='fire')). There is also
+    hv.config.default_gridded_cmap which you can set to 'fire'
+    if you wish to use the old colormap for the Raster, Image
+    and QuadMesh element types. The default HeatMap colormap has
+    also been set to 'kbc_r' for consistency and can be set back
+    to the old value of 'RdYlBu_r' via
+    hv.config.default_heatmap_cmap.
+- refresh remove_nose.patch
+- drop remove-cyordereddict.patch
+- fix test discovery gh#holoviz/holoviews#4621
+  * skip failing tests
+
+-------------------------------------------------------------------
 Thu Sep 17 16:29:18 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add remove-cyordereddict.patch to remove use of cyordereddict,
@@ -307,7 +391,7 @@ Mon Apr 22 19:12:10 UTC 2019 - Todd R <toddrme2178@gmail.com>
     * Switched notebook output to use an HTML mime bundle instead of
       separate HTML and JS components.
     * Improved support for style mapping constant values via
-      `dim.categorize`  
+      `dim.categorize`
   + Bug fixes:
     * Fixes for colorscales and colorbars
     * Other miscellaneous fixes
@@ -331,7 +415,7 @@ Mon Apr 22 19:12:10 UTC 2019 - Todd R <toddrme2178@gmail.com>
     * Optimized rendering of TriMesh wireframes
     * Add support for datetime formatting when hovering on Image/Raster
     * Added Tiles element from GeoViews
-  
+
 -------------------------------------------------------------------
 Sat Feb  2 17:11:31 UTC 2019 - Arun Persaud <arun@gmx.de>
 
@@ -603,7 +687,7 @@ Tue May  1 05:32:25 UTC 2018 - toddrme2178@gmail.com
 - Update to 1.10.2
   + Enhancement:
     * Exposed Image hover functionality for upcoming bokeh 0.12.16 release
-      ([#2625](https://github.com/ioam/holoviews/pull/2625)) 
+      ([#2625](https://github.com/ioam/holoviews/pull/2625))
   + Fixes:
     * Minor fixes for newly introduced elements and plots including Chord
       ([#2581](https://github.com/ioam/holoviews/issues/2581)) and
@@ -924,7 +1008,7 @@ Thu Aug 17 16:37:58 UTC 2017 - toddrme2178@gmail.com
       re-enabling option system keyword validation.
     * Improved testing.
   + Other new features and improvements:
-    * Operations for timeseries, downsample_columns, 
+    * Operations for timeseries, downsample_columns,
       interpolate_curve, and stacked_area.
     * Dataset types can be declared as empty by passing an empty list
     * Plot or style options for Curve interpolation transposing
@@ -1026,7 +1110,7 @@ Mon Oct 17 20:20:14 UTC 2016 - toddrme2178@gmail.com
 - Update to version 1.5.0
   + A major release with a large number of new features including
     new data interfaces for grid based data, major improvements for
-    DynamicMaps and a large number of bug fixes. 
+    DynamicMaps and a large number of bug fixes.
   + Features and improvements:
     * Added a grid based data interface to explore n-dimensional gridded
       data easily.
@@ -1257,7 +1341,7 @@ Fri Jul 10 08:10:21 UTC 2015 - toddrme2178@gmail.com
       ``backend='matplotlib:nbagg'`` and ``backend='matplotlib:mpld3'``
       respectively. The 'd3' and 'nbagg' options remain supported but will
       be deprecated in future.
-    * Customizations should no longer be applied directly to ``Store.options``;  
+    * Customizations should no longer be applied directly to ``Store.options``;
       the ``Store.options(backend='matplotlib')`` object should be
       customized instead.  There is no longer a need to call the
       deprecated ``Store.register_plots`` method.
@@ -1322,7 +1406,7 @@ Fri Jul 10 08:10:21 UTC 2015 - toddrme2178@gmail.com
       yaxis, respectively (13393f2a).
     + Deprecated IPySelectionWidget (f59c34c0)
   * In addition to the above improvements, many miscellaneous bug fixes were made.
-  
+
 -------------------------------------------------------------------
 Thu Apr  9 18:29:42 UTC 2015 - toddrme2178@gmail.com
 

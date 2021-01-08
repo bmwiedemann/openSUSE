@@ -1,7 +1,7 @@
 #
 # spec file for package python-holoviews
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,105 +17,91 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 %bcond_without  test
+%bcond_without  python2
 Name:           python-holoviews
-Version:        1.13.3
+Version:        1.14.0
 Release:        0
 Summary:        Composable, declarative visualizations for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            https://github.com/ioam/holoviews
+URL:            https://github.com/holoviz/holoviews
 Source0:        https://files.pythonhosted.org/packages/source/h/holoviews/holoviews-%{version}.tar.gz
-# PATCH-FEATURE-UPSTREAM remove-cyordereddict.patch gh#holoviz/holoviews#4620 mcepl@suse.com
-# Package cyordereddict has been declared obsolete even by its own upstream
-Patch0:         remove-cyordereddict.patch
 # PATCH-FEATURE-UPSTREAM remove_nose.patch gh#holoviz/holoviews#4621 mcepl@suse.com
-# Remove last residues of using nose
 Patch1:         remove_nose.patch
+BuildRequires:  %{python_module colorcet}
 BuildRequires:  %{python_module numpy >= 1.0}
-BuildRequires:  %{python_module panel}
-BuildRequires:  %{python_module param < 2.0}
-BuildRequires:  %{python_module param >= 1.8.0}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyct}
-BuildRequires:  %{python_module pyviz-comms >= 0.7.0}
+BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module panel >= 0.8.0}
+BuildRequires:  %{python_module param >= 1.9.3}
+BuildRequires:  %{python_module pyct >= 0.4.4}
+BuildRequires:  %{python_module pyviz-comms >= 0.7.3}
+BuildRequires:  %{python_module setuptools >= 30.3.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-colorcet
 Requires:       python-numpy >= 1.0
-Requires:       python-param < 2.0
-Requires:       python-param >= 1.8.0
-Requires:       python-pyviz-comms >= 0.7.0
+Requires:       python-pandas
+Requires:       python-panel >= 0.8.0
+Requires:       python-param >= 1.9.3
+Requires:       python-pyviz-comms >= 0.7.3
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Recommends:     ImageMagick
-Recommends:     ffmpeg
-Recommends:     python-Jinja2
-Recommends:     python-Pygments
-Recommends:     python-bokeh >= 0.12.14
-Recommends:     python-colorcet
-Recommends:     python-dask
-Recommends:     python-dask-array
-Recommends:     python-dask-dataframe
-Recommends:     python-datashader
-Recommends:     python-flexx
-Recommends:     python-jsonschema
-Recommends:     python-jupyter_ipykernel
-Recommends:     python-jupyter_ipython
-Recommends:     python-jupyter_ipywidgets
-Recommends:     python-jupyter_nbconvert
-Recommends:     python-jupyter_nbformat
-Recommends:     python-jupyter_notebook
-Recommends:     python-jupyter_widgetsnbextension
-Recommends:     python-matplotlib
-Recommends:     python-netCDF4
-Recommends:     python-networkx
-Recommends:     python-pandas
-Recommends:     python-panel
-Recommends:     python-plotly
-Recommends:     python-pyparsing
-Recommends:     python-pyzmq
-Recommends:     python-scipy
-Recommends:     python-scitools-iris
-Recommends:     python-seaborn
-Recommends:     python-selenium
-Recommends:     python-streamz
-Recommends:     python-tornado
-Recommends:     python-xarray
+Recommends:     python-ipython >= 5.4.0
+Recommends:     python-notebook
+Recommends:     python-matplotlib >= 2.2
+Recommends:     python-bokeh >= 1.1.0
+Recommends:     python-pscript >= 0.7.1
+Suggests:       python-networkx
+Suggests:       python-Pillow
+Suggests:       python-xarray >= 0.10.4
+Suggests:       python-plotly >= 4.0
+Suggests:       python-dash >= 1.16
+Suggests:       python-streamz >= 0.5.0
+Suggests:       python-datashader >= 0.11.1
+Suggests:       python-ffmpeg-python
+Suggests:       python-netCDF4
+Suggests:       python-dask
+Suggests:       python-scipy
+Suggests:       python-shapely
+Suggests:       python-scikit-image
+%if %python_flavor != python2
+Suggests:       python-spatialpandas
+Suggests:       python-pyarrow < 1.0
+Suggests:       python-ibis-framework >= 1.3
+%endif
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module Pygments}
-BuildRequires:  %{python_module Shapely}
-BuildRequires:  %{python_module bokeh >= 0.12.14}
-BuildRequires:  %{python_module colorcet}
-BuildRequires:  %{python_module dask-array}
-BuildRequires:  %{python_module dask-dataframe}
+BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module bokeh >= 1.1.0}
+BuildRequires:  %{python_module dash >= 1.16}
 BuildRequires:  %{python_module dask}
-BuildRequires:  %{python_module datashader}
-BuildRequires:  %{python_module flexx}
+BuildRequires:  %{python_module datashader >= 0.11.1}
+BuildRequires:  %{python_module deepdiff}
+BuildRequires:  %{python_module ffmpeg-python}
+BuildRequires:  %{python_module ipython >= 5.4.0}
 BuildRequires:  %{python_module jsonschema}
-BuildRequires:  %{python_module jupyter_ipykernel}
-BuildRequires:  %{python_module jupyter_ipython}
-BuildRequires:  %{python_module jupyter_ipywidgets}
-BuildRequires:  %{python_module jupyter_nbconvert}
-BuildRequires:  %{python_module jupyter_nbformat}
-BuildRequires:  %{python_module jupyter_notebook}
-BuildRequires:  %{python_module jupyter_widgetsnbextension}
-BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module keyring}
+BuildRequires:  %{python_module matplotlib >= 2.2}
+BuildRequires:  %{python_module nbconvert}
+BuildRequires:  %{python_module nbsmoke}
 BuildRequires:  %{python_module netCDF4}
 BuildRequires:  %{python_module networkx}
-BuildRequires:  %{python_module pandas}
-BuildRequires:  %{python_module plotly}
-BuildRequires:  %{python_module pyparsing}
+BuildRequires:  %{python_module notebook}
+BuildRequires:  %{python_module plotly >= 4.0}
+BuildRequires:  %{python_module pscript >= 0.7.1}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pyzmq}
+BuildRequires:  %{python_module rfc3986}
+BuildRequires:  %{python_module scikit-image}
 BuildRequires:  %{python_module scipy}
-BuildRequires:  %{python_module seaborn}
-BuildRequires:  %{python_module selenium}
-BuildRequires:  %{python_module tornado}
-BuildRequires:  %{python_module xarray}
-BuildRequires:  ImageMagick
+BuildRequires:  %{python_module shapely}
+BuildRequires:  %{python_module streamz >= 0.5.0}
+BuildRequires:  %{python_module xarray >= 0.10.4}
+%if %{with python2}
+BuildRequires:  python-ibis-framework >= 1.3
+BuildRequires:  python-pyarrow < 1.0
+BuildRequires:  python-spatialpandas
+%endif
 %endif
 %python_subpackages
 
@@ -135,13 +121,6 @@ rendered automatically by one of the supported plotting libraries
 %setup -q -n holoviews-%{version}
 %autopatch -p1
 
-# remove tests that install additional files using npm/etc
-# "conda install -c bokeh flexx" or "pip install flexx"
-rm -f holoviews/tests/plotting/testplotutils.py
-rm -rf holoviews/tests/ipython
-# "conda install phantomjs"
-rm -rf holoviews/tests/plotting/bokeh holoviews/tests/test_annotators.py
-
 %build
 %python_build
 
@@ -151,11 +130,148 @@ rm -rf holoviews/tests/plotting/bokeh holoviews/tests/test_annotators.py
 
 %python_clone -a %{buildroot}%{_bindir}/holoviews
 %{python_expand chmod a+x %{buildroot}%{$python_sitelib}/holoviews/util/command.py
-sed -i "s|^#! %{_bindir}/env python$|#!%__$python|" %{buildroot}%{$python_sitelib}/holoviews/util/command.py
+sed -i "s|^#!.*%{_bindir}/env python$|#!%__$python|" %{buildroot}%{$python_sitelib}/holoviews/util/command.py
 $python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/holoviews/util/
 $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/holoviews/util/
 %fdupes %{buildroot}%{$python_sitelib}
 }
+
+%if %{with test}
+%check
+
+# These tests need matplotlib < 3.1
+# (the package itself does not, but the testsuite specifies it because it checks parameter names)
+# gh#holoviz/holoviews#4621
+donttest+=" or (MPLRendererTest and test_get_size_column_plot)"
+donttest+=" or (MPLRendererTest and test_get_size_row_plot)"
+donttest+=" or (MPLRendererTest and test_render_mp4)"
+donttest+=" or (TestBokehUtils and test_py2js_funcformatter_arg_and_kwarg)"
+donttest+=" or (TestBokehUtils and test_py2js_funcformatter_single_arg)"
+donttest+=" or (TestBokehUtils and test_py2js_funcformatter_two_args)"
+donttest+=" or (TestColorbarPlot and test_colormapper_clims)"
+donttest+=" or (TestContoursPlot and test_contours_line_width_op_update)"
+donttest+=" or (TestContoursPlot and test_contours_line_width_op)"
+donttest+=" or (TestCrossBackendOptionPickling and test_builder_backend_switch_signature)"
+donttest+=" or (TestCrossBackendOptionPickling and test_builder_cross_backend_validation)"
+donttest+=" or (TestCrossBackendOptions and test_builder_backend_switch_signature)"
+donttest+=" or (TestCrossBackendOptions and test_builder_cross_backend_validation)"
+donttest+=" or (TestCurvePlot and test_curve_datetime64)"
+donttest+=" or (TestCurvePlot and test_curve_dt_datetime)"
+donttest+=" or (TestCurvePlot and test_curve_heterogeneous_datetime_types_overlay)"
+donttest+=" or (TestCurvePlot and test_curve_heterogeneous_datetime_types_with_pd_overlay)"
+donttest+=" or (TestCurvePlot and test_curve_linewidth_op)"
+donttest+=" or (TestCurvePlot and test_curve_padding_datetime_nonsquare)"
+donttest+=" or (TestCurvePlot and test_curve_padding_datetime_square)"
+donttest+=" or (TestCurvePlot and test_curve_pandas_timestamps)"
+donttest+=" or (TestCurvePlot and test_curve_style_mapping_constant_value_dimensions)"
+donttest+=" or (TestCurvePlot and test_curve_style_mapping_ndoverlay_dimensions)"
+donttest+=" or (TestElementPlot and test_element_zformatter_function)"
+donttest+=" or (TestElementPlot and test_element_zformatter_instance)"
+donttest+=" or (TestElementPlot and test_element_zformatter_string)"
+donttest+=" or (TestErrorBarPlot and test_errorbars_line_color_op)"
+donttest+=" or (TestErrorBarPlot and test_errorbars_line_width_op_update)"
+donttest+=" or (TestErrorBarPlot and test_errorbars_line_width_op)"
+donttest+=" or (TestHistogramPlot and test_histogram_datetime64_plot)"
+donttest+=" or (TestHistogramPlot and test_histogram_line_color_op)"
+donttest+=" or (TestHistogramPlot and test_histogram_line_width_op)"
+donttest+=" or (TestHistogramPlot and test_histogram_padding_datetime_nonsquare)"
+donttest+=" or (TestHistogramPlot and test_histogram_padding_datetime_square)"
+donttest+=" or (TestHistogramPlot and test_op_ndoverlay_value)"
+donttest+=" or (TestLabelsPlot and test_label_alpha_op_update)"
+donttest+=" or (TestLabelsPlot and test_label_alpha_op)"
+donttest+=" or (TestLabelsPlot and test_label_categorical_color_op)"
+donttest+=" or (TestLabelsPlot and test_label_color_op_update)"
+donttest+=" or (TestLabelsPlot and test_label_color_op)"
+donttest+=" or (TestLabelsPlot and test_label_linear_color_op)"
+donttest+=" or (TestLabelsPlot and test_label_rotation_op_update)"
+donttest+=" or (TestLabelsPlot and test_label_rotation_op)"
+donttest+=" or (TestLabelsPlot and test_label_size_op_update)"
+donttest+=" or (TestLabelsPlot and test_label_size_op)"
+donttest+=" or (TestLookupOptions and test_lookup_options_honors_backend)"
+donttest+=" or (TestMplChordPlot and test_chord_nodes_categorically_colormapped)"
+donttest+=" or (TestMplGraphPlot and test_graph_op_edge_line_width_update)"
+donttest+=" or (TestMplGraphPlot and test_graph_op_edge_linewidth)"
+donttest+=" or (TestMplGraphPlot and test_graph_op_node_linewidth_update)"
+donttest+=" or (TestMplGraphPlot and test_graph_op_node_linewidth)"
+donttest+=" or (TestMplGraphPlot and test_plot_graph_categorical_colored_nodes)"
+donttest+=" or (TestMplGraphPlot and test_plot_graph_numerically_colored_nodes)"
+donttest+=" or (TestMplTriMeshPlot and test_trimesh_op_edge_line_width)"
+donttest+=" or (TestMplTriMeshPlot and test_trimesh_op_node_line_width)"
+donttest+=" or (TestOptionsMethod and test_plot_options_keywords)"
+donttest+=" or (TestOptionsMethod and test_plot_options_object_list)"
+donttest+=" or (TestOptionsMethod and test_plot_options_one_object)"
+donttest+=" or (TestOptionsMethod and test_plot_options_two_object)"
+donttest+=" or (TestOptsMagic and test_cell_opts_style_dynamic)"
+donttest+=" or (TestOptsMethod and test_opts_method_with_utility)"
+donttest+=" or (TestOptsMethod and test_simple_clone_disabled)"
+donttest+=" or (TestOptsMethod and test_simple_opts_clone_enabled)"
+donttest+=" or (TestPathPlot and test_path_continuously_varying_line_width_op_update)"
+donttest+=" or (TestPathPlot and test_path_continuously_varying_line_width_op)"
+donttest+=" or (TestPlotDefinitions and test_matplotlib_plot_definitions)"
+donttest+=" or (TestPointPlot and test_curve_padding_square_per_axis)"
+donttest+=" or (TestPointPlot and test_point_fill_color_op)"
+donttest+=" or (TestPointPlot and test_point_line_color_op_update)"
+donttest+=" or (TestPointPlot and test_point_line_color_op)"
+donttest+=" or (TestPointPlot and test_point_line_width_op_update)"
+donttest+=" or (TestPointPlot and test_point_line_width_op)"
+donttest+=" or (TestPointPlot and test_point_size_index_size_clash)"
+donttest+=" or (TestPointPlot and test_point_size_op_update)"
+donttest+=" or (TestPointPlot and test_point_size_op)"
+donttest+=" or (TestPointPlot and test_points_padding_datetime_nonsquare)"
+donttest+=" or (TestPointPlot and test_points_padding_datetime_square)"
+donttest+=" or (TestPointPlot and test_points_sizes_scalar_update)"
+donttest+=" or (TestPointPlot and test_scatter3d_padding_hard_zrange)"
+donttest+=" or (TestPointPlot and test_scatter3d_padding_logz)"
+donttest+=" or (TestPointPlot and test_scatter3d_padding_nonsquare)"
+donttest+=" or (TestPointPlot and test_scatter3d_padding_soft_zrange)"
+donttest+=" or (TestPointPlot and test_scatter3d_padding_square)"
+donttest+=" or (TestPointPlot and test_scatter3d_padding_unequal)"
+donttest+=" or (TestPolygonPlot and test_polygons_line_width_op)"
+donttest+=" or (TestSankeyPlot and test_sankey_label_index)"
+donttest+=" or (TestSankeyPlot and test_sankey_simple)"
+donttest+=" or (TestSpikesPlot and test_spikes_line_width_op_update)"
+donttest+=" or (TestSpikesPlot and test_spikes_line_width_op)"
+donttest+=" or (TestSpikesPlot and test_spikes_padding_datetime_nonsquare)"
+donttest+=" or (TestSpikesPlot and test_spikes_padding_datetime_square_heights)"
+donttest+=" or (TestSpikesPlot and test_spikes_padding_datetime_square)"
+donttest+=" or (TestVectorFieldPlot and test_vectorfield_line_width_op_update)"
+donttest+=" or (TestVectorFieldPlot and test_vectorfield_line_width_op)"
+
+# These fail on 32-bit -- gh#holoviz/holoviews#4778
+if [[ $(getconf LONG_BIT) == 32 ]]; then
+    donttest+=" or (DatashaderAggregateTests and test_rasterize_regrid_and_spikes_overlay)"
+    donttest+=" or (DatashaderAggregateTests and test_rgb_regrid_packed)"
+    donttest+=" or (DatashaderRasterizeTests and test_rasterize_image_string_aggregator)"
+    donttest+=" or (DatashaderRasterizeTests and test_rasterize_image)"
+    donttest+=" or (DatashaderRasterizeTests and test_rasterize_quadmesh_string_aggregator)"
+    donttest+=" or (DatashaderRasterizeTests and test_rasterize_quadmesh)"
+    donttest+=" or (DatashaderRasterizeTests and test_rasterize_trimesh_ds_aggregator)"
+    donttest+=" or (DatashaderRasterizeTests and test_rasterize_trimesh_node_explicit_vdim)"
+    donttest+=" or (DatashaderRasterizeTests and test_rasterize_trimesh_node_vdim_precedence)"
+    donttest+=" or (DatashaderRasterizeTests and test_rasterize_trimesh_string_aggregator)"
+    donttest+=" or (DatashaderRasterizeTests and test_rasterize_trimesh_vertex_vdims)"
+    donttest+=" or (DatashaderRasterizeTests and test_rasterize_trimesh_zero_range)"
+    donttest+=" or (DatashaderRasterizeTests and test_rasterize_trimesh)"
+    donttest+=" or (DatashaderRegridTests and test_regrid_max)"
+    donttest+=" or (DatashaderRegridTests and test_regrid_mean_xarray_transposed)"
+    donttest+=" or (DatashaderRegridTests and test_regrid_mean)"
+    donttest+=" or (DatashaderRegridTests and test_regrid_rgb_mean)"
+    donttest+=" or (DatashaderRegridTests and test_regrid_upsampling)"
+    donttest+=" or (DatashaderTestCase and test_datashade_curve)"
+    donttest+=" or (TestDecollation and test_decollate_datashade_kdims_layout)"
+    donttest+=" or (TestDecollation and test_decollate_datashade_kdims)"
+    donttest+=" or (TestDecollation and test_decollate_spread)"
+    donttest+=" or (TestDimTransforms and test_digitize)"
+    donttest+=" or (TestLinkSelectionsBokeh and test_datashade_in_overlay_selection)"
+    donttest+=" or (TestLinkSelectionsBokeh and test_datashade_selection)"
+    donttest+=" or (TestLinkSelectionsPlotly and test_datashade_in_overlay_selection)"
+    donttest+=" or (TestLinkSelectionsPlotly and test_datashade_selection)"
+    donttest+=" or (TestPointerCallbacks and test_pointer_x_datetime_out_of_bounds)"
+    donttest+=" or (TestPointerCallbacks and test_tap_datetime_out_of_bounds)"
+fi
+
+%pytest -o python_files='test*.py base.py' holoviews/tests -k "not (${donttest:4})"
+%endif
 
 %post
 %python_install_alternative holoviews
@@ -163,18 +279,11 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/ho
 %postun
 %python_uninstall_alternative holoviews
 
-%if %{with test}
-%check
-export HOLOVIEWSRC=`pwd`'/holoviews.rc'
-echo 'import holoviews as hv;hv.config(style_17=True);hv.config.warn_options_call=True' > holoviews.rc
-%pytest
-%endif
-
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGELOG.md README.md
 %python_alternative %{_bindir}/holoviews
-%{python_sitelib}/holoviews-%{version}-py*.egg-info
+%{python_sitelib}/holoviews-%{version}*-info
 %{python_sitelib}/holoviews/
 
 %changelog
