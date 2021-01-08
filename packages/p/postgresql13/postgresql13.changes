@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 14 16:19:05 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add postgresql-icu68.patch: fix build with ICU 68
+
+-------------------------------------------------------------------
 Fri Nov 20 11:51:37 UTC 2020 - Reinhard Max <max@suse.com>
 
 - bsc#1178961: %ghost the symlinks to pg_config and ecpg.
