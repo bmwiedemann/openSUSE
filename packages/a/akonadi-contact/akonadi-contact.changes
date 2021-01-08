@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan  5 12:24:28 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-01-apps-update
+- Changes since 20.12.0:
+  * Fix msvc build on https://build.kde.org
+  * Fix Bug 430119 - Confirm add address on OK (kde#430119)
+  * Activate signal/slot
+  * Continue to implement "check if address is created"
+  * Start to fix 430119
+
+-------------------------------------------------------------------
 Wed Dec 23 06:54:10 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Obsolete kdepim-apps-libs-lang as well to avoid update problems
