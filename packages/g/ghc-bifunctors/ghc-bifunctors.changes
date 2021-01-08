@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 30 17:53:28 UTC 2020 - psimons@suse.com
+
+- Update bifunctors to version 5.5.9.
+  5.5.9 [2020.12.30]
+  ------------------
+  * Explicitly mark modules as Safe or Trustworthy.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
