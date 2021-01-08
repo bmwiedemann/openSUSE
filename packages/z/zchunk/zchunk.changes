@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  4 08:39:16 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add d2eae512bee09a4047cfe586de12f644d73b0736.patch: Fix build
+  with zstd 1.4.7+.
+
+-------------------------------------------------------------------
 Sun Jan 19 14:46:28 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to version 1.1.5
@@ -9,7 +15,7 @@ Wed Dec 18 08:51:57 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.1.4:
   * Simplify regex for detecting part header info
-  * Fix coverity warnings 
+  * Fix coverity warnings
   * Open files with permissions 0666 and let umask(2) do its job.
   * Multipart boundary field can be quoted.
 

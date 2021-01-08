@@ -108,4 +108,12 @@
   + Handle write errors correctly</comment>
     <requestid>765583</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>409212185a1f4859533fb39c776db5cc</srcmd5>
+    <version>1.1.5</version>
+    <time>1610123545</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860162</requestid>
+  </revision>
 </revisionlist>

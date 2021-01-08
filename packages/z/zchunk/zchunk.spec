@@ -1,7 +1,7 @@
 #
 # spec file for package zchunk
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,6 +29,7 @@ License:        BSD-2-Clause AND MIT
 Group:          Productivity/Archiving/Compression
 URL:            https://github.com/zchunk/zchunk
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+Patch0:         https://github.com/zchunk/zchunk/commit/d2eae512bee09a4047cfe586de12f644d73b0736.patch
 BuildRequires:  meson >= 0.44.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcurl)
