@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Dec 21 10:54:33 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Version update to 1.67 [bsc#1180215, CVE-2020-28052]
+  * CVE-2020-28052: OpenBSDBCrypt.checkPassword utility method
+    compared incorrect data when checking the password
+  * Defects Fixed:
+    - BCJSSE: SunJSSE compatibility fix - override of getChannel()
+      removed and 'urgent data' behaviour should now conform to
+      what the SunJSSE expects
+    - Nested BER data could sometimes cause issues in octet strings
+    - Certificates/CRLs with short signatures could cause an exception
+      in toString() in the BC X509 Certificate implmentation
+    - In line with latest changes in the JVM, SignatureSpis which
+      don't require parameters now return null on engineGetParameters()
+    - The RSA KeyFactory now always preferentially produces RSAPrivateCrtKey
+      where it can on requests for a KeySpec based on an RSAPrivateKey
+    - CMSTypedStream$FullReaderStream now handles zero length reads correctly
+    - Unecessary padding was added on KMAC when the key string was block aligned
+    - Zero length data would cause an unexpected exception from RFC5649WrapEngine
+    - OpenBSDBcrypt was failing to handle some valid prefixes
+  * Additional Features and Functionality
+    - Performance improvement of Argon2 and Noekeon
+    - A setSessionKeyObfuscation() method has been added to
+      PublicKeyKeyEncryptionMethodGenerator to allow turning off of session key
+      obfuscation (default is on, method primarily to get around early version
+      GPG issues with AES-128 keys)
+    - Implemented 'safegcd' constant-time modular inversion (as well as a
+      variable-time variant). It has replaced Fermat inversion in all our EC
+      code, and BigInteger.modInverse in several other places, particularly
+      signers. This improves side-channel protection, and also gives a
+      significant performance boost
+    - Performance of custom binary ECC curves and Edwards Curves has been improved
+    - BCJSSE: New boolean system property 'org.bouncycastle.jsse.keyManager.checkEKU'
+      allows to disable ExtendedKeyUsage restrictions when selecting credentials
+      (although the peer may still complain)
+    - Initial support has been added for "Composite Keys and Signatures For Use
+      In Internet PKI" using the test OID. Please note there will be further
+      refinements to this as the draft is standardised
+    - The BC EdDSA signature API now supports keys implementing all methods on
+      the EdECKey and XECKey interfaces directly
+    - Work has begun on classes to support the ETSI TS 103 097, Intelligent
+      Transport Systems (ITS) in the bcpkix package
+    - Further optimization work has been done on GCM
+    - A NewHope based processor, similar to the one for Key Agreement has been
+      added for trying to "quantum hard" KEM algorithms
+    - PGP clear signed signatures now support SHA-224
+    - Treating absent vs NULL as equivalent can now be configured by a system
+      property. By default this is not enabled
+    - Mode name checks in Cipher strings should now make sure an improper mode
+      name always results in a NoSuchAlgorithmException
+    - In line with changes in OpenSSL, the OpenSSLPBKDF now uses UTF8 encoding
+
+-------------------------------------------------------------------
 Tue Jul 28 18:50:39 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 
 - Version update to 1.66
@@ -134,7 +187,7 @@ Thu Oct 10 16:29:27 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com
     - BCJSSE: Add SecurityManager check to access session context.
     - BCJSSE: Improved SunJSSE compatibility of the NULL_SESSION.
     - BCJSSE: SSLContext algorithms updated for SunJSSE compatibility
-      	      (default enabled protocols).
+              (default enabled protocols).
     - The digest functions Haraka-256 and Haraka-512 have been added to
       the provider and the light-weight API
     - XMSS/XMSS^MT key management now allows for allocating subsets of the
