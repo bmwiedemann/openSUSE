@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan  8 10:19:34 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- update to version 1.11.0
+  * sync with the main certbot package
+
+- update to version 1.10.1
+  * sync with the main certbot package
+
+- update to version 1.10.0
+  * Added timeout to DNS query function calls for dns-rfc2136
+    plugin.
+  * Support for Python 3.9 was added to Certbot and all of its
+    components.
+
+-------------------------------------------------------------------
 Wed Oct  7 08:46:40 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 1.9.0
