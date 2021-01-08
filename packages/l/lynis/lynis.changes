@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan  7 16:38:00 UTC 2021 - Alexandros Toptsoglou <atoptsoglou@suse.com>
+
+- Update to 3.0.3 
+  * Added
+    - Check for registered non-native binary formats
+    - OS detection of Parrot GNU/Linux
+  * Changed
+    - Force test to check only password authentication
+    - Support for NetBSD
+
+  * Fixed: command 'configure settings' did not work as intended
+
+-------------------------------------------------------------------
 Mon Jan  4 09:13:29 UTC 2021 - Robert Frohl <rfrohl@suse.com>
 
 - Update to 3.0.2
