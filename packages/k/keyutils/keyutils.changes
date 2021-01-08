@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Jan  6 10:27:14 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- the license of the library and -devel package is LGPL only, the
+  tools are GPL.
+
+-------------------------------------------------------------------
+Mon Jan  4 10:50:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.3:
+  * Revert the change notifications that were using /dev/watch_queue.
+  * Apply the change notifications that use pipe2(O_NOTIFICATION_PIPE).
+  * Allow "keyctl supports" to retrieve raw capability data.
+  * Allow "keyctl id" to turn a symbolic key ID into a numeric ID.
+  * Allow "keyctl new_session" to name the keyring.
+  * Allow "keyctl add/padd/etc." to take hex-encoded data.
+  * Add "keyctl watch*" to expose kernel change notifications on keys.
+  * Add caps for namespacing and notifications.
+  * Set a default TTL on keys that upcall for name resolution.
+  * Explicitly clear memory after it's held sensitive information.
+  * Various manual page fixes.
+  * Fix C++-related errors.
+  * Add support for keyctl_move().
+  * Add support for keyctl_capabilities().
+  * Make key=val list optional for various public-key ops.
+  * Fix system call signature for KEYCTL_PKEY_QUERY.
+  * Fix 'keyctl pkey_query' argument passing.
+  * Use keyctl_read_alloc() in dump_key_tree_aux().
+  * Various manual page fixes. 
+- spec-cleaner run (fixup failing homepage url)
+
+-------------------------------------------------------------------
 Fri Oct 16 09:59:07 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)
