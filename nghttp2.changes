@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jan  6 12:22:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.42.0:
+  * lib: fix ubsan errors (Patch from Asra Ali) (GH-1468)
+  * lib: Don't send RST_STREAM to idle stream (GH-1477)
+  * lib: nghttp2_map backed by nghttp2_ksl
+  * doc: Update sphinx_rtd_theme
+  * doc: nghttp2_session_send is also affected by max concurrent streams (Patch from Tomas Krizek) (GH-1489)
+  * doc: clarify flow control behaviour for nghttp2_session_send() (Patch from Tomas Krizek) (GH-1488)
+  * build: Add missing cmake/FindSystemd.cmake to dist (GH-1526)
+  * third-party: Bump llhttp to 2.2.0
+  * third-party: Bump mruby to 2.1.2
+  * nghttpx: Deal with the case when h2 backend is retired before it is initialized
+  * nghttpx: Add accesslog variables to record request path without query (GH-1511)
+  * nghttpx: Fix stall when TLS follows after proxy protocol
+  * nghttpx: Fix logging integer 
+
+-------------------------------------------------------------------
 Wed Jun  3 11:45:25 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.41.0
