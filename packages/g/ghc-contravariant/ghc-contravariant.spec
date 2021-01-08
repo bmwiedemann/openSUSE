@@ -18,7 +18,7 @@
 
 %global pkg_name contravariant
 Name:           ghc-%{pkg_name}
-Version:        1.5.2
+Version:        1.5.3
 Release:        0
 Summary:        Contravariant functors
 License:        BSD-3-Clause

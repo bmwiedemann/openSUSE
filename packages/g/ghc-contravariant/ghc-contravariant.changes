@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 30 17:53:01 UTC 2020 - psimons@suse.com
+
+- Update contravariant to version 1.5.3.
+  1.5.3 [2020.12.30]
+  ------------------
+  * Explicitly mark modules as `Safe`.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
