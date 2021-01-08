@@ -93,4 +93,14 @@
   package (boo#1110020)</comment>
     <requestid>638997</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>8bb33ce91d3169b31064db88a2cdffdf</srcmd5>
+    <version>1.0.6</version>
+    <time>1610123549</time>
+    <user>dimstar_suse</user>
+    <comment>- u_xorg-cf-files-D_DEFAULT_SOURCE.patch
+  - switched from usage of &quot;-D_BSD_SOURCE -D_SVID_SOURCE&quot; to
+    &quot;D_DEFAULT_SOURCE&quot; as suggested by gcc (boo#1180429)</comment>
+    <requestid>860168</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  4 11:53:49 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_xorg-cf-files-D_DEFAULT_SOURCE.patch
+  - switched from usage of "-D_BSD_SOURCE -D_SVID_SOURCE" to
+    "D_DEFAULT_SOURCE" as suggested by gcc (boo#1180429)
+
+-------------------------------------------------------------------
 Thu Sep 27 19:07:30 UTC 2018 - sndirsch@suse.com
 
 - no longer use $RPM_OPT_FLAGS in order to make it a real noarch

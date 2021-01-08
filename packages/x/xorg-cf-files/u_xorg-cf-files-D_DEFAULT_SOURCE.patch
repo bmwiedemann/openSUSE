@@ -1,0 +1,33 @@
+diff -u -p xorg-cf-files-1.0.6.orig/gnu.cf xorg-cf-files-1.0.6/gnu.cf
+--- xorg-cf-files-1.0.6.orig/gnu.cf	2021-01-04 12:47:28.399794000 +0100
++++ xorg-cf-files-1.0.6/gnu.cf	2021-01-04 12:49:14.978974000 +0100
+@@ -21,7 +21,7 @@ XCOMM operating system:  OSName (OSMajor
+ 
+ #define GNUSourceDefines      -D_POSIX_C_SOURCE=199309L \
+                               -D_POSIX_SOURCE -D_XOPEN_SOURCE \
+-                              -D_BSD_SOURCE -D_SVID_SOURCE
++                              -D_DEFAULT_SOURCE
+ 
+ XCOMM XXXMB: What about _GNU_SOURCE, see Linux/UseInstalled?
+ 
+diff -u -p xorg-cf-files-1.0.6.orig/linux.cf xorg-cf-files-1.0.6/linux.cf
+--- xorg-cf-files-1.0.6.orig/linux.cf	2021-01-04 12:47:28.194801000 +0100
++++ xorg-cf-files-1.0.6/linux.cf	2021-01-04 12:49:59.493049000 +0100
+@@ -232,7 +232,7 @@ InstallNamedTargetNoClobber(install,file
+ #if LinuxCLibMajorVersion >= 6
+ # define LinuxSourceDefines	-D_POSIX_C_SOURCE=199309L \
+ 				-D_POSIX_SOURCE -D_XOPEN_SOURCE \
+-				-D_BSD_SOURCE -D_SVID_SOURCE \
++				-D_DEFAULT_SOURCE \
+                                 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 \
+ 				LinuxAdditionalIncludes LinuxGnuSourceDefines \
+ 				LinuxLocaleDefines
+@@ -251,7 +251,7 @@ InstallNamedTargetNoClobber(install,file
+ # endif
+ #else
+ # define LinuxSourceDefines	-D_POSIX_SOURCE -D_POSIX_C_SOURCE=2 \
+-				-D_BSD_SOURCE -D_SVID_SOURCE \
++				-D_DEFAULT_SOURCE \
+ 				LinuxGnuSourceDefines LinuxLocaleDefines
+ # define XawI18nDefines		-DUSE_XWCHAR_STRING -DUSE_XMBTOWC
+ # ifndef HasLibCrypt
