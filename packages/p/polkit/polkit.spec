@@ -1,7 +1,7 @@
 #
 # spec file for package polkit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,8 @@ Patch1:         polkit-gettext.patch
 Patch2:         pkexec.patch
 # PATCH-FIX-OPENSUSE polkit-keyinit.patch meissner@ -- bsc#1144053 Please add "pam_keyinit.so" to the /etc/pam.d/polkit-1 configuration file
 Patch3:         polkit-keyinit.patch
+# adjust path to polkit-agent-helper-1 (bsc#1180474)
+Patch4:         polkit-adjust-libexec-path.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  gtk-doc
@@ -130,10 +132,15 @@ export SUID_LDFLAGS="-z now -pie"
 	--enable-examples \
 	--enable-libsystemd-login \
 	%{nil}
-%make_build
+%make_build libprivdir=%{_libexecdir}/polkit-1
 
 %install
-%make_install
+# install explicitly into libexec. upstream has some unflexible logic for
+# this executable at the moment, but there is a PR# open to fix this:
+#     https://gitlab.freedesktop.org/polkit/polkit/-/merge_requests/63
+# once this has been resolved upstream and we update to a new release we can
+# remove this and also patch4 above.
+%make_install libprivdir=%{_libexecdir}/polkit-1
 find %{buildroot} -type f -name "*.la" -delete -print
 # create $HOME for polkit user
 install -d %{buildroot}%{_localstatedir}/lib/polkit
@@ -153,12 +160,12 @@ exit 0
 
 %post
 %set_permissions %{_bindir}/pkexec
-%set_permissions %{_prefix}/lib/polkit-1/polkit-agent-helper-1
+%set_permissions %{_libexecdir}/polkit-1/polkit-agent-helper-1
 %service_add_post polkit.service
 
 %verifyscript
 %verify_permissions -e %{_bindir}/pkexec
-%verify_permissions -e %{_prefix}/lib/polkit-1/polkit-agent-helper-1
+%verify_permissions -e %{_libexecdir}/lib/polkit-1/polkit-agent-helper-1
 
 %post -n libpolkit0 -p /sbin/ldconfig
 %postun -n libpolkit0 -p /sbin/ldconfig
@@ -198,9 +205,9 @@ exit 0
 %{_bindir}/pkcheck
 %verify(not mode) %attr(4755,root,root) %{_bindir}/pkexec
 %{_bindir}/pkttyagent
-%dir %{_prefix}/lib/polkit-1
-%{_prefix}/lib/polkit-1/polkitd
-%verify(not mode) %attr(4755,root,root) %{_prefix}/lib/polkit-1/polkit-agent-helper-1
+%dir %{_libexecdir}/polkit-1
+%{_libexecdir}/polkit-1/polkitd
+%verify(not mode) %attr(4755,root,root) %{_libexecdir}/polkit-1/polkit-agent-helper-1
 # $HOME for polkit user
 %dir %{_localstatedir}/lib/polkit
 %{_unitdir}/polkit.service
