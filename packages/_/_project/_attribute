@@ -437,8 +437,8 @@ products:
     - x86_64
   - opensuse-squid-image:
     - x86_64
-#  - opensuse-tensorflow2-image:
-#    - x86_64
+  - opensuse-tensorflow2-image:
+    - x86_64
   - opensuse-toolbox-image:
     - x86_64
   - opensuse-tumbleweed-image:docker:
@@ -553,10 +553,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20210107'
 published: '20210106'
 publishing: '20210106'
-testing: '20210106'
+testing: '20210107'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
