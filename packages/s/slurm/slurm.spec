@@ -276,8 +276,8 @@ with SLURM.
 %package -n libnss_%{pname}%{nss_so}%{?upgrade:%{_ver}}
 Summary:        NSS Plugin for SLURM
 Group:          System/Libraries
-%{?upgrade:Provides: libnss%{nss_so} = %{version}}
-%{?upgrade:Conflicts: libnss%{nss_so}}
+%{?upgrade:Provides: libnss_%{pname}%{nss_so} = %{version}}
+%{?upgrade:Conflicts: libnss_%{pname}%{nss_so}}
 
 %description -n libnss_%{pname}%{nss_so}%{?upgrade:%{_ver}}
 libnss_slurm is an optional NSS plugin that permits password and group
@@ -760,7 +760,7 @@ rm -f %{buildroot}/%{_mandir}/man8/slurmrestd.*
 
 %postun
 %if 0%{?with_systemd}
-%service_del_postun -n slurmctld.service
+%service_del_postun_without_restart slurmctld.service
 %else
 %insserv_cleanup
 %endif
@@ -790,7 +790,7 @@ rm -f %{buildroot}/%{_mandir}/man8/slurmrestd.*
 %{fixperm 0600 %{_sysconfdir}/%{pname}/slurmdbd.conf}
 %{fixperm 0600 %{_sysconfdir}/%{pname}/slurmdbd.conf.example}
 %if 0%{?with_systemd}
-%service_del_postun -n slurmdbd.service
+%service_del_postun_without_restart slurmdbd.service
 %else
 %restart_on_update slurmdbd
 %insserv_cleanup
@@ -815,7 +815,7 @@ rm -f %{buildroot}/%{_mandir}/man8/slurmrestd.*
 
 %postun node
 %if 0%{?with_systemd}
-%service_del_postun -n slurmd.service
+%service_del_postun_without_restart slurmd.service
 %else
 %restart_on_update slurmd
 %insserv_cleanup

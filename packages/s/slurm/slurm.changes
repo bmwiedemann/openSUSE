@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan  8 12:20:27 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Fix Provides:/Conflicts: for libnss_slurm.
+
+-------------------------------------------------------------------
 Tue Jan  5 08:02:02 UTC 2021 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Add support for configuration files from external plugins. 
@@ -105,6 +110,13 @@ Wed Nov 18 08:40:59 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
      argument to the xauth command. CVE-2020-27746 (bsc#1178891)
 - And many other bugfixes, full log and details available at:
   * https://lists.schedmd.com/pipermail/slurm-announce/2020/000045.html
+
+-------------------------------------------------------------------
+Tue Nov  3 14:31:02 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Replace  '%service_del_postun -n' with '%service_del_postun_without_restart'
+
+  '-n' is deprecated and will be removed in the future.
 
 -------------------------------------------------------------------
 Thu Oct 29 12:35:18 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
