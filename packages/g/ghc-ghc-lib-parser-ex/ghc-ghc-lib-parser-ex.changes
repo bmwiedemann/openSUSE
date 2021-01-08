@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Dec 22 12:59:21 UTC 2020 - psimons@suse.com
+
+- Update ghc-lib-parser-ex to version 8.10.0.17.
+  ## 8.10.0.17 released 2020-12-20
+  - Update to ghc-8.10.3.
+
+  ## 0.20201101 released 2020-11-01
+  - Update to `ghc-lib-0.20201101`
+
+  ## 0.20201001 released 2020-10-01
+  - Update to `ghc-lib-0.20201001`
+  - `GHCLIB_API_811` -> `GHCLIB_API_HEAD`
+  - Add support for `GHCLIB_API_900`
+
+  ## 0.20200901 released 2020-09-01
+  - Update to `ghc-lib-0.20200901`
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

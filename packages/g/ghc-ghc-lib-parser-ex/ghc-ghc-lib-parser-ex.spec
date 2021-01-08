@@ -19,7 +19,7 @@
 %global pkg_name ghc-lib-parser-ex
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        8.10.0.16
+Version:        8.10.0.17
 Release:        0
 Summary:        Algorithms on GHC parse trees
 License:        BSD-3-Clause
