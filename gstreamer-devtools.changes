@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan  7 10:50:01 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop unneeded and unwanted gstreamer-devtools recommends from
+  libgstvalidate-1_0-0 subpackage.
+- Cleanup spec file.
+
+-------------------------------------------------------------------
 Thu Dec 10 17:19:52 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.18.2:
