@@ -554,4 +554,22 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
   * Fixes to tests</comment>
     <requestid>838690</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>9d498956b4f8b683830fed614c666b27</srcmd5>
+    <version>2.5.4</version>
+    <time>1610123649</time>
+    <user>dimstar_suse</user>
+    <comment>- merge also baselibs.conf
+- modified sources
+  % baselibs.conf
+
+- merge ilmbase and openexr source packages into one _multibuild
+- added sources
+  + _multibuild
+
+- version update to 2.5.4
+  * Patch release with various bug/sanitizer/security fixes, primarily
+    related to reading corrupted input files.</comment>
+    <requestid>861022</requestid>
+  </revision>
 </revisionlist>

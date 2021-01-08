@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jan  7 11:00:00 UTC 2021 - pgajdos@suse.com
+
+- merge also baselibs.conf
+- modified sources
+  % baselibs.conf
+
+-------------------------------------------------------------------
+Tue Jan  5 13:09:22 UTC 2021 - pgajdos@suse.com
+
+- merge ilmbase and openexr source packages into one _multibuild
+- added sources
+  + _multibuild
+
+-------------------------------------------------------------------
+Tue Jan  5 09:03:28 UTC 2021 - pgajdos@suse.com
+
+- version update to 2.5.4
+  * Patch release with various bug/sanitizer/security fixes, primarily
+    related to reading corrupted input files.
+
+-------------------------------------------------------------------
 Wed Sep 30 06:55:23 UTC 2020 - pgajdos@suse.com
 
 - version update to 2.5.3
