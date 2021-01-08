@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Thu Jan  7 16:04:17 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- build the MySQL Native Driver as a shared module (rather than
+  builtin) to prevent a hard requirement for OpenSSL in the CLI
+
+-------------------------------------------------------------------
+Thu Jan  7 11:26:09 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- updated to 7.4.14: This is a security release which also contains
+  several bug fixes. See https://www.php.net/ChangeLog-7.php#7.4.14
+- make phar SOURCE_DATE_EPOCH aware so the timestamps in phar.phar
+  are reproducible and sort filelist to include
+  + php-build-reproducible-phar.patch
+  + php-sort-filelist-phar.patch
+
+-------------------------------------------------------------------
+Wed Jan  6 15:27:59 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- fix build failure for SLE_15
+
+-------------------------------------------------------------------
+Wed Jan  6 13:44:52 UTC 2021 - pgajdos@suse.com
+
+- deleted patches
+  - php-openssl.patch (undocumented and not upstreamed patch for a
+    long time)
+  - php7-arm-build-fixes.patch (do not build for SLE12 anymore)
+  - php-pts.patch (undocumented and not upstreamed patch for a long
+    time)
+- improved patch documentation
+
+-------------------------------------------------------------------
+Tue Jan  5 17:04:33 UTC 2021 - pgajdos@suse.com
+
+- use cli sapi php-config --libs
+
+-------------------------------------------------------------------
+Mon Jan  4 18:53:03 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- build devel subpackage in cli configuration (otherwise include
+  files for shared modules are missing)
+
+-------------------------------------------------------------------
+Sun Jan  3 12:02:04 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- php-phar requires the php-zlib extension
+- trim specfile lint
+
+-------------------------------------------------------------------
+Thu Dec 31 19:24:14 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- install macros.php in %{_rpmconfigdir}/macros.d
+
+-------------------------------------------------------------------
+Wed Dec 30 20:36:58 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- build devel subpackage in embed subpackage (where it previously was
+  built)
+
+-------------------------------------------------------------------
+Mon Dec 28 21:21:10 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- don't build with CPU specific instructions as it can't be guaranteed
+  these are available at runtime
+  + php-no-check-cpu.patch
+- remove obsolete patch (replaced by SOURCE_DATE_EPOCH)
+  - php-no-build-date.patch
+
+-------------------------------------------------------------------
+Fri Dec 18 13:25:43 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- add D(eterministic) flag to AR_FLAGS to (php-ar-flags.patch)
+- modified sources
+  % _multibuild
+
+-------------------------------------------------------------------
 Sun Dec 13 10:04:58 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - restart php-fpm.service in %posttrans fpm (extensions may need
