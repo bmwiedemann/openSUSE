@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan  1 14:10:46 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Update to version 0.6.0
+- Use Python3 exclusively
+- Don't rebuild .png with GIMP by default
+- Run tests
+
+-------------------------------------------------------------------
 Tue Oct 13 17:17:38 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Only BuildRequire gimp-plugins-python upto and including Leap
