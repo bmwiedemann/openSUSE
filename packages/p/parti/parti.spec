@@ -18,7 +18,7 @@
 
 
 Name:           parti
-Version:        1.19
+Version:        1.20
 Release:        0
 Summary:        Show partition table information
 License:        GPL-3.0
