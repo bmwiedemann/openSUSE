@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Dec 29 21:16:00 UTC 2020 - psimons@suse.com
+
+- Update texmath to version 0.12.1.
+  texmath (0.12.1)
+
+    * OMML writer: explicitly mark symbols as non-italic (#109).
+      Otherwise, for some reason, they appear as italic by default.
+    * Improve error messages in reading tex arrays.
+    * Improve support for `\bmod`, `\mod`, etc. (#165).
+      Allow them to take complex arguments like `\left( 1 \right)`.
+    * Improve support for `\genfrac` (#164).
+    * Ignore `\textstyle`, `\scriptstyle`, `\scriptscriptstyle`,
+      as we currently ignore `\displaystyle`.
+    * Parse siunitx commands in reading tex (#157).
+    * Improve handling of `\not` in reading tex (#161).
+      Previously we only handled `\not` in front of certain symbols.
+    * Support `\pod` and `\pmod` and clean up spacing and font for
+      `\mod` and `\bmod` (#160).
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
