@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 30 03:07:45 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.51
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+
+  6.51      2020-12-29 22:09:04Z
+      - Fix proxy test on Windows (GH#358) (Olaf Alders)
+      - Sort keys in Pod example of constructor defaults (GH#356) (Olaf Alders)
+
+-------------------------------------------------------------------
 Thu Dec 17 03:07:55 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.50
