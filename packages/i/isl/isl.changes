@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 29 17:29:04 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.23:
+  - minor improvements to coalescing
+  - use build compiler to build extract_interface
+  - add some convenience functions
+  - ignore parameters in isl_union_* hash tables 
+
+-------------------------------------------------------------------
 Thu Feb  6 09:22:41 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Update to 0.22.1:

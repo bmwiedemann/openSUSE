@@ -16,19 +16,18 @@
 #
 
 
-%define islsover 22
+%define islsover 23
 Name:           isl
-Version:        0.22.1
+Version:        0.23
 Release:        0
 Summary:        Integer Set Library
 License:        MIT
 Group:          Development/Languages/C and C++
-URL:            http://isl.gforge.inria.fr/
+URL:            https://isl.gforge.inria.fr/
 Source:         http://isl.gforge.inria.fr/isl-%{version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  gmp-devel
 BuildRequires:  pkgconfig
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 ISL is a library for manipulating sets and relations of integer points
@@ -58,25 +57,23 @@ bounded by linear constraints.
 
 %build
 %configure --disable-static
-make %{?_smp_mflags} V=1
+%make_build
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
 %make_install
-rm -f  %{buildroot}%{_libdir}/*.la
+find %{buildroot} -type f -name "*.la" -delete -print
 rm -f  %{buildroot}%{_libdir}/libisl.so.*-gdb.py
 
 %post -n libisl%{islsover} -p /sbin/ldconfig
 %postun -n libisl%{islsover} -p /sbin/ldconfig
 
 %files -n libisl%{islsover}
-%defattr(-,root,root,-)
 %{_libdir}/libisl.so.%{islsover}*
 
 %files devel
-%defattr(-,root,root,-)
 %{_includedir}/isl
 %{_libdir}/libisl.so
 %{_libdir}/pkgconfig/%{name}.pc

@@ -189,4 +189,16 @@
   of the release. (forwarded request 770708 from marxin)</comment>
     <requestid>770795</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>350820e38b4502e742dc6b4685b0ed9f</srcmd5>
+    <version>0.23</version>
+    <time>1610123527</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.23:
+  - minor improvements to coalescing
+  - use build compiler to build extract_interface
+  - add some convenience functions
+  - ignore parameters in isl_union_* hash tables (forwarded request 859272 from dirkmueller)</comment>
+    <requestid>860118</requestid>
+  </revision>
 </revisionlist>
