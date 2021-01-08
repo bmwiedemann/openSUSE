@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan  5 12:27:17 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-01-apps-update
+- Changes since 20.12.0:
+  * Add Protected Header tests for SignEncryptJob
+  * Messagecomposer: Move protected headers to signed part
+  * Fix[messagecomposer]: Do copy all mail headers instad of reference them (kde#427091)
+  * Fix Bug 431153 - Crash in MessageComposer::MessageFactoryNG::createForwardDigestMIME() when trying to forward a group of emails (kde#431153)
+  * storagemodel.cpp - collectionForId() improve
+  * Remove setRunExecutables(true), it serves no purpose with a text/html mimetype
+  * cleanup EncryptedJobTest.
+  * FIX[messagecomposer/cryptocomposertests]: Use EncryptJob exec instead of async variant to pass tests.
+
+-------------------------------------------------------------------
 Sun Dec 13 14:30:41 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Drop obsolete build requirements
