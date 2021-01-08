@@ -1,7 +1,7 @@
 #
 # spec file for package gperftools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gperftools
-Version:        2.7
+Version:        2.8.1
 Release:        0
 Summary:        Performance Tools for C++
 License:        BSD-3-Clause
@@ -26,23 +26,25 @@ URL:            https://github.com/gperftools/gperftools
 Source0:        https://github.com/gperftools/gperftools/releases/download/gperftools-%{version}/gperftools-%{version}.tar.gz
 Patch1:         %{name}_fix_unassigned_malloc_in_unittest.patch
 Patch2:         %{name}_gcc46.patch
-Patch3:         gcc-dont-clobber-rsp.patch
-Patch4:         ppc64-fix-367fd5731a8c68225cb870aa656ea0ce677fe040.patch
 BuildRequires:  autoconf >= 2.59
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-%ifnarch s390x s390
-BuildRequires:  libunwind-devel
-%endif
-BuildRequires:  pkg-config
-%ifnarch s390
-BuildRequires:  valgrind-devel
-%endif
-# based on basictypes.h in the source tree
-ExclusiveArch:  %ix86 x86_64 ppc ppc64 ppc64le %arm aarch64 mips s390x
+BuildRequires:  pkgconfig
 Provides:       google-perftools
 Obsoletes:      google-perftools
+# based on basictypes.h in the source tree
+ExclusiveArch:  %{ix86} x86_64 ppc ppc64 ppc64le %{arm} aarch64 mips s390x
+%ifnarch s390x s390
+BuildRequires:  pkgconfig(libunwind)
+BuildRequires:  pkgconfig(libunwind-coredump)
+BuildRequires:  pkgconfig(libunwind-generic)
+BuildRequires:  pkgconfig(libunwind-ptrace)
+BuildRequires:  pkgconfig(libunwind-setjmp)
+%endif
+%ifnarch s390
+BuildRequires:  pkgconfig(valgrind)
+%endif
 
 %description
 The gperftools package contains some utilities to improve and analyze the
@@ -103,23 +105,21 @@ export CFLAGS="%{optflags} -fno-strict-aliasing $VALGRIND_FL"
   --with-gnu-ld \
   --with-pic \
   --docdir=%{_defaultdocdir}/%{name}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n libprofiler0 -p /sbin/ldconfig
-
 %postun -n libprofiler0 -p /sbin/ldconfig
-
 %post   -n libtcmalloc4 -p /sbin/ldconfig
-
 %postun -n libtcmalloc4 -p /sbin/ldconfig
 
 %files
 %{_bindir}/pprof
-%{_mandir}/man1/pprof.1.*
+%{_bindir}/pprof-symbolize
+%{_mandir}/man1/pprof.1%{?ext_man}
 %{_docdir}/%{name}
 
 %files -n libprofiler0

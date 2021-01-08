@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jan  5 08:23:07 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.8.1:
+  * previous release contained change to release memory without page
+    heap lock, but this change had at least one bug that caused to
+    crashes and corruption when running under aggressive decommit mode
+    (this is not default). While we check for other bugs, this feature
+    was reverted. See github issue #1204 and issue #1227.
+  * stack traces depth captured by gperftools is now up to 254 levels
+    deep
+  * updated detection of program counter
+  * ProfilerGetStackTrace is now officially supported API for
+    libprofiler
+  * for compiling linux syscall support on i386 and recent GCCs
+  * test failures caused by new gcc 10 optimizations were fixed. Same
+    change also fixed tests on clang.
+- Drop ppc64-fix-367fd5731a8c68225cb870aa656ea0ce677fe040.patch
+- Drop gcc-dont-clobber-rsp.patch
+
+-------------------------------------------------------------------
 Fri Sep  4 20:33:52 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Add ExclusiveArch declaration to specfile.
