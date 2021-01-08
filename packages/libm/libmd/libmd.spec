@@ -1,7 +1,7 @@
 #
 # spec file for package libmd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover    0
 Name:           libmd
-Version:        1.0.1
+Version:        1.0.3
 Release:        0
 Summary:        Message digest functions from BSD systems
 License:        BSD-2-Clause OR BSD-3-Clause OR ISC OR SUSE-Public-Domain
@@ -58,7 +58,7 @@ API.
 Digests supported: MD2/4/5, RIPEMD160, SHA1, SHA2-256/384/512.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure \
@@ -66,12 +66,12 @@ Digests supported: MD2/4/5, RIPEMD160, SHA1, SHA2-256/384/512.
   --disable-silent-rules
 
 %if %{do_profiling}
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}"
-  make check %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}"
-  make %{?_smp_mflags} clean
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_feedback}"
+  %make_build CFLAGS="%{optflags} %{cflags_profile_generate}"
+  %make_build check CFLAGS="%{optflags} %{cflags_profile_generate}"
+  %make_build clean
+  %make_build CFLAGS="%{optflags} %{cflags_profile_feedback}"
 %else
-  make %{?_smp_mflags}
+  %make_build
 %endif
 
 %install
@@ -79,7 +79,7 @@ Digests supported: MD2/4/5, RIPEMD160, SHA1, SHA2-256/384/512.
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n %{name}%{sover} -p /sbin/ldconfig
 %postun -n %{name}%{sover} -p /sbin/ldconfig

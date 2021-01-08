@@ -64,4 +64,22 @@
     <comment></comment>
     <requestid>781651</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>35c7a350f802b6221c30cec5cd2d4ef3</srcmd5>
+    <version>1.0.3</version>
+    <time>1610123557</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.3
+  * Import local-link header from libbsd
+  * Switch SHA2 symbols from weak to strong aliases
+  * build: Move local-link.h from libmd_la_helper_sources to libmd_la_SOURCES
+  * build: Only depend on libmd.sym when using it
+  * Remove duplicate Files entries from COPYING
+  * build: Use &lt;unistd.h&gt; only if available
+  * Remove unused weak symbol declarations for MD2 functions
+  * build: Ignore release tarballs
+  * build: Provide wrapper functions instead of aliases in DLL built with MSVC
+  * build: Fix out of tree builds</comment>
+    <requestid>860189</requestid>
+  </revision>
 </revisionlist>

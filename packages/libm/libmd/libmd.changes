@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan  4 12:46:19 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.3
+  * Import local-link header from libbsd
+  * Switch SHA2 symbols from weak to strong aliases
+  * build: Move local-link.h from libmd_la_helper_sources to libmd_la_SOURCES
+  * build: Only depend on libmd.sym when using it
+  * Remove duplicate Files entries from COPYING
+  * build: Use <unistd.h> only if available
+  * Remove unused weak symbol declarations for MD2 functions
+  * build: Ignore release tarballs
+  * build: Provide wrapper functions instead of aliases in DLL built with MSVC
+  * build: Fix out of tree builds
+
+-------------------------------------------------------------------
 Wed Mar  4 16:27:59 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Remove undefined macro
