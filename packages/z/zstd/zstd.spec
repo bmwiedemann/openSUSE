@@ -19,7 +19,7 @@
 %define major 1
 %define libname lib%{name}%{major}
 Name:           zstd
-Version:        %{major}.4.5
+Version:        %{major}.4.8
 Release:        0
 Summary:        Zstandard compression tools
 License:        BSD-3-Clause AND GPL-2.0-only
@@ -28,7 +28,6 @@ URL:            https://github.com/facebook/zstd
 Source0:        https://github.com/facebook/zstd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 Patch1:         pzstd.1.patch
-Patch2:         fix-lib-build.patch
 BuildRequires:  gcc
 # C++ is needed for pzstd only
 BuildRequires:  gcc-c++
@@ -85,7 +84,6 @@ Needed for compiling programs that link with the library.
 %prep
 %setup -q
 %patch1 -p1
-%patch2 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

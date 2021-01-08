@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Dec 19 04:01:08 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to version 1.4.8 to fix i586+s390x
+
+-------------------------------------------------------------------
+Thu Dec 17 04:04:42 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to version 1.4.7
+  * Improved --long mode
+  * --long now automatically enabled for any window size >= 128MB
+  * Faster decompression of small blocks
+  * CLI improvements
+    + accept parameter through environment variable ZSTD_NBTHREADS
+    + new command --output-dir-mirror
+    + more accurate warning and error messages
+  * New experimental features
+    + Shared Thread Pool
+    + Faster Dictionary Compression
+    + New Sequence Ingestion API
+  * Drop upstream fix-lib-build.patch
+
+-------------------------------------------------------------------
 Wed Jul  8 18:33:04 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Remove not needed exports in %install section.

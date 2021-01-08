@@ -199,4 +199,26 @@
     <comment></comment>
     <requestid>819625</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>542246d98defa60442647f6aa4cd144e</srcmd5>
+    <version>1.4.8</version>
+    <time>1610123510</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.8 to fix i586+s390x
+
+- Update to version 1.4.7
+  * Improved --long mode
+  * --long now automatically enabled for any window size &gt;= 128MB
+  * Faster decompression of small blocks
+  * CLI improvements
+    + accept parameter through environment variable ZSTD_NBTHREADS
+    + new command --output-dir-mirror
+    + more accurate warning and error messages
+  * New experimental features
+    + Shared Thread Pool
+    + Faster Dictionary Compression
+    + New Sequence Ingestion API
+  * Drop upstream fix-lib-build.patch</comment>
+    <requestid>856941</requestid>
+  </revision>
 </revisionlist>

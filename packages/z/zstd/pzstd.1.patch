@@ -1,10 +1,10 @@
-Index: zstd-1.4.4/programs/zstd.1
+Index: zstd-1.4.7/programs/zstd.1
 ===================================================================
---- zstd-1.4.4.orig/programs/zstd.1
-+++ zstd-1.4.4/programs/zstd.1
-@@ -213,6 +213,12 @@ All arguments after \fB\-\-\fR are treat
- .SS "Restricted usage of Environment Variables"
- Using environment variables to set parameters has security implications\. Therefore, this avenue is intentionally restricted\. Only \fBZSTD_CLEVEL\fR is supported currently, for setting compression level\. \fBZSTD_CLEVEL\fR can be used to set the level between 1 and 19 (the "normal" range)\. If the value of \fBZSTD_CLEVEL\fR is not a valid integer, it will be ignored with a warning message\. \fBZSTD_CLEVEL\fR just replaces the default compression level (\fB3\fR)\. It can be overridden by corresponding command line arguments\.
+--- zstd-1.4.7.orig/programs/zstd.1
++++ zstd-1.4.7/programs/zstd.1
+@@ -223,6 +223,12 @@ Using environment variables to set param
+ .P
+ They can both be overridden by corresponding command line arguments: \fB\-#\fR for compression level and \fB\-T#\fR for number of compression threads\.
  .
 +.SH Parallel Zstd OPTIONS
 +Additional options for the pzstd utility
