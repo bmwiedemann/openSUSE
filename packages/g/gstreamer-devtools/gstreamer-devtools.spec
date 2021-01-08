@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-devtools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %define _name   gst-devtools
+
 Name:           gstreamer-devtools
 Version:        1.18.2
 Release:        0
@@ -25,6 +26,7 @@ License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
 Source:         %{name}-%{version}.tar.xz
+
 BuildRequires:  cmake
 BuildRequires:  hotdoc
 BuildRequires:  meson
@@ -59,7 +61,6 @@ links and uses libgstvalidate.
 Summary:        GStreamer pipeline validator
 # all the nice validator scripts live in the main package
 Group:          System/Libraries
-Recommends:     %{name}
 
 %description -n libgstvalidate-1_0-0
 GstValidate detects when elements are not behaving as expected and
@@ -93,7 +94,7 @@ inside a GstPipeline. In the end, fixing issues found by the tool will
 ensure that all elements behave all together in the expected way.
 
 %prep
-%setup -q
+%autosetup -p1
 sed -i -e '1{s,^#!/usr/bin/env python3,#!%{_bindir}/python3,}' validate/tools/gst-validate-launcher.in
 
 %build
@@ -102,7 +103,6 @@ sed -i -e '1{s,^#!/usr/bin/env python3,#!%{_bindir}/python3,}' validate/tools/gs
 
 %install
 %meson_install
-find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n libgstvalidate-1_0-0 -p /sbin/ldconfig
 %postun -n libgstvalidate-1_0-0 -p /sbin/ldconfig
