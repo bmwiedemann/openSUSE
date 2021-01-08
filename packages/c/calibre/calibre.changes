@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jan  8 10:09:46 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.9.0
+  * New Features
+    - Annotations: Allow exporting highlights and bookmarks in 
+      Markdown format, with a link to open the book at the 
+      highlight location
+    - Content server viewer: Allow exporting all highlights
+    - Icon rules editor: Add a button to open the icons folder
+Quickview: Dropdown menu for all selectable columns
+  * Bug Fixes
+    - Fix a regression that caused the Content server to crash if 
+      a client closed a connection during a file transfer on macOS
+      and Linux.
+    - LRF Output: Fix conversion broken in calibre 5 when font size
+      rescaling is active
+    - E-book viewer: Cancel any speech in progress when hiding the
+      selection popup bar after triggering the speak aloud action
+      on it
+    - Color/icon rules editor: Fix duplicate rule button not
+      working correctly
+    - Fix dropping files onto book details causing an error if the
+      confirmation dialog is disabled
+
+-------------------------------------------------------------------
 Thu Dec 24 13:25:25 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.8.1
