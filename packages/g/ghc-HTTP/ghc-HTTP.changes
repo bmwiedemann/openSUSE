@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 22 12:58:15 UTC 2020 - psimons@suse.com
+
+- Update HTTP to version 4000.3.15 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
