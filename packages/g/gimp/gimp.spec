@@ -173,6 +173,7 @@ Summary:        The GNU Image Manipulation Program - python-gtk based plugins
 Group:          Productivity/Graphics/Bitmap Editors
 Requires:       %{name} = %{version}
 Requires:       python-gtk
+Recommends:     python-xml
 Supplements:    %{name}
 Provides:       gimp-2.0-plugins-python = %{version}
 Obsoletes:      gimp-unstable-plugins-python < 2.6.0

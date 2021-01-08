@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan  7 06:43:45 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Added python-xml as recommend dependency. (bsc#1180363)
+
+-------------------------------------------------------------------
 Tue Oct 27 00:27:00 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - updates to buildrequires
