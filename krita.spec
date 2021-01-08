@@ -31,6 +31,8 @@ License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND
 Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://www.krita.org/
 Source0:        https://download.kde.org/stable/krita/%{version}/krita-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         Upgrade-C++-standard-to-14-if-Boost-ge-1.75.patch
 %ifnarch %{arm} aarch64
 # causes build failure on ARM currently
 BuildRequires:  OpenColorIO-devel
@@ -111,7 +113,7 @@ Development headers and libraries for Krita.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %ifarch %{arm} aarch64

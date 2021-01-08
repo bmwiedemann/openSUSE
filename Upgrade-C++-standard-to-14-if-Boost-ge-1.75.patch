@@ -1,0 +1,33 @@
+From 75a9c5ba57c96e2a1c881aefd6eb0f4760b506a3 Mon Sep 17 00:00:00 2001
+From: "L. E. Segovia" <amy@amyspark.me>
+Date: Tue, 15 Dec 2020 21:27:50 +0000
+Subject: [PATCH] Upgrade C++ standard to 14 if Boost >= 1.75
+
+This only affects compilation if a recent enough Boost is detected.
+
+BUG: 430331
+
+CCMAIL: kimageshop@kde.org
+(cherry picked from commit 03ff1bae4348a71987c69bb3746cfa6c15d53862)
+---
+ CMakeLists.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b54887ff97..12b1b5950b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -574,6 +574,10 @@ endif()
+ add_definitions(-DBOOST_ALL_NO_LIB)
+ find_package(Boost 1.55 REQUIRED COMPONENTS system)
+ include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
++if(${Boost_VERSION} VERSION_GREATER_EQUAL "1.75")
++    message(WARNING "Boost 1.75 or higher detected, upgrading to C++14.")
++    set(CMAKE_CXX_STANDARD 14)
++endif()
+ ##
+ ## Test for GNU Scientific Library
+ ##
+-- 
+GitLab
+
