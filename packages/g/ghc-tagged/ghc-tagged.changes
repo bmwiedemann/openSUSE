@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 29 21:16:44 UTC 2020 - psimons@suse.com
+
+- Update tagged to version 0.8.6.1.
+  0.8.6.1 [2020.12.28]
+  --------------------
+  * Mark all modules as explicitly Safe or Trustworthy.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
