@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jan  6 13:16:24 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to 1.24.0
+  * add Python 3.9 support, drop Python 3.5 support
+    (gh#googleapis/google-auth-library-python#654)
+  * avoid losing the original '_include_email' parameter in impersonated
+    credentials (gh#googleapis/google-auth-library-python#626)
+- from version 1.23.0
+  * Add custom scopes for access tokens from the metadata service
+    (gh#googleapis/google-auth-library-python#633)
+  * remove checks for ancient versions of Cryptography
+- from version 1.22.1
+  * move aiohttp to extra as it is currently internal surface
+    (gh#googleapis/google-auth-library-python#619)
+- from version 1.22.0
+  * add asyncio based auth flow
+    (gh#googleapis/google-auth-library-python#612)
+- from version 1.21.3
+  * fix expiry for to_json()
+    (gh#googleapis/google-auth-library-python#589)
+- Skip build for python2 as it is not supported anymore and unit tests
+  can not be run because of unsatisfiable dependencies (mock >= 3.6)
+- Add urllib3 to the build requirements needed for testing and remove
+  cryptography
+
+-------------------------------------------------------------------
 Wed Sep 23 13:05:40 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.21.2:
