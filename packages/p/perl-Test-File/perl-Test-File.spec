@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-File
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Test-File
-Version:        1.443
-Release:        0
 %define cpan_name Test-File
-Summary:        Test File Attributes
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Test-File/
+Name:           perl-Test-File
+Version:        1.444
+Release:        0
+Summary:        Test file attributes
+License:        Artistic-2.0
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/B/BD/BDFOY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::Builder) >= 1.001006
 BuildRequires:  perl(Test::Builder::Tester) >= 1.04
-BuildRequires:  perl(Test::More) >= 0.95
+BuildRequires:  perl(Test::More) >= 1
 BuildRequires:  perl(Test::utf8)
 %{perl_requires}
 
@@ -55,14 +53,14 @@ The optional NAME parameter for every function allows you to specify a name
 for the test. If not supplied, a reasonable default will be generated.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -70,7 +68,6 @@ for the test. If not supplied, a reasonable default will be generated.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes examples
 %license LICENSE
 

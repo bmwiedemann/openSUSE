@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jan  7 03:10:03 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.444
+   see /usr/share/doc/packages/perl-Test-File/Changes
+
+  1.444 2021-01-06T03:40:19Z
+  	* Remove Travis, add GitHub actions
+  	* Add file_is_symlink_not_ok
+  1.443_03 2020-06-15T13:13:42Z
+  	* Merge some test additions from Desmond Daignault (GitHub #20)
+  1.443_02 2020-06-15T12:10:34Z
+  	* Deprecated directories in tests appropriate for only plain files.
+  	It's a diag() message now but will be a test failure later.
+  1.443_01 2020-06-12T11:54:41Z
+  	* change the file_writeable_ok tests to file_writable_ok, which
+  	is the correct spelling. The old names work but now warn to use
+  	the new name.
+  	* Some updates to refresh the tests.
+  	* Start mirroring Test2::Tools::File so we support the same names.
+  	Thanks to Torbjørn Lindahl for spotting rough edges.
+
+-------------------------------------------------------------------
 Tue Apr 18 06:44:51 UTC 2017 - coolo@suse.com
 
 - updated to 1.443
