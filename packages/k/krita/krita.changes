@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  7 19:19:56 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add Upgrade-C++-standard-to-14-if-Boost-ge-1.75.patch to fix
+  build with boost 1.75 (kde#430331)
+
+-------------------------------------------------------------------
 Fri Oct 30 11:56:59 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 4.4.1:
