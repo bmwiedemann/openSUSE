@@ -1,7 +1,7 @@
 #
 # spec file for package python-certbot
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-certbot
-Version:        1.9.0
+Version:        1.11.0
 Release:        0
 Summary:        ACME client
 License:        Apache-2.0
@@ -43,7 +43,7 @@ BuildRequires:  %{python_module zope.component}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-acme >= 1.6.0
+Requires:       python-acme >= 1.8.0
 Requires:       python-configargparse >= 0.9.3
 Requires:       python-configobj
 Requires:       python-cryptography >= 1.2.3
