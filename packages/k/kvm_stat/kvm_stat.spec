@@ -1,7 +1,7 @@
 #
 # spec file for package kvm_stat
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,6 @@ Conflicts:      qemu < 2.6.90
 Conflicts:      qemu-kvm < 2.6.90
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
-Patch00:        tools-kvm_stat-explicitly-reference-python3.patch
 # Patches 01 to 07 are for jsc#SLE-13784
 Patch01:        rework-command-line-sequence.patch
 Patch02:        switch-to-argparse.patch
@@ -58,7 +57,6 @@ simple text.
 # copy necessary files from kernel-source
 (tar -C /usr/src/linux -c COPYING tools scripts) | tar -x
 
-%patch00 -p1
 # Patches present upstream, since 5.7
 %if "%(echo `echo -e "%{version}\\n5.7.0" | sort -V | head -n1 2> /dev/null`)" != "5.7.0"
 %patch01 -p1
@@ -77,6 +75,8 @@ simple text.
 make -C tools/kvm/kvm_stat %{?_smp_mflags}
 
 %install
+# OBS checks don't like /usr/bin/env in script interpreter lines
+sed -re '1 { s_^#! */usr/bin/env +/_#!/_ ; s_^#! */usr/bin/env +([^/])_#!/usr/bin/\1_ }' -i "tools/kvm/kvm_stat/kvm_stat"
 make -C tools kvm_stat_install INSTALL_ROOT=%{buildroot}
 install -d -m 755 %{buildroot}/%{_datadir}/kvm_stat
 install -m 644 tools/kvm/kvm_stat/kvm_stat.service %{buildroot}/%{_datadir}/kvm_stat/

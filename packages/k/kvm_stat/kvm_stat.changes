@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jan  8 15:43:27 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+- Get rid of the stale patch file.
+
+-------------------------------------------------------------------
+Fri Jan  8 14:38:39 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+- Remove broken patch tools-kvm_stat-explicitly-reference-python3.patch
+  * the patch does not apply any longer, at least on top of
+    Kernel source packages does the same (i.e., replacing /usr/bin/env)
+    in their own kernel-source.spec;
+  * therefore, let's take care of that directly inside of our own spec
+    file instead, which is a solution that always work, no matter what
+    has been done in the Kernel source package. 
+
+-------------------------------------------------------------------
 Wed Dec 23 13:45:24 UTC 2020 - Dario Faggioli <dfaggioli@suse.com>
 
 - Fix kernel version comparison for selectively applying patches
