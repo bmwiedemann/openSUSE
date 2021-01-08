@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan  5 12:24:57 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-01-apps-update
+- Changes since 20.12.0:
+  * [*cloud] Don't manually close the window when finished
+
+-------------------------------------------------------------------
 Sat Dec  5 23:15:38 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.0
