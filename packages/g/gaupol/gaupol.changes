@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Dec 31 17:33:58 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 1.9:
+  * Add framerates 30, 50, 59.94 and 60 fps
+    (gh#otsaloma/gaupol#164).
+  * Add selecting next/previous from video position
+    (gh#otsaloma/gaupol#154).
+  * Allow shifting positions of all open projects
+    (gh#otsaloma/gaupol#66).
+  * Fix error dialog when video playback fail
+    (gh#otsaloma/gaupol#153).
+  * Fix the order of audio tracks in the menu
+    (gh#otsaloma/gaupol#129, qnga).
+  * Fix spell-check split words correction task to not hang
+    (gh#otsaloma/gaupol#171).
+  * Add Dutch translation (Heimen Stoffels).
+
+-------------------------------------------------------------------
 Sun Dec  6 16:02:04 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Support multiple python3 flavors for python-aeidon

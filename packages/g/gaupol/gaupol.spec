@@ -1,7 +1,7 @@
 #
 # spec file for package gaupol
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_without test
 %define skip_python2 1
 Name:           gaupol
-Version:        1.8
+Version:        1.9
 Release:        0
 Summary:        GTK Subtitle editor
 License:        GPL-3.0-or-later
