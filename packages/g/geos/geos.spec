@@ -1,7 +1,7 @@
 #
 # spec file for package geos
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define uver	3_8_1
+%define uver	3_9_0
 Name:           geos
-Version:        3.8.1
+Version:        3.9.0
 Release:        0
 Summary:        Geometry Engine - Open Source
 License:        LGPL-2.1-only
@@ -26,12 +26,9 @@ Group:          Development/Libraries/C and C++
 URL:            https://trac.osgeo.org/geos/
 Source0:        https://download.osgeo.org/%{name}/%{name}-%{version}.tar.bz2
 Source1:        %{name}-config.1
-Patch0:         libruby.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  ruby-devel
-BuildRequires:  swig
 
 %description
 GEOS (Geometry Engine - Open Source) is a C++ port of the Java Topology
@@ -61,20 +58,6 @@ Obsoletes:      geos < %{version}-%{release}
 This subpackage contains a shared library providing a C linkage
 interface for the (C++) GEOS library.
 
-%package -n ruby-%{name}
-Summary:        Ruby bindings for Geometry Engine
-Group:          Development/Languages/Ruby
-Requires:       ruby(abi) >= %{rb_ver}
-
-%description -n ruby-%{name}
-GEOS (Geometry Engine - Open Source) is a C++ port of the Java Topology
-Suite (JTS). As such, it aims to contain the complete functionality of
-JTS in C++. This includes all the OpenGIS "Simple Features for SQL" spatial
-predicate functions and spatial operators, as well as specific JTS topology
-functions such as IsValid()
-
-This package contains ruby bindings for Geometry Engine.
-
 %package devel
 Summary:        Development files for GEOS
 Group:          Development/Libraries/C and C++
@@ -94,13 +77,9 @@ use GEOS.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
-%configure \
-  --disable-static \
-  --enable-ruby
-
+%configure --disable-static
 make %{?_smp_mflags}
 
 # tests fail with older releases and non-intel architectures
@@ -131,16 +110,13 @@ find %{buildroot} -type f \( -name '*.a' -o -name '*.la' \) -delete -print
 %license COPYING
 %{_libdir}/libgeos_c.so.*
 
-%files -n ruby-%{name}
-%license COPYING
-%{rb_vendorarchdir}/%{name}.so
-
 %files devel
 %license COPYING
 %doc AUTHORS NEWS README.md ChangeLog
 %{_mandir}/man1/%{name}-config.1%{ext_man}
 %{_bindir}/%{name}-config
 %{_includedir}/*
+%{_libdir}/pkgconfig/%{name}.pc
 %{_libdir}/lib%{name}.so
 %{_libdir}/lib%{name}_c.so
 

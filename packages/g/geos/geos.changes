@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jan  7 17:19:28 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 3.9.0
+  + New things
+  - OverlayNG engine from JTS, now the default (Martin Davis, Paul Ramsey)
+  - MaximumInscribedCircle and LargestEmptyCircle (JTS-530, Paul Ramsey)
+  - CAPI: Fixed precision overlay operations (Sandro Santilli)
+  - CAPI: GEOSPreparedNearestPoints (#1007, Sandro Santilli)
+  - CAPI: GEOSPreparedDistance (#1066, Sandro Santilli)
+  - CAPI: GEOSGeom_setPrecision uses OverlayNG (Paul Ramsey)
+  - SimpleSTRTree spatial index implementation (Paul Ramsey)
+  - Add support for pkg-config for GEOS C API (#1073, Mike Taves)
+  + Improvements:
+  - Stack allocate segments in OverlapUnion (Paul Ramsey)
+  - Improve performance of GEOSisValid (Dan Baston)
+  - Update geos-config tool for consistency
+    and escape paths (https://git.osgeo.org/gitea/geos/geos/pulls/99)
+    changes mostly affect CMake MSVC builds (#1015, Mike Taves)
+  - Testing on Rasberry Pi 32-bit (berrie) (#1017, Bruce Rindahl, Regina Obe)
+  - Replace ttmath with JTS DD double-double implementation (Paul Ramsey)
+  - Fix bug in DistanceOp for geometries with empty components (#1026, Paul Ramsey)
+  - Remove undefined behaviour in CAPI (#1021, Greg Troxel)
+  - Fix buffering issue (#1022, JTS-525, Paul Ramsey)
+  - MinimumBoundingCircle.getMaximumDiameter fix (JTS-533, Paul Ramsey)
+  + Changes:
+  - Drop SWIG bindings, including for Ruby and Python (#1076, Mike Taves)
+- Packaging:
+  + Remove ruby related package and related patch libruby.patch
+  + spec-clean mini (copyright year)
+
+-------------------------------------------------------------------
 Sat May  9 07:36:35 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to version 3.8.1 Bug fixes / improvements
