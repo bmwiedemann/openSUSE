@@ -1,0 +1,56 @@
+From 2a352569853010f010d80c5d58f5f189f589fecf Mon Sep 17 00:00:00 2001
+From: Antonio Larrosa <antonio.larrosa@gmail.com>
+Date: Fri, 8 Jan 2021 10:27:13 +0100
+Subject: [PATCH] Change the SUSE override to use apachectl
+
+For some time, SUSE distributions have had both an apachectl
+executable and an apache2ctl compat symlink so both could be used
+but apachectl is preferred since that's the official upstream name.
+This is currently the case in SLE 15 SP2 and openSUSE Leap 15.2
+(and every release since SLE 12 SP1)
+
+OTOH, openSUSE Tumbleweed removed the apache2ctl compat symlink
+some weeks ago and both SLE/Leap will follow in one of the next
+releases so it's better to change certbot to use the official name,
+apachectl.
+---
+ certbot-apache/certbot_apache/_internal/override_suse.py | 8 ++++----
+ certbot/CHANGELOG.md                                     | 3 ++-
+ 2 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/certbot-apache/certbot_apache/_internal/override_suse.py b/certbot-apache/certbot_apache/_internal/override_suse.py
+index eee9b0b64..afce98dfa 100644
+--- a/certbot-apache/certbot_apache/_internal/override_suse.py
++++ b/certbot-apache/certbot_apache/_internal/override_suse.py
+@@ -14,10 +14,10 @@ class OpenSUSEConfigurator(configurator.ApacheConfigurator):
+         vhost_root="/etc/apache2/vhosts.d",
+         vhost_files="*.conf",
+         logs_root="/var/log/apache2",
+-        ctl="apache2ctl",
+-        version_cmd=['apache2ctl', '-v'],
+-        restart_cmd=['apache2ctl', 'graceful'],
+-        conftest_cmd=['apache2ctl', 'configtest'],
++        ctl="apachectl",
++        version_cmd=['apachectl', '-v'],
++        restart_cmd=['apachectl', 'graceful'],
++        conftest_cmd=['apachectl', 'configtest'],
+         enmod="a2enmod",
+         dismod="a2dismod",
+         le_vhost_ext="-le-ssl.conf",
+#diff --git a/certbot/CHANGELOG.md b/certbot/CHANGELOG.md
+#index c01fe830c..efaa2f6be 100644
+#--- a/certbot/CHANGELOG.md
+#+++ b/certbot/CHANGELOG.md
+#@@ -14,7 +14,8 @@ Certbot adheres to [Semantic Versioning](https://semver.org/).
+# 
+# ### Fixed
+# 
+#-*
+#+* Fixed the apache component on openSUSE Tumbleweed which no longer provides
+#+  an apache2ctl symlink and uses apachectl instead.
+# 
+# More details about these changes can be found on our GitHub repo.
+# 
+-- 
+2.29.2
+

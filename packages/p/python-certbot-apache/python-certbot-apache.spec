@@ -1,7 +1,7 @@
 #
 # spec file for package python-certbot-apache
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-certbot-apache
-Version:        1.9.0
+Version:        1.11.0
 Release:        0
 Summary:        Apache plugin for Certbot
 License:        Apache-2.0
 URL:            https://github.com/letsencrypt/letsencrypt
 Source:         https://files.pythonhosted.org/packages/source/c/certbot-apache/certbot-apache-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM alarrosa@suse.com - gh#certbot/certbot#8592
+Patch0:         0001-Change-the-SUSE-override-to-use-apachectl.patch
 BuildRequires:  %{python_module augeas}
 BuildRequires:  %{python_module certbot >= 1.1.0}
 BuildRequires:  %{python_module pytest}
@@ -47,6 +49,7 @@ The Apache plugin for Certbot.
 
 %prep
 %setup -q -n certbot-apache-%{version}
+%patch0 -p2
 
 %build
 %python_build

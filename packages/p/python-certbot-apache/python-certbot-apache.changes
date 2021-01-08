@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jan  8 10:37:11 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to fix the apache2 package not providing apache2ctl
+  any longer (gh#certbot/certbot#8592)
+  * 0001-Change-the-SUSE-override-to-use-apachectl.patch
+
+-------------------------------------------------------------------
+Fri Jan  8 10:19:34 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- update to version 1.11.0
+  * We deprecated support for Apache 2.2 in the certbot-apache
+    plugin and it will be removed in a future release of Certbot.
+
+- update to version 1.10.1
+  * sync with the main certbot package
+
+- update to version 1.10.0
+  * Support for Python 3.9 was added to Certbot and all of its
+    components.
+
+-------------------------------------------------------------------
 Wed Oct  7 08:42:56 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 1.9.0
