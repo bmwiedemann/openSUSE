@@ -905,4 +905,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>853804</requestid>
   </revision>
+  <revision rev="88" vrev="14">
+    <srcmd5>05a46b4c23f310d4c124801bc57cab87</srcmd5>
+    <version>1.1.12</version>
+    <time>1610123560</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed path of pidof tool for older openSUSE Leap releases 
+  (boo#1179607)</comment>
+    <requestid>860225</requestid>
+  </revision>
 </revisionlist>

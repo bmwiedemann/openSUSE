@@ -1,7 +1,7 @@
 #
 # spec file for package xdm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,7 +59,11 @@ BuildRequires:  pkgconfig(xpm)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtrans)
 Requires:       %fillup_prereq
+%if 0%{?suse_version} >= 1550
 Requires:       %{_bindir}/pidof
+%else
+Requires:       /sbin/pidof
+%endif
 Requires:       /sbin/startproc
 Requires:       logrotate
 Requires:       sessreg

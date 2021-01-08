@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  4 14:21:44 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed path of pidof tool for older openSUSE Leap releases 
+  (boo#1179607) 
+
+-------------------------------------------------------------------
 Tue Dec  1 12:08:44 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - fixed %postun for older releases than factory/TW (see change
