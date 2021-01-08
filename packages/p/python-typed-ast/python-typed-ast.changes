@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 31 12:18:56 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- remove obsolete ast27-prefix-exported-symbols.patch, included upstream
+- update to version 1.4.2:
+ - Fix linker error in debug build (#131)
+ - Fix cross compile by adjusting includes (#135)
+ - Add note in incompatabilities that PyPy is broken and unsupported (#144)
+ - Remove reference to PyNode_ListTree for Python 3.10 (#153)
+ - ast27: prefix exported symbols (#152)
+ - Add 3.9 to supported versions
+
+-------------------------------------------------------------------
 Wed Dec 30 10:04:28 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Add ast27-prefix-exported-symbols.patch from upstream PR#152 to fix ppc64 and

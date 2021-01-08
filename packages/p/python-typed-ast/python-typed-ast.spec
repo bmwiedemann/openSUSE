@@ -19,15 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-typed-ast
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        A fork of Python 2 and 3 ast modules with type comment support
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/python/typed_ast
 Source0:        https://files.pythonhosted.org/packages/source/t/typed_ast/typed_ast-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM ast27-prefix-exported-symbols.patch -- based on https://github.com/python/typed_ast/pull/152.patch to fix ppc63 and s390x builds
-Patch0:         ast27-prefix-exported-symbols.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -47,7 +45,6 @@ based on the CPython 2.7 and 3.6 parsers.
 
 %prep
 %setup -q -n typed_ast-%{version}
-%patch0 -p1
 
 %build
 export CFLAGS="%{optflags}"
