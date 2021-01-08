@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan  6 08:40:26 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Increase required RAM for aarch64
+
+-------------------------------------------------------------------
 Fri Jan  1 13:04:35 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move BFD plugins to %{_libdir}

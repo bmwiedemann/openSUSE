@@ -35,7 +35,7 @@
     </conditions>
     <hardware>
       <memory>
-        <size unit="M">4096</size>
+        <size unit="M">6000</size>
       </memory>
     </hardware>
     <sandbox>kvm</sandbox>
