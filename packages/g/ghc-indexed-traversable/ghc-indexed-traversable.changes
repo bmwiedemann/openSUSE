@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 27 17:29:43 UTC 2020 - psimons@suse.com
+
+- Update indexed-traversable to version 0.1.1.
+  # 0.1.1 [2020-12-27]
+
+  - Mark all modules as `Safe`.
+    See https://gitlab.haskell.org/ghc/ghc/-/issues/19127
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

@@ -18,7 +18,7 @@
 
 %global pkg_name indexed-traversable
 Name:           ghc-%{pkg_name}
-Version:        0.1
+Version:        0.1.1
 Release:        0
 Summary:        FunctorWithIndex, FoldableWithIndex, TraversableWithIndex
 License:        BSD-2-Clause
