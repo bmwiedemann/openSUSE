@@ -18,18 +18,16 @@
 
 Name:           libepoxy
 %define sonum   0
-Version:        1.5.4
+Version:        1.5.5
 Release:        0
 Summary:        OpenGL function pointer management library
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/anholt/libepoxy
-Source0:        https://github.com/anholt/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.xz
+Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM -- https://github.com/anholt/libepoxy/commit/5c0dff60907983b0e764006053637febcc3e48ec.patch
-Patch0:         Lower-the-minimum-required-version-of-Meson.patch
 
-BuildRequires:  meson >= 0.46
+BuildRequires:  meson >= 0.48
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  pkgconfig(egl)

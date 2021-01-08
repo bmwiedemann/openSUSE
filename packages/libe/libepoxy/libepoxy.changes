@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 22 17:17:34 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.5.5:
+  + Remove Python 2 support.
+  + Remove Autotools support.
+  + Use EGL_NO_X11 to disable X11 headers.
+  + Use call convention for mock function.
+  + Return correct version of GLSL on GLES2.
+  + Rely on Meson's darwin_versions option.
+- Drop Lower-the-minimum-required-version-of-Meson.patch: New
+  minimum meson is 0.48.
+
+-------------------------------------------------------------------
 Sat Jan  4 17:31:21 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.5.4:
