@@ -1,5 +1,0 @@
-# using fdupes on include directories is just calling for troubles
-addFilter("files-duplicate .*")
-
-# library and development package names don't match
-addFilter("no-dependency-on .*")

@@ -1,8 +1,0 @@
-<package name="qt6-quickcontrols2" project="openSUSE:Factory">
-  <title>Qt6 QuickControls2 Libraries and plugins</title>
-  <description>The Qt6 QuickControls2 Libraries and plugins.
-
-</description>
-  <devel project="KDE:Qt:6.0" package="qt6-quickcontrols2"/>
-  <url>https://www.qt.io</url>
-</package>
