@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan  8 10:19:34 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- update to version 1.11.0
+  * sync with the main certbot package
+
+- update to version 1.10.1
+  * sync with the main certbot package
+
+- update to version 1.10.0
+  * Support for Python 3.9 was added to Certbot and all of its
+    components.
+
+-------------------------------------------------------------------
 Wed Oct  7 08:43:58 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 1.9.0
