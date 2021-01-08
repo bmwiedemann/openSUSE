@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Mon Sep  7 09:10:16 CEST 2020 - Jiri Suchomel <jsuchome@suse.com>
+
+- Added 0001-Hide-DB-credentials.patch:
+  - modify the log message from notary tool to make sure the DB URL
+  (incl. password) is not displayed
+  - based on https://github.com/goharbor/harbor/pull/9511
+
+-------------------------------------------------------------------
+Tue Sep 01 12:34:00 UTC 2020 - jsuchome@suse.com
+
+- initial release 
+

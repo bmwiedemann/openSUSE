@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d9c0885b32a1c07e814ab8fcd799975e</srcmd5>
+    <version>0.6.1</version>
+    <time>1610123927</time>
+    <user>dimstar_suse</user>
+    <comment>We're using it in openSUSE infra already, but it's not in any openSUSE distribution</comment>
+    <requestid>861610</requestid>
+  </revision>
+</revisionlist>
