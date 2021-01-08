@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan  8 07:22:07 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- fix %defattr preventing setting executable bits on imagick.so
+
+-------------------------------------------------------------------
 Tue May  7 06:28:00 UTC 2019 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - removed patch imagic-3.4.3-relax_test_150_to_follow_upstream_change.patch

@@ -74,4 +74,12 @@ Cleaned up changes</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>706072</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>32104cd1434ecfe3fa2b529a0f91ccf3</srcmd5>
+    <version>3.4.4</version>
+    <time>1610123879</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>861569</requestid>
+  </revision>
 </revisionlist>

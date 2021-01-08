@@ -1,7 +1,7 @@
 #
 # spec file for package php7-imagick
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -74,7 +74,7 @@ install --mode=0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/php7/conf.d/%{pkg_name
 rm -rf %{buildroot}/%{_includedir}/php7/ext/%{pkg_name}/
 
 %files
-%defattr(0644,root,root,-)
+%defattr(-,root,root,-)
 %{_libdir}/php7/extensions/%{pkg_name}.so
 %config(noreplace) %{_sysconfdir}/php7/conf.d/%{pkg_name}.ini
 %license LICENSE
