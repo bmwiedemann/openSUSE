@@ -293,10 +293,10 @@ BuildRequires:  arm-trusted-firmware-rk3328
 BuildRequires:  arm-trusted-firmware-rk3399
 %endif
 %if (0%{?is_a64} || 0%{?is_h5}) && %{with uboot_atf}
-BuildRequires:  arm-trusted-firmware-sun50ia64
+BuildRequires:  arm-trusted-firmware-sun50i_a64
 %endif
 %if 0%{?is_h6} && %{with uboot_atf}
-BuildRequires:  arm-trusted-firmware-sun50ih6
+BuildRequires:  arm-trusted-firmware-sun50i_h6
 %endif
 %if %{with uboot_atf}
 %if "%{name}" == "u-boot-rock64-rk3328" || "%{name}" == "u-boot-evb-rk3399" || "%{name}" == "u-boot-firefly-rk3399" || "%{name}" == "u-boot-rock960-rk3399" || "${name}" == "u-boot-rock-pi-4-rk3399" || "%{name}" == "u-boot-pinebook-pro-rk3399" || "%target" == "rockpro64-rk3399"
@@ -389,10 +389,10 @@ make %{?_smp_mflags} CFLAGS="%{optflags}" tools-only
 %else
 export SOURCE_DATE_EPOCH=$(date -d "$(head -n 2 %{_sourcedir}/u-boot.changes | tail -n 1 | cut -d- -f1 )" +%s)
 %if 0%{?is_a64} || 0%{?is_h5}
-export BL31=%{_datadir}/arm-trusted-firmware-sun50ia64/bl31.bin
+export BL31=%{_datadir}/arm-trusted-firmware-sun50i_a64/bl31.bin
 %endif
 %if 0%{?is_h6}
-export BL31=%{_datadir}/arm-trusted-firmware-sun50ih6/bl31.bin
+export BL31=%{_datadir}/arm-trusted-firmware-sun50i_h6/bl31.bin
 %endif
 %if "%{name}" == "u-boot-sifivefu540"
 export OPENSBI=%{_datadir}/opensbi/opensbi-sifive-fu540.bin

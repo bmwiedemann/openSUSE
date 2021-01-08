@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  7 19:53:08 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Rename sun50ia64 to sun50i_a64 and sun50ih6 to sun50i_h6 to
+  follow arm-trusted-firmware-* rename
+
+-------------------------------------------------------------------
 Mon Jan  4 09:39:59 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add rockpro64-rk3399

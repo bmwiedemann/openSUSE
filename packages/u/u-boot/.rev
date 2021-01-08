@@ -1619,4 +1619,12 @@ boundary checks.
     <comment></comment>
     <requestid>860122</requestid>
   </revision>
+  <revision rev="141" vrev="9">
+    <srcmd5>206b3cccebd65307f7abea9dca4858c0</srcmd5>
+    <version>2020.10</version>
+    <time>1610123832</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>861460</requestid>
+  </revision>
 </revisionlist>
