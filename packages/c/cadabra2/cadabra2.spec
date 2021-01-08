@@ -1,7 +1,7 @@
 #
 # spec file for package cadabra2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-# Tests fails due to the way PYTHONPATH is set up for the test-suite [gh#kpeeters/cadabra2#211, gh#kpeeters/cadabra2#212]
 %bcond_without tests
 Name:           cadabra2
-Version:        2.3.6.1
+Version:        2.3.6.2
 Release:        0
 Summary:        A computer algebra system for solving problems in field theory
 License:        GPL-3.0-or-later
