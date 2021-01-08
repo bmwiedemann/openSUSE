@@ -1,8 +1,0 @@
-<package name="qt6-quick3d" project="openSUSE:Factory">
-  <title>Qt6 Quick3D Libraries and utilities</title>
-  <description>The Qt6 Quick3D Libraries and plugins.
-
-</description>
-  <devel project="KDE:Qt:6.0" package="qt6-quick3d"/>
-  <url>https://www.qt.io</url>
-</package>
