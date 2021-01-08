@@ -1,9 +1,0 @@
-<package name="qt6-quicktimeline" project="openSUSE:Factory">
-  <title>Qt6 QuickTimeline plugin</title>
-  <description>The Qt Quick Timeline plugin provides QML types to use timelines and keyframes
-to animate Qt Quick user interfaces.
-
-</description>
-  <devel project="KDE:Qt:6.0" package="qt6-quicktimeline"/>
-  <url>https://www.qt.io</url>
-</package>
