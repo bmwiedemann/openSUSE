@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan  5 12:24:47 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-01-apps-update
+- Changes since 20.12.0:
+  * Revert merge request 14
+  * Make To-do List popup menu match other menus
+  * agendaviews: Display recurrence w/o main incidence
+  * incidencetreemodel: Improve debug ouput
+  * Fix display of multi-day events from non-local time zones (kde#429007)
+
+-------------------------------------------------------------------
 Sat Dec  5 23:15:28 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.0
