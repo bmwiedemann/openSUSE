@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Jan  8 01:53:45 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to v0.0.22
+Fixed
+  * (BUG) (Thanks to Matthew Evanson): EDID_cl::ParseEDID_CEA():
+    the number of included DTDs can be greater than the number of
+    mandatory *native* DTDs specified in
+    cea_hdr_t.info_blk.num_dtd. Those additional DTDs were silently
+    ignored in previous wxEDID versions. Additionally, the padding
+    area after last DTD is now checked (all bytes have to be
+    zeroed).
+  * Desription of cea_hdr_t.info_blk.num_dtd field: it should be
+    explicitly stated, that this is a number of *native* DTDs,
+    and not the total number of DTDs in the CEA block.
+  * wxEDID_App::CmdLineArgs(): using wxLogStderr for printing
+    messages to stderr.
+  * EDID_cl::ParseDetDtor(): error msg needs EDID block number,
+    passed by the caller.
+  * all references to GPLv3 replaced with GPLv3+, to match the
+    declarations in COPYING.
+  * makefile.am: strict control of what goes to the 'dist' target.
+  * don't distribute src/config.h -> this requires a workaround in
+    wxEDID_Main.h, i.e. defining dummy VERSION symbol when
+    rcd_autogen is running.
+  * (BUG) EDID_cl::VSD_ltncy(): unsupported IEEE-OUI codes: don't
+    overflow if the latency value is zero: mark the field as
+    unused. Added EF_FGR flags: editing the latency value removes
+    "unused" flag.
+  * (BUG) cea_vsd_cl::fields[] max latency value is 500ms, not 251=(500/2)+1.
+
+Changed
+  * wxEDID_Frame::SaveRep_SubGrps(): export offset values in both
+    decimal and hex format.
+  * single top-level makefile.am
+  * cea_vsd_cl::fields[]: Latency: Added info about 2ms granularity
+    of values.
+  * cea_vsd_cl: Updated group description (new IEEE-OUI codes).
+
+Added
+  * man/wxedid.1 manpage written by Felix Lechner.
+
+Updated
+  * rcode.h v1.1.0, rcd_autogen v2.1
+
+-------------------------------------------------------------------
 Tue Jul 14 20:11:09 UTC 2020 - Mia Herkt <mia@0x0.st>
 
 - Update to v0.0.21
