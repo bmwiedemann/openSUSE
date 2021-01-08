@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-nokogiri
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-nokogiri
-Version:        1.10.10
+Version:        1.11.0
 Release:        0
 %define mod_name nokogiri
 %define mod_full_name %{mod_name}-%{version}
@@ -38,7 +38,7 @@ BuildRequires:  libxml2-devel >= 2.6.21
 BuildRequires:  libxslt-devel
 # /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{rubydevel >= 2.3.0}
+BuildRequires:  %{rubydevel >= 2.5.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
@@ -47,15 +47,18 @@ URL:            https://nokogiri.org
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-nokogiri-rpmlintrc
 Source2:        gem2rpm.yml
-Summary:        Nokogiri (鋸) is an HTML, XML, SAX, and Reader parser
+Summary:        Nokogiri (鋸) makes it easy and painless to work with XML and HTML
 License:        MIT
 Group:          Development/Languages/Ruby
 PreReq:         update-alternatives
 
 %description
-Nokogiri (鋸) is an HTML, XML, SAX, and Reader parser.  Among
-Nokogiri's many features is the ability to search documents via XPath
-or CSS3 selectors.
+Nokogiri (鋸) makes it easy and painless to work with XML and HTML from Ruby.
+It provides a
+sensible, easy-to-understand API for reading, writing, modifying, and querying
+documents. It is
+fast and standards-compliant by relying on native parsers like libxml2 (C) and
+xerces (Java).
 
 %prep
 
