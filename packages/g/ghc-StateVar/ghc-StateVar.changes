@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 29 21:16:54 UTC 2020 - psimons@suse.com
+
+- Update StateVar to version 1.2.1.
+  1.2.1
+  -----
+  * Explicitly mark `Data.StateVar` as Safe (or Trustworthy for GHC before 7.10).
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

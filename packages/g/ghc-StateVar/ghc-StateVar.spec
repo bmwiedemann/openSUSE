@@ -18,7 +18,7 @@
 
 %global pkg_name StateVar
 Name:           ghc-%{pkg_name}
-Version:        1.2
+Version:        1.2.1
 Release:        0
 Summary:        State variables
 License:        BSD-3-Clause
