@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan  3 16:55:41 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Rename skip_s390x_tests.patch to fix_s390x_tests.patch (from the
+  upstream commit 4ce0b897e60a), which seems to fix the problem.
+
+-------------------------------------------------------------------
 Mon Dec 14 22:51:23 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add skip_s390x_tests.patch to skip failing tests on s390x

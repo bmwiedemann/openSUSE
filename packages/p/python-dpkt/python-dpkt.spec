@@ -1,7 +1,7 @@
 #
 # spec file for package python-dpkt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,9 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            https://github.com/kbandla/dpkt
 Source:         https://github.com/kbandla/dpkt/archive/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM skip_s390x_tests.patch gh#kbandla/dpkt#505 mcepl@suse.com
+# PATCH-FIX-UPSTREAM fix_s390x_tests.patch gh#kbandla/dpkt#505 mcepl@suse.com
 # Skip failing tests on s390x arch
-Patch0:         skip_s390x_tests.patch
+Patch0:         fix_s390x_tests.patch
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

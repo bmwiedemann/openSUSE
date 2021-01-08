@@ -58,4 +58,14 @@
     <comment>Cleanup (forwarded request 855899 from mcepl)</comment>
     <requestid>855900</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9f37a0d5c25b0be9d4a3043d2ae9c2cc</srcmd5>
+    <version>1.9.4</version>
+    <time>1610123517</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename skip_s390x_tests.patch to fix_s390x_tests.patch (from the
+  upstream commit 4ce0b897e60a), which seems to fix the problem.
+</comment>
+    <requestid>859976</requestid>
+  </revision>
 </revisionlist>
