@@ -19,7 +19,7 @@
 %global pkg_name hledger-lib
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.20.1
+Version:        1.20.2
 Release:        0
 Summary:        A reusable library providing the core functionality of hledger
 License:        GPL-3.0-or-later
@@ -49,7 +49,6 @@ BuildRequires:  ghc-hashtables-devel
 BuildRequires:  ghc-megaparsec-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-old-time-devel
-BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-parser-combinators-devel
 BuildRequires:  ghc-pretty-simple-devel
 BuildRequires:  ghc-regex-tdfa-devel
