@@ -1,7 +1,7 @@
 #
 # spec file for package gcovr
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,6 +33,7 @@ BuildRequires:  python3-setuptools
 # for %%{_bindir}/gcov
 Requires:       gcc
 Requires:       python3-Jinja2
+Requires:       python3-lxml
 BuildArch:      noarch
 # Only build the documentation on Tumbleweed, as
 # python3-sphinxcontrib-autoprogram has not yet landed in anything

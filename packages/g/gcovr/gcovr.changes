@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan  4 15:27:45 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- Add python3-lxml dependency (boo#1179867)
+
+-------------------------------------------------------------------
 Mon Feb  3 08:43:34 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 4.2
