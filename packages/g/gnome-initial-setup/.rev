@@ -56,4 +56,12 @@ Resub it :-)</comment>
     <comment>Update to 3.38.2 (forwarded request 850194 from dimstar)</comment>
     <requestid>851045</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>649fa9a0126e41eeaa739c9966c94b87</srcmd5>
+    <version>3.38.3</version>
+    <time>1610123870</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>861563</requestid>
+  </revision>
 </revisionlist>
