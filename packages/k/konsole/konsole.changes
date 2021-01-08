@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan  5 12:26:16 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-01-apps-update
+- Changes since 20.12.0:
+  * Correct columns size with highlightScrolledLines (kde#429600)
+  * Only link konsoleprofile to konsoleprivate (kde#430492)
+  * Revert 'Fix bold character color paint'
+- Dropped patches, now upstream:
+  * Only-link-konsoleprofile-to-konsoleprivate.patch
+
+-------------------------------------------------------------------
 Wed Dec 30 19:29:46 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add Only-link-konsoleprofile-to-konsoleprivate.patch to fix
@@ -91,7 +105,7 @@ Sun Aug  2 08:00:08 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
   * Adjust context markers
   * Add some context markers
   * kcfg use Bool, not bool
-  * Revert "Update kcfg URLS to https" 
+  * Revert "Update kcfg URLS to https"
   * Polish the highlightScrolledLines feature
 
 -------------------------------------------------------------------
