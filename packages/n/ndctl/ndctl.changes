@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  6 18:31:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 71.1:
+  * ndctl/dimm: Attempt an abort upon firmware-update-busy status
+  * ndctl/dimm: Fix submit_abort_firmware() 
+
+-------------------------------------------------------------------
 Thu Dec 31 14:00:54 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
 
 - Update to upstream v71 (jsc#SLE-14344, bsc#1170384).
