@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Jan  8 14:35:00 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use LMDB instead of BDB in preparation of obsoleting BDB
+
+-------------------------------------------------------------------
+Thu Jan  7 15:26:43 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add "SMTP_TLS_SECURITY_LEVEL" confguration variable
+
+-------------------------------------------------------------------
+Tue Jan  5 14:40:45 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add "NULLCLIENT" support for pure relayhosts 
+
+-------------------------------------------------------------------
+Tue Dec 22 07:46:18 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use mailLocalAddress (LDAP) for mail aliases, too.
+
+-------------------------------------------------------------------
+Mon Dec 21 11:57:21 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Rework container description
+- Fix virtual domain handling: don't use environment variable and
+  LDAP at the same time.
+
+-------------------------------------------------------------------
+Sun Dec 20 21:24:32 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add support for spamassassin
+
+-------------------------------------------------------------------
+Sun Dec 20 10:49:08 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Set local_header_rewrite_clients to static:all if domain
+  masquerading is requested (required for postfix >= 2.2)
+
+-------------------------------------------------------------------
+Fri Dec 18 21:12:37 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fix error caused by uninitialized DEBUG variable 
+
+-------------------------------------------------------------------
 Wed Nov 18 17:59:37 UTC 2020 - Thorsten Kukuk <kukuk@thkukuk.de>
 
 - Enhance documentation

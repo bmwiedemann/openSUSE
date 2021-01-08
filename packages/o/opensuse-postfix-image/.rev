@@ -39,4 +39,29 @@
     <comment>- Enhance documentation (forwarded request 849312 from kukuk)</comment>
     <requestid>849313</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>c91c123dca59878abecdd8a0799bd09d</srcmd5>
+    <version>1.0.0</version>
+    <time>1610123966</time>
+    <user>dimstar_suse</user>
+    <comment>- Use LMDB instead of BDB in preparation of obsoleting BDB
+
+- Add &quot;SMTP_TLS_SECURITY_LEVEL&quot; confguration variable
+
+- Add &quot;NULLCLIENT&quot; support for pure relayhosts 
+
+- Use mailLocalAddress (LDAP) for mail aliases, too.
+
+- Rework container description
+- Fix virtual domain handling: don't use environment variable and
+  LDAP at the same time.
+
+- Add support for spamassassin
+
+- Set local_header_rewrite_clients to static:all if domain
+  masquerading is requested (required for postfix &amp;gt;= 2.2)
+
+- Fix error caused by uninitialized DEBUG variable (forwarded request 861721 from kukuk)</comment>
+    <requestid>861722</requestid>
+  </revision>
 </revisionlist>

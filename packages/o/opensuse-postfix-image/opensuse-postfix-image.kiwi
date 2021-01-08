@@ -6,7 +6,7 @@
   <description type="system">
     <author>Thorsten Kukuk</author>
     <contact>kukuk@suse.com</contact>
-    <specification>openSUSE image containing postfix as mail server.</specification>
+    <specification>Postfix container as fast and secure mail server</specification>
   </description>
   <preferences>
     <type
@@ -32,7 +32,7 @@
         </volumes>
         <labels>
           <suse_label_helper:add_prefix prefix="org.opensuse.postfix">
-            <label name="org.opencontainers.image.title" value="openSUSE postfix container"/>
+            <label name="org.opencontainers.image.title" value="Postfix Mail Server"/>
             <label name="org.opencontainers.image.description" value="Image containing postfix mail daemon."/>
             <label name="org.opencontainers.image.version" value="%PKG_VERSION%-%RELEASE%"/>
             <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
@@ -40,7 +40,7 @@
             <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
           </suse_label_helper:add_prefix>
         </labels>
-        <history author="Thorsten Kukuk &lt;kukuk@suse.com&gt;">openSUSE postfix container</history>
+        <history author="Thorsten Kukuk &lt;kukuk@suse.com&gt;">Postfix container as fast and secure mail server.</history>
       </containerconfig>
     </type>
     <version>1.0.0</version>
@@ -54,12 +54,15 @@
     <package name="bash"/>
     <package name="postfix"/>
     <package name="postfix-ldap"/>
+    <package name="postfix-lmdb"/>
     <package name="mandoc"/>
     <package name="netcfg"/>
     <package name="cyrus-sasl"/>
     <package name="cyrus-sasl-plain"/>
     <package name="ca-certificates"/>
     <package name="ca-certificates-mozilla"/>
+    <package name="spamassassin-spamc"/>
+    <package name="spamass-milter"/>
     <package name="-busybox-findutils"/>
     <package name="-busybox-man"/>
     <package name="-busybox-sendmail"/>

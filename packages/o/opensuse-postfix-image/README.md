@@ -5,6 +5,7 @@
 - [Supported environment variables](#supported-environment-variables)
   - [Generic variables](#generic-variables)
   - [SMTP related variables](#smtp-related-variables)
+  - [Activate additional checks](#activate-additional-checks)
   - [Virtual mailbox related variables](#virtual-mailbox-related-variables)
   - [LDAP related variables](#ldap-related-variables)
 - [Data persistence volumes](#data-persistence-volumes)
@@ -43,7 +44,12 @@ In all examples, `podman` can be replaced directly with `docker`.
 - `INET_PROTOCOLS`	The network interface protocols used for connections. Valid values are "all", "ipv4", "ipv6" or "ipv4,ipv6". The default value is "ipv4".
 - `MASQUERADE_DOMAINS`	Comma separated list of domains that must have their subdomain structure stripped off.
 - `MYDESTINATION`	List of domains for which mails are delivered locally instead of forwarding to another machine.
+- `NULLCLIENT=[0|1]`	Don't accept any mails locally but relay them to a remote host. Ignored if `MYDESTINATION` is set. The default is `1`.
+- `SMTP_TLS_SECURITY_LEVEL`	SMTP TLS security level. The default is `may`.
 - `LMTP=host`           Host on which the lmtp service is running. This will disable the usage of the vmail user account.
+
+### Activate additional checks
+- `SPAMASSASSIN_HOST`	Host on which spamd is running. Enables Spam checking.
 
 ### Virtual mailbox related variables
 - `VIRTUAL_MBOX=[0|1]`	Create virtual mail boxes in /var/spool/vmail owned by user vmail.
@@ -78,8 +84,8 @@ directory. This makes sure, that the container is using the same UID/GID as
 the Container Host OS for the files and not regular users are owning this
 files and can read and modify them. The default UID/Gid is `5000`.
 
-There are two ways to provide the data vor virtual domains and users, via
-environment variables or via files.
+There are three ways to provide the data for virtual domains and users, via
+environment variables, files or LDAP.
 
 ### Environment Variables
 
@@ -146,6 +152,13 @@ The example call:
 ```sh
 podman run -d --rm --name postfix -p 25:25 -e VIRTUAL_MBOX=1 -e VMAIL_UID=5000 -e SERVER_HOSTNAME=smtp.example.com -e SMTP_RELAYHOST=relay.example.com -e SMTP_USERNAME=mailer -e SMTP_PASSWORD='XXX' -v "/srv/postfix/vmail:/var/spool/vmail" -v "/srv/postfix/etc/vhosts:/etc/postfix/vhosts:ro" -v "/srv/postfix/etc/vmaps:/etc/postfix/vmaps:ro" -v "/srv/postfix/etc/vquota:/etc/postfix/vquota:ro" registry.opensuse.org/opensuse/postfix:latest
 ```
+
+### LDAP
+
+With LDAP (use `VIRTUAL_MBOX=1` and `USE_LDAP=1`) the postfix schema is used: `maildrop` is the real email address, while `mailacceptinggeneralid` are aliases.
+If the `VIRTUAL_DOMAINS` environment variable is not set, the virtual domains are take from the email addresses used in `mailacceptinggeneralid`. In this case,
+the email domains of the aliases must be different then the one of `maildrop`. If the virtual domains are specified with `VIRTUAL_DOMAINS`, `mailacceptinggeneralid`
+are handled as normal mail aliases and the domain could be the same as for `maildrop`.
 
 ## Mail delivery via LMTP
 
