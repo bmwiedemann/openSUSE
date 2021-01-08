@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 11 14:45:35 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update 0001-Make-sure-boost-is-found-when-using-libkolabxml.patch
+  to make sure we only use CMake's FindBoost.cmake module. (boo#1180633)
+
+-------------------------------------------------------------------
 Thu May 14 14:27:49 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Disable mono bindings by default, broken with latest mono changes

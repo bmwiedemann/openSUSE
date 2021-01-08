@@ -1,4 +1,4 @@
-From 0e17f04ef1f00c14a5f33c898f7d848823b17a67 Mon Sep 17 00:00:00 2001
+From 2a9d235f0bc959822966bf5a1280f50b5a01fbce Mon Sep 17 00:00:00 2001
 From: Christophe Giboudeaux <christophe@krop.fr>
 Date: Tue, 17 Sep 2019 18:19:59 +0200
 Subject: [PATCH] Make sure boost is found when using libkolabxml
@@ -7,6 +7,11 @@ Boost is a public dependency, it must be found before using libkolabxml.
 
 In order to use find_dependency(), the minimum CMake version is raised to 3.0.
 Obsolete CMake checks were consequently removed.
+---
+ CMakeLists.txt                           | 22 ++++------------------
+ cmake/modules/LibkolabxmlConfig.cmake.in |  7 +++++++
+ tests/CMakeLists.txt                     |  4 ----
+ 3 files changed, 11 insertions(+), 22 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index b67f765..349aea6 100644
@@ -53,15 +58,18 @@ index b67f765..349aea6 100644
      message("Found boost in ${Boost_INCLUDE_DIRS}")
  endif (Boost_FOUND)
 diff --git a/cmake/modules/LibkolabxmlConfig.cmake.in b/cmake/modules/LibkolabxmlConfig.cmake.in
-index 8f04f36..6806e06 100644
+index 8f04f36..c7c1a62 100644
 --- a/cmake/modules/LibkolabxmlConfig.cmake.in
 +++ b/cmake/modules/LibkolabxmlConfig.cmake.in
-@@ -1,5 +1,9 @@
+@@ -1,5 +1,12 @@
  get_filename_component(Libkolabxml_CMAKE_DIR ${CMAKE_CURRENT_LIST_FILE} PATH) #get the directory where this *Config.cmake file is installed 
  
 +include(CMakeFindDependencyMacro)
 +
++# Only rely on FindBoost
++set(Boost_NO_BOOST_CMAKE ON)
 +find_dependency(Boost "@Boost_MAJOR_VERSION@.@Boost_MINOR_VERSION@" MODULE COMPONENTS thread system)
++unset(Boost_NO_BOOST_CMAKE)
 +
  # set the version
  set(Libkolabxml_VERSION_MAJOR @Libkolabxml_VERSION_MAJOR@)
@@ -81,3 +89,6 @@ index 9abacdf..837f755 100644
    if (Qt5_POSITION_INDEPENDENT_CODE)
      set(CMAKE_POSITION_INDEPENDENT_CODE ON)
    endif()
+-- 
+2.29.2
+

@@ -289,4 +289,13 @@ Wed Nov 13 12:31:03 UTC 2013 - aj@ajaissle.de
 - Remove more obsolete conditions.</comment>
     <requestid>805615</requestid>
   </revision>
+  <revision rev="33" vrev="12">
+    <srcmd5>b1b053f2a7353955b095bf7eb337f19c</srcmd5>
+    <version>1.1.6</version>
+    <time>1610123603</time>
+    <user>dimstar_suse</user>
+    <comment>- Update 0001-Make-sure-boost-is-found-when-using-libkolabxml.patch
+  to make sure we only use CMake's FindBoost.cmake module. (boo#1180633)</comment>
+    <requestid>860979</requestid>
+  </revision>
 </revisionlist>
