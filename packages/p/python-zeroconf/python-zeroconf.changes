@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan  7 13:25:31 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- update to 0.28.8:
+  * Fixed the packet generation when multiple packets are
+  necessary, previously invalid packets were generated sometimes.
+  Patch thanks to J. Nick Koston.
+
+-------------------------------------------------------------------
 Sat Dec 19 10:34:17 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.28.7:
