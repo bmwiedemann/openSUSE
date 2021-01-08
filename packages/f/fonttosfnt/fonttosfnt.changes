@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 22 08:40:19 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.1:
+  * Resolves issues found by Oracle Parfait 4.0 static analyser:
+  * Fall back to using FONT property as family name
+  * fix sign of calculated descent
+  * handle empty foundry encoded as NULL
+
+-------------------------------------------------------------------
 Wed Oct 21 09:17:35 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.2.0
