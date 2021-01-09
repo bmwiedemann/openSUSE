@@ -513,7 +513,6 @@
     <package name="gsettings-desktop-schemas-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="gspell-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gstreamer" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="gstreamer-devtools" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gstreamer-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="gstreamer-libnice" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gstreamer-plugin-cluttergst3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -655,6 +654,7 @@
     <package name="icewm-lite" supportstatus="unsupported"/> <!-- reason: dvd:icewm-lite -->
     <package name="icewm-theme-branding" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-basic_desktop -->
     <package name="iftop" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
+    <package name="imlib2-loaders" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-basic_desktop -->
     <package name="indic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:indic-fonts -->
     <package name="info" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="info-std" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -934,6 +934,7 @@
     <package name="libIex-2_5-25" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libIlmImf-2_5-25" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libIlmThread-2_5-25" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libImlib2-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-basic_desktop -->
     <package name="libJudy1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKEduVocDocument5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="libKF5Activities5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1285,7 +1286,7 @@
     <package name="libdmapsharing-4_0-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdmtx0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdmx1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libdns1608" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libdns1610" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdouble-conversion3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libdrm-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libdrm2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -1529,6 +1530,7 @@
     <package name="libical3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libicu67" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libicu67-ledata" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libid3tag0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-basic_desktop -->
     <package name="libidn12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libidn2-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libidn2-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -1549,11 +1551,11 @@
     <package name="libiptcdata-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libiptcdata0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libirs1601" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libisc1607" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libisc1608" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libisccc1600" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libisccfg1601" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libisccfg1602" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libiscsi9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
-    <package name="libisl22" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libisl23" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libisoburn1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libisofs6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libiterm1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -1697,7 +1699,7 @@
     <package name="libnma0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnotify4" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libnpth0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libns1605" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libns1606" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnscd1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libnsl2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libnss_nis2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -2612,20 +2614,16 @@
     <package name="phonon4qt5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="phononsettings" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="phononsettings-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="php7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-ctype" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-dom" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-gd" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="php7-gettext" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="php7-iconv" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-json" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-mbstring" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="php7-mysql" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="php7-pdo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-sqlite" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-tokenizer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-xmlreader" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-xmlwriter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
+    <package name="php7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="php7-ctype" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="php7-dom" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="php7-iconv" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="php7-json" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="php7-pdo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="php7-sqlite" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="php7-tokenizer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="php7-xmlreader" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="php7-xmlwriter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="pia" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pico" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pidgin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2698,6 +2696,7 @@
     <package name="python-gtk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python-rpm-generators" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python-rpm-macros" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="python-xml" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python2-pycairo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-Automat" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python3-Babel" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
@@ -3427,26 +3426,51 @@
     <package name="ruby2.7-rubygem-yast-rake" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-zeitwerk" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-actionpack-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-actionview-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-activemodel-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-activesupport-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-bindex" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-bootsnap" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-builder" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-byebug" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-concurrent-ruby" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-crass" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-erubi" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-ffi" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-i18n" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-jbuilder" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-listen-3_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-loofah" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-method_source" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-msgpack" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-nio4r" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-nokogiri" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-puma" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-rack" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-rack-proxy" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-rack-test-0_6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-rails-dom-testing" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-rails-html-sanitizer" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-railties-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-rb-fsevent" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-rb-inotify" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-sass-rails" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-sassc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-sassc-rails" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-spring" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-spring-watcher-listen" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-sprockets" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-sprockets-rails" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-sqlite3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-thor" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-thread_safe" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-tilt" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-turbolinks" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-turbolinks-source" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-tzinfo-1.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-web-console" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby3.0-rubygem-webpacker" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-zeitwerk" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rubygem-passenger" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rubygem-passenger-apache2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3998,26 +4022,26 @@
     <package name="elinks" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
     <package name="nodejs10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="npm10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <!-- patterns-gnome-gnome uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
-    <!-- patterns-gnome-gnome_basis uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
-    <!-- patterns-gnome-gnome_imaging uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
-    <!-- patterns-gnome-gnome_office uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
-    <!-- patterns-gnome-gnome_utilities uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
-    <!-- patterns-kde-kde uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
-    <!-- patterns-kde-kde_imaging uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
-    <!-- patterns-kde-kde_plasma uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
-    <!-- patterns-media-rest_dvd uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
-    <!-- patterns-xfce-xfce uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
-    <!-- patterns-xfce-xfce_basis uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
-    <!-- patterns-xfce-xfce_laptop uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
-    <!-- patterns-xfce-xfce_office uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
-    <!-- pcsc-acr38 uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
-    <!-- pcsc-asedriveiiie-usb uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
-    <!-- pcsc-asekey uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
-    <!-- pcsc-cyberjack uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
-    <!-- pcsc-gempc uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
-    <!-- pcsc-towitoko uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
-    <!-- rng-tools uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-3.1.i586-->
+    <!-- patterns-gnome-gnome uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
+    <!-- patterns-gnome-gnome_basis uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.1-1.1.i586-->
+    <!-- patterns-gnome-gnome_imaging uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.1-1.1.i586-->
+    <!-- patterns-gnome-gnome_office uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.1-1.1.i586-->
+    <!-- patterns-gnome-gnome_utilities uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.1-1.1.i586-->
+    <!-- patterns-kde-kde uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
+    <!-- patterns-kde-kde_imaging uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
+    <!-- patterns-kde-kde_plasma uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
+    <!-- patterns-media-rest_dvd uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
+    <!-- patterns-xfce-xfce uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
+    <!-- patterns-xfce-xfce_basis uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
+    <!-- patterns-xfce-xfce_laptop uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
+    <!-- patterns-xfce-xfce_office uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
+    <!-- pcsc-acr38 uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
+    <!-- pcsc-asedriveiiie-usb uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
+    <!-- pcsc-asekey uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
+    <!-- pcsc-cyberjack uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
+    <!-- pcsc-gempc uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
+    <!-- pcsc-towitoko uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
+    <!-- rng-tools uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
   </packagelist>
 </group>
 <group name="dvd.x86_64">
@@ -4506,7 +4530,6 @@
     <package name="ksystemlog" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ksystemlog-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ktnef" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="ktnef-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ktouch" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="ktouch-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kwalletmanager5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -4792,7 +4815,6 @@
     <package name="libhivex0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libhogweed6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libibus-1_0-5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libid3tag0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libidn2-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libiso9660-11" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libjansson4-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5153,6 +5175,10 @@
     <package name="pcsc-lite" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="pcsc-towitoko" supportstatus="unsupported"/> <!-- reason: dvd:pcsc-towitoko -->
     <package name="perl-Data-Validate-IP" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="php7-gd" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="php7-gettext" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="php7-mbstring" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="php7-mysql" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pim-data-exporter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="pim-data-exporter-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="pim-sieve-editor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
