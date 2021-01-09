@@ -8386,7 +8386,7 @@ unsorted:
   - ktimetracker-lang 
   - ktnef: [i586] 
   - ktnef-devel 
-  - ktnef-lang 
+  - ktnef-lang: [i586] 
   - ktoblzcheck 
   - ktoblzcheck-devel 
   - ktorrent 
@@ -11927,7 +11927,7 @@ unsorted:
   - libknet1-plugins-all 
   - libkokkos3: [x86_64] 
   - libkolabxml-devel 
-  - libkolabxml1 
+  - libkolabxml1: [i586] 
   - libkomparediff2-devel 
   - libkonkretcmpi0 
   - libkpathsea6: [i586] 
@@ -14923,7 +14923,7 @@ unsorted:
   - libxcrypt-devel-static 
   - libxdg-basedir-devel 
   - libxdg-basedir1 
-  - libxerces-c-3_2 
+  - libxerces-c-3_2: [i586] 
   - libxerces-c-3_2-32bit: [x86_64] 
   - libxerces-c-devel 
   - libxfce4panel-1_0-4: [i586] 
