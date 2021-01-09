@@ -1390,6 +1390,7 @@
       <repopackage name="ktimer"/>
       <repopackage name="ktimer-lang"/>
       <repopackage name="ktnef" arch="x86_64"/>
+      <repopackage name="ktnef-lang" arch="x86_64"/>
       <repopackage name="ktouch" arch="x86_64"/>
       <repopackage name="ktouch-lang" arch="x86_64"/>
       <repopackage name="kturtle"/>
@@ -2247,6 +2248,7 @@
       <repopackage name="libkmahjongg"/>
       <repopackage name="libkmahjongg-lang"/>
       <repopackage name="libkmod2"/>
+      <repopackage name="libkolabxml1" arch="x86_64"/>
       <repopackage name="libkomparediff2-5"/>
       <repopackage name="libkomparediff2-lang"/>
       <repopackage name="libkpathsea6" arch="x86_64"/>
@@ -3097,6 +3099,7 @@
       <repopackage name="libXdamage1-32bit" arch="x86_64"/>
       <repopackage name="libXdmcp-devel"/>
       <repopackage name="libXdmcp6"/>
+      <repopackage name="libxerces-c-3_2" arch="x86_64"/>
       <repopackage name="libXext-devel"/>
       <repopackage name="libXext6"/>
       <repopackage name="libXext6-32bit" arch="x86_64"/>
