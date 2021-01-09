@@ -6287,6 +6287,7 @@ unsorted:
   - gstreamer-32bit: [x86_64] 
   - gstreamer-devel 
   - gstreamer-devel-32bit: [x86_64] 
+  - gstreamer-devtools 
   - gstreamer-devtools-devel 
   - gstreamer-doc 
   - gstreamer-editing-services 
@@ -7024,7 +7025,6 @@ unsorted:
   - imlib2 
   - imlib2-devel 
   - imlib2-filters 
-  - imlib2-loaders 
   - imobiledevice-tools 
   - import-properties-plugin 
   - impressive 
@@ -7920,6 +7920,7 @@ unsorted:
   - kdialog-lang: [i586] 
   - kdiff3 
   - kdiff3-lang 
+  - kdiskmark 
   - kdnssd 
   - kdnssd-framework-devel 
   - kdnssd-framework-devel-32bit: [x86_64] 
@@ -8385,7 +8386,7 @@ unsorted:
   - ktimetracker-lang 
   - ktnef: [i586] 
   - ktnef-devel 
-  - ktnef-lang: [i586] 
+  - ktnef-lang 
   - ktoblzcheck 
   - ktoblzcheck-devel 
   - ktorrent 
@@ -8910,7 +8911,6 @@ unsorted:
   - libIlmThread-2_5-25-32bit: [x86_64] 
   - libImath-2_5-25 
   - libImath-2_5-25-32bit: [x86_64] 
-  - libImlib2-1 
   - libIrrlicht1_8 
   - libKChart2: [i586] 
   - libKDb3-4 
@@ -9367,16 +9367,9 @@ unsorted:
   - libQt6Qml6 
   - libQt6QmlModels6 
   - libQt6QmlWorkerScript6 
-  - libQt6Quick3D6 
-  - libQt6Quick3DAssetImport6 
-  - libQt6Quick3DRuntimeRender6 
-  - libQt6Quick3DUtils6 
   - libQt6Quick6 
-  - libQt6QuickControls2-6 
-  - libQt6QuickControls2Impl6 
   - libQt6QuickParticles6 
   - libQt6QuickShapes6 
-  - libQt6QuickTemplates2-6 
   - libQt6QuickTest6 
   - libQt6QuickWidgets6 
   - libQt6ShaderTools6 
@@ -9385,8 +9378,6 @@ unsorted:
   - libQt6SvgWidgets6 
   - libQt6Test6 
   - libQt6UiTools6 
-  - libQt6WaylandClient6 
-  - libQt6WaylandCompositor6 
   - libQt6Widgets6 
   - libQt6Xml6 
   - libQtAV1 
@@ -10584,7 +10575,7 @@ unsorted:
   - libdnf-devel 
   - libdnf2 
   - libdnnl1: [x86_64] 
-  - libdns1608-32bit: [x86_64] 
+  - libdns1610-32bit: [x86_64] 
   - libdns_sd 
   - libdns_sd-32bit: [x86_64] 
   - libdolphinvcs5: [i586] 
@@ -11083,7 +11074,7 @@ unsorted:
   - libgeners0 
   - libgensio0 
   - libgeocode-glib0-32bit: [x86_64] 
-  - libgeos-3_8_1 
+  - libgeos-3_9_0 
   - libgeos_c1 
   - libgeotiff5 
   - libgepub-0_6-0 
@@ -11668,7 +11659,6 @@ unsorted:
   - libicu67-32bit: [x86_64] 
   - libicu67-bedata 
   - libid3tag-devel 
-  - libid3tag0: [i586] 
   - libid3tag0-32bit: [x86_64] 
   - libidl-devel 
   - libidn-devel 
@@ -11748,15 +11738,15 @@ unsorted:
   - libirrecord0 
   - libirs-devel 
   - libirs1601-32bit: [x86_64] 
-  - libisc1607-32bit: [x86_64] 
+  - libisc1608-32bit: [x86_64] 
   - libisccc1600-32bit: [x86_64] 
-  - libisccfg1601-32bit: [x86_64] 
+  - libisccfg1602-32bit: [x86_64] 
   - libiscsi-devel 
   - libiscsi-test 
   - libiscsi-utils 
   - libisds-devel 
   - libisds5 
-  - libisl22-32bit: [x86_64] 
+  - libisl23-32bit: [x86_64] 
   - libiso9660-11: [i586] 
   - libiso9660-11-32bit: [x86_64] 
   - libisoburn-devel 
@@ -12601,7 +12591,7 @@ unsorted:
   - libnova-devel 
   - libnpupnp-devel 
   - libnpupnp4 
-  - libns1605-32bit: [x86_64] 
+  - libns1606-32bit: [x86_64] 
   - libnscd-devel 
   - libnsl-devel 
   - libnss_slurm2: [x86_64] 
@@ -17384,6 +17374,7 @@ unsorted:
   - normaliz-devel 
   - noson-app 
   - noson-devel 
+  - notary 
   - notcurses++-devel 
   - notcurses-demos 
   - notcurses-devel 
@@ -20346,6 +20337,8 @@ unsorted:
   - php7-fileinfo 
   - php7-fpm 
   - php7-ftp 
+  - php7-gd: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - php7-gettext: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - php7-gmagick 
   - php7-gmp 
   - php7-ice 
@@ -20354,7 +20347,9 @@ unsorted:
   - php7-ldap 
   - php7-lzf 
   - php7-maxminddb 
+  - php7-mbstring: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - php7-memcached 
+  - php7-mysql: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - php7-odbc 
   - php7-opcache 
   - php7-openssl 
@@ -21348,7 +21343,6 @@ unsorted:
   - python-translationstring-doc 
   - python-typeshed 
   - python-xcaplib-bash-completion 
-  - python-xml 
   - python-zope.deprecation-doc 
   - python-zope.event-doc 
   - python-zope.hookable-doc 
@@ -24849,37 +24843,12 @@ unsorted:
   - qt6-qt5compat-private-devel 
   - qt6-quick-devel 
   - qt6-quick-private-devel 
-  - qt6-quick3d 
-  - qt6-quick3d-devel 
-  - qt6-quick3d-docs-html 
-  - qt6-quick3d-docs-qch 
-  - qt6-quick3d-examples 
-  - qt6-quick3d-private-devel 
-  - qt6-quick3dassetimport-devel 
-  - qt6-quick3dassetimport-private-devel 
-  - qt6-quick3druntimerender-devel 
-  - qt6-quick3druntimerender-private-devel 
-  - qt6-quick3dutils-devel 
-  - qt6-quick3dutils-private-devel 
-  - qt6-quickcontrols2 
-  - qt6-quickcontrols2-devel 
-  - qt6-quickcontrols2-docs-html 
-  - qt6-quickcontrols2-docs-qch 
-  - qt6-quickcontrols2-examples 
-  - qt6-quickcontrols2-private-devel 
-  - qt6-quickcontrols2impl-devel 
-  - qt6-quickcontrols2impl-private-devel 
   - qt6-quickparticles-devel 
   - qt6-quickparticles-private-devel 
   - qt6-quickshapes-devel 
   - qt6-quickshapes-private-devel 
-  - qt6-quicktemplates2-devel 
-  - qt6-quicktemplates2-private-devel 
   - qt6-quicktest-devel 
   - qt6-quicktest-private-devel 
-  - qt6-quicktimeline 
-  - qt6-quicktimeline-docs-html 
-  - qt6-quicktimeline-docs-qch 
   - qt6-quickwidgets-devel 
   - qt6-quickwidgets-private-devel 
   - qt6-shadertools 
@@ -24915,16 +24884,6 @@ unsorted:
   - qt6-translations 
   - qt6-uitools-devel 
   - qt6-uitools-private-devel 
-  - qt6-wayland 
-  - qt6-wayland-devel 
-  - qt6-wayland-docs-html 
-  - qt6-wayland-docs-qch 
-  - qt6-wayland-examples 
-  - qt6-wayland-private-devel 
-  - qt6-waylandclient-devel 
-  - qt6-waylandclient-private-devel 
-  - qt6-waylandcompositor-devel 
-  - qt6-waylandcompositor-private-devel 
   - qt6-widgets-devel 
   - qt6-widgets-private-devel 
   - qt6-xml-devel 
@@ -25325,7 +25284,6 @@ unsorted:
   - ruby-bundled-gems-rpmhelper 
   - ruby-common-rails 
   - ruby-devel 
-  - ruby-geos 
   - ruby-libprelude 
   - ruby-marisa 
   - ruby-obexftp 
@@ -26105,13 +26063,11 @@ unsorted:
   - ruby3.0-rubygem-actionmailer-doc-5.2 
   - ruby3.0-rubygem-actionmailer-doc-6.0 
   - ruby3.0-rubygem-actionpack-5.2 
-  - ruby3.0-rubygem-actionpack-6.0 
   - ruby3.0-rubygem-actionpack-doc-5.2 
   - ruby3.0-rubygem-actionpack-doc-6.0 
   - ruby3.0-rubygem-actiontext-6.0 
   - ruby3.0-rubygem-actiontext-doc-6.0 
   - ruby3.0-rubygem-actionview-5.2 
-  - ruby3.0-rubygem-actionview-6.0 
   - ruby3.0-rubygem-actionview-doc-5.2 
   - ruby3.0-rubygem-actionview-doc-6.0 
   - ruby3.0-rubygem-activejob-5.2 
@@ -26119,7 +26075,6 @@ unsorted:
   - ruby3.0-rubygem-activejob-doc-5.2 
   - ruby3.0-rubygem-activejob-doc-6.0 
   - ruby3.0-rubygem-activemodel-5.2 
-  - ruby3.0-rubygem-activemodel-6.0 
   - ruby3.0-rubygem-activemodel-doc-5.2 
   - ruby3.0-rubygem-activemodel-doc-6.0 
   - ruby3.0-rubygem-activerecord-5.2 
@@ -26200,7 +26155,6 @@ unsorted:
   - ruby3.0-rubygem-bindata 
   - ruby3.0-rubygem-bindata-doc 
   - ruby3.0-rubygem-bindata-testsuite 
-  - ruby3.0-rubygem-bindex 
   - ruby3.0-rubygem-bindex-doc 
   - ruby3.0-rubygem-bindex-testsuite 
   - ruby3.0-rubygem-binding_of_caller 
@@ -26219,7 +26173,6 @@ unsorted:
   - ruby3.0-rubygem-buff-ruby_engine 
   - ruby3.0-rubygem-buff-ruby_engine-doc 
   - ruby3.0-rubygem-buff-ruby_engine-testsuite 
-  - ruby3.0-rubygem-builder 
   - ruby3.0-rubygem-builder-doc 
   - ruby3.0-rubygem-builder-testsuite 
   - ruby3.0-rubygem-bundler 
@@ -26306,7 +26259,6 @@ unsorted:
   - ruby3.0-rubygem-concurrent-ruby-doc 
   - ruby3.0-rubygem-crack 
   - ruby3.0-rubygem-crack-doc 
-  - ruby3.0-rubygem-crass 
   - ruby3.0-rubygem-crass-doc 
   - ruby3.0-rubygem-css_parser 
   - ruby3.0-rubygem-css_parser-doc 
@@ -26378,7 +26330,6 @@ unsorted:
   - ruby3.0-rubygem-equalizer 
   - ruby3.0-rubygem-equalizer-doc 
   - ruby3.0-rubygem-equalizer-testsuite 
-  - ruby3.0-rubygem-erubi 
   - ruby3.0-rubygem-erubi-doc 
   - ruby3.0-rubygem-erubis 
   - ruby3.0-rubygem-erubis-2_6 
@@ -26640,7 +26591,6 @@ unsorted:
   - ruby3.0-rubygem-logging-testsuite 
   - ruby3.0-rubygem-lolcat 
   - ruby3.0-rubygem-lolcat-doc 
-  - ruby3.0-rubygem-loofah 
   - ruby3.0-rubygem-loofah-doc 
   - ruby3.0-rubygem-mail 
   - ruby3.0-rubygem-mail-2_5 
@@ -26654,7 +26604,6 @@ unsorted:
   - ruby3.0-rubygem-metaclass 
   - ruby3.0-rubygem-metaclass-doc 
   - ruby3.0-rubygem-metaclass-testsuite 
-  - ruby3.0-rubygem-method_source 
   - ruby3.0-rubygem-method_source-doc 
   - ruby3.0-rubygem-method_source-testsuite 
   - ruby3.0-rubygem-micromachine 
@@ -26759,6 +26708,7 @@ unsorted:
   - ruby3.0-rubygem-netrc-testsuite 
   - ruby3.0-rubygem-nio4r-doc 
   - ruby3.0-rubygem-nio4r-testsuite 
+  - ruby3.0-rubygem-nokogiri-doc 
   - ruby3.0-rubygem-nori 
   - ruby3.0-rubygem-nori-doc 
   - ruby3.0-rubygem-nori-testsuite 
@@ -26852,7 +26802,6 @@ unsorted:
   - ruby3.0-rubygem-pundit 
   - ruby3.0-rubygem-pundit-doc 
   - ruby3.0-rubygem-pundit-testsuite 
-  - ruby3.0-rubygem-rack 
   - ruby3.0-rubygem-rack-1_3 
   - ruby3.0-rubygem-rack-1_4 
   - ruby3.0-rubygem-rack-1_6 
@@ -26873,12 +26822,10 @@ unsorted:
   - ruby3.0-rubygem-rack-oauth2-testsuite 
   - ruby3.0-rubygem-rack-protection 
   - ruby3.0-rubygem-rack-protection-doc 
-  - ruby3.0-rubygem-rack-proxy 
   - ruby3.0-rubygem-rack-proxy-doc 
   - ruby3.0-rubygem-rack-proxy-testsuite 
   - ruby3.0-rubygem-rack-ssl-1_3 
   - ruby3.0-rubygem-rack-ssl-doc-1_3 
-  - ruby3.0-rubygem-rack-test-0_6 
   - ruby3.0-rubygem-rack-test-doc-0_6 
   - ruby3.0-rubygem-rack-test-testsuite-0_6 
   - ruby3.0-rubygem-rack-testsuite-1_3 
@@ -26892,10 +26839,8 @@ unsorted:
   - ruby3.0-rubygem-rails-deprecated_sanitizer-testsuite 
   - ruby3.0-rubygem-rails-doc-5.2 
   - ruby3.0-rubygem-rails-doc-6.0 
-  - ruby3.0-rubygem-rails-dom-testing 
   - ruby3.0-rubygem-rails-dom-testing-doc 
   - ruby3.0-rubygem-rails-dom-testing-testsuite 
-  - ruby3.0-rubygem-rails-html-sanitizer 
   - ruby3.0-rubygem-rails-html-sanitizer-doc 
   - ruby3.0-rubygem-rails-html-sanitizer-testsuite 
   - ruby3.0-rubygem-rails-i18n 
@@ -26904,7 +26849,6 @@ unsorted:
   - ruby3.0-rubygem-rails_stdout_logging-doc 
   - ruby3.0-rubygem-rails_stdout_logging-testsuite 
   - ruby3.0-rubygem-railties-5.2 
-  - ruby3.0-rubygem-railties-6.0 
   - ruby3.0-rubygem-railties-doc-5.2 
   - ruby3.0-rubygem-railties-doc-6.0 
   - ruby3.0-rubygem-rainbow 
@@ -27030,15 +26974,12 @@ unsorted:
   - ruby3.0-rubygem-sass-doc 
   - ruby3.0-rubygem-sass-listen 
   - ruby3.0-rubygem-sass-listen-doc 
-  - ruby3.0-rubygem-sass-rails 
   - ruby3.0-rubygem-sass-rails-5.1 
   - ruby3.0-rubygem-sass-rails-doc 
   - ruby3.0-rubygem-sass-rails-doc-5.1 
-  - ruby3.0-rubygem-sassc 
   - ruby3.0-rubygem-sassc-2.2 
   - ruby3.0-rubygem-sassc-doc 
   - ruby3.0-rubygem-sassc-doc-2.2 
-  - ruby3.0-rubygem-sassc-rails 
   - ruby3.0-rubygem-sassc-rails-doc 
   - ruby3.0-rubygem-sassc-rails-testsuite 
   - ruby3.0-rubygem-sassc-testsuite 
@@ -27083,7 +27024,6 @@ unsorted:
   - ruby3.0-rubygem-spring-doc 
   - ruby3.0-rubygem-spring-watcher-listen-doc 
   - ruby3.0-rubygem-spring-watcher-listen-testsuite 
-  - ruby3.0-rubygem-sprockets 
   - ruby3.0-rubygem-sprockets-2_1 
   - ruby3.0-rubygem-sprockets-2_2 
   - ruby3.0-rubygem-sprockets-3.7 
@@ -27094,7 +27034,6 @@ unsorted:
   - ruby3.0-rubygem-sprockets-helpers 
   - ruby3.0-rubygem-sprockets-helpers-doc 
   - ruby3.0-rubygem-sprockets-helpers-testsuite 
-  - ruby3.0-rubygem-sprockets-rails 
   - ruby3.0-rubygem-sprockets-rails-doc 
   - ruby3.0-rubygem-sqlite3-doc 
   - ruby3.0-rubygem-sqlite3-testsuite 
@@ -27122,13 +27061,11 @@ unsorted:
   - ruby3.0-rubygem-text-hyphen-doc 
   - ruby3.0-rubygem-text-hyphen-testsuite 
   - ruby3.0-rubygem-text-testsuite 
-  - ruby3.0-rubygem-thor 
   - ruby3.0-rubygem-thor-0_19 
   - ruby3.0-rubygem-thor-doc 
   - ruby3.0-rubygem-thor-doc-0_19 
   - ruby3.0-rubygem-thread_safe-doc 
   - ruby3.0-rubygem-thread_safe-testsuite 
-  - ruby3.0-rubygem-tilt 
   - ruby3.0-rubygem-tilt-1_1 
   - ruby3.0-rubygem-tilt-1_4 
   - ruby3.0-rubygem-tilt-doc 
@@ -27191,7 +27128,6 @@ unsorted:
   - ruby3.0-rubygem-virtus-testsuite 
   - ruby3.0-rubygem-warden 
   - ruby3.0-rubygem-warden-doc 
-  - ruby3.0-rubygem-web-console 
   - ruby3.0-rubygem-web-console-2 
   - ruby3.0-rubygem-web-console-doc 
   - ruby3.0-rubygem-web-console-doc-2 
@@ -27204,7 +27140,6 @@ unsorted:
   - ruby3.0-rubygem-webmock-doc-2_3 
   - ruby3.0-rubygem-webmock-testsuite-1_2 
   - ruby3.0-rubygem-webmock-testsuite-2_3 
-  - ruby3.0-rubygem-webpacker 
   - ruby3.0-rubygem-webpacker-doc 
   - ruby3.0-rubygem-webpacker-testsuite 
   - ruby3.0-rubygem-websocket 
