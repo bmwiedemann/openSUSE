@@ -1,7 +1,7 @@
 #
 # spec file for package soundconverter
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,29 @@
 
 
 %global __requires_exclude typelib\\(GConf\\)|typelib\\(Unity\\)
+%define skip_python2 1
 Name:           soundconverter
-Version:        3.0.2
+Version:        4.0.0
 Release:        0
 Summary:        Sound Converter Application for the GNOME Desktop
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            https://soundconverter.org
-Source0:        https://launchpad.net/soundconverter/trunk/%{version}/+download/%{name}-%{version}.tar.xz
+Source0:        https://launchpad.net/soundconverter/trunk/%{version}/+download/%{name}-%{version}.tar.gz
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3
+BuildRequires:  python3-distutils-extra
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
+BuildRequires:  python3-pytest
 BuildRequires:  typelib(Gst) = 1.0
+BuildRequires:  typelib(GstPbutils) = 1.0
 BuildRequires:  typelib(Gtk) = 3.0
 Requires:       gstreamer
 Requires:       gstreamer-plugins-base
@@ -57,28 +63,42 @@ to WAV, FLAC, MP3, AAC, and Ogg Vorbis, also with the help of GStreamer.
 %autosetup -p1
 
 %build
-%configure
-%make_build
+%python_build
 
 %install
-%make_install
-chmod a+x %{buildroot}%{_libdir}/%{name}/python/%{name}/*py
+%python_install
 
+mkdir -p %{buildroot}/usr/share/locale
+mv build/mo/* %{buildroot}/usr/share/locale/
 %find_lang %{name}
+
+desktop-file-install \
+  --dir %{buildroot}%{_datadir}/applications \
+  --add-category X-OutputGeneration \
+  --delete-original \
+  build/share/applications/%{name}.desktop
+
+rm -f %{buildroot}%{_datadir}/glib-2.0/schemas/gschemas.compiled
+rm -rf %{buildroot}/usr/share/doc/soundconverter
+
 %fdupes %{buildroot}%{_prefix}
+
+%check
+#%%pytest tests
 
 %files
 %license COPYING
-%doc ChangeLog README
+%doc CHANGELOG README.md NEWS
 %{_bindir}/%{name}
-%{_libdir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/pixmaps/*.png
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/%{name}.appdata.xml
-%{_mandir}/man1/%{name}.1%{?ext_man}
 %{_datadir}/glib-2.0/schemas/org.soundconverter.gschema.xml
+%{python3_sitelib}/%{name}
+%{python3_sitelib}/%{name}-*.egg-info
 
 %files lang -f %{name}.lang
 
