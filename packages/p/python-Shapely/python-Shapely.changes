@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan  9 20:58:53 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Add Shapely-fix-svg-collection-pr1042.patch
+  gh#Toblerity/Shapely#1042 to fix failing test due to newer
+  matplotlib version (and GEOS?)
+
+-------------------------------------------------------------------
 Sun Jan  3 18:57:57 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Skip Python2 build. It is not supported by upstream anymore and

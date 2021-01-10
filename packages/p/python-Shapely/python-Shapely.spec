@@ -1,7 +1,7 @@
 #
 # spec file for package python-Shapely
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Summary:        Geospatial geometries, predicates, and operations
 License:        BSD-3-Clause
 URL:            https://github.com/Toblerity/Shapely
 Source:         https://files.pythonhosted.org/packages/source/S/Shapely/Shapely-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Shapely-fix-svg-collection-pr1042.patch -- from gh#Toblerity/Shapely#1042 fix svg test
+Patch0:         Shapely-fix-svg-collection-pr1042.patch
 BuildRequires:  %{python_module Cython >= 0.19}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
@@ -55,7 +57,7 @@ but can be readily integrated with packages that are like WorldMill
 and pyproj.
 
 %prep
-%setup -q -n Shapely-%{version}
+%autosetup -p1 -n Shapely-%{version}
 
 %build
 CFLAGS="%{optflags} `geos-config --cflags` LDFLAGS=`geos-config --clibs`"
