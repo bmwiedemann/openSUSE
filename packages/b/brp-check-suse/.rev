@@ -563,4 +563,16 @@ Lets break everything :)
   * Make prg-brp-symlink compile on SLE15 (#34 and #35)</comment>
     <requestid>833502</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>503330021f333098bad3b549290d4256</srcmd5>
+    <version>84.87+git20201201.9bbfade</version>
+    <time>1610303873</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20201201.9bbfade:
+  * skip . in links
+
+- Update to version 84.87+git20201103.f6f1d35:
+  * Fix error handling of brp-25-symlink</comment>
+    <requestid>852306</requestid>
+  </revision>
 </revisionlist>

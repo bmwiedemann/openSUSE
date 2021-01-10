@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 01 10:11:49 UTC 2020 - coolo@suse.com
+
+- Update to version 84.87+git20201201.9bbfade:
+  * skip . in links
+
+-------------------------------------------------------------------
+Tue Nov 03 17:14:32 UTC 2020 - coolo@suse.com
+
+- Update to version 84.87+git20201103.f6f1d35:
+  * Fix error handling of brp-25-symlink
+
+-------------------------------------------------------------------
 Thu Sep 10 14:50:43 UTC 2020 - coolo@suse.com
 
 - Update to version 84.87+git20200910.754804a:
