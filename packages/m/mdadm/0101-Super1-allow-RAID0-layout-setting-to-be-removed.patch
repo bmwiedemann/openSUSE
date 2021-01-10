@@ -2,6 +2,8 @@ From 97b51a2c2d00b79a59f2a8e37134031b0c9e0223 Mon Sep 17 00:00:00 2001
 From: NeilBrown <neilb@suse.de>
 Date: Wed, 14 Oct 2020 13:12:48 +1100
 Subject: [PATCH 07/17] Super1: allow RAID0 layout setting to be removed.
+Git-commit: 97b51a2c2d00b79a59f2a8e37134031b0c9e0223
+References: jsc#SLE-13700
 
 Once the RAID0 layout has been set, the RAID0 array cannot be assembled
 on an older kernel which doesn't understand layouts.
@@ -16,6 +18,8 @@ an older kernel.
 
 Signed-off-by: NeilBrown <neilb@suse.de>
 Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+
 ---
  md.4       | 13 +++++++++++++
  mdadm.8.in | 15 +++++++++++++--

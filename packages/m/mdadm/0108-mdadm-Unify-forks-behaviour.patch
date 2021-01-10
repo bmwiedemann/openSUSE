@@ -2,6 +2,8 @@ From ff6bb131a46e1bac84a26e5b2c4bf408c0e56926 Mon Sep 17 00:00:00 2001
 From: Mariusz Tkaczyk <mariusz.tkaczyk@intel.com>
 Date: Wed, 4 Nov 2020 10:02:36 +0100
 Subject: [PATCH 14/17] mdadm: Unify forks behaviour
+Git-commit: ff6bb131a46e1bac84a26e5b2c4bf408c0e56926
+References: jsc#SLE-13700
 
 If mdadm is run by udev or systemd, it gets a pipe as each stream.
 Forks in the background may run after an event or service has been
@@ -14,6 +16,8 @@ scanning /proc/self/fd directory. Add generic method for
 managing systemd services.
 
 Signed-off-by: Mariusz Tkaczyk <mariusz.tkaczyk@intel.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+
 ---
  Grow.c        |  52 +++------------------
  Incremental.c |   1 +

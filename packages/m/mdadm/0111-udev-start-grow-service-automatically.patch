@@ -2,6 +2,8 @@ From a64f1263a56bd8653267c1a9800daa0bc993a743 Mon Sep 17 00:00:00 2001
 From: Tkaczyk Mariusz <mariusz.tkaczyk@intel.com>
 Date: Thu, 15 Oct 2020 10:45:29 +0200
 Subject: [PATCH 17/17] udev: start grow service automatically
+Git-commit: a64f1263a56bd8653267c1a9800daa0bc993a743
+References: jsc#SLE-13700
 
 Grow continue via service or fork is started during raid assembly.
 If raid was assembled in initrd it will be newer restarted after
@@ -9,6 +11,8 @@ switch root.
 Add udev support for starting mdadm-grow-continue service.
 
 Signed-off-by: Mariusz Tkaczyk <mariusz.tkaczyk@intel.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+
 ---
  udev-md-raid-arrays.rules | 2 ++
  1 file changed, 2 insertions(+)

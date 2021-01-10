@@ -1,7 +1,7 @@
 #
 # spec file for package mdadm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -148,6 +148,8 @@ Patch108:       0108-mdadm-Unify-forks-behaviour.patch
 Patch109:       0109-mdadm-Detail-show-correct-state-for-clustered-array.patch
 Patch110:       0110-Make-target-to-install-binaries-only.patch
 Patch111:       0111-udev-start-grow-service-automatically.patch
+Patch112:       0112-Incremental-Remove-redundant-spare-movement-logic.patch
+Patch113:       0113-Dump-get-stat-from-a-wrong-metadata-file-when-restor.patch
 Patch1001:      1001-display-timeout-status.patch
 Patch1002:      1002-OnCalendar-format-fix-of-mdcheck_start-timer.patch
 Patch1003:      1003-mdadm-treat-the-Dell-softraid-array-as-local-array.patch
@@ -266,6 +268,8 @@ mdadm is a program that can be used to control Linux md devices.
 %patch109 -p1
 %patch110 -p1
 %patch111 -p1
+%patch112 -p1
+%patch113 -p1
 %patch1001 -p1
 %patch1002 -p1
 %patch1003 -p1

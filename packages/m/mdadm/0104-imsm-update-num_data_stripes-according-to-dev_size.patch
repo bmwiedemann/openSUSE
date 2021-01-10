@@ -2,9 +2,8 @@ From 895ffd992954069e4ea67efb8a85bb0fd72c3707 Mon Sep 17 00:00:00 2001
 From: Mariusz Tkaczyk <mariusz.tkaczyk@linux.intel.com>
 Date: Tue, 24 Nov 2020 14:15:15 +0100
 Subject: [PATCH 10/17] imsm: update num_data_stripes according to dev_size
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Git-commit: 895ffd992954069e4ea67efb8a85bb0fd72c3707
+References: jsc#SLE-13700
 
 If array was created in UEFI there is possibility that
 member size is not rounded to 1MB. After any size reconfiguration
@@ -19,6 +18,8 @@ num_data_stripes value can be safety updated to smaller value if array
 doesn't occuppy whole reserved component space.
 
 Signed-off-by: Mariusz Tkaczyk <mariusz.tkaczyk@linux.intel.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+
 ---
  super-intel.c | 84 +++++++++++++++++++++++++++++++++++++++++++++++----
  1 file changed, 78 insertions(+), 6 deletions(-)

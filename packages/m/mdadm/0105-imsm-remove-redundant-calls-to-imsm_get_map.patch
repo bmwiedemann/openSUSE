@@ -2,10 +2,14 @@ From b65c1f4a2340e24ae00babc4399fb4030ff99517 Mon Sep 17 00:00:00 2001
 From: Mariusz Tkaczyk <mariusz.tkaczyk@linux.intel.com>
 Date: Tue, 24 Nov 2020 15:58:53 +0100
 Subject: [PATCH 11/17] imsm: remove redundant calls to imsm_get_map
+Git-commit: b65c1f4a2340e24ae00babc4399fb4030ff99517
+References: jsc#SLE-13700
 
 MAP_0 is gotten and the beginning, there is no need to get it again.
 
 Signed-off-by: Mariusz Tkaczyk <mariusz.tkaczyk@linux.intel.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+
 ---
  super-intel.c | 2 --
  1 file changed, 2 deletions(-)

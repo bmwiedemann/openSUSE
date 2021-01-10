@@ -2,6 +2,8 @@ From c3129b39a7d467eec063681529f46f84a2a85308 Mon Sep 17 00:00:00 2001
 From: Lidong Zhong <lidong.zhong@suse.com>
 Date: Sun, 22 Nov 2020 23:12:29 +0800
 Subject: [PATCH 08/17] Detail: fix segfault during IMSM raid creation
+Git-commit: c3129b39a7d467eec063681529f46f84a2a85308
+References: jsc#SLE-13700
 
 It can be reproduced with non IMSM hardware and IMSM_NO_PLATFORM
 environmental variable set. The array state is inactive when creating
@@ -11,6 +13,8 @@ always fails since no intel HBA information could be obtained.
 Signed-off-by: Lidong Zhong <lidong.zhong@suse.com>
 Reported-by: Tkaczyk Mariusz <mariusz.tkaczyk@intel.com>
 Fixes: 64bf4dff3430 (Detail: show correct raid level when the array is inactive)
+Signed-off-by: Coly Li <colyli@suse.de>
+
 ---
  Detail.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)

@@ -2,6 +2,8 @@ From e2308733910a157b0a4d4e78721f239d44b91a24 Mon Sep 17 00:00:00 2001
 From: Mariusz Tkaczyk <mariusz.tkaczyk@intel.com>
 Date: Wed, 9 Sep 2020 10:31:17 +0200
 Subject: [PATCH 03/17] Monitor: refresh mdstat fd after select
+Git-commit: e2308733910a157b0a4d4e78721f239d44b91a24
+References: jsc#SLE-13700
 
 After 52209d6ee118 ("Monitor: release /proc/mdstat fd when no arrays
 present") mdstat fd is closed if mdstat is empty or cannot be opened.
@@ -13,6 +15,8 @@ Refresh mdstat after wake up, don't poll on wrong resource.
 
 Signed-off-by: Mariusz Tkaczyk <mariusz.tkaczyk@intel.com>
 Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+
 ---
  Monitor.c | 6 +++---
  mdstat.c  | 4 ++--

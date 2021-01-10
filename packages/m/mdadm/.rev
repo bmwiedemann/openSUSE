@@ -1324,4 +1324,17 @@ which haven't landed upstream yet
 - imsm: remove redundant calls to imsm_get_map (jsc#SLE-13700) (forwarded request 853269 from colyli)</comment>
     <requestid>854352</requestid>
   </revision>
+  <revision rev="126" vrev="11">
+    <srcmd5>408ec39cb1f9d0b0521433edc4cda5bc</srcmd5>
+    <version>4.1</version>
+    <time>1610303919</time>
+    <user>dimstar_suse</user>
+    <comment>- Incremental: Remove redundant spare movement logic
+  (jsc#SLE-13700, bsc#1180220)
+  0112-Incremental-Remove-redundant-spare-movement-logic.patch
+- Dump: get stat from a wrong metadata file when restoring metadata
+  (jsc#SLE-13700)
+  0113-Dump-get-stat-from-a-wrong-metadata-file-when-restor.patch (forwarded request 860474 from colyli)</comment>
+    <requestid>860545</requestid>
+  </revision>
 </revisionlist>

@@ -2,6 +2,8 @@ From ce559078a5650afb9f635204b31a89a1fa0061e3 Mon Sep 17 00:00:00 2001
 From: Mariusz Tkaczyk <mariusz.tkaczyk@linux.intel.com>
 Date: Tue, 24 Nov 2020 13:39:49 +0100
 Subject: [PATCH 09/17] Create.c: close mdfd and generate uevent
+Git-commit: ce559078a5650afb9f635204b31a89a1fa0061e3
+References: jsc#SLE-13700
 
 During mdfd closing change event is not generated because open() is
 called before start watching mddevice by udev.
@@ -9,6 +11,8 @@ Device is ready at this stage. Unblock device, close fd and
 generate event to give a chance next layers to work.
 
 Signed-off-by: Mariusz Tkaczyk <mariusz.tkaczyk@linux.intel.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+
 ---
  Create.c | 7 ++-----
  1 file changed, 2 insertions(+), 5 deletions(-)

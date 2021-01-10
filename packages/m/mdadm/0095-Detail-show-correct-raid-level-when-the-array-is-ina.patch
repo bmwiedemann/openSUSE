@@ -3,6 +3,8 @@ From: Lidong Zhong <lidong.zhong@suse.com>
 Date: Mon, 14 Sep 2020 10:52:18 +0800
 Subject: [PATCH 01/17] Detail: show correct raid level when the array is
  inactive
+Git-commit: 64bf4dff34301a4b44883a8bc03f7835faef121e
+References: jsc#SLE-13700
 
 Sometimes the raid level in the output of `mdadm -D /dev/mdX` is
 misleading when the array is in inactive state. Here is a testcase for
@@ -16,8 +18,7 @@ node1:~ # mdadm --create /dev/md0 --homehost TESTARRAY -o -l 1 -n 2 /dev/sdb
 3\ show the detail of raid1 device
 
 node1:~ # mdadm -D /dev/md127
-/dev/md127:
-        Version : 1.2
+/dev/md127: Version : 1.2
      Raid Level : raid0
   Total Devices : 1
     Persistence : Superblock is persistent
@@ -39,10 +40,12 @@ mapping_t pers[] = {
 ...
 So the misleading "raid0" is shown in this testcase.
 
-Changelog:
-v1: don't show "Raid Level" when array is inactive
+Changelog: 
+V1: don't show "Raid Level" when array is inactive
 Signed-off-by: Lidong Zhong <lidong.zhong@suse.com>
 Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+
 ---
  Detail.c | 5 ++++-
  1 file changed, 4 insertions(+), 1 deletion(-)

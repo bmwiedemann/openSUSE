@@ -2,6 +2,8 @@ From cab9c67d461c65a1138359f9f6d39636466b90e4 Mon Sep 17 00:00:00 2001
 From: Blazej Kucman <blazej.kucman@intel.com>
 Date: Wed, 9 Sep 2020 10:31:19 +0200
 Subject: [PATCH 05/17] mdmonitor: set small delay once
+Git-commit: cab9c67d461c65a1138359f9f6d39636466b90e4
+References: jsc#SLE-13700
 
 If mdmonitor is awakened by event, set small delay once
 to deal with udev and mdadm.
@@ -9,6 +11,8 @@ to deal with udev and mdadm.
 Signed-off-by: Blazej Kucman <blazej.kucman@intel.com>
 Signed-off-by: Mariusz Tkaczyk <mariusz.tkaczyk@intel.com>
 Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+
 ---
  Monitor.c | 14 +++++++++++++-
  mdadm.h   |  2 +-

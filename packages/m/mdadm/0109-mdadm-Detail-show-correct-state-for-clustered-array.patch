@@ -2,16 +2,20 @@ From 9c030dadba89b90a4e52b6afe0290076c809684c Mon Sep 17 00:00:00 2001
 From: Zhao Heming <heming.zhao@suse.com>
 Date: Sat, 24 Oct 2020 17:43:12 +0800
 Subject: [PATCH 15/17] mdadm/Detail: show correct state for clustered array
+Git-commit: 9c030dadba89b90a4e52b6afe0290076c809684c
+References: jsc#SLE-13700
 
 After kernel md module commit 480523feae581, in clustered env,
 mddev->in_sync always zero, it will make array.state never set
 up MD_SB_CLEAN. it causes "mdadm -D /dev/mdX" show state 'active'
 all the time.
 
-bitmap.c: add a new API IsBitmapDirty() to support inquiry bitmap
+Bitmap.c: add a new API IsBitmapDirty() to support inquiry bitmap
 dirty or clean.
 
 Signed-off-by: Zhao Heming <heming.zhao@suse.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+
 ---
  Detail.c | 20 ++++++++++++++-
  bitmap.c | 75 +++++++++++++++++++++++++++++++++++++++++++++++++-------

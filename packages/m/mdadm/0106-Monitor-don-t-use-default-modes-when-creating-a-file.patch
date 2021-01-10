@@ -2,11 +2,15 @@ From ca4b156b2059ee00a9143313267ee4a098967d76 Mon Sep 17 00:00:00 2001
 From: Mariusz Tkaczyk <mariusz.tkaczyk@linux.intel.com>
 Date: Tue, 24 Nov 2020 16:41:01 +0100
 Subject: [PATCH 12/17] Monitor: don't use default modes when creating a file
+Git-commit: ca4b156b2059ee00a9143313267ee4a098967d76
+References: jsc#SLE-13700
 
 Replace fopen() calls by open() with creation mode directly specified.
 This fixes the potential security issue. Use octal values instead masks.
 
 Signed-off-by: Mariusz Tkaczyk <mariusz.tkaczyk@linux.intel.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+
 ---
  Monitor.c | 17 ++++++++++++-----
  1 file changed, 12 insertions(+), 5 deletions(-)

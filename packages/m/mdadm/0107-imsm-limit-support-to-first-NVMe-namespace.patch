@@ -2,10 +2,14 @@ From a8f3cfd54e45c8aabc4a99cdc92b6b9080b26607 Mon Sep 17 00:00:00 2001
 From: Mariusz Tkaczyk <mariusz.tkaczyk@intel.com>
 Date: Wed, 4 Nov 2020 10:01:28 +0100
 Subject: [PATCH 13/17] imsm: limit support to first NVMe namespace
+Git-commit: a8f3cfd54e45c8aabc4a99cdc92b6b9080b26607
+References: jsc#SLE-13700
 
 Due to metadata limitations NVMe multinamespace support has to be removed.
 
 Signed-off-by: Mariusz Tkaczyk <mariusz.tkaczyk@intel.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+
 ---
  platform-intel.c | 31 +++++++++++++++++++++++++++++++
  platform-intel.h |  1 +

@@ -2,12 +2,16 @@ From 7f3b2d1d1621cbdc60b5af4a41445391010fe9e1 Mon Sep 17 00:00:00 2001
 From: Blazej Kucman <blazej.kucman@intel.com>
 Date: Wed, 9 Sep 2020 10:31:20 +0200
 Subject: [PATCH 06/17] Check if other Monitor instance running before fork.
+Git-commit: 7f3b2d1d1621cbdc60b5af4a41445391010fe9e1
+References: jsc#SLE-13700
 
 Make error message visible to the user.
 
 Signed-off-by: Blazej Kucman <blazej.kucman@intel.com>
 Signed-off-by: Mariusz Tkaczyk <mariusz.tkaczyk@intel.com>
 Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+
 ---
  Monitor.c | 44 ++++++++++++++++++++++++++++----------------
  1 file changed, 28 insertions(+), 16 deletions(-)

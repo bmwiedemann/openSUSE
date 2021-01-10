@@ -1,0 +1,52 @@
+From 75562b57d43bd252399b55d0004b8eac4b337a67 Mon Sep 17 00:00:00 2001
+From: Lidong Zhong <lidong.zhong@suse.com>
+Date: Mon, 14 Dec 2020 22:51:33 +0800
+Subject: [PATCH 2/2] Dump: get stat from a wrong metadata file when restoring
+ metadata
+Git-commit: 75562b57d43bd252399b55d0004b8eac4b337a67
+References: jsc#SLE-13700
+
+The dumped metadata files are shown as below
+localhost:~ # ll -ih test/
+total 16K
+34565564 -rw-r--r-- 2 root root 1.0G Dec 14 21:15
+scsi-0QEMU_QEMU_HARDDISK_drive-scsi0-0-0-3
+34565563 -rw-r--r-- 2 root root 1.0G Dec 14 21:15
+scsi-0QEMU_QEMU_HARDDISK_drive-scsi0-0-0-4
+34565563 -rw-r--r-- 2 root root 1.0G Dec 14 21:15 sda
+34565564 -rw-r--r-- 2 root root 1.0G Dec 14 21:15 sdb
+
+It reports such error when trying to restore metadata for /dev/sda
+localhost:~ # mdadm --restore=test /dev/sda
+Mdadm: test/scsi-0QEMU_QEMU_HARDDISK_drive-scsi0-0-0-4 is not the same
+size as /dev/sda - cannot restore.
+It's because the stb value has been changed to other metadata file in
+the while statement.
+
+Signed-off-by: Lidong Zhong <lidong.zhong@suse.com>
+Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+
+---
+ Dump.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/Dump.c b/Dump.c
+index 38e8f23..736bcb6 100644
+--- a/Dump.c
++++ b/Dump.c
+@@ -272,6 +272,11 @@ int Restore_metadata(char *dev, char *dir, struct context *c,
+ 		       fname);
+ 		goto err;
+ 	}
++	if (stat(fname, &stb) != 0) {
++		pr_err("Could not stat %s for --restore.\n",
++		       fname);
++		goto err;
++	}
+ 	if (((unsigned long long)stb.st_size) != size) {
+ 		pr_err("%s is not the same size as %s - cannot restore.\n",
+ 		       fname, dev);
+-- 
+2.26.2
+

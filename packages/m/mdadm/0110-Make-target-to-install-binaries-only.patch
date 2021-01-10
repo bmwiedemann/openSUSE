@@ -2,12 +2,16 @@ From b4a5ad4958cb3ad87c3c5fa993e7572c38596d09 Mon Sep 17 00:00:00 2001
 From: Kinga Tanska <kinga.tanska@intel.com>
 Date: Thu, 22 Oct 2020 14:22:29 +0200
 Subject: [PATCH 16/17] Make target to install binaries only
+Git-commit: b4a5ad4958cb3ad87c3c5fa993e7572c38596d09
+References: jsc#SLE-13700
 
 Make install causes installation of binaries, udev and man.
 This commit contains new target make install-bin, which
 results in installation of binaries only.
 
 Signed-off-by: Kinga Tanska <kinga.tanska@intel.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+
 ---
  Makefile | 8 +++++---
  1 file changed, 5 insertions(+), 3 deletions(-)

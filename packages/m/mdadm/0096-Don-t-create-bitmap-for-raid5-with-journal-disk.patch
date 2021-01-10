@@ -2,12 +2,16 @@ From 2ce091724031e18f522994ffd1e5eb0dc404bcba Mon Sep 17 00:00:00 2001
 From: Xiao Ni <xni@redhat.com>
 Date: Tue, 15 Sep 2020 15:44:42 +0800
 Subject: [PATCH 02/17] Don't create bitmap for raid5 with journal disk
+Git-commit: 2ce091724031e18f522994ffd1e5eb0dc404bcba
+References: jsc#SLE-13700
 
 Journal disk and bitmap can't exist at the same time. It needs to check if the raid
 has a journal disk when creating bitmap.
 
 Signed-off-by: Xiao Ni <xni@redhat.com>
 Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+
 ---
  Create.c | 1 +
  1 file changed, 1 insertion(+)

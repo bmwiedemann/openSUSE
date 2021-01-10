@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan  5 12:02:12 UTC 2021 - Coly Li <colyli@suse.com>
+
+- Incremental: Remove redundant spare movement logic
+  (jsc#SLE-13700, bsc#1180220)
+  0112-Incremental-Remove-redundant-spare-movement-logic.patch
+- Dump: get stat from a wrong metadata file when restoring metadata
+  (jsc#SLE-13700)
+  0113-Dump-get-stat-from-a-wrong-metadata-file-when-restor.patch
+
+-------------------------------------------------------------------
 Sat Dec  5 13:53:38 UTC 2020 - Coly Li <colyli@suse.com>
 - There are some important fixes merged in mdadm upstream which
   should go with jsc#SLE-13700. This is the update from upstream
