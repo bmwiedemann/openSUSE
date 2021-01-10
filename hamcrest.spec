@@ -1,7 +1,7 @@
 #
 # spec file for package hamcrest
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,7 @@ Patch5:         %{name}-%{version}-fork-javac.patch
 Patch6:         %{name}-%{version}-javadoc9.patch
 Patch7:         %{name}-%{version}-javadoc10.patch
 Patch8:         %{name}-%{version}-random-build-crash.patch
+Patch9:         hamcrest-reproducible-builds.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
@@ -61,13 +62,13 @@ used in other frameworks. Typical scenarios include testing frameworks,
 mocking libraries and UI validation rules.
 
 %package core
-Summary:        Core API of hamcrest matcher framework.
+Summary:        Core API of hamcrest matcher framework
 Group:          Development/Libraries/Java
 Obsoletes:      %{name} < %{version}-%{release}
 
 %description core
 The core API of hamcrest matcher framework to be used by third-party framework providers.
-This includes the a foundation set of matcher implementations for common operations.
+This includes a foundation set of matcher implementations for common operations.
 
 %package javadoc
 Summary:        Javadoc for %{name}
@@ -112,6 +113,7 @@ rm -fr hamcrest-integration/src/main/java/org/hamcrest/EasyMock2Matchers.java
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 sed -i 's/\r//' LICENSE.txt
 
