@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan  8 11:11:38 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.2.2
+  * Bugfix: Header field name is not found by canlock-mhp if there
+    is another header field for which only the prefix differs (and
+    that other field is processed first)
+  * Test suite for canlock-mhp parser extended: It now tests headers
+    larger than 4 KiByte and for the field prefix bug fixed in this
+    version
+  * Test suite for canlock-hfp parser extended to test comments harder
+  * Namespace clash of internal library functions with libc on NetBSD
+    + Changed internal API function names hmac* to RFC2104Hmac*
+    + Changed internal API function names hkdf* to RFC5869Hkdf*
+    + Library API and ABI are fully compatible if no undocumented
+      functions are used
+  * libcanlock-3.pc: Changed protocol in URL from http to https
+
+-------------------------------------------------------------------
 Sun Nov 29 14:32:30 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.2.1
