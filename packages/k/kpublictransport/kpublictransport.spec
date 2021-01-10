@@ -1,7 +1,7 @@
 #
 # spec file for package kpublictransport
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,11 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kpublictransport
-Version:        20.12.0
+Version:        20.12.1
 Release:        0
 Summary:        QML imports for querying public transport data
 License:        LGPL-2.0-or-later
+Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
