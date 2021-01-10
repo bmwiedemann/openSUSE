@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Jan  9 07:16:34 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.0:
+  * Code cleanup
+  * Several memory leaks fixed (b45384, #805, #1416, #1427)
+  * Handle headline stanza (#1366)
+  * By default log only WARN not INFO (#1353)
+  * Fix OMEMO: check for current item (#1384)
+  * Fix request OMEMO device id (#1332)
+  * Add experimental OX (XEP-0373, XEP-0374) support (#1331)
+  * Add clang format file for uniform coding style (#1396)
+  * Add contributing guidelines (#1397)
+  * Dont highlight console once all messages have been read (#1399)
+  * New setting: Only highlight in console upon MUC mention (#1371)
+    `/console muc mention`
+  * Remove `/tiny` command (#1370)
+  * Fix `/lastactivity` behaviour (#1411)
+  * Fix `/correct` quotation marks usage (#1404)
+  * Parse Stable Stanza IDs (XEP-0359) (#1207) (#660)
+  * Only insert new messages in database (c9b154) (#660)
+  * Support both gtk2 and gtk3 (05d19c)
+  * Update gruvbox theme (#1421)
+  * Add NetBSD support (#1424)
+  * Fix uninitialized field in bookmarks (#1432)
+  * Don't link functional tests against tcl (da513a)
+  * Fix date format for MAM requests (15f45f)
+  * Print error stanzas (#1435)
+  * Add man pages for each profanity command (#1444)
+  * Fix chatlogs for outgoing carbons (#1439)
+  * Add OMEMO media sharing support (#1375)
+    See `/help sendfile` `/help executable`
+  * Expand trackbar to whole line (#1448)
+  * Set default color for trackbar (#1453)
+  * Log incoming carbons (#1446)
+  * Use whole path as logfile when defined via -f (#1442)
+    `profanity -f ~/mylog`
+  * Fix color for outgoing messages when no receipts are enabled (#1441)
+  * Set input window size to max window size (#1458)
+  * For details see: https://github.com/profanity-im/profanity/milestone/20
+
+-------------------------------------------------------------------
 Wed Jul  1 16:56:46 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.5:

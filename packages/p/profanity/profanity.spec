@@ -1,7 +1,7 @@
 #
 # spec file for package profanity
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           profanity
-Version:        0.9.5
+Version:        0.10.0
 Release:        0
 Summary:        Console-based XMPP client
 License:        SUSE-GPL-3.0+-with-openssl-exception
@@ -25,13 +25,13 @@ Group:          Productivity/Networking/Instant Messenger
 URL:            https://profanity-im.github.io
 Source:         https://github.com/profanity-im/profanity/releases/download/%{version}/profanity-%{version}.tar.gz
 Source1:        profanity-rpmlintrc
-BuildRequires:  glib2-devel >= 2.56
+BuildRequires:  glib2-devel >= 2.62
 BuildRequires:  gtk2-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libgcrypt-devel >= 1.7.0
 BuildRequires:  libgpgme-devel
-BuildRequires:  libmesode-devel >= 0.9.3
+BuildRequires:  libmesode-devel >= 0.10.0
 BuildRequires:  libnotify-devel
 BuildRequires:  libotr-devel
 BuildRequires:  libsignal-protocol-c-devel >= 2.3.1
@@ -40,7 +40,7 @@ BuildRequires:  ncurses-devel
 BuildRequires:  python3-devel
 BuildRequires:  readline-devel
 BuildRequires:  sqlite3-devel >= 3.22.0
-Requires:       libmesode0 >= 0.9.3
+Requires:       libmesode0 >= 0.10.0
 Requires:       profanity-binary = %{version}
 
 %description
@@ -131,6 +131,7 @@ ln -s profanity %{buildroot}%{_bindir}/profanity
 
 %files
 %{_mandir}/man1/profanity.1%{?ext_man}
+%{_mandir}/man1/profanity-*.1%{?ext_man}
 %dir %{_datadir}/profanity/
 %dir %{_datadir}/profanity/themes/
 %dir %{_datadir}/profanity/icons/
