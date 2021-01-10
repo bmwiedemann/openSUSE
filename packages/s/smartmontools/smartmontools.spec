@@ -1,7 +1,7 @@
 #
 # spec file for package smartmontools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           smartmontools
-Version:        7.1
+Version:        7.2
 Release:        0
 Source:         https://sourceforge.net/projects/smartmontools/files/smartmontools/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://sourceforge.net/projects/smartmontools/files/smartmontools/%{version}/%{name}-%{version}.tar.gz.asc
@@ -41,8 +41,6 @@ Source9:        smartd_generate_opts.service
 Patch4:         smartmontools-suse-default.patch
 # PATCH-FIX-OPENSUSE smartmontools-var-lock-subsys.patch sbrabec@suse.cz -- Do not use unsupported /var/lock/subsys.
 Patch10:        smartmontools-var-lock-subsys.patch
-# PATCH-FEATURE-OPENSUSE smartd-service-novm.patch crrodriguez@opensuse.org -- Do not start smartd in virtual environment.
-Patch11:        smartd-service-novm.patch
 Requires(pre):  %fillup_prereq
 # Needed by generate_smartd_opt:
 Requires(pre):  coreutils
@@ -78,7 +76,6 @@ cp -a %{SOURCE2} %{SOURCE5} .
 #cp -a %{SOURCE7} drivedb.h.new
 %patch4
 %patch10 -p1
-%patch11
 #
 # PATCH-FEATURE-OPENSUSE (sed on smartd.service.in) sbrabec@suse.cz -- Use generated smartd_opts (from SUSE sysconfig file). Systemd smartd.service cannot be smart enough to parse SUSE sysconfig file and generate smartd_opts on fly. And we do not want to launch shell just for it in every boot.
 sed "s:/usr/local/etc/sysconfig/smartmontools:%{_localstatedir}/lib/smartmontools/smartd_opts:" <smartd.service.in >smartd.service.in.new
