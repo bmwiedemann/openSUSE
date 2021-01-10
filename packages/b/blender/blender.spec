@@ -1,8 +1,8 @@
 #
 # spec file for package blender
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2019-2020 LISA GmbH, Bingen, Germany.
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2019-2021 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -101,7 +101,11 @@ BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
 %if %{with clang}
 BuildRequires:  clang
+%if 0%{?sle_version} == 150200 && 0%{?is_opensuse} 
+BuildRequires:  libomp9-devel
+%else
 BuildRequires:  libomp-devel
+%endif
 %if %{with lld}
 #!BuildIgnore:  gcc-c++
 #!BuildIgnore:  binutils-gold

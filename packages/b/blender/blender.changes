@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan  9 15:00:21 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Require libomp9 devel dependency for Leap 15.2 explicitly
+  in order to workaround a llvm setup issue
+
+-------------------------------------------------------------------
+Fri Jan  1 14:58:41 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Apply fix to make_python_3.6_compatible.patch provided by Mohamed
+  Amazirh (fixes boo#1174816)
+
+-------------------------------------------------------------------
 Wed Dec  9 18:24:21 UTC 2020 - Jason Craig <os-dev@jacraig.com>
 
 - Fix grammatical error in SUSE-NVIDIA-GPU-rendering.txt

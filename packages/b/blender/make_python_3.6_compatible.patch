@@ -1,7 +1,7 @@
-Index: blender-2.91.0/CMakeLists.txt
+Index: b/CMakeLists.txt
 ===================================================================
---- blender-2.91.0.orig/CMakeLists.txt
-+++ blender-2.91.0/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -807,8 +807,8 @@ if(WITH_PYTHON)
    # Do this before main 'platform_*' checks,
    # because UNIX will search for the old Python paths which may not exist.
@@ -13,10 +13,10 @@ Index: blender-2.91.0/CMakeLists.txt
    endif()
  
    file(GLOB RESULT "${CMAKE_SOURCE_DIR}/release/scripts/addons")
-Index: blender-2.91.0/source/blender/python/intern/bpy_rna.c
+Index: b/source/blender/python/intern/bpy_rna.c
 ===================================================================
---- blender-2.91.0.orig/source/blender/python/intern/bpy_rna.c
-+++ blender-2.91.0/source/blender/python/intern/bpy_rna.c
+--- a/source/blender/python/intern/bpy_rna.c
++++ b/source/blender/python/intern/bpy_rna.c
 @@ -8853,8 +8853,9 @@ static PyObject *pyrna_register_class(Py
  
    /* Call classed register method.
@@ -39,16 +39,17 @@ Index: blender-2.91.0/source/blender/python/intern/bpy_rna.c
      }
    }
  
-@@ -8961,7 +8962,8 @@ static PyObject *pyrna_unregister_class(
+@@ -8961,8 +8962,9 @@ static PyObject *pyrna_unregister_class(
  
    /* Call classed unregister method.
     * Note that zero falls through, no attribute, no error. */
 -  switch (_PyObject_LookupAttr(py_class, bpy_intern_str_unregister, &py_cls_meth)) {
 +  switch (PyObject_HasAttr(py_class, bpy_intern_str_unregister)) {
-+    py_cls_meth = PyObject_GetAttr(py_class, bpy_intern_str_unregister);
      case 1: {
++      py_cls_meth = PyObject_GetAttr(py_class, bpy_intern_str_unregister);
        PyObject *ret = PyObject_CallObject(py_cls_meth, NULL);
        Py_DECREF(py_cls_meth);
+       if (ret) {
 @@ -8973,8 +8975,8 @@ static PyObject *pyrna_unregister_class(
        }
        break;
@@ -60,10 +61,10 @@ Index: blender-2.91.0/source/blender/python/intern/bpy_rna.c
      }
    }
  
-Index: blender-2.91.0/source/blender/python/intern/bpy_capi_utils.h
+Index: b/source/blender/python/intern/bpy_capi_utils.h
 ===================================================================
---- blender-2.91.0.orig/source/blender/python/intern/bpy_capi_utils.h
-+++ blender-2.91.0/source/blender/python/intern/bpy_capi_utils.h
+--- a/source/blender/python/intern/bpy_capi_utils.h
++++ b/source/blender/python/intern/bpy_capi_utils.h
 @@ -20,8 +20,8 @@
  
  #pragma once
