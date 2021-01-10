@@ -741,6 +741,10 @@ rm -f %{buildroot}/%{_mandir}/man8/slurmrestd.*
 
 %define fixperm() [ $1 -eq 1 -a -e %2 ] && /bin/chmod %1 %2
 
+%if 0%{!?service_del_postun_without_restart:1}
+%define service_del_postun_without_restart() %{expand:%%service_del_postun -n %{**}}
+%endif
+
 %pre
 %if 0%{?with_systemd}
 %service_add_pre slurmctld.service

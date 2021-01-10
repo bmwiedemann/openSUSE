@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan  8 13:27:02 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Fix fallout introduced by:
+  "Replace  '%service_del_postun -n' with '%service_del_postun_without_restart'"
+  for older Leap/SLE versions.
+
+-------------------------------------------------------------------
 Fri Jan  8 12:20:27 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Fix Provides:/Conflicts: for libnss_slurm.
