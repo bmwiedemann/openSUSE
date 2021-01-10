@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Jan  5 14:20:48 UTC 2021 - Coly Li <colyli@suse.com>
+
+- bcache.h: fix typo from SUUP to SUPP (jsc#SLE-9807)
+  0019-bcache.h-fix-typo-from-SUUP-to-SUPP.patch
+- bcache-tools: only call set_bucket_size() for cache device
+  (jsc#SLE-9807)
+  0020-bcache-tools-only-call-set_bucket_size-for-cache-dev.patch
+- bcache.h: add BCH_FEATURE_INCOMPAT_LARGE_BUCKET to
+  BCH_FEATURE_INCOMPAT_SUPP (jsc#SLE-9807)
+  0021-bcache.h-add-BCH_FEATURE_INCOMPAT_LARGE_BUCKET-to-BC.patch
+- bcache-tools: check incompatible feature set (jsc#SLE-9807)
+  0022-bcache-tools-check-incompatible-feature-set.patch
+- bcache-tools: introduce BCH_FEATURE_INCOMPAT_LOG_LARGE_BUCKET_SIZE
+  for large bucket (jsc#SLE-9807)
+  0023-bcache-tools-introduce-BCH_FEATURE_INCOMPAT_LOG_LARG.patch
+- bcache-tools: display obsoleted bucket size configuration
+  (jsc#SLE-9807)
+  0024-bcache-tools-display-obsoleted-bucket-size-configura.patch
+- bcache-tools: recover the missing sb.csum for showing bcache device
+  super block (jsc#SLE-9807)
+  0025-bcache-tools-recover-the-missing-sb.csum-for-showing.patch
+- bcache-tools: only call to_cache_sb() for bcache device
+  in may_add_item() (jsc#SLE-9807)
+  0026-bcache-tools-only-call-to_cache_sb-for-bcache-device.patch
+- bcache-tools: improve column alignment for "bcache show
+  -m" output (jsc#SLE-9807)
+  0027-bcache-tools-improve-column-alignment-for-bcache-sho.patch
+
+-------------------------------------------------------------------
 Sun Nov 15 15:58:35 UTC 2020 - Coly Li <colyli@suse.com>
 
 - Makefile: install bcache-status (jsc#SLE-9807, bsc#1178725)

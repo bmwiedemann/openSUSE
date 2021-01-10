@@ -1,0 +1,38 @@
+From d5503bda96efdca8e2ebaa7b3d43845fda4b404d Mon Sep 17 00:00:00 2001
+From: Coly Li <colyli@suse.de>
+Date: Mon, 28 Dec 2020 16:10:42 +0800
+Subject: [PATCH 1/9] bcache.h: fix typo from SUUP to SUPP
+Git-commit: d5503bda96efdca8e2ebaa7b3d43845fda4b404d
+References: jsc#SLE-9807
+
+This patch fixes the following typos,
+from BCH_FEATURE_COMPAT_SUUP to BCH_FEATURE_COMPAT_SUPP
+from BCH_FEATURE_INCOMPAT_SUUP to BCH_FEATURE_INCOMPAT_SUPP
+from BCH_FEATURE_INCOMPAT_SUUP to BCH_FEATURE_RO_COMPAT_SUPP
+
+Signed-off-by: Coly Li <colyli@suse.de>
+
+---
+ bcache.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/bcache.h b/bcache.h
+index 6aef9c4..50dd2b5 100644
+--- a/bcache.h
++++ b/bcache.h
+@@ -200,9 +200,9 @@ uint64_t crc64(const void *data, size_t len);
+ #define BCH_FEATURE_INCOMPAT	2
+ #define BCH_FEATURE_TYPE_MASK	0x03
+ 
+-#define BCH_FEATURE_COMPAT_SUUP		0
+-#define BCH_FEATURE_INCOMPAT_SUUP	0
+-#define BCH_FEATURE_RO_COMPAT_SUUP	0
++#define BCH_FEATURE_COMPAT_SUPP		0
++#define BCH_FEATURE_INCOMPAT_SUPP	0
++#define BCH_FEATURE_RO_COMPAT_SUPP	0
+ 
+ #define BCH_HAS_COMPAT_FEATURE(sb, mask) \
+ 		((sb)->feature_compat & (mask))
+-- 
+2.26.2
+

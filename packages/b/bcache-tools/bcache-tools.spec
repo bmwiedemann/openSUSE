@@ -1,7 +1,7 @@
 #
 # spec file for package bcache-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,6 +43,15 @@ Patch15:        0015-bcache-tools-make-permit-only-one-cache-device-to-be.patch
 Patch16:        0016-bcache-tools-add-bcache-status.patch
 Patch17:        0017-bcache-tools-add-man-page-bcache-status.8.patch
 Patch18:        0018-Makefile-install-bcache-status.patch
+Patch19:        0019-bcache.h-fix-typo-from-SUUP-to-SUPP.patch
+Patch20:        0020-bcache-tools-only-call-set_bucket_size-for-cache-dev.patch
+Patch21:        0021-bcache.h-add-BCH_FEATURE_INCOMPAT_LARGE_BUCKET-to-BC.patch
+Patch22:        0022-bcache-tools-check-incompatible-feature-set.patch
+Patch23:        0023-bcache-tools-introduce-BCH_FEATURE_INCOMPAT_LOG_LARG.patch
+Patch24:        0024-bcache-tools-display-obsoleted-bucket-size-configura.patch
+Patch25:        0025-bcache-tools-recover-the-missing-sb.csum-for-showing.patch
+Patch26:        0026-bcache-tools-only-call-to_cache_sb-for-bcache-device.patch
+Patch27:        0027-bcache-tools-improve-column-alignment-for-bcache-sho.patch
 BuildRequires:  pkg-config
 BuildRequires:  xz
 BuildRequires:  pkgconfig(blkid)

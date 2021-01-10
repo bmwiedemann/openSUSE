@@ -1,0 +1,35 @@
+From 86d708d996935edd2f53ada336c40c38cc7fdfd7 Mon Sep 17 00:00:00 2001
+From: Coly Li <colyli@suse.de>
+Date: Mon, 28 Dec 2020 16:24:31 +0800
+Subject: [PATCH 3/9] bcache.h: add BCH_FEATURE_INCOMPAT_LARGE_BUCKET to
+ BCH_FEATURE_INCOMPAT_SUPP
+Git-commit: 86d708d996935edd2f53ada336c40c38cc7fdfd7
+References: jsc#SLE-9807
+
+BCH_FEATURE_INCOMPAT_LARGE_BUCKET is a feature to support 32bits bucket
+size, which is incompatible feature for existing on-disk layout. This
+patch adds this feature bit to BCH_FEATURE_INCOMPAT_SUPP feature set.
+
+Signed-off-by: Coly Li <colyli@suse.de>
+
+---
+ bcache.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/bcache.h b/bcache.h
+index 50dd2b5..58e973c 100644
+--- a/bcache.h
++++ b/bcache.h
+@@ -201,8 +201,8 @@ uint64_t crc64(const void *data, size_t len);
+ #define BCH_FEATURE_TYPE_MASK	0x03
+ 
+ #define BCH_FEATURE_COMPAT_SUPP		0
+-#define BCH_FEATURE_INCOMPAT_SUPP	0
+ #define BCH_FEATURE_RO_COMPAT_SUPP	0
++#define BCH_FEATURE_INCOMPAT_SUPP	BCH_FEATURE_INCOMPAT_LARGE_BUCKET
+ 
+ #define BCH_HAS_COMPAT_FEATURE(sb, mask) \
+ 		((sb)->feature_compat & (mask))
+-- 
+2.26.2
+

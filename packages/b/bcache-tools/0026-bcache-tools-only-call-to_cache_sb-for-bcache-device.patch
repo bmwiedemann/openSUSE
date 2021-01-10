@@ -1,0 +1,69 @@
+From 11f6bab95e5a8d4ec0089692ec78285a1fc96bab Mon Sep 17 00:00:00 2001
+From: Coly Li <colyli@suse.de>
+Date: Mon, 4 Jan 2021 00:07:46 +0800
+Subject: [PATCH 8/9] bcache-tools: only call to_cache_sb() for bcache device
+ in may_add_item()
+Git-commit: 11f6bab95e5a8d4ec0089692ec78285a1fc96bab
+References: jsc#SLE-9807
+
+to_cache_sb() will print an error message "Unsupported super block
+version" if the super block version is invalid. For non-bcache devices,
+it is unnecessary to check version number and print bogus error messages.
+
+This patch checks bcache_magic earlier in may_add_item(), and only calls
+to_cache_sb() if the magic string matched. Then the non-bcache devices
+can be skipped, and no more bogus error message observed.
+
+Signed-off-by: Coly Li <colyli@suse.de>
+
+---
+ lib.c | 15 +++++++--------
+ 1 file changed, 7 insertions(+), 8 deletions(-)
+
+diff --git a/lib.c b/lib.c
+index 340ddf3..b8487db 100644
+--- a/lib.c
++++ b/lib.c
+@@ -343,32 +343,31 @@ int may_add_item(char *devname, struct list_head *head)
+ {
+ 	struct cache_sb_disk sb_disk;
+ 	struct cache_sb sb;
++	char dev[512];
++	struct dev *tmp;
++	int ret;
+ 
+ 	if (strcmp(devname, ".") == 0 || strcmp(devname, "..") == 0)
+ 		return 0;
+-	char dev[261];
+ 
+ 	sprintf(dev, "/dev/%s", devname);
+ 	int fd = open(dev, O_RDONLY);
+-
+ 	if (fd == -1)
+ 		return 0;
++
+ 	if (pread(fd, &sb_disk, sizeof(sb_disk), SB_START) != sizeof(sb_disk)) {
+ 		close(fd);
+ 		return 0;
+ 	}
+ 
+-	to_cache_sb(&sb, &sb_disk);
+-
+-	if (memcmp(sb.magic, bcache_magic, 16)) {
++	if (memcmp(sb_disk.magic, bcache_magic, 16)) {
+ 		close(fd);
+ 		return 0;
+ 	}
+-	struct dev *tmp;
+-	int ret;
+ 
+-	tmp = (struct dev *) malloc(DEVLEN);
++	to_cache_sb(&sb, &sb_disk);
+ 
++	tmp = (struct dev *) malloc(DEVLEN);
+ 	tmp->csum = le64_to_cpu(sb_disk.csum);
+ 	ret = detail_base(dev, sb, tmp);
+ 	if (ret != 0) {
+-- 
+2.26.2
+

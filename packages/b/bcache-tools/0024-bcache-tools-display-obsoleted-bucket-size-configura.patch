@@ -1,0 +1,47 @@
+From 40cf747541aea3905c328ff351e88cc6ad9a66bf Mon Sep 17 00:00:00 2001
+From: Coly Li <colyli@suse.de>
+Date: Fri, 1 Jan 2021 14:38:27 +0800
+Subject: [PATCH 6/9] bcache-tools: display obsoleted bucket size configuration
+Git-commit: 40cf747541aea3905c328ff351e88cc6ad9a66bf
+References: jsc#SLE-9807
+
+Although BCH_FEATURE_INCOMPAT_LARGE_BUCKET is obsoleted and we don't
+support it anymore,  we still need to display the obsoleted bucket
+size combines by,
+	bucket_size + (obso_bucket_size_hi << 16)
+for the legancy consistency purpose.
+
+This patch checks bch_has_feature_obso_large_bucket() in to_cache_sb(),
+if it is true, still try to combine and display the bucket size from
+obso_bucket_size_hi.
+
+Signed-off-by: Coly Li <colyli@suse.de>
+
+---
+ lib.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/lib.c b/lib.c
+index 8e7da8b..b005eb5 100644
+--- a/lib.c
++++ b/lib.c
+@@ -783,9 +783,13 @@ struct cache_sb *to_cache_sb(struct cache_sb *sb,
+ 		sb->feature_ro_compat = le64_to_cpu(sb_disk->feature_ro_compat);
+ 	}
+ 
+-	if (sb->version >= BCACHE_SB_VERSION_CDEV_WITH_FEATURES &&
+-	    bch_has_feature_large_bucket(sb))
+-		sb->bucket_size = 1 << le16_to_cpu(sb_disk->bucket_size);
++	if (sb->version >= BCACHE_SB_VERSION_CDEV_WITH_FEATURES) {
++		if (bch_has_feature_large_bucket(sb))
++			sb->bucket_size = 1 << le16_to_cpu(sb_disk->bucket_size);
++		else if (bch_has_feature_obso_large_bucket(sb))
++			sb->bucket_size +=
++				le16_to_cpu(sb_disk->obso_bucket_size_hi) << 16;
++	}
+ 
+ 	return sb;
+ }
+-- 
+2.26.2
+

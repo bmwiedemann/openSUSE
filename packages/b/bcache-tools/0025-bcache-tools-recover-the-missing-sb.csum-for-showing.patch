@@ -1,0 +1,52 @@
+From 0c6e42ef568cece1c041fea5dcd0178d403b517b Mon Sep 17 00:00:00 2001
+From: Coly Li <colyli@suse.de>
+Date: Sun, 3 Jan 2021 23:35:50 +0800
+Subject: [PATCH 7/9] bcache-tools: recover the missing sb.csum for showing
+ bcache device super block
+Git-commit: 0c6e42ef568cece1c041fea5dcd0178d403b517b
+References: jsc#SLE-9807
+
+Commit 2891723d7075 ("bcache-tools: define separated super block for
+in-memory and on-disk format") does following change in detail_base(),
+         strcpy(base->name, devname);
+         base->magic = "ok";
+         base->first_sector = SB_SECTOR;
+ -       base->csum = sb.csum;
+         base->version = sb.version;
+because sb (in type struct cache_sb) doesn't have csum of the on-disk
+super block anymore. The aftermath is base.csum was missing, and the
+"show" command always display sb.csum as 0.
+
+This patch recovers the csum value setting for base.csum, then command
+"bcache show -d" may display the correct super block check sum.
+
+Fixes: 2891723d7075 ("bcache-tools: define separated super block for in-memory and on-disk format")
+Signed-off-by: Coly Li <colyli@suse.de>
+
+---
+ lib.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/lib.c b/lib.c
+index b005eb5..340ddf3 100644
+--- a/lib.c
++++ b/lib.c
+@@ -487,6 +487,7 @@ int detail_dev(char *devname, struct bdev *bd, struct cdev *cd, int *type)
+ 	    sb.version == BCACHE_SB_VERSION_BDEV_WITH_OFFSET ||
+ 	    sb.version == BCACHE_SB_VERSION_BDEV_WITH_FEATURES) {
+ 		detail_base(devname, sb, &bd->base);
++		bd->base.csum = expected_csum;
+ 		bd->first_sector = BDEV_DATA_START_DEFAULT;
+ 		bd->cache_mode = BDEV_CACHE_MODE(&sb);
+ 		bd->cache_state = BDEV_STATE(&sb);
+@@ -494,6 +495,7 @@ int detail_dev(char *devname, struct bdev *bd, struct cdev *cd, int *type)
+ 		   sb.version == BCACHE_SB_VERSION_CDEV_WITH_UUID ||
+ 		   sb.version == BCACHE_SB_VERSION_CDEV_WITH_FEATURES) {
+ 		detail_base(devname, sb, &cd->base);
++		cd->base.csum = expected_csum;
+ 		cd->first_sector = sb.bucket_size * sb.first_bucket;
+ 		cd->cache_sectors =
+ 		    sb.bucket_size * (sb.nbuckets - sb.first_bucket);
+-- 
+2.26.2
+

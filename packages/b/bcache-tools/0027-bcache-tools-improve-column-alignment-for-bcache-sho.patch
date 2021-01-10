@@ -1,0 +1,43 @@
+From 59338c230950a9d20ed210b9b169eb91fc8b37d8 Mon Sep 17 00:00:00 2001
+From: Coly Li <colyli@suse.de>
+Date: Mon, 4 Jan 2021 00:15:53 +0800
+Subject: [PATCH 9/9] bcache-tools: improve column alignment for "bcache show
+ -m" output
+Git-commit: 59338c230950a9d20ed210b9b169eb91fc8b37d8
+References: jsc#SLE-9807
+
+This patch improves the output column alignment for command
+"bcache show -m". The changes are adding missing '\t' in printf
+format strings.
+
+Signed-off-by: Coly Li <colyli@suse.de>
+
+---
+ bcache.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/bcache.c b/bcache.c
+index a0c5a67..234702b 100644
+--- a/bcache.c
++++ b/bcache.c
+@@ -195,7 +195,7 @@ int show_bdevs_detail(void)
+ 		fprintf(stderr, "Failed to list devices\n");
+ 		return ret;
+ 	}
+-	printf("Name\t\tUuid\t\t\t\t\tCset_Uuid\t\t\t\tType\t\tState");
++	printf("Name\t\tUuid\t\t\t\t\tCset_Uuid\t\t\t\tType\t\t\tState");
+ 	printf("\t\t\tBname\t\tAttachToDev\tAttachToCset\n");
+ 	list_for_each_entry_safe(devs, n, &head, dev_list) {
+ 		printf("%s\t%s\t%s\t%lu", devs->name, devs->uuid,
+@@ -217,7 +217,7 @@ int show_bdevs_detail(void)
+ 			printf(" (unknown)");
+ 			break;
+ 		}
+-		printf("\t%-16s", devs->state);
++		printf("\t\t%-16s", devs->state);
+ 		printf("\t%-16s", devs->bname);
+ 		char attachdev[30];
+ 
+-- 
+2.26.2
+

@@ -1,0 +1,62 @@
+From 93e83d620d21411eb82fd3c4e95d7b73e79ce49d Mon Sep 17 00:00:00 2001
+From: Coly Li <colyli@suse.de>
+Date: Thu, 31 Dec 2020 23:59:16 +0800
+Subject: [PATCH 4/9] bcache-tools: check incompatible feature set
+Git-commit: 93e83d620d21411eb82fd3c4e95d7b73e79ce49d
+References: jsc#SLE-9807
+
+When bcache-tools is not updated with kernel driver (or on the versus),
+we need to make sure the feature set conflict can be detected to avoid
+unexpected data operation.
+
+This patch checks whether there is unsupported {compatc, ro_compat,
+incompat} features detected in detail_dev(). If there is, prints out
+error message and return error to its caller.
+
+Signed-off-by: Coly Li <colyli@suse.de>
+
+---
+ lib.c | 27 +++++++++++++++++++++++++++
+ 1 file changed, 27 insertions(+)
+
+diff --git a/lib.c b/lib.c
+index 29172f5..a529ad3 100644
+--- a/lib.c
++++ b/lib.c
+@@ -442,6 +442,33 @@ int detail_dev(char *devname, struct bdev *bd, struct cdev *cd, int *type)
+ 		goto Fail;
+ 	}
+ 
++	/* Check for incompat feature set */
++	if (sb.version >= BCACHE_SB_VERSION_BDEV_WITH_FEATURES ||
++	    sb.version >= BCACHE_SB_VERSION_CDEV_WITH_FEATURES) {
++		uint64_t features;
++
++		features = sb.feature_compat & ~BCH_FEATURE_COMPAT_SUPP;
++		if (features) {
++			fprintf(stderr,
++				"Unsupported compatible feature found\n");
++			goto Fail;
++		}
++
++		features = sb.feature_ro_compat & ~BCH_FEATURE_RO_COMPAT_SUPP;
++		if (features) {
++			fprintf(stderr,
++				"Unsupported read-only compatible feature found\n");
++			goto Fail;
++		}
++
++		features = sb.feature_incompat & ~BCH_FEATURE_INCOMPAT_SUPP;
++		if (features) {
++			fprintf(stderr,
++				"Unsupported incompatible feature found\n");
++			goto Fail;
++		}
++	}
++
+ 	*type = sb.version;
+ 	if (sb.version == BCACHE_SB_VERSION_BDEV ||
+ 	    sb.version == BCACHE_SB_VERSION_BDEV_WITH_OFFSET ||
+-- 
+2.26.2
+
