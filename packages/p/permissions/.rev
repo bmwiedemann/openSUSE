@@ -1339,4 +1339,17 @@ Feel free to use or reject (forwarded request 397400 from dimstar)</comment>
   * drop (f)ping capabilities in favor of ICMP_PROTO sockets (bsc#1174504)</comment>
     <requestid>840211</requestid>
   </revision>
+  <revision rev="146" vrev="26">
+    <srcmd5>91bb34c52f91f773156b369c0b486957</srcmd5>
+    <version>unknown</version>
+    <time>1610303878</time>
+    <user>dimstar_suse</user>
+    <comment>move man page to where the documented files are
+
+A separate package for a single man page really is overkill.
+
+See also discussion at 
+https://lists.opensuse.org/archives/list/packaging@lists.opensuse.org/message/5FSP57UVYLS7BNBDNF4EGHW5TEEZUS5D/ (forwarded request 853107 from lnussel)</comment>
+    <requestid>853596</requestid>
+  </revision>
 </revisionlist>

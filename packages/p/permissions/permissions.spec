@@ -16,7 +16,7 @@
 #
 
 
-%define VERSION_DATE 20201008
+%define VERSION_DATE 20201111
 
 Name:           permissions
 Version:        %{VERSION_DATE}.%{suse_version}
@@ -36,14 +36,13 @@ BuildRequires:  tclap
 BuildRequires:  python3-base
 Requires:       chkstat
 Requires:       permissions-config
-Recommends:     permissions-doc
 Provides:       aaa_base:%{_datadir}/permissions
 
 %prep
 %autosetup -n permissions-%{VERSION_DATE}
 
 %build
-make %{?_smp_mflags} CFLAGS="-W -Wall %{optflags}" FSCAPS_DEFAULT_ENABLED=0
+make %{?_smp_mflags} CXXFLAGS="%{optflags}"
 
 %install
 %make_install fillupdir=%{_fillupdir}
@@ -60,18 +59,6 @@ This package does not contain files, it just requires the necessary packages.
 
 %files
 
-%package doc
-Summary:        SUSE Linux Default Permissions documentation
-Group:          Documentation/Man
-Version:        %{suse_version}_%{VERSION_DATE}
-Release:        0
-
-%description doc
-Documentation for the permission files /usr/share/permissions/permissions*.
-
-%files doc
-%{_mandir}/man5/permissions.5%{ext_man}
-
 %package config
 Summary:        SUSE Linux Default Permissions config files
 Group:          Productivity/Security
@@ -81,6 +68,7 @@ Requires(post): %fillup_prereq
 Requires(post): chkstat
 #!BuildIgnore:  group(trusted)
 Requires(pre):  group(trusted)
+Obsoletes:      permissions-doc <= %{suse_version}_%{VERSION_DATE}
 
 %description config
 The actual permissions configuration files, /usr/share/permissions/permission.*.
@@ -92,8 +80,10 @@ The actual permissions configuration files, /usr/share/permissions/permission.*.
 %{_datadir}/permissions/permissions.easy
 %{_datadir}/permissions/permissions.secure
 %{_datadir}/permissions/permissions.paranoid
+%{_datadir}/permissions/variables.conf
 %config(noreplace) %{_sysconfdir}/permissions.local
 %{_fillupdir}/sysconfig.security
+%{_mandir}/man5/permissions.5%{ext_man}
 
 %post config
 %{fillup_only -n security}

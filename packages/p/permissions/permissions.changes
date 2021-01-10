@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Dec  4 12:58:20 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- move man page to where the documented files are
+
+-------------------------------------------------------------------
+Wed Nov 11 09:30:37 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 20201111:
+  * squid: remove basic_pam_auth which doesn't need special perms (bsc#1171569)
+  * mgetty: remove long dead (or never existing) locks directory (bsc#1171882)
+  * adjust squid pinger path (bsc#1171569)
+  * profiles: remove now superfluous squid pinger paths (bsc#1171569)
+  * ksgrd_network_helper: remove obviously wrong path
+  * etc/permissions: remove unnecessary, duplicate, outdated entries
+  * chkstat: implement support for variables in profile paths in new
+    variables.conf
+  * man pages: add documentation about variables, update copyrights
+  * profiles: use new variables feature to remove redundant entries
+  * profiles: prepare /usr/sbin versions of profile entries (bsc#1029961)
+  * Makefile: support CXXFLAGS and LDFLAGS override / extension via make/env variables (bsc#1178475)
+  * Makefile: compile with LFO support to fix 32-bit emulation on 64-bit hosts (bsc#1178476)
+  * README: added information about know limitations of this approach
+- adjusted spec file:
+  - package new variables.conf
+  - apply %{optflags} correctly via CXXFLAGS variable
+  - drop FSCAPS_DEFAULT_ENABLED which isn't recognized anymore by the
+    refactored chkstat sources. This is now the default.
+
+-------------------------------------------------------------------
 Thu Oct 08 09:19:32 UTC 2020 - matthias.gerstner@suse.com
 
 - Update to version 20201008:
