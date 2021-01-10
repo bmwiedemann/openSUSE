@@ -143,7 +143,7 @@ sed -i "/enable_deprecations_as_exceptions(/,/)/ d" astropy/conftest.py
 # increase test deadline for slow obs executions (e.g. on s390x)
 echo "
 import hypothesis
-hypothesis.settings.register_profile('obs', deadline=1000)
+hypothesis.settings.register_profile('obs', deadline=2000)
 " >> astropy/conftest.py
 
 %build
