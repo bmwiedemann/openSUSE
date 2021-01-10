@@ -1,4 +1,133 @@
 -------------------------------------------------------------------
+Fri Jan  8 21:54:44 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.26.0
+  * Support for filtering listKeys based on KeyShape in KeyManagement service
+  * Support for the Oracle Roving Edge Infrastructure service
+  * Support for flexible ShapeDetails in Load Balancer service
+  * Support for listing of harvested Rules, additional filtering for Logical
+    Entity list calls in Data Catalog service
+  * Support second level domain for audit SDK
+  * Support for listing flex components in Database service
+  * Support for APEX service for ADBS on OCI console for Database service
+  * Support for Customer-Managed Key features as a part of the Database service
+  * Support for Github configuration source provider as part of the Resource Manager service
+  * Removed deprecated create_autonomous_data_warehouse API from Database service
+  * Removed deprecated create_autonomous_data_warehouse_backup API from Database service
+  * Removed deprecated delete_autonomous_data_warehouse API from Database service
+  * Removed deprecated generate_autonomous_data_warehouse_wallet API from Database service
+  * Removed deprecated get_autonomous_data_warehouse API from Database service
+  * Removed deprecated get_autonomous_data_warehouse_backup API from Database service
+  * Removed deprecated list_autonomous_data_warehouse_backups API from Database service
+  * Removed deprecated list_autonomous_data_warehouses API from Database service
+  * Removed deprecated restore_autonomous_data_warehouse API from Database service
+  * Removed deprecated start_autonomous_data_warehouse API from Database service
+  * Removed deprecated stop_autonomous_data_warehouse API from Database service
+  * Removed deprecated update_autonomous_data_warehouse API from Database service
+  * The enum attributes `lifecycle_state` and `license_model` from Model
+    `AutonomousDataWarehouseSummary` in the Database service raise `ValueError` if
+    they receive an invalid value. In the earlier versions, the value defaults to
+    `UNKNOWN_ENUM_VALUE`.
+  * The enum attributes `lifecycle_state` and `license_model` from Model
+    `AutonomousDataWarehouse` in the Database service raise `ValueError` if they
+     receive an invalid value. In the earlier versions, the value defaults to
+     `UNKNOWN_ENUM_VALUE`.
+  * Fixed an issue in the documentation where model links were incorrect
+- from version 2.25.1
+  * Support for Integration Service custom endpoint feature
+  * Support for metadata field in IdentityProvider Get and List response
+  * Support for fine-grained data analysis and improved SQL insights
+  * Support for ADB Dedicated - ORDS and SSL cert rotation at AEI
+  * Support for Maintenance Schedule feature for Exadata Infrastructure resources for ExaCC
+- from version 2.25.0
+  * Support for calling Oracle Cloud Infrastructure services in the sa-santiago-1 region
+  * Support for peer and OSN resources, as well as retry tokens, in the Blockchain Platform service
+  * Support for getting the availability status of management agents in the Management Agent service
+  * Support for the on-prem-connector resource type in the Data Safe service
+  * Support for service channels in the MySQL Database service
+  * Support for getting the creation type of backups, and for filtering backups by
+    creation type in the MySQL Database service
+  * Parameter `compartment_id` changed from optional to required for method `list_work_requests`
+    in the Data Safe service
+  * Return type of method `create_data_safe_private_endpoint` changed from `None` to
+    `oci.data_safe.models.DataSafePrivateEndpoint` in the Data Safe service
+  * Parameters `freeform_tags` and `defined_tags` are removed from model
+    `EnableDataSafeConfigurationDetails` in the Data Safe service
+- from version 2.24.1
+  * Provide example for pagination that creates a *Details object for pagination
+  * Provide example to turn response and model to JSON
+  * cryptography pinning to cryptography=3.2.1 to address vulnerability `Github security
+    alerts <https://github.com/oracle/oci-python-sdk/pull/299>`__
+- from version 2.24.0
+  * Support for specifying memory for AMD E3 shapes during node pool creation and update
+    in the Container Engine for Kubernetes service
+  * Support for upgrading a database on a VM database system in the Database service
+  * Support for listing autonomous database clones in the Database service
+  * Support for Data Guard with autonomous container databases on Exadata Cloud
+    at Customer in the Database service
+  * Support for getting the last login time of a user in the Identity service
+  * Support to bulk editing tags on resources in the Identity service
+  * The models `AgentUpload`, `Attribute`, `CreateNamespaceDetails`, `FieldMap`,
+    `GenerateAgentObjectNameDetails`, `LogAnalytics`, `LogAnalyticsCollectionWarning`,
+    `LogAnalyticsSummary`, `OutOfBoxEntityTypeDetails`, `Query`, `QueryWorkRequestResource`,
+    `RegisterEntityTypesDetails`, `ServiceTenancy`, `StringListDetails` are removed from the
+    Log Analytics service
+  * The enum `name` removed value `CUSLTER_SPLIT` and added `CLUSTER_SPLIT`
+    in the Log Analytics service
+  * The value for enum `status` is not validated against allowed values and will not
+    raise `ValueError` in the Container Engine service
+- from version 2.23.5
+  * Support for the 21C autonomous database version in the Database service
+  * Support for creating a Data Guard association with a standby database from
+    a database software image in the Database service
+  * Support for specifying a TDE wallet password when creating a database
+    or database system in the Database service
+  * Support for enabling access control lists for autonomous databases on
+    Exadata Cloud At Customer in the Database service
+  * Support for private DNS resolvers, resolver endpoints, and views in the DNS service
+  * Support for getting a VCN and resolver association in the Networking service
+  * Support for additional parameters when updating subnets and VLANs in the Networking service
+  * Support for analytics clusters (database accelerators) in the MySQL Database service
+  * Support for migrations to Java Cloud Service and Oracle Weblogic Server instances
+    that use existing databases in the Application Migration service
+  * Support for specifying reserved IPs when creating load balancers in the Load Balancing service
+  * Removed support for Python 3.5, since it is end of life
+  * Support for Python 3.7, 3.8 and 3.9
+- from version 2.23.4
+  * Support for calling Oracle Cloud Infrastructure services in the uk-cardiff-1 region
+  * Support for the Organizations service
+  * Support for the Optimizer service
+  * Support for tenancy ID and name on responses in the Usage service
+  * Support for object versioning in object lifecycle management in the Object Storage service
+  * Support for specifying a syslog URL for applications in the Functions service
+  * Support for creation of always-free NoSQL database tables in the NoSQL Database service
+- from version 2.23.3
+  * Fixed an issue where `UploadManager.upload_stream()` raised `MultipartUploadError` if
+    the time to upload is greater than the read timeout. Please see `github issue #300
+    <https://github.com/oracle/oci-python-sdk/issues/300>`_ for more details.
+- from version 2.23.2
+  * Support for the Compute Instance Agent service
+  * Support for key store resources and operations in the Database service
+  * Support for specifying a key store when creating autonomous container
+    databases in the Database service
+  * Bypassed the use of PyOpenSSL in the vendored requests library only if ssl does not
+    have SNI. This may fix a `known issue <https://oracle-cloud-infrastructure-python-sdk.\
+    readthedocs.io/en/latest/known-issues.html#uploadmanager-generates-ssl3-write-pending-\
+    error-when-a-read-timeout-is-set-for-the-object-storage-client>`_. depending on your
+    environment. For more information, please see the link to the docs.
+- from version 2.23.1
+  * Support for the Operations Insights service
+  * Support for updating autonomous databases to enable/disable Operations Insights
+    service integration, in the Database service
+  * Support for the NEEDS_ATTENTION lifecycle state on database systems in the Database service
+  * Support for HCX in the VMware Solutions service
+  * Added an example script for Usage API
+- Refresh patches for new version
+  + ops_relax-python-depends.patch
+- Update file list to fix Python imports for unvendoring
+- Update BuildRequires and Requires from requirements.txt and setup.py
+
+-------------------------------------------------------------------
 Thu Oct 15 10:29:30 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.23.0
