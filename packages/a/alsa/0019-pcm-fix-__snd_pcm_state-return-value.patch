@@ -1,0 +1,33 @@
+From 36aff79747b23b9535e81befe8b7b2972837bce3 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Sun, 27 Dec 2020 13:29:33 +0100
+Subject: [PATCH 19/33] pcm: fix __snd_pcm_state() return value
+
+The __snd_pcm_state() must return a valid state, not an error value
+when the plugin callback is not defined. Use the first state
+SND_PCM_STATE_OPEN - the other functions will return the error
+code depending on this state.
+
+Link: https://lore.kernel.org/alsa-devel/20201226213547.175071-10-alexhenrie24@gmail.com/
+Reported-by: Alex Henrie <alexhenrie24@gmail.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/pcm/pcm_local.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/pcm/pcm_local.h b/src/pcm/pcm_local.h
+index fe77e50def28..bec5a40855dc 100644
+--- a/src/pcm/pcm_local.h
++++ b/src/pcm/pcm_local.h
+@@ -444,7 +444,7 @@ static inline int __snd_pcm_start(snd_pcm_t *pcm)
+ static inline snd_pcm_state_t __snd_pcm_state(snd_pcm_t *pcm)
+ {
+ 	if (!pcm->fast_ops->state)
+-		return -ENOSYS;
++		return SND_PCM_STATE_OPEN;
+ 	return pcm->fast_ops->state(pcm->fast_op_arg);
+ }
+ 
+-- 
+2.26.2
+

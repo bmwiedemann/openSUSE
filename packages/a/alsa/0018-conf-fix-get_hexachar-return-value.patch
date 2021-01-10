@@ -1,0 +1,27 @@
+From 9ebd29d2d31df0f8967f3e60cf24bb63c95d4984 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Sun, 27 Dec 2020 13:17:26 +0100
+Subject: [PATCH 18/33] conf: fix get_hexachar() return value
+
+Reported-by: Alex Henrie <alexhenrie24@gmail.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/conf.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/conf.c b/src/conf.c
+index 44d1bfde66ad..6cfe65bfe8cd 100644
+--- a/src/conf.c
++++ b/src/conf.c
+@@ -887,7 +887,7 @@ static inline int get_hexachar(input_t *input)
+ 	if (c >= '0' && c <= '9') num |= (c - '0') << 0;
+ 	else if (c >= 'a' && c <= 'f') num |= (c - 'a') << 0;
+ 	else if (c >= 'A' && c <= 'F') num |= (c - 'A') << 0;
+-	return c;
++	return num;
+ }
+ 
+ static int get_quotedchar(input_t *input)
+-- 
+2.26.2
+

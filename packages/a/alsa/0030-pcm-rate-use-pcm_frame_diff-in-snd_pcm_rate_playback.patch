@@ -1,0 +1,31 @@
+From fc0f7af9ee7bd4c31c2bab229e8e79eb96e908fa Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Mon, 4 Jan 2021 12:29:00 +0100
+Subject: [PATCH 30/33] pcm: rate - use pcm_frame_diff() in
+ snd_pcm_rate_playback_internal_delay()
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/pcm/pcm_rate.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/src/pcm/pcm_rate.c b/src/pcm/pcm_rate.c
+index 7073f8ab6c63..abb2753f6055 100644
+--- a/src/pcm/pcm_rate.c
++++ b/src/pcm/pcm_rate.c
+@@ -612,11 +612,7 @@ static snd_pcm_uframes_t snd_pcm_rate_playback_internal_delay(snd_pcm_t *pcm)
+ {
+ 	snd_pcm_rate_t *rate = pcm->private_data;
+ 
+-	if (rate->appl_ptr < rate->last_commit_ptr) {
+-		return rate->appl_ptr - rate->last_commit_ptr + pcm->boundary;
+-	} else {
+-		return rate->appl_ptr - rate->last_commit_ptr;
+-	}
++	return pcm_frame_diff(rate->appl_ptr, rate->last_commit_ptr, pcm->boundary);
+ }
+ 
+ static int snd_pcm_rate_delay(snd_pcm_t *pcm, snd_pcm_sframes_t *delayp)
+-- 
+2.26.2
+

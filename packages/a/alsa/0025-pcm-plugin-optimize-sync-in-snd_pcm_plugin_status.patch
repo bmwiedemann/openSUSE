@@ -1,0 +1,40 @@
+From 28cc099d9ea3962b033cb1cb9c3e07db828d9ff7 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Sun, 3 Jan 2021 16:41:29 +0100
+Subject: [PATCH 25/33] pcm: plugin - optimize sync in snd_pcm_plugin_status()
+
+Do hw_ptr sync only once after the status call. This avoids
+double update.
+
+Also, the application pointer must not change when
+the status is called. Add assert() call for this condition.
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/pcm/pcm_plugin.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/src/pcm/pcm_plugin.c b/src/pcm/pcm_plugin.c
+index 83793397a7f0..6a8151453efb 100644
+--- a/src/pcm/pcm_plugin.c
++++ b/src/pcm/pcm_plugin.c
+@@ -553,14 +553,11 @@ static int snd_pcm_plugin_status(snd_pcm_t *pcm, snd_pcm_status_t * status)
+ 	snd_pcm_plugin_t *plugin = pcm->private_data;
+ 	snd_pcm_sframes_t err;
+ 
+-	/* sync with the latest hw and appl ptrs */
+-	snd_pcm_plugin_avail_update(pcm);
+-
+ 	err = snd_pcm_status(plugin->gen.slave, status);
+ 	if (err < 0)
+ 		return err;
+-	status->appl_ptr = *pcm->appl.ptr;
+-	status->hw_ptr = *pcm->hw.ptr;
++	assert(status->appl_ptr == *pcm->appl.ptr);
++	snd_pcm_plugin_sync_hw_ptr(pcm, status->hw_ptr, status->avail);
+ 	return 0;
+ }
+ 
+-- 
+2.26.2
+

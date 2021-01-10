@@ -1,0 +1,36 @@
+From 0f4821ec1729cd72a3dde3ea63f7857e92a10919 Mon Sep 17 00:00:00 2001
+From: Alex Henrie <alexhenrie24@gmail.com>
+Date: Sat, 26 Dec 2020 14:35:40 -0700
+Subject: [PATCH 13/33] ucm: fix bad frees in get_list0 and get_list20
+
+Signed-off-by: Alex Henrie <alexhenrie24@gmail.com>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ src/ucm/main.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/ucm/main.c b/src/ucm/main.c
+index 3871d5aab90b..754b967e9c07 100644
+--- a/src/ucm/main.c
++++ b/src/ucm/main.c
+@@ -666,7 +666,7 @@ static int get_list0(struct list_head *list,
+ 	}
+ 	return cnt;
+       __fail:
+-        snd_use_case_free_list((const char **)res, cnt);
++        snd_use_case_free_list(*result, cnt);
+         return -ENOMEM;
+ }
+ 
+@@ -724,7 +724,7 @@ static int get_list20(struct list_head *list,
+ 	}
+ 	return cnt;
+       __fail:
+-        snd_use_case_free_list((const char **)res, cnt);
++        snd_use_case_free_list(*result, cnt);
+         return -ENOMEM;
+ }
+ 
+-- 
+2.26.2
+

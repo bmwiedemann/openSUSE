@@ -1,0 +1,36 @@
+From a92ad2fea4b36d7282f4a571275fb492dd1bba75 Mon Sep 17 00:00:00 2001
+From: Alex Henrie <alexhenrie24@gmail.com>
+Date: Sun, 27 Dec 2020 18:43:15 -0700
+Subject: [PATCH 20/33] confmisc: fix memory leak in snd_func_concat
+
+Signed-off-by: Alex Henrie <alexhenrie24@gmail.com>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ src/confmisc.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/confmisc.c b/src/confmisc.c
+index eb8218c1e150..3ce95c7a942c 100644
+--- a/src/confmisc.c
++++ b/src/confmisc.c
+@@ -419,7 +419,6 @@ int snd_func_concat(snd_config_t **dst, snd_config_t *root, snd_config_t *src,
+ 				tmp = realloc(res, len + len1 + 1);
+ 				if (tmp == NULL) {
+ 					free(ptr);
+-					free(res);
+ 					err = -ENOMEM;
+ 					goto __error;
+ 				}
+@@ -440,8 +439,8 @@ int snd_func_concat(snd_config_t **dst, snd_config_t *root, snd_config_t *src,
+ 	err = snd_config_get_id(src, &id);
+ 	if (err >= 0)
+ 		err = snd_config_imake_string(dst, id, res);
+-	free(res);
+       __error:
++	free(res);
+ 	return err;
+ }
+ #ifndef DOC_HIDDEN
+-- 
+2.26.2
+

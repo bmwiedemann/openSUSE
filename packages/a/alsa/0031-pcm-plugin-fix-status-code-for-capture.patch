@@ -1,0 +1,54 @@
+From da5b70d3fae091a8568b80a476c1cf340965805a Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Mon, 4 Jan 2021 12:32:25 +0100
+Subject: [PATCH 31/33] pcm: plugin - fix status code for capture
+
+The recent updates do not take in account the possible
+calls for the capture stream. Fix the avail and delay
+inconsistencies (and assert).
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/pcm/pcm_plugin.c | 21 +++++++++++++++++++--
+ 1 file changed, 19 insertions(+), 2 deletions(-)
+
+diff --git a/src/pcm/pcm_plugin.c b/src/pcm/pcm_plugin.c
+index 5787a43d09f4..7ed6f25a2eea 100644
+--- a/src/pcm/pcm_plugin.c
++++ b/src/pcm/pcm_plugin.c
+@@ -545,13 +545,30 @@ static snd_pcm_sframes_t snd_pcm_plugin_avail_update(snd_pcm_t *pcm)
+ static int snd_pcm_plugin_status(snd_pcm_t *pcm, snd_pcm_status_t * status)
+ {
+ 	snd_pcm_plugin_t *plugin = pcm->private_data;
+-	snd_pcm_sframes_t err;
++	snd_pcm_sframes_t err, diff;
+ 
+ 	err = snd_pcm_status(plugin->gen.slave, status);
+ 	if (err < 0)
+ 		return err;
+-	assert(status->appl_ptr == *pcm->appl.ptr);
+ 	snd_pcm_plugin_sync_hw_ptr(pcm, status->hw_ptr, status->avail);
++	/*
++	 * For capture stream, the situation is more complicated, because
++	 * snd_pcm_plugin_avail_update() commits the data to the slave pcm.
++	 * It means that the slave appl_ptr is updated. Calculate diff and
++	 * update the delay and avail.
++	 *
++	 * This resolves the data inconsistency for immediate calls:
++	 *    snd_pcm_avail_update()
++	 *    snd_pcm_status()
++	 */
++	if (pcm->stream == SND_PCM_STREAM_CAPTURE) {
++		status->appl_ptr = *pcm->appl.ptr;
++		diff = pcm_frame_diff(status->appl_ptr, *pcm->appl.ptr, pcm->boundary);
++		status->avail += diff;
++		status->delay += diff;
++	} else {
++		assert(status->appl_ptr == *pcm->appl.ptr);
++	}
+ 	return 0;
+ }
+ 
+-- 
+2.26.2
+

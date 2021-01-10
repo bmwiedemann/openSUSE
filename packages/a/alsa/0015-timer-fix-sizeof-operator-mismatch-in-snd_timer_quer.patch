@@ -1,0 +1,28 @@
+From aa28847248f2f416d9ecc6cbfa75192455400f6f Mon Sep 17 00:00:00 2001
+From: Alex Henrie <alexhenrie24@gmail.com>
+Date: Sat, 26 Dec 2020 14:35:43 -0700
+Subject: [PATCH 15/33] timer: fix sizeof operator mismatch in
+ snd_timer_query_hw_open
+
+Signed-off-by: Alex Henrie <alexhenrie24@gmail.com>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ src/timer/timer_query_hw.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/timer/timer_query_hw.c b/src/timer/timer_query_hw.c
+index dad228c8ef01..d8bac6e7f0e4 100644
+--- a/src/timer/timer_query_hw.c
++++ b/src/timer/timer_query_hw.c
+@@ -104,7 +104,7 @@ int snd_timer_query_hw_open(snd_timer_query_t **handle, const char *name, int mo
+ 		close(fd);
+ 		return -SND_ERROR_INCOMPATIBLE_VERSION;
+ 	}
+-	tmr = (snd_timer_query_t *) calloc(1, sizeof(snd_timer_t));
++	tmr = (snd_timer_query_t *) calloc(1, sizeof(snd_timer_query_t));
+ 	if (tmr == NULL) {
+ 		close(fd);
+ 		return -ENOMEM;
+-- 
+2.26.2
+

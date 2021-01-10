@@ -1,0 +1,43 @@
+From b62f66442bfbcea7c11afe4917e196fa95a65083 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Mon, 4 Jan 2021 17:27:32 +0100
+Subject: [PATCH 33/33] pcm: rate - fix the capture delay values
+
+Use the correct snd_pcm_mmap_capture_delay() function instead
+snd_pcm_mmap_capture_hw_avail().
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/pcm/pcm_rate.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/src/pcm/pcm_rate.c b/src/pcm/pcm_rate.c
+index 3d301d0e317b..770aafea567d 100644
+--- a/src/pcm/pcm_rate.c
++++ b/src/pcm/pcm_rate.c
+@@ -632,7 +632,7 @@ static int snd_pcm_rate_delay(snd_pcm_t *pcm, snd_pcm_sframes_t *delayp)
+ 				+ snd_pcm_rate_playback_internal_delay(pcm);
+ 	} else {
+ 		*delayp = rate->ops.output_frames(rate->obj, slave_delay)
+-				+ snd_pcm_mmap_capture_hw_avail(pcm);
++				+ snd_pcm_mmap_capture_delay(pcm);
+ 	}
+ 	return 0;
+ }
+@@ -1157,12 +1157,8 @@ static int snd_pcm_rate_status(snd_pcm_t *pcm, snd_pcm_status_t * status)
+ 		status->avail = snd_pcm_mmap_playback_avail(pcm);
+ 		status->avail_max = rate->ops.input_frames(rate->obj, status->avail_max);
+ 	} else {
+-		/* FIXME: Maybe possible to somthing similar to
+-		 * snd_pcm_rate_playback_internal_delay()
+-		 * for the capture case.
+-		 */
+ 		status->delay = rate->ops.output_frames(rate->obj, status->delay)
+-					+ snd_pcm_mmap_capture_hw_avail(pcm);
++					+ snd_pcm_mmap_capture_delay(pcm);
+ 		status->avail = snd_pcm_mmap_capture_avail(pcm);
+ 		status->avail_max = rate->ops.output_frames(rate->obj, status->avail_max);
+ 	}
+-- 
+2.26.2
+

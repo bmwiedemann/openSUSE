@@ -1,0 +1,35 @@
+From 21549e6583f1dfe5b2fe1aaa88345e4645dd96d0 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Wed, 30 Dec 2020 17:49:33 +0100
+Subject: [PATCH 26/33] Revert "pcm_plugin: fix delay"
+
+This reverts commit aba87e509898ec9ddb3e319267d7c267409ff100.
+
+The commit does not look good. The plugins must handle
+the delay value correctly.
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/pcm/pcm_plugin.c | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/src/pcm/pcm_plugin.c b/src/pcm/pcm_plugin.c
+index 6a8151453efb..5787a43d09f4 100644
+--- a/src/pcm/pcm_plugin.c
++++ b/src/pcm/pcm_plugin.c
+@@ -142,12 +142,6 @@ static int snd_pcm_plugin_delay(snd_pcm_t *pcm, snd_pcm_sframes_t *delayp)
+ 	int err = snd_pcm_delay(plugin->gen.slave, &sd);
+ 	if (err < 0)
+ 		return err;
+-        if (pcm->stream == SND_PCM_STREAM_CAPTURE &&
+-	    pcm->access != SND_PCM_ACCESS_RW_INTERLEAVED &&
+-	    pcm->access != SND_PCM_ACCESS_RW_NONINTERLEAVED) {
+-                sd += snd_pcm_mmap_capture_avail(pcm);
+-        }        
+-
+ 	*delayp = sd;
+ 	return 0;
+ }
+-- 
+2.26.2
+

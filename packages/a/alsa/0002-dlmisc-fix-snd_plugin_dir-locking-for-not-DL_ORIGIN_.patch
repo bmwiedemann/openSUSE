@@ -1,0 +1,41 @@
+From 1d993b37ab4e0b9b6e6b795d7be84ce97b29e20b Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 29 Oct 2020 20:31:19 +0100
+Subject: [PATCH 02/33] dlmisc: fix snd_plugin_dir locking for not
+ DL_ORIGIN_AVAILABLE
+
+Fixes: 8580c081c2 ("dlsym: add support for ALSA_PLUGIN_DIR environment variable")
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/dlmisc.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/src/dlmisc.c b/src/dlmisc.c
+index f20eb59373cf..1dd9135641c1 100644
+--- a/src/dlmisc.c
++++ b/src/dlmisc.c
+@@ -46,7 +46,7 @@ static int snd_plugin_dir_set = 0;
+ static char *snd_plugin_dir = NULL;
+ #endif
+ 
+-#if defined(DL_ORIGIN_AVAILABLE) && defined(HAVE_LIBPTHREAD)
++#ifdef HAVE_LIBPTHREAD
+ static pthread_mutex_t snd_dlpath_mutex = PTHREAD_MUTEX_INITIALIZER;
+ 
+ static inline void snd_dlpath_lock(void)
+@@ -440,12 +440,10 @@ void snd_dlobj_cache_cleanup(void)
+ 		free(c);
+ 	}
+ 	snd_dlobj_unlock();
+-#ifdef DL_ORIGIN_AVAILABLE
+ 	snd_dlpath_lock();
+ 	snd_plugin_dir_set = 0;
+ 	free(snd_plugin_dir);
+ 	snd_plugin_dir = NULL;
+ 	snd_dlpath_unlock();
+-#endif
+ }
+ #endif
+-- 
+2.26.2
+

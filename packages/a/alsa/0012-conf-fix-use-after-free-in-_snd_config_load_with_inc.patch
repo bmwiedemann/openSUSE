@@ -1,0 +1,30 @@
+From 5275d170e05639473e68e5feb349aec65bf26428 Mon Sep 17 00:00:00 2001
+From: Alex Henrie <alexhenrie24@gmail.com>
+Date: Sat, 26 Dec 2020 14:35:39 -0700
+Subject: [PATCH 12/33] conf: fix use after free in
+ _snd_config_load_with_include
+
+Signed-off-by: Alex Henrie <alexhenrie24@gmail.com>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ src/conf.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/conf.c b/src/conf.c
+index 7df2b4e77759..44d1bfde66ad 100644
+--- a/src/conf.c
++++ b/src/conf.c
+@@ -1970,7 +1970,9 @@ int _snd_config_load_with_include(snd_config_t *config, snd_input_t *in,
+ 		SNDERR("%s:%d:%d:%s", fd->name ? fd->name : "_toplevel_", fd->line, fd->column, str);
+ 		goto _end;
+ 	}
+-	if (get_char(&input) != LOCAL_UNEXPECTED_EOF) {
++	err = get_char(&input);
++	fd = input.current;
++	if (err != LOCAL_UNEXPECTED_EOF) {
+ 		SNDERR("%s:%d:%d:Unexpected }", fd->name ? fd->name : "", fd->line, fd->column);
+ 		err = -EINVAL;
+ 		goto _end;
+-- 
+2.26.2
+

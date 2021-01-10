@@ -1,0 +1,26 @@
+From 6cee452eabc5cfdf0a6955033b8ac8f6e12ea883 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Sun, 3 Jan 2021 17:13:50 +0100
+Subject: [PATCH 29/33] pcm: ioplug - fix the delay calculation for old plugins
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/pcm/pcm_ioplug.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/pcm/pcm_ioplug.c b/src/pcm/pcm_ioplug.c
+index f2315a10e87c..e141b1f98da7 100644
+--- a/src/pcm/pcm_ioplug.c
++++ b/src/pcm/pcm_ioplug.c
+@@ -116,7 +116,7 @@ static int snd_pcm_ioplug_delay(snd_pcm_t *pcm, snd_pcm_sframes_t *delayp)
+ 		return io->data->callback->delay(io->data, delayp);
+ 	else {
+ 		snd_pcm_ioplug_hw_ptr_update(pcm);
+-		*delayp = snd_pcm_mmap_hw_avail(pcm);
++		*delayp = snd_pcm_mmap_delay(pcm);
+ 	}
+ 	return 0;
+ }
+-- 
+2.26.2
+

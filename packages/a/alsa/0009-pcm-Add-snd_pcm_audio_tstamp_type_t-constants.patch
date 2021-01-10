@@ -1,0 +1,44 @@
+From ea02dbd20a535085638c63c6b8bec94e628486c4 Mon Sep 17 00:00:00 2001
+From: David Henningsson <diwic@ubuntu.com>
+Date: Wed, 16 Dec 2020 19:55:22 +0100
+Subject: [PATCH 09/33] pcm: Add snd_pcm_audio_tstamp_type_t constants
+
+These are mostly a copy-paste from the kernel headers. But since functions
+snd_pcm_audio_tstamp_config make use of these they should be added to the
+public API as well.
+
+Reported-by: Alex Moon <alex.r.moon@gmail.com>
+Signed-off-by: David Henningsson <diwic@ubuntu.com>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ include/pcm.h | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/include/pcm.h b/include/pcm.h
+index 5b0782315585..cf1eea8bbc9b 100644
+--- a/include/pcm.h
++++ b/include/pcm.h
+@@ -350,6 +350,20 @@ typedef enum _snd_pcm_tstamp_type {
+ 	SND_PCM_TSTAMP_TYPE_LAST = SND_PCM_TSTAMP_TYPE_MONOTONIC_RAW,
+ } snd_pcm_tstamp_type_t;
+ 
++typedef enum _snd_pcm_audio_tstamp_type {
++	/**
++	 * first definition for backwards compatibility only,
++	 * maps to wallclock/link time for HDAudio playback and DEFAULT/DMA time for everything else
++	 */
++	SND_PCM_AUDIO_TSTAMP_TYPE_COMPAT = 0,
++	SND_PCM_AUDIO_TSTAMP_TYPE_DEFAULT = 1,           /**< DMA time, reported as per hw_ptr */
++	SND_PCM_AUDIO_TSTAMP_TYPE_LINK = 2,	           /**< link time reported by sample or wallclock counter, reset on startup */
++	SND_PCM_AUDIO_TSTAMP_TYPE_LINK_ABSOLUTE = 3,	   /**< link time reported by sample or wallclock counter, not reset on startup */
++	SND_PCM_AUDIO_TSTAMP_TYPE_LINK_ESTIMATED = 4,    /**< link time estimated indirectly */
++	SND_PCM_AUDIO_TSTAMP_TYPE_LINK_SYNCHRONIZED = 5, /**< link time synchronized with system time */
++	SND_PCM_AUDIO_TSTAMP_TYPE_LAST = SNDRV_PCM_AUDIO_TSTAMP_TYPE_LINK_SYNCHRONIZED
++} snd_pcm_audio_tstamp_type_t;
++
+ typedef struct _snd_pcm_audio_tstamp_config {
+ 	/* 5 of max 16 bits used */
+ 	unsigned int type_requested:4;
+-- 
+2.26.2
+

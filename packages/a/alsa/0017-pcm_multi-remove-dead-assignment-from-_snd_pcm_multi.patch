@@ -1,0 +1,27 @@
+From fc719bfe4e97bbfce899cc7e67df08ecd573c5d3 Mon Sep 17 00:00:00 2001
+From: Alex Henrie <alexhenrie24@gmail.com>
+Date: Sat, 26 Dec 2020 14:35:45 -0700
+Subject: [PATCH 17/33] pcm_multi: remove dead assignment from
+ _snd_pcm_multi_open
+
+Signed-off-by: Alex Henrie <alexhenrie24@gmail.com>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ src/pcm/pcm_multi.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/pcm/pcm_multi.c b/src/pcm/pcm_multi.c
+index 53c414d5f863..5fa09b9bf5d0 100644
+--- a/src/pcm/pcm_multi.c
++++ b/src/pcm/pcm_multi.c
+@@ -1323,7 +1323,6 @@ int _snd_pcm_multi_open(snd_pcm_t **pcmp, const char *name,
+ 		err = -ENOMEM;
+ 		goto _free;
+ 	}
+-	idx = 0;
+ 	for (idx = 0; idx < channels_count; ++idx)
+ 		channels_sidx[idx] = -1;
+ 	idx = 0;
+-- 
+2.26.2
+

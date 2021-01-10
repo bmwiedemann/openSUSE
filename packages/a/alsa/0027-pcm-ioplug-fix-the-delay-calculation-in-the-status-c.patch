@@ -1,0 +1,74 @@
+From 6ca01c07ee13435d6c2db4e9121d9a86cc4b1457 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Wed, 30 Dec 2020 19:14:25 +0100
+Subject: [PATCH 27/33] pcm: ioplug - fix the delay calculation in the status
+ callback
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/pcm/pcm_ioplug.c | 32 ++++++++++++++++++--------------
+ 1 file changed, 18 insertions(+), 14 deletions(-)
+
+diff --git a/src/pcm/pcm_ioplug.c b/src/pcm/pcm_ioplug.c
+index 9b1b8ac3b6fc..f2315a10e87c 100644
+--- a/src/pcm/pcm_ioplug.c
++++ b/src/pcm/pcm_ioplug.c
+@@ -107,9 +107,24 @@ static int snd_pcm_ioplug_channel_info(snd_pcm_t *pcm, snd_pcm_channel_info_t *i
+ 	return snd_pcm_channel_info_shm(pcm, info, -1);
+ }
+ 
++static int snd_pcm_ioplug_delay(snd_pcm_t *pcm, snd_pcm_sframes_t *delayp)
++{
++	ioplug_priv_t *io = pcm->private_data;
++
++	if (io->data->version >= 0x010001 &&
++	    io->data->callback->delay)
++		return io->data->callback->delay(io->data, delayp);
++	else {
++		snd_pcm_ioplug_hw_ptr_update(pcm);
++		*delayp = snd_pcm_mmap_hw_avail(pcm);
++	}
++	return 0;
++}
++
+ static int snd_pcm_ioplug_status(snd_pcm_t *pcm, snd_pcm_status_t * status)
+ {
+ 	ioplug_priv_t *io = pcm->private_data;
++	snd_pcm_sframes_t sd;
+ 
+ 	memset(status, 0, sizeof(*status));
+ 	snd_pcm_ioplug_hw_ptr_update(pcm);
+@@ -118,6 +133,9 @@ static int snd_pcm_ioplug_status(snd_pcm_t *pcm, snd_pcm_status_t * status)
+ 	gettimestamp(&status->tstamp, pcm->tstamp_type);
+ 	status->avail = snd_pcm_mmap_avail(pcm);
+ 	status->avail_max = io->avail_max;
++	if (snd_pcm_ioplug_delay(pcm, &sd) < 0)
++		sd = snd_pcm_mmap_delay(pcm);
++	status->delay = sd;
+ 	return 0;
+ }
+ 
+@@ -133,20 +151,6 @@ static int snd_pcm_ioplug_hwsync(snd_pcm_t *pcm)
+ 	return 0;
+ }
+ 
+-static int snd_pcm_ioplug_delay(snd_pcm_t *pcm, snd_pcm_sframes_t *delayp)
+-{
+-	ioplug_priv_t *io = pcm->private_data;
+-
+-	if (io->data->version >= 0x010001 &&
+-	    io->data->callback->delay)
+-		return io->data->callback->delay(io->data, delayp);
+-	else {
+-		snd_pcm_ioplug_hw_ptr_update(pcm);
+-		*delayp = snd_pcm_mmap_hw_avail(pcm);
+-	}
+-	return 0;
+-}
+-
+ static int snd_pcm_ioplug_reset(snd_pcm_t *pcm)
+ {
+ 	ioplug_priv_t *io = pcm->private_data;
+-- 
+2.26.2
+

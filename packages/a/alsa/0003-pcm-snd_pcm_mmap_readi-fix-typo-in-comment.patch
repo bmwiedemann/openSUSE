@@ -1,0 +1,28 @@
+From 2757191e3b85d491705b31c6ecca2dbd96d26ade Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 29 Oct 2020 20:34:17 +0100
+Subject: [PATCH 03/33] pcm: snd_pcm_mmap_readi - fix typo in comment
+
+\param size frames to be *read*
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/pcm/pcm_mmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/pcm/pcm_mmap.c b/src/pcm/pcm_mmap.c
+index 9600c3831238..9cbaae05250a 100644
+--- a/src/pcm/pcm_mmap.c
++++ b/src/pcm/pcm_mmap.c
+@@ -183,7 +183,7 @@ snd_pcm_sframes_t snd_pcm_mmap_writen(snd_pcm_t *pcm, void **bufs, snd_pcm_ufram
+  * \brief Read interleaved frames from a PCM using direct buffer (mmap)
+  * \param pcm PCM handle
+  * \param buffer frames containing buffer
+- * \param size frames to be written
++ * \param size frames to be read
+  * \return a positive number of frames actually read otherwise a
+  * negative error code
+  * \retval -EBADFD PCM is not in the right state (#SND_PCM_STATE_PREPARED or #SND_PCM_STATE_RUNNING)
+-- 
+2.26.2
+

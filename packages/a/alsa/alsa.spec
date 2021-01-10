@@ -1,7 +1,7 @@
 #
 # spec file for package alsa
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,6 +52,35 @@ Source30:       all_notes_off
 Source31:       all_notes_off.bin
 Source32:       all_notes_off.mid
 Source34:       alsa-init.sh
+Patch1:         0001-dlmisc-the-snd_plugin_dir_set-snd_plugin_dir-must-be.patch
+Patch2:         0002-dlmisc-fix-snd_plugin_dir-locking-for-not-DL_ORIGIN_.patch
+Patch3:         0003-pcm-snd_pcm_mmap_readi-fix-typo-in-comment.patch
+Patch7:         0007-pcm-set-the-snd_pcm_ioplug_status-tstamp-field.patch
+Patch9:         0009-pcm-Add-snd_pcm_audio_tstamp_type_t-constants.patch
+Patch10:        0010-test-audio_time-Make-use-of-SND_PCM_AUDIO_TSTAMP_TYP.patch
+Patch11:        0011-pcm-Fix-a-typo-in-SND_PCM_AUDIO_TSTAMP_TYPE_LAST-def.patch
+Patch12:        0012-conf-fix-use-after-free-in-_snd_config_load_with_inc.patch
+Patch13:        0013-ucm-fix-bad-frees-in-get_list0-and-get_list20.patch
+Patch14:        0014-rawmidi-fix-memory-leak-in-snd_rawmidi_virtual_open.patch
+Patch15:        0015-timer-fix-sizeof-operator-mismatch-in-snd_timer_quer.patch
+Patch16:        0016-pcm-remove-dead-assignments-from-snd_pcm_rate_-commi.patch
+Patch17:        0017-pcm_multi-remove-dead-assignment-from-_snd_pcm_multi.patch
+Patch18:        0018-conf-fix-get_hexachar-return-value.patch
+Patch19:        0019-pcm-fix-__snd_pcm_state-return-value.patch
+Patch20:        0020-confmisc-fix-memory-leak-in-snd_func_concat.patch
+Patch21:        0021-conf-fix-return-code-in-_snd_config_load_with_includ.patch
+Patch22:        0022-pcm-plugin-status-fix-the-return-value-regression.patch
+Patch23:        0023-pcm-plugin-status-revert-the-recent-changes.patch
+Patch24:        0024-pcm-plugin-tidy-snd_pcm_plugin_avail_update.patch
+Patch25:        0025-pcm-plugin-optimize-sync-in-snd_pcm_plugin_status.patch
+Patch26:        0026-Revert-pcm_plugin-fix-delay.patch
+Patch27:        0027-pcm-ioplug-fix-the-delay-calculation-in-the-status-c.patch
+Patch28:        0028-pcm-rate-tidy-up-snd_pcm_rate_avail_update.patch
+Patch29:        0029-pcm-ioplug-fix-the-delay-calculation-for-old-plugins.patch
+Patch30:        0030-pcm-rate-use-pcm_frame_diff-in-snd_pcm_rate_playback.patch
+Patch31:        0031-pcm-plugin-fix-status-code-for-capture.patch
+Patch32:        0032-pcm-rate-use-pcm_frame_diff-on-related-places.patch
+Patch33:        0033-pcm-rate-fix-the-capture-delay-values.patch
 # rest suse fixes
 Patch101:       alsa-lib-ignore-non-accessible-ALSA_CONFIG_PATH.patch
 BuildRequires:  doxygen
@@ -140,6 +169,35 @@ This package contains the library for ALSA topology support.
 
 %prep
 %setup -q -n alsa-lib-%{version}
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch7 -p1
+%patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
+%patch16 -p1
+%patch17 -p1
+%patch18 -p1
+%patch19 -p1
+%patch20 -p1
+%patch21 -p1
+%patch22 -p1
+%patch23 -p1
+%patch24 -p1
+%patch25 -p1
+%patch26 -p1
+%patch27 -p1
+%patch28 -p1
+%patch29 -p1
+%patch30 -p1
+%patch31 -p1
+%patch32 -p1
+%patch33 -p1
 %patch101 -p1
 
 %build

@@ -1,0 +1,27 @@
+From 6c24cd2e60cc9c1fca809ffeeb7ffe8af94b201e Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Tue, 29 Dec 2020 11:15:46 +0100
+Subject: [PATCH 21/33] conf: fix return code in _snd_config_load_with_include
+
+Fixes: 5275d170e0 ("conf: fix use after free in _snd_config_load_with_include")
+BugLink: https://github.com/alsa-project/alsa-lib/issues/108
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/conf.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/conf.c b/src/conf.c
+index 6cfe65bfe8cd..3c943db2b576 100644
+--- a/src/conf.c
++++ b/src/conf.c
+@@ -1977,6 +1977,7 @@ int _snd_config_load_with_include(snd_config_t *config, snd_input_t *in,
+ 		err = -EINVAL;
+ 		goto _end;
+ 	}
++	err = 0;
+  _end:
+ 	while (fd->next) {
+ 		fd_next = fd->next;
+-- 
+2.26.2
+

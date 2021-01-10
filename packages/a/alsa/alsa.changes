@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Jan  5 15:13:13 CET 2021 - tiwai@suse.de
+
+- Backport upstream fixes:
+  a PCM plugin regression fix about snd_pcm_status() call, plugin
+  directory handling fixes, missing audio timestamp types,
+  use-after-free fix for conf parser, PCM plugin delay account fixes,
+  etc:
+  0001-dlmisc-the-snd_plugin_dir_set-snd_plugin_dir-must-be.patch
+  0002-dlmisc-fix-snd_plugin_dir-locking-for-not-DL_ORIGIN_.patch
+  0003-pcm-snd_pcm_mmap_readi-fix-typo-in-comment.patch
+  0007-pcm-set-the-snd_pcm_ioplug_status-tstamp-field.patch
+  0009-pcm-Add-snd_pcm_audio_tstamp_type_t-constants.patch
+  0010-test-audio_time-Make-use-of-SND_PCM_AUDIO_TSTAMP_TYP.patch
+  0011-pcm-Fix-a-typo-in-SND_PCM_AUDIO_TSTAMP_TYPE_LAST-def.patch
+  0012-conf-fix-use-after-free-in-_snd_config_load_with_inc.patch
+  0013-ucm-fix-bad-frees-in-get_list0-and-get_list20.patch
+  0014-rawmidi-fix-memory-leak-in-snd_rawmidi_virtual_open.patch
+  0015-timer-fix-sizeof-operator-mismatch-in-snd_timer_quer.patch
+  0016-pcm-remove-dead-assignments-from-snd_pcm_rate_-commi.patch
+  0017-pcm_multi-remove-dead-assignment-from-_snd_pcm_multi.patch
+  0018-conf-fix-get_hexachar-return-value.patch
+  0019-pcm-fix-__snd_pcm_state-return-value.patch
+  0020-confmisc-fix-memory-leak-in-snd_func_concat.patch
+  0021-conf-fix-return-code-in-_snd_config_load_with_includ.patch
+  0022-pcm-plugin-status-fix-the-return-value-regression.patch
+  0023-pcm-plugin-status-revert-the-recent-changes.patch
+  0024-pcm-plugin-tidy-snd_pcm_plugin_avail_update.patch
+  0025-pcm-plugin-optimize-sync-in-snd_pcm_plugin_status.patch
+  0026-Revert-pcm_plugin-fix-delay.patch
+  0027-pcm-ioplug-fix-the-delay-calculation-in-the-status-c.patch
+  0028-pcm-rate-tidy-up-snd_pcm_rate_avail_update.patch
+  0029-pcm-ioplug-fix-the-delay-calculation-for-old-plugins.patch
+  0030-pcm-rate-use-pcm_frame_diff-in-snd_pcm_rate_playback.patch
+  0031-pcm-plugin-fix-status-code-for-capture.patch
+  0032-pcm-rate-use-pcm_frame_diff-on-related-places.patch
+  0033-pcm-rate-fix-the-capture-delay-values.patch
+
+-------------------------------------------------------------------
 Wed Oct 21 12:42:25 CEST 2020 - tiwai@suse.de
 
 - Update to alsa-lib 1.2.4:
