@@ -1,7 +1,7 @@
 #
 # spec file for package keepass
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,8 @@
 
 
 %define _name KeePass
-
 Name:           keepass
-Version:        2.46
+Version:        2.47
 Release:        0
 Summary:        Password Manager
 License:        GPL-2.0-or-later
@@ -35,9 +34,8 @@ BuildRequires:  unzip
 BuildRequires:  xdotool-devel
 BuildRequires:  xorg-x11-fonts-core
 BuildRequires:  xsel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildArch:      noarch
 Recommends:     xdotool
+BuildArch:      noarch
 
 %description
 KeePass is a password manager, which helps you to manage your
@@ -99,8 +97,8 @@ install -d %{buildroot}%{_datadir}/pixmaps
 install -m 644 Ext/Icons_04_CB/Finals/plock-blu.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
 
 %files
-%defattr(-,root,root)
-%doc Docs/License.txt Docs/History.txt
+%license Docs/License.txt
+%doc Docs/History.txt
 %attr(755,root,root) %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png

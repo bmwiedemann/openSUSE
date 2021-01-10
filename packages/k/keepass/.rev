@@ -198,4 +198,41 @@
     <comment></comment>
     <requestid>833919</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fae96e59c5c491728d9bd78fbbec9bba</srcmd5>
+    <version>2.47</version>
+    <time>1610304271</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.47
+  * New Features:
+    + In the 'Find' dialog, search parameters can now be saved as profiles; the profiles can be accessed quickly via the main menu ('Find' → 'Search Profiles') and the group context menu.
+    + Added search mode 'XPath expression' in the 'Find' dialog, which creates a KeePass 2.x XML DOM of the current database in memory and finds entries using the specified XPath expression.
+    + Added option 'History' in the 'Find' dialog, which includes history entries in searches.
+    + Added 'Help' button in the 'Find' dialog.
+    + Added auto-type matching option 'Consider similar dashes as identical' (in 'Tools' → 'Options' → tab 'Advanced', turned on by default).
+    + Added commands 'Copy Group (Encrypted)', 'Copy Group (Unencrypted)' and 'Paste Group' (in the menu 'Group' → 'Data Exchange').
+    + When loading/saving a configuration file fails, an error message is displayed now, and in certain cases a backup of the configuration file is created (the path is mentioned in the error message).
+    + Added configuration option for saving the configuration (turned on by default).
+    + On the 'Security' tab page of the options dialog, two links have been added, which open help pages for experts and administrators.
+    + Added {TIMEOTP} placeholder, which generates a time-based one-time password (as specified in RFC 6238).
+    + Enhanced XML key file format (added hash that allows to verify the integrity of the key; values are now encoded using hexadecimal characters in order to improve the readability).
+    + Added command 'Print Key File Backup' (in 'File' → 'Print').
+    + In the dialog that asks whether to print an emergency sheet, there is now an option 'Also print a key file backup' (on Windows), if the master key contains a key file.
+    + Added command 'Create Key File' (in 'Tools' → 'Advanced Tools'), which shows a dialog for creating a new key file (random key) or for recreating a key file from a printed backup.
+    + Added Argon2id key derivation function.
+    + Added support for importing Dashlane 6.2039.0 JSON files.
+    + Dashlane and RoboForm import: domains are now mapped to HTTPS URLs (instead of HTTP URLs).
+    + Added option 'Use a different master key' in the import/export dialog (tab page 'Options').
+    + Added option 'Additionally export parent groups' in the import/export dialog (tab page 'Options').
+    + Added options 'Open exported file (with associated application)' and 'Show exported file (with file manager)' in the import/export dialog (tab page 'Options').
+    + The 'About' dialog now shows whether KeePass is currently running as 32- or 64-bit application.
+    + Plugins can now disable/enable specific Mono workarounds.
+    + Added workaround for Mono URL opening bug.
+    + Added workaround for Mono HTML document opening bug.
+  * Improvements:
+    + Improved performance of certain searches.
+    + Various user interface improvements in the search dialog.
+    + Improved keyboard shortcut handling (e.g. Ctrl+Tab and Ctrl+Shift+Tab now also work when the quick search box is focused).</comment>
+    <requestid>861997</requestid>
+  </revision>
 </revisionlist>
