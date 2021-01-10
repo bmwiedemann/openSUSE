@@ -1,0 +1,5 @@
+# library and development package names don't match
+addFilter("no-dependency-on .*")
+
+# neither does the qt6-quick3d package
+addFilter("no-version-dependency-on .*")
