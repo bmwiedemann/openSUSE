@@ -1,7 +1,7 @@
 #
 # spec file for package libnettle
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define soname 8
 %define hogweed_soname 6
 Name:           libnettle
-Version:        3.6
+Version:        3.7
 Release:        0
 Summary:        Cryptographic Library
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -35,7 +35,6 @@ BuildRequires:  gmp-devel >= 6.1.0
 BuildRequires:  m4
 BuildRequires:  makeinfo
 BuildRequires:  pkgconfig
-Requires(post): %{install_info_prereq}
 
 %description
 Nettle is a cryptographic library that is designed to fit easily in more or
@@ -124,11 +123,6 @@ operations using the nettle library.
 %postun -n libnettle%{soname} -p /sbin/ldconfig
 %post   -n libhogweed%{hogweed_soname} -p /sbin/ldconfig
 %postun -n libhogweed%{hogweed_soname} -p /sbin/ldconfig
-%post -n libnettle-devel
-%install_info --info-dir="%{_infodir}" "%{_infodir}"/nettle.info%{ext_info}
-
-%preun -n libnettle-devel
-%install_info_delete --info-dir="%{_infodir}" "%{_infodir}"/nettle.info%{ext_info}
 
 %check
 %make_build check

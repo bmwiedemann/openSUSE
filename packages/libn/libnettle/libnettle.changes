@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  4 20:39:20 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Nettle 3.7:
+  * add bcrypt password hashing 
+  * add optimizations: PowerPC64 assembly
+- remove deprecated texinfo packaing macros
+
+-------------------------------------------------------------------
 Sun May 10 19:32:12 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU Nettle 3.6:
