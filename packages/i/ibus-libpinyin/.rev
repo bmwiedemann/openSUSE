@@ -261,4 +261,13 @@
   * bug fixes (forwarded request 843539 from hillwood)</comment>
     <requestid>843540</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>9d6bd8bcebee2bb5f8d55c335e7363ad</srcmd5>
+    <version>1.12.0</version>
+    <time>1610304287</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.12.0
+  * bug fixes (forwarded request 862020 from wsxy162)</comment>
+    <requestid>862080</requestid>
+  </revision>
 </revisionlist>
