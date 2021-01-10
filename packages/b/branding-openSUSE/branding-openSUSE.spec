@@ -20,7 +20,7 @@
 %define theme_name openSUSE
 %define theme_version tumbleweed
 %define theme_version_clean Tumbleweed
-%define date 20191004
+%define date 20200106
 
 %ifarch x86_64 %{ix86}
 %define gfxboot 1

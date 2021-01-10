@@ -1002,4 +1002,12 @@ update go git:
     <comment></comment>
     <requestid>835623</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>0c8b57b02f032d37ee568425aeb6a2e0</srcmd5>
+    <version>84.87.20200106</version>
+    <time>1610303940</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860732</requestid>
+  </revision>
 </revisionlist>
