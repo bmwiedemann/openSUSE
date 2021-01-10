@@ -202,4 +202,12 @@
     <comment>- Update to release 1.19</comment>
     <requestid>850619</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>9dba44ee1931f06558a1e29e659caf20</srcmd5>
+    <version>1.19</version>
+    <time>1610303936</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860707</requestid>
+  </revision>
 </revisionlist>

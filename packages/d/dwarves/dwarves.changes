@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  6 06:07:31 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Drop the version requirement of libdw-devel
+  + DW_AT_alignment is defined in 1.19 so dwarves now is compatible
+    with older libdw.
+
+-------------------------------------------------------------------
 Tue Nov 24 13:26:05 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.19

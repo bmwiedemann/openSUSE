@@ -1,7 +1,7 @@
 #
 # spec file for package dwarves
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ Source:         https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.xz
 Source2:        https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.sign
 Source9:        baselibs.conf
 BuildRequires:  cmake
-BuildRequires:  libdw-devel >= 0.170
+BuildRequires:  libdw-devel
 %if 0%{?suse_version} < 1550
 BuildRequires:  libebl-devel
 %endif
