@@ -3818,4 +3818,14 @@
 - update staging to 6.0rc5 release</comment>
     <requestid>859961</requestid>
   </revision>
+  <revision rev="329" vrev="1">
+    <srcmd5>bbfad2f416694ba2e6ca0f5c90d04314</srcmd5>
+    <version>6.0~rc6</version>
+    <time>1610304261</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 6.0rc6 development release
+  - Bug fixes only, we are in code freeze.
+- update staging to 6.0rc6 release</comment>
+    <requestid>861885</requestid>
+  </revision>
 </revisionlist>
