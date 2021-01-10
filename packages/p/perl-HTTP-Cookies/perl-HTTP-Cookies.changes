@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan  5 03:07:23 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.10
+   see /usr/share/doc/packages/perl-HTTP-Cookies/Changes
+
+  6.10      2021-01-04 22:03:43Z
+      - Do not set discard if max-age is set (GH#61) (robnagler, simbabque)
+      - Add tests for #61 - do not set discard if max-age is set (GH#65) (Julien Fiegehenn)
+
+-------------------------------------------------------------------
 Fri Nov 20 11:27:15 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.09
