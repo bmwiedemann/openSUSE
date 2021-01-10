@@ -1,0 +1,50 @@
+From 5405544752c18153acc310ee7e4a4bacda040dca Mon Sep 17 00:00:00 2001
+From: Kai-Heng Feng <kai.heng.feng@canonical.com>
+Date: Thu, 27 Aug 2020 21:18:13 +0800
+Subject: [PATCH 10/12] HDA-Intel/HiFi-dual: Add EnableSequence and
+ DisableSequence for Speaker and Headphones
+
+BugLink: https://github.com/alsa-project/alsa-ucm-conf/pull/48
+Signed-off-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/HDA-Intel/HiFi-dual.conf | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/ucm2/HDA-Intel/HiFi-dual.conf b/ucm2/HDA-Intel/HiFi-dual.conf
+index cff948efee91..bacfd8027f49 100644
+--- a/ucm2/HDA-Intel/HiFi-dual.conf
++++ b/ucm2/HDA-Intel/HiFi-dual.conf
+@@ -27,6 +27,14 @@ SectionDevice."Speaker" {
+ 		PlaybackMixerElem "Speaker"
+ 	}
+ 
++	EnableSequence [
++		cset "name='Speaker Playback Switch' on"
++	]
++
++	DisableSequence [
++		cset "name='Speaker Playback Switch' off"
++	]
++
+ 	ConflictingDevice [
+ 		"Headphones"
+ 	]
+@@ -54,6 +62,14 @@ SectionDevice."Headphones" {
+ 		JackHWMute "Speaker"
+ 	}
+ 
++	EnableSequence [
++		cset "name='Headphone Playback Switch' on"
++	]
++
++	DisableSequence [
++		cset "name='Headphone Playback Switch' off"
++	]
++
+ 	ConflictingDevice [
+ 		"Speaker"
+ 	]
+-- 
+2.26.2
+

@@ -1,0 +1,36 @@
+From 5634db4be3ed435f3e59f30a71c3c3711162929d Mon Sep 17 00:00:00 2001
+From: Jian-Hong Pan <jhp@endlessos.org>
+Date: Tue, 15 Dec 2020 16:54:03 +0800
+Subject: [PATCH 12/12] chtrt5645: Enable Internal MIC of ECS EF20EA
+
+The ECS EF20EA uses a digital mic connected to the dmic2 pin, rather
+then the default analog mic.
+
+1 [chtrt5645      ]: chtrt5645 - chtrt5645
+                     Standard-EF20EA-1.0
+
+Add a card long name match for this, so that the right config is used.
+
+BugLink: https://github.com/alsa-project/alsa-ucm-conf/pull/68
+Signed-off-by: Jian-Hong Pan <jhp@endlessos.org>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/chtrt5645/HiFi.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ucm2/chtrt5645/HiFi.conf b/ucm2/chtrt5645/HiFi.conf
+index 10b0a1c22f97..30fad5013d02 100644
+--- a/ucm2/chtrt5645/HiFi.conf
++++ b/ucm2/chtrt5645/HiFi.conf
+@@ -18,7 +18,7 @@ If.cfg-dmic2 {
+ 	Condition {
+ 		Type RegexMatch
+ 		String "${CardLongName}"
+-		Regex "(LENOVO.*LenovoMIIX320|MEDION.*Wingman)"
++		Regex "(LENOVO.*LenovoMIIX320|MEDION.*Wingman|Standard-EF20EA-1.0)"
+ 	}
+ 	True {
+ 		Define.AnalogMic ""
+-- 
+2.26.2
+

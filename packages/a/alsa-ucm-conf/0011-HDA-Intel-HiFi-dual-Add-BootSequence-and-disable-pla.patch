@@ -1,0 +1,49 @@
+From 5947daef124c84fae511233248196576dfbfab7c Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Wed, 16 Dec 2020 08:55:04 +0100
+Subject: [PATCH 11/12] HDA-Intel/HiFi-dual: Add BootSequence and disable
+ playback channels in verb init
+
+BugLink: https://github.com/alsa-project/alsa-ucm-conf/pull/48
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/HDA-Intel/HDAudio-DualCodecs.conf | 12 ++++++++++++
+ ucm2/HDA-Intel/HiFi-dual.conf          |  2 ++
+ 2 files changed, 14 insertions(+)
+
+diff --git a/ucm2/HDA-Intel/HDAudio-DualCodecs.conf b/ucm2/HDA-Intel/HDAudio-DualCodecs.conf
+index 8aaabd0c819d..6fd7bd1032f5 100644
+--- a/ucm2/HDA-Intel/HDAudio-DualCodecs.conf
++++ b/ucm2/HDA-Intel/HDAudio-DualCodecs.conf
+@@ -4,3 +4,15 @@ SectionUseCase."HiFi" {
+ 	File "HiFi-dual.conf"
+ 	Comment "Default"
+ }
++
++BootSequence [
++	cset "name='Headphone Playback Volume' 60%"
++	cset "name='Headphone Playback Switch' off"
++	cset "name='Speaker Playback Volume' 60%"
++	cset "name='Speaker Playback Switch' on"
++	cset "name='Front Playback Volume' 100%"
++	cset "name='Front Playback Switch' on"
++	cset "name='Rear-Panel Capture Volume' 100%"
++	cset "name='Rear-Panel Capture Switch' on"
++	cset "name='Input Source' Rear Mic"
++]
+diff --git a/ucm2/HDA-Intel/HiFi-dual.conf b/ucm2/HDA-Intel/HiFi-dual.conf
+index bacfd8027f49..f2c691501057 100644
+--- a/ucm2/HDA-Intel/HiFi-dual.conf
++++ b/ucm2/HDA-Intel/HiFi-dual.conf
+@@ -8,6 +8,8 @@ SectionVerb {
+ 		cset "name='Front Playback Switch' on"
+ 		cset "name='Rear-Panel Capture Volume' 100%"
+ 		cset "name='Rear-Panel Capture Switch' on"
++		cset "name='Headphone Playback Switch' off"
++		cset "name='Speaker Playback Switch' off"
+ 	]
+ 
+ 	DisableSequence [
+-- 
+2.26.2
+

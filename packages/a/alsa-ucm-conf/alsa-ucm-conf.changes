@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan  5 15:19:35 CET 2021 - tiwai@suse.de
+
+- Backport upstream fixes: HD-audio dual codec fixes and the builtin
+  mic fix for rt5645-based devices:
+  0010-HDA-Intel-HiFi-dual-Add-EnableSequence-and-DisableSe.patch
+  0011-HDA-Intel-HiFi-dual-Add-BootSequence-and-disable-pla.patch
+  0012-chtrt5645-Enable-Internal-MIC-of-ECS-EF20EA.patch
+
+-------------------------------------------------------------------
 Mon Dec 14 16:20:59 CET 2020 - tiwai@suse.de
 
 - Backport upstream fixes: AMD MCP mute issue, chtnau8824 fixes,

@@ -1,7 +1,7 @@
 #
 # spec file for package alsa-ucm-conf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,9 @@ Patch6:         0006-chtnau8824-Add-support-for-laptops-using-stereo-DMIC.patch
 Patch7:         0007-chtnau8824-Boost-analog-mic-volumes-a-bit.patch
 Patch8:         0008-rt715-init-setup-ADC07-to-a-proper-volume.patch
 Patch9:         0009-sof-hda-dsp-Set-Master-Playback-Switch-on-in-the-Boo.patch
+Patch10:        0010-HDA-Intel-HiFi-dual-Add-EnableSequence-and-DisableSe.patch
+Patch11:        0011-HDA-Intel-HiFi-dual-Add-BootSequence-and-disable-pla.patch
+Patch12:        0012-chtrt5645-Enable-Internal-MIC-of-ECS-EF20EA.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -49,6 +52,9 @@ This package contains the profiles files for ALSA UCM (Use Case Manager).
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
 
 %build
 
