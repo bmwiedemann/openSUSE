@@ -1,7 +1,7 @@
 #
 # spec file for package containers-systemd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ DISABLE_RESTART_ON_UPDATE=1 \
 %endif
 
 Name:           containers-systemd
-Version:        0.0+git20201220.ed8a6b2
+Version:        0.0+git20210107.f55f4b3
 Release:        0
 Summary:        Systemd service files and config files for openSUSE container
 License:        MIT

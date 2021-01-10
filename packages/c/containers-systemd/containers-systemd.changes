@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jan 07 15:29:28 UTC 2021 - kukuk@suse.com
+
+- Update to version 0.0+git20210107.f55f4b3:
+  * postfix: provide SMTP_TLS_SECURITY_LEVEL variable
+
+-------------------------------------------------------------------
+Thu Jan 07 14:59:44 UTC 2021 - kukuk@suse.com
+
+- Update to version 0.0+git20210107.5e7d60c:
+  * spamassassin: add volume for configuration files
+
+-------------------------------------------------------------------
+Tue Jan 05 14:46:15 UTC 2021 - kukuk@suse.com
+
+- Update to version 0.0+git20210105.c149375:
+  * postfix: Add SMTP_PORT and NULLCLIENT
+
+-------------------------------------------------------------------
 Sun Dec 20 17:20:42 UTC 2020 - kukuk@suse.com
 
 - Update to version 0.0+git20201220.ed8a6b2:

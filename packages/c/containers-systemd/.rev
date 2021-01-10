@@ -206,4 +206,19 @@
   * Allow to overwrite TLS key location</comment>
     <requestid>857743</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9edc3acac26cb5aaebd1cf6fb2c06da5</srcmd5>
+    <version>0.0+git20210107.f55f4b3</version>
+    <time>1610303944</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20210107.f55f4b3:
+  * postfix: provide SMTP_TLS_SECURITY_LEVEL variable
+
+- Update to version 0.0+git20210107.5e7d60c:
+  * spamassassin: add volume for configuration files
+
+- Update to version 0.0+git20210105.c149375:
+  * postfix: Add SMTP_PORT and NULLCLIENT</comment>
+    <requestid>861384</requestid>
+  </revision>
 </revisionlist>
