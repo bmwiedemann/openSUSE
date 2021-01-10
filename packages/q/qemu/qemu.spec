@@ -1,7 +1,7 @@
 #
 # spec file for package qemu
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -131,49 +131,55 @@ Source303:      README.PACKAGING
 # This patch queue is auto-generated - see README.PACKAGING for process
 
 # Patches applied in base project:
-Patch00000:     XXX-dont-dump-core-on-sigabort.patch
-Patch00001:     qemu-binfmt-conf-Modify-default-path.patch
-Patch00002:     qemu-cvs-gettimeofday.patch
-Patch00003:     qemu-cvs-ioctl_debug.patch
-Patch00004:     qemu-cvs-ioctl_nodirection.patch
-Patch00005:     linux-user-add-binfmt-wrapper-for-argv-0.patch
-Patch00006:     PPC-KVM-Disable-mmu-notifier-check.patch
-Patch00007:     linux-user-binfmt-support-host-binaries.patch
-Patch00008:     linux-user-Fake-proc-cpuinfo.patch
-Patch00009:     linux-user-use-target_ulong.patch
-Patch00010:     Make-char-muxer-more-robust-wrt-small-FI.patch
-Patch00011:     linux-user-lseek-explicitly-cast-non-set.patch
-Patch00012:     AIO-Reduce-number-of-threads-for-32bit-h.patch
-Patch00013:     xen_disk-Add-suse-specific-flush-disable.patch
-Patch00014:     qemu-bridge-helper-reduce-security-profi.patch
-Patch00015:     qemu-binfmt-conf-use-qemu-ARCH-binfmt.patch
-Patch00016:     roms-Makefile-pass-a-packaging-timestamp.patch
-Patch00017:     Raise-soft-address-space-limit-to-hard-l.patch
-Patch00018:     increase-x86_64-physical-bits-to-42.patch
-Patch00019:     i8254-Fix-migration-from-SLE11-SP2.patch
-Patch00020:     acpi_piix4-Fix-migration-from-SLE11-SP2.patch
-Patch00021:     Make-installed-scripts-explicitly-python.patch
-Patch00022:     hw-smbios-handle-both-file-formats-regar.patch
-Patch00023:     xen-add-block-resize-support-for-xen-dis.patch
-Patch00024:     tests-qemu-iotests-Triple-timeout-of-i-o.patch
-Patch00025:     tests-Fix-block-tests-to-be-compatible-w.patch
-Patch00026:     xen-ignore-live-parameter-from-xen-save-.patch
-Patch00027:     tests-change-error-message-in-test-162.patch
-Patch00028:     hw-intc-exynos4210_gic-provide-more-room.patch
-Patch00029:     configure-only-populate-roms-if-softmmu.patch
-Patch00030:     pc-bios-s390-ccw-net-avoid-warning-about.patch
-Patch00031:     roms-change-cross-compiler-naming-to-be-.patch
-Patch00032:     test-add-mapping-from-arch-of-i686-to-qe.patch
-Patch00033:     configure-remove-pkgversion-from-CONFIG_.patch
-Patch00034:     docs-add-SUSE-support-statements-to-html.patch
-Patch00035:     s390x-Fix-stringop-truncation-issue-repo.patch
-Patch00036:     Revert-qht-constify-qht_statistics_init.patch
-Patch00037:     qht-Revert-some-constification-in-qht.c.patch
-Patch00038:     meson-install-ivshmem-client-and-ivshmem.patch
-Patch00039:     Revert-roms-efirom-tests-uefi-test-tools.patch
-Patch00040:     Makefile-Don-t-check-pc-bios-as-pre-requ.patch
-Patch00041:     roms-Makefile-add-cross-file-to-qboot-me.patch
-Patch00042:     usb-Help-compiler-out-to-avoid-a-warning.patch
+Patch00000:     block-Simplify-qmp_block_resize-error-pa.patch
+Patch00001:     block-Fix-locking-in-qmp_block_resize.patch
+Patch00002:     block-Fix-deadlock-in-bdrv_co_yield_to_d.patch
+Patch00003:     audio-add-sanity-check.patch
+Patch00004:     build-no-pie-is-no-functional-linker-fla.patch
+Patch00005:     block-nfs-fix-int-overflow-in-nfs_client.patch
+Patch00006:     XXX-dont-dump-core-on-sigabort.patch
+Patch00007:     qemu-binfmt-conf-Modify-default-path.patch
+Patch00008:     qemu-cvs-gettimeofday.patch
+Patch00009:     qemu-cvs-ioctl_debug.patch
+Patch00010:     qemu-cvs-ioctl_nodirection.patch
+Patch00011:     linux-user-add-binfmt-wrapper-for-argv-0.patch
+Patch00012:     PPC-KVM-Disable-mmu-notifier-check.patch
+Patch00013:     linux-user-binfmt-support-host-binaries.patch
+Patch00014:     linux-user-Fake-proc-cpuinfo.patch
+Patch00015:     linux-user-use-target_ulong.patch
+Patch00016:     Make-char-muxer-more-robust-wrt-small-FI.patch
+Patch00017:     linux-user-lseek-explicitly-cast-non-set.patch
+Patch00018:     AIO-Reduce-number-of-threads-for-32bit-h.patch
+Patch00019:     xen_disk-Add-suse-specific-flush-disable.patch
+Patch00020:     qemu-bridge-helper-reduce-security-profi.patch
+Patch00021:     qemu-binfmt-conf-use-qemu-ARCH-binfmt.patch
+Patch00022:     roms-Makefile-pass-a-packaging-timestamp.patch
+Patch00023:     Raise-soft-address-space-limit-to-hard-l.patch
+Patch00024:     increase-x86_64-physical-bits-to-42.patch
+Patch00025:     i8254-Fix-migration-from-SLE11-SP2.patch
+Patch00026:     acpi_piix4-Fix-migration-from-SLE11-SP2.patch
+Patch00027:     Make-installed-scripts-explicitly-python.patch
+Patch00028:     hw-smbios-handle-both-file-formats-regar.patch
+Patch00029:     xen-add-block-resize-support-for-xen-dis.patch
+Patch00030:     tests-qemu-iotests-Triple-timeout-of-i-o.patch
+Patch00031:     tests-Fix-block-tests-to-be-compatible-w.patch
+Patch00032:     xen-ignore-live-parameter-from-xen-save-.patch
+Patch00033:     tests-change-error-message-in-test-162.patch
+Patch00034:     hw-intc-exynos4210_gic-provide-more-room.patch
+Patch00035:     configure-only-populate-roms-if-softmmu.patch
+Patch00036:     pc-bios-s390-ccw-net-avoid-warning-about.patch
+Patch00037:     roms-change-cross-compiler-naming-to-be-.patch
+Patch00038:     test-add-mapping-from-arch-of-i686-to-qe.patch
+Patch00039:     configure-remove-pkgversion-from-CONFIG_.patch
+Patch00040:     docs-add-SUSE-support-statements-to-html.patch
+Patch00041:     s390x-Fix-stringop-truncation-issue-repo.patch
+Patch00042:     Revert-qht-constify-qht_statistics_init.patch
+Patch00043:     qht-Revert-some-constification-in-qht.c.patch
+Patch00044:     meson-install-ivshmem-client-and-ivshmem.patch
+Patch00045:     Revert-roms-efirom-tests-uefi-test-tools.patch
+Patch00046:     Makefile-Don-t-check-pc-bios-as-pre-requ.patch
+Patch00047:     roms-Makefile-add-cross-file-to-qboot-me.patch
+Patch00048:     usb-Help-compiler-out-to-avoid-a-warning.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -1010,20 +1016,26 @@ This package records qemu testsuite results and represents successful testing.
 %patch00031 -p1
 %patch00032 -p1
 %patch00033 -p1
-%if %{legacy_qemu_kvm}
 %patch00034 -p1
-%endif
 %patch00035 -p1
 %patch00036 -p1
 %patch00037 -p1
 %patch00038 -p1
 %patch00039 -p1
+%if %{legacy_qemu_kvm}
 %patch00040 -p1
-%ifarch aarch64
+%endif
 %patch00041 -p1
+%patch00042 -p1
+%patch00043 -p1
+%patch00044 -p1
+%patch00045 -p1
+%patch00046 -p1
+%ifarch aarch64
+%patch00047 -p1
 %endif
 %ifarch %arm %ix86
-%patch00042 -p1
+%patch00048 -p1
 %endif
 %patch01000 -p1
 %patch01001 -p1

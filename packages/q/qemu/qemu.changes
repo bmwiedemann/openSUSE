@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan  5 14:56:10 UTC 2021 - Bruce Rogers <brogers@suse.com>
+
+- Fix crash when spice used and the qemu-audio-spice package isn't
+  installed (boo#1180210)
+  audio-add-sanity-check.patch
+- Add some stable patches from upstream
+  block-Fix-deadlock-in-bdrv_co_yield_to_d.patch
+  block-Fix-locking-in-qmp_block_resize.patch
+  block-nfs-fix-int-overflow-in-nfs_client.patch
+  block-Simplify-qmp_block_resize-error-pa.patch
+  build-no-pie-is-no-functional-linker-fla.patch
+
+-------------------------------------------------------------------
 Tue Dec  8 18:10:54 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Update to v5.2.0: See http://wiki.qemu.org/ChangeLog/5.2
