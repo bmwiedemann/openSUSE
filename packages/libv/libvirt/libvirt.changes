@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan  4 19:19:19 UTC 2021 - olaf@aepfle.de
+
+- Update libxl-set-migration-constraints.patch
+  Remove code which handled --max_factor. The total amount of
+  transferred data is no indicator to trigger the final stop+copy.
+  This should have been removed during upgrade to Xen 4.7.
+  Reduce default value of --max_iters from 5 to 2.
+  The workload within domU will continue to produce dirty pages.
+  It is unreasonable to expect any slowdown during migration.
+  Now there is one initial copy of all memory, one instead of four
+  iteration for dirty memory, and a final copy iteration prior move.
+
+-------------------------------------------------------------------
 Thu Dec 17 04:20:58 UTC 2020 - James Fehlig <jfehlig@suse.com>
 
 - qemu: Fix logic bug in inactive snapshot deletion
