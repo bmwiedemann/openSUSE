@@ -1,0 +1,12 @@
+diff -urN mailx-12.5.old/names.c mailx-12.5/names.c
+--- mailx-12.5.old/names.c	2006-03-04 01:32:16.000000000 +0100
++++ mailx-12.5/names.c	2020-12-25 11:49:29.656778902 +0100
+@@ -572,7 +572,7 @@
+ 	/*LINTED*/
+ 	top = (char **)salloc((t + extra) * sizeof *top);
+ 	ap = top;
+-	*ap++ = "send-mail";
++	*ap++ = "sendmail";
+ 	*ap++ = "-i";
+ 	if (metoo)
+ 		*ap++ = "-m";

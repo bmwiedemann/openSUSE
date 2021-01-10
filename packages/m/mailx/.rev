@@ -355,4 +355,12 @@ See COPYING. Fedora also uses this license designation (forwarded request 178463
     <comment>- Repair ghost links used by update-alternatives</comment>
     <requestid>650161</requestid>
   </revision>
+  <revision rev="42" vrev="30">
+    <srcmd5>313b670f957142151e93039f6f415435</srcmd5>
+    <version>12.5</version>
+    <time>1610303922</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860670</requestid>
+  </revision>
 </revisionlist>

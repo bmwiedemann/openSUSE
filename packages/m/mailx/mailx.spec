@@ -1,7 +1,7 @@
 #
 # spec file for package mailx
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -27,7 +27,7 @@ BuildRequires:  update-alternatives
 BuildRequires:  pkgconfig(openssl)
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
-Url:            http://heirloom.sourceforge.net/mailx.html
+URL:            http://heirloom.sourceforge.net/mailx.html
 Provides:       mail
 Recommends:     smtp_daemon
 Version:        12.5
@@ -57,6 +57,8 @@ Patch11:        0003-fio.c-Unconditionally-require-wordexp-support.patch
 Patch12:        0004-globname-Invoke-wordexp-with-WRDE_NOCMD-CVE-2004-277.patch
 #PATCH-FIX-SUSE: bsc#1042663 -- mailx fails to build with openssl-1.1
 Patch13:        mailx-12.5-openssl-1.1.0f.patch
+#PATCH-FIX-SUSE: bsc#1180355 -- mailx calls sendmail with wrong name
+Patch14:        fix-sendmail-name.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -81,6 +83,7 @@ minor enhancements like the ability to set a "From:" address.
 %patch11 -p1 -b .0003
 %patch12 -p1 -b .0004
 %patch13 -p0 -b .ssl11f
+%patch14 -p1 -b .sendmail
 %patch -p1 -b .0
 
 %build
