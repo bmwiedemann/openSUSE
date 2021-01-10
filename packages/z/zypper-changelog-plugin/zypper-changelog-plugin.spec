@@ -1,7 +1,7 @@
 #
-# spec file for package zypper-changelog
+# spec file for package zypper-changelog-plugin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          System/Packages
 URL:            https://github.com/bzoltan1/zypper-changelog-plugin.git
 Source:         zypper-changelog-plugin-0.1.tar.gz
 Requires:       /usr/bin/python3
+Requires:       python3-requests
 BuildArch:      noarch
 
 %description
