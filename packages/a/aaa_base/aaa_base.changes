@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov 23 09:41:55 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- clean up rpmlintrc. Add filter for deprecated init scripts. We'll have to
+  keep them around for a while until systemd takes over ownership.
+- Update to version 84.87+git20201123.4f16b16:
+  * mark /etc/init.d/{boot,after}.local as %config(noreplace) (boo#1179097)
+  * Avoid semicolon within (t)csh login script on S/390
+
+-------------------------------------------------------------------
+Thu Oct 29 09:39:56 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
 Fri Sep 18 11:30:53 UTC 2020 - dleuenberger@suse.com
 
 - Update to version 84.87+git20200918.331aa2f:

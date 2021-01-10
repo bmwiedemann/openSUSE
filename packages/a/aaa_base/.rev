@@ -3861,4 +3861,12 @@
   * alias.bash check if ip command knows color=auto (jsc#SLE-7679)</comment>
     <requestid>835405</requestid>
   </revision>
+  <revision rev="476" vrev="1">
+    <srcmd5>07a574738f21cea667d9bf4a456bdf71</srcmd5>
+    <version>84.87+git20201123.4f16b16</version>
+    <time>1610303871</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851301</requestid>
+  </revision>
 </revisionlist>

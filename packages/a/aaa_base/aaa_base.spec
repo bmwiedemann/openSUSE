@@ -23,7 +23,7 @@
 %endif
 
 Name:           aaa_base
-Version:        84.87+git20200918.331aa2f
+Version:        84.87+git20201123.4f16b16
 Release:        0
 URL:            https://github.com/openSUSE/aaa_base
 # do not require systemd - aaa_base is in the build environment and we don't
@@ -113,6 +113,9 @@ fi
 %install
 #
 make DESTDIR=$RPM_BUILD_ROOT install
+%if 0%{?usrmerged}
+rm -f %{buildroot}/sbin/*
+%endif
 #
 mkdir -p %{buildroot}/etc/sysctl.d
 case "$RPM_ARCH" in
@@ -122,9 +125,10 @@ esac
 #
 # make sure it does not creep in again
 test -d $RPM_BUILD_ROOT/root/.gnupg && exit 1
+# TODO: get rid of that at some point in the future
 mkdir -p $RPM_BUILD_ROOT/etc/init.d
 for i in boot.local after.local ; do
-  touch $RPM_BUILD_ROOT/etc/init.d/$i
+  install -m 755 /dev/null $RPM_BUILD_ROOT/etc/init.d/$i
 done
 #
 install -d -m 755 %buildroot%{_libexecdir}/initscripts/legacy-actions
@@ -197,20 +201,17 @@ mkdir -p %{buildroot}%{_fillupdir}
 /etc/profile.d/ls.zsh
 %config /etc/shells
 %config /etc/ttytype
-%dir /etc/init.d/
-%ghost /etc/init.d/boot.local
-%ghost /etc/init.d/after.local
+%ghost %dir /etc/init.d
+%ghost %config(noreplace) /etc/init.d/boot.local
+%ghost %config(noreplace) /etc/init.d/after.local
 %ghost %config /etc/inittab
 # don't forget to also change aaa_base.post, boot.cleanup
 # and /etc/permissions!
 %ghost %attr(0644,root,root) %verify(not md5 size mtime) /var/log/lastlog
 /etc/hushlogins
 /usr/bin/get_kernel_version
-/sbin/refresh_initrd
 /usr/sbin/refresh_initrd
-/sbin/service
 /usr/sbin/service
-/sbin/smart_agetty
 /usr/sbin/smart_agetty
 /usr/bin/filesize
 /usr/bin/old
@@ -230,6 +231,11 @@ mkdir -p %{buildroot}%{_fillupdir}
 %{_fillupdir}/sysconfig.language
 %{_fillupdir}/sysconfig.proxy
 %{_fillupdir}/sysconfig.windowmanager
+%if !0%{?usrmerged}
+/sbin/service
+/sbin/refresh_initrd
+/sbin/smart_agetty
+%endif
 
 %files extras
 %defattr(-,root,root)
