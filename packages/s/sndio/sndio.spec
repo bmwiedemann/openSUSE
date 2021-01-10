@@ -1,7 +1,7 @@
 #
 # spec file for package sndio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-%define libname libsndio7_0
+%define libname libsndio7_1
 Name:           sndio
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Small audio and MIDI framework
 License:        ISC
 Group:          Productivity/Multimedia/Sound/Midi
-URL:            http://www.sndio.org/
+URL:            https://www.sndio.org/
 Source:         http://www.sndio.org/sndio-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
@@ -58,6 +58,14 @@ Requires:       %{libname} = %{version}
 This package contains files needed for development with the sndio
 library.
 
+%package -n sndioctl
+Summary:        Small audio and MIDI framework
+Group:          Productivity/Multimedia/Sound/Midi
+Requires:       %{libname} = %{version}
+
+%description -n sndioctl
+This package contains the controller binary for sndio.
+
 %prep
 %setup -q
 
@@ -82,12 +90,16 @@ export CFLAGS="%{optflags}"
 %{_mandir}/man8/sndiod.8%{?ext_man}
 %{_mandir}/man7/sndio.7%{?ext_man}
 
-%files -n libsndio7_0
-%{_libdir}/libsndio.so.7.0
+%files -n libsndio7_1
+%{_libdir}/libsndio.so.7.1
 
 %files -n sndio-devel
 %{_includedir}/sndio.h
 %{_libdir}/libsndio.so
 %{_mandir}/man3/*.3%{?ext_man}
+
+%files -n sndioctl
+%{_bindir}/sndioctl
+%{_mandir}/man1/sndioctl.1%{?ext_man}
 
 %changelog
