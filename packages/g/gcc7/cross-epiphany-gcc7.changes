@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  4 09:29:07 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Amend gcc7-aarch64-moutline-atomics.patch for glibc namespace
+  violation with getauxval.  [bsc#1167939]
+
+-------------------------------------------------------------------
 Thu Nov 26 17:17:44 UTC 2020 - Michael Matz <matz@suse.com>
 
 - Add gcc7-aarch64-sls-miti-1.patch, gcc7-aarch64-sls-miti-2.patch,
