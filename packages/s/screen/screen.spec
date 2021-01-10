@@ -52,6 +52,7 @@ BuildRequires:  utempter-devel
 BuildRequires:  utempter
 %endif
 Requires:       terminfo-base
+%systemd_ordering
 
 %description
 With this program you can take advantage of the multitasking abilities
@@ -98,13 +99,12 @@ chmod 755 %{buildroot}%{_bindir}/screen
 mkdir -p %{buildroot}/etc
 mkdir -p %{buildroot}/etc/pam.d
 mkdir -p %{buildroot}%{_prefix}/lib
-mkdir -p %{buildroot}%{_prefix}/lib/tmpfiles.d
+mkdir -p %{buildroot}%{_tmpfilesdir}
 mkdir -p %{buildroot}%{rundir}/screens
 chmod 755 %{buildroot}%{rundir}/screens
 mkdir -p %{buildroot}%{rundir}/uscreens
-chmod 1777 %{buildroot}%{rundir}/uscreens
 install -m 644 screenrc %{buildroot}%{_sysconfdir}/screenrc
-install -m 644 %{SOURCE1} %{buildroot}%{_prefix}/lib/tmpfiles.d
+install -m 644 %{SOURCE1} %{buildroot}%{_tmpfilesdir}
 install -m 644 %{SOURCE4} %{buildroot}/etc/pam.d/screen
 
 %files
@@ -113,30 +113,17 @@ install -m 644 %{SOURCE4} %{buildroot}/etc/pam.d/screen
 %config /etc/pam.d/screen
 %attr(555,root,root) %{_bindir}/screen
 %dir %{_datadir}/screen
-%dir %{_prefix}/lib/tmpfiles.d
-%{_prefix}/lib/tmpfiles.d/screen.conf
+%{_tmpfilesdir}/screen.conf
 %{_datadir}/screen/utf8encodings
-# Created via aaa_base or systemd on system boot
-%ghost %dir %{rundir}/screens
-%ghost %dir %{rundir}/uscreens
 %{_infodir}/screen.info*%{ext_info}
 %{_mandir}/man1/screen.1%{ext_man}
 %license COPYING
 
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
-%set_permissions /run/uscreens/
-%tmpfiles_create /usr/lib/tmpfiles.d/screen.conf
-
-%verifyscript
-%verify_permissions -e /run/uscreens/
+%tmpfiles_create %{_tmpfilesdir}/screen.conf
 
 %preun
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
-
-# Create our dirs immediatly, after a manual package install.
-# After a reboot systemd/aaa_base will take care.
-test -d %{rundir}/screens || mkdir -m 755 %{rundir}/screens
-test -d %{rundir}/uscreens || mkdir -m 1777 %{rundir}/uscreens
 
 %changelog

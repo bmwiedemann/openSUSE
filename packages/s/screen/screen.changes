@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Nov 30 13:38:31 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %_tmpfilesdir instead of hardcoding a path for
+  systemd-tmpfiles config files.
+- Do not create directories before uninstalling (?) the package.
+  The /run/(u)screen diretories are created in the %post section.
+- Do not ghost package /run/uscreens: the directory is dynamically
+  created during boot. Of course it would be nice to be able to
+  identify what package creates this, but for that we should rather
+  have a rpm/systemd-tmpfiles integration hook. The main problem
+  with the ghost is the suid flag, which breaks rpm -V. permissions
+  no longer lists /run/uscreens, so verify_permission cannot apply.
+- Add %systemd_ordering: give zypp a hint that screen shall be
+  installed after systemd, so that systemd-tmpfiles already exists.
+
+-------------------------------------------------------------------
+Tue Sep  8 13:30:58 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- no longer invoke permissions/chkstat for directory handled by
+  systemd-tmpfiles (bsc#1171879)
+
+-------------------------------------------------------------------
 Thu Feb 06 21:44:38 UTC 2020 - alexander_naumov@opensuse.org
 
 - GNU Screen 4.8.0:
