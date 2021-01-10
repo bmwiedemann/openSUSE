@@ -1,7 +1,7 @@
 #
 # spec file for package kosmindoormap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kosmindoormap
-Version:        20.12.0
+Version:        20.12.1
 Release:        0
 Summary:        OSM indoor map QML component
 License:        LGPL-2.0-or-later AND CC0-1.0
@@ -35,12 +35,12 @@ Source2:        applications.keyring
 BuildRequires:  bison
 BuildRequires:  extra-cmake-modules
 BuildRequires:  flex
+BuildRequires:  libQt5Core-private-headers-devel
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KPublicTransport)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5Test)
-BuildRequires:  libQt5Core-private-headers-devel
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(zlib)
 Requires:       libKOSM%{soversion} = %{version}
