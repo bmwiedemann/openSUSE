@@ -1,6 +1,6 @@
---- ./build/pack.c.orig	2019-06-26 14:17:31.395985720 +0000
-+++ ./build/pack.c	2019-10-02 11:31:05.908639084 +0000
-@@ -743,11 +743,78 @@ static rpmRC packageBinary(rpmSpec spec,
+--- ./build/pack.c.orig	2020-09-30 12:49:33.397074156 +0000
++++ ./build/pack.c	2020-09-30 12:51:34.628805840 +0000
+@@ -728,6 +728,71 @@ static rpmRC packageBinary(rpmSpec spec,
      return rc;
  }
  
@@ -69,19 +69,21 @@
 +    rpmtdFreeData(&timestd);
 +}
 +
- rpmRC packageBinaries(rpmSpec spec, const char *cookie, int cheating)
- {
-     rpmRC rc = RPMRC_OK;
-     Package pkg;
+ static int compareBinaries(const void *p1, const void *p2) {
+     Package pkg1 = *(Package *)p1;
+     Package pkg2 = *(Package *)p2;
+@@ -751,6 +816,8 @@ rpmRC packageBinaries(rpmSpec spec, cons
+     Package *tasks;
+     int npkgs = 0;
  
 +    trimChangelog(spec->packages->header);
 +
-     /* Run binary creation in parallel */
-     #pragma omp parallel
-     #pragma omp single
---- ./build/parseChangelog.c.orig	2019-06-26 14:17:31.395985720 +0000
-+++ ./build/parseChangelog.c	2019-10-02 11:29:26.684840735 +0000
-@@ -253,6 +253,11 @@ static rpmRC addChangelog(Header h, ARGV
+     for (pkg = spec->packages; pkg != NULL; pkg = pkg->next)
+         npkgs++;
+     tasks = xcalloc(npkgs, sizeof(Package));
+--- ./build/parseChangelog.c.orig	2020-08-31 09:14:07.991087349 +0000
++++ ./build/parseChangelog.c	2020-09-30 12:49:33.401074147 +0000
+@@ -267,6 +267,11 @@ static rpmRC addChangelog(Header h, ARGV
  	    goto exit;
  	}
  

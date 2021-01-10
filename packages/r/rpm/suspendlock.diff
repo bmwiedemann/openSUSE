@@ -2,9 +2,9 @@ Suspend exclusive database lock when scriptlets get called, allowing
 read access in scriptlets. Only needed for DB_PRIVATE (aka global)
 locking.
 
---- ./lib/backend/db3.c.orig	2019-10-02 09:56:46.416347458 +0000
-+++ ./lib/backend/db3.c	2019-10-02 09:56:52.084335992 +0000
-@@ -552,6 +552,46 @@ static void db3_dbSetFSync(rpmdb rdb, in
+--- ./lib/backend/db3.c.orig	2020-09-30 12:25:06.516375109 +0000
++++ ./lib/backend/db3.c	2020-09-30 12:25:10.312366497 +0000
+@@ -549,6 +549,46 @@ static void db3_dbSetFSync(rpmdb rdb, in
  
  static int db3_Ctrl(rpmdb rdb, dbCtrlOp ctrl)
  {
@@ -51,9 +51,9 @@ locking.
      return 0;
  }
  
---- ./lib/backend/dbi.h.orig	2019-10-02 09:56:46.416347458 +0000
-+++ ./lib/backend/dbi.h	2019-10-02 09:56:52.084335992 +0000
-@@ -17,7 +17,9 @@ typedef enum dbCtrlOp_e {
+--- ./lib/backend/dbi.h.orig	2020-09-30 12:25:06.516375109 +0000
++++ ./lib/backend/dbi.h	2020-09-30 12:25:10.312366497 +0000
+@@ -18,7 +18,9 @@ typedef enum dbCtrlOp_e {
      DB_CTRL_UNLOCK_RO		= 2,
      DB_CTRL_LOCK_RW		= 3,
      DB_CTRL_UNLOCK_RW		= 4,
@@ -64,9 +64,9 @@ locking.
  } dbCtrlOp;
  
  typedef struct dbiIndex_s * dbiIndex;
---- ./lib/rpmdb.c.orig	2019-10-02 09:56:46.416347458 +0000
-+++ ./lib/rpmdb.c	2019-10-02 09:56:52.084335992 +0000
-@@ -2644,6 +2644,12 @@ int rpmdbCtrl(rpmdb db, rpmdbCtrlOp ctrl
+--- ./lib/rpmdb.c.orig	2020-09-30 12:25:06.516375109 +0000
++++ ./lib/rpmdb.c	2020-09-30 12:25:10.312366497 +0000
+@@ -2637,6 +2637,12 @@ int rpmdbCtrl(rpmdb db, rpmdbCtrlOp ctrl
      case RPMDB_CTRL_INDEXSYNC:
  	dbctrl = DB_CTRL_INDEXSYNC;
  	break;
@@ -79,9 +79,9 @@ locking.
      }
      return dbctrl ? dbCtrl(db, dbctrl) : 1;
  }
---- ./lib/rpmdb.h.orig	2019-06-26 14:17:31.412985694 +0000
-+++ ./lib/rpmdb.h	2019-10-02 09:56:52.088335984 +0000
-@@ -35,7 +35,9 @@ typedef enum rpmdbCtrlOp_e {
+--- ./lib/rpmdb.h.orig	2020-05-28 10:04:25.037136686 +0000
++++ ./lib/rpmdb.h	2020-09-30 12:25:10.312366497 +0000
+@@ -36,7 +36,9 @@ typedef enum rpmdbCtrlOp_e {
      RPMDB_CTRL_UNLOCK_RO       = 2,
      RPMDB_CTRL_LOCK_RW         = 3,
      RPMDB_CTRL_UNLOCK_RW       = 4,
@@ -92,17 +92,17 @@ locking.
  } rpmdbCtrlOp;
  
  /** \ingroup rpmdb
---- ./lib/transaction.c.orig	2019-10-02 09:56:52.088335984 +0000
-+++ ./lib/transaction.c	2019-10-02 09:58:36.956123870 +0000
-@@ -1601,6 +1601,7 @@ rpmRC runScript(rpmts ts, rpmte te, Head
+--- ./lib/transaction.c.orig	2020-09-30 07:48:01.215567727 +0000
++++ ./lib/transaction.c	2020-09-30 12:25:10.312366497 +0000
+@@ -1692,6 +1692,7 @@ rpmRC runScript(rpmts ts, rpmte te, Head
      rpmTagVal stag = rpmScriptTag(script);
      FD_t sfd = NULL;
      int warn_only = !(rpmScriptFlags(script) & RPMSCRIPT_FLAG_CRITICAL);
 +    rpmdb rdb = rpmtsGetRdb(ts);
  
-     /* Create a temporary transaction element for triggers from rpmdb */
-     if (te == NULL) {
-@@ -1612,10 +1613,12 @@ rpmRC runScript(rpmts ts, rpmte te, Head
+     if (rpmChrootIn())
+ 	return RPMRC_FAIL;
+@@ -1706,10 +1707,12 @@ rpmRC runScript(rpmts ts, rpmte te, Head
      if (sfd == NULL)
  	sfd = rpmtsScriptFd(ts);
  

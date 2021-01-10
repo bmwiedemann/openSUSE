@@ -1,7 +1,7 @@
 #
 # spec file for package rpm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,11 +59,11 @@ Requires:       /usr/bin/awk
 Summary:        The RPM Package Manager
 License:        GPL-2.0-or-later
 Group:          System/Packages
-Version:        4.15.1
+Version:        4.16.0
 Release:        0
 URL:            https://rpm.org/
 #Git-Clone:     https://github.com/rpm-software-management/rpm
-Source:         http://ftp.rpm.org/releases/rpm-4.15.x/rpm-%{version}.tar.bz2
+Source:         http://ftp.rpm.org/releases/rpm-4.16.x/rpm-%{version}.tar.bz2
 Source1:        RPM-HOWTO.tar.bz2
 Source5:        rpmsort
 Source8:        rpmconfigcheck
@@ -72,7 +72,6 @@ Source11:       db-4.8.30.tar.bz2
 Source12:       baselibs.conf
 Source13:       rpmconfigcheck.service
 Patch2:         db.diff
-Patch3:         rpm-4.12.0.1-fix-bashisms.patch
 Patch5:         usr-lib-sysimage-rpm.patch
 # quilt patches start here
 Patch11:        debugedit.diff
@@ -104,7 +103,6 @@ Patch51:        specfilemacro.diff
 Patch55:        debugsubpkg.diff
 Patch56:        debuglink.diff
 Patch57:        debuginfo-mono.patch
-Patch58:        lazystatfs.diff
 Patch60:        safeugid.diff
 Patch61:        noprereqdeprec.diff
 Patch66:        remove-translations.diff
@@ -126,16 +124,11 @@ Patch102:       emptymanifest.diff
 Patch103:       find-lang-qt-qm.patch
 Patch109:       pythondistdeps.diff
 Patch117:       findsupplements.diff
-Patch118:       db_ops_name.diff
-Patch119:       bdb_ro.diff
-Patch120:       disable_bdb.diff
-Patch121:       ndb_backport.diff
 Patch122:       db_conversion.diff
-Patch123:       initgcrypt.diff
-Patch124:       gcryptdsa2.diff
-Patch125:       ndb_backport2.diff
-Patch126:       touch_backport.diff
+Patch123:       nextiteratorheaderblob.diff
 Patch127:       finddebuginfo-check-res-file.patch
+Patch128:       empty_dbbackend.diff
+Patch129:       ndbglue.diff
 Patch6464:      auto-config-update-aarch64-ppc64le.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #
@@ -237,6 +230,7 @@ Provides and requires generator for .pl files and modules.
 %prep
 %setup -q -n rpm-%{version}
 rm -rf sqlite
+cp /usr/share/libtool/build-aux/config.guess /usr/share/libtool/build-aux/config.sub .
 %if 0%{?!without_bdb:1}
 tar xjf %{SOURCE11}
 ln -s db-4.8.30 db
@@ -247,21 +241,19 @@ chmod -R u+w db/*
 rm -f rpmdb/db.h
 cp config.guess config.sub db/dist/
 %endif
-%patch3 -p1
 %patch5 -p1
 %patch       -P 11 -P 12 -P 13       -P 15 -P 16       -P 18
 %patch -P 20 -P 21             -P 24 -P 25 -P 26 -P 27       -P 29
 %patch -P 30       -P 32 -P 33 -P 34 -P 35 -P 36       -P 38
 %patch                   -P 43       -P 45 -P 46 -P 47       -P 49
-%patch       -P 51                   -P 55 -P 56 -P 57 -P 58
+%patch       -P 51                   -P 55 -P 56 -P 57
 %patch -P 60 -P 61                         -P 66 -P 67 -P 68 -P 69
 %patch -P 70 -P 71       -P 73       -P 75       -P 77 -P 78
 %patch                               -P 85
 %patch                   -P 93 -P 94                         -P 99
 %patch -P 100        -P 102 -P 103
 %patch -P 109                                           -P 117
-%patch -P 118 -P 119 -P 120 -P 121 -P 122 -P 123 -P 124 -P 125
-%patch -P 126 -P 127
+%patch -P 122 -P 123 -P 127 -P 128 -P 129
 
 %ifarch aarch64 ppc64le riscv64
 %patch6464
@@ -352,7 +344,6 @@ mkdir -p %{buildroot}%{_fillupdir}
 install -c -m0644 %{SOURCE9} %{buildroot}%{_fillupdir}/
 rm -f %{buildroot}/usr/lib/rpm/cpanflute %{buildroot}/usr/lib/rpm/cpanflute2
 install -m 755 %{SOURCE5} %{buildroot}/usr/lib/rpm
-install -m 755 scripts/debuginfo.prov %{buildroot}/usr/lib/rpm
 rm -f %{buildroot}/usr/lib/locale %{buildroot}/usr/lib/rpmrc
 mkdir -p %{buildroot}/etc/rpm
 chmod 755 %{buildroot}/etc/rpm
@@ -484,7 +475,7 @@ fi
 /usr/bin/rpmbuild
 /usr/lib/rpm/libtooldeps.sh
 /usr/lib/rpm/pkgconfigdeps.sh
-/usr/lib/rpm/pythondeps.sh
+/usr/lib/rpm/ocamldeps.sh
 /usr/lib/rpm/elfdeps
 /usr/lib/rpm/rpmdeps
 /usr/lib/rpm/debugedit

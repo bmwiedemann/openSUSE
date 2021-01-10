@@ -1,6 +1,6 @@
---- ./Makefile.am.orig	2017-12-01 15:04:09.723014378 +0000
-+++ ./Makefile.am	2017-12-01 15:04:13.396003910 +0000
-@@ -187,6 +187,10 @@ rpmgraph_LDADD =	lib/librpm.la rpmio/lib
+--- ./Makefile.am.orig	2020-09-30 12:47:19.181371209 +0000
++++ ./Makefile.am	2020-09-30 12:47:25.797356566 +0000
+@@ -198,6 +198,10 @@ rpmgraph_LDADD =	lib/librpm.la rpmio/lib
  
  dist_bin_SCRIPTS =	scripts/gendiff
  
@@ -11,19 +11,19 @@
  rpmconfig_DATA = rpmrc
  rpmrc: $(top_srcdir)/rpmrc.in
  	@$(SED) \
---- ./doc/Makefile.am.orig	2017-12-01 15:04:13.397003907 +0000
-+++ ./doc/Makefile.am	2017-12-01 15:04:42.681920389 +0000
+--- ./doc/Makefile.am.orig	2020-09-30 12:47:25.797356566 +0000
++++ ./doc/Makefile.am	2020-09-30 12:48:22.709230608 +0000
 @@ -8,7 +8,7 @@ EXTRA_DIST += $(man_man1_DATA)
  
  man_man8dir = $(mandir)/man8
  man_man8_DATA = rpm.8 rpm-misc.8 rpmbuild.8 rpmdeps.8 rpmgraph.8 rpm2cpio.8
 -man_man8_DATA += rpmdb.8 rpmkeys.8 rpmsign.8 rpmspec.8
 +man_man8_DATA += rpmdb.8 rpmkeys.8 rpmsign.8 rpmspec.8 rpmqpack.8
- man_man8_DATA += rpm-plugin-systemd-inhibit.8
+ 
  EXTRA_DIST += $(man_man8_DATA)
  
---- ./doc/rpmqpack.8.orig	2017-12-01 15:04:13.397003907 +0000
-+++ ./doc/rpmqpack.8	2017-12-01 15:04:13.397003907 +0000
+--- ./doc/rpmqpack.8.orig	2020-09-30 12:47:25.797356566 +0000
++++ ./doc/rpmqpack.8	2020-09-30 12:47:25.797356566 +0000
 @@ -0,0 +1,25 @@
 +.TH RPMQPACK 8 "Mar 2002"
 +.SH NAME
@@ -50,8 +50,8 @@
 +
 +.SH AUTHOR
 +Michael Schroeder <mls@suse.de>
---- ./rpmqpack.c.orig	2019-12-06 10:14:03.989178873 +0000
-+++ ./rpmqpack.c	2019-12-06 10:32:16.430275015 +0000
+--- ./rpmqpack.c.orig	2020-09-30 12:47:25.797356566 +0000
++++ ./rpmqpack.c	2020-09-30 12:47:25.797356566 +0000
 @@ -0,0 +1,60 @@
 +#include <sys/types.h>
 +#include <limits.h>

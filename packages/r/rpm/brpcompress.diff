@@ -1,5 +1,5 @@
---- ./scripts/brp-compress.orig	2019-10-02 09:59:40.403995534 +0000
-+++ ./scripts/brp-compress	2019-10-02 10:03:27.075537047 +0000
+--- ./scripts/brp-compress.orig	2020-05-28 10:04:25.075136894 +0000
++++ ./scripts/brp-compress	2020-10-27 15:23:57.970737863 +0000
 @@ -5,6 +5,9 @@ if [ -z "$RPM_BUILD_ROOT" ] || [ "$RPM_B
  	exit 0
  fi
@@ -10,7 +10,7 @@
  PREFIX=${1:-/usr}
  
  cd "$RPM_BUILD_ROOT"
-@@ -13,6 +16,29 @@ cd "$RPM_BUILD_ROOT"
+@@ -13,6 +16,30 @@ cd "$RPM_BUILD_ROOT"
  COMPRESS=${COMPRESS:-gzip -9 -n}
  COMPRESS_EXT=${COMPRESS_EXT:-.gz}
  
@@ -29,6 +29,7 @@
 +	*.Z|*.gz)     gunzip  $b ;;
 +	*.bz2)        bunzip2 $b ;;
 +	*.xz|*.lzma)  unxz    $b ;;
++	*.zst|*.zstd) unzstd --rm $b ;;
 +    esac
 +
 +    type=${b##*.}
@@ -40,7 +41,7 @@
  for d in .${PREFIX}/man/man* .${PREFIX}/man/*/man* .${PREFIX}/info \
  	.${PREFIX}/share/man/man* .${PREFIX}/share/man/*/man* \
  	.${PREFIX}/share/info .${PREFIX}/kerberos/man \
-@@ -21,39 +47,39 @@ for d in .${PREFIX}/man/man* .${PREFIX}/
+@@ -21,40 +48,40 @@ for d in .${PREFIX}/man/man* .${PREFIX}/
  	.${PREFIX}/share/fish/man/man*
  do
      [ -d $d ] || continue
@@ -53,9 +54,11 @@
 -	 *.gz|*.Z)    gunzip  -f $f; b=`echo $f | sed -e 's/\.\(gz\|Z\)$//'`;;
 -	 *.bz2)       bunzip2 -f $f; b=`echo $f | sed -e 's/\.bz2$//'`;;
 -	 *.xz|*.lzma) unxz    -f $f; b=`echo $f | sed -e 's/\.\(xz\|lzma\)$//'`;;
+-	 *.zst|*.zstd) unzstd -f --rm $f; b=`echo $f | sed -e 's/\.\(zst\|zstd\)$//'`;;
 +	 *.gz|*.Z)    gunzip  -f "$f" || check_for_hard_link $d "$f"; b=`echo $f | sed -e 's/\.\(gz\|Z\)$//'`;;
 +	 *.bz2)       bunzip2 -f "$f" || check_for_hard_link $d "$f"; b=`echo $f | sed -e 's/\.bz2$//'`;;
 +	 *.xz|*.lzma) unxz    -f "$f" || check_for_hard_link $d "$f"; b=`echo $f | sed -e 's/\.\(xz\|lzma\)$//'`;;
++	 *.zst|*.zstd) unzstd -f --rm "$f" || check_for_hard_link $d "$f"; b=`echo $f | sed -e 's/\.\(zst\|zstd\)$//'`;;
  	 *) b=$f;;
  	esac
  
@@ -84,13 +87,13 @@
 -    for f in `find $d -type l`
 +    find $d -type l | while read f
      do
--	l=`ls -l $f | sed -e 's/.* -> //' -e 's/\.\(gz\|Z\|bz2\|xz\|lzma\)$//'`
+-	l=`ls -l $f | sed -e 's/.* -> //' -e 's/\.\(gz\|Z\|bz2\|xz\|lzma\|zst\|zstd\)$//'`
 -	rm -f $f
--	b=`echo $f | sed -e 's/\.\(gz\|Z\|bz2\|xz\|lzma\)$//'`
+-	b=`echo $f | sed -e 's/\.\(gz\|Z\|bz2\|xz\|lzma\|zst\|zstd\)$//'`
 -	ln -sf $l$COMPRESS_EXT $b$COMPRESS_EXT
-+	l="`ls -l "$f" | sed -e 's/.* -> //' -e 's/\.\(gz\|Z\|bz2\|xz\|lzma\)$//'`"
++	l=`ls -l "$f" | sed -e 's/.* -> //' -e 's/\.\(gz\|Z\|bz2\|xz\|lzma\|zst\|zstd\)$//'`
 +	rm -f "$f"
-+	b="`echo "$f" | sed -e 's/\.\(gz\|Z\|bz2\|xz\|lzma\)$//'`"
++	b=`echo "$f" | sed -e 's/\.\(gz\|Z\|bz2\|xz\|lzma\|zst\|zstd\)$//'`
 +	ln -sf "$l$COMPRESS_EXT" "$b$COMPRESS_EXT"
      done
  done

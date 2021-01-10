@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Dec 21 16:29:40 CET 2020 - mls@suse.de
+
+- fix potential access of freed mem in ndb's glue code [bnc#1179416]
+  * new patch: ndbglue.diff
+
+-------------------------------------------------------------------
+Wed Nov 18 10:46:03 CET 2020 - mls@suse.de
+
+- allow opening the rpm database with an unset db_backend
+  * new patch: empty_dbbackend.diff
+
+-------------------------------------------------------------------
+Tue Oct 27 10:08:05 CET 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- RPM no longer ships config.sub and config.guess, just copy it 
+  from Libtool since it is identical
+
+-------------------------------------------------------------------
+Tue Oct 27 10:07:05 CET 2020 - mls@suse.de
+
+- update to rpm-4.16.0
+  * powerful macro and %if expressions including ternary operator
+    and native version comparison
+  * optional MIME type based file classification
+  * dependency generation by parametric macros
+  * a new version parsing and comparison API in C and Python
+  * parallelise test-suite execution
+  * clarify RPM license
+- add method to iterate over header blobs
+  * new patch: nextiteratorheaderblob.diff
+- modified patches:
+  * brpcompress.diff
+  * brp-compress-no-img.patch
+  * brp.diff
+  * checkfilesnoinfodir.diff
+  * db_conversion.diff
+  * dbrointerruptable.diff
+  * findsupplements.diff
+  * ignore-auxv.diff
+  * macrosin.diff
+  * nobuildcolor.diff
+  * nomagiccheck.diff
+  * platformin.diff
+  * rpmqpack.diff
+  * rpm-shorten-changelog.diff
+  * suspendlock.diff
+- dropped patches:
+  * rpm-4.12.0.1-fix-bashisms.patch
+  * lazystatfs.diff
+  * db_ops_name.diff
+  * bdb_ro.diff
+  * disable_bdb.diff
+  * ndb_backport.diff
+  * initgcrypt.diff
+  * gcryptdsa2.diff
+  * ndb_backport2.diff
+  * touch_backport.diff
+
+-------------------------------------------------------------------
 Mon Oct 19 11:53:00 CEST 2020 - mls@suse.de
 
 - Backport FA_TOUCH fixes from upsteam [bnc#1175025] [bnc#1177428]

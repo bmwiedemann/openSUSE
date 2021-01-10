@@ -2219,4 +2219,12 @@ See bugzilla 1167537 for the gory details.</comment>
     <comment>- Backport FA_TOUCH fixes from upsteam [bnc#1175025] [bnc#1177428]</comment>
     <requestid>842515</requestid>
   </revision>
+  <revision rev="284" vrev="1">
+    <srcmd5>293076cb2f0c72449ba431401c46cb2b</srcmd5>
+    <version>4.16.0</version>
+    <time>1610303880</time>
+    <user>dimstar_suse</user>
+    <comment>- update to rpm-4.16.0</comment>
+    <requestid>861385</requestid>
+  </revision>
 </revisionlist>

@@ -1,11 +1,11 @@
 Disable file coloring for SUSE systems
 
---- build/rpmfc.c.orig	2013-07-12 12:12:45.000000000 +0000
-+++ build/rpmfc.c	2013-07-12 12:15:51.000000000 +0000
-@@ -1305,7 +1305,8 @@ rpmRC rpmfcGenerateDepends(const rpmSpec
-     /* XXX Make sure only primary (i.e. Elf32/Elf64) colors are added. */
-     for (int i = 0; i < fc->nfiles; i++)
- 	fc->fcolor[i] &= 0x0f;
+--- ./build/rpmfc.c.orig	2020-09-30 13:06:07.502865543 +0000
++++ ./build/rpmfc.c	2020-09-30 13:07:08.530734545 +0000
+@@ -1607,7 +1607,8 @@ rpmRC rpmfcGenerateDepends(const rpmSpec
+ 	goto exit;
+ 
+     /* Add per-file colors(#files) */
 -    headerPutUint32(pkg->header, RPMTAG_FILECOLORS, fc->fcolor, fc->nfiles);
 +    if (rpmExpandNumeric("%{?_transaction_color}") != 0)
 +	headerPutUint32(pkg->header, RPMTAG_FILECOLORS, fc->fcolor, fc->nfiles);

@@ -1,7 +1,7 @@
 #
 # spec file for package python-rpm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2017 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %global with_python 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rpm
-Version:        4.15.1
+Version:        4.16.0
 Release:        0
 Summary:        Python Bindings for Manipulating RPM Packages
 License:        GPL-2.0-or-later

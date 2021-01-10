@@ -1,6 +1,6 @@
---- ./scripts/brp-compress.orig	2019-10-02 12:09:46.263708258 +0000
-+++ ./scripts/brp-compress	2019-10-02 12:09:52.055696056 +0000
-@@ -50,6 +50,7 @@ do
+--- ./scripts/brp-compress.orig	2020-09-30 13:09:28.846434576 +0000
++++ ./scripts/brp-compress	2020-09-30 13:09:34.514422459 +0000
+@@ -51,6 +51,7 @@ do
      find $d -type f ! -name dir | while read f
      do
          [ -f "$f" ] || continue

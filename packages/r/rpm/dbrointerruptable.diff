@@ -1,5 +1,5 @@
---- ./lib/rpmdb.c.orig	2018-08-08 13:40:18.153941351 +0000
-+++ ./lib/rpmdb.c	2018-10-16 09:20:11.196708098 +0000
+--- ./lib/rpmdb.c.orig	2020-05-28 10:04:25.037136686 +0000
++++ ./lib/rpmdb.c	2020-09-30 12:23:50.708547165 +0000
 @@ -387,9 +387,11 @@ int rpmdbClose(rpmdb db)
  {
      rpmdb * prev, next;
@@ -12,7 +12,7 @@
  
      prev = &rpmdbRock;
      while ((next = *prev) != NULL && next != db)
-@@ -424,7 +426,7 @@ int rpmdbClose(rpmdb db)
+@@ -423,7 +425,7 @@ int rpmdbClose(rpmdb db)
  
      db = _free(db);
  
@@ -21,9 +21,9 @@
  	rpmsqActivate(0);
      }
  exit:
-@@ -509,7 +511,7 @@ static int openDatabase(const char * pre
-     rc = rpmioMkpath(rpmdbHome(db), 0755, getuid(), getgid());
-     if (rc == 0) {
+@@ -510,7 +512,7 @@ static int openDatabase(const char * pre
+ 	int justPkgs = (db->db_flags & RPMDB_FLAG_REBUILD) &&
+ 		       ((db->db_mode & O_ACCMODE) == O_RDONLY);
  	/* Enable signal queue on the first db open */
 -	if (db->db_next == NULL) {
 +	if (db->db_next == NULL &&  (db->db_mode & (O_RDWR|O_WRONLY)) != 0) {

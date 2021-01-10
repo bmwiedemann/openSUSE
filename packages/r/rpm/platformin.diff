@@ -21,7 +21,7 @@
 +@suse@%__chgrp_Rhf     %{__chgrp} -Rhf
 +@suse@%_fixowner       [ `%{__id_u}` = '0' ] && %{__chown_Rhf} root
 +@suse@%_fixgroup       [ `%{__id_u}` = '0' ] && %{__chgrp_Rhf} root
-+@suse@%_fixperms       %{__chmod} -Rf @FIXPERMS@
++@suse@%_fixperms       %{__chmod} -Rf a+rX,u+w,g-w,o-w
 +@suse@
 +@suse@#---------------------------------------------------------------------
 +@suse@#        Expanded at start of %build

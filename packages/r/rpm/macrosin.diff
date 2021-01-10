@@ -1,5 +1,5 @@
---- ./macros.in.orig	2019-10-02 11:13:35.966773848 +0000
-+++ ./macros.in	2019-10-02 11:17:37.210282271 +0000
+--- ./macros.in.orig	2020-09-30 12:42:09.146057387 +0000
++++ ./macros.in	2020-09-30 12:45:30.517611707 +0000
 @@ -177,7 +177,7 @@
      %{?_unique_build_ids:--build-id-seed "%{VERSION}-%{RELEASE}"} \\\
      %{?_unique_debug_names:--unique-debug-suffix "-%{VERSION}-%{RELEASE}.%{_arch}"} \\\
@@ -19,7 +19,7 @@
  %_defaultlicensedir	%{_datadir}/licenses
  
  # Following macros for filtering auto deps must not be used in spec files.
-@@ -276,7 +277,8 @@ package or when debugging this package.\
+@@ -280,7 +281,8 @@ package or when debugging this package.\
  %_tmppath		%{_var}/tmp
  
  #	Path to top of build area.
@@ -29,7 +29,7 @@
  
  #	The path to the unzip executable (legacy, use %{__unzip} instead).
  %_unzipbin		%{__unzip}
-@@ -388,7 +390,7 @@ package or when debugging this package.\
+@@ -392,7 +394,7 @@ package or when debugging this package.\
  #		"w.ufdio"	uncompressed
  #
  #%_source_payload	w9.gzdio
@@ -38,7 +38,7 @@
  
  #	Algorithm to use for generating file checksum digests on build.
  #	If not specified or 0, MD5 is used.
-@@ -495,6 +497,19 @@ package or when debugging this package.\
+@@ -499,6 +501,19 @@ package or when debugging this package.\
  #
  #%_include_minidebuginfo	1
  
@@ -58,7 +58,7 @@
  #
  # Include a .gdb_index section in the .debug files.
  # Requires _enable_debug_packages and gdb-add-index installed.
-@@ -527,7 +542,7 @@ package or when debugging this package.\
+@@ -531,7 +546,7 @@ package or when debugging this package.\
  #   Same as for "separate" but if the __debug_package global is set then
  #   the -debuginfo package will have a compatibility link for the main
  #   ELF /usr/lib/debug/.build-id/xx/yyy -> /usr/lib/.build-id/xx/yyy
@@ -67,7 +67,7 @@
  
  # Whether build-ids should be made unique between package version/releases
  # when generating debuginfo packages. If set to 1 this will pass
-@@ -556,10 +571,10 @@ package or when debugging this package.\
+@@ -560,10 +575,10 @@ package or when debugging this package.\
  %_unique_debug_srcs	1
  
  # Whether rpm should put debug source files into its own subpackage
@@ -80,9 +80,9 @@
  
  #
  # Use internal dependency generator rather than external helpers?
-@@ -572,6 +587,10 @@ package or when debugging this package.\
+@@ -576,6 +591,10 @@ package or when debugging this package.\
  # Directories whose contents should be considered as documentation.
- %__docdir_path %{_datadir}/doc:%{_datadir}/man:%{_datadir}/info:%{_datadir}/gtk-doc/html:%{?_docdir}:%{?_mandir}:%{?_infodir}:%{?_javadocdir}:/usr/doc:/usr/man:/usr/info:/usr/X11R6/man
+ %__docdir_path %{_datadir}/doc:%{_datadir}/man:%{_datadir}/info:%{_datadir}/gtk-doc/html:%{_datadir}/gnome/help:%{?_docdir}:%{?_mandir}:%{?_infodir}:%{?_javadocdir}:/usr/doc:/usr/man:/usr/info:/usr/X11R6/man
  
 +# maxnum,cuttime,minnum
 +# 2014/10/13 (SLES12 GA)
@@ -91,7 +91,7 @@
  #
  # Path to scripts to autogenerate package dependencies,
  #
-@@ -582,6 +601,7 @@ package or when debugging this package.\
+@@ -586,6 +605,7 @@ package or when debugging this package.\
  %__find_requires	%{_rpmconfigdir}/find-requires
  #%__find_conflicts	???
  #%__find_obsoletes	???
@@ -99,7 +99,7 @@
  
  # 
  # Path to file attribute classifications for automatic dependency 
-@@ -660,10 +680,10 @@ package or when debugging this package.\
+@@ -665,10 +685,10 @@ package or when debugging this package.\
  # Misc BDB tuning options
  %__dbi_other			mp_mmapsize=128Mb mp_size=1Mb
  
@@ -112,7 +112,7 @@
  
  #==============================================================================
  # ---- GPG/PGP/PGP5 signature macros.
-@@ -1000,7 +1020,7 @@ package or when debugging this package.\
+@@ -1011,7 +1031,7 @@ package or when debugging this package.\
  %_build_vendor		%{_host_vendor}
  %_build_os		%{_host_os}
  %_host			@host@
@@ -121,15 +121,18 @@
  %_host_cpu		@host_cpu@
  %_host_vendor		@host_vendor@
  %_host_os		@host_os@
-@@ -1119,7 +1139,10 @@ package or when debugging this package.\
+@@ -1130,11 +1150,13 @@ package or when debugging this package.\
  
  #------------------------------------------------------------------------------
- # arch macro for all supported ARM processors
--%arm	armv3l armv4b armv4l armv4tl armv5tl armv5tel armv5tejl armv6l armv6hl armv7l armv7hl armv7hnl armv8l armv8hl armv8hnl armv8hcnl
-+%arm    armv3l armv4b armv4l armv4tl armv5b armv5l armv5teb armv5tel armv5tejl armv6l armv6hl armv7l armv7hl armv7hnl armv8l armv8hl armv8hnl armv8hcnl
-+%arml   armv3l armv4l armv5l armv5tel armv6l armv6hl armv7l armv7hl armv7hnl armv8l armv8hl armv8hnl armv8hcnl
-+%armb   armv4b armv5b armv5teb
-+%arm64  aarch64
+ # arch macro for all supported 32-bit ARM processors
+-%arm32	armv3l armv4b armv4l armv4tl armv5tl armv5tel armv5tejl armv6l armv6hl armv7l armv7hl armv7hnl armv8l armv8hl armv8hnl armv8hcnl
++%arm32	armv3l armv4b armv4l armv4tl armv5b armv5l armv5teb armv5tel armv5tejl armv6l armv6hl armv7l armv7hl armv7hnl armv8l armv8hl armv8hnl armv8hcnl
  
  #------------------------------------------------------------------------------
- # arch macro for 32-bit MIPS processors
+ # arch macro for all supported 32-bit ARM processors (legacy, use %%arm32 instead)
+ %arm	%{arm32}
++%arml	armv3l armv4l armv5l armv5tel armv6l armv6hl armv7l armv7hl armv7hnl armv8l armv8hl armv8hnl armv8hcnl
++%armb	armv4b armv5b armv5teb
+ 
+ #------------------------------------------------------------------------------
+ # arch macro for all supported 64-bit ARM processors
