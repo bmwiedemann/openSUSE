@@ -1,0 +1,8 @@
+<package name="qt6-wayland" project="openSUSE:Factory">
+  <title>Qt 6 Wayland libraries and tools</title>
+  <description>The Qt6 Wayland libraries and tools.
+
+</description>
+  <devel project="KDE:Qt:6.0" package="qt6-wayland"/>
+  <url>https://www.qt.io</url>
+</package>
