@@ -1,7 +1,7 @@
 #
 # spec file for package python-fsspec
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,16 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %define         skip_python2 1
-Name:           python-fsspec
+Name:           python-fsspec%{psuffix}
 Version:        0.8.5
 Release:        0
 Summary:        Filesystem specification package
@@ -43,7 +51,7 @@ Suggests:       python-requests
 Suggests:       python-s3fs
 Suggests:       python-smbprotocol
 BuildArch:      noarch
-# SECTION test requirements
+%if %{with test}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module cloudpickle}
 BuildRequires:  %{python_module distributed}
@@ -63,7 +71,7 @@ BuildRequires:  %{python_module zstandard}
 # cannot test git and http in the same installation (?)
 # BuildRequires:  %%{python_module pygit2}
 # BuildRequires:  git-core
-# /SECTION
+%endif
 %python_subpackages
 
 %description
@@ -75,18 +83,25 @@ A specification for pythonic filesystems.
 %build
 %python_build
 
+%if ! %{with test}
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
 # test_basic relies on speed of FS and timeouts in OBS
 # test_not_cached needs sockets
 %pytest -rfEs  -k 'not test_basic and not test_not_cached'
+%endif
 
+%if ! %{with test}
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/fsspec
+%{python_sitelib}/fsspec-%{version}*-info
+%endif
 
 %changelog

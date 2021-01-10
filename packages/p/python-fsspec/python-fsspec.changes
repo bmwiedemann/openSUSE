@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan  4 17:59:57 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Test in _multibuild in order to break build dependency cycles
+
+-------------------------------------------------------------------
 Mon Dec 28 15:19:45 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 0.8.5
