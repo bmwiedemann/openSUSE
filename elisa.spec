@@ -1,7 +1,7 @@
 #
 # spec file for package elisa
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define kf5_version 5.64.0
 %bcond_without lang
 Name:           elisa
-Version:        20.12.0
+Version:        20.12.1
 Release:        0
 Summary:        Music player and collection organizer
 License:        LGPL-3.0-or-later
