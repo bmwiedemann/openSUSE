@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jan  8 03:06:56 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.100
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+
+    2.100 7 January 2021
+
+        * Expose liblzma's 'preset_dict' feature
+          https://github.com/pmqs/Compress-Raw-Lzma/pull/6
+          4d9d4e596c4f567c87626a827e39c4435e62472d fix typo
+          dc394d53b0575edf8f72e28829a2ff9faea7e729 Add t/10preset_dict.t
+          c5afb68e2a3a4b2fc4e548ffa61d2a3a383b5c96 Add cast to deRef
+          32f9085aba510c4d99d4a374406e734b13b82eef fix minor typos
+          55b8d6a6f65a1d6426c55f5b51aefdba6dabfbb3 fix merge issue
+          9eb88de7abaaefe736d475260c73de525e7ae39f Merge branch 'master' of https://github.com/pmqs/Compress-Raw-Lzma
+          3432a769b283ac5dc9fd757e973cc8aefc1e2345 Merge pull request #6 from anall/wip/preset_dictionary
+          68fe695c16b14a983f39c8c8567557148bbc43ca Expose the preset_dict feature from liblzma when creating a Lzma filter
+
+        * trim whitespace
+          4ca252f1e1d740489dbd3736ab1f74e1492dff6d
+
+-------------------------------------------------------------------
 Sat Aug  1 03:08:57 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.096
