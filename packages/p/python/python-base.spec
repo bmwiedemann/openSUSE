@@ -1,7 +1,7 @@
 #
 # spec file for package python-base
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -111,7 +111,6 @@ BuildRequires:  zlib-devel
 #!BuildIgnore:  python
 # for the test suite
 BuildRequires:  netcfg
-Requires:       python-rpm-macros
 # explicitly, see bnc#697251:
 Requires:       libpython%{so_version} = %{version}-%{release}
 Provides:       %{name} = %{python_version}

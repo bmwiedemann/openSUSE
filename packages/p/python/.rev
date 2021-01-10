@@ -1427,4 +1427,13 @@ distutils.spawn. [bsc#1109663, CVE-2018-1000802]</comment>
   PYTHON_FO_REGEN (bsc#1078326).</comment>
     <requestid>810400</requestid>
   </revision>
+  <revision rev="152" vrev="3">
+    <srcmd5>95b1726b4b67783292067df575eb86d5</srcmd5>
+    <version>2.7.18</version>
+    <time>1610303926</time>
+    <user>dimstar_suse</user>
+    <comment>- (bsc#1180125) We really don't Require python-rpm-macros package.
+  Unnecessary dependency.</comment>
+    <requestid>860672</requestid>
+  </revision>
 </revisionlist>

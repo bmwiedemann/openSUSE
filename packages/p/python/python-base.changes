@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan  5 09:15:36 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- (bsc#1180125) We really don't Require python-rpm-macros package.
+  Unnecessary dependency.
+
+-------------------------------------------------------------------
 Sat May 30 12:19:40 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add patch configure_PYTHON_FOR_REGEN.patch which makes
