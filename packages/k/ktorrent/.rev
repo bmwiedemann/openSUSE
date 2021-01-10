@@ -880,4 +880,12 @@ This should fix the failures seen in Staging:E</comment>
     <comment>KDE Applications 20.12.0</comment>
     <requestid>855245</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>932692b84e4f95f26f0ddaace7ecd303</srcmd5>
+    <version>20.12.1</version>
+    <time>1610304142</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 20.12.1</comment>
+    <requestid>861268</requestid>
+  </revision>
 </revisionlist>
