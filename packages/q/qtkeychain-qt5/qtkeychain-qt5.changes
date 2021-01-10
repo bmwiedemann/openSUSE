@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan  9 22:48:54 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- %lang_package doesn't handle -r and -n parameters at the same
+  time, expand it manually
+
+-------------------------------------------------------------------
+Wed Dec 30 18:30:05 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add qtkeychain-qt6.
+- Add the missing libsecret build dependency to qtkeychain-qt5.
+
+-------------------------------------------------------------------
 Tue Dec 29 23:03:04 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Use %find_lang

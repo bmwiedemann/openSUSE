@@ -1,7 +1,7 @@
 #
 # spec file for package qtkeychain-qt5
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,9 +27,11 @@ URL:            https://github.com/frankosterfeld/qtkeychain
 Source:         https://github.com/frankosterfeld/qtkeychain/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 BuildRequires:  cmake
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  pkgconfig(libsecret-1)
 
 %description
 qtkeychain can be used to store passwords.
