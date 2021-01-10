@@ -9,6 +9,7 @@ Signed-off-by: Qin Su <qsu@ti.com>
 [Guillaume's update: s#Logging.hpp#armnn/Logging.hpp#]
 [Guillaume's update: Add #include <boost/log/trivial.hpp>]
 [Guillaume's update: Drop armnnUtils::ConfigureLogging(...)]
+[Guillaume's update: Handle boost::variant to mapbox::util::variant update]
 ---
  tests/ArmnnExamples/ArmnnExamples.cpp | 654 ++++++++++++++++++++++++++++++++++
  1 file changed, 654 insertions(+)
@@ -68,7 +69,7 @@ index 0000000..53a11cc
 +#if defined(ARMNN_ONNX_PARSER)
 +#include "armnnOnnxParser/IOnnxParser.hpp"
 +#endif
-+#include "CsvReader.hpp"
++#include <mapbox/variant.hpp> /*#include "CsvReader.hpp"*/
 +#include "../InferenceTest.hpp"
 +#include <armnn/Logging.hpp>
 +#include <Profiling.hpp>
@@ -317,7 +318,7 @@ index 0000000..53a11cc
 +  // Loads input tensor.
 +  std::vector<uint8_t> input;
 +  std::vector<float> input_resized;
-+  using TContainer = boost::variant<std::vector<float>, std::vector<int>, std::vector<unsigned char>>;
++  using TContainer = mapbox::util::variant<std::vector<float>, std::vector<int>, std::vector<unsigned char>>;
 +
 +  try
 +  {
@@ -397,7 +398,7 @@ index 0000000..53a11cc
 +      double preformance_ret = static_cast<double>(1.0/timeTakenS);
 +
 +      //retrieve output
-+      std::vector<float>& outputData = (boost::get<std::vector<float>>(outputDataContainers[0]));
++      std::vector<float>& outputData = (mapbox::util::get<std::vector<float>>(outputDataContainers[0]));
 +	  //output TOP predictions
 +      std::string predict_target_name;
 +      // find the out with the highest confidence

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  9 14:33:19 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 20.11:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v20.11
+- Refresh patch to handle boost::variant to mapbox::util::variant update:
+  * 0006-armnn-mobilenet-test-example.patch
+
+-------------------------------------------------------------------
 Fri Sep  4 16:07:09 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add python support, disabled for now as it does not install

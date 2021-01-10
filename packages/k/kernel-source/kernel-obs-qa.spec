@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-obs-qa
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 # needsrootforbuild
 
 
-%define patchversion 5.10.4
+%define patchversion 5.10.5
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -36,9 +36,9 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Basic QA tests for the kernel
 License:        GPL-2.0
 Group:          SLES
-Version:        5.10.4
+Version:        5.10.5
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g4169c1f
+Release:        <RELEASE>.g19815f3
 %else
 Release:        0
 %endif

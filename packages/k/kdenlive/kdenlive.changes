@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan  5 12:25:25 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-01-apps-update
+- Too many changes since 20.12.0, only listing bugfixes:
+  * Fix crash when all audio streams of a clip were disabled. (kde#429997)
+  * Add "unused clip" filter in Project Bin.(kde#430035)
+
+-------------------------------------------------------------------
 Sat Dec  5 23:16:06 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.0

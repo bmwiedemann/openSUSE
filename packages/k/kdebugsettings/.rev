@@ -511,4 +511,12 @@
     <comment>KDE Applications 20.12.0</comment>
     <requestid>855147</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>e1083bd7304a22b8155c786c6cb112ab</srcmd5>
+    <version>20.12.1</version>
+    <time>1610304020</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Applications 20.12.1</comment>
+    <requestid>861163</requestid>
+  </revision>
 </revisionlist>

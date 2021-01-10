@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jan  5 12:24:46 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-01-apps-update
+- Changes since 20.12.0:
+  * do not mishandle the force file system option (kde#424901)
+  * always enable the remove button for playlist entries
+  * when adding a directory from files view, follow sort order
+  * properly build URLs for local files that may have special characters
+  * properly enqueue files from file browser to playlist (kde#429465)
+  * clean dead signal in ViewManager
+  * add some categorized debug output in player control code
+  * remove unused code in MPRIS interface class
+  * emit Seeked on MPRIS2 interface when player really seeked (kde#428957)
+
+-------------------------------------------------------------------
 Sat Dec  5 23:15:27 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.0

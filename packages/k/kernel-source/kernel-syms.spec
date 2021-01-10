@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-syms
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,10 @@ Name:           kernel-syms
 Summary:        Kernel Symbol Versions (modversions)
 License:        GPL-2.0
 Group:          Development/Sources
-Version:        5.10.4
+Version:        5.10.5
 %if %using_buildservice
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g4169c1f
+Release:        <RELEASE>.g19815f3
 %else
 Release:        0
 %endif
@@ -52,7 +52,7 @@ Requires:       kernel-pae-devel = %version-%source_rel
 %endif
 Requires:       pesign-obs-integration
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-4169c1faf5eb0c61ac2d089cd0d1d3cf5c8f7cb3
+Provides:       %name-srchash-19815f3ce314b75d4f5f34ca23a323a37a98ff77
 Provides:       multiversion(kernel)
 Source:         README.KSYMS
 Requires:       kernel-devel%variant = %version-%source_rel

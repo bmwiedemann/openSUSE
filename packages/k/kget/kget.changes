@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan  5 12:25:37 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-01-apps-update
+- Changes since 20.12.0:
+  * org.kde.kget.appdata.xml: add <content_rating>
+
+-------------------------------------------------------------------
 Sat Jan  2 14:52:43 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patches to fix issues reported by valgrind (boo#1180352):

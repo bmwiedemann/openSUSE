@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-pae
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.10
-%define patchversion 5.10.4
+%define patchversion 5.10.5
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -68,9 +68,9 @@ Name:           kernel-pae
 Summary:        Kernel with PAE Support
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.10.4
+Version:        5.10.5
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g4169c1f
+Release:        <RELEASE>.g19815f3
 %else
 Release:        0
 %endif
@@ -179,10 +179,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-4169c1faf5eb0c61ac2d089cd0d1d3cf5c8f7cb3
-Provides:       kernel-srchash-4169c1faf5eb0c61ac2d089cd0d1d3cf5c8f7cb3
+Provides:       kernel-%build_flavor-base-srchash-19815f3ce314b75d4f5f34ca23a323a37a98ff77
+Provides:       kernel-srchash-19815f3ce314b75d4f5f34ca23a323a37a98ff77
 # END COMMON DEPS
-Provides:       %name-srchash-4169c1faf5eb0c61ac2d089cd0d1d3cf5c8f7cb3
+Provides:       %name-srchash-19815f3ce314b75d4f5f34ca23a323a37a98ff77
 %ifarch %ix86
 Provides:       kernel-bigsmp = 2.6.17
 Obsoletes:      kernel-bigsmp <= 2.6.17

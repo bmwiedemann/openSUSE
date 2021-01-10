@@ -1,4 +1,133 @@
 -------------------------------------------------------------------
+Wed Jan  6 19:20:56 CET 2021 - jslaby@suse.cz
+
+- drm/docs: Fix todo.rst (git-fixes).
+- net/sched: sch_taprio: ensure to reset/destroy all child qdiscs
+  (git-fixes).
+- commit 19815f3
+
+-------------------------------------------------------------------
+Wed Jan  6 19:16:56 CET 2021 - jslaby@suse.cz
+
+- Linux 5.10.5 (bsc#1012628).
+- net/sched: sch_taprio: reset child qdiscs before freeing them
+  (bsc#1012628).
+- mptcp: fix security context on server socket (bsc#1012628).
+- ethtool: fix error paths in ethnl_set_channels() (bsc#1012628).
+- ethtool: fix string set id check (bsc#1012628).
+- md/raid10: initialize r10_bio->read_slot before use
+  (bsc#1012628).
+- drm/amd/display: Add get_dig_frontend implementation for DCEx
+  (bsc#1012628).
+- io_uring: close a small race gap for files cancel (bsc#1012628).
+- jffs2: Allow setting rp_size to zero during remounting
+  (bsc#1012628).
+- jffs2: Fix NULL pointer dereference in rp_size fs option parsing
+  (bsc#1012628).
+- spi: dw-bt1: Fix undefined devm_mux_control_get symbol
+  (bsc#1012628).
+- opp: fix memory leak in _allocate_opp_table (bsc#1012628).
+- opp: Call the missing clk_put() on error (bsc#1012628).
+- scsi: block: Fix a race in the runtime power management code
+  (bsc#1012628).
+- mm/hugetlb: fix deadlock in hugetlb_cow error path
+  (bsc#1012628).
+- mm: memmap defer init doesn't work as expected (bsc#1012628).
+- lib/zlib: fix inflating zlib streams on s390 (bsc#1012628).
+- io_uring: don't assume mm is constant across submits
+  (bsc#1012628).
+- io_uring: use bottom half safe lock for fixed file data
+  (bsc#1012628).
+- io_uring: add a helper for setting a ref node (bsc#1012628).
+- io_uring: fix io_sqe_files_unregister() hangs (bsc#1012628).
+- uapi: move constants from <linux/kernel.h> to <linux/const.h>
+  (bsc#1012628).
+- tools headers UAPI: Sync linux/const.h with the kernel headers
+  (bsc#1012628).
+- cgroup: Fix memory leak when parsing multiple source parameters
+  (bsc#1012628).
+- zlib: move EXPORT_SYMBOL() and MODULE_LICENSE() out of
+  dfltcc_syms.c (bsc#1012628).
+- scsi: cxgb4i: Fix TLS dependency (bsc#1012628).
+- Bluetooth: hci_h5: close serdev device and free hu in h5_close
+  (bsc#1012628).
+- fbcon: Disable accelerated scrolling (bsc#1012628).
+- reiserfs: add check for an invalid ih_entry_count (bsc#1012628).
+- misc: vmw_vmci: fix kernel info-leak by initializing dbells
+  in vmci_ctx_get_chkpt_doorbells() (bsc#1012628).
+- media: gp8psk: initialize stats at power control logic
+  (bsc#1012628).
+- f2fs: fix shift-out-of-bounds in sanity_check_raw_super()
+  (bsc#1012628).
+- ALSA: seq: Use bool for snd_seq_queue internal flags
+  (bsc#1012628).
+- ALSA: rawmidi: Access runtime->avail always in spinlock
+  (bsc#1012628).
+- bfs: don't use WARNING: string when it's just info
+  (bsc#1012628).
+- ext4: check for invalid block size early when mounting a file
+  system (bsc#1012628).
+- fcntl: Fix potential deadlock in send_sig{io, urg}()
+  (bsc#1012628).
+- io_uring: check kthread stopped flag when sq thread is unparked
+  (bsc#1012628).
+- rtc: sun6i: Fix memleak in sun6i_rtc_clk_init (bsc#1012628).
+- module: set MODULE_STATE_GOING state when a module fails to load
+  (bsc#1012628).
+- quota: Don't overflow quota file offsets (bsc#1012628).
+- rtc: pl031: fix resource leak in pl031_probe (bsc#1012628).
+- powerpc: sysdev: add missing iounmap() on error in
+  mpic_msgr_probe() (bsc#1012628).
+- i3c master: fix missing destroy_workqueue() on error in
+  i3c_master_register (bsc#1012628).
+- NFSv4: Fix a pNFS layout related use-after-free race when
+  freeing the inode (bsc#1012628).
+- f2fs: avoid race condition for shrinker count (bsc#1012628).
+- f2fs: fix race of pending_pages in decompression (bsc#1012628).
+- module: delay kobject uevent until after module init call
+  (bsc#1012628).
+- powerpc/64: irq replay remove decrementer overflow check
+  (bsc#1012628).
+- fs/namespace.c: WARN if mnt_count has become negative
+  (bsc#1012628).
+- watchdog: rti-wdt: fix reference leak in rti_wdt_probe
+  (bsc#1012628).
+- um: random: Register random as hwrng-core device (bsc#1012628).
+- um: ubd: Submit all data segments atomically (bsc#1012628).
+- NFSv4.2: Don't error when exiting early on a READ_PLUS buffer
+  overflow (bsc#1012628).
+- ceph: fix inode refcount leak when ceph_fill_inode on non-I_NEW
+  inode fails (bsc#1012628).
+- drm/amd/display: updated wm table for Renoir (bsc#1012628).
+- tick/sched: Remove bogus boot "safety" check (bsc#1012628).
+- s390: always clear kernel stack backchain before calling
+  functions (bsc#1012628).
+- io_uring: remove racy overflow list fast checks (bsc#1012628).
+- ALSA: pcm: Clear the full allocated memory at hw_params
+  (bsc#1012628).
+- dm verity: skip verity work if I/O error when system is shutting
+  down (bsc#1012628).
+- ext4: avoid s_mb_prefetch to be zero in individual scenarios
+  (bsc#1012628).
+- device-dax: Fix range release (bsc#1012628).
+- Refresh patches.suse/supported-flag.
+- commit 3bb334e
+
+-------------------------------------------------------------------
+Tue Jan  5 15:29:49 CET 2021 - tiwai@suse.de
+
+- Revert "drm/amd/display: Fixed Intermittent blue screen on
+  OLED panel" (bsc#1180404).
+- commit 086fc4c
+
+-------------------------------------------------------------------
+Tue Jan  5 12:46:30 CET 2021 - tiwai@suse.de
+
+- ALSA: hda/hdmi: Fix incorrect mutex unlock in
+  silent_stream_disable() (bsc#1180543).
+- commit 010df91
+
+-------------------------------------------------------------------
 Wed Dec 30 14:10:15 CET 2020 - jslaby@suse.cz
 
 - drm/panfrost: Remove unused variables in panfrost_job_close()

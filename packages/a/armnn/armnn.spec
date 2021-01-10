@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 # Disable LTO until UnitTests passes with LTO enabled - https://github.com/ARM-software/armnn/issues/341
 %define _lto_cflags %{nil}
 
@@ -74,8 +75,8 @@
 %bcond_with armnn_onnx
 %endif
 %define version_major 20
-%define version_minor 08
-%define version_lib 22
+%define version_minor 11
+%define version_lib 23
 # Do not package ArmnnConverter and ArmnnQuantizer, by default
 %bcond_with armnn_tools
 # Enable CAFFE
@@ -431,7 +432,7 @@ This package contains the libarmnnOnnxParser library from armnn.
 %patch204 -p1
 %patch205 -p1
 # Add Boost log as downstream extra test requires it
-sed -i 's/find_package(Boost 1.59 REQUIRED COMPONENTS unit_test_framework filesystem system program_options)/find_package(Boost 1.59 REQUIRED COMPONENTS unit_test_framework filesystem system log program_options)/' ./cmake/GlobalConfig.cmake
+sed -i 's/ find_package(Boost 1.59 REQUIRED COMPONENTS unit_test_framework)/find_package(Boost 1.59 REQUIRED COMPONENTS unit_test_framework filesystem system log program_options)/' ./cmake/GlobalConfig.cmake
 %endif
 
 %build
@@ -453,6 +454,9 @@ sed -i 's/-Werror//' ./cmake/GlobalConfig.cmake
 %endif
 %endif
 %endif
+# Fix *.cmake installation path - https://github.com/ARM-software/armnn/issues/481
+sed -i 's#set(INSTALL_CONFIGDIR ${CMAKE_INSTALL_LIBDIR})#set(INSTALL_CONFIGDIR ${CMAKE_INSTALL_LIBDIR}/cmake/Armnn)#' CMakeLists.txt
+sed -i 's#    DESTINATION ${CMAKE_INSTALL_LIBDIR}#    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Armnn#' CMakeLists.txt
 %cmake \
   -DCMAKE_SKIP_RPATH=True \
   -DSHARED_BOOST=1 \
@@ -568,6 +572,8 @@ cp $CP_ARGS ./build/ArmnnConverter %{buildroot}%{_bindir}
 cp $CP_ARGS ./build/ArmnnQuantizer %{buildroot}%{_bindir}
 %endif
 %endif
+# Dropped static libs
+rm -f  %{buildroot}%{_libdir}/*.a
 
 # openCL UnitTests are failing in OBS due to the lack of openCL device
 %if %{without compute_cl} && %{with armnn_tests}
@@ -711,6 +717,8 @@ LD_LIBRARY_PATH="$(pwd)/build/" \
 %{_includedir}/armnnQuantizer/INetworkQuantizer.hpp
 %dir %{_includedir}/armnnSerializer/
 %{_includedir}/armnnSerializer/ISerializer.hpp
+%dir %{_libdir}/cmake/Armnn
+%{_libdir}/cmake/Armnn/*
 %{_libdir}/libarmnn.so
 %{_libdir}/libarmnnBasePipeServer.so
 %{_libdir}/libtimelineDecoder.so

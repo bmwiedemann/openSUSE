@@ -1,7 +1,7 @@
 #
 # spec file for package dtb-riscv64
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define srcversion 5.10
-%define patchversion 5.10.4
+%define patchversion 5.10.5
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -29,9 +29,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-riscv64
-Version:        5.10.4
+Version:        5.10.5
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g4169c1f
+Release:        <RELEASE>.g19815f3
 %else
 Release:        0
 %endif
