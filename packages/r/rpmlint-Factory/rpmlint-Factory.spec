@@ -1,7 +1,7 @@
 #
 # spec file for package rpmlint-Factory
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ License:        GPL-2.0-or-later
 Group:          System/Packages
 Version:        1.0
 Release:        0
-Url:            http://rpmlint.zarb.org/
+URL:            http://rpmlint.zarb.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source1:        COPYING
 Source2:        config

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 12 10:06:24 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Add badness for deprecated SysV Init Stuff as all packages should
+  have been migrated.
+
+-------------------------------------------------------------------
+Wed Sep 30 10:54:40 UTC 2020 - matthias.gerstner@suse.com
+
+- enforce new whitelisting mechanisms for device files and world writable
+  files (bsc#1174642).
+
+-------------------------------------------------------------------
 Thu Mar 12 12:57:19 UTC 2020 - matthias.gerstner@suse.com
 
 - Add also badness for unauthorized set*id bits on directories (bsc#1150189).
