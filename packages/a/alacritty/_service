@@ -6,8 +6,8 @@
   <service name="tar_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/alacritty/alacritty.git</param>
-    <param name="revision">08e111dfae15d2428d87c3a80c68d858b144d287</param>
-    <param name="version">0.7.0</param>
+    <param name="revision">a852eb85d57a9c966cea20063923444c18d63c54</param>
+    <param name="version">0.7.1</param>
 
     <param name="exclude">.builds</param>
     <param name="exclude">.github</param>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan  9 20:13:10 UTC 2021 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 0.7.1
+  * Fixed
+    - Jumping between matches in backward vi search
+
+-------------------------------------------------------------------
 Sun Jan  3 07:43:09 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 0.7.0-rc2
