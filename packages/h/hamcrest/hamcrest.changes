@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan  5 13:20:25 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Make hamcrest build reproducibly [bsc#1120493]
+- Add hamcrest-reproducible-builds.patch
+
+-------------------------------------------------------------------
+Tue Jan  5 13:01:10 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix typo in hamcrest-core description [bsc#1179994]
+
+-------------------------------------------------------------------
+Thu Nov 19 12:48:02 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix RPM Lint complaint: summary-ended-with-dot
+
+-------------------------------------------------------------------
 Tue Nov 17 17:39:48 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 
 - Add obsoletes in core to fix updates. [bsc#1174544]
