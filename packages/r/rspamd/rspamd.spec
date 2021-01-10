@@ -1,8 +1,7 @@
 #
 # spec file for package rspamd
 #
-# Copyright (c) 2016 SUSE LINUX Products GmbH, Nuernberg, Germany.
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,8 +12,10 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 %{echo: building for suse: ver:%{suse_version} arch:%{_arch} o:%{is_opensuse} "\n"}
 
 %bcond_with split_out_client
@@ -56,16 +57,20 @@
 %endif
 
 Name:           rspamd
-Version:        2.6
+Version:        2.7
 Release:        0
-License:        Apache-2.0
 Summary:        Spam filtering system
-Url:            https://rspamd.com/
+License:        Apache-2.0
 Group:          Productivity/Networking/Email/Utilities
+URL:            https://rspamd.com/
 Source0:        https://github.com/rspamd/rspamd/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        usr.bin.rspamd
 Patch0:         rspamd-conf.patch
 Patch1:         rspamd-after-redis-target.patch
+%if !0%{?is_opensuse}
+# because 80-check-malware-scan-clamav triggered in SLE-15-SP2
+BuildRequires:  -post-build-checks-malwarescan
+%endif
 BuildRequires:  cmake
 BuildRequires:  curl-devel
 BuildRequires:  db-devel
@@ -101,24 +106,24 @@ BuildRequires:  pkgconfig(libev)
 %if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(libnsl)
 %endif
-BuildRequires:  pkgconfig(openssl)
-BuildRequires:  pkgconfig(libsodium)
-BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  ragel
+BuildRequires:  pkgconfig(libsodium)
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(sqlite3)
 %if %{with systemd}
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
 %endif
 
 %if 0%{?suse_version} < 1500
-Requires:  lua51-LPeg
+Requires:       lua51-LPeg
 %else
-Requires:  lua53-lpeg
+Requires:       lua53-lpeg
 %endif
 %if 0%{?with split_out_client}
-Requires:  rspamd-client = %{version}
+Requires:       rspamd-client = %{version}
 %else
-Conflicts: rspamd-client
+Conflicts:      rspamd-client
 %endif
 BuildRequires:  apparmor-abstractions
 Requires:       apparmor-abstractions
@@ -136,9 +141,10 @@ simultaneously and has a number of features available.
 
 %if 0%{?with split_out_client}
 %package client
-Group:          Productivity/Networking/Email/Utilities
 #
 Summary:        Spam filtering system - Client tools
+Group:          Productivity/Networking/Email/Utilities
+
 %description client
 Rspamd is a spam filtering system that allows evaluation of messages
 by a number of rules including regular expressions, statistical analysis and
@@ -380,6 +386,7 @@ echo "# Site-specific additions and overrides for 'usr.bin.rspamd'" > %{buildroo
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/greylist.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/history_redis.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/hfilter.conf
+%config(noreplace) %{_sysconfdir}/rspamd/modules.d/http_headers.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/maillist.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/metadata_exporter.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/metric_exporter.conf
@@ -411,6 +418,7 @@ echo "# Site-specific additions and overrides for 'usr.bin.rspamd'" > %{buildroo
 
 %dir %{_datadir}/rspamd
 %{_datadir}/rspamd/effective_tld_names.dat
+%{_datadir}/rspamd/http_headers.lua
 
 %dir %{_datadir}/rspamd/elastic
 %{_datadir}/rspamd/elastic/kibana.json
@@ -540,6 +548,7 @@ echo "# Site-specific additions and overrides for 'usr.bin.rspamd'" > %{buildroo
 %{_datadir}/rspamd/lualib/lua_selectors/transforms.lua
 
 %dir %{_datadir}/rspamd/lualib/rspamadm
+%{_datadir}/rspamd/lualib/rspamadm/clickhouse.lua
 %{_datadir}/rspamd/lualib/rspamadm/confighelp.lua
 %{_datadir}/rspamd/lualib/rspamadm/configgraph.lua
 %{_datadir}/rspamd/lualib/rspamadm/configwizard.lua
@@ -556,6 +565,10 @@ echo "# Site-specific additions and overrides for 'usr.bin.rspamd'" > %{buildroo
 %{_datadir}/rspamd/lualib/rspamadm/template.lua
 %{_datadir}/rspamd/lualib/rspamadm/vault.lua
 
+%dir %{_datadir}/rspamd/lualib/plugins
+%{_datadir}/rspamd/lualib/plugins/neural.lua
+%{_datadir}/rspamd/lualib/plugins/rbl.lua
+
 %dir %{_datadir}/rspamd/rules
 %{_datadir}/rspamd/rules/bitcoin.lua
 %{_datadir}/rspamd/rules/bounce.lua
@@ -563,7 +576,6 @@ echo "# Site-specific additions and overrides for 'usr.bin.rspamd'" > %{buildroo
 %{_datadir}/rspamd/rules/forwarding.lua
 %{_datadir}/rspamd/rules/headers_checks.lua
 %{_datadir}/rspamd/rules/html.lua
-%{_datadir}/rspamd/rules/http_headers.lua
 %{_datadir}/rspamd/rules/mid.lua
 %{_datadir}/rspamd/rules/misc.lua
 %{_datadir}/rspamd/rules/rspamd.lua
@@ -630,3 +642,4 @@ echo "# Site-specific additions and overrides for 'usr.bin.rspamd'" > %{buildroo
 %{_bindir}/rspamadm
 %{_bindir}/rspamc
 
+%changelog

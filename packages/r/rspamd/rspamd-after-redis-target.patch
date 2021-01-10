@@ -1,12 +1,17 @@
-Index: rspamd-1.7.9/rspamd.service
+Ensure that network is up when rspamd is started
+
+otherwise, it can fail to reach remote rspamd hosts
+
+Index: rspamd-2.6/rspamd.service
 ===================================================================
---- rspamd-1.7.9.orig/rspamd.service
-+++ rspamd-1.7.9/rspamd.service
-@@ -1,6 +1,6 @@
+--- rspamd-2.6.orig/rspamd.service
++++ rspamd-2.6/rspamd.service
+@@ -1,6 +1,7 @@
  [Unit]
  Description=rapid spam filtering system
 -After=nss-lookup.target network-online.target
 +After=nss-lookup.target network-online.target redis.target
++Wants=network-online.target
  Documentation=https://rspamd.com/doc/
  
  [Service]
