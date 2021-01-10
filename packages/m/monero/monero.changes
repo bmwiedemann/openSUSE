@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Jan 02 11:38:17 UTC 2021 - nopeinomicon@posteo.net
+
+- Add "-DARCH=default" to cmake build args to fix boo#1180472 (https://bugzilla.opensuse.org/show_bug.cgi?id=1180472)
+- Update to version 0.17.1.8:
+  * rpc: limit the number of txes for get_blocks.bin
+  * ssl: buffered handshake detection
+  * portable_storage: remove array element limit
+  * protocol: fix false positives dropping peers
+  * portable_storage: remove overly aggressive cutoff
+  * Revert "Reject existing claimed blocks in sync mode"
+  * cryptonote_basic: guess what got lost porting patches to branches again
+  * epee: fix some issues using connections after shutdown
+  * portable_storage: add some sanity checks on data size
+  * protocol: drop nodes if they claim new data but only give stale data
+  * rpc: get_info - add 'synchronized' field
+  * build: prepare v0.17.1.8
+  * restrict public node checks a little
+  * ban lists may now include subnets
+  * Optional DNS based blocklist
+  * rpc: add a busy_syncing field to get_info
+  * protocol: reject claimed block hashes that already are in the chain
+  * protocol: drop peers we can't download anything from in sync mode
+  * Fix byte_stream::put_n
+  * daemon: the ban command can now load IPs from a file (ban @filename)
+  * p2p: remove peers from grey and anchors lists when blocked
+  * p2p: ignore incoming peer list entries when we have them blocked
+  * Depends: Bump qt to 5.15.1
+
+-------------------------------------------------------------------
+Thu Dec 17 23:16:22 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Simplify version checking statements in .spec file
+
+-------------------------------------------------------------------
 Tue Dec 15 08:29:07 UTC 2020 - nopeinomicon@posteo.net
 
 - Update to version 0.17.1.7:

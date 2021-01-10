@@ -1,7 +1,7 @@
 #
 # spec file for package monero
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           monero
-Version:        0.17.1.7
+Version:        0.17.1.8
 Release:        0
 Summary:        P2P digital currency
 License:        MIT
@@ -174,7 +174,7 @@ echo "d %{_rundir}/%{name} 0770 root %{name}" > rundir.conf
 %build
 %{__mkdir_p} build/release
 cd build/release
-%{__cmake} -DBUILD_TESTS=OFF -DBUILD_GUI_DEPS=ON -DCMAKE_BUILD_TYPE=release ../..
+%{__cmake} -DARCH=default -DBUILD_TESTS=OFF -DBUILD_GUI_DEPS=ON -DCMAKE_BUILD_TYPE=release ../..
 %make_jobs
 %{__strip} -s bin/%{daemon_name}
 %{__strip} -s bin/%{cli_name}
