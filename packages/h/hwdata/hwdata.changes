@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan  7 14:28:17 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Add merge-pciids.pl to fully duplicate behavior of pciutils-ids
+  * Resolves SLE issue bsc#1180422 bsc#1180482
+
+-------------------------------------------------------------------
+Wed Jan  6 08:13:18 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.343:
+  + Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
 Mon Dec  7 08:49:16 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.342:

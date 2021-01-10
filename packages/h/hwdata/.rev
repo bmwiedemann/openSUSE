@@ -366,4 +366,16 @@
 - Update to version 0.341:</comment>
     <requestid>853523</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>8247113598386b567fdc5ba79f09d8da</srcmd5>
+    <version>0.343</version>
+    <time>1610303946</time>
+    <user>dimstar_suse</user>
+    <comment>- Add merge-pciids.pl to fully duplicate behavior of pciutils-ids
+  * Resolves SLE issue bsc#1180422 bsc#1180482
+
+- Update to version 0.343:
+  + Updated pci, usb and vendor ids.</comment>
+    <requestid>861531</requestid>
+  </revision>
 </revisionlist>
