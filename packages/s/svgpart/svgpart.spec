@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           svgpart
-Version:        20.12.0
+Version:        20.12.1
 Release:        0
 Summary:        SVG viewer component
 License:        GPL-2.0-or-later
@@ -68,6 +68,7 @@ An SVG viewer component for KDE (KPart).
 %dir %{_kf5_plugindir}/kf5/parts
 %{_kf5_plugindir}/kf5/parts/svgpart.so
 %{_kf5_servicesdir}/svgpart.desktop
+%{_kf5_appstreamdir}/org.kde.svgpart.metainfo.xml
 
 %if %{with lang}
 %files lang -f %{name}.lang
