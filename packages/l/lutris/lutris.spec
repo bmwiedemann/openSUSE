@@ -40,12 +40,15 @@ Requires:       p7zip
 Requires:       psmisc
 Requires:       python3-Pillow
 Requires:       python3-PyYAML
+Requires:       python3-cssselect
 # controller support
 Requires:       python3-evdev
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
+Requires:       python3-lxml
 Requires:       python3-requests
 Requires:       xrandr
+Recommends:     python3-distro
 Recommends:     winetricks
 BuildArch:      noarch
 

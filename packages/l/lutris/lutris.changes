@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan  9 10:58:56 UTC 2021 - Matthias Bach <marix@marix.org>
+
+- Add recommendation to python3-distro to avoid warning on startup.
+
+-------------------------------------------------------------------
+Wed Jan  8 20:59:59 UTC 2021 - Caleb McKay <caleb@candj.us>
+
+- Added additional dependencies required by Lutris to run.
+  * python3-lxml
+  * python3-cssselect
+-------------------------------------------------------------------
 Wed Jan  6 13:51:01 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.8.2:
