@@ -1,7 +1,7 @@
 #
 # spec file for package markdownpart
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           markdownpart
-Version:        20.12.0
+Version:        20.12.1
 Release:        0
 Summary:        KPart for rendering Markdown content
 License:        LGPL-2.1-or-later
