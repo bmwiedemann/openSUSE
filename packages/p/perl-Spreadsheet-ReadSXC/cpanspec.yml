@@ -7,9 +7,8 @@
 #sources:
 #  - source1
 #  - source2
-#patches:
-#  foo.patch: -p1
-#  bar.patch:
+patches:
+  remove_filter_signatures.diff: -p1 PATCH-FIX-OPENSUSE Do not requires Filter::signatures, as we have perl > 5.20
 #preamble: |-
 # BuildRequires:  gcc-c++
 #post_prep: |-
@@ -25,4 +24,4 @@
 #./Build build flags=%{?_smp_mflags} --myflag
 #custom_test: |-
 #startserver && make test
-#ignore_requires: Bizarre::Module
+ignore_requires: Filter::signatures

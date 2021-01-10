@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan  8 21:55:32 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- updated to 0.33
+   see /usr/share/doc/packages/perl-Spreadsheet-ReadSXC/Changes
+
+  0.33  2020-12-28
+      * Read style attributes immediately from Twig. This increases memory usage
+        but removes problems when we recycle the Twig object for parsing another
+        file
+      * Custom styles are now better supported and don't crash the module
+        immediately (issue GH #5 , reported with test file by mario-minati)
+      * Point bug tracker meta data to Github
+
+-------------------------------------------------------------------
 Thu Oct 15 14:24:45 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - add remove_filter_signatures.diff patch to drop Filter:signatures requirement
@@ -77,4 +91,3 @@ Thu Sep  1 21:04:39 UTC 2011 - chris@computersalat.de
 
 - initial package 0.20
   * created by cpanspec 1.78.04
-
