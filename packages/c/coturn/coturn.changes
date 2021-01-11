@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Jan 11 10:27:20 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 4.5.2
+  * Fix for CVE-2020-26262 (boo#1180764)
+    - Fix ipv6 ::1 loopback check
+    - Not allow allocate peer address 0.0.0.0/8 and ::/128
+    - For more details see the github security advisory:
+      https://github.com/coturn/coturn/security/advisories/GHSA-6g6j-r9rf-cm7p
+
+  * fix null pointer dereference in case of out of memory.
+  * Fix: Null pointer dereference on tcp_client_input_handler_rfc6062data function
+  * Fix: use-after-free vulnerability on write_to_peerchannel function
+  * Fix: use-after-free vulnerability on write_client_connection function
+
+  * add prometheus metrics
+  * Delete trailing whitespace in example configuration files
+  * Add architecture ppc64le to travis build
+  * Fix misleading option in doc (prometheus)
+  * Allow RFC6062 TCP relay data to look like TLS
+  * Add support for proxy protocol V1
+  * Print full date and time in logs
+  * Add new options: "new-log-timestamp" and "new-log-timestamp-format"
+  * Do not use FIPS and remove hardcode OPENSSL_VERSION_NUMBER with LibreSSL
+  * Add ACME redirect url
+  * support of --acme-redirect <URL>
+  * fix acme security, redundancy, consistency
+  * Add new --log-binding option to enable binding request logging
+  * Fix stale-nonce documentation
+  * Version number is changed to semver 2.0
+  * pkg-config, and various cleanups in configure file
+  * Add systemd notification for better systemd integration
+  * Fix c++ support
+  * Remove session id/allocation labels
+  * Remove per session metrics. We should later add more counters.
+
+-------------------------------------------------------------------
 Sun Dec 27 15:42:09 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - AppArmor profile has ABI 3.0 and some minor changes
