@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydantic
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,24 +20,23 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pydantic
-Version:        1.6.1
+Version:        1.7.3
 Release:        0
 Summary:        Data validation and settings management using python type hinting
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/samuelcolvin/pydantic
 Source:         https://github.com/samuelcolvin/pydantic/archive/v%{version}.tar.gz#/pydantic-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/samuelcolvin/pydantic/commit/9c4860ce964a4eb2e22eedc21f21d406c596a82f Valdiate arguments config (#1663)
-Patch0:         validate-config.patch
 BuildRequires:  %{python_module email_validator >= 1.0.3}
+BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dotenv >= 0.10.4}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing_extensions >= 3.7.2}
-BuildRequires:  (python36-dataclasses if python36-base)
-BuildRequires:  (python3-dataclasses if python3-base < 3.7)
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  (python3-dataclasses if python3-base < 3.7)
+BuildRequires:  (python36-dataclasses if python36-base)
 %if 0%{?python_version_nodots} == 36
 Requires:       python-dataclasses
 %endif
@@ -52,7 +51,8 @@ Data validation and settings management using Python type hinting.
 
 %prep
 %setup -q -n pydantic-%{version}
-%patch0 -p1
+# compatibility with new pytest
+sed -i 's/yield_fixture/fixture/' tests/conftest.py
 
 %build
 %python_build

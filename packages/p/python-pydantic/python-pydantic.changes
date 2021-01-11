@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan  8 13:10:40 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.7.3
+  * python 3.9 support
+  * Private model attributes
+  * "secrets files" support in BaseSettings
+  * convert stdlib dataclasses to pydantic dataclasses and use stdlib dataclasses in models
+  * few bugfixes
+- Drop validate-config.patch
+
+-------------------------------------------------------------------
 Mon Dec  7 01:00:22 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Add dataclasses requirement for Python 3.6: Fixes Leap 15.2 build
