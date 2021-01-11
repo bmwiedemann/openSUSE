@@ -674,4 +674,16 @@ run -osc service localrun format_spec_file to fix copyright
 </comment>
     <requestid>860141</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>107b68a997f5a2c16e0d944608e01c50</srcmd5>
+    <version>2.22.1</version>
+    <time>1610381720</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.22.1:
+  * Slow scrolling in the article list (regression) (#1372)
+  * Segfaults if swap-title-and-hints is enabled (regression) (#1399)
+  * Build failure on GCC 9 due to maybe-uninitialized warning which
+    -Werror turns into an error</comment>
+    <requestid>862228</requestid>
+  </revision>
 </revisionlist>
