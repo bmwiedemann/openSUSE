@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-vm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           yast2-vm
 Summary:        Configure Hypervisor and Tools for Xen and KVM
 License:        GPL-2.0-only
 Group:          System/YaST
-Version:        4.2.5
+Version:        4.3.1
 Release:        0
 URL:            https://github.com/yast/yast-vm
 

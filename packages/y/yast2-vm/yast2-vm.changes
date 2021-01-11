@@ -1,8 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 29 10:47:24 UTC 2020 - David Diaz <dgonzalez@suse.com>
+
+- bsc#1180244, jsc#SLE-12781
+  * Drop support for "libvirt LXC containers"
+  * Do not offer Xen virtualization options in aarch64
+- Fix wrong number version 4.2.5 -> 4.3.0
+- 4.3.1
+
+-------------------------------------------------------------------
 Tue Dec 15 15:31:59 UTC 2020 - Stefan Schubert <schubi@suse.de>
 
 - Removed old code for sysvinit configuration (bsc#1175494).
-- 4.2.5
+- 4.3.0
 
 -------------------------------------------------------------------
 Mon Aug 17 14:04:21 MDT 2020 - carnold@suse.com
