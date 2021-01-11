@@ -1,7 +1,7 @@
 #
 # spec file for package filezilla
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,10 @@
 #
 
 
+%define main_version 3.52.0
+
 Name:           filezilla
-Version:        3.51.0
+Version:        3.52.0.5
 Release:        0
 Summary:        A GUI FTP and SFTP Client
 License:        GPL-2.0-or-later
@@ -39,7 +41,7 @@ BuildRequires:  xdg-utils
 BuildRequires:  pkgconfig(cppunit)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(libfilezilla) >= 0.25.0
+BuildRequires:  pkgconfig(libfilezilla) >= 0.26.0
 BuildRequires:  pkgconfig(libidn)
 BuildRequires:  pkgconfig(nettle) >= 3.1
 # filezilla-team use BuildRequires:  pkgconfig(sqlite3) >= 3.11.1
@@ -161,7 +163,7 @@ autoreconf -fi
 %{_datadir}/pixmaps/%{name}.png
 %dir %{_datadir}/appdata/
 %{_datadir}/appdata/%{name}.appdata.xml
-%{_libdir}/libfzclient-private-%{version}.so
+%{_libdir}/libfzclient-private-%{main_version}.so
 %{_mandir}/man1/filezilla.1%{?ext_man}
 %{_mandir}/man1/fzputtygen.1%{?ext_man}
 %{_mandir}/man1/fzsftp.1%{?ext_man}

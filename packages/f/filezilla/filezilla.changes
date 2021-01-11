@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Jan 10 10:20:10 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.52.0.5
+  * Bugfixes and minor changes:
+    - FTP: Fixed crash if downloading ASCII files with stray 
+      carriage returns
+    - Fixed too strict requirements for preallocation
+    - *nix: Fixed a memory leak
+- Changes from 3.52.0.4
+  * Bugfixes and minor changes:
+    - macOS: Work around a kernel bug where ftruncate cannot be 
+      called more than once on a shared memory object
+- Changes from 3.52.0.3
+  * Bugfixes and minor changes:
+    - macOS: Fix issue opening shared memory objects
+    - Use locale-safe name for shm_open, omit padding.
+- Changes from 3.52.0.2
+  * Bugfixes and minor changes:
+    - HTTP: Handle multi-token Connection: headers
+    - It appears the Connection: header can have multiple tokens.
+      Take this into account deciding whether persistent
+      connections are used.
+    - Remove unused variable
+- Changes from 3.52.0.1
+  * Bugfixes and minor changes:
+    - macOS: Rebuilt to address a toolchain issue
+    - Updated translation
+    - Use proper toolbar style. Apple should fire all UI designers.
+    - Fixed warnings.
+- Changes from 3.52.0
+  * Bugfixes and minor changes:
+    - Fixed a regression with the rename file exists action on 
+      downloads
+    - Fixed warnings.
+    - Minor refactoring 
+    - Fix rename file exists action on downloads. 
+    - Updated translations 
+
+-------------------------------------------------------------------
 Wed Oct 21 11:34:01 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.51.0:
