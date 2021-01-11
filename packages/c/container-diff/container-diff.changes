@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jan 11 09:47:20 UTC 2021 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to 0.16.0
+  Highlights:
+  * container-diff now supports packages installed with Emerge!
+  New Features:
+  * feat: support emerge packages analyzer #337
+  * Add two options to handle self-signed certificates
+    registries #327
+  Fixes:
+  * version: Move vX.Y.Z to version.go so it works with go get, add
+    git info #304
+  * Fix RPM differ to to include release of version #315
+  * --help: List available analyzers, improve Usage line #303
+  * Fix concurrent map write for hardlink #324
+  * Remove unnecessary flag parsing #330
+  Updates:
+  * Upgrade to go 1.14 and go.mod #329
+  * Update codeowners #341
+  Docs Updates:
+  * README: mention archlinux-specificcinstructions #307
+  * Document official support level from Google #342
+
+-------------------------------------------------------------------
 Fri Aug 23 17:53:33 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary field.
