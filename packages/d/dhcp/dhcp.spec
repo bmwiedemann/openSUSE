@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?usrmerged}
+%define sbindir %_sbindir
+%else
+%define sbindir /sbin
+%endif
+
 %define isc_version   4.3.6-P1
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
@@ -292,18 +298,20 @@ install -d -m0755 %{buildroot}%{_localstatedir}/lib/{dhcp,dhcp6}/dev
 install -d -m0755 %{buildroot}%{_localstatedir}/lib/{dhcp,dhcp6}/%{_lib}
 install -d -m0755 %{buildroot}%{_localstatedir}/lib/{dhcp,dhcp6}/run
 install -d -m0755 %{buildroot}%{_localstatedir}/lib/{dhcp,dhcp6}/db
+%if !0%{?usrmerged}
 # move the dhclient binary to /sbin
 mv -f %{buildroot}%{_sbindir}/dhclient %{buildroot}/sbin/
+%endif
 # provide a ...6 link, so we know it supports DHCPv6
 ln -sf dhcpd      %{buildroot}%{_sbindir}/dhcpd6
 ln -sf dhcrelay   %{buildroot}%{_sbindir}/dhcrelay6
-ln -sf dhclient   %{buildroot}/sbin/dhclient6
+ln -sf dhclient   %{buildroot}%{sbindir}/dhclient6
 # install our adopted config examples and dhclient-script:
 install    -m0644 $RPM_SOURCE_DIR/dhcpd.conf      %{buildroot}%{_sysconfdir}/
 install    -m0644 $RPM_SOURCE_DIR/dhcpd6.conf     %{buildroot}%{_sysconfdir}/
 install    -m0644 $RPM_SOURCE_DIR/dhclient.conf   %{buildroot}%{_sysconfdir}/
 install    -m0644 $RPM_SOURCE_DIR/dhclient6.conf  %{buildroot}%{_sysconfdir}/
-install    -m0754 $RPM_SOURCE_DIR/dhclient-script %{buildroot}/sbin/
+install    -m0754 $RPM_SOURCE_DIR/dhclient-script %{buildroot}%{sbindir}/
 # helper / wrapper scripts
 install -d -m0755 %{buildroot}%{_libexecdir}/dhcp
 install    -m0755 $RPM_SOURCE_DIR/dhcpd.script              \
@@ -517,9 +525,9 @@ fi
 %doc contrib examples
 
 %files client
-/sbin/dhclient
-/sbin/dhclient6
-/sbin/dhclient-script
+%{sbindir}/dhclient
+%{sbindir}/dhclient6
+%{sbindir}/dhclient-script
 %config(noreplace) %{_sysconfdir}/dhclient.conf
 %config(noreplace) %{_sysconfdir}/dhclient6.conf
 %{_mandir}/man5/dhclient.conf.5%{?ext_man}
