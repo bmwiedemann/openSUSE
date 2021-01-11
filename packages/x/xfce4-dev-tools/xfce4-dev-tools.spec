@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-dev-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %bcond_with git
 Name:           xfce4-dev-tools
-Version:        4.14.0
+Version:        4.16.0
 Release:        0
 Summary:        Xfce Development Tools
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://www.xfce.org/
-Source0:        https://archive.xfce.org/src/xfce/xfce4-dev-tools/4.14/%{name}-%{version}.tar.bz2
-BuildRequires:  pkgconfig(glib-2.0)
+Source0:        https://archive.xfce.org/src/xfce/xfce4-dev-tools/4.16/%{name}-%{version}.tar.bz2
+BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
 Requires:       autoconf
 Requires:       automake
 Requires:       intltool
@@ -54,13 +54,17 @@ NOCONFIGURE=1 ./autogen.sh
 %make_install
 
 %files
-%doc AUTHORS ChangeLog HACKING NEWS README
+%doc AUTHORS ChangeLog HACKING NEWS README.md
 %license COPYING
 %{_bindir}/xdt-autogen
+%{_bindir}/xfce-build
 %{_bindir}/xdt-csource
-%dir %{_datadir}/xfce4
-%dir %{_datadir}/xfce4/dev-tools
-%dir %{_datadir}/xfce4/dev-tools/m4macros
-%{_datadir}/xfce4/dev-tools/m4macros/*.m4
+%{_bindir}/xfce-do-release
+%{_bindir}/xfce-get-release-notes
+%{_bindir}/xfce-get-translations
+%{_bindir}/xfce-update-news
+%dir %{_datadir}/aclocal
+%{_datadir}/aclocal/xdt-*
+%{_mandir}/man1/xdt-csource.1.gz
 
 %changelog

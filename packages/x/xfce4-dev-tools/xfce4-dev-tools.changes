@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Wed Dec 23 02:10:37 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 4.16.0
+  - Bump glib to 2.50 based on xfce4.16 roadmap
+  - Do not process @LINGUAS@ at xdt-autogen stage
+  - Fail xfce-build container generation if there is any error
+  - helpers: Prefer xfce-build over xfce-test (Fixes #38)
+  - helpers: Add new helper xfce-open-gitlab
+  - helpers: Add helper to locally run xfce-build
+  - helpers: Add xfce-build 'pull' argument
+  - xfce-build: Add Thunar to container (Fixes #40)
+  - Disable CFLAGS override when building CI container
+  - use strict CFLAGS to catch common mistakes in ci pipeline
+  - Add xvfb on xfce-build
+
+-------------------------------------------------------------------
+Mon Nov  2 21:50:35 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.15.1
+  * get-translations: Fix line wrapping
+  * xdt-autogen: Various small improvements
+  * xdt-autogen: Properly handle whitespaces in filenames
+  * xdt-autogen: Use sed instead of tr to replace strings
+  * Updates README.md
+  * xfce-build: Add libclutter-1.0-dev for xfdashboard build
+  * Update .gitignore
+  * helpers: Use blank line for tags message
+  * helpers: Reuse release notes from NEWS for tag message
+  * helpers: Simplify xfce-update-news
+  * helpers: Do not strip NEWS blank line at EOF
+  * helpers: Install xfce-do-release
+  * xfce-build: Add depend for mousepad (Fixes #37)
+  * helpers: Add do-release helper and Readme
+  * xfce-build: Install python3 version of distutils-extra
+  * helpers: Make get-translations executable
+  * get-translations: Remove last comma
+  * get-translations: Correctly get locale from commit messages
+  * xfce-build: Replace build-dep with package names
+
+-------------------------------------------------------------------
+Fri Aug 28 15:20:10 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.15.0
+  * New macro XDT_VERSION_INIT(SEMVER[, TAG])
+    This macro takes care of setting up the version numbering.
+    It will define the following macros based on SEMVER and TAG:
+    - xdt_version
+    - xdt_version_major
+    - xdt_version_minor
+    - xdt_version_micro
+    - xdt_version_tag
+    - xdt_version_build
+    - xdt_debug_default
+    If TAG isn't specified, the xdt_version_tag and xdt_version_git
+    will be empty and xdt_debug_default will be set to "minimum",
+    otherwise the xdt_version_build will contain a git hash and
+    xdt_debug_default will be set to "yes"
+  * XDT_I18N macro will now automatically find the linguas if none
+    are specified during the autoconf run.
+  * Install m4 macros in default search dir.
+    This makes autoconf find the macros by default.
+    By setting version via XDT_VERSION_INIT and using XDT_I18N
+    without arguments, this is no longer necessary to use a separate
+    configure.ac.in and a plain configure.ac can be used
+  * xfce4-dev-tools now also handle the CI (docker container,
+    .gitlab-ci.yml templates files etc) on our new gitlab instance.
+  * New helpers are also available (xfce-get-release-notes,
+    xfce-get-translations, xfce-update-news)
+  * Use datarootdir instead of datadir
+  * xdt-autogen: explicitly set search path for m4 macros
+  * Add two new helpers to help releasers
+  * Install m4 macros into default $datadir/aclocal
+  * Update README for new gitlab urls
+  * xdt-autogen: Improve and simplify linguas detection
+  * Let XDT_I18N automatically find the po/*.po as default
+  * Let configure generate the xdt-autogen script
+  * Implement XDT_VERSION_INIT
+  * Add manpage and tests to xdt-csource
+  * Add xfce4-dev-tools build in addition to container build
+  * Check BEFORE_SHA along with changes to .po files
+  * gitlabci: Ensure to run autogen in distcheck stage
+  * Switch to "foreign" mode for automake
+  * Add CI templates notes
+  * Update README with explanation of Dockerfile
+  * Fix whitespace error
+  * Add helper script to get all
+  * Integrate xfce-build container build/creation
+  * Translation updates
+
+-------------------------------------------------------------------
 Fri Aug 16 12:54:04 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed sources in spec file
