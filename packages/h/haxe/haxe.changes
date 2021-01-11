@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 11 10:44:50 UTC 2021 - Andy Li <andy@onthewings.net>
+
+- Update to 4.1.5
+  * added an error on `return` outside of a function
+  * php/python: support @:native("") for extern classes
+  * allowed `Any` as type parameter in `catch(e:SomeType<Any>)`
+  * improved compilation speed for `try..catch` expressions
+  * added an argument to `haxe.CallStack.exceptionStack` to return
+    full stack up to the topmost call
+  * compatibility with PHP 8
+  * Various bug fixes detailed in
+    https://github.com/HaxeFoundation/haxe/blob/4.1.5/extra/CHANGES.txt
+
+-------------------------------------------------------------------
 Sat Jun 20 08:49:31 UTC 2020 - Andy Li <andy@onthewings.net>
 
 - Update to 4.1.2
