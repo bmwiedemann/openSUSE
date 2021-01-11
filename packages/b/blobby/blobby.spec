@@ -33,6 +33,8 @@ Patch0:         networkmessage.patch
 Patch1:         icon.patch
 # PATCH-FIX-OPENSUSE
 Patch2:         data-dir.patch
+# PATCH-FIX-UPSTREAM c4f23db774ebd41a8111180eae0db90f4c59af92 - use cmake zip to not add timestamps (boo#1047218)
+Patch3:         reproducible.patch
 BuildRequires:  boost-devel
 BuildRequires:  cmake >= 2.6
 BuildRequires:  fdupes

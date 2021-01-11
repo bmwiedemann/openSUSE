@@ -1,0 +1,19 @@
+commit c4f23db774ebd41a8111180eae0db90f4c59af92
+Author: danielknobe <daniel-knobe@web.de>
+Date:   Mon Jan 20 22:15:29 2020 +0100
+
+    use cmake instead of zip to compress files
+
+diff --git a/data/CMakeLists.txt b/data/CMakeLists.txt
+index a8c41c4..3d989d3 100644
+--- a/data/CMakeLists.txt
++++ b/data/CMakeLists.txt
+@@ -2,7 +2,7 @@ macro(add_zip_archive _dir _filetype)
+ 	file(GLOB_RECURSE archive_src RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ${_dir}/*.${_filetype})
+ 	add_custom_command(
+ 		OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${_dir}.zip
+-		COMMAND zip ${CMAKE_CURRENT_BINARY_DIR}/${_dir}.zip ${archive_src}
++		COMMAND ${CMAKE_COMMAND} -E tar cf ${CMAKE_CURRENT_BINARY_DIR}/${_dir}.zip --format=zip ${archive_src}
+ 		DEPENDS ${archive_src}
+ 		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+ 		VERBATIM
