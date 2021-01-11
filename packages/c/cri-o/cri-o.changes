@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jan 08 12:22:41 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.19.1:
+  * bump to v1.19.1
+  * don't do unnecesary iptables restore
+  * switch CRI-O to use its own hostport manager
+  * dual-stack host port manager
+  * fix upstream hostport manager
+  * Add README to hostport folder
+  * fork hosport kubernetes code
+  * [1.19] vendor: bump containers/storage to v1.20.5
+  * runtime_vm: Ensure closeIOChan is not nil inside CloseStdin's function
+  * runtime: parse oom file for VM type runtimes
+  * runtime_vm: Ignore ttrpc.ErrClosed when removing a container
+  * runtime_vm: StopContainers() should not fail when the VM is shutdown
+  * runtime_vm: Don't let wait() return ttrpc.ErrClosed
+  * runtime_vm: Fix updateContainerStatus() logic
+  * runtime_vm: set Pid and InitPid for VM runtimes
+  * internal/config/node: add checkFsMayDetachMounts
+  * Fix bogus CI test failures
+  * test/config: fix shellcheck warning
+  * test/config: fix "config dir should fail with invalid option"
+  * server: cleanup container in runtime after failed creation
+
+-------------------------------------------------------------------
 Tue Sep 15 07:24:16 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
 - API Change
