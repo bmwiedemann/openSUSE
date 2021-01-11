@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Jan 08 03:59:25 UTC 2021 - jenting.hsiao@suse.com
+
+- Update to version 0.80.0:
+  * Allow Dart Sass transformations to be cached on disk
+  * dartsass: Dart Sass only supports `expanded` and `compressed`
+  * dartsass: Add missing OutputStyle option
+  * Update emoji import paths and version
+  * Add Dart Sass support
+  * GroupByParamDate now supports datetimes
+  * para: Skip para test when not on CI
+  * Update SECURITY.md
+  * Improve LookPath
+  * docs: create a SECURITY.md
+  * Fix Resource.ResourceType so it always returns MIME's main type
+  * para: Show more detail on failed time test
+  * images: Add images.Overlay filter
+  * tpl: Regenerate templates
+  * tpl: Fix series detection in opengraph
+  * hugolib/paths: Fix typo
+  * all: Fix minor typos
+  * Fix BenchmarkMergeByLanguage
+  * deps: Bump github.com/spf13/cobra from 0.15.0 to 0.20.0
+  * chore: configure proper link to discourse.gohugo.io (#8020)
+  * tpl/internal/go_templates: Revert formatting
+  * all: Format code with gofumpt
+  * build(deps): bump github.com/evanw/esbuild from 0.8.15 to 0.8.17
+  * tpl: Add title parameter to YouTube shortcode
+  * Use --baseURL path for live-reload URL
+  * Fix RelURL and AbsURL when path starts with language
+  * build(deps): bump github.com/getkin/kin-openapi from 0.31.0 to 0.32.0
+  * tpl: Fix substr when length parameter is zero
+  * tpl: Refactor and fix substr logic
+
+-------------------------------------------------------------------
 Tue Dec 01 17:48:32 UTC 2020 - jkowalczyk@suse.com
 
 - Update to version 0.79.0:

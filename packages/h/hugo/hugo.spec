@@ -1,7 +1,7 @@
 #
 # spec file for package hugo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 # Project name when using go tooling.
 %define project github.com/gohugoio/hugo
 Name:           hugo
-Version:        0.79.0
+Version:        0.80.0
 Release:        0
 Summary:        Static website generator written in Go
 License:        Apache-2.0

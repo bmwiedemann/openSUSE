@@ -34,4 +34,12 @@
   * build(deps): bump github.com/evanw/esbuild from 0.8.6 to 0.8.8 (forwarded request 852446 from jfkw)</comment>
     <requestid>852490</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e0c19c1a773f9a695317c2a8728dc42c</srcmd5>
+    <version>0.80.0</version>
+    <time>1610381639</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.80.0:</comment>
+    <requestid>862205</requestid>
+  </revision>
 </revisionlist>
