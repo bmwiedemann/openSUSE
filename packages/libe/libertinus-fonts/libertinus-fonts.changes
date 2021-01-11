@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Jan 10 10:02:01 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+i
+- Update to 7.0.31
+  * Correct distribution release filenames
+
+-------------------------------------------------------------------
+Sat Jan  9 20:50:27 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 7.030:
+  * Overhaul dot placement on all Latin capitals with dot-above
+  * Align dot-below on ṃ U+1E43 below middle stroke of m
+  * Remove bogus glyphs encoded as subscripts from Display and
+    Serif Semibold
+  * Drop inappropriate kerning classes from ₘ U+2098 and ₙ U+2099
+  * Zero out kerns between super/subscript glyphs
+  * Add glyph for U+0453 to Cyrillic Italic styles
+  * Enable support for Macedonian localized Italics
+  * Expand range of available angle bracket sizes in Math family
+  * Add alternative slanted integrals to Math family (as feature
+    +ss08)
+- Use tar.xz archive
+
+-------------------------------------------------------------------
 Wed Oct 14 16:38:40 UTC 2020 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 7.020:

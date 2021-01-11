@@ -1,7 +1,7 @@
 #
 # spec file for package libertinus-fonts
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,14 @@
 
 %define fontname Libertinus
 Name:           libertinus-fonts
-Version:        7.020
+Version:        7.031
 Release:        0
 Summary:        Libertinus font family
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://github.com/alerque/libertinus
-Source0:        https://github.com/alerque/libertinus/releases/download/v%{version}/%{fontname}-%{version}.zip
+Source0:        https://github.com/alerque/libertinus/releases/download/v%{version}/%{fontname}-%{version}.tar.xz
 BuildRequires:  fontpackages-devel
-BuildRequires:  unzip
 BuildArch:      noarch
 %reconfigure_fonts_prereq
 

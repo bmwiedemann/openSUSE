@@ -183,4 +183,28 @@
     Mono family</comment>
     <requestid>841823</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>05d103a4aea282f0881b97a8a8564380</srcmd5>
+    <version>7.031</version>
+    <time>1610381566</time>
+    <user>dimstar_suse</user>
+    <comment>i
+- Update to 7.0.31
+  * Correct distribution release filenames
+
+- Update to 7.030:
+  * Overhaul dot placement on all Latin capitals with dot-above
+  * Align dot-below on ṃ U+1E43 below middle stroke of m
+  * Remove bogus glyphs encoded as subscripts from Display and
+    Serif Semibold
+  * Drop inappropriate kerning classes from ₘ U+2098 and ₙ U+2099
+  * Zero out kerns between super/subscript glyphs
+  * Add glyph for U+0453 to Cyrillic Italic styles
+  * Enable support for Macedonian localized Italics
+  * Expand range of available angle bracket sizes in Math family
+  * Add alternative slanted integrals to Math family (as feature
+    +ss08)
+- Use tar.xz archive</comment>
+    <requestid>862087</requestid>
+  </revision>
 </revisionlist>
