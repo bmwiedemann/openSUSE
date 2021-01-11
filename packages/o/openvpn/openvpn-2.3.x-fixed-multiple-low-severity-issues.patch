@@ -1,8 +1,8 @@
-diff --git a/src/openvpn/crypto.c b/src/openvpn/crypto.c
-index ff0f9a7..fb27b36 100644
---- a/src/openvpn/crypto.c
-+++ b/src/openvpn/crypto.c
-@@ -118,7 +118,7 @@ openvpn_encrypt_aead(struct buffer *buf, struct buffer work,
+Index: openvpn-2.4.10/src/openvpn/crypto.c
+===================================================================
+--- openvpn-2.4.10.orig/src/openvpn/crypto.c
++++ openvpn-2.4.10/src/openvpn/crypto.c
+@@ -118,7 +118,7 @@ openvpn_encrypt_aead(struct buffer *buf,
      dmsg(D_PACKET_CONTENT, "ENCRYPT FROM: %s", format_hex(BPTR(buf), BLEN(buf), 80, &gc));
  
      /* Buffer overflow check */
@@ -11,7 +11,7 @@ index ff0f9a7..fb27b36 100644
      {
          msg(D_CRYPT_ERRORS,
              "ENCRYPT: buffer size error, bc=%d bo=%d bl=%d wc=%d wo=%d wl=%d",
-@@ -237,7 +237,7 @@ openvpn_encrypt_v1(struct buffer *buf, struct buffer work,
+@@ -237,7 +237,7 @@ openvpn_encrypt_v1(struct buffer *buf, s
              ASSERT(cipher_ctx_reset(ctx->cipher, iv_buf));
  
              /* Buffer overflow check */
@@ -20,7 +20,7 @@ index ff0f9a7..fb27b36 100644
              {
                  msg(D_CRYPT_ERRORS, "ENCRYPT: buffer size error, bc=%d bo=%d bl=%d wc=%d wo=%d wl=%d cbs=%d",
                      buf->capacity,
-@@ -378,7 +378,7 @@ openvpn_decrypt_aead(struct buffer *buf, struct buffer work,
+@@ -378,7 +378,7 @@ openvpn_decrypt_aead(struct buffer *buf,
      const cipher_kt_t *cipher_kt = cipher_ctx_get_cipher_kt(ctx->cipher);
      uint8_t *tag_ptr = NULL;
      int tag_size = 0;
@@ -29,7 +29,7 @@ index ff0f9a7..fb27b36 100644
      struct gc_arena gc;
  
      gc_init(&gc);
-@@ -455,7 +455,7 @@ openvpn_decrypt_aead(struct buffer *buf, struct buffer work,
+@@ -455,7 +455,7 @@ openvpn_decrypt_aead(struct buffer *buf,
      dmsg(D_PACKET_CONTENT, "DECRYPT FROM: %s", format_hex(BPTR(buf), BLEN(buf), 0, &gc));
  
      /* Buffer overflow check (should never fail) */
@@ -38,7 +38,7 @@ index ff0f9a7..fb27b36 100644
      {
          CRYPT_ERROR("potential buffer overflow");
      }
-@@ -601,7 +601,7 @@ openvpn_decrypt_v1(struct buffer *buf, struct buffer work,
+@@ -601,7 +601,7 @@ openvpn_decrypt_v1(struct buffer *buf, s
              }
  
              /* Buffer overflow check (should never happen) */
@@ -47,10 +47,10 @@ index ff0f9a7..fb27b36 100644
              {
                  CRYPT_ERROR("potential buffer overflow");
              }
-diff --git a/src/openvpn/crypto_openssl.h b/src/openvpn/crypto_openssl.h
-index 60a2812..c191695 100644
---- a/src/openvpn/crypto_openssl.h
-+++ b/src/openvpn/crypto_openssl.h
+Index: openvpn-2.4.10/src/openvpn/crypto_openssl.h
+===================================================================
+--- openvpn-2.4.10.orig/src/openvpn/crypto_openssl.h
++++ openvpn-2.4.10/src/openvpn/crypto_openssl.h
 @@ -52,6 +52,9 @@ typedef HMAC_CTX hmac_ctx_t;
  /** Maximum length of an IV */
  #define OPENVPN_MAX_IV_LENGTH   EVP_MAX_IV_LENGTH
@@ -61,11 +61,11 @@ index 60a2812..c191695 100644
  /** Cipher is in CBC mode */
  #define OPENVPN_MODE_CBC        EVP_CIPH_CBC_MODE
  
-diff --git a/src/openvpn/init.c b/src/openvpn/init.c
-index 0652ef4..9fa3352 100644
---- a/src/openvpn/init.c
-+++ b/src/openvpn/init.c
-@@ -3067,8 +3067,8 @@ init_context_buffers(const struct frame *frame)
+Index: openvpn-2.4.10/src/openvpn/init.c
+===================================================================
+--- openvpn-2.4.10.orig/src/openvpn/init.c
++++ openvpn-2.4.10/src/openvpn/init.c
+@@ -3215,8 +3215,8 @@ init_context_buffers(const struct frame
      b->aux_buf = alloc_buf(BUF_SIZE(frame));
  
  #ifdef ENABLE_CRYPTO
@@ -76,10 +76,10 @@ index 0652ef4..9fa3352 100644
  #endif
  
  #ifdef USE_COMP
-diff --git a/src/openvpn/proxy.c b/src/openvpn/proxy.c
-index 7a737ea..592bd97 100644
---- a/src/openvpn/proxy.c
-+++ b/src/openvpn/proxy.c
+Index: openvpn-2.4.10/src/openvpn/proxy.c
+===================================================================
+--- openvpn-2.4.10.orig/src/openvpn/proxy.c
++++ openvpn-2.4.10/src/openvpn/proxy.c
 @@ -73,6 +73,9 @@ recv_line(socket_descriptor_t sd,
      struct buffer la;
      int lastc = 0;
@@ -90,7 +90,7 @@ index 7a737ea..592bd97 100644
      CLEAR(la);
      if (lookahead)
      {
-@@ -311,11 +314,11 @@ get_proxy_authenticate(socket_descriptor_t sd,
+@@ -321,11 +324,11 @@ get_proxy_authenticate(socket_descriptor
                         struct gc_arena *gc,
                         volatile int *signal_received)
  {
@@ -104,7 +104,7 @@ index 7a737ea..592bd97 100644
          {
              free(*data);
              *data = NULL;
-@@ -631,9 +634,9 @@ establish_http_proxy_passthru(struct http_proxy_info *p,
+@@ -641,9 +644,9 @@ establish_http_proxy_passthru(struct htt
                                volatile int *signal_received)
  {
      struct gc_arena gc = gc_new();
@@ -117,7 +117,7 @@ index 7a737ea..592bd97 100644
      int status;
      int nparms;
      bool ret = false;
-@@ -723,7 +726,8 @@ establish_http_proxy_passthru(struct http_proxy_info *p,
+@@ -733,7 +736,8 @@ establish_http_proxy_passthru(struct htt
          }
  
          /* receive reply from proxy */
@@ -127,7 +127,7 @@ index 7a737ea..592bd97 100644
          {
              goto error;
          }
-@@ -754,7 +758,8 @@ establish_http_proxy_passthru(struct http_proxy_info *p,
+@@ -764,7 +768,8 @@ establish_http_proxy_passthru(struct htt
  
              while (true)
              {
@@ -137,7 +137,7 @@ index 7a737ea..592bd97 100644
                  {
                      goto error;
                  }
-@@ -834,7 +839,8 @@ establish_http_proxy_passthru(struct http_proxy_info *p,
+@@ -844,7 +849,8 @@ establish_http_proxy_passthru(struct htt
              }
  
              /* receive reply from proxy */
@@ -147,7 +147,7 @@ index 7a737ea..592bd97 100644
              {
                  goto error;
              }
-@@ -959,7 +965,8 @@ establish_http_proxy_passthru(struct http_proxy_info *p,
+@@ -969,7 +975,8 @@ establish_http_proxy_passthru(struct htt
                  }
  
                  /* receive reply from proxy */
@@ -157,11 +157,11 @@ index 7a737ea..592bd97 100644
                  {
                      goto error;
                  }
-diff --git a/src/openvpn/socket.c b/src/openvpn/socket.c
-index 4e7e3f9..93ea889 100644
---- a/src/openvpn/socket.c
-+++ b/src/openvpn/socket.c
-@@ -1162,6 +1162,9 @@ socket_listen_accept(socket_descriptor_t sd,
+Index: openvpn-2.4.10/src/openvpn/socket.c
+===================================================================
+--- openvpn-2.4.10.orig/src/openvpn/socket.c
++++ openvpn-2.4.10/src/openvpn/socket.c
+@@ -1278,6 +1278,9 @@ socket_listen_accept(socket_descriptor_t
      /* struct openvpn_sockaddr *remote = &act->dest; */
      struct openvpn_sockaddr remote_verify = act->dest;
      socket_descriptor_t new_sd = SOCKET_UNDEFINED;
@@ -171,7 +171,7 @@ index 4e7e3f9..93ea889 100644
  
      CLEAR(*act);
      socket_do_listen(sd, local, do_listen, true);
-@@ -1314,6 +1317,9 @@ openvpn_connect(socket_descriptor_t sd,
+@@ -1428,6 +1431,9 @@ openvpn_connect(socket_descriptor_t sd,
  {
      int status = 0;
  
@@ -181,11 +181,11 @@ index 4e7e3f9..93ea889 100644
  #ifdef TARGET_ANDROID
      protect_fd_nonlocal(sd, remote);
  #endif
-diff --git a/src/openvpn/socks.c b/src/openvpn/socks.c
-index 92747ec..f8e02a4 100644
---- a/src/openvpn/socks.c
-+++ b/src/openvpn/socks.c
-@@ -98,13 +98,16 @@ socks_username_password_auth(struct socks_proxy_info *p,
+Index: openvpn-2.4.10/src/openvpn/socks.c
+===================================================================
+--- openvpn-2.4.10.orig/src/openvpn/socks.c
++++ openvpn-2.4.10/src/openvpn/socks.c
+@@ -98,13 +98,16 @@ socks_username_password_auth(struct sock
                               socket_descriptor_t sd,
                               volatile int *signal_received)
  {
@@ -204,7 +204,7 @@ index 92747ec..f8e02a4 100644
      creds.defined = 0;
      if (!get_user_pass(&creds, p->authfile, UP_TYPE_SOCKS, GET_USER_PASS_MANAGEMENT))
      {
-@@ -193,7 +196,7 @@ socks_handshake(struct socks_proxy_info *p,
+@@ -193,7 +196,7 @@ socks_handshake(struct socks_proxy_info
                  socket_descriptor_t sd,
                  volatile int *signal_received)
  {
@@ -213,7 +213,7 @@ index 92747ec..f8e02a4 100644
      int len = 0;
      const int timeout_sec = 5;
      ssize_t size;
-@@ -205,6 +208,9 @@ socks_handshake(struct socks_proxy_info *p,
+@@ -205,6 +208,9 @@ socks_handshake(struct socks_proxy_info
          method_sel[2] = 0x02; /* METHODS = [2 (plain login)] */
  
      }
@@ -227,17 +227,17 @@ index 92747ec..f8e02a4 100644
      char atyp = '\0';
      int alen = 0;
      int len = 0;
--    char buf[22];
-+    char buf[22] = {0};
+-    char buf[270];		/* 4 + alen(max 256) + 2 */
++    char buf[270] = {0};		/* 4 + alen(max 256) + 2 */
      const int timeout_sec = 5;
  
-+	if (sd >= FD_SETSIZE)
-+		return false;
++    if (sd >= FD_SETSIZE)
++        return false;
 +
      if (addr != NULL)
      {
          addr->addr.in4.sin_family = AF_INET;
-@@ -395,7 +404,7 @@ recv_socks_reply(socket_descriptor_t sd,
+@@ -398,7 +407,7 @@ recv_socks_reply(socket_descriptor_t sd,
          }
  
          /* store char in buffer */
@@ -246,12 +246,12 @@ index 92747ec..f8e02a4 100644
          {
              buf[len] = c;
          }
-@@ -447,7 +456,7 @@ establish_socks_proxy_passthru(struct socks_proxy_info *p,
+@@ -454,7 +463,7 @@ establish_socks_proxy_passthru(struct so
                                 const char *servname,    /* openvpn server port */
                                 volatile int *signal_received)
  {
--    char buf[128];
-+    char buf[128] = {0};
+-    char buf[270];
++    char buf[270] = {0};
      size_t len;
  
      if (!socks_handshake(p, sd, signal_received))

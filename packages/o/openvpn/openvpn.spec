@@ -1,7 +1,7 @@
 #
 # spec file for package openvpn
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 %define _rundir %{_localstatedir}/run
 %endif
 Name:           openvpn
-Version:        2.4.9
+Version:        2.4.10
 Release:        0
 Summary:        Full-featured SSL VPN solution using a TUN/TAP Interface
 License:        SUSE-GPL-2.0-with-openssl-exception AND LGPL-2.1-only

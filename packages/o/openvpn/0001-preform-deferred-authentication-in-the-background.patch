@@ -1,7 +1,7 @@
-diff --git a/src/plugins/auth-pam/auth-pam.c b/src/plugins/auth-pam/auth-pam.c
-index 54471a3..a2d509f 100644
---- a/src/plugins/auth-pam/auth-pam.c
-+++ b/src/plugins/auth-pam/auth-pam.c
+Index: openvpn-2.4.10/src/plugins/auth-pam/auth-pam.c
+===================================================================
+--- openvpn-2.4.10.orig/src/plugins/auth-pam/auth-pam.c
++++ openvpn-2.4.10/src/plugins/auth-pam/auth-pam.c
 @@ -43,6 +43,7 @@
  #include <stdlib.h>
  #include <sys/types.h>
@@ -18,15 +18,15 @@ index 54471a3..a2d509f 100644
  
  /* Response codes for background -> foreground communication */
  #define RESPONSE_INIT_SUCCEEDED   10
-@@ -112,6 +114,7 @@ struct user_pass {
-     char username[128];
+@@ -115,6 +117,7 @@ struct user_pass {
      char password[128];
      char common_name[128];
-+	char auth_control_file[PATH_MAX];
+     char response[128];
++    char auth_control_file[PATH_MAX];
  
      const struct name_value_list *name_value_list;
  };
-@@ -708,6 +711,21 @@ pam_auth(const char *service, const struct user_pass *up)
+@@ -776,6 +779,21 @@ pam_auth(const char *service, const stru
      return ret;
  }
  
@@ -48,7 +48,7 @@ index 54471a3..a2d509f 100644
  /*
   * Background process -- runs with privilege.
   */
-@@ -807,6 +825,42 @@ pam_server(int fd, const char *service, int verb, const struct name_value_list *
+@@ -878,6 +896,42 @@ pam_server(int fd, const char *service,
                  plugin_secure_memzero(up.password, sizeof(up.password));
                  break;
  
@@ -91,7 +91,7 @@ index 54471a3..a2d509f 100644
              case COMMAND_EXIT:
                  goto done;
  
-@@ -833,3 +887,56 @@ done:
+@@ -905,3 +959,56 @@ done:
  
      return;
  }
@@ -148,10 +148,10 @@ index 54471a3..a2d509f 100644
 +			return OPENVPN_PLUGIN_FUNC_ERROR;
 +	}
 +}
-diff --git a/src/plugins/auth-pam/auth-pam.exports b/src/plugins/auth-pam/auth-pam.exports
-index 597e33f..b304ff4 100644
---- a/src/plugins/auth-pam/auth-pam.exports
-+++ b/src/plugins/auth-pam/auth-pam.exports
+Index: openvpn-2.4.10/src/plugins/auth-pam/auth-pam.exports
+===================================================================
+--- openvpn-2.4.10.orig/src/plugins/auth-pam/auth-pam.exports
++++ openvpn-2.4.10/src/plugins/auth-pam/auth-pam.exports
 @@ -1,4 +1,5 @@
  openvpn_plugin_open_v3
  openvpn_plugin_func_v1
