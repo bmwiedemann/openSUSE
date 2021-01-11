@@ -90,9 +90,9 @@ sed -e 's|@@WALLPAPER_URI@@|%{_datadir}/wallpapers/openSUSE-default.xml|' \
 
 %install
 install -Dpm 0644 cinnamon-branding.gschema.override \
-  %{buildroot}%{_datadir}/glib-2.0/schemas/cinnamon-branding.gschema.override
+  %{buildroot}%{_datadir}/glib-2.0/schemas/20_cinnamon-branding.gschema.override
 install -Dpm 0644 libcinnamon-desktop-branding.gschema.override \
-  %{buildroot}%{_datadir}/glib-2.0/schemas/libcinnamon-desktop-branding.gschema.override
+  %{buildroot}%{_datadir}/glib-2.0/schemas/20_libcinnamon-desktop-branding.gschema.override
 
 install -Dpm 0644 %{_datadir}/icons/hicolor/scalable/apps/distributor.svg \
   %{buildroot}%{_datadir}/cinnamon/theme/menu.svg
@@ -118,7 +118,7 @@ install -pm 0644 \
 
 %files -n cinnamon-gschemas-branding-openSUSE
 %defattr(-,root,root)
-%{_datadir}/glib-2.0/schemas/cinnamon-branding.gschema.override
+%{_datadir}/glib-2.0/schemas/20_cinnamon-branding.gschema.override
 %dir %{_datadir}/cinnamon/
 %dir %{_datadir}/cinnamon/theme/
 %{_datadir}/cinnamon/theme/menu.svg
@@ -128,7 +128,7 @@ install -pm 0644 \
 
 %files -n libcinnamon-desktop-data-branding-openSUSE
 %defattr(-,root,root)
-%{_datadir}/glib-2.0/schemas/libcinnamon-desktop-branding.gschema.override
+%{_datadir}/glib-2.0/schemas/20_libcinnamon-desktop-branding.gschema.override
 %dir %{_datadir}/sounds/cinnamon/
 %dir %{_datadir}/sounds/cinnamon/opensuse/
 %{_datadir}/sounds/cinnamon/opensuse/volume.oga

@@ -13,7 +13,6 @@ primary-color = '#258c06'
 secondary-color = '#258c06'
 
 [org.cinnamon.desktop.interface]
-gtk-decoration-layout = 'menu:minimize,maximize,close'
 icon-theme = 'Adwaita'
 gtk-theme = 'Menta'
 

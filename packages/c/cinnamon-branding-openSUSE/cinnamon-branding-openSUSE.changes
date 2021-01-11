@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 10 14:04:55 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Remove replaced key
+- Add priority of 20 to gschema override, otherwise you can't
+  override it
+
+-------------------------------------------------------------------
 Tue Dec  8 19:13:00 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update mint-artwork-cinnamon from version 5.3 to 5.7.
