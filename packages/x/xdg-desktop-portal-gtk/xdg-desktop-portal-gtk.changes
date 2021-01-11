@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jan  4 01:25:49 UTC 2021 - Aria Buckles <aria@toole1.com>
+
+- Update to version 1.8.0:
+  + filechooser: Return the current filter
+  + screenshot: Fix cancellation
+  + appchooser: Avoid a crash
+  + wallpaper:
+    - Properly preview placement settings
+    - Drop the lockscreen option
+  + printing: Improve the notification
+  + Updated translations.
+- Changes from version 1.7.1:
+  + filechooser:
+    - Handle the "directory" option to select directories
+    - Only show preview when we have an image
+  + Updated translations.
+- Changes from version 1.7.0:
+  + screencast: Support mutter version 3
+  + settings: Fall back to gsettings for enable-animations
+  + Updated translations.
+- Drop xdg-dpg-support-mutter-pipewire-3-api.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Mon Feb 24 21:27:30 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add xdg-dpg-support-mutter-pipewire-3-api.patch: screencast: Bump

@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-desktop-portal-gtk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           xdg-desktop-portal-gtk
-Version:        1.6.0
+Version:        1.8.0
 Release:        0
 Summary:        Backend implementation for xdg-desktop-portal using GTK+
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://github.com/flatpak/xdg-desktop-portal-gtk
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM xdg-dpg-support-mutter-pipewire-3-api.patch -- screencast: Bump supported Mutter version to 3
-Patch0:         xdg-dpg-support-mutter-pipewire-3-api.patch
 
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-1)
