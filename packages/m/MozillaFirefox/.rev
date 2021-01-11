@@ -4767,4 +4767,12 @@
 - requires NSS 3.59.1</comment>
     <requestid>859835</requestid>
   </revision>
+  <revision rev="325" vrev="1">
+    <srcmd5>15810ee58d5e57381f4136cd31f7b501</srcmd5>
+    <version>84.0.2</version>
+    <time>1610381296</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>861466</requestid>
+  </revision>
 </revisionlist>

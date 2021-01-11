@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan  7 17:11:43 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 84.0.2
+  MFSA 2021-01 (bsc#1180623)
+  * CVE-2020-16044 (bmo#1683964)
+    Use-after-free write when handling a malicious COOKIE-ECHO
+    SCTP chunk
+
+-------------------------------------------------------------------
 Sun Dec 27 09:52:50 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 84.0.1
