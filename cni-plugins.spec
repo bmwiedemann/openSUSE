@@ -1,7 +1,7 @@
 #
 # spec file for package cni-plugins
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define         cni_bin_dir  %{_libexecdir}/cni
 %define         cni_doc_dir  %{_docdir}/cni-plugins
 Name:           cni-plugins
-Version:        0.8.7
+Version:        0.9.0
 Release:        0
 Summary:        Container Network Interface plugins
 License:        Apache-2.0
@@ -30,7 +30,7 @@ BuildRequires:  golang-packaging
 BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
-BuildRequires:  golang(API) >= 1.11
+BuildRequires:  golang(API) >= 1.15
 Requires:       cni
 Requires(post): %fillup_prereq
 %{?systemd_requires}
