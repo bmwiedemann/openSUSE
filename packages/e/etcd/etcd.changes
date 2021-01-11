@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 08 12:29:16 UTC 2021 - rbrown@suse.com
+
+- Update to version 3.4.14:
+  * version: 3.4.14
+  * pkg/netutil: remove unused "iptables" wrapper
+  * tools/etcd-dump-metrics: validate exec cmd args
+  * clientv3: get AuthToken automatically when clientConn is ready.
+  * etcdserver: add ConfChangeAddLearnerNode to the list of config changes
+  * integration: add flag WatchProgressNotifyInterval in integration test
+
+-------------------------------------------------------------------
 Thu Sep 10 09:56:27 UTC 2020 - rbrown@suse.com
 
 - Update to version 3.4.13:
