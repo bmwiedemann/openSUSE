@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 11 07:45:54 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- Update to version 7.9
+  * unent.hash: gperf 3.1 generates size_t instead of unsigned int.
+  * Makefile.am: Call gperf on unent.hash with "-k 1-6" instead of
+    "-k 1,2,$ -D". Added test select25.sh.
+  * select25.sh: Test added. (Contributed by Hugo Peixoto.)
+  * selector.c: An attribute selector with an empty string such as
+    [foo=''], resulted in a NULL value instead of an empty string,
+    which led to a crash. (Found and fixed by Hugo Peixoto.)
+
+-------------------------------------------------------------------
 Thu Oct 24 20:21:24 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 7.8:

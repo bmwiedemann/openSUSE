@@ -1,7 +1,7 @@
 #
 # spec file for package html-xml-utils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           html-xml-utils
-Version:        7.8
+Version:        7.9
 Release:        0
 Summary:        A number of utilities for manipulating HTML and XML files
 License:        W3C
 Group:          Development/Languages/Other
-Url:            https://www.w3.org/Tools/HTML-XML-utils/
+URL:            https://www.w3.org/Tools/HTML-XML-utils/
 Source:         https://www.w3.org/Tools/HTML-XML-utils/html-xml-utils-%{version}.tar.gz
 BuildRequires:  bison
 BuildRequires:  flex
