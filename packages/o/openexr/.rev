@@ -572,4 +572,11 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
     related to reading corrupted input files.</comment>
     <requestid>861022</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>1e49562235f4678159b24977cf0f4548</srcmd5>
+    <version>2.5.4</version>
+    <time>1610359804</time>
+    <user>dimstar_suse</user>
+    <comment>Emergency fix for RPM 4.16 compatibility; no changelog entry</comment>
+  </revision>
 </revisionlist>

@@ -145,7 +145,7 @@ This package contains documentation.
 
 %endif
 
-%if %{flavor} == "ilmbase"
+%if "%{flavor}" == "ilmbase"
 
 %description
 Base library for Industrial Light & Magic software (OpenEXR).
@@ -249,7 +249,7 @@ done
 popd
 %endif
 
-%if %{flavor} == "ilmbase"
+%if "%{flavor}" == "ilmbase"
 pushd IlmBase
 %cmake
 %if %{asan_build}
