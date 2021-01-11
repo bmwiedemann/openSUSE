@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan  8 10:04:14 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.14.1
+  * Add iw-scan parser tested on linux (beta)
+  * Update date parser for Ubuntu 20.04 support
+  * Update last parser for last -F support
+  * Update last parser to add convenience fields and augment data
+    for easier parsing
+  * Update man page
+  * Minor documentation updates
+
+-------------------------------------------------------------------
 Fri Jan  1 21:53:26 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.14.0
