@@ -1,7 +1,7 @@
 #
 # spec file for package xviewer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xviewer
-Version:        2.8.1
+Version:        2.8.2
 Release:        0
 Summary:        Fast and functional graphics viewer
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
