@@ -1,4 +1,19 @@
 --------------------------------------------------------------------
+Fri Jan 8 09:20:13 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#789
+- Use non-deprecated location for efivars for EFI detection
+- 4.3.80
+
+--------------------------------------------------------------------
+Fri Jan 8 08:44:00 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#790
+- fix setting UUID when creating swap (bsc#1180560)
+- extended documentation
+- 4.3.79
+
+--------------------------------------------------------------------
 Tue Jan 5 13:39:41 UTC 2021 - opensuse-packaging@opensuse.org
 
 - Translated using Weblate (Finnish) (bsc#1149754)
