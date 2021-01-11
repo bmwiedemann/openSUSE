@@ -1,7 +1,7 @@
 #
 # spec file for package hivex
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2011 Michal Hrusecky <mhrusecky@novell.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %bcond_without python_bindings
 %bcond_without ocaml_bindings
 Name:           hivex
-Version:        1.3.18
+Version:        1.3.19
 Release:        0
 Summary:        Windows "Registry Hive" extraction library
 License:        LGPL-2.1-only AND GPL-2.0-only
