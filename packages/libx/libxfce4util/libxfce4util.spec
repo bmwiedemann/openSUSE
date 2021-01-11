@@ -1,7 +1,7 @@
 #
 # spec file for package libxfce4util
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %bcond_with git
 %define libname libxfce4util7
 Name:           libxfce4util
-Version:        4.14.0
+Version:        4.16.0
 Release:        0
 Summary:        Utility Library for the Xfce Desktop Environment
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://www.xfce.org/
-Source0:        https://archive.xfce.org/src/xfce/libxfce4util/4.14/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/xfce/libxfce4util/4.16/%{name}-%{version}.tar.bz2
 Source100:      %{name}-rpmlintrc
 BuildRequires:  intltool
 BuildRequires:  perl
@@ -60,11 +60,13 @@ Obsoletes:      libxfce4util <= 4.8.2
 libxfce4util is a general-purpose utility library with core application support
 for the Xfce Desktop Environment.
 
-%package -n typelib-1_0-libxfce4util-1_0
+%package -n typelib-1_0-Libxfce4util-1_0
 Summary:        Utility Library for the Xfce Desktop Environment
 Group:          System/Libraries
+Provides:       typelib-1_0-libxfce4util-1_0 = %{version}
+Obsoletes:      typelib-1_0-libxfce4util-1_0 < %{version}
 
-%description -n typelib-1_0-libxfce4util-1_0
+%description -n typelib-1_0-Libxfce4util-1_0
 libxfce4util is a general-purpose utility library with core application support
 for the Xfce Desktop Environment.
 
@@ -73,7 +75,7 @@ Summary:        Development Files for libxfce4util
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Requires:       %{name}-tools = %{version}
-Requires:       typelib-1_0-libxfce4util-1_0 = %{version}
+Requires:       typelib-1_0-Libxfce4util-1_0 = %{version}
 
 %description devel
 This package contains the API documentation and development files needed for
@@ -119,12 +121,12 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,ur_PK,tl_PH}
 %files lang -f %{name}.lang
 
 %files -n %{libname}
-%doc AUTHORS NEWS TODO README README.Kiosk
+%doc AUTHORS NEWS TODO README.Kiosk README.md
 %license COPYING
 %{_libdir}/libxfce4util.so.*
 
-%files -n typelib-1_0-libxfce4util-1_0
-%{_libdir}/girepository-1.0/libxfce4util-1.0.typelib
+%files -n typelib-1_0-Libxfce4util-1_0
+%{_libdir}/girepository-1.0/Libxfce4util-1.0.typelib
 
 %files devel
 %{_libdir}/pkgconfig/libxfce4util-*.pc
@@ -134,7 +136,7 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,ur_PK,tl_PH}
 %dir %{_datadir}/gtk-doc
 %dir %{_datadir}/gtk-doc/html
 %{_datadir}/gtk-doc/html/libxfce4util
-%{_datadir}/gir-1.0/libxfce4util-1.0.gir
+%{_datadir}/gir-1.0/Libxfce4util-1.0.gir
 %{_datadir}/vala/vapi/
 
 %changelog
