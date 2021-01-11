@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan  8 09:51:04 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.19.5
+  * Fix memory leak of buffer-info cache due to relaxed strides
+  * Set deprecated fields to null in PyArray_InitArrFuncs
+  * fix np.timedelta64('nat').__format__ throwing an exception
+  * more bugfixes
+- Rebase numpy-buildfix.patch
+
+-------------------------------------------------------------------
 Sat Nov 28 16:08:40 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Support multiple python3 flavors gh#openSUSE/python-rpm-macros#66

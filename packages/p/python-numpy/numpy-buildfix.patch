@@ -1,18 +1,21 @@
---- a/numpy/distutils/command/autodist.py
-+++ b/numpy/distutils/command/autodist.py
-@@ -50,7 +50,7 @@
-     """Return True if the C compiler is GCC 4.x."""
+Index: numpy-1.19.5/numpy/distutils/command/autodist.py
+===================================================================
+--- numpy-1.19.5.orig/numpy/distutils/command/autodist.py
++++ numpy-1.19.5/numpy/distutils/command/autodist.py
+@@ -51,7 +51,7 @@ def check_compiler_gcc(cmd):
+ 
      cmd._check_compiler()
      body = textwrap.dedent("""
 -        int
 +        void
          main()
          {
-         #if (! defined __GNUC__) || (__GNUC__ < 4)
-
---- a/numpy/distutils/command/install.py
-+++ b/numpy/distutils/command/install.py
-@@ -67,7 +67,7 @@
+         #if (! defined __GNUC__)
+Index: numpy-1.19.5/numpy/distutils/command/install.py
+===================================================================
+--- numpy-1.19.5.orig/numpy/distutils/command/install.py
++++ numpy-1.19.5/numpy/distutils/command/install.py
+@@ -67,7 +67,7 @@ class install(old_install):
                  need_rewrite = False
                  for l in f:
                      l = l.rstrip()
