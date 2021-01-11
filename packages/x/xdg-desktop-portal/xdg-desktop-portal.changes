@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Jan  7 20:11:15 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.8.0:
+  + openuri:
+    - Allow skipping the chooser for more URL tyles
+    - Robustness fixes
+  + filechooser: Return the current filter
+  + camera:
+    - Make the client node visible
+    - Don't leak pipewire proxy
+  + Fix file descriptor leaks
+  + Testsuite improvements
+  + Updated translations.
+- Changes from version 1.7.2:
+  + document:
+    - Reduce the use of open fds
+    - Add more tests and fix issues they found
+  + Fix the build with musl.
+- Changes from version 1.7.1:
+  + filechooser:
+    - Add a "directory" option
+    - Document the "writable" option
+  + document: Expose directories with their proper name
+- Changes from version 1.7.0:
+  + testsuite improvements
+  + background: Avoid a segfault
+  + screencast: Require pipewire 0.3
+  + document:
+    - Support exporting directories
+    - New fuse implementation
+  + Better support for snap and toolbox
+  + Updated translations.
+- Drop patches fixed upstream:
+  + xdg-dp-port-pipewire-3-api.patch
+  + 0001-Fix-use-after-free-in-xdg_get_app_info_from_pid.patch
+  + 0002-add-AssumedAppArmorLabel-key-to-D-Bus-service-files.patch
+  + 0003-Fix-criticals-if-no-default-handler-for-desired-type.patch
+
+-------------------------------------------------------------------
 Fri Aug 28 16:27:32 UTC 2020 - Dario Faggioli <dfaggioli@suse.com>
 
 - Require /usr/bin/fusermount: xdg-document-portal calls out to the
