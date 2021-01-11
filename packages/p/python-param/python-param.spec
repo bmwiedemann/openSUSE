@@ -17,14 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define modname param
 Name:           python-param
-Version:        1.10.0
+Version:        1.10.1
 Release:        0
 Summary:        Declarative Python programming using Parameters
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            http://param.pyviz.org/
-Source0:        https://github.com/holoviz/param/archive/v%{version}.tar.gz
+Source0:        https://github.com/holoviz/param/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 Source100:      python-param-rpmlintrc
 # PATCH-FEATURE-UPSTREAM denose.patch gh#holoviz/param#423 mcepl@suse.com
 # Remove nose dependency
