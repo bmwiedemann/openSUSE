@@ -1,7 +1,7 @@
 #
 # spec file for package jakarta-commons-vfs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Commons Virtual Filesystem
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://jakarta.apache.org/commons/vfs/
+URL:            https://jakarta.apache.org/commons/vfs/
 # svn export http://svn.apache.org/repos/asf/jakarta/commons/proper/vfs/tags/vfs-1.0/
 Source0:        commons-vfs-1.0-src.tar.bz2
 Source1:        commons-vfs-1.0-build.tar.xz
@@ -60,6 +60,7 @@ Requires:       jdom
 Requires:       jsch
 Requires:       oro
 Requires:       xml-commons-apis
+Obsoletes:      %{name}-manual
 BuildArch:      noarch
 
 %description
@@ -75,18 +76,6 @@ Summary:        Commons Virtual Filesystem
 Group:          Development/Libraries/Java
 
 %description javadoc
-Commons VFS provides a single API for accessing various different
-   file systems. It presents a uniform view of the files from
-   various different sources, such as the files on local disk, on an
-   HTTP server, or inside a Zip archive. Some of the features of
-   Commons VFS are: * A single consistent API for accessing files of
-   different types.
-
-%package manual
-Summary:        Commons Virtual Filesystem
-Group:          Development/Libraries/Java
-
-%description manual
 Commons VFS provides a single API for accessing various different
    file systems. It presents a uniform view of the files from
    various different sources, such as the files on local disk, on an
@@ -141,16 +130,10 @@ install -m 0644 sandbox/pom.xml %{buildroot}%{_mavenpomdir}/%{base_name}-sandbox
 install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
-rm -rf target/site/apidocs
-ln -s %{name}-%{version} %{buildroot}%{_javadocdir}/%{name}
-mkdir -p %{buildroot}%{_docdir}/%{name}-%{version}
 
 %files -f .mfiles
 %doc *.txt
 %{_javadir}/%{name}*.jar
-
-%files manual
-%{_docdir}/%{name}-%{version}
 
 %files javadoc
 %{_javadocdir}/%{name}

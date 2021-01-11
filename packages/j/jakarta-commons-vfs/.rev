@@ -139,4 +139,12 @@
 </comment>
     <requestid>681619</requestid>
   </revision>
+  <revision rev="20" vrev="30">
+    <srcmd5>e4d2264e9f8e0e350f6d9a8280138cd1</srcmd5>
+    <version>1.0</version>
+    <time>1610381782</time>
+    <user>dimstar_suse</user>
+    <comment>fix build</comment>
+    <requestid>862320</requestid>
+  </revision>
 </revisionlist>
