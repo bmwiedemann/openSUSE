@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 04 01:26:29 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- Update to version 3.0.1
+  * Fixed JavaDoc issue for JDK 8
+  * maven-dependency-tree removes optional flag from
+    managed dependencies
+  * Change characters used to diplay trees to make
+    relationships clearer
+  * Pass source+target to m-invoker-p, easiest way to override
+    default values of maven-compiler-plugin
+  * Upgrade org.codehaus.plexus:plexus-component-metadata to 1.7.1
+
+-------------------------------------------------------------------
 Mon Mar 25 09:02:44 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of maven-dependency-tree 3.0

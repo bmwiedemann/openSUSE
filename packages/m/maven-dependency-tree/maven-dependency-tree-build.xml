@@ -10,7 +10,7 @@
 
   <property name="project.groupId" value="org.apache.maven.shared"/>
   <property name="project.artifactId" value="maven-dependency-tree"/>
-  <property name="project.version" value="3.0"/>
+  <property name="project.version" value="3.0.1"/>
   <property name="project.name" value="Apache Maven Dependency Tree"/>
   <property name="project.organization.name" value="The Apache Software Foundation"/>
 

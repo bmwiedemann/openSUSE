@@ -1,7 +1,7 @@
 #
 # spec file for package maven-dependency-tree
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           maven-dependency-tree
-Version:        3.0
+Version:        3.0.1
 Release:        0
 Summary:        Maven dependency tree artifact
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            http://maven.apache.org/
-Source0:        http://repo1.maven.org/maven2/org/apache/maven/shared/%{name}/%{version}/%{name}-%{version}-source-release.zip
+Source0:        https://downloads.apache.org/maven/shared/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  apache-commons-cli
