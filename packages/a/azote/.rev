@@ -74,4 +74,15 @@
   * dialog windows' behaviour unified</comment>
     <requestid>839495</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>77ec0345e0e7ada3ccf497ef8c1d9406</srcmd5>
+    <version>1.8.2</version>
+    <time>1610381690</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.2:
+  * sway: fixed crash on display connected, but turned off #110
+  * app icon re-scaled, moved to /usr/share/pixmaps
+  * set icon name for X11 and app_id for Wayland</comment>
+    <requestid>862229</requestid>
+  </revision>
 </revisionlist>

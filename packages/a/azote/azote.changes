@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 11 09:11:13 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.2:
+  * sway: fixed crash on display connected, but turned off #110
+  * app icon re-scaled, moved to /usr/share/pixmaps
+  * set icon name for X11 and app_id for Wayland
+
+-------------------------------------------------------------------
 Mon Oct  5 07:19:15 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.1:
