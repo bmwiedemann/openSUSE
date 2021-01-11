@@ -1,5 +1,6 @@
---- maven-resolver-1.3.1/maven-resolver-connector-basic/src/main/java/org/eclipse/aether/connector/basic/ChecksumCalculator.java	2018-11-01 17:20:57.663142972 +0100
-+++ maven-resolver-1.3.1/maven-resolver-connector-basic/src/main/java/org/eclipse/aether/connector/basic/ChecksumCalculator.java	2018-11-16 12:47:37.324328358 +0100
+diff -auNr maven-resolver-1.6.1/maven-resolver-connector-basic/src/main/java/org/eclipse/aether/connector/basic/ChecksumCalculator.java maven-resolver-1.6.1-new/maven-resolver-connector-basic/src/main/java/org/eclipse/aether/connector/basic/ChecksumCalculator.java
+--- maven-resolver-1.6.1/maven-resolver-connector-basic/src/main/java/org/eclipse/aether/connector/basic/ChecksumCalculator.java	2020-10-02 18:03:58.000000000 +0800
++++ maven-resolver-1.6.1-new/maven-resolver-connector-basic/src/main/java/org/eclipse/aether/connector/basic/ChecksumCalculator.java	2020-12-29 15:47:39.477914257 +0800
 @@ -23,6 +23,7 @@
  import java.io.FileInputStream;
  import java.io.IOException;
@@ -31,8 +32,9 @@
          }
      }
  
---- maven-resolver-1.3.1/maven-resolver-impl/src/main/java/org/eclipse/aether/internal/impl/DefaultFileProcessor.java	2018-11-01 17:20:57.667142992 +0100
-+++ maven-resolver-1.3.1/maven-resolver-impl/src/main/java/org/eclipse/aether/internal/impl/DefaultFileProcessor.java	2018-11-16 12:53:34.318211356 +0100
+diff -auNr maven-resolver-1.6.1/maven-resolver-impl/src/main/java/org/eclipse/aether/internal/impl/DefaultFileProcessor.java maven-resolver-1.6.1-new/maven-resolver-impl/src/main/java/org/eclipse/aether/internal/impl/DefaultFileProcessor.java
+--- maven-resolver-1.6.1/maven-resolver-impl/src/main/java/org/eclipse/aether/internal/impl/DefaultFileProcessor.java	2020-10-02 18:03:58.000000000 +0800
++++ maven-resolver-1.6.1-new/maven-resolver-impl/src/main/java/org/eclipse/aether/internal/impl/DefaultFileProcessor.java	2020-12-29 15:48:48.477927402 +0800
 @@ -25,6 +25,7 @@
  import java.io.IOException;
  import java.io.InputStream;
@@ -52,8 +54,9 @@
                      listener.progressed( buffer );
                  }
                  catch ( Exception e )
---- maven-resolver-1.3.1/maven-resolver-spi/src/main/java/org/eclipse/aether/spi/connector/transport/AbstractTransporter.java	2018-11-01 17:20:57.691143110 +0100
-+++ maven-resolver-1.3.1/maven-resolver-spi/src/main/java/org/eclipse/aether/spi/connector/transport/AbstractTransporter.java	2018-11-16 12:51:22.725517276 +0100
+diff -auNr maven-resolver-1.6.1/maven-resolver-spi/src/main/java/org/eclipse/aether/spi/connector/transport/AbstractTransporter.java maven-resolver-1.6.1-new/maven-resolver-spi/src/main/java/org/eclipse/aether/spi/connector/transport/AbstractTransporter.java
+--- maven-resolver-1.6.1/maven-resolver-spi/src/main/java/org/eclipse/aether/spi/connector/transport/AbstractTransporter.java	2020-10-02 18:03:58.000000000 +0800
++++ maven-resolver-1.6.1-new/maven-resolver-spi/src/main/java/org/eclipse/aether/spi/connector/transport/AbstractTransporter.java	2020-12-29 15:49:51.541939414 +0800
 @@ -22,6 +22,7 @@
  import java.io.IOException;
  import java.io.InputStream;
@@ -73,8 +76,9 @@
              listener.transportProgressed( buffer );
          }
      }
---- maven-resolver-1.3.1/maven-resolver-test-util/src/main/java/org/eclipse/aether/internal/test/util/TestFileProcessor.java	2018-11-01 17:20:57.695143130 +0100
-+++ maven-resolver-1.3.1/maven-resolver-test-util/src/main/java/org/eclipse/aether/internal/test/util/TestFileProcessor.java	2018-11-16 12:50:32.565252686 +0100
+diff -auNr maven-resolver-1.6.1/maven-resolver-test-util/src/main/java/org/eclipse/aether/internal/test/util/TestFileProcessor.java maven-resolver-1.6.1-new/maven-resolver-test-util/src/main/java/org/eclipse/aether/internal/test/util/TestFileProcessor.java
+--- maven-resolver-1.6.1/maven-resolver-test-util/src/main/java/org/eclipse/aether/internal/test/util/TestFileProcessor.java	2020-10-02 18:03:58.000000000 +0800
++++ maven-resolver-1.6.1-new/maven-resolver-test-util/src/main/java/org/eclipse/aether/internal/test/util/TestFileProcessor.java	2020-12-29 15:50:56.921951864 +0800
 @@ -26,6 +26,7 @@
  import java.io.IOException;
  import java.io.InputStream;
