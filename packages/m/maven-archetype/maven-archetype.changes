@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Dec 29 02:23:37 UTC 2020 - Wang Jun <jgwang@suse.com>
+
+- Update to version 3.2.0
+  * Allow skip non-archetypes
+  * http to central not supported anymore, switch to https
+  * Use HTTPS instead of HTTP to resolve dependencies
+  * Fixed newlines broken
+  * Fixed license header
+  * Fix referenced parameter
+  * Fix NullPointerException
+  * Update jdom, commons-io, artifact transfer and JUnit
+  * Update plexus, xmlunit and ivy
+  * Update EasyMock
+  * Make build Reproducible
+  * Make archetype:jar reproductible
+  * Reset relativePath to remove build warnings
+  * Drop maven version from message
+
+-------------------------------------------------------------------
 Wed Feb 26 11:11:44 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of maven-archetype 3.1.2

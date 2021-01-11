@@ -17,7 +17,7 @@
 
 
 Name:           maven-archetype
-Version:        3.1.2
+Version:        3.2.0
 Release:        0
 Summary:        Maven project templating toolkit
 License:        Apache-2.0
