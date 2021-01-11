@@ -106,4 +106,12 @@
     <comment>Scripted push of project GNOME:Next (forwarded request 795111 from iznogood)</comment>
     <requestid>795256</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>402bc2d72de37bf07122a160521ce276</srcmd5>
+    <version>1.8.0</version>
+    <time>1610381432</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>861560</requestid>
+  </revision>
 </revisionlist>
