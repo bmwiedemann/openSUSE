@@ -1,7 +1,7 @@
 #
 # spec file for package libslirp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define libname libslirp0
 
 Name:           libslirp
-Version:        4.3.1
+Version:        4.4.0
 Release:        0
 Summary:        A general purpose TCP-IP emulator
 License:        MIT

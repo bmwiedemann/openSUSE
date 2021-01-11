@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jan 08 13:15:17 UTC 2021 - rbrown@suse.com
+
+- Update to version 4.4.0:
+  * Release v4.4.0
+  * socket: consume empty packets
+  * slirp: check pkt_len before reading protocol header
+  * Remove the QEMU-special make build-system
+  * Add DNS resolving for iOS
+  * meson: support compiling as subproject
+  * meson: remove meson-dist script
+  * Add G_GNUC_PRINTF to local function slirp_vsnprintf
+  * sosendoob: better document what urgc is used for
+  * .gitlab-ci: add a Coverity stage
+  * TCPIPHDR_DELTA: Fix potential negative value
+  * udp, udp6, icmp, icmp6: Enable forwarding errors on Linux
+  * icmp, icmp6: Add icmp_forward_error and icmp6_forward_error
+  * udp, udp6, icmp: handle TTL value
+  * ip_stripoptions use memmove
+  * changelog: post-release
+
+-------------------------------------------------------------------
 Wed Jul  8 14:53:54 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
 
 - Update to 4.3.1 (bsc#1172380)
