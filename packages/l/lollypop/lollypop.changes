@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 10 21:36:45 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update to version 1.4.9:
+  * Fix spurious track removals from playlists
+    (glgo#World/lollypop#2663).
+
+-------------------------------------------------------------------
 Thu Jan 07 19:09:52 UTC 2021 - antoine.belvire@opensuse.org
 
 - Update to version 1.4.8:

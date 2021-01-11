@@ -1529,4 +1529,14 @@
 - Take into account new icons in installed file list.</comment>
     <requestid>861461</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>5f43cf32be2b8f5244b97450d1828e5a</srcmd5>
+    <version>1.4.9</version>
+    <time>1610381619</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.9:
+  * Fix spurious track removals from playlists
+    (glgo#World/lollypop#2663).</comment>
+    <requestid>862155</requestid>
+  </revision>
 </revisionlist>
