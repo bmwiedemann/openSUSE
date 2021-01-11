@@ -1,7 +1,7 @@
-Index: b/configure.ac
+Index: xrdp-0.9.15/configure.ac
 ===================================================================
---- a/configure.ac	2020-03-11 15:31:17.466041360 +0800
-+++ b/configure.ac	2020-03-11 15:31:17.466041360 +0800
+--- xrdp-0.9.15.orig/configure.ac
++++ xrdp-0.9.15/configure.ac
 @@ -9,6 +9,7 @@ AC_PROG_CC
  AC_C_CONST
  AC_PROG_LIBTOOL
@@ -10,10 +10,10 @@ Index: b/configure.ac
  PKG_PROG_PKG_CONFIG
  if test "x$PKG_CONFIG" = "x"; then
    AC_MSG_ERROR([please install pkg-config])
-Index: b/xrdp/Makefile.am
+Index: xrdp-0.9.15/xrdp/Makefile.am
 ===================================================================
---- a/xrdp/Makefile.am	2020-03-11 15:31:17.466041360 +0800
-+++ b/xrdp/Makefile.am	2020-03-11 15:31:17.466041360 +0800
+--- xrdp-0.9.15.orig/xrdp/Makefile.am
++++ xrdp-0.9.15/xrdp/Makefile.am
 @@ -12,7 +12,9 @@ AM_CPPFLAGS = \
    -DXRDP_SOCKET_PATH=\"${socketdir}\" \
    -I$(top_builddir) \
@@ -43,11 +43,11 @@ Index: b/xrdp/Makefile.am
  
  xrdpsysconfdir=$(sysconfdir)/xrdp
  
-Index: b/xrdp/xrdp.h
+Index: xrdp-0.9.15/xrdp/xrdp.h
 ===================================================================
---- a/xrdp/xrdp.h	2020-03-11 15:31:17.466041360 +0800
-+++ b/xrdp/xrdp.h	2020-03-11 15:31:17.466041360 +0800
-@@ -527,3 +527,10 @@ server_add_char_alpha(struct xrdp_mod* m
+--- xrdp-0.9.15.orig/xrdp/xrdp.h
++++ xrdp-0.9.15/xrdp/xrdp.h
+@@ -523,3 +523,10 @@ server_add_char_alpha(struct xrdp_mod* m
  int
  server_session_info(struct xrdp_mod *mod, const char *data, int data_bytes);
  
@@ -58,11 +58,11 @@ Index: b/xrdp/xrdp.h
 +xrdp_avahi_fini(void);
 +void
 +xrdp_avahi_get_port(char *port);
-Index: b/xrdp/xrdp_avahi.c
+Index: xrdp-0.9.15/xrdp/xrdp_avahi.c
 ===================================================================
---- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ b/xrdp/xrdp_avahi.c	2020-03-11 15:46:17.611966870 +0800
-@@ -0,0 +1,176 @@
+--- /dev/null
++++ xrdp-0.9.15/xrdp/xrdp_avahi.c
+@@ -0,0 +1,178 @@
 +/*
 +   This program is free software; you can redistribute it and/or modify
 +   it under the terms of the GNU General Public License as published by
@@ -91,6 +91,8 @@ Index: b/xrdp/xrdp_avahi.c
 +#include <avahi-client/client.h>
 +#include <avahi-client/publish.h>
 +#include <avahi-common/thread-watch.h>
++
++#include <common/string_calls.h>
 +#include <xrdp.h>
 +
 +static AvahiClient       *client = NULL;
@@ -239,10 +241,10 @@ Index: b/xrdp/xrdp_avahi.c
 +    if (fd != -1)
 +        g_file_close(fd);
 +}
-Index: b/common/arch.h
+Index: xrdp-0.9.15/common/arch.h
 ===================================================================
---- a/common/arch.h	2020-03-11 15:31:17.466041360 +0800
-+++ b/common/arch.h	2020-03-11 15:31:17.466041360 +0800
+--- xrdp-0.9.15.orig/common/arch.h
++++ xrdp-0.9.15/common/arch.h
 @@ -20,28 +20,7 @@
  #define ARCH_H
  

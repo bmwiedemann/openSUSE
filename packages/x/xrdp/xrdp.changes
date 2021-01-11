@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Jan  6 07:06:23 UTC 2021 - Felix Zhang <fzhang.foss@gmail.com>
+
+- Update to version 0.9.15
+  + New features
+    - Allow token sign in without autologon for SSO (#1667 #1668)
+    - Norwegian keyboard support (#1675)
+    - Improved config support for chansrv (#1635)
+    - Unified chansrv, sesman and libxrdp logging (#1633 #1708
+      #1738)
+    - Support SUSE move to /usr/etc (#1702)
+    - Parameters may now be specified for user-specified shell
+      (#1270 #1695)
+    - xrdp executables now allow alternative config files to be
+      specified with -c (#1588 #1650 #1651)
+    - sesrun improvements (#1741)
+    - Drive redirection location can now be specified (#1048)
+  + Bug fixes
+    - Additional buffer overflow checks (#1662)
+    - genkeymap array size conflict fixed (#1691)
+    - Buffering issue with neutrinordp over a slow link fixed
+      (#1608 1634)
+    - Prevent PAM info message from causing authentication failure
+      (#1727)
+    - Try harder to clean up socket files on session exit (#1740
+      #1756)
+    - xrdp-chansrv become defunct in docker while file copy (#1658)
+- Drop xrdp-buildfix.patch: fixed upstream
+- Drop xrdp-default-config.patch. Add patched sources xrdp.ini and
+  sesman.ini to avoid frequent rebases
+- Drop xrdp-usr-etc-support.patch: fixed upstream
+- Rebase xrdp-avahi.diff
+- Rebase xrdp-fate318398-change-expired-password.patch
+
+-------------------------------------------------------------------
 Mon Oct 19 02:32:24 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
 
 - Use %license to pack up COPYING in spec

@@ -1,7 +1,7 @@
 #
 # spec file for package xrdp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           xrdp
-Version:        0.9.14
+Version:        0.9.15
 Release:        0
 Summary:        Remote desktop protocol (RDP) server
 License:        Apache-2.0 AND GPL-2.0-or-later
@@ -33,19 +33,17 @@ Source1:        https://github.com/neutrinolabs/%{name}/releases/download/v%{ver
 Source2:        xrdp.keyring
 Source4:        sysconfig.xrdp
 Source5:        force_stop
+Source6:        xrdp.ini
+Source7:        sesman.ini
 Source100:      %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE xrdp-pam.patch - hfiguiere@novell.com refreshed by ftake@geeko.jp
 Patch1:         xrdp-pam.patch
-# PATCH-FIX-OPENSUSE xrdp-default-config.patch - cyberorg@opensuse.org refreshed by ftake@geeko.jp -- Adjust default settings to openSUSE standards
-Patch3:         xrdp-default-config.patch
 # PATCH-FIX-OPENSUSE xrdp-disable-8-bpp-vnc-support.patch bsc#991059 - fezhang@suse.com -- disable 8 bpp support for vnc connections
 Patch4:         xrdp-disable-8-bpp-vnc-support.patch
 # PATCH-FIX-OPENSUSE xrdp-support-KillDisconnected-for-Xvnc.patch boo#1101506 - fezhang@suse.com -- Support the KillDisconnected option for TigerVNC Xvnc sessions
 Patch5:         xrdp-support-KillDisconnected-for-Xvnc.patch
 # PATCH-FIX-OPENSUSE xrdp-systemd-services.patch boo#1138954 boo#1144327 - fezhang@suse.com -- Let systemd handle the daemons
 Patch6:         xrdp-systemd-services.patch
-# PATCH-FEATURE-UPSTREAM xrdp-usr-etc-support.patch bsc#1177779 - yfjiang@suse.com gh#neutrinolabs/xrdp!1702 -- Support /usr/etc configuration change
-Patch7:         xrdp-usr-etc-support.patch 
 # PATCH-FEATURE-SLE xrdp-avahi.diff bnc#586785 - hfiguiere@novell.com -- Add Avahi support.
 Patch11:        xrdp-avahi.diff
 # PATCH-FIX-SLE xrdp-filter-tab-from-mstsc-on-focus-change.patch bnc#601996 bnc#623534 - dliang@novell.com -- filter the fake tab key which is used to notify the session
@@ -54,7 +52,6 @@ Patch12:        xrdp-filter-tab-from-mstsc-on-focus-change.patch
 Patch13:        xrdp-bsc965647-allow-admin-choose-desktop.patch
 # PATCH-FEATURE-SLE xrdp-fate318398-change-expired-password.patch fate#318398 - fezhang@suse.com -- enable user to update expired password via PAM
 Patch14:        xrdp-fate318398-change-expired-password.patch
-Patch16:        xrdp-buildfix.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -103,18 +100,15 @@ This package contains libraries for the JPEG2000 codec for RDP.
 %prep
 %setup -q
 %patch1 -p1
-%patch3 -p1
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
-%patch7 -p1
-%patch11 -p1
 %if 0%{?sle_version}
+%patch11 -p1
 %patch12 -p1
 %patch13 -p1
 %patch14 -p1
 %endif
-%patch16 -p1
 
 %build
 sh ./bootstrap
@@ -133,6 +127,7 @@ mkdir -p %{buildroot}/%{_fillupdir}
 install -m 644 %{SOURCE4} %{buildroot}/%{_fillupdir}/sysconfig.xrdp
 mkdir -p %{buildroot}/%{_libexecdir}/initscripts/legacy-actions/xrdp
 install -m 755 %{SOURCE5} %{buildroot}/%{_libexecdir}/initscripts/legacy-actions/xrdp/force_stop
+install -m 644 %{SOURCE6} %{SOURCE7} %{buildroot}/%{_sysconfdir}/xrdp/
 
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcxrdp
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcxrdp-sesman
