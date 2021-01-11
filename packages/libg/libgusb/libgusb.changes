@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan  8 07:46:54 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add baselibs.conf: build libgusb2-32bit, which is a dependency to
+  libfprint-2-2-32bit. Due to a installcheck bot issue, this
+  happened to be undetected for a while though.
+
+-------------------------------------------------------------------
 Mon Sep 14 10:51:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.3.5:

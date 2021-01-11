@@ -1,7 +1,7 @@
 #
 # spec file for package libgusb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://github.com/hughsie/libgusb
 Source0:        http://people.freedesktop.org/~hughsient/releases/%{name}-%{version}.tar.xz
+Source99:       baselibs.conf
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
