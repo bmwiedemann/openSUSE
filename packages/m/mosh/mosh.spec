@@ -1,7 +1,7 @@
 #
 # spec file for package mosh
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Flavio Castelli.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,17 +13,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           mosh
-Version:        1.3.2+20190710
+Version:        1.3.2+20200518
 Release:        0
 Summary:        The mobile shell
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/SSH
-Url:            https://mosh.org/
+URL:            https://mosh.org/
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  automake
