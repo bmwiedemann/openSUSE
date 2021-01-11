@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Jan  8 11:54:44 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- %{_sysconfdir}/xdg/xfce4 needs to be owned by the package
+
+-------------------------------------------------------------------
+Fri Jan  8 11:32:48 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Do not require exo-tools as built dependency. It is not supposed
+  to depend on it.
+
+-------------------------------------------------------------------
+Wed Dec 23 00:57:06 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 4.16.0
+  * Don't use shebang for bash completion file
+  * Remove GLIB_CHECK_VERSION IFDEFs which are obsolete after glib bump
+  * bump glib (and gio, gthread, etc) minimum to 2.50.0
+  * remove last traces of xfconf-perl
+  * Fix make distcheck and enable it on gitlab CI
+  * Add README.md to EXTRA_DIST 
+
+-------------------------------------------------------------------
+Mon Nov  9 12:05:03 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.15.1
+  * Fix stray double-quote in bash-completion PKG_CONFIG invocation
+  * Disable parallelism on all tests
+  * Adds new README.md and updates AM_INIT_AUTOMAKE
+  * xfconf-cache: Fix access to freed data (gxo#xfce/xfconf#16)
+  * Translation Updates
+
+- Update to version 4.15.0
+  * Implement custom test driver
+  * Use 'gsettings' as a common channel name for the GSetting backend
+  * bxo#14789: Fix GSettings backend assertion error, when probed
+    but not used
+  * Enable GSettings backend build by default
+  * Add Bash completion for xfconf-query
+  * bxo#15960: Add some missing xfconf_shutdown() in xfconf-query
+  * bxo#15951: Fix 'xfconf_get_error_quark' introspecting warning
+  * Remove perl bindings
+  * Fix vala binding in dist tarball
+  * Translation Updates
+- Removed xfconf-4.7.3-remove-rpath.patch
+
+-------------------------------------------------------------------
 Mon Nov  9 09:21:40 UTC 2020 - Ali Abdallah <ali.abdallah@suse.com>
 
 - Update to version 4.14.4

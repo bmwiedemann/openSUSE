@@ -1,7 +1,7 @@
 #
 # spec file for package xfconf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,23 @@
 #
 
 
+# gobject-introspection build fails with lto, see:
+# https://gitlab.gnome.org/GNOME/gobject-introspection/-/merge_requests/247
+%define _lto_cflags %{nil}
+
 %bcond_with git
 %define libname libxfconf-0-3
 
 Name:           xfconf
-Version:        4.14.4
+Version:        4.16.0
 Release:        0
 Summary:        Simple Configuration Storage for Xfce
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/xfce/xfconf/start
-Source0:        https://archive.xfce.org/src/xfce/xfconf/4.14/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/xfce/xfconf/4.16/%{name}-%{version}.tar.bz2
 Source1:        xfconf-query.1
 Source100:      %{name}-rpmlintrc
-# PATCH-FIX-OPENSUSE xfconf-remove-rpath.patch gber@opensuse.org -- Do not set RPATH for Xfconf.so
-Patch0:         xfconf-4.7.3-remove-rpath.patch
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  perl(ExtUtils::Depends)
@@ -42,9 +44,11 @@ BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.42.0
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.42.0
 BuildRequires:  pkgconfig(gtk-doc)
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.10.0
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.14
+BuildRequires:  pkgconfig(vapigen)
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif
@@ -53,16 +57,6 @@ Recommends:     %{name}-lang = %{version}
 %description
 Xfconf is a simple client-server configuration storage and query system for the
 Xfce desktop.
-
-%package -n perl-xfconf
-Summary:        Perl Interface to xfconf
-Group:          Development/Libraries/Perl
-Requires:       %{name} = %{version}
-Requires:       perl = %{perl_version}
-Requires:       perl(Glib)
-
-%description -n perl-xfconf
-This package contains the Perl interface to %{name}.
 
 %package -n %{libname}
 Summary:        Xfconf Shared Library
@@ -87,6 +81,13 @@ Obsoletes:      xfce-mcs-manager-devel < %{version}
 This package contains the files needed for developing applications using
 xfconf.
 
+%package -n typelib-1_0-Xfconf-0
+Summary:        Xfconf Shared Library
+Group:          System/Libraries
+
+%description -n typelib-1_0-Xfconf-0
+GObject introspection bindings for Xfconf
+
 # this should be replaced by %%lang_package once bnc#513786 is resolved
 %package lang
 Summary:        Languages for package %{name}
@@ -109,15 +110,13 @@ NOCONFIGURE=1 ./autogen.sh
     --enable-maintainer-mode \
     --disable-static \
     --with-helper-path-prefix=%{_libexecdir} \
-    --enable-perl-bindings \
-    --with-perl-options='NOECHO= OPTIMIZE="%{optflags}" CCDLFLAGS="-Wl,-E" INSTALLDIRS=vendor' \
+    --enable-vala=yes \
     --enable-gtk-doc
 %else
 %configure \
     --disable-static \
     --with-helper-path-prefix=%{_libexecdir} \
-    --enable-perl-bindings \
-    --with-perl-options='NOECHO= OPTIMIZE="%{optflags}" CCDLFLAGS="-Wl,-E" INSTALLDIRS=vendor' \
+    --enable-vala=yes \
     --enable-gtk-doc
 %endif
 %make_build
@@ -127,7 +126,7 @@ NOCONFIGURE=1 ./autogen.sh
 install -D -p -m 644 %{SOURCE1} %{buildroot}%{_mandir}/man1/xfconf-query.1
 
 rm -f %{buildroot}%{_libdir}/*.la \
-    %{buildroot}%{perl_vendorarch}/auto/Xfce4/Xfconf/Xfconf.bs
+    %{buildroot}%{_libdir}/gio/modules/*.la
 
 %perl_process_packlist
 
@@ -135,23 +134,33 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,ur_PK}
 
 %find_lang %{name} %{?no_lang_C}
 
+mkdir -p %{buildroot}%{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml
+
 %post -n %{libname} -p /sbin/ldconfig
 
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files
-%doc AUTHORS NEWS TODO
+%doc AUTHORS NEWS TODO README.md
 %license COPYING
 %{_bindir}/xfconf-query
+%dir %{_sysconfdir}/xdg/xfce4
+%dir %{_sysconfdir}/xdg/xfce4/xfconf
+%dir %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml
 %dir %{_libexecdir}/xfce4
 %dir %{_libexecdir}/xfce4/xfconf
 %{_libexecdir}/xfce4/xfconf/xfconfd
 %{_datadir}/dbus-1/services/org.xfce.Xfconf.service
+%{_datadir}/bash-completion/completions/xfconf-query
 %doc %{_mandir}/man1/xfconf-query.1*
 
 %files -n %{libname}
 %license COPYING
 %{_libdir}/libxfconf-*.so.*
+%{_libdir}/gio/modules/libxfconfgsettingsbackend.so
+
+%files -n typelib-1_0-Xfconf-0
+%{_libdir}/girepository-1.0/Xfconf-0.typelib
 
 %files lang -f %{name}.lang
 
@@ -162,14 +171,7 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,ur_PK}
 %{_includedir}/xfce4
 %{_libdir}/libxfconf-*.so
 %{_libdir}/pkgconfig/libxfconf-*.pc
-
-%files -n perl-xfconf
-%doc %{_mandir}/man3/Xfce4::Xfconf.3pm*
-%dir %{perl_vendorarch}/Xfce4
-%{perl_vendorarch}/Xfce4/Xfconf
-%{perl_vendorarch}/Xfce4/Xfconf.pm
-%dir %{perl_vendorarch}/auto
-%dir %{perl_vendorarch}/auto/Xfce4
-%{perl_vendorarch}/auto/Xfce4/Xfconf
+%{_datadir}/vala/vapi/libxfconf-0.*
+%{_datadir}/gir-1.0/Xfconf-0.gir
 
 %changelog

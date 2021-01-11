@@ -293,4 +293,12 @@
     <comment></comment>
     <requestid>847148</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>756800724974908ad620b42e4135d31e</srcmd5>
+    <version>4.16.0</version>
+    <time>1610381463</time>
+    <user>dimstar_suse</user>
+    <comment>Fixed build dependency cycle. Do not require exo-tools as built dependency as it's not supposed to</comment>
+    <requestid>861623</requestid>
+  </revision>
 </revisionlist>
