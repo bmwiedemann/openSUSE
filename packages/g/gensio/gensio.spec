@@ -1,7 +1,7 @@
 #
 # spec file for package gensio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,7 @@
 %bcond_with    openipmi
 %endif
 Name:           gensio
-Version:        2.2.1
+Version:        2.2.2
 Release:        0
 Summary:        Library to abstract stream and packet I/O
 # examples/* is licenced under Apache-2.0

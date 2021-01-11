@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 10 11:30:27 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.2
+  * fixes a compile error if openipmi is not installed
+
+-------------------------------------------------------------------
 Wed Dec  9 19:12:52 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.1
