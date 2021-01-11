@@ -40,4 +40,14 @@
     <comment></comment>
     <requestid>787215</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>bca275b49e07e5a50c37d425c9389b30</srcmd5>
+    <version>1.9</version>
+    <time>1610381288</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove third-party/ bundled application, use the system ones
+  (bsc#1167557).
+</comment>
+    <requestid>861403</requestid>
+  </revision>
 </revisionlist>
