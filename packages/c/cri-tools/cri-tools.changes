@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 08 12:24:37 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.20.0:
+  * fix a bug in closure function
+  * Trigger prow job
+  * Update Kubernetes to v1.20.0
+  * Dockershim critest on Windows
+  * Fix CRI Test with Windows containerd runtime
+  * Add comment to cloud build manifest file
+  * Add clarity to docs about default runtimes
+  * Add staging build for test user images
+  * version 1.17.0 -> 1.19.0 in crictl.md
+
+-------------------------------------------------------------------
 Wed Apr  1 08:03:55 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to v1.18.0:

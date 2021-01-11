@@ -20,7 +20,7 @@
 %define name_source1    crictl.yaml
 
 Name:           cri-tools
-Version:        1.18.0
+Version:        1.20.0
 Release:        0
 Summary:        CLI and validation tools for Kubelet Container Runtime Interface
 License:        Apache-2.0
@@ -31,7 +31,7 @@ Source1:        %{name_source1}
 Source2:        rpmlintrc
 BuildRequires:  go-go-md2man
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.14
+BuildRequires:  golang(API) >= 1.15
 # disable stripping of binaries
 %{go_nostrip}
 
