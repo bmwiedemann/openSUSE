@@ -72,4 +72,12 @@
   * Rebase parts of the %linked code (forwarded request 851601 from mauriziogalli)</comment>
     <requestid>851941</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8b95a3b8163e771f2990c4f2f12a4f93</srcmd5>
+    <version>3.22.11+git10.2f4304a</version>
+    <time>1610381263</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to Xfce 4.16</comment>
+    <requestid>860852</requestid>
+  </revision>
 </revisionlist>

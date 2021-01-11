@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 18 11:45:46 UTC 2020 - maurizio.galli@gmail.com
+
+- Update to version 3.22.11+git10.2f4304a:
+  * Reduce messagedialog buttonbox size
+  * Make CSD titlebars slimmer
+  * Improve dark xfwm4 tabwin contrast
+  * More normal-sized inline-toolbar buttons
+  * Add workaround for Gnome Builder
+  * Fix progressbar in unfocused windows
+
+-------------------------------------------------------------------
 Sat Nov 28 13:13:10 UTC 2020 - maurizio.galli@gmail.com
 
 - Update to version 3.22.11+git2.751e0f3:
