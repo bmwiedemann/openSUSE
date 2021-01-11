@@ -1,7 +1,7 @@
 #
 # spec file for package rash
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,13 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           rash
 Version:        0.2
 Release:        0
 Summary:        The Reckless rAcket SHell
-License:        GPL-3.0+ and LGPL-3.0+
+License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          System/Shells
-Url:            https://rash-lang.org
+URL:            https://rash-lang.org
 Source0:        https://github.com/willghatch/racket-rash/archive/v%{version}/racket-rash-%{version}.tar.gz
 Source1:        https://github.com/willghatch/racket-udelim/archive/master/racket-udelim-master.tar.gz
 Source2:        https://github.com/Metaxal/text-table/archive/master/racket-text-table-master.tar.gz
@@ -101,9 +102,11 @@ mv README.md README.rash
 	}
 	EOF
 mkdir -p %{buildroot}%{_bindir}
-mkdir -p %{buildroot}/bin
 gcc %{optflags} -g3 -o %{buildroot}%{_bindir}/rash rash.c
+%if !0%{?usrmerged}
+mkdir -p %{buildroot}/bin
 ln -sf %{_bindir}/rash %{buildroot}/bin/rash
+%endif
 
 %post
 for pkg in udelim text-table shell-pipeline linea basedir rash
@@ -121,7 +124,9 @@ done
 %defattr(-,root,root)
 %license LICENSE
 %doc README.rash */README.*
+%if !0%{?usrmerged}
 /bin/rash
+%endif
 %{_bindir}/rash
 %{_datadir}/racket/pkgs
 

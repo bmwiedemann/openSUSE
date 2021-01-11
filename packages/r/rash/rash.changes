@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 19 16:06:37 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
 Fri Apr  5 11:58:50 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Fix build due missed new racket-doc package
