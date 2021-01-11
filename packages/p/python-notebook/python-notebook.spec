@@ -23,6 +23,7 @@
 %else
 %define psuffix %{nil}
 %bcond_with test
+BuildArch:      noarch
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
@@ -59,7 +60,6 @@ Recommends:     python-ipywidgets
 Suggests:       %{name}-latex
 Provides:       python-jupyter_notebook = %{version}
 Obsoletes:      python-jupyter_notebook < %{version}
-BuildArch:      noarch
 %if !%{with test}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -87,7 +87,10 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module terminado >= 0.8.3}
 BuildRequires:  %{python_module tornado >= 5}
 BuildRequires:  %{python_module traitlets >= 4.2.1}
+%ifnarch %{ix86}
+# pandoc package disabled build for ix86
 BuildRequires:  pandoc
+%endif
 %endif
 %python_subpackages
 

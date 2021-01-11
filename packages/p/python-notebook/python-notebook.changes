@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan  9 20:07:07 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Don't test with pandoc on ix86
+
+-------------------------------------------------------------------
 Mon Dec 21 09:59:15 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 6.1.5
