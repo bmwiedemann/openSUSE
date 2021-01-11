@@ -627,4 +627,15 @@
     <comment></comment>
     <requestid>758734</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>129d0881b30e8b5bb4c699a367288f54</srcmd5>
+    <version>4.16.0</version>
+    <time>1610381466</time>
+    <user>dimstar_suse</user>
+    <comment>Fixed build dependency cycle.
+- To prevent dependency cycle we need #!BuildIgnore:  exo-tools
+  in the spec file and it was accidentally removed in the previous
+  commit. </comment>
+    <requestid>861625</requestid>
+  </revision>
 </revisionlist>

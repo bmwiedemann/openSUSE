@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Fri Jan  8 09:04:42 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- To prevent dependency cycle we need #!BuildIgnore:  exo-tools
+  in the spec file and it was accidentally removed in the previous
+  commit. 
+
+-------------------------------------------------------------------
+Wed Dec 23 00:40:32 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 4.16.0
+  * Focus must not be required in single click mode (Issue #190)
+  * Remove GLIB_CHECK_VERSION IFDEFs which are obsolete after glib bump
+  * Adjust padding only for vertical item orientation (Issue #48)
+  * bump glib (and gio, gthread, etc) to 2.50.0
+  * Fix GCC warning (false negative)
+  * Translation Updates
+
+-------------------------------------------------------------------
+Fri Nov 20 15:30:15 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Make sure the obsolete libexo-1-0 does not linger around creating
+  conflicts.
+
+-------------------------------------------------------------------
+Mon Nov  2 18:41:01 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.15.3
+  * Re-grab tree selection to prevent rare crash (gxo#xfce/exo#46)
+  * Remove unneeded RTL adjustment (gxo#xfce/exo#45)
+  * exo-open: Wrap long URI in error dialog (gxo#xfce/exo#26)
+  * Avoid truncated text in small zoom levels (gxo#xfce/exo#42)
+  * Make ExoIconView reduce selection on a single click
+    (gxo#xfce/exo#39)
+  * Partially restore 6fcefce9 (gxo#xfce/exo#18)
+  * Adds new, foreign README.md
+  * Add check for valid GtkTreeSelection (gxo#xfce/exo#40)
+  * Reset cursor on drag end in single-click mode
+  * exo-open: Change priority of command line parameters
+    (gxo#xfce/exo#20)
+  * Prevent label from overlapping icon in RTL (gxo#xfce/exo#36)
+  * Prevent "selection_changed" bursts (gxo#xfce/exo#37)
+  * Small change to documentation for exo_strdup_strftime
+  * desktop-item-edit: Fix fallback for desktop file type detection
+  * desktop-item-edit: Improve detection of invalid icon names
+    (gxo#xfce/exo#33)
+  * AC_CONFIG_MACRO_DIR → AC_CONFIG_MACRO_DIRS (gxo#xfce/exo!9)
+  * Translation Updates
+
+-------------------------------------------------------------------
+Fri Aug 28 14:19:43 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.15.2
+  * icon-chooser-dialog: Allow removing selected icon (gxo#xfce/exo#2)
+  * desktop-item-edit: Fix sensitivity of save button (gxo#xfce/exo#28)
+  * Rework exo_icon_view_scroll_event for overshoot effect (gxo#xfce/exo#25)
+  * Allow resizing the xfce4-settings window smaller (gxo#xfce/exo#19)
+  * Drop exo-csource from exo
+  * Fix build on OpenBSD (!2)
+  * Fix race condition in make install (gxo#xfce/exo#29)
+  * Remove unused perl module requirement
+  * Replace bugzilla occurences with gitlab (gxo#xfce/exo#30)
+  * This release transitions several exo components to xfce-settings, and
+    drops GTK+ 2 support.
+    Please use with xfce-settings 4.15.1 or later for best results.
+  * Removed binaries: exo-compose-mail, exo-helper-2
+  * Removed from API: ExoCellRendererEllipsizedText, ExoIconBar,
+    ExoToolbarsEditor, ExoToolbarsEditorDialog,  ExoToolbarsModel,
+    ExoToolbarsView, ExoWrapTable, ExoXsessionClient, exo_atomic_inc,
+    exo_atomic_dec
+  * state variable is a GtkStateFlags
+  * desktop-item-edit: Fix sensitivity of save button (bxo#16813)
+  * Attach popup window to toplevel parent (bxo#16768)
+  * Rename Thunar.desktop to thunar.desktop (bxo#16197)
+  * Extend selection on shift+drag (bxo#7526)
+  * Do not cancel selection on shift+drag
+  * Rename Thunar.desktop to thunar.desktop (bxo#16197)
+  * Fix type declaration (bxo#16678)
+  * desktop-item-edit: Use new XfceTitledDialog API
+  * Fix GTimeVal deprecation
+  * Replace deprecated G_INLINE_FUNC macro
+  * Replace deprecated macro
+  * Wrong keyboard navigation after using rubberband in exo-icon-view
+    (bxo#16286)
+  * Cursor position in icon view not visible/highlighted when using
+    ctrl + arrows (bxo#12227)
+  * Make sure default applications are properly set in mimeapps.list
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Dec 19 13:48:49 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 0.12.11
