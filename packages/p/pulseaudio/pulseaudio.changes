@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan  7 17:38:01 CET 2021 - tiwai@suse.de
+
+- Fix copyright in the spec file for SLE submission
+
+-------------------------------------------------------------------
 Tue Dec 15 10:40:40 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Enable LTO (boo#1133278) as it works now.

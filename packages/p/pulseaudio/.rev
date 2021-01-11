@@ -1372,4 +1372,12 @@ WANTED for 13.1 - Part of the BLUEZ5 stack (forwarded request 202417 from dimsta
     <comment></comment>
     <requestid>856688</requestid>
   </revision>
+  <revision rev="174" vrev="3">
+    <srcmd5>9db8cbb58c88469d56f33b1da54605cf</srcmd5>
+    <version>14.0</version>
+    <time>1610381292</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix copyright in the spec file for SLE submission (forwarded request 861404 from tiwai)</comment>
+    <requestid>861405</requestid>
+  </revision>
 </revisionlist>
