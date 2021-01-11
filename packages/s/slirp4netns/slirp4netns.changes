@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan 08 13:26:41 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.1.8:
+  * v1.1.8
+  * CI: bump libslirp to v4.4.0
+  * tests: Avoid closing pipe grep in cidr test
+  * v1.1.7+dev
+  * v1.1.7
+  * test-slirp4netns-cidr.sh: avoid EPIPE
+  * CI: s/test-centos/test-centos7/ for clarity
+  * CI: Test with libslirp 4.3.1 on CentOS 7
+  * .gitignore: add .vagrant
+  * Vagrantfile: change VirtualBox itself's slirp CIDR
+
+-------------------------------------------------------------------
 Tue Apr 21 14:23:25 UTC 2020 - Oliver Bengs <appleonkel@opensuse.org> - 1.0.0
 
 - Update to 1.0.0
