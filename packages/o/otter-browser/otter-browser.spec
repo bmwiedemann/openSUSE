@@ -1,7 +1,7 @@
 #
 # spec file for package otter-browser
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,42 +17,41 @@
 
 
 Name:           otter-browser
-Version:        1.0.01
+Version:        1.0.02
 Release:        0
 Summary:        Web browser with aspects of Opera
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Browsers
-Url:            https://otter-browser.org/
+URL:            https://otter-browser.org/
 Source:         https://github.com/OtterBrowser/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.1
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  sonnet-devel
-BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.4
-BuildRequires:  pkgconfig(Qt5Core) >= 5.4
-BuildRequires:  pkgconfig(Qt5DBus) >= 5.4
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.4
-BuildRequires:  pkgconfig(Qt5Multimedia) >= 5.4
-BuildRequires:  pkgconfig(Qt5Network) >= 5.4
-BuildRequires:  pkgconfig(Qt5PrintSupport) >= 5.4
-BuildRequires:  pkgconfig(Qt5Script) >= 5.4
-BuildRequires:  pkgconfig(Qt5Sql) >= 5.4
-BuildRequires:  pkgconfig(Qt5Svg) >= 5.4
-BuildRequires:  pkgconfig(Qt5WebKit) >= 5.4
-BuildRequires:  pkgconfig(Qt5WebKitWidgets) >= 5.4
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.4
-BuildRequires:  pkgconfig(Qt5XmlPatterns) >= 5.4
-BuildRequires:  pkgconfig(hunspell) >= 1.3.0
-%if 0%{?suse_version} >= 1500
+BuildRequires:  pkgconfig(Qt5Concurrent)
+BuildRequires:  pkgconfig(Qt5Core) >= 5.6
+BuildRequires:  pkgconfig(Qt5DBus)
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Multimedia)
+BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  pkgconfig(Qt5PrintSupport)
+BuildRequires:  pkgconfig(Qt5Script)
+BuildRequires:  pkgconfig(Qt5Sql)
+BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5WebEngine) >= 5.9
 BuildRequires:  pkgconfig(Qt5WebEngineWidgets) >= 5.9
-%else
-BuildRequires:  update-desktop-files
-%endif
+BuildRequires:  pkgconfig(Qt5WebKit)
+BuildRequires:  pkgconfig(Qt5WebKitWidgets) >= 5.212  
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5XmlPatterns)
+BuildRequires:  pkgconfig(hunspell) >= 1.5.1
+Recommends:     %{name}-lang
 
 %description
 Otter Browser is a web browser that recreates some aspects of
 the classic Opera web browser (version 12.x) using the Qt framework.
+
+%lang_package
 
 %prep
 %setup -q
@@ -65,23 +64,17 @@ the classic Opera web browser (version 12.x) using the Qt framework.
 %cmake_install
 %find_lang %{name} --with-qt
 
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
-
 %files
 %license COPYING
 %doc CHANGELOG CONTRIBUTING.md README.md TODO
 %{_bindir}/%{name}
+%exclude %{_datadir}/%{name}/locale/
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_mandir}/man?/%{name}.?%{?ext_man}
+
+%files lang
+%{_datadir}/%{name}/locale/
 
 %changelog
