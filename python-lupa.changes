@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  7 16:28:30 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Remove third-party/ bundled application, use the system ones
+  (bsc#1167557).
+
+-------------------------------------------------------------------
 Sat Mar 21 18:05:45 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - No LuaJIT on riscv64

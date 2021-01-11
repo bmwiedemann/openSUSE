@@ -1,7 +1,7 @@
 #
 # spec file for package python-lupa
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,18 +31,20 @@ BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(lua)
+Recommends:     luajit
+Suggests:       lua
 %ifnarch riscv64
 BuildRequires:  pkgconfig(luajit)
 %endif
-Recommends:     luajit
-Suggests:       lua
 %python_subpackages
 
 %description
 Python wrapper around Lua and LuaJIT.
 
 %prep
-%setup -q -n lupa-%{version}
+%autosetup -p1 -n lupa-%{version}
+
+rm -rf third-party/
 
 %build
 export CFLAGS="-fno-strict-aliasing %{optflags}"
