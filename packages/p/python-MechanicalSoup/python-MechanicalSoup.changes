@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 11 05:49:10 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.0.0
+  * Added support for Python 3.8 and 3.9.
+  * ``StatefulBrowser`` has new properties ``page``, ``form``, and ``url``,
+    which can be used in place of the methods ``get_current_page``,
+    ``get_current_form`` and ``get_url`` respectively
+  * ``StatefulBrowser.form`` will raise an ``AttributeError`` instead of
+    returning ``None`` if no form has been selected yet.
+  * Decompose ``<select>`` elements with the same name when adding a new
+    input element to a form.
+  * The ``params`` and ``data`` kwargs passed to ``submit`` will now properly
+    be forwarded to the underlying request for GET methods (whereas previously
+    ``params`` was being overwritten by ``data``).
+
+-------------------------------------------------------------------
 Tue Mar 17 10:58:15 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build on Leap
