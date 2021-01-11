@@ -1,7 +1,7 @@
 #
 # spec file for package gnu-efi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,11 @@ Release:        0
 Summary:        Library for EFI Applications
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Development/Libraries/Other
-URL:            http://sourceforge.net/projects/gnu-efi
-Source:         http://sourceforge.net/projects/gnu-efi/files/gnu-efi-%{version}.tar.bz2
+URL:            https://sourceforge.net/projects/gnu-efi
+Source:         https://download.sourceforge.net/project/gnu-efi/gnu-efi-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
 BuildRequires:  kernel-source
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  ia64 %ix86 x86_64 aarch64 %arm
+ExclusiveArch:  ia64 %{ix86} x86_64 aarch64 %{arm}
 
 %description
 Library to develop EFI applications for IA-64 (IPF), IA-32 (x86), x86_64,
@@ -42,7 +41,8 @@ environment.
 ## DO NOT ADD RPM OPT FLAGS! THIS DOES NOT BUILD AGAINST GLIBC
 ##
 ##########################
-make %{?_smp_mflags} LINUX_HEADERS=%{_prefix}/src/linux
+# Trick spec-cleaner in avoiding a make_build expansion
+%{_bindir}/make %{?_smp_mflags} LINUX_HEADERS=%{_prefix}/src/linux
 
 %install
 make install INSTALLROOT=%{buildroot} LIBDIR=%{_libdir} PREFIX=%{_prefix}
