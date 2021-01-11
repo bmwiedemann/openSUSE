@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan  9 20:05:34 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 3.1.5:
+  * added a “p” formatting option, that makes sure that there are
+    always parentheses around the … ± … part of printed numbers.
+
+-------------------------------------------------------------------
 Mon Jun 29 12:05:59 UTC 2020 - pgajdos@suse.com
 
 - switch from nosetests to pytest
