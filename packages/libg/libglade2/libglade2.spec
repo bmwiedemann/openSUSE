@@ -1,7 +1,7 @@
 #
 # spec file for package libglade2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,12 +24,13 @@ Summary:        Glade Library Compatible with the GNOME 2.x Desktop Platform
 # NOTE: on upgrade to a new upstream version, change the Obsoletes from <= to < (here and in baselibs.conf)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
-Url:            http://www.daa.com.au/~james/gnome/
+URL:            http://www.daa.com.au/~james/gnome/
 Source:         ftp://ftp.gnome.org/pub/GNOME/sources/%{_name}/2.6/%{_name}-%{version}.tar.bz2
 Source99:       baselibs.conf
 # PATCH-FREATURE-OPENSUSE libglade2-python3.patch dimstar@opensuse.org -- Use python3
 Patch0:         libglade2-python3.patch
 BuildRequires:  fdupes
+BuildRequires:  gtk-doc
 BuildRequires:  gtk2-devel
 BuildRequires:  libtool
 BuildRequires:  libxml2-devel
