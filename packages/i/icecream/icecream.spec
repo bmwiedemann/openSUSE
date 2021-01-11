@@ -1,7 +1,7 @@
 #
 # spec file for package icecream
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,13 +29,14 @@ Group:          Development/Tools/Building
 URL:            https://github.com/icecc/icecream
 Source0:        https://github.com/icecc/icecream/releases/download/%{version}/icecc-%{version}.tar.xz
 Source1:        iceccd.xml
-Source2:        iceccd.service
+Source2:        iceccd.service.in
 Source3:        iceccd-wrapper
 Source4:        icecc-scheduler.xml
-Source5:        icecc-scheduler.service
+Source5:        icecc-scheduler.service.in
 Source6:        icecc-scheduler-wrapper
 Source7:        icecream-tmpfiles.conf
 Source8:        sysconfig.icecream
+BuildRequires:  clang-devel
 BuildRequires:  docbook2x
 BuildRequires:  firewall-macros
 BuildRequires:  gcc-c++
@@ -54,9 +55,6 @@ Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
 %{?systemd_requires}
 Recommends:     gcc-c++
-%if 0%{?suse_version} > 1315
-BuildRequires:  clang-devel
-%endif
 
 %description
 Distributed compiler with a central scheduler to share build load.
@@ -104,9 +102,11 @@ rm -R %{buildroot}/%{_sysconfdir}/sysconfig/SuSEfirewall2.d
 install -m644 -p -D %{SOURCE1} %{buildroot}%{_prefix}/lib/firewalld/services/iceccd.xml
 install -m644 -p -D %{SOURCE4} %{buildroot}%{_prefix}/lib/firewalld/services/icecc-scheduler.xml
 # unit files and wrappers
-install -m644 -p -D %{SOURCE2} %{buildroot}%{_unitdir}/iceccd.service
+sed -e 's#@LIBEXECDIR@#%{_libexecdir}#' < %{SOURCE2} > iceccd.service
+install -m644 -p -D iceccd.service %{buildroot}%{_unitdir}/iceccd.service
 install -m755 -p -D %{SOURCE3} %{buildroot}%{_libexecdir}/icecc/iceccd-wrapper
-install -m644 -p -D %{SOURCE5} %{buildroot}%{_unitdir}/icecc-scheduler.service
+sed -e 's#@LIBEXECDIR@#%{_libexecdir}#' < %{SOURCE5} > icecc-scheduler.service
+install -m644 -p -D icecc-scheduler.service %{buildroot}%{_unitdir}/icecc-scheduler.service
 install -m755 -p -D %{SOURCE6} %{buildroot}%{_libexecdir}/icecc/icecc-scheduler-wrapper
 # make sure runtime directories are automatically created
 install -m644 -p -D %{SOURCE7} %{buildroot}/%{_tmpfilesdir}/icecream.conf
