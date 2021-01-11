@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-control-center
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 
 Name:           gnome-control-center
-Version:        3.38.2
+Version:        3.38.3
 Release:        0
 Summary:        The GNOME Control Center
 License:        GPL-2.0-or-later
