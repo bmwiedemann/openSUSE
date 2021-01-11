@@ -1,7 +1,7 @@
 #
 # spec file for package vmaf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,11 @@
 #
 
 
+%define sonum  1
+%define lname   libvmaf%sonum
+
 Name:           vmaf
-%define lname   libvmaf0
-Version:        1.5.3
+Version:        2.1.0
 Release:        0
 Summary:        Perceptual video quality assessment algorithm
 License:        BSD-2-Clause-Patent AND BSD-3-Clause
@@ -26,7 +28,6 @@ Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            https://github.com/Netflix/vmaf
 Source:         https://github.com/Netflix/vmaf/archive/v%version.tar.gz
 Source9:        baselibs.conf
-Patch1:         0001-build-unbreak-x86-builds.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.47
@@ -45,18 +46,6 @@ Recommends:     %name-data
 %description -n %lname
 VMAF is a perceptual video quality assessment algorithm.
 
-%package data
-Summary:        Models for Video Multi-Method Assessment Fusion
-Group:          Productivity/Multimedia/Video/Editors and Convertors
-BuildArch:      noarch
-
-%description data
-This package contains a number of trained VMAF models to be used in
-different scenarios. Besides the default VMAF model which predicts
-the quality of a video displayed on a HDTV in a living-room viewing
-condition, a number of additional models are included, covering
-mobile phone and 4KTV viewing conditions.
-
 %package devel
 Summary:        Development tools for Video Multi-Method Assessment Fusion
 Group:          Development/Libraries/C and C++
@@ -68,7 +57,7 @@ Netflix.
 This package contains the library API definitions.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 rm -rf third_party
@@ -88,10 +77,7 @@ rm -f "%buildroot/%_libdir"/*.a
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%_libdir/libvmaf.so.0*
-
-%files data
-%_datadir/model/
+%_libdir/libvmaf.so.%{sonum}*
 
 %files devel
 %_bindir/vmaf*
