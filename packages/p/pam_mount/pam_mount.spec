@@ -1,7 +1,7 @@
 #
 # spec file for package pam_mount
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           pam_mount
 %define lname	libcryptmount0
-Version:        2.17
+Version:        2.18
 Release:        0
 Summary:        A PAM Module that can Mount Volumes for a User Session
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -46,7 +46,7 @@ BuildRequires:  xz
 BuildRequires:  pkgconfig(libHX) >= 3.12.1
 BuildRequires:  pkgconfig(libcrypto) >= 0.9.7
 BuildRequires:  pkgconfig(libcryptsetup) >= 1.1.2
-BuildRequires:  pkgconfig(libpcre) >= 7
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6
 BuildRequires:  pkgconfig(mount) >= 2.20
 
@@ -111,7 +111,7 @@ b="%buildroot"
 rm -f "$b/%_lib/security"/*.{a,la} "$b/%_libdir"/*.la
 #install the docs
 mkdir -p "$b/%_docdir/%name/examples"
-cp -a doc/bugs.txt doc/news.txt LICENSE* doc/faq.txt doc/todo.txt doc/options.txt doc/pam_mount.txt "$b/%_docdir/%name/"
+cp -a doc/bugs.txt doc/news.txt LICENSE* doc/faq.txt doc/todo.txt doc/options.txt "$b/%_docdir/%name/"
 install -m 755 %SOURCE1 "$b/%_docdir/%name/examples/"
 install -m 755 %SOURCE2 "$b/%_docdir/%name/examples/"
 mkdir -p "$b/sbin"
