@@ -1,7 +1,7 @@
 #
 # spec file for package colord
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d
 
 Name:           colord
-Version:        1.4.4
+Version:        1.4.5
 Release:        0
 Summary:        System Daemon for Managing Color Devices
 License:        GPL-2.0-or-later
@@ -31,8 +31,6 @@ Source2:        %{name}.keyring
 # Apparmor profile
 Source3:        usr.lib.colord
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM add-spyderx.patch -- Add SpyderX Support
-Patch1:         add-spyderx.patch
 
 BuildRequires:  argyllcms
 BuildRequires:  docbook5-xsl-stylesheets
@@ -142,8 +140,7 @@ there are no users logged in.
 %lang_package
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 # Set ~2 GiB limit so that colprof is forced to work in chunks when

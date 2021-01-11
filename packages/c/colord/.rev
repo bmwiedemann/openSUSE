@@ -671,4 +671,12 @@ Note this warning (not new), should we care?
     <comment>Eliminate the -lang recommends (forwarded request 767104 from dimstar)</comment>
     <requestid>767346</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>be09d9cf929a43267c92b60ba670e9b8</srcmd5>
+    <version>1.4.5</version>
+    <time>1610381426</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>861559</requestid>
+  </revision>
 </revisionlist>
