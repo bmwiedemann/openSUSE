@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jan 10 11:43:39 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.1
+  * Upstream does not provide a changelog
+
+-------------------------------------------------------------------
+Fri Jan  1 10:42:24 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.5
+  * Check scripted conditions for a unit's current variation when
+    an upgrade is applied to it.
+- Update to version 4.0.4
+  * Made it so the site game data keeps track of resource units
+    which can produce a resource via a button instead of by
+    default, so that that is used when checking whether a gather
+    resources quest should be acceptable.
+
+-------------------------------------------------------------------
 Sun Dec 27 11:18:05 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.0.3

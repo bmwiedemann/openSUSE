@@ -1,7 +1,7 @@
 #
 # spec file for package wyrmgus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wyrmgus
-Version:        4.0.3
+Version:        4.1.1
 Release:        0
 Summary:        Game engine for Wyrmsun
 License:        GPL-2.0-only
@@ -35,15 +35,14 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Location)
 BuildRequires:  pkgconfig(Qt5Multimedia)
+BuildRequires:  pkgconfig(Qt5Qml)
+BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(SDL_mixer)
 BuildRequires:  pkgconfig(bzip2)
-BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(physfs)
 BuildRequires:  pkgconfig(sdl)
 BuildRequires:  pkgconfig(sqlite3)
-BuildRequires:  pkgconfig(theora)
-BuildRequires:  pkgconfig(vorbis)
 %if 0%{?suse_version} <= 1320
 BuildRequires:  pkgconfig(tolua++)
 %else
