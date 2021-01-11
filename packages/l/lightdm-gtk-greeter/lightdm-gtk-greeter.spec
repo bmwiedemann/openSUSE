@@ -1,7 +1,7 @@
 #
 # spec file for package lightdm-gtk-greeter
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,14 +19,14 @@
 
 %define _version 2.0
 Name:           lightdm-gtk-greeter
-Version:        2.0.6
+Version:        2.0.8
 Release:        0
 Summary:        Simple display manager (GTK+ greeter)
 License:        GPL-3.0-or-later
 Group:          System/X11/Displaymanagers
-URL:            https://launchpad.net/lightdm-gtk-greeter
-Source:         https://launchpad.net/%{name}/%{_version}/%{version}/+download/%{name}-%{version}.tar.gz
-Source1:        https://launchpad.net/%{name}/%{_version}/%{version}/+download/%{name}-%{version}.tar.gz.asc
+URL:            https://github.com/Xubuntu/lightdm-gtk-greeter
+Source:         https://github.com/Xubuntu/%{name}/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/Xubuntu/%{name}/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
@@ -36,6 +36,7 @@ BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  xfce4-dev-tools
 BuildRequires:  pkgconfig(gmodule-export-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.5
 BuildRequires:  pkgconfig(gtk+-3.0)
@@ -117,7 +118,7 @@ fi
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog README
+%doc AUTHORS NEWS
 %doc %{_docdir}/%{name}/
 %{_sbindir}/%{name}
 %{_datadir}/icons/hicolor/*/places/*

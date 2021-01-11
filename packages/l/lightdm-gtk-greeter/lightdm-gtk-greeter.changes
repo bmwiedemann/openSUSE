@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jan  7 14:53:54 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 2.0.8
+  * General
+    + Migrated code and issues to GitHub
+    + Migrated translations to Transifex
+    + Added GitHub distcheck test on each commit
+  * Build changes
+    + Migrated from deprecated exo-csource to xdt-csource (xfce4-dev-tools)
+    + Dropped xdt-csource requirement from non-maintainer builds (GH: #53)
+    + Enabled Ayatana libindicator/libido backend (GH: #74, db#906026)
+  * Bugs fixed
+    + greeterbackground: Replaced deprecated instance private data API
+    + Allow building with newer versions of gettext
+    + Replace ungrammatical comma splice in 'Incorrect password' 
+      message (lp#1810143)
+    + Use 'Large Text' instead of 'Large Font' (lp#1829070)
+    + Fixed broken indicators when upstart is unavailable
+  * Translation updates
+
+- Updates from version 2.0.7
+  * Remove mlockall to fix high memory pressure startup, including 
+    on the Raspberry Pi.
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Oct 25 12:16:46 UTC 2018 - sor.alexei@meowr.ru
 
 - Update to version 2.0.6:
