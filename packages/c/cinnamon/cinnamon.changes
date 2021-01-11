@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jan  2 18:31:59 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 4.8.5.
+  * Adds Cycle Apps functionality back
+  * cs_power.py: Remove a status icon
+  * Power applet: Use spaces after commas.
+  * New ICON_NAMES Entries for Tilix terminal actions
+  * osdWindow.js: Hide the level label as well as the level itself
+    when not used.
+  * Fix for desktop files in subfolders: use the desktop id 
+    generated in cinnamon-menus
+  * Docs: Update xlet-settings-ref.xml (#9813)
+  * removable-drives applet: use drive-removable-media icon (#9818)
+
+-------------------------------------------------------------------
 Sat Dec 26 16:00:33 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 4.8.4.
