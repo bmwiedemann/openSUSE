@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 91ef748..080ff3e 100644
+index eeb58ac..472f37a 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -1,4 +1,4 @@
@@ -7,4 +7,4 @@ index 91ef748..080ff3e 100644
 +project(wyrmsun NONE)
  cmake_minimum_required(VERSION 3.0)
  
- set(DATADIR share/wyrmsun CACHE STRING "Where to install Wyrmsun data files")
+ set(BINDIR bin CACHE STRING "Where to install Wyrmsun launch script")

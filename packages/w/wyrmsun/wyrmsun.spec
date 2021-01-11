@@ -1,7 +1,7 @@
 #
 # spec file for package wyrmsun
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wyrmsun
-Version:        4.0.3
+Version:        4.1.1
 Release:        0
 Summary:        Strategy game based on history, mythology and fiction
 License:        GPL-2.0-only AND CC-BY-SA-3.0
@@ -49,7 +49,7 @@ and iron. And perhaps one day they will meet one another, beyond the stars...
 
 %install
 %cmake_install
-rm -Rf %{buildroot}%{_datadir}/doc/wyrmsun/
+rm -R %{buildroot}%{_datadir}/doc/wyrmsun/
 %fdupes -s %{buildroot}%{_datadir}
 
 %if 0%{?suse_version} < 1330

@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sun Jan 10 11:54:05 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.1
+  - See /usr/share/doc/packages/wyrmsun/readme.txt all changes
+
+-------------------------------------------------------------------
+Fri Jan  1 10:46:18 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.5
+  * Buildings
+    + Fixed the variation conditions for Germanic and Teutonic
+      Docks.
+  * Miscellaneous
+    + Fixed a potential crash when exiting a loaded saved game.
+  * Pathfinding
+    + Fixed a resource-gathering pathfinding issue which occurred
+      if e.g. wood piles were adjacent to the building to which
+      the resource would be returned, and one of the adjacent
+      wood piles were unreachable.
+- Update to version 4.0.4
+  * Maps
+    + Fixed issue which caused a crash when starting the Italy
+      custom map.
+  * Miscellaneous
+    + Fixed a save game load issue which occurred if a reference
+      was held to a destroyed unit.
+    + Fixed crash which occurred when right-clicking the portrait
+      of e.g. stone piles.
+    + Fixed issue which allowed the Anglo-Saxon civilization to be
+      chosen for custom games even if they started at the most
+      basic technological level (the bronze age), even though the
+      Anglo-Saxons are an iron age civilization.
+  * Pathfinding
+    + Fixed a pathfinding issue which could cause minecarts to get
+      stuck when looking for a place to return goods to.
+  * Quests
+    + Fixed issue which caused the defeat to be triggered for
+      certain quests when a required hero died only after their
+      corpse had completely withered away.
+    + Added side-quests for producing furniture for the Anglo-Saxon
+      and Norse civilizations, as well as for some Teutonic factions
+  * Scenarios
+    + Added several mini-forts with neutral hostile Gnoll Warriors,
+      randomly-placed on the Earth map in areas where there were
+      historically werehyena myths (i.e. North Africa).
+
+-------------------------------------------------------------------
 Sun Dec 27 11:36:33 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.0.3
