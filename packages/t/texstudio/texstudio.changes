@@ -1,5 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan  6 13:02:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.4:
+  - fix crash when deleting all elements of a build chain (#1415)
+  - fix RTL presentation when zoomed (#1404)
+  - fix pdf toolbar size setting
+
+-------------------------------------------------------------------
 Tue Dec 29 15:03:23 UTC 2020 - Markus Ebner <info@ebner-markus.de>
+
 - Update to version 3.0.3
   * iOS bugfixes
 - Update to version 3.0.2
