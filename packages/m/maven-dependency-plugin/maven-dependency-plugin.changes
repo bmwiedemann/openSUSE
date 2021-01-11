@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Dec 30 09:39:37 UTC 2020 - Wang Jun <jgwang@suse.com>
+
+- Update to version 3.1.2
+  * Upgrade maven-plugins parent to version 32
+  * Upgrade plexus-io to 3.1.0
+  * Upgrade maven-shared-utils 3.2.1
+  * Upgrade plexus-archiver to 4.1.0
+  * Upgrade maven-artifact-transfer to 0.11.0
+  * Upgrade plexus-utils to 3.2.0
+  * Upgrade plexus-utils to 3.3.0
+  * Upgrade maven-common-artifact-filters to 3.1.0
+  * Upgrade parent POM from 32 to 33
+  * Upgrade maven-dependency-analyzer to 1.11.1
+  * Update ASM so it works with Java 13
+  * Add note on dependecy:tree -Dverbose support in 3.0+
+  * Add a TOC to ease navigating to each goal usage
+  * Remove @param for a parameter which does not exists.
+  * Remove newline and trailing space from log line.
+  * Remove deprecated call.
+  * Fix link to mailing list
+  * Fix JavaDoc issue.
+  * Use https for sigs, hashes and KEYS
+  * Use sha512 checksums instead of sha1
+  * Switch to asfMavenTlpPlgnBuild
+  * Unpacking File Mappers
+  * Replace CapturingLog class with Mockito usage
+  * Rewrite go-offline so it resembles resolve-plugins
+  * Perform transformation to artifact keys just once
+- Removed patch:
+  * 00-maven-artifact-transfer-0.11.0.patch
+    + not needed with this version any more
+
+-------------------------------------------------------------------
 Mon Nov 25 16:25:03 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Specify maven.compiler.release to fix build with jdk9+ and newer

@@ -1,7 +1,7 @@
 #
 # spec file for package maven-dependency-plugin
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           maven-dependency-plugin
-Version:        3.1.1
+Version:        3.1.2
 Release:        0
 Summary:        Plugin to manipulate, copy and unpack local and remote artifacts
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            http://maven.apache.org/plugins/%{name}
-Source0:        http://repo2.maven.org/maven2/org/apache/maven/plugins/%{name}/%{version}/%{name}-%{version}-source-release.zip
-Patch0:         00-maven-artifact-transfer-0.11.0.patch
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugins/%{name}/%{version}/%{name}-%{version}-source-release.zip
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  unzip
@@ -71,7 +70,6 @@ Group:          Documentation/HTML
 
 %prep
 %setup -q
-%patch0 -p1
 
 %pom_remove_plugin :maven-enforcer-plugin
 
