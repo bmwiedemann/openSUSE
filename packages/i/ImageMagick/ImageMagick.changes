@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Jan  4 10:28:57 UTC 2021 - pgajdos@suse.com
+
+- version update to 7.0.10.55
+  * revert changes to the default max width/height of image.
+  * replaced jxl coder with an implementation that uses the jpeg-xl reference
+    library.
+  * added -define trim:edges=(north,east,south,west) that can be used to
+    trim a single or multiple edges.
+
+-------------------------------------------------------------------
+Fri Jan  1 19:13:46 UTC 2021 - Chris Coutinho <chrisbcoutinho@gmail.com>
+
+- Add libheif dependency to support HEIC file formats
+
+-------------------------------------------------------------------
+Mon Dec 28 14:33:57 UTC 2020 - pgajdos@suse.com
+
+- version update to 7.0.10.53
+  * CSS colors no longer require commas.
+  * eliminate possible arthimetic overflow (reference
+    https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=28849)
+  * support display-p3, Adobe-98, and Pro-photo colorspaces
+  * read/write 1024 colors Sixel images (reference
+    https://github.com/ImageMagick/ImageMagick/discussions/3018).
+  * return alpha bytes with stream utility (reference
+    https://github.com/ImageMagick/ImageMagick/discussions/2862).
+  * percentage -border in x no longer adds one pixel border in y (reference
+    https://github.com/ImageMagick/ImageMagick/issues/2978).
+  * reduce time to identify PDF/PS/XPS/PCL image width/height (reference
+    https://github.com/ImageMagick/ImageMagick/discussions/2993).
+  * revert patch to ready gray alpha TIFF image.
+- modified patches
+  % ImageMagick-configuration-SUSE.patch (refreshed)
+
+-------------------------------------------------------------------
 Tue Dec 15 09:27:11 UTC 2020 - pgajdos@suse.com
 
 - version update to 7.0.10.49

@@ -1,9 +1,9 @@
---- policy.xml.orig	2020-11-23 12:47:05.000000000 +0100
-+++ policy.xml	2020-11-24 15:42:58.102090000 +0100
+--- policy.xml.orig	2020-12-28 15:22:47.380782086 +0100
++++ policy.xml	2020-12-28 15:24:10.637332778 +0100
 @@ -79,4 +79,23 @@
    <!-- <policy domain="system" name="shred" value="2"/> -->
    <!-- <policy domain="system" name="precision" value="6"/> -->
-   <!-- <policy domain="system" name="font" value="/path/to/font.ttf"/> -->
+   <!-- <policy domain="system" name="font" value="/path/to/unicode-font.ttf"/> -->
 +  <!-- Disable insecure coders by default -->
 +  <!-- https://bugzilla.suse.com/show_bug.cgi?id=978061 -->
 +  <policy domain="coder" rights="none" pattern="EPHEMERAL" />
@@ -22,5 +22,5 @@
 +  <policy domain="coder" rights="write" pattern="XPS" />
 +  <policy domain="coder" rights="write" pattern="EPS" />
 +  <policy domain="coder" rights="write" pattern="PCL" />
-+  <policy domain="path" rights="none" pattern="@*"/
++  <policy domain="path" rights="none" pattern="@*"/>
  </policymap>

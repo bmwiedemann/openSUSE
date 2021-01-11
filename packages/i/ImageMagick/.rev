@@ -2871,4 +2871,36 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   % ImageMagick-configuration-SUSE.patch (refreshed)</comment>
     <requestid>855962</requestid>
   </revision>
+  <revision rev="221" vrev="1">
+    <srcmd5>a502dfbc579bd21f836435452d7d6d36</srcmd5>
+    <version>7.0.10.55</version>
+    <time>1610381255</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.10.55
+  * revert changes to the default max width/height of image.
+  * replaced jxl coder with an implementation that uses the jpeg-xl reference
+    library.
+  * added -define trim:edges=(north,east,south,west) that can be used to
+    trim a single or multiple edges.
+
+- Add libheif dependency to support HEIC file formats
+
+- version update to 7.0.10.53
+  * CSS colors no longer require commas.
+  * eliminate possible arthimetic overflow (reference
+    https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=28849)
+  * support display-p3, Adobe-98, and Pro-photo colorspaces
+  * read/write 1024 colors Sixel images (reference
+    https://github.com/ImageMagick/ImageMagick/discussions/3018).
+  * return alpha bytes with stream utility (reference
+    https://github.com/ImageMagick/ImageMagick/discussions/2862).
+  * percentage -border in x no longer adds one pixel border in y (reference
+    https://github.com/ImageMagick/ImageMagick/issues/2978).
+  * reduce time to identify PDF/PS/XPS/PCL image width/height (reference
+    https://github.com/ImageMagick/ImageMagick/discussions/2993).
+  * revert patch to ready gray alpha TIFF image.
+- modified patches
+  % ImageMagick-configuration-SUSE.patch (refreshed)</comment>
+    <requestid>860130</requestid>
+  </revision>
 </revisionlist>

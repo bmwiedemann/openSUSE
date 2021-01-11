@@ -1,7 +1,7 @@
 #
 # spec file for package ImageMagick
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define asan_build     0
 %define maj            7
 %define mfr_version    %{maj}.0.10
-%define mfr_revision   49
+%define mfr_revision   55
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        8
@@ -81,6 +81,7 @@ BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libexif)
+BuildRequires:  pkgconfig(libheif)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libtiff-4) >= 4.0.3
 BuildRequires:  pkgconfig(libwebp)
@@ -117,6 +118,7 @@ BuildRequires:  ghostscript-library
 BuildRequires:  libbz2-devel
 BuildRequires:  libdjvulibre-devel
 BuildRequires:  libexif-devel
+BuildRequires:  libheif-devel
 BuildRequires:  librsvg-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libxml-devel
