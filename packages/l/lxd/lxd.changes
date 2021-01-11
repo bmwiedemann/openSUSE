@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 11 12:53:22 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 4.10. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-4-10-has-been-released/9894
+  boo#1180772
+
+  + VLAN information in network state
+  + Proxy device support for VMs (NAT only)
+  + Bridge port isolation
+  + New sub-commands for image properties
+  + Multi-queue networking in VMs
+
+-------------------------------------------------------------------
 Sat Dec 12 06:32:48 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 4.9. The full upstream changelog is available from:
