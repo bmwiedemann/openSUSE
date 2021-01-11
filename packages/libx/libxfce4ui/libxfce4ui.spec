@@ -1,7 +1,7 @@
 #
 # spec file for package libxfce4ui
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,60 +17,47 @@
 
 
 %bcond_with git
-%define libname_gtk2 libxfce4ui-1-0
 %define libname_gtk3 libxfce4ui-2-0
 
 Name:           libxfce4ui
-Version:        4.14.1
+Version:        4.16.0
 Release:        0
 Summary:        Widgets Library for the Xfce Desktop Environment
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://www.xfce.org/
-Source0:        https://archive.xfce.org/src/xfce/libxfce4ui/4.14/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/xfce/libxfce4ui/4.16/%{name}-%{version}.tar.bz2
 # needed until all applications have been ported to xfce_dialog_show_help() or
 # an alternative mechanism
 Source1:        xfhelp4.sh
+# PATCH-FEATURE-OPENSUSE xfdesktop-backgrounds-path.patch mauriziogalli@opensuse.org -- Workaround to remove subtitles area in Xfce applications headerbar 
+Patch0:         headerbar_subtitle.patch
 BuildRequires:  fdupes
 BuildRequires:  intltool
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig
+BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(ice)
+BuildRequires:  pkgconfig(libgtop-2.0) >= 2.24.0
 BuildRequires:  pkgconfig(libstartup-notification-1.0)
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12
-BuildRequires:  pkgconfig(libxfconf-0) >= 4.12
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.15.6
+BuildRequires:  pkgconfig(libxfconf-0) >= 4.14
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(sm)
+BuildRequires:  pkgconfig(vapigen)
 BuildRequires:  pkgconfig(x11)
 %if %{with git}
+BuildRequires:  gtk-doc
 BuildRequires:  xfce4-dev-tools
 %endif
 
 %description
 The libxfce4ui library provides a number of widgets commonly used by Xfce
 applications.
-
-%package -n %{libname_gtk2}
-Summary:        Widgets Library for the Xfce Desktop Environment
-# uses exo-open
-License:        GPL-2.0-or-later
-Group:          System/Libraries
-Requires:       exo-tools
-# -branding only contains keyboard shortcuts for some libxfce4ui consumers so
-# it is not really a dependency but it must be dragged in at a low level
-Recommends:     %{name}-branding = %{version}
-Recommends:     %{name}-lang = %{version}
-Provides:       libxfce4ui = %{version}
-Obsoletes:      libxfce4ui <= 4.8.1
-
-%description -n %{libname_gtk2}
-The libxfce4ui library provides a number of widgets commonly used by Xfce
-applications. This package provides the GTK 2 variant of libxfce4ui.
 
 %package -n %{libname_gtk3}
 Summary:        Widgets Library for the Xfce Desktop Environment
@@ -99,7 +86,6 @@ This package provides tools from libxfce4ui.
 Summary:        Development Files for the libxfce4ui Library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Requires:       %{libname_gtk2} = %{version}
 Requires:       %{libname_gtk3} = %{version}
 Recommends:     %{name}-doc = %{version}
 
@@ -120,7 +106,6 @@ This package provides the documentation for the libxfce4ui library.
 Summary:        Upstream Branding of libxfce4ui
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
-Supplements:    packageand(%{libname_gtk2}:branding-upstream)
 Supplements:    packageand(%{libname_gtk3}:branding-upstream)
 # BRAND: xfce4-keyboard-shortcuts.xml: Controls the global keyboard shortcuts
 # BRAND: for the Xfce desktop.
@@ -136,7 +121,6 @@ This package provides the upstream look and feel for libxfce4ui.
 Summary:        Languages for package %{name}
 License:        LGPL-2.1-or-later
 Group:          System/Localization
-Requires:       %{libname_gtk2} = %{version}
 Requires:       %{libname_gtk3} = %{version}
 Provides:       %{name}-lang-all = %{version}
 Supplements:    packageand(bundle-lang-other:%{libname_gtk2})
@@ -146,8 +130,19 @@ BuildArch:      noarch
 %description lang
 Provides translations to the package %{name}
 
+%package -n typelib-1_0-Libxfce4ui-2_0
+Summary:        UI Library for the Xfce Desktop Environment
+License:        LGPL-2.1-or-later
+Group:          System/Libraries
+Provides:       typelib-1_0-libxfce4ui-2_0 = %{version}
+Obsoletes:      typelib-1_0-libxfce4ui-2_0 < %{version}
+
+%description -n typelib-1_0-Libxfce4ui-2_0
+The libxfce4ui library provides a number of widgets commonly used by Xfce
+applications.
+
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
@@ -157,12 +152,14 @@ NOCONFIGURE=1 ./autogen.sh
     --enable-maintainer-mode \
     --enable-startup-notification \
     --with-vendor-info=openSUSE \
-    --disable-static
+    --disable-static \
+    --enable-vala=yes
 %else
 %configure \
     --enable-startup-notification \
     --with-vendor-info=openSUSE \
-    --disable-static
+    --disable-static \
+    --enable-vala=yes
 %endif
 %make_build
 
@@ -182,23 +179,13 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 
 %fdupes %{buildroot}%{_includedir}
 
-%post -n %{libname_gtk2} -p /sbin/ldconfig
-
-%postun -n %{libname_gtk2} -p /sbin/ldconfig
-
 %post -n %{libname_gtk3} -p /sbin/ldconfig
 
 %postun -n %{libname_gtk3} -p /sbin/ldconfig
 
-%files -n %{libname_gtk2}
-%license COPYING
-%doc AUTHORS NEWS README THANKS TODO
-%{_libdir}/libxfce4ui-1.so.*
-%{_libdir}/libxfce4kbd-private-2.so.*
-
 %files -n %{libname_gtk3}
 %license COPYING
-%doc AUTHORS NEWS README THANKS TODO
+%doc AUTHORS NEWS THANKS TODO
 %{_libdir}/libxfce4ui-2.so.*
 %{_libdir}/libxfce4kbd-private-3.so.*
 
@@ -208,16 +195,16 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %{_libdir}/libxfce4kbd-private-*.so
 %{_libdir}/pkgconfig/libxfce4ui-*.pc
 %{_libdir}/pkgconfig/libxfce4kbd-private-*.pc
-%{_includedir}/xfce4/libxfce4ui-1/
 %{_includedir}/xfce4/libxfce4ui-2/
-%{_includedir}/xfce4/libxfce4kbd-private-2/
 %{_includedir}/xfce4/libxfce4kbd-private-3/
+%{_datadir}/vala/vapi/
+%{_datadir}/gir-1.0/Libxfce4ui-2.0.gir
 
 %files tools
 %{_bindir}/xfhelp4
 %{_bindir}/xfce4-about
 %{_datadir}/applications/xfce4-about.desktop
-%{_datadir}/icons/hicolor/48x48/apps/xfce4-logo.png
+%{_datadir}/icons/hicolor/*/apps/{org.xfce.about.*,xfce4-logo.*}
 
 %files doc
 %doc %{_datadir}/gtk-doc/html/libxfce4ui/
@@ -227,5 +214,8 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %dir %{_sysconfdir}/xdg/xfce4/xfconf
 %dir %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml
 %config %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
+
+%files -n typelib-1_0-Libxfce4ui-2_0
+%{_libdir}/girepository-1.0/Libxfce4ui-2.0.typelib
 
 %changelog

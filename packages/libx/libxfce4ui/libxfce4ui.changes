@@ -1,4 +1,201 @@
 -------------------------------------------------------------------
+Thu Dec 24 07:19:04 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Added headerbar_subtitle.patch to remove subtitle space from 
+  headerbars in Xfce applications
+
+-------------------------------------------------------------------
+Wed Dec 23 00:25:39 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 4.16.0
+  * about: Harmonize capitalisation
+  * Update credits for Xfce 4.16
+  * Translation Updates
+
+-------------------------------------------------------------------
+Wed Dec 16 22:58:12 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.15.8
+  * Add xfce_has_gtk_frame_extents to better handle CSD
+  * Translation Updates
+
+-------------------------------------------------------------------
+Mon Dec 14 09:39:41 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.15.7
+  * libxfce4ui now needs libxfce4util >= 4.15.6
+  * Update configure.ac.in syntax
+  * Namespace of the gir needs capital first letter
+  * Remove hardcoded translators list
+  * Bump libepoxy version to 1.2
+  * Translation Updates
+- Rename typelib subpackage to match gir name
+
+-------------------------------------------------------------------
+Sun Dec 13 20:41:19 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.15.6
+  * Introduce xfce_spawn and xfce_spawn_command_line
+    in favor and instead of xfce_spawn_no_child
+  * Bump GLib (and gio, gthread, etc) minimum to 2.50.0
+  * about: Support multiple GPUs and print GPU memory size
+  * about: Drop window subtitle
+  * Always perform sanity check
+  * Avoid checking for epoxy if libgtop is disabled
+  * XfceTitledDialog: Fix erroneous check (gxo#xfce/libxfce4ui#30)
+  * No startup notification in Wayland to prevent crash
+    (gxo#xfce/libxfce4ui#17)
+  * Translation Updates
+
+-------------------------------------------------------------------
+Fri Nov 20 15:01:22 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fix dependencies and add introspection for vala bindings
+
+-------------------------------------------------------------------
+Thu Nov 19 17:03:10 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.15.5
+  * Add new API xfce_spawn_no_child (gxo#xfce/libxfce4ui!8):
+    Launch processes re-parenting them to init vs. as children
+  * about: Fix icon names
+  * about: Display userspace bitness if it differs from OS kernel
+    bitness
+  * about: Print GPU name in system info
+  * about: Use more understandable arch labels
+    (gxo#xfce/libxfce4ui#27)
+  * Improve xfce_icon_name API
+  * No startup notification in wayland to prevent crash
+    (gxo#xfce/libxfce4ui#17)
+  * Add missing docstring
+  * Fix typos
+  * Add README.md to EXTRA_DIST
+  * Translation Updates
+
+-------------------------------------------------------------------
+Tue Nov  3 19:20:57 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.15.4
+  * Avoid redundant key re-grabbing
+  * Adds new README.md and updates AM_INIT_AUTOMAKE
+  * Silence compiler warnings (gxo#xfce/libxfce4ui#25)
+  * AC_CONFIG_MACRO_DIR → AC_CONFIG_MACRO_DIRS
+  * Add default shortcuts for tiling (gxo#xfce/libxfce4ui#4)
+  * Avoid shortening the keycodes GArray while walking it.
+  * about: Revamp About Xfce tab
+  * about: More icon name fixes
+  * Add more logo icons and new about icon
+  * Update deprecated icon names
+  * keyboard-shortcuts: Improve UI for setting shortcuts
+  * shortcut-dialog: Add label to clear button
+  * shortcut-dialog: Port to new XfceTitledDialog API
+  * shortcut-dialog: Only grab keyboard
+  * Always return GTK_RESPONSE_OK for accepted shortcut keys
+    (gxo#xfce/libxfce4ui#20)
+  * Translation Updates
+
+-------------------------------------------------------------------
+Fri Aug 28 14:42:24 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.15.3
+  * Update bug URLs to point to gitlab.xfce
+  * xfce-about: Hide empty email address tags (gxo#xfce/libxfce4ui#12)
+  * Remove translator email address as per request
+    (gxo#xfce/libxfce4ui#11)
+  * Add missing translator to xfce4-about (gxo#xfce/libxfce4ui#18)
+  * Replace deprecated 'gdk_keyboard_ungrab' function
+    (gxo#xfce/libxfce4ui#15)
+  * shortcuts-grabber: Correctly ungrab keys on updating shortcuts
+    (gxo#xfce/libxfce4ui#16)
+  * Allow more granular control over menu item accelerators.
+  * No automatic accelerator activation formenu items
+  * Added 'gtk_menu_item_set_accel_label'
+  * Added 'xfce_gtk_accel_group_connect_action_entries'
+  * renamed 'xfce_gtk_accel_group_append' to
+    'xfce_gtk_accel_map_add_entries' and modified internals accordingly.
+  * No automatic add to an accel_group any more, since this may
+    lead to double-activation in some cases.
+  * Add "xfce_gtk_accel_group_disconnect_action_entries" to be
+    able to revert "xfce_gtk_accel_group_connect_action_entries"
+  * Add title to xfce_dialog_confirm_close_tabs
+  * Add new methods to libxfce4ui.symbols.
+  * Introduced 'XfceGtkActionEntry' as replacement for the deprecated
+    'GtkAction', 'GtkActionEntry' in order to keep simple menu creation.
+    This includes various support methods, like:
+    - 'xfce_gtk_translate_action_entries' to to translate a list of
+      XfceGtkActionEntrys
+    - 'xfce_gtk_accel_group_append' to register the provided accelerators
+      of the entries
+    - 'xfce_gtk_get_action_entry_by_id' to find a single XfceGtkActionEntry,
+      e.g. by using a enumeration
+    - 'xfce_gtk_***_new_from_action_entry' to createthe specific menu-
+      or tool-items from an XfceGtkActionEntry
+  * Add a widget for filename input (bxo#16542)
+  * Enabled doc generation for XfceGtkActionEntry and related methods
+  * Enabled doc generation for new widget 'xfce-filename-input'
+  * Switch Ctrl+Alt+Del to xfce4-session-logout (bxo#11979)
+  * Add more default keyboard shortcuts (bxo#16470)
+  * shortcuts: Replace xfrun4 by xfce4-appfinder
+  * shortcuts: Also map Homepage to browser
+  * shortcuts: Remove calculator shortcut
+  * Switch XfceTitledDialog to headerbar/CSD layout
+  * Use GtkMessageDialog as base class for Xfce Dialogs
+  * Add two new functions to search for app icons
+  * Improve Tests and Docs
+  * Switch XfceTitledDialog to headerbar layout
+  * XfceTitledDialog: Keep buttons in the action area
+  * XfceTitledDialog: Also repack xfce_titled_dialog_new
+  * XfceTitledDialog: Make sure windows can be dragged
+  * XfceTitledDialog: Add _create_action_area, _add_button
+  * and _add_action_widget
+  * Introduce xfce_titled_dialog_set_default_response
+  * Mark xfce_titled_dialog_new_with_buttons as deprecated
+  * Add two new functions to search for app icons
+  * xfce-about: Fix Makefile
+  * shortcut-dialog: Show dialog content (bxo#16338)
+  * xfce-dialogs: Use GtkMessageDialog as base class
+  * xfce-dialogs: Improve layout of confirm_close_tabs
+  * xfce-dialogs: Improve alignment and layout of dialogs
+  * xfce-dialogs: Add right margin back to labels
+  * xfce-dialogs: Drop default window titles
+  * docs: Add xfce_dialog_confirm_close_tabs
+  * tests: Add xfce_dialog_confirm_close_tabs
+  * tests: Improve UI
+  * tests: Add icons to dialog buttons
+  * tests: Simplify code by using XfceTitledDialog
+  * tests: Re-order buttons
+  * tests: Fix typo in test-ui.c (bxo#16253)
+  * Rename test-ui-gtk3 to test-ui
+  * Improve docstrings
+  * Drop gladeui Gtk2 from distcheck options
+  * Drop unused declaration
+  * Fix compiler warnings
+  * Remove trailing whitespace
+  * Always provides needed files for vala binding in dist tarball
+  * Add recents functions to libxfce4ui.symbols
+  * Drop xfce-header from pot files
+  * Update docstrings
+  * Fix license text box too small (bxo#16259)
+  * .gitignore: ignore all .o files
+  * Make autogen output friendlier
+  * Drop support for Gtk2
+  * Make glibtop an optional dependency ("About System" tab)
+  * about: Add system info tab
+  * about: Hide system tab conditionally
+  * dialogs: Use symbolic window-close icon
+  * Fix Window not visible when grabbing keyboard (bxo#16054)
+  * Bump Gtk3 to 3.22 (bxo#15781)
+  * Do not use gdk_screen_get_monitor_at_point (bxo#15781)
+  * Replace gtk_show_uri (bxo#15781)
+  * Replace gdk_display_get_screen (bxo#15781)
+  * Replace gdk_keymap_get_default (bxo#15781)
+  * Replace deprecated device functions (bxo#15781)
+  * Replace gdk_error_trap_* and gdk_flush (bxo#15781)
+  * Ignore what is hard to replace (bxo#15781)
+  * Add a dialog to confirm closure of multiple tabs (bxo#15873)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Aug 16 12:47:48 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed sources in spec file

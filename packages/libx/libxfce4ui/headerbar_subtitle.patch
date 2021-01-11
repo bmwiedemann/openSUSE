@@ -1,0 +1,27 @@
+From 7c9e9e0eadab966ebdd94ca6f6ead56a36ce1347 Mon Sep 17 00:00:00 2001
+From: "Maurizio Galli (m4u9)" <maurizio.galli@gmail.com>
+Date: Wed, 23 Dec 2020 07:36:59 +0100
+Subject: [PATCH] Don't reserve vertical space for subtitles in headerbars
+
+---
+ libxfce4ui/xfce-titled-dialog.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/libxfce4ui/xfce-titled-dialog.c b/libxfce4ui/xfce-titled-dialog.c
+index 52181a2..0422d69 100644
+--- a/libxfce4ui/xfce-titled-dialog.c
++++ b/libxfce4ui/xfce-titled-dialog.c
+@@ -162,6 +162,9 @@ xfce_titled_dialog_init (XfceTitledDialog *titled_dialog)
+   titled_dialog->priv->headerbar = gtk_dialog_get_header_bar (GTK_DIALOG (titled_dialog));
+   g_return_if_fail (GTK_IS_HEADER_BAR (titled_dialog->priv->headerbar));
+ 
++ /* Don't reserve vertical space for subtitles */
++  gtk_header_bar_set_has_subtitle (gtk_dialog_get_header_bar (GTK_DIALOG (titled_dialog)), FALSE);
++
+   /* Pack the window icon into the headerbar */
+   titled_dialog->priv->icon = gtk_image_new ();
+   gtk_header_bar_pack_start (GTK_HEADER_BAR (titled_dialog->priv->headerbar), titled_dialog->priv->icon);
+-- 
+GitLab
+
+
