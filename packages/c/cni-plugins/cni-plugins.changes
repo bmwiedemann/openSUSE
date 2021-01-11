@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Jan 08 12:16:37 UTC 2021 - rbrown@suse.com
+
+- Update to version 0.9.0:
+  * tuning: revert values on delete (#540)
+  * go mod tidy
+  * bump to go 1.15
+  * Add ability to trigger retests via comments
+  * pkg/ns: fix test case to tolerate pids going away.
+  * Add github build & test actions
+  * bridge: fix testcase to check addresses we care about
+  * Remove travis.
+  * vendor: bump ginkgo, gover
+  * portmap plugin should flush previous udp connections
+  * Updating plugin README.md files (#549)
+  * update netlink dependencies
+  * Xdhcp: fix example configuration
+  * VRF: extend supported version to 0.3.1 too.
+  * VRF CNI: Add an optional table parameter.
+  * Add more tests for the vrf cni plugin.
+  * Update github.com/vishvananda/netlink to v1.1.0
+  * Introduce a new VRF CNI meta plugin.
+  * Travis: run tests on arm64
+  * Replace nc with the local echo client.
+  * Add an echo client to be used instead of nc.
+  * Bump up the ubuntu version used in CI to bionic.
+  * flannel: allow input ipam parameters as basis for delegate
+  * ipvlan: make master config as optional
+  * Remove extraneous test file in Windows plugin
+
+-------------------------------------------------------------------
 Mon Aug 31 09:15:35 UTC 2020 - dmueller@suse.com
 
 - Update to version 0.8.7:
