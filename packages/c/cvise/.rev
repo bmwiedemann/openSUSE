@@ -423,4 +423,41 @@
   * Move back removed testers.</comment>
     <requestid>860605</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>f3e050ca565a9cda4323a81aefa53e74</srcmd5>
+    <version>2.1.0+git.20210111.972f4ba</version>
+    <time>1610381743</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.0+git.20210111.972f4ba:
+  * Bump to v2.1.0.
+  * Make LLVM 12 code conditional.
+  * clang_delta: llvm-12: getContentCache() now returns a reference
+  * clang_delta: llvm-12: prefer getBufferOrNone to getBuffer
+  * Fix non-COVERAGE builds.
+  * Add missing python3 package for sqlite3.
+  * Add sqlite-devel for tumbleweed.
+  * Install git.
+  * Simplify Leap build.
+  * Fix one missing package for Leap.
+  * Do not depend on sqlite.
+  * Fix Leap configuration.
+  * Fix config.
+  * Fix configuration.
+  * Workflow: add Leap container.
+  * Use codecov directly.
+  * Install curl.
+  * Fix workflow.
+  * Update codecov yml config.
+  * Use codecov workflow directly.
+  * Fix workflow.
+  * Fix COVERAGE condition in GitHub workflow.
+  * Remove Travis leftovers.
+  * Add nproc.
+  * Rename a step.
+  * Fix badge URL.
+  * Stop using Travis CI. Bye.
+  * Github actions: add coverage.
+  * Add github workflow.</comment>
+    <requestid>862257</requestid>
+  </revision>
 </revisionlist>
