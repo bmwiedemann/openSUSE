@@ -1,7 +1,7 @@
 #
 # spec file for package clazy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           clazy
-Version:        1.8
+Version:        1.9
 Release:        0
 Summary:        Qt oriented code checker based on the Clang framework
 License:        LGPL-2.0-or-later
@@ -25,7 +25,7 @@ Group:          Development/Tools/Other
 URL:            https://www.kdab.com/clazy-video/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:  clang
-BuildRequires:  clang-devel >= 5.0
+BuildRequires:  clang-devel >= 7.0
 BuildRequires:  cmake >= 3.7
 BuildRequires:  libstdc++-devel
 Requires:       clang%{_llvm_sonum}
@@ -36,7 +36,7 @@ You get more than 50 Qt related compiler warnings, ranging from unneeded memory
 allocations to misusage of API, including fix-its for automatic refactoring.
 
 %prep
-%autosetup -p1 -c
+%autosetup -p1
 
 %build
 %define _lto_cflags %{nil}

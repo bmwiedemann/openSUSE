@@ -1,10 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 11 07:16:27 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 1.9:
+  * Fixed clazy slowdown introduced in 1.8. It can be up to 4x
+    faster now.
+
+-------------------------------------------------------------------
 Wed Nov 25 07:32:45 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 1.8:
   * New Checks:
     - qt6-qhash-signature
-    - qt6-qdir-fixes
     - qt6-header-fixes
     - qt6-deprecated-api-fixes
     - use-chrono-in-qtimer
