@@ -1,7 +1,7 @@
 #
 # spec file for package python-terminado
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,12 @@
 #
 
 
-# Disable tests until random testing race condition fixed, see: https://github.com/jupyter/terminado/issues/21
-%bcond_with     tests
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+# Disable tests until random testing race condition fixed, see: https://github.com/jupyter/terminado/issues/21
+%bcond_with     tests
 Name:           python-terminado
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        Terminals served to termjs using Tornado websockets
 License:        BSD-2-Clause
@@ -35,12 +34,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado >= 4}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module pytest}
-# /SECTION
 Requires:       python-ptyprocess
 Requires:       python-tornado >= 4
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module pytest}
+# /SECTION
 %python_subpackages
 
 %description
