@@ -17,13 +17,15 @@
 
 
 Name:           xfce4-panel-profiles
-Version:        1.0.10
+Version:        1.0.12
 Release:        0
 Summary:        Simple application to manage Xfce panel layouts
 License:        GPL-3.0-only
 Group:          System/GUI/Other
 URL:            https://git.xfce.org/apps/xfce4-panel-profiles/about/
 Source:         https://archive.xfce.org/src/apps/xfce4-panel-profiles/1.0/%{name}-%{version}.tar.bz2
+# PATCH-FEATURE-OPENSUSE Libxfce4ui.patch maurizio.galli@gmail.com -- OBS gets confused which typelib to require as dependency and we only need Libxfce4ui
+Patch0:         Libxfce4ui.patch
 BuildRequires:  appstream-glib
 BuildRequires:  findutils
 BuildRequires:  gobject-introspection
@@ -49,7 +51,7 @@ Simple application to manage Xfce panel layouts.
 This tool makes it possible to backup, restore, import, and export panel layouts.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 # configure macro not working due to it using unsupported options
@@ -70,7 +72,7 @@ done
 %make_install
 
 # Remove not needed doc files
-rm %{buildroot}%{_datadir}/doc/%{name}/{AUTHORS,COPYING,INSTALL,NEWS,README}
+rm %{buildroot}%{_datadir}/doc/%{name}/{AUTHORS,COPYING,INSTALL,NEWS,README.md}
 
 %find_lang %{name}
 
@@ -79,19 +81,19 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata
 %files -f %{name}.lang
 
 %files
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.md
 %license COPYING
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/layouts
 %dir %{_datadir}/%{name}/%{name}
 %{_bindir}/%{name}
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/*.desktop
 %{_datadir}/%{name}/layouts/*
 %{_datadir}/%{name}/locale
-%{_datadir}/%{name}/%{name}/panelconfig.py
+%{_datadir}/%{name}/%{name}/*.py
 %{_datadir}/%{name}/%{name}/%{name}.glade
-%{_datadir}/%{name}/%{name}/%{name}.py
 %{_datadir}/metainfo/org.xfce.PanelProfiles.appdata.xml
+%{_datadir}/icons/hicolor/*
 %{_mandir}/man1/xfce4-panel-profiles.1.gz
 
 %changelog

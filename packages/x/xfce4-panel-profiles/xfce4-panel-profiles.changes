@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Dec 31 06:03:10 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed Libxfce4ui.patch
+
+-------------------------------------------------------------------
+Wed Dec 30 02:35:12 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Added Libxfce4ui.patch. OBS gets confused which typelib to require 
+  as dependency and we only need Libxfce4ui. 
+
+-------------------------------------------------------------------
+Tue Dec 29 06:35:30 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 1.0.12
+  * New Features:
+    - New build option `--docdir` for documentation install path
+    - New build option `--mandir` for manpage install path
+  * General:
+    - Manpage `xfce4-panel-profiles.1` is no longer gzipped 
+      (gxo#apps/xfce4-panel-profiles#5)
+  * Bugs Fixed:
+    - Release install error: incorrect README filename 
+      (gxo#apps/xfce4-panel-profiles#24) 
+
+- Updates from version 1.0.11
+  * New Features
+    - Add support for saving xfce4-whiskermenu's configuration file
+    - Prefer CSD in XfceTitledDialog
+    - Use XfceTitledDialog from libxfce4ui 
+    - Use Xfce's about dialog via libxfce4ui
+    - Add new icons and use reverse DNS for icons and files
+    - Open xfce4-panel on close button (bxo#16505)
+  * General
+    - Add new README.md over old README
+    - Try the new and old libxfce4ui gir file name
+    - Add basic GitLab pipeline
+    - Make tarball creation reproducible
+  * Bugs Fixed
+    - Update openSUSE profile and fix build
+    - Removed check for if the menu is installed. This would probably
+      get in the way.
+    - Use current branch in 'make distcheck'
+    - Use configured appname instead of argv[0]
+    - Fix typos in comments.
+  * Updated translations
+
+-------------------------------------------------------------------
 Wed Jan 15 10:36:48 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Update to version 1.0.10
