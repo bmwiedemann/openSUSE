@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Dec 25 20:19:13 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.8.2
+  * Fix build with panel 4.15
+  * Update configure.ac.in syntax
+  * scale alternate layout dots to be visible on hi dpi displays
+  * Add basic GitLab pipeline
+  * Minor build updates
+  * Update URLs from goodies.x.o to docs.x.o (bxo#16184)
+  * Update .gitignore
+  * s/http/https
+  * Update Myanmar flag
+  * Improve spacing (bxo#14684)
+  * Fix compilation warnings
+  * Add -lX11 to libxkb_la_LIBADD
+  * Translation Updates
+- Remove xfce4-xkb-plugin-0.8.0-downgrade-libxklavier-requirement.diff,
+  fixed upstream
+
+-------------------------------------------------------------------
 Fri Aug 16 12:02:18 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed sources in spec file

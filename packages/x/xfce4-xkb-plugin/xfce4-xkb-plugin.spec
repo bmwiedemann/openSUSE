@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-xkb-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,17 @@
 #
 
 
-%define panel_version 4.12.0
+%define panel_version 4.14.0
 %define plugin xkb
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        0.8.1
-Release:        100
+Version:        0.8.2
+Release:        0
 Summary:        XKB Layout Switcher Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
-URL:            https://goodies.xfce.org/projects/panel-plugins/xfce4-xkb-plugin
+URL:            https://docs.xfce.org/panel-plugins/xfce4-xkb-plugin
 Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/0.8/%{name}-%{version}.tar.bz2
-# PATCH-FIX-OPENSUSE xfce4-xkb-plugin-0.8.0-downgrade-libxklavier-requirement.diff -- xklavier-5.3 is good enough -- seife
-Patch0:         xfce4-xkb-plugin-0.8.0-downgrade-libxklavier-requirement.diff
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
