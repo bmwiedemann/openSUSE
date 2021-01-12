@@ -1,7 +1,7 @@
 #
 # spec file for package xfwm4
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,15 @@
 
 %bcond_with git
 Name:           xfwm4
-Version:        4.14.6
+Version:        4.16.1
 Release:        0
 Summary:        Default Window Manager for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/xfce/xfwm4/start
-Source0:        https://archive.xfce.org/src/xfce/xfwm4/4.14/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/xfce/xfwm4/4.16/%{name}-%{version}.tar.bz2
 Source1:        xfwm4.xml
+BuildRequires:  exo-tools
 BuildRequires:  fdupes
 BuildRequires:  gdk-pixbuf-loader-rsvg
 BuildRequires:  hicolor-icon-theme
@@ -37,9 +38,9 @@ BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libstartup-notification-1.0)
 BuildRequires:  pkgconfig(libwnck-3.0) >= 3.14
 BuildRequires:  pkgconfig(libxfce4kbd-private-3) >= 4.12.0
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.15
 BuildRequires:  pkgconfig(libxfce4util-1.0)
-BuildRequires:  pkgconfig(libxfconf-0) >= 4.13.0
+BuildRequires:  pkgconfig(libxfconf-0) >= 4.15
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcomposite)
@@ -116,29 +117,26 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 
 %files
 %if %{with git}
-%doc example.gtkrc-2.0 README AUTHORS COMPOSITOR NEWS NOTES TODO
+%doc example.gtkrc-2.0 AUTHORS COMPOSITOR NEWS NOTES TODO
 %else
-%doc example.gtkrc-2.0 README AUTHORS COMPOSITOR NEWS TODO
+%doc example.gtkrc-2.0 AUTHORS COMPOSITOR NEWS TODO README.md
 %endif
 %license COPYING*
 %{_bindir}/xfwm4
 %{_bindir}/xfwm4-settings
 %{_bindir}/xfwm4-tweaks-settings
 %{_bindir}/xfwm4-workspace-settings
+%dir %{_libdir}/xfce4/xfwm4
 %{_libdir}/xfce4/xfwm4/helper-dialog
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/*/*.png
 %{_datadir}/icons/hicolor/*/*/*.svg
 %{_datadir}/themes/*
 %{_datadir}/xfwm4
-%dir %{_libdir}/xfce4
-%dir %{_libdir}/xfce4/xfwm4
 
 %files lang -f %{name}.lang
 
 %files branding-upstream
-%dir %{_sysconfdir}/xdg/xfce4
-%dir %{_sysconfdir}/xdg/xfce4/xfconf
 %dir %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml
 %config %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml
 

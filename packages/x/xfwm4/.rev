@@ -597,4 +597,117 @@
     <comment></comment>
     <requestid>845543</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>ddea6cab6c31ffbad87bd93af8eff43c</srcmd5>
+    <version>4.16.1</version>
+    <time>1610443764</time>
+    <user>dimstar_suse</user>
+    <comment>Update to Xfce 4.16
+- Redacted changelog
+- Update to version 4.16.1
+  * Catch more XErrors (gxo#xfce/xfwm4#476, gxo#xfce/xfwm4#486)
+  * Untile window before switching to fullscreen (gxo#xfce/xfwm4#478)
+  * Allow interactive resizing with any keyboard modifier
+    (gxo#xfce/xfwm4#487)
+  * Do not prefer Xpresent on AMD/Radeon (gxo#xfce/xfwm4#490)
+  * Use g_info/g_print instead of g_message for some message
+  * Translation Updates
+- Update to version 4.16.0
+  - common: Avoid zero refresh rate for monitor
+  - hints: Protect against XError from XGetTransientFor()
+  - netwm: Allow above/below only for regular windows
+  - netwm: Mark splashscreen as transient for groups
+  - client: Complete client state even on different workspaces
+  - build: Increase GTK+ requirement to 3.22
+  - Add `cycle_minimized` option
+  - compositor: Release overlay window last
+  - compositor: Free GLX data when really using GLX
+  - compositor: Remove useless trace message
+  - compositor: Release current GLX context on teardown
+  - display: Remove custom XError handler
+  - compositor: Check for XError when adding windows
+  - compositor: Trap XErrors when disabling compositor
+  - main: Enable compositor by default
+  - compositor: Remove automatic redirect support
+  - main: Add short command line options
+  - main: Add debug command line option
+  - pixmap: Use a safer strncpy()
+  - settings: Fix compiler warning
+  - Remove useless autotools macros and Makefile targets
+  - Use --enable-debug=yes when compiling from git
+  - Revert &quot;compositor: Do not damage on opaque region update&quot;
+  - themes: Use smaller, lighter shadows
+  - compositor: Check if compositor is enabled
+  - compositor: Avoid XError when disabling compositor
+  - compositor: Warn for missing epoxy GL function
+  - netwm: Do not raise window if activate is set to none
+  - Remove GSourceFunc casts
+  - compositor: Fix build with older epoxy versions
+  - settings: Add 'Always on top' to the double click action
+  - Settings: Remove default alphabetical sorting of keyboard shortcuts
+    Closes: gxo#xfce/xfwm4#451 (Disable initial sorting of keyboard shortcuts)
+  - compositor: Handle XFixes XError
+  - compositor: Add support for GL_ARB_sync
+  - compositor: Return early if a Present swap is pending
+  - debug: Fix build in debug mode
+  - compositor: Fix compilation issue with Xpresent
+  - compositor: Log fence and GLX swap time in debug mode
+  - compositor: Move fence sync to redraw_glx
+  - compositor: Move fence triggered to its own function
+  - compositor: Set swap control if possible
+  - compositor: Adjust to the actual number of buffers
+  - compositor: Use a GLX drawable per buffer
+  - client: Allow transients for group to be minimized
+  - settings: Add a UI option for desktop zooming
+  - themes: Remove title shadow
+  - themes: Adjust shadows size/opacity
+  - client: Make above/below consistent
+  - compositor: Limit damage region to the screen
+  - compositor: Optimize repaint without vblank
+  - compositor: Only accumulate damage with multiple buffers
+  - compositor: Copy entire content for GLX buffers
+  - xsync: Handle XError
+  - compositor: Ignore opaque region for shaded windows
+  - compositor: Clip opaque region against window shape
+  - client: Protect against XError in XKillClient()
+  - compositor: Do not damage on opaque region update
+  - compositor: Opaque region applies to client window
+  - compositor: Reuse client size
+  - client: Toggle tiling on key shortcut
+  - client: Small cleanup
+  - Add README.md to EXTRA_DIST
+  - client: Keep tiled size of windows
+  - compositor: No need to update compositor window on configure
+  - compositor: Limit opaque region clipping to window extents
+  - compositor: Damage on opaque region update only if visible
+  - client: Send synthetic configure on force redraw
+  - Post release tag bump
+  - Translation Updates
+- Updates from version 4.15.3
+  * Add support for opaque regions in the compositor
+  * Make cursor zoom optional (gxo#xfce/xfwm4#439)
+  * Remove the deprecated options &quot;--daemon&quot;
+  * Disable Xi2 support by default
+  * Add column sorting in settings
+  * Optimize window matching in the compositor with a hash table
+  * Add more XErrors traps
+  * Translation updates
+  
+- Updates from version 4.15.2 
+  * Add support for opaque regions in the compositor
+  * Make cursor zoom optional (gxo#xfce/xfwm4#439)
+  * Remove the deprecated options &quot;--daemon&quot;
+  * Disable Xi2 support by default
+  * Add column sorting in settings
+  * Optimize window matching in the compositor with a hash table
+  * Add more XErrors traps
+- Updates from 4.15.1
+  * Show tabwin only on primary monitor if set
+  * Fix an error leak in compositor (gxo#xfce/xfwm4#351)
+  * Fix compositor selection atom misuse
+  * Prefer zero initialized memory allocation functions
+  * Use g_slice allocator for compositor windows
+</comment>
+    <requestid>862091</requestid>
+  </revision>
 </revisionlist>
