@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Dec 23 02:36:29 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 4.1.0
+  - Add basic GitLab pipeline
+  - Updated README file
+  - Add DBG anchors
+  - Add <icon> amd <iconclick> elements
+  - Make Save translatable
+  - Fix config values sometimes going to default
+  - Fix label sometimes re-appearing
+  - Enable multi-row support
+  - Remove unused variables and code
+  - Fix indentation
+  - Catch some edge cases
+  - Set tmp variable default values
+  - Fix period spinner display when cancelled
+  - Fix label toggle display when cancelled
+  - Fix font display when cancelled
+  - Support new libxfce4ui API
+  - Change close to save
+  - Closing config window cancels changes
+  - Change layout of config dialog
+  - Make tooltips translatable
+  - Update support URLs to docs.xfce.org
+  - Allow compilation with panel 4.15
+  - Replace deprecated xfce_create_panel_button
+  - Translation Updates 
+
+-------------------------------------------------------------------
 Fri Aug 16 12:27:17 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed sources in spec file
