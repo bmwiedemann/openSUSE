@@ -18,13 +18,13 @@
 
 %bcond_with git
 Name:           xfce4-session
-Version:        4.14.2
+Version:        4.16.0
 Release:        0
 Summary:        Xfce Session Manager
 License:        GPL-2.0-only
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/xfce/xfce4-session/start
-Source0:        https://archive.xfce.org/src/xfce/xfce4-session/4.14/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/xfce/xfce4-session/4.16/%{name}-%{version}.tar.bz2
 %if %{with git}
 # PATCH-FIX-OPENSUSE xfce4-session-adapt-session-scripts-git.patch bnc#789057 maurizio.galli@gmail.com-- Adapt upstream sessions script to openSUSE.
 Patch0:         xfce4-session-adapt-session-scripts-git.patch
@@ -50,7 +50,7 @@ BuildRequires:  pkgconfig(gnome-keyring-1)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libwnck-3.0) >= 3.10
-BuildRequires:  pkgconfig(libxfce4panel-1.0)
+BuildRequires:  pkgconfig(libxfce4panel-2.0)
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12.0
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.102
@@ -146,8 +146,7 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/xscreensaver.desktop
 
 %files
 %license COPYING
-%doc AUTHORS BUGS NEWS README TODO
-%dir %{_sysconfdir}/xdg/xfce4
+%doc AUTHORS BUGS NEWS README.md TODO
 %config %{_sysconfdir}/xdg/xfce4/Xft.xrdb
 %{_sysconfdir}/xdg/xfce4/xinitrc
 %{_bindir}/xfce4-session
@@ -155,8 +154,6 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/xscreensaver.desktop
 %{_bindir}/xfce4-session-settings
 %{_bindir}/xflock4
 %{_bindir}/startxfce4
-%{_libdir}/xfce4
-%{_datadir}/xfce
 %{_datadir}/xsessions/xfce.desktop
 %{_datadir}/xsessions/default.desktop
 %ghost %{_sysconfdir}/alternatives/default.desktop
@@ -168,9 +165,6 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/xscreensaver.desktop
 %files lang -f %{name}.lang
 
 %files branding-upstream
-%dir %{_sysconfdir}/xdg/xfce4
-%dir %{_sysconfdir}/xdg/xfce4/xfconf
-%dir %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml
 %config %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
 
 %changelog

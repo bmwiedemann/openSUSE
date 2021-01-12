@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Wed Dec 23 01:25:05 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 4.16.0
+  - settings: Accept all types of GIcon
+  - settings: Adjust inline toolbar
+  - Fix compilation with -Wmissing-prototypes
+  - Don't warn when there are no saved sessions
+  - bump glib (and gio, gthread, etc) minimum to 2.50.0
+  - Remove GSourceFunc casts
+  - Update .gitignore
+  - Add README.md to EXTRA_DIST
+  - Translation Updates 
+
+-------------------------------------------------------------------
+Sat Nov  7 21:07:01 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.15.1
+  * Fix potential crash in suspend and shutdown
+    (gxo#xfce/xfce4-session#65)
+  * Avoid potential format-string vulns
+    (gxo#xfce/xfce4-session#65)
+  * settings: Tweak 'Current Session' tab
+  * settings: Make 'App Autostart' columns sortable
+  * settings: Fix 'Current session' column width
+    (gxo#xfce/xfce4-session!10)
+  * Add lock icon, 24px and 32px icons
+  * Add more guards around GErrors
+  * Update copyright year
+  * Fix ifdef
+  * Translation Updates
+
+-------------------------------------------------------------------
+Fri Aug 28 22:38:31 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.15.0
+  * Use new icon in settings dialog (bxo#16885)
+  * Add new application icon and rDNS icon name
+  * logout-dialog: Add new icons
+  * logout-dialog: Bump icon size to 48px
+  * Switch to symbolic window-close icons
+  * Drop GDM compatibility code to avoid invalid session locale
+  * Segfault when suspending without pm-suspend installed (bxo#16632)
+  * Expand field codes
+  * Add a GnuPG 2.1+ mode
+  * Fix session crash at logout (bxo#16105)
+  * Free the intermediate "cmd" variable in xfsm_startup_init()
+  * Re-add xfsm_startup_shutdown() call to xfce4-session main()
+  * Remove sys/sysctl.h on linux platform
+  * Move from exo-csource to xdt-csource (bxo#16717)
+  * Try xfce screensaver before cinnamon (bxo#16223)
+  * Add support for xfce4-screensaver (bxo#16522)
+  * Silence runtime warning (bxo#15731)
+  * settings: Don't warn when there are no saved sessions
+    (gxo#xfce/xfce4-session#62)
+  * settings: Add sort-on-click to columns in "Current Session" tab (!3)
+  * settings: Add keywords for discoverability (bxo#10694)
+  * settings: Add tooltips to image-buttons
+  * settings: Better app icon lookup
+  * settings: Be more precise in infobar wording
+  * settings: Drop inline-toolbar button labels
+  * settings: Move autostart info to docs.xfce
+  * settings: Don't make 'saved sessions' tab reorderable
+  * settings: Sort saved sessions by most recently used (bxo#15338)
+  * Only clean generated sources when in maintainer mode
+  * Do not show translation info on --help output
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Mar 29 00:18:36 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 4.14.2
