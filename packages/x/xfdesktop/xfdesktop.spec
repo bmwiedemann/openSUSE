@@ -18,13 +18,13 @@
 
 %bcond_with git
 Name:           xfdesktop
-Version:        4.14.3
+Version:        4.16.0
 Release:        0
 Summary:        Desktop Manager for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/xfce/xfdesktop/start
-Source0:        https://archive.xfce.org/src/xfce/xfdesktop/4.14/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/xfce/xfdesktop/4.16/%{name}-%{version}.tar.bz2
 # PATCH-FEATURE-OPENSUSE xfdesktop-backgrounds-path.patch bnc#800970 gber@opensuse.org -- Deliver background images under DATADIR/wallpapers which is already used by openSUSE and fix the default path for background images in the settings dialog
 Patch0:         xfdesktop-backgrounds-path.patch
 # PATCH-FEATURE-OPENSUSE xfdesktop-default-backdrop-image.patch gber@opensuse.org -- Sets the default background image to a symlink that is delivered by branding packages
@@ -36,17 +36,17 @@ BuildRequires:  xfce4-dev-tools
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(exo-2)
 BuildRequires:  pkgconfig(garcon-1) >= 0.1.2
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(gmodule-2.0)
-BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(gthread-2.0)
+BuildRequires:  pkgconfig(gio-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libwnck-3.0)
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.13.0
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.13.0
-BuildRequires:  pkgconfig(libxfconf-0) >= 4.13.0
+BuildRequires:  pkgconfig(libxfconf-0) >= 4.12.1
 BuildRequires:  pkgconfig(thunarx-3)
 Provides:       xfce4-desktop = %{version}
 Obsoletes:      xfce4-desktop < %{version}
@@ -110,7 +110,7 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %fdupes %{buildroot}%{_datadir}
 
 %files
-%doc README AUTHORS NEWS TODO
+%doc README.md AUTHORS NEWS TODO
 %license COPYING
 %{_bindir}/xfdesktop
 %{_bindir}/xfdesktop-settings
