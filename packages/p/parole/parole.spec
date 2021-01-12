@@ -1,7 +1,7 @@
 #
 # spec file for package parole
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           parole
-Version:        1.0.5
+Version:        4.16.0
 Release:        0
 Summary:        Media Player for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            https://docs.xfce.org/apps/parole/start
-Source0:        https://archive.xfce.org/src/apps/parole/1.0/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/apps/parole/4.16/%{name}-%{version}.tar.bz2
 # PATCH-FEATURE-UPSTREAM parole-add-uri-scheme-handler-support.patch gber@opensuse.org -- Adds support for URI scheme handlers
 Patch1:         parole-add-uri-scheme-handler-support.patch
 BuildRequires:  appstream-glib
@@ -91,16 +91,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # appstream-util validate-relax --nonet %%{buildroot}%%{_datadir}/metainfo/*.appdata.xml
 
 %files
-%doc AUTHORS NEWS README THANKS TODO
+%doc AUTHORS NEWS THANKS TODO README.md
 %license COPYING
 %{_bindir}/parole
 %{_datadir}/applications/org.xfce.Parole.desktop
-%{_datadir}/icons/hicolor/*/apps/parole*.png
-%{_datadir}/icons/hicolor/*/apps/parole*.svg
-%{_datadir}/icons/hicolor/scalable/apps/parole.svg
-%{_datadir}/metainfo/parole.appdata.xml
+%{_datadir}/icons/hicolor/*
 %{_datadir}/parole/
 %{_libdir}/parole-0/
+%{_datadir}/metainfo/%{name}.appdata.xml
 
 %files lang -f %{name}.lang
 

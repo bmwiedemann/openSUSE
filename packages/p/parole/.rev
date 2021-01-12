@@ -365,4 +365,52 @@
     <comment></comment>
     <requestid>749124</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>f6f8a76a36ee499b77ecaefc5279c2cc</srcmd5>
+    <version>4.16.0</version>
+    <time>1610443766</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.16.0
+  * Add README.md to EXTRA_DIST (gxo#apps/parole#72)
+  * Translation Updates
+- Update to version 4.15.0
+  * Playlist Improvements:
+    - Playlist is now an in-window popover instead of a slide-out panel
+    - Shuffle functionality now utilizes a sort filter instead of randomly
+      selecting the next track, making it possible makeing the playback
+      history more accurate (gxo#apps/parole#32)  
+  * DVD Support:
+    - Added a menu option to activate the subpicture menu
+    - DVD chapter selection from the playlist is functional again
+    - The DVD menu will now automatically load if playback does not start
+      successfully
+  * Dialog Appearance Improvements:
+    Each of the dialogs were ported to CSD with some cleanup and default
+    buttons marked as &quot;suggested&quot;. The following dialogs had some additional
+    improvements:
+    - Go To Position: Timestamp inputs changed to vertical orientation for
+      better clock-like appearance
+    - Keyboard Shortcuts: Adjusted to &quot;always-center&quot; positioning since
+      transient positioning failed
+    - Open File: Spinner configured as the FileChooser &quot;extra&quot; widget
+    - Open Location: Removed some duplicated text
+    - Plugins: Rearranged the plugins manager, and moved credits to a
+      per-plugin About dialog
+    - Save Playlist: File type panel replaced with a combobox that also
+      filters the FileChooser
+  * General:
+    - Added basic GitLab pipeline
+    - Added new icon and icon name &quot;org.xfce.parole&quot;
+    - Added README.md
+    - Fixed distcheck builds with intltool 0.51.0
+    - Fixed full-debug builds with GLib 2.35+
+    - Fixed missing-prototypes errors
+    - Player controls are no longer hidden while the sound popover is open
+    - Selecting an option on the &quot;Stream is taking too long&quot; dialog will now
+      dismiss the dialog
+    - Sort POTFILES.in to make it easier to review
+  * Translation Updates
+</comment>
+    <requestid>862250</requestid>
+  </revision>
 </revisionlist>
