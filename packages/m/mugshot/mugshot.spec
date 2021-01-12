@@ -1,7 +1,7 @@
 #
 # spec file for package mugshot
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mugshot
-Version:        0.4.2
+Version:        0.4.3
 Release:        0
 Summary:        User profile configuration utility
 License:        GPL-3.0-only
@@ -67,7 +67,7 @@ install -dm 0755 %{buildroot}%{_datadir}/locale
 cp -a build/mo/* %{buildroot}%{_datadir}/locale/
 
 # Fix desktop file not found
-install -Dm 0644 build/share/applications/%{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
+install -Dm 0644 build/share/applications/org.bluesabre.Mugshot.desktop %{buildroot}%{_datadir}/applications/org.bluesabre.Mugshot.desktop
 
 %py3_install
 
@@ -96,11 +96,11 @@ popd
 %doc AUTHORS README.md
 %{python3_sitelib}/%{name}*
 %{_datadir}/%{name}
-%{_bindir}/%{name}*
-%{_datadir}/metainfo/%{name}*
-%{_datadir}/applications/%{name}.desktop
+%{_bindir}/%{name}
+%{_datadir}/metainfo/%{name}.appdata.xml
+%{_datadir}/applications/org.bluesabre.Mugshot.desktop
 %{_datadir}/icons/hicolor/**/apps/%{name}.svg
-%{_datadir}/glib-2.0/schemas/apps.mugshot.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.bluesabre.mugshot.gschema.xml
 %{_datadir}/man/man1/mugshot.1.gz
 
 %changelog
