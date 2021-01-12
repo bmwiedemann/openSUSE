@@ -657,10 +657,10 @@ Prefer: -libSDL2_ttf-devel-32bit
 Prefer: -libSDL_Pango-devel-32bit                     
 Prefer: -libSDL_gfx-devel-32bit                       
 Prefer: -libSDL_image-devel-32bit                     
-Prefer: -libSDL_mixer-devel-32bit                     
+Prefer: -libSDL_mixer-devel-32bit -libSDL_mixer-devel-64bit
 Prefer: -libSDL_net-devel-32bit                       
 Prefer: -libSDL_sound-devel-32bit                     
-Prefer: -libSDL_ttf-devel-32bit                       
+Prefer: -libSDL_ttf-devel-32bit   -libSDL_ttf-devel-64bit
 Prefer: -libSDLmm-devel-32bit                         
 Prefer: -libSM-devel-32bit                            
 Prefer: -libX11-devel-32bit                           
