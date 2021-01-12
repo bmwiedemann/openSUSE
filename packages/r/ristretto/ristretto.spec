@@ -16,9 +16,10 @@
 #
 
 
+%bcond_with git
 Name:           ristretto
 Version:        0.10.0
-Release:        0
+Release:        0lib
 Summary:        Image viewer for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
@@ -34,16 +35,19 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xfce4-dev-tools
 BuildRequires:  pkgconfig(cairo)
-BuildRequires:  pkgconfig(exo-1)
+BuildRequires:  pkgconfig(exo-2)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libxfce4ui-2)
 BuildRequires:  pkgconfig(libxfce4util-1.0)
 BuildRequires:  pkgconfig(libxfconf-0)
+%if %{with git}
+BuildRequires:  xfce4-dev-tools
+%endif
 Recommends:     %{name}-lang = %{version}
 
 %description
@@ -60,7 +64,13 @@ desktop wallpaper.
 %autosetup -p1
 
 %build
+%if %{with git}
+NOCONFIGURE=1 ./autogen.sh
+%configure \
+    --enable-maintainer-mode
+%else
 %configure
+%endif
 %make_build
 
 %install

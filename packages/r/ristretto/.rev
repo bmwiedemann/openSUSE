@@ -483,4 +483,12 @@
     <comment>Scripted push of project X11:xfce</comment>
     <requestid>723972</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>7eb9a3f14fe2ce8febb105691876464a</srcmd5>
+    <version>0.10.0</version>
+    <time>1610443698</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to Xfce 4.16</comment>
+    <requestid>860861</requestid>
+  </revision>
 </revisionlist>
