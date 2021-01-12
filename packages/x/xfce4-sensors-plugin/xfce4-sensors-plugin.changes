@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 12 08:19:59 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Added libxfce4ui.patch to  require libxfce4ui-2 for devel package
+  instead of obsolete libxfce4ui-1 
+
+-------------------------------------------------------------------
+Mon Dec 28 16:49:52 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.3.95
+  * make compatible with Xfce 4.16
+  * code cleanup
+  * translation updates
+
+-------------------------------------------------------------------
 Mon Jun  8 11:04:50 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - add -fcommon to CFLAGS as temporary workaround for gcc10 default
