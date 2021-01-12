@@ -1,4 +1,134 @@
 -------------------------------------------------------------------
+Wed Dec 23 16:49:22 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 0.8.0
+  * New application icon which follows rDNS naming
+  * Implement pop-up menu which is currently only used by icons in
+    quicklaunch when right-clicking at them.
+  * The windows in windows view gained support to show also their
+    child windows, e.g. open/save dialogs etc.
+    (gh#gmc-holle/xfdashboard#132)
+  * All windows can now be drag'n'drop from any actor to any other
+    window-related actor. (gh#gmc-holle/xfdashboard#79)
+  * The window tracker and all other related classes are now
+    interfaces to support multiple window systems, like X11, GDK and
+    wayland. (gh#gmc-holle/xfdashboard#129)
+  * Added a fine-grained controllable debug system.
+  * At a theme's layout xml file you can now specify which actor of the
+    focusable ones should be selected on theme load.
+    (gh#gmc-holle/xfdashboard#144)
+  * New actions "selection-move-next", "selection-move-previous",
+    "focus-move-first", "focus-move-last" and "focus-move-to" for use at
+    custom key bindings were added. They are not bound at the default key
+    bindings file installed. (gh#gmc-holle/xfdashboard#144,
+    gh#gmc-holle/xfdashboard#145)
+  * Window tracker interface now supports a new experimental
+    backend for GDK. The backend to use can be controlled with the new
+    environment variable XFDASHBOARD_BACKEND. It can be either set to
+    "x11" or "gdk". (gh#gmc-holle/xfdashboard#129)
+  * Allow user to override CSS files of themes to apply user favourite
+    settings. (gh#gmc-holle/xfdashboard#152)
+  * Include new translations (gh#gmc-holle/xfdashboard#155)
+  * GDK backend is now optional and it will be enabled automatically
+    if Clutter backend is available, i.e. FreeBSD does
+    not install Clutter with GDK backend. (bxo#13766, bxo#13860)
+  * Support also current xfconf versions (4.13.x). (bxo#13824)
+  * Support for touch screen which supports "clicking" buttons
+    (gh#gmc-holle/xfdashboard#157)
+  * Support of application actions defines at desktop entries which
+    get listed in the pop-up menus of application buttons.
+    (gh#gmc-holle/xfdashboard#158, gh#gmc-holle/xfdashboard#160)
+  * Support of "Keywords" of desktop entries which are taken into
+    account when searching (gh#gmc-holle/xfdashboard#159)
+  * Support for animations. Currently only one actor trigger
+    an animation signal to open or close the collapsed area.
+  * The user can turn on or off animations in the settings application.
+  * Support of more animations. So an actor can request an animation
+    when a class or pseudo-class is added or was removed.
+  * Support of animation if an actor is destroyed. It will be marked
+    as destroyed by adding a CSS pseudo class "destroying".
+    The actor will be destroyed finally when animation ends.
+  * Introduced a new signal 'actor-created' emitted at stage where a
+    newly created actor was placed on. Plugins can connect to this
+    signal to detect new actors they are interested in and to modify
+    them.
+  * Introduced a new signal "initialized" in XfdashboardApplication
+    which is emitted when primary instance is fully initialized, that
+    means all managers and the stage were set up successfully.
+  * New plugin 'middle-click-window-close' which allows the user
+    to close windows in windows view with a middle click. This plugin
+    is not configurable. (gh#gmc-holle/xfdashboard#128)
+  * Added dummy example search provider plugin. It's main purpose is
+    to provide a skeleton for creating new search provider plugins.
+  * Changed loading key bindings to one-or-nothing to incremental
+    loading. (gh#gmc-holle/xfdashboard#167)
+  * Added '--version' command-line parameter to determine the version
+    of xfdashboard running.
+  * Followed main Xfce project by switching to "foreign" mode at automake
+  * Added blue theme screenshot. (gh#gmc-holle/xfdashboard#152)
+  * The plugin 'hot corner' support also additional monitors and not
+    primary monitor only. This option is configurable by user.
+  * Use xfce library function instead of implementing own version
+  * Enviroment varible XFDASHBOARD_PLUGINS_PATH supports now
+    more than one additional path with a colon-seperated list
+  * Improved loading performance of images and icons at
+    XfdashboardImageContent as it will only start loading when the actor
+    using this icon or image is mapped.
+  * Improved CSS parser to determine recursion at theme CSS file
+    which causes the application to crash due to run out of memory
+    (gh#gmc-holle/xfdashboard#143)
+  * Rewrote XfdashboardButton by splitting it into a XfdashboardLabel
+    class and make XfdashboardButton a sub-class of it.
+    XfdashboardLabel is exactly the same what XfdashboardButton was but
+    it does not emit the "click" signal.
+  * Split XfdashboardLiveWindow into two classes.
+    XfdashboardLiveWindowSimple just shows a live preview of a window
+    when possible and XfdashboardLiveWindow is a sub-class of it but
+    adds a title and controls layer (close button) on top of it.
+  * Remove themable property 'show-window-content' from
+    XfdashboardLiveWorkspace.
+  * The CSS class "primary-monitor" will be added to or removed from
+    XfdashboardStageInterface depending on the primary state of
+    associated monitor.
+  * Made XfdashboardDynamicTableLayout stylable and added a new
+    stylable property named "fixed-columns" to disable dynamic
+    allocation of columns depending on largest width of a visible
+    child found and enforce a fixed number of columns.
+    (gh#gmc-holle/xfdashboard#168)
+  * Properties 'margin-top', 'margin-bottom', 'margin-left'
+    and 'margin-right' of ClutterActor are now themable.
+  * Allow windows view to filter windows which are at current workspace
+    via a new themable property called 'filter-workspace-windows'.
+    (gh#gmc-holle/xfdashboard#126)
+  * Replace URLs from goodies.xfce.org to docs.xfce.org (bxo#16229)
+  * Lots of larger and smaller bug-fixes
+  * Lots of new API documentation
+  * Translation updates
+
+-------------------------------------------------------------------
+Wed Nov 18 18:57:27 UTC 2020 - Marcel <marcel@localhost>
+
+- Update to 0.7.90
+  * New feature: Support of animation if an actor is destroyed.
+    It will be marked as destroyed by adding a CSS pseudo class 
+    "destroying". The actor will be destroyed finally when
+    animation ends.
+  * The allocation animation will not be applied when actor is
+    created. This behaviour has changed. If an actor should do an
+    allocation animation also at the first time shown (created) the
+    properties for x/y coordinates and/or width, height must be
+    specified at "created" animation
+  * New application icon which follows rDNS naming
+  * Updated README.md for consistency
+  * Use xfce library function instead of implementing own version
+  * [plugin] Hot corner: Support also additional monitors and not
+    primary monitor only. This option is configurable by user.
+  * Enviroment varible XFDASHBOARD_PLUGINS_PATH supports now more
+    than one additional path with a colon-seperated list
+  * Reduced number of translatable string drastically
+  * Translation updates
+
+-------------------------------------------------------------------
 Tue Oct 27 20:48:49 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 0.7.8

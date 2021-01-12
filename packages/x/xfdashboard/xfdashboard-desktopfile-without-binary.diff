@@ -10,7 +10,7 @@ index 16b40aa..40db7f3 100644
 -Exec=@bindir@/xfdashboard -d
 +TryExec=xfdashboard
 +Exec=xfdashboard -d
- Icon=xfdashboard
+ Icon=org.xfce.xfdashboard
  NotShowIn=GNOME;KDE;Unity;
  Terminal=false
 diff --git a/data/xfdashboard-settings.desktop.in.in b/data/xfdashboard-settings.desktop.in.in
@@ -25,7 +25,7 @@ index 24f0ab8..9406a99 100644
 -Exec=@bindir@/xfdashboard-settings
 +TryExec=xfdashboard-settings
 +Exec=xfdashboard-settings
- Icon=xfdashboard
+ Icon=org.xfce.xfdashboard
  Categories=XFCE;GTK;Settings;DesktopSettings;X-XFCE-SettingsDialog;X-XFCE-PersonalSettings;
  NotShowIn=GNOME;KDE;Unity;
 diff --git a/data/xfdashboard.desktop.in.in b/data/xfdashboard.desktop.in.in
@@ -40,6 +40,6 @@ index 577ecf3..a31f4e7 100644
 -Exec=@bindir@/xfdashboard
 +TryExec=xfdashboard
 +Exec=xfdashboard
- Icon=xfdashboard
+ Icon=org.xfce.xfdashboard
  Categories=System;Applet;
  NotShowIn=GNOME;KDE;Unity;

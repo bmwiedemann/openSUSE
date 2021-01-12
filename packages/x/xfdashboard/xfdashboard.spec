@@ -17,15 +17,14 @@
 
 
 %define so_ver 0
-
 Name:           xfdashboard
-Version:        0.7.8
+Version:        0.8.0
 Release:        0
 Summary:        GNOME shell like dashboard for Xfce
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/apps/xfdashboard/start
-Source0:        https://archive.xfce.org/src/apps/%{name}/0.7/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/apps/%{name}/0.8/%{name}-%{version}.tar.bz2
 Source8:        xfdashboard.1
 Source9:        xfdashboard-settings.1
 
@@ -41,13 +40,13 @@ Patch2:         xfdashboard-desktopfile-without-binary.diff
 BuildRequires:  clutter-devel
 BuildRequires:  fdupes
 BuildRequires:  libtool
-BuildRequires:  libxfce4util-devel >= 4.12.0
+BuildRequires:  libxfce4util-devel >= 4.14.0
 BuildRequires:  xfce4-dev-tools
 BuildRequires:  pkgconfig(garcon-1)
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libwnck-3.0)
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.14.0
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.14.0
 BuildRequires:  pkgconfig(libxfconf-0)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xdamage)
@@ -122,7 +121,7 @@ gzip -c9 %{SOURCE9} | tee -a %{buildroot}%{_mandir}/man1/%{name}-settings.1.gz
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/applications/%{name}-settings.desktop
 %{_sysconfdir}/xdg/autostart/%{name}-autostart.desktop
-%{_datadir}/icons/hicolor/*/*/%{name}.png
+%{_datadir}/icons/hicolor/*/apps/org.xfce.xfdashboard.*
 %{_datadir}/themes/%{name}
 %{_libdir}/%{name}
 
