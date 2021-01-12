@@ -1,0 +1,38 @@
+From 15dcfb2da17357631382bf75e50833db57d69ee3 Mon Sep 17 00:00:00 2001
+From: tux93 <tux93@opensuse.org>
+Date: Wed, 18 Nov 2020 14:37:22 +0100
+Subject: [PATCH] Force disable Zeitgeist support
+
+This wrongly generated a dependency on typelib(Zeitgeist) we cannot
+fulfill since it was removed from Tumbleweed
+---
+ catfish/CatfishSearchEngine.py | 13 +------------
+ 1 file changed, 1 insertion(+), 12 deletions(-)
+
+diff --git a/catfish/CatfishSearchEngine.py b/catfish/CatfishSearchEngine.py
+index 29e2958..f877063 100644
+--- a/catfish/CatfishSearchEngine.py
++++ b/catfish/CatfishSearchEngine.py
+@@ -36,18 +36,7 @@ import gi
+ gi.require_version('GLib', '2.0')  # noqa
+ from gi.repository import GLib
+ 
+-try:
+-    gi.require_version('Zeitgeist', '2.0')
+-    from gi.repository import Zeitgeist
+-    log_trial = Zeitgeist.Log.get_default()
+-    if log_trial.datapath() is None:
+-        ZEITGEIST_SUPPORT = False
+-    else:
+-        ZEITGEIST_SUPPORT = True
+-except ImportError:
+-    ZEITGEIST_SUPPORT = False
+-except ValueError:
+-    ZEITGEIST_SUPPORT = False
++ZEITGEIST_SUPPORT = False
+ 
+ LOGGER = logging.getLogger('catfish_search')
+ ENGINE_COUNT = 0
+-- 
+2.29.2
+

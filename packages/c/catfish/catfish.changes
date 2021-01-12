@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Fri Jan  8 13:46:46 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.16.0
+  * Fulltext now searches files with UTF-7, UTF-8, UTF-16 BE/LE,
+    and UTF-32 BE/LE encodings
+  * Replace Gtk/Gdk/GLib deprecated code (gxo#apps/catfish#6)
+  * Use "match all" method for fulltext search (gxo#apps/catfish#30)
+  * Translation Updates
+
+-------------------------------------------------------------------
+Wed Nov 18 13:51:55 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- add 0001-Force-disable-Zeitgeist-support.patch
+  * avoid automatically generated typelib(Zeitgeist) dependency
+    we can not provide (gxo#apps/catfish#39)
+
+-------------------------------------------------------------------
+Tue Oct 27 21:26:13 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.15.0
+  * Added Ctrl+H shortcut to show/hide hidden files
+    (gxo#apps/catfish#16)
+  * Added "Today" and "Month" filters to the sidebar
+    (gxo#apps/catfish#23)
+  * Fulltext searches now include more text files
+    (gxo#apps/catfish#7)
+  * New app icon, now using an rDNS icon name (org.xfce.catfish)
+  * Migrated ChangeLog to NEWS to better match Xfce projects
+  * Renamed README to README.md and updated to match Xfce projects
+  * Updated INSTALL to reference python3-specific packages
+    (gxo#apps/catfish#36)
+  * Various in-app icon updates (gxo#apps/catfish#15,
+    gxo#apps/catfish#17, gxo#apps/catfish#26)
+  * Added additional padding to Other and Custom gear icons
+    (gxo#apps/catfish#20)
+  * Check if zeitgeist daemon is running at startup
+    (gxo#apps/catfish#34)
+  * Correctly position custom filter popups above gear icon
+    (gxo#apps/catfish#18)
+  * Default to the current date in the custom date filters
+    (gxo#apps/catfish#24)
+  * Fix 'list' object has no attribute 'lower' (gxo#apps/catfish#9)
+  * Fix fulltext freeze with special files (gxo#apps/catfish#32)
+  * Fix python crash when some extension scheme is used
+    (gxo#apps/catfish#35)
+  * Fix statusbar moving on mouseover
+  * Move custom file extension hint to tooltip (gxo#apps/catfish#25)
+  * Sidebar entries no longer move when losing focus
+    (gxo#apps/catfish#22)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Feb 14 05:38:44 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed dependency conditional for Leap 15.2 build

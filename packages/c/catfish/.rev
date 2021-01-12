@@ -201,4 +201,41 @@
     <comment></comment>
     <requestid>774310</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6992a319fd521814a754d74a62a2732b</srcmd5>
+    <version>4.16.0</version>
+    <time>1610443763</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.16.0
+  * Fulltext now searches files with UTF-7, UTF-8, UTF-16 BE/LE,
+    and UTF-32 BE/LE encodings
+  * Replace Gtk/Gdk/GLib deprecated code (gxo#apps/catfish#6)
+  * Use &quot;match all&quot; method for fulltext search (gxo#apps/catfish#30)
+  * Translation Updates
+
+- add 0001-Force-disable-Zeitgeist-support.patch
+  * avoid automatically generated typelib(Zeitgeist) dependency
+    we can not provide (gxo#apps/catfish#39)
+
+- Update to version 4.15.0
+  * Added Ctrl+H shortcut to show/hide hidden files
+    (gxo#apps/catfish#16)
+  * Added &quot;Today&quot; and &quot;Month&quot; filters to the sidebar
+    (gxo#apps/catfish#23)
+  * Fulltext searches now include more text files
+    (gxo#apps/catfish#7)
+  * New app icon, now using an rDNS icon name (org.xfce.catfish)
+  * Migrated ChangeLog to NEWS to better match Xfce projects
+  * Renamed README to README.md and updated to match Xfce projects
+  * Updated INSTALL to reference python3-specific packages
+    (gxo#apps/catfish#36)
+  * Various in-app icon updates (gxo#apps/catfish#15,
+    gxo#apps/catfish#17, gxo#apps/catfish#26)
+  * Added additional padding to Other and Custom gear icons
+    (gxo#apps/catfish#20)
+  * Check if zeitgeist daemon is running at startup
+    (gxo#apps/catfish#34)
+  * Correctly position custom filter popups above gear icon</comment>
+    <requestid>861989</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package catfish
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,17 @@
 
 
 %bcond_with git
-%define series 1.4
+%define series 4.16
 Name:           catfish
-Version:        1.4.13
+Version:        4.16.0
 Release:        0
 Summary:        Versatile File Searching Tool
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
 URL:            https://docs.xfce.org/apps/catfish/start
 Source:         https://archive.xfce.org/src/apps/%{name}/%{series}/%{name}-%{version}.tar.bz2
+# PATCH-FIX-OPENSUSE: Force-disable Zeitgeist
+Patch0:         0001-Force-disable-Zeitgeist-support.patch
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -40,12 +42,11 @@ BuildRequires:  update-desktop-files
 # Needed for typelib() - Requires.
 BuildRequires:  gobject-introspection
 # Checking module dependencies...
-BuildRequires:  gtk3-devel >= 3.16
+BuildRequires:  gtk3-devel >= 3.22
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
 BuildRequires:  python3-pexpect
 BuildRequires:  python3-xml
-# BuildRequires:  zeitgeist
 # ...OK
 Requires:       findutils-locate
 Requires:       gdk-pixbuf-loader-rsvg
@@ -57,7 +58,6 @@ Requires:       python3-gobject-cairo
 Requires:       python3-pexpect
 Requires:       python3-xml
 Requires:       sudo
-Suggests:       zeitgeist
 Recommends:     %{name}-lang
 BuildArch:      noarch
 
@@ -69,7 +69,7 @@ zeitgeist.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 python3 ./setup.py build -g
@@ -88,10 +88,6 @@ done
 %py3_compile -O .%{python3_sitelib}
 popd
 sed -i "s/\(Exec=\).*/\1%{name}/" %{buildroot}%{_datadir}/applications/org.xfce.Catfish.desktop
-for i in 16 24 32 48; do
-    install -dm 0755 %{buildroot}%{_datadir}/icons/hicolor/$i\x$i/apps
-    rsvg-convert -h $i -w $i data/media/catfish.svg -o %{buildroot}%{_datadir}/icons/hicolor/$i\x$i/apps/%{name}.png
-done
 
 %suse_update_desktop_file -r org.xfce.Catfish GNOME Utility Filesystem
 
@@ -103,12 +99,12 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog README
+%doc AUTHORS README.md
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 %{_datadir}/metainfo/%{name}.appdata.xml
 %{_datadir}/applications/org.xfce.Catfish.desktop
-%{_datadir}/icons/hicolor/*/apps/%{name}.??g
+%{_datadir}/icons/hicolor/*/apps/org.xfce.catfish.*
 %{python3_sitelib}/%{name}
 %{python3_sitelib}/%{name}_lib
 %{python3_sitelib}/%{name}-%{version}-py%{py3_ver}.egg-info
