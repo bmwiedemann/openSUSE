@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec 25 20:15:01 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.6.2
+  * Fix build with panel 4.15
+  * Fix ISO C90 forbids mixed declarations and code
+  * Update configure.ac.in syntax and enable debug when building from git
+  * Create README.md. Update configure.ac.in
+  * Add basic GitLab pipeline
+  * Update .gitignore, fix configure scripts
+  * Update URLs from goodies.x.o to docs.x.o (bxo#16181)
+  * Make build less verbose
+  * s/http/https
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Aug 16 12:06:49 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed sources and url in spec file

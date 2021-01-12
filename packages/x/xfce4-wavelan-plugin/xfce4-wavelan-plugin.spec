@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-wavelan-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 %bcond_with git
-%define panel_version 4.12.0
+%define panel_version 4.14.0
 %define plugin wavelan
 Name:           xfce4-%{plugin}-plugin
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        WLAN Monitoring Plugin for the Xfce Panel
 License:        BSD-2-Clause
 Group:          System/GUI/XFCE
-URL:            https://goodies.xfce.org/projects/panel-plugins/xfce4-wavelan-plugin
+URL:            https://docs.xfce.org/panel-plugins/xfce4-wavelan-plugin
 Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/0.6/%{name}-%{version}.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  intltool
@@ -85,7 +85,7 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %fdupes %{buildroot}%{_datadir}
 
 %files
-%doc AUTHORS NEWS README THANKS
+%doc AUTHORS NEWS README.md THANKS
 %license COPYING
 %{_libdir}/xfce4/panel/plugins/libwavelan.so
 %{_datadir}/xfce4/panel/plugins/wavelan.desktop
