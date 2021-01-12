@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-verve-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
-%define panel_version 4.12.0
+%define panel_version 4.14.0
 %define plugin verve
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        2.0.0
-Release:        100
+Version:        2.0.1
+Release:        0
 Summary:        Command Line Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
-URL:            https://goodies.xfce.org/projects/panel-plugins/xfce4-verve-plugin
+URL:            https://docs.xfce.org/panel-plugins/xfce4-verve-plugin
 Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/2.0/%{name}-%{version}.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  intltool
@@ -34,7 +34,7 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= %{panel_version}
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif
@@ -90,7 +90,7 @@ rm -f %{buildroot}%{_libdir}/xfce4/panel/plugins/libverve.la
 %fdupes %{buildroot}%{_datadir}
 
 %files
-%doc AUTHORS NEWS README THANKS
+%doc AUTHORS NEWS README.md THANKS
 %license COPYING
 %{_datadir}/xfce4/panel/plugins/xfce4-verve-plugin.desktop
 %{_libdir}/xfce4/panel/plugins/libverve.so
