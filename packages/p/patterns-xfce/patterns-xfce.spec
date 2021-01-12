@@ -65,8 +65,8 @@ Recommends:     parole
 
 # Third-party applications
 Recommends:     blueberry
-Recommends:     engrampa
-Recommends:     mate-calc
+Recommends:     file-roller
+Recommends:     gnome-calculator
 Recommends:     gnome-disk-utility
 Recommends:     gucharmap
 Recommends:     lightdm
@@ -85,7 +85,7 @@ Recommends:     seahorse
 Recommends:     shotwell
 Recommends:     simple-scan
 Recommends:     transmission-gtk
-Recommends:     xreader
+Recommends:     evince
 # Additional applications
 # ease debugging
 #

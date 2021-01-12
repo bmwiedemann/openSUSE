@@ -95,4 +95,12 @@
     <comment></comment>
     <requestid>734398</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>3a32adc9e5828eafba9b6c92e756a906</srcmd5>
+    <version>20190809</version>
+    <time>1610443697</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to Xfce 4.16</comment>
+    <requestid>860860</requestid>
+  </revision>
 </revisionlist>
