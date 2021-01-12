@@ -983,4 +983,13 @@
   to break the dependency on the Rescue CD. (forwarded request 851319 from favogt)</comment>
     <requestid>851350</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>13f8e0170d1462effc012c55d26fdc66</srcmd5>
+    <version>4.16.0+git6.add0468</version>
+    <time>1610443768</time>
+    <user>dimstar_suse</user>
+    <comment>Update to Xfce 4.16
+- removed libxfce4ui-1-0 dependency</comment>
+    <requestid>862527</requestid>
+  </revision>
 </revisionlist>
