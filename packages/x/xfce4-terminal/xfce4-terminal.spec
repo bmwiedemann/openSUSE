@@ -19,7 +19,7 @@
 
 %bcond_with git
 Name:           xfce4-terminal
-Version:        0.8.9.2
+Version:        0.8.10
 Release:        0
 Summary:        Terminal Emulator for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
@@ -34,8 +34,8 @@ BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.8
 BuildRequires:  pkgconfig(libpcre2-8)
-BuildRequires:  pkgconfig(libxfce4ui-2)
-BuildRequires:  pkgconfig(libxfconf-0)
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.14
+BuildRequires:  pkgconfig(libxfconf-0) >= 4.14
 BuildRequires:  pkgconfig(vte-2.91)
 Recommends:     %{name}-lang
 
@@ -93,11 +93,12 @@ desktop-file-edit %{buildroot}%{_datadir}/applications/%{name}-settings.desktop 
 %find_lang %{name} --with-man %{?no_lang_C}
 
 %files
-%doc AUTHORS HACKING NEWS README THANKS
+%doc AUTHORS HACKING NEWS README.md THANKS
 %license COPYING
 %{_bindir}/xfce4-terminal
 %dir %{_datadir}/xfce4
 %{_datadir}/xfce4/terminal
+%{_datadir}/icons/hicolor/*/apps/org.xfce.terminal*
 %{_datadir}/applications/xfce4-terminal.desktop
 %{_datadir}/applications/xfce4-terminal-settings.desktop
 %dir %{_datadir}/gnome-control-center
