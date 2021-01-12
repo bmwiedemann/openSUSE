@@ -1,4 +1,162 @@
 -------------------------------------------------------------------
+Wed Dec 23 01:17:53 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to 4.16.0
+  - panel: Fix intellihide with CSD (Fixes gxo#xfce/xfce4-panel#368)
+  - tasklist: Fix wireframe for CSD windows (Fixes gxo#xfce/xfce4-panel#338)
+  - tasklist: Auto-adjust icon size (Closes gxo#xfce/xfce4-panel#90)
+  - Revert "tasklist: Auto-adjust icon size (Closes gxo#xfce/xfce4-panel#90)"
+  - Fix GSourceFunc removal
+  - Remove GSourceFunc casts
+  - Remove GLIB_CHECK_VERSION IFDEFs which are obsolete after glib bump 
+
+-------------------------------------------------------------------
+Mon Dec 14 09:44:56 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 4.15.6
+  * settings: Use spinbuttons for size and nrows
+  * settings: Update item listview toolbar
+  * Make dbusmenu-gtk3-0.4 optional, disables StatusNotifier integration
+  * gobject introspection wants a capital letter for the gir file
+  * Use new xfce_spawn API
+  * Bump GLib (and gio, gthread, etc) minimum to 2.50.0
+  * Update .gitignore
+  * Add README.md to EXTRA_DIST
+  * Fix compiler warnings
+  * Fix memory leaks
+  * Drop generated code from repo
+  * Revert "launcher: Appear "checked" on click
+    (gxo#xfce/xfce4-panel#256)"
+  * Translation Updates
+- Rename typelib subpackage to match gir name
+- Fix files listed twice warning
+
+-------------------------------------------------------------------
+Fri Nov 20 15:14:55 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- We need to make sure xfce4-statusnotifier-plugin-lang is also
+  removed or it creates dependency conflicts.
+
+-------------------------------------------------------------------
+Wed Nov 11 16:50:36 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- xfce4-statusnotifier-plugin is now obsolete because directly
+  integrated into xfce4-panel.
+
+-------------------------------------------------------------------
+Tue Nov  3 19:08:46 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 4.15.5
+  * actions: Switch to new session icons (gxo#xfce/xfce4-panel#332)
+  * add-items: Drop not-so-helpful dialog subtitle
+  * add-items: Bump default dialog size (gxo#xfce/xfce4-panel#258)
+  * launcher: Appear "checked" on click (gxo#xfce/xfce4-panel#256)
+  * tasklist: Limit blinking notification
+  * intellihide: Check if cursor is over the panel
+    (gxo#xfce/xfce4-panel#311)
+  * launcher: Set plugin icon as fallback (gxo#xfce/xfce4-panel#329)
+  * Add new README.md
+  * Fixed icon for about dialog and added more icons for better scaling
+  * Unref datetime objects
+  * Translation Updates
+
+-------------------------------------------------------------------
+Fri Aug 28 21:06:15 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 4.15.4
+  * New plugin: statustray (supports statusnotifier and systray)
+  * plugins: Add new rDNS icons for all plugins
+  * Use shared field codes expansion
+  * tasklist: Add "Launch New Instance" item to menu
+    (gxo#xfce/xfce4-panel#158)
+  * Add new app icon and rDNS icon name
+  * Fix background of 48px app icons (bxo#16873)
+  * dark-mode: Make property unique across panels
+  * tasklist: Allow keyboard navigation within groups
+    (gxo#xfce/xfce4-panel#270)
+  * applicationsmenu: Correctly block autohiding
+    (gxo#xfce/xfce4-panel#287)
+  * action buttons: Fix combobox signal
+  * action buttons: Drop 'inverted buttons' setting (#223)
+  * action buttons: Add button title options (bxo#8980)
+  * action buttons: Fix separator width (bxo#15558)
+  * launcher: Fix launcher menu button state
+    (gxo#xfce/xfce4-panel#264)
+  * launcher: Fix crash with actions menu (bxo#16823)
+  * launcher: Fix in default panel configuration
+  * Improve docs for xfce_panel_plugin_position_widget (bxo#9438)
+  * Add Gio to libxfce4panel gir includes
+  * Fix panel build with vala 0.48 (bxo#16426)
+  * Update gitignore (gxo#xfce/xfce4-panel#295)
+  * Drop references to Gtk2 and 4.6 panel plugins
+  * panel: Improve autohide animation
+  * panel: Add "popdown-speed" property to adjust autohide animation
+  * panel: Fix autohide state machine
+  * panel: Fix cancellation of autohide animation
+  * panel: Immediately show panel in intellihide
+  * panel: Don't tamper with leave_opacity value (bxo#16296)
+  * launcher: Show desktop actions in context menu
+  * plugin: Show custom menu items below plugin name
+  * tasklist: Hide brackets for min windows by default
+  * tasklist: Fix crash middle-click-closing grouped windows
+    (bxo#16410)
+  * systray: Basic support for symbolic icons
+  * systray: Silence deprecation warnings
+  * systray: Remove superfluous warning
+  * Improve wording in "Remove plugin" dialog (bxo#9000)
+  * settings: Add keywords for discoverability (bxo#10694)
+  * Fix GTimeVal deprecation (bxo#16643)
+  * Fix memory leak in panel plugin wrapper (bxo#16640)
+  * Update docstring
+  * Update libxfce4panel symbols
+  * Make var names more consistent
+  * Enable dark-mode by default
+  * tic-tac-toe: Fix XfceTitledDialog with CSD
+  * add-item dialog: Fix XfceTitledDialog with CSD
+  * systray: Improve app icon lookup
+  * directorymenu: Add create folder/document menuitems (bxo#15639)
+  * directorymenu: Add option to hide folder/terminal menuitems
+    (bxo#15630)
+  * plugins: Fix enter/leave opacity w/o compositing (bxo#14577)
+  * clock: Drop leading zeros for days in default layout
+  * clock: Add back hour:min to format presets (bxo#16035)
+  * panel: Make sure "span monitors" is conditionally sensitive
+  * tasklist: Fix drag&drop in deskbar mode (bxo#16298)
+  * Fix autohide with bg color or image (bxo#16064)
+  * Improve the marching ants animation
+  * Remove extra underscore (bxo#16266)
+  * Use an empty placeholder icon for launcher (bxo#15819)
+  * Always provide files for vala binding in dist tarball
+  * Replace GtkStock icon
+  * Use symbolic window-close button image
+  * Drop support for Gtk2 and 4.6 plugins
+  * Drop Gtk2/4.6-only references from the docs
+  * Don't show or try to load Gtk2 plugins anymore
+  * Add dark mode preference
+  * autohide: Add sliding out animation
+  * Draw panel border based on position and length
+  * appmenu: Listen to icon theme changes (bxo#15861)
+  * appmenu: Use panel's icon size
+  * clock: Validate timezone entry (bxo#16036)
+  * prefs: Plug memory leaks (bxo#16016)
+  * docs: Fix build by dropping unused refs (bxo#16031)
+  * pager: Fix scrolling in pager-buttons (bxo#15614)
+  * pager: Face-lift of settings dialog
+  * pager: Only show scroll-option with buttons
+  * pager: Add option to show workspace number
+  * systray: Drop "Show frame" option (bxo#14186)
+  * tasklist: Resize when windows get removed (bxo#14394)
+  * systray: Fix icons without compositing (bxo#14577)
+  * windowlist: Make layout consistent with xfdesktop
+  * windowlist: Replace deprecated gtk_widget_modify_font
+  * launcher: Fix visual state of arrow-button (bxo#15818)
+  * launcher: Avoid excessive left padding on popup menu
+    (bxo#15819)
+  * Fix typos and improve code formatting
+  * Translation Updates
+- Remove systray-symbolic-icons.patch
+
+-------------------------------------------------------------------
 Wed Apr 29 09:02:26 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 4.14.4

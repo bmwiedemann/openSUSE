@@ -17,22 +17,19 @@
 
 
 %bcond_with git
-%define libname_gtk2 libxfce4panel-1_0-4
 %define libname_gtk3 libxfce4panel-2_0-4
 
 Name:           xfce4-panel
-Version:        4.14.4
+Version:        4.16.0
 Release:        0
 Summary:        Panel for the Xfce Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/xfce/xfce4-panel/start
-Source0:        https://archive.xfce.org/src/xfce/%{name}/4.14/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/xfce/%{name}/4.16/%{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
 Source2:        %{name}-restore-defaults
 Source3:        %{name}-restore-defaults.desktop
-# PATCH-FIX-UPSTREAM systray-symbolic-icons.patch maurizio.galli@gmail.com -- Backport to enable symbolic icons in systray
-Patch0:         systray-symbolic-icons.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  ed
 BuildRequires:  fdupes
@@ -44,6 +41,7 @@ BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
+BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4) >= 16.04.0
 BuildRequires:  pkgconfig(exo-2)
 BuildRequires:  pkgconfig(garcon-1)
 BuildRequires:  pkgconfig(garcon-gtk3-1)
@@ -52,12 +50,11 @@ BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libwnck-3.0)
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.13.0
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.13.0
-BuildRequires:  pkgconfig(libxfconf-0) >= 4.13.2
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.15
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.15
+BuildRequires:  pkgconfig(libxfconf-0) >= 4.15
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(vapigen)
 BuildRequires:  pkgconfig(x11)
@@ -69,12 +66,12 @@ Provides:       xfce4-panel-doc = %{version}
 Obsoletes:      xfce4-panel-doc <= 4.12.0
 Provides:       xfce4-panel-plugins = %{version}
 Obsoletes:      xfce4-panel-plugins < %{version}
+Provides:       xfce4-statusnotifier-plugin = %{version}
+Obsoletes:      xfce4-statusnotifier-plugin <= 0.2.2
+Provides:       xfce4-statusnotifier-plugin-lang = %{version}
+Obsoletes:      xfce4-statusnotifier-plugin-lang <= 0.2.2
 Recommends:     %{name}-lang = %{version}
 Requires:       %{name}-branding = %{version}
-# menu data
-Requires:       libgarcon-data
-# uses exo-open
-Requires:       exo-tools
 Recommends:     %{name}-restore-defaults
 
 %description
@@ -90,13 +87,13 @@ Requires:       %{name} = %{version}
 The xfce4-panel-devel package contains development files needed to to develop
 panel plugins.
 
-%package -n %{libname_gtk2}
+%package -n typelib-1_0-Libxfce4panel-2_0
 Summary:        Xfce Panel Shared Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
 
-%description -n %{libname_gtk2}
-This package contains GTK 2 variant of the xfce4-panel shared library.
+%description -n typelib-1_0-Libxfce4panel-2_0
+GObject introspection bindings for Xfce Panel
 
 %package -n %{libname_gtk3}
 Summary:        Xfce Panel Shared Library
@@ -140,13 +137,11 @@ NOCONFIGURE=1 ./autogen.sh
 %configure \
     --enable-maintainer-mode \
     --with-helper-path-prefix=%{_libexecdir} \
-    --enable-gtk2 \
     --enable-vala=yes \
     --disable-static
 %else
 %configure \
     --with-helper-path-prefix=%{_libexecdir} \
-    --enable-gtk2 \
     --enable-vala=yes \
     --disable-static
 %endif
@@ -157,18 +152,14 @@ NOCONFIGURE=1 ./autogen.sh
 
 install -m0755 %{SOURCE2} %{buildroot}/%{_bindir}/%{name}-restore-defaults
 
-desktop-file-install                                    \
---dir=%{buildroot}%{_datadir}/applications         \
-%{SOURCE3}
+desktop-file-install --dir=%{buildroot}%{_datadir}/applications %{SOURCE3}
 
 rm -f %{buildroot}%{_libdir}/*.la \
     %{buildroot}%{_libdir}/xfce4/panel/plugins/*.la \
     %{buildroot}%{_datadir}/xfce4/xfce4-panel/README.gtkrc-2.0
 
 mkdir -p %{buildroot}%{_datadir}/xfce4/panel-plugins
-mkdir -p %{buildroot}%{_libdir}/xfce4
 mkdir -p %{buildroot}%{_libdir}/xfce4/panel-plugins
-mkdir -p %{buildroot}%{_libexecdir}/xfce4
 mkdir -p %{buildroot}%{_libexecdir}/xfce4/panel-plugins
 
 %suse_update_desktop_file panel-desktop-handler
@@ -180,42 +171,35 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 
 %fdupes %{buildroot}%{_includedir}
 
-%post -n %{libname_gtk2} -p /sbin/ldconfig
-
-%postun -n %{libname_gtk2} -p /sbin/ldconfig
-
 %post -n %{libname_gtk3} -p /sbin/ldconfig
-
 %postun -n %{libname_gtk3} -p /sbin/ldconfig
 
 %files
+%if %{with git}
+%doc AUTHORS NEWS docs/README.gtkrc-2.0
+%else
 %doc AUTHORS ChangeLog NEWS docs/README.gtkrc-2.0
-%{!?with_git:%doc AUTHORS NEWS docs/README.gtkrc-2.0}
+%endif
 %license COPYING COPYING.LIB
 %{_bindir}/xfce4-panel
 %{_bindir}/xfce4-popup-applicationsmenu
 %{_bindir}/xfce4-popup-directorymenu
 %{_bindir}/xfce4-popup-windowmenu
-%dir %{_libexecdir}/xfce4
 %dir %{_libexecdir}/xfce4/panel
 %{_libexecdir}/xfce4/panel/migrate
-%{_libexecdir}/xfce4/panel/wrapper-1.0
 %{_libexecdir}/xfce4/panel/wrapper-2.0
-%dir %{_datadir}/xfce4
 %dir %{_datadir}/xfce4/panel-plugins
 %{_datadir}/xfce4/panel/
-%{_datadir}/icons/hicolor/*/apps/xfce4-panel*
 %{_datadir}/applications/panel-*.desktop
+%{_datadir}/icons/hicolor/*/apps/org.xfce.panel*
 %dir %{_libexecdir}/xfce4/panel-plugins
-%{_libdir}/girepository-1.0/libxfce4panel-2.0.typelib
 %{_libdir}/xfce4/panel/
 %dir %{_sysconfdir}/xdg/xfce4/panel
 
 %files lang -f %{name}.lang
 
-%files -n %{libname_gtk2}
-%license COPYING
-%{_libdir}/libxfce4panel-1.0.so.*
+%files -n typelib-1_0-Libxfce4panel-2_0
+%{_libdir}/girepository-1.0/Libxfce4panel-2.0.typelib
 
 %files -n %{libname_gtk3}
 %license COPYING
@@ -227,7 +211,7 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %{_libdir}/pkgconfig/libxfce4panel-*.pc
 %{_datadir}/gtk-doc/html/libxfce4panel-*
 %{_datadir}/vala/vapi/libxfce4panel-2.0.*
-%{_datadir}/gir-1.0/libxfce4panel-2.0.gir
+%{_datadir}/gir-1.0/Libxfce4panel-2.0.gir
 
 %files branding-upstream
 %config %{_sysconfdir}/xdg/xfce4/panel/default.xml
