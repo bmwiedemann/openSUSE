@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-mount-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,22 @@
 #
 
 
-%define panel_version 4.12.0
+%define panel_version 4.14.0
 %define plugin mount
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.1.3
-Release:        100
+Version:        1.1.5
+Release:        0
 Summary:        Filesystem Mounting Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
-URL:            http://goodies.xfce.org/projects/panel-plugins/xfce4-mount-plugin
+URL:            https://docs.xfce.org/panel-plugins/xfce4-mount-plugin
 Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.1/%{name}-%{version}.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libxfce4panel-1.0)
-BuildRequires:  pkgconfig(libxfce4ui-1)
+BuildRequires:  pkgconfig(libxfce4panel-2.0)
+BuildRequires:  pkgconfig(libxfce4ui-2)
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif
