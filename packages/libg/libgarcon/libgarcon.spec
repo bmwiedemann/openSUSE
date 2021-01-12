@@ -1,7 +1,7 @@
 #
 # spec file for package libgarcon
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define libname libgarcon-1-0
 Name:           libgarcon
-Version:        0.6.4
+Version:        0.8.0
 Release:        0
 Summary:        Library Implementing the freedesktop.org Desktop Menu Specification
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://wiki.xfce.org/dev/garcon
-Source:         https://archive.xfce.org/src/libs/garcon/0.6/garcon-%{version}.tar.bz2
+URL:            https://wiki.xfce.org/dev/garcon
+Source:         https://archive.xfce.org/src/xfce/garcon/0.8/garcon-%{version}.tar.bz2
 # PATCH-FEATURE-OPENSUSE libgarcon-x-suse-unimportant-support.patch gber@opensuse.org -- Hide desktop files marked with X-SuSE-Unimportant
 Patch0:         libgarcon-x-suse-unimportant-support.patch
 BuildRequires:  fdupes
@@ -33,9 +33,9 @@ BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk-doc)
-BuildRequires:  pkgconfig(libxfce4ui-1)
+BuildRequires:  pkgconfig(libxfce4ui-2)
 BuildRequires:  pkgconfig(libxfce4util-1.0)
 
 %description
@@ -51,7 +51,7 @@ Summary:        Library Implementing the freedesktop.org Desktop Menu Specificat
 Group:          System/Libraries
 Requires:       exo-tools
 # contains just menu data that needs to be dragged in at a low level
-Recommends:     %{name}-data
+Requires:       %{name}-data
 
 %description -n %{libname}
 Garcon is a library based on GLib and GIO which implements the freedesktop.org
@@ -140,28 +140,25 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %files -n %{libname}
 %license COPYING
 %{_libdir}/libgarcon-1.so.*
-%{_libdir}/libgarcon-gtk2-1.so.*
 %{_libdir}/libgarcon-gtk3-1.so.*
 
 %files data
 %dir %{_datadir}/desktop-directories
 %{_datadir}/desktop-directories/*.directory
+%{_datadir}/icons/hicolor/*/apps/org.xfce.garcon.*
 
 %files lang -f garcon.lang
 
 %files devel
 %{_includedir}/garcon-1/
-%{_includedir}/garcon-gtk2-1/
 %{_includedir}/garcon-gtk3-1/
 %{_libdir}/pkgconfig/garcon-1.pc
-%{_libdir}/pkgconfig/garcon-gtk2-1.pc
 %{_libdir}/pkgconfig/garcon-gtk3-1.pc
 %{_libdir}/libgarcon-1.so
-%{_libdir}/libgarcon-gtk2-1.so
 %{_libdir}/libgarcon-gtk3-1.so
 
 %files doc
-%doc AUTHORS HACKING NEWS README STATUS TODO
+%doc AUTHORS HACKING NEWS README.md STATUS TODO
 %license COPYING
 %dir %{_datadir}/gtk-doc
 %dir %{_datadir}/gtk-doc/html
@@ -169,6 +166,6 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 
 %files branding-upstream
 %dir %{_sysconfdir}/xdg/menus
-%{_sysconfdir}/xdg/menus/xfce-applications.menu
+%config %{_sysconfdir}/xdg/menus/xfce-applications.menu
 
 %changelog

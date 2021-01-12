@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu Jan  7 01:26:20 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed wrong source URL
+
+-------------------------------------------------------------------
+Wed Dec 23 00:43:42 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 0.8.0
+  * fix GarconMenuItem file documentation
+  * Remove GSourceFunc casts
+  * Remove GLIB_CHECK_VERSION IFDEFs which are obsolete after glib bump 
+
+-------------------------------------------------------------------
+Mon Dec 14 10:53:53 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Data files should always be installed along with the libraries
+
+-------------------------------------------------------------------
+Mon Dec 14 10:17:39 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.7.3
+  * garcon now needs libxfce4ui/4util 4.15.6+
+  * Use the symbolic close icon in the error dialog
+  * Don't launch apps as children
+  * bump glib (and gio, gthread, etc) minimum to 2.50.0
+  * relax automake requirement to 1.15
+  * Add new icon needed for xfce4-about-dialog.
+  * Translation Updates
+- Fix executable in /etc warning
+
+-------------------------------------------------------------------
+Mon Nov  9 12:08:18 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.7.2
+  * Update README.md
+  * Translation Updates
+
+-------------------------------------------------------------------
+Fri Aug 28 16:36:59 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.7.1
+  * Drop support for Gtk2
+  * Drop Gtk3 ifdefs
+  * Switch to xfce_gtk_image_menu_item
+  * Add support for GObject Introspection (gxo#xfce/garcon#4)
+  * Improve GObject introspection annotations (gxo#xfce/garcon#8)
+  * Fix missing transfer annotation
+  * Field codes expansion API update
+  * Transfer some code to libxfce4util
+  * Fix default merge rules in xfce-applications.menu (bxo#15504)
+  * Rename exo-helpers to the new xfce4-xx ones
+  * Do not add INSTALL in dist tarball
+  * Fix a memory leak
+  * Switch to README.md and foreign automake mode
+  * README: Use table for debug arguments
+  * Add garcon_menu_item_[g|s]et_keywords to docs
+  * Add garcon_gtk_menu_get_desktop_actions_menu
+  * Improve docstrings
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sat Jul 27 15:23:04 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 0.6.4
