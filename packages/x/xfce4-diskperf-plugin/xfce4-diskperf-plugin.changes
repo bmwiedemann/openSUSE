@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec 21 17:39:08 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 2.6.3
+  * Fix build with panel 4.15+
+  * Fix missing-prototypes
+  * Remove GSourceFunc casts
+  * Add basic GitLab pipeline
+  * Update URLs from goodies.x.o to docs.x.o (bxo#16160)
+  * Update .gitignore
+  * Make build less verbose
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Aug 16 12:31:39 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed sources in spec file

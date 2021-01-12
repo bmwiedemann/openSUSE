@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-diskperf-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %define plugin diskperf
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        2.6.2
+Version:        2.6.3
 Release:        0
 Summary:        Disk Performance Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
-URL:            http://goodies.xfce.org/projects/panel-plugins/xfce4-diskperf-plugin
-Source0:        http://archive.xfce.org/src/panel-plugins/%{name}/2.6/%{name}-%{version}.tar.bz2
+URL:            https://docs.xfce.org/panel-plugins/xfce4-diskperf-plugin
+Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/2.6/%{name}-%{version}.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
