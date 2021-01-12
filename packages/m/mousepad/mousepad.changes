@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Wed Dec 23 02:24:56 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 0.5.1
+  - Dependencies changes: GLib >= 2.52.0 ; GTK >= 3.22.0
+  - Allow to change the font size from keyboard/mouse 
+    (gxo#apps/mousepad#46, gxo#apps/mousepad#54)
+  - Switch to asynchronous search
+  - Give more choice for whitespace display (gxo#apps/mousepad#44)
+  - Improve the look of the search bar
+  - Add a spinner to the search widgets
+  - Make the occurrences count appear in the search bar
+  - Reformulate "Home/End Keys" setting description
+  - Code refactoring around MousepadView properties
+  - Code refactoring around GMenuModel-bindings
+  - Decrease reference count of anchored documents
+  - Filter document signals on the active document
+  - Fix a memory leak in the templates menu
+  - Fix wrong conversion from uri to filename (gxo#apps/mousepad#81)
+  - Warn when using GLib functions newer than requirements
+  - Translation Updates
+
+-------------------------------------------------------------------
+Mon Nov 30 12:44:53 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 0.5.0
+  - Bump required GTK+ in `mousepad-prefs-dialog.ui` (gxo#apps/mousepad#78)
+  - Fix an oversight in updating actions state (gxo#apps/mousepad#76)
+  - Remove TODO file (gxo#apps/mousepad#74)
+  - Ensure that opening modes are excluded from translation
+  - Translation Updates
+
+-------------------------------------------------------------------
+Fri Nov 20 21:23:11 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.4.90
+  * Add keybindings to show the menubar temporarily when hidden
+  * Add command line option and setting for file opening mode
+  * Improve encoding dialog
+  * Add regex search
+  * Replace `$HOME` with a tilde in displayed filename
+  * Add new default keybindings and reveal some hidden ones
+  * Search bar tweaks
+  * Make tabs expanded for consistency with other Xfce programs
+  * Add copyright and license info to About dialog
+  * Improve label texts of "Find and Replace" dialog and search bar
+  * Make the statusbar smaller
+  * Add new app icon and switch to reverse DNS name
+  * Save the state of the "highlight all" button in the search bar
+  * Update window title of Find and Replace dialog
+  * Add "Wrap around" check box to Find and Replace dialog (bxo#11290)
+  * Infer filetype from shebang line (bxo#10514)
+  * Show info when Templates directory does not exist (bxo#10486)
+  * Restore the use of the file `accels.scm`
+  * Code refactoring around saving and restoring window geometry
+  * Improve save-related actions
+  * Fully switch to GtkApplication
+  * Avoid deprecation warnings 5: CSS related
+  * Avoid deprecation warnings 4: GtkUIManager and GtkAction
+  * GtkStock
+  * Avoid deprecation warnings 2: miscellaneous
+  * Avoid deprecation warnings 1: alignment and padding
+  * Avoid compilation warnings other than deprecation
+  * Remove support for GTK+2
+  * Switch to README.md and foreign automake mode
+  * Add basic GitLab pipeline
+  * Remove README.md from DISTCLEANFILES, it's not generated
+  * Fix crash when dragging tab to GSV widget
+  * Change GtkTextView wrap mode to GTK_WRAP_WORD_CHAR
+  * Initialize the recent manager if needed at startup
+  * Prevent search bar from overlapping the document
+  * Properly disconnect signal handlers
+  * Fix make distcheck
+  * Fix color modifications in search entries
+  * Do not open an empty document when encoding failed
+  * Do not search for previously selected text
+  * Update search field with selected text
+  * bxo#16717: Move from exo-csource to xdt-csource
+  * Remember last save location (bxo#14165)
+  * Use g_get_user_dir to get Templates directory (bxo#11048)
+  * Sync remaining menu actions to their settings (bxo#11046)
+  * Install appstream in metainfo folder (bxo#11200)
+  * Add appdata file (bxo#11200)
+  * Fix building with `--enable-dbus --disable-gtk3`
+  * Change visibility of fullscreen bars after small delay (bxo#9735)
+  * Fix return type of fullscreen settings (bxo#9735)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Jul 28 14:59:16 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 0.4.2
