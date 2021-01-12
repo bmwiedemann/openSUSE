@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Jan  7 01:28:24 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed wrong source URL
+
+-------------------------------------------------------------------
+Wed Dec 23 02:17:36 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 4.16.0
+  * Remove GLIB_CHECK_VERSION IFDEFs which are obsolete after glib bump
+  * bump glib (and gio, gthread, etc) minimum to 2.50.0
+  * Add README.md to EXTRA_DIST
+  * Translation Updates 
+
+-------------------------------------------------------------------
+Mon Nov  2 19:22:54 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.15.1
+  * Fix typo in README
+  * Adds new README.md updates AM_INIT_AUTOMAKE
+  * Translation Updates
+
+-------------------------------------------------------------------
+Fri Aug 28 19:01:20 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.15.0
+  * Use icons from icon theme in the dialog (!3)
+  * Add new app icon and switch to rDNS
+  * Remove PDA tab (!1)
+  * Avoid critical error when closing preferences dialog
+  * Support libxfce4ui XfceTitledDialog new API
+  * Translation Updates
+
+-------------------------------------------------------------------
+Fri Aug 16 12:51:30 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed sources in spec file
+
+-------------------------------------------------------------------
 Mon Aug 12 09:39:29 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Update to version 0.9.5

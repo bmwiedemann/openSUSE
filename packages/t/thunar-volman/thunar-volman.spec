@@ -1,7 +1,7 @@
 #
 # spec file for package thunar-volman
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,13 @@
 
 %bcond_with git
 Name:           thunar-volman
-Version:        0.9.5
+Version:        4.16.0
 Release:        0
 Summary:        Thunar Volume Manager
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://goodies.xfce.org/projects/thunar-plugins/thunar-volman
-%if %{with git}
-Source0:        %{name}-%{version}.tar.bz2
-%else
-Source0:        https://archive.xfce.org/src/apps/thunar-volman/0.9/%{name}-%{version}.tar.bz2
-%endif
+Source0:        https://archive.xfce.org/src/xfce/thunar-volman/4.16/%{name}-%{version}.tar.bz2
 Source1:        thunar-volman.xml
 # PATCH-FIX-OPENSUSE thunar-volman-use-udisks-hints.diff bnc#949808 -- seife+dev@b1-systems.com
 Patch0:         thunar-volman-use-udisks-hints.diff
@@ -36,15 +32,15 @@ BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(exo-2)
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gthread-2.0)
+BuildRequires:  pkgconfig(gio-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(libnotify)
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12.0
-BuildRequires:  pkgconfig(libxfconf-0) >= 4.12.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12
+BuildRequires:  pkgconfig(libxfconf-0) >= 4.12
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif
@@ -99,6 +95,8 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %find_lang %{name} %{?no_lang_C}
 
 %files
+%doc AUTHORS NEWS README.md THANKS
+%license COPYING
 %{_bindir}/thunar-volman
 %{_bindir}/thunar-volman-settings
 %{_datadir}/applications/*.desktop
