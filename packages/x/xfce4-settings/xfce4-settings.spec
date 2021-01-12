@@ -19,25 +19,25 @@
 %bcond_with git
 
 Name:           xfce4-settings
-Version:        4.14.3
+Version:        4.16.0
 Release:        0
 Summary:        Tools for Managing Xfce Settings
 License:        GPL-2.0-only AND GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/xfce/xfce4-settings/start
-Source:         https://archive.xfce.org/src/xfce/xfce4-settings/4.14/%{name}-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/xfce/xfce4-settings/4.16/%{name}-%{version}.tar.bz2
 BuildRequires:  intltool
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(colord)
 BuildRequires:  pkgconfig(exo-2)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(garcon-1)
-BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libnotify)
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.13
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.9.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.15.1
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.15.2
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.13
 BuildRequires:  pkgconfig(libxklavier)
 BuildRequires:  pkgconfig(upower-glib)
@@ -124,10 +124,13 @@ export CFLAGS="%{optflags} -D_FORTIFY_SOURCE=1"
 
 rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 
+# Fix python shebangs
+sed -i 's+#!/usr/bin/env python3+#!/usr/bin/python3+g' %{buildroot}%{_libexecdir}/xfce4/xfce4-compose-mail
+
 %find_lang %{name} %{?no_lang_C}
 
 %files
-%doc AUTHORS NEWS README TODO
+%doc AUTHORS NEWS README.md TODO
 %license COPYING
 %{_bindir}/xfce4-accessibility-settings
 %{_bindir}/xfce4-appearance-settings
@@ -135,27 +138,27 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %{_bindir}/xfce4-display-settings
 %{_bindir}/xfce4-find-cursor
 %{_bindir}/xfce4-keyboard-settings
+%{_bindir}/xfce4-mime-helper
 %{_bindir}/xfce4-mouse-settings
 %{_bindir}/xfce4-settings-editor
 %{_bindir}/xfce4-settings-manager
 %{_bindir}/xfsettingsd
 %{_bindir}/xfce4-mime-settings
-%dir %{_libexecdir}/xfce4/
 %dir %{_libexecdir}/xfce4/settings/
 %{_libexecdir}/xfce4/settings/appearance-install-theme
+%{_libexecdir}/xfce4/xfce4-compose-mail
 %{_datadir}/applications/*.desktop
 %{_sysconfdir}/xdg/autostart/xfsettingsd.desktop
-%{_datadir}/icons/hicolor/*/*/*.png
-%{_datadir}/icons/hicolor/scalable/apps/xfce4-color-settings.svg
+%{_datadir}/icons/hicolor/*
+%dir %{_datadir}/xfce4/helpers
+%{_datadir}/xfce4/helpers/*.desktop
 
 %files lang -f %{name}.lang
 
 %files branding-upstream
-%dir %{_sysconfdir}/xdg/xfce4
-%dir %{_sysconfdir}/xdg/xfce4/xfconf
-%dir %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml
 %config %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 %dir %{_sysconfdir}/xdg/menus
 %{_sysconfdir}/xdg/menus/xfce-settings-manager.menu
+%config %{_sysconfdir}/xdg/xfce4/helpers.rc
 
 %changelog

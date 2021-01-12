@@ -1,4 +1,144 @@
 -------------------------------------------------------------------
+Wed Dec 23 01:29:15 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 4.16.0
+  - Drop subtitles from settings dialogs 
+    (Fixes gxo#xfce/xfce4-settings#239)
+  - display: Fix icon name in settings dialog
+  - settings-manager: Fix visibility of filterbar
+  - settings-manager: Correctly show/hide the filterbar
+  - settings-manager: Switch to GtkSearchEntry
+  - settings-manager: Put filter in separate bar 
+    (Fixes gxo#xfce/xfce4-settings#226)
+  - appearance: Add 'Add' button to install themes 
+    (Fixes gxo#xfce/xfce4-settings#193)
+  - color: Tweak colors  of icon
+  - mime: Accept Thunar's old id name (Fixes gxo#xfce/xfce4-settings#247)
+  - settings-editor: Enable tooltips and ellipsizing for `Value` column
+  - settings-editor: Fix scrollbar for channels
+  - settings-editor: Point to correct docs URL 
+    (gxo#xfce/xfce4-settings#245)
+  - bump glib (and gio, gthread, etc) minimum to 2.50.0
+  - Remove GSourceFunc casts
+  - Indentation fixes
+  - Translation Updates
+
+-------------------------------------------------------------------
+Sun Nov 15 06:01:52 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 4.15.3
+  - Disable UPower support by default
+  - Add 24px and 32px icons
+  - xfsettingsd: avoid default double fork
+  - mime: Add 'Open with...' button
+  - mime: Add new generic launcher icons
+  - color: Adjust padding of dialog
+  - color: Add labels to toolbar
+  - keyboard: Make 'system defaults' a GtkSwitch
+  - keyboard: Adjust width of shortcut column (gxo#xfce/xfce4-settings#223)
+  - keyboard: Update dialog UI
+  - keyboard: Make all table columns sortable
+  - keyboard: Improve inline toolbar alignment
+  - display: Center minimal dialog on monitor where cursor is
+  - settings-editor: Add labels to toolbar items
+  - Update README file
+  - Translation Updates
+
+- Fixed python shebangs warning 
+
+-------------------------------------------------------------------
+Thu Nov  5 18:59:37 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Resolve file conflict with xfce4-branding-openSUSE
+
+-------------------------------------------------------------------
+Fri Aug 28 23:14:11 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.15.2
+  * appearance: Fix width of DPI spinbutton (bxo#16125)
+  * appearence: Sync theme, icon, font names to gsettings
+  * appearance: Fix list refresh on DnD (gxo#xfce/xfce4-settings#213)
+  * appearance: Drop toolbar style setting (bxo#16665)
+  * display: Initial fractional scaling support
+    (gxo#xfce/xfce4-settings#162)
+  * display: Custom scale changes are display changes
+  * display: Improve layout in settings dialog
+  * display: Resize display widget according to scale
+  * display: Move scaling presets to glade
+  * display: Set minimum scale to 0.1
+  * display: Improve state machine for scaling option
+  * xfsettingsd: Correctly get current xrandr scale
+  * mime-settings: Rename dialog and icon to 'Default Applications'
+  * mime-settings: Fix window icon name
+  * mime-settings: Fix double free
+  * mime-helpers: Fix Nautilus icon name
+  * mime-helpers: Rename Thunar to thunar
+  * Rename Thunar to thunar in make and potfiles
+  * Expand desktop entry field codes
+  * keyboard-settings: Support libxfce4ui XfceTitledDialog new API
+  * keyboard: Show shortcuts with keycap class
+  * settings-manager: Ensure searchbox has initial focus (bxo#16890)
+  * settings-manager: Simplify redrawing of search results
+    (gxo#xfce/xfce4-settings#141)
+  * settings-manager: Hide filter entry in plugged dialogs
+  * Convert xfce4-compose-mail to Python
+  * Add dependency to Python3
+  * Use just binary name (instead of full path) as argument
+  * Don't crash when upowerd isnt present (bug #60)
+  * Always install shiny new icons
+  * Drop libxfce4ui 4.15.1 ifdefs
+  * exo-compose-email -> xfce4-compose-email
+  * exo-helper -> xfce4-mime-helper
+  * mime-settings now includes preferred applications
+  * Switch to new app icons and rDNS icon names
+  * Increase mouse cursor upper bound for HiDPI (bxo#16042)
+  * Make "Profiles matching" sentence translatable (bxo#16679)
+  * settings-manager: Use symbolic find/clear icons
+  * Move from exo-csource to xdt-csource (bxo#16717)
+  * Handle failure to get Xkl engine for display (bxo#16017)
+  * settings-manager: Make sure content determines size
+  * Fix GTimeVal deprecation (bxo#16645)
+  * Fix keywords and mark them  as translateable
+  * Use proper fallback configuration on "apply" and "toggle off"
+    (bxo#16476)
+  * keyboard-settings: Fix log flood (bxo#16521)
+  * keyboard: Fix crash when editing shortcut (bxo#15958)
+  * Add keywords to .desktop files (bxo#10694)
+  * settings-manager: Improve search by including keywords
+    (bxo#10694)
+  * xfsettingsd: Add --disable-wm-check flag (bxo#16128)
+  * Set "gtk-titlebar-middle-click" to "lower" by default
+  * display: Allow resizing of minimal dialog (bxo#15450)
+  * settings-manager: Show min and max buttons
+  * dialogs: Ensure dialogs have min and max buttons
+  * xsettings: Use CSD for GtkDialogs by default
+  * settings-manager: Fix XfceTitledDialog layout with CSD
+  * settings-manager: Drop setting the old header style
+  * display: Show ratio next to display resolution
+  * display: Mark preferred mode with an asterisk
+  * display: Add init function for aspect ratios
+  * display: Right-align the display ratio
+  * display: Fixed warning and removed ratio
+  * display: Improve look of ratio
+  * display: Fix icon name for primary indicator
+  * display: Initialize crtc->scalex/y (bxo#15971)
+  * settings-editor: Add consistent inline-toolbar
+  * appearance: Only show themes that support Gtk3 (bxo#15849)
+  * color: Fix crash in add-profiles dialog (bxo#15876)
+  * color: Conditionally hide info button in add-profile dialog
+  * color: Add tooltip to profile info buttons
+  * display: Fix profile matching in xfsettingsd
+  * display: Assure correct gchar** (bxo#15816)
+  * keyboard: Improve layout of add-command dialog
+  * keyboard: Add mnemonics to add-command dialog (bxo#10495)
+  * Switch to symbolic window-close icon
+  * Bump libxfce4ui dependency to 4.15.1
+  * Improve string for session managers
+  * Ensure the newly labeled 'Xfce Settings Daemon' is translated
+  * Do not show translation info on --help output
+  * Translation Updates
+
+-------------------------------------------------------------------
 Mon Apr 13 13:20:43 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 4.14.3
