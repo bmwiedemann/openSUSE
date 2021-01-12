@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 12 07:33:10 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Drop xfce4-mixer from x11 flavor: not even the xfce flavor
+  installs this anymore.
+
+-------------------------------------------------------------------
 Fri Nov 27 12:49:12 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Also drop files from /usr/lib/locale and /usr/share/qt5/translations

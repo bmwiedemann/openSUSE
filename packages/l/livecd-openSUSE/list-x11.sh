@@ -91,7 +91,6 @@ install ristretto
 install thunar
 install thunar-volman
 install xfce4-appfinder
-install xfce4-mixer
 install xfce4-notifyd
 install xfce4-panel
 install xfce4-panel-plugin-mixer

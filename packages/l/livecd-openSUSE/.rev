@@ -1060,4 +1060,12 @@
     <comment></comment>
     <requestid>851355</requestid>
   </revision>
+  <revision rev="131" vrev="131">
+    <srcmd5>c84a5e388eb0d1ab658c821c5a5ac76b</srcmd5>
+    <version>unknown</version>
+    <time>1610436907</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop xfce4-mixer from x11 flavor: not even the xfce flavor
+  installs this anymore.</comment>
+  </revision>
 </revisionlist>
