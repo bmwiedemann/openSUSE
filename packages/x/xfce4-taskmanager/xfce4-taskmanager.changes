@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Dec 29 02:41:44 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.4.0
+  * Drop Gtk2 support
+  * Add support for MemAvailable (gxo#apps/xfce4-taskmanager!10)
+  * statusbar: Use color with better contrast for dark themes
+  * Fix: some times processes are not removed from the list
+  * Add tooltip to show full command
+  * Add application icon (gxo#apps/xfce4-taskmanager#23)
+  * Replace appfinder icon with edit-find
+    (gxo#apps/xfce4-taskmanager#23)
+  * Replace old icon name with utilities-terminal
+    gxo#apps/xfce4-taskmanager#23
+  * Replace old icon name with system-run
+    gxo#apps/xfce4-taskmanager#23
+  * Always show memory usage in bytes and percent
+    (gxo#apps/xfce4-taskmanager#24)
+  * Improve comment in desktop file
+    (gxo#apps/xfce4-taskmanager#20)
+  * Add basic GitLab pipeline
+  * Add README.md
+  * Update libwnck and xmu deps in README
+  * Remove GKSU leftovers
+  * Remove unused url_hook_about_dialog function
+  * Replace deprecated gtk_menu_popup
+  * Fix GTimeVal deprecation warning
+  * Fix indentation
+  * Update .gitignore
+  * AC_CONFIG_MACRO_DIR → AC_CONFIG_MACRO_DIRS
+  * Bump minimal xdt version
+  * bxo#16717: Move from exo-csource to xdt-csource
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Apr 10 23:24:00 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.2.3

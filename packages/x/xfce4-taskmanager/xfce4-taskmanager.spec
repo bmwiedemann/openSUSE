@@ -17,13 +17,13 @@
 
 
 Name:           xfce4-taskmanager
-Version:        1.2.3
+Version:        1.4.0
 Release:        0
 Summary:        Simple Taskmanager for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            https://docs.xfce.org/apps/xfce4-taskmanager
-Source:         https://archive.xfce.org/src/apps/xfce4-taskmanager/1.2/%{name}-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/apps/%{name}/1.4/%{name}-%{version}.tar.bz2
 BuildRequires:  intltool
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cairo)
@@ -57,12 +57,12 @@ CPU and memory usage are displayed as a graph.
 %find_lang %{name} %{?no_lang_C}
 
 %files
-%doc AUTHORS NEWS README THANKS
+%doc AUTHORS NEWS README.md THANKS
 %license COPYING
 %{_bindir}/xfce4-taskmanager
 %{_datadir}/applications/xfce4-taskmanager.desktop
-%{_datadir}/icons/hicolor/*/*/xc_crosshair.png
-%{_datadir}/icons/hicolor/*/*/xc_crosshair.svg
+%{_datadir}/icons/hicolor/*/actions/xc_crosshair.*
+%{_datadir}/icons/hicolor/*/apps/org.xfce.taskmanager.*
 
 %files lang -f %{name}.lang
 
