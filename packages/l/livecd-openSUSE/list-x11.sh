@@ -93,7 +93,6 @@ install thunar-volman
 install xfce4-appfinder
 install xfce4-notifyd
 install xfce4-panel
-install xfce4-panel-plugin-mixer
 install xfce4-power-manager
 install xfce4-session
 install xfce4-settings
