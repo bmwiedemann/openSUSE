@@ -19,13 +19,13 @@
 %define libname libthunarx-3-0
 %bcond_with git
 Name:           thunar
-Version:        1.8.16
+Version:        4.16.1
 Release:        0
 Summary:        File Manager for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
 URL:            https://docs.xfce.org/xfce/thunar/start
-Source:         https://archive.xfce.org/src/xfce/thunar/1.8/%{name}-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/xfce/thunar/4.16/%{name}-%{version}.tar.bz2
 Source100:      %{name}-rpmlintrc
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
@@ -34,13 +34,13 @@ BuildRequires:  perl-XML-Parser
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xfconf
-BuildRequires:  pkgconfig(exo-2) >= 0.12.0
+BuildRequires:  pkgconfig(exo-2) >= 4.15.3
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.30.0
-BuildRequires:  pkgconfig(gthread-2.0)
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(gudev-1.0)
@@ -49,10 +49,10 @@ BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(libstartup-notification-1.0)
-BuildRequires:  pkgconfig(libxfce4kbd-private-3) >= 4.12.0
-BuildRequires:  pkgconfig(libxfce4panel-2.0) >= 4.12.0
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12.0
+BuildRequires:  pkgconfig(libxfce4kbd-private-3) >= 4.14.0
+BuildRequires:  pkgconfig(libxfce4panel-2.0) >= 4.14.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.15.3
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.15.3
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.12.0
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(x11)
@@ -163,7 +163,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files
-%doc README NEWS AUTHORS FAQ HACKING THANKS TODO docs/README.*
+%doc README.md NEWS AUTHORS FAQ HACKING THANKS docs/README.*
 %license COPYING
 %dir %{_sysconfdir}/xdg/Thunar
 %config %{_sysconfdir}/xdg/Thunar/uca.xml
@@ -171,7 +171,6 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata
 %{_bindir}/Thunar
 %{_bindir}/thunar-settings
 %dir %{_libexecdir}/Thunar
-%{_libexecdir}/Thunar/ThunarBulkRename
 %{_libexecdir}/Thunar/thunar-sendto-email
 %{_userunitdir}/thunar.service
 %{_libdir}/thunarx-3
@@ -185,7 +184,6 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata
 %{_datadir}/icons/hicolor/*/*/*.png
 %{_datadir}/icons/hicolor/*/*/*.svg
 %{_datadir}/icons/hicolor/*/*/*/*.png
-%{_datadir}/pixmaps/Thunar
 %{_datadir}/xfce4/panel/plugins/thunar-tpa.desktop
 %{_mandir}/man1/thunar.1*
 %{_mandir}/man1/Thunar.1*

@@ -1,14 +1,183 @@
 -------------------------------------------------------------------
-Sat Nov  7 20:52:53 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+Tue Dec 29 23:37:49 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
-- Update to version 1.8.16
-  * Add missing parameter to ThunarBrowserPokeDeviceFunc function
+- Update to version 4.16.1
+  * Prevent crash on Ctrl+H when there is no sidepane
+    (gxo#xfce/thunar#453)
+  * Roleback to previous spinner handling (gxo#xfce/thunar#448)
+
+-------------------------------------------------------------------
+Wed Dec 23 01:44:42 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 4.16.0
+  - Fix action of Back/Forward mouse gesture when using RTL 
+    (Issue gxo#xfce/thunar#90)
+  - Prevent crash on mouse gesture action 
+    (Issue gxo#xfce/thunar#443)
+  - Avoid crashes when closing thunar with ctrl+w 
+    (gxo#xfce/thunar#336)
+  - Ignore double-click events from back/forward mouse button
+    (Issue gxo#xfce/thunar#371)
+  - Remove GLIB_CHECK_VERSION IFDEFs which are obsolete after glib bump
+  - bump minimum required exo version to 4.15.3
+  - Wrap box around spinner to prevent flickering 
+    (Issue gxo#xfce/thunar#440)
+  - Use g_drive_is_removable over g_drive_is_media_removable
+  - bump glib (and gio, gthread, etc) to 2.50.0
+  - Do not duplicate app_info when added via custom command 
+    (Issue gxo#xfce/thunar#309)
+  - Escape all whitespace characters in custom command path
+  - Remove hidden quotes for "Open with"->"custom command" 
+    (Issue gxo#xfce/thunar#425)
+  - Ignore unknown XML elements in UCA.xml
+  - Regression: Fix broken bulk renamer context menu 
+    (Issue gxo#xfce/thunar#436)
+  - Revert of b12247c2 and proper fix for Issue gxo#xfce/thunar#423
+  - Remove duplicated code in renamer and prevent possible leak
+  - Prevent possible crash of thunar_launcher_poke 
+    (Issue gxo#xfce/thunar#436)
+  - Fix combo box entry order (Issue gxo#xfce/thunar#435)
+  - Remove TODO file
+  - Change focus when clicking an emblem entry 
+    (Issue gxo#xfce/thunar#315)
+  - Bump GLib minimum version to 2.44
+  - Prevent Gtk-CRITICAL when terminating session 
+    (Issue gxo#xfce/thunar#430)
+  - Missing thunarx support on the shortcut view 
+    (Issue gxo#xfce/thunar#423)
+  - Translation Updates 
+
+-------------------------------------------------------------------
+Sat Nov  7 20:59:53 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.15.3
+  * No special treatment on "rename" for .desktop files
+    (gxo#xfce/thunar#56)
+  * Show full filename/extention for .desktop files
+    (gxo#xfce/thunar#56)
+  * Focus view when location selector is closed (gxo#xfce/thunar#420)
+  * Thunar shows wrong content after outside operations
+    (gxo#xfce/thunar#355)
+  * Regression: Restore file menu section arrangement
+  * Use same README.md structure than other xfce projects
+  * Fall back to fast content type if regular is unavilable in file
+    attributes (gxo#xfce/thunar!36)
+  * Fix Regressions around menu bar spinner (gxo#xfce/thunar#394)
   * Fix error for custom date format in details view
     (gxo#xfce/thunar#389)
+  * Add support for transparency in gtk-themes (gxo#xfce/thunar!31)
+  * Regression: Apply accel keys only to current tab
+    (gxo#xfce/thunar#386)
+  * Translation Updates
+
+-------------------------------------------------------------------
+Fri Aug 28 18:18:13 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.15.2
+  * Regression: Dont crash when starting thunar with gvfs disabled
+  * Move mount/unmount/eject actions into launcher
+    (gxo#xfce/thunar#349)
+  * Use thunar-menu and launcher in tree-view (gxo#xfce/thunar#349)
+  * Use the new icon when running with elevated privileges (root)
+  * Remove path limit to check on drop (gxo#xfce/thunar#350)
+  * AC_CONFIG_MACRO_DIR → AC_CONFIG_MACRO_DIRS (MR !27)
+  * Avoid crashes when using details view (gxo#xfce/thunar#307)
   * Fix unavailable rubber banding in detailed view
     (gxo#xfce/thunar#326)
+  * Remove obsolete dispose method to prevent warning
+    (gxo#xfce/thunar#319)
+  * Show device indentifier in side pane tooltip
+    (gxo#xfce/thunar#207)
+  * Make use of shared field codes expansion of libxfce4util (MR !23)
+  * Implement directory specific sort-column and sort-order
+    (gxo#xfce/thunar#8)
+  * Add an option to delete saved directory specific settings
+    (gxo#xfce/thunar#8)
+  * Implements directory specific view type (gxo#xfce/thunar#8)
+  * Add features to support directory specific view settings
+    (gxo#xfce/thunar#8)
+  * Regression: Add missing seperator to icon view submenu
+  * Replace _thunar_assert() with _thunar_return_if_fail() in order
+    to prevent crash when build with debug on FreeBSD (MR !22)
+  * Menu items cut/copy/paste do not work for location entry
+    (gxo#xfce/thunar#303)
+  * Shorten strings for different views (gxo#xfce/thunar#247)
+  * Segfault when file is created while files are selected
+    (gxo#xfce/thunar#339)
+  * Thunar hangs when closing windows using CTRL+W
+    (gxo#xfce/thunar#336)
+  * Regression: Missing accelerators for bookmark items
+    (gxo#xfce/thunar#331)
+  * Fixed SEGV when the side pane is hidden (gxo#xfce/thunar#335)
+  * Regression: Window menu not updated properly (gxo#xfce/thunar#320)
+  * Support queued copy (configurable) (gxo#xfce/thunar#294)
+  * Regression: "Create Archive..." doesn't show (gxo#xfce/thunar#329)
+  * Fix unavailable rubber banding in detailed view (gxo#xfce/thunar#326)
+  * Context menu entries in Thunar flutter while downloading
+    (gxo#xfce/thunar#276)
+  * Improve cusor handling after file deletion in thunar
+    (gxo#xfce/thunar#69)
+  * Fix regression: Trying to open a .desktop file from the context menu
+    leads to the execution of the file (gxo#xfce/thunar#325)
+  * Use numbering on label "open new window/tab" only for multiple
+    windows/tabs (MR !15)
+  * Remove "Sort by" and "View as" from menu item labels
+    (gxo#xfce/thunar#247)
+  * Add new app icon and switch to rDNS icon name (MR !11)
+  * Replace deprecated GtkActionEntry with XfceGtkActionEntry
+    (gxo#xfce/thunar#293)
+  * Menus are now updated when selection changes not only when opened
+    (gxo#xfce/thunar#293)
+  * Merge all file-context-menus into one (gxo#xfce/thunar#198)
   * Ghost file ocasionally remains when dropping file into directory
-  * (gxo#xfce/thunar#312)
+    (gxo#xfce/thunar#312)
+  * Use XfceFilenameInput to validate long filenames (bxo#13720)
+  * Support for variables like $HOME in address bar (bxo#12165)
+  * Fix eject button click detection when using RTL languages
+    (bxo#11387)
+  * Remove upper case from group names in shortcuts view
+  * Option to rename a file when existing copy conflicts (bxo#16686)
+  * Remove suffix "- FileManager" from window title
+  * Move from exo-csource to xdt-csource (bxo#16717)
+  * Pause button on copy/move (bxo#16685)
+  * Allow drag-and-drop of multiple files in icon view (bxo#2487)
+  * Add keywords to .desktop files to thunar (bxo#16618)
+  * Reduce vertical space in Templates info popup
+  * Hide android phone from network group (bxo#11584)
+  * Reduce size of Templates info popup
+  * Do not add "cant-write" emblem to files in the Trash
+  * Hide Browse Network entry in shortcuts view if not supported
+  * Move 'network' to the bottom of tree view (bxo#16516)
+  * Add examples to "Select by Pattern" dialog (bxo#16587)
+  * Improve tooltips in shortcuts view (bxo#16566)
+  * Rename "Disconnect" context menu entry in side pane (bxo#16558)
+  * Make path entry matching case-insensitive (bxo#12747)
+  * Add new bookmarks to bottom of list in shortcuts view (bxo#16526)
+  * Move places above devices in shortcuts view (bxo#11586)
+  * Add desktop actions for home, computer and trash (bxo#16497)
+  * Option to use static icon instead of folder icon (bxo#16501)
+  * Remove top level desktop entry from tree view (bxo#16474)
+  * Easy access to computer:/// (bxo#16472)
+  * Use libxfce4ui close-multiple-tab dialog (bxo#16254)
+  * Replace deprecated G_FILE_MONITOR_EVENT_MOVED (bxo#16328)
+  * Use symbolic icon for eject (bxo#16281)
+  * Prevent ghost files after "move" on remote locations (bxo#15704)
+  * Add a confirmation dialog when closing a window with multiple
+    open tabs.
+  * Improve explanation string for "invert selection" action
+    (bxo#15625)
+  * Improve layout of Permissions tab (bxo#15557)
+  * Remove superfluous shell script "ThunarBulkRename" (bxo#15373)
+  * Make labels in permissions chooser wrap
+  * Add a small delay when dismissing notifications (bxo#14552)
+  * File / Folder size text in statusbar sometimes is ambiguous
+    (bxo#14203)
+  * Add missing parameter to ThunarBrowserPokeDeviceFunc function
+  * Add property to enable/disable frames on thumbnails (bxo#14433)
+  * Improved spacing between widgets in Properties and Preferences
+    dialogs
+  * Fixed numerous compiler warnings
+  * Fixed numerous warning and critical messages
   * Translation Updates
 
 -------------------------------------------------------------------
