@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-whiskermenu-plugin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %define panel_version 4.12.0
 %define plugin whiskermenu
 Name:           xfce4-whiskermenu-plugin
-Version:        2.4.6
+Version:        2.5.1
 Release:        0
 Summary:        Alternate Xfce Menu
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/panel-plugins/xfce4-whiskermenu-plugin
-Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/2.4/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/2.5/%{name}-%{version}.tar.bz2
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig

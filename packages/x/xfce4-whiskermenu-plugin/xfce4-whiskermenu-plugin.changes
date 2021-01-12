@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Jan  2 17:37:41 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 2.5.1
+  - Fix not always using new action icons. 
+  (gxo#/panel-plugins/xfce4-whiskermenu-plugin#33)
+  - Obsoletes action-icons.patch 
+
+-------------------------------------------------------------------
+Wed Dec 30 13:53:36 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Added backport patch action-icons.patch to make sure to use the 
+  correct action icons.
+
+-------------------------------------------------------------------
+Thu Dec 24 18:33:58 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 2.5.0
+  - Add option to show all applications by default. (Issue #4)
+  - Rearrange sidebar buttons to match default category. (Issue #9)
+  - Show panel button title as tooltip in icon-only mode. (Issue #12)
+  - Always sort top-level categories.
+  - Vertically center contents of header.
+  - Use new Xfce action icons.
+  - Use new desktop ids for default programs.
+  - Rewrite to hide menu on focus out.
+  - Refactor code to use new Xfce functions.
+  - Refactor building translations. 
+
+-------------------------------------------------------------------
 Thu Jul 23 12:15:36 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Update to version 2.4.6

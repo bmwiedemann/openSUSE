@@ -81,4 +81,12 @@
 </comment>
     <requestid>822752</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0dabdb769265263ea01f2beb1a849dbb</srcmd5>
+    <version>2.5.1</version>
+    <time>1610443749</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to Xfce 4.16</comment>
+    <requestid>860893</requestid>
+  </revision>
 </revisionlist>
