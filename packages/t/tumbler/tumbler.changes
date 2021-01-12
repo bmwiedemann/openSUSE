@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Dec 23 02:06:14 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 4.16.0
+  - Remove GLIB_CHECK_VERSION IFDEFs which are obsolete after glib bump
+  - bump glib (and gio, gthread, etc) minimum to 2.50.0
+  - Adjust bug report URL
+  - Translation Updates 
+
+-------------------------------------------------------------------
+Mon Nov 16 15:45:06 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 0.3.1
+  - New plugin for epub books, using libgepub thumbnailer plugin
+  - Fix documentation URL
+  - Add README.md and EXTRA_DIST
+  - Add new icon needed for xfce4-about-dialog
+  - Translation Updates 
+
+-------------------------------------------------------------------
 Mon Nov  2 22:06:53 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Remove hard dependency to Thunar 1.8.2. We use "Suggests" instead
@@ -11,6 +30,19 @@ Sun Nov  1 17:03:35 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 - Weak dependencies: Use Supplements tag as recommended 
   tumbler-folder-thumbnailer/tumbler-webp-thumbnailer dependencies 
   for main package
+
+-------------------------------------------------------------------
+Fri Aug 28 19:10:10 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.3.0
+  * Fix jpeg thumbnail orientation when fallback code is taken place
+    (gxo#xfce/tumbler#28).
+  * Use AC_CONFIG_MACRO_DIRS instead of AC_CONFIG_MACRO_DIR
+  * Fix GTimeVal deprecation
+  * Drop support of GLib < 2.32
+  * Use guint32 for request handle and fix its further occurrences of 0
+  * Implement Excludes paths in tumbler.rc
+  * Translation Updates
 
 -------------------------------------------------------------------
 Thu Aug  6 13:12:56 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>

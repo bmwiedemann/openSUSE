@@ -21,21 +21,21 @@
 %define libname libtumbler-1-0
 
 Name:           tumbler
-Version:        0.2.9
+Version:        4.16.0
 Release:        0
 Summary:        Thumbnail Management for Xfce
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://docs.xfce.org/xfce/thunar/tumbler
-Source:         https://archive.xfce.org/src/xfce/%{name}/0.2/%{name}-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/xfce/%{name}/4.16/%{name}-%{version}.tar.bz2
 Source1:        custom_thumbnailers.tar.gz
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gio-2.0) >= 2.26.0
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.26.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.26.0
-BuildRequires:  pkgconfig(gmodule-2.0) >= 2.26.0
-BuildRequires:  pkgconfig(gthread-2.0) >= 2.26.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.50.0
 # GdkPibuxf thumbnailer plugin
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.14
 # FreeType2 font thumbnailer plugin
@@ -59,10 +59,12 @@ BuildRequires:  libopenraw-devel
 BuildRequires:  pkgconfig(libpng)
 # OMDB cover plugin
 BuildRequires:  pkgconfig(libcurl)
-# no matter what rpmlint says, we need the same lib-version
+# EPUB Plugin
+BuildRequires:  pkgconfig(libgepub-0.6)
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif
+# no matter what rpmlint says, we need the same lib-version
 Requires:       %libname = %{version}
 
 %description
@@ -164,7 +166,7 @@ mv custom_thumbnailers/folder-thumbnailer %{buildroot}%{_bindir}/
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README TODO
+%doc AUTHORS ChangeLog NEWS README.md TODO
 %dir %{_sysconfdir}/xdg/tumbler/
 %config(noreplace) %{_sysconfdir}/xdg/tumbler/tumbler.rc
 %dir %{_libdir}/tumbler-1
@@ -185,10 +187,13 @@ mv custom_thumbnailers/folder-thumbnailer %{buildroot}%{_bindir}/
 %{_libdir}/tumbler-1/plugins/tumbler-pixbuf-thumbnailer.so
 %{_libdir}/tumbler-1/plugins/tumbler-poppler-thumbnailer.so
 %{_libdir}/tumbler-1/plugins/tumbler-raw-thumbnailer.so
+%{_libdir}/tumbler-1/plugins/tumbler-gepub-thumbnailer.so
 %dir %{_datadir}/dbus-1
 %dir %{_datadir}/dbus-1/services
 %{_datadir}/dbus-1/services/*.service
 %dir %{_datadir}/thumbnailers
+%dir %{_datadir}/icons/hicolor
+%{_datadir}/icons/hicolor/*
 
 %files -n %{name}-folder-thumbnailer
 %{_bindir}/folder-thumbnailer
