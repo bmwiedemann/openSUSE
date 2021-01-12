@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Sun Jan  3 19:51:24 UTC 2021 - Vinzenz Vietzke <vinz@vinzv.de>
+
+- Update to version 4.16.0
+  * Changed version scheme from 0.x to 4.16.0 to align with the new 
+    Libxfce4util and Xfconf GIR requirements
+  * xfce4-screensaver-configure: Use GIRepository of libxfce4util and
+    xfconf (gxo#apps/xfce4-screensaver#11)
+  * Change type of seconds to guint in add_lock_timer
+  * Check dbus system_connection in add_sleep_inhibit
+  * Cleanup GSourceFunc usage
+  * Convert date_time_update to a timer function
+  * Fix format specifiers in lock_timer
+  * Fix issues connected to dbus (gxo#apps/xfce4-screensaver#66)
+  * Fix pam_strerror usage
+  * Pass constants to XSetScreenSaver
+  * Plug memleak in get_x11_idle_info
+  * Remove obsolete check for scrnsaver.h from configure.ac
+  * Translation Updates
+
+-------------------------------------------------------------------
+Sun Nov  8 14:00:04 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 0.1.11
+  * Configuration Update:
+    This release updates the DPMS settings used for the Blank screensaver. 
+    Timeouts are now stored in seconds instead of minutes, with the default
+    DPMS sleep now 5 seconds after the screensaver goes active. Xfconf:
+    /xfce4-screensaver/screensavers/xfce-blank/dpms-sleep-after
+  * Theme Update:
+    This release uses a new icon name, org.xfce.ScreenSaver, instead of the
+    generic preferences-desktop-screensaver.
+  * Builds: Move from exo-csource to xdt-csource (bxo#16717)
+  * CI: Add basic GitLab pipeline
+  * distcheck: Add missing gs-auth-pam.c
+  * DPMS: Change sleep settings to seconds, default after 5 seconds
+    (gxo#apps/xfce4-screensaver#27)
+  * Fix: Catch gs_listener_dbus_init failures
+  * Fix: remove unused flag --no-daemon
+  * Icons: New icons and rDNS icon name, org.xfce.ScreenSaver
+  * Internal: Change timers from milliseconds to seconds
+  * README.md: Note setuid requirement after install with shadow/bsdauth
+    (gxo#apps/xfce4-screensaver#9)
+  * xfce4-screensaver.common-auth: replace @include with standard systax
+    (gxo#apps/xfce4-screensaver#6). 
+  * Translation Updates
+- Obsoletes patch xfce4-screensaver_pam_fix_opensuse.patch
+
+-------------------------------------------------------------------
 Thu Aug 27 12:59:25 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)

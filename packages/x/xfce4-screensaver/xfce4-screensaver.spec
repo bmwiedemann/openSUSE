@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-screensaver
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %bcond_with git
 Name:           xfce4-screensaver
-Version:        0.1.10
+Version:        4.16.0
 Release:        0
 Summary:        Screensaver and locker for Xfce
 License:        GPL-2.0-only
 Group:          System/GUI/XFCE
-URL:            https://git.xfce.org/apps/xfce4-screensaver/about/
-# PATCH-FIX-OPENSUSE xfce4-screensaver_pam_fix_opensuse.patch maurizio.galli@gmail.com -- PAM fix for openSUSE
-Patch0:         xfce4-screensaver_pam_fix_opensuse.patch
-Source:         https://archive.xfce.org/src/apps/xfce4-screensaver/0.1/%{name}-%{version}.tar.bz2
+URL:            https://docs.xfce.org/apps/xfce4-screensaver/start
+Source:         https://archive.xfce.org/src/apps/xfce4-screensaver/4.16/%{name}-%{version}.tar.bz2
 BuildRequires:  intltool
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
@@ -62,7 +60,7 @@ Add xfce4-screensaver-command -l to xflock4 script for it to work properly.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %if %{with git}
@@ -91,11 +89,16 @@ NOCONFIGURE=1 ./autogen.sh
 
 %files -f  %{name}.lang
 %license COPYING COPYING.LGPL COPYING.LIB
+%if %{with git}
+%doc README.md NEWS TODO
+%else
 %doc README.md NEWS TODO ChangeLog
+%endif
 %dir %{_sysconfdir}/xdg/menus
-%dir %{_libexecdir}/xfce4-screensaver
 %dir %{_datadir}/applications/screensavers
 %dir %{_datadir}/desktop-directories
+%dir %{_datadir}/icons/hicolor
+%dir %{_libexecdir}/xfce4-screensaver/
 %config %{_sysconfdir}/xdg/autostart/xfce4-screensaver.desktop
 %config %{_sysconfdir}/xdg/menus/xfce4-screensavers.menu
 %config %{_sysconfdir}/pam.d/xfce4-screensaver
@@ -103,20 +106,18 @@ NOCONFIGURE=1 ./autogen.sh
 %{_bindir}/xfce4-screensaver-command
 %{_bindir}/xfce4-screensaver-configure
 %{_bindir}/xfce4-screensaver-preferences
-%{_libexecdir}/xfce4-screensaver-dialog
-%{_libexecdir}/xfce4-screensaver-gl-helper
-%{_libexecdir}/xfce4-screensaver/floaters
-%{_libexecdir}/%{name}/popsquares
-%{_libexecdir}/%{name}/slideshow
 %{_datadir}/applications/screensavers/xfce-floaters.desktop
 %{_datadir}/applications/xfce4-screensaver-preferences.desktop
 %{_datadir}/applications/screensavers/xfce-personal-slideshow.desktop
 %{_datadir}/applications/screensavers/xfce-popsquares.desktop
 %{_datadir}/dbus-1/services/org.xfce.ScreenSaver.service
 %{_datadir}/desktop-directories/xfce4-screensaver.directory
+%{_libexecdir}/*
+%{_libexecdir}/xfce4-screensaver/*
 %{_mandir}/man1/xfce4-screensaver-command.1%{?ext_man}
 %{_mandir}/man1/xfce4-screensaver-preferences.1%{?ext_man}
 %{_mandir}/man1/xfce4-screensaver.1%{?ext_man}
 %{_datadir}/pixmaps/xfce-logo-white.svg
+%{_datadir}/icons/hicolor/*
 
 %changelog
