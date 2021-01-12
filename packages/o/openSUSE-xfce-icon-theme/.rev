@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3cacde46272ff8f89ea745fab7720eac</srcmd5>
+    <version>4.16.1+git3.8e4f919</version>
+    <time>1610443688</time>
+    <user>dimstar_suse</user>
+    <comment>Important. We need this for Xfce 4.16. It is a required dependency for some components.</comment>
+    <requestid>860846</requestid>
+  </revision>
+</revisionlist>
