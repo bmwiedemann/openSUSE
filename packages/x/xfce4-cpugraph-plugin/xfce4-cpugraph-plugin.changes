@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Dec 28 15:06:06 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.2.0
+  * Highlighting of suboptimal thread placement on SMT CPUs
+  * Separate the associated command from the rest of config options
+  * Better resilience to inconsistent OS CPU utilization data
+  * Display 'Show bars' in the same tab as 'Bars color'
+  * Clamp CPU usage values to zero if they are below a threshold
+  * Cleanup NEWS file
+  * Use larger unscaled icon in about dialog
+  * Add small explanation about default commands
+  * Dynamic default command lookup
+  * Fix RGBA string memory leak
+  * Fix an invalid memory reference
+  * Link sensitivity of labels to sensitivity of color buttons
+  * Allow setting colors with alpha
+  * Revalidate the event box after showing widgets
+  * Use floating-point instead of fixed-point CPU load values
+  * Paint CPU usage if it is 1 pixel tall
+  * Lower CPU usage when rendering bars
+  * Update URLs
+  * Improve performance of CPU data parsing
+  * Read CPU data correctly if some CPUs are offline
+    (gxo#panel-plugins/xfce4-cpugraph-plugin!7)
+  * Paint CPU bars in left-to-right order
+  * Separate the bars from the history frame
+  * Fix old-style function warnings
+  * Fix clang and gcc warnings
+  * Also offer a 3 second update interval
+    (gxo#panel-plugins/xfce4-cpugraph-plugin#9)
+  * Update URLs from goodies.x.o to docs.x.o (bxo#16157)
+  * Allow compilation with panel 4.15
+  * Fix typo breaking build on NetBSD (bxo#15794)
+  * Disable frame and make background transparent by default
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Aug 16 12:33:24 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed sources in spec file
