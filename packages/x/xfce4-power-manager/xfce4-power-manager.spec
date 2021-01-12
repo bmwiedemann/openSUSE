@@ -19,13 +19,13 @@
 %define panel_version 4.12.0
 %bcond_with git
 Name:           xfce4-power-manager
-Version:        1.6.6
+Version:        4.16.0
 Release:        0
 Summary:        Power Management for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/xfce/xfce4-power-manager/start
-Source0:        https://archive.xfce.org/src/xfce/xfce4-power-manager/1.6/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/xfce/xfce4-power-manager/4.16/%{name}-%{version}.tar.bz2
 Source1:        xfce4-power-manager.xml
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
@@ -34,10 +34,10 @@ BuildRequires:  libxslt-tools
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.42
-BuildRequires:  pkgconfig(gmodule-2.0)
-BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(gthread-2.0)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.50
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.50
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.50
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.50
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
@@ -155,7 +155,11 @@ rm %{buildroot}%{_sbindir}/xfce4-pm-helper
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata.xml
 
 %files
-%doc AUTHORS NEWS README ChangeLog
+%if %{with git}
+%doc AUTHORS NEWS README.md
+%else
+%doc AUTHORS NEWS README.md ChangeLog
+%endif
 %license COPYING
 %{_bindir}/xfce4-power-manager
 %{_bindir}/xfce4-power-manager-settings

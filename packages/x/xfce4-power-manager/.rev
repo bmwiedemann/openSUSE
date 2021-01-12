@@ -768,4 +768,12 @@
   * Switch to symbolic window-close icons</comment>
     <requestid>809450</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>22019a575a2f8964d78ba3caa2958618</srcmd5>
+    <version>4.16.0</version>
+    <time>1610443728</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to Xfce 4.16</comment>
+    <requestid>860881</requestid>
+  </revision>
 </revisionlist>

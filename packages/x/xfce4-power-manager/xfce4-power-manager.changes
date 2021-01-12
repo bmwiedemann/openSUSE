@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Wed Dec 23 01:38:47 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 4.16.0
+  * bump glib (and gio, gthread, etc) minimum to 2.50.0
+  * panel-plugin: Prefer ac-adapter-symbolic 
+    (Fixes gxo#xfce/xfce4-settings#103)
+  * Add new icons in size 24x24 and 32x32
+  * Translation Updates
+
+-------------------------------------------------------------------
+Sat Nov  7 06:35:51 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 1.7.1
+  * Add new app icon and switch to rDNS icon name
+  * Use more accurate status icons (gxo#xfce/xfce4-settings#95)
+  * Also use symbolic icons in battery notifications
+  * Reorder screensavers so Xfce comes first (gxo#xfce/xfce4-settings#101)
+  * settings: Adjust title and show min/max buttons
+  * settings: Allow critical battery level up to 70% (gxo#xfce/xfce4-settings#67)
+  * settings: Add keywords for discoverability (bxo#10694)
+  * settings: Fix GtkSwitch signal handlers (gxo#xfce/xfce4-settings#99)
+  * xfpm: avoid default double fork
+  * Respect the notification daemon's timeouts (gxo#xfce/xfce4-settings#57)
+  * Fix Laptop lid settings (bxo#15300)
+  * Fix spelling mistake (bxo#16698)
+  * Only update blank time when appropriate
+  * Bug #16717: Move from exo-csource to xdt-csource
+  * Guard against NULL pointer dereference
+  *  More blank time debug code
+  * Indentation fixe
+  * Cleanup code
+  * Move default icon names into one place
+  * Silence compiler warnings
+  * Add README.md
+  * Add basic GitLab pipeline
+  * Translation Updates
+
+-------------------------------------------------------------------
+Fri Aug 28 23:24:41 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.7.0
+  * Fix inhibiting xfce4-screensaver (bxo#16364)
+  * Fix indentation (makes git blame harder, but code more readable)
+  * settings: Unclutter system and display tabs
+  * settings: Move % sign out of spinbutton (bxo#15994)
+  * Switch to symbolic window-close icons
+  * Dismiss critical notification when connecting to AC
+  * Make brightness steps configurable (bxo#12062)
+  * Allow compilation with panel 4.15
+  * panel-plugin: Properly show 'About' menu item
+  * panel-plugin: Add (optional) Presentation mode indicator (bxo#15773)
+  * panel-plugin: Toggle presentation mode on middle click
+  * panel-plugin: Add warning color to presentation mode indicator
+  * panel-plugin: Use GtkSwitch for Presentation mode
+  * panel-plugin: Replace deprecated call
+  * systray: Ensure presentation mode can be toggled (bxo#16337)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Mon Mar  9 07:24:23 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.6.6
@@ -168,8 +227,8 @@ Mon Dec  1 12:00:19 UTC 2014 - gber@opensuse.org
   - shorten label for system inactivity time (bug #11129)
   - initially disable DPMS widgets when not handling DPMS
   - use translated device type for unknown devices (bug #11217)
-  - fix for critical battery action (Bug #11237)
-  - add symlinks for UPS-charged icon (Debian Bug #762500)
+  - fix for critical battery action (bxo#11237)
+  - add symlinks for UPS-charged icon (Debian bxo#762500)
   - xrandr brightness: Check for eDP devices too (bug #11308)
   - translation updates
 - dropped obsolete
@@ -251,7 +310,7 @@ Thu Aug 21 08:16:46 UTC 2014 - gber@opensuse.org
   - xfce4-power-manager does not rely on special device icons
     anymore for the load status which is now drawn on the standard
     icons
-  - fix crash with slider on 32bit systems (Bug #11076)
+  - fix crash with slider on 32bit systems (bxo#11076)
   - fix version number output on the commandline
   - remove unused code
   - add dedicated icons for the keyboard brightness notifications
