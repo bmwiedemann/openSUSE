@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-screenshooter
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2010 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,12 +22,12 @@
 %bcond_with git
 
 Name:           xfce4-screenshooter
-Version:        1.9.7
+Version:        1.9.8
 Release:        0
 Summary:        Screenshot Tool for the Xfce Desktop
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
-Url:            https://goodies.xfce.org/projects/applications/xfce4-screenshooter
+URL:            https://goodies.xfce.org/projects/applications/xfce4-screenshooter
 Source:         https://archive.xfce.org/src/apps/xfce4-screenshooter/1.9/%{name}-%{version}.tar.bz2
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
@@ -105,10 +105,10 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 %fdupes %{buildroot}%{_datadir}
 
 %files
-%doc NEWS README TODO
+%doc NEWS README.md TODO
 %license COPYING
 %{_bindir}/xfce4-screenshooter
-%{_datadir}/icons/hicolor/*/apps/applets-screenshooter.*
+%{_datadir}/icons/hicolor/*
 %{_datadir}/applications/xfce4-screenshooter.desktop
 %{_datadir}/metainfo/xfce4-screenshooter.appdata.xml
 %{_mandir}/man1/xfce4-screenshooter.1*
