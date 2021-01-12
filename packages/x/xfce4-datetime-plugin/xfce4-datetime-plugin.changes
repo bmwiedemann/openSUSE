@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec 25 19:56:32 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.8.1
+  * Fix build with panel 4.15
+  * Update configure.ac.in syntax and enable debug when building from git
+  * Remove GSourceFunc casts
+  * Fix font size (gxo#panel-plugins/xfce4-datetime-plugin#30)
+  * Add new README.md and update AM_INIT_AUTOMAKE
+  * Add basic GitLab pipeline
+  * Update URLs from goodies.x.o to docs.x.o (bxo#16159)
+  * s/http/https
+  * Update .gitignore
+  * Make build less verbose
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Aug 16 12:32:29 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed sources in spec file
