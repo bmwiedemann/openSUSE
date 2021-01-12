@@ -150,4 +150,12 @@
   * Fix GTK3 dark colors</comment>
     <requestid>851942</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>78b1d667f9cec0313c6fc4886cfd24ca</srcmd5>
+    <version>3.22.13+git2.ede9f55</version>
+    <time>1610443689</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to Xfce 4.16</comment>
+    <requestid>860853</requestid>
+  </revision>
 </revisionlist>
