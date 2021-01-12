@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec 23 16:40:30 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 0.7.1
+  * Add option to not move cursor after calculations (#3)
+  * Align spin buttons in properties dialog
+  * Add close button to properties dialog
+  * Handle delete event when properties dialog is closed
+  * Adds new README.md updates AM_INIT_AUTOMAKE
+  * Update URLs from goodies.x.o to docs.x.o (bxo#16155)
+  * Allow compilation with panel 4.15
+  * Disable emoji input
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Aug 16 12:37:01 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed sources in spec file
