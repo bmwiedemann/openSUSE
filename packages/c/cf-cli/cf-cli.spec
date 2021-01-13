@@ -89,6 +89,7 @@ echo 'Test if cf can be executed'
 # disable debug packages in package test to prevent error about missing files
 %define debug_package %{nil}
 %else
+mkdir -p %{buildroot}/%{_bindir}
 cp ../go/bin/cli %{buildroot}/%{_bindir}/cf
 install -m 755 -d %{buildroot}/%{_sysconfdir}/bash_completion.d
 cp ci/installers/completion/cf %{buildroot}/%{_sysconfdir}/bash_completion.d/cf.sh
