@@ -1,7 +1,7 @@
 #
 # spec file for package mxml
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define library_name libmxml1
 
 Name:           mxml
-Version:        3.1
+Version:        3.2
 Release:        0
 Summary:        Small XML Parsing Library
 # The Mini-XML library is licensed under the Apache License Version 2.0 with an
