@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan  9 03:09:21 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.15
+   see /usr/share/doc/packages/perl-Params-Coerce/Changes
+
+-------------------------------------------------------------------
 Tue Oct  3 08:19:37 UTC 2017 - coolo@suse.com
 
 - patch the Makefile to build with perl 5.26
