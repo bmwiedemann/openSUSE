@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 11 11:01:09 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Fix build on riscv64
+
+-------------------------------------------------------------------
 Sat Jan  9 20:13:10 UTC 2021 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 0.7.1
