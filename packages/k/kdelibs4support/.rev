@@ -689,4 +689,12 @@
     <comment>KDE Frameworks 5.77</comment>
     <requestid>855424</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>eb69086e53697325c751b902240b5eea</srcmd5>
+    <version>5.78.0</version>
+    <time>1610558165</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.78.0</comment>
+    <requestid>861926</requestid>
+  </revision>
 </revisionlist>
