@@ -1,7 +1,7 @@
 #
 # spec file for package kjs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 %define sonum   5
-%define _tar_path 5.77
+%define _tar_path 5.78
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kjs
-Version:        5.77.0
+Version:        5.78.0
 Release:        0
 Summary:        KDE Javascript engine
 License:        LGPL-2.1-or-later
@@ -42,8 +42,8 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  pcre-devel
 BuildRequires:  perl
 BuildRequires:  cmake(KF5DocTools) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Core) >= 5.13.0
-BuildRequires:  cmake(Qt5Test) >= 5.13.0
+BuildRequires:  cmake(Qt5Core) >= 5.14.0
+BuildRequires:  cmake(Qt5Test) >= 5.14.0
 
 %description
 This library provides an ECMAScript compatible interpreter. The ECMA standard
@@ -76,7 +76,7 @@ Group:          Development/Libraries/KDE
 Requires:       extra-cmake-modules
 Requires:       libKF5JS%{sonum} = %{version}
 Requires:       libKF5JSApi%{sonum} = %{version}
-Requires:       cmake(Qt5Core) >= 5.13.0
+Requires:       cmake(Qt5Core) >= 5.14.0
 %if %{with lang}
 Recommends:     %{name}-devel-lang = %{version}
 %endif

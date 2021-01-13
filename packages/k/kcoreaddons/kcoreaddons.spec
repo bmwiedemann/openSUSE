@@ -1,7 +1,7 @@
 #
 # spec file for package kcoreaddons
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5CoreAddons5
-%define _tar_path 5.77
+%define _tar_path 5.78
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcoreaddons
-Version:        5.77.0
+Version:        5.78.0
 Release:        0
 Summary:        Utilities for core application functionality and accessing the OS
 License:        LGPL-2.1-or-later
@@ -40,10 +40,10 @@ BuildRequires:  extra-cmake-modules >= %{_tar_path}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  shared-mime-info
-BuildRequires:  cmake(Qt5Core) >= 5.13.0
+BuildRequires:  cmake(Qt5Core) >= 5.14.0
 Requires:       shared-mime-info
 %if %{with lang}
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.13.0
+BuildRequires:  cmake(Qt5LinguistTools) >= 5.14.0
 %endif
 Recommends:     %{name}-lang = %{version}
 
@@ -71,7 +71,7 @@ Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       %{name} = %{version}
 Requires:       extra-cmake-modules
-Requires:       cmake(Qt5Core) >= 5.13.0
+Requires:       cmake(Qt5Core) >= 5.14.0
 
 %description devel
 KCoreAddons provides classes built on top of QtCore to perform various tasks

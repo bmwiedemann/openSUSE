@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan  6 11:14:18 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.78.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.78.0
+- Changes since 5.77.0:
+  * Add upindicator
+  * Don't include QtTestWidgets as it includes all QtCore includes
+
+-------------------------------------------------------------------
 Sun Dec  6 19:19:20 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.77.0

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan  6 10:47:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.78.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.78.0
+- Changes since 5.77.0:
+  * autotests: use canonical paths to fix FreeBSD CI
+  * autotests: ensure XDG_CURRENT_DESKTOP is KDE as the test assumes
+  * Don't include QtTest as it includes all QtCore includes
+  * operator+/- is disabled for QFlags in qt6
+
+-------------------------------------------------------------------
 Sat Dec  5 18:56:26 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.77.0

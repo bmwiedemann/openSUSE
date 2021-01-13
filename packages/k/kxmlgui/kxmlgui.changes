@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan  6 10:48:06 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.78.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.78.0
+- Changes since 5.77.0:
+  * KXmlGui: when upgrading a local .rc file, keep new app toolbars
+  * Fix key recording by setWindow before capture starts. (kde#430388)
+  * Remove ifdefs, we require Qt 5.14 now
+  * operator+/- is disabled for QFlags in qt6
+  * Remove unused KWindowSystem dependency
+  * Clear KXMLGUIClient in memory xml doc after saving shortcuts to disk
+
+-------------------------------------------------------------------
 Mon Dec  7 17:14:50 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.77.0
