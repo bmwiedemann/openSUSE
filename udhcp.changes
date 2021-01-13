@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 26 13:37:14 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
 Sat Jan 20 22:15:08 UTC 2018 - sleep_walker@opensuse.org
 
 - ifconfig_path.patch - adjust absolute path to ifconfig
