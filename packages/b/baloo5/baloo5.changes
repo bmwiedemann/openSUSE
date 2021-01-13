@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jan  6 10:47:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.78.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.78.0
+- Changes since 5.77.0:
+  * [ExtractorProcess] Move DBus signal from helper to main process
+  * [timeline] Consolidate code for root folder stat and list
+  * Remove unnecesary KIO/Job include
+  * Make toplevel ioslave UDS entries readonly
+  * avoid errors for application startup if no baloo index was ever created
+  * Remove ifdefs, we require Qt 5.14 now
+  * [BasicIndexingJob] Strip trailing slash from folders
+  * Add Buildstatus badges for SUSE Qt5.14 and FreeBSD
+  * Fix internal link to "Searching" user documentation
+- Drop 0001-BasicIndexingJob-Strip-trailing-slash-from-folders.patch
+
+-------------------------------------------------------------------
 Sat Dec 12 18:08:56 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix a regression causing empty results (kde#430273):
