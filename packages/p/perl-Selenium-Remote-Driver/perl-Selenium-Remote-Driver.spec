@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Selenium-Remote-Driver
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,21 @@
 #
 
 
-Name:           perl-Selenium-Remote-Driver
-Version:        1.38
-Release:        0
 %define cpan_name Selenium-Remote-Driver
+Name:           perl-Selenium-Remote-Driver
+Version:        1.39
+Release:        0
 Summary:        Perl Client for Selenium Remote Driver
 License:        Apache-2.0
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/T/TE/TEODESIAN/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 # MANUAL
 #BuildArch:     noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Archive::Zip)
+BuildRequires:  perl(Carp::Always)
 BuildRequires:  perl(Clone)
 BuildRequires:  perl(File::Which)
 BuildRequires:  perl(HTTP::Headers)
@@ -91,7 +90,7 @@ supported browser. To use this module, you need to have already downloaded
 and started the Selenium Server (Selenium Server is a Java application).
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 # MANUAL BEGIN
 sed -i -e 's,!/bin/env perl,/usr/bin/perl,' driver-example.pl
@@ -99,7 +98,7 @@ sed -i -e 's,!/bin/env perl,/usr/bin/perl,' driver-example.pl
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -110,8 +109,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes ide-plugin.js README README.md TAGS
+%doc Changes README README.md TAGS
 %license LICENSE
 
 %changelog

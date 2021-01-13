@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jan  9 03:10:16 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.39
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+
+  1.39  01-08-2021 TEODESIAN
+          [NEW FEATURES]
+          - Add execute_script and execute_async_script convenience methods to WebElements.
+          - Add die flag to Selenium::Waiter
+          - fix double_click
+          [BUG FIXES]
+          - Fix a couple more documentation issues with driver specific problems
+          [REMOVALS]
+          - Removed ide-plugin.js, as it's not been supported or working in years
+
+-------------------------------------------------------------------
 Tue Oct 20 03:11:19 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.38
