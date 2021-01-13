@@ -328,4 +328,12 @@ Not installed by default yet as it's currently in beta.</comment>
     <comment>KDE Frameworks 5.77</comment>
     <requestid>855475</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>3cdf44ddd5ef134f536cf416a7e43027</srcmd5>
+    <version>5.78.0</version>
+    <time>1610558317</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.78.0</comment>
+    <requestid>861978</requestid>
+  </revision>
 </revisionlist>

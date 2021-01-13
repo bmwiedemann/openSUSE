@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan  6 10:48:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.78.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.78.0
+- Changes since 5.77.0:
+  * Remove ifdefs, we require Qt 5.14 now
+  * Update org.kde.desktop/Dialog.qml
+  * Draw ScrollView using Frame instead of Edit (kde#429601)
+
+-------------------------------------------------------------------
 Mon Dec  7 17:14:55 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.77.0
