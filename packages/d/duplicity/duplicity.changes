@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 12 01:08:42 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.8.18: 
+  + Onedrive: Support using an external client id / refresh token.
+  + Fix issue #26 Backend b2 backblaze fails with nameprefix
+    restrictions.
+  + Fix issue #29 Backend b2 backblaze fails with nameprefix
+    restrictions.
+  + Report errors if B2 backend does exist but otherwise fails to
+    import.
+  + Added option --log-timestamp to prepend timestamp to log entry.
+  + Patch for Python 3.10.
+
+-------------------------------------------------------------------
 Sun Nov 15 03:16:58 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 0.8.17:
