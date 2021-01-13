@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 13 09:04:32 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.2
+  * In-class constructor declarations without any
+    storage-class-like type are now supported.
+  * Both final and override are now recognized as keywords only
+    in a member function declaration context.
+
+-------------------------------------------------------------------
 Fri Jan  1 17:59:56 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 9.1
