@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 11 21:50:02 UTC 2021 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.4.3:
+  * Added V4L2 support (most webcams and capture cards).
+  * Added option to mark recorded area on screen during recording.
+  * Added JACK metadata.
+  * Optionally support XDG config directory (~/.config/simplescreenrecorder) instead of home directory (~/.ssr).
+  *  Bugfixes.
+
+-------------------------------------------------------------------
 Thu May 21 12:04:01 UTC 2020 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - Update to 0.4.2 (since 0.4.1):
