@@ -104,4 +104,12 @@
 - Remove solarus-1.6.3-desktop-version.patch: Merged upstream.</comment>
     <requestid>793418</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>db9d94323032d225735ee83fee4b1d51</srcmd5>
+    <version>1.6.4</version>
+    <time>1610558620</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>862729</requestid>
+  </revision>
 </revisionlist>

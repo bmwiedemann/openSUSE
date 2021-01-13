@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan  5 21:58:09 UTC 2021 - antoine.belvire@opensuse.org
+
+- Move _service from tar_scm to obs_scm and obscpio format.
+
+-------------------------------------------------------------------
 Sun Apr 12 15:27:07 UTC 2020 - antoine.belvire@opensuse.org
 
 - Update to version 1.6.4:
