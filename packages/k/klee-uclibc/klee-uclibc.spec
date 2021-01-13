@@ -1,7 +1,7 @@
 #
 # spec file for package klee-uclibc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-%define llvm_version 10
-
-%define version_unconverted 1.0.0+git.20200711
+%define llvm_version 11
 
 Name:           klee-uclibc
 Summary:        Libc library for Klee
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Other
-Version:        1.0.0+git.20200711
+Version:        1.2
 Release:        0
 URL:            https://github.com/klee/klee-uclibc
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://github.com/klee/klee-uclibc/archive/klee_uclibc_v%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Source2:        uClibc-locale-030818.tgz
 Patch1:         proper-compiler-flags-check.patch
@@ -57,7 +55,7 @@ LLVM bytecode packed by `ar`. Klee uses this to emulate the POSIX runtime
 development symbolically.
 
 %prep
-%setup -q
+%setup -q -n %{name}-klee_uclibc_v%{version}
 %patch1 -p1
 cp %{SOURCE2} extra/locale/
 sed -i 's@UCLIBC_DOWNLOAD_PREGENERATED_LOCALE_DATA=y@@' klee-premade-configs/x86_64/config

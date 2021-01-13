@@ -135,4 +135,13 @@
 - disable x86_32 as it is unsupported -- there are bugs in klee.</comment>
     <requestid>836442</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4a0ef2dd41a901606838cb42b0d04501</srcmd5>
+    <version>1.2</version>
+    <time>1610558403</time>
+    <user>dimstar_suse</user>
+    <comment>- Update klee to version 2.2, switch to LLVM 11.
+- Go with regular release for now, but leave _service files intact. (forwarded request 862450 from aaronpuchert)</comment>
+    <requestid>862514</requestid>
+  </revision>
 </revisionlist>

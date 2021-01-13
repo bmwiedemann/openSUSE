@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 13 14:14:48 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Switch to regular version 1.2. That's a slight downgrade, as we
+  lose the last two commits, but they aren't relevant here.
+- Switch to LLVM 11.
+
+-------------------------------------------------------------------
 Thu Sep 24 05:31:55 UTC 2020 - jslaby@suse.com
 
 - Update to version 1.0.0+git.20200711:
