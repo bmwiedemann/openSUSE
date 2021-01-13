@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan 13 13:46:10 UTC 2021 - pgajdos@suse.com
+
+- version update to 1.0.0
+  * Updated bundled ruleset from Wikipedia (#23)
+  * Removed Python 2.x and <3.5 compatibility code (#22)
+  * Fixed Travis CI configuration (#21)
+  * Updated bundled ruleset (thanks to Oscar Caballero)
+  * Added --disable option to disable individual rules (thanks to Oscar Caballero)
+  * Fixed behavior when replacement string contains $ symbol (thanks to Oscar Caballero)
+  * Prefer the faster lxml parser when it is installed. lxml is now an optional dependency
+  * (thanks to Oscar Caballero)
+  * Added Python 3.7 support, deprecated Python 3.3 and 3.4.
+- python3 only package
+- use %pytest macro
+
+-------------------------------------------------------------------
 Mon May 18 09:10:33 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

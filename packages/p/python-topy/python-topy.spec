@@ -1,7 +1,7 @@
 #
 # spec file for package python-topy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-topy
-Version:        0.2.2
+Version:        1.0.0
 Release:        0
 Summary:        Tool for fixing typos in text using regular expressions
 License:        MIT AND CC-BY-SA-4.0
 Group:          Development/Languages/Python
 URL:            https://github.com/intgr/topy
-Source:         https://github.com/intgr/topy/archive/v0.2.2.tar.gz#/topy-%{version}.tar.gz
+Source:         https://github.com/intgr/topy/archive/%{version}.tar.gz#/topy-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -35,6 +36,7 @@ Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module beautifulsoup4}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module regex >= 2016.07.14}
 # /SECTION
 %python_subpackages
@@ -57,7 +59,7 @@ sed -i '1 { /^#!/ d }' topy/topy.py
 
 %check
 export LANG=en_US.UTF-8
-%python_exec setup.py test
+%pytest
 
 %post
 %python_install_alternative topy
