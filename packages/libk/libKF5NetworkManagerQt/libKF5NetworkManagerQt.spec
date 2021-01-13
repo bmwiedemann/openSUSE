@@ -1,7 +1,7 @@
 #
 # spec file for package libKF5NetworkManagerQt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define soversion 6
-%define _tar_path 5.77
+%define _tar_path 5.78
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           libKF5NetworkManagerQt
-Version:        5.77.0
+Version:        5.78.0
 Release:        0
 Summary:        A Qt wrapper for NetworkManager DBus API
 License:        LGPL-2.1-only OR LGPL-3.0-only
@@ -41,9 +41,9 @@ BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5Core) >= 5.13.0
-BuildRequires:  cmake(Qt5DBus) >= 5.13.0
-BuildRequires:  cmake(Qt5Network) >= 5.13.0
+BuildRequires:  cmake(Qt5Core) >= 5.14.0
+BuildRequires:  cmake(Qt5DBus) >= 5.14.0
+BuildRequires:  cmake(Qt5Network) >= 5.14.0
 BuildRequires:  pkgconfig(libnm) >= 1.0.0
 
 %description
@@ -56,9 +56,9 @@ settings which are used in DBus communication.
 Summary:        A Qt wrapper for NetworkManager DBus API
 Group:          Development/Libraries/KDE
 Requires:       libKF5NetworkManagerQt%{soversion} = %{version}
-Requires:       cmake(Qt5Core) >= 5.13.0
-Requires:       cmake(Qt5DBus) >= 5.13.0
-Requires:       cmake(Qt5Network) >= 5.13.0
+Requires:       cmake(Qt5Core) >= 5.14.0
+Requires:       cmake(Qt5DBus) >= 5.14.0
+Requires:       cmake(Qt5Network) >= 5.14.0
 Requires:       pkgconfig(libnm) >= 1.0.0
 
 %description devel
