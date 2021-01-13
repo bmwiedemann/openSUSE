@@ -1,7 +1,7 @@
 #
 # spec file for package python-dask
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,68 +27,64 @@
 %endif
 %define         skip_python2 1
 Name:           python-dask%{psuffix}
-Version:        2.25.0
+Version:        2020.12.0
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
 URL:            https://github.com/ContinuumIO/dask/
 Source:         https://files.pythonhosted.org/packages/source/d/dask/dask-%{version}.tar.gz
+BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
-Requires:       python-toolz >= 0.8.2
-Requires:       python-tornado >= 5
 Recommends:     %{name}-array = %{version}
 Recommends:     %{name}-bag = %{version}
 Recommends:     %{name}-dataframe = %{version}
 Recommends:     %{name}-distributed = %{version}
 Recommends:     %{name}-dot = %{version}
 Recommends:     %{name}-multiprocessing = %{version}
-Recommends:     python-cachey
-Recommends:     python-chest
-Recommends:     python-cytoolz >= 0.7.3
-Recommends:     python-hdfs3
-Recommends:     python-lz4
-Recommends:     python-lzmaffi
-Recommends:     python-s3fs >= 0.0.8
-Recommends:     python-scipy
-Recommends:     python-snappy
+Recommends:     python-bokeh >= 1.0.0
+Recommends:     python-cloudpickle >= 0.2.2
+Recommends:     python-cityhash
+Recommends:     python-distributed >= 2.0
+Recommends:     python-fastparquet
+Recommends:     python-fsspec >= 0.6.0
+Recommends:     python-gcsfs >= 0.4.0
+Recommends:     python-murmurhash
+Recommends:     python-partd >= 0.3.10
+Recommends:     python-psutil
+Recommends:     python-pyarrow >= 0.14.0
+Recommends:     python-s3fs >= 0.4.0
+Recommends:     python-SQLAlchemy
+Recommends:     python-toolz >= 0.8.2
+Recommends:     python-xxhash
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module SQLAlchemy}
-BuildRequires:  %{python_module bcolz}
-BuildRequires:  %{python_module bokeh}
-BuildRequires:  %{python_module boto3}
 BuildRequires:  %{python_module cachey}
-BuildRequires:  %{python_module chest}
-BuildRequires:  %{python_module cloudpickle >= 0.2.1}
-BuildRequires:  %{python_module distributed}
-BuildRequires:  %{python_module fsspec >= 0.5.1}
+BuildRequires:  %{python_module cloudpickle >= 0.2.2}
+BuildRequires:  %{python_module distributed >= 2.0}
+# optional zarr needs fsspec >= 0.8.4 if present
+BuildRequires:  %{python_module fsspec >= 0.8.4}
 BuildRequires:  %{python_module graphviz}
-BuildRequires:  %{python_module h5py}
-BuildRequires:  %{python_module jupyter_ipython}
-BuildRequires:  %{python_module lzmaffi}
-BuildRequires:  %{python_module moto}
+BuildRequires:  %{python_module ipython}
+BuildRequires:  %{python_module jsonschema}
+BuildRequires:  %{python_module mimesis}
 BuildRequires:  %{python_module multipledispatch}
-BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pandas >= 0.23.0}
-BuildRequires:  %{python_module pandas-datareader}
-BuildRequires:  %{python_module partd >= 0.3.7}
-BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module numpy >= 1.15.1}
+BuildRequires:  %{python_module pandas >= 0.25.0}
+BuildRequires:  %{python_module partd >= 0.3.10}
+# pytest-xdist is not a hard requirement for testing, but this avoids a hang of
+# pytest on i586 after successfully passing the test suite
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module s3fs >= 0.0.8}
-BuildRequires:  %{python_module scikit-image}
-BuildRequires:  %{python_module scikit-learn}
-BuildRequires:  %{python_module scipy}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module tables}
-BuildRequires:  %{python_module tornado >= 5}
+BuildRequires:  %{python_module toolz >= 0.8.2}
+BuildRequires:  %{python_module zarr}
 BuildRequires:  graphviz
 BuildRequires:  graphviz-gd
 BuildRequires:  graphviz-gnome
-BuildRequires:  python3-sparse
-BuildConflicts: python3-buildservice-tweak
 %endif
 %python_subpackages
 
@@ -124,12 +120,8 @@ This package pulls in all the optional dask components.
 %package array
 Summary:        Numpy-like array data structure for dask
 Requires:       %{name} = %{version}
-Requires:       python-numpy >= 1.13.0
-Recommends:     python-chest
-Recommends:     python-h5py
-Recommends:     python-pandas
-Recommends:     python-scikit-image
-Recommends:     python-scipy
+Requires:       python-numpy >= 1.15.1
+Requires:       python-toolz >= 0.8.2
 
 %description array
 A minimal task scheduling abstraction and parallel arrays.
@@ -148,9 +140,10 @@ arrays using blocked algorithms and task scheduling.
 Summary:        Data structure generic python objects in dask
 Requires:       %{name} = %{version}
 Requires:       %{name}-multiprocessing = %{version}
-Requires:       python-cloudpickle >= 0.2.1
-Requires:       python-fsspec >= 0.5.1
+Requires:       python-cloudpickle >= 0.2.2
+Requires:       python-fsspec >= 0.6.0
 Requires:       python-partd >= 0.3.10
+Requires:       python-toolz >= 0.8.2
 
 %description bag
 A minimal task scheduling abstraction and parallel arrays.
@@ -172,19 +165,12 @@ Summary:        Pandas-like DataFrame data structure for dask
 Requires:       %{name} = %{version}
 Requires:       %{name}-array = %{version}
 Requires:       %{name}-multiprocessing = %{version}
-Requires:       python-fsspec >= 0.5.1
-Requires:       python-numpy >= 1.13.0
-Requires:       python-pandas >= 0.23.0
+Requires:       python-fsspec >= 0.6.0
+Requires:       python-numpy >= 1.15.1
+Requires:       python-pandas >= 0.25.0
 Requires:       python-partd >= 0.3.10
-Requires:       python-six
+Requires:       python-toolz >= 0.8.2
 Recommends:     %{name}-bag = %{version}
-Recommends:     python-SQLAlchemy
-Recommends:     python-bcolz
-Recommends:     python-chest
-Recommends:     python-fastparquet
-Recommends:     python-pandas-datareader
-Recommends:     python-psutil
-Recommends:     python-pyarrow
 
 %description dataframe
 A minimal task scheduling abstraction and parallel arrays.
@@ -241,8 +227,8 @@ This package contains the graphviz dot rendering interface.
 %package multiprocessing
 Summary:        Display dask graphs using graphviz
 Requires:       %{name} = %{version}
-Requires:       python-cloudpickle >= 0.2.1
-Requires:       python-partd >= 0.3.7
+Requires:       python-cloudpickle >= 0.2.2
+Requires:       python-partd >= 0.3.10
 
 %description multiprocessing
 A minimal task scheduling abstraction and parallel arrays.
@@ -268,13 +254,16 @@ This package contains the multiprocessing interface.
 
 %if %{with test}
 %check
-# Tests need network:
-#   test_await
-#   test_serializable_groupby_agg
-#   test_persist
-#   test_local_get_with_distributed_active
-#   test_local_scheduler
-%pytest dask/tests -k 'not (test_serializable_groupby_agg or test_persist or test_local_get_with_distributed_active or test_await or test_local_scheduler)'
+# SECTION These tests need network:
+donttest="test_await"
+donttest+=" or test_serializable_groupby_agg"
+donttest+=" or test_persist"
+donttest+=" or test_local_get_with_distributed_active"
+donttest+=" or test_local_scheduler"
+# /SECTION
+# different seed or mimesis version
+donttest+=" or (test_datasets and test_deterministic)"
+%pytest dask/tests -k "not ($donttest)" -n auto
 %endif
 
 %if !%{with test}
@@ -289,9 +278,9 @@ This package contains the multiprocessing interface.
 %exclude %{python_sitelib}/dask/distributed.py*
 %exclude %{python_sitelib}/dask/dot.py*
 %exclude %{python_sitelib}/dask/multiprocessing.py*
-%exclude %{python3_sitelib}/dask/__pycache__/distributed.*
-%exclude %{python3_sitelib}/dask/__pycache__/dot.*
-%exclude %{python3_sitelib}/dask/__pycache__/multiprocessing.*
+%pycache_only %exclude %{python_sitelib}/dask/__pycache__/distributed.*
+%pycache_only %exclude %{python_sitelib}/dask/__pycache__/dot.*
+%pycache_only %exclude %{python_sitelib}/dask/__pycache__/multiprocessing.*
 
 %files %{python_files all}
 %license LICENSE.txt
@@ -311,17 +300,17 @@ This package contains the multiprocessing interface.
 %files %{python_files distributed}
 %license LICENSE.txt
 %{python_sitelib}/dask/distributed.py*
-%python3_only %{python_sitelib}/dask/__pycache__/distributed.*
+%pycache_only %{python_sitelib}/dask/__pycache__/distributed.*
 
 %files %{python_files dot}
 %license LICENSE.txt
 %{python_sitelib}/dask/dot.py*
-%python3_only %{python_sitelib}/dask/__pycache__/dot.*
+%pycache_only %{python_sitelib}/dask/__pycache__/dot.*
 
 %files %{python_files multiprocessing}
 %license LICENSE.txt
 %{python_sitelib}/dask/multiprocessing.py*
-%python3_only %{python_sitelib}/dask/__pycache__/multiprocessing.*
+%pycache_only %{python_sitelib}/dask/__pycache__/multiprocessing.*
 %endif
 
 %changelog
