@@ -1,7 +1,7 @@
 #
 # spec file for package breeze5-icons
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define _tar_path 5.77
+%define _tar_path 5.78
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -24,7 +24,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           breeze5-icons
-Version:        5.77.0
+Version:        5.78.0
 Release:        0
 Summary:        Breeze icon theme
 License:        LGPL-3.0-only
@@ -41,17 +41,27 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libxml2-tools
 BuildRequires:  python3
 BuildRequires:  python3-lxml
-BuildRequires:  cmake(Qt5Core) >= 5.13.0
-BuildRequires:  cmake(Qt5Test) >= 5.13.0
+BuildRequires:  cmake(Qt5Core) >= 5.14.0
+BuildRequires:  cmake(Qt5Test) >= 5.14.0
 BuildArch:      noarch
 
 %description
 Breeze-icons is a freedesktop.org compatible icon theme.
 
+%package rcc
+Summary:        Breeze icon theme - rcc file
+Group:          System/GUI/KDE
+
+%description rcc
+Breeze-icons is a freedesktop.org compatible icon theme.
+This contains the Breeze (non-dark) icons in a QResource file, used by Kexi.
+
 %prep
 %autosetup -p1 -n breeze-icons-%{version}
 
 %build
+  # For some reason Kexi only wants to use breeze-icons.rcc and not the icons directory,
+  # so build it just for that.
   %cmake_kf5 -d build -- -DBINARY_ICONS_RESOURCE=ON
   %cmake_build
 
@@ -62,7 +72,7 @@ Breeze-icons is a freedesktop.org compatible icon theme.
   ln -s yast-software-group.svg %{buildroot}%{_kf5_iconsdir}/breeze/preferences/32/yast-software.svg
   ln -s yast-software-group.svg %{buildroot}%{_kf5_iconsdir}/breeze-dark/preferences/32/yast-software.svg
 
-  %fdupes -s %{buildroot}%{_kf5_iconsdir}
+  %fdupes %{buildroot}%{_kf5_iconsdir}
 
   %icon_theme_cache_create_ghost breeze
   %icon_theme_cache_create_ghost breeze-dark
@@ -75,7 +85,14 @@ Breeze-icons is a freedesktop.org compatible icon theme.
 %license COPYING*
 %ghost %{_kf5_iconsdir}/breeze/icon-theme.cache
 %ghost %{_kf5_iconsdir}/breeze-dark/icon-theme.cache
+%exclude %{_kf5_iconsdir}/breeze/breeze-icons.rcc
+%exclude %{_kf5_iconsdir}/breeze-dark/breeze-icons-dark.rcc
 %{_kf5_iconsdir}/breeze/
 %{_kf5_iconsdir}/breeze-dark/
+
+%files rcc
+%dir %{_kf5_iconsdir}/breeze
+# Kexi does not need the -dark variant.
+%{_kf5_iconsdir}/breeze/breeze-icons.rcc
 
 %changelog

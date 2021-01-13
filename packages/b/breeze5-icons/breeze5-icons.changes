@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jan  6 14:19:27 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add subpackage with breeze-icons.rcc just for Kexi
+
+-------------------------------------------------------------------
+Wed Jan  6 10:47:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.78.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.78.0
+- Changes since 5.77.0:
+  * fixed a drop shadow, removed a duplicate icon
+  * New compass action icon
+  * Add image-missing icon to theme
+  * Add icon for WIM images
+
+-------------------------------------------------------------------
+Tue Jan  5 22:54:47 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Disable BINARY_ICONS_RESOURCE, it duplicates the size for no good reason
+- Switch to hardlinks for %fdupes
+
+-------------------------------------------------------------------
 Sat Dec  5 18:56:08 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.77.0
