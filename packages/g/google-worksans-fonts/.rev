@@ -36,4 +36,12 @@
     <comment></comment>
     <requestid>814117</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3f9d9b0990a99c68f7fc1ca684dc1caa</srcmd5>
+    <version>2.010</version>
+    <time>1610558407</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release 2.010 (forwarded request 855968 from dancermak)</comment>
+    <requestid>862519</requestid>
+  </revision>
 </revisionlist>

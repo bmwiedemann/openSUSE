@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 15 09:52:56 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 2.010
+- install install WOFF files again as users want them
+- remove _service and start using upstream tarball
+- remove weird space from spec file
+- add doc subpackage including upstream's documentation
+
+-------------------------------------------------------------------
 Wed Jun  3 05:34:50 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Fix _service file to include TTF file instead of just overwriting
