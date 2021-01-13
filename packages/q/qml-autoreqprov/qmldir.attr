@@ -1,0 +1,3 @@
+%__qmldir_provides   %{_rpmconfigdir}/qmldirreqprov.sh --provides
+%__qmldir_requires   %{_rpmconfigdir}/qmldirreqprov.sh --requires
+%__qmldir_path       /qmldir$

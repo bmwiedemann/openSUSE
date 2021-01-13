@@ -1,0 +1,10 @@
+<package name="qml-autoreqprov" project="openSUSE:Factory">
+  <title>Automatic dependency generator for QML files and modules</title>
+  <description>Automatic dependency generator for QML files and modules.
+If installed, rpm uses this to generate Requires of .qml files
+and Provides of QML modules.
+
+</description>
+  <devel project="KDE:Qt5" package="qml-autoreqprov"/>
+  <url>http://www.opensuse.org</url>
+</package>

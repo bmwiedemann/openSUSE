@@ -1,0 +1,63 @@
+#!/bin/bash
+# SPDX-FileCopyrightText: 2020-2021 Fabian Vogt <fabian@ritter-vogt.de>
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+set -euo pipefail
+
+qtver=
+ret=0
+
+while [ $# -gt 0 ]; do
+	case $1 in
+	--qtver)
+		qtver=$2
+		shift
+		;;
+	*)
+		echo "Unknown argument $1" >&2
+		exit 1
+	esac
+	shift
+done
+
+# Guess Qt version
+if [[ -z $qtver ]]; then
+	for ver in $(seq 5 7); do
+		if command -v "qmlimportscanner${ver}" &>/dev/null ||
+		   command -v "qmlimportscanner-qt${ver}" &>/dev/null; then
+		   qtver="${qtver}${ver}"
+		fi
+	done
+	
+	# No qmlimportscanner found - probably building Qt itself,
+	# where these deps aren't needed anyway.
+	[[ -z ${qtver} ]] && exit 0
+
+	if [[ ${#qtver} -ne 1 ]]; then
+		echo "Failed to guess Qt version!" >&2
+		exit 1
+	fi
+fi
+
+declare -A dependencies
+# foundDependency qt5qmlimport(Module.Uri.42) 69
+# In the dependencies array, it sets the version of qt5qmlimport(Module.Uri.42) to 69, if lower
+foundDependency() {
+	if [ ${dependencies[$1]:=0} -lt $2 ]; then
+		dependencies[$1]=$2
+	fi
+}
+
+importscanner="qmlimportscanner${qtver}"
+command -v "$importscanner" &>/dev/null || importscanner="qmlimportscanner-qt${qtver}"
+
+# TODO: Get exit status of qmlimportscanner
+while read import min; do
+	foundDependency "qt${qtver}qmlimport(${import})" "$min"
+done < <(grep -vE '/designer/.*\.qml' | xargs -r "$importscanner" -qmlFiles | jq -r '.[] | select(.type == "module") | .name + " " + .version' | gawk 'match($2, /^([0-9]+)\.([0-9]+)$/, ver) { printf "%s.%d %d\n", $1, ver[1], ver[2]; }')
+
+for export in "${!dependencies[@]}"; do
+	echo "${export} >= ${dependencies["$export"]}"
+done
+
+exit $ret

@@ -1,0 +1,178 @@
+qml-autoreqprov - Automatic generation of Provides and Requires for QML imports
+======
+
+QML is a user interface specification and programming language. Each QML file
+can have import statements at the top, which can either reference files or
+directories directly or modules by identifier and version (major.minor).
+If any of those import statements can't be satisfied, loading fails. For imports
+which are provided by other packages, this maps naturally to Requires statements
+in RPM packages, which enforce that all imports are satisfied on package
+installation.
+
+Direct file/directory imports are ignored here, as those are usually contained
+within a single package and thus not relevant for inter-package dependencies.
+
+TLDR for packagers
+------------------
+
+Packages with system-wide QML modules get Provides like
+`qt5qmlimport(QtQuick.Controls.2) = 15` automatically. Imports in .qml files
+map to RPM requires like `qt5qmlimport(QtQuick.Controls.2) >= 15`, but this is
+currently opt-in and has to be enabled with `%global %_enable_qml_requires 1`
+in .spec files. After adding that, it's important to check that all
+dependendencies are fulfilled, as in some cases a needed `qmlimport` Provides
+is missing. See the "Internal and private exports" section for how to deal with
+that.
+
+How the QML engine imports modules
+----------------------------------
+
+For each module import, the QML engine looks into the import cache to find any
+suitable export with identical identifier and major version and same/higher
+minor version. If there is no match, it goes through the QML import path (with
+a system-wide default) in order with the module identifier and version appended
+in various ways and reads the qmldir file inside. If the qmldir file mentions
+plugins, those are loaded and it can register the exported types. If the import
+can't be satisfied (due to a version mismatch), the search continues.
+
+Mapping to RPM capabilities
+---------------------------
+
+The goal is that all imports for .qml files within a package are satisfied by
+RPM dependencies of that package. This is achieved by adding Provides to
+packages which satisfy a specific module import and Requires to the packages
+with QML files inside. The capability has to include both the full module
+identifier and version. As modules with a different major version are pretty
+much independent, the major version is part of the capabilities' name and the
+minor version is used as the capabilities' version. Additionally, the system
+import paths are specific to a Qt major version, this is also included. The end
+result are QML modules providing capabilities like:
+
+`Provides: qt5qmlimport(QtQuick.Controls.2) = 15`
+
+On the import side, packages with QML files get requirements like:
+
+`Requires: qt5qmlimport(QtQuick.Controls.2) >= 13`
+for a statement like `import QtQuick.Controls 2.13`. The `>=` is there so that
+modules with a higher minor version satisfy it as well.
+
+Generating Requires from .qml files
+-----------------------------------
+
+As can be seen, mapping QML import statements to RPM requires is
+straightforward, and even made easier by using the `qmlimportscanner` tool from
+qtdeclarative combined with `jq` to convert its JSON output with some filtering
+directly into the capabilities format for RPM.
+
+There is one tricky part though: QML files are (intentionally) not tied to any
+specific version of Qt, while QML modules are (though the Qt version specific
+import paths and binary plugins). So when generating the list of required
+imports, those are tied to a specific Qt major version. Currently this is
+automatically detected by looking at which versions of qmlimportscanner are
+installed. If multiple versions are found, the requires scanner aborts. This
+can be overwritten by setting a variable in the .spec file (unfortunately not
+possible per subpackage):
+
+`%global %__qml_requires_opts --qtver 5`
+
+To avoid that missing qmlimport provides (see "Internal and private exports")
+make previously working packages unresolvable, generation of requires is opt-in
+and needs to be enabled by defining `%_enable_qml_requires`:
+
+`%global %_enable_qml_requires 1`
+
+Currently, only .qml files directly part of the package are handled, so if
+those are part of a resources file embedded into an executable or library, they
+will not be read. Making this possible needs more research and effort.
+
+Generating Provides from qmldir files
+-------------------------------------
+
+Every module installed into the QML import path contains aqmldir` file with
+metainformation. They usually contain a `module` line which specifies the
+identifier (those which don't are ignored) and a list of exports and plugins.
+Just the module identifier is not enough to generate the capability, major and
+corresponding minor version(s) are also needed. For each major version, only
+the highest minor version is stored, as it also satisfies imports with a lower
+minor version.
+
+Handling direct exports are easy, as they mention the major and minor version
+directly, which combined with the Qt version (derived from the location the
+qmldir file is installed to) results in a capability. For plugins, it's not as
+easy though, those actually have to be loaded to get their registrations.
+While `qtdeclarative` provides a tool called `qmlplugindump`, which lists all
+exported types in a QML format, it uses the QML engine for loading plugins,
+which requires the module identifier and a version. In addition to that, it
+just doesn't work at all sometimes and does not provide all necessary
+information (like pure module exports, which just bump the available minor
+version without exporting any new type revisions).
+
+To get a list of all versioned exports made by a plugin, a new tool called
+`qmlpluginexports` specifically for that was written. It uses private API to
+load a plugin without specifying a version and then iterates through all known
+types to get their versions. It also handles lazy registration using
+QQmlModuleRegistration and qmlRegisterModule by implementing the underlying
+modules, which overrides the symbols in the Qt libraries (symbols in
+executables have higher priority than public symbols from shared objects) to
+store the information and then forwarding the call to the Qt library.
+
+As loading a plugin also triggers loading of all dependencies, it's possible
+that those register their own exports as well. So only exports including the
+module identifier from the `qmldir` file are used and others are ignored. For
+instance, the plugin for `QtQuick.Controls.2` also registers
+`QtQuick.Controls.impl.2`.
+
+Internal and private exports
+----------------------------
+
+The automatic generation of import requirements uses every module import in
+installed .qml files. In some cases, those imports are not for system-wide
+modules, but for imports provided by code in shared libraries and executables,
+usable only in .qml files loaded by those. Provides for those can't be
+generated, but the requirement will be, which makes the package unsatisfiable
+due to missing dependencies. How to deal with that depends on the export
+itself.
+
+RPM dependencies are inter-package, so if an export is only used within a
+package (for instance, an application with its UI), it's fine to filter it
+out from requires and provides like this:
+
+```
+%global __requires_exclude (org.kde.private.kcms.kwin.effects)|(org.kde.kcms.kwinrules)
+%global __provides_exclude (org.kde.private.kcms.kwin.effects)|(org.kde.kcms.kwinrules)
+```
+
+Truly private exports are usually not found by the generation of provided
+capabilities, so the latter is normally not necessary.
+
+The opposite case is when an application or library registers exports for use
+by other packages (e.g. Plasma applets) which aren't available as system wide
+QML imports. Those shouldn't simply be filtered out, as other packages actually
+make use of it. Instead, the capability has to be provided manually, e.g.
+
+```
+Provides:       qt5qmlimport(org.kde.plasma.configuration.2) = 0
+Provides:       qt5qmlimport(org.kde.plasma.plasmoid.2) = 0
+```
+
+qtdeclarative-imports-provides
+------------------------------
+
+The qml-autoreqprov scripts need qmlimportscanner from qtdeclarative to
+generate Requires and for `qmldir` files with `plugin` lines `qmlpluginexports`
+is required. The latter needs qtdeclarative to be built. This is a problem,
+because qtdeclarative provides important exports, which have to be available as
+RPM capabilities as well. Making qml-autoreqprov and its dependencies available
+during build of qtdeclarative would cause a build cycle. To work around that,
+a "stub" package installs qtdeclarative during build and runs the provides
+generator for each relevant qtdeclarative package, to map the exports to the
+corresponding package.
+
+TODO
+----
+
+Is special treatment for baselibs.conf needed?
+How do .qmlc files relate to this?
+RPM doesn't seem to merge "foo >= 10" and "foo >= 11", so there are redundant
+requirements generated. As the generator is run for each file separately, it's
+not directly possible to work around that.
