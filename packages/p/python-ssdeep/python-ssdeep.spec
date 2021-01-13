@@ -1,7 +1,7 @@
 #
 # spec file for package python-ssdeep
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,7 +56,7 @@ content and length.
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_exec setup.py test
+%pytest_arch
 
 %files %{python_files}
 %{python_sitearch}/*
