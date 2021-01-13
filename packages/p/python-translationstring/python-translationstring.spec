@@ -1,7 +1,7 @@
 #
 # spec file for package python-translationstring
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,7 @@ License:        SUSE-Repoze
 Group:          Development/Languages/Python
 URL:            https://github.com/Pylons/translationstring
 Source:         https://files.pythonhosted.org/packages/source/t/translationstring/translationstring-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  git
@@ -73,7 +74,7 @@ pushd docs && PYTHONPATH=%{buildroot}%{python3_sitelib} make html && rm _build/h
 popd
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %license LICENSE.txt
