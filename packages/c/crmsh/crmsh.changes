@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Tue Jan 12 00:29:09 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1610410636.fef21a41:
+  * Dev: unittest: add unit test for sbd uuid related codes
+  * Fix: bootstrap: make sure sbd device UUID was the same between nodes(bsc#1178454)
+
+-------------------------------------------------------------------
+Fri Jan 08 01:18:33 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1610068052.ef5f2e6c:
+  * Fix: completers: return complete start/stop resource id list correctly(bsc#1180137)
+  * Dev: Makefile.am: change makefile to integrate preflight_check
+  * Medium: integrate preflight_check into crmsh
+
+-------------------------------------------------------------------
+Thu Jan 07 03:05:37 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1609987436.0d3a9bf5:
+  * Dev: unittest: add test data for possible tun0 interface
+  * Fix: utils: skip if no netmask in the result of ip -o addr show(bsc#1180421)
+
+-------------------------------------------------------------------
+Tue Dec 29 03:35:19 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1609212218.f5948b3b:
+  * Fix: bootstrap: add /etc/modules-load.d/watchdog.conf into csync.cfg(bsc#1180424)
+
+-------------------------------------------------------------------
+Mon Dec 28 08:57:45 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1609145188.39d42c2e:
+  * Dev: unittest: adjust unit test for bootstrap.invoke change
+  * Low: bootstrap: make invoke return specific error(bsc#1177023)
+
+-------------------------------------------------------------------
+Thu Dec 24 08:36:11 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1608798184.58fd399e:
+  * Dev: test: add timeout-minutes to each test job
+
+-------------------------------------------------------------------
+Wed Dec 23 09:58:36 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1608715188.e14964a8:
+  * Dev: behave: adjust functional test for scenarios in lock.py
+  * Dev: unittest: add unit test for lock.py
+  * Fix: bootstrap: Refactor join_lock.py for more generic using purpose
+
+-------------------------------------------------------------------
+Wed Dec 16 09:01:48 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1608108646.71447e68:
+  * Dev: unittest: adjust unit test for utils.ping_node
+  * Dev: bootstrap: use ping to test host is reachable before joining
+
+-------------------------------------------------------------------
+Tue Dec 15 08:14:05 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1608018611.d57681b8:
+  * Dev: unittset: adjust unit test code for setup_passwordless_with_other_nodes function
+  * Low: bootstrap: check cluster was running on init node
+
+-------------------------------------------------------------------
 Fri Dec 04 09:56:18 UTC 2020 - XLiang@suse.com
 
 - Update to version 4.2.0+git.1607075079.a25648d8:
