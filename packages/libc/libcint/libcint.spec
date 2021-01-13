@@ -21,7 +21,7 @@
 %define libname %{name}%{major}
 %define develname   cint
 Name:           libcint
-Version:        %{major}.%{minor}.6
+Version:        %{major}.%{minor}.7
 Release:        0
 Summary:        General Gaussian-type orbitals integrals for quantum chemistry
 License:        BSD-2-Clause
