@@ -1,7 +1,7 @@
 #
 # spec file for package smplayer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           smplayer
-Version:        20.6.0
+Version:        21.1.0
 Release:        0
 Summary:        Complete frontend for MPV
 License:        GPL-2.0-or-later
@@ -54,8 +54,8 @@ BuildRequires:  pkgconfig(xext)
 Requires:       mpv >= 0.6.2
 Recommends:     smplayer-lang
 Recommends:     smplayer-skins
-Suggests:       smplayer-themes
 Recommends:     youtube-dl
+Suggests:       smplayer-themes
 
 %description
 SMPlayer is a front-end for MPV/MPlayer, from basic features like

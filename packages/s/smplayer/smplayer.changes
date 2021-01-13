@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 11 18:49:11 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 21.1.0:
+  * Try to prevent the video outside the GUI when using Wayland.
+  * The shuffle button in the playlist window can be turned on/off.
+  * Add an option to display the remaining time in the status bar.
+  * Add cache in seconds and cache speed to the OSD info.
+  * (Find subtitles) Add filters for Spanish and Portuguese languages.
+  * Add mpsub to the extension list.
+  * Pass the option gpu-context when using wayland.
+  * (Playlist) Fix position number after adding files.
+  * Hide the shuffle column by default.
+  * Try to prevent a crash when using the actions play next/prev
+    very fast.
+
+-------------------------------------------------------------------
 Sat Sep  5 12:19:58 UTC 2020 - aloisio@gmx.com
 
 - Update to version 20.6
