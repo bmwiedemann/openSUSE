@@ -1,7 +1,7 @@
 #
 # spec file for package python-watchdog
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-watchdog
-Version:        0.10.3
+Version:        1.0.2
 Release:        0
 Summary:        Filesystem events monitoring
 License:        Apache-2.0
 URL:            https://github.com/gorakhargosh/watchdog
 Source:         https://files.pythonhosted.org/packages/source/w/watchdog/watchdog-%{version}.tar.gz
-BuildRequires:  %{python_module pathtools >= 0.1.1}
-BuildRequires:  %{python_module pytest-timeout}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -37,6 +35,11 @@ Requires:       python-pathtools >= 0.1.1
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module pathtools >= 0.1.1}
+BuildRequires:  %{python_module pytest-timeout}
+BuildRequires:  %{python_module pytest}
+# /SECTION test
 %python_subpackages
 
 %description
