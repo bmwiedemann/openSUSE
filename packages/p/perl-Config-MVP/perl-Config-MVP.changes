@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 10 03:07:15 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.200012
+   see /usr/share/doc/packages/perl-Config-MVP/Changes
+
+  2.200012  2021-01-09 19:51:18-05:00 America/New_York
+          - don't try to array-dereference non-array references (thanks, Sven
+            Kirmess)
+
+-------------------------------------------------------------------
 Sun Apr 22 05:08:17 UTC 2018 - coolo@suse.com
 
 - updated to 2.200011
