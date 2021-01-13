@@ -1,7 +1,7 @@
 #
 # spec file for package FlightGear-data
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define main_version 2020.3
 Name:           FlightGear-data
-Version:        %{main_version}.4
+Version:        %{main_version}.5
 Release:        0
 Summary:        FlightGear base scenery and data files
 License:        GPL-2.0-only
@@ -70,7 +70,8 @@ find . -type f -name \*\.zip -print -delete
 find . -type f -name \*\.blend -print -delete
 # Unbundle fonts
 pushd ./Fonts/LiberationFonts/
-for font in Liberation*ttf ; do
+for font in Liberation*.ttf ; do
+  [ -f %{_datadir}/fonts/truetype/$font ] || continue
   rm $font
   ln -s %{_datadir}/fonts/truetype/$font $font
 done
@@ -102,6 +103,8 @@ find %{buildroot}%{_defaultdocdir}/%{name} -type f -empty -print -delete
 
 # Recompress png files - do this after deduplication
 find %{buildroot} -type f -name '*.png' -print0 | xargs -0 -n 10 -P 0 optipng 2>&1 | grep -E 'Processing:|Output\ file'
+# And deduplicate again, repository has some files which only differ in color format
+%fdupes -s %{buildroot}/%{_datadir}/flightgear
 
 %files
 %license COPYING
