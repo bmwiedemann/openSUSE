@@ -1,7 +1,7 @@
 #
 # spec file for package krunner
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5Runner5
-%define _tar_path 5.77
+%define _tar_path 5.78
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           krunner
-Version:        5.77.0
+Version:        5.78.0
 Release:        0
 Summary:        KDE Framework for providing different actions given a string query
 License:        LGPL-2.1-or-later
@@ -40,6 +40,7 @@ Source99:       baselibs.conf
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
+BuildRequires:  cmake(KF5Activities) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Config) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
@@ -49,9 +50,9 @@ BuildRequires:  cmake(KF5Service) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Solid) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5ThreadWeaver) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Gui) >= 5.13.0
-BuildRequires:  cmake(Qt5Quick) >= 5.13.0
-BuildRequires:  cmake(Qt5Test) >= 5.13.0
+BuildRequires:  cmake(Qt5Gui) >= 5.14.0
+BuildRequires:  cmake(Qt5Quick) >= 5.14.0
+BuildRequires:  cmake(Qt5Test) >= 5.14.0
 
 %description
 KDE Framework for providing different actions given a string query.
@@ -69,7 +70,7 @@ Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(KF5Plasma) >= %{_kf5_bugfix_version}
-Requires:       cmake(Qt5Core) >= 5.13.0
+Requires:       cmake(Qt5Core) >= 5.14.0
 Conflicts:      kapptemplate <= 16.03.80
 
 %description devel

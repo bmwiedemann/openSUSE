@@ -673,4 +673,16 @@
     <comment>KDE Frameworks 5.77</comment>
     <requestid>855458</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>485ee294d7b41bb33bf5af6fbdbe9cd0</srcmd5>
+    <version>5.78.0</version>
+    <time>1610558333</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.78.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.78.0
+- Too many changes to list here.</comment>
+    <requestid>861993</requestid>
+  </revision>
 </revisionlist>
