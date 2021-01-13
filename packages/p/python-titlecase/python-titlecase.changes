@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 13 14:28:10 UTC 2021 - pgajdos@suse.com
+
+- do not nose, but %pytest
+
+-------------------------------------------------------------------
 Fri Jul 24 08:17:11 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.1.1

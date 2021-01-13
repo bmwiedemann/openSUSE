@@ -1,7 +1,7 @@
 #
 # spec file for package python-titlecase
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module nose >= 1.0}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -57,7 +57,7 @@ York Times Manual of Style, plus some others like 'vs' and 'v'.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_bin_suffix} titlecase.tests
+%pytest titlecase/tests.py
 
 %post
 %python_install_alternative titlecase
