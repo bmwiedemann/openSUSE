@@ -17,15 +17,13 @@
 
 
 Name:           ibus-table
-Version:        1.9.21
+Version:        1.12.3
 Release:        0
 Summary:        The Table engine for IBus platform
 License:        LGPL-2.1-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/mike-fabian/ibus-table/
 Source:         https://github.com/mike-fabian/ibus-table/releases/download/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE ibus-table_fix_other_tables_compile_error.patch bnc#1160315 qzhao@suse.com -- Fix ibus other tables compile error.
-Patch0:         ibus-table_fix_other_tables_compile_error.patch
 BuildRequires:  docbook-utils-minimal
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
@@ -51,7 +49,6 @@ This package contains the files required for the development of ibus-table.
 
 %prep
 %setup -q
-%patch0 -p1
 chmod -x AUTHORS COPYING README
 
 %build

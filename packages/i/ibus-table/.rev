@@ -228,4 +228,78 @@
     <comment></comment>
     <requestid>777492</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>be4add74dfbcfad3936ee7ede2df4e46</srcmd5>
+    <version>1.12.3</version>
+    <time>1610558628</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop ibus-table_fix_other_tables_compile_error.patch, fixed in the
+  upstream version 1.9.23
+  
+- Update version to 1.12.3
+  * Pass the key for the command 'cancel' (default Esc) through if the preedit
+    is empty (Resolves: #64)
+- Update version to 1.12.2
+  * Update translations from Weblate (updated ca, cs, es, fa, ja, pt_BR, pt_PT,
+    tr, zh_CN, zh_HK, zh_TW)
+  
+- Update version to 1.12.1
+  * Enable compose support.
+  * Add buttons to move key bindings for a command up or down.
+  * Make translations of 'Edit key bindings for command “%s”' work
+  * Added it_util.py to POTFILES, it had translatable strings for the “About”
+    dialog and the key settings dialog.
+  * Update translations from Weblate (updated ca, de, fr, tr, uk)
+- Update version to 1.12.0
+  * New setup tool, now keybindings can be configured with a GUI.
+  * Resolves: #57
+  * Resolves: https://bugzilla.redhat.com/show_bug.cgi?id=1133127
+  * Put exact (except tone) pinyin matches next after exact
+  * matches in the candidate list.
+  * Resolves: #63
+  * Allow lookup table orientation “System Default” in the setup
+  * Remove “spacekeybehavior” option, it became useless as all
+  * keybindings are configurable now.
+  * Added a “debuglevel” option.
+  * Update translations from Weblate (updated ca, cs, de, es, fa, fr, ja, pt_BR,
+    pt_PT, uk, zh_TW, zh_HK, zh_CN)
+- Update version to 1.11.0
+  * Make key bindings configurable (Only via the command line for the moment,
+    not yet easy to do for normal users. I have to rewrite the setup tool
+    eventually to make that possible)
+  * Resolves: ibus/ibus#2241
+  * Resolves: mike-fabian#41
+- Update version to 1.10.1
+  * Add GUI test
+  * Make output of ibus-table-createdb deterministic
+  * Update translations from Weblate (updated fr, tr, zh_CN)
+- Update version to 1.10.0
+  * Add suggestion mode feature (Resolves: mike-fabian#9 and rhbz#835376)
+  * Add test cases for suggestion mode feature
+  * Fix problems with the behaviour of the property menus
+  * Use python logging module with log file rotation instead of writing to
+    stdout/stderr
+  * Update translations from Weblate (updated de, es, fr, pt_BR, pt_PT, tr, uk)
+- Update version to 1.9.25
+  * Fix crash when changing some options using the menu or the floating
+    panel (Resolves: mike-fabian#26)
+  * Translation updates (pt_PT)
+- Update version to 1.9.24
+  * Fixed two typos in message ids (Thanks to Rafael Fontenelle)
+  * Translation updates (tr, fr, fa, pt, uk)
+  * New test cases for ibus-table-others
+- Update version to 1.9.23
+  * Add exist_ok=True in os.makedirs(path, exist_ok=True) to avoid
+    failure due to race condition.
+    Resolves: https://bugzilla.redhat.com/show_bug.cgi?id=1786652
+  * Move MockEngine classes into a separate file and make test_itb.py
+    runnable standalone
+  * Translation updates for several languages (French at 100% now, Brazilian
+    Portuguese at 100% now, Porguguese (Portugal) new and now at 31.5%)
+  
+- Update version to 1.9.22
+  * Add Turkish translation from Weblate, 100% translated
+  * Minor translation fixes in some other languages (Punctuation fixes) (forwarded request 862718 from wsxy162)</comment>
+    <requestid>862763</requestid>
+  </revision>
 </revisionlist>
