@@ -1,7 +1,7 @@
 #
 # spec file for package eyeD3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,9 @@ License:        GPL-2.0-or-later AND GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://eyed3.readthedocs.io/en/latest/
 Source:         https://files.pythonhosted.org/packages/source/e/eyeD3/eyeD3-%{version}.tar.gz
+BuildRequires:  python3-deprecation
 BuildRequires:  python3-devel
+BuildRequires:  python3-filetype
 BuildRequires:  python3-scipy
 BuildRequires:  python3-setuptools
 BuildArch:      noarch
