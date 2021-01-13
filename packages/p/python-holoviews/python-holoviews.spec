@@ -18,7 +18,6 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without  test
-%bcond_without  python2
 Name:           python-holoviews
 Version:        1.14.0
 Release:        0
@@ -65,7 +64,7 @@ Suggests:       python-dask
 Suggests:       python-scipy
 Suggests:       python-shapely
 Suggests:       python-scikit-image
-%if %python_flavor != python2
+%if "%python_flavor" != "python2"
 Suggests:       python-spatialpandas
 Suggests:       python-pyarrow < 1.0
 Suggests:       python-ibis-framework >= 1.3
@@ -97,11 +96,6 @@ BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module shapely}
 BuildRequires:  %{python_module streamz >= 0.5.0}
 BuildRequires:  %{python_module xarray >= 0.10.4}
-%if %{with python2}
-BuildRequires:  python-ibis-framework >= 1.3
-BuildRequires:  python-pyarrow < 1.0
-BuildRequires:  python-spatialpandas
-%endif
 %endif
 %python_subpackages
 

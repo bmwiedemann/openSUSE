@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 13 01:18:15 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- rpm 4.16 requires strings to be inside quotes for conditionals
+- remove wrong python2 BuildRequires
+
+-------------------------------------------------------------------
 Sun Jan  3 00:13:35 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to v1.14.0
