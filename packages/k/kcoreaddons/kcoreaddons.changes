@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jan  6 10:47:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.78.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.78.0
+- Changes since 5.77.0:
+  * Port KJobTrackerInterface to Qt5 connect syntax
+  * Fix clazy warnings and silence deprecations
+  * KTextToHtml: fix assert due to out of bounds at() call
+  * Use flat hierarchy for plugin paths on Android
+  * KTextToHtml: minor code optimisation
+  * Remove ifdefs, we require Qt 5.14 now
+  * Use a separate logging category for desktoptojson's use of desktopfileparser
+  * desktop to JSON conversion: ignore "Actions=" entry
+  * Deprecate KProcess::pid()
+  * ktexttohtml: fix KTextToHTMLHelper usage
+
+-------------------------------------------------------------------
 Sat Dec  5 18:56:21 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.77.0
@@ -6,7 +25,6 @@ Sat Dec  5 18:56:21 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
   * For more details please see:
   * https://kde.org/announcements/kde-frameworks-5.77.0
 - Changes since 5.76.0:
-  * Port some usage of QStringRef to QStringView
   * [ktexttohtml] Add test case for empty text
   * Make int to QChar conversion explicit
   * Remove unused include
