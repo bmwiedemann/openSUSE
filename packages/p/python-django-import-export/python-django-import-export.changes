@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 12 14:17:53 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v2.5.0
+  * Changed the default value for IMPORT_EXPORT_CHUNK_SIZE to 100
+  * Add translation for Korean
+  * Update linting, CI, and docs
+
+-------------------------------------------------------------------
 Sun Nov 29 11:03:58 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite
