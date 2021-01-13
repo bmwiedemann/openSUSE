@@ -1,7 +1,7 @@
 #
 # spec file for package python-restview
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pygments}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module readme_renderer}
 # /SECTION
 %python_subpackages
@@ -57,7 +58,7 @@ A viewer for ReStructuredText documents that renders them on the fly.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %post
 %python_install_alternative restview
