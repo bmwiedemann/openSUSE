@@ -531,4 +531,27 @@
 </comment>
     <requestid>858537</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>25d866e385cc894d0d28c0cec62e64d5</srcmd5>
+    <version>3.28.0</version>
+    <time>1610558593</time>
+    <user>dimstar_suse</user>
+    <comment>- Add no-cloudscraper.patch to avoid need to use cloudscraper
+- Update to 3.28.0:
+  - **Disable adapter_fanfictionnet with warning about site
+    blocking.**
+  - Catch exception from emails not decoding, skip
+    &amp; logger.error().
+  - Add a fake get_image_size() method for when no image
+    processing available. Closes #621 (CLI only)
+  - Change adapter_twilightednet to https
+  - Change for adapter_fanfictionnetadapter_fanfictionnet to make
+    skip_author_cover work again.
+  - Make included certifi and requests use same tmp file code and
+    store under calibre tmp dir for cleanup.
+  - Add append_datepublished_to_storyurl option for
+    storiesonline.net, finestories.com, scifistories.com only.
+</comment>
+    <requestid>862684</requestid>
+  </revision>
 </revisionlist>

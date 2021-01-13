@@ -1,7 +1,7 @@
 #
 # spec file for package python-fanficfare
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fanficfare
-Version:        3.27.0
+Version:        3.28.0
 Release:        0
 Summary:        Tool for making eBooks from stories on fanfiction and other web sites
 License:        GPL-3.0-only
@@ -29,6 +29,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/JimmXinu/FanFicFare
 Source:         https://github.com/JimmXinu/%{modname}/archive/v%{version}/%{modname}-%{version}.tar.gz
 # Source:         %%{modname}-%%{version}.tar.gz
+# PATCH-FEATURE-OPENSUSE no-cloudscraper.patch mcepl@suse.com
+# don't use cloudscraper
+Patch0:         no-cloudscraper.patch
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module html2text}
@@ -39,7 +42,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-beautifulsoup4
 Requires:       python-chardet
-Requires:       python-cloudscraper
 Requires:       python-html2text
 Requires:       python-html5lib
 Requires:       python-setuptools
