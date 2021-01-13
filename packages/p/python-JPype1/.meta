@@ -1,0 +1,5 @@
+<package name="python-JPype1" project="openSUSE:Factory">
+  <title></title>
+  <description>Python to Java bridge</description>
+  <devel project="devel:languages:python" package="python-JPype1"/>
+</package>
