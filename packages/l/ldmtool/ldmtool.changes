@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan  5 11:11:11 UTC 2021 - olaf@aepfle.de
+
+- Adjust Remove-deprecated-g_type_class_add_private.patch to fix build
+
+-------------------------------------------------------------------
 Tue Feb 25 08:30:24 UTC 2020 - Antoine Ginies <aginies@suse.com>
 
 - update to version 0.2.4

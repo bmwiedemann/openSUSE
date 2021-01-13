@@ -72,13 +72,13 @@ Contains libraries and header files for developing applications using
 %{srcname}.
 
 %prep
-%setup -q -n %{srcname}-%{version}
-%patch0 -p0
+%autosetup -p1 -n %{srcname}-%{version}
 
 %build
-./autogen.sh
+gtkdocize
+autoreconf -fiv
 %configure --disable-static --enable-gtk-doc
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -89,28 +89,15 @@ find "%buildroot" -type f -name '*.la' -delete
 %postun -n %{srcname}-%{sover} -p /sbin/ldconfig
 
 %files
-%if 0%{?suse_version} > 1320 || 0%{?leap_version} >= 420200
 %license COPYING.gpl
-%else
-%doc COPYING.gpl
-%endif
 %{_bindir}/ldmtool
 %{_mandir}/man1/ldmtool.1.gz
 
 %files -n %{srcname}-%{sover}
-%if 0%{?suse_version} > 1320 || 0%{?leap_version} >= 420200
 %license COPYING.lgpl
-%else
-%doc COPYING.lgpl
-%endif
 %{_libdir}/*.so.*
 
 %files -n %{srcname}-%{sover}-devel
-%if 0%{?suse_version} > 1320 || 0%{?leap_version} >= 420200
-%license COPYING.lgpl
-%else
-%doc COPYING.lgpl
-%endif
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/ldm-1.0.pc
