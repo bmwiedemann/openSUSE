@@ -17,15 +17,15 @@
 
 
 Name:           ibus-table-chinese
-Version:        1.8.3~pre.1531454400.f1f6a33
+Version:        1.8.3
 Release:        0
 Summary:        Various Chinese input method table for the IBus framework
 License:        GPL-3.0-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/definite/ibus-table-chinese
-Source:         %{name}-%{version}.tar.xz
-Source1:        cmake-fedora-1501567859.7d52977.tar.xz
+Source:         https://github.com/definite/ibus-table-chinese/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
+BuildRequires:  cmake-fedora-modules
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ibus-table)
 BuildArch:      noarch
@@ -200,20 +200,14 @@ YongMa input method.
 
 %prep
 %setup -q
-# fix for cmake-fedora
-rm -rf cmake-fedora
-mkdir -p cmake-fedora
-tar -xf %{S:1} --strip-components=1 -C cmake-fedora
-cp -r cmake-fedora/Modules .
 sed -i 's/\r//' tables/wubi-haifeng/COPYING
-touch .gitignore
 
 %build
 export PYTHON=python3
 cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
       -DDATA_DIR=%{_datadir} \
       -DPRJ_DOC_DIR=%{_docdir}/%{name} \
-      -DCMAKE_FEDORA_TMP_DIR=. .
+      -DCMAKE_FEDORA_TMP_DIR=.
 make -j1 V=1
 
 %install

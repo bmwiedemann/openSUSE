@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 12 22:06:52 UTC 2021 - Dingzhong Chen <wsxy162@gmail.com>
+
+- Update to official release 1.8.3
+  * SUMMARY=Add Suggestion mode to wubi; fix cangjie 3 and 5; fix
+    description for stroke5
+  * BODHI_UPDATE_TYPE=bugfix
+  * REDHAT_BUGZILLA=1099380
+  * [Changes]
+    - GH Pull 13 Fix description stroke5 in project.spec.in
+    - GH Pull 14 Freezed cangjie 3 and 5's candidate order
+    - GH Pull 15 Add SUGGESTION_MODE = TRUE to the wubi tables
+- Drop Source cmake-fedora, add BuildRequires cmake-fedora-modules
+
+-------------------------------------------------------------------
 Fri Oct 05 12:15:28 UTC 2020 - Cliff Zhao <qzhao@suse.com>
 
 - Update ibus-table-chinese.spec: change the copyright to use

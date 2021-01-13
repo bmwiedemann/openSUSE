@@ -201,4 +201,21 @@
     <comment></comment>
     <requestid>840299</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>45257eedb78834a609e2fc406f2c1be8</srcmd5>
+    <version>1.8.3</version>
+    <time>1610558626</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to official release 1.8.3
+  * SUMMARY=Add Suggestion mode to wubi; fix cangjie 3 and 5; fix
+    description for stroke5
+  * BODHI_UPDATE_TYPE=bugfix
+  * REDHAT_BUGZILLA=1099380
+  * [Changes]
+    - GH Pull 13 Fix description stroke5 in project.spec.in
+    - GH Pull 14 Freezed cangjie 3 and 5's candidate order
+    - GH Pull 15 Add SUGGESTION_MODE = TRUE to the wubi tables
+- Drop Source cmake-fedora, add BuildRequires cmake-fedora-modules (forwarded request 862749 from wsxy162)</comment>
+    <requestid>862761</requestid>
+  </revision>
 </revisionlist>
