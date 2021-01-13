@@ -7,4 +7,16 @@
     <comment>- Update to GCE initialization code</comment>
     <requestid>850506</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>32d90b6439612b03d20880207c4387c3</srcmd5>
+    <version>20201211.00</version>
+    <time>1610558533</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20201211.00
+  * Require snapshot scripts to live under /etc/google/snapshots (#90)
+  * Adding support for Windows user account password lengths
+    between 15 and 255 characters. (#91)
+  * Adding bkatyl to OWNERS (#92) (forwarded request 862464 from glaubitz)</comment>
+    <requestid>862630</requestid>
+  </revision>
 </revisionlist>

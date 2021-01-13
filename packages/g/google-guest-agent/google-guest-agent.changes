@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 12 01:16:48 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20201211.00
+  * Require snapshot scripts to live under /etc/google/snapshots (#90)
+  * Adding support for Windows user account password lengths
+    between 15 and 255 characters. (#91)
+  * Adding bkatyl to OWNERS (#92)
+
+-------------------------------------------------------------------
 Tue Nov 24 13:05:17 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20201102.00 (bsc#1179031, bsc#1179032)

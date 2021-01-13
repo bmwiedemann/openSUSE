@@ -1,7 +1,7 @@
 #
 # spec file for package google-guest-agent
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           google-guest-agent
-Version:        20201102.00
+Version:        20201211.00
 Release:        0
 Summary:        Google Cloud Guest Agent
 License:        Apache-2.0
@@ -39,7 +39,7 @@ BuildRequires:  go1.14
 Requires:       google-guest-configs
 Provides:       google-compute-engine-init = %{version}
 Obsoletes:      google-compute-engine-init < %{version}
-BuildRoot:      %{_tmppath}/%{repo}-%{version}-build
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  golang-packaging
 
