@@ -1081,4 +1081,11 @@
     <user>dimstar_suse</user>
     <comment>Add adwaita-icon-theme to X11 rescue CD</comment>
   </revision>
+  <revision rev="134" vrev="134">
+    <srcmd5>8feaa108e8957031aeea0211a70a8389</srcmd5>
+    <version>unknown</version>
+    <time>1610548634</time>
+    <user>dimstar_suse</user>
+    <comment>Drop cypress firmware</comment>
+  </revision>
 </revisionlist>
