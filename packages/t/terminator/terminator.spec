@@ -1,7 +1,7 @@
 #
 # spec file for package terminator
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global __requires_exclude typelib\\(Gnome\\)
 Name:           terminator
-Version:        1.92
+Version:        2.1.0
 Release:        0
 Summary:        Store and run multiple GNOME terminals in one window
 License:        GPL-2.0-only
@@ -33,6 +33,9 @@ BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  python3-devel
+BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest-runner
+BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 Requires:       python3-cairo
 Requires:       python3-configobj
@@ -54,8 +57,7 @@ arrangements of terminals for different tasks.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p0
+%autosetup -p0
 
 # remove pointless shebangs
 sed -i '/#! \?\/usr.*/d' terminatorlib/*.py
@@ -99,8 +101,7 @@ desktop-file-install --vendor="" --dir=%{buildroot}%{_datadir}/applications data
 %{_mandir}/man1/%{name}.*
 %{_mandir}/man5/%{name}_config.*
 %{python3_sitelib}/*
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/metainfo/%{name}.metainfo.xml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/*/%{name}*.png
 %{_datadir}/icons/hicolor/*/*/%{name}*.svg

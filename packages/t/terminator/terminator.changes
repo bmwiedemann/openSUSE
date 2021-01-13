@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Jan 12 02:16:00 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 2.1.0:
+  * We now read the terminator config file from XDG_CONFIG_DIRS which defaults to /etc/xdg
+    Global config is possible at: /etc/xdg/terminator/config
+  * Smart Copy option to clear selection after copy
+  * New feature: A Separate Json file for dynamic Layouts
+  * new feature: support for term://1.2.3.4/ 'links' that when clicked
+    open a new terminator ssh'ed to 1.2.3.4.
+  * Reimplement "unfocused dim" using overpaintin
+  * Terminator now reads config file from /etc/xdg directory
+- includes 2.0.1:
+  * config settings lost when I cancel "Close multiple terminals" dialog
+  * Feature Suggestion: Splitted screen shells based on parent
+  * Release 2.0 does not have signed assets
+  * Some files install to the wrong location
+  * Multi tab breaks transparent background
+  * make sure data/*.in files are there for distributors
+  * only set clear background when background_image in config
+  * fix INSTALL instructions for setuptools
+- includes 2.0:
+  * Culmination of more than 4 years of work
+  * GTK 2 to GTK3
+  * Python2 to Python3 completion
+  * new base repository url
+Packaging:
+ * All scripts now use #!/usr/bin/env python as shebang, when you are using
+ * python3 setup.py install or similar all binary scripts should be automatically
+ * modified to the correct shebang
+ * Any feedback is welcome, please open an issue or join the community channels
+Enhancements
+ * Bold-is-Bright option
+ * Keybindings for creating group in current tab and opening preferences
+   window, as well as keybinding improvements
+ * Basic background image support
+ * Preference to disable Ctrl + Scroll font size change
+ * Fixed a bug where search was not working properly
+ * Many other small fixes, see Full Changelog
+- fixed bugs:
+ * No (visible) context menu in sway
+ * Saving a layout after changing it, it correctly updates the config file
+   but does not update the UI
+ * rewrap_on_resize is deprecated in vte-0.60.0
+-rebase terminator-desktop.patch
+
+-------------------------------------------------------------------
 Tue Apr 21 06:34:44 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 1.92:
