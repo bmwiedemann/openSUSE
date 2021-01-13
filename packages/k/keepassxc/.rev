@@ -315,4 +315,12 @@
     <comment>- Update to version 2.6.2</comment>
     <requestid>843429</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ec7a964c60d5a47175c76989d53b8a7e</srcmd5>
+    <version>2.6.3</version>
+    <time>1610558595</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6.3</comment>
+    <requestid>862694</requestid>
+  </revision>
 </revisionlist>
