@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Jan  7 16:00:24 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.90.6
+  * Object reference management fixes for FpPrint and identify
+  * Fixed issues that caused problem on non-x86 machines (#236)
+  * Fix building with older GLib versions
+  * synaptics: Support PID 00e7
+  * goodix: Fix issue with long USB packages
+- Update to version 1.90.5
+  * Remove USB hub from udev autosupend rules
+  * synaptics: Add PID 0x00c9 which is used in some HP laptops
+- Update to version 1.90.4
+  * Work around GUsb cancellation issue
+  * Redefine internal image device state machine for more robustness
+  * Add public finger-status reporting to FpDevice
+  * Rework device removal API to be convenient (#330)
+  * Enable powersave for unsupported USB devices
+  * Improvements to examples
+  * synaptics: Support identify operation
+  * synaptics: Fix possible crash when the interrupt transfer is
+    resubmitted
+  * synaptics: Add support for PIDs 0x00f9, 0x00fc and 0x00c2
+  * elan: Add PID 0x0c4d to supported device list
+  * aes3k: Fix driver and add CI test (#306)
+  * uru4000: Fix reference counting of image transfer
+  * vfs301: Fix driver and add CI test (#320)
+
+-------------------------------------------------------------------
 Sun Sep 27 10:12:15 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.90.3:

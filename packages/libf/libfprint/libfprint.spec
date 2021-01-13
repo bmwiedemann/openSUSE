@@ -1,7 +1,7 @@
 #
 # spec file for package libfprint
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2013 Mariusz Fik <fisiu@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 %{!?_udevrulesdir: %global _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d}
 
 Name:           libfprint
-Version:        1.90.3
+Version:        1.90.6
 Release:        0
 Summary:        Library for fingerprint reader support
 License:        LGPL-2.1-or-later
