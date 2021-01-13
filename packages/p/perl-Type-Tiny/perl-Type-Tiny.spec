@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Type-Tiny
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-Type-Tiny
-Version:        1.012000
-Release:        0
 %define cpan_name Type-Tiny
+Name:           perl-Type-Tiny
+Version:        1.012001
+Release:        0
 Summary:        Tiny, yet Moo(se)-compatible type constraint
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Exporter::Tiny) >= 1.000000
@@ -49,11 +47,11 @@ Type::Tiny is a small class for creating Moose-like type constraint objects
 which are compatible with Moo, Moose and Mouse.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -64,7 +62,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes CONTRIBUTING COPYRIGHT CREDITS doap.ttl examples NEWS README
 %license LICENSE
 
