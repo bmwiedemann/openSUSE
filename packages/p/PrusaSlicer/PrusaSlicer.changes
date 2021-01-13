@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jan 11 18:43:08 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to v2.3.0 
+  * Introducing paint-on supports, ironing, monotonic 
+    infill, seam painting, adaptive and support cubic 
+    infill, print time per feature analysis, standalone 
+    G-code viewer application, better auto-arrange with a 
+    customizable gap and rotation, search function for the 
+    settings, reworked "Avoid crossing perimeters" function, 
+    physical printers (network settings), many new 3rd party 
+    printer profiles and much, much more.
+- Full Changelog entries for betas and release candidates:
+  https://github.com/prusa3d/PrusaSlicer/releases
+- Drop PrusaSlicer-pr4340-boost-1-73.patch merged upstream
+
+-------------------------------------------------------------------
+Sun Dec 20 20:12:40 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Remove extra PrusaSlicer.desktop. Use upstream's desktop files. 
+  Graphics;3DGraphics seems to be the consensus now.
+- Remove wrapper gh#prusa3d/PrusaSlicer#4691
+
+-------------------------------------------------------------------
 Tue Sep  1 21:20:26 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - support boost >= 1.73

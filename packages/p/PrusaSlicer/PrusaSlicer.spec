@@ -1,7 +1,7 @@
 #
 # spec file for package PrusaSlicer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,13 @@
 
 
 Name:           PrusaSlicer
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
 License:        AGPL-3.0-only
 Group:          Hardware/Printing
 URL:            https://www.prusa3d.com/prusaslicer/
 Source0:        https://github.com/prusa3d/PrusaSlicer/archive/version_%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        %{name}.desktop
-# PATCH-FIX-UPSTREAM https://github.com/prusa3d/PrusaSlicer/pull/4340
-Patch0:         PrusaSlicer-pr4340-boost-1-73.patch
 BuildRequires:  cereal-devel
 BuildRequires:  cgal-devel >= 4.13.2
 BuildRequires:  cmake
@@ -65,9 +62,11 @@ all those based on the Marlin, Prusa, Sprinter and Repetier firmware.
 It also works with Mach3, LinuxCNC and Machinekit controllers.
 
 %prep
-%setup -q -n %{name}-version_%{version}
-%patch0 -p1
+%autosetup -p1 -n %{name}-version_%{version}
+%if 0%{?suse_version}
 sed -i 's/UNKNOWN/%{release}-%{?is_opensuse:open}SUSE-%{suse_version}/' version.inc
+%endif
+rm -r resources/data/flatpak
 
 %build
 # The build process really acquires that much memory per job. We are
@@ -77,7 +76,7 @@ sed -i 's/UNKNOWN/%{release}-%{?is_opensuse:open}SUSE-%{suse_version}/' version.
 # https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.build_job_constraints.html
 # https://en.opensuse.org/openSUSE:Specfile_guidelines#Parallel_make
 %limit_build -m 3072
-# sse2 flags for 32-bit: see gh#prusa3d/PrusaSlicer#3781 
+# sse2 flags for 32-bit: see gh#prusa3d/PrusaSlicer#3781
 %ifarch %ix86
   export CFLAGS="%optflags -mfpmath=sse -msse2"
   export CXXFLAGS="$CFLAGS"
@@ -89,27 +88,19 @@ sed -i 's/UNKNOWN/%{release}-%{?is_opensuse:open}SUSE-%{suse_version}/' version.
 %install
 %cmake_install
 
-# https://github.com/prusa3d/PrusaSlicer/issues/4691
-# Since the binary segfaults under Wayland, we have to wrap it.
-mv %{buildroot}%{_bindir}/prusa-slicer %{buildroot}%{_bindir}/prusa-slicer.wrapped
-cat >> %{buildroot}%{_bindir}/prusa-slicer <<'END'
-#!/bin/sh
-export GDK_BACKEND=x11
-exec %{_bindir}/prusa-slicer.wrapped "$@"
-END
-chmod 755 %{buildroot}%{_bindir}/prusa-slicer
-
 for res in 32 128 192; do
   mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${res}x${res}/apps/
   ln -sr %{buildroot}%{_datadir}/%{name}/icons/%{name}_${res}px.png \
          %{buildroot}%{_datadir}/icons/hicolor/${res}x${res}/apps/%{name}.png
+  ln -sr %{buildroot}%{_datadir}/%{name}/icons/%{name}-gcodeviewer_${res}px.png \
+         %{buildroot}%{_datadir}/icons/hicolor/${res}x${res}/apps/%{name}-gcodeviewer.png
 done
-%if 0%{?suse_version} > 1500
-    %suse_update_desktop_file -i %{name}
-%else
-    # Non Tumbleweed versions do not like the chosen categories
-    %suse_update_desktop_file -i -r %{name} Graphics 3DGraphics
-%endif
+
+mkdir -p %{buildroot}%{_datadir}/applications
+mv %{buildroot}%{_datadir}/{PrusaSlicer/,}applications/PrusaSlicer.desktop
+mv %{buildroot}%{_datadir}/{PrusaSlicer/,}applications/PrusaGcodeviewer.desktop
+%suse_update_desktop_file -r PrusaSlicer Graphics 3DGraphics Science Engineering
+%suse_update_desktop_file -r PrusaGcodeviewer Graphics 3DGraphics
 
 #remove stray font file
 rm -rf %{buildroot}%{_datadir}/%{name}/fonts
@@ -151,13 +142,17 @@ find %{buildroot}%{_datadir}/%{name}/localization -type d | sed '
 
 %files -f lang-files
 %{_bindir}/prusa-slicer
-%{_bindir}/prusa-slicer.wrapped
+%{_bindir}/prusa-gcodeviewer
 %dir %{_datadir}/%{name}/
 %{_datadir}/%{name}/{icons,models,profiles,shaders,udev}/
 %{_datadir}/icons/hicolor/32x32/apps/%{name}.png
 %{_datadir}/icons/hicolor/128x128/apps/%{name}.png
 %{_datadir}/icons/hicolor/192x192/apps/%{name}.png
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/32x32/apps/%{name}-gcodeviewer.png
+%{_datadir}/icons/hicolor/128x128/apps/%{name}-gcodeviewer.png
+%{_datadir}/icons/hicolor/192x192/apps/%{name}-gcodeviewer.png
+%{_datadir}/applications/PrusaSlicer.desktop
+%{_datadir}/applications/PrusaGcodeviewer.desktop
 %license LICENSE
 %doc README.md doc/
 
