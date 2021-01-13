@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 12 20:41:06 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 0.9.1.
+  * Drops python2 support
+- Updates for version 0.9.0.
+  * Adds support for automatically determining the table’s width.
+
+-------------------------------------------------------------------
 Fri Apr  3 18:31:38 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 0.8.0
