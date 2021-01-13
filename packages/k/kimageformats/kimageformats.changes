@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan 11 18:18:56 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Drop baselibs.conf. Nothing requires the -32bit package
+  and the new libavif build dependency doesn't provide one.
+
+-------------------------------------------------------------------
+Wed Jan  6 10:47:43 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.78.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.78.0
+- Changes since 5.77.0:
+  * Remove ifdefs, we require Qt 5.14 now
+  * Add AVIF to the list of supported formats
+  * Add plugin for AV1 Image File Format (AVIF)
+
+-------------------------------------------------------------------
 Sat Dec  5 18:56:39 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.77.0

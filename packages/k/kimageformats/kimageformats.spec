@@ -1,7 +1,7 @@
 #
 # spec file for package kimageformats
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,10 @@
 #
 
 
-%define _tar_path 5.77
+%if 0%{?suse_version} > 1500
+%define with_avif 1
+%endif
+%define _tar_path 5.78
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -24,7 +27,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           kimageformats
-Version:        5.77.0
+Version:        5.78.0
 Release:        0
 Summary:        Image format plugins for Qt
 License:        LGPL-2.1-or-later
@@ -35,16 +38,18 @@ Source:         https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-Source99:       baselibs.conf
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  openexr
 BuildRequires:  openexr-devel
 BuildRequires:  cmake(KF5Archive) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Gui) >= 5.13.0
-BuildRequires:  cmake(Qt5PrintSupport) >= 5.13.0
-BuildRequires:  cmake(Qt5Test) >= 5.13.0
+BuildRequires:  cmake(Qt5Gui) >= 5.14.0
+BuildRequires:  cmake(Qt5PrintSupport) >= 5.14.0
+BuildRequires:  cmake(Qt5Test) >= 5.14.0
+%if 0%{?with_avif}
+BuildRequires:  cmake(libavif) >= 0.8.2
+%endif
 %requires_ge    libQt5Gui5
 %requires_ge    libQt5PrintSupport5
 Recommends:     libqt5-qtimageformats >= 5.12.0
@@ -59,8 +64,8 @@ image formats.
 %package eps
 Summary:        EPS image format plugin for Qt
 Group:          System/GUI/KDE
-Conflicts:      %{name} < %{version}-%{release}
 Requires:       ghostscript
+Conflicts:      %{name} < %{version}-%{release}
 
 %description eps
 This plugin provides support for the EPS document format for QtGui. As
@@ -81,6 +86,9 @@ environments.
 %files
 %license LICENSES/*
 %dir %{_kf5_plugindir}/imageformats
+%if 0%{?with_avif}
+%{_kf5_plugindir}/imageformats/kimg_avif.so
+%endif
 %{_kf5_plugindir}/imageformats/kimg_exr.so
 %{_kf5_plugindir}/imageformats/kimg_hdr.so
 %{_kf5_plugindir}/imageformats/kimg_kra.so
@@ -93,6 +101,9 @@ environments.
 %{_kf5_plugindir}/imageformats/kimg_tga.so
 %{_kf5_plugindir}/imageformats/kimg_xcf.so
 %dir %{_kf5_servicesdir}/qimageioplugins
+%if 0%{?with_avif}
+%{_kf5_servicesdir}/qimageioplugins/avif.desktop
+%endif
 %{_kf5_servicesdir}/qimageioplugins/dds.desktop
 %{_kf5_servicesdir}/qimageioplugins/exr.desktop
 %{_kf5_servicesdir}/qimageioplugins/hdr.desktop
