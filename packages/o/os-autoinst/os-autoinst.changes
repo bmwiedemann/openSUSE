@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jan 13 04:22:57 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1610429804.fb1c49e4:
+  * docker: Use travis-CI independant name for dev image
+  * Move the DIE handler down to prevent an error with version
+  * Simpler invocation and output checks in isotovideo tests
+  * README: Use updated github actions badge
+  * README: Replace "travis CI" reference by more generic term
+  * t: Prevent "uninitialized value" on 02-test_ocr.t test fail
+  * t: Bump timeout for 99-full-stack.t after local timeout in coverage run
+  * doc: Add missing variables to fix t/04-check_vars_docu.t
+  * t: Sort all non-qemu backend tests together with higher numbers
+  * codecov: Bump coverage threshold to current level
+  * t: Properly mark all test modules as executables
+  * t: Delete dead code in 10-terminal.t
+
+-------------------------------------------------------------------
 Mon Jan 04 09:24:08 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1609752238.01857082:
