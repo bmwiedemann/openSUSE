@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 10 17:31:08 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.4.2:
+  * Fix special char encoding in notebooks, store as
+    percent-encoded (gh#python-visualization/branca#76).
+- New BuildRequires for tests: python-nbconvert.
+- Disable an additional test that also requires 'geckodriver'.
+- Use source name in the format branca-%{version}.
+
+-------------------------------------------------------------------
 Thu Mar  5 09:12:06 UTC 2020 - pgajdos@suse.com
 
 - version update to 0.4.0

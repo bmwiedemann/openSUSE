@@ -1,7 +1,7 @@
 #
 # spec file for package python-branca
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-branca
-Version:        0.4.0
+Version:        0.4.2
 Release:        0
 Summary:        HTML+JS page generator
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/python-visualization/branca
-Source:         https://github.com/python-visualization/branca/archive/v%{version}.tar.gz
+Source:         https://github.com/python-visualization/branca/archive/v%{version}.tar.gz#/branca-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -35,6 +35,7 @@ Requires:       python-six
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module nbconvert}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module selenium}
 BuildRequires:  %{python_module six}
@@ -55,8 +56,8 @@ Generate HTML+JS pages with Python.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_rendering_utf8_iframe requires geckodriver
-%pytest -k 'not test_rendering_utf8_iframe' -v
+# test_rendering_utf8_iframe and test_rendering_figure_notebook require geckodriver
+%pytest -k 'not (test_rendering_utf8_iframe or test_rendering_figure_notebook)' -v
 
 %files %{python_files}
 %doc CHANGES.txt README.md
