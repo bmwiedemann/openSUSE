@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 11 22:08:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.11.4:
+  * Add xml_node::remove_attributes and xml_node::remove_children
+  * Add a way to customize floating point precision via xml_attribute::set and
+  xml_text::set overloads
+  * XPath parser now limits recursion depth which prevents stack overflow on
+  malicious queries
+  * Exported CMake target name changed to pugixml::pugixml; see subsequent
+  patch releases
+  * Regression bugfixes
+
+-------------------------------------------------------------------
 Tue Feb  4 19:46:01 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 1.10:

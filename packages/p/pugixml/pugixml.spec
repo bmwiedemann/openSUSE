@@ -1,7 +1,7 @@
 #
 # spec file for package pugixml
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,18 @@
 
 %define _libname libpugixml1
 Name:           pugixml
-Version:        1.10
+Version:        1.11.4
 Release:        0
 Summary:        Light-weight C++ XML Processing Library
 License:        MIT
 Group:          System/Libraries
-URL:            http://pugixml.org/
+URL:            https://pugixml.org/
 Source0:        https://github.com/zeux/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Patch1:         pugixml-config.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 pugixml is a light-weight C++ XML processing library. It features:
@@ -70,17 +69,15 @@ pugixml is a light-weight C++ XML processing library. It features:
 
 %build
 %cmake
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
 
 %post -n %{_libname} -p /sbin/ldconfig
-
 %postun -n %{_libname} -p /sbin/ldconfig
 
 %files devel
-%defattr(-,root,root,-)
 %doc readme.txt docs/*
 %{_includedir}/*.hpp
 %{_libdir}/cmake/*
@@ -88,7 +85,6 @@ make %{?_smp_mflags}
 %{_libdir}/*.so
 
 %files -n %{_libname}
-%defattr(-,root,root,-)
 %{_libdir}/libpugixml.so.*
 
 %changelog
