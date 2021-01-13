@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jan 11 16:48:54 UTC 2021 - Julio González Gil <julio@juliogonzalez.es>
+
+- Update to version 1.88
+  + Fixed a bug about move file over limit of ensure space
+  + Fix multiple race conditions
+  + Dynamically determine whether lseek extended options are supported
+  + Add support for deep archive storage class
+  + Plug FdEntity leaks
+  + Fix use_session_token option parsing
+  + Allow 32-bit platforms to upload single-part objects > 2 GB
+  + Fix dead lock in disk insufficient and optimize code
+  + Ensure environment variable is set when using ECS
+  + Do not call put headers if not exist pending meta
+  + Do not send SSE headers during bucket creation
+  + Add sigv4 only option
+  + Add atime and correct atime/mtime/ctime operations
+  + Fixed a bug that symlink could not be read after restarting s3fs
+  + Periodically flush written data to reduce temporary local storage
+  + Added logfile option for non-syslog logging
+  + Add AWS IMDSv2 support
+  + Fix multiple issues when retrying requests
+
+-------------------------------------------------------------------
 Mon Aug 10 17:28:22 UTC 2020 - Julio González Gil <julio@juliogonzalez.es>
 
 - Update to version 1.87
