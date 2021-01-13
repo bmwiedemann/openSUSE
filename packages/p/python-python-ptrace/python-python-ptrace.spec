@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-ptrace
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,23 +20,21 @@
 %define pkg_name python-ptrace
 %define skip_python2 1
 Name:           python-%{pkg_name}
-Version:        0.9.5
+Version:        0.9.7
 Release:        0
 Summary:        Python binding for ptrace
 License:        GPL-2.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/vstinner/python-ptrace
 Source:         https://github.com/haypo/%{pkg_name}/archive/%{version}.tar.gz#!./%{pkg_name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM - https://github.com/vstinner/python-ptrace/pull/59
+Patch1:         add-aarch64-support.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-# aarch64 is not yet supported - https://github.com/vstinner/python-ptrace/issues/57
-ExcludeArch:    aarch64
 %python_subpackages
 
 %description
@@ -44,6 +42,7 @@ python-ptrace is a debugger using ptrace written in Python.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
+%patch1 -p1
 sed -i 's/\x0D$//' doc/*.rst
 chmod 0644 examples/*.py
 

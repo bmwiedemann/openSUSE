@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jan 13 07:33:18 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Backport patch to add aarch64 support:
+  * add-aarch64-support.patch
+
+-------------------------------------------------------------------
+Wed Jan 13 07:28:20 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 0.9.7:
+  * Add missing module to install directives
+- Update to 0.9.6:
+  * Drop Python 2.7 support. six dependency is no longer needed
+  * Add close_fds and pass_fds to createChild() function
+  * Enhance strace.py output for open flags and open optional parameters
+  * Add support for PowerPC 64-bit (ppc64)
+
+-------------------------------------------------------------------
 Thu Sep 10 12:37:13 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - aarch64 is not yet supported, so exclude it
