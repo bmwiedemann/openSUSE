@@ -191,4 +191,12 @@
     <comment>- Update to release 1.2.162.0 (sdk)</comment>
     <requestid>856053</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d5bfefc6bfe87475ca12b18ad7c4f04b</srcmd5>
+    <version>1.2.162.1</version>
+    <time>1610558647</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.2.162.1 (sdk)</comment>
+    <requestid>862832</requestid>
+  </revision>
 </revisionlist>

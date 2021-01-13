@@ -1,7 +1,7 @@
 #
 # spec file for package vulkan-validationlayers
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           vulkan-validationlayers
-Version:        1.2.162.0
+Version:        1.2.162.1
 Release:        0
-%define lname libVkLayer_utils-1_2_162_0
+%define lname libVkLayer_utils-1_2_162_1
 Summary:        Validation layers for Vulkan
 License:        Apache-2.0
 Group:          Development/Tools/Other
