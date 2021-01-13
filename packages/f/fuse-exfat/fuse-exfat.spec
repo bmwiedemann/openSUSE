@@ -1,7 +1,7 @@
 #
 # spec file for package fuse-exfat
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2013 Sidlovsky, Yaroslav <zawertun@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -51,10 +51,10 @@ make %{?_smp_mflags}
 
 %install
 %make_install
-#UsrMerge
+%if !0%{?usrmerged}
 mkdir  %{buildroot}/sbin
 ln -sf %{_sbindir}/{mount.exfat,mount.exfat-fuse} %{buildroot}/sbin
-#EndUsrMerge
+%endif
 
 %post
 if ! grep -q -e '^exfat$' %{_sysconfdir}/filesystems ; then
@@ -76,9 +76,9 @@ fi
 %files
 %license COPYING
 %doc ChangeLog README
-#UsrMerge
+%if !0%{?usrmerged}
 /sbin/*
-#EndUsrMerge
+%endif
 %{_sbindir}/mount.exfat
 %{_sbindir}/mount.exfat-fuse
 %{_mandir}/man8/mount.exfat-fuse.8%{?ext_man}
