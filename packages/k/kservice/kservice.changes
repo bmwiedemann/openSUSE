@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jan  6 10:48:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.78.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.78.0
+- Changes since 5.77.0:
+  * Add missing includes
+  * Properly include QStringList
+  * Remove ifdefs, we require Qt 5.14 now
+  * silently ignore empty files
+  * Remove unused include
+  * Fix duplicate detection check
+  * KSycoca: avoid database rebuild if XDG_CONFIG_DIRS contains duplicates
+  * KSycoca: ensure extrafiles are ordered for comparison (kde#429593)
+
+-------------------------------------------------------------------
 Mon Dec  7 17:14:41 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.77.0
