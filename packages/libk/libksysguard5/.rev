@@ -936,4 +936,12 @@
     <comment>Plasma 5.20.5 (forwarded request 860522 from Vogtinator)</comment>
     <requestid>860639</requestid>
   </revision>
+  <revision rev="117" vrev="2">
+    <srcmd5>cd14793a1d5143d7e3f6cf5b747a9e61</srcmd5>
+    <version>5.20.5</version>
+    <time>1610558104</time>
+    <user>dimstar_suse</user>
+    <comment>Drop baselibs.conf, makes webengine build faster and less often by avoiding rebuild counter syncs (forwarded request 861763 from Vogtinator)</comment>
+    <requestid>861764</requestid>
+  </revision>
 </revisionlist>

@@ -29,7 +29,6 @@ Source:         https://download.kde.org/stable/plasma/%{version}/libksysguard-%
 Source1:        https://download.kde.org/stable/plasma/%{version}/libksysguard-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-Source3:        baselibs.conf
 BuildRequires:  extra-cmake-modules >= 1.2.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  xz
