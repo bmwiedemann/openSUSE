@@ -1,7 +1,7 @@
 #
 # spec file for package python-subst
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            http://mysz.github.io/subst/
 Source:         https://files.pythonhosted.org/packages/source/s/subst/subst-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/msztolcman/subst/master/LICENSE
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -57,7 +58,7 @@ touch test/__init__.py
 
 %check
 export PYTHONPATH=${PWD}/test
-%python_exec setup.py test
+%pytest
 
 %post
 %python_install_alternative subst
