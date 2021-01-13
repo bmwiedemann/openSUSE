@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 12 13:15:13 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2020.03.04:
+  + Coerce XDG_CURRENT_DESKTOP to "Unity". This works around the
+    dropbox binary that will only activate the indicator icon and
+    menu on Ubuntu Unity < 16.10. This patch coerces
+    XDG_CURRENT_DESKTOP to report as "Unity" for the
+    budgie-desktop.
+- Modernize spec.
+
+-------------------------------------------------------------------
 Thu Nov 21 14:19:23 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 2019.02.14

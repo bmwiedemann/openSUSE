@@ -19,7 +19,7 @@
 
 %global nautilus_extdir %( pkg-config libnautilus-extension --variable extensiondir )
 Name:           nautilus-dropbox
-Version:        2019.02.14
+Version:        2020.03.04
 Release:        0
 Summary:        Dropbox client integrated into Nautilus
 License:        GPL-3.0-or-later AND CC-BY-ND-3.0
@@ -63,11 +63,13 @@ and share them easily. Never email yourself a file again!
 This package integrates dropbox seamless into nautilus.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%configure --disable-static
-make %{?_smp_mflags}
+%configure \
+	--disable-static \
+	%{nil}
+%make_build
 
 %install
 %make_install

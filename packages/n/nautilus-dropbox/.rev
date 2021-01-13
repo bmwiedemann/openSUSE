@@ -112,4 +112,12 @@
     <comment>Update to the latest stable release.</comment>
     <requestid>750293</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2fc26a20110a73561c3027d3f1ffb330</srcmd5>
+    <version>2020.03.04</version>
+    <time>1610558696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862936</requestid>
+  </revision>
 </revisionlist>
