@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Jan  8 07:01:05 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 4.8.4
+  Added:
+  * Added Allpass filter in Equalizer plugin.
+  Fixed:
+  * The equalizer UI is now correctly shown when a profile with 
+    30 bands is loaded at startup.
+  * Added a workaround for systems that were crashing because the
+    locale is not correctly set at system level.
+  Note to packagers:
+  * This is the last release supporting Pulseaudio. The following
+    PulseEffects releases will be based on the new Pipewire
+    multimedia server and only fixes to critical bugs will be
+    backported to the legacy pulseaudio branch
+    https://github.com/wwmm/pulseeffects/tree/pulseaudio-legacy.
+- Changes from 4.8.3
+  Added:
+  * New Noise Reduction plugin based on the RNNoise library.
+  * Band Quality factor exposed in the Equalizer main interface.
+  * A new settings was added to the general section of our settings
+    menu: Activity Timeout. It is the time during which 
+    PulseEffects monitors if there is any application playing audio.
+    If there is none we stop our playback stream in order to save
+    cpu usage. This timeout has been in place for a long time but
+    until now its value could not be configured by the user.
+  * When no application is playing audio PulseEffects pipeline is
+    now put in the ready state instead of the paused state. This
+    should help to reduce cpu usage in situations like the ones
+    described in https://github.com/wwmm/pulseeffects/issues/829
+  * Updated Chinese translation.
+  Fixed:
+  * Values outside GTK widgets are now shown according to system
+    locale settings.
+  * Applying APO Equalizer preset when locale is different than "C"
+    is now working properly.
+  * Equalizer and Crystalizer UI redesigned: band wrapper is 
+    extended to fit all the available horizontal space; homogeneous
+    property has been applied to get the same space between band sliders.
+  * App info and plugin interfaces made scrollable: now PulseEffects
+    window does not change its size when switching beetween plugins.
+  * Loudness plugin: removed reference signal button (test signals can
+    be used in its stead); input value is now saved to preset.
+  Note to packagers:
+  * The Noise Reduction is an optional plugin. For it to be 
+    available to the user the library RNNoise
+    https://github.com/xiph/rnnoise has to be installed when
+    PulseEffects is compiled.
+
+-------------------------------------------------------------------
 Mon Sep 21 16:06:01 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 4.8.2.
