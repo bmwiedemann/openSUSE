@@ -1,0 +1,48 @@
+From c92ac1ea187c9a407156705bd1b0de8afd2530e1 Mon Sep 17 00:00:00 2001
+From: John Vandenberg <jayvdb@gmail.com>
+Date: Mon, 26 Oct 2020 13:05:53 +0700
+Subject: [PATCH] Python 3 support
+
+Fixes https://github.com/antocuni/wmctrl/issues/2
+---
+ wmctrl.py | 18 +++++++++++-------
+ 1 file changed, 11 insertions(+), 7 deletions(-)
+
+Index: wmctrl-0.3/wmctrl.py
+===================================================================
+--- wmctrl-0.3.orig/wmctrl.py
++++ wmctrl-0.3/wmctrl.py
+@@ -1,5 +1,10 @@
+ import os
+-from commands import getoutput
++
++try:
++    from commands import getoutput
++except ImportError:
++    from subprocess import getoutput
++
+ try:
+     from collections import namedtuple
+ except ImportError:
+@@ -15,8 +20,8 @@ class Window(BaseWindow):
+         windows = []
+         for line in out.splitlines():
+             parts = line.split(None, len(Window._fields)-2)
+-            parts = map(str.strip, parts)
+-            parts[1:7] = map(int, parts[1:7])
++            parts = list(map(str.strip, parts))
++            parts[1:7] = list(map(int, parts[1:7]))
+             parts.append(_wm_window_role(parts[0]))
+             windows.append(cls(*parts))
+         return windows
+@@ -68,8 +73,8 @@ class Window(BaseWindow):
+ 
+     def set_geometry(self, geometry):
+         dim, pos = geometry.split('+', 1)
+-        w, h = map(int, dim.split('x'))
+-        x, y = map(int, pos.split('+'))
++        w, h = list(map(int, dim.split('x')))
++        x, y = list(map(int, pos.split('+')))
+         self.resize_and_move(x, y, w, h)
+ 
+     def set_properties(self,properties):

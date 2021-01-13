@@ -1,0 +1,5 @@
+<package name="python-wmctrl" project="openSUSE:Factory">
+  <title></title>
+  <description>Python programmatic control of X windows</description>
+  <devel project="devel:languages:python" package="python-wmctrl"/>
+</package>
