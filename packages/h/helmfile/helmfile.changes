@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 13 14:36:41 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.137.0: docs: fix typo (#1645)
+  * 33880da (HEAD, tag: v0.137.0, origin/master, origin/HEAD, master)
+    docs: fix typo (#1645)
+  * 87fcd83 Fix typo "verion" (#1641)
+  * 600721c docs(readme): fix typo (#1633)
+  * f7a1d09 Bump variantdev/vals to 0.12.0 (#1644)
+
+-------------------------------------------------------------------
 Sun Jan  3 09:57:17 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.136.0
