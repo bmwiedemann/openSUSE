@@ -37,4 +37,12 @@
   * Shakti C-class platform support (forwarded request 816147 from Andreas_Schwab)</comment>
     <requestid>816148</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>228b95c6be9a237e2fbe062222997716</srcmd5>
+    <version>0.8</version>
+    <time>1610558541</time>
+    <user>dimstar_suse</user>
+    <comment>- Package generic fw_dynamic firmware (forwarded request 862651 from Andreas_Schwab)</comment>
+    <requestid>862652</requestid>
+  </revision>
 </revisionlist>

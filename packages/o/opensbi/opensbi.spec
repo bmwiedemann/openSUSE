@@ -1,7 +1,7 @@
 #
 # spec file for package opensbi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -76,15 +76,14 @@ This package provides the development files for %{name}.
 %install
 %if "%{target}" == ""
 make install I=%{buildroot}%{_prefix} INSTALL_LIB_PATH=%{_lib}
+install -D -m 644 build/platform/generic/firmware/fw_dynamic.bin %{buildroot}%{_datadir}/opensbi/opensbi.bin
 %endif
 %if "%{target}" == "sifivefu540"
 install -D -m 644 build/platform/sifive/fu540/firmware/fw_dynamic.bin %{buildroot}%{_datadir}/opensbi/opensbi-sifive-fu540.bin
 %endif
 
-%if "%{target}" != ""
 %files
 %{_datadir}/opensbi
-%endif
 
 %if "%{target}" == ""
 %files devel
