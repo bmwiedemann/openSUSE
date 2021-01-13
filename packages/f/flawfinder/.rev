@@ -24,4 +24,33 @@
     explain the various options available.</comment>
     <requestid>775114</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3c3c82dd55cf39ede445e8d12e01de68</srcmd5>
+    <version>2.0.15</version>
+    <time>1610558419</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.15:
+  * Fixed some release problems in 2.0.14. (#30)
+  * Improved handling of LoadLibraryEx; flawfinderr no longer complains
+    about certain constructs that are known to be safe (eliminating
+    some false positives).
+
+- Update to 2.0.14:
+  * If there are &gt;0 hits, tell users how to ignore them as part of the
+    tool output.
+  * Various Windows improvments.
+    Ignore LoadLibraryEx if its third parameter is
+    LOAD_LIBRARY_SEARCH_SYSTEM32, as this is safe, and
+    remove the rule for InitialCriticalSection
+    (this is no longer a vulnerability on current widely-used versions
+    of Windows)
+  * Various C++ improvements.  Add .hpp support for C++,
+    ignore &quot;system::&quot; to reduce false positives,
+    treat ' as digit separator when file extension is a C++ file
+    (for C++14).
+  * I had some release problems; this is identified as 2.0.14
+    (skipping a few minor numbers) to ensure that the version
+    number uniquely identifies a specific release.</comment>
+    <requestid>862538</requestid>
+  </revision>
 </revisionlist>

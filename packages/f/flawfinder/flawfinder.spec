@@ -1,7 +1,7 @@
 #
 # spec file for package flawfinder
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           flawfinder
-Version:        2.0.11
+Version:        2.0.15
 Release:        0
 Summary:        C/C++ source code security flaw examination tool
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
-URL:            http://www.dwheeler.com/flawfinder/
-Source:         http://www.dwheeler.com/flawfinder/%{name}-%{version}.tar.gz
+URL:            https://www.dwheeler.com/flawfinder/
+Source:         https://dwheeler.com/flawfinder/flawfinder-%{version}.tar.gz
+BuildRequires:  python3-setuptools
 Requires:       python3
 BuildArch:      noarch
 
@@ -34,20 +35,19 @@ sorted by severity, with the riskiest lines first.
 
 %prep
 %setup -q
-sed -i "s|!/usr/bin/env python|!/usr/bin/python3|" flawfinder
-chmod -x *.ps
+sed -i "s|!%{_bindir}/env python|!%{_bindir}/python3|" flawfinder
 
 %build
-make %{?_smp_mflags}
+%python3_build
 
 %install
-install -m755 -D flawfinder %{buildroot}%{_bindir}/flawfinder
-install -m644 -D flawfinder.1 %{buildroot}%{_mandir}/man1/flawfinder.1
+%python3_install
 
 %files
 %license COPYING
 %doc README.md ChangeLog flawfinder.ps
 %{_bindir}/flawfinder
 %{_mandir}/man1/flawfinder.1%{?ext_man}
+%{python3_sitelib}
 
 %changelog

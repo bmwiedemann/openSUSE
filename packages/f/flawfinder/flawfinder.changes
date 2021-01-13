@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Jan 12 08:39:57 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.15:
+  * Fixed some release problems in 2.0.14. (#30)
+  * Improved handling of LoadLibraryEx; flawfinderr no longer complains
+    about certain constructs that are known to be safe (eliminating
+    some false positives).
+
+-------------------------------------------------------------------
+Mon Jan 11 08:57:48 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.14:
+  * If there are >0 hits, tell users how to ignore them as part of the
+    tool output.
+  * Various Windows improvments.
+    Ignore LoadLibraryEx if its third parameter is
+    LOAD_LIBRARY_SEARCH_SYSTEM32, as this is safe, and
+    remove the rule for InitialCriticalSection
+    (this is no longer a vulnerability on current widely-used versions
+    of Windows)
+  * Various C++ improvements.  Add .hpp support for C++,
+    ignore "system::" to reduce false positives,
+    treat ' as digit separator when file extension is a C++ file
+    (for C++14).
+  * I had some release problems; this is identified as 2.0.14
+    (skipping a few minor numbers) to ensure that the version
+    number uniquely identifies a specific release.
+
+-------------------------------------------------------------------
 Tue Feb 18 10:17:19 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.0.11:
