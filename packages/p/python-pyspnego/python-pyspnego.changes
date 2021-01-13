@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 12 09:47:29 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.1.5
+  * Respect NETBIOS_COMPUTER_NAME when getting the workstation
+    name for NTLM tokens. This matches the behaviour of gss-ntlmssp
+    to ensure a consistent approach.
+
+-------------------------------------------------------------------
 Fri Dec  4 08:13:16 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.1.4

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyspnego
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pyspnego
-Version:        0.1.4
+Version:        0.1.5
 Release:        0
 Summary:        Python SPNEGO authentication library 
 License:        MIT
