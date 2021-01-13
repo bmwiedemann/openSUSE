@@ -24,6 +24,8 @@ License:        GPL-2.0-only
 Group:          System/Monitoring
 URL:            https://tiptop.gforge.inria.fr/
 Source:         http://tiptop.gforge.inria.fr/releases/tiptop-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM reproducible.patch by bmwiedemann - override build date and build host (boo#1047218, boo#1084909) - sent upstream via email
+Patch0:         reproducible.patch
 BuildRequires:  autoconf >= 2.68
 BuildRequires:  byacc
 BuildRequires:  flex
@@ -39,8 +41,10 @@ hardware counters.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
+export HOSTNAME=reproducible-openSUSE
 sed -i "s/curses/ncurses/g" configure.ac
 autoconf -f -i
 %configure
