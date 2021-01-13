@@ -1,7 +1,7 @@
 #
 # spec file for package kdeclarative
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Declarative5
-%define _tar_path 5.77
+%define _tar_path 5.78
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdeclarative
-Version:        5.77.0
+Version:        5.78.0
 Release:        0
 Summary:        Integration of QML and KDE workspaces
 License:        LGPL-2.1-or-later
@@ -51,11 +51,11 @@ BuildRequires:  cmake(KF5Notifications) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5Package) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Core) >= 5.13.0
-BuildRequires:  cmake(Qt5Gui) >= 5.13.0
-BuildRequires:  cmake(Qt5Qml) >= 5.13.0
-BuildRequires:  cmake(Qt5Quick) >= 5.13.0
-BuildRequires:  cmake(Qt5Test) >= 5.13.0
+BuildRequires:  cmake(Qt5Core) >= 5.14.0
+BuildRequires:  cmake(Qt5Gui) >= 5.14.0
+BuildRequires:  cmake(Qt5Qml) >= 5.14.0
+BuildRequires:  cmake(Qt5Quick) >= 5.14.0
+BuildRequires:  cmake(Qt5Test) >= 5.14.0
 
 %description
 KDeclarative provides integration of QML and KDE workspaces.
@@ -113,7 +113,7 @@ Requires:       libKF5QuickAddons5 = %{version}
 Requires:       cmake(KF5Config) >= %{_kf5_bugfix_version}
 Requires:       cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
 Requires:       cmake(KF5Package) >= %{_kf5_bugfix_version}
-Requires:       cmake(Qt5Qml) >= 5.13.0
+Requires:       cmake(Qt5Qml) >= 5.14.0
 
 %description devel
 KDeclarative provides integration of QML and KDE workspaces.

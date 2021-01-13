@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jan  6 10:47:30 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.78.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.78.0
+- Changes since 5.77.0:
+  * Switch to Findepoxy provided by ECM
+  * KCMShell: Add support for passing arguments
+  * Remove ifdefs, we require Qt 5.14 now
+  * Workaround crash with GL detection and kwin_wayland
+  * [KQuickAddons] QtQuickSettings::checkBackend() for fallback to software backend (kde#422995)
+  * [abstractkcm] Fix import version in code example
+  * Avoid setting QSG_RENDER_LOOP if set already
+  * ConfigPropertyMap : load property's default value in the map
+
+-------------------------------------------------------------------
 Sat Dec  5 18:56:25 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.77.0
