@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 11 14:44:19 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.7.1:
+  * v6.7.1
+  * Fixed HOSTNAME environment variable.
+  * Update CHANGELOG.md
+  * RandomX x86 JIT: remove redundant CFROUND
+  * AstroBWT OpenCL fixes
+  * Added scripts/{build, deps} into .gitignore
+  * Show hashrate in the benchmark finished message
+  * #1995 Fixed log initialization.
+  * v6.7.1-dev
+
+-------------------------------------------------------------------
 Tue Dec 22 10:32:48 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.7.0:
