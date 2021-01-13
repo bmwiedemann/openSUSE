@@ -165,4 +165,12 @@ Depends on SR 556011</comment>
     <comment></comment>
     <requestid>854911</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f20ea390620e313465da5cfd5f0c1942</srcmd5>
+    <version>2020.3.5</version>
+    <time>1610558426</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862566</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,44 @@
+From 39d616a0d591d9df6e3cab947952e140986952e6 Mon Sep 17 00:00:00 2001
+From: Scott Giese <scttgs0@gmail.com>
+Date: Tue, 15 Dec 2020 01:41:32 -0600
+Subject: [PATCH] Support Boost v1.75
+
+Resolved a breaking change.
+---
+ simgear/props/props.cxx | 20 ++++++--------------
+ 1 file changed, 6 insertions(+), 14 deletions(-)
+
+diff --git a/simgear/props/props.cxx b/simgear/props/props.cxx
+index c8b72b2f..5c27ad16 100755
+--- a/simgear/props/props.cxx
++++ b/simgear/props/props.cxx
+@@ -568,23 +568,15 @@ find_node (SGPropertyNode * current,
+   }
+ }
+ #else
+-template<typename Range>
+-SGPropertyNode*
+-find_node (SGPropertyNode * current,
+-           const Range& path,
+-           bool create,
+-           int last_index = -1)
+-{
++template <typename Range>
++SGPropertyNode *find_node(SGPropertyNode *current, const Range &path,
++                          bool create, int last_index = -1) {
+   using namespace boost;
+-  typedef split_iterator<typename range_result_iterator<Range>::type>
+-    PathSplitIterator;
+-
+-  PathSplitIterator itr
+-    = make_split_iterator(path, first_finder("/", is_equal()));
++  auto itr = make_split_iterator(path, first_finder("/", is_equal()));
+   if (*path.begin() == '/')
+     return find_node_aux(current->getRootNode(), itr, create, last_index);
+-   else
+-     return find_node_aux(current, itr, create, last_index);
++  else
++    return find_node_aux(current, itr, create, last_index);
+ }
+ #endif
+ 

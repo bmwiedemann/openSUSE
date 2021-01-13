@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 11 13:57:41 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 2020.3.5
+  * http://wiki.flightgear.org/Changelog_2020.3#2020.3.5
+- Fix build with Boost 1.75, add boost-1.75-fix.patch
+
+-------------------------------------------------------------------
 Thu Dec 10 13:21:33 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 2020.3.4

@@ -1,7 +1,7 @@
 #
 # spec file for package SimGear
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,10 @@
 # in our requirements, i.e. the same version we have built against
 %define openscenegraph_version %(rpm -qa --nosignature --nodigest libOpenSceneGraph\*-devel | sed 's/.*-devel-\\(.*\\)-.*/\\1/')
 
-%define libname libSimGearCore-2020_3_4
+%define libname libSimGearCore-2020_3_5
 %define main_version 2020.3
 Name:           SimGear
-Version:        %{main_version}.4
+Version:        %{main_version}.5
 Release:        0
 Summary:        Simulator Construction Gear
 # https://sourceforge.net/p/flightgear/codetickets/1940/
@@ -32,6 +32,8 @@ Group:          Amusements/Games/3D/Simulation
 URL:            https://www.flightgear.org/
 Source0:        https://sourceforge.net/projects/flightgear/files/release-%{main_version}/simgear-%{version}.tar.bz2
 Source99:       SimGear-rpmlintrc
+# PATCH-FIX-UPSTREAM -- https://github.com/FlightGear/simgear/commit/39d616a0d591d9df.patch
+Patch0:         boost-1.75-fix.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libOpenSceneGraph-devel
@@ -81,7 +83,7 @@ Development headers and libraries for building applications against
 SimGear.
 
 %prep
-%setup -q -n simgear-%{version}
+%autosetup -p1 -n simgear-%{version}
 
 %build
 export CFLAGS="%{optflags}"
