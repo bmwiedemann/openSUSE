@@ -1,11 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan  8 18:25:37 UTC 2021 - Andrés Barrantes Silman <andresbs@opensuse.org>
+
+- Enables mobile components for Plasma Mobile
+
+-------------------------------------------------------------------
 Tue Jan  5 14:40:06 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.5
   * New bugfix release
   * For more details please see:
   * https://kde.org/announcements/plasma-5.20.5
-- No code changes since 5.20.4
+- Changes since 5.20.4:
+  * Fix password entry jumping to different networks with wifi
+    scanning, by pausing the scan when appropriate
 
 -------------------------------------------------------------------
 Tue Dec  1 15:22:18 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>

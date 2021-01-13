@@ -257,13 +257,22 @@ Provides:       NetworkManager-fortisslvpn-frontend
 %description fortisslvpn
 FortiGate SSL VPN plugin for plasma-nm components.
 
+%package mobile
+Summary:        Mobile settings support for %{name}
+Group:          System/GUI/KDE
+Requires:       %{name} = %{version}
+
+%description mobile
+KConfig Modules and applets for
+wireless connectivity on Plasma Mobile.
+
 %lang_package
 
 %prep
 %autosetup -p1 -n plasma-nm-%{version}
 
 %build
-  %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
+  %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir} -DBUILD_MOBILE=ON
   %cmake_build
 
 %install
@@ -348,6 +357,21 @@ FortiGate SSL VPN plugin for plasma-nm components.
 %license COPYING*
 %{_kf5_plugindir}/l*_fortisslvpnui.so
 %{_kf5_servicesdir}/plasmanetworkmanagement_fortisslvpnui.desktop
+
+%files mobile
+%license COPYING*
+%dir %{_kf5_plugindir}/kcms
+%{_kf5_plugindir}/kcms/kcm_mobile_broadband.so
+%{_kf5_plugindir}/kcms/kcm_mobile_hotspot.so
+%{_kf5_plugindir}/kcms/kcm_mobile_wifi.so
+%dir %{_kf5_sharedir}/kpackage
+%dir %{_kf5_sharedir}/kpackage/kcms
+%{_kf5_sharedir}/kpackage/kcms/kcm_mobile_broadband/
+%{_kf5_sharedir}/kpackage/kcms/kcm_mobile_hotspot/
+%{_kf5_sharedir}/kpackage/kcms/kcm_mobile_wifi/
+%{_kf5_servicesdir}/hotspotsettings.desktop
+%{_kf5_servicesdir}/mobilebroadbandsettings.desktop
+%{_kf5_servicesdir}/wifisettings.desktop
 
 %if %{with lang}
 %files lang -f %{name}.lang
