@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 12 05:13:37 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing BuildRequires/Requires on python-hyperlink 
+
+-------------------------------------------------------------------
 Tue Jan  5 03:42:59 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 20.12.3:

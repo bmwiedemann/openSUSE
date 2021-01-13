@@ -215,4 +215,12 @@
     <comment>Add bug and CVE numbers (bsc#1180570, CVE-2020-35678)</comment>
     <requestid>860566</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>60b6b19500b723b9b464e1e1d843f3f2</srcmd5>
+    <version>20.12.3</version>
+    <time>1610558401</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing BuildRequires/Requires on python-hyperlink</comment>
+    <requestid>862473</requestid>
+  </revision>
 </revisionlist>

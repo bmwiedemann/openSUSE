@@ -43,6 +43,7 @@ BuildRequires:  %{python_module cbor2 >= 4.1.2}
 BuildRequires:  %{python_module cffi >= 1.11.5}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module flatbuffers >= 1.10}
+BuildRequires:  %{python_module hyperlink >= 20.0.1}
 BuildRequires:  %{python_module lz4 >= 0.7.0}
 BuildRequires:  %{python_module mock >= 1.3.0}
 BuildRequires:  %{python_module msgpack >= 0.6.1}
@@ -70,6 +71,7 @@ Requires:       python-cbor >= 1.0.0
 Requires:       python-cbor2 >= 4.1.2
 Requires:       python-cffi >= 1.11.5
 Requires:       python-flatbuffers >= 1.10
+Requires:       python-hyperlink >= 20.0.1
 Requires:       python-lz4 >= 0.7.0
 Requires:       python-msgpack >= 0.6.1
 Requires:       python-passlib >= 1.7.1
