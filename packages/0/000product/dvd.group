@@ -879,6 +879,7 @@
     <package name="kpat" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kpat-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="krb5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="krb5-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="kreversi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kreversi-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kross" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2397,6 +2398,9 @@
     <package name="openSUSE-release" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="openSUSE-release-appliance-custom" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="openSUSE-release-dvd" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release-dvd -->
+    <package name="openafs" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
+    <package name="openafs-client" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
+    <package name="openafs-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
     <package name="openal-soft-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="opencc-data" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="openconnect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4016,7 +4020,6 @@
     <package name="elinks" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
     <package name="nodejs10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="npm10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <!-- openafs-client uninstallable: nothing provides kernel-uname-r = 5.10.4-1-default needed by openafs-kmp-default-1.8.6.1_k5.10.4_1-3.8.i586-->
     <!-- patterns-gnome-gnome uninstallable: nothing provides libmozjs-78.so.0 needed by polkit-0.118-4.1.i586-->
     <!-- patterns-gnome-gnome_basis uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.1-1.1.i586-->
     <!-- patterns-gnome-gnome_imaging uninstallable: nothing provides libmozjs-78.so.0 needed by libgjs0-1.66.1-1.1.i586-->
@@ -4499,7 +4502,6 @@
     <package name="kqtquickcharts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kquickcharts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="krb5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="krb5-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="krdc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="krdc-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="krename" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4666,6 +4668,7 @@
     <package name="libavahi-gobject0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libavahi-ui-gtk3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libavdevice58_10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libavif7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libbd_btrfs2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbd_crypto2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbd_fs2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5110,7 +5113,6 @@
     <package name="okular-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="okular-spectre" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="openSUSE-xfce-icon-theme" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <!-- openafs-client uninstallable: nothing provides kernel-uname-r = 5.10.4-1-default needed by openafs-kmp-default-1.8.6.1_k5.10.4_1-3.8.x86_64-->
     <package name="opensc" supportstatus="unsupported"/> <!-- reason: dvd:rng-tools -->
     <package name="openslp-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="openssl" supportstatus="unsupported"/> <!-- reason: dvd:mokutil -->
