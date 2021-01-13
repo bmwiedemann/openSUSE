@@ -1,7 +1,7 @@
 #
 # spec file for package kfilemetadata5
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define _tar_path 5.77
+%define _tar_path 5.78
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -24,7 +24,7 @@
 %bcond_without ffmpeg
 %bcond_without lang
 Name:           kfilemetadata5
-Version:        5.77.0
+Version:        5.78.0
 Release:        0
 Summary:        Library for extracting Metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -46,8 +46,8 @@ BuildRequires:  taglib-devel >= 1.9
 BuildRequires:  cmake(KF5Archive) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5I18n) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Test) >= 5.13.0
-BuildRequires:  cmake(Qt5Xml) >= 5.13.0
+BuildRequires:  cmake(Qt5Test) >= 5.14.0
+BuildRequires:  cmake(Qt5Xml) >= 5.14.0
 BuildRequires:  pkgconfig(poppler-qt5)
 Recommends:     %{name}-lang
 %if %{with ffmpeg}
@@ -64,7 +64,7 @@ Summary:        Development package for kfilemetadata
 Group:          Development/Libraries/KDE
 Requires:       %{name} = %{version}
 Requires:       extra-cmake-modules >= %{_kf5_bugfix_version}
-Requires:       cmake(Qt5Core) >= 5.13.0
+Requires:       cmake(Qt5Core) >= 5.14.0
 
 %description devel
 A library for extracting file metadata. Development files
