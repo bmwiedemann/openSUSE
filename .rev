@@ -50,4 +50,12 @@ This depends on recently checked into tw rpmlint whitelisting - should be &quot;
   %_vpnservicedir (provided by macros.NetworkManager). (forwarded request 799446 from dimstar)</comment>
     <requestid>799486</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7ee5c6abbe810b6c9128b65b069b9c23</srcmd5>
+    <version>1.2.14</version>
+    <time>1610558597</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862708</requestid>
+  </revision>
 </revisionlist>

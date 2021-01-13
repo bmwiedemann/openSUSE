@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-libreswan
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           NetworkManager-libreswan
-Version:        1.2.12
+Version:        1.2.14
 Release:        0
 Summary:        Libreswan VPN client plugin for NetworkManager
 License:        GPL-2.0-or-later
@@ -56,7 +56,7 @@ with the libreswan server with NetworkManager (GNOME files).
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %configure \
