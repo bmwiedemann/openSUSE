@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 11 03:08:06 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.026
+   see /usr/share/doc/packages/perl-Email-MIME-ContentType/Changes
+
+  1.026     2021-01-10 15:31:45-05:00 America/New_York
+          - don't use more memory than necessary to store parts of an encoded
+            parameter (thanks, Pali)
+
+-------------------------------------------------------------------
 Mon May 25 03:11:35 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 updated to 1.024
