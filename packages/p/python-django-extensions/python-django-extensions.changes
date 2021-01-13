@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Tue Jan 12 10:05:22 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Run spec-cleaner and remove url from description
+- Remove conf.py from %doc
+- Add Suggests for requests, pygraphviz and pydot
+- Add minimum versions for pip and djangorestframework
+- Re-activate several tests and de-select two tests
+- Update to v3.1.0
+  * pipchecker, sleep 60s if pypi raises a fault
+  * add django_zero_downtime_migrations to list of supported
+    postgresql engines
+  * use list of supported database engines from settings for all
+    database commands
+  * reset_db, documentation
+  * Fix: tests, Python 3.9 fixes for some tests
+  * Fix: runserver_plus, parsing of RUNSERVER_PLUS_EXTRA_FILES
+- from v3.0.9
+  * runserver_plus, survive syntax and configuration errors part II
+  * tests, refactor test runner
+  * sqlcreate, support postgresql unix domain socket
+- from v3.0.8
+  * setup.cfg, remove universal flag from wheel, as Python 3 only
+  * sqlcreate, fixed mentioned of old syncdb
+  * runserver_plus, stop catching SyntaxError since reload for
+    it was not working properly
+- from v3.0.7
+  * runserver_plus, gh #1575 survive syntax and configuration errors
+  * runscript, use exit-code 1 if script is not found
+- from v3.0.6
+  * runscript, add --continue-on-error unless set runscript will
+    exit on errors
+  * runscript, allow to return exit-code
+  * runscript, support raise CommandError(... returncode=...)
+  * runscript, run Django checks() and check_migrations() before
+    executing scripts
+  * shell_plus, set application name on all postgresql backends
+- from v3.0.5
+  * runserver_plus, exceptions must derive from BaseException error
+- from v3.0.4
+  * Various cleanups
+  * Deprecated using `--router` instead use `--database`
+  * Locales: Indonesian and Polish, updated
+  * show_dsn, fix crash with django-postgres-extra
+  * print_settings, added wildcard support
+  * print_settings, added --fail option
+  * delete_squashed_migrations, add --database option
+  * runserver_plus, added RUNSERVER_PLUS_EXTRA_FILES setting
+  * runserver_plus, added runserver_plus_started signal
+- from v3.0.3
+  * New: InternalIPS, allows to specify CIDRs for INTERNAL_IPS
+  * Docs: restructure toctree
+
+-------------------------------------------------------------------
 Tue Jul  7 08:39:29 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 3.0.2
