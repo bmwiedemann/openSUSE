@@ -1,7 +1,7 @@
 #
 # spec file for package python-Transplant
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-Transplant
-Version:        0.8.10
+Version:        0.8.11
 Release:        0
 Summary:        Python module for calling out to Matlab
 License:        BSD-3-Clause
@@ -67,7 +67,7 @@ cp %{SOURCE99} .
 
 %check
 # tests sadly need matlab install
-#%%python_exec setup.py test
+#%%pytest
 
 %files %{python_files}
 %license LICENSE
