@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 13 08:19:06 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.2:
+  * Fixed a regression in 0.17.0 about here-documents.
+
+-------------------------------------------------------------------
 Wed Jan  6 18:21:02 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.17.1:
