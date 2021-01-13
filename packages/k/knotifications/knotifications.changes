@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan  6 10:47:52 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.78.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.78.0
+- Changes since 5.77.0:
+  * Not necessary to use QtTest as it includes all QtCore include
+  * Add example/test application
+  * Improve KNotification API docs
+
+-------------------------------------------------------------------
 Sat Dec  5 18:56:48 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.77.0
