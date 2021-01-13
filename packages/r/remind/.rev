@@ -159,4 +159,24 @@
   illegal octal numbers.  This has been fixed.</comment>
     <requestid>847292</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2882efad67c6fb130d2cd70d65164a21</srcmd5>
+    <version>3.3.4</version>
+    <time>1610558591</time>
+    <user>dimstar_suse</user>
+    <comment>- update to remind 3.3.4
+- CHANGES TO REMIND
+* VERSION 3.3 Patch 4 - 2021-01-12
+- NEW FEATURE: If &quot;inotifywait&quot; is installed, TkRemind uses it to refresh
+  the calendar display right away when the reminders file/directory is updated.
+  This makes TkRemind react almost instantly if external tools are editing
+  or updating reminders.
+- MINOR NEW FEATURE: rem2ps has a new '-x' option; this puts the day numbers
+  on the top-left of the day's box instead of the top-right.
+- MINOR FIXES: A typo in remind.1 was fixed; additional comments regarding
+  UNTIL were added.
+- BUG FIX: rem2ps: Call setpagedevice to set page size
+  Based on a patch from Jonathan Kamens</comment>
+    <requestid>862665</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jan 12 15:50:42 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- update to remind 3.3.4
+
+- CHANGES TO REMIND
+
+* VERSION 3.3 Patch 4 - 2021-01-12
+
+- NEW FEATURE: If "inotifywait" is installed, TkRemind uses it to refresh
+  the calendar display right away when the reminders file/directory is updated.
+  This makes TkRemind react almost instantly if external tools are editing
+  or updating reminders.
+
+- MINOR NEW FEATURE: rem2ps has a new '-x' option; this puts the day numbers
+  on the top-left of the day's box instead of the top-right.
+
+- MINOR FIXES: A typo in remind.1 was fixed; additional comments regarding
+  UNTIL were added.
+
+- BUG FIX: rem2ps: Call setpagedevice to set page size
+  Based on a patch from Jonathan Kamens
+
+-------------------------------------------------------------------
 Mon Nov  9 13:47:55 UTC 2020 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - update to remind 3.3.3
