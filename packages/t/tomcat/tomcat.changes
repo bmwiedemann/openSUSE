@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 16 12:17:22 UTC 2020 - Abid Mehmood <amehmood@suse.com>
+
+- Fix HTTP/2 request header mix-up: CVE-2020-17527 (bsc#1179602)
+- Added patch:
+  * tomcat-9.0-CVE-2020-17527.patch  
+
+-------------------------------------------------------------------
 Tue Nov  3 10:08:03 UTC 2020 - Matei Albu <malbu@suse.com>
 
 - Add source url for tomcat-serverxml-tool
