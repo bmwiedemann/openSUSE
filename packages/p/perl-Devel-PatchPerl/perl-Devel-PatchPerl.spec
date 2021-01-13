@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Devel-PatchPerl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Devel-PatchPerl
 Name:           perl-Devel-PatchPerl
-Version:        2.06
+Version:        2.08
 Release:        0
 Summary:        Patch perl source a la Devel::PPPort's buildperl.pl
 License:        Artistic-1.0 OR GPL-1.0-or-later
