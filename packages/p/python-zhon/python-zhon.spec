@@ -1,7 +1,7 @@
 #
 # spec file for package python-zhon
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,13 +23,13 @@ Release:        0
 Summary:        Constants used in Chinese text processing
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/tsroten/zhon
+URL:            https://github.com/tsroten/zhon
 Source:         https://github.com/tsroten/zhon/archive/v%{version}.tar.gz#/zhon-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -46,7 +46,8 @@ Zhon provides constants used in Chinese text processing.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+printf "[pytest]\npython_files = test-*.py\n" > pytest.ini
+%pytest
 
 %files %{python_files}
 %doc AUTHORS.rst CHANGES.rst README.rst
