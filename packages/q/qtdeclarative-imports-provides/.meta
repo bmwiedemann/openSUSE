@@ -1,0 +1,5 @@
+<package name="qtdeclarative-imports-provides" project="openSUSE:Factory">
+  <title>qtdeclarative-imports-provides</title>
+  <description></description>
+  <devel project="KDE:Qt5" package="qtdeclarative-imports-provides"/>
+</package>

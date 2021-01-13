@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Tue Jan 12 21:02:18 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add a workaround for the source checker not liking that the package
+  has an invalid name with empty build flavor
+
+-------------------------------------------------------------------
+Mon Dec 28 21:39:01 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Initial commit
