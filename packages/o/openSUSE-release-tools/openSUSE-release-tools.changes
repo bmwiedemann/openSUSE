@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 05 16:08:49 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210106.deab50eb:
+  * fix typo in pkglistgen.leap.15.3
+  * monitor: remove Jump from monitor and add Backports to monitor
+
+-------------------------------------------------------------------
+Mon Jan 04 14:03:50 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210104.7b7d4aa8:
+  * gocd: enable staging bot and staging installcheck on SLE15 SP3 Backports
+
+-------------------------------------------------------------------
 Fri Dec 18 15:20:06 UTC 2020 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20201218.7cd9d749:
