@@ -19,4 +19,13 @@ primesieve is a new package, it's a command-line program and C/C++ library that 
 </comment>
     <requestid>761109</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d858edb619b804155e40560bd989989d</srcmd5>
+    <version>7.6</version>
+    <time>1610558352</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to primesieve-7.6
+</comment>
+    <requestid>861742</requestid>
+  </revision>
 </revisionlist>
