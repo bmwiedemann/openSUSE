@@ -1,7 +1,7 @@
 #
 # spec file for package udhcp
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           udhcp
 Version:        0.9.8
 Release:        0
 Summary:        Micro DHCP client / server
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/Emulators/PC
-Url:            http://udhcp.busybox.net
+URL:            http://udhcp.busybox.net
 Source0:        %{name}-%{version}.tar.gz
 Patch0:         oracle-rpmbuild-makefile-changes.patch
 Patch1:         %{name}_usermac.patch
@@ -55,16 +55,16 @@ make %{?_smp_mflags}
 pushd %{buildroot}/%{_mandir}
 find . -type f -exec chmod -x {} \;
 popd
-#UsrMerge
+%if !0%{?usrmerged}
 mkdir %{buildroot}/sbin
 ln -s %{_sbindir}/udhcpc %{buildroot}/sbin
-#EndUsrMerge
+%endif
 
 %files
 %defattr(-,root,root)
-#UsrMerge
+%if !0%{?usrmerged}
 /sbin/*
-#EndUsrMerge
+%endif
 %{_bindir}/*
 %{_sbindir}/*
 %{_mandir}/man?/*
