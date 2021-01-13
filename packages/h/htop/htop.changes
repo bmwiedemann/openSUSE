@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jan 12 08:47:23 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.0.5:
+  * InfoScreen: fix uncontrolled format string
+  * Improve white text in the Light Terminal colour scheme
+  * Enable the function bar on the main screen to be hidden (see Setup -> Display options)
+  * Reduce layout issues esp. around printing wide characters (not complete yet)
+  * Make the follow function exit cleanly after followed process died
+  * Update help and man page for improved -t / -s options
+  * Drop usage of formatted error messages from <err.h>
+  * Show arrow indicating order of sorted process column
+  * Lots of plumbing around the internal Hashtable, hardening and code cleanups
+  * LibSensors: add support for Ryzen CPUs
+  * Fix CPU percentage on M1 silicon Macs
+  * LoadMeter: dynamically adjust color and total of bar
+  * Find libsensors.so.4 for Fedora and friends
+  * Enable going back to previous search matches (Shift-F3)
+  * Added keybind 'N' for sorting by PID (drops 'n'/'N' as not used before much)
+
+-------------------------------------------------------------------
 Wed Dec 23 08:42:18 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - htop 3.0.4:

@@ -1,7 +1,7 @@
 #
 # spec file for package htop
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           htop
-Version:        3.0.4
+Version:        3.0.5
 Release:        0
 Summary:        An Interactive text-mode Process Viewer for Linux
 License:        GPL-2.0-or-later
@@ -26,11 +26,15 @@ URL:            https://htop.dev
 Source0:        https://dl.bintray.com/%{name}/source/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(hwloc)
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(libnl-genl-3.0)
 BuildRequires:  pkgconfig(ncurses)
 Recommends:     lsof
 Recommends:     strace
+%ifnarch        s390 s390x
+BuildRequires:  libsensors4-devel
+%endif
 
 %description
 htop is an interactive text-mode process viewer for Linux. It aims to be a
@@ -43,7 +47,7 @@ better 'top' and requires ncurses.
 %configure \
   --enable-taskstats \
   --enable-unicode \
-  --enable-linux-affinity \
+  --enable-hwloc \
   --enable-taskstats \
   --enable-delayacct \
   --enable-cgroup

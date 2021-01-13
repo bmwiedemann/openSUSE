@@ -472,4 +472,27 @@
     <comment></comment>
     <requestid>858337</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>11c2b5b8b5658e31691bcf1b57a593d5</srcmd5>
+    <version>3.0.5</version>
+    <time>1610558421</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.5:
+  * InfoScreen: fix uncontrolled format string
+  * Improve white text in the Light Terminal colour scheme
+  * Enable the function bar on the main screen to be hidden (see Setup -&gt; Display options)
+  * Reduce layout issues esp. around printing wide characters (not complete yet)
+  * Make the follow function exit cleanly after followed process died
+  * Update help and man page for improved -t / -s options
+  * Drop usage of formatted error messages from &lt;err.h&gt;
+  * Show arrow indicating order of sorted process column
+  * Lots of plumbing around the internal Hashtable, hardening and code cleanups
+  * LibSensors: add support for Ryzen CPUs
+  * Fix CPU percentage on M1 silicon Macs
+  * LoadMeter: dynamically adjust color and total of bar
+  * Find libsensors.so.4 for Fedora and friends
+  * Enable going back to previous search matches (Shift-F3)
+  * Added keybind 'N' for sorting by PID (drops 'n'/'N' as not used before much)</comment>
+    <requestid>862804</requestid>
+  </revision>
 </revisionlist>
