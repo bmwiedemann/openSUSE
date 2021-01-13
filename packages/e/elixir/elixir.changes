@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jan 11 19:13:39 UTC 2021 - Sven Marquardt <dev@mail.smarquardt.space>
+
+- Elixir 1.11.3
+ * Enhancements
+   Elixir
+   [Macro] Add Macro.unique_var/2 and Macro.generate_unique_arguments/2
+
+ * Bug fixes
+   Elixir
+   [Code] Do not raise when checking for operator ambiguity when :static_atoms_encoder is set in Code.string_to_quoted
+   [Kernel] Emit undefined function warnings from with
+   [Kernel] Do not fail type checking when literals are used in guards
+   [Module] Do not warn for attributes used in @after_compile
+   [Record] Make sure nested record names do not clobber each other 
+
+   ExUnit
+   [ExUnit.Assertions] Do not crash if there are macros and module attributes on the left side of ++
+
+   IEx
+   [IEx.Helpers] Do not use Unicode chars if ANSI is disabled
+
+   Mix
+   [mix deps.compile] Fix compatibility with rebar v3.14
+   [mix release] Do not use private ram_file:compress/1
+   [mix xref] Do not crash when retrieving calls for modules in memory
+
+
+-------------------------------------------------------------------
 Wed Nov 04 11:09:00 UTC 2020 - Sven Marquardt <dev@mail.smarquardt.space>
 
 - Elixir 1.11.2
