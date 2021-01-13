@@ -1438,6 +1438,7 @@ unsorted:
   - breeze: [i586] 
   - breeze5-cursors: [i586] 
   - breeze5-decoration: [i586] 
+  - breeze5-icons-rcc 
   - breeze5-style: [i586] 
   - breeze5-style-lang: [i586] 
   - breeze5-wallpapers: [i586] 
@@ -6081,6 +6082,7 @@ unsorted:
   - google-roboto-mono-fonts 
   - google-roboto-slab-fonts 
   - google-worksans-fonts 
+  - google-worksans-fonts-doc 
   - googleapis-source 
   - googler 
   - gops 
@@ -8080,7 +8082,6 @@ unsorted:
   - kim-api-devel 
   - kim-api-examples 
   - kimageformats: [i586] 
-  - kimageformats-32bit: [x86_64] 
   - kimageformats-eps: [i586] # suggested by dvd:suggested:patterns-kde-kde 
   - kimagemapeditor 
   - kimagemapeditor-lang 
@@ -8308,7 +8309,6 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
-  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -9459,7 +9459,7 @@ unsorted:
   - libSampleICC1 
   - libSavitar-devel 
   - libSavitar0 
-  - libSimGearCore-2020_3_4 
+  - libSimGearCore-2020_3_5 
   - libSoQt20 
   - libSoapyOsmoSDR0 
   - libSoundTouch1-32bit: [x86_64] 
@@ -9476,7 +9476,7 @@ unsorted:
   - libUil4-32bit: [x86_64] 
   - libUnitTest++-2_0_0 
   - libVFlib3-5 
-  - libVkLayer_utils-1_2_162_0 
+  - libVkLayer_utils-1_2_162_1 
   - libWN3 
   - libWPEBackend-fdo-1_0-1-32bit: [x86_64] 
   - libWildMidi2 
@@ -9824,7 +9824,7 @@ unsorted:
   - libavformat58_45-32bit: [x86_64] 
   - libavfs0 
   - libavif-devel 
-  - libavif7 
+  - libavif7: [i586] 
   - libavogadrolibs-suse0 
   - libavrdude1 
   - libavresample4_0-32bit: [x86_64] 
@@ -11952,9 +11952,7 @@ unsorted:
   - libksieve-devel 
   - libksieve-lang: [i586] 
   - libksysguard5: [i586] 
-  - libksysguard5-32bit: [x86_64] 
   - libksysguard5-devel 
-  - libksysguard5-devel-32bit: [x86_64] 
   - libksysguard5-helper: [i586] 
   - libksysguard5-imports: [i586] 
   - libksysguard5-lang: [i586] 
@@ -18114,14 +18112,11 @@ unsorted:
   - openSUSE-release-usb-x11 
   - openSUSE-xfce-icon-theme: [i586] 
   - openSUSEway 
-  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
-  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
-  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -19741,6 +19736,7 @@ unsorted:
   - perl-Net-Libproxy 
   - perl-Net-Netmask 
   - perl-Net-OAuth 
+  - perl-Net-OBS-Client 
   - perl-Net-OpenID-Common 
   - perl-Net-OpenID-Consumer 
   - perl-Net-OpenStack-Compute 
@@ -20501,6 +20497,7 @@ unsorted:
   - plasma-nm5-fortisslvpn 
   - plasma-nm5-iodine 
   - plasma-nm5-l2tp 
+  - plasma-nm5-mobile 
   - plasma-nm5-openswan 
   - plasma-nm5-ssh 
   - plasma-nm5-sstp 
@@ -21438,6 +21435,7 @@ unsorted:
   - python3-HyperKitty 
   - python3-IMAPClient 
   - python3-IMDbPY 
+  - python3-JPype1 
   - python3-Js2Py 
   - python3-JsonWeb 
   - python3-Kajiki 
@@ -24493,6 +24491,7 @@ unsorted:
   - python3-wikipedia 
   - python3-wirerope 
   - python3-wiring 
+  - python3-wmctrl 
   - python3-wolframalpha 
   - python3-wptools 
   - python3-wrapt 
@@ -24672,7 +24671,10 @@ unsorted:
   - qloud 
   - qm 
   - qmelt 
+  - qml-autoreqprov 
   - qml-box2d 
+  - qmlpluginexports-qt5 
+  - qmlpluginexports-qt6 
   - qmltermwidget 
   - qmmp 
   - qmmp-plugin-pack 
@@ -24937,6 +24939,8 @@ unsorted:
   - qtcurve-gtk2-32bit: [x86_64] 
   - qtcurve-qt5 
   - qtcurve-qt5-32bit: [x86_64] 
+  - qtdeclarative-imports-provides-qt5 
+  - qtdeclarative-imports-provides-qt6 
   - qtel 
   - qterm 
   - qterminal 
@@ -28425,6 +28429,7 @@ unsorted:
   - terminology-theme-upstream 
   - terminus 
   - terminus-lang 
+  - termit 
   - termrec 
   - termsyn-bitmap-fonts 
   - terraform: [x86_64] 
@@ -36492,6 +36497,7 @@ unsorted:
   - tsung 
   - ttf-converter 
   - ttf2pt1 
+  - ttynvt 
   - tudu 
   - tuigreet 
   - tuimoji 
