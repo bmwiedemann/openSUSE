@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 12 01:04:39 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20210112.00
+  * Fix builds for ppc and s390x (#274)
+  * Minor updates to tests and additional debug logging (#272)
+  * Add Ubuntu 2004 to tests (#271)
+  * Make sure we stop tickers (#270)
+  * Drop Windows 1903 and CentOS 6 from tests (#269)
+  * Pin el6 tests to last published image as it is EOL (#267)
+  * support cos (#266)
+
+-------------------------------------------------------------------
 Tue Nov 24 13:18:46 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20201117.00 (bsc#1179031, bsc#1179032)

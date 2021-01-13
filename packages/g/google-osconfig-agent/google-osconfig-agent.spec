@@ -1,7 +1,7 @@
 #
 # spec file for package google-osconfig-agent
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           google-osconfig-agent
-Version:        20201117.00
+Version:        20210112.00
 Release:        0
 Summary:        Google Cloud Guest Agent
 License:        Apache-2.0
@@ -35,7 +35,7 @@ Source1:        vendor.tar.gz
 Source2:        rpmlintrc
 BuildRequires:  go1.14
 Requires:       google-guest-configs
-BuildRoot:      %{_tmppath}/%{repo}-%{version}-build
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  golang-packaging
 
