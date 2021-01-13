@@ -1,7 +1,7 @@
 #
 # spec file for package openafs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,13 @@
 # run regen to create new configure script
 %define run_regen 1
 
+# flag for firewalld, only required for SLE-12
+%if 0%{?sle_version} <= 120500 && !0%{?is_opensuse} 
+%define have_firewalld 0
+%else
+%define have_firewalld 1
+%endif
+
 #
 # package internal directories
 #
@@ -47,11 +54,7 @@
 %define vicecachedir	  /var/cache/openafs
 %define afslocaldir       /var/lib/openafs
 
-%ifarch ppc64le ppc64
-%define build_kernel_modules 0
-%endif
-
-%if %{_arch} == arm
+%ifarch ppc64le ppc64 arm
 %define build_kernel_modules 0
 %endif
 
@@ -125,7 +128,9 @@ BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  coreutils
 BuildRequires:  fdupes
+%if %{have_firewalld}
 BuildRequires:  firewall-macros
+%endif
 BuildRequires:  flex
 BuildRequires:  fuse-devel
 BuildRequires:  git
@@ -342,7 +347,7 @@ perl -pi -e 's,^(XCFLAGS.*),\1 -fPIC,' src/config/Makefile.ppc_linux24.in
 sysbase=ppc64
 export LDFLAGS="$LDFLAGS -m64"
 %endif
-%ifarch %{arm}
+%ifarch arm
 sysbase=arm
 %endif
 %ifarch aarch64
@@ -391,23 +396,15 @@ for flavor in %flavors_to_build; do
     rm -rf obj/$flavor
     cp -a libafs_tree obj/$flavor
     pushd obj/$flavor
-%if 0%{?suse_version} > 1500 && %{_arch} == x86_64
-    ./configure  --with-linux-kernel-build=/usr/src/linux-obj/%{_target_cpu}/$flavor --with-linux-kernel-headers=/usr/src/linux \
-        --disable-transarc-paths
-%else
     find . -name "*.c" -exec sed -i '/MODULE_LICENSE(/a MODULE_INFO(retpoline, "Y");' "{}" "+"
     ./configure  --with-linux-kernel-build=/usr/src/linux-obj/%{_target_cpu}/$flavor --with-linux-kernel-headers=/usr/src/linux \
         --disable-transarc-paths
     export EXTRA_CFLAGS='-DVERSION=\"%version\"'
-%ifnarch aarch64
-    export KCFLAGS='-mindirect-branch=thunk-inline -mindirect-branch-register'
-%endif
-%endif
     export LINUX_MAKE_ARCH="ARCH=%{_arch}"
     make
     popd
 done
-%endif
+%endif # build_kernel_modules
 
 %install
 
@@ -522,6 +519,7 @@ rm -rf %{buildroot}/%{_libdir}/afs
 
 # firewalld
 
+%if %{have_firewalld}
 mkdir -p %{buildroot}%{_prefix}/lib/firewalld/services/
 install -D -m 644 %{S:40} %{buildroot}%{_prefix}/lib/firewalld/services/
 install -D -m 644 %{S:41} %{buildroot}%{_prefix}/lib/firewalld/services/
@@ -531,6 +529,7 @@ install -D -m 644 %{S:44} %{buildroot}%{_prefix}/lib/firewalld/services/
 install -D -m 644 %{S:45} %{buildroot}%{_prefix}/lib/firewalld/services/
 install -D -m 644 %{S:46} %{buildroot}%{_prefix}/lib/firewalld/services/
 install -D -m 644 %{S:47} %{buildroot}%{_prefix}/lib/firewalld/services/
+%endif
 
 #
 # general cleanup
@@ -644,7 +643,9 @@ fi
 /sbin/ldconfig
 %{fillup_only -n openafs-client}
 %service_add_post openafs-client.service
+%if %{have_firewalld}
 %firewalld_reload
+%endif
 
 if [ "x$1" = "x" ]; then
     my_operation=0
@@ -844,10 +845,12 @@ fi
 %{_sbindir}/rcopenafs-client
 %{_fillupdir}/sysconfig.openafs-client
 %{vicecachedir}
+%if %{have_firewalld}
 %dir %{_prefix}/lib/firewalld
 %dir %{_prefix}/lib/firewalld/services
 %{_prefix}/lib/firewalld/services/afs3-callback.xml
 %{_prefix}/lib/firewalld/services/afs3-rmtsys.xml
+%endif
 
 %files server 
 %defattr(-,root,root)
@@ -937,6 +940,7 @@ fi
 %_unitdir/openafs-server.service
 %{_sbindir}/rcopenafs-server
 /%{_fillupdir}/sysconfig.openafs-server
+%if %{have_firewalld}
 %dir %{_prefix}/lib/firewalld
 %dir %{_prefix}/lib/firewalld/services
 %{_prefix}/lib/firewalld/services/afs3-bos.xml  
@@ -945,6 +949,7 @@ fi
 %{_prefix}/lib/firewalld/services/afs3-update.xml
 %{_prefix}/lib/firewalld/services/afs3-vlserver.xml
 %{_prefix}/lib/firewalld/services/afs3-volser.xml
+%endif
 
 %files devel  
 %defattr(-,root,root)

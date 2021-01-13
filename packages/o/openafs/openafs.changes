@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 11 10:01:15 UTC 2021 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- cleanup spec-file
+  * do not include firewalld-stuff for SLE_12
+  * use %ifarch instead of %if %{_arch} 
+  * enable retpol line for TW x86_64 again
+
+-------------------------------------------------------------------
 Mon Nov  2 09:20:37 UTC 2020 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
 
 - update to HEAD of git branch openafs-stable-1_8_x 
