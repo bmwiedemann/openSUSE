@@ -1074,4 +1074,11 @@
     <time>1610448239</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="133" vrev="133">
+    <srcmd5>9fc4c599e2808aead4756a72feab80b9</srcmd5>
+    <version>unknown</version>
+    <time>1610545418</time>
+    <user>dimstar_suse</user>
+    <comment>Add adwaita-icon-theme to X11 rescue CD</comment>
+  </revision>
 </revisionlist>

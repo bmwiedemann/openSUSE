@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 13 13:42:35 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- No longer remove adwaita-icon-theme on x11 Rescue CD: xfce 4.16's
+  updated icon theme inherits Adwaita (boo#1180853).
+
+-------------------------------------------------------------------
 Tue Jan 12 07:33:10 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Drop xfce4-mixer from x11 flavor: not even the xfce flavor
