@@ -83,7 +83,12 @@ iconv -f iso8859-1 -t utf-8 readme.txt > readme.txt.conv \
 sed -i 's/mapeditor/mapeditor;/g' src/install/nix/redeclipse.desktop.am
 
 %build
-make %{?_smp_mflags} CXXFLAGS='%{optflags}' WANT_DISCORD=1 LIBENET="" -C src/
+make %{?_smp_mflags} \
+  CXXFLAGS='%{optflags}' \
+%ifarch %{ix86} x86_64
+  WANT_DISCORD=1 \
+%endif
+  LIBENET="" -C src/
 
 %install
 make %{?_smp_mflags} CXXFLAGS="%{optflags}" -C src/ \

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 12 13:05:54 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable discord for non-x86* as it requires pre-built x86 libs
+
+-------------------------------------------------------------------
 Wed Jan  6 19:50:30 UTC 2021 - Matthias Mailänder <matthias@opensuse.org>
 
 - Enable the Discord integeration.
