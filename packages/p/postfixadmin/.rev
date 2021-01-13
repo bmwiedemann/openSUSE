@@ -388,4 +388,18 @@ SVN changes since 2.3.4 release (postfixadmin-2.3 branch)
   * Fix postfixadmin-cli, see #296 (forwarded request 830445 from gladiac)</comment>
     <requestid>832594</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>03a3c6dc8848f3e33f8f46bf96097720</srcmd5>
+    <version>3.3.1</version>
+    <time>1610558614</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to PostfixAdmin 3.3.1
+  - switch of bootstrap theme
+  - let setup.php display less information
+  - change internal database routines to use PHP's PDO
+  - various improvements and bug fixes
+  - new setup password hashing method (you'll need to create a new
+    $CONF['setup_password']) (forwarded request 862721 from cboltz)</comment>
+    <requestid>862722</requestid>
+  </revision>
 </revisionlist>
