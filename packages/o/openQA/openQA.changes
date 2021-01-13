@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 12 18:41:01 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1610476848.0a2eee8d6:
+  * Support filtering specified minion jobs
+  * Cleanup test code
+  * Clear any uncommitted changes that would prevent a rebase
+  * Dependency cron 2021-01-11
+  * Dependency cron 2021-01-06
+  * Generalize "docker" path in source to "container"
+
+-------------------------------------------------------------------
 Sat Jan 02 08:00:01 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1609567691.181f02eda:
