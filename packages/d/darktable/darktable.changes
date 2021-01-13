@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  4 15:34:46 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Added d10c290fb3b47bbc8fd90d6d1d7935b900c1caf6.patch
+  * Fix building on aarch64
+
+-------------------------------------------------------------------
 Thu Dec 24 08:00:00 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 3.4.0

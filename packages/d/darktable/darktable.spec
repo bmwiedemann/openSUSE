@@ -1,7 +1,7 @@
 #
 # spec file for package darktable
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -106,7 +106,8 @@ Source98:       debian.tar.xz
 Source99:       README.openSUSE
 #
 Patch0:         darktable-old-glib.patch
-
+Patch1:         https://github.com/darktable-org/darktable/commit/d10c290fb3b47bbc8fd90d6d1d7935b900c1caf6.patch
+#
 ExclusiveArch:  x86_64 aarch64 ppc64le
 # build time tools
 BuildRequires:  clang
