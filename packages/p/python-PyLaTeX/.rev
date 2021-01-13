@@ -36,4 +36,12 @@
   * Use a different temporary directory per user.</comment>
     <requestid>830973</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>299ca9676cd5644acb0a6daf5e3d39fb</srcmd5>
+    <version>1.4.1</version>
+    <time>1610558372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862377</requestid>
+  </revision>
 </revisionlist>

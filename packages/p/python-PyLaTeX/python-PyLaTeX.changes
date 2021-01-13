@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jan 10 18:05:44 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 1.4.1.
+  * Fixes regression in 1.4.0 where empty ``geometry_options`` 
+    would throw an error.
+- Updates for version 1.4.0
+  * Add ``Fragment`` class which is a ``Container`` without any 
+    LaTeX code surrounding its content.
+  * Escape newlines in ``ContainerCommand``
+  * Fix bug where the geometry options were not applied in some 
+    cases
+  * Remove denose.patch, fixed.
+
+-------------------------------------------------------------------
 Tue Sep  1 06:56:57 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.3.4:

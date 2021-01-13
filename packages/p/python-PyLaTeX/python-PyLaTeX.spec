@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyLaTeX
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-PyLaTeX
-Version:        1.3.4
+Version:        1.4.1
 Release:        0
 Summary:        A Python library for creating LaTeX files and snippets
 License:        MIT
 URL:            https://github.com/JelteF/PyLaTeX
 Source:         https://github.com/JelteF/PyLaTeX/archive/v%{version}.tar.gz#/PyLaTeX-%{version}.tar.gz
-# PATCH-FEATURE-UPSTREAM denose.patch gh#JelteF/PyLaTeX#294 mcepl@suse.com
-# Remove nose dependency
-Patch0:         denose.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -111,7 +108,6 @@ PyLaTeX is a Python library for creating and compiling LaTeX files.
 
 %prep
 %setup -q -n PyLaTeX-%{version}
-%autopatch -p1
 
 %build
 %python_build
@@ -128,6 +124,7 @@ PyLaTeX is a Python library for creating and compiling LaTeX files.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pylatex
+%{python_sitelib}/*egg-info
 
 %changelog
