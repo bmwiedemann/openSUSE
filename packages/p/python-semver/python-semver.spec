@@ -26,7 +26,6 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/python-semver/python-semver
 Source:         https://files.pythonhosted.org/packages/source/s/semver/semver-%{version}.tar.gz
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -44,6 +43,7 @@ See also http://semver.org/
 
 %prep
 %setup -q -n semver-%{version}
+sed -i '/-cov/d' setup.cfg
 
 %build
 %python_build
