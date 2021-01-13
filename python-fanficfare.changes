@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jan 12 16:12:03 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add no-cloudscraper.patch to avoid need to use cloudscraper
+
+-------------------------------------------------------------------
+Mon Jan 11 17:28:41 CET 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.28.0:
+  - **Disable adapter_fanfictionnet with warning about site
+    blocking.**
+  - Catch exception from emails not decoding, skip
+    & logger.error().
+  - Add a fake get_image_size() method for when no image
+    processing available. Closes #621 (CLI only)
+  - Change adapter_twilightednet to https
+  - Change for adapter_fanfictionnetadapter_fanfictionnet to make
+    skip_author_cover work again.
+  - Make included certifi and requests use same tmp file code and
+    store under calibre tmp dir for cleanup.
+  - Add append_datepublished_to_storyurl option for
+    storiesonline.net, finestories.com, scifistories.com only.
+
+-------------------------------------------------------------------
 Thu Dec 24 16:17:00 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add use_cloudscraper code to use with CloudFlare sites, like
