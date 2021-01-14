@@ -108,6 +108,7 @@ Additional tools for inspecting, testing, viewing QML imports and files.
 Summary:        Qt 6 Qml library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Requires:       qt6-declarative-imports
+Requires:       (qml-autoreqprov if rpm-build)
 
 %description -n libQt6Qml6
 The Qt 6 Qml library.
@@ -344,7 +345,6 @@ ABI or API guarantees.
 ### Static libraries ###
 %package -n qt6-packetprotocol-devel-static
 Summary:        Qt6 PacketProtocol static library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 %requires_eq    qt6-core-private-devel
 
 %description -n qt6-packetprotocol-devel-static
@@ -361,6 +361,7 @@ any ABI or API guarantees.
 
 %package -n qt6-qmlcompiler-devel-static
 Summary:        Qt6 QmlCompiler static library
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 
 %description -n qt6-qmlcompiler-devel-static
 The Qt6 QmlCompiler static library.

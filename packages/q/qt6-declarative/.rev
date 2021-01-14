@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>860549</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0f5b2ccb227cafbcee0a1687a5605829</srcmd5>
+    <version>6.0.0</version>
+    <time>1610633141</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable qml-autoreqprov</comment>
+    <requestid>863030</requestid>
+  </revision>
 </revisionlist>

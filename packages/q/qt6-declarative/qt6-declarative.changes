@@ -4,6 +4,11 @@ Wed Dec 30 15:50:18 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 - Move the QML files into a separate package.
 
 -------------------------------------------------------------------
+Mon Dec 28 18:07:31 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Enable qml-autoreqprov
+
+-------------------------------------------------------------------
 Wed Dec 16 11:26:05 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Use a different 'Name' when building the docs flavor.
