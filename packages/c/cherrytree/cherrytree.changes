@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 09 00:12:55 UTC 2021 - malcolmlewis@opensuse.org
+
+- Update to version 0.99.29:
+  * Fix unable to open sqlite document created with old document
+    version, (gh#giuspen/cherrytree#1471).
+  * Add meta modifier shortcut key support,
+    (gh#giuspen/cherrytree#1467).
+
+-------------------------------------------------------------------
 Sun Jan 03 16:32:05 UTC 2021 - malcolmlewis@opensuse.org
 
 - Update to version 0.99.28:

@@ -1187,4 +1187,12 @@
   * Working on tables poor performance. (forwarded request 859965 from malcolmlewis)</comment>
     <requestid>860466</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>00ec1fb6cfe0e1963be0b8d092ecb4aa</srcmd5>
+    <version>0.99.29</version>
+    <time>1610633112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862960</requestid>
+  </revision>
 </revisionlist>
