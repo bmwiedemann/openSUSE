@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 12 23:21:42 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.16.2
+  * Regression: "Open with other application" missing
+    (gxo#xfce/thunar#470)
+  * Always create new files and folders in current directory
+    (gxo#xfce/thunar#462)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Tue Dec 29 23:37:49 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 4.16.1
