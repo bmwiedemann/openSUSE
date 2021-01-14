@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Jan 12 03:09:13 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.002003
+   see /usr/share/doc/packages/perl-Role-Tiny/Changes
+
+  2.002003 - 2021-01-11
+    - set dynamic_config to 0 and x_static_install to 1
+    - fixed filenames in dependents author test to not use colons
+    - removed MRO::Compat from prereqs as it is no longer used
+    - marked Class::Method::Modifiers as a hard developer dependency rather than
+      a recommended developer dependency
+    - rewrote test for namespace cleaning to not require namespace::clean, and
+      moved it from an author test to a normal test
+    - removed namespace::autoclean from developer prereqs
+  2.002_002 - 2021-01-03
+    - refactored some internals for subclasses to use
+    - methods_provided_by will ensure the module is loaded before checking for
+      methods
+  2.002_001 - 2020-12-27
+    - fix tests when Class::Method::Modifiers is not installed
+  2.002_000 - 2020-12-23
+    - Refactored create_class_with_roles to not use "composable packages". This
+      was an optimization for when a role is used in many different uses of
+      create_class_with_roles, but required an entirely separate implementation,
+      which did not have fully compatible behavior. It would also result in
+      methods using modifiers being slower.
+    - Add documentation for what methods will be composed from a role
+      (RT#133363)
+    - Fix backwards compatibility with older versions of Moo when interacting
+      with Moose.
+    - Treat modifiers as required methods during create_class_with_roles.
+    - Fixed methods being no longer composed after they participated in an
+      allowed conflict.
+    - Dropped use of MRO::Compat.
+    - Test cleanups for checking requires during create_class_with_roles.
+    - Additional tests to confirm internal role application steps can be fully
+      qualified.
+    - Fix Pod links to Class::Method::Modifiers
+    - Tweaks to author tests
+    - Additional tests for working with older Moo versions
+    - Additional tests for module loading
+    - Allow method modifiers to be specified with an array reference of method
+      names, rather than a list. This now matches how the corresponding
+      Class::Method::Modifiers subs can be called.
+
+-------------------------------------------------------------------
 Mon Oct 28 11:01:38 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 2.001004
