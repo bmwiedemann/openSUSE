@@ -79,4 +79,12 @@
   * Fix scale for images with no viewBox</comment>
     <requestid>732870</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7a07a4c900c6683fc6f3423df7a5e22e</srcmd5>
+    <version>2.5.1</version>
+    <time>1610633056</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862435</requestid>
+  </revision>
 </revisionlist>

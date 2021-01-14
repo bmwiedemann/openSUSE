@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Jan 10 16:09:41 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 2.5.1.
+  * Security fix: When processing SVG files, CairoSVG was using two
+    regular expressions which are vulnerable to Regular Expression 
+    Denial of Service (REDoS). If an attacker provided a malicious 
+    SVG, it could make CairoSVG get stuck processing the file for a 
+    very long time.
+  * Fix marker positions for unclosed paths
+  * Follow hint when only output_width or output_height is set
+  * Handle opacity on raster images
+  * Don’t crash when use tags reference unknown tags
+  * Take care of the next letter when A/a is replaced by l
+  * Fix misalignment in node.vertices
+- Updates for version 2.5.0.
+  * Drop support of Python 3.5, add support of Python 3.9.
+  * Add EPS export
+  * Add background-color, negate-colors, and invert-images options
+  * Improve support for font weights
+  * Fix opacity of patterns and gradients
+  * Support auto-start-reverse value for orient
+  * Draw images contained in defs
+  * Add Exif transposition support
+  * Handle dominant-baseline
+  * Support transform-origin
+- Add _service file to fetch required submodule.
+
+-------------------------------------------------------------------
 Tue Sep 24 08:46:49 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.4.2:
