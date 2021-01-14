@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan  5 21:14:33 UTC 2021 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to 1.2.0
+  * Adwaita-qt now provides a library providing Adwaita specific colors
+  * Checkbox: removed space before indicator for better consistency with other widgets
+  * Qt4 version is no longer supported
+  * Adwaita-qt can be successfuly build on Windows and Mac OS
+- Stop building qt4 version since support for it have been dropped
+- add devel package and shared library package for qt5
+- Require adwaita-qt5 and obsolete adwaita-qt4 for older versions
+
+-------------------------------------------------------------------
 Wed Jul 29 22:11:22 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to 1.1.4

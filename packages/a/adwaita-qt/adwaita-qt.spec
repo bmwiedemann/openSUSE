@@ -1,7 +1,7 @@
 #
 # spec file for package adwaita-qt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2015 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,13 +17,9 @@
 #
 
 
-%if (0%{?is_opensuse} && 0%{?suse_version} < 1500) || 0%{?is_backports}
-%bcond_without qt4
-%else
-%bcond_with qt4
-%endif
+%define sover 1_2_0
 Name:           adwaita-qt
-Version:        1.1.4
+Version:        1.2.0
 Release:        0
 Summary:        Adwaita theme for Qt-based applications
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -32,60 +28,66 @@ Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libqt5-qtbase-devel
-%if %{with qt4}
-BuildRequires:  libqt4-devel
-%endif
+BuildRequires:  libqt5-qtx11extras-devel
+BuildRequires:  libxcb-devel
+Requires:       adwaita-qt5
+Obsoletes:      adwaita-qt4 < 1.2.0
 
 %description
 Theme to let Qt applications fit nicely into GNOME desktop.
 
-%package -n adwaita-qt4
-Summary:        Adwaita Qt4 theme
-Supplements:    (libqt4 and gnome-session)
-
-%description -n adwaita-qt4
-Adwaita theme variant for applications utilizing Qt4
-
 %package -n adwaita-qt5
 Summary:        Adwaita Qt5 theme
+Requires:       libadwaitaqt%{sover} = %{version}-%{release}
 Supplements:    (libQt5Core5 and gnome-session)
 
 %description -n adwaita-qt5
 Adwaita theme variant for applications utilizing Qt5
 
+%package -n libadwaitaqt%{sover}
+Summary:        Adwaita Qt5 library
+
+%description -n libadwaitaqt%{sover}
+Adwaita theme variant for applications utilizing Qt5
+
+%package -n libadwaitaqt-devel
+Summary:        Development files for libadwaitaqt
+Requires:       libadwaitaqt%{sover} = %{version}-%{release}
+
+%description -n libadwaitaqt-devel
+The libadwaitaqt-devel package contains libraries and header files for
+developing applications that use libadwaitaqt%{sover}.
+
 %prep
 %autosetup -p1
 
 %build
-%if %{with qt4}
-# Qt4 build and install
-%cmake -DUSE_QT4=ON
-%make_build
-cd ..
-%cmake_install
-%endif
-
-# Qt5 build
-rm -rf build
-%cmake -DUSE_QT4=OFF
-%make_build
+%cmake
+%cmake_build
 
 %install
-# Qt5 install
 %cmake_install
 
-%if %{with qt4}
-%files -n adwaita-qt4
-%license LICENSE.LGPL2
-%doc README.md
-%dir %{_libdir}/qt4/plugins/styles
-%{_libdir}/qt4/plugins/styles/adwaita.so
-%endif
+%post   -n libadwaitaqt%{sover} -p /sbin/ldconfig
+%postun -n libadwaitaqt%{sover} -p /sbin/ldconfig
 
 %files -n adwaita-qt5
 %license LICENSE.LGPL2
 %doc README.md
 %dir %{_libdir}/qt5/plugins/styles
 %{_libdir}/qt5/plugins/styles/adwaita.so
+
+%files -n libadwaitaqt%{sover}
+%{_libdir}/libadwaitaqt.so.*
+%{_libdir}/libadwaitaqtpriv.so.*
+
+%files -n libadwaitaqt-devel
+%dir %{_includedir}/AdwaitaQt
+%{_includedir}/AdwaitaQt/*.h
+%dir %{_libdir}/cmake/AdwaitaQt
+%{_libdir}/cmake/AdwaitaQt/*.cmake
+%{_libdir}/pkgconfig/adwaita-qt.pc
+%{_libdir}/libadwaitaqt.so
+%{_libdir}/libadwaitaqtpriv.so
 
 %changelog
