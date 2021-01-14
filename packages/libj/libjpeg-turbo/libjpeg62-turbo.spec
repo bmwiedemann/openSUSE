@@ -1,7 +1,7 @@
 #
 # spec file for package libjpeg62-turbo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -78,8 +78,8 @@ files using the libjpeg library.
 export LDFLAGS="-Wl,-z,relro,-z,now"
 %cmake \
     -DENABLE_STATIC=OFF \
-%ifarch ppc
-    -DFLOATTEST=64bit \
+%ifarch s390x riscv64
+    -DFLOATTEST=fp-contract \
 %endif
     %{nil}
 %make_build

@@ -1,7 +1,7 @@
 #
 # spec file for package libjpeg-turbo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -118,8 +118,8 @@ MYCFLAGS="$MYCFLAGS -O0 -g"
     -DCMAKE_SHARED_LINKER_FLAGS="$MYLDFLAGS" \
     -DENABLE_STATIC=OFF \
     -DWITH_JPEG8=ON \
-%ifarch ppc
-    -DFLOATTEST=64bit \
+%ifarch s390x riscv64
+    -DFLOATTEST=fp-contract \
 %endif
     %{nil}
 %make_build

@@ -879,4 +879,12 @@
   % libjpeg-turbo.keyring</comment>
     <requestid>859049</requestid>
   </revision>
+  <revision rev="55" vrev="62">
+    <srcmd5>a3b505ce584b7dc29830634776b2a306</srcmd5>
+    <version>unknown</version>
+    <time>1610633079</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix setting of FLOATTEST (forwarded request 862263 from Andreas_Schwab)</comment>
+    <requestid>862563</requestid>
+  </revision>
 </revisionlist>
