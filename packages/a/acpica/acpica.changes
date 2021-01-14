@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan  5 20:40:38 UTC 2021 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 20210105
+  ACPICA kernel-resident subsystem:
+  * Updated all copyrights to 2021. This affects all ACPICA source code 
+    modules.
+  iASL Compiler/Disassembler and ACPICA tools:
+  * ASL test suite (ASLTS): Updated all copyrights to 2021.
+  * Tools and utilities: Updated all signon copyrights to 2021.
+  * iASL Table Compiler: Removed support for obsolete ACPI tables: VRTC, 
+    MTMR. Al Stone.
+
+-------------------------------------------------------------------
 Fri Jul 24 21:25:52 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 20200717 
