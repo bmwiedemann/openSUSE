@@ -2963,6 +2963,8 @@ unsorted:
   - drops 
   - dropwatch 
   - drumstick 
+  - drumstick-lang 
+  - drumstick-mimetypes 
   - drush 
   - dssi 
   - dssi-devel 
@@ -9185,7 +9187,7 @@ unsorted:
   - libPythonQt_QtAll-Qt5-Python3-3 
   - libQCSXCAD0 
   - libQMatrixClient0_5_3 
-  - libQgpsmm27 
+  - libQgpsmm28 
   - libQt53DAnimation-devel 
   - libQt53DAnimation5 
   - libQt53DCore-devel 
@@ -9631,6 +9633,8 @@ unsorted:
   - libadns1-32bit: [x86_64] 
   - libadolc2 
   - libadolc2-32bit: [x86_64] 
+  - libadwaitaqt-devel 
+  - libadwaitaqt1_2_0: [i586] 
   - libaec-devel 
   - libaec0 
   - libaec0-32bit: [x86_64] 
@@ -10596,12 +10600,14 @@ unsorted:
   - libdrm_nouveau2-32bit: [x86_64] 
   - libdrm_radeon1-32bit: [x86_64] 
   - libdrpm-devel 
-  - libdrumstick-alsa1 
+  - libdrumstick-alsa2 
   - libdrumstick-devel 
   - libdrumstick-doc 
-  - libdrumstick-file1 
-  - libdrumstick-rt-plugins 
-  - libdrumstick-rt1 
+  - libdrumstick-file2 
+  - libdrumstick-rt2 
+  - libdrumstick-rt2-plugins 
+  - libdrumstick-widgets-lang 
+  - libdrumstick-widgets2 
   - libdruntime-ldc94 
   - libdtkcore2 
   - libdtkwidget2 
@@ -11249,7 +11255,7 @@ unsorted:
   - libgpod-tools: [i586] 
   - libgpod4: [i586] 
   - libgpod4-32bit: [x86_64] 
-  - libgps27: [i586] 
+  - libgps28: [i586] 
   - libgrail6 
   - libgrail6-32bit: [x86_64] 
   - libgranite5 
@@ -11269,7 +11275,7 @@ unsorted:
   - libgrooveplayer-devel 
   - libgrooveplayer4 
   - libgrpc++1 
-  - libgrpc13 
+  - libgrpc14 
   - libgrpc_plugin_support1 
   - libgrss-devel 
   - libgrss0 
@@ -11328,8 +11334,8 @@ unsorted:
   - libgstwayland-1_0-0-32bit: [x86_64] 
   - libgstwebrtc-1_0-0-32bit: [x86_64] 
   - libgtk-3-0-32bit: [x86_64] 
-  - libgtk-4-0 
-  - libgtk-4-0-32bit: [x86_64] 
+  - libgtk-4-1 
+  - libgtk-4-1-32bit: [x86_64] 
   - libgtk-frdp-0_1 
   - libgtk-layer-shell0 
   - libgtk-vnc-2_0-0: [i586] 
@@ -14468,7 +14474,7 @@ unsorted:
   - libunshield0 
   - libunwind-32bit: [x86_64] 
   - libunwind-devel 
-  - libupb13 
+  - libupb14 
   - libupm1 
   - libupnp-devel 
   - libupnp17-32bit: [x86_64] 
@@ -20995,6 +21001,7 @@ unsorted:
   - prometheus-ha_cluster_exporter: [x86_64] 
   - prometheus-hanadb_exporter 
   - prometheus-sap_host_exporter: [x86_64] 
+  - prometheus-saptune_exporter: [x86_64] 
   - prometheus-simpleclient-java 
   - prometheus-simpleclient-java-common 
   - prometheus-simpleclient-java-graphite_bridge 
@@ -22338,6 +22345,7 @@ unsorted:
   - python3-django-nose 
   - python3-django-oauth-toolkit 
   - python3-django-oidc-provider 
+  - python3-django-pandas 
   - python3-django-parler 
   - python3-django-perf-rec 
   - python3-django-pglocks 
