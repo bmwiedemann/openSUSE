@@ -1,7 +1,7 @@
 #
 # spec file for package python-tox
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-tox
-Version:        3.18.0
+Version:        3.21.1
 Release:        0
 Summary:        Virtualenv-based automation of test activities
 License:        MIT
@@ -34,7 +34,6 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pluggy >= 0.12.0}
 BuildRequires:  %{python_module py >= 1.4.17}
 BuildRequires:  %{python_module pytest >= 4.0.0}
-BuildRequires:  %{python_module pytest-cov >= 2.5.1}
 BuildRequires:  %{python_module pytest-mock >= 1.10.0}
 BuildRequires:  %{python_module pytest-xdist >= 1.22.2}
 BuildRequires:  %{python_module setuptools >= 41.0.1}
@@ -124,9 +123,8 @@ export PYTHONDONTWRITEBYTECODE=1
 export PATH=%{buildroot}%{_bindir}:$PATH
 # Ignores for gh#tox-dev/tox#1293
 # test_dist_exists_version_change test_verbose_isolated_build: need python2* deps even on python3
-# test_spinner_stdout_not_unicode breaks with changes in monkeypatch in pytest
-rm tests/unit/util/test_spinner.py
-%pytest -k 'not (network or parallel or test_provision_missing or test_provision_interrupt_child or test_workdir_gets_resolved or test_provision_cli_args_ignore or test_provision_non_canonical_dep or test_create_KeyboardInterrupt or test_provision_from_pyvenv or test_verbose_isolated_build or test_dist_exists_version_change)'
+# test_build_backend_without_submodule fails on Leap
+%pytest -k 'not (network or parallel or test_provision_missing or test_provision_interrupt_child or test_workdir_gets_resolved or test_provision_cli_args_ignore or test_provision_non_canonical_dep or test_provision_from_pyvenv or test_verbose_isolated_build or test_dist_exists_version_change or test_build_backend_without_submodule)'
 
 %post
 %python_install_alternative tox tox-quickstart

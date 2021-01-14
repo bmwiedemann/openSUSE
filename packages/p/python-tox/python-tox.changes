@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Jan 13 16:19:45 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove build dependency on pytest-cov
+- Re-enable test_create_KeyboardInterrupt and spinner tests
+- Update to v0.21.1
+  * Fix regression that broke using install_command in config
+    replacements
+  * Fix regression parsing posargs default containing colon
+  * Prevent .tox in envlist
+  * Enable building tox with ``setuptools_scm`` 4 and 5
+- from v3.21.0
+  * Fix the false ``congratulations`` message that appears when
+    a ``KeyboardInterrupt`` occurs during package installation
+  * Fix ``platform`` support for ``install_command``
+  * Fixed regression in v3.20.0 that caused escaped curly braces
+    in setenv to break usage of the variable elsewhere in tox.ini
+  * Prevent ``{}`` and require ``{:`` is only followed by ``}``
+  * Raise ``MissingSubstitution`` on access of broken ini setting
+  * Allow \{ and \} in default of {env:key:default}
+  * Allow {posargs} in setenv
+  * Allow {/} to refer to os.sep
+  * Make parsing [testenv] sections in setup.cfg official
+  * Relax importlib requirement to allow 3.0.0 or any newer version
+  * Document more info about using ``platform`` setting
+  * Replace ``indexserver`` in documentation with environment
+    variables
+  * Document that the ``passenv`` environment setting is case
+  insensitive
+- from v3.20.1
+  * Relax importlib requirement to allow version<3
+- from v3.20.0
+  * Allow hyphens and empty factors in generative section name
+  * Support for PEP517 in-tree build backend-path key in
+    ``get-build-requires``
+  * Allow escaping curly braces in setenv
+  * Support for comments within ``setenv`` and environment files via
+    the ``files|`` prefix
+- from v3.19.0
+  * skip ``setup.cfg`` if it has no ``tox:tox`` namespace
+  * Implement support for building projects having pep 517
+    (in-tree-build-backends) ``backend-path`` setting
+  * Don't require a tox config file for ``tox
+  * Fixed grammar in top-level documentation
+- from v3.18.1
+  * Fix ``TypeError`` when using isolated_build with backends
+    that are not submodules
+
+-------------------------------------------------------------------
 Thu Jul 23 13:31:13 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 3.18.0
