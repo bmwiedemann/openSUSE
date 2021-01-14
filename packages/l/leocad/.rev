@@ -8,4 +8,49 @@
 - Remove group tag.</comment>
     <requestid>800439</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7eac6bdaf978cee5241d0fee0261c44b</srcmd5>
+    <version>21.01</version>
+    <time>1610633130</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 21.01.
+  * Switched to a dark color theme by default.
+  * Added a new interactive 3D preview window.
+  * Added an option to fade previous steps and support a new 
+    translucent fade mode.
+  * Added user defined part palettes and favorites.
+  * Added stud logo option.
+  * Added support for customizing the interface colors.
+  * Save files with OMR style headers.
+  * Replaced HTML parts list with BOM style image.
+  * Use part color instead of the edge color in wireframe mode.
+  * Added Spanish and Czech translations.
+  * Added language option.
+  * Added minifig template import/export options.
+  * Added color picker tool.
+  * Added support for more synth parts.
+  * Added new ways to change the color of pieces.
+  * Added option to change the color of the grid origin lines.
+  * Added shortcut support to more actions.
+  * Added option to disable restoring tabs when loading a model.
+  * Added more camera command line options.
+  * Added warning when assigning a keyboard shortcut that is 
+    already assigned to something else.
+  * Better part placement when dragging new parts to a model.
+  * Improved zoom extents in some cases.
+  * Prevent users from collapsing the category/parts lists 
+    completely.
+  * Split console output into stdout and stderr when running in 
+    CLI mode.
+  * Use antialised lines when antialiasing is enabled.
+  * Render Dialog fixes and improvements.
+  * Fixed errors loading certain MPD files.
+  * Fixed view size on retina displays.
+  * Fixed view rolling when using Look At.
+  * Fixed color popup being shown across multiple monitors.
+  * Fixed the context menu showing when a clickable tool is 
+    assigned to the right mouse button.
+</comment>
+    <requestid>862979</requestid>
+  </revision>
 </revisionlist>

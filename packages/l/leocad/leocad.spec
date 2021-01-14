@@ -1,7 +1,7 @@
 #
 # spec file for package leocad
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,13 @@
 
 
 Name:           leocad
-Version:        19.07.1
-Release:        1
+Version:        21.01
+Release:        0
 Summary:        CAD program for creating virtual LEGO models
 License:        GPL-2.0-only
 URL:            http://leocad.org
 Source0:        https://github.com/leozide/leocad/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-qtbase-devel >= 5.4.0
@@ -49,19 +50,22 @@ application.
 %suse_update_desktop_file -r -G 'CAD Application' %{name} Graphics 3DGraphics
 make install INSTALL_ROOT=%{buildroot} DISABLE_UPDATE_CHECK=1 LDRAW_LIBRARY_PATH=%{_datadir}/ldraw
 
+%fdupes %{buildroot}%{_datadir}/icons/hicolor/scalable/
 
 %files
 %license %{_datadir}/doc/leocad/COPYING.txt
 %doc %{_datadir}/doc/leocad/README.txt
 %doc %{_datadir}/doc/leocad/CREDITS.txt
 %dir %{_datadir}/doc/leocad/
-%dir %{_datadir}/icons/hicolor/scalable
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/mimetypes
+%dir %{_datadir}/icons/hicolor/*/apps
 %{_bindir}/leocad
 %{_datadir}/applications/leocad.desktop
-%{_datadir}/icons/hicolor/scalable/mimetypes/
 %{_mandir}/man1/leocad.1%{?ext_man}
 %{_datadir}/metainfo/leocad.appdata.xml
 %{_datadir}/mime/packages/leocad.xml
-%{_datadir}/pixmaps/leocad.png
+%{_datadir}/icons/hicolor/*/apps/leocad.*
+%{_datadir}/icons/hicolor/*/mimetypes/application-vnd.leocad.*
 
 %changelog
