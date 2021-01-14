@@ -1,7 +1,7 @@
 #
 # spec file for package python-setuptools_scm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,6 +61,7 @@ in SCM metadata. It also handles file finders for the supperted SCMs.
 %prep
 %setup -q -n setuptools_scm-%{version}
 %autopatch -p1
+sed -i 's/yield_fixture/fixture/' testing/conftest.py
 
 %build
 %python_build
@@ -74,7 +75,8 @@ in SCM metadata. It also handles file finders for the supperted SCMs.
 %if %{with test}
 %check
 # both tests in test_integration.py encounter https://github.com/pypa/setuptools_scm/issues/386 (at least on Python 2)
-%pytest -k 'not test_integration'
+# ignore unraisable exceptions (basically https://github.com/pypa/setuptools_scm/commit/cf54011725bb5e6ac9911b06e23ffc5c2938a53f)
+%pytest -p no:unraisableexception -k 'not test_integration'
 %endif
 
 %if !%{with test}
