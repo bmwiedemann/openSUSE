@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sun Dec 13 14:44:36 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update version to 2.2: the biggest changes are C++ exception
+  support and additional runtime libraries.
+  * Only build 32bit runtime libraries if supported by platform
+  * Compatibility with LLVM 11.
+  * Declare mempcpy on macOS, to silence compiler warnings
+  * Handle LLVM version selection more robust
+  * Use non-interactive input
+  * p-klee.inc: libc++abi only needed for c++ exception support
+  * slightly improve C++-related CMake strings
+  * fix CMake: libcxxabi is only required with KLEE_EH_CXX
+  * tests: add test for klee-stats --table-format=csv/readable-csv
+  * klee-stats: add (readable) csv format (--table-format=readable-csv/csv)
+  * Do not redefine fgetc_unlocked and fputc_unlocked unconditionally.
+  * Added fortified library (for -D_FORTIFY_SOURCE), to be linked when uc…
+  * Test checking that __memchk_chk is handled correctly with the freesta…
+  * Rename FreeStanding to Freestanding where appropriate
+  * [build] Add multilib package to build 32bit on ubuntu
+  * Link to the different runtime libraries depending on the application …
+  * [cmake] Add support to generate arbitrary runtime library configurations
+  * [cmake] Always create KLEE runtime directory even if POSIX is not built
+  * [cmake] Remove clean_all target as not needed by any additional target
+  * [cmake] Use clean command to remove generated doxygen files
+  * [cmake] Remove several leftovers from old autoconf build system
+  * [cmake] Switch to "newer" cmake version 3.5.0
+  * fix: bcmp with n==0
+  * Call functions in __cxa_atexit in reverse order
+  * Optimize StaticDestructor test to be less fragile to compiler optimiz…
+  * fix Executor: remove UB from bindInstructionConstants
+  * DFS/BFS/RandomSearcher: replace loop with std::find
+  * MergingSearcher: remove random-path incompatibility
+  * searchers: clean up, add documentation
+  * address MartinNowack's remaining feedback
+  * README-CMAKE.md: add C++ related variables
+  * Exception handling only for LLVM >= 8.0.0
+  * use isa<> and explicit nullptr-check for compilation with older LLVM …
+  * Implemented support for C++ Exceptions
+  * implement fneg instruction
+  * fix: fabs() working on the wrong argument
+  * Explicitly track global variables in getDirectCallTarget
+  * Added support for klee_open_merge and klee_close_merge in replay, tog…
+  * klee-stats: fix behaviour for broken/empty DBs
+  * Add check if KLEE is installed
+  * [CMake][Z3] Check if function `Z3_get_error_msg` needs `context` usin…
+  * Remove shebang from include
+  * Fix LLVM 4.0 build patch
+  * Replace llvm::CallSite with llvm::CallBase on LLVM 8+
+- Go with regular release for now.
+- Switch to LLVM 11.
+
+-------------------------------------------------------------------
 Wed Sep 23 07:11:05 UTC 2020 - jslaby@suse.com
 
 - Update to version 2.1+20200921:

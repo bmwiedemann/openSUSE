@@ -1128,4 +1128,13 @@ build with uclibc</comment>
 - disable 32 bit archs as klee doesn't (and won't) build on them</comment>
     <requestid>836443</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2ea192ce10208ce6692038508322279b</srcmd5>
+    <version>2.2</version>
+    <time>1610633106</time>
+    <user>dimstar_suse</user>
+    <comment>- Update klee to version 2.2, switch to LLVM 11.
+- Go with regular release for now, but leave _service files intact. (forwarded request 862450 from aaronpuchert)</comment>
+    <requestid>862477</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package klee
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,25 @@
 #
 
 
-%define llvm_version_major 10
+%define llvm_version_major 11
 %define llvm_version %{llvm_version_major}
 
-%define version_unconverted 2.1+20200921
-
-%ifarch %{ix86} x86_64
+%ifarch x86_64
 %define with_uclibc 1
 %else
 %define with_uclibc 0
 %endif
 
+%define runtime_variants Debug,Debug+Asserts,Release,Release+Asserts,Release+Debug,Release+Debug+Asserts
+
 Name:           klee
 Summary:        LLVM Execution Engine
 License:        NCSA
 Group:          Development/Languages/Other
-Version:        2.1+20200921
+Version:        2.2
 Release:        0
 URL:            http://klee.github.io/
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://github.com/klee/klee/archive/v%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Source2:        https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-%{llvm_version_major}.0.0/llvm/utils/not/not.cpp
 Source3:        https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-%{llvm_version_major}.0.0/llvm/utils/FileCheck/FileCheck.cpp
@@ -141,12 +141,13 @@ ninja check
 %{_libdir}/libkleeRuntest.so*
 %dir %{_libdir}/klee/
 %dir %{_libdir}/klee/runtime/
-%{_libdir}/klee/runtime/libklee-libc.bca
-%{_libdir}/klee/runtime/libkleeRuntimeFreeStanding.bca
-%{_libdir}/klee/runtime/libkleeRuntimeIntrinsic.bca
+%{_libdir}/klee/runtime/libkleeRuntimeFortify*_{%{runtime_variants}}.bca
+%{_libdir}/klee/runtime/libkleeRuntimeFreestanding*_{%{runtime_variants}}.bca
+%{_libdir}/klee/runtime/libkleeRuntimeIntrinsic*_{%{runtime_variants}}.bca
+%{_libdir}/klee/runtime/libkleeRuntimeKLEELibc*_{%{runtime_variants}}.bca
 %if %{with_uclibc}
 %{_libdir}/klee/runtime/klee-uclibc.bca
-%{_libdir}/klee/runtime/libkleeRuntimePOSIX.bca
+%{_libdir}/klee/runtime/libkleeRuntimePOSIX*_{%{runtime_variants}}.bca
 %endif
 
 %changelog
