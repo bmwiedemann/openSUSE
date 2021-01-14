@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 12 03:06:26 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.38
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.38      2021-01-11 14:35:54 -0700
+    - Fixed a bug the can cause an array dereference error in pkg-config command line
+      plugin on MSYS2 / MinGW environment (gh#243)
+    - Changed the auto-generated module name for Test::Alien, in a way that works
+      around a probable bug / issue with ExtUtils::CBuilder (gh#243)
+
+-------------------------------------------------------------------
 Tue Nov  3 03:07:10 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.37
