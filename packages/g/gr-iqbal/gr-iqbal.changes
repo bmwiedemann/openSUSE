@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 12 23:15:29 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to release 0.38.2
+- Patch 0001-boost-qualify-placeholders-with-their-full-namespace.patch
+  removed (applied upstream)
+
+-------------------------------------------------------------------
 Mon Sep 21 20:36:09 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Add patch to fix build against boost >= 1.73:

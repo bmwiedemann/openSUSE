@@ -18,14 +18,13 @@
 
 %define libname libgnuradio-iqbalance3_8_0
 Name:           gr-iqbal
-Version:        0.38.1
+Version:        0.38.2
 Release:        0
 Summary:        GNU Radio I/Q balancing
 License:        GPL-2.0-only
 Group:          Productivity/Hamradio/Other
 URL:            https://git.osmocom.org/gr-iqbal/
 Source:         %{name}-%{version}.tar.gz
-Patch0:         0001-boost-qualify-placeholders-with-their-full-namespace.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -98,7 +97,6 @@ Documentation for gr-iqbal module for GNU Radio.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %cmake \
