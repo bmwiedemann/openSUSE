@@ -28,7 +28,6 @@ URL:            http://www.kexi-project.org/
 Source0:        https://download.kde.org/stable/%{name}/src/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM
 Patch0:         Fix-build-with-Qt-5_13.patch
-BuildRequires:  breeze5-icons
 BuildRequires:  extra-cmake-modules
 BuildRequires:  glib2-devel
 BuildRequires:  kdb-devel
@@ -77,6 +76,14 @@ Obsoletes:      calligra-kexi-spreadsheet-import < %{version}
 BuildRequires:  postgresql-server-devel
 %else
 BuildRequires:  postgresql-devel
+%endif
+# Kexi needs breeze-icons.rcc during build and on runtime (it doesn't start without it installed)
+%if 0%{?suse_version} > 1500 || "%{?_repository}" == "KDE_Applications_openSUSE_Leap_15.1" || "%{?_repository}" == "KDE_Applications_openSUSE_Leap_15.2"
+BuildRequires:  breeze5-icons-rcc
+Requires:       breeze5-icons-rcc
+%else
+BuildRequires:  breeze5-icons
+Requires:       breeze5-icons
 %endif
 
 %description

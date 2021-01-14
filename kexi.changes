@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan  8 10:51:47 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add dependencies on breeze5-icons-rcc instead of breeze5-icons
+  where necessary, kexi needs breeze-icons.rcc (during build and on
+  runtime) which has been split out to a seperate package recently
+
+-------------------------------------------------------------------
 Tue Sep 29 06:23:56 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Pull in hicolor-icon-theme for dir ownership
