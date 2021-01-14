@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 11 03:07:23 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.103
+   see /usr/share/doc/packages/perl-DateTime-Calendar-Julian/Changes
+
+  0.103		2021-01-10	T. R. Wyant
+      Add Travis CI testing.
+
+      Use GitHub as bug tracker. R.I.P. rt.cpan.org.
+
+-------------------------------------------------------------------
 Sun Nov 10 10:04:56 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 0.102
