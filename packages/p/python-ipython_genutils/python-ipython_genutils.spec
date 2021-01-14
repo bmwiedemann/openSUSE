@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipython_genutils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,18 +23,19 @@ Release:        0
 Summary:        Vestigial utilities from IPython
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            http://ipython.org
+URL:            https://ipython.org
 Source:         https://files.pythonhosted.org/packages/source/i/ipython_genutils/ipython_genutils-%{version}.tar.gz
+# PATCH-FEATURE-UPSTREAM denose.patch gh#ipython/ipython_genutils#17 mcepl@suse.com
+# Replace dependency on nose with the one on pytest
+Patch0:         denose.patch
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python
-Requires:       python-nose
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires:       python-pytest
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -46,7 +47,7 @@ No projects should depend on this package directly.  It will be pulled in by
 whatever packages need it
 
 %prep
-%setup -q -n ipython_genutils-%{version}
+%autosetup -p1 -n ipython_genutils-%{version}
 
 %build
 %python_build
@@ -57,11 +58,11 @@ whatever packages need it
 
 %check
 export LC_ALL=en_US.utf8
-%python_expand nosetests-%{$python_bin_suffix}
+%pytest
 
 %files %{python_files}
-%defattr(-,root,root,-)
-%doc CONTRIBUTING.md COPYING.md README.md
+%license COPYING.md
+%doc CONTRIBUTING.md README.md
 %{python_sitelib}/*
 
 %changelog
