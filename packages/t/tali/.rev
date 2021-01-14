@@ -190,4 +190,12 @@
     <comment>Update to 3.38.2 (forwarded request 850191 from dimstar)</comment>
     <requestid>851042</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5c03dc82aafff28fd1f464a6abeaabab</srcmd5>
+    <version>3.38.3</version>
+    <time>1610633749</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 862101 from iznogood)</comment>
+    <requestid>862315</requestid>
+  </revision>
 </revisionlist>
