@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan 12 22:29:52 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
+
+- re-add rcapache2 symlink (was lost about 6 weeks ago)
+
+-------------------------------------------------------------------
+Tue Jan 12 11:24:20 UTC 2021 - pgajdos@suse.com
+
+- gensslcert sets CA:TRUE in basic constrains of CA cert [bsc#1180530]
+- modified sources
+  % apache2-gensslcert
+
+-------------------------------------------------------------------
+Fri Jan  8 14:59:12 UTC 2021 - pgajdos@suse.com
+
+- mod_php8 provides php_module
+- modified sources
+  % apache2-script-helpers
+
+-------------------------------------------------------------------
 Thu Dec 17 17:22:23 UTC 2020 - pgajdos@suse.com
 
 - obsolete apache2-example-page and obsolete/provide apache2-doc

@@ -67,8 +67,9 @@ function get_module_list
 
       module_id=${module#mod_}_module
 
-      # special case
+      # special cases
       case $module_id in auth_mysql_module) module_id=mysql_auth_module;; esac
+      case $module_id in php[89]_module) module_id=php_module;; esac
 
       unset module_path
       for libdir in /usr/lib64 /usr/lib; do

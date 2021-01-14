@@ -1,7 +1,7 @@
 #
 # spec file for package apache2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -533,6 +533,7 @@ mkdir -p %{buildroot}%{_unitdir}
 install -m 644 %{SOURCE3} %{buildroot}%{_unitdir}/apache2.service
 install -m 644 %{SOURCE4} %{buildroot}%{_unitdir}/apache2@.service
 install -m 644 %{SOURCE5} %{buildroot}%{_unitdir}/apache2.target
+ln -sf service %{buildroot}/%{_sbindir}/rcapache2
 
 install -m 700 %{SOURCE102} %{buildroot}%{_sbindir}/apache2-systemd-ask-pass
 
@@ -872,6 +873,7 @@ exit 0
 %{_sbindir}/a2disflag
 %{_sbindir}/a2dismod
 %{_sbindir}/start_apache2
+%{_sbindir}/rcapache2
 %{_datadir}/apache2/script-helpers
 %verify(not mode) %attr(0755,root,root) %{_sbindir}/suexec
 %if %{use_firewalld}

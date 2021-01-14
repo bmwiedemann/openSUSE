@@ -114,6 +114,7 @@ distinguished_name     = req_distinguished_name
 attributes             = req_attributes
 prompt                 = no
 output_password        = mypass
+x509_extensions        = req_v3_ca
 
 [ req_distinguished_name ]
 C                      = $C
@@ -125,7 +126,11 @@ CN                     = $CN
 emailAddress           = $email
 
 [ req_attributes ]
-challengePassword              = $RANDOM$RANDOMA challenge password
+challengePassword      = $RANDOM$RANDOMA challenge password
+
+[req_v3_ca]
+# bsc#1180530
+basicConstraints       = critical,CA:true
 EOT
 
 echo;myecho creating CA request/certificate ...
