@@ -230,4 +230,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>853756</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>76fea77095bb63cadea5e542b2ce0487</srcmd5>
+    <version>20210108</version>
+    <time>1610633077</time>
+    <user>dimstar_suse</user>
+    <comment>- require apache2-utils
+
+- version update to 20210108
+  * count php8 in</comment>
+    <requestid>862559</requestid>
+  </revision>
 </revisionlist>
