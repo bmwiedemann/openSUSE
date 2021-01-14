@@ -1,4 +1,303 @@
 -------------------------------------------------------------------
+Wed Jan 13 07:08:43 CET 2021 - jslaby@suse.cz
+
+- scsi: ufs: Fix -Wsometimes-uninitialized warning (git-fixes).
+- commit 1c33a89
+
+-------------------------------------------------------------------
+Wed Jan 13 06:30:49 CET 2021 - jslaby@suse.cz
+
+- Linux 5.10.7 (bsc#1012628).
+- i40e: Fix Error I40E_AQ_RC_EINVAL when removing VFs
+  (bsc#1012628).
+- iavf: fix double-release of rtnl_lock (bsc#1012628).
+- net: mvpp2: Add TCAM entry to drop flow control pause frames
+  (bsc#1012628).
+- net: mvpp2: prs: fix PPPoE with ipv6 packet parse (bsc#1012628).
+- net: systemport: set dev->max_mtu to UMAC_MAX_MTU_SIZE
+  (bsc#1012628).
+- ethernet: ucc_geth: fix use-after-free in ucc_geth_remove()
+  (bsc#1012628).
+- ethernet: ucc_geth: set dev->max_mtu to 1518 (bsc#1012628).
+- ionic: account for vlan tag len in rx buffer len (bsc#1012628).
+- atm: idt77252: call pci_disable_device() on error path
+  (bsc#1012628).
+- net: mvpp2: Fix GoP port 3 Networking Complex Control
+  configurations (bsc#1012628).
+- net: stmmac: dwmac-meson8b: ignore the second clock input
+  (bsc#1012628).
+- ibmvnic: fix login buffer memory leak (bsc#1012628).
+- ibmvnic: continue fatal error reset after passive init
+  (bsc#1012628).
+- net: ethernet: mvneta: Fix error handling in mvneta_probe
+  (bsc#1012628).
+- qede: fix offload for IPIP tunnel packets (bsc#1012628).
+- virtio_net: Fix recursive call to cpus_read_lock()
+  (bsc#1012628).
+- net/ncsi: Use real net-device for response handler
+  (bsc#1012628).
+- net: ethernet: Fix memleak in ethoc_probe (bsc#1012628).
+- net-sysfs: take the rtnl lock when storing xps_cpus
+  (bsc#1012628).
+- net-sysfs: take the rtnl lock when accessing xps_cpus_map and
+  num_tc (bsc#1012628).
+- net-sysfs: take the rtnl lock when storing xps_rxqs
+  (bsc#1012628).
+- net-sysfs: take the rtnl lock when accessing xps_rxqs_map and
+  num_tc (bsc#1012628).
+- net: ethernet: ti: cpts: fix ethtool output when no ptp_clock
+  registered (bsc#1012628).
+- tun: fix return value when the number of iovs exceeds
+  MAX_SKB_FRAGS (bsc#1012628).
+- e1000e: Only run S0ix flows if shutdown succeeded (bsc#1012628).
+- e1000e: bump up timeout to wait when ME un-configures ULP mode
+  (bsc#1012628).
+- Revert "e1000e: disable s0ix entry and exit flows for ME
+  systems" (bsc#1012628).
+- e1000e: Export S0ix flags to ethtool (bsc#1012628).
+- bnxt_en: Check TQM rings for maximum supported value
+  (bsc#1012628).
+- net: mvpp2: fix pkt coalescing int-threshold configuration
+  (bsc#1012628).
+- bnxt_en: Fix AER recovery (bsc#1012628).
+- ipv4: Ignore ECN bits for fib lookups in fib_compute_spec_dst()
+  (bsc#1012628).
+- net: sched: prevent invalid Scell_log shift count (bsc#1012628).
+- net: hns: fix return value check in __lb_other_process()
+  (bsc#1012628).
+- erspan: fix version 1 check in gre_parse_header() (bsc#1012628).
+- net: hdlc_ppp: Fix issues when mod_timer is called while timer
+  is running (bsc#1012628).
+- bareudp: set NETIF_F_LLTX flag (bsc#1012628).
+- bareudp: Fix use of incorrect min_headroom size (bsc#1012628).
+- vhost_net: fix ubuf refcount incorrectly when sendmsg fails
+  (bsc#1012628).
+- r8169: work around power-saving bug on some chip versions
+  (bsc#1012628).
+- net: dsa: lantiq_gswip: Enable GSWIP_MII_CFG_EN also for
+  internal PHYs (bsc#1012628).
+- net: dsa: lantiq_gswip: Fix GSWIP_MII_CFG(p) register access
+  (bsc#1012628).
+- CDC-NCM: remove "connected" log message (bsc#1012628).
+- ibmvnic: fix: NULL pointer dereference (bsc#1012628).
+- net: usb: qmi_wwan: add Quectel EM160R-GL (bsc#1012628).
+- selftests: mlxsw: Set headroom size of correct port
+  (bsc#1012628).
+- stmmac: intel: Add PCI IDs for TGL-H platform (bsc#1012628).
+- selftests/vm: fix building protection keys test (bsc#1012628).
+- block: add debugfs stanza for QUEUE_FLAG_NOWAIT (bsc#1012628).
+- workqueue: Kick a worker based on the actual activation of
+  delayed works (bsc#1012628).
+- scsi: ufs: Fix wrong print message in dev_err() (bsc#1012628).
+- scsi: ufs-pci: Fix restore from S4 for Intel controllers
+  (bsc#1012628).
+- scsi: ufs-pci: Ensure UFS device is in PowerDown mode for
+  suspend-to-disk ->poweroff() (bsc#1012628).
+- scsi: ufs-pci: Fix recovery from hibernate exit errors for
+  Intel controllers (bsc#1012628).
+- scsi: ufs-pci: Enable UFSHCD_CAP_RPM_AUTOSUSPEND for Intel
+  controllers (bsc#1012628).
+- scsi: block: Introduce BLK_MQ_REQ_PM (bsc#1012628).
+- scsi: ide: Do not set the RQF_PREEMPT flag for sense requests
+  (bsc#1012628).
+- scsi: ide: Mark power management requests with RQF_PM instead
+  of RQF_PREEMPT (bsc#1012628).
+- scsi: scsi_transport_spi: Set RQF_PM for domain validation
+  commands (bsc#1012628).
+- scsi: core: Only process PM requests if rpm_status != RPM_ACTIVE
+  (bsc#1012628).
+- local64.h: make <asm/local64.h> mandatory (bsc#1012628).
+- lib/genalloc: fix the overflow when size is too big
+  (bsc#1012628).
+- depmod: handle the case of /sbin/depmod without /sbin in PATH
+  (bsc#1012628).
+- scsi: ufs: Clear UAC for FFU and RPMB LUNs (bsc#1012628).
+- kbuild: don't hardcode depmod path (bsc#1012628).
+- Bluetooth: revert: hci_h5: close serdev device and free hu in
+  h5_close (bsc#1012628).
+- scsi: block: Remove RQF_PREEMPT and BLK_MQ_REQ_PREEMPT
+  (bsc#1012628).
+- scsi: block: Do not accept any requests while suspended
+  (bsc#1012628).
+- crypto: ecdh - avoid buffer overflow in ecdh_set_secret()
+  (bsc#1012628).
+- crypto: asym_tpm: correct zero out potential secrets
+  (bsc#1012628).
+- powerpc: Handle .text.{hot,unlikely}.* in linker script
+  (bsc#1012628).
+- Staging: comedi: Return -EFAULT if copy_to_user() fails
+  (bsc#1012628).
+- staging: mt7621-dma: Fix a resource leak in an error handling
+  path (bsc#1012628).
+- usb: gadget: enable super speed plus (bsc#1012628).
+- USB: cdc-acm: blacklist another IR Droid device (bsc#1012628).
+- USB: cdc-wdm: Fix use after free in
+  service_outstanding_interrupt() (bsc#1012628).
+- usb: typec: intel_pmc_mux: Configure HPD first for HPD+IRQ
+  request (bsc#1012628).
+- usb: dwc3: meson-g12a: disable clk on error handling path in
+  probe (bsc#1012628).
+- usb: dwc3: gadget: Restart DWC3 gadget when enabling pullup
+  (bsc#1012628).
+- usb: dwc3: gadget: Clear wait flag on dequeue (bsc#1012628).
+- usb: dwc3: ulpi: Use VStsDone to detect PHY regs access
+  completion (bsc#1012628).
+- usb: dwc3: ulpi: Replace CPU-based busyloop with Protocol-based
+  one (bsc#1012628).
+- usb: dwc3: ulpi: Fix USB2.0 HS/FS/LS PHY suspend regression
+  (bsc#1012628).
+- usb: chipidea: ci_hdrc_imx: add missing put_device() call in
+  usbmisc_get_init_data() (bsc#1012628).
+- USB: xhci: fix U1/U2 handling for hardware with XHCI_INTEL_HOST
+  quirk set (bsc#1012628).
+- usb: usbip: vhci_hcd: protect shift size (bsc#1012628).
+- usb: uas: Add PNY USB Portable SSD to unusual_uas (bsc#1012628).
+- USB: serial: iuu_phoenix: fix DMA from stack (bsc#1012628).
+- USB: serial: option: add LongSung M5710 module support
+  (bsc#1012628).
+- USB: serial: option: add Quectel EM160R-GL (bsc#1012628).
+- USB: yurex: fix control-URB timeout handling (bsc#1012628).
+- USB: usblp: fix DMA to stack (bsc#1012628).
+- ALSA: usb-audio: Fix UBSAN warnings for MIDI jacks
+  (bsc#1012628).
+- usb: gadget: select CONFIG_CRC32 (bsc#1012628).
+- USB: Gadget: dummy-hcd: Fix shift-out-of-bounds bug
+  (bsc#1012628).
+- usb: gadget: f_uac2: reset wMaxPacketSize (bsc#1012628).
+- usb: gadget: function: printer: Fix a memory leak for interface
+  descriptor (bsc#1012628).
+- usb: gadget: u_ether: Fix MTU size mismatch with RX packet size
+  (bsc#1012628).
+- USB: gadget: legacy: fix return error code in acm_ms_bind()
+  (bsc#1012628).
+- usb: gadget: Fix spinlock lockup on usb_function_deactivate
+  (bsc#1012628).
+- usb: gadget: configfs: Preserve function ordering after bind
+  failure (bsc#1012628).
+- usb: gadget: configfs: Fix use-after-free issue with udc_name
+  (bsc#1012628).
+- USB: serial: keyspan_pda: remove unused variable (bsc#1012628).
+- hwmon: (amd_energy) fix allocation of hwmon_channel_info config
+  (bsc#1012628).
+- mm: make wait_on_page_writeback() wait for multiple pending
+  writebacks (bsc#1012628).
+- x86/mm: Fix leak of pmd ptlock (bsc#1012628).
+- KVM: x86/mmu: Use -1 to flag an undefined spte in
+  get_mmio_spte() (bsc#1012628).
+- KVM: x86/mmu: Get root level from walkers when retrieving MMIO
+  SPTE (bsc#1012628).
+- kvm: check tlbs_dirty directly (bsc#1012628).
+- KVM: x86/mmu: Ensure TDP MMU roots are freed after yield
+  (bsc#1012628).
+- x86/resctrl: Use an IPI instead of task_work_add() to update
+  PQR_ASSOC MSR (bsc#1012628).
+- x86/resctrl: Don't move a task to the same resource group
+  (bsc#1012628).
+- blk-iocost: fix NULL iocg deref from racing against
+  initialization (bsc#1012628).
+- ALSA: hda/via: Fix runtime PM for Clevo W35xSS (bsc#1012628).
+- ALSA: hda/conexant: add a new hda codec CX11970 (bsc#1012628).
+- ALSA: hda/realtek - Fix speaker volume control on Lenovo C940
+  (bsc#1012628).
+- ALSA: hda/realtek: Add mute LED quirk for more HP laptops
+  (bsc#1012628).
+- ALSA: hda/realtek: Enable mute and micmute LED on HP EliteBook
+  850 G7 (bsc#1012628).
+- ALSA: hda/realtek: Add two "Intel Reference board" SSID in
+  the ALC256 (bsc#1012628).
+- iommu/vt-d: Move intel_iommu info from struct intel_svm to
+  struct intel_svm_dev (bsc#1012628).
+- btrfs: qgroup: don't try to wait flushing if we're already
+  holding a transaction (bsc#1012628).
+- btrfs: send: fix wrong file path when there is an inode with
+  a pending rmdir (bsc#1012628).
+- Revert "device property: Keep secondary firmware node secondary
+  by type" (bsc#1012628).
+- dmabuf: fix use-after-free of dmabuf's file->f_inode
+  (bsc#1012628).
+- arm64: link with -z norelro for LLD or aarch64-elf
+  (bsc#1012628).
+- drm/i915: clear the shadow batch (bsc#1012628).
+- drm/i915: clear the gpu reloc batch (bsc#1012628).
+- bcache: fix typo from SUUP to SUPP in features.h (bsc#1012628).
+- bcache: check unsupported feature sets for bcache register
+  (bsc#1012628).
+- bcache: introduce BCH_FEATURE_INCOMPAT_LOG_LARGE_BUCKET_SIZE
+  for large bucket (bsc#1012628).
+- net/mlx5e: Fix SWP offsets when vlan inserted by driver
+  (bsc#1012628).
+- ARM: dts: OMAP3: disable AES on N950/N9 (bsc#1012628).
+- netfilter: x_tables: Update remaining dereference to RCU
+  (bsc#1012628).
+- netfilter: ipset: fix shift-out-of-bounds in htable_bits()
+  (bsc#1012628).
+- netfilter: xt_RATEEST: reject non-null terminated string from
+  userspace (bsc#1012628).
+- netfilter: nft_dynset: report EOPNOTSUPP on missing set feature
+  (bsc#1012628).
+- dmaengine: idxd: off by one in cleanup code (bsc#1012628).
+- x86/mtrr: Correct the range check before performing MTRR type
+  lookups (bsc#1012628).
+- KVM: x86: fix shift out of bounds reported by UBSAN
+  (bsc#1012628).
+- xsk: Fix memory leak for failed bind (bsc#1012628).
+- rtlwifi: rise completion at the last step of firmware callback
+  (bsc#1012628).
+- scsi: target: Fix XCOPY NAA identifier lookup (bsc#1012628).
+- commit 1ca962e
+
+-------------------------------------------------------------------
+Sun Jan 10 09:48:22 CET 2021 - jslaby@suse.cz
+
+- Linux 5.10.6 (bsc#1012628).
+- Revert "drm/amd/display: Fix memory leaks in S3 resume"
+  (bsc#1012628).
+- Revert "mtd: spinand: Fix OOB read" (bsc#1012628).
+- rtc: pcf2127: move watchdog initialisation to a separate
+  function (bsc#1012628).
+- rtc: pcf2127: only use watchdog when explicitly available
+  (bsc#1012628).
+- dt-bindings: rtc: add reset-source property (bsc#1012628).
+- kdev_t: always inline major/minor helper functions
+  (bsc#1012628).
+- Bluetooth: Fix attempting to set RPA timeout when unsupported
+  (bsc#1012628).
+- ALSA: hda/realtek - Modify Dell platform name (bsc#1012628).
+- drm/i915/tgl: Fix Combo PHY DPLL fractional divider for 38.4MHz
+  ref clock (bsc#1012628).
+- scsi: ufs: Allow an error return value from ->device_reset()
+  (bsc#1012628).
+- scsi: ufs: Re-enable WriteBooster after device reset
+  (bsc#1012628).
+- RDMA/core: remove use of dma_virt_ops (bsc#1012628).
+- RDMA/siw,rxe: Make emulated devices virtual in the device tree
+  (bsc#1012628).
+- fuse: fix bad inode (bsc#1012628).
+- perf: Break deadlock involving exec_update_mutex (bsc#1012628).
+- rwsem: Implement down_read_killable_nested (bsc#1012628).
+- rwsem: Implement down_read_interruptible (bsc#1012628).
+- exec: Transform exec_update_mutex into a rw_semaphore
+  (bsc#1012628).
+- mwifiex: Fix possible buffer overflows in
+  mwifiex_cmd_802_11_ad_hoc_start (bsc#1012628).
+- commit 5bdc505
+
+-------------------------------------------------------------------
+Sat Jan  9 12:51:37 CET 2021 - mbrugger@suse.com
+
+- regulator: mt6323: Add OF match table (bsc#1180731).
+- regulator: mt6358: Add OF match table (bsc#1180731).
+- regulator: mt6360: Add OF match table (bsc#1180731).
+- commit a930122
+
+-------------------------------------------------------------------
+Fri Jan  8 15:01:36 CET 2021 - tiwai@suse.de
+
+- drm: bail out of nouveau_channel_new if channel init fails
+  (CVE-2020-25639 bsc#1176846).
+- commit 4739e43
+
+-------------------------------------------------------------------
 Wed Jan  6 19:20:56 CET 2021 - jslaby@suse.cz
 
 - drm/docs: Fix todo.rst (git-fixes).
