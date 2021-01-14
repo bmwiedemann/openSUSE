@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 14 12:02:58 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- update to upstream minor release version 0.14 which supports additional
+  digest algorithms.
+
+-------------------------------------------------------------------
 Fri Aug 16 09:35:52 UTC 2019 - mgerstner <matthias.gerstner@suse.com>
 
 - update to upstream minor release version 0.13 which makes ima-inspect
