@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 13 21:51:01 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 0.7.7
+  * Fix file truncated when no EOL at EOF
+- includes 0.7.6
+  * allow uncommenting keys without providing a value
+- remove copying-fsf.patch (upstreamed)
+- fix E: env-script-interpreter
+- ran spec-cleaner
+
+-------------------------------------------------------------------
 Wed Oct 18 06:52:11 UTC 2017 - aavindraa@gmail.com
 
 - Update to version 0.7.5

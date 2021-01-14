@@ -1,7 +1,7 @@
 #
 # spec file for package setconf
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           setconf
-Version:        0.7.5
+Version:        0.7.7
 Release:        0
 Summary:        Utility to easily change settings in configuration files
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
-Url:            http://setconf.roboticoverlords.org/
-Source:         http://setconf.roboticoverlords.org/%{name}-%{version}.tar.xz
-# UPSTREAM: https://github.com/xyproto/setconf/pull/10
-Patch0:         copying-fsf.patch
-Requires:       python
+URL:            https://setconf.roboticoverlords.org
+Source:         https://setconf.roboticoverlords.org/%{name}-%{version}.tar.xz
 BuildArch:      noarch
 
 %description
@@ -34,19 +31,21 @@ setconf is a small utility that can be used for changing settings in
 configuration textfiles.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup
 gzip -d %{name}.1.gz
 
 %build
 # Nothing to build.
 
 %install
+# fix E: env-script-interpreter
+sed -i 's|/usr/bin/env python|/usr/bin/python3|g' %{name}.py
+
 install -Dpm 0755 %{name}.py %{buildroot}%{_bindir}/%{name}
 install -Dpm 0644 %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 
 %files
-%doc COPYING
+%license COPYING
 %{_bindir}/%{name}
 %{_mandir}/man?/%{name}.?%{?ext_man}
 
