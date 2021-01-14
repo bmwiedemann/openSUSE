@@ -1,8 +1,8 @@
 #
 # spec file for package libecpint
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2020 Christoph Junghans
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2020-2021 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,23 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           libecpint
-Version:        1.0.2
-%global         sover 1
+Version:        1.0.4
 Release:        0
+%global         sover 1
 Summary:        Efficient evaluation of integrals over ab initio effective core potentials
 License:        MIT
 Group:          Productivity/Scientific/Chemistry
-Url:            https://github.com/robashaw/libecpint
+URL:            https://github.com/robashaw/libecpint
 Source0:        https://github.com/robashaw/libecpint/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
-BuildRequires:  gcc-c++
 BuildRequires:  cmake >= 3.12
-BuildRequires:  pugixml-devel 
-BuildRequires:  gtest
-BuildRequires:  python3
 BuildRequires:  doxygen
+BuildRequires:  gcc-c++
+BuildRequires:  gtest
+BuildRequires:  pugixml-devel
+BuildRequires:  python3
 BuildRequires:  sphinx
 
 %description
@@ -87,9 +88,9 @@ This package contains development headers and libraries for libecpint
 %cmake_install
 
 %check
-# https://github.com/robashaw/libecpint/issues/14
-%ifarch aarch64 ppc64le s390x i586
-%global testargs --exclude-regex HessTest2
+# https://github.com/robashaw/libecpint/issues/27
+%ifarch i586
+%global testargs --exclude-regex Type1Test2
 %endif
 %ctest %{?testargs}
 
