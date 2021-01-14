@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  6 16:11:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.1:
+  * various compilation fixes (#1461, #1462, #1463, #1464)
+  * fixed undefined behavior in a function in warc reader (#1465)
+
+-------------------------------------------------------------------
 Tue Dec  1 10:24:21 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 3.5.0
