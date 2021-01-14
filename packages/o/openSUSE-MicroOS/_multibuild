@@ -3,7 +3,7 @@
         <flavor>RaspberryPi2</flavor>
         <flavor>VirtualBox</flavor>
         <!--
-                for a in kvm-and-xen VMware MS-HyperV OpenStack-Cloud Pine64 RaspberryPi Vagrant hardware; do
+                for a in kvm-and-xen VMware MS-HyperV OpenStack-Cloud Pine64 Rock64 RaspberryPi Vagrant hardware; do
                         for f in "" "ContainerHost-" "Kubic-kubeadm-"; do
                                 printf "\t<flavor>%s%s</flavor>\n" $f $a
                         done
@@ -24,11 +24,15 @@
         <flavor>Pine64</flavor>
         <flavor>ContainerHost-Pine64</flavor>
         <flavor>Kubic-kubeadm-Pine64</flavor>
+        <flavor>Rock64</flavor>
+        <flavor>ContainerHost-Rock64</flavor>
+        <flavor>Kubic-kubeadm-Rock64</flavor>
         <flavor>RaspberryPi</flavor>
         <flavor>ContainerHost-RaspberryPi</flavor>
         <flavor>Kubic-kubeadm-RaspberryPi</flavor>
         <flavor>Vagrant</flavor>
         <flavor>ContainerHost-Vagrant</flavor>
         <flavor>Kubic-kubeadm-Vagrant</flavor>
-	<flavor>ContainerHost-SelfInstall</flavor>
+        <flavor>ContainerHost-SelfInstall</flavor>
 </multibuild>
+

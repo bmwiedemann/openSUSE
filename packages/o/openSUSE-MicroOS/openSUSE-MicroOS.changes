@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 11 14:28:17 UTC 2021 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Add support for Rock64 board.
+- Add patterns-microos-hardware to provide irqbalance for SBCs.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:21:37 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Fixes for building with kiwi outside of OBS:

@@ -27,6 +27,7 @@
         <profile name="Pine64" description="Pine64" arch="aarch64"/>
         <profile name="RaspberryPi" description="RaspberryPi (3+, aarch64)" arch="aarch64"/>
         <profile name="RaspberryPi2" description="RaspberryPi2 (armv7)" arch="armv7l"/>
+        <profile name="Rock64" description="Rock64" arch="aarch64"/>
         <profile name="Vagrant_x86_64" description="Vagrant for x86_64" arch="x86_64"/>
         <profile name="Vagrant_aarch64" description="Vagrant for aarch64" arch="aarch64"/>
         <profile name="Vagrant" description="Vagrant" arch="x86_64">
@@ -65,6 +66,10 @@
             <requires profile="RaspberryPi"/>
             <requires profile="ContainerHost"/>
         </profile>
+        <profile name="ContainerHost-Rock64" description="MicroOS with Podman for the Rock64" arch="aarch64">
+            <requires profile="Rock64"/>
+            <requires profile="ContainerHost"/>
+        </profile>
         <profile name="ContainerHost-Vagrant" description="MicroOS with Podman for Vagrant" arch="x86_64">
             <requires profile="Vagrant_x86_64"/>
             <requires profile="ContainerHost"/>
@@ -99,6 +104,10 @@
         </profile>
         <profile name="Kubic-kubeadm-RaspberryPi" description="kubeadm with CRI-O for the Raspberry Pi" arch="aarch64">
             <requires profile="RaspberryPi"/>
+            <requires profile="Kubic-kubeadm"/>
+        </profile>
+        <profile name="Kubic-kubeadm-Rock64" description="kubeadm with CRI-O for the Rock64" arch="aarch64">
+            <requires profile="Rock64"/>
             <requires profile="Kubic-kubeadm"/>
         </profile>
         <profile name="Kubic-kubeadm-Vagrant" description="kubeadm with CRI-O for Vagrant" arch="x86_64">
@@ -430,6 +439,41 @@
             </systemdisk>
         </type>
     </preferences>
+    <preferences profiles="Rock64">
+        <version>16.0.0</version>
+        <packagemanager>zypper</packagemanager>
+        <bootloader-theme>openSUSE</bootloader-theme>
+        <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
+        <type
+            image="oem"
+            initrd_system="dracut"
+            filesystem="btrfs"
+            fsmountoptions="noatime,compress=lzo"
+            bootloader="grub2"
+            firmware="efi"
+            kernelcmdline="quiet systemd.show_status=yes console=ttyS0,115200n8 console=tty0 net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal"
+            bootpartition="false"
+            devicepersistency="by-uuid"
+            btrfs_root_is_snapshot="true"
+            efipartsize="16"
+            editbootinstall="editbootinstall_rock64.sh"
+            btrfs_root_is_readonly_snapshot="true"
+            btrfs_quota_groups="false"
+            disk_start_sector="32768"
+        >
+            <systemdisk>
+                <volume name="home"/>
+                <volume name="root"/>
+                <volume name="opt"/>
+                <volume name="srv"/>
+                <volume name="boot/grub2/arm64-efi" mountpoint="boot/grub2/arm64-efi"/>
+                <volume name="boot/writable"/>
+                <volume name="usr/local"/>
+                <volume name="var" copy_on_write="false"/>
+            </systemdisk>
+        </type>
+    </preferences>
     <preferences profiles="Vagrant_x86_64">
         <version>16.0.0</version>
         <packagemanager>zypper</packagemanager>
@@ -561,11 +605,14 @@
         <package name="patterns-microos-defaults"/>
         <package name="kernel-default"/>
     </packages>
-    <packages type="image" profiles="kvm-and-xen,kvm-and-xen_x86_64,kvm-and-xen_aarch64,VMware,MS-HyperV,VirtualBox,Pine64,RaspberryPi,RaspberryPi2,Vagrant_x86_64,Vagrant_aarch64">
+    <packages type="image" profiles="kvm-and-xen,kvm-and-xen_x86_64,kvm-and-xen_aarch64,VMware,MS-HyperV,VirtualBox,Pine64,RaspberryPi,RaspberryPi2,Rock64,Vagrant_x86_64,Vagrant_aarch64">
         <!-- Needed for initial configuration, except on OpenStack-Cloud, where cloud-init is used -->
         <package name="ignition-dracut"/>
         <package name="combustion"/>
         <package name="growpart-generator"/>
+    </packages>
+    <packages type="image" profiles="Pine64,RaspberryPi,RaspberryPi2,Rock64">
+        <package name="patterns-microos-hardware"/>
     </packages>
     <packages type="image" profiles="ContainerHost">
         <namedCollection name="container_runtime"/>
@@ -631,6 +678,12 @@
         <package name="kernel-firmware-all"/> <!-- Fix choice between kernel-firmware and kernel-firmware-all -->
         <package name="wireless-tools"/>
         <package name="wpa_supplicant"/>
+    </packages>
+    <packages type="image" profiles="Rock64">
+        <package name="u-boot-rock64-rk3328" arch="aarch64"/>
+        <package name="dtb-rockchip" arch="aarch64"/>
+        <package name="dracut-kiwi-oem-repart"/>
+        <package name="kernel-firmware-all"/> <!-- Fix choice between kernel-firmware and kernel-firmware-all -->
     </packages>
     <packages type="image" profiles="Vagrant,Vagrant_x86_64,Vagrant_aarch64">
         <!-- vagrant-libvirt uses nfs for synced folders -->
