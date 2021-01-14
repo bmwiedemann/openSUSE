@@ -60,4 +60,13 @@
   Apache-2.0 files.</comment>
     <requestid>741353</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>628ab1699d7112f66d5744dd0c6d7a07</srcmd5>
+    <version>2.0.0</version>
+    <time>1610633104</time>
+    <user>dimstar_suse</user>
+    <comment>- Split out the Cakewalk mimetype into a seperate package, it
+  breaks co-installability of several library versions (forwarded request 862607 from wolfi323)</comment>
+    <requestid>863026</requestid>
+  </revision>
 </revisionlist>
