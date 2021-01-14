@@ -1,7 +1,7 @@
 #
 # spec file for package python-Werkzeug
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -77,7 +77,8 @@ sed -i "1d" examples/manage-{i18nurls,simplewiki,shorty,couchy,cupoftee,webpylik
 %check
 export LANG=en_US.UTF-8
 export PYTHONDONTWRITEBYTECODE=1
-%pytest
+# workaround pytest 6.2 (like https://github.com/pallets/werkzeug/commit/16718f461d016b88b6457d3ef63816b7df1f0d1f, but shorter)
+%pytest -p no:unraisableexception
 
 %files %{python_files}
 %license LICENSE.rst
