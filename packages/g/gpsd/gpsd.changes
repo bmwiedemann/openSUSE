@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jan  9 10:41:08 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 3.22
+  * Added client/gpscsv to convert gpsd JSON to csv.
+  * Added client/gpsplot to dynamically plot gpsd JSON.
+  * Added client/gpssubframe to decode gpsd SUBFRAME JSON.
+  * Added nSat and uSat to SKY JSON.  Old clients can not read new
+    SKY.
+  * Move stuff from source root into clients/, include/, gpsmon/
+    and libgps/.
+  * Move stuff from source root into gpsd/.
+  * Move class ubx out of ubxtool and into gps/ubx.py.
+  * Build all targets in gpsd-$VERSION/, not in tree.
+  * NMEA 4.11 support for $GI (IRNSS) and $GZ (QZSS).
+- Remove obsolete sed scripts that no longer serve a purpose
+- Use new ldconfig macros in Tumbleweed
+
+-------------------------------------------------------------------
 Thu Oct 22 19:47:01 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to version 3.21

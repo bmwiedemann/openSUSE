@@ -1,7 +1,7 @@
 #
 # spec file for package gpsd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,13 @@
 #
 
 
-%define         sover 27
+%define         sover 28
 %define         libgps libgps%{sover}
 %define         libQgps libQgpsmm%{sover}
 %define         _udevdir %(pkg-config --variable udevdir udev)
 %bcond_without python2
 Name:           gpsd
-Version:        3.21
+Version:        3.22
 Release:        0
 Summary:        Service daemon for mediating access to a GPS
 License:        BSD-3-Clause
@@ -168,21 +168,6 @@ mkdir -p %{name}-%{version}/python3
 tar -xf %{SOURCE0} -C %{name}-%{version}/python3
 cd %{name}-%{version}
 
-# fix systemd path
-sed -i 's|systemd_dir =.*|systemd_dir = '\'%{_unitdir}\''|' python*/%{name}-%{version}/SConstruct
-
-# don't try reloading systemd when installing in the build root
-sed -i 's|systemctl daemon-reload|true|' python*/%{name}-%{version}/SConstruct
-
-# don't set RPATH
-sed -i 's|env.Prepend.*RPATH.*|pass #\0|' python*/%{name}-%{version}/SConstruct
-
-# fix docdir path
-sed -i 's|(\x27sharedir\x27), \"doc"|(\x27docdir\x27)|' python*/%{name}-%{version}/SConstruct
-
-# fix gpsd path
-sed -i 's|ExecStart=.*/gpsd|ExecStart=%{_sbindir}/gpsd|' python*/%{name}-%{version}/systemd/gpsd.service
-
 %build
 # The SCons description does not handle CXXFLAGS correctly, pass C++ flags also in CFLAGS
 export CFLAGS="%{optflags}"
@@ -220,6 +205,7 @@ for i in "${pyversions[@]}"; do
         udevdir=$(dirname %{_udevrulesdir}) \
         target_python=${i} \
         python_libdir=${pylibdir[$cnt]} \
+        unitdir=%{_unitdir} \
         build
 
     # Fix python interpreter path.
@@ -259,9 +245,6 @@ install -m 644 %{SOURCE3} %{buildroot}%{_fillupdir}
 # install desktop entries
 install -D -m 644 -t %{buildroot}%{_datadir}/applications/ packaging/X11/xgps.desktop
 install -D -m 644 -t %{buildroot}%{_datadir}/applications/ packaging/X11/xgpsspeed.desktop
-install -D -m 644 systemd/gpsd.service %{buildroot}/%{_unitdir}/gpsd.service
-install -D -m 644 systemd/gpsd.socket %{buildroot}/%{_unitdir}/gpsd.socket
-install -D -m 644 systemd/gpsdctl@.service %{buildroot}/%{_unitdir}/gpsdctl@.service
 ln -s  	%{_sbindir}/service %{buildroot}%{_sbindir}/rcgpsd
 
 %fdupes -s %{buildroot}%{_mandir}
@@ -275,7 +258,11 @@ sed -i -e 's#Icon=.*/\([^/]\+\)\(\..\+\)#Icon=\1#' %{buildroot}%{_datadir}/appli
 %service_add_pre gpsd.service gpsdctl@.service gpsd.socket
 
 %post
+%if 0%{?suse_version} > 1500
+%ldconfig
+%else
 /sbin/ldconfig
+%endif
 %fillup_only -n gpsd
 %service_add_post gpsd.service gpsdctl@.service gpsd.socket
 %udev_rules_update
@@ -284,22 +271,31 @@ sed -i -e 's#Icon=.*/\([^/]\+\)\(\..\+\)#Icon=\1#' %{buildroot}%{_datadir}/appli
 %service_del_preun gpsd.service gpsdctl@.service gpsd.socket
 
 %postun
+%if 0%{?suse_version} > 1500
+%ldconfig
+%else
 /sbin/ldconfig
+%endif
 %service_del_postun gpsd.service gpsdctl@.service gpsd.socket
 
+%if 0%{?suse_version} > 1500
+%ldconfig_scriptlets -n %{libgps}
+%ldconfig_scriptlets -n %{libQgps}
+%else
 %post -n %{libgps} -p /sbin/ldconfig
 %postun -n %{libgps} -p /sbin/ldconfig
 %post -n %{libQgps} -p /sbin/ldconfig
 %postun -n %{libQgps} -p /sbin/ldconfig
+%endif
 
 %files
 %license %{name}-%{version}/python3/%{name}-%{version}/COPYING
 %{_docdir}/%{name}
 %exclude %{_docdir}/%{name}/{COPYING,build.adoc}
-%{_mandir}/man?/gpsd.*
-%{_mandir}/man?/gpsdctl.*
-%{_mandir}/man?/gpsctl.*
-%{_mandir}/man?/gpsinit.*
+%{_mandir}/man1/gpsctl.1%{?ext_man}
+%{_mandir}/man8/gpsd.8%{?ext_man}
+%{_mandir}/man8/gpsdctl.8%{?ext_man}
+%{_mandir}/man8/gpsinit.8%{?ext_man}
 %{_udevdir}/gpsd.sh
 %{_udevdir}/rules.d/*
 %{_unitdir}/gpsd.service
@@ -320,14 +316,14 @@ sed -i -e 's#Icon=.*/\([^/]\+\)\(\..\+\)#Icon=\1#' %{buildroot}%{_datadir}/appli
 
 %files devel
 %doc %{name}-%{version}/python3/%{name}-%{version}/TODO
-%{_mandir}/man?/gpsfake.*
-%{_mandir}/man?/gpscat.*
-%{_mandir}/man?/libgps.*
-%{_mandir}/man?/libgpsmm.*
-%{_mandir}/man?/srec*
-%{_mandir}/man?/gpsdecode.*
-%{_mandir}/man?/gpsd_json.*
-%{_mandir}/man?/gpsprof.*
+%{_mandir}/man1/gpscat.1%{?ext_man}
+%{_mandir}/man1/gpsfake.1%{?ext_man}
+%{_mandir}/man1/gpsdecode.1%{?ext_man}
+%{_mandir}/man1/gpsprof.1%{?ext_man}
+%{_mandir}/man3/libgps.3%{?ext_man}
+%{_mandir}/man3/libgpsmm.3%{?ext_man}
+%{_mandir}/man3/libQgpsmm.3%{?ext_man}
+%{_mandir}/man5/gpsd_json.5%{?ext_man}
 %{_bindir}/gpsfake
 %{_bindir}/gpscat
 %{_bindir}/gpsdecode
@@ -340,7 +336,6 @@ sed -i -e 's#Icon=.*/\([^/]\+\)\(\..\+\)#Icon=\1#' %{buildroot}%{_datadir}/appli
 %{_libdir}/libQgpsmm.so
 %{_libdir}/libQgpsmm.prl
 %{_libdir}/pkgconfig/Qgpsmm.pc
-%{_mandir}/man?/libQgps*
 
 %if %{with python2}
 %files -n python2-gpsd
@@ -353,21 +348,24 @@ sed -i -e 's#Icon=.*/\([^/]\+\)\(\..\+\)#Icon=\1#' %{buildroot}%{_datadir}/appli
 %{python3_sitearch}/gps-%{version}.*
 
 %files clients
-%{_mandir}/man?/gps.*
-%{_mandir}/man?/gegps.*
-%{_mandir}/man?/cgps.*
-%{_mandir}/man?/lcdgps.*
-%{_mandir}/man?/xgps.*
-%{_mandir}/man?/xgpsspeed.*
-%{_mandir}/man?/gpspipe.*
-%{_mandir}/man?/gpsmon.*
-%{_mandir}/man?/gps2udp.*
-%{_mandir}/man?/ntpshmmon.*
-%{_mandir}/man?/ppscheck.*
-%{_mandir}/man?/gpxlogger.*
-%{_mandir}/man?/ubxtool.*
-%{_mandir}/man?/zerk.*
-%{_mandir}/man?/gpsrinex.*
+%{_mandir}/man1/cgps.1%{?ext_man}
+%{_mandir}/man1/gegps.1%{?ext_man}
+%{_mandir}/man1/gps.1%{?ext_man}
+%{_mandir}/man1/gps2udp.1%{?ext_man}
+%{_mandir}/man1/gpscsv.1%{?ext_man}
+%{_mandir}/man1/gpsmon.1%{?ext_man}
+%{_mandir}/man1/gpspipe.1%{?ext_man}
+%{_mandir}/man1/gpsplot.1%{?ext_man}
+%{_mandir}/man1/gpsrinex.1%{?ext_man}
+%{_mandir}/man1/gpssubframe.1%{?ext_man}
+%{_mandir}/man1/gpxlogger.1%{?ext_man}
+%{_mandir}/man1/lcdgps.1%{?ext_man}
+%{_mandir}/man1/ntpshmmon.1%{?ext_man}
+%{_mandir}/man1/ubxtool.1%{?ext_man}
+%{_mandir}/man1/xgps.1%{?ext_man}
+%{_mandir}/man1/xgpsspeed.1%{?ext_man}
+%{_mandir}/man1/zerk.1%{?ext_man}
+%{_mandir}/man8/ppscheck.8%{?ext_man}
 %{_bindir}/gegps
 %{_bindir}/xgps
 %{_bindir}/xgpsspeed
@@ -382,6 +380,9 @@ sed -i -e 's#Icon=.*/\([^/]\+\)\(\..\+\)#Icon=\1#' %{buildroot}%{_datadir}/appli
 %{_bindir}/ubxtool
 %{_bindir}/zerk
 %{_bindir}/gpsrinex
+%{_bindir}/gpscsv
+%{_bindir}/gpsplot
+%{_bindir}/gpssubframe
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/*
 
