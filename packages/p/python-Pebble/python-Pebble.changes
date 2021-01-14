@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 14 03:53:26 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.6.0
+  * Features:
+    + issue #73: allow passing `multiprocessing.context` object
+      as `concurrent.process` and `ProcessPool` parameter
+  * Fixes:
+    + issues #34, #35: rework Pool termination logic to silence Windows errors
+    + issue #68: use fully qualified function name in `concurrent.process`
+      decorator trampoline to handle class inheritance in Windows
+    + issue #69: correctly propagate the timeout in pool's map method
+    + issue #64: rework versioning logic 
+
+-------------------------------------------------------------------
 Wed May  6 15:47:22 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Bump to 4.5.2:

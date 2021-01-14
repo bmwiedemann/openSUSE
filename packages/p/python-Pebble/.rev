@@ -57,4 +57,21 @@
   - Fix issue #58: handle pool connection teardown in Python 3.8</comment>
     <requestid>800949</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>17b3f2e83e1c8f1948db7ad6bf5dc351</srcmd5>
+    <version>4.6.0</version>
+    <time>1610633138</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.6.0
+  * Features:
+    + issue #73: allow passing `multiprocessing.context` object
+      as `concurrent.process` and `ProcessPool` parameter
+  * Fixes:
+    + issues #34, #35: rework Pool termination logic to silence Windows errors
+    + issue #68: use fully qualified function name in `concurrent.process`
+      decorator trampoline to handle class inheritance in Windows
+    + issue #69: correctly propagate the timeout in pool's map method
+    + issue #64: rework versioning logic</comment>
+    <requestid>863006</requestid>
+  </revision>
 </revisionlist>
