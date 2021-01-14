@@ -408,21 +408,6 @@ Prefer: -python36 -python39
 Prefer: -python36-hotdoc
 Prefer: -python3-ipython715 -python38-ipython715
 
-# prefer the PHP5 variants over PHP7
-Prefer: php5-ctype
-Prefer: php5-devel
-Prefer: php5-dom
-Prefer: php5-ftp
-Prefer: php5-gd
-Prefer: php5-gettext
-Prefer: php5-mbstring
-Prefer: php5-pear
-Prefer: php5-pear-Archive_Tar
-Prefer: php5-pear-Horde
-Prefer: php5 php5-json
-Prefer: php5-tokenizer
-Prefer: php5-zip
-
 # man and mandoc provide man; mandoc claims to be lightweight, but it was never discussed to be the new default
 Prefer: man
 
