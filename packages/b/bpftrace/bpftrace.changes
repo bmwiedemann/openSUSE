@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  8 02:54:33 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add bpftrace-bsc1180670-sync-man-page-and-help.patch to sync
+  man page and help (bsc1180670)
+
+-------------------------------------------------------------------
 Mon Nov 23 06:25:32 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Do not strip bpftrace binaries -- bpftrace depends on debuginfos for

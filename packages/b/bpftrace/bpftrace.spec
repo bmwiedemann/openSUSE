@@ -1,7 +1,7 @@
 #
 # spec file for package bpftrace
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ License:        Apache-2.0
 Group:          Development/Tools/Debuggers
 URL:            https://github.com/iovisor/bpftrace
 Source:         https://github.com/iovisor/bpftrace/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch1:         bpftrace-bsc1180670-sync-man-page-and-help.patch
 BuildRequires:  binutils
 BuildRequires:  binutils-devel
 BuildRequires:  bison
@@ -66,6 +67,7 @@ easily modified to allow for different types of debugging.
 
 %prep
 %setup -q
+%patch1 -p1
 
 # Correct the #!-line to avoid rpmlint warnings.
 find tools -name '*.bt' -type f \

@@ -1,0 +1,125 @@
+From 35dbdccf1d1f34e052f779a26a81962d11846fac Mon Sep 17 00:00:00 2001
+From: Brahadambal Srinivasan <latha@linux.vnet.ibm.com>
+Date: Tue, 22 Dec 2020 18:59:21 +0530
+Subject: [PATCH] bpftrace man page and --help output are not in sync
+
+The bpftrace man page and the output from --help option are not in
+sync and have a lot of options missing.
+
+This patch adds the missing options to the bpftrace as well as order
+the options in alphabetical order for easy reading.
+
+Signed-off-by: Brahadambal Srinivasan <latha@linux.vnet.ibm.com>
+---
+ man/man8/bpftrace.8 | 74 ++++++++++++++++++++++++++++++++++++---------
+ 1 file changed, 59 insertions(+), 15 deletions(-)
+
+diff --git a/man/man8/bpftrace.8 b/man/man8/bpftrace.8
+index 97ce7e5..f82792a 100644
+--- a/man/man8/bpftrace.8
++++ b/man/man8/bpftrace.8
+@@ -51,21 +51,69 @@ See \fBPROBE TYPES\fR and \fBBUILTINS (variables/functions)\fR for the bpftrace
+ .SH "OPTIONS"
+ .
+ .TP
+-\fB\-l [searchterm]\fR
+-List probes.
++\fB\-B MODE\fR
++The buffering mode to be used for output ('full', 'none').
++.
++.TP
++\fB\-b | --btf\fR
++Force BTF data processing if it's available. By default it's enabled only if the user does not specify any types/includes.
++.
++.TP
++\fB\-c CMD\fR
++Helper to run CMD. Equivalent to manually running CMD and then giving passing the PID to -p. This is useful to ensure
++you've traced at least the duration CMD's execution.
++.
++.TP
++\fB\-d\fR
++Debug info dry run.
++.
++.TP
++\fB\-dd\fR
++Verbose Debug info dry run.
+ .
+ .TP
+ \fB\-e 'PROGRAM'\fR
+ Execute PROGRAM.
+ .
+ .TP
+-\fB\-p PID\fR
+-Enable USDT probes on PID. Will terminate bpftrace on PID termination. Note this is not a global PID filter on probes.
++\fB\-f FORMAT\fR
++The format to be used for output ('text'. 'json').
+ .
+ .TP
+-\fB\-c CMD\fR
+-Helper to run CMD. Equivalent to manually running CMD and then giving passing the PID to -p. This is useful to ensure
+-you've traced at least the duration CMD's execution.
++\fB\-h | --help\fR
++Show help message. 
++.
++.TP
++\fB\-I DIR\fR
++Add the directory to the INCLUDE search path.
++.
++.TP
++\fB\--include FILE\fR
++Add a #include file before preprocessing.
++.
++.TP
++\fB\--info\fR
++Print information about kernel BPF support.
++.
++.TP
++\fB\-k\fR
++Emit a warning when a bpf helper returns an error (except read functions).
++.
++.TP
++\fB\-kk\fR
++Check all bpf helper functions.
++.
++.TP
++\fB\-l [searchterm]\fR
++List probes.
++.
++.TP
++\fB\-o FILE\fR
++Redirect bpftrace output to file.
++.
++.TP
++\fB\-p PID\fR
++Enable USDT probes on PID. Will terminate bpftrace on PID termination. Note this is not a global PID filter on probes.
+ .
+ .TP
+ \fB\--unsafe\fR
+@@ -73,20 +121,16 @@ Enable unsafe builtin functions. By default, bpftrace runs in safe mode. Safe mo
+ Unsafe builtin functions are marked as such in \fBBUILTINS (functions)\fR.
+ .
+ .TP
+-\fB\--btf\fR
+-Force BTF data processing if it's available. By default it's enabled only if the user does not specify any types/includes.
++\fB\--usdt-file-activation\fR
++Activate usdt semaphores based on file path..
+ .
+ .TP
+ \fB\-v\fR
+ Verbose messages.
+ .
+ .TP
+-\fB\-d\fR
+-Debug info on dry run.
+-.
+-.TP
+-\fB\-dd\fR
+-Verbose debug info on dry run.
++\fB\-V | --version\fR
++Print version of bpftrace.
+ .
+ .SH "EXAMPLES"
+ .
+-- 
+2.29.2
+
