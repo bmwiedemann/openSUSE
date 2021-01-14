@@ -1,7 +1,7 @@
 #
 # spec file for package gtk4
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenebrger, Amsterdam, Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 %define _name gtk
 
 Name:           gtk4
-Version:        4.0.0+107
+Version:        4.0.1
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
@@ -92,7 +92,7 @@ GTK+ is a multi-platform toolkit for creating graphical user interfaces.
 Offering a complete set of widgets, GTK+ is suitable for projects
 ranging from small one-off projects to complete application suites.
 
-%package -n libgtk-4-0
+%package -n libgtk-4-1
 Summary:        The GTK+ toolkit library (version 4)
 # gtk4-data is currently not being built, might be an upstream oversight though
 Group:          System/Libraries
@@ -117,10 +117,13 @@ Obsoletes:      %{name}-immodule-thai
 Obsoletes:      %{name}-immodule-tigrigna
 Obsoletes:      %{name}-immodule-vietnamese
 Obsoletes:      %{name}-immodule-xim
+# with version 4.0.0, the soname was actually changed to libgtk-4.so.1
+# but the package was nor correctly renamed
+Obsoletes:      libgtk-4-0 >= 4
 # Provide main package to make the lang subpackage installable
 Provides:       %{name} = %{version}
 
-%description -n libgtk-4-0
+%description -n libgtk-4-1
 GTK+ is a multi-platform toolkit for creating graphical user interfaces.
 Offering a complete set of widgets, GTK+ is suitable for projects
 ranging from small one-off projects to complete application suites.
@@ -159,8 +162,8 @@ ranging from small one-off projects to complete application suites.
 %package branding-upstream
 Summary:        Upstream theme configuration for the GTK+ toolkit library v4
 Group:          System/Libraries
-Requires:       libgtk-4-0 = %{version}
-Supplements:    (libgtk-4-0 and branding-upstream)
+Requires:       libgtk-4-1 = %{version}
+Supplements:    (libgtk-4-1 and branding-upstream)
 Conflicts:      %{name}-branding
 Provides:       %{name}-branding = %{version}
 BuildArch:      noarch
@@ -181,7 +184,7 @@ icon themes.
 Summary:        Development files for the GTK+ toolkit library v4
 Group:          Development/Libraries/X11
 Requires:       gettext-its-%{name} >= %{version}
-Requires:       libgtk-4-0 = %{version}
+Requires:       libgtk-4-1 = %{version}
 Requires:       typelib-1_0-Gtk-4_0 = %{version}
 Requires:       vulkan-devel
 
@@ -249,10 +252,10 @@ cp %{SOURCE3} %{buildroot}%{_sysconfdir}/rpm
 %fdupes %{buildroot}%{_datadir}
 %fdupes %{buildroot}%{_libdir}
 
-%post   -n libgtk-4-0 -p /sbin/ldconfig
-%postun -n libgtk-4-0 -p /sbin/ldconfig
+%post   -n libgtk-4-1 -p /sbin/ldconfig
+%postun -n libgtk-4-1 -p /sbin/ldconfig
 
-%files -n libgtk-4-0
+%files -n libgtk-4-1
 %license COPYING
 %doc AUTHORS NEWS
 %dir %{_libdir}/gtk-4.0

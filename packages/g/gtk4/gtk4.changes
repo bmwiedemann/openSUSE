@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Jan 11 14:11:26 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rename libgtk-4-0 to libgtk-4-1: the library changed soname with
+  version 4.0.0.
+- Obsolete libgtk-4-0 > 4 by libgtk-4.1: this is a bit a special
+  hack, but we know that versions < 4 were indeed libgtk-4-.so.0,
+  and starting from version 4, it should have been renamed.
+
+-------------------------------------------------------------------
+Sat Jan  9 11:44:20 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.0.1:
+  + GtkPopover:
+    - Center titles
+    - Fix menu item alignment with submenus
+  + GtkVideo:
+    - Fix up autoplay semantics
+    - Respect pixel aspect ratio
+    - Get GL textures from gstreamer
+  + GtkCenterLayout: Fix handling of expanding center child
+  + GtkSettings:
+    - Change gtk-cursor-aspect-ratio to double
+    - Fix the default value of gtk-print-backends
+  + GtkGestureStylus: Convert motion history to surface coordinates
+  + GL renderer:
+    - Various optimizations
+    - Avoid leaking shader objects
+  + Adwaita:
+    - Fine-tune flat buttons
+    - Improve contrast of dim-label
+    - Improve contrast of controls in headers
+  + Docs:
+    - Add various missing types
+    - Add DND examples
+    - Correct css docs for several widgets
+    - Improve GtkVideo docs
+    - Update migration docs for GtkClipboard
+    - Improve migration docs for event controllers
+    - Add migration docs for GtkBuilder
+  + gtk4-builder-tool:
+    - Remove GtkCheckButton::draw-indicator
+    - Fix a buffer overrun
+    - Remove GtkToolbar::toolbar-style
+  + Demos:
+    - Don't put the search bar in the scroll area
+    - Make the OpenGL demos work with OpenGL ES
+  + X11: Fix a possible crash
+  + Build:
+    - Fix vulkan reference in pc file
+    - Fix build with certain Vulkan versions
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Dec 26 19:18:54 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 4.0.0+107:
