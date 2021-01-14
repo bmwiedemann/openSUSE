@@ -1,7 +1,7 @@
 #
 # spec file for package gerbv
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,10 @@ Release:        0
 Summary:        Gerber File Viewer that supports the RS-274X Standard
 License:        GPL-2.0-only
 Group:          Productivity/Scientific/Electronics
-Url:            http://gerbv.geda-project.org/
+URL:            http://gerbv.geda-project.org/
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM -- https://sourceforge.net/p/gerbv/patches/80/
+Patch0:         0001-Fix-enum-declarations.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gtk2-devel
 BuildRequires:  libpng-devel
@@ -64,7 +66,7 @@ This package contains development files for developing applications
 that use gerbv library.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure  \
@@ -72,7 +74,7 @@ that use gerbv library.
             --enable-unit-mm \
             --disable-update-desktop-database
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

@@ -1,0 +1,34 @@
+From ca9f29f183152469b36a8b28cd57fb006de899b4 Mon Sep 17 00:00:00 2001
+From: Lars Christensen <larsch@belunktum.dk>
+Date: Sat, 7 Nov 2020 16:13:14 +0100
+Subject: [PATCH] Fix enum declarations
+
+---
+ src/callbacks.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/callbacks.h b/src/callbacks.h
+index c021e1b..a401bac 100644
+--- a/src/callbacks.h
++++ b/src/callbacks.h
+@@ -26,7 +26,7 @@
+     \ingroup gerbv
+ */
+ 
+-enum {
++typedef enum {
+ 	CALLBACKS_SAVE_PROJECT_AS,
+ 	CALLBACKS_SAVE_FILE_PS,
+ 	CALLBACKS_SAVE_FILE_PDF,
+@@ -43,7 +43,7 @@ enum {
+ 	
+ } CALLBACKS_SAVE_FILE_TYPE;
+ 
+-enum {
++typedef enum {
+ 	LAYER_SELECTED =	-1,
+ 	LAYER_ALL_ON =		-2,
+ 	LAYER_ALL_OFF =		-3,
+-- 
+2.29.2
+
