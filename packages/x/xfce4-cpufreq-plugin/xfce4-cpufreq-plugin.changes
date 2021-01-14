@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan 12 10:20:08 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.2.3
+  * configure.ac: use AC_PROG_CC_C99
+  * Remove duplicate information from configuration window's title
+  * Fix missing-prototypes
+  * Remove GSourceFunc casts
+  * Fix font color memory leak
+  * Fix fatal compiler warnings
+  * Record release date in the NEWS file like in all previous releases
+  * Fix CSS provider memory leak and an invalid line ordering in an 
+  * if-statement
+  * Use heap allocations instead of stack allocations
+  * Better handling of changes in the number of installed CPUs
+  * Display the actual governor instead of "current"
+  * Fix font size (gxo#panel-plugins/xfce4-cpufreq-plugin#5)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Tue Oct 27 21:03:02 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 1.2.2:
