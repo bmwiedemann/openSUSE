@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 12 14:46:08 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add bit32.so
+
+-------------------------------------------------------------------
 Sun Jul 12 14:02:52 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Removed lua54-support.patch: contained in upstream
