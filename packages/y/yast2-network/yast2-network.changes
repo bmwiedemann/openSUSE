@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 11 13:28:26 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix network configuration progress bar steps (bsc#1180702)
+- 4.3.38
+
+-------------------------------------------------------------------
+Wed Dec 23 09:21:16 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Improve additional addresses validation (bsc#1174766)
+- 4.3.37
+
+-------------------------------------------------------------------
 Mon Dec 21 13:56:55 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - When the static hostname is modified, propose the hostname to be
