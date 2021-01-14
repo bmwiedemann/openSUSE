@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 12 11:28:23 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.3.4:
+  * enhancement:s3: Add server side encryption context into allowed list
+
+-------------------------------------------------------------------
 Thu Nov 26 11:07:08 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Only build Python3 flavors for distributions 15 and greater

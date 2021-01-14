@@ -1,7 +1,7 @@
 #
 # spec file for package python-s3transfer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-s3transfer
-Version:        0.3.3
+Version:        0.3.4
 Release:        0
 Summary:        Python S3 transfer manager
 License:        Apache-2.0
