@@ -1,8 +1,8 @@
-Index: grpc-1.33.1/CMakeLists.txt
+Index: grpc-1.34.0/CMakeLists.txt
 ===================================================================
---- grpc-1.33.1.orig/CMakeLists.txt
-+++ grpc-1.33.1/CMakeLists.txt
-@@ -15805,7 +15805,7 @@ function(generate_pkgconfig name descrip
+--- grpc-1.34.0.orig/CMakeLists.txt
++++ grpc-1.34.0/CMakeLists.txt
+@@ -16203,7 +16203,7 @@ function(generate_pkgconfig name descrip
      "${output_filepath}"
      @ONLY)
    install(FILES "${output_filepath}"

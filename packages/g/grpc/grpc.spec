@@ -1,7 +1,7 @@
 #
 # spec file for package grpc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%define lver 13
+%define lver 14
 %define lverp 1
 %define lverplugin 1
 %define src_install_dir /usr/src/%name
 Name:           grpc
-Version:        1.33.2
+Version:        1.34.1
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
@@ -141,11 +141,12 @@ export CXXFLAGS="$CFLAGS"
 %cmake -DgRPC_INSTALL=ON                  \
        -DgRPC_INSTALL_LIBDIR:PATH="%_lib" \
        -DgRPC_INSTALL_CMAKEDIR:PATH="%_libdir/cmake/grpc" \
-       -DgRPC_ABSL_PROVIDER=package \
+       -DgRPC_ABSL_PROVIDER=package       \
        -DgRPC_CARES_PROVIDER=package      \
        -DgRPC_PROTOBUF_PROVIDER=package   \
        -DgRPC_RE2_PROVIDER=package        \
        -DgRPC_SSL_PROVIDER=package        \
+       -DZLIB_LIBRARY=%{_libdir}/libz.so  \
        -DgRPC_ZLIB_PROVIDER=package
 %cmake_build
 
@@ -172,6 +173,9 @@ mkdir -p "%buildroot/%src_install_dir"
 cp -r * "%buildroot/%src_install_dir"
 
 %fdupes %buildroot/%_prefix
+
+# Checks cannot be run because of `make clean` above
+#%%check
 
 %post   -n libgrpc%lver -p /sbin/ldconfig
 %postun -n libgrpc%lver -p /sbin/ldconfig
