@@ -1,7 +1,7 @@
 #
 # spec file for package geeqie
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            http://www.geeqie.org
 Source0:        %{url}/%{name}-%{version}.tar.xz
 Source1:        %{url}/%{name}-%{version}.tar.xz.asc
 Source2:        geeqie.keyring
+# PATCH-FIX-UPSTREAM 0001-Fix-829-segfault-with-clutter-gtk.patch
+Patch0:         0001-Fix-829-segfault-with-clutter-gtk.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes

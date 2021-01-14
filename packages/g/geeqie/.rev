@@ -204,4 +204,14 @@
     <comment></comment>
     <requestid>854550</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>0d5bc239d362cca4c088f1a1020c1784</srcmd5>
+    <version>1.6</version>
+    <time>1610633118</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch to fix crash with clutter-gtk (boo#1180228)
+  + 0001-Fix-829-segfault-with-clutter-gtk.patch
+</comment>
+    <requestid>862961</requestid>
+  </revision>
 </revisionlist>
