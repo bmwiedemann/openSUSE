@@ -28,6 +28,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/News/Utilities
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM akregator-fix_systray.patch
+Patch0:         akregator-fix_systray.patch
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
@@ -84,6 +86,7 @@ browser for news reading.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %cmake_kf5 -d build -- -DBUILD_TESTING=OFF
