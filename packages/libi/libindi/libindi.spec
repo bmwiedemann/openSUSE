@@ -19,7 +19,7 @@
 %define so_ver 1
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           libindi
-Version:        1.8.7
+Version:        1.8.8
 Release:        0
 Summary:        Instrument Neutral Distributed Interface
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later

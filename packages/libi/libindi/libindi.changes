@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Jan 11 07:51:06 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.8.8:
+  + New HOBYM Crux telescope driver 
+  + New Rainbow focuser driver 
+  + New ActiveFocuser driver release 
+  + 10Micron: UnattendedFlip handling
+  + Bugfix/sat track lx200 julian day
+  + Improved serial port auto-search.
+  + Refactor/satellite tracking properties 
+  + SkyWatcher Alt-Az driver improvements.
+  + Indibase/refactoring - update INDI::Property
+  + Update of SmartFocus driver 
+  + Add new helper methods to the AlignmentSubsystemForDrivers (Alt/Az)
+  + Streammanager/chrono - Fix the 24h time limit
+  + Fix remote driver not sending properties to upstream server
+  + Delay calculation in indicommon and indicorrelator (#1277)
+  + Indidriver/refactoring - fix memory leak, increase performance
+  + Streammanager/refactoring
+  + Move absolute position bugfix 
+  + Use of the common mkpath function
+  + Sesto Senso 2: Support for displaying 12V input voltage
+  + Add Microsoft LifeCam Cinema to pixelSizeInfo
+  + Sesto Senso 2: Log & display firmware version
+  + fix: inline methods that use unlinked functions
+
+-------------------------------------------------------------------
 Wed Nov 25 14:13:22 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.8.7:
