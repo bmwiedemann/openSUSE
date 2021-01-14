@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 12 21:09:16 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.0+git20201219 (changes since 0.0+git20200717):
+  * Handle data structure change from newer Rocket.Chat servers
+    (boo#1180806).
+  * Add some additional checks to reduce debug warnings.
+
+-------------------------------------------------------------------
 Mon Aug 24 17:31:16 CEST 2020 - ro@suse.de
 
 - swich to github as source as upstream did 

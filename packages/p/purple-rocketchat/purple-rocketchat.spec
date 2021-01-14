@@ -1,7 +1,7 @@
 #
 # spec file for package purple-rocketchat
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,10 @@
 
 %define _name   rocketchat
 Name:           purple-rocketchat
-Version:        0.0+git.20200717T223247
+Version:        0.0+git20201219
 Release:        0
 Summary:        RocketChat protocol plugin for libpurple
 License:        GPL-2.0-or-later
-Group:          Productivity/Networking/Instant Messenger
 URL:            https://github.com/EionRobb/purple-rocketchat
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig
@@ -36,7 +35,6 @@ RocketChat protocol plugin for libpurple-based applications.
 
 %package -n libpurple-plugin-%{_name}
 Summary:        RocketChat protocol plugin for libpurple
-Group:          Productivity/Networking/Instant Messenger
 Enhances:       libpurple
 
 %description -n libpurple-plugin-%{_name}
@@ -44,10 +42,9 @@ RocketChat protocol plugin for libpurple-based applications.
 
 %package -n pidgin-plugin-%{_name}
 Summary:        RocketChat protocol plugin for Pidgin
-Group:          Productivity/Networking/Instant Messenger
 Requires:       libpurple-plugin-%{_name} = %{version}
 %requires_ge    pidgin
-Supplements:    packageand(libpurple-plugin-%{_name}:pidgin)
+Supplements:    (libpurple-plugin-%{_name} and pidgin)
 BuildArch:      noarch
 
 %description -n pidgin-plugin-%{_name}
@@ -59,7 +56,7 @@ This package provides the icon set for Pidgin.
 %setup -q
 
 %build
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install

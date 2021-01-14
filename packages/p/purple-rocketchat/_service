@@ -3,7 +3,8 @@
     <param name="scm">git</param>
     <param name="url">https://github.com/EionRobb/purple-rocketchat</param>
     <param name="filename">purple-rocketchat</param>
-    <param name="versionformat">0.0+git.%ci</param>
+    <param name="versionformat">0.0+git%cd</param>
+    <param name="revision">5840e7d781debd82372a61e72d4abc8f1ecec90b</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
