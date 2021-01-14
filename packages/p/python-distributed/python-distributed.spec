@@ -1,7 +1,7 @@
 #
 # spec file for package python-distributed
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,25 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without     test
-Name:           python-distributed
-Version:        2.30.1
+Name:           python-distributed%{psuffix}
+Version:        2020.12.0
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
 URL:            https://distributed.readthedocs.io/en/latest/
 Source:         https://files.pythonhosted.org/packages/source/d/distributed/distributed-%{version}.tar.gz
 Source99:       python-distributed-rpmlintrc
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module joblib >= 0.10.2}
 BuildRequires:  %{python_module scikit-learn >= 0.17.1}
 BuildRequires:  %{python_module setuptools}
@@ -36,7 +44,7 @@ Requires:       python-PyYAML
 Requires:       python-certifi
 Requires:       python-click >= 6.6
 Requires:       python-cloudpickle >= 1.5.0
-Requires:       python-dask >= 2.9.0
+Requires:       python-dask >= 2020.12.0
 Requires:       python-joblib >= 0.10.2
 Requires:       python-msgpack
 Requires:       python-psutil >= 5.0
@@ -44,35 +52,46 @@ Requires:       python-scikit-learn >= 0.17.1
 Requires:       python-sortedcontainers
 Requires:       python-tblib
 Requires:       python-toolz >= 0.8.2
-%if %{python_version_nodots} >= 38
-Requires:       python-tornado >= 6.0.3
-%else
+# https://github.com/dask/distributed/pull/4212
+Requires:       python-tornado < 6.1
+%if %{python_version_nodots} < 38
 Requires:       python-contextvars
 Requires:       python-tornado >= 5
+%else
+Requires:       python-tornado >= 6.0.3
 %endif
 Requires:       python-zict >= 0.1.3
-BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module bokeh}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module click >= 6.6}
 BuildRequires:  %{python_module cloudpickle >= 1.5.0}
-BuildRequires:  %{python_module dask >= 2.9.0}
-BuildRequires:  %{python_module dask-bag >= 2.9.0}
-BuildRequires:  %{python_module dask-distributed >= 2.9.0}
+BuildRequires:  %{python_module dask-all >= 2020.12.0}
+# need built extension
+BuildRequires:  %{python_module distributed = %{version}}
+BuildRequires:  %{python_module ipykernel}
+BuildRequires:  %{python_module ipython}
+BuildRequires:  %{python_module jupyter_client}
 BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module sortedcontainers}
+BuildRequires:  %{python_module sparse}
 BuildRequires:  %{python_module tblib}
 BuildRequires:  %{python_module toolz >= 0.8.2}
-%if %{python_version_nodots} >= 38
-BuildRequires:  %{python_module tornado >= 6.0.3}
-%else
-BuildRequires:  %{python_module tornado >= 5}
-%endif
 BuildRequires:  %{python_module zict >= 0.1.3}
+# https://github.com/dask/distributed/pull/4212
+BuildRequires:  %{python_module tornado < 6.1}
+BuildRequires:  (python3-tornado >= 5 if python3-base < 3.8)
+BuildRequires:  (python3-tornado >= 6.0.3 if python3-base >= 3.8)
+BuildRequires:  (python36-tornado >= 5 if python36-base)
+# switch comment/nocomment of the next two lines when the python3 primary flavor has been changed from python38 to python39
+# BuildRequires:  (python38-tornado >= 6.0.3 if python38-base)
+BuildRequires:  (python39-tornado >= 6.0.3 if python39-base)
 %endif
 %python_subpackages
 
@@ -85,42 +104,138 @@ clusters.
 %setup -q -n distributed-%{version}
 
 %build
-%python_build
+%if ! %{with test}
+%python_build --with-cython
+%endif
 
 %install
-%python_install
-%{python_expand rm -rf %{buildroot}%{$python_sitelib}/distributed/tests/
-# Deduplicating files can generate a RPMLINT warning for pyc mtime
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%if ! %{with test}
+%python_install --with-cython
+%python_clone -a %{buildroot}%{_bindir}/dask-ssh
+%python_clone -a %{buildroot}%{_bindir}/dask-scheduler
+%python_clone -a %{buildroot}%{_bindir}/dask-worker
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%endif
 
 %if %{with test}
 %check
-# test_reconnect from test_client.py and all tests in test_core.py need network connection
-rm distributed/tests/test_core.py
+# add fail and error summaries to pytest report, but xfail is not interesting
+sed -i '/pytest/,/addopts/ s/-rsx/-rfEs/' setup.cfg
+# All tests in test_core.py need network connection
+ignoretestfiles="--ignore distributed/tests/test_core.py"
 # many tests from multiple files are broken by new pytest-asyncio (see https://github.com/dask/distributed/pull/4212 for explanation)
 # as a proof build it with old pytest-asyncio and see these tests pass
-ASYNCIO_FAIL="test_worker_nthreads or test_identity or test_worker_port_range or test_worker_waits_for_scheduler or test_io_loop\
- or test_deque_handler or test_bad_ or test_update_latency or test_heartbeat_comm_closed or test_get_client or test_lifetime\
- or test_dashboard_link_ or test_shutdown or test_config or test_client_gather_semaphore_loop or test_secede_\
- or test_event_on_workers or test_two_events_on_workers or test_lock or test_serializable or test_nanny_closes_cleanly or test_nanny_port_range\
- or test_nanny_closed_by_keyboard_interrupt or test_worker_start_exception or test_2220 or test_config_stealing or test_async_context_manager\
- or test_allowed_failures_config or test_no_danglng_asyncio_tasks or test_multiple_listeners or test_oversubscribing_leases\
- or test_security_dict_input or test_worker_client or test_tls_scheduler or test_release_once_too_many_resilience or test_close_async\
- or test_access_semaphore_by_name or test_release_simple or test_worker_breaks_and_returns or test_num_fds or test_retire_names_str or test_gather_allow_worker_reconnect"
-# test_worker_client.py and test_preload.py are also heavily affected by new asyncio, more than half of all tests there are broken
-rm distributed/tests/test_worker_client.py distributed/tests/test_preload.py
-# test_fail_write_to_disk randomly fails
-export PYTHONPATH=.
-%pytest distributed/tests/ -k "not (test_reconnect or $ASYNCIO_FAIL or test_fail_write_to_disk)"
+donttest+=" or (test_asyncprocess and test_child_main_thread)"
+donttest+=" or (test_asyncprocess and test_close)"
+donttest+=" or (test_asyncprocess and test_exit_callback)"
+donttest+=" or (test_asyncprocess and test_exitcode)"
+donttest+=" or (test_asyncprocess and test_num_fds)"
+donttest+=" or (test_asyncprocess and test_performance_report)"
+donttest+=" or (test_asyncprocess and test_signal)"
+donttest+=" or (test_client and test_add_worker_after_task)"
+donttest+=" or (test_client and test_bad_tasks_fail)"
+donttest+=" or (test_client and test_cleanup_after_broken_client_connection)"
+donttest+=" or (test_client and test_futures_in_subgraphs)"
+donttest+=" or (test_client and test_get_client)"
+donttest+=" or (test_client and test_open_close_many_workers)"
+donttest+=" or (test_client and test_performance_report)"
+donttest+=" or (test_client and test_profile_server)"
+donttest+=" or (test_client and test_profile_server)"
+donttest+=" or (test_client and test_quiet_client_close)"
+donttest+=" or (test_client and test_quiet_quit_when_cluster_leaves)"
+donttest+=" or (test_client and test_reconnect)"
+donttest+=" or (test_client and test_secede_balances)"
+donttest+=" or (test_client and test_secede_simple)"
+donttest+=" or (test_client and test_serialize_collections)"
+donttest+=" or (test_client and test_upload_file_exception_sync)"
+donttest+=" or (test_client and test_upload_file_sync)"
+donttest+=" or (test_collections and test_sparse_arrays)"
+donttest+=" or (test_diskutils and test_workspace_concurrency_intense)"
+donttest+=" or (test_diskutils and test_workspace_concurrency)"
+donttest+=" or (test_events and test_event_on_workers)"
+donttest+=" or (test_events and test_two_events_on_workers)"
+donttest+=" or (test_failed_workers and test_broken_worker_during_computation)"
+donttest+=" or (test_failed_workers and test_fast_kill)"
+donttest+=" or (test_failed_workers and test_gather_then_submit_after_failed_workers)"
+donttest+=" or (test_failed_workers and test_restart_during_computation)"
+donttest+=" or (test_failed_workers and test_restart_fast)"
+donttest+=" or (test_failed_workers and test_restart_scheduler)"
+donttest+=" or (test_failed_workers and test_worker_who_has_clears_after_failed_connection)"
+donttest+=" or (test_locks and test_lock)"
+donttest+=" or (test_locks and test_serializable)"
+donttest+=" or (test_nanny and test_mp_pool_worker_no_daemon)"
+donttest+=" or (test_nanny and test_mp_process_worker_no_daemon)"
+donttest+=" or (test_nanny and test_nanny)"
+donttest+=" or (test_nanny and test_num_fds)"
+donttest+=" or (test_preload and test_web_preload)"
+donttest+=" or (test_profile and test_watch)"
+donttest+=" or (test_queues and test_2220)"
+donttest+=" or (test_resources and test_prefer_constrained)"
+donttest+=" or (test_scheduler and test_balance_many_workers_2)"
+donttest+=" or (test_scheduler and test_bandwidth_clear)"
+donttest+=" or (test_scheduler and test_idle_timeout)"
+donttest+=" or (test_scheduler and test_log_tasks_during_restart)"
+donttest+=" or (test_scheduler and test_restart)"
+donttest+=" or (test_scheduler and test_task_groups)"
+donttest+=" or (test_semaphore and test_access_semaphore_by_name)"
+donttest+=" or (test_semaphore and test_close_async)"
+donttest+=" or (test_semaphore and test_oversubscribing_leases)"
+donttest+=" or (test_semaphore and test_release_once_too_many_resilience)"
+donttest+=" or (test_semaphore and test_release_simple)"
+donttest+=" or (test_sparse_arrays and concurrent)"
+donttest+=" or (test_spec and test_address_default_none)"
+donttest+=" or (test_spec and test_child_address_persists)"
+donttest+=" or (test_steal and test_balance)"
+donttest+=" or (test_steal and test_dont_steal_already_released)"
+donttest+=" or (test_steal and test_restart)"
+donttest+=" or (test_steal and test_steal_more_attractive_tasks)"
+donttest+=" or (test_steal and test_steal_twice)"
+donttest+=" or (test_scheduler and test_steal_when_more_tasks)"
+donttest+=" or (test_stress and test_close_connections)"
+donttest+=" or (test_tls_functional and test_worker_client)"
+donttest+=" or (test_worker and test_dont_overlap_communications_to_same_worker)"
+donttest+=" or (test_worker and test_get_client)"
+donttest+=" or (test_worker and test_robust_to_bad_sizeof_estimates)"
+donttest+=" or (test_worker and test_statistical_profiling_2)"
+donttest+=" or (test_worker and test_stop_doing_unnecessary_work)"
+donttest+=" or (test_worker and test_wait_for_outgoing)"
+donttest+=" or (test_worker_client and test_async)"
+donttest+=" or (test_worker_client and test_client_executor)"
+donttest+=" or (test_worker_client and test_compute_within_worker_client)"
+donttest+=" or (test_worker_client and test_gather_multi_machine)"
+donttest+=" or (test_worker_client and test_local_client_warning)"
+donttest+=" or (test_worker_client and test_scatter_from_worker)"
+donttest+=" or (test_worker_client and test_scatter_singleton)"
+donttest+=" or (test_worker_client and test_secede_without_stealing_issue_1262)"
+donttest+=" or (test_worker_client and test_submit_different_names)"
+donttest+=" or (test_worker_client and test_submit_from_worker)"
+donttest+=" or test_metrics"
+# randomly fails
+donttest+=" or (test_worker and test_fail_write_to_disk)"
+# version mismatch
+donttest+=" or test_version_warning_in_cluster"
+%{pytest_arch distributed/tests/ \
+    $ignoretestfiles\
+    -k "not (${donttest:4})"\
+    -m "not avoid_travis" -n auto
+}
 %endif
+
+%if ! %{with test}
+%post
+%python_install_alternative dask-ssh dask-scheduler dask-worker
+
+%postun
+%python_uninstall_alternative dask-ssh
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{_bindir}/dask-ssh
-%{_bindir}/dask-scheduler
-%{_bindir}/dask-worker
-%{python_sitelib}/distributed*
+%python_alternative %{_bindir}/dask-ssh
+%python_alternative %{_bindir}/dask-scheduler
+%python_alternative %{_bindir}/dask-worker
+%{python_sitearch}/distributed
+%{python_sitearch}/distributed-%{version}*-info
+%endif
 
 %changelog
