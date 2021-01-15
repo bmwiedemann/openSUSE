@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 14 03:09:33 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.017
+   see /usr/share/doc/packages/perl-PAR/Changes
+
+  1.017  2021-01-13
+
+    - change bugtracker to GitHub issues
+
+    - remove obsolete stuff from tutorial
+
+-------------------------------------------------------------------
 Tue May 21 05:19:12 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.016
