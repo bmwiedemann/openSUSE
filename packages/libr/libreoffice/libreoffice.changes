@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jan 14 08:44:52 UTC 2021 - Andras Timar <andras.timar@collabora.com>
+
+- Fix bsc#1179025 - LO-L3: LibreOffice crashes opening a PPTX
+  * bsc1179025.diff
+
+-------------------------------------------------------------------
+Tue Jan 12 10:32:53 UTC 2021 - Andras Timar <andras.timar@collabora.com>
+
+- Fix bsc#1178807 - LO-L3: Text box from PowerPoint renders vertically instead of horizontally
+  * bsc1178807.diff
+
+-------------------------------------------------------------------
+Sat Jan  2 11:07:57 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add icu68.patch: fix build with ICU 68
+
+-------------------------------------------------------------------
 Sat Dec 19 21:58:35 UTC 2020 - Andras Timar <andras.timar@collabora.com>
 
 - LO-L3: Shadow effect(s) for table completely missing - part 1 and 2

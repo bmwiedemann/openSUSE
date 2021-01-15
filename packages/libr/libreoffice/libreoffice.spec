@@ -1,7 +1,7 @@
 #
 # spec file for package libreoffice
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -102,6 +102,12 @@ Patch4:         0001-Upgrade-liborcus-to-0.16.0.patch
 # LO-L3: Shadow effect(s) for table completely missing - part 1 and 2
 Patch5:         bsc1178944.diff
 Patch6:         bsc1178943.diff
+# Fix build with ICU 68
+Patch7:         icu68.patch
+# Bug 1178807 - LO-L3: Text box from PowerPoint renders vertically instead of horizontally
+Patch8:         bsc1178807.diff
+# Bug 1179025 - LO-L3: LibreOffice crashes opening a PPTX
+Patch9:         bsc1179025.diff
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
@@ -962,6 +968,9 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
 %patch990 -p1
 %patch991 -p1
 
