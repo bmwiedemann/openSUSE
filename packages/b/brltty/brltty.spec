@@ -1,7 +1,7 @@
 #
 # spec file for package brltty
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,12 @@
 
 %{!?tcl_version: %global tcl_version %(echo 'puts $tcl_version' | tclsh)}
 %{!?tcl_sitearch: %global tcl_sitearch %{_libdir}/tcl/tcl%{tcl_version}}
-%define api_version 0.8.0
+%define api_version 0.8.1
 %define sover 0_8
 %define soname libbrlapi%{sover}
 
-%define with_polkit 1
-
-%if 0%{?suse_version} >= 1500
-%define espeak    espeak-ng-compat
-%define espeakdev espeak-ng-compat-devel
-%else
-%define espeak    espeak
-%define espeakdev espeak-devel
-%endif
-
 Name:           brltty
-Version:        6.1
+Version:        6.2
 Release:        0
 # FIXME libbraille driver when libbraille is in factory
 Summary:        Braille display driver for Linux/Unix
@@ -43,11 +33,11 @@ URL:            https://brltty.app/
 
 Source0:        https://brltty.app/archive/%{name}-%{version}.tar.xz
 Source1:        README.SUSE
-Patch0:         brltty-5.5-systemd-install.patch
-Patch1:         brltty-gcc10.patch
+Patch0:         brltty-fix-install-dirs.patch
 
-BuildRequires:  %{espeakdev}
 BuildRequires:  bison
+BuildRequires:  doxygen
+BuildRequires:  espeak-ng-compat-devel
 BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  gpm-devel
@@ -60,6 +50,7 @@ BuildRequires:  pkg-config
 BuildRequires:  python3
 BuildRequires:  python3-Cython
 BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  tcl-devel
 BuildRequires:  pkgconfig(alsa)
@@ -68,16 +59,14 @@ BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libusb-1.0)
-%if %{?with_polkit}
 BuildRequires:  pkgconfig(polkit-gobject-1)
-%endif
 BuildRequires:  pkgconfig(speech-dispatcher)
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xaw7)
 BuildRequires:  pkgconfig(xt)
+Requires(pre): shadow
 %{?systemd_ordering}
-%define _udevdir %(pkg-config --variable udevdir udev)
 
 %description
 BRLTTY is a background process (daemon) which provides access to the
@@ -131,7 +120,7 @@ This package contains the libbraille braille driver.
 Summary:        ESpeak driver for BRLTTY
 Group:          System/Daemons
 Requires:       %{name} = %{version}
-Supplements:    packageand(brltty:%{espeak})
+Supplements:    packageand(brltty:espeak-ng-compat)
 
 %description driver-espeak
 BRLTTY is a background process (daemon) which provides access to the
@@ -306,7 +295,12 @@ cp %{_sourcedir}/README.SUSE .
 # Fix "wrong-file-end-of-line-encoding" rpmlint warning
 sed -i 's/\r$//' Documents/Manual-BRLTTY/Portuguese/BRLTTY.txt
 
-sed -i 's:/usr/bin/python:/usr/bin/python3:' ./Tables/Contraction/latex-access.ctb
+# Don't claim generic USB serial adapters (boo#1007652)
+sed -i \
+  -e 's/^ENV{PRODUCT}=="403\/6001\/\*"/#ENV{PRODUCT}=="403\/6001\/\*"/' \
+  -e 's/^ENV{PRODUCT}=="10c4\/ea60\/\*"/#ENV{PRODUCT}=="10c4\/ea60\/\*"/' \
+  -e 's/^ENV{PRODUCT}=="10c4\/ea80\/\*"/#ENV{PRODUCT}=="10c4\/ea80\/\*"/' \
+  Autostart/Udev/device.rules.in
 
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
 DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
@@ -324,36 +318,22 @@ make -j1 # not parallel build safe
 
 %install
 sed -i "s=/usr/libexec/brltty-systemd-wrapper=%_libexecdir/brltty-systemd-wrapper=" Autostart/Systemd/brltty@.service
-make install install-systemd DESTDIR="%buildroot"
+make install install-systemd install-udev install-polkit DESTDIR="%buildroot"
 %find_lang %{name}
-%if %{?with_polkit}
 sed -i "s/#api-parameters Auth=polkit/api-parameters Auth=polkit/" Documents/brltty.conf
-%endif
 install -D -m644 Documents/brltty.conf %{buildroot}%{_sysconfdir}/brltty.conf
 # ghost brlapi.key
 touch %{buildroot}%{_sysconfdir}/brlapi.key
 # Don't include source files in binary package
 rm -f %{buildroot}%{_libdir}/ocaml/brlapi/brlapi.{mli,cmxa}
-# Don't claim generic USB serial adapters (boo#1007652)
-sed -i \
-  -e 's/^ENV{PRODUCT}=="403\/6001\/\*"/#ENV{PRODUCT}=="403\/6001\/\*"/' \
-  -e 's/^ENV{PRODUCT}=="10c4\/ea60\/\*"/#ENV{PRODUCT}=="10c4\/ea60\/\*"/' \
-  -e 's/^ENV{PRODUCT}=="10c4\/ea80\/\*"/#ENV{PRODUCT}=="10c4\/ea80\/\*"/' \
-  Autostart/Udev/rules
-mkdir -p %{buildroot}%{_udevdir}/rules.d
-install -m644 Autostart/Udev/rules %{buildroot}%{_udevdir}/rules.d/69-%{name}.rules
-%if %{?with_polkit}
-mkdir -p %{buildroot}%{_datadir}/polkit-1/actions
-install -m 644 Authorization/Polkit/org.a11y.brlapi.policy %{buildroot}%{_datadir}/polkit-1/actions
-%endif
 rm %{buildroot}%{_libdir}/libbrlapi.a
 rm %{buildroot}%{_libdir}/ocaml/brlapi/libbrlapi_stubs.a
 rm %{buildroot}/etc/X11/Xsession.d/90xbrlapi # TODO: install this somewhere?
 # fix missing executable bits
-test ! -x %{buildroot}%{_bindir}/brltty-config
-chmod a+x %{buildroot}%{_bindir}/brltty-config
+test ! -x %{buildroot}%{_bindir}/brltty-config.sh
+chmod a+x %{buildroot}%{_bindir}/brltty-config.sh
 # clean up the manuals:
-rm Documents/Manual-*/*/{*.mk,*.made,Makefile*,*.sgml,*-[0-9]*.html}
+rm Documents/Manual-*/*/{*.mk,Makefile*,*.sgml}
 mv Documents/BrlAPIref/html Documents/BrlAPIref/BrlAPIref
 # group all the documentation in a doc subdirectory:
 find . \( -path ./doc -o -path ./Documents \) -prune -o \
@@ -392,6 +372,7 @@ fi
 
 %pre
 %service_add_pre %{name}.path
+getent passwd brltty >/dev/null || useradd -r -d %{_localstatedir}/lib/brltty -s /bin/false -c "user account for the brltty daemon" brltty
 
 %post
 %service_add_post %{name}.path
@@ -407,7 +388,7 @@ if [ -f /usr/bin/lsusb ]; then
 WARNING: The SUSE brltty package no longer enables certain USB
 refreshable Braille displays by default, and it appears that you may have
 one of these displays attached. If so, then you may need to edit
-/usr/lib/udev/rules.d/69-brltty.rules.
+%{_udevrulesdir}/90-brltty-device.rules.
 If your device is a standard USB-to-serial converter, rather than a
 refreshable Braille display, then you can ignore this message.
 See /usr/share/doc/packages/brltty/README.SUSE for more information.
@@ -425,8 +406,8 @@ fi
 rm -f %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-something
 
 %files
-%defattr(-, root, root)
-%doc LICENSE-LGPL README README.SUSE Documents/ChangeLog Documents/CONTRIBUTORS Documents/HISTORY Documents/README.Bluetooth Documents/TODO
+%license LICENSE-LGPL
+%doc README README.SUSE Documents/ChangeLog Documents/CONTRIBUTORS Documents/HISTORY Documents/README.Bluetooth Documents/TODO
 %doc Documents/Manual-BRLTTY/English
 %config(noreplace) %{_sysconfdir}/brltty.conf
 %{_sysconfdir}/brltty/
@@ -434,29 +415,34 @@ rm -f %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-someth
 %{_bindir}/brltty-clip
 %{_bindir}/brltty-atb
 %{_bindir}/brltty-cldr
-%{_bindir}/brltty-config
+%{_bindir}/brltty-config.sh
 %{_bindir}/brltty-ctb
+%{_bindir}/brltty-genkey
 %{_bindir}/brltty-ktb
 %{_bindir}/brltty-lscmds
 %{_bindir}/brltty-lsinc
+%{_bindir}/brltty-mkuser
 %{_bindir}/brltty-morse
+%{_bindir}/brltty-prologue.sh
+%{_bindir}/brltty-setcaps
 %{_bindir}/brltty-trtxt
 %{_bindir}/brltty-ttb
 %{_bindir}/brltty-tune
 %{_bindir}/eutp
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.a11y.%{name}.metainfo.xml
-%if %{?with_polkit}
 %{_datadir}/polkit-1/actions/org.a11y.brlapi.policy
-%endif
+%{_datadir}/polkit-1/rules.d/org.a11y.brlapi.rules
 %{_libdir}/brltty/
-%{_prefix}/lib/brltty/
-%{_prefix}/lib/%{name}/systemd-wrapper
 %{_mandir}/man1/brltty.1*
 %{_mandir}/man1/eutp.1.gz
-%{_udevdir}/rules.d/69-%{name}.rules
+%{_prefix}/lib/sysusers.d/%{name}.conf
+%{_prefix}/lib/tmpfiles.d/%{name}.conf
+%{_udevrulesdir}/90-%{name}-device.rules
+%{_udevrulesdir}/90-%{name}-uinput.rules
 %{_unitdir}/%{name}.path
 %{_unitdir}/%{name}@.path
+%{_unitdir}/%{name}-device@.service
 %{_unitdir}/%{name}@.service
 %exclude %{_libdir}/brltty/libbrlttybba.so
 %exclude %{_libdir}/brltty/libbrlttyblb.so
@@ -467,78 +453,62 @@ rm -f %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-someth
 %ghost %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-something
 
 %files driver-at-spi2
-%defattr(-, root, root)
 %{_libdir}/brltty/libbrlttyxa2.so
 
 %files driver-brlapi
-%defattr(-, root, root)
 %doc Drivers/Braille/BrlAPI/README
 %{_libdir}/brltty/libbrlttybba.so
 
 %files driver-libbraille
-%defattr(-, root, root)
 %{_libdir}/brltty/libbrlttyblb.so
 
 %files driver-espeak
-%defattr(-, root, root)
 %doc Drivers/Speech/eSpeak/README
 %{_libdir}/brltty/libbrlttyses.so
 
 %files driver-speech-dispatcher
-%defattr(-, root, root)
 %doc Drivers/Speech/SpeechDispatcher/README
 %{_libdir}/brltty/libbrlttyssd.so
 
 %files driver-xwindow
-%defattr(-, root, root)
 %doc Drivers/Braille/XWindow/README
 %{_libdir}/brltty/libbrlttybxw.so
 
 %files utils
-%defattr(-, root, root)
 %{_bindir}/vstp
 %{_mandir}/man1/vstp.1*
 
 %files -n xbrlapi
-%defattr(-, root, root)
 %{_bindir}/xbrlapi
 %{_mandir}/man1/xbrlapi.1*
 
 %files -n %{soname}
-%defattr(-, root, root)
 %doc Documents/Manual-BrlAPI/
 %{_libdir}/libbrlapi.so.*
 %ghost %{_sysconfdir}/brlapi.key
 
 %files -n brlapi-devel
-%defattr(-, root, root)
-%doc Documents/BrlAPIref/BrlAPIref/
 %{_includedir}/brltty/
 %{_includedir}/brlapi*.h
 %{_libdir}/libbrlapi.so
 %doc %{_mandir}/man3/brlapi_*
 
 %files -n brlapi-java
-%defattr(-, root, root)
 %{_jnidir}/libbrlapi_java.so
 %{_javadir}/brlapi.jar
 
 %files -n ocaml-brlapi
-%defattr(-, root, root)
 %{_libdir}/ocaml/brlapi/
 %{_libdir}/ocaml/stublibs/dllbrlapi_stubs.so*
 
 %files -n python3-brlapi
-%defattr(-, root, root)
 %{python3_sitearch}/brlapi.cpython*.so
 %{python3_sitearch}/Brlapi-*.egg-info
 
 %files -n tcl-brlapi
-%defattr(-, root, root)
 %{tcl_sitearch}/brlapi-%{api_version}/
 
 %files lang -f %{name}.lang
-%defattr(-, root, root)
 %doc Documents/Manual-BRLTTY/French
 %doc Documents/Manual-BRLTTY/Portuguese
 

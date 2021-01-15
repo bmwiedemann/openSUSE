@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jan  1 19:32:18 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 6.2:
+  + See ChangeLog for changes.
+- Update api_version: now 0.8.1.
+- Replace brltty-5.5-systemd-install.patch with
+  brltty-fix-install-dirs.patch: also adjust udev directory.
+- Drop brltty-gcc10.patch: fixed upstream.
+- Move udev rules patching to %build.
+- Use the Makefile to install udev and polkit rules and docs.
+- Brltty-config has been renamed to brltty-config.sh.
+- Remove polkit conditional: we always have it enabled.
+- Remove old espeak support: Leap prior to 15.0 is no longer
+  supported.
+- Add python3-setuptools to BuildRequires: required by rpm during
+  checks.
+- Add doxygen to BuildRequires: needed to build manual.
+- Create a brltty user on install: now expected by service.
+
+-------------------------------------------------------------------
 Wed Oct 14 18:14:27 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Add coreutils and util-linux to post requires (boo#1177656).

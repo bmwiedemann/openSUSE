@@ -475,4 +475,27 @@
     <comment>- Add coreutils and util-linux to post requires (boo#1177656). (forwarded request 841815 from mgorse)</comment>
     <requestid>841816</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>2dcecb93c6d13f48209d471b7bfc910c</srcmd5>
+    <version>6.2</version>
+    <time>1610736334</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.2:
+  + See ChangeLog for changes.
+- Update api_version: now 0.8.1.
+- Replace brltty-5.5-systemd-install.patch with
+  brltty-fix-install-dirs.patch: also adjust udev directory.
+- Drop brltty-gcc10.patch: fixed upstream.
+- Move udev rules patching to %build.
+- Use the Makefile to install udev and polkit rules and docs.
+- Brltty-config has been renamed to brltty-config.sh.
+- Remove polkit conditional: we always have it enabled.
+- Remove old espeak support: Leap prior to 15.0 is no longer
+  supported.
+- Add python3-setuptools to BuildRequires: required by rpm during
+  checks.
+- Add doxygen to BuildRequires: needed to build manual.
+- Create a brltty user on install: now expected by service.</comment>
+    <requestid>863078</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,33 @@
+diff -urp brltty-6.2.orig/Autostart/Systemd/Makefile.in brltty-6.2/Autostart/Systemd/Makefile.in
+--- brltty-6.2.orig/Autostart/Systemd/Makefile.in	2020-12-11 16:51:58.000000000 -0600
++++ brltty-6.2/Autostart/Systemd/Makefile.in	2020-12-29 08:36:45.807855340 -0600
+@@ -16,13 +16,13 @@
+ # This software is maintained by Dave Mielke <dave@mielke.cc>.
+ ###############################################################################
+ 
+-SYSTEMD_UNITS_DIRECTORY = $(INSTALL_ROOT)$(libdir)/systemd/system
++SYSTEMD_UNITS_DIRECTORY = $(INSTALL_ROOT)$(exec_prefix)/lib/systemd/system
+ SYSTEMD_SCRIPTS_DIRECTORY = $(INSTALL_ROOT)$(DRIVERS_DIRECTORY)
+ 
+-SYSTEMD_USERS_DIRECTORY = $(INSTALL_ROOT)$(libdir)/sysusers.d
++SYSTEMD_USERS_DIRECTORY = $(INSTALL_ROOT)$(exec_prefix)/lib/sysusers.d
+ SYSTEMD_USERS_FILE = $(SYSTEMD_USERS_DIRECTORY)/$(PACKAGE_TARNAME).conf
+ 
+-SYSTEMD_FILES_DIRECTORY = $(INSTALL_ROOT)$(libdir)/tmpfiles.d
++SYSTEMD_FILES_DIRECTORY = $(INSTALL_ROOT)$(exec_prefix)/lib/tmpfiles.d
+ SYSTEMD_FILES_FILE = $(SYSTEMD_FILES_DIRECTORY)/$(PACKAGE_TARNAME).conf
+ 
+ install: install-units install-scripts install-users install-files
+diff -urp brltty-6.2.orig/Autostart/Udev/Makefile.in brltty-6.2/Autostart/Udev/Makefile.in
+--- brltty-6.2.orig/Autostart/Udev/Makefile.in	2020-12-11 16:51:58.000000000 -0600
++++ brltty-6.2/Autostart/Udev/Makefile.in	2020-12-29 08:17:49.589856845 -0600
+@@ -21,8 +21,7 @@ UDEV_RULES_SEQUENCE = 90
+ UDEV_RULES_TYPE = no-generic
+ 
+ UDEV_SCRIPTS_DIRECTORY = $(INSTALL_ROOT)$(DRIVERS_DIRECTORY)
+-UDEV_LIBRARY_DIRECTORY = $(INSTALL_ROOT)$(libdir)/udev
+-UDEV_RULES_DIRECTORY = $(UDEV_LIBRARY_DIRECTORY)/rules.d
++UDEV_RULES_DIRECTORY = $(INSTALL_ROOT)$(exec_prefix)/lib/udev/rules.d
+ 
+ UDEV_PATH_PREFIX = $(UDEV_RULES_DIRECTORY)/$(UDEV_RULES_SEQUENCE)-$(PACKAGE_TARNAME)-
+ UDEV_RULES_EXTENSION = rules
