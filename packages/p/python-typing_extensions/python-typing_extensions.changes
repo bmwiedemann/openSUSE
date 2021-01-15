@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 12 16:06:44 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Test in separate multibuild flavor to break depcycles with full
+  python stdlib
+
+-------------------------------------------------------------------
+Tue Jan 12 14:44:39 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- clean requirements specifications for python flavors
+
+-------------------------------------------------------------------
 Sun Dec 20 09:11:23 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - add transitional typing-extensions provides 

@@ -1,7 +1,7 @@
 #
 # spec file for package python-typing_extensions
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,15 @@
 %define modname typing_extensions
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
-Name:           python-typing_extensions
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-typing_extensions%{psuffix}
 Version:        3.7.4.3
 Release:        0
 Summary:        Backported and Experimental Type Hints for Python 35+
@@ -31,19 +39,14 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 Provides:       python-typing-extensions = %{version}
+%if 0%{?suse_version} > 1320 && %{with test}
+BuildRequires:  %{python_module testsuite}
+%endif
 %if %{with python2}
 BuildRequires:  python-typing >= 3.7.4
 %endif
-%if 0%{?suse_version} < 1500
-BuildRequires:  python3-typing >= 3.7.4
-%endif
-%if 0%{?suse_version} > 1320
-BuildRequires:  %{python_module testsuite}
-%endif
-%if %{python3_version_nodots} < 35
-Requires:       python-typing >= 3.7.4
-%endif
-%ifpython2
+BuildRequires:  (python3-typing >= 3.7.4 if python3-base < 3.5)
+%if %{python_version_nodots} < 35
 Requires:       python-typing >= 3.7.4
 %endif
 %python_subpackages
@@ -71,19 +74,27 @@ Python versions or requires experimental types.
 %build
 %python_build
 
+%if ! %{with test}
 %install
 %python_install
-%fdupes %{buildroot}%{python3_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
 # X.Y -> X
 %{python_expand current_bin_suffix=%{$python_bin_suffix}
 $python src_py${current_bin_suffix:0:1}/test_typing_extensions.py
 }
+%endif
 
+%if ! %{with test}
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/typing_extensions.py*
+%pycache_only %{python_sitelib}/__pycache__/typing_extensions*
+%{python_sitelib}/typing_extensions-%{version}*-info
+%endif
 
 %changelog
