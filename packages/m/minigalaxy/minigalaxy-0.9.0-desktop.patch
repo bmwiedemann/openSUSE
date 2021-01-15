@@ -1,6 +1,6 @@
-diff -urEbw minigalaxy-1.0.1/data/io.github.sharkwouter.Minigalaxy.desktop minigalaxy-1.0.1.new/data/io.github.sharkwouter.Minigalaxy.desktop
---- minigalaxy-1.0.1/data/io.github.sharkwouter.Minigalaxy.desktop	2021-01-07 12:53:03.000000000 +0100
-+++ minigalaxy-1.0.1.new/data/io.github.sharkwouter.Minigalaxy.desktop	2021-01-08 10:45:21.628868620 +0100
+diff -urEbw minigalaxy-1.0.2/data/io.github.sharkwouter.Minigalaxy.desktop minigalaxy-1.0.2.new/data/io.github.sharkwouter.Minigalaxy.desktop
+--- minigalaxy-1.0.2/data/io.github.sharkwouter.Minigalaxy.desktop	2021-01-14 12:02:00.000000000 +0100
++++ minigalaxy-1.0.2.new/data/io.github.sharkwouter.Minigalaxy.desktop	2021-01-15 09:47:37.085751100 +0100
 @@ -8,5 +8,5 @@
  Icon=io.github.sharkwouter.Minigalaxy
  Type=Application

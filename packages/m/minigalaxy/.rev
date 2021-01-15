@@ -124,4 +124,20 @@
     - Russian</comment>
     <requestid>861565</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a077231fb88547b1aa29e020ff162575</srcmd5>
+    <version>1.0.2</version>
+    <time>1610736402</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.2:
+  * Fix updates sometimes not working
+  * Fix some games always showing an update is available
+  * Fix DLC not downloading
+  * Fix DLC update option not showing up
+  * Fix show store page button not showing anymore
+  * Fix missing thumbnails not being downloaded for already installed games
+  * Fix the login screen crashing in some cases
+  * Use the system's icon theme for icons used</comment>
+    <requestid>863253</requestid>
+  </revision>
 </revisionlist>
