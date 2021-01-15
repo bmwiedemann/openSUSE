@@ -1,15 +1,15 @@
-diff -Naur a/CMakeLists.txt b/CMakeLists.txt
---- a/CMakeLists.txt	2020-07-23 16:43:08.000000000 -0500
-+++ b/CMakeLists.txt	2020-08-16 20:18:41.235394189 -0500
-@@ -113,7 +113,6 @@
+Index: shaderc-2020.4/CMakeLists.txt
+===================================================================
+--- shaderc-2020.4.orig/CMakeLists.txt
++++ shaderc-2020.4/CMakeLists.txt
+@@ -102,18 +102,12 @@ endif(MSVC)
  
  # Configure subdirectories.
  # We depend on these for later projects, so they should come first.
 -add_subdirectory(third_party)
  
- if(SHADERC_ENABLE_SPVC)
- add_subdirectory(libshaderc_spvc)
-@@ -124,11 +123,6 @@
+ add_subdirectory(libshaderc_util)
+ add_subdirectory(libshaderc)
  add_subdirectory(glslc)
  add_subdirectory(examples)
  
@@ -21,10 +21,11 @@ diff -Naur a/CMakeLists.txt b/CMakeLists.txt
  
  function(define_pkg_config_file NAME LIBS)
    add_custom_target(${NAME}-pkg-config ALL
-diff -Naur a/libshaderc/CMakeLists.txt b/libshaderc/CMakeLists.txt
---- a/libshaderc/CMakeLists.txt	2020-07-23 16:43:08.000000000 -0500
-+++ b/libshaderc/CMakeLists.txt	2020-08-16 20:22:18.420735391 -0500
-@@ -66,6 +66,8 @@
+Index: shaderc-2020.4/libshaderc/CMakeLists.txt
+===================================================================
+--- shaderc-2020.4.orig/libshaderc/CMakeLists.txt
++++ shaderc-2020.4/libshaderc/CMakeLists.txt
+@@ -66,6 +66,8 @@ set(SHADERC_LIBS
    shaderc_util
    SPIRV # from glslang
    SPIRV-Tools
