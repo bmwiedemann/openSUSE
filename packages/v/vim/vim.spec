@@ -1,7 +1,7 @@
 #
 # spec file for package vim
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define pkg_version 8.2
-%define patchlevel 2129
+%define patchlevel 2327
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim82
 %define site_runtimepath %{_datadir}/vim/site

@@ -1,4 +1,213 @@
 -------------------------------------------------------------------
+Mon Jan 11 16:17:34 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.2327, fixes the following problems
+  * Insert mode completion messages end up in message history.
+  * Vim9: crash when lambda uses same var as assignment.
+  * Padding not drawn properly for popup window with title.
+  * Vim9: checking for a non-empty string is too strict.
+  * Vim9: get E1099 when autocmd triggered in builtin function.
+  * Vim9: #{ still seen as start of dict in some places.
+  * Vim9: Using uninitialized variable.
+  * Vim9: :echo and :execute give error for empty argument.
+  * Vim9: "exit_cb" causes Vim to exit.
+  * Vim9: unreachable code in assignment.
+  * Build failure with tiny features.
+  * A user command with try/catch may not catch an expression error.
+  * Memory leak when heredoc is not terminated.
+  * Vim9: dead code in compiling :unlet.
+  * Vim9: some corner cases not tested.
+  * Vim9: concatenating lists does not adjust type of result.
+  * Vim9: automatic conversion of number to string for dict key.
+  * Quickfix window title not updated in all tab pages.
+  * Vim9: crash when user command doesn't match.
+  * Popupwin test for latin1 sometimes fails.
+  * Github actions CI isn't used for all available platforms.
+  * $dir not expanded when configure checks for moonjit.
+  * screenpos() does not include the WinBar offset.
+  * Popupwin test for latin1 still fails sometimes.
+  * Popupwin test for terminal buffer fails sometimes.
+  * Warning from Github actions for code analysis.
+  * Github actions run on pusing a tag.
+  * Vim9: can delete a Vim9 script variable from a function.
+  * CI on cirrus times out, coveralls doesn't always run.
+  * Vim9: when declaring a list it is not allocated yet, causing a following
+  extend() to fail.
+  * Various typos.
+  * Arguments -T and -x not tested yet.
+  * Vim9: Cannot load or store autoload variables.
+  * Crash when discarded exception is the current exception.
+  * Vim9: autoload function doesn't work in script that starts with an upper
+  case letter.
+  * Vim9: assignment to dict member does not work.
+  * Auto format doesn't work when deleting text.
+  * Vim9: assign test fails. (Elimar Riesebieter)
+  * Vim9: error for assigning to dict of dict.
+  * Vim9: test leaves file behind.
+  * Vim9: a global function defined in a :def function fails if it uses
+  the context.
+  * Valgrind warning for using uninitialized value.
+  * Vim9: number of arguments is not always checked. (Yegappan Lakshmanan)
+  * Vim9: get internal error when assigning to undefined variable.
+  * Mac version doesn't specify the CPU architecture.
+  * Github actions: clang-11 handling suboptimal.
+  * Crash with a sequence of fold commands.
+  * Pattern "^" does not match if the first character in the line is
+  combining. (Rene Kita)
+  * Python 3: non-utf8 character cannot be handled.
+  * Vim9: crash when indexing a dict with a number.
+  * Vim9: test for error after error is flaky.
+  * Valgrind warnings for using uninitialized value.
+  * Vim9: value of 'magic' is still relevant.
+  * Vim9: value of 'edcompatible' and 'gdefault' are used.
+  * Vim9: no error when using "2" for a line number.
+  * BufUnload is not triggered for the quickfix dummy buffer.
+  * Vim9: error when using 'opfunc'.
+  * Python 3 test fails sometimes. (Christian Brabandt)
+  * Vim9: crash when calling global function from :def function.
+  * Cannot repeat a command that uses the small delete register.
+  * Vim9: crash when compiled with EXITFREE.
+  * Vim9: using wrong name with lambda in nested function.
+  * Codecov on github actions fails.
+  * Vim9: can change constant in :def function.
+  * Vim9: cannot use :const or :final at the script level.
+  * Failing tests for :const.
+  * :version output has extra spaces in compile and link command.
+  * Assert arguments order reversed.
+  * ml_get error when resizing window and using text property.
+  * First write after setting 'eol' does not have NL added. (Tomáš Janoušek)
+  * Vim9: lambda without white space around -> is confusing.
+  * Write file test fails on MS-Windows.
+  * Write file test still fails on MS-Windows.
+  * Moodle gift files are not recognized.
+  * Vim9: using -> both for method and lambda is confusing.
+  * Vim9: memory leak when parsing lambda fails.
+  * :exe command line completion only works for first argument.
+  * Illegal memory access if popup menu items are changed while the menu is
+  visible. (Tomáš Janoušek)
+  * Vim9: after reloading a script variable index may be invalid.
+  * Vim9: return type of => lambda not parsed.
+  * Vim9: allocating a type to set TTFLAG_BOOL_OK.
+  * Vim9: lambda with => does not work at the script level.
+  * Checking white space around -> is not backwards compatible.
+  * ":e#" does not give a warning for missing white space.
+  * Vim9: `=expr` not recognized in global command.
+  * Vim9: range with missing colon can be hard to spot.
+  * Vim9: command modifiers not restored in catch block.
+  * Vim9: failure if passing more arguments to a lambda than expected.
+  * Vim9: method call with expression not supported.
+  * Vim9: memory leak when parsing nested parenthesis.
+  * If <Down> is mapped on the command line 'wildchar' is inserted.
+  * Vim9: cannot keep script variables when reloading.
+  * Vim9: Reloading marks a :def function as deleted.
+  * Vim9: crash if script reloaded with different variable type.
+  * Vim9: error when using :import in legacy script twice.
+  * Vim9: script test fails.
+  * Vim9: recognizing lambda is too complicated.
+  * Vim9: cannot use ":e #" because # starts a comment.
+  * build failure without the +eval feature.
+  * Vim9: insert completion runs into error.
+  * When "--remote file" is used "file" is not reloaded.
+  * Compiler error for falling through into next case.
+  * Cannot convert a byte index into a character index.
+  * Command line wildmenu test often fails with Unix GUI.
+  * Build failure with some Ruby versions.
+  * 'scroll' option can change when setting the statusline or tabline but
+  the option context is not updated.
+  * Vim9: cannot load a Vim9 script without the +eval feature.
+  * Vim9: concatenating lines with backslash is inconvenient.
+  * Clientserver test fails if full path is used.
+  * Build with Ruby and clang may fail.
+  * Vim9: line continuation with bar does not work at script level.
+  * Crash when popup mask contains zeroes.
+  * Crash when making the window width of the not-current window negative.
+  * Vim9: return value of winrestcmd() cannot be executed.
+  * Cursor keys not recognized at the hit-Enter prompt after executing an
+  external command.
+  * VMS: various smaller problems.
+  * ASAN error on exit with GUI.
+  * Termcodes test is flaky when used over ssh with X forwarding.
+  * Vim9: sublist is ambiguous.
+  * Test failures in legacy script.
+  * Vim9: crash when using lambda without return type in dict.
+  * Vim9: expr test fails.
+  * Vim9: bool option type is number.
+  * Tcl test fails.
+  * Vim9: cannot use function( after line break in :def function.
+  * Vim9: using -> for lambda is ambiguous.
+  * Not all OCaml related files are detected.
+  * Test_Executable() fails when using chroot.
+  * Window resize test fails in very wide terminal.
+  * Vim9: boolean option gets string type.
+  * Vim9: converting bool to string prefixes v:.
+  * Vim9: compilation error with try-catch in skipped block.
+  * Vim9: no error for mismatched :endfunc or :enddef.
+  * Error message for missing endfunc/enddef is last line.
+  * Vim9: it can be hard to see where white space is missing.
+  * Vim9: cannot use unlet for a dict member.
+  * Vim9: list unpack seen as declaration.
+  * Not all :hardcopy code covered by tests.
+  * Warning for size_t to int conversion. (Randall W. Morris)
+  * ml_get error when changing hidden buffer in Python.
+  * Vim9: extend() can violate the type of a variable.
+  * Build failure.
+  * badge for Travis is outdated.
+  * CTRL-C not recognized in Mintty.
+  * List of distributed files is outdated.
+  * Missing backslash.
+  * Falling back to old regexp engine can some patterns.
+  * Vim9: memory leak with catch in skipped block.
+  * Fuzzy matching doesn't give access to the scores.
+  * Vim9: compiled "wincmd" cannot be followed by bar.
+  * Length check mismatch with argument of strncmp(). (Christian Brabandt)
+  * Vim9: crash when lambda has fewer arguments than expected.
+  * Vim9: cannot set an option to a boolean value.
+  * Vim9: cannot set an option to a false.
+  * Sort test fails when locale is Canadian English. (Neil H Watson)
+  * Sort test fails when locale is French Canadian.
+  * Vim9: line break and comment not always skipped.
+  * Vim9: 'cpo' can become empty.
+  * Vim9: unlet of global variable cannot be compiled.
+  * Vim9: cannot use "null" for v:null.
+  * Vim: expr test fails.
+  * Build failure with Motif. (Tony Mechelynck)
+  * VMS: a few remaining problems.
+  * Incsearch does not detect empty pattern properly.
+  * Cannot use CTRL-N and CTRL-P in a popup menu.
+  * Vim9: cannot set 'number' to a boolean value.
+  * Vim9: comment right after "(" of function not recognized.
+  * Vim9: invalid memory access making error message flaky.
+  * Vim9: wrong order on type stack when using dict.
+  * Vim9: cannot unlet a dict or list item.
+  * Vim9: using an option value may use uninitialized memory.
+  * Vim9: backtick expansion doesn't work for :foldopen.
+  * Vim9: no test for unletting an imported variable.
+  * Vim9: "++var" and "--var" are silently accepted.
+  * Vim9: when using function reference type is not checked.
+  * A shell command in the vimrc causes terminal output.
+  * Vim9: no error when assigning lambda to funcref without return value.
+  * 0o777 not recognized as octal.
+  * Vim9: winsaveview() return type is too generic.
+  * Vim9: cannot assign to a variable that shadows a command modifier.
+  * Build failure with Ruby 3.0 and 32 bits.
+  * Vim9: using uninitialized field when parsing range. ":silent!" not
+  respected when parsing range fails.
+  * Vim9: returning zero takes two instructions.
+  * Vim9: "enddef" as dict key misintepreted as function end.
+  * Vim9: cannot list a lambda function.
+  * Vim9: command modifier before list unpack doesn't work.
+  * Vim9: string and list index work differently.
+  * "exptype_T" can be read as "expected type".
+  * Vim9: no error for comparing bool with string.
+  * Vim9: cannot nest closures.
+  * Vim9: closure nested limiting to one level.
+  * Vim9: error when inferring type from empty dict/list.
+  * Not easy to get mark en cursor posotion by character count.
+  * Vim9: crash if map() changes the item type.
+  * Build error with +eval feature but without +spell.
+  * Debugging code included.
+
+-------------------------------------------------------------------
 Sat Dec 12 09:24:23 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 8.2.2129, fixes the following problems:

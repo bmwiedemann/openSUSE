@@ -4946,4 +4946,41 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>855481</requestid>
   </revision>
+  <revision rev="278" vrev="1">
+    <srcmd5>56d8fbba697b02c55688a11d80f070b8</srcmd5>
+    <version>8.2.2327</version>
+    <time>1610736301</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.2.2327, fixes the following problems
+  * Insert mode completion messages end up in message history.
+  * Vim9: crash when lambda uses same var as assignment.
+  * Padding not drawn properly for popup window with title.
+  * Vim9: checking for a non-empty string is too strict.
+  * Vim9: get E1099 when autocmd triggered in builtin function.
+  * Vim9: #{ still seen as start of dict in some places.
+  * Vim9: Using uninitialized variable.
+  * Vim9: :echo and :execute give error for empty argument.
+  * Vim9: &quot;exit_cb&quot; causes Vim to exit.
+  * Vim9: unreachable code in assignment.
+  * Build failure with tiny features.
+  * A user command with try/catch may not catch an expression error.
+  * Memory leak when heredoc is not terminated.
+  * Vim9: dead code in compiling :unlet.
+  * Vim9: some corner cases not tested.
+  * Vim9: concatenating lists does not adjust type of result.
+  * Vim9: automatic conversion of number to string for dict key.
+  * Quickfix window title not updated in all tab pages.
+  * Vim9: crash when user command doesn't match.
+  * Popupwin test for latin1 sometimes fails.
+  * Github actions CI isn't used for all available platforms.
+  * $dir not expanded when configure checks for moonjit.
+  * screenpos() does not include the WinBar offset.
+  * Popupwin test for latin1 still fails sometimes.
+  * Popupwin test for terminal buffer fails sometimes.
+  * Warning from Github actions for code analysis.
+  * Github actions run on pusing a tag.
+  * Vim9: can delete a Vim9 script variable from a function.
+  * CI on cirrus times out, coveralls doesn't always run.</comment>
+    <requestid>862401</requestid>
+  </revision>
 </revisionlist>
