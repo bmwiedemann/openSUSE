@@ -1148,4 +1148,12 @@
     <comment>New stable release (forwarded request 854479 from iznogood)</comment>
     <requestid>854565</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>dabd26f692c16383b34a4bf4dbb50b84</srcmd5>
+    <version>3.0.3</version>
+    <time>1610736290</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 862203 from iznogood)</comment>
+    <requestid>862318</requestid>
+  </revision>
 </revisionlist>
