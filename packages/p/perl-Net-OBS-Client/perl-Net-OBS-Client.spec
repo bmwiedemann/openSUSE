@@ -17,7 +17,7 @@
 
 
 Name:           perl-Net-OBS-Client
-Version:        0.0.5
+Version:        0.0.6
 Release:        0
 %define cpan_name Net-OBS-Client
 Summary:        Simple OBS API calls
