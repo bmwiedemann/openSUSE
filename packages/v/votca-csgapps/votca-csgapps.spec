@@ -1,8 +1,8 @@
 #
 # spec file for package votca-csgapps
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2013-2020 Christoph Junghans
+# Copyright (c) 2020-2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2013-2021 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 #
 
 Name:       votca-csgapps
-Version:    1.6.3
+Version:    1.6.4
 %define     uversion %{version}
 Release:    0
 Summary:    VOTCA coarse-graining engine applications
@@ -29,7 +29,6 @@ BuildRoot:  %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  gromacs-devel
 BuildRequires:  gcc-c++
-BuildRequires:  pkg-config
 BuildRequires:  fdupes
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  votca-csg-devel = %{version}
