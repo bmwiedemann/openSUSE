@@ -978,4 +978,12 @@ https://gitlab.gnome.org/GNOME/vte/commit/7566ad673a12d26293b0a74dd3cb3e5f3d22ed
     <comment>Push GNOME 3.38</comment>
     <requestid>847273</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>b24a936843aee08a499165eca10e756b</srcmd5>
+    <version>0.62.2</version>
+    <time>1610736284</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 862040 from iznogood)</comment>
+    <requestid>862314</requestid>
+  </revision>
 </revisionlist>
