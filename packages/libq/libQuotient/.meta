@@ -1,0 +1,5 @@
+<package name="libQuotient" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network:messaging:matrix" package="libQuotient"/>
+</package>
