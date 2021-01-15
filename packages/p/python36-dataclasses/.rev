@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>67cff41c9474713f21946193739974be</srcmd5>
+    <version>0.8</version>
+    <time>1610736174</time>
+    <user>dimstar_suse</user>
+    <comment>We need this for the python36 flavor.
+
+Please stage into Staging:N
+
+See discussion on Github python-rpm-macros#66</comment>
+    <requestid>853431</requestid>
+  </revision>
+</revisionlist>
