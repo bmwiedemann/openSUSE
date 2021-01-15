@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 14 12:05:43 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 1.0.23
+  No changelog provided. From the git log:
+  * Python 3 API changes
+  * Rework Context.getxattr() To Only Allocate Needed Buffer Space
+- Remove evil ifpython3. Let the macros figure out the correct
+  provides/obsoletes tags. gh#openSUSE/python-rpm-macros#66
+- Upstream is moving to pytest, but the tests still need a running
+  samba server.
+
+-------------------------------------------------------------------
 Fri Aug  7 08:28:57 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.0.22

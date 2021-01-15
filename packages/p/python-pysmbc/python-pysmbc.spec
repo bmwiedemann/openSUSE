@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysmbc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         oldpython python
-# Tests don't work in rpmbuild sandbox
+# Tests need a running samba server
 %bcond_with     test
 Name:           python-pysmbc
-Version:        1.0.22
+Version:        1.0.23
 Release:        0
 Summary:        Python bindings for samba clients (libsmbclient)
 License:        GPL-2.0-or-later
 Group:          Development/Languages/Python
-URL:            http://cyberelk.net/tim/software/pysmbc/
+URL:            https://github.com/hamano/pysmbc
 Source:         https://files.pythonhosted.org/packages/source/p/pysmbc/pysmbc-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -35,16 +35,14 @@ BuildRequires:  libsmbclient-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 %if %{with test}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 %endif
 %ifpython2
 Obsoletes:      %{oldpython}-smbc < %{version}
 Provides:       %{oldpython}-smbc = %{version}
 %endif
-%ifpython3
-Obsoletes:      python3-smbc < %{version}
-Provides:       python3-smbc = %{version}
-%endif
+Obsoletes:      python-smbc < %{version}-%{release}
+Provides:       python-smbc = %{version}-%{release}
 %python_subpackages
 
 %description
@@ -53,6 +51,7 @@ from the samba project.
 
 %prep
 %setup -q -n pysmbc-%{version}
+sed -i '1{/^#!.*/ d}' smbc/xattr.py
 
 %build
 export CFLAGS="%{optflags}"
@@ -60,25 +59,18 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
-
-%{python_expand chmod a+x %{buildroot}%{$python_sitearch}/smbc/xattr.py
-sed -i "s|^#!%{_bindir}/python$|#!%__$python|" %{buildroot}%{$python_sitearch}/smbc/xattr.py
-$python -m compileall -d %{$python_sitearch} %{buildroot}%{$python_sitearch}/smbc/
-$python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitearch}/smbc/
-%fdupes %{buildroot}%{$python_sitearch}
-}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %if %{with test}
 %check
-pushd tests
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-$python -B -m nose .
-}
+%pytest_arch
 %endif
 
 %files %{python_files}
 %license COPYING
 %doc NEWS
-%{python_sitearch}/*
+%{python_sitearch}/smbc
+%{python_sitearch}/_smbc*
+%{python_sitearch}/pysmbc-%{version}*-info
 
 %changelog
