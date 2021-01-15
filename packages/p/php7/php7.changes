@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Jan 15 09:02:57 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- deleted patch (redundant cast, both sides are already signed int)
+  - php-odbc-cmp-int-cast.patch 
+
+-------------------------------------------------------------------
+Wed Jan 13 20:04:12 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- install php7-cli if no sapi is selected upon php7 installation
+- add conflicts with earlier version of php-cli, php-fastcgi and
+  php-fpm
+
+-------------------------------------------------------------------
+Mon Jan 11 12:39:11 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- put CLI binary in -cli subpackage so that other moduldes can depend
+  on the php base package that remains (and provides files and maps
+  common for all)
+
+-------------------------------------------------------------------
+Fri Jan  8 13:50:58 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- use pkgconfig() to resolve BuildRequires where upstream uses it too
+- since php-7.4.0 when using --with-external-gd the configure options
+  --with-xpm, --with-freetype and --with-jpeg are not needed anymore
+  (and neither are the respective BuildRequires)
+- add Recommends: php-openssl as many modules can optionally use it
+- use new %ldconfig macros in Tumbleweed
+
+-------------------------------------------------------------------
 Thu Jan  7 16:04:17 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - build the MySQL Native Driver as a shared module (rather than

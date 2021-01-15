@@ -1021,4 +1021,17 @@
 file with an '_' (PHP loads extensions in alphabetical order) (forwarded request 861536 from adkorte)</comment>
     <requestid>861544</requestid>
   </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>5f9f9b727bc7e88122ef2c1cc2245eb0</srcmd5>
+    <version>7.4.14</version>
+    <time>1610736337</time>
+    <user>dimstar_suse</user>
+    <comment>- deleted patch (redundant cast, both sides are already signed int)
+  - php-odbc-cmp-int-cast.patch 
+
+- install php7-cli if no sapi is selected upon php7 installation
+- add conflicts with earlier version of php-cli, php-fastcgi and
+  php-fpm (forwarded request 863276 from adkorte)</comment>
+    <requestid>863278</requestid>
+  </revision>
 </revisionlist>

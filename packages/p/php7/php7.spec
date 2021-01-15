@@ -96,8 +96,6 @@ Patch9:         php-sort-filelist-phar.patch
 # from their checking as I indicated in crypt-tests.patch yet, or php will
 # silently use his own implementation again
 Patch12:        php-crypt-tests.patch
-# https://bugs.php.net/bug.php?id=53007
-Patch14:        php-odbc-cmp-int-cast.patch
 # should be upstreamed, will do later
 Patch17:        php-date-regenerate-lexers.patch
 # PATCH-FEATURE-UPSTREAM https://github.com/php/php-src/pull/6564
@@ -106,71 +104,71 @@ BuildRequires:  apache-rpm-macros
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  curl
-BuildRequires:  curl-devel
-BuildRequires:  cyrus-sasl-devel
 BuildRequires:  db-devel
 BuildRequires:  freetds-devel
-BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
-BuildRequires:  gd-devel
 BuildRequires:  gmp-devel
 BuildRequires:  gpg2
-BuildRequires:  krb5-devel
 BuildRequires:  libapparmor-devel
 BuildRequires:  libbz2-devel
-BuildRequires:  libedit-devel
-BuildRequires:  libicu-devel
-BuildRequires:  libjpeg-devel
-BuildRequires:  libopenssl-devel
-BuildRequires:  libpng-devel
 BuildRequires:  libtidy-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libtool
-BuildRequires:  libxslt-devel
-BuildRequires:  libzip-devel
 BuildRequires:  lmdb-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  net-snmp-devel
 BuildRequires:  openldap2-devel
-BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  postfix
 BuildRequires:  postgresql-devel
 BuildRequires:  re2c
-BuildRequires:  sqlite3-devel
 BuildRequires:  tcpd-devel
-BuildRequires:  unixODBC-devel
 BuildRequires:  update-alternatives
 BuildRequires:  xz
 BuildRequires:  pkgconfig(enchant)
+BuildRequires:  pkgconfig(gdlib) >= 2.1.0
+BuildRequires:  pkgconfig(icu-i18n)
+BuildRequires:  pkgconfig(icu-io)
+BuildRequires:  pkgconfig(icu-uc) >= 50.1
+BuildRequires:  pkgconfig(krb5)
+BuildRequires:  pkgconfig(krb5-gssapi)
+BuildRequires:  pkgconfig(libcurl) >= 7.15.5
+BuildRequires:  pkgconfig(libedit)
+BuildRequires:  pkgconfig(libpcre2-8) >= 10.30
+BuildRequires:  pkgconfig(libsasl2)
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.6
+BuildRequires:  pkgconfig(libxslt) >= 1.1.0
+BuildRequires:  pkgconfig(libzip) >= 0.11
+BuildRequires:  pkgconfig(odbc)
 BuildRequires:  pkgconfig(oniguruma)
-BuildRequires:  pkgconfig(xpm)
-BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(openssl) >= 1.0.1
+BuildRequires:  pkgconfig(sqlite3) > 3.7.4
+BuildRequires:  pkgconfig(zlib) >= 1.2.0.4
 %if %{build_firebird}
 # firebird-devel was merged into libfbclient2-devel for firebird 3
 BuildRequires:  firebird-devel
 BuildRequires:  libfbclient2-devel
 %endif
 %if %{build_sodium}
-BuildRequires:  libsodium-devel
+BuildRequires:  pkgconfig(libsodium) >= 1.0.8
 %endif
 %if %{build_argon2}
 BuildRequires:  pkgconfig(libargon2)
 %endif
 %if "%{flavor}" == "test"
-BuildRequires:  php = %{version}
+BuildRequires:  php-cli = %{version}
 %endif
 
 %if "%{flavor}" == ""
+Requires:       php-sapi
 Requires:       timezone
-%if 0%{?suse_version} > 1315
 Requires(pre):  group(www)
 Requires(pre):  user(wwwrun)
-%endif
 Recommends:     php-ctype
 Recommends:     php-dom
 Recommends:     php-iconv
 Recommends:     php-json
+Recommends:     php-openssl
 Recommends:     php-sqlite
 Recommends:     php-tokenizer
 Recommends:     php-xmlreader
@@ -178,6 +176,7 @@ Recommends:     php-xmlwriter
 # Recommends instead of Requires smtp_daemon bsc#1115213
 Recommends:     smtp_daemon
 # suggest %%{php_name}-* instead of php-* [bsc#1022158c#4]
+Suggests:       %{php_name}-cli
 Suggests:       %{php_name}-gd
 Suggests:       %{php_name}-gettext
 Suggests:       %{php_name}-mbstring
@@ -185,11 +184,10 @@ Suggests:       %{php_name}-mysql
 ## Provides
 Provides:       php = %{version}
 Provides:       php-api = %{apiver}
-Provides:       php-cli = %{version}
-Provides:       php-zend-abi = %{zendver}
 Provides:       php(api) = %{apiver}
 Provides:       php(zend-abi) = %{zendver}
 # builtin extensions
+Provides:       php = %{version}
 Provides:       php-date = %{version}
 Provides:       php-filter = %{version}
 Provides:       php-hash = %{version}
@@ -200,8 +198,8 @@ Provides:       php-simplexml = %{version}
 Provides:       php-spl = %{version}
 Provides:       php-xml = %{version}
 Provides:       zend = %{zendver}
-# conflicts with php5 and should replace it
 Obsoletes:      php < %{version}
+# conflicts with php5 and should replace it
 Obsoletes:      php5
 Obsoletes:      php7-mcrypt
 Conflicts:      php5
@@ -212,24 +210,39 @@ PHP is a server-side HTML embedded scripting language designed
 primarily for web development but also used as a general-purpose
 programming language.
 
+This package contains the base files for all subpackages and
+must be installed in order to use PHP. Additionally, extension
+modules and server modules (e.g. for Apache) may be installed.
+
+%package cli
+Summary:        Interpreter for the PHP scripting language version 7
+Group:          Development/Libraries/PHP
+Requires:       php = %{version}
+Provides:       php-cli = %{version}
+Provides:       php-sapi = cli
+Conflicts:      php-cli < %{version}
+
+%description cli
+PHP is a server-side HTML embedded scripting language designed
+primarily for web development but also used as a general-purpose
+programming language.
+
 This package contains the standard implementation of PHP, namely Zend
 PHP. Included are the PHP command-line binary and the configuration
-file (php.ini). This package must be installed in order to use PHP.
-Additionally, extension modules and server modules (e.g. for Apache)
-may be installed.
+file (php.ini).
 
 Additional documentation is available in package php-doc.
 
 %package devel
-Summary:        PHP7 development files for C/C++ extensions
 # this is required by the installed  development headers
+Summary:        PHP7 development files for C/C++ extensions
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
 Requires:       %{php_name}-pear
 Requires:       %{php_name}-pecl
 Requires:       glibc-devel
-Requires:       libxml2-devel
-Requires:       pcre2-devel
+Requires:       php = %{version}
+Requires:       pkgconfig(libpcre2-8) >= 10.30
+Requires:       pkgconfig(libxml-2.0) >= 2.7.6
 Provides:       php-devel = %{version}
 Obsoletes:      php5-devel
 
@@ -242,11 +255,7 @@ This package contains the C headers to build PHP extensions.
 %endif
 
 %if "%{flavor}" == "test"
-Requires:       timezone
-%if 0%{?suse_version} > 1315
-Requires(pre):  group(www)
-Requires(pre):  user(wwwrun)
-%endif
+Requires:       php-cli = %{version}
 
 %description
 Run php upstream testsuite.
@@ -258,24 +267,14 @@ Group:          Development/Libraries/PHP
 BuildRequires:  apache-rex
 BuildRequires:  apache-rpm-macros-control
 BuildRequires:  apache2-devel
+BuildRequires:  php = %{version}
 Requires:       %{apache_mmn}
 Requires:       apache2-prefork
+Requires:       php = %{version}
 Requires(post): %{_sbindir}/a2enmod
 Requires(preun): %{_sbindir}/a2enmod
-%if 0%{?suse_version} > 1315
-Requires(pre):  group(www)
-Requires(pre):  user(wwwrun)
-%endif
 Provides:       mod_php_any = %{version}
-Provides:       php-date = %{version}
-Provides:       php-filter = %{version}
-Provides:       php-hash = %{version}
-Provides:       php-pcre = %{version}
-Provides:       php-reflection = %{version}
-Provides:       php-session = %{version}
-Provides:       php-simplexml = %{version}
-Provides:       php-spl = %{version}
-Provides:       php-xml = %{version}
+Provides:       php-sapi = %{flavor}
 Obsoletes:      apache2-mod_php5
 %apache_rex_deps
 
@@ -293,18 +292,12 @@ information on how to load the module into the Apache webserver.
 %if "%{flavor}" == "fastcgi"
 Summary:        FastCGI PHP7 Module
 Group:          Development/Libraries/PHP
+BuildRequires:  php = %{version}
+Requires:       php = %{version}
 Provides:       php-cgi = %{version}
-Provides:       php-date = %{version}
 Provides:       php-fastcgi = %{version}
-Provides:       php-filter = %{version}
-Provides:       php-hash = %{version}
-Provides:       php-pcre = %{version}
-Provides:       php-reflection = %{version}
-Provides:       php-session = %{version}
-Provides:       php-simplexml = %{version}
-Provides:       php-spl = %{version}
-Provides:       php-xml = %{version}
-Obsoletes:      php5-fastcgi
+Provides:       php-sapi = %{flavor}
+Conflicts:      php-fastcgi < %{version}
 
 %description
 PHP is a server-side, cross-platform HTML embedded scripting language.
@@ -319,19 +312,12 @@ Summary:        FastCGI Process Manager PHP7 Module
 Group:          Development/Libraries/PHP
 BuildRequires:  apache-rex
 BuildRequires:  apache2-utils
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libsystemd)
-Provides:       php-date = %{version}
-Provides:       php-filter = %{version}
+BuildRequires:  php = %{version}
+BuildRequires:  pkgconfig(libsystemd) >= 209
+Requires:       php = %{version}
 Provides:       php-fpm = %{version}
-Provides:       php-hash = %{version}
-Provides:       php-pcre = %{version}
-Provides:       php-reflection = %{version}
-Provides:       php-session = %{version}
-Provides:       php-simplexml = %{version}
-Provides:       php-spl = %{version}
-Provides:       php-xml = %{version}
-Obsoletes:      php5-fpm
+Provides:       php-sapi = %{flavor}
+Conflicts:      php-fpm < %{version}
 %apache_rex_deps
 %systemd_requires
 
@@ -346,6 +332,9 @@ resources available in the links section.
 %if "%{flavor}" == "embed"
 Summary:        Embedded SAPI Library
 Group:          Development/Libraries/PHP
+BuildRequires:  php = %{version}
+Requires:       php = %{version}
+Provides:       php-sapi = %{flavor}
 
 %description
 PHP is a server-side, cross-platform HTML embedded scripting language.
@@ -359,7 +348,7 @@ resources available in the links section.
 %package bcmath
 Summary:        "Binary Calculator" extension for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-bcmath = %{version}
 Obsoletes:      php5-bcmath
 
@@ -370,7 +359,7 @@ represented as strings.
 %package bz2
 Summary:        bzip2 codec support for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-bz2 = %{version}
 Obsoletes:      php5-bz2
 
@@ -380,7 +369,7 @@ PHP functions to read and write bzip2 (.bz2) compressed files.
 %package calendar
 Summary:        PHP7 Extension Module
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-calendar = %{version}
 Obsoletes:      php5-calendar
 
@@ -390,7 +379,7 @@ PHP functions for converting between different calendar formats.
 %package ctype
 Summary:        Character class extension for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-ctype = %{version}
 Obsoletes:      php5-ctype
 
@@ -401,7 +390,7 @@ certain character class according to the current locale.
 %package curl
 Summary:        libcurl integration for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-curl = %{version}
 Obsoletes:      php5-curl
 
@@ -413,7 +402,7 @@ types.
 %package dba
 Summary:        Database abstraction layer for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-dba = %{version}
 Obsoletes:      php5-dba
 
@@ -427,7 +416,7 @@ through the ODBC functions.)
 %package dom
 Summary:        Document Object Model extension for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-dom = %{version}
 Obsoletes:      php5-dom
 
@@ -437,7 +426,7 @@ This module adds Document Object Model (DOM) support.
 %package enchant
 Summary:        Spell checking extension for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-enchant = %{version}
 Obsoletes:      php5-enchant
 # Obsolete pspell plugin as enchant is favored solution (goodbye aspell)
@@ -454,7 +443,7 @@ and every definition of "just working."
 %package exif
 Summary:        EXIF metadata extensions for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Requires:       php-mbstring = %{version}
 Provides:       php-exif = %{version}
 Obsoletes:      php5-exif
@@ -467,7 +456,7 @@ images.
 %package fileinfo
 Summary:        File identification extension for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-fileinfo = %{version}
 Obsoletes:      php5-fileinfo
 
@@ -480,7 +469,7 @@ libmagic to heuristically determine this.
 %package ftp
 Summary:        FTP protocol support for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Requires:       php-openssl = %{version}
 Provides:       php-ftp = %{version}
 Obsoletes:      php5-ftp
@@ -492,7 +481,7 @@ Protocol (FTP) as defined in RFC 959.
 %package gd
 Summary:        GD Graphics Library extension for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-gd = %{version}
 Obsoletes:      php5-gd
 
@@ -504,7 +493,7 @@ more convenient: PHP can output image streams directly to a browser.
 %package gettext
 Summary:        Native language support for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-gettext = %{version}
 Obsoletes:      php5-gettext
 
@@ -515,7 +504,7 @@ can be used to internationalize your PHP applications.
 %package gmp
 Summary:        Bignum extension for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-gmp = %{version}
 Obsoletes:      php5-gmp
 
@@ -526,7 +515,7 @@ library.
 %package iconv
 Summary:        Character set conversion functions for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-iconv = %{version}
 Obsoletes:      php5-iconv
 
@@ -540,7 +529,7 @@ implementation of your system.
 %package intl
 Summary:        ICU integration for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-intl = %{version}
 Obsoletes:      php5-intl
 
@@ -553,7 +542,7 @@ currency formatting in their scripts.
 %package json
 Summary:        JSON (de)serializer functions for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-json = %{version}
 Obsoletes:      php5-json
 
@@ -564,7 +553,7 @@ data-interchange format.
 %package ldap
 Summary:        LDAP protocol support for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Requires:       php-openssl = %{version}
 Provides:       php-ldap = %{version}
 Obsoletes:      php5-ldap
@@ -575,7 +564,7 @@ PHP interface to the Lightweight Directory Access Protocol (LDAP).
 %package mbstring
 Summary:        Multibyte string functions for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-mbstring = %{version}
 Obsoletes:      php5-mbstring
 
@@ -589,7 +578,7 @@ single-byte encodings for convenience.
 %package mysql
 Summary:        MySQL database client for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Requires:       php-pdo = %{version}
 Provides:       php-mysql = %{version}
 Provides:       php-mysqli = %{version}
@@ -604,7 +593,7 @@ PHP functions for access to MySQL database servers.
 %package firebird
 Summary:        Firebird database client for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Requires:       php-pdo = %{version}
 Provides:       php-firebird = %{version}
 Provides:       php_any_db = %{version}
@@ -617,7 +606,7 @@ PHP functions for access to firebird database servers.
 %package odbc
 Summary:        ODBC extension for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Requires:       php-pdo = %{version}
 Provides:       php-odbc = %{version}
 Provides:       php-pdo_odbc = %{version}
@@ -629,7 +618,7 @@ This module adds Open Database Connectivity (ODBC) support.
 %package opcache
 Summary:        Opcode cache extension for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-opcache = %{version}
 Obsoletes:      php5-opcache
 
@@ -641,7 +630,7 @@ and parse scripts on each request.
 %package openssl
 Summary:        OpenSSL integration for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-openssl = %{version}
 Obsoletes:      php5-openssl
 
@@ -654,7 +643,7 @@ TLS streams.
 %package pcntl
 Summary:        Process Control extension for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-pcntl = %{version}
 Obsoletes:      php5-pcntl
 
@@ -666,7 +655,7 @@ creation, program execution, signal handling and process termination
 %package phar
 Summary:        PHP Archive extension for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Requires:       php-zlib = %{version}
 Provides:       php-phar = %{version}
 Obsoletes:      php5-phar
@@ -685,7 +674,7 @@ zip and phar file formats.
 %package pdo
 Summary:        PHP Data Objects extension for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-pdo = %{version}
 Obsoletes:      php5-pdo
 
@@ -704,7 +693,7 @@ it does not rewrite SQL or emulate missing features.
 %package pgsql
 Summary:        PostgreSQL database client for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Requires:       php-pdo = %{version}
 Provides:       php-pdo_pgsql = %{version}
 Provides:       php-pgsql = %{version}
@@ -718,7 +707,7 @@ both traditional pgsql and pdo_pgsql drivers.
 %package posix
 Summary:        POSIX functions for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-posix = %{version}
 Obsoletes:      php5-posix
 
@@ -730,7 +719,7 @@ through other means.
 %package readline
 Summary:        PHP7 readline extension
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-readline = %{version}
 Obsoletes:      php5-readline
 
@@ -741,7 +730,7 @@ as PHP interactive mode (php -a).
 %package shmop
 Summary:        Alternate, low-level shared memory implementation for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-shmop = %{version}
 Obsoletes:      php5-shmop
 
@@ -751,7 +740,7 @@ An extension created as an alternative to the sysvmsg module.
 %package snmp
 Summary:        SNMP extension for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-snmp = %{version}
 Obsoletes:      php5-snmp
 
@@ -767,7 +756,7 @@ variables.
 %package soap
 Summary:        SOAP/WSDL extension module for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-soap = %{version}
 Obsoletes:      php5-soap
 
@@ -780,7 +769,7 @@ supports subsets of SOAP 1.1, SOAP 1.2 and WSDL 1.1 specifications.
 %package sockets
 Summary:        Berkeley sockets API for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-sockets = %{version}
 Obsoletes:      php5-sockets
 
@@ -793,7 +782,7 @@ possibility to act as a socket server as well as a client.
 %package sodium
 Summary:        Cryptographic Extension Based on Libsodium
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-sodium = %{version}
 
 %description sodium
@@ -804,7 +793,7 @@ signatures, password hashing and more.
 %package sqlite
 Summary:        SQLite database client for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Requires:       php-pdo = %{version}
 Provides:       php-pdo_sqlite = %{version}
 Provides:       php-sqlite = %{version}
@@ -828,7 +817,7 @@ This package includes sqlite and pdo_sqlite modules for sqlite version
 %package sysvmsg
 Summary:        SysV Message Queue support for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-sysvmsg = %{version}
 Obsoletes:      php5-sysvmsg
 
@@ -838,7 +827,7 @@ This module provides System V Message Queue support.
 %package sysvsem
 Summary:        SysV Semaphore support for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-sysvsem = %{version}
 Obsoletes:      php5-sysvsem
 
@@ -848,7 +837,7 @@ PHP interface for System V semaphores.
 %package sysvshm
 Summary:        SysV Shared Memory support for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-sysvshm = %{version}
 Obsoletes:      php5-sysvshm
 
@@ -858,7 +847,7 @@ PHP interface for System V shared memory.
 %package tidy
 Summary:        PHP7 binding for the Tidy HTML cleaner
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-tidy = %{version}
 Obsoletes:      php5-tidy
 
@@ -871,7 +860,7 @@ PHP or ASP within them using OO constructs.
 %package tokenizer
 Summary:        Extension module to access Zend Engine's PHP tokenizer
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-tokenizer = %{version}
 Obsoletes:      php5-tokenizer
 
@@ -884,7 +873,7 @@ with the language specification at the lexical level.
 %package xmlrpc
 Summary:        XML RPC support for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-xmlrpc = %{version}
 Obsoletes:      php5-xmlrpc
 
@@ -894,7 +883,7 @@ This module adds XMLRPC-EPI support.
 %package xsl
 Summary:        PHP7 Extension Module
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Requires:       php-dom = %{version}
 Provides:       php-xsl = %{version}
 Obsoletes:      php5-xsl
@@ -907,7 +896,7 @@ library
 %package xmlreader
 Summary:        Streaming XML reader extension for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Requires:       php-dom = %{version}
 Provides:       php-xmlreader = %{version}
 Obsoletes:      php5-xmlreader
@@ -920,7 +909,7 @@ on the way.
 %package xmlwriter
 Summary:        Streaming-based XML writer extension for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-xmlwriter = %{version}
 Obsoletes:      php5-xmlwriter
 
@@ -932,7 +921,7 @@ files containing XML data.
 %package zip
 Summary:        ZIP archive support for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-zip = %{version}
 Obsoletes:      php5-zip
 
@@ -943,7 +932,7 @@ archives and the files inside them.
 %package zlib
 Summary:        Zlib compression support for PHP
 Group:          Development/Libraries/PHP
-Requires:       %{php_name} = %{version}
+Requires:       php = %{version}
 Provides:       php-zlib = %{version}
 Obsoletes:      php5-zlib
 
@@ -970,7 +959,6 @@ cp %{SOURCE5} .
 %patch8 -p1
 %patch9 -p1
 %patch12 -p1
-%patch14 -p1
 %patch17 -p1
 %patch19 -p1
 
@@ -1143,9 +1131,6 @@ Build cli \
     --with-curl=shared \
     --enable-gd=shared \
     --with-external-gd \
-    --with-xpm \
-    --with-freetype \
-    --with-jpeg \
     --with-gettext=shared \
     --with-gmp=shared \
     --with-iconv=shared \
@@ -1355,10 +1340,10 @@ fi
 
 %postun
 # do not try-restart yet as extensions may be updated too
-%if 0%{?sle_version} <= 150000 && !0%{?is_opensuse}
-%service_del_postun -n php-fpm.service
-%else
+%if 0%{?suse_version} > 1500
 %service_del_postun_without_restart php-fpm.service
+%else
+%service_del_postun -n php-fpm.service
 %endif
 
 %posttrans
@@ -1366,26 +1351,33 @@ fi
 %endif
 
 %if "%{flavor}" == "embed"
+%if 0%{?suse_version} > 1500
+%ldconfig_scriptlets
+%else
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
+%endif
 %endif
 
 %if "%{flavor}" == ""
 %files
 %defattr(-, root, root)
-%license LICENSE
 %doc README.md CODING_STANDARDS.md EXTENSIONS NEWS UPGRADING CONTRIBUTING.md README.REDIST.BINS UPGRADING.INTERNALS
-%{_mandir}/man1/php.1%{?ext_man}
-%dir %{php_sysconf}
-%dir %{php_sysconf}/conf.d
-%dir %{php_sysconf}/cli
-%config(noreplace) %{php_sysconf}/cli/php.ini
-%{_bindir}/php
-%{_bindir}/%{php_name}
+%license LICENSE
 %dir %{_datadir}/%{php_name}
 %dir %{_libdir}/%{php_name}
 %dir %{extension_dir}
+%dir %{php_sysconf}
+%dir %{php_sysconf}/conf.d
 %attr(0755, %{apache_user}, root) %dir %{_localstatedir}/lib/%{php_name}
+
+%files cli
+%defattr(-, root, root)
+%config(noreplace) %{php_sysconf}/cli/php.ini
+%dir %{php_sysconf}/cli
+%{_bindir}/php
+%{_bindir}/%{php_name}
+%{_mandir}/man1/php.1%{?ext_man}
 
 %files devel
 %defattr(-, root, root)
@@ -1395,7 +1387,7 @@ fi
 %{_includedir}/%{php_name}
 %{_bindir}/phpize
 %{_bindir}/php-config
-%{_datadir}/%{php_name}
+%{_datadir}/%{php_name}/build
 %{_rpmconfigdir}/macros.d/macros.php
 %endif
 
@@ -1411,7 +1403,7 @@ fi
 %{_bindir}/php-cgi
 %{_mandir}/man1/php-cgi.1%{?ext_man}
 %{apache_serverroot}/cgi-bin/php
-%dir %{php_sysconf}{,/fastcgi}
+%dir %{php_sysconf}/fastcgi
 %config(noreplace) %{php_sysconf}/fastcgi/php.ini
 %endif
 
@@ -1419,14 +1411,13 @@ fi
 %files
 %defattr(-, root, root)
 %{_sbindir}/php-fpm
-%dir %{php_sysconf}
 %dir %{php_sysconf}/fpm
 %dir %{php_sysconf}/fpm/php-fpm.d
 %config %{php_sysconf}/fpm/php-fpm.conf.default
 %config %{php_sysconf}/fpm/php-fpm.d/www.conf.default
 %{_mandir}/man8/php-fpm.8%{?ext_man}
 %{_sbindir}/rcphp-fpm
-%dir %{_datadir}/%{php_name}{,/fpm}
+%dir %{_datadir}/%{php_name}/fpm
 %{_datadir}/%{php_name}/fpm/status.html
 %{_unitdir}/php-fpm.service
 %{_tmpfilesdir}/php-fpm.conf
@@ -1437,7 +1428,7 @@ fi
 %files
 %defattr(-, root, root)
 %{apache_libexecdir}/mod_%{php_name}.so
-%dir %{php_sysconf}{,/apache2}
+%dir %{php_sysconf}/apache2
 %config(noreplace) %{php_sysconf}/apache2/php.ini
 %config(noreplace) %{apache_sysconfdir}/conf.d/mod_%{php_name}.conf
 %endif
