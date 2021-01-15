@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-gitlab
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-python-gitlab
-Version:        2.2.0
+Version:        2.5.0
 Release:        0
 Summary:        Python module for interacting with the GitLab API
 License:        LGPL-3.0-only
@@ -40,6 +40,7 @@ BuildRequires:  %{python_module httmock}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.22.0}
+BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module six}
 # /SECTION
 Requires(post):   update-alternatives
@@ -67,7 +68,13 @@ sed -i -e '/^#!\//, 1d' gitlab/v4/cli.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+touch $HOME/.python-gitlab.cfg
+# The follow tests depend on a docker instance of gitlab
+# - test_cli
+# - test_list_project_packages
+# - test_packages
+# - test_variables
+%pytest -k 'not (test_cli or test_list_project_packages or test_packages or test_variables)'
 
 %post
 %python_install_alternative gitlab

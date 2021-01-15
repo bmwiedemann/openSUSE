@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jan 14 13:16:51 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v2.5.0
+  * add support to resource milestone events
+  * add share/unshare group with group
+  * add support for instance variables
+  * add support for Packages API
+  * add endpoint for latest ref artifacts
+  * wrong reconfirmation parameter when updating user's email
+  * tests fail when using REUSE_CONTAINER option 
+  * implement Gitlab's behavior change for owned=True
+- from v2.4.0
+  * do not check if kwargs is none
+  * make query kwargs consistent between call in init and next
+  * pass kwargs to subsequent queries in gitlab list
+  * merge: parse arguments as query_data
+  * add NO_ACCESS const
+  * add masked parameter for variables command
+- from v2.3.1
+  * revert keyset pagination by default
+- from v2.3.0
+  * add group runners api
+  * add play command to project pipeline schedules
+  * allow an environment variable to specify config location
+  * api: added support in the GroupManager to upload Group avatars
+  * services: add project service list API
+  * types: add dir to RESTObject to expose attributes
+  * use keyset pagination by default for /projects > 50000
+  * config: fix duplicate code
+  * project: add missing project parameters 
+
+-------------------------------------------------------------------
 Mon May  4 18:51:52 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Don't use %python3_only command, but properly use alternatives.
