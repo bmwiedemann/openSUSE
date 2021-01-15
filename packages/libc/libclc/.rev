@@ -115,4 +115,12 @@
     <comment></comment>
     <requestid>845081</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ae3953cb77aaed8eec949024d7ef3122</srcmd5>
+    <version>0.2.0+llvm11.0.1</version>
+    <time>1610736225</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>861998</requestid>
+  </revision>
 </revisionlist>
