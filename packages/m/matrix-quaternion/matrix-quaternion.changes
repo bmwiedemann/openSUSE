@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 15 08:44:55 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.0.9.4f
+  This is a rebuild of exactly the same code as 0.0.9.4e to package
+  newer Qt (5.14) and move away from the dependency on no more
+  supported OpenSSL 1.0. Users on macOS are not affected, as the 
+  newer Qt has already been used to build 0.0.9.4e. Linux users are
+  strongly encouraged to use distributions with Qt 5.12 and newer
+  or otherwise ensure they are not sitting on the same outdated
+  OpenSSL dependency.
+
+-------------------------------------------------------------------
 Wed Apr  1 20:17:42 UTC 2020 - ecsos@opensuse.org
 
 - Update to 0.0.9.4e

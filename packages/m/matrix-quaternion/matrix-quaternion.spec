@@ -1,7 +1,7 @@
 #
 # spec file for package matrix-quaternion
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           matrix-quaternion
-Version:        0.0.9.4e
+Version:        0.0.9.4f
 Release:        0
 Summary:        QT Matrix client
 License:        GPL-3.0-only
