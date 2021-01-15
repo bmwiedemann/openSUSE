@@ -1,0 +1,17 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/python-visualization/folium.git</param>
+		<param name="subdir">tests</param>
+		<!-- Exclude the selenium dir as we don't run these tests anyway -->
+		<param name="exclude">selenium</param>
+		<param name="filename">tests</param>
+		<param name="version">_none_</param>
+		<param name="revision">v0.12.0</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="compression">xz</param>
+		<param name="file">tests.tar</param>
+	</service>
+	<service name="download_files" mode="disabled"/>
+</services>

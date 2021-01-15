@@ -19,29 +19,30 @@
 %define skip_python2 1
 %define modname folium
 Name:           python-folium
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        Make beautiful maps with Leafletjs and Python
 License:        MIT
 URL:            https://github.com/python-visualization/folium
-# PYPI TARBALLS DONT HAVE THE test DIR
-Source:         https://github.com/python-visualization/folium/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 0001-assert-bounds-within-reasonable-machine-precision.patch -- gh#python-visualization/folium#1432 Fix float bounds assertion on 32bit platform
-Patch0:         0001-assert-bounds-within-reasonable-machine-precision.patch
+# PyPI source is required for correct version determination of egg-info
+Source0:        https://files.pythonhosted.org/packages/source/f/folium/%{modname}-%{version}.tar.gz
+# PyPI tarballs dont have the test dir, so download directly from git
+Source1:        tests.tar.xz
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2 >= 2.9}
 BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module branca >= 0.3.0}
+BuildRequires:  %{python_module branca >= 0.4.2}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 # /SECTION
 Requires:       python-Jinja2 >= 2.9
-Requires:       python-branca >= 0.3.0
+Requires:       python-branca >= 0.4.2
 Requires:       python-numpy
 Requires:       python-requests
 BuildArch:      noarch
@@ -55,6 +56,7 @@ visualize it in a Leaflet map via folium.
 
 %prep
 %autosetup -p1 -n folium-%{version}
+%setup -q -D -T -a 1 -n folium-%{version}
 
 %build
 %python_build
@@ -64,7 +66,7 @@ visualize it in a Leaflet map via folium.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_json_request REQUIRES NETWORK ACCESS
+# test_json_request requires network access
 %pytest -k 'not test_json_request'
 
 %files %{python_files}

@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun Jan 10 18:50:46 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.12.0:
+  * GeoJson add zoom_on_click option, default False
+    (gh#python-visualization/folium#1349).
+  * Add Geocoder plugin (gh#python-visualization/folium#1323).
+  * Replace githack.com CDN with jsdelivr.com
+    (gh#python-visualization/folium#1337).
+  * Add SemiCircle plugin (gh#python-visualization/folium#1238).
+  * Move hardcoded JS CDN links to class variables
+    (gh#python-visualization/folium#1312,
+    gh#python-visualization/folium#1416).
+  * Treat data uris as valid
+    (gh#python-visualization/folium#1428).
+  * Add GeoJson marker option
+    (gh#python-visualization/folium#957).
+  * Bug fixes:
+    - Fix TimeSliderChoropleth breaking when using layer control
+      (gh#python-visualization/folium#1380).
+    - Fix GeoJson data loading
+      (gh#python-visualization/folium#1353).
+    - Fix heatmap weights/intensity
+      (gh#python-visualization/folium#1354,
+      gh#python-visualization/folium#1282).
+    - Fix multiple GeoJsonPopup 'name_getter' JS SyntaxError
+      (gh#python-visualization/folium#1347).
+    - Fix TimestampedWmsTileLayers layer control
+      (gh#python-visualization/folium#1319).
+  * API changes
+    - Remove deprecated Mapbox and Cloudmade tilesets
+      (gh#python-visualization/folium#1339).
+- Use source from PyPI since Github source leads to incorrect
+  version determination for egg-info dir.
+- Use _service file to download tests from Github since the PyPI
+  sources don't have this dir; exclude the selenium dir in tests
+  since we don't run the selenium test suite to avoid dependency
+  bloat (which requires a running chromium browser).
+- Additional BuildRequires: python-setuptools-scm required to
+  determine correct version during build.
+- Update required version of branca to 0.4.2.
+- Drop patch
+  0001-assert-bounds-within-reasonable-machine-precision.patch:
+  incorporated upstream.
+
+-------------------------------------------------------------------
 Mon Jan  4 00:58:34 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Add 0001-assert-bounds-within-reasonable-machine-precision.patch
