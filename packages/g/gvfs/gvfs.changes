@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan  8 13:56:03 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.46.2:
+  + ftp: Prevent source file removal in case of transfer failure.
+  + trash: Explicitly cancel file monitor to prevent deadlock.
+  + smb:
+    - Set fast content type independently of other attributes.
+    - smb: Report progress when move operation is done.
+  + google: Set the display name for the root folder also.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Oct  5 15:28:29 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 1.46.1:

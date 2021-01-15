@@ -1,7 +1,7 @@
 #
 # spec file for package gvfs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without  cdda
 Name:           gvfs
-Version:        1.46.1
+Version:        1.46.2
 Release:        0
 Summary:        Virtual File System functionality for GLib
 License:        LGPL-2.0-or-later AND GPL-3.0-only
