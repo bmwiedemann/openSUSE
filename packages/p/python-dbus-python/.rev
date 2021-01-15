@@ -63,4 +63,15 @@
     <comment></comment>
     <requestid>854987</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>037a5c4dc9b39a63381baa0845a8a6d8</srcmd5>
+    <version>1.2.16</version>
+    <time>1610736222</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.16:
+  * All tests are run even if the tap.py module is not available, although
+    diagnostics for failing tests will be better if it is present.
+  * Forbid unexpanded AX-prefixed macros more selectively</comment>
+    <requestid>861986</requestid>
+  </revision>
 </revisionlist>

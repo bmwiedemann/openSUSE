@@ -1,7 +1,7 @@
 #
 # spec file for package python-dbus-python
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,17 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# expand separate from Provides/Obsoletes tags, because these are later duplicated by the python_subpackages macro
+%define python_add_provides %{python_provides}
 Name:           python-dbus-python
-Version:        1.2.14
+Version:        1.2.16
 Release:        0
 Summary:        Python bindings for D-Bus
 License:        MIT
 Group:          Development/Libraries/Python
-URL:            http://www.freedesktop.org/wiki/Software/DBusBindings/
-Source:         http://dbus.freedesktop.org/releases/dbus-python/dbus-python-%{version}.tar.gz
-Source2:        http://dbus.freedesktop.org/releases/dbus-python/dbus-python-%{version}.tar.gz.asc
+URL:            https://www.freedesktop.org/wiki/Software/DBusBindings/
+Source:         https://dbus.freedesktop.org/releases/dbus-python/dbus-python-%{version}.tar.gz
+Source2:        https://dbus.freedesktop.org/releases/dbus-python/dbus-python-%{version}.tar.gz.asc
 Source99:       python-dbus-python-rpmlintrc
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module docutils}
@@ -41,8 +43,6 @@ Requires:       python-xml
 %requires_ge    dbus-1
 Provides:       dbus-1-%{python_flavor} = %{version}
 Obsoletes:      dbus-1-%{python_flavor} < %{version}
-# expand separate from Provides/Obsoletes tags, because these are later duplicated by the python_subpackages macro
-%define python_add_provides %{python_provides}
 %if "%{?python_provides}" != ""
 # additional provider for python2 --> python and python38 --> python3
 Provides:       dbus-1-%{python_add_provides} = %{version}
@@ -64,9 +64,9 @@ Summary:        Python bindings for D-Bus -- development files
 Group:          Development/Libraries/Python
 Requires:       %{name} = %{version}
 Requires:       %{name}-common-devel = %{version}
+Requires:       python-devel
 %requires_ge    dbus-1
 %requires_ge    dbus-1-devel
-Requires:       python-devel
 Provides:       dbus-1-%{python_flavor}-devel = %{version}
 Obsoletes:      dbus-1-%{python_flavor}-devel < %{version}
 %if "%{?python_provides}" != ""
@@ -106,7 +106,7 @@ the Python2 and Python3 versions of the bindings.
 # Remove Makefile* (fix rpmlint warning "makefile-junk")
 rm -f examples/Makefile*
 # Remove shebang from examples
-sed -i '1 {\|^#!/usr/bin/env| d}' examples/*.py
+sed -i '1 {\|^#!%{_bindir}/env| d}' examples/*.py
 
 %build
 export CFLAGS="%{optflags} -fstack-protector -fno-strict-aliasing -fPIC"
@@ -116,7 +116,7 @@ export CFLAGS="%{optflags} -fstack-protector -fno-strict-aliasing -fPIC"
 pushd build_%{$python_bin_suffix}
 
 %configure PYTHON=%{_bindir}/$python
-make %{?_smp_mflags}
+%make_build
 
 popd
 

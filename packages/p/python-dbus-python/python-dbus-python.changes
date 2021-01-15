@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan  9 16:16:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.16:
+  * All tests are run even if the tap.py module is not available, although
+    diagnostics for failing tests will be better if it is present.
+  * Forbid unexpanded AX-prefixed macros more selectively
+
+-------------------------------------------------------------------
 Fri Dec 11 17:44:15 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Support builds with more than one python3 flavor
