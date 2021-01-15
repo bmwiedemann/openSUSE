@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 13 13:18:36 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- (Build)Requires php7-cli to make sure the php7 CLI is installed
+
+-------------------------------------------------------------------
+Tue Jan 12 14:34:27 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- (Build)Requires php-cli to make sure the CLI is installed
+
+-------------------------------------------------------------------
 Tue May 19 18:40:31 UTC 2020 - pgajdos@suse.com
 
 - provides and obsoletes php7-pear-Archive_Tar, former location

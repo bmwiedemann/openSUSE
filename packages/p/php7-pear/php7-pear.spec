@@ -1,7 +1,7 @@
 #
 # spec file for package php7-pear
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,8 +32,8 @@ Source0:        https://github.com/pear/pearweb_phars/raw/v%{version}/install-pe
 Source1:        https://github.com/pear/pearweb_phars/raw/v%{version}/install-pear-nozlib.sig#/install-pear-nozlib.phar.sig
 Source2:        %{name}.keyring
 Source3:        %{name}.rpmlintrc
-BuildRequires:  php7
-Requires:       php7
+BuildRequires:  php7-cli
+Requires:       php7-cli
 Recommends:     php7-openssl
 Provides:       php-pear = %{version}
 Provides:       php-pear(Archive_Tar) = %pear_module_version Archive_Tar

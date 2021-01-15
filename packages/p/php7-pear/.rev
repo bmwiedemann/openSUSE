@@ -54,4 +54,12 @@
     <comment></comment>
     <requestid>807459</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>d6daa798ff213c979d07455d657a2a6a</srcmd5>
+    <version>1.10.19</version>
+    <time>1610736305</time>
+    <user>dimstar_suse</user>
+    <comment>- (Build)Requires php7-cli to make sure the php7 CLI is installed</comment>
+    <requestid>862906</requestid>
+  </revision>
 </revisionlist>
