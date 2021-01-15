@@ -463,4 +463,14 @@
   + add-guile-3.0-support.patch: Allows building with Guile 3.0.</comment>
     <requestid>824089</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>ac7ff7e1eeef27854ba90a8b4b3f0eca</srcmd5>
+    <version>3.22.14</version>
+    <time>1610736390</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.22.14:
+  + Updated translations
+- Run spec-cleaner (forwarded request 862012 from elimat)</comment>
+    <requestid>863161</requestid>
+  </revision>
 </revisionlist>
