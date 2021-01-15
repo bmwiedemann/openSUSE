@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jan 09 21:41:54 UTC 2021 - bjorn.lie@gmail.com
+
+- Update to version 0.62.2:
+  + widget:
+    - Limit select-all to the writable region not including the
+      scrollback
+    - Fix idle child-exited signal after dispose
+  + app:
+    - Fix search next/prev button sensitivity
+    - Fix background image drawing
+  + lib:
+    - desc is not a smart pointer in 0.62
+    - Fix unused variable warning when not using getrlimit
+    - Use sysconf on macos to get the upper limit of number of FDs
+    - Sanitise the passed-in font description
+    - Add missing nullable annotation to spawn child setup
+      functions
+
+-------------------------------------------------------------------
 Tue Oct 06 07:16:32 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 0.62.1:
