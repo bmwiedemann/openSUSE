@@ -1,8 +1,8 @@
-Index: libcec-libcec-4.0.4/src/libcec/cmake/CheckPlatformSupport.cmake
+Index: libcec-libcec-6.0.2/src/libcec/cmake/CheckPlatformSupport.cmake
 ===================================================================
---- libcec-libcec-4.0.4.orig/src/libcec/cmake/CheckPlatformSupport.cmake
-+++ libcec-libcec-4.0.4/src/libcec/cmake/CheckPlatformSupport.cmake
-@@ -231,9 +231,9 @@ else()
+--- libcec-libcec-6.0.2.orig/src/libcec/cmake/CheckPlatformSupport.cmake
++++ libcec-libcec-6.0.2/src/libcec/cmake/CheckPlatformSupport.cmake
+@@ -287,9 +287,9 @@ else()
                  DESTINATION lib/python${PYTHON_VERSION}/${PYTHON_PKG_DIR}/cec)
        else()
          install(TARGETS     ${SWIG_MODULE_cec_REAL_NAME}

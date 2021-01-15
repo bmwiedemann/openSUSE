@@ -122,4 +122,14 @@ Now with proper naming, thanks to Jan Engelhardt.</comment>
     + TDA995x: Fix logical address readback. #303</comment>
     <requestid>673339</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>be39d7ac680f9ad4b16ea75c22a7c5aa</srcmd5>
+    <version>6.0.2</version>
+    <time>1610736357</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.0.2:
+  * See provided changelog.in for detailed list of changes
+- Drop no longer applying libcec-build-compare.patch</comment>
+    <requestid>863036</requestid>
+  </revision>
 </revisionlist>

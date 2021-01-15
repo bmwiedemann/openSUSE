@@ -1,7 +1,7 @@
 #
 # spec file for package libcec
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Guillaume GARDET <guillaume@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,11 +17,11 @@
 #
 
 
-%define sover   4
+%define sover   6
 %define libname	%{name}%{sover}
 %bcond_with enable_rpi_build
 Name:           libcec
-Version:        4.0.4
+Version:        6.0.2
 Release:        0
 Summary:        Library to control devices with TV remote control via HDMI
 License:        GPL-2.0-or-later
@@ -29,7 +29,6 @@ Group:          Hardware/TV
 URL:            https://github.com/Pulse-Eight/libcec
 Source:         https://github.com/Pulse-Eight/libcec/archive/libcec-%{version}.tar.gz
 Patch1:         libcec-cmake_install_lib_dir.patch
-Patch123:       libcec-build-compare.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
@@ -113,14 +112,12 @@ ways of sending a message for each vendor.
 This subpackage contains the headers for libcec.
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
-%patch1 -p1
-%patch123 -p1
+%autosetup -n %{name}-%{name}-%{version} -p1
 
 %build
 %cmake \
   -Wno-dev
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
@@ -140,6 +137,8 @@ This subpackage contains the headers for libcec.
 %{python3_sitearch}/*
 
 %files -n %{libname}
+%license COPYING
+%doc debian/changelog.in
 %{_libdir}/libcec.so.%{sover}*
 
 %files devel
