@@ -131,4 +131,20 @@
 - Change to noarch (forwarded request 710292 from hillwood)</comment>
     <requestid>710296</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>390bc52215cf78832c33b737cc119939</srcmd5>
+    <version>1.3.11</version>
+    <time>1610736366</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.3.11
+  * Add Vietnamese input methods Telex and VNI
+    (Nguyễn Gia Phong vn.mcsinyx@gmail.com)
+  * Extend russian translit for latin slavic layouts
+    (Marek Nečada marek@necada.org)
+- Udate version to 1.3.10
+  * latex: add most of Unicode 9.0 block Mathematical Alphanumeric Symbols
+  * mathwriter-ibus: add superscript alphabets
+  * mathwriter-ibus: added Blackboard bold letters (forwarded request 862996 from wsxy162)</comment>
+    <requestid>863097</requestid>
+  </revision>
 </revisionlist>

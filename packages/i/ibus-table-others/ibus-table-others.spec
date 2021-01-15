@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-table-others
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020-2021 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ibus-table-others
-Version:        1.3.9
+Version:        1.3.11
 Release:        0
 Summary:        Other non-Chinese tables for ibus
 License:        GPL-3.0-or-later
@@ -33,11 +33,12 @@ BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-This package contains all other non-Chinese tables for ibus
-e.g. CNS11643, Compose, Emoji, Ipx-x-sampa, Latex, Rustrad,
-Thai, Translit-ua, Translit, Viqr, Yawerty.
-This package contains only COPYING and Documents,
-Please select the table you want to use.
+This package provides the following ibus-table based input methods 
+on IBus framework: CNS11643, Compose, Emoji, Hu old hungarian rovas, 
+Ipx-x-sampa, Latex, Mathwriter, Rusle, Rustrad, Thai, Translit-ua,
+Translit, Viqr (Telex, VNI), Yawerty.
+This package contains only COPYING and Documents, please select
+the table you want to use.
 
 %package -n ibus-table-latex
 
@@ -51,12 +52,12 @@ IBus framework.
 
 %package -n ibus-table-cns11643
 
-Summary:        Cns11643 input method for IBus framework  
+Summary:        CNS11643 input method for IBus framework  
 Group:          System/Localization
 Requires:       ibus-table
 
 %description -n ibus-table-cns11643
-ibus-table-cns11643 provides Cns11643 input method on IBus Table under
+ibus-table-cns11643 provides CNS11643 input method on IBus Table under
 IBus framework.
 
 %package -n ibus-table-emoji
@@ -152,7 +153,30 @@ Requires:       ibus-table
 ibus-table-viqr provides the Viqr (Vietnamese) table for ibus-table.
 Tiếng Việt / Vietnamese
 
+%package -n ibus-table-telex
+
+Summary:        The Telex (Vietnamese) table for ibus-table  
+Group:          System/Localization
+Provides:       locale(ibus:vi)
+Requires:       ibus-table
+
+%description -n ibus-table-telex
+ibus-table-telex provides the Telex (Vietnamese) table for ibus-table.
+Tiếng Việt / Vietnamese
+
+%package -n ibus-table-vni
+
+Summary:        The VNI (Vietnamese) table for ibus-table  
+Group:          System/Localization
+Provides:       locale(ibus:vi)
+Requires:       ibus-table
+
+%description -n ibus-table-vni
+ibus-table-vni provides the VNI (Vietnamese) table for ibus-table.
+Tiếng Việt / Vietnamese
+
 %package -n ibus-table-mathwriter
+
 Summary:        Mathematics symbols table for ibus-table  
 Group:          System/Localization
 Requires:       ibus-table
@@ -161,6 +185,7 @@ Requires:       ibus-table
 The package contains table for writing Unicode mathematics symbols.
 
 %package -n ibus-table-rusle
+
 Summary:        Rusle table for ibus-table  
 Group:          System/Localization
 Requires:       ibus-table
@@ -169,6 +194,7 @@ Requires:       ibus-table
 ibus-table-rusle provides the Rusle table for ibus-table.
 
 %package -n ibus-table-hu-old-hungarian-rovas
+
 Summary:        Hu old hungarian rovas table for ibus-table  
 Group:          System/Localization
 Requires:       ibus-table
@@ -193,11 +219,14 @@ cd ${RPM_BUILD_ROOT}/%{_datadir}/ibus-table/tables/
 %{_bindir}/ibus-table-createdb -i -n emoji-table.db
 %{_bindir}/ibus-table-createdb -i -n ipa-x-sampa.db
 %{_bindir}/ibus-table-createdb -i -n latex.db
+%{_bindir}/ibus-table-createdb -i -n rusle.db
 %{_bindir}/ibus-table-createdb -i -n rustrad.db
 %{_bindir}/ibus-table-createdb -i -n thai.db
 %{_bindir}/ibus-table-createdb -i -n translit.db
 %{_bindir}/ibus-table-createdb -i -n translit-ua.db
 %{_bindir}/ibus-table-createdb -i -n viqr.db
+%{_bindir}/ibus-table-createdb -i -n telex.db
+%{_bindir}/ibus-table-createdb -i -n vni.db
 %{_bindir}/ibus-table-createdb -i -n yawerty.db
 %{_bindir}/ibus-table-createdb -i -n mathwriter-ibus.db
 %{_bindir}/ibus-table-createdb -i -n hu-old-hungarian-rovas.db
@@ -261,6 +290,16 @@ cd ${RPM_BUILD_ROOT}/%{_datadir}/ibus-table/tables/
 %defattr(-,root,root)
 %{_datadir}/ibus-table/icons/viqr.png
 %{_datadir}/ibus-table/tables/viqr.db
+
+%files -n ibus-table-telex
+%defattr(-,root,root)
+%{_datadir}/ibus-table/icons/telex.png
+%{_datadir}/ibus-table/tables/telex.db
+
+%files -n ibus-table-vni
+%defattr(-,root,root)
+%{_datadir}/ibus-table/icons/vni.png
+%{_datadir}/ibus-table/tables/vni.db
 
 %files -n ibus-table-mathwriter
 %defattr(-,root,root)
