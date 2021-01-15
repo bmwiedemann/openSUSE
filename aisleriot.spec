@@ -1,7 +1,7 @@
 #
 # spec file for package aisleriot
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           aisleriot
-Version:        3.22.11
+Version:        3.22.14
 Release:        0
 Summary:        Solitaire Card Games for GNOME
 License:        GPL-3.0-or-later
@@ -25,7 +25,6 @@ URL:            https://wiki.gnome.org/Apps/Aisleriot
 Source0:        https://gitlab.gnome.org/GNOME/aisleriot/-/archive/%{version}/aisleriot-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  guile-devel
 # Needed to get lsb data
 BuildRequires:  lsb-release
 BuildRequires:  meson >= 0.49
@@ -35,6 +34,7 @@ BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.18.0
+BuildRequires:  pkgconfig(guile-3.0)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libxml-2.0)
