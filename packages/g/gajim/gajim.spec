@@ -30,13 +30,13 @@ BuildRequires:  gobject-introspection-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  p11-kit-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python3 >= 3.5.0
+BuildRequires:  python3 >= 3.7.0
 BuildRequires:  python3-nbxmpp >= 0.6.10
 BuildRequires:  python3-precis-i18n >= 1.0.0
 BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 Requires:       ca-certificates-mozilla
-Requires:       python3 >= 3.5.0
+Requires:       python3 >= 3.7.0
 Requires:       python3-css-parser
 Requires:       python3-docutils
 Requires:       python3-gobject-Gdk
