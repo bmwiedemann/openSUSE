@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan 12 23:50:49 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Update to 1.6.4
+  - fix build on openSUSE ([gh#votca/xtp#622])
+  - Refactored logger ([gh#votca/xtp#625])
+
+-------------------------------------------------------------------
+Wed Dec  9 20:28:07 UTC 2020 - Christoph Junghans <junghans@votca.org>
+
+- Update to 1.6.3
+  - switch to ghcr.io for CI ([gh#votca/xtp#555])
+  - fixing Gaussian guess read keyword ([gh#votca/xtp#562],
+    [gh#votca/xtp#563])
+  - improved kmc output ([gh#votca/xtp#575])
+  - use master .clang-format in format action ([gh#votca/xtp#582],
+    [gh#votca/xtp#584])
+  - strip windows line endings in readers ([gh#votca/xtp#596])
+
+-------------------------------------------------------------------
 Sat Aug 22 18:59:23 UTC 2020 - Christoph Junghans <junghans@votca.org>
 
 - Update to 1.6.2

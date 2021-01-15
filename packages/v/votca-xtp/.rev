@@ -118,4 +118,12 @@
     <comment></comment>
     <requestid>828955</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4fb0701fa481d6c0574c080fb7135789</srcmd5>
+    <version>1.6.4</version>
+    <time>1610736382</time>
+    <user>dimstar_suse</user>
+    <comment>Version bump to v1.6.4</comment>
+    <requestid>863158</requestid>
+  </revision>
 </revisionlist>

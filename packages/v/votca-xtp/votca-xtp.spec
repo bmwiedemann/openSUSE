@@ -1,8 +1,8 @@
 #
 # spec file for package votca-xtp
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2018-2020 Christoph Junghans
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2018-2021 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           votca-xtp
-Version:        1.6.2
+Version:        1.6.4
 Release:        0
 %define         uversion %{version}
 %define         sover 6
@@ -27,8 +27,6 @@ License:        Apache-2.0
 Group:          Productivity/Scientific/Chemistry
 URL:            http://www.votca.org
 Source0:        https://github.com/votca/xtp/archive/v%{uversion}.tar.gz#/%{name}-%{uversion}.tar.gz
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  cmake >= 2.8.4
 BuildRequires:  fdupes
