@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-gpmc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           yast2-gpmc
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Group Policy Management Console for YaST
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Samba
-Url:            https://github.com/yast/yast2-gpmc
+URL:            https://github.com/yast/yast2-gpmc
 
 Source:         %{name}-%{version}.tar.bz2
 
@@ -36,6 +36,7 @@ BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)
 
 Requires:       krb5-client
 Requires:       python3-ldap
+Requires:       samba-ad-dc
 Requires:       samba-client
 Requires:       samba-python3 >= 4.10.0
 Requires:       yast2
@@ -66,5 +67,6 @@ modifying Group Policy Objects in Active Directory.
 %{yast_desktopdir}
 %{yast_metainfodir}
 %license COPYING
+%doc %{yast_docdir}
 
 %changelog

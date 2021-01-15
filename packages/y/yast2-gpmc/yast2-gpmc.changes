@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 13 16:46:07 UTC 2021 - dmulder@suse.com
+
+- Fix unable to parse samba admx templates; (bsc#1180896);
+- Removing ad-dc dependency breaks gpmc; (jsc#ECO-2527);
+- 1.5.1
+
+-------------------------------------------------------------------
 Fri Sep 27 21:18:31 UTC 2019 - dmulder@suse.com
 
 - Create a stub smb.conf for s3_lp if no smb.conf exists.
