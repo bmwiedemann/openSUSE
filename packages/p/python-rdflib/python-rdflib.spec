@@ -1,7 +1,7 @@
 #
 # spec file for package python-rdflib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,12 +36,9 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-2to3
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-sphinxcontrib-apidoc
-Requires:       python-SPARQLWrapper
-Requires:       python-flake8
 Requires:       python-html5lib
 Requires:       python-isodate
 Requires:       python-pyparsing
-Requires:       python-xml
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch

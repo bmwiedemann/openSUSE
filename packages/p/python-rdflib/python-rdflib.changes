@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 11 13:05:57 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- removed unneeded 'Requires' dependencies
+
+-------------------------------------------------------------------
 Tue May 19 09:27:40 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
