@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Wed Jan 13 16:02:43 UTC 2021 - mrueckert@suse.de
+
+- Update to version 2.3.4+git0.10189c965:
+  * [RELEASE] Released version 2.3.4
+  * MINOR: contrib/prometheus-exporter: use fill_info for process dump
+  * MINOR: contrib/prometheus-exporter: avoid connection close header
+  * BUG/MINOR: init: enforce strict-limits when using master-worker
+  * BUG/MINOR: check: Don't perform any check on servers defined in a frontend
+  * BUG/MINOR: sample: Memory leak of sample_expr structure in case of error
+  * Revert "BUG/MINOR: dns: SRV records ignores duplicated AR records"
+  * MINOR: reg-tests: add base prometheus test
+  * BUG/MINOR: reg-tests: fix service dependency script
+  * BUG/MINOR: sample: check alloc_trash_chunk return value in concat()
+  * MINOR: reg-tests: add a way to add service dependency
+
+-------------------------------------------------------------------
+Fri Jan 08 21:10:38 UTC 2021 - mrueckert@suse.de
+
+- Update to version 2.3.3+git0.9233c2143:
+  * [RELEASE] Released version 2.3.3
+  * BUG/MINOR: sample: fix concat() converter's corruption with non-string variables
+  * DOC: Add maintainers for the Prometheus exporter
+  * SCRIPTS: announce-release: fix typo in help message
+  * DOC: fix some spelling issues over multiple files
+  * MINOR: contrib/prometheus-exporter: export build_info
+  * CLEANUP: cfgparse: replace "realloc" with "my_realloc2" to fix to memory leak on error
+  * BUILD: Makefile: exclude broken tests by default
+  * MINOR: converter: adding support for url_enc
+  * BUG/MINOR: srv: do not cleanup idle conns if pool max is null
+  * BUG/MINOR: srv: do not init address if backend is disabled
+  * SCRIPTS: make announce release support preparing announces before tag exists
+  * SCRIPTS: improve announce-release to support different tag and versions
+  * BUG/MINOR: stats: Make stat_l variable used to dump a stat line thread local
+  * DOC: Improve the message printed when running `make` w/o `TARGET`
+  * BUG/MINOR: tcpcheck: Report a L7OK if the last evaluated rule is a send rule
+  * BUG/MINOR: cfgparse: Fail if the strdup() for `rule->be.name` for `use_backend` fails
+  * BUG/MINOR: sink: Return an allocation failure in __sink_new if strdup() fails
+  * MINOR: atomic: don't use ; to separate instruction on aarch64.
+  * BUILD: hpack: hpack-tbl-t.h uses VAR_ARRAY but does not include compiler.h
+  * BUG/MEDIUM: mux_h2: Add missing braces in h2_snd_buf()around trace+wakeup
+  * DOC: fix "smp_size" vs "sample_size" in "log" directive arguments
+  * BUG/MINOR: dns: SRV records ignores duplicated AR records
+  * BUILD: ssl: fine guard for SSL_CTX_get0_privatekey call
+  * BUILD: plock: remove dead code that causes a warning in gcc 11
+  * CONTRIB: debug: address "poll" utility build on non-linux platforms
+  * CONTRIB: halog: fix signed/unsigned build warnings on counts and timestamps
+  * CONTRIB: halog: mark the has_zero* functions unused
+  * CONTRIB: halog: fix build issue caused by %L printf format
+  * BUG/MEDIUM: mux-h1: Handle h1_process() failures on a pipelined request
+  * BUG/MEDIUM: http-ana: Never for sending data in TUNNEL mode
+  * BUG/MINOR: mux-h1: Don't set CS_FL_EOI too early for protocol upgrade requests
+  * BUILD: Makefile: have "make clean" destroy .o/.a/.s in contrib subdirs as well
+  * BUILD: SSL: fine guard for SSL_CTX_add_server_custom_ext call
+  * REGTESTS: make use of HAPROXY_ARGS and pass -dM by default
+  * BUG/MEDIUM: ssl/crt-list: bad behavior with "commit ssl cert"
+  * BUG/MEDIUM: lb-leastconn: Reposition a server using the right eweight
+  * BUG/MINOR: tools: Reject size format not starting by a digit
+  * BUG/MINOR: tools: make parse_time_err() more strict on the timer validity
+  * MINOR: tcpcheck: Only wait for more payload data on HTTP expect rules
+  * BUG/MINOR: tcpcheck: Don't rearm the check timeout on each read
+  * BUG/MINOR: http-check: Use right condition to consider HTX message as full
+  * DOC: email change of the DeviceAtlas maintainer
+  * BUG/MEDIUM: spoa/python: Fixing references to None
+  * BUG/MEDIUM: spoa/python: Fixing PyObject_Call positional arguments
+  * BUG/MINOR: spoa/python: Cleanup ipaddress objects if initialization fails
+  * BUG/MINOR: spoa/python: Cleanup references for failed Module Addobject operations
+  * DOC: spoa/python: Fixing typos in comments
+  * DOC: spoa/python: Rephrasing memory related error messages
+  * DOC: spoa/python: Fixing typo in IP related error messages
+  * BUG/MAJOR: spoa/python: Fixing return None
+  * MEDIUM: ssl: fatal error with bundle + openssl < 1.1.1
+  * MINOR: listener: now use a generic add_listener() function
+  * MINOR: listener: automatically set the port when creating listeners
+  * MINOR: protocol: add a ->set_port() helper to address families
+  * BUG/MINOR: mux-h1: Handle keep-alive timeout for idle frontend connections
+  * BUG/MINOR: listener: use sockaddr_in6 for IPv6
+  * DOC/MINOR: Fix formatting in Management Guide
+  * BUILD/MINOR: haproxy DragonFlyBSD affinity build update.
+  * BUG/MAJOR: ring: tcp forward on ring can break the reader counter.
+  * BUG/MINOR: lua: warn when registering action, conv, sf, cli or applet multiple times
+  * MINOR: cli: add a function to look up a CLI service description
+  * MINOR: actions: add a function returning a service pointer from its name
+  * MINOR: actions: Export actions lookup functions
+  * BUG/MINOR: lua: Some lua init operation are processed unsafe
+  * BUG/MINOR: lua: Post init register function are not executed beyond the first one
+  * BUG/MINOR: lua: lua-load doesn't check its parameters
+  * BUG/MINOR: lua: missing "\n" in error message
+  * BUG/MINOR: mux-h2/stats: not all GOAWAY frames are errors
+  * BUG/MINOR: mux-h2/stats: make stream/connection proto errors more accurate
+  * BUG/MEDIUM: local log format regression.
+  * BUG/MEDIUM: task: close a possible data race condition on a tasklet's list link
+  * MINOR: task: remove __tasklet_remove_from_tasklet_list()
+  * BUG/MEDIUM: lists: Lock the element while we check if it is in a list.
+  * MINOR: plock: use an ARMv8 instruction barrier for the pause instruction
+
+-------------------------------------------------------------------
 Mon Nov 30 16:59:46 UTC 2020 - mrueckert@suse.de
 
 - Update to version 2.3.2+git0.d522db763:
