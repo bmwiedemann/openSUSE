@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan  9 21:29:18 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.38.2:
+  + search:
+    - Use timestamp when presenting the search dialogue
+    - Make sure to focus the search dialogue
+  + desktop: Set StartupWMClass
+  + nautilus: Pass environment when creating a terminal in the
+    current directory
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Oct  5 15:39:58 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.38.1:
