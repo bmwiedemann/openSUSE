@@ -1,7 +1,7 @@
 #
 # spec file for package python-tqdm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,15 +28,16 @@
 %bcond_with test
 %endif
 Name:           python-tqdm%{pkg_suffix}
-Version:        4.50.2
+Version:        4.56.0
 Release:        0
 Summary:        An extensible progress meter
 License:        MPL-2.0 AND MIT
 URL:            https://github.com/tqdm/tqdm
 Source:         https://files.pythonhosted.org/packages/source/t/tqdm/tqdm-%{version}.tar.gz
-# https://github.com/tqdm/tqdm/pull/1052
-Patch0:         python-tqdm-remove-nose.patch
+Patch0:         pandas.patch
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
@@ -46,6 +47,8 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tqdm}
 BuildRequires:  python3-ipython
@@ -104,10 +107,7 @@ install -m 644 -D tqdm/completion.sh %{buildroot}%{_datadir}/bash-completion/com
 %check
 # test_perf: flaky
 # test_synchronisation: hangs
-# test_main: todo upstream, TypeError: a bytes-like object is required, not 'str'
-#            also disabled in https://github.com/tqdm/tqdm/pull/1052
-#            and left upstream to solve
-%pytest -k "not (tests_perf or tests_synchronisation or test_main)" tqdm/
+%pytest -k "not (tests_perf or tests_synchronisation)"
 %endif
 
 %if !%{with test}

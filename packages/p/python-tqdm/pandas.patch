@@ -1,0 +1,13 @@
+Index: tqdm-4.56.0/tqdm/std.py
+===================================================================
+--- tqdm-4.56.0.orig/tqdm/std.py
++++ tqdm-4.56.0/tqdm/std.py
+@@ -702,6 +702,8 @@ class tqdm(Comparable):
+             from pandas import Panel
+         except ImportError:  # TODO: pandas>0.25.2
+             Panel = None
++        except FutureWarning:
++            Panel = None
+         Rolling, Expanding = None, None
+         try:  # pandas>=1.0.0
+             from pandas.core.window.rolling import _Rolling_and_Expanding

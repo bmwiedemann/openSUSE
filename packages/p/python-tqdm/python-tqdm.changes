@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Jan 13 10:15:20 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.56.0
+  * some tqdm.gui improvements
+- Fix testsuite with pandas.patch
+
+-------------------------------------------------------------------
+Sun Jan 10 20:21:47 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 4.55.2.
+  * update tests
+    * make pre-commit pytest quicker
+    * switch pre-commit from make to python
+  * update contributing guidelines 
+    * fix formatting
+    * test dependencies
+  * update .gitignore
+  * fix (auto & manual) formatting
+  * fix minor detected bugs
+- Updates for 4.55.1.
+  * fix (Rolling|Expanding).progress_apply() on pandas==1.2.0
+  * minor documentation updates
+- Updates for 4.55.0.   
+  * fix ASCII notebook export
+  * fix notebook gui-mode extra spaces 
+  * better ETA for early iterations 
+  * better ETA for wildly varying iteration rates
+  * update submodule inheritance
+    * tqdm.gui
+    * tqdm.notebook
+    * tqdm.contrib.telegram
+    * tqdm.contrib.discord
+  * documentation updates
+  * misc code optimisations
+  * add tests
+  * misc code linting/formatting
+- Updates for 4.54.1.
+  * drop py3.4 (no longer tested) 
+- Updates for 4.54.0.
+  * get rid of get_new
+- Updates for 4.53.0.
+  * provide get_new() helper for mixed subclasses in nested mode
+  * fix nested asyncio (#1074)
+    * document async break hazard
+  * add tests
+  * drop py2.6/3.2/3.3 and distutils (no longer tested)
+    * drop py2.6
+    * drop distutils in favour of setuptools/setup.cfg
+  * use setuptools_scm
+    * fix & update tests
+    * fix & upgrade snap build
+    * update CONTRIBUTING docs
+- Remove python-tqdm-remove-nose.patch, fixed. 
+
+-------------------------------------------------------------------
 Tue Nov  3 14:06:32 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - move bash completion into separate package to avoid conflicts
