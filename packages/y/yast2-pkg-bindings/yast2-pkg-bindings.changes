@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan  8 11:12:53 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed repository refresh (a bug caused downloading only the index
+  file in some cases) (bsc#1180203)
+- 4.3.6
+
+-------------------------------------------------------------------
 Mon Jan  4 15:27:02 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Set the previous "distro_target" option when restarting the
