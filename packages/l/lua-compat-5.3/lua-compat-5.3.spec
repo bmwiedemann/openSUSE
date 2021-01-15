@@ -16,6 +16,9 @@
 #
 
 
+%define flavor @BUILD_FLAVOR@
+%define mod_name lua-compat-5.3
+
 # bit32 (dropped in 5.4) is the native Lua 5.2 bit manipulation library, in the version
 # from Lua 5.3; it is compatible with Lua 5.1, 5.2 and 5.3.
 %if "%{flavor}" == "lua54" 
@@ -24,8 +27,6 @@
 %bcond_with bit32
 %endif
 
-%define flavor @BUILD_FLAVOR@
-%define mod_name lua-compat-5.3
 Version:        0.9
 Release:        0
 Summary:        Lua-5.3-style APIs for Lua 5.2 and 5.1
