@@ -180,4 +180,13 @@
 </comment>
     <requestid>778525</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5c40fc734ccc793f7f60bb0a982ebfb1</srcmd5>
+    <version>1.4.3</version>
+    <time>1610736364</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.4.3
+  * New translation: es (Spanish) 100% (forwarded request 862995 from wsxy162)</comment>
+    <requestid>863096</requestid>
+  </revision>
 </revisionlist>
