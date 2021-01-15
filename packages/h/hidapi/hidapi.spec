@@ -1,7 +1,7 @@
 #
 # spec file for package hidapi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover 0
 
 Name:           hidapi
-Version:        0.9.0
+Version:        0.10.1
 Release:        0
 Summary:        Simple library for communicating with USB and Bluetooth HID devices
 License:        GPL-3.0-or-later OR BSD-3-Clause
