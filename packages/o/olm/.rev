@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>39f3323c2ba61c753cdc00b788f89dab</srcmd5>
+    <version>3.2.1</version>
+    <time>1610736341</time>
+    <user>dimstar_suse</user>
+    <comment>The olm library used for cryptography for the Matrix protocol.
+Needed by libQuotient.</comment>
+    <requestid>859953</requestid>
+  </revision>
+</revisionlist>
