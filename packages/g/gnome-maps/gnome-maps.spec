@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-maps
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-maps
-Version:        3.38.2
+Version:        3.38.3
 Release:        0
 Summary:        Maps Application for GNOME
 License:        GPL-2.0-or-later
@@ -27,6 +27,7 @@ Source0:        https://download.gnome.org/sources/gnome-maps/3.38/%{name}-%{ver
 
 # Needed for typelib() Requires
 BuildRequires:  gobject-introspection
+#
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool >= 0.40.0
 BuildRequires:  meson
@@ -41,6 +42,9 @@ BuildRequires:  pkgconfig(gio-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gjs-1.0) >= 1.50.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.10.1
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+# Needed for test run
+BuildRequires:  pkgconfig(gweather-3.0)
+#
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(rest-0.7) >= 0.7.90
 Recommends:     dbus(org.freedesktop.GeoClue2)
@@ -59,12 +63,16 @@ for your journeys, whether on foot, by bike, or by car.
 %meson
 %meson_build
 
+%check
+%meson_test
+
 %install
 %meson_install
 %find_lang %{name} %{?no_lang_C}
 %suse_update_desktop_file -G "Maps Application" org.gnome.Maps DesktopUtility
-# There is no devel file, so at this moment also no need to keep
+# There is no devel package, so at this moment also no need to keep gir and so files
 rm %{buildroot}%{_datadir}/gnome-maps/gir-1.0/GnomeMaps-1.0.gir
+rm %{buildroot}%{_libdir}/%{name}/libgnome-maps.so
 
 %files
 %license COPYING
@@ -77,7 +85,10 @@ rm %{buildroot}%{_datadir}/gnome-maps/gir-1.0/GnomeMaps-1.0.gir
 %{_datadir}/%{name}/
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Maps*
 %{_datadir}/glib-2.0/schemas/org.gnome.Maps.gschema.xml
-%{_libdir}/%{name}/
+%{_libdir}/%{name}/libgnome-maps.so.0*
+%dir %{_libdir}/%{name}
+%dir %{_libdir}/%{name}/girepository-1.0
+%{_libdir}/%{name}/girepository-1.0/GnomeMaps-1.0.typelib
 
 %files lang -f %{name}.lang
 
