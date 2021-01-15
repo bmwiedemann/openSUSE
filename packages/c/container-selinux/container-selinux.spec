@@ -1,7 +1,7 @@
 #
 # spec file for package container-selinux
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 # Version of SELinux we were using
 %define selinux_policyver %(rpm -q selinux-policy --qf '%%{version}')
 Name:           container-selinux
-Version:        2.150.0
+Version:        2.154.0
 Release:        0
 Summary:        SELinux policies for container runtimes
 License:        GPL-2.0-only

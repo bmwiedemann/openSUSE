@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 11 10:40:32 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.154.0
+  - Allow confined user domains to run confined container domains.
+  - Allow all containers to use nfs shares, iff virt_use_nfs boolean
+    is enabled.
+  - Allow containers to read nsfs file systems.
+  - KVM Container need to use tunnel sockets created by runtime.
+
+-------------------------------------------------------------------
 Tue Nov  3 07:53:35 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - Don't use BuildRequires based on shell script output. OBS can't
