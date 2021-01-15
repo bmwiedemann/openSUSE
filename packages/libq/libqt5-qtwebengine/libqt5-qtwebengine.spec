@@ -49,7 +49,6 @@ URL:            https://www.qt.io
 %define so_version 5.15.2
 %define tar_version qtwebengine-everywhere-src-5.15.2
 Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
-Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM armv6-ffmpeg-no-thumb.patch - Fix ffmpeg configuration for armv6
 Patch1:         armv6-ffmpeg-no-thumb.patch
 # PATCH-FIX-UPSTREAM disable-gpu-when-using-nouveau-boo-1005323.diff

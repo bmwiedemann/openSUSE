@@ -622,4 +622,12 @@
   * Added icu-68-2.patch</comment>
     <requestid>856760</requestid>
   </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>2368fecbfe7e5465de545f380005dd0f</srcmd5>
+    <version>5.15.2</version>
+    <time>1610736207</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop baselibs.conf, not needed after libksysguard5 got adjusted</comment>
+    <requestid>861768</requestid>
+  </revision>
 </revisionlist>

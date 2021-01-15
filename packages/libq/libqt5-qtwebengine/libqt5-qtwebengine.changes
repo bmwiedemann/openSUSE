@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan  8 16:27:22 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Drop baselibs.conf, not needed after libksysguard5 got adjusted
+
+-------------------------------------------------------------------
 Tue Dec 15 08:59:07 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fix build with ICU 68:
