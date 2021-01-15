@@ -1,7 +1,7 @@
 #
 # spec file for package openSUSE-build-key
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@ Source2:        gpg-pubkey-39db7c82-5f68629b.asc
 # RISCV
 Source3:        gpg-pubkey-697ba1e5-5c755904.asc
 # zSystems
-Source5:        gpg-pubkey-f6ab3975-5ad08cb7.asc
+Source5:        gpg-pubkey-f6ab3975-5edd7d4f.asc
 # PowerPC
 Source6:        gpg-pubkey-8ede3e07-5c755f3a.asc
 # Container key openSUSE

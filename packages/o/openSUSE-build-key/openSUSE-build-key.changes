@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan  8 17:21:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update openSUSE:Factory:zSystems signing key to current version:
+  pub   rsa2048 2016-02-17 [SC] [expires: 2022-08-16]
+         F00C20EF1E1114C9B5F69B2276CA4244F6AB3975
+  openSUSE:Factory:zSystems OBS Project <openSUSE:Factory:zSystems@build.opensuse.org>
+
+-------------------------------------------------------------------
 Tue Sep 22 14:36:22 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - the container keys for openSUSE and SUSE Linux Enterprise are actually

@@ -240,4 +240,15 @@ However, it would be good to have these out before we do switch. (forwarded requ
 - use /usr/share/container-keys/ for container keys. (forwarded request 836126 from msmeissn)</comment>
     <requestid>836127</requestid>
   </revision>
+  <revision rev="29" vrev="38">
+    <srcmd5>cdd33292cc45e27691b7fc4fa993f4b9</srcmd5>
+    <version>1.0</version>
+    <time>1610736218</time>
+    <user>dimstar_suse</user>
+    <comment>- update openSUSE:Factory:zSystems signing key to current version:
+  pub   rsa2048 2016-02-17 [SC] [expires: 2022-08-16]
+         F00C20EF1E1114C9B5F69B2276CA4244F6AB3975
+  openSUSE:Factory:zSystems OBS Project &amp;lt;openSUSE:Factory:zSystems@build.opensuse.org&amp;gt; (forwarded request 861772 from dirkmueller)</comment>
+    <requestid>861873</requestid>
+  </revision>
 </revisionlist>
