@@ -1,7 +1,7 @@
 #
 # spec file for package selinux-policy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ Summary:        SELinux policy configuration
 License:        GPL-2.0-or-later
 Group:          System/Management
 Name:           selinux-policy
-Version:        20201029
+Version:        20210111
 Release:        0
 Source:         fedora-policy.%{version}.tar.bz2
 Source1:        selinux-policy-rpmlintrc
@@ -96,7 +96,6 @@ Patch011:       fix_xserver.patch
 Patch012:       fix_miscfiles.patch
 Patch013:       fix_init.patch
 Patch014:       fix_locallogin.patch
-Patch015:       fix_policykit.patch
 Patch016:       fix_iptables.patch
 Patch017:       fix_irqbalance.patch
 Patch018:       fix_ntp.patch
@@ -400,7 +399,6 @@ exit 0
 %patch012 -p1
 %patch013 -p1
 %patch014 -p1
-%patch015 -p1
 %patch016 -p1
 %patch017 -p1
 %patch018 -p1

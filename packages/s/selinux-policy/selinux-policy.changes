@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 11 09:29:18 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20210111
+  - Drop fix_policykit.patch (integrated upstream)
+  - Adjust fix_iptables.patch
+  - update container policy
+
+-------------------------------------------------------------------
 Tue Nov 10 08:52:35 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
 
 - Updated fix_corecommand.patch to set correct types for the OBS
