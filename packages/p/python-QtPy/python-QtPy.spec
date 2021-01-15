@@ -1,7 +1,7 @@
 #
 # spec file for package python-QtPy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,11 +25,18 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/spyder-ide/qtpy
 Source:         https://files.pythonhosted.org/packages/source/Q/QtPy/QtPy-%{version}.tar.gz
+BuildRequires:  %{python_module qt3d-qt5}
 BuildRequires:  %{python_module qt5}
+BuildRequires:  %{python_module qtdatavis3d-qt5}
+BuildRequires:  %{python_module qtwebengine-qt5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-qt5
+Recommends:     python-qt3d-qt5
+Recommends:     python-qt5
+Recommends:     python-qtdatavis3d-qt5
+Recommends:     python-qtwebengine-qt5
+Suggests:       python-pyside2
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module mock}
@@ -52,6 +59,8 @@ Basically, you write your code as if you were using PyQt5 but import qt from
 %setup -q -n QtPy-%{version}
 sed -i 's/\r$//' LICENSE.txt
 rm qtpy/tests/runtests.py
+# Submitted to upstream at gh#spyder-ide/qtpy#228
+mv qtpy/QtDatavisualization.py qtpy/QtDataVisualization.py
 
 %build
 %python_build
