@@ -1,7 +1,7 @@
 #
 # spec file for package python-rpm-macros
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           python-rpm-macros
-Version:        20200824.8fa42a7
+Version:        20210112.86f4d9d
 Release:        0
 Summary:        RPM macros for building of Python modules
 License:        WTFPL
 URL:            https://github.com/opensuse/python-rpm-macros
 Source:         python-rpm-macros-%{version}.tar.xz
+# To keep user expectations reasonably sane
+Recommends:     python-rpm-generators
 # Fedora compatibility
 Provides:       python2-rpm-macros
 Provides:       python3-rpm-macros
-# To keep user expectations reasonably sane
-Recommends:     python-rpm-generators
 BuildArch:      noarch
 
 %description
@@ -38,18 +38,17 @@ are only building for distros newer than Leap 42.2
 %package -n python-rpm-generators
 Summary:        Dependency generator dependencies for Python RPMs
 Requires:       %{name} = %{version}-%{release}
-# Fedora compatibility
-Provides:       python3-rpm-generators
 # For the dep generator macros
 Requires:       python3-setuptools
+# Fedora compatibility
+Provides:       python3-rpm-generators
 
 %description -n python-rpm-generators
 This package contains the dependencies for Python RPMs to generate
 dependencies automatically.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup
 
 %if 0%{?suse_version} < 1330
 mv macros-default-pythons macros/035-default-pythons

@@ -1,4 +1,132 @@
 -------------------------------------------------------------------
+Tue Jan 12 07:18:43 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 20210112.86f4d9d:
+  * fix gh#openSUSE/python-rpm-macros#84: python_sysconfig_ macros
+
+-------------------------------------------------------------------
+Mon Dec 07 17:09:23 UTC 2020 - mcepl@cepl.eu
+
+- Update to version 20201207.2177fcf:
+  * README update after merge
+
+-------------------------------------------------------------------
+Mon Dec 07 16:31:52 UTC 2020 - mcepl@cepl.eu
+
+- Update to version 20201207.259cdda:
+  * Update python_expand description in README
+  * python_expand  to basename only
+
+-------------------------------------------------------------------
+Fri Dec 04 09:47:39 UTC 2020 - mcepl@cepl.eu
+
+- Update to version 20201204.32a910e:
+  * fix print_provided_flavor again
+
+-------------------------------------------------------------------
+Thu Dec 03 07:08:14 UTC 2020 - mcepl@cepl.eu
+
+- Update to version 20201203.5331183:
+  * fix print_provided_flavor
+
+-------------------------------------------------------------------
+Sat Nov 28 22:11:52 UTC 2020 - mcepl@cepl.eu
+
+- Update to version 20201128.669edb3:
+  * fix provides (for python-numpy f2py, in gh#openSUSE/python-rpm-macros#66)
+
+-------------------------------------------------------------------
+Mon Nov 23 14:41:05 UTC 2020 - mcepl@cepl.eu
+
+- Update to version 20201123.6978323:
+  * also rewrite subpackage_only default providers
+  * pytest: ignore _build dirs for all flavors
+
+-------------------------------------------------------------------
+Thu Nov 19 07:53:17 UTC 2020 - mcepl@cepl.eu
+
+- Update to version 20201119.6bb5f69:
+  * add default provider properties
+  * don't replace %name, for subpackage_only
+  * expand parameters for subpackage_only packages
+
+-------------------------------------------------------------------
+Thu Nov 12 18:19:15 UTC 2020 - mcepl@cepl.eu
+
+- Update to version 20201112.a4c80dc:
+  * handle python_subpackage_only, fixes gh#openSUSE/python-rpm-macros#73
+  * define default providers for pythonX from pythonXY flavors: fixes #69
+
+-------------------------------------------------------------------
+Tue Nov 03 20:59:11 UTC 2020 - mcepl@cepl.eu
+
+- Update to version 20201103.cec67c2:
+  * document python_find_lang
+  * add python_find_lang and allow to specify in %python_files. Fixes #5
+
+-------------------------------------------------------------------
+Mon Nov 02 18:34:58 UTC 2020 - mcepl@cepl.eu
+
+- Update to version 20201102.31ccfc2:
+  * fix python_clone shebang replacement
+  * one less expansion for python_exec
+  * expand default %python_ macros earlier
+  * update README for multiple flavors
+  * more command delimiters for %python_expand
+
+-------------------------------------------------------------------
+Thu Oct 22 18:47:52 UTC 2020 - mcepl@cepl.eu
+
+- Update to version 20201022.7f87908:
+  * Add python36 and python38 flavours.
+
+-------------------------------------------------------------------
+Wed Oct 21 11:22:16 UTC 2020 - mcepl@cepl.eu
+
+- Update to version 20201021.adb6953:
+  * Prepare for multiple python3 flavors
+- Remove multiple_flavors.patch as it is included in the upstream
+  tarball.
+
+-------------------------------------------------------------------
+Fri Oct 16 20:05:52 UTC 2020 - mcepl@cepl.eu
+
+- Update to version 20201016.5d22545:
+  * fix whitespace after escape in compileall macro
+
+-------------------------------------------------------------------
+Fri Oct 16 14:31:59 UTC 2020 - mcepl@cepl.eu
+
+- Update to version 20201016.db09189:
+  * Delete pycache files before compilealll
+  * Update macros/010-common-defs
+  * Reword compileall
+  * mention pyproject.toml and link to PEP517 and PEP518
+  * add description for pyunittest macro
+  * add description for python_compileall macro
+  * add description for pyproject macros
+  * add python_compileall macro and use it in pyproject_install
+  * disable pip version check: no connection to pypi.org
+
+-------------------------------------------------------------------
+Tue Sep 22 19:29:03 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update multiple_flavors.patch to generate correct names of the
+  python binary.
+
+-------------------------------------------------------------------
+Wed Sep  9 18:00:03 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- %__#FLAVOR# should be defined as
+  /usr/bin/python%{#FLAVOR#_version} not just /usr/bin/#FLAVOR#
+
+-------------------------------------------------------------------
+Wed Sep  2 11:44:33 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add patch multiple_flavors.patch which makes compile_macros.sh
+  generate alternative flavours as well.
+
+-------------------------------------------------------------------
 Mon Aug 24 08:09:01 UTC 2020 - mcepl@cepl.eu
 
 - Update to version 20200824.8fa42a7:
