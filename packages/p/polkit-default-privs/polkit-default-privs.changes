@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 11 13:02:14 UTC 2021 - matthias.gerstner@suse.com
+
+- Update to version 1550+20210111.f725c25:
+  * polkit-rules-whitelist: add brltty brlapi group rule (bsc#1180593)
+
+-------------------------------------------------------------------
 Tue Dec 08 13:02:59 UTC 2020 - matthias.gerstner@suse.com
 
 - Update to version 1550+20201208.135bf51:
