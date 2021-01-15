@@ -34,15 +34,17 @@ BuildRequires:  pkgconfig
 Provides:       google-perftools
 Obsoletes:      google-perftools
 # based on basictypes.h in the source tree
-ExclusiveArch:  %{ix86} x86_64 ppc ppc64 ppc64le %{arm} aarch64 mips s390x
-%ifnarch s390x s390
+ExclusiveArch:  %{ix86} x86_64 ppc ppc64 ppc64le %{arm} aarch64 mips s390x riscv64
+%ifnarch s390x s390 riscv64
 BuildRequires:  pkgconfig(libunwind)
+%ifarch %{ix86} x86_64 %{arm} aarch64 mips
 BuildRequires:  pkgconfig(libunwind-coredump)
+%endif
 BuildRequires:  pkgconfig(libunwind-generic)
 BuildRequires:  pkgconfig(libunwind-ptrace)
 BuildRequires:  pkgconfig(libunwind-setjmp)
 %endif
-%ifnarch s390
+%ifnarch s390 riscv64
 BuildRequires:  pkgconfig(valgrind)
 %endif
 
@@ -95,7 +97,7 @@ applications that use the gperftools package.
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 autoreconf -fi
-%ifnarch s390
+%ifnarch s390 riscv64
 VALGRIND_FL=`pkg-config --cflags valgrind`
 %endif
 export CPPFLAGS="$VALGRIND_FL"
