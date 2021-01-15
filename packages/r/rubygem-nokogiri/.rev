@@ -517,4 +517,12 @@
   https://nokogiri.org/CHANGELOG.html#v1110-2021-01-03 (forwarded request 860345 from darix)</comment>
     <requestid>860961</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>95c6950fe9a3e5103448497ea91432b8</srcmd5>
+    <version>1.11.1</version>
+    <time>1610736242</time>
+    <user>dimstar_suse</user>
+    <comment>update (forwarded request 860962 from mschnitzer)</comment>
+    <requestid>862126</requestid>
+  </revision>
 </revisionlist>
