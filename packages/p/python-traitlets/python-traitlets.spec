@@ -1,7 +1,7 @@
 #
 # spec file for package python-traitlets
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%define skip_python2 1
 Name:           python-traitlets
-Version:        4.3.3
+Version:        5.0.5
 Release:        0
 Summary:        Traitlets Python config system
 License:        BSD-3-Clause
@@ -29,20 +29,11 @@ BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module ipython_genutils}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-decorator
 Requires:       python-ipython_genutils
-Requires:       python-six
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-enum34
-BuildRequires:  python-mock
-%endif
-%ifpython2
-Requires:       python-enum34
-%endif
 %python_subpackages
 
 %description
