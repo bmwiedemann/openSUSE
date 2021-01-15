@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Thu Jan 14 15:41:07 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 20.0.5
+  - Don't log params of imagecreatefromstring (server#24546)
+  - Use storage copy implementation when doing dav copy
+    (server#24590)
+  - Use in objectstore copy (server#24592)
+  - Add tel, note, org and title search (server#24697)
+  - Check php compatibility of app store app releases
+    (server#24698)
+  - Fix #24682]: ensure federation cloud id is retruned if FN
+    property not found (server#24709)
+  - Do not include non-required scripts on the upgrade page
+    (server#24714)
+  - LDAP: fix inGroup for memberUid type of group memberships
+    (server#24716)
+  - Cancel user search requests to avoid duplicate results being
+    added (server#24728)
+  - Also unset the other possible unused paramters (server#24751)
+  - Enables the file name check also to match name of mountpoints
+    (server#24760)
+  - Fixes sharing to group ids with characters that are being url
+    encoded (server#24763)
+  - Limit getIncomplete query to one row (server#24791)
+  - Fix Argon2 descriptions (server#24792)
+  - Actually set the TTL on redis set (server#24798)
+  - Allow to force rename a conflicting calendar (server#24806)
+  - Fix IPv6 localhost regex (server#24823)
+  - Catch the error on heartbeat update (server#24826)
+  - Make oc_files_trash.auto_id a bigint (server#24853)
+  - Fix total upload size overwritten by next upload (server#24854)
+  - Avoid huge exception argument logging (server#24876)
+  - Make share results distinguishable if there are more than one
+    with the exact same display name (server#24878)
+  - Add migration for oc_share_external columns (server#24963)
+  - Don't throw a 500 when importing a broken ics reminder file
+    (server#24972)
+  - Fix unreliable ViewTest (server#24976)
+  - Update root.crl due to revocation of transmission.crt
+    (server#24990)
+  - Set the JSCombiner cache if needed (server#24997)
+  - Fix column name to check prior to deleting (server#25009)
+  - Catch throwable instead of exception (server#25013)
+  - Set the user language when adding the footer (server#25019)
+  - Change defaultapp in config.sample.php to dashboard to improve
+    docs and align it to source code (server#25030)
+  - Fix clearing the label of a share (server#25035)
+  - Update psalm-baseline.xml (server#25066)
+  - Don't remove assignable column for now (server#25074)
+  - Add setup check to verify that the used DB version is still
+    supported… (server#25076)
+  - Correctly set the user for activity parsing when preparing
+    a notifica… (activity#542)
+  - Bump vue-virtual-grid from 2.2.1 to 2.3.0 (photos#597)
+  - Catch possible database exceptions when fetching document data
+    (text#1221)
+  - Make sure we have the proper PHP version installed before
+    running composer (text#1234)
+  - Revert removal of transformResponse (text#1235)
+  - Bump prosemirror-view from 1.16.1 to 1.16.5 (text#1255)
+  - Bump @babel/preset-env from 7.12.1 to 7.12.11 (text#1257)
+  - Bump babel-loader from 8.1.0 to 8.2.2 (text#1259)
+  - Bump eslint-plugin-standard from 4.0.2 to 4.1.0 (text#1261)
+  - Bump vue-loader from 15.9.5 to 15.9.6 (text#1263)
+  - Bump prosemirror-model from 1.12.0 to 1.13.1 (text#1265)
+  - Bump core-js from 3.7.0 to 3.8.1 (text#1266)
+  - Bump stylelint from 13.7.2 to 13.8.0 (text#1269)
+  - Bump @babel/plugin-transform-runtime from 7.12.1 to 7.12.10
+    (text#1271)
+  - Bump sass-loader from 10.0.5 to 10.1.0 (text#1273)
+  - Bump webpack-merge from 5.3.0 to 5.7.2 (text#1274)
+  - Bump @babel/core from 7.12.3 to 7.12.10 (text#1277)
+  - Bump cypress from 5.1.0 to 5.6.0 (text#1278)
+  - Bump @vue/test-utils from 1.1.1 to 1.1.2 (text#1279)
+  - Bump webpack-merge from 5.7.2 to 5.7.3 (text#1303)
+
+-------------------------------------------------------------------
 Tue Dec 15 08:21:19 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - The apache subpackage must require the main package, otherwise it
@@ -8,7 +85,14 @@ Tue Dec 15 08:21:19 UTC 2020 - ecsos <ecsos@opensuse.org>
 Mon Dec 14 19:26:37 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 20.0.4
-  No changelog from upstream at this time.
+  - Avoid dashboard crash when accessibility app is not installed (server#24636)
+  - Bump ini from 1.3.5 to 1.3.7 (server#24649)
+  - Handle owncloud migration to latest release (server#24653)
+  - Use string for storing a OCM remote id (server#24654)
+  - Fix MySQL database size calculation (serverinfo#262)
+  - Bump cypress-io/github-action@v2 (viewer#722)
+  - Fix] sidebar opening animation (viewer#723)
+  - Fix not.exist cypress and TESTING checks (viewer#725)
 
 -------------------------------------------------------------------
 Mon Dec 14 10:28:07 UTC 2020 - ecsos <ecsos@opensuse.org>

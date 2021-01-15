@@ -1,7 +1,7 @@
 #
 # spec file for package nextcloud
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,7 @@
 %endif
 
 Name:           nextcloud
-Version:        20.0.4
+Version:        20.0.5
 Release:        0
 Summary:        File hosting service
 License:        AGPL-3.0-only
@@ -136,8 +136,8 @@ hosting services and using them.
 Summary:        Apache configuration for %{name}
 Group:          Productivity/Networking/Web/Utilities
 BuildRequires:  apache2 >= 2.4
-Requires:       apache2
 Requires:       %{name} = %{version}
+Requires:       apache2
 Requires:       mod_php_any < 7.5.0
 Requires:       mod_php_any >= 7.2.0
 Supplements:    packageand(apache2:%name)
