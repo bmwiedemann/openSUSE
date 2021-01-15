@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jan 10 11:28:08 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.66.2:
+  + Performance improvements and crash fixes backported from the
+    development branch.
+  + Bug fixes enabling use of GTK 4.
+  + Closed bugs and merge requests:
+    - Error in function "_init()" in module
+      "modules/overrides/GObject.js"
+    - Revert "arg-cache: Save space by not caching GType"
+    - gi/wrapperutils: Move gjs_get_string_id() into resolve()
+      implementations
+    - overrides/Gtk: Set BuilderScope in class init
+    - Fix readline build on certain systems
+
+-------------------------------------------------------------------
 Fri Oct  9 09:17:52 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 1.66.1:
