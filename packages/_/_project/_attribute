@@ -138,7 +138,7 @@
   bsc#1174539: '20200909'
   bsc#1177675: '20201030'
   bsc#1177982: '20201030'
-  bsc#1179395: '20210113'
+  bsc#1179395: '20210114'
   bsc#1179416: '20201129'
   bsc#1179417: '20201129'
   gh#os-autoinst/os-autoinst-distri-opensuse#10856: '20200825'
@@ -558,7 +558,7 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20210114'
+    <value>failed: ''
 published: '20210113'
 publishing: '20210113'
 testing: '20210114'
