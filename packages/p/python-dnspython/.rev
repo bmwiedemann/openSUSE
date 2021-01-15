@@ -262,4 +262,35 @@
 - Python &amp;lt; 3.7 requires external contextvars (forwarded request 855332 from mcepl)</comment>
     <requestid>855345</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>05e761c8def6f17cdba1d72fc5a38a01</srcmd5>
+    <version>2.1.0</version>
+    <time>1610736210</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.1.0:
+ * End-of-line comments are now associated with rdata when read from text.
+   For backwards compatibility with prior versions of dnspython, they are
+   only emitted in to_text() when requested.
+ * Synchronous I/O is a bit more efficient, as we now try the I/O and only
+   use poll() or select() if the I/O would block.
+ * The resolver cache classes now offer basic hit and miss statistics, and
+   the LRUCache can also provide hits for every cache key.
+ * The resolver has a canonical_name() method.
+ * There is now a registration mechanism for EDNS option types.
+ * The default EDNS payload size has changed from 1280 to 1232.
+ * The SVCB, HTTPS, and SMIMEA RR types are now supported.
+ * TSIG has been enhanced with TKEY and GSS-TSIG support.  Thanks to
+   Nick Hall for writing this.
+ * Zones now can be updated via transactions.
+ * A new zone subclass, dns.versioned.Zone is available which has a
+   thread-safe transaction implementation and support for keeping many
+   versions of a zone.
+ * The zone file reading code has been adapted to use transactions, and
+   is now a public API.
+ * Inbound zone transfer support has been rewritten and is available as
+   dns.query.inbound_xfr() and dns.asyncquery.inbound_xfr().  It uses
+   the transaction mechanism, and fully supports IXFR and AXFR.
+</comment>
+    <requestid>861794</requestid>
+  </revision>
 </revisionlist>

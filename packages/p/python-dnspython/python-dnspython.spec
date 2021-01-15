@@ -1,7 +1,7 @@
 #
 # spec file for package python-dnspython
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-dnspython
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        A DNS toolkit for Python
 License:        ISC
@@ -80,7 +80,8 @@ chmod -x examples/*
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/
 
 %check
-%pytest
+# exclude the testcase which requires an unpackaged pickle file in the tests. see https://github.com/rthalley/dnspython/issues/622
+%pytest -k 'not test_unpickle'
 
 %files %{python_files}
 %license LICENSE
