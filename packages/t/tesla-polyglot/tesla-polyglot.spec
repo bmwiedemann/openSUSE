@@ -1,7 +1,7 @@
 #
 # spec file for package tesla-polyglot
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,13 +23,15 @@
 %bcond_with bootstrap
 %endif
 %global base_name tesla-polyglot
-Version:        0.2.1
+Version:        0.4.5
 Release:        0
 URL:            https://github.com/takari/maven-polyglot
 Source0:        https://github.com/takari/polyglot-maven/archive/polyglot-%{version}.tar.gz
 Patch0:         polyglot-snakeyaml-1.25.patch
+Patch1:         pomless-tycho.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
+BuildRequires:  mvn(commons-beanutils:commons-beanutils)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-model-builder)
@@ -84,6 +86,12 @@ Summary:        Polyglot Tesla :: Groovy
 %description groovy
 Polyglot Tesla :: Groovy.
 
+%package java
+Summary:        Polyglot Tesla :: Java
+
+%description java
+Polyglot Tesla :: Java.
+
 %package yaml
 Summary:        Polyglot Tesla :: YAML
 
@@ -119,6 +127,7 @@ This package contains javadoc for %{name}.
 %prep
 %setup -q -n polyglot-maven-polyglot-%{version}
 %patch0 -p1
+%patch1 -p1
 
 find -name "*.class" -delete
 find -name "*.jar" -delete
@@ -129,14 +138,17 @@ find -name "*.jar" -delete
 %pom_remove_dep -r :polyglot-scala
 %pom_disable_module polyglot-ruby
 %pom_remove_dep -r :polyglot-ruby
+%pom_disable_module polyglot-kotlin
+%pom_remove_dep -r :polyglot-kotlin
 
-%{pom_remove_parent}
+%pom_remove_parent
 perl -pi -e 's#takari-jar#jar#g' */pom.xml
 perl -pi -e 's#takari-maven-plugin#maven-plugin#g' */pom.xml
 
 %if %{with bootstrap}
 %pom_disable_module polyglot-atom
 %pom_disable_module polyglot-groovy
+%pom_disable_module polyglot-java
 %pom_disable_module polyglot-maven-plugin
 %pom_disable_module polyglot-translate-plugin
 %pom_disable_module polyglot-xml
@@ -148,6 +160,7 @@ perl -pi -e 's#takari-maven-plugin#maven-plugin#g' */pom.xml
 %pom_remove_dep rubygems:maven-tools polyglot-ruby
 rm -Rf polyglot-ruby/src/{test,it}
 %pom_remove_plugin :maven-invoker-plugin polyglot-ruby
+%pom_remove_plugin -r :maven-enforcer-plugin
 
 # Unavailable plugin
 %pom_remove_plugin org.codehaus.groovy:groovy-eclipse-compiler polyglot-groovy
@@ -218,7 +231,7 @@ rm polyglot-yaml/src/test/java/org/sonatype/maven/polyglot/yaml/SnakeYamlModelRe
 %endif
 	-f -- -Dproject.build.sourceEncoding=UTF-8 \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=7
+	-Dmaven.compiler.release=8
 %endif
 
 %install
@@ -237,6 +250,8 @@ rm polyglot-yaml/src/test/java/org/sonatype/maven/polyglot/yaml/SnakeYamlModelRe
 %files atom -f .mfiles-polyglot-atom
 
 %files groovy -f .mfiles-polyglot-groovy
+
+%files java -f .mfiles-polyglot-java
 
 %files yaml -f .mfiles-polyglot-yaml
 
