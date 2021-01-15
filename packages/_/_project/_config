@@ -446,6 +446,9 @@ Prefer: lightdm-gtk-greeter
 # Apache requires a MPM - we pick prefork
 Prefer: apache2:apache2-prefork
 
+# PHP requires php-sapi, which can be provided by multiple packages. We prefer -cli, related to the specific PHP version
+Prefer: php7:php7-cli
+
 # azure-cli reports: have choice for python3-vsts needed by python3-azure-functions-devops-build: python3-azure-devops python3-vsts
 # Use the real package name
 Prefer: python3-vsts
