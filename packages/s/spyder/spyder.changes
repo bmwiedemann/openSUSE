@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 15 10:18:17 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Skip two more tests which are too slow for qtbot on OBS and one
+  test producing segfaults.
+
+-------------------------------------------------------------------
 Sat Dec 19 21:53:07 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 4.2.1

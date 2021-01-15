@@ -1,7 +1,7 @@
 #
 # spec file for package spyder
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -284,71 +284,71 @@ export LANG=en_US.UTF-8
 export PYTHONDONTWRITEBYTECODE=1
 
 # Upstream splits the tests into slow and fast ones.
-# Add all tests which must be skipped into $skiptests or $skipslowtests
-# separated by ";". Test marked with (* no CI) are skipped on upstreams CI
-# too with given reason "It fails on CIs"
+# Add all tests which must be skipped into $donttest.
+# Tests marked with (* no CI) are skipped on upstreams CI too with given reason
+# "It fails on CIs".
 
 # (* no CI) the click/tab press is not sent by the bot
-skiptests+=";test_tab_copies_find_to_replace"
+donttest+=" or test_tab_copies_find_to_replace"
 # requires internet connection
-skiptests+=";test_github_backend"
+donttest+=" or test_github_backend"
 # we modified the dependencies in %%prep, this is a pure developer test
-skiptests+=";test_dependencies_for_spyder_dialog_in_sync"
+donttest+=" or test_dependencies_for_spyder_dialog_in_sync"
 # (* no CI) fails on last assert
-skiptests+=";test_connection_dialog_remembers_input_with_ssh_passphrase"
-skiptests+=";test_connection_dialog_remembers_input_with_password"
+donttest+=" or test_connection_dialog_remembers_input_with_ssh_passphrase"
+donttest+=" or test_connection_dialog_remembers_input_with_password"
 # different PyQT version?
-skiptests+=";(test_objectexplorer_collection_types and params5)"
-# qtbot timeout
-skiptests+=";test_run_python_script_in_terminal"
+donttest+=" or (test_objectexplorer_collection_types and params5)"
+# qtbot timeouts or too slow in OBS
+donttest+=" or test_run_python_script_in_terminal"
 # (* no CI)
-skiptests+=";test_range_indicator_visible_on_hover_only"
+donttest+=" or test_range_indicator_visible_on_hover_only"
 # we are not on conda env
-skiptests+=";test_status_bar_conda_interpreter_status"
+donttest+=" or test_status_bar_conda_interpreter_status"
 # segfaults
-skiptests+=";test_apps_dialog"
+donttest+=" or test_apps_dialog"
+donttest+=" or test_copy_path"
 # too flaky for OBS
-skiptests+=";test_update_decorations_when_scrolling"
+donttest+=" or test_update_decorations_when_scrolling"
 # occational fail
-skiptests+=";test_bracket_closing_new_line"
+donttest+=" or test_bracket_closing_new_line"
 # combobox not populated inside our test environment
-skiptests+=";test_maininterpreter_page"
+donttest+=" or test_maininterpreter_page"
 %if 0%{?suse_version} == 1500
 # fails on Leap
-skiptests+=";(test_objectexplorer_collection_types and params0)"
+donttest+=" or (test_objectexplorer_collection_types and params0)"
 %endif
 # flaky
-skiptests+=";test_pdb_multiline"
+donttest+=" or test_pdb_multiline"
 
+# tests marked slow:
 # completes to math.hypot(cooordinates) instead of expected math.hypot(*coordinates)
-skipslowtests+=";(test_introspection and test_completions)"
+donttest+=" or (test_introspection and test_completions)"
 # test_update.py would require network connections
-skipslowtests+=";(test_update and not test_no_update)"
+donttest+=" or (test_update and not test_no_update)"
 # runs into timeout on obs
-#skipslowtests+=";test_hide_widget_completion"
+#donttest+=" or test_hide_widget_completion"
+donttest+=" or (test_editor_and_outline and test_empty_file)"
+donttest+=" or test_class_func_selector"
 # tries to download stuff
-skipslowtests+=";test_kite_install"
+donttest+=" or test_kite_install"
 # no warnings returned here. PyLS/LSP problem? It works in the installed application, though.
-skipslowtests+=";test_ignore_warnings; test_move_warnings; test_get_warnings; test_update_warnings"
+donttest+=" or test_ignore_warnings or  test_move_warnings or  test_get_warnings or  test_update_warnings"
 # new fail: qtbot timeout
-skipslowtests+=";test_get_hints"
+donttest+=" or test_get_hints"
 # package conflict -- can't install yapf or autopep8 with pyls-black installed
-skipslowtests+=";(formatting and (yapf or autopep8))"
+donttest+=" or (formatting and (yapf or autopep8))"
 # occasional segfault
-skipslowtests+=";test_editor_outlineexplorer"
+donttest+=" or test_editor_outlineexplorer"
 # too flaky on some platforms
-skipslowtests+=";test_hide_widget_completion"
+donttest+=" or test_hide_widget_completion"
 # ultimate rationale: skip whole mainwindow as these tests are leaking file descriptors
 # https://github.com/spyder-ide/spyder/issues/13483
-skipslowtests+=";test_mainwindow"
+donttest+=" or test_mainwindow"
 
 export PYTHONPATH=%{buildroot}%{python3_sitelib}
-for s in skiptests skipslowtests; do
-    declare ${s}_p="$(python3 -c "print(' or '.join('${!s}'.strip(';').split(';')))")"
-done
-
-python3 runtests.py -k "not ($skiptests_p)" --timeout 1800
-python3 runtests.py --run-slow -k "not ($skipslowtests_p)" --timeout 1800
+python3 runtests.py -k "not (${donttest:4})" --timeout 1800
+python3 runtests.py --run-slow -k "not (${donttest:4})" --timeout 1800
 %endif
 
 %files
