@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XML-Feed
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-XML-Feed
-Version:        0.59
-Release:        0
 %define cpan_name XML-Feed
+Name:           perl-XML-Feed
+Version:        0.60
+Release:        0
 Summary:        Syndication feed parser and auto-discovery
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DA/DAVECROSS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Class::ErrorHandler)
@@ -48,6 +46,7 @@ BuildRequires:  perl(URI::Fetch)
 BuildRequires:  perl(XML::Atom) >= 0.38
 BuildRequires:  perl(XML::LibXML) >= 1.66
 BuildRequires:  perl(XML::RSS) >= 1.47
+BuildRequires:  perl(XML::XPath)
 Requires:       perl(Class::ErrorHandler)
 Requires:       perl(DateTime)
 Requires:       perl(DateTime::Format::Flexible)
@@ -91,7 +90,7 @@ for date handling, _XML::Feed_ converts all date formats transparently into
 DateTime objects, which it then returns to the caller.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Build.PL installdirs=vendor
@@ -105,7 +104,6 @@ perl Build.PL installdirs=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes eg README
+%doc ChangeLog.md Changes README
 
 %changelog
