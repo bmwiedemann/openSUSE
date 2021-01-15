@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan 08 22:14:35 UTC 2021 - lduncan@suse.com
+
+- Update to version v1.1+36.e926f7172b96:
+  * tx: rename variable
+  * event_iface: only set rcv buf size if too small (bsc#1175570)
+  * tx: when operating in rx-only mode don't send a port shutdown pdu
+  * Update .travis.yml
+  * vdp22: manpage typo
+  * lldptool: fix manpage
+  * lldp_head: remove all references
+  * add_rtattr: only copy if data is provided
+  * autoconf: convenience to setup asan and ubsan
+  * Post 1.1 release
+
+-------------------------------------------------------------------
 Thu Dec 10 22:40:33 UTC 2020 - lduncan@suse.com
 
 - Update to version v1.1+18.0e969d0edcc4:

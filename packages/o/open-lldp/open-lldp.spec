@@ -1,7 +1,7 @@
 #
 # spec file for package open-lldp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           open-lldp
 Summary:        Link Layer Discovery Protocol (LLDP) Agent
 License:        GPL-2.0-only
 Group:          System/Daemons
-Version:        1.1+18.0e969d0edcc4
+Version:        1.1+36.e926f7172b96
 Release:        0
 BuildRequires:  bison
 BuildRequires:  flex
