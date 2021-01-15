@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 29 19:30:29 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- git 2.30.0:
+  * Userdiff updates for PHP, Rust, CSS
+  * New features and options to multiple subcommands and workflows
+  * Avoid administrator error leading to data loss with 
+    "git push --force-with-lease[=<ref>]" by introducing
+    "--force-if-includes"
+  * Updates to shell autocompletion
+  * Bug fixes and internal improvements
+
+-------------------------------------------------------------------
 Fri Nov 20 21:53:07 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - only pull asciidoctor for the default ruby version

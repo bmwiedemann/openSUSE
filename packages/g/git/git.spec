@@ -39,7 +39,7 @@
 %endif
 
 Name:           git
-Version:        2.29.2
+Version:        2.30.0
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
@@ -91,8 +91,8 @@ Suggests:       git-web
 BuildRequires:  sgml-skel
 BuildRequires:  xmlto
 %if %{with asciidoctor}
-BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  %{rubygem asciidoctor}
+BuildRequires:  docbook5-xsl-stylesheets
 %else
 BuildRequires:  asciidoc
 %endif
