@@ -1228,4 +1228,12 @@ See https://bugs.kde.org/show_bug.cgi?id=290719 (forwarded request 115750 from w
     <comment>- add s390x-z14-vector-support.patch (bsc#1180511)</comment>
     <requestid>860136</requestid>
   </revision>
+  <revision rev="130" vrev="4">
+    <srcmd5>9c92e3d4c91ef97cdf571e0732d7143c</srcmd5>
+    <version>3.16.1</version>
+    <time>1610736296</time>
+    <user>dimstar_suse</user>
+    <comment>- add 0001-lmw-lswi-and-related-PowerPC-insns-aren-t-allowed-on.patch (bsc#1180412)</comment>
+    <requestid>862354</requestid>
+  </revision>
 </revisionlist>

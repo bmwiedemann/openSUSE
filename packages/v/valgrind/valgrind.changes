@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 11 14:20:28 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add 0001-lmw-lswi-and-related-PowerPC-insns-aren-t-allowed-on.patch (bsc#1180412)
+
+-------------------------------------------------------------------
 Mon Jan  4 10:55:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add s390x-z14-vector-support.patch (bsc#1180511) 
