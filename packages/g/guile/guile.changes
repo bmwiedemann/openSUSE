@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan  9 22:11:42 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU guile 3.0.5:
+  * O(1) compilation of `case' and related expressions
+  * New (ice-9 copy-tree) module
+  * New warning: use-before-definition
+  * New warning: non-idempotent-definition
+  * A number of functions were deprecated with replacements
+  * copy read-option removed
+- remove deprecated texinfo packaging macros
+
+-------------------------------------------------------------------
 Thu Jun 25 11:53:11 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - guile 3.0.4:

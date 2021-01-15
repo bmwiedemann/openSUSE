@@ -1,7 +1,7 @@
 #
 # spec file for package guile
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@
 %define libgver     1
 %define gsuff       %{guilemaj}_%{guilemin}-%{libgver}
 Name:           guile
-Version:        %{guilevers}.4
+Version:        %{guilevers}.5
 Release:        0
 Summary:        GNU's Ubiquitous Intelligent Language for Extension
 License:        GFDL-1.3-only AND GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -37,7 +37,7 @@ Source3:        guile-rpmlintrc
 Patch0:         guile-3.0-gc_pkgconfig_private.patch
 # The out-of-memory test is flaky, so disable it
 Patch1:         disable-test-out-of-memory.patch
-Patch2:		gcc10-x86-disable-one-test.patch
+Patch2:         gcc10-x86-disable-one-test.patch
 BuildRequires:  gmp-devel
 BuildRequires:  libffi-devel
 BuildRequires:  libltdl-devel
@@ -91,8 +91,6 @@ Requires:       libunistring-devel
 Requires:       ncurses-devel
 Requires:       readline-devel
 Requires:       pkgconfig(bdw-gc)
-Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
 
 %description devel
 This is Guile, a portable, embeddable Scheme implementation written in
@@ -115,10 +113,11 @@ rm -r prebuilt/32-bit-big-endian
   --with-threads \
   --disable-silent-rules
 # do sequential build for reproducible .go files = https://issues.guix.gnu.org/issue/20272 - boo#1102408
-make
+%make_build -j1
 
 %check
-LD_LIBRARY_PATH="." make %{?_smp_mflags} check
+LD_LIBRARY_PATH="." \
+%make_build check
 
 %install
 %make_install
@@ -127,14 +126,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # bug #874028
 mkdir -p %{buildroot}%{_datadir}/gdb/auto-load%{_libdir}
 mv %{buildroot}%{_libdir}/libguile*-gdb.scm %{buildroot}%{_datadir}/gdb/auto-load%{_libdir}/
-
-%post devel
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
-%install_info --info-dir=%{_infodir} %{_infodir}/r5rs.info%{ext_info}
-
-%preun devel
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/r5rs.info%{ext_info}
 
 %pre
 # Remove obsolete files (< SuSE Linux 10.2)
@@ -150,7 +141,7 @@ rm -f usr/share/guile/site/slibcat.SuSEconfig
 %{_bindir}/guile-tools
 %{_bindir}/guild
 %{_bindir}/guile
-%{_mandir}/man1/guile.1%{ext_man}
+%{_mandir}/man1/guile.1%{?ext_man}
 
 %files -n libguile-%{gsuff}
 %license LICENSE COPYING*
@@ -168,10 +159,10 @@ rm -f usr/share/guile/site/slibcat.SuSEconfig
 %dir %{_includedir}/%{name}/%{guilevers}
 %{_includedir}/%{name}/%{guilevers}/*
 %{_datadir}/aclocal/guile.m4
-%{_infodir}/%{name}.info%{ext_info}
+%{_infodir}/%{name}.info%{?ext_info}
 %{_infodir}/%{name}.info-[0-9]%{ext_info}
 %{_infodir}/%{name}.info-1[0-9]%{ext_info}
-%{_infodir}/r5rs.info%{ext_info}
+%{_infodir}/r5rs.info%{?ext_info}
 %{_libdir}/libguile-%{guilevers}.so
 %{_libdir}/pkgconfig/guile-%{guilevers}.pc
 # bug #874028
