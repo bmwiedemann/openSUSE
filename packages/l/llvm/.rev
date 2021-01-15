@@ -1964,4 +1964,14 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
   llvm-polly-devel so that we can obsolete through them as well.</comment>
     <requestid>843890</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>3f344baabaa7dcd232fb23c13393dbfb</srcmd5>
+    <version>11.0.1</version>
+    <time>1610736232</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 11.0.1.
+  * This release contains bug-fixes for the LLVM 11.0.0 release.
+    This release is API and ABI compatible with 11.0.0.</comment>
+    <requestid>862043</requestid>
+  </revision>
 </revisionlist>
