@@ -22,7 +22,7 @@
 %{!?_udevrulesdir: %global _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d}
 
 Name:           libfprint
-Version:        1.90.6
+Version:        1.90.7
 Release:        0
 Summary:        Library for fingerprint reader support
 License:        LGPL-2.1-or-later

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 14 13:32:54 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.90.7
+  * vfs5011: Fix possible use-after-free
+  * goodixmoc: Add two new PIDs (0x63AC, 0x639C)
+  * goodixmoc: Support finger status API
+  * synaptics: Only identify within provided prints
+  * synaptics: Reject devices with old firmware during probe 
+
+-------------------------------------------------------------------
 Thu Jan  7 16:00:24 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.90.6
