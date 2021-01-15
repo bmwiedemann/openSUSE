@@ -210,4 +210,12 @@
     <comment>New stable release (forwarded request 854480 from iznogood)</comment>
     <requestid>854566</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>6675e2c65e3eab2b105af197898fa020</srcmd5>
+    <version>3.0.4</version>
+    <time>1610736292</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 862204 from iznogood)</comment>
+    <requestid>862319</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 11 06:35:11 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.0.4:
+  + Improve time_t interpretation for negative timestamps.
+  + Fix "tracker3 search --folders".
+  + Fix crasher after tracker-miner-fs SPARQL failures.
+  + CI fixes.
+
+-------------------------------------------------------------------
 Thu Dec 10 08:53:21 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.0.3:
