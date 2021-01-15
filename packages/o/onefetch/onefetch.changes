@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 14 10:00:39 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.9.0:
+  * [info] add pyproject.toml and Pipfile parsers for pip package manager
+  * [language] added support for Emojicode
+  * [language] added support for GraphQL
+  * [misc] automate Homebrew release
+  * [language] added support for Qml
+  * [misc] add Yaml output and ISO 8601 date format option
+  * [misc] add CLI option to switch true colors on/off
+
+-------------------------------------------------------------------
 Fri Dec 18 14:23:27 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.8.0:

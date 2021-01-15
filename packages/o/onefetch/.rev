@@ -135,4 +135,19 @@
   * [info] added pub as another package manager for dart projects</comment>
     <requestid>856896</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>49298f2f72cd43c1012ccd5108bd8eb0</srcmd5>
+    <version>2.9.0</version>
+    <time>1610736359</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.9.0:
+  * [info] add pyproject.toml and Pipfile parsers for pip package manager
+  * [language] added support for Emojicode
+  * [language] added support for GraphQL
+  * [misc] automate Homebrew release
+  * [language] added support for Qml
+  * [misc] add Yaml output and ISO 8601 date format option
+  * [misc] add CLI option to switch true colors on/off</comment>
+    <requestid>863053</requestid>
+  </revision>
 </revisionlist>
