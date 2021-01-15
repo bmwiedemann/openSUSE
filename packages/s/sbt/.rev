@@ -31,4 +31,12 @@
     <comment>Allow buiding with maven 3.6.3</comment>
     <requestid>774814</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>327d34c9d2ee4746d0751626dc13c552</srcmd5>
+    <version>0.13.18</version>
+    <time>1610736352</time>
+    <user>dimstar_suse</user>
+    <comment>fix build</comment>
+    <requestid>862851</requestid>
+  </revision>
 </revisionlist>

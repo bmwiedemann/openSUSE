@@ -1,7 +1,7 @@
 #
 # spec file for package sbt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,18 +35,13 @@
 %global sbt_short_version %{sbt_major}.%{sbt_minor}
 %global sbt_version %{sbt_major}.%{sbt_minor}.%{sbt_patch}
 %global sbt_full_version %{sbt_version}%{sbt_build}
-%global typesafe_repo http://repo.typesafe.com/typesafe/ivy-releases
-
+%global typesafe_repo https://dl.bintray.com/typesafe/ivy-releases
 %global ivy_local_dir ivy-local
-
 %global installed_ivy_local %{_datadir}/%{short_name}/%{ivy_local_dir}
-
 %global generic_ivy_artifact() %{1}/%{2}/%{3}/%{4}/jars/%{5}.jar#/%{5}-%{4}.jar
 %global generic_ivy_descriptor() %{1}/%{2}/%{3}/%{4}/ivys/ivy.xml#/%{5}-%{4}-ivy.xml
-
 %global sbt_ivy_artifact() %{typesafe_repo}/org.scala-sbt/%{1}/%{sbt_bootstrap_version}/jars/%{1}.jar#/%{1}-%{sbt_bootstrap_version}.jar
 %global sbt_ivy_descriptor() %{typesafe_repo}/org.scala-sbt/%{1}/%{sbt_bootstrap_version}/ivys/ivy.xml#/%{1}-%{sbt_bootstrap_version}-ivy.xml
-
 %global sbt_launcher_version 1.0.1
 %global sbt_bootstrap_ivy_version 2.3.0-sbt-b18f59ea3bc914a297bb6f1a4f7fb0ace399e310
 %global sbt_serialization_version 0.1.2
@@ -71,218 +66,46 @@
 %global specs2_version 2.3.11
 %global testinterface_version 1.0
 %global dispatch_http_version 0.8.9
-
 %global want_sxr 0
 %global want_specs2 0
 %global want_scalacheck 0
 %global want_dispatch_http 0
-
-%if %{with bootstrap}
-Name:           %{short_name}-bootstrap
-%else
-Name:           %{short_name}
-%endif
 Version:        %{sbt_version}
 Release:        0
 Summary:        The simple build tool for Scala and Java projects
 License:        BSD-3-Clause
 URL:            http://www.scala-sbt.org
-Patch0:         sbt-%{sbt_version}-build-sbt.patch
-Patch2:         sbt-0.13.17-lines.patch
-
-Patch4:         sbt-0.13.13-sxr.patch
-
 Source0:        https://github.com/sbt/sbt/archive/v%{version}%{sbt_build}.tar.gz
-
 # sbt-ghpages plugin
 Source1:        https://github.com/sbt/sbt-ghpages/archive/v%{sbt_ghpages_version}.tar.gz
 # sbt-git plugin
 Source2:        https://github.com/sbt/sbt-git/archive/v%{sbt_git_version}.tar.gz
 # sbt-site plugin
 Source3:        https://github.com/sbt/sbt-site/archive/v%{sbt_site_version}.tar.gz
-
 # sxr
 Source4:        https://github.com/harrah/browse/archive/v%{sxr_version}.tar.gz
-
-# scalacheck
-%if %{?want_scalacheck}
-Source6:        https://github.com/rickynils/scalacheck/archive/%{scalacheck_version}.tar.gz
-%endif
-
-# specs 
-Source7:        https://github.com/etorreborre/specs2/archive/SPECS2-%{specs2_version}.tar.gz	
-
+# specs
+Source7:        https://github.com/etorreborre/specs2/archive/SPECS2-%{specs2_version}.tar.gz
 Source15:       https://raw.github.com/willb/climbing-nemesis/master/climbing-nemesis.py
 Source16:       https://raw.github.com/willb/rpm-packaging/master/sbt-packaging/rpmbuild-sbt.boot.properties
 Source17:       https://raw.github.com/willb/rpm-packaging/master/sbt-packaging/sbt.boot.properties
-
 # sbt script (to be obsoleted in future releases)
 # https://raw.github.com/willb/rpm-packaging/master/sbt-packaging/sbt
 # modified to correspond to openSUSE jline versions
 Source21:       sbt
-
 Source34:       http://dl.bintray.com/typesafe/ivy-releases/org.scala-sbt/compiler-interface/%{sbt_bootstrap_version}/srcs/compiler-interface-sources.jar#/compiler-interface-%{sbt_bootstrap_version}-sources.jar
-Source134:      %{sbt_ivy_descriptor compiler-interface}
-
-%if %{with bootstrap}
-# include bootstrap libraries
-
-Source57:       %{sbt_ivy_artifact main}
-Source157:      %{sbt_ivy_descriptor main}
-
-Source62:       %{sbt_ivy_artifact actions}
-Source162:      %{sbt_ivy_descriptor actions}
-
-Source51:       %{sbt_ivy_artifact interface}
-Source151:      %{sbt_ivy_descriptor interface}
-
-Source52:       %{sbt_ivy_artifact main-settings}
-Source152:      %{sbt_ivy_descriptor main-settings}
-
-Source56:       %{sbt_ivy_artifact api}
-Source156:      %{sbt_ivy_descriptor api}
-
-Source58:       %{sbt_ivy_artifact classpath}
-Source158:      %{sbt_ivy_descriptor classpath}
-
-Source67:       %{sbt_ivy_artifact completion}
-Source167:      %{sbt_ivy_descriptor completion}
-
-Source41:       %{sbt_ivy_artifact compiler-ivy-integration}
-Source141:      %{sbt_ivy_descriptor compiler-ivy-integration}
-
-Source55:       %{sbt_ivy_artifact compiler-integration}
-Source155:      %{sbt_ivy_descriptor compiler-integration}
-
-Source70:       %{sbt_ivy_artifact io}
-Source170:      %{sbt_ivy_descriptor io}
-
-Source61:       %{sbt_ivy_artifact process}
-Source161:      %{sbt_ivy_descriptor process}
-
-Source40:       %{sbt_ivy_artifact run}
-Source140:      %{sbt_ivy_descriptor run}
-
-Source69:       %{sbt_ivy_artifact relation}
-Source169:      %{sbt_ivy_descriptor relation}
-
-Source33:       %{sbt_ivy_artifact task-system}
-Source133:      %{sbt_ivy_descriptor task-system}
-
-Source66:       %{sbt_ivy_artifact tasks}
-Source166:      %{sbt_ivy_descriptor tasks}
-
-Source65:       %{sbt_ivy_artifact tracking}
-Source165:      %{sbt_ivy_descriptor tracking}
-
-Source73:       %{sbt_ivy_artifact logic}
-Source173:      %{sbt_ivy_descriptor logic}
-
-Source36:       %{sbt_ivy_artifact testing}
-Source136:      %{sbt_ivy_descriptor testing}
-
-Source49:       %{sbt_ivy_artifact apply-macro}
-Source149:      %{sbt_ivy_descriptor apply-macro}
-
-Source37:       %{sbt_ivy_artifact command}
-Source137:      %{sbt_ivy_descriptor command}
-
-Source32:       %{sbt_ivy_artifact ivy}
-Source132:      %{sbt_ivy_descriptor ivy}
-
-Source47:       %{sbt_ivy_artifact control}
-Source147:      %{sbt_ivy_descriptor control}
-
-Source68:       %{sbt_ivy_artifact cross}
-Source168:      %{sbt_ivy_descriptor cross}
-
-Source46:       %{sbt_ivy_artifact classfile}
-Source146:      %{sbt_ivy_descriptor classfile}
-
-Source38:       %{sbt_ivy_artifact test-agent}
-Source138:      %{sbt_ivy_descriptor test-agent}
-
-Source45:       %{sbt_ivy_artifact persist}
-Source145:      %{sbt_ivy_descriptor persist}
-
-Source53:       %{sbt_ivy_artifact incremental-compiler}
-Source153:      %{sbt_ivy_descriptor incremental-compiler}
-
-Source54:       %{sbt_ivy_artifact cache}
-Source154:      %{sbt_ivy_descriptor cache}
-
-Source59:       %{sbt_ivy_artifact logging}
-Source159:      %{sbt_ivy_descriptor logging}
-
-Source60:       %{sbt_ivy_artifact compile}
-Source160:      %{sbt_ivy_descriptor compile}
-
-Source44:       %{sbt_ivy_artifact collections}
-Source144:      %{sbt_ivy_descriptor collections}
-
-Source63:       %{sbt_ivy_artifact sbt-launch}
-Source163:      %{sbt_ivy_descriptor sbt-launch}
-
-%if %{?want_specs2}
-# specs
-Source79:       https://oss.sonatype.org/content/repositories/releases/org/specs2/specs2_%{scala_short_version}/%{specs2_version}/specs2_%{scala_short_version}-%{specs2_version}.jar
-%endif
-
-%if %{do_proper}
-# sbt plugins
-Source74:       http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.typesafe.sbt/sbt-ghpages/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_ghpages_version}/jars/sbt-ghpages.jar
-Source75:       http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.typesafe.sbt/sbt-site/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_site_version}/jars/sbt-site.jar
-Source76:       http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.typesafe.sbt/sbt-git/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_git_version}/jars/sbt-git.jar
-%endif # do_proper
-
-%if %{?want_sxr}
-Source77:       %{generic_ivy_artifact http://repo.typesafe.com/typesafe/ivy-releases org.scala-sbt.sxr sxr_%{scala_short_version} %{sxr_version} sxr_%{scala_short_version}}
-%endif # want_sxr
-
-# scalacheck
-%if %{?want_scalacheck}
-Source78:       http://oss.sonatype.org/content/repositories/releases/org/scalacheck/scalacheck_%{scala_short_version}/%{scalacheck_version}/scalacheck_%{scala_short_version}-%{scalacheck_version}.jar
-%endif
-
-%if %{?want_dispatch_http}
-# dispatch-http
-Source81:       http://oss.sonatype.org/content/repositories/releases/net/databinder/dispatch-http_%{scala_short_version}/%{dispatch_http_version}/dispatch-http_%{scala_short_version}-%{dispatch_http_version}.jar
-%endif # want_dispatch_http
-
-%if %{do_proper}
-# more plugins
-Source90:       http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.eed3si9n/sbt-doge/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_doge_version}/jars/sbt-doge.jar
-Source190:      http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.eed3si9n/sbt-doge/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_doge_version}/ivys/ivy.xml#/sbt-doge-%{sbt_doge_version}-ivy.xml
-
-Source91:       http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.typesafe.sbt/sbt-javaversioncheck/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_jvcheck_version}/jars/sbt-javaversioncheck.jar
-Source191:      http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.typesafe.sbt/sbt-javaversioncheck/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_jvcheck_version}/ivys/ivy.xml#/sbt-javaversioncheck-%{sbt_jvcheck_version}-ivy.xml
-
-Source92:       http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.typesafe.sbt/sbt-scalariform/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_scalariform_version}/jars/sbt-scalariform.jar
-Source192:      http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.typesafe.sbt/sbt-scalariform/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_scalariform_version}/ivys/ivy.xml#/sbt-scalariform-%{sbt_scalariform_version}-ivy.xml
-
-Source93:       http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.jsuereth/sbt-pgp/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_pgp_version}/jars/sbt-pgp.jar
-Source193:      http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.jsuereth/sbt-pgp/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_pgp_version}/ivys/ivy.xml#/sbt-pgp-%{sbt_pgp_version}-ivy.xml
-
-Source94:       http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.eed3si9n/sbt-assembly/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_assembly_version}/jars/sbt-assembly.jar
-Source194:      http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.eed3si9n/sbt-assembly/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_assembly_version}/ivys/ivy.xml#/sbt-assembly-%{sbt_assembly_version}-ivy.xml
-
-Source95:       http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/org.foundweekends/sbt-bintray/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_bintray_version}/jars/sbt-bintray.jar
-Source195:      http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/org.foundweekends/sbt-bintray/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_bintray_version}/ivys/ivy.xml#/sbt-bintray-%{sbt_bintray_version}-ivy.xml
-
-Source96:       https://repo1.maven.org/maven2/org/scalariform/scalariform_%{scala_short_version}/%{scalariform_version}/scalariform_%{scala_short_version}-%{scalariform_version}.jar
-Source196:      https://repo1.maven.org/maven2/org/scalariform/scalariform_%{scala_short_version}/%{scalariform_version}/scalariform_%{scala_short_version}-%{scalariform_version}.pom
-%endif # do_proper
-
-%endif # with bootstrap
-
 Source71:       %{sbt_ivy_artifact sbt}
+Source134:      %{sbt_ivy_descriptor compiler-interface}
 Source171:      %{sbt_ivy_descriptor sbt}
-
+Patch0:         sbt-%{sbt_version}-build-sbt.patch
+Patch2:         sbt-0.13.17-lines.patch
+Patch4:         sbt-0.13.13-sxr.patch
+BuildRequires:  apache-ivy
 #Source650:  https://oss.sonatype.org/service/local/repositories/releases/content/org/scala-sbt/sbt-giter8-resolver/sbt-giter8-resolver_%{scala_short_version}/0.1.0/sbt-giter8-resolver_%{scala_short_version}-0.1.0.jar
 #Source660:  https://oss.sonatype.org/service/local/repositories/releases/content/org/foundweekends/giter8/giter8_%{scala_short_version}/0.7.1/giter8_%{scala_short_version}-0.7.1.jar
-
 BuildRequires:  ivy-local
 BuildRequires:  java-devel
+BuildRequires:  javapackages-tools
 BuildRequires:  jline
 BuildRequires:  jsch
 BuildRequires:  json4s-core
@@ -293,12 +116,16 @@ BuildRequires:  python
 BuildRequires:  sbinary
 BuildRequires:  sbt-launcher
 BuildRequires:  sbt-launcher-interface
+BuildRequires:  scala
 BuildRequires:  serialization
 BuildRequires:  template-resolver
+BuildRequires:  test-interface
 BuildRequires:  xmvn-resolve
 BuildRequires:  xmvn-subst
 BuildRequires:  mvn(com.google.guava:guava)
+BuildRequires:  mvn(commons-httpclient:commons-httpclient)
 BuildRequires:  mvn(javax.inject:javax.inject)
+BuildRequires:  mvn(org.apache.commons:commons-lang3)
 BuildRequires:  mvn(org.bouncycastle:bcpg-jdk16)
 BuildRequires:  mvn(org.bouncycastle:bcprov-jdk16)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-classworlds)
@@ -312,20 +139,9 @@ BuildRequires:  mvn(org.eclipse.aether:aether-spi)
 BuildRequires:  mvn(org.eclipse.aether:aether-util)
 BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.inject)
 BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.plexus)
-BuildRequires:  mvn(org.fusesource.jansi:jansi) mvn(org.apache.commons:commons-lang3)
-
-BuildRequires:  javapackages-tools
-Requires:       javapackages-tools
-
-BuildRequires:  apache-ivy
-BuildRequires:  mvn(commons-httpclient:commons-httpclient)
+BuildRequires:  mvn(org.fusesource.jansi:jansi)
 BuildRequires:  mvn(org.jsoup:jsoup)
 BuildRequires:  mvn(oro:oro)
-
-BuildRequires:  scala
-
-BuildRequires:  test-interface
-
 Requires:       apache-commons-lang3
 Requires:       apache-ivy
 Requires:       atinject
@@ -334,6 +150,7 @@ Requires:       hamcrest-core
 Requires:       hawtjni-runtime
 Requires:       jansi
 Requires:       jansi-native
+Requires:       javapackages-tools
 Requires:       jawn-json4s
 Requires:       jawn-parser
 Requires:       jawn-util
@@ -366,21 +183,131 @@ Requires:       sisu-plexus
 Requires:       slf4j
 Requires:       template-resolver
 Requires:       test-interface
-
+%if %{with bootstrap}
+Name:           %{short_name}-bootstrap
+%else
+Name:           %{short_name}
+%endif
+# scalacheck
+%if %{?want_scalacheck}
+Source6:        https://github.com/rickynils/scalacheck/archive/%{scalacheck_version}.tar.gz
+%endif
+%if %{with bootstrap}
+Source32:       %{sbt_ivy_artifact ivy}
+Source33:       %{sbt_ivy_artifact task-system}
+Source36:       %{sbt_ivy_artifact testing}
+Source37:       %{sbt_ivy_artifact command}
+Source38:       %{sbt_ivy_artifact test-agent}
+Source40:       %{sbt_ivy_artifact run}
+Source41:       %{sbt_ivy_artifact compiler-ivy-integration}
+Source44:       %{sbt_ivy_artifact collections}
+Source45:       %{sbt_ivy_artifact persist}
+Source46:       %{sbt_ivy_artifact classfile}
+Source47:       %{sbt_ivy_artifact control}
+Source49:       %{sbt_ivy_artifact apply-macro}
+Source51:       %{sbt_ivy_artifact interface}
+Source52:       %{sbt_ivy_artifact main-settings}
+Source53:       %{sbt_ivy_artifact incremental-compiler}
+Source54:       %{sbt_ivy_artifact cache}
+Source55:       %{sbt_ivy_artifact compiler-integration}
+Source56:       %{sbt_ivy_artifact api}
+# include bootstrap libraries
+Source57:       %{sbt_ivy_artifact main}
+Source58:       %{sbt_ivy_artifact classpath}
+Source59:       %{sbt_ivy_artifact logging}
+Source60:       %{sbt_ivy_artifact compile}
+Source61:       %{sbt_ivy_artifact process}
+Source62:       %{sbt_ivy_artifact actions}
+Source63:       %{sbt_ivy_artifact sbt-launch}
+Source65:       %{sbt_ivy_artifact tracking}
+Source66:       %{sbt_ivy_artifact tasks}
+Source67:       %{sbt_ivy_artifact completion}
+Source68:       %{sbt_ivy_artifact cross}
+Source69:       %{sbt_ivy_artifact relation}
+Source70:       %{sbt_ivy_artifact io}
+Source73:       %{sbt_ivy_artifact logic}
+Source132:      %{sbt_ivy_descriptor ivy}
+Source133:      %{sbt_ivy_descriptor task-system}
+Source136:      %{sbt_ivy_descriptor testing}
+Source137:      %{sbt_ivy_descriptor command}
+Source138:      %{sbt_ivy_descriptor test-agent}
+Source140:      %{sbt_ivy_descriptor run}
+Source141:      %{sbt_ivy_descriptor compiler-ivy-integration}
+Source144:      %{sbt_ivy_descriptor collections}
+Source145:      %{sbt_ivy_descriptor persist}
+Source146:      %{sbt_ivy_descriptor classfile}
+Source147:      %{sbt_ivy_descriptor control}
+Source149:      %{sbt_ivy_descriptor apply-macro}
+Source151:      %{sbt_ivy_descriptor interface}
+Source152:      %{sbt_ivy_descriptor main-settings}
+Source153:      %{sbt_ivy_descriptor incremental-compiler}
+Source154:      %{sbt_ivy_descriptor cache}
+Source155:      %{sbt_ivy_descriptor compiler-integration}
+Source156:      %{sbt_ivy_descriptor api}
+Source157:      %{sbt_ivy_descriptor main}
+Source158:      %{sbt_ivy_descriptor classpath}
+Source159:      %{sbt_ivy_descriptor logging}
+Source160:      %{sbt_ivy_descriptor compile}
+Source161:      %{sbt_ivy_descriptor process}
+Source162:      %{sbt_ivy_descriptor actions}
+Source163:      %{sbt_ivy_descriptor sbt-launch}
+Source165:      %{sbt_ivy_descriptor tracking}
+Source166:      %{sbt_ivy_descriptor tasks}
+Source167:      %{sbt_ivy_descriptor completion}
+Source168:      %{sbt_ivy_descriptor cross}
+Source169:      %{sbt_ivy_descriptor relation}
+Source170:      %{sbt_ivy_descriptor io}
+Source173:      %{sbt_ivy_descriptor logic}
+%if %{?want_specs2}
+# specs
+Source79:       https://oss.sonatype.org/content/repositories/releases/org/specs2/specs2_%{scala_short_version}/%{specs2_version}/specs2_%{scala_short_version}-%{specs2_version}.jar
+%endif
+%if %{do_proper}
+# sbt plugins
+Source74:       http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.typesafe.sbt/sbt-ghpages/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_ghpages_version}/jars/sbt-ghpages.jar
+Source75:       http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.typesafe.sbt/sbt-site/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_site_version}/jars/sbt-site.jar
+Source76:       http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.typesafe.sbt/sbt-git/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_git_version}/jars/sbt-git.jar
+%endif # do_proper
+%if %{?want_sxr}
+Source77:       %{generic_ivy_artifact http://repo.typesafe.com/typesafe/ivy-releases org.scala-sbt.sxr sxr_%{scala_short_version} %{sxr_version} sxr_%{scala_short_version}}
+%endif # want_sxr
+# scalacheck
+%if %{?want_scalacheck}
+Source78:       http://oss.sonatype.org/content/repositories/releases/org/scalacheck/scalacheck_%{scala_short_version}/%{scalacheck_version}/scalacheck_%{scala_short_version}-%{scalacheck_version}.jar
+%endif
+%if %{?want_dispatch_http}
+# dispatch-http
+Source81:       http://oss.sonatype.org/content/repositories/releases/net/databinder/dispatch-http_%{scala_short_version}/%{dispatch_http_version}/dispatch-http_%{scala_short_version}-%{dispatch_http_version}.jar
+%endif # want_dispatch_http
+%if %{do_proper}
+# more plugins
+Source90:       http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.eed3si9n/sbt-doge/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_doge_version}/jars/sbt-doge.jar
+Source91:       http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.typesafe.sbt/sbt-javaversioncheck/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_jvcheck_version}/jars/sbt-javaversioncheck.jar
+Source92:       http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.typesafe.sbt/sbt-scalariform/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_scalariform_version}/jars/sbt-scalariform.jar
+Source93:       http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.jsuereth/sbt-pgp/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_pgp_version}/jars/sbt-pgp.jar
+Source94:       http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.eed3si9n/sbt-assembly/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_assembly_version}/jars/sbt-assembly.jar
+Source95:       http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/org.foundweekends/sbt-bintray/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_bintray_version}/jars/sbt-bintray.jar
+Source96:       https://repo1.maven.org/maven2/org/scalariform/scalariform_%{scala_short_version}/%{scalariform_version}/scalariform_%{scala_short_version}-%{scalariform_version}.jar
+Source190:      http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.eed3si9n/sbt-doge/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_doge_version}/ivys/ivy.xml#/sbt-doge-%{sbt_doge_version}-ivy.xml
+Source191:      http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.typesafe.sbt/sbt-javaversioncheck/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_jvcheck_version}/ivys/ivy.xml#/sbt-javaversioncheck-%{sbt_jvcheck_version}-ivy.xml
+Source192:      http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.typesafe.sbt/sbt-scalariform/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_scalariform_version}/ivys/ivy.xml#/sbt-scalariform-%{sbt_scalariform_version}-ivy.xml
+Source193:      http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.jsuereth/sbt-pgp/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_pgp_version}/ivys/ivy.xml#/sbt-pgp-%{sbt_pgp_version}-ivy.xml
+Source194:      http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.eed3si9n/sbt-assembly/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_assembly_version}/ivys/ivy.xml#/sbt-assembly-%{sbt_assembly_version}-ivy.xml
+Source195:      http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/org.foundweekends/sbt-bintray/scala_%{scala_short_version}/sbt_%{sbt_short_version}/%{sbt_bintray_version}/ivys/ivy.xml#/sbt-bintray-%{sbt_bintray_version}-ivy.xml
+Source196:      https://repo1.maven.org/maven2/org/scalariform/scalariform_%{scala_short_version}/%{scalariform_version}/scalariform_%{scala_short_version}-%{scalariform_version}.pom
+%endif # do_proper
+%endif # with bootstrap
 %if %{without bootstrap}
 BuildRequires:  %{short_name}-bootstrap
 Obsoletes:      %{short_name}-bootstrap
-
 %if %{do_proper}
 BuildRequires:  sbt-ghpages = %{sbt_ghpages_version}
 BuildRequires:  sbt-git = %{sbt_git_version}
 BuildRequires:  sbt-site = %{sbt_site_version}
-
 BuildRequires:  scalacheck = %{scalacheck_version}
 BuildRequires:  specs2 = %{specs2_version}
 BuildRequires:  sxr = %{sxr_version}
 %endif
-
 %endif
 
 %description
@@ -451,11 +378,11 @@ cp %{SOURCE63} .
 ./climbing-nemesis.py org.codehaus.plexus plexus-utils %{ivy_local_dir} --version 3.0.22
 ./climbing-nemesis.py org.codehaus.plexus plexus-utils %{ivy_local_dir} --version 3.2.1
 ./climbing-nemesis.py org.eclipse.aether aether-api %{ivy_local_dir} --version 1.3.1
-./climbing-nemesis.py org.apache.maven.resolver maven-resolver-api %{ivy_local_dir} --version 1.4.1
+./climbing-nemesis.py org.apache.maven.resolver maven-resolver-api %{ivy_local_dir} --version 1.4.2
 ./climbing-nemesis.py org.eclipse.aether aether-spi %{ivy_local_dir} --version 1.3.1
-./climbing-nemesis.py org.apache.maven.resolver maven-resolver-spi %{ivy_local_dir} --version 1.4.1
+./climbing-nemesis.py org.apache.maven.resolver maven-resolver-spi %{ivy_local_dir} --version 1.4.2
 ./climbing-nemesis.py org.eclipse.aether aether-util %{ivy_local_dir} --version 1.3.1
-./climbing-nemesis.py org.apache.maven.resolver maven-resolver-util %{ivy_local_dir} --version 1.4.1
+./climbing-nemesis.py org.apache.maven.resolver maven-resolver-util %{ivy_local_dir} --version 1.4.2
 ./climbing-nemesis.py org.apache.maven maven-model %{ivy_local_dir}  --version 3.2.3
 ./climbing-nemesis.py org.apache.maven maven-model %{ivy_local_dir}  --version 3.6.2
 ./climbing-nemesis.py org.apache.maven maven-model %{ivy_local_dir}  --version 3.6.3
@@ -592,9 +519,9 @@ sed -i -e '/sbt-site/d' project/plugins.sbt
 sed -i -e '/sbt-bintray/d' project/plugins.sbt
 sed -i -e '/sbt-assembly/d' project/plugins.sbt
 rm -f main/src/main/scala/sbt/plugins/Giter8ResolverPlugin.scala
-sed -i '/sbt.plugins.Giter8TemplatePlugin/d' main/src/main/scala/sbt/PluginDiscovery.scala 
+sed -i '/sbt.plugins.Giter8TemplatePlugin/d' main/src/main/scala/sbt/PluginDiscovery.scala
 sed -i 's/sbt.plugins.JUnitXmlReportPlugin,/sbt.plugins.JUnitXmlReportPlugin/' main/src/main/scala/sbt/PluginDiscovery.scala
-#sed -i "/templateResolverApi/d" project/Dependencies.scala 
+#sed -i "/templateResolverApi/d" project/Dependencies.scala
 #sed -i "/templateResolverApi/d" build.sbt
 %endif
 
@@ -623,12 +550,12 @@ mkdir sbt-boot-dir
 %if %{with bootstrap}
 mkdir -p sbt-boot-dir/scala-%{scala_version}/org.scala-sbt/%{short_name}/%{sbt_bootstrap_version}/
 mkdir -p sbt-boot-dir/scala-%{scala_version}/lib
-for jar in $(find %{ivy_local_dir}/ -name \*.jar | grep fusesource) ; do 
+for jar in $(find %{ivy_local_dir}/ -name \*.jar | grep fusesource) ; do
    cp --symbolic-link $(readlink $jar) sbt-boot-dir/scala-%{scala_version}/lib
 done
 
 # this is a hack, obvs
-for jar in $(find %{ivy_local_dir}/ -name \*.jar | grep bouncycastle) ; do 
+for jar in $(find %{ivy_local_dir}/ -name \*.jar | grep bouncycastle) ; do
    cp --symbolic-link $(readlink $jar) sbt-boot-dir/scala-%{scala_version}/lib
 done
 %endif
@@ -733,7 +660,7 @@ rm -f .rpm_pomfiles
 touch .rpm_pomfiles
 declare -a shortnames
 
-for pom in $(find ./*/ -name \*%{sbt_full_version}.pom -a ! -name \*sbtroot\*) ; do 
+for pom in $(find ./*/ -name \*%{sbt_full_version}.pom -a ! -name \*sbtroot\*) ; do
     shortname=$(echo $pom | sed -e 's/^.*[/]\([a-z-]\+\)-%{sbt_full_version}.pom$/\1/g')
     echo installing POM $pom to %{_mavenpomdir}/JPP.%{short_name}-${shortname}.pom
     cp $pom %{buildroot}/%{_mavenpomdir}/JPP.%{short_name}-${shortname}.pom
