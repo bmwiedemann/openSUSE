@@ -1,16 +1,16 @@
 From: Fabian Vogt <fabian@ritter-vogt.de>
 Subject: Fix build with GCC 7
 
-Index: AppStream-0.12.11/meson.build
+Index: AppStream-0.13.1/meson.build
 ===================================================================
---- AppStream-0.12.11.orig/meson.build
-+++ AppStream-0.12.11/meson.build
-@@ -54,7 +54,7 @@ endif
+--- AppStream-0.13.1.orig/meson.build
++++ AppStream-0.13.1/meson.build
+@@ -55,7 +55,7 @@ endif
  
  # a few compiler warning flags we always want enabled
  add_global_arguments('-Werror=implicit-function-declaration', '-Wno-unused-parameter', language: 'c')
 -add_global_arguments('-Wno-unused-parameter', '-Wno-error=deprecated-copy', language: 'cpp')
 +add_global_arguments('-Wno-unused-parameter', language: 'cpp')
- add_global_arguments('-DAS_COMPILATION', language : 'c')
+ add_global_arguments('-DAS_COMPILATION', language: 'c')
  
  #

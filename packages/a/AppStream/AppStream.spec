@@ -1,7 +1,7 @@
 #
 # spec file for package AppStream
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define libappstream_sover 4
 %define libAppStreamQt_sover 2
 Name:           AppStream
-Version:        0.12.11
+Version:        0.13.1
 Release:        0
 Summary:        Tools and libraries to work with AppStream metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -29,10 +29,6 @@ Source0:        http://www.freedesktop.org/software/appstream/releases/%{name}-%
 Source1:        http://www.freedesktop.org/software/appstream/releases/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 # PATCH-FIX-UPSTREAM
-Patch1:         properly-escape-markup.patch
-# https://github.com/ximion/appstream/pull/287
-Patch2:         0001-Set-FD_CLOEXEC-on-the-LMDB-FD-manually.patch
-# PATCH-FIX-OPENSUSE
 Patch100:       fix-build-gcc7.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gettext
@@ -48,7 +44,6 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.58
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(vapigen)
 BuildRequires:  pkgconfig(yaml-0.1)
 Recommends:     curl
 
@@ -121,7 +116,7 @@ GObject introspection bindings for interfaces provided by AppStream.
 
 %build
 %meson -Dqt=true \
-       -Dvapi=true \
+       -Dvapi=false \
        -Ddocs=false \
        -Dapidocs=false \
        -Dstemming=false
@@ -176,10 +171,6 @@ appstreamcli refresh --force || true
 %{_includedir}/appstream/
 %{_datadir}/gir-1.0/AppStream-1.0.gir
 %{_datadir}/gettext/
-%dir %{_datadir}/vala/
-%dir %{_datadir}/vala/vapi/
-%{_datadir}/vala/vapi/appstream.deps
-%{_datadir}/vala/vapi/appstream.vapi
 
 %files -n typelib-1_0-AppStream-1.0
 %license LICENSE*
