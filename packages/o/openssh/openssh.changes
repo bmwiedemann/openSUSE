@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan  8 01:37:02 UTC 2021 - Hans Petter Jansson <hpj@suse.com>
+
+- Update openssh-8.1p1-audit.patch (bsc#1180501). This fixes
+  occasional crashes on connection termination caused by accessing
+  freed memory.
+
+-------------------------------------------------------------------
 Fri Nov 27 11:36:56 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Support /usr/etc/pam.d

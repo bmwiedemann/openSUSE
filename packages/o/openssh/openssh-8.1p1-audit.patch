@@ -1,5 +1,5 @@
 diff --git a/Makefile.in b/Makefile.in
-index 9d3f569..5a0e0b6 100644
+index 88aba09..b815eac 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -115,7 +115,7 @@ LIBSSH_OBJS=${LIBOPENSSH_OBJS} \
@@ -1673,7 +1673,7 @@ index 485590c..73c095e 100644
  
  struct Session;
 diff --git a/packet.c b/packet.c
-index e7abb34..3e9c95e 100644
+index e7abb34..997c338 100644
 --- a/packet.c
 +++ b/packet.c
 @@ -81,6 +81,7 @@
@@ -1753,7 +1753,7 @@ index e7abb34..3e9c95e 100644
  		state->newkeys[mode] = NULL;
  	}
  	/* note that both bytes and the seqnr are not reset */
-@@ -2205,6 +2221,71 @@ ssh_packet_get_output(struct ssh *ssh)
+@@ -2205,6 +2221,73 @@ ssh_packet_get_output(struct ssh *ssh)
  	return (void *)ssh->state->output;
  }
  
@@ -1783,7 +1783,9 @@ index e7abb34..3e9c95e 100644
 +		return;
 +
 +	cipher_free(state->receive_context);
++	state->receive_context = NULL;
 +	cipher_free(state->send_context);
++	state->send_context = NULL;
 +
 +	sshbuf_free(state->input);
 +	state->input = NULL;
