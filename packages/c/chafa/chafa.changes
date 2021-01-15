@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Jan 15 08:39:16 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6.0:
+  * Added support for fullwidth symbols that take up two character
+    cells. These are common in East Asian scripts. Single-cell and
+    double-cell symbols can be mixed, and -f symbols mode will use
+    both if possible.
+  * New symbol tags: alpha, digit, alnum, narrow, wide, ambiguous,
+    ugly, bad. "Ambiguous" symbols have uncertain widths and may
+    render poorly in some terminals. "Ugly" denotes symbols that
+    are unsuitable for Chafa's cell-based graphics (multicolor
+    emoji, ideographic descriptors, etc). "Bad" is a superset of
+    these two categories. Bad symbols are always excluded unless
+    explicitly enabled with e.g. CHAFA_SYMBOL_TAG_BAD (--symbols
+    +bad in the frontend).
+  * The font loader (--glyph-file option) now does a better job
+    with proportional fonts.
+  * Added options for controlling lossless optimization of output.
+    Currently, attribute reuse and character repetition (REP
+    sequence) are implemented.
+  * Added -O option to the frontend. This controls the optimization
+    level.
+  * Added a simple abstraction layer for terminal control sequences
+    (ChafaTermInfo and ChafaTermDb). This allows for improved
+    terminal support.
+  * FbTerm is now supported with TERM=fbterm in the environment.
+  * Bug fixes:
+    - #43 Fix signal handler.
+    - [unfiled] Crash when invalid font paths were passed on command line.
+    - [unfiled] Small typo in fontgen's READM).
+    - [unfiled] Bad contrast adjustment in images with transparency.
+
+-------------------------------------------------------------------
 Sun Apr 12 21:17:36 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.4.1:
