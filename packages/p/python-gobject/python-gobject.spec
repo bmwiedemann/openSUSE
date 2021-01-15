@@ -1,7 +1,7 @@
 #
 # spec file for package python-gobject
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # This figures in an error message
 %global __requires_exclude typelib\\(%%namespaces\\)
-%global __requires_exclude_from ^%{python2_sitearch}/gi/__init__.py|%{python3_sitearch}/gi/__init__.py$
+%global __requires_exclude_from ^%{_libdir}/python.*/site-packages/gi/__init__.py$
 %define _name   pygobject
 Name:           python-gobject
 Version:        3.38.0
@@ -107,7 +107,7 @@ addon libraries such as pygtk in both Python2 and Python3.
 %prep
 %setup -q -n %{_name}-%{version}
 # Remove the executable bits from example scripts:
-chmod -R -x examples/*.py
+find examples -name '*.py' -exec chmod -R -x {} +
 
 %build
 export CFLAGS="%{optflags}"

@@ -668,4 +668,15 @@ not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
     <comment>Push GNOME 3.38</comment>
     <requestid>847259</requestid>
   </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>9a3246bffafe42636980efd5f14a04cb</srcmd5>
+    <version>3.38.0</version>
+    <time>1610736181</time>
+    <user>dimstar_suse</user>
+    <comment>- Simplify the dependency exclusion from __init__.py to also match
+  with multiple python3-flavors.
+- Remove exec bit from all *.py files in examples, also
+  subdirectories. (forwarded request 862855 from dimstar)</comment>
+    <requestid>863093</requestid>
+  </revision>
 </revisionlist>
