@@ -1,7 +1,7 @@
 #
 # spec file for package hplip
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define pyexe %{_bindir}/python3
 %global use_qt5 1
 Name:           hplip
-Version:        3.20.9
+Version:        3.20.11
 Release:        0
 Summary:        HP's Printing, Scanning, and Faxing Software
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
@@ -73,6 +73,8 @@ Patch303:       photocard-fix-import-error-for-pcardext.patch
 Patch304:       hp-sendfax-avoid-crash-if-python-reportlab-is-missin.patch
 # bsc#1166623, hp-toolbox crashes without python3-distro module
 Patch305:       Use-lsb_release-fallback-code-if-import-distro-fails.patch
+# bsc#1180724
+Patch306:       dcheck.py-fix-crash-in-Qt4-version-check.patch
 # PATCH-FIX-SUSE: Remove references to the closed-source ImageProcessor
 Patch400:       hplip-remove-imageprocessor.diff
 # Let a function return NULL instead of nothing
@@ -312,6 +314,7 @@ This sub-package is only required by developers.
 %patch303 -p1 -b .photocard_import
 %patch304 -p1
 %patch305 -p1
+%patch306 -p1
 %patch400 -p1
 %patch401 -p1
 %patch402 -p1

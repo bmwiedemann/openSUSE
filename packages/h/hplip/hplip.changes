@@ -1,7 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan  8 20:52:43 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to 3.20.11 
+
+  * Upstream version update and bug fixes (no new printers)
+  * Fix crash in hp-doctor if python3-qt4 is not installed
+    (bsc#1180724)
+    Added patch: dcheck.py-fix-crash-in-Qt4-version-check.patch
+
+-------------------------------------------------------------------
 Mon Nov 23 11:47:45 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
-- Update to 3.20.9
+- Update to 3.20.9 (jsc#SLE-17024)
   Add support for the following printers:
   * HP Color LaserJet Managed MFP E57540dn
   * HP Color LaserJet Managed Flow MFP E57540c
