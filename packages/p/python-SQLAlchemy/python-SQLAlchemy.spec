@@ -1,7 +1,7 @@
 #
 # spec file for package python-SQLAlchemy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-SQLAlchemy
-Version:        1.3.20
+Version:        1.3.22
 Release:        0
 Summary:        Database Abstraction Library
 License:        MIT
@@ -36,7 +36,6 @@ Requires:       python
 Provides:       python-sqlalchemy = %{version}
 Obsoletes:      python-sqlalchemy < %{version}
 # SECTION test requirements
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest >= 4.4.0}
 BuildRequires:  %{python_module pytest-xdist}
 # /SECTION
