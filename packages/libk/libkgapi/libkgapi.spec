@@ -27,6 +27,8 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM Fix not remembering auth token
+Patch1:         kde-429406-dont-reset-account-scopes.patch
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  extra-cmake-modules >= 5.55.0
 BuildRequires:  kf5-filesystem
@@ -153,6 +155,7 @@ to develop KDE PIM applications.
 
 %prep
 %setup -q -n libkgapi-%{version}
+%patch1 -p1
 
 %build
 # workaround, kio-gdrive crashes when loading libKPimGAPIDrive5 if built with LTO (boo#1148217)
