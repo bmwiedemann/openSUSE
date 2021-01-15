@@ -1220,4 +1220,12 @@
     <comment> (forwarded request 850678 from dimstar)</comment>
     <requestid>851052</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>0504c27652bfaa34c4ee60c19fee7576</srcmd5>
+    <version>3.38.3</version>
+    <time>1610736276</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 861778 from iznogood)</comment>
+    <requestid>862309</requestid>
+  </revision>
 </revisionlist>
