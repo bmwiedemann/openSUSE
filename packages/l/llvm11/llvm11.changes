@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan  9 16:19:46 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 11.0.1.
+  * This release contains bug-fixes for the LLVM 11.0.0 release.
+    This release is API and ABI compatible with 11.0.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Drop obsolete compiler-rt-dont-compile-assembly-files-as-c.patch.
+- Make documentation tarballs more reproducible.
+
+-------------------------------------------------------------------
 Wed Jan  6 08:40:26 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Increase required RAM for aarch64

@@ -43,4 +43,17 @@
     <comment></comment>
     <requestid>860740</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2914cf2f2cffff012a970e199bffe035</srcmd5>
+    <version>11.0.1</version>
+    <time>1610736227</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 11.0.1.
+  * This release contains bug-fixes for the LLVM 11.0.0 release.
+    This release is API and ABI compatible with 11.0.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Drop obsolete compiler-rt-dont-compile-assembly-files-as-c.patch.
+- Make documentation tarballs more reproducible.</comment>
+    <requestid>862042</requestid>
+  </revision>
 </revisionlist>

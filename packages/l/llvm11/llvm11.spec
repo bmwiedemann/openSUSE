@@ -1,7 +1,7 @@
 #
 # spec file for package llvm11
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define _relver 11.0.0
+%define _relver 11.0.1
 %define _version %_relver%{?_rc:rc%_rc}
 %define _tagver %_relver%{?_rc:-rc%_rc}
 %define _minor  11.0
@@ -127,8 +127,6 @@ Patch26:        lld-default-sha1.patch
 # PATCH-FIX-OPENSUSE llvm-exegesis-link-dylib.patch -- Don't waste space for llvm-exegesis.
 # It's crippled anyway because of missing deps and not relevant for users. Eventually we should drop it.
 Patch27:        llvm-exegesis-link-dylib.patch
-# PATCH-FIX-UPSTREAM compiler-rt-dont-compile-assembly-files-as-c.patch -- https://reviews.llvm.org/D86308
-Patch28:        compiler-rt-dont-compile-assembly-files-as-c.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -267,8 +265,8 @@ This package contains tools and scripts for using Clang, including:
 
 %package -n libclang%{_sonum}
 Summary:        Library files needed for clang
-Group:          System/Libraries
 # Avoid multiple provider errors
+Group:          System/Libraries
 Requires:       libLLVM%{_sonum}
 
 %description -n libclang%{_sonum}
@@ -303,8 +301,8 @@ This package contains documentation for the Clang compiler.
 
 %package -n libLTO%{_sonum}
 Summary:        Link-time optimizer for LLVM
-Group:          System/Libraries
 # Avoid multiple provider errors
+Group:          System/Libraries
 Requires:       libLLVM%{_sonum}
 
 %description -n libLTO%{_sonum}
@@ -312,8 +310,8 @@ This package contains the link-time optimizer for LLVM.
 
 %package LTO-devel
 Summary:        Link-time optimizer for LLVM (devel package)
-Group:          Development/Libraries/C and C++
 # Avoid multiple provider errors
+Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 Requires:       libLTO%{_sonum}
 Conflicts:      libLTO.so < %{version}
@@ -325,8 +323,8 @@ This package contains the link-time optimizer for LLVM.
 
 %package gold
 Summary:        Gold linker plugin for LLVM
-Group:          Development/Tools/Building
 # Avoid multiple provider errors
+Group:          Development/Tools/Building
 Requires:       libLLVM%{_sonum}
 Conflicts:      llvm-gold-provider < %{version}
 Provides:       llvm-gold-provider = %{version}
@@ -337,8 +335,8 @@ This package contains the Gold linker plugin for LLVM.
 
 %package -n libomp%{_sonum}-devel
 Summary:        MPI plugin for LLVM
-Group:          Development/Libraries/C and C++
 # Avoid multiple provider errors
+Group:          Development/Libraries/C and C++
 Requires:       libLLVM%{_sonum}
 Conflicts:      libomp-devel < %{version}
 Provides:       libomp-devel = %{version}
@@ -359,8 +357,8 @@ standard library, targeting C++11.
 
 %package -n libc++-devel
 Summary:        C++ standard library implementation (devel package)
-Group:          Development/Libraries/C and C++
 # Avoid multiple provider errors
+Group:          Development/Libraries/C and C++
 Requires:       libc++%{_socxx} = %{version}
 Requires:       libc++abi-devel = %{version}
 Conflicts:      libc++.so < %{version}
@@ -468,8 +466,8 @@ disassembler.
 
 %package -n liblldb%{_sonum}
 Summary:        LLDB software debugger runtime library
-Group:          System/Libraries
 # Avoid multiple provider errors
+Group:          System/Libraries
 Requires:       libLLVM%{_sonum}
 Requires:       libclang%{_sonum}
 
@@ -478,8 +476,8 @@ This subpackage contains the main LLDB component.
 
 %package -n lldb%{_sonum}-devel
 Summary:        Development files for LLDB
-Group:          Development/Libraries/C and C++
 # Avoid multiple provider errors
+Group:          Development/Libraries/C and C++
 Requires:       clang%{_sonum}-devel = %{version}
 Requires:       liblldb%{_sonum} = %{version}
 Requires:       llvm%{_sonum}-devel = %{version}
@@ -550,7 +548,6 @@ This package contains the development files for Polly.
 %patch22 -p1
 %patch24 -p1
 %patch27 -p2
-%patch28 -p1
 
 pushd clang-%{_version}.src
 %patch2 -p1
@@ -839,11 +836,16 @@ find ./build \( -name '*.o' -or -name '*.a' \)  -delete
 # cd ..
 # ln -s ../../../build/tools/clang/docs/AttributeReference.rst tools/clang/docs
 # mkdir build; cd build
-# cmake -G Ninja -DLLVM_ENABLE_SPHINX:BOOL=ON -DLLVM_BUILD_DOCS:BOOL=ON ..
+# cmake -G Ninja -DLLVM_ENABLE_SPHINX:BOOL=ON -DLLVM_BUILD_DOCS:BOOL=ON \
+#     -DSPHINX_WARNINGS_AS_ERRORS:BOOL=OFF ..
 # ninja docs-{llvm,clang}-{html,man}
 # popd
-# tar cvJf llvm-docs-%{_version}.src.tar.xz llvm-%{_version}.src/build/docs/{man,html}
-# tar cvJf clang-docs-%{_version}.src.tar.xz llvm-%{_version}.src/build/tools/clang/docs/{man,html}
+# tar --sort=name --owner=0 --group=0 --mtime="@${SOURCE_DATE_EPOCH}" \
+#     --pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime \
+#     cJf llvm-docs-%{_version}.src.tar.xz llvm-%{_version}.src/build/docs/{man,html}
+# tar --sort=name --owner=0 --group=0 --mtime="@${SOURCE_DATE_EPOCH}" \
+#     --pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime \
+#     cJf clang-docs-%{_version}.src.tar.xz llvm-%{_version}.src/build/tools/clang/docs/{man,html}
 
 # Build man/html pages
 pushd build/docs
