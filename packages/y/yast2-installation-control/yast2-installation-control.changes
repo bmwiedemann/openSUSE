@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 11 14:12:26 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Add option to control file to specify default ntp servers
+  (bsc#1180699)
+- 4.3.8  
+
+-------------------------------------------------------------------
 Wed Nov 11 15:16:15 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Add option to control file to specify if propose hibernation

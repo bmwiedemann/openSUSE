@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-installation-control
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-installation-control
-Version:        4.3.7
+Version:        4.3.8
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

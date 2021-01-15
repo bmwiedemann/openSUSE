@@ -306,4 +306,12 @@ Advantages:
     <comment>submit new version 4.3.7</comment>
     <requestid>848078</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>063d9a0a905d983c3a322b20da60f26f</srcmd5>
+    <version>4.3.8</version>
+    <time>1610736299</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.3.8</comment>
+    <requestid>862400</requestid>
+  </revision>
 </revisionlist>
