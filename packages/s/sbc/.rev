@@ -52,4 +52,13 @@
     <comment></comment>
     <requestid>721696</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f3374b4764fb245cbd24f2671e7fbd82</srcmd5>
+    <version>1.5</version>
+    <time>1610736247</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5:
+  * Add support for SSE primitives.</comment>
+    <requestid>862163</requestid>
+  </revision>
 </revisionlist>

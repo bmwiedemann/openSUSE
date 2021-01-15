@@ -1,7 +1,7 @@
 #
 # spec file for package sbc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 B1 Systems GmbH, Vohburg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,12 +20,12 @@
 %define sonum 1
 
 Name:           sbc
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        Bluetooth Low-Complexity, Sub-Band Codec Utilities
 License:        GPL-2.0-or-later
 Group:          Hardware/Mobile
-Url:            http://www.kernel.org/pub/linux/bluetooth
+URL:            https://www.kernel.org/pub/linux/bluetooth
 Source:         https://www.kernel.org/pub/linux/bluetooth/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  libsndfile-devel
