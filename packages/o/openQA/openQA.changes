@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 15 12:23:28 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1610631324.09c27b628:
+  * fetchneedles: Do a quiet git reset to avoid log spam
+  * Dependency cron 2021-01-14
+  * Stabilize test coverage of 27-plugin_obs_rsync_status_details.t
+  * Document further systemd units for the worker
+  * Allow skipping generation of PDF documentation
+
+-------------------------------------------------------------------
 Tue Jan 12 18:41:01 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1610476848.0a2eee8d6:
