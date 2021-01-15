@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  6 08:32:47 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add gnome-packagekit-bring-back-logout-support.patch: Add back
+  logout support(glgo#GNOME/gnome-packagekit!2, bsc#1180247).
+
+-------------------------------------------------------------------
 Thu Feb 27 03:16:18 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Remove gnome-packagekit-upgrade-system.patch: Tumbleweed has been

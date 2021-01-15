@@ -1003,4 +1003,13 @@ Also for 12.3 (optical only / making the launchers 'findable')</comment>
     <comment></comment>
     <requestid>781104</requestid>
   </revision>
+  <revision rev="133" vrev="4">
+    <srcmd5>99f5c1a7f623db8c8a2eac2fba97aaa6</srcmd5>
+    <version>3.32.0</version>
+    <time>1610736272</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gnome-packagekit-bring-back-logout-support.patch: Add back
+  logout support(glgo#GNOME/gnome-packagekit!2, bsc#1180247). (forwarded request 860968 from JonathanKang)</comment>
+    <requestid>862307</requestid>
+  </revision>
 </revisionlist>
