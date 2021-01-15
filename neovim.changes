@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 12 09:36:47 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on aarch64 (luajit not supported yet)
+- Add patch to find lua 5.4:
+  * neovim-0.4.4-findlua54.patch
+
+-------------------------------------------------------------------
 Wed Aug  5 13:31:44 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.4.4:
