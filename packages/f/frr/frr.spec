@@ -71,7 +71,7 @@ BuildRequires:  pkgconfig(libcares)
 BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(libprotobuf-c)
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(libyang) >= 1.0.101
+BuildRequires:  pkgconfig(libyang) >= 1.0.184
 BuildRequires:  pkgconfig(libzmq) >= 4.0.0
 BuildRequires:  pkgconfig(rtrlib) >= 0.5.0
 BuildRequires:  pkgconfig(sqlite3)

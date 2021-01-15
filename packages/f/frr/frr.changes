@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan  8 08:08:08 UTC 2021 - olaf@aepfle.de
+
+- Requires libyang 1.0.184
+
+-------------------------------------------------------------------
 Tue Dec 22 10:54:56 UTC 2020 - Rubén Torrero Marijnissen <rtorreromarijnissen@suse.com>
 
 - Disable ZeroMQ tests due to sporadic timeouts during package builds (bsc#1180217)
