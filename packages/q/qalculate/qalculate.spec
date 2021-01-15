@@ -1,7 +1,7 @@
 #
 # spec file for package qalculate
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define major   21
 %define libname libqalculate
 Name:           qalculate
-Version:        3.15.0
+Version:        3.16.1
 Release:        0
 Summary:        Multi-purpose desktop calculator application
 License:        GPL-2.0-or-later
@@ -62,9 +62,9 @@ This is the shared library package.
 Summary:        Additional data for the qalculator calulator library
 Group:          Productivity/Scientific/Math
 Requires:       %{libname} = %{version}
-Provides:       %{name}:%{_datadir}/%{name}/units.xml
 # Files were split out into -data with 2.6.2
 Conflicts:      %{name} < 2.6.2
+Provides:       %{name}:%{_datadir}/%{name}/units.xml
 BuildArch:      noarch
 
 %description data
@@ -93,7 +93,7 @@ you will need to install %{libname}-devel.
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
