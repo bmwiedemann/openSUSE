@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan 14 03:08:52 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.30
+   see /usr/share/doc/packages/perl-Module-ScanDeps/Changes
+
+  1.30  2021-01-13
+  - change bugtracker to GitHub issues
+  - guard against trailing slashes for paths in @INC
+  - interprete more common "use lib" idioms
+  1.29  2020-08-16
+  - implement interpretation of stuff like
+    use FindBin;
+    use lib "$FindBin/../lib";
+
+-------------------------------------------------------------------
 Mon Aug 17 03:12:09 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.29
