@@ -1,7 +1,7 @@
 #
 # spec file for package bup
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,15 +20,13 @@
 
 %define with_test 0
 Name:           bup
-Version:        0.31
+Version:        0.32
 Release:        0
 Summary:        Backup program based on git
 License:        LGPL-2.0-only
 Group:          Productivity/Archiving/Backup
 URL:            https://bup.github.io/
 Source0:        https://github.com/bup/bup/archive/%{version}/%{name}-%{version}.tar.gz
-Patch1:         %{name}-python.patch
-Patch2:         bup-i586.patch
 BuildRequires:  git-core >= 1.5.3.1
 BuildRequires:  pandoc
 BuildRequires:  perl-Time-HiRes
@@ -38,6 +36,8 @@ BuildRequires:  python3-pylibacl
 BuildRequires:  python3-pyxattr
 BuildRequires:  python3-tornado
 %if %{with_test}
+BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest-xdist
 BuildRequires:  rsync
 %endif
 Requires:       git-core >= 1.5.3.1
@@ -58,7 +58,7 @@ providing fast incremental saves and global deduplication
 # rpmlint: fix incorrect-fsf-address
 find . -type f | xargs sed -i -e 's:59 Temple Place\, Suite 330\, Boston\, MA  02111-1307  USA:51 Franklin Street\, Fifth Floor\, Boston\, MA 02110-1301 USA:g'
 # fix binpath
-sed -i -e "s|PREFIX=%{_prefix}/local|PREFIX=/usr|g" Makefile
+sed -i -e "s|PREFIX=/usr/local|PREFIX=%{_prefix}|g" Makefile
 # fix docpath
 sed -i -e "s|/share/doc/bup|/share/doc/packages/bup|g" Makefile
 # fix env-script-interpreter

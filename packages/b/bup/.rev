@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>849287</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0bd34960c2a5a630684011fc6a1ecbc6</srcmd5>
+    <version>0.32</version>
+    <time>1610736362</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.32
+  - See https://github.com/bup/bup/blob/master/note/0.32-from-0.31.md
+- Drop bup-python.patch, because now in upstream.
+- Drop bup-i586.patch, because needed pandoc was not build for i586.
+</comment>
+    <requestid>863095</requestid>
+  </revision>
 </revisionlist>

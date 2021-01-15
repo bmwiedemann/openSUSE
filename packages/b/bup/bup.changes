@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 14 11:49:29 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.32
+  - See https://github.com/bup/bup/blob/master/note/0.32-from-0.31.md
+- Drop bup-python.patch, because now in upstream.
+- Drop bup-i586.patch, because needed pandoc was not build for i586.
+
+-------------------------------------------------------------------
 Tue Nov 17 16:26:21 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add bup-i586.patch: Fix build on 32bit archs.
