@@ -1,7 +1,7 @@
 #
 # spec file for package ca-certificates
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Name:           ca-certificates
 %define ssletcdir %{_sysconfdir}/ssl
 %define cabundle  /var/lib/ca-certificates/ca-bundle.pem
 %define sslcerts  %{ssletcdir}/certs
-Version:        2+git20201002.34daf7f
+Version:        2+git20210111.eeae41c
 Release:        0
 Summary:        Utilities for system wide CA certificate installation
 License:        GPL-2.0-or-later

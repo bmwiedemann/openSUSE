@@ -395,4 +395,13 @@
   * Use relative symlink for /etc/ssl/certs (boo#1175340)</comment>
     <requestid>839158</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>f8257afa53dd7a0f83b367d75e62918f</srcmd5>
+    <version>2+git20210111.eeae41c</version>
+    <time>1610736253</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2+git20210111.eeae41c:
+  * Make certbundle.run container friendly</comment>
+    <requestid>862251</requestid>
+  </revision>
 </revisionlist>
