@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan  8 15:30:04 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Skip test incompatible with new pytest 6.2
+
+-------------------------------------------------------------------
 Sun Oct 11 15:36:02 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove hashbang and tests in runtime package

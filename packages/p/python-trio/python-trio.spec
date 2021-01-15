@@ -1,7 +1,7 @@
 #
 # spec file for package python-trio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -85,7 +85,8 @@ sed -i '1{/^#!/d}' trio/_tools/gen_exports.py
 #   pointless for us.
 # test_SSLStream_generic deadlocks in OBS
 # test_close_at_bad_time_for_send_all fails on PPC https://github.com/python-trio/trio/issues/1753
-%pytest -k 'not (test_static_tool_sees_all_symbols or test_SSLStream_generic or test_close_at_bad_time_for_send_all)'
+# test_fallback_when_no_hook_claims_it is incompatible with pytest 6.2 https://github.com/python-trio/trio/issues/1843
+%pytest -k 'not (test_static_tool_sees_all_symbols or test_SSLStream_generic or test_close_at_bad_time_for_send_all or test_fallback_when_no_hook_claims_it)'
 
 %files %{python_files}
 %doc README.rst
