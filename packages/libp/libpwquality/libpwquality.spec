@@ -1,7 +1,7 @@
 #
 # spec file for package libpwquality
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -126,7 +126,11 @@ This package provides Python 3 bindings for the libpwquality library.
 	--with-python-binary=%{_bindir}/python3 \
 	--with-pythonsitedir=%{python3_sitearch} \
 	%{nil}
+%if 0%{?suse_version} < 1500
+make -O %{?_smp_mflags}
+%else
 %make_build
+%endif
 %if %{with python2}
 pushd python
 %python_build

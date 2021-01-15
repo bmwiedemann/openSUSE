@@ -148,4 +148,12 @@
     <comment></comment>
     <requestid>843435</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>1a4c85b5087158479024ac0d65644426</srcmd5>
+    <version>1.4.4</version>
+    <time>1610736274</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 860978 from jmoellers)</comment>
+    <requestid>862308</requestid>
+  </revision>
 </revisionlist>
