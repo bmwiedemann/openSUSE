@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 13 18:52:43 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Remove explicit python runtime requirements on full standard lib
+
+-------------------------------------------------------------------
 Sun Nov 22 20:09:57 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix the python multiflavor subpackage generation

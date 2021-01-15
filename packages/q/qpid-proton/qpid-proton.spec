@@ -132,7 +132,6 @@ This subpackage contains the documentation.
 Summary:        Python language bindings for the Qpid Proton messaging framework
 Group:          Development/Libraries/Python
 Requires:       libqpid-proton%{qpid_proton_soversion} = %{version}-%{release}
-Requires:       python = %{python_version}
 # These will automatically be rewritten for the python flavors
 # including additional python- for python2 and python3- for the primary provider
 # flavor
@@ -152,7 +151,6 @@ libraries, routers, bridges and proxies. Proton is based on the AMQP
 Summary:        Python language bindings for the Qpid Proton messaging framework
 Group:          Development/Libraries/Python
 Requires:       libqpid-proton%{qpid_proton_soversion} = %{version}-%{release}
-Requires:       python = %{python2_version}
 Provides:       python-qpid-proton = %{version}
 Obsoletes:      python-qpid-proton < %{version}
 # as long as python2 is the default, provide also the non-versioned python pkg
@@ -168,7 +166,6 @@ libraries, routers, bridges and proxies. Proton is based on the AMQP
 Summary:        Python language bindings for the Qpid Proton messaging framework
 Group:          Development/Libraries/Python
 Requires:       libqpid-proton%{qpid_proton_soversion} = %{version}-%{release}
-Requires:       python = %{python_version}
 Provides:       python3-qpid-proton = %{version}
 Obsoletes:      python3-qpid-proton < %{version}
 
