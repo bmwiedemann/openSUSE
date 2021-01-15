@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan  8 03:11:43 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.52
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+
+  6.52      2021-01-07 21:20:51Z
+      - Remove block of code which creates message-digest auth request field
+        (GH#369) (Olaf Alders)
+
+-------------------------------------------------------------------
 Wed Dec 30 03:07:45 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.51
